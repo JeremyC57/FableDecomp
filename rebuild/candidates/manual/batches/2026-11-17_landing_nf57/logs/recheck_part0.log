@@ -1,0 +1,61 @@
+addr       parity           behav  name
+00433273   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00433273   WARN SHARED_HEADER_AVAILABLE CPersistTraits
+00433273   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryIn<CCharString>
+005bc0c6   RELOCATION_MATCH PASS   _Destroy<CEngineTextureMorph *>
+00865c20   WARN SHARED_HEADER_AVAILABLE CThing
+00865c20   WARN SHARED_HEADER_AVAILABLE C3DVector
+00865c20   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+00865c20   WARN RELOC_NAME: ?GetDefinitionManager@CCombatActionBase@@QAEPAVCGameDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::PeekDefinitionManager'
+00865c20   RELOCATION_MATCH PASS   FrameUpdate
+00aa80e0   MATCH            PASS   FindFirstSubChunkOfType
+00ad1690   MATCH            PASS   COptimisedPrimitive> >
+00b5bf10   RELOCATION_MATCH PASS   InitialiseTextures
+00b5ece0   RELOCATION_MATCH PASS   InitialiseTextures
+00b86a70   RELOCATION_MATCH PASS   InitialiseTextures
+00c20c10   RELOCATION_MATCH PASS   IsAudible
+00c313c0   WARN RELOC_NAME: ?CreateEntry@CAutoMapOwner_00c31560@@QAEPAUCAutoMapEntry_00c3baa0@@PBQAX@Z -> 00c31560 labelled '_global::CEngineWaterBackgroundSubPatch_Constructor'
+00c313c0   RELOCATION_MATCH PASS   OnRecord
+00c47f10   WARN RELOC_NAME: ?Take@CMailbox_00c48860@@QAE?AUSDecoderRequest@@XZ -> 00c48860 labelled '_global::PKCMailbox_ProcessMessage'
+00c47f10   WARN RELOC_NAME: ?CloseReply@SDecoderRequest@@QAEAAPAUCMailboxQueue_00c48a00@@XZ -> 00c47ec0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c47f10   WARN RELOC_NAME: ?SeekArgs@SDecoderRequest@@QAEAAUSSeekArgs@@XZ -> 00c47ed0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c47f10   WARN RELOC_NAME: ?GetPosition@CPKDecompressedStream@@QAEJXZ -> 00c62780 labelled 'CEditWorld::DrawGetWorldMap'
+00c47f10   WARN RELOC_NAME: ?GetUserData@CPKDecompressedStream@@QAEJXZ -> 00c628c0 labelled 'CEditWorld::DrawGetWorldMap'
+00c47f10   WARN RELOC_NAME: ?ReadArgs@SDecoderRequest@@QAEAAUSReadArgs@@XZ -> 00c47ee0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c47f10   WARN RELOC_NAME: ??1C16BitSamplePtr@@QAE@XZ -> 00c62a20 labelled '_global::Nop_ret0_00c62a20'
+00c47f10   WARN RELOC_NAME: ?OpenArgs@SDecoderRequest@@QAEAAUSOpenArgs@@XZ -> 00c47eb0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c47f10   WARN RELOC_NAME: ?GetChannels@CPKDecompressedStream@@QAEJXZ -> 00c628f0 labelled '_unattributed::GetIndex'
+00c47f10   WARN RELOC_NAME: ?GetRate@CPKDecompressedStream@@QAEJXZ -> 00c628d0 labelled 'CAIBrain::GetCurrentStateGroupDebugText'
+00c47f10   WARN RELOC_NAME: ?GetUnitSize@CPKDecompressedStream@@QAEJXZ -> 00c628a0 labelled 'CAIBrain::GetCurrentStateGroupDebugText'
+00c47f10   WARN RELOC_NAME: ??1CIntelligentPointer_00c16900@@QAE@XZ -> 00c167c0 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+00c47f10   WARN RELOC_NAME: ?ExitReply@SDecoderRequest@@QAEAAPAUCMailboxQueue_00c48c80@@XZ -> 00c47ef0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c47f10   WARN RELOC_NAME: ?ProcessMessage@CMailboxQueue_00c48c80@@QAEJPAX@Z -> 00c48c80 labelled '_global::SyncQueue_TryEnqueueLocked_E'
+00c47f10   RELOCATION_MATCH PASS   Run
+00d15a40   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d15a40   WARN SHARED_HEADER_AVAILABLE CQ_BountyHuntScript
+00d15a40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d15a40   RELOCATION_MATCH PASS   Main
+0121f160   WARN RELOC_CONFLICT: _$E2 -> 01229ca0 here, 01228930 in landed 01219f00
+0121f160   WARN RELOC_NAME: _$E2 -> 01229ca0 labelled 'CTCAIScratchpad::`dynamic atexit destructor for 'Gossip'''
+0121f160   RELOCATION_MATCH PASS   `dynamic initializer for 'Gossip''
+01214030   RELOCATION_MATCH PASS   Unwind@01214030
+01214077   RELOCATION_MATCH PASS   Unwind@01214077
+01215920   RELOCATION_MATCH PASS   Unwind@01215920
+
+WINS: 16
+  00433273 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@VCCharString@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+  005bc0c6 RELOCATION_MATCH std::??$_Destroy@PAVCEngineTextureMorph@@@std@@YIXPAVCEngineTextureMorph@@0@Z
+  00865c20 RELOCATION_MATCH CCombatAction_GenericStrikeResponseBase::?FrameUpdate@CCombatAction_GenericStrikeResponseBase@@UAEXXZ
+  00aa80e0 MATCH CChunkedFileSuperChunk::?FindFirstSubChunkOfType@CChunkedFileSuperChunk@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@PBD@Z
+  00ad1690 MATCH std::??$__uninitialized_fill_n@PAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@IV1@@std@@YIPAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@PAV1@IABV1@ABU__false_type@0@@Z
+  00b5bf10 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::?InitialiseTextures@CEngineScreenEffectRadialBlurRenderer@@AAE_NXZ
+  00b5ece0 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::?InitialiseTextures@CEngineScreenEffectGlowRenderer@@AAE_NXZ
+  00b86a70 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::?InitialiseTextures@CEngineScreenEffectDisplacementRenderer@@AAE_NXZ
+  00c20c10 RELOCATION_MATCH CSoundEvent::?IsAudible@CSoundEvent@@QAE_NPAUCSoundEventManager@@@Z
+  00c313c0 RELOCATION_MATCH CBankSampleRecordReader::?OnRecord@CBankSampleRecordReader@@UAEXPAVCLoadLog@@PBX@Z
+  00c47f10 RELOCATION_MATCH CAsyncDecoder_00c48640::?Run@CAsyncDecoder_00c48640@@UAEXXZ
+  00d15a40 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangGrunt::?Main@CBH_GangGrunt@CQ_BountyHuntScript@NScript@@EAEXXZ
+  0121f160 RELOCATION_MATCH CTCAIScratchpad::_$E1
+  01214030 RELOCATION_MATCH _global::Unwind@01214030
+  01214077 RELOCATION_MATCH _global::Unwind@01214077
+  01215920 RELOCATION_MATCH _global::Unwind@01215920

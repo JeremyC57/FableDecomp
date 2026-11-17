@@ -40,10 +40,17 @@ public:
 };
 class CWorldMap;
 class CGameDefinitionManager;
-struct CThingVector;
 bool __fastcall IsToCreateCombatParticleEffects(CThing* creature, CThing* target);   // 0x008F7860
-void __fastcall CreateDustEffectForCreature(CThing* creature, CWorldMap* map, CGameDefinitionManager* defs,
-                                            C3DVector* direction, CThingVector* ignore);   // 0x008F7950
+// agentNF57 (q10436): the dust helper is Ego_r.pdb 0x0091BB60 / FableWin.pdb 0x02B0A440
+//   ?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+//   (the spelling the landed caller 0x0087CA30 binds); the vector is the STLport one of stlport/fable_containers.h. Was a global
+//   CreateDustEffectForCreature(CThing*, CWorldMap*, CGameDefinitionManager*, C3DVector*, CThingVector*) stand-in (same bytes: references
+//   pass as pointers).
+#include "stlport/fable_containers.h"
+namespace NCombatActionHelpers {
+void __fastcall CreateDustEffectForCreature(CThingCreatureBase& creature, const CWorldMap& map, const CGameDefinitionManager& defs,
+                                            const C3DVector& direction, std::vector<CThing*>* ignore);   // 0x008F7950
+}
 
 class CCombatActionBase {
 public:
@@ -79,8 +86,8 @@ void CCombatAction_GenericStrikeResponseBase::FrameUpdate()
     if (CurrentFrame == FrameForDust) {
         CThing* creature = PCreature.GetPItem();
         if (IsToCreateCombatParticleEffects(creature, PTarget.GetPItem()) && CreateDustEffect) {
-            CThing* dustCreature = PCreature.GetPItem();
-            CreateDustEffectForCreature(dustCreature, GetWorldMap(), GetDefinitionManager(), &DustTravelDirection, 0);
+            CThingCreatureBase* dustCreature = (CThingCreatureBase*)PCreature.GetPItem();
+            NCombatActionHelpers::CreateDustEffectForCreature(*dustCreature, *GetWorldMap(), *GetDefinitionManager(), DustTravelDirection, 0);
         }
     }
     if (FinishWhenMoving) {

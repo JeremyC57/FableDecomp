@@ -1,4 +1,4 @@
-// Behaviour test for 0x00C62920 CAudioStreamOwner_00c62920 constructor (standalone copy of the model and logic; callees stubbed)
+// Behaviour test for 0x00C62920 CPKDecompressedStream constructor (standalone copy of the model and logic; callees stubbed)
 #include <cstdio>
 struct SStreamSegment { unsigned int m_word0, m_word4, m_word8; };
 struct IAudioStream { virtual ~IAudioStream() {} int kind; };

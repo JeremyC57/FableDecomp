@@ -1,0 +1,42 @@
+addr       parity           behav  name
+004dfbc6   WARN RELOC_NAME: ??$__destroy_aux@PAVCTargetPoint@NPlayerTargeting@@@std@@YIXPAVCTargetPoint@NPlayerTargeting@@0ABU__false_type@0@@Z -> 004dbe58 labelled '_global::ForEachElem0x1c__CBaseIntelligentPointer_004dbe58'
+004dfbc6   RELOCATION_MATCH PASS   CTargetPoint *>
+00769980   RELOCATION_MATCH PASS   _M_create_node
+008a9fc0   RELOCATION_MATCH PASS   GetGossipSize
+00aa8190   MATCH            PASS   FindNextSubChunkOfType
+00ad37e0   RELOCATION_MATCH PASS   COptimisedPrimitive> *>
+00b5bfd0   RELOCATION_MATCH PASS   SetEffectQuality
+00b5ee00   RELOCATION_MATCH PASS   SetEffectQuality
+00b86b00   RELOCATION_MATCH PASS   SetEffectQuality
+00c30e90   RELOCATION_MATCH PASS   HasWaveBankSegments
+00c3b0e0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c3b0e0   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c3b0e0   WARN RELOC_NAME: ??0SSampleIndexNode@@QAE@PAXK@Z -> 00c3b0c0 labelled 'SIndexNode_00c3b0e0::SIndexNode_00c3b0e0'
+00c3b0e0   RELOCATION_MATCH PASS   Add
+00c497e0   RELOCATION_MATCH PASS   OnFrameDone
+00e7b970   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e7b970   WARN SHARED_HEADER_AVAILABLE CV_FishermanScript
+00e7b970   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00e7b970   RELOCATION_MATCH PASS   Main
+01229ca0   RELOCATION_MATCH PASS   `dynamic atexit destructor for 'Gossip''
+01214049   RELOCATION_MATCH PASS   Unwind@01214049
+01215910   RELOCATION_MATCH PASS   Unwind@01215910
+0121592b   RELOCATION_MATCH PASS   Unwind@0121592b
+
+WINS: 16
+  004dfbc6 RELOCATION_MATCH std::??$_Destroy@PAVCTargetPoint@NPlayerTargeting@@@std@@YIXPAVCTargetPoint@NPlayerTargeting@@0@Z
+  00769980 RELOCATION_MATCH std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::?_M_create_node@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@@2@ABU?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@2@@Z
+  008a9fc0 RELOCATION_MATCH CGameScriptInterface::?GetGossipSize@CGameScriptInterface@@UAEHVCCharString@@@Z
+  00aa8190 MATCH CChunkedFileSuperChunk::?FindNextSubChunkOfType@CChunkedFileSuperChunk@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABV?$CCountedPointer@$$CBVCChunkedFileChunk@@@@@Z
+  00ad37e0 RELOCATION_MATCH std::??$__destroy_aux@PAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@@std@@YIXPAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@0ABU__false_type@0@@Z
+  00b5bfd0 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::?SetEffectQuality@CEngineScreenEffectRadialBlurRenderer@@UAE_NABVCEngineVideoOptionsDef@@@Z
+  00b5ee00 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::?SetEffectQuality@CEngineScreenEffectGlowRenderer@@UAE_NABVCEngineVideoOptionsDef@@@Z
+  00b86b00 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::?SetEffectQuality@CEngineScreenEffectDisplacementRenderer@@UAE_NABVCEngineVideoOptionsDef@@@Z
+  00c30e90 RELOCATION_MATCH _global::?HasWaveBankSegments@@YAJPAVCSegmentFile@@@Z
+  00c3b0e0 RELOCATION_MATCH CSampleIndexMap::?Add@CSampleIndexMap@@QAEXPAVCLoadLog@@PAXK@Z
+  00c497e0 RELOCATION_MATCH CCodaFrameStreamer::?OnFrameDone@CCodaFrameStreamer@@SGXPAX0PAV1@@Z
+  00e7b970 RELOCATION_MATCH NScript::CV_FishermanScript::CM_FishermanWaspSpawn::?Main@CM_FishermanWaspSpawn@CV_FishermanScript@NScript@@EAEXXZ
+  01229ca0 RELOCATION_MATCH CTCAIScratchpad::_$E2
+  01214049 RELOCATION_MATCH _global::Unwind@01214049
+  01215910 RELOCATION_MATCH _global::Unwind@01215910
+  0121592b RELOCATION_MATCH _global::Unwind@0121592b

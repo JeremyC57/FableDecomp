@@ -31,6 +31,11 @@ class CEngineScreenEffectDisplacementRenderer : public CEngineComponent {
 public:
     CEngineScreenEffectDisplacementRenderer(const CEngineInit&); // 0x00B86C00 ??0CEngineScreenEffectDisplacementRenderer@@QAE@ABVCEngineInit@@@Z
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_SETEFFECTQUALITY
+    // NF57 opt-in (row 0x00B86B00): Ego_r.pdb 0x00A2D680 / FableWin.pdb ?SetEffectQuality@CEngineScreenEffectDisplacementRenderer@@UAE_NABVCEngineVideoOptionsDef@@@Z;
+    // retail vtable 0x012A3A94 slot 13, the first slot after CEngineComponent's thirteen. No layout change.
+    virtual bool SetEffectQuality(const class CEngineVideoOptionsDef& options);
+#endif
 #ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_FINISHSTENCIL
     // NF56 opt-in (row 0x00B86BB0): Ego_r.pdb 0x00A2D730 / FableWin.pdb 0x02DBA380
     // ?FinishDisplacementStencilRendering@CEngineScreenEffectDisplacementRenderer@@QAEXXZ (public), out of line at 0x00B86BB0; its body
@@ -45,6 +50,11 @@ public:
 #endif
 private:
     void ApplyDisplacement();                                // 0x00B87870 ?ApplyDisplacement@CEngineScreenEffectDisplacementRenderer@@AAEXXZ
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_INITIALISETEXTURES
+    // NF57 opt-in (q10423, row 0x00B86A70): Ego_r.pdb 0x00A2D5F0 / FableWin.pdb 0x02DBA070
+    // ?InitialiseTextures@CEngineScreenEffectDisplacementRenderer@@AAE_NXZ (private; retail order InitialiseTextures, SetEffectQuality = PDB order).
+    bool InitialiseTextures();                               // 0x00B86A70
+#endif
     CTexture*       BackBufferCopyTexture;                   // +0x0c
     CTexture*       DisplacementTexture;                     // +0x10
     long            DisplacementTextureHandle;               // +0x14

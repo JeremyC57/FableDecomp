@@ -1,5 +1,5 @@
 // GFSerialiseVectorBinaryIn<CCharString>(CMemoryDataInputStream&, std::vector<CCharString>&) -- read the count, resize the vector, then read every string in place
-// Leaf: GFSerialiseVectorBinaryIn
+// Leaf: ??$GFSerialiseVectorBinaryIn@VCCharString@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00433273, length 185 bytes, plain `ret` (__fastcall: stream in ecx, vector in edx).
 // Name: the CCharString instance of the template the landed 0x005C2AD8 (NInventory::CItem) reconstructs; callers 0x0043321E and
 // 0x0049B91E. The catalog name is right.
@@ -17,19 +17,22 @@
 // __forceinline in this size TU (without it all three are emitted as calls: 153 bytes).
 // Layout: engine/CMemoryDataInputStream.h's members (position +4, chunkBase +0xC, chunkLength +0x14); that header flattens the vptr
 // into a void* member and so cannot carry the virtual call, hence a local class with the same members and a real vtable.
+// agentNF57 (q10428): CCharString and std::vector are the shared fable_string.h / stlport/fable_containers.h ones (Ego_r.pdb
+//   ??$GFSerialiseVectorBinaryIn@VCCharString@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z,
+//   the spelling the landed caller CPersistContext::TransferVector<CCharString> 0x004331F9 binds); the two-argument resize stays out of
+//   line (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE, the landed 0x00E54990's spelling of 0x0043332C) and STLport's one-argument
+//   resize(n) = resize(n, T()) is written out (the header's is not force-inlined in this size TU). Was a local CCharString and a
+//   one-parameter local std::vector (short self leaf and a short resize binding).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-class CCharString {
-public:
-    CCharString();                                       // 0x0099E4B0
-    ~CCharString();                                      // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);    // 0x0099EFB0
-    void* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
 
 class CDataInputStream { friend class CMemoryDataInputStream;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
@@ -63,19 +66,6 @@ public:
     }
 };
 
-namespace std {
-template <class T> class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    void resize(unsigned int newSize, const T& x);       // 0x0043332C for CCharString
-    FABLE_FORCEINLINE void resize(unsigned int newSize) { resize(newSize, T()); }
-    T* begin() { return _M_start; }
-    T& operator[](unsigned int n) { return *(begin() + n); }
-};
-}
-
 template <class T> struct CPersistTraits {
     T DefaultVal;
     FABLE_FORCEINLINE CPersistTraits() : DefaultVal() { }
@@ -95,7 +85,7 @@ void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream& stream, std::v
     CPersistTraits<T> traits;
     long count;
     ReadCount(stream, &count);
-    out.resize(count);
+    out.resize(count, T());
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryIn(stream, &out[i]);
 }

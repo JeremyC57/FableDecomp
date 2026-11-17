@@ -47,7 +47,7 @@ class CEngineWaterRenderer { public:
     CRGBFloatColour theme;
     float themeAlpha;
     C3DVector cameraPos;
-    void SetupSeaMidgroundShaderConstantsAndFog()
+    void SetupSeaBackgroundShaderConstantsAndFog()
     {
         g_pShaderRenderManager->SetUserVertexShaderConstant(0, Settings.SeaBumpmapSpan, 0.0f, 0.0f, 0.0f);
         if (HighendWaterEnabled) {
@@ -81,12 +81,12 @@ int main()
     r.WaterBumpFactor = 2.0f; r.themeAlpha = 0.6f; r.theme = CRGBFloatColour(0.5f, 0.5f, 0.5f, 0.5f);
     r.cameraPos.X = 10; r.cameraPos.Y = 20; r.cameraPos.Z = 30;
     r.HighendWaterEnabled = true; g_mgr.Reset();
-    r.SetupSeaMidgroundShaderConstantsAndFog();
+    r.SetupSeaBackgroundShaderConstantsAndFog();
     int ok = VecIs(g_mgr.vs[0], 9, 0, 0, 0) && VecIs(g_mgr.ps[7], 0.1f, 0.2f, 0.3f, 0.3f) && VecIs(g_mgr.vs[3], 12, 0, -6, 1)
         && g_mgr.worldSet == 1 && g_mgr.world.M[0] == 1 && g_mgr.world.M[4] == 1 && g_mgr.world.M[8] == 1 && g_mgr.world.M[1] == 0
         && g_mgr.world.Pos.X == 10 && g_mgr.world.Pos.Z == 30 && g_mgr.lastPrepare == 0x205 && Near(g_mgr.ps[5].X, -9);
     r.HighendWaterEnabled = false; g_mgr.Reset();
-    r.SetupSeaMidgroundShaderConstantsAndFog();
+    r.SetupSeaBackgroundShaderConstantsAndFog();
     ok = ok && g_mgr.worldSet == 0 && g_mgr.vsSet[3] == 0 && VecIs(g_mgr.ps[5], 0.8f, 0.8f, 0, 0) && VecIs(g_mgr.ps[6], 0, 0.2f, 0.4f, 0.5f);
     if (!ok) { std::printf("00b7c510_TEST FAIL\n"); return 1; }
     std::printf("00b7c510_TEST PASS\n");

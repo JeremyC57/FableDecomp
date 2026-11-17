@@ -1,5 +1,5 @@
-// CUnprovenRecordReader_012b4d34::OnRecord(CLoadLog* log, const void* record) -- copies one bank sample record into the bank's sample map entry for its key (finding it or creating it): the name, the two shorts, and every optional field the record's flag word marks present (absent ones get their defaults), plus the derived entry flags
-// Leaf: ?OnRecord@CUnprovenRecordReader_012b4d34@@UAEXPAVCLoadLog@@PBX@Z
+// CBankSampleRecordReader::OnRecord(CLoadLog* log, const void* record) -- copies one bank sample record into the bank's sample map entry for its key (finding it or creating it): the name, the two shorts, and every optional field the record's flag word marks present (absent ones get their defaults), plus the derived entry flags
+// Leaf: ?OnRecord@CBankSampleRecordReader@@UAEXPAVCLoadLog@@PBX@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C313C0, 412 bytes, thiscall `ret 8`; the only slot of the one-slot vtable 0x012B4D34,
 //   the second record reader the landed ReadBankData 0x00C30F60 hands to the table loader (spelling bound there). The
 //   first argument is never read. Descriptive name (libpk has no PDB or RTTI).
@@ -7,6 +7,10 @@
 //   entry of CAutoMapEntry_00c3baa0 0x00C3BAA0), CString::operator=(const char*) 0x00C0C200.
 // Shape: the landed CWaveDataReader::OnRecord 0x00C31230 shape -- the key homed in the dead record argument slot, the
 //   find-or-create an inline early-return member.
+// agentNF57 (q10408): class named CBankSampleRecordReader (descriptive: libpk has no PDB or RTTI and no string, PDB name set, FSE
+//   manifest or libpk header names it). It copies each "LHAudioBankSampleTable" record (the table CAudioBankTableReader::Load
+//   0x00C3BB50 walks) into the bank's sample map; ReadBankData 0x00C30F60 builds it as a temporary (out-of-line ctor 0x00C311C0
+//   stores vtable 0x012B4D34 and the CBankData*). Was the placeholder CUnprovenRecordReader_012b4d34.
 // NF44 (round 6): the local `struct CString` stand-in replaced by the shared engine/CString.h (FABLE_RETAIL_CSEGMENTFILE_PASS23: the MFC
 // `const CString& operator=(const char*)`), so the assignment binds ??4CString@@QAEABV0@PBD@Z at 0x00C0C200.
 #define FABLE_RETAIL_CSEGMENTFILE_PASS23
@@ -89,12 +93,12 @@ class CLoadLog;
 struct Callback {
     virtual void OnRecord(CLoadLog* log, const void* record) = 0;
 };
-struct CUnprovenRecordReader_012b4d34 : Callback {  // vtable 0x012B4D34
+struct CBankSampleRecordReader : Callback {  // vtable 0x012B4D34
     CBankData* m_pData;                             // +0x04
     virtual void OnRecord(CLoadLog* log, const void* record);
 };
 
-void CUnprovenRecordReader_012b4d34::OnRecord(CLoadLog* log, const void* data)
+void CBankSampleRecordReader::OnRecord(CLoadLog* log, const void* data)
 {
     const SBankSampleRecord_00c313c0* record = (const SBankSampleRecord_00c313c0*)data;
     void* key = record->m_key;

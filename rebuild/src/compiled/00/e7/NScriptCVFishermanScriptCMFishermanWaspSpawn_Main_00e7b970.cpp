@@ -7,11 +7,11 @@
 #define CScriptThing CScriptThingDonor
 #include "engine/CScriptThing.h"
 #undef CScriptThing
-#define CCharString CCharStringDonor
+#define FABLE_RETAIL_CCHARSTRING
 #include "fable_string.h"
-#undef CCharString
 // Actual flattened donor headers included; genuine virtual interfaces follow.
-// CCharString donor omits the native owning copy constructor, restored below.
+// agentNF57: CCharString is the shared fable_string.h class (FABLE_RETAIL_CCHARSTRING; was a renamed include plus a local copy-ctor stand-in);
+// the script def is engine/fable_script_def_global.h (pGlobalScriptDef, CDefString out-of-line ??B 0x00415D70).
 class CThing;
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;
 namespace std {template<class T>class allocator;template<class T,class A>class list;template<class T,class A>class vector;template<class T,class U>struct pair;}
@@ -25,7 +25,6 @@ typedef unsigned long long ScriptUID;
 #endif
 #include "engine/C3DVector.h"
 class CScriptGameResourceObjectScriptedThingBase;
-class CCharString { public:char* Data; CCharString(const char*,long=-1); CCharString(const CCharString&); ~CCharString();}; // 0099EBF0/0099EAE0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCPPointerInfo { public:unsigned long References;void (__fastcall *Delete)(void*);void* Data;};
 void operator delete(void*);
@@ -140,9 +139,10 @@ public:
 };
 }
 using NScript::CV_FishermanScript; // donor5C/5D, retail48/49
-class CDefString { public:void* Data;operator CCharString()const;}; // 00415D70
-class CScriptDef { public:unsigned char BeforeWaspType[0x598];CDefString F_WaspType;}; // donor5E4,retail598
-extern CScriptDef* g_ScriptDef; // 0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"   // pGlobalScriptDef 0x0143E90C (agentNF57: was local CDefString / CScriptDef and CScriptDef* g_ScriptDef)
 namespace NScript {
 class CV_FishermanScript::CM_FishermanWaspSpawn : public CEntityScriptBase {
 public:
@@ -164,6 +164,6 @@ void NScript::CV_FishermanScript::CM_FishermanWaspSpawn::Main(){
  if(IsActiveThreadTerminating())return;
  if(!ParentClass->HeroHasSavedFishermanFromWasps && !IsActiveThreadTerminating()){
  CCharString name("FishermanWasp");
- Game->CreateCreature(g_ScriptDef->F_WaspType,Me.GetPos(),name,false);
+ Game->CreateCreature(pGlobalScriptDef->F_WaspType,Me.GetPos(),name,false);
  }
 }

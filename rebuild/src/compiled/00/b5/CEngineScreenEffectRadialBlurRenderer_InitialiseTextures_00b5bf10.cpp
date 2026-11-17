@@ -1,5 +1,5 @@
 // CEngineScreenEffectRadialBlurRenderer::InitialiseTextures() -- replace scratch page and allocate two 256-square textures.
-// Leaf: ?InitialiseTextures@RadialBlurMethods@@QAEJXZ
+// Leaf: ?InitialiseTextures@CEngineScreenEffectRadialBlurRenderer@@AAE_NXZ
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail 00B5BF10,185 bytes. Shared header matches retail handle offsets14/18/1c.
@@ -11,18 +11,24 @@
 //   class, the CPixelFormat renaming macro + local CPixelFormat, the local C2DExtentsI and _D3DFORMAT moved to engine/CPixelFormat.h
 //   (FABLE_RETAIL_CPIXELFORMAT), engine/C2DExtentsI.h and engine/Direct3D9Types.h. The derived RadialBlurMethods shell (self) is unchanged:
 //   the PDB self is ?InitialiseTextures@CEngineScreenEffectRadialBlurRenderer@@AAE_NXZ (name debt, NOTES.md).
+// agentNF57 (q10421): defined as the class's own private member, Ego_r.pdb / FableWin.pdb ?InitialiseTextures@CEngineScreenEffectRadialBlurRenderer@@AAE_NXZ
+//   (retail order InitialiseTextures then SetEffectQuality = the PDB order), on the header's retail _MEMBERS branch (new overlay opt-in FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_INITIALISETEXTURES).
+//   Was the derived shell RadialBlurMethods (?InitialiseTextures@RadialBlurMethods@@QAEJXZ).
 #define FABLE_RETAIL_CPIXELFORMAT
 #define FABLE_RETAIL_CENGINERESOURCEMANAGER
 #define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_TEXTURES
 #define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_MEMBERS
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_INITIALISETEXTURES
 #include "engine/CEngineScreenEffectRadialBlurRenderer.h"
 #include "engine/CPixelFormat.h"
 #include "engine/C2DExtentsI.h"
 #include "engine/CEngineResourceManager.h"
 #include "engine/CGPUScratchBufferTextureManager.h"
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
-struct RadialBlurMethods : CEngineScreenEffectRadialBlurRenderer { long InitialiseTextures(); };
-long RadialBlurMethods::InitialiseTextures() {
+
+bool CEngineScreenEffectRadialBlurRenderer::InitialiseTextures() {
  if(DynamicTexturePageHandle>=0) NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle);
  CPixelFormat format; format.Initialise(D3DFMT_A8R8G8B8);
  CGPUScratchBufferTextureManager* pool=&NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager();

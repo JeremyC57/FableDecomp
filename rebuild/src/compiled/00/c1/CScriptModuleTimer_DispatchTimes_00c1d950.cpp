@@ -10,6 +10,11 @@
 //   the target (its only member), homed in the `push ecx` frame slot.
 // Shape: right-to-left argument evaluation (the argument pushed before any timer call); `neg al ; sbb ; neg ; dec` is
 //   `handled ? 0 : -1`.
+// agentNF57 (q10492): slot 1 declared with the landed UpdateState 0x00C1D8C0's own signature, (CSoundEventManager*, CStreamBuffer*)
+//   on libpk/CStreamBuffer.h (the include set of that row); was (void*, void*). Declaration only: this row never calls slot 1.
+#define FABLE_RETAIL_LIBPK_STREAM_BUFFER_PASS22
+#include "libpk/CStreamBuffer.h"
+
 struct CDispatchTarget;
 
 struct CAIStateGroup_00c1df70 {                 // the dispatcher: a one-word view of the target
@@ -24,7 +29,7 @@ struct CScriptModuleOwner {
 
 struct CScriptModuleTimer {                     // vtable 0x012B32A0
     virtual ~CScriptModuleTimer();              // slot 0
-    virtual long UpdateState(void* context, void* argument);   // slot 1 (0x00C1D8C0)
+    virtual long UpdateState(CSoundEventManager* manager, CStreamBuffer* buffer);   // slot 1 (0x00C1D8C0)
     virtual long DispatchTimes(void* argument); // slot 2
     CScriptModuleOwner* POwner;                 // +0x04
     unsigned long GetCurrentFrame();            // 0x00C1D810

@@ -1,0 +1,13 @@
+# NF57 lessons (one line each)
+- reloc_bindings witnesses go stale when a row is rewritten later: 0x00C11CB0 and 0x008AE510 already bound the right symbol; probe (gorig + xr) before porting.
+- A static map's dynamic initializer and atexit destructor ($E1 / $E2) land from one `T C::Member;` definition on the shared headers (0x0121F160 / 0x01229CA0 in 2 grades); grade each row on its own `_$En` leaf.
+- nftools/xref.py only lists external functions; for `_$E1` / `_$E2` (static, storage class 3) use a copy that accepts class 3 (work/xref3.py).
+- engine/CTCAIScratchpad.h needs engine/ETCInterfaceType.h first and FABLE_RETAIL_DEF_CLASS_BASE (CDefPointer.h #error); copy the ClearGossip 0x008AA010 include block.
+- A bool function whose body is `return a || b;` materialises 0/1 in eax (`mov eax,1`), so an int-looking callee can still be bool; an if/return-true form gives `mov al,1`.
+- STLport tree members of a map with a header-declared out-of-line element copy constructor match once an opt-in makes the copy implicit (0x00769980 / 0x0076A110 first form).
+- The private InitialiseTextures of the screen-effect renderers lands on the header's retail _MEMBERS branch in one grade; read the retail vtable before blocking a virtual: SetEffectQuality sits at slot 13, right after CEngineComponent's 13, so a derived-class opt-in moved all three _Quality shells in one grade each.
+- A callee name a row invented (ResetParameters 0x00B5BBC0) can be settled from the Ego_r run of the class plus the body (SetDefaultParams stores the parameter defaults) while porting its caller.
+- Address-suffixed classes can hide a header class: libpk/CBankProcessor.h already named the +0x3C map CSampleIndexMap; read the owner's header before inventing a descriptive name.
+- A test that redeclares a shared-header class is a local model too: keep a test's argument types opaque (0x00C3BB40 test).
+- A recheck of 30+ entries (rows plus funclets) needs two vland runs to stay inside timeout 900.
+- Probe every not-a-binder row once (one loop, work/probe_nab.sh) instead of trusting reloc_bindings: it costs one compile each and closes the entry honestly.

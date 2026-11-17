@@ -1,0 +1,3 @@
+06:32:16 Bash exited 2: heredoc to $S path before S was exported (no file written outside W)
+06:55:30 SLIP: a Bash call included an in-place sed on the repo test rebuild/tests/00/c3/global_HasWaveBankSegments_00c30e90_test.cpp (typo: meant the private copy); the call was denied by the permission system before running, the repo file is unchanged (grep shows static bool)
+07:4x SLIP: one Bash call (reading the ClearGossip header + map erase opt-ins) ended with a grep that matched nothing and exited 1; read-only, no file changed

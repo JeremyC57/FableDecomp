@@ -21,6 +21,16 @@
 //   exit acknowledgements are 4-byte records, the exit one in its own block after the loop (its slot is shared with the
 //   `new` temporary); the seek reply is posted from one statement reached by a `goto` from the success branch (VC7.1
 //   duplicates it into both paths with one register choice); the open request is copied out of the request.
+// agentNF57 (q10485): the stream's constructor is spelled as its self row now is,
+//   ??0CPKDecompressedStream@@QAE@PAVPKCFileManager@@PBGABUPKCBufferedReaderParams@@@Z: the opener is libpk/PKCFileManager.h's
+//   PKCFileManager (its slot 0 Open(const unsigned short*) receives the request's name), the segment libpk's PKCBufferedReaderParams
+//   (libpk/IAudioStream.h, the CreateDecoderStream argument the ctor forwards). So the request's name is a wide string (Get
+//   0x00C168A0 returns const unsigned short*). Was IStreamOpener_00c62920 / const char* / SStreamSegment.
+#define FABLE_RETAIL_LIBPK_DECODER_FACTORY_PASS23
+#include "libpk/IAudioStream.h"
+#define FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
+#include "libpk/PKCFileManager.h"
+
 void* __cdecl operator new(unsigned int size);              // 0x00BFEA1A
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
@@ -29,12 +39,9 @@ struct CIntelligentPointer_00c16900 {                       // 8 bytes
     void* m_p4;
     CIntelligentPointer_00c16900(const CIntelligentPointer_00c16900& other);   // 0x00C16900
     ~CIntelligentPointer_00c16900();                        // 0x00C167C0
-    const char* Get() const;                                // 0x00C168A0
+    const unsigned short* Get() const;                      // 0x00C168A0
 };
 
-struct SStreamSegment { unsigned long m_word0, m_word4, m_word8; };
-
-class IStreamOpener_00c62920;
 class C16BitSamplePtr { public:
     short* m_pSamples;
     long   m_channels;
@@ -49,7 +56,7 @@ struct CCodaFrame {
 };
 class CPKDecompressedStream { public:                      // 0x14 bytes
     unsigned char _body[0x14];
-    CPKDecompressedStream(IStreamOpener_00c62920* opener, const char* name, const SStreamSegment& segment);   // 0x00C62920
+    CPKDecompressedStream(PKCFileManager* opener, const unsigned short* name, const PKCBufferedReaderParams& segment);   // 0x00C62920
     ~CPKDecompressedStream();                               // 0x00C62750
     long Seek(long mode, float amount, long userData);      // 0x00C626A0
     long GetPosition();                                     // 0x00C62780
@@ -67,8 +74,8 @@ struct CMailboxQueue_00c48be0 { long ProcessMessage_CMailboxQueue_00c48be0(void*
 struct CMailboxQueue_00c48c80 { long ProcessMessage(void* message); };                          // 0x00C48C80
 
 struct SOpenArgs {                                          // the request viewed from +4
-    IStreamOpener_00c62920*      m_opener;                 // +0x00
-    SStreamSegment               m_segment;                 // +0x04
+    PKCFileManager*              m_opener;                 // +0x00
+    PKCBufferedReaderParams      m_segment;                 // +0x04
     CIntelligentPointer_00c16900 m_name;                    // +0x10
     CMailboxQueue_00c48be0*      m_reply;                   // +0x18
 };

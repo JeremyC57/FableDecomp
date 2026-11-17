@@ -45,9 +45,24 @@ public:
     };
     CEngineScreenEffectRadialBlurRenderer(const CEngineInit&); // 0x00B5C460 ??0CEngineScreenEffectRadialBlurRenderer@@QAE@ABVCEngineInit@@@Z
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_SETDEFAULTPARAMS
+    // NF57 opt-in (row 0x00B5C460, the constructor's last call): Ego_r.pdb 0x00A0DD80 / FableWin.pdb 0x02D1C070
+    // ?SetDefaultParams@CEngineScreenEffectRadialBlurRenderer@@QAEXXZ, out of line at 0x00B5BBC0 (it stores the CurrentParameters defaults).
+    void SetDefaultParams();
+#endif
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_SETEFFECTQUALITY
+    // NF57 opt-in (row 0x00B5BFD0): Ego_r.pdb 0x00A0E040 / FableWin.pdb ?SetEffectQuality@CEngineScreenEffectRadialBlurRenderer@@UAE_NABVCEngineVideoOptionsDef@@@Z;
+    // retail vtable 0x012A2658 slot 13, the first slot after CEngineComponent's thirteen. No layout change.
+    virtual bool SetEffectQuality(const class CEngineVideoOptionsDef& options);
+#endif
 private:
     void ApplyRadialBlur();                                  // 0x00B5E0F0 ?ApplyRadialBlur@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ
     void ShowBlurTexture();                                  // 0x00B5E700 ?ShowBlurTexture@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_INITIALISETEXTURES
+    // NF57 opt-in (q10421, row 0x00B5BF10): Ego_r.pdb 0x00A0DF80 / FableWin.pdb 0x02D1C750
+    // ?InitialiseTextures@CEngineScreenEffectRadialBlurRenderer@@AAE_NXZ (private; retail order InitialiseTextures, SetEffectQuality = PDB order).
+    bool InitialiseTextures();                               // 0x00B5BF10
+#endif
 #ifdef FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_CAPTUREBACKBUFFER
     // Retail opt-in (wfE6, row 0x00B5CA70; acctB draft): Ego_r.pdb 0x00A0E550 / FableWin.pdb 0x02D1E360 ?CaptureBackBuffer@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ (private).
     void CaptureBackBuffer();                                // 0x00B5CA70

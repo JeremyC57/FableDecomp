@@ -1,5 +1,5 @@
 // CEngineScreenEffectDisplacementRenderer::InitialiseTextures() -- (re)allocate the effect's dynamic texture page and its 256x256 displacement texture (pixel format 0x15) from the engine's GPU scratch texture manager; true when the texture was allocated
-// Leaf: ?InitialiseTextures@CEngineScreenEffectDisplacementRenderer_Init@@QAE_NXZ
+// Leaf: ?InitialiseTextures@CEngineScreenEffectDisplacementRenderer@@AAE_NXZ
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B86A70, length 141 bytes (+ int3 padding).
@@ -18,27 +18,27 @@
 //   AllocteMemoryPage(long, bool) (sic) / AllocateTexture(long, const C2DExtentsI&, long, const CPixelFormat&, unsigned long, bool)), the local
 //   CPixelFormat, C2DCoordI (the PDB parameter is C2DExtentsI) and _D3DFORMAT moved to their headers (FABLE_RETAIL_CPIXELFORMAT). The derived
 //   _Init shell (self) is unchanged: the PDB self is ?InitialiseTextures@CEngineScreenEffectDisplacementRenderer@@AAE_NXZ (name debt, NOTES.md).
+// agentNF57 (q10423): defined as the class's own private member, Ego_r.pdb / FableWin.pdb ?InitialiseTextures@CEngineScreenEffectDisplacementRenderer@@AAE_NXZ
+//   (retail order InitialiseTextures then SetEffectQuality = the PDB order), on the header's retail _MEMBERS branch (new overlay opt-in FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_INITIALISETEXTURES).
+//   Was the derived shell CEngineScreenEffectDisplacementRenderer_Init (?InitialiseTextures@CEngineScreenEffectDisplacementRenderer_Init@@QAE_NXZ).
 #define FABLE_RETAIL_CPIXELFORMAT
 #define FABLE_RETAIL_CENGINERESOURCEMANAGER
 #define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_TEXTURES
 #define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_MEMBERS
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_INITIALISETEXTURES
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 #include "engine/CPixelFormat.h"
 #include "engine/C2DExtentsI.h"
 #include "engine/CEngineResourceManager.h"
 #include "engine/CGPUScratchBufferTextureManager.h"
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
-struct CEngineScreenEffectDisplacementRenderer_Init : CEngineScreenEffectDisplacementRenderer {
-    void FreeTexturePage()
-    {
-        if (DynamicTexturePageHandle >= 0)
-            NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle);
-    }
-    bool InitialiseTextures();
-};
-bool CEngineScreenEffectDisplacementRenderer_Init::InitialiseTextures()
+
+bool CEngineScreenEffectDisplacementRenderer::InitialiseTextures()
 {
-    FreeTexturePage();
+    if (DynamicTexturePageHandle >= 0)
+        NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle);
     CGPUScratchBufferTextureManager* textures = &NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager();
     DynamicTexturePageHandle = textures->AllocteMemoryPage(0, false);
     CPixelFormat format(D3DFMT_A8R8G8B8);

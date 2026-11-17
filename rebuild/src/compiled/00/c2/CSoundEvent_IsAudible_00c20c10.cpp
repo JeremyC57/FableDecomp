@@ -1,5 +1,5 @@
-// CSoundEvent::IsAudible(CSoundEventManager* manager) -- 1 when the event's current level (from its active player or its own record) is muted-flagged or below full gain, else 0
-// Leaf: IsAudible
+// CSoundEvent::IsAudible(CSoundEventManager* manager) -- true when the event's current level (from its active player or its own record) is muted-flagged or below full gain, else 0
+// Leaf: ?IsAudible@CSoundEvent@@QAE_NPAUCSoundEventManager@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C20C10, 60 bytes (`ret 4`). Descriptive names (no PDB or RTTI covers libpk): the
 //   manifest's "InputEvent_ValidateForContext" is propagated. Class: the 0xB4-byte sound event of the libpk audio library (vtable 0x012B3674,
 //   state word +0xAC; chunk 433 names it CSoundEvent and its owner, passed to every method, CSoundEventManager).
@@ -13,6 +13,9 @@
 // Callees: GetLevel @ 0x00C20BE0 (thiscall: manager, &level), the constant 1.0f @ 0x0122DED8.
 // Shape: no CheckState call; the 8-byte level is a frame local (`sub esp,8 ; lea eax,[esp]`), the mute word is tested
 //   as an integer first, then `fcomp ; test ah,5 ; jnp` for gain < 1.0f.
+// agentNF57 (q10493): returns bool, as the landed callers (0x00C11230 / 0x00C11CB0 / 0x00C11F50 all test al and bind the _N
+//   spelling) and libpk/CSoundEventGroup.h (`bool IsAudible(CSoundEventManager*)`) declare it. The retail `mov eax,1` / `xor eax,eax`
+//   is the materialised value of the returned `||` expression (an if/return-true form gives `mov al,1`, 57 bytes). Was `long`.
 struct CSoundEventManager;
 struct CSoundEvent;
 
@@ -110,15 +113,13 @@ struct CSoundEvent {                        // 0xB4 bytes, vtable 0x012B3674 (no
     unsigned char _padb1[3];
     void CheckState(long expected);         // 0x00C20720
     void GetLevel(CSoundEventManager* manager, SEventLevel* level);   // 0x00C20BE0
-    long IsAudible(CSoundEventManager* manager);
+    bool IsAudible(CSoundEventManager* manager);
 };
 #pragma auto_inline(on)
 
-long CSoundEvent::IsAudible(CSoundEventManager* manager)
+bool CSoundEvent::IsAudible(CSoundEventManager* manager)
 {
     SEventLevel level;
     GetLevel(manager, &level);
-    if (level.m_muted != 0 || level.m_gain < 1.0f)
-        return 1;
-    return 0;
+    return level.m_muted != 0 || level.m_gain < 1.0f;
 }

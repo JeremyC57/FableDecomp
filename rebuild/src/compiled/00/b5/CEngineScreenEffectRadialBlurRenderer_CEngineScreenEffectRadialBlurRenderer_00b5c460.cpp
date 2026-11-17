@@ -1,5 +1,5 @@
 // CEngineScreenEffectRadialBlurRenderer::CEngineScreenEffectRadialBlurRenderer(const CEngineInit& init) -- constructs the radial blur screen effect: supported only when the init flags carry 0x80 (otherwise the component is disabled); when supported, looks up the copy / blur / texture shaders, creates the textures and fills the four screen quads; then enables the environment parameters and resets them
-// Leaf: ??0CEngineScreenEffectRadialBlurRenderer
+// Leaf: ??0CEngineScreenEffectRadialBlurRenderer@@QAE@ABVCEngineInit@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B5C460, length 1552 bytes (`ret 4`, no EH frame).
 // Label correction: catalogued "CEnginePrimitiveManagerText::CEnginePrimitiveManagerText" (propagated); the body calls the
@@ -16,6 +16,11 @@
 // CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
 // ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
 // GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+// agentNF57 (q10421): the local CEngineScreenEffectRadialBlurRenderer / CEngineInit / CTVertexColTex1 / C2DVector / CParameters models
+//   replaced by the header's retail _MEMBERS branch (+ overlay opt-ins _INITIALISETEXTURES and _SETDEFAULTPARAMS) and engine/CEngineInit.h
+//   (InitFlags +0x60). InitialiseTextures 0x00B5BF10 now binds the private PDB spelling, and the last call 0x00B5BBC0 is Ego_r.pdb
+//   0x00A0DD80 / FableWin.pdb 0x02D1C070 ?SetDefaultParams@CEngineScreenEffectRadialBlurRenderer@@QAEXXZ (its body stores the
+//   CurrentParameters defaults; was the unproven ResetParameters).
 #define FABLE_RETAIL_CENGINECOMPONENT_PROTECTED
 #define FABLE_RETAIL_CENGINERESOURCEMANAGER
 #define FABLE_RETAIL_CCHARSTRING
@@ -27,67 +32,16 @@
 #include "engine/CShaderResource.h"
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
-class CEngineInit { public:
-    unsigned char _pad00[0x60];
-    unsigned long Flags;                           // +0x60
-};
-
-
-class CTVertexColTex1 { public:                           // 0x18 bytes
-    float         X, Y, Z;
-    unsigned long DiffuseColour;
-    float         U1, V1;
-    void Set(float x, float y, float z, unsigned long colour, float u, float v)
-    {
-        X = x; Y = y; Z = z; DiffuseColour = colour; U1 = u; V1 = v;
-    }
-};
-
-class CTexture;
-class C2DVector { public: float X, Y; };
-#include "engine/C3DVector.h"
-struct CRadialBlurParameters {                     // CEngineScreenEffectRadialBlurRenderer::CParameters, 0x28 bytes
-    float ThresholdR, ThresholdG, ThresholdB;
-    float IntensityR, IntensityG, IntensityB;
-    float Length, Fade, Range, Twist;
-};
-
-class CEngineScreenEffectRadialBlurRenderer : public CEngineComponent { public:   // vtable 0x012A2658, 0x22c bytes
-    CTexture*       BlurTexture256_1;              // +0x0c
-    CTexture*       BlurTexture256_2;              // +0x10
-    long            BlurTextureHandle256_1;        // +0x14
-    long            BlurTextureHandle256_2;        // +0x18
-    long            DynamicTexturePageHandle;      // +0x1c
-    CVertexShader   ScreenCopyVertexShader;        // +0x20
-    CVertexShader   RadialBlurVertexShader;        // +0x28
-    CPixelShader    ScreenCopyPixelShader;         // +0x30
-    CPixelShader    RadialBlurPixelShader;         // +0x38
-    CPixelShader    TextureOnlyPixelShader;        // +0x40
-    CPixelShader    TextureDiffusePixelShader;     // +0x48
-    CTVertexColTex1 BackBufferToTextureVerts[4];   // +0x50
-    CTVertexColTex1 Blur256ToBlur256Verts[4];      // +0xb0
-    CTVertexColTex1 TextureToBackBufferVerts[4];   // +0x110
-    C2DVector       BlurCenter;                    // +0x170
-    C2DVector       AreaCenter;                    // +0x178
-    C3DVector       BlurCenterWorldTrackPosition;  // +0x180
-    C3DVector       AreaCenterWorldTrackPosition;  // +0x18c
-    CRadialBlurParameters CurrentParameters;       // +0x198
-    bool            AreaTrack3DPos;                // +0x1c0
-    bool            BlurTrack3DPos;                // +0x1c1
-    long            ShowDebug;                     // +0x1c4
-    bool            EffectSupported;               // +0x1c8
-    bool            UseEnvironmentParameters;      // +0x1c9
-    CTVertexColTex1 BlurToBackBufferVerts[4];      // +0x1cc
-
-    CEngineScreenEffectRadialBlurRenderer(const CEngineInit& init);
-    virtual ~CEngineScreenEffectRadialBlurRenderer();
-    bool InitialiseTextures();                     // 0x00B5BF10
-    void ResetParameters();                        // 0x00B5BBC0
-};
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_MEMBERS
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_INITIALISETEXTURES
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_SETDEFAULTPARAMS
+#include "engine/CEngineInit.h"
+#include "engine/CEngineScreenEffectRadialBlurRenderer.h"
 
 CEngineScreenEffectRadialBlurRenderer::CEngineScreenEffectRadialBlurRenderer(const CEngineInit& init)
 {
-    if (init.Flags & 0x80) {
+    if (init.InitFlags & 0x80) {
         EffectSupported = true;
     } else {
         EffectSupported = false;
@@ -197,5 +151,5 @@ CEngineScreenEffectRadialBlurRenderer::CEngineScreenEffectRadialBlurRenderer(con
         }
     }
     UseEnvironmentParameters = true;
-    ResetParameters();
+    SetDefaultParams();
 }

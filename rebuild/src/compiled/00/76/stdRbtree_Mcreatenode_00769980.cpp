@@ -1,5 +1,5 @@
 // std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::_M_create_node(const value_type& x) -- allocate a 0x20-byte tree node and copy-construct the (augmentation type, sound set) pair into it
-// Leaf: ?_M_create_node@
+// Leaf: ?_M_create_node@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@@2@ABU?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00769980, 62 bytes (+int3 pad to 64), `ret 4` (thiscall; `this` is never read).
 // Caller: 0x0076A110 _M_insert (its right-hand branch; the left-hand branch carries an inlined copy).
 // Callees: malloc 0x00BFEA0E (STLport's malloc allocator, n = 1 folded into `push 20h`), CCharString copy
@@ -10,39 +10,21 @@
 // Shape: STLport `_M_create_node`: allocate, then `_Construct(&tmp->_M_value_field, x)` (placement new, null-tested);
 //   the pair's user copy constructor copies the key, then the sound set's implicit memberwise copy (byte, string
 //   copy, dword). The node is returned in eax.
-extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
-// NF50 (round 7): std::pair / _Rb_tree_node_base / _Rb_tree_node come from the shared stlport/fable_map.h (the local std block
-// is gone), in step with its caller _M_insert 0x0076A110: the pair class key is the header's `struct` (U?$pair, was V?$pair) in
-// this row's own leaf and in the 0x0076A110 call. CSoundSetTree stays a stand-in (see NF50 NOTES).
+// agentNF57 (q10438): an explicit instantiation of the STLport tree member on stlport/fable_map.h (FABLE_RETAIL_STLP_MAP), the element the
+//   shared engine/EObjectAugmentationType.h / engine/CObjectAugmentationSoundSet.h (Ego_r.pdb CTCObjectAugmentations::InitSounds /
+//   LoopingSounds map<EObjectAugmentationType, CObjectAugmentationSoundSet>); descriptive-by-library (retail is STLport 4.6, both PDBs
+//   are Dinkumware builds). The sound set is copied inline, memberwise (new overlay opt-in
+//   FABLE_RETAIL_COBJECTAUGMENTATIONSOUNDSET_IMPLICIT_COPY drops the out-of-line copy-constructor declaration). Was the CSoundSetTree
+//   stand-in class with local CCharString / CObjectAugmentationSoundSet models.
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_COBJECTAUGMENTATIONSOUNDSET_IMPLICIT_COPY
+#include "fable_string.h"
 #include "stlport/fable_map.h"
+#include "engine/EObjectAugmentationType.h"
+#include "engine/CObjectAugmentationSoundSet.h"
 
-enum EObjectAugmentationType { OBJECT_AUGMENTATION_TYPE_NONE };
-
-class CCharString {
-public:
-    void* PStringData;                                      // +0x00
-    CCharString(const CCharString& other);                  // 0x0099EC30
-};
-
-class CObjectAugmentationSoundSet { public:                        // Ego_r.pdb, 12 bytes
-    bool          Played;                                   // +0x00
-    CCharString   Sound;                                    // +0x04
-    unsigned long Handle;                                   // +0x08
-};
-
-
-typedef std::pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> SSoundSetValue;   // 0x10 bytes
-typedef std::_Rb_tree_node<SSoundSetValue> SSoundSetNode;                                          // 0x20 bytes
-
-struct CSoundSetTree {                                      // _Rb_tree<EObjectAugmentationType, SSoundSetValue, ...>
-    std::_Rb_tree_node_base* _M_header;                    // +0x00
-    unsigned long             _M_node_count;                // +0x04
-    SSoundSetNode* _M_create_node(const SSoundSetValue& __x);
-};
-
-SSoundSetNode* CSoundSetTree::_M_create_node(const SSoundSetValue& __x)
-{
-    SSoundSetNode* __tmp = (SSoundSetNode*)malloc(sizeof(SSoundSetNode));
-    new (&__tmp->_M_value_field) SSoundSetValue(__x);
-    return __tmp;
-}
+typedef std::pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> SSoundSetValue;
+typedef std::_Rb_tree<EObjectAugmentationType, SSoundSetValue, std::_Select1st<SSoundSetValue>, std::less<EObjectAugmentationType>,
+                      std::allocator<SSoundSetValue> > CSoundSetTree;
+template std::_Rb_tree_node<SSoundSetValue>* CSoundSetTree::_M_create_node(const SSoundSetValue&);

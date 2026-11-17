@@ -15,6 +15,11 @@ public:
  static CFrontEndManager* __fastcall GetInstance();
  virtual void ProcessEvent(EEvent);
  void CloseVirtualKeyboard(bool);
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_GOTOPREVIOUSSCREEN
+ // NF57 opt-in (q10440, row 0x00594FA9 CloseVirtualKeyboard): Ego_r.pdb 0x006043E7 / FableWin.pdb 0x02010F48
+ // ?GotoPreviousScreen@CFrontEndManager@NUISystem@@QAEX_N@Z, out of line at 0x00597BF2. Declaration only.
+ void GotoPreviousScreen(bool);                                                                         // 0x00597BF2
+#endif
 #ifdef FABLE_RETAIL_CFRONTENDMANAGER_SAVEDGAMES
  // Opt-in (chunk 2003, row 0x00598463 RefreshAvailableSavedGamesForProfile): Ego_r.pdb / FableWin.pdb spellings of the members that
  // row calls, all out of line in retail (reloc_bindings.tsv; the Ego_r donor order GetProfileNames, ConstructFileDescription, ...,

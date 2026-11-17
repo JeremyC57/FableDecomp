@@ -1,0 +1,50 @@
+addr       parity           behav  name
+00594fa9   RELOCATION_MATCH PASS   CloseVirtualKeyboard
+0076a110   RELOCATION_MATCH PASS   _M_insert
+008aa050   RELOCATION_MATCH PASS   RemoveGossip
+00ad1650   MATCH            PASS   COptimisedPrimitive> *>
+00b444f0   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b444f0   RELOCATION_MATCH PASS   UpdateShadowScene
+00b5c460   WARN RELOC_NAME: ?SetDefaultParams@CEngineScreenEffectRadialBlurRenderer@@QAEXXZ -> 00b5bbc0 labelled 'SetShadowClipVolumesToNeverShadow'
+00b5c460   RELOCATION_MATCH PASS   CEngineScreenEffectRadialBlurRenderer
+00b7c510   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b7c510   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b7c510   RELOCATION_MATCH PASS   SetupSeaBackgroundShaderConstantsAndFog
+00c1d950   WARN RELOC_NAME: ?GetCurrentFrame@CScriptModuleTimer@@QAEKXZ -> 00c1d810 labelled 'NCameraModes::CScriptModuleSelfTerminateBase::IsFinished'
+00c1d950   RELOCATION_MATCH PASS   DispatchTimes
+00c30f60   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c30f60   WARN RELOC_NAME: ??1CSegmentFile@@QAE@XZ -> 00c2dbe0 labelled '_global::TeleportData_Destructor_WithUnwind'
+00c30f60   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c30f60   WARN RELOC_NAME: ?GetPosition@CSegmentFile@@QAEKXZ -> 00c2da10 labelled 'CGameScriptThing::GetPThingUniqueID'
+00c30f60   RELOCATION_MATCH PASS   ReadBankData
+00c3bb40   MATCH            PASS   CAudioBankTableReader
+00c62920   WARN RELOC_NAME: ??0CTestToneAudioStream@@QAE@M@Z -> 00c73ef0 labelled 'CVtable_012bf014::CVtable_012bf014'
+00c62920   RELOCATION_MATCH PASS   CPKDecompressedStream
+00f07b80   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00f07b80   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00f07b80   WARN SHARED_HEADER_AVAILABLE CTimer
+00f07b80   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00f07b80   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00f07b80   RELOCATION_MATCH PASS   WatchForBanditSpeechMarkers
+0122ae7e   RELOCATION_MATCH PASS   `dynamic atexit destructor for 'pGlobalScriptDef''
+0121406c   RELOCATION_MATCH PASS   Unwind@0121406c
+01215918   RELOCATION_MATCH PASS   Unwind@01215918
+01216442   RELOCATION_MATCH PASS   Unwind@01216442
+
+WINS: 16
+  00594fa9 RELOCATION_MATCH NUISystem::CFrontEndManager::?CloseVirtualKeyboard@CFrontEndManager@NUISystem@@QAEX_N@Z
+  0076a110 RELOCATION_MATCH std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::?_M_insert@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@2@0@Z
+  008aa050 RELOCATION_MATCH CGameScriptInterface::?RemoveGossip@CGameScriptInterface@@UAEXVCCharString@@@Z
+  00ad1650 MATCH std::??$__uninitialized_copy@PAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@PAV1@@std@@YIPAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@PAV1@00ABU__false_type@0@@Z
+  00b444f0 RELOCATION_MATCH CEngineLightingManager::?UpdateShadowScene@CEngineLightingManager@@QAEXABVCEngineCamera@@@Z
+  00b5c460 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::??0CEngineScreenEffectRadialBlurRenderer@@QAE@ABVCEngineInit@@@Z
+  00b7c510 RELOCATION_MATCH CEngineWaterRenderer::?SetupSeaBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ
+  00c1d950 RELOCATION_MATCH CScriptModuleTimer::?DispatchTimes@CScriptModuleTimer@@UAEJPAX@Z
+  00c30f60 RELOCATION_MATCH _global::?ReadBankData@@YIXPAXPAUCBankData@@KPAVCLoadLog@@@Z
+  00c3bb40 MATCH CAudioBankTableReader::??0CAudioBankTableReader@@QAE@PAVCSegmentFile@@@Z
+  00c62920 RELOCATION_MATCH CPKDecompressedStream::??0CPKDecompressedStream@@QAE@PAVPKCFileManager@@PBGABUPKCBufferedReaderParams@@@Z
+  00f07b80 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::WatchForBanditSpeechMarkers
+  0122ae7e RELOCATION_MATCH _global::_$E2
+  0121406c RELOCATION_MATCH _global::Unwind@0121406c
+  01215918 RELOCATION_MATCH _global::Unwind@01215918
+  01216442 RELOCATION_MATCH _global::Unwind@01216442

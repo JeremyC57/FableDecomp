@@ -71,7 +71,11 @@ struct CEventTriggerRef{
 // NativeCtorC2E0C0 and independentLoadC2EB00: data0/manager4/log8,
 // driverMapc/sampleMap3c/registries6c,70/options74..7a. No invented inheritance.
 #ifdef FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
+#ifdef FABLE_RETAIL_CSAMPLEINDEXMAP_ADD
+struct SSampleIndexNode{void*m_pValue;unsigned long m_index;SSampleIndexNode(void*,unsigned long);}; // 8 bytes; ctor 0x00C3B0C0
+#else
 struct SSampleIndexNode;
+#endif
 class CSampleIndexMap:public PKCTRList<SSampleIndexNode>{public:
  CSampleIndexMap();virtual ~CSampleIndexMap();
  virtual int IsEqual(const void*,const void*)const;
@@ -80,6 +84,10 @@ class CSampleIndexMap:public PKCTRList<SSampleIndexNode>{public:
  virtual int IsKeyLess(const void*,const void*)const;
  virtual void TransferAllFrom(PKCTRList<SSampleIndexNode>*);
  virtual SSampleIndexNode*FindByKey(const unsigned long&);
+#ifdef FABLE_RETAIL_CSAMPLEINDEXMAP_ADD
+ using PKCTRList<SSampleIndexNode>::Add;
+ void Add(CLoadLog*,void*,unsigned long); // 0x00C3B0E0: log a duplicate index, else Add(new SSampleIndexNode)
+#endif
  PKCTRRedblackTree Tree;
 };
 #endif

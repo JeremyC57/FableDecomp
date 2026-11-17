@@ -1,5 +1,5 @@
-// CAudioStreamOwner_00c62920::CAudioStreamOwner_00c62920(IStreamOpener_00c62920* opener, const unsigned short* name, const PKCBufferedReaderParams& segment) -- the 0x14-byte owner of a sound's decoded stream: no source, no stream, position -1, not finished; with the test-tone switch set it owns a new tone stream (constructed with 800.0f) instead; otherwise it opens the named source through the opener (slot 0) and, when that succeeds, aligns the segment start up to the source's block size (slot 2) and creates the matching decoder stream for the name (0x00C73AF0)
-// Leaf: ??0CAudioStreamOwner_00c62920@@QAE@PAVIStreamOpener_00c62920@@PBGABUPKCBufferedReaderParams@@@Z
+// CPKDecompressedStream::CPKDecompressedStream(PKCFileManager* opener, const unsigned short* name, const PKCBufferedReaderParams& segment) -- the 0x14-byte owner of a sound's decoded stream: no source, no stream, position -1, not finished; with the test-tone switch set it owns a new tone stream (constructed with 800.0f) instead; otherwise it opens the named source through the opener (slot 0) and, when that succeeds, aligns the segment start up to the source's block size (slot 2) and creates the matching decoder stream for the name (0x00C73AF0)
+// Leaf: ??0CPKDecompressedStream@@QAE@PAVPKCFileManager@@PBGABUPKCBufferedReaderParams@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C62920, 256 bytes, thiscall `ret 0Ch`, returns `this`; EH frame (state 0 around the tone
 //   stream's constructor after the scalar operator new 0x00BFEA1A of 0x10 bytes). The segment copy is a frame local.
@@ -17,18 +17,14 @@
 //   CreateDecoderStream_00c73af0 stand-ins (same bytes).
 #define FABLE_RETAIL_LIBPK_DECODER_FACTORY_PASS23
 #include "libpk/IAudioStream.h"
-
-class IStreamSource_00c62920 {              // an opened file source
-public:
-    virtual void v00();
-    virtual void v01();
-    virtual unsigned long GetBlockSize();   // slot 2 (+0x08)
-};
-
-class IStreamOpener_00c62920 {              // opens a named source
-public:
-    virtual IStreamSource_00c62920* Open(const unsigned short* name);   // slot 0
-};
+// agentNF57 (q10485): the class is the landed descriptive CPKDecompressedStream (dtor 0x00C62750, Seek 0x00C626A0, Read 0x00C62790):
+//   the same 0x14-byte object (source +0, stream +4, position +8, +0x0C, flag +0x10), and the only caller 0x00C47F10 builds it with
+//   `new` 0x14 here and destroys it with 0x00C62750. The opener is libpk/PKCFileManager.h's PKCFileManager (slot 0
+//   Open(const unsigned short*) returning the CAudioFile source) and the source libpk/CAudioFile.h's CAudioFile (slot 2
+//   GetUnitSize = the alignment read here; slot 3 Close = what the dtor calls). Was CAudioStreamOwner_00c62920 /
+//   IStreamOpener_00c62920 / IStreamSource_00c62920 placeholders.
+#define FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
+#include "libpk/PKCFileManager.h"
 
 
 inline unsigned long AlignUp_00c62920(unsigned long value, unsigned long alignment)
@@ -38,17 +34,17 @@ inline unsigned long AlignUp_00c62920(unsigned long value, unsigned long alignme
 
 extern bool g_useTestToneStream;            // 0x0143C5B8
 
-class CAudioStreamOwner_00c62920 {          // 0x14 bytes
+class CPKDecompressedStream {               // 0x14 bytes
 public:
-    CAudioStreamOwner_00c62920(IStreamOpener_00c62920* opener, const unsigned short* name, const PKCBufferedReaderParams& segment);
-    IStreamSource_00c62920* m_source;       // +0x00
+    CPKDecompressedStream(PKCFileManager* opener, const unsigned short* name, const PKCBufferedReaderParams& segment);
+    CAudioFile*             m_source;       // +0x00
     IAudioStream*           m_stream;       // +0x04
     long                    m_position;     // +0x08 (-1)
     long                    m_0c;           // +0x0c
     bool                    m_finished;     // +0x10
 };
 
-CAudioStreamOwner_00c62920::CAudioStreamOwner_00c62920(IStreamOpener_00c62920* opener, const unsigned short* name, const PKCBufferedReaderParams& segment)
+CPKDecompressedStream::CPKDecompressedStream(PKCFileManager* opener, const unsigned short* name, const PKCBufferedReaderParams& segment)
     : m_source(0), m_stream(0), m_position(-1), m_finished(false)
 {
     if (g_useTestToneStream) {
@@ -58,7 +54,7 @@ CAudioStreamOwner_00c62920::CAudioStreamOwner_00c62920(IStreamOpener_00c62920* o
     m_source = opener->Open(name);
     if (m_source) {
         PKCBufferedReaderParams aligned = segment;
-        aligned.Granularity = AlignUp_00c62920(aligned.Granularity, m_source->GetBlockSize());
+        aligned.Granularity = AlignUp_00c62920(aligned.Granularity, m_source->GetUnitSize());
         m_stream = CreateDecoderStream(m_source, name, aligned);
     }
 }

@@ -13,6 +13,10 @@
 //   Load 0x00C3BB50 and LoadCriteria 0x00C3BCB0 (one object serves all three calls); the three one-slot record readers
 //   CWaveDataReader (vtable 0x012B4D3C), 0x012B4D34 and CSampleTableReader_012b4d40 (0x012B4D40); CLoadLog::AddError
 //   0x00C30840 / IsOk 0x00C307C0; CString(const char*) 0x00C0BFE0, ~CString 0x00C0BA40, operator<< 0x00C0DEC0 / 0x00C0DF00.
+// agentNF57 names (descriptive, libpk has no PDB or RTTI; NOTES.md): the 0x012B4D34 reader is CBankSampleRecordReader (it copies each
+//   "LHAudioBankSampleTable" record into the bank's sample map, OnRecord 0x00C313C0; was the placeholder CUnprovenRecordReader_012b4d34);
+//   the table reader wrapper is CAudioBankTableReader (ctor 0x00C3BB40 stores the segment file; Load 0x00C3BB50 walks the
+//   "LHAudioBankSampleTable" segment, LoadCriteria 0x00C3BCB0 the "LHAudioBankCriteiaInfo" one; was AudioBankTableReader_00c3bb50).
 // Shape: the first two record readers are temporaries (they share one frame slot, the wave reader's third word, the
 //   segment position, stored before the wrapper is built); the criteria reader is a named local declared just before its
 //   call (its own slot above the temporaries, its stores sunk to the call); the final `if (!log->IsOk()) return;` leaves
@@ -40,9 +44,9 @@ struct CWaveDataReader : Callback {                     // vtable 0x012B4D3C
     CWaveDataReader(CBankData* data, unsigned long position) : m_pData(data), m_position(position) { }
     virtual void OnRecord(CLoadLog* log, const void* record);
 };
-struct CUnprovenRecordReader_012b4d34 : Callback {      // vtable 0x012B4D34
+struct CBankSampleRecordReader : Callback {      // vtable 0x012B4D34
     CBankData* m_pData;
-    CUnprovenRecordReader_012b4d34(CBankData* data) : m_pData(data) { }
+    CBankSampleRecordReader(CBankData* data) : m_pData(data) { }
     virtual void OnRecord(CLoadLog* log, const void* record);
 };
 struct CSampleTableReader_012b4d40 : CriteriaCallback { // vtable 0x012B4D40
@@ -50,9 +54,9 @@ struct CSampleTableReader_012b4d40 : CriteriaCallback { // vtable 0x012B4D40
     CSampleTableReader_012b4d40(CBankData* data) : m_pData(data) { }
     virtual void OnRecord(void* context, const char* name, unsigned long count, const unsigned long* values);
 };
-struct AudioBankTableReader_00c3bb50 {
+struct CAudioBankTableReader {
     CSegmentFile* reader;
-    AudioBankTableReader_00c3bb50(CSegmentFile* file);  // 0x00C3BB40
+    CAudioBankTableReader(CSegmentFile* file);  // 0x00C3BB40
     void Load(CLoadLog* log, Callback* callback);       // 0x00C3BB50
     void LoadCriteria(CLoadLog* log, CriteriaCallback* callback);   // 0x00C3BCB0
 };
@@ -82,11 +86,11 @@ void __fastcall ReadBankData(void* file, CBankData* data, unsigned long chunk, C
         return;
     }
     unsigned long position = reader.GetPosition();
-    AudioBankTableReader_00c3bb50 tables(&reader);
+    CAudioBankTableReader tables(&reader);
     tables.Load(log, &CWaveDataReader(data, position));
     if (!log->IsOk())
         return;
-    tables.Load(log, &CUnprovenRecordReader_012b4d34(data));
+    tables.Load(log, &CBankSampleRecordReader(data));
     if (!log->IsOk())
         return;
     CSampleTableReader_012b4d40 criteria(data);

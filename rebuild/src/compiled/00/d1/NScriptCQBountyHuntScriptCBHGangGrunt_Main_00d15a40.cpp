@@ -18,13 +18,9 @@
 #include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF57: was a local stand-in; ctor 0x0099EBF0, dtor 0x0099EAE0, operator+ 0x0099F690)
 CCharString __fastcall GFIntToCharString(long value);            // 0x0099F830
-CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 void operator delete(void* p);                         // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
 class CScriptThing;
@@ -107,11 +103,9 @@ public:
 };
 }
 using NScript::CQ_BountyHuntScript;
-class CScriptDef { public:
-    unsigned char _pad[0xb20];
-    float BountyHuntBanditGruntWanderDistance;         // +0xb20
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF57: was a local CScriptDef / CScriptDef* stand-in)
 struct CQ_SunnyvaleMasterData;
 class CEntityScriptBase
 {

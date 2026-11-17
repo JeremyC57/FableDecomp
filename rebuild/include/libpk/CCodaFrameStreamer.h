@@ -47,12 +47,19 @@ public:
  CCodaFrame** m_pSlots;
  long m_count,m_tail;
  void Push(CCodaFrame* frame);
+#ifdef FABLE_RETAIL_CCODAFRAMESTREAMER_ONFRAMEDONE
+ CCodaFrame* Pop(); // 0x00C4A0E0 (guarded)
+#endif
 };
 // Layout: C49820 initializes all members, C49650 destroys the same members.
 // Seven slots at12b8138; the destructor is last, not first.
 class CCodaFrameStreamer {
 public:
  CCodaFrameStreamer(unsigned long channels,long rate,unsigned long frames,unsigned long frameSamples,float volume);
+#ifdef FABLE_RETAIL_CCODAFRAMESTREAMER_ONFRAMEDONE
+ // 0x00C497E0: the stream handle's __stdcall frame-done callback (registered by the ctor 0x00C49820, userdata = the streamer).
+ static void __stdcall OnFrameDone(void* handle,void* buffer,CCodaFrameStreamer* streamer);
+#endif
  virtual void SubmitFrame(CCodaFrame* frame);
  virtual long GetFreeFrameCount();
  virtual long GetQueuedFrameCount();

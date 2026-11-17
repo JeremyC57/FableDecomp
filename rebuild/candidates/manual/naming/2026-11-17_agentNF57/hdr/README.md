@@ -1,0 +1,19 @@
+# NF57 header overlay (round 7, follow-up entries that need a name settled)
+
+Each file is a copy of the CURRENT repo header (re-diffed against the repo just before hand-back: no `<` lines) with `#ifdef`
+opt-ins added only. Without the new macro every file is token-identical to the repo header, so no other includer changes.
+Macro names are member-specific (`FABLE_RETAIL_<CLASS>_<MEMBER>`) so they merge with NF56 / NF58 overlays.
+
+| overlay | repo header | opt-in (new) | adds | used by |
+|---|---|---|---|---|
+| libpk/CBankProcessor.h | rebuild/include/libpk/CBankProcessor.h | FABLE_RETAIL_CSAMPLEINDEXMAP_ADD | the SSampleIndexNode body (8 bytes + ctor 0x00C3B0C0) in place of its forward declaration, and CSampleIndexMap::Add(CLoadLog*, void*, unsigned long) 0x00C3B0E0 with `using PKCTRList<SSampleIndexNode>::Add` | 0x00C3B0E0 |
+| libpk/CCodaFrameStreamer.h | rebuild/include/libpk/CCodaFrameStreamer.h | FABLE_RETAIL_CCODAFRAMESTREAMER_ONFRAMEDONE | CLockedRingBuffer::Pop() 0x00C4A0E0 and the static `__stdcall` CCodaFrameStreamer::OnFrameDone(void*, void*, CCodaFrameStreamer*) 0x00C497E0 (no layout change) | 0x00C497E0 |
+| engine/CEngineScreenEffectRadialBlurRenderer.h | rebuild/include/engine/CEngineScreenEffectRadialBlurRenderer.h | FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_INITIALISETEXTURES; _SETDEFAULTPARAMS; _SETEFFECTQUALITY | private `bool InitialiseTextures()` 0x00B5BF10 (Ego_r 0x00A0DF80 / FableWin 0x02D1C750); public `void SetDefaultParams()` 0x00B5BBC0 (Ego_r 0x00A0DD80 / FableWin 0x02D1C070); `virtual bool SetEffectQuality(const CEngineVideoOptionsDef&)` 0x00B5BFD0 (retail vtable 0x012A2658 slot 13, after CEngineComponent's 13) -- all in the retail _MEMBERS branch | 0x00B5BF10, 0x00B5BFD0, 0x00B5C460 |
+| engine/CEngineScreenEffectGlowRenderer.h | rebuild/include/engine/CEngineScreenEffectGlowRenderer.h | FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER_SETEFFECTQUALITY | `virtual bool SetEffectQuality(const CEngineVideoOptionsDef&)` 0x00B5EE00 (vtable 0x012A27CC slot 13) in the retail _MEMBERS branch | 0x00B5EE00 |
+| engine/CEngineScreenEffectDisplacementRenderer.h | rebuild/include/engine/CEngineScreenEffectDisplacementRenderer.h (includes NF56's FINISHSTENCIL opt-in, now in the repo) | FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_INITIALISETEXTURES; _SETEFFECTQUALITY | private `bool InitialiseTextures()` 0x00B86A70 (Ego_r 0x00A2D5F0 / FableWin 0x02DBA070); `virtual bool SetEffectQuality(const CEngineVideoOptionsDef&)` 0x00B86B00 (vtable 0x012A3A94 slot 13) -- retail _MEMBERS branch | 0x00B86A70, 0x00B86B00 |
+| engine/CObjectAugmentationSoundSet.h | rebuild/include/engine/CObjectAugmentationSoundSet.h | FABLE_RETAIL_COBJECTAUGMENTATIONSOUNDSET_IMPLICIT_COPY (an `#ifndef` around the copy-constructor declaration) | with the macro the copy constructor is the implicit memberwise one (retail copies the set inline inside STLport _M_create_node / _M_insert) | 0x00769980, 0x0076A110 |
+| engine/CFrontEndManager.h | rebuild/include/engine/CFrontEndManager.h | FABLE_RETAIL_CFRONTENDMANAGER_GOTOPREVIOUSSCREEN | `void GotoPreviousScreen(bool)` 0x00597BF2 in the DESTRUCTOR branch (Ego_r 0x006043E7 / FableWin 0x02010F48; the spelling landed 0x0054E280 binds) | 0x00594FA9 |
+
+Existing repo opt-ins used without change: CEngineScreenEffectGlowRenderer.h _MEMBERS (private InitialiseTextures already declared), CEngineVideoOptionsDef.h FABLE_RETAIL_CENGINEVIDEOOPTIONSDEF_PASS22_FIELDS, CEngineComponent.h FABLE_RETAIL_CENGINECOMPONENT_PROTECTED,
+CTCAIScratchpad.h FABLE_RETAIL_CTCAISCRATCHPAD_GOSSIP_MAPS, fable_map.h FABLE_RETAIL_STLP_MAP / _ORIGINAL_INSERT_BODY / FABLE_RETAIL_STLP_TREE_ERASE_KEY /
+FABLE_RETAIL_STLP_TREE_ERASE, fable_containers.h FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE, PKCFileManager.h (under FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23).

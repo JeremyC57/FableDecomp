@@ -1066,9 +1066,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bc0c6'
-        Module = 'CComponent'
-        Source = '00/5b/CComponent_GetCurrentState_005bc0c6.cpp'
-        TestSource = '00/5b/CComponent_GetCurrentState_005bc0c6_test.cpp'
+        Module = 'std'
+        Source = '00/5b/std_Destroy_005bc0c6.cpp'
+        TestSource = '00/5b/std_Destroy_005bc0c6_test.cpp'
         PassPattern = 'CComponent_005bc0c6_TEST PASS'
     }
     [pscustomobject]@{
@@ -92149,9 +92149,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dfbc6'
-        Module = 'CComponent'
-        Source = '00/4d/CComponent_GetCurrentState_004dfbc6.cpp'
-        TestSource = '00/4d/CComponent_GetCurrentState_004dfbc6_test.cpp'
+        Module = 'std'
+        Source = '00/4d/std_Destroy_004dfbc6.cpp'
+        TestSource = '00/4d/std_Destroy_004dfbc6_test.cpp'
         PassPattern = 'PASS_004dfbc6'
     }
     [pscustomobject]@{
@@ -122083,9 +122083,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c3bb40'
-        Module = '_global'
-        Source = '00/c3/global_EHepilog3_00c3bb40.cpp'
-        TestSource = '00/c3/global_EHepilog3_00c3bb40_test.cpp'
+        Module = 'CAudioBankTableReader'
+        Source = '00/c3/CAudioBankTableReader_CAudioBankTableReader_00c3bb40.cpp'
+        TestSource = '00/c3/CAudioBankTableReader_CAudioBankTableReader_00c3bb40_test.cpp'
         PassPattern = 'PASS_00c3bb40'
     }
     [pscustomobject]@{
@@ -148286,9 +148286,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0121f160'
-        Module = '_static_init'
-        Source = '01/21/staticinit_gtree013bae44_0121f160.cpp'
-        TestSource = '01/21/staticinit_gtree013bae44_0121f160_test.cpp'
+        Module = 'CTCAIScratchpad'
+        Source = '01/21/CTCAIScratchpad_dynamicinitializerforGossip_0121f160.cpp'
+        TestSource = '01/21/CTCAIScratchpad_dynamicinitializerforGossip_0121f160_test.cpp'
         PassPattern = '0121f160_TEST PASS'
     }
     [pscustomobject]@{
@@ -170962,9 +170962,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad37e0'
-        Module = '_global'
-        Source = '00/ad/global_DestroyRangeCountedPointer00ad37e0_00ad37e0.cpp'
-        TestSource = '00/ad/global_DestroyRangeCountedPointer00ad37e0_00ad37e0_test.cpp'
+        Module = 'std'
+        Source = '00/ad/std_destroyaux_00ad37e0.cpp'
+        TestSource = '00/ad/std_destroyaux_00ad37e0_test.cpp'
         PassPattern = '00ad37e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -174784,9 +174784,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad1690'
-        Module = '_global'
-        Source = '00/ad/global_UninitFillNCCountedPointer00ad1690_00ad1690.cpp'
-        TestSource = '00/ad/global_UninitFillNCCountedPointer00ad1690_00ad1690_test.cpp'
+        Module = 'std'
+        Source = '00/ad/std_uninitializedfilln_00ad1690.cpp'
+        TestSource = '00/ad/std_uninitializedfilln_00ad1690_test.cpp'
         PassPattern = '00ad1690_TEST PASS'
     }
     [pscustomobject]@{
@@ -176751,9 +176751,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '01229ca0'
-        Module = '_unattributed'
-        Source = '01/22/unattributed_ListRecursiveDestroyDeleter101229ca0_01229ca0.cpp'
-        TestSource = '01/22/unattributed_ListRecursiveDestroyDeleter101229ca0_01229ca0_test.cpp'
+        Module = 'CTCAIScratchpad'
+        Source = '01/22/CTCAIScratchpad_dynamicatexitdestructorforGossip_01229ca0.cpp'
+        TestSource = '01/22/CTCAIScratchpad_dynamicatexitdestructorforGossip_01229ca0_test.cpp'
         PassPattern = '01229ca0_TEST PASS'
     }
     [pscustomobject]@{
@@ -200071,8 +200071,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00594fa9'
         Module = 'NUISystem::CFrontEndManager'
-        Source = '00/59/NUISystemCFrontEndManager_DestroyVirtualKeyboard_00594fa9.cpp'
-        TestSource = '00/59/NUISystemCFrontEndManager_DestroyVirtualKeyboard_00594fa9_test.cpp'
+        Source = '00/59/NUISystemCFrontEndManager_CloseVirtualKeyboard_00594fa9.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_CloseVirtualKeyboard_00594fa9_test.cpp'
         PassPattern = '00594fa9_TEST PASS'
     }
     [pscustomobject]@{
@@ -211662,9 +211662,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c497e0'
-        Module = 'CFrameStreamer_00c497e0'
-        Source = '00/c4/CFrameStreamer00c497e0_OnFrameDone_00c497e0.cpp'
-        TestSource = '00/c4/CFrameStreamer00c497e0_OnFrameDone_00c497e0_test.cpp'
+        Module = 'CCodaFrameStreamer'
+        Source = '00/c4/CCodaFrameStreamer_OnFrameDone_00c497e0.cpp'
+        TestSource = '00/c4/CCodaFrameStreamer_OnFrameDone_00c497e0_test.cpp'
         PassPattern = '00c497e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -239120,9 +239120,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b5ece0'
-        Module = 'CGlowRendererMethods'
-        Source = '00/b5/CGlowRendererMethods_InitialiseTextures_00b5ece0.cpp'
-        TestSource = '00/b5/CGlowRendererMethods_InitialiseTextures_00b5ece0_test.cpp'
+        Module = 'CEngineScreenEffectGlowRenderer'
+        Source = '00/b5/CEngineScreenEffectGlowRenderer_InitialiseTextures_00b5ece0.cpp'
+        TestSource = '00/b5/CEngineScreenEffectGlowRenderer_InitialiseTextures_00b5ece0_test.cpp'
         PassPattern = '00b5ece0_TEST PASS'
     }
     [pscustomobject]@{
@@ -268032,8 +268032,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b7c510'
         Module = 'CEngineWaterRenderer'
-        Source = '00/b7/CEngineWaterRenderer_SetupSeaMidgroundShaderConstantsAndFog_00b7c510.cpp'
-        TestSource = '00/b7/CEngineWaterRenderer_SetupSeaMidgroundShaderConstantsAndFog_00b7c510_test.cpp'
+        Source = '00/b7/CEngineWaterRenderer_SetupSeaBackgroundShaderConstantsAndFog_00b7c510.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_SetupSeaBackgroundShaderConstantsAndFog_00b7c510_test.cpp'
         PassPattern = '00b7c510_TEST PASS'
     }
     [pscustomobject]@{
@@ -287903,8 +287903,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00433273'
         Module = '_global'
-        Source = '00/43/global_GFSerialiseVectorBinaryInCCharString_00433273.cpp'
-        TestSource = '00/43/global_GFSerialiseVectorBinaryInCCharString_00433273_test.cpp'
+        Source = '00/43/global_GFSerialiseVectorBinaryIn_00433273.cpp'
+        TestSource = '00/43/global_GFSerialiseVectorBinaryIn_00433273_test.cpp'
         PassPattern = '00433273_TEST PASS'
     }
     [pscustomobject]@{
@@ -305775,9 +305775,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c3b0e0'
-        Module = 'CIndexMap_00c3b0e0'
-        Source = '00/c3/CIndexMap00c3b0e0_Add_00c3b0e0.cpp'
-        TestSource = '00/c3/CIndexMap00c3b0e0_Add_00c3b0e0_test.cpp'
+        Module = 'CSampleIndexMap'
+        Source = '00/c3/CSampleIndexMap_Add_00c3b0e0.cpp'
+        TestSource = '00/c3/CSampleIndexMap_Add_00c3b0e0_test.cpp'
         PassPattern = '00c3b0e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -350967,9 +350967,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c62920'
-        Module = 'CAudioStreamOwner_00c62920'
-        Source = '00/c6/CAudioStreamOwner00c62920_CAudioStreamOwner00c62920_00c62920.cpp'
-        TestSource = '00/c6/CAudioStreamOwner00c62920_CAudioStreamOwner00c62920_00c62920_test.cpp'
+        Module = 'CPKDecompressedStream'
+        Source = '00/c6/CPKDecompressedStream_CPKDecompressedStream_00c62920.cpp'
+        TestSource = '00/c6/CPKDecompressedStream_CPKDecompressedStream_00c62920_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c62920_TEST PASS'
     }
@@ -369880,9 +369880,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0122ae7e'
-        Module = 'NGlobalScriptDefs'
-        Source = '01/22/NGlobalScriptDefs_DestroyPGlobalScriptDef_0122ae7e.cpp'
-        TestSource = '01/22/NGlobalScriptDefs_DestroyPGlobalScriptDef_0122ae7e_test.cpp'
+        Module = '_global'
+        Source = '01/22/global_dynamicatexitdestructorforpGlobalScriptDef_0122ae7e.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforpGlobalScriptDef_0122ae7e_test.cpp'
         PassPattern = '0122ae7e_TEST PASS'
     }
     [pscustomobject]@{
@@ -386027,9 +386027,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c313c0'
-        Module = 'CUnprovenRecordReader_012b4d34'
-        Source = '00/c3/CUnprovenRecordReader012b4d34_OnRecord_00c313c0.cpp'
-        TestSource = '00/c3/CUnprovenRecordReader012b4d34_OnRecord_00c313c0_test.cpp'
+        Module = 'CBankSampleRecordReader'
+        Source = '00/c3/CBankSampleRecordReader_OnRecord_00c313c0.cpp'
+        TestSource = '00/c3/CBankSampleRecordReader_OnRecord_00c313c0_test.cpp'
         PassPattern = '00c313c0_TEST PASS'
     }
     [pscustomobject]@{

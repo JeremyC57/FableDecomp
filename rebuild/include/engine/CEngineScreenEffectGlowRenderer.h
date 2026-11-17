@@ -29,6 +29,11 @@ class CEngineScreenEffectGlowRenderer : public CEngineComponent {
 public:
     CEngineScreenEffectGlowRenderer(const CEngineInit&); // 0x00B5F090 ??0CEngineScreenEffectGlowRenderer@@QAE@ABVCEngineInit@@@Z
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER_SETEFFECTQUALITY
+    // NF57 opt-in (q10422, row 0x00B5EE00): Ego_r.pdb 0x00A118D0 / FableWin.pdb ?SetEffectQuality@CEngineScreenEffectGlowRenderer@@UAE_NABVCEngineVideoOptionsDef@@@Z;
+    // retail vtable 0x012A27CC slot 13, the first slot after CEngineComponent's thirteen (0x00B5EE00). No layout change.
+    virtual bool SetEffectQuality(const class CEngineVideoOptionsDef& options);
+#endif
 private:
     bool InitialiseTextures();                  // 0x00B5ECE0 ?InitialiseTextures@CEngineScreenEffectGlowRenderer@@AAE_NXZ
 #ifdef FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER_CAPTUREBACKBUFFER

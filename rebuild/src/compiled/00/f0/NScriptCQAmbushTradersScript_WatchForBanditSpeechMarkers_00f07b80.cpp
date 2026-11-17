@@ -14,19 +14,14 @@
 // service pDSTGame (0x0143E8F8) slot 89 SetTimer through CTimer.
 // Layout: Ego_r.pdb - 0x14 up to the six debug vectors, then 4 less per vector: SpyContactMade +0x5f, EnableSpeechBandit
 // +0x6a, SpeechBanditCount +0x74, SpeechBanditTimer +0x9c, BanditSpeechNormalThere +0xf0, BanditSpeechRandomThere +0x104,
-// BanditSpeechNormalBack +0x118, BanditSpeechRandomBack +0x12c; g_pScriptDef (0x0143E90C) is PDB - 0xa0
+// BanditSpeechNormalBack +0x118, BanditSpeechRandomBack +0x12c; pGlobalScriptDef (0x0143E90C; was the stand-in g_pScriptDef) is PDB - 0xa0
 // (AmbushTradersSpeechBanditProximity +0xa3c, AmbushTradersBanditSpeechTimerLong +0xa44, ...Short +0xa48).
 // Shape: __forceinline ~CScriptThing; the returns inside the marker scope and the marker's own destruction sit in
 // inline_depth(0) regions (out-of-line ~CScriptThing), the three early returns and the loop exit inline the argument's
 // destructor.
 #include "fable_compiler.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString();                                     // 0x0099E4B0
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    CCharString const& operator=(CCharString const&a0);  // 0x0099EFB0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF57: was a local stand-in; 0x0099E4B0 / 0x0099EBF0 / 0x0099EAE0 / 0x0099EFB0)
 extern "C" int rand();                                 // 0x00BFEB16
 void operator delete(void* p);                         // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
@@ -94,14 +89,9 @@ class CTimer { public:                                        // 4 bytes: an ind
     long TimerIndex;
     void SetTime(long time) { pDSTGame->SetTimer(TimerIndex, time); }
 };
-class CScriptDef { public:
-    unsigned char _pad[0xa3c];
-    float AmbushTradersSpeechBanditProximity;          // +0xa3c
-    unsigned char _pad_a40[4];
-    long  AmbushTradersBanditSpeechTimerLong;          // +0xa44
-    long  AmbushTradersBanditSpeechTimerShort;         // +0xa48
-};
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (agentNF57: was a local CScriptDef and CScriptDef* g_pScriptDef)
 class CScriptBase { public:                                   // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                  // 0x00CB7940
@@ -140,7 +130,7 @@ void CQ_AmbushTradersScript::WatchForBanditSpeechMarkers(CScriptThing bandit)
         if (IsActiveThreadTerminating()) return;
         {
             CScriptThing marker = Game->GetNearestWithScriptName(bandit, "M_AT_EntitySpeech");
-            if (IsDistanceBetweenThingsUnder(bandit, marker, g_pScriptDef->AmbushTradersSpeechBanditProximity)) {
+            if (IsDistanceBetweenThingsUnder(bandit, marker, pGlobalScriptDef->AmbushTradersSpeechBanditProximity)) {
 #pragma inline_depth(0)
                 if (IsActiveThreadTerminating()) return;
 #pragma inline_depth()
@@ -163,7 +153,7 @@ void CQ_AmbushTradersScript::WatchForBanditSpeechMarkers(CScriptThing bandit)
                     Game->AddPersonToConversation(conversation, Game->GetHero());
                     Game->AddLineToConversation(conversation, speech, false, bandit, Game->GetHero());
                     ++SpeechBanditCount;
-                    SpeechBanditTimer.SetTime(g_pScriptDef->AmbushTradersBanditSpeechTimerLong);
+                    SpeechBanditTimer.SetTime(pGlobalScriptDef->AmbushTradersBanditSpeechTimerLong);
                 } else {
 #pragma inline_depth(0)
                     if (IsActiveThreadTerminating()) return;
@@ -183,13 +173,13 @@ void CQ_AmbushTradersScript::WatchForBanditSpeechMarkers(CScriptThing bandit)
                     long conversation = Game->AddNewConversation(bandit, false, false);
                     Game->AddPersonToConversation(conversation, Game->GetHero());
                     Game->AddLineToConversation(conversation, speech, false, bandit, Game->GetHero());
-                    SpeechBanditTimer.SetTime(g_pScriptDef->AmbushTradersBanditSpeechTimerLong);
+                    SpeechBanditTimer.SetTime(pGlobalScriptDef->AmbushTradersBanditSpeechTimerLong);
                 }
             } else {
 #pragma inline_depth(0)
                 if (IsActiveThreadTerminating()) return;
 #pragma inline_depth()
-                SpeechBanditTimer.SetTime(g_pScriptDef->AmbushTradersBanditSpeechTimerShort);
+                SpeechBanditTimer.SetTime(pGlobalScriptDef->AmbushTradersBanditSpeechTimerShort);
             }
             EnableSpeechBandit = false;
 #pragma inline_depth(0)

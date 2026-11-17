@@ -1,70 +1,46 @@
-// CChunkedFileSuperChunk::FindNextSubChunkOfType(const CCountedPointer<CChunkedFileChunk>&) -- returns (by value) the next known sub-chunk after `previous` with the same four-character code, remembering its index
+// CChunkedFileSuperChunk::FindNextSubChunkOfType(const CCountedPointer<const CChunkedFileChunk>& previous) -- returns (by value) the next known sub-chunk after previous with the same four-character code, remembering its index
+// Leaf: ?FindNextSubChunkOfType@CChunkedFileSuperChunk@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABV?$CCountedPointer@$$CBVCChunkedFileChunk@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AA8190, 240 bytes (`ret 8`: hidden result pointer + previous). Byte-identical to 0x00AA7FF0 (a second emitted copy).
-// Callees: each chunk's virtual IsUnknownType (slot 4); strcmp is the VC7.1 intrinsic.
-// Shape: the size is cached once (ebx). `previous` is located fast through CurrentChunkIndex, else by a linear
-//          pointer scan; the type is previous->ChunkType (esi, kept in a frame slot across the virtual call);
-//          the scan resumes one past it. Match -> index stored at +0x28 and the element copied out (count bumped);
-//          a miss returns a null counted pointer.
-// Retail layout: SubChunks +0x10 (12-byte vector), RegisteredSubChunkTypes +0x1c, CurrentChunkIndex +0x28 -- the
-//          generated engine header (0x10-byte CArrays, index at +0x30) disagrees, so `this` is modelled locally
-//          (same model as the landed CountSubChunksOfType 0x00AA7EA0).
+// Identity (agentNF57 name fix; was the stand-in ?FindNextSubChunkOfType@CChunkedFileSuperChunk@@QAE?AUCChunkPointer@@ABU2@@Z on a local
+//   CChunkedFileChunk / CChunkPointer model): the non-const overload, Ego_r.pdb 0x00C1C7E0 / FableWin.pdb 0x0346AB50
+//   ?FindNextSubChunkOfType@CChunkedFileSuperChunk@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABV?$CCountedPointer@$$CBVCChunkedFileChunk@@@@@Z.
+//   Both PDBs list const First, const Next, non-const First, non-const Next, which is the retail order 0x00AA7F40 / 0x00AA7FF0 /
+//   0x00AA80E0 / 0x00AA8190; the landed non-const callers (C3DAnimFileRootChunk::FindNextObject 0x00A99030 and the other FindNext* rows)
+//   already bind this spelling.
+// Callees: each chunk's virtual IsUnknownType (slot 4); strcmp is the VC7.1 intrinsic; GetChunkType (FableWin, inline).
+// Shape: the const twin 0x00AA7FF0's body on the shared engine/CChunkedFileSuperChunk.h (opt-in FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK_FINDNEXTSUBCHUNKOFTYPE
+//   declares the non-const overload): the cached index is tried first, else a search for previous; then the scan for the next match.
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_CCHUNKEDFILECHUNK
+#define FABLE_RETAIL_CCHUNKEDFILECHUNK_GETCHUNKTYPE
+#define FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK
+#define FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK_SUBCHUNKS_TYPED
+#define FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK_FINDNEXTSUBCHUNKOFTYPE
 #include <string.h>
 #pragma intrinsic(strcmp)
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CChunkedFileChunk.h"
+#include "engine/CChunkedFileSuperChunk.h"
 
-class CChunkedFileSuperChunk;
-
-class CChunkedFileChunk { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual long IsUnknownType() const;             // slot 4
-    char ChunkType[5];                              // +0x04 four-character code + terminator
-    CChunkedFileSuperChunk* Parent;                 // +0x0c
-};
-
-struct SCountBlock {
-    long m_references;                              // +0
-};
-
-struct CChunkPointer {                              // CCountedPointer<CChunkedFileChunk>
-    CChunkedFileChunk* Object;                      // +0
-    SCountBlock* Count;                             // +4
-    CChunkPointer() : Object(0), Count(0) {}
-    CChunkPointer(const CChunkPointer& other) : Object(other.Object), Count(other.Count) { if (Count) ++Count->m_references; }
-    CChunkedFileChunk* operator->() const { return Object; }
-};
-
-struct CChunkArray {                                // STLport vector, 12 bytes
-    CChunkPointer* m_pFirst;
-    CChunkPointer* m_pLast;
-    CChunkPointer* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pFirst; }
-    CChunkPointer& operator[](unsigned long i) const { return m_pFirst[i]; }
-};
-
-class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
-    CChunkArray SubChunks;                          // +0x10
-    CChunkArray RegisteredSubChunkTypes;            // +0x1c
-    unsigned long CurrentChunkIndex;                // +0x28
-    CChunkPointer FindNextSubChunkOfType(const CChunkPointer& previous);
-};
-
-CChunkPointer CChunkedFileSuperChunk::FindNextSubChunkOfType(const CChunkPointer& previous)
+CCountedPointer<CChunkedFileChunk> CChunkedFileSuperChunk::FindNextSubChunkOfType(const CCountedPointer<const CChunkedFileChunk>& previous)
 {
     unsigned long count = SubChunks.size();
     unsigned long i;
-    if (CurrentChunkIndex < count && SubChunks[CurrentChunkIndex].Object == previous.Object) {
+    if (CurrentChunkIndex < count && SubChunks[CurrentChunkIndex].Get() == previous.Get()) {
         i = CurrentChunkIndex;
     } else {
         for (i = 0; i < count; ++i)
-            if (SubChunks[i].Object == previous.Object)
+            if (SubChunks[i].Get() == previous.Get())
                 break;
     }
-    const char* type = previous->ChunkType;
+    const char* type = previous->GetChunkType();
     for (++i; i < count; ++i) {
-        CChunkPointer& chunk = SubChunks[i];
-        if (!chunk->IsUnknownType() && strcmp(type, chunk->ChunkType) == 0) {
+        const CCountedPointer<CChunkedFileChunk>& chunk = SubChunks[i];
+        if (!chunk->IsUnknownType() && strcmp(type, chunk->GetChunkType()) == 0) {
             CurrentChunkIndex = i;
             return chunk;
         }
     }
-    return CChunkPointer();
+    return CCountedPointer<CChunkedFileChunk>();
 }
