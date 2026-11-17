@@ -1,0 +1,18 @@
+addr       parity           behav  name
+006c9b70   RELOCATION_MATCH PASS   __copy
+008c2550   RELOCATION_MATCH PASS   FinishAction
+008ddad0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+008ddad0   RELOCATION_MATCH PASS   CreateLightningBeams
+008e0060   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z -> 008e3eb0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingAICreature, std::vector<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_HasDefGlobalIndex>'
+008e0060   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThingAICreature@@@@ABV3@ABU__false_type@2@I_N@Z -> 007afd10 labelled '_global::vector_insert_range_CBaseIntelligentPointer'
+008e0060   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+008e0060   RELOCATION_MATCH PASS   OnActivate
+008f3630   WARN RELOC_NAME: ?AddThingToAvoid@CTCShotDefinitionBase@NThingShot@@QAEXABVCThing@@@Z -> 007c0fb0 labelled 'CTCShotDefinitionBase::AddHitThing'
+008f3630   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 5
+  006c9b70 RELOCATION_MATCH std::??$__copy@U?$_Rb_tree_iterator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@V?$back_insert_iterator@V?$vector@U?$pair@JPAVCOpinionDeed@@@std@@V?$allocator@U?$pair@JPAVCOpinionDeed@@@std@@@2@@std@@@2@H@std@@YI?AV?$back_insert_iterator@V?$vector@U?$pair@JPAVCOpinionDeed@@@std@@V?$allocator@U?$pair@JPAVCOpinionDeed@@@std@@@2@@std@@@0@U?$_Rb_tree_iterator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@0@0V10@ABUinput_iterator_tag@0@PAH@Z
+  008c2550 RELOCATION_MATCH CCombatAction_StrikeResponseJackOfBladesIntoRush::?FinishAction@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ
+  008ddad0 RELOCATION_MATCH NCreatureMode::CModeThunderLightningStorm::?CreateLightningBeams@CModeThunderLightningStorm@NCreatureMode@@AAEXXZ
+  008e0060 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpShield::?OnActivate@CModeGuildmasterPowerUpShield@NCreatureMode@@UAEXXZ
+  008f3630 RELOCATION_MATCH CCreatureAction_DragonRearUpFull::?PerformAction@CCreatureAction_DragonRearUpFull@@UAEXXZ

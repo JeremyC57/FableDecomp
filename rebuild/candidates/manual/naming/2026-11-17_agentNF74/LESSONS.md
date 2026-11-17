@@ -1,0 +1,8 @@
+# NF74 lessons (one line each)
+- A frame-size residue on an out-param callee whose retail body sits in the same TU needs that callee visible and noinline even when it is another landed row: 0x008C2550 went 0x178 -> 0x16C (retail reuses rush_to_pos's dead words) only once GetValidRushPosition's body was in the TU; the same held for 0x008E0060 with the GetAllThingsInRoughArea body (FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY): frame 0x160 -> 0x158.
+- LTCG per-site inline splits (first call site out of line, second expanded) come out of plain visible inline bodies plus a /d2inlT<N> bisect: 0x008DDAD0 needed GetEffectFromString, CCRC::Calc, the map find and push_back all visible and T65 (T60 too low, T70 / default too high).
+- Opt-in defines must precede the FIRST include of their header anywhere in the TU (CWorld, CTCCreatureNavigation, fable_containers.h are pulled in early by CThing / CThingCreatureBase): put every define at the top.
+- After each port grade, list the call relocations (xref2.py) before reading the byte diff: the call structure (which callee is out of line) is the first thing to match.
+- A plain FABLE_STATIC_ASSERT below an opt-in insertion moves; pin_asserts.py pinned 1, 8 and 4 asserts in CTCBoss.h, CCreatureAction_CastPhysicalShieldSpell.h and CCreatureAction_DragonRearUpFull.h.
+- The landed rows' "Shape" notes name the fitted levers they used (NEWTON PAREN tuples, len/str named locals); try the existing no-code PAREN opt-ins of GFFastOneOverSqrt one by one before inventing new text (0x008F3630: NEWTON_PAREN matched, GROUPED / SQUARE_PAREN / STEP_PAREN did not).
+- Never put backticks inside a double-quoted shell argument (st.py note): one STATUS note lost a word to command substitution here; use a quoted heredoc or python.

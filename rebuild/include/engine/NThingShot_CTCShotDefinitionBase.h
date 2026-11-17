@@ -76,6 +76,12 @@ public:
     void Init(CDefPointer<const CThingShotDef> def, CThing* shooter, CThing* weapon, const CThing* target, float accuracy,
               float damageMultiplier, float buildupTime, const CDefPointer<const CMeleeCombatAbilityDef>& ability);   // 0x007C0690
 #endif
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_ADDTHINGTOAVOID
+    // NF74 opt-in (row 0x008F3630 CCreatureAction_DragonRearUpFull::PerformAction): Ego_r.pdb / FableWin.pdb
+    // ?AddThingToAvoid@CTCShotDefinitionBase@NThingShot@@QAEXABVCThing@@@Z, out of line in retail at 0x007C0FB0 (66 bytes, `ret 4`: the
+    // thing pushed onto HitThingsList through a CIntelligentPointer<const CThing>, Ego_d local `ip`). Declaration only.
+    void AddThingToAvoid(const CThing& thing);                           // 0x007C0FB0
+#endif
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT_POSITION
     // Retail opt-in (wf9, row 0x008C6860 CCreatureAction_TrollThrowProjectile::PerformAction): the target-position overload, Ego_r.pdb
     // (0x007BE730) / FableWin.pdb (0x017D75C1)

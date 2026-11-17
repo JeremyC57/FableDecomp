@@ -10775,9 +10775,6 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ?SortRegisteredMusic@@YIXPAUCRegisteredMusicPair@@0UCKeyPairCompareLess@@@Z	006bf6a0	006be080
 ?push_back@CRegisteredMusicVector@@QAEXABUCRegisteredMusicPair@@@Z	006bf410	006be080
 ?HasInformationFlag@CThing@@QAE_NXZ	008300d0	0082a9b0
-?_M_insert_overflow@CIntelligentPointerVector@@QAEXPAUCIntelligentPointerThing@@ABU2@ABU__false_type@@I_N@Z	004ac940	008ddad0
-?g_crcTable_0129a168@@3QBKB	0129a168	008ddad0
-?g_emptyString@@3PADA	0129aaf4	008ddad0
 ?FrameUpdate@CModeBase@@QAEXXZ	0073ac50	008e0d20
 ?Recover@CModeScorpionKingTailPlunge@NCreatureMode@@QAEXXZ	008df510	008e0d20
 ?Spike@CModeScorpionKingTailPlunge@NCreatureMode@@QAEXXZ	008da0f0	008e0d20
@@ -13634,7 +13631,6 @@ __itow	00bfedee	00a0dac0
 ??$__find@V?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@V?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@V?$CIntelligentPointer@VCThing@@@@@std@@YI?AV?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@V?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@0@V10@0ABV?$CIntelligentPointer@VCThing@@@@ABUinput_iterator_tag@0@@Z	0069caf0	006991f0
 ?push_back@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z	004ba4e0	006991f0
 ?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@@ABUCRadialBlurParams@@@Z	006b84e0	006b8550
-?_M_insert_overflow@?$vector@U?$pair@JPAVCOpinionDeed@@@std@@@std@@QAEXPAU?$pair@JPAVCOpinionDeed@@@2@ABU32@ABU__false_type@2@I_N@Z	006c80e0	006c9b70
 ?TransferBinaryIn@?$CPersistTraits@PAVCOpinionDeed@@@@QBEXAAUCMemoryDataInputStreamReader@@PAPAVCOpinionDeed@@@Z	006c88d0	006c9e40
 ?resize@?$vector@U?$pair@JPAVCOpinionDeed@@@std@@@std@@QAEXI@Z	006c9d50	006c9e40
 ??$__find_if@V?$reverse_iterator@PBJ@std@@VCPredIsFallbackMultiplierForMultiplier@?A0x44dca70b@@@std@@YI?AV?$reverse_iterator@PBJ@0@V10@0VCPredIsFallbackMultiplierForMultiplier@?A0x44dca70b@@ABUrandom_access_iterator_tag@0@@Z	006dabe0	006d73d0
@@ -30455,12 +30451,6 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ?SetQuestCardObjective@QuestManagerMethods@@QAE_NABVCCharString@@000@Z	004b0d30	00896a30
 ??0CCreatureAction_Decapitate@@QAE@PAVCThing@@@Z	0066a560	008a8e40
 ??0CCreatureAction_AttackThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	008ae160	008a8eb0
-??0CCountedPointer_CCreatureActionBase@@QAE@PAVCCreatureActionBase@@@Z	00695880	008c2550
-??0CCreatureAction_CastAssassinRush@@QAE@PAVCThingCreatureBase@@ABVC3DVector@@M_NJUCCountedPointer_CCreatureActionBase@@@Z	008ce1b0	008c2550
-??1CCreatureAction_CastAssassinRush@@QAE@XZ	0072d990	008c2550
-?FinishAction@CCombatAction_GenericStrikeResponseBase@@UAEXXZ	008663d0	008c2550
-?GetSubDef@CDefClassBase@@QBE_NPAUCDefPointer_CJackOfBladesBattleDef@@@Z	008c33e0	008c2550
-?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush@@QAE_NAAVC3DVector@@@Z	008c1600	008c2550
 ??0CCreatureAction_CastWillForceSpell_Retail@@QAE@PAUCThingCreatureBase_Calls@@J_NABVCCharString@@@Z	008bb200	008c2980
 ??1CCreatureAction_CastWillForceSpell_Retail@@QAE@XZ	0062e900	008c2980
 ?SetCurrentAction@CThingCreatureBase_Calls@@QAE_NABVCCreatureActionBase@@@Z	006644f0	008c2980
@@ -32385,10 +32375,6 @@ __aullrem	00bfebb0	00770e80
 ?push_back@CPtrVector@@QAEXABUCIntelligentPointerConstThing@@@Z	007398b0	007ffeb0
 ?_M_erase@?$_Rb_tree@V?$CDefPointer@$$CBVCArmourDef@@@@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Select1st@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@V?$CCompareDefPointer@$$CBVCArmourDef@@M@@V?$allocator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@2@@Z	00869bb0	00869bb0
 ?GetDummyObject@CTCGraphicAppearance@@QAE_NABVCCharString@@JKPAVC3DVector@@PAVCRightHandedSet@@M@Z	004c08c0	008f3100
-?AddHitThing@CTCShotDefinitionBase@@QAEXPAVCThing@@@Z	007c0fb0	008f3630
-?GetDefShot@CDefinitionManager@@QAE_NJPAPAVCThingShotDef@@@Z	0078b230	008f3630
-?GetSubDef@CDefClassBase@@QAE_NPAPAVCSpecialEffectsDef@@@Z	00669580	008f3630
-?Init@CTCShotDefinitionBase@@QAEXU?$CDefPointerByValue@VCThingShotDef@@@@PAVCThing@@1PBVC3DVector@@MMMPAV?$CDefPointer@VCMeleeCombatAbilityDef@@@@@Z	007bf790	008f3630
 ?IsSociableTime@CTCVillage@@QBE_NXZ	00658d5d	00918900
 ?AutoPlaceNear@CThingCreatureBase@@QAE_NABVC3DVector@@M@Z	00665df0	00919440
 ?FindInterestingThing@CAIStateGroup_LookAtInterestingThings@@AAEPAVCThing@@XZ	00919240	00919440
@@ -33645,11 +33631,6 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?Reset@?$CCountedPointer@VCHitParameters@@@@QAEXPAVCHitParameters@@@Z	00812280	00811760
 _ONE_OVER_360	01238e00	00878b60
 ?GetWorld@CModeBase@NCreatureMode@@QBEPAVCWorld@@XZ	0073a680	008ddd70
-??0CCreatureAction_CastPhysicalShieldSpell@@QAE@AAVCThingCreatureBase@@J_NABVCCharString@@JM@Z	008bb6f0	008e0060
-??1CCreatureAction_CastPhysicalShieldSpell@@QAE@XZ	0062e900	008e0060
-??_7CIntelligentPointerThing2@@6B@	01238c6c	008e0060
-?_M_insert_overflow@?$CPointerVector@UCIntelligentPointerCreature@@@@QAEXPAUCIntelligentPointerCreature@@ABU2@ABU__false_type@@K_N@Z	007afd10	008e0060
-?_M_insert_overflow@?$CPointerVector@UCIntelligentPointerThing2@@@@QAEXPAUCIntelligentPointerThing2@@ABU2@ABU__false_type@@K_N@Z	004ac940	008e0060
 ??0CCreatureAction_PutDownTankard@@QAE@PAVCThingCreatureBase@@@Z	00922f50	009236c0
 ??0CCreatureAction_RemoveFoodFromTable@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	00922ee0	009236c0
 ?GetFood@CTCTavernTable@@QAEPAVCThingObject@@J@Z	007b85c0	009236c0
@@ -40530,3 +40511,7 @@ __imp__GetAsyncKeyState@4	014402cc	00687fd0
 ?InitLUA@CMainGameComponent@@IAEXABVCCharString@@@Z	004bbc00	00416953
 ?Load@CWorld@@QAEXABVCWideString@@@Z	004a1840	00416953
 ?g_bSaveLoadFailed@@3_NA	013b89c0	00416953
+?FinishAction@CCombatAction_GenericStrikeResponseBase@@UAEXXZ	008663d0	008c2550
+?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush@@IAE_NAAVC3DVector@@@Z	008c1600	008c2550
+??0CCreatureAction_CastPhysicalShieldSpell@@QAE@AAVCThingCreatureBase@@J_NABVCCharString@@JM@Z	008bb6f0	008e0060
+?AddThingToAvoid@CTCShotDefinitionBase@NThingShot@@QAEXABVCThing@@@Z	007c0fb0	008f3630

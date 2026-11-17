@@ -20,12 +20,28 @@ public:
  CSpecialEffectsDef & operator=(const CSpecialEffectsDef & p0);
 };
 FABLE_STATIC_ASSERT(sizeof(CSpecialEffectsDef)==52);
+#ifdef FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_INLINE
+// NF74 opt-in (row 0x008DDAD0 CModeThunderLightningStorm::CreateLightningBeams): retail is link-time code generated, so VC7.1's inliner
+// decides per call site (as FABLE_RETAIL_CCRC_CALC_BODY): that row calls GetEffectFromString 0x00669D30 out of line at its first site and
+// expands it, CCRC::Calc included, at its second. The same body, plain inline, with the shared engine/CCRC.h (define
+// FABLE_RETAIL_CCRC_CALC_BODY for the visible Calc).
+#include "engine/CCRC.h"
+#else
 class CCRC{public:static unsigned long FABLE_FASTCALL Calc(unsigned long,const void*,unsigned long);};
-#ifdef _MSC_VER
+#endif
+#if defined(_MSC_VER) && !defined(FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_INLINE)
 __declspec(noinline)
 #endif
 inline bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name,long& effect)const {
+#ifdef FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_NAMED_ARGS
+ // FITTED (NF74, same row; Ego_d lists only `it` here): the length, then the text, as named locals before the CRC (the landed
+ // 0x008DDAD0 caller-local idiom for retail's index-first `[ecx+esi]` SIB in the expanded CCRC::Calc loop).
+ unsigned long len=name.GetLength();
+ const char* str=name.GetAsCharArray();
+ std::map<unsigned long,long>::const_iterator it=SpecialEffectsMap.ContainmentMap.find(CCRC::Calc(0,str,len));
+#else
  std::map<unsigned long,long>::const_iterator it=SpecialEffectsMap.ContainmentMap.find(CCRC::Calc(0,name.GetAsCharArray(),name.GetLength()));
+#endif
  if(it!=SpecialEffectsMap.ContainmentMap.end()){effect=it->second;return true;}
  return false;
 }
