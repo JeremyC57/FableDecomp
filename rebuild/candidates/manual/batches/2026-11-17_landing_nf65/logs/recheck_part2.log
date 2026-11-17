@@ -1,0 +1,23 @@
+addr       parity           behav  name
+008df3a0   RELOCATION_MATCH PASS   Recover
+009efb80   WARN RELOC_NAME: ??F?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@std@@QAEAAU01@XZ -> 009ee8a0 labelled 'CRetailTreeIterator::Decrement'
+009efb80   WARN STANDIN_LEAF ?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@2@@Z (catalog std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase> >, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > >, std::less<CCharString >, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > > >::insert_unique; names another function)
+009efb80   RELOCATION_MATCH PASS   insert_unique
+00b86c00   RELOCATION_MATCH PASS   CEngineScreenEffectDisplacementRenderer
+00c1eee0   RELOCATION_MATCH PASS   CEventTriggerRef
+00c2e4d0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c2e4d0   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c2e4d0   WARN RELOC_NAME: ?FindItem@CItemDispatcher@@QAEPAUCItem@@J@Z -> 00c10140 labelled 'CNamedSet::FindById'
+00c2e4d0   WARN RELOC_NAME: ??0CEventTriggerRef@@QAE@PAUCItemDispatcher@@J@Z -> 00c1ee60 labelled 'CItemAction::CItemAction'
+00c2e4d0   RELOCATION_MATCH PASS   AddNumberTriggers
+01211e45   RELOCATION_MATCH PASS   Unwind@01211e45
+01212928   RELOCATION_MATCH PASS   Unwind@01212928
+
+WINS: 7
+  008df3a0 RELOCATION_MATCH NCreatureMode::CModeScorpionKingVulnerable::?Recover@CModeScorpionKingVulnerable@NCreatureMode@@AAEXXZ
+  009efb80 RELOCATION_MATCH std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase> >, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > >, std::less<CCharString >, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > > >::?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@2@@Z
+  00b86c00 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::??0CEngineScreenEffectDisplacementRenderer
+  00c1eee0 RELOCATION_MATCH CEventTriggerRef::??0CEventTriggerRef@@QAE@PAVCNamedSet@@VCString@@_N@Z
+  00c2e4d0 RELOCATION_MATCH CBankProcessor::AddNumberTriggers
+  01211e45 RELOCATION_MATCH _global::Unwind@01211e45
+  01212928 RELOCATION_MATCH _global::Unwind@01212928

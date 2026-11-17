@@ -1,7 +1,5 @@
 // CEngineWorldMap::OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state) -- switch the world's static maps to a new open state: build the grid, then either open every map's development static map in place (state 2), or open the static-map bank file, hand it to the water renderer, and load the whole bank at once when it carries the global entry, else open every map from it
-// Leaf: OpenStaticMaps
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
-// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
+// Leaf: ?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B42750, length 400 bytes (with int3 padding; body 0x17f), `ret 4`.
 // PDB: ?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z.
 // Callees: AutoBuildWorldMapGrid @ 0x00B40070; CCharString(const char*, long) @ 0x0099EBF0 / copy @ 0x0099EC30 /
@@ -10,11 +8,10 @@
 //   file's virtual slot 3 (open by name with flags 0x62); its memory-pool setter @ 0x00B3E820 (by-value counted pointer;
 //   manifest "CMeshDataBank::SetAnimationMemoryPool", propagated); CEngineWaterRenderer::OpenStaticMapForUse
 //   (CStaticMapBankFile*, CCharString) @ 0x00B6D4D0 (global @ 0x01436E54); the bank entry lookup @ 0x009CCDC0 (const
-//   CCharString&, as the landed FindEntry callers); CEngineWorldMap::OpenMapFile(long) @ 0x00B420F0 (manifest name).
+//   CCharString&, as the landed FindEntry callers); CEngineWorldMap::OpenStaticMapsUsingCommonRetailHeader(long) @ 0x00B420F0 (Ego_r.pdb
+//   0x009E75F0, private; was the manifest's OpenMapFile).
 // Globals: the engine @ 0x01436E98 (memory pool counted pointer at +0x8e0), two CCharString globals @ 0x01436EC4 (the
 //   water bank symbol) and 0x01436ECC (the global map entry symbol). String @ 0x012A1F84 "SetStaticMapFileForUse: OpenStaticMap".
-// Header: engine/CEngineWorldMap.h flattens MapList/VisibleMapList/StaticMapFile to byte arrays and carries the PDB offsets
-//   (StaticMapFile +0x40, GameWorld +0x218) where retail has +0x34/+0x198, so the class is modelled locally.
 // Layout: retail CEngineWorldMap (as DeleteMap/AddMap/SetWorld): MapList +0x20, StaticMapBankName (CWideString) +0x30,
 //   StaticMapFile +0x34, StaticMapOpenState +0x1a8.
 // Shape: the progress text is an implicit conversion temporary; the state-2 loop passes the folded constant 2; the open
@@ -28,72 +25,53 @@
 //   `dynamic initializer for '...'`, defining rows named by agentFAM09):
 //   0x01436EC4 SeaStaticMapBankFileName (global; initializer 0x01224680), was g_WaterBankSymbol.
 //   0x01436ECC CommonStaticMapHeaderEntryName (global; initializer 0x012246C0), was g_GlobalMapEntrySymbol.
+// NF65 (round 7): ported onto the shared headers: engine/CEngineWorldMap.h (overlay opt-ins FABLE_RETAIL_CENGINEWORLDMAP_STATICMAPFILE +
+//   _OPENSTATICMAPS: MapList, the CWideString StaticMapBankName, the typed StaticMapFile, StaticMapOpenState +0x1A8 and the private members),
+//   engine/CStaticMapBankFile.h (overlay class opt-in) on engine/CBankFileAsync.h (FABLE_RETAIL_CBANKFILEASYNC_SETLOADINGMEMORY: q10425
+//   ?SetLoadingMemoryPool@CBankFileAsync@@QAEXV?$CCountedPointer@VCMovableResourceMemoryPool@@@@@Z) / CBankFile.h (slot 3 OpenFileReadOnly,
+//   ENTRIES FindIndexBySymbol), engine/CEngineMap.h (overlay opt-in _OPENDEVELOPMENTSTATICMAP), engine/CEngineWaterRenderer.h (overlay
+//   declaration opt-in _OPENSTATICMAPFORUSE_DECL), CEngineResourceManager.h, CCountedPointer.h, CArray.h, fable_string.h. The local CBankFile /
+//   CBankFileAsync / CStaticMapBankFile / CEngineWaterRenderer / CEngineMap / CEngineWorldMap models are gone.
 #define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CENGINERESOURCEMANAGER
 #define FABLE_RETAIL_CENGINERESOURCEMANAGER_GETLOADINGMEMORYPOOL
+#define FABLE_RETAIL_CENGINEWORLDMAP
+#define FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLD
+#define FABLE_RETAIL_CENGINEWORLDMAP_STATICMAPFILE
+#define FABLE_RETAIL_CENGINEWORLDMAP_OPENSTATICMAPS
+#define FABLE_RETAIL_CENGINEMAP_OPENDEVELOPMENTSTATICMAP
+#define FABLE_RETAIL_CENGINEWATERRENDERER_OPENSTATICMAPFORUSE_DECL
+#define FABLE_RETAIL_CBANKFILE_ENTRIES
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CBANKFILEASYNC_DATA
+#define FABLE_RETAIL_CBANKFILEASYNC_SETLOADINGMEMORY
+#define FABLE_RETAIL_CSTATICMAPBANKFILE_CLASS
+#include "fable_string.h"
 #include "engine/CEngineResourceManager.h"
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
-
 namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 }
-
-class CMovableResourceMemoryPool;
 #include "engine/CCountedPointer.h"
-
-class CBankFile
-{
-public:
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual bool Open(const CWideString& name, unsigned long flags);   // slot 3
-public:
-    unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
-};
-class CBankFileAsync : public CBankFile
-{
-public:
-};
-
-class CStaticMapBankFile : public CBankFileAsync { public:
-    void SetMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool);   // 0x00B3E820
-};
-
-
-class CEngineWaterRenderer { public:
-    void OpenStaticMapForUse(CStaticMapBankFile* file, CCharString symbol);   // 0x00B6D4D0
-};
+#include "engine/CArray.h"
+#include "engine/CBankFile.h"
+#include "engine/CBankFileAsync.h"
+#include "engine/CStaticMapBankFile.h"
+#include "engine/CEngineMap.h"
+#include "engine/CEngineWaterRenderer.h"
+#include "engine/CEngineWorldMap.h"
 extern CEngineWaterRenderer* g_pEngineWaterRenderer;   // 0x01436E54
 extern CCharString SeaStaticMapBankFileName;                  // 0x01436EC4
 extern CCharString CommonStaticMapHeaderEntryName;             // 0x01436ECC
-
-class CEngineMap { public:
-    enum STATIC_MAP_OPEN_STATE { STATIC_MAP_CLOSED, STATIC_MAP_RETAIL, STATIC_MAP_DEVELOPMENT };
-    void OpenDevelopmentStaticMap(CStaticMapBankFile& file, STATIC_MAP_OPEN_STATE state);   // 0x00B42530
-};
-
-#include "engine/CArray.h"
-
-class CEngineWorldMap { public:
-    void*                 _vptr;                    // +0x000
-    unsigned char         _pad004[0x1c];
-    CArray<CEngineMap*>   MapList;                  // +0x020
-    unsigned char         _pad02c[0x4];             // +0x02c VisibleMapList
-    CWideString           StaticMapBankName;        // +0x030
-    CStaticMapBankFile    StaticMapFile;            // +0x034
-    unsigned char         _pad038[0x1a8 - 0x38];
-    CEngineMap::STATIC_MAP_OPEN_STATE StaticMapOpenState;   // +0x1a8
-    void OpenMapFile(long entry);                   // 0x00B420F0
-    void OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state);
-private:
-    void AutoBuildWorldMapGrid();   // 0x00B40070
-};
 
 void CEngineWorldMap::OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state)
 {
     if (StaticMapOpenState == state)
         return;
     AutoBuildWorldMapGrid();
-    if (state == CEngineMap::STATIC_MAP_DEVELOPMENT) {
+    if (state == CEngineMap::STATIC_MAP_OPEN_STATE_OPEN_FOR_UPDATE) {
         for (unsigned long i = 0; i < MapList.size(); ++i) {
             if (MapList[i]) {
                 NProgressDisplay::DisplayProgress("SetStaticMapFileForUse: OpenStaticMap", -1.0f, false, false);
@@ -102,14 +80,14 @@ void CEngineWorldMap::OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state)
         }
     }
     else {
-        bool opened = StaticMapFile.Open(StaticMapBankName, 0x62);
-        StaticMapFile.SetMemoryPool(NEngineInternal::GPResourceManager->GetLoadingMemoryPool());
+        bool opened = StaticMapFile.OpenFileReadOnly(StaticMapBankName, 0x62);
+        StaticMapFile.SetLoadingMemoryPool(NEngineInternal::GPResourceManager->GetLoadingMemoryPool());
         if (!opened)
             return;
         g_pEngineWaterRenderer->OpenStaticMapForUse(&StaticMapFile, SeaStaticMapBankFileName);
         long entry = StaticMapFile.FindIndexBySymbol(CommonStaticMapHeaderEntryName);
         if (entry > 0)
-            OpenMapFile(entry);
+            OpenStaticMapsUsingCommonRetailHeader(entry);
         else {
             for (unsigned long i = 0; i < MapList.size(); ++i) {
                 if (MapList[i]) {

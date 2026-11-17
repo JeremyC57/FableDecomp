@@ -1,0 +1,24 @@
+addr       parity           behav  name
+0085f6f0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0085f6f0   RELOCATION_MATCH PASS   GetUpFromSleeping
+00972490   RELOCATION_MATCH PASS   OnActivate
+00b3ff70   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCStaticMapBankStateBlock@@@@SIXPAX@Z -> 00b430a0 labelled '_global::DeleteViaVtable0_00b430a0'
+00b3ff70   RELOCATION_MATCH PASS   CreateNewBankMap
+00c16d90   WARN RELOC_NAME: ?RunBankProcessor@@YGXPAVCScriptHost@@PAUCBankData@@PAVCLoadLog@@PBUSBankRequest@@@Z -> 00c16ce0 labelled 'RunProcessor'
+00c16d90   RELOCATION_MATCH PASS   ProcessBankEntry
+00c1f4e0   RELOCATION_MATCH PASS   InsertDriver
+00c2e7a0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c2e7a0   WARN RELOC_NAME: ??6CString@@QAIAAV0@ABV0@@Z -> 00c0dea0 labelled 'CString::operator<<(CString const &)'
+00c2e7a0   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c2e7a0   WARN RELOC_NAME: ??A?$PKCAutoDeleteArray@K@@QAEAAKK@Z -> 00c2ebc0 labelled '_global::PKCAutoDeleteArray_RangeCheck_Abort'
+00c2e7a0   RELOCATION_MATCH PASS   AddEventTrigger
+01212915   RELOCATION_MATCH PASS   Unwind@01212915
+
+WINS: 7
+  0085f6f0 RELOCATION_MATCH NCreatureMode::?GetUpFromSleeping@NCreatureMode@@YI_NAAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@PAVCAIBrain@@@Z
+  00972490 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage2::?OnActivate@CAIStateGroup_JackOfBladesStage2@@UAEXXZ
+  00b3ff70 RELOCATION_MATCH CEngineWorldMap::?CreateNewBankMap@CEngineWorldMap@@AAEKABVCCharString@@@Z
+  00c16d90 RELOCATION_MATCH _global::?ProcessBankEntry@@YGXPBUSBankRequest@@PAXPAVCLoadLog@@PAVCScriptHost@@@Z
+  00c1f4e0 RELOCATION_MATCH CEventTriggerRef::?InsertDriver@CEventTriggerRef@@QAEJKPAX@Z
+  00c2e7a0 RELOCATION_MATCH CBankProcessor::?AddEventTrigger@CBankProcessor@@QAEXABUCEventRecord@@_N@Z
+  01212915 RELOCATION_MATCH _global::Unwind@01212915

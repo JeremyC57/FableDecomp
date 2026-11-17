@@ -1,0 +1,2 @@
+address	claim	reason
+nf44:120 0x00C17940	?ReadMetadataData@@YIPAUCBankData@@PAX@Z	the retail trace string PKSerialiseLoad.h (0x012B2D0C) names the template; landed self 0x00C17940 is ??$PKSerialiseLoad@UCBankData@@@@YIPAUCBankData@@PAUIRemoteSource@@@Z (NF44 rejected it first); ported 0x00C17400 binds the landed self spelling

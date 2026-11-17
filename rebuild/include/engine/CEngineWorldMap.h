@@ -74,18 +74,52 @@ public:
     // CIDrawWorldMap slot-1 DrawGetMapInfo). Same size and later offsets.
     const CIDrawWorldMap* PeekGameWorldMap() const { return GameWorldMap; }
 #endif
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_STATICMAPFILE
+    // NF65 overlay opt-in (row 0x00B3FF70): Ego_r.pdb / FableWin.pdb ?CreateNewBankMap@CEngineWorldMap@@AAEKABVCCharString@@@Z (private,
+    // out of line at 0x00B3FF70) and the StaticMapFile member (Ego_r.pdb CStaticMapBankFile; retail +0x34: 0x00B3FFC3 `lea edi,[ebx+34h]`
+    // before CBankFile::AddEntry / FindIndexBySymbol), after StaticMapBankName (CWideString, +0x30, opaque here). Same size and later
+    // offsets. Needs the FABLE_RETAIL_CSTATICMAPBANKFILE_CLASS class first.
+private:
+    unsigned long CreateNewBankMap(const CCharString& name);             // 0x00B3FF70 (private in both PDBs: AAE)
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_OPENSTATICMAPS
+    // NF65 overlay opt-in (row 0x00B42750): Ego_r.pdb ?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z (0x009E7B10)
+    // and the private members it calls, out of line: ?AutoBuildWorldMapGrid@CEngineWorldMap@@AAEXXZ (0x00B40070, the landed binding) and
+    // ?OpenStaticMapsUsingCommonRetailHeader@CEngineWorldMap@@AAEXJ@Z (Ego_r.pdb 0x009E75F0; retail 0x00B420F0 is the call OpenStaticMaps makes
+    // with the index of CommonStaticMapHeaderEntryName). Also the StaticMapBankName / StaticMapOpenState members (+0x30 / +0x1A8, typed only
+    // under this macro). Needs fable_string.h and engine/CEngineMap.h first. Declarations only.
+    void OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state);           // 0x00B42750
+    void AutoBuildWorldMapGrid();                                          // 0x00B40070
+    void OpenStaticMapsUsingCommonRetailHeader(long entry);                // 0x00B420F0
+#endif
+#ifndef FABLE_RETAIL_CENGINEWORLDMAP_VISIBLEMAPLIST
+    unsigned char       _pad_0x2c[0x4];                      // +0x2c VisibleMapList
+#endif
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_OPENSTATICMAPS
+    CWideString         StaticMapBankName;                   // +0x30
+#else
+    unsigned char       StaticMapBankName[0x4];              // +0x30 CWideString
+#endif
+    CStaticMapBankFile  StaticMapFile;                       // +0x34
+#else
 private:
 #ifdef FABLE_RETAIL_CENGINEWORLDMAP_VISIBLEMAPLIST
     unsigned char       _pad_0x30[0x168];                    // +0x30 (after the _VISIBLEMAPLIST member)
 #else
     unsigned char       _pad_0x2c[0x16c];                    // +0x2c
 #endif
+#endif
     CIDrawWorld*        GameWorld;                           // +0x198
 #ifdef FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLDMAP
     CIDrawWorldMap*     GameWorldMap;                        // +0x19c
     unsigned char       _pad_0x1a0[0x20];                    // +0x1a0 StaticMapQuality .. (not modelled)
 #else
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_OPENSTATICMAPS
+    unsigned char       _pad_0x19c[0xc];                     // +0x19c GameWorldMap .. (not modelled)
+    CEngineMap::STATIC_MAP_OPEN_STATE StaticMapOpenState;    // +0x1a8
+    unsigned char       _pad_0x1ac[0x14];                    // +0x1ac
+#else
     unsigned char       _pad_0x19c[0x24];                    // +0x19c GameWorldMap .. (not modelled)
+#endif
 #endif
 #else
 private:

@@ -1,0 +1,8 @@
+- Find the landed sibling of the same class that is already on the shared headers and copy its macro block: 0x008DF3A0 (from 0x008E0A10) and 0x008909F0 went RM in 1-2 grades.
+- VC7.1 mangles a class by the class key of its DEFINITION when one is visible: a header's `class CItem;` next to libpk/CItem.h's `struct CItem` gives PAU in a TU that sees both, PAV in one that sees only the forward declaration.
+- engine/CString.h declares ~CString only under FABLE_RETAIL_CSTRING_BUILDERS: without it a by-value CString parameter is never destroyed (DIFFER 205v217, the missing callee-side ~CString).
+- An opt-in placed inside another opt-in's branch (CEngineWorldMap retail members sit under _GAMEWORLD) needs that macro too; check the #if stack (ifstack.py) before editing.
+- The default-path token check must normalise the __LINE__-numbered FABLE_STATIC_ASSERT typedef names; everything else should be identical.
+- To make VC7.1 keep a value across an out-of-line call, the callee body in the TU must itself call nothing opaque: 0x009EFB80 went RM only when the operator< specialisation wrote the compare loop out instead of calling the static Compare.
+- Check whether a "ready re-author" an earlier note calls lost is still on disk ($S/w22/agentNF58/work/ready/ held both 0x009EF750 and 0x00869CA0).
+- A row may already be a function inside another landed TU (0x00C16D90 / 0x00C17400 are statics of the 0x00C17640 OpenBankFile TU): reuse that TU and take its names.

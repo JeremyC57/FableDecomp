@@ -646,6 +646,12 @@ class CWaterGenerator;
 #pragma pack(push, 1)
 class CEngineWaterRenderer {
 public:
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_OPENSTATICMAPFORUSE_DECL
+    // NF65 overlay opt-in (row 0x00B42750): Ego_r.pdb 0x00A1A9C0 ?OpenStaticMapForUse@CEngineWaterRenderer@@QAEXPAVCStaticMapBankFile@@VCCharString@@@Z
+    // (public, out of line at 0x00B6D4D0) on the flattened default layout, for callers that reach the renderer through a pointer only.
+    // The includer provides CCharString. Declaration only, no layout change.
+    void OpenStaticMapForUse(CStaticMapBankFile* file, CCharString symbol);   // 0x00B6D4D0
+#endif
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char        _pad_0x04[0x4];                     // +0x04
     unsigned char        _pad_0x08[0x4];                     // +0x08

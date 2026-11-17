@@ -19,92 +19,34 @@
 // CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
 // ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
 // GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+// NF65 (round 7): ported onto engine/CEngineScreenEffectDisplacementRenderer.h (_MEMBERS + _INITIALISETEXTURES + _FINISHSTENCIL; overlay opt-in
+//   _OLDRENDERTARGET types OldRenderTarget on engine/CRenderTarget.h), engine/CEngineInit.h (InitFlags +0x60), CTVertexColTex1.h,
+//   CRenderStateCaptureBlock.h, CSurface.h; the local CSurface / CRenderTarget / CEngineInit / CTVertexColTex1 / CRenderStateCaptureBlock /
+//   class models are gone. InitialiseTextures now binds the private ?InitialiseTextures@CEngineScreenEffectDisplacementRenderer@@AAE_NXZ
+//   (q10423; was QAE).
 #define FABLE_RETAIL_CENGINECOMPONENT_PROTECTED
 #define FABLE_RETAIL_CENGINERESOURCEMANAGER
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_MEMBERS
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_INITIALISETEXTURES
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_FINISHSTENCIL
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_OLDRENDERTARGET
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE_CTOR
 #include "fable_string.h"
 #include "engine/CVertexShader.h"
 #include "engine/CPixelShader.h"
 #include "engine/CEngineResourceManager.h"
 #include "engine/CShaderResource.h"
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
-
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct IDirect3DSurface9;
-class CSurface { public:                                  // vtable 0x0122F84C, 0x10 bytes
-    IDirect3DSurface9* PD3DSurface;                // +0x04
-    unsigned long      AllocationSource;           // +0x08
-    void*              PAllocatedMemory;           // +0x0c
-    CSurface() : PD3DSurface(0), AllocationSource(0) { }
-    virtual ~CSurface();
-};
-class CRenderTarget : public CBaseClass { public:                     // vtable 0x0129C800, 0x24 bytes
-    CSurface RenderToSurface;                      // +0x04
-    CSurface ZBufferSurface;                       // +0x14
-    CRenderTarget() { }
-};
-
-class CEngineInit { public:
-    unsigned char _pad00[0x60];
-    unsigned long Flags;                           // +0x60
-};
-
-
-class CTVertexColTex1 { public:                           // 0x18 bytes
-    float         X, Y, Z;
-    unsigned long DiffuseColour;
-    float         U1, V1;
-    void Set(float x, float y, float z, unsigned long colour, float u, float v)
-    {
-        X = x; Y = y; Z = z; DiffuseColour = colour; U1 = u; V1 = v;
-    }
-};
-
-struct CRenderStateCaptureBlock {
-    bool          Open;
-    unsigned char Padding;
-    CRenderStateCaptureBlock() : Open(false) { }
-};
-
-class CEngineScreenEffectDisplacementRenderer : public CEngineComponent { public:   // vtable 0x012A3A94
-    void*           BackBufferCopyTexture;         // +0x0c
-    void*           DisplacementTexture;           // +0x10
-    long            DisplacementTextureHandle;     // +0x14
-    long            DynamicTexturePageHandle;      // +0x18
-    bool            HasContent;                    // +0x1c
-    unsigned char   _pad_0x1d[3];
-    CTVertexColTex1 BackBufferToTextureVerts[4];   // +0x20
-    CTVertexColTex1 TextureToBackBufferVerts[4];   // +0x80
-    long            ClearX;                        // +0xe0
-    long            ClearY;                        // +0xe4
-    float           DisplaceAmount;                // +0xe8
-    bool            DisplacementUsesShadowZBuffer; // +0xec
-    bool            EffectSupported;               // +0xed
-    bool            Enable2DDisplacement;          // +0xee
-    bool            Enable3DDisplacement;          // +0xef
-    CRenderTarget   OldRenderTarget;               // +0xf0
-    long            OldViewport_TLX;               // +0x114
-    long            OldViewport_TLY;               // +0x118
-    long            OldViewport_BRX;               // +0x11c
-    long            OldViewport_BRY;               // +0x120
-    CVertexShader   ScreenCopyVertexShader;        // +0x124
-    CPixelShader    ScreenCopyPixelShader;         // +0x12c
-    CVertexShader   DisplacementVertexShader;      // +0x134
-    CPixelShader    DisplacementPixelShader;       // +0x13c
-    CRenderStateCaptureBlock StencilRenderingCaptureBlock;   // +0x144
-    unsigned char   _pad_0x146[2];
-    CTVertexColTex1 DisplacementToBackBufferVerts[4];   // +0x148
-    bool            EnableDisplacementTextureView; // +0x1a8
-
-    CEngineScreenEffectDisplacementRenderer(const CEngineInit& init);
-    virtual ~CEngineScreenEffectDisplacementRenderer();
-    bool InitialiseTextures();                     // 0x00B86A70
-};
+#include "engine/CEngineInit.h"
+#include "engine/CEngineScreenEffectDisplacementRenderer.h"
 
 CEngineScreenEffectDisplacementRenderer::CEngineScreenEffectDisplacementRenderer(const CEngineInit& init)
 {
-    if ((init.Flags & 0x80) && (init.Flags & 8)) {
+    if ((init.InitFlags & 0x80) && (init.InitFlags & 8)) {
         EffectSupported = true;
         Enable2DDisplacement = true;
         Enable3DDisplacement = true;

@@ -27,6 +27,12 @@ public:
     };
     CEngineMap(const CIDrawMap*,long,long,long,long,long,CCharString,bool);
     ~CEngineMap();
+#ifdef FABLE_RETAIL_CENGINEMAP_OPENDEVELOPMENTSTATICMAP
+    // NF65 overlay opt-in (row 0x00B42750 CEngineWorldMap::OpenStaticMaps): Ego_r.pdb 0x009E31E0
+    // ?OpenDevelopmentStaticMap@CEngineMap@@QAEXAAVCStaticMapBankFile@@W4STATIC_MAP_OPEN_STATE@1@@Z (public), out of line at 0x00B42530 (the
+    // landed self row). Declaration only.
+    void OpenDevelopmentStaticMap(class CStaticMapBankFile& file, STATIC_MAP_OPEN_STATE state);   // 0x00B42530
+#endif
 #ifdef FABLE_RETAIL_CENGINEMAP_ONGAMEMAPLOADED
     // NF56 opt-in (row 0x00B401E0 CEngineWorldMap::OnGameMapLoaded, which expands both): Ego_r.pdb / FableWin.pdb
     // ?SetGameMap@CEngineMap@@QAEXPBVCIDrawMap@@@Z (the GameMap +0x08 store) and ?OnGameMapLoaded@CEngineMap@@QAEXJ@Z (Ego_r.pdb 0x009DD5D0 /

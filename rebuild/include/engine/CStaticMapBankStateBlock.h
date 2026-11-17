@@ -8,6 +8,24 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSTATICMAPBANKSTATEBLOCK_CLASS
+// NF65 overlay opt-in (row 0x00B3FF70 CEngineWorldMap::CreateNewBankMap): the polymorphic retail class, RTTI
+// .?AVCStaticMapBankStateBlock@@ : CBankStateBlock (vtable 0x012A1F3C), 8 bytes: the base vptr + State (Ego_r.pdb CStateBlock, 4 bytes),
+// left uninitialised by the inline constructor (0x00B3FF70 stores only the vptr). Needs engine/CBankStateBlock.h first. The virtuals are
+// the base's (Ego_r.pdb CStaticMapBankStateBlock overrides), declared out of line.
+class CStaticMapBankStateBlock : public CBankStateBlock {
+public:
+    CStaticMapBankStateBlock() { }
+    virtual ~CStaticMapBankStateBlock();
+    virtual void GetDefault(CBankStateBlock& block);
+    virtual unsigned long CreateCRC();
+protected:
+    virtual void Set(const CBankStateBlock* block);
+public:
+    unsigned char State[0x4];                                // +0x04 CStateBlock
+};
+FABLE_STATIC_ASSERT(sizeof(CStaticMapBankStateBlock) == 0x8);
+#else
 #pragma pack(push, 1)
 class CStaticMapBankStateBlock {
 public:
@@ -19,5 +37,6 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CStaticMapBankStateBlock) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CStaticMapBankStateBlock, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CStaticMapBankStateBlock, State) == 0x4);
+#endif
 
 #endif // FABLE_ENGINE_CSTATICMAPBANKSTATEBLOCK_H

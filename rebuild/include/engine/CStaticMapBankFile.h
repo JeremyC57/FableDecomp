@@ -9,6 +9,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSTATICMAPBANKFILE_CLASS
+// NF65 overlay opt-in (row 0x00B3FF70): the retail class, RTTI .?AVCStaticMapBankFile@@ : CBankFileAsync : CBankFile, no own members
+// (retail sizeof 0x164 = engine/CBankFileAsync.h's). Needs the retail engine/CBankFileAsync.h class first.
+class CStaticMapBankFile : public CBankFileAsync {
+public:
+    virtual unsigned long GetDataFormatVersion();                        // FableWin.pdb ?GetDataFormatVersion@CStaticMapBankFile@@UAEKXZ
+};
+FABLE_STATIC_ASSERT(sizeof(CStaticMapBankFile) == 0x164);
+#else
 #pragma pack(push, 1)
 class CStaticMapBankFile {
 public:
@@ -37,5 +46,6 @@ public:
 
 FABLE_STATIC_ASSERT(sizeof(CStaticMapBankFile) == 0x164);
 FABLE_STATIC_ASSERT(offsetof(CStaticMapBankFile, __vftable) == 0x0);
+#endif
 
 #endif // FABLE_ENGINE_CSTATICMAPBANKFILE_H

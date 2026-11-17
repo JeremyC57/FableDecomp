@@ -37,6 +37,12 @@ class CAnimateThing {public:
  // (landed with that leaf). Declaration only.
  void ClearAllAnims();                                                 // 0x0070EC30
 #endif
+#ifdef FABLE_RETAIL_CANIMATETHING_CLEARQUEUES
+ // NF65 overlay opt-in (row 0x008DF3A0): the out-of-line member at 0x0070D510 that clears the current animation's two anim-set lists
+ // (+0x58 then a tail call for +0x64). DESCRIPTIVE name: the landed self row's catalog name CAnimateThing::ClearQueues (one address, one
+ // name); no PDB spelling is proven for it (Ego_r has ClearTransitionAnims / ClearCombinationAnims separately). Declaration only.
+ void ClearQueues();                                                   // 0x0070D510
+#endif
 #ifdef FABLE_RETAIL_CANIMATETHING_SETASFINISHED
  // Retail opt-in (agentNF11, row 0x00835E30): Ego_r.pdb / FableWin.pdb ?SetAsFinished@CAnimateThing@@QAEXXZ, out of line at 0x0070BE80
  // (landed with that leaf). Declaration only.

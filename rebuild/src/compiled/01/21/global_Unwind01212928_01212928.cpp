@@ -1,4 +1,4 @@
-// EH unwind funclet @ 0x01212928 of CItemAction::CItemAction (parent @ 0x00C1EEE0): VC7.1 emits the
+// EH unwind funclet @ 0x01212928 of CEventTriggerRef::CEventTriggerRef (parent @ 0x00C1EEE0): VC7.1 emits the
 // unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;
 // the linker placed Fable's blocks at 0x0121xxxx. This funclet is 11 bytes at +0x13 of the parent's
 // block and is produced by the parent's translation unit, included below (no code of its own).
@@ -7,4 +7,4 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x01212928, oracle length 11 bytes.
 // Grade: landed -- byte-exact (the parent's object, funclet block offset 0x13) and the parent's
 //        behaviour test PASS under the Linux lane (Wine + cl 13.10.3077).
-#include "../src/compiled/00/c1/CItemAction_CItemAction_00c1eee0.cpp"
+#include "../src/compiled/00/c1/CEventTriggerRef_CEventTriggerRef_00c1eee0.cpp"

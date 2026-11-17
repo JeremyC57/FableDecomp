@@ -1,0 +1,51 @@
+entry	queue_address	correct_symbol	status	binders_ported	note
+nf41:e101	0x00860060	??0CCreatureAction_GetOutOfBed@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z	blocked	1	binders done: 0x0085F6F0 ported (RM + PASS) and binds the queued by-reference ctor; left: the self row 0x00860060 (outside this slice) still declares the pointer-parameter ctor ??0CCreatureAction_GetOutOfBed@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@@Z (no Leaf line); engine/CCreatureAction_GetOutOfBed.h already says so
+nf41:e102	0x0091F990	??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	blocked	0	rows left: 0x00979F70 (blocked/port)
+nf41:e106	006622a0	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ	blocked	0	rows left: 0x00961880 (blocked/port) 0x009627C0 (blocked/port)
+nf41:e110	-	- (see the blocking agent's APPLIED.tsv for this entry)	blocked	0	rows left: 0x008B9E50 (blocked/port) 0x008F3630 (blocked/port)
+nf41:e120	0x00A23C50	?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z	blocked	0	rows left: 0x00BD1F70 (blocked/port)
+nf41:e132	007aed50	?ResetStrikesSinceHitHero@CTCBoss@@QAEXXZ	blocked	0	rows left: 0x0096C4F0 (blocked/port)
+nf41:e15	0x00815820	?GetPHitLocationWithDefName@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVCCharString@@@Z	done	1	all slice binders ported: 0x00972490
+nf41:e161	0x00F35B30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	blocked	0	rows left: 0x00EE2490 (blocked/port)
+nf41:e177	0x00A772D0	??0CNavNavigableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@_N@Z	blocked	0	rows left: 0x00A79A30 (blocked/port)
+nf41:e188	0x00A23C60	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ	blocked	0	rows left: 0x00BD1F70 (blocked/port)
+nf41:e2	0x008CE1B0	??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@M_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z	blocked	0	rows left: 0x008C2550 (blocked/port)
+nf41:e25	0x009D68B0	?AsyncUpdatePending@CBankFileAsync@@QAEXXZ	blocked	0	rows left: 0x009C8890 (blocked/port)
+nf41:e80	0x008112D0	?RemoveEvent@CTCEntityEvents@@QAEXAAVCEventBase@NEntityEvents@@@Z	blocked	0	rows left: 0x00915190 (blocked/port) 0x00921440 (blocked/port) 0x00966290 (blocked/port)
+nf41:e90	0x009CD620	?AddEntry@CBankFile@@QAEXABVCCharString@@K0V?$CCountedPointer@VCBankStateBlock@@@@@Z	done	1	all slice binders ported: 0x00B3FF70
+nf41:e93	00658e38	?GetNearestBuildingWithProperty@CTCVillage@@QAEPAVCThingBuilding@@ABVC3DVector@@W4ESimBuildingProperty@@@Z	blocked	0	rows left: 0x0090FAE0 (blocked/port) 0x0094B8B0 (blocked/port)
+nf44:10	007aed10	?GetBossPhase@CTCBoss@@QBEJXZ	blocked	0	rows left: 0x0096C4F0 (blocked/port)
+nf44:11	0x008AC890	??$remove_if@V?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@@?$list@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@V?$allocator@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@@std@@@std@@QAEXV?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@@Z	blocked	0	rows left: 0x008A7980 (blocked/port)
+nf44:117	0x00C16CE0	?RunBankProcessor@@YGXPAVCScriptHost@@PAUCBankData@@PAVCLoadLog@@PBUSBankRequest@@@Z	blocked	1	binders done: 0x00C17400 ported (RM + PASS) and binds ?RunBankProcessor@@YGXPAVCScriptHost@@PAUCBankData@@PAVCLoadLog@@PBUSBankRequest@@@Z (so does 0x00C16D90); left: the self row 0x00C16CE0 (outside this slice) still emits ?RunProcessor@@YGXPAVCScriptHost@@PAUCBankData@@PAVCLoadLog@@PBUSProcessorSettings_00c16ce0@@@Z (NAME_FIXES.tsv: re-author it as the 0x00C17640 TU with Leaf RunBankProcessor)
+nf44:120	0x00C17940	?ReadMetadataData@@YIPAUCBankData@@PAX@Z	rejected	1	rejected (as NF44 found): the retail trace string "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKSerialiseLoad.h" (0x012B2D0C) names the template and the landed self row 0x00C17940 is ??$PKSerialiseLoad@UCBankData@@@@YIPAUCBankData@@PAUIRemoteSource@@@Z; the only slice binder 0x00C17400 is ported and now binds that landed self spelling (was ?LookupSelectedWaypoint@@YIPAUCBankData@@PAUCScriptContext@@PAVCLoadLog@@@Z). The landed 0x00C17640 / 0x00C16F00 TUs still declare ReadMetadataData (NAME_FIXES.tsv)
+nf44:16	0x00AD7400	??1COptimisedVertex@QuadricOptimiserInternals@@QAE@XZ	blocked	0	rows left: 0x00AD85D0 (blocked/port)
+nf44:50	0x004AC940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	blocked	0	rows left: 0x008DDAD0 (blocked/port) 0x008E0060 (blocked/port)
+nf44:70	0x00BCE740	??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitiveAnimatedMesh@@PAVC3DPrimitive2@@W4ERenderMode@@_N@Z	blocked	0	rows left: 0x00BD1F70 (blocked/port)
+nf44:71	0x00BEBBB0	?IsSimulationRunning@CEngineInternalPrimitiveMeshBase@@QBE_NK@Z	blocked	0	rows left: 0x00BD1F70 (blocked/port)
+nf44:73	0x00BF18B0	?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z	blocked	0	rows left: 0x00BD1F70 (blocked/port)
+nf44:83	0x009FC3D0	?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z	blocked	0	rows left: 0x00A25BD0 (blocked/port) 0x00A42980 (blocked/port)
+nf44:95	0x00701750	?GetThingOpinionOfPlayer@COpinionReactionManager@@QBEMABVCThing@@W4EOpinion@@@Z	done	1	all slice binders ported: 0x008909F0
+nf44:98	0x008F8F50	?Send@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@ABULAddress@2@1@Z	blocked	0	rows left: 0x008F95D0 (blocked/port)
+nf45:29	-	- (see the blocking agent's APPLIED.tsv for this entry)	blocked	0	rows left: 0x00B32AD0 (blocked/port) 0x00B76BC0 (blocked/port) 0x00BB8090 (blocked/port)
+nf46:34	-	- (see the blocking agent's APPLIED.tsv for this entry)	blocked	0	rows left: 0x00B7FA20 (blocked/port)
+nf47:land1011fv	-	- (see the blocking agent's APPLIED.tsv for this entry)	blocked	0	rows left: 0x008AF850 (blocked/port)
+nf48:land1113fy+land1011fk	-	- (see the blocking agent's APPLIED.tsv for this entry)	blocked	0	rows left: 0x009CEAE0 (blocked/port)
+nf58:0x00869CA0	-	- (see the blocking agent's APPLIED.tsv for this entry)	blocked	0	rows left: 0x00869020 (blocked/port) 0x00869CA0 (blocked/port)
+nf58:0x009EF750	-	- (see the blocking agent's APPLIED.tsv for this entry)	done	2	all slice binders ported: 0x009EF750 0x009EFB80
+q10423	0x00B86A70	?InitialiseTextures@CEngineScreenEffectDisplacementRenderer@@AAE_NXZ	done	1	all slice binders ported: 0x00B86C00
+q10425	0x00B3E820	?SetLoadingMemoryPool@CBankFileAsync@@QAEXV?$CCountedPointer@VCMovableResourceMemoryPool@@@@@Z	done	1	all slice binders ported: 0x00B42750
+q10436	0x008F7950	?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	blocked	0	rows left: 0x008F7950 (blocked/port)
+q10459	0x009710D0	?RefreshCoverList@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ	blocked	0	rows left: 0x009790F0 (blocked/port) 0x0097A630 (blocked/port)
+q10463	0x008D3DD0	?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z	blocked	0	rows left: 0x008D3DD0 (blocked/port)
+q10475	0x009F6720	?_Destroy_Record34@@YIXPAVCInputEvent@@0@Z	blocked	0	rows left: 0x009F6890 (blocked/port)
+q10478	0x00A23C60	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ	blocked	0	rows left: 0x00B9E950 (blocked/port)
+q10481	0x00C30F60	?ReadBankData@@YIXPAXPAUCBankData@@KPAVCLoadLog@@@Z	done	1	all slice binders ported: 0x00C16D90
+q10482	0x00C21C20	-	blocked	0	rows left: 0x00C21C20 (blocked/authoring) 0x00C12940 (blocked/authoring)
+q10484	0x00C3B0E0	?Add@CSampleIndexMap@@QAEXPAVCLoadLog@@PAXK@Z (class from libpk/CBankProcessor.h, descriptive libpk name)	done	1	all slice binders ported: 0x00C2E190
+q10488	0x00C1EEE0	??0CEventTriggerRef@@QAE@PAVCNamedSet@@VCString@@_N@Z	done	2	all slice binders ported: 0x00C1EEE0 0x00C2E7A0
+q10489	0x00C1F4E0	?InsertDriver@CEventTriggerRef@@QAEJKPAX@Z	done	2	all slice binders ported: 0x00C1F4E0 0x00C2E4D0
+q10495	0x00C497E0	class CCodaFrame (libpk/CCodaFrameStreamer.h key); 0x00C497E0 = ?OnFrameDone@CCodaFrameStreamer@@SGXPAX0PAV1@@Z (descriptive libpk)	blocked	0	rows left: 0x00C49820 (blocked/port)
+q10496	0x008DF3A0	?Recover@CModeScorpionKingVulnerable@NCreatureMode@@AAEXXZ (the Leaf line is right; the row does not emit it)	done	1	all slice binders ported: 0x008DF3A0
+q10541	0x0143E90C	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A	blocked	0	rows left: 0x00E12580 (blocked/port) 0x00EDA8C0 (blocked/port) 0x00EE2A80 (outside this slice)
+q10502	0x006A0150	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z	blocked	0	rows left: 0x006A0150 (blocked/port)
+nf44:114	0x00C17640	?OpenBankFile@@YI_NPAVPKCFileManager@@PBGPAVCScriptHost@@PBUSBankRequest@@@Z	blocked	0	rows left: 0x00C08D40 (blocked/port)

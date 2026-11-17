@@ -1,0 +1,23 @@
+addr       parity           behav  name
+008909f0   RELOCATION_MATCH PASS   EntityGetOpinionOfPlayer
+009ef750   WARN STANDIN_LEAF ?_M_insert@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@2@0@Z (catalog std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase> >, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > >, std::less<CCharString >, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > > >::_M_insert; names another function)
+009ef750   RELOCATION_MATCH PASS   _M_insert
+00b42750   WARN RELOC_NAME: ?OpenStaticMapsUsingCommonRetailHeader@CEngineWorldMap@@AAEXJ@Z -> 00b420f0 labelled 'CEngineWorldMap::OpenMapFile'
+00b42750   RELOCATION_MATCH PASS   OpenStaticMaps
+00c17400   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c17400   WARN RELOC_NAME: ?RunBankProcessor@@YGXPAVCScriptHost@@PAUCBankData@@PAVCLoadLog@@PBUSBankRequest@@@Z -> 00c16ce0 labelled 'RunProcessor'
+00c17400   RELOCATION_MATCH PASS   ReadMetadataBank
+00c2e190   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c2e190   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c2e190   RELOCATION_MATCH PASS   AddSample
+01211dc1   RELOCATION_MATCH PASS   Unwind@01211dc1
+0121291d   RELOCATION_MATCH PASS   Unwind@0121291d
+
+WINS: 7
+  008909f0 RELOCATION_MATCH CGameScriptInterface::EntityGetOpinionOfPlayer
+  009ef750 RELOCATION_MATCH std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase> >, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > >, std::less<CCharString >, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > > >::?_M_insert@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@2@0@Z
+  00b42750 RELOCATION_MATCH CEngineWorldMap::?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z
+  00c17400 RELOCATION_MATCH _global::?ReadMetadataBank@@YGXPAVCLoadLog@@PAXPAVCScriptHost@@PBUSBankRequest@@@Z
+  00c2e190 RELOCATION_MATCH CBankProcessor::AddSample
+  01211dc1 RELOCATION_MATCH _global::Unwind@01211dc1
+  0121291d RELOCATION_MATCH _global::Unwind@0121291d

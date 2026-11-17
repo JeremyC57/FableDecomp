@@ -7,6 +7,11 @@
 class CAIStateGroup_JackOfBladesStage2:public CAIStateGroup_JackOfBladesBase {
 public:
  virtual void Update();
+#ifdef FABLE_RETAIL_JACK_STAGE2_ONACTIVATE
+ // NF65 overlay opt-in (row 0x00972490): Ego_r.pdb 0x00997410 ?OnActivate@CAIStateGroup_JackOfBladesStage2@@UAEXXZ (public virtual, the
+ // CAIStateGroupBase slot-2 override). Declaration only.
+ virtual void OnActivate();
+#endif
 protected:
  CIntelligentPointer<CThing> PCutsceneLookAtMarker;   // +0x4c
 };

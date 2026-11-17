@@ -35136,13 +35136,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009ef430	~CRetailTree_erase009eecc0	CRetailTree_erase009eecc0	unknown	undefined	0		0	yes	accepted									
 009ef4d0	insert_unique	std::_Rb_tree<char, std::pair<char const, CCharString>, std::_Select1st<std::pair<char const, CCharString>>, std::less<char>, std::allocator<std::pair<char const, CCharString>>>	unknown	undefined	0		0	yes	accepted									
 009ef6e0	_M_erase	std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase>>, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase>>>>	unknown	undefined	0		0	yes	accepted									
-009ef750	InsertNode	CCacheInfo	unknown	undefined	0		0	yes	accepted									
+009ef750	_M_insert	std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase> >, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > >, std::less<CCharString >, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > > >	unknown	undefined	0		0	yes	accepted									
 009ef870	map	std::map<char, CCharString, std::less<char>, std::allocator<std::pair<char const, CCharString>>>	unknown	undefined	0		0	yes	accepted									
 009ef8b0	~CRetailTree_erase009eecc0	CRetailTree_erase009eecc0	unknown	undefined	0		0	yes	accepted									
 009ef900	_M_insert_overflow	std::vector<EGenericVarType, std::allocator<EGenericVarType>>	unknown	undefined	0		0	yes	accepted									
 009efa10	RbTree_Clear_009efa10	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CTCCarryable_OnKill_009efa10.cpp
 009efa50	vector_insert_fill_range	std::std	unknown	undefined	0		0	yes	accepted									
-009efb80	insert_unique	CacheTree::std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
+009efb80	insert_unique	std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase> >, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > >, std::less<CCharString >, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > > >	unknown	undefined	0		0	yes	accepted									
 009efcf0	operator[]	std::map<char, CCharString, std::less<char>>	unknown	undefined	0		0	yes	accepted									
 009efdb0	RbTree_Clear_009efdb0	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CTCCarryable_OnKill_009efdb0.cpp
 009efdf0	push_back	std::vector<CGenericVar, std::allocator<CGenericVar>>	unknown	undefined	0		0	yes	accepted									
@@ -44286,12 +44286,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c16b10	CDefString_GetBuffer	_global	unknown	undefined	0		0	yes	accepted									
 00c16c10	HasBankSegments	_global	unknown	undefined	0		0	yes	accepted									
 00c16ce0	RunProcessor	_global	unknown	undefined	0		0	yes	accepted									
-00c16d90	ProcessEntry	_global	unknown	undefined	0		0	yes	accepted									
+00c16d90	ProcessBankEntry	_global	unknown	undefined	0		0	yes	accepted									
 00c16e10	ReadBankInfoCount	_global	unknown	undefined	0		0	yes	accepted									
 00c16f00	LHAudioBank_ReadMurderTwistData	_global	unknown	undefined	0		0	yes	accepted									
 00c17260	LoadBank	_global	__thiscall	void	1	CAIStateGroup_MeleeCombatNearbyBase *	1	yes	accepted									
 00c172f0	Process_00c172f0	_global	unknown	undefined	0		0	yes	accepted									
-00c17400	DeleteTrackNodeCommand	_global	__thiscall	void	1	CEditControlCentre *	1	yes	accepted									
+00c17400	ReadMetadataBank	_global	__thiscall	void	1	CEditControlCentre *	1	yes	accepted									
 00c174a0	BankFile_LoadAndValidateFormat	_global	unknown	undefined	0		0	yes	accepted									
 00c17640	Process_BankFileWithGraphicsSetup	_global	unknown	undefined	0		0	yes	accepted									
 00c17740	GetChecked	CAutoDeletePointer	unknown	undefined	0		0	yes	accepted									
@@ -44576,7 +44576,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c1ee00	CDateAndTime	CDateAndTime	__thiscall	undefined	8	CDateAndTime *,long,ulong,ulong,ulong,ulong,ulong,ulong	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CDateAndTime_CDateAndTime_00c1ee00.cpp
 00c1ee30	GetDriverCount	CEventTriggerRef	__thiscall	long	1	CMap *	1	yes	accepted									
 00c1ee60	CItemAction	CItemAction	unknown	undefined	0		0	yes	accepted									
-00c1eee0	CItemAction	CItemAction	unknown	undefined	0		0	yes	accepted									
+00c1eee0	CEventTriggerRef	CEventTriggerRef	unknown	undefined	0		0	yes	accepted									
 00c1efc0	Create	CFactory	unknown	undefined	0		0	yes	accepted									
 00c1f320	SetTypeBits	CItemAction	unknown	undefined	0		0	yes	accepted									
 00c1f380	SetVariant2	CItemAction	unknown	undefined	0		0	yes	accepted									
@@ -44584,7 +44584,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c1f400	SetVariant1	CItemAction	unknown	undefined	0		0	yes	accepted									
 00c1f440	SetFamily1	CItemAction	unknown	undefined	0		0	yes	accepted									
 00c1f480	Run	CItemAction	unknown	undefined	0		0	yes	accepted									
-00c1f4e0	Handle	CItemAction	unknown	undefined	0		0	yes	accepted									
+00c1f4e0	InsertDriver	CEventTriggerRef	unknown	undefined	0		0	yes	accepted									
 00c1f540	SetMemberConst_00c1f540	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CBase_CBase_00c1f540.cpp
 00c1f550	~CVtable_012b3420_Derived_00c1f550	_unattributed	__thiscall	void	1	CPredicate_And<NScript::CIsThingAlive,NScript::CIsVariableFalse> *	1	yes	accepted									
 00c1f5a0	~CVtable_012b3420_Derived_00c1f5a0	_unattributed	__thiscall	void	1	CPredicate_And<NScript::CIsThingAlive,NScript::CIsVariableFalse> *	1	yes	accepted									

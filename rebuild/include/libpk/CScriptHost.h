@@ -61,6 +61,12 @@ public:
  long Deferred,HighestPriority;
  unsigned char Unrecovered50[0x54];
  void QueueEvent(long key,long offset,long length);
+#ifdef FABLE_RETAIL_CSCRIPTHOST_CREATESAMPLE
+ // NF65 overlay opt-in (row 0x00C2E190 CBankProcessor::AddSample): the landed self row's spelling
+ // ?CreateSample@CScriptHost@@QAEPAUCSample@@PBUCAudioFormat@@K@Z (0x00C0E700: `new` of a 0x24-byte sample from the format and the data
+ // offset; descriptive, libpk has no PDB). The includer defines CAudioFormat. Declaration only.
+ struct CSample* CreateSample(const struct CAudioFormat* format, unsigned long dataOffset);   // 0x00C0E700
+#endif
 };
 long __fastcall ReadBankInfoCount(CSegmentFile* file);
 // ECX is not consumed by native C16F00. The conventional source has an

@@ -22,13 +22,24 @@
 #ifndef FABLE_LIBPK_CITEM_H
 #define FABLE_LIBPK_CITEM_H
 #include "libpk/PKCTRList.h"
+#ifdef FABLE_RETAIL_CNAMEDITEM_CTOR
+#include "engine/CString.h"
+#endif
 
 class CItemTable {                                  // the table interface (vtable 0x012B3444)
 public:
     virtual unsigned long GetType() = 0;            // slot 0
     virtual long v01();
     virtual long v02();
-    virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
+#ifdef FABLE_RETAIL_CITEMTABLE_INSERT
+    // NF65 overlay opt-in (row 0x00C1F4E0 CEventTriggerRef::InsertDriver): slot 3 (+0x0c) takes (index, pointer) and returns a long (negative
+    // on failure); the trigger's insertion dispatcher forwards both arguments to it (0x00C1F4F7 `push edi ; push ebx ; mov ecx,eax ; call [edx+0Ch]`).
+    // DESCRIPTIVE name (libpk has no PDB). Same slot position.
+    virtual long Insert(unsigned long index, void* value);   // slot 3 (+0x0c)
+#else
+    virtual void v03();
+#endif
+    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void Validate();                        // slot 9 (+0x24): 0x00C348F0
 };
 
@@ -56,6 +67,11 @@ public:
 };
 
 struct CItemDispatcher : public PKCTRList<CItem> { // the id-keyed item list (+0) ...
+#ifdef FABLE_RETAIL_CITEMDISPATCHER_FINDITEM
+    // NF65 overlay opt-in (row 0x00C2E4D0): the id lookup 0x00C10140 (slot 17 FindByKey by key address), the spelling the landed
+    // 0x00C1EE60 binds (?FindItem@CItemDispatcher@@QAEPAUCItem@@J@Z; descriptive, libpk has no PDB). Declaration only.
+    CItem* FindItem(long key);                      // 0x00C10140
+#endif
     unsigned char m_impl[8];                        // +0x08 its embedded morphable container
     CItemNameIndex m_names;                         // +0x10 ... and the name-hash index
 };
@@ -85,6 +101,14 @@ struct CVtable_012b3504 : public CItem {      // vtable 0x012B3504 (key 1)
 };
 
 struct CHashedItem : public CItem {           // vtable 0x012B3474 (key 2)
+#if defined(FABLE_RETAIL_CHASHEDITEM_CTOR) || defined(FABLE_RETAIL_CNAMEDITEM_CTOR)
+    // NF65 overlay opt-in (row 0x00C1EEE0 CEventTriggerRef::CEventTriggerRef): the hash-keyed item's constructor (the landed self row's
+    // spelling ??0CHashedItem@@QAE@K@Z, 0x00C1F640) and its 0x10-byte layout (0x00C1EEE0 `push 10h ; call operator new`): the key hash
+    // +4 and the 8-byte table member +8 (slot 5 GetTable answers `lea eax,[ecx+8]`). Declaration only.
+    CHashedItem(unsigned long hash);                // 0x00C1F640
+    unsigned long m_hash;                           // +0x04
+    unsigned char m_table[8];                       // +0x08
+#endif
     virtual void Validate();                        // slot 3
     virtual void Attach(CItemDispatcher* dispatcher);   // slot 6
     virtual void Detach(CItemDispatcher* dispatcher);   // slot 7
@@ -110,6 +134,12 @@ struct CPointerBase_00c1fe00 : public CItem { // vtable 0x012B3570 (key 2)
 
 // key 3 (named) classes: derived from the key-2 ones, with their own slots 2 / 3 / 4 (chunk 899 landed their Validate).
 struct CNamedItem : public CHashedItem {                      // vtable 0x012B3600
+#ifdef FABLE_RETAIL_CNAMEDITEM_CTOR
+    // NF65 overlay opt-in (row 0x00C1EEE0): the named item's constructor (the landed self row's spelling ??0CNamedItem@@QAE@ABVCString@@K@Z,
+    // 0x00C20230) and the kept name +0x10 (0x14 bytes: 0x00C1EEE0 `push 14h ; call operator new`). Declaration only.
+    CNamedItem(const CString& name, unsigned long hash);   // 0x00C20230
+    CString m_name;                                 // +0x10
+#endif
     virtual void Validate();                        // slot 3: 0x00C202C0
 };
 

@@ -238615,9 +238615,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ef750'
-        Module = 'CConsoleInputMap'
-        Source = '00/9e/CConsoleInputMap_InsertNode_009ef750.cpp'
-        TestSource = '00/9e/CConsoleInputMap_InsertNode_009ef750_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase> >, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > >, std::less<CCharString >, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > > >'
+        Source = '00/9e/stdRbtree_Minsert_009ef750.cpp'
+        TestSource = '00/9e/stdRbtree_Minsert_009ef750_test.cpp'
         PassPattern = '009ef750_TEST PASS'
     }
     [pscustomobject]@{
@@ -275835,9 +275835,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009efb80'
-        Module = '_global'
-        Source = '00/9e/global_CCacheInfoInsertOrFind_009efb80.cpp'
-        TestSource = '00/9e/global_CCacheInfoInsertOrFind_009efb80_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase> >, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > >, std::less<CCharString >, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > > >'
+        Source = '00/9e/stdRbtree_insertunique_009efb80.cpp'
+        TestSource = '00/9e/stdRbtree_insertunique_009efb80_test.cpp'
         PassPattern = '009efb80_TEST PASS'
     }
     [pscustomobject]@{
@@ -304710,9 +304710,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c1eee0'
-        Module = 'CItemAction'
-        Source = '00/c1/CItemAction_CItemAction_00c1eee0.cpp'
-        TestSource = '00/c1/CItemAction_CItemAction_00c1eee0_test.cpp'
+        Module = 'CEventTriggerRef'
+        Source = '00/c1/CEventTriggerRef_CEventTriggerRef_00c1eee0.cpp'
+        TestSource = '00/c1/CEventTriggerRef_CEventTriggerRef_00c1eee0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c1eee0_TEST PASS'
     }
@@ -304732,9 +304732,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c1f4e0'
-        Module = 'CItemAction'
-        Source = '00/c1/CItemAction_Handle_00c1f4e0.cpp'
-        TestSource = '00/c1/CItemAction_Handle_00c1f4e0_test.cpp'
+        Module = 'CEventTriggerRef'
+        Source = '00/c1/CEventTriggerRef_InsertDriver_00c1f4e0.cpp'
+        TestSource = '00/c1/CEventTriggerRef_InsertDriver_00c1f4e0_test.cpp'
         PassPattern = '00c1f4e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -367849,8 +367849,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c16d90'
         Module = '_global'
-        Source = '00/c1/global_ProcessEntry_00c16d90.cpp'
-        TestSource = '00/c1/global_ProcessEntry_00c16d90_test.cpp'
+        Source = '00/c1/global_ProcessBankEntry_00c16d90.cpp'
+        TestSource = '00/c1/global_ProcessBankEntry_00c16d90_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c16d90_TEST PASS'
     }
@@ -367865,8 +367865,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c17400'
         Module = '_global'
-        Source = '00/c1/global_DeleteTrackNodeCommand_00c17400.cpp'
-        TestSource = '00/c1/global_DeleteTrackNodeCommand_00c17400_test.cpp'
+        Source = '00/c1/global_ReadMetadataBank_00c17400.cpp'
+        TestSource = '00/c1/global_ReadMetadataBank_00c17400_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c17400_TEST PASS'
     }

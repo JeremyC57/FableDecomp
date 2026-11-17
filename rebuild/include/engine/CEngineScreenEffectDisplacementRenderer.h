@@ -27,6 +27,9 @@ class CTexture;
 #ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_FINISHSTENCIL
 #include "engine/CRenderStateCaptureBlock.h"
 #endif
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_OLDRENDERTARGET
+#include "engine/CRenderTarget.h"
+#endif
 class CEngineScreenEffectDisplacementRenderer : public CEngineComponent {
 public:
     CEngineScreenEffectDisplacementRenderer(const CEngineInit&); // 0x00B86C00 ??0CEngineScreenEffectDisplacementRenderer@@QAE@ABVCEngineInit@@@Z
@@ -69,7 +72,13 @@ private:
     bool            EffectSupported;                         // +0xed
     bool            Enable2DDisplacement;                    // +0xee
     bool            Enable3DDisplacement;                    // +0xef
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_OLDRENDERTARGET
+    // NF65 overlay opt-in (row 0x00B86C00, the constructor builds it: CBaseClass + two CSurface): Ego_r.pdb OldRenderTarget, typed on
+    // engine/CRenderTarget.h (0x24 bytes). Same size and offsets.
+    CRenderTarget   OldRenderTarget;                         // +0xf0
+#else
     unsigned char   OldRenderTarget[0x24];                   // +0xf0 CRenderTarget (no header)
+#endif
     long            OldViewport_TLX;                         // +0x114 C2DBoxI OldViewport
     long            OldViewport_TLY;                         // +0x118
     long            OldViewport_BRX;                         // +0x11c

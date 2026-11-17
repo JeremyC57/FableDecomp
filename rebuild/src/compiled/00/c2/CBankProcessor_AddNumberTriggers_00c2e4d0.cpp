@@ -4,8 +4,8 @@
 // Owner: the libpk bank processor (constructed at 0x00C2E0C0, run step by step by 0x00C2EB00, which tests the log's
 //   IsOk @ 0x00C307C0 after each step): data +0x00, sound manager +0x04, log +0x08, driver map +0x0C, sample map +0x3C,
 //   criteria-trigger registry +0x6C, number-trigger registry +0x70, option bytes +0x74..+0x7A. No PDB covers libpk: names are descriptive.
-// Caller: 0x00C2EB42. Callees: the driver list's GetCount / GetItem (slots 15 / 13), the driver map's Find @ 0x00C3ABD0, the
-//   registry's Find(number) @ 0x00C10140 (slot 17 by key address; landed label "CDataOutputStream::WriteCBYTE" is propagated),
+// Caller: 0x00C2EB42. Callees: the driver list's GetCount / GetItem (slots 15 / 13), the driver map's Get @ 0x00C3ABD0, the
+//   registry's FindItem(number) @ 0x00C10140 (slot 17 by key address; landed label "CDataOutputStream::WriteCBYTE" is propagated),
 //   the trigger reference's constructor @ 0x00C1EE60 (registry, number: finds the trigger or `new`s a 16-byte one, ctor
 //   0x00C1F720, and registers it), GetDriverCount @ 0x00C1EE30 and InsertDriver(position, driver) @ 0x00C1F4E0 (grows the
 //   trigger's driver list and retries when the insert fails), the log's AddMessage @ 0x00C307E0 and the stream operators.
@@ -15,81 +15,30 @@
 //   aligned frame (ebp then also serves as the loop index); its destructor is trivial. The append is
 //   `InsertDriver(GetDriverCount(), driver)`: the driver is pushed first, then the count is computed (right-to-left
 //   arguments). The two messages share their `<< number` tail (VC cross-jumps the second into the first).
-class CString {                              // libpk message text (0x00C0DEA0 / 0x00C0DEC0 / 0x00C0DF10 = CString::operator<<)
-public:
-    char* m_pchData;
-    CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
-    CString& __fastcall operator<<(unsigned long value);    // 0x00C0DF10
-};
-
-struct CLoadLog {
-    CString& AddMessage();                   // 0x00C307E0 ?AddMessage@CLoadLog@@QAEAAVCString@@XZ
-};
-
-struct SSampleHeader;
-struct CEventRecord;
-struct SDriverRecord {
-    unsigned long m_number;                  // +0x00
-};
-
-template <class T>
-struct CRecordList {                         // the bank data's polymorphic record lists (0x10 bytes)
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual void v10(); virtual void v11(); virtual void v12();
-    virtual T* GetItem(unsigned long index);   // slot 13 (+0x34)
-    virtual void v14();
-    virtual unsigned long GetCount();          // slot 15 (+0x3c)
-    unsigned char _body[0x0c];
-};
-
-struct CBankData {
-    CRecordList<SSampleHeader> m_samples;    // +0x00
-    CRecordList<SDriverRecord> m_drivers;    // +0x10
-    CRecordList<CEventRecord>  m_events;     // +0x20
-};
-
-struct CDriver;
-struct CEventTrigger;
-
-struct CNumberTriggerRegistry {
-    CEventTrigger* Find(unsigned long number);   // 0x00C10140
-};
-
-struct CEventTriggerRef {                    // 8 bytes: the registry and the trigger it found or created
-    CEventTriggerRef(CNumberTriggerRegistry* registry, unsigned long number);   // 0x00C1EE60
-    unsigned long GetDriverCount();          // 0x00C1EE30
-    void InsertDriver(unsigned long position, CDriver* driver);   // 0x00C1F4E0
-    void*          m_pRegistry;              // +0x00
-    CEventTrigger* m_pTrigger;               // +0x04
-};
-
-struct CDriverMap {                          // number -> driver (0x30 bytes)
-    CDriver* Find(unsigned long number);     // 0x00C3ABD0
-    unsigned char _body[0x30];
-};
-
-struct CBankProcessor {
-    CBankData*              m_pData;         // +0x00
-    void*                   m_pManager;      // +0x04
-    CLoadLog*               m_pLog;          // +0x08
-    CDriverMap              m_drivers;       // +0x0C
-    unsigned char           _pad_0x3c[0x30]; // +0x3C the sample map
-    void*                   m_pCriteriaTriggers;   // +0x6C
-    CNumberTriggerRegistry* m_pNumberTriggers;     // +0x70
-    void AddNumberTriggers();
-};
+// NF65 (round 7): ported onto libpk/CBankProcessor.h (CBankProcessor / CBankData / CBankRecordList<SDriverRecord> GetCount / GetItemByIndex,
+//   CIndexMap_00c3abd0::Get, CEventTriggerRef GetDriverCount / InsertDriver; overlay opt-ins FABLE_RETAIL_CBANKPROCESSOR_NUMBERTRIGGERS (the
+//   +0x70 registry typed CItemDispatcher*) and FABLE_RETAIL_CEVENTTRIGGERREF_NUMBERCTOR (the 0x00C1EE60 ctor)), libpk/CItem.h (CItemDispatcher;
+//   overlay opt-in FABLE_RETAIL_CITEMDISPATCHER_FINDITEM for 0x00C10140), libpk/CScriptHost.h CLoadLog and engine/CString.h; the local
+//   CString / CLoadLog / SDriverRecord / CRecordList / CBankData / CNumberTriggerRegistry / CEventTriggerRef / CDriverMap / CBankProcessor
+//   models are gone. InsertDriver now binds ?InsertDriver@CEventTriggerRef@@QAEJKPAX@Z (was ...QAEXKPAUCDriver@@@Z).
+#define FABLE_RETAIL_BANK_SAMPLE_TRIGGERS_PASS23
+#define FABLE_RETAIL_CBANKPROCESSOR_NUMBERTRIGGERS
+#define FABLE_RETAIL_CBANKPROCESSOR_STEPS
+#define FABLE_RETAIL_CEVENTTRIGGERREF_NUMBERCTOR
+#define FABLE_RETAIL_CITEMDISPATCHER_FINDITEM
+#include "libpk/CItem.h"
+#include "libpk/CBankProcessor.h"
 
 void CBankProcessor::AddNumberTriggers()
 {
     if (!m_pNumberTriggers)
         return;
     for (unsigned long i = 0; i < m_pData->m_drivers.GetCount(); ++i) {
-        SDriverRecord* record = m_pData->m_drivers.GetItem(i);
-        CDriver* driver = m_drivers.Find(record->m_number);
+        SDriverRecord* record = m_pData->m_drivers.GetItemByIndex(i);
+        void* driver = m_drivers.Get(record->m_number);
         if (!driver)
             m_pLog->AddMessage() << "Could not find driver number " << record->m_number;
-        else if (m_pNumberTriggers->Find(record->m_number))
+        else if (m_pNumberTriggers->FindItem(record->m_number))
             m_pLog->AddMessage() << "Duplicate event trigger for number " << record->m_number;
         else {
             CEventTriggerRef trigger(m_pNumberTriggers, record->m_number);
