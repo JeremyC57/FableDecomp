@@ -28,9 +28,10 @@ class CTCBase;
 #include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-struct CTCPCScoreboard {
-    void Close();                                    // 0x00562E70
-};
+// NF70 (round 7, land1117fu q10739): the CTCPCScoreboard stand-in is CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h, NF62's
+//   FABLE_RETAIL_CTCHEROONLINESCOREBOARD_CLOSE): the Ego_r.pdb / FableWin.pdb ?Close@CTCHeroOnlineScoreboard@@QAEXXZ 0x00562E70.
+#define FABLE_RETAIL_CTCHEROONLINESCOREBOARD_CLOSE
+#include "engine/CTCHeroOnlineScoreboard.h"
 
 class CTCInventory { public:
     virtual void v00();
@@ -40,7 +41,7 @@ class CTCInventory { public:
 
 void CTCInventory::ClosePCScoreboard()
 {
-    CTCPCScoreboard* scoreboard;
+    CTCHeroOnlineScoreboard* scoreboard;
     ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
     scoreboard->Close();
 }

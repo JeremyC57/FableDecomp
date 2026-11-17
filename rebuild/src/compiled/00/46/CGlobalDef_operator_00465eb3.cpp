@@ -11,6 +11,8 @@
 // strings/containers through their out-of-line operator=.
 #pragma optimize("s", on)
 
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CConversationCameraMap are now the STLport std::map<long, CCharString> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -34,12 +36,6 @@ class CEngineGraphic { public:                 // 14 bytes, copied as 3 dwords +
 };
 #pragma pack(pop)
 
-struct CConversationCameraMap {         // retail map<long,CCharString> (12 bytes)
-    void* m_first;
-    void* m_last;
-    void* m_end;
-    CConversationCameraMap& operator=(const CConversationCameraMap& other);   // 0x00466152
-};
 
 struct CStringVector {                  // retail std::vector<CCharString> (12 bytes)
     void* m_first;
@@ -97,7 +93,7 @@ class CGlobalDef : public CParentDefClassBase { public:// vtable 0x01234C8C
     long                   E3BodgeFireflyGraphic;                               // +0xd4
     CEngineGraphic         SwitchGraphic;                                       // +0xd8
     CEngineGraphic         TrackGraphic;                                        // +0xe6
-    CConversationCameraMap ConversationCameras;                                 // +0xf4
+    std::map<long, CCharString> ConversationCameras;                                 // +0xf4
     CStringVector          PermittedAINarrators;                                // +0x100
     CDialogueLayerVector   DialogueLayers;                                      // +0x10c
     long                   OpinionDebugIndicatorIcon;                           // +0x118

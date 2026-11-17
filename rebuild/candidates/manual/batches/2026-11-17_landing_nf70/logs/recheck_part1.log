@@ -1,0 +1,94 @@
+addr       parity           behav  name
+  WARN leaf 'Copy' matches no symbol in 0045c2e8.obj; graded the largest function
+  WARN leaf 'Copy' matches no symbol in 0045c2e8.obj; graded the largest function
+0045c2e8   WARN STANDIN_LEAF ??4CCombatTypeDef@@QAEAAV0@ABV0@@Z (catalog CCombatTypeDef::Copy; names another function)
+0045c2e8   RELOCATION_MATCH PASS   Copy
+0045c79e   RELOCATION_MATCH PASS   operator=
+  WARN leaf 'operator=' matches no symbol in 0045e187.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045e187.obj; graded the largest function
+0045e187   RELOCATION_MATCH PASS   operator=
+00461344   RELOCATION_MATCH PASS   operator=
+00462451   WARN SHARED_HEADER_AVAILABLE CDefString
+  WARN leaf 'operator=' matches no symbol in 00462451.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00462451.obj; graded the largest function
+00462451   RELOCATION_MATCH PASS   operator=
+004e4299   WARN SHARED_HEADER_AVAILABLE CDefString
+004e4299   RELOCATION_MATCH PASS   operator=
+004e54ad   RELOCATION_MATCH PASS   Copy
+004e64f3   RELOCATION_MATCH PASS   operator=
+004e9813   RELOCATION_MATCH PASS   operator=
+004ec219   RELOCATION_MATCH PASS   operator=
+004f9763   RELOCATION_MATCH PASS   _M_create_node
+0053c91c   WARN RELOC_NAME: ??$__find@PAPAVCComponent@NUISystem@@PAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@0ABQAV12@ABUrandom_access_iterator_tag@0@@Z -> 00535fe4 labelled 'std::__find<NUISystem::CComponent **, NUISystem::CComponent *>'
+0053c91c   RELOCATION_MATCH PASS   CComponent*>
+00584af6   WARN SHARED_HEADER_AVAILABLE CTCInventory
+00584af6   RELOCATION_MATCH PASS   ClosePCScoreboard
+0063a7e0   RELOCATION_MATCH PASS   GetThemeSizeZAtBlock
+00662450   RELOCATION_MATCH PASS   SetPItemToUnsheatheAfterCutscene
+00687bd0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00687bd0   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+00687bd0   RELOCATION_MATCH PASS   IsEventButtonHeld
+00693250   RELOCATION_MATCH PASS   GetPActionAnimSet
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CWorld
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0069a8b0   RELOCATION_MATCH PASS   PushCombatCameraMode
+0069fce0   WARN SHARED_HEADER_AVAILABLE C3DVector
+0069fce0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0069fce0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0069fce0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0069fce0   WARN RELOC_NAME: ?CanBeUsedFromDummy@CTCActionUse@@QBE_NXZ -> 007eabe0 labelled '_global::GetMember_dword0xc_derefbyte0x2c_007eabe0'
+0069fce0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+0069fce0   RELOCATION_MATCH PASS   FrameUpdate
+0072dd60   RELOCATION_MATCH PASS   AddThingToOwnerTC
+0073ae10   RELOCATION_MATCH PASS   AddMode
+007e2600   WARN SHARED_HEADER_AVAILABLE CTCElectrocutedEffect
+007e2600   WARN SHARED_HEADER_AVAILABLE CThing
+007e2600   WARN SHARED_HEADER_AVAILABLE CTCElectrocuteOnTouch
+007e2600   RELOCATION_MATCH PASS   OnHit
+0081fa20   RELOCATION_MATCH PASS   GetThemeSizeZOffsetAt
+008388d0   RELOCATION_MATCH PASS   ConstructFromParams
+00859d80   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00859d80   RELOCATION_MATCH PASS   FrameUpdate
+00a8b820   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00a8b820   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00a8b820   WARN SHARED_HEADER_AVAILABLE C3DDummyObject
+00a8b820   WARN SHARED_HEADER_AVAILABLE C3DMeshStats
+00a8b820   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2
+00a8b820   WARN SHARED_HEADER_AVAILABLE C3DBone2
+00a8b820   RELOCATION_MATCH PASS   RemapBoneIndices
+00adc0d0   RELOCATION_MATCH PASS   Copy_SArrayTreePair18_00adc0d0
+00c10140   MATCH            PASS   FindItem
+
+WINS: 28
+  0045c2e8 RELOCATION_MATCH CCombatTypeDef::Copy
+  0045c79e RELOCATION_MATCH std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1st<std::pair<unsigned long const, long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, long> > >::??4?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEAAV01@ABV01@@Z
+  0045e187 RELOCATION_MATCH COpinionDeedMaskDef::operator=
+  00461344 RELOCATION_MATCH CArmourDef::??4CArmourDef
+  00462451 RELOCATION_MATCH CMeleeCombatAbilityDef::operator=
+  004e4299 RELOCATION_MATCH CQuestCardDef::??4CQuestCardDef
+  004e54ad RELOCATION_MATCH CHeroSuitDef::?Copy@CHeroSuitDef@@UAEXPBVCDefClassBase@@@Z
+  004e64f3 RELOCATION_MATCH CRumbleDef::??4CRumbleDef@@QAEAAV0@ABV0@@Z
+  004e9813 RELOCATION_MATCH CShopDef::??4CShopDef
+  004ec219 RELOCATION_MATCH std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CDefString>, std::_Select1st<std::pair<EObjectAugmentationType const, CDefString> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, CDefString> > >::??4?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@VCDefString@@@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@VCDefString@@@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@VCDefString@@@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  004f9763 RELOCATION_MATCH std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >::?_M_create_node@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@ABU?$pair@$$CBJVCComboMultiplierData@@@2@@Z
+  0053c91c RELOCATION_MATCH std::??$find@PAPAVCComponent@NUISystem@@PAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@0ABQAV12@@Z
+  00584af6 RELOCATION_MATCH CTCInventory::?ClosePCScoreboard@CTCInventory@@QAEXXZ
+  0063a7e0 RELOCATION_MATCH CWorldMap::?GetThemeSizeZAtBlock@CWorldMap@@QBEMABVC2DCoordI@@@Z
+  00662450 RELOCATION_MATCH CThingCreatureBase::?SetPItemToUnsheatheAfterCutscene@CThingCreatureBase@@QAEXPAVCThing@@@Z
+  00687bd0 RELOCATION_MATCH CInputProcessGameBase::?IsEventButtonHeld@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z
+  00693250 RELOCATION_MATCH `anonymous namespace::GetPActionAnimSet
+  0069a8b0 RELOCATION_MATCH CGameCameraManager::?PushCombatCameraMode@CGameCameraManager@@QAEXXZ
+  0069fce0 RELOCATION_MATCH CCreatureAction_UseObject::?FrameUpdate@CCreatureAction_UseObject@@UAEXXZ
+  0072dd60 RELOCATION_MATCH CTCMeshAutomaticEntityCreator::?AddThingToOwnerTC@CTCMeshAutomaticEntityCreator@@AAEXAAVCThing@@@Z
+  0073ae10 RELOCATION_MATCH CTCCreatureModeManager::?AddMode@CTCCreatureModeManager@@QAE_NK@Z
+  007e2600 RELOCATION_MATCH CTCElectrocuteOnTouch::OnHit
+  0081fa20 RELOCATION_MATCH CMap::?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+  008388d0 RELOCATION_MATCH CThingGameObject::?ConstructFromParams@CThingGameObject@@IAE_NJABVC3DVector@@JKABVCCharString@@PAVCThingPhysical@@2_N@Z
+  00859d80 RELOCATION_MATCH CCombatActionBase::?FrameUpdate@CCombatActionBase@@UAEXXZ
+  00a8b820 RELOCATION_MATCH C3DMesh2::?RemapBoneIndices@C3DMesh2@@AAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z
+  00adc0d0 RELOCATION_MATCH _global::Copy_SArrayTreePair18_00adc0d0
+  00c10140 MATCH CItemDispatcher::?FindItem@CItemDispatcher@@QAEPAUCItem@@J@Z

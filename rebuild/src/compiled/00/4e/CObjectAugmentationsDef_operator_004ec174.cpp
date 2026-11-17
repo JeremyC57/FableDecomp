@@ -18,6 +18,11 @@
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CRetailTree_004ec3b1, CRetailTree_004ec28c are now the STLport std::map<EObjectAugmentationType, CObjectAugmentationParticleSet>, std::map<EObjectAugmentationType, CDefString> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+#include "engine/EObjectAugmentationType.h"
+class CObjectAugmentationParticleSet;
+class CDefString;
 
 struct CLongVector {                                                      // retail std::vector<long> (12 bytes)
     long* m_first;
@@ -26,21 +31,7 @@ struct CLongVector {                                                      // ret
     CLongVector& operator=(const CLongVector& other);                     // 0x00454886
 };
 
-struct CRetailTree_004ec3b1 {                                             // retail map<EObjectAugmentationType,CObjectAugmentationParticleSet> (12 bytes)
-    struct node;
-    node*         head;
-    unsigned long size;
-    unsigned long _alloc;
-    CRetailTree_004ec3b1& operator=(const CRetailTree_004ec3b1& other);   // 0x004EC33E
-};
 
-struct CRetailTree_004ec28c {                                             // retail map<EObjectAugmentationType,CDefString> (12 bytes)
-    struct node;
-    node*         head;
-    unsigned long size;
-    unsigned long _alloc;
-    CRetailTree_004ec28c& operator=(const CRetailTree_004ec28c& other);   // 0x004EC219
-};
 
 class CCharString { public:
     void* m_pData;
@@ -51,12 +42,12 @@ class CCharString { public:
 class CObjectAugmentationsDef : public CDefClassBase { public:                          // vtable 0x01243974
     long                 NumberOfSlots;                                   // +0x28
     long                 MaximumNumberOfSlots;                            // +0x2c
-    CRetailTree_004ec3b1 AugmentationParticles;                           // +0x30
+    std::map<EObjectAugmentationType, CObjectAugmentationParticleSet> AugmentationParticles;                           // +0x30
     unsigned long        EmptySlotName;                                   // +0x3c
     CLongVector          InitialAugmentations;                            // +0x40
     CLongVector          SlotUpgradeCosts;                                // +0x4c
-    CRetailTree_004ec28c InitSounds;                                      // +0x58
-    CRetailTree_004ec28c LoopingSounds;                                   // +0x64
+    std::map<EObjectAugmentationType, CDefString> InitSounds;                                      // +0x58
+    std::map<EObjectAugmentationType, CDefString> LoopingSounds;                                   // +0x64
     long                 FireProjectileTrailEffect;                       // +0x70
     long                 LightningProjectileTrailEffect;                  // +0x74
     long                 FireAndLightningProjectileTrailEffect;           // +0x78

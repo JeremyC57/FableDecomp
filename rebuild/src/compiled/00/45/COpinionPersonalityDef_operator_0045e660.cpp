@@ -13,6 +13,9 @@
 // 0xb4-byte block (`rep movsd` of 0x2d dwords) -- five 36-byte COpinionPersonalityTraits records (the
 // PDB record is nine floats), one per opinion attitude.
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes); the retail base is 0x39 bytes.
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CAttitudeEnabledMap are now the STLport std::map<EOpinionAttitudeType, bool> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+#include "engine/EOpinionAttitudeType.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -37,17 +40,11 @@ struct CPersonalityTraitTable {             // the owned table: one record per a
     COpinionPersonalityTraits Attitude[5];
 };
 
-struct CAttitudeEnabledMap {                // retail map<EOpinionAttitudeType,bool> (12 bytes)
-    void*         m_allocator;
-    void*         m_head;
-    unsigned long m_size;
-    CAttitudeEnabledMap& operator=(const CAttitudeEnabledMap& other);   // 0x0045E694
-};
 
 class COpinionPersonalityDef : public CParentDefClassBase { public:   // vtable 0x01233F8C
     CPersonalityTraitTable* PersonalityTraits;          // +0x3c owned
     bool                    AttitudeEnabledDefaultForNotNone;   // +0x40
-    CAttitudeEnabledMap     AttitudeEnabled;            // +0x44
+    std::map<EOpinionAttitudeType, bool>     AttitudeEnabled;            // +0x44
     float                   ToleranceToBeingHit;        // +0x50
     COpinionPersonalityDef& operator=(const COpinionPersonalityDef& other);
 };

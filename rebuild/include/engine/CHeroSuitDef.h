@@ -9,9 +9,21 @@
 #include "fable_string.h"
 class CHeroSuitDef:public CSubDefClassBase { public:
     static CCharString __fastcall StatGetTypeName() { return CCharString("CHeroSuitDef", -1); }
-    std::map<EClothingSuitPart,long> SuitParts; };
-#else
-class CHeroSuitDef:public CSubDefClassBase { public:std::map<EClothingSuitPart,long> SuitParts; };
+    std::map<EClothingSuitPart,long> SuitParts;
+#ifdef FABLE_RETAIL_CHEROSUITDEF_COPY
+    // NF70 opt-in (round 7, row 0x004E54AD): FableWin.pdb ?Copy@CHeroSuitDef@@UAEXPBVCDefClassBase@@@Z, the slot-19 override of
+    // CDefClassBase::Copy (`*this = *static_cast<const CHeroSuitDef*>(p)` through the implicit assignment). Declaration only; no layout change.
+    virtual void Copy(const CDefClassBase*);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CHeroSuitDef,SuitParts)==0x28);
+ };
+#else
+class CHeroSuitDef:public CSubDefClassBase { public:std::map<EClothingSuitPart,long> SuitParts;
+#ifdef FABLE_RETAIL_CHEROSUITDEF_COPY
+    // NF70 opt-in (round 7, row 0x004E54AD): FableWin.pdb ?Copy@CHeroSuitDef@@UAEXPBVCDefClassBase@@@Z, the slot-19 override of
+    // CDefClassBase::Copy (`*this = *static_cast<const CHeroSuitDef*>(p)` through the implicit assignment). Declaration only; no layout change.
+    virtual void Copy(const CDefClassBase*);
+#endif
+};
+#endif
+FABLE_STATIC_ASSERT_AT(16, offsetof(CHeroSuitDef,SuitParts)==0x28);
 #endif

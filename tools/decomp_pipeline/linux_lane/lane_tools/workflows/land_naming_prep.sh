@@ -5,6 +5,9 @@ ag=$1; base=$2; L=tools/decomp_pipeline/linux_lane/lane_tools; N=$S/w22/$ag; Q=$
 git diff --name-only $base HEAD -- rebuild/src/compiled rebuild/tests | sed -E 's/.*_([0-9a-f]{8})(_test)?\.cpp$/\1/' | sort -u > $Q/changed.txt
 ls $N/rows | sed -E 's/^([0-9a-f]{8}).*/\1/' | sort -u > $Q/rows.txt; echo "rows $(wc -l < $Q/rows.txt) files $(ls $N/rows | wc -l)"; echo "overlap with landings since $base:"; comm -12 $Q/changed.txt $Q/rows.txt
 for h in $(cd $N/hdr; find . -type f ! -name README.md | sed 's|^\./||'); do [ -f rebuild/include/$h ] && echo "$h removed_vs_HEAD=$(diff rebuild/include/$h $N/hdr/$h | grep -c '^<') added=$(diff rebuild/include/$h $N/hdr/$h | grep -c '^>')" || echo "$h NEW"; done
+# FABLE_STATIC_ASSERT names its typedef after __LINE__ and VC7.1's stack-slot order can depend on it (landing fz): an overlay that
+# moves an assert must pin it (lane_merge/pin_asserts.py rebuild/include $N/hdr <header>) before it is copied in.
+for h in $(cd $N/hdr; find . -type f ! -name README.md | sed 's|^\./||'); do [ -f rebuild/include/$h ] || continue; a=$(grep -n 'FABLE_STATIC_ASSERT(' rebuild/include/$h | cut -d: -f1 | paste -sd,); b=$(grep -n 'FABLE_STATIC_ASSERT(' $N/hdr/$h | cut -d: -f1 | paste -sd,); [ "$a" != "$b" ] && echo "ASSERT MOVED $h: $a -> $b (pin with lane_merge/pin_asserts.py)"; done
 python3 $L/coordinator/hdrcheck2.py $N/hdr 2>&1 | tr ' ' '\n' | grep -v '=same' | paste -sd' ' | sed 's/CHANGED/\nCHANGED/g'; echo
 for m in $(python3 $L/coordinator/hdrcheck2.py $N/hdr 2>&1 | tr ' ' '\n' | grep '=DIFF' | sed 's/=DIFF.*//' | sort -u); do echo "$m users=$(grep -rlw $m rebuild/src rebuild/tests rebuild/include | wc -l)"; done
 python3 - $N $Q <<'P'

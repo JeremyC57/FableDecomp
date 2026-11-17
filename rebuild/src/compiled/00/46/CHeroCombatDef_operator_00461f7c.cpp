@@ -15,6 +15,13 @@
 // (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
 #define FABLE_RETAIL_STLP_VECTOR_ASSIGN
 #include "stlport/fable_containers.h"
+// NF70 (round 7, land1117fu q10774 / q10775): the local CHeroAbilityStatWeight / CHeroAbilityStatPackage models are gone; both come from their
+//   shared headers (Ego_r.pdb: one map member each, StatWeights map<EHeroTrainableStatType,float> / StatThresholds map<EHeroTrainableStatType,long>;
+//   FABLE_RETAIL_CCREATUREDEF_TRANSFER gives CHeroAbilityStatWeight its real member). Their implicit assignments are inline and call the
+//   instances' out-of-line STLport _Rb_tree::operator= (0x0046230E / 0x004621E9).
+#define FABLE_RETAIL_CCREATUREDEF_TRANSFER
+#include "engine/CHeroAbilityStatWeight.h"
+#include "engine/CHeroAbilityStatPackage.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -28,21 +35,9 @@ class CFloatRange { public:
     float LowValue;
 };
 
-class CHeroAbilityStatWeight { public:         // retail 12 bytes: map<EHeroTrainableStatType,float>
-    void* m_first;
-    void* m_last;
-    void* m_end;
-    CHeroAbilityStatWeight& operator=(const CHeroAbilityStatWeight& other);   // 0x0046230E
-};
 
 
 
-class CHeroAbilityStatPackage { public:        // retail 12 bytes: map<EHeroTrainableStatType,long>
-    void* m_first;
-    void* m_last;
-    void* m_end;
-    CHeroAbilityStatPackage& operator=(const CHeroAbilityStatPackage& other);   // 0x004621E9
-};
 
 class CHeroCombatDef : public CParentDefClassBase { public:// vtable 0x01234CF4
     CFloatRange             RangedAccuracySecondsForMaximumWithSkill;            // +0x3c

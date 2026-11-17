@@ -28830,9 +28830,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b430a0'
-        Module = '_global'
-        Source = '00/b4/global_DeleteData_00b430a0.cpp'
-        TestSource = '00/b4/global_DeleteData_00b430a0_test.cpp'
+        Module = 'CCountedPointer<CStaticMapBankStateBlock>'
+        Source = '00/b4/CCountedPointer_DeleteData_00b430a0.cpp'
+        TestSource = '00/b4/CCountedPointer_DeleteData_00b430a0_test.cpp'
         PassPattern = 'AUTO_TINY_00b430a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -41451,9 +41451,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c10140'
-        Module = 'CNamedSet'
-        Source = '00/c1/CNamedSet_FindById_00c10140.cpp'
-        TestSource = '00/c1/CNamedSet_FindById_00c10140_test.cpp'
+        Module = 'CItemDispatcher'
+        Source = '00/c1/CItemDispatcher_FindItem_00c10140.cpp'
+        TestSource = '00/c1/CItemDispatcher_FindItem_00c10140_test.cpp'
         PassPattern = '00c10140_TEST PASS'
     }
     [pscustomobject]@{
@@ -44086,9 +44086,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c26580'
-        Module = 'CIsThingAlive'
-        Source = '00/c2/CIsThingAlive_operator_00c26580.cpp'
-        TestSource = '00/c2/CIsThingAlive_operator_00c26580_test.cpp'
+        Module = 'CPooledResource'
+        Source = '00/c2/CPooledResource_Deactivate_00c26580.cpp'
+        TestSource = '00/c2/CPooledResource_Deactivate_00c26580_test.cpp'
         PassPattern = '00c26580_TEST PASS'
     }
     [pscustomobject]@{
@@ -76321,9 +76321,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ac3af0'
-        Module = '_global'
-        Source = '00/ac/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00ac3af0.cpp'
-        TestSource = '00/ac/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00ac3af0_test.cpp'
+        Module = 'C3DClothPrimitive'
+        Source = '00/ac/C3DClothPrimitive_RemapBoneIndices_00ac3af0.cpp'
+        TestSource = '00/ac/C3DClothPrimitive_RemapBoneIndices_00ac3af0_test.cpp'
         PassPattern = 'PASS_00ac3af0'
     }
     [pscustomobject]@{
@@ -90890,15 +90890,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0053c8f8'
         Module = 'std'
-        Source = '00/53/std_findunsignedlong_0053c8f8.cpp'
-        TestSource = '00/53/std_findunsignedlong_0053c8f8_test.cpp'
+        Source = '00/53/std_find_0053c8f8.cpp'
+        TestSource = '00/53/std_find_0053c8f8_test.cpp'
         PassPattern = 'PASS_0053c8f8'
     }
     [pscustomobject]@{
         Address = '0053c91c'
-        Module = 'vector<EWeaponClass'
-        Source = '00/53/vectorEWeaponClass_UmoveEWeaponClass_0053c91c.cpp'
-        TestSource = '00/53/vectorEWeaponClass_UmoveEWeaponClass_0053c91c_test.cpp'
+        Module = 'std'
+        Source = '00/53/std_find_0053c91c.cpp'
+        TestSource = '00/53/std_find_0053c91c_test.cpp'
         PassPattern = 'PASS_0053c91c'
     }
     [pscustomobject]@{
@@ -121719,9 +121719,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c2dde0'
-        Module = '_global'
-        Source = '00/c2/CBase_CBase_00c2dde0.cpp'
-        TestSource = '00/c2/CBase_CBase_00c2dde0_test.cpp'
+        Module = 'PKCTRList<CSegment>'
+        Source = '00/c2/PKCTRList_PKCTRList_00c2dde0.cpp'
+        TestSource = '00/c2/PKCTRList_PKCTRList_00c2dde0_test.cpp'
         PassPattern = 'PASS_00c2dde0'
     }
     [pscustomobject]@{
@@ -153858,9 +153858,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f9763'
-        Module = 'CRetailList_node0x28'
-        Source = '00/4f/CRetailListnode0x28_Buynode_004f9763.cpp'
-        TestSource = '00/4f/CRetailListnode0x28_Buynode_004f9763_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >'
+        Source = '00/4f/stdRbtree_Mcreatenode_004f9763.cpp'
+        TestSource = '00/4f/stdRbtree_Mcreatenode_004f9763_test.cpp'
         PassPattern = '004f9763_TEST PASS'
     }
     [pscustomobject]@{
@@ -168740,9 +168740,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f96d3'
-        Module = 'CRetailTree_004f9763'
-        Source = '00/4f/CRetailTree004f9763_Copy_004f96d3.cpp'
-        TestSource = '00/4f/CRetailTree004f9763_Copy_004f96d3_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >'
+        Source = '00/4f/stdRbtree_Mcopy_004f96d3.cpp'
+        TestSource = '00/4f/stdRbtree_Mcopy_004f96d3_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004f96d3_TEST PASS'
     }
@@ -168785,16 +168785,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045c3cf'
-        Module = 'CRetailTree_0045c442'
-        Source = '00/45/CRetailTree0045c442_operator_0045c3cf.cpp'
-        TestSource = '00/45/CRetailTree0045c442_operator_0045c3cf_test.cpp'
+        Module = 'std::_Rb_tree<ECombatCreatureType, std::pair<ECombatCreatureType const, long>, std::_Select1st<std::pair<ECombatCreatureType const, long> >, std::less<ECombatCreatureType >, std::allocator<std::pair<ECombatCreatureType const, long> > >'
+        Source = '00/45/stdRbtree_operator_0045c3cf.cpp'
+        TestSource = '00/45/stdRbtree_operator_0045c3cf_test.cpp'
         PassPattern = '0045c3cf_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045c79e'
-        Module = 'CRetailTree_0045c811'
-        Source = '00/45/CRetailTree0045c811_operator_0045c79e.cpp'
-        TestSource = '00/45/CRetailTree0045c811_operator_0045c79e_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1st<std::pair<unsigned long const, long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, long> > >'
+        Source = '00/45/stdRbtree_operator_0045c79e.cpp'
+        TestSource = '00/45/stdRbtree_operator_0045c79e_test.cpp'
         PassPattern = '0045c79e_TEST PASS'
     }
     [pscustomobject]@{
@@ -168806,9 +168806,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045dd2c'
-        Module = 'CRetailTree_0045dd9f'
-        Source = '00/45/CRetailTree0045dd9f_operator_0045dd2c.cpp'
-        TestSource = '00/45/CRetailTree0045dd9f_operator_0045dd2c_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionReactionType, std::pair<EOpinionReactionType const, bool>, std::_Select1st<std::pair<EOpinionReactionType const, bool> >, std::less<EOpinionReactionType >, std::allocator<std::pair<EOpinionReactionType const, bool> > >'
+        Source = '00/45/stdRbtree_operator_0045dd2c.cpp'
+        TestSource = '00/45/stdRbtree_operator_0045dd2c_test.cpp'
         PassPattern = '0045dd2c_TEST PASS'
     }
     [pscustomobject]@{
@@ -168960,23 +168960,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e99ae'
-        Module = 'CRetailTree_004e9a21'
-        Source = '00/4e/CRetailTree004e9a21_operator_004e99ae.cpp'
-        TestSource = '00/4e/CRetailTree004e9a21_operator_004e99ae_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionAttitudeType, std::pair<EOpinionAttitudeType const, float>, std::_Select1st<std::pair<EOpinionAttitudeType const, float> >, std::less<EOpinionAttitudeType >, std::allocator<std::pair<EOpinionAttitudeType const, float> > >'
+        Source = '00/4e/stdRbtree_operator_004e99ae.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004e99ae_test.cpp'
         PassPattern = '004e99ae_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004ec219'
-        Module = 'CRetailTree_004ec28c'
-        Source = '00/4e/CRetailTree004ec28c_operator_004ec219.cpp'
-        TestSource = '00/4e/CRetailTree004ec28c_operator_004ec219_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CDefString>, std::_Select1st<std::pair<EObjectAugmentationType const, CDefString> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, CDefString> > >'
+        Source = '00/4e/stdRbtree_operator_004ec219.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004ec219_test.cpp'
         PassPattern = '004ec219_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004ec33e'
-        Module = 'CRetailTree_004ec3b1'
-        Source = '00/4e/CRetailTree004ec3b1_operator_004ec33e.cpp'
-        TestSource = '00/4e/CRetailTree004ec3b1_operator_004ec33e_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet>, std::_Select1st<std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet> > >'
+        Source = '00/4e/stdRbtree_operator_004ec33e.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004ec33e_test.cpp'
         PassPattern = '004ec33e_TEST PASS'
     }
     [pscustomobject]@{
@@ -173587,9 +173587,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00662450'
-        Module = '_unattributed'
-        Source = '00/66/unattributed_AssignTarget00662450_00662450.cpp'
-        TestSource = '00/66/unattributed_AssignTarget00662450_00662450_test.cpp'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_SetPItemToUnsheatheAfterCutscene_00662450.cpp'
+        TestSource = '00/66/CThingCreatureBase_SetPItemToUnsheatheAfterCutscene_00662450_test.cpp'
         PassPattern = '00662450_TEST PASS'
     }
     [pscustomobject]@{
@@ -199343,8 +199343,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004e8fcd'
         Module = 'CPersistContext'
-        Source = '00/4e/CPersistContext_TransferBytePair004e8fcd_004e8fcd.cpp'
-        TestSource = '00/4e/CPersistContext_TransferBytePair004e8fcd_004e8fcd_test.cpp'
+        Source = '00/4e/CPersistContext_TransferHelper_004e8fcd.cpp'
+        TestSource = '00/4e/CPersistContext_TransferHelper_004e8fcd_test.cpp'
         PassPattern = '004e8fcd_TEST PASS'
     }
     [pscustomobject]@{
@@ -200539,9 +200539,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00693250'
-        Module = '_global'
-        Source = '00/69/global_GetSingleActionAnimSet_00693250.cpp'
-        TestSource = '00/69/global_GetSingleActionAnimSet_00693250_test.cpp'
+        Module = '`anonymous namespace''
+        Source = '00/69/anonymousnamespace_GetPActionAnimSet_00693250.cpp'
+        TestSource = '00/69/anonymousnamespace_GetPActionAnimSet_00693250_test.cpp'
         PassPattern = '00693250_TEST PASS'
     }
     [pscustomobject]@{
@@ -206196,8 +206196,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0072dd60'
         Module = 'CTCMeshAutomaticEntityCreator'
-        Source = '00/72/CTCMeshAutomaticEntityCreator_AddOwnedEntityTC_0072dd60.cpp'
-        TestSource = '00/72/CTCMeshAutomaticEntityCreator_AddOwnedEntityTC_0072dd60_test.cpp'
+        Source = '00/72/CTCMeshAutomaticEntityCreator_AddThingToOwnerTC_0072dd60.cpp'
+        TestSource = '00/72/CTCMeshAutomaticEntityCreator_AddThingToOwnerTC_0072dd60_test.cpp'
         PassPattern = '0072dd60_TEST PASS'
     }
     [pscustomobject]@{
@@ -206630,8 +206630,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00562e70'
         Module = 'CTCHeroOnlineScoreboard'
-        Source = '00/56/CTCHeroOnlineScoreboard_ResetScoreboard_00562e70.cpp'
-        TestSource = '00/56/CTCHeroOnlineScoreboard_ResetScoreboard_00562e70_test.cpp'
+        Source = '00/56/CTCHeroOnlineScoreboard_Close_00562e70.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_Close_00562e70_test.cpp'
         PassPattern = '00562e70_TEST PASS'
     }
     [pscustomobject]@{
@@ -242076,8 +242076,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006c9ee0'
         Module = 'CPersistContext'
-        Source = '00/6c/CPersistContext_TransferCOpinionDeedRecord_006c9ee0.cpp'
-        TestSource = '00/6c/CPersistContext_TransferCOpinionDeedRecord_006c9ee0_test.cpp'
+        Source = '00/6c/CPersistContext_TransferVector_006c9ee0.cpp'
+        TestSource = '00/6c/CPersistContext_TransferVector_006c9ee0_test.cpp'
         PassPattern = '006c9ee0_TEST PASS'
     }
     [pscustomobject]@{
@@ -249996,9 +249996,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0069a8b0'
-        Module = '_global'
-        Source = '00/69/CTCCombat_AddMeleeFlourishAbility_0069a8b0.cpp'
-        TestSource = '00/69/CTCCombat_AddMeleeFlourishAbility_0069a8b0_test.cpp'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_PushCombatCameraMode_0069a8b0.cpp'
+        TestSource = '00/69/CGameCameraManager_PushCombatCameraMode_0069a8b0_test.cpp'
         PassPattern = '0069a8b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -265273,8 +265273,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0081f910'
         Module = 'CMap'
-        Source = '00/81/CMap_GetDominantEngineThemeAt_0081f910.cpp'
-        TestSource = '00/81/CMap_GetDominantEngineThemeAt_0081f910_test.cpp'
+        Source = '00/81/CMap_GetStrongestEngineThemeAt_0081f910.cpp'
+        TestSource = '00/81/CMap_GetStrongestEngineThemeAt_0081f910_test.cpp'
         PassPattern = '0081f910_TEST PASS'
     }
     [pscustomobject]@{
@@ -277307,8 +277307,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004e9021'
         Module = 'CPersistTraits<CWeaponTrailGraphicSet>'
-        Source = '00/4e/CPersistTraitsCWeaponTrailGraphicSet_TransferBinaryIn_004e9021.cpp'
-        TestSource = '00/4e/CPersistTraitsCWeaponTrailGraphicSet_TransferBinaryIn_004e9021_test.cpp'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e9021.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e9021_test.cpp'
         PassPattern = '004e9021_TEST PASS'
     }
     [pscustomobject]@{
@@ -287461,8 +287461,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00467831'
         Module = 'std::vector<bool>'
-        Source = '00/46/stdvectorbool_Minsertoverflow_00467831.cpp'
-        TestSource = '00/46/stdvectorbool_Minsertoverflow_00467831_test.cpp'
+        Source = '00/46/stdvector_Minsertoverflow_00467831.cpp'
+        TestSource = '00/46/stdvector_Minsertoverflow_00467831_test.cpp'
         PassPattern = '00467831_TEST PASS'
     }
     [pscustomobject]@{
@@ -314591,8 +314591,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004676ef'
         Module = 'std::vector<bool>'
-        Source = '00/46/stdvectorbool_Mfillinsert_004676ef.cpp'
-        TestSource = '00/46/stdvectorbool_Mfillinsert_004676ef_test.cpp'
+        Source = '00/46/stdvector_Mfillinsert_004676ef.cpp'
+        TestSource = '00/46/stdvector_Mfillinsert_004676ef_test.cpp'
         PassPattern = '004676ef_TEST PASS'
     }
     [pscustomobject]@{
@@ -316088,7 +316088,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c31b0'
-        Module = 'std::_Rb_tree'
+        Module = 'std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<C3DSkeletalMorphTarget>>, std::_Select1st<std::pair<CCharString const, CCountedPointer<C3DSkeletalMorphTarget>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCountedPointer<C3DSkeletalMorphTarget>>>>'
         Source = '00/6c/stdRbtree_Mfind_006c31b0.cpp'
         TestSource = '00/6c/stdRbtree_Mfind_006c31b0_test.cpp'
         PassPattern = '006c31b0_TEST PASS'

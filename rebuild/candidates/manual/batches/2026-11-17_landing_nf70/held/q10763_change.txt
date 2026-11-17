@@ -1,0 +1,28 @@
+fable_string.h, inside the FABLE_RETAIL_CCHARSTRING block, right after the closing `};` of `template<class T> class CBasicString` (before `class CCharStringData`):
+
+#if defined(FABLE_RETAIL_CCHARSTRING_LESS_INLINE) && defined(FABLE_RETAIL_CBASICSTRING_LESS_BODY)
+// one definition of 0x00429950 (Ego_r.pdb ??M?$CBasicString@D@@QBE_NABV0@@Z): BODY alone = inline __declspec(noinline) COMDAT the
+// includer sees but calls (0x009EFB80 needs that mod/ref knowledge); the self row 0x00429950 adds _DEFINE for the ordinary definition.
+template<>
+#ifndef FABLE_RETAIL_CBASICSTRING_LESS_DEFINE
+inline __declspec(noinline)
+#endif
+bool CBasicString<char>::operator<(const CBasicString<char>& other) const
+{
+    const char* b = other.PData;   // the other string's pointer first (the loop induction pointer, as retail)
+    const char* a = PData;
+    for (;;) {
+        if (*a == 0 && *b == 0) return false;
+        if (*a < *b) return true;
+        if (*a > *b) return false;
+        ++a; ++b;
+    }
+}
+#endif
+
+Then: 0x00429950 = `#define FABLE_RETAIL_CCHARSTRING` / `_CCHARSTRING_LESS_INLINE` / `_CBASICSTRING_LESS_BODY` / `_CBASICSTRING_LESS_DEFINE` +
+`#include "fable_string.h"` (no local CBasicString model; regrade: the retail tail-duplicated `Compare(...) < 0` may need the
+long-result form `long r; ... return r < 0;` to give the 88 bytes); 0x009EFB80 drops its auto_inline(off) copy and adds
+`#define FABLE_RETAIL_CBASICSTRING_LESS_BODY`. The same copy is also carried by the _M_find / insert_unique family rows
+(0x006C31B0, 0x00756350, 0x007ACC90, 0x00756250, ...), which should take the opt-in as they move onto fable_string.h.
+Not applied here: no overlay of fable_string.h (the overlay attempt was refused by the session's permission check).

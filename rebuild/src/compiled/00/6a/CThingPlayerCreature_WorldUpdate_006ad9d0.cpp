@@ -1,5 +1,5 @@
 // CThingPlayerCreature::WorldUpdate() -- creature update plus the player extras: per-frame movement vector from the last position, look tracking, player control, animation, collision record reset and weapon trails
-// Leaf: WorldUpdate
+// Leaf: ?WorldUpdate@CThingPlayerCreature@@UAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AD9D0, length 284 bytes.
@@ -69,7 +69,7 @@ public:
         return false;
     }
     void UpdateAction();                                       // 0x006643C0
-    bool WorldUpdate();                                        // 0x006666A0
+    virtual bool WorldUpdate();                                // 0x006666A0 (Ego_r.pdb ?WorldUpdate@CThingCreatureBase@@UAE_NXZ, a virtual; NF70 q10814)
     void UpdateAnimation(float step);                          // 0x00665860
 };
 class CThingPlayerCreature : public CThingCreatureBase {
@@ -78,7 +78,7 @@ public:
     C3DVector LastThingCollisionNormal;                        // +0x1cd
     C3DVector LastThingCollisionPosition;                      // +0x1d9
     void UpdatePlayerControl();                                // 0x006AD970
-    bool WorldUpdate();
+    virtual bool WorldUpdate();   // Ego_r.pdb ?WorldUpdate@CThingPlayerCreature@@UAE_NXZ (the override; NF70)
 };
 #pragma pack(pop)
 

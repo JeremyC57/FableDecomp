@@ -11,63 +11,37 @@
 // AllocateMode gets a same-TU `auto_inline(off)` stand-in body that writes only the returned pointer: VC7.1 then knows
 //   the local's address (the hidden return slot) does not escape, so AddMode cannot change it and the count block stays
 //   in esi across the call, as retail (an extern declaration re-reads the slot after AddMode).
-struct SCountBlock {
-    long m_references;                      // +0
-    void (__fastcall* m_pfnDestroy)(void*); // +4
-    void* m_pObject;                        // +8
-};
-
-struct CModeBase;
-
-struct CModePointer {                       // CCountedPointer<CTCCreatureModeManager::CModeBase>
-    CModeBase* m_pObject;                   // +0
-    SCountBlock* m_pCount;                  // +4
-    CModePointer(CModeBase* object, SCountBlock* count) : m_pObject(object), m_pCount(count) {}
-    CModePointer(const CModePointer& other)
-    {
-        SCountBlock* count = other.m_pCount;
-        m_pObject = other.m_pObject;
-        m_pCount = count;
-        if (count)
-            ++count->m_references;
-    }
-    ~CModePointer()
-    {
-        SCountBlock* count = m_pCount;
-        if (count) {
-            if (--count->m_references == 0) {
-                count->m_pfnDestroy(count->m_pObject);
-                delete count;
-            }
-        }
-    }
-};
-
-class CThing;
-
-class CTCCreatureModeManager { public:
-    void* __vftable;                        // +0x00 (CTCBase)
-    CThing* ParentThing;                    // +0x04
-    bool ToBeRemoved;                       // +0x08
-    bool IsInGlobalUpdateTCs;               // +0x09
-    CModePointer AllocateMode(long modeType);           // 0x0073A8E0
-    bool AddMode(CModePointer mode);                    // 0x0073ACC0
-    bool AddMode(long modeType);
-};
-
-CModeBase* AllocateModeObject_standin(long modeType);   // stand-in callees of the stand-in body below
-SCountBlock* AllocateModeCount_standin();
 // Stand-in body (the real AllocateMode is out of line in retail): it writes only the returned pointer, so VC7.1
 // knows the local's address does not escape the call.
-#pragma auto_inline(off)
-__declspec(noinline) CModePointer CTCCreatureModeManager::AllocateMode(long modeType)
-{
-    return CModePointer(AllocateModeObject_standin(modeType), AllocateModeCount_standin());
-}
-#pragma auto_inline(on)
+// Leaf: ?AddMode@CTCCreatureModeManager@@QAE_NK@Z
+// NF70 (round 7, land1117fu q10741): moved onto engine/CTCCreatureModeManager.h + CCountedPointer.h (NF62's 0x0073A8E0 define block): the
+//   callee is the protected Ego_r.pdb ?AllocateMode@CTCCreatureModeManager@@IAE?AV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@K@Z
+//   (was the local CModePointer / SCountBlock model with a same-TU stand-in AllocateMode body over two made-up callees), and the row itself is
+//   FableWin.pdb ?AddMode@CTCCreatureModeManager@@QAE_NK@Z (unsigned long mode type; was _NJ).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CVECTORMAP_UPPERBOUND
+#define FABLE_RETAIL_CVECTORMAP_COUNT
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_REGISTRY
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ALLOCATEMODE
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ALLOCATEMODE_BODY
+#define FABLE_RETAIL_CWORLD
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/GFRandom.h"
+#include "engine/CVectorMap.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CTCBase.h"
+#include "engine/CWorld.h"
+#include "engine/CTCCreatureModeManager.h"
 
-bool CTCCreatureModeManager::AddMode(long modeType)
+bool CTCCreatureModeManager::AddMode(unsigned long modeType)
 {
-    CModePointer mode = AllocateMode(modeType);
+    CCountedPointer<CModeBase> mode = AllocateMode(modeType);
     return AddMode(mode);
 }

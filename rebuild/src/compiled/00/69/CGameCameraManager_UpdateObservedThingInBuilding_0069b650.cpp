@@ -10,8 +10,10 @@
 // Shape: the twin of UpdateObservedThingInMelee: early return unless interruptable or pending, then the alive tests of the thing and
 // of its building in one `&&` chain; ObservedThingInBuilding read in each arm.
 #include "engine/CThing.h"
-class CThingBuilding : public CThing { public: };
-CThingBuilding* __fastcall GetPBuildingThingOccupying(CThing* thing);   // 0x006989D0
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGPHYSICAL   // CThingBuilding : CThingGameObject : CThingPhysical : CThing (the retail chain; NF70 q10752)
+#include "engine/CThingBuilding.h"
+namespace NCameraModes { const CThingBuilding* __fastcall GetPBuildingThingOccupying(const CThing& thing); }   // 0x006989D0: Ego_r.pdb ?GetPBuildingThingOccupying@NCameraModes@@YIPBVCThingBuilding@@ABVCThing@@@Z (NF70 q10752)
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -42,9 +44,9 @@ void CGameCameraManager::UpdateObservedThingInBuilding()
 {
     if (!IsCameraModeInterruptable(CurrentMode) && PendingMode.Data == 0)
         return;
-    CThingBuilding* building;
+    const CThingBuilding* building;
     if (PObservedThing.Get() && !PObservedThing.Get()->IsDead()
-        && (building = GetPBuildingThingOccupying(PObservedThing.Get())) != 0 && !building->IsDead()) {
+        && (building = NCameraModes::GetPBuildingThingOccupying(*PObservedThing.Get())) != 0 && !building->IsDead()) {
         if (!ObservedThingInBuilding)
             PushBuildingCameraMode();
     } else {

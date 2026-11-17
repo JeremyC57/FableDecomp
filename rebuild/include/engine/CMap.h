@@ -176,6 +176,14 @@ public:
     // FABLE_RETAIL_CREGION_LOADFROMFILE makes it (GOTCHAS NF29). Access only: no layout change.
     friend class CWorldMap;
 #endif
+#ifdef FABLE_RETAIL_CMAP_INITPASSABILITYFROMTHEMES
+    // NF70 opt-in (round 7, row 0x008201E0): Ego_r.pdb 0x0067B410 / FableWin.pdb 0x02238570
+    // ?InitPassabilityFromThemesIfNecessary@CMap@@QAEXABVC2DBoxI@@@Z and its callee Ego_r.pdb 0x0067A2A0 / FableWin.pdb 0x02239240
+    // ?GetGroundFaceNormalAt@CMap@@QBE?AVC3DVector@@ABV2@@Z (retail 0x0081F6C0, out of line; landed 0x0063AB10 binds it). Declarations only
+    // (C3DVector is forward-declared above under FABLE_RETAIL_CMAP_THEMESIZEZ); no layout change.
+    void InitPassabilityFromThemesIfNecessary(const C2DBoxI& area);    // 0x008201E0
+    C3DVector GetGroundFaceNormalAt(const C3DVector& pos) const;       // 0x0081F6C0
+#endif
 #ifdef FABLE_RETAIL_CMAP_THEMESIZEZ
     // NF63 (round 7, rows 0x0081FA20 / 0x0081FA90 / 0x008200B0 / 0x00820100 / 0x00820140): the theme size-Z family, protected const in
     // both PDBs (Ego_r.pdb 0x0067A530 / 0x006796E0 / 0x0067AC50 / 0x0067ACC0 / 0x0067B2D0 / 0x0067B320 / 0x0067B370, FableWin.pdb
@@ -193,5 +201,40 @@ protected:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CMap)==0x1d40);
+FABLE_STATIC_ASSERT_AT(196, sizeof(CMap)==0x1d40);
+#if defined(FABLE_RETAIL_CMAP_THEMESIZEZ) && defined(FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY)
+// NF70 opt-in (round 7, q10724 / q10735): the one definition of Ego_r.pdb 0x0067A530 / FableWin.pdb 0x02230780
+// ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z (retail 0x0081F910: the strongest of a cell's three engine theme blends; the third
+// weighs 3 - blend0 - blend1). Retail compiled it in one object with its callers GetThemeSizeZOffsetAt 0x0081FA20 / GetThemeMinCameraSizeZOffsetAt
+// 0x0081FA90: they call it out of line, but VC7.1 sees that it only writes through `strength` and homes their strength local in the dead
+// argument slot. Those rows define this macro and get the body `inline __declspec(noinline)` (a COMDAT, never expanded); the row 0x0081F910
+// defines FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_DEFINE too and so emits it as an ordinary out-of-line definition. Needs
+// FABLE_RETAIL_CHEIGHTMAP_GETCELL, FABLE_RETAIL_CHEIGHTMAPCELL_ACCESSORS and FABLE_RETAIL_CMAP_ENGINEACCESSORS. No layout change.
+#ifndef FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_DEFINE
+inline __declspec(noinline)
+#endif
+long CMap::GetStrongestEngineThemeAt(const C2DCoordI& pos, long& strength) const
+{
+    long best = 0;
+    long bestIndex = -1;
+    long blend0 = HeightMap->GetCell(pos).GetEngineBlend(0);
+    if (blend0 > 0) {
+        bestIndex = 0;
+        best = blend0;
+    }
+    long remaining = 3 - blend0;
+    long blend1 = HeightMap->GetCell(pos).GetEngineBlend(1);
+    if (blend1 > best) {
+        bestIndex = 1;
+        best = blend1;
+    }
+    remaining -= blend1;
+    if (remaining > best) {
+        strength = remaining;
+        return GetEngineThemeAtIncludingExtraCells(pos.X, pos.Y, 2);
+    }
+    strength = best;
+    return GetEngineThemeAtIncludingExtraCells(pos.X, pos.Y, bestIndex);
+}
+#endif
 #endif

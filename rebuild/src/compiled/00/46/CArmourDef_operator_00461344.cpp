@@ -18,30 +18,22 @@
 // Ego layout (0x3d bytes, 16-byte CVectorMap), so the 0x3c-byte retail base is modelled locally.
 #pragma optimize("s", on)   // the def module is size-optimised: every copy pair goes through eax
 
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CAugmentationResponseMap, CDamageAttributeMap are now the STLport std::map<EObjectAugmentationType, float>, std::map<EDamageAttribute, float> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+#include "engine/EObjectAugmentationType.h"
+#include "engine/EDamageAttribute.h"
 class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                            // +0x04..+0x3c
     CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
 };
 
-struct CAugmentationResponseMap {                                         // retail std::map (12 bytes)
-    void*         m_allocator;
-    void*         m_head;
-    unsigned long m_size;
-    CAugmentationResponseMap& operator=(const CAugmentationResponseMap& other);   // 0x0046139B
-};
 
-struct CDamageAttributeMap {                                              // retail std::map (12 bytes)
-    void*         m_allocator;
-    void*         m_head;
-    unsigned long m_size;
-    CDamageAttributeMap& operator=(const CDamageAttributeMap& other);     // 0x004614C0
-};
 
 class CArmourDef : public CParentDefClassBase { public:                                 // vtable 0x01234AEC
-    CAugmentationResponseMap AugmentationResponse;                        // +0x3c
-    CDamageAttributeMap      DamageTypeResponse;                          // +0x48
-    CDamageAttributeMap      ArmourThresholds;                            // +0x54
+    std::map<EObjectAugmentationType, float> AugmentationResponse;                        // +0x3c
+    std::map<EDamageAttribute, float>      DamageTypeResponse;                          // +0x48
+    std::map<EDamageAttribute, float>      ArmourThresholds;                            // +0x54
     bool                     AllHitsKnockdown;                            // +0x60
     bool                     AllHitsNegated;                              // +0x61
     bool                     AllHitsCauseRecoil;                          // +0x62

@@ -372,6 +372,17 @@ public:
     // Declaration only.
     float GetThemeMinCameraSizeZOffsetAt(const C3DVector& pos) const;   // 0x0063A540
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_CONVERTCOORDSTOLOCALBLOCK
+    // NF70 opt-in (round 7, rows 0x0063A7E0 / 0x0063AE70): Ego_r.pdb 0x004CFB60 / FableWin.pdb 0x01C83150
+    // ?ConvertWorldMapCoordsToLocalCoords@CWorldMap@@QBE?AVC2DCoordI@@JABV2@@Z (retail 0x004FC3C0, out of line; landed 0x0063A910 binds it).
+    // Declaration only: no layout change.
+    C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const;   // 0x004FC3C0
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_STRONGESTTHEMEATBLOCK
+    // NF70 opt-in (round 7, row 0x0063AE70): Ego_r.pdb 0x006E74B0 / FableWin.pdb 0x024A4C40
+    // ?GetStrongestEngineThemeAtBlock@CWorldMap@@QBEJABVC2DCoordI@@AAJ@Z. Declaration only: no layout change.
+    long GetStrongestEngineThemeAtBlock(const C2DCoordI& pos, long& strength) const;      // 0x0063AE70
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_NAVIGATIONSECTION
     // Opt-in (NF62, row 0x004FE630): Ego_r.pdb protected const ?GetNavigationSectionOffsetInFile@CWorldMap@@IBE?AU?$pair@VCCharString@@J@std@@
     // AAVCAFile@@ABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@3@@Z (Ego_r 0x004D24E0; retail

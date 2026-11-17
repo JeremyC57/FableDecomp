@@ -10,6 +10,9 @@
 // `pop edi` after the last store are the size optimiser's schedule (`#pragma optimize("s", on)`),
 // as in the landed set operator= of the same TU.
 #pragma optimize("s", on)
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CRetailSet_EWeaponClass are now the STLport std::set<EWeaponClass> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+#include "engine/EWeaponClass.h"
 struct CCombatAbilityData_Retail {
     virtual void v00();
     long  PercentageChance;                                 // +0x04
@@ -20,16 +23,12 @@ struct CCombatAbilityData_Retail {
     CCombatAbilityData_Retail& operator=(const CCombatAbilityData_Retail& other);   // 0x00453F18
 };
 
-struct CRetailSet_EWeaponClass {                            // retail std::set: {head, size, (comparator)}
-    void* head; unsigned long size; unsigned long comp;
-    CRetailSet_EWeaponClass& operator=(const CRetailSet_EWeaponClass& other);   // 0x00461BF0
-};
 
 struct CCombatAbilityBlockingData_Retail : CCombatAbilityData_Retail {
     float BlockAngle;                                       // +0x18
     bool  BlockCanBeBroken;                                 // +0x1c
     bool  ForceRecoilWhenBlocking;                          // +0x1d
-    CRetailSet_EWeaponClass ValidBlockWeaponTypes;          // +0x20
+    std::set<EWeaponClass> ValidBlockWeaponTypes;          // +0x20
     long  WeaponClass;                                      // +0x2c EWeaponClass
     virtual void v00();
     CCombatAbilityBlockingData_Retail& operator=(const CCombatAbilityBlockingData_Retail& other);

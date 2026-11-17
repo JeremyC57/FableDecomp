@@ -1,14 +1,13 @@
 // CCombatActionBase::FrameUpdate() -- update facing/strikes, post a miss event, advance and handle interruption transition
+// Leaf: ?FrameUpdate@CCombatActionBase@@UAEXXZ
+// NF70 (round 7, land1117fu q10804): CCreatureActionBase::FrameUpdate is the protected virtual of Ego_r.pdb 0x0051A410 / FableWin.pdb
+//   0x01DB65E0 (?FrameUpdate@CCreatureActionBase@@MAEXXZ, base vtable 0x01259D24 slot 56 = 0x00694020); declared so in the row's local base
+//   model, which also makes this override the virtual the PDBs name (UAE).
+//   The two PDB-reference includes under renaming macros (CCombatActionBase_PDB / CCreatureActionBase_PDB) are dropped: nothing used them.
 // Retail0x00859D80,314 bytes. Actual headers retained as PDB references; native action offsets follow ctor00857F30.
 // Virtual prefix0..27 comes from retail vtable01259E44; no placeholder slots. Pointer record is real intelligent-pointer family.
 #include "fable_compiler.h"
 #include "fable_string.h"
-#define CCombatActionBase CCombatActionBase_PDB
-#include "engine/_quarantine/CCombatActionBase.h"
-#undef CCombatActionBase
-#define CCreatureActionBase CCreatureActionBase_PDB
-#include "engine/CCreatureActionBase.h"
-#undef CCreatureActionBase
 #define FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
 #include "engine/CTCEntityEvents.h"
 #ifndef _MSC_VER
@@ -58,7 +57,9 @@ class CCreatureActionBase { public:
     virtual bool IsActionWithStrikeEventHelperName()const;virtual CCharString GetStrikeEventHelperName()const;
     virtual bool IsOverrideableByActionOfSamePriority()const;virtual void OnFrameUpdate(float);virtual bool IsQueuable()const;virtual bool IsActionReadyForInterruption()const;
     unsigned char _baseObjectState[4];CBaseIntelligentPointer PCreature;unsigned char _actionBody[0x98];
-    void FrameUpdate(); //qualified direct base call00694020
+protected:
+    virtual void FrameUpdate(); //qualified direct base call 0x00694020 (slot 56)
+public:
 };
 class CCombatActionBase:public CCreatureActionBase { public:
     CBaseIntelligentPointer PTarget,PCameraPoint;void* PMeleeAbilityDef_Object;void* StrikeEventsHead;

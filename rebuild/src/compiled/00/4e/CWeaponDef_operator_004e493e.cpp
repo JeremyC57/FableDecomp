@@ -17,6 +17,9 @@
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CArrowTrailMap are now the STLport std::map<EObjectAugmentationType, long> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+#include "engine/EObjectAugmentationType.h"
 class CCharString { public:
     void* m_pStringData;
     const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
@@ -32,10 +35,6 @@ class CWeaponTrailGraphicSet { public:
 struct CWeaponTrailMap {                                    // map<EObjectAugmentationType,CWeaponTrailGraphicSet> (12 bytes)
     void* head; unsigned long size; unsigned long _compare;
     CWeaponTrailMap& operator=(const CWeaponTrailMap& other);   // 0x004E4AEB
-};
-struct CArrowTrailMap {                                     // map<EObjectAugmentationType,long> (12 bytes)
-    void* head; unsigned long size; unsigned long _compare;
-    CArrowTrailMap& operator=(const CArrowTrailMap& other);     // 0x004E4C16
 };
 class CFloatRange { public:
     float HighValue;
@@ -65,7 +64,7 @@ class CWeaponDef : public CDefClassBase { public:                         // vta
     long Ammo;                                              // +0xa4
     long TargetingRange;                                    // +0xa8
     float TargetingFOV;                                     // +0xac
-    CArrowTrailMap ArrowTrails;                             // +0xb0
+    std::map<EObjectAugmentationType, long> ArrowTrails;                             // +0xb0
     CFloatRange ReloadSpeedRange;                           // +0xbc
     bool ProjectileWeaponAutoReload;                        // +0xc4
     bool ProjectileWeaponStartLoaded;                       // +0xc5

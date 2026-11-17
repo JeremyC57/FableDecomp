@@ -1,4 +1,5 @@
 // C3DMesh2::RemapBoneIndices(map<unsigned long, unsigned long>&) -- remap the bone indices of every primitive, bone parent, helper point and dummy object
+// Leaf: ?RemapBoneIndices@C3DMesh2@@AAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A8B820, length 355 bytes (`ret 4`).
 // Callees: C3DPrimitive2::RemapBoneIndices @ 0x00A90F00 (landed), map<unsigned long, unsigned long>::operator[] @ 0x00553E60
 //          (catalog "std::map::insert"; as in the landed 0x00A90F00).
@@ -10,37 +11,10 @@
 // Layout: retail C3DMeshStats base as in the landed C3DMesh2::GetUsedBones 0x00A8B5F0 (HelperPoints +0x38, DummyObjects
 //          +0x48), then PrimitiveCount +0x90, Primitives +0x94 (0xa0 each), BoneCount +0x98, Bones +0x9c (C3DBone2,
 //          0x3c: Parent +4) -- the PDB's C3DMesh2 offsets minus 8. No shared headers exist for these classes.
-struct CBoneMapNode {                               // STLport _Rb_tree_node<pair<const ulong, ulong> >
-    long          _M_color;
-    CBoneMapNode* _M_parent;
-    CBoneMapNode* _M_left;
-    CBoneMapNode* _M_right;
-    unsigned long first;                            // +0x10
-    unsigned long second;
-};
-struct CBoneMap {                                   // map<unsigned long, unsigned long>
-    CBoneMapNode* _M_header;
-    unsigned long _M_node_count;
-    unsigned long& operator[](const unsigned long& key);   // 0x00553E60
-    CBoneMapNode* end() const { return _M_header; }
-    CBoneMapNode* find(const unsigned long& key) const
-    {
-        CBoneMapNode* y = _M_header;
-        CBoneMapNode* x = _M_header->_M_parent;
-        while (x != 0) {
-            if (!(x->first < key)) {
-                y = x;
-                x = x->_M_left;
-            }
-            else
-                x = x->_M_right;
-        }
-        if (y == end() || key < y->first)
-            return end();
-        return y;
-    }
-};
-
+// NF70 (round 7, land1117fu q10797): the bone remap is the Ego_r.pdb std::map<unsigned long, unsigned long> (stlport/fable_map.h, its
+//   find visible and its operator[] the out-of-line COMDAT 0x00553E60), replacing the CBoneMap / CBoneMapNode stand-ins; the method is
+//   private as in Ego_r.pdb / FableWin.pdb (?RemapBoneIndices@C3DMesh2@@AAEXAAV?$map@KK...@Z, which the landed caller 0x00A8B990 binds).
+#include "stlport/fable_map.h"
 class C3DMeshStats;
 class CCharString { public: void* PStringData; };
 class C3DBoundingSphere { public: float values[4]; };
@@ -62,12 +36,12 @@ template<class T> struct CPreAllocVectorMap {
 };
 class C3DHelperPoint { public:
     float Position[3]; long BoneIndex;
-    void RemapBoneIndices(CBoneMap& remap) { if (BoneIndex != -1) BoneIndex = remap[BoneIndex]; }
+    void RemapBoneIndices(std::map<unsigned long, unsigned long>& remap) { if (BoneIndex != -1) BoneIndex = remap[BoneIndex]; }
 };
 struct C3DHelperPointEntry { unsigned long Key; C3DHelperPoint Value; };
 class C3DDummyObject { public:
     float Transform[12]; long BoneIndex;
-    void RemapBoneIndices(CBoneMap& remap) { if (BoneIndex != -1) BoneIndex = remap[BoneIndex]; }
+    void RemapBoneIndices(std::map<unsigned long, unsigned long>& remap) { if (BoneIndex != -1) BoneIndex = remap[BoneIndex]; }
 };
 struct C3DDummyObjectEntry { unsigned long Key; C3DDummyObject Value; };
 class C3DMeshStats { public:
@@ -88,7 +62,7 @@ class C3DMeshStats { public:
 
 class C3DPrimitive2 { public:
     unsigned char _retailPrimitive[0xa0];
-    void RemapBoneIndices(CBoneMap& remap);         // 0x00A90F00
+    void RemapBoneIndices(std::map<unsigned long, unsigned long>& remap);         // 0x00A90F00
 };
 class C3DBone2 { public:                                   // 0x3c
     unsigned long NameCRC;
@@ -106,10 +80,11 @@ class C3DMesh2 : public C3DMeshStats { public:
     C3DPrimitive2* Primitives;                      // +0x94
     unsigned long BoneCount;                        // +0x98
     C3DBone2* Bones;                                // +0x9c
-    void RemapBoneIndices(CBoneMap& remap);
+private:
+    void RemapBoneIndices(std::map<unsigned long, unsigned long>& remap);
 };
 
-void C3DMesh2::RemapBoneIndices(CBoneMap& remap)
+void C3DMesh2::RemapBoneIndices(std::map<unsigned long, unsigned long>& remap)
 {
     for (unsigned long n = 0; n < PrimitiveCount; ++n)
         Primitives[n].RemapBoneIndices(remap);

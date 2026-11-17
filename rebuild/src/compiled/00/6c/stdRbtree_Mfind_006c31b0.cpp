@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> >) STLport exact-key lookup over CCharString keys: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@2@ABVCCharString@@@Z
+// Leaf: ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@1@ABVCCharString@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C31B0, 112 bytes (+ int3 padding), thiscall, `ret 4`; returns the node pointer.
 // Identity: `map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> >`; evidence: the landed CSkeletalMorphResourceManager::GetMorphTarget 0x006C3620 and PreloadBoneConfigs 0x006C37D0 call it on CachedMorphs (Ego_r CSkeletalMorphResourceManager +4: map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> >).
@@ -123,12 +123,13 @@ public:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
     public:
     private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;   // STLport 4.6 member template (NF70 q10751: the PDB ??$_M_find@VCCharString@@@... spelling, as sibling 0x00756350)
     public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _Key& __k) const
+template <class _KT>
+_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;      // last node which is not less than __k
     _Link_type __x = _M_root();                    // current node
@@ -144,5 +145,7 @@ _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M
 
 template class _Rb_tree<CCharString, pair<const CCharString, CCountedPointer<C3DSkeletalMorphTarget> >, _Select1st<pair<const CCharString, CCountedPointer<C3DSkeletalMorphTarget> > >, less<CCharString>,
                         allocator<pair<const CCharString, CCountedPointer<C3DSkeletalMorphTarget> > > >;
+template _Rb_tree_node<pair<const CCharString, CCountedPointer<C3DSkeletalMorphTarget> > >* _Rb_tree<CCharString, pair<const CCharString, CCountedPointer<C3DSkeletalMorphTarget> >, _Select1st<pair<const CCharString, CCountedPointer<C3DSkeletalMorphTarget> > >, less<CCharString>,
+                        allocator<pair<const CCharString, CCountedPointer<C3DSkeletalMorphTarget> > > >::_M_find<CCharString >(const CCharString&) const;
 
 } // namespace std

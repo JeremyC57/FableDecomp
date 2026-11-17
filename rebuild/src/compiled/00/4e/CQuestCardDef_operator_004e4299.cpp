@@ -11,13 +11,12 @@
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CPrerequisiteMap are now the STLport std::map<EQuestCardPrerequisite, long> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+enum EQuestCardPrerequisite;
 struct CLongVector {                       // retail std::vector<long> (retail 0xc bytes)
     unsigned long m_words[3];
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
-};
-struct CPrerequisiteMap {                       // retail std::map<EQuestCardPrerequisite,long> (12 bytes) (retail 0xc bytes)
-    unsigned long m_words[3];
-    CPrerequisiteMap& operator=(const CPrerequisiteMap& other);   // 0x004E4326
 };
 class CDefString { public:
     long TablePos;                      // index into the def string table (trivially copied)
@@ -39,7 +38,7 @@ class CQuestCardDef : public CDefClassBase { public:
     bool                     IsVignette;                  // +0x59
     bool                     IsExclusive;                 // +0x5a
     bool                     MakeVignetteRouteAppearOnMinimap; // +0x5b
-    CPrerequisiteMap         Prerequisites;               // +0x5c
+    std::map<EQuestCardPrerequisite, long>         Prerequisites;               // +0x5c
     long                     NumBoasts;                   // +0x68
     bool                     CanPlayerCancel;             // +0x6c
     unsigned long            QuestEpilogue;               // +0x70

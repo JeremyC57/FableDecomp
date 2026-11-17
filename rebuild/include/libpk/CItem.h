@@ -72,6 +72,13 @@ struct CItemDispatcher : public PKCTRList<CItem> { // the id-keyed item list (+0
     // 0x00C1EE60 binds (?FindItem@CItemDispatcher@@QAEPAUCItem@@J@Z; descriptive, libpk has no PDB). Declaration only.
     CItem* FindItem(long key);                      // 0x00C10140
 #endif
+#ifdef FABLE_RETAIL_CITEMDISPATCHER_FINDBYKEY
+    // NF70 overlay opt-in (row 0x00C10140 CItemDispatcher::FindItem, q10757): the two virtuals past PKCTRList<CItem>'s sixteen, as the
+    // sibling list CNamedIndex declares them (libpk/CBankProcessor.h: slot 16 TransferAllFrom, slot 17 FindByKey(const unsigned long&));
+    // FindItem is `mov eax,[ecx] ; lea edx,[esp+4] ; push edx ; call [eax+44h] ; ret 4` (slot 17 on the key's own stack slot).
+    virtual void TransferAllFrom(PKCTRList<CItem>* other);  // slot 16 (+0x40)
+    virtual CItem* FindByKey(const unsigned long& key);     // slot 17 (+0x44)
+#endif
     unsigned char m_impl[8];                        // +0x08 its embedded morphable container
     CItemNameIndex m_names;                         // +0x10 ... and the name-hash index
 };

@@ -68,16 +68,20 @@ struct CCharStringVector {                              // STLport vector<CCharS
     }
 };
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:   // a class in Ego_r.pdb (PAVCTCGraphicAppearance@NGraphicAppearance@@ in the PDB spellings; NF70 q10750)
     void GetAllDummyObjectNames(CCharStringVector& names);   // 0x004BDB40
 };
 }
 using NGraphicAppearance::CTCGraphicAppearance;
 
 struct CTCMeshAutomaticEntityCreator : CTCBase {
+private:   // Ego_r.pdb: CreateObject / CreateParticle are private (AAE); NF70 q10750
     void CreateObject(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);     // 0x0072DDB0
+public:    // CreateBuilding is not in the PDBs: the landed 0x0072DF50 spelling (QAE) is kept
     void CreateBuilding(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);   // 0x0072DF50
+private:
     void CreateParticle(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);   // 0x0072E130
+public:
     void CreateChildThings();
 };
 

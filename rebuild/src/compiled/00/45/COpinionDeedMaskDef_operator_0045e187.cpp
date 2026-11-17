@@ -16,6 +16,9 @@
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes, 16-byte SubDefInfoMap); the
 // retail base is 0x39 bytes (12-byte vector map), so it is modelled locally as a packed polymorphic base
 // whose operator= is out of line; the derived members follow at their natural alignment.
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CDeedEnabledMap are now the STLport std::map<EOpinionDeedType, bool> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+#include "engine/EOpinionDeedType.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -24,16 +27,10 @@
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 
-struct CDeedEnabledMap {                // retail map<EOpinionDeedType,bool> (12 bytes)
-    void*         m_allocator;
-    void*         m_head;
-    unsigned long m_size;
-    CDeedEnabledMap& operator=(const CDeedEnabledMap& other);   // 0x0045E1AE
-};
 
 class COpinionDeedMaskDef : public CParentDefClassBase { public: // vtable 0x01233DEC
     bool                 DeedEnabledDefault;          // +0x39
-    CDeedEnabledMap      DeedEnabled;                 // +0x3c
+    std::map<EOpinionDeedType, bool>      DeedEnabled;                 // +0x3c
     COpinionDeedMaskDef& operator=(const COpinionDeedMaskDef& other);
 };
 

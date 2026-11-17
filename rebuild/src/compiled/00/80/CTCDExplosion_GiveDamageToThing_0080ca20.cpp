@@ -24,6 +24,7 @@
 //         retail). Retail CThing: interface bitset +0x20 (TC 0x89 = CTCBurntEffect: word +0x30 bit 9), map +0x44,
 //         ThingTypeFlags +0x6C (bit 3 tested here).
 #include "fable_compiler.h"
+#include "engine/EDamageAttribute.h"                // NF70 (round 7, q10800): the attribute parameter is the PDB enum, as engine/CHitParameters.h declares it
 class CTCBase;
 class CTCParamsBase;
 class CBaseObject;
@@ -45,7 +46,7 @@ public:
                    const C3DVector& position, const C3DVector& direction, bool knockDown, bool blockable,
                    bool flourish, bool blockCounter);                       // 0x00789238
     ~CHitParameters();                              // 0x00789358
-    void AddDamageWithAttribute(long attribute, float damage);             // 0x00868CA0 (EDamageAttribute)
+    void AddDamageWithAttribute(EDamageAttribute attribute, float damage); // 0x00868CA0 (Ego_r.pdb / FableWin.pdb: the enum; NF70 q10800)
 };
 
 class CTCBurntEffect {
@@ -175,7 +176,7 @@ void CTCDExplosion::GiveDamageToThing(CThingGameObject& thing)
             ratio = 1.0f;
         damage *= 1.0f - ratio * 0.95f;
     }
-    hit.AddDamageWithAttribute(5, damage);
+    hit.AddDamageWithAttribute(DAMAGE_EXPLOSION, damage);
     thing.OnHit(hit);
     HitThings.push_back(CIntelligentPointer<CThing>(&thing));
     if (PExplosionDef->CauseFireEffectOnHitCreatures && (thing.ThingTypeFlags & 8)) {

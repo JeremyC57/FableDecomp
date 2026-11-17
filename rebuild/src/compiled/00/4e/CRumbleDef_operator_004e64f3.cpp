@@ -3,32 +3,16 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004E64F3, 45 bytes, thiscall, `ret 4` (size-optimised module).
 // Identity (proven): its only reference is the tail jump of CRumbleDef::Copy 0x004E64EE; the 2 member operations read from
 //   these bytes (byte/dword copies and the container operator= calls) are Ego_r.pdb CRumbleDef's members in order (names and types are Ego_r.pdb's).
-// Callees: CDefClassBase::operator=(const CDefClassBase&) 0x00431F10, map<EQuakeStrength, float>::operator= 0x004E6520, map<EQuakeLength, float>::operator= 0x004E6645.
+// Callees: CDefClassBase::operator=(const CDefClassBase&) 0x00431F10, _Rb_tree<EQuakeStrength, ...>::operator= 0x004E6520, _Rb_tree<EQuakeLength, ...>::operator= 0x004E6645.
 // Shape (family M043, representative 0x0045D2FC): compiler-generated `operator=`, emitted through Copy's
 //   `*this = *(const CRumbleDef*)other;`; `optimize("s", on)` keeps every scalar copy in eax/al.
 // Header debt: the def base is modelled by its retail size only (its operator= is out of line).
 #pragma optimize("s", on)
-enum EQuakeStrength { EQUAKESTRENGTH_NONE = 0 };
-enum EQuakeLength { EQUAKELENGTH_NONE = 0 };
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp> struct less { };
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > > class map {
-public:
-    map& operator=(const map& __x);                       // out of line
-    void* _M_header;
-    unsigned int _M_node_count;
-    _Compare _M_key_compare;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
-public:
-    vector& operator=(const vector& __x);                 // out of line
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-};
-}
+// NF70 (round 7, land1117fu q10784 / q10785): the row's own `namespace std` map / vector models and its two stand-in enums are gone; the
+//   maps are STLport's (stlport/fable_map.h) and the enums engine/NCreatureActionEvents.h's. map's operator= is implicit and inline, so each
+//   member assignment calls the instance's out-of-line _Rb_tree::operator= (0x004E6520 / 0x004E6645), as retail does.
+#include "stlport/fable_map.h"
+#include "engine/NCreatureActionEvents.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 // def vtable 0x0124273C: slot 0 0x004E32A6 (implicit inline dtor); real overrides from the def vtable scan

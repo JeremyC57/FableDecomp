@@ -14,6 +14,10 @@
 // COpinionSet's implicit operator= calls (was a local float-triple stand-in with its own COpinionSet::operator=).
 #define FABLE_RETAIL_STLP_VECTOR_ASSIGN
 #include "engine/CArray.h"
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) COpinionMap, CReactionFlagMap are now the STLport std::map<EOpinion, float>, std::map<EOpinionReactionType, bool> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+#include "engine/EOpinion.h"
+enum EOpinionReactionType;
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -22,28 +26,20 @@
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 
-struct COpinionMap {                    // retail map<EOpinion,float> (12 bytes)
-    void* m_allocator; void* m_head; unsigned long m_size;
-    COpinionMap& operator=(const COpinionMap& other);       // 0x0045F03A
-};
 
-struct CReactionFlagMap {               // retail map<EOpinionReactionType,bool> (12 bytes)
-    void* m_allocator; void* m_head; unsigned long m_size;
-    CReactionFlagMap& operator=(const CReactionFlagMap& other);   // 0x0045DD2C
-};
 
 class COpinionSet { public:                    // Ego_r.pdb: one member, CArray<float> OpinionValues (retail 12 bytes)
     CArray<float> OpinionValues;                // its implicit operator= is the call to vector<float>::operator= 0x0045EF2D
 };
 
 class COpinionSourceDef : public CParentDefClassBase { public:    // vtable 0x01233FF4
-    COpinionMap ProducedOpinion;                // +0x3c
+    std::map<EOpinion, float> ProducedOpinion;                // +0x3c
     bool AlwaysAwareOf;                         // +0x48
     bool UnknownThreatSource;                   // +0x49
     bool ReactNonstop;                          // +0x4a
     bool ReactToSelfPermitted;                  // +0x4b
     bool ReactionFlagDefault;                   // +0x4c
-    CReactionFlagMap ReactionFlag;              // +0x50
+    std::map<EOpinionReactionType, bool> ReactionFlag;              // +0x50
     bool UseNavLineOfSight;                     // +0x5c
     bool WitnessesWillNotAttack;                // +0x5d
     bool WitnessesWillOverrideFactionEnemy;     // +0x5e

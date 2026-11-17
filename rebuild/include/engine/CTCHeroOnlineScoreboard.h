@@ -42,6 +42,13 @@ public:
     // the body drops the HTTP connection and calls ClearScoreboard). The landed self row spells it ResetScoreboard (descriptive): NAME_FIXES.
     void Close();                                                    // 0x00562E70
 #endif
+#ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_CLEARSCOREBOARD
+    // NF70 opt-in (round 7, row 0x00562E70): Ego_r.pdb 0x005DA4E0 / FableWin.pdb ?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ (private),
+    // retail 0x00562E10 (Close's callee). Declaration only: no layout change.
+private:
+    void ClearScoreboard();                                          // 0x00562E10
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_MEMBERS
     // Retail opt-in (acctB c2058, row 0x00563920 DisplayScoreboardGUI; the model the same-TU landed rows, e.g. ChooseAClan 0x0055FEC0, carry
     // locally): Ego_r.pdb CTCHeroOnlineScoreboard members with retail STLport sizes -- PictureCache +0x10, LocalScoreboard +0x1C,

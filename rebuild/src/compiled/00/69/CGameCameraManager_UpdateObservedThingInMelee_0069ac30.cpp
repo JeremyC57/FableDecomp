@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069AC30, length 96 bytes.
 // Callees: IsCameraModeInterruptable(CCountedPointer<const NCameraModes::CBase>) @ 0x00697A50 (a static, callee-cleaned:
 // `__stdcall`, the by-value copy built in its stack slot with the inlined copy constructor), IsObservedThingInMelee
-// @ 0x006994F0, AddMeleeCameraMode @ 0x0069A8B0 (manifest label "CTCCombat::AddMeleeFlourishAbility" is propagated),
+// @ 0x006994F0, PushCombatCameraMode @ 0x0069A8B0 (manifest label "CTCCombat::AddMeleeFlourishAbility" is propagated),
 // RemoveCombatCameraMode @ 0x0069A920.
 // Shape: `if (!interruptable && PendingMode == 0) return;` then the melee predicate with ObservedThingInMelee (+0xa9) read
 // once into al before the branch; the two tail calls are sibling `jmp`s.
@@ -94,8 +94,10 @@ class CGameCameraManager { public:
     CDefPointer PCameraManagerSet;                  // +0x130 CDefPointer<const CCameraManagerSetDef>
     CDefPointer PDef;                               // +0x134 CDefPointer<const CCameraManagerDef>
     static bool __stdcall IsCameraModeInterruptable(CCountedPointer<NCameraModes::CBase> mode);   // 0x00697A50
-    bool IsObservedThingInMelee();                  // 0x006994F0
-    void AddMeleeCameraMode();                      // 0x0069A8B0
+private:
+    bool IsObservedThingInMelee() const;            // 0x006994F0 (Ego_r.pdb ABE: private const; NF70 q10745)
+public:
+    void PushCombatCameraMode();                    // 0x0069A8B0 (Ego_r.pdb + FableWin.pdb; NF70 q10746)
     void RemoveCombatCameraMode();                  // 0x0069A920
     void UpdateObservedThingInMelee();
 };
@@ -106,7 +108,7 @@ void CGameCameraManager::UpdateObservedThingInMelee()
         return;
     if (IsObservedThingInMelee()) {
         if (!ObservedThingInMelee)
-            AddMeleeCameraMode();
+            PushCombatCameraMode();
     } else {
         if (ObservedThingInMelee)
             RemoveCombatCameraMode();

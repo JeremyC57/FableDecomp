@@ -31,6 +31,12 @@ public:
     // of PrimitiveIndex +0x0C). No layout change.
     unsigned long GetPrimitiveIndex() const { return PrimitiveIndex; }
 #endif
+#ifdef FABLE_RETAIL_C3DCLOTHPRIMITIVE_REMAPBONEINDICES
+    // NF70 opt-in (round 7, row 0x00AC3AF0): Ego_r.pdb 0x00C4B610 / FableWin.pdb 0x03496150
+    // ?RemapBoneIndices@C3DClothPrimitive@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z: forwards to the particle
+    // program's RemapBoneIndices (retail `mov ecx,[ecx+4] ; jmp`). Declaration only (needs stlport/fable_map.h); no layout change.
+    void RemapBoneIndices(std::map<unsigned long, unsigned long>& remap);
+#endif
     void* _vftable;
     CCountedPointer<CParticleProgram> ParticleProgram;                              // +0x04
     unsigned long PrimitiveIndex;                                                   // +0x0C

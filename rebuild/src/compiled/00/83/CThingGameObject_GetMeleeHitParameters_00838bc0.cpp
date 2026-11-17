@@ -7,6 +7,7 @@
 // Layout (retail; Ego_r.pdb in brackets): CThing interface bitset +0x20, map +0x44, ThingTypeFlags +0x6c [+0x7c],
 //   PBaseDef +0x70 [+0x80], Dead +0x91 bit 0; creature current action +0x100; CHitParameters Position +0x2, Direction +0xe.
 #include "fable_compiler.h"
+#include "engine/EDamageAttribute.h"                // NF70 (round 7, q10800): the attribute parameter is the PDB enum, as engine/CHitParameters.h declares it
 #include "engine/C3DVector.h"
 class CTCBase;
 // agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
@@ -209,7 +210,7 @@ class CHitParameters { public:
     void SetThingHitting(CThing& thing);             // 0x008685F0
     void SetHitLocation(NHitLocations::CHitLocation* location);   // 0x00868590
     void SetWeapon(CThing& weapon);                  // 0x00868CE0 ?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z (Ego_r.pdb / FableWin.pdb; NF28: reference, was CThing*)
-    void AddDamageWithAttribute(long attribute, float damage);    // 0x00868CA0
+    void AddDamageWithAttribute(EDamageAttribute attribute, float damage);    // 0x00868CA0 (Ego_r.pdb / FableWin.pdb: the enum; NF70 q10800)
 };
 #pragma pack(pop)
 class CThingGameObject : public CThing { public:
@@ -286,14 +287,14 @@ void CThingGameObject::GetMeleeHitParameters(NHitLocations::CHitLocation* locati
         params.PlayHitResponseOverrideSet = true;
         params.PlayHitResponse = false;
     }
-    long attribute;
+    EDamageAttribute attribute;
     float damage;
     const CTCWeapon* tc;
     if (weapon && !weapon->Dead && weapon->GetConstInterface(&tc, 0x48) && tc->HasDamage()) {
         damage = tc->GetDamage();
-        attribute = tc->GetDamageAttribute();
+        attribute = (EDamageAttribute)tc->GetDamageAttribute();
     } else {
-        attribute = 1;
+        attribute = DAMAGE_MELEE_UNARMED;
         damage = hitter.GetBaseMeleeDamage();
     }
     params.AddDamageWithAttribute(attribute, damage * weaponMultiplier * multiplier);

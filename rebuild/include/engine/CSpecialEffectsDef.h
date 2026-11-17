@@ -42,13 +42,18 @@ public:
     unsigned char _pad_0x25[3];
     CSpecialEffectsStringMap SpecialEffectsMap;
     bool GetEffectFromString(const CCharString&,long&) const;
+#ifdef FABLE_RETAIL_CSPECIALEFFECTSDEF_COPY
+    // NF70 opt-in (round 7, row 0x0045C77F): Ego_r.pdb / FableWin.pdb ?Copy@CSpecialEffectsDef@@UAEXPBVCDefClassBase@@@Z, the slot-19
+    // override of CDefClassBase::Copy. Declaration only; no layout change.
+    virtual void Copy(const CDefClassBase*);
+#endif
 #ifdef FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
     // Retail opt-in (chunk 782, row 0x007941D0): FableWin.pdb ?StatGetTypeName@CSpecialEffectsDef@@SI?AVCCharString@@XZ, inline (the
     // class-name literal GetSubDef<CSpecialEffectsDef> 0x00669580 builds for its lookup; the landed 0x00669580 body). Needs fable_string.h.
     static CCharString __fastcall StatGetTypeName() { return CCharString("CSpecialEffectsDef", -1); }
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CSpecialEffectsDef)==0x34);
+FABLE_STATIC_ASSERT_AT(51, sizeof(CSpecialEffectsDef)==0x34);
 #ifdef FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
 // Retail opt-in (chunk 782, row 0x007941D0 CTCUnholyPower ctor): the body of Ego_r.pdb
 // ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z (retail 0x00669D30, called out of line) visible in the TU, as a

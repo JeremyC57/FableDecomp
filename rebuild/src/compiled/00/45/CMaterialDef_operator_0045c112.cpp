@@ -13,6 +13,9 @@
 // (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
 #define FABLE_RETAIL_STLP_VECTOR_ASSIGN
 #include "stlport/fable_containers.h"
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CBlendedEffectMap are now the STLport std::map<long, CBlendedParticleEffectSet> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+class CBlendedParticleEffectSet;   // Ego_r.pdb 16-byte class; only named here (the map is assigned out of line)
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -22,12 +25,6 @@
 #pragma pack(pop)
 
 
-struct CBlendedEffectMap {              // retail map<long,CBlendedParticleEffectSet> (12 bytes)
-    void*         m_allocator;
-    void*         m_head;
-    unsigned long m_size;
-    CBlendedEffectMap& operator=(const CBlendedEffectMap& other);   // 0x0045C19F
-};
 
 class CMaterialDef : public CParentDefClassBase { public:     // vtable 0x012336DC
     long  FirstHitSound;                        // +0x3c
@@ -41,7 +38,7 @@ class CMaterialDef : public CParentDefClassBase { public:     // vtable 0x012336
     std::vector<long> KnockdownHitFloorParticleEffect;// +0x68
     std::vector<long> WindBlowDustEffect;             // +0x74
     std::vector<long> BerserkedSwordHitParticleEffect;// +0x80
-    CBlendedEffectMap BlendedSwordHitEffects;   // +0x8c
+    std::map<long, CBlendedParticleEffectSet> BlendedSwordHitEffects;   // +0x8c
     CMaterialDef& operator=(const CMaterialDef& other);
 };
 

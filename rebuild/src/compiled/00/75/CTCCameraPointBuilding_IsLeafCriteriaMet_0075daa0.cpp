@@ -24,7 +24,10 @@ struct CTCGraphicAppearance {
 using NGraphicAppearance::CTCGraphicAppearance;
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
-const CThing* __fastcall GetPBuildingThingOccupying(CThing* thing);     // 0x006989D0 (the CThingBuilding)
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGPHYSICAL   // CThingBuilding : CThingGameObject : CThingPhysical : CThing (the retail chain; NF70 q10752)
+#include "engine/CThingBuilding.h"
+namespace NCameraModes { const CThingBuilding* __fastcall GetPBuildingThingOccupying(const CThing& thing); }   // 0x006989D0: Ego_r.pdb ?GetPBuildingThingOccupying@NCameraModes@@YIPBVCThingBuilding@@ABVCThing@@@Z (NF70 q10752)
 struct CTools {
     bool IsLineOfSightFiltered(const C3DVector* camera, const C3DVector* pos, C3DVector* hitPos, C3DVector* hitNormal, long* hitIndex,
                                const CThing*& hitThing, long filter, bool flag);    // 0x00877C40
@@ -96,7 +99,7 @@ bool CTCCameraPointBuilding::IsLeafCriteriaMet()
         if (observed) {
             C3DVector focal = observed->GetTCGraphicAppearance()->GetCameraFocalPos(1.0f);
             C3DVector heroPosition = ParentThing->GetPos();
-            if (thing == GetPBuildingThingOccupying(observed)) {
+            if (thing == NCameraModes::GetPBuildingThingOccupying(*observed)) {
                 const CThing* hitThing = 0;
                 if (!ExitPoint && !StartPoint) {
                     long hitIndex;

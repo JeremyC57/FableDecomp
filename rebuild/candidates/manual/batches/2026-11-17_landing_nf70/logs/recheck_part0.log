@@ -1,0 +1,82 @@
+addr       parity           behav  name
+  WARN leaf 'operator=' matches no symbol in 0045c112.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045c112.obj; graded the largest function
+0045c112   RELOCATION_MATCH PASS   operator=
+0045c77f   RELOCATION_MATCH PASS   Copy
+0045dd2c   RELOCATION_MATCH PASS   operator=
+  WARN leaf 'operator=' matches no symbol in 0045ee9b.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045ee9b.obj; graded the largest function
+0045ee9b   RELOCATION_MATCH PASS   operator=
+00461f7c   WARN SHARED_HEADER_AVAILABLE CFloatRange
+00461f7c   RELOCATION_MATCH PASS   operator=
+00467831   RELOCATION_MATCH PASS   _M_insert_overflow
+004e4d88   RELOCATION_MATCH PASS   operator=
+004e60ee   RELOCATION_MATCH PASS   Copy
+004e9021   RELOCATION_MATCH PASS   TransferBinaryIn
+004ec174   RELOCATION_MATCH PASS   operator=
+004f96d3   RELOCATION_MATCH PASS   _M_copy
+0053c8f8   RELOCATION_MATCH PASS   find<unsigned long const*, unsigned long>
+0058148d   RELOCATION_MATCH PASS   UnsetActionSpeedMultiplier
+0063a390   RELOCATION_MATCH PASS   GetThemeSizeZAt
+0063ae70   RELOCATION_MATCH PASS   GetStrongestEngineThemeAtBlock
+00687b30   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00687b30   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+00687b30   RELOCATION_MATCH PASS   IsEventButtonReleased
+00688eb0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00688eb0   WARN SHARED_HEADER_AVAILABLE CThing
+00688eb0   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+00688eb0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase
+00688eb0   RELOCATION_MATCH PASS   ProcessInput
+006994f0   WARN SHARED_HEADER_AVAILABLE CTCCombat
+006994f0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+006994f0   RELOCATION_MATCH PASS   IsObservedThingInMelee
+0069b650   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0069b650   RELOCATION_MATCH PASS   UpdateObservedThingInBuilding
+006c9ee0   WARN RELOC_NAME: ??$GFSerialiseVectorBinaryIn@U?$pair@JPAVCOpinionDeed@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@U?$pair@JPAVCOpinionDeed@@@std@@V?$allocator@U?$pair@JPAVCOpinionDeed@@@std@@@2@@std@@@Z -> 006c9e40 labelled 'GFSerialiseVectorBinaryIn<std::pair<long, COpinionDeed *>>'
+006c9ee0   RELOCATION_MATCH PASS   TransferVector
+0072e290   RELOCATION_MATCH PASS   CreateChildThings
+00798770   WARN SHARED_HEADER_AVAILABLE C3DVector
+00798770   WARN SHARED_HEADER_AVAILABLE CThing
+00798770   WARN SHARED_HEADER_AVAILABLE CThingAICreature
+00798770   RELOCATION_MATCH PASS   FinishBeingForcePushed
+0081f910   MATCH            PASS   GetStrongestEngineThemeAt
+008201e0   RELOCATION_MATCH PASS   InitPassabilityFromThemesIfNecessary
+00848ae0   WARN SHARED_HEADER_AVAILABLE CTCCarryable
+00848ae0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00848ae0   WARN RELOC_NAME: ?GetCanItemBeQuickAssigned@CCreatureActionBase@@QAE_NXZ -> 006925a0 labelled 'CCreatureActionBase::HasPerformedAction'
+00848ae0   RELOCATION_MATCH PASS   FrameUpdate
+008d5000   RELOCATION_MATCH PASS   FrameUpdate
+00ac3af0   RELOCATION_MATCH PASS   RemapBoneIndices
+00b430a0   MATCH            PASS   DeleteData
+00c2dde0   RELOCATION_MATCH PASS   ~PKCTRList
+
+WINS: 29
+  0045c112 RELOCATION_MATCH CMaterialDef::operator=
+  0045c77f RELOCATION_MATCH CSpecialEffectsDef::?Copy@CSpecialEffectsDef@@UAEXPBVCDefClassBase@@@Z
+  0045dd2c RELOCATION_MATCH std::_Rb_tree<EOpinionReactionType, std::pair<EOpinionReactionType const, bool>, std::_Select1st<std::pair<EOpinionReactionType const, bool> >, std::less<EOpinionReactionType >, std::allocator<std::pair<EOpinionReactionType const, bool> > >::??4?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  0045ee9b RELOCATION_MATCH COpinionSourceDef::operator=
+  00461f7c RELOCATION_MATCH CHeroCombatDef::??4CHeroCombatDef
+  00467831 RELOCATION_MATCH std::vector<bool>::?_M_insert_overflow@?$vector@_NV?$allocator@_N@std@@@std@@IAEXPA_NAB_NABU__true_type@2@I_N@Z
+  004e4d88 RELOCATION_MATCH CExperienceDef::??4CExperienceDef
+  004e60ee RELOCATION_MATCH CIdleSchedulerDef::?Copy@CIdleSchedulerDef@@UAEXPBVCDefClassBase@@@Z
+  004e9021 RELOCATION_MATCH CPersistTraits<CWeaponTrailGraphicSet>::?TransferBinaryIn@?$CPersistTraits@VCWeaponTrailGraphicSet@@@@QAEXAAVCMemoryDataInputStream@@AAVCWeaponTrailGraphicSet@@@Z
+  004ec174 RELOCATION_MATCH CObjectAugmentationsDef::??4CObjectAugmentationsDef
+  004f96d3 RELOCATION_MATCH std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >::?_M_copy@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@PAU32@0@Z
+  0053c8f8 RELOCATION_MATCH std::??$find@PBKK@std@@YIPBKPBK0ABK@Z
+  0058148d RELOCATION_MATCH CTCHaste::?UnsetActionSpeedMultiplier@CTCHaste@@QAEXPAX@Z
+  0063a390 RELOCATION_MATCH CWorldMap::?GetThemeSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z
+  0063ae70 RELOCATION_MATCH CWorldMap::?GetStrongestEngineThemeAtBlock@CWorldMap@@QBEJABVC2DCoordI@@AAJ@Z
+  00687b30 RELOCATION_MATCH CInputProcessGameBase::?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z
+  00688eb0 RELOCATION_MATCH CInputProcessZTarget::ProcessInput
+  006994f0 RELOCATION_MATCH CGameCameraManager::?IsObservedThingInMelee@CGameCameraManager@@ABE_NXZ
+  0069b650 RELOCATION_MATCH CGameCameraManager::?UpdateObservedThingInBuilding@CGameCameraManager@@QAEXXZ
+  006c9ee0 RELOCATION_MATCH CPersistContext::??$TransferVector@U?$pair@JPAVCOpinionDeed@@@std@@@CPersistContext@@QAEXPBDAAV?$vector@U?$pair@JPAVCOpinionDeed@@@std@@V?$allocator@U?$pair@JPAVCOpinionDeed@@@std@@@2@@std@@@Z
+  0072e290 RELOCATION_MATCH CTCMeshAutomaticEntityCreator::CreateChildThings
+  00798770 RELOCATION_MATCH CTCForcePushed::FinishBeingForcePushed
+  0081f910 MATCH CMap::?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z
+  008201e0 RELOCATION_MATCH CMap::?InitPassabilityFromThemesIfNecessary@CMap@@QAEXABVC2DBoxI@@@Z
+  00848ae0 RELOCATION_MATCH CCreatureAction_PickUpGenericBox::?FrameUpdate@CCreatureAction_PickUpGenericBox@@UAEXXZ
+  008d5000 RELOCATION_MATCH CCreatureAction_FireMissileWeapon::?FrameUpdate@CCreatureAction_FireMissileWeapon@@UAEXXZ
+  00ac3af0 RELOCATION_MATCH C3DClothPrimitive::?RemapBoneIndices@C3DClothPrimitive@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z
+  00b430a0 MATCH CCountedPointer<CStaticMapBankStateBlock>::?DeleteData@?$CCountedPointer@VCStaticMapBankStateBlock@@@@SIXPAX@Z
+  00c2dde0 RELOCATION_MATCH PKCTRList<CSegment>::??1?$PKCTRList@UCSegment@@@@UAE@XZ

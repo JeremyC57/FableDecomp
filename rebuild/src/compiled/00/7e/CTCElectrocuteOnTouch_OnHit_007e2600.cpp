@@ -25,6 +25,7 @@ class CCharString { public:
 };
 
 #include "engine/C3DVector.h"
+#include "engine/EDamageAttribute.h"                // NF64 (q10666): the attribute parameter is the PDB enum, as engine/CHitParameters.h declares it
 
 class CHitParameters {                              // 0x60 bytes in retail
 public:
@@ -35,7 +36,7 @@ public:
                    const C3DVector& position, const C3DVector& direction, bool knockDown, bool blockable,
                    bool flourish, bool blockCounter);                       // 0x00789238
     ~CHitParameters();                              // 0x00789358
-    void AddDamageWithAttribute(long attribute, float damage);             // 0x00868CA0 (EDamageAttribute)
+    void AddDamageWithAttribute(EDamageAttribute attribute, float damage); // 0x00868CA0 (Ego_r.pdb / FableWin.pdb: the enum; NF64 q10666)
 };
 
 class CTCElectrocutedEffect {
@@ -92,7 +93,7 @@ void CTCElectrocuteOnTouch::OnHit(CThing& thing)
     direction.Y = to.Y - from.Y;
     direction.Z = to.Z - from.Z;
     CHitParameters hit(0, owner, 0, thing.GetPos(), direction, true, false, false, false);
-    hit.AddDamageWithAttribute(2, 1.0f);
+    hit.AddDamageWithAttribute(DAMAGE_LIGHTNING, 1.0f);
     hit.MoveBack = false;
     if (thing.ThingTypeFlags & 4)
         thing.OnHit(hit);
