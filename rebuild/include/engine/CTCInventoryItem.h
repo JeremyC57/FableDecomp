@@ -56,6 +56,12 @@ public:
     // inventory into PInventory +0x10; Ego_r donor 0x00559DA0 directly before ReturnToInventory, as in retail). Declaration only.
     void ConnectToInventory(NInventory::CTCInventoryBase& inventory);   // 0x005D8E40
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_GETBOUGHTPRICE
+    // NF88 nested opt-in (round 7, q11153 binder, row 0x005D8E70): Ego_r.pdb 0x00559DD0 / FableWin.pdb 0x01E009B0
+    // ?GetBoughtPrice@CTCInventoryItem@@QBEJXZ (const), out of line at 0x005D8E70: PInventory->GetBoughtPrice(def index of the parent thing),
+    // 0 without an inventory. Declaration only.
+    long GetBoughtPrice() const;                                                     // 0x005D8E70
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
     // Nested opt-in (chunk 867, rows 0x005AF64E BuyItem / 0x005B01FE SellItemPC): the three static `__fastcall` CInventoryItemDef
     // field accessors, each `GetDef<CInventoryItemDef>(defIndex)` + one field read (Ego_r.pdb layout: InventoryCategory +0x3c,

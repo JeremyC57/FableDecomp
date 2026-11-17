@@ -231,6 +231,44 @@ template <class _ForwardIter, class _Tp> _ForwardIter FABLE_FASTCALL lower_bound
  *
  */
 // Modified only for this project's names and calling-convention spelling.
+#ifdef FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS
+// NF88 nested opt-in (round 7, q11159; rows 0x005C08C0 / 0x005C0653 and the inventory callers): STLport 4.6 _algo.c random-access
+// `__find_if(first, last, pred, const random_access_iterator_tag&)`, which find_if picks for pointer iterators (a better match than the
+// input-iterator overload above). A `__fastcall` COMDAT in retail (0x005C0653 for const NInventory::CCategory* with CIsInventoryCategory,
+// `ret 8`); declaration only unless FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS_BODY, the four-per-trip loop and the 3/2/1 remainder switch.
+template<class RandomAccessIter,class Predicate>
+RandomAccessIter FABLE_FASTCALL __find_if(RandomAccessIter first,RandomAccessIter last,Predicate pred,const random_access_iterator_tag&)
+#ifdef FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS_BODY
+{
+    typename iterator_traits<RandomAccessIter>::difference_type trip_count = (last - first) >> 2;
+    for ( ; trip_count > 0 ; --trip_count) {
+        if (pred(*first)) return first;
+        ++first;
+        if (pred(*first)) return first;
+        ++first;
+        if (pred(*first)) return first;
+        ++first;
+        if (pred(*first)) return first;
+        ++first;
+    }
+    switch (last - first) {
+    case 3:
+        if (pred(*first)) return first;
+        ++first;
+    case 2:
+        if (pred(*first)) return first;
+        ++first;
+    case 1:
+        if (pred(*first)) return first;
+    case 0:
+    default:
+        return last;
+    }
+}
+#else
+;
+#endif
+#endif
 #ifdef FABLE_RETAIL_STLP_FIND_IF_GUARD_BODY_PASS23
 // Genuine existing STLport find_if / input-category dispatcher definitions.
 // Native0066000a calls real __find_if0065f9ab; natural visibility first.

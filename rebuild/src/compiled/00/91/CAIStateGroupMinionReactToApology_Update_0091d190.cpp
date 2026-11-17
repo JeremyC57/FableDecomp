@@ -1,64 +1,97 @@
-// CAIStateGroup_MinionReactToApology::Update() -- speak accepted or rejected apology response then terminate
-// Leaf: ?Update@CAIStateGroup_MinionReactToApology@@QAEXXZ
-// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members first/last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
-// Retail0x0091D190,270 bytes. GetApology91D0A0; player manager8FCF90,main player449970,CPlayer::GetPControlledCreature 487DC0;
-// RTTI pointers1237f1c/123e7d8 slot0 deleting dtors48a4f0/4d6915, genuine virtual base destructor.
-// intelligent pointer ctor/set A01B10/A01B90; speech981EA0; terminate8FCF40.
-// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
-// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
-//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
-//   0x013BB684 SUCCESS_STRING (anonymous namespace; initializer 0x01221940), was g_ApologyAccepted.
-//   0x013BB688 FAILURE_STRING (anonymous namespace; initializer 0x01221960), was g_ApologyRejected.
-#define CAIStateGroupBase CAIStateGroupBaseLayout
+// CAIStateGroup_MinionReactToApology::Update() -- speak the accepted or rejected apology response to the hero, then terminate
+// Leaf: ?Update@CAIStateGroup_MinionReactToApology@@UAEXXZ
+// Retail 0x0091D190, 270 bytes. Ego_r.pdb 0x009408F0 / FableWin.pdb 0x02C092A0 ?Update@CAIStateGroup_MinionReactToApology@@UAEXXZ (the
+//   CAIStateGroupBase slot-12 override; the landed leaf was QAE).
+// Callees: the creature's entity-events component through CThing::GetTC (Components lower_bound 0x0040F020), CTCEntityEvents::GetEvent
+//   <NEntityEvents::CEventApologyReceived, NEntityEvents::CEventFilter_None> 0x0091D0A0 (Ego_r.pdb / FableWin.pdb, QBE), GetPlayerManager
+//   0x008FCF90, CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, the CIntelligentPointer temporaries
+//   (ctor 0x00A01B10 + SetPItem 0x00A01B90, vtables 0x01237F1C / 0x0123E7D8), AIAction_SpeakAISpeechToTarget 0x00981EA0 and Terminate
+//   0x008FCF40.
+// Shape: the event pointer is copied out of GetEvent's out slot in an inner scope (retail loads it straight into edi, `mov edi,[esp+10h]`,
+//   as an inlined accessor's return value; a plain out-slot local is reloaded into eax first: NF88 grades 2..3).
+// Objects: 0x013BB684 SUCCESS_STRING / 0x013BB688 FAILURE_STRING (anonymous namespace; agentNF26 / agentFAM09 names).
+// Port (NF88, round 7, q11160 binder: it bound 0x00981EA0 under the derived-class stand-in
+//   ?AIAction_SpeakAISpeechToTarget@CAIStateGroup_MinionReactToApology@@QAEJJUCIntelligentCreature@@UCIntelligentConstThing@@ABVCCharString@@_NJ@Z):
+//   the `#define CAIStateGroupBase CAIStateGroupBaseLayout` / `#define CPlayer CPlayerPdb` includes and the local CBaseIntelligentPointer /
+//   CIntelligentConstThing / CIntelligentCreature / CThingPlayerCreature / CTCEntityEventsMethods models are gone: the row is on
+//   engine/CAIStateGroupBase.h (MEMBERS, AIACTIONS, SPEECH, GETCREATURE), CAIBrain.h, CIntelligentPointer.h (CONVERT), CThing.h (GETTC_EXPANDED),
+//   CTCEntityEvents.h, CPlayerManager.h and CPlayer.h, as the landed 0x0092FAB0 (which binds 0x00981EA0 under the PDB spelling). The event and
+//   filter classes and the state group itself have no shared header and stay declared here (Ego_r.pdb CEventApologyReceived {Accepted +8}).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CTCENTITYEVENTS
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CPLAYERMANAGER
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CThingPlayerCreature.h"
 #include "engine/CAIStateGroupBase.h"
-#undef CAIStateGroupBase
-
-class CAIStateGroupBase : public CAIStateGroupBaseLayout
-{
-public:
-    void Terminate();   // 0x008FCF40
-};
 #include "engine/CAIBrain.h"
 #include "engine/CTCEntityEvents.h"
-#include "engine/CPlayerManager.h"
-#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
-#undef CPlayer
-class CCharString;
-class CTCBase;
-#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
-#include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+#include "engine/CPlayerManager.h"
+#include "engine/NEntityEvents_CEventHitBase.h"
+#include "engine/EAIAction.h"
 
-struct CEventApologyReceived { void* vtable; long WorldFrame; bool Accepted; };
-struct CEventFilter_None { CEventFilter_None() {} };
-struct CTCEntityEventsMethods : CTCEntityEvents { bool GetApology(const CEventApologyReceived**,const CEventFilter_None&);
- const CEventApologyReceived* GetApology() { const CEventApologyReceived* event=0; GetApology(&event,CEventFilter_None()); return event; } };
-class CThingPlayerCreature : public CThing { };
-class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
-struct CPlayerManagerMethods : CPlayerManager { };   // only the (invented) GetPPlayerManager return type; GetMainPlayer is engine/CPlayerManager.h's 0x00449970
-class CBaseObject;
-struct CBaseIntelligentPointer { void* Handle; CBaseIntelligentPointer(); virtual ~CBaseIntelligentPointer(); void SetPItem(CBaseObject* item); CThing* GetPItem() const; };
-struct CIntelligentConstThing : CBaseIntelligentPointer { CIntelligentConstThing(CThing* p) { SetPItem((CBaseObject*)p); } CIntelligentConstThing(const CIntelligentConstThing& p) { SetPItem((CBaseObject*)p.GetPItem()); } };
-struct CIntelligentCreature : CBaseIntelligentPointer { CIntelligentCreature(CThing* p) { SetPItem((CBaseObject*)p); } CIntelligentCreature(const CIntelligentCreature& p) { SetPItem((CBaseObject*)p.GetPItem()); } };
-namespace { extern CCharString SUCCESS_STRING; } // 0x13BB684
-namespace { extern CCharString FAILURE_STRING; } // 0x13BB688
-struct CAIStateGroup_MinionReactToApology : CAIStateGroupBase {
- CPlayerManagerMethods* GetPPlayerManager(); 
- long AIAction_SpeakAISpeechToTarget(long,CIntelligentCreature,CIntelligentConstThing,const CCharString&,bool,long);
- void Update();
+namespace NEntityEvents {
+class CEventApologyReceived : public CEventBase {               // Ego_r.pdb, 12 bytes
+public:
+    bool GetAccepted() const { return Accepted; }               // FableWin.pdb ?GetAccepted@CEventApologyReceived@NEntityEvents@@QBE_NXZ
+private:
+    bool Accepted;                                              // +0x08
 };
-void CAIStateGroup_MinionReactToApology::Update() {
- CTCEntityEventsMethods* events;
- bool hasEvents=((CThing*)PBrain->Creature)->GetTC(TCI_ENTITY_EVENTS, &events);
- if(hasEvents) {
-  const CEventApologyReceived* apology=events->GetApology();
-  if(apology) {
-   CThing* hero=GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
-   if(apology->Accepted) AIAction_SpeakAISpeechToTarget(1,(CThing*)PBrain->Creature,hero,SUCCESS_STRING,true,0x93);
-   else AIAction_SpeakAISpeechToTarget(1,(CThing*)PBrain->Creature,hero,FAILURE_STRING,true,0x93);
-  }
- }
- Terminate();
+class CEventFilter_None {
+public:
+    CEventFilter_None() {}
+};
+}
+namespace { extern CCharString SUCCESS_STRING; }                // 0x013BB684
+namespace { extern CCharString FAILURE_STRING; }                // 0x013BB688
+
+class CAIStateGroup_MinionReactToApology : public CAIStateGroupBase {
+public:
+    virtual void Update();
+};
+
+void CAIStateGroup_MinionReactToApology::Update()
+{
+    CTCEntityEvents* events;
+    if (GetCreature().GetTC(TCI_ENTITY_EVENTS, &events)) {
+        const NEntityEvents::CEventApologyReceived* apology;
+        {
+            NEntityEvents::CEventApologyReceived* p_event = 0;
+            events->GetEvent(&p_event, NEntityEvents::CEventFilter_None());
+            apology = p_event;
+        }
+        if (apology) {
+            CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+            if (apology->GetAccepted())
+                AIAction_SpeakAISpeechToTarget(ACTION_REPEAT_UNTIL_FINISHED, &GetCreature(), hero, SUCCESS_STRING, true, 0x93);
+            else
+                AIAction_SpeakAISpeechToTarget(ACTION_REPEAT_UNTIL_FINISHED, &GetCreature(), hero, FAILURE_STRING, true, 0x93);
+        }
+    }
+    Terminate();
 }

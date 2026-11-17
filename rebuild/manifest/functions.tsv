@@ -2105,7 +2105,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00450855	StdList_Clear_00450855	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CGuiControlTreePane_SortTreeRecursively_00450855.cpp
 0045087c	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\LTextTreeWalkThrough_BuildTreeArray_0045087c.cpp
 004508a9	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\LTextTreeWalkThrough_BuildTreeArray_004508a9.cpp
-004508d6	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\LTextTreeWalkThrough_BuildTreeArray_004508d6.cpp
+004508d6	_M_erase	std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, float>, std::_Select1st<std::pair<EObjectAugmentationType const, float> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, float> > >	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\LTextTreeWalkThrough_BuildTreeArray_004508d6.cpp
 00450903	_M_erase	std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\LTextTreeWalkThrough_BuildTreeArray_00450903.cpp
 00450930	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\LTextTreeWalkThrough_BuildTreeArray_00450930.cpp
 0045095d	CIVCountedPointer_Attach_0045095d	_global	__thiscall	bool	2	CEngineInternalPrimitiveMeshBase *,CIVCountedPointer<CEngineMeshEffect> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineInternalPrimitiveMeshBase_GetMeshEffect_0045095d.cpp
@@ -6784,7 +6784,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004db7f8	CClass_004db7f8	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 004db806	RbTree_Clear_004db806	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db806.cpp
 004db82f	Alloc_24ByteStruct_3	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc24ByteStruct3_004db82f.cpp
-004db853	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db853.cpp
+004db853	clear	std::_Rb_tree<EHeroExperienceStatCategory, std::pair<EHeroExperienceStatCategory const, float>, std::_Select1st<std::pair<EHeroExperienceStatCategory const, float> >, std::less<EHeroExperienceStatCategory >, std::allocator<std::pair<EHeroExperienceStatCategory const, float> > >	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db853.cpp
 004db88a	RbTree_Clear_004db88a	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db88a.cpp
 004db8b3	Alloc_24ByteStruct_4	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc24ByteStruct4_004db8b3.cpp
 004db8d7	Alloc_40ByteStruct	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc40ByteStruct_004db8d7.cpp
@@ -6975,7 +6975,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004dd170	TextureFormat_Handler_01	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_TextureFormatHandler01_004dd170.cpp
 004dd19a	TextureFormat_Handler_02	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_TextureFormatHandler02_004dd19a.cpp
 004dd1c4	StdList_Dtor_004dd1c4	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActiveFile_OnReadFinished_004dd1c4.cpp
-004dd1db	StdList_Dtor_004dd1db	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActiveFile_OnReadFinished_004dd1db.cpp
+004dd1db	~_Rb_tree	std::_Rb_tree<EHeroExperienceStatCategory, std::pair<EHeroExperienceStatCategory const, float>, std::_Select1st<std::pair<EHeroExperienceStatCategory const, float> >, std::less<EHeroExperienceStatCategory >, std::allocator<std::pair<EHeroExperienceStatCategory const, float> > >	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActiveFile_OnReadFinished_004dd1db.cpp
 004dd1f2	TextureFormat_Handler_03	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_TextureFormatHandler03_004dd1f2.cpp
 004dd21c	StdList_Dtor_004dd21c	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActiveFile_OnReadFinished_004dd21c.cpp
 004dd233	TextureFormat_Handler_04	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_TextureFormatHandler04_004dd233.cpp
@@ -11809,12 +11809,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005be284	SetNumberOfSelectedItemOwned	CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,long	1	yes	accepted									
 005be3b1	GetPrerequisitesString	NInventory::CTCInventoryBase	__thiscall	CWideString	2	CTCInventoryBase *,CTCQuestCard *	1	yes	accepted									
 005be62c	GetPrerequisitesString	NInventory::CTCInventoryBase	__thiscall	CWideString	2	CTCInventoryBase *,CDefPointer<CQuestCardDef_const_>	1	yes	accepted									
-005be839	GetBoughtPrice	CCategory	__thiscall	long	2	CCategory *,long	1	yes	accepted									
+005be839	GetBoughtPrice	NInventory::CCategory	__thiscall	long	2	CCategory *,long	1	yes	accepted									
 005be85b	GetSlotWithItemsOfType	CCategory	__thiscall	long	2	CCategory *,long	1	yes	accepted									
-005be8b1	GetPerItemData	CCategory	__thiscall	long	2	CCategory *,long	1	yes	accepted									
-005be8d3	GetBoughtPrice	CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
+005be8b1	GetPerItemDataForItem	NInventory::CCategory	__thiscall	long	2	CCategory *,long	1	yes	accepted									
+005be8d3	GetPerItemDataForItem	NInventory::CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
 005be8f3	CreateInventoryObject	CTCInventoryBase	__thiscall	CThing *	2	CTCInventoryBase *,long	1	yes	accepted									
-005bead5	GetItemDescription	NInventory::CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCInventoryBase_GetItemDescription_005bead5.cpp
+005bead5	GetBoughtPrice	NInventory::CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCInventoryBase_GetItemDescription_005bead5.cpp
 005beaf5	GetAllSelectedItems	CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,vector<long,std::allocator<long>_> *	1	yes	accepted									
 005beb57	GetMiniMapGraphic	NInventory::CTCInventoryBase	__thiscall	ulong	2	CTCInventoryBase *,CRegion *	1	yes	accepted									
 005bec40	CItem	CItem	__thiscall	undefined	5	CItem *,long,long,CPerItemData *,long	0	yes	accepted									
@@ -11826,12 +11826,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bf103	AddInventoryItem	CCategory	__thiscall	bool	2	CCategory *,CItem *	1	yes	accepted									
 005bf16e	UpdateItemStatsForThing	CCategory	__thiscall	void	2	CCategory *,CThing *	1	yes	accepted									
 005bf19c	CanAddItem	CCategory	unknown	undefined	0		0	yes	accepted									
-005bf1d7	GetAmountOfItemsContainable	CCategory	__thiscall	long	2	CCategory *,long	1	yes	accepted									
+005bf1d7	GetAmountOfItemsContainable	NInventory::CCategory	__thiscall	long	2	CCategory *,long	1	yes	accepted									
 005bf221	RemoveItem	CCategory	__thiscall	void	3	CCategory *,long,long	1	yes	accepted									
 005bf24a	RemoveSelectedItem	CCategory	__thiscall	void	1	CCategory *	1	yes	accepted									
 005bf2c6	GetAllItemsInCategory	CCategory	__thiscall	void	2	CCategory *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *	1	yes	accepted									
 005bf2ed	IsSpaceInInventoryForItem	NInventory::CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCInventoryBase_GetItemDescription_005bf2ed.cpp
-005bf30d	GetItemDescription	NInventory::CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCInventoryBase_GetItemDescription_005bf30d.cpp
+005bf30d	GetAmountOfItemsContainable	NInventory::CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCInventoryBase_GetItemDescription_005bf30d.cpp
 005bf32d	AddItemToInventory	CTCInventoryBase	__thiscall	bool	7	CTCInventoryBase *,long,long,bool,bool,long,bool	1	yes	accepted									
 005bf3c6	RemoveItemFromInventory	CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
 005bf3f1	GetItemOfTypeInInventory	NInventory::CTCInventoryBase	__thiscall	CThing *	2	CTCInventoryBase *,long	1	yes	accepted									
@@ -11881,7 +11881,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005c07e4	operator=	CCountedPointer<std::vector<NInventory::CItem, std::allocator<NInventory::CItem> >>	__thiscall	CCountedPointer<class_CTexture> *	2	CCountedPointer<CTexture> *,CCountedPointer<class_CTexture> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CCountedPointerCTexture_operator_005c07e4.cpp
 005c0800	operator=	CCountedPointer<std::vector<CCharString, std::allocator<CCharString> >>	__thiscall	CCountedPointer<class_CTexture> *	2	CCountedPointer<CTexture> *,CCountedPointer<class_CTexture> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CCountedPointerCTexture_operator_005c0800.cpp
 005c0822	RbTreeIterator_PreIncrement_005c0822	_global	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CRegion_SetMiniMapRegionExitTextOffsetX_005c0822.cpp
-005c08c0	_Umove<EWeaponClass*>	std::vector<EWeaponClass,std::allocator<EWeaponClass>_>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\std_Umove_005c08c0.cpp
+005c08c0	find_if	std	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\std_Umove_005c08c0.cpp
 005c08d3	_Umove<EWeaponClass*>	std::vector<EWeaponClass,std::allocator<EWeaponClass>_>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\std_Umove_005c08d3.cpp
 005c08e6	CItem	NInventory::CItem	__thiscall	CEnginePrimitive2DText *	2	CEnginePrimitive2DText *,CEnginePrimitive2DText *	1	yes	accepted									
 005c0923	vfunc_0	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -14666,7 +14666,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006643c0	UpdateAction	CThingCreatureBase	__thiscall	void	1	CThingCreatureBase *	1	yes	accepted									
 00664490	AddQueuedAction	CThingCreatureBase	unknown	undefined	0		0	yes	accepted									
 006644f0	SetCurrentAction	CThingCreatureBase	__thiscall	bool	2	CThingCreatureBase *,CCreatureActionBase *	1	yes	accepted									
-00664670	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	std	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\global_Consval_00664670.cpp
+00664670	SetCurrentAction	CThingCreatureBase	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\global_Consval_00664670.cpp
 00664680	CreateDefaultWeapons	CThingCreatureBase	__thiscall	void	1	CThingCreatureBase *	1	yes	accepted									
 006647f0	SheatheAllWeapons	CThingCreatureBase	__thiscall	void	1	CThingCreatureBase *	1	yes	accepted									
 006648d0	UnsheatheWeapon	CThingCreatureBase	__thiscall	void	3	CThingCreatureBase *,long,bool	1	yes	accepted									
@@ -17352,7 +17352,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006dc1f0	~CPersistTraits	CPersistTraits<CHeroStatIncreaseData>	unknown	undefined	0		0	yes	accepted									
 006dc2e0	__copy<long const *, std::back_insert_iterator<std::vector<long, std::allocator<long>>>, int>	std	unknown	undefined	0		0			discovered	gapscan							
 006dc350	GFSerialiseMapBinaryOut	_global	unknown	undefined	0		0	yes	accepted									
-006dc450	WriteToStream	CHeroExperienceDef	unknown	undefined	0		0	yes	accepted									
+006dc450	GFSerialiseMapBinaryOut	_global	unknown	undefined	0		0	yes	accepted									
 006dc550	GFSerialiseVectorBinaryOut<CAttackHistoryCombo>	_global	__fastcall	void	2	CDataOutputStream *,vector<CMusicEntry,std::allocator<CMusicEntry>_> *	1	yes	accepted									
 006dc670	uninitialized_fill_n<CAttackHistoryCombo*,unsigned int,CAttackHistoryCombo>	std	__thiscall	__uint64 *	4	vector<unsigned___int64,std::allocator<unsigned___int64>_> *,__uint64 *,uint,__uint64 *	1	yes	accepted									
 006dc6a0	TransferBinaryIn	CPersistTraits<CAttackHistoryCombo>	__thiscall	void	3	CPersistTraits<CHeroStatIncreaseData> *,CMemoryDataInputStream *,CHeroStatIncreaseData *	1	yes	accepted									
@@ -17366,7 +17366,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006dcdd0	insert_unique	std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >	unknown	undefined	0		0	yes	accepted									
 006dce90	InsertUnique_CRetailTree_006dce90	_unattributed	unknown	undefined	0		0	yes	accepted									
 006dcfa0	GFSerialiseMapBinaryIn	_global	unknown	undefined	0		0	yes	accepted									
-006dd1c0	ReadFromStream	CHeroExperienceDef	unknown	undefined	0		0	yes	accepted									
+006dd1c0	GFSerialiseMapBinaryIn	_global	unknown	undefined	0		0	yes	accepted									
 006dd4a0	resize	std::vector<CAttackHistoryCombo, std::allocator<CAttackHistoryCombo>>	__thiscall	void	2	vector<std::pair<CCharString,long>,std::allocator<std::pair<CCharString,long>_>_> *,uint	1	yes	accepted									
 006dd580	GFSerialiseVectorBinaryIn<CAttackHistoryCombo>	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CBrainUpdateZone,std::allocator<CBrainUpdateZone>_> *	1	yes	accepted									
 006dd690	~CCreatureAction_ShowTrophy	CCreatureAction_ShowTrophy	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted									

@@ -8,8 +8,12 @@
 //   0x0081FA90, its two callers, both landed on engine/CMap.h by NF63).
 // NF70 (round 7, land1117fu q10724 / q10735): was catalogued CMap::GetDominantEngineThemeAt(const C2DCoordI&, long*) over local CMap /
 //   CGameMapGrid / CHeightMapCell models; now the PDB member on engine/CMap.h. Its body is the header's one definition (opt-in
-//   FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY, which 0x0081FA20 / 0x0081FA90 also use to see it); this row defines
-//   FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_DEFINE, so the definition is emitted here as an ordinary function.
+//   FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY, which 0x0081FA20 / 0x0081FA90 also use to see it); NF70 had this row define
+//   FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_DEFINE, so the definition was emitted here as an ordinary function (until NF88, below).
+// NF88 (round 7, q11162, coordinator ruling: one definition): the row no longer defines FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_DEFINE (a strong,
+//   nodup copy that clashed with the includers' COMDATs at whole-image link, LNK2005). It includes the `inline __declspec(noinline)` body like
+//   0x0081FA20 / 0x0081FA90 and makes VC7.1 emit it as a pick-any COMDAT (selection 2) through the anonymous-namespace reference at the end of
+//   the file (the 0x00860150 pattern; the member is protected, so the address is taken in an anonymous derived class that is never instantiated).
 #include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -24,10 +28,23 @@
 #define FABLE_RETAIL_C2DBOXI
 #define FABLE_RETAIL_SCOPED_PTR
 #define FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY
-#define FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_DEFINE
 #include "fable_string.h"
 #include "engine/CDefClassBase.h"
 #include "engine/CDefPointer.h"
 #include "engine/CDefinitionManager.h"
 #include "engine/CGameDefinitionManager.h"
 #include "engine/CMap.h"
+
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the header's inline (noinline) GetStrongestEngineThemeAt so this object emits it out
+// of line as a pick-any COMDAT (retail's 0x0081F910). Internal to this TU; the class is never instantiated and the function never called.
+class CGetStrongestEngineThemeAtReference : public CMap {
+public:
+    static long (CMap::*Reference())(const C2DCoordI&, long&) const;
+};
+// Out of class, so it is an ordinary (not inline) function that VC7.1 compiles even though nothing calls it.
+long (CMap::*CGetStrongestEngineThemeAtReference::Reference())(const C2DCoordI&, long&) const
+{
+    return &CGetStrongestEngineThemeAtReference::GetStrongestEngineThemeAt;
+}
+}

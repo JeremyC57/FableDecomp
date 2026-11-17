@@ -60,6 +60,19 @@ public:
     void TransferBinaryOut(CDataOutputStream& os,const CComboMultiplierData& value);              // 0x006DB060
 };
 #endif
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_HEROSTATINCREASEDATA_BINARYOUT
+// NF88 opt-in (round 7, q11152 binder, row 0x006DC450 GFSerialiseMapBinaryOut<CHeroStatIncreaseData, EDamageAttribute>): the traits of
+// CHeroExperienceDef::StatIncreasePerHitType's value, as the CComboMultiplierData opt-in above: DefaultVal and the writer Ego_r.pdb
+// 0x0058AD90 / FableWin.pdb 0x01F0B550 ?TransferBinaryOut@?$CPersistTraits@VCHeroStatIncreaseData@@@@QAEXAAVCDataOutputStream@@ABVCHeroStatIncreaseData@@@Z
+// (by const reference; retail 0x006DB0F0, out of line). Needs engine/CHeroStatIncreaseData.h and engine/CDataOutputStream.h first. Do
+// not combine with a CPersistTraits<CHeroStatIncreaseData> instantiation of the primary template in the same TU.
+template<> class CPersistTraits<CHeroStatIncreaseData> {
+public:
+    CHeroStatIncreaseData DefaultVal;
+    CPersistTraits():DefaultVal() {}
+    void TransferBinaryOut(CDataOutputStream& os,const CHeroStatIncreaseData& value);             // 0x006DB0F0
+};
+#endif
 #ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
 #include "engine/CMemoryDataInputStream.h"
 #include "engine/CWoundMorphs.h"

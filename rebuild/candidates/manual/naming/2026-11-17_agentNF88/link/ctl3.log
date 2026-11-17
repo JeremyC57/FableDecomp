@@ -1,0 +1,4 @@
+inc_0081fa20.obj : error LNK2005: "protected: long __thiscall CMap::GetStrongestEngineThemeAt(class C2DCoordI const &,long &)const " (?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z) already defined in old_0081f910.obj
+inc_0081fa20.obj : error LNK2019: unresolved external symbol "public: class CDefPointer<class CDefClassBase const> __thiscall CDefinitionManager::GetPDefFromGlobalIndex(long)const " (?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z) referenced in function "public: bool __thiscall CDefinitionManager::GetDef<class CEngineThemeDef>(long,class CDefPointer<class CEngineThemeDef const> *)const " (??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z)
+inc_0081fa20.obj : error LNK2001: unresolved external symbol __fltused
+ctl3.dll : fatal error LNK1169: one or more multiply defined symbols found

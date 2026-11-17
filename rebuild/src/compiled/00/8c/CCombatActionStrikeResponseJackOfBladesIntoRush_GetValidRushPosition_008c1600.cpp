@@ -71,6 +71,23 @@
 #include "engine/GFRandom.h"
 // NF81 (round 7, q10988): the body (and the CIsOutsideRadius predicate and the remove_if declaration) moved unchanged into the NF81
 //   overlay header engine/CCombatAction_StrikeResponseJackOfBladesIntoRush_GetValidRushPosition.h, the one text this row and its caller
-//   FinishAction 0x008C2550 (a visible noinline COMDAT there) share; this row defines it out of line through the _DEFINE macro.
-#define FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH_GETVALIDRUSHPOSITION_DEFINE
+//   FinishAction 0x008C2550 (a visible noinline COMDAT there) share.
+// NF88 (round 7, q11162, coordinator ruling: one definition): the row no longer defines the header's _DEFINE macro (a strong, nodup copy that
+//   clashed with FinishAction's COMDAT at whole-image link, LNK2005). It includes the `inline __declspec(noinline)` body like every includer
+//   and makes VC7.1 emit it as a pick-any COMDAT (selection 2) through the anonymous-namespace reference below (the 0x00860150 pattern).
+//   The member is protected, so the reference is taken through an anonymous derived class that is never instantiated.
 #include "engine/CCombatAction_StrikeResponseJackOfBladesIntoRush_GetValidRushPosition.h"
+
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the header's inline (noinline) GetValidRushPosition so this object emits it out of
+// line as a pick-any COMDAT (retail's 0x008C1600). Internal to this TU; the class is never instantiated and the function never called.
+class CGetValidRushPositionReference : public CCombatAction_StrikeResponseJackOfBladesIntoRush {
+public:
+    static bool (CCombatAction_StrikeResponseJackOfBladesIntoRush::*Reference())(C3DVector&);
+};
+// Out of class, so it is an ordinary (not inline) function that VC7.1 compiles even though nothing calls it.
+bool (CCombatAction_StrikeResponseJackOfBladesIntoRush::*CGetValidRushPositionReference::Reference())(C3DVector&)
+{
+    return &CGetValidRushPositionReference::GetValidRushPosition;
+}
+}

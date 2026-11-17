@@ -52,6 +52,11 @@ class CInventoryCategoryDef;
 namespace NInventory {
 class CItem;
 class CTCInventoryBase;
+#ifdef FABLE_RETAIL_CCATEGORY_ITEMQUERIES
+// NF88 opt-in (round 7, q11153..q11159): forward declarations for the members and the predicate below.
+class CPerItemData;
+class CIsInventoryCategory;
+#endif
 class CCategory {
 protected:
  CIntelligentPointer<CThing> PAssociatedThing;
@@ -63,8 +68,46 @@ private:
  bool Selected,DisplayItems;
 public:
  void GetAllItemsInCategory(std::vector<std::pair<long,long> >&) const;
+#ifdef FABLE_RETAIL_CCATEGORY_ITEMQUERIES
+ // NF88 nested opt-in (round 7, q11153..q11159; rows 0x005BE839 / 0x005BE8B1 / 0x005BF1D7 and the CTCInventoryBase wrappers that tail-jump
+ // to them): the item queries of the inventory TU, Ego_r.pdb (TU order 0x00620FCD .. 0x00621FB3) and FableWin.pdb spellings, all out of line
+ // in retail. Declarations only: no layout change. CIsInventoryCategory (below) reads the private GlobalDefIndex inline (retail __find_if
+ // 0x005C0653: `cmp [ecx+1Ch],esi`); neither PDB has a CCategory accessor for it, so the predicate is a friend.
+ long GetBoughtPrice(long itemDefIndex) const;                                                 // 0x005BE839
+ const CPerItemData* GetPerItemDataForItem(long itemDefIndex) const;                            // 0x005BE8B1
+ bool IsSpaceInCategoryForItem(long itemDefIndex) const;                                       // 0x005BF19C
+ long GetAmountOfItemsContainable(long itemDefIndex) const;                                    // 0x005BF1D7
+ long GetNumberOfItemsOfTypeInCategory(long itemDefIndex) const;                               // 0x005BDE96
+private:
+ long GetFirstEmptySlot() const;                                                               // 0x005BD96B
+ long GetSlotWithItemsOfType(long itemDefIndex) const;                                         // 0x005BE85B
+ friend class CIsInventoryCategory;
+public:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CCategory)==44);
+FABLE_STATIC_ASSERT_AT(67, sizeof(CCategory)==44);
 }
+#ifdef FABLE_RETAIL_CCATEGORY_ITEMQUERIES
+// Same opt-in: the two find_if predicates of the inventory TU, Ego_r.pdb layouts (struct_layouts_egor.tsv) and FableWin.pdb names.
+// NInventory::CIsInventoryCategory {Index} (4 bytes; ??0CIsInventoryCategory@NInventory@@QAE@J@Z, ??R..QBE_NABVCCategory@1@@Z: inline in retail,
+// built from a register and pushed by value, 0x005BEAE7) and the global CIsSameItemType {ItemType, OnlyFindNonFullSlots} (8 bytes;
+// ??0CIsSameItemType@@QAE@J_N@Z inline, ??RCIsSameItemType@@QBE_NABVCItem@NInventory@@@Z out of line at 0x005C150B). User constructors
+// only: retail pushes both as raw dwords.
+namespace NInventory {
+class CIsInventoryCategory {
+public:
+    CIsInventoryCategory(long index) : Index(index) {}
+    bool operator()(const CCategory& category) const { return category.GlobalDefIndex == Index; }
+    long Index;                                                                                 // +0x00
+};
+}
+class CIsSameItemType {
+public:
+    CIsSameItemType(long itemType, bool onlyFindNonFullSlots) : ItemType(itemType), OnlyFindNonFullSlots(onlyFindNonFullSlots) {}
+    bool operator()(const NInventory::CItem& item) const;                                      // 0x005C150B
+    long ItemType;                                                                              // +0x00
+    bool OnlyFindNonFullSlots;                                                                  // +0x04
+};
+#endif
 #endif
 #endif
