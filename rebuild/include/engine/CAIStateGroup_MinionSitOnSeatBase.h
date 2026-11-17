@@ -52,9 +52,9 @@ struct CAIStateGroup_MinionSitOnSeatBase {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionSitOnSeatBase) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionSitOnSeatBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionSitOnSeatBase, POwner) == 0x34);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CAIStateGroup_MinionSitOnSeatBase) == 0x3c);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CAIStateGroup_MinionSitOnSeatBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_MinionSitOnSeatBase, POwner) == 0x34);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEATBASE
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONSITONSEATBASE_H

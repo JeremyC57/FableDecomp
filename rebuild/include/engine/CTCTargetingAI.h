@@ -40,7 +40,7 @@ public:
 #endif
  CTCTargetingAI & operator=(CTCTargetingAI const & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCTargetingAI)==76);
+FABLE_STATIC_ASSERT_AT(37, sizeof(CTCTargetingAI)==76);
 #else
 // CTCTargetingAI (new, chunk 765): RTTI .?AVCTCTargetingAI@@, single base CTCTargetingBase at +0 (ghidra_out/rtti_bases.tsv; engine/
 // CTCTargetingBase.h, 56 bytes). Ego_r.pdb members (struct_layouts_egor.tsv, 84 bytes): PBestEnemyCreatureForAttack +0x38,
@@ -69,7 +69,7 @@ protected:
     CIntelligentPointer<CThingCreatureBase> PScriptTargetOverride;       // +0x40
     std::list<CIntelligentPointer<CThing> > ThingsToNotAttack;           // +0x48
 };
-FABLE_STATIC_ASSERT(sizeof(CTCTargetingAI) == 0x4c);
+FABLE_STATIC_ASSERT_AT(66, sizeof(CTCTargetingAI) == 0x4c);
 
 #endif
 #endif

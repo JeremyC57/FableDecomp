@@ -23,5 +23,5 @@ private:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessQuickAccessItems) == 0x28);
+FABLE_STATIC_ASSERT_AT(14, sizeof(CInputProcessQuickAccessItems) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSQUICKACCESSITEMS_H

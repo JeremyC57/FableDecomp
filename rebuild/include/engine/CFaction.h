@@ -31,5 +31,5 @@ private:
     TStringSet AlliedFactions;
     TStringSet EnemyFactions;
 };
-FABLE_STATIC_ASSERT(sizeof(CFaction)==0x1c);
+FABLE_STATIC_ASSERT_AT(23, sizeof(CFaction)==0x1c);
 #endif

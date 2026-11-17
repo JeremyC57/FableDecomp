@@ -98,5 +98,5 @@ public:
     bool IsTextBankInitialised() const { return !m_pTextBank.IsNull(); }
     const NGameText::CDataBank& GetTextBank() const { return *m_pTextBank; }
 };
-FABLE_STATIC_ASSERT(sizeof(CNewFrontendGameComponent) == 0x148);
+FABLE_STATIC_ASSERT_AT(89, sizeof(CNewFrontendGameComponent) == 0x148);
 #endif

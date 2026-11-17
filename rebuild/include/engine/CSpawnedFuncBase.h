@@ -58,10 +58,10 @@ public:
     bool             Interrupted;                                        // +0x29
     CCountedPointer<const NScript::CPredicateBase> PPredicate;           // +0x2c
 };
-FABLE_STATIC_ASSERT(sizeof(CSpawnedFuncBase) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, ID) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, Name) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, PPredicate) == 0x2c);
+FABLE_STATIC_ASSERT_AT(54, sizeof(CSpawnedFuncBase) == 0x34);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CSpawnedFuncBase, ID) == 0x14);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CSpawnedFuncBase, Name) == 0x20);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CSpawnedFuncBase, PPredicate) == 0x2c);
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -91,17 +91,17 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSpawnedFuncBase) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, ID) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, LastScriptFrame) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, CurrentScriptFrame) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, Name_PStringData) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, AssociatedRegionName_PStringData) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, FuncPaused) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, Interrupted) == 0x29);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, PPredicate_Data) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, PPredicate_Info) == 0x30);
+FABLE_STATIC_ASSERT_AT(87, sizeof(CSpawnedFuncBase) == 0x34);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CSpawnedFuncBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(89, offsetof(CSpawnedFuncBase, ID) == 0x14);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CSpawnedFuncBase, LastScriptFrame) == 0x18);
+FABLE_STATIC_ASSERT_AT(91, offsetof(CSpawnedFuncBase, CurrentScriptFrame) == 0x1c);
+FABLE_STATIC_ASSERT_AT(92, offsetof(CSpawnedFuncBase, Name_PStringData) == 0x20);
+FABLE_STATIC_ASSERT_AT(93, offsetof(CSpawnedFuncBase, AssociatedRegionName_PStringData) == 0x24);
+FABLE_STATIC_ASSERT_AT(94, offsetof(CSpawnedFuncBase, FuncPaused) == 0x28);
+FABLE_STATIC_ASSERT_AT(95, offsetof(CSpawnedFuncBase, Interrupted) == 0x29);
+FABLE_STATIC_ASSERT_AT(96, offsetof(CSpawnedFuncBase, PPredicate_Data) == 0x2c);
+FABLE_STATIC_ASSERT_AT(97, offsetof(CSpawnedFuncBase, PPredicate_Info) == 0x30);
 
 #endif // FABLE_RETAIL_SUSPENDABLE_PROCESS
 

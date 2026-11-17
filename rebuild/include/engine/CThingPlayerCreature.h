@@ -133,11 +133,11 @@ protected:
     unsigned char _pad_0x204[4];
 public:
     static void CheckRetailLayout() {
-        FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, ControlledMovementType) == 0x17c);
-        FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, LastRelativeMovementAcceleration) == 0x1c0);
-        FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, LastThingCollisionNormal) == 0x1cd);
-        FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, PHeroCombatDef) == 0x1e8);
-        FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, MovementBandType) == 0x200);
+        FABLE_STATIC_ASSERT_AT(129, offsetof(CThingPlayerCreature, ControlledMovementType) == 0x17c);
+        FABLE_STATIC_ASSERT_AT(130, offsetof(CThingPlayerCreature, LastRelativeMovementAcceleration) == 0x1c0);
+        FABLE_STATIC_ASSERT_AT(131, offsetof(CThingPlayerCreature, LastThingCollisionNormal) == 0x1cd);
+        FABLE_STATIC_ASSERT_AT(132, offsetof(CThingPlayerCreature, PHeroCombatDef) == 0x1e8);
+        FABLE_STATIC_ASSERT_AT(133, offsetof(CThingPlayerCreature, MovementBandType) == 0x200);
     }
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the

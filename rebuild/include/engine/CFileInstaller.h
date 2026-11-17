@@ -199,6 +199,6 @@ protected:
 public:
  CFileInstaller& operator=(const CFileInstaller&);
 };
-FABLE_STATIC_ASSERT(sizeof(CFileInstaller)==0xa0);
-FABLE_STATIC_ASSERT(sizeof(CFileInstaller::CActiveFile)==0xb0);
+FABLE_STATIC_ASSERT_AT(196, sizeof(CFileInstaller)==0xa0);
+FABLE_STATIC_ASSERT_AT(197, sizeof(CFileInstaller::CActiveFile)==0xb0);
 #endif

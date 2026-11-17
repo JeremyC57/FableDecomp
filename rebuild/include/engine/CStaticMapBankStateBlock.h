@@ -34,9 +34,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CStaticMapBankStateBlock) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CStaticMapBankStateBlock, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CStaticMapBankStateBlock, State) == 0x4);
+FABLE_STATIC_ASSERT_AT(19, sizeof(CStaticMapBankStateBlock) == 0x8);
+FABLE_STATIC_ASSERT_AT(20, offsetof(CStaticMapBankStateBlock, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(21, offsetof(CStaticMapBankStateBlock, State) == 0x4);
 #endif
 
 #endif // FABLE_ENGINE_CSTATICMAPBANKSTATEBLOCK_H

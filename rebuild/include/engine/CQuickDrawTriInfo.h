@@ -26,5 +26,5 @@ class CQuickDrawTriInfo { public:
  CQuickDrawTriInfo& operator=(const CQuickDrawTriInfo&);    // 0x009DE6F0
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CQuickDrawTriInfo)==60);
+FABLE_STATIC_ASSERT_AT(21, sizeof(CQuickDrawTriInfo)==60);
 #endif

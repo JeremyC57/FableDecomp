@@ -130,14 +130,14 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CLipSyncDataBank) == 0x180);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, object) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, Entries) == 0x164);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, ResourceBank_Data) == 0x170);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, ResourceBank_Info) == 0x174);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, SkipUpdate) == 0x178);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, PhonemeBank) == 0x17c);
+FABLE_STATIC_ASSERT_AT(104, sizeof(CLipSyncDataBank) == 0x180);
+FABLE_STATIC_ASSERT_AT(105, offsetof(CLipSyncDataBank, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(106, offsetof(CLipSyncDataBank, object) == 0x4);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CLipSyncDataBank, Entries) == 0x164);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CLipSyncDataBank, ResourceBank_Data) == 0x170);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CLipSyncDataBank, ResourceBank_Info) == 0x174);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CLipSyncDataBank, SkipUpdate) == 0x178);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CLipSyncDataBank, PhonemeBank) == 0x17c);
 #endif // FABLE_RETAIL_CLIPSYNCDATABANK_CLASS
 
 #endif // FABLE_ENGINE_CLIPSYNCDATABANK_H

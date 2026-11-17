@@ -69,5 +69,5 @@ public:
     void DrawGetDrawSizeX(float, float* out) const;                     // 0x00837060
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CThingTrackNode)==0xf0);
+FABLE_STATIC_ASSERT_AT(64, sizeof(CThingTrackNode)==0xf0);
 #endif

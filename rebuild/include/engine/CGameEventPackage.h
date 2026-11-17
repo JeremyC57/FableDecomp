@@ -19,6 +19,6 @@ private:
     unsigned long NoEvents;
     CGameEvent Events[40];
 };
-FABLE_STATIC_ASSERT(sizeof(CGameEventPackage)==0x648);
+FABLE_STATIC_ASSERT_AT(15, sizeof(CGameEventPackage)==0x648);
 #endif
 #endif

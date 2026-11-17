@@ -35,7 +35,7 @@ protected:
     long ActionPointIndex;                                               // +0x30
     long PickUpActionID;                                                 // +0x34
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CarryCrateAndFollow) == 0x38);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CAIStateGroup_CarryCrateAndFollow) == 0x38);
 #else
 
 #pragma pack(push, 1)

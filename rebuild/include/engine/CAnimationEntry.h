@@ -60,5 +60,5 @@ public:
     CDefString                             GroupName;     // +0x08
     CIVCountedPointer<CAnimComponentMap>   Components;    // +0x0c
 };
-FABLE_STATIC_ASSERT(sizeof(CAnimationEntry) == 0x10);
+FABLE_STATIC_ASSERT_AT(58, sizeof(CAnimationEntry) == 0x10);
 #endif // FABLE_ENGINE_CANIMATIONENTRY_H

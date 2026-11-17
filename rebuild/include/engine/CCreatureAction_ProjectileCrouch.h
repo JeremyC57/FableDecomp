@@ -57,10 +57,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ProjectileCrouch) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ProjectileCrouch, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ProjectileCrouch, TurnToFaceTarget) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ProjectileCrouch, FacePos) == 0x115);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CCreatureAction_ProjectileCrouch) == 0x124);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CCreatureAction_ProjectileCrouch, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CCreatureAction_ProjectileCrouch, TurnToFaceTarget) == 0x114);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CCreatureAction_ProjectileCrouch, FacePos) == 0x115);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_PROJECTILECROUCH_CLASS
 #endif // FABLE_ENGINE_CCREATUREACTION_PROJECTILECROUCH_H

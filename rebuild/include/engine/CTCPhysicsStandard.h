@@ -139,7 +139,7 @@ public:
     virtual void SetRHSetAsFlushOnGround();
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCPhysicsStandard) == 0x88);
+FABLE_STATIC_ASSERT_AT(119, sizeof(CTCPhysicsStandard) == 0x88);
 #else // flattened Ego_r layout (the landed default)
 class CThingPhysicsMeshInfo;
 
@@ -173,19 +173,19 @@ struct CTCPhysicsStandard {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCPhysicsStandard) == 0x88);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, owner) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, ground) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, PPhysicsMeshInfo) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, OffsetVector3D_X) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, OffsetVector3D_Y) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, OffsetVector3D_Z) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, RHSet) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, OldRHSet) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, RHSetLastFrameSet) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, CollidesWithThings) == 0x84);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, Impassable) == 0x85);
+FABLE_STATIC_ASSERT_AT(153, sizeof(CTCPhysicsStandard) == 0x88);
+FABLE_STATIC_ASSERT_AT(154, offsetof(CTCPhysicsStandard, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(155, offsetof(CTCPhysicsStandard, owner) == 0x4);
+FABLE_STATIC_ASSERT_AT(156, offsetof(CTCPhysicsStandard, ground) == 0xc);
+FABLE_STATIC_ASSERT_AT(157, offsetof(CTCPhysicsStandard, PPhysicsMeshInfo) == 0x40);
+FABLE_STATIC_ASSERT_AT(158, offsetof(CTCPhysicsStandard, OffsetVector3D_X) == 0x44);
+FABLE_STATIC_ASSERT_AT(159, offsetof(CTCPhysicsStandard, OffsetVector3D_Y) == 0x48);
+FABLE_STATIC_ASSERT_AT(160, offsetof(CTCPhysicsStandard, OffsetVector3D_Z) == 0x4c);
+FABLE_STATIC_ASSERT_AT(161, offsetof(CTCPhysicsStandard, RHSet) == 0x50);
+FABLE_STATIC_ASSERT_AT(162, offsetof(CTCPhysicsStandard, OldRHSet) == 0x68);
+FABLE_STATIC_ASSERT_AT(163, offsetof(CTCPhysicsStandard, RHSetLastFrameSet) == 0x80);
+FABLE_STATIC_ASSERT_AT(164, offsetof(CTCPhysicsStandard, CollidesWithThings) == 0x84);
+FABLE_STATIC_ASSERT_AT(165, offsetof(CTCPhysicsStandard, Impassable) == 0x85);
 #endif // FABLE_RETAIL_CTCPHYSICSSTANDARD
 
 #endif // FABLE_ENGINE_CTCPHYSICSSTANDARD_H

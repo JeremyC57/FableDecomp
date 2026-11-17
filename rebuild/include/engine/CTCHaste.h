@@ -77,6 +77,6 @@ public:
     void SetOnHitPause(long frames) { PauseFrames=frames; }
 };
 #endif
-FABLE_STATIC_ASSERT(sizeof(CTCHaste)==0x24);
+FABLE_STATIC_ASSERT_AT(56, sizeof(CTCHaste)==0x24);
 
 #endif

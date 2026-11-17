@@ -39,8 +39,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_IceTrollIcicleAssaultInto) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_IceTrollIcicleAssaultInto, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_IceTrollIcicleAssaultInto) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_IceTrollIcicleAssaultInto, __vftable) == 0x0);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_ICETROLLICICLEASSAULTINTO
 #endif // FABLE_ENGINE_CCREATUREACTION_ICETROLLICICLEASSAULTINTO_H

@@ -194,5 +194,5 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_TravellingHeroesScript) == 0x8c);
+FABLE_STATIC_ASSERT_AT(185, sizeof(NScript::CV_TravellingHeroesScript) == 0x8c);
 #endif

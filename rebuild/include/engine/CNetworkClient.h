@@ -43,7 +43,7 @@ private:
     unsigned long Checksum1,Checksum2;
     CMainGameComponent* GameComponent;
 };
-FABLE_STATIC_ASSERT(sizeof(CNetworkClient)==0x2680);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CNetworkClient)==0x2680);
 #else
 #pragma pack(push, 1)
 struct CNetworkClient {
@@ -67,21 +67,21 @@ struct CNetworkClient {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CNetworkClient) == 0x2680);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, Server) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, ReceiveBuffer) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, LocalEventPackage) == 0x2010);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, LastUpdateTime) == 0x2658);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, FirstTime) == 0x2660);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, Host) == 0x2661);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, LocalGame) == 0x2662);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, LocalPlayer) == 0x2664);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, HostPlayer) == 0x2668);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, LocalFrame) == 0x266c);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, Checksum1) == 0x2670);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, Checksum2) == 0x2674);
-FABLE_STATIC_ASSERT(offsetof(CNetworkClient, GameComponent) == 0x2678);
+FABLE_STATIC_ASSERT_AT(65, sizeof(CNetworkClient) == 0x2680);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CNetworkClient, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CNetworkClient, Server) == 0x8);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CNetworkClient, ReceiveBuffer) == 0x10);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CNetworkClient, LocalEventPackage) == 0x2010);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CNetworkClient, LastUpdateTime) == 0x2658);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CNetworkClient, FirstTime) == 0x2660);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CNetworkClient, Host) == 0x2661);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CNetworkClient, LocalGame) == 0x2662);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CNetworkClient, LocalPlayer) == 0x2664);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CNetworkClient, HostPlayer) == 0x2668);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CNetworkClient, LocalFrame) == 0x266c);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CNetworkClient, Checksum1) == 0x2670);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CNetworkClient, Checksum2) == 0x2674);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CNetworkClient, GameComponent) == 0x2678);
 
 #endif
 

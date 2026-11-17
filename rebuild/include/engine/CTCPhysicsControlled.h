@@ -34,6 +34,6 @@ private:
     float RenderZOffset;                                                 // +0xa4
     float LastRenderZOffset;                                             // +0xa8
 };
-FABLE_STATIC_ASSERT(sizeof(CTCPhysicsControlled) == 0xac);
+FABLE_STATIC_ASSERT_AT(28, sizeof(CTCPhysicsControlled) == 0xac);
 #endif
 #endif // FABLE_ENGINE_CTCPHYSICSCONTROLLED_H

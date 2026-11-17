@@ -55,6 +55,6 @@ private:
     long                           LayerCount;               // +0x28
     bool                           AlphaTarget;              // +0x2C
 };
-FABLE_STATIC_ASSERT(sizeof(CSurfaceCompositor::CVertexType) == 0x18);
-FABLE_STATIC_ASSERT(sizeof(CSurfaceCompositor) == 0x30);
+FABLE_STATIC_ASSERT_AT(52, sizeof(CSurfaceCompositor::CVertexType) == 0x18);
+FABLE_STATIC_ASSERT_AT(53, sizeof(CSurfaceCompositor) == 0x30);
 #endif // FABLE_ENGINE_CSURFACECOMPOSITOR_H

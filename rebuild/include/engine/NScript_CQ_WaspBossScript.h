@@ -52,5 +52,5 @@ public:
 #endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_WaspBossScript)==0x5c);
+FABLE_STATIC_ASSERT_AT(48, sizeof(NScript::CQ_WaspBossScript)==0x5c);
 #endif

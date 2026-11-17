@@ -65,7 +65,7 @@ public:
 #endif
  CTCTargetingBase & operator=(const CTCTargetingBase & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCTargetingBase)==56);
+FABLE_STATIC_ASSERT_AT(62, sizeof(CTCTargetingBase)==56);
 #else
 #include "engine/CTCBase.h"
 #include "engine/CDefPointer.h"

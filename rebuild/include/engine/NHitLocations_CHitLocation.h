@@ -56,7 +56,7 @@ public:
  ~CHitLocation();
  NHitLocations::CHitLocation & operator=(const NHitLocations::CHitLocation & p0);
 };}
-FABLE_STATIC_ASSERT(sizeof(NHitLocations::CHitLocation)==24);
+FABLE_STATIC_ASSERT_AT(54, sizeof(NHitLocations::CHitLocation)==24);
 #else
 #include "engine/EActionRegisteredType.h"
 class CThing;
@@ -83,6 +83,6 @@ public:
 #endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NHitLocations::CHitLocation)==0x18);
+FABLE_STATIC_ASSERT_AT(81, sizeof(NHitLocations::CHitLocation)==0x18);
 #endif
 #endif

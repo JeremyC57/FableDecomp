@@ -34,7 +34,7 @@ public:
 const char* GetChunkType() const { return ChunkType; }
 #endif
 private:char ChunkType[5];CChunkedFileSuperChunk* Parent;};
-FABLE_STATIC_ASSERT(sizeof(CChunkedFileChunk)==0x10);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CChunkedFileChunk)==0x10);
 #endif
 #else
 #ifndef FABLE_ENGINE_CCHUNKEDFILECHUNK_H
@@ -59,10 +59,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CChunkedFileChunk) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CChunkedFileChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CChunkedFileChunk, ChunkType) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CChunkedFileChunk, Parent) == 0xc);
+FABLE_STATIC_ASSERT_AT(56, sizeof(CChunkedFileChunk) == 0x10);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CChunkedFileChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CChunkedFileChunk, ChunkType) == 0x4);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CChunkedFileChunk, Parent) == 0xc);
 
 #endif // FABLE_ENGINE_CCHUNKEDFILECHUNK_H
 

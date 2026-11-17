@@ -36,5 +36,5 @@ private:long BoneIndex,ParentIndex;CCharString BoneName;float SamplesPerSecond;E
  unsigned char Matrices[12];
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DAnimFileSequenceChunk)==0x4c);
+FABLE_STATIC_ASSERT_AT(22, sizeof(C3DAnimFileSequenceChunk)==0x4c);
 #endif

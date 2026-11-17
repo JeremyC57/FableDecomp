@@ -89,15 +89,15 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCHeroAttachableAppearanceModifiers) == 0x48);
+FABLE_STATIC_ASSERT_AT(85, sizeof(CTCHeroAttachableAppearanceModifiers) == 0x48);
 #ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS
-FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CTCHeroAttachableAppearanceModifiers, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, FrameLastChanged) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, AppearanceModifiersLoaded) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, PrimHandles) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, HiddenMaterialNames) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, AppearanceModifiers) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, Graphics) == 0x3c);
+FABLE_STATIC_ASSERT_AT(89, offsetof(CTCHeroAttachableAppearanceModifiers, FrameLastChanged) == 0x10);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CTCHeroAttachableAppearanceModifiers, AppearanceModifiersLoaded) == 0x14);
+FABLE_STATIC_ASSERT_AT(91, offsetof(CTCHeroAttachableAppearanceModifiers, PrimHandles) == 0x18);
+FABLE_STATIC_ASSERT_AT(92, offsetof(CTCHeroAttachableAppearanceModifiers, HiddenMaterialNames) == 0x24);
+FABLE_STATIC_ASSERT_AT(93, offsetof(CTCHeroAttachableAppearanceModifiers, AppearanceModifiers) == 0x30);
+FABLE_STATIC_ASSERT_AT(94, offsetof(CTCHeroAttachableAppearanceModifiers, Graphics) == 0x3c);
 
 #endif // FABLE_ENGINE_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_H

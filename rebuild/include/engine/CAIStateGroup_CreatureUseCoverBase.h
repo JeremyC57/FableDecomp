@@ -92,19 +92,19 @@ struct CAIStateGroup_CreatureUseCoverBase {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureUseCoverBase) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, HasDiveAnim) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, HasJumpOutAnims) == 0x1d);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, TimingCritical) == 0x1e);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, PCoverThing) == 0x1f);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, CoverList) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCover) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedTime) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_X) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_Y) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_Z) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, ValidPositionsFound) == 0x48);
+FABLE_STATIC_ASSERT_AT(64, sizeof(CAIStateGroup_CreatureUseCoverBase) == 0x4c);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CAIStateGroup_CreatureUseCoverBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CAIStateGroup_CreatureUseCoverBase, HasDiveAnim) == 0x1c);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CAIStateGroup_CreatureUseCoverBase, HasJumpOutAnims) == 0x1d);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CAIStateGroup_CreatureUseCoverBase, TimingCritical) == 0x1e);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CAIStateGroup_CreatureUseCoverBase, PCoverThing) == 0x1f);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CAIStateGroup_CreatureUseCoverBase, CoverList) == 0x28);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCover) == 0x34);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CAIStateGroup_CreatureUseCoverBase, FailedTime) == 0x38);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_X) == 0x3c);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_Y) == 0x40);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_Z) == 0x44);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CAIStateGroup_CreatureUseCoverBase, ValidPositionsFound) == 0x48);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
 #endif // FABLE_ENGINE_CAISTATEGROUP_CREATUREUSECOVERBASE_H

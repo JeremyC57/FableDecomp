@@ -69,8 +69,8 @@ public:
     unsigned long TouchedFrame;                              // +0x3C
     const CGraphicInfoFrame* GraphicInfoFrame;               // +0x40
 };
-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame)==0x10);
-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame::CFrameData)==0x44);
+FABLE_STATIC_ASSERT_AT(67, sizeof(CGraphicInfoFrame)==0x10);
+FABLE_STATIC_ASSERT_AT(68, sizeof(CGraphicInfoFrame::CFrameData)==0x44);
 inline bool CGraphicInfoFrame::IsLoaded() const { return !Data.IsNull() && Data->Frame.IsInitialised(); }
 inline long CGraphicInfoFrame::GetCurrentLoadedMipmapLevel() const { return !Data.IsNull() ? Data->CurrentMipmapLevel : -1; }
 // FableWin.pdb ?GetFrame@CGraphicInfoFrame@@QBE_NAAVCGraphicFrame@@KK@Z: no Ego_r.pdb copy and no retail out-of-line copy, expanded in its

@@ -34,6 +34,6 @@ public:
 private:
     std::vector<CEnginePrimitiveHandle> InventoryMagicPrimitiveHandles;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCInventoryMagic) == 0x140);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CTCInventoryMagic) == 0x140);
 #endif
 #endif

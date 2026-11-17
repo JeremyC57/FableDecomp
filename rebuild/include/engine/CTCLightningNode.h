@@ -70,7 +70,7 @@ public:
     long                        Timer;                                   // +0x10 (descriptive)
 };
 #endif
-FABLE_STATIC_ASSERT(offsetof(CTCLightningNode, PSourceOfFaction) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CTCLightningNode, PDef) == 0x24);
-FABLE_STATIC_ASSERT(sizeof(CTCLightningNode) == 0x38);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CTCLightningNode, PSourceOfFaction) == 0x14);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CTCLightningNode, PDef) == 0x24);
+FABLE_STATIC_ASSERT_AT(62, sizeof(CTCLightningNode) == 0x38);
 #endif

@@ -44,8 +44,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CStaticMapBankFile) == 0x164);
-FABLE_STATIC_ASSERT(offsetof(CStaticMapBankFile, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CStaticMapBankFile) == 0x164);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CStaticMapBankFile, __vftable) == 0x0);
 #endif
 
 #endif // FABLE_ENGINE_CSTATICMAPBANKFILE_H

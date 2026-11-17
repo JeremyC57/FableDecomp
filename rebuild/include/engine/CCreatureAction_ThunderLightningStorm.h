@@ -38,8 +38,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ThunderLightningStorm) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ThunderLightningStorm, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_ThunderLightningStorm) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_ThunderLightningStorm, __vftable) == 0x0);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_THUNDERLIGHTNINGSTORM
 #endif // FABLE_ENGINE_CCREATUREACTION_THUNDERLIGHTNINGSTORM_H

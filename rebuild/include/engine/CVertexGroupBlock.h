@@ -45,5 +45,5 @@ private:
     unsigned char GroupToIndexMap[0xc];// std::map<unsigned long,long> +0x0C
 };
 #endif
-FABLE_STATIC_ASSERT(sizeof(CVertexGroupBlock) == 0x18);
+FABLE_STATIC_ASSERT_AT(44, sizeof(CVertexGroupBlock) == 0x18);
 #endif

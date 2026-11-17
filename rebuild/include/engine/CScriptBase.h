@@ -71,7 +71,7 @@ public:
     CSpawnedFuncBase* PActiveThread;                                     // +0x2c
     unsigned char     RuntimeScriptedEntityPersist[0x10];                // +0x30 NScript::CRuntimeScriptedEntityPersist
 };
-FABLE_STATIC_ASSERT(sizeof(CScriptBase) == 0x40);
+FABLE_STATIC_ASSERT_AT(68, sizeof(CScriptBase) == 0x40);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CSCRIPTBASE_H

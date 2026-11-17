@@ -43,8 +43,8 @@ public:
 #endif
     CDefPointer<const CCombatSequenceDef> Def;                           // +0x28
 };
-FABLE_STATIC_ASSERT(sizeof(CCombatSequenceGeneric) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequenceGeneric, Def) == 0x28);
+FABLE_STATIC_ASSERT_AT(35, sizeof(CCombatSequenceGeneric) == 0x2c);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CCombatSequenceGeneric, Def) == 0x28);
 #else // flattened Ego_r layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -66,9 +66,9 @@ struct CCombatSequenceGeneric {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequenceGeneric) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequenceGeneric, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequenceGeneric, Def_Object) == 0x28);
+FABLE_STATIC_ASSERT_AT(58, sizeof(CCombatSequenceGeneric) == 0x2c);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CCombatSequenceGeneric, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CCombatSequenceGeneric, Def_Object) == 0x28);
 
 #endif // FABLE_RETAIL_CCOMBATSEQUENCEGENERIC
 

@@ -39,8 +39,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BanditKingLunge) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingLunge, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_BanditKingLunge) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_BanditKingLunge, __vftable) == 0x0);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_BANDITKINGLUNGE
 #endif // FABLE_ENGINE_CCREATUREACTION_BANDITKINGLUNGE_H
