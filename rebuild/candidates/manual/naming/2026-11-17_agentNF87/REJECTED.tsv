@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q11135	0x008AE510	WORKLIST: binds 0x007AEBE0 as the map<CCharString, vector<CCharString> >::operator[] spelling without the allocator argument	probe of the landed row (RELOCATION_MATCH): CTCAIScratchpad::GetGossip makes no call to 0x007AEBE0 (relocations: Gossip 0x013BAE44, _M_find 0x008AC200, ~CCharString); the reloc_bindings line is stale. Row not-a-binder; the entry holds through 0x008AA220

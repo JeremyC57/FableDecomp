@@ -98,6 +98,21 @@ enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_NONE=0, INVENTORY_CATEGOR
 enum ETextLayout { INVENTORY_TEXT_LAYOUT_LEFT=0, INVENTORY_TEXT_LAYOUT_CENTRE=1, INVENTORY_TEXT_LAYOUT_RIGHT=2, INVENTORY_TEXT_LAYOUT__MAX=3 };
 }
 #endif
+#if defined(FABLE_RETAIL_NINVENTORY_CCATEGORY_ACCESSORS) && !defined(FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22)
+// NF87 opt-in (rows 0x006223C0 CTCInventoryQuests::ProcessQuestActivateAction, 0x0059D820 CTCInventoryTrade::InitialiseSellableItems): two
+// out-of-line NInventory::CCategory accessors, Ego_r.pdb + FableWin.pdb spellings: ?GetCategoryThingAssociation@CCategory@NInventory@@
+// QBEPAVCThing@@XZ (0x005BD1AE, `jmp CBaseIntelligentPointer::GetPItem`: PAssociatedThing +0x00, the only CCategory member of either PDB
+// returning a CThing*) and ?GetUniqueItemCountInCategory@CCategory@NInventory@@QBEJXZ (0x005BC8AC). Declarations only: the category's
+// members are not modelled here (see engine/CCategory.h).
+class CThing;
+namespace NInventory {
+class CCategory {
+public:
+    CThing* GetCategoryThingAssociation() const;                                               // 0x005BD1AE
+    long GetUniqueItemCountInCategory() const;                                                 // 0x005BC8AC
+};
+}
+#endif
 namespace NInventory {
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
 class CCategory;
@@ -373,6 +388,16 @@ public:
  // (+0x70 retail). Declarations only.
  long GetSelectedCategoryIndex() const;                                                       // 0x005BC4B2
  void SetSelectedCategoryIndex(long index);                                                   // 0x005BC4B6
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_CATEGORYWITHINDEX
+ // NF87 opt-in (row 0x006223C0): Ego_r.pdb + FableWin.pdb ?GetCategoryWithIndex@CTCInventoryBase@NInventory@@QAEPAVCCategory@2@J@Z, out of
+ // line in retail at 0x005BCE3C. Declaration only.
+ NInventory::CCategory* GetCategoryWithIndex(long index);                                     // 0x005BCE3C
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_CATEGORYCOUNT
+ // NF87 opt-in (row 0x0059D820 CTCInventoryTrade::InitialiseSellableItems): Ego_r.pdb + FableWin.pdb
+ // ?GetCategoryCount@CTCInventoryBase@NInventory@@QBEJXZ, out of line in retail at 0x005BCE2F (the category vector's size). Declaration only.
+ long GetCategoryCount() const;                                                               // 0x005BCE2F
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTION
  // Retail opt-in (chunk 1003, row 0x005B48A2 CTCInventoryClothing::OnItemSelected): Ego_r.pdb ?DeselectAll@CTCInventoryBase@NInventory@@IAEXXZ

@@ -106,6 +106,11 @@ public:
     CWideString GetRetailHeaderFilePath(const CCharString& bankHandle) const;   // 0x009A7ED0
 #endif
     void Close();
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_SETBANKALIAS
+    // NF87 opt-in (row 0x009A8150): Ego_r.pdb + FableWin.pdb ?SetBankAlias@CBankFileManager@@QAEXABVCCharString@@0@Z; Ego_d.pdb names the
+    // parameters bank_handle, alias (BankAliasMap[alias] = bank_handle).
+    void SetBankAlias(const CCharString& bank_handle, const CCharString& alias);   // 0x009A8150
+#endif
 #ifdef FABLE_RETAIL_CBANKFILEMANAGER_ISUSINGRETAILBANKS
     // Retail opt-in (wfE7, row 0x00B3CB30): FableWin.pdb ?IsUsingRetailBanks@CBankFileManager@@QBE_NXZ (0x02DD27A0; no Ego_r.pdb or Fable.exe
     // copy: inline, the CEngineResourceManager ctor tests the byte UsingRetailBanks +0x14 = 0x013CA7B0 in place, 0x00B3CD56).
@@ -117,7 +122,12 @@ protected:
     std::map<CCharString, CBankInfo> Banks;                              // +0x04
     std::list<CCountedPointer<NBankFileManager::CRetailBank> > RetailBanks;   // +0x10
     bool UsingRetailBanks;                                               // +0x14
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_BANKALIASMAP
+    // NF87 opt-in (row 0x009A8150 SetBankAlias): the member as its Ego_r.pdb type, the retail 12-byte STLport map (operator[] 0x009AC700).
+    std::map<CCharString, CCharString> BankAliasMap;                     // +0x18
+#else
     unsigned char BankAliasMap[0x0C];                                    // +0x18 std::map<CCharString,CCharString>
+#endif
     CWideString BasePath;                                                // +0x24
     unsigned char CreatedRetailBanks[0x0C];                              // +0x28 std::set<CWideString>
     unsigned long FileVersion;                                           // +0x34

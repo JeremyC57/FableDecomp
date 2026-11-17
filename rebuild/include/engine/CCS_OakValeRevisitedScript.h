@@ -15,6 +15,9 @@
 #include "engine/CScriptThing.h"
 #include "engine/CLevelScriptBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#ifdef FABLE_RETAIL_CCS_OAKVALEREVISITEDSCRIPT_OAKVALEFLAG_MAP
+#include "stlport/fable_map.h"
+#endif
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CCS_OakValeRevisitedScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
@@ -28,7 +31,11 @@ public:
     void OakVale();
     std::vector<CScriptThing, std::allocator<CScriptThing> > FirePoint;   // +0x48
     std::vector<CScriptThing, std::allocator<CScriptThing> > Fires;       // +0x54
+#ifdef FABLE_RETAIL_CCS_OAKVALEREVISITEDSCRIPT_OAKVALEFLAG_MAP
+    std::map<CCharString, bool> OakValeFlag;                               // +0x60 (row 0x00EE8870: operator[] 0x008ADF10)
+#else
     unsigned char OakValeFlag[0xc];                                        // +0x60 map<CCharString,bool> (retail 12-byte STLport map)
+#endif
     CScriptGameResourceObjectScriptedThingBase v1;                         // +0x6c
     CScriptGameResourceObjectScriptedThingBase v2;                         // +0x7c
     CScriptGameResourceObjectScriptedThingBase v3;                         // +0x8c
@@ -38,5 +45,5 @@ public:
     CScriptGameResourceObjectScriptedThingBase v7;                         // +0xcc
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CCS_OakValeRevisitedScript) == 0xdc);
+FABLE_STATIC_ASSERT_AT(41, sizeof(NScript::CCS_OakValeRevisitedScript) == 0xdc);
 #endif

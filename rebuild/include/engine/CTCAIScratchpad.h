@@ -6,7 +6,7 @@
 #include "engine/CDefPointer.h"
 #include "engine/EScriptingStateGroups.h"
 #include "fable_string.h"
-#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_GOSSIP_MAPS
+#if defined(FABLE_RETAIL_CTCAISCRATCHPAD_GOSSIP_MAPS) || defined(FABLE_RETAIL_CTCAISCRATCHPAD_GOSSIP_BOOL_MAPS)
 #include "stlport/fable_map.h"
 #endif
 class CAIScratchpadDef;
@@ -20,6 +20,14 @@ public:
     static std::map<CCharString, std::vector<CCharString> > Gossip;
     static std::map<CCharString, std::vector<CCharString> > GossipVillages;
     static std::map<CCharString, std::vector<CCharString> > GossipFactions;
+#endif
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_GOSSIP_BOOL_MAPS
+    // NF87 opt-in (rows 0x008A96C0 CGameScriptInterface::SetCategoryActivity / 0x008A9720 SetActiveGossipCategories): the two static
+    // flag maps, FableWin.pdb `dynamic initializer for 'CTCAIScratchpad::ActiveGossipCategories'` / `..IsGossipForPlayer'` and Ego_d.pdb
+    // ?ActiveGossipCategories@CTCAIScratchpad@@2V?$map@VCCharString@@_N..@@A / ?IsGossipForPlayer@..; retail 0x013BAE2C / 0x013BAE38
+    // (12-byte STLport maps). Declarations only.
+    static std::map<CCharString, bool> ActiveGossipCategories;
+    static std::map<CCharString, bool> IsGossipForPlayer;
 #endif
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
  static float GlobalTargetingDistanceOffset;

@@ -1,0 +1,134 @@
+addr       parity           behav  name
+004b41f0   WARN STANDIN_LEAF ?Clear@CRuntimeQuestPersistence@NQuestManager@@QAEXXZ (catalog NQuestManager::CRuntimeQuestPersistence::ClearAll; names another function)
+004b41f0   RELOCATION_MATCH PASS   ClearAll
+004b5080   WARN RELOC_NAME: ??$sort@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@std@@YIXPAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@0@0V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@Z -> 004bbb40 labelled 'std::sort<std::pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *, CKeyPairCompareLess<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo>>'
+004b5080   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004b5080   RELOCATION_MATCH PASS   LoadFromGameStateScript
+004bb570   RELOCATION_MATCH PASS   sort_heap
+0059d820   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+0059d820   RELOCATION_MATCH PASS   InitialiseSellableItems
+0059da10   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+0059da10   RELOCATION_MATCH PASS   IsItemAffordable
+0059de76   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+0059de76   RELOCATION_MATCH PASS   UpdateSellActionsList
+005a45f6   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a45f6   RELOCATION_MATCH PASS   ConstructSellActionsList
+005bc4c4   MATCH            PASS   GetMember_dword0xb8_005bc4c4
+006223c0   WARN RELOC_NAME: ?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ -> 005bc4b2 labelled '_global::GetMember_dword0x70_005bc4b2'
+006223c0   WARN RELOC_NAME: ?GetCategoryThingAssociation@CCategory@NInventory@@QBEPAVCThing@@XZ -> 005bd1ae labelled '_global::TailJmp_GetPItem_005bd1ae'
+006223c0   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+006223c0   RELOCATION_MATCH PASS   vfunc_70
+006bc4d0   RELOCATION_MATCH PASS   SetMiniMapRegionExitTextOffsetX
+006bc4f0   RELOCATION_MATCH PASS   SetMiniMapRegionExitTextOffsetY
+006bd240   RELOCATION_MATCH PASS   insert_unique
+00756420   RELOCATION_MATCH PASS   erase
+0077f440   RELOCATION_MATCH PASS   Sort_SElement16_0077f440
+0077f4c0   RELOCATION_MATCH PASS   CVectorMap_Sort_0077f4c0
+0077f4e0   RELOCATION_MATCH PASS   CVectorMap_SortIfDirty_0077f4e0
+007acd30   WARN STANDIN_LEAF ?_M_upper_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z (catalog CCharStringMap_007acd30::_M_upper_bound; names another function)
+007acd30   RELOCATION_MATCH PASS   _M_upper_bound
+007acea0   RELOCATION_MATCH PASS   vector
+007adbc0   RELOCATION_MATCH PASS   equal_range
+007ae0c0   WARN STANDIN_LEAF ??$_Construct@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U12@@std@@YIXPAU?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@0@ABU10@@Z (catalog std::_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>; names another function)
+007ae0c0   RELOCATION_MATCH PASS   pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>
+008a96c0   RELOCATION_MATCH PASS   SetCategoryActivity
+008a9720   RELOCATION_MATCH PASS   SetActiveGossipCategories
+008aa220   RELOCATION_MATCH PASS   GetGossipVillagesSize
+008aa480   RELOCATION_MATCH PASS   GetGossipFactionsSize
+008abd80   WARN STANDIN_LEAF ?_M_upper_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z (catalog CCharStringMap_008abd80::_M_upper_bound; names another function)
+008abd80   RELOCATION_MATCH PASS   _M_upper_bound
+008aca20   WARN STANDIN_LEAF ?equal_range@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@2@@std@@U12@@2@ABVCCharString@@@Z (catalog std::_Rb_tree<CCharString, std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>, std::_Select1st<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>>::equal_range; names another function)
+008aca20   RELOCATION_MATCH PASS   equal_range
+009a8150   WARN STANDIN_LEAF ?SetBankAlias@CBankFileManager@@QAEXABVCCharString@@0@Z (catalog CStringTable_009a8150::SetEntry; names another function)
+009a8150   RELOCATION_MATCH PASS   SetEntry
+009a9e20   WARN STANDIN_LEAF ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@std@@QAEAAU01@XZ (catalog CRetailTreeIterator::Increment; names another function)
+009a9e20   MATCH            PASS   Increment
+009aa320   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@std@@QAEAAU01@XZ (catalog CRetailTreeIterator::Decrement; names another function)
+009aa320   MATCH            PASS   Decrement
+009eb0d0   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+009eb0d0   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@std@@QAEAAU01@XZ -> 009ee470 labelled 'CRetailTreeIterator::Increment'
+009eb0d0   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+009eb0d0   RELOCATION_MATCH PASS   NextCommandGuess
+009ee470   WARN STANDIN_LEAF ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@std@@QAEAAU01@XZ (catalog CRetailTreeIterator::Increment; names another function)
+009ee470   MATCH            PASS   Increment
+00a344e0   RELOCATION_MATCH PASS   __make_heap
+00a34d80   RELOCATION_MATCH PASS   sort_heap
+00a35260   RELOCATION_MATCH PASS   __partial_sort
+00a41e20   RELOCATION_MATCH PASS   Sort_SElement8_00a41e20
+00a42040   RELOCATION_MATCH PASS   Sort
+00a420c0   RELOCATION_MATCH PASS   CVectorMap_SortIfDirty_00a420c0
+00a71b40   RELOCATION_MATCH PASS   __pop_heap
+00a71ca0   RELOCATION_MATCH PASS   __make_heap
+00a71d40   RELOCATION_MATCH PASS   __make_heap
+00a72aa0   RELOCATION_MATCH PASS   sort_heap
+00a72b10   RELOCATION_MATCH PASS   sort_heap
+00a73330   RELOCATION_MATCH PASS   __partial_sort
+00a733b0   RELOCATION_MATCH PASS   __partial_sort
+00af3770   RELOCATION_MATCH PASS   sort_heap
+00d347b0   WARN RELOC_NAME: ?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z -> 00cd3ccb labelled 'CArray<std::pair<long::push_back'
+00d347b0   RELOCATION_MATCH PASS   Init
+00d38f70   RELOCATION_MATCH PASS   Main
+00d7ae80   RELOCATION_MATCH PASS   Main
+00e54ca0   RELOCATION_MATCH PASS   CConversation
+00e57020   RELOCATION_MATCH PASS   GetBookSpecificArgs
+00e6da80   RELOCATION_MATCH PASS   TortureVictim
+00ed0b10   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ed0b10   RELOCATION_MATCH PASS   DoLeavingCutscene
+00ee8870   RELOCATION_MATCH PASS   OakValeFire
+00f0ca60   RELOCATION_MATCH PASS   TeleportData
+
+WINS: 54
+  004b41f0 RELOCATION_MATCH NQuestManager::CRuntimeQuestPersistence::?Clear@CRuntimeQuestPersistence@NQuestManager@@QAEXXZ
+  004b5080 RELOCATION_MATCH NQuestManager::CRuntimeQuestPersistence::?LoadFromGameStateScript@CRuntimeQuestPersistence@NQuestManager@@QAEXAAVCCharString@@@Z
+  004bb570 RELOCATION_MATCH std::??$sort_heap@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@std@@YIXPAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@0@0V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@Z
+  0059d820 RELOCATION_MATCH CTCInventoryTrade::?InitialiseSellableItems@CTCInventoryTrade@@QAEXXZ
+  0059da10 RELOCATION_MATCH CTCInventoryTrade::?IsItemAffordable@CTCInventoryTrade@@QAE_NJJ@Z
+  0059de76 RELOCATION_MATCH CTCInventoryTrade::?UpdateSellActionsList@CTCInventoryTrade@@AAEXXZ
+  005a45f6 RELOCATION_MATCH CTCInventoryTrade::?ConstructSellActionsList@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z
+  005bc4c4 MATCH _global::?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ
+  006223c0 RELOCATION_MATCH CTCInventoryQuests::?ProcessQuestActivateAction@CTCInventoryQuests@@UAE_NXZ
+  006bc4d0 RELOCATION_MATCH CRegion::?SetMiniMapRegionExitTextOffsetX@CRegion@@QAEXABVCCharString@@M@Z
+  006bc4f0 RELOCATION_MATCH CRegion::?SetMiniMapRegionExitTextOffsetY@CRegion@@QAEXABVCCharString@@M@Z
+  006bd240 RELOCATION_MATCH std::_Rb_tree::?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VC2DVector@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VC2DVector@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VC2DVector@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VC2DVector@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VC2DVector@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBVCCharString@@VC2DVector@@@2@@Z
+  00756420 RELOCATION_MATCH std::_Rb_tree<CCharString,pair<long,long>>::?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@2@@2@0@Z
+  0077f440 RELOCATION_MATCH _global::??$sort@PAU?$pair@VCCharString@@VC3DVector@@@std@@V?$CKeyPairCompareLess@VCCharString@@VC3DVector@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DVector@@@0@0V?$CKeyPairCompareLess@VCCharString@@VC3DVector@@@@@Z
+  0077f4c0 RELOCATION_MATCH _global::?Sort@?$CVectorMap@VCCharString@@VC3DVector@@V?$CKeyPairCompareLess@VCCharString@@VC3DVector@@@@@@QAEXXZ
+  0077f4e0 RELOCATION_MATCH _global::?Update@?$CVectorMap@VCCharString@@VC3DVector@@V?$CKeyPairCompareLess@VCCharString@@VC3DVector@@@@@@QAEXXZ
+  007acd30 RELOCATION_MATCH CCharStringMap_007acd30::?_M_upper_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z
+  007acea0 RELOCATION_MATCH std::vector<CCharString>::??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV01@@Z
+  007adbc0 RELOCATION_MATCH std::_Rb_tree<CCharString, std::pair<const CCharString, bool>, ...>::?equal_range@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@_N@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@_N@std@@@2@@std@@U12@@2@ABVCCharString@@@Z
+  007ae0c0 RELOCATION_MATCH _Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::??$_Construct@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U12@@std@@YIXPAU?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@0@ABU10@@Z
+  008a96c0 RELOCATION_MATCH CGameScriptInterface::?SetCategoryActivity@CGameScriptInterface@@UBEXABVCCharString@@_N@Z
+  008a9720 RELOCATION_MATCH CGameScriptInterface::?SetActiveGossipCategories@CGameScriptInterface@@UAEXVCCharString@@_N@Z
+  008aa220 RELOCATION_MATCH CGameScriptInterface::?GetGossipVillagesSize@CGameScriptInterface@@UAEHVCCharString@@@Z
+  008aa480 RELOCATION_MATCH CGameScriptInterface::?GetGossipFactionsSize@CGameScriptInterface@@UAEHVCCharString@@@Z
+  008abd80 RELOCATION_MATCH CCharStringMap_008abd80::?_M_upper_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z
+  008aca20 RELOCATION_MATCH std::_Rb_tree<CCharString, std::pair<const CCharString, std::vector<CCharString>>, ...>::?equal_range@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@2@@std@@U12@@2@ABVCCharString@@@Z
+  009a8150 RELOCATION_MATCH CStringTable_009a8150::?SetBankAlias@CBankFileManager@@QAEXABVCCharString@@0@Z
+  009a9e20 MATCH CRetailTreeIterator::??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@std@@QAEAAU01@XZ
+  009aa320 MATCH CRetailTreeIterator::??F?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@std@@QAEAAU01@XZ
+  009eb0d0 RELOCATION_MATCH CConsole::?NextCommandGuess@CConsole@@AAEXXZ
+  009ee470 MATCH CRetailTreeIterator::??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@std@@QAEAAU01@XZ
+  00a344e0 RELOCATION_MATCH std::??$__make_heap@PAU?$pair@KVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@U12@H@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@0PAH@Z
+  00a34d80 RELOCATION_MATCH std::??$sort_heap@PAU?$pair@KVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z
+  00a35260 RELOCATION_MATCH std::??$__partial_sort@PAU?$pair@KVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@000V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z
+  00a41e20 RELOCATION_MATCH _global::??$sort@PAU?$pair@VCCharString@@PAVCSoundBankLH@@@std@@V?$CKeyPairCompareLess@VCCharString@@PAVCSoundBankLH@@@@@std@@YIXPAU?$pair@VCCharString@@PAVCSoundBankLH@@@0@0V?$CKeyPairCompareLess@VCCharString@@PAVCSoundBankLH@@@@@Z
+  00a42040 RELOCATION_MATCH CVectorMap<T_8_00a42040>::?Sort@?$CVectorMap@VCCharString@@PAVCSoundBankLH@@V?$CKeyPairCompareLess@VCCharString@@PAVCSoundBankLH@@@@@@QAEXXZ
+  00a420c0 RELOCATION_MATCH _global::?Update@?$CVectorMap@VCCharString@@PAVCSoundBankLH@@V?$CKeyPairCompareLess@VCCharString@@PAVCSoundBankLH@@@@@@QAEXXZ
+  00a71b40 RELOCATION_MATCH _global::??$__pop_heap@PAU?$pair@JVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@H@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@00U10@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@PAH@Z
+  00a71ca0 RELOCATION_MATCH std::??$__make_heap@PAU?$pair@JVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@U12@H@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@0PAH@Z
+  00a71d40 RELOCATION_MATCH std::??$__make_heap@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@U12@H@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@0PAH@Z
+  00a72aa0 RELOCATION_MATCH std::??$sort_heap@PAU?$pair@JVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z
+  00a72b10 RELOCATION_MATCH std::??$sort_heap@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z
+  00a73330 RELOCATION_MATCH std::??$__partial_sort@PAU?$pair@JVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@000V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z
+  00a733b0 RELOCATION_MATCH std::??$__partial_sort@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@000V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z
+  00af3770 RELOCATION_MATCH std::??$sort_heap@PAU?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@@@std@@YIXPAU?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@0@0V?$CKeyPairCompareLess@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@@@Z
+  00d347b0 RELOCATION_MATCH NScript::CQ_FireHeartScript::?Init@CQ_FireHeartScript@NScript@@UAEXXZ
+  00d38f70 RELOCATION_MATCH NScript::CQ_FireHeartScript::CProphetCage::?Main@CProphetCage@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d7ae80 RELOCATION_MATCH NScript::CQ_HeroSoulsThunderScript::?Main@CQ_HeroSoulsThunderScript@NScript@@UAEXXZ
+  00e54ca0 RELOCATION_MATCH CConversation::??0CConversation@@QAE@ABV0@@Z
+  00e57020 RELOCATION_MATCH CBS_Teacher::?GetBookSpecificArgs@CBS_Teacher@CV_BookCollectingScript@NScript@@AAEXJAAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@@Z
+  00e6da80 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?TortureVictim@CV_ChapelOfEvilScript@NScript@@QAEXAAVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@1@Z
+  00ed0b10 RELOCATION_MATCH CWomanToAttract::?DoLeavingCutscene@CWomanToAttract@CV_SickChildScript@NScript@@AAEXXZ
+  00ee8870 RELOCATION_MATCH CCS_OakValeRevisitedScript::?OakValeFire@CCS_OakValeRevisitedScript@NScript@@QAEXXZ
+  00f0ca60 RELOCATION_MATCH TeleportData::??0TeleportData@CQ_AmbushTradersScript@NScript@@QAE@ABU012@@Z

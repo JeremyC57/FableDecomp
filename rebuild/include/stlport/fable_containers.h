@@ -316,6 +316,13 @@ template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T*
 template<class T,class U> inline void FABLE_FASTCALL _Construct(T* p,const U& v) { new(p) T(v); }
 template<class T> inline void FABLE_FASTCALL _Destroy(T* p) { p->~T(); }
 inline void FABLE_FASTCALL _Destroy(char*,char*) { }
+#elif defined(FABLE_RETAIL_STLP_CONSTRUCT_FASTCALL)
+// NF87 opt-in (row 0x007AE0C0, the out-of-line _Construct of pair<const CCharString, vector<CCharString> >): the /Gr TU's _construct.h
+// _Construct as a __fastcall COMDAT (p in ecx, the value in edx; the placement-new null test, then the pair's two copy constructors).
+// The default branch's text with __fastcall on _Construct only.
+template<class T,class U> inline void __fastcall _Construct(T* p,const U& v) { new(p) T(v); }
+template<class T> inline void _Destroy(T* p) { p->~T(); }
+inline void _Destroy(char*,char*) { }
 #elif defined(FABLE_RETAIL_STLP_CONSTRUCT_BYVAL)
 // Per-TU opt-in (row 0x00754050 CTCLook::UpdateTurningAnims): _Construct taking its value BY VALUE. The inlined push_back then
 // copies the element out of the argument temporary into register-held fields before the placement store (retail 0x007541E0:

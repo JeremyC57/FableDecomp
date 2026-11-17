@@ -94,6 +94,11 @@ public:
     // in retail: PersistScripts' EraseFromKey. Needs FABLE_RETAIL_CVECTORMAP_ERASEFROMKEY.
     void ClearPersistScript(const CCharString& quest_name) { PersistScripts.EraseFromKey(quest_name); }
 #endif
+#ifdef FABLE_RETAIL_NQUESTMANAGER_CRUNTIMEQUESTPERSISTENCE_CLEAR
+    // NF87 opt-in (row 0x004B41F0): Ego_r.pdb / FableWin.pdb ?Clear@CRuntimeQuestPersistence@NQuestManager@@QAEXXZ (Ego_d.pdb: this only,
+    // four calls in its 49-byte /Od body), out of line in retail; its one caller is LoadFromGameStateScript 0x004B5080. Declaration only.
+    void Clear();
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_PERSISTINFO_SETTERS
     // NF82 opt-in: Ego_r.pdb 0x004BA540 / 0x004BA660 and FableWin.pdb ?SetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@
     // QAEXABVCCharString@@0@Z (retail 0x004B4E30, map at +0) and ?SetQuestMasterDataPersistScript@..@@QAEXABVCCharString@@0@Z (retail
@@ -123,6 +128,14 @@ public:
     // Opt-in (chunk 2052, row 0x0049F4C0 CWorld::SaveGameStateInternal): Ego_r.pdb ?SaveGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z,
     // out of line at 0x004B64E0 (called on [0x013B89FC], the singleton). Declaration only.
     void SaveGameState(CPersistContext& context);                       // 0x004B64E0
+#endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEQUESTCARDS
+    // NF87 opt-in (row 0x006223C0 CTCInventoryQuests::ProcessQuestActivateAction): Ego_r.pdb + FableWin.pdb
+    // ?ActivateFeatCard@CQuestManager@@QAE_NPAVCThing@@@Z (0x004B1590) and ?ActivateQuestCard@CQuestManager@@QAE_NPAVCThing@@_N@Z (0x004B4AA0),
+    // out of line in retail; parameter names from Ego_d.pdb (pquest_card, load_res). Declarations only.
+public:
+    bool ActivateFeatCard(CThing* pquest_card);                         // 0x004B1590
+    bool ActivateQuestCard(CThing* pquest_card, bool load_res);         // 0x004B4AA0
 #endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE_CONTEXT
     // Opt-in (chunk 2052, row 0x004A21F0): Ego_r.pdb ?LoadGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z (0x004B6380) and

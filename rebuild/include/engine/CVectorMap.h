@@ -196,6 +196,12 @@ public:
     void Sort();
     void Update() { if(Dirty) Sort(); }
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_DEALLOCATEMEMORY
+    // NF87 opt-in (row 0x004B41F0 CRuntimeQuestPersistence::Clear): Ego_r.pdb / FableWin.pdb ?DeallocateMemory@?$CVectorMap@VCCharString@@
+    // VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@..@@QAEXXZ (Ego_d.pdb locals this, temp), out of line in retail (0x004BB6B0, landed).
+    // Declaration only.
+    void DeallocateMemory();
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_ERASEFROMKEY
     // NF85 opt-in (row 0x004B39B0 CQuestManager::ClearQuestPersistScript): FableWin.pdb ?EraseFromKey@?$CVectorMap@VCCharString@@VCPersistInfo@
     // CRuntimeQuestPersistence@NQuestManager@@..@@QAEXABVCCharString@@@Z (Ego_d.pdb locals: key, `lower`, then `upper` in an inner block),

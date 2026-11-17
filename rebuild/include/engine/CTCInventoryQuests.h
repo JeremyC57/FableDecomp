@@ -63,6 +63,11 @@ public:
     void InitialiseQuestCardList();                                                                // 0x00621A20
 #endif
     long QuestCardCount;                                                                           // +0x150
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_PROCESSQUESTACTIVATEACTION
+    // NF87 opt-in (row 0x006223C0): Ego_r.pdb + FableWin.pdb ?ProcessQuestActivateAction@CTCInventoryQuests@@UAE_NXZ, the override of
+    // NInventory::CTCInventoryBase slot 70 (vtable 0x012585B4 +0x118 = 0x006223C0). Needs FABLE_RETAIL_CTCINVENTORYBASE_VTABLE.
+    virtual bool ProcessQuestActivateAction();                                                     // 70 0x006223C0
+#endif
 #if defined(FABLE_RETAIL_CTCINVENTORYQUESTS_OPENINVENTORY) && !defined(FABLE_RETAIL_CTCINVENTORYQUESTS_QUESTLIST) && !defined(FABLE_RETAIL_CTCINVENTORYQUESTS_OPENPC)
     // (chunk Q24, row 0x00622A00) the members after QuestCardCount; the QUESTLIST and OPENPC blocks below declare the same list.
     bool Teleport;                                                                                 // +0x154
