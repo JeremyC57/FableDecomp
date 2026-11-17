@@ -21,6 +21,13 @@ public:
 // Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
  static ERenderMode FABLE_FASTCALL GetAppropriateRenderMode(const C3DMeshMaterial*,unsigned long,unsigned long);
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_RENDERMODE2D
+    // Retail opt-in (agentNF77, row 0x00B9E950): FableWin.pdb (0x02E85190; no Ego_r.pdb copy)
+    // ?GetAppropriateRenderMode2D@CEnginePrimitiveManagerMeshBase@@SI?AW4ERenderMode@@PBVC3DMeshMaterial@@KK@Z (public static fastcall; no
+    // retail out-of-line copy: Render2DPrimitive tests the material's map flags +0x20 in place, 0x00B9EBDA). Declaration only (the row gives
+    // the inline body, as 0x00BA1140 does for GetAppropriateRenderMode). Needs C3DMeshMaterial / ERenderMode declared.
+    static ERenderMode FABLE_FASTCALL GetAppropriateRenderMode2D(const C3DMeshMaterial* material, unsigned long modifier_flags, unsigned long subprim_render_flags);
+#endif
 
 public:
     CEnginePrimitiveManagerMeshBase(const CEnginePrimitiveManagerMeshBase&);

@@ -1,0 +1,11 @@
+# NF77 lessons (one line each)
+- A derived CCreatureAction destructor with no vptr store ports in one grade once the class has a polymorphic retail branch with no user destructor: add the branch (RTTI base, Ego_r members shifted 0xC lower) to the generated header behind one #ifndef, and pin the three moved asserts.
+- An unidentified implicit-destructor COMDAT is named by its one caller: find the call (callers.py), disassemble the caller, and match the destroyed frame address with the constructor that built it (0x009400F0 = ~CCreatureAction_PickCrop).
+- Copy the define preamble from a landed sibling on the same shared header (0x00949380 for PlayAnimation temporaries, 0x0095BCF0 for HoverHornetQueen, 0x00712900 for the NTCScriptedControl actions); every q10884 port but one matched in one or two grades.
+- An `xor eax,eax ; cmp ; sete al` bool tail comes from a result variable declared outside the block that ends before the test (as the sibling Eat), not from the variable's type.
+- Ego_d.pdb's locals list can omit block-scoped locals the bytes still need (Singsong's three CCharStrings): trust the push order over the list.
+- Probe the old landed row's relocations before writing RENAMES section 2; two guessed old manglings were wrong (the PlayAnimation constructor _N22 vs the probed _N33) and eleven old binders were missing.
+- A 2D primitive-manager row ports fastest from its landed 3D twin (0x00BA1140 / 0x00BD71B0): copy the twin's defines and inline helper bodies, then add the 2D culling from the landed sprite row 0x00BB0970; each 900-byte row matched in 3 grades.
+- Compile a big draft with a header probe (cl /c, no grade) before its first grade; source wine/env.sh first, or the probe fails outside Wine.
+- A 1-byte residue after a port is usually a local's width or scope: a `long` alpha (movzx and a dword spill), named mesh-info locals for a load block, a reference for an array index, a named render-info pointer for a store order.
+- A row-provided inline helper that retail expands but VC7.1 leaves out of line (GetHiddenMaterials) needed FABLE_FORCEINLINE, as the landed rows do for ClipSphere.

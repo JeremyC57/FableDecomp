@@ -42440,9 +42440,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009400f0'
-        Module = '_global'
-        Source = '00/94/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009400f0.cpp'
-        TestSource = '00/94/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009400f0_test.cpp'
+        Module = 'CCreatureAction_PickCrop'
+        Source = '00/94/CCreatureActionPickCrop_CCreatureActionPickCrop_009400f0.cpp'
+        TestSource = '00/94/CCreatureActionPickCrop_CCreatureActionPickCrop_009400f0_test.cpp'
         PassPattern = 'OK_009400f0'
     }
     [pscustomobject]@{
@@ -171165,9 +171165,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0048c950'
-        Module = '_unattributed'
-        Source = '00/48/unattributed_CPhysicsMeshInfoDerived0048c950_0048c950.cpp'
-        TestSource = '00/48/unattributed_CPhysicsMeshInfoDerived0048c950_0048c950_test.cpp'
+        Module = 'CCreatureAction_SheatheItemToInventory'
+        Source = '00/48/CCreatureActionSheatheItemToInventory_CCreatureActionSheatheItemToInventory_0048c950.cpp'
+        TestSource = '00/48/CCreatureActionSheatheItemToInventory_CCreatureActionSheatheItemToInventory_0048c950_test.cpp'
         PassPattern = '0048c950_TEST PASS'
     }
     [pscustomobject]@{
@@ -273127,8 +273127,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00715560'
         Module = 'NTCScriptedControl::CActionDropGenericBox'
-        Source = '00/71/NTCScriptedControlCActionDropGenericBox_vfunc1_00715560.cpp'
-        TestSource = '00/71/NTCScriptedControlCActionDropGenericBox_vfunc1_00715560_test.cpp'
+        Source = '00/71/NTCScriptedControlCActionDropGenericBox_Update_00715560.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionDropGenericBox_Update_00715560_test.cpp'
         PassPattern = '00715560_TEST PASS'
     }
     [pscustomobject]@{

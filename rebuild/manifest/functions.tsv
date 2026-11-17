@@ -18549,7 +18549,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00715110	OnAdd	NTCScriptedControl::CActionFireProjectileWeapon	__thiscall	void	1	CActionFireProjectileWeapon *	1	yes	accepted									
 007152f0	Update	NTCScriptedControl::CActionFireProjectileWeapon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007153b0	Update	NTCScriptedControl::CActionPickUpGenericBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00715560	vfunc_1	NTCScriptedControl::CActionDropGenericBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00715560	Update	NTCScriptedControl::CActionDropGenericBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007156b0	CTCScriptedControl	CTCScriptedControl	__thiscall	undefined	2	CTCRegionDisplay *,CThing *	0	yes	accepted									
 00715710	OnActivate	NTCScriptedControl::CActionFollowCreature	__thiscall	void	1	CActionFollowCreature *	1	yes	accepted									
 007158f0	OnCleanup	NTCScriptedControl::CActionFollowCreature	__thiscall	void	1	CActionFollowCreature *	1	yes	accepted									
@@ -31908,7 +31908,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0093fbc0	IsRunnable	CAIStateGroup_VillageTaskSecuritySweep	__thiscall	bool	1	CAIStateGroup_VillageTaskSecuritySweep *	1	yes	accepted									
 0093fc70	Initialise	CAIStateGroup_VillageTaskSecuritySweep	__thiscall	void	6	CAIStateGroup_VillageTaskSecuritySweep *,CAIBrain &,CThingAICreature &,long,EScriptAIPriority,CCharString const &	1	yes	accepted									
 0093fcd0	CAIStateGroup_VillageTaskSecuritySweep::Update	CAIStateGroup_VillageTaskSecuritySweep	__thiscall	void	1	CAIStateGroup_VillageTaskSecuritySweep *	1	yes	accepted									
-009400f0	Dtor_CCreatureActionBaseBase_009400f0	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009400f0.cpp
+009400f0	~CCreatureAction_PickCrop	CCreatureAction_PickCrop	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009400f0.cpp
 00940110	InitStateGroup	CAIStateGroup_VillageTaskPickCrops	__thiscall	void	3	CAIStateGroup_VillageTaskPickCrops *,CWorld const &,CThingAICreature &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\CAIStateGroupVillageTaskPickCrops_InitStateGroup_00940110.cpp
 00940120	IsTimeForWork	CAIStateGroup_VillageTaskPickCrops	__thiscall	bool	1	CAIStateGroup_WorkBase<CAIStateGroupBase> *	1	yes	accepted									
 00940180	IsRunnable	CAIStateGroup_VillageTaskPickCrops	__thiscall	bool	1	CAIStateGroup_VillageTaskPickCrops *	1	yes	accepted									

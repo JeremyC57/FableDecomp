@@ -1,0 +1,51 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0048C950	CCreatureAction_SheatheItemToInventory	~CCreatureAction_SheatheItemToInventory	??1CCreatureAction_SheatheItemToInventory@@UAE@XZ	CCreatureAction_SheatheItemToInventory::~CCreatureAction_SheatheItemToInventory	??1CPhysicsMeshInfo_Derived_0048c950@@QAE@XZ	catalog module was _unattributed (now CCreatureAction_SheatheItemToInventory); shared engine/CCreatureAction_SheatheItemToInventory.h names 0x0048C950; Ego_r.pdb 0x00496240 + FableWin.pdb 0x01AD07A0; landed callers 0x0058400A / 0x0062B7C0 / 0x006DE280 bind this spelling; implicit-dtor COMDAT (no vptr store) via overlay FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_IMPLICIT_DTOR; RELOCATION_MATCH + PASS
+0x009400F0	CCreatureAction_PickCrop	~CCreatureAction_PickCrop	??1CCreatureAction_PickCrop@@UAE@XZ	_global::Dtor_CCreatureActionBaseBase_009400f0	?DestVal_A8_G@Obj@@QAEXXZ	owner identified: the only caller (unlanded CAIStateGroup_VillageTaskPickCrops::Update, 0x0094049E) destroys the temporary built by the CCreatureAction_PickCrop ctor 0x009405F0; body destroys Ego_r.pdb PObjectToUse (+0xA8) then the RTTI base CCreatureActionBase; ??_G 0x00940680 expands the same body; FableWin.pdb ??1CCreatureAction_PickCrop@@UAE@XZ (0x02B98AA0; Ego_r.pdb has the ctor / PerformAction / Clone, no ??1); overlay FABLE_RETAIL_CCREATUREACTION_PICKCROP; RELOCATION_MATCH + PASS
+0x0093A7A0	CAIStateGroup_BanditSitRoundCampfire	Singsong	?Singsong@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ	CAIStateGroup_BanditSitRoundCampfire::Singsong	?Singsong@CAIStateGroup_BanditSitRoundCampfire@@QAEJXZ	Ego_r.pdb 0x0095DBF0 + FableWin.pdb 0x02B7FA80 (private, bool); RELOCATION_MATCH + PASS; landed caller SitMain 0x0093AD70 binds QAE_NXZ (NAME_FIXES.tsv)
+0x0095B6F0	CAIStateGroup_HoverHornetQueen	KeepOutOfWay	?KeepOutOfWay@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ	CAIStateGroup_HoverHornetQueen::KeepOutOfWay	?KeepOutOfWay@CQueenNative@@QAEJXZ	Ego_r.pdb + FableWin.pdb (protected, EAIActionReturn); the landed caller WaitWhileBabiesFight 0x0095C0B0 already binds this spelling (NF77 probe); RELOCATION_MATCH + PASS
+0x00715560	NTCScriptedControl::CActionDropGenericBox	Update	?Update@CActionDropGenericBox@NTCScriptedControl@@UAEXXZ	NTCScriptedControl::CActionDropGenericBox::vfunc_1	?Update@CActionDropGenericBox@NTCScriptedControl@@QAEXXZ	Ego_r.pdb 0x00728FC0 ?Update@CActionDropGenericBox@NTCScriptedControl@@UAEXXZ; vtable 0x0128D7BC slot 1 (the base CActionBase pure Update slot); no direct caller; RELOCATION_MATCH + PASS
+0x00941E00	CAIStateGroup_KidReactToBlockage	Update	?Update@CAIStateGroup_KidReactToBlockage@@UAEXXZ	CAIStateGroup_KidReactToBlockage::Update	?Update@CAIStateGroup_KidReactToBlockage@@QAEXXZ	Ego_r.pdb 0x00965C20 ?Update@CAIStateGroup_KidReactToBlockage@@UAEXXZ; virtual in the shared engine/CAIStateGroup_KidReactToBlockage.h; no direct caller; RELOCATION_MATCH + PASS
+# Section 2
+0x0048C950	??1CPhysicsMeshInfo@@QAE@XZ	??1CCreatureActionBase@@UAE@XZ
+0x009400F0	?Base@Obj@@QAEXXZ	??1CCreatureActionBase@@UAE@XZ
+0x009400F0	?Dtor@Sub@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ
+0x0093A7A0	??1CCreatureAction_PlayAnimationBase@@QAE@XZ	??1CCreatureActionBase@@UAE@XZ
+0x0093A7A0	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@11M_N22@Z	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z
+0x0093A7A0	?AIAction_PerformActionAndWait@CAIStateGroup_BanditSitRoundCampfire@@QAEJPAVCCreatureActionBase@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z
+0x0095B6F0	??1CActionNative@@UAE@XZ	??1CCreatureActionBase@@UAE@XZ
+0x0095B6F0	??0CPlayAnimationNative@@QAE@PAUCQueenThing@@ABVCCharString@@ABUCAnimationSound@@_N33JJ@Z	??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@ABVCSoundPair@@_N33JJ@Z
+0x0095B6F0	?Terminate@CQueenNative@@QAEXXZ	?Terminate@CAIStateGroupBase@@QAEXXZ
+0x0095B6F0	?IsStillRunnable@CQueenNative@@QAE_NXZ	?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ
+0x0095B6F0	?GotoSafestCirclePoint@CQueenNative@@QAEJJ@Z	?GotoSafestCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@W4EMovementType@@@Z
+0x0095B6F0	?AIAction_PerformActionAndWait@CQueenNative@@QAEJPAUCActionNative@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z
+0x0095B6F0	?AIAction_DoNothing@CQueenNative@@QAEJXZ	?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
+0x00715560	??1ActionBase@Retail@@QAE@XZ	??1CCreatureActionBase@@UAE@XZ
+0x00715560	?IsPerformingAnyAction@Creature@@QBE_NXZ	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ
+0x00715560	?SetCurrentAction@Creature@@QAE_NABUActionBase@Retail@@@Z	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+0x00715560	?GetActionID@ActionBase@Retail@@QBEJXZ	?GetActionID@CCreatureActionBase@@QBEJXZ
+0x00715560	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAUThing@@_N@Z	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z
+0x00715560	??0DropGenericBox@Retail@@QAE@AAUCreature@@@Z	??0CCreatureAction_DropGenericBox@@QAE@AAVCThingCreatureBase@@@Z
+0x00941E00	??1CCreatureAction_PlayAnimation@@QAE@XZ	??1CCreatureActionBase@@UAE@XZ
+0x00941E00	??0CCreatureAction_PlayAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@ABVCSoundPair@@_N33JJ@Z	??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@ABVCSoundPair@@_N33JJ@Z
+0x007EB9B0	??1CCreatureActionBase_Retail@@QAE@XZ	??1CCreatureActionBase@@UAE@XZ
+0x007EB9B0	??0CCreatureAction_BlowHorn_Retail@@QAE@PAUCThingCreatureBase_Retail@@PAVCThing@@@Z	??0CCreatureAction_BlowHorn@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+0x007EB9B0	?SetCurrentAction@CThingCreatureBase_Retail@@QAE_NPAUCCreatureActionBase_Retail@@@Z	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+0x00B9E950	?SetLoadPriority@C3DMeshInfo@@QAEXJ@Z	?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z
+0x00B9E950	?IsBuilt@C3DMeshInfo@@QAE_NXZ	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ
+0x00B9E950	?BeginLoading@C3DMeshInfo@@QAEXK_N0@Z	?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z
+0x00B9E950	?GetMesh@C3DMeshInfo@@QBE_NAAUCCountedMeshPointer@@KK@Z	?GetMesh@C3DMeshInfo@@QBE_NAAV?$CCountedPointer@$$CBVC3DMesh2@@@@KK@Z
+0x00B9E950	??1CCountedMeshPointer@@QAE@XZ	??1?$CCountedPointer@$$CBVC3DMesh2@@@@QAE@XZ
+0x00B9E950	??0CEngineSubPrimitiveStaticMesh@@QAE@PAUCEngineInternalPrimitive2DStaticMesh@@PAUCSubMesh@@J_N@Z	??0CEngineSubPrimitiveStaticMesh@@QAE@PAVCEngineInternalPrimitiveStaticMesh@@PAVC3DPrimitive2@@W4ERenderMode@@_N@Z
+0x00B9E950	?InitialiseSimulation@CEngineInternalPrimitive2DStaticMesh@@QAEXPAVC3DMeshInfo@@PAVC3DMesh2@@@Z	?InitialiseSimulation@CEngineInternalPrimitiveStaticMesh@@QAEXPBVC3DMeshInfo@@ABVC3DMesh2@@@Z
+0x00B9E950	?IsSimulationRunning@CEngineInternalPrimitive2DStaticMesh@@QAE_NK@Z	?IsSimulationRunning@CEngineInternalPrimitiveMeshBase@@QBE_NK@Z
+0x00B9E950	?AddGeneratedObjects@CEnginePrimitiveManager2DStaticMeshes@@QAEXPAUCEngineInternalPrimitive2DStaticMesh@@@Z	?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveStaticMesh@@@Z
+0x00B9E950	?g_pEngineSubPrimitiveRenderer@@3PAVCEngineSubPrimitiveRenderer@@A	?GPSubPrimitiveRenderer@NEngineInternal@@3PAVCEngineSubPrimitiveRenderer@@A
+0x00BD1F70	?SetLoadPriority@C3DMeshInfo@@QAEXJ@Z	?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z
+0x00BD1F70	?IsBuilt@C3DMeshInfo@@QAE_NXZ	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ
+0x00BD1F70	?BeginLoading@C3DMeshInfo@@QAEXK_N0@Z	?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z
+0x00BD1F70	??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitive2DAnimatedMesh@@PAUCSubMesh@@J_N@Z	??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitiveAnimatedMesh@@PAVC3DPrimitive2@@W4ERenderMode@@_N@Z
+0x00BD1F70	?SetupMesh2D@CEngineInternalPrimitive2DAnimatedMesh@@QAE_NXZ	?SetupMesh2D@CEngineInternalPrimitiveAnimatedMesh@@QAE_NXZ
+0x00BD1F70	?IsSimulationRunning@CEngineInternalPrimitive2DAnimatedMesh@@QAE_NK@Z	?IsSimulationRunning@CEngineInternalPrimitiveMeshBase@@QBE_NK@Z
+0x00BD1F70	?AddGeneratedObjects@CEnginePrimitiveManager2DAnimatedMeshes@@QAEXPAVCEngineInternalPrimitive2DAnimatedMesh@@PAVCMatrix3x4@@@Z	?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z
+0x00BD1F70	?g_pEngineSubPrimitiveRenderer@@3PAVCEngineSubPrimitiveRenderer@@A	?GPSubPrimitiveRenderer@NEngineInternal@@3PAVCEngineSubPrimitiveRenderer@@A
+0x00BD1F70	?g_LODTable_0143b934@@3PAUSLODEntry@@A	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A

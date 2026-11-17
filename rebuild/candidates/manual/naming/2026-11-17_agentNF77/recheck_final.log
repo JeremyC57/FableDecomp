@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00b9e950   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b9e950   RELOCATION_MATCH PASS   Render2DPrimitive
+00bd1f70   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00bd1f70   RELOCATION_MATCH PASS   Render2DPrimitive
+0048c950   RELOCATION_MATCH PASS   ~CCreatureAction_SheatheItemToInventory
+009400f0   RELOCATION_MATCH PASS   Dtor_CCreatureActionBaseBase_009400f0
+0093a7a0   RELOCATION_MATCH PASS   Singsong
+0095b6f0   RELOCATION_MATCH PASS   KeepOutOfWay
+00715560   RELOCATION_MATCH PASS   vfunc_1
+00941e00   RELOCATION_MATCH PASS   Update
+007eb9b0   RELOCATION_MATCH PASS   OnActionUse
+
+WINS: 9
+  00b9e950 RELOCATION_MATCH CEnginePrimitiveManager2DStaticMeshes::?Render2DPrimitive@CEnginePrimitiveManager2DStaticMeshes@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z
+  00bd1f70 RELOCATION_MATCH CEnginePrimitiveManager2DAnimatedMeshes::?Render2DPrimitive@CEnginePrimitiveManager2DAnimatedMeshes@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z
+  0048c950 RELOCATION_MATCH _unattributed::??1CCreatureAction_SheatheItemToInventory@@UAE@XZ
+  009400f0 RELOCATION_MATCH _global::??1CCreatureAction_PickCrop@@UAE@XZ
+  0093a7a0 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::?Singsong@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ
+  0095b6f0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::?KeepOutOfWay@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ
+  00715560 RELOCATION_MATCH NTCScriptedControl::CActionDropGenericBox::?Update@CActionDropGenericBox@NTCScriptedControl@@UAEXXZ
+  00941e00 RELOCATION_MATCH CAIStateGroup_KidReactToBlockage::?Update@CAIStateGroup_KidReactToBlockage@@UAEXXZ
+  007eb9b0 RELOCATION_MATCH CTCActionUseBlowHorn::?OnActionUse@CTCActionUseBlowHorn@@UAEXAAVCThing@@@Z
