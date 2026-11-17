@@ -1,0 +1,4 @@
+tag	address	correct_symbol	status	binders_respelled	note
+land1011fv	013b86a0	?PMainGameComponent@CMainGameComponent@@1PAV1@A	partial	1	1 of 35 wrong binders fixed (0x004083E0 GetConfigOptionsDefaultsDef moved onto engine/CMainGameComponent.h, RM 2 grades); the other 34 (0x004069E0, 0x00406A80, 0x00406C20, 0x0047DB73, 0x0048DE44, 0x00497B30, 0x00581C1E, 0x00697860, ... wrong.tsv) each model the singleton under a made-up struct/global name and need their own port onto engine/CMainGameComponent.h; not reached [e18]
+land1011fv	013b871c	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	partial	1	1 of 7 wrong binders fixed (0x004083E0, RM); 0x004069E0, 0x00406C20, 0x0042F75E, 0x00497B30, 0x0041CFB2, 0x00541E60 model CNewFrontendGameComponent's static under made-up globals and need ports onto engine/CNewFrontendGameComponent.h; not reached [e19]
+land1113fy	009cc410	?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z	carry	0	not reached [e74]

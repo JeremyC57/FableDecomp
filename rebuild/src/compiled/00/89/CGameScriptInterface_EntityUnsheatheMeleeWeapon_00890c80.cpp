@@ -114,11 +114,16 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 bool __fastcall IsThingCarryingMeleeWeapon(CThingNative*); //006A15A0
 class CCombatManager{ public:void CreatureUnsheathWeapon(CThingNative*,long);}; //006EBDD0
 struct GameEventMethods:CGameEvent{void AddData(long,const void*);}; //009F1760 appends to Data at current EndPos
-class CMainGameComponent{ public:void AddGameEvent(const CGameEvent&);};extern CMainGameComponent* g_MainGameComponent; //0041649C,013B86A0
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), and its out-of-line Ego_r.pdb / FableWin.pdb ?AddGameEvent@CMainGameComponent@@QAEXABVCGameEvent@@@Z
+//   0x0041649C (engine/CMainGameComponent.h ADDGAMEEVENT); was the stand-in CMainGameComponent* g_MainGameComponent with a local CMainGameComponent model.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_ADDGAMEEVENT
+#include "engine/CMainGameComponent.h"
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityUnsheatheMeleeWeapon(const ScriptMethods&,bool)const;};
 void CGameScriptInterfaceMethods::EntityUnsheatheMeleeWeapon(const ScriptMethods& script,bool instant)const{
  if(script.IsAlive()){CThingNative* creature=script.GetPThing();if(creature->_pad_0x6c[0]&8){if(!IsThingCarryingMeleeWeapon(creature)){
  if(!creature->IsPlayer()){creature->FinishCurrentAction();if(!instant)creature->UnsheatheMeleeWeapon();else World->PThingCombatManager_ptr->CreatureUnsheathWeapon(creature,4);}
- else{GameEventMethods event;event.Type=33;event.EndPos=0;event.Valid=true;event.Replacement=false;event.Player=(signed char)creature->_pad_0x90[0];instant=false;event.AddData(1,&instant);g_MainGameComponent->AddGameEvent(event);}
+ else{GameEventMethods event;event.Type=33;event.EndPos=0;event.Valid=true;event.Replacement=false;event.Player=(signed char)creature->_pad_0x90[0];instant=false;event.AddData(1,&instant);CMainGameComponent::Get()->AddGameEvent(event);}
  }}}
 }

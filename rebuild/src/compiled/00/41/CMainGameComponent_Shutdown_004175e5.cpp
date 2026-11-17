@@ -73,7 +73,6 @@ class CLSocketServer {
 class CDisplayManager;
 extern CDisplayManager* GPDisplayManager;              // 0x013B8390
 extern CCountedPointer41915a g_GlobalCountedPointer; // 0x013B8790
-extern void* g_pGame;                                // 0x013B86A0
 
 class CInitBaseClass {
 public:
@@ -95,7 +94,13 @@ public:
     static void __fastcall Set(CGameDefinitionManager* manager);   // 0x0044C71F
 };
 
+// NF47 (round 7): 0x013B86A0 is the class's own protected static ?PMainGameComponent@CMainGameComponent@@1PAV1@A (Ego_r.pdb /
+//   FableWin.pdb; engine/CMainGameComponent.h), cleared here in place; was the stand-in `void* g_pGame`. Only the static is respelled
+//   inside this row's pre-existing CMainGameComponent model: moving Shutdown onto engine/CMainGameComponent.h needs the header's
+//   opaque scoped_ptr / counted-pointer members typed first (a port task).
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;   // 0x013B86A0
 public:
     virtual void v00();
     unsigned char          Socket[0x0c];             // +0x04
@@ -137,7 +142,7 @@ void CMainGameComponent::Shutdown()
         PSoundManager->CloseAllBanks();
     m_10 = 0;
     g_GlobalCountedPointer.Clear();
-    g_pGame = 0;
+    PMainGameComponent = 0;
     ((CDisplayManager*)(((CLSocketServer*)GPDisplayManager)))->RemoveDeviceResetCallback((CDeviceResetCallback*)Socket);
     FrameRateSmoother.Uninitialise();
     if (InputSystem.IsValid())

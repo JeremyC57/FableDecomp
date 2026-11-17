@@ -27,11 +27,12 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 
-struct CGlobalGame {                                // the object behind 0x013B86A0
-    unsigned char   _pad[0x1c];
-    CPlayerManager* PlayerManager;                  // +0x1c
-};
-extern CGlobalGame* g_pGame_013b86a0;               // 0x013B86A0
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its PPlayerManager scoped_ptr +0x1C through the inline GetPlayerManager() (FableWin.pdb ?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ); was the stand-in CGlobalGame* g_pGame_013b86a0.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_GETPLAYERMANAGER
+#include "engine/CMainGameComponent.h"
 
 class CDefPointeeBase { public:
     virtual void v00();
@@ -109,7 +110,7 @@ __declspec(noinline) void CGameCameraManager::SetCameraManagerDef(const CDefPoin
 
 void CGameCameraManager::AddMeleeFlourishAbility()
 {
-    g_pGame_013b86a0->PlayerManager->GetMainPlayer().RemoveMode((EPlayerMode)(0x2f));
+    CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().RemoveMode((EPlayerMode)(0x2f));
     long index = PCameraManagerSet->MeleeCameraManager;
     CDefPointer<const CCameraManagerDef> def;
     World->DefinitionManager->GetDef(index, &def);

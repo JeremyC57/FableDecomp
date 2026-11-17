@@ -69,19 +69,21 @@ class CTextEntry : public CRefBase { public:
 };
 }
 using NGameText::CTextEntry;
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (NGameText::CDataBank : CBankFile); was the made-up NGameText::CDataBank::LookupValue (in neither PDB). Its CBankFile base comes from engine/CBankFile.h; the row's own CDataBank model otherwise stays.
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "engine/CBankFile.h"
+
 namespace NGameText {
-class CDataBank { public:                                         // NGameText::CDataBank
-    unsigned long LookupValue(unsigned long crc) const;  // 0x009CC410
+class CDataBank : public CBankFile { public:                                         // NGameText::CDataBank
     CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long tag, bool load) const;   // 0x009C8890
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool load) const;  // 0x009C9070
 };
 }
 using NGameText::CDataBank;
-class CNewFrontendGameComponent { public:
-    unsigned char _pad00[0x60];
-    CDataBank*    TextBank;                                // +0x60
-};
-extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
+// NF47 (round 7): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static, read through the
+//   inline CNewFrontendGameComponent::Get(), engine/CNewFrontendGameComponent.h), m_pTextBank +0x60 through the inline GetTextBank(); was the stand-in g_pNewFrontendGameComponent (and the local CNewFrontendGameComponent model).
+#include "engine/CNewFrontendGameComponent.h"
 class CSystemRegistry {
 public:
     CSystemRegistry(const CWideString& subKey, long rootSelection);   // 0x0099CF10
@@ -100,9 +102,9 @@ struct CFrontEndManager {
 
 CWideString CFrontEndManager::GenerateAboutMessage()
 {
-    CDataBank* bank = g_pNewFrontendGameComponent->TextBank;
+    const CDataBank* bank = &CNewFrontendGameComponent::Get()->GetTextBank();
     CWideString message;
-    long tag = bank->LookupValue(CCharString("TEXT_GUI_MENU_ABOUT_MESSAGE_PART_1").GetCRC());
+    long tag = bank->FindIndexBySymbolCRC(CCharString("TEXT_GUI_MENU_ABOUT_MESSAGE_PART_1").GetCRC());
     if (tag > 0) {
         const CTagArray& entries = bank->GetPGroupEntry(tag, true)->Entries;
         for (unsigned long i = 0; i < entries.size(); ++i) {
@@ -116,7 +118,7 @@ CWideString CFrontEndManager::GenerateAboutMessage()
         message += value;
         message += (const unsigned short*)L"\n";
     }
-    tag = bank->LookupValue(CCharString("TEXT_GUI_MENU_ABOUT_MESSAGE_PART_2").GetCRC());
+    tag = bank->FindIndexBySymbolCRC(CCharString("TEXT_GUI_MENU_ABOUT_MESSAGE_PART_2").GetCRC());
     if (tag > 0) {
         const CTagArray& entries = bank->GetPGroupEntry(tag, true)->Entries;
         for (unsigned long i = 0; i < entries.size(); ++i) {

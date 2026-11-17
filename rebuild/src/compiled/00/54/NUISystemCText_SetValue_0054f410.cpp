@@ -40,11 +40,15 @@ public:
     ~CWideString();                                 // 0x0099B510
 };
 
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (NGameText::CDataBank : CBankFile); was the made-up NGameText::CDataBank::LookupValue (in neither PDB). Its CBankFile base comes from engine/CBankFile.h; the row's own CDataBank model otherwise stays.
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "engine/CBankFile.h"
+
 namespace NGameText {
-class CDataBank {
+class CDataBank : public CBankFile {
 public:
 public:
-    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
 class CMainGameComponent {
@@ -57,12 +61,9 @@ private: public:
     NGameText::CDataBank* PGameTextDataBank;        // +0x14
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
 };
-class CNewFrontendGameComponent { public:
-    unsigned char _pad00[0x60];
-    NGameText::CDataBank* PGameTextDataBank;        // +0x60
-    NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
-};
-extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
+// NF47 (round 7): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static, read through the
+//   inline CNewFrontendGameComponent::Get(), engine/CNewFrontendGameComponent.h), m_pTextBank +0x60 through the inline GetTextBank(); was the stand-in g_pNewFrontendGameComponent (and the local CNewFrontendGameComponent model).
+#include "engine/CNewFrontendGameComponent.h"
 
 namespace NUISystem {
 class CText {
@@ -222,10 +223,10 @@ void CText::SetValue(const CWideString& text, bool lookUpTag, bool keepSize)
     unsigned long tag = 0;
     if (lookUpTag) {
         if (CMainGameComponent::Get()) {
-            tag = CMainGameComponent::Get()->GetGameTextDataBank()->LookupValue(((CWideString*)&text)->ToCharString().GetCRC());
+            tag = CMainGameComponent::Get()->GetGameTextDataBank()->FindIndexBySymbolCRC(((CWideString*)&text)->ToCharString().GetCRC());
         }
-        else if (g_pNewFrontendGameComponent) {
-            tag = g_pNewFrontendGameComponent->GetGameTextDataBank()->LookupValue(((CWideString*)&text)->ToCharString().GetCRC());
+        else if (CNewFrontendGameComponent::Get()) {
+            tag = CNewFrontendGameComponent::Get()->GetTextBank().FindIndexBySymbolCRC(((CWideString*)&text)->ToCharString().GetCRC());
         }
     }
     SetValue(tag, text, keepSize);

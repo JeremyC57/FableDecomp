@@ -17,11 +17,11 @@ class CDataBank { public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
-struct SaveMgr {
-    char pad[0x14];
-    NGameText::CDataBank* f14;              // +0x14
-};
-extern SaveMgr* g_saveMgr;                  // [0x13b86a0]
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its text bank PTextBank +0x14 through GetTextBank(); was the stand-in SaveMgr* g_saveMgr.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#include "engine/CMainGameComponent.h"
 
 class CUserProfileManager { public:
     CWideString GetEmptySlotName();
@@ -29,10 +29,10 @@ class CUserProfileManager { public:
 
 CWideString CUserProfileManager::GetEmptySlotName()
 {
-    SaveMgr* mgr = g_saveMgr;
+    CMainGameComponent* mgr = CMainGameComponent::Get();
     if (mgr) {
         CCharString temp((const char*)0x122df80, -1);
-        return mgr->f14->GetTextBySymbol(temp);
+        return mgr->GetTextBank().GetTextBySymbol(temp);
     }
     return CWideString((const unsigned short*)0x122df5c);
 }

@@ -7,7 +7,7 @@
 //   on the world's data bank (0x013B86A0 +0x14), CCharString::ToWideString() const @ 0x0099E480 (unknown tag),
 //   CDataBank::GetPTextEntry(id, true) const @ 0x009C9070 (CIVCountedPointer<CTextEntry> by hidden pointer), the
 //   entry's text getter @ 0x009C7A40, and the counted pointer's inline release (virtual slot 1 at zero).
-// Shape: `CDataBank* bank = g_pWorld->PDataBank; id = bank->LookupValue(tag.GetCRC()); if (!id) return
+// Shape: `CDataBank* bank = g_pWorld->PDataBank; id = bank->FindIndexBySymbolCRC(tag.GetCRC()); if (!id) return
 //   tag.ToWideString(); return g_pWorld->GetPDataBank()->GetPTextEntry(id, true)->GetText();` -- the first bank
 //   read is a named local (loaded into esi BEFORE the CRC call; the inline expression evaluates the CRC first), the
 //   second goes through an inline accessor (straight into ecx before the pushes; the direct member chain loads
@@ -62,25 +62,28 @@ template <class T> class CIVCountedPointer { public:
     }
     T* operator->() const { return Data; }
 };
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (NGameText::CDataBank : CBankFile); was the made-up NGameText::CDataBank::LookupValue (in neither PDB). Its CBankFile base comes from engine/CBankFile.h; the row's own CDataBank model otherwise stays.
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "engine/CBankFile.h"
+
 namespace NGameText {
-class CDataBank { public:
-    unsigned long LookupValue(unsigned long crc) const;           // 0x009CC410
+class CDataBank : public CBankFile { public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long id, bool flag) const;   // 0x009C9070
 };
 }
 using NGameText::CDataBank;
-struct CWorldGlobal {
-    unsigned char _pad00[0x14];
-    CDataBank* PDataBank;                                   // +0x14
-    CDataBank* GetPDataBank() const { return PDataBank; }
-};
-extern CWorldGlobal* g_pWorld;                              // 0x013B86A0
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its text bank PTextBank +0x14 through GetTextBank(); was the stand-in CWorldGlobal* g_pWorld.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#include "engine/CMainGameComponent.h"
 
 CWideString __fastcall JustGetTheFrikkingText2(const CCharString& textId)
 {
-    CDataBank* bank = g_pWorld->PDataBank;
-    unsigned long id = bank->LookupValue(textId.GetCRC());
+    const CDataBank* bank = &CMainGameComponent::Get()->GetTextBank();
+    unsigned long id = bank->FindIndexBySymbolCRC(textId.GetCRC());
     if (!id)
         return textId.ToWideString();
-    return g_pWorld->GetPDataBank()->GetPTextEntry(id, true)->GetText();
+    return CMainGameComponent::Get()->GetTextBank().GetPTextEntry(id, true)->GetText();
 }

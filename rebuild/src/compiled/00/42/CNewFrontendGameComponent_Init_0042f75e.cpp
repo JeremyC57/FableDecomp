@@ -8,14 +8,14 @@
 // memory, `push dword ptr [esi+10h]`); the flag store is
 // scheduled between the first argument push and the immediates; the console is fetched after the pushes (a chained
 // `Get()->Initialise(...)` call), its result moved into ecx.
-// Leaf: ?Init@CNewFrontendGameComponent
+// Leaf: ?Init@CNewFrontendGameComponent@@UAEXXZ
 #pragma optimize("s", on)
 class CFontBank;
 enum EInputKey { INPUT_KEY_NONE = 0 };
 
 class CConsole {
 public:
-    void Initialise(char toggleCharacter, EInputKey toggleKey, CFontBank* font);   // 0x009ED190
+    void Initialise(char toggleCharacter, EInputKey toggleKey, const CFontBank* font);   // 0x009ED190 Ego_r/FableWin ?Initialise@CConsole@@QAEXDW4EInputKey@@PBVCFontBank@@@Z
 };
 template <class T> class CTBaseSingleton {
 public:
@@ -24,25 +24,19 @@ public:
 
 void StaticLoadXMVCode();                                                    // 0x009BCF70
 
-class CNewFrontendGameComponent;
-extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;               // 0x013B871C
-
-class CNewFrontendGameComponent {
-public:
-    unsigned char _pad00[0x10];
-    CFontBank*    m_pMenuFont;                     // +0x10 (CCountedPointer object word)
-    unsigned char _pad14[0x9D];
-    bool          XMVCodeLoaded;                   // +0xB1 (PDB +0xB9)
-
-    void InitialiseDefs();                         // 0x0042F722
-    void Init();
-};
+// NF47 (round 7): moved onto engine/CNewFrontendGameComponent.h (overlay opt-in FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_INIT: XMVCodeLoaded
+//   +0xB1, private InitialiseDefs 0x0042F722, the virtual Init). 0x013B871C is the class's private static
+//   ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (was the stand-in g_pNewFrontendGameComponent and a local class
+//   model); the self leaf is now Ego_r.pdb ?Init@CNewFrontendGameComponent@@UAEXXZ (was QAE: non-virtual), InitialiseDefs binds
+//   ?InitialiseDefs@CNewFrontendGameComponent@@AAEXXZ (was QAE) and CConsole::Initialise takes `const CFontBank*` (both PDBs; was PAV).
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_INIT
+#include "engine/CNewFrontendGameComponent.h"
 
 void CNewFrontendGameComponent::Init()
 {
-    g_pNewFrontendGameComponent = this;
+    m_pNewFrontendGameComponent = this;
     InitialiseDefs();
     StaticLoadXMVCode();
     XMVCodeLoaded = true;
-    CTBaseSingleton<CConsole>::Get().Initialise('`', (EInputKey)0x29, m_pMenuFont);
+    CTBaseSingleton<CConsole>::Get().Initialise('`', (EInputKey)0x29, m_pMenuFont.Get());
 }

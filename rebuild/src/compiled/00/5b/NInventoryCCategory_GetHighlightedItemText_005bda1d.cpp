@@ -58,11 +58,15 @@ public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
 };
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (NGameText::CDataBank : CBankFile); was the made-up NGameText::CDataBank::LookupValue (in neither PDB). Its CBankFile base comes from engine/CBankFile.h; the row's own CDataBank model otherwise stays.
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "engine/CBankFile.h"
+
 namespace NGameText {
-class CDataBank {
+class CDataBank : public CBankFile {
 public:
 public:
-    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
 class CMainGameComponent {
@@ -111,7 +115,7 @@ CWideString CCategory::GetHighlightedItemText(const CGameDefinitionManager& defi
 empty:
     {
         NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
-        long textId = bank->LookupValue(CCharString("TXT_OBJT_EMPTY").GetCRC());
+        long textId = bank->FindIndexBySymbolCRC(CCharString("TXT_OBJT_EMPTY").GetCRC());
         if (textId > 0)
             return PInventory->GetInventoryText(textId);
     }

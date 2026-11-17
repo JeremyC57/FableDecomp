@@ -15,31 +15,18 @@
 // CCRC::CalcFromString with both accessors' null arms merged; the group entry's release is the pointee's
 // `DecRef(); if (GetRefCount() == 0) Delete();` behind a re-tested pointer (as the landed CTCQuestCard::GetQuestName 0x00702310).
 #include <new>
-class CWideString {
-public:
-    void* PStringData;
-    CWideString(const wchar_t* text);                   // 0x0099B6B0
-    ~CWideString();                                     // 0x0099B510
-    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-};
-CWideString operator+(const CWideString& lhs, const wchar_t* rhs);   // 0x0099BF30
-class CCharString {
-public:
-    struct CStringData {
-        const char* Data;                               // +0x0
-        long        Length;                             // +0x4
-    };
-    CStringData* PStringData;                           // +0x0
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const char* GetString() const { return PStringData == 0 ? "" : PStringData->Data; }
-    unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
-};
-class CCRC {
-public:
-    static unsigned long Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
-    static unsigned long CalcFromString(const CCharString& s) { return Calc(0, s.GetString(), s.Length()); }
-};
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, the base member
+//   of the freshly opened text bank (NGameText::CDataBank : CBankFile, polymorphic: slot 0 deleting dtor, slot 1 OpenReadOnly); was the
+//   made-up NGameText::CDataBank::LookupValue (in neither PDB). The local CWideString / CCharString / CCRC models are replaced by
+//   fable_string.h (inline GetCRC) and the row's own NGameText::CDataBank model now derives from engine/CBankFile.h (STATICBLOCKS: the
+//   polymorphic 0x110 base) with its remaining 0x104 bytes opaque.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "fable_string.h"
+#include "engine/CBankFile.h"
 class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) const;                    // slot 0
     virtual void Delete() const;                              // slot 1
@@ -66,16 +53,17 @@ namespace NGameText {
 class CTextEntry : public CIVCountedPointeeBase { public:
     CWideString GetText() const;                        // 0x009C7A40
 };
-class CDataBank {
+class CDataBank : public CBankFile {
 public:
     virtual ~CDataBank();                               // slot 0 (0x009CB840)
     virtual bool OpenReadOnly(const CCharString& name, unsigned long flags);   // slot 1 (0x009D56C0)
+protected:
+    virtual unsigned long GetDataFormatVersion();       // ?GetDataFormatVersion@CDataBank@NGameText@@MAEKXZ (both PDBs): CBankFile's pure slot
+public:
     CDataBank();                                        // 0x009C85A0
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 private:
-    unsigned char BankFileAndResourceBank[0x210];
-public:
-    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
+    unsigned char ResourceBankAndText[0x214 - 0x110];
 };
 }
 namespace std {
@@ -103,7 +91,7 @@ CWideString GetWindowTitle()
     CCharString tag("TEXT_GUI_WINDOW_TITLE");
     bank.reset(new NGameText::CDataBank);
     bank->OpenReadOnly(NLocalisation::GetTextBankName(), 0x100);
-    unsigned long index = bank->LookupValue(CCRC::CalcFromString(tag));
+    unsigned long index = bank->FindIndexBySymbolCRC(tag.GetCRC());
     if (index > 0) {
         CIVCountedPointer<const NGameText::CTextEntry> entry = bank->GetPTextEntry(index, true);
         if (entry.Object)

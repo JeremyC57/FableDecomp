@@ -30,10 +30,14 @@ namespace NGameText {
 class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& symbol) const; };
 }
 using NGameText::CDataBank;   // 0x009C95E0
-struct Game { unsigned char Pad[0x14]; CDataBank* TextBank; CDataBank* GetTextDataBank() const { return TextBank; } };
-struct System { unsigned char Pad[0x60]; CDataBank* TextBank; CDataBank* GetTextDataBank() const { return TextBank; } };
-extern Game* Game_013b86a0;                          // 0x013B86A0
-extern System* System_013b871c;                      // 0x013B871C
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its text bank PTextBank +0x14 through GetTextBank(); was the stand-in Game* Game_013b86a0.
+// NF47 (round 7): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static, read through the
+//   inline CNewFrontendGameComponent::Get(), engine/CNewFrontendGameComponent.h), m_pTextBank +0x60 through GetTextBank(); was the stand-in System* System_013b871c.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#include "engine/CMainGameComponent.h"
+#include "engine/CNewFrontendGameComponent.h"
 class C2DBoxF { public: float Left, Top, Right, Bottom; };
 namespace NUISystem {
 class CIconText { public:
@@ -76,14 +80,14 @@ class CIconText { public:
 };
 void CIconText::SetValue(const CCharString& symbol)
 {
- if (Game_013b86a0) {
-  CWideString text = Game_013b86a0->GetTextDataBank()->GetTextBySymbol(symbol);
+ if (CMainGameComponent::Get()) {
+  CWideString text = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol(symbol);
   if (text != CWideString::NullString)
    Text = text;
   else
    Text = symbol.ToWideString();
- } else if (System_013b871c) {
-  CWideString text = System_013b871c->GetTextDataBank()->GetTextBySymbol(symbol);
+ } else if (CNewFrontendGameComponent::Get()) {
+  CWideString text = CNewFrontendGameComponent::Get()->GetTextBank().GetTextBySymbol(symbol);
   if (text != CWideString::NullString)
    Text = text;
   else

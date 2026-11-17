@@ -15,40 +15,19 @@
 //   textName.GetCRC()); return PlayAttachedDialogue(tag, a, b, c, d);`), so the bank load is hoisted first and the four
 //   bools are re-pushed from their slots after the lookup; CCharString::GetCRC inline (length then chars, both
 //   null-tested: "" @ 0x0129AAF4). The one-expression form pushes the bools before the CRC (94v93).
-class CCRC {
-public:
-    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
-};   // 0x004014A0
-
-class CCharStringData { public:
-    char*         PData;                            // +0x00
-    unsigned long StringLength;                     // +0x04
-};
-class CCharString {
-public:
-    CCharStringData* PStringData;
-    unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
-    const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }
-    unsigned long GetCRC() const { return CCRC::Calc(0, GetString(), GetLength()); }   // out-of-line copy 0x00404310
-};
-
-namespace NGameText {
-class CDataBank {
-public:
-public:
-    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
-};
-}
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char _pad00[0x14];
-    NGameText::CDataBank* PGameTextDataBank;        // +0x14
-    NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
-};
+// NF47 (round 7): the local CCRC / CCharString / NGameText::CDataBank / CMainGameComponent models are replaced by the shared
+//   fable_string.h (inline GetCRC), engine/CMainGameComponent.h (GetTextBank(), the PTextBank counted pointer +0x14) and
+//   engine/NGameText_CDataBank.h (CDataBank : CBankFile); 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0
+//   ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z (was the made-up NGameText::CDataBank::LookupValue, in neither PDB).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "fable_string.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/NGameText_CDataBank.h"
 
 class CTCSoundPlayer {
 public:
@@ -58,7 +37,7 @@ public:
 
 unsigned long CTCSoundPlayer::PlayAttachedDialogue(const CCharString& textName, bool a, bool b, bool c, bool d)
 {
-    const NGameText::CDataBank* bank = CMainGameComponent::Get()->GetGameTextDataBank();
-    unsigned long textTag = bank->LookupValue(textName.GetCRC());
+    const NGameText::CDataBank& bank = CMainGameComponent::Get()->GetTextBank();
+    unsigned long textTag = bank.FindIndexBySymbolCRC(textName.GetCRC());
     return PlayAttachedDialogue(textTag, a, b, c, d);
 }

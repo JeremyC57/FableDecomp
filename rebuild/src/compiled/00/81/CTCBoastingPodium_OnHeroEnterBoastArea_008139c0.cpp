@@ -64,12 +64,16 @@ template <class T> class CIVCountedPointer { public:
     }
     T* operator->() const { return Object; }
 };
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (NGameText::CDataBank : CBankFile); was the made-up NGameText::CDataBank::LookupValue (in neither PDB). Its CBankFile base comes from engine/CBankFile.h; the row's own CDataBank model otherwise stays.
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "engine/CBankFile.h"
+
 namespace NGameText {
 class CTextEntry : public CIVCountedPointeeBase { public:
     CWideString GetText() const;                           // 0x009C7A40
 };
-class CDataBank { public:
-    unsigned long LookupValue(unsigned long key) const;    // 0x009CC410
+class CDataBank : public CBankFile { public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
 }
@@ -133,7 +137,7 @@ void CTCBoastingPodium::OnHeroEnterBoastArea(long boastID, bool canAfford, CThin
         return;
     if (canAfford) {
         NGameText::CDataBank* textBank = CMainGameComponent::Get()->TextBank;
-        unsigned long entry = textBank->LookupValue(CCharString("TEXT_GUI_GOLD").GetCRC());
+        unsigned long entry = textBank->FindIndexBySymbolCRC(CCharString("TEXT_GUI_GOLD").GetCRC());
         if (entry) {
             NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
             CWideString goldText = bank->GetPTextEntry(entry, true)->GetText();

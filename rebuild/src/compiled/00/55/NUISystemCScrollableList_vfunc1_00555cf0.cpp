@@ -7,6 +7,9 @@
 #include "fable_string.h"
 struct RefCount {long Count;void DecRef(){--Count;}long GetRefCount()const{return Count;}};struct RefVirtual {virtual void Slot0()=0;virtual void Delete()=0;};struct Def:RefVirtual,RefCount {unsigned char ToActions[0x1a0-8];CCharString SoundForward;void Release(){DecRef();if(GetRefCount()==0)Delete();}};
 struct DefPointer {Def* Object;FABLE_FORCEINLINE ~DefPointer(){if(Object){Object->Release();Object=0;}}Def* operator->()const{return Object;}};
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h) (the null test only); was the stand-in NUISystem::Game_013b86a0 (void*).
+#include "engine/CMainGameComponent.h"
 namespace NUISystem {
 struct Component {virtual void Slot000()=0;
 virtual void Slot001()=0;
@@ -106,6 +109,6 @@ virtual void ManagerSlot41()=0;
 virtual DefPointer GetMiscThingsDef()=0;
 static CManager* __fastcall GetInstance();};
 class CScrollableList:public Component,public Observer { public:unsigned char BeforeChildren[0xb0-0x18];Vector Children;unsigned char BeforeTop[0x15c-0xbc];unsigned long Top,Visible;void ProcessEvent(int);protected:void UpdateVisibleList(float,float);};
-extern void* Game_013b86a0;class CRedefinerList { public:static bool __fastcall CanAcceptChanges();};struct CUserProfileManager {void Save();};CUserProfileManager* __fastcall GetUserProfileManager();
-void CScrollableList::ProcessEvent(int event){Observer::ProcessEvent(event);switch(event){case 16:case 36:if(Top>0){--Top;UpdateVisibleList(.2f,.2f);}break;case 17:case 37:if(Children.size()>Visible&&Top<Children.size()-Visible){++Top;UpdateVisibleList(.2f,.2f);}break;case 4:if(Game_013b86a0&&CRedefinerList::CanAcceptChanges()){if(MenuStack_013b8a98.size()>1){MenuStack_013b8a98.front()->ChangeState(6);MenuStack_013b8a98.pop_front();MenuStack_013b8a98.front()->ChangeState(3);CManager::GetInstance()->RemoveObserver(this);}CManager::GetInstance()->PlaySoundW(CManager::GetInstance()->GetMiscThingsDef()->SoundForward,1);CManager::GetInstance()->SetChange(0);GetUserProfileManager()->Save();}break;}}
+class CRedefinerList { public:static bool __fastcall CanAcceptChanges();};struct CUserProfileManager {void Save();};CUserProfileManager* __fastcall GetUserProfileManager();
+void CScrollableList::ProcessEvent(int event){Observer::ProcessEvent(event);switch(event){case 16:case 36:if(Top>0){--Top;UpdateVisibleList(.2f,.2f);}break;case 17:case 37:if(Children.size()>Visible&&Top<Children.size()-Visible){++Top;UpdateVisibleList(.2f,.2f);}break;case 4:if(CMainGameComponent::Get()&&CRedefinerList::CanAcceptChanges()){if(MenuStack_013b8a98.size()>1){MenuStack_013b8a98.front()->ChangeState(6);MenuStack_013b8a98.pop_front();MenuStack_013b8a98.front()->ChangeState(3);CManager::GetInstance()->RemoveObserver(this);}CManager::GetInstance()->PlaySoundW(CManager::GetInstance()->GetMiscThingsDef()->SoundForward,1);CManager::GetInstance()->SetChange(0);GetUserProfileManager()->Save();}break;}}
 }

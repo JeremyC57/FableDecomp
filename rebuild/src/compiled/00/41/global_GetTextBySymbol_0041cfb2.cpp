@@ -46,11 +46,9 @@ private: public:
     unsigned char _pad00[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;    // +0x14 (Ego_r CMainGameComponent::PTextBank)
 };
-struct CFrontEndGameComponent {
-    unsigned char _pad00[0x60];
-    CCountedPointer<NGameText::CDataBank> PTextBank;    // +0x60
-};
-extern CFrontEndGameComponent* g_pFrontEndGame;         // 0x013B871C
+// NF47 (round 7): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static, read through the
+//   inline CNewFrontendGameComponent::Get(), engine/CNewFrontendGameComponent.h), m_pTextBank +0x60 through GetTextBank(); was the stand-in CFrontEndGameComponent* g_pFrontEndGame.
+#include "engine/CNewFrontendGameComponent.h"
 
 // 0x0041CFB2: a same-TU static (retail's private convention: the result pointer in edi, `mov eax,edi ; ret 4`).
 static __declspec(noinline) CWideString __stdcall GetTextBySymbol(const CCharString& symbol)
@@ -60,8 +58,8 @@ static __declspec(noinline) CWideString __stdcall GetTextBySymbol(const CCharStr
         if (text != CWideString::NullString)
             return text;
     }
-    if (g_pFrontEndGame) {
-        CWideString text = g_pFrontEndGame->PTextBank->GetTextBySymbol(symbol);
+    if (CNewFrontendGameComponent::Get()) {
+        CWideString text = CNewFrontendGameComponent::Get()->GetTextBank().GetTextBySymbol(symbol);
         if (text != CWideString::NullString)
             return text;
     }
@@ -113,7 +111,7 @@ void CManager::ShowErrorMessage(long error)
 {
     if (error == 0) {
         CComponent* text;
-        if (g_pFrontEndGame) {
+        if (CNewFrontendGameComponent::Get()) {
             PErrorDialog = CreateComponent("UI_DIALOG_CONTROLLERDISCONNECT", false);
             text = PErrorDialog->GetChildByName("UI_CONTROLLERDISCONNECT_TEXT");
         } else {

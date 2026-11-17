@@ -12,49 +12,25 @@ class CWorld;
 class CCharString;
 class CScriptThing;
 struct CDefPointer_Retail;
-typedef unsigned short wchar_t;                // VC7.1 without /Zc:wchar_t: the type of L""
-struct CCharStringData_Retail { const char* m_pData; unsigned long m_length; };   // CBasicString<char>: PData, StringLength
-class CWideString { public:
-    void* PStringData;
-    CWideString(const CWideString& other);         // 0x0099B720
-    ~CWideString();                                // 0x0099B510
-    bool operator!=(const wchar_t* text) const;    // 0x0099B150
-};
-class CCharString { public:
-    CCharStringData_Retail* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CWideString ToWideString() const;               // 0x0099E480
-    const char* GetString() const { return m_pData == 0 ? "" : m_pData->m_pData; }   // inline: "" @ 0x0129AAF4 without a data block (the null case falls through)
-    unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
-};
-struct CWideStringVector_Retail;              // std::vector<CWideString>
-struct CDataBank_Retail {
-    CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0 (CDataBank::GetTextBySymbol, by value through the hidden result pointer)
-    void* LookupText(unsigned long hash);        // 0x009CC410 (labelled CVectorMap::LookupValue)
-};
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char    _pad[0x14];
-    CDataBank_Retail* m_pTextBank;               // +0x14
-};
-bool __fastcall ConstructString(CWideString* text, CWideStringVector_Retail* args);   // 0x009C7C20
-class CCRC {
-public:
-    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
-};   // 0x004014A0 (CRC)
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (CMainGameComponent::GetTextBank(), PTextBank +0x14 / CNewFrontendGameComponent m_pTextBank +0x60;
+//   NGameText::CDataBank : CBankFile, engine/NGameText_CDataBank.h); was the made-up CDataBank_Retail::LookupText (in neither PDB).
+//   The local CCharString / CWideString / CDataBank_Retail / CMainGameComponent / CCRC models are replaced by fable_string.h
+//   (inline GetCRC), engine/CMainGameComponent.h (GetTextBank() +0x14) and engine/NGameText_CDataBank.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "fable_string.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/NGameText_CDataBank.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
 bool CGameScriptInterface::TextEntryExists(const CCharString& symbol) const
 {
-    CDataBank_Retail* bank = CMainGameComponent::Get()->m_pTextBank;
-    return bank->LookupText(CCRC::Calc(0, symbol.GetString(), symbol.GetLength())) != 0;
+    const NGameText::CDataBank& bank = CMainGameComponent::Get()->GetTextBank();
+    return bank.FindIndexBySymbolCRC(symbol.GetCRC()) != 0;
 }

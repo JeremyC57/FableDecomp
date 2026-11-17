@@ -79,8 +79,20 @@ public:
     virtual bool Run(CGameComponent** next_component);                   // 0x0042EC7C ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
     virtual void ChangeTextureColourDepth(long depth);                   // 0x0042DC5C
 #else
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_INIT
+    // Opt-in (agentNF47, row 0x0042F75E CNewFrontendGameComponent::Init): Ego_r.pdb XMVCodeLoaded (+0xB9 there, +0xB1 in retail: the two
+    // STLport vectors before it are 0xC), the private ?InitialiseDefs@CNewFrontendGameComponent@@AAEXXZ (retail 0x0042F722) and the
+    // virtual ?Init@CNewFrontendGameComponent@@UAEXXZ (retail 0x0042F75E, overrides CGameComponent::Init: no vtable layout change).
+    unsigned char _pad_0x6c[0xb1 - 0x6c];                               // +0x6C FileNames .. XMVCode (opaque)
+    bool XMVCodeLoaded;                                                  // +0xB1
+    unsigned char _pad_0xb2[0x148 - 0xb2];                               // +0xB2 .. WindowsMediaPlayerInstalled (opaque)
+    void InitialiseDefs();                                               // 0x0042F722
+public:
+    virtual void Init();                                                 // 0x0042F75E
+#else
     unsigned char _pad_0x6c[0x148 - 0x6c];                               // +0x6C FileNames .. WindowsMediaPlayerInstalled (opaque)
 public:
+#endif
 #endif
     static CNewFrontendGameComponent* __fastcall Get() { return m_pNewFrontendGameComponent; }
     bool IsTextBankInitialised() const { return !m_pTextBank.IsNull(); }

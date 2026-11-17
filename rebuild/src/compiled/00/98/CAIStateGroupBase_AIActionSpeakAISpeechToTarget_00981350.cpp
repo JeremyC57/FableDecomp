@@ -32,36 +32,21 @@ class CIntelligentPointer : public CBaseIntelligentPointer
     FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
 
-class CCharStringData
-{ public:
-    const char* Chars;                              // +0x00
-    long Length;                                    // +0x04
-};
-
-class CCharString
-{ public:
-    CCharStringData* PStringData;                   // +0x00
-    unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
-    const char* GetString() const { const char* s = ""; if (PStringData) s = PStringData->Chars; return s; }
-};
-
-class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0
-
-struct CSpeechMap
-{
-    long LookupValue(unsigned long crc);            // 0x009CC410
-};
-
-class CMainGameComponent
-{
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char _pad00[0x14];
-    CSpeechMap* SpeechMap;                          // +0x14
-};
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (CMainGameComponent::GetTextBank(), PTextBank +0x14 / CNewFrontendGameComponent m_pTextBank +0x60;
+//   NGameText::CDataBank : CBankFile, engine/NGameText_CDataBank.h); was the made-up CSpeechMap::LookupValue (in neither PDB).
+//   The local CCharString / CCRC / CSpeechMap / CMainGameComponent models are replaced by fable_string.h (inline GetCRC),
+//   engine/CMainGameComponent.h and engine/NGameText_CDataBank.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE
+#define FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_SELECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "fable_string.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/NGameText_CDataBank.h"
 
 class CAIStateGroupBase
 { public:
@@ -79,7 +64,7 @@ long CAIStateGroupBase::AIAction_SpeakAISpeechToTarget(long mode, CIntelligentPo
                                                        CIntelligentPointer<const CThing> target,
                                                        const CCharString& speechName, long a5, long a6, long a7)
 {
-    CSpeechMap* map = CMainGameComponent::Get()->SpeechMap;
-    long speech = map->LookupValue(CCRC::Calc(0, speechName.GetString(), speechName.GetLength()));
+    const NGameText::CDataBank& bank = CMainGameComponent::Get()->GetTextBank();
+    long speech = bank.FindIndexBySymbolCRC(speechName.GetCRC());
     return AIAction_SpeakToTarget(mode, speaker, target, speech, a5, a6, a7);
 }

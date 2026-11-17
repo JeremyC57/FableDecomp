@@ -13,40 +13,17 @@
 // right to left through two null-case-first accessors (length, then text with the shared empty string
 // 0x0129AAF4), each testing the block again. A named local is read back from the frame, the two tests merge
 // into one, and its destructor runs after the FilePos store.
-class CCharStringData { public:
-    const char*   m_pText;                           // +0
-    unsigned long m_length;                          // +4
-};
-
-extern const char g_EmptyString[];                   // 0x0129AAF4
-
-class CCharString { public:
-    CCharStringData* m_pData;
-    ~CCharString();                                  // 0x0099EAE0
-    unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
-    const char* GetData() const { return m_pData == 0 ? g_EmptyString : m_pData->m_pText; }
-};
-
-class CWideString {
-public:
-    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
-private: public:
-    void* m_pData;
-};
-
-class CCRC {
-public:
-    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
-};   // 0x004014A0
-
-inline unsigned long GetNameCRC(const CCharString& name)
-{
-    return CCRC::Calc(0, name.GetData(), name.GetLength());
-}
-
-class CBankFileAsync { public:
-    unsigned long LookupValue(unsigned long nameCRC);   // 0x009CC410
-};
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on
+//   the WAD bank (Ego_r CWADFile::Bank +4, a CBankFileAsync* ; CBankFileAsync : CBankFile, engine/CBankFileAsync.h); was the made-up
+//   CBankFileAsync::LookupValue (in neither PDB). The local CCharString / CWideString / CCRC / CBankFileAsync models are replaced by
+//   fable_string.h (inline GetCRC) and engine/CBankFileAsync.h on the polymorphic engine/CBankFile.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "fable_string.h"
+#include "engine/CBankFileAsync.h"
 
 enum FileAccessType { FILE_ACCESS_READ };
 
@@ -60,6 +37,6 @@ class CWADFile { public:
 
 void CWADFile::Open(const CWideString& name, FileAccessType access, unsigned long flags)
 {
-    Index = Bank->LookupValue(GetNameCRC(((CWideString*)&name)->ToCharString()));
+    Index = Bank->FindIndexBySymbolCRC(name.ToCharString().GetCRC());
     FilePos = 0;
 }

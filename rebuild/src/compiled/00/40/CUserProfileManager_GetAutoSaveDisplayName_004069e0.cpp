@@ -21,11 +21,14 @@ class CDataBank { public:
 }
 using NGameText::CDataBank;
 
-struct SlotA { char pad[0x14]; CDataBank* f14; };
-struct SlotB { char pad[0x60]; CDataBank* f60; };
-
-extern SlotA* g_13b86a0;
-extern SlotB* g_13b871c;
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its text bank PTextBank +0x14 through GetTextBank(); was the stand-in SlotA* g_13b86a0.
+// NF47 (round 7): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static, read through the
+//   inline CNewFrontendGameComponent::Get(), engine/CNewFrontendGameComponent.h), m_pTextBank +0x60 through GetTextBank(); was the stand-in SlotB* g_13b871c.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#include "engine/CMainGameComponent.h"
+#include "engine/CNewFrontendGameComponent.h"
 
 extern const char k_122df40[];
 extern const wchar16 k_122de80[];
@@ -36,15 +39,15 @@ class CUserProfileManager { public:
 
 CWideString CUserProfileManager::GetAutoSaveDisplayName()
 {
-    SlotA* a = g_13b86a0;
+    CMainGameComponent* a = CMainGameComponent::Get();
     if (a) {
         CCharString t(k_122df40, -1);
-        return a->f14->GetTextBySymbol(t);
+        return a->GetTextBank().GetTextBySymbol(t);
     }
-    SlotB* b = g_13b871c;
+    CNewFrontendGameComponent* b = CNewFrontendGameComponent::Get();
     if (b) {
         CCharString t(k_122df40, -1);
-        return b->f60->GetTextBySymbol(t);
+        return b->GetTextBank().GetTextBySymbol(t);
     }
     return CWideString(k_122de80);
 }

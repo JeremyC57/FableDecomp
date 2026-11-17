@@ -27,8 +27,12 @@ class CPlayer { public:const CThingPlayerCreature* PeekPControlledCreature() con
 class CPlayerManager { public:public:
     CPlayer& GetMainPlayer();   // 0x00449970
 }; //00449970 selects player ID at+1c
-class CGame { public:unsigned char _nativeBeforePlayerManager[0x1c];CPlayerManager* PPlayerManager;};
-extern CGame* g_Game; //013B86A0
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its PPlayerManager scoped_ptr +0x1C through the inline GetPlayerManager() (FableWin.pdb ?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ); was the stand-in CGame* g_Game.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_GETPLAYERMANAGER
+#include "engine/CMainGameComponent.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -76,5 +80,5 @@ void CCreatureAction_DragonHoverOutOf::Initialise()
   CCharString name("CTCSolidToThing",-1);
   solid=((CTCSolidToThing*)((CThing*)PCreature.GetPItem())->AddTC(name, false, 0));
  }
- if(solid)solid->AddThingNotSolidTo(g_Game->PPlayerManager->GetMainPlayer().PeekPControlledCreature());
+ if(solid)solid->AddThingNotSolidTo(CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().PeekPControlledCreature());
 }

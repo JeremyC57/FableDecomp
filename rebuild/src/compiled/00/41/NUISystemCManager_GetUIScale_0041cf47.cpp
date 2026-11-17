@@ -14,8 +14,9 @@ class C2DVector { public:
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
-class CEngine;
-extern CEngine* g_pEngine;                         // 0x013B86A0
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h) (the null test only); was the stand-in CEngine* g_pEngine.
+#include "engine/CMainGameComponent.h"
 #include "engine/NUISystem_CUIScreenUnitConverter.h"
 namespace NUISystem {
 class CManager { public:
@@ -24,7 +25,7 @@ class CManager { public:
 C2DVector CManager::GetUIScale() const
 {
     C2DVector scale(1.0f, 1.0f);
-    if (g_pEngine) {
+    if (CMainGameComponent::Get()) {
         if (CUIScreenUnitConverter::GetBackBufferWidth() < 1024.0f || CUIScreenUnitConverter::GetBackBufferHeight() < 768.0f) {
             scale.X = CUIScreenUnitConverter::GetBackBufferWidth() * 0.0009765625f;
             scale.Y = CUIScreenUnitConverter::GetBackBufferHeight() * 0.0013020834f;

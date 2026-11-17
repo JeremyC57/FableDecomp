@@ -77,16 +77,20 @@ class CTCHeroStats { public:
 class CTCCreatureOpinionOfHero { public:
     unsigned long GetGreetDialogueGroupIndex(EOpinionAttitudeType attitude);    // 0x00683C10 (NF34: Ego_r + FableWin enum parameter)
 };
-class CCharString { public:
-    void* m_pData;
-    CCharString();                              // 0x0099E4B0
-    ~CCharString();                             // 0x0099EAE0
-    const CCharString& operator=(const char* text);   // 0x0099EFE0
-    unsigned long GetCRC() const;               // 0x00404310 (NF34: Ego_r + FableWin ?GetCRC@CCharString@@QBEKXZ)
-};
-struct CTagTable {
-    unsigned long GetTagFromCRC(unsigned long crc) const;   // 0x009CC410
-};
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (CMainGameComponent::GetTextBank(), PTextBank +0x14 / CNewFrontendGameComponent m_pTextBank +0x60;
+//   NGameText::CDataBank : CBankFile, engine/NGameText_CDataBank.h); was the made-up CTagTable::GetTagFromCRC (in neither PDB).
+//   The local CCharString / CTagTable / CMainGameComponent models are replaced by fable_string.h, engine/CMainGameComponent.h
+//   (GetTextBank() +0x14, PeekWorld() +0x24) and engine/NGameText_CDataBank.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_WORLD
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "fable_string.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/NGameText_CDataBank.h"
 struct COpinionManager {
     float GetOpinionValue(CThing* thing, long opinion);     // 0x00701750
 };
@@ -100,17 +104,6 @@ class CWorld { public:
     COpinionManager* GetPOpinions() const { return POpinions; }
 public:
     static long __fastcall GetFrame();   // 0x0049D870
-};
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char _pad[0x14];
-    CTagTable* PTags;                           // +0x14
-    unsigned char _pad18[0x0c];
-    CWorld* PWorld;                             // +0x24
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -149,7 +142,7 @@ struct CAIStateGroup_MinionGuardGreetPlayer : CAIStateGroupBase {
 
 void CAIStateGroup_MinionGuardGreetPlayer::Update()
 {
-    CThingPlayerCreature* player = CMainGameComponent::Get()->PWorld->PeekMyPlayer()->GetPControlledCreature();
+    CThingPlayerCreature* player = CMainGameComponent::Get()->PeekWorld().PeekMyPlayer()->GetPControlledCreature();
     if (player && !(player->m_flags91 & 1)) {
         CTCVillageMember* member;
         GetCreature()->GetInterface(&member, 0x23);
@@ -167,8 +160,8 @@ void CAIStateGroup_MinionGuardGreetPlayer::Update()
                 text = "TEXT_AI_GUARD_GREET_FRIENDLY";
             if (opinion < -0.3f)
                 text = "TEXT_AI_GUARD_GREET_WARY";
-            CTagTable* tags = CMainGameComponent::Get()->PTags;
-            speech = tags->GetTagFromCRC(text.GetCRC());
+            const NGameText::CDataBank& bank = CMainGameComponent::Get()->GetTextBank();
+            speech = bank.FindIndexBySymbolCRC(text.GetCRC());
         } else {
             CTCCreatureOpinionOfHero* opinionTC;
             GetCreature()->GetInterface(&opinionTC, 0x4f);

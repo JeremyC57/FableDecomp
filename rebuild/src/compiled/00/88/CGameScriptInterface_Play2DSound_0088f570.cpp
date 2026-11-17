@@ -48,12 +48,11 @@ public:
 #include "engine/CASoundBank.h"
 #include "engine/CSoundInit.h"
 #include "engine/CASoundManager.h"
-struct CEngine_Retail {
-    unsigned char       _pad00[0x10];
-    CASoundBank* m_pSoundBank;               // +0x10
-    CASoundBank& GetSampleBank() const { return *m_pSoundBank; }
-};
-extern CEngine_Retail*    g_pEngine;                // 0x013B86A0
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its sample bank PSampleBank +0x10 through the inline Ego_r.pdb
+//   ?GetSampleBank@CMainGameComponent@@QBEAAVCASoundBank@@XZ (engine/CMainGameComponent.h SAMPLEBANK_WORLDSEED); was the stand-in CEngine_Retail* g_pEngine.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_SAMPLEBANK_WORLDSEED
+#include "engine/CMainGameComponent.h"
 extern long               g_InvalidSoundHandle;     // 0x0129D25C
 class CWorld;
 struct CPlayerManager_Retail;
@@ -65,11 +64,11 @@ struct CDefinitionManager_Retail;
 
 unsigned long CGameScriptInterface::Play2DSound(const CCharString& symbol) const
 {
-    long sample = g_pEngine->GetSampleBank().GetSoundIndexFromSymbol(symbol);
+    long sample = CMainGameComponent::Get()->GetSampleBank().GetSoundIndexFromSymbol(symbol);
     if (sample) {
         CSoundInit init;
         init.GainFaderBits = 0x8010;
-        return PSoundManager->Get2DEmitter().PlaySample(g_pEngine->GetSampleBank(), sample, false, init, true);
+        return PSoundManager->Get2DEmitter().PlaySample(CMainGameComponent::Get()->GetSampleBank(), sample, false, init, true);
     }
     return g_InvalidSoundHandle;
 }

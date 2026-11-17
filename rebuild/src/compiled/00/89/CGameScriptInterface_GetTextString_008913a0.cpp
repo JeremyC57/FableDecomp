@@ -17,10 +17,14 @@ struct CGameScriptInterface_Methods : CGameScriptInterface {
 };
 
 // global object; +0x14 = Sub*
-extern char* g_globalObj;
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its text bank PTextBank +0x14 through GetTextBank(); was the stand-in char* g_globalObj (a cast +0x14 word read).
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#include "engine/CMainGameComponent.h"
 
 CWideString CGameScriptInterface_Methods::GetTextString(CCharString const& str)
 {
-    NGameText::CDataBank* bank = *(NGameText::CDataBank**)(g_globalObj + 0x14);
+    const NGameText::CDataBank* bank = &CMainGameComponent::Get()->GetTextBank();
     return bank->GetTextBySymbol(str);
 }

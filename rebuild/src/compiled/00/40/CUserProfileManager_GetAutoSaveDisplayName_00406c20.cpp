@@ -24,11 +24,14 @@ class CDataBank
 }
 using NGameText::CDataBank;
 
-struct NodeA { char pad[0x14]; CDataBank* obj14; };   // esi->[0x14]
-struct NodeB { char pad[0x60]; CDataBank* obj60; };   // esi->[0x60]
-
-extern NodeA* g_A;   // ds:0x13b86a0
-extern NodeB* g_B;   // ds:0x13b871c
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its text bank PTextBank +0x14 through GetTextBank(); was the stand-in NodeA* g_A.
+// NF47 (round 7): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static, read through the
+//   inline CNewFrontendGameComponent::Get(), engine/CNewFrontendGameComponent.h), m_pTextBank +0x60 through GetTextBank(); was the stand-in NodeB* g_B.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#include "engine/CMainGameComponent.h"
+#include "engine/CNewFrontendGameComponent.h"
 
 static const char* const LIT_AB = (const char*)0x122dfbc;
 static const unsigned short* const LIT_FACTORY = (const unsigned short*)0x122de9c;
@@ -40,15 +43,15 @@ class CUserProfileManager
 
 CWideString CUserProfileManager::GetAutoSaveDisplayName()
 {
-    NodeA* a = g_A;
+    CMainGameComponent* a = CMainGameComponent::Get();
     if (a) {
         CCharString fmt(LIT_AB, -1);
-        return a->obj14->GetTextBySymbol(fmt);
+        return a->GetTextBank().GetTextBySymbol(fmt);
     }
-    NodeB* b = g_B;
+    CNewFrontendGameComponent* b = CNewFrontendGameComponent::Get();
     if (b) {
         CCharString fmt(LIT_AB, -1);
-        return b->obj60->GetTextBySymbol(fmt);
+        return b->GetTextBank().GetTextBySymbol(fmt);
     }
     return CWideString(LIT_FACTORY);
 }

@@ -56,6 +56,13 @@ public:
         CThing* PThing;                                      // +0x00
     };
     virtual ~CMiniMapDisplay();
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_INITIALISEONREGIONLOAD
+    // Opt-in (agentNF47, row 0x0082A180): Ego_r.pdb / FableWin.pdb ?InitialiseOnRegionLoad@CMiniMapDisplay@@QAEXABVCCharString@@@Z (retail
+    // 0x0082A180; its caller NPlayerGui::CDrawMiniMap::SetRegion 0x0064DFDE binds it) and ?InitialiseMiniMapFileLoading_Region@CMiniMapDisplay@@
+    // QAEXABVCRegion@@ABVCCharString@@_N@Z (retail 0x00829D90, out of line). Declarations only.
+    void InitialiseOnRegionLoad(const class CCharString& name);                                              // 0x0082A180
+    void InitialiseMiniMapFileLoading_Region(const class CRegion& region, const class CCharString& name, bool b);   // 0x00829D90
+#endif
 #ifdef FABLE_RETAIL_CMINIMAPDISPLAY_ADDMARKER
     void AddMarker(const CThing&,long);
 #endif

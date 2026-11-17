@@ -51,11 +51,11 @@ public:
     FABLE_FORCEINLINE ~CIVCountedPointer() { if (Data) { Data->Release(); Data = 0; } }
     T* operator->() const { return Data; }
 };
-class CBankFile
-{
-public:
-    unsigned long GetEntryDataType(unsigned long) const;   // 0x009CC210
-};
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (NGameText::CDataBank : CBankFile); was the made-up NGameText::CDataBank::LookupValue (in neither PDB). The local CBankFile model is replaced by engine/CBankFile.h (ENTRYQUERY: EntryExists 0x009CC190 / GetEntryDataType 0x009CC210).
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#include "engine/CBankFile.h"
 class CBankFileAsync : public CBankFile
 {
 public:
@@ -71,7 +71,6 @@ class CTextEntry : public CIVCountedPointeeBase { public:
 };
 class CDataBank : public CBankFileAsync {
 public:
-    unsigned long LookupValue(unsigned long crc) const;                                  // 0x009CC410
     CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long id, bool load) const;   // 0x009C8890
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long id, bool load) const;     // 0x009C9070
 };
@@ -99,7 +98,7 @@ public:
 bool CSubtitleRenderer::GetTextFromTextTag(const CWideString& tag, CWideString& text)
 {
     NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
-    unsigned long id = bank->LookupValue(((CWideString*)&tag)->ToCharString().GetCRC());
+    unsigned long id = bank->FindIndexBySymbolCRC(((CWideString*)&tag)->ToCharString().GetCRC());
     if (id > 0) {
         if (bank->GetEntryDataType(id)) {
             const CArray<long>* entries = &bank->GetPGroupEntry(id, true)->Entries;

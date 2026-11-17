@@ -13,29 +13,26 @@
 //       g_pGlobalGui->Notify();         ; mov ecx,ds:0x13b8790; call c5
 //   }
 
-struct C;              // 3rd link in the chain (returned by GetC)
-struct D;              // sub-object located at c + 0x20
-
-struct A {
-    char pad1c[0x1c];
-    struct BSrc* f1c;  // +0x1c
-};
-
-struct BSrc {
-    C* GetB();         // __fastcall, ret pointer (masked callee c1)
-};
-
-struct C {
-    C* GetC();         // __fastcall, ret pointer (masked callee c2)  (self-typed link)
-    void Do(int arg);  // __fastcall on (this+0x20) via D wrapper (masked callee c4)
-};
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its PPlayerManager +0x1C through the inline PeekPlayerManager(); the first two callees are
+//   Ego_r/FableWin ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ 0x00449960 (engine/CPlayerManager.h) and
+//   ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ 0x00487B70 (engine/CPlayer.h). The later callees (Wrapper::Check 0x0040DCE0,
+//   D::Do 0x00410DE0, GlobalGui::Notify 0x00438310 on 0x013B8790) are still the row's stand-ins; was the stand-in A* g_A with its BSrc::GetB / C::GetC stand-ins.
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CPlayerManager.h"
+#include "engine/CPlayer.h"
+#include "engine/CMainGameComponent.h"
 
 struct D {
     void Do(int arg);  // __fastcall, one stack arg (masked callee c4)
 };
 
 struct Wrapper {
-    C* p;              // +0x0
+    CThing* p;         // +0x0
     bool Check();      // __fastcall on &wrapper, ret bool (masked callee c3)
 };
 
@@ -43,12 +40,11 @@ struct GlobalGui {
     void Notify();     // __fastcall, no args (masked callee c5)
 };
 
-extern A* g_A;               // ds:0x13b86a0
 extern GlobalGui* g_pGlobalGui;  // ds:0x13b8790
 
 void __fastcall SavedConfirmed()
 {
-    C* c = g_A->f1c->GetB()->GetC();
+    CThing* c = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPPlayerCharacterThing();
 
     Wrapper w;
     w.p = c;

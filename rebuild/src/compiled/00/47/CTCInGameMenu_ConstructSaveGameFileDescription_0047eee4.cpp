@@ -98,13 +98,14 @@ class CTextEntry : public CRefCounted { public:
     CWideString GetText() const;                        // 0x009C7A40
 };
 }
-class CBankFile { public:
-    unsigned long GetEntryDataType(unsigned long entry) const;        // 0x009CC210
-};
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (NGameText::CDataBank : CBankFile); was the made-up NGameText::CDataBank::LookupValue (in neither PDB). The local CBankFile model is replaced by engine/CBankFile.h (ENTRYQUERY: EntryExists 0x009CC190 / GetEntryDataType 0x009CC210).
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#include "engine/CBankFile.h"
 namespace NGameText {
 class CDataBank : public CBankFile { public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
-    unsigned long LookupValue(unsigned long crc) const;               // 0x009CC410
     CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long entry, bool load) const;   // 0x009C8890
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long entry, bool load) const;     // 0x009C9070
 };
@@ -200,7 +201,7 @@ void CTCInGameMenu::ConstructSaveGameFileDescription(CWideString& description, l
         description += GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_REGION") + L":";
         CWideString region;
         CDataBank* bank = GetTextBank();
-        unsigned long entry = bank->LookupValue(FileRegionNames[index].GetCRC());
+        unsigned long entry = bank->FindIndexBySymbolCRC(FileRegionNames[index].GetCRC());
         if (entry > 0) {
             if (bank->GetEntryDataType(entry)) {
                 CRetailVector<unsigned long> const& ids = bank->GetPGroupEntry(entry, true)->Ids;

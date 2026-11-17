@@ -1,0 +1,6 @@
+# NF47 lessons (one line each)
+- A behaviour test cannot reach a private / protected member through `#define private public`: MSVC mangles access (A/I/Q, 0/1/2 for statics), so the test then references a symbol the row does not define (LINK_FAIL). Take the address inside an explicit class-template instantiation (access is not checked there) and hand it out from the instantiated static member's constructor.
+- Tests that link a row's made-up singleton globals fail with LINK_FAIL as soon as the row reads the PDB static. Check each row's test for the old global names before the batch recheck, not after.
+- Most e18 / e19 binders moved onto engine/CMainGameComponent.h / CNewFrontendGameComponent.h in 1 grade with the existing opt-ins (TEXTBANK, PLAYERMANAGER, DISPLAYENGINE, WORLD, SAMPLEBANK_WORLDSEED). Rows that define callee bodies locally inside a namespace (0x008AF850) or need members a header lacks (0x0065C781) are ports, not name fixes.
+- For a "LookupValue" family, check the PDB name sets for every stand-in class first: here none of them existed, so the ICF question resolved in one grep.
+- Write the hand-back files (STATUS / APPLIED / NOTES) as work goes, so that a container restart leaves only the recheck to redo.

@@ -15,25 +15,15 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CRenderer_00697860 {
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
-    virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
-    virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
-    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031();
-    virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
-    virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054(); virtual void v055();
-    virtual void SetCameraMoved(bool fastMode, long flag);   // slot 56 (+0xe0)
-};
-struct CEngineDevice_00697860 {
-    unsigned char       _pad[0x2c];
-    CRenderer_00697860* m_pRenderer;               // +0x2c
-};
-struct CEngine_00697860 {
-    unsigned char           _pad[0x28];
-    CEngineDevice_00697860* m_pDevice;             // +0x28
-};
-extern CEngine_00697860* g_pEngine_013b86a0;       // 0x013B86A0
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its display engine (PDisplayEngine +0x28, FableWin.pdb ?GetDisplayEngine@CMainGameComponent@@QAEAAVCDisplayEngine@@XZ) and that engine's Engine3D +0x2C (FableWin.pdb ?Get3DEngine@CDisplayEngine@@QAEAAVCIEngine@@XZ), slot 56 CIEngine::CutscenePreload(bool, bool) (engine/CIEngine.h); was the stand-in CEngine_00697860* g_pEngine_013b86a0 with its CEngineDevice_00697860 / CRenderer_00697860::SetCameraMoved stand-ins.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_DISPLAYENGINE
+#define FABLE_RETAIL_CDISPLAYENGINE_GET3DENGINE
+#define FABLE_RETAIL_CIENGINE
+#include "engine/CIEngine.h"
+#include "engine/CDisplayEngine.h"
+#include "engine/CMainGameComponent.h"
 
 class CGameCameraManager { public:
     void TellEngineThatCameraHasMoved(bool fastMode);
@@ -44,5 +34,5 @@ void CGameCameraManager::TellEngineThatCameraHasMoved(bool fastMode)
     CCharString message(g_text_0125c2c0, -1);
     message += fastMode ? g_text_01258c1c : g_text_0125c2b8;
     message += g_text_0125c2a8;
-    g_pEngine_013b86a0->m_pDevice->m_pRenderer->SetCameraMoved(fastMode, 1);
+    CMainGameComponent::Get()->GetDisplayEngine().Get3DEngine().CutscenePreload(fastMode, true);
 }

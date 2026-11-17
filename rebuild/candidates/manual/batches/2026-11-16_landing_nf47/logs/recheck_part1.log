@@ -1,0 +1,96 @@
+addr       parity           behav  name
+004069e0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+004069e0   RELOCATION_MATCH PASS   GetAutoSaveDisplayName
+004175e5   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+004175e5   WARN SHARED_HEADER_AVAILABLE CInitBaseClass
+004175e5   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+004175e5   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004175e5   WARN RELOC_NAME: ?g_GlobalCountedPointer@@3UCCountedPointer41915a@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer403750@@QAEXXZ -> 00403750 labelled 'CCountedPointer<NGameText::CDataBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer4190b6@@QAEXXZ -> 004190b6 labelled 'CCountedPointer<CLUA>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer4057a0@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer419108@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Set@CGameDefinitionManager@@SIXPAV1@@Z -> 0044c71f labelled 'CEngineSubPrimitiveBase::operator_new'
+004175e5   RELOCATION_MATCH PASS   Shutdown
+0042f75e   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+0042f75e   RELOCATION_MATCH PASS   Init
+0048de44   RELOCATION_MATCH PASS   IsCutsceneSkippable
+004b1720   WARN SHARED_HEADER_AVAILABLE CCRC
+004b1720   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+004b1720   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+004b1720   WARN SHARED_HEADER_AVAILABLE CWorld
+004b1720   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b1720   RELOCATION_MATCH PASS   AddBoast
+0054f370   WARN SHARED_HEADER_AVAILABLE CCRC
+0054f370   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0054f370   WARN SHARED_HEADER_AVAILABLE CText
+0054f370   RELOCATION_MATCH PASS   SetValue
+0057ad4c   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+0057ad4c   RELOCATION_MATCH PASS   JustGetTheFrikkingText2
+005bda1d   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005bda1d   WARN SHARED_HEADER_AVAILABLE CCategory
+005bda1d   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+005bda1d   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+005bda1d   RELOCATION_MATCH PASS   GetHighlightedItemText
+00697860   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+00697860   RELOCATION_MATCH PASS   TellEngineThatCameraHasMoved
+006e11f0   WARN SHARED_HEADER_AVAILABLE C3DVector
+006e11f0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+006e11f0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+006e11f0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+006e11f0   WARN SHARED_HEADER_AVAILABLE CThing
+006e11f0   WARN SHARED_HEADER_AVAILABLE CThingManager
+006e11f0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager
+006e11f0   WARN RELOC_NAME: ?g_pThingManager@X_006e11f0@@3PAUCThingManager@1@A -> 013b8a1c labelled 'CThing::PCurrentThingManager'
+006e11f0   WARN RELOC_NAME: ?Frame@X_006e11f0@@3HA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+006e11f0   WARN STANDIN_LEAF ?Create@X_006e11f0@@YIPAUCThing@1@HHMABUC3DVector@1@_N@Z (catalog CTCDParticleEmitter::Create; address-only name)
+006e11f0   RELOCATION_MATCH PASS   Create
+0071c790   RELOCATION_MATCH PASS   OnInitialActivate
+0082a180   RELOCATION_MATCH PASS   InitialiseOnRegionLoad
+00890670   RELOCATION_MATCH PASS   IsHeroInProjectileWeaponMode
+00890ff0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+00890ff0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00890ff0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00890ff0   RELOCATION_MATCH PASS   CameraDefault
+00891940   WARN SHARED_HEADER_AVAILABLE CCRC
+00891940   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00891940   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00891940   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891940   WARN RELOC_NAME: ?g_pPlayerGui@@3PAVCPlayerGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00891940   RELOCATION_MATCH PASS   SetQuestInfoName
+00892850   WARN SHARED_HEADER_AVAILABLE CCRC
+00892850   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00892850   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00892850   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00892850   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00892850   WARN SHARED_HEADER_AVAILABLE CWorld
+00892850   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00892850   RELOCATION_MATCH PASS   AddScreenMessage
+008f40b0   WARN SHARED_HEADER_AVAILABLE CTCSolidToThing
+008f40b0   WARN SHARED_HEADER_AVAILABLE CThing
+008f40b0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008f40b0   WARN RELOC_NAME: ?SetThingIsAbleToBeLifted@@YIXPAVCThing@@_N@Z -> 007e4330 labelled 'CTCWillResponse::SetThingIsEpicSpellable'
+008f40b0   RELOCATION_MATCH PASS   Initialise
+009c95e0   WARN SHARED_HEADER_AVAILABLE CCRC
+009c95e0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+009c95e0   RELOCATION_MATCH PASS   GetTextBySymbol
+
+WINS: 18
+  004069e0 RELOCATION_MATCH CUserProfileManager::GetAutoSaveDisplayName
+  004175e5 RELOCATION_MATCH CMainGameComponent::?Shutdown@CMainGameComponent@@QAEXXZ
+  0042f75e RELOCATION_MATCH CNewFrontendGameComponent::?Init@CNewFrontendGameComponent@@UAEXXZ
+  0048de44 RELOCATION_MATCH CSubtitleRenderer::IsCutsceneSkippable
+  004b1720 RELOCATION_MATCH CQuestManager::AddBoast
+  0054f370 RELOCATION_MATCH NUISystem::CText::?SetValue@CText@NUISystem@@UAEXABVCCharString@@_N1@Z
+  0057ad4c RELOCATION_MATCH _global::?JustGetTheFrikkingText2@@YI?AVCWideString@@ABVCCharString@@@Z
+  005bda1d RELOCATION_MATCH NInventory::CCategory::?GetHighlightedItemText@CCategory@NInventory@@QBE?AVCWideString@@ABVCGameDefinitionManager@@@Z
+  00697860 RELOCATION_MATCH CGameCameraManager::TellEngineThatCameraHasMoved
+  006e11f0 RELOCATION_MATCH CTCDParticleEmitter::Create
+  0071c790 RELOCATION_MATCH CTCHeroMorph::OnInitialActivate
+  0082a180 RELOCATION_MATCH CMiniMapDisplay::?InitialiseOnRegionLoad@CMiniMapDisplay@@QAEXABVCCharString@@@Z
+  00890670 RELOCATION_MATCH CGameScriptInterface::@CGameScriptInterface_IsHeroInProjectileWeaponMode@0
+  00890ff0 RELOCATION_MATCH CGameScriptInterface::CameraDefault
+  00891940 RELOCATION_MATCH CGameScriptInterface::?SetQuestInfoName@CGameScriptInterface@@UBEXPBD@Z
+  00892850 RELOCATION_MATCH CGameScriptInterface::AddScreenMessage
+  008f40b0 RELOCATION_MATCH CCreatureAction_DragonHoverOutOf::Initialise
+  009c95e0 RELOCATION_MATCH NGameText::CDataBank::GetTextBySymbol

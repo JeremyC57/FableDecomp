@@ -111,8 +111,14 @@ virtual bool IsEqualTo(const ScriptMethods&) const; //slot78 0x004AA8A0
 FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
-class CASoundBank{ public:long GetSoundIndexFromSymbol(const CCharString&)const;}; //00A01920
-struct MainGameSoundView{unsigned char BeforeSampleBank[16];CASoundBank* PSampleBank;};extern MainGameSoundView* g_MainGameComponent; //013B86A0
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its sample bank PSampleBank +0x10 through the inline Ego_r.pdb
+//   ?GetSampleBank@CMainGameComponent@@QBEAAVCASoundBank@@XZ (SAMPLEBANK_WORLDSEED); the local CASoundBank model is replaced by
+//   engine/CASoundBank.h (SOUNDINDEX: GetSoundIndexFromSymbol 0x00A01920); was the stand-in MainGameSoundView* g_MainGameComponent.
+#define FABLE_RETAIL_CASOUNDBANK_SOUNDINDEX
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_SAMPLEBANK_WORLDSEED
+#include "engine/CASoundBank.h"
+#include "engine/CMainGameComponent.h"
 extern unsigned long g_InvalidSoundHandle; //0129D25C
 class CSoundPair{ public:long FirstSound,LastSound;CSoundPair(long n):FirstSound(n),LastSound(n){}};
 class CSoundInit{ public:float Volume,Pitch,Pan;long NoPlays,PlaybackType;unsigned long GainFaderBits,PitchFaderBits;long OverrideID;CSoundInit():Volume(1.0f),Pitch(1.0f),Pan(0.0f),NoPlays(1),PlaybackType(1),GainFaderBits(0),PitchFaderBits(0),OverrideID(-1){}};
@@ -122,7 +128,7 @@ class CTCSoundPlayer{ public:public:
 struct CGameScriptInterfaceMethods:CGameScriptInterface{unsigned long PlaySoundOnThing(const ScriptMethods&,const CCharString&)const;};
 unsigned long CGameScriptInterfaceMethods::PlaySoundOnThing(const ScriptMethods& thing,const CCharString& symbol)const{
  if(thing.IsAlive()){
- CASoundBank* bank=g_MainGameComponent->PSampleBank;long sound=bank->GetSoundIndexFromSymbol(symbol);
+ CASoundBank* bank=&CMainGameComponent::Get()->GetSampleBank();long sound=bank->GetSoundIndexFromSymbol(symbol);
  if(sound){CThingNative* owner=thing.GetPThing();if(owner->UsingComponents[0]&0x10000){ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)16);ComponentEntry* end=map->Finish;CTCSoundPlayer* player=static_cast<CTCSoundPlayer*>(((void*)(it==end||it->first>16?end:it)->second));
  CSoundInit init;init.GainFaderBits=0x8010;return player->PlayAttachedSample(CSoundPair(sound),init,true,false,false);
  }}}return g_InvalidSoundHandle;}

@@ -22,16 +22,13 @@ class CThingPlayerCreature : public NCreatureMode::CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
-namespace NCreatureMode {
-struct CPlayerManager {
-    CPlayer* GetPlayer();                          // 0x00449970
-};
-struct CGame {
-    unsigned char   _pad00[0x1c];
-    CPlayerManager* m_pPlayerManager;              // +0x1c
-};
-}
-extern NCreatureMode::CGame* g_pGame;              // 0x013B86A0
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its PPlayerManager scoped_ptr +0x1C through the inline GetPlayerManager() (FableWin.pdb ?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ); 0x00449970 is CPlayerManager::GetMainPlayer (engine/CPlayerManager.h), was the stand-in NCreatureMode::CPlayerManager::GetPlayer; was the stand-in NCreatureMode::CGame* g_pGame.
+#include "engine/CPlayerManager.h"
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_GETPLAYERMANAGER
+#include "engine/CMainGameComponent.h"
 
 namespace NCreatureMode {
 struct CModeBase {                                 // CTCCreatureModeManager::CModeBase, vtable 0x012673CC
@@ -53,6 +50,6 @@ class CModeDragonLanded : public CModeStandBase { public:
 void CModeDragonLanded::OnActivate()
 {
     CModeStandBase::OnActivate();
-    PTarget = g_pGame->m_pPlayerManager->GetPlayer()->GetPControlledCreature();
+    PTarget = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
 }
 }

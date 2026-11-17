@@ -57,19 +57,22 @@ struct CEntryReference {                            // holds the reference taken
     }
 };
 
-class CBankFile { public:                                       // primary base of NGameText::CDataBank (Ego_r)
-    unsigned long GetEntryDataType(unsigned long index) const;   // 0x009CC210 (FableWin ?GetEntryDataType@CBankFile@@QBEKK@Z)
-};
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, the base
+//   member this bank calls on itself (NGameText::CDataBank : CBankFile); was the made-up NGameText::CDataBank::LookupValue (in neither
+//   PDB). The local CBankFile model is replaced by engine/CBankFile.h (ENTRYQUERY: GetEntryDataType 0x009CC210; FINDINDEXBYSYMBOLCRC).
+//   The row's own NGameText::CDataBank / CTextEntry models stay (the text member +0x28 has no header opt-in yet).
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "engine/CBankFile.h"
 namespace NGameText {
 class CDataBank : public CBankFile { public:
-    unsigned long LookupValue(unsigned long crc) const;          // 0x009CC410
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
     const CWideString GetTextBySymbol(const CCharString& symbol) const;
 };
 
 const CWideString CDataBank::GetTextBySymbol(const CCharString& symbol) const
 {
-    unsigned long index = LookupValue(CCRC::Calc(0, symbol.GetChars(), symbol.GetLength()));
+    unsigned long index = FindIndexBySymbolCRC(CCRC::Calc(0, symbol.GetChars(), symbol.GetLength()));
     if (index > 0 && GetEntryDataType(index) == 0) {
         CIVCountedPointer<const CTextEntry> pointer = GetPTextEntry(index, true);
         const CTextEntry* entry = pointer.m_pObject;

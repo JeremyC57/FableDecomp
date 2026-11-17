@@ -66,12 +66,16 @@ template <class T> class CIVCountedPointer { public:
     ~CIVCountedPointer() { if (Data) Data->ReleaseTemporary(); }
     T* operator->() const { return Data; }
 };
+// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
+//   game text bank (NGameText::CDataBank : CBankFile); was the made-up NGameText::CDataBank::LookupValue (in neither PDB). Its CBankFile base comes from engine/CBankFile.h; the row's own CDataBank model otherwise stays.
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#include "engine/CBankFile.h"
+
 namespace NGameText {
-class CDataBank {
+class CDataBank : public CBankFile {
 public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool b) const;   // 0x009C9070
 public:
-    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
 class CMainGameComponent {
@@ -107,7 +111,7 @@ extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 void CGameScriptInterface::SetQuestInfoText(const char* symbol) const
 {
     NGameText::CDataBank* bank = CMainGameComponent::Get()->PGameTextDataBank;
-    unsigned long tag = bank->LookupValue(CCharString(symbol, -1).GetCRC());
+    unsigned long tag = bank->FindIndexBySymbolCRC(CCharString(symbol, -1).GetCRC());
     if (tag > 0) {
         CIVCountedPointer<const NGameText::CTextEntry> entry = bank->GetPTextEntry(tag, true);
         g_pPlayerGui->GetQuestInfo().Text = entry->GetText();

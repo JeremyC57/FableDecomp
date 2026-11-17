@@ -10,15 +10,15 @@
 // pointers (PDB 12) and the Tattoos vector / CustomToBankIndex map are 4 bytes smaller each; a local model.
 
 class CIEngine;
-struct CDisplay_Retail {
-    unsigned char _pad_0x00[0x2C];
-    CIEngine*     m_pEngine;                 // +0x2C
-};
-struct CApplication_Retail {
-    unsigned char    _pad_0x00[0x28];
-    CDisplay_Retail* m_pDisplay;             // +0x28
-};
-extern CApplication_Retail* g_pApplication;  // 0x013B86A0
+// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
+//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its display engine (PDisplayEngine +0x28, FableWin.pdb ?GetDisplayEngine@CMainGameComponent@@QAEAAVCDisplayEngine@@XZ) and that engine's Engine3D +0x2C (FableWin.pdb ?Get3DEngine@CDisplayEngine@@QAEAAVCIEngine@@XZ); was the stand-in CApplication_Retail* g_pApplication with its CDisplay_Retail stand-in.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_DISPLAYENGINE
+#define FABLE_RETAIL_CDISPLAYENGINE_GET3DENGINE
+#define FABLE_RETAIL_CIENGINE
+#include "engine/CIEngine.h"
+#include "engine/CDisplayEngine.h"
+#include "engine/CMainGameComponent.h"
 
 struct CLongSet;                             // std::set<long>
 
@@ -36,5 +36,5 @@ void CTCHeroMorph_Retail::OnInitialActivate()
 {
     Changed = true;
     InitialiseCustomTattoos();
-    UploadTextureMorphsToEngine(g_pApplication->m_pDisplay->m_pEngine, 0, false, 0.0f);
+    UploadTextureMorphsToEngine(&CMainGameComponent::Get()->GetDisplayEngine().Get3DEngine(), 0, false, 0.0f);
 }
