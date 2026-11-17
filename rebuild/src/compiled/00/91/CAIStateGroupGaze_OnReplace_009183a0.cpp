@@ -1,4 +1,7 @@
 // CAIStateGroup_Gaze::OnReplace() -- when the gaze marker is still alive, clear its marker component's user
+// NF83 (round 7, q11021 / q11022 binder): the local CBaseIntelligentPointer-derived vtable stand-in(s) replaced by the shared
+//   engine/CIntelligentPointer.h CIntelligentPointer<CThing> / <CThingCreatureBase> (vtables ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C,
+//   ??_7?$CIntelligentPointer@VCThingCreatureBase@@@@6B@ 0x0123E7D8).
 // Leaf: ?OnReplace@CAIStateGroup_Gaze@@UAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -26,6 +29,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
 #include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
@@ -126,11 +130,6 @@ class CWorld { public:
 struct CAIStateGroupBaseW : CAIStateGroupBase {
 };
 
-struct CIntelligentPointerUser : CBaseIntelligentPointer {          // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerUser(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointerUser& operator=(const CIntelligentPointerUser& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
-};
 
 struct CIntelligentPointerGameObject : CBaseIntelligentPointer {    // CIntelligentPointer<CThingGameObject>, vtable 0x0127B4D8
     virtual void v00();
@@ -140,7 +139,7 @@ struct CIntelligentPointerGameObject : CBaseIntelligentPointer {    // CIntellig
 
 struct CTCMarker {                              // interface 0x2f
     unsigned char _pad[0xc];
-    CIntelligentPointerUser PUser;              // +0x0c
+    CIntelligentPointer<CThing> PUser;              // +0x0c
 };
 
 struct CAIStateGroup_Gaze : CAIStateGroupBase {
@@ -158,7 +157,7 @@ void CAIStateGroup_Gaze::OnReplace()
     if (IS_THING_ALIVE(GazeMarker)) {
         CTCMarker* marker;
         ((CThing*)GazeMarker.GetPItem())->GetTC(TCI_EXCLUSIVE_USE, &marker);
-        marker->PUser = CIntelligentPointerUser(0);
+        marker->PUser = CIntelligentPointer<CThing>(0);
     }
     GazeMarker = CIntelligentPointerGameObject(0);
 }

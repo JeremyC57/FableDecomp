@@ -27,6 +27,12 @@
 // component of 0x0F is a local; the 0xD7 parameter is a CActionParamString* (its &Value is a spilled CSE, as retail).
 // Leaf: ?Action@CFrontEndManager@NUISystem
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+// NF83 (round 7, q11038 binder): the local CTBaseSingleton<T> model (static PInstance) replaced by engine/CTBaseSingleton.h (ISALLOCATED +
+//   GET_DECL, the NF76 0x00599E3F set): the installer test reads the private static PClass (0x013CA818) through the inline IsAllocated().
+//   Side effect: engine/CCountedPointer.h is now included at global scope first, so the later include inside namespace NUISystem is a
+//   no-op and the own leaf spells the global ?$CCountedPointer@VCAction@NUISystem@@@@ (NF81's "second fault" gone). Still open (q11014 /
+//   q11037): the virtual non-const PDB leaf (needs the CObserver base, engine/CFrontEndManager.h) and the CScreenStack::top stand-in of
+//   deque::back 0x0059B039 (needs the local std models replaced by stlport).
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
@@ -108,12 +114,9 @@ public:
 public:
     static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
-template <class T> class CTBaseSingleton
-{
-public:
-    static T* PInstance;                                  // 0x013CA818 for CFileInstaller
-    static T& __fastcall Get();                           // 0x00404440 (CFileInstaller) / 0x0040D2A0 (CUserProfileManager)
-};
+#define FABLE_RETAIL_CTBASESINGLETON_ISALLOCATED
+#define FABLE_RETAIL_CTBASESINGLETON_GET_DECL
+#include "engine/CTBaseSingleton.h"          // PClass 0x013CA818 (CFileInstaller); Get 0x00404440 / 0x0040D2A0
 
 namespace NGameText {
 class CDataBank
@@ -261,7 +264,7 @@ public:
 void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
 {
     InstallationPauseStartTime = GFGetTime();
-    if (!InstallationPaused && !FinalInstallationNeverPause && CTBaseSingleton<CFileInstaller>::PInstance != 0)
+    if (!InstallationPaused && !FinalInstallationNeverPause && CTBaseSingleton<CFileInstaller>::IsAllocated())
     {
         CTBaseSingleton<CFileInstaller>::Get().Pause();
         InstallationPaused = true;
@@ -287,7 +290,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
         GotoNextScreen(m_mapScreens[(FRONTEND_SCREEN)6], false);
         break;
     case 0x0f:
-        if (InstallationPaused && CTBaseSingleton<CFileInstaller>::PInstance != 0)
+        if (InstallationPaused && CTBaseSingleton<CFileInstaller>::IsAllocated())
         {
             CTBaseSingleton<CFileInstaller>::Get().Unpause();
             InstallationPaused = false;

@@ -1,66 +1,24 @@
 // CTCNoise::CTCNoise(CThing&) -- CTCBase(owner), vtable, an inline-constructed Definition (CTCNoiseDef), zero timer and range, an empty Creator pointer
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Shape: the inline CDefClassBase ctor is the landed out-of-line 0x0042D9E0 form (PDefManager in the init list, the three
-// status bits cleared in the body, byte-packed def base): inlined here VC7.1 clears the bits with retail's split
-// read-modify-write (`mov cl,[edi+24h] ; xor eax,eax ; and cl,0F8h ; mov [edi+24h],cl`) and stores PDefManager from eax.
 // Leaf: ??0CTCNoise@@QAE@AAVCThing@@@Z
-// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase_00749810, which bound a made-up constructor name to
-//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749810, length 79 bytes (vtable 0x01268A74).
-// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, the def root constructor @ 0x009FBEC0 (labelled "CResource::CResource"),
-// CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10.
-// Retail CTCNoise (PDB): Definition (CTCNoiseDef, 0x34 bytes, vtable 0x01231E9C) +0x0c, LifeTimer +0x40,
-// DistanceCanBeHeardFrom +0x44, Creator (CIntelligentPointer<const CThing>, vtable 0x01237F1C) +0x48.
-// Shape: CDefClassBase's constructor (out of line @ 0x0044C0C0 elsewhere) inlined here: its bit-field clear
-// (`and cl,0F8h` on +0x24: Setup/Template/DefaultValsApplied) and PDefManager = 0 (+0x1c); its own vtable store is dead
-// under CTCNoiseDef's. Definition's address stays in edi; the CTCNoise scalars share eax's zero.
+// Identity: Ego_r.pdb / FableWin.pdb ??0CTCNoise@@QAE@AAVCThing@@@Z.
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800, CResource::CResource 0x009FBEC0 (the Definition's def root: CTCNoiseDef : CSubDefClassBase
+//   : CDefClassBase : CDefPointeeBase : CResource, their ctors expanded with only the CTCNoiseDef vtable 0x01231E9C store left),
+//   CBaseIntelligentPointer::CBaseIntelligentPointer() 0x00A01B10 (Creator, vtable 0x01237F1C).
+// Shape: CDefClassBase's inline ctor (FABLE_RETAIL_DEF_CLASS_BASE_CTORS: PDefManager 0, the three bits cleared with retail's split
+//   read-modify-write `mov cl,[edi+24h] ; xor eax,eax ; and cl,0F8h`); Definition's address stays in edi; the scalars share eax's zero.
+// NF83 (round 7, q11018 binder): ported onto engine/CTCNoise.h (FABLE_RETAIL_HEARING); the local CResourceRoot / CDefClassBase /
+//   CTCNoiseDef / CTCNoise models are gone, so the def root ctor binds ??0CResource@@QAE@XZ. NF83 overlay opt-ins:
+//   FABLE_RETAIL_CTCNOISEDEF_CTOR_INLINE (engine/CTCNoiseDef.h) and FABLE_RETAIL_CDEFCLASSBASE_CTOR_SUBDEF_FRIEND (engine/CDefClassBase.h).
+#define FABLE_RETAIL_HEARING
 #define FABLE_RETAIL_CTCBASE
-#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
-class CThing;
-
-struct CResourceRoot {                              // the def root (0x1c bytes)
-    virtual void v00();
-    unsigned char _pad04[0x18];
-    CResourceRoot();                                // 0x009FBEC0
-};
-
-#pragma pack(push, 1)
-class CDefClassBase : public CResourceRoot { public:
-    void*         PDefManager;                      // +0x1c
-    unsigned long GlobalIndex;                      // +0x20
-    unsigned char Setup : 1;                        // +0x24
-    unsigned char Template : 1;
-    unsigned char DefaultValsApplied : 1;
-    CDefClassBase()
-        : PDefManager(0)
-    {
-        Setup = 0;
-        Template = 0;
-        DefaultValsApplied = 0;
-    }
-    virtual void v00();
-};
-#pragma pack(pop)
-
-class CTCNoiseDef : public CDefClassBase { public:                // 0x34 bytes
-    long  Type;                                     // +0x28 ENoiseType
-    float LifeTime;                                 // +0x2c
-    float DistanceCanBeHeardFrom;                   // +0x30
-    CTCNoiseDef() {}
-    virtual void v00();
-};
-
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_DEF_CLASS_BASE_CTORS
+#define FABLE_RETAIL_CDEFCLASSBASE_CTOR_SUBDEF_FRIEND
+#define FABLE_RETAIL_CSUBDEFCLASSBASE_CTOR_INLINE
+#define FABLE_RETAIL_CTCNOISEDEF_CTOR_INLINE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-
-
-class CTCNoise : public CTCBase { public:
-    CTCNoiseDef                       Definition;   // +0x0c
-    long                              LifeTimer;    // +0x40
-    float                             DistanceCanBeHeardFrom;   // +0x44
-    CIntelligentPointer<const CThing> Creator;      // +0x48
-    CTCNoise(CThing& owner);
-};
+#include "engine/CTCNoise.h"
 
 CTCNoise::CTCNoise(CThing& owner)
     : CTCBase(owner), LifeTimer(0), DistanceCanBeHeardFrom(0.0f)

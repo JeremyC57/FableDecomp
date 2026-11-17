@@ -60,38 +60,17 @@ class CThingCreatureBase : public CThing { public:
     CCreatureActionQueue* PActionQueue;         // +0x100
     void FinishCurrentAction();                 // 0x00662650
     bool IsPerformingAnyAction() const;               // 0x006622A0
-    bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
+    bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210 (Ego_r.pdb / FableWin.pdb QBE, by reference)
 };
 class CBaseObject;
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-struct CCountBlock {
-    long Count;
-    void (__fastcall* Destroy)(void* object);
-    void* Object;
-};
-struct CCountedPointer {
-    void* Object;
-    CCountBlock* Block;
-    void Reset(void* object);                   // 0x00668D90
-    ~CCountedPointer()
-    {
-        if (Block) {
-            --Block->Count;
-            if (Block->Count == 0) {
-                Block->Destroy(Block->Object);
-                delete Block;
-            }
-        }
-        Object = 0;
-        Block = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CBrainOutput { public:                           // 0x48 bytes
     unsigned long Flags;
     unsigned char _pad04[0x20 - 0x04];
-    CCountedPointer PAction;                    // +0x20
+    CCountedPointer<CCreatureActionBase> PAction;   // +0x20 (Reset(T*) 0x00668D90 out of line)
     unsigned char _pad28[0x40 - 0x28];
     CBaseIntelligentPointer PTarget;            // +0x40
     CBrainOutput();                             // 0x00835620
@@ -115,7 +94,7 @@ class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
-    virtual void* Clone() const;                // slot 11 (+0x2c)
+    virtual CCreatureActionBase* Clone() const; // slot 11 (+0x2c)
     unsigned char _body[0xa4];
     virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
@@ -162,7 +141,7 @@ void CAIStateGroup_Clean::OnReplace()
         Cleaning = false;
         CBrainOutput output;
         CCreatureAction_PlayAnimation action(PBrain->PCreature, "ST_WASH_FLOOR_OUTOF", CSoundPair(), false, true, false, 0, 0);
-        if (GetCreature()->IsFreeToPerformAction(&action)) {
+        if (GetCreature()->IsFreeToPerformAction(action)) {
             output.Flags |= 8;
             CCreatureActionBase* performed = &action;
             output.PAction.Reset(performed->Clone());

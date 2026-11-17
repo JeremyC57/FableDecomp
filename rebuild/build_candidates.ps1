@@ -3790,9 +3790,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00451ac6'
-        Module = '_global'
-        Source = '00/45/CActiveFile_OnReadFinished_00451ac6.cpp'
-        TestSource = '00/45/CActiveFile_OnReadFinished_00451ac6_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >'
+        Source = '00/45/stdRbtree_Rbtree_00451ac6.cpp'
+        TestSource = '00/45/stdRbtree_Rbtree_00451ac6_test.cpp'
         PassPattern = 'CActiveFile_00451ac6_TEST PASS'
     }
     [pscustomobject]@{
@@ -6856,9 +6856,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059a238'
-        Module = 'CFrontEndManager'
-        Source = '00/59/CFrontEndManager_Action_0059a238.cpp'
-        TestSource = '00/59/CFrontEndManager_Action_0059a238_test.cpp'
+        Module = 'NUISystem::CFrontEndManager'
+        Source = '00/59/NUISystemCFrontEndManager_Action_0059a238.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_Action_0059a238_test.cpp'
         PassPattern = 'FRONTEND_ACTION_0059A238_TEST PASS'
     }
     [pscustomobject]@{
@@ -45949,16 +45949,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008d7230'
-        Module = 'CModeSitBase'
-        Source = '00/8d/CModeSitBase_RemoveModeWithAction_008d7230.cpp'
-        TestSource = '00/8d/CModeSitBase_RemoveModeWithAction_008d7230_test.cpp'
+        Module = 'NCreatureMode::CModeSitBase'
+        Source = '00/8d/NCreatureModeCModeSitBase_RemoveModeWithAction_008d7230.cpp'
+        TestSource = '00/8d/NCreatureModeCModeSitBase_RemoveModeWithAction_008d7230_test.cpp'
         PassPattern = 'REMOVEMODE_OK'
     }
     [pscustomobject]@{
         Address = '008d7250'
-        Module = 'CModeSitBase'
-        Source = '00/8d/CModeSitBase_RemoveModeWithAction_008d7250.cpp'
-        TestSource = '00/8d/CModeSitBase_RemoveModeWithAction_008d7250_test.cpp'
+        Module = 'NCreatureMode::CModeSleepBed'
+        Source = '00/8d/NCreatureModeCModeSleepBed_RemoveModeWithAction_008d7250.cpp'
+        TestSource = '00/8d/NCreatureModeCModeSleepBed_RemoveModeWithAction_008d7250_test.cpp'
         PassPattern = 'REMOVEMODE_OK'
     }
     [pscustomobject]@{
@@ -61358,9 +61358,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006dc970'
-        Module = '_global'
-        Source = '00/6d/CTCCarryable_OnKill_006dc970.cpp'
-        TestSource = '00/6d/CTCCarryable_OnKill_006dc970_test.cpp'
+        Module = 'std::map<long, CComboMultiplierData, std::less<long>, std::allocator<std::pair<long const, CComboMultiplierData>>>'
+        Source = '00/6d/stdmap_clear_006dc970.cpp'
+        TestSource = '00/6d/stdmap_clear_006dc970_test.cpp'
         PassPattern = 'CTCCARRYABLE_ONKILL_006DC970_TEST PASS'
     }
     [pscustomobject]@{
@@ -61526,9 +61526,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00869900'
-        Module = '_global'
-        Source = '00/86/CTCCarryable_OnKill_00869900.cpp'
-        TestSource = '00/86/CTCCarryable_OnKill_00869900_test.cpp'
+        Module = 'map<EDamageAttribute,float>'
+        Source = '00/86/map_clear_00869900.cpp'
+        TestSource = '00/86/map_clear_00869900_test.cpp'
         PassPattern = 'CTCCARRYABLE_ONKILL_00869900_TEST PASS'
     }
     [pscustomobject]@{
@@ -62618,9 +62618,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e3625'
-        Module = '_global'
-        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e3625.cpp'
-        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e3625_test.cpp'
+        Module = 'std::pair<const long,CComboMultiplierData>'
+        Source = '00/4e/stdpair_scalardeletingdestructor_004e3625.cpp'
+        TestSource = '00/4e/stdpair_scalardeletingdestructor_004e3625_test.cpp'
         PassPattern = 'VDD_OK'
     }
     [pscustomobject]@{
@@ -63734,9 +63734,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00860130'
-        Module = 'CModeSitBase'
-        Source = '00/86/CModeSitBase_RemoveModeWithAction_00860130.cpp'
-        TestSource = '00/86/CModeSitBase_RemoveModeWithAction_00860130_test.cpp'
+        Module = 'CBrainOutput'
+        Source = '00/86/CBrainOutput_SetAsPerformAction_00860130.cpp'
+        TestSource = '00/86/CBrainOutput_SetAsPerformAction_00860130_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -69006,9 +69006,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00beb550'
-        Module = '_global'
-        Source = '00/be/E2_E2_00beb550.cpp'
-        TestSource = '00/be/E2_E2_00beb550_test.cpp'
+        Module = 'CEngineSubPrimitiveBase'
+        Source = '00/be/CEngineSubPrimitiveBase_operatordelete_00beb550.cpp'
+        TestSource = '00/be/CEngineSubPrimitiveBase_operatordelete_00beb550_test.cpp'
         PassPattern = 'OK_00beb550'
     }
     [pscustomobject]@{
@@ -145934,9 +145934,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059af53'
-        Module = '_unattributed'
-        Source = '00/59/unattributed_CStringOwner0059af53_0059af53.cpp'
-        TestSource = '00/59/unattributed_CStringOwner0059af53_0059af53_test.cpp'
+        Module = 'std::_Deque_iterator<NUISystem::CComponent *, std::_Nonconst_traits<NUISystem::CComponent *>>'
+        Source = '00/59/stdDequeiterator_operator_0059af53.cpp'
+        TestSource = '00/59/stdDequeiterator_operator_0059af53_test.cpp'
         PassPattern = '0059af53_TEST PASS'
     }
     [pscustomobject]@{
@@ -149819,9 +149819,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00668d90'
-        Module = 'CCountedPointer_00668610'
-        Source = '00/66/CCountedPointer00668610_Reset_00668d90.cpp'
-        TestSource = '00/66/CCountedPointer00668610_Reset_00668d90_test.cpp'
+        Module = 'CCountedPointer<CCreatureActionBase>'
+        Source = '00/66/CCountedPointer_Reset_00668d90.cpp'
+        TestSource = '00/66/CCountedPointer_Reset_00668d90_test.cpp'
         PassPattern = '00668d90_TEST PASS'
     }
     [pscustomobject]@{
@@ -205957,9 +205957,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008d6c80'
-        Module = 'NCreatureMode::CModeSitChair'
-        Source = '00/8d/NCreatureModeCModeSitChair_FrameUpdate_008d6c80.cpp'
-        TestSource = '00/8d/NCreatureModeCModeSitChair_FrameUpdate_008d6c80_test.cpp'
+        Module = 'NCreatureMode::CModeSitBase'
+        Source = '00/8d/NCreatureModeCModeSitBase_FrameUpdate_008d6c80.cpp'
+        TestSource = '00/8d/NCreatureModeCModeSitBase_FrameUpdate_008d6c80_test.cpp'
         PassPattern = '008d6c80_TEST PASS'
     }
     [pscustomobject]@{
@@ -212678,9 +212678,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059ad35'
-        Module = 'CRetailDeque_0059ad35'
-        Source = '00/59/CRetailDeque0059ad35_PopBackAux_0059ad35.cpp'
-        TestSource = '00/59/CRetailDeque0059ad35_PopBackAux_0059ad35_test.cpp'
+        Module = 'std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>'
+        Source = '00/59/stddeque_Mpopbackaux_0059ad35.cpp'
+        TestSource = '00/59/stddeque_Mpopbackaux_0059ad35_test.cpp'
         PassPattern = '0059ad35_TEST PASS'
     }
     [pscustomobject]@{
@@ -260964,9 +260964,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059a8f3'
-        Module = 'std::_Deque_iterator<NUISystem::CComponent*>'
-        Source = '00/59/stdDequeiteratorNUISystemCComponent_operator_0059a8f3.cpp'
-        TestSource = '00/59/stdDequeiteratorNUISystemCComponent_operator_0059a8f3_test.cpp'
+        Module = 'std::_Deque_iterator_base<NUISystem::CComponent *>'
+        Source = '00/59/stdDequeiteratorbase_Msubtract_0059a8f3.cpp'
+        TestSource = '00/59/stdDequeiteratorbase_Msubtract_0059a8f3_test.cpp'
         PassPattern = '0059a8f3_TEST PASS'
     }
     [pscustomobject]@{
@@ -260985,9 +260985,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059b61c'
-        Module = 'std::deque<NUISystem::CComponent*>'
-        Source = '00/59/stddequeNUISystemCComponent_pushback_0059b61c.cpp'
-        TestSource = '00/59/stddequeNUISystemCComponent_pushback_0059b61c_test.cpp'
+        Module = 'std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>'
+        Source = '00/59/stddeque_pushback_0059b61c.cpp'
+        TestSource = '00/59/stddeque_pushback_0059b61c_test.cpp'
         PassPattern = '0059b61c_TEST PASS'
     }
     [pscustomobject]@{
@@ -290053,9 +290053,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059ac41'
-        Module = 'std::_Deque_iterator<CComponent*>'
-        Source = '00/59/stdDequeiteratorCComponent_Mdecrement_0059ac41.cpp'
-        TestSource = '00/59/stdDequeiteratorCComponent_Mdecrement_0059ac41_test.cpp'
+        Module = 'std::_Deque_iterator_base<NUISystem::CComponent *>'
+        Source = '00/59/stdDequeiteratorbase_Mdecrement_0059ac41.cpp'
+        TestSource = '00/59/stdDequeiteratorbase_Mdecrement_0059ac41_test.cpp'
         PassPattern = '0059ac41_TEST PASS'
     }
     [pscustomobject]@{
@@ -334044,8 +334044,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0046190a'
         Module = '_global'
-        Source = '00/46/global_GFSerialiseMapBinaryInfloatEDamageAttributelessE_0046190a.cpp'
-        TestSource = '00/46/global_GFSerialiseMapBinaryInfloatEDamageAttributelessE_0046190a_test.cpp'
+        Source = '00/46/global_GFSerialiseMapBinaryIn_0046190a.cpp'
+        TestSource = '00/46/global_GFSerialiseMapBinaryIn_0046190a_test.cpp'
         PassPattern = '0046190a_TEST PASS'
     }
     [pscustomobject]@{

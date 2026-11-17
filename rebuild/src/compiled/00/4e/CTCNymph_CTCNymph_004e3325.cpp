@@ -1,4 +1,7 @@
 // CTCNymph::CTCNymph(CThing* thing) -- CTCBase(thing), own vtable, null def, an empty flight spline (tension 0.5), null effect/old-effect/target pointers
+// NF83 (round 7, q11021 / q11022 binder): the local CBaseIntelligentPointer-derived vtable stand-in(s) replaced by the shared
+//   engine/CIntelligentPointer.h CIntelligentPointer<CThing> / <CThingCreatureBase> (vtables ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C,
+//   ??_7?$CIntelligentPointer@VCThingCreatureBase@@@@6B@ 0x0123E7D8).
 // Leaf: ??0CTCNymph@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
 //   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCNymph@@QAE@AAVCThing@@@Z).
@@ -27,14 +30,6 @@ class CThingCreatureBase;
 #pragma pack(push, 1)
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing() { }
-};
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    virtual void v00();
-    CIntelligentPointerCreature() { }
-};
 #pragma pack(pop)
 #include "engine/C3DVector.h"
 template <class T> struct CAllocator { CAllocator() { } };
@@ -61,8 +56,8 @@ class CTCNymph : public CTCBase { public:                         // vtable 0x01
     C3DVector InitialPos;                           // +0x20
     CCardinalSpline FlightSpline;                   // +0x2c
     bool FlyingAround;                              // +0x40
-    CIntelligentPointerThing PEffect;               // +0x41
-    CIntelligentPointerThing POldEffect;            // +0x49
+    CIntelligentPointer<CThing> PEffect;               // +0x41
+    CIntelligentPointer<CThing> POldEffect;            // +0x49
     unsigned long LastTargetTick;                   // +0x54
     bool CanAttack;                                 // +0x58
     bool ReadyToAttack;                             // +0x59
@@ -72,7 +67,7 @@ class CTCNymph : public CTCBase { public:                         // vtable 0x01
     bool BeenHit;                                   // +0x5d
     long FadeCounter;                               // +0x60
     long TotalFadeTime;                             // +0x64
-    CIntelligentPointerCreature PTarget;            // +0x68
+    CIntelligentPointer<CThingCreatureBase> PTarget;            // +0x68
     CTCNymph(CThing& thing);
 };
 

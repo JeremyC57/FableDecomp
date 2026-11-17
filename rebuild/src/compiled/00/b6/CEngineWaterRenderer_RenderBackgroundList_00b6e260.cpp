@@ -1,5 +1,6 @@
 // CEngineWaterRenderer::RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time) -- render a list of background water patches; with occlusion enabled, a patch whose last occlusion query says it is hidden only re-issues an occlusion box test, every other patch is rendered inside a fresh occlusion query
-// Leaf: RenderBackgroundList
+// Leaf: ?RenderBackgroundList@CEngineWaterRenderer@@AAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z
+// NF83 (round 7, q11033 self): the local model's declaration made private (in-place access edit), so the own leaf is the PDB AAE spelling.
 // Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members First/Last are the header CArray's (public STLport vector<T>) begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6E260, length 384 bytes (with int3 padding; body 0x17b), `ret 8`.
 // PDB: ?RenderBackgroundList@CEngineWaterRenderer@@AAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z.
@@ -60,6 +61,7 @@ public:
     unsigned char _pad[0x296];
     bool          OcclusionEnabled;                // +0x296
     void RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch);   // 0x00B6E010
+private:                                       // Ego_r.pdb 0x00A1BD40 / FableWin.pdb 0x02D4E9D0: private (AAE)
     void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time);
 };
 

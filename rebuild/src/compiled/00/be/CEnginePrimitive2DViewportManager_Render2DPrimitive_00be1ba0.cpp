@@ -56,7 +56,7 @@ class CEngineSubPrimitiveRenderer { public:
     void AddSubPrimitive(ESubPrimitiveType type, CEngineSubPrimitiveBase* subPrimitive, float distance,
                          CEnginePrimitiveManager* manager);   // 0x00B84720
 };
-extern CEngineSubPrimitiveRenderer* g_pPrimitiveRenderer_01436e74;    // 0x01436E74
+namespace NEngineInternal { extern CEngineSubPrimitiveRenderer* GPSubPrimitiveRenderer; }   // 0x01436E74 (Ego_d.pdb PUB32; NF83 respelt from g_pPrimitiveRenderer_01436e74)
 
 class CEnginePrimitive2DViewportManager { public:
     void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type);
@@ -66,6 +66,6 @@ void CEnginePrimitive2DViewportManager::Render2DPrimitive(CEngineInternalPrimiti
                                                           ESubPrimitiveType type)
 {
     CEngineSubPrimitive2DViewport* subPrimitive = new CEngineSubPrimitive2DViewport(primitive);
-    g_pPrimitiveRenderer_01436e74->AddSubPrimitive(
+    NEngineInternal::GPSubPrimitiveRenderer->AddSubPrimitive(
         type, subPrimitive, NEngineInternal::GPPrimitiveRenderer2D->Layer2DToSortDistance(primitive.m_layer), (CEnginePrimitiveManager*)this);
 }

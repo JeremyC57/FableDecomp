@@ -23,7 +23,7 @@ long __fastcall GFROR13(unsigned long value);    // 0x00497890
 
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool IsFreeToPerformAction(const CCreatureActionBase& action);   // 0x00662210
+    bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210 (Ego_r.pdb / FableWin.pdb QBE)
     void UnsheatheDefaultWeapon();              // 0x00664A50
 };
 class CBaseObject;
@@ -37,28 +37,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     FABLE_FORCEINLINE T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
-struct SCountBlock {
-    long m_references;
-    void (__fastcall* m_pfnDestroy)(CCreatureActionBase*);
-    CCreatureActionBase* m_pObject;
-};
-struct CCountedPointer_CCreatureActionBase {
-    CCreatureActionBase* m_pObject;
-    SCountBlock*         m_pCount;
-    void Reset(CCreatureActionBase* object);    // 0x00668D90
-    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;
-            }
-        }
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-};
+#include "engine/CCountedPointer.h"                // CCountedPointer<CCreatureActionBase>: Reset(T*) 0x00668D90 out of line
 #include "engine/C3DVector.h"
 class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -75,7 +54,7 @@ class CBrainOutput { public:
     unsigned long                       Types;            // +0x00
     long                                LookFlags;        // +0x04
     CNavigationInput                    NavigationInput;  // +0x08
-    CCountedPointer_CCreatureActionBase PAction;          // +0x20
+    CCountedPointer<CCreatureActionBase> PAction;         // +0x20
     C3DVector                           MoveToPos;        // +0x28
     C3DVector                           LookAtPos;        // +0x34
     CBaseIntelligentPointer             LookAtThing;      // +0x40

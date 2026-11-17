@@ -25,7 +25,19 @@ template<class T>struct _Deque_iterator_base {
  // `jmp` to it) from the inline deque::size() / stack::size().
  ptrdiff_t _M_subtract(const _Deque_iterator_base& x)const;
 #endif
+#if defined(FABLE_RETAIL_STLP_DEQUE_MSUBTRACT_BODY) && !(defined(FABLE_RETAIL_STLP_STACK_SIZE_PUSH) && defined(FABLE_RETAIL_STLP_STACK_TOP_POP))
+ // NF83 per-TU opt-in (round 7, row 0x0059A8F3, the out-of-line deque<NUISystem::CComponent*> COMDAT itself): the same STLport 4.6
+ // _M_subtract declaration; its body is below the class.
+ ptrdiff_t _M_subtract(const _Deque_iterator_base& x)const;
+#endif
 };
+#ifdef FABLE_RETAIL_STLP_DEQUE_MSUBTRACT_BODY
+// NF83 per-TU opt-in (round 7, row 0x0059A8F3): STLport 4.6 _deque.h _Deque_iterator_base::_M_subtract (the iterator difference:
+// whole buffers between the nodes, then the partial ends), the body of the out-of-line deque<NUISystem::CComponent*> instance.
+template<class T> ptrdiff_t _Deque_iterator_base<T>::_M_subtract(const _Deque_iterator_base<T>& x)const{
+ return ptrdiff_t(__buffer_size)*(_M_node-x._M_node-1)+(_M_cur-_M_first)+(x._M_last-x._M_cur);
+}
+#endif
 template<class T,class Traits>struct _Deque_iterator:public _Deque_iterator_base<T> {
  typedef T value_type;typedef random_access_iterator_tag iterator_category;typedef ptrdiff_t difference_type;
  typedef typename Traits::reference reference;typedef typename Traits::pointer pointer;
@@ -135,6 +147,17 @@ public:
 #endif
 #endif
 };
+#if defined(FABLE_RETAIL_STLP_DEQUE_POP_BACK_AUX_BODY) && defined(FABLE_RETAIL_STLP_DEQUE_BACK_POP_BODIES) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
+// NF83 per-TU opt-in (round 7, row 0x0059AD35, the out-of-line deque<NUISystem::CComponent*> COMDAT itself): STLport 4.6 _deque.c
+// _M_pop_back_aux: free the finish buffer, step the finish iterator to the previous node, point it at that buffer's last element
+// and destroy it (trivial for a pointer element).
+template<class T,class A> void deque<T,A>::_M_pop_back_aux(){
+ this->_M_map_size.deallocate(this->_M_finish._M_first,this->buffer_size());
+ this->_M_finish._M_set_node(this->_M_finish._M_node-1);
+ this->_M_finish._M_cur=this->_M_finish._M_last-1;
+ _Destroy(this->_M_finish._M_cur);
+}
+#endif
 #if defined(FABLE_STLPORT_DEQUE_PUSH_BACK) && defined(FABLE_STLPORT_DEQUE_PUSH_BACK_AUX_NOINLINE)
 // Per-TU opt-in (chunk Q6, row 0x00912840 CAIStateGroup_FlyingThingBase::AddRandomBezierCurveToPath): STLport 4.6 _deque.c
 // _M_push_back_aux_v (exceptions off), body visible but kept out of line, as the retail TU calls it (deque<CBezierCurve> 0x00913D60):

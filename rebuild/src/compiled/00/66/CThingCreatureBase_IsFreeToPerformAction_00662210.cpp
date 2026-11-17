@@ -1,6 +1,11 @@
-// CThingCreatureBase::IsFreeToPerformAction(CCreatureActionBase* action) -- may the creature start this action now: never when dead; always when idle or the current action is finished; otherwise by interruption group, readiness, then interruption priority
+// CThingCreatureBase::IsFreeToPerformAction(const CCreatureActionBase& action) const -- may the creature start this action now: never when dead; always when idle or the current action is finished; otherwise by interruption group, readiness, then interruption priority
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets).
+// Leaf: ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00662210, 136 bytes (`ret 4`).
+// NF83 (round 7, q11019 self): own leaf respelt to the Ego_r.pdb 0x0053D090 / FableWin.pdb 0x01D9E350 spelling (const, by reference),
+//   as engine/CThingCreatureBase.h declares it. In-place edit of the pre-existing local models only (the method const with a reference
+//   parameter, the two CCreatureActionBase virtuals const as in engine/CCreatureActionBase.h); no new model. A full port onto
+//   engine/CThingCreatureBase.h + engine/CCreatureActionBase.h is still open.
 // Callees (virtual, CCreatureActionBase vtable 0x01259D24): IsOverrideableByActionOfSamePriority slot 24 (+0x60,
 //   0x00692540), IsActionReadyForInterruption slot 27 (+0x6c, 0x00692570).
 // Layout: CThing flag byte +0x91 bit 0 = dead; retail PCurrentAction (CCountedPointer, object word) at +0x100 (PDB +0x11c);
@@ -15,9 +20,9 @@ class CCreatureActionBase { public:
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual bool IsOverrideableByActionOfSamePriority();     // slot 24 (+0x60) 0x00692540
+    virtual bool IsOverrideableByActionOfSamePriority() const;   // slot 24 (+0x60) 0x00692540
     virtual void v25(); virtual void v26();
-    virtual bool IsActionReadyForInterruption();             // slot 27 (+0x6c) 0x00692570
+    virtual bool IsActionReadyForInterruption() const;       // slot 27 (+0x6c) 0x00692570
     unsigned char _pad04[0x1c];
     long InterruptionGroupID;                   // +0x20
     long InterruptionPriority;                  // +0x24
@@ -32,23 +37,23 @@ class CThingCreatureBase { public:
     unsigned char Dead : 1;                     // +0x91 bit 0
     unsigned char _pad92[0x100 - 0x92];
     CCountedPointer<CCreatureActionBase> PCurrentAction;    // +0x100
-    bool IsFreeToPerformAction(CCreatureActionBase* action);
+    bool IsFreeToPerformAction(const CCreatureActionBase& action) const;
 };
 
-bool CThingCreatureBase::IsFreeToPerformAction(CCreatureActionBase* action)
+bool CThingCreatureBase::IsFreeToPerformAction(const CCreatureActionBase& action) const
 {
     if (Dead)
         return false;
     if (PCurrentAction.Get() == 0 || PCurrentAction->Finished)
         return true;
-    long group = action->InterruptionGroupID;
+    long group = action.InterruptionGroupID;
     long currentGroup = PCurrentAction->InterruptionGroupID;
     if (group > currentGroup)
         return true;
     if (PCurrentAction->IsActionReadyForInterruption())
         return true;
     if (group == currentGroup) {
-        long priority = action->InterruptionPriority;
+        long priority = action.InterruptionPriority;
         long currentPriority = PCurrentAction->InterruptionPriority;
         if (PCurrentAction->IsOverrideableByActionOfSamePriority())
             return priority >= currentPriority;

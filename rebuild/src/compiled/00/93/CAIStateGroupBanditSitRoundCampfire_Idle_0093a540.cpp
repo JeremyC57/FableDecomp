@@ -1,4 +1,6 @@
 // CAIStateGroup_BanditSitRoundCampfire::Idle() -- do nothing for a random 5..15 seconds (or until the idle action stops); true when the action was still running at the end
+// NF83 (round 7, q11027..q11029 self): leaf respelt to the private bool PDB spelling ?Idle@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ
+//   (both PDBs; NF79 0x0093AD70 binds it so) by an in-place edit of the row's local model (no shared header exists for this class).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093A540, length 125 bytes (+ int3 padding).
@@ -48,10 +50,11 @@ struct CAIStateGroup_BanditSitRoundCampfire : CAIStateGroupBase {
     unsigned long FrameToNextSitOnSeat;         // +0x24
     unsigned long FrameToNextCheckIsRunnable;   // +0x28
     bool          WasCarryingWeapon;            // +0x2c
-    long Idle();
+private:
+    bool Idle();                                // private (Ego_r.pdb 0x0095D960 / FableWin.pdb 0x02B7F370 AAE_NXZ)
 };
 
-long CAIStateGroup_BanditSitRoundCampfire::Idle()
+bool CAIStateGroup_BanditSitRoundCampfire::Idle()
 {
     long framesPerSecond = PeekWorld().GetFramesPerSecond();
     float delay = (GFFloatRandom(10.0f, GetPWorldSeed()) + 5.0f) * framesPerSecond;

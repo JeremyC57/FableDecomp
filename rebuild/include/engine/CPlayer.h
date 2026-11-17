@@ -235,6 +235,13 @@ private:
     void SetUpControlsBasedOnAggressiveMode();                   // 0x00487DE0
 public:
 #endif
+#ifdef FABLE_RETAIL_CPLAYER_AGGRESSIVEMODE
+    // NF83 opt-in (round 7, rows 0x00487E90 / 0x00487EB0): Ego_r.pdb 0x00493730 / FableWin.pdb 0x01AD0810 ?ToggleAggressiveMode@CPlayer@@QAEXXZ
+    // and Ego_r.pdb 0x00493750 / FableWin.pdb 0x01AD0860 ?SetAggressiveMode@CPlayer@@QAEX_N@Z (public; donor order right after
+    // SetUpControlsBasedOnAggressiveMode 0x00493670 = retail 0x00487DE0). Declarations only.
+    void ToggleAggressiveMode();                                 // 0x00487E90
+    void SetAggressiveMode(bool on);                             // 0x00487EB0
+#endif
     // Retail opt-in (chunk 718): the three character getters, out of line in Ego_r.pdb and retail, in donor order (Ego_r
     // 0x004933F0 / 0x00493650 / 0x00493660 = retail 0x00487B70 / 0x00487DC0 / 0x00487DD0, the neighbours SetPlayerCharacter
     // 0x00493400 / SetControlledCreature 0x00493570 between them in both): ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ

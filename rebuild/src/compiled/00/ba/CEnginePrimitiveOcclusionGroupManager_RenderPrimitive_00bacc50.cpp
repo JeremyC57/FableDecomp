@@ -49,7 +49,7 @@ struct CEngineSubPrimitiveBoundingBox:CEngineSubPrimitiveBase {CEngineSubPrimiti
 enum ESubPrimitiveType {};
 class CEnginePrimitiveManager;
 class CEngineSubPrimitiveRenderer { public: void AddSubPrimitive(ESubPrimitiveType,CEngineSubPrimitiveBase*,float,CEnginePrimitiveManager*); }; //00b84720 (Ego_r/FableWin spelling)
-extern CEngineSubPrimitiveRenderer* g_pSubPrimitiveRenderer; //01436e74
+namespace NEngineInternal { extern CEngineSubPrimitiveRenderer* GPSubPrimitiveRenderer; }   // 0x01436E74 (Ego_d.pdb PUB32; NF83 respelt from g_pSubPrimitiveRenderer)
 class CEngineSubPrimitiveChain;
 enum ERendered {NOTHING=0,RENDERED=2};enum ELayer {DEFAULT_LAYER=0};
 struct CEnginePrimitiveOcclusionGroupManager_Methods:CEnginePrimitiveOcclusionGroupManager {ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,ELayer,CEngineSubPrimitiveChain&);};
@@ -65,6 +65,6 @@ ERendered CEnginePrimitiveOcclusionGroupManager_Methods::RenderPrimitive(CEngine
  }
  ++group.FramesRendered;
  CEngineSubPrimitiveBoundingBox* sub=new CEngineSubPrimitiveBoundingBox(primitive);
- g_pSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)7,sub,0,(CEnginePrimitiveManager*)this);
+ NEngineInternal::GPSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)7,sub,0,(CEnginePrimitiveManager*)this);
  return RENDERED;
 }
