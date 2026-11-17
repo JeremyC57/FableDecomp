@@ -1,0 +1,39 @@
+--- a/rebuild/include/engine/COpinionPersonalityDef.h
++++ b/rebuild/include/engine/COpinionPersonalityDef.h
+@@ -10,6 +10,13 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ #include "engine/CParentDefClassBase.h"
++#ifdef FABLE_RETAIL_COPINIONPERSONALITYDEF_ATTITUDEMAP
++// Opt-in (egod e07, row 0x00681E60 CTCCreatureOpinionOfHero::SetPersonalityOverride(long, bool)): AttitudeEnabled typed as the Ego_r / Ego_d
++// std::map<EOpinionAttitudeType,bool> (retail STLport map, 12 bytes: the row reads its header node at +0x44 and walks it, 0x00681F4B) and
++// EOpinionAttitudeType from the shared engine/EOpinionAttitudeType.h. The 4 bytes at +0x50 stay unmodelled (ToleranceToBeingHit +0x54 is retail-proven).
++#include "stlport/fable_map.h"
++#include "engine/EOpinionAttitudeType.h"                               // the shared full enum (Ego_r / Ego_d enumerators)
++#endif
+ class COpinionPersonalityTraits {
+ public:
+     float BaseOffset;                                                    // +0x00
+@@ -22,14 +29,19 @@
+     float PersistScalingIfPos;                                           // +0x1c
+     float PersistScalingIfNeg;                                           // +0x20
+ };
+-FABLE_STATIC_ASSERT(sizeof(COpinionPersonalityTraits) == 0x24);
++FABLE_STATIC_ASSERT_AT(25, sizeof(COpinionPersonalityTraits) == 0x24);
+ class COpinionPersonalityDef : public CParentDefClassBase {
+ public:
+     COpinionPersonalityTraits* PersonalityTraits;                        // +0x3c
+     bool          AttitudeEnabledDefaultForNotNone;                      // +0x40
++#ifdef FABLE_RETAIL_COPINIONPERSONALITYDEF_ATTITUDEMAP
++    std::map<EOpinionAttitudeType, bool> AttitudeEnabled;                // +0x44
++    unsigned char Unmodeled_0x50[0x4];                                   // +0x50 (not modelled)
++#else
+     unsigned char AttitudeEnabled[0x10];                                 // +0x44 map<EOpinionAttitudeType,bool> (opaque)
++#endif
+     float         ToleranceToBeingHit;                                   // +0x54
+ };
+-FABLE_STATIC_ASSERT(offsetof(COpinionPersonalityDef, PersonalityTraits) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(COpinionPersonalityDef, ToleranceToBeingHit) == 0x54);
++FABLE_STATIC_ASSERT_AT(33, offsetof(COpinionPersonalityDef, PersonalityTraits) == 0x3c);
++FABLE_STATIC_ASSERT_AT(34, offsetof(COpinionPersonalityDef, ToleranceToBeingHit) == 0x54);
+ #endif

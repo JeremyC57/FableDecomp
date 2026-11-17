@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/CTexture.h
++++ b/rebuild/include/engine/CTexture.h
+@@ -85,6 +85,11 @@
+     // Opt-in (row 0x00B8B780): Ego_r.pdb / FableWin.pdb ?GetNoLevels@CTexture@@QBEJXZ (out of line, 0x009F9DF0). Declaration only.
+     long GetNoLevels() const;                                            // 0x009F9DF0
+ #endif
++#ifdef FABLE_RETAIL_CTEXTURE_GETLEVELBYTELENGTH
++    // Opt-in (egod e07, row 0x00B2BD80): Ego_r.pdb ?GetLevelByteLength@CTexture@@QBEJJ@Z (Ego_r 0x00B6A2C0 = retail 0x009F9E80, after
++    // GetSurfaceLevel 0x009F9E00), out of line in retail (`push level ; call`). Declaration only.
++    long GetLevelByteLength(long level) const;                           // 0x009F9E80
++#endif
+ #ifdef FABLE_RETAIL_CTEXTURE_FORMATQUERIES
+     // Opt-in (wfE5, rows 0x00BB0970 / 0x00BAFA00): Ego_r.pdb ?GetPixelFormat@CTexture@@QBE?AVCPixelFormat@@XZ (0x009F9D80, hidden result),
+     // ?GetWidth@CTexture@@QBEKK@Z (0x004372A0 = GetDimensions(level).X) and ?GetHeight@CTexture@@QBEKK@Z (0x004372C0, .Y): called out of line.

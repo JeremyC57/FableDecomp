@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/CEngineInternalPrimitiveMeshBase.h
++++ b/rebuild/include/engine/CEngineInternalPrimitiveMeshBase.h
+@@ -40,6 +40,12 @@
+ #else
+  float GetBoundingSphereRadiusWorldSpace()const;
+ #endif
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMESHBASE_GETMAXDRAWDISTANCE
++ // Opt-in (egod e07, row 0x00BCF040): Ego_r.pdb / FableWin.pdb ?GetMaxDrawDistance@CEngineInternalPrimitiveMeshBase@@QBEMXZ (Ego_r 0x00AA38B0),
++ // out of line in retail at 0x00BEB660 (reads FadeDistance +0x18 and the mesh flags +0x34; the landed callers bind a descriptive
++ // CEnginePrimitive_ComputeFadeDistance). Declaration only.
++ float GetMaxDrawDistance()const;                                        // 0x00BEB660
++#endif
+  const C3DMeshInfo* MeshInfo;
+  const C3DMeshInfo* ShadowMeshInfo;
+  float Scale;

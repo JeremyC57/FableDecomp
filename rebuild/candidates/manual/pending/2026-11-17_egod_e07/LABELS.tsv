@@ -1,0 +1,17 @@
+address	name	evidence
+0x00B2BD80	?WriteTextureToBank@CEngineSurfaceCompositionManager@@AAEXAAVCTexture@@AAVCGraphicDataBank@@K_N@Z	Ego_r + FableWin + Ego_d
+0x009CCCD0	?InternalWriteEntryData@CBankFile@@QAEXKKPBXK@Z	Ego_r order (InternalWriteEntryData 0x00B1AAA0 / UpdateEntryInfoOnly 0x00B1AB60) + call shape (4 args, ecx=bank)
+0x009CC8B0	?UpdateEntryInfoOnly@CBankFile@@QAEXKAAVCDataInputStream@@K@Z	Ego_r + call shape (index, stream, size)
+0x009F9E80	?GetLevelByteLength@CTexture@@QBEJJ@Z	Ego_r (after GetSurfaceLevel) + call shape
+0x009FD6C0	??0CGraphicHeader@CGraphicDataBank@@QAE@XZ	Ego_r + ecx=frame header before field stores
+0x009FD1E0	?Save@CGraphicHeader@CGraphicDataBank@@QBEXAAVCDataOutputStream@@@Z	Ego_r + call shape
+0x00911300	?Update@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@UAEXXZ	Ego_r + Ego_d
+0x00911180	??0CCreatureAction_Curiosity@@QAE@AAVCThingCreatureBase@@@Z	Ego_d TU (retail 00911180) + Ego_r
+0x009110F0	??0CCreatureAction_OrderSecuritySweep@@QAE@AAVCThingCreatureBase@@@Z	Ego_r order + ctor shape
+0x00654D58	??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z	vtable 0x01237F1C + matched row 0x00911300
+0x00AB3870	?GenerateD3DDeclaration@CVertexShaderInput@@AAEXXZ	Ego_r + Ego_d
+0x0129E9CC	?D3DTypes@CVertexShaderInput@@0QBJB	Ego_d class record (private static const long[]) + datanames PUB32
+0x00681E60	?SetPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXJ_N@Z	Ego_r + Ego_d (parameters personality_def / replace_existing_override)
+0x00685430	??$fill@PA_N_N@std@@YIXPA_N0AB_N@Z	reloc_bindings + call shape (ecx/edx + pushed value reference)
+0x00BCF040	?IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh@@UAE_NABVCEngineCamera@@_N@Z	Ego_r + Ego_d
+0x00BEB660	?GetMaxDrawDistance@CEngineInternalPrimitiveMeshBase@@QBEMXZ	Ego_r + FableWin

@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/CEngineInternalPrimitiveAnimatedMesh.h
++++ b/rebuild/include/engine/CEngineInternalPrimitiveAnimatedMesh.h
+@@ -28,6 +28,11 @@
+  bool SetupMesh(float,float);
+ #endif
+  virtual void CalcInterpolatedObjectTransform(CMatrix3x4&,float,bool)const;
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ISINSIDEFRUSTUM
++ // Opt-in (egod e07, row 0x00BCF040): Ego_r.pdb ?IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh@@UAE_NABVCEngineCamera@@_N@Z, the override
++ // of the CEngineInternalPrimitiveBase virtual (same slot). Declaration only; no layout change.
++ virtual bool IsInsideFrustum(const CEngineCamera& frustum,bool distance_test_only);
++#endif
+  virtual void InitialiseSimulation(const C3DMeshInfo*,const C3DMesh2&);
+ #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_BONESCALINGS
+  // Retail opt-in (chunk Q32, row 0x00BD2A90): Ego_r.pdb / FableWin.pdb ?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z

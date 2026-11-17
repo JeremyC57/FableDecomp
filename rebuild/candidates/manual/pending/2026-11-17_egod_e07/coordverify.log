@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00b2bd80   RELOCATION_MATCH PASS   WriteTextureToBank
+00911300   WARN RELOC_CONFLICT: ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z -> 00654d58 here, 004a9730 in landed 00788d68
+00911300   RELOCATION_MATCH PASS   Update
+00ab3870   RELOCATION_MATCH PASS   GenerateD3DDeclaration
+00681e60   RELOCATION_MATCH PASS   SetPersonalityOverride
+00bcf040   RELOCATION_MATCH PASS   IsInsideFrustum
+
+WINS: 5
+  00b2bd80 RELOCATION_MATCH CEngineSurfaceCompositionManager::WriteTextureToBank
+  00911300 RELOCATION_MATCH CAIStateGroup_MinionGuardReactToBodyFoundMessage::Update
+  00ab3870 RELOCATION_MATCH CVertexShaderInput::GenerateD3DDeclaration
+  00681e60 RELOCATION_MATCH CTCCreatureOpinionOfHero::SetPersonalityOverride
+  00bcf040 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::IsInsideFrustum
