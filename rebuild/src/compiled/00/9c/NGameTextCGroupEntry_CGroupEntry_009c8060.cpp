@@ -1,57 +1,47 @@
-// NGameText::CGroupEntry::CGroupEntry(const CCountedPointer<CGroup>& group, long id) -- a text-group resource entry: CResource base, an empty id vector, a shared reference to the group and the entry id; registers its memory size with the resource list
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8060, length 128 bytes (padded to 144).
-// Callees: CResource::CResource @ 0x009FBEC0, the group's Sizeof @ 0x009D5620 (manifest "CVertexBufferWin32::DoSizeof",
-//          propagated: `mov eax,[ecx+24h] ; add eax,48h`), CResource::SetResourceSize @ 0x009FBF20.
+// NGameText::CGroupEntry::CGroupEntry(CCountedPointer<CBankFileAsyncData>& file_data, const CDataBankGroupEntry* owner) -- a text-group resource entry: CResource base, an empty id array, a shared reference to the group's file data and its owning bank entry; registers its memory size
+// Leaf: ??0CGroupEntry@NGameText@@QAE@AAV?$CCountedPointer@VCBankFileAsyncData@@@@PBVCDataBankGroupEntry@1@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8060, length 128 bytes (padded to 144). Ego_r.pdb 0x00B15D40 / FableWin.pdb 0x02F75940
+//   (engine/NGameText_CDataBank.h FABLE_RETAIL_NGAMETEXT_CGROUPENTRY_CTOR declares it; the landed 0x009C80F0 BeginLoading binds it).
+// Callees: CResource::CResource @ 0x009FBEC0, CBankFileAsyncData::Sizeof @ 0x009D5620 (Ego_r.pdb ?Sizeof@CBankFileAsyncData@@QBEKXZ: the
+//   old row's "CGroup" was the file data), CResource::SetResourceSize @ 0x009FBF20.
 // Vtable: NGameText::CGroupEntry 0x0129B478 (rtti-vtables.tsv).
-// Shape: the 12-byte vector member's inline constructor zeroes its words from the shared `xor edx,edx`; the counted
-// pointer is copy-constructed (inc of the count block); the size is a local `sizeof(*this) + capacity * 4` (computed
-// into edi before the pointer test -- one expression evaluates the Sizeof first) then `+ Group.Sizeof() -
-// sizeof(Group)` with the counted pointer's Sizeof an inline ternary (`Data ? Data->Sizeof() + 8 : 8`, the 8 kept in
-// both arms and the -8 folded into the final `lea`).
-// Model: local (CResource from Ego_r.pdb: vptr, ResourceList +8, Prev +0x0c, Next +0x10, ResourceSize +0x14,
-// LastUsedFrame +0x18; the derived members from the bytes).
-// Leaf: ??0CGroupEntry@NGameText@@
-class CResource { public:                                 // 0x1c bytes
-    virtual void v00();
-    unsigned char _pad04[0x18];
-    CResource();                                   // 0x009FBEC0
-    void SetResourceSize(unsigned long size);      // 0x009FBF20
-};
-template <class T> struct vector {                 // retail STLport vector: 12 bytes
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    unsigned long capacity() const { return _M_end_of_storage - _M_start; }
-};
-namespace NGameText {
-struct CGroup {
-    unsigned long Sizeof() const;                  // 0x009D5620
-};
-}
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    long* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++*Info;
-    }
-    unsigned long Sizeof() const { return Data ? Data->Sizeof() + sizeof(CCountedPointer) : sizeof(CCountedPointer); }
-};
-namespace NGameText {
-class CGroupEntry : public CResource { public:
-    vector<long>             m_ids;                // +0x1c
-    CCountedPointer<CGroup>  m_group;              // +0x28
-    long                     m_id;                 // +0x30
-    virtual void v00();
-    CGroupEntry(const CCountedPointer<CGroup>& group, long id);
-};
+// Shape: SetResourceSize(Sizeof()) with CGroupEntry::Sizeof (Ego_r.pdb / FableWin.pdb ?Sizeof@CGroupEntry@NGameText@@QBEKXZ) inline:
+//   sizeof(*this) + the CArray<long>'s reserved storage + GFPSizeof(PFileData) (FableWin ??@10585CBV?@..; the
+//   pointer test, Data->Sizeof() + 8 or 8) - sizeof(PFileData), the -8 folded into the final `lea`.
+// NF80 (q10931): moved off the local CResource / vector / CCountedPointer / NGameText::CGroup models onto engine/NGameText_CDataBank.h
+//   (FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY + _CGROUPENTRY_CTOR; the overlay's _CGROUPENTRY_SIZEOF), engine/CArray.h (overlay
+//   FABLE_RETAIL_CARRAY_SIZEOF), engine/GFSizeof.h (overlay FABLE_RETAIL_GFPISNULL_CCOUNTEDPOINTER) and engine/CBankFileAsyncData.h
+//   (FABLE_RETAIL_CBANKFILEASYNCDATA_SIZEOF); preamble as the landed 0x009C80F0.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CARRAY_SIZEOF
+#define FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+#define FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+#define FABLE_RETAIL_CRESOURCE_SETRESOURCESIZE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCELIST_MAKEFREESPACE
+#define FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+#define FABLE_RETAIL_CBANKFILEASYNC_GETASYNCENTRY
+#define FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
+#define FABLE_RETAIL_CBANKFILEASYNCDATA_SIZEOF
+#define FABLE_RETAIL_GFPISNULL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_NGAMETEXT_CGROUPENTRY_CTOR
+#define FABLE_RETAIL_NGAMETEXT_CGROUPENTRY_SIZEOF
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/GFSizeof.h"
+#include "engine/NGameText_CDataBank.h"
 
-CGroupEntry::CGroupEntry(const CCountedPointer<CGroup>& group, long id)
-    : m_group(group), m_id(id)
+namespace NGameText {
+CGroupEntry::CGroupEntry(CCountedPointer<CBankFileAsyncData>& file_data, const CDataBankGroupEntry* owner)
+    : PFileData(file_data), Owner(const_cast<CDataBankGroupEntry*>(owner))
 {
-    unsigned long size = sizeof(CGroupEntry) + m_ids.capacity() * sizeof(long);
-    SetResourceSize(size + m_group.Sizeof() - sizeof(m_group));
+    SetResourceSize(Sizeof());
 }
 }

@@ -275,6 +275,19 @@ public:
                                      NUISystem::CComponent* owner, const CCharString& templateName,
                                      const CCharString& descriptionSymbol, bool checkUsable);        // 0x005907AB
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_ITEMCATEGORYLIST
+    // Nested opt-in (NF80, q10943: row 0x005907AB ConstructItemCategoryListPC; with FABLE_RETAIL_CTCINVENTORY_PCMENUS and
+    // _QUICKACCESS, engine/CCountedPointer.h included first): the two helpers it calls, Ego_r.pdb / FableWin.pdb
+    //   ?ContructItemListsPC@CTCInventory@@QAEXAAV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@PAVCList@NUISystem@@
+    //     PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z (public; landed 0x00590198) and
+    //   ?CreateMenuDescPC@CTCInventory@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z (private; landed 0x00582673).
+    // Declarations only.
+    void ContructItemListsPC(std::map<long, long>& items, NUISystem::CList* subList, NUISystem::CComponent* parent,
+                             CCountedPointer<NUISystem::CComponent>& actions);                  // 0x00590198
+private:
+    CCountedPointer<NUISystem::CComponent> CreateMenuDescPC(const CCharString& descriptionSymbol);   // 0x00582673
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_CONSOLEMENUS
     // Nested opt-in (chunk 1007, rows 0x00590235 / 0x0058F016; needs FABLE_RETAIL_CTCINVENTORY_QUICKACCESS for the vector include):
     // the console twins of the PCMENUS pair, FableWin.pdb / Ego_r.pdb spellings

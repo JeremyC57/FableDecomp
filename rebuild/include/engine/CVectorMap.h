@@ -7,6 +7,12 @@
 #include "engine/CArray.h"
 template<class K,class V> class CKeyPairCompareLess {
 public:
+#ifdef FABLE_RETAIL_CKEYPAIRCOMPARELESS_FORCEINLINE
+    // Per-TU inline opt-in (NF80, q10923: the /Os STLport heap / insertion-sort TUs of the CVectorMap<CCharString, ..> sorts, rows
+    // 0x004DFDBB / 0x004E1C8A): retail expands the pair compare in place there (0x004DFDD6..0x004DFDEA: the two key pointers,
+    // the CCharString pointer tests, then `call 0x00429950`), where under optimize("s") the plain inline body is called out of line.
+    FABLE_FORCEINLINE
+#endif
     bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b) const { return a.first<b.first; }
 #if defined(FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND) || defined(FABLE_RETAIL_CVECTORMAP_ORIGINAL_FIND)
     // chunk 849 (row 0x00501450): the key/key overload, the second of the two the Codex pass 13 TPI read gives CKeyPairCompareLess; the

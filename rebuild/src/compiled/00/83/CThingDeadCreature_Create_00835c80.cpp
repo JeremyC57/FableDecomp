@@ -1,40 +1,57 @@
-// 00835c80 CThingDeadCreature::Create
+// CThingDeadCreature::Create(long defIndex, const C3DVector& position, long a3, const CCharString& scriptName, const CAnimFilterBase& filter) -- allocate a dead creature, construct it from the parameters, add its five standard components, take a clone of the animation filter, place its physics and activate it; null on any failure
 // Flags: /O2 /Oy /W3 /Gr
-// Leaf: Create
-#include <new>
-#include <stdlib.h>
+// Leaf: ?Create@CThingDeadCreature@@SIPAV1@JABVC3DVector@@JABVCCharString@@ABVCAnimFilterBase@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00835C80, 419 bytes, static __fastcall, `ret 0Ch`. Ego_r.pdb / FableWin.pdb
+//   ?Create@CThingDeadCreature@@SIPAV1@JABVC3DVector@@JABVCCharString@@ABVCAnimFilterBase@@@Z.
+// Callees: CThing::operator new(size, bool) 0x004C7380 (0xF0 bytes), CThingDeadCreature::CThingDeadCreature 0x00835C20, the inline
+//   CThingDeadCreature::ConstructFromParams over CThingGameObject::ConstructFromParams 0x008388D0 (0, 0, 0, true), CThing::AddTC 0x004C9D60
+//   x5 (CTCPhysicsStandard, CTCGraphicAppearance, CTCAnimationComplex, CTCHitLocations, CTCSkeletalMorph), the inline SetAnimationFilter
+//   (CAnimFilterBase::Clone slot 1, CCountedPointer<CAnimFilterBase>::Reset 0x00836580), CTCParamsPhysicsBase 0x006A06E0 with the
+//   default (identity) CRightHandedSet, the physics component's ConstructFromParams (CTCBase slot 3), ~CBaseClassNonCopyable 0x0099A300,
+//   CThing::DoActivationSequence 0x004C9CA0.
+// NF80 (q10920): moved off the stand-in namespace ExternalRetry_00835c80 (local C3DVector, CCharString, CRightHandedSet, CBaseClass /
+//   CBaseClassNonCopyable, CTCParamsPhysicsBase, CAnimFilterBase, CCountedPointer, CCPPointerInfo and CThingDeadCreature models) onto
+//   engine/CThingDeadCreature.h (the overlay's FABLE_RETAIL_CTHINGDEADCREATURE_CREATE), CThingGameObject.h (_LEVELSCRIPT), CThing.h
+//   (_OPERATORNEW), CTCPhysicsBase.h, CTCParamsPhysicsBase.h and CRightHandedSet.h (_DEFAULT_IDENTITY): the 0x00703210 CThingObject::Create
+//   recipe.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_OPERATORNEW
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGGAMEOBJECT_LEVELSCRIPT
+#define FABLE_RETAIL_CTHINGDEADCREATURE_ANIMATION
+#define FABLE_RETAIL_CTHINGDEADCREATURE_CREATE
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#define FABLE_RETAIL_CRIGHTHANDEDSET_DEFAULT_IDENTITY
+#define FABLE_RETAIL_CTCPARAMSPHYSICSBASE_CTOR_BODY
+#include "engine/CThing.h"
+#include "engine/CThingDeadCreature.h"
 #include "engine/CTCPhysicsBase.h"
-void* __cdecl operator new[](unsigned int);
-void __cdecl operator delete[](void*);
-namespace ExternalRetry_00835c80 {
-// Layout:835c20 allocates target240 and initializes counted filter+d0/d4; physics+60.
-// No CThingDeadCreature header exists. Matrix6a06e0 is genuine vptr+Position12+CRightHandedSet24.
-//836580 owns CCPPointerInfo12; callback8364b0 deletes CAnimFilterBase through destructor slot2.
-struct C3DVector {float X,Y,Z;};
-struct CRightHandedSet {C3DVector Up,Forward;CRightHandedSet(){Up.X=0;Up.Y=0;Up.Z=1;Forward.X=0;Forward.Y=1;Forward.Z=0;}};struct CBaseClass {virtual ~CBaseClass();};struct CBaseClassNonCopyable:CBaseClass {CBaseClassNonCopyable();__declspec(noinline) virtual ~CBaseClassNonCopyable(){}};struct CTCParamsPhysicsBase:CBaseClassNonCopyable {C3DVector Position;CRightHandedSet Rhs;__declspec(noinline) CTCParamsPhysicsBase(const C3DVector& p,const CRightHandedSet& a):Position(p),Rhs(a){}~CTCParamsPhysicsBase();};
-// Active flattened header retained. Method-only adapter dispatches actual slot3 ConstructFromParams.
-struct CTCPhysicsMethods {virtual void Slot0();virtual void Slot1();virtual void Slot2();virtual void ConstructFromParams(const CTCParamsPhysicsBase&);};
-typedef ::CTCPhysicsBase CTCPhysicsBaseDispatch;
-void* __fastcall operator_new(unsigned charSize,bool);
-#pragma pack(push,1)
-struct CCharStringData {char* text;int size;unsigned capacity;unsigned char flags;int refs;};
-#pragma pack(pop)
-extern const char Empty[];extern int StringCount;
-struct CCharString {
- CCharStringData* data;
- __declspec(noinline) CCharString():data(0){++StringCount;}
- __declspec(noinline) CCharString(const char* text,int length=-1):data(0){++StringCount;if(text&&*text)data=Allocate(text,length);}
- __declspec(noinline) CCharString(const CCharString& x):data(0){++StringCount;if(this!=&x&&x.data){data=x.data;++data->refs;}}
- CCharStringData* Allocate(const char*,int);
- __declspec(noinline) void Clear(){if(data){if(--data->refs<=0){CCharStringData* p=data;if(p->text){operator delete[](p->text);p->text=0;}p->size=0;p->capacity&=0x80000000;delete p;}data=0;}}
- __declspec(noinline) ~CCharString(){Clear();--StringCount;}
- const char* Text()const{return !data?Empty:data->text;}
- int Size()const{return !data?0:data->size;}
-};
-struct CAnimationEntry;struct CAnimFilterBase {virtual bool operator()(const CAnimationEntry&)const=0;virtual CAnimFilterBase*Clone()const=0;virtual ~CAnimFilterBase(){}};
-struct CCPPointerInfo {int refs;void (__fastcall* destroy)(const CAnimFilterBase*);const CAnimFilterBase* object;};
-void __fastcall DeleteAnimFilter(const CAnimFilterBase* p){if(p)delete p;}
-struct CCountedPointer {const CAnimFilterBase* data;CCPPointerInfo* info;__declspec(noinline) void Reset(const CAnimFilterBase* p){if(info&&!--info->refs){info->destroy(info->object);delete info;}info=0;data=p;if(p){info=new CCPPointerInfo;if(info){info->refs=1;info->destroy=DeleteAnimFilter;info->object=p;}}}};
-struct CThingDeadCreature {char prefix[96];CTCPhysicsBaseDispatch* physics;char gap[108];CCountedPointer extra;char tail[24];CThingDeadCreature();bool ConstructFromParams(int,const C3DVector&,int,unsigned,const CCharString&,CThingDeadCreature*,CThingDeadCreature*,bool);bool DoActivationSequence();void AddTC(const CCharString&,int,int);};
-CThingDeadCreature* __fastcall Create(int a,const C3DVector& position,int b,const CCharString& c,const CAnimFilterBase& h){CThingDeadCreature* result=0;CThingDeadCreature* p=(CThingDeadCreature*)operator_new(0xf0,false);if(p){p=new(p)CThingDeadCreature;if(p&&p->ConstructFromParams(a,position,b,0,c,0,0,1)){{CCharString component("CTCPhysicsStandard");p->AddTC(component,0,0);}{CCharString component("CTCGraphicAppearance");p->AddTC(component,0,0);}{CCharString component("CTCAnimationComplex");p->AddTC(component,0,0);}{CCharString component("CTCHitLocations");p->AddTC(component,0,0);}{CCharString component("CTCSkeletalMorph");p->AddTC(component,0,0);}p->extra.Reset(h.Clone());CTCPhysicsBaseDispatch* physics=p->physics;reinterpret_cast<CTCPhysicsMethods*>(physics)->ConstructFromParams(CTCParamsPhysicsBase(position,CRightHandedSet()));if(p->DoActivationSequence())result=p;}}return result;}
+#include "engine/CTCParamsPhysicsBase.h"
+
+CThingDeadCreature* __fastcall CThingDeadCreature::Create(long defIndex, const C3DVector& position, long a3, const CCharString& scriptName,
+                                                          const CAnimFilterBase& filter)
+{
+    CThingDeadCreature* result = 0;
+    CThingDeadCreature* creature = new (false) CThingDeadCreature;
+    if (creature && creature->ConstructFromParams(defIndex, position, a3, scriptName)) {
+        creature->AddTC("CTCPhysicsStandard", false, 0);
+        creature->AddTC("CTCGraphicAppearance", false, 0);
+        creature->AddTC("CTCAnimationComplex", false, 0);
+        creature->AddTC("CTCHitLocations", false, 0);
+        creature->AddTC("CTCSkeletalMorph", false, 0);
+        creature->SetAnimationFilter(filter);
+        creature->GetPhysicsTC()->ConstructFromParams(CTCParamsPhysicsBase(position, CRightHandedSet()));
+        if (creature->DoActivationSequence())
+            result = creature;
+    }
+    return result;
 }

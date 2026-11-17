@@ -2832,8 +2832,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00429950'
         Module = 'CBasicString<char>'
-        Source = '00/42/CBasicStringchar_operator_00429950.cpp'
-        TestSource = '00/42/CBasicStringchar_operator_00429950_test.cpp'
+        Source = '00/42/CBasicString_operator_00429950.cpp'
+        TestSource = '00/42/CBasicString_operator_00429950_test.cpp'
         PassPattern = '00429950_TEST PASS'
     }
     [pscustomobject]@{
@@ -90497,9 +90497,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b9d00'
-        Module = '_Tree<std::_Tmap_traits<CCharString'
-        Source = '00/4b/TreestdTmaptraitsCCharString_Lbound_004b9d00.cpp'
-        TestSource = '00/4b/TreestdTmaptraitsCCharString_Lbound_004b9d00_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, CCharString, std::_Identity<CCharString>, std::less<CCharString>, std::allocator<CCharString>>'
+        Source = '00/4b/stdRbtree_Mlowerbound_004b9d00.cpp'
+        TestSource = '00/4b/stdRbtree_Mlowerbound_004b9d00_test.cpp'
         PassPattern = 'PASS_004b9d00'
     }
     [pscustomobject]@{
@@ -238482,8 +238482,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0099b2c0'
         Module = 'CWideString'
-        Source = '00/99/CWideString_ConvertToCharString_0099b2c0.cpp'
-        TestSource = '00/99/CWideString_ConvertToCharString_0099b2c0_test.cpp'
+        Source = '00/99/CWideString_ToCharString_0099b2c0.cpp'
+        TestSource = '00/99/CWideString_ToCharString_0099b2c0_test.cpp'
         PassPattern = '0099b2c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -275192,9 +275192,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ac5d0'
-        Module = 'map<CCharString'
-        Source = '00/9a/mapCCharString_operator_009ac5d0.cpp'
-        TestSource = '00/9a/mapCCharString_operator_009ac5d0_test.cpp'
+        Module = 'std::map<CCharString, CBankFileManager::CBankInfo, std::less<CCharString>, std::allocator<std::pair<CCharString const, CBankFileManager::CBankInfo>>>'
+        Source = '00/9a/stdmap_operator_009ac5d0.cpp'
+        TestSource = '00/9a/stdmap_operator_009ac5d0_test.cpp'
         PassPattern = '009ac5d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -275277,9 +275277,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cb68c0'
-        Module = '_Adjust_heap<std::pair<CCharString,CScriptInfo>*,int,std'
-        Source = '00/cb/AdjustheapstdpairCCharStringCScriptInfointstd_pairclassCCharStringclassCScriptInfoCKeyPairComp_00cb68c0.cpp'
-        TestSource = '00/cb/AdjustheapstdpairCCharStringCScriptInfointstd_pairclassCCharStringclassCScriptInfoCKeyPairComp_00cb68c0_test.cpp'
+        Module = 'std'
+        Source = '00/cb/std_adjustheap_00cb68c0.cpp'
+        TestSource = '00/cb/std_adjustheap_00cb68c0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00cb68c0_TEST PASS'
     }
@@ -275532,9 +275532,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005e2580'
-        Module = 'std::_Rb_tree<CBasicString<char>*>'
-        Source = '00/5e/STLRbtreeCBasicStringchar_insertunique_005e2580.cpp'
-        TestSource = '00/5e/STLRbtreeCBasicStringchar_insertunique_005e2580_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, std::pair<CCharString const, CIVCountedPointer<CAnimComponentBase>>, std::_Select1st<std::pair<CCharString const, CIVCountedPointer<CAnimComponentBase>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CIVCountedPointer<CAnimComponentBase>>>>'
+        Source = '00/5e/stdRbtree_insertunique_005e2580.cpp'
+        TestSource = '00/5e/stdRbtree_insertunique_005e2580_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005e2580_TEST PASS'
     }
@@ -275668,9 +275668,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00756250'
-        Module = 'std::_Rb_tree'
-        Source = '00/75/STLRbtree_insertunique_00756250.cpp'
-        TestSource = '00/75/STLRbtree_insertunique_00756250_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, std::pair<CCharString const, std::pair<long, long>>, std::_Select1st<std::pair<CCharString const, std::pair<long, long>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::pair<long, long>>>>'
+        Source = '00/75/stdRbtree_insertunique_00756250.cpp'
+        TestSource = '00/75/stdRbtree_insertunique_00756250_test.cpp'
         PassPattern = '00756250_TEST PASS'
     }
     [pscustomobject]@{
@@ -275690,9 +275690,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007ad060'
-        Module = 'std::_Rb_tree<CBasicString<char>*>'
-        Source = '00/7a/STLRbtreeCBasicStringchar_insertunique_007ad060.cpp'
-        TestSource = '00/7a/STLRbtreeCBasicStringchar_insertunique_007ad060_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, std::pair<CCharString const, bool>, std::_Select1st<std::pair<CCharString const, bool>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool>>>'
+        Source = '00/7a/stdRbtree_insertunique_007ad060.cpp'
+        TestSource = '00/7a/stdRbtree_insertunique_007ad060_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007ad060_TEST PASS'
     }
@@ -282185,9 +282185,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dfdbb'
-        Module = '_global'
-        Source = '00/4d/global_adjustheap_004dfdbb.cpp'
-        TestSource = '00/4d/global_adjustheap_004dfdbb_test.cpp'
+        Module = 'std'
+        Source = '00/4d/std_adjustheap_004dfdbb.cpp'
+        TestSource = '00/4d/std_adjustheap_004dfdbb_test.cpp'
         PassPattern = '004dfdbb_TEST PASS'
     }
     [pscustomobject]@{
@@ -288577,8 +288577,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004e1c8a'
         Module = 'std'
-        Source = '00/4e/STL_linearinsert_004e1c8a.cpp'
-        TestSource = '00/4e/STL_linearinsert_004e1c8a_test.cpp'
+        Source = '00/4e/std_linearinsert_004e1c8a.cpp'
+        TestSource = '00/4e/std_linearinsert_004e1c8a_test.cpp'
         PassPattern = '004e1c8a_TEST PASS'
     }
     [pscustomobject]@{

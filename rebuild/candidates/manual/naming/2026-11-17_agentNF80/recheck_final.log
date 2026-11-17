@@ -1,0 +1,84 @@
+addr       parity           behav  name
+00429950   MATCH            PASS   operator<
+004b27f0   RELOCATION_MATCH PASS   GetQuestMasterDataPersistScript
+004b9d00   WARN STANDIN_LEAF ?_M_lower_bound@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z (catalog std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>::_Lbound; names another function)
+004b9d00   RELOCATION_MATCH PASS   _Lbound
+004dfdbb   RELOCATION_MATCH PASS   __adjust_heap
+004e1c8a   WARN RELOC_NAME: ??$__copy_backward@PAU?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 004da738 labelled 'std::__copy_backward<std::pair<CCharString, CTCBase::CRegisteredTCInfo> *, std::pair<CCharString, CTCBase::CRegisteredTCInfo> *, int>'
+004e1c8a   RELOCATION_MATCH PASS   __linear_insert
+005907ab   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005907ab   RELOCATION_MATCH PASS   ConstructItemCategoryListPC
+005e2580   WARN RELOC_NAME: ??F?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@2@@std@@QAEAAU01@XZ -> 005dfce0 labelled 'CRetailTreeIterator::Decrement'
+005e2580   RELOCATION_MATCH PASS   insert_unique
+00686f60   WARN RELOC_NAME: ?RegisteredTCs@CTCBase@@0V?$CVectorMap@VCCharString@@VCRegisteredTCInfo@CTCBase@@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@@A -> 013ba89c labelled 'CTCBase::RegisteredTCs (CVectorMap<CCharString, CTCBase::CRegisteredTCInfo, CKeyPairCompareLess<...>>)'
+00686f60   RELOCATION_MATCH PASS   GetPTCInfo
+00686fa0   WARN RELOC_NAME: ?RegisteredTCs@CTCBase@@0V?$CVectorMap@VCCharString@@VCRegisteredTCInfo@CTCBase@@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@@A -> 013ba89c labelled 'CTCBase::RegisteredTCs (CVectorMap<CCharString, CTCBase::CRegisteredTCInfo, CKeyPairCompareLess<...>>)'
+00686fa0   RELOCATION_MATCH PASS   Clone
+006c31b0   RELOCATION_MATCH PASS   _M_find
+00756250   RELOCATION_MATCH PASS   insert_unique
+00756350   RELOCATION_MATCH PASS   _M_find<CCharString>
+007acc90   RELOCATION_MATCH PASS   _M_find<CCharString>
+007ad060   RELOCATION_MATCH PASS   insert_unique
+00835c80   RELOCATION_MATCH PASS   Create
+0099b2c0   RELOCATION_MATCH PASS   ToCharString
+009aaf70   RELOCATION_MATCH PASS   _M_insert
+009ac5d0   WARN RELOC_NAME: ?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z -> 009aadb0 labelled 'std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>::_Lbound'
+009ac5d0   RELOCATION_MATCH PASS   operator[]
+009c8060   RELOCATION_MATCH PASS   CGroupEntry
+009efb80   WARN RELOC_NAME: ??F?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@std@@QAEAAU01@XZ -> 009ee8a0 labelled 'CRetailTreeIterator::Decrement'
+009efb80   WARN STANDIN_LEAF ?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@2@@Z (catalog std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase> >, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > >, std::less<CCharString >, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > > >::insert_unique; names another function)
+009efb80   RELOCATION_MATCH PASS   insert_unique
+00cb68c0   WARN STANDIN_LEAF ??$__adjust_heap@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@HU12@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@HHU10@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z (catalog _Adjust_heap<std::pair<CCharString,CScriptInfo>*,int,std::_Adjust_heap<std::pair<CCharString,CScriptInfo>*,int,std::pair<class_CCharString,class_CScriptInfo>,CKeyPairCompareLess<CCharString,CScriptInfo>_>; names another function)
+00cb68c0   RELOCATION_MATCH PASS   pair<class_CCharString,class_CScriptInfo>,CKeyPairCompareLess<CCharString,CScriptInfo>_>
+00686f10   WARN RELOC_NAME: ?RegisteredTCs@CTCBase@@0V?$CVectorMap@VCCharString@@VCRegisteredTCInfo@CTCBase@@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@@A -> 013ba89c labelled 'CTCBase::RegisteredTCs (CVectorMap<CCharString, CTCBase::CRegisteredTCInfo, CKeyPairCompareLess<...>>)'
+00686f10   RELOCATION_MATCH PASS   AllocateTC
+0049124e   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0049124e   WARN SHARED_HEADER_AVAILABLE CRGBColour
+0049124e   WARN SHARED_HEADER_AVAILABLE CActionInputControl
+0049124e   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0049124e   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef
+0049124e   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0049124e   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+0049124e   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0049124e   RELOCATION_MATCH PASS   GetActionNameFromEmbeddedTag
+006c37d0   WARN SHARED_HEADER_AVAILABLE CAFile
+006c37d0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+006c37d0   WARN SHARED_HEADER_AVAILABLE CSkeletalMorphResourceManager
+006c37d0   WARN RELOC_NAME: ?GetBonesDirectory@@YI?AVCWideString@@XZ -> 0041a290 labelled 'NResourceDirectoryNames::GetBoneConfigDir'
+006c37d0   RELOCATION_MATCH PASS   PreloadBoneConfigs
+004b3ce0   WARN RELOC_NAME: ?erase@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@QAEIABVCCharString@@@Z -> 004bb270 labelled 'std::std::map_find_lower_upper'
+004b3ce0   WARN RELOC_NAME: ?_M_lower_bound@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z -> 004b9d00 labelled 'std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>::_Lbound'
+004b3ce0   RELOCATION_MATCH PASS   ActivateQuests
+004b4260   WARN SHARED_HEADER_AVAILABLE CScriptInfoManager
+004b4260   RELOCATION_MATCH PASS   ActivateMultipleQuests
+00520d00   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00520d00   RELOCATION_MATCH PASS   LoadEntitiesFromScript
+
+WINS: 27
+  00429950 MATCH CBasicString<char>::??M?$CBasicString@D@@QBE_NABV0@@Z
+  004b27f0 RELOCATION_MATCH NQuestManager::CRuntimeQuestPersistence::?GetQuestMasterDataPersistScript@CRuntimeQuestPersistence@NQuestManager@@QBEPBVCCharString@@ABV3@@Z
+  004b9d00 RELOCATION_MATCH _Tree<std::_Tmap_traits<CCharString::?_M_lower_bound@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z
+  004dfdbb RELOCATION_MATCH _global::??$__adjust_heap@PAU?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@std@@HU12@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@std@@YIXPAU?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@0@HHU10@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@Z
+  004e1c8a RELOCATION_MATCH std::??$__linear_insert@PAU?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@std@@U12@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@std@@YIXPAU?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@0@0U10@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@Z
+  005907ab RELOCATION_MATCH CTCInventory::?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4_N@Z
+  005e2580 RELOCATION_MATCH std::_Rb_tree<CBasicString<char>*>::?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@2@@Z
+  00686f60 RELOCATION_MATCH CTCBase::?GetPTCInfo@CTCBase@@SIPBVCRegisteredTCInfo@1@ABVCCharString@@@Z
+  00686fa0 RELOCATION_MATCH CTCBase::?Clone@CTCBase@@QAEPAV1@XZ
+  006c31b0 RELOCATION_MATCH std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<C3DSkeletalMorphTarget>>, std::_Select1st<std::pair<CCharString const, CCountedPointer<C3DSkeletalMorphTarget>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCountedPointer<C3DSkeletalMorphTarget>>>>::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@1@ABVCCharString@@@Z
+  00756250 RELOCATION_MATCH std::_Rb_tree::?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@2@@Z
+  00756350 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@1@ABVCCharString@@@Z
+  007acc90 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@_N@std@@@1@ABVCCharString@@@Z
+  007ad060 RELOCATION_MATCH std::_Rb_tree<CBasicString<char>*>::?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@_N@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@_N@std@@@2@@std@@_N@2@ABU?$pair@$$CBVCCharString@@_N@2@@Z
+  00835c80 RELOCATION_MATCH CThingDeadCreature::?Create@CThingDeadCreature@@SIPAV1@JABVC3DVector@@JABVCCharString@@ABVCAnimFilterBase@@@Z
+  0099b2c0 RELOCATION_MATCH CWideString::?ToCharString@CWideString@@QBE?AVCCharString@@XZ
+  009aaf70 RELOCATION_MATCH std::_Rb_tree<CCharString,std::pair<const CCharString,NBankFileManager::CContainedBank>,std::_Select1st<std::pair<const CCharString,NBankFileManager::CContainedBank> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,NBankFileManager::CContainedBank> > >::?_M_insert@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@2@0@Z
+  009ac5d0 RELOCATION_MATCH map<CCharString::??A?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QAEAAVCBankInfo@CBankFileManager@@ABVCCharString@@@Z
+  009c8060 RELOCATION_MATCH NGameText::CGroupEntry::??0CGroupEntry@NGameText@@QAE@AAV?$CCountedPointer@VCBankFileAsyncData@@@@PBVCDataBankGroupEntry@1@@Z
+  009efb80 RELOCATION_MATCH std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase> >, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > >, std::less<CCharString >, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase> > > >::?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@2@@Z
+  00cb68c0 RELOCATION_MATCH _Adjust_heap<std::pair<CCharString,CScriptInfo>*,int,std::??$__adjust_heap@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@HU12@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@HHU10@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z
+  00686f10 RELOCATION_MATCH CTCBase::?AllocateTC@CTCBase@@SIPAV1@ABVCCharString@@AAVCThing@@@Z
+  0049124e RELOCATION_MATCH CSubtitleRenderer::?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z
+  006c37d0 RELOCATION_MATCH CSkeletalMorphResourceManager::PreloadBoneConfigs
+  004b3ce0 RELOCATION_MATCH CQuestManager::?ActivateQuests@CQuestManager@@AAEXABV?$CArray@VCActivateQuestInfo@CQuestManager@@@@@Z
+  004b4260 RELOCATION_MATCH CQuestManager::?ActivateMultipleQuests@CQuestManager@@QAE_NABV?$CArray@VCCharString@@@@_N1@Z
+  00520d00 RELOCATION_MATCH CThingManager::?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z

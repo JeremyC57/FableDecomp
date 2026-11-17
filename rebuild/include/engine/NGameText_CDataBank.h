@@ -119,6 +119,19 @@ public:
     // (0x009C8060). Declaration only: no layout change.
     CGroupEntry(CCountedPointer<CBankFileAsyncData>& file_data, const CDataBankGroupEntry* owner);   // 0x009C8060
 #endif
+#ifdef FABLE_RETAIL_NGAMETEXT_CGROUPENTRY_SIZEOF
+    // Nested opt-in (NF80, q10931: row 0x009C8060, the constructor's SetResourceSize(Sizeof())): Ego_r.pdb 0x00B15C70 / FableWin.pdb
+    // 0x02F75E70 ?Sizeof@CGroupEntry@NGameText@@QBEKXZ, inline in retail: the object, the id array's storage and the file data
+    // through GFPSizeof (0x009C8096..0x009C80B7: `lea edi,[edi*4+34h]`, the PFileData test, `call 0x009D5620 ; add eax,8`, the -8
+    // folded into `lea ecx,[eax+edi-8]`). Needs FABLE_RETAIL_CARRAY_SIZEOF, FABLE_RETAIL_GFPISNULL_CCOUNTEDPOINTER (engine/GFSizeof.h)
+    // and FABLE_RETAIL_CBANKFILEASYNCDATA_SIZEOF.
+    // The array part is a local summed first (retail holds it in edi across the PFileData test and tail-duplicates the caller's
+    // SetResourceSize into both arms); one expression lets VC7.1 evaluate the GFPSizeof call first (104 v 130 bytes).
+    unsigned long Sizeof() const {
+        unsigned long size = sizeof(*this) + Entries.Sizeof() - sizeof(Entries);
+        return size + GFPSizeof(PFileData) - sizeof(PFileData);
+    }
+#endif
     CArray<long> Entries;                                                          // +0x1C
     CCountedPointer<CBankFileAsyncData> PFileData;                                 // +0x28
     CDataBankGroupEntry* Owner;                                                    // +0x30

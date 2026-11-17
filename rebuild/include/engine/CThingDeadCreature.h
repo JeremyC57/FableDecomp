@@ -5,6 +5,9 @@
 #include "engine/CCountedPointer.h"
 class CAnimFilterBase;
 #endif
+#ifdef FABLE_RETAIL_CTHINGDEADCREATURE_CREATE
+#include "engine/CAnimFilterBase.h"
+#endif
 // Retail opt-in (Codex pass 12): original PDB sole base and full native allocation.
 // PAnimFilter, PKiller, BodyDieTimer, BodyReorienter, StartedDecay; native allocation527300.
 class CThingDeadCreature:public CThingGameObject {
@@ -43,6 +46,25 @@ protected:
     void SetupDeadAnimation();                                           // 0x00835E30
 public:
 #endif
+#if defined(FABLE_RETAIL_CTHINGDEADCREATURE_CREATE) && defined(FABLE_RETAIL_CTHINGDEADCREATURE_ANIMATION) && defined(FABLE_RETAIL_CTHINGGAMEOBJECT_LEVELSCRIPT)
+    // Retail opt-in (NF80, q10920: row 0x00835C80 Create): Ego_r.pdb ??0CThingDeadCreature@@QAE@XZ (out of line, 0x00835C80 calls
+    // 0x00835C20; the landed Alloc 0x00527300 binds it), ?Create@CThingDeadCreature@@SIPAV1@JABVC3DVector@@JABVCCharString@@ABVCAnimFilterBase@@@Z
+    // (public static __fastcall, 0x00835C80), ?SetAnimationFilter@CThingDeadCreature@@QAEXABVCAnimFilterBase@@@Z (public) and
+    // ?ConstructFromParams@CThingDeadCreature@@IAE_NJABVC3DVector@@JABVCCharString@@@Z (protected); retail has no out-of-line copy of the
+    // last two: Create expands them (0x00835CB0..0x00835CC5 the CThingGameObject::ConstructFromParams 0x008388D0 call with 0, 0, 0, true;
+    // 0x00835D94..0x00835DA5 `call [edx+4]` = Clone, then CCountedPointer<CAnimFilterBase>::Reset 0x00836580). Needs engine/CAnimFilterBase.h.
+public:
+    CThingDeadCreature();                                                // 0x00835C20
+    static CThingDeadCreature* __fastcall Create(long defIndex, const C3DVector& position, long a3, const CCharString& scriptName,
+                                                 const CAnimFilterBase& filter);   // 0x00835C80
+    void SetAnimationFilter(const CAnimFilterBase& filter) { PAnimFilter.Reset(filter.Clone()); }
+protected:
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long a3, const CCharString& scriptName)
+    {
+        return CThingGameObject::ConstructFromParams(defIndex, position, a3, 0, scriptName, 0, 0, true);
+    }
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGDEADCREATURE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
@@ -51,5 +73,5 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CThingDeadCreature)==0xf0);
+FABLE_STATIC_ASSERT_AT(54, sizeof(CThingDeadCreature)==0xf0);
 #endif

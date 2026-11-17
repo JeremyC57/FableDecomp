@@ -38,6 +38,13 @@ protected:
 public:
     long NoRefs;
     bool operator==(const CWideStringData& other) const { const std::basic_string<unsigned short>& other_data=other.Data; return Data==other_data; }
+#ifdef FABLE_RETAIL_CWIDESTRING_TOCHARSTRING_BODY
+    // Retail opt-in (NF80, q10939: row 0x0099B2C0 CWideString::ToCharString): Ego_r.pdb ?GetLength@CWideStringData@@QBEJXZ and
+    // ?PeekStringData@CWideStringData@@QAEPB_WXZ (public; the STLport string's finish - start and start), expanded in retail under
+    // the inline CWideString accessors below (0x0099B2D0..0x0099B2D5 `mov eax,[ecx+4] ; sub eax,[ecx] ; sar eax,1`, 0x0099B32C).
+    long GetLength() const { return Data.size(); }
+    const wchar_t* PeekStringData() { return Data.c_str(); }
+#endif
 #ifdef FABLE_RETAIL_CWIDESTRING_TEXT_EQ
     // Retail opt-in (chunk 784, row 0x00491AD2 CSubtitleRenderer::ProcessEmbeddedHighlightTags): the text comparison under the
     // inline CWideString::operator==(const wchar_t*) below; retail calls the STLport operator== 0x00404280 out of line
@@ -141,6 +148,32 @@ public:
     bool operator<(const CBasicString& other) const;                 // 0x00429950 (CBasicString<char>)
 #endif
 };
+#if defined(FABLE_RETAIL_CCHARSTRING_LESS_INLINE) && defined(FABLE_RETAIL_CBASICSTRING_LESS_BODY)
+// Retail opt-in (NF80, q10763 / q10923): the one definition of Ego_r.pdb ??M?$CBasicString@D@@QBE_NABV0@@Z (0x00429950), as a
+// template member so every object that sees it emits a pick-any COMDAT (selection 2) and the copies link together. Never inlined:
+// the includer still calls 0x00429950 but sees that it writes no memory (0x009EFB80 insert_unique and the _M_find rows keep the key
+// in a register across the call). The self row 0x00429950 explicitly instantiates it. Retail inlines the three-way compare and
+// tests its result `< 0` on each of the three return paths (`xor ecx,ecx ; test eax,eax ; setl cl`); the other string's pointer is
+// read first and is the loop's induction pointer.
+template<class T>
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+bool CBasicString<T>::operator<(const CBasicString<T>& other) const
+{
+    const T* b = other.PData;
+    const T* a = PData;
+    long result;
+    for (;;) {
+        if (*a == 0 && *b == 0) { result = 0; break; }
+        if (*a < *b) { result = -1; break; }
+        if (*a > *b) { result = 1; break; }
+        ++a;
+        ++b;
+    }
+    return result < 0;
+}
+#endif
 class CCharStringData
 { public:
     CBasicString<char> Data;
@@ -197,8 +230,17 @@ public:
 #endif
     ~CWideString();
     operator const wchar_t*() const;
+#if defined(FABLE_RETAIL_CWIDESTRING) && defined(FABLE_RETAIL_CWIDESTRING_TOCHARSTRING_BODY)
+    // Retail opt-in (NF80, q10939: row 0x0099B2C0 CWideString::ToCharString): Ego_r.pdb / FableWin.pdb ?GetAsCharArray@CWideString@@QBEPB_WXZ
+    // (out of line at 0x0099AF10) and ?GetLength@CWideString@@QBEJXZ, defined in the CWideString TU and expanded there: ToCharString
+    // tests the data pointer for each length (0x0099B2C4..0x0099B2D5, `xor eax,eax` when null) and reads the text through the null
+    // select (0x0099B31A..0x0099B32E: L"" at 0x0129A8E0 when null, else the string's start).
+    const wchar_t* GetAsCharArray() const { return !PStringData ? L"" : PStringData->PeekStringData(); }   // 0x0099AF10
+    long GetLength() const { return !PStringData ? 0 : PStringData->GetLength(); }
+#else
     const wchar_t* GetAsCharArray() const;                     // 0x0099AF10 ?GetAsCharArray@CWideString@@QBEPBGXZ
     long GetLength() const;
+#endif
     long FindCharPos(wchar_t c) const;                         // 0x0099B070 ?FindCharPos@CWideString@@QBEJG@Z
 #ifdef FABLE_RETAIL_CWIDESTRING_SPRINTFDYNAMIC
     // Both PDB name sets and the neighbouring formatting methods identify this variadic member.
@@ -387,6 +429,13 @@ public:
     // (same opt-in) Ego_r.pdb ??MCCharString@@QBE_NABV0@@Z is inline in retail: _M_find 0x004B9370 tests the two PStringData
     // pointers (equal: false; this null: true; other null: false) and calls CBasicString<char>::operator< 0x00429950 on the Data
     // members (the landed 0x004B9370 model).
+#ifdef FABLE_RETAIL_CCHARSTRING_FORCEINLINE_LESS
+    // Per-TU inline opt-in (NF80, q10923: the /Os STLport heap / insertion-sort TUs of the CVectorMap<CCharString, ..> sorts,
+    // rows 0x004DFDBB / 0x004E1C8A; like FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQUALSCI): retail expands the pointer tests in
+    // place before the call to 0x00429950 (0x004DFDDB..0x004DFDE5, call at 0x004DFDEA) where under optimize("s") the plain inline body is
+    // called out of line.
+    FABLE_FORCEINLINE
+#endif
     bool operator<(const CCharString& other) const {
         if(other.PStringData==PStringData) return false;
         if(PStringData==0) return true;

@@ -12,60 +12,23 @@
 //   map's pair<CCharString, CRegisteredTCInfo> is 16 bytes and the info sits at +4.
 // Shape: `it = LowerBound(name); if (it == end() || name < it->first) return 0; return &it->second;` with the inline CCharString operator< (same pointer: not less; null name: less; null key: not less;
 //   else the string compare).
-class CThing;
-class CTCBase;
-
-class CBasicString {
-public:
-    bool operator<(const CBasicString* other) const;        // 0x00429950 (CBasicString<char>::operator<)
-};
-class CCharString {
-public:
-    CBasicString* PString;                                  // +0x00 (CCharStringData*)
-    bool operator<(const CCharString& o) const
-    {
-        if (o.PString == PString)
-            return false;
-        if (!PString)
-            return true;
-        if (!o.PString)
-            return false;
-        return PString->operator<(o.PString);
-    }
-};
-
-class CTCBase {
-public:
-    class CRegisteredTCInfo {                               // 12 bytes
-    public:
-        CTCBase*      (__fastcall* AllocFunc)(CThing& owner);   // +0x00
-        unsigned long DriverType;                           // +0x04
-        CCharString   Name;                                 // +0x08
-    };
-    static const CRegisteredTCInfo* __fastcall GetPTCInfo(const CCharString& name);
-};
-
-namespace std {
-template <class _T1, class _T2> class pair {
-public:
-    _T1 first;                                              // +0x00
-    _T2 second;                                             // +0x04
-};
-}
-
-template <class K, class V> class CRegisteredTCMap {        // CVectorMap<K, V, CKeyPairCompareLess<K, V> > (its vector words)
-public:
-    std::pair<K, V>* m_first;                               // 0x013BA89C
-    std::pair<K, V>* m_last;                                // 0x013BA8A0
-    std::pair<K, V>* end() { return m_last; }
-    std::pair<K, V>* LowerBound(const K& key);              // 0x006870C0
-};
-extern CRegisteredTCMap<CCharString, CTCBase::CRegisteredTCInfo> g_RegisteredTCs;   // 0x013BA89C
+// NF80 (q10923): moved onto engine/CTCBase.h (FABLE_RETAIL_CTCBASE_REGISTRY: CRegisteredTCInfo and the static RegisteredTCs
+//   CVectorMap at 0x013BA89C; the overlay's FABLE_RETAIL_CTCBASE_REGISTRY_LOOKUP declares AllocateTC / GetPTCInfo / Clone) and fable_string.h (the inline
+//   CCharString::operator< over the one CBasicString<char>::operator< body, FABLE_RETAIL_CBASICSTRING_LESS_BODY); the local
+//   CBasicString / CCharString / CTCBase / pair / CRegisteredTCMap models and the made-up g_RegisteredTCs are gone.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE_REGISTRY
+#define FABLE_RETAIL_CTCBASE_REGISTRY_LOOKUP
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+#define FABLE_RETAIL_CBASICSTRING_LESS_BODY
+#include "fable_string.h"
+#include "engine/CTCBase.h"
 
 const CTCBase::CRegisteredTCInfo* __fastcall CTCBase::GetPTCInfo(const CCharString& name)
 {
-    std::pair<CCharString, CRegisteredTCInfo>* it = g_RegisteredTCs.LowerBound(name);
-    if (it == g_RegisteredTCs.end() || name < it->first)
+    CVectorMap<CCharString, CRegisteredTCInfo>::iterator it = RegisteredTCs.LowerBound(name);
+    if (it == RegisteredTCs.end() || name < it->first)
         return 0;
     return &it->second;
 }

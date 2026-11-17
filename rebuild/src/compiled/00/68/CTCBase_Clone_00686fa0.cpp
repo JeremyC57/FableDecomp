@@ -10,65 +10,25 @@
 // static AllocTC(name, owner) (VC keeps the returned pointer in esi) and dies at the end of that statement, before the copy call
 // (made without a null test). The found test is `it != end && !(name < it->first)` with the inline CCharString operator<
 // written `o.PString == PString` first (key loaded before the name), then the two null tests.
-struct CBasicString {
-    bool operator<(const CBasicString* other) const;    // 0x00429950 (CBasicString<char>::operator<)
-};
-class CCharString { public:
-    CBasicString* PString;
-    ~CCharString();                             // 0x0099EAE0
-    bool operator<(const CCharString& o) const
-    {
-        if (o.PString == PString)
-            return false;
-        if (!PString)
-            return true;
-        if (!o.PString)
-            return false;
-        return PString->operator<(o.PString);
-    }
-};
-class CThing;
-class CTCBase;
-struct CRegisteredTCInfo {
-    CTCBase* (__fastcall* Alloc)(CThing& owner);
-};
-struct CRegisteredTCPair {
-    CCharString first;
-    CRegisteredTCInfo second;
-};
-struct CRegisteredTCMap {                       // CVectorMap<CCharString, CTCBase::CRegisteredTCInfo>
-    CRegisteredTCPair* m_first;                 // 0x013BA89C
-    CRegisteredTCPair* m_last;                  // 0x013BA8A0
-    CRegisteredTCPair* LowerBound(const CCharString& key);   // 0x006870C0
-};
-extern CRegisteredTCMap g_RegisteredTCs;        // 0x013BA89C
-
-class CTCBase {
-public:
-    virtual ~CTCBase();
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
-    virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void CopyFrom(const CTCBase& other);     // slot 12 (+0x30)
-    virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();
-    virtual void v19(); virtual void v20(); virtual void v21();
-    virtual CCharString GetClassTypeName() const;   // slot 22 (+0x58)
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCBase* Clone();
-    static CTCBase* AllocTC(const CCharString& name, CThing& owner)
-    {
-        CRegisteredTCPair* it = g_RegisteredTCs.LowerBound(name);
-        if (it != g_RegisteredTCs.m_last && !(name < it->first))
-            return it->second.Alloc(owner);
-        return 0;
-    }
-};
+// NF80 (q10923): moved onto engine/CTCBase.h (FABLE_RETAIL_CTCBASE_REGISTRY: CRegisteredTCInfo and the static RegisteredTCs
+//   CVectorMap at 0x013BA89C; the overlay's FABLE_RETAIL_CTCBASE_REGISTRY_LOOKUP declares AllocateTC / GetPTCInfo / Clone, and its FABLE_RETAIL_CTCBASE_ALLOCATETC_BODY
+//   gives the inline AllocateTC 0x00686F10 that retail expands here) and fable_string.h (the inline
+//   CCharString::operator< over the one CBasicString<char>::operator< body, FABLE_RETAIL_CBASICSTRING_LESS_BODY); the local
+//   CBasicString / CCharString / CTCBase / pair / CRegisteredTCMap models and the made-up g_RegisteredTCs are gone.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE_REGISTRY
+#define FABLE_RETAIL_CTCBASE_REGISTRY_LOOKUP
+#define FABLE_RETAIL_CTCBASE_ALLOCATETC_BODY
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+#define FABLE_RETAIL_CBASICSTRING_LESS_BODY
+#include "fable_string.h"
+#include "engine/CTCBase.h"
 
 CTCBase* CTCBase::Clone()
 {
     CThing* owner = ParentThing;
-    CTCBase* clone = AllocTC(GetClassTypeName(), *owner);
-    clone->CopyFrom(*this);
+    CTCBase* clone = AllocateTC(GetClassTypeName(), *owner);
+    clone->Copy(*this);
     return clone;
 }

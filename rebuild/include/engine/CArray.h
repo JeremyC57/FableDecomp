@@ -135,6 +135,13 @@ public:
     // ?GetByteSize@?$CArray@..@@QBEIXZ (52 instances, e.g. CArray<float> 0x0179E49C), inline in retail: size() * sizeof(T). Body only.
     unsigned int GetByteSize() const { return this->size() * sizeof(T); }
 #endif
+#ifdef FABLE_RETAIL_CARRAY_SIZEOF
+    // Nested opt-in (NF80, q10931: row 0x009C8060 NGameText::CGroupEntry::CGroupEntry): FableWin.pdb ?Sizeof@?$CArray@J@@QBEKXZ
+    // (0x02F77E50; no Ego_r.pdb or Fable.exe copy), inline in retail: the object plus its reserved storage (0x009C8096..0x009C80A6
+    // `mov edi,[esi+24h] ; sub edi,[esi+1Ch] ; sar edi,2` then `lea edi,[edi*4+..]`). Body only.
+    // (the reserved element count written as STLport's capacity(), which fable_containers.h defines only under FABLE_RETAIL_STLP_VECTOR_C)
+    unsigned long Sizeof() const { return sizeof(*this) + size_t(this->_M_end_of_storage._M_data - this->_M_start) * sizeof(T); }
+#endif
 #ifdef FABLE_RETAIL_CARRAY_DEALLOCATEUNUSEDMEMORY
     // Chunk 767 (row 0x009E5350 CSymbolMap::DeallocateUnusedMemory): Ego_r.pdb ?DeallocateUnusedMemory@?$CArray@..@@QAEXXZ (CMapInfo,
     // pair<K,CAnimationEntry>, unsigned short, unsigned char ... instances), out of line in retail (the pair<CCharString,
