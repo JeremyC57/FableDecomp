@@ -23,11 +23,22 @@ public:
     // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?Release@?$CTBaseSingleton@VCFileInstaller@@@@SIXXZ (out of line in retail at 0x00404490: PClass.Reset(0)).
     static void FABLE_FASTCALL Release();
 #endif
+#ifdef FABLE_RETAIL_CTBASESINGLETON_ISALLOCATED
+    // NF76 opt-in (row 0x00599E3F NUISystem::CFrontEndManager::Update): FableWin.pdb ?IsAllocated@?$CTBaseSingleton@VCFileInstaller@@@@SI_NXZ,
+    // inline in retail (the PClass object word tested in place: `cmp dword ptr [013CA818h],ebx ; je`, 0x00599E6E). Body only.
+    static bool FABLE_FASTCALL IsAllocated() { return PClass.Data != 0; }
+#endif
+#ifdef FABLE_RETAIL_CTBASESINGLETON_GET_DECL
+    // NF76 per-TU opt-in (row 0x00599E3F): Get() declared only; that TU calls the CTBaseSingleton<CFileInstaller> COMDAT
+    // (Ego_r.pdb ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ, retail 0x00404440) where the body below would expand.
+    static T& FABLE_FASTCALL Get();
+#else
     static T& FABLE_FASTCALL Get()
     {
         if (PClass.IsNull())
             PClass.Reset(new T);
         return *PClass;
     }
+#endif
 };
 #endif

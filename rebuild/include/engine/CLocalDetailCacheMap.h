@@ -19,6 +19,12 @@ class CEngineStaticMapFileBlockManager;
 #pragma pack(push, 1)
 class CLocalDetailCacheMap {
 public:
+#ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_OPENSTATICMAP
+    // NF76 opt-in (row 0x00B42530 CEngineMap::OpenDevelopmentStaticMap): Ego_r.pdb 0x00A91E30
+    // ?OpenStaticMap@CLocalDetailCacheMap@@QAEXPAVCEngineStaticMapFileBlockManager@@AAVCDataInputStream@@@Z (out of line at 0x00BDF010).
+    // Declaration only; no layout change.
+    void OpenStaticMap(CEngineStaticMapFileBlockManager* block_manager, class CDataInputStream& stream);   // 0x00BDF010
+#endif
 #ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_QUADTREE
     class CQuadTreeElement;
     class CObjectCacheGroupCollection;
@@ -33,13 +39,13 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CLocalDetailCacheMap) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, LockedFromMemoryRelocation) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, FileBlockManager) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, Map) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, QuadTree) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, AreaUpdateList) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, CollectionTypePalette) == 0x64);
+FABLE_STATIC_ASSERT_AT(36, sizeof(CLocalDetailCacheMap) == 0x70);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CLocalDetailCacheMap, LockedFromMemoryRelocation) == 0x0);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CLocalDetailCacheMap, FileBlockManager) == 0x4);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CLocalDetailCacheMap, Map) == 0x8);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CLocalDetailCacheMap, QuadTree) == 0xc);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CLocalDetailCacheMap, AreaUpdateList) == 0x58);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CLocalDetailCacheMap, CollectionTypePalette) == 0x64);
 
 #ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_QUADTREE
 // Retail opt-in (Codex pass17): both PDB records prove the nested class, CMovableResource base, size76.
@@ -74,7 +80,7 @@ private:
     bool StaticContentsLoaded:1;
     bool Loading:1;
 };
-FABLE_STATIC_ASSERT(sizeof(CLocalDetailCacheMap::CQuadTreeElement)==76);
+FABLE_STATIC_ASSERT_AT(77, sizeof(CLocalDetailCacheMap::CQuadTreeElement)==76);
 #ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_CALCBOUNDINGSPHERE
 // Retail opt-in (wf15, row 0x00BDF100): Ego_r.pdb CObjectCacheGroupCollection (vptr +0, Next +4, BoundingSphere +8,
 // MaxFadeDistance +0x18, PrimitiveTypeMask +0x1C, ...); retail is 0x38 bytes (no SourceObjectCount). Leading members only.

@@ -9684,7 +9684,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00549230	Initialise	NUISystem::CTextSlider	__thiscall	void	1	CTextSlider *	1	yes	accepted									
 00549440	ProcessEvent	NUISystem::CTextSlider	__thiscall	void	2	CTextSlider *,EEvent	1	yes	accepted									
 00549a00	~CTextSlider	NUISystem::CTextSlider	__thiscall	void	1	CTextSlider *	1	yes	accepted									
-00549b20	Initialize	NUISystem::CTextSlider	unknown	undefined	0		0	yes	accepted									
+00549b20	GetDataFromDef	NUISystem::CTextSlider	unknown	undefined	0		0	yes	accepted									
 00549f60	CTextSlider	NUISystem::CTextSlider	__thiscall	undefined	2	CTextSlider *,long	0	yes	accepted									
 0054a140	_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>	std	__fastcall	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *	5	_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_0054a140.cpp
 0054a180	__uninitialized_fill_n<CCountedPointer<NUISystem::CAction>*,unsigned int,CCountedPointer<NUISystem::CAction> >	std	__fastcall	void	6	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,uint,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -10504,7 +10504,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0057713f	OnCreate	CTCInventoryExperience	__thiscall	void	1	CTCInventoryExperience *	1	yes	accepted									
 00577216	OpenInventoryInternal	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0057770a	vfunc_89	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005778ca	vfunc_90	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005778ca	CloseInventoryInternalPC	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00577ac0	OpenInventoryInternalPC	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0057832d	CTCInventoryExperience	CTCInventoryExperience	__thiscall	undefined	2	CTCInventoryExperience *,CThing *	0	yes	accepted									
 0057846f	~CTCInventoryExperience	CTCInventoryExperience	unknown	undefined	0		0	yes	accepted									
@@ -11177,7 +11177,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0059899a	LoadProfile	NUISystem::CFrontEndManager	__thiscall	void	2	CFrontEndManager *,CWideString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CFrontEndManager_LoadProfile_0059899a.cpp
 00598a1c	CFrontEndManager::Init2	CFrontEndManager	unknown	undefined	0		0	yes	accepted									
 00599d5c	DoPressStart	NUISystem::CFrontEndManager	__thiscall	void	1	CFrontEndManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CFrontEndManager_DoPressStart_00599d5c.cpp
-00599e3f	Update	CFrontEndManager	__thiscall	void	2	CFrontEndManager *,float	1	yes	accepted									
+00599e3f	Update	NUISystem::CFrontEndManager	__thiscall	void	2	CFrontEndManager *,float	1	yes	accepted									
 0059a238	Action	NUISystem::CFrontEndManager	__thiscall	void	2	CFrontEndManager *,CCountedPointer<NUISystem::CAction> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CFrontEndManager_Action_0059a238.cpp
 0059a8f3	GetMemoryFootprint	NThingMap::CThingMapManager	__thiscall	long	1	CThingMapManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\FrontEndDequeIterator_Distance_0059a8f3.cpp
 0059a959	SetNode	FrontEndHistoryDequeIterator	unknown	undefined	0		0			accepted	gapscan							

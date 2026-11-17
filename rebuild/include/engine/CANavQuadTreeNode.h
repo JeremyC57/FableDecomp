@@ -14,6 +14,9 @@
 #include "engine/C2DVector.h"
 #include "engine/C2DBoxF.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR
+#include "engine/CBaseClassNonCopyable.h"
+#endif
 class CNavRegion;
 class CAFile;
 template <class T, int N> class CSmallVector;
@@ -33,8 +36,20 @@ enum ENavQuadTreeNodeType {                          // Ego_r enum; enumerator n
     NAV_NODE_QUADTREE = 0, NAV_NODE_NAVIGABLE = 1, NAV_NODE_BLOCKED = 2, NAV_NODE_SWITCHABLE = 3
 };
 #endif
-class CANavQuadTreeNode {
+class CANavQuadTreeNode
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR
+    : public CBaseClassNonCopyable
+#endif
+{
 public:
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR
+    // NF76 opt-in (row 0x00A79930, the generator CNavSwitchableLeafNode ctor): RTTI .?AVCANavQuadTreeNode@@ : CBaseClassNonCopyable
+    // (ghidra_out/rtti_bases.tsv; its out-of-line ctor 0x0099A2F0 is called first, 0x00A79939 / 0x00A772D9) and Ego_r.pdb
+    // ??0CANavQuadTreeNode@@QAE@ABVC2DVector@@EE@Z, inline in those ctors (Position, level, layer, LeafNode = true, Blocked = false in
+    // init-list order: the landed out-of-line copy 0x00A76370). Parameter names Ego_d.pdb. The base adds no member (vptr only).
+    CANavQuadTreeNode(const C2DVector& pos, unsigned char quad_tree_level, unsigned char nav_layer)
+        : Position(pos), QuadTreeLevel(quad_tree_level), NavLayer(nav_layer), LeafNode(true), Blocked(false) { }
+#endif
     virtual ~CANavQuadTreeNode();                                                        // slot 0
     virtual const CSmallVector<const CANavQuadTreeNode*, 8>* GetNeighbours() const;      // slot 2
     virtual CSmallVector<const CANavQuadTreeNode*, 8>* GetNeighbours();                  // slot 1

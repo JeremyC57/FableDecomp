@@ -1,0 +1,14 @@
+entry	queue_address	correct_symbol	status	binders_ported	note
+nf41:e125	0x009FBF90	?ListInsert@CResource@@AAEXPAV1@0@Z	done	1	all slice binders ported: 0x0041B550
+nf41:e124	0x009FBFB0	?ListRemove@CResource@@AAEXXZ	done	1	all slice binders ported: 0x0041B550
+nf41:e164	0x009FE620	?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z	done	1	all slice binders ported: 0x0041B550
+nf41:e154	0x009FCBA0	?Uninitialise@CGraphicFrameData@@QAEXXZ	done	1	all slice binders ported: 0x0041B550
+nf44:76	0x012366f4	??_7CActionParamSLONG@NUISystem@@6B@	done	1	all slice binders ported: 0x00549B20
+nf44:54	0x005BD597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	done	1	slice binder 0x005778CA ported (RM + PASS) and binds the queued spelling; outside the slice the twin 0x0057770A CloseInventoryInternal (NF70 blocked/port, unclaimed) still binds ?OnInventoryClosed@CTCInventoryBase@@QAEXXZ: the 0x005778CA recipe ports it (NOTES)
+nf44:7	005ede93	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	done	1	slice binder 0x005778CA ported (RM + PASS) and binds the queued spelling; outside the slice the twin 0x0057770A still binds the CTCHeroAbilities stand-in (NF70 q10801; NOTES)
+q10440	0x00594FA9	?CloseVirtualKeyboard@CFrontEndManager@NUISystem@@QAEX_N@Z	done	1	all slice binders ported: 0x00599E3F
+q10441	0x00599E3F	?Update@CFrontEndManager@NUISystem@@QAEXM@Z	done	1	all slice binders ported: 0x00599E3F
+nf41:e53	0065f17b	?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	done	1	all slice binders ported: 0x006D53C0
+q10878	0x00A84160	??$sort@PAU?$pair@_K_N@std@@V?$CKeyPairCompareLess@_K_N@@@std@@YIXPAU?$pair@_K_N@0@0V?$CKeyPairCompareLess@_K_N@@@Z	done	1	all slice binders ported: 0x00A79930
+q10881	0x009D58D0	?GetAsyncEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z	done	2	all slice binders ported: 0x00B42530 0x00B41FA0
+q10886	0x00970B60	?ClearCoverThing@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ	done	1	all slice binders ported: 0x00970CD0

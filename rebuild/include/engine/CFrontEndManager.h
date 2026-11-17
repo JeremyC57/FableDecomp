@@ -15,6 +15,21 @@ public:
  static CFrontEndManager* __fastcall GetInstance();
  virtual void ProcessEvent(EEvent);
  void CloseVirtualKeyboard(bool);
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_UPDATE
+ // NF76 (row 0x00599E3F): the existing UPDATE opt-in also declares Update in this full-layout branch (Ego_r.pdb
+ // ?Update@CFrontEndManager@NUISystem@@QAEXM@Z, public). Declaration only.
+ void Update(float);                                                                                     // 0x00599E3F
+#endif
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_VIRTUALKEYBOARD
+ // NF76 opt-in (row 0x00599E3F Update): Ego_r.pdb ?LaunchVirtualKeyboard@CFrontEndManager@NUISystem@@QAEXXZ (0x00596917),
+ // ?GotoNextScreen@CFrontEndManager@NUISystem@@QAEXPAVCComponent@2@_N@Z (0x00596763) and the protected
+ // ?CreateNewProfile@CFrontEndManager@NUISystem@@IAE_NAAVCWideString@@@Z (0x0059697A), all out of line. Declarations only.
+ void LaunchVirtualKeyboard();                                                                           // 0x00596917
+ void GotoNextScreen(CComponent*,bool);                                                                  // 0x00596763
+protected:
+ bool CreateNewProfile(CWideString&);                                                                    // 0x0059697A
+public:
+#endif
 #ifdef FABLE_RETAIL_CFRONTENDMANAGER_GOTOPREVIOUSSCREEN
  // NF57 opt-in (q10440, row 0x00594FA9 CloseVirtualKeyboard): Ego_r.pdb 0x006043E7 / FableWin.pdb 0x02010F48
  // ?GotoPreviousScreen@CFrontEndManager@NUISystem@@QAEX_N@Z, out of line at 0x00597BF2. Declaration only.

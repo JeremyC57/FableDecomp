@@ -1520,7 +1520,12 @@ public:
     // with the input-iterator __distance loop inlined (NUISystem::CList::ChangeState 0x0053A0A1 counts the
     // GPreviousSelected nodes in place: mov ecx,[ecx] ; inc edi ; cmp ecx,eax ; jne); push_front(x) is insert(begin(), x)
     // (out of line in that TU at 0x0053CA3C).
-#ifdef FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE
+#if defined(FABLE_RETAIL_STLP_LIST_SIZE_DECL)
+    // NF76 per-TU opt-in (row 0x006D53C0 CTCFollowed::FrameUpdate): STLport 4.6 _list.h size(), declared only. That TU calls the
+    // list<CIntelligentPointer<CThingAICreature> > instance out of line (`mov ecx,edi ; call 0x0065F17B` at 0x006D562F, the GFRandom
+    // range; ?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@..@std@@@std@@QBEIXZ, queue entry nf41:e53).
+    size_t size() const;
+#elif defined(FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE)
     // chunk 849 (row 0x0057E2F1): STLport 4.6's own spelling, `size_type __result = distance(begin(), end()); return __result;`. The
     // copy-of-first loop keeps the head in eax and walks ecx (`mov eax,[ebx+1D8h] ; mov ecx,[eax] ; .. mov ecx,[ecx] ; inc edx ;
     // cmp ecx,eax`, 0x0057EBA3, before the vector reserve); the for-loop form above swaps the two CPU locations.

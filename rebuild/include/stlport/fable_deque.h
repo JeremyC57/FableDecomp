@@ -65,6 +65,13 @@ public:
  } // STLport4.6 _deque.h / _deque.c, expanded in0040C790
 #endif
  deque():_Deque_base<T,A>(A(),0){}
+#if defined(FABLE_RETAIL_STLP_STACK_TOP_POP) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
+ // NF76 per-TU opt-in (row 0x00599E3F NUISystem::CFrontEndManager::Update): STLport 4.6 _deque.h back() / pop_back(), declared only:
+ // that TU calls the deque<NUISystem::CComponent*> COMDATs (back 0x0059B039, `mov ecx,edi ; call` at 0x00599E9C; pop_back 0x0059AEE5,
+ // 0x00599EFF) from the inline stack::top() / pop() below.
+ reference back();
+ void pop_back();
+#endif
  ~deque(){std::_Destroy(this->_M_start,this->_M_finish);}
 #if defined(FABLE_RETAIL_STLP_DEQUE_PUSH_BACK_OUTOFLINE) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
  // Opt-in (wf13, row 0x00492973 CSubtitleRenderer::SetText): STLport 4.6 push_back, declared only: retail calls the
@@ -125,7 +132,15 @@ protected:
  Sequence c;
 };
 #endif
+#ifdef FABLE_RETAIL_STLP_STACK_TOP_POP
+// NF76 per-TU opt-in (row 0x00599E3F): STLport 4.6 _stack.h top() / pop() (`return c.back();` / `c.pop_back();`), inline.
+template<class T,class Sequence=deque<T> >class stack {protected:Sequence c;public:stack():c(){}explicit stack(const Sequence& s):c(s){}
+ typename Sequence::reference top(){return c.back();}
+ void pop(){c.pop_back();}
+};
+#else
 template<class T,class Sequence=deque<T> >class stack {protected:Sequence c;public:stack():c(){}explicit stack(const Sequence& s):c(s){}};
+#endif
 }
 
 #endif

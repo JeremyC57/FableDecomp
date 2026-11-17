@@ -1,0 +1,29 @@
+addr       parity           behav  name
+0041b550   RELOCATION_MATCH PASS   SetGraphicIndex
+00549b20   WARN STANDIN_LEAF ?GetDataFromDef@CTextSlider@NUISystem@@QAEXXZ (catalog NUISystem::CTextSlider::Initialize; names another function)
+00549b20   RELOCATION_MATCH PASS   Initialize
+005778ca   WARN RELOC_NAME: ?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+005778ca   RELOCATION_MATCH PASS   vfunc_90
+00599e3f   WARN RELOC_NAME: ?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ -> 0059b039 labelled 'CScreenStack::Top'
+00599e3f   WARN RELOC_ALIAS: __wcsicmp -> 00f3fb84 is the import thunk 'MSVCR71.DLL::_wcsicmp'
+00599e3f   RELOCATION_MATCH PASS   Update
+006d53c0   RELOCATION_MATCH PASS   FrameUpdate
+00a79930   WARN RELOC_NAME: ??$sort@PAU?$pair@_K_N@std@@V?$CKeyPairCompareLess@_K_N@@@std@@YIXPAU?$pair@_K_N@0@0V?$CKeyPairCompareLess@_K_N@@@Z -> 00a84160 labelled 'std::sort<std::pair<unsigned __int64,bool>*,CKeyPairCompareLess<unsigned __int64,bool> >'
+00a79930   RELOCATION_MATCH PASS   CNavSwitchableLeafNode
+00970cd0   WARN RELOC_NAME: ?IsOccupied@CTCSinglePersonOccupiable@@QBE_NXZ -> 0087c3f0 labelled '_global::IsThingAlive_0087c3f0'
+00970cd0   WARN RELOC_NAME: ?SetOccupier@CTCSinglePersonOccupiable@@QAEXPAVCThingCreatureBase@@@Z -> 0087c390 labelled '_unattributed::AssignTarget_0087c390'
+00970cd0   RELOCATION_MATCH PASS   GetHiddenCoverPosAndSetUpCoverThing
+00b42530   RELOCATION_MATCH PASS   OpenDevelopmentStaticMap
+00b41fa0   WARN RELOC_NAME: ?ReadDataNonAsync@CBankFileAsyncEntry@@QAEXKPAXK@Z -> 009d52b0 labelled 'CEditTransactionBase::ActionSetEngineTheme'
+00b41fa0   RELOCATION_MATCH PASS   LoadWaterData
+
+WINS: 9
+  0041b550 RELOCATION_MATCH NUISystem::CSprite::?SetGraphicIndex@CSprite@NUISystem@@UAEXK@Z
+  00549b20 RELOCATION_MATCH NUISystem::CTextSlider::?GetDataFromDef@CTextSlider@NUISystem@@QAEXXZ
+  005778ca RELOCATION_MATCH CTCInventoryExperience::?CloseInventoryInternalPC@CTCInventoryExperience@@UAEX_N@Z
+  00599e3f RELOCATION_MATCH CFrontEndManager::?Update@CFrontEndManager@NUISystem@@QAEXM@Z
+  006d53c0 RELOCATION_MATCH CTCFollowed::?FrameUpdate@CTCFollowed@@UAEXXZ
+  00a79930 RELOCATION_MATCH CNavSwitchableLeafNode::??0CNavSwitchableLeafNode@@QAE@ABVC2DVector@@EEEABV?$vector@_KV?$allocator@_K@std@@@std@@@Z
+  00970cd0 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::?GetHiddenCoverPosAndSetUpCoverThing@CAIStateGroup_CreatureUseCoverBase@@IAE_NAAVC3DVector@@@Z
+  00b42530 RELOCATION_MATCH CEngineMap::?OpenDevelopmentStaticMap@CEngineMap@@QAEXAAVCStaticMapBankFile@@W4STATIC_MAP_OPEN_STATE@1@@Z
+  00b41fa0 RELOCATION_MATCH CEngineWorldMap::?LoadWaterData@CEngineWorldMap@@AAEXXZ

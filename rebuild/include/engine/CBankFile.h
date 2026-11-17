@@ -245,6 +245,11 @@ public:
     void AddEntry(const CCharString& symbol, unsigned long data_type, const CCharString& filename,
                   CCountedPointer<CBankStateBlock> state_block);                                        // 0x009CD620
 #endif
+#if defined(FABLE_RETAIL_CBANKFILE_PEEKENTRYUPDATEDATA) && defined(FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES)
+    // NF76 opt-in (row 0x00B41FA0 CEngineWorldMap::LoadWaterData): FableWin.pdb ?PeekEntryUpdateData@CBankFile@@QBEPBVCBankFileEntryUpdateData@@K@Z,
+    // inline in retail (`mov eax,[bank+2Ch] ; mov ebx,[eax+edi*4]`, 0x00B41FC1, the bank at CEngineWorldMap +0x34). Body only.
+    const CBankFileEntryUpdateData* PeekEntryUpdateData(unsigned long index) const { return UpdateData[index]; }
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_SETISSTATICMAP
     // Retail opt-in (chunk 2018, row 0x00B2CB40 CEngineSurfaceCompositionManager::CEngineSurfaceCompositionManager): the one-bool
     // `ret 4` setter 0x009D5230 under its established spelling ?SetIsStaticMap@CBankFile@@QAEX_N@Z (landed binders 0x00A42B80,

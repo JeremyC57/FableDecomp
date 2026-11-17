@@ -269935,8 +269935,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005778ca'
         Module = 'CTCInventoryExperience'
-        Source = '00/57/CTCInventoryExperience_vfunc90_005778ca.cpp'
-        TestSource = '00/57/CTCInventoryExperience_vfunc90_005778ca_test.cpp'
+        Source = '00/57/CTCInventoryExperience_CloseInventoryInternalPC_005778ca.cpp'
+        TestSource = '00/57/CTCInventoryExperience_CloseInventoryInternalPC_005778ca_test.cpp'
         PassPattern = '005778ca_TEST PASS'
     }
     [pscustomobject]@{
@@ -272706,9 +272706,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00599e3f'
-        Module = 'CFrontEndManager'
-        Source = '00/59/CFrontEndManager_Update_00599e3f.cpp'
-        TestSource = '00/59/CFrontEndManager_Update_00599e3f_test.cpp'
+        Module = 'NUISystem::CFrontEndManager'
+        Source = '00/59/NUISystemCFrontEndManager_Update_00599e3f.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_Update_00599e3f_test.cpp'
         PassPattern = '00599e3f_TEST PASS'
     }
     [pscustomobject]@{
@@ -273015,8 +273015,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0041b550'
         Module = 'NUISystem::CSprite'
-        Source = '00/41/NUISystemCSprite_vfunc145_0041b550.cpp'
-        TestSource = '00/41/NUISystemCSprite_vfunc145_0041b550_test.cpp'
+        Source = '00/41/NUISystemCSprite_SetGraphicIndex_0041b550.cpp'
+        TestSource = '00/41/NUISystemCSprite_SetGraphicIndex_0041b550_test.cpp'
         PassPattern = '0041b550_TEST PASS'
     }
     [pscustomobject]@{
@@ -276397,8 +276397,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00549b20'
         Module = 'NUISystem::CTextSlider'
-        Source = '00/54/NUISystemCTextSlider_Initialize_00549b20.cpp'
-        TestSource = '00/54/NUISystemCTextSlider_Initialize_00549b20_test.cpp'
+        Source = '00/54/NUISystemCTextSlider_GetDataFromDef_00549b20.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_GetDataFromDef_00549b20_test.cpp'
         PassPattern = '00549b20_TEST PASS'
     }
     [pscustomobject]@{

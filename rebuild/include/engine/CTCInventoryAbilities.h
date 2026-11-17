@@ -183,6 +183,12 @@ public:
     // retail: GetAbilityGraphicIndex 0x005EDE7F, GetAbilityMoralityCostFactor 0x005EDFF7, GetExperienceCostToUpgradeAbility
     // 0x005EE77C (ability, levels, bool).
     long GetAbilityGraphicIndex(EHeroAbility) const;
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_UPGRADEABILITY
+    // NF76 opt-in (row 0x005778CA CTCInventoryExperience::CloseInventoryInternalPC): Ego_r.pdb 0x0057DC0E / FableWin.pdb
+    // ?UpgradeAbility@CTCInventoryAbilities@@QAEXW4EHeroAbility@@@Z (public), out of line at 0x005EEEE6 (the landed 0x005747A3 binding).
+    // Declaration only.
+    void UpgradeAbility(EHeroAbility ability);                          // 0x005EEEE6
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_SETLEVEL
     // Opt-in (chunk 1005, row 0x00576C4F UndoBuyAbility): Ego_r.pdb ?SetAbilityLevelTo@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J@Z,
     // out of line at 0x005EE01A.

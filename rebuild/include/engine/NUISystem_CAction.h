@@ -29,7 +29,14 @@ public:
 #else
     CAction();                                                              // 0x0042BE50
 #endif
+#ifdef FABLE_RETAIL_CACTION_ADDPARAM_INLINE
+    // NF76 opt-in (row 0x00549B20 CTextSlider::GetDataFromDef): Ego_r.pdb ?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z is
+    // an inline member: its out-of-line COMDAT is 0x0053FDB0, and the CTextSlider TU expands it (0x00549CFD / 0x00549DEA: malloc(0xC),
+    // node value, link before end(); the same push_back body as 0x0053FDB0).
+    void AddParam(CActionParam* param) { UIActionParams.push_back(param); }
+#else
     void AddParam(CActionParam* param);                                     // 0x0053FDB0
+#endif
     void AddParam(CActionParam* param, CCountedPointer<CAction>& self);     // 0x0053FDE0
 #ifdef FABLE_RETAIL_CACTION_ISVALID
     // chunk 886 (row 0x0041E6D3 NUISystem::CManager::Action): FableWin.pdb ?IsValid@CAction@NUISystem@@QAE_NXZ (non-const), inline

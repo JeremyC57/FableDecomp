@@ -657,6 +657,12 @@ public:
     // The includer provides CCharString. Declaration only, no layout change.
     void OpenStaticMapForUse(CStaticMapBankFile* file, CCharString symbol);   // 0x00B6D4D0
 #endif
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_LOADNONPATCHDATA_DECL
+    // NF76 opt-in (row 0x00B41FA0 CEngineWorldMap::LoadWaterData): Ego_r.pdb ?LoadNonPatchData@CEngineWaterRenderer@@QAEXAAVCMemoryDataInputStream@@0@Z
+    // (public, out of line at 0x00B6DAF0) on the flattened default layout, for callers that reach the renderer through a pointer only.
+    // Declaration only, no layout change.
+    void LoadNonPatchData(class CMemoryDataInputStream& data, class CMemoryDataInputStream& header);   // 0x00B6DAF0
+#endif
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char        _pad_0x04[0x4];                     // +0x04
     unsigned char        _pad_0x08[0x4];                     // +0x08

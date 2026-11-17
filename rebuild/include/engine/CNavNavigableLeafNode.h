@@ -19,6 +19,11 @@ public:
 protected:
 #else
 public:
+#ifdef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_GENERATOR_CTOR
+    // NF76 opt-in (row 0x00A79930): the inline default ctor (no out-of-line copy in Ego_r.pdb; retail clears Start and the Size byte
+    // in place, `mov [esi+14h],ebp ; mov byte ptr [esi+18h],0` at 0x00A79972, `mov [ebx],ebp ; mov byte ptr [ebx+4],0` at 0x00A77322).
+    CSmallVector() : Start(0), Size(0) { }
+#endif
 #endif
     T*          Start;
     signed char Size;
@@ -27,6 +32,13 @@ class CNavNavigableLeafNode : public CANavQuadTreeNode {
 public:
     CNavNavigableLeafNode(const C2DVector& position, unsigned char quadTreeLevel, unsigned char navLayer, CAFile& file,
                           const std::list<CNavRegion>& regions, bool readPreferability);           // 0x00A772D0
+#ifdef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_GENERATOR_CTOR
+    // NF76 opt-in (row 0x00A79930): Ego_r.pdb ??0CNavNavigableLeafNode@@QAE@ABVC2DVector@@EEE@Z, inline in retail's generator
+    // CNavSwitchableLeafNode ctor (PRegion, Neighbours, PreferabilityCost stores at 0x00A7996F..0x00A79979; its vtable store is dead).
+    // Needs FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR. Parameter names Ego_d.pdb.
+    CNavNavigableLeafNode(const C2DVector& pos, unsigned char quad_tree_level, unsigned char nav_layer, unsigned char preferability_cost)
+        : CANavQuadTreeNode(pos, quad_tree_level, nav_layer), PRegion(0), PreferabilityCost(preferability_cost) { }
+#endif
     CNavRegion*                               PRegion;                           // +0x10
     CSmallVector<const CANavQuadTreeNode*, 8> Neighbours;                        // +0x14
     unsigned char                             PreferabilityCost;                 // +0x1c

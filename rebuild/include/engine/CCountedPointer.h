@@ -130,11 +130,18 @@ public:
             Info = 0;
     }
 #endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_COPY_DECL_ONLY
+    // NF76 per-TU opt-in (row 0x00B42530 CEngineMap::OpenDevelopmentStaticMap): that TU calls the copy constructor COMDAT
+    // (??0?$CCountedPointer@VCBankFileAsyncEntry@@@@QAE@ABV0@@Z 0x009D69A0, Ego_r.pdb / FableWin.pdb name set) for a by-value argument
+    // where the body below would be expanded. Declaration only; the retail body is the default one.
+    CCountedPointer(const CCountedPointer& other);
+#else
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
     {
         if (Info)
             ++Info->RefCount;
     }
+#endif
     template <class U> CCountedPointer(const CCountedPointer<U>& other) : Data(other.Data), Info(other.Info)
     {
         if (Info)

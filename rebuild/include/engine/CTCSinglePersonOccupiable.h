@@ -14,6 +14,14 @@ class CTCSinglePersonOccupiable : public CTCBase {
 public:
     void SetOccupier(CThingCreatureBase* occupier);                      // 0x0087C390
     CThingCreatureBase* GetOccupier() const;                             // 0x0087C3E0
+#ifdef FABLE_RETAIL_CTCSINGLEPERSONOCCUPIABLE_ISOCCUPIED
+    // NF76 opt-in (row 0x00970CD0 CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing): Ego_r.pdb
+    // ?IsOccupied@CTCSinglePersonOccupiable@@QBE_NXZ (donor order: retail 0x0087C3F0, called `mov ecx,esi ; call` at 0x00970D92 on the
+    // interface-172 component) and the inline ?StatGetInterfaceType@..@@SI?AW4ETCInterfaceType@@XZ (the GetTC key 0xAC at 0x00970D6F).
+    // Declarations only; no layout change.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_SINGLE_PERSON_OCCUPIABLE; }
+    bool IsOccupied() const;                                             // 0x0087C3F0
+#endif
 protected:
     CIntelligentPointer<CThingCreatureBase> POccupier;                   // +0x0c
 };

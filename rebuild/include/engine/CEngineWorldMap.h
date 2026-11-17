@@ -91,6 +91,11 @@ private:
     void AutoBuildWorldMapGrid();                                          // 0x00B40070
     void OpenStaticMapsUsingCommonRetailHeader(long entry);                // 0x00B420F0
 #endif
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_LOADWATERDATA
+    // NF76 opt-in (row 0x00B41FA0): Ego_r.pdb 0x009E2760 / FableWin.pdb 0x02D5FE00 ?LoadWaterData@CEngineWorldMap@@AAEXXZ (private).
+    // Declaration only.
+    void LoadWaterData();                                                  // 0x00B41FA0
+#endif
 #ifndef FABLE_RETAIL_CENGINEWORLDMAP_VISIBLEMAPLIST
     unsigned char       _pad_0x2c[0x4];                      // +0x2c VisibleMapList
 #endif
