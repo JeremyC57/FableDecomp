@@ -23,3 +23,9 @@
   `static float f = ...;` (0x007B6810: 0x0138366C is `f` in the height-2 block): never invent a global name before checking them.
   Tests: put boundary cases EXACTLY on every compared threshold (and read epsilon-like constants from a global, as retail does, so
   x87 rounding does not hide a `<` vs `<=` mutant).
+- e06/e07: a callee with a "descriptive" landed name often has a real PDB name: read the Ego_r / FableWin tables around its neighbours
+  (0x0085EE10 = NCreatureMode::IsTransmogrified). Before adding an opt-in, grep the header for an existing opt-in that already
+  declares what you need (a duplicate declaration breaks a TU defining both). Ego_d class records (types.txt LF_FIELDLIST) give
+  private statics and inline accessor names; a whole new header from them matched in 9 grades (0x00AB3870). An x87 order residue in
+  an expanded matrix transform closed with the OTHER PDB overload (two-argument TransformPoint). An overlay header that another
+  repo header pulls first stays invisible: include it right after fable_string.h in the row.
