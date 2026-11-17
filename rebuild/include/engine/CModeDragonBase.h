@@ -78,4 +78,18 @@ FABLE_STATIC_ASSERT_AT(51, offsetof(FABLE_CMODEDRAGONBASE_T, active) == 0x18);
 FABLE_STATIC_ASSERT_AT(52, offsetof(FABLE_CMODEDRAGONBASE_T, Filter) == 0x1c);
 FABLE_STATIC_ASSERT_AT(53, offsetof(FABLE_CMODEDRAGONBASE_T, PTarget) == 0x28);
 
+#if defined(FABLE_RETAIL_CMODEDRAGONBASE_MODEBASE) && defined(FABLE_RETAIL_CMODEDRAGONBASE_ONDEACTIVATE_INLINE) && defined(FABLE_RETAIL_CMODEBASE_ONDEACTIVATE_INLINE)
+// NF92 opt-in (round 7, q11224: rows 0x008E72B0 and 0x008E74F0): the one body of NCreatureMode::CModeDragonBase::OnDeactivate (Ego_r.pdb
+// 0x0090EE50 / FableWin.pdb ?OnDeactivate@CModeDragonBase@NCreatureMode@@UAEXXZ, slot 6): gravity back on through the physics component's slot 38
+// (+0x98), then the qualified CModeBase::OnDeactivate (inline, Active = false). NCreatureMode::CModeIntangible::OnDeactivate 0x008E74F0 expands
+// its qualified CModeDragonBase::OnDeactivate() call (`push 1 ; call [edx+98h]` then `mov byte ptr [esi+18h],0` before its own first call); the
+// out-of-line copy 0x008E72B0 is the one CModeDragonBase's vtable (0x012684F8) references. Needs engine/CThing.h (GetPhysicsTC) and
+// engine/CTCPhysicsBase.h included first, and FABLE_RETAIL_CMODEBASE_ONDEACTIVATE_INLINE. No layout change.
+inline void NCreatureMode::CModeDragonBase::OnDeactivate()
+{
+    ParentThing.GetPhysicsTC()->EnableGravity(true);
+    CTCCreatureModeManager::CModeBase::OnDeactivate();
+}
+#endif
+
 #endif // FABLE_ENGINE_CMODEDRAGONBASE_H

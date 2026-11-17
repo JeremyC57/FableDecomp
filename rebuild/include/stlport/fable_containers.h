@@ -1610,6 +1610,27 @@ public:
     // 0x0084ACE0, FableWin.pdb name set); a row that needs the same-TU body defines it as an explicit specialisation.
     void remove(const _Tp& __val);
 #endif
+#if defined(FABLE_RETAIL_STLP_LIST_REMOVE_NOINLINE) && !defined(FABLE_RETAIL_STLP_LIST_REMOVE_DECL)
+    // NF92 opt-in (round 7, q11218 row 0x004C8050 CThing::WorldUpdate): the STLport 4.6 _list.c remove(const _Tp&) body, visible but
+    // called out of line, as retail calls list<CTCBase*>::remove 0x004CC150 (?remove@?$list@PAVCTCBase@@V?$allocator@PAVCTCBase@@@std@@@std@@
+    // QAEXABQAVCTCBase@@@Z) from its implicit instantiation in the caller's TU. Seeing that the body keeps no reference to the value, VC7.1
+    // leaves the caller's component in a register across the call (0x004C8129: ebp reused for GetInterfaceType, the compare and the delete)
+    // and shares the argument's frame word with the later Find key. Needs the list erase(iterator) body (FABLE_RETAIL_STLP_LIST).
+#ifdef _MSC_VER
+    __declspec(noinline) void remove(const _Tp& __val) {
+#else
+    void remove(const _Tp& __val) {
+#endif
+        iterator __first = begin();
+        iterator __last = end();
+        while (__first != __last) {
+            iterator __next = __first;
+            ++__next;
+            if (__val == *__first) erase(__first);
+            __first = __next;
+        }
+    }
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_SORT
     // Per-TU opt-in (wf9, row 0x006F3A30): STLport 4.6 _list.h swap(list&), splice(iterator, list&, iterator) and the member
     // template sort(_StrictWeakOrdering) (`_S_sort(*this, __comp);`, retail forwarder 0x006F4040).
@@ -1742,6 +1763,18 @@ public:
     // _Unchecked_set), declared only. That retail TU calls the bitset<274> instance out of line (0x004CC090, landed as std::bitset::set,
     // `push type ; lea ecx,[UsingComponents] ; call` at 0x004C9F13) while it expands test() in place. No layout change.
     bitset<_Nb>& set(size_t n);
+#endif
+#ifdef FABLE_RETAIL_STLP_BITSET_RESET_DECL
+    // NF92 per-TU opt-in (round 7, q11218 binder row 0x004C9840 CThing::RemoveTC): STLport 4.6 _bitset.h reset(size_t) (the range check, then
+    // _Unchecked_reset), declared only. That retail TU calls the bitset<274> instance out of line (0x004CC0D0, `push type ; lea ecx,
+    // [UsingComponents] ; call`), the twin of NF90's set() 0x004CC090. No layout change.
+    bitset<_Nb>& reset(size_t n);
+#endif
+#if defined(FABLE_RETAIL_STLP_BITSET_RESET) && !defined(FABLE_RETAIL_STLP_BITSET_RESET_DECL)
+    // NF92 per-TU opt-in (round 7, q11218 binder row 0x004C8310 CThing::~CThing): STLport 4.6 _bitset.h reset(size_t) and _Unchecked_reset
+    // inline, as that retail TU expands them (the range check against 274 with the cold puts / abort block, then the word and-not).
+    bitset<_Nb>& _Unchecked_reset(size_t n) { this->_M_w[this->_S_whichword(n)] &= ~this->_S_maskbit(n); return *this; }
+    bitset<_Nb>& reset(size_t n) { if(n>=_Nb) __stl_throw_out_of_range("bitset"); return _Unchecked_reset(n); }
 #endif
 #ifdef FABLE_RETAIL_STLP_BITSET_INDEX
     // Per-TU opt-in (plan phase 4, 2026-11-05): STLport 4.6 _bitset.h bitset<_Nb>::reference and operator[]. Retail expands the

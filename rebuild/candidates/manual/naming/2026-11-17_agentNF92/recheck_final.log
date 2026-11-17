@@ -1,0 +1,92 @@
+addr       parity           behav  name
+004c73e0   MATCH            PASS   InitTC
+004c8050   RELOCATION_MATCH PASS   WorldUpdate
+004c8310   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+004c8310   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+004c8310   RELOCATION_MATCH PASS   ~CThing
+004c9840   RELOCATION_MATCH PASS   RemoveTC
+004ccce0   RELOCATION_MATCH PASS   _M_insert_overflow
+004cd2f0   RELOCATION_MATCH PASS   push_back
+004cd5d0   RELOCATION_MATCH PASS   Sort_SElement8_004cd5d0
+004cd650   WARN STANDIN_LEAF ?Sort@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEXXZ (catalog CComponentMap::Resort; names another function)
+004cd650   RELOCATION_MATCH PASS   Resort
+004dd21c   RELOCATION_MATCH PASS   StdList_Dtor_004dd21c
+004e81c1   RELOCATION_MATCH PASS   StdList_Dtor_004e81c1
+004f9207   WARN STANDIN_LEAF ??4?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@2@@std@@QAEAAV01@ABV01@@Z (catalog CRetailTree_004f927a::operator=; names another function)
+004f9207   RELOCATION_MATCH PASS   operator=
+004f927a   WARN RELOC_NAME: ?_M_create_node@?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBJVCDefString@@@std@@@2@ABU?$pair@$$CBJVCDefString@@@2@@Z -> 004f930a labelled '_global::RbTree_CreateNode_sz0x18_004f930a'
+004f927a   WARN STANDIN_LEAF ?_M_copy@?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@2@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBJVCDefString@@@std@@@2@PAU32@0@Z (catalog CRetailTree_004f930a::Copy; names another function)
+004f927a   RELOCATION_MATCH PASS   Copy
+004f99de   WARN RELOC_NAME: ?_M_create_node@?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@U?$less@W4EHeroExperienceStatCategory@@@3@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@2@ABU?$pair@$$CBW4EHeroExperienceStatCategory@@M@2@@Z -> 004f9a6e labelled '_global::RbTree_CreateNode_sz0x18_004f9a6e'
+004f99de   WARN STANDIN_LEAF ?_M_copy@?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@U?$less@W4EHeroExperienceStatCategory@@@3@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@2@PAU32@0@Z (catalog CRetailTree_004f9a6e::Copy; names another function)
+004f99de   RELOCATION_MATCH PASS   Copy
+0059c6dd   RELOCATION_MATCH PASS   AddItemToInventory
+0059c710   RELOCATION_MATCH PASS   vfunc_81
+005bc479   MATCH            PASS   SetSelectedItemIndex
+005bd9b2   WARN RELOC_NAME: ?IsTrackingSelectedItems@CTCInventoryBase@NInventory@@QBE_NXZ -> 005bd4ce labelled '_global::CIVCountedPointer_Assign_005bd4ce'
+005bd9b2   RELOCATION_MATCH PASS   SelectHighlightedItem
+005bdde4   RELOCATION_MATCH PASS   AddInventoryItem
+005bde50   RELOCATION_MATCH PASS   IsSlotFull
+005bedcb   WARN RELOC_NAME: ??0CPerItemData@NInventory@@QAE@XZ -> 005c14a6 labelled 'CNavQuadTree::CNavigationLayer::CNavigationLayer'
+005bedcb   WARN RELOC_NAME: ?erase@?$vector@JV?$allocator@J@std@@@std@@QAEPAJPAJ0@Z -> 00440590 labelled 'Buffer_Relocate'
+005bedcb   WARN RELOC_NAME: ?IsToNotPersistUntilQuestCompleted@CTCInventoryItem@@QBE_NXZ -> 005d9270 labelled 'CTCWeapon::IsAnalogueLoading'
+005bedcb   RELOCATION_MATCH PASS   UpdateItemStats
+005bf32d   WARN RELOC_NAME: ??$find_if@PAVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@YIPAVCCategory@NInventory@@PAV12@0VCIsInventoryCategory@2@@Z -> 005c08d3 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+005bf32d   RELOCATION_MATCH PASS   AddItemToInventory
+005bf4a3   WARN RELOC_NAME: ??$find_if@PAVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@YIPAVCCategory@NInventory@@PAV12@0VCIsInventoryCategory@2@@Z -> 005c08d3 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+005bf4a3   WARN STANDIN_LEAF ?AddInventoryItem@CTCInventoryBase@NInventory@@AAE_NABVCItem@2@@Z (catalog NInventory::CTCInventoryBase::AddItem; names another function)
+005bf4a3   RELOCATION_MATCH PASS   AddItem
+005c0965   MATCH            PASS   __find_if
+005c0c86   WARN STANDIN_LEAF ??$find_if@PBVCItem@NInventory@@V?$const_mem_fun_ref_t@_NVCItem@NInventory@@@std@@@std@@YIPBVCItem@NInventory@@PBV12@0V?$const_mem_fun_ref_t@_NVCItem@NInventory@@@0@@Z (catalog std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>; names another function)
+005c0c86   RELOCATION_MATCH PASS   _Umove<EWeaponClass*>
+006d9d90   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@std@@QAEAAU01@XZ (catalog CRetailTreeIterator::Decrement; names another function)
+006d9d90   MATCH            PASS   Decrement
+008e72b0   MATCH            PASS   OnDeactivate
+008e74f0   RELOCATION_MATCH PASS   OnDeactivate
+0121a440   WARN RELOC_CONFLICT: _$E2 -> 01228ce0 here, 01228930 in landed 01219f00
+0121a440   WARN RELOC_NAME: _$E2 -> 01228ce0 labelled 'CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocks'
+0121a440   RELOCATION_MATCH PASS   g_list_013b8a24
+01228ce0   RELOCATION_MATCH PASS   RenderMeshPrimitiveBlocks
+004f9a6e   RELOCATION_MATCH PASS   RbTree_CreateNode_sz0x18_004f9a6e
+0121a670   WARN RELOC_CONFLICT: _$E2 -> 01228df0 here, 01228930 in landed 01219f00
+0121a670   WARN RELOC_NAME: _$E2 -> 01228df0 labelled 'unattributed::StaticTreeDeleter013B8A8C'
+0121a670   RELOCATION_MATCH PASS   TCsToBeRemoved'`
+01228df0   RELOCATION_MATCH PASS   StaticTreeDeleter013B8A8C
+00527950   RELOCATION_MATCH PASS   _M_erase
+004f930a   RELOCATION_MATCH PASS   RbTree_CreateNode_sz0x18_004f930a
+
+WINS: 34
+  004c73e0 MATCH CThing::?InitTC@CThing@@AAEXPAVCTCBase@@@Z
+  004c8050 RELOCATION_MATCH CThing::?WorldUpdate@CThing@@UAE_NXZ
+  004c8310 RELOCATION_MATCH CThing::??1CThing@@MAE@XZ
+  004c9840 RELOCATION_MATCH CThing::?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z
+  004ccce0 RELOCATION_MATCH std::?_M_insert_overflow@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@IAEXPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@ABU32@ABU__false_type@2@I_N@Z
+  004cd2f0 RELOCATION_MATCH CPairVector::?push_back@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEXABU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@@Z
+  004cd5d0 RELOCATION_MATCH _global::??$sort@PAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@std@@YIXPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@0@0V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@Z
+  004cd650 RELOCATION_MATCH CComponentMap::?Sort@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEXXZ
+  004dd21c RELOCATION_MATCH _global::??1?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@2@@std@@QAE@XZ
+  004e81c1 RELOCATION_MATCH _global::??1?$vector@VCAttackHistoryCombo@@V?$allocator@VCAttackHistoryCombo@@@std@@@std@@QAE@XZ
+  004f9207 RELOCATION_MATCH CRetailTree_004f927a::??4?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@2@@std@@QAEAAV01@ABV01@@Z
+  004f927a RELOCATION_MATCH CRetailTree_004f930a::?_M_copy@?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@2@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBJVCDefString@@@std@@@2@PAU32@0@Z
+  004f99de RELOCATION_MATCH CRetailTree_004f9a6e::?_M_copy@?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@U?$less@W4EHeroExperienceStatCategory@@@3@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@2@PAU32@0@Z
+  0059c6dd RELOCATION_MATCH CTCInventoryTrade::?AddItemToInventory@CTCInventoryTrade@@UAE_NAAVCThing@@_N1J1@Z
+  0059c710 RELOCATION_MATCH CTCInventoryTrade::?AddItemToInventory@CTCInventoryTrade@@UAE_NJJ_N0J0@Z
+  005bc479 MATCH CCategory::?SetSelectedItemIndex@CCategory@NInventory@@QAEXJ@Z
+  005bd9b2 RELOCATION_MATCH CCategory::?SelectHighlightedItem@CCategory@NInventory@@QAEXAA_N@Z
+  005bdde4 RELOCATION_MATCH CItem::?AddInventoryItem@CItem@NInventory@@QAEXABV12@@Z
+  005bde50 RELOCATION_MATCH CItem::?IsSlotFull@CItem@NInventory@@QBE_NXZ
+  005bedcb RELOCATION_MATCH NInventory::CItem::?UpdateItemStats@CItem@NInventory@@QAEXABVCThing@@@Z
+  005bf32d RELOCATION_MATCH CTCInventoryBase::?AddItemToInventory@CTCInventoryBase@NInventory@@UAE_NJJ_N0J0@Z
+  005bf4a3 RELOCATION_MATCH NInventory::CTCInventoryBase::?AddInventoryItem@CTCInventoryBase@NInventory@@AAE_NABVCItem@2@@Z
+  005c0965 MATCH std::??$__find_if@PBVCItem@NInventory@@V?$const_mem_fun_ref_t@_NVCItem@NInventory@@@std@@@std@@YIPBVCItem@NInventory@@PBV12@0V?$const_mem_fun_ref_t@_NVCItem@NInventory@@@0@ABUrandom_access_iterator_tag@0@@Z
+  005c0c86 RELOCATION_MATCH std::??$find_if@PBVCItem@NInventory@@V?$const_mem_fun_ref_t@_NVCItem@NInventory@@@std@@@std@@YIPBVCItem@NInventory@@PBV12@0V?$const_mem_fun_ref_t@_NVCItem@NInventory@@@0@@Z
+  006d9d90 MATCH CRetailTreeIterator::??F?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@std@@QAEAAU01@XZ
+  008e72b0 MATCH CModeDragonBase::?OnDeactivate@CModeDragonBase@NCreatureMode@@UAEXXZ
+  008e74f0 RELOCATION_MATCH NCreatureMode::CModeIntangible::?OnDeactivate@CModeIntangible@NCreatureMode@@UAEXXZ
+  0121a440 RELOCATION_MATCH _static_init::_$E1
+  01228ce0 RELOCATION_MATCH _global::_$E2
+  004f9a6e RELOCATION_MATCH _global::?_M_create_node@?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@U?$less@W4EHeroExperienceStatCategory@@@3@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@2@ABU?$pair@$$CBW4EHeroExperienceStatCategory@@M@2@@Z
+  0121a670 RELOCATION_MATCH CThing::_$E1
+  01228df0 RELOCATION_MATCH unattributed::_$E2
+  00527950 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_K_K@std@@U?$_Select1st@U?$pair@$$CB_K_K@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_K_K@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_K_K@std@@@2@@Z
+  004f930a RELOCATION_MATCH _global::?_M_create_node@?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBJVCDefString@@@std@@@2@ABU?$pair@$$CBJVCDefString@@@2@@Z

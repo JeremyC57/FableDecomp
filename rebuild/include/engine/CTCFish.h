@@ -17,11 +17,17 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_FISH; }
     float GetLength() const { return Length; }
     float GetWeight() const { return Weight; }
+#ifdef FABLE_RETAIL_CTCFISH_MOSTRECENTFISHWEIGHT
+    // NF92 opt-in (round 7, q11209 row 0x005BEDCB NInventory::CItem::UpdateItemStats): Ego_d.pdb PUB32 ?MostRecentFishWeight@CTCFish@@2MA
+    // (public static float), retail 0x013BAE80: CGameScriptInterface::UpdateFishWeight 0x008959B0 stores the caught fish's Weight (+0x14)
+    // there and UpdateItemStats keeps it as the item's best weight when heavier, then zeroes it. Declaration only: no layout change.
+    static float MostRecentFishWeight;                                   // 0x013BAE80
+#endif
 private:
     CDefPointer<const CFishDef> PDef;                                    // +0x0c
     float Length;                                                        // +0x10
     float Weight;                                                        // +0x14
     float Speed;                                                         // +0x18
 };
-FABLE_STATIC_ASSERT(sizeof(CTCFish) == 0x1c);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CTCFish) == 0x1c);
 #endif

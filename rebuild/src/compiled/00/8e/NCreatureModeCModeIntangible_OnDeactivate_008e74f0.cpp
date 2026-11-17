@@ -13,11 +13,13 @@
 // Layout: Ego_r.pdb NCreatureMode::CModeIntangible (0x44): the NCreatureMode::CModeDragonBase base (0x30: CModeBase ParentThing +4, Active +0x18;
 //   Filter +0x1C, PTarget +0x28), then Timer +0x30, BossPhase +0x34, WasDamageable +0x38, PActionOnDeactivate (CCountedPointer<CCreatureActionBase>)
 //   +0x3C. No shared header exists for CModeIntangible: it is declared here, on the shared base.
-// Shape: the start (EnableGravity(true), then `mov byte ptr [esi+18h],0`) is the qualified CModeBase::OnDeactivate inline body (the one
-//   definition in engine/CTCCreatureModeManager.h, NF90 opt-in FABLE_RETAIL_CMODEBASE_ONDEACTIVATE_INLINE; its out-of-line COMDAT is 0x00739E60).
-//   The same two statements are CModeDragonBase::OnDeactivate 0x008E72B0 (Ego_r 0x0090EE50): retail may have expanded that call; the bytes are
-//   the same either way (NOTES). The player-creature tail runs on a named thing local (edi survives the calls); the Damageable store is the
-//   one-bit bitfield assignment (xor/and/xor).
+// Shape: the start is the expanded qualified CModeDragonBase::OnDeactivate() call (EnableGravity(true) through the physics slot 38, then
+//   `mov byte ptr [esi+18h],0`, the inline CModeBase::OnDeactivate): its one body is inline in engine/CModeDragonBase.h (NF92 opt-in
+//   FABLE_RETAIL_CMODEDRAGONBASE_ONDEACTIVATE_INLINE; out-of-line COMDAT 0x008E72B0), on NF90's inline CModeBase::OnDeactivate. The
+//   player-creature tail runs on a named thing local (edi survives the calls); the Damageable store is the one-bit bitfield assignment (xor/and/xor).
+// One definition (NF92, q11224): the same two statements are CModeDragonBase::OnDeactivate 0x008E72B0, and the sibling OnActivate pair
+//   (0x008E7290 / 0x008E7390) opens the same way; a same-TU probe (work/probe_008e74f0_expand.cpp) grades this row RELOCATION_MATCH from the
+//   qualified call and 0x008E72B0 MATCH. See NOTES (FableWin.pdb places the original body in the .cpp; the header inline is the repo's spelling).
 // Port (NF90, q11187 binder / q11189): was an all-local July model of CThing (v00..v27 placeholders), CTCPhysicsBase, CCreatureActionBase,
 //   CThingAICreature, CModeBase, CTCMapwho, CTCTargeted and CTCWillResponse binding 0x00664670 as ?SetCurrentAction@CThing@@...; now on the shared
 //   headers (the 0x008D6C80 / 0x008E7E70 define sets) + engine/CModeDragonBase.h (NF90 opt-in FABLE_RETAIL_CMODEDRAGONBASE_MODEBASE).
@@ -41,6 +43,7 @@
 #define FABLE_RETAIL_CMODEBASE_VIRTUALS
 #define FABLE_RETAIL_CMODEBASE_ONDEACTIVATE_INLINE
 #define FABLE_RETAIL_CMODEDRAGONBASE_MODEBASE
+#define FABLE_RETAIL_CMODEDRAGONBASE_ONDEACTIVATE_INLINE
 #define FABLE_RETAIL_CCREATUREACTIONBASE
 #define FABLE_RETAIL_CTCPHYSICSBASE
 #define FABLE_RETAIL_CTCMAPWHO
@@ -71,8 +74,7 @@ protected:
 
 void CModeIntangible::OnDeactivate()
 {
-    ParentThing.GetPhysicsTC()->EnableGravity(true);
-    CTCCreatureModeManager::CModeBase::OnDeactivate();
+    CModeDragonBase::OnDeactivate();
     ParentThing.SetAsDrawable(false);
     CTCMapwho* mapwho;
     if (ParentThing.GetTC(&mapwho))

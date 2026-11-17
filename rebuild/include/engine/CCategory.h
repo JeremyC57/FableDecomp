@@ -120,6 +120,11 @@ public:
  // ?SetSelectedItemIndex@CCategory@NInventory@@QAEXJ@Z (public), out of line at 0x005BC479. Declaration only: no layout change.
  void SetSelectedItemIndex(long index);                                                        // 0x005BC479
 #endif
+#ifdef FABLE_RETAIL_CCATEGORY_SELECTHIGHLIGHTEDITEM
+ // NF92 opt-in (round 7, q11210 binder row 0x005BD9B2): Ego_r.pdb (0x006208AF) + FableWin.pdb (0x0236333E)
+ // ?SelectHighlightedItem@CCategory@NInventory@@QAEXAA_N@Z (public), out of line at 0x005BD9B2. Declaration only: no layout change.
+ void SelectHighlightedItem(bool& close_input_process);                                        // 0x005BD9B2
+#endif
 #ifdef FABLE_RETAIL_CCATEGORY_ITEMQUERIES
  // NF88 nested opt-in (round 7, q11153..q11159; rows 0x005BE839 / 0x005BE8B1 / 0x005BF1D7 and the CTCInventoryBase wrappers that tail-jump
  // to them): the item queries of the inventory TU, Ego_r.pdb (TU order 0x00620FCD .. 0x00621FB3) and FableWin.pdb spellings, all out of line

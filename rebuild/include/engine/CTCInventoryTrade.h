@@ -297,6 +297,16 @@ private:
     bool AddItemOfTypeToInventory(long itemDefIndex, long count);                  // 0x0059C6B0
 public:
 #endif // FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMOFTYPE
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMTOINVENTORY
+// NF92 opt-in (round 7, q11211 / q11215 rows 0x0059C710 / 0x0059C6DD): Ego_r.pdb (0x00608E5E / 0x00608E2B) + FableWin.pdb (0x02314571 /
+// 0x02314422) ?AddItemToInventory@CTCInventoryTrade@@UAE_NJJ_N0J0@Z and ?AddItemToInventory@CTCInventoryTrade@@UAE_NAAVCThing@@_N1J1@Z (public
+// virtual overrides of the CTCInventoryBase pair); the retail CTCInventoryTrade vtable 0x01253034 holds 0x0059C6DD at slot 80 and 0x0059C710 at
+// slot 81 (VC7.1 reverses the overload group, as in NInventory_CTCInventoryBase.h). Parameter names: Ego_d.pdb. Declaration only (no layout
+// change; the vtable exists).
+public:
+    virtual bool AddItemToInventory(long itemDefIndex, long count, bool add_selected, bool add_quick_access, long price_bought_for, bool silent);   // 81 0x0059C710
+    virtual bool AddItemToInventory(CThing& item, bool add_selected, bool add_quick_access, long price_bought_for, bool silent);                  // 80 0x0059C6DD
+#endif // FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMTOINVENTORY
 };
 FABLE_STATIC_ASSERT_AT(251, sizeof(CTCInventoryTrade) == 0x230);
 FABLE_STATIC_ASSERT_AT(252, offsetof(CTCInventoryTrade, NotInStock) == 0x140);

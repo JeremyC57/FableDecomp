@@ -18,6 +18,10 @@ class CInventoryDef;
 // ItemType +0, NumberOfItems +4, PPerItemData +8, AverageBoughtPrice +0x10; out-of-line ??0 (copy) 0x005C08E6, ??4, ??1).
 #include "stlport/fable_containers.h"
 #include "engine/CCountedPointer.h"
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_GETINVENTORYITEMDEF
+#include "engine/CDefPointer.h"
+class CInventoryItemDef;
+#endif
 namespace NInventory {
 class CPerItemData;
 class CItem {
@@ -28,6 +32,15 @@ public:
 #ifdef FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
     bool IsSlotEmpty() const { return NumberOfItems == 0; }
     void GetItemThings(std::vector<std::pair<long,long> >&) const;
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_GETINVENTORYITEMDEF
+    // NF92 opt-in (round 7, q11208 self row 0x005BDE50 CItem::IsSlotFull): Ego_r.pdb (0x00620733) + FableWin.pdb
+    // ?GetInventoryItemDef@CItem@NInventory@@ABE?AV?$CDefPointer@$$CBVCInventoryItemDef@@@@XZ (private const), out of line in retail at
+    // 0x005BD82E (the landed self row defines this spelling). Declaration only: no layout change. Includes engine/CDefPointer.h
+    // (needs FABLE_RETAIL_DEF_CLASS_BASE).
+private:
+    CDefPointer<const ::CInventoryItemDef> GetInventoryItemDef() const;       // 0x005BD82E
+public:
 #endif
 #ifdef FABLE_RETAIL_NINVENTORY_CITEM_ISSLOTFULL
     // NF90 opt-in (round 7, q11184 row 0x005BF19C CCategory::IsSpaceInCategoryForItem): Ego_r.pdb (0x00620B75) + FableWin.pdb
@@ -43,6 +56,12 @@ public:
     // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF060 CCategory::AddItem): Ego_r.pdb (0x00621A1C) + FableWin.pdb
     // ?AddItem@CItem@NInventory@@QAEXJJJ@Z (public; the landed self row 0x005BEC92 defines this spelling). Declaration only.
     void AddItem(long itemType, long number, long price); // 0x005BEC92
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_GETMAXIMUMNUMBEROFITEMS
+    // NF92 opt-in (round 7, q11214 self row 0x005BDDE4 CItem::AddInventoryItem): Ego_r.pdb (0x00620834) + FableWin.pdb (0x0235FFF2)
+    // ?GetMaximumNumberOfItems@CItem@NInventory@@QBEJXZ (public const), out of line in retail at 0x005BD931 (the landed self row defines this
+    // spelling; 0x005BDDE4 binds it so). Declaration only: no layout change.
+    long GetMaximumNumberOfItems() const;               // 0x005BD931
 #endif
 #ifdef FABLE_RETAIL_NINVENTORY_CITEM_ADDINVENTORYITEM
     // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF103 CCategory::AddInventoryItem): Ego_r.pdb (0x00620B0A) + FableWin.pdb
@@ -455,6 +474,14 @@ public:
  // NF89 opt-in (q11167, rows 0x0056E5AB / 0x005BD328): Ego_r.pdb (0x00620259) + FableWin.pdb ?GetNumberOfSlotsForCategory@CTCInventoryBase@NInventory@@QBEJJ@Z
  // (public const), out of line at 0x005BD328 (Categories[index].GetNumberOfSlots()). Declaration only.
  long GetNumberOfSlotsForCategory(long index) const;                                          // 0x005BD328
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ADDINVENTORYITEM
+ // NF92 opt-in (round 7, q11216 row 0x005BF4A3): Ego_r.pdb 0x00622247 + FableWin.pdb 0x0236BE37 ?AddInventoryItem@CTCInventoryBase@NInventory@@AAE_NABVCItem@2@@Z
+ // (private; the ORIGINAL_COMPLETE_METHODS_PASS22 member record declares `bool AddInventoryItem(const NInventory::CItem&)` too),
+ // out of line in retail at 0x005BF4A3 (find the item's category, CCategory::AddInventoryItem 0x005BF103, OnItemAdded). Declaration only.
+private:
+ bool AddInventoryItem(const CItem& item);                                                    // 0x005BF4A3
+public:
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_GETALLSELECTEDITEMS
  // NF90 opt-in (round 7, q11185 row 0x005BEAF5): Ego_r.pdb 0x006213AB ?GetAllSelectedItems@CTCInventoryBase@NInventory@@IBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z

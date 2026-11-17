@@ -292,6 +292,13 @@ private:
     static std::list<std::pair<CIntelligentPointer<CThing>, CTCBase*> > TCsToBeRemoved;   // 0x013B8A24
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHING_DTOR
+    // NF92 opt-in (round 7, q11218 binder row 0x004C8310): Ego_r.pdb ??1CThing@@MAE@XZ (protected virtual destructor, retail 0x004C8310; it
+    // overrides CBaseObject's slot 0). Declaration only: no layout change.
+protected:
+    virtual ~CThing();
+public:
+#endif
     CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
     const CThingBaseDef& PeekBaseDef() const;                    // inline in retail: body `return *PBaseDef;` defined after CThingBaseDef is complete
 #ifdef FABLE_RETAIL_CTHING_HASBASEDEF

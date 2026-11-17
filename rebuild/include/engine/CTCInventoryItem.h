@@ -50,6 +50,27 @@ class CTCInventoryItem : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_ITEM; }   // ?StatGetInterfaceType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@XZ
     void ReturnToInventory();                                 // 0x005D8E50
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_INVENTORYCATEGORY_MEMBER
+    // NF92 opt-in (round 7, q11215 binder row 0x005BF654 NInventory::CTCInventoryBase::AddItemToInventory(CThing&, ..)): Ego_r.pdb (0x0055A140) +
+    // FableWin.pdb (0x01E010E0) ?GetInventoryCategory@CTCInventoryItem@@QBEJXZ (public const; the member beside the static overload), out of
+    // line in retail at 0x005D91F0: the first of the Ego_r-ordered GetInventoryCategory / IsSellable / IsBuyable / IsConfiscatable /
+    // IsToNotPersistUntilQuestCompleted / GetItemToSelectUponRemoval run 0x005D91F0..0x005D9290; it reads CInventoryItemDef::InventoryCategory
+    // +0x3C. Declaration only: no layout change.
+    long GetInventoryCategory() const;                                                  // 0x005D91F0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ISTONOTPERSISTUNTILQUESTCOMPLETED
+    // NF92 opt-in (round 7, q11209 row 0x005BEDCB NInventory::CItem::UpdateItemStats): Ego_r.pdb (0x0055A1C0) + FableWin.pdb (0x01E01220)
+    // ?IsToNotPersistUntilQuestCompleted@CTCInventoryItem@@QBE_NXZ (public const), out of line in retail at 0x005D9270: the fourth of the
+    // Ego_r-ordered IsSellable / IsBuyable / IsConfiscatable / IsToNotPersistUntilQuestCompleted run 0x005D9210 / 30 / 50 / 70, each reading
+    // its CInventoryItemDef byte +0x5C / +0x5D / +0x5E / +0x5F (DoNotPersistUntilQuestCompleted). Declaration only: no layout change.
+    bool IsToNotPersistUntilQuestCompleted() const;                                     // 0x005D9270
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ISHEROTITLE
+    // NF92 opt-in (round 7, q11211 binder row 0x005BF32D NInventory::CTCInventoryBase::AddItemToInventory): Ego_r.pdb (0x0055A890) + FableWin.pdb
+    // (0x01E03010) ?IsHeroTitle@CTCInventoryItem@@SI_NJ@Z, static `__fastcall`, out of line in retail at 0x005D98F0 (catalog
+    // CTCInventoryItem::IsHeroTitle). Declaration only: no layout change.
+    static bool __fastcall IsHeroTitle(long defIndex);                                 // 0x005D98F0
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_CONNECTTOINVENTORY
     // Nested opt-in (row 0x005BE8F3 NInventory::CTCInventoryBase::CreateInventoryObject): Ego_r.pdb / FableWin.pdb
     // ?ConnectToInventory@CTCInventoryItem@@QAEXAAVCTCInventoryBase@NInventory@@@Z, out of line at 0x005D8E40 (16 bytes, stores the
