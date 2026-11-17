@@ -1,0 +1,775 @@
+kind	address	module	name	length_estimate	residue_class	best_grade_on_record
+named	00402510	_global	GFMain	3952		
+named	00408820	CUserProfileManager	ResetAssignedInputsWASD	192	register-tie	DIFFER(185v185)
+named	00409730	CUserProfileManager	VerifySignature	1088		DIFFER(1086v1078)
+named	00409b70	CUserProfileManager	SetDefaultValuesForNewProfile	1120		DIFFER(1089v1105)
+named	0040a7f0	CUserProfileManager	ApplyVideoValues	1952		DIFFER(1925v1941)
+named	0040b790	CUserProfileManager	GiveTutorialForCategory	928	stack-slot/frame	DIFFER(938v918)
+named	0040cec0	CUserProfileManager	CUserProfileManager	992		DIFFER(981v977)
+named	00417747	CMainGameComponent	UpdateForcedTickSpeed	596		DIFFER(600v596)
+named	004184bd	CMainGameComponent	?Init@CMainGameComponent@@UAEXXZ	1285	incomplete-model	DIFFER(24v1285)
+identify	004199c0	_global	HeroAbility_StringToID	976		
+named	00428494	NUISystem::CManager	CreateMenuEntryComponent	1137	incomplete-model	DIFFER(45v1062)
+named	00435190	CDisplayEngine	?InitEngine@CDisplayEngine@@MAE_NXZ	784	stack-slot/frame	DIFFER(783v774)
+named	00437d10	CPlayerGui	FormatStringForArea	736		
+identify	00442d50	_global	Catch@0047e8cc	80		
+identify	004430f0	_global	Catch@0047e8cc	80		
+identify	00446d10	_global	ProcessCombatInput_MapInputsToActions	480		
+named	00446ef0	CGamePlayerInterface	SetControlScheme	1184		
+identify	0048e0a2	_global	DrawBox	1772		
+named	0048fab6	CSubtitleRenderer	DrawButtonText	1599	stack-slot/frame	DIFFER(1569v1599)
+named	004900f5	CSubtitleRenderer	DrawTextPrimitives	927	x87-order	DIFFER(906v927)
+named	00490494	CSubtitleRenderer	DrawPreparePrimitivesForEngine	1094	x87-order	DIFFER(1097v1094)
+named	00491ad2	CSubtitleRenderer	ProcessEmbeddedHighlightTags	2223		DIFFER(2240v2223)
+named	00493281	CSubtitleRenderer	ClickPast	357	block/arm-layout	DIFFER(370v357)
+named	00497b60	CProgressDisplay	CalculateNextTextTag	1056	register-tie	DIFFER(1060v1052)
+named	00497fd0	CProgressDisplay	DisplayCenteredText	1088		DIFFER(1076v1076)
+identify	00498410	_global	GetCharWidthW	128		
+identify	0049ed80	_global	ConsoleSetFreeCameraLookVector	464		
+named	004a1c8e	CTCTrophy	OnShowTrophyInitialise	34		
+named	004a1cb0	CWorld	CWorld::PreparePrimitivesForEngine	1344		DIFFER(1331v1330)
+named	004b01b0	CQuestManager	IsRegionValidInRegionLockingMode	320	block/arm-layout	DIFFER(277v277)
+named	004b1d30	CQuestManager	SetQuestAsCompleted	1360	register-tie	DIFFER(1347v1352)
+named	004b2890	CQuestManager	PostBoastTransfer	576	register-tie	DIFFER(569v569)
+identify	004b2ca0	_global	WorldMap_BuildLoadSectionsList	832		
+identify	004bc1a0	_gapscan	sub_004bc1a0	416		
+named	004c08c0	NGraphicAppearance::CTCGraphicAppearance	GetDummyObject	960	incomplete-model	DIFFER(898v953)
+identify	004c10e0	_global	CTCGraphicAppearance_UpdateHelperPointOffset	240		
+named	004ca019	CThing	ConstructFromParams	439		
+named	004cdc40	CSubtitledMessage	AddCameraTagFromText	1392	register-tie	DIFFER(1349v1379)
+named	004ce550	CSubtitledMessage	CSubtitledMessage	1296	stack-slot/frame	DIFFER(1128v1281)
+named	004cebb0	CSubtitledMessage	GetMessagesFromTextName	2032		
+identify	005148d0	_global	CEngineWorldMap_MoveConstructor	224		
+identify	0051ea30	_gapscan	sub_0051ea30	96		
+identify	00521cf0	_global	CThingManager_LoadMorphFromScript	448		
+identify	005239cd	_global	CThingDeadCreature_SavePersistentState	371		
+identify	00524290	_global	CThingManager_SaveGameState	1568		
+named	00524ec0	NThingManager::CEntityRuntimePersistence	LoadFromGameStateBinary	1008		
+named	005253f0	CThingManager	LoadGameState	2272		DIFFER(2263v2263)
+identify	0053e9a0	NUISystem::CScrollingViewport	NUISystem::CScrollingViewport::vfunc_1	592		
+named	005458a0	NUISystem::CSpellContainer	AssignSpell	624		DIFFER(669v621)
+identify	0054e6f0	NUISystem::CScrollingViewport	NUISystem::CScrollingViewport::vfunc_2	656		
+named	0054eac0	NUISystem::CViewport	~CViewport	400	block/arm-layout	
+named	005502e0	NUISystem::CMesh	Draw	1312		DIFFER(1321v1288)
+named	00554740	NUISystem::CMorphingSprite	Draw	1968		DIFFER(1524v1572)
+named	00559a90	NUISystem::CScrollBar	ProcessEvent	2208		DIFFER(2144v2163)
+identify	0055c6f0	NUISystem::CMouseCursor	NUISystem::CMouseCursor::vfunc_1	288		
+named	0055d810	CTCPhotojournalCapture	OnCaptionEntered	1008	stack-slot/frame	DIFFER(944v998)
+named	0055dc00	CTCPhotojournalCapture	CreateScreen	496		DIFFER(502v495)
+named	0057aeb4	CTCHeroStats	GetFavouriteWeapon	427	register-tie	DIFFER(427v427)
+named	0057b43f	CTCHeroStats	RenderHeroDrunkenness	836	stack-slot/frame	DIFFER(830v836)
+identify	0057d23b	_global	FrameUpdate_ApplyMorphEffect	869		
+named	005850fd	CTCInventory	GetStyleCardsListUIComponent	1678	block/arm-layout	DIFFER(1660v1678)
+named	00589402	CTCInventory	GetStyleCardsListUIComponent	1582	register-tie	DIFFER(1581v1582)
+named	0058f016	CTCInventory	ConstructItemCategoryList	1587	register-tie	DIFFER(1588v1587)
+named	00590f0b	CTCInventory	GetItemsListUIComponentPC	2907		DIFFER(2849v2907)
+named	0059fc17	CTCInventoryTrade	AlreadyHaveSpecial	716	stack-slot/frame	DIFFER(715v716)
+named	0059fee3	CTCInventoryTrade	AddBuyItemToList	1556	register-tie	DIFFER(1553v1556)
+named	005a94bd	CTCInventoryTrade	OpenInventory	1482		DIFFER(1488v1482)
+named	005ac10e	CTCInventoryTrade	ConstructActualBuyInventoryPC	3532		acctC round six: round 6 final (2026-11-16): DIFFER(3532v3532); latest draft 005ac10e.cpp + NOTES.md in the folder (grep the ad
+named	005ad305	CTCInventoryTrade	ApplyTattooCard	620	stack-slot/frame	DIFFER(620v620)
+named	005b9641	CTCInventoryClothing	DrawPreparePrimitivesForRendering	1455		matched in a lane, not landed
+named	005ca68e	CTCInventoryWeapons	SetupActiveWeaponsOnCarrier	1535		DIFFER(1538v1535)
+named	005cd4c4	CTCInventoryStats	BuildHeroClass	499	wrong-flags/pragma	DIFFER(483v499)
+named	005cda50	CTCInventoryStats	GlobalUpdate	366	stack-slot/frame	DIFFER(359v366)
+named	005dc340	CAnimationSet	GetAnim	80		DIFFER(56v66)
+named	005dcc00	CAnimationSet	GetRandomAnim	272		DIFFER(278v264)
+identify	005dcd10	_global	CTCInventoryAbilities_GetRandomAbility	608		
+named	005eabc0	CTCTavernGame	PositionMesh	512		DIFFER(495v511)
+named	005eadd6	CTCTavernGame	SetStateAfterYesNoAlt	346		not a function start (Codex pass 22 EXTENT_WRONG; BOUNDS_FIX.tsv)
+named	005eca50	CTCTavernGame	DrawPreparePrimitivesForRendering	1280	register-tie	DIFFER(1185v1176)
+named	005f59c7	CTCInventoryAbilities	ConstructPCExpressionsList	2652		acctC round six: round 6 final (2026-11-16): DIFFER(2649v2652); BLOCKED (agents recommend no further passes); latest draft 005f
+named	00605ce0	CTCInventoryMap	UpdateVisitedRegions	1232		
+named	00621f70	CTCInventoryQuests	TakeQuest	1104		
+named	0062b070	CWorld	EAOpenHeroInformationScreen	1872	stack-slot/frame	DIFFER(898v891)
+named	0062bd80	CWorld	EAControlledCreatureStrafe	368	stack-slot/frame	DIFFER(339v354)
+named	0062fe60	NUISystem::CUIDef	CUIDef	832		DIFFER(821v817)
+named	00639e40	CTCRegionDisplay	GlobalDraw	944	register-tie	DIFFER(958v930)
+named	00642aa0	CMinimapData	PopulateMinimapThemeList	3376		DIFFER(1308v1340)
+identify	0064fdb4	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::vfunc_0	2593		
+identify	00651273	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_0	1681		
+named	00657580	NPlayerGui::CDrawQuickAccessIconsPC	Draw	1072		DIFFER(1057v1057)
+named	00659625	CTCVillage	UpdateTorchTasks	475	incomplete-model	DIFFER(466v475)
+named	0065ad37	CTCVillage	UpdateCurfew	893	register-tie	DIFFER(873v893)
+named	0065cb6b	CTCVillage	ReportCrime	747	stack-slot/frame	DIFFER(747v747)
+named	00666310	CThingCreatureBase	OnCreate	912	block/arm-layout	DIFFER(915v908)
+named	0066a9e0	CTCSoundPlayer	PlayCollisionSound	672	stack-slot/frame	DIFFER(626v626)
+named	0066b370	CTCSoundPlayer	PlayAllSoundEvents	1808		DIFFER(1805v1808)
+named	0066c900	CRegionMinimap	IlluminateRegionMinimapTheme	384	x87-order	DIFFER(348v354)
+named	00670820	CTCCoopSpirit	UpdateMovement	496		
+named	00671600	CThingCreatureDef	Transfer	1456		DIFFER(1449v1450)
+named	00677970	CPersistTraits<CReactionFrequencyTraitsArray>	TransferIn	2272		DIFFER(2273v2272)
+named	0067c520	CBlurredAttitudesDef	`scalar deleting destructor'	80		DIFFER(46v70)
+named	0067e290	CDegradableDef	CDegradableDef::Transfer	592	register-tie	DIFFER(273v273)
+named	00680050	CThingObjectDef	?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z	720	stack-slot/frame	DIFFER(439v439)
+named	00681cd0	CTCCreatureOpinionOfHero	CTCCreatureOpinionOfHero	352	stack-slot/frame	DIFFER(367v351)
+named	00681e60	CTCCreatureOpinionOfHero	SetPersonalityOverride	640		DIFFER(626v626) (w24A 2026-11-16): not matched (14 graded probes): ASSERT dead arms before / between the two PersonalityTraits accesses (index, pointer, CDefPointer::operator->) are inert here; still on local models (needs COpinionPersonalityDef / COpinionOfHeroDef shared headers)
+named	00683770	CTCCreatureOpinionOfHero	GetHeadPendingDeed	912	register-tie	DIFFER(876v902)
+named	00688360	CInputProcessControlCreature	?ProcessInput@CInputProcessControlCreature@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	1696	register-tie	DIFFER(1697v1690)
+named	0068dd00	CInputProcessUseEnvironment	?ProcessInput@CInputProcessUseEnvironment@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	1472	stack-slot/frame	DIFFER(1469v1471)
+named	0068e510	CInputProcessQuickAccessItems	?ProcessInput@CInputProcessQuickAccessItems@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	992	register-tie	DIFFER(895v902)
+named	0068ef50	CInputProcessUseRangedWeapon	ProcessRangedAttackInput	560	stack-slot/frame	DIFFER(547v550)
+named	0068f470	CInputProcessCombat	ProcessCombatInput	1376	stack-slot/frame	DIFFER(1365v1361)
+named	00694890	CCreatureActionBase	UpdateActionAnimation	1152	incomplete-model	DIFFER(9v1140)
+named	00697f80	CGameCameraManager	CGameCameraManager::Is2DAreaInViewingFrustrum	496	x87-order	DIFFER(492v490)
+named	00698170	CGameCameraManager	?IsVolumeInViewingFrustrum@CGameCameraManager@@UBE_NABVC3DVector@@M@Z	704	x87-order	DIFFER(693v693)
+identify	00698540	_global	CGameCameraManager_UpdatePointLightAccumulation	608		
+named	00699670	CGameCameraManager	UpdateHeightLimits	768	x87-order	DIFFER(759v761)
+identify	0069a2a0	_global	CGameCameraManager_UpdateMode	1456		
+named	006a03a0	CCreatureAction_UseObject	CCreatureAction_UseObject::Initialise	832	incomplete-model	DIFFER(827v825)
+named	006a1f80	CTCCarrying	PutThingInCarrySlot	672	stack-slot/frame	DIFFER(664v660)
+named	006a40d0	CInputProcessJumpingAndRolling	ProcessRolling	1584	incomplete-model	DIFFER(25v1579)
+named	006a64d0	CThingPhysical	DrawPreparePrimitivesForRendering	944	register-tie	DIFFER(867v865)
+named	006aa720	CThingPlayerCreature	SetPlayerCreatureActionForMelee	1216		DIFFER(1218v1212)
+named	006ab0e0	CThingPlayerCreature	OnHit	544	stack-slot/frame	DIFFER(525v529)
+named	006ac200	CThingPlayerCreature	CreateAndAddObjectToInventory	400	block/arm-layout	DIFFER(393v398)
+named	006ad700	CThingPlayerCreature	ControlledMove	624	x87-order	DIFFER(615v615) (w24A 2026-11-16): not matched (about 110 graded combinations); differ/006ad700.cpp is a more natural draft (whole-vector away with .Z = 0, plain Dot, away * 0.1f: the dot order no longer needs the running-sum trick); the Y product of away * along stays along-first; still on local mo
+named	006af4e0	CMessageEvent	GetPOriginator<CThing>	64		DIFFER(39v52)
+named	006af7d0	CTCPhysicsBase	ImpulseRespondToCollision	624	x87-order	DIFFER(614v612)
+identify	006b5890	_Lower_bound<std::pair<long,float>*,std	_Lower_bound<std::pair<long,float>*,std::pair<long,float>,int>	96		
+identify	006b97e0	_global	CWorld_InitFactions	1456		
+identify	006bb860	_gapscan	sub_006bb860	224		
+named	006bd900	CMusicManager	PlayMusic	176		DIFFER(170v169)
+named	006c0970	CTCBuyableHouse	CreateSignPost	432	x87-order	DIFFER(421v419)
+named	006c0b20	CTCBuyableHouse	FindPosToCreateNewVillager	368	stack-slot/frame	DIFFER(383v368)
+named	006c14d0	CTCBuyableHouse	OnInitialActivate	736	block/arm-layout	DIFFER(734v734)
+identify	006c1ed0	_Copy_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>,std::_Iterator_base0>,std::back_insert_iterator<std::list<CIntelligentPointer<CThingAICreature>,std	_Copy_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingAICr	464		
+named	006c5a80	CTCHeroOpinionDeedLog	CTCHeroOpinionDeedLog	752	block/arm-layout	DIFFER(745v737)
+named	006c6040	CTCHeroOpinionDeedLog	InformRelevantThingsOfDeed	2384		DIFFER(2793v2377)
+named	006c6990	CTCHeroOpinionDeedLog	PostDeed	1168	register-tie	DIFFER(1183v1168)
+named	006c6e80	CTCHeroOpinionDeedLog	FrameUpdate	1264	register-tie	DIFFER(1220v1251)
+named	006ca8c0	CEngineTextureMorphSet	AddEngineMorph	144		DIFFER(128v138)
+named	006cbac0	CTCCreatureNavigation	GetNextNavPosOnRoute	880		
+named	006cbe80	CTCCreatureNavigation	GetNearestFleePositionBehindCover	752		
+named	006cc270	CTCCreatureNavigation	DrawPreparePrimitivesForRendering	1088	register-tie	DIFFER(1035v1085)
+named	006cddf0	CGroundNavigatorExternalInterface	?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z	1056		
+named	006d5d30	CThingAICreature	UpdateAI	912	register-tie	DIFFER(883v897)
+identify	006d63f0	_global	Math_FracPart	128		
+named	006d6fa0	CTCHeroExperience	GetTrainableStatPossibleLevelUpAmount	224		DIFFER(228v220)
+named	006d8980	CTCHeroExperience	UpgradeTrainableStat	336	block/arm-layout	DIFFER(182v183)
+named	006ddd30	CTCTrophy	OnTrophyUseAction	848	stack-slot/frame	DIFFER(842v841)
+named	006de080	CTCTrophy	StartMinigame	512	block/arm-layout	DIFFER(490v497)
+named	006e0230	CTCDParticleEmitter	UpdateEmitterCameraAttachment	576	stack-slot/frame	DIFFER(537v576)
+named	006e0880	CTCDParticleEmitter	Create	240		DIFFER(218v228)
+identify	006e31e0	_global	OnDialogueStart	608		
+named	006e3890	CTCTalk	PlaySpeech	544	block/arm-layout	DIFFER(531v529)
+identify	006e3b90	_global	CThingCreatureBase_UpdatePhonemeAnimation	816		
+named	006e89b0	CDefendingCombatantInfo::CCombatWheel	GetAttackerPlacementVector	352		DIFFER(344v344)
+identify	006e8ee0	_global	FindNearestIndexToPoint	608		
+identify	006fda20	_global	CGameCameraBase_TracePhysics	832		
+named	00700ae0	COpinionReactionManager	GetOpinions	1328	x87-order	
+named	00701010	COpinionReactionManager	GetAttitudeOrReactionType	1408	stack-slot/frame	
+named	00701590	COpinionReactionManager	GetReactionMatchStrength	448	block/arm-layout	DIFFER(435v439)
+named	007055d0	CTCCarryable	GetCarriedPositionInfo	1328	x87-order	DIFFER(1188v1326)
+named	007070d0	CTCHeroAttachableAppearanceModifiers	UpdateGraphics	880	incomplete-model	DIFFER(910v868)
+named	00707440	CTCHeroAttachableAppearanceModifiers	CTCHeroAttachableAppearanceModifiers::OnAppearanceDraw	1264	register-tie	DIFFER(1239v1253)
+named	0070d940	CAnimateThing	CalcInterpolatedMeshAnim	2400		
+named	0070e2a0	CAnimateThing	CalcCachedAnims	640	register-tie	DIFFER(618v618)
+named	0070e710	CAnimateThing	CAnimateThing	416	incomplete-model	DIFFER(420v416)
+identify	007175d0	NTCScriptedControl::CActionSummonerLightningAttackTarget	NTCScriptedControl::CActionSummonerLightningAttackTarget::vfunc_1	320		
+named	0071d020	CTCHeroMorph	OnSerialise	912	incomplete-model	DIFFER(942v911)
+identify	00723e50	_global	CCharacter_UpdateOrientation	320		
+named	007243c0	CTCPhysicsStandard	UpdateVelocityForImpassability	624	x87-order	DIFFER(620v617)
+named	00726980	CTCPhysicsNavigator	PerformForcedMovement	608	x87-order	DIFFER(609v595)
+named	00726ce0	CTCPhysicsNavigator	Move	1024	register-tie	DIFFER(1002v1011)
+named	007280c0	CTCRandomAppearanceMorph	UpdateMorphSet	816	block/arm-layout	DIFFER(807v802)
+identify	0072aaf0	_global	UseSpecialAbility_CTCMultiStrike	80		
+named	0072f380	CTCDummyVillager	OnSerialise	976	register-tie	DIFFER(979v968)
+named	0072f750	CTCDummyVillager	CreateVillager	656	stack-slot/frame	DIFFER(648v643)
+named	0072fb70	CTCDummyVillager	FrameUpdate	1280	register-tie	DIFFER(1280v1278)
+identify	00733b70	_global	CTCCreature_PlayDeathFlourish	384		
+identify	00733cf0	_global	TCCombat_ApplyBlockResponse	288		
+named	007348c0	CTCCombat	IsToBlock	928		
+named	00734c60	CTCCombat	SetStruck	1648	incomplete-model	DIFFER(1588v1639)
+identify	00745840	CTCPerceiveThing	CTCPerceiveThing::vfunc_11	1072		
+identify	00746db0	_global	GetStabPosOnThing	256		
+named	00747c70	CTCStealth	UpdateDangerInfo	304	incomplete-model	DIFFER(303v303)
+identify	00749620	_global	CTargetPoint_Vector_PushBack	144		
+named	0074a4e0	CTCCreatureGenerator	DoNavCheck	240		DIFFER(233v234)
+named	0074b2b0	CTCCreatureGenerator	CreateCreatures	1216	bounds	DIFFER(1248v1208)
+identify	0074b77c	_global	CTCCreatureGenerator_SpawnInArea	388		
+named	0074bc20	CTCCreatureGenerator	DrawDebugInfo	16		DIFFER(1415v1290)
+named	0074c130	CTCCreatureGenerator	FrameUpdate	1216	stack-slot/frame	DIFFER(1220v1202)
+named	0074ec50	CTCContainerRewardHero	CreateItemPickupContainer	576	load/schedule-order	DIFFER(572v564)
+named	00752b00	CTCLook	SetHeadLooking	768		
+named	00753630	CTCLook	InitialiseTurningViaAnimation	528		DIFFER(532v528)
+named	00753e90	CTCLook	LookAtPos	448	stack-slot/frame	DIFFER(447v447)
+named	007542b0	CTCLook	CTCLook::OnAppearanceDraw	2272		DIFFER(2268v2266)
+identify	00754d80	_For_each<std::pair<float,CAnimationEntry_const*>*,_anon_247890BC	_For_each<std::pair<float,CAnimationEntry_const*>*,_anon_247890BC::CGetBestTurningAnim>	240		
+named	0075ddf0	CTCCameraPointScriptedSpline	UpdateSplines	1152	block/arm-layout	DIFFER(1092v1146)
+identify	00760020	_global	IsLineIntersectingWithOthersInList	368		
+identify	00760190	_global	IsTriangleWithPointsInside	352		
+named	007602f0	NShape	IsShapeConvex	1136		DIFFER(1123v1126)
+named	00761280	NShape	DrawPrimitiveLineOverLandscape	736		DIFFER(733v733)
+named	00762620	NShape::CShape	StatOnSerialise	1168		DIFFER(1182v1160)
+identify	00763060	_global	Polygon_GeneratePath_WithCirculation	1152		
+identify	007634e0	_global	CPatchTesselation_GenerateTriangles	1328		
+named	00766dd0	CTCObjectAugmentations	FrameUpdate	1072	register-tie	DIFFER(1065v1067)
+named	0076cce0	CTCEnemy	IsEnemyOf	768	stack-slot/frame	DIFFER(751v754)
+named	0076e6a0	CTCWeaponTrail	DrawAddWeaponTrails	960	register-tie	DIFFER(911v951)
+identify	00774d20	_global	CTCShop_SellHighlightedItem	1152		
+named	0077a890	CTCDExperienceOrb	Create	720		DIFFER(724v707)
+identify	0077ba40	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::vfunc_0	576		
+identify	0077dc40	_global	CTCCampfire_BuildPlayerRegion	688		
+identify	00780430	_gapscan	sub_00780430	272		
+identify	007805d0	_gapscan	sub_007805d0	304		
+named	007808b0	CTCFlammable	InitFirePoints	976		DIFFER(1027v923)
+named	007820e0	CTCBoastingPosition	FrameUpdate	688	stack-slot/frame	DIFFER(688v680)
+identify	00785160	_global	CTCPhysicsBase_Update_CustomerInteraction	1216		
+named	007877e0	CTCBob	FrameUpdate	544		
+named	0078891d	CTCMeleeTrap	PerformPossibleTrapDamage	466		
+named	0078ecd0	CTCDivineWrath	CTCDivineWrath	2048	stack-slot/frame	DIFFER(2000v2034)
+named	0078fd60	CTCDivineWrath	FrameUpdate	9280		acctC round six: round 6 final (2026-11-16): DIFFER(9291v9268); latest draft 0078fd60.cpp + NOTES.md in the folder (grep the ad
+identify	00793370	_global	Vector_InsertRange_CBaseIntelligentPointer	352		
+named	00795300	CTCDivineWrath	FrameUpdate	9312		acctC round six: round 6 final (2026-11-16): DIFFER(9291v9268); latest draft 00795300.cpp + NOTES.md in the folder (grep the ad
+named	00798940	CTCForcePushed	FrameUpdate	624	x87-order	DIFFER(615v615)
+named	007993f0	CTCShopKeeper	WitnessedCrime	704	stack-slot/frame	DIFFER(698v698)
+named	0079a890	CTCSummonSpell	IsValidTeleportPos	512	incomplete-model	DIFFER(497v508)
+named	0079deb0	CTCPhysicalShieldSpell	PlayEffect	928	incomplete-model	DIFFER(921v925)
+named	0079e5f0	CTCPhysicalShieldSpell	CTCPhysicalShieldSpell	928	incomplete-model	DIFFER(892v916)
+named	007a76f0	CTCBattleCharge	CreateStartUpEffect	1248	register-tie	DIFFER(1237v1239)
+named	007a7d20	CTCBattleCharge	CreateHitEffect	2528		DIFFER(2528v2520)
+named	007a8700	CTCBattleCharge	RushForwards	1248	incomplete-model	DIFFER(1205v1243)
+identify	007aa880	_global	CTCVillage_FindValidTeleportPos	352		
+named	007aac50	CTCAssassinRush	RushForwards	1344	x87-order	DIFFER(1285v1336)
+named	007b1a30	CTCFishing	CreateFish	1152	x87-order	DIFFER(1207v1145)
+named	007b3120	CTCGuard	FrameUpdate	1600	register-tie	DIFFER(1568v1592)
+named	007b5e50	CTCWaterWader	FrameUpdate	1104		
+named	007b6810	CTCCrateStack	FillStack	624	stack-slot/frame	DIFFER(615v615)
+named	007b6b10	CTCCrateStack	FillStacks	336		
+named	007b8840	CTCTavernTable	GetSeat	608	stack-slot/frame	DIFFER(598v608)
+named	007b8cc0	CTCTavernTable	GetServingPoint	976	register-tie	DIFFER(953v967)
+identify	007b9b40	_global	vector_Insert_Pair_SmartPtr	464		
+named	007bb1f0	CTCTrespasser	FrameUpdate	1040	register-tie	DIFFER(959v960)
+identify	007bbc9f	_global	CTCPhysicsRigidBody_ApplyForce	299		
+identify	007bcc40	NThingShot::CTCShotDefinitionDragonFireball	NThingShot::CTCShotDefinitionDragonFireball::vfunc_33	807		
+identify	007bee40	NThingShot::CTCShotDefinitionThrow	NThingShot::CTCShotDefinitionThrow::vfunc_36	352		
+named	007c0ad0	NThingShot	CreateShot	944		DIFFER(936v938)
+named	007c3220	CTCDrainLife	DoDrain	1152	register-tie	DIFFER(1172v1138)
+named	007c3fb0	CTCHealLife	FrameUpdate	880	register-tie	DIFFER(872v878)
+named	007c57c0	CTCGhostSword	AddSword	1520	register-tie	DIFFER(1531v1519)
+named	007c60a0	CTCGhostSword	UpdateGhostSwordParticleEffects	960	incomplete-model	DIFFER(989v960)
+named	007c7c40	CTCTurncoat	FrameUpdate	784	x87-order	DIFFER(744v744)
+named	007c81f0	CTCHitOnCollision	OnCollision	800	block/arm-layout	DIFFER(768v768)
+named	007c977c	CTCCreatureGeneratorCreator	OnSerialise	292		not a function start (Codex pass 22 EXTENT_WRONG; BOUNDS_FIX.tsv)
+named	007c99f0	CTCCreatureGeneratorCreator	FrameUpdate	1136	stack-slot/frame	DIFFER(1186v1123)
+named	007d00f0	CTCTavernGameShoveHaPenny	FrameUpdate	1024	stack-slot/frame	Codex pass 23: frame 0x28 instead of 0x2c; local-slot layout differs
+named	007d04f0	CTCTavernGameShoveHaPenny	OnInitialActivate	864	x87-order	DIFFER(843v851)
+named	007d2ff0	CTCTavernGameCoinGolf	FrameUpdate	1200		
+named	007d3f80	CTCTavernGameCoinGolf	OnInitialActivate	1168		
+named	007d75a0	CTCTavernGameCardPairs	GetRandomCard	704	block/arm-layout	DIFFER(465v465)
+named	007da400	CTCTavernGameCardBlackjack	GetCurrentScore	288	stack-slot/frame	DIFFER(280v280)
+named	007da520	CTCTavernGameCardBlackjack	GetRequiredScore	288	stack-slot/frame	DIFFER(286v286)
+named	007da640	CTCTavernGameCardBlackjack	GetBet	288	register-tie	DIFFER(274v274)
+named	007dac10	CTCTavernGameCardBlackjack	DealCards	736	block/arm-layout	DIFFER(729v732)
+named	007db5c0	CTCTavernGameCardBlackjack	Split	224		
+named	007dd540	CTCCreatureFlyInCircles	UpdateSwoop	1104	register-tie	DIFFER(1074v1099)
+named	007e0f20	CTCAICreatureWillPowerIndicator	FrameUpdate	544	incomplete-model	DIFFER(537v537)
+named	007e8a40	CTCFlourishTarget	ProcessActionMovementDelta	1120	stack-slot/frame	DIFFER(482v482)
+identify	007e9460	CTCAvoidRegionExit	CTCAvoidRegionExit::vfunc_9	1280		
+named	007ebea0	CTCActionUseBed	OnActionUse	2160		DIFFER(2124v2145)
+named	007ec710	CTCActionUseBed	GlobalUpdate	1520	wrong-flags/pragma	DIFFER(1492v1516)
+identify	007eda90	CTCCarriedActionUseFood	CTCCarriedActionUseFood::vfunc_28	240		
+named	007ef710	CTCDecapitation	Decapitate	1344	stack-slot/frame	DIFFER(1157v1244)
+named	007f0c70	CTCKrakenTentacle	TrackTarget	720	x87-order	DIFFER(718v715)
+named	007f4990	CTCHasName	GetNPCShortName	464	stack-slot/frame	DIFFER(448v449)
+named	007f6200	CTCTargetingAI	UpdatePBestEnemyCreatureForAttack	1472		DIFFER(1458v1458)
+named	007f68b0	CTCTargetingAI	GetPBestCreatureForInteractionType	256	stack-slot/frame	DIFFER(256v255)
+identify	007f7ef0	_Find_if<CThing**,std	_Find_if<CThing**,std::unary_negate<CIsTriggerActivated>_>	464		
+named	007fa26c	CTCActionUseBuyHouse	OnCreate	36		
+named	007fae34	CPersistContext_TransferableVector<CHeroMarriageInfo>	Resize	44		
+named	007fe040	CTCAISummon	SummonCreatures	1392	stack-slot/frame	DIFFER(1281v1250)
+identify	007fe990	_global	CTCGraphicAppearance_InitDummyObjects	352		
+identify	007ff2f0	_global	CTCGraphicAppearance_InitDummyObjectsWithNames	688		
+named	008008b0	CTCPreCalculatedNavigationRoute	LoadRoute	432	stack-slot/frame	DIFFER(425v420)
+named	00802e00	CTCTargetingPlayer	SetPTargetedThing	992	register-tie	DIFFER(1002v990)
+named	00803280	CTCTargetingPlayer	UpdateTargetThreatening	704	stack-slot/frame	DIFFER(548v551)
+named	00803540	CTCTargetingPlayer	UpdateTargetedPositionRandomWalk	1120		DIFFER(1108v1108)
+named	00805600	CTCTargetingPlayer	FrameUpdate	656	register-tie	DIFFER(641v641)
+named	0080aad1	CTCActionUseBuyHouse	OnCreate	111		
+named	0080bfec	CPersistContext_TransferableVector<CHeroMarriageInfo>	Resize	52		
+named	0080c6d0	CTCDExplosion	UpdateDynamicHitThings	848		
+named	0080cd40	CTCDExplosion	UpdateHitThings	880		DIFFER(911v876)
+named	0080d300	CTCDExplosion	UpdateDynamicExplosion	1104	x87-order	DIFFER(999v1097)
+identify	008100d0	_global	Create	288		
+named	008101f0	CTCDExplosiveTrail	FrameUpdate	1920	x87-order	DIFFER(1608v1914)
+named	00816410	NHitLocations::CPhysicalPrimitiveCylinder	GetClosestPointToPos2D	1184		DIFFER(1169v1174)
+identify	00816ac0	_global	CParticleMorphs_PopulateFromDefinitions	1360		
+identify	0081ea50	_global	Terrain_InterpolateHeightAtPosition	832		
+named	00821850	CMap	InitCachedVolumes	560	block/arm-layout	DIFFER(555v551)
+identify	00825e00	_global	CAFile_ReadPrimitive	288		
+named	00828710	CRegionConnectionGraph	InitialiseGraph	1296		DIFFER(1225v1289)
+named	0082a570	CMiniMapDisplay	DrawMarker	800	x87-order	DIFFER(788v792)
+named	0082afa0	CMiniMapDisplay	InitialiseRegionExitMarkers	1408	incomplete-model	DIFFER(16v1393)
+named	00830fe0	CThingAICreature	SerialiseGameState	1504	stack-slot/frame	DIFFER(1505v1504)
+named	00832260	CThingAICreature	InitialActivate	1088	register-tie	DIFFER(1052v1076)
+named	008329b0	CThingAICreature	OnHit	1200	register-tie	DIFFER(1208v1187)
+named	00833c00	CThingAICreature	DrawPreparePrimitivesForRendering	2352		DIFFER(2296v2300)
+named	00837220	CThingTrackNode	UpdateFacingDirection	720	register-tie	DIFFER(716v716)
+named	00837570	CThingTrackNode	Save	704	block/arm-layout	DIFFER(697v697)
+named	00839420	NThingHelpers	CreateEffectOnHit	1312		DIFFER(1304v1308)
+named	00839940	CThingGameObject	OnHit	5200		DIFFER(5174v5195)
+named	0083c2d0	CThingSwitch	ConstructFromLevelScript	768	stack-slot/frame	DIFFER(760v756)
+named	0083d2e0	CThingMarker	DrawPreparePrimitivesForRendering	384	x87-order	DIFFER(356v372)
+named	0083e1f0	CThingScriptUIDReplacer	CThingScriptUIDReplacer	2080		DIFFER(1984v1973)
+identify	008411d0	_global	LHHttp2_HandleResponse	512		
+named	00843310	CCreatureAction_PerformExpressionExtended	CCreatureAction_PerformExpressionExtended	352	stack-slot/frame	DIFFER(347v347)
+named	00844600	CCreatureAction_Read	CCreatureAction_Read::PerformAction	224		
+named	00844740	CCreatureAction_DropGift	PerformAction	352	x87-order	DIFFER(342v350)
+named	00844bc0	CCreatureAction_GiveItemToThing	?PerformAction@CCreatureAction_GiveItemToThing@@UAEXXZ	1152	register-tie	DIFFER(1140v1144)
+named	00846710	CCreatureAction_PerformExpression	?Initialise@CCreatureAction_PerformExpression@@UAEXXZ	1200	stack-slot/frame	DIFFER(1170v1192)
+named	00848020	CCreatureAction_UseWallMount	?PerformAction@CCreatureAction_UseWallMount@@UAEXXZ	1248	incomplete-model	DIFFER(1v1139)
+named	00850a80	CContextSensitiveItemDef	IsValidOverride	2576		DIFFER(2652v2576)
+identify	00854180	NCameraModes::CScriptModuleSpline	NCameraModes::CScriptModuleSpline::vfunc_1	400		
+identify	00856310	_global	ProcessWeaponTrailPointsToIncludeCylinderCloseToCreatureAxis	608		
+named	008633b0	CThingBodyReorienter	ReorientBodyYZForSlopes	928	x87-order	DIFFER(874v917)
+named	008637d0	CThingBodyReorienter	CheckForNewBodyReorientationAngle	1232		
+named	00864ff0	CTCCreatureHitNotification	DrawHitNotification	240		
+named	008651b0	CTCCreatureHitNotification	SetHitNotification	1184	x87-order	DIFFER(685v1161)
+named	00865f40	CCombatAction_GenericStrikeResponseBase	Initialise	1168	x87-order	DIFFER(1106v1161)
+named	008664f0	CCombatAction_GenericStrikeResponseKnockdown	?Initialise@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ	2032	incomplete-model	DIFFER(1963v2028)
+named	00867200	CCombatAction_GenericResponseToExplosion	?Initialise@CCombatAction_GenericResponseToExplosion@@UAEXXZ	1184	register-tie	DIFFER(1133v1182)
+named	00867d20	CCombatAction_GenericResponseToExplosion	CCombatAction_GenericResponseToExplosion::FinishAction	512	stack-slot/frame	DIFFER(498v498)
+named	0086b9d0	CRandomAppearanceMorph	GetRandomSkeletalMorph	400	register-tie	DIFFER(389v389)
+named	0086be40	CRandomAppearanceMorph	GetRandomBodyParts	304	block/arm-layout	DIFFER(294v294), parked (w24C 2026-11-16): 24 grades. Retail evaluates the begin/end loads before the set's zero stores and branches after them. parked/0086be40_first_last_locals_296.cpp has retail's head exactly (size() then reloads the end); parked/..._reference_size_295.cpp differs by one instruc
+named	00871fd0	NCameraModes::CStringAndCageBase	UpdateXYVars	128	x87-order	DIFFER(124v124), parked (w24C 2026-11-16): 6 grades + DAG: after the call c2 picks `mov eax,[esp+4]` (priority 0xA800 = load + the store behind it) in slot 0 and `fld DesiredCageRadius` (0x8C00) in slot 1 of the same cycle; retail has them the other way. Constant-fold no-ops (`*1.0f`, `+0.0f`, casts
+identify	008722d0	_global	ParticleMorph_UpdatePositionWithVelocity	432		
+identify	00873690	_global	CVertexBufferWin32_UpdateTransform	608		
+named	00873e10	NCameraModes::CPCMouseLook	Update	2400		DIFFER(2384v2386)
+named	00875fb0	NCameraModes	DrawSquare	1328		DIFFER(1315v1315)
+named	008764e0	NCameraModes	DrawPyramid	1984		DIFFER(1329v1340)
+named	00877840	NCameraModes::CTools	IsLineOfSight	1024	stack-slot/frame	DIFFER(1021v1023)
+named	00878430	CThingSearchTools	GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	688	register-tie	DIFFER(673v673)
+named	00879070	NCameraModes::CProjectileWeapon	GetHeightParamForPostionWithPhi	1264		DIFFER(1249v1251)
+identify	00879680	_global	ProjectileWeapon_CalcPhiAngle	576		
+named	00879900	NCameraModes::CProjectileWeapon	Update	3776		acctC round six: round 6 final (2026-11-16): DIFFER(3370v3415); latest draft 00879900.cpp + NOTES.md in the folder (grep the ad
+named	0087d590	CCreatureAction_InterruptableMidAttackAutoTurn	CCreatureAction_InterruptableMidAttackAutoTurn::Initialise	1280	incomplete-model	DIFFER(1v1215)
+named	0087ee70	CCombatAction_StabThing	CCombatAction_StabThing::PerformAction	1232	incomplete-model	DIFFER(1168v1219)
+identify	008818a0	_global	CEnvironmentSpellEffectInterface_UpdateRadialBlurParams	416		
+identify	00881c90	_global	CEnvironmentSpellEffectInterface_AddScreenFilter	880		
+identify	00888a60	_global	CEnvironmentThemeSetDay_BuildDay	1024		
+named	0088ac90	_global	GFSaveSkeletalMorphTargetToFile	432		
+named	0088b0c0	_global	GFLoadSkeletalMorphTargetFromFile	992		
+named	0088bf30	CAIBrain	InitStateGroups	560	stack-slot/frame	DIFFER(550v545)
+named	00896b60	CGameScriptInterface	CGameScriptInterface::KickOffQuestStartScreen	448	block/arm-layout	DIFFER(437v445), parked (w24C 2026-11-16): block layout: retail has the exit block right after the quest-card arm and the screen arm behind it with its own epilogue. 21 shapes (if/else orders, early returns, two sequential ifs, switch, goto, `||` sink, do/while(0), nested tutorial conditions) give t
+named	0089c910	CGameScriptInterface	CanThingBe_Sensed_ByOtherThing	1024	block/arm-layout	Codex pass 23: 974 code bytes versus976; x87 compare/pop pair differs; shifted local targets
+named	0089ce70	CGameScriptInterface	?IsThingAwareOfOtherThingInAnyWay@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z	624	x87-order	DIFFER(616v616)
+named	008a9880	CGameScriptInterface	?ScreenFilterFadeTo@CGameScriptInterface@@UBEPAXMMMMMABVCRGBFloatColour@@ABV?$vector@UCScr	368	block/arm-layout	DIFFER(347v363)
+named	008af990	CombatDialogueManager	GetBestSpeechForCreature	688		
+named	008b6ad0	CCreatureAction_MidAttackSide	CCreatureAction_MidAttackSide::Initialise	352	x87-order	DIFFER(342v344)
+named	008bf280	CCreatureAction_GenericFireProjectileWeapon	PerformAction	640	block/arm-layout	DIFFER(638v638)
+named	008dbc80	NCreatureMode::CModeDragonFlying	FrameUpdate	2320		DIFFER(2323v2319)
+named	008dcc80	NCreatureMode::CModeJackOfBladesFlash	Flash	1136	incomplete-model	DIFFER(1v1136)
+named	008dec80	NCreatureMode::CModeJackOfBladesFlash	FrameUpdate	1680		DIFFER(1647v1665)
+identify	008dfb00	NCreatureMode::CModeSummonerLightningOrb	NCreatureMode::CModeSummonerLightningOrb::vfunc_3	1008		
+named	008e18d0	NCreatureMode::CModeThunderLightningStorm	UpdateLightningBeams	2080		DIFFER(2069v2073)
+identify	008e28f0	NCreatureMode::CModeThunderLightningStorm	NCreatureMode::CModeThunderLightningStorm::vfunc_3	416		
+named	008e5880	CTCPhysicsStandard	PerformStepBasedMovement	1216		
+named	008e5d40	CTCPhysicsStandard	Move	448	x87-order	DIFFER(441v441)
+identify	008e8e50	_global	GetStrafeAnimationName	416		
+named	008e9b70	NCreatureMode::CModeStrafe	AnimUpdate	1712		DIFFER(1706v1705)
+identify	008edc70	_gapscan	sub_008edc70	352		
+named	008eeb40	Mass	ForceToVel	160		
+named	008eec70	Mass	Collide	1184		DIFFER(1129v1129), parked (w24C 2026-11-16): 19 grades + DAG: retail's first region of the post-`return false` block holds 80 instructions, ours 81 (the 83-node cut falls after `mov eax,esp` instead of before it): retail has exactly one non-emitting tuple in that block. Not found: named float numera
+named	008ef200	Coin	Coin	240	x87-order	DIFFER(223v231)
+named	008ef520	CTCTavernGameCoinBase	UpdateCoins	1008	register-tie	DIFFER(1010v998)
+named	008efb00	CTCTavernGameCoinBase	FindObstacles	592	stack-slot/frame	DIFFER(582v589)
+named	008f0bd0	CTCTavernGameCardBase	DealCards	736	block/arm-layout	DIFFER(722v722)
+named	008f12d0	CTCTavernGameCardBase	ProcessInput	1104		
+named	008f18c0	CTCTavernGameCardBase	UpdateHighlightedCard	784	x87-order	DIFFER(772v770)
+named	008f1e30	CTCTavernGameCardBase	EnterGame	704	stack-slot/frame	DIFFER(677v692)
+named	008f3310	CCreatureAction_DragonFireBlastBase	?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ	800	x87-order	DIFFER(796v796)
+named	008f45f0	CCreatureAction_DragonSwoop	?FrameUpdate@CCreatureAction_DragonSwoop@@UAEXXZ	496	x87-order	DIFFER(507v493)
+named	008f61a0	CHeightMap	Resize	544		DIFFER(518v530)
+identify	008f92fd	_gapscan	sub_008f92fd	35		
+identify	008fa800	_global	DoAttractToPoint_ComputeAcceleration	496		
+named	00903f30	CScriptGameResourceObjectScriptedThing	CScriptGameResourceObjectScriptedThing::FollowPreCalculatedRoute	256	register-tie	DIFFER(254v254)
+named	0090cc40	CAIStateGroup_MinionGossip	?IsRunnable@CAIStateGroup_MinionGossip@@MAE_NXZ	1008	stack-slot/frame	DIFFER(974v997)
+identify	0090ebe0	_global	FindMessage	352		
+named	009101c0	CAIStateGroup_MinionListenToStory	?Update@CAIStateGroup_MinionListenToStory@@MAEXXZ	736	x87-order	DIFFER(751v735)
+named	00911300	CAIStateGroup_MinionGuardReactToBodyFoundMessage	?Update@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@UAEXXZ	672	stack-slot/frame	DIFFER(666v666)
+named	009130d0	CAIStateGroup_FlyingThingBase	AIAction_RandomFlyToPos	960	register-tie	DIFFER(976v954)
+named	00914d80	CAIStateGroup_KidWanderNearKids	?Update@CAIStateGroup_KidWanderNearKids@@UAEXXZ	368	stack-slot/frame	
+named	00918a40	CAIStateGroup_GazeAtWork	IsRunnable	128	block/arm-layout	DIFFER(114v116)
+named	00919240	CAIStateGroup_LookAtInterestingThings	FindInterestingThing	512	register-tie	DIFFER(508v508)
+named	00919ae0	CAIStateGroup_BuyFromSeller	?Update@CAIStateGroup_BuyFromSeller@@UAEXXZ	2224		
+named	0091b570	CAIStateGroup_SeekPerceivedThing	CAIStateGroup_SeekPerceivedThing::Update	752	x87-order	DIFFER(499v498)
+named	0091c0d0	CAIStateGroup_NymphFloatAround	CAIStateGroup_NymphFloatAround::IsRunnable	96		DIFFER(81v81)
+named	0091c220	CAIStateGroup_NymphAttack	IsTargetInLineOfSight	432	stack-slot/frame	DIFFER(416v419)
+named	0091c6a0	CAIStateGroup_NymphAttack	?Update@CAIStateGroup_NymphAttack@@UAEXXZ	800	incomplete-model	DIFFER(796v786)
+named	0091e270	CAIStateGroup_HoverAttack	IsEnemyRunningAway	528	stack-slot/frame	
+named	0091ec30	CAIStateGroup_CreatureRangedCombat2	?Update@CAIStateGroup_CreatureRangedCombat2@@MAEXXZ	1056	incomplete-model	DIFFER(1059v1047)
+named	0091f140	CAIStateGroup_TestTestTest	CAIStateGroup_TestTestTest::Update	1344	register-tie	DIFFER(956v949)
+named	00920a00	CAIStateGroup_CreatureSeekEnemyUnderground	?Update@CAIStateGroup_CreatureSeekEnemyUnderground@@MAEXXZ	960	stack-slot/frame	DIFFER(953v947)
+named	00920dc0	CAIStateGroup_CreatureSeekEnemyUnderground	CAIStateGroup_CreatureSeekEnemyUnderground::OnReplace	464	x87-order	DIFFER(455v455)
+named	009216e0	CAIStateGroup_MinionFollowThing	CAIStateGroup_MinionFollowThing::IsRunnable	400	register-tie	
+named	00921990	CAIStateGroup_MinionFollowThing	?Update@CAIStateGroup_MinionFollowThing@@MAEXXZ	1664	stack-slot/frame	DIFFER(1797v1651)
+named	00922860	CAIStateGroup_Drunk	?Update@CAIStateGroup_Drunk@@UAEXXZ	1616	incomplete-model	DIFFER(1620v1612)
+named	00926060	CAIStateGroup_WifeGiveYouGift	?Update@CAIStateGroup_WifeGiveYouGift@@UAEXXZ	400	block/arm-layout	DIFFER(387v386)
+named	00926ed0	CAIStateGroup_OpenAndCloseShop	?Update@CAIStateGroup_OpenAndCloseShop@@UAEXXZ	1408	incomplete-model	DIFFER(1389v1373)
+identify	00927910	_global	Sort_MergeHeap	400		
+named	00929020	CAIStateGroup_BanditPlayDice	?IsRunnable@CAIStateGroup_BanditPlayDice@@MAE_NXZ	512	stack-slot/frame	DIFFER(506v507)
+named	0092cb30	CAIStateGroup_GoToBed	IsHeroTrespassingPerceived	624	register-tie	
+named	0092cda0	CAIStateGroup_MinionSleep	?OnReplace@CAIStateGroup_MinionSleep@@UAEXXZ	704	stack-slot/frame	DIFFER(693v701)
+named	0092d1f0	CAIStateGroup_GoToBed	FindFreeBed	1040	x87-order	DIFFER(1034v1031)
+named	0092ea90	CAIStateGroup_MinionFindPersonalSpace	?Update@CAIStateGroup_MinionFindPersonalSpace@@UAEXXZ	528	x87-order	DIFFER(444v440)
+named	0092ee10	CAIStateGroup_MinionReactToPlayerInteraction	UpdateWaitingForConfirmation	1072	register-tie	DIFFER(1030v1059)
+named	0092f310	CAIStateGroup_MinionReactToPlayerInteraction	GetGossipPhrase	1952		DIFFER(1994v1945)
+named	00930480	CAIStateGroup_MinionReactToPlayerInteraction	?Update@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ	1520	x87-order	DIFFER(1486v1513)
+named	00931390	CAIStateGroup_MinionReactToCriminal	?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ	3904		acctC round six: round 6 final (2026-11-16): DIFFER(3863v3863); latest draft 00931390.cpp + NOTES.md in the folder (grep the ad
+named	00932b50	CAIStateGroup_MinionGuardReactToCriminal	?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ	1680	x87-order	DIFFER(1692v1671)
+named	009334f0	CAIStateGroup_MinionGuardReactToBribe	?Update@CAIStateGroup_MinionGuardReactToBribe@@UAEXXZ	1360	register-tie	DIFFER(1357v1347)
+named	00933db0	CAIStateGroup_MinionKidAnnoy	CAIStateGroup_MinionKidAnnoy::Update	352	block/arm-layout	DIFFER(347v347)
+named	00935580	CAIStateGroup_MinionFaceHero	?IsRunnable@CAIStateGroup_MinionFaceHero@@UAE_NXZ	624	x87-order	DIFFER(615v617)
+named	00935c40	CAIStateGroup_MinionPutOutFires	GoToWell	512	stack-slot/frame	DIFFER(499v502)
+named	00935e40	CAIStateGroup_MinionPutOutFires	PutOutFire	480	block/arm-layout	DIFFER(476v468)
+named	009363d0	CAIStateGroup_MinionWatchFires	CAIStateGroup_MinionWatchFires::Update	448	block/arm-layout	DIFFER(442v438)
+named	00936c70	CAIStateGroup_MinionReactToCorpse	CAIStateGroup_MinionReactToCorpse::Update	1040	x87-order	DIFFER(1031v1037)
+named	00938380	CAIStateGroup_UsesSeat	SitInSeat	512	incomplete-model	DIFFER(489v499)
+named	009392a0	CAIStateGroup_SitRoundCampfire	CAIStateGroup_SitRoundCampfire::Update	768	stack-slot/frame	DIFFER(749v761)
+named	00939670	CAIStateGroup_SitRoundCampfire	?IsRunnable@CAIStateGroup_SitRoundCampfire@@UAE_NXZ	368	block/arm-layout	
+named	009397e0	CAIStateGroup_SitRoundCampfire	CAIStateGroup_SitRoundCampfire::OnReplace	624	stack-slot/frame	DIFFER(569v571)
+named	0093aa40	CAIStateGroup_BanditSitRoundCampfire	CAIStateGroup_BanditSitRoundCampfire::InitCreaturePosition	304	block/arm-layout	
+named	0093ab70	CAIStateGroup_BanditSitRoundCampfire	GetPNearCampfire	512	stack-slot/frame	DIFFER(510v504)
+named	0093b9f0	CAIStateGroup_SeekEnemy	CAIStateGroup_SeekEnemy::Update	1024	register-tie	DIFFER(1084v1012)
+named	0093ef30	CAIStateGroup_VillageTaskPatrol	?InitCreaturePosition@CAIStateGroup_VillageTaskPatrol@@UAE_NXZ	1168	incomplete-model	DIFFER(1175v1161)
+named	0093f3c0	CAIStateGroup_VillageTaskPatrol	?Update@CAIStateGroup_VillageTaskPatrol@@UAEXXZ	1200	incomplete-model	DIFFER(1182v1185)
+named	0093fcd0	CAIStateGroup_VillageTaskSecuritySweep	CAIStateGroup_VillageTaskSecuritySweep::Update	1056	incomplete-model	DIFFER(1052v1053)
+named	00940310	CAIStateGroup_VillageTaskPickCrops	?Update@CAIStateGroup_VillageTaskPickCrops@@UAEXXZ	544	stack-slot/frame	DIFFER(493v494)
+named	00940bf0	CAIStateGroup_KidWatchHopscotch	?Update@CAIStateGroup_KidWatchHopscotch@@MAEXXZ	1568	register-tie	DIFFER(1520v1563)
+named	00941900	CAIStateGroup_KidPlayHopscotch	?IsRunnable@CAIStateGroup_KidPlayHopscotch@@MAE_NXZ	544	x87-order	
+named	00943cf0	CAIStateGroup_WorkInWarehouse	MoveCrates	1552	incomplete-model	DIFFER(1612v1541)
+named	00944300	CAIStateGroup_WorkInWarehouse	?Update@CAIStateGroup_WorkInWarehouse@@UAEXXZ	368	stack-slot/frame	DIFFER(344v354)
+named	009456a0	CAIStateGroup_SitForMeal	GetFoodFromCookingPot	1008	stack-slot/frame	DIFFER(921v1006)
+named	009478a0	CAIStateGroup_StayNearFoodHall	?IsRunnable@CAIStateGroup_StayNearFoodHall@@UAE_NXZ	400	register-tie	
+named	00947eb0	CAIStateGroup_GoToPub	GetObjectWithScriptName	256		
+named	00948880	CAIStateGroup_GoToPub	Drink	1216	incomplete-model	DIFFER(1194v1206)
+named	00949580	CAIStateGroup_GoToPub	WalktoSeatAndSit	816	stack-slot/frame	DIFFER(808v808)
+named	0094ab00	CAIStateGroup_GoToPub	Update	2096		DIFFER(2068v2067)
+named	0094dd90	CAIStateGroup_RockTroll	CAIStateGroup_RockTroll::Update	1776	incomplete-model	DIFFER(1754v1761)
+named	0094fc00	CAIStateGroup_JackDragon	CreateIBC	496	x87-order	DIFFER(476v482)
+named	00950cf0	CAIStateGroup_JackDragon	UpdateStrafe	896	x87-order	DIFFER(892v886)
+named	00951070	CAIStateGroup_JackDragon	IntoGround	960	stack-slot/frame	DIFFER(944v953)
+named	00951fb0	CAIStateGroup_JackDragon	UpdateHover	2272		DIFFER(2279v2272)
+named	00954f40	CAIStateGroup_MazeTeleport	CAIStateGroup_MazeTeleport::Update	608	stack-slot/frame	DIFFER(604v604)
+named	009552c0	CAIStateGroup_MazeShieldedChase	CAIStateGroup_MazeShieldedChase::Update	864	stack-slot/frame	DIFFER(862v861)
+named	00955620	CAIStateGroup_MazeDefensiveMeleeCombat	?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ	1648	register-tie	DIFFER(1635v1647)
+named	00955c90	CAIStateGroup_MazeTutorialBattle	CAIStateGroup_MazeTutorialBattle::Update	976	block/arm-layout	DIFFER(916v970)
+named	00957c30	CAIStateGroup_MinionBehaviourCrowdBase	?IsRunnable@CAIStateGroup_MinionBehaviourCrowdBase@@UAE_NXZ	384	register-tie	
+named	009582d0	CAIStateGroup_MinionReactToTrespassing	?Update@CAIStateGroup_MinionReactToTrespassing@@UAEXXZ	1104	register-tie	DIFFER(1097v1098)
+named	0095b9e0	CAIStateGroup_HoverHornetQueen	DiveBomb	784	x87-order	DIFFER(782v782)
+named	0095ef80	CAIStateGroup_OpinionReactionRoot	?IsRunnable@CAIStateGroup_OpinionReactionRoot@@UAE_NXZ	1536	incomplete-model	DIFFER(1536v1528)
+named	00960120	CAIStateGroup_DeedReactionRoot	Update	1600		DIFFER(1596v1600)
+named	00961ca0	CAIStateGroup_IceTrollIcicleAttack	?IsRunnable@CAIStateGroup_IceTrollIcicleAttack@@MAE_NXZ	368	stack-slot/frame	
+named	00962d50	CAIStateGroup_VersusRockTroll	?Update@CAIStateGroup_VersusRockTroll@@MAEXXZ	1680	incomplete-model	DIFFER(1611v1679)
+named	00963a50	CAIStateGroup_VersusScorpionKing	CAIStateGroup_VersusScorpionKing::Update	1808	incomplete-model	DIFFER(1635v1695)
+named	009663a0	CAIStateGroup_CarryCrateAndFollow	CAIStateGroup_CarryCrateAndFollow::Update	1264	incomplete-model	DIFFER(1165v1180)
+named	009673b0	CAIStateGroup_TavernServer	?OnReplace@CAIStateGroup_TavernServer@@MAEXXZ	672	register-tie	
+named	00968650	CAIStateGroup_TavernKeeper	GetBar	352	register-tie	
+named	00968fa0	CAIStateGroup_TavernKeeper	FillJug	800	register-tie	
+named	0096df50	CAIStateGroup_ScreamerPursueTarget	?Update@CAIStateGroup_ScreamerPursueTarget@@UAEXXZ	1184	incomplete-model	DIFFER(1159v1150)
+named	00970df0	CAIStateGroup_CreatureUseCoverBase	?GetCoverThingList@CAIStateGroup_CreatureUseCoverBase@@MAEXAAV?$vector@PAVCThing@@V?$alloc	320	stack-slot/frame	DIFFER(58v0)
+named	00971b60	CAIStateGroup_JackOfBladesBase	GetDistantPos	368	x87-order	
+named	00971cd0	CAIStateGroup_JackOfBladesStage1	GetRushToPos	512	x87-order	DIFFER(506v510)
+named	00973900	CAIStateGroup_JackOfBladesBase	SummonPillarsOld	1216		
+named	00974770	CAIStateGroup_JackOfBladesStage1	PowerUpSword	816	stack-slot/frame	DIFFER(817v807)
+named	009756b0	CAIStateGroup_JackOfBladesStage3	CAIStateGroup_JackOfBladesStage3::Update	1280	register-tie	DIFFER(1270v1276)
+named	00975bb0	CAIStateGroup_JackOfBladesStage1	?Update@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	4720		DIFFER(4612v4707)
+named	0097a1b0	CAIStateGroup_CreatureTakeCover	MoveFromCoverToFiringPosition	1152		
+named	0097bb30	CAIStateGroup_ScorpionKing	?Initialise@CAIStateGroup_ScorpionKing@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAI	624	stack-slot/frame	DIFFER(616v622)
+named	0097e380	CAIStateGroupBase	AIAction_MoveToThingProximity	1296	register-tie	DIFFER(1240v1286)
+named	00980bd0	CAIStateGroupBase	AIAction_SpeakToTarget	1248	block/arm-layout	DIFFER(1212v1233)
+identify	00981410	_global	AIAction_InteractWith	2704		
+named	00984f60	CAIStateGroup_OpinionReactionRoot	FleeUpdate	864	register-tie	DIFFER(856v863)
+named	00985440	CAIStateGroup_OpinionReactionRoot	HeroImitationPlayUpdate	912	block/arm-layout	DIFFER(625v625)
+named	00986ed0	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	368	x87-order	DIFFER(353v353)
+identify	0098e7d0	_global	CThreadedFileManager_ProcessPendingRequests	848		
+identify	009919c0	_global	RegisterSoundBanks	592		
+identify	00991c10	_global	CMainGameComponent_RegisterSoundBank	496		
+named	0099c1e0	CWideString	Replace	880	register-tie	DIFFER(610v609)
+named	0099d8c0	_global	ErrorDialogProc	800		
+named	0099e690	_global	GFCharStringToFloat	352		
+named	0099f570	_global	operator+	144		
+named	0099f600	_global	operator+	144		
+identify	0099f7a0	_global	CWideString_AppendChar	144		
+identify	0099fb60	_global	GFIntToCharString_JoinList	592		
+named	009a01c0	CBasicString<char>	ExtendData	320		
+named	009a08b0	_global	GFFloatToCharString	560	block/arm-layout	DIFFER(458v491)
+named	009a1140	CStreamingFontBank	GlyphLookup	928	stack-slot/frame	DIFFER(871v918)
+named	009a2000	CStreamingFontBank	?Preload@CStreamingFontBank@@UBE_NABVCWideString@@_N@Z	992	register-tie	DIFFER(1004v982)
+identify	009a3460	_global	ReadTextFileIntoArray	480		
+named	009ae7c0	CDefinitionManager	CompileDefinition	1456	incomplete-model	DIFFER(1405v1456)
+named	009aed70	CParentDefClassBase	?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z	496	stack-slot/frame	DIFFER(499v492)
+named	009afb90	CDefinitionManager	LoadBinaryDefinitions	1344	incomplete-model	DIFFER(1326v1344)
+named	009b9770	CParsedItem	InitAsFloat	256	x87-order	DIFFER(177v181)
+named	009b9d70	CStringParser	SkipPastNewline	144	block/arm-layout	DIFFER(127v132)
+named	009bbcc0	CPersistContext	TransferSubComponentLoadText	1120		DIFFER(1140v1106)
+named	009bca20	_global	DisplayCenteredText	1104		DIFFER(1104v1104)
+identify	009bce70	_global	GetCharWidthW	128		
+identify	009bcef0	_global	GetCharWidthW	128		
+named	009bd460	CMovieSubtitles	ParseSubtitles	1200	inline-vs-call	DIFFER(1174v1193)
+named	009c33a0	_global	GetMarkerFileName	368		
+identify	009c37a0	_global	CodeSection_SetReadyAndSignal	128		
+identify	009c3820	_global	CodeSection_DecrementAndSignal	160		
+named	009c3fb0	CFileInstaller	ProcessActiveFileForWrite	368	block/arm-layout	
+identify	009c5170	_global	CPatchTesselationEdgeStrip_DestructorHelper	416		
+identify	009c8c00	NGameText::CDataBank	NGameText::CDataBank::vfunc_12	480		
+named	009ce370	CBankFile	WriteFileInformation	624	wrong-flags/pragma	DIFFER(622v620)
+named	009cec60	CBankFile	Update	1856		DIFFER(1840v1850)
+named	009cfbc0	CBankFile	ReadEntryList	1984	register-tie	DIFFER(1973v1969)
+named	009d0880	CBankFile	ReadFileInformation	1648	eh/unwind	DIFFER(1570v1635)
+identify	009d8650	_global	MicroThreadSleep	96		
+named	009e3f60	CPixelFormat	ConvertRGBToPFDData	576		DIFFER(179v189)
+named	009e55a0	CSymbolMap	ParseEnum	1328	block/arm-layout	DIFFER(1332v1317)
+named	009e84d0	CPersistTraits<C3DVector>	TransferIn	1856		
+named	009ebdd0	CConsoleCommandBase	?ProcessCommandLine@CConsoleCommandBase@@MAE_NABVCCharString@@AAVCConsole@@@Z	1632	register-tie	DIFFER(1584v1625)
+identify	009f18f0	_global	CircularBuffer_Read	176		
+identify	009f39a0	_global	CSurface_CopySurfaceData	352		
+named	009f3da0	CSurface	CopyToMemoryB8G8R8A8	592	stack-slot/frame	DIFFER(589v582)
+named	009f4590	CSurface	SaveAsTGA	896	incomplete-model	DIFFER(916v864)
+named	009f57a0	CInputManager	?Update@CInputManager@@UAEXXZ	1072	incomplete-model	DIFFER(813v1072)
+named	009f73c0	CVsyncCallbackTimer	OnPostSwapScreens	736		
+named	009faf70	CTexture	GenerateMipmapsWithGPU	416	register-tie	DIFFER(407v407)
+named	009fb110	CTexture	SaveToDataStream	736		
+named	009fb3f0	CTexture	LoadFromDataStream	864		
+named	009fb750	CTexture	LoadFromDataStreamToPreallocatedSurface	1152	register-tie	DIFFER(789v789)
+named	009fde80	CGraphicInfoFrame::CFrameData	BeginLoading	1280		acctC round six: round 6 final (2026-11-16): DIFFER(1265v1265); latest draft 009fde80.cpp + NOTES.md in the folder (grep the ad
+named	009fe780	CGraphicInfo	InitialiseFramesAsSurfaceSections	352	incomplete-model	DIFFER(351v343)
+identify	00a04200	_global	Math_NormalizeVector2D	384		
+named	00a0be30	CCamera	SetView	80		
+named	00a0c1b0	CCamera	MoveSideways	160	x87-order	DIFFER(158v152)
+named	00a0c6f0	CCamera	SetAngleYZ	320		
+named	00a0ca90	CWParsedItem	InitAsFloat	240	x87-order	DIFFER(176v187)
+named	00a10390	_global	WordWrap_FindNextLineW	464		
+named	00a10560	_global	WordWrap_FindNextLineA	448		
+named	00a10b80	WordWrap_String	TokenizeA	576		
+named	00a112f0	CMatrix3x4	TransformPlane	320		
+named	00a120d0	CPhysicsMeshObject	GetSphereIntersectionFromTo	896	x87-order	DIFFER(987v886)
+named	00a12450	CPhysicsMeshObject	GetPointIntersectionFromTo	880	x87-order	DIFFER(971v870)
+named	00a12d20	CPhysicsMeshObject	GetNavigationLineList	448		
+named	00a15890	CNavigatorManager	OutputWorld	1984		DIFFER(1983v1973)
+named	00a17af0	CPhysicsMesh	GetSphereIntersectionFromToUsingSegmentation	1168		
+named	00a182c0	CPhysicsMesh	GetSphereIntersectionFromToUsingFullCollision	1184		
+identify	00a18b50	_global	Collision_TestTriangleSphere	848		
+named	00a18fc0	CNavigatorFlyer	?MoveToPosProximity@CNavigatorFlyer@@UAE?AW4ENavigatorReturn@@ABVC3DVector@@0MMAAV3@_N2222	1136	x87-order	DIFFER(1123v1125)
+named	00a19430	CNavigatorFlyer	?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@M_N@Z	1168	x87-order	DIFFER(1215v1165)
+named	00a1a260	CNavigatorAStar	IsRouteClear	1408	x87-order	
+named	00a1ad40	CNavigatorAStar	GetPosInDirection	384		DIFFER(366v370)
+named	00a1aff0	CSteeringAgent	Process	1152	stack-slot/frame	DIFFER(1155v1140)
+named	00a1b5a0	CNavigatorAStar	CNavigatorAStar::GetRandomNavigablePos	1136	x87-order	
+named	00a1ba10	CNavigatorAStar	?GetRandomNavigablePos@CNavigatorAStar@@UBE?AVC3DVector@@ABV2@MABVC2DVector@@M@Z	656	x87-order	DIFFER(642v642)
+named	00a1cc30	CNavigatorAStar	ConstructFinalRoute	640	x87-order	RELOCATION_MATCH(632v632) only with a same-TU stand-in body of GetIntersectionPointsBetweenNodes 0x00A1A7E0 (Codex pass 23 reserved; 664v632 with a declaration); lands after that row
+named	00a1d6e0	CNavigatorAStar	CalculateNavigableWidthOfLine	1872	x87-order	
+named	00a1e110	CNavigatorAStar	MoveTowardNextWayPoint	608	x87-order	DIFFER(596v601)
+identify	00a1e5c0	_global	CNavigatorAStar_MoveTowardGoal	5440		
+named	00a229e0	CRightHandedSet	CRightHandedSet	704		DIFFER(691v689)
+named	00a23190	CRightHandedSet	Interpolate	1904	incomplete-model	DIFFER(366v1508)
+named	00a24cd0	C3DMeshInfo	?Reset@C3DMeshInfo@@EAEXXZ	112		
+named	00a25040	CMeshBankStateBlock	CMeshBankStateBlock::CreateCRC	992	register-tie	DIFFER(942v990)
+named	00a276d0	CMeshDataBank	?InitialiseEntry@CMeshDataBank@@MAEXKKABV?$CArray@D@@@Z	2784	incomplete-model	DIFFER(1338v1330)
+named	00a2f740	C3DMeshStats	InitialiseFromFileData	4912		acctC round six: round 6 final (2026-11-16): DIFFER(3017v3051); latest draft 00a2f740.cpp + NOTES.md in the folder (grep the ad
+named	00a357b0	C3DMeshObject	SetPositionMatrix	320	block/arm-layout	
+identify	00a35b70	_global	GetRotationMatrixForTransformFromTo	1024		
+named	00a364e0	C3DMeshObject	GetDummyObjectPositionStatic	1440	x87-order	DIFFER(703v700)
+named	00a36a80	C3DMeshObject	GetDummyObjectPositionAnimated	880	stack-slot/frame	DIFFER(745v747)
+named	00a3a410	CWADBank	AddFile	960		DIFFER(918v920)
+named	00a3c3b0	C3DAnimationBlendState	SetInterpolate	1168	x87-order	DIFFER(777v777)
+identify	00a43cd0	_global	Vector_InsertRange_CDataBankTextEntry	352		
+identify	00a43e30	_global	CVertexBufferWin32_SizeofElements	240		
+named	00a44420	_global	GFIsPointInTriangle	432		
+identify	00a446ce	_global	NScript_CIngredientOwner_RunThread	38		
+identify	00a44719	_global	NScript_MicroThread_Idle	39		
+identify	00a4b670	_global	IsPosInFOVWithWeight	320		
+named	00a55f90	CMatrix3x4	SetFromVectorAndAngle	272		DIFFER(259v259)
+named	00a56270	CMatrix3x4	Orthonormalise	704	x87-order	DIFFER(706v693)
+named	00a57030	C2DLineF	Intersects2D	272	register-tie	
+named	00a57140	C2DLineF	GetPointOnInfiniteLine	96		
+named	00a571a0	C2DLineF	GetPointOnLine	656	x87-order	DIFFER(653v654)
+identify	00a58130	_global	CPSCSplineBase_GenerateCurvePoints	1440		
+named	00a58b50	NBBBMaths::CSphere	GetFirstIntersectionWithTriangle	2208		DIFFER(2211v2207)
+identify	00a5c360	_global	GFNormalise3DVectors	432		
+named	00a60410	_global	GFRemoveComments	256		
+named	00a64ef0	CMemoryAllocatorVariableSize	RemoveFromTree	368	register-tie	
+named	00a68690	CVolumeTexture	InitialiseSlicesFromTextureList	640		
+named	00a68ae0	CVolumeTexture	SaveToDataStream	768		
+named	00a68de0	CVolumeTexture	LoadFromDataStream	1904		DIFFER(923v919)
+named	00a69f70	CTextureManager	ReduceMipmapLevel	960	register-tie	DIFFER(881v955)
+named	00a6a670	CPreallocTexturePool	ResizePool	1072		
+named	00a6c640	CPhysicsMesh	CalculateBoundingInfo	528	stack-slot/frame	DIFFER(514v517)
+named	00a6cc10	CPhysicsMesh	GetMeshDataFromFileData	1088		
+named	00a6d0e0	CPhysicsMesh	GetHelperDataFromFileData	1136	stack-slot/frame	DIFFER(930v984)
+named	00a6d670	CPhysicsMesh	GetContainmentDataFromFileData	976	stack-slot/frame	DIFFER(898v969)
+named	00a73e50	CPhysicsMesh	GenerateLineListFromBaseline	816		
+identify	00a74180	_global	NavMesh_ProcessLine_Indices	480		
+named	00a76770	CNavQuadTreeNode	GetLeafNodeAt	336	block/arm-layout	DIFFER(318v321)
+identify	00a77780	_global	NavigationGraph_BreadthFirstSearch	304		
+named	00a79b30	CNavQuadTreeNode	Initialise	1392	x87-order	
+named	00a7a0a0	CNavQuadTree	SetUpRegions	1232		DIFFER(1270v1222)
+named	00a7a8d0	CNavQuadTree	Initialise	1680	block/arm-layout	
+named	00a86110	CIPhysicsFacesSegmentBase	CalculateDividingPlane	1968		DIFFER(1967v1967)
+named	00a868c0	CIPhysicsFacesSegmentBase	Calculate	624		
+named	00a87960	CSBIAgents	CSBIAgents::Process	1824	incomplete-model	DIFFER(115v1824)
+named	00a880c0	CSBCCorridor	?Process@CSBCCorridor@@UAE_NPBVCSteeringAgent@@@Z	1776	incomplete-model	DIFFER(1720v1768)
+named	00a898d0	C3DMesh2	C3DMesh2::GetHelperPointPositionAnimated	416	x87-order	DIFFER(393v402)
+identify	00a8f1b0	_global	TransformVertexBufferWithNormals_LoopUnrolled	1472		
+named	00a90260	C3DPrimitive2	CreateDegenerateTriangleIndexBuffer	496	register-tie	DIFFER(496v496)
+named	00a90d60	N3DPrimitive::CDeviceIndependent	RemapBoneIndices	416		DIFFER(445v413)
+named	00a92900	C3DPrimitive2	LoadBinary	2288		DIFFER(2283v2274)
+named	00a9dc20	_global	ApplyPartialAnimationAlpha	720		DIFFER(709v706)
+named	00aa8830	CChunkedFileSuperChunk	ReadFromFile	1248	stack-slot/frame	DIFFER(918v889)
+named	00aaf1e0	C3DKeyframe	InitialiseFromMatrix	944	x87-order	DIFFER(839v904)
+named	00ab1740	C3DAnimationBuilder	AssignAnimation	592	register-tie	DIFFER(605v592)
+named	00ab1990	C3DAnimationBuilder	BuildBoneInfoTree	816		
+identify	00ab1cc0	_global	BuildEntityScriptBindings_FromVertexIndices	624		
+named	00ab2160	C3DAnimationBuilder	GetIntersection	960	stack-slot/frame	DIFFER(1097v960)
+named	00ab2520	C3DAnimationBuilder	BuildMeshAnimation	1376		
+named	00ab3870	CVertexShaderInput	GenerateD3DDeclaration	672	bounds	DIFFER(668v668)
+named	00ab4bb0	CMouseDX	GetNonExclusiveModeDeviceMouseEvent	1152	x87-order	
+named	00ab7b00	CStaticFontBank	CStaticFontBank::GetStringExtents	288	x87-order	DIFFER(287v287)
+named	00ab7c20	CStaticFontBank	CStaticFontBank::Render	1920	x87-order	DIFFER(1783v1910)
+identify	00ac70f0	_global	GetInverseMatrixPart	272		
+named	00ac7750	QuadricOptimiserInternals::COptimisedPrimitive	ComputeOptimalVertexPlacement	496	stack-slot/frame	DIFFER(497v495)
+named	00ac7cb0	QuadricOptimiserInternals::COptimisedPrimitive	GetFaceNormal	352	x87-order	DIFFER(350v350)
+named	00ac8360	QuadricOptimiserInternals::CVertexPairContraction	IsIllegal	480		
+named	00ac9a60	QuadricOptimiserInternals::COptimisedPrimitive	FindAdjacentFaces	752		DIFFER(743v745)
+named	00accbf0	QuadricOptimiserInternals::COptimisedPrimitive	PerformSubContraction	1264		DIFFER(1282v1264)
+named	00acd960	QuadricOptimiserInternals::COptimisedPrimitive	Optimise	384	register-tie	DIFFER(383v383)
+named	00ace600	QuadricOptimiserInternals::COptimisedMesh	COptimisedMesh	1824	stack-slot/frame	
+identify	00ad8af0	_global	TreeNodes_HaveIntersection	320		
+named	00add690	C3DBoundingSphere	FastBuildFromPoints	656	block/arm-layout	DIFFER(646v648)
+named	00ade080	C3DBoundingBox	InitialiseFromOBB	2880		acctC round six: round 6 final (2026-11-16): DIFFER(2735v2735); latest draft 00ade080.cpp + NOTES.md in the folder (grep the ad
+named	00adefc0	CMatrix4x4	AlignedPreMultiplyTransposed	544		DIFFER(472v471)
+named	00ae1a90	CParticleProgram	ExecuteProgram	304		
+named	00ae2e20	CParticleProgram	OptimiseSpringOrder	1296		DIFFER(1389v1293)
+named	00ae3c30	CParticleProgram	ReadFromFile	2944		acctC round six: round 6 final (2026-11-16): DIFFER(2310v2310); latest draft 00ae3c30.cpp + NOTES.md in the folder (grep the ad
+named	00af2640	NParticleEngine::CPSCBase	GetCurrentPosition	320		
+named	00afae50	NParticleEngine::CPSCRenderSprite	AddToBoundingSphere	2416		DIFFER(2406v2405)
+named	00b0d360	NParticleEngine::CPSCUpdateNormal	DatabaseSerialise	2240		DIFFER(2242v2240)
+named	00b0dc20	NParticleEngine::CPSCUpdateNormal	Update	5616		DIFFER(5601v5602)
+identify	00b131e0	NParticleEngine::CPSCEmitterGeneric	NParticleEngine::CPSCEmitterGeneric::vfunc_18	848		
+identify	00b17410	NParticleEngine::CPSCOrbit	NParticleEngine::CPSCOrbit::vfunc_10	944		
+named	00b17bd0	NParticleEngine::CPSCAttractor	InterpolateTo	928		
+named	00b19c60	NParticleEngine::CPSCLight	PreparePrimitives	2528		DIFFER(2546v2516)
+named	00b1bc80	NParticleEngine::CPSCDecalRenderer	GetComponentCost	288		
+named	00b22670	NParticleEngine::CPSCSplineBase	DatabaseSerialise	1232	register-tie	DIFFER(1201v1217)
+named	00b242d0	CEngine	CEngine::ConvertWorldPosToScreenPos	304	x87-order	DIFFER(295v293)
+named	00b24850	CEngine	SetDefaultRenderStates	4352		DIFFER(4344v4344)
+named	00b277a0	CEngine	LoadNewScene	1456	incomplete-model	DIFFER(3v1446)
+named	00b27d90	CEngine	CEngine::Render	336		DIFFER(328v325)
+named	00b2b9b0	CEngineSurfaceCompositionManager	GetComposedSurface	976	register-tie	DIFFER(965v971)
+named	00b2bd80	CEngineSurfaceCompositionManager	WriteTextureToBank	656	stack-slot/frame	DIFFER(641v641)
+named	00b2c010	CEngineSurfaceCompositionManager	PreloadCompletedBank	1008	register-tie	DIFFER(953v993)
+named	00b2f760	CEnginePrimitiveOcclusionManager	CEnginePrimitiveOcclusionManager	96		
+named	00b2fd60	CEngineCamera	SetupGamut	1824		DIFFER(1802v1812)
+named	00b30610	CEngineCamera	ClipBox	720	block/arm-layout	DIFFER(710v710)
+named	00b30b50	CEngineCamera	SetCameraState	1552	incomplete-model	DIFFER(3v1499)
+named	00b31160	CEngineCamera	ProcessDebugScript	896	register-tie	DIFFER(891v886)
+named	00b33390	CEnginePrimitiveRenderer	ProcessPrimitiveStats	400		
+named	00b3bc90	CEngineResourceManager	SetupEditorAnimation	384		DIFFER(384v371)
+named	00b3fc40	CEngineMap	PeekInterpolatedMapNormal	816		DIFFER(528v528)
+named	00b40260	CEngineMap	PeekHasWaterFast	1040	register-tie	DIFFER(1034v1037)
+named	00b40670	CEngineMap	PeekWaterType	1376	register-tie	DIFFER(1072v1125)
+named	00b412a0	CEngineMap	PeekHasWater	1232	register-tie	DIFFER(1070v1081)
+named	00b41770	CEngineMap	PeekInterpolatedWaterHeight	784		DIFFER(773v777)
+named	00b43720	CEngineMap	PeekThemeId	336		DIFFER(320v324)
+named	00b43870	CEngineMap	PeekThemeBlend	336		DIFFER(320v324)
+named	00b439c0	CEngineMap	PeekLandscapeHeight	368		DIFFER(352v356)
+named	00b45720	CEngineLightingManager	CalcSWLighting	800	x87-order	DIFFER(787v787)
+named	00b45a40	CEngineLightingManager	CalcSWLightingNoClipSeparateMainLight	688	x87-order	DIFFER(681v683)
+named	00b45cf0	CEngineLightingManager	CalcSWLightingNoClip	704	x87-order	DIFFER(697v697)
+named	00b47390	CEngineLightingManager	SetupShaderSpotLight	672	x87-order	DIFFER(665v665)
+named	00b4b8b0	CEngineShadowRenderer	CalcLocalWorldToBaseShadowSpace	432	x87-order	DIFFER(421v421)
+named	00b4d370	CEngineShadowRenderer	UpdateShadowSpace	7184		acctC round six: round 6 final (2026-11-16): DIFFER(7162v7176); latest draft 00b4d370.cpp + NOTES.md in the folder (grep the ad
+named	00b4ef80	CEngineShadowRenderer	UpdateSpotLightShadowSpace	1040		
+named	00b4f8e0	CEngineShadowRenderer	InitialiseTextures	816	incomplete-model	DIFFER(805v811)
+named	00b50370	CEngineShadowRenderer	CEngineShadowRenderer	416	block/arm-layout	DIFFER(406v406)
+named	00b50fb0	CEngineWeatherSettings	CEngineWeatherSettings	1024	block/arm-layout	DIFFER(1034v1018)
+named	00b5c120	CEngineScreenEffectRadialBlurRenderer	UpdateWorldPositionTracking	832	block/arm-layout	DIFFER(580v821)
+identify	00b61dd0	_global	BuildBuffers_BuildGlowParticles	544		
+named	00b62440	CEngineSkyRenderer	CEngineSkyRenderer::WorldFrameUpdate	416	stack-slot/frame	DIFFER(389v405)
+named	00b63800	CEngineSkyRenderer	?LoadNewScene@CEngineSkyRenderer@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z	1024	register-tie	DIFFER(1022v1023)
+named	00b63c00	CEngineSkyRenderer	RenderSun	1248		
+named	00b640e0	CEngineSkyRenderer	RenderMoon	1136		
+named	00b68070	CEngineLandscapeRenderer	LoadForegroundTextures	1152		
+named	00b6dc40	CEngineWaterRenderer	ProcessSeaLoading	784	block/arm-layout	DIFFER(773v771)
+named	00b6df50	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64		
+named	00b6df90	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64		DIFFER(43v54)
+named	00b6dfd0	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64		DIFFER(43v54)
+named	00b80ce0	CEngineClothSimulationMeshBase	CEngineClothSimulationMeshBase::GetDeltaTransform	688	x87-order	DIFFER(682v682)
+named	00b81820	CEngineSimulationManager	CEngineSimulationManager::FrameStart	448	register-tie	DIFFER(433v433)
+identify	00b84b20	_global	RadixSort_CountingPass_b84b20	480		
+named	00b8c830	CEngineEnvironment	CEngineEnvironment::FrameStart	1216		
+named	00b8ccf0	CEngineEnvironment	CEngineEnvironment::WorldFrameUpdate	496	x87-order	DIFFER(491v487)
+named	00b92950	CEngineSceneGrid	RenderCellClippedAndCheckVisibility	720	incomplete-model	DIFFER(719v707)
+named	00b9d220	CEngineInternalPrimitive2DStaticMesh	CEngineInternalPrimitive2DStaticMesh::CalcInterpolatedObjectTransform	1072		
+named	00b9d730	CEnginePrimitiveManagerStaticMeshesBase	IsInsideFustrum	432	x87-order	DIFFER(429v429) (w24A 2026-11-16): not matched (about 90 graded variants): the radius product stays Scale-first under dot-body, statement-order, comparison, accessor and ASSERT dead-arm variants; still on local models
+named	00b9e120	CEngineInternalPrimitive2DStaticMesh	Initialise	368		DIFFER(365v365)
+named	00ba4c10	CEnginePrimitiveManagerStaticMeshesBase	?PreloadPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@UAE_NAAVCEngineInternalPrimitiv	1168		
+named	00ba9830	CEnginePrimitiveManagerMeshBase	GetReflectionTexture	576		DIFFER(570v570)
+identify	00ba9cb0	_global	ComputeParticleVisibilityDistance	800		
+named	00baa870	CEnginePrimitiveManagerRepeatedZSprites	RenderFromSortList	4608		acctC round six: round 6 final (2026-11-16): DIFFER(4600v4600); latest draft 00baa870.cpp + NOTES.md in the folder (grep the ad
+identify	00bba1e0	_global	CGuiControlTreePane_OnFileLoadComplete	96		
+named	00bbe090	CEnginePrimitiveManagerParticleSpriteTrailGroup	RenderSingleSpriteTrail	2464		DIFFER(2432v2464)
+named	00bc3f30	CEnginePrimitiveManagerParticleLineGroup	RenderSubPrimitive	13		DIFFER(3272v3357)
+named	00bc6930	CEnginePrimitiveManagerText	CEnginePrimitiveManagerText::RenderPrimitive	544	x87-order	DIFFER(522v530)
+named	00bc7660	CEnginePrimitiveManagerText	CEnginePrimitiveManagerText::Render2DPrimitive	704	stack-slot/frame	DIFFER(695v692)
+named	00bc9b30	CEngineTreeFilerBase	FindNode	80		
+identify	00bca510	_global	CEngineVertexBufferPool_AllocateBuffer	416		
+named	00bcee20	CEngineInternalPrimitiveAnimatedMesh	?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveAnimatedMesh@@UAE_NAAVC3DBoundingBox@@@Z	352		
+named	00bcf040	CEngineInternalPrimitiveAnimatedMesh	?IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh@@UAE_NABVCEngineCamera@@_N@Z	672	x87-order	DIFFER(658v658) (w24A 2026-11-16): not matched (48 graded combinations): row 1 of the centre transform keeps `fld [E11] ; fmul st(4)` under every term / operand order of the transform, by-value or reference argument and dot body; still on local models
+named	00bd2360	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase::PreloadPrimitive	1168		
+named	00bd3070	CEnginePrimitiveManagerAnimatedMeshesBase	RenderMeshPrimitive	11296		acctC round six: round 6 final (2026-11-16): DIFFER(11288v11288); latest draft 00bd3070.cpp + NOTES.md in the folder (grep the 
+named	00bd6810	CEnginePrimitiveManagerAnimatedMeshesBase	RenderDebugBoneHierarchy	896	incomplete-model	DIFFER(868v894)
+identify	00be2b70	_global	BuildBlendingTables_ComputeBlendFactor	352		
+named	00be2cd0	CEngineLandscapeMeshBuilder	BuildSharedIndexBufferGenerationTables	1088	register-tie	DIFFER(1091v1088)
+named	00be37e0	CLandscapeTesselatorBase	TesselateEdgeGeneric	304	register-tie	
+named	00be3970	CLandscapePatchTesselator	?TesselateEdge@CLandscapePatchTesselator@@EAEXPAVCPatchTesselationEdgeStrip@@JJ_N1W4LANDSC	2400		
+named	00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>	TesselateEdge	2352		
+named	00be4fe0	CWaterPatchTesselatorBase<CTVertexSeaBackground>	TesselateEdge	2416		
+named	00be6880	CLandscapeBackgroundPatch	BuildDefaultSection	1776	incomplete-model	DIFFER(19v1776)
+identify	00beb6c0	_global	Interpolate_Quaternion_Scale_Matrix	992		
+named	00bebca0	CEnginePrimitiveManagerMeshBase	PreloadReflectionTexture	496		
+identify	00bf2980	_gapscan	sub_00bf2980	96		
+named	00bf2b50	CEngineTreeFilerBase	ConvertListToTree	688	incomplete-model	DIFFER(732v682)
+named	00bfa2a0	CLocalDetailPrimitiveRepeatedMesh	Load	1536	incomplete-model	DIFFER(93v1533)
+named	00bfad90	CLocalDetailPrimitiveMeshZSpriteBatch	RenderUpdate	1152	incomplete-model	DIFFER(18v1151)
+named	00bfd7c0	CEngineWaterBackgroundSubPatch	Load	1232	register-tie	DIFFER(1203v1231)
+identify	00bfeea9	_gapscan	sub_00bfeea9	47		
+identify	00c1bf00	_global	C3DMeshObject_UpdateQuadricMatrix	176		
+identify	00c1c460	_global	ParticleMorphs_UpdateEditor	448		
+identify	00c4de00	_global	CAudioSoundBuffer_TransferPCMData	944		
+identify	00c4f600	_global	PropertySerializer_GetPropertyTypeCode	9216		
+identify	00c51f50	_global	CDrawGuildSeal_SetProperty	2288		
+named	00c52c40	CEngineInternalPrimitiveParticleGroup	GetRenderLayerMask	80		DIFFER(75v75)
+identify	00c5e2c0	_gapscan	sub_00c5e2c0	272		
+named	00c604e0	CEnvironmentSpellEffectInterface	CEnvironmentSpellEffectInterface	1104		
+identify	00c62370	_global	Quaternion_FromAxisAngle	128		
+identify	00c77800	_global	CAudioChannel_SetupAudioFilter	736		
+identify	00cb2590	_global	ImeUI_FormatCompStringDisplay	224		
+named	00cddcb0	NScript::CPersonalScriptMainScript	Main	1488	block/arm-layout	DIFFER(1479v1475)
+named	00cf0d20	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2	Main	2768		DIFFER(2821v2755)
+named	00cf4ec0	NScript::CQ_ArenaHoldingScriptScript::CFanMarker	Main	6176		DIFFER(6244v6164)
+named	00cfbdf0	NScript::CQ_AwakeningTheOracleScript::CNecropolisGhost	Main	2320		DIFFER(2306v2317)
+named	00cfce90	NScript::CQ_AwakeningTheOracleScript::CScytheBeforeGettingTablets	Main	1856	stack-slot/frame	DIFFER(1860v1852)
+named	00d01630	NScript::CQ_BanditCampScript::CGate1GuardOuter	Main	5184		DIFFER(5177v5178)
+named	00d04ae0	NScript::CQ_BanditCampBossBattleScript::CAssassin1	Main	3632		DIFFER(3847v3623)
+named	00d05a60	NScript::CQ_BanditCampBossBattleScript::CAssassin2	Main	1408	block/arm-layout	DIFFER(1448v1400)
+named	00d06130	NScript::CQ_BanditCampBossBattleScript::CAssassin3	Main	1408	block/arm-layout	DIFFER(1448v1400)
+named	00d0ee70	NScript::CQ_BanditCampBossBattleScript	CheckForFirstAreaMassacre	2000		DIFFER(1991v1989)
+named	00d11930	NScript::CQ_BanditCampBossBattleScript::CAssassinMarker	Main	4080		DIFFER(4056v4072)
+named	00f03980	NScript::CQ_AmbushTradersScript::CAT_Phase1Guard	Main	1440	inline-vs-call	DIFFER(1448v1434)
+named	00f04000	NScript::CQ_AmbushTradersScript::CAT_Phase1Archer	Main	640	inline-vs-call	DIFFER(624v630)
+named	00f05a10	NScript::CQ_AmbushTradersScript	RefreshSpyAllegiences	1312	block/arm-layout	
+named	00f0a960	NScript::CQ_AmbushTradersScript::CAT_BanditContact	Main	2000		DIFFER(2015v1985)
+named	00f36d30	CGPUScratchBufferTextureManager	EndShutdown	432	register-tie	DIFFER(376v419)
+named	00f38ff0	CSurfaceCompositor	SetBaseBlendModes	1856	register-tie	DIFFER(1841v1842)
+named	00f3abf0	CRangeCompressor	CalcCompressionScript	608	register-tie	DIFFER(605v605)
+named	00f3ba70	CTriangleStripifier2	BuildCacheOptimizedVertexList	864	incomplete-model	DIFFER(834v853)
+identify	00f3c990	_global	CTriangleStripifier2_GenerateStrips_Part1	1472		
+named	00f3cf50	CTriangleStripifier2	CalcSectionPolyMask	688		DIFFER(679v683)
+named	00f3d200	CTriangleStripifier2	CheckForReshadedVerts	288		
+named	00f3d980	CTriangleStripifier2	BuildRings	1952		DIFFER(2301v1947)
+named	00f3e120	CTriangleStripifier2	FindBestStartVertex	1411		DIFFER(1411v1411) 4 lines: reload pairs 0x00F3E291 / 0x00F3E3C5 swapped (this v vertex_to_poly_map piece ids); parked 2026-11-15 after 4 sessions, about 120 hand probes, chain measured -- see fable_session4/ and README
+identify	00f3e6b0	_global	CTriangleStripifier2_ProcessTriangles	928		
+identify	00f3ea50	_global	GenerateTriangleListAndStrip	2384		
+identify	0132d470	_global	InvalidDecode_HaltStub	0		
