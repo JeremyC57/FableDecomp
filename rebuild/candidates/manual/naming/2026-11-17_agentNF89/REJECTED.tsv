@@ -1,0 +1,3 @@
+entry	address	claim	reason
+q11169	0x0061A120	WORKLIST: binds 0x005BCE2F as ?Helper_5bce2f@@YIHPAUCTCInventoryQuests@@@Z	stale reloc_bindings claim: the landed row binds ?GetCategoryCount@CTCInventoryBase@NInventory@@QBEJXZ (probe, work/old_0061a120.txt); not-a-binder
+q11169	0x0061A140	WORKLIST: binds 0x005BCE2F as ?GetNumberOfCategories@CTCInventoryBase_Retail@@QAEJXZ	stale reloc_bindings claim: the landed row binds ?GetCategoryCount@CTCInventoryBase@NInventory@@QBEJXZ (probe, work/old_0061a140.txt); not-a-binder

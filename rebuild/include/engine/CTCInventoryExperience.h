@@ -86,6 +86,11 @@ public:
     CWideString GetExperienceAbilityMovieName(EHeroAbility);                        // 0x0056E75F
     CWideString GetExperienceAbilityDescription(long,long);                         // 0x0056FE7C
     CRGBFloatColour GetExperienceAbilityColour(EHeroAbility);                       // 0x0056EDD2
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_TRAINABLESTATTYPE
+    // NF89 opt-in (row 0x0056E632): Ego_r.pdb + FableWin.pdb ?GetHeroTrainableStatType@CTCInventoryExperience@@QAE?AW4EHeroTrainableStatType@@J@Z
+    // (public, out of line at 0x0056E632; the landed caller 0x0057229B binds this spelling). Declaration only.
+    EHeroTrainableStatType GetHeroTrainableStatType(long button);                   // 0x0056E632
+#endif
 #ifndef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_VIRTUALS
     virtual void OpenInventoryInternalPC(bool);                                     // 0x00577AC0
 #endif

@@ -43,6 +43,11 @@ class CEnginePrimitivePrepareInfo;
 class CTCInventoryQuests : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_INVENTORY_QUESTS; }
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_GETSELECTEDCATEGORYASSOCIATION
+    // NF89 opt-in (q11165..q11167, row 0x0061A040): Ego_r.pdb + FableWin.pdb ?GetSelectedCategoryAssociation@CTCInventoryQuests@@QAEPAVCThing@@XZ
+    // (public, non-virtual; outside the MEMBERS block, no layout change), out of line at 0x0061A040 in the CTCInventoryQuests TU. Declaration only.
+    CThing* GetSelectedCategoryAssociation();                                                      // 0x0061A040
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_MEMBERS
     // Retail opt-in (chunk 1023, row 0x0061A6A0): the slot-4 override ?OnCreate@CTCInventoryQuests@@UAEXXZ (vtable 0x012585B4) and the
     // first members after the NHeroInformationScreens::CBase subobject (+0x130), Ego_r.pdb names and order at the retail offsets the

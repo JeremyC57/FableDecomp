@@ -68,6 +68,53 @@ private:
  bool Selected,DisplayItems;
 public:
  void GetAllItemsInCategory(std::vector<std::pair<long,long> >&) const;
+#ifdef FABLE_RETAIL_CCATEGORY_ITEMINSLOT
+ // NF89 opt-in (row 0x005A3581 CTCInventoryTrade::BuyHighlightedItem): Ego_r.pdb + FableWin.pdb
+ // ?GetItemInSlotWithIndex@CCategory@NInventory@@QBEJJ@Z (out of line at 0x005BC9B0) and FableWin.pdb
+ // ?GetHighlightedItemIndex@CCategory@NInventory@@QBEJXZ (absent from Ego_r.pdb: inline in retail, which reads +0x24 in place).
+ long GetItemInSlotWithIndex(long index) const;                                                // 0x005BC9B0
+ long GetHighlightedItemIndex() const { return HighlightedItemIndex; }
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_CATEGORYTHINGASSOCIATION
+ // NF89 opt-in (q11165, row 0x005BD1AE and its binders): Ego_r.pdb + FableWin.pdb ?GetCategoryThingAssociation@CCategory@NInventory@@QBEPAVCThing@@XZ,
+ // out of line at 0x005BD1AE (`jmp CBaseIntelligentPointer::GetPItem` on PAssociatedThing +0x00). Declaration only; the PASS22 twin of
+ // NF87's members-only NInventory_CTCInventoryBase.h ACCESSORS declaration (that block is !PASS22, so the two never meet).
+ CThing* GetCategoryThingAssociation() const;                                                  // 0x005BD1AE
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_UNIQUEITEMCOUNT
+ // NF89 opt-in (q11168, rows 0x005BC8AC / 0x005BD054): Ego_r.pdb + FableWin.pdb ?GetUniqueItemCountInCategory@CCategory@NInventory@@QBEJXZ
+ // (0x005BC8AC; the PASS22 twin of the ACCESSORS declaration) and ?HighlightNextItem@CCategory@NInventory@@QAEXXZ (0x005BD054). Declarations only.
+ long GetUniqueItemCountInCategory() const;                                                    // 0x005BC8AC
+ void HighlightNextItem();                                                                     // 0x005BD054
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_NUMBEROFSLOTS
+ // NF89 opt-in (row 0x005BD328): Ego_r.pdb (0x00620102) + FableWin.pdb ?GetNumberOfSlots@CCategory@NInventory@@QBEJXZ (const), out of line at
+ // 0x005BD1CF (the def's NumberOfSlots). Declaration only.
+ long GetNumberOfSlots() const;                                                                // 0x005BD1CF
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_CATEGORYIDENTIFIER
+ // NF89 opt-in (row 0x0059B740): Ego_r.pdb ?GetCategoryIdentifier@CCategory@NInventory@@QBE?AW4EInventoryCategoryIdentifier@2@XZ (const), out of line
+ // at 0x005BD1B3 (the def's CategoryIdentifier); the enum comes from NInventory_CTCInventoryBase.h (same macro, or ORIGINAL_COMPLETE_METHODS_PASS22).
+ EInventoryCategoryIdentifier GetCategoryIdentifier() const;                                   // 0x005BD1B3
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_ADDITEM
+ // NF89 opt-in (row 0x0059C6B0): Ego_r.pdb + FableWin.pdb ?AddItem@CCategory@NInventory@@QAE_NJ_NJJ@Z (0x005BF060; the (long, bool, long, long)
+ // overload, public). Declaration only.
+ bool AddItem(long itemDefIndex, bool silent, long price, long count);                         // 0x005BF060
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_GETPDEF
+ // NF90 opt-in (round 7, q11182 row 0x005BE85B GetSlotWithItemsOfType): FableWin.pdb
+ // ?GetPDef@CCategory@NInventory@@QBE?AV?$CDefPointer@$$CBVCInventoryCategoryDef@@@@XZ (public const; absent from Ego_r.pdb: inline in retail,
+ // the counted copy of PDef +0x14 that 0x005BE85B AddRefs before and Releases after its find_if call). No layout change.
+ CDefPointer<const CInventoryCategoryDef> GetPDef() const { return PDef; }
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_GETNEXTOCCUPIEDSLOT
+ // NF89 opt-in (row 0x005BD054 HighlightNextItem): Ego_r.pdb + FableWin.pdb ?GetNextOccupiedSlot@CCategory@NInventory@@ABEJJ@Z (private const),
+ // out of line at 0x005BCF61. Declaration only.
+private:
+ long GetNextOccupiedSlot(long index) const;                                                   // 0x005BCF61
+public:
+#endif
 #ifdef FABLE_RETAIL_CCATEGORY_ITEMQUERIES
  // NF88 nested opt-in (round 7, q11153..q11159; rows 0x005BE839 / 0x005BE8B1 / 0x005BF1D7 and the CTCInventoryBase wrappers that tail-jump
  // to them): the item queries of the inventory TU, Ego_r.pdb (TU order 0x00620FCD .. 0x00621FB3) and FableWin.pdb spellings, all out of line

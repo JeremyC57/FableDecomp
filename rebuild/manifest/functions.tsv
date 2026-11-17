@@ -11286,7 +11286,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0059d65a	FinalConstructSubtitlesPC	CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *,CComponent *	1	yes	accepted									
 0059d761	FinalRefreshSubtitles	CTCInventoryTrade	__thiscall	void	3	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *	1	yes	accepted									
 0059d820	InitialiseSellableItems	CTCInventoryTrade	__thiscall	void	1	CTCInventoryTrade *	1	yes	accepted									
-0059d9ad	ResetTradeList	CTCInventoryTrade	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CMemoryAllocator_ClearPerformanceStats_0059d9ad.cpp
+0059d9ad	ResetTradeLists	CTCInventoryTrade	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CMemoryAllocator_ClearPerformanceStats_0059d9ad.cpp
 0059d9c2	ApplyHairCard	CTCInventoryTrade	__thiscall	void	2	CTCInventoryTrade *,CHairCardDef *	1	yes	accepted									
 0059da10	IsItemAffordable	CTCInventoryTrade	__thiscall	bool	3	CTCInventoryTrade *,long,long	1	yes	accepted									
 0059dabb	ShowWarningIfNeeded	CTCInventoryTrade	__thiscall	void	1	CTCInventoryTrade *	1	yes	accepted									
@@ -11688,7 +11688,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bc450	IsSameItemTypeAsDefIndex	CItem	__thiscall	bool	2	CItem *,long	1	yes	accepted									
 005bc479	SetSelectedItemIndex	NInventory::CCategory	__thiscall	void	2	CCategory *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CCategory_SetSelectedItemIndex_005bc479.cpp
 005bc499	RemoveItemFromInventory	NInventory::CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCInventoryBase_RemoveItemFromInventory_005bc499.cpp
-005bc4b2	GetMember_dword0x70_005bc4b2	_global	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\global_DrawGetEnvironment_005bc4b2.cpp
+005bc4b2	GetSelectedCategoryIndex	NInventory::CTCInventoryBase	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\global_DrawGetEnvironment_005bc4b2.cpp
 005bc4b6	SetMember_dword0x70_005bc4b6	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CObservable_AddExclusiveObserver_005bc4b6.cpp
 005bc4c0	OnItemHighlighted	NInventory::CTCInventoryBase	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\global_E2_005bc4c0.cpp
 005bc4c3	OnChangeCategory	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -11734,7 +11734,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bc7a6	SetQuestPersistentFlagForItems	CCategory	__thiscall	void	2	CCategory *,bool	1	yes	accepted									
 005bc7ee	UpdateNonQuestPersistentRefCountForItems	CCategory	__thiscall	void	2	CCategory *,bool	1	yes	accepted									
 005bc836	RemoveAllNonQuestPersistentItems	CCategory	__thiscall	void	1	CCategory *	1	yes	accepted									
-005bc8ac	GetUniqueItemCountInCategory	CCategory	__thiscall	long	1	CCategory *	1	yes	accepted									
+005bc8ac	GetUniqueItemCountInCategory	NInventory::CCategory	__thiscall	long	1	CCategory *	1	yes	accepted									
 005bc8eb	GetNumberOfSlotsBetweenIndexesInDirection	CCategory	__thiscall	long	4	CCategory *,long,long,long	1	yes	accepted									
 005bc934	SetAsSelected	CCategory	__thiscall	void	2	CCategory *,bool	1	yes	accepted									
 005bc988	GetHighlightedItem	NInventory::CCategory	__thiscall	long	1	CCategory *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CCategory_GetHighlightedItem_005bc988.cpp
@@ -11758,15 +11758,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bcf51	IncrementQuestPersistentRefCountForNonPersistentItems	CTCInventoryBase	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\global_Destval_005bcf51.cpp
 005bcf61	GetNextOccupiedSlot	CCategory	__thiscall	long	2	CCategory *,long	1	yes	accepted									
 005bcfe2	GetPreviousOccupiedSlot	CCategory	__thiscall	long	2	CCategory *,long	1	yes	accepted									
-005bd054	HighlightNextItem	CCategory	__thiscall	void	1	CCategory *	1	yes	accepted									
+005bd054	HighlightNextItem	NInventory::CCategory	__thiscall	void	1	CCategory *	1	yes	accepted									
 005bd0f7	HighlightPreviousItem	CCategory	__thiscall	void	1	CCategory *	1	yes	accepted									
 005bd183	SetCategoryThingAssociation	NInventory::CCategory	__fastcall	void	2	CRegisteredTCInfo *,CRegisteredTCInfo *	1	yes	accepted									
-005bd1ae	TailJmp_GetPItem_005bd1ae	_global	__thiscall	CBaseObject *	1	CBaseIntelligentPointer *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CBaseIntelligentPointer_GetPItem_005bd1ae.cpp
+005bd1ae	GetCategoryThingAssociation	NInventory::CCategory	__thiscall	CBaseObject *	1	CBaseIntelligentPointer *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CBaseIntelligentPointer_GetPItem_005bd1ae.cpp
 005bd1b3	GetCategoryIdentifier	NInventory::CCategory	__thiscall	EInventoryCategoryIdentifier	1	CCategory *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CCategory_GetCategoryIdentifier_005bd1b3.cpp
 005bd1cf	GetNumberOfSlots	CCategory	__thiscall	EInventoryCategoryIdentifier	1	CCategory *	1	yes	accepted									
 005bd1eb	OnInitialActivate	NInventory::CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
 005bd273	GetInventoryText	CTCInventoryBase	__thiscall	CWideString	2	CTCInventoryBase *,long	1	yes	accepted									
-005bd328	GetNumberOfSlotsInCategory	NInventory::CTCInventoryBase	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
+005bd328	GetNumberOfSlotsForCategory	NInventory::CTCInventoryBase	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 005bd33c	PlayInventoryMovementSound	NInventory::CTCInventoryBase	unknown	undefined	0		0	yes	accepted									
 005bd3a0	PlayInventoryNoMovementSound	NInventory::CTCInventoryBase	unknown	undefined	0		0	yes	accepted									
 005bd404	GetInitialCategoryRepeatDelay	NInventory::CTCInventoryBase	__thiscall	float	1	CTCWeapon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCWeapon_GetAnimationSpeedValue_005bd404.cpp
@@ -11836,7 +11836,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bf3c6	RemoveItemFromInventory	CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
 005bf3f1	GetItemOfTypeInInventory	NInventory::CTCInventoryBase	__thiscall	CThing *	2	CTCInventoryBase *,long	1	yes	accepted									
 005bf414	UpdateItemStatsForThing	NInventory::CTCInventoryBase	__thiscall	CWideString	1	CTCInventoryStats *	1	yes	accepted									
-005bf482	GetAllItems	CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *	1	yes	accepted									
+005bf482	GetAllItems	NInventory::CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *	1	yes	accepted									
 005bf4a3	AddItem	NInventory::CTCInventoryBase	unknown	undefined	0		0	yes	accepted									
 005bf4ed	OnItemReturnedToInventory	NInventory::CTCInventoryBase	unknown	undefined	0		0	yes	accepted									
 005bf556	AddItem	NInventory::CItem	__thiscall	void	3	CItem *,CThing *,long	1	yes	accepted									
@@ -13143,7 +13143,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00619fd0	IsInventoryScreen	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0061a000	GetPlayerMode	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0061a010	GetScreenType	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0061a040	GetSelectedCategoryThing	CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
+0061a040	GetSelectedCategoryAssociation	CTCInventoryQuests	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
 0061a0b0	GetInventoryGuildValidity	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0061a0c0	vfunc_75	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0061a0e0	GetInitialCategoryRepeatDelay	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -57205,8 +57205,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121f074	`dynamic initializer for 'STrapCycle'`	`anonymous namespace'	unknown	undefined	0		0			discovered	gapscan							
 0121f0a0	REACTION_MANAGER_DEF_INSTANTIATION_NAME	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121f0c0	REACTION_MANAGER_DEF_INSTANTIATION_NAME	_static_init	unknown	undefined	0		0			discovered	gapscan							
-0121f0e0	g_tree_013bae2c	_static_init	unknown	undefined	0		0			discovered	gapscan							
-0121f120	g_tree_013bae38	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121f0e0	`dynamic initializer for 'ActiveGossipCategories''	CTCAIScratchpad	unknown	undefined	0		0			discovered	gapscan							
+0121f120	`dynamic initializer for 'IsGossipForPlayer''	CTCAIScratchpad	unknown	undefined	0		0			discovered	gapscan							
 0121f160	`dynamic initializer for 'Gossip''	CTCAIScratchpad	unknown	undefined	0		0			discovered	gapscan							
 0121f1a0	g_tree_013bae50	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121f1e0	g_tree_013bae5c	_static_init	unknown	undefined	0		0			discovered	gapscan							
@@ -57682,8 +57682,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 01229ba8	AtexitDtor_CCharString_at_013bae00_01229ba8	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk01229ba8_01229ba8.cpp
 01229bc0	AtexitDtor_CCharString_at_013bae08_01229bc0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk01229bc0_01229bc0.cpp
 01229bd0	AtexitDtor_CCharString_at_013bae0c_01229bd0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk01229bd0_01229bd0.cpp
-01229be0	Database_Array_BuildDeleter1_01229be0	_unattributed	unknown	undefined	0		0	yes	accepted									
-01229c40	Database_Array_BuildDeleter2_01229c40	_unattributed	unknown	undefined	0		0	yes	accepted									
+01229be0	`dynamic atexit destructor for 'ActiveGossipCategories''	CTCAIScratchpad	unknown	undefined	0		0	yes	accepted									
+01229c40	`dynamic atexit destructor for 'IsGossipForPlayer''	CTCAIScratchpad	unknown	undefined	0		0	yes	accepted									
 01229ca0	`dynamic atexit destructor for 'Gossip''	CTCAIScratchpad	unknown	undefined	0		0	yes	accepted									
 01229d00	List_RecursiveDestroy_Deleter2_01229d00	_unattributed	unknown	undefined	0		0	yes	accepted									
 01229d60	List_RecursiveDestroy_Deleter3_01229d60	_unattributed	unknown	undefined	0		0	yes	accepted									

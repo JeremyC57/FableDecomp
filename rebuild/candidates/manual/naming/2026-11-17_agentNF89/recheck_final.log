@@ -1,0 +1,75 @@
+addr       parity           behav  name
+0056e5ab   WARN RELOC_NAME: ?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ -> 005bc4b2 labelled '_global::GetMember_dword0x70_005bc4b2'
+0056e5ab   WARN RELOC_NAME: ?GetNumberOfSlotsForCategory@CTCInventoryBase@NInventory@@QBEJJ@Z -> 005bd328 labelled 'NInventory::CTCInventoryBase::GetNumberOfSlotsInCategory'
+0056e5ab   RELOCATION_MATCH PASS   ResetStatIndicatorValues
+0056e632   RELOCATION_MATCH PASS   GetHeroTrainableStatType
+0059b740   RELOCATION_MATCH PASS   GetItemCountForCategory
+0059c6b0   RELOCATION_MATCH PASS   AddItemOfTypeToInventory
+0059cf49   RELOCATION_MATCH PASS   RemoveAllItemsFromCategory
+0059d9ad   WARN STANDIN_LEAF ?ResetTradeLists@CTCInventoryTrade@@QAEXXZ (catalog CTCInventoryTrade::ResetTradeList; names another function)
+0059d9ad   RELOCATION_MATCH PASS   ResetTradeList
+005a3581   RELOCATION_MATCH PASS   BuyHighlightedItem
+005a8a5d   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005a8a5d   RELOCATION_MATCH PASS   ConstructSpecialShopListPC
+005aebfe   RELOCATION_MATCH PASS   ProcessTradeAction
+005bc4b2   MATCH            PASS   GetMember_dword0x70_005bc4b2
+005bc8ac   MATCH            PASS   GetUniqueItemCountInCategory
+005bd054   RELOCATION_MATCH PASS   HighlightNextItem
+005bd1ae   RELOCATION_MATCH PASS   TailJmp_GetPItem_005bd1ae
+005bd328   WARN STANDIN_LEAF ?GetNumberOfSlotsForCategory@CTCInventoryBase@NInventory@@QBEJJ@Z (catalog NInventory::CTCInventoryBase::GetNumberOfSlotsInCategory; names another function)
+005bd328   RELOCATION_MATCH PASS   GetNumberOfSlotsInCategory
+005bf482   RELOCATION_MATCH PASS   GetAllItems
+005c69aa   RELOCATION_MATCH PASS   RefreshAugmentationsLeftDescriptions
+0061a040   WARN RELOC_NAME: ?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ -> 005bc4b2 labelled '_global::GetMember_dword0x70_005bc4b2'
+0061a040   WARN RELOC_NAME: ?GetCategoryThingAssociation@CCategory@NInventory@@QBEPAVCThing@@XZ -> 005bd1ae labelled '_global::TailJmp_GetPItem_005bd1ae'
+0061a040   WARN STANDIN_LEAF ?GetSelectedCategoryAssociation@CTCInventoryQuests@@QAEPAVCThing@@XZ (catalog CTCInventoryBase::GetSelectedCategoryThing; names another function)
+0061a040   RELOCATION_MATCH PASS   GetSelectedCategoryThing
+00898600   RELOCATION_MATCH PASS   RemoveAllHeroWeapons
+00a34260   WARN RELOC_NAME: ??$swap@U?$pair@KVC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@KVC3DMeshVolume@@@0@0@Z -> 00a331b0 labelled 'std::swap<std::pair<unsigned long, C3DMeshVolume>>'
+00a34260   RELOCATION_MATCH PASS   __unguarded_partition
+00a35490   RELOCATION_MATCH PASS   __introsort_loop
+00a70020   RELOCATION_MATCH PASS   __median
+00a71880   RELOCATION_MATCH PASS   __unguarded_partition
+00a71910   WARN RELOC_NAME: ??1?$pair@VCCharString@@VC3DMeshVolume@@@std@@QAE@XZ -> 00a6f390 labelled '_global::CCountedPointer_Dtor_00a6f390'
+00a71910   RELOCATION_MATCH PASS   __unguarded_partition
+00a73910   RELOCATION_MATCH PASS   __introsort_loop
+00a73a00   RELOCATION_MATCH PASS   __introsort_loop
+0121f0e0   WARN RELOC_CONFLICT: _$E2 -> 01229be0 here, 01228930 in landed 01219f00
+0121f0e0   WARN RELOC_NAME: _$E2 -> 01229be0 labelled '_unattributed::Database_Array_BuildDeleter1_01229be0'
+0121f0e0   RELOCATION_MATCH PASS   g_tree_013bae2c
+0121f120   WARN RELOC_CONFLICT: _$E2 -> 01229c40 here, 01228930 in landed 01219f00
+0121f120   WARN RELOC_NAME: _$E2 -> 01229c40 labelled '_unattributed::Database_Array_BuildDeleter2_01229c40'
+0121f120   RELOCATION_MATCH PASS   g_tree_013bae38
+01229be0   RELOCATION_MATCH PASS   Database_Array_BuildDeleter1_01229be0
+01229c40   RELOCATION_MATCH PASS   Database_Array_BuildDeleter2_01229c40
+
+WINS: 29
+  0056e5ab RELOCATION_MATCH CTCInventoryExperience::?ResetStatIndicatorValues@CTCInventoryExperience@@QAEXXZ
+  0056e632 RELOCATION_MATCH CTCInventoryExperience::?GetHeroTrainableStatType@CTCInventoryExperience@@QAE?AW4EHeroTrainableStatType@@J@Z
+  0059b740 RELOCATION_MATCH CTCInventoryTrade::?GetItemCountForCategory@CTCInventoryTrade@@QAEJXZ
+  0059c6b0 RELOCATION_MATCH CTCInventoryTrade::?AddItemOfTypeToInventory@CTCInventoryTrade@@AAE_NJJ@Z
+  0059cf49 RELOCATION_MATCH CTCInventoryTrade::?RemoveAllItemsFromCategory@CTCInventoryTrade@@QAEXW4EInventoryCategoryIdentifier@NInventory@@@Z
+  0059d9ad RELOCATION_MATCH CTCInventoryTrade::?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
+  005a3581 RELOCATION_MATCH CTCInventoryTrade::?BuyHighlightedItem@CTCInventoryTrade@@QAEXXZ
+  005a8a5d RELOCATION_MATCH CTCInventoryTrade::?ConstructSpecialShopListPC@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z
+  005aebfe RELOCATION_MATCH CTCInventoryTrade::?ProcessTradeAction@CTCInventoryTrade@@UAEXXZ
+  005bc4b2 MATCH _global::?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ
+  005bc8ac MATCH CCategory::?GetUniqueItemCountInCategory@CCategory@NInventory@@QBEJXZ
+  005bd054 RELOCATION_MATCH CCategory::?HighlightNextItem@CCategory@NInventory@@QAEXXZ
+  005bd1ae RELOCATION_MATCH _global::?GetCategoryThingAssociation@CCategory@NInventory@@QBEPAVCThing@@XZ
+  005bd328 RELOCATION_MATCH NInventory::CTCInventoryBase::?GetNumberOfSlotsForCategory@CTCInventoryBase@NInventory@@QBEJJ@Z
+  005bf482 RELOCATION_MATCH CTCInventoryBase::?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+  005c69aa RELOCATION_MATCH CTCInventoryWeapons::?RefreshAugmentationsLeftDescriptions@CTCInventoryWeapons@@QAEXXZ
+  0061a040 RELOCATION_MATCH CTCInventoryBase::?GetSelectedCategoryAssociation@CTCInventoryQuests@@QAEPAVCThing@@XZ
+  00898600 RELOCATION_MATCH CGameScriptInterface::?RemoveAllHeroWeapons@CGameScriptInterface@@UBEXXZ
+  00a34260 RELOCATION_MATCH std::??$__unguarded_partition@PAU?$pair@KVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIPAU?$pair@KVC3DMeshVolume@@@0@PAU10@0U10@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z
+  00a35490 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@KVC3DMeshVolume@@@std@@U12@HV?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@00HV?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z
+  00a70020 RELOCATION_MATCH std::??$__median@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIABU?$pair@VCCharString@@VC3DMeshVolume@@@0@ABU10@00V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z
+  00a71880 RELOCATION_MATCH std::??$__unguarded_partition@PAU?$pair@JVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIPAU?$pair@JVC3DMeshVolume@@@0@PAU10@0U10@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z
+  00a71910 RELOCATION_MATCH std::??$__unguarded_partition@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@PAU10@0U10@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z
+  00a73910 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@JVC3DMeshVolume@@@std@@U12@HV?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@00HV?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z
+  00a73a00 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@U12@HV?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@00HV?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z
+  0121f0e0 RELOCATION_MATCH _static_init::_$E1
+  0121f120 RELOCATION_MATCH _static_init::_$E1
+  01229be0 RELOCATION_MATCH _unattributed::_$E2
+  01229c40 RELOCATION_MATCH _unattributed::_$E2

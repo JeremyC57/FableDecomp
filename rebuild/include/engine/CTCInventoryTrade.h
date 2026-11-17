@@ -186,6 +186,34 @@ public:
     NUISystem::CComponent* ConstructTradeDescriptionWeapon(long itemDefIndex, unsigned long count, bool buying, bool special);     // 0x005A9CBE
     NUISystem::CComponent* ConstructTradeDescriptionClothing(long itemDefIndex, unsigned long count, bool buying, bool special);   // 0x005AAF28
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_BUYHIGHLIGHTEDITEM
+    // NF89 opt-in (row 0x005A3581): Ego_r.pdb + FableWin.pdb ?BuyHighlightedItem@CTCInventoryTrade@@QAEXXZ (public; the row defines it).
+public:
+    void BuyHighlightedItem();                                                     // 0x005A3581
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_ITEMCOUNTFORCATEGORY
+    // NF89 opt-in (row 0x0059B740): Ego_r.pdb + FableWin.pdb ?GetItemCountForCategory@CTCInventoryTrade@@QAEJXZ (public). Declaration only.
+public:
+    long GetItemCountForCategory();                                                // 0x0059B740
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_PROCESSTRADEACTION
+    // NF89 opt-in (row 0x005AEBFE; needs FABLE_RETAIL_CTCINVENTORYBASE_VTABLE): Ego_r.pdb + FableWin.pdb ?ProcessTradeAction@CTCInventoryTrade@@UAEXXZ
+    // (the override of NInventory::CTCInventoryBase slot 68; the row defines it), ?GetIsEnabled@CTCInventoryTrade@@UBE_NXZ (the slot-75 override,
+    // out of line; called through the vtable) and ?SellHighlightedItem@CTCInventoryTrade@@QAEXXZ (0x005A3436). Declarations only; the
+    // overrides add no slot.
+public:
+    virtual void ProcessTradeAction();                                             // 68 0x005AEBFE
+    virtual bool GetIsEnabled() const;                                             // 75
+    void SellHighlightedItem();                                                    // 0x005A3436
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_TRADECATEGORY
+    // NF89 opt-in (rows 0x0059C6B0 / 0x0059CF49; needs the NInventory::EInventoryCategoryIdentifier enum: FABLE_RETAIL_CCATEGORY_CATEGORYIDENTIFIER or
+    // ORIGINAL_COMPLETE_METHODS_PASS22): Ego_r.pdb + FableWin.pdb ?GetCategoryIndexForTradeType@CTCInventoryTrade@@QAEJXZ (0x0059B6F4) and
+    // ?RemoveAllItemsFromCategory@CTCInventoryTrade@@QAEXW4EInventoryCategoryIdentifier@NInventory@@@Z (0x0059CF49), public. Declarations only.
+public:
+    long GetCategoryIndexForTradeType();                                           // 0x0059B6F4
+    void RemoveAllItemsFromCategory(NInventory::EInventoryCategoryIdentifier category);   // 0x0059CF49
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYTRADE_BUYPOSSIBILITY
     // Retail opt-in (chunk 1009, row 0x005A9A87 RefreshBuyPossibility): Ego_r.pdb / FableWin.pdb
     // ?RefreshBuyPossibilityNumbers@CTCInventoryTrade@@AAEXXZ (0x005A3734, out of line; the console twin of

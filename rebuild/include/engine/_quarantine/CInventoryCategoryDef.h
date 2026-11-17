@@ -9,6 +9,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CINVENTORYCATEGORYDEF_PARENTDEF
+// NF90 opt-in (round 7, q11182 row 0x005BE85B NInventory::CCategory::GetSlotWithItemsOfType): the def as the CDefPointer pointee it is in
+// retail (CDefPointer<const CInventoryCategoryDef> converts from CDefPointeeBase*), on the retail def chain (needs FABLE_RETAIL_DEF_CLASS_BASE):
+// Ego_r.pdb CInventoryCategoryDef members after the CParentDefClassBase base (0x39 bytes packed, so Inventory lands at retail +0x3C, the
+// generated layout below). Member names and order from struct_layouts_egor.tsv; CategoryIdentifier stays opaque as in the generated text.
+#include "engine/CParentDefClassBase.h"
+class CInventoryCategoryDef : public CParentDefClassBase {
+public:
+    long          Inventory;                                 // +0x3c
+    long          NumberOfSlots;                             // +0x40
+    bool          DrawItemSlots;                             // +0x44
+    bool          SelectEmptySlots;                          // +0x45
+    bool          WrapHighlightCursor;                       // +0x46
+    unsigned long CategoryName;                              // +0x48
+    bool          AllowItemsToFillMoreThanOneSlot;           // +0x4c
+    unsigned char _pad_0x4d[0x3];                            // +0x4d
+    unsigned char CategoryIdentifier[0x4];                   // +0x50 EInventoryCategoryIdentifier
+    bool          AddCategoryOnCreate;                       // +0x54
+    unsigned char _pad_0x55[0x3];                            // +0x55
+};
+#else
 #pragma pack(push, 1)
 class CInventoryCategoryDef {
 public:
@@ -38,17 +59,20 @@ public:
     unsigned char _pad_0x55[0x3];                            // +0x55
 };
 #pragma pack(pop)
+#endif
 
-FABLE_STATIC_ASSERT(sizeof(CInventoryCategoryDef) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CInventoryCategoryDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryCategoryDef, Inventory) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryCategoryDef, NumberOfSlots) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CInventoryCategoryDef, DrawItemSlots) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CInventoryCategoryDef, SelectEmptySlots) == 0x45);
-FABLE_STATIC_ASSERT(offsetof(CInventoryCategoryDef, WrapHighlightCursor) == 0x46);
-FABLE_STATIC_ASSERT(offsetof(CInventoryCategoryDef, CategoryName) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CInventoryCategoryDef, AllowItemsToFillMoreThanOneSlot) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryCategoryDef, CategoryIdentifier) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CInventoryCategoryDef, AddCategoryOnCreate) == 0x54);
+FABLE_STATIC_ASSERT_AT(42, sizeof(CInventoryCategoryDef) == 0x58);
+#ifndef FABLE_RETAIL_CINVENTORYCATEGORYDEF_PARENTDEF
+FABLE_STATIC_ASSERT_AT(43, offsetof(CInventoryCategoryDef, __vftable) == 0x0);
+#endif
+FABLE_STATIC_ASSERT_AT(44, offsetof(CInventoryCategoryDef, Inventory) == 0x3c);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CInventoryCategoryDef, NumberOfSlots) == 0x40);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CInventoryCategoryDef, DrawItemSlots) == 0x44);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CInventoryCategoryDef, SelectEmptySlots) == 0x45);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CInventoryCategoryDef, WrapHighlightCursor) == 0x46);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CInventoryCategoryDef, CategoryName) == 0x48);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CInventoryCategoryDef, AllowItemsToFillMoreThanOneSlot) == 0x4c);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CInventoryCategoryDef, CategoryIdentifier) == 0x50);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CInventoryCategoryDef, AddCategoryOnCreate) == 0x54);
 
 #endif // FABLE_ENGINE_CINVENTORYCATEGORYDEF_H

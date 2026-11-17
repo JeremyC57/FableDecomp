@@ -1,37 +1,33 @@
-// CTCInventoryTrade::GetItemCountForCategory() -- the buy or sell item count matching the selected category (identifier 11 / 12), else 0
+// CTCInventoryTrade::GetItemCountForCategory() -- the buy or sell item count matching the selected category (trade buy / trade sell), else 0
+// Leaf: ?GetItemCountForCategory@CTCInventoryTrade@@QAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059B740, 55 bytes.
-// Callees: CTCInventoryBase::GetSelectedCategory @ 0x005BCACE, NInventory::CCategory::GetCategoryIdentifier @ 0x005BD1B3.
-//
-// Shape: both locals zeroed up front (`xor edi,edi ; xor ebx,ebx`), the identifier only fetched for a non-null category,
-// then a two-case `switch` lowered to `sub ebx,0Bh ; je ; dec ebx ; jne` (GOTCHAS: `dec ; jne` = a switch case). Size TU
-// (`#pragma optimize("s", on)`, as the rest of the trade module). Members: engine/CTCInventoryTrade.h names
-// ItemSellCount (+0x190) / ItemBuyCount (+0x194); retail holds them at +0x164 / +0x168 (the header's PDB layout is
-// 0x2C high here: CTCInventoryBase is 0x18 smaller, and the vector, list and two maps before them are 4/8 bytes
-// narrower each), so the header is NOT included and a local model carries the real names. Which of 11/12 is "buy" is
-// inferred from the member order (buy = 11 -> ItemBuyCount); the enum names are descriptive.
-// The local view is named CTCInventoryTrade_Retail so it does not shadow the PDB header engine/CTCInventoryTrade.h.
+// Callees: NInventory::CTCInventoryBase::GetSelectedCategory @ 0x005BCACE, NInventory::CCategory::GetCategoryIdentifier @ 0x005BD1B3.
+// Shape: both locals zeroed up front (`xor edi,edi ; xor ebx,ebx`), the identifier only fetched for a non-null category, then a two-case
+//   `switch` lowered to `sub ebx,0Bh ; je ; dec ebx ; jne` (GOTCHAS: `dec ; jne` = a switch case). Size TU.
+// Name fix (agentNF89, q11170): Ego_r.pdb + FableWin.pdb ?GetItemCountForCategory@CTCInventoryTrade@@QAEJXZ; moved off the row-local
+//   CTCInventoryTrade_Retail / CTCInventoryBase_Retail / CCategory / empty-enum models onto engine/CTCInventoryTrade.h (ItemSellCount +0x164 /
+//   ItemBuyCount +0x168), NInventory_CTCInventoryBase.h (SELECTEDOWNED) and CCategory.h (PASS22), with the PDB enumerators
+//   INVENTORY_CATEGORY_IDENTIFIER_TRADE_BUY (11) / _TRADE_SELL (12). Overlay opt-ins CTCINVENTORYTRADE_ITEMCOUNTFORCATEGORY,
+//   CCATEGORY_CATEGORYIDENTIFIER.
 #pragma optimize("s", on)
-// agentNF20 (2026-11-11): NInventory::CCategory::GetCategoryIdentifier is the Ego_r.pdb spelling
-//   ?GetCategoryIdentifier@CCategory@NInventory@@QBE?AW4EInventoryCategoryIdentifier@2@XZ (const, the namespace enum; enumerators not in the name sets).
-namespace NInventory {
-enum EInventoryCategoryIdentifier { };
-class CCategory { public:
-    EInventoryCategoryIdentifier GetCategoryIdentifier() const;                   // 0x005BD1B3
-};
-}
-enum { CATEGORY_TRADE_BUY = 11, CATEGORY_TRADE_SELL = 12 };
-struct CTCInventoryBase_Retail {
-    virtual void v00();
-    unsigned char _pad_0x04[0x130 - 4];
-    NInventory::CCategory* GetSelectedCategory();   // 0x005BCACE
-};
-struct CTCInventoryTrade_Retail : CTCInventoryBase_Retail {
-    unsigned char _pad_0x130[0x164 - 0x130];
-    long ItemSellCount;                             // +0x164
-    long ItemBuyCount;                              // +0x168
-    long GetItemCountForCategory();
-};
-long CTCInventoryTrade_Retail::GetItemCountForCategory()
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
+#define FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
+#define FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+#define FABLE_RETAIL_CCATEGORY_CATEGORYIDENTIFIER
+#define FABLE_RETAIL_CTCINVENTORYTRADE
+#define FABLE_RETAIL_CTCINVENTORYTRADE_ITEMCOUNTFORCATEGORY
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCInventoryTrade.h"
+long CTCInventoryTrade::GetItemCountForCategory()
 {
     long count = 0;
     long ident = 0;
@@ -39,10 +35,10 @@ long CTCInventoryTrade_Retail::GetItemCountForCategory()
     if (category)
         ident = category->GetCategoryIdentifier();
     switch (ident) {
-    case CATEGORY_TRADE_BUY:
+    case NInventory::INVENTORY_CATEGORY_IDENTIFIER_TRADE_BUY:
         count = ItemBuyCount;
         break;
-    case CATEGORY_TRADE_SELL:
+    case NInventory::INVENTORY_CATEGORY_IDENTIFIER_TRADE_SELL:
         count = ItemSellCount;
         break;
     }
