@@ -120,8 +120,14 @@ public:
 #else
     unsigned char               UpdateData[0xc];             // +0x2c CArray<CBankFileEntryUpdateData_*>
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_PACKRUNTIMEDATA
+    // NF72 opt-in (row 0x009CD740 CBankFile::PackRuntimeData): the Ego_r.pdb member types (needs FABLE_RETAIL_CBANKFILE_FILENAMEINDICES).
+    CPackedUIntArray            PackedDataOffset;            // +0x38
+    CPackedUIntArray            PackedDataSize;              // +0x48
+#else
     unsigned char               PackedDataOffset[0x10];      // +0x38 CPackedUIntArray
     unsigned char               PackedDataSize[0x10];        // +0x48 CPackedUIntArray
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
     CPackedUIntArray            PackedDataType;              // +0x58
 #else
@@ -218,6 +224,12 @@ private:
     void InitEntry(unsigned long index, const CCharString& symbol, const CCharString& filename);   // 0x009CE050 (PDB AAEXKABVCCharString@@0@Z)
 public:
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_PACKRUNTIMEDATA
+    // NF72 opt-in (row 0x009CD740): Ego_r.pdb 0x00B1C8D0 ?PackRuntimeData@CBankFile@@AAEXXZ (private). Declaration only.
+private:
+    void PackRuntimeData();                                              // 0x009CD740
+public:
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_ALLOCATEBUFFERS
     // NF68 opt-in (row 0x009CEAE0): Ego_r.pdb 0x00B1CED0 / FableWin.pdb 0x02F9BF90 ?AllocateBuffers@CBankFile@@AAEXK@Z (private).
 private:
@@ -249,6 +261,11 @@ public:
     // Retail opt-in (chunk 882, row 0x0061E6D0): Ego_r.pdb 0x00B1A780 / FableWin.pdb 0x02F97650
     // ?FindIndexBySymbol@CBankFile@@QBEKABVCCharString@@@Z, out of line in retail at 0x009CCDC0 (manifest label propagated).
     unsigned long FindIndexBySymbol(const class CCharString& symbol) const;   // 0x009CCDC0
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_ALIGN
+    // NF72 opt-in (row 0x009D5260 CBankFileAsyncEntry::CBankFileAsyncEntry): Ego_r.pdb 0x00B198E0 ?Align@CBankFile@@QBEKK@Z (retail 0x009CBB90,
+    // the landed CBankFile::Align), out of line. Declaration only.
+    unsigned long Align(unsigned long size) const;                       // 0x009CBB90
 #endif
 #ifdef FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
     // Retail opt-in (chunk 1021, row 0x00BEC680 CEngineInternalPrimitiveMeshBase::CollectStats): Ego_r.pdb

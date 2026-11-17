@@ -17,10 +17,18 @@ struct CBase {                       // the 4-slot root at 0x0099A2F0, stores vt
     CBase();                         // 0x0099A2F0
 };
 
-class CBankFileAsync { public:
-    unsigned long GetEntryDataSize(unsigned long index) const;   // 0x009CC240 (CBankFile)
-    unsigned long Align(unsigned long size) const;               // 0x009CBB90 (CBankFile)
-};
+// NF72 (round 7, q10882): GetEntryDataSize 0x009CC240 and Align 0x009CBB90 are CBankFile's (Ego_r.pdb ?GetEntryDataSize@CBankFile@@QBEKK@Z
+//   0x00B19F40 and ?Align@CBankFile@@QBEKK@Z 0x00B198E0): the local CBankFileAsync model is replaced by engine/CBankFile.h (ENTRYDATASIZE and the
+//   overlay opt-in ALIGN) and engine/CBankFileAsync.h, so both calls bind the CBankFile spellings.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
+#define FABLE_RETAIL_CBANKFILE_ALIGN
+#include "fable_string.h"
+#include "engine/CBankFile.h"
+#include "engine/CBankFileAsync.h"
 
 class CBankFileAsyncEntry : public CBase { public:
     CBankFileAsync* m_pBank;         // +0x04

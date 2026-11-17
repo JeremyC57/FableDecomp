@@ -1,5 +1,5 @@
 // CEnginePrimitiveRenderer::InitialiseGlobalLights() -- update the lighting manager's global lighting states, then set the two lighting tracked render states from the default @ 0x01396FF4, hand the render core two white colours and enable the tracked state +0x2a48
-// Leaf: InitialiseGlobalLights
+// Leaf: ?InitialiseGlobalLights@CEnginePrimitiveRenderer@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B32300, length 416 bytes (body 0x192 + int3 padding), plain `ret` (`this` unused).
 // Callees: CEngineLightingManager::UpdateGlobalLightingStates @ 0x00B46C80 (global @ 0x01436E9C); a render-core method taking two
 //   `const CRGBColour&` @ 0x00A0AA10 (an empty `ret 8` stub in the PC build; catalogued `$E2`).
@@ -9,7 +9,6 @@
 // Shape: the manager-side `__forceinline SetState(state, value)` of EnableFog; the colours are CRGBColour temporaries (B,G,R,A
 //   bytes, ctor stores R,G,B,A -> +2,+1,+0,+3), the second argument's built first.
 #include "fable_compiler.h"
-#include "engine/CEnginePrimitiveRenderer.h"
 
 // NF45 (round 7): the render manager is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
 //   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A; engine/CRenderManager.h, CRenderManagerCore / CRenderStateManager at offset 0).
@@ -22,20 +21,26 @@
 #define FABLE_RETAIL_CRENDERSTATEMANAGER_SETAMBIENTMATERIALCOLOURSOURCE_INLINE
 #define FABLE_RETAIL_CRENDERSTATEMANAGER_SETDIFFUSEMATERIALCOLOURSOURCE_INLINE
 #define FABLE_RETAIL_CRENDERMANAGERCORE_SETMATERIAL
+// NF72 (round 7, q10879): the self row is the private member ?InitialiseGlobalLights@CEnginePrimitiveRenderer@@AAEXXZ (Ego_r.pdb 0x009D32D0,
+//   FableWin.pdb 0x02DA9540), declared by engine/CEnginePrimitiveRenderer.h's PRERENDERLAYER opt-in (NF68; its only retail caller
+//   PreRenderLayer 0x00B32AD0 binds it). The CEnginePrimitiveRenderer_Methods stand-in and the local CEngineLightingManager model are gone:
+//   UpdateGlobalLightingStates comes from engine/CEngineLightingManager.h (the 0x00B32AD0 lighting opt-ins).
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_PRERENDERLAYER
+#define FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+#define FABLE_RETAIL_C4DVECTOR
+#define FABLE_RETAIL_CMATRIX3X4
+#include "engine/CEngineLightingManager.h"
 #include "engine/CRenderManager.h"
 #include "engine/CRGBColour.h"
+#include "engine/CEnginePrimitiveRenderer.h"
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
-class CEngineLightingManager { public:
-    void UpdateGlobalLightingStates();             // 0x00B46C80
-};
 namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
-struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
-    void InitialiseGlobalLights();
-};
-
-void CEnginePrimitiveRenderer_Methods::InitialiseGlobalLights()
+void CEnginePrimitiveRenderer::InitialiseGlobalLights()
 {
     NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
     NEngineInternal::GPRenderManager->SetDiffuseMaterialColourSource(MATERIAL_COLOUR_SOURCE_MATERIAL);

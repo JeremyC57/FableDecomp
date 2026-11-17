@@ -14,37 +14,30 @@
 //   address escaped into the call, so the block is re-read after the decrement).
 // Retail layout: the CBankFileAsync base is 0x164 bytes (engine/CStreamingFontDataBank.h carries the PDB +0x1D8..), so
 //   streamingEntry sits at +0x188 (Data) / +0x18C (Info), 0x74 below the header.
-void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-
+// NF72 (round 7, q10881): GetAsyncEntry is CBankFileAsync's (Ego_r.pdb 0x00B29950 / FableWin.pdb 0x02FF69A0
+//   ?GetAsyncEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z), not the font bank's: the local CCharString / CBankFile /
+//   CBankFileAsync models are replaced by fable_string.h and engine/CBankFile.h / CBankFileAsync.h (opt-ins STATICBLOCKS_TEXTURE_HELPERS,
+//   CBANKFILEASYNC_DATA, CBANKFILEASYNC_GETASYNCENTRY, CBANKFILE_ENTRIES for FindIndexBySymbol). CStreamingFontDataBank keeps the row's
+//   earlier local model (engine/CStreamingFontDataBank.h is the flattened layout without the retail base), now over the shared CBankFileAsync.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CBANKFILEASYNC_DATA
+#define FABLE_RETAIL_CBANKFILEASYNC_GETASYNCENTRY
+#define FABLE_RETAIL_CBANKFILE_ENTRIES
+#include "fable_string.h"
 #include "engine/CCountedPointer.h"
-
+#include "engine/CBankFile.h"
+#include "engine/CBankFileAsync.h"
 
 class CSymbolMap;
 class CBankFileAsyncEntry;
 
-class CBankFile
-{
-public:
-    virtual void v00();
-public:
-    unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
-};
-class CBankFileAsync : public CBankFile
-{
-public:
-};
-
 class CStreamingFontDataBank : public CBankFileAsync {
 public:
-    unsigned char                        _bank[0x184];  // CBankFileAsync part, StateBlock +0x164, Fonts +0x178, Filename +0x184
+    unsigned char                        _pad_0x164[0x24]; // StateBlock +0x164, Fonts +0x178, Filename +0x184
     CCountedPointer<CBankFileAsyncEntry> streamingEntry;   // +0x188
-    CCountedPointer<CBankFileAsyncEntry> GetAsyncEntry(unsigned long index);       // 0x009D58D0 (CBankFileAsync)
     void InitStreamingEntry(CSymbolMap& symbols);
 };
 

@@ -1,5 +1,7 @@
 // CAIStateGroup_CreatureUseCoverBase::ClearCoverThing() -- if the cover thing is still alive, release its cover-point component (SetUser(0)) and clear PCoverThing
-// Leaf: ?ClearCoverThing@CAIStateGroup_CreatureUseCoverBase@@QAEXXZ
+// Leaf: ?ClearCoverThing@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ
+// NF72 (round 7, q10886): access-only fix: ClearCoverThing is protected in Ego_r.pdb (IAE; engine/CAIStateGroup_CreatureUseCoverBase.h TAKECOVER,
+//   bound so by the ported 0x0097A630); the local declaration is now under `protected:`. The bytes are unchanged.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00970B60, length 166 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three reads: IS_THING_ALIVE inlined, then the thing),
@@ -80,7 +82,9 @@ struct CAIStateGroup_CreatureUseCoverBase           // retail layout = Ego_r.pdb
     CIntelligentPointer<CThing> PCoverThing;        // +0x1f
     unsigned char _pad27;                           // +0x27
     CCoverList CoverList;                           // +0x28
+protected:
     void ClearCoverThing();
+public:
     void CleanupLeaf();
 };
 #pragma pack(pop)

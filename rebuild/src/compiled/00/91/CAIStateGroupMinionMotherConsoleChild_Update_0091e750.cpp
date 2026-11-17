@@ -18,6 +18,10 @@
 // out of the loop; GetInterface is a plain (not forced) inline returning its `present` local, which leaves the present
 // byte stored in the frame; the distance test sums `X*X + (Y*Y + Z*Z)`.
 // Layout: retail CThing interface bitset +0x20 / map +0x44; the event's child pointer +8.
+// NF72 (round 7, q10865): the GetEvent stand-in is now the public const member template of CTCEntityEvents (the same-TU stand-in body
+//   is now its generic definition, implicitly instantiated as a COMDAT for <CEventChildHurtGoToMother, CIsEventOfType>), so the call binds the FableWin.pdb instantiation
+//   ??$GetEvent@VCEventChildHurtGoToMother@NEntityEvents@@VCIsEventOfType@2@@CTCEntityEvents@@QBE_NPAPAVCEventChildHurtGoToMother@NEntityEvents@@ABVCIsEventOfType@2@@Z
+//   (retail 0x00915760; engine/CTCEntityEvents.h declares the template the same way).
 #include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
@@ -81,16 +85,15 @@ class CIsEventOfType { public:
 };
 }
 class CTCEntityEvents { public:                        // interface 0x42
-    bool GetEvent(NEntityEvents::CEventChildHurtGoToMother** event, const NEntityEvents::CIsEventOfType& isType);   // 0x00915760
+    template<class E, class F> bool GetEvent(E** out, const F& filter) const;   // <CEventChildHurtGoToMother, CIsEventOfType>: 0x00915760
 };
 long EventSink_91e750(const void* self, long type);   // stand-in: the event-list walk GetEvent does outside the graded bytes
 #pragma auto_inline(off)
 // Same-TU stand-in for GetEvent<CEventChildHurtGoToMother, CIsEventOfType> @ 0x00915760 (a template instantiated in retail's
 // TU, just before this function): it reads the predicate and writes the event out-pointer, and lets neither escape.
-__declspec(noinline) bool CTCEntityEvents::GetEvent(NEntityEvents::CEventChildHurtGoToMother** event,
-                                                    const NEntityEvents::CIsEventOfType& isType)
+template<class E, class F> __declspec(noinline) bool CTCEntityEvents::GetEvent(E** event, const F& isType) const
 {
-    *event = (NEntityEvents::CEventChildHurtGoToMother*)EventSink_91e750(this, isType.Type);
+    *event = (E*)EventSink_91e750(this, isType.Type);
     return *event != 0;
 }
 #pragma auto_inline(on)

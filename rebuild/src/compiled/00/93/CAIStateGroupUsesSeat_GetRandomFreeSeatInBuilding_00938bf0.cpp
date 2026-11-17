@@ -1,5 +1,9 @@
 // CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding(CThing* building) -- collect the free seats of the
-// Leaf: ?GetRandomFreeSeatInBuilding@CAIStateGroup_UsesSeat@@QAEPAVCThing@@PAV2@@Z
+// Leaf: ?GetRandomFreeSeatInBuilding@CAIStateGroup_UsesSeat@@IBEPAVCThingObject@@AAVCThingBuilding@@@Z
+// NF72 (round 7, q10863): the PDB spelling (Ego_r.pdb 0x0095BD90 + FableWin.pdb 0x02B78310, engine/CAIStateGroup_UsesSeat.h): protected const,
+//   CThingBuilding& in, CThingObject* out. CThingBuilding now comes from engine/CThingBuilding.h; the seat vector holds CThingObject* (FableWin
+//   ??0CAddFreeSeatToList@@QAE@AAV?$vector@PAVCThingObject@@...); the world-seed accessor 0x008FCFD0 is CAIStateGroupBase's protected const
+//   GetPWorldSeed (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ), declared on the row's CAIStateGroupBase model.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH -- landing retry: out-parameter GetInterface in the if (component lands in eax)
 // building's interface-0x21 component into a vector and return one picked with the world's random seed (or null).
@@ -20,8 +24,12 @@ class CWorld;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
+#include "engine/CThingBuilding.h"
+class CThingObject;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CAIBrain { public:
@@ -46,6 +54,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+protected:
+    unsigned long* GetPWorldSeed() const;       // 0x008FCFD0 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -66,10 +76,10 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 
-struct CThingVector {                           // std::vector<CThing*> (first, last, end of storage)
-    CThing** m_first;
-    CThing** m_last;
-    CThing** m_end;
+struct CThingVector {                           // std::vector<CThingObject*> (first, last, end of storage)
+    CThingObject** m_first;
+    CThingObject** m_last;
+    CThingObject** m_end;
     CThingVector() : m_first(0), m_last(0), m_end(0) { }
     ~CThingVector() { if (m_first) free(m_first); }
     long size() const { return m_last - m_first; }
@@ -100,8 +110,7 @@ struct CTCBuildingSeats {                       // interface 0x21
 };
 
 struct CAIStateGroupBaseR : CAIStateGroupBase {
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    unsigned long GetRandom(unsigned long range)
+    unsigned long GetRandom(unsigned long range) const
     {
         unsigned long* seed = GetPWorldSeed();
         *seed = *seed * 0x24a1 + 0x24df;
@@ -111,19 +120,20 @@ struct CAIStateGroupBaseR : CAIStateGroupBase {
 };
 
 struct CAIStateGroup_UsesSeat : CAIStateGroupBaseR {
-    CThing* GetRandomFreeSeatInBuilding(CThing* building);
+protected:
+    CThingObject* GetRandomFreeSeatInBuilding(CThingBuilding& building) const;
 };
 
-CThing* CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding(CThing* building)
+CThingObject* CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding(CThingBuilding& building) const
 {
     CTCBuildingSeats* comp;
-    if (building->GetTC(TCI_THING_OWNER, &comp)) {
+    if (building.GetTC(TCI_THING_OWNER, &comp)) {
         CSeatListNode* head = comp->m_seats.head;
         CThingVector seats;
         ForEachSeat(CSeatListIterator(head->next), CSeatListIterator(head), CAddFreeSeat(&seats));
         if (seats.m_first != seats.m_last) {
             long count = seats.size();
-            CThing* seat = seats.m_first[GetRandom(count)];
+            CThingObject* seat = seats.m_first[GetRandom(count)];
             return seat;
         }
     }

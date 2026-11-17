@@ -113,6 +113,12 @@ namespace NGameText {
 class CGroupEntry : public CResource {
 public:
     virtual bool UnloadResource();                                                 // Ego_r ?UnloadResource@CGroupEntry@NGameText@@UAE_NXZ
+#ifdef FABLE_RETAIL_NGAMETEXT_CGROUPENTRY_CTOR
+    // NF72 opt-in (row 0x009C80F0 CDataBankGroupEntry::BeginLoading): Ego_r.pdb 0x00B15D40 / FableWin.pdb 0x02F75940
+    // ??0CGroupEntry@NGameText@@QAE@AAV?$CCountedPointer@VCBankFileAsyncData@@@@PBVCDataBankGroupEntry@1@@Z, out of line in retail
+    // (0x009C8060). Declaration only: no layout change.
+    CGroupEntry(CCountedPointer<CBankFileAsyncData>& file_data, const CDataBankGroupEntry* owner);   // 0x009C8060
+#endif
     CArray<long> Entries;                                                          // +0x1C
     CCountedPointer<CBankFileAsyncData> PFileData;                                 // +0x28
     CDataBankGroupEntry* Owner;                                                    // +0x30

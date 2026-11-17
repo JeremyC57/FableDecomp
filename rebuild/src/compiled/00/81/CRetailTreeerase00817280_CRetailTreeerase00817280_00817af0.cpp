@@ -9,25 +9,20 @@
 // head's left/parent/right are reset through `head` re-read per store and size is zeroed; finally
 // the head node itself is released with free @ 0x00BFEA14 (null-checked). Only the erase callee
 // distinguishes the instantiations, so the class is named by it. One of 119 bodies.
-extern "C" void __cdecl free(void* block);
-
-struct CRetailTree_erase00817280 {
-    struct node { unsigned char colour; unsigned char _pad[3]; node* parent; node* left; node* right; };
-    node* head;
-    unsigned long size;
-    void Erase(node* root);                // 0x00817280
+// Leaf: ??1CRetailTree_erase00817280@@QAE@XZ
+// NF72 (round 7, q10889): the erase call @ 0x00817280 binds the STLport
+// ?_M_erase@?$_Rb_tree@W4EHitLocationCodelet@@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Select1st@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@U?$less@W4EHitLocationCodelet@@@3@V?$allocator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@2@@Z
+// (ported this round, rows/00817280.cpp) through the shared stlport/fable_map.h: the stand-in now derives from std::map<EHitLocationCodelet, void (__fastcall*)(CThing&, CHitParameters const&)>,
+// whose inline ~map / ~_Rb_tree (clear) / ~_Rb_tree_base give this body (NF50 form, 0x006311D0). Its own name stays a stand-in: the
+// address has no caller and no data reference, so ~_Rb_tree vs. ~map vs. an owner destructor is not provable.
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
+class CThing;
+class CHitParameters;
+enum EHitLocationCodelet;
+struct CRetailTree_erase00817280 : std::map<EHitLocationCodelet, void (__fastcall*)(CThing&, CHitParameters const&)> {   // stand-in: a map<EHitLocationCodelet, ...> destructor
     ~CRetailTree_erase00817280();
 };
-
 CRetailTree_erase00817280::~CRetailTree_erase00817280()
 {
-    if (size) {
-        Erase(head->parent);
-        head->left = head;
-        head->parent = 0;
-        head->right = head;
-        size = 0;
-    }
-    if (head)
-        free(head);
 }

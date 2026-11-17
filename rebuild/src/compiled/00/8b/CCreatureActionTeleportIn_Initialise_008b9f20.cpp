@@ -1,103 +1,57 @@
 // CCreatureAction_TeleportIn::Initialise() -- the combat-action Initialise, then (when the action creates effects) look up the creature definition's special-effects sub-def and, if it maps "TELEPORT_IN" to an effect type, spawn that effect at the creature's position
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008B9F20, length 208 bytes (plain `ret`, virtual).
-// Callees: CCombatActionBase::Initialise 0x00857520 (direct base call, first), CBaseIntelligentPointer::GetPItem 0x00A01B50
-// (PCreature +8, twice), CDefClassBase::GetSubDef<CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580 on the
-// thing's definition (+0x70), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
-// CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&) 0x00669D30 (the name's CRC looked up in the def's
-// SpecialEffectsMap at +0x28; landed as CCRC::CalcAndLookup), CThing::GetPos 0x004C73D0, __fastcall
-// CreateEffectThing(long, const C3DVector*, bool) 0x006E0880.
-// Layout: retail CreateEffects +0x114 (PDB header +0x12C: the debug base is 0x18 larger), so a local model.
-// Shape: the GetSubDef out-slot is a plain counted-pointer slot (no destructor); the caller copies the def into a named
-// pointer right after the call and releases it by hand at the end (`test edi,edi ; dec [edi+4] ; call [edx+4]`), which
-// is what keeps it in edi across the string and lookup calls. The creature is a named local (so GetPItem runs before the
-// argument push, and the base-relative &PCreature takes over esi). The lookup's string comes from the implicit
-// const char* conversion inside a `found && ...` condition, so VC keeps a "temporary constructed" flag (zeroed at
-// entry, set with the string) and destroys the string under it before branching on the condition saved in bl.
-#include "fable_compiler.h"
+// Leaf: ?Initialise@CCreatureAction_TeleportIn@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008B9F20, length 208 bytes (plain `ret`, virtual); the byte twin of TeleportOut 0x008B9E50.
+// NF72 port (round 7, q10868): the text of its landed twin CCreatureAction_TeleportOut::Initialise 0x008B9E50 (NF67) on the shared headers --
+//   engine/CCreatureAction_TeleportIn.h (FABLE_RETAIL_CCREATUREACTION_TELEPORT: CreateEffects +0x114), engine/CCombatActionBase.h (Initialise
+//   0x00857520), engine/CCreatureActionBase.h (PCreature +0x08), engine/CThing.h / CThingBaseDef.h (PeekBaseDef; GetPos 0x004C73D0),
+//   engine/CDefClassBase_GetSubDef.h (GetSubDef<CSpecialEffectsDef> 0x00669580, body visible and out of line), engine/CSpecialEffectsDef.h
+//   (GetEffectFromString 0x00669D30) and engine/CTCDParticleEmitter.h (static Create(long, const C3DVector&, bool) 0x006E0880). The local
+//   C3DVector-era models (CThing, CCombatActionBase, CIntelligentPointer, CDefPointer, CSpecialEffectsDef, the GetSubDef stand-in) are gone.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCREATUREACTION_TELEPORT
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_POINTEE
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CTCDPARTICLEEMITTER_FULL
+#include "rebuild_abi.h"
+#include "fable_string.h"
 #include "engine/C3DVector.h"
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-struct CDefBase : CDefVirtual {
-    long m_refCount;                            // +0x04
-};
-class CSpecialEffectsDef : public CDefBase { public:
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-};
-template <class T> class CDefPointer { public:      // the out-slot GetSubDef fills (counted reference handed over)
-    T* m_p;
-    CDefPointer() : m_p(0) { }
-};
-template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
-{
-    if (def && --def->m_refCount == 0)
-        def->Destroy();
-}
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
-};
-
-class CThing { public:
-    unsigned char  _pad0[0x70];
-    CDefClassBase* m_pDef;                      // +0x70
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
-
-class CTCDParticleEmitter { public:
-    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
-};
-
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
-class CCombatActionBase { public:
-    virtual void v00();
-    virtual void Initialise();                  // 0x00857520
-    unsigned char           _pad04[4];
-    CIntelligentPointer<CThing> PCreature;          // +0x08
-    unsigned char           _pad10[0x114 - 0x10];
-};
-
-class CCreatureAction_TeleportIn : public CCombatActionBase { public:
-    bool CreateEffects;                         // +0x114
-    virtual void Initialise();
-};
+#include "engine/CDefPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_TeleportIn.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CTCDParticleEmitter.h"
 
 void CCreatureAction_TeleportIn::Initialise()
 {
     CCombatActionBase::Initialise();
     if (CreateEffects) {
-        CDefPointer<CSpecialEffectsDef> effectsSlot;
-        long effectType = 0;
-        CThing* creature = PCreature.GetPItem();
-        CDefClassBase* def = creature->m_pDef;
-        bool found = def->GetSubDef(effectsSlot);
-        CSpecialEffectsDef* effects = effectsSlot.m_p;
-        if (found && effects->GetEffectFromString("TELEPORT_IN", effectType))
-            CTCDParticleEmitter::Create(effectType, *(&PCreature.GetPItem()->GetPos()), false);
-        ReleaseDef(effects);
+        CDefPointer<const CSpecialEffectsDef> pspecial_effects_def;
+        long effect_type = 0;
+        if (PCreature->PeekBaseDef().GetSubDef(&pspecial_effects_def)
+            && pspecial_effects_def->GetEffectFromString("TELEPORT_IN", effect_type))
+            CTCDParticleEmitter::Create(effect_type, PCreature->GetPos(), false);
     }
 }

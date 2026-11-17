@@ -8,7 +8,9 @@
 // a zero hit target falls back to the frame timer (first call records the frame), else `return hits >= target;`.
 // Layout: CAIStateGroup_BanditKingLunge.h (TimeOfLastLunge +0x1c); the boss def's per-phase vector at +0x40, the
 // lunge interval at +0x50 (seconds, scaled by the frame rate).
-// Leaf: CanLungeAtPlayer@CAIStateGroup_BanditKingLunge
+// Leaf: ?CanLungeAtPlayer@CAIStateGroup_BanditKingLunge@@IAE_NPAVCThing@@@Z
+// NF72 (round 7, q10861): access-only fix: CanLungeAtPlayer is protected in Ego_r.pdb + FableWin.pdb (IAE, as line 2 says and
+//   engine/CAIStateGroup_BanditKingLunge.h declares); the local declaration is now under `protected:`. The bytes are unchanged.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
@@ -168,6 +170,7 @@ class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?Ge
 struct CAIStateGroup_BanditKingLunge : CAIStateGroupBase {
     unsigned char Player[8];                    // +0x14 CIntelligentPointer<CThingPlayerCreature>
     long TimeOfLastLunge;                       // +0x1c
+protected:
     bool CanLungeAtPlayer(CThing* player);
 };
 

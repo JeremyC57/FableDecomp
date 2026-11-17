@@ -23,29 +23,43 @@
 // Shape: the hero-stats interface fetch before the static GetTimeSpentInGame is dead except for the out-of-line bitset test;
 //   its pure-load lookup is modelled as an indexed read (any pure load keeps retail's `mov eax,[esi+4] ; lea ecx,[eax+20h]`).
 //   The two region arms are one statement each so VC7.1 cross-jumps the shared GetEntry tail.
+// NF72 (round 7, q10909): ported onto the shared headers. CWideString / CCharString come from fable_string.h (retail branches); the
+//   text bank, its text / group entries and the counted pointers from engine/NGameText_CDataBank.h (CGroupEntry : CResource, the
+//   DATABANK_GROUPTEXT + GETPGROUPENTRY branch agentNF69 proved on 0x009C8890; CArray<long> Entries at +0x1C); the UI manager from
+//   engine/NUISystem_CManager.h (slot 42 = GetMiscThingsDef, by-value CDefPointer<CUIMiscThingsDef>; the separator is
+//   CUIMiscThingsDef::SpaceSeparator +0x3C, engine/NUISystem_CUIMiscThingsDef.h); the bitset from stlport/fable_containers.h
+//   (FABLE_RETAIL_STLP_BITSET_TEST_DECL). The file-name substitution 0x009C7980 is NGameText::ConstructString(CWideString&, const
+//   CWideString&) (Ego_r.pdb 0x00B156F0 + FableWin.pdb 0x02F6E6F0, __fastcall, returns bool; FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING); the
+//   landed made-up SubstituteFileName is dropped. The local CRefCounted / CDefPtr / CIVCountedPointer / CRetailVector / CGroupEntry /
+//   CTextEntry / CDataBank / CManager / CUIDef / CWideString / CCharString / bitset models are gone; CAFile, CDateAndTime, CTCHeroStats,
+//   CUserProfileManager, CMainGameComponent, CThing, CTCBase and CTCInGameMenu stay local (no change asked here).
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT_CLEAR
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+#define FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY
+#define FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCELIST_MAKEFREESPACE
+#define FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#include "fable_string.h"
+#include "engine/NGameText_CDataBank.h"
+#include "engine/NUISystem_CUIMiscThingsDef.h"
+#include "engine/CDefPointer.h"
+#include "engine/NUISystem_CManager.h"
 
-class CWideString { public:
-    void* PStringData;
-    CWideString();                                      // 0x0099AED0
-    CWideString(const wchar_t* text);                   // 0x0099B6B0
-    CWideString(const CWideString& other);
-    ~CWideString();                                     // 0x0099B510
-    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-    const CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
-    const CWideString& operator+=(const wchar_t* text);       // 0x0099B940
-};
-CWideString __fastcall operator+(const CWideString& s, const wchar_t* text);   // 0x0099BF30
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    unsigned long GetCRC() const;                       // 0x00404310 (NF34: Ego_r + FableWin ?GetCRC@CCharString@@QBEKXZ)
-    CWideString ToWideString() const;                   // 0x0099E480
-};
 class CAFile { public: static bool __fastcall PathExists(const CWideString& path); };   // 0x00999230
 struct _FILETIME { unsigned long dwLowDateTime, dwHighDateTime; };
 class CDateAndTime { public:
@@ -56,7 +70,6 @@ void __fastcall FormatDateTime(const _FILETIME& time, wchar_t* dateText, wchar_t
 class CTCHeroStats { public:
     static CWideString __fastcall GetTimeSpentInGame(long seconds, bool brief);    // 0x005CCC91
 };
-void __fastcall SubstituteFileName(CWideString& text, const CWideString& name); // 0x009C7980
 
 template<class T> struct CRetailVector {
     T* _M_start;
@@ -67,49 +80,6 @@ template<class T> struct CRetailVector {
     const T* begin() const { return _M_start; }
     const T& operator[](unsigned long i) const { return *(begin() + i); }
 };
-struct CRefCounted {
-    virtual void v00();
-    virtual void Destroy() const;                       // slot 1 (+0x04)
-    mutable long m_count;                               // +0x04
-    FABLE_FORCEINLINE void DecRef() const { --m_count; if (m_count == 0) Destroy(); }
-};
-template<class T> struct CDefPtr {                      // the getters' by-value result
-    T* m_p;
-    CDefPtr(const CDefPtr& other);
-    FABLE_FORCEINLINE ~CDefPtr() { if (m_p) m_p->DecRef(); }
-    T* operator->() const { return m_p; }
-};
-template<class T> class CIVCountedPointer { public:     // NGameText::CDataBank's by-value results (FableWin), released and cleared
-    T* m_p;
-    CIVCountedPointer(const CIVCountedPointer& other);
-    FABLE_FORCEINLINE ~CIVCountedPointer() { if (m_p) { m_p->DecRef(); m_p = 0; } }
-    T* operator->() const { return m_p; }
-};
-struct CUIDef : CRefCounted {
-    long _pad08[(0x3c - 0x08) / 4];
-    CWideString DateTimeSeparator;                      // +0x3C
-};
-namespace NGameText {
-class CGroupEntry : public CRefCounted { public:
-    long _pad08[(0x1c - 0x08) / 4];
-    CRetailVector<unsigned long> Ids;                   // +0x1C
-};
-class CTextEntry : public CRefCounted { public:
-    CWideString GetText() const;                        // 0x009C7A40
-};
-}
-// NF47 (round 7): 0x009CC410 is Ego_r.pdb 0x00B1A5C0 / FableWin.pdb 0x02F978C0 ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z, called on the
-//   game text bank (NGameText::CDataBank : CBankFile); was the made-up NGameText::CDataBank::LookupValue (in neither PDB). The local CBankFile model is replaced by engine/CBankFile.h (ENTRYQUERY: EntryExists 0x009CC190 / GetEntryDataType 0x009CC210).
-#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
-#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
-#include "engine/CBankFile.h"
-namespace NGameText {
-class CDataBank : public CBankFile { public:
-    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
-    CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long entry, bool load) const;   // 0x009C8890
-    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long entry, bool load) const;     // 0x009C9070
-};
-}
 using NGameText::CDataBank;
 class CMainGameComponent {
 protected:
@@ -121,33 +91,12 @@ private: public:
     CDataBank* TextBank;                                // +0x14
 };
 FABLE_FORCEINLINE CDataBank* GetTextBank() { return CMainGameComponent::Get()->TextBank; }
-namespace NUISystem {
-class CManager { public:
-    virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04();
-    virtual void m05(); virtual void m06(); virtual void m07(); virtual void m08(); virtual void m09();
-    virtual void m10(); virtual void m11(); virtual void m12(); virtual void m13(); virtual void m14();
-    virtual void m15(); virtual void m16(); virtual void m17(); virtual void m18(); virtual void m19();
-    virtual void m20(); virtual void m21(); virtual void m22(); virtual void m23(); virtual void m24();
-    virtual void m25(); virtual void m26(); virtual void m27(); virtual void m28(); virtual void m29();
-    virtual void m30(); virtual void m31(); virtual void m32(); virtual void m33(); virtual void m34();
-    virtual void m35(); virtual void m36(); virtual void m37(); virtual void m38(); virtual void m39();
-    virtual void m40(); virtual void m41();
-    virtual CDefPtr<CUIDef> GetUIDef();                 // slot 42 (+0xA8)
-    static CManager* __fastcall GetInstance();          // 0x0041E5F2
-};
-}
 class CUserProfileManager { public:
     long        _pad00[2];
     CWideString ProfileName;                            // +0x08
     CWideString GetPathNameFromFileName(const CWideString& name, bool full);   // 0x00408120
     static CUserProfileManager& __fastcall Get();       // 0x0040D2A0
 };
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
 class CThing { public:
     long          _pad00[0x20 / 4];
     std::bitset<274> present;                              // +0x20
@@ -194,7 +143,7 @@ void CTCInGameMenu::ConstructSaveGameFileDescription(CWideString& description, l
         wchar_t dateText[128];
         FormatDateTime(FileTimes[index].ToFileTime(), dateText, timeText, 0);
         CWideString when(dateText);
-        when += manager->GetUIDef()->DateTimeSeparator;
+        when += manager->GetMiscThingsDef()->SpaceSeparator;
         when += CWideString(timeText);
         description += when;
         description += L"\n";
@@ -204,7 +153,7 @@ void CTCInGameMenu::ConstructSaveGameFileDescription(CWideString& description, l
         unsigned long entry = bank->FindIndexBySymbolCRC(FileRegionNames[index].GetCRC());
         if (entry > 0) {
             if (bank->GetEntryDataType(entry)) {
-                CRetailVector<unsigned long> const& ids = bank->GetPGroupEntry(entry, true)->Ids;
+                const CArray<long>& ids = bank->GetPGroupEntry(entry, true)->Entries;
                 region = bank->GetPTextEntry(ids[0], true)->GetText();
             } else
                 region = bank->GetPTextEntry(entry, true)->GetText();
@@ -216,6 +165,6 @@ void CTCInGameMenu::ConstructSaveGameFileDescription(CWideString& description, l
         description += stats->GetTimeSpentInGame(FilePlayTimes[index], false);
     } else {
         description = GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_INVALID_SAVE");
-        SubstituteFileName(description, FileNames[index]);
+        NGameText::ConstructString(description, FileNames[index]);
     }
 }

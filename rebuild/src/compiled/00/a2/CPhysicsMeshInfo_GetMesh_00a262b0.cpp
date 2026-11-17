@@ -1,5 +1,7 @@
 // CPhysicsMeshInfo::GetMesh() -- make sure the physics mesh is loaded and built (blocking with an "Asset Wait" progress line when the file is still streaming), touch its data in the resource list and return a counted pointer to the mesh
 // Leaf: GetMesh
+// NF72 (round 7, q10880): the callee BeginLoading 0x00A25BD0 is const in Ego_r.pdb and FableWin.pdb (QBEXXZ; its NF68 self row and the
+//   landed caller 0x00724630 use that spelling); the local declaration (CPhysicsMeshInfo has no shared header) is now const.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A262B0, 191 bytes (+ int3 padding), `ret 4` (hidden result).
 // Callees: CPhysicsMeshInfo::BeginLoading 0x00A25BD0, CBankFileAsyncData::IsFinished 0x009D54E0 / WaitUntilFinished
@@ -84,7 +86,7 @@ public:
     long                          Bank;                    // +0x04
     long                          Index;                    // +0x08
     CMeshData*                    MeshData;                // +0x0C CIVCountedPointer<CMeshData>::Object
-    void BeginLoading();                                   // 0x00A25BD0
+    void BeginLoading() const;                             // 0x00A25BD0 ?BeginLoading@CPhysicsMeshInfo@@QBEXXZ (Ego_r.pdb / FableWin.pdb const)
     CIVCountedPointer<const CPhysicsMesh> GetMesh();
 };
 

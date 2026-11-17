@@ -9,6 +9,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREFINDCOVER_UPDATE
+// NF72 opt-in (row 0x0097CCD0 CAIStateGroup_CreatureFindCover::Update): the polymorphic retail class on its base
+// CAIStateGroup_CreatureUseCoverBase (no own data: sizeof 0x4C = the base, as the flattened class below), as NF56 / NF68 model
+// CAIStateGroup_CreatureTakeCover. Members: Ego_r.pdb ?Update@CAIStateGroup_CreatureFindCover@@UAEXXZ (public virtual, retail 0x0097CCD0)
+// and ?IsStillRunnable@CAIStateGroup_CreatureFindCover@@IAE_NXZ (protected, retail 0x0097CB10). Needs FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
+// and its prerequisites. Declarations only; the flattened class below stays the default.
+#include "engine/CAIStateGroup_CreatureUseCoverBase.h"
+class CAIStateGroup_CreatureFindCover : public CAIStateGroup_CreatureUseCoverBase {
+public:
+    virtual void Update();                                               // 0x0097CCD0
+protected:
+    bool IsStillRunnable();                                              // 0x0097CB10
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureFindCover) == 0x4c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -28,5 +43,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(23, sizeof(CAIStateGroup_CreatureFindCover) == 0x4c);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_CreatureFindCover, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_CREATUREFINDCOVER_UPDATE
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_CREATUREFINDCOVER_H

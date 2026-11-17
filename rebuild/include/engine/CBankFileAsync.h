@@ -32,6 +32,16 @@ public:
     // Declaration only.
     void AsyncUpdatePending();                                           // 0x009D68B0
 #endif
+#ifdef FABLE_RETAIL_CBANKFILEASYNC_UPDATEPENDING_BODY
+    // NF72 opt-in (round 7, q10905, row 0x009D68B0 AsyncUpdatePending): Ego_r.pdb 0x00B2A6E0 / FableWin.pdb 0x02FF6EC0
+    // ?ProcessDisposalList@CBankFileAsync@@QAEXXZ (public, retail 0x009D6730) and Ego_r.pdb 0x00B29C60 / FableWin.pdb 0x02FF6F90
+    // ?RestartAbortedReads@CBankFileAsync@@AAEXXZ (private, retail 0x009D5A90), the two calls AsyncUpdatePending makes.
+    // Declarations only; pair with FABLE_RETAIL_CBANKFILEASYNC_ASYNCUPDATEPENDING for AsyncUpdatePending itself.
+    void ProcessDisposalList();                                          // 0x009D6730
+private:
+    void RestartAbortedReads();                                          // 0x009D5A90
+public:
+#endif
 #ifdef FABLE_RETAIL_CBANKFILEASYNC_HANDLEFAILEDALLOCATION
     // Retail opt-in (chunk F2, row 0x009D5BF0): Ego_r.pdb / FableWin.pdb ?HandleFailedAllocation@CBankFileAsync@@QAE_NXZ. Declaration only.
     bool HandleFailedAllocation();                                       // 0x009D5BF0

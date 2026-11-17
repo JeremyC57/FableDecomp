@@ -21,6 +21,10 @@
 // the centre pointer +0x170; the 0x33 component's centre pointer +0x0D; the 0x19 component's flag +0x14D (retail).
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
+// NF72 (round 7, q10901): the ~vector call @ 0x004406D0 now binds the STLport
+//   ??1?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@XZ (ported this round): the local
+//   CThingVector stand-in became std::vector<CIntelligentPointer<CThing> > from the shared stlport/fable_containers.h (VECTOR_DTOR_OUTOFLINE), and
+//   GetQuestCards takes it by reference as Ego_r.pdb 0x007872A0 / FableWin.pdb 0x02643010 spell it (the binding the landed 0x00622A00 already uses).
 #include "fable_compiler.h"
 class CThing;
 class CTCBase;
@@ -66,15 +70,11 @@ struct CTCCentreOwner {                                 // interface 0x33
     unsigned char _pad00[0x0d];
     CBaseIntelligentPointer HeroCentre;                 // +0x0D
 };
-struct CThingVector {                                   // vector<CIntelligentPointer<CThing> >
-    void* _M_start;
-    void* _M_finish;
-    void* _M_end_of_storage;
-    CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~CThingVector();                                    // 0x004406D0
-};
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "stlport/fable_containers.h"
+typedef std::vector<CIntelligentPointer<CThing> > CThingVector;   // ~vector 0x004406D0 (out-of-line COMDAT)
 class CTCHeroCentre { public:                                  // interface 0x6A
-    bool GetQuestCards(CThingVector* cards) const;      // 0x0077DBC0
+    bool GetQuestCards(CThingVector& cards) const;      // 0x0077DBC0 (Ego_r.pdb + FableWin.pdb: vector<CIntelligentPointer<CThing> >&)
 };
 struct CTCQuestSelect {                                 // the hero's interface 0x19 component
     unsigned char _pad00[0x14d];
@@ -159,7 +159,7 @@ void CTCHeroGuide::OpenQuestSelectInterface()
     if (centre && PeekWorld().QuestCardsEnabled && centre->HasTC(0x6a)) {
         const CTCHeroCentre* heroCentre = centre->FindTC<CTCHeroCentre>(0x6a);
         CThingVector cards;
-        if (heroCentre->GetQuestCards(&cards)) {
+        if (heroCentre->GetQuestCards(cards)) {
             hero->GetTC<CTCQuestSelect>(0x19)->QuestSelectPending = false;
             CGameEvent event(0x1a);
             event.AddULONG(0xd);

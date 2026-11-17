@@ -1,0 +1,221 @@
+addr       parity           behav  name
+004406d0   RELOCATION_MATCH PASS   allocator<CConversation>_>
+0047eee4   WARN SHARED_HEADER_AVAILABLE CAFile
+0047eee4   WARN SHARED_HEADER_AVAILABLE CDateAndTime
+0047eee4   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+0047eee4   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0047eee4   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0047eee4   WARN SHARED_HEADER_AVAILABLE CThing
+0047eee4   WARN SHARED_HEADER_AVAILABLE CTCBase
+0047eee4   RELOCATION_MATCH PASS   ConstructSaveGameFileDescription
+004b8940   RELOCATION_MATCH PASS   StdList_Dtor_004b8940
+004e0122   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e1437   WARN SHARED_HEADER_AVAILABLE CTCBase
+004e1437   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+004e1437   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004e1437   RELOCATION_MATCH PASS   ~CTCKraken
+004e3ee1   WARN SHARED_HEADER_AVAILABLE CTCBase
+004e3ee1   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+004e3ee1   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004e3ee1   WARN RELOC_NAME: ??1CEmitterVector@@QAE@XZ -> 004e1b08 labelled '_global::StdList_Dtor_004e1b08'
+004e3ee1   RELOCATION_MATCH PASS   ~CTCDExplosion
+006961f0   RELOCATION_MATCH PASS   IS_THING_ALIVE<CIntelligentPointer<CThingCreatureBase> >
+006c4430   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007800b0   WARN SHARED_HEADER_AVAILABLE CThing
+007800b0   WARN SHARED_HEADER_AVAILABLE CTCHeroCentre
+007800b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007800b0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007800b0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007800b0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+007800b0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007800b0   WARN SHARED_HEADER_AVAILABLE CWorld
+007800b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007800b0   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+007800b0   RELOCATION_MATCH PASS   OpenQuestSelectInterface
+007bed60   MATCH            PASS   GetMember_byte0x68_007bed60
+00817280   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EHitLocationCodelet@@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Select1st@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@U?$less@W4EHitLocationCodelet@@@3@V?$allocator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@2@@Z -> 00817280 labelled '_unattributed::FreeTree_CTreeOwner_00817280'
+00817280   RELOCATION_MATCH PASS   FreeTree_CTreeOwner_00817280
+00817320   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@2@@std@@QAEAAU01@XZ (catalog CRetailTreeIterator::Decrement; names another function)
+00817320   MATCH            PASS   Decrement
+00817740   MATCH            PASS   find
+00817af0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EHitLocationCodelet@@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Select1st@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@U?$less@W4EHitLocationCodelet@@@3@V?$allocator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@2@@Z -> 00817280 labelled '_unattributed::FreeTree_CTreeOwner_00817280'
+00817af0   RELOCATION_MATCH PASS   ~CRetailTree_erase00817280
+008b1d40   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4ECombatSequenceIsValidType@@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceIsValidType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@2@@Z -> 008b1d40 labelled '_unattributed::FreeTree_CTreeOwner_008b1d40'
+008b1d40   RELOCATION_MATCH PASS   FreeTree_CTreeOwner_008b1d40
+008b1d80   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4ECombatSequenceOnStartModuleType@@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStartModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@Z -> 008b1d80 labelled '_unattributed::FreeTree_CTreeOwner_008b1d80'
+008b1d80   RELOCATION_MATCH PASS   FreeTree_CTreeOwner_008b1d80
+008b1dc0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4ECombatSequenceOnStopModuleType@@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStopModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@Z -> 008b1dc0 labelled '_unattributed::FreeTree_CTreeOwner_008b1dc0'
+008b1dc0   RELOCATION_MATCH PASS   FreeTree_CTreeOwner_008b1dc0
+008b1f00   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@2@@std@@QAEAAU01@XZ (catalog CRetailTreeIterator::Decrement; names another function)
+008b1f00   MATCH            PASS   Decrement
+008b1f70   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@std@@QAEAAU01@XZ (catalog CRetailTreeIterator::Decrement; names another function)
+008b1f70   MATCH            PASS   Decrement
+008b1fe0   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@std@@QAEAAU01@XZ (catalog CRetailTreeIterator::Decrement; names another function)
+008b1fe0   MATCH            PASS   Decrement
+008b2400   MATCH            PASS   find
+008b2450   MATCH            PASS   find
+008b24a0   MATCH            PASS   find
+008b27d0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4ECombatSequenceIsValidType@@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceIsValidType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@2@@Z -> 008b1d40 labelled '_unattributed::FreeTree_CTreeOwner_008b1d40'
+008b27d0   RELOCATION_MATCH PASS   ~CRetailTree_erase008b1d40
+008b2860   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4ECombatSequenceOnStartModuleType@@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStartModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@Z -> 008b1d80 labelled '_unattributed::FreeTree_CTreeOwner_008b1d80'
+008b2860   RELOCATION_MATCH PASS   ~CRetailTree_erase008b1d80
+008b28f0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4ECombatSequenceOnStopModuleType@@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStopModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@Z -> 008b1dc0 labelled '_unattributed::FreeTree_CTreeOwner_008b1dc0'
+008b28f0   RELOCATION_MATCH PASS   ~CRetailTree_erase008b1dc0
+008b9f20   RELOCATION_MATCH PASS   Initialise
+008e31d0   RELOCATION_MATCH PASS   GetDef_008e31d0
+0090332e   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+  WARN leaf '~CAggregate_0090332e' matches no symbol in 0090332e.obj; graded the largest function
+  WARN leaf '~CAggregate_0090332e' matches no symbol in 0090332e.obj; graded the largest function
+0090332e   WARN STANDIN_LEAF ??1CAggregate_0090332e@@QAE@XZ (catalog _unattributed::~CAggregate_0090332e; address-only name)
+0090332e   RELOCATION_MATCH PASS   ~CAggregate_0090332e
+00915760   RELOCATION_MATCH PASS   GetEvent
+0091e750   WARN SHARED_HEADER_AVAILABLE C3DVector
+0091e750   WARN SHARED_HEADER_AVAILABLE CThing
+0091e750   WARN SHARED_HEADER_AVAILABLE CSoundPair
+0091e750   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0091e750   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091e750   RELOCATION_MATCH PASS   Update
+00922440   RELOCATION_MATCH PASS   GetEvent
+00938580   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00938580   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase
+00938580   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00938580   RELOCATION_MATCH PASS   IsSeatValid
+00938bf0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00938bf0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00938bf0   WARN RELOC_NAME: ?ForEachSeat@@YI?AUCAddFreeSeat@@UCSeatListIterator@@0U1@@Z -> 00938e90 labelled 'std::for_each<std::_List_iterator<CIntelligentPointer<CThing>, std::_Const_traits<CIntelligentPointer<CThing>>>, CAddFreeSeatToList>'
+00938bf0   RELOCATION_MATCH PASS   GetRandomFreeSeatInBuilding
+009613a0   WARN SHARED_HEADER_AVAILABLE CThing
+009613a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009613a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009613a0   WARN SHARED_HEADER_AVAILABLE CTCBoss
+009613a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+009613a0   WARN SHARED_HEADER_AVAILABLE CWorld
+009613a0   WARN RELOC_NAME: ?GetHitsThisPhase@CTCBoss@@QBEJXZ -> 007aed40 labelled 'CTCBoss::Getter_007aed40'
+009613a0   RELOCATION_MATCH PASS   CanLungeAtPlayer
+009614a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+009614a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009614a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditKingLunge
+009614a0   WARN RELOC_NAME: ?GetPPlayerManager@CAIStateGroup_BanditKingLunge@@QAEPAVCPlayerManager@@XZ -> 008fcf90 labelled 'CAIStateGroupBase::GetPlayerManager'
+009614a0   RELOCATION_MATCH PASS   IsRunnable
+009619c0   RELOCATION_MATCH PASS   CCreatureAction_BanditKingLunge
+00962990   RELOCATION_MATCH PASS   CCreatureAction_IceTrollIcicleAssaultInto
+00970590   WARN STANDIN_LEAF ?SetAtFailed@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ (catalog CAIStateGroup_CreatureUseCoverBase::SetFailedToFindCover; names another function)
+00970590   RELOCATION_MATCH PASS   SetFailedToFindCover
+00970b60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00970b60   WARN RELOC_NAME: ?SetUser@CTCCoverPoint@@QAEXPAVCThing@@@Z -> 0087c390 labelled '_unattributed::AssignTarget_0087c390'
+00970b60   RELOCATION_MATCH PASS   ClearCoverThing
+0097ccd0   WARN RELOC_NAME: ?SetAtFailed@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ -> 00970590 labelled 'CAIStateGroup_CreatureUseCoverBase::SetFailedToFindCover'
+0097ccd0   RELOCATION_MATCH PASS   Update
+009c80f0   RELOCATION_MATCH PASS   BeginLoading
+009c8220   RELOCATION_MATCH PASS   BeginLoadingGroup
+009c8700   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData
+009c8700   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009c8700   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+009c8700   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+009c8700   RELOCATION_MATCH PASS   BuildGroup
+009cc240   RELOCATION_MATCH PASS   GetEntryDataSize
+009cd740   WARN RELOC_NAME: ?Clear@CPackedUIntArray@@QAEXXZ -> 00a629d0 labelled 'CPackedUIntArray::~CPackedUIntArray'
+009cd740   RELOCATION_MATCH PASS   PackRuntimeData
+009cfb70   RELOCATION_MATCH PASS   PostInitEntries
+009d3d90   WARN RELOC_NAME: ??$__copy@PAVCRuntimeData@CBankFile@@PAV12@H@std@@YIPAVCRuntimeData@CBankFile@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z -> 009d1c30 labelled 'std::__copy<CBankFile::CRuntimeData*,CBankFile::CRuntimeData*,int>'
+009d3d90   RELOCATION_MATCH PASS   DeallocateMemory
+009d5260   RELOCATION_MATCH PASS   CBankFileAsyncEntry
+009d68b0   RELOCATION_MATCH PASS   Dtor_RestartReadsBase_009d68b0
+009f54d0   WARN SHARED_HEADER_AVAILABLE CJoystick
+009f54d0   WARN SHARED_HEADER_AVAILABLE CMouse
+009f54d0   WARN SHARED_HEADER_AVAILABLE CInputManager
+009f54d0   RELOCATION_MATCH PASS   SetEventsFromEventPackage
+009f63b0   MATCH            PASS   __copy_ptrs<CInputEvent*,CInputEvent*>
+009f65b0   RELOCATION_MATCH PASS   UninitCopy_CInputEvent_009f65b0
+009f65e0   RELOCATION_MATCH PASS   _M_allocate_and_copy
+009f6720   WARN STANDIN_LEAF ??$_Destroy@PAVCInputEvent@@@std@@YIXPAVCInputEvent@@0@Z (catalog _Destroy_Record34; names another function)
+009f6720   RELOCATION_MATCH PASS   _Destroy_Record34
+00a262b0   WARN SHARED_HEADER_AVAILABLE CResource
+00a262b0   WARN SHARED_HEADER_AVAILABLE CResourceList
+00a262b0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData
+00a262b0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00a262b0   RELOCATION_MATCH PASS   GetMesh
+00a5ef50   RELOCATION_MATCH PASS   InitStreamingEntry
+00a62120   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a62120   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a62120   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a62120   WARN RELOC_NAME: ??1CMemoryDataInputStream@@QAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00a62120   RELOCATION_MATCH PASS   CShaderBankEntry
+00a84160   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@_K_N@std@@U12@HV?$CKeyPairCompareLess@_K_N@@@std@@YIXPAU?$pair@_K_N@0@00HV?$CKeyPairCompareLess@_K_N@@@Z -> 00a83ab0 labelled 'std::__introsort_loop<std::pair<unsigned __int64, bool> *, std::pair<unsigned __int64, bool>, int, CKeyPairCompareLess<unsigned __int64, bool>>'
+00a84160   RELOCATION_MATCH PASS   Sort_SElement16_00a84160
+00ad7120   RELOCATION_MATCH PASS   CopyBackward_CElementB8_00ad7050_00ad7120
+00ad7b50   RELOCATION_MATCH PASS   UninitCopy_COptimisedVertex_00ad7b50
+00ad7b90   RELOCATION_MATCH PASS   UninitFillN_CElement184_00ad77f0_00ad7b90
+00af1360   RELOCATION_MATCH PASS   BeginLoading
+00b32300   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b32300   RELOCATION_MATCH PASS   InitialiseGlobalLights
+00cd20ce   RELOCATION_MATCH PASS   pair
+00cd28f4   MATCH            PASS   _M_lower_bound
+
+WINS: 66
+  004406d0 RELOCATION_MATCH ~vector<CConversation,std::??1?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@XZ
+  0047eee4 RELOCATION_MATCH CTCInGameMenu::?ConstructSaveGameFileDescription@CTCInGameMenu@@QAEXAAVCWideString@@J@Z
+  004b8940 RELOCATION_MATCH _global::??1?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@XZ
+  004e0122 RELOCATION_MATCH CTCThingOwner::?CTCThingOwner_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  004e1437 RELOCATION_MATCH CTCKraken::??1CTCKraken
+  004e3ee1 RELOCATION_MATCH CTCDExplosion::??1CTCDExplosion
+  006961f0 RELOCATION_MATCH _global::??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingCreatureBase@@@@@@YI_NABV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z
+  006c4430 RELOCATION_MATCH CTCFadeOutAndIn::?CTCFadeOutAndIn_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  007800b0 RELOCATION_MATCH CTCHeroGuide::OpenQuestSelectInterface
+  007bed60 MATCH _global::?IsAbleToBeDeflected@CTCShotDefinitionBase@NThingShot@@QBE_NXZ
+  00817280 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@W4EHitLocationCodelet@@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Select1st@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@U?$less@W4EHitLocationCodelet@@@3@V?$allocator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@2@@Z
+  00817320 MATCH CRetailTreeIterator::??F?$_Rb_tree_iterator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@2@@std@@QAEAAU01@XZ
+  00817740 MATCH CRetailTree_longkey::??$find@W4EHitLocationCodelet@@@?$_Rb_tree@W4EHitLocationCodelet@@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Select1st@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@U?$less@W4EHitLocationCodelet@@@3@V?$allocator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@2@@1@ABW4EHitLocationCodelet@@@Z
+  00817af0 RELOCATION_MATCH CRetailTree_erase00817280::??1CRetailTree_erase00817280@@QAE@XZ
+  008b1d40 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@W4ECombatSequenceIsValidType@@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceIsValidType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@2@@Z
+  008b1d80 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@W4ECombatSequenceOnStartModuleType@@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStartModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@Z
+  008b1dc0 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@W4ECombatSequenceOnStopModuleType@@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStopModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@Z
+  008b1f00 MATCH CRetailTreeIterator::??F?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@2@@std@@QAEAAU01@XZ
+  008b1f70 MATCH CRetailTreeIterator::??F?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@std@@QAEAAU01@XZ
+  008b1fe0 MATCH CRetailTreeIterator::??F?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@std@@QAEAAU01@XZ
+  008b2400 MATCH CRetailTree_longkey::??$find@W4ECombatSequenceIsValidType@@@?$_Rb_tree@W4ECombatSequenceIsValidType@@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceIsValidType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@2@@1@ABW4ECombatSequenceIsValidType@@@Z
+  008b2450 MATCH CRetailTree_longkey::??$find@W4ECombatSequenceOnStartModuleType@@@?$_Rb_tree@W4ECombatSequenceOnStartModuleType@@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStartModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@1@ABW4ECombatSequenceOnStartModuleType@@@Z
+  008b24a0 MATCH CRetailTree_longkey::??$find@W4ECombatSequenceOnStopModuleType@@@?$_Rb_tree@W4ECombatSequenceOnStopModuleType@@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStopModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@1@ABW4ECombatSequenceOnStopModuleType@@@Z
+  008b27d0 RELOCATION_MATCH CRetailTree_erase008b1d40::??1CRetailTree_erase008b1d40@@QAE@XZ
+  008b2860 RELOCATION_MATCH CRetailTree_erase008b1d80::??1CRetailTree_erase008b1d80@@QAE@XZ
+  008b28f0 RELOCATION_MATCH CRetailTree_erase008b1dc0::??1CRetailTree_erase008b1dc0@@QAE@XZ
+  008b9f20 RELOCATION_MATCH CCreatureAction_TeleportIn::?Initialise@CCreatureAction_TeleportIn@@UAEXXZ
+  008e31d0 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCSpecialAbilitiesThunderLightningStormDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesThunderLightningStormDef@@@@@Z
+  0090332e RELOCATION_MATCH _unattributed::~CAggregate_0090332e
+  00915760 RELOCATION_MATCH CTCEntityEvents::??$GetEvent@VCEventChildHurtGoToMother@NEntityEvents@@VCIsEventOfType@2@@CTCEntityEvents@@QBE_NPAPAVCEventChildHurtGoToMother@NEntityEvents@@ABVCIsEventOfType@2@@Z
+  0091e750 RELOCATION_MATCH CAIStateGroup_MinionMotherConsoleChild::Update
+  00922440 RELOCATION_MATCH CTCEntityEvents::??$GetEvent@VCEventExpressionPerformedTo@NEntityEvents@@VCIsEventOfType@2@@CTCEntityEvents@@QBE_NPAPAVCEventExpressionPerformedTo@NEntityEvents@@ABVCIsEventOfType@2@@Z
+  00938580 RELOCATION_MATCH CAIStateGroup_UsesSeat::?IsSeatValid@CAIStateGroup_UsesSeat@@IAE_NXZ
+  00938bf0 RELOCATION_MATCH CAIStateGroup_UsesSeat::?GetRandomFreeSeatInBuilding@CAIStateGroup_UsesSeat@@IBEPAVCThingObject@@AAVCThingBuilding@@@Z
+  009613a0 RELOCATION_MATCH CAIStateGroup_BanditKingLunge::?CanLungeAtPlayer@CAIStateGroup_BanditKingLunge@@IAE_NPAVCThing@@@Z
+  009614a0 RELOCATION_MATCH CAIStateGroup_BanditKingLunge::IsRunnable@CAIStateGroup_BanditKingLunge
+  009619c0 RELOCATION_MATCH CCreatureAction_BanditKingLunge::??0CCreatureAction_BanditKingLunge@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+  00962990 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAssaultInto::??0CCreatureAction_IceTrollIcicleAssaultInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+  00970590 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::?SetAtFailed@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ
+  00970b60 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::?ClearCoverThing@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ
+  0097ccd0 RELOCATION_MATCH CAIStateGroup_CreatureFindCover::?Update@CAIStateGroup_CreatureFindCover@@UAEXXZ
+  009c80f0 RELOCATION_MATCH NGameText::CDataBankGroupEntry::?BeginLoading@CDataBankGroupEntry@NGameText@@ABEXKAAVCDataBank@2@@Z
+  009c8220 RELOCATION_MATCH CDataBank::?BeginLoadingGroup@CDataBank@NGameText@@QBEXK@Z
+  009c8700 RELOCATION_MATCH NGameText::CDataBankGroupEntry::?BuildGroup@CDataBankGroupEntry@NGameText@@ABEXXZ
+  009cc240 RELOCATION_MATCH CBankFile::?GetEntryDataSize@CBankFile@@QBEKK@Z
+  009cd740 RELOCATION_MATCH CBankFile::?PackRuntimeData@CBankFile@@AAEXXZ
+  009cfb70 RELOCATION_MATCH CBankFile::PostInitEntries
+  009d3d90 RELOCATION_MATCH CArray<SElement12>::?DeallocateMemory@?$CArray@VCRuntimeData@CBankFile@@@@QAEXXZ
+  009d5260 RELOCATION_MATCH CBankFileAsyncEntry::CBankFileAsyncEntry
+  009d68b0 RELOCATION_MATCH _global::?AsyncUpdatePending@CBankFileAsync@@QAEXXZ
+  009f54d0 RELOCATION_MATCH CInputManager::SetEventsFromEventPackage
+  009f63b0 MATCH std::??$__copy_ptrs@PBVCInputEvent@@PAV1@@std@@YIPAVCInputEvent@@PBV1@0PAV1@ABU__false_type@0@@Z
+  009f65b0 RELOCATION_MATCH _global::??$__uninitialized_copy@PBVCInputEvent@@PAV1@@std@@YIPAVCInputEvent@@PBV1@0PAV1@ABU__false_type@0@@Z
+  009f65e0 RELOCATION_MATCH std::vector<CInputEvent>::??$_M_allocate_and_copy@PBVCInputEvent@@@?$vector@VCInputEvent@@V?$allocator@VCInputEvent@@@std@@@std@@IAEPAVCInputEvent@@IPBV2@0@Z
+  009f6720 RELOCATION_MATCH _global::??$_Destroy@PAVCInputEvent@@@std@@YIXPAVCInputEvent@@0@Z
+  00a262b0 RELOCATION_MATCH CPhysicsMeshInfo::GetMesh
+  00a5ef50 RELOCATION_MATCH CStreamingFontDataBank::InitStreamingEntry
+  00a62120 RELOCATION_MATCH CShaderBankEntry::CShaderBankEntry
+  00a84160 RELOCATION_MATCH _global::??$sort@PAU?$pair@_K_N@std@@V?$CKeyPairCompareLess@_K_N@@@std@@YIXPAU?$pair@_K_N@0@0V?$CKeyPairCompareLess@_K_N@@@Z
+  00ad7120 RELOCATION_MATCH _global::??$__copy_backward@PAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@H@std@@YIPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z
+  00ad7b50 RELOCATION_MATCH _global::??$__uninitialized_copy@PAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@@std@@YIPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@00ABU__false_type@0@@Z
+  00ad7b90 RELOCATION_MATCH _global::??$uninitialized_fill_n@PAVCOptimisedVertex@QuadricOptimiserInternals@@IV12@@std@@YIPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@IABV12@@Z
+  00af1360 RELOCATION_MATCH NParticleEngine::CEmitterData::?BeginLoading@CEmitterData@CParticleEmitterInfo@NParticleEngine@@QAEXXZ
+  00b32300 RELOCATION_MATCH CEnginePrimitiveRenderer::?InitialiseGlobalLights@CEnginePrimitiveRenderer@@AAEXXZ
+  00cd20ce RELOCATION_MATCH std::pair::??0?$pair@$$CBHVCCharString@@@std@@QAE@ABHABVCCharString@@@Z
+  00cd28f4 MATCH std::_Rb_tree<long, std::pair<const long, CCharString>, ...>::?_M_lower_bound@?$_Rb_tree@HU?$pair@$$CBHVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBHVCCharString@@@std@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHVCCharString@@@std@@@2@@std@@ABEPAU_Rb_tree_node_base@2@ABH@Z

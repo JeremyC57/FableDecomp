@@ -7,6 +7,10 @@
 // ~CBaseIntelligentPointer @ 0x00A01C10 (x5), CTCBase::~CTCBase @ 0x00686830 (tail jump).
 // Shape: reverse member order with the RETAIL offsets: the STLport lists are 4 bytes (PDB 12), so PBeamWeaponEffect sits at
 // +0x34 and Tentacles at +0x44 (PDB +0x3c / +0x4c); the CDefPointer release of PKrakenDef (+0x0c) is inlined last.
+// NF72 (round 7, q10902): the two ~list calls @ 0x004B8940 now bind the STLport
+//   ??1?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@XZ (ported this round): the local
+//   CThingPointerList became std::list<CIntelligentPointer<CThing> > from the shared stlport/fable_containers.h (LIST_DTOR_OUTOFLINE, the
+//   0x005A887D form), and the local CIntelligentPointer stand-in the shared engine/CIntelligentPointer.h (retail branch), which the list needs.
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #define FORCEINLINE FABLE_FORCEINLINE
@@ -40,25 +44,21 @@ struct CDefPointer {                        // CDefPointer<T>: the pointee's cou
     }
 };
 
-struct CIntelligentPointer {                // CIntelligentPointer<CThing>
-    void* __vftable;                        // +0x00
-    void* PData;                            // +0x04
-    ~CIntelligentPointer();                 // 0x00A01C10 (CBaseIntelligentPointer::~CBaseIntelligentPointer)
-};
-
-struct CThingPointerList {                  // STLport list<CIntelligentPointer<CThing> > (4 bytes)
-    void* Header;                           // +0x00
-    ~CThingPointerList();                   // 0x004B8940
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CIntelligentPointer<CThing>: vptr +0x0, PData +0x4; ~CBaseIntelligentPointer 0x00A01C10
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+#include "stlport/fable_containers.h"
+typedef std::list<CIntelligentPointer<CThing> > CThingPointerList;   // STLport list (4 bytes); ~list 0x004B8940
 
 class CTCKraken : public CTCBase { public:
     CDefPointer PKrakenDef;                 // +0x0c
-    CIntelligentPointer PChamber;           // +0x10
-    CIntelligentPointer PCentreMarker;      // +0x18
-    CIntelligentPointer PTarget;            // +0x20
-    CIntelligentPointer PHeadEffect;        // +0x28
+    CIntelligentPointer<CThing> PChamber;           // +0x10
+    CIntelligentPointer<CThing> PCentreMarker;      // +0x18
+    CIntelligentPointer<CThing> PTarget;            // +0x20
+    CIntelligentPointer<CThing> PHeadEffect;        // +0x28
     CThingPointerList ExplosionList;        // +0x30
-    CIntelligentPointer PBeamWeaponEffect;  // +0x34
+    CIntelligentPointer<CThing> PBeamWeaponEffect;  // +0x34
     long DelayBeforeBeam;                   // +0x3c
     void* PTCBoss;                          // +0x40
     CThingPointerList Tentacles;            // +0x44
