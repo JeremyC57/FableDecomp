@@ -14,3 +14,7 @@
   ported onto the shared headers with Ego_d's locals (0x00920DC0, 0x00B81820, 0x00867D20). Port first, diagnose second. Ego_d's debug
   length equals FableWin's /Od size, so it is a free size target for fwsize (use FW_EXTRA=/EHsc when the row has a destructible
   local). A class with no header may get a NEW header built from the Ego_d class record (layout cross-checked with Ego_r).
+- e04 (7/10 matched): start from the include and opt-in set of a LANDED row of the same TU (egod_tu.txt shows which are landed),
+  then add Ego_d's locals verbatim; three rows matched in 1-4 grades that way. Check the row's identity first: a catalog label can
+  be propagated (0x00C52C40 is libpk CCpuInfo code, not the engine method; Ego_d has nothing for libpk). Visible-body opt-ins with
+  noinline (GetDef / GetSubDef / __find / CBasicString::Compare) were needed where retail CALLS the helper.
