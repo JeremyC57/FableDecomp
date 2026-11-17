@@ -291,6 +291,14 @@ public:
     virtual NHeroInformationScreens::EScreenType GetScreenType() const;
     virtual bool IsInventoryScreen() const;
 #endif // FABLE_RETAIL_CTCINVENTORYMAP_HISCREEN
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_CLOSEINVENTORY
+// NF62 opt-in (2026-11-17, row 0x005FCE60): Ego_r.pdb / FableWin.pdb ?CloseInventory@CTCInventoryMap@@UAEXXZ (CTCInventoryMap vtable slot 31,
+// 0x01257B18 = 0x005FCE60; the override of NInventory::CTCInventoryBase::CloseInventory) and Ego_r.pdb ?ResetPrimitiveHandles@CTCInventoryMap@@QAEXXZ
+// (out of line at 0x005FC510, the landed row). Declarations only (no layout change; the vtable exists).
+public:
+    virtual void CloseInventory();                                       // slot 31 0x005FCE60
+    void ResetPrimitiveHandles();                                        // 0x005FC510
+#endif // FABLE_RETAIL_CTCINVENTORYMAP_CLOSEINVENTORY
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_MINIMAPMARKERS
  public:
  // Ego_r.pdb 0x00652B10 / FableWin.pdb 0x02093750 ?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z (retail 0x00603000).

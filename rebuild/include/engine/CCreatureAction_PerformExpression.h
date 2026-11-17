@@ -29,7 +29,14 @@ private:
  long ExtraData1;
  long ExtraData2;
 public:
+#ifdef FABLE_RETAIL_CCREATUREACTION_PERFORMEXPRESSION_INLINE_DTOR
+ // NF62 opt-in (2026-11-17, row 0x00713510 NTCScriptedControl::CActionPerformExpression::Update): no user-declared destructor, so
+ // ??1CCreatureAction_PerformExpression@@UAE@XZ (FableWin.pdb; not in the Ego_r.pdb name set) is the implicit virtual one. Retail expands it for the
+ // SetCurrentAction temporary in that TU (0x0071359C ~CIntelligentPointer 0x00A01C10 on PPerformToThing, the def pointer released in
+ // place, ~CCreatureActionBase 0x00693EF0); other TUs call the out-of-line COMDAT copy 0x00718D50. No layout or vtable change.
+#else
  virtual ~CCreatureAction_PerformExpression();
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PerformExpression)==200);
 #endif

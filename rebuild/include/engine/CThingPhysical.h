@@ -51,6 +51,15 @@ public:
     CThingPhysical(unsigned long type);                                  // 0x005296B0
 #endif
     const C3DVector& PeekPos() const;
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_CONSTRUCTFROMPARAMS
+    // NF62 opt-in (2026-11-17, row 0x006A5950): Ego_r.pdb ?ConstructFromParams@CThingPhysical@@IAE_NJABVC3DVector@@JKPAV1@1_N@Z (protected),
+    // out of line at 0x006A5950 (`ret 1Ch`; CThingGameObject::ConstructFromParams 0x008388D0 calls it qualified). Needs
+    // FABLE_RETAIL_CTHING_CONSTRUCTFROMPARAMS (the CThing overload it calls). Declaration only.
+protected:
+    bool ConstructFromParams(long defIndex, const C3DVector& pos, long player, unsigned long a4, CThingPhysical* originalCreator,
+                             CThingPhysical* lastCreator, bool addToMap);   // 0x006A5950
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_ISINRANGE
     // Retail opt-in (wf8, row 0x0091B3A0 CAIStateGroup_SeekPerceivedThing::RunToPerceivedThingPosition): Ego_r.pdb / FableWin.pdb
     // ?IsInRange@CThingPhysical@@QBE_NABVC3DVector@@M@Z (public const), out of line in retail at 0x006A4DF0 (landed row).

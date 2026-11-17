@@ -65,6 +65,11 @@ public: void RenderErrorMessage(CIEngine&);                          // 0x0041D0
 // Chunk 752 (row 0x00559A90 CScrollBar::ProcessEvent): Ego_r.pdb ?GetMouseMovement@CManager@NUISystem@@QAEAAVC2DVector@@XZ, inline
 // in retail (the row copies MouseMovement +0xB0 in place: `mov edx,[eax+0B0h] ; add eax,0B0h ; ... mov eax,[eax+4]`).
 public: C2DVector& GetMouseMovement() { return MouseMovement; }
+#ifdef FABLE_RETAIL_CMANAGER_SETMOUSEMOVEMENT
+// Opt-in (NF62, row 0x00691AE0 CInputProcessPhotojournalCapture::ProcessInput): Ego_r.pdb ?SetMouseMovement@CManager@NUISystem@@QAEXAAVC2DVector@@@Z,
+// inline in retail (0x00691BD3 stores MouseMovement +0xB0 / +0xB4 in place).
+public: void SetMouseMovement(C2DVector& movement) { MouseMovement = movement; }
+#endif
 // Chunk 752 (row 0x00554740 CMorphingSprite::Draw): Ego_r.pdb ?GetGraphicsBank@CManager@NUISystem@@QAE?AV?$CCountedPointer@
 // VCGraphicDataBank@@@@XZ, inline in retail (the row copies PGraphicsBank +0x10 / +0x14 in place and bumps the count).
 public: CCountedPointer<CGraphicDataBank> GetGraphicsBank() { return PGraphicsBank; }

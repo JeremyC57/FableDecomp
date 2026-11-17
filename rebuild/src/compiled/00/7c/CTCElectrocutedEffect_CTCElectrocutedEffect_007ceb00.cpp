@@ -1,192 +1,55 @@
-// CTCElectrocutedEffect::CTCElectrocutedEffect(CThing* thing) -- constructor: CTCBase, a null def, zero timers, a null effect pointer and an empty tint list; load SPECIAL_ABILITIES_ELECTROCUTED_EFFECT_DEF, collect the things the owner carries into the tint list, then reset the effect
+// CTCElectrocutedEffect::CTCElectrocutedEffect(CThing& thing) -- constructor: CTCBase, a null def, zero timers, a null effect pointer and an empty tint list; load SPECIAL_ABILITIES_ELECTROCUTED_EFFECT_DEF, copy the things the parent carries into TintList, then Reset
 // Leaf: ??0CTCElectrocutedEffect@@QAE@AAVCThing@@@Z
-// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCElectrocutedEffect@@QAE@AAVCThing@@@Z).
-// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007CEB00, 297 bytes (+ int3 padding), `ret 4`; vtable 0x0126F044.
-// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800; CBaseIntelligentPointer ctor / SetPItem @ 0x00A01B10 / 0x00A01B90
-//   (CIntelligentPointer<CThing> vtable 0x01238C6C); CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0;
-//   CGameDefinitionManager::Get @ 0x0044C6B0 (__fastcall, twice); CDefinitionManager::GetGlobalIndexFromClassIndex(const
-//   CCharString&, long) const @ 0x009AD390; CDefinitionManager::GetDef<CSpecialAbilitiesElectrocutedEffectDef>(long,
-//   CDefPointer*) const @ 0x007CEC90; CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (interface 0x46 =
-//   CTCCarrying); the carried-things collector (vector<CThing*>&) @ 0x006A2220; vector<CIntelligentPointer<CThing> >::reserve
-//   @ 0x0077E580; the STLport random-access __copy into a back_insert_iterator @ 0x007CE1F0 (hidden result in ecx, first in
-//   edx, the rest on the stack: modelled `__fastcall`); free @ 0x00BFEA14; CTCElectrocutedEffect::Reset @ 0x007CE7A0.
-// Layout = Ego_r.pdb CTCElectrocutedEffect (retail 12-byte vector): PDef +0x0c, CurTime +0x10, FadeInTime +0x14,
-//   FadeOutTimeStart +0x18, FadeOutTime +0x1c, PEffect (CIntelligentPointer<CThing>) +0x20, TintList
-//   (vector<CIntelligentPointer<CThing> >) +0x28.
-// Shape: the landed CTCForcePushPower ctor 0x007A54A0 pattern (init list sharing the ebx zero, the def name a named
-//   CCharString homed in the dead `thing` slot, the index a named local); the carried things come in a local
-//   vector<CThing*> (zeroed after the lookup, freed by its inline destructor); `copy(begin, end, back_inserter(TintList))`
-//   inlines to the __copy call with the iterator-category temporary and a null distance pointer.
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x007CEB00, 297 bytes, `ret 4`; vtable 0x0126F044.
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800; CIntelligentPointer<CThing>(0) (base ctor 0x00A01B10, vtable 0x01238C6C, SetPItem 0x00A01B90);
+//   CCharString(const char*, long) 0x0099EBF0 / ~ 0x0099EAE0; CGameDefinitionManager::Get 0x0044C6B0 (twice); GetGlobalIndexFromClassIndex
+//   0x009AD390; GetDef<CSpecialAbilitiesElectrocutedEffectDef> 0x007CEC90; the inline GetTC<CTCCarrying> (bitset +0x28 bit 6, LowerBound
+//   0x0040F020); CTCCarrying::GetAllCarriedThings 0x006A2220; vector<CIntelligentPointer<CThing> >::reserve 0x0077E580; the random-access
+//   __copy<CThing**, back_insert_iterator<..>, int> 0x007CE1F0 (__fastcall); free 0x00BFEA14; Reset 0x007CE7A0.
+// NF62 (2026-11-17): ported onto engine/CTCElectrocutedEffect.h (ELECTROCUTED_ORIGINAL_PASS23) / CThing.h (GETTC_EXPANDED) / CTCCarrying.h
+//   (ALLCARRIED) / CGameDefinitionManager.h / CIntelligentPointer.h / stlport vector + back_inserter + copy (overlay opt-in
+//   FABLE_RETAIL_STLP_COPY_GENERIC_INLINE: STLport's inline copy() dispatching to the out-of-line __copy); every local model deleted. The
+//   reserve and __copy bindings are queue entries q10457 / q10458.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CTCBASE
-#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
-#include "fable_compiler.h"
-void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-class CThing;
-class CTCBase;
-class CBaseObject;
-extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length);         // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {        // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer(T* item = 0) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
-template <class P> struct CAllocProxy {                // STLport _STLP_alloc_proxy: the end-of-storage pointer with its own ctor
-    P _M_data;
-    CAllocProxy(P v) : _M_data(v) { }
-};
-struct CThingPointerVector {                            // STLport vector<CIntelligentPointer<CThing> > (12 bytes)
-    CIntelligentPointer<CThing>* _M_start;
-    CIntelligentPointer<CThing>* _M_finish;
-    CAllocProxy<CIntelligentPointer<CThing>*> _M_end_of_storage;
-    CThingPointerVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    void reserve(unsigned long n);                      // 0x0077E580
-};
-struct CThingVector {                                   // STLport vector<CThing*> (12 bytes)
-    CThing** _M_start;
-    CThing** _M_finish;
-    CThing** _M_end_of_storage;
-    CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CThingVector() { if (_M_start) free(_M_start); }
-    unsigned long size() const { return _M_finish - _M_start; }
-};
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-struct CBackInserter {                                  // back_insert_iterator<vector<CIntelligentPointer<CThing> > >
-    CThingPointerVector* container;
-    explicit CBackInserter(CThingPointerVector& v) : container(&v) { }
-};
-CBackInserter __fastcall __copy(CThing** first, CThing** last, CBackInserter result,
-                                const random_access_iterator_tag&, int*);   // 0x007CE1F0
-long TmplSink_s7_0(const void* self, long seen);   // stand-in: the work __copy does (outside the bytes graded here)
-#pragma auto_inline(off)
-// Same-TU stand-in for the __copy instantiation (template bodies are compiled in the caller's TU): reads the const-reference
-// arguments (not the empty tags), stores the out pointers, lets no argument escape.
-__declspec(noinline) CBackInserter __fastcall __copy(CThing** first, CThing** last, CBackInserter result, const random_access_iterator_tag& p3, int* p4)
-{
-    for (long n = long(last - first); n > 0; --n, ++first)
-        TmplSink_s7_0(result.container, (long)*first);   // stand-in for *result = *first (push_back of a new intelligent pointer)
-    return result;
-}
-#pragma auto_inline(on)
-inline CBackInserter copy(CThing** first, CThing** last, CBackInserter result)
-{
-    return __copy(first, last, result, random_access_iterator_tag(), (int*)0);
-}
-class CDefPointeeBase;
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-};
-class CSpecialAbilitiesElectrocutedEffectDef;
-class CDefinitionManager { public:
-    long GetGlobalIndexFromClassIndex(const CCharString& className, long classIndex) const;   // 0x009AD390
-    bool GetDef(long index, CDefPointer<const CSpecialAbilitiesElectrocutedEffectDef>* out) const;   // 0x007CEC90
-};
-void* FindDef_s7r_0();
-long TmplSink_s7_1(const void* self, long seen);   // stand-in: the work FindDef_s7r_0 does (outside the bytes graded here)
-#pragma auto_inline(off)
-// Same-TU stand-in for the FindDef_s7r_0 instantiation (template bodies are compiled in the caller's TU): reads the const-reference
-// arguments (not the empty tags), stores the out pointers, lets no argument escape.
-__declspec(noinline) void* FindDef_s7r_0()
-{
-    long r = TmplSink_s7_1(0, 0);
-    return (void*)r;
-}
-#pragma auto_inline(on)
-#pragma auto_inline(off)
-// Same-TU body of GetDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
-// CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-__declspec(noinline) bool CDefinitionManager::GetDef(long p0, CDefPointer<const CSpecialAbilitiesElectrocutedEffectDef>* out) const
-{
-    void* def = FindDef_s7r_0();
-    if (!def)
-        return false;
-    void* old = *(void**)out;
-    if (old != def) {
-        if (old)
-            ReleaseDef_s7(old);
-        *(void**)out = def;
-    }
-    return true;
-}
-#pragma auto_inline(on)
-class CGameDefinitionManager : public CDefinitionManager { public:
-    static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CTCCarrying { public:                                    // interface 0x46
-    void GetCarriedThings(CThingVector& things);        // 0x006A2220
-};
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
-    {
-        long type = wanted;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-};
-class CTCElectrocutedEffect : public CTCBase {          // vtable 0x0126F044
-public:
-    CDefPointer<const CSpecialAbilitiesElectrocutedEffectDef> PDef;   // +0x0c
-    long CurTime;                                       // +0x10
-    long FadeInTime;                                    // +0x14
-    long FadeOutTimeStart;                              // +0x18
-    long FadeOutTime;                                   // +0x1c
-    CIntelligentPointer<CThing> PEffect;                              // +0x20
-    CThingPointerVector TintList;                       // +0x28
-    void Reset();                                       // 0x007CE7A0
-    CTCElectrocutedEffect(CThing& thing);
-};
-long NearSink_s7_0(const void* self, long seen);   // stand-in: the work Reset does outside this TU
-#pragma auto_inline(off)
-// Same-TU stand-in for CTCElectrocutedEffect::Reset @ 0x007CE7A0 (compiled in retail's TU): reads its const reference / pointer-to-const
-// arguments, updates its out-parameters, and lets no argument escape.
-__declspec(noinline) void CTCElectrocutedEffect::Reset()
-{
-    NearSink_s7_0(this, 0);
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCCARRYING_ALLCARRIED
+#define FABLE_RETAIL_ELECTROCUTED_ORIGINAL_PASS23
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_STLP_BACK_INSERTER
+#define FABLE_RETAIL_STLP_COPY_GENERIC_INLINE
+#define FABLE_RETAIL_STLP_ORIGINAL_COPY_DISPATCH_PASS22
+#define FABLE_RETAIL_STLP_COPY_NOINLINE
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/CTCCarrying.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CTCElectrocutedEffect.h"
 
 CTCElectrocutedEffect::CTCElectrocutedEffect(CThing& thing)
-    : CTCBase(thing), CurTime(0), FadeInTime(0), FadeOutTimeStart(0), FadeOutTime(0)
+    : CTCBase(thing), CurTime(0), FadeInTime(0), FadeOutTimeStart(0), FadeOutTime(0), PEffect(0)
 {
-    long index;
+    long def_index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex("SPECIAL_ABILITIES_ELECTROCUTED_EFFECT_DEF", 1);
+    CGameDefinitionManager::Get().GetDef(def_index, &PDef);
+    CTCCarrying* carrying;
+    if (GetParentThing().GetTC(&carrying))
     {
-        CCharString name("SPECIAL_ABILITIES_ELECTROCUTED_EFFECT_DEF", -1);
-        index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(name, 1);
-    }
-    CGameDefinitionManager::Get().GetDef(index, &PDef);
-    if (ParentThing->HasTC(0x46)) {
-        CTCCarrying* carrying = ParentThing->GetTC<CTCCarrying>(0x46);
-        CThingVector things;
-        carrying->GetCarriedThings(things);
+        std::vector<CThing*> things;
+        carrying->GetAllCarriedThings(things);
         TintList.reserve(things.size());
-        __copy(things._M_start, things._M_finish, CBackInserter(TintList), random_access_iterator_tag(), (int*)0);
+        std::copy(things.begin(), things.end(), std::back_inserter(TintList));
     }
     Reset();
 }

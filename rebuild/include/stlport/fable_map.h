@@ -127,6 +127,14 @@ struct _Rb_tree_base_iterator {
 template<class V,class Traits>struct _Rb_tree_iterator:public _Rb_tree_base_iterator {
     typedef typename Traits::reference reference;
     typedef typename Traits::pointer pointer;
+#ifdef FABLE_RETAIL_STLP_TREE_ITERATOR_TRAITS
+    // NF62 opt-in (row 0x006C7370 CTCHeroOpinionDeedLog::OnSerialise, a map range through std::copy): the STLport 4.6 _tree.h iterator
+    // typedefs (value_type here; iterator_category / difference_type on _Rb_tree_base_iterator) that iterator_traits<I> reads for the
+    // __copy_aux dispatch. Typedefs only: no layout or code change.
+    typedef V value_type;
+    typedef bidirectional_iterator_tag iterator_category;
+    typedef ptrdiff_t difference_type;
+#endif
     _Rb_tree_iterator(){_M_node=0;}
     _Rb_tree_iterator(_Rb_tree_node<V>* p){_M_node=p;}
     _Rb_tree_iterator(const _Rb_tree_iterator<V,_Nonconst_traits<V> >& p){_M_node=p._M_node;}

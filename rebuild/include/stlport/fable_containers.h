@@ -195,6 +195,14 @@ template<class I,class O,class D> inline O __copy(I first,I last,O result,const 
     for(;first!=last;++result,++first) *result=*first; return result;
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_COPY_INPUT_NOINLINE
+// Per-TU opt-in (NF62, row 0x006C7370 CTCHeroOpinionDeedLog::OnSerialise): STLport 4.6 _algobase.h __copy for input iterators, kept
+// out of line as retail calls it (0x006C9B70, `__fastcall`: hidden result in ecx, the two tree iterators by value, the tag reference
+// and the (int*)0 distance pushed) for a map range copied into a back_insert_iterator. Not with FABLE_RETAIL_STLP_VECTOR_RANGE_INSERT.
+template<class I,class O,class D> __declspec(noinline) O __fastcall __copy(I first,I last,O result,const input_iterator_tag&,D*) {
+    for(;first!=last;++result,++first) *result=*first; return result;
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_COPY_NOINLINE
 // Per-TU opt-in (row 0x00956060 CAIStateGroup_MazeTutorialBattleTeleport::Update): that TU calls the random-access __copy COMDAT
 // (0x0074CA20, landed) from all three inline vector::erase bodies instead of expanding it; the body stays visible, kept out of line.
@@ -1762,7 +1770,18 @@ public:
     back_insert_iterator<_Container> operator++(int) { return *this; }
 };
 template<class _Container> inline back_insert_iterator<_Container> back_inserter(_Container& x) { return back_insert_iterator<_Container>(x); }
+#ifdef FABLE_RETAIL_STLP_COPY_GENERIC_INLINE
+// Per-TU opt-in (NF62, rows 0x007CDFE0 CTCBurntEffect / 0x007CEB00 CTCElectrocutedEffect constructors): STLport 4.6 _algobase.h copy() with
+// its body -- `return __copy_aux(first, last, result, _BothPtrType<I,O>::_Ret());`, inline -- in place of the out-of-line declaration
+// in the #else arm; a CThing** range into a back_insert_iterator<vector<CIntelligentPointer<CThing> > > then reaches the random-access __copy
+// instance out of line (0x007CE1F0, __fastcall, hidden result in ecx, first in edx, the tag and the (int*)0 distance pushed).
+// Needs FABLE_RETAIL_STLP_ORIGINAL_COPY_DISPATCH_PASS22 (__copy_aux) and FABLE_RETAIL_STLP_COPY_NOINLINE (__copy kept out of line).
+template<class _InputIter,class _OutputIter> inline _OutputIter copy(_InputIter first,_InputIter last,_OutputIter result) {
+    return __copy_aux(first,last,result,_BothPtrType<_InputIter,_OutputIter>::_Ret());
+}
+#else
 template<class _InputIter,class _OutputIter> _OutputIter __fastcall copy(_InputIter first,_InputIter last,_OutputIter result);
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_SORT_INTERNALS
 // Per-TU opt-in (chunk 892, rows 0x00807250 __unguarded_partition and 0x00808AA0 __linear_insert, the first-person targeting

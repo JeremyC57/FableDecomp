@@ -13,6 +13,11 @@ public:
     CRedefinerList(long);
     CRedefinerList(const CRedefinerList&);
     virtual ~CRedefinerList();
+#ifdef FABLE_RETAIL_CREDEFINERLIST_CANCEL
+    // NF62 opt-in (2026-11-17, row 0x00587847 CTCInventory::ClosePCInventory): Ego_r.pdb ?Cancel@CRedefinerList@NUISystem@@SIXXZ (public static
+    // __fastcall), out of line at 0x00556470 (the landed row). Declaration only.
+    static void __fastcall Cancel();                                // 0x00556470
+#endif
 #ifdef FABLE_RETAIL_CREDEFINERLIST_SETACCEPTBUTTON
     // Opt-in (chunk 880, row 0x0058AF10): ?SetAcceptButton@CRedefinerList@NUISystem@@QAEXPAVCComponent@2@@Z (Ego_r.pdb, public,
     // non-virtual), out of line in retail at 0x00556570 (`mov eax,[esp+4] ; mov [ecx+18Ch],eax ; ret 4`: PAcceptButton +0x18C).

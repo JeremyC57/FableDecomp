@@ -10,6 +10,12 @@
 #include "rebuild_abi.h"
 
 #if defined(FABLE_RETAIL_CGAMECAMERAMANAGER_FULL)
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_BUILDINGMODE
+// Opt-in (NF62, row 0x0069AD10): Ego_r.pdb ?GetPBuildingThingOccupying@NCameraModes@@YIPBVCThingBuilding@@ABVCThing@@@Z (retail 0x006989D0,
+// __fastcall, the thing in ecx). Declaration only.
+class CThing; class CThingBuilding;
+namespace NCameraModes { const CThingBuilding* __fastcall GetPBuildingThingOccupying(const CThing& thing); }   // 0x006989D0
+#endif
 // Retail opt-in (chunk 2033, row 0x0069AE80 CGameCameraManager::CGameCameraManager): the whole class with every member typed as
 // Ego_r.pdb types it (struct_layouts_egor.tsv names and order) over the retail STLport 4.6 containers (list 4, vector / map 0xC),
 // sizeof 0x160. Offsets proven by the constructor's stores: Camera +0x04 (CCamera ctor 0x00A0C130), OldCamera +0x3C (copy ctor
@@ -57,6 +63,17 @@ public:
     virtual void SetMainThing(const CThingCreatureBase* thing);          // 27 0x00697C10
     virtual void SetViewThing(const CThingGameObject* thing);            // 28 0x006976F0
     void SetCameraManagerSetDef(const CDefPointer<const CCameraManagerSetDef>& def);   // 0x0069AC90
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_BUILDINGMODE
+    // Opt-in (NF62, row 0x0069AD10): Ego_r.pdb ?PushBuildingCameraMode@CGameCameraManager@@QAEXXZ (retail 0x0069AD10),
+    // ?PushCombatCameraMode@CGameCameraManager@@QAEXXZ (retail 0x0069A8B0: the melee camera def through SetCameraManagerDef, then
+    // ObservedThingInMelee = true) and the private const ?IsObservedThingInMelee@CGameCameraManager@@ABE_NXZ (retail 0x006994F0).
+    // Declarations only.
+    void PushBuildingCameraMode();                                       // 0x0069AD10
+    void PushCombatCameraMode();                                         // 0x0069A8B0
+private:
+    bool IsObservedThingInMelee() const;                                 // 0x006994F0
+public:
+#endif
 private:
     void SetCameraManagerDef(const CDefPointer<const CCameraManagerDef>& def);         // 0x0069A850 (Ego_r.pdb AAE: private)
 public:

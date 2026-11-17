@@ -1,207 +1,93 @@
-// CTCInventoryTrade::CloseInventoryPC() -- closes the PC trade screen: empties the special categories, closes the base view, deletes every UI component, clears the buy/sell maps, notifies the front end, re-enables the HUD, stamps the world's close frame, restores the sound categories, resets the player's GUI state, re-checks sold wielded weapons and clears the open flags
-// Leaf: ?CloseInventoryPC@CTCInventoryTrade@@QAEXXZ
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
-// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
-//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x0059E2C7, 528 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (RefreshCategory -> SetGainFader slot 46).
-// Callees: 0x0059D9AD (RemoveAllItemsFromCategory 0x0059CF49 for categories 12 and 11; name descriptive; manifest
-// "CMemoryAllocator::ClearPerformanceStats" is propagated), CTCInventoryBase::CloseInventory @ 0x005BD597 (manifest
-// "CCategory::SetQuestPersistentFlagForItems" is propagated), CTCInventoryTrade::DeleteComponents @ 0x0059C8AE, the
-// Components erase(first, last) @ 0x00485AA7, the CComponent-pair map clear @ 0x005B1C18 (ItemsToBuy/ItemsToSell; manifest
-// "CTCCarryable::OnKill" propagated), NUISystem::CManager::GetInstance @ 0x0041E5F2 and its slots 6/29/37/40/42 (names unknown),
-// the global front-end node list @ 0x013B8A98 clear @ 0x004855A3, the main game component (0x013B86A0) chain +0x28 -> +0x2C
-// slots 76 (+0x130, SetEnabled) and 56 (+0xE0), CTCBase::GetWorld @ 0x00686A70, GetWorldFrame @ 0x0049D870,
-// CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0, the sound system (0x013B8394) slot 46 SetGainFader,
-// std::bitset::test @ 0x00410DE0 + CVectorMap::LowerBound @ 0x0040F020 (inline GetInterface, type 0x13),
-// CTCInventoryWeapons::CheckForSoldWieldedWeapons @ 0x005CB780.
-// Shape: the component loop and clear() are the landed ~CTCInventoryTrade (0x0059EC48) form; the volume argument is an inline
-// profile accessor (`flag ? custom : default`, re-fetching Get() per call); the world is a named local so GetWorld runs
-// before GetWorldFrame; the front-end slot 42 returns a counted pointer by value, released through an inline
-// `--RefCount == 0 -> DeleteThis()` member on the data (`mov ecx,eax ; add eax,4 ; dec [eax]`), the release forceinlined.
-// Layout: retail CTCInventoryTrade (see the landed dtor): Components +0x0C, ItemsToBuy/ItemsToSell +0x144/+0x150,
-// InventoryTradeOpen/InventoryTradeInitialised +0x218/+0x219; engine/CTCInventoryTrade.h is the PDB-flattened layout, so
-// the class is modelled locally.
-#include "fable_compiler.h"
+// CTCInventoryTrade::CloseInventoryPC() -- closes the PC trade screen: resets the trade lists, closes the base view, deletes the trade components and every UI component, clears the buy / sell maps, clears the UI manager's observers, action params, previous-selection stack and bastard child, restarts 3D scene rendering, restores the sound groups, plays the exit sound checks the weapons screen for sold wielded weapons and clears the open / initialised flags
+// Leaf: ?CloseInventoryPC@CTCInventoryTrade@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0059E2C7, plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+//   Identity: Ego_r.pdb / FableWin.pdb ?CloseInventoryPC@CTCInventoryTrade@@UAEXXZ; CTCInventoryTrade vtable 0x01253034 slot 87 (+0x15C) = 0x0059E2C7.
+// NF62 (2026-11-17, round 7): whole-row port onto the shared headers (the local CTCInventoryTrade / NInventory::CTCInventoryBase / CTCBase /
+//   CThing / NUISystem::CManager / CPlayerGui / CUserProfileManager / CMainGameComponent / CWorld models and the CComponentVector /
+//   CComponentPairMap / node-list / player-pointer stand-ins are gone). Callees, retail -> shared spelling:
+//   ResetTradeLists 0x0059D9AD; NInventory::CTCInventoryBase::CloseInventory 0x005BD597 (qualified;
+//   was the stand-in BaseCloseInventory); DeleteComponents 0x0059C8AE; vector<CComponent*>::erase 0x00485AA7; ItemsToBuy / ItemsToSell tree clear 0x005B1C18;
+//   NUISystem::CManager slots 6 ClearObservers / 29 ClearActionParams / 37 ClearBastardChild around the
+//   NUISystem::CList::GPreviousSelected (0x013B8A98) clear 0x004855A3; CIEngine slot 76 Enable3DSceneRendering / slot 56 CutscenePreload;
+//   CWorld::SetAsStarting3DRendering (inline: CTCBase::GetWorld 0x00686A70, CWorld::GetFrame 0x0049D870); CUserProfileManager::Get
+//   0x0040D2A0 + inline GetSoundVolume / GetDialogueVolume; PSoundManager SetGainFader (slot 46); GetMiscThingsDef (slot 42) +
+//   PlaySoundW (slot 40) with SoundExit +0x1A8; CThing::GetTC (0x00410DE0 / 0x0040F020) and CTCInventoryWeapons::CheckForSoldWieldedWeapons
+//   0x005CB780; InventoryTradeOpen +0x218 / InventoryTradeInitialised +0x219 cleared.
+// Header: overlay opt-in FABLE_RETAIL_CTCINVENTORYTRADE_CLOSEINVENTORY (the two virtual declarations).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-namespace NUISystem {
-class CComponent { public:
-    virtual ~CComponent();
-};
-}
-struct CComponentVector {
-    NUISystem::CComponent** _M_start;
-    NUISystem::CComponent** _M_finish;
-    NUISystem::CComponent** _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-    NUISystem::CComponent*& operator[](unsigned long i) { return _M_start[i]; }
-    NUISystem::CComponent** begin() { return _M_start; }
-    NUISystem::CComponent** end() { return _M_finish; }
-    void erase(NUISystem::CComponent** first, NUISystem::CComponent** last);   // 0x00485AA7
-    void clear() { erase(begin(), end()); }
-};
-struct CComponentPairMap {
-    void* _M_header; unsigned long _M_node_count; long _M_key_compare;
-    void clear();                                    // 0x005B1C18
-};
-struct CRefCounted {
-    virtual void v0();
-    virtual void DeleteThis();                       // slot 1 (+0x04)
-    long RefCount;                                   // +0x04
-    void Release() { if (--RefCount == 0) DeleteThis(); }
-};
-struct CPlayerData : CRefCounted {
-    unsigned char _pad08[0x1a8 - 0x08];
-    long SomeState;                                  // +0x1a8
-};
-struct CPlayerPtr {
-    CPlayerData* Data;
-    FABLE_FORCEINLINE ~CPlayerPtr() { if (Data) Data->Release(); }
-};
-namespace NUISystem { class CManager { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void Slot6();                            // +0x18
-    virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
-    virtual void Slot29();                           // +0x74
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void v36();
-    virtual void Slot37();                           // +0x94
-    virtual void v38(); virtual void v39();
-    virtual void Slot40(long* state, bool b);        // +0xA0
-    virtual void v41();
-    virtual CPlayerPtr Slot42();                     // +0xA8
-    static CManager* __fastcall GetInstance();   // 0x0041E5F2
-}; }
-struct CNodeList {
-    void* m_pHead;
-    void clear();                                    // 0x004855A3
-};
-extern CNodeList g_frontEndNodeList;                 // 0x013B8A98
-struct CHudOwner {
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
-    virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
-    virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53();
-    virtual void v54(); virtual void v55();
-    virtual void Slot56(long a, long b);             // +0xE0
-    virtual void v57(); virtual void v58(); virtual void v59();
-    virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65();
-    virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71();
-    virtual void v72(); virtual void v73(); virtual void v74(); virtual void v75();
-    virtual void SetEnabled(bool enabled);           // slot 76 (+0x130)
-};
-struct CWorldPart {
-    unsigned char _pad_0x00[0x2c];
-    CHudOwner* Hud;                                  // +0x2c
-};
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char _pad_0x00[0x28];
-    CWorldPart* World;                               // +0x28
-};
-#include "engine/CASoundManager.h"
-class CUserProfileManager { public:
-    unsigned char _pad00[0x0c];
-    bool  UseCustomVolumes;                          // +0x0c
-    unsigned char _pad0d[0x24 - 0x0d];
-    float SFXVolume;                                 // +0x24
-    unsigned char _pad28[0x2c - 0x28];
-    float MusicVolume;                               // +0x2c
-    unsigned char _pad30[0xe4 - 0x30];
-    float CustomSFXVolume;                           // +0xe4
-    unsigned char _pade8[0xec - 0xe8];
-    float CustomMusicVolume;                         // +0xec
-    float GetSFXVolume() const { return UseCustomVolumes ? CustomSFXVolume : SFXVolume; }
-    float GetMusicVolume() const { return UseCustomVolumes ? CustomMusicVolume : MusicVolume; }
-    static CUserProfileManager& __fastcall Get();    // 0x0040D2A0
-};
-class CWorld { public:
-    unsigned char _pad00[0x8c];
-    long InventoryClosedFrame;                       // +0x8c
-
-public:
-    static long __fastcall GetFrame();   // 0x0049D870
-};
-                     // 0x0049D870
-class CTCInventoryWeapons { public:
-    void CheckForSoldWieldedWeapons();               // 0x005CB780
-};
-#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
-#include "engine/CVectorMap.h"
-class CTCBase;
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
+#define FABLE_RETAIL_CTCINVENTORYTRADE
+#define FABLE_RETAIL_CTCINVENTORYTRADE_CLOSEINVENTORY
+#define FABLE_RETAIL_CTCINVENTORYWEAPONS_METHODS
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_CLIST
+#define FABLE_RETAIL_CMANAGER
+#define FABLE_RETAIL_CMANAGER_MENUCOUNT
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_DISPLAYENGINE
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CDISPLAYENGINE_GET3DENGINE
+#define FABLE_RETAIL_CIENGINE
+#define FABLE_RETAIL_CINITBASECLASS
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_QUESTCOMPLETIONUI
+#define FABLE_RETAIL_CUSERPROFILEMANAGER_VOLUME
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/ETCInterfaceType.h"
 #include "engine/CThing.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CTCBase
-{
-protected:
-    CWorld& GetWorld() const;   // 0x00686A70
-};
-namespace NInventory {
-class CTCInventoryBase : public CTCBase
-{
-public:
-};
-}
-
-class CTCInventoryTrade : public NInventory::CTCInventoryBase { public:
-    void*            __vftable;                      // +0x00
-    CThing*          ParentThing;                    // +0x04
-    unsigned char    _pad08[0x0c - 0x08];
-    CComponentVector Components;                     // +0x0c (CTCInventoryBase)
-    unsigned char    _pad18[0x144 - 0x18];
-    CComponentPairMap ItemsToBuy;                    // +0x144
-    CComponentPairMap ItemsToSell;                   // +0x150
-    unsigned char    _pad15c[0x218 - 0x15c];
-    bool             InventoryTradeOpen;             // +0x218
-    bool             InventoryTradeInitialised;      // +0x219
-    void RemoveTattooAndHairCategories();            // 0x0059D9AD
-    void BaseCloseInventory();                       // 0x005BD597 (CTCInventoryBase::CloseInventory)
-    void DeleteComponents();                         // 0x0059C8AE
-    void CloseInventoryPC();
-};
+#include "engine/CTCInventoryTrade.h"
+#include "engine/CTCInventoryWeapons.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/NUISystem_CList.h"
+#include "engine/CDefPointer.h"
+#include "engine/NUISystem_CUIMiscThingsDef.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CDisplayEngine.h"
+#include "engine/CIEngine.h"
+#include "engine/CWorld.h"
+#include "engine/CUserProfileManager.h"
+#include "engine/CASoundManager.h"
 
 void CTCInventoryTrade::CloseInventoryPC()
 {
-    RemoveTattooAndHairCategories();
-    BaseCloseInventory();
+    ResetTradeLists();
+    NInventory::CTCInventoryBase::CloseInventory();
     DeleteComponents();
     for (unsigned long i = 0; i < Components.size(); ++i)
         delete Components[i];
     Components.clear();
     ItemsToBuy.clear();
     ItemsToSell.clear();
-    NUISystem::CManager::GetInstance()->Slot6();
-    NUISystem::CManager::GetInstance()->Slot29();
-    g_frontEndNodeList.clear();
-    NUISystem::CManager::GetInstance()->Slot37();
-    CMainGameComponent::Get()->World->Hud->SetEnabled(true);
-    CWorld* world = (&GetWorld());
-    world->InventoryClosedFrame = CWorld::GetFrame();
+    NUISystem::CManager::GetInstance()->ClearObservers();
+    NUISystem::CManager::GetInstance()->ClearActionParams();
+    NUISystem::CList::GPreviousSelected.clear();
+    NUISystem::CManager::GetInstance()->ClearBastardChild();
+    CMainGameComponent::Get()->GetDisplayEngine().Get3DEngine().Enable3DSceneRendering(true);
+    GetWorld().SetAsStarting3DRendering();
     if (PSoundManager) {
-        PSoundManager->SetGainFader(0x10, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
-        PSoundManager->SetGainFader(0x40, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
-        PSoundManager->SetGainFader(0x80, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
     }
-    NUISystem::CManager* a = NUISystem::CManager::GetInstance();
-    NUISystem::CManager* b = NUISystem::CManager::GetInstance();
-    b->Slot40(&a->Slot42().Data->SomeState, true);
-    CMainGameComponent::Get()->World->Hud->Slot56(0, 0);
+    NUISystem::CManager::GetInstance()->PlaySoundW(NUISystem::CManager::GetInstance()->GetMiscThingsDef()->SoundExit, 1);
+    CMainGameComponent::Get()->GetDisplayEngine().Get3DEngine().CutscenePreload(false, false);
     CTCInventoryWeapons* weapons;
     if (ParentThing->GetTC(TCI_INVENTORY_WEAPONS, &weapons))
         weapons->CheckForSoldWieldedWeapons();

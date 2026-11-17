@@ -52,6 +52,17 @@ public:
     // ecx = NavigationManager, 0x00A1E6A7). Declaration only.
     bool IsActionPoint(const class C2DVector& position) const;           // 0x00A150A0
 #endif
+#ifdef FABLE_RETAIL_CNAVIGATORMANAGER_LEVELMAPS
+    // Opt-in (NF62, row 0x00500230 CWorldMap::CreateNavMap): Ego_r.pdb / FableWin.pdb ?IsNavigationMapLoadedWithSectionName@CNavigatorManager@@
+    // QBE_NJABVCCharString@@@Z (0x00A14EE0), ?IsNavigationMapLoaded@CNavigatorManager@@QBE_NJ@Z (0x00A14E80), ?RemoveNavigationMap@
+    // CNavigatorManager@@QAEXJ@Z (0x00A155D0) and ?AddNavigationMap@CNavigatorManager@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCAFile@@
+    // PAVCASuspendableProcess@@@Z (0x00A157C0), all out of line. Declarations only.
+    bool IsNavigationMapLoadedWithSectionName(long map, const class CCharString& section) const;   // 0x00A14EE0
+    bool IsNavigationMapLoaded(long map) const;                                                   // 0x00A14E80
+    void RemoveNavigationMap(long map);                                                           // 0x00A155D0
+    void AddNavigationMap(long map, const class C2DBoxI& area, const class CCharString& section, class CAFile& file,
+                          class CASuspendableProcess* process);                                   // 0x00A157C0
+#endif
 #ifndef FABLE_RETAIL_CNAVIGATORMANAGER_VIRTUALS
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
 #endif

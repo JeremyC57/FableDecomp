@@ -170,6 +170,36 @@ template<class T> inline void CPersistTraits<T>::TransferOut(CPersistContext& co
     long longValue=(long)value; CPersistTraitsSLONG::TransferOut(context,out,longValue);
 }
 #endif
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_OBJECTAUGMENTATIONPARTICLESET
+// NF62 opt-in (2026-11-17, rows 0x004E9550 / 0x004E9642): the explicit specialisation CPersistTraits<CObjectAugmentationParticleSet>
+// with its Ego_r.pdb / FableWin.pdb members (the generic template's by-value TransferBinaryOut cannot take the class):
+//   ?TransferBinaryIn@?$CPersistTraits@VCObjectAugmentationParticleSet@@@@QAEXAAVCMemoryDataInputStream@@AAVCObjectAugmentationParticleSet@@@Z (0x004E9642)
+//   ?TransferBinaryOut@?$CPersistTraits@VCObjectAugmentationParticleSet@@@@QAEXAAVCDataOutputStream@@ABVCObjectAugmentationParticleSet@@@Z (0x004E959D)
+//   ?TransferIn@..QAEXAAVCPersistContext@@AAVCStringParser@@AAVCObjectAugmentationParticleSet@@@Z,
+//   ?TransferOut@..QAEXAAVCPersistContext@@AAVCCharString@@AAVCObjectAugmentationParticleSet@@@Z.
+// DefaultVal at +0 (0x2C bytes); no user constructor / destructor declared: a traits local runs DefaultVal's out-of-line
+// ??0CObjectAugmentationParticleSet@@QAE@XZ (retail 0x004E9627) and ??1CObjectAugmentationParticleSet@@QAE@XZ (0x004E25F1, the landed row).
+#include "engine/CObjectAugmentationParticleSet.h"
+template<> class CPersistTraits<CObjectAugmentationParticleSet> {
+public:
+    CObjectAugmentationParticleSet DefaultVal;
+    void TransferBinaryIn(CMemoryDataInputStream&,CObjectAugmentationParticleSet&);
+    void TransferBinaryOut(CDataOutputStream&,const CObjectAugmentationParticleSet&);
+    void TransferIn(CPersistContext&,CStringParser&,CObjectAugmentationParticleSet&);
+    void TransferOut(CPersistContext&,CCharString&,CObjectAugmentationParticleSet&);
+};
+#endif
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_SCALAR_BINARYIN_INLINE
+// NF62 opt-in (2026-11-17, row 0x004E9642 CPersistTraits<CObjectAugmentationParticleSet>::TransferBinaryIn): the generic member
+// ?TransferBinaryIn@?$CPersistTraits@J@@QAEXAAVCMemoryDataInputStream@@AAJ@Z / ..@M@@..AAM@Z (Ego_r.pdb / FableWin.pdb) as an inline explicit
+// specialisation for long and float (FABLE_FORCEINLINE: a plain inline specialisation stays a call under optimize("s"), 99 v 460 bytes): retail expands CMemoryDataInputStream::Read in place for each scalar member (0x004E9642: five
+// 4-byte reads, ReadWithSrcChunkOverflow 0x00993CA0 on the overflow arm), the read value copied out of a local. Needs
+// FABLE_RETAIL_CDATAINPUTSTREAM + FABLE_RETAIL_CMEMORYDATAINPUTSTREAM; not with FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS /
+// FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE (their float class) or FABLE_RETAIL_CPERSISTTRAITS_LONG_BINARY_BODY.
+#include "engine/CMemoryDataInputStream.h"
+template<> FABLE_FORCEINLINE void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& is,long& val) { long tval; is.Read(&tval,sizeof(tval)); val=tval; }
+template<> FABLE_FORCEINLINE void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream& is,float& val) { float tval; is.Read(&tval,sizeof(tval)); val=tval; }
+#endif
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_LONG_BINARY_BODY
 template<> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& is,long& val) {
  long tval=is.ReadSLONG();val=tval;

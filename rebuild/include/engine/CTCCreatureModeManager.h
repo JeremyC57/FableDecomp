@@ -83,6 +83,13 @@ public:
     static void __fastcall RegisterModes();                              // 0x0073B130
     static CVectorMap<unsigned long, CRegisteredModeInfo> RegisteredModes;   // 0x013BAD44
 #endif
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_ALLOCATEMODE
+    // Opt-in (NF62, row 0x0073A8E0): Ego_r.pdb ?AllocateMode@CTCCreatureModeManager@@IAE?AV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@K@Z
+    // (protected). Declaration only.
+protected:
+    CCountedPointer<CModeBase> AllocateMode(unsigned long mode_type);   // 0x0073A8E0
+public:
+#endif
     CModeBase& GetCurrentMode() const;
     bool IsModeActive(unsigned long) const;
 #ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER

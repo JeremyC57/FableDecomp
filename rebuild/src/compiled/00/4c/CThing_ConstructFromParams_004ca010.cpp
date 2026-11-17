@@ -1,125 +1,68 @@
-// CThing::ConstructFromParams(long, long, long, bool) -- base thing construction: re-register with the class factory, store def index / player / map, reset the lists, fetch the base def, allocate the UID, apply the def's default script name/data and add the editor and map-who components
-// Leaf: ConstructFromParams
-// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
-//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
+// CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long mapNumber, bool reregister) -- base thing construction: move the thing in the class factory's lists, store def index / player / map, reset the lists, fetch the base def, allocate the UID, apply the def's default script name/data and add the editor / mapwho components
+// Leaf: ?ConstructFromParams@CThing@@IAE_NJJJ_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CA010, 437 bytes, `ret 10h`. Called by CThingPhysical::ConstructFromParams 0x006A5950.
-// Callees: CClassFactory::ReregisterAllocatedClass(CClass*, unsigned long, bool) 0x00A37300 and the thing-type flags
-// getter 0x0051E580 on the thing manager 0x013B8A1C (a CClassFactory), GFGetCurrentFrame 0x0049D870, CCharString copy
-// ctor 0x0099EC30 (from the global CCharString 0x013BAB0C) / operator= 0x0099EFB0 / dtor 0x0099EAE0 / (const char*, long)
-// ctor 0x0099EBF0, CDefinitionManager::GetDef<CThingBaseDef> 0x0042AF3C (manager +0x20), CThing::CreateUID 0x004C7FF0,
-// the thing's virtual slot 15 (+0x3C, the base-def hook), CDefStringTable::GetString(long) 0x009D49B0 on the global table
-// 0x013CA828, the game component's virtual slot 9 (+0x24, manager +0x1C), CThing::AddTC(const CCharString&, bool,
-// CTCParamsBase*) 0x004C9D60 with "CTCEditor" 0x01239BF0 and "CTCMapwho" 0x01239BE4.
-// Layout (retail CThing, PDB offsets 0x10 higher from +0x58): thing class byte +0x10, SerialisationSectionName +0x58,
-// WorldFrameCreatedAt +0x68, ThingTypeFlags +0x6C, PBaseDef +0x70, ScriptName +0x74, ScriptData +0x78, the render and
-// update list links +0x7C..+0x88, DefGlobalIndex +0x8C, CurrentMapNumber +0x8E, PlayerNumber +0x90 (signed char),
-// LevelPersistent bit 4 of +0x92. CThingBaseDef (retail = PDB - 4): DefaultScriptName +0x68, DefaultScriptData +0x6C.
-// Thing manager (retail): game component +0x1C, definition manager +0x20.
+//   Identity: Ego_r.pdb ?ConstructFromParams@CThing@@IAE_NJJJ_N@Z (protected).
+// Callees: CClassFactory::MoveAllocatedClassInLists(CClass&, long, bool) 0x00A37300 and CThingManager::ThingTypeToTypeFlags 0x0051E580 on the
+// thing manager 0x013B8A1C (a CClassFactory), CWorld::GetFrame 0x0049D870, CLevelLoader::GetGlobalSectionName (inline: the CCharString copy
+// ctor 0x0099EC30 from 0x013BAB0C) / operator= 0x0099EFB0 / dtor 0x0099EAE0 / (const char*, long) ctor 0x0099EBF0,
+// CDefinitionManager::GetDef<CThingBaseDef> 0x0042AF3C (manager +0x20), CThing::CreateUID 0x004C7FF0, the thing's virtual slot 15
+// CreateFromDef (+0x3C), CDefStringTable::GetString(long) 0x009D49B0 on GDefStringTable 0x013CA828 (inline CDefString::GetString), the game
+// component's virtual slot 9 IsEditorActive (+0x24, manager +0x1C), CThing::AddTC(const CCharString&, bool, const CTCParamsBase*)
+// 0x004C9D60 with "CTCEditor" 0x01239BF0 and "CTCMapwho" 0x01239BE4.
 // Shape: every CCharString temporary is homed in the dead bool argument slot; the section name is assigned from an
 // inline by-value copy of the global (bare temporary); the two GetString results and the two AddTC names are NAMED
 // locals in their own blocks (retail re-derives `lea [esp+18h]` instead of reusing eax, and builds the AddTC name
 // before pushing the two zero arguments); the player-number clamp keeps its redundant `== 5` test.
-class CTCBase;
-class CTCParamsBase;
-
-// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BAB0C is the public static CLevelLoader::GlobalSectionName ("NULL"; Ego_r.pdb +
-//   FableWin.pdb `dynamic initializer for 'CLevelLoader::GlobalSectionName'', initializer 0x0121E160 landed by agentFAM09), read through the
-//   inline Ego_r.pdb accessor ?GetGlobalSectionName@CLevelLoader@@SI?AVCCharString@@XZ; both from engine/CLevelLoader.h (FAM09's GLOBALSECTION
-//   opt-in plus the accessor opt-in), and CCharString (ctor (const char*, long) 0x0099EBF0, copy 0x0099EC30, dtor 0x0099EAE0, operator=
-//   0x0099EFB0) now from fable_string.h. Was g_DefaultSerialisationSectionName and a local GetDefaultSerialisationSectionName() over a
-//   local CCharString model.
+// NF62 (2026-11-17, round 7): ported onto the shared CThing / CThingManager / CClassFactory / CThingBaseDef / CDefString /
+//   CDefinitionManager / CMainGameComponent / CWorld / CLevelLoader headers (the local CThingBaseDef / CDefStringTable / CDefinitionManager /
+//   CGameDefinitionManager / CMainGameComponent / CThingManager / CWorld / CThing models are gone). Self QAE -> IAE (protected, Ego_r.pdb).
+//   Overlay opt-ins: FABLE_RETAIL_CTHING_CONSTRUCTFROMPARAMS, FABLE_RETAIL_CCLASSFACTORY_MOVEALLOCATEDCLASS,
+//   FABLE_RETAIL_CTHINGBASEDEF_DEFAULTSCRIPT.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_LOADSINGLE
+#define FABLE_RETAIL_CTHING_CONSTRUCTFROMPARAMS
+#define FABLE_RETAIL_CTHING_MANAGERACCESS
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CCLASSFACTORY_MOVEALLOCATEDCLASS
+#define FABLE_RETAIL_CTHINGBASEDEF
+#define FABLE_RETAIL_CTHINGBASEDEF_DEFAULTSCRIPT
+#define FABLE_RETAIL_CTHINGMANAGER
+#define FABLE_RETAIL_CTHINGMANAGER_THINGTYPEFLAGS
+#define FABLE_RETAIL_CTHINGMANAGER_LOADSINGLE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_EDITOR
 #define FABLE_RETAIL_CLEVELLOADER
 #define FABLE_RETAIL_CLEVELLOADER_GLOBALSECTION
-#define FABLE_RETAIL_CLEVELLOADER_GETGLOBALSECTION   // hdr overlay (agentNF26)
+#define FABLE_RETAIL_CLEVELLOADER_GETGLOBALSECTION
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CClassFactory.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CDefString.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CTCBase.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CThing.h"
+#include "engine/CThingManager.h"
+#include "engine/CWorld.h"
+#include "engine/CMainGameComponent.h"
 #include "engine/CLevelLoader.h"
-
-class CThingBaseDef { public:
-    unsigned char _pad00[0x68];
-    long DefaultScriptName;                          // +0x68 (CDefString)
-    long DefaultScriptData;                          // +0x6C (CDefString)
-};
-
-template <class T> class CDefPointer { public:       // CDefPointer<const CThingBaseDef>
-    T* Object;
-};
-
-class CDefStringTable {
-public:
-    CCharString GetString(long) const;   // 0x009D49B0
-};
-extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)             // 0x013CA828
-
-class CDefinitionManager { public:
-    template <class T> bool GetDef(long globalIndex, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb, const)
-};
-class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
-
-class CMainGameComponent { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual bool IsEditorRunning();                  // slot 9 (+0x24)
-};
-
-class CThing;
-class CThingManager { public:                               // a CClassFactory
-    unsigned char           _pad00[0x1c];
-    CMainGameComponent*     Component;               // +0x1C
-    CGameDefinitionManager* DefinitionManager;       // +0x20
-    void ReregisterAllocatedClass(CThing* thing, unsigned long type, bool local);   // 0x00A37300
-    unsigned long GetThingTypeFlags(long thingClass);                              // 0x0051E580
-};
-
-class CWorld {
-public:
-    static long __fastcall GetFrame();   // 0x0049D870
-};                 // 0x0049D870
-
-class CThing {
-private:
-    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
-public:
-    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
-private:
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
-    virtual void OnBaseDefSet(const CThingBaseDef* def);   // slot 15 (+0x3C)
-
-    unsigned char        _pad04[0x10 - 4];
-    unsigned char        ThingClass;                 // +0x10
-    unsigned char        _pad11[0x58 - 0x11];
-    CCharString          SerialisationSectionName;   // +0x58
-    unsigned char        _pad5c[0x68 - 0x5c];
-    long                 WorldFrameCreatedAt;        // +0x68
-    unsigned long        ThingTypeFlags;             // +0x6C
-    CDefPointer<const CThingBaseDef> PBaseDef;       // +0x70
-    CCharString          ScriptName;                 // +0x74
-    CCharString          ScriptData;                 // +0x78
-    CThing*              RenderListPrev;             // +0x7C
-    CThing*              RenderListNext;             // +0x80
-    CThing*              UpdateListPrev;             // +0x84
-    CThing*              UpdateListNext;             // +0x88
-    unsigned short       DefGlobalIndex;             // +0x8C
-    short                CurrentMapNumber;           // +0x8E
-    signed char          PlayerNumber;               // +0x90
-    unsigned char        _flags91;                   // +0x91 (Dead .. CreatedBySerialisation)
-    unsigned char        DeletedOnOwnerLevelOutOfScope : 1;   // +0x92 bit 0
-    unsigned char        Drawable : 1;               // bit 1
-    unsigned char        Dying : 1;                  // bit 2
-    unsigned char        ForceFrameUpdate : 1;       // bit 3
-    unsigned char        LevelPersistent : 1;        // bit 4
-
-    void CreateUID();                                // 0x004C7FF0
-    bool ConstructFromParams(long defGlobalIndex, long playerNumber, long mapNumber, bool reregister);
-public:
-    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
-};
 
 bool CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long mapNumber, bool reregister)
 {
     if (reregister)
-        CThing::GetPCurrentThingManager()->ReregisterAllocatedClass(this, ThingClass, reregister);
+        CThing::GetPCurrentThingManager()->MoveAllocatedClassInLists(*this, Type, reregister);
     DefGlobalIndex = (unsigned short)defGlobalIndex;
     PlayerNumber = (signed char)playerNumber;
     CurrentMapNumber = (short)mapNumber;
@@ -130,24 +73,26 @@ bool CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long ma
     UpdateListPrev = 0;
     SerialisationSectionName = CLevelLoader::GetGlobalSectionName();
     LevelPersistent = false;
-    if (DefGlobalIndex > 0)
-        CThing::GetPCurrentThingManager()->DefinitionManager->GetDef(DefGlobalIndex, &PBaseDef);
+    if (DefGlobalIndex > 0) {
+        const CDefinitionManager& definitions = CThing::GetPCurrentThingManager()->PeekDefinitionManager();
+        definitions.GetDef(DefGlobalIndex, &PBaseDef);
+    }
     CreateUID();
-    ThingTypeFlags = CThing::GetPCurrentThingManager()->GetThingTypeFlags(ThingClass);
+    ThingTypeFlags = CThing::GetPCurrentThingManager()->ThingTypeToTypeFlags(Type);
     if (PlayerNumber == 5 || PlayerNumber < 0 || PlayerNumber >= 4)
         PlayerNumber = 4;
-    if (PBaseDef.Object) {
-        OnBaseDefSet(PBaseDef.Object);
+    if (!PBaseDef.IsNull()) {
+        CreateFromDef(*PBaseDef);
         {
-            CCharString name = GDefStringTable.GetString(PBaseDef.Object->DefaultScriptName);
+            CCharString name = PBaseDef->DefaultScriptName.GetString();
             ScriptName = name;
         }
         {
-            CCharString data = GDefStringTable.GetString(PBaseDef.Object->DefaultScriptData);
+            CCharString data = PBaseDef->DefaultScriptData.GetString();
             ScriptData = data;
         }
     }
-    if (CThing::GetPCurrentThingManager()->Component->IsEditorRunning()) {
+    if (CThing::GetPCurrentThingManager()->PeekComponent().IsEditorActive()) {
         CCharString editor("CTCEditor", -1);
         AddTC(editor, false, 0);
     }

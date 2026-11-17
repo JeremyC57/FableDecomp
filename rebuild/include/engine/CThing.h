@@ -662,6 +662,14 @@ public:
         }
         return false;
     }
+#ifdef FABLE_RETAIL_CTHING_CONSTRUCTFROMPARAMS
+    // NF62 opt-in (2026-11-17, rows 0x004CA010 / 0x006A5950): Ego_r.pdb ?ConstructFromParams@CThing@@IAE_NJJJ_N@Z (protected), out of line at
+    // 0x004CA010 (the self row; CThingPhysical::ConstructFromParams 0x006A5950 calls it qualified). Parameters: the def index, the player,
+    // the map number and the add-to-map flag (the body's uses). Declaration only.
+protected:
+    bool ConstructFromParams(long defIndex, long player, long mapNumber, bool addToMap);   // 0x004CA010
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHING_MANAGERACCESS
     // Nested opt-in (chunk 765, rows 0x004C7A50 / 0x004C7A60 / 0x004C7BC0): the current thing manager, a private static at 0x013B8A1C
     // (the established spelling ?PCurrentThingManager@CThing@@0PAVCThingManager@@A of 65 landed rows), and its Ego_r.pdb / FableWin.pdb

@@ -33,4 +33,9 @@ namespace NResourceDirectoryNames
     // Opt-in (chunk 2052, row 0x004A21F0): Ego_r.pdb ?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ, out of line at 0x0041A060.
     CWideString FABLE_FASTCALL GetLevelDir();                            // 0x0041A060
 #endif
+#ifdef FABLE_RETAIL_NRESOURCEDIRECTORYNAMES_BONECONFIGDIR
+    // NF62 opt-in (2026-11-17, row 0x006C3620 CSkeletalMorphResourceManager::GetMorphTarget): Ego_r.pdb
+    // ?GetBoneConfigDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ, out of line at 0x0041A290 (landed; L"Data\\Bones\\").
+    CWideString FABLE_FASTCALL GetBoneConfigDir();                       // 0x0041A290
+#endif
 }

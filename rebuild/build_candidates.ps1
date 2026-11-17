@@ -244925,9 +244925,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006dcb20'
-        Module = 'CUIBinaryTree'
-        Source = '00/6d/CUIBinaryTree_Insert_006dcb20.cpp'
-        TestSource = '00/6d/CUIBinaryTree_Insert_006dcb20_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >'
+        Source = '00/6d/stdRbtree_Minsert_006dcb20.cpp'
+        TestSource = '00/6d/stdRbtree_Minsert_006dcb20_test.cpp'
         PassPattern = '006dcb20_TEST PASS'
     }
     [pscustomobject]@{
@@ -271228,8 +271228,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005fce60'
         Module = 'CTCInventoryMap'
-        Source = '00/5f/CTCInventoryMap_vfunc31_005fce60.cpp'
-        TestSource = '00/5f/CTCInventoryMap_vfunc31_005fce60_test.cpp'
+        Source = '00/5f/CTCInventoryMap_CloseInventory_005fce60.cpp'
+        TestSource = '00/5f/CTCInventoryMap_CloseInventory_005fce60_test.cpp'
         PassPattern = '005fce60_TEST PASS'
     }
     [pscustomobject]@{
@@ -273120,8 +273120,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00713510'
         Module = 'NTCScriptedControl::CActionPerformExpression'
-        Source = '00/71/NTCScriptedControlCActionPerformExpression_vfunc1_00713510.cpp'
-        TestSource = '00/71/NTCScriptedControlCActionPerformExpression_vfunc1_00713510_test.cpp'
+        Source = '00/71/NTCScriptedControlCActionPerformExpression_Update_00713510.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionPerformExpression_Update_00713510_test.cpp'
         PassPattern = '00713510_TEST PASS'
     }
     [pscustomobject]@{
@@ -314120,8 +314120,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004e9642'
         Module = 'CPersistTraits<CObjectAugmentationParticleSet>'
-        Source = '00/4e/CPersistTraitsCObjectAugmentationParticleSet_TransferBinaryIn_004e9642.cpp'
-        TestSource = '00/4e/CPersistTraitsCObjectAugmentationParticleSet_TransferBinaryIn_004e9642_test.cpp'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e9642.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e9642_test.cpp'
         PassPattern = '004e9642_TEST PASS'
     }
     [pscustomobject]@{

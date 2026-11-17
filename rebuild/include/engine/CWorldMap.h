@@ -367,6 +367,25 @@ public:
     float GetThemeSizeZAt(const C3DVector& pos) const;                                                         // 0x0063A390
 public:
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_THEMEMINCAMERASIZEZOFFSET
+    // Opt-in (NF62, row 0x0063A540): Ego_r.pdb ?GetThemeMinCameraSizeZOffsetAt@CWorldMap@@QBEMABVC3DVector@@@Z (retail 0x0063A540).
+    // Declaration only.
+    float GetThemeMinCameraSizeZOffsetAt(const C3DVector& pos) const;   // 0x0063A540
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_NAVIGATIONSECTION
+    // Opt-in (NF62, row 0x004FE630): Ego_r.pdb protected const ?GetNavigationSectionOffsetInFile@CWorldMap@@IBE?AU?$pair@VCCharString@@J@std@@
+    // AAVCAFile@@ABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@3@@Z (Ego_r 0x004D24E0; retail
+    // 0x004FE630). Needs stlport/fable_map.h (set) and fable_string.h ahead. Declaration only.
+protected:
+    std::pair<CCharString,long> GetNavigationSectionOffsetInFile(CAFile& file, const std::set<CCharString, std::less<CCharString>, std::allocator<CCharString> >& sections) const;   // 0x004FE630
+public:
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_CREATENAVMAP
+    // Opt-in (NF62, row 0x00500230): Ego_r.pdb ?CreateNavMap@CWorldMap@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@
+    // VCCharString@@@3@@std@@AAVCAFile@@AAVCASuspendableProcess@@@Z (public; retail 0x00500230, `ret 10h`). Declaration only.
+    void CreateNavMap(long map, const std::set<CCharString, std::less<CCharString>, std::allocator<CCharString> >& sections, CAFile& file,
+                      CASuspendableProcess& process);   // 0x00500230
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_HEIGHTZ
     // Chunk 764 (row 0x007BC004 CTCShotDefinitionNymphFun::InitMovement): Ego_r.pdb ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
     // (retail 0x0063E480). Declaration only.

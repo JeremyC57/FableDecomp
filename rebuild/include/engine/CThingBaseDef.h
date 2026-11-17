@@ -1,6 +1,9 @@
 #ifndef FABLE_ENGINE_CTHINGBASEDEF_H
 #define FABLE_ENGINE_CTHINGBASEDEF_H
 #include "engine/CParentDefClassBase.h"
+#ifdef FABLE_RETAIL_CTHINGBASEDEF_DEFAULTSCRIPT
+#include "engine/CDefString.h"
+#endif
 // Original Ego_r CThingBaseDef derives CParentDefClassBase; native STLport sizeof70.
 // Complete original Components through DefaultScriptData range retained opaque.
 #ifdef FABLE_RETAIL_CTHINGBASEDEF
@@ -25,8 +28,15 @@ public:
     float MeshHeight;                                            // +0x5C
     float MeshRadius;                                            // +0x60
     float ApproxMaxMeshHeight;                                   // +0x64
+#ifdef FABLE_RETAIL_CTHINGBASEDEF_DEFAULTSCRIPT
+    // NF62 opt-in (2026-11-17, row 0x004CA010 CThing::ConstructFromParams): the two members typed as their Ego_r.pdb CDefString (engine/CDefString.h,
+    // 4 bytes: TablePos), read through CDefString::GetString (`push [eax+68h] ; mov ecx,offset GDefStringTable ; call 0x009D49B0`). Same layout.
+    CDefString DefaultScriptName;                                // +0x68
+    CDefString DefaultScriptData;                                // +0x6C
+#else
     unsigned char DefaultScriptName[4];                          // +0x68 CDefString
     unsigned char DefaultScriptData[4];                          // +0x6C CDefString
+#endif
 #ifdef FABLE_RETAIL_CTHINGBASEDEF_ALLOC
 // Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
 // ?Alloc@CThingBaseDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.

@@ -51,6 +51,17 @@ public:
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
     virtual void RemoveItemFromInventory(long itemDefIndex, long count);           // slot 79 0x0059C747 (UAEXJJ@Z override)
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_CLOSEINVENTORY
+    // NF62 opt-in (2026-11-17, rows 0x0059F304 / 0x0059E2C7): Ego_r.pdb / FableWin.pdb ?CloseInventory@CTCInventoryTrade@@UAEXXZ (CTCInventoryTrade
+    // vtable 0x01253034 slot 31 = 0x0059F304, the override of NInventory::CTCInventoryBase::CloseInventory) and
+    // ?CloseInventoryPC@CTCInventoryTrade@@UAEXXZ (the same vtable's slot 87 = 0x0059E2C7, after OpenInventoryPC 0x005AE86B at slot 86).
+    // Also Ego_r.pdb ?DeleteComponents@CTCInventoryTrade@@QAEXXZ (out of line at 0x0059C8AE, the landed row; CloseInventoryPC calls it).
+    // Declarations only (no layout change; the vtable exists).
+public:
+    virtual void CloseInventory();                                                 // slot 31 0x0059F304
+    virtual void CloseInventoryPC();                                               // slot 87 0x0059E2C7
+    void DeleteComponents();                                                       // 0x0059C8AE
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYTRADE_OPENINVENTORY
     // Opt-in (agentSND, 2026-11-10, row 0x005A94BD): Ego_r.pdb / FableWin.pdb ?OpenInventory@CTCInventoryTrade@@UAEXXZ, the override in
     // CTCInventoryTrade vtable 0x01253034 slot 30 (slot 31 CloseInventory 0x0059F304, slot 86 OpenInventoryPC 0x005AE86B).

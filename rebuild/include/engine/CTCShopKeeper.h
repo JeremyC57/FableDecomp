@@ -49,6 +49,12 @@ public:
     long GetMaxDistFromCustomer();                                       // 0x00798D20
     void AddNewCustomer(CIntelligentPointer<CThingCreatureBase> customer);   // 0x00798D90
 #endif
+#ifdef FABLE_RETAIL_CTCSHOPKEEPER_ACQUIRE
+    // Opt-in (NF62, row 0x00799900): Ego_r.pdb ?AcquireNewCustomer@CTCShopKeeper@@QAEXXZ (retail 0x00799900) and ?EmptyCustomerList@CTCShopKeeper@@QAEXXZ
+    // (retail 0x00798E10, out of line). Declarations only.
+    void AcquireNewCustomer();                                           // 0x00799900
+    void EmptyCustomerList();                                            // 0x00798E10
+#endif
 protected:
     CIntelligentPointer<CThingCreatureBase> Customer;                    // +0x0c
     CIntelligentPointer<CThing> Shop;                                    // +0x14

@@ -341,6 +341,12 @@ public:
     // std::vector (stlport/fable_containers.h) and CCharString at the point of use. Declaration only: no layout change.
     void GetAllDummyObjectNames(std::vector<CCharString>& names) const;   // 0x004BDB40
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_NODUMMYOBJECTS
+ // NF62 opt-in (2026-11-17, row 0x0072E130 CTCMeshAutomaticEntityCreator::CreateParticle): Ego_r.pdb / FableWin.pdb
+ // ?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z, out of line at retail 0x004BE000 (`push 1.0f ;
+ // push name ; mov ecx,appearance ; call`, re-evaluated per loop pass). Declaration only: no layout change.
+ long GetNoDummyObjects(const CCharString& name, float scale) const;   // 0x004BE000
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FULLSCALE
  // Row 0x00724630: Ego_r 0x004BF740 / FableWin 0x01D0A3C0 ?GetFullScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ, out of line at
  // retail 0x004BBFF0 (`fld [ecx+4Ch] ; fmul [ecx+34h]`, Scale at +0x34). Declaration only: no layout change.

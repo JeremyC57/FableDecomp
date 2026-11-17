@@ -1,0 +1,9 @@
+address	attempt	grade	reason
+0x00713510	CCreatureAction_PerformExpression with an in-class `virtual ~..() {}` (overlay first form)	DIFFER(217v277)	the destructor stays an out-of-line call; replaced by the implicit destructor (RM)
+0x0069AD10	SetCameraManagerSetDef(building->PeekPCameraManagerSetDefinition()) on the temporary	DIFFER(165v167)	the temporary is released at the end of the statement; retail keeps a named local until the end of the block
+0x006C7370	for loop testing deeds.end() each pass	DIFFER(339v342)	retail hoists end() into a local
+0x006C7370	context.Transfer("OpinionDeedMap", deeds)	RELOCATION_MATCH	wrong overload name: the PDBs spell named vector transfers TransferVector; respelled (RM)
+0x006C3620	find(filename) == end() in the if, find again for the reference	DIFFER(423v425)	retail stores find's result in an iterator local first
+0x0072E130	SetPCreator without FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN	DIFFER(324v341)	the implicit operator= copies the raw item; retail uses GetPItem / SetPItem
+# Partial: this file lists the rejected forms of this session's rows ported or blocked after real work. Earlier failed forms of 0x004FE630 (8 grades), 0x006D41F0 (4) and 0x00799900 (attempts a1..a4) are in work/attempts/ and work/grades.log; the 14 scripted header probes are work/attempts/<addr>_hdrprobe.cpp.
+0x0075A530	default GetCenter and FABLE_RETAIL_C3DBOUNDINGBOX_CENTER_MIN_FIRST (work/attempts/0075a530_a6.cpp)	DIFFER(610v611)	byte-identical output under both: the bounding-box X pair is added Max-first, retail Min-first; unexplained (GETCENTER_PROBE1 not tried)

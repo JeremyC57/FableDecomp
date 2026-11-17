@@ -12919,7 +12919,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005fc8a0	ConstructQuestReviewListPC	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 005fcb10	OnInitialActivate	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005fcbe0	ConstructPastQuestsList	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
-005fce60	vfunc_31	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005fce60	CloseInventory	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005fd0b0	ProcessButtonBReleased	CTCInventoryMap	__thiscall	void	1	CTCInventoryMap *	1	yes	accepted									
 005fd0f0	FindQuestsForActiveRegion	CTCInventoryMap	__thiscall	void	1	CTCInventoryMap *	1	yes	accepted									
 005fd1d0	FindTeleportsForActiveRegion	CTCInventoryMap	__thiscall	void	1	CTCInventoryMap *	1	yes	accepted									
@@ -15603,7 +15603,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00691870	ProcessInput	CInputProcessFireheartMinigame	__thiscall	void	3	CInputProcessFireheartMinigame *,CInputEvent *,CProcessedInput *	1	yes	accepted									
 00691ac0	Init	CInputProcessPhotojournalCapture	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00691ad0	FrameUpdate	CInputProcessPhotojournalCapture	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00691ae0	ProcessInput	_global	__thiscall	void	3	CInputProcessPhotojournalCapture *,CInputEvent *,CProcessedInput *	1	yes	accepted									
+00691ae0	ProcessInput	CInputProcessPhotojournalCapture	__thiscall	void	3	CInputProcessPhotojournalCapture *,CInputEvent *,CProcessedInput *	1	yes	accepted									
 00691c20	Init	CInputProcessCreatureMovementWatchForControlAngleChange	__thiscall	void	1	CWADFile *	1	yes	accepted									
 00691c50	ProcessInput	CInputProcessCreatureMovementWatchForControlAngleChange	__thiscall	void	3	CInputProcessCreatureMovementWatchForControlAngleChange *,CInputEvent *,CProcessedInput *	1	yes	accepted									
 00691d20	Init	CInputProcessCreatureMovement	__thiscall	void	1	CInputProcessControlSpirit *	1	yes	accepted									
@@ -17360,7 +17360,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006dc9b0	RbTree_Clear_006dc9b0	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\CTCCarryable_OnKill_006dc9b0.cpp
 006dc9f0	erase	std::vector	unknown	undefined	0		0	yes	accepted									
 006dca50	_M_insert_overflow	std::vector<CAttackHistoryCombo>	unknown	undefined	0		0	yes	accepted									
-006dcb20	Insert	CUIBinaryTree	unknown	undefined	0		0	yes	accepted									
+006dcb20	_M_insert	std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >	unknown	undefined	0		0	yes	accepted									
 006dcbf0	_M_insert	std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>	unknown	undefined	0		0	yes	accepted									
 006dccc0	_M_fill_insert	std::vector	unknown	undefined	0		0	yes	accepted									
 006dcdd0	insert_unique	std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >	unknown	undefined	0		0	yes	accepted									
@@ -18528,7 +18528,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00713240	Update	NTCScriptedControl::CActionTalkedTo	__thiscall	void	1	CActionTalkedTo *	1	yes	accepted									
 00713290	GetHighlightedItemCountInCategory	NInventory::CCategory	__thiscall	long	1	CCategory *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\71\CCategory_GetHighlightedItemCountInCategory_00713290.cpp
 007132c0	DisplayText	NTCScriptedControl::CActionTalkToThing	__thiscall	void	1	CActionTalkToThing *	1	yes	accepted									
-00713510	vfunc_1	NTCScriptedControl::CActionPerformExpression	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00713510	Update	NTCScriptedControl::CActionPerformExpression	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00713630	CleanupAllActions	CTCScriptedControl	__thiscall	void	1	CTCScriptedControl *	1	yes	accepted									
 00713660	Update	NTCScriptedControl::CActionStopScripting	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00713700	OnKill	CTCScriptedControl	__thiscall	void	1	CTCScriptedControl *	1	yes	accepted									

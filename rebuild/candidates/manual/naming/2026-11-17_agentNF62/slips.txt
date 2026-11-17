@@ -1,0 +1,6 @@
+- 09:17 wrote work/vl_batch2.log under the repo's git-ignored work/ through a relative path given to a script that cd's to the repo; moved it out at once and made vl.sh refuse logs outside the agent dir
+- 0x006A9590: the attempt copy was written in my private dir before its nflocks claim (the claim then succeeded, the row was unclaimed)
+Bash call exited 1 (sbs.py on a missing differ file after a SRC_FAIL grade of 00799900); later calls end with '; true'
+Bash call exited 1 (find/grep for *_00708e10.cpp with '[ -n "$f" ] &&' as the last command)
+Attempted a 'git log' (read-only) inside a diff command while checking repo header drift; the call was denied by the permission system and nothing ran -- brief says never run git
+- 0x0075A530 block note: a double-quoted st.py argument held backticks; bash ran fld/add/fadd as commands (not found, no effect); note rewritten from a quoted heredoc file

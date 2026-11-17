@@ -31,6 +31,11 @@ public:
 #endif
     EInputEventType GetType() const;                                     // 0x00A03B40 ?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ
     EInputKey GetKey() const;                                            // 0x00A03B70 ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ
+#ifdef FABLE_RETAIL_CINPUTEVENT_GETCHAR
+    // Opt-in (NF62, row 0x00691AE0 CInputProcessPhotojournalCapture::ProcessInput): Ego_r.pdb ?GetChar@CInputEvent@@QBE_WXZ (retail
+    // 0x00A03B80, `mov ax,[ecx] ; ret`; wchar_t is unsigned short in the VC7.1 retail build, so it binds ?GetChar@CInputEvent@@QBEGXZ).
+    unsigned short GetChar() const;                                      // 0x00A03B80
+#endif
 #ifdef FABLE_RETAIL_CINPUTEVENT_DEVICETYPE
     // Retail opt-in (agent1022, row 0x00691D70): Ego_r.pdb ?GetDeviceType@CInputEvent@@QBE?AW4EInputDeviceType@@XZ, retail 0x00A03B50
     // (`mov eax,[ecx+20h] ; ret`, DeviceType +0x20). Declaration only.

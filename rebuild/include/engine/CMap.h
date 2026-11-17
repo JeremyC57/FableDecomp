@@ -170,6 +170,12 @@ public:
     // line in retail at 0x0081E920 (catalog CMap::GetNavigationLayerAt). Declaration only: no layout change.
     long GetNavigationLayerAt(const C3DVector&)const;
 #endif
+#ifdef FABLE_RETAIL_CMAP_CWORLDMAP_FRIEND
+    // Opt-in (NF62, row 0x0063A540 CWorldMap::GetThemeMinCameraSizeZOffsetAt): CWorldMap's theme TU calls the protected const
+    // FABLE_RETAIL_CMAP_THEMESIZEZ members (0x0081FA90 from 0x0063A540), so CWorldMap is a friend of CMap, as CRegion's
+    // FABLE_RETAIL_CREGION_LOADFROMFILE makes it (GOTCHAS NF29). Access only: no layout change.
+    friend class CWorldMap;
+#endif
 #ifdef FABLE_RETAIL_CMAP_THEMESIZEZ
     // NF63 (round 7, rows 0x0081FA20 / 0x0081FA90 / 0x008200B0 / 0x00820100 / 0x00820140): the theme size-Z family, protected const in
     // both PDBs (Ego_r.pdb 0x0067A530 / 0x006796E0 / 0x0067AC50 / 0x0067ACC0 / 0x0067B2D0 / 0x0067B320 / 0x0067B370, FableWin.pdb

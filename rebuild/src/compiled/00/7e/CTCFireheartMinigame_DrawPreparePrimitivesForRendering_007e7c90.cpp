@@ -1,89 +1,88 @@
 // CTCFireheartMinigame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- drop last frame's primitives; while the delayed quit runs, cover the render target with a full-screen sprite
-// Leaf: DrawPreparePrimitivesForRendering
-// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007E7C90, length 230 bytes (+ int3 padding). __fastcall, `ret 4`.
-//         CTCFireheartMinigame vtable slot 11 (the catalog's "vfunc_11"); Ego_r.pdb
-//         `?DrawPreparePrimitivesForRendering@CTCFireheartMinigame@@UAEXABVCEnginePrimitivePrepareInfo@@@Z`.
-// Callees: vector<CEnginePrimitiveHandle>::erase(first, last) @ 0x00440D70, CDisplayManager::GetRenderTargetDimensions()
-//          const @ 0x009BEDC0 (C2DExtentsI by hidden pointer) on g_pDisplayDevice @ 0x013B8390,
-//          CEnginePrimitive2DSprite ctor (16 arguments) @ 0x0041BEB0, the handle vector's grow-by-one @ 0x005ED940, the
-//          renderer's virtual slot 23 (+0x5C) on info +0x34.
-// Shape: the box is a NAMED local (`C2DBoxF box(0, 0, w, h)`) and the two uv C2DVector(0, 0) are temporaries in the
-//   sprite constructor call: the named box pins its TopLeft zero stores ABOVE the uv zero stores (a box temporary sinks
-//   them below).
-// Layout: retail CTCFireheartMinigame: QuitWithDelay +0x88, Handles +0x8C (12-byte STLport vector of 8-byte handles).
-class CEnginePrimitiveHandle {
+// Leaf: ?DrawPreparePrimitivesForRendering@CTCFireheartMinigame@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x007E7C90, 230 bytes, thiscall, `ret 4`; CTCFireheartMinigame vtable slot 11; Ego_r.pdb
+//   ?DrawPreparePrimitivesForRendering@CTCFireheartMinigame@@UAEXABVCEnginePrimitivePrepareInfo@@@Z.
+// Callees: vector<CEnginePrimitiveHandle>::erase(first, last) 0x00440D70 (Handles.clear()), CDisplayManager::GetRenderTargetDimensions 0x009BEDC0
+//   on GPDisplayManager 0x013B8390, CEnginePrimitive2DSprite(u64, const C2DBoxF&, layer 74, 0, 0, blend 2, set 0, 0, 0, 255, 0, 0, 0, 0,
+//   uv, uv) 0x0041BEB0, the argument-less CArray<CEnginePrimitiveHandle>::push_back 0x005ED940, CIEngine slot 23 SetPersistentPrimitive (+0x5C)
+//   on info.Engine (+0x34) with the new back() handle and flags 0x40.
+// NF62 (2026-11-17): ported onto engine/CEnginePrimitive2DSprite.h / CIEngine.h / CDisplayManager.h / C2DBoxF.h / CEnginePrimitiveHandle.h /
+//   CEnginePrimitivePrepareInfo.h / CTCBase.h / CArray.h (local CEnginePrimitiveHandle, CRetailVector, C2DVector, C2DBoxF, C2DExtentsI,
+//   CDisplayManager, CEnginePrimitive2DSprite, renderer and prepare-info models deleted). CTCFireheartMinigame has no shared header: the
+//   local class carries the Ego_r.pdb members (retail offsets: no STL member before Handles). Handles: Ego_r.pdb types it
+//   vector<CEnginePrimitiveHandle>, but retail calls an argument-less push_back (0x005ED940: `T element; push_back(element);`), which only
+//   CArray<T> has in either PDB (overlay opt-in FABLE_RETAIL_CARRAY_PUSHBACK_DEFAULT_DECL); CArray<T> is a public vector<T>, so clear()
+//   still binds vector<CEnginePrimitiveHandle>::erase.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CARRAY_PUSHBACK_DEFAULT_DECL
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_CDISPLAYMANAGER
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_CRGBCOLOUR
+#define FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS
+#define FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_INCLUDE_PASS23
+#define FABLE_RETAIL_CENGINEPRIMITIVEPREPAREINFO
+#define FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIENGINE
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CArray.h"
+#include "engine/EEnginePrimitiveType.h"
+#include "engine/C2DVector.h"
+#include "engine/C2DExtentsI.h"
+#include "engine/C2DBoxF.h"
+#include "engine/CRGBColour.h"
+#include "engine/CEnginePrimitiveHandle.h"
+#include "engine/CEnginePrimitive2DSprite.h"
+#include "engine/CEnginePrimitivePrepareInfo.h"
+#include "engine/CIEngine.h"
+#include "engine/Win32Types.h"
+#include "engine/Direct3D9Types.h"
+#include "engine/CDisplayManager.h"
+#include "engine/CTCBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#include "engine/CDefPointer.h"
+class CFireheartMinigameDef;
+extern CDisplayManager* GPDisplayManager;                         // 0x013B8390 ?GPDisplayManager@@3PAVCDisplayManager@@A (no shared declaration)
+
+class CTCFireheartMinigame : public CTCBase {
 public:
-    long  m_header;                                 // +0x00
-    void* Data;                                     // +0x04
-};
-
-template <class T> struct CRetailVector {           // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    void erase(T* first, T* last);                  // 0x00440D70
-    void clear() { erase(_M_start, _M_finish); }
-    void push_back_default();                       // 0x005ED940
-};
-
-class C2DVector { public:
-    float X, Y;
-    C2DVector(float x, float y) : X(x), Y(y) {}
-};
-class C2DBoxF { public:
-    C2DVector TopLeft, BottomRight;
-    C2DBoxF(float left, float top, float right, float bottom) : TopLeft(left, top), BottomRight(right, bottom) {}
-};
-class C2DExtentsI { public: long X, Y; };
-
-class CDisplayManager {
-public:
-    const C2DExtentsI GetRenderTargetDimensions();  // 0x009BEDC0
-};
-extern CDisplayManager* GPDisplayManager;           // 0x013B8390
-
-class CEnginePrimitive2DSprite {
-public:
-    unsigned char _body[0x54];
-    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DBoxF& box, long layer, unsigned long a, unsigned long b, long blend,
-                             long interpolation, float c, float d, unsigned char red, unsigned char green, unsigned char blue,
-                             unsigned char alpha, unsigned long e, const C2DVector& uv0, const C2DVector& uv1);   // 0x0041BEB0
-};
-
-class CEnginePrimitiveRenderer {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22();
-    virtual void AddPrimitive(CEnginePrimitiveHandle* handle, const CEnginePrimitive2DSprite& primitive, long flags);   // slot 23 (+0x5C)
-};
-
-class CEnginePrimitivePrepareInfo {
-public:
-    unsigned char _pad00[0x34];
-    CEnginePrimitiveRenderer* Renderer;             // +0x34
-};
-
-class CTCFireheartMinigame {
-public:
-    virtual void v00();
-    unsigned char _pad04[0x88 - 0x04];
-    bool QuitWithDelay;                             // +0x88
-    unsigned char _pad89[3];
-    CRetailVector<CEnginePrimitiveHandle> Handles;  // +0x8C
-    void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
+    virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
+private:
+    CThing* Markers[4][4];                                         // +0x0C
+    bool InSession;                                                // +0x4C
+    bool ForceQuit;                                                // +0x4D
+    CThing* CurrentMarker;                                         // +0x50
+    bool Initialised;                                              // +0x54
+    bool BlocksActive[4][4];                                       // +0x55
+    long XPos;                                                     // +0x68
+    long YPos;                                                     // +0x6C
+    bool Moving;                                                   // +0x70
+    CTCBase* PTCOldPhysics;                                        // +0x74
+    CScriptGameResourceObjectScriptedThingBase ScriptData;         // +0x78
+    bool QuitWithDelay;                                            // +0x88
+    CArray<CEnginePrimitiveHandle> Handles;                        // +0x8C
+    CDefPointer<const CFireheartMinigameDef> PDef;                 // +0x98
 };
 
 void CTCFireheartMinigame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
 {
     Handles.clear();
-    if (QuitWithDelay) {
+    if (QuitWithDelay)
+    {
         C2DExtentsI size = GPDisplayManager->GetRenderTargetDimensions();
         C2DBoxF box(0.0f, 0.0f, (float)size.X, (float)size.Y);
-        CEnginePrimitive2DSprite sprite(0, box, 0x4a, 0, 0, 2, 0, 0.0f, 0.0f, 0xff, 0, 0, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
-        Handles.push_back_default();
-        info.Renderer->AddPrimitive(Handles._M_finish - 1, sprite, 0x40);
+        CEnginePrimitive2DSprite sprite(0, box, ENGINE_2D_LAYER_6, 0, 0, ENGINE_PRIMITIVE_BLEND_ALPHA, ENGINE_INTERPOLATION_SET_0,
+            0.0f, 0.0f, 255, 0, 0, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        Handles.push_back();
+        info.Engine.SetPersistentPrimitive(Handles.back(), sprite, 0x40);
     }
 }

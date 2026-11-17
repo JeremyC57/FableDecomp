@@ -152,6 +152,13 @@ public:
 #endif
     void push_back(const T& x) { std::vector<T>::push_back(x); }
 #endif
+#ifdef FABLE_RETAIL_CARRAY_PUSHBACK_DEFAULT_DECL
+    // Opt-in (NF62, row 0x007E7C90 CTCFireheartMinigame::DrawPreparePrimitivesForRendering): Lionhead's argument-less push_back
+    // (Ego_r.pdb / FableWin.pdb ?push_back@?$CArray@..@@QAEXXZ, 18 instances; only CArray has one in either PDB), called out of line in
+    // that TU (0x005ED940 for CArray<CEnginePrimitiveHandle>: a default handle local, the inline vector push_back, its destructor).
+    // Declaration only.
+    void push_back();
+#endif
 #ifdef FABLE_RETAIL_CARRAY_PUSHBACK
     // Retail opt-in (chunk 785, rows 0x00BE4660 / 0x00BE4FE0 water tesselators): Lionhead's own push_back pair (Ego_r.pdb
     // ?push_back@?$CArray@VCTVertexWaterBackground@@@@QAEXABVCTVertexWaterBackground@@@Z and ...QAEXXZ, the Sea twins likewise).

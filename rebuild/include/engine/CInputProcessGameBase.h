@@ -39,6 +39,14 @@ protected:
     bool IsEventButtonHeld(const CInputEvent& event) const;
 public:
 #endif
+#ifdef FABLE_RETAIL_INPUTPROCESS_GETMOUSEMOVEMENT
+    // Opt-in (NF62, row 0x00691AE0): Ego_r.pdb ?GetMouseMovement@CInputProcessGameBase@@QBE?AVC2DVector@@ABVCInputEvent@@@Z (Ego_r
+    // 0x006B2E30; inline in retail, 0x00691BB8 copies the event's movement X / Y words: `mov eax,[esi+0Ch] ; mov ecx,[esi+10h]`). The
+    // movement is Ego_r.pdb UInputEventData u_12.s_0.MouseMovement (C3DVector +0x0C; MousePos C2DVector +0x18), which engine/CInputEvent.h
+    // keeps as raw bytes (a C++03 union cannot hold the PDB's vector members, they have constructors), so X / Y are read from Data.Raw.
+    // Needs engine/C2DVector.h and engine/CInputEvent.h.
+    C2DVector GetMouseMovement(const CInputEvent& event) const { return C2DVector(*(const float*)&event.Data.Raw[0x0C], *(const float*)&event.Data.Raw[0x10]); }
+#endif
 #ifdef FABLE_RETAIL_INPUTPROCESS_MOVEMENT
     // Retail opt-in (agent1022, row 0x00691D70 CInputProcessCreatureMovement::ProcessInput), declarations only:
     // Ego_r.pdb ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z

@@ -20,6 +20,9 @@ class CPersistContextReadSection;
 #endif
 class CPersistContextWriteSection;
 template<class T> class CPersistTraits;
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERHELPER_PARTICLESET
+class CObjectAugmentationParticleSet;                            // NF62 opt-in: TransferHelper's parameter type
+#endif
 class CPersistContext {
 public:
     template<class T> void Transfer(const char*,T&,const T&);
@@ -97,6 +100,13 @@ public:
     void SetAsSingleTransfer() { SingleTransfer=true; }
 #endif
     template<class T> void Transfer(T&);
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERHELPER_PARTICLESET
+    // NF62 opt-in (2026-11-17, row 0x004E9550): the one-argument particle-set transfer (`ret 4`: CheckCRC(""), a
+    // CPersistTraits<CObjectAugmentationParticleSet> object, TransferBinaryIn for MODE_LOAD_BINARY / TransferBinaryOut for
+    // MODE_SAVE_BINARY). No PDB names a one-argument CPersistContext transfer of this type (Ego_r / FableWin carry only the named
+    // ??$Transfer@VCObjectAugmentationParticleSet@@@CPersistContext@@QAEXPBDAAV..@Z forms), so the landed row's descriptive spelling is kept.
+    void TransferHelper(CObjectAugmentationParticleSet* value);         // 0x004E9550 (descriptive)
+#endif
 #ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
     template<class T> void TransferSubComponent(T& value) { CheckCRC(""); value.Transfer(*this); }
 #endif

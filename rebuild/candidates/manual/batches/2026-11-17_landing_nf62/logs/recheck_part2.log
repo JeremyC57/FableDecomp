@@ -1,0 +1,28 @@
+addr       parity           behav  name
+004e9642   RELOCATION_MATCH PASS   TransferBinaryIn
+00506e30   RELOCATION_MATCH PASS   GetLevelDimensions
+00589d30   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00589d30   RELOCATION_MATCH PASS   CloseInventory
+005fce60   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005fce60   WARN RELOC_NAME: ?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+005fce60   RELOCATION_MATCH PASS   CloseInventory
+0069ad10   WARN RELOC_NAME: ?PushCombatCameraMode@CGameCameraManager@@QAEXXZ -> 0069a8b0 labelled '_global::CIVCountedPointer_Assign_0069a8b0'
+0069ad10   RELOCATION_MATCH PASS   PushBuildingCameraMode
+006c3620   RELOCATION_MATCH PASS   GetMorphTarget
+00713510   RELOCATION_MATCH PASS   Update
+0072e130   RELOCATION_MATCH PASS   CreateParticle
+00799900   RELOCATION_MATCH PASS   AcquireNewCustomer
+007e7c90   WARN RELOC_NAME: ?push_back@?$CArray@VCEnginePrimitiveHandle@@@@QAEXXZ -> 005ed940 labelled 'CEnginePrimitiveRenderer::AddPrimitive'
+007e7c90   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+
+WINS: 10
+  004e9642 RELOCATION_MATCH CPersistTraits<CObjectAugmentationParticleSet>::?TransferBinaryIn@?$CPersistTraits@VCObjectAugmentationParticleSet@@@@QAEXAAVCMemoryDataInputStream@@AAVCObjectAugmentationParticleSet@@@Z
+  00506e30 RELOCATION_MATCH CWorldMap::?GetLevelDimensions@CWorldMap@@QBE?AVC2DBoxI@@ABVCCharString@@@Z
+  00589d30 RELOCATION_MATCH CTCInventory::?CloseInventory@CTCInventory@@UAEXXZ
+  005fce60 RELOCATION_MATCH CTCInventoryMap::?CloseInventory@CTCInventoryMap@@UAEXXZ
+  0069ad10 RELOCATION_MATCH CGameCameraManager::?PushBuildingCameraMode@CGameCameraManager@@QAEXXZ
+  006c3620 RELOCATION_MATCH CSkeletalMorphResourceManager::?GetMorphTarget@CSkeletalMorphResourceManager@@QAEAAV?$CCountedPointer@VC3DSkeletalMorphTarget@@@@ABVCCharString@@@Z
+  00713510 RELOCATION_MATCH NTCScriptedControl::CActionPerformExpression::?Update@CActionPerformExpression@NTCScriptedControl@@UAEXXZ
+  0072e130 RELOCATION_MATCH CTCMeshAutomaticEntityCreator::?CreateParticle@CTCMeshAutomaticEntityCreator@@AAEXABVCCharString@@0PAVCTCGraphicAppearance@NGraphicAppearance@@@Z
+  00799900 RELOCATION_MATCH CTCShopKeeper::?AcquireNewCustomer@CTCShopKeeper@@QAEXXZ
+  007e7c90 RELOCATION_MATCH CTCFireheartMinigame::?DrawPreparePrimitivesForRendering@CTCFireheartMinigame@@UAEXABVCEnginePrimitivePrepareInfo@@@Z

@@ -1,160 +1,68 @@
-// CWorldMap::LoadAllLoadableGlobalThingsFromSingleFile(const CWideString& filename) -- read the compiled global-things script and, for every "NEWMAP <n>" ... "ENDMAP" block, hand the block's text as a memory stream to the thing manager for map n
-// Leaf: ?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@
-// Retail: Fable.exe (TLC, VC7.1) @ 0x004FE2A0, 614 bytes, `ret 4` (FableWin.pdb
-//   ?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@@IAEXABVCWideString@@@Z).
-// Callees: CCharString() 0x0099E4B0, CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0,
-//   CDiskFileWin32(path, 1, 2) 0x0099AD80 (inline dtor: Close 0x0099A920, ~CWideString 0x0099B510, ~CBase 0x0099A300),
-//   CCharString::LoadFromFile 0x0099F2E0, CStringParser(const CCharString&, callback, const CCharString&, long) 0x00404720
-//   (inline dtor: ~list 0x004046B0, ~CBaseClass 0x0099A2E0), CStringParser::FindKeyword 0x009B9BA0 / ReadAsInteger
-//   0x009BA540 / ReadAsStringUntilString 0x009BA330, DisplayProgress 0x009E9F40 (__fastcall), operator new 0x00BFEA1A,
-//   CBaseClassNonCopyable() 0x0099A2F0, CWideString() 0x0099AED0, the memory input stream's Init(data, length) 0x009E93C0
-//   (vtable 0x0122E0FC), counted-pointer deleter 0x0050BE40, CWorld slot 3 (the thing manager) and its
-//   LoadGlobalThingBatch(CCountedPointer<CDataInputStream>, long) 0x005223F0, operator delete 0x00BFE9BC.
-//   Literals "" 0x0122D70E, "NEWMAP" 0x0124466C, "ENDMAP" 0x01244664, "LoadAllLoadableGlobalThingsFromSingleFile" 0x01244638;
-//   the empty-text constant 0x0129AAF4.
-// Layout: CStringParser retail 0x28 bytes as the landed DoScriptDataPersist 0x00CB7CB0; CCharString data block
-//   {const char* Data; long Length} per this function's inline accessors.
-// Shape: the stream's OwnsData flag is a member with its own inline ctor (puts the Name lea after the word stores, as
-//   retail); the counted-pointer info comes from `p ? new CCPPointerInfo(deleter, p) : 0`; c_str()/length() are
-//   if-return accessors (retail tests the null data block once, non-null arm first).
-// Name fix (agentNF6 2026-11-10): NProgressDisplay::DisplayProgress 0x009E9F40 is ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb; namespace NProgressDisplay, (text, float, bool, bool)); the float takes the stack slot either way under __fastcall, so the call bytes are unchanged.
-class CWideString { public:
-    void* PStringData;
-    CWideString();                                     // 0x0099AED0
-    ~CWideString();                                    // 0x0099B510
-};
-class CAFile;
-class CASuspendableProcess;
-class CCharStringData { public: const char* Data; long Length; };
-extern const char g_EmptyText[];                       // 0x0129AAF4
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString();                                     // 0x0099E4B0
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    void LoadFromFile(CAFile& file, CASuspendableProcess* process, long length);   // 0x0099F2E0
-    const char* c_str() const { if (!PStringData) return g_EmptyText; return PStringData->Data; }
-    long length() const { if (!PStringData) return 0; return PStringData->Length; }
-};
-namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString& text, float fraction, bool flag, bool flag2); }   // 0x009E9F40
-
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {                      // retail std::list<CStringParserCommentBoundaries>: sentinel only
-public:
-    void* m_pHead;
-    ~list();                       // 0x004046B0
-};
-} // namespace std
-class CStringParser : public CBaseClass { public:                    // retail 0x28 bytes
-    char*                    String;                   // +0x04
-    unsigned long            BaseLineOffset;           // +0x08
-    CCharString              Filename;                 // +0x0c
-    CCharString              TempCharString;           // +0x10
-    std::list<CStringParserCommentBoundaries> Comments;                 // +0x14
-    void (*ErrorCallback)(CCharString*);               // +0x18
-    long                     CursorPos[3];             // +0x1c CCursorPos
-    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
-                  long baseLineOffset);                // 0x00404720
-    bool SkipPastString(const CCharString& keyword);      // 0x009B9BA0 NF35: Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (catalog CStringParser::SkipPastString)
-    long ReadAsInteger();                              // 0x009BA540
-    CCharString ReadAsStringUntilString(const CCharString& end);   // 0x009BA330
-};
-
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                          // 0x0099A300
-}; } using N_0099a300::CBase;
-enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBase { public:                        // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
-    virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
-    virtual void Close();                              // 0x0099A920 (slot 2)
-    long        AccessType;
-    long        Position;
-    long        Length;
-    void*       WinFileHandle;
-    bool        Opened;
-    CWideString Pathname;                              // +0x18
-    CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
-    ~CDiskFileWin32() { Close(); }
-};
-
-class CBaseClassNonCopyable {
-protected:
-    CBaseClassNonCopyable();                           // 0x0099A2F0
-    virtual ~CBaseClassNonCopyable();
-};
-class CDataInputStream : public CBaseClassNonCopyable { public:
-    long f4, f8, fc;
-};
-class CMemoryDataInputStream : public CDataInputStream { public:     // vtable 0x0122E0FC, 0x24 bytes
-    const char* Data;                                  // +0x10
-    long        Size;                                  // +0x14
-    long        Position;                              // +0x18
-    struct CFlag { bool Value; CFlag() : Value(false) { } } OwnsData;   // +0x1c
-    CWideString Name;                                  // +0x20
-    CMemoryDataInputStream() : Data(0), Size(0), Position(0) { }
-    virtual ~CMemoryDataInputStream();
-    void Init(const char* data, long length);          // 0x009E93C0
-};
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* Deleter)(void* object);
-    void* Object;
-    CCPPointerInfo(void (__fastcall* deleter)(void*), void* object) : RefCount(1), Deleter(deleter), Object(object) { }
-};
-void __fastcall DeleteDataInputStream(void* object);  // 0x0050BE40
-struct CDataInputStreamPointer {                       // CCountedPointer<CDataInputStream>
-    CDataInputStream* Data;
-    CCPPointerInfo*   Info;
-    CDataInputStreamPointer(CDataInputStream* p) : Data(p)
-    {
-        Info = p ? new CCPPointerInfo(DeleteDataInputStream, p) : 0;
-    }
-    CDataInputStreamPointer(const CDataInputStreamPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CDataInputStreamPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->Deleter(Info->Object);
-            delete Info;
-        }
-    }
-};
-class CThingManager { public:
-    void LoadGlobalThingBatch(CDataInputStreamPointer stream, long map);   // 0x005223F0
-};
-class CWorld { public:
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual CThingManager* GetThingManager();          // slot 3 (+0xc)
-};
-class CWorldMap { public:
-    void* __vftable;
-    long f4;
-    CWorld* World;                                     // +0x08
-    void LoadAllLoadableGlobalThingsFromSingleFile(const CWideString& filename);
-};
+// CWorldMap::LoadAllLoadableGlobalThingsFromSingleFile(const CWideString& filename) -- read the compiled global-things script and, for every "NEWMAP <n>" ... "ENDMAP" block, hand the block's text as an in-memory file to the thing manager for map n
+// Leaf: ?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@@QAEXABVCWideString@@@Z
+// (Ego_r.pdb / FableWin.pdb spell it protected, IAE; engine/CWorldMap.h FABLE_RETAIL_CWORLDMAP_LOADFROMFILE declares it public, so the self
+//  symbol stays QAE until that header block is corrected -- coordinator header change, NOTES.md.)
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004FE2A0, 614 bytes, `ret 4`.
+// Callees: CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / ~ 0x0099EAE0, CDiskFileWin32(path, 1, 2) 0x0099AD80 (inline dtor: Close
+//   0x0099A920), CCharString::LoadFromFile 0x0099F2E0, CStringParser(text, 0, "", 0) 0x00404720 (inline dtor), SkipPastString 0x009B9BA0 /
+//   ReadAsInteger 0x009BA540 / ReadAsStringUntilString 0x009BA330, NProgressDisplay::DisplayProgress 0x009E9F40, operator new 0x00BFEA1A
+//   (CMemoryFile, vtable 0x0122E0FC), CMemoryFile::Open(void*, long) 0x009E93C0, CCountedPointer<CAFile> (DeleteData 0x0050BE40),
+//   CWorld slot 3 GetThingManager, CThingManager::LoadLoadableGlobalThingsFromFile(CCountedPointer<CAFile>, long) 0x005223F0.
+// NF62 (2026-11-17): ported onto engine/CWorldMap.h (LOADFROMFILE) / CWorld.h / CThingManager.h / CMemoryFile.h / CDiskFileWin32.h /
+//   CStringParser.h / CCountedPointer.h / NProgressDisplay.h / fable_string.h (every local model deleted). The memory stream the landed row
+//   called CMemoryDataInputStream is CMemoryFile (RTTI vtable 0x0122E0FC, as 0x00500230) and its deleter is CCountedPointer<CAFile>::DeleteData;
+//   the thing-manager call is Ego_r ?LoadLoadableGlobalThingsFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@J@Z (the landed
+//   stand-in LoadGlobalThingBatch(CDataInputStreamPointer)). Overlay opt-ins FABLE_RETAIL_CMEMORYFILE_OPENMEMORY and
+//   FABLE_RETAIL_CTHINGMANAGER_LOADLOADABLEGLOBALTHINGS.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CAFILE
+#define FABLE_RETAIL_CDISKFILEWIN32
+#define FABLE_RETAIL_CMEMORYFILE
+#define FABLE_RETAIL_CMEMORYFILE_OPENMEMORY
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CWORLDMAP_LOADFROMFILE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CSTRINGPARSER
+#define FABLE_RETAIL_CPARSEDITEM
+#define FABLE_RETAIL_CTHINGMANAGER
+#define FABLE_RETAIL_CTHINGMANAGER_LOADLOADABLEGLOBALTHINGS
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CWORLD
+#include <string.h>
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CAFile.h"
+#include "engine/CDiskFileWin32.h"
+#include "engine/CMemoryFile.h"
+#include "engine/CArray.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CMapInfo.h"
+#include "engine/CStringParser.h"
+#include "engine/CWorld.h"
+#include "engine/CThingManager.h"
+#include "engine/CWorldMap.h"
+#include "engine/NProgressDisplay.h"
 
 void CWorldMap::LoadAllLoadableGlobalThingsFromSingleFile(const CWideString& filename)
 {
     CCharString text;
     CDiskFileWin32 file(filename, FILE_ACCESS_READ, 2);
-    text.LoadFromFile(*(CAFile*)&file, 0, -1);
-    CStringParser parser(text, 0, CCharString(""), 0);
-    while (parser.SkipPastString("NEWMAP")) {
+    text.LoadFromFile(file, 0, -1);
+    CStringParser parser(text);
+    while (parser.SkipPastString("NEWMAP"))
+    {
         long map = parser.ReadAsInteger();
         CCharString block = parser.ReadAsStringUntilString("ENDMAP");
         NProgressDisplay::DisplayProgress("LoadAllLoadableGlobalThingsFromSingleFile", -1.0f, false, false);
-        CMemoryDataInputStream* stream = new CMemoryDataInputStream;
-        stream->Init(block.c_str(), block.length());
-        CDataInputStreamPointer pointer(stream);
-        World->GetThingManager()->LoadGlobalThingBatch(pointer, map);
+        CMemoryFile* memory_file = new CMemoryFile;
+        memory_file->Open((void*)block.GetAsCharArray(), block.GetLength());
+        CCountedPointer<CAFile> file_pointer(memory_file);              // a named local: retail builds it, copies it into the argument slot, and releases it after SkipPastString
+        World.GetThingManager().LoadLoadableGlobalThingsFromFile(file_pointer, map);
         parser.SkipPastString("ENDMAP");
     }
 }

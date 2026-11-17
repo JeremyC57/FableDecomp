@@ -25,6 +25,13 @@ enum ESex;
 class CCreatureAbilityDef;class CSoundPair;
 #endif
 class CThingCreatureBase : public CThingGameObject {
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ONDIE
+// NF62 opt-in (2026-11-17, row 0x006A9590 CThingPlayerCreature::OnDie, which calls it qualified last): Ego_r.pdb ?OnDie@CThingCreatureBase@@UAEXXZ
+// (public virtual; the CThing slot-11 override, out of line at 0x00663F50, vtable 0x0125AC38 is CThingCreatureBase's slot 11). Declaration only.
+public:
+    virtual void OnDie();                                        // slot 11 0x00663F50
+private:
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ISCHILD
 // Retail opt-in (agentC23, row 0x0058578B CTCInventory::OpenInventory; first written by the acctB lane): Ego_r.pdb / FableWin.pdb
 // ?IsChild@CThingCreatureBase@@QBE_NXZ, out of line at 0x00661F70 (the default branch declares it too). Declaration only.
@@ -411,6 +418,12 @@ public:
     // ?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z (const,
     // returns a reference), out of line in retail at 0x00662EF0. Declaration only: no layout change.
     const class CAnimationEntry& GetRandomAnimFromNameWithFilter(const CCharString& name, const class CAnimFilterBase& filter) const;   // 0x00662EF0
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMMOVEMENTDISTANCE
+    // NF62 opt-in (2026-11-17, row 0x00747330 CTCStealth::InitialiseSneakSpeed): Ego_r.pdb / FableWin.pdb
+    // ?GetAnimMovementDistance@CThingCreatureBase@@QBEMJ@Z (const, by bank index; out of line in retail at 0x006627A0, `push anim ;
+    // mov ecx,creature ; call`, the distance in st0). Declaration only: no layout change.
+    float GetAnimMovementDistance(long anim_index) const;                // 0x006627A0
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
     // Retail opt-in (chunk 802, row 0x008EACB0 NCreatureMode::CModeHoverBase::OnActivate): Ego_r.pdb

@@ -1,93 +1,58 @@
 // CTCStealth::InitialiseSneakSpeed() -- derive the maximum sneaking speed from the creature's crouching walk animation: its scaled movement length over its duration in frames (0.1 when either is not positive)
-// Leaf: InitialiseSneakSpeed
-// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
-//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Leaf: ?InitialiseSneakSpeed@CTCStealth@@AAEXXZ
+// Name: Ego_r.pdb / FableWin.pdb ?InitialiseSneakSpeed@CTCStealth@@AAEXXZ (private; engine/CTCStealth.h declares it under private:).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00747330, 279 bytes (plain `ret`).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 ("CROUCH" @ 0x01267B28, "ST_WALK" @ 0x0125A990), CCharString()
 //   @ 0x0099E4B0, CCharString::operator= @ 0x0099EFB0, CRC Calc @ 0x004014A0 (`__fastcall`, "" @ 0x0129AAF4 for an empty
-//   name), CThingCreatureBase::GetAnimFromName(const CCharString&, const CAnimFilterBase*, long) @ 0x00662B10, ~CCharString
-//   @ 0x0099EAE0 (x3), the creature's animation movement length @ 0x006627A0 and duration @ 0x006627F0 (both `(long anim)`,
-//   float), the appearance component's scale getter @ 0x004BBFF0 (manifest "CMap::DrawGetSeaLevel", unverified).
-//   CMainGameComponent::GetConstantFPS() @ 0x01375550; 0.0f @ 0x0122DEDC; 0.1f inline.
-// Layout: Ego_r.pdb CTCStealth MaxSneakingSpeed +0x18; retail CThing graphic-appearance component +0x64; CAnimFilterOfGroup
-//   (vtable 0x01267568; base CAnimFilterBase 0x0122FFCC) {Group +4, GroupCRC +8} as the landed 0x008C7C00 model; the anim
-//   entry's id at +0.
-// Shape: the names and the group filter live in a block that closes after the anim lookup (the filter's inline
-//   constructor assigns the group and its CRC from the argument; the base's inline virtual destructor gives the
-//   implicit filter destructor its 0x0122FFCC vtable restore); the scaled length and the duration are float locals
-//   compared with `> 0.0f`.
-class CCharStringData { public:
-    const char*   m_pData;                              // +0
-    unsigned long m_length;                             // +4
-};
-class CCharString { public:
-    CCharStringData* m_pData;
-    CCharString();                                      // 0x0099E4B0
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
-    const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
-};
-class CCRC {
-public:
-    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
-};   // 0x004014A0: CRC
-class CAnimFilterBase { public:                                // vtable 0x0122FFCC
-    virtual ~CAnimFilterBase() {}
-};
-class CAnimFilterOfGroup : public CAnimFilterBase { public:           // vtable 0x01267568
-    CCharString   Group;                                // +4
-    unsigned long GroupCRC;                             // +8
-    CAnimFilterOfGroup(const CCharString& group)
-        : Group()
-    {
-        Group = group;
-        GroupCRC = CCRC::Calc(0, group.GetPString(), group.GetLength());
-    }
-};
-class CAnimationEntry { public:
-    long AnimID;                                        // +0
-};
-struct CTCGraphicAppearance {
-    float GetScale();                                   // 0x004BBFF0
-};
-class CThingCreatureBase {
-public:
-    unsigned char _pad00[0x64];
-    CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
-    CAnimationEntry* GetAnimFromName(const CCharString& name, const CAnimFilterBase* filter, long flags);   // 0x00662B10
-    float GetAnimDuration(long anim);                   // 0x006627F0
-public:
-    float GetAnimMovementDistance(long) const;   // 0x006627A0
-};
-class CMainGameComponent {
-protected:
-    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
-public:
-    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
-};
-class CTCStealth { public:
-    virtual void v00();
-    CThingCreatureBase* ParentThing;                    // +0x04 (CTCBase)
-    unsigned char _pad08[0x18 - 0x08];
-    float MaxSneakingSpeed;                             // +0x18
-    void InitialiseSneakSpeed();
-};
+//   name), ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@J@Z @ 0x00662B10,
+//   ~CCharString @ 0x0099EAE0 (x3), ?GetAnimMovementDistance@CThingCreatureBase@@QBEMJ@Z @ 0x006627A0,
+//   ?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z @ 0x006627F0, ?GetFullScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ
+//   @ 0x004BBFF0 (all Ego_r.pdb / FableWin.pdb spellings). CMainGameComponent::GetConstantFPS() reads 0x01375550; 0.0f @ 0x0122DEDC.
+// Layout: Ego_r.pdb CTCStealth MaxSneakingSpeed +0x18; CThing PTCGraphicAppearance +0x64 (inline GetTCGraphicAppearance);
+//   CAnimFilterOfGroup {Group +4, GroupCRC +8} with its inline constructor (vtable 0x01267568, base 0x0122FFCC);
+//   CAnimationEntry BankIndex +0.
+// Shape: the names and the group filter live in a block that closes after the anim lookup; the scaled length and the
+//   duration are float locals compared with `> 0.0f`.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMQUERY
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMDURATION
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMMOVEMENTDISTANCE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FULLSCALE
+#define FABLE_RETAIL_CANIMFILTEROFGROUP_INLINE_CTOR
+#include "fable_string.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCBase.h"
+#include "engine/CTCStealth.h"
+#include "engine/CAnimFilterOfGroup.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
+#include "engine/CMainGameComponent.h"
 
 void CTCStealth::InitialiseSneakSpeed()
 {
-    CThingCreatureBase* creature = ParentThing;
+    CThingCreatureBase& creature = static_cast<CThingCreatureBase&>(GetParentThing());
     long anim;
     {
-        CCharString group("CROUCH", -1);
-        CCharString name("ST_WALK", -1);
+        CCharString group("CROUCH");
+        CCharString name("ST_WALK");
         CAnimFilterOfGroup filter(group);
-        anim = creature->GetAnimFromName(name, &filter, 0)->AnimID;
+        anim = creature.GetAnimFromName(name, filter, 0).BankIndex;
     }
-    CTCGraphicAppearance* appearance = creature->PTCGraphicAppearance;
-    float length = creature->GetAnimMovementDistance(anim) * appearance->GetScale();
-    float duration = creature->GetAnimDuration(anim);
+    float length = creature.GetAnimMovementDistance(anim) * creature.GetTCGraphicAppearance()->GetFullScale();
+    float duration = creature.GetAnimDuration(anim);
     if (length > 0.0f && duration > 0.0f)
         MaxSneakingSpeed = length / (duration * CMainGameComponent::GetConstantFPS());
     else

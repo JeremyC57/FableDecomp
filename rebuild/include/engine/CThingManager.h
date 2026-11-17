@@ -23,6 +23,14 @@ class CThingSearchTools;                                        // chunk 765
 class CEnginePrimitivePrepareInfo;                              // chunk 734: PreparePrimitivesForEngine's parameter
 #endif
 class CThingManager : public CClassFactory {
+#ifdef FABLE_RETAIL_CTHINGMANAGER_LOADLOADABLEGLOBALTHINGS
+// Opt-in (NF62, row 0x004FE2A0 CWorldMap::LoadAllLoadableGlobalThingsFromSingleFile): Ego_r.pdb / FableWin.pdb
+// ?LoadLoadableGlobalThingsFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@J@Z (retail 0x005223F0, the counted file by value).
+// Declaration only.
+public:
+void LoadLoadableGlobalThingsFromFile(CCountedPointer<CAFile> file, long map);   // 0x005223F0
+private:
+#endif
 #if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CTHINGMANAGER_ISDRAWCOMBATCOLLISIONDEBUG)
 // Evidence: both original PDB type records and donor OnHit/helper disassembly.
 // (wf7, row 0x007FD650: FABLE_RETAIL_CTHINGMANAGER_ISDRAWCOMBATCOLLISIONDEBUG = this accessor alone.)
@@ -109,6 +117,13 @@ public:
     const CThing* PeekPThingWithUID(unsigned __int64 uid) const;        // 0x0051ED60
     // Codex pass 13 (row 0x004FB990): FableWin ?GetCurrentThingUID@CThingManager@@QBE_KXZ, inline in retail (reads CurrentUniqueID).
     unsigned __int64 GetCurrentThingUID() const { return CurrentUniqueID; }
+#ifdef FABLE_RETAIL_CTHINGMANAGER_WORLDMAP
+    // NF62 opt-in (2026-11-17, row 0x006A5950 CThingPhysical::ConstructFromParams): FableWin.pdb ?GetWorldMap@CThingManager@@QAEAAVCWorldMap@@XZ /
+    // ?PeekWorldMap@CThingManager@@QBEABVCWorldMap@@XZ (no Ego_r.pdb copy), inline in retail: the caller reads the WorldMap reference +0x28
+    // in place (`mov eax,[013B8A1Ch] ; mov ecx,[eax+28h]`, 0x006A5958). No layout change.
+    CWorldMap& GetWorldMap() { return WorldMap; }
+    const CWorldMap& PeekWorldMap() const { return WorldMap; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_SETCURRENTTHINGUID
     // Retail opt-in (chunk H40i, row 0x00507C30 CWorldMap::LoadFromFile; re-based by agent wfE10): FableWin.pdb
     // ?SetCurrentThingUID@CThingManager@@QAEX_K@Z, inline in retail (the row stores CurrentUniqueID in place at 0x00507E87 / 0x00508217).

@@ -91,6 +91,11 @@ protected:
     CRightHandedSet RHSet;                                          // +0x68
     CRightHandedSet OldRHSet;                                       // +0x80
     C2DVector OffsetVector;                                         // +0x98
+#ifdef FABLE_RETAIL_CTCPHYSICSRIGIDBODY_SETPHYSICSMESHBANKINDEX
+    // NF62 opt-in (2026-11-17, row 0x0075A530): Ego_r.pdb ?SetPhysicsMeshBankIndex@CTCPhysicsRigidBody@@MAEXJ@Z (protected override of
+    // CTCPhysicsBase's public virtual; no FableWin.pdb copy). Declaration only: no layout or vtable change.
+    virtual void SetPhysicsMeshBankIndex(long index);               // 0x0075A530
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSRIGIDBODY_BODY
     // Nested opt-in (wf17, row 0x0075B000 InitialiseBody): Body's Ego_r.pdb type CRigidBody (engine/CRigidBody.h, retail 0x1b8) and
     // FableWin.pdb's private ?InitialiseBody@CTCPhysicsRigidBody@@AAEXXZ (0x0075B000) /

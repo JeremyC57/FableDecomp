@@ -1,116 +1,51 @@
-// CThingPhysical::ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, CThingPhysical* originalCreator, CThingPhysical* lastCreator, bool a7) -- construct the CThing on the map under the position, then reset scale, health (from the def), creators and the hit flags
-// Leaf: ConstructFromParams
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
-//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x006A5950, length 289 bytes, `ret 1Ch`.
+// CThingPhysical::ConstructFromParams(long defIndex, const C3DVector& pos, long player, unsigned long a4, CThingPhysical* originalCreator, CThingPhysical* lastCreator, bool addToMap) -- construct the CThing on the map under the position, then reset scale, health (from the def), creators and the hit flags
+// Leaf: ?ConstructFromParams@CThingPhysical@@IAE_NJABVC3DVector@@JKPAV1@1_N@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x006A5950, length 289 bytes, `ret 1Ch`. Identity: Ego_r.pdb
+//   ?ConstructFromParams@CThingPhysical@@IAE_NJABVC3DVector@@JKPAV1@1_N@Z (protected; the position by const reference).
 // Callees: the world map's GetMapNumberAt(const C3DVector&) (virtual slot 16, +0x40) on CThing::GetPCurrentThingManager() @ 0x013B8A1C
-// (WorldMap +0x28), CThing::ConstructFromParams(long, long, long, bool) @ 0x004CA010, CBaseIntelligentPointer ctor
+// (WorldMap +0x28), CThing::ConstructFromParams(long, long, long, bool) @ 0x004CA010 (protected), CBaseIntelligentPointer ctor
 // @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10 (the temporaries' vtable 0x01244DCC is
-// CIntelligentPointer<CThingPhysical>, as the landed CThingPhysical ctor 0x005296B0).
-// Caller: CThingGameObject::ConstructFromParams 0x008388D0 (landed; the fourth argument is not used here).
-// Layout (retail, as the landed CThingPhysical ctor; engine/CThingPhysical.h carries the PDB offsets 0x18 higher, so the
-// class is modelled locally): CThing PBaseDef +0x70, Drawable = bit 1 of +0x92; Scale +0x9c, PLastCreator +0xa0,
-// POriginalCreator +0xa8, MaxHealth +0xb0, Health +0xb4, CanComeBetweenCameraAndObservedThing +0xb8, the hit flags
-// at +0xbc (Damageable, Killable, RespondToHits, EvadeAllHits, NegateAllHits, AbleToBeEngagedInCombat).
-// CThingBaseDef (retail = Ego_r.pdb - 4): Damageable bit 6 of +0x42, Health +0x50.
+// CIntelligentPointer<CThingPhysical>).
+// Caller: CThingGameObject::ConstructFromParams 0x008388D0 (landed; NAME_FIXES for its binding).
 // Shape: `Health = MaxHealth = def->Health` (MaxHealth stored first, through the FPU); each creator is assigned through
 // a CIntelligentPointer<CThingPhysical>(T*) temporary (inline ctor: base ctor, vtable, SetPItem) and the inline
 // `operator=` (SetPItem(other.GetPItem())), destroyed by the base dtor; `if (base) {...; return true;} return false;`
 // keeps the false exit last.
+// NF62 (2026-11-17, round 7): ported onto the shared CThing / CThingPhysical / CThingBaseDef / CThingManager / CWorldMap /
+//   CIntelligentPointer headers (the local CWorldMap / CThingManager / CThingBaseDef / CBaseIntelligentPointer / CIntelligentPointer /
+//   CThing / CThingPhysical models are gone); 0x004CA010 now binds ?ConstructFromParams@CThing@@IAE_NJJJ_N@Z. Overlay opt-ins:
+//   FABLE_RETAIL_CTHING_CONSTRUCTFROMPARAMS, FABLE_RETAIL_CTHINGPHYSICAL_CONSTRUCTFROMPARAMS, FABLE_RETAIL_CTHINGMANAGER_WORLDMAP (the
+//   FableWin.pdb inline GetWorldMap accessor).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MANAGERACCESS
+#define FABLE_RETAIL_CTHING_CONSTRUCTFROMPARAMS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGPHYSICAL_CONSTRUCTFROMPARAMS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CTHINGBASEDEF
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CTHINGMANAGER
+#define FABLE_RETAIL_CTHINGMANAGER_WORLDMAP
+#define FABLE_RETAIL_CWORLDMAP
+#include "engine/CThing.h"
+#include "engine/CThingPhysical.h"
+#include "fable_string.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CThingManager.h"
+#include "engine/CWorldMap.h"
 #include "engine/C3DVector.h"
 
-class CWorldMap {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
-    virtual long GetMapNumberAt(const C3DVector& pos) const;   // slot 16 (+0x40)
-};
-class CThingManager {
-public:
-    unsigned char _pad00[0x28];
-    CWorldMap*    WorldMap;                                    // +0x28
-};
-
-class CThingBaseDef { public:
-    unsigned char _pad00[0x42];
-    unsigned char AvailableInEditor_42 : 6;                    // +0x42 bits 0..5 (IsLoadableGlobal .. DrawProjectileWeaponTrails, IsVulnerableToMelee)
-    unsigned char Damageable : 1;                              // +0x42 bit 6
-    unsigned char AlwaysIncludeInObjectStrikeScans : 1;        // +0x42 bit 7
-    unsigned char _pad43[0x50 - 0x43];
-    float         Health;                                      // +0x50
-};
-
-class CThingPhysical;
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { // CIntelligentPointer<CThingPhysical>, vtable 0x01244DCC
-public:
-    CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other)
-    {
-        T* item = other.GetPItem();
-        SetPItem(item);
-        return *this;
-    }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
-class CThing {
-private:
-    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
-public:
-    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
-private:
-public:
-    virtual void v00();
-    unsigned char  _pad04[0x70 - 0x04];
-    CThingBaseDef* PBaseDef;                                   // +0x70
-    unsigned char  _pad74[0x92 - 0x74];
-    unsigned char  DeletedOnOwnerLevelOutOfScope : 1;          // +0x92 bit 0
-    unsigned char  Drawable : 1;                               // bit 1
-    unsigned char  _pad92 : 6;
-    unsigned char  _pad93[0x98 - 0x93];
-    bool ConstructFromParams(long defIndex, long a2, long mapNumber, bool a4);   // 0x004CA010
-};
-
-class CThingPhysical : public CThing {
-public:
-    void*                       HealthOverTimeEffects;         // +0x98 (STLport list head)
-    float                       Scale;                         // +0x9c
-    CIntelligentPointer<CThingPhysical> PLastCreator;                  // +0xa0
-    CIntelligentPointer<CThingPhysical> POriginalCreator;              // +0xa8
-    float                       MaxHealth;                     // +0xb0
-    float                       Health;                        // +0xb4
-    long                        CanComeBetweenCameraAndObservedThing;   // +0xb8
-    unsigned char               Damageable : 1;                // +0xbc bit 0
-    unsigned char               Killable : 1;
-    unsigned char               RespondToHits : 1;
-    unsigned char               EvadeAllHits : 1;
-    unsigned char               NegateAllHits : 1;
-    unsigned char               AbleToBeEngagedInCombat : 1;
-    bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4,
-                             CThingPhysical* originalCreator, CThingPhysical* lastCreator, bool a7);
-};
-
-bool CThingPhysical::ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4,
-                                         CThingPhysical* originalCreator, CThingPhysical* lastCreator, bool a7)
+bool CThingPhysical::ConstructFromParams(long defIndex, const C3DVector& pos, long player, unsigned long a4,
+                                         CThingPhysical* originalCreator, CThingPhysical* lastCreator, bool addToMap)
 {
-    long mapNumber = CThing::GetPCurrentThingManager()->WorldMap->GetMapNumberAt(*pos);
-    if (CThing::ConstructFromParams(defIndex, a3, mapNumber, a7)) {
+    long mapNumber = CThing::GetPCurrentThingManager()->GetWorldMap().GetMapNumberAt(pos);
+    if (CThing::ConstructFromParams(defIndex, player, mapNumber, addToMap)) {
         Scale = 1.0f;
         Health = MaxHealth = PBaseDef->Health;
         CanComeBetweenCameraAndObservedThing = -1;

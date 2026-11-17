@@ -130,6 +130,11 @@ class CPlayer : public CInitBaseClass {
 class CPlayer {
 #endif
 public:
+#ifdef FABLE_RETAIL_CPLAYER_GLOBALEVENTCREATUREDIED
+    // NF62 opt-in (2026-11-17, row 0x006A9590 CThingPlayerCreature::OnDie): Ego_r.pdb ?GlobalEventCreatureDied@CPlayer@@QAEXPAVCThingCreatureBase@@@Z
+    // (public, out of line at 0x0087C580). Declaration only: no layout change.
+    void GlobalEventCreatureDied(class CThingCreatureBase* creature);   // 0x0087C580
+#endif
 #ifdef FABLE_RETAIL_CPLAYER_RESPAWNDELAY
     // Opt-in (chunk 2056 scout, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics): FableWin.pdb ?GetPlayerRespawnDelay@CPlayer@@QBEJXZ
     // (0x01A671D5, 15 bytes / 8 instructions at /Od = a plain member read), inline in retail (0x0048EE9C..0x0048EEA1: GetMainPlayer

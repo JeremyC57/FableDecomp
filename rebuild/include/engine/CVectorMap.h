@@ -37,6 +37,13 @@ public:
     // instance 0x009B1FF0). A declaration only.
     const_iterator UpperBound(const K&) const;
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_COUNT
+    // Opt-in (NF62, row 0x0073A8E0 CTCCreatureModeManager::AllocateMode): Ego_r.pdb ?Count@?$CVectorMap@KVCRegisteredModeInfo@
+    // CTCCreatureModeManager@@V?$CKeyPairCompareLess@..@@@@QBEJABK@Z (const, no retail out-of-line copy): inline there, the const
+    // UpperBound (0x0073D250) is called first, then the const LowerBound (0x0073D210), and the difference taken (`sub ; sar 3`).
+    // Needs FABLE_RETAIL_CVECTORMAP_UPPERBOUND.
+    long Count(const K& key) const { const_iterator upper=UpperBound(key); return upper-LowerBound(key); }
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_GETKEYLIST
     // Retail opt-in (chunk Q15, row 0x0086B9D0): Ego_r.pdb ?GetKeyList@?$CVectorMap@J..@@QBEXAAV?$vector@J..@std@@@Z, out of line in
     // retail (0x0086D240 for <long, CRandomAppearanceMorph::CSkeletalMorph>). Declaration only.

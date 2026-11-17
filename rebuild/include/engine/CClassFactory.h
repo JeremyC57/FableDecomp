@@ -18,6 +18,16 @@ protected:
     virtual void AddNewClassType(const CClassTypeInit&);
     virtual void OnCreateClass(CClass&);
     virtual void OnDeleteClass(CClass&);
+#ifdef FABLE_RETAIL_CCLASSFACTORY_MOVEALLOCATEDCLASS
+public:
+    // NF62 opt-in (2026-11-17, row 0x004CA010 CThing::ConstructFromParams): Ego_r.pdb ?MoveAllocatedClassInLists@CClassFactory@@QAEXAAVCClass@@J_N@Z
+    // (public), retail 0x00A37300: Ego_r donor order RegisterAllocatedClass 0x00B76980 / CClass::CClass 0x00B76B50 / MoveAllocatedClassInLists
+    // 0x00B76BB0 / ~CClassFactory 0x00B76BE0 = retail 0x00A371F0 / 0x00A372D0 / 0x00A37300 / 0x00A37360, and the call
+    // (`push flag ; push type ; push this ; mov ecx,manager ; call`) is that signature. The landed self row spells it ReregisterAllocatedClass
+    // (descriptive): NAME_FIXES. Declaration only.
+    void MoveAllocatedClassInLists(CClass& item, long type, bool flag);   // 0x00A37300
+protected:
+#endif
 #ifdef FABLE_RETAIL_CCLASSFACTORY_ALLOCATECLASS
 public:
     // Retail opt-in (chunk 846, row 0x0051FD80): Ego_r.pdb ?AllocateClass@CClassFactory@@QAEPAVCClass@@ABVCCharString@@@Z (public, out of

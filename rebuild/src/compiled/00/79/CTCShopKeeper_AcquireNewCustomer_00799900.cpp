@@ -15,27 +15,50 @@
 // Shape: the shop position is a named copy taken before the keeper's own position; the box is a named C2DBoxI built from
 //          two truncated coordinates (+/-15); the best-thing result is ignored and the out pointer latched through a
 //          temporary; the by-value AddNewCustomer argument is copy-constructed in its stack slot.
-#include "engine/C3DVector.h"
-class CBaseObject;
-#include "engine/CThing.h"
-class CThingCreatureBase;
-class C2DBoxI { public:
-    long MinX, MinY, MaxX, MaxY;
-    C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
-};
+// Name-fix (agentNF55, round 7): the CIntelligentPointerCreature / CTCShop / CTCShopKeeper stand-ins replaced by the shared
+//   engine/CTCShopKeeper.h (opt-ins SHOP, CUSTOMER and NF55's ACQUIRE) over the retail CThing / CThingCreatureBase chain, so the
+//   by-value argument is CIntelligentPointer<CThingCreatureBase> and AddNewCustomer binds Ego_r.pdb
+//   ?AddNewCustomer@CTCShopKeeper@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z; the two search-tool calls are the Ego_r.pdb
+//   member-template instances ??$GetPBestThingInRoughArea@VCThingFilter_IsPotentialCustomer@@VCThingCompare_Nearest@@VCThingCreatureBase@@@
+//   CThingSearchTools@@... / ??$GetPFirstThingInRoughArea@VCThingFilter_IsPotentialCustomer@@VCThingCreatureBase@@@CThingSearchTools@@...
+// NF62 (2026-11-17, round 7): finished on the headers -- C2DBoxI (ORIGINAL_FOUR_COORD_CTOR), CThingCompare_Nearest and CThingSearchTools
+//   (BESTROUGH / FIRSTROUGH member templates) from their shared headers, EmptyCustomerList / AcquireNewCustomer declared by the overlay
+//   opt-in FABLE_RETAIL_CTCSHOPKEEPER_ACQUIRE; CThingFilter_IsPotentialCustomer (no shared header) stays local. Retail reads `customer`
+//   after the temporary's base ctor 0x00A01B10 and stores the vptr after that read (0x007999B6..0x007999C4): the latch is a scoped
+//   default-constructed CIntelligentPointer<CThingCreatureBase> set through FableWin.pdb ?Set@..QAEXPAV..@Z, then assigned; the by-value
+//   (T*) constructor (the only PDB form) reads the pointer before the base ctor (NF55's DIFFER).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCSHOPKEEPER_SHOP
+#define FABLE_RETAIL_CTCSHOPKEEPER_CUSTOMER
+#define FABLE_RETAIL_CTCSHOPKEEPER_ACQUIRE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C2DBOXI_ORIGINAL_FOUR_COORD_CTOR
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH
+#include "fable_string.h"
+#include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    virtual void v00();
-    CIntelligentPointerCreature(CThingCreatureBase* const& item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointerCreature(const CIntelligentPointerCreature& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
-    void operator=(const CIntelligentPointerCreature& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); }
-};
-class CTCShop { public:
-    void* __vftable;
-    CThing* ParentThing;                           // +0x04 (CTCBase)
-};
-class CTCShopKeeper;
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCShopKeeper.h"
+#include "engine/CTCShop.h"
+#include "engine/C2DExtentsI.h"
+#include "engine/C2DBoxI.h"
+#include "engine/CThingCompare_Nearest.h"
+#include "engine/CThingSearchTools.h"
 class CThingFilter_IsPotentialCustomer { public:
     CThing* ShopperContainer;                      // +0x00
     C3DVector Pos;                                 // +0x04
@@ -43,34 +66,13 @@ class CThingFilter_IsPotentialCustomer { public:
     bool AllowExistingShopper;                     // +0x14
     CThingFilter_IsPotentialCustomer(CTCShopKeeper* shopKeeper, bool allowExistingShopper);   // 0x00799D80
 };
-class CThingCompare_Nearest { public:
-    C3DVector Pos;
-    CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) { }
-};
-class CThingSearchTools { public:
-    bool GetPBestThingInRoughArea(const C2DBoxI& area, const CThingFilter_IsPotentialCustomer& filter,
-                                  const CThingCompare_Nearest& compare, CThingCreatureBase** out) const;   // 0x0079A050
-    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_IsPotentialCustomer& filter,
-                                   CThingCreatureBase** out) const;                                   // 0x0079A280
-};
-// CTCBase: engine/CTCBase.h (FABLE_RETAIL_CTCBASE): PeekThingSearchTools 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ
-//   (Ego_r.pdb / FableWin.pdb; NF28: was spelled CTCShopKeeper::GetThingSearchTools() const returning a pointer).
-#define FABLE_RETAIL_CTCBASE
-#include "engine/CTCBase.h"
-class CTCShopKeeper : public CTCBase { public:     // vptr +0x00, ParentThing +0x04 (CTCBase, 0x0c)
-    CIntelligentPointerCreature Customer;          // +0x0c
-    CTCShop* GetShopTC();                          // 0x00798F50
-    void AddNewCustomer(CIntelligentPointerCreature customer);   // 0x00798D90
-    void EmptyCustomerList();                      // 0x00798E10
-    void AcquireNewCustomer();
-};
 
 void CTCShopKeeper::AcquireNewCustomer()
 {
     CTCShop* shop = GetShopTC();
     if (!shop)
         return;
-    C3DVector shopPos = shop->ParentThing->GetPos();
+    C3DVector shopPos = shop->GetParentThing().GetPos();
     const C3DVector& pos = GetParentThing().GetPos();
     long x = (long)pos.X;
     long y = (long)pos.Y;
@@ -78,7 +80,11 @@ void CTCShopKeeper::AcquireNewCustomer()
     CThingCreatureBase* customer = 0;
     PeekThingSearchTools().GetPBestThingInRoughArea(area, CThingFilter_IsPotentialCustomer(this, false),
         CThingCompare_Nearest(shopPos), &customer);
-    Customer = CIntelligentPointerCreature(customer);
+    {
+        CIntelligentPointer<CThingCreatureBase> new_customer;
+        new_customer.Set(customer);
+        Customer = new_customer;
+    }
     if (Customer.GetPItem())
         AddNewCustomer(Customer);
     else if (!PeekThingSearchTools().GetPFirstThingInRoughArea(area, CThingFilter_IsPotentialCustomer(this, true), &customer))

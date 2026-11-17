@@ -30,6 +30,13 @@ class CThingObject;
 #endif
 #pragma pack(push, 1)
 class CThingPlayerCreature : public CThingCreatureBase {
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ONDIE
+// NF62 opt-in (2026-11-17, row 0x006A9590): Ego_r.pdb ?OnDie@CThingPlayerCreature@@MAEXXZ (protected virtual, the CThing slot-11 override; vtable
+// 0x01245828 holds 0x006A9590). Declaration only: no layout change.
+protected:
+    virtual void OnDie();                                        // slot 11 0x006A9590
+private:
+#endif
 
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_EXPRESSIONS
 public:
@@ -185,6 +192,13 @@ FABLE_STATIC_ASSERT_AT(178, sizeof(CThingPlayerCreature)==0x208);
 // Original sole base CThingCreatureBase; native Create006ac91c allocates208.
 // Complete original tail ControlPos through MovementBandType is unused here.
 class CThingPlayerCreature:public CThingCreatureBase {
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ONDIE
+// NF62 opt-in (2026-11-17, row 0x006A9590): Ego_r.pdb ?OnDie@CThingPlayerCreature@@MAEXXZ (protected virtual, the CThing slot-11 override; vtable
+// 0x01245828 holds 0x006A9590). Declaration only: no layout change.
+protected:
+    virtual void OnDie();                                        // slot 11 0x006A9590
+private:
+#endif
 
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_EXPRESSIONS
 public:

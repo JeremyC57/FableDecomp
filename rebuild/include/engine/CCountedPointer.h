@@ -291,6 +291,18 @@ public:
         else
             Info = Info;
     }
+#elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_RESET_NOINLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (NF62, row 0x00506E30 CWorldMap::GetLevelDimensions(const CCharString&)): the default Reset body below, visible but kept
+    // out of line -- that TU calls CCountedPointer<CAFile>::Reset as a COMDAT (0x0050F550, both arms) where VC7.1 expands it; seeing that it
+    // writes only the two members, VC7.1 keeps the pointer's address private and releases it with `dec dword ptr [esi] ; jne` (a
+    // declaration-only Reset reloads the count: `dec [eax] ; cmp [esi],0`).
+    __declspec(noinline) void Reset(T* data)
+    {
+        ReleaseData();
+        Data = data;
+        if (data)
+            Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
+    }
 #else
     void Reset(T* data)
     {

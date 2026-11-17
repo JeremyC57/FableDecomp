@@ -1,0 +1,30 @@
+addr       parity           behav  name
+004e9550   WARN RELOC_NAME: ??0CObjectAugmentationParticleSet@@QAE@XZ -> 004e9627 labelled 'CDateAndTime::CDateAndTime'
+004e9550   RELOCATION_MATCH PASS   TransferHelper
+00500230   RELOCATION_MATCH PASS   CreateNavMap
+00587847   WARN RELOC_NAME: ?Close@CTCHeroOnlineScoreboard@@QAEXXZ -> 00562e70 labelled 'CTCHeroOnlineScoreboard::ResetScoreboard'
+00587847   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00587847   RELOCATION_MATCH PASS   ClosePCInventory
+0059f304   WARN RELOC_NAME: ?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+0059f304   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0059f304   RELOCATION_MATCH PASS   CloseInventory
+00691ae0   RELOCATION_MATCH PASS   ProcessInput
+006a9590   WARN RELOC_NAME: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ -> 004c79a0 labelled 'CAnimateThing::GetMeshBank'
+006a9590   RELOCATION_MATCH PASS   OnDie
+006dcb20   WARN RELOC_NAME: ?_M_create_node@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@ABU?$pair@$$CBJVCComboMultiplierData@@@2@@Z -> 004f9763 labelled 'CRetailList_node0x28::Buynode'
+006dcb20   RELOCATION_MATCH PASS   _M_insert
+007222b0   RELOCATION_MATCH PASS   DeleteData
+00747330   RELOCATION_MATCH PASS   InitialiseSneakSpeed
+007ceb00   RELOCATION_MATCH PASS   CTCElectrocutedEffect
+
+WINS: 10
+  004e9550 RELOCATION_MATCH CPersistContext::?TransferHelper@CPersistContext@@QAEXPAVCObjectAugmentationParticleSet@@@Z
+  00500230 RELOCATION_MATCH CWorldMap::?CreateNavMap@CWorldMap@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAVCAFile@@AAVCASuspendableProcess@@@Z
+  00587847 RELOCATION_MATCH CTCInventory::?ClosePCInventory@CTCInventory@@QAEX_N@Z
+  0059f304 RELOCATION_MATCH CTCInventoryTrade::?CloseInventory@CTCInventoryTrade@@UAEXXZ
+  00691ae0 RELOCATION_MATCH CInputProcessPhotojournalCapture::?ProcessInput@CInputProcessPhotojournalCapture@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  006a9590 RELOCATION_MATCH CThingPlayerCreature::?OnDie@CThingPlayerCreature@@MAEXXZ
+  006dcb20 RELOCATION_MATCH std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >::?_M_insert@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBJVCComboMultiplierData@@@2@0@Z
+  007222b0 RELOCATION_MATCH CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>::?DeleteData@?$CCountedPointer@VCMeshMorphSet@CTCAppearanceMorphBase@@@@SIXPAX@Z
+  00747330 RELOCATION_MATCH CTCStealth::?InitialiseSneakSpeed@CTCStealth@@AAEXXZ
+  007ceb00 RELOCATION_MATCH CTCElectrocutedEffect::??0CTCElectrocutedEffect@@QAE@AAVCThing@@@Z

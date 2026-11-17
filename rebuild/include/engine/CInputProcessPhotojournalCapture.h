@@ -10,6 +10,11 @@
 class CInputProcessPhotojournalCapture : public CInputProcessGameBase {
 public:
     CInputProcessPhotojournalCapture(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_CINPUTPROCESSPHOTOJOURNALCAPTURE_PROCESSINPUT
+    // Opt-in (NF62, row 0x00691AE0): Ego_r.pdb ?ProcessInput@CInputProcessPhotojournalCapture@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z.
+    // Declaration only.
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);   // 0x00691AE0
+#endif
 #ifdef FABLE_RETAIL_CINPUTPROCESSPHOTOJOURNALCAPTURE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.

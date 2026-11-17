@@ -15,6 +15,16 @@ public:
     virtual ~CMemoryFile() { Close(); }
     virtual void Open(const CWideString&,FileAccessType,unsigned long);   // 0x009E94A0
     virtual void Close();                                                 // 0x009E9390
+#ifdef FABLE_RETAIL_CMEMORYFILE_OPENFROMFILE
+    // Opt-in (NF62, row 0x00500230 CWorldMap::CreateNavMap): Ego_r.pdb ?OpenFromFile@CMemoryFile@@QAEXAAVCAFile@@JPAVCASuspendableProcess@@@Z
+    // (retail 0x009E9420, landed), out of line. Declaration only.
+    void OpenFromFile(CAFile& file, long length, CASuspendableProcess* process);   // 0x009E9420
+#endif
+#ifdef FABLE_RETAIL_CMEMORYFILE_OPENMEMORY
+    // Opt-in (NF62, row 0x004FE2A0): Ego_r.pdb ?Open@CMemoryFile@@QAEXPAXJ@Z (the non-virtual open from a memory block; retail 0x009E93C0,
+    // `ret 8`: data, length). Declaration only.
+    void Open(void* data, long length);                                   // 0x009E93C0
+#endif
 #ifdef FABLE_RETAIL_CMEMORYFILE_DUMPTOFILE
     // Retail opt-in (chunk 849, row 0x009CF3A0): Ego_r.pdb ?DumpToFile@CMemoryFile@@QAEXXZ (0x009E9330, bound), out of line.
     void DumpToFile();                                                    // 0x009E9330

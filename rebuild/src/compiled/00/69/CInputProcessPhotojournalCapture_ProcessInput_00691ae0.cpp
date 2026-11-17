@@ -1,37 +1,61 @@
-// CInputProcessPhotojournalCapture::ProcessInput(const CInputEvent&,CProcessedInput&) -- translate character and photojournal actions into GUI events.
-// Leaf: ProcessInput
-#include "engine/CInputProcessGameBase.h"
+// CInputProcessPhotojournalCapture::ProcessInput(const CInputEvent&, CProcessedInput&) -- translate character and photojournal actions into GUI events
+// Leaf: ?ProcessInput@CInputProcessPhotojournalCapture@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00691AE0, 278 bytes, thiscall, `ret 8`. Callees: CInputEvent::GetType 0x00A03B40, GetChar 0x00A03B80,
+//   NUISystem::CManager::GetInstance 0x0041E5F2 (slot 12 SetKeyPressed [+0x30], slot 0 SetEvent [+0x00] of CObservable),
+//   CInputProcessGameBase::IsEventButtonPressed 0x00687A90 (protected const) and IsEventGameAction 0x00687CF0; GetMouseMovement
+//   (Ego_r 0x006B2E30) and CManager::SetMouseMovement are inline (the event's movement +0x0C/+0x10 into MouseMovement +0xB0/+0xB4).
+// Event values: EInputEventType 1 (character) / 15 (repeated character; the header declares the enum without enumerators);
+//   EGameAction 71 / 25 / 76 (MOVE_MOUSE_ON_GUI / INVENTORY_SELECT / INVENTORY_UNSELECT); NUISystem::EEvent
+//   UI_EVENT_KEY_DOWN 33, UI_EVENT_CHAR_DOWN 34, UI_EVENT_MOUSE_MOVEMENT 25, UI_EVENT_LEFT_MOUSE_CLICK 26, UI_EVENT_BACK 5.
+// NF62 (2026-11-17): ported onto engine/CInputProcessPhotojournalCapture.h / CInputProcessGameBase.h (ZTARGET) / CInputEvent.h /
+//   NUISystem_CManager.h (the PhotoInput namespace, PhotoCapture / InputEvent / Manager stand-ins and member-pointer vtable calls deleted).
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#define FABLE_RETAIL_INPUTPROCESS_GETMOUSEMOVEMENT
+#define FABLE_RETAIL_CINPUTEVENT_GETCHAR
+#define FABLE_RETAIL_CINPUTPROCESSPHOTOJOURNALCAPTURE_PROCESSINPUT
+#define FABLE_RETAIL_CMANAGER
+#define FABLE_RETAIL_CMANAGER_SETMOUSEMOVEMENT
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C2DVector.h"
+#include "engine/EGameAction.h"
+#include "engine/CInputEvent.h"
 #include "engine/CProcessedInput.h"
-#include "engine/CManager.h"
-namespace NUISystem { class CManager { public: static CManager* __fastcall GetInstance(); }; }   // 0x0041E5F2 (Ego_r.pdb / FableWin.pdb)
-namespace PhotoInput {
-struct Vector2 {float X,Y;Vector2(){} Vector2(const Vector2& v):X(v.X),Y(v.Y){}}; // PDB 01898E60 genuine C2DVector copy constructor
-enum EInputEventType { Character=1,RepeatedCharacter=15 }; // PDB original enum type; descriptive enumerator names for native observed values
-enum EGameAction { Capture=71,Cancel=25,Back=76 };
-enum EEvent { UIBack=5,UICapture=25,UICancel=26,UICharacter=33,UIRepeatedCharacter=34 };
-struct InputEvent {unsigned char DataPrefix[12];Vector2 MouseMovementXY;float MouseMovementZ;Vector2 MousePos;long DeviceType,DeviceNumber;EInputEventType Type;float CurrentTime,StartTime;EInputEventType GetType()const;wchar_t GetChar()const;};
-#pragma pointers_to_members(full_generality,single_inheritance)
-struct Manager;
-union UISlot {void* Native;void(Manager::*Event)(EEvent);void(Manager::*Char)(wchar_t);};
-struct Manager {void* VTable;unsigned char BeforeMouseMovement[0xac];Vector2 MouseMovement;static Manager* GetInstance(){return (Manager*)NUISystem::CManager::GetInstance();}void SetMouseMovement(Vector2& v){MouseMovement=v;}}; //native mouse+B0 vs donor E0, actual GUI CManager header above
-#ifdef _MSC_VER
-typedef char native_ui_slot[sizeof(UISlot)==4?1:-1];
-#endif
-// Field-free native method view: helper owners are CInputProcessGameBase in PDB.
-struct PhotoCapture:CInputProcessGameBase {
- protected:bool IsEventButtonHeld(const InputEvent&)const; // PDB6B2C40 IBE, protected const
- public:bool IsEventGameAction(EGameAction,const InputEvent&)const;
- Vector2 GetMouseMovement(const InputEvent& e)const{return e.MouseMovementXY;} // PDB 006B2E30
- void ProcessInput(const InputEvent&,CProcessedInput&);
-};
-inline void Send(EEvent event){Manager* m=Manager::GetInstance();(m->*static_cast<UISlot*>(m->VTable)[0].Event)(event);}
-void PhotoCapture::ProcessInput(const InputEvent& event,CProcessedInput&){
- if(event.GetType()==Character){Manager* m=Manager::GetInstance();(m->*static_cast<UISlot*>(m->VTable)[12].Char)(event.GetChar());Send(UICharacter);}
- if(event.GetType()==RepeatedCharacter){Manager* m=Manager::GetInstance();(m->*static_cast<UISlot*>(m->VTable)[12].Char)(event.GetChar());Send(UIRepeatedCharacter);}
- if(IsEventButtonHeld(event)){
-  if(IsEventGameAction(Capture,event)){Vector2 movement=GetMouseMovement(event);Manager::GetInstance()->SetMouseMovement(movement);Send(UICapture);}
-  else if(IsEventGameAction(Cancel,event))Send(UICancel);
-  else if(IsEventGameAction(Back,event))Send(UIBack);
- }else if(IsEventGameAction(Capture,event)){Vector2 movement=GetMouseMovement(event);Manager::GetInstance()->SetMouseMovement(movement);Send(UICapture);}
-}
+#include "engine/NUISystem_enums.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/CInputProcessPhotojournalCapture.h"
+
+void CInputProcessPhotojournalCapture::ProcessInput(const CInputEvent& event, CProcessedInput& processed_input)
+{
+    if (event.GetType() == 1)
+    {
+        NUISystem::CManager::GetInstance()->SetKeyPressed(event.GetChar());
+        NUISystem::CManager::GetInstance()->SetEvent(NUISystem::UI_EVENT_KEY_DOWN);
+    }
+    if (event.GetType() == 15)
+    {
+        NUISystem::CManager::GetInstance()->SetKeyPressed(event.GetChar());
+        NUISystem::CManager::GetInstance()->SetEvent(NUISystem::UI_EVENT_CHAR_DOWN);
+    }
+    if (IsEventButtonPressed(event))
+    {
+        if (IsEventGameAction(GAME_ACTION_MOVE_MOUSE_ON_GUI, event))
+        {
+            C2DVector movement = GetMouseMovement(event);
+            NUISystem::CManager::GetInstance()->SetMouseMovement(movement);
+            NUISystem::CManager::GetInstance()->SetEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        }
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
+            NUISystem::CManager::GetInstance()->SetEvent(NUISystem::UI_EVENT_LEFT_MOUSE_CLICK);
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))
+            NUISystem::CManager::GetInstance()->SetEvent(NUISystem::UI_EVENT_BACK);
+    }
+    else if (IsEventGameAction(GAME_ACTION_MOVE_MOUSE_ON_GUI, event))
+    {
+        C2DVector movement = GetMouseMovement(event);
+        NUISystem::CManager::GetInstance()->SetMouseMovement(movement);
+        NUISystem::CManager::GetInstance()->SetEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+    }
 }

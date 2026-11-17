@@ -1,0 +1,47 @@
+entry	address	correct_symbol	status	binders_ported	rows	note
+0x006DCB20		?Insert@CUIBinaryTree@@QAE?AUiterator@1@PAUnode@1@0ABUSUITreePair@@J@Z	done	1	0x006DCB20	every binder in this slice ported or not-a-binder
+e67	00440d70	?erase@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@PAV3@0@Z	done	1	0x007E7C90	every binder in this slice ported or not-a-binder
+nf41:e106	006622a0	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ	blocked	1	0x00713510	left outside this slice (per agentNF55): 0x00961880, 0x009627C0
+nf41:e11	00687cf0	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z	done	1	0x00691AE0	every binder in this slice ported or not-a-binder
+nf41:e124	0x009FBFB0	?ListRemove@CResource@@AAEXXZ	blocked	0	0x0041B550	left in this slice: 0x0041B550 blocked
+nf41:e125	0x009FBF90	?ListInsert@CResource@@AAEXPAV1@0@Z	blocked	0	0x0041B550	left in this slice: 0x0041B550 blocked
+nf41:e141	004c79a0	?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ	blocked	1	0x006A9590	left outside this slice (per agentNF54): 0x00837050, 0x00837060
+nf41:e154	0x009FCBA0	?Uninitialise@CGraphicFrameData@@QAEXXZ	blocked	0	0x0041B550	left in this slice: 0x0041B550 blocked
+nf41:e164	0x009FE620	?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z	blocked	0	0x0041B550	left in this slice: 0x0041B550 blocked
+nf41:e172	0049f180	?ActivateWorld@CWorld@@QAEX_N@Z	blocked	0	0x00416953	left in this slice: 0x00416953 blocked
+nf41:e174	00516180	??$ReadVar@H@CAFile@@QAEXAAHPAVCASuspendableProcess@@@Z	done	1	0x00500230	every binder in this slice ported or not-a-binder
+nf41:e199	004115a0	??8?$CBasicString@D@@QBE_NPBD@Z	blocked	0	0x004FE630 0x006D41F0	left in this slice: 0x004FE630 blocked, 0x006D41F0 blocked
+nf41:e200	0x013BAD44	CTCCreatureModeManager::RegisteredModes (static CVectorMap<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo,CKeyPairCompareLess<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo> >); element value member CTCCreatureModeManager::CRegisteredModeInfo::AllocFunc (type CModeBase* (__fastcall*)(CThing&))	done	1	0x0073A8E0	every binder in this slice ported or not-a-binder
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	blocked	0	0x006D41F0	left in this slice: 0x006D41F0 blocked
+nf41:e30	00687cf0	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z	done	1	0x00691AE0	every binder in this slice ported or not-a-binder
+nf41:e31	007e8590	?SetPOwner@CTCOwnedEntity@@QAEXPAVCThing@@@Z	done	1	0x0072E130	every binder in this slice ported or not-a-binder
+nf41:e33	0x00A3ADD0	?InternalCompress@CCompressorZlib@@QAEKPBXKAAV?$CArray@E@@@Z	done	1	0x00523860	every binder in this slice ported or not-a-binder
+nf41:e34	0x0059b5d7	??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z	blocked	0	0x00597006	left in this slice: 0x00597006 blocked
+nf41:e36	0x0042bed4	??0CDeletion@NUISystem@@QAE@XZ	blocked	0	0x0053B321 0x00596CCE 0x00597006	left in this slice: 0x0053B321 blocked, 0x00596CCE blocked, 0x00597006 blocked; left outside this slice (per agentNF51): 0x005907AB
+nf41:e37	0x0042cd84	??0CDeletion@NUISystem@@QAE@ABV01@@Z	blocked	0	0x0053B321 0x00597006	left in this slice: 0x0053B321 blocked, 0x00597006 blocked; left outside this slice (per agentNF51): 0x005907AB
+nf41:e47	006a0150	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z	blocked	0	0x006666A0 0x00694430	left in this slice: 0x006666A0 blocked, 0x00694430 blocked
+nf41:e5	0x00A358F0	?GetPositionMatrixFromRHSet@C3DMeshObject@@SI?AVCMatrix3x4@@ABVCRightHandedSet@@@Z	blocked	0	0x0075A530	left in this slice: 0x0075A530 blocked
+nf41:e53	0065f17b	?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	blocked	0	0x006D53C0	left in this slice: 0x006D53C0 blocked
+nf41:e81	006691c0	?ClearAttackedByCreature@CThingCreatureBase@@QAEXXZ	blocked	0	0x006666A0	left in this slice: 0x006666A0 blocked
+nf41:e99	00798d90	?AddNewCustomer@CTCShopKeeper@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	done	1	0x00799900	every binder in this slice ported or not-a-binder
+nf44:5	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	done	2	0x00722270 0x007222B0	every binder in this slice ported or not-a-binder
+nf44:54	0x005BD597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	blocked	5	0x0057770A 0x005778CA 0x00587847 0x00589D30 0x0059E2C7 0x0059F304 0x005FCE60	left in this slice: 0x0057770A blocked, 0x005778CA blocked
+nf44:57	0x006C9C60	??$Transfer@V?$CIntelligentPointer@VCThing@@@@@CPersistContext@@QAEXPBDAAV?$CIntelligentPointer@VCThing@@@@@Z	done	1	0x006C7370	every binder in this slice ported or not-a-binder
+nf44:7	005ede93	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	blocked	0	0x0057770A 0x005778CA	left in this slice: 0x0057770A blocked, 0x005778CA blocked
+nf44:76	0x012366f4	??_7CActionParamSLONG@NUISystem@@6B@	blocked	0	0x00549B20	left in this slice: 0x00549B20 blocked
+q10405	0x00747330	?InitialiseSneakSpeed@CTCStealth@@AAEXXZ	done	1	0x00747330	every binder in this slice ported or not-a-binder
+q10432	0x0069AD10	?PeekPCameraManagerSetDefinition@CThingBuilding@@QBE?AV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@XZ (0x0082D3B0) / ?SetCameraManagerSetDef@CGameCameraManager@@QAEXABV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z (0x0069AC90)	done	1	0x0069AD10	every binder in this slice ported or not-a-binder
+q10433	0x0081FA20 / 0x0081FA90	0x0081FA20 ?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z / 0x0081FA90 ?GetThemeMinCameraSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z (protected const)	done	1	0x0063A540	every binder in this slice ported or not-a-binder
+q10440	0x00594FA9	?CloseVirtualKeyboard@CFrontEndManager@NUISystem@@QAEX_N@Z	blocked	0	0x00599E3F	left in this slice: 0x00599E3F blocked
+q10441	0x00599E3F	?Update@CFrontEndManager@NUISystem@@QAEXM@Z	blocked	0	0x00599E3F	left in this slice: 0x00599E3F blocked
+q10445	0x004AF5B0	?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z	blocked	0	0x004B11A0	left in this slice: 0x004B11A0 blocked
+q10454	0x006C3620	?GetMorphTarget@CSkeletalMorphResourceManager@@QAEAAV?$CCountedPointer@VC3DSkeletalMorphTarget@@@@ABVCCharString@@@Z	done	1	0x006C3620	every binder in this slice ported or not-a-binder
+q10455	0x004E9642	?TransferBinaryIn@?$CPersistTraits@VCObjectAugmentationParticleSet@@@@QAEXAAVCMemoryDataInputStream@@AAVCObjectAugmentationParticleSet@@@Z	done	2	0x004E9550 0x004E9642	every binder in this slice ported or not-a-binder
+q10457	0x0077E580	?reserve@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEXI@Z	done	2	0x007CDFE0 0x007CEB00	every binder in this slice ported or not-a-binder
+q10458	0x007CE1F0	??$__copy@PAPAVCThing@@V?$back_insert_iterator@V?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@std@@H@std@@YI?AV?$back_insert_iterator@V?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@0@PAPAVCThing@@0V10@ABUrandom_access_iterator_tag@0@PAH@Z	done	2	0x007CDFE0 0x007CEB00	every binder in this slice ported or not-a-binder
+q10462	0x0053CB4F	?push_back@?$vector@_NV?$allocator@_N@std@@@std@@QAEXAB_N@Z	blocked	0	0x0053822B 0x0053AD07	left in this slice: 0x0053822B blocked, 0x0053AD07 blocked
+q10464	0x00506BB0	?GetLevelDimensions@CWorldMap@@IBE?AVC2DBoxI@@AAVCAFile@@@Z	done	1	0x00506E30	every binder in this slice ported or not-a-binder
+q10465	0x0050BE40	?DeleteData@?$CCountedPointer@VCAFile@@@@SIXPAX@Z	done	1	0x004FE2A0	every binder in this slice ported or not-a-binder
+q10466	0x004CA010	?ConstructFromParams@CThing@@IAE_NJJJ_N@Z	done	2	0x004CA010 0x006A5950	every binder in this slice ported or not-a-binder
+q10472	0x005178A0	?push_back@?$vector@KV?$allocator@K@std@@@std@@QAEXABK@Z	blocked	0	0x0053AD07	left in this slice: 0x0053AD07 blocked
+q10474	0x004091C0	?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z	blocked	0	0x004091C0	left in this slice: 0x004091C0 blocked

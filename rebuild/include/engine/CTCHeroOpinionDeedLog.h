@@ -71,6 +71,12 @@ public:
     // (called 0x004A54EE when CTCCarrying::IsThingCarryingWeapon(hero); its twin PlayerPutWeaponAway 0x006C6010 is called at region unload).
     void PlayerTakenOutWeapon();                                         // 0x006C6E20
 #endif // FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_TAKENOUTWEAPON
+#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_ONSERIALISE
+public:
+    // NF62 opt-in (2026-11-17, row 0x006C7370): Ego_r.pdb ?OnSerialise@CTCHeroOpinionDeedLog@@UAEXAAVCPersistContext@@_N@Z (public
+    // override of CTCBase slot 1, 0x00686960 in the base). Declaration only: no layout or vtable change.
+    virtual void OnSerialise(CPersistContext& context, bool in_game);   // 0x006C7370
+#endif
 };
 #ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_COMPLETE
 FABLE_STATIC_ASSERT_AT(64, sizeof(CTCHeroOpinionDeedLog)==0x34a8);

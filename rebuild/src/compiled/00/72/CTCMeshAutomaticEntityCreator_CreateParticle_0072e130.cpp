@@ -1,120 +1,66 @@
-// CTCMeshAutomaticEntityCreator::CreateParticle(const CCharString& dummyName, const CCharString& particleName, CTCGraphicAppearance* appearance) -- for every dummy object of that name on the appearance, create the particle effect at the owner, attach its emitter to the owner's dummy, mark it created-by-owner, give it a CTCCreatedEntity whose creator is the owner, and an owned-entity component
-// Leaf: CreateParticle
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// CTCMeshAutomaticEntityCreator::CreateParticle(const CCharString& dummy_name, const CCharString& particle_name, NGraphicAppearance::CTCGraphicAppearance* appearance) -- for every dummy object of that name on the appearance, create the particle at the owner, attach it to that dummy, mark it created by its owner, record the creator and register it with the owner
+// Leaf: ?CreateParticle@CTCMeshAutomaticEntityCreator@@AAEXABVCCharString@@0PAVCTCGraphicAppearance@NGraphicAppearance@@@Z
+// Name: Ego_r.pdb / FableWin.pdb ?CreateParticle@CTCMeshAutomaticEntityCreator@@AAEXABVCCharString@@0PAVCTCGraphicAppearance@NGraphicAppearance@@@Z (private).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072E130, 352 bytes (+ int3 padding), `ret 0Ch`. Speed TU (esp frame,
 //   `lea ecx,[ecx]` loop alignment); the 8-byte intelligent-pointer temporary built inside the loop gives the
 //   `and esp,-8` aligned frame (GOTCHAS chunk 232).
-// Callees: CTCGraphicAppearance::GetNoDummyObjects(const CCharString&, float) @ 0x004BE000 (re-evaluated per pass),
-//   CThing::GetPos @ 0x004C73D0 (label "CVertexBufferWin32::DoSizeof" is propagated), CTCDParticleEmitter::Create
-//   (`__fastcall`) @ 0x006E0970, CTCDParticleEmitter::AttachToThing @ 0x006E0BE0, CCharString(const char*, long = -1)
-//   @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::AddTC @ 0x004C9D60, CBaseIntelligentPointer ctor @ 0x00A01B10 /
-//   GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, CTCOwnedEntity::SetPOwner @ 0x007E8590 (through
-//   the inlined same-TU AddOwnedEntityTC, landed 0x0072DD60).
-// Data: "CTCCreatedEntity" @ 0x0123AA60, "CTCOwnedEntity" @ 0x0123AA74; CIntelligentPointer<const CThing> vtable
-//   @ 0x01237F1C.
-// Layout: as the landed CTCChest::Open (0x00750540): retail CThing bitset +0x20 (interface 0x4B = bit 11 of +0x28), the
-//   cached driver +0x5C, flags +0x91 (bit 0 dead, bit 1 created by owner thing creation); CTCCreatedEntity PCreator +0x0C
-//   (Ego_r.pdb); the creator's owning thing +0x04.
-#include "fable_compiler.h"
-class CThing;
-class CBaseObject;
-class CTCParamsBase;
-
-class CCharString {
-public:
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    void* m_pStringData;
-};
+// Callees: ?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z @ 0x004BE000 (re-evaluated per pass),
+//   CThing::GetPos @ 0x004C73D0, ?Create@CTCDParticleEmitter@@SIPAVCThing@@ABVCCharString@@ABVC3DVector@@_N@Z @ 0x006E0970,
+//   CTCDParticleEmitter::AttachToThing @ 0x006E0BE0, CCharString(const char*, long = -1) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
+//   CThing::AddTC @ 0x004C9D60, CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 /
+//   dtor @ 0x00A01C10 (the inline CTCCreatedEntity::SetPCreator), CTCOwnedEntity::SetPOwner @ 0x007E8590 (through the inlined
+//   same-TU ?AddThingToOwnerTC@CTCMeshAutomaticEntityCreator@@AAEXAAVCThing@@@Z, landed 0x0072DD60).
+// Data: "CTCCreatedEntity" @ 0x0123AA60, "CTCOwnedEntity" @ 0x0123AA74; CIntelligentPointer<const CThing> vtable @ 0x01237F1C.
+// Layout: CThing (shared header): interface 0x4B = TCI_PARTICLE_EMITTER read through the cached driver +0x5C (GetTCDriver),
+//   Dead / CreatedByOwnerThingCreation bits of +0x91; CTCCreatedEntity PCreator +0x0C; CTCBase ParentThing +0x04.
+//   CTCMeshAutomaticEntityCreator has no shared header: the local class carries only the two private members this row needs.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_CREATEDBYOWNER
+#define FABLE_RETAIL_CTHING_GETTCDRIVER
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CTCDPARTICLEEMITTER_FULL
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_NODUMMYOBJECTS
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
 #include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CTCDParticleEmitter.h"
+#include "engine/CTCCreatedEntity.h"
+#include "engine/CTCOwnedEntity.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
 
-class CTCDParticleEmitter {
-public:
-    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
-    static CThing* __fastcall Create(const CCharString& name, const C3DVector& position, bool flag);   // 0x006E0970
-};
-
-class CTCBase {
-public:
-    void SetPOwner(CThing* owner);                     // 0x007E8590 (CTCOwnedEntity::SetPOwner)
-};
-
-class CThing {
-public:
-    unsigned char        _pad00[0x20];
-    unsigned long        m_presentBits[9];             // +0x20
-    unsigned char        _pad44[0x5c - 0x44];
-    CTCDParticleEmitter* PTCDriver;                    // +0x5c (the cached interface-0x4B component)
-    unsigned char        _pad60[0x91 - 0x60];
-    unsigned char        m_flags91;                    // +0x91 bit 0 dead, bit 1 created by owner thing creation
-    const C3DVector& GetPos() const;              // 0x004C73D0
-    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
-    FABLE_FORCEINLINE bool HasTC(long type) const
+class CTCMeshAutomaticEntityCreator : public CTCBase {
+private:
+    void AddThingToOwnerTC(CThing& thing)                                // 0x0072DD60 (same TU, inlined here)
     {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
+        CTCOwnedEntity* owned = static_cast<CTCOwnedEntity*>(thing.AddTC("CTCOwnedEntity", false, 0));
+        owned->SetPOwner(ParentThing);
     }
+    void CreateParticle(const CCharString& dummy_name, const CCharString& particle_name,
+                        NGraphicAppearance::CTCGraphicAppearance* appearance);
 };
 
-#pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                   // +0x04
-    CBaseIntelligentPointer();                         // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-    void SetPItem(CBaseObject* item);                  // 0x00A01B90
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<const CThing> vtable 0x01237F1C
-    virtual void v00();
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other)
-    {
-        CThing* item = ((CThing*)other.GetPItem());
-        SetPItem((CBaseObject*)item);
-        return *this;
-    }
-};
-#pragma pack(pop)
-
-class CTCCreatedEntity : public CTCBase {
-public:
-    unsigned char _pad00[0x0c];
-    CIntelligentPointer<const CThing> PCreator;        // +0x0C
-};
-
-class CTCGraphicAppearance {
-public:
-    long GetNoDummyObjects(const CCharString& name, float scale);   // 0x004BE000
-};
-
-class CTCMeshAutomaticEntityCreator {
-public:
-    void*   m_vtable;                                  // +0x00
-    CThing* m_pThing;                                  // +0x04 the creator's owning thing
-    void AddOwnedEntityTC(CThing* created)             // 0x0072DD60 (same TU, inlined here)
-    {
-        CTCBase* owned = created->AddTC("CTCOwnedEntity", false, 0);
-        owned->SetPOwner(m_pThing);
-    }
-    void CreateParticle(const CCharString& dummyName, const CCharString& particleName, CTCGraphicAppearance* appearance);
-};
-
-void CTCMeshAutomaticEntityCreator::CreateParticle(const CCharString& dummyName, const CCharString& particleName,
-                                                   CTCGraphicAppearance* appearance)
+void CTCMeshAutomaticEntityCreator::CreateParticle(const CCharString& dummy_name, const CCharString& particle_name,
+                                                   NGraphicAppearance::CTCGraphicAppearance* appearance)
 {
-    for (long i = 0; i < appearance->GetNoDummyObjects(dummyName, 1.0f); ++i) {
-        CThing* particle = CTCDParticleEmitter::Create(particleName, m_pThing->GetPos(), false);
-        if (particle && !(particle->m_flags91 & 1)) {
+    for (long i = 0; i < appearance->GetNoDummyObjects(dummy_name, 1.0f); ++i) {
+        CThing* particle = CTCDParticleEmitter::Create(particle_name, ParentThing->GetPos(), false);
+        if (particle && !particle->IsDead()) {
             CTCDParticleEmitter* emitter = 0;
-            if (particle->HasTC(0x4b))
-                emitter = particle->PTCDriver;
-            emitter->AttachToThing(*m_pThing, 10, dummyName, i, 0.0f);
-            particle->m_flags91 |= 2;
-            CTCCreatedEntity* created = (CTCCreatedEntity*)particle->AddTC("CTCCreatedEntity", false, 0);
-            created->PCreator = CIntelligentPointer<const CThing>(m_pThing);
-            AddOwnedEntityTC(particle);
+            particle->GetTCDriver(&emitter);
+            emitter->AttachToThing(*ParentThing, 10, dummy_name, i, 0.0f);
+            particle->SetAsCreatedByOwnerThingCreation(true);
+            CTCCreatedEntity* created = static_cast<CTCCreatedEntity*>(particle->AddTC("CTCCreatedEntity", false, 0));
+            created->SetPCreator(*ParentThing);
+            AddThingToOwnerTC(*particle);
         }
     }
 }

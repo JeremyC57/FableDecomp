@@ -15,4 +15,18 @@ public:
     std::vector<CCompositeBlendDesc> Blends;                 // +0x08
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineTextureMorph) == 0x14);
+#ifdef FABLE_RETAIL_CENGINETEXTUREMORPHSET
+// NF62 opt-in (2026-11-17, rows 0x00722270 / 0x007222B0, the CTCAppearanceMorphBase::CMeshMorphSet destructors): Ego_r.pdb CEngineTextureMorphSet
+// (one member, CArray<CEngineTextureMorph> Morphs +0; retail 12 bytes) -- no header of its own. Its implicit destructor destroys Morphs, whose
+// ~vector<CEngineTextureMorph> retail calls out of line at 0x005BC0D3 (FableWin.pdb ??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ,
+// `lea ecx,[esi+0Ch] ; call 0x005BC0D3`): declared here as an explicit specialisation, so only this instantiation leaves the TU and the other
+// vectors of the includer keep the inline STLport destructor. Needs engine/CArray.h.
+#include "engine/CArray.h"
+template<> std::vector<CEngineTextureMorph,std::allocator<CEngineTextureMorph> >::~vector();   // 0x005BC0D3
+class CEngineTextureMorphSet {
+public:
+    CArray<CEngineTextureMorph> Morphs;                       // +0x00
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineTextureMorphSet) == 0xC);
+#endif
 #endif // FABLE_ENGINE_CENGINETEXTUREMORPH_H

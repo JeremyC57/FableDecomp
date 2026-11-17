@@ -104,6 +104,12 @@ public:
     // Header wave 2026-11-03 (row 0x00821010, the length/version prefix of each file record): FableWin.pdb
     // ??$ReadVar@K@CAFile@@QAEXAAKPAVCASuspendableProcess@@@Z / ??$ReadVar@E@.. (no out-of-line copy in Fable.exe): an aligned
     // file reads through a rounded CArray<unsigned char> buffer.
+#ifdef FABLE_RETAIL_CAFILE_READVAR_DECL
+    // Per-TU opt-in (NF62, row 0x004FE630 CWorldMap::GetNavigationSectionOffsetInFile): the same member template, declaration only --
+    // that TU calls the out-of-line instance ??$ReadVar@H@CAFile@@QAEXAAHPAVCASuspendableProcess@@@Z 0x00516180 (`push 0 ; push &var ;
+    // mov ecx,file ; call`) at all three reads. (An explicit-specialization declaration after the class makes VC7.1 fail with C1001.)
+    template<class T> void ReadVar(T& var,CASuspendableProcess* psuspendable);
+#else
     template<class T> void ReadVar(T& var,CASuspendableProcess* psuspendable) {
         if(GetAlignment()<=1) Read(&var,sizeof(T),psuspendable);
         else {
@@ -114,6 +120,7 @@ public:
             var=*(T*)&buffer[0];
         }
     }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CAFILE_WRITEVAR
     // Nested opt-in (chunk Q22, row 0x00A78B20 CNavQuadTree::SaveToFile): FableWin.pdb ??$WriteVar@J@CAFile@@QAEXABJ@Z /
