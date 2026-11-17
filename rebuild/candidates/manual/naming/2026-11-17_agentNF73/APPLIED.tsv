@@ -1,0 +1,16 @@
+entry	queue_address	correct_symbol	status	binders_ported	note
+nf41:e36	0x0042bed4	??0CDeletion@NUISystem@@QAE@XZ	done	2	all slice binders ported: 0x00596CCE 0x00597006
+nf41:e37	0x0042cd84	??0CDeletion@NUISystem@@QAE@ABV01@@Z	blocked	1	slice binder ported (0x00597006 now binds ??0CDeletion@NUISystem@@QAE@ABV01@@Z); still blocked by the landed row 0x005907AB CTCInventory::ConstructItemCategoryListPC outside the slice, which binds 0x0042CD84 as ??0CAction@NUISystem@@QAE@ABV01@@Z (reloc_bindings.tsv); NAME_FIXES.tsv
+nf41:e34	0x0059B5D7	??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z	done	1	all slice binders ported: 0x00597006
+q10474	0x004091C0	?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z	done	1	all slice binders ported: 0x004091C0
+nf41:e172	0049f180	?ActivateWorld@CWorld@@QAEX_N@Z	done	1	all slice binders ported: 0x00416953
+nf41:e125	0x009FBF90	?ListInsert@CResource@@AAEXPAV1@0@Z	blocked	0	rows left: 0x0041B550 (blocked)
+nf41:e124	0x009FBFB0	?ListRemove@CResource@@AAEXXZ	blocked	0	rows left: 0x0041B550 (blocked)
+nf41:e164	0x009FE620	?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z	blocked	0	rows left: 0x0041B550 (blocked)
+nf41:e154	0x009FCBA0	?Uninitialise@CGraphicFrameData@@QAEXXZ	blocked	0	rows left: 0x0041B550 (blocked)
+nf44:76	0x012366f4	??_7CActionParamSLONG@NUISystem@@6B@	blocked	0	rows left: 0x00549B20 (blocked)
+nf44:54	0x005BD597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	blocked	0	rows left: 0x005778CA (blocked)
+nf44:7	005ede93	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	blocked	0	rows left: 0x005778CA (blocked)
+q10440	0x00594FA9	?CloseVirtualKeyboard@CFrontEndManager@NUISystem@@QAEX_N@Z	blocked	0	rows left: 0x00599E3F (blocked)
+q10441	0x00599E3F	?Update@CFrontEndManager@NUISystem@@QAEXM@Z	blocked	0	rows left: 0x00599E3F (blocked)
+nf41:e53	0065f17b	?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	blocked	0	rows left: 0x006D53C0 (blocked)

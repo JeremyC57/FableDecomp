@@ -875,6 +875,13 @@ public:
         --this->_M_finish;_Destroy(this->_M_finish);return position;
     }
 #endif
+#if defined(FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_NOINLINE) && defined(_MSC_VER)
+    // NF73 opt-in (rows 0x00596CCE / 0x00597006, through FABLE_RETAIL_CFRONTENDMANAGER_GETPROFILENAMES_BODY): the STLport
+    // erase(first, last) body below, visible but kept out of line, as the retail CFrontEndManager TU calls it (vector<CWideString>::erase
+    // 0x00412450 from GetProfileNames 0x005955AB). Unlike the declaration-only FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE, c2 then
+    // knows erase keeps no address of the vector. Mirror of FABLE_RETAIL_STLP_VECTOR_ERASE_NOINLINE.
+    __declspec(noinline)
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
     // Per-TU opt-in (chunk 773, row 0x00671600 CThingCreatureDef::Transfer; like FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE): STLport's
     // erase(first, last) is one inline body, which VC7.1 expanded in some TUs and called as a COMDAT in others; that TU calls

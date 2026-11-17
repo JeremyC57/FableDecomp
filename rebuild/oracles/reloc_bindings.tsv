@@ -17069,8 +17069,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?CPlayerGui_Reset@@YIXPAVCPlayerGui@@@Z	00407370	00408360
 ?Populate@@YIXPAVCUserProfileManager@@@Z	004085f0	004088e0
 ?AddLogEntry@CHeroLogBook@@QAEXABVCWideString@@00J_N@Z	0047a9f0	00408a70
-??$_M_insert_overflow@U__false_type@std@@@?$vector@VCWideString@@U__false_type@std@@@std@@QAEXPAVCWideString@@ABV2@ABU__false_type@1@I_N@Z	00412330	004091c0
-??$_M_insert_overflow@U__true_type@std@@@?$vector@VCDateAndTime@@U__true_type@std@@@std@@QAEXPAVCDateAndTime@@ABV2@ABU__true_type@1@I_N@Z	004125a0	004091c0
 ??0CMemoryFile@@QAE@ABVCWideString@@W4FileAccessType@@K@Z	009e97b0	0040a740
 ?SaveGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z	00409fd0	0040a740
 ?LoadGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z	0040bca0	0040d350
@@ -26016,7 +26014,6 @@ _longest_match_fast	00c00fd0	00c013c0
 ??1CEngineInternalPrimitiveOcclusionBase@@UAE@XZ	00b9c660	00bebc50
 ??_7CEngineInternalPrimitiveMeshBase@@6B@	012a41d4	00bebc50
 ?Clear@CEnginePrimitiveSimulationInfo@@QAEXXZ	00b81e20	00bebc50
-?_M_insert_overflow@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@IAEXPAVCDateAndTime@@ABV3@ABU__false_type@2@I_N@Z	004125a0	004091c0
 ?Update@CClickable@NUISystem@@UAEXM@Z	0055acb0	00559600
 ?GetAppropriateCombatAnimationFromList@CTCCombat@@QBEJABV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z	007345d0	00666b50
 ?AddToPhysicalList@CThingManager@@QAEXAAVCThingPhysical@@@Z	0051df60	006a5230
@@ -37252,18 +37249,6 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ??0CCharString@@QAE@PAVCAFile@@J@Z	0099fa50	00401f30
 ??0CDiskFileWin32@@QAE@ABVCWideString@@W4FileAccessType@@K@Z	0099ad80	00401f30
 ?PathExists@CWideString@@QBE_NXZ	00999230	00401f30
-??9CCharString@@QBE_NPBD@Z	0099e960	00416953
-?ConvertWorldToStaticMapPath2@CWorld@@QBE?AVCWideString@@ABV2@_N1@Z	0049d6b0	00416953
-?ConvertWorldToStaticMapPath@CWorld@@QBE?AVCWideString@@ABV2@_N1@Z	0049d550	00416953
-?GetLevelsDirectory@@YI?AVCWideString@@XZ	0041a060	00416953
-?GetMapPath2@CWorld@@QBE?AVCWideString@@ABV2@@Z	0049dec0	00416953
-?InitLUA@CMainGameComponent@@IAEXABVCCharString@@@Z	004bbc00	00416953
-?Load@CWorld@@QAEXABVCWideString@@@Z	004a1840	00416953
-?LoadGame@CWorld@@QAE_NABVCWideString@@_N@Z	004a3200	00416953
-?PostLoad@CWorld@@QAEXJ@Z	0049f180	00416953
-?g_b13B8616@@3_NA	013b8616	00416953
-?g_bExportStaticMaps@@3_NA	013b8648	00416953
-?g_bSaveLoadFailed@@3_NA	013b89c0	00416953
 ?g_InitialFadeActiveMirror@@3_NA	01375cdc	00434c90
 ?CacheMaps@CWorldMap@@IAEXW4ELoadType@1@@Z	00502850	005064b0
 ?AddProfileNameToScreens@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z	00595b24	0059899a
@@ -40537,3 +40522,11 @@ __imp__GetAsyncKeyState@4	014402cc	00687fd0
 ?UpdateGlobalLightingStates@CEngineLightingManager@@QAEXXZ	00b46c80	00b32300
 ??$__insertion_sort@PAU?$pair@_K_N@std@@V?$CKeyPairCompareLess@_K_N@@@std@@YIXPAU?$pair@_K_N@0@0V?$CKeyPairCompareLess@_K_N@@@Z	00a82820	00a84160
 ??$__unguarded_insertion_sort_aux@PAU?$pair@_K_N@std@@U12@V?$CKeyPairCompareLess@_K_N@@@std@@YIXPAU?$pair@_K_N@0@00V?$CKeyPairCompareLess@_K_N@@@Z	00a7efe0	00a84160
+?_M_insert_overflow@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@IAEXPAVCDateAndTime@@ABV3@ABU__false_type@2@I_N@Z	004125a0	004091c0
+??9CCharString@@QBE_NPBD@Z	0099e960	00416953
+?ConvertWorldToISMThingyPath@CWorld@@QBE?AVCWideString@@ABV2@@Z	0049dec0	00416953
+?ConvertWorldToISMThingyPath@CWorld@@QBE?AVCWideString@@ABV2@_N1@Z	0049d6b0	00416953
+?ConvertWorldToStaticMapPath@CWorld@@QBE?AVCWideString@@ABV2@_N1@Z	0049d550	00416953
+?InitLUA@CMainGameComponent@@IAEXABVCCharString@@@Z	004bbc00	00416953
+?Load@CWorld@@QAEXABVCWideString@@@Z	004a1840	00416953
+?g_bSaveLoadFailed@@3_NA	013b89c0	00416953

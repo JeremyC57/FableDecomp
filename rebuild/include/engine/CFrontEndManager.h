@@ -79,6 +79,59 @@ protected:
 };
 FABLE_STATIC_ASSERT_AT(59, sizeof(CFrontEndManager)==224);
 }
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_GETPROFILENAMES_BODY
+// NF73 opt-in (rows 0x00596CCE RefreshAvailableProfiles / 0x00597006 RefreshAvailableProfilesForDelete): the body of the landed
+// GetProfileNames 0x005955AB (rebuild/src/compiled/00/59/NUISystemCFrontEndManager_GetProfileNames_005955ab.cpp, the same text and
+// Ego_d.pdb local names), visible to the CFrontEndManager TU rows but kept out of line, as retail compiles it in that TU and calls it
+// (0x00596CEB / 0x00597023). VC7.1 then knows it writes only vProfileNames, and lays out the callers' loops and frames as retail
+// does. Needs FABLE_RETAIL_CFRONTENDMANAGER_BUILDCOMPONENTS (the protected declaration), FABLE_RETAIL_CCHARSTRING_ENDSWITH,
+// FABLE_RETAIL_CAFILE, FABLE_RETAIL_CAFILE_SCANNEXTFILE and FABLE_RETAIL_CAFILE_SPLITPATH_WIDE defined by the includer (before
+// fable_string.h). push_back 0x004128A0 and erase 0x00412450 are called out of line: the callers that need retail's escape knowledge
+// define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE + FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE + FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_NOINLINE
+// (visible, kept out of line; stlport/fable_containers.h included first).
+#include "engine/CAFile.h"
+#include "fable_resource_directories.h"
+namespace NUISystem {
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+inline void CFrontEndManager::GetProfileNames(std::vector<CWideString>& vProfileNames)
+{
+    vProfileNames.clear();
+    CWideString dir_search_path = NResourceDirectoryNames::GetSaveDir() + L"*";
+    CAFile::CFileScanInfo scan_info;
+    wchar_t pathname[262];
+    bool found_one = CAFile::StartFileScan(dir_search_path, scan_info, pathname);
+    while (found_one) {
+        CWideString search_path(pathname);
+        bool dots;
+        {
+            CCharString dot(".");
+            dots = search_path.ToCharString().EndsWith(dot);
+        }
+        if (!dots && !CAFile::IsPathFile(dir_search_path)) {
+            search_path += L"\\";
+            CWideString search_directory_name;
+            CAFile::SplitPath(search_path, 0, &search_directory_name, 0, 0);
+            CWideString profile_search_path = CWideString(search_path) + L"*.bin";
+            CAFile::CFileScanInfo profile_scan_info;
+            wchar_t profile_pathname[262];
+            bool found_one_profile = CAFile::StartFileScan(profile_search_path, profile_scan_info, profile_pathname);
+            while (found_one_profile) {
+                CWideString profileName;
+                {
+                    CWideString entry(pathname);
+                    CAFile::SplitPath(entry, 0, 0, &profileName, 0);
+                }
+                vProfileNames.push_back(profileName);
+                found_one_profile = CAFile::ScanNextFile(profile_search_path, profile_scan_info, profile_pathname);
+            }
+        }
+        found_one = CAFile::ScanNextFile(dir_search_path, scan_info, pathname);
+    }
+}
+}
+#endif
 #endif
 #else
 #ifdef FABLE_RETAIL_CFRONTENDMANAGER

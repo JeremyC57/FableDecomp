@@ -1,0 +1,10 @@
+addr       parity           behav  name
+004091c0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004091c0   RELOCATION_MATCH PASS   GetSortedSaveNamesAndTimes
+00416953   RELOCATION_MATCH PASS   PostInit
+005955ab   RELOCATION_MATCH PASS   GetProfileNames
+
+WINS: 3
+  004091c0 RELOCATION_MATCH CUserProfileManager::?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z
+  00416953 RELOCATION_MATCH CMainGameComponent::?PostInit@CMainGameComponent@@MAEXXZ
+  005955ab RELOCATION_MATCH NUISystem::CFrontEndManager::?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z

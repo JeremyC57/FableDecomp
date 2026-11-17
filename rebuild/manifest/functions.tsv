@@ -191,7 +191,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00408f50	GetAssignedInputForContextSensitiveItemAction	CUserProfileManager	__thiscall	bool	5	CUserProfileManager *,EGameAction,bool,long,CActionInputControl *	1	yes	accepted									
 00409090	GetMaxAntialiasing	CUserProfileManager	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x00409090_global_Engine_FindPrimitiveInArray.cpp				
 00409140	ClampAntialiasing	CUserProfileManager	__thiscall	void	3	CUserProfileManager *,ulong *,long	1	yes	accepted									
-004091c0	LoadFileList	CUserProfileManager	unknown	undefined	0		0	yes	accepted									
+004091c0	GetSortedSaveNamesAndTimes	CUserProfileManager	unknown	undefined	0		0	yes	accepted									
 004093e0	SetDefaultValuesVideo	CUserProfileManager	__thiscall	void	1	CUserProfileManager *	1	yes	accepted									
 00409730	VerifySignature	CUserProfileManager	__fastcall	bool	1	CWideString *	1	yes	accepted									
 00409b70	SetDefaultValuesForNewProfile	CUserProfileManager	__thiscall	void	1	CUserProfileManager *	1	yes	accepted									

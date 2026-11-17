@@ -43,6 +43,11 @@ public:
     // (retail 0x009979E0, landed; static __fastcall, hidden result). Declaration only.
     static CWideString __fastcall ConvertDirectoryAndFilenameToPath(const CWideString& directory, const CWideString& filename);   // 0x009979E0
 #endif
+#ifdef FABLE_RETAIL_CAFILE_COPYFILE
+    // NF73 opt-in (row 0x00416953 CMainGameComponent::PostInit): Ego_r.pdb 0x00B009F0 / FableWin.pdb ?CopyFileW@CAFile@@SIXAAV1@0@Z (static
+    // __fastcall, source in ecx, destination in edx), out of line in retail at 0x00998E70. Declaration only.
+    static void __fastcall CopyFileW(CAFile& source, CAFile& destination);   // 0x00998E70
+#endif
 #ifdef FABLE_RETAIL_CAFILE_ISROOMFORFILE
     // Opt-in (wf19, row 0x0055D180; chunk 2052, row 0x0049F4C0): Ego_r.pdb / FableWin.pdb ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z (retail 0x00999AB0; the
     // byte count in ecx, the path in edx). Declaration only.

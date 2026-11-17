@@ -1,4 +1,4 @@
-// 004091c0 behaviour test: CUserProfileManager::LoadFileList (match.cpp body, host-modelled engine stand-ins)
+// 004091c0 behaviour test: CUserProfileManager::GetSortedSaveNamesAndTimes (match.cpp body, host-modelled engine stand-ins)
 #include <stdio.h>
 #include <wchar.h>
 #include <string.h>
@@ -37,7 +37,7 @@ static CDateAndTime GetFileModifiedTime(const CWideString& path) { CDateAndTime 
 class CUserProfileManager { public:
     CWideString ProfileName;
     CWideString GetPathNameFromFileName(const CWideString& f, bool) const { return CWideString((L"C:\\Profiles\\" + f.S).c_str()); }
-    void LoadFileList(std::vector<CWideString>& names, std::vector<CDateAndTime>& times)
+    void GetSortedSaveNamesAndTimes(std::vector<CWideString>& names, std::vector<CDateAndTime>& times)
     {
         names.clear();
         times.clear();
@@ -64,7 +64,7 @@ int main()
     CUserProfileManager m; m.ProfileName = CWideString(L"Profile");
     std::vector<CWideString> names; std::vector<CDateAndTime> times;
     names.push_back(CWideString(L"stale")); CDateAndTime z; memset(&z, 0, sizeof z); times.push_back(z);
-    m.LoadFileList(names, times);
+    m.GetSortedSaveNamesAndTimes(names, times);
     CHECK(g_pattern == L"C:\\Profiles\\*");
     CHECK(names.size() == 2 && times.size() == 2);
     CHECK(names.size() == 2 && names[0].S == L"save1" && names[1].S == L"save2");

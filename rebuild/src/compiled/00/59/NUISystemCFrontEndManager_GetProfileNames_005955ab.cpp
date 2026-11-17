@@ -17,111 +17,64 @@
 // Layout: find handle 8 bytes, find data 0x20C; CCharString data block { char* Text; long Length; }.
 // Shape: each loop keeps its own `found` flag assigned by ScanNextFile inside the body (the loop locals die after the
 // call, `mov bl,al` before the destructor).
+// NF73 (2026-11-17): ported onto the shared headers (fable_string.h CWideString / CCharString EndsWith, CAFile.h, fable_resource_directories.h,
+//   stlport/fable_containers.h, engine/CFrontEndManager.h BUILDCOMPONENTS) with the Ego_d.pdb local names; binds CAFile::IsPathFile
+//   (was a free IsPathFile) and the PDB ?ToCharString@CWideString@@QBE?AVCCharString@@XZ (Ego_r 0x00B02850 / FableWin 0x02F67B80; was the
+//   made-up ConvertToCharString).
 // Opt: size TU (`#pragma optimize("s", on)`: the biased /GS frame).
-#include "fable_compiler.h"
 #pragma optimize("s", on)
-#include <string.h>
-class CWideStringData;
-class CWideString { public:
-    CWideStringData* PStringData;
-    CWideString();                              // 0x0099AED0
-    CWideString(const unsigned short* text);    // 0x0099B6B0
-    CWideString(const CWideString& other);      // 0x0099B720
-    ~CWideString();                             // 0x0099B510
-    const CWideString& operator+=(const unsigned short* text);   // 0x0099B940
-    class CCharString ConvertToCharString() const;          // 0x0099B2C0
-};
-class CCharStringData { public:
-    char* Text;
-    long  Length;
-};
-class CCharString {
-public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    FABLE_FORCEINLINE long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
-    FABLE_FORCEINLINE const char* c_str() const { return PStringData == 0 ? "" : PStringData->Text; }
-    FABLE_FORCEINLINE bool EndsWith(const CCharString& suffix) const
-    {
-        long offset = Length() - suffix.Length();
-        if (offset >= 0)
-            return strcmp(c_str() + offset, suffix.c_str()) == 0;
-        return false;
-    }
-};
-CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);       // 0x0099BF30
-class CAFile {
-public:
-    class CFileScanInfo {
-    public:
-        bool Stopped;                                   // +0x00
-        long SearchHandle;                              // +0x04
-    };
-    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
-    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, unsigned short* firstFile);   // 0x00999760
-    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, unsigned short* nextFile);     // 0x00999850
-};   // 0x00997620
-bool __fastcall IsPathFile(const CWideString& path);   // 0x00999A30
-struct CFindFileData {
-    unsigned short FileName[260];
-    unsigned long  Attributes;
-};
-namespace NResourceDirectoryNames {
-CWideString __fastcall GetSaveDir();            // 0x0041A540
-}
-namespace std {
-template <class T> class allocator { };
-template <class T, class A = allocator<T> > class vector {   // STLport 4.6: the allocator argument
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    T* erase(T* first, T* last);                // 0x00412450 for CWideString
-    void push_back(const T& x);                 // 0x004128A0 for CWideString
-    void clear() { erase(begin(), end()); }
-};
-}
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_ENDSWITH
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CAFILE
+#define FABLE_RETAIL_CAFILE_SCANNEXTFILE
+#define FABLE_RETAIL_CAFILE_SPLITPATH_WIDE
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_CFRONTENDMANAGER_DESTRUCTOR
+#define FABLE_RETAIL_CFRONTENDMANAGER_BUILDCOMPONENTS
+#define FABLE_RETAIL_STLP_MAP
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "engine/CAFile.h"
+#include "fable_resource_directories.h"
+#include "engine/CFrontEndManager.h"
+
 namespace NUISystem {
-class CFrontEndManager {
-protected:                                      // Ego_r.pdb / FableWin.pdb IAE
-    void GetProfileNames(std::vector<CWideString>& names);
-};
-void CFrontEndManager::GetProfileNames(std::vector<CWideString>& names)
+void CFrontEndManager::GetProfileNames(std::vector<CWideString>& vProfileNames)
 {
-    names.clear();
-    CWideString pattern = NResourceDirectoryNames::GetSaveDir() + (const unsigned short*)L"*";
-    CAFile::CFileScanInfo handle;
-    CFindFileData data;
-    bool found = CAFile::StartFileScan(pattern, handle, data.FileName);
-    while (found) {
-        CWideString fileName(data.FileName);
+    vProfileNames.clear();
+    CWideString dir_search_path = NResourceDirectoryNames::GetSaveDir() + L"*";
+    CAFile::CFileScanInfo scan_info;
+    wchar_t pathname[262];
+    bool found_one = CAFile::StartFileScan(dir_search_path, scan_info, pathname);
+    while (found_one) {
+        CWideString search_path(pathname);
         bool dots;
         {
             CCharString dot(".");
-            dots = fileName.ConvertToCharString().EndsWith(dot);
+            dots = search_path.ToCharString().EndsWith(dot);
         }
-        if (!dots && !IsPathFile(pattern)) {
-            fileName += (const unsigned short*)L"\\";
-            CWideString dir;
-            CAFile::SplitPath(fileName, 0, &dir, 0, 0);
-            CWideString files = CWideString(fileName) + (const unsigned short*)L"*.bin";
-            CAFile::CFileScanInfo fileHandle;
-            CFindFileData fileData;
-            bool fileFound = CAFile::StartFileScan(files, fileHandle, fileData.FileName);
-            while (fileFound) {
-                CWideString name;
+        if (!dots && !CAFile::IsPathFile(dir_search_path)) {
+            search_path += L"\\";
+            CWideString search_directory_name;
+            CAFile::SplitPath(search_path, 0, &search_directory_name, 0, 0);
+            CWideString profile_search_path = CWideString(search_path) + L"*.bin";
+            CAFile::CFileScanInfo profile_scan_info;
+            wchar_t profile_pathname[262];
+            bool found_one_profile = CAFile::StartFileScan(profile_search_path, profile_scan_info, profile_pathname);
+            while (found_one_profile) {
+                CWideString profileName;
                 {
-                    CWideString entry(data.FileName);
-                    CAFile::SplitPath(entry, 0, 0, &name, 0);
+                    CWideString entry(pathname);
+                    CAFile::SplitPath(entry, 0, 0, &profileName, 0);
                 }
-                names.push_back(name);
-                fileFound = CAFile::ScanNextFile(files, fileHandle, fileData.FileName);
+                vProfileNames.push_back(profileName);
+                found_one_profile = CAFile::ScanNextFile(profile_search_path, profile_scan_info, profile_pathname);
             }
         }
-        found = CAFile::ScanNextFile(pattern, handle, data.FileName);
+        found_one = CAFile::ScanNextFile(dir_search_path, scan_info, pathname);
     }
 }
 }
