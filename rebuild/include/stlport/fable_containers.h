@@ -177,6 +177,12 @@ template<class Size> inline char* fill_n(char* first,Size n,const char& value) {
 #endif
 #ifdef FABLE_RETAIL_STLP_FILL_LOCAL_ITERATOR
 template<class I,class T> inline void fill(I begin,I last,const T& x) { I first=begin; for(;first!=last;++first) *first=x; }
+#elif defined(FABLE_RETAIL_STLP_FILL_NOINLINE) && defined(_MSC_VER)
+// NF68 opt-in (row 0x00AD85D0): the same STLport body, kept out of line as a __fastcall COMDAT (0x00AD78D0: first in ecx, last in
+// edx, `ret 4`), as that retail TU calls it.
+#pragma auto_inline(off)
+template<class I,class T> __declspec(noinline) void __fastcall fill(I first,I last,const T& x) { for(;first!=last;++first) *first=x; }
+#pragma auto_inline(on)
 #else
 template<class I,class T> inline void fill(I first,I last,const T& x) { for(;first!=last;++first) *first=x; }
 #endif
@@ -222,11 +228,19 @@ inline void* __copy_trivial(const void* first,const void* last,void* result) {
 #endif
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
+#elif defined(FABLE_RETAIL_STLP_COPY_PTRS_FALSE_NOINLINE) && defined(_MSC_VER)
+// NF68 opt-in (row 0x009F6890 vector<CInputEvent>::operator=): the same STLport body, kept out of line as a __fastcall COMDAT
+// (0x009F63B0: first in ecx, last in edx, result + tag on the stack, `ret 8`), as that retail TU calls it.
+#pragma auto_inline(off)
+template<class Input,class Output> __declspec(noinline) Output __fastcall __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
 #else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
 #endif
     return __copy(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);
 }
+#if defined(FABLE_RETAIL_STLP_COPY_PTRS_FALSE_NOINLINE) && !(defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)) && defined(_MSC_VER)
+#pragma auto_inline(on)
+#endif
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
 #else
@@ -275,12 +289,20 @@ template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T*
 #ifdef FABLE_RETAIL_STLP_PASS22_COPY_BACKWARD_FASTCALL
 // Actual native00B8EF60 has first/last in ECX/EDX andRET12; original STLport loop.
 template<class R,class B,class D> inline B FABLE_FASTCALL __copy_backward(R first,R last,B result,const random_access_iterator_tag&,D*) {
+#elif defined(FABLE_RETAIL_STLP_COPY_BACKWARD_NOINLINE) && defined(_MSC_VER)
+// NF68 opt-in (row 0x00AD85D0): the same STLport loop, kept out of line as a __fastcall COMDAT (0x00AD7120: first in ecx, last in
+// edx, `ret 0Ch`), as that retail TU calls it. (auto_inline is restored after the body below.)
+#pragma auto_inline(off)
+template<class R,class B,class D> __declspec(noinline) B __fastcall __copy_backward(R first,R last,B result,const random_access_iterator_tag&,D*) {
 #else
 template<class R,class B,class D> inline B __copy_backward(R first,R last,B result,const random_access_iterator_tag&,D*) {
 #endif
     for(D n=last-first;n>0;--n) *--result=*--last;
     return result;
 }
+#if defined(FABLE_RETAIL_STLP_COPY_BACKWARD_NOINLINE) && !defined(FABLE_RETAIL_STLP_PASS22_COPY_BACKWARD_FASTCALL) && defined(_MSC_VER)
+#pragma auto_inline(on)
+#endif
 template<class I,class O> inline O __copy_backward_ptrs(I first,I last,O result,const __false_type&) {
     return __copy_backward(first,last,result,random_access_iterator_tag(),(typename iterator_traits<I>::difference_type*)0);
 }
@@ -369,12 +391,20 @@ template<class I> FABLE_FORCEINLINE void _Destroy(I first,I last) {
 #else
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class I> inline void FABLE_FASTCALL _Destroy(I first,I last) {
+#elif defined(FABLE_RETAIL_STLP_DESTROY_RANGE_NOINLINE) && defined(_MSC_VER)
+// NF68 opt-in (row 0x009F6890 vector<CInputEvent>::operator=): the same STLport range _Destroy, kept out of line as a __fastcall
+// COMDAT (0x009F6720: first in ecx, last in edx, plain `ret`), as that retail TU calls it.
+#pragma auto_inline(off)
+template<class I> __declspec(noinline) void __fastcall _Destroy(I first,I last) {
 #else
 template<class I> inline void _Destroy(I first,I last) {
 #endif
 #endif
     __destroy(first,last,(typename iterator_traits<I>::value_type*)0);
 }
+#if defined(FABLE_RETAIL_STLP_DESTROY_RANGE_NOINLINE) && !(defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)) && !(defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)) && defined(_MSC_VER)
+#pragma auto_inline(on)
+#endif
 // _uninitialized.h
 #ifdef FABLE_STLP_OUTOFLINE_UNINIT_COPY
 // Opt-in (chunk 760, row 0x00CBC130 vector::_M_insert_overflow): like FABLE_STLP_OUTOFLINE_UNINIT_FILL_N below, the retail TU keeps
@@ -470,11 +500,23 @@ template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,co
 template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,const T& x,const __true_type&) {
     return std::fill_n(first,n,x);
 }
+#if defined(FABLE_RETAIL_STLP_UNINITIALIZED_FILL_N_NOINLINE) && defined(_MSC_VER)
+// NF68 opt-in (row 0x00AD85D0 vector<QuadricOptimiserInternals::COptimisedVertex>::_M_fill_insert): the same STLport body, kept out
+// of line as a __fastcall COMDAT (0x00AD7B90: first in ecx, n in edx, `ret 4`), as that retail TU calls it.
+#pragma auto_inline(off)
+template<class I,class N,class T> __declspec(noinline) I __fastcall uninitialized_fill_n(I first,N n,const T& x) {
+    typedef typename iterator_traits<I>::value_type Value;
+    typedef typename __type_traits<Value>::is_POD_type IsPOD;
+    return __uninitialized_fill_n(first,n,x,IsPOD());
+}
+#pragma auto_inline(on)
+#else
 template<class I,class N,class T> inline I uninitialized_fill_n(I first,N n,const T& x) {
     typedef typename iterator_traits<I>::value_type Value;
     typedef typename __type_traits<Value>::is_POD_type IsPOD;
     return __uninitialized_fill_n(first,n,x,IsPOD());
 }
+#endif
 // _alloc.h (malloc-based allocator)
 #ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE
 // Per-TU opt-in (row 0x00D30030): STLport's allocator<T>::deallocate forwards to __sgi_alloc = __malloc_alloc<0>::deallocate,
@@ -702,7 +744,7 @@ public:
     // the call (retail 0x00B15840 `mov ebx,[esp+14h]` ... 0x00B1587C `test ebx,ebx; push ebx; call free`; declaration-only: reloaded, 3784v3779).
     vector& operator=(const vector& x);
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data-this->_M_start); }
-#ifndef FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_ORIGINAL_SCOPE_PASS22
+#if !defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_ORIGINAL_SCOPE_PASS22) && !defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_DECL)
     template <class _ForwardIter> _Tp* _M_allocate_and_copy(size_type n,_ForwardIter first,_ForwardIter last) {
         _Tp* result=this->_M_end_of_storage.allocate(n);
         __uninitialized_copy(first,last,result,_IsPODType());
@@ -945,13 +987,24 @@ protected:
     void _M_insert_overflow(iterator position,const _Tp& x,const __false_type&,size_type fillLength,bool atEnd);
     void _M_insert_overflow(iterator position,const _Tp& x,const __true_type&,size_type fillLength,bool atEnd);
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_CLEAR_DECL
+    // NF68 opt-in (row 0x009F6890): the same protected STLport member, called out of line in that retail TU (vector<CInputEvent>::_M_clear
+    // 0x009F6850, landed ?_M_clear@...@IAEXXZ). Declaration only.
+    void _M_clear();
+#else
     void _M_clear() {
         _Destroy(this->_M_start,this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start,this->_M_end_of_storage._M_data-this->_M_start);
     }
+#endif
     void _M_set(iterator s,iterator f,iterator e) {
         this->_M_start=s;this->_M_finish=f;this->_M_end_of_storage._M_data=e;
     }
+#if defined(FABLE_RETAIL_STLP_VECTOR_C) && defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_DECL) && !defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_ORIGINAL_SCOPE_PASS22)
+    // NF68 opt-in (row 0x009F6890): STLport 4.6 _vector.h's protected member template, called out of line in that retail TU
+    // (vector<CInputEvent>::_M_allocate_and_copy<const CInputEvent*> 0x009F65E0, thiscall `ret 0Ch`). Declaration only.
+    template <class _ForwardIter> _Tp* _M_allocate_and_copy(size_type n,_ForwardIter first,_ForwardIter last);
+#endif
 #if defined(FABLE_RETAIL_STLP_VECTOR_C) && defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_ORIGINAL_SCOPE_PASS22)
     // Authenticated STLport4.6.2 _vector.h491..525: protected, in-class, after _M_clear/_M_set.
     template <class _ForwardIter> _Tp* _M_allocate_and_copy(size_type n,_ForwardIter first,_ForwardIter last) {

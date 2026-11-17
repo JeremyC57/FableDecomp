@@ -49,6 +49,9 @@ class CEnginePrimitiveManagerParticleDecalGroup;
 class CEnginePrimitiveManagerWeatherMask;
 #endif
 class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_PRERENDERLAYER
+#include "engine/CEnginePrimitiveEnums.h"
+#endif
 #ifdef FABLE_RETAIL_PASS22_ANIMATED_MESH_RENDER
 class C3DMeshInfo;
 #endif
@@ -95,6 +98,14 @@ public:
 #ifdef FABLE_RETAIL_PASS22_ANIMATED_MESH_RENDER
 // Original two PDBs, donor02E82300 and native00BD71B0; evidence in00bd71cc.
  float GetBoundingRadiusAnimated(const C3DMeshInfo&,float)const;
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_PRERENDERLAYER
+    // NF68 opt-in (row 0x00B32AD0): Ego_r.pdb 0x009D35F0 / FableWin.pdb 0x02DA92D0 ?PreRenderLayer@CEnginePrimitiveRenderer@@QAEXW4EEngineRenderLayer@@@Z
+    // and the private ?InitialiseGlobalLights@CEnginePrimitiveRenderer@@AAEXXZ (Ego_r 0x009D32D0; retail 0x00B32300, landed). Declarations only.
+    void PreRenderLayer(EEngineRenderLayer layer);                       // 0x00B32AD0
+private:
+    void InitialiseGlobalLights();                                       // 0x00B32300
+public:
 #endif
     CEnginePrimitiveRenderer();                // 0x00B33B50 ??0CEnginePrimitiveRenderer@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;

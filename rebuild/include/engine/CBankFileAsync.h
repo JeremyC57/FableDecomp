@@ -43,6 +43,12 @@ public:
     void SetLoadingMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool);                        // 0x00B3E820
     void SetLoadingMemoryFailureHandler(CCountedPointer<CLoadingMemoryFailureHandler> handler);        // 0x009D66A0
 #endif
+#ifdef FABLE_RETAIL_CBANKFILEASYNC_GETASYNCENTRY
+    // NF68 opt-in (rows 0x00A42980 / 0x00A25BD0): the PDB name of retail 0x009D58D0 is Ego_r.pdb 0x00B29950 / FableWin.pdb 0x02FF69A0
+    // ?GetAsyncEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z (the landed self row 0x009D58D0 spells it so);
+    // neither PDB has a CreateEntry (the CREATEENTRY opt-in below). Declaration only.
+    CCountedPointer<class CBankFileAsyncEntry> GetAsyncEntry(unsigned long index);   // 0x009D58D0
+#endif
 #ifdef FABLE_RETAIL_CBANKFILEASYNC_CREATEENTRY
     // agentC27 (row 0x009FDE80): Ego_r.pdb ?CreateEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z, retail 0x009D58D0.
     CCountedPointer<class CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0

@@ -260,6 +260,11 @@ public:
     float GetExtendedSightRadius()const;
 #endif
     const CThing* GetPerceivedThing() const;                             // 0x007446A0
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_SETASDIRECTLYAWARE
+    // NF68 opt-in (row 0x0097A630 CAIStateGroup_CreatureTakeCover::Update): Ego_r.pdb ?SetAsDirectlyAwareOfPerceivedThing@CTCPerceiveThing@@QAEXXZ,
+    // out of line in retail (0x007449B0, called at the TakeCover site). Declaration only.
+    void SetAsDirectlyAwareOfPerceivedThing();                           // 0x007449B0
+#endif
 #if defined(FABLE_RETAIL_CTCPERCEIVETHING_GETSIGHTRADIUS) && !(defined(FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS) && defined(FABLE_RETAIL_CTCPERCEIVETHING_THINGFLAGS))
     // Nested opt-in (2026-11-16, rows 0x009207A0 / 0x00933B30 / 0x00936210, respelled from GetSurfaceRange / GetExtendedSightRadius):
     // Ego_r.pdb / FableWin.pdb ?GetSightRadius@CTCPerceiveThing@@QBEMXZ, out of line at 0x007448F0 (reads SightRadius +0x40; its twin

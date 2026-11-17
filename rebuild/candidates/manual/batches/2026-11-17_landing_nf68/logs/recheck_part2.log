@@ -1,0 +1,17 @@
+addr       parity           behav  name
+0097a630   WARN RELOC_NAME: ?SetAtFailed@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ -> 00970590 labelled 'CAIStateGroup_CreatureUseCoverBase::SetFailedToFindCover'
+0097a630   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0097a630   RELOCATION_MATCH PASS   Update
+00a25bd0   RELOCATION_MATCH PASS   BeginLoading
+00ad85d0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@@std@@YIPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@00ABU__false_type@0@@Z -> 00ad7b50 labelled '_global::UninitCopy_COptimisedVertex_00ad7b50'
+00ad85d0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCOptimisedVertex@QuadricOptimiserInternals@@IV12@@std@@YIPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@IABV12@@Z -> 00ad7b90 labelled '_global::UninitFillN_CElement184_00ad77f0_00ad7b90'
+00ad85d0   WARN RELOC_NAME: ??$fill@PAVCOptimisedVertex@QuadricOptimiserInternals@@V12@@std@@YIXPAVCOptimisedVertex@QuadricOptimiserInternals@@0ABV12@@Z -> 00ad78d0 labelled 'std::fill<QuadricOptimiserInternals::COptimisedVertex *, QuadricOptimiserInternals::COptimisedVertex>'
+00ad85d0   WARN RELOC_NAME: ??1COptimisedVertex@QuadricOptimiserInternals@@QAE@XZ -> 00ad7400 labelled 'CWound::Kill'
+00ad85d0   RELOCATION_MATCH PASS   _M_fill_insert
+00eda8c0   RELOCATION_MATCH PASS   ProcessSongsAge
+
+WINS: 4
+  0097a630 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::?Update@CAIStateGroup_CreatureTakeCover@@UAEXXZ
+  00a25bd0 RELOCATION_MATCH CPhysicsMeshInfo::?BeginLoading@CPhysicsMeshInfo@@QBEXXZ
+  00ad85d0 RELOCATION_MATCH std::vector<QuadricOptimiserInternals::COptimisedVertex, std::allocator<QuadricOptimiserInternals::COptimisedVertex>>::?_M_fill_insert@?$vector@VCOptimisedVertex@QuadricOptimiserInternals@@V?$allocator@VCOptimisedVertex@QuadricOptimiserInternals@@@std@@@std@@QAEXPAVCOptimisedVertex@QuadricOptimiserInternals@@IABV34@@Z
+  00eda8c0 RELOCATION_MATCH NScript::CV_TalentlessBardScript::?ProcessSongsAge@CV_TalentlessBardScript@NScript@@QAEXXZ

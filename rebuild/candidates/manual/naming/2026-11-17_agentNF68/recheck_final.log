@@ -1,0 +1,38 @@
+addr       parity           behav  name
+009ceae0   RELOCATION_MATCH PASS   AllocateBuffers
+00b7fa20   RELOCATION_MATCH PASS   SetupSeaNonReflectiveForegroundShaderConstantsAndFog
+00ad85d0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@@std@@YIPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@00ABU__false_type@0@@Z -> 00ad7b50 labelled '_global::UninitCopy_COptimisedVertex_00ad7b50'
+00ad85d0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCOptimisedVertex@QuadricOptimiserInternals@@IV12@@std@@YIPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@IABV12@@Z -> 00ad7b90 labelled '_global::UninitFillN_CElement184_00ad77f0_00ad7b90'
+00ad85d0   WARN RELOC_NAME: ??$fill@PAVCOptimisedVertex@QuadricOptimiserInternals@@V12@@std@@YIXPAVCOptimisedVertex@QuadricOptimiserInternals@@0ABV12@@Z -> 00ad78d0 labelled 'std::fill<QuadricOptimiserInternals::COptimisedVertex *, QuadricOptimiserInternals::COptimisedVertex>'
+00ad85d0   WARN RELOC_NAME: ??1COptimisedVertex@QuadricOptimiserInternals@@QAE@XZ -> 00ad7400 labelled 'CWound::Kill'
+00ad85d0   WARN STANDIN_LEAF ?_M_fill_insert@?$vector@VCOptimisedVertex@QuadricOptimiserInternals@@V?$allocator@VCOptimisedVertex@QuadricOptimiserInternals@@@std@@@std@@QAEXPAVCOptimisedVertex@QuadricOptimiserInternals@@IABV34@@Z (catalog std::vector::std::vector::resize_COptimisedVertex; names another function)
+00ad85d0   RELOCATION_MATCH PASS   resize_COptimisedVertex
+009f6890   WARN RELOC_NAME: ??$__uninitialized_copy@PBVCInputEvent@@PAV1@@std@@YIPAVCInputEvent@@PBV1@0PAV1@ABU__false_type@0@@Z -> 009f65b0 labelled '_global::UninitCopy_CInputEvent_009f65b0'
+009f6890   RELOCATION_MATCH PASS   operator=
+00a79a30   RELOCATION_MATCH PASS   CNavSwitchableLeafNode
+00b32ad0   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b32ad0   RELOCATION_MATCH PASS   PreRenderLayer
+00eda8c0   RELOCATION_MATCH PASS   ProcessSongsAge
+00a42980   RELOCATION_MATCH PASS   CIVCountedPointer_Assign_00a42980
+00a25bd0   RELOCATION_MATCH PASS   BeginLoading
+009790f0   WARN RELOC_NAME: ?SetAtFailed@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ -> 00970590 labelled 'CAIStateGroup_CreatureUseCoverBase::SetFailedToFindCover'
+009790f0   RELOCATION_MATCH PASS   Update
+0097a630   WARN RELOC_NAME: ?SetAtFailed@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ -> 00970590 labelled 'CAIStateGroup_CreatureUseCoverBase::SetFailedToFindCover'
+0097a630   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0097a630   RELOCATION_MATCH PASS   Update
+00979f70   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+00979f70   RELOCATION_MATCH PASS   AttackTargetThing
+
+WINS: 12
+  009ceae0 RELOCATION_MATCH CBankFile::?AllocateBuffers@CBankFile@@AAEXK@Z
+  00b7fa20 RELOCATION_MATCH CEngineWaterRenderer::?SetupSeaNonReflectiveForegroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ
+  00ad85d0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCOptimisedVertex@QuadricOptimiserInternals@@V?$allocator@VCOptimisedVertex@QuadricOptimiserInternals@@@std@@@std@@QAEXPAVCOptimisedVertex@QuadricOptimiserInternals@@IABV34@@Z
+  009f6890 RELOCATION_MATCH std::vector<T>::??4?$vector@VCInputEvent@@V?$allocator@VCInputEvent@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00a79a30 RELOCATION_MATCH CNavSwitchableLeafNode::??0CNavSwitchableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@_N@Z
+  00b32ad0 RELOCATION_MATCH CEnginePrimitiveRenderer::?PreRenderLayer@CEnginePrimitiveRenderer@@QAEXW4EEngineRenderLayer@@@Z
+  00eda8c0 RELOCATION_MATCH NScript::CV_TalentlessBardScript::?ProcessSongsAge@CV_TalentlessBardScript@NScript@@QAEXXZ
+  00a42980 RELOCATION_MATCH _global::?BeginLoading@CLipSyncDataBankEntry@@AAEXKAAVCLipSyncDataBank@@@Z
+  00a25bd0 RELOCATION_MATCH CPhysicsMeshInfo::?BeginLoading@CPhysicsMeshInfo@@QBEXXZ
+  009790f0 RELOCATION_MATCH CAIStateGroup_CreatureAdvanceInCover::?Update@CAIStateGroup_CreatureAdvanceInCover@@UAEXXZ
+  0097a630 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::?Update@CAIStateGroup_CreatureTakeCover@@UAEXXZ
+  00979f70 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::?AttackTargetThing@CAIStateGroup_CreatureTakeCover@@AAE_NXZ

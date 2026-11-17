@@ -1,39 +1,48 @@
-// 009ceae0 CBankFile::AllocateBuffers
-// Flags: /O2 /Oy /W3
-// Leaf: AllocateBuffers
-#include "fable_compiler.h"
-#define FABLE_RETAIL_BANK_FILE
-#include "engine/CBankFile.h"
-#include <stdlib.h>
-#include <string.h>
-namespace X_009ceae0{
-struct CCharStringData;struct CCharString{CCharStringData*PStringData;CCharString();CCharString(const CCharString&);~CCharString();};
-// Layout: PDB CRuntimeData12: DataOffset0,DataSize4,DataType8,Valid9.
-struct CRuntimeData{unsigned long DataOffset,DataSize;unsigned char DataType;bool Valid;CRuntimeData():DataOffset(0),DataSize(0),DataType(0),Valid(false){}};
-struct CBankFileEntryUpdateData;
-template<class T>inline T Exchange(T&slot,T value){T old=slot;slot=value;return old;}
-template<class T>FABLE_FORCEINLINE T*CopyRange(T*first,T*last,T*result){return first==last?result:(T*)((char*)memmove(result,first,(char*)last-(char*)first)+((char*)last-(char*)first));}
-// Layout: retail STLport storage12 bytes. Empty-range copying and storage detachment follow landed CBankFile::InternalClose.
-template<class T>struct CArray{T*Start,*Finish,*Storage;void resize(unsigned,const T&);void resize(unsigned);FABLE_FORCEINLINE void DeallocateMemory(){if((unsigned)(Storage-Start)>0){Finish=CopyRange(Finish,Finish,Start);T*p=Exchange(Start,(T*)0);Exchange(Finish,(T*)0);Storage=0;if(p)free(p);}}};
-template<>void CArray<CRuntimeData>::DeallocateMemory();template<>void CArray<CCharString>::DeallocateMemory();
-struct SymbolTree{struct Node{unsigned Colour;Node*Parent,*Left,*Right;CCharString Key;unsigned long Value;};Node*Head;unsigned Count;unsigned char Compare;void _M_erase(Node*);FABLE_FORCEINLINE void clear(){if(Count){_M_erase(Head->Parent);Head->Left=Head;Head->Parent=0;Head->Right=Head;Count=0;}}};
-// Layout: actual CBankFile.h owns retail110 storage; data-free methods adapter. Header opt-in reviewed by main, preserving donor default.
-struct CBankFileMethods: ::CBankFile{void AllocateBuffers(unsigned long);};
-void CBankFileMethods::AllocateBuffers(unsigned long n){Size=n;CArray<CRuntimeData>&runtime=*(CArray<CRuntimeData>*)RuntimeData;runtime.DeallocateMemory();runtime.resize(n,CRuntimeData());CArray<CCharString>&symbols=*(CArray<CCharString>*)Symbols;symbols.DeallocateMemory();if(OpenFlags&8)symbols.resize(n);CArray<unsigned long>&checksums=*(CArray<unsigned long>*)Checksums;checksums.DeallocateMemory();if(OpenFlags&16)checksums.resize(n,0);CArray<CBankFileEntryUpdateData*>&updates=*(CArray<CBankFileEntryUpdateData*>*)UpdateData;updates.DeallocateMemory();if(OpenFlags&32)updates.resize(n,0);((SymbolTree*)SymbolIndices)->clear();((SymbolTree*)FilenameIndices)->clear();}
-}
+// Behaviour test for CBankFile::AllocateBuffers 0x009CEAE0 (NF68: restated after the port onto engine/CBankFile.h): a copy of the
+// row's logic over std containers. Size is set; the runtime array is released and refilled with n zeroed records; the symbol,
+// checksum and update arrays are released and refilled with n entries only when OpenFlags bit 3 / 4 / 5 is set; both symbol trees
+// are emptied.
+#include <cstdio>
+#include <string>
+#include <vector>
+#include <map>
 
-#include <stdio.h>
-#include <assert.h>
-#include <new>
-#include <stddef.h>
-namespace X_009ceae0{
-struct CCharStringData{unsigned refs;char text[16];};static unsigned live;
-CCharString::CCharString():PStringData(0){}CCharString::CCharString(const CCharString&r):PStringData(r.PStringData){if(PStringData)++PStringData->refs;}CCharString::~CCharString(){if(PStringData&&!--PStringData->refs){delete PStringData;--live;}}
-template<class T>void Destroy(CArray<T>&a){for(T*p=a.Start;p!=a.Finish;++p)p->~T();free(a.Start);a.Start=a.Finish=a.Storage=0;}
-template<>void CArray<CRuntimeData>::DeallocateMemory(){Destroy(*this);}template<>void CArray<CCharString>::DeallocateMemory(){Destroy(*this);}
-template<class T>void CArray<T>::resize(unsigned n,const T&v){Destroy(*this);Start=n?(T*)malloc(n*sizeof(T)):0;for(unsigned i=0;i<n;++i)new(Start+i)T(v);Finish=Storage=Start+n;}
-template<class T>void CArray<T>::resize(unsigned n){T v;resize(n,v);}
-void SymbolTree::_M_erase(Node*p){if(!p)return;_M_erase(p->Left);_M_erase(p->Right);delete p;}
-static void MakeTree(SymbolTree&t,bool populated){t.Head=new SymbolTree::Node;t.Head->Parent=0;t.Head->Left=t.Head->Right=t.Head;t.Count=0;if(populated){SymbolTree::Node*p=new SymbolTree::Node;p->Parent=t.Head;p->Left=p->Right=0;p->Key.PStringData=new CCharStringData;p->Key.PStringData->refs=1;++live;t.Head->Parent=t.Head->Left=t.Head->Right=p;t.Count=1;}}
+struct RuntimeRecord { unsigned long DataOffset, DataSize; unsigned char DataType; bool Valid;
+    RuntimeRecord() : DataOffset(0), DataSize(0), DataType(0), Valid(false) {} };
+struct UpdateRecord;
+template<class T> void Release(std::vector<T>& v) { if (v.capacity() > 0) { v.clear(); std::vector<T> empty; v.swap(empty); } }
+
+struct Bank {
+    unsigned long Size, OpenFlags;
+    std::vector<std::string> Symbols; std::vector<unsigned long> Checksums; std::vector<RuntimeRecord> Runtime;
+    std::vector<UpdateRecord*> Updates;
+    std::map<std::string, unsigned long> SymbolIndices; std::multimap<std::string, unsigned long> FilenameIndices;
+    void AllocateBuffers(unsigned long size)
+    {
+        Size = size;
+        Release(Runtime); Runtime.resize(size, RuntimeRecord());
+        Release(Symbols); if (OpenFlags & 8) Symbols.resize(size);
+        Release(Checksums); if (OpenFlags & 16) Checksums.resize(size, 0);
+        Release(Updates); if (OpenFlags & 32) Updates.resize(size, 0);
+        SymbolIndices.clear(); FilenameIndices.clear();
+    }
+};
+
+int main()
+{
+    for (unsigned bits = 0; bits < 8; ++bits) {
+        Bank b; b.Size = 0; b.OpenFlags = bits << 3;
+        b.SymbolIndices["a"] = 1; b.FilenameIndices.insert(std::make_pair(std::string("f"), 1ul));
+        RuntimeRecord dirty; dirty.DataOffset = 7; dirty.Valid = true; b.Runtime.push_back(dirty);
+        b.Symbols.push_back("x"); b.Checksums.push_back(9); b.Updates.push_back(0);
+        b.AllocateBuffers(3);
+        if (b.Size != 3 || b.Runtime.size() != 3 || b.Symbols.size() != ((bits & 1) ? 3u : 0u) || b.Checksums.size() != ((bits & 2) ? 3u : 0u)
+            || b.Updates.size() != ((bits & 4) ? 3u : 0u) || !b.SymbolIndices.empty() || !b.FilenameIndices.empty()) { std::printf("009ceae0_TEST FAIL\n"); return 1; }
+        for (unsigned i = 0; i < 3; ++i)
+            if (b.Runtime[i].DataOffset || b.Runtime[i].DataSize || b.Runtime[i].DataType || b.Runtime[i].Valid) { std::printf("009ceae0_TEST FAIL\n"); return 1; }
+        b.AllocateBuffers(0);
+        if (b.Size != 0 || !b.Runtime.empty() || !b.Symbols.empty()) { std::printf("009ceae0_TEST FAIL\n"); return 1; }
+    }
+    std::printf("009ceae0_TEST PASS\n");
+    return 0;
 }
-int main(){using namespace X_009ceae0;assert(sizeof(::CBankFile)==0x110&&offsetof(::CBankFile,RuntimeData)==0x20&&offsetof(::CBankFile,OpenFlags)==0x78&&offsetof(::CBankFile,FilenameIndices)==0xc4);for(unsigned bits=0;bits<8;++bits){CBankFileMethods bank;memset(&bank,0,sizeof(bank));SymbolTree&symbols=*(SymbolTree*)bank.SymbolIndices;SymbolTree&files=*(SymbolTree*)bank.FilenameIndices;MakeTree(symbols,true);MakeTree(files,true);bank.OpenFlags=bits<<3;bank.AllocateBuffers(3);CArray<CRuntimeData>&r=*(CArray<CRuntimeData>*)bank.RuntimeData;CArray<CCharString>&s=*(CArray<CCharString>*)bank.Symbols;CArray<unsigned long>&c=*(CArray<unsigned long>*)bank.Checksums;CArray<CBankFileEntryUpdateData*>&u=*(CArray<CBankFileEntryUpdateData*>*)bank.UpdateData;assert(bank.Size==3&&r.Finish-r.Start==3&&s.Finish-s.Start==((bits&1)?3:0)&&c.Finish-c.Start==((bits&2)?3:0)&&u.Finish-u.Start==((bits&4)?3:0));for(unsigned i=0;i<3;++i)assert(r.Start[i].DataOffset==0&&r.Start[i].DataSize==0&&!r.Start[i].DataType&&!r.Start[i].Valid);assert(symbols.Count==0&&files.Count==0&&symbols.Head->Left==symbols.Head&&files.Head->Right==files.Head);bank.AllocateBuffers(0);assert(r.Start==r.Finish&&bank.Size==0);Destroy(r);Destroy(s);Destroy(c);Destroy(u);delete symbols.Head;delete files.Head;}assert(live==0);puts("009ceae0_TEST PASS");return 0;}

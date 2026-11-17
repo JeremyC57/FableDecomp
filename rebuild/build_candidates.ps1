@@ -238749,7 +238749,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a42980'
-        Module = '_global'
+        Module = 'CLipSyncDataBankEntry'
         Source = '00/a4/CLipSyncDataBankEntry_BeginLoading_00a42980.cpp'
         TestSource = '00/a4/CLipSyncDataBankEntry_BeginLoading_00a42980_test.cpp'
         PassPattern = '00a42980_TEST PASS'
@@ -246311,9 +246311,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009f6890'
-        Module = 'std::vector<T>'
-        Source = '00/9f/CElement34Vector_operator_009f6890.cpp'
-        TestSource = '00/9f/CElement34Vector_operator_009f6890_test.cpp'
+        Module = 'std::vector<CInputEvent, std::allocator<CInputEvent>>'
+        Source = '00/9f/stdvector_operator_009f6890.cpp'
+        TestSource = '00/9f/stdvector_operator_009f6890_test.cpp'
         PassPattern = '009f6890_TEST PASS'
     }
     [pscustomobject]@{
@@ -268060,8 +268060,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b7fa20'
         Module = 'CEngineWaterRenderer'
-        Source = '00/b7/CEngineWaterRenderer_SetupSeaNonReflectiveForegroundShaderConstantsAn_00b7fa20.cpp'
-        TestSource = '00/b7/CEngineWaterRenderer_SetupSeaNonReflectiveForegroundShaderConstantsAn_00b7fa20_test.cpp'
+        Source = '00/b7/CEngineWaterRenderer_SetupSeaNonReflectiveForegroundShaderConstantsAndFog_00b7fa20.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_SetupSeaNonReflectiveForegroundShaderConstantsAndFog_00b7fa20_test.cpp'
         PassPattern = '00b7fa20_TEST PASS'
     }
     [pscustomobject]@{
@@ -275234,9 +275234,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad85d0'
-        Module = 'std::vector'
-        Source = '00/ad/stdvector_resizeCOptimisedVertex_00ad85d0.cpp'
-        TestSource = '00/ad/stdvector_resizeCOptimisedVertex_00ad85d0_test.cpp'
+        Module = 'std::vector<QuadricOptimiserInternals::COptimisedVertex, std::allocator<QuadricOptimiserInternals::COptimisedVertex>>'
+        Source = '00/ad/stdvector_Mfillinsert_00ad85d0.cpp'
+        TestSource = '00/ad/stdvector_Mfillinsert_00ad85d0_test.cpp'
         PassPattern = '00ad85d0_TEST PASS'
     }
     [pscustomobject]@{

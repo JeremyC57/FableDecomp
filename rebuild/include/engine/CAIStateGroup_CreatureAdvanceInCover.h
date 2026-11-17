@@ -19,6 +19,14 @@
 // (the GETNAME_ALLOC statics are not in this branch).
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 class CAIStateGroup_CreatureAdvanceInCover : public CAIStateGroup_CreatureUseCoverBase {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREADVANCEINCOVER_UPDATE
+    // NF68 opt-in (row 0x009790F0): Ego_r.pdb ?Update@CAIStateGroup_CreatureAdvanceInCover@@UAEXXZ and the protected
+    // ?IsStillRunnable@CAIStateGroup_CreatureAdvanceInCover@@IAE_NXZ (0x00978F10). Declarations only.
+public:
+    virtual void Update();                                               // 0x009790F0
+protected:
+    bool IsStillRunnable();                                              // 0x00978F10
+#endif
 protected:
     virtual bool IsRunnableLeaf();                                       // 0x00978E60
 };

@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00979f70   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+00979f70   RELOCATION_MATCH PASS   AttackTargetThing
+009f6890   WARN RELOC_NAME: ??$__uninitialized_copy@PBVCInputEvent@@PAV1@@std@@YIPAVCInputEvent@@PBV1@0PAV1@ABU__false_type@0@@Z -> 009f65b0 labelled '_global::UninitCopy_CInputEvent_009f65b0'
+009f6890   RELOCATION_MATCH PASS   operator=
+00a79a30   RELOCATION_MATCH PASS   CNavSwitchableLeafNode
+00b7fa20   RELOCATION_MATCH PASS   SetupSeaNonReflectiveForegroundShaderConstantsAndFog
+
+WINS: 4
+  00979f70 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::?AttackTargetThing@CAIStateGroup_CreatureTakeCover@@AAE_NXZ
+  009f6890 RELOCATION_MATCH std::vector<CInputEvent, std::allocator<CInputEvent>>::??4?$vector@VCInputEvent@@V?$allocator@VCInputEvent@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00a79a30 RELOCATION_MATCH CNavSwitchableLeafNode::??0CNavSwitchableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@_N@Z
+  00b7fa20 RELOCATION_MATCH CEngineWaterRenderer::?SetupSeaNonReflectiveForegroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ

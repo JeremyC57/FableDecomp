@@ -1,107 +1,38 @@
-// CNavSwitchableLeafNode::CNavSwitchableLeafNode(const C2DVector& position, unsigned char level, unsigned char layer, CAFile& file, list<CNavRegion>& regions, bool readPreferability) -- load a switchable leaf node: the navigable leaf part, then the list of 64-bit unique ids of the switches that open it (all read as closed), blocked by default, no region, the id map sorted
-// Leaf: ??0CNavSwitchableLeafNode
+// CNavSwitchableLeafNode::CNavSwitchableLeafNode(const C2DVector& position, unsigned char quadTreeLevel, unsigned char navLayer, CAFile& file, const list<CNavRegion>& regions, bool readPreferability) -- load a switchable leaf node: the navigable leaf part, then the list of 64-bit unique ids of the switches that open it (all read as closed), blocked by default, no region, the id map sorted
+// Leaf: ??0CNavSwitchableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A79A30, 245 bytes (+ int3 padding), `ret 18h`.
-// Callees: CNavNavigableLeafNode(file ctor) 0x00A772D0 (out of line), CAFile slot 3 Read(void*, size, flags) (+0x0c), the id
-//   vector's _M_insert_overflow(pos, x, tag, fill, atEnd) 0x00A82380, the `__fastcall` sort 0x00A84160 (first, last,
-//   comparator by value).
-// Vtable: 0x0129DE04 CNavSwitchableLeafNode.
-// Layout: Ego_r.pdb CNavSwitchableLeafNode: UniqueIDsOpen +0x20 (CVectorMap<unsigned __int64, bool>: STLport vector of
-//   16-byte pairs, comparator byte +0x2c, Dirty +0x2d); the leaf base's Blocked +0x0f and PRegion +0x10.
-// Shape: the count and the loop index are homed in the dead `regions` / `readPreferability` slots; each id is added
-//   through the vector map's inline Add (push_back, then Dirty), the map is sorted once through the inline Sort().
-#include "fable_compiler.h"
-class C2DVector { public: float X, Y; };
-class CAFile {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual void Read(void* data, unsigned long size, long flags);   // slot 3 (+0x0c)
-};
-struct CRegionList;
-class CNavNavigableLeafNode {                      // vtable 0x0129DDA4
-public:
-    virtual void v00();
-    C2DVector     Position;                        // +0x04
-    unsigned char QuadTreeLevel;                   // +0x0c
-    unsigned char NavLayer;                        // +0x0d
-    bool          LeafNode;                        // +0x0e
-    bool          Blocked;                         // +0x0f
-    void*         PRegion;                         // +0x10
-    void*         NeighbourData;                   // +0x14
-    signed char   NeighbourCount;                  // +0x18
-    unsigned char _pad19[3];
-    unsigned char PreferabilityCost;               // +0x1c
-    CNavNavigableLeafNode(const C2DVector& position, unsigned char level, unsigned char layer, CAFile& file, CRegionList& regions, bool readPreferability);   // 0x00A772D0
-};
+// Identity: Ego_r.pdb ??0CNavSwitchableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@..@std@@_N@Z (engine/CNavSwitchableLeafNode.h
+//   FABLE_RETAIL_CNAVSWITCHABLELEAFNODE); vtable 0x0129DE04.
+// Port (NF68, round 7): the local C2DVector / CAFile / CNavNavigableLeafNode / CRegionList / SUniqueIDOpen / CKeyPairCompareLess /
+//   CUniqueIDVector / CUniqueIDMap models and the made-up GrowVectorStorage_s7 stand-in are replaced by the shared headers on the macro
+//   block of the landed CNavQuadTree::LoadFromFile 0x00A7AF60 (which constructs this class): the base ctor 0x00A772D0 now takes the PDB
+//   const std::list<CNavRegion>&, the ids go through CVectorMap::Insert(key, value) (push_back -> vector<pair<unsigned __int64, bool> >
+//   ::_M_insert_overflow 0x00A82380) and Update (std::sort, __fastcall, 0x00A84160).
+// Callees: CNavNavigableLeafNode(file ctor) 0x00A772D0 (out of line), CAFile slot Read(void*, long, CASuspendableProcess*), the id
+//   vector's _M_insert_overflow 0x00A82380, std::sort 0x00A84160 (first, last, comparator by value).
+// Layout: Ego_r.pdb CNavSwitchableLeafNode: UniqueIDsOpen +0x20 (CVectorMap<unsigned __int64, bool>: STLport vector of 16-byte pairs,
+//   comparator byte +0x2c, Dirty +0x2d); the leaf base's Blocked +0x0f and PRegion +0x10.
+// Shape: the count and the loop index are homed in the dead `regions` / `readPreferability` slots; each id is added through the vector
+//   map's inline Insert (push_back, then Dirty), the map is sorted once through the inline Update().
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_CANAVQUADTREENODE
+#define FABLE_RETAIL_CNAVNAVIGABLELEAFNODE
+#define FABLE_RETAIL_CNAVSWITCHABLELEAFNODE
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#define FABLE_RETAIL_CAFILE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#define FABLE_RETAIL_STLP_SORT_FASTCALL
+#define FABLE_RETAIL_CVECTORMAP_CTOR
+#define FABLE_RETAIL_CVECTORMAP_INSERT
+#define FABLE_RETAIL_CVECTORMAP_INSERT_KEYVALUE
+#define FABLE_RETAIL_CVECTORMAP_INSERT_VALUE_TYPE
+#include "engine/CAFile.h"
+#include "engine/CNavSwitchableLeafNode.h"
 
-inline void* operator new(unsigned int, void* where) { return where; }
-struct __true_type { __true_type() { } };
-struct SUniqueIDOpen {                             // pair<unsigned __int64, bool> (16 bytes)
-    unsigned __int64 first;
-    bool             second;
-    SUniqueIDOpen(const unsigned __int64& a, const bool& b) : first(a), second(b) { }
-    SUniqueIDOpen(const SUniqueIDOpen& o) : first(o.first), second(o.second) { }
-};
-struct CKeyPairCompareLess { CKeyPairCompareLess() { } };
-void __fastcall SortUniqueIDs(SUniqueIDOpen* first, SUniqueIDOpen* last, CKeyPairCompareLess compare);   // 0x00A84160
-template <class T> struct _STLP_alloc_proxy {
-    T* _M_data;
-    _STLP_alloc_proxy(T* data) : _M_data(data) { }
-};
-struct CUniqueIDVector {                           // STLport vector<SUniqueIDOpen>
-    SUniqueIDOpen* _M_start;
-    SUniqueIDOpen* _M_finish;
-    _STLP_alloc_proxy<SUniqueIDOpen> _M_end_of_storage;
-    CUniqueIDVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    void _M_insert_overflow(SUniqueIDOpen* position, const SUniqueIDOpen& x, const __true_type&, unsigned long fillLen, bool atEnd);   // 0x00A82380
-    FABLE_FORCEINLINE void push_back(const SUniqueIDOpen& x)
-    {
-        if (_M_finish != _M_end_of_storage._M_data) {
-            if (_M_finish)
-                new (_M_finish) SUniqueIDOpen(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
-    }
-};
-void* GrowVectorStorage_s7(void* vector, unsigned long count);   // stand-in: the reallocation (returns the new end slot)
-#pragma auto_inline(off)
-// Same-TU body of the vector growth instantiation 0x00A82380: placement copy of the value read through its const reference
-// into the new storage; the empty tag is never touched.
-__declspec(noinline) void CUniqueIDVector::_M_insert_overflow(SUniqueIDOpen* position, const SUniqueIDOpen& x, const __true_type& p2, unsigned long fillLen, bool atEnd)
-{
-    SUniqueIDOpen* p = (SUniqueIDOpen*)GrowVectorStorage_s7(this, fillLen);
-    if (p)
-        new (p) SUniqueIDOpen(x);
-}
-#pragma auto_inline(on)
-struct CUniqueIDMap {                              // CVectorMap<unsigned __int64, bool, CKeyPairCompareLess<...> >
-    CUniqueIDVector     Entries;                   // +0x00
-    CKeyPairCompareLess Compare;                   // +0x0c
-    bool                Dirty;                     // +0x0d
-    CUniqueIDMap() : Dirty(false) { }
-    FABLE_FORCEINLINE void Add(const unsigned __int64& key, const bool& value)
-    {
-        Entries.push_back(SUniqueIDOpen(key, value));
-        Dirty = true;
-    }
-    void Sort()
-    {
-        if (Dirty) {
-            SortUniqueIDs(Entries._M_start, Entries._M_finish, Compare);
-            Dirty = false;
-        }
-    }
-};
-
-class CNavSwitchableLeafNode : public CNavNavigableLeafNode {   // vtable 0x0129DE04
-public:
-    CUniqueIDMap UniqueIDsOpen;                    // +0x20
-    virtual void v00();
-    CNavSwitchableLeafNode(const C2DVector& position, unsigned char level, unsigned char layer, CAFile& file, CRegionList& regions, bool readPreferability);
-};
-
-CNavSwitchableLeafNode::CNavSwitchableLeafNode(const C2DVector& position, unsigned char level, unsigned char layer, CAFile& file, CRegionList& regions, bool readPreferability)
-    : CNavNavigableLeafNode(position, level, layer, file, regions, readPreferability)
+CNavSwitchableLeafNode::CNavSwitchableLeafNode(const C2DVector& position, unsigned char quadTreeLevel, unsigned char navLayer, CAFile& file,
+                                               const std::list<CNavRegion>& regions, bool readPreferability)
+    : CNavNavigableLeafNode(position, quadTreeLevel, navLayer, file, regions, readPreferability)
 {
     Blocked = true;
     unsigned long count;
@@ -109,8 +40,8 @@ CNavSwitchableLeafNode::CNavSwitchableLeafNode(const C2DVector& position, unsign
     for (unsigned long i = 0; i < count; ++i) {
         unsigned __int64 id;
         file.Read(&id, 8, 0);
-        UniqueIDsOpen.Add(id, false);
+        UniqueIDsOpen.Insert(id, false);
     }
     PRegion = 0;
-    UniqueIDsOpen.Sort();
+    UniqueIDsOpen.Update();
 }

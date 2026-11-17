@@ -1,129 +1,100 @@
-// CPhysicsMeshInfo::BeginLoading() -- if the physics mesh data is not loaded yet, create it, open the bank entry, register the data with the bank's resource list, start an asynchronous read of the whole entry and record the resource size
-// Leaf: BeginLoading
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A25BD0, length 321 bytes (+ int3 padding), plain `ret`.
-// Callees: operator new 0x00BFEA1A (0x2C bytes), CResource::CResource 0x009FBEC0 (CMeshData vtable 0x0129CD78),
-// CBankFileAsync::CreateEntry(ulong) 0x009D58D0, CBankFile::GetEntryDataSize(ulong) 0x009CC240, CResourceBank::
-// AddResource 0x009FC3D0, CBankFileAsyncEntry::BeginReadDataAutoAlloc 0x009D6100, the counted pointer operator=
-// 0x009A4440, CPhysicsMesh::Sizeof 0x00A6C900, CBankFileAsyncData::Sizeof 0x009D5620, CResource::SetResourceSize
-// 0x009FBF20, operator delete 0x00BFE9BC; the read priority global 0x0139723C. Same family as the landed
-// NParticleEngine::CEmitterData::BeginLoading 0x00AF1360.
-// Layout: CPhysicsMeshInfo = CMeshDataBankEntry {vptr, Bank +4, Index +8} + MeshData (CIVCountedPointer<CMeshData>)
-// +0xC (landed Reset 0x00A24F90); CMeshData = CResource (0x1C) + FileData (counted pointer) +0x1C + Mesh +0x24 +
-// Owner +0x28 (landed CMeshData ctor 0x00A2AA80 shape); the entry's bank +4 / index +8; the bank's resource list +0x2E4.
-// Shape: the landed CEmitterData::BeginLoading form; the new data goes in through the inline CIVCountedPointer
-// operator=(T*) (landed Reset), the CMeshData ctor's member objects zero +0x1C..+0x24 after the vtable store, and the
-// two size ternaries read the data through one named pointer (edi) while SetResourceSize re-reads MeshData.
-// Model note: engine/CResource.h is data-only (vptr as a placeholder word), so CResourceBase restates its layout with
-// the virtual interface the vtable store and the slot-1 release need.
+// CPhysicsMeshInfo::BeginLoading() const -- if the physics mesh data is not loaded yet, create it, open the bank entry, queue the data on
+// the bank's physics-mesh resource bank, start an asynchronous read of the whole entry and record the resource size
+// Leaf: ?BeginLoading@CPhysicsMeshInfo@@QBEXXZ
+// Identity: Ego_r.pdb / FableWin.pdb ?BeginLoading@CPhysicsMeshInfo@@QBEXXZ (const; the landed caller 0x00724630 binds this spelling,
+//   0x00A262B0 still binds the QAE stand-in: NAME_FIXES.tsv).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A25BD0, 321 bytes, plain `ret`.
+// Callees: operator new 0x00BFEA1A (0x2C bytes), CResource::CResource 0x009FBEC0 (CMeshData vtable 0x0129CD78), CBankFileAsync::CreateEntry
+//   0x009D58D0, CBankFile::GetEntryDataSize 0x009CC240 (on the entry's BankFile), CResourceBank::AddToLoadingQueue 0x009FC3D0 (nf44:83),
+//   CBankFileAsyncEntry::BeginReadDataAutoAlloc 0x009D6100, CCountedPointer<CBankFileAsyncData>::operator= 0x009A4440,
+//   CPhysicsMesh::Sizeof 0x00A6C900, CBankFileAsyncData::Sizeof 0x009D5620, CResource::SetResourceSize 0x009FBF20, operator delete 0x00BFE9BC.
+// Port (NF68): the local CResourceBase / CResourceBank / CMeshDataBank / CCountedPointer / CIVCountedPointer / CBankFile models are gone:
+//   engine/CResource.h + CIVCountedPointeeBase.h (FABLE_RETAIL_DEF_CLASS_BASE), engine/CIVCountedPointer.h, engine/CCountedPointer.h,
+//   engine/CBankFile.h + CBankFileAsync.h, engine/CMeshDataBank.h (retail CResourceBank members, CBankFileAsync base),
+//   engine/CMeshDataBankEntry.h (Bank +4 / Index +8), engine/CBankFileAsyncData.h, engine/CPhysicsMesh.h (overlay opt-in
+//   FABLE_RETAIL_CPHYSICSMESH_SIZEOF). Local models remain only for the classes with no shared header: CPhysicsMeshInfo (Ego_r.pdb:
+//   CMeshDataBankEntry base, MeshData +0xC) with its CMeshData (FileData +0x1C, Mesh +0x24, Owner +0x28) and CBankFileAsyncEntry (Ego_r.pdb
+//   BankFile +4, Index +8, PaddedSize +0xC). MeshData is `mutable` (the PDB function is const and stores the new data; the bytes cannot
+//   show whether the source wrote mutable or a const_cast).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CBANKFILEASYNC_DATA
+#define FABLE_RETAIL_CBANKFILEASYNC_GETASYNCENTRY
+#define FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_CMESHDATABANK
+#define FABLE_RETAIL_CMESHDATABANK_BASES
+#define FABLE_RETAIL_CMESHDATABANK_CTOR
+#define FABLE_RETAIL_CMESHDATABANKENTRY
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE_SETRESOURCESIZE
+#define FABLE_RETAIL_CBANKFILEASYNCDATA_SIZEOF
+#define FABLE_RETAIL_CMOVABLERESOURCE
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL
+#define FABLE_RETAIL_CPHYSICSMESH_SIZEOF
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CBankFile.h"
+#include "engine/CBankFileAsync.h"
+#include "engine/CBankFileAsyncData.h"
 #include "engine/CResource.h"
-void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
+#include "engine/CResourceBank.h"
+#include "engine/CIVCountedPointer.h"
+#include "engine/EThreadedFilePriority.h"
+#include "engine/CMeshDataBank.h"
+#include "engine/CMeshDataBankEntry.h"
+#include "engine/CPhysicsMesh.h"
 
-struct SCountBlock {
-    long m_references;                             // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
-template <class T> class CCountedPointer { public:
-    T* Object;                                     // +0
-    SCountBlock* Info;                             // +4
-    CCountedPointer() : Object(0), Info(0) {}
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other);   // 0x009A4440
-    T* operator->() const { return Object; }
-};
-enum EThreadedFilePriority { };
-extern EThreadedFilePriority g_PhysicsMeshReadPriority;   // 0x0139723C
-class CBankFileAsyncData { public:
-    unsigned long Sizeof() const;                  // 0x009D5620
-};
-class CBankFile { public: unsigned long GetEntryDataSize(unsigned long a0) const; private:   // 0x009CC240
-};
-class CBankFileAsyncEntry { public:
-    void*          __vftable;
-    CBankFile*     Bank;                           // +4
-    unsigned long  Index;                          // +8
+class CBankFileAsyncEntry {
+public:
     CCountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long offset, unsigned long size, EThreadedFilePriority priority);   // 0x009D6100
-};
-class CPhysicsMesh { public: unsigned long Sizeof() const; };   // 0x00A6C900
-
-struct CResourceBase {                             // CResource with its virtual interface (engine/CResource.h layout)
-    virtual void v00();
-    virtual void DeleteThis();                     // slot 1
-    long          RefCount;                        // +0x04 (the engine header's +0x04 word)
-    unsigned char _body[0x1c - 8];
-    CResourceBase();                               // 0x009FBEC0
-    void SetResourceSize(unsigned long size);      // 0x009FBF20
-};
-class CResourceBank { public:
-    void AddResource(CResourceBase* resource);     // 0x009FC3D0
-};
-class CMeshDataBank { public:
-    unsigned char _pad000[0x2e4];
-    CResourceBank ResourceBank;                    // +0x2e4
-    CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0
+    virtual ~CBankFileAsyncEntry();
+    CBankFileAsync* BankFile;                                // +0x04
+    unsigned long   Index;                                   // +0x08
+    unsigned long   PaddedSize;                              // +0x0c
 };
 
-class CPhysicsMeshInfo;
-struct CMeshPointer {                              // CIVCountedPointer<const CPhysicsMesh>, nulled by its ctor
-    CPhysicsMesh* m_pObject;
-    CMeshPointer() : m_pObject(0) {}
-};
-struct CMeshData : CResourceBase {                 // CPhysicsMeshInfo::CMeshData, vtable 0x0129CD78
-    CCountedPointer<CBankFileAsyncData> FileData;  // +0x1c
-    CMeshPointer      Mesh;                        // +0x24
-    CPhysicsMeshInfo* Owner;                       // +0x28
-    virtual void v00();
-    CMeshData(CPhysicsMeshInfo* owner) : FileData(), Mesh() { Owner = owner; }
-};
+extern EThreadedFilePriority g_PhysicsMeshReadPriority;     // 0x0139723C (landed descriptive name; no PDB name found)
 
-template <class T> class CIVCountedPointer { public:
-    T* m_pObject;
-    void Release()
-    {
-        T* object = m_pObject;
-        if (object) {
-            if (--object->RefCount == 0)
-                object->DeleteThis();
-            m_pObject = 0;
+class CPhysicsMeshInfo : public CMeshDataBankEntry {
+public:
+    class CMeshData : public CResource {
+    public:
+        CMeshData(const CPhysicsMeshInfo* owner) : Owner(owner) {}
+        virtual ~CMeshData();
+        virtual bool UnloadResource();
+        virtual bool IsResourceLoaded() const;
+        virtual void OnResourceLoaded();
+        unsigned long Sizeof() const
+        {
+            unsigned long meshSize = !Mesh.IsNull() ? Mesh->Sizeof() + sizeof(Mesh) : sizeof(Mesh);
+            unsigned long fileSize = FileData.Data ? FileData->Sizeof() + sizeof(FileData) : sizeof(FileData);
+            return sizeof(CMeshData) + meshSize + fileSize;
         }
-    }
-    CIVCountedPointer& operator=(T* object)
-    {
-        Release();
-        m_pObject = object;
-        return *this;
-    }
-    T* operator->() const { return m_pObject; }
+        CCountedPointer<CBankFileAsyncData>   FileData;      // +0x1c
+        CIVCountedPointer<const CPhysicsMesh> Mesh;          // +0x24
+        const CPhysicsMeshInfo*               Owner;         // +0x28
+    };
+    void BeginLoading() const;
+    mutable CIVCountedPointer<CMeshData> MeshData;           // +0x0c
 };
+FABLE_STATIC_ASSERT(sizeof(CPhysicsMeshInfo::CMeshData) == 0x2c);
+FABLE_STATIC_ASSERT(sizeof(CPhysicsMeshInfo) == 0x10);
 
-class CPhysicsMeshInfo { public:                          // CMeshDataBankEntry + MeshData
-    virtual void v00();
-    CMeshDataBank*               Bank;             // +0x04
-    unsigned long                Index;            // +0x08
-    CIVCountedPointer<CMeshData> MeshData;         // +0x0c
-    void BeginLoading();
-};
-
-void CPhysicsMeshInfo::BeginLoading()
+void CPhysicsMeshInfo::BeginLoading() const
 {
-    if (MeshData.m_pObject)
+    if (!MeshData.IsNull())
         return;
-    MeshData = new CMeshData(this);
-    CCountedPointer<CBankFileAsyncEntry> entry = Bank->CreateEntry(Index);
-    unsigned long size = entry->Bank->GetEntryDataSize(entry->Index);
-    Bank->ResourceBank.AddResource(MeshData.m_pObject);
+    MeshData.Reset(new CMeshData(this));
+    CCountedPointer<CBankFileAsyncEntry> entry = Bank->GetAsyncEntry(Index);
+    unsigned long size = entry->BankFile->GetEntryDataSize(entry->Index);
+    Bank->PhysicsMeshResourceBank.AddToLoadingQueue(*MeshData);
     MeshData->FileData = entry->BeginReadDataAutoAlloc(0, size, g_PhysicsMeshReadPriority);
-    CMeshData* data = MeshData.m_pObject;
-    unsigned long meshSize = data->Mesh.m_pObject ? data->Mesh.m_pObject->Sizeof() + 4 : 4;
-    unsigned long dataSize = data->FileData.Object ? data->FileData->Sizeof() + 8 : 8;
-    MeshData->SetResourceSize(dataSize + meshSize + 0x2c);
+    MeshData->SetResourceSize(MeshData->Sizeof());
 }

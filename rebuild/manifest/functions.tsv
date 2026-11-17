@@ -35326,7 +35326,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009f6750	__destroy_aux<CCountedPointer<CJoystick>*>	std	__fastcall	void	4	pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,allocator<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 009f67e0	erase	std::vector<CInputEvent>	unknown	undefined	0		0	yes	accepted									
 009f6850	_M_clear	std::vector<CInputEvent, std::allocator<CInputEvent>>	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
-009f6890	operator=	std::vector<T>	unknown	undefined	0		0	yes	accepted									
+009f6890	operator=	std::vector<CInputEvent, std::allocator<CInputEvent>>	unknown	undefined	0		0	yes	accepted									
 009f69b0	CInputEventPackage	CInputEventPackage	__thiscall	CAugmentationDef *	2	CAugmentationDef *,CAugmentationDef *	1	yes	accepted									
 009f6a70	~vector	std::vector<CInputEvent, std::allocator<CInputEvent>>	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
 009f6ac0	_M_insert_overflow	std::vector<CInputEvent, std::allocator<CInputEvent>>	unknown	undefined	0		0	yes	accepted									
@@ -36973,7 +36973,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a42830	GetPEntry	CLipSyncDataBank	__thiscall	bool	3	CGuiInputProcess *,CInputProcessManager *,CGuiWindowManager *	1	yes	accepted									
 00a42940	PrepareDataForInclusion	CLipSyncDataBank	__thiscall	void	3	CWorldMap *,long,CCountedPointer<CAFile>	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a4\CLipSyncDataBank_PrepareDataForInclusionCLipSyncDataBankMAEXKABVC_00a42940.cpp
 00a42960	CIVCountedPointer_Release_00a42960	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a4\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a42960.cpp
-00a42980	CIVCountedPointer_Assign_00a42980	_global	__thiscall	void	3	CLipSyncDataBankEntry *,ulong,CLipSyncDataBank *	1	yes	accepted									
+00a42980	BeginLoading	CLipSyncDataBankEntry	__thiscall	void	3	CLipSyncDataBankEntry *,ulong,CLipSyncDataBank *	1	yes	accepted									
 00a42a80	UnloadResource	CLipSyncDataBankEntry::CData	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a42ac0	BeginLoadingEntry	CLipSyncDataBank	__thiscall	bool	2	CEditWorldMap *,long	1	yes	accepted									
 00a42af0	Sizeof	C3DMeshLODInfo	__thiscall	ulong	1	C3DMeshLODInfo *	1	yes	accepted									
@@ -39855,7 +39855,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ad83a0	~vector	std::vector<QuadricOptimiserInternals::COptimisedSubMesh, std::allocator<QuadricOptimiserInternals::COptimisedSubMesh>>	__thiscall	void	1	CActiveFile *	1	yes	accepted									
 00ad83d0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 00ad84d0	~COptimisedPrimitive	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	void	2	CWound *,CTCTextureDecal *	1	yes	accepted									
-00ad85d0	resize_COptimisedVertex	std::vector::std::vector	unknown	undefined	0		0	yes	accepted									
+00ad85d0	_M_fill_insert	std::vector<QuadricOptimiserInternals::COptimisedVertex, std::allocator<QuadricOptimiserInternals::COptimisedVertex>>	unknown	undefined	0		0	yes	accepted									
 00ad8720	push_back	CArray<QuadricOptimiserInternals::COptimisedSubMesh>	unknown	undefined	0		0	yes	accepted									
 00ad8770	`scalar_deleting_destructor'	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ad\CLandscapeBackgroundPatch_vectordeletingdestructor_00ad8770.cpp
 00ad87a0	resize	std::vector	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									

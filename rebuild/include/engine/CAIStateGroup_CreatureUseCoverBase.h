@@ -36,12 +36,30 @@ protected:
     virtual void GetCoverThingList(std::vector<CThing*>& things);       // slot 23 0x00970DF0
     void RefreshCoverList();                                             // 0x009710D0
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_ADVANCE
+    // NF68 opt-in (row 0x009790F0 CAIStateGroup_CreatureAdvanceInCover::Update): Ego_r.pdb protected members. Declarations only.
+    bool GetHiddenCoverPosAndSetUpCoverThing(C3DVector& pos);           // 0x00970CD0 ?GetHiddenCoverPosAndSetUpCoverThing@..@@IAE_NAAVC3DVector@@@Z
+    void SetAtFailed();                                                  // 0x00970590 ?SetAtFailed@..@@IAEXXZ
+    void RemoveThingFromCoverList(const CThing* thing);                  // 0x009708A0 ?RemoveThingFromCoverList@..@@IAEXPBVCThing@@@Z
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_TAKECOVER
+    // NF68 opt-in (rows 0x0097A630 / 0x00979F70 CAIStateGroup_CreatureTakeCover): Ego_r.pdb protected members. Declarations only.
+    bool IsLowCover(const CThing& cover) const;                         // 0x00970760 ?IsLowCover@..@@IBE_NABVCThing@@@Z
+    void ClearCoverThing();                                              // 0x00970B60 ?ClearCoverThing@..@@IAEXXZ
+    bool GetHiddenCoverPos(C3DVector& pos, const CThing& cover);        // 0x00970930 ?GetHiddenCoverPos@..@@IAE_NAAVC3DVector@@ABVCThing@@@Z
+    bool CanSeeTarget();                                                 // 0x00970790 ?CanSeeTarget@..@@IAE_NXZ
+#endif
     bool HasDiveAnim;                                                    // +0x1c
     bool HasJumpOutAnims;                                                // +0x1d
     bool TimingCritical;                                                 // +0x1e
     CIntelligentPointer<CThing> PCoverThing;                             // +0x1f
     unsigned char _pad_0x27[0x1];                                        // +0x27
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_TYPED_COVERLIST
+    // NF68 opt-in (row 0x009790F0): the Ego_r.pdb member type (needs stlport/fable_containers.h); same 12 bytes.
+    std::vector<CIntelligentPointer<CThing> > CoverList;                 // +0x28
+#else
     unsigned char CoverList[0xc];                                        // +0x28 vector<CIntelligentPointer<CThing> >
+#endif
     bool FailedToFindCover;                                              // +0x34
     long FailedTime;                                                     // +0x38
     C3DVector FailedToFindCoverAt;                                       // +0x3c

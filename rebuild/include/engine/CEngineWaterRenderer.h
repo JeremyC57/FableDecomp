@@ -419,6 +419,11 @@ private:
     bool SetSeaBackgroundTexturesAndUVModes();
     void SetupSeaBackgroundShaderConstantsAndFog();
 #endif
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_SETUPSEANONREFLECTIVEFOREGROUND
+    // NF68 opt-in (row 0x00B7FA20): FableWin.pdb 0x02D501F0 ?SetupSeaNonReflectiveForegroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ
+    // (private; retail's out-of-line copy 0x00B7FA20 has no direct caller, RenderSeaNonReflectiveForeground 0x00B77E20 expands it).
+    void SetupSeaNonReflectiveForegroundShaderConstantsAndFog();         // 0x00B7FA20
+#endif
     void RenderSeaBackground(float time);                                // ?RenderSeaBackground@CEngineWaterRenderer@@AAEXM@Z
     void RenderEnvironmentMap();                                         // ?RenderEnvironmentMap@CEngineWaterRenderer@@AAEXXZ
     void RenderIceForeground(float time);                                // ?RenderIceForeground@CEngineWaterRenderer@@AAEXM@Z

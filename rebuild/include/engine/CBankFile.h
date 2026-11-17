@@ -82,7 +82,16 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
     // Ego_r.pdb CBankFile::CRuntimeData (12 bytes): DataOffset +0, DataSize +4, DataType +8, Valid +9.
+#ifdef FABLE_RETAIL_CBANKFILE_CRUNTIMEDATA_CTOR
+    // NF68 opt-in (row 0x009CEAE0 CBankFile::AllocateBuffers): FableWin.pdb ??0CRuntimeData@CBankFile@@QAE@XZ (a class: the PDB
+    // spellings, and the landed resize 0x009D4010 leaf, read VCRuntimeData@CBankFile); retail AllocateBuffers zeroes the four
+    // members of the resize temporary one by one (inline).
+    class CRuntimeData {
+    public:
+        CRuntimeData() : DataOffset(0), DataSize(0), DataType(0), Valid(false) {}
+#else
     struct CRuntimeData {
+#endif
         unsigned long DataOffset;
         unsigned long DataSize;
         unsigned char DataType;
@@ -141,7 +150,12 @@ public:
     unsigned long               HeaderSize;                  // +0xa0
     unsigned long               FileInformationSize;         // +0xa4
     unsigned long               FileSize;                    // +0xa8
+#ifdef FABLE_RETAIL_CBANKFILE_SYMBOLINDICES
+    // NF68 opt-in (row 0x009CEAE0; needs FABLE_RETAIL_CBANKFILE_FILENAMEINDICES): Ego_r.pdb member type.
+    std::map<CCharString,unsigned long> SymbolIndices;       // +0xac
+#else
     unsigned char               SymbolIndices[0xc];          // +0xac map<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>_>
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES
     std::map<CCharString,unsigned long> OldSymbolIndices;    // +0xb8
 #else
@@ -202,6 +216,12 @@ public:
     }
 private:
     void InitEntry(unsigned long index, const CCharString& symbol, const CCharString& filename);   // 0x009CE050 (PDB AAEXKABVCCharString@@0@Z)
+public:
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_ALLOCATEBUFFERS
+    // NF68 opt-in (row 0x009CEAE0): Ego_r.pdb 0x00B1CED0 / FableWin.pdb 0x02F9BF90 ?AllocateBuffers@CBankFile@@AAEXK@Z (private).
+private:
+    void AllocateBuffers(unsigned long size);                            // 0x009CEAE0
 public:
 #endif
 #ifdef FABLE_RETAIL_CBANKFILE_ENTRIES

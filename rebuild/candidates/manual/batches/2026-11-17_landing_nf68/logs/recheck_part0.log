@@ -1,0 +1,13 @@
+addr       parity           behav  name
+009790f0   WARN RELOC_NAME: ?SetAtFailed@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ -> 00970590 labelled 'CAIStateGroup_CreatureUseCoverBase::SetFailedToFindCover'
+009790f0   RELOCATION_MATCH PASS   Update
+009ceae0   RELOCATION_MATCH PASS   AllocateBuffers
+00a42980   RELOCATION_MATCH PASS   BeginLoading
+00b32ad0   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b32ad0   RELOCATION_MATCH PASS   PreRenderLayer
+
+WINS: 4
+  009790f0 RELOCATION_MATCH CAIStateGroup_CreatureAdvanceInCover::?Update@CAIStateGroup_CreatureAdvanceInCover@@UAEXXZ
+  009ceae0 RELOCATION_MATCH CBankFile::?AllocateBuffers@CBankFile@@AAEXK@Z
+  00a42980 RELOCATION_MATCH CLipSyncDataBankEntry::?BeginLoading@CLipSyncDataBankEntry@@AAEXKAAVCLipSyncDataBank@@@Z
+  00b32ad0 RELOCATION_MATCH CEnginePrimitiveRenderer::?PreRenderLayer@CEnginePrimitiveRenderer@@QAEXW4EEngineRenderLayer@@@Z

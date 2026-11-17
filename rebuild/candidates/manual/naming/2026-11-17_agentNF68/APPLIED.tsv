@@ -1,0 +1,19 @@
+entry	queue_address	correct_symbol	status	binders_ported	note
+nf41:e102	0x0091F990	??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	done	1	all slice binders ported: 0x00979F70
+nf41:e120	0x00A23C50	?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z	blocked	0	rows left: 0x00BD1F70 (blocked)
+nf41:e161	0x00F35B30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	blocked	0	rows left: 0x00EE2490 (blocked)
+nf41:e177	0x00A772D0	??0CNavNavigableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@_N@Z	done	1	all slice binders ported: 0x00A79A30
+nf41:e188	0x00A23C60	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ	blocked	0	rows left: 0x00BD1F70 (blocked)
+nf44:16	0x00AD7400	??1COptimisedVertex@QuadricOptimiserInternals@@QAE@XZ	done	1	all slice binders ported: 0x00AD85D0
+nf44:70	0x00BCE740	??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitiveAnimatedMesh@@PAVC3DPrimitive2@@W4ERenderMode@@_N@Z	blocked	0	rows left: 0x00BD1F70 (blocked)
+nf44:71	0x00BEBBB0	?IsSimulationRunning@CEngineInternalPrimitiveMeshBase@@QBE_NK@Z	blocked	0	rows left: 0x00BD1F70 (blocked)
+nf44:73	0x00BF18B0	?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z	blocked	0	rows left: 0x00BD1F70 (blocked)
+nf44:83	0x009FC3D0	?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z	done	2	all slice binders ported: 0x00A25BD0 0x00A42980
+q10459	0x009710D0	?RefreshCoverList@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ	done	2	all slice binders ported: 0x009790F0 0x0097A630
+q10475	0x009F6720	?_Destroy_Record34@@YIXPAVCInputEvent@@0@Z	done	1	binder 0x009F6890 ported (RM + PASS) and no longer binds the CElement34 stand-in; it binds the STLport spelling ??$_Destroy@PAVCInputEvent@@@std@@YIXPAVCInputEvent@@0@Z, which supersedes the queued descriptive spelling (REJECTED.tsv); NAME_FIXES.tsv respells the self row 0x009F6720 to match
+q10478	0x00A23C60	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ	blocked	0	rows left: 0x00B9E950 (blocked)
+q10541	0x0143E90C	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A	blocked	1	rows left: 0x00E12580 (blocked) 0x00EE2A80 (outside this slice); ported: 0x00EDA8C0
+nf48:land1113fy:e28	0x00464931	?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z	done	1	all slice binders ported: 0x009CEAE0
+nf48:land1011fk:e1	0x0049B760	?resize@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXI@Z	done	1	all slice binders ported: 0x009CEAE0
+nf45:29	0x01436E18	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	blocked	1	rows left: 0x00B76BC0 (blocked) 0x00BB8090 (blocked) 0x00BAD2E0 (outside this slice) 0x00BCB800 (outside this slice) 0x00BF4570 (outside this slice) 0x00BE6F70 (outside this slice); ported: 0x00B32AD0
+nf46:34	0x01436E8C	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	done	1	binders: 0x00B7FA20 ported by NF68 (RM + PASS, binds GPEngineWorldMap); the other binder 0x00B7C510 (outside this slice) is already landed on NEngineInternal::GPEngineWorldMap (agentNF57, SetupSeaBackgroundShaderConstantsAndFog)

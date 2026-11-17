@@ -154,6 +154,10 @@ private:
 public:
 #endif
     void SetupDefaultFogStates();                                        // 0x00B47630 ?SetupDefaultFogStates@CEngineLightingManager@@QAEXXZ (CEngine::SetDefaultRenderStates 0x00B25877)
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_ENABLEFOG
+    // NF68 opt-in (row 0x00B32AD0): Ego_r.pdb 0x009BC540 ?EnableFog@CEngineLightingManager@@QAEXXZ (retail 0x00B46890, out of line). Declaration only.
+    void EnableFog();                                                    // 0x00B46890
+#endif
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FOGTRANSFORM
     // Chunk 764 (row 0x00B451D0): Ego_r.pdb ?CalculateFogTransformMatrix@CEngineLightingManager@@AAE?AVC4DVector@@MM@Z (private). Declaration only.
 private:
