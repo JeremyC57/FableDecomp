@@ -282,6 +282,12 @@ class CDefPointeeBase;
 #pragma pack(push, 1)
 class CTCCreatureOpinionOfHero {
 public:
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_FLAT_CLEARPERSONALITY
+    // NF55 opt-in (2026-11-17, row 0x0089C4C0 CGameScriptInterface::EntityClearPersonalityOverride) for the flattened view, the same
+    // declaration as the retail branch's CLEARPERSONALITY block: Ego_r.pdb ?ClearPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXXZ,
+    // out of line at 0x00682310. Declaration only; no layout change.
+    void ClearPersonalityOverride();                                     // 0x00682310
+#endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08

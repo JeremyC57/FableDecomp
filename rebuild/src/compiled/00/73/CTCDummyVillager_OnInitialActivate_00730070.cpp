@@ -83,7 +83,9 @@ public:
     void SetHomeBuilding(CThingBuilding* building); // 0x00512210
 };
 inline bool IsAlive(const CThing* thing) { return thing && !(thing->Flags91 & 1); }
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThingBuilding>& thing);   // 0x0065F8CA
+// FableWin.pdb ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingBuilding@@@@@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@@Z: the
+// function template (engine/ThingAlive.h's IS_THING_ALIVE<T>), called out of line; NF55 2026-11-17, was a non-template overload.
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);                  // 0x0065F8CA (T = CIntelligentPointer<CThingBuilding>)
 
 class CThingManager;
 class CWorld;

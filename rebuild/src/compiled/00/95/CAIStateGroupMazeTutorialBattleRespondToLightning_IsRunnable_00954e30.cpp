@@ -20,7 +20,17 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct MazePointerBase{virtual ~MazePointerBase();MazeThing* item;MazePointerBase();}; //00a01c10,00a01b10,00a01b50,00a01b90
 struct MazePointer:MazePointerBase{FABLE_FORCEINLINE MazePointer(MazeThing* p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)p);}FABLE_FORCEINLINE MazePointer& operator=(const MazePointer& p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)(((MazeThing*)((CBaseIntelligentPointer*)&p)->GetPItem())));return *this;}}; //derived scalar destructor004a9710,vtable01238c6c
-struct MazeBoss{long GetPhase();}; //007aed10
+// agentNF55 (round 7): the local boss stand-in is gone; the interface-173 component is the shared CTCBoss and 0x007AED10 its
+// Ego_r.pdb / FableWin.pdb ?GetBossPhase@CTCBoss@@QBEJXZ (engine/CTCBoss.h over the retail CTCBase).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CCountedPointer.h"
+#include "engine/C3DVector.h"
+#include "engine/CTCBoss.h"
 struct MazeCombat{virtual ~MazeCombat();
 virtual void slot1();
 virtual void slot2();
@@ -58,7 +68,7 @@ struct MazeTable{MazeEntry* begin;MazeEntry* end;MazeEntry* Find(const long&);Ma
  template<int Key> FABLE_FORCEINLINE void* LookupConst(){long key=Key;MazeEntry* p=FindConst(key);return (p==end || p->key>Key ? end:p)->value;}
 };
 struct MazeThing{char base[0x20];unsigned long masks[9];MazeTable table;char beforeDead[0x45];unsigned char dead;
-FABLE_FORCEINLINE void GetBoss(MazeBoss** out){if(masks[5]&0x2000)*out=(MazeBoss*)table.Lookup<173>();}
+FABLE_FORCEINLINE void GetBoss(CTCBoss** out){if(masks[5]&0x2000)*out=(CTCBoss*)table.Lookup<173>();}
 FABLE_FORCEINLINE void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)table.LookupConst<8>();}
 };
 class CWorld { public: static long __fastcall GetFrame(); }; //0049d870
@@ -70,7 +80,7 @@ FABLE_FORCEINLINE MazeThing* Creature(){return (MazeThing*)((CAIStateGroupBaseLa
 bool HasBeenHitByLightning(); //00954c60
 bool IsRunnable();};
 bool LightningMethods::IsRunnable(){
-MazeBoss* boss;Creature()->GetBoss(&boss);if(boss->GetPhase()==2)return false;
+CTCBoss* boss;Creature()->GetBoss(&boss);if(boss->GetBossPhase()==2)return false;
 MazeCombat* combat;Creature()->GetCombat(&combat);MazeThing* target=combat->GetTarget();
 if(target&&!(target->dead&1)&&HasBeenHitByLightning()){
 FrameOfLastHit=GetWorld().GetFrame();

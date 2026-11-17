@@ -4,10 +4,12 @@
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068FF50, 210 bytes, `ret 4`.
+// NF55 (2026-11-17): the CTCMenu stand-in of the kind-0xf6 component is CTCQuickAccessMenu (engine/CTCQuickAccessMenu.h, PDB
+//   ?IsActive@CTCQuickAccessMenu@@QBE_NXZ = 0x00625930); the local std::pair / CVectorMap specialisation gave way to engine/CVectorMap.h.
 // Callees: CPlayerGui::SetSpecialAbilityButtonsAsDisplaying(bool, bool) @ 0x00437580 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) (0x013B8790),
 //   CInputProcessGameBase::IsGameActionEventInQueue(long action, long buttonEventType) @ 0x00687D50 (landed name),
 //   CPlayer::GetPControlledCreature @ 0x00487DC0, the const component-map LowerBound @ 0x004365B0, the kind-0xf6 menu component's
-//   IsActive() @ 0x00625930 (+0x0c; label "GetCanItemBeQuickAssigned" is propagated).
+//   CTCQuickAccessMenu::IsActive() const @ 0x00625930.
 // Layout: engine/CInputProcessGameBase.h (MyPlayer +0x18), local model (the class carries virtuals); CPlayer (Ego_r.pdb,
 //   the PlayerModes list 4 bytes in retail): RightTriggerTargetLocked +0x20c, SpellMode +0x218; retail CThing component
 //   bitset +0x20 (kind 0xf6 = word +0x3c bit 22), map +0x44, Dead bit +0x91.
@@ -29,39 +31,30 @@ class CPlayerGui { public:
     void SetSpecialAbilityButtonsAsDisplaying(bool a, bool b);   // 0x00437580
 };
 class CProcessedInput;
-struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // the thing's component map at +0x44: a sorted vector of pairs
-    STCEntry_Retail* m_pFirst;
-    STCEntry_Retail* m_pLast;
-    STCEntry_Retail* m_pEnd;
-    const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation)
-    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
-    {
-        const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
-        if (it == m_pLast || kind < it->first)
-            it = m_pLast;
-        return ((CTCBase_Retail*)it->second);
-    }
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
-struct CTCMenu {                                   // component kind 0xf6
-    bool IsActive();                               // 0x00625930
-};
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCQUICKACCESSMENU_ISACTIVE
+#include "engine/CVectorMap.h"
+#include "engine/CTCQuickAccessMenu.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*> CTCMap_Retail;      // engine/CVectorMap.h: the thing's component map at +0x44
 class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                          // +0x44
-    unsigned char  _pad50[0x91 - 0x50];
+    unsigned char  _pad54[0x91 - 0x54];                 // the map is the 16-byte CVectorMap (vector + Compare + Dirty)
     unsigned char  Dead : 1;                       // +0x91 bit 0
     unsigned char  _bits91 : 7;
     FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase* FindTC(long kind) const
+    {
+        const CTCMap_Retail* map = &m_tcs;
+        const CTCMap_Retail::value_type* it = map->LowerBound((ETCInterfaceType)kind);
+        if (it == map->end() || kind < it->first)
+            it = map->end();
+        return it->second;
+    }
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer : public CPlayerDonor {
@@ -99,9 +92,9 @@ void CInputProcessSpecialAbilities::Update(CProcessedInput& input)
     }
     CThing* hero = MyPlayer->GetPControlledCreature();
     if (hero && !hero->Dead) {
-        CTCMenu* menu = 0;
+        CTCQuickAccessMenu* menu = 0;
         if (hero->HasTC(0xf6))
-            menu = (CTCMenu*)hero->m_tcs.Find(0xf6);
+            menu = (CTCQuickAccessMenu*)hero->FindTC(0xf6);
         if (!menu->IsActive())
             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SetSpecialAbilityButtonsAsDisplaying(false, true);
     }

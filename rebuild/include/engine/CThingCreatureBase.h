@@ -83,6 +83,13 @@ public:
  CThingCreatureBase* GetPLastAttackedByCreature()const{return PLastAttackedByCreature.Get();}
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_UPDATELASTATTACKINGCREATURE
+protected:
+ // NF55 opt-in (2026-11-17, row 0x006624A0): Ego_r.pdb 0x0053D330 + FableWin.pdb 0x01D8C170 ?UpdateLastAttackingCreature@CThingCreatureBase@@IAEXXZ
+ // (protected; out of line at 0x006624A0, called from WorldUpdate 0x006666A0). Declaration only: no layout change.
+ void UpdateLastAttackingCreature();                                     // 0x006624A0
+public:
+#endif
 #ifdef FABLE_RETAIL_UPDATE_NEAREST_INTERESTING
 public:bool IsThingInFOV(const CThing&,bool)const;
 #endif
@@ -518,6 +525,12 @@ class CThingBodyReorienter;
 #pragma pack(push, 1)
 class CThingCreatureBase {
 public:
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ANIMSPEED
+    // NF55 opt-in (2026-11-17, row 0x00692BC0 CCreatureActionBase::GetFrameUpdateTime) for the flattened view, the same declaration as the
+    // retail branch's UPDATEANIMATION block: Ego_r.pdb / FableWin.pdb ?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ, out of line
+    // in retail at 0x006655A0. Declaration only; no layout change.
+    float GetAnimationSpeedMultiplier() const;                           // 0x006655A0
+#endif
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08

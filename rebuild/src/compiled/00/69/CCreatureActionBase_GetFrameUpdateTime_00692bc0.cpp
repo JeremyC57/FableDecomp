@@ -7,9 +7,10 @@
 // @ 0x006655A0. Globals: the long frame rate @ 0x01375550 (`fild`), the float 1.0f @ 0x0122DED8 (`fdivr`: 1.0f / rate).
 // Shape: the frame time is a named float local (`fstp [esp]` into the one-dword frame before the call -- a named float
 // local for a value that must survive a call, GOTCHAS), then the call result is multiplied by it (`fmul [esp]`).
-class CThingCreatureBase_Calls { public:         // engine/CThingCreatureBase.h exists but is not used: only this call is modelled
-    float GetAnimationSpeedMultiplier() const;   // 0x006655A0
-};
+// NF55 (2026-11-17): the creature is engine/CThingCreatureBase.h (its flattened view; FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ANIMSPEED declares
+//   the PDB ?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ); it was the CThingCreatureBase_Calls stand-in.
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ANIMSPEED
+#include "engine/CThingCreatureBase.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -40,7 +41,7 @@ public:
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
-    CIntelligentPointer<CThingCreatureBase_Calls> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThingCreatureBase> PCreature;           // +0x08
     float GetFrameUpdateTime() const;
 };
 

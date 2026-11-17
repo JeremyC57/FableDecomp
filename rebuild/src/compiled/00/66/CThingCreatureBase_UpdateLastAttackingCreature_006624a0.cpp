@@ -1,44 +1,47 @@
 // CThingCreatureBase::UpdateLastAttackingCreature() -- forget the last attacker once 300 seconds' worth of frames have passed since it attacked
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Leaf: ?UpdateLastAttackingCreature@CThingCreatureBase@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006624A0, 66 bytes (+ int3 padding).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (on PLastAttackedByCreature), CThing::GetWorld @ 0x004C7AB0
-//          (propagated "CViewBase::GetDisplayEngine"), static CWorld::GetWorldFrame @ 0x0049D870 (returns the global
-//          @ 0x013B89BC), CThingCreatureBase::ClearLastAttackedByCreature @ 0x006691C0 (tail jump; it points the
-//          intelligent pointer at 0 through a temporary; the "CAIStateGroup_MinionPutOutFires::Cleanup" label is
-//          propagated). Global: g_GameFramesPerSecond (long @ 0x01375550).
-// Layout: PLastAttackedByCreature (CIntelligentPointer<CThingCreatureBase>, 8 bytes) at retail +0xf4 and
-//   WFLastAttackedByCreature (unsigned long) at +0xfc (PDB +0x110/+0x118).
-// Shape: the stored frame is loaded into edi AFTER the GetWorld call but BEFORE GetWorldFrame: it is the argument
-//   of an inline CWorld helper on a named world local (`world = GetWorld(); world->GetFramesSince(WF)`; written as one
-//   chained expression the lane loads the argument before the GetWorld call), then the inline
-//   body's static call); the difference is unsigned (`jbe`) because WFLastAttackedByCreature is unsigned long.
-class CBaseObject;
-
-class CBaseObjectPointer;
+// Identity: Ego_r.pdb 0x0053D330 + FableWin.pdb 0x01D8C170 ?UpdateLastAttackingCreature@CThingCreatureBase@@IAEXXZ (protected).
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (on PLastAttackedByCreature), CThing::PeekWorld @ 0x004C7AB0 (protected,
+//          the landed callee's catalog name), static CWorld::GetFrame @ 0x0049D870, CThingCreatureBase::ClearAttackedByCreature
+//          @ 0x006691C0 (tail jump; Ego_r.pdb / FableWin.pdb ?ClearAttackedByCreature@CThingCreatureBase@@QAEXXZ). Global: the
+//          protected static CMainGameComponent::ConstantFPS (0x01375550) through the inline GetConstantFPS().
+// Layout: engine/CThingCreatureBase.h (retail branch): PLastAttackedByCreature (CIntelligentPointer<CThingCreatureBase>) +0xf4,
+//   WFLastAttackedByCreature (unsigned long) +0xfc.
+// Shape: the stored frame is loaded AFTER the PeekWorld call but BEFORE GetFrame (a named local after the named world reference), and
+//   the frame rate after GetFrame (the difference is a named local); the difference is unsigned
+//   (`jbe`) because WFLastAttackedByCreature is unsigned long.
+// Name fix (agentNF55, 2026-11-17): moved onto the shared headers; the local CThingCreatureBase / CWorld models (with the made-up
+//   ClearLastAttackedByCreature, a public GetWorld at 0x004C7AB0 and the made-up g_GameFramesPerSecond) are gone; the leaf is the PDB's
+//   protected IAE spelling (was QAE).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-
-class CWorld { public:
-    static long __fastcall GetFrame();                    // 0x0049D870
-    unsigned long GetFramesSince(unsigned long frame) { return GetFrame() - frame; }
-};
-
-extern long g_GameFramesPerSecond;                  // 0x01375550
-
-class CThingCreatureBase { public:
-    unsigned char _pad000[0xf4];
-    CBaseIntelligentPointer PLastAttackedByCreature;    // +0xf4
-    unsigned long WFLastAttackedByCreature;             // +0xfc
-    CWorld* GetWorld();                             // 0x004C7AB0 (CThing)
-    void ClearLastAttackedByCreature();             // 0x006691C0
-    void UpdateLastAttackingCreature();
-};
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ATTACKEDBY
+#define FABLE_RETAIL_CTHINGCREATUREBASE_UPDATELASTATTACKINGCREATURE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CWorld.h"
+#include "engine/CMainGameComponent.h"
 
 void CThingCreatureBase::UpdateLastAttackingCreature()
 {
     if (PLastAttackedByCreature.GetPItem()) {
-        CWorld* world = GetWorld();
-        if (world->GetFramesSince(WFLastAttackedByCreature) > (unsigned long)(g_GameFramesPerSecond * 300))
-            ClearLastAttackedByCreature();
+        const CWorld& world = PeekWorld();
+        unsigned long attacked_frame = WFLastAttackedByCreature;
+        unsigned long frames_since = world.GetFrame() - attacked_frame;
+        if (frames_since > (unsigned long)(CMainGameComponent::GetConstantFPS() * 300))
+            ClearAttackedByCreature();
     }
 }

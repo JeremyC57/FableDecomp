@@ -1,7 +1,9 @@
-// CAIStateGroup_OpinionReactionRoot::WaitForTextToLoadThenSpeak(ulong, EDialogueLayer) -- retry the speech while its
+// CAIStateGroup_OpinionReactionRoot::WaitForTextToLoadThenSpeak(const CCharString&, EDialogueLayer) -- retry the speech while its
 // text is still loading, waiting a frame between tries.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095ED80, length 93 bytes (+ int3 padding), `ret 8`.
-// Callees: CTCTalk::PlayAISpeech(ulong, bool, EDialogueLayer, bool, bool) @ 0x006E3B30 on PTCTalk (+0x14) with
+// Leaf: ?WaitForTextToLoadThenSpeak@CAIStateGroup_OpinionReactionRoot@@QAE?AW4EAIActionReturn@@ABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@@Z
+//   (the spelling its landed caller 0x00982F70 binds; both PDBs make it private, AAE: NAME_FIXES).
+// Callees: CTCTalk::PlayAISpeech(const CCharString&, bool, EDialogueLayer, bool, bool) @ 0x006E3B30 on PTCTalk (+0x14) with
 // (text, AllowSpeechOnNonPureAISpeaker (+0x8a, zero-extended), layer, false, true), CAIStateGroupBase::
 // AIAction_DoNothing @ 0x0097E200, CAIStateGroupBase::Terminate @ 0x008FCF40.
 // Shape: a `do { } while (wait == 4)` loop (a `for (;;)` with the exit inside gets rotated and the speech call
@@ -9,9 +11,16 @@
 // frame and loops while the wait reports 4, otherwise terminates and returns the wait's result; any other playback
 // result maps to 2 (played, result 0) or 3 (failed): `return r == 0 ? 2 : 3` is `xor ecx,ecx ; test ; setne cl ;
 // add ecx,2`. The two arguments ride in ebp/ebx (callee-saved) across the loop. Members from the engine header.
-class CTCTalk { public:
-    long PlayAISpeech(unsigned long text, bool allowNonPure, long layer, bool a, bool b);   // 0x006E3B30
-};
+// NF55 (2026-11-17): CTCTalk is engine/CTCTalk.h (AISPEECHTEXT: Ego_r.pdb
+//   ?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@ABVCCharString@@_NW4EDialogueLayer@NSpeechGainManager@@11@Z, the text overload at
+//   0x006E3B30; the sample-id overload is 0x006E3B60). It was a local CTCTalk with a made-up PlayAISpeech(unsigned long, ...).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCTALK
+#define FABLE_RETAIL_CTCTALK_AISPEECHTEXT
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCTalk.h"
 
 enum EAIActionReturn { };
 class CAIStateGroupBase { public:
@@ -32,17 +41,17 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     bool LastRunWasTryAndLook;                  // +0x88
     bool ReactingToPlayer;                      // +0x89
     bool AllowSpeechOnNonPureAISpeaker;         // +0x8a
-    long WaitForTextToLoadThenSpeak(unsigned long text, long layer);
+    EAIActionReturn WaitForTextToLoadThenSpeak(const CCharString& text, NSpeechGainManager::EDialogueLayer layer);
 };
 #pragma pack(pop)
 
-long CAIStateGroup_OpinionReactionRoot::WaitForTextToLoadThenSpeak(unsigned long text, long layer)
+EAIActionReturn CAIStateGroup_OpinionReactionRoot::WaitForTextToLoadThenSpeak(const CCharString& text, NSpeechGainManager::EDialogueLayer layer)
 {
-    long wait;
+    EAIActionReturn wait;
     do {
-        long result = PTCTalk->PlayAISpeech(text, AllowSpeechOnNonPureAISpeaker, layer, false, true);
-        if (result != 2)
-            return result == 0 ? 2 : 3;
+        CTCTalk::ESpeechPlaybackResult result = PTCTalk->PlayAISpeech(text, AllowSpeechOnNonPureAISpeaker, layer, false, true);
+        if (result != CTCTalk::SPEECH_PLAYBACK_FAILED_RETRY)
+            return (EAIActionReturn)(result == 0 ? 2 : 3);
         wait = AIAction_DoNothing();
     } while (wait == 4);
     Terminate();

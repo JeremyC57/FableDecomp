@@ -8,8 +8,8 @@
 // Callees: std::bitset::test 0x00410DE0 + the const CVectorMap::LowerBound 0x004365B0 (two const inline GetInterface
 // lookups: the in-game menu component 0xC6 and the quest start component 0xFC) and the non-const LowerBound 0x0040F020
 // (the inventory menu component 0xF6), CPlayerGui::GetPHeroInfoScreensManager() const 0x00437CD0 (global 0x013B8790),
-// CTCInventoryMenu::IsActive() const 0x00625930 / IsClosing() const 0x00625940 (manifest "GetCanItemBeQuickAssigned"
-// labels are propagated) and the open call 0x00628000 (manifest "CTCQuickAccessMenu::Activate").
+// CTCQuickAccessMenu::IsActive() const 0x00625930 / IsQuitting() const 0x00625940 and Activate() 0x00628000 (Ego_r.pdb +
+// FableWin.pdb; engine/CTCQuickAccessMenu.h, interface type 0xF6 = TCI_QUICK_ACCESS_MENU).
 // Shape: each blocker is `HasTC && component && component->flag (+0xC)` through the const lookup; the type constant
 // lives in edi and the lookup key in the one frame word; every blocker returns early.
 // Layout: CTCInGameMenu::InGameMenuOpen +0x0C (engine header); the quest start component's flag +0x0C (descriptive);
@@ -19,6 +19,9 @@
 #pragma optimize("s", on)
 
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCQUICKACCESSMENU_ISACTIVE
+#define FABLE_RETAIL_CTCQUICKACCESSMENU_ISQUITTING_ACTIVATE
 #include "engine/CVectorMap.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -62,11 +65,6 @@ struct CTCQuestStartTarget {                         // interface type 0xFC
     unsigned char _pad_0x00[0x0c];
     bool Active;                                     // +0x0c (descriptive)
 };
-struct CTCInventoryMenu {                            // interface type 0xF6
-    bool IsActive() const;                           // 0x00625930
-    bool IsClosing() const;                          // 0x00625940
-    void Open();                                     // 0x00628000
-};
 namespace NHeroInformationScreens {
 class CManager { public:
     unsigned char _pad_0x00[0x34];
@@ -74,6 +72,7 @@ class CManager { public:
 };
 }
 #include "engine/CCountedPointer.h"
+#include "engine/CTCQuickAccessMenu.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:
@@ -104,9 +103,9 @@ void CTCInventory::OpenQuickAccessMenu()
         return;
     if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->ScreenShowing)
         return;
-    CTCInventoryMenu* menu;
+    CTCQuickAccessMenu* menu;
     if (ParentThing->GetInterface(&menu, 0xf6)) {
-        if (!menu->IsActive() && !menu->IsClosing())
-            menu->Open();
+        if (!menu->IsActive() && !menu->IsQuitting())
+            menu->Activate();
     }
 }

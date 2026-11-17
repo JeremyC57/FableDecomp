@@ -58,6 +58,14 @@ protected:
     bool IsGameActionEventInQueue(EGameAction action, EInputButtonEventType type, float& time) const;                // 0x00687D80
 public:
 #endif
+#ifdef FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISQUICKACCESSEVENTINQUEUE
+    // NF55 opt-in (2026-11-17, row 0x0068E450 CInputProcessQuickAccessItems::Update), the retail-branch twin of the flat branch's
+    // FABLE_RETAIL_INPUTPROCESS_QUICKACCESSQUEUE: Ego_r.pdb / FableWin.pdb ?IsQuickAccessEventInQueue@CInputProcessGameBase@@IBE_NJW4EInputButtonEventType@@@Z
+    // (protected const, 0x00687CB0). Needs FABLE_RETAIL_INPUTPROCESS_EVENTINQUEUE (EInputButtonEventType). Declaration only.
+protected:
+    bool IsQuickAccessEventInQueue(long button, EInputButtonEventType type) const;   // 0x00687CB0
+public:
+#endif
     CWorld*                 World;                                       // +0x14
     CPlayer*                MyPlayer;                                    // +0x18
     CGameDefinitionManager* DefinitionManager;                           // +0x1c

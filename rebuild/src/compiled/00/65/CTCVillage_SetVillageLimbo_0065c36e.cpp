@@ -7,7 +7,8 @@
 // `?SetVillageLimbo@CTCVillage@@QAEX_N@Z`.
 // Callees: list<CIntelligentPointer<CThingAICreature> > copy constructor 0x00519420 and destructor 0x00512890 (a local copy
 //          of VillagePeople); IS_THING_ALIVE 0x004AB8F0 (people) and the CIntelligentPointer<CThingBuilding> instantiation
-//          0x0065F8CA (`__fastcall`); CBaseIntelligentPointer::GetPItem() const 0x00A01B50; GFHasScriptThing(CThing*)
+//          0x0065F8CA (`__fastcall`; FableWin.pdb ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingBuilding@@@@@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@@Z,
+//          NF55 2026-11-17: the element is the shared CIntelligentPointer<CThingBuilding>, was the CIntelligentPointerBuilding stand-in); CBaseIntelligentPointer::GetPItem() const 0x00A01B50; GFHasScriptThing(CThing*)
 //          0x004C7E70 (`__fastcall`, landed spelling; Ego_r.pdb CThing::HasScriptThing() const); std::bitset<>::test(size_t)
 //          const 0x00410DE0 (interface 0x1F); CThing::SetInLimbo(bool) 0x004C8CF0; CThingBuilding::LockAllDoors(bool,
 //          bool) 0x0082DB00; the village's crime refresh 0x0065C2D0 (landed spellings ProcessCrimeDeeds / OnAllFinesPaid;
@@ -55,7 +56,6 @@ class CThingBuilding : public CThing { public:
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerBuilding : CBaseIntelligentPointer { };   // CIntelligentPointer<CThingBuilding>
 bool __fastcall IS_THING_ALIVE(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);     // 0x0065F8CA (T = CIntelligentPointer<CThingBuilding>)
 
@@ -71,7 +71,7 @@ struct CPeopleList {                            // list<CIntelligentPointer<CThi
     ~CPeopleList();                             // 0x00512890
 };
 struct CBuildingList {                          // list<CIntelligentPointer<CThingBuilding> >
-    SListNode<CIntelligentPointerBuilding>* _M_node;
+    SListNode<CIntelligentPointer<CThingBuilding> >* _M_node;
 };
 
 class CTCVillage { public:
@@ -100,8 +100,8 @@ void CTCVillage::SetVillageLimbo(bool limbo)
                 }
             }
         }
-        for (SListNode<CIntelligentPointerBuilding>* it = VillageBuildings._M_node->_M_next; it != VillageBuildings._M_node; it = it->_M_next) {
-            CIntelligentPointerBuilding& building = it->_M_data;
+        for (SListNode<CIntelligentPointer<CThingBuilding> >* it = VillageBuildings._M_node->_M_next; it != VillageBuildings._M_node; it = it->_M_next) {
+            CIntelligentPointer<CThingBuilding> & building = it->_M_data;
             if (IS_THING_ALIVE(building)) {
                 ((CThingBuilding*)building.GetPItem())->OverrideAutomaticLocking = limbo;
                 ((CThingBuilding*)building.GetPItem())->LockAllDoors(true, false);

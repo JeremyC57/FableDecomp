@@ -17,6 +17,8 @@
 //   subobject at +4 and passes `lea ecx,[params+4]` to its constructor (182v182 / 212v212). The key/vector pair is built
 //   by value (the vector copied through integer registers: C3DVector has no user copy ctor here), then the parameters
 //   object, push_back, the emitter call and the out-of-line destructor.
+#define FABLE_RETAIL_CARRAY_PUSHBACK_NOINLINE
+#define FABLE_RETAIL_CVECTORMAP_CTOR
 #include "fable_compiler.h"
 class CCharString {
 public:
@@ -29,46 +31,13 @@ class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, co
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-namespace NParticleEngine {
-struct SVectorParam {                           // pair<unsigned long, C3DVector>
-    unsigned long m_key;
-    C3DVector     m_value;
-    SVectorParam(const unsigned long& key, const C3DVector& value) : m_key(key), m_value(value) {}
-};
-struct SUpdateParam;
-struct CVectorParamVector {                     // retail STLport vector (12 bytes)
-    SVectorParam* _M_start;
-    SVectorParam* _M_finish;
-    SVectorParam* _M_end_of_storage;
-    FABLE_FORCEINLINE CVectorParamVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    void push_back(const SVectorParam& value);  // 0x0076B120
-};
-struct CUpdateParamVector {
-    SUpdateParam* _M_start;
-    SUpdateParam* _M_finish;
-    SUpdateParam* _M_end_of_storage;
-    FABLE_FORCEINLINE CUpdateParamVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-};
-struct CCompare {};
-struct CVectorParamMap {                        // CVectorMap<unsigned long, C3DVector, ...>
-    CVectorParamVector Vector;                  // +0x00
-    CCompare           Compare;                 // +0x0c
-    bool               Dirty;                   // +0x0d
-    FABLE_FORCEINLINE CVectorParamMap() : Dirty(false) {}
-};
-struct CUpdateParamMap {                        // CVectorMap<unsigned long, CParticleUpdateParamDesc, ...>
-    CUpdateParamVector Vector;                  // +0x00
-    CCompare           Compare;                 // +0x0c
-    bool               Dirty;                   // +0x0d
-    FABLE_FORCEINLINE CUpdateParamMap() : Dirty(false) {}
-};
-struct CParticleUpdateParameters : CBaseClass { // <unsigned long, unsigned long>, vtable 0x0125FFDC
-    CVectorParamMap VectorParams;               // +0x04
-    CUpdateParamMap UpdateParams;               // +0x14
-    FABLE_FORCEINLINE CParticleUpdateParameters() {}
-    virtual ~CParticleUpdateParameters();       // 0x006E2500
-};
-}
+// NF55 (2026-11-17): the parameter block is the shared NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>
+//   (engine/NParticleEngine_CParticleUpdateParameters.h: CBaseClass + VectorParams / UpdateParams CVectorMaps; Ego_r.pdb / FableWin.pdb
+//   ??0?$CParticleUpdateParameters@KK@NParticleEngine@@QAE@XZ 0x006E24D0) and the parameter pushes CArray<pair<unsigned long, C3DVector> >::push_back
+//   (Ego_r.pdb 0x0077A190 + FableWin.pdb 0x025F4840, out of line at 0x0076B120; FABLE_RETAIL_CARRAY_PUSHBACK_NOINLINE keeps its body visible
+//   as the old same-TU stand-in body did). They were the local SVectorParam / CVectorParamVector / CVectorParamMap / CParticleUpdateParameters
+//   stand-ins.
+#include "engine/NParticleEngine_CParticleUpdateParameters.h"
 
 class CThing;
 
@@ -78,7 +47,7 @@ public:
 private:
 public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float flags);   // 0x006E0BE0
-    void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters& parameters);   // 0x006E11A0
+    void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>& parameters);   // 0x006E11A0
 };
 
 
@@ -110,9 +79,9 @@ void __fastcall CreateEffect(CThingCreatureBase& creature, long effectType, cons
     if (helperName)
         emitter->AttachToThing(creature, 12, *helperName, 0, 0);
     unsigned long key = CCRC::Calc(0, "DIRECTION", 9);
-    NParticleEngine::SVectorParam directionParam(key, direction);
-    NParticleEngine::CParticleUpdateParameters parameters;
-    parameters.VectorParams.Vector.push_back(directionParam);
+    std::pair<unsigned long, C3DVector> directionParam(key, direction);
+    NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long> parameters;
+    parameters.VectorParams.push_back(directionParam);
     emitter->SetEmitterUpdateParameters(parameters);
 }
 }

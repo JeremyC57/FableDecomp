@@ -6,11 +6,13 @@
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, interface 0x23 =
 // bitset word 1 bit 3 -> `test byte ptr [eax+24h],8`), GFGetPVillageInterface @ 0x007EE540 (__fastcall on the villager
 // component, twice; landed caller 0x0093EDF0), CThing::GetPosition @ 0x004C73D0,
-// CTCVillage::AIStateGroup_FindNearestBuildingWithProperty(const C3DVector&, ulong) @ 0x00658E38.
+// CTCVillage::GetNearestBuildingWithProperty(const C3DVector&, ESimBuildingProperty) @ 0x00658E38 (FableWin.pdb
+//   ?GetNearestBuildingWithProperty@CTCVillage@@QAEPAVCThingBuilding@@ABVC3DVector@@W4ESimBuildingProperty@@@Z; engine/CTCVillage.h TAVERN;
+//   NF55 2026-11-17: was the local stand-in AIStateGroup_FindNearestBuildingWithProperty(const C3DVector&, unsigned long)).
 // Shape: the landed GetInterface out-parameter template inside nested ifs with one shared `return 0`; the villager
 // component stays in esi; the final call evaluates its arguments right to left (0x20, then the creature position)
 // before re-fetching the village as its object.
-// Model: local (no engine header for this class).
+// Model: local AI-state classes; CTCVillage from engine/CTCVillage.h.
 class CTCBase;
 #include "engine/C3DVector.h"
 
@@ -20,10 +22,10 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingBuilding;
-
-class CTCVillage { public:
-    CThingBuilding* AIStateGroup_FindNearestBuildingWithProperty(const C3DVector& position, unsigned long property);   // 0x00658E38
-};
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCVILLAGE
+#define FABLE_RETAIL_CTCVILLAGE_TAVERN
+#include "engine/CTCVillage.h"
 struct CTCVillager;
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
@@ -52,7 +54,7 @@ CThingBuilding* CAIStateGroup_EatAtTavern::GetBuilding()
     CTCVillager* villager;
     if (PBrain->Creature->GetTC(TCI_VILLAGE_MEMBER, &villager)) {
         if (((CTCVillageMember*)villager)->GetPVillage() != 0)
-            return ((CTCVillageMember*)villager)->GetPVillage()->AIStateGroup_FindNearestBuildingWithProperty(PBrain->Creature->GetPos(), 0x20);
+            return ((CTCVillageMember*)villager)->GetPVillage()->GetNearestBuildingWithProperty(PBrain->Creature->GetPos(), (ESimBuildingProperty)0x20);
     }
     return 0;
 }

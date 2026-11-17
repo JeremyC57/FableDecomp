@@ -1,5 +1,5 @@
 // CTCContainerRewardHero::ReleaseItems(float speed) -- pop every reward item out of the container: each item is created as a thing object a little above the container (0.1 up) and launched along a popout vector laid out in rings of up to eight, then every created object is told to ignore its siblings and the item list is cleared
-// Leaf: ReleaseItems
+// Leaf: ?ReleaseItems@CTCContainerRewardHero@@IAEXM@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074E6E0, 384 bytes (`ret 4`).
 // Callees: CThing::GetPos() const @ 0x004C73D0, GeneratePopoutVectorFromVars(long, long, long, float) const @ 0x0074E140
@@ -13,84 +13,38 @@
 // Shape: the per-ring count is min(size, 8) written as a preset 8; the local vector is pushed inline (null-tested placement
 // store, overflow call with the tag temporary in the dead popout-return slot); the functor's return slot is the dead `speed`
 // argument slot.
+// Name-fix (agentNF55, round 7): the local CTCContainerRewardHero / CContainerItemVector / CThingObjectVector models replaced by the
+//   shared engine/CTCContainerRewardHero.h (: CTCContainer : retail CTCBase; opt-ins GETREWARDITEMS for the private CreateNewObject and
+//   NF55's RELEASEITEMS for this protected method) and the STLport vectors: ContainerItems.clear() calls the out-of-line
+//   vector<pair<long, CCharString> >::erase 0x0074FB20 (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE), push_back expands with the
+//   visible out-of-line vector<CThingObject*>::_M_insert_overflow 0x0074F900 (FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE), and the
+//   functor goes to the STLport for_each declaration (stlport/fable_algorithm.h) as the landed 0x0074FBB0 instance
+//   ??$for_each@PAPAVCThingObject@@VCAddObjectsNotSolidTo@@@std@@YI... (Ego_r.pdb names the TU-local functor CAddObjectsNotSolidTo).
 #define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#define FABLE_RETAIL_CTCCONTAINERREWARDHERO_GETREWARDITEMS
+#define FABLE_RETAIL_CTCCONTAINERREWARDHERO_RELEASEITEMS
 #include "engine/CThing.h"
 #include "engine/C3DVector.h"
+#include "stlport/fable_algorithm.h"
+#include "engine/CTCContainerRewardHero.h"
 
 class CThingObject;
-struct SContainerItem {                                 // pair<long, CCharString>
-    long        first;
-    CCharString second;
-};
-struct CContainerItemVector {                           // STLport vector<pair<long, CCharString>>
-    SContainerItem* _M_start;
-    SContainerItem* _M_finish;
-    SContainerItem* _M_end_of_storage;
-    SContainerItem* begin() { return _M_start; }
-    SContainerItem* end() { return _M_finish; }
-    bool empty() const { return _M_start == _M_finish; }
-    long size() const { return _M_finish - _M_start; }
-    SContainerItem* erase(SContainerItem* first, SContainerItem* last);   // 0x0074FB20
-    void clear() { erase(begin(), end()); }
-};
-extern "C" void __cdecl free(void*);
-struct __true_type { __true_type() { } };
-struct CThingObjectVector {                             // STLport vector<CThingObject*>
-    CThingObject** _M_start;
-    CThingObject** _M_finish;
-    CThingObject** _M_end_of_storage;
-    CThingObjectVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CThingObjectVector() { if (_M_start) free(_M_start); }
-    CThingObject** begin() { return _M_start; }
-    CThingObject** end() { return _M_finish; }
-    void _M_insert_overflow(CThingObject** pos, CThingObject* const& x, const __true_type&,
-                            unsigned long fill_len, bool atend);         // 0x0074F900
-    void push_back(CThingObject* const& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            if (_M_finish)
-                *_M_finish = x;
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
-    }
-};
-CThingObject** GrowThingObjectVector(CThingObjectVector* vector, unsigned long count);   // stand-in: the reallocation
-#pragma auto_inline(off)
-// Same-TU body of the growth instantiation 0x0074F900: store the value through its const reference into the new storage.
-__declspec(noinline) void CThingObjectVector::_M_insert_overflow(CThingObject** pos, CThingObject* const& x, const __true_type&,
-                                                                 unsigned long fill_len, bool atend)
-{
-    CThingObject** p = GrowThingObjectVector(this, fill_len);
-    if (p)
-        *p = x;
-}
-#pragma auto_inline(on)
-struct CMakeObjectsIgnoreEachOther {                    // the for_each functor: each object's physics ignores the others
-    CThingObjectVector* Objects;
-    CMakeObjectsIgnoreEachOther(CThingObjectVector* objects) : Objects(objects) { }
-    void operator()(CThingObject* object) const;
-};
-CMakeObjectsIgnoreEachOther __fastcall for_each(CThingObject** first, CThingObject** last,
-                                                CMakeObjectsIgnoreEachOther f);   // 0x0074FBB0
-class CTCContainerRewardHero { public:
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04 (CTCBase)
-    unsigned char _pad08[0x0c - 0x08];
-    CContainerItemVector ContainerItems;                // +0x0c
-private:
-    C3DVector GeneratePopoutVectorFromVars(long index, long perRing, long ring, float speed) const;   // 0x0074E140 (private: Ego_r ABE)
+class CAddObjectsNotSolidTo {                           // TU-local functor: each object's CTCSolidToThing ignores the others
 public:
-    CThingObject* CreateNewObject(long defIndex, const C3DVector& pos, const C3DVector& velocity,
-                                  const CCharString& name);                                       // 0x0074E560
-    void ReleaseItems(float speed);
+    const std::vector<CThingObject*>* ObjectList;       // +0x00
+    CAddObjectsNotSolidTo(const std::vector<CThingObject*>& objects) : ObjectList(&objects) { }
+    void operator()(CThingObject* object);
 };
 
 void CTCContainerRewardHero::ReleaseItems(float speed)
 {
     if (ContainerItems.empty())
         return;
-    const C3DVector& position = ParentThing->GetPos();
+    const C3DVector& position = GetParentThing().GetPos();
     C3DVector pos;
     pos.X = position.X;
     pos.Y = position.Y;
@@ -102,8 +56,8 @@ void CTCContainerRewardHero::ReleaseItems(float speed)
         perRing = count;
     long index = 0;
     long ring = 0;
-    CThingObjectVector objects;
-    for (SContainerItem* it = ContainerItems.begin(); it != ContainerItems.end(); ++it) {
+    std::vector<CThingObject*> objects;
+    for (std::vector<std::pair<long, CCharString> >::iterator it = ContainerItems.begin(); it != ContainerItems.end(); ++it) {
         velocity = GeneratePopoutVectorFromVars(index, perRing, ring, speed);
         if (++index == perRing) {
             index = 0;
@@ -112,6 +66,6 @@ void CTCContainerRewardHero::ReleaseItems(float speed)
         CThingObject* object = CreateNewObject(it->first, pos, velocity, it->second);
         objects.push_back(object);
     }
-    for_each(objects.begin(), objects.end(), CMakeObjectsIgnoreEachOther(&objects));
+    std::for_each(objects.begin(), objects.end(), CAddObjectsNotSolidTo(objects));
     ContainerItems.clear();
 }

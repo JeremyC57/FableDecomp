@@ -299,6 +299,12 @@ class CDefPointeeBase;
 #pragma pack(push, 1)
 class CTCPerceiveThing {
 public:
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETFOV
+    // Flat-branch opt-in (agentNF55, row 0x00665260 CThingCreatureBase::IsPosInFOV): the retail branches' GetFOV on the flattened
+    // layout. Ego_r.pdb 0x00757070 / FableWin.pdb 0x0258DA60 ?GetFOV@CTCPerceiveThing@@QBEMXZ (retail 0x007445D0, between
+    // GetTimeBasedVisibilityMultiplier 0x00744580 and the constructor 0x007445E0 as in Ego_r). Declaration only (no layout change).
+    float GetFOV() const;                                    // 0x007445D0
+#endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     int              field4;                                 // +0x04 retail-only int (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08

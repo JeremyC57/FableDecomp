@@ -26,10 +26,8 @@ class CThingFilter_HasScriptName { public:
     CCharString Name;
     CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
 };
-struct CRectI {
-    long Left, Top, Right, Bottom;
-    CRectI() { }
-};
+// NF55 (round 7): the CRectI stand-in is the shared engine/C2DBoxI.h (Ego_r C2DBoxI: TLX/TLY/BRX/BRY, user default ctor).
+#include "engine/C2DBoxI.h"
 long __fastcall GFROR13(unsigned long);  // 0x00497890
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -55,7 +53,9 @@ public:
 private:              // 0x0049D810
 };
 class CThingSearchTools { public:
-    CThing* GetPFirstThingInRoughArea(const CRectI& area, const CThingFilter_HasScriptName& filter, CThing** found) const;   // 0x007FD110
+    // NF55 (round 7): Ego_r.pdb ??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@
+    // ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z, a member-template instance returning bool (the result is ignored here).
+    template <class TFilter, class T> bool GetPFirstThingInRoughArea(const C2DBoxI& area, const TFilter& filter, T** found) const;   // 0x007FD110
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -140,17 +140,17 @@ void CAIStateGroup_HoverHornetQueen::GoToSpawnPoint()
     }
     char text[32];
     sprintf(text, "QueenDepositPos%d", index);
-    CRectI area;
+    C2DBoxI area;
     C3DVector target;
     {
         CCharString name(text, -1);
         CThingFilter_HasScriptName filter(name);
         const C3DVector& pos = GetCreature()->GetPos();
         C2DCoordI centre((long)pos.X, (long)pos.Y);
-        area.Left = centre.X - 60;
-        area.Top = centre.Y - 60;
-        area.Right = centre.X + 60;
-        area.Bottom = centre.Y + 60;
+        area.TLX = centre.X - 60;
+        area.TLY = centre.Y - 60;
+        area.BRX = centre.X + 60;
+        area.BRY = centre.Y + 60;
         PeekThingSearchTools().GetPFirstThingInRoughArea(area, filter, &found);
     }
     if (found)

@@ -518,8 +518,10 @@ template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& 
 {
     return thing != 0 && !thing->IsDead();
 }
+namespace NGameText { class CDataBank; }                             // engine/NGameText_CDataBank.h (pointer parameter only)
+// Ego_r.pdb 0x0054E5E0 + FableWin.pdb ?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z
 bool __fastcall GFPlayFullScreenXBoxMovie(const CCharString&, unsigned long, unsigned long = 0, unsigned long = 0, unsigned long = 0,
-                                          const class NGameText_CDataBank* = 0, class CIEngine* = 0, bool = true, float = -1.0f,
+                                          const NGameText::CDataBank* = 0, class CIEngine* = 0, bool = true, float = -1.0f,
                                           bool (__fastcall*)() = 0, class CXMVPlayerBuffers* = 0, CWideString* = 0);   // 0x006286F0
 extern CASoundManager* PSoundManager;                                // 0x013B8394
 extern bool GTeleportOpenedFromMap;                                  // 0x0137D76C

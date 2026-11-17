@@ -83,9 +83,13 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     return seed % range;
 }
 
-class CTCCreatureModeManager { public:                 // interface 7
-    long GetCurrentModeType();                  // 0x006CB6A0
-};
+// NF55 (2026-11-17): interface 7 is CTCCreatureNavigation (engine/CTCCreatureNavigation.h NAVIGATORTYPE: Ego_r.pdb / FableWin.pdb
+//   ?GetNavigatorType@CTCCreatureNavigation@@QBEKXZ, 0x006CB6A0), as the landed sibling 0x009143E0 reads it; it was the
+//   CTCCreatureModeManager::GetCurrentModeType stand-in.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGATORTYPE
+#include "engine/CTCCreatureNavigation.h"
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -123,9 +127,9 @@ struct CAIStateGroup_BirdFlyToFood : CAIStateGroup_FlyingThingBase {
 
 bool CAIStateGroup_BirdFlyToFood::IsRunnable()
 {
-    CTCCreatureModeManager* modes;
-    PBrain->Creature->GetTC(TCI_NAVIGATION, &modes);
-    if (modes->GetCurrentModeType() == g_flyingMode) {
+    CTCCreatureNavigation* navigation;
+    PBrain->Creature->GetTC(TCI_NAVIGATION, &navigation);
+    if (navigation->GetNavigatorType() == g_flyingMode) {
         long framesPerSecond;
         if ((FrameLastAte == 0
              || (framesPerSecond = PeekWorld().GetFramesPerSecond(),

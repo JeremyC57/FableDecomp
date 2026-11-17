@@ -1,0 +1,40 @@
+source	entry	address	correct_symbol	status	note
+nf41	e144	005f7f4c	?LowerBound@?$CVectorMap@JW4EHeroAbility@@V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@@QAEPAU?$pair@JW4EHeroAbility@@@std@@ABJ@Z	carry	not reached [e144]
+nf41	e221	00616580	std::_Rb_tree<long,...>::find -- BINDING CONFLICT with 00b2eb20	carry	not reached [e221]
+nf41	e195	00616580	std::_Rb_tree<long,...>::find -- BINDING CONFLICT with 00b2eb20	carry	not reached [e221]
+nf41	e208	00625930	?IsActive@CTCQuickAccessMenu@@QBE_NXZ	carry	not reached [e208]
+nf41	e169	006286f0	?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z	carry	not reached [e169]
+nf41	e93	00658e38	?GetNearestBuildingWithProperty@CTCVillage@@QAEPAVCThingBuilding@@ABVC3DVector@@W4ESimBuildingProperty@@@Z	carry	not reached [e93]
+nf41	e53	0065f17b	?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	carry	not reached [e53]
+nf41	e94	0065f8ca	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingBuilding@@@@@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@@Z	carry	not reached [e94]
+nf41	e106	006622a0	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ	carry	not reached [e106]
+nf41	e52	006655a0	?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ	carry	not reached [e52]
+nf41	e3	00668610	?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z	carry	not reached [e3]
+nf41	e81	006691c0	?ClearAttackedByCreature@CThingCreatureBase@@QAEXXZ	carry	not reached [e81]
+nf41	e70	00682310	?ClearPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXXZ	carry	not reached [e70]
+nf41	e30	00687cf0	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z	carry	not reached [e30]
+nf41	e11	00687cf0	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z	carry	not reached [e30]
+nf41	e46	00687d80	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@AAM@Z	carry	not reached [e46]
+nf41	e131	0069ac90	?SetCameraManagerSetDef@CGameCameraManager@@QAEXABV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z	carry	not reached [e131]
+nf41	e47	006a0150	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z	carry	not reached [e47]
+nf41	e62	006a7390	??RCThingFilter_IsInFOV@@QBE_NABVCThing@@@Z	carry	not reached [e62]
+nf44	56	0x006BAED0	??$Transfer@VCFaction@@@CPersistContext@@QAEXPBDAAVCFaction@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=1 unv=0 ; wrong binders: 006b9560
+nf41	e105	006bb390	?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z	carry	not reached [e105]
+nf44	57	0x006C9C60	??$Transfer@V?$CIntelligentPointer@VCThing@@@@@CPersistContext@@QAEXPBDAAV?$CIntelligentPointer@VCThing@@@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 006c7370
+nf41	e51	006cb6a0	?GetNavigatorType@CTCCreatureNavigation@@QBEKXZ	partial	2 of 3 wrong binders fixed: 0x00912700 GetRandomFlightPos (RM) and 0x009143E0 CAIStateGroup_BirdGroundWander::IsRunnable (moved onto a new retail branch of engine/CAIStateGroup_BirdGroundWander.h, RM 2 grades; self leaf QAE->UAE too); left: 0x00913F30 CAIStateGroup_BirdFlyToFood::IsRunnable (no header; two same-TU out-only stand-in bodies for CThingSearchTools::GetPBestThing<Filter,Compare> carry its frame shape -- a port needs those templates' real bodies; not attempted) [e51]
+nf41	e149	006e24d0	??0?$CParticleUpdateParameters@KK@NParticleEngine@@QAE@XZ	carry	not reached [e149]
+nf41	e79	006e3b30	?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@ABVCCharString@@_NW4EDialogueLayer@NSpeechGainManager@@11@Z	carry	not reached [e79]
+nf44	95	0x00701750	?GetThingOpinionOfPlayer@COpinionReactionManager@@QBEMABVCThing@@W4EOpinion@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=2 unv=0 ; wrong binders: 008909f0 00929820
+nf41	e49	0070c0e0	?IsMainAnimFinished@CAnimateThing@@QBE_NXZ	carry	not reached [e49]
+nf41	e42	007243c0	?UpdateVelocityForImpassability@CTCPhysicsStandard@@IAEXABVC3DVector@@AAV2@@Z	carry	not reached [e42]
+nf41	e108	0072ac40	?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z	carry	not reached [e108]
+nf41	e104	00733210	?ResetComboChainPos@CTCCombat@@QAEXXZ	carry	not reached [e104]
+nf41	e65	007445d0	?GetFOV@CTCPerceiveThing@@QBEMXZ	carry	not reached [e65]
+nf44	9	0074fb20	?erase@?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAEPAU?$pair@JVCCharString@@@2@PAU32@0@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=2 unv=0 ; wrong binders: 0074e6e0 008ed170
+nf41	e4	0076b120	?push_back@?$CArray@U?$pair@KVC3DVector@@@std@@@@QAEXABU?$pair@KVC3DVector@@@std@@@Z	carry	not reached [e4]
+nf41	e99	00798d90	?AddNewCustomer@CTCShopKeeper@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	carry	not reached [e99]
+nf44	10	007aed10	?GetBossPhase@CTCBoss@@QBEJXZ	carry	not reached in round 6 (NF44); fresh probe ok=22 bad=3 unv=1 ; wrong binders: 009547d0 00954e30 0096c4f0
+nf41	e132	007aed50	?ResetStrikesSinceHitHero@CTCBoss@@QAEXXZ	carry	not reached [e132]
+nf41	e31	007e8590	?SetPOwner@CTCOwnedEntity@@QAEXPAVCThing@@@Z	carry	not reached [e31]
+nf41	e152	007f4500	??$GetAllThingsInRoughArea@VCThingObject@@V?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@VCThingFilter_IsElectrocutable@?A0xae168d2d@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@VCThingFilter_IsElectrocutable@?A0xae168d2d@@@@AAV?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@@Z	carry	not reached [e152]
+nf44	126	0x007FD110	??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=5 unv=0 ; wrong binders: 007fbc90 008c2240 0095b020 0095b3e0 00972830

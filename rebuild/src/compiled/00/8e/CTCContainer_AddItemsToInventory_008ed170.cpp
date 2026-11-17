@@ -13,43 +13,26 @@
 // (`sar ecx,3`, recomputed) over `*(begin() + i)` (element address in esi); Create's arguments are
 // evaluated right to left, so GetPos runs after the constant pushes; the inline clear() is
 // erase(begin(), end()) with the vector's address formed once in edi.
+// Name-fix (agentNF55, round 7): the local CTCContainer / CContainerItemVector / SContainerItem models replaced by the shared
+//   engine/CTCContainer.h (retail CTCBase; ContainerItems the STLport vector<pair<long, CCharString> > with the per-TU
+//   FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE, so clear() calls ?erase@?$vector@U?$pair@JVCCharString@@@std@@...@std@@QAEPAU?$pair@
+//   JVCCharString@@@2@PAU32@0@Z 0x0074FB20), header opt-in FABLE_RETAIL_CTCCONTAINER_ADDITEMS for this method and the protected
+//   AddItemToInventory(CThing&) (Ego_r.pdb ?AddItemToInventory@CTCContainer@@IAEXAAVCThing@@@Z).
+//   The local CThingObject declaration is gone too: engine/CThingObject.h (CREATE opt-in) over the retail CThing chain.
 class C3DVector;
 class CRightHandedSet;
 #define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_CTCCONTAINER_ADDITEMS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGOBJECT_CREATE
 #include "engine/CThing.h"
+#include "engine/CTCContainer.h"
+#include "engine/CThingObject.h"   // Create 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 
-class CThingObject;
-class CThingObject { public:
-    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
-};
-
-struct SContainerItem {                             // pair<long, CCharString>
-    long        first;                              // def index (count-like, > 0 when pending)
-    CCharString second;
-};
-
-struct CContainerItemVector {                       // STLport vector<pair<long,CCharString>>
-    SContainerItem* _M_start;
-    SContainerItem* _M_finish;
-    SContainerItem* _M_end_of_storage;
-    SContainerItem* begin() { return _M_start; }
-    SContainerItem* end() { return _M_finish; }
-    bool empty() const { return _M_start == _M_finish; }
-    unsigned long size() const { return _M_finish - _M_start; }
-    SContainerItem& operator[](unsigned long n) { return *(begin() + n); }
-    SContainerItem* erase(SContainerItem* first, SContainerItem* last);   // 0x0074FB20
-    void clear() { erase(begin(), end()); }
-};
-
-class CTCContainer { public:
-    virtual void v00();
-    CThing*              ParentThing;               // +0x04 (CTCBase)
-    CThing* GetParentThing() const { return ParentThing; }
-    unsigned char        _pad08[4];
-    CContainerItemVector ContainerItems;            // +0x0c
-    void AddItemToInventory(CThing* item);          // 0x008ED090
-    bool AddItemsToInventory();
-};
 
 bool CTCContainer::AddItemsToInventory()
 {
@@ -57,12 +40,12 @@ bool CTCContainer::AddItemsToInventory()
     {
         for (unsigned long i = 0; i < ContainerItems.size(); ++i)
         {
-            SContainerItem& item = ContainerItems[i];
+            std::pair<long, CCharString>& item = ContainerItems[i];
             if (item.first > 0)
             {
-                CThing* created = (CThing*)CThingObject::Create(item.first, GetParentThing()->GetPos(), 5, 0, 0, item.second);
+                CThing* created = CThingObject::Create(item.first, GetParentThing().GetPos(), 5, 0, 0, item.second);
                 if (created)
-                    AddItemToInventory(created);
+                    AddItemToInventory(*created);
             }
         }
         ContainerItems.clear();

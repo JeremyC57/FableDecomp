@@ -16,6 +16,15 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CONTAINER; }
     const std::vector<std::pair<long,CCharString> >& GetContainerItems() const { return ContainerItems; }
 #endif
+#ifdef FABLE_RETAIL_CTCCONTAINER_ADDITEMS
+    // Retail opt-in (agentNF55, row 0x008ED170 CTCContainer::AddItemsToInventory): Ego_r.pdb ?AddItemsToInventory@CTCContainer@@QAE_NXZ
+    // (0x00912EE0) and the protected ?AddItemToInventory@CTCContainer@@IAEXAAVCThing@@@Z (0x00912DB0; retail 0x008ED090) it calls.
+    // Declarations only; no layout change.
+public:
+    bool AddItemsToInventory();                                          // 0x008ED170
+protected:
+    void AddItemToInventory(CThing& item);                               // 0x008ED090
+#endif
 protected:
     std::vector<std::pair<long,CCharString> > ContainerItems;
 #ifdef FABLE_RETAIL_CTCCONTAINER_VSLOTS

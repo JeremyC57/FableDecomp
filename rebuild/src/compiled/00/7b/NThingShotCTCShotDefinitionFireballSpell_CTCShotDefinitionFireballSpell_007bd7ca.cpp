@@ -6,7 +6,9 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice), IS_THING_ALIVE<CThing*>(CThing* const&) @ 0x0040DCE0
 // (__fastcall; the manifest instantiation name "CThingBuilding*" is a folded twin), the __fastcall effect fade-out
 // helper @ 0x0072AC40 (null/alive test, then the effect's interface-0x4B component; manifest
-// "CTCPhysicalShieldSpell::FadeOutEffect"), ~CTCShotDefinitionProjectile @ 0x004DC9D2. Vtable 0x01241064 =
+// "CTCPhysicalShieldSpell::FadeOutEffect"; agentNF55 round 7: Ego_r.pdb / FableWin.pdb ?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z,
+// public static __fastcall, through the shared engine/CTCSpecialAbilities.h FULL + TURNCOAT; the free `FadeOutEffect` stand-in is
+// gone), ~CTCShotDefinitionProjectile @ 0x004DC9D2. Vtable 0x01241064 =
 // NThingShot::CTCShotDefinitionFireballSpell.
 // Layout: PEffect (CIntelligentPointer<CThing>) at +0xc (PDB CTCShotDefinitionBase +0x0c).
 // Shape: a frame-pointer body (`push ebp ; mov ebp,esp ; ... leave`, so no tail jump to the base destructor) =
@@ -25,7 +27,12 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
 };
 
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 = IS_THING_ALIVE<CThing*> (FableWin ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z; agentNF16)
-void __fastcall FadeOutEffect(CThing* effect);          // 0x0072AC40
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#define FABLE_RETAIL_CTCSPECIALABILITIES_TURNCOAT
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCSpecialAbilities.h"
 
 namespace NThingShot {
 
@@ -43,7 +50,7 @@ struct CTCShotDefinitionFireballSpell : CTCShotDefinitionProjectile {
 CTCShotDefinitionFireballSpell::~CTCShotDefinitionFireballSpell()
 {
     if (IS_THING_ALIVE<CThing*>(PEffect.Get()))
-        FadeOutEffect(PEffect.Get());
+        CTCSpecialAbilities::FadeOrKillEffect(PEffect.Get());
 }
 
 }

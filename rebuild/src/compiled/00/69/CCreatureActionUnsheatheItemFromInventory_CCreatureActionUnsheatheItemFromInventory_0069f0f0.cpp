@@ -128,22 +128,14 @@ class CAnimationEntry { public:
     ~CAnimationEntry() { if(Components) Components->Release(); }
 };
 const CAnimationEntry& __fastcall FindAnimation(CThingCreatureBase*,const CCharString&); //006924B0
-void __fastcall DeleteAction(CCreatureActionBase*); //00668610, deleting destructor dispatch
-struct ActionPointerInfo {
-    unsigned long RefCount;
-    void (__fastcall *DeleteData)(CCreatureActionBase*);
-    CCreatureActionBase* Data;
-    ActionPointerInfo(CCreatureActionBase* p):RefCount(1),DeleteData(&DeleteAction),Data(p) {}
-};
-struct ActionPointer {
-    CCreatureActionBase* Data;
-    ActionPointerInfo* Info;
-    ActionPointer(CCreatureActionBase* p):Data(p) { if(Data) Info=new ActionPointerInfo(Data); else Info=0; }
-    ~ActionPointer() { if(Info && --Info->RefCount==0) { Info->DeleteData(Info->Data); delete Info; } }
-};
+// NF55 (2026-11-17): the follow-up action is the shared CCountedPointer<CCreatureActionBase> (engine/CCountedPointer.h, retail ctor:
+//   `if (Data) Info = new CCPPointerInfo(1, DeleteData, Data)`); its deleter is the PDB ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z
+//   (FableWin.pdb 0x01D7A6C0, retail 0x00668610). It was the ActionPointer / ActionPointerInfo stand-in with a made-up DeleteAction.
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#include "engine/CCountedPointer.h"
 class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> Item;
-    ActionPointer FollowUp;
+    CCountedPointer<CCreatureActionBase> FollowUp;
     virtual ~CCreatureAction_UnsheatheItemFromInventory();
     virtual void Initialise();
     virtual void PerformAction();

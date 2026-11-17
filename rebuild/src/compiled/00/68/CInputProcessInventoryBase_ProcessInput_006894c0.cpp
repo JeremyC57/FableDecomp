@@ -91,24 +91,23 @@ public:
 };
 enum ECurrentMovement { MOVEMENT_NONE = 0, MOVEMENT_UP = 1, MOVEMENT_DOWN = 2 };
 class CWorld; class CPlayer; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
-class CInputProcessInventoryBase {
+// NF55 (round 7) attempt: the class onto the shared retail CInputProcessGameBase (engine/CInputProcessGameBase.h ZTARGET), whose
+// IsEventGameAction(EGameAction, const CInputEvent&) const is the Ego_r spelling; slot 0 is CAInputProcess's virtual destructor.
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#include "engine/EGameAction.h"
+#include "engine/CInputProcessGameBase.h"
+class CInputProcessInventoryBase : public CInputProcessGameBase {
 public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+    virtual void v01(); virtual void v02(); virtual void v03();
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);   // slot 4
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual CInventoryScreen* GetScreen() = 0;     // slot 9
-    unsigned char           _pad04[0x10];
-    CWorld*                 World;                 // +0x14
-    CPlayer*                MyPlayer;              // +0x18
-    CGameDefinitionManager* DefinitionManager;     // +0x1c
-    CMainGameComponent*     Component;             // +0x20
-    CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     ECurrentMovement        CurrentMovement;       // +0x28
     unsigned long           FrameSinceLastMovement;   // +0x2c
     bool                    StartedRepeatingMovement; // +0x30
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     bool ChangeSelection(ECurrentMovement movement);                  // 0x006893D0
 };
 
@@ -135,18 +134,18 @@ void CInputProcessInventoryBase::ProcessInput(const CInputEvent& event, CProcess
             CurrentMovement = MOVEMENT_NONE;
     }
     if (IsEventButtonPressed(event) || IsEventButtonReleased(event)) {
-        if (IsEventGameAction(0x25, event)) {
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_UP, event)) {
             if (ChangeSelection(MOVEMENT_UP))
                 GetScreen()->OnPreviousPage();
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(0x26, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_INVENTORY_DOWN, event)) {
             if (ChangeSelection(MOVEMENT_UP))
                 GetScreen()->OnNextPage();
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(0x27, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_INVENTORY_LEFT, event)) {
             GetScreen()->OnPreviousTab();
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(0x28, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_INVENTORY_RIGHT, event)) {
             GetScreen()->OnNextTab();
             processed.SetAsPerformedEvent();
         }

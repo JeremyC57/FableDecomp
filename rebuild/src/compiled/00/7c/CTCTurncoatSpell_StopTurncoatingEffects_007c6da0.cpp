@@ -1,5 +1,5 @@
 // CTCTurncoatSpell::StopTurncoatingEffects() -- stops the spell's looping sound on the caster's sound player and fades out the two turncoating effect things that are still alive
-// Leaf: StopTurncoatingEffects
+// Leaf: ?StopTurncoatingEffects@CTCTurncoatSpell@@AAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C6DA0, 167 bytes (plain `ret`). Ego_r.pdb
@@ -7,8 +7,9 @@
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (interface 0x10, the sound player: word 0 bit 16);
 //          CTCSoundPlayer::StopSample(unsigned long) 0x0066ADD0 (landed spelling of CTCFireballSpell::CancelMove 0x007C8FD0);
 //          CBaseIntelligentPointer::GetPItem() const 0x00A01B50 (three per effect: IS_THING_ALIVE, then the target);
-//          the effect thing's fade-out 0x0072AC40 (CThing::FadeOutEffect(), as the landed sibling FinalCleanup
-//          0x007C75E0 declares it).
+//          the effect thing's fade-out 0x0072AC40: Ego_r.pdb / FableWin.pdb ?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z
+//          (public static __fastcall; agentNF55 round 7: the local `CThing::FadeOutEffect()` stand-in member is gone, the call goes
+//          through the shared engine/CTCSpecialAbilities.h FULL + TURNCOAT, as the landed sibling FrameUpdate 0x007C6E50 calls it).
 // Layout: engine/CTCTurncoatSpell.h carries Ego_r.pdb offsets; retail members after the timer sit 4 bytes lower (the
 //         landed FinalCleanup model): LoopingSound +0x50, TurncoatingEffectOnMe +0x74, TurncoatingEffectOnTarget +0x7c.
 // Shape: the out-parameter GetInterface in an `if` (presence test straight on the bitset word, `test dword ptr [eax+20h]`)
@@ -16,7 +17,7 @@
 #include "fable_compiler.h"
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
@@ -39,8 +40,12 @@ class CThing { public:
         }
         return false;
     }
-    void FadeOutEffect();                       // 0x0072AC40
 };
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#define FABLE_RETAIL_CTCSPECIALABILITIES_TURNCOAT
+#include "engine/CTCSpecialAbilities.h"
 
 class CTCSoundPlayer { public:                         // interface 0x10
     void StopSample(unsigned long sampleID);    // 0x0066ADD0
@@ -68,7 +73,8 @@ class CTCTurncoatSpell { public:
     CBaseIntelligentPointer TurncoatingEffectOnMe;       // +0x74
     CBaseIntelligentPointer TurncoatingEffectOnTarget;   // +0x7c
     CBaseIntelligentPointer TurncoatingEffectOnMeOutOfRange;   // +0x84
-    void StopTurncoatingEffects();
+private:
+    void StopTurncoatingEffects();                       // Ego_r.pdb ?StopTurncoatingEffects@CTCTurncoatSpell@@AAEXXZ (private; NF55)
 };
 
 void CTCTurncoatSpell::StopTurncoatingEffects()
@@ -79,7 +85,7 @@ void CTCTurncoatSpell::StopTurncoatingEffects()
         LoopingSound = 0;
     }
     if (IS_THING_ALIVE(TurncoatingEffectOnMe))
-        ((CThing*)TurncoatingEffectOnMe.GetPItem())->FadeOutEffect();
+        CTCSpecialAbilities::FadeOrKillEffect((CThing*)TurncoatingEffectOnMe.GetPItem());
     if (IS_THING_ALIVE(TurncoatingEffectOnTarget))
-        ((CThing*)TurncoatingEffectOnTarget.GetPItem())->FadeOutEffect();
+        CTCSpecialAbilities::FadeOrKillEffect((CThing*)TurncoatingEffectOnTarget.GetPItem());
 }

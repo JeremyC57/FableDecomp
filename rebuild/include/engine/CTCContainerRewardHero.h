@@ -25,6 +25,12 @@ protected:
 private:
     CThingObject* CreateNewObject(long def,const C3DVector& position,const C3DVector& acceleration,const CCharString& script_name);   // 0x0074E560
 #endif
+#ifdef FABLE_RETAIL_CTCCONTAINERREWARDHERO_RELEASEITEMS
+    // Retail opt-in (agentNF55, row 0x0074E6E0): Ego_r.pdb / FableWin.pdb (0x0259C6B0) ?ReleaseItems@CTCContainerRewardHero@@IAEXM@Z
+    // (protected). Declaration only; no layout change.
+protected:
+    void ReleaseItems(float speed);                                      // 0x0074E6E0
+#endif
 protected:
     void AdjustTrajectoryVector(long row,C3DVector& direction) const;
 private:

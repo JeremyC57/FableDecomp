@@ -17,6 +17,15 @@ class CThing;
 class CTCPhysicsControlled : public CTCPhysicsStandard {
 public:
     void PerformImpulseBasedMovement(std::vector<CThing*>& things, C3DVector& pos);   // 0x00725500
+#ifdef FABLE_RETAIL_CTCPHYSICSCONTROLLED_MOVE
+    // Retail opt-in (agentNF55, row 0x00725C40): Ego_r.pdb ?Move@CTCPhysicsControlled@@UAEXXZ (the CTCPhysicsBase::Move
+    // override) and the two private steps it calls, ?AdjustThingListForDebugHelpers@CTCPhysicsControlled@@AAEXAAV?$vector@
+    // PAVCThing@@...@@Z (0x007254B0) and ?UpdateAdditionalImpulse@CTCPhysicsControlled@@AAEXXZ (0x00725B70). Declarations only.
+    virtual void Move();
+private:
+    void AdjustThingListForDebugHelpers(std::vector<CThing*>& things);                 // 0x007254B0
+    void UpdateAdditionalImpulse();                                                     // 0x00725B70
+#endif
 private:
     C3DVector ImpulseVelocity;                                           // +0x88
     C3DVector ForcedMoveToPos;                                           // +0x94

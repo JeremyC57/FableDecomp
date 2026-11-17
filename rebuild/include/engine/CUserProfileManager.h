@@ -297,6 +297,19 @@ public:
     long ScoreBoardProxyPort;                                            // +0x11c
     long ScoreBoardServerPort;                                           // +0x120
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SUBTITLING
+    // NF55 opt-in (2026-11-17, row 0x0088F890 CGameScriptInterface::PlayAVIMovie): FableWin.pdb ?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ
+    // (0x01A63103; inline in retail: `call Get ; cmp byte ptr [eax+0Ch],0 ; mov al,[eax+0CDh] / [eax+0Dh]`), the same shape as the GAMMA /
+    // VOLUME blocks. Retail offsets = Ego_r.pdb before the first vector (UseNewProfileValues +0x0C, SubtitlingEnabled +0x0D) and Ego_r.pdb
+    // - 4 after it (SubtitlingEnabledNewProfile +0xD1 there, +0xCD in retail). Layout-only block: not combinable with the other layout
+    // opt-ins (own pads).
+    bool IsSubtitlingEnabled() const { return UseNewProfileValues ? SubtitlingEnabledNewProfile : SubtitlingEnabled; }
+    unsigned char _pad_sub_0x00[0xc];                                    // vptr, CBaseClass, ProfileName
+    bool UseNewProfileValues;                                            // +0x0c
+    bool SubtitlingEnabled;                                              // +0x0d
+    unsigned char _pad_sub_0x0e[0xcd - 0xe];                             // VibrationEnabled .. DisplayTutorialsDuringCutscenes
+    bool SubtitlingEnabledNewProfile;                                    // +0xcd
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_GAMMA
     // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): FableWin.pdb ?GetGamma@CUserProfileManager@@QBEMXZ /
     // ?GetHUDAlpha@CUserProfileManager@@QBEMXZ, expanded in place in retail (`call Get ; cmp byte ptr [eax+0Ch],0 ; fld [eax+0DCh] / fld

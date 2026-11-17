@@ -89,10 +89,13 @@ public:
     void Terminate();   // 0x008FCF40
 };
 
-class CTCTalk { public:                                    // the interface-0xf component
-    bool IsTalking();                               // 0x006E28A0
-    long PlayAISpeech(const CCharString& text, bool allowNonPure, long layer, bool a, bool b);   // 0x006E3B30 (ESpeechPlaybackResult)
-};
+// NF55 (2026-11-17): the interface-0xf component is engine/CTCTalk.h (AISPEECHTEXT: Ego_r.pdb
+//   ?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@ABVCCharString@@_NW4EDialogueLayer@NSpeechGainManager@@11@Z, 0x006E3B30); it was a
+//   local CTCTalk with long result / layer types.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCTALK
+#define FABLE_RETAIL_CTCTALK_AISPEECHTEXT
+#include "engine/CTCTalk.h"
 
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 class CMainGameComponent {
@@ -121,7 +124,7 @@ void CAIStateGroup_Drunk::TalkToSelfUpdate()
         long result;
         {
             CCharString text("TEXT_AI_OPINION_ACT_DRUNK_TALK_TO_SELF", -1);
-            result = talk->PlayAISpeech(text, false, 2, false, true);
+            result = talk->PlayAISpeech(text, false, (NSpeechGainManager::EDialogueLayer)2, false, true);
         }
         if (result == 2) {
             if (AIAction_DoNothing() == 4)

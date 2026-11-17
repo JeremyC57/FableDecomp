@@ -9825,8 +9825,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007aed10'
         Module = 'CTCBoss'
-        Source = '00/7a/CTCBoss_GetCurrentPhase_007aed10.cpp'
-        TestSource = '00/7a/CTCBoss_GetCurrentPhase_007aed10_test.cpp'
+        Source = '00/7a/CTCBoss_GetBossPhase_007aed10.cpp'
+        TestSource = '00/7a/CTCBoss_GetBossPhase_007aed10_test.cpp'
         PassPattern = 'AUTO_TINY_007aed10_TEST PASS'
     }
     [pscustomobject]@{
@@ -91960,9 +91960,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065f17b'
-        Module = '_global'
-        Source = '00/65/global_CalcStringLength_0065f17b.cpp'
-        TestSource = '00/65/global_CalcStringLength_0065f17b_test.cpp'
+        Module = 'std::list<CIntelligentPointer<CThingAICreature> >'
+        Source = '00/65/stdlist_size_0065f17b.cpp'
+        TestSource = '00/65/stdlist_size_0065f17b_test.cpp'
         PassPattern = 'PASS_0065f17b'
     }
     [pscustomobject]@{
@@ -127958,9 +127958,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007445d0'
-        Module = '_unattributed'
-        Source = '00/74/unattributed_GetScaledDefValue_007445d0.cpp'
-        TestSource = '00/74/unattributed_GetScaledDefValue_007445d0_test.cpp'
+        Module = 'CTCPerceiveThing'
+        Source = '00/74/CTCPerceiveThing_GetFOV_007445d0.cpp'
+        TestSource = '00/74/CTCPerceiveThing_GetFOV_007445d0_test.cpp'
         PassPattern = '007445d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179629,8 +179629,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0065f8ca'
         Module = '_global'
-        Source = '00/65/global_IsThingAlive0065f8ca_0065f8ca.cpp'
-        TestSource = '00/65/global_IsThingAlive0065f8ca_0065f8ca_test.cpp'
+        Source = '00/65/global_ISTHINGALIVE_0065f8ca.cpp'
+        TestSource = '00/65/global_ISTHINGALIVE_0065f8ca_test.cpp'
         PassPattern = '0065f8ca_TEST PASS'
     }
     [pscustomobject]@{
@@ -189426,9 +189426,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006691c0'
-        Module = 'CAIStateGroupWithBuilding_006691c0'
-        Source = '00/66/CAIStateGroupWithBuilding006691c0_Cleanup_006691c0.cpp'
-        TestSource = '00/66/CAIStateGroupWithBuilding006691c0_Cleanup_006691c0_test.cpp'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_ClearAttackedByCreature_006691c0.cpp'
+        TestSource = '00/66/CThingCreatureBase_ClearAttackedByCreature_006691c0_test.cpp'
         PassPattern = '006691c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -246528,9 +246528,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0072ac40'
-        Module = 'CTCPhysicalShieldSpell'
-        Source = '00/72/CTCPhysicalShieldSpell_FadeOutEffect_0072ac40.cpp'
-        TestSource = '00/72/CTCPhysicalShieldSpell_FadeOutEffect_0072ac40_test.cpp'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_FadeOrKillEffect_0072ac40.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_FadeOrKillEffect_0072ac40_test.cpp'
         PassPattern = '0072ac40_TEST PASS'
     }
     [pscustomobject]@{

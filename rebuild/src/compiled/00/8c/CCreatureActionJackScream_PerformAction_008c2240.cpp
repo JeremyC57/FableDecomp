@@ -82,7 +82,9 @@ public:
     }
 };
 class CThingSearchTools { public:
-    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasScriptName& filter, CThing** out) const;   // 0x007FD110
+    // NF55 (round 7): Ego_r.pdb ??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@
+    // ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z, a member-template instance (landed under that leaf at 0x007FD110); declaration only.
+    template <class TFilter, class T> bool GetPFirstThingInRoughArea(const C2DBoxI& area, const TFilter& filter, T** out) const;   // 0x007FD110
 };
 class CWorldMap { public:
     float GetHeightZBelowPos(const C3DVector& position);     // 0x0063E480

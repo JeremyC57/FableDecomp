@@ -14408,7 +14408,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0065f0fa	OnCreate	CTCActionUseBuyHouse	__thiscall	void	1	CTCActionUseBuyHouse *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCActionUseBuyHouse_OnCreate_0065f0fa.cpp
 0065f116	operator	CIsHornTaskWithThisHorn	__thiscall	bool	2	CIsHornTaskWithThisHorn *,CCountedPointer<CVillageTaskHorn>	1	yes	accepted									
 0065f152	operator()	HasGuardProperty	__thiscall	bool	2	HasGuardProperty *,CIntelligentPointer<CThingAICreature>	1	yes	accepted									
-0065f17b	CalcStringLength	CBasicString<char>	__fastcall	ulong	1	char *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\global_CalcStringLength_0065f17b.cpp
+0065f17b	size	std::list<CIntelligentPointer<CThingAICreature> >	__fastcall	ulong	1	char *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\global_CalcStringLength_0065f17b.cpp
 0065f1ad	StdList_Ctor_0065f1ad	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\global_DoublyLinkedListInitializeEmpty_0065f1ad.cpp
 0065f1c8	StdList_Dtor_0065f1c8	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CActiveFile_OnReadFinished_0065f1c8.cpp
 0065f1df	StdList_Ctor_0065f1df	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\global_DoublyLinkedListInitializeEmpty_0065f1df.cpp
@@ -14448,7 +14448,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0065f856	GetBestTaskForThing<CVillageTaskPatrol>	CTCVillage	unknown	undefined	0		0	yes	accepted									
 0065f884	GetBestTaskForThing<CVillageTaskCarryCrate>	CTCVillage	unknown	undefined	0		0	yes	accepted									
 0065f8b2	advance<std::_List_iterator<CIntelligentPointer<CThingBuilding> >,int>	std	__thiscall	bool	4	CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CEngineSceneGrid_GetCellBoundingBox_0065f8b2.cpp
-0065f8ca	IsThingAlive_0065f8ca	_global	__fastcall	bool	1	CIntelligentPointer<CThingPhysical_const_> *	1	yes	accepted									
+0065f8ca	IS_THING_ALIVE<CIntelligentPointer<CThingBuilding> >	_global	__fastcall	bool	1	CIntelligentPointer<CThingPhysical_const_> *	1	yes	accepted									
 0065f943	find_if<std::_List_iterator<CCountedPointer<CVillageTaskTorch> >,CIsThingInvolvedWithTask>	std	__thiscall	C2DVector	3	CPersistTraits<C2DVector> *,CPersistContext *,CStringParser *	1	yes	accepted									
 0065f96d	__find_if	std	__fastcall	_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>_>	3	_List_unchecked_iterator<class_std::_List_val<class_CIntelligentPointer<class_CThingAICreature>,class_std::allocator<class_CIntelligentPointer<class_CThingAICreature>_>_>_>,_List_unchecked_iterator<class_std::_List_val<class_CIntelligentPointer<class_CThingAICreature>,class_std::allocator<class_CIntelligentPointer<class_CThingAICreature>_>_>_>,HasGuardProperty	1	yes	accepted									
 0065f9ab	__find_if	std	__fastcall	_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>_>	3	_List_unchecked_iterator<class_std::_List_val<class_CIntelligentPointer<class_CThingAICreature>,class_std::allocator<class_CIntelligentPointer<class_CThingAICreature>_>_>_>,_List_unchecked_iterator<class_std::_List_val<class_CIntelligentPointer<class_CThingAICreature>,class_std::allocator<class_CIntelligentPointer<class_CThingAICreature>_>_>_>,HasGuardProperty	1	yes	accepted									
@@ -14737,7 +14737,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00668ef0	ScalarDeletingDtor_00668ef0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00668ef0.cpp
 00669040	operator()<CThingPhysical>	CFilter_Bind3<CThingFilter_SolidToThing, CThingFilter_PhysicsFlagsSolidToThing, CThingFilter_OverlappingCircle>	unknown	undefined	0		0	yes	accepted									
 00669110	operator()<CThingBuilding>	CFilter_Bind2<CThingFilter_OverlappingSphere, CThingFilter_PosInContainmentVolume>	unknown	undefined	0		0	yes	accepted									
-006691c0	Cleanup	CAIStateGroupWithBuilding_006691c0	__thiscall	void	1	CAIStateGroup_MinionPutOutFires *	1	yes	accepted									
+006691c0	ClearAttackedByCreature	CThingCreatureBase	__thiscall	void	1	CAIStateGroup_MinionPutOutFires *	1	yes	accepted									
 00669230	SetKiller	CThingDeadCreature	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 00669280	SetPreceedingPAnimEntry	CCreatureActionBase	__thiscall	void	2	CFrontEndScreen *,CCountedPointer<NUISystem::CAction> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CFrontEndScreen_AddActionOnLeftClicked_00669280.cpp
 00669300	CEventDied	NEntityEvents::CEventDied	__thiscall	undefined	3	CEventDied *,CThing *,CThing *	0	yes	accepted									
@@ -19881,7 +19881,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00744500	SetExtendedSightRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted									
 00744540	SetSightRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted									
 00744580	GetTimeBasedVisibilityMultiplier	CTCPerceiveThing	__thiscall	float	1	CTCPerceiveThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CTCPerceiveThing_GetExtendedSightRadius_00744580.cpp
-007445d0	GetAirResistance	_global	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted									
+007445d0	GetFOV	CTCPerceiveThing	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted									
 007445e0	CTCPerceiveThing	CTCPerceiveThing	__thiscall	undefined	2	CTCPerceiveThing *,CThing *	0	yes	accepted									
 007446a0	GetPerceivedThing	CTCPerceiveThing	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 007446b0	SetPerceivedThing	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,CThing *	1	yes	accepted									

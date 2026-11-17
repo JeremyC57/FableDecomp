@@ -176,6 +176,13 @@ public:
     void Update() { if(Dirty) Sort(); }
 #endif
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_SORT_OUTOFLINE
+    // NF55 opt-in (2026-11-17, row 0x005F6423 CTCInventoryAbilities::SetAbilityToButton): Ego_r.pdb ?Sort@?$CVectorMap@..@@QAEXXZ called
+    // out of line (the <long, EHeroAbility> instance 0x005FA47D) from the inline FableWin.pdb ?Update@?$CVectorMap@..@@QAEXXZ
+    // (`cmp byte ptr [Dirty],0 ; je ; call Sort`). Declaration of Sort only; Update is the inline body.
+    void Sort();
+    void Update() { if(Dirty) Sort(); }
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_SETDIRTY
     // Opt-in (chunk Q7, row 0x0086BFB0 CRandomAppearanceMorph::TransferBinaryIn): Ego_r.pdb ?SetDirty@?$CVectorMap@..@@QAEX_N@Z
     // (CSkeletalMorph, CSkeletalMorphs::CEntry, CAnimComponentBase instances), inline in retail (`mov byte ptr [map+0Dh],0`).

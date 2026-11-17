@@ -108,6 +108,12 @@ public:
     void SetAbilityToButton(EHeroAbility ability, long button, bool flag);                                       // 0x005F6423
     long GetNumAssignableSpecialMoveButtons() const;                                                             // 0x005EDCF0
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ONSPECIALABILITYBUTTONPRESSED
+    // NF55 opt-in (2026-11-17, row 0x005EED4C): Ego_r.pdb + FableWin.pdb ?OnSpecialAbilityButtonPressed@CTCInventoryAbilities@@QAEXJ@Z
+    // (0x005EED4C) and ?OnSpecialAbilityUsed@CTCInventoryAbilities@@QAEXW4EHeroAbility@@_N@Z (0x005EEA9B), out of line in retail.
+    void OnSpecialAbilityButtonPressed(long button);                                                             // 0x005EED4C
+    void OnSpecialAbilityUsed(EHeroAbility ability, bool fromQuickAccess);                                       // 0x005EEA9B
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_AVAILABILITY
     // Opt-in (wf15, row 0x005F6BD6 SetAbilityAsAvailable): Ego_r.pdb + FableWin.pdb ?IsAbilityAvailable@CTCInventoryAbilities@@QBE_N
     // W4EHeroAbility@@@Z (0x005EDF08, landed) and ?GetNumAssignedReceivedAbilities@CTCInventoryAbilities@@QBEJXZ (0x005EE146, landed):

@@ -15,10 +15,9 @@
 class CTCParamsBase;
 class CThing;
 
-class CTCBase {
-public:
-    void SetPOwner(CThing* owner);                     // 0x007E8590 (CTCOwnedEntity::SetPOwner)
-};
+// agentNF55 (round 7): the local `CTCBase::SetPOwner` stand-in is gone; 0x007E8590 is Ego_r.pdb / FableWin.pdb
+// ?SetPOwner@CTCOwnedEntity@@QAEXPAVCThing@@@Z, reached on the AddTC result as the shared engine/CTCOwnedEntity.h class.
+#include "engine/CTCOwnedEntity.h"
 
 class CTCMeshAutomaticEntityCreator {
 public:
@@ -29,6 +28,6 @@ public:
 
 void CTCMeshAutomaticEntityCreator::AddOwnedEntityTC(CThing* created)
 {
-    CTCBase* owned = created->AddTC("CTCOwnedEntity", false, 0);
+    CTCOwnedEntity* owned = static_cast<CTCOwnedEntity*>(created->AddTC("CTCOwnedEntity", false, 0));
     owned->SetPOwner(m_pThing);
 }

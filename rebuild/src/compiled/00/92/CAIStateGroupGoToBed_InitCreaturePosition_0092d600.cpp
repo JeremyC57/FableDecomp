@@ -115,13 +115,16 @@ template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(con
 
 class CMessageEvent;
 class CMessageEventManager;
-struct CGameTime {
-    bool IsTimeOfDayInRange(long start, long end);   // 0x006BB390
-};
+// NF55 (2026-11-17): the world clock (+0x1c) is the shared engine/CGameTimeManager.h (FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN:
+//   Ego_r.pdb 0x006F6B80 + FableWin.pdb 0x024607E0 ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z, 0x006BB390), as NF54's 0x00957F20; it was a
+//   local stand-in with the made-up IsTimeOfDayInRange.
+#define FABLE_RETAIL_CGAMETIMEMANAGER
+#define FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN
+#include "engine/CGameTimeManager.h"
 
 class CWorld { public:
     unsigned char _pad0[0x1c];
-    CGameTime* m_pTime;                         // +0x1c the world clock
+    CGameTimeManager* m_pTime;                         // +0x1c the world clock
     unsigned char _pad[0x40];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
@@ -170,11 +173,11 @@ struct CAIStateGroup_GoToBed : CAIStateGroupBaseW {
     // CAIStateGroup_GoToBed::IsInSleepTime @ 0x0092C4E0, inlined here
     bool IsInSleepTime()
     {
-        CGameTime* pTime = GetWorld().m_pTime;
+        CGameTimeManager* pTime = GetWorld().m_pTime;
         long sleepEnd;
         long sleepStart;
         ((CThingAICreature*)PBrain->PCreature)->GetSleepTimes(sleepStart, sleepEnd);
-        return pTime->IsTimeOfDayInRange(sleepStart + m_bedTimeDelay, sleepEnd);
+        return pTime->IsTimeBetween(sleepStart + m_bedTimeDelay, sleepEnd);
     }
 };
 

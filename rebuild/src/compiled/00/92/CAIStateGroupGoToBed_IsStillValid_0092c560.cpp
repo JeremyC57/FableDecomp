@@ -9,13 +9,16 @@
 // come back through two stack out-parameters, and the range test is [start + bedtime delay, end] (the IsStillValid override is IsInSleepTime's body again, vtable slot 5); the callee's result is returned
 // untouched. The sleep-time family (0x0092C4E0 / 0x0092C520 / 0x0092C560) differs only in which delay member
 // is added to which bound. No engine header exists for CAIStateGroup_GoToBed; the layout is local.
-struct CGameTime {
-    bool IsTimeOfDayInRange(long start, long end);   // 0x006BB390
-};
+// NF55 (2026-11-17): the world clock (+0x1c) is the shared engine/CGameTimeManager.h (FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN:
+//   Ego_r.pdb 0x006F6B80 + FableWin.pdb 0x024607E0 ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z, 0x006BB390), as NF54's 0x00957F20; it was a
+//   local stand-in with the made-up IsTimeOfDayInRange.
+#define FABLE_RETAIL_CGAMETIMEMANAGER
+#define FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN
+#include "engine/CGameTimeManager.h"
 
 class CWorld { public:
     unsigned char _pad[0x1c];
-    CGameTime* m_pTime;                         // +0x1c
+    CGameTimeManager* m_pTime;                         // +0x1c
 };
 
 class CThingAICreature { public:
@@ -53,9 +56,9 @@ struct CAIStateGroup_GoToBed : CAIStateGroupBase {
 
 bool CAIStateGroup_GoToBed::IsStillValid()
 {
-    CGameTime* pTime = GetWorld().m_pTime;
+    CGameTimeManager* pTime = GetWorld().m_pTime;
     long sleepEnd;
     long sleepStart;
     PBrain->PCreature->GetSleepTimes(sleepStart, sleepEnd);
-    return pTime->IsTimeOfDayInRange(sleepStart + m_bedTimeDelay, sleepEnd);
+    return pTime->IsTimeBetween(sleepStart + m_bedTimeDelay, sleepEnd);
 }

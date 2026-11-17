@@ -5,7 +5,9 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665260, `ret 8`, bool in al. Catalogued as CVertexBufferWin32::ComputeAngleBetweenPositions
 //   (wrong: `this` is a creature -- interface bitset +0x20, interface map +0x44, PhysicsTC +0x60, CThingCreatureBase::PeekPos
 //   0x006A4D00); FableWin.pdb names it ?IsPosInFOV@CThingCreatureBase@@QBE_NABVC3DVector@@_N@Z.
-// Callees: CInterfaceMap::LowerBound const 0x004365B0, TC 0x34's float query 0x007445D0 (catalogued GetAirResistance),
+// Callees: CInterfaceMap::LowerBound const 0x004365B0, TC 0x34's float query 0x007445D0 (catalogued GetAirResistance; agentNF55
+//   round 7: the local CTCFieldOfView stand-in is gone, the TC is the shared CTCPerceiveThing and the query its Ego_r.pdb /
+//   FableWin.pdb ?GetFOV@CTCPerceiveThing@@QBEMXZ, header opt-in FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETFOV),
 //   CThingCreatureBase::PeekPos 0x006A4D00, PhysicsTC slot 70 (+0x118, facing direction by hidden pointer),
 //   CTCLook float query 0x00751A80 (catalogued DrawGetSeaLevel), _CIfmod 0x00BFEB28. Constants: 1/(2pi) 0x01237F08,
 //   0.0f 0x0122DEDC, 1.0f 0x0122DED8, double 1.0 0x01237F00, 0.5f 0x0122F59C.
@@ -29,9 +31,8 @@ class CTCPhysicsBase { public:
     FILL10(0) FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5) FILL10(6)
     virtual C3DVector GetFacingDirection();     // slot 70 (+0x118)
 };
-struct CTCFieldOfView {
-    float GetFieldOfView();                     // 0x007445D0
-};
+#define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETFOV
+#include "engine/CTCPerceiveThing.h"
 class CTCLook { public:
     float GetHeadAngleOffset();                 // 0x00751A80
 };
@@ -84,7 +85,7 @@ public:
 bool CThingCreatureBase::IsPosInFOV(const C3DVector& position, bool useLookOffset) const
 {
     if (UsingComponents[0x34 >> 5] & (1UL << (0x34 & 31))) {
-        float fieldOfView = GetTC<CTCFieldOfView>(0x34)->GetFieldOfView();
+        float fieldOfView = GetTC<CTCPerceiveThing>(0x34)->GetFOV();
         C3DVector delta = position - PeekPos();
         C3DVector dir = PhysicsTC->GetFacingDirection();
         float angle = WrapAngle((float)atan2(dir.X, dir.Y) * 0.15915494f);

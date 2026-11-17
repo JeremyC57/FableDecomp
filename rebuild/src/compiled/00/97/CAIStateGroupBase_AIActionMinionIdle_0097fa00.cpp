@@ -45,13 +45,16 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingAICreature* creature, CAnimationEntry* animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00842570
 };
-struct CGameTime {
-    bool IsTimeOfDayInRange(long start, long end);  // 0x006BB390
-};
+// NF55 (2026-11-17): the world clock (+0x1c) is the shared engine/CGameTimeManager.h (FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN:
+//   Ego_r.pdb 0x006F6B80 + FableWin.pdb 0x024607E0 ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z, 0x006BB390), as NF54's 0x00957F20; it was a
+//   local stand-in with the made-up IsTimeOfDayInRange.
+#define FABLE_RETAIL_CGAMETIMEMANAGER
+#define FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN
+#include "engine/CGameTimeManager.h"
 class CWorld { public:
     unsigned char _pad[0x1c];
-    CGameTime* PTime;                           // +0x1c
-    CGameTime* GetPTime() const { return PTime; }
+    CGameTimeManager* PTime;                           // +0x1c
+    CGameTimeManager* GetPTime() const { return PTime; }
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -106,7 +109,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MinionIdle()
         if (afterSleep > 2400)
             afterSleep = 30;
         CAnimationEntry* animation;
-        if ((PeekWorld().GetPTime()->IsTimeOfDayInRange(sleepTime, afterSleep) || PeekWorld().GetPTime()->IsTimeOfDayInRange(beforeWake, wakeTime))
+        if ((PeekWorld().GetPTime()->IsTimeBetween(sleepTime, afterSleep) || PeekWorld().GetPTime()->IsTimeBetween(beforeWake, wakeTime))
             && WorldRandomRange(*GetPWorldSeed(), 100) < 9)
             animation = GetCreature()->GetRandomLoadedAnimFromName("STANDARD_YAWN", true);
         else

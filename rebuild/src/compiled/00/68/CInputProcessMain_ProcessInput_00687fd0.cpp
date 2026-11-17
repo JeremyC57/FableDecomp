@@ -122,21 +122,25 @@ struct CCountedPointer_CConsole {
 };
 extern CCountedPointer_CConsole g_pConsole;        // 0x013CAA40
 class CGamePlayerInterface;
-class CInputProcessMain {
+// NF55 (round 7): the class onto the shared retail CInputProcessGameBase (engine/CInputProcessGameBase.h ZTARGET), whose
+// IsEventGameAction(EGameAction, const CInputEvent&) const is the Ego_r spelling (PGamePlayerInterface +0x24 is the base's member);
+// slot 0 is CAInputProcess's virtual destructor.
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#include "engine/EGameAction.h"
+#include "engine/CInputProcessGameBase.h"
+class CInputProcessMain : public CInputProcessGameBase {
 public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+    virtual void v01(); virtual void v02(); virtual void v03();
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);   // slot 4
-    unsigned char           _pad04[0x24 - 0x04];
-    CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     C2DVector GetMouseMovement(const CInputEvent& event);             // 0x00687D20
 };
 
 void CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     CInputEvent unused;
-    if (IsEventGameAction(0x35, event) && IsEventButtonPressed(event) && CMainGameComponent::Get()) {
+    if (IsEventGameAction(GAME_ACTION_TAKE_PHOTO_FOR_PHOTOJOURNAL, event) && IsEventButtonPressed(event) && CMainGameComponent::Get()) {
         CWorld* world = CMainGameComponent::Get()->PWorld;
         if ((world->RegionLoadStatus == 0 || world->RegionLoadStatus == 9) && world->SaveGameLoadStatus == 0
             && !g_bAutoSaveProgressShown) {
@@ -163,8 +167,8 @@ void CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& 
     if (event.GetType() == 1)
         return;
     if (IsEventButtonPressed(event))
-        IsEventGameAction(6, event);
-    else if (IsEventGameAction(0x47, event)) {
+        IsEventGameAction(GAME_ACTION_INTERACT, event);
+    else if (IsEventGameAction(GAME_ACTION_MOVE_MOUSE_ON_GUI, event)) {
         C2DVector movement = GetMouseMovement(event);
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().MoveCursor(movement);
     }

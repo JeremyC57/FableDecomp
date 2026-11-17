@@ -20,6 +20,13 @@ public: virtual void GlobalUpdate(bool);
     // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb / FableWin.pdb ?IsActive@CTCQuickAccessMenu@@QBE_NXZ, out of line at 0x00625930.
 public: bool IsActive() const;                                           // 0x00625930
 #endif
+#ifdef FABLE_RETAIL_CTCQUICKACCESSMENU_ISQUITTING_ACTIVATE
+    // NF55 opt-in (2026-11-17, rows 0x00583BD5 CTCInventory::OpenQuickAccessMenu / 0x0068FF50): Ego_r.pdb + FableWin.pdb
+    // ?IsQuitting@CTCQuickAccessMenu@@QBE_NXZ (Ego_r 0x0066A160, right after IsActive 0x0066A150; retail 0x00625940 after IsActive
+    // 0x00625930) and ?Activate@CTCQuickAccessMenu@@QAEXXZ (Ego_r 0x0066CFC0; retail 0x00628000), both out of line in retail.
+public: bool IsQuitting() const;                                         // 0x00625940
+public: void Activate();                                                 // 0x00628000
+#endif
 #ifdef FABLE_RETAIL_CTCQUICKACCESSMENU_DEACTIVATE
     // Retail opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): FableWin.pdb ?StatGetInterfaceType@CTCQuickAccessMenu@@SI?AW4ETCInterfaceType@@XZ
     // (0x01A93CF0; inline in retail: Activate looks up TC 246 = TCI_QUICK_ACCESS_MENU, `mov dword ptr [esp+30h],0F6h` at 0x0056AD93) and

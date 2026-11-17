@@ -17,10 +17,33 @@
 // stays opaque bytes. Only what the row uses is declared.
 #include "engine/CTCPhysicsBase.h"
 #include "engine/CRightHandedSet.h"
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_MOVE
+#include "engine/C2DBoxI.h"
+#include "stlport/fable_containers.h"
+class CThing;
+#endif
 class CThingPhysicsMeshInfo;
 class CTCPhysicsStandard : public CTCPhysicsBase {
 public:
     virtual void ResetInterpolation();                       // slot 80 0x007236E0
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_MOVE
+    // Retail opt-in (agentNF55, row 0x00725C40 CTCPhysicsControlled::Move): the movement steps Move calls. Ego_r.pdb
+    // ?UpdateOnSurface@CTCPhysicsStandard@@MAEXAAV?$vector@PAVCThing@@...@std@@AAVC3DVector@@@Z and
+    // ?GetPossibleCollidedWithArea@CTCPhysicsStandard@@MBE?AVC2DBoxI@@XZ are the two virtuals CTCPhysicsStandard introduces
+    // (slots 97 / 98 of 0x01265F84, the row's `call [eax+184h]` / `call [eax+188h]`), declared first here so they take those
+    // slots; ?PerformForceUpdates@ / ?UpdateIsMoving@ ...@@IAEXXZ (0x008E5670 / 0x008E5270),
+    // ?PerformStepBasedMovement@ ...@@IAEXAAV?$vector@PAVCThing@@...@AAVC3DVector@@@Z (0x008E5880) and
+    // ?GetPossibleInteractedWithList@ ...@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThing@@...@M@Z (0x008E57D0) are protected and out of
+    // line. Declarations only (the vtable already has the two slots; no layout change).
+protected:
+    virtual void UpdateOnSurface(std::vector<CThing*>& things, C3DVector& pos);              // slot 97
+    virtual C2DBoxI GetPossibleCollidedWithArea() const;                                     // slot 98
+    void PerformForceUpdates();                                                              // 0x008E5670
+    void UpdateIsMoving();                                                                   // 0x008E5270
+    void PerformStepBasedMovement(std::vector<CThing*>& things, C3DVector& pos);             // 0x008E5880
+    void GetPossibleInteractedWithList(const C2DBoxI& area, std::vector<CThing*>& things, float range) const;   // 0x008E57D0
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_IMPULSE
     // Retail opt-in (chunk 2004, row 0x00725500 CTCPhysicsControlled::PerformImpulseBasedMovement): Ego_r.pdb / FableWin.pdb protected
     // ?UpdateVelocityForImpassability@CTCPhysicsStandard@@IAEXABVC3DVector@@AAV2@@Z (0x007243C0, inside the CTCPhysicsStandard range),

@@ -4,6 +4,9 @@
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail0x00857B70,314 bytes. Shared genuine virtual prefix and intelligent-pointer layout from00859D80.
 // Component48 is CTCCombat, ResetComboChainPos0x00733210 writes native combo sentinels at+C/+10.
+// Name-fix (agentNF55, round 7): the local `CCombatComponent : CTCCombat` stand-in is gone; the TC is the shared CTCCombat and
+//   its ResetComboChainPos is the Ego_r.pdb / FableWin.pdb ?ResetComboChainPos@CTCCombat@@QAEXXZ (header opt-in
+//   FABLE_RETAIL_CTCCOMBAT_FLAT_RESETCOMBO on the flattened branch this row uses).
 #include "fable_compiler.h"
 #include "fable_string.h"
 #define CCombatActionBase CCombatActionBase_PDB
@@ -24,8 +27,8 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 extern const float DELTA_NOTIONAL_ZERO;              //0x0129BA3C
+#define FABLE_RETAIL_CTCCOMBAT_FLAT_RESETCOMBO
 #include "engine/CTCCombat.h"
-struct CCombatComponent:CTCCombat {void ResetComboChainPos();}; //0x00733210
 // agentNF17: the InterfaceEntry / InterfaceMap stand-ins are the explicit specialisation CVectorMap<ETCInterfaceType, CTCBase*> (the
 //   landed 0x0074EE90 idiom) and its std::pair value_type; 0x0040F020 is its LowerBound (NF14 / established spelling).
 class CTCBase;
@@ -43,9 +46,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforeRelativeAcceleration[0x174];C3DVector RelativeMovementAcceleration;
     float GetCurrentRelativeMovementAngleXY()const; //0x006A9640
-    FABLE_FORCEINLINE bool GetInterface(CCombatComponent** out,long type){
+    FABLE_FORCEINLINE bool GetInterface(CTCCombat** out,long type){
         if(PresentBits[type>>5]&(1UL<<(type&31))){ETCInterfaceType key=(ETCInterfaceType)type;InterfaceMap* map=&Interfaces;InterfaceMap::value_type* p=map->LowerBound(key);
-            if(p==map->_M_finish || type<p->first)p=map->_M_finish;*out=(CCombatComponent*)p->second;return true;}return false;
+            if(p==map->_M_finish || type<p->first)p=map->_M_finish;*out=(CTCCombat*)p->second;return true;}return false;
     }
 };
 bool FABLE_FASTCALL IsThingCarryingMeleeWeapon(Creature* creature); //006A15A0
@@ -86,7 +89,7 @@ void CCombatActionBase::ProcessPlayerControl(){
             if(movement.X*movement.X+movement.Y*movement.Y+movement.Z*movement.Z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO){
                 float angle=creature->GetCurrentRelativeMovementAngleXY();movement.RotateXY(angle);
                 if(FramesRunning-afterStrike>(long)(frameRate*0.4f)){
-                    FinishAction();CCombatComponent* combat;
+                    FinishAction();CTCCombat* combat;
                     PCreature.GetPItem()->GetInterface(&combat,48);combat->ResetComboChainPos();
                 }
             }

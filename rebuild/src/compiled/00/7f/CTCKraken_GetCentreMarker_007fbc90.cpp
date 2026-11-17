@@ -35,8 +35,9 @@ class CThingFilter_HasScriptName { public:
     CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
 };
 class CThingSearchTools { public:
-    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasDefGlobalIndex& filter, CThing** out) const;   // 0x007FCEF0
-    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasScriptName& filter, CThing** out) const;        // 0x007FD110
+    // NF55 (round 7): Ego_r.pdb names both as instances of one member template, ??$GetPFirstThingInRoughArea@VCThingFilter_HasDefGlobalIndex@@
+    // VCThing@@@CThingSearchTools@@QBE_N... (0x007FCEF0) and ..@VCThingFilter_HasScriptName@@VCThing@@@.. (0x007FD110); declaration only.
+    template <class TFilter, class T> bool GetPFirstThingInRoughArea(const C2DBoxI& area, const TFilter& filter, T** out) const;
 };
 class CDefinitionManager { public:
 public:

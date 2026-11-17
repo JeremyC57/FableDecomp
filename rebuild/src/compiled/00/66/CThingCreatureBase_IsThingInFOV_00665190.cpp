@@ -4,7 +4,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00665190, length 206 bytes, `ret 8`, bool in al.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0 (TC 0x34 = CTCPerceiveThing), CTCPerceiveThing::GetSightRadius
 //   @ 0x007448F0 (respelled 2026-11-16 from GetExtendedSightRadius: 0x007448F0 reads SightRadius +0x40, GetExtendedSightRadius is 0x00744950), the component's field-of-view
-//   getter @ 0x007445D0 (`PDef->[+0x28] * const`; manifest "CTCPhysicsBase::GetAirResistance" is propagated),
+//   getter @ 0x007445D0 (`PDef->[+0x28] * const`; manifest "CTCPhysicsBase::GetAirResistance" is propagated; agentNF55 round 7:
+//   it is Ego_r.pdb / FableWin.pdb ?GetFOV@CTCPerceiveThing@@QBEMXZ, the declaration below respelled to that),
 //   CThing::GetPos @ 0x004C73D0, the creature's view-angle test @ 0x00664E50 (thing, fov, flag; manifest
 //   "CVertexBufferWin32_CalculateViewingAngle" is propagated, real name unproven).
 // Layout: retail CThing interface bitset +0x20 (TC 0x34 = word +0x24 bit 20), interface map +0x44.
@@ -21,7 +22,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCPerceiveThing { public:
     float GetSightRadius() const;               // 0x007448F0 ?GetSightRadius@CTCPerceiveThing@@QBEMXZ
-    float GetFieldOfView_007445d0();            // 0x007445D0
+    float GetFOV() const;                       // 0x007445D0 ?GetFOV@CTCPerceiveThing@@QBEMXZ
 };
 
 class CThing {
@@ -54,7 +55,7 @@ bool CThingCreatureBase::IsThingInFOV(CThing* thing, bool flag)
     if (UsingComponents[0x34 >> 5] & (1UL << (0x34 & 31))) {
         CTCPerceiveThing* perceive = GetTC<CTCPerceiveThing>(0x34);
         sightRadius = perceive->GetSightRadius();
-        fieldOfView = perceive->GetFieldOfView_007445d0();
+        fieldOfView = perceive->GetFOV();
     }
     if ((GetPos() - thing->GetPos()).GetSquaredMagnitude() <= sightRadius * sightRadius)
         return IsThingInViewAngle_00664e50(thing, fieldOfView, flag);

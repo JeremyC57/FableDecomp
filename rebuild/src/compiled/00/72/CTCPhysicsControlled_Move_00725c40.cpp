@@ -1,5 +1,5 @@
 // CTCPhysicsControlled::Move() -- one controlled physics step: honour a pending forced move (teleport, or fold it into the impulse), gather the things the impulse and velocity can reach, apply the impulse and step movement, then commit the position and update the additional impulse
-// Leaf: ?Move@CTCPhysicsControlled@@QAEXXZ
+// Leaf: ?Move@CTCPhysicsControlled@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation); local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00725C40, 499 bytes (+ int3 padding), plain `ret`.
 // Callees: CTCPhysicsStandard::PerformForceUpdates 0x008E5670, GetPossibleInteractedWithList 0x008E57D0,
@@ -15,55 +15,29 @@
 //   with the sqrt in the call expression (retail spills the square, sqrt late); the margin is `0.5f` overridden by an
 //   `if` (retail `fld 0.5; je; fstp; fld 4.5`); the owner is a named const local (otherwise every later scratch
 //   register rotates by one).
+// Name-fix (agentNF55, round 7): the local CTCPhysicsControlled model (one struct, every callee a member of it) replaced by the
+//   shared retail headers engine/CTCPhysicsControlled.h : CTCPhysicsStandard : CTCPhysicsBase, so the CTCPhysicsStandard steps bind
+//   their Ego_r.pdb owner (UpdateVelocityForImpassability ?..@CTCPhysicsStandard@@IAEXABVC3DVector@@AAV2@@Z 0x007243C0,
+//   PerformForceUpdates / UpdateIsMoving / PerformStepBasedMovement / GetPossibleInteractedWithList) and Move itself is the
+//   public virtual override ?Move@CTCPhysicsControlled@@UAEXXZ; the vector is std::vector<CThing*>, the owner ParentThing.
 #include <math.h>
 #pragma intrinsic(sqrt)
-extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
-#include "engine/C3DVector.h"
-class C2DBoxI { public: long Left; long Top; long Right; long Bottom; };
-class CThing;
-struct CThingPtrVector {                            // retail STLport vector<CThing*> (12 bytes)
-    CThing** first;
-    CThing** last;
-    CThing** endOfStorage;
-    CThingPtrVector() : first(0), last(0), endOfStorage(0) { }
-    ~CThingPtrVector() { if (first) free(first); }
-};
-class CPhysicsDef;
+#define FABLE_RETAIL_CTCPHYSICSCONTROLLED
+#define FABLE_RETAIL_CTCPHYSICSCONTROLLED_MOVE
+#define FABLE_RETAIL_CTCPHYSICSSTANDARD
+#define FABLE_RETAIL_CTCPHYSICSSTANDARD_IMPULSE
+#define FABLE_RETAIL_CTCPHYSICSSTANDARD_MOVE
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
-#define V4(n) virtual void v##n##a(); virtual void v##n##b(); virtual void v##n##c(); virtual void v##n##d();
-struct CTCPhysicsControlled {
-    V4(0) V4(1) V4(2) V4(3) V4(4) V4(5) V4(6)        // slots 0-27
-    virtual void v28(); virtual void v29();
-    virtual void SetPosition(const C3DVector& pos); // slot 30 (+0x78)
-    virtual void v31();
-    V4(8) V4(9) V4(10) V4(11) V4(12) V4(13) V4(14) V4(15) V4(16) V4(17) V4(18) V4(19) V4(20) V4(21) V4(22) V4(23)   // 32-95
-    virtual void v96();
-    virtual void UpdateOnSurface(CThingPtrVector& things, C3DVector& position);   // slot 97 (+0x184)
-    virtual C2DBoxI GetPossibleCollidedWithArea();  // slot 98 (+0x188)
-    CThing* Owner;                                  // +0x04
-    long _pad08;
-    C3DVector Position;                             // +0x0c
-    C3DVector OldPosition;                          // +0x18
-    long OldPositionLastFrameSet;                   // +0x24
-    C3DVector Velocity;                             // +0x28
-    float Radius;                                   // +0x34
-    CPhysicsDef* PhysicsDef;                        // +0x38
-    unsigned char Moving : 1;                       // +0x3c bit 0
-    unsigned char _pad3d[0x88 - 0x3d];
-    C3DVector ImpulseVelocity;                      // +0x88
-    C3DVector ForcedMoveToPos;                      // +0x94
-    unsigned char ForcedMoveToPosSet : 1;           // +0xa0 bit 0
-    unsigned char ForcedMoveToPosUsePhysics : 1;    // +0xa0 bit 1
-    void PerformForceUpdates();                     // 0x008E5670
-    void GetPossibleInteractedWithList(const C2DBoxI& area, CThingPtrVector& things, float speed);   // 0x008E57D0
-    void UpdateVelocityForImpassability(const C3DVector& position, C3DVector& velocity);       // 0x007243C0
-    void PerformStepBasedMovement(CThingPtrVector& things, C3DVector& position);              // 0x008E5880
-    void UpdateIsMoving();                          // 0x008E5270
-    void AdjustThingListForDebugHelpers(CThingPtrVector& things);                            // 0x007254B0
-    void PerformImpulseBasedMovement(CThingPtrVector& things, C3DVector& position);           // 0x00725500
-    void UpdateAdditionalImpulse();                 // 0x00725B70
-    void Move();
-};
+#include "engine/C3DVector.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CTCPhysicsStandard.h"
+#include "engine/CTCPhysicsControlled.h"
 
 void CTCPhysicsControlled::Move()
 {
@@ -83,10 +57,10 @@ void CTCPhysicsControlled::Move()
     {
         C2DBoxI area = GetPossibleCollidedWithArea();
         float impulseSpeedSquared = ImpulseVelocity.GetSquaredMagnitude();
-        CThingPtrVector things;
+        std::vector<CThing*> things;
         float speed = Velocity.GetMagnitude();
         float margin = 0.5f;
-        const CThing* owner = Owner;
+        const CThing* owner = ParentThing;
         if (owner->HasTC(TCI_BATTLE_CHARGE) || owner->HasTC(TCI_ASSASSIN_RUSH))
             margin = 4.5f;
         GetPossibleInteractedWithList(area, things, (float)sqrt(impulseSpeedSquared) + margin + speed);

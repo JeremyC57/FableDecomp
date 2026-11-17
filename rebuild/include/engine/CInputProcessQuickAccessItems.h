@@ -7,9 +7,21 @@
 // Member names: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv). Virtuals other than the inherited destructor are not modelled.
 #include "rebuild_abi.h"
 #include "engine/CInputProcessGameBase.h"
+#ifdef FABLE_RETAIL_CINPUTPROCESSQUICKACCESSITEMS_UPDATE
+class CProcessedInput;
+#endif
 class CInputProcessQuickAccessItems : public CInputProcessGameBase {
 public:
     CInputProcessQuickAccessItems(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_CINPUTPROCESSQUICKACCESSITEMS_UPDATE
+    // NF55 opt-in (2026-11-17, row 0x0068E450): Ego_r.pdb / FableWin.pdb ?Update@CInputProcessQuickAccessItems@@UAEXAAVCProcessedInput@@@Z
+    // (0x0068E450) and the private ?CancelQuickAccessCharge@CInputProcessQuickAccessItems@@AAEXXZ (0x0068E3C0). Declarations only: the
+    // vtable already exists in retail; no layout change.
+    virtual void Update(CProcessedInput& processed);                     // 0x0068E450
+private:
+    void CancelQuickAccessCharge();                                      // 0x0068E3C0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CInputProcessQuickAccessItems) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSQUICKACCESSITEMS_H

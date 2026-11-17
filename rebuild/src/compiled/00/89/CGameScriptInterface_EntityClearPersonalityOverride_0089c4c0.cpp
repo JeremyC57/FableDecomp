@@ -1,37 +1,30 @@
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-class CWorld { public: int key; void* obj; };
+// CGameScriptInterface::EntityClearPersonalityOverride(const CScriptThing& thing) const -- script command: the creature's opinion of the hero drops its personality override
+// Leaf: ?EntityClearPersonalityOverride@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0089C4C0, 70 bytes.
+// Identity: Ego_r.pdb 0x008DAB90 + FableWin.pdb 0x02A90220 ?EntityClearPersonalityOverride@CGameScriptInterface@@UBEXABVCScriptThing@@@Z,
+//   slot 620 of engine/CGameScriptInterface.h (vtable 0x01260F0C).
+// Callees: CScriptThing::GetPThing (vtable slot 11), the inlined CThing::GetTC (presence bit 0x4F = TCI_CREATURE_OPINION_OF_HERO at
+//   +0x28 bit 15, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020), then CTCCreatureOpinionOfHero::ClearPersonalityOverride
+//   @ 0x00682310 (tail jump; Ego_r.pdb ?ClearPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXXZ).
+// Name fix (agentNF55, 2026-11-17): re-authored on the shared headers (the EntitySetOpinionAttitudeEnabled 0x0089C380 form). It was the
+//   free stand-in CGameScriptInterface_EntityClearPersonalityOverride(IGSI*) over Ent / KeyPtr overlays, calling a made-up
+//   EntVec_LowerBound and Obj_Release.
+#include "engine/CTCBase.h"
+#include "engine/CCountedPointer.h"
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_FLAT_CLEARPERSONALITY
+#include "engine/CScriptThing.h"
+#include "engine/CTCCreatureOpinionOfHero.h"
+#include "engine/CGameScriptInterface.h"
 
-
-struct Ent {
-    char pad[0x28];
-    int field28;      // +0x28
-    char pad2[0x18];
-    CGameScriptInterface vec;       // +0x44
-};
-
-struct IGSI {
-    Ent* (**vt)();
-};
-
-struct KeyPtr { int* p; };
-
-extern CWorld* __fastcall EntVec_LowerBound(CGameScriptInterface* self, KeyPtr key);
-extern void __fastcall Obj_Release(void* self);
-
-void __stdcall CGameScriptInterface_EntityClearPersonalityOverride(IGSI* self)
+void CGameScriptInterface::EntityClearPersonalityOverride(const CScriptThing& thing) const
 {
-    Ent* e = ((Ent* (__fastcall*)(IGSI*))self->vt[0x2c/4])(self);
-    if (!e) return;
-    if (!(e->field28 & 0x8000)) return;
-    int local = 0x4f;
-    KeyPtr k; k.p = &local;
-    CGameScriptInterface* v = &e->vec;
-    CWorld* r = EntVec_LowerBound(v, k);
-    CWorld* end = v->World;
-    if (r != end && r->key <= 0x4f) {
-        // keep r
-    } else {
-        r = end;
+    CThing* p = thing.GetPThing();
+    if (p) {
+        CTCCreatureOpinionOfHero* component;
+        if (p->GetTC(TCI_CREATURE_OPINION_OF_HERO, &component))
+            component->ClearPersonalityOverride();
     }
-    Obj_Release(r->obj);
 }

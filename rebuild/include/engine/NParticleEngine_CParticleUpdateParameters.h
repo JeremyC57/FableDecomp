@@ -34,6 +34,11 @@ public:
     // Per-TU opt-in (row 0x008548B0 CCreatureAction_SpiritAttack::CreateAttackEffect): that TU calls the constructor COMDAT
     // ??0?$CParticleUpdateParameters@KK@NParticleEngine@@QAE@XZ 0x006E24D0 (`lea ecx,[params] ; call 0x006E24D0`, 0x00854AD5).
     CParticleUpdateParameters();                             // 0x006E24D0
+#elif defined(FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_CTOR_FORCEINLINE)
+    // NF55 opt-in (2026-11-17, row 0x007C25A0 CTCShotDefinitionBase::InitAttachedEffects): the same inline body, forced inline: that large
+    // TU expands it (CBaseClass ctor 0x0099A2D0, vtable 0x0125FFDC, the two maps' words and Dirty bytes zeroed in place), where VC7.1 calls
+    // a plain-inline copy.
+    FABLE_FORCEINLINE CParticleUpdateParameters() { }
 #else
     CParticleUpdateParameters() { }
 #endif

@@ -1,0 +1,40 @@
+source	entry	address	correct_symbol	status	binders_respelled	rows	note
+nf41	e144	005f7f4c	?LowerBound@?$CVectorMap@JW4EHeroAbility@@V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@@QAEPAU?$pair@JW4EHeroAbility@@@std@@ABJ@Z	done	2	0x005EED4C 0x005F6423	ported 2, not-a-binder 0
+nf41	e221	00616580	std::_Rb_tree<long,...>::find -- BINDING CONFLICT with 00b2eb20	rejected	0	0x006D1250 0x0075D8B0	ported 0, not-a-binder 0; left: 0x006D1250 blocked/identity, 0x0075D8B0 blocked/identity; no symbol claimed (BINDING CONFLICT); binders blocked/identity, REJECTED.tsv
+nf41	e195	00616580	std::_Rb_tree<long,...>::find -- BINDING CONFLICT with 00b2eb20	rejected	0	0x0075D8B0	ported 0, not-a-binder 0; left: 0x0075D8B0 blocked/identity; same target and binder as e221; REJECTED.tsv
+nf41	e208	00625930	?IsActive@CTCQuickAccessMenu@@QBE_NXZ	done	2	0x00583BD5 0x0068FF50	ported 2, not-a-binder 0
+nf41	e169	006286f0	?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z	done	2	0x0041E6D3 0x0088F890	ported 2, not-a-binder 0
+nf41	e93	00658e38	?GetNearestBuildingWithProperty@CTCVillage@@QAEPAVCThingBuilding@@ABVC3DVector@@W4ESimBuildingProperty@@@Z	blocked	1	0x0090FAE0 0x0094B8B0 0x0096D260	ported 1, not-a-binder 0; left: 0x0090FAE0 blocked/port, 0x0094B8B0 blocked/port
+nf41	e53	0065f17b	?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	blocked	0	0x006D53C0	ported 0, not-a-binder 0; left: 0x006D53C0 blocked/port
+nf41	e94	0065f8ca	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingBuilding@@@@@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@@Z	done	2	0x0065C36E 0x00730070	ported 2, not-a-binder 0
+nf41	e106	006622a0	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ	blocked	0	0x009627C0 0x00713510 0x00961880	ported 0, not-a-binder 0; left: 0x009627C0 blocked/port, 0x00713510 blocked/port, 0x00961880 blocked/port
+nf41	e52	006655a0	?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ	done	1	0x00692BC0	ported 1, not-a-binder 0
+nf41	e3	00668610	?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z	done	1	0x0069F0F0	ported 1, not-a-binder 0
+nf41	e81	006691c0	?ClearAttackedByCreature@CThingCreatureBase@@QAEXXZ	blocked	1	0x006624A0 0x006666A0	ported 1, not-a-binder 0; left: 0x006666A0 blocked/port
+nf41	e70	00682310	?ClearPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXXZ	done	1	0x0089C4C0	ported 1, not-a-binder 0
+nf41	e30	00687cf0	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z	blocked	3	0x00691AE0 0x00687FD0 0x006894C0 0x0068B7C0	ported 3, not-a-binder 0; left: 0x00691AE0 blocked/port
+nf41	e11	00687cf0	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z	blocked	3	0x00691AE0 0x00687FD0 0x006894C0 0x0068B7C0	ported 3, not-a-binder 0; left: 0x00691AE0 blocked/port
+nf41	e46	00687d80	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@AAM@Z	done	1	0x0068E450	ported 1, not-a-binder 0
+nf41	e131	0069ac90	?SetCameraManagerSetDef@CGameCameraManager@@QAEXABV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z	blocked	0	0x0069AD10	ported 0, not-a-binder 0; left: 0x0069AD10 blocked/port
+nf41	e47	006a0150	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z	blocked	1	0x006666A0 0x00694430 0x006DF800	ported 1, not-a-binder 0; left: 0x006666A0 blocked/port, 0x00694430 blocked/port
+nf41	e62	006a7390	??RCThingFilter_IsInFOV@@QBE_NABVCThing@@@Z	done	1	0x008090E0	ported 1, not-a-binder 0
+nf44	56	0x006BAED0	??$Transfer@VCFaction@@@CPersistContext@@QAEXPBDAAVCFaction@@@Z	done	1	0x006B9560	ported 1, not-a-binder 0
+nf41	e105	006bb390	?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z	done	7	0x0088FE40 0x00918880 0x0092C4E0 0x0092C560 0x0092D600 0x00946690 0x0097FA00	ported 7, not-a-binder 0; this half: all seven binders ported (0x0088FE40 re-authored as the CGameScriptInterface member); NF54 ported the first-half binder 0x00957F20
+nf44	57	0x006C9C60	??$Transfer@V?$CIntelligentPointer@VCThing@@@@@CPersistContext@@QAEXPBDAAV?$CIntelligentPointer@VCThing@@@@@Z	blocked	0	0x006C7370	ported 0, not-a-binder 0; left: 0x006C7370 blocked/port
+nf41	e51	006cb6a0	?GetNavigatorType@CTCCreatureNavigation@@QBEKXZ	done	1	0x00913F30	ported 1, not-a-binder 0; the last of the three wrong binders (0x00913F30) ported here; the other two (0x00912700, 0x009143E0) were ported earlier (round-6 note)
+nf41	e149	006e24d0	??0?$CParticleUpdateParameters@KK@NParticleEngine@@QAE@XZ	done	2	0x007BE3E0 0x007BE4E0	ported 2, not-a-binder 0
+nf41	e79	006e3b30	?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@ABVCCharString@@_NW4EDialogueLayer@NSpeechGainManager@@11@Z	done	2	0x00922750 0x0095ED80	ported 2, not-a-binder 0
+nf44	95	0x00701750	?GetThingOpinionOfPlayer@COpinionReactionManager@@QBEMABVCThing@@W4EOpinion@@@Z	blocked	0	0x008909F0	ported 0, not-a-binder 0; left: 0x008909F0 blocked/port
+nf41	e49	0070c0e0	?IsMainAnimFinished@CAnimateThing@@QBE_NXZ	rejected	0	0x00661720	ported 0, not-a-binder 1; claim rejected (REJECTED.tsv); the binder 0x00661720 is not-a-binder of the claimed spelling
+nf41	e42	007243c0	?UpdateVelocityForImpassability@CTCPhysicsStandard@@IAEXABVC3DVector@@AAV2@@Z	done	1	0x00725C40	ported 1, not-a-binder 0
+nf41	e108	0072ac40	?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z	done	3	0x007BD7CA 0x007C6DA0 0x007C75E0	ported 3, not-a-binder 0
+nf41	e104	00733210	?ResetComboChainPos@CTCCombat@@QAEXXZ	done	1	0x00857B70	ported 1, not-a-binder 0
+nf41	e65	007445d0	?GetFOV@CTCPerceiveThing@@QBEMXZ	done	2	0x00665190 0x00665260	ported 2, not-a-binder 0
+nf44	9	0074fb20	?erase@?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAEPAU?$pair@JVCCharString@@@2@PAU32@0@Z	done	2	0x0074E6E0 0x008ED170	ported 2, not-a-binder 0
+nf41	e4	0076b120	?push_back@?$CArray@U?$pair@KVC3DVector@@@std@@@@QAEXABU?$pair@KVC3DVector@@@std@@@Z	done	6	0x007BE3E0 0x007BE4E0 0x007C2480 0x007C25A0 0x008F7E70 0x008F7F50	ported 6, not-a-binder 0
+nf41	e99	00798d90	?AddNewCustomer@CTCShopKeeper@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	blocked	0	0x00799900	ported 0, not-a-binder 0; left: 0x00799900 blocked/port; binder 0x00799900 blocked/port (STATUS: by-value ctor load order)
+nf44	10	007aed10	?GetBossPhase@CTCBoss@@QBEJXZ	blocked	2	0x009547D0 0x00954E30 0x0096C4F0	ported 2, not-a-binder 0; left: 0x0096C4F0 blocked/port; binder 0x0096C4F0 blocked/port (local models collide with engine/CTCBoss.h); 0x009547D0 / 0x00954E30 ported, self row 0x007AED10 re-authored
+nf41	e132	007aed50	?ResetStrikesSinceHitHero@CTCBoss@@QAEXXZ	blocked	0	0x0096C4F0	ported 0, not-a-binder 0; left: 0x0096C4F0 blocked/port; binder 0x0096C4F0 blocked/port
+nf41	e31	007e8590	?SetPOwner@CTCOwnedEntity@@QAEXPAVCThing@@@Z	blocked	1	0x0072DD60 0x0072E130	ported 1, not-a-binder 0; left: 0x0072E130 blocked/port; binder 0x0072E130 blocked/port (full local-model TU); 0x0072DD60 ported
+nf41	e152	007f4500	??$GetAllThingsInRoughArea@VCThingObject@@V?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@VCThingFilter_IsElectrocutable@?A0xae168d2d@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@VCThingFilter_IsElectrocutable@?A0xae168d2d@@@@AAV?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@@Z	done	0	0x007F2DC0	ported 0, not-a-binder 1; binder 0x007F2DC0 not-a-binder: already binds the claimed instance modulo the per-TU ?A0x hash (unchangeable from source)
+nf44	126	0x007FD110	??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z	done	3	0x007FBC90 0x008C2240 0x0095B020	ported 3, not-a-binder 0

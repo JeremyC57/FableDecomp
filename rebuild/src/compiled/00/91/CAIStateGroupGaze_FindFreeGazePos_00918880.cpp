@@ -11,13 +11,16 @@
 // Model: local (engine/CAIStateGroup_Gaze.h flattens the base; member names from it).
 class CThingGameObject;
 
-struct CGameTime {
-    bool IsTimeOfDayInRange(long start, long end);          // 0x006BB390
-};
+// NF55 (2026-11-17): the world clock (+0x1c) is the shared engine/CGameTimeManager.h (FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN:
+//   Ego_r.pdb 0x006F6B80 + FableWin.pdb 0x024607E0 ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z, 0x006BB390), as NF54's 0x00957F20; it was a
+//   local stand-in with the made-up IsTimeOfDayInRange.
+#define FABLE_RETAIL_CGAMETIMEMANAGER
+#define FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN
+#include "engine/CGameTimeManager.h"
 
 class CWorld { public:
     unsigned char _pad[0x1c];
-    CGameTime* GameTime;                                    // +0x1c
+    CGameTimeManager* GameTime;                                    // +0x1c
 };
 
 class CThingAICreature { public:
@@ -62,10 +65,10 @@ CThingGameObject* CAIStateGroup_Gaze::FindFreeGazePos()
 {
     bool inSleepTime = false;
     if (IsStateGroupStillValid()) {
-        CGameTime* gameTime = GetWorld().GameTime;
+        CGameTimeManager* gameTime = GetWorld().GameTime;
         long start, end;
         PBrain->Creature->GetSleepTimes(start, end);
-        inSleepTime = gameTime->IsTimeOfDayInRange(start, end);
+        inSleepTime = gameTime->IsTimeBetween(start, end);
     }
     CThingGameObject* marker = FindFreeParticularGazePos(PrimaryMarkerDef, inSleepTime);
     if (marker == 0 && PrimaryMarkerDef != SecondaryMarkerDef)

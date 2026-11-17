@@ -139,6 +139,12 @@ class CThingCreatureBase;
 #pragma pack(push, 1)
 class CTCCombat {
 public:
+#ifdef FABLE_RETAIL_CTCCOMBAT_FLAT_RESETCOMBO
+    // Flat-branch opt-in (agentNF55, row 0x00857B70 CCombatActionBase::ProcessPlayerControl): the retail branch's RESETCOMBO
+    // method on the flattened layout. Ego_r.pdb / FableWin.pdb ?ResetComboChainPos@CTCCombat@@QAEXXZ (0x00733210, landed under
+    // that name). Declaration only (non-virtual; no layout change).
+    void ResetComboChainPos();                               // 0x00733210
+#endif
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     long                obj;                                 // +0x04 retail-only long (previous header)
     unsigned char       _pad_0x08[0x4];                      // +0x08
