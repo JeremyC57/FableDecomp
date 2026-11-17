@@ -1,0 +1,77 @@
+addr       parity           behav  name
+004e7720   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@Z -> 004e6e0c labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+004e7720   RELOCATION_MATCH PASS   RbTree_Clear_004e7720
+004f914a   RELOCATION_MATCH PASS   operator=
+004f97b3   WARN STANDIN_LEAF ??0?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QAE@ABV01@@Z (catalog NPairLongMapTree::_Rb_tree::_Rb_tree; names another function)
+004f97b3   RELOCATION_MATCH PASS   _Rb_tree
+00597b20   WARN SHARED_HEADER_AVAILABLE CObserver
+00597b20   WARN SHARED_HEADER_AVAILABLE CManager
+00597b20   WARN RELOC_NAME: ??G?$_Deque_iterator@PAVCComponent@NUISystem@@@std@@QBEHABU01@@Z -> 0059a8f3 labelled 'NThingMap::CThingMapManager::GetMemoryFootprint'
+00597b20   WARN RELOC_NAME: ?back@?$deque@PAVCComponent@NUISystem@@@std@@QAEAAPAVCComponent@NUISystem@@XZ -> 0059b039 labelled 'CScreenStack::Top'
+00597b20   WARN RELOC_NAME: ?push_back@?$deque@PAVCComponent@NUISystem@@@std@@QAEXABQAVCComponent@NUISystem@@@Z -> 0059b61c labelled 'CCreatureAction_FireMissileWeapon::FrameUpdate'
+00597b20   RELOCATION_MATCH PASS   GotoProfileMenu
+00599d5c   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00599d5c   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+00599d5c   WARN SHARED_HEADER_AVAILABLE CGameJoystickManager
+00599d5c   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent
+00599d5c   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00599d5c   RELOCATION_MATCH PASS   DoPressStart
+0059a238   WARN SHARED_HEADER_AVAILABLE CFileInstaller
+0059a238   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0059a238   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+0059a238   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent
+0059a238   WARN SHARED_HEADER_AVAILABLE CVirtualKeyboard
+0059a238   WARN RELOC_NAME: ?Compare_Unsigned16Array@CWideString@@SA_NPBX0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0059a238   WARN RELOC_NAME: ?RestartAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ -> 0042dbee labelled 'CNewFrontendGameComponent::ResetAttractModeTimer'
+0059a238   RELOCATION_MATCH PASS   Action
+0063a970   RELOCATION_MATCH PASS   SetThemeAtBlock
+006dcfa0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@Z -> 004e6e0c labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dcfa0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@Z -> 00450903 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dcfa0   RELOCATION_MATCH PASS   GFSerialiseMapBinaryIn
+007adbf0   RELOCATION_MATCH PASS   GFSerialiseMapBinaryIn
+007c0fb0   WARN STANDIN_LEAF ?AddThingToAvoid@CTCShotDefinitionBase@NThingShot@@QAEXABVCThing@@@Z (catalog CTCShotDefinitionBase::AddHitThing; names another function)
+007c0fb0   RELOCATION_MATCH PASS   AddHitThing
+00812170   WARN STANDIN_LEAF ??0CHitParameters@@QAE@ABV0@@Z (catalog CHitParameters; names another function)
+00812170   RELOCATION_MATCH PASS   CHitParameters
+008c1600   RELOCATION_MATCH PASS   GetValidRushPosition
+009ec5e0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCConsoleInputBase@@@@SIXPAX@Z -> 009edc50 labelled '_global::DeleteViaVtable0_009edc50'
+009ec5e0   RELOCATION_MATCH PASS   AddInput
+009f53c0   WARN SHARED_HEADER_AVAILABLE CAFile
+009f53c0   WARN SHARED_HEADER_AVAILABLE C2DVector
+009f53c0   WARN SHARED_HEADER_AVAILABLE CChecksum
+009f53c0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+009f53c0   WARN SHARED_HEADER_AVAILABLE CMouse
+009f53c0   WARN SHARED_HEADER_AVAILABLE CJoystick
+009f53c0   WARN SHARED_HEADER_AVAILABLE CInputEventPackage
+009f53c0   WARN SHARED_HEADER_AVAILABLE CInputManager
+009f53c0   RELOCATION_MATCH PASS   SaveEventPackage
+00add020   RELOCATION_MATCH PASS   operator=
+00d8f6d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d8f6d0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d8f6d0   WARN SHARED_HEADER_AVAILABLE CQ_HobbeCaveScript
+00d8f6d0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d8f6d0   RELOCATION_MATCH PASS   Main
+00e5f2b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e5f2b0   WARN SHARED_HEADER_AVAILABLE CV_BodyGuardScript
+00e5f2b0   WARN SHARED_HEADER_AVAILABLE CCounter
+00e5f2b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e5f2b0   RELOCATION_MATCH PASS   Main
+
+WINS: 17
+  004e7720 RELOCATION_MATCH _global::?clear@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@QAEXXZ
+  004f914a RELOCATION_MATCH CHeroExperienceDef::??4CHeroExperienceDef
+  004f97b3 RELOCATION_MATCH _Rb_tree::??0?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QAE@ABV01@@Z
+  00597b20 RELOCATION_MATCH NUISystem::CFrontEndManager::?GotoProfileMenu@CFrontEndManager@NUISystem@@IAEXXZ
+  00599d5c RELOCATION_MATCH CFrontEndManager::?DoPressStart@CFrontEndManager@NUISystem@@IAEXXZ
+  0059a238 RELOCATION_MATCH CFrontEndManager::?Action@CFrontEndManager@NUISystem
+  0063a970 RELOCATION_MATCH CWorldMap::SetThemeAtBlock
+  006dcfa0 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@VCComboMultiplierData@@JU?$less@J@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@JVCComboMultiplierData@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@3@@std@@@Z
+  007adbf0 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@_NVCCharString@@U?$less@VCCharString@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@@Z
+  007c0fb0 RELOCATION_MATCH CTCShotDefinitionBase::?AddThingToAvoid@CTCShotDefinitionBase@NThingShot@@QAEXABVCThing@@@Z
+  00812170 RELOCATION_MATCH CHitParameters::??0CHitParameters@@QAE@ABV0@@Z
+  008c1600 RELOCATION_MATCH CCombatAction_StrikeResponseJackOfBladesIntoRush::?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush@@IAE_NAAVC3DVector@@@Z
+  009ec5e0 RELOCATION_MATCH CConsole::?AddInput@CConsole@@QAEXPAVCConsoleInputBase@@@Z
+  009f53c0 RELOCATION_MATCH CInputManager::SaveEventPackage
+  00add020 RELOCATION_MATCH std::list<CVertexGroupBlock>::??4?$list@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00d8f6d0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeLarder::?Main@CHobbeLarder@@
+  00e5f2b0 RELOCATION_MATCH NScript::CV_BodyGuardScript::CHenchmanComment::?Main@CHenchmanComment@CV_BodyGuardScript@NScript@@EAEXXZ

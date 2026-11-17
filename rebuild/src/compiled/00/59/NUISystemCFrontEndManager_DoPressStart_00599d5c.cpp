@@ -14,7 +14,7 @@
 // entry) and the result in a frame byte ([ebp-1]); the screen key temporary reuses the dead string slot.
 // Layout: m_mapScreens +0x54 as the landed CFrontEndManager rows; CUserProfileManager UseNewProfileValues +0x0C
 // (Ego_r.pdb); CNewFrontendGameComponent LastActiveJoystickDeviceNumber at retail +0x140 (Ego_r.pdb +0x148).
-// Leaf: ?DoPressStart@CFrontEndManager@NUISystem
+// Leaf: ?DoPressStart@CFrontEndManager@NUISystem@@IAEXXZ
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
@@ -110,6 +110,9 @@ public:
     bool VerifySignatureCached(const CWideString& filename);   // 0x005957D9
     void LoadProfile(const CWideString& name);            // 0x0059899A
     void GotoNextScreen(CComponent* screen, bool clearStack);  // 0x00596763
+protected:
+    // NF78 (round 7, q10954): both protected in Ego_r.pdb / FableWin.pdb (?GotoProfileMenu@CFrontEndManager@NUISystem@@IAEXXZ,
+    //   ?DoPressStart@CFrontEndManager@NUISystem@@IAEXXZ); were modelled public (QAE).
     void GotoProfileMenu();                               // 0x00597B20
     void DoPressStart();
 };

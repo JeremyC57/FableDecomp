@@ -7875,7 +7875,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e769f	~CTCLightningNode	CTCLightningNode	__thiscall	void	1	CTCLightningNode *	1	yes	accepted									
 004e76df	CopyBackBufferToTexture	CDisplayManager	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_CopyBackBufferToTexture_004e76df.cpp
 004e76fd	StdList_Dtor_004e76fd	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CActiveFile_OnReadFinished_004e76fd.cpp
-004e7720	RbTree_Clear_004e7720	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CTCCarryable_OnKill_004e7720.cpp
+004e7720	clear	std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CTCCarryable_OnKill_004e7720.cpp
 004e7749	RbTree_Clear_004e7749	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CTCCarryable_OnKill_004e7749.cpp
 004e7772	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\LTextTreeWalkThrough_BuildTreeArray_004e7772.cpp
 004e77b6	ConstructString	NGameText	__fastcall	bool	2	CWideString *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_ConstructString_004e77b6.cpp
@@ -8176,7 +8176,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004f96d3	_M_copy	std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >	unknown	undefined	0		0	yes	accepted									
 004f9763	_M_create_node	std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >	__fastcall	CScriptDataBase *	0		1	yes	accepted									
 004f9784	pair	std::pair<long const, CComboMultiplierData>	__thiscall	undefined	2	CUIMiniMapMarker *,CUIMiniMapMarker *	0	yes	accepted									
-004f97b3	_Rb_tree	NPairLongMapTree::_Rb_tree	unknown	undefined	0		0	yes	accepted									
+004f97b3	map	map<EDamageAttribute,float>	unknown	undefined	0		0	yes	accepted									
 004f9831	operator=	CRetailTree_004f98a4	unknown	undefined	0		0	yes	accepted									
 004f98a4	Copy	CRetailTree_004f9934	unknown	undefined	0		0	yes	accepted									
 004f9934	_M_create_node	std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>	unknown	undefined	0		0	yes	accepted									
@@ -22422,7 +22422,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007c0690	Init	NThingShot::CTCShotDefinitionBase	__thiscall	void	9	CTCShotDefinitionBase *,CDefPointer<CThingShotDef_const_>,CThing *,CThing *,CThing *,float,float,float,CDefPointer<CMeleeCombatAbilityDef_const_> *	1	yes	accepted									
 007c0ad0	CreateShot	NThingShot	__fastcall	CThing *	10	long,CThing *,CThing *,CThing *,float,float,float,CDefPointer<CMeleeCombatAbilityDef_const_> *,C3DVector *,CRightHandedSet *	1	yes	accepted									
 007c0e80	CreateShot	NThingShot	__fastcall	CThing *	9	CThing *,CThing *,CThing *,CThing *,float,float,float,CDefPointer<CMeleeCombatAbilityDef_const_> *,long	1	yes	accepted									
-007c0fb0	AddHitThing	CTCShotDefinitionBase	__thiscall	void	2	CCreatureActionBase *,CThing *	1	yes	accepted									
+007c0fb0	AddThingToAvoid	NThingShot::CTCShotDefinitionBase	__thiscall	void	2	CCreatureActionBase *,CThing *	1	yes	accepted									
 007c1000	OnCollisionProper	CTCShotDefinitionBase	__thiscall	void	2	CTCShotDefinitionBase *,bool *	1	yes	accepted									
 007c21a0	Update	NThingShot::CTCShotDefinitionBase	__thiscall	void	1	CTCShotDefinitionBase *	1	yes	accepted									
 007c22f0	OnHitByMelee	CTCShotDefinitionBase	__thiscall	void	7	CTCShotDefinitionBase *,CThing *,CThing *,C3DVector *,C3DVector *,bool,bool	1	yes	accepted									
@@ -24032,7 +24032,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00812110	ScalarDeletingDtor_00812110	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\CLandscapeBackgroundPatch_vectordeletingdestructor_00812110.cpp
 00812130	`scalar_deleting_destructor'	NEntityEvents::CEventShownItem	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\CLandscapeBackgroundPatch_vectordeletingdestructor_00812130.cpp
 00812150	DeleteObject_00812150	_global	__thiscall	void	1	CTCMapwho *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\CTCMapwho_OnDie_00812150.cpp
-00812170	CHitParameters	_global	__thiscall	undefined	2	CHitParameters *,CHitParameters *	0	yes	accepted									
+00812170	CHitParameters	CHitParameters	__thiscall	undefined	2	CHitParameters *,CHitParameters *	0	yes	accepted									
 00812280	Reset	CCountedPointer_00812150	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 00812300	GetType	NEntityEvents::CEventHitBySpecialAbility	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00812310	IsFlourish	NEntityEvents::CEventHitBySpecialAbility	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

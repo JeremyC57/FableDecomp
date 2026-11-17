@@ -1573,6 +1573,12 @@ public:
     void pop_back() { iterator tmp=end(); erase(--tmp); }
 #endif
 #endif
+#ifdef FABLE_RETAIL_STLP_LIST_ASSIGN_BODY
+    // NF78 opt-in (round 7, row 0x00ADD020 list<CVertexGroupBlock>::operator=): STLport 4.6 _list.c operator=(const list&) (body after
+    // the class) and _list.h erase(first, last), declared only: retail calls that instance's erase COMDAT (0x00ADC4E0) from it.
+    iterator erase(iterator first,iterator last);
+    list& operator=(const list& x);
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_ASSIGN_POPBACK_DECL
     // Per-TU opt-in (wf20, row 0x00AD9F10 CVertexGroupBlockOptimiser::AddBlocks): STLport 4.6 _list.c operator=(const list&) and
     // _list.h pop_back(), called out of line by that row (list<CVertexGroupBlock> 0x00ADD020 / 0x00ADC790). Declarations only.
@@ -1624,6 +1630,26 @@ public:
     }
 #endif
 };
+#ifdef FABLE_RETAIL_STLP_LIST_ASSIGN_BODY
+// NF78 opt-in: STLport 4.6 _list.c operator=: assign over the existing elements pairwise, then erase the surplus or insert copies of
+// the rest (range insert = _M_insert_dispatch).
+template<class _Tp,class _Alloc>
+list<_Tp,_Alloc>& list<_Tp,_Alloc>::operator=(const list<_Tp,_Alloc>& x) {
+    if(this!=&x) {
+        iterator first1=begin();
+        iterator last1=end();
+        const_iterator first2=x.begin();
+        const_iterator last2=x.end();
+        while(first1!=last1 && first2!=last2)
+            *first1++=*first2++;
+        if(first2==last2)
+            erase(first1,last1);
+        else
+            insert(last1,first2,last2);
+    }
+    return *this;
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_SORT
 // Per-TU opt-in (wf9, row 0x006F3A30): STLport 4.6 _list.c _S_merge (body visible; retail calls the instance out of line, 0x006F04C0)
 // and _S_sort, free templates (__fastcall in the /Gr STL TUs: the list(s) in ecx/edx, the comparator by value on the stack).

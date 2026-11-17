@@ -290,6 +290,34 @@ private:
 private:
     _Link_type _M_copy(_Link_type x,_Link_type p);
 #endif
+#ifdef FABLE_RETAIL_STLP_TREE_COPY_CTOR_BODY
+    // NF78 opt-in (round 7, row 0x004F97B3 map<EDamageAttribute,float>::map(const map&)): STLport 4.6.2 _tree.h copy constructor (the
+    // header node allocated by the base, then an empty tree or the source root _M_copy'd under the header with leftmost / rightmost
+    // re-derived, then the count). Inline; the map copy constructor (FABLE_RETAIL_STLP_MAP_COPY_CTOR_BODY) expands it and calls the
+    // instance's _M_copy COMDAT (0x00461533 for that tree). The base takes no allocator state (fable_map.h's allocator is empty).
+    // Inline-budget (EXTRA_RULES 2026-11-08, preference 3): forced -- VC7.1 /Os calls it out of line at every budget (row 0x004F97B3
+    // grades: default, /d2inlS22, /d2inlS60 all 18 v 126 bytes).
+public:
+    FABLE_FORCEINLINE _Rb_tree(const _Rb_tree& x):_Rb_tree_base<V,A>(A()),_M_node_count(0),_M_key_compare(x._M_key_compare) {
+        if(x._M_root()==0)
+            _M_empty_initialize();
+        else {
+            this->_M_header._M_data->_M_color=false;
+            _M_root()=_M_copy(x._M_root(),this->_M_header._M_data);
+            _Rb_tree_node_base* n=_M_root();
+            while(n->_M_left!=0) n=n->_M_left;
+            _M_leftmost()=static_cast<_Link_type>(n);
+            n=_M_root();
+            while(n->_M_right!=0) n=n->_M_right;
+            _M_rightmost()=static_cast<_Link_type>(n);
+        }
+        _M_node_count=x._M_node_count;
+    }
+#if !defined(FABLE_RETAIL_STLP_TREE_MCOPY_BODY) && !defined(FABLE_RETAIL_STLP_TREE_ASSIGN_BODY)
+private:
+    _Link_type _M_copy(_Link_type x,_Link_type p);
+#endif
+#endif
 protected:
     _Link_type& _M_root()const { return (_Link_type&)this->_M_header._M_data->_M_parent; }
     static _Link_type& __fastcall _S_left(_Link_type x){return (_Link_type&)x->_M_left;}
@@ -790,6 +818,11 @@ public:
     // STLport's map copy constructor is one inline body, which VC7.1 called as a COMDAT in that TU: map<unsigned long, long>::map(const
     // map&) 0x00A96E40 (landed; call at 0x00AD97FB with ecx = &finish->GroupToIndexMap). Declaration only here.
     map(const map& x);
+#endif
+#ifdef FABLE_RETAIL_STLP_MAP_COPY_CTOR_BODY
+    // NF78 opt-in (round 7, row 0x004F97B3): STLport 4.6.2 _map.h `map(const _Self& __x) : _M_t(__x._M_t) {}` (needs
+    // FABLE_RETAIL_STLP_TREE_COPY_CTOR_BODY); the map<EDamageAttribute,float> COMDAT 0x004F97B3 that the landed 0x006DCB20 and 0x004F9784 call.
+    map(const map& x):_M_t(x._M_t){}
 #endif
 #ifdef FABLE_RETAIL_STLP_MAP
     // Retail branch (pass 12 header wave, 0x00E0A820): STLport 4.6 _map.h declares the no-argument constructor separately

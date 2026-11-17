@@ -1,27 +1,66 @@
-// CHitParameters::CHitParameters(const CHitParameters&) -- actual copy constructor, PDB00807C70
-// Leaf: CHitParameters
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-#include "engine/CBaseObject.h"
-#include "engine/CIVCountedPointeeBase.h"
-#include "engine/_quarantine/CMaterialDef.h"
-// No CHitParameters/C3DVector/intelligent-pointer class headers exist. Native map/vector sizes12 vs donor16 shift the tail by8.
-#pragma pack(push,1)
-#include "engine/C3DVector.h"
-#pragma pack(pop)
-struct DamageMap {DamageMap();DamageMap(const DamageMap&);~DamageMap();void*Head;unsigned long Size;unsigned long Allocator;}; //004F97B3 copies native tree,12 bytes
-struct AugmentationVector {AugmentationVector();AugmentationVector(const AugmentationVector&);~AugmentationVector();long*First,*Last,*End;}; //00811D40, enum vector copy12 bytes
-struct CHitLocation;
+// CHitParameters::CHitParameters(const CHitParameters&) -- the memberwise copy constructor (Ego_r.pdb 0x00807C70)
+// Leaf: ??0CHitParameters@@QAE@ABV0@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00812170, 266 bytes; caller NEntityEvents::CEventHitBase::CEventHitBase 0x00811760 (call 0x00811797).
+// Port (NF78, round 7; q10948 binder): the class from engine/CHitParameters.h (VECTOR_MEMBERS: packed C3DVector Position +2 / Direction
+//   +0x0E; DAMAGEMAP: std::map<EDamageAttribute,float> +0x30; AUGMENTATIONS: std::vector<EObjectAugmentationType> +0x3C) with the NF78
+//   overlay opt-in FABLE_RETAIL_CHITPARAMETERS_COPY_CTOR (the declaration); the local CHitParameters / DamageMap / AugmentationVector /
+//   ThingPointer / MaterialPointer stand-ins are gone.
+// Callees: map<EDamageAttribute,float>::map(const map&) 0x004F97B3 (STLport COMDAT, FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE),
+//   vector<EObjectAugmentationType>::vector(const vector&) 0x00811D40 (out of line, FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE),
+//   CBaseIntelligentPointer() 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (CIntelligentPointer<CThing> copy, inline;
+//   vtable 0x01238C6C). CDefPointer<const CMaterialDef> copy inline (refcount +4 when non-null).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+#define FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS
+#define FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
+#define FABLE_RETAIL_CHITPARAMETERS_AUGMENTATIONS
+#define FABLE_RETAIL_CHITPARAMETERS_COPY_CTOR
+#include "fable_compiler.h"
+#include <stddef.h>
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CMaterialDef.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
 #include "engine/CIntelligentPointer.h"
-struct ThingPointer:CBaseIntelligentPointer {ThingPointer();ThingPointer(const ThingPointer&o):CBaseIntelligentPointer(){SetPItem(o.GetPItem());}virtual ~ThingPointer(){}}; // native1238C6C sole slot deleting dtor004A9710 -> A01C10
-// CDefPointer<CMaterialDef const> copy PDB01D83F90; unsigned inherited refcount+4.
-enum ENullDef {NullDef=0};
-struct MaterialPointer {MaterialPointer(ENullDef);~MaterialPointer();MaterialPointer(const MaterialPointer&o):P(o.P){if(P)++reinterpret_cast<CIVCountedPointeeBase*>(const_cast<CMaterialDef*>(P))->IVRefCount;}const CMaterialDef*P;};
-class CHitParameters { public:
- CHitParameters();CHitParameters(const CHitParameters&);
- bool Localised,Directional;C3DVector Position,Direction;
- bool KnockDown,Decapitate,Blockable,Flourish,EpicSpell,BlockCounter,PlayHitResponse,PlayHitResponseOverrideSet,MoveBack,CreateParticleEffectOnHit,CreateDustParticleEffectOnHit,GuaranteeHit,Blocked,HitNegated,CauseRecoil;
- float ShotBuildupTime;DamageMap Damage;AugmentationVector Augmentations;CHitLocation*PHitLocation;MaterialPointer PHitMaterialDef;ThingPointer PThingHitting,PWeapon;
-};
-CHitParameters::CHitParameters(const CHitParameters&o):Localised(o.Localised),Directional(o.Directional),Position(o.Position),Direction(o.Direction),KnockDown(o.KnockDown),Decapitate(o.Decapitate),Blockable(o.Blockable),Flourish(o.Flourish),EpicSpell(o.EpicSpell),BlockCounter(o.BlockCounter),PlayHitResponse(o.PlayHitResponse),PlayHitResponseOverrideSet(o.PlayHitResponseOverrideSet),MoveBack(o.MoveBack),CreateParticleEffectOnHit(o.CreateParticleEffectOnHit),CreateDustParticleEffectOnHit(o.CreateDustParticleEffectOnHit),GuaranteeHit(o.GuaranteeHit),Blocked(o.Blocked),HitNegated(o.HitNegated),CauseRecoil(o.CauseRecoil),ShotBuildupTime(o.ShotBuildupTime),Damage(o.Damage),Augmentations(o.Augmentations),PHitLocation(o.PHitLocation),PHitMaterialDef(o.PHitMaterialDef),PThingHitting(o.PThingHitting),PWeapon(o.PWeapon){}
+#include "engine/CHitParameters.h"
+
+CHitParameters::CHitParameters(const CHitParameters& other)
+    : Localised(other.Localised)
+    , Directional(other.Directional)
+    , Position(other.Position)
+    , Direction(other.Direction)
+    , KnockDown(other.KnockDown)
+    , Decapitate(other.Decapitate)
+    , Blockable(other.Blockable)
+    , Flourish(other.Flourish)
+    , EpicSpell(other.EpicSpell)
+    , BlockCounter(other.BlockCounter)
+    , PlayHitResponse(other.PlayHitResponse)
+    , PlayHitResponseOverrideSet(other.PlayHitResponseOverrideSet)
+    , MoveBack(other.MoveBack)
+    , CreateParticleEffectOnHit(other.CreateParticleEffectOnHit)
+    , CreateDustParticleEffectOnHit(other.CreateDustParticleEffectOnHit)
+    , GuaranteeHit(other.GuaranteeHit)
+    , Blocked(other.Blocked)
+    , HitNegated(other.HitNegated)
+    , CauseRecoil(other.CauseRecoil)
+    , ShotBuildupTime(other.ShotBuildupTime)
+    , DamageMap(other.DamageMap)
+    , Augmentations(other.Augmentations)
+    , PHitLocation(other.PHitLocation)
+    , PHitMaterialDef(other.PHitMaterialDef)
+    , PThingHitting(other.PThingHitting)
+    , PWeapon(other.PWeapon)
+{
+}

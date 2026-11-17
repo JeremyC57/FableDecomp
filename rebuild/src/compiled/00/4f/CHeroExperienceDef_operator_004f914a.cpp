@@ -11,7 +11,8 @@
 // +0x28.. with 16-byte containers; retail STLport/Dinkumware containers are 12 bytes, so the
 // members sit at +0x28/+0x34/+0x40 (vectors), +0x4c/+0x58 (maps), +0x64/+0x68 (floats),
 // +0x6c/+0x78/+0x84/+0x90/+0x9c (maps) and +0xa8 (vector), exactly the offsets the body uses.
-// The tree assignments keep the class names their landed bodies carry (CRetailTree_<copy fn>).
+// The tree assignments keep the class names their landed bodies carry (CRetailTree_<copy fn>), except
+// ComboMultiplierMap (NF78: the shared STLport map; the tree operator= 0x004F9660 is landed under its STLport name).
 // Shape: the compiler-generated memberwise assignment written out in declaration order; the two
 // floats copy through eax (single float member assignment is an integer move), the last member's
 // address is formed with `add edi,0A8h` because nothing reads `other` after it.
@@ -20,6 +21,11 @@
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// NF78 (q10950): ComboMultiplierMap is the shared STLport map<long, CComboMultiplierData> (stlport/fable_map.h,
+// engine/CComboMultiplierData.h); its implicit operator= calls the tree's out-of-line operator= 0x004F9660
+// (??4?$_Rb_tree<long, pair<long const, CComboMultiplierData>, ...>, NF75's self row), declared only in fable_map.h.
+#include "stlport/fable_map.h"
+#include "engine/CComboMultiplierData.h"
 
 struct CLongVector {                    // retail std::vector<long> (12 bytes)
     long* m_first;
@@ -35,12 +41,6 @@ struct CRetailTree_004f927a {           // map<long, CDefString> (head + size + 
     CRetailTree_004f927a& operator=(const CRetailTree_004f927a& other);   // 0x004F9207
 };
 
-struct CRetailTree_004f96d3 {           // map<long, CComboMultiplierData>
-    void* head;
-    unsigned long size;
-    unsigned long _compare;
-    CRetailTree_004f96d3& operator=(const CRetailTree_004f96d3& other);   // 0x004F9660
-};
 
 struct CRetailTree_004f98a4 {           // map<EDamageAttribute, CHeroStatIncreaseData>
     void* head;
@@ -62,7 +62,7 @@ class CHeroExperienceDef : public CDefClassBase { public:                       
     CLongVector HeroLevelTitles;                                    // +0x34
     CLongVector FallbackMultipliers;                                // +0x40
     CRetailTree_004f927a SoundIntensityThresholds;                  // +0x4c
-    CRetailTree_004f96d3 ComboMultiplierMap;                        // +0x58
+    std::map<long, CComboMultiplierData> ComboMultiplierMap;        // +0x58
     float ExperienceMultiplierParamPerUnitComboMultiplier;          // +0x64
     float ExperienceMultiplierRegionChangeMultiplier;               // +0x68
     CRetailTree_004f927a ComboMultiplierIncrease;                   // +0x6c

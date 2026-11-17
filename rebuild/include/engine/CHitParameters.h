@@ -175,6 +175,13 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
     ~CHitParameters();                                                   // 0x00789358
     void SetThingHitting(CThing& thing);                                 // 0x008685F0
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_COPY_CTOR
+    // NF78 opt-in (round 7, row 0x00812170): Ego_r.pdb ??0CHitParameters@@QAE@ABV0@@Z (0x00807C70; retail 0x00812170, called by
+    // NEntityEvents::CEventHitBase's constructor 0x00811760): the memberwise copy, out of line. Declaration only: no layout change.
+    // Needs FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS + _DAMAGEMAP + _AUGMENTATIONS (the real member types).
+public:
+    CHitParameters(const CHitParameters& other);                         // 0x00812170
+#endif
 #ifdef FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR
     // Retail opt-in (wf17, row 0x00854DD0 CCreatureAction_SpiritAttack::PerformAction): Ego_r.pdb
     // ??0CHitParameters@@QAE@PAVCHitLocation@NHitLocations@@PAVCThing@@1ABVC3DVector@@2_N333@Z (0x00789238, ret 24h) and

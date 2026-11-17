@@ -247,7 +247,18 @@ template<class T> inline void CPersistTraits<T>::TransferIn(CPersistContext& con
 template<> class CPersistTraits<bool> {
 public:
     bool DefaultVal;
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_BOOL_BINARYIN_NOINLINE
+    // NF78 opt-in (round 7, row 0x007ADBF0 GFSerialiseMapBinaryIn<bool, CCharString>): the reader's body (the landed 0x00403EB0 text:
+    // the inline 1-byte CMemoryDataInputStream::ReadEBOOL into the value) visible to the TU but kept out of line, as retail calls the
+    // 0x00403EB0 COMDAT there; seeing it reads only the stream and writes only the value, VC7.1 shares the count's and the traits'
+    // frame words as retail does (frame 0x20; declared only, 0x28). Same function, same spelling.
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    void TransferBinaryIn(CMemoryDataInputStream& is,bool& value) { value=is.ReadEBOOL(); }   // 0x00403EB0
+#else
     void TransferBinaryIn(CMemoryDataInputStream&,bool&);     // 0x00403EB0
+#endif
     void TransferBinaryOut(CDataOutputStream& stream,const bool& value) { stream.WriteEBOOL(value); }
     void TransferIn(CPersistContext&,CStringParser&,bool&);
 };

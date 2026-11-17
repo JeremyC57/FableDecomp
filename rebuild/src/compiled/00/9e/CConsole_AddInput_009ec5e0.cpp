@@ -1,55 +1,37 @@
-// CConsole::AddInput(CConsoleInputBase*) -- register input under a lowercase copy of its name, shared through a counted pointer.
-// Retail 0x009EC5E0, 296 bytes. CCharString copy0099EC30, ToLower0099ED10, destructor0099EAE0;
-// CConsole input map insert009EFB80, typed DeleteData009EDC50. Native RegisteredConsoleInputs+40 vs donor+48.
-// Field-free native API adapter derives the actual shared string class: storage and destructor stay in CCharString.
+// CConsole::AddInput(CConsoleInputBase*) -- file the input under a lowercase copy of its name, shared through a counted pointer
+// Leaf: ?AddInput@CConsole@@QAEXPAVCConsoleInputBase@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009EC5E0, 296 bytes. Ego_r.pdb 0x00B3FB60 / FableWin.pdb 0x030AC1C0 ?AddInput@CConsole@@QAEXPAVCConsoleInputBase@@@Z.
+// Callees: CCharString::GetAsLowerCase 0x0099ED10, CCharString(const CCharString&) 0x0099EC30, ~CCharString 0x0099EAE0, operator new,
+//   CCountedPointer<CConsoleInputBase>::DeleteData 0x009EDC50 (stored in the count block), map<CCharString, CCountedPointer<CConsoleInputBase> >
+//   insert = _Rb_tree::insert_unique 0x009EFB80 (out of line), operator delete.
+// Layout: Ego_r.pdb CConsole::RegisteredConsoleInputs (map<CCharString, CCountedPointer<CConsoleInputBase> >) at retail +0x40 (12-byte STLport
+//   maps; Ego_r +0x48), CConsoleInputBase::Name +4 after the vptr. Neither class has a shared header; both are modelled here with only the
+//   members this body touches (CConsole opaque before RegisteredConsoleInputs).
+// Port (NF78, round 7; q10762 binder, NF70 blocked/port): the map, CCountedPointer and CCharString come from stlport/fable_map.h,
+//   engine/CCountedPointer.h and fable_string.h (FABLE_RETAIL_CCHARSTRING_GETASLOWERCASE); the local CInputMap / CInputPointer /
+//   SInputCountBlock / CRetailString stand-ins are gone.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_GETASLOWERCASE
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "fable_string.h"
-struct CRetailString : CCharString {
-    CRetailString(); // 0x0099E4B0 native default
-    CRetailString(const CRetailString&); // 0x0099EC30 native copy
-    CRetailString ToLower() const; // 0x0099ED10
+#include "stlport/fable_map.h"
+#include "engine/CCountedPointer.h"
+
+class CConsoleInputBase {
+public:
+    virtual ~CConsoleInputBase();
+    CCharString Name;                                                   // +0x04
 };
-class CConsoleInputBase { public:
-    virtual ~CConsoleInputBase(); // real slot0 deleting destructor consumed by DeleteData
-    CRetailString Name; // +4 native and donor layout
+class CConsole {
+public:
+    void AddInput(CConsoleInputBase* input);
+private:
+    unsigned char _pad00[0x40];
+    std::map<CCharString, CCountedPointer<CConsoleInputBase> > RegisteredConsoleInputs;   // +0x40
 };
-void FABLE_FASTCALL DeleteInputData(CConsoleInputBase*); // 0x009EDC50
-struct SInputCountBlock {
-    long refs;
-    void (FABLE_FASTCALL* destroy)(CConsoleInputBase*);
-    CConsoleInputBase* object;
-    SInputCountBlock(CConsoleInputBase* p) : refs(1), destroy(DeleteInputData), object(p) { }
-};
-struct CInputPointer {
-    CConsoleInputBase* object;
-    SInputCountBlock* count;
-    explicit CInputPointer(CConsoleInputBase* p) : object(p), count(p ? new SInputCountBlock(p) : 0) { }
-    CInputPointer(const CInputPointer& other) : object(other.object), count(other.count) { if(count) ++count->refs; }
-    ~CInputPointer() {
-        if(count) { --count->refs; if(!count->refs) { count->destroy(count->object); delete count; } }
-        object=0;count=0;
-    }
-};
-struct CInputPair {
-    CRetailString name;
-    CInputPointer input;
-    CInputPair(const CRetailString& n,const CInputPointer& p):name(n),input(p) { }
-};
-struct CInputValue {
-    const CRetailString name;
-    CInputPointer input;
-    CInputValue(const CInputPair& p):name(p.name),input(p.input) { }
-};
-struct CInputInsertResult { void* iterator; bool inserted; CInputInsertResult(); };
-struct CInputMap {
-    CInputInsertResult Insert(const CInputValue&); // 0x009EFB80
-};
-class CConsole { public:
-    unsigned char _nativeBeforeRegisteredInputs[0x40];
-    CInputMap RegisteredConsoleInputs;
-    void AddInput(CConsoleInputBase*);
-};
+
 void CConsole::AddInput(CConsoleInputBase* input)
 {
-    CInputPointer pointer(input);
-    RegisteredConsoleInputs.Insert(CInputPair(input->Name.ToLower(),pointer));
+    CCountedPointer<CConsoleInputBase> pointer(input);
+    RegisteredConsoleInputs.insert(std::make_pair(input->Name.GetAsLowerCase(), pointer));
 }

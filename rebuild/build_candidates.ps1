@@ -6870,9 +6870,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00599d5c'
-        Module = 'CFrontEndManager'
-        Source = '00/59/CFrontEndManager_DoPressStart_00599d5c.cpp'
-        TestSource = '00/59/CFrontEndManager_DoPressStart_00599d5c_test.cpp'
+        Module = 'NUISystem::CFrontEndManager'
+        Source = '00/59/NUISystemCFrontEndManager_DoPressStart_00599d5c.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_DoPressStart_00599d5c_test.cpp'
         PassPattern = '00599d5c_TEST PASS'
     }
     [pscustomobject]@{
@@ -17728,9 +17728,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e7720'
-        Module = '_global'
-        Source = '00/4e/CTCCarryable_OnKill_004e7720.cpp'
-        TestSource = '00/4e/CTCCarryable_OnKill_004e7720_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >'
+        Source = '00/4e/stdRbtree_clear_004e7720.cpp'
+        TestSource = '00/4e/stdRbtree_clear_004e7720_test.cpp'
         PassPattern = 'AUTO_TINY_004e7720_TEST PASS'
     }
     [pscustomobject]@{
@@ -273598,9 +273598,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f97b3'
-        Module = '_Rb_tree'
-        Source = '00/4f/Rbtree_Rbtree_004f97b3.cpp'
-        TestSource = '00/4f/Rbtree_Rbtree_004f97b3_test.cpp'
+        Module = 'map<EDamageAttribute,float>'
+        Source = '00/4f/map_map_004f97b3.cpp'
+        TestSource = '00/4f/map_map_004f97b3_test.cpp'
         PassPattern = '004f97b3_TEST PASS'
     }
     [pscustomobject]@{
@@ -302468,8 +302468,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00add020'
         Module = 'std::list<CVertexGroupBlock>'
-        Source = '00/ad/STLlistCVertexGroupBlock_operator_00add020.cpp'
-        TestSource = '00/ad/STLlistCVertexGroupBlock_operator_00add020_test.cpp'
+        Source = '00/ad/stdlist_operator_00add020.cpp'
+        TestSource = '00/ad/stdlist_operator_00add020_test.cpp'
         PassPattern = '00add020_TEST PASS'
     }
     [pscustomobject]@{
@@ -322986,9 +322986,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c0fb0'
-        Module = 'CTCShotDefinitionBase'
-        Source = '00/7c/CTCShotDefinitionBase_AddHitThing_007c0fb0.cpp'
-        TestSource = '00/7c/CTCShotDefinitionBase_AddHitThing_007c0fb0_test.cpp'
+        Module = 'NThingShot::CTCShotDefinitionBase'
+        Source = '00/7c/NThingShotCTCShotDefinitionBase_AddThingToAvoid_007c0fb0.cpp'
+        TestSource = '00/7c/NThingShotCTCShotDefinitionBase_AddThingToAvoid_007c0fb0_test.cpp'
         PassPattern = '007c0fb0_TEST PASS'
     }
     [pscustomobject]@{

@@ -246,12 +246,13 @@ protected:
     //   REFRESHAVAILABLEPROFILES), the spellings the self rows 0x00596CCE / 0x00597006 now define; were public (QAE).
     long RefreshAvailableProfiles();                              // 0x00596CCE
     long RefreshAvailableProfilesForDelete();                     // 0x00597006
-public:
+    // NF78 (round 7, q10954): GotoProfileMenu and DoPressStart are protected in Ego_r.pdb / FableWin.pdb (IAEXXZ); were public (QAE).
     void GotoProfileMenu();                                       // 0x00597B20
+    void DoPressStart();                                          // 0x00599D5C
+public:
     void GotoPreviousScreen(bool all);                            // 0x00597BF2
     long RefreshAvailableSavedGamesForProfile();                  // 0x00598463
     void LoadProfile(const CWideString& name);                    // 0x0059899A
-    void DoPressStart();                                          // 0x00599D5C
     void Action(const CCountedPointer<CAction>& action);
 };
 

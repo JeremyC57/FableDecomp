@@ -18,7 +18,17 @@ enum EThemePaintType
 
 class CMap
 {
+#ifdef FABLE_RETAIL_CMAP_ENGINETHEME_PROTECTED
+    // NF78 opt-in (round 7, row 0x0063A970 CWorldMap::SetThemeAtBlock): Ego_r.pdb and FableWin.pdb give these five CMap members
+    // protected (?AddThemeDefIndexToPalette@CMap@@IAEEK@Z, ?SetEngineThemeAt@CMap@@IAEXJJKKW4EThemePaintType@@@Z,
+    // ?SetEngineBlendAt@CMap@@IAEXJJEKW4EThemePaintType@@@Z, ?GetEngineThemeAt@CMap@@IBEKJJKW4EThemePaintType@@@Z,
+    // ?GetEngineBlendAt@CMap@@IBEEJJKW4EThemePaintType@@@Z); CWorldMap's block accessors call them, so CWorldMap is a friend of CMap
+    // (as engine/CMap.h FABLE_RETAIL_CMAP_CWORLDMAP_FRIEND). Access only: no layout change.
+    friend class CWorldMap;
+protected:
+#else
 public:
+#endif
     unsigned char AddThemeDefIndexToPalette(unsigned long themeId);
     void SetEngineThemeAt(
         long x,
@@ -98,6 +108,6 @@ public:
         EThemePaintType paintType) const;
 };
 
-FABLE_STATIC_ASSERT(sizeof(C2DCoordI) == 8);
+FABLE_STATIC_ASSERT_AT(101, sizeof(C2DCoordI) == 8);
 
 #endif

@@ -1,5 +1,7 @@
 // NUISystem::CFrontEndManager::GotoProfileMenu() -- refresh the profile list and switch from the profile screen to the profile menu (or the no-profile screen), else go to the menu as a new screen
-// Leaf: ?GotoProfileMenu@CFrontEndManager@NUISystem@@QAEXXZ (Ego_r.pdb IAEXXZ, protected; modelled public)
+// Leaf: ?GotoProfileMenu@CFrontEndManager@NUISystem@@IAEXXZ
+// Name (NF78, round 7, q10954): Ego_r.pdb 0x006041FF / FableWin.pdb 0x0201D482 ?GotoProfileMenu@CFrontEndManager@NUISystem@@IAEXXZ (protected);
+//   was modelled public (QAE). Access only.
 // Retail: Fable.exe @ 0x00597B20, 210 bytes, plain `ret`.
 // Body: profiles = RefreshAvailableProfiles() (0x00596CCE, Ego_r.pdb IAEJXZ); if m_stackScreens.size() > 1 (0x0059A8F3)
 // and top() (0x0059B039) is m_mapScreens[11] (map::operator[] 0x0059B5D7, evaluated first): leaving = top();
@@ -90,8 +92,8 @@ public:
     CComponent*                            PScreenToDeactivate;   // +0x98
     CComponent*                            PScreenToActivate;     // +0x9c
     void GotoNextScreen(CComponent* screen, bool flag);  // 0x00596763
-    void GotoProfileMenu();
 protected:
+    void GotoProfileMenu();                              // NF78 (q10954): protected in both PDBs
     // NF75 (round 7, land1117fu q10937): Ego_r.pdb 0x00603398 / FableWin.pdb 0x02018987 ?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@IAEJXZ
     //   (protected; engine/CFrontEndManager.h REFRESHAVAILABLEPROFILES), the spelling the self row 0x00596CCE now defines; was public (QAE).
     long RefreshAvailableProfiles();                     // 0x00596CCE
