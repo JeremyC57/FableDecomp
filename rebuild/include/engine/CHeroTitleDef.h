@@ -12,6 +12,13 @@
 #pragma pack(push, 1)
 class CHeroTitleDef : public CSubDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CHEROTITLEDEF_TYPENAME
+    // NF91 opt-in (round 7, q11199 row 0x005A30A1 CTCInventoryTrade::InitialiseBuyableItems): FableWin.pdb
+    // ?StatGetTypeName@CHeroTitleDef@@SI?AVCCharString@@XZ (inline in Ego_r.pdb and retail: GetSubDef<CHeroTitleDef> 0x005B1E5A builds the
+    // name in place from the retail literal 0x0123586C "CHeroTitleDef"), as CTattooDef / CHairCardDef _TYPENAME. Lets the row use the shared
+    // GetSubDef body (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY). Needs fable_string.h. No layout change.
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CHeroTitleDef", -1); }
+#endif
 #ifdef FABLE_RETAIL_GREETING_PASS23
     // Both original PDBs and native00683e83: signed title-group tag at +30.
     unsigned char _before_greet[0x30-0x25];

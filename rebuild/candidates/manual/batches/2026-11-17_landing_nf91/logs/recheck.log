@@ -1,0 +1,73 @@
+addr       parity           behav  name
+0059d9c2   RELOCATION_MATCH PASS   ApplyHairCard
+005a30a1   RELOCATION_MATCH PASS   InitialiseBuyableItems
+005a3436   WARN RELOC_NAME: ?BuyItem@CTCShop@@QAEXJ@Z -> 00774d20 labelled 'CTCShop_SellHighlightedItem'
+005a3436   RELOCATION_MATCH PASS   SellHighlightedItem
+005bc9b0   MATCH            PASS   GetItemInSlotWithIndex
+005bd1cf   MATCH            PASS   GetNumberOfSlots
+005bdcb4   RELOCATION_MATCH PASS   HighlightNextItem
+005cb780   RELOCATION_MATCH PASS   CheckForSoldWieldedWeapons
+006ab300   RELOCATION_MATCH PASS   PreOnKill
+00a33050   RELOCATION_MATCH PASS   __copy_backward
+00a33250   RELOCATION_MATCH PASS   __unguarded_linear_insert
+00a33870   RELOCATION_MATCH PASS   __unguarded_insertion_sort_aux
+00a34820   RELOCATION_MATCH PASS   __linear_insert
+00a34d10   RELOCATION_MATCH PASS   __insertion_sort
+00a355f0   RELOCATION_MATCH PASS   sort<std::pair<unsigned long, C3DMeshVolume> *, CKeyPairCompareLess<unsigned long, C3DMeshVolume>>
+00a35670   WARN RELOC_NAME: ??$sort@PAU?$pair@KVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z -> 00a355f0 labelled 'std::sort<std::pair<unsigned long, C3DMeshVolume> *, CKeyPairCompareLess<unsigned long, C3DMeshVolume>>'
+00a35670   RELOCATION_MATCH PASS   Sort
+00a35690   WARN RELOC_NAME: ??$sort@PAU?$pair@KVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z -> 00a355f0 labelled 'std::sort<std::pair<unsigned long, C3DMeshVolume> *, CKeyPairCompareLess<unsigned long, C3DMeshVolume>>'
+00a35690   RELOCATION_MATCH PASS   Update
+00a6f390   RELOCATION_MATCH PASS   ~pair
+00a703c0   RELOCATION_MATCH PASS   __unguarded_linear_insert
+00a70540   RELOCATION_MATCH PASS   __unguarded_linear_insert
+00a70ab0   RELOCATION_MATCH PASS   __copy_backward
+00a71090   RELOCATION_MATCH PASS   __unguarded_insertion_sort_aux
+00a728f0   WARN RELOC_NAME: ??$__copy_backward@PAU?$pair@JVC3DMeshVolume@@@std@@PAU12@H@std@@YIPAU?$pair@JVC3DMeshVolume@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00a70a10 labelled 'std::__copy_backward<std::pair<long,C3DMeshVolume>*,std::pair<long,C3DMeshVolume>*,int>'
+00a728f0   RELOCATION_MATCH PASS   __linear_insert
+00a729b0   RELOCATION_MATCH PASS   __linear_insert
+00a73240   RELOCATION_MATCH PASS   __insertion_sort
+00a732b0   RELOCATION_MATCH PASS   __insertion_sort
+00a73b20   RELOCATION_MATCH PASS   sort<std::pair<long, C3DMeshVolume> *, CKeyPairCompareLess<long, C3DMeshVolume>>
+00a73ba0   RELOCATION_MATCH PASS   sort<std::pair<CCharString, C3DMeshVolume> *, CKeyPairCompareLess<CCharString, C3DMeshVolume>>
+00a73c40   WARN RELOC_NAME: ??$sort@PAU?$pair@JVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z -> 00a73b20 labelled 'std::sort<std::pair<long, C3DMeshVolume> *, CKeyPairCompareLess<long, C3DMeshVolume>>'
+00a73c40   RELOCATION_MATCH PASS   Sort
+00a73c60   WARN RELOC_NAME: ??$sort@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z -> 00a73ba0 labelled 'std::sort<std::pair<CCharString, C3DMeshVolume> *, CKeyPairCompareLess<CCharString, C3DMeshVolume>>'
+00a73c60   RELOCATION_MATCH PASS   Sort
+00a73c80   WARN RELOC_NAME: ??$sort@PAU?$pair@JVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z -> 00a73b20 labelled 'std::sort<std::pair<long, C3DMeshVolume> *, CKeyPairCompareLess<long, C3DMeshVolume>>'
+00a73c80   RELOCATION_MATCH PASS   Update
+00a73ca0   WARN RELOC_NAME: ??$sort@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z -> 00a73ba0 labelled 'std::sort<std::pair<CCharString, C3DMeshVolume> *, CKeyPairCompareLess<CCharString, C3DMeshVolume>>'
+00a73ca0   RELOCATION_MATCH PASS   Update
+
+WINS: 31
+  0059d9c2 RELOCATION_MATCH CTCInventoryTrade::?ApplyHairCard@CTCInventoryTrade@@QAEXABVCHairCardDef@@@Z
+  005a30a1 RELOCATION_MATCH CTCInventoryTrade::?InitialiseBuyableItems@CTCInventoryTrade@@QAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+  005a3436 RELOCATION_MATCH CTCInventoryTrade::?SellHighlightedItem@CTCInventoryTrade@@QAEXXZ
+  005bc9b0 MATCH NInventory::CCategory::?GetItemInSlotWithIndex@CCategory@NInventory@@QBEJJ@Z
+  005bd1cf MATCH NInventory::CCategory::?GetNumberOfSlots@CCategory@NInventory@@QBEJXZ
+  005bdcb4 RELOCATION_MATCH NInventory::CTCInventoryBase::?HighlightNextItem@CTCInventoryBase@NInventory@@QAEXXZ
+  005cb780 RELOCATION_MATCH CTCInventoryWeapons::?CheckForSoldWieldedWeapons@CTCInventoryWeapons@@QAEXXZ
+  006ab300 RELOCATION_MATCH CThingPlayerCreature::?PreOnKill@CThingPlayerCreature@@MAE_NXZ
+  00a33050 RELOCATION_MATCH std::??$__copy_backward@PAU?$pair@KVC3DMeshVolume@@@std@@PAU12@H@std@@YIPAU?$pair@KVC3DMeshVolume@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+  00a33250 RELOCATION_MATCH std::??$__unguarded_linear_insert@PAU?$pair@KVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@U10@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z
+  00a33870 RELOCATION_MATCH std::??$__unguarded_insertion_sort_aux@PAU?$pair@KVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@00V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z
+  00a34820 RELOCATION_MATCH std::??$__linear_insert@PAU?$pair@KVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0U10@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z
+  00a34d10 RELOCATION_MATCH std::??$__insertion_sort@PAU?$pair@KVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z
+  00a355f0 RELOCATION_MATCH std::??$sort@PAU?$pair@KVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@Z
+  00a35670 RELOCATION_MATCH CVectorMap<unsigned long, C3DMeshVolume, CKeyPairCompareLess<unsigned long, C3DMeshVolume> >::?Sort@?$CVectorMap@KVC3DMeshVolume@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@@QAEXXZ
+  00a35690 RELOCATION_MATCH CVectorMap<unsigned long, C3DMeshVolume, CKeyPairCompareLess<unsigned long, C3DMeshVolume> >::?Update@?$CVectorMap@KVC3DMeshVolume@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@@QAEXXZ
+  00a6f390 RELOCATION_MATCH std::pair<CCharString,C3DMeshVolume>::??1?$pair@VCCharString@@VC3DMeshVolume@@@std@@QAE@XZ
+  00a703c0 RELOCATION_MATCH std::??$__unguarded_linear_insert@PAU?$pair@JVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@U10@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z
+  00a70540 RELOCATION_MATCH std::??$__unguarded_linear_insert@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@U10@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z
+  00a70ab0 RELOCATION_MATCH std::??$__copy_backward@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+  00a71090 RELOCATION_MATCH std::??$__unguarded_insertion_sort_aux@PAU?$pair@JVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@00V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z
+  00a728f0 RELOCATION_MATCH std::??$__linear_insert@PAU?$pair@JVC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@0U10@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z
+  00a729b0 RELOCATION_MATCH std::??$__linear_insert@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@U12@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0U10@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z
+  00a73240 RELOCATION_MATCH std::??$__insertion_sort@PAU?$pair@JVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z
+  00a732b0 RELOCATION_MATCH std::??$__insertion_sort@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z
+  00a73b20 RELOCATION_MATCH std::??$sort@PAU?$pair@JVC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@Z
+  00a73ba0 RELOCATION_MATCH std::??$sort@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@Z
+  00a73c40 RELOCATION_MATCH CVectorMap<long, C3DMeshVolume, CKeyPairCompareLess<long, C3DMeshVolume>>::?Sort@?$CVectorMap@JVC3DMeshVolume@@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@@QAEXXZ
+  00a73c60 RELOCATION_MATCH CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> >::?Sort@?$CVectorMap@VCCharString@@VC3DMeshVolume@@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@@QAEXXZ
+  00a73c80 RELOCATION_MATCH CVectorMap<long, C3DMeshVolume, CKeyPairCompareLess<long, C3DMeshVolume>>::?Update@?$CVectorMap@JVC3DMeshVolume@@V?$CKeyPairCompareLess@JVC3DMeshVolume@@@@@@QAEXXZ
+  00a73ca0 RELOCATION_MATCH CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> >::?Update@?$CVectorMap@VCCharString@@VC3DMeshVolume@@V?$CKeyPairCompareLess@VCCharString@@VC3DMeshVolume@@@@@@QAEXXZ

@@ -1,277 +1,166 @@
-// CTCInventoryTrade::InitialiseBuyableItems(vector<pair<long,long> >& items) -- rebuilds the buyable-item map: marks the hero's own tattoo / hair / title cards the shop deals in as stocked and counts them into BuyableItems, then walks the shop stock map, recording sold-out specials in NotInStock and adding buyable stock to the inventory and to `items`, and stores the item total
-// Leaf: InitialiseBuyableItems@CTCInventoryTrade
-// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
-//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005A30A1, 917 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
-//   FableWin.pdb ?InitialiseBuyableItems@CTCInventoryTrade@@QAEXAAV?$vector@U?$pair@JJ@std@@...@std@@@Z
-// Callees: map<long,long> clear 0x004DB91F / operator[] 0x005B30BB / find 0x00592F92 / ~ 0x004DD2B1, _Rb_tree increment 0x004292C0,
-//   shop-thing getter 0x005BC4C4, bitset test 0x00410DE0, LowerBound 0x0040F020 (shop 0x53) and const 0x004365B0 (hero 0x11),
-//   shop stock map by value 0x00774610, CPlayerManager::GetMainPlayer 0x00449960 (CMainGameComponent::Get() +0x1C), GetControlledCreature
-//   0x00487DD0, GetAllItems 0x005BF482, CTCBase::GetDefinitionManager const 0x006869D0 + GetDef<CThingBaseDef> const 0x0042AF3C,
-//   GetSubDef<CHeroTitleDef> const 0x005B1E5A (StatGetTypeName literal "CHeroTitleDef"),
-//   GetTattooCardDef 0x005D9AA0 / GetHairCardDef 0x005D9A10 (`__fastcall`, by value), CTCShop::IsTattooShop 0x00772510 / IsBarberShop
-//   0x00772490 / IsTitleShop 0x00772590 (Ego_r / FableWin; landed 006001e0), GetMaxStock 0x00772720, IsBuyable 0x005D9B50, AddItemOfTypeToInventory 0x0059C6B0,
-//   NotInStock clear 0x0042A168 / add 0x0042B687, vector push_back 0x005947B6, free 0x00BFEA14.
-// Shape: the key is a second named copy of the def index (address passed to the map, value kept in a register); the hair test is
-//   a second statement so each by-value def temporary is released before the next test; the stocked mark is written in each
-//   arm with a `goto` past the BuyableItems update (VC7.1 keeps both operator[] calls and merges the `= 1` tail, as retail);
-//   `key` is declared before the def pointer (store order before the GetDef call).
-// Name fix (agentNF 2026-11-10): NotInStock is STLport list<long>; clear 0x0042A168 / push_back 0x0042B687 bound under their
-//   STLport spellings (were ?clear@CLongList@@ / ?push_back@CLongList@@).
-// Layout: local view -- NotInStock +0x140, item total +0x168, mode +0x170, BuyableItems map +0x1A4; STLport map is 12 bytes.
-#include "fable_compiler.h"
-#pragma optimize("y", off)
+// CTCInventoryTrade::InitialiseBuyableItems(std::vector<std::pair<long,long> >& items) -- rebuild the buyable list from the shop's stock: the hero's special (tattoo / hair card / title) items are counted into SpecialItemsToDelete and marked in stock, out-of-stock plain items go to NotInStock, every buyable stocked item is added to the trade inventory and to `items`; ItemBuyCount is the total
+// Leaf: ?InitialiseBuyableItems@CTCInventoryTrade@@QAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005A30A1, 917 bytes; size TU.
+// Callers: CTCInventoryTrade::SellHighlightedItem 0x005A3436, BuyHighlightedItem 0x005A3581, ConstructActualSellInventoryPC 0x005A4CDD,
+//   ConstructActualSpecialInventoryPC 0x005A8C66 (and unlanded 0x005A96EC / 0x005AC184 / 0x005AD00F).
+// Name fix (agentNF91, q11199 / q11202 / q11204): Ego_r.pdb + FableWin.pdb
+//   ?InitialiseBuyableItems@CTCInventoryTrade@@QAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z (engine/CTCInventoryTrade.h
+//   declares it at this address). The old row defined it on a row-local 20-class model (own leaf AAU?$vector stand-in; it bound 0x005BF482 as
+//   ?GetAllItems@CTCInventoryItem@@.. and 0x0059C6B0 as a public QAEXJJ AddItemOfTypeToInventory). Now the same-TU body of the landed
+//   0x005A4CDD over the shared headers (NF89 draft 2, Ego_r member names: SpecialItemsToDelete +0x1A4, ItemBuyCount +0x168, CategoryIdent
+//   +0x170, GetBuildingThing), with the old row's else-if order for the two `stock[key] = 1` stores and the header template bodies retail's TU
+//   saw: CDefinitionManager::GetDef<T>(long) (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY) and CDefClassBase::GetSubDef<T>
+//   (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY, with the NF91 overlay opt-in FABLE_RETAIL_CHEROTITLEDEF_TYPENAME: FableWin.pdb
+//   ?StatGetTypeName@CHeroTitleDef@@SI?AVCCharString@@XZ + retail literal 0x0123586C). With them VC7.1 knows the two def handles stay local:
+//   the thing def lives in ebx across the title test (retail 0x005A3247 region) and both stores keep their own operator[] call. Binds
+//   0x005BF482 as the const PDB GetAllItems and 0x0059C6B0 as the private ?AddItemOfTypeToInventory@CTCInventoryTrade@@AAE_NJJ@Z.
 #pragma optimize("s", on)
-extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
-class CTCBase;
-namespace std {
-template <class A, class B> struct pair {
-    A first; B second;
-    pair(const A& a, const B& b) : first(a), second(b) {}
-};
-template <class T> struct vector {
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~vector() { if (_M_start) free(_M_start); }
-    unsigned int size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned int i) { return _M_start[i]; }
-    void push_back(const T& v);                         // 0x005947B6
-};
-}
-struct _Rb_tree_node_base {
-    long _M_color;
-    _Rb_tree_node_base* _M_parent;
-    _Rb_tree_node_base* _M_left;
-    _Rb_tree_node_base* _M_right;
-};
-_Rb_tree_node_base* __cdecl _M_increment(_Rb_tree_node_base* node);   // 0x004292C0
-struct CLongMapNode : _Rb_tree_node_base { long first; long second; };
-struct CLongMap {                                       // std::map<long,long>, 12 bytes
-    CLongMapNode* _M_header;
-    unsigned int _M_node_count;
-    long _M_key_compare;
-    struct iterator {
-        CLongMapNode* _M_node;
-        CLongMapNode* operator->() const { return _M_node; }
-        bool operator!=(const iterator& o) const { return _M_node != o._M_node; }
-        bool operator==(CLongMapNode* n) const { return _M_node == n; }
-        iterator& operator++() { _M_node = (CLongMapNode*)_M_increment(_M_node); return *this; }
-    };
-    CLongMap(const CLongMap& other);
-    ~CLongMap();                                        // 0x004DD2B1
-    void clear();                                       // 0x004DB91F
-    long& operator[](const long& key);                  // 0x005B30BB
-    CLongMapNode* find(const long& key);                // 0x00592F92
-};
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();
-    long m_refCount;
-};
-template <class T> class CDefPointer { public:
-    CDefBase* Object;                                   // the pointee as its non-const def base (engine/CDefPointer.h)
-    CDefPointer() : Object(0) { }
-    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
-    T* operator->() const { return static_cast<T*>(Object); }
-};
-template <class T> struct CDefBasePointer {
-    T* Object;
-    FABLE_FORCEINLINE CDefBasePointer(const CDefBasePointer& o) : Object(o.Object) { }
-    FABLE_FORCEINLINE ~CDefBasePointer()
-    {
-        if (Object) {
-            T* p = Object;
-            --p->m_refCount;
-            if (p->m_refCount == 0)
-                p->Destroy();
-            Object = 0;
-        }
-    }
-};
-class CHairCardDef : public CDefBase { public: };
-class CTattooDef : public CDefBase { public: };
-CDefBasePointer<CHairCardDef> __fastcall GetHairCardDef(long defIndex);      // 0x005D9A10
-CDefBasePointer<CTattooDef> __fastcall GetTattooCardDef(long defIndex);      // 0x005D9AA0
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1E5A GetSubDef<CHeroTitleDef> (Ego_r / FableWin template)
-};
-class CHeroTitleDef : public CDefClassBase { public: };
-class CThingBaseDef : public CDefClassBase { public: };
-void* FindDef_a();
-void* FindDef_b();
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
-{
-    void* def = FindDef_a();
-    if (!def)
-        return false;
-    out->Object = (CDefBase*)def;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefinitionManager { public:
-    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
-};
-class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
-{
-    void* def = FindDef_b();
-    if (!def)
-        return false;
-    out->Object = (CDefBase*)def;
-    return true;
-}
-#pragma auto_inline(on)
-// agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
-//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
-enum ETCInterfaceType { };
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class C> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
-    value_type* _M_start;                                   // +0x00 (the STLport vector)
-    value_type* _M_finish;                                  // +0x04
-    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
-    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
-class CThing { public:
-    unsigned char  _pad00[0x20];
-    std::bitset<274>  m_present;                           // +0x20
-    unsigned char  _pad21[0x44 - 0x21];
-    CInterfaceMap  m_interfaces;                        // +0x44
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind)
-    {
-        if (m_present.test(kind)) {
-            ETCInterfaceType key = (ETCInterfaceType)kind;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            *out = (T*)((it == map->_M_finish || kind < it->first) ? map->_M_finish : it)->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const
-    {
-        if (m_present.test(kind)) {
-            ETCInterfaceType key = (ETCInterfaceType)kind;
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            *out = (T*)((it == map->_M_finish || kind < it->first) ? map->_M_finish : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
-class CThingPlayerCreature : public CThing { };
-class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
-};
-// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
-//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
-//   GetMainPlayerNumber 0x00449700).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_BUILDINGTHING
+#define FABLE_RETAIL_CTCINVENTORYTRADE
+#define FABLE_RETAIL_CTCINVENTORYTRADE_PCINVENTORY
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE
+#define FABLE_RETAIL_CTCSHOP_SHOPTYPE
+#define FABLE_RETAIL_CTCHEROSTATS
+#define FABLE_RETAIL_CTCHEROSTATS_BRIBE
+#define FABLE_RETAIL_CTCHEROSTATS_GETMONEY
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CPLAYERMANAGER
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CTATTOODEF
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_CARDDEFS
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_NOINLINE
+#define FABLE_RETAIL_CTCSHOP_GETSTOCKLIST
+#define FABLE_RETAIL_CTCSHOP_STOCKQUERIES
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_POINTEE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CHEROTITLEDEF_TYPENAME
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CHEROTITLEDEF
+#define FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMOFTYPE
+#define FABLE_RETAIL_CTCINVENTORYITEM_KINDS
+#define FABLE_RETAIL_CDELETION
+#define FABLE_RETAIL_CRESOURCELIST
+#include "engine/CThingBaseDef.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CTCInventoryTrade.h"
+#include "engine/CTCShop.h"
+#include "engine/CTCHeroStats.h"
+#include "engine/CTCInventoryStats.h"
+#include "engine/CTCInventoryItem.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CHeroTitleDef.h"
+#include "engine/CTattooDef.h"
+#include "engine/CHairCardDef.h"
+#include "engine/CMainGameComponent.h"
 #include "engine/CPlayerManager.h"
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };   // +0x1c
-class CTCShop { public:                                // Ego_r / FableWin CTCShop (interface 0x53)
-    CLongMap GetStockMap() const;                          // 0x00774610 (PDB GetStockList returns the STLport map: see NOTES)
-    bool IsTattooShop() const;                          // 0x00772510 ?IsTattooShop@CTCShop@@QBE_NXZ
-    bool IsBarberShop() const;                       // 0x00772490 ?IsBarberShop@CTCShop@@QBE_NXZ
-    bool IsTitleShop() const;                          // 0x00772590 ?IsTitleShop@CTCShop@@QBE_NXZ (landed 006001e0)
-    long GetMaxStock(long defIndex) const;         // 0x00772720 ?GetMaxStock@CTCShop@@QBEJJ@Z
-};
-class CTCInventoryItem { public:
-    static bool __fastcall IsBuyable(long defIndex);   // 0x005D9B50 (Ego_r.pdb + FableWin.pdb ?IsBuyable@CTCInventoryItem@@SI_NJ@Z)
-    void GetAllItems(std::vector<std::pair<long, long> >& out) const;   // 0x005BF482
-};
-namespace std {                                         // STLport 4.6 list<long> (4 bytes: the sentinel pointer); out-of-line members only
-template <class T> class allocator;
-template <class T, class A> class _List_base { public:
-    void* _M_node;
-    void clear();                                       // 0x0042A168 ?clear@?$_List_base@JV?$allocator@J@std@@@std@@QAEXXZ (_list.c)
-};
-template <class T, class A = allocator<T> > class list : public _List_base<T, A> { public:
-    void push_back(const T& v);                         // 0x0042B687 ?push_back@?$list@JV?$allocator@J@std@@@std@@QAEXABJ@Z (FableWin)
-};
-}
-typedef std::list<long> CLongList;                      // the shop's sold-out list (NotInStock)
-typedef std::vector<std::pair<long, long> > CItemVector;
-class CTCBase { public:                                // the component base (members this row reads)
-    virtual ~CTCBase();
-protected:
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
-};
-class CTCInventoryTrade : public CTCBase { public:
-    unsigned char _pad04[0x140 - 0x4];
-    CLongList NotInStock;                               // +0x140
-    unsigned char _pad144[0x168 - 0x144];
-    long TotalBuyable;                                  // +0x168
-    unsigned char _pad16c[0x170 - 0x16c];
-    long Mode;                                          // +0x170
-    unsigned char _pad174[0x1a4 - 0x174];
-    CLongMap BuyableItems;                              // +0x1a4
-    CThing* GetShopThing();                             // 0x005BC4C4
-    void AddItemOfTypeToInventory(long defIndex, long count);     // 0x0059C6B0
-    void InitialiseBuyableItems(CItemVector& items);
-};
-void CTCInventoryTrade::InitialiseBuyableItems(CItemVector& items)
+#include "engine/CPlayer.h"
+#include "engine/NGameText_CDataBank.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/NUISystem_CComponent.h"
+#include "engine/NUISystem_CList.h"
+#include "engine/NUISystem_CViewport.h"
+#include "engine/NUISystem_CText.h"
+#include "engine/NUISystem_enums.h"
+#include "engine/CCountedPointer.h"
+using namespace NUISystem;
+using NGameText::CDataBank;
+
+
+
+#pragma auto_inline(off)
+template <class T> long __fastcall CBasicString<T>::Compare(const T* a, const T* b)
 {
-    BuyableItems.clear();
+    for (;;) {
+        T ca = *a;
+        if (ca == 0 && *b == 0)
+            return 0;
+        T cb = *b;
+        if (ca < cb)
+            return -1;
+        if (ca > cb)
+            return 1;
+        ++a;
+        ++b;
+    }
+}
+template <class T> bool CBasicString<T>::operator==(const T* text) const
+{
+    return Compare(PData, text) == 0;
+}
+#pragma auto_inline(on)
+
+void CTCInventoryTrade::InitialiseBuyableItems(std::vector<std::pair<long, long> >& items)
+{
+    SpecialItemsToDelete.clear();
     long total = 0;
-    Mode = 0xb;
-    CTCShop* shop = 0;
-    GetShopThing()->GetInterface(&shop, 0x53);
-    CLongMap stock = shop->GetStockMap();
-    CTCInventoryItem* inventory = 0;
-    static_cast<const CThing*>(CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature())->GetInterface(&inventory, 0x11);
-    CItemVector heroItems;
-    inventory->GetAllItems(heroItems);
+    CategoryIdent = (EInventoryCategoryIdentifier)0xb;
+    CTCShop* pShop = 0;
+    GetBuildingThing()->GetTC(TCI_SHOP, &pShop);
+    std::map<long, long> stock = pShop->GetStockList();
+    const NInventory::CTCInventoryBase* pInventory = 0;
+    CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature()->PeekTC(TCI_INVENTORY, &pInventory);
+    std::vector<std::pair<long, long> > heroItems;
+    pInventory->GetAllItems(heroItems);
     for (unsigned int i = 0; i < heroItems.size(); ++i) {
         long defIndex = heroItems[i].first;
         long key = defIndex;
         CDefPointer<const CThingBaseDef> def;
         GetDefinitionManager().GetDef(defIndex, &def);
         CDefPointer<const CHeroTitleDef> heroTitle;
-        bool special = GetTattooCardDef(defIndex).Object && shop->IsTattooShop();
+        bool special = !CTCInventoryItem::GetTattooCardDef(defIndex).IsNull() && pShop->IsTattooShop();
         if (!special)
-            special = GetHairCardDef(defIndex).Object && shop->IsBarberShop();
+            special = !CTCInventoryItem::GetHairCardDef(defIndex).IsNull() && pShop->IsBarberShop();
         if (special)
             stock[key] = 1;
-        else if (def->GetSubDef(&heroTitle) && shop->IsTitleShop())
+        else if (def->GetSubDef(&heroTitle) && pShop->IsTitleShop())
             stock[key] = 1;
         else
             goto next;
         {
-            CLongMapNode* it = BuyableItems.find(key);
-            if (it == BuyableItems._M_header)
-                BuyableItems[key] = heroItems[i].second;
+            std::map<long, long>::iterator it = SpecialItemsToDelete.find(key);
+            if (it == SpecialItemsToDelete.end())
+                SpecialItemsToDelete[key] = heroItems[i].second;
             else
-                it->second += heroItems[i].second;
+                (*it).second += heroItems[i].second;
         }
     next:
         ;
     }
     NotInStock.clear();
-    for (CLongMapNode* it = (CLongMapNode*)stock._M_header->_M_left; it != stock._M_header; it = (CLongMapNode*)_M_increment(it)) {
-        long count = it->second;
-        long defIndex = it->first;
+    for (std::map<long, long>::iterator it = stock.begin(); it != stock.end(); ++it) {
+        long count = (*it).second;
+        long defIndex = (*it).first;
         long key = defIndex;
         if (count == 0) {
-            bool plain = GetTattooCardDef(defIndex).Object == 0 && GetHairCardDef(defIndex).Object == 0;
-            if (plain && shop->GetMaxStock(defIndex))
+            bool plain = CTCInventoryItem::GetTattooCardDef(defIndex).IsNull() && CTCInventoryItem::GetHairCardDef(defIndex).IsNull();
+            if (plain && pShop->GetMaxStock(defIndex))
                 NotInStock.push_back(key);
         } else if (CTCInventoryItem::IsBuyable(defIndex)) {
             AddItemOfTypeToInventory(defIndex, count);
@@ -279,5 +168,6 @@ void CTCInventoryTrade::InitialiseBuyableItems(CItemVector& items)
             items.push_back(std::pair<long, long>(defIndex, count));
         }
     }
-    TotalBuyable = total;
+    ItemBuyCount = total;
 }
+

@@ -489,6 +489,12 @@ protected:
  CThing* CreateInventoryObject(long itemDefIndex);
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_RESURRECTIONITEM
+ // Retail opt-in (agentNF89 draft, carried by agentNF91 for row 0x005BF77D, q11205): Ego_r.pdb (0x00622645) + FableWin.pdb (0x02366C9E)
+ // ?GetResurrectionItemInInventory@CTCInventoryBase@NInventory@@QAEPAVCThing@@XZ (public; the first owned item whose def has a
+ // CResurrectionItemDef sub-def and whose created object is a resurrection item). Declaration only: no layout change.
+ CThing* GetResurrectionItemInInventory();                           // 0x005BF77D
+#endif
  enum EInventorySelectionState { INVENTORY_SELECTION_STATE_CATEGORIES=0,INVENTORY_SELECTION_STATE_ITEMS=1,INVENTORY_SELECTION_STATE_MAX_STATES=2 };
  enum ESelectionState { SELECTION_STATE_NONE=0,SELECTION_STATE_OFF=1,SELECTION_STATE_ON=2,SELECTION_STATE_SEL=3,SELECTION_STATE_MAX=4 };
 protected:

@@ -24,6 +24,12 @@ enum EHeroAttachableAppearanceModifierType {
 #pragma pack(push, 1)
 class CTCHeroAttachableAppearanceModifiers {
 public:
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_ADDWITHREPLACE
+    // NF91 opt-in (round 7, q11198 row 0x0059D9C2 CTCInventoryTrade::ApplyHairCard): Ego_r.pdb (0x0055BD50) + FableWin.pdb
+    // ?AddAppearanceModifierWithReplace@CTCHeroAttachableAppearanceModifiers@@QAEXJ@Z (public; the long overload), out of line in retail
+    // at 0x00706950. Declaration only: no layout change.
+    void AddAppearanceModifierWithReplace(long modifierDefIndex);   // 0x00706950
+#endif
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_HIDDENMATERIALS
     // Opt-in (row 0x004BD6E0 CTCGraphicAppearance::SetPrimitive): Ego_r.pdb
     // ?GetHiddenMaterialNames@CTCHeroAttachableAppearanceModifiers@@QBE_NAAV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z

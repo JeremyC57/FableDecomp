@@ -307,6 +307,34 @@ FABLE_STATIC_ASSERT_AT(256, offsetof(CTCInventoryTrade, SpecialItemString) == 0x
 FABLE_STATIC_ASSERT_AT(257, offsetof(CTCInventoryTrade, ItemBuyLists) == 0x200);
 FABLE_STATIC_ASSERT_AT(258, offsetof(CTCInventoryTrade, PTop_Level_List) == 0x220);
 FABLE_STATIC_ASSERT_AT(259, offsetof(CTCInventoryTrade, PCurrentOpenTradeMenu) == 0x224);
+#if defined(FABLE_RETAIL_CTCINVENTORYTRADE_TRADECATEGORY) && defined(FABLE_RETAIL_CTCINVENTORYTRADE_TRADECATEGORY_BODY)
+// NF91 opt-in (round 7, q11201 / q11204: one definition of 0x0059B6F4): the body of Ego_r.pdb + FableWin.pdb
+// ?GetCategoryIndexForTradeType@CTCInventoryTrade@@QAEJXZ, out of line in retail at 0x0059B6F4 (35 bytes) and called (E8) from 0x0059C6B0 /
+// 0x0059C6DD / 0x0059C710 / 0x0059C747 / 0x0059CF49. Defined inline + noinline, so an includer emits it as a pick-any COMDAT; the owner row
+// 0x0059B6F4 takes its address (nf86 / nf88 scaffolding) and grades RELOCATION_MATCH with COMDAT selection 2. Measured limit: a caller that
+// needs retail's `mov edx,ecx ; call ; push eax ; mov ecx,edx` (0x0059C6B0) does NOT get it from this body (DIFFER 47 v 45, `push esi` form,
+// with or without an earlier address-taking reference and with the noinline dropped under inline_depth(0)); only the landed same-TU strong
+// `auto_inline(off)` copy gives it. Such callers keep their landed form (coordinator decision). The .data pair at 0x0137CCDC ({11 -> 0},
+// {12 -> 1}) has no name in any PDB, label set or FSE: CTradeTypeCategory / g_TradeTypeCategories are the landed rows' descriptive spellings.
+// Needs the TRADECATEGORY declaration.
+struct CTradeTypeCategory {
+    long Ident;                                                                    // EInventoryCategoryIdentifier value
+    long CategoryIndex;                                                            // trade category index
+};
+extern CTradeTypeCategory g_TradeTypeCategories[2];                                // 0x0137CCDC: {11,0}, {12,1}
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+inline long CTCInventoryTrade::GetCategoryIndexForTradeType()
+{
+    long ident = CategoryIdent;
+    for (long i = 0; i < 2; ++i) {
+        if (g_TradeTypeCategories[i].Ident == ident)
+            return g_TradeTypeCategories[i].CategoryIndex;
+    }
+    return -1;
+}
+#endif
 #endif // FABLE_ENGINE_CTCINVENTORYTRADE_RETAIL_H
 #else // generated flattened default (unchanged)
 #ifndef FABLE_ENGINE_CTCINVENTORYTRADE_H

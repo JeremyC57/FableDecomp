@@ -1,0 +1,2 @@
+old_0059c6b0.obj : error LNK2005: "public: long __thiscall CTCInventoryTrade::GetCategoryIndexForTradeType(void)" (?GetCategoryIndexForTradeType@CTCInventoryTrade@@QAEJXZ) already defined in new_0059b6f4.obj
+LINK : fatal error LNK1104: cannot open file 'libcp.lib'

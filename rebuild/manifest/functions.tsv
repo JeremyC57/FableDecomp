@@ -11763,7 +11763,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bd183	SetCategoryThingAssociation	NInventory::CCategory	__fastcall	void	2	CRegisteredTCInfo *,CRegisteredTCInfo *	1	yes	accepted									
 005bd1ae	GetCategoryThingAssociation	NInventory::CCategory	__thiscall	CBaseObject *	1	CBaseIntelligentPointer *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CBaseIntelligentPointer_GetPItem_005bd1ae.cpp
 005bd1b3	GetCategoryIdentifier	NInventory::CCategory	__thiscall	EInventoryCategoryIdentifier	1	CCategory *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CCategory_GetCategoryIdentifier_005bd1b3.cpp
-005bd1cf	GetNumberOfSlots	CCategory	__thiscall	EInventoryCategoryIdentifier	1	CCategory *	1	yes	accepted									
+005bd1cf	GetNumberOfSlots	NInventory::CCategory	__thiscall	EInventoryCategoryIdentifier	1	CCategory *	1	yes	accepted									
 005bd1eb	OnInitialActivate	NInventory::CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
 005bd273	GetInventoryText	CTCInventoryBase	__thiscall	CWideString	2	CTCInventoryBase *,long	1	yes	accepted									
 005bd328	GetNumberOfSlotsForCategory	NInventory::CTCInventoryBase	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
@@ -11792,7 +11792,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bdb94	SelectNextCategory	CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
 005bdc08	SelectPreviousCategory	CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
 005bdc77	GetInventoryGuildValidity	CTCInventoryBase	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted									
-005bdcb4	HighlightNextItem	CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
+005bdcb4	HighlightNextItem	NInventory::CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
 005bdcdc	HighlightPreviousItem	CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
 005bdd04	SelectHighlightedItem	CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,bool *	1	yes	accepted									
 005bdd39	GlobalUpdate	NInventory::CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,bool	1	yes	accepted									
@@ -36591,7 +36591,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a32cc0	__make_heap	std	unknown	undefined	0		0	yes	accepted									
 00a32f40	__uninitialized_copy<std::pair<unsigned long,C3DMeshVolume>*,std::pair<unsigned long,C3DMeshVolume>*>	std	__fastcall	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *	5	_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00a32fb0	UninitFillN_SPairLongNamedCountedPointer_00a32fb0	_global	__fastcall	void	6	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,uint,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
-00a33050	CopyBackward_PairULongMeshVolume_00a33050	_global	__fastcall	pair<unsigned_long,C3DMeshVolume> *	4	pair<unsigned_long,class_C3DMeshVolume> *,pair<unsigned_long,class_C3DMeshVolume> *,pair<unsigned_long,class_C3DMeshVolume> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
+00a33050	__copy_backward	std	__fastcall	pair<unsigned_long,C3DMeshVolume> *	4	pair<unsigned_long,class_C3DMeshVolume> *,pair<unsigned_long,class_C3DMeshVolume> *,pair<unsigned_long,class_C3DMeshVolume> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00a331b0	swap<std::pair<unsigned long, C3DMeshVolume>>	std	__fastcall	void	4	pair<long,C3DMeshVolume> *,pair<long,C3DMeshVolume> *,CKeyPairCompareLess<long,C3DMeshVolume>,pair<long,C3DMeshVolume> *	1	yes	accepted									
 00a33250	__unguarded_linear_insert	std	unknown	undefined	0		0	yes	accepted									
 00a333a0	__push_heap	std	__fastcall	void	5	pair<long,C3DMeshVolume> *,int,int,pair<long,class_C3DMeshVolume> *,CKeyPairCompareLess<long,C3DMeshVolume>	1	yes	accepted									
@@ -36639,9 +36639,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a35430	resize	std::vector<std::pair<unsigned long, C3DMeshVolume>, std::allocator<std::pair<unsigned long, C3DMeshVolume>>>	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
 00a35490	__introsort_loop	std	unknown	undefined	0		0	yes	accepted									
 00a35580	resize	std::vector<std::pair<unsigned long, C3DMeshVolume> >	__thiscall	void	3	CThingCreatureBase *,CCharString *,vector<CAnimationEntry_const*,std::allocator<CAnimationEntry_const*>_> *	1	yes	accepted									
-00a355f0	Sort_SElement16_00a355f0	_global	unknown	undefined	0		0	yes	accepted									
-00a35670	Sort	CVectorMap<T_16_00a35670>	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CGuiVarTransferBool_TransferToGui_00a35670.cpp
-00a35690	CVectorMap_SortIfDirty_00a35690	_global	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CTCVillage_OnInitialActivate_00a35690.cpp
+00a355f0	sort<std::pair<unsigned long, C3DMeshVolume> *, CKeyPairCompareLess<unsigned long, C3DMeshVolume>>	std	unknown	undefined	0		0	yes	accepted									
+00a35670	Sort	CVectorMap<unsigned long, C3DMeshVolume, CKeyPairCompareLess<unsigned long, C3DMeshVolume> >	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CGuiVarTransferBool_TransferToGui_00a35670.cpp
+00a35690	Update	CVectorMap<unsigned long, C3DMeshVolume, CKeyPairCompareLess<unsigned long, C3DMeshVolume> >	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CTCVillage_OnInitialActivate_00a35690.cpp
 00a357b0	SetPositionMatrix	C3DMeshObject	__thiscall	void	4	C3DMeshObject *,C3DVector *,CRightHandedSet *,float	1	yes	accepted									
 00a358f0	GetPositionMatrixFromRHSet	_global	__fastcall	CMatrix3x4	1	CRightHandedSet *	1	yes	accepted									
 00a35af0	BeginInputLoading	CMainGameComponent	__thiscall	void	2	CMainGameComponent *,CWideString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CMainGameComponent_BeginInputLoading_00a35af0.cpp
@@ -37870,7 +37870,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a6f1d0	_Push_heap	_global	__fastcall	void	5	pair<CCharString,C3DDummyObject> *,int,int,pair<class_CCharString,class_C3DDummyObject> *,CCompareString<C3DDummyObject>	1	yes	accepted									
 00a6f290	LowerBound	CVectorMap<CCharString,C3DHelperPoint,CCompareString<C3DHelperPoint> >	__thiscall	_Vector_const_iterator<std::_Vector_val<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>,std::allocator<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>_>_>_>	2	CVectorMap<CCharString,CCountedPointer<CEntityScriptBindingBase>,CCompareString<CCountedPointer<CEntityScriptBindingBase>_>_> *,CCharString *	1	yes	accepted									
 00a6f2f0	LowerBound	CVectorMap<CCharString, C3DDummyObject, CCompareString<C3DDummyObject>>	unknown	undefined	0		0			discovered	gapscan							
-00a6f390	CCountedPointer_Dtor_00a6f390	_global	__fastcall	void	2	allocator<std::pair<CCharString,C3DMeshVolume>_> *,pair<CCharString,C3DMeshVolume> *	1	yes	accepted									
+00a6f390	~pair	std::pair<CCharString,C3DMeshVolume>	__fastcall	void	2	allocator<std::pair<CCharString,C3DMeshVolume>_> *,pair<CCharString,C3DMeshVolume> *	1	yes	accepted									
 00a6f5b0	__median<std::pair<CCharString, C3DHelperPoint>, CCompareString<C3DHelperPoint>>	std	__thiscall	bool	2	CMessageEventFilter_CanBeSeenOrHeard *,CMessageEvent *	1	yes	accepted									
 00a6f610	__unguarded_partition	std	unknown	undefined	0		0	yes	accepted									
 00a6f690	__median<std::pair<CCharString, C3DDummyObject>, CCompareString<C3DDummyObject>>	std	__thiscall	bool	2	CMessageEventFilter_CanBeSeenOrHeard *,CMessageEvent *	1	yes	accepted									
@@ -37901,7 +37901,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a707d0	__push_heap	std	__fastcall	void	5	pair<long,C3DMeshVolume> *,int,int,pair<long,class_C3DMeshVolume> *,CKeyPairCompareLess<long,C3DMeshVolume>	1	yes	accepted									
 00a708e0	__push_heap	std	__fastcall	void	5	pair<CCharString,C3DMeshVolume> *,int,int,pair<class_CCharString,class_C3DMeshVolume> *,CKeyPairCompareLess<CCharString,C3DMeshVolume>	1	yes	accepted									
 00a70a10	__copy_backward<std::pair<long,C3DMeshVolume>*,std::pair<long,C3DMeshVolume>*,int>	std	__fastcall	pair<unsigned_long,C3DMeshVolume> *	4	pair<unsigned_long,class_C3DMeshVolume> *,pair<unsigned_long,class_C3DMeshVolume> *,pair<unsigned_long,class_C3DMeshVolume> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
-00a70ab0	CopyBackward_PairCharStringMeshVolume_00a70ab0	_global	__fastcall	pair<CCharString,C3DMeshVolume> *	4	pair<class_CCharString,class_C3DMeshVolume> *,pair<class_CCharString,class_C3DMeshVolume> *,pair<class_CCharString,class_C3DMeshVolume> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
+00a70ab0	__copy_backward	std	__fastcall	pair<CCharString,C3DMeshVolume> *	4	pair<class_CCharString,class_C3DMeshVolume> *,pair<class_CCharString,class_C3DMeshVolume> *,pair<class_CCharString,class_C3DMeshVolume> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00a70bc0	reserve	std::vector<C3DTriangle2>	unknown	undefined	0		0	yes	accepted									
 00a70cb0	_M_range_insert<C3DVector *>	std::vector<C3DVector, std::allocator<C3DVector>>	unknown	undefined	0		0	yes	accepted									
 00a70e80	__destroy_aux<std::pair<long, C3DMeshVolume> *>	std	__fastcall	void	4	pair<long,CCompositeSurfaceInfo> *,pair<long,CCompositeSurfaceInfo> *,allocator<std::pair<long,CCompositeSurfaceInfo>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -37960,12 +37960,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a73910	__introsort_loop	std	unknown	undefined	0		0	yes	accepted									
 00a73a00	__introsort_loop	std	unknown	undefined	0		0	yes	accepted									
 00a73ae0	~CRetailVector_SBufferEntry12	CRetailVector_SBufferEntry12	unknown	undefined	0		0	yes	accepted									
-00a73b20	Sort_SElement16_00a73b20	_global	unknown	undefined	0		0	yes	accepted									
-00a73ba0	Sort_SElement16_00a73ba0	_global	unknown	undefined	0		0	yes	accepted									
-00a73c40	Sort	CVectorMap<T_16_00a73c40>	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CGuiVarTransferBool_TransferToGui_00a73c40.cpp
-00a73c60	Sort	CVectorMap<T_16_00a73c60>	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CGuiVarTransferBool_TransferToGui_00a73c60.cpp
-00a73c80	CVectorMap_SortIfDirty_00a73c80	_global	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CTCVillage_OnInitialActivate_00a73c80.cpp
-00a73ca0	CVectorMap_SortIfDirty_00a73ca0	_global	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CTCVillage_OnInitialActivate_00a73ca0.cpp
+00a73b20	sort<std::pair<long, C3DMeshVolume> *, CKeyPairCompareLess<long, C3DMeshVolume>>	std	unknown	undefined	0		0	yes	accepted									
+00a73ba0	sort<std::pair<CCharString, C3DMeshVolume> *, CKeyPairCompareLess<CCharString, C3DMeshVolume>>	std	unknown	undefined	0		0	yes	accepted									
+00a73c40	Sort	CVectorMap<long, C3DMeshVolume, CKeyPairCompareLess<long, C3DMeshVolume>>	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CGuiVarTransferBool_TransferToGui_00a73c40.cpp
+00a73c60	Sort	CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> >	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CGuiVarTransferBool_TransferToGui_00a73c60.cpp
+00a73c80	Update	CVectorMap<long, C3DMeshVolume, CKeyPairCompareLess<long, C3DMeshVolume>>	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CTCVillage_OnInitialActivate_00a73c80.cpp
+00a73ca0	Update	CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> >	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CTCVillage_OnInitialActivate_00a73ca0.cpp
 00a73cc0	`scalar_deleting_destructor'	CPhysicsMesh	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CLandscapeBackgroundPatch_vectordeletingdestructor_00a73cc0.cpp
 00a73ce0	GetMember_byte0xc_00a73ce0	_global	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_00a73ce0.cpp
 00a73cf0	DrawGetNoMaps	CWorldMap	__thiscall	long	1	CWorldMap *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CWorldMap_DrawGetNoMaps_00a73cf0.cpp
