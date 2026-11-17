@@ -101,7 +101,7 @@ address	kind	name	state	true_length	staged_folder	note
 00677970	named	CPersistTraits<CReactionFrequencyTraitsArray>::TransferIn	OPEN			
 0067c520	named	CBlurredAttitudesDef::`scalar deleting destructor'	OPEN			
 0067e290	named	CDegradableDef::CDegradableDef::Transfer	PARKED			PARKED e04: DIFFER(273v273) register renames from the enum Transfer arm 0x0067E2EB; draft ../2026-11-17_egod_open/e04/0067e290.cpp
-00680050	named	CThingObjectDef::?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z	OPEN			
+00680050	named	CThingObjectDef::?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z	IN_PROGRESS			batch e09
 00681cd0	named	CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero	OPEN			
 00681e60	named	CTCCreatureOpinionOfHero::SetPersonalityOverride	MATCHED_STAGED	626	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07
 00683770	named	CTCCreatureOpinionOfHero::GetHeadPendingDeed	OPEN			
@@ -132,7 +132,7 @@ address	kind	name	state	true_length	staged_folder	note
 006bd900	named	CMusicManager::PlayMusic	OPEN			
 006c0970	named	CTCBuyableHouse::CreateSignPost	OPEN			
 006c0b20	named	CTCBuyableHouse::FindPosToCreateNewVillager	OPEN			
-006c14d0	named	CTCBuyableHouse::OnInitialActivate	OPEN			
+006c14d0	named	CTCBuyableHouse::OnInitialActivate	IN_PROGRESS			batch e09
 006c1ed0	identify	_Copy_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>,std::_Iterator_base0>,std::back_insert_iterator<std::list<CIntelligentPointer<CThingAICreature>,std::_Copy_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingAICr	OPEN			
 006c5a80	named	CTCHeroOpinionDeedLog::CTCHeroOpinionDeedLog	OPEN			
 006c6040	named	CTCHeroOpinionDeedLog::InformRelevantThingsOfDeed	OPEN			
@@ -223,7 +223,7 @@ address	kind	name	state	true_length	staged_folder	note
 00793370	identify	_global::Vector_InsertRange_CBaseIntelligentPointer	OPEN			
 00795300	named	CTCDivineWrath::FrameUpdate	OPEN			
 00798940	named	CTCForcePushed::FrameUpdate	MATCHED_STAGED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05
-007993f0	named	CTCShopKeeper::WitnessedCrime	IN_PROGRESS			batch e08
+007993f0	named	CTCShopKeeper::WitnessedCrime	IN_PROGRESS			batch e09
 0079a890	named	CTCSummonSpell::IsValidTeleportPos	OPEN			
 0079deb0	named	CTCPhysicalShieldSpell::PlayEffect	OPEN			
 0079e5f0	named	CTCPhysicalShieldSpell::CTCPhysicalShieldSpell	OPEN			
@@ -305,8 +305,8 @@ address	kind	name	state	true_length	staged_folder	note
 00832260	named	CThingAICreature::InitialActivate	OPEN			
 008329b0	named	CThingAICreature::OnHit	OPEN			
 00833c00	named	CThingAICreature::DrawPreparePrimitivesForRendering	OPEN			
-00837220	named	CThingTrackNode::UpdateFacingDirection	OPEN			
-00837570	named	CThingTrackNode::Save	IN_PROGRESS			batch e08
+00837220	named	CThingTrackNode::UpdateFacingDirection	IN_PROGRESS			batch e09
+00837570	named	CThingTrackNode::Save	IN_PROGRESS			batch e09
 00839420	named	NThingHelpers::CreateEffectOnHit	OPEN			
 00839940	named	CThingGameObject::OnHit	OPEN			
 0083c2d0	named	CThingSwitch::ConstructFromLevelScript	OPEN			
@@ -661,7 +661,7 @@ address	kind	name	state	true_length	staged_folder	note
 00b2c010	named	CEngineSurfaceCompositionManager::PreloadCompletedBank	OPEN			
 00b2f760	named	CEnginePrimitiveOcclusionManager::CEnginePrimitiveOcclusionManager	OPEN			
 00b2fd60	named	CEngineCamera::SetupGamut	OPEN			
-00b30610	named	CEngineCamera::ClipBox	OPEN			
+00b30610	named	CEngineCamera::ClipBox	IN_PROGRESS			batch e09
 00b30b50	named	CEngineCamera::SetCameraState	OPEN			
 00b31160	named	CEngineCamera::ProcessDebugScript	OPEN			
 00b33390	named	CEnginePrimitiveRenderer::ProcessPrimitiveStats	OPEN			
