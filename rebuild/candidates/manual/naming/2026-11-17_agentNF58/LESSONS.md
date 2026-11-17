@@ -1,0 +1,12 @@
+- The CRetailTree *_buyNNNN::Insert / *_insNNNN::insert pairs are fable_map.h `_M_insert` (ORIGINAL_INSERT_BODY) + `insert_unique` (STLP_MAP + PASS22) explicit instantiations in their size TU: 43 groups, one grade per row; script them from a (S, I, K, V, includes) table.
+- Take K/V from the out-of-slice callers' own probe bindings (serializers, hinted inserts already spell the STLport instance) and confirm with the Ego_r member type (struct_layouts_egor.tsv), the `push NNh` node size and `jb`/`jl`.
+- One instance has one address: two retail trees that claim the same <K, V> mean one claim is wrong (0x00CD300B was map<int, CCharString>, not long; PDB PlayCutsceneSound settled it).
+- Hinted insert_unique rows with a local namespace-std model often bind a public `QAE` `_M_insert`; STLport declares it private (`AAE`). Wrapping the local declaration in `private:` is the whole fix.
+- /O2 insert_unique stand-ins that call a per-TU "decrement" are fable_map.h insert_unique with FABLE_RETAIL_STLP_TREE_DEC_OUTOFLINE (the instance's iterator operator-- COMDAT); hinted /O2 ones also need operator++ out of line (new overlay opt-in INC_OUTOFLINE).
+- Pass a leaf that names one symbol: `?insert_unique@` also matches the unhinted insert_unique emitted in a hinted-insert TU; pick the `U32@ABU` (iterator-position) symbol from objdump before setting the Leaf.
+- In a pointer-valued set, spell the explicit instantiation's parameter `V const&`, not `const V&` (`const T*&` is a different type: C3190).
+- PDB name sets decide struct vs class: CWeaponTrailGraphicSet is `V` in both PDBs although the shared header says `struct`.
+- Unreferenced COMDAT twins (identical bodies at two addresses, no call or data reference) cannot be named from callers: ~_List_base vs ~list, ~_Rb_tree vs an owner's destructor stay blocked.
+- A visible-but-noinline callee lets VC7.1 keep a key in a register across the call (0x009EFB80 needs CBasicString<char>::operator< that way); fable_string.h is a root header, so that needs a repo opt-in, not an overlay.
+- Chain grades after a generator with `&&`; one failed generator plus `;` graded a missing file twice (slip 3).
+- Do not ship a self rename whose in-slice caller is blocked, even when that caller binds some other stand-in: hold the graded re-author in work/ready/ and block both (0x00869CA0, 0x009EF750).

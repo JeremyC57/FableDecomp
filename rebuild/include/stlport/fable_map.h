@@ -138,7 +138,15 @@ template<class V,class Traits>struct _Rb_tree_iterator:public _Rb_tree_base_iter
 #else
     _Rb_tree_iterator& operator--(){this->_M_node=_Rb_global_inst::_M_decrement(this->_M_node);return *this;}
 #endif
+#if defined(FABLE_RETAIL_STLP_TREE_INC_OUTOFLINE) && defined(_MSC_VER)
+    // NF58 opt-in (round 7, rows 0x00801EC0 / 0x00801CB0, the /O2 hinted insert_unique of map<EIdleStateGroup, long> /
+    // map<EIdleStateGroup, CAIStateGroupBase*>): like FABLE_RETAIL_STLP_TREE_DEC_OUTOFLINE above, the same STLport body visible but
+    // kept out of line -- retail calls each instance's operator++ as a thiscall COMDAT (0x008010D0 / 0x00801200, 62 bytes,
+    // _M_increment inlined).
+    __declspec(noinline) _Rb_tree_iterator& operator++(){this->_M_node=_Rb_global_inst::_M_increment(this->_M_node);return *this;}
+#else
     _Rb_tree_iterator& operator++(){this->_M_node=_Rb_global_inst::_M_increment(this->_M_node);return *this;}
+#endif
 #ifdef FABLE_RETAIL_STLP_TREE_POSTINC
     // chunk 778 (row 0x00ACCBF0): STLport 4.6 _tree.h post-increment (`_Self __tmp = *this; _M_increment(); return __tmp;`).
     _Rb_tree_iterator operator++(int){_Rb_tree_iterator tmp=*this;this->_M_node=_Rb_global_inst::_M_increment(this->_M_node);return tmp;}
@@ -239,7 +247,14 @@ protected:
     static _Link_type& __fastcall _S_left(_Rb_tree_node_base* x){return (_Link_type&)x->_M_left;}
     static _Link_type& __fastcall _S_right(_Rb_tree_node_base* x){return (_Link_type&)x->_M_right;}
     static const K& __fastcall _S_key(_Rb_tree_node_base* x){return KeyOfValue()(static_cast<_Link_type>(x)->_M_value_field);}
+#if defined(FABLE_RETAIL_STLP_TREE_CREATE_NODE_NOINLINE) && defined(_MSC_VER)
+    // NF58 opt-in (round 7, row 0x00783F00, the /O2 _M_insert of map<unsigned __int64, CIntelligentPointer<CThing> >): the same
+    // STLport body, visible but kept out of line -- retail calls that instance's _M_create_node as a thiscall COMDAT (0x00783DD0)
+    // from both arms of _M_insert, where the /O2 siblings expand it.
+    __declspec(noinline) _Link_type _M_create_node(const V& x){_Link_type p=this->_M_header.allocate(1);std::_Construct(&p->_M_value_field,x);return p;}
+#else
     _Link_type _M_create_node(const V& x){_Link_type p=this->_M_header.allocate(1);std::_Construct(&p->_M_value_field,x);return p;}
+#endif
 protected:
     _Link_type& _M_root()const { return (_Link_type&)this->_M_header._M_data->_M_parent; }
     static _Link_type& __fastcall _S_left(_Link_type x){return (_Link_type&)x->_M_left;}

@@ -1,0 +1,3 @@
+1. cmpb.py on group 1 before its attempts/*.rel existed: FileNotFoundError, the Bash call exited 1.
+2. a trailing grep -m1 Leaf: on a file with no Leaf line exited 1 (buy-row check).
+3. portH.py failed on 0x006AE9F0 / 0x006DB610 (regex), and the chained q.py grades ran on the missing rows (2 wasted grade log lines, both rows).

@@ -1,3 +1,31 @@
+#if defined(FABLE_RETAIL_SEXPSPENDUNDO_ONLY) && !defined(FABLE_RETAIL_CTCINVENTORYEXPERIENCE)
+// NF58 opt-in (round 7, rows 0x00579FD8 / 0x0057A060 and their insert_unique 0x0057A124 / 0x0057A1AA): only the global
+// SExpSpendUndo record (Ego_r.pdb, the value type of CTCInventoryExperience::UndoableStatBuys / UndoableAbilityBuys), for
+// the out-of-line STLport tree members of those two maps; the same text as the full model below, without the class chain.
+#ifndef FABLE_ENGINE_SEXPSPENDUNDO_ONLY_H
+#define FABLE_ENGINE_SEXPSPENDUNDO_ONLY_H
+#include "stlport/fable_containers.h"
+class CTCHeroExperience;
+struct SExpSpendUndo {
+    void SaveBefore(CTCHeroExperience*);
+    void SaveAfter(CTCHeroExperience*);
+    void RevertExperiencePoints(CTCHeroExperience*);
+    std::list<long> Generals;
+    std::list<long> Strengths;
+    std::list<long> Skills;
+    std::list<long> Wills;
+    long Levels;
+    long General;
+    long Strength;
+    long Skill;
+    long Will;
+    long aGeneral;
+    long aStrength;
+    long aSkill;
+    long aWill;
+};
+#endif
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE
 #ifndef FABLE_ENGINE_CTCINVENTORYEXPERIENCE_H
 #define FABLE_ENGINE_CTCINVENTORYEXPERIENCE_H

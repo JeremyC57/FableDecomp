@@ -1,0 +1,77 @@
+row	self_symbol_standin	landed_callers
+0x00A81470	??1list_T_00a81470@std@@QAE@XZ	none landed
+0x00A82230	??1list_T_00a82230@std@@QAE@XZ	none landed
+0x00A833B0	??_GCCountedPointerListOwner_00a833b0@@QAEPAXI@Z	none landed
+0x00A84110	?clear@?$_List_base@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@QAEXXZ	none landed
+0x00485E45	??1?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$_Select1st@U?$pair@$$CBVC..	none landed
+0x0042B98B	?Insert@CRetailTree_ulongkey_buy0042b5a8@@QAE?AUiterator@1@PAUnode@1@0ABKJ@Z	0x0042BA13 0x0042C082
+0x0042BA99	?Insert@CRetailTree_longkey_buy0042b5ca@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0042BB21 0x0042C1C1
+0x0042BBA7	?Insert@CRetailTree_longkey_buy0042b5ec@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0042BC2F 0x0042C300
+0x004313E9	?Insert@CRetailTree_ulongkey_buy00431471@@QAE?AUiterator@1@PAUnode@1@0ABKJ@Z	0x00431363 0x005537F0
+0x0045CA8F	?Insert@CRetailTree_ulongkey_buy0045c8a1@@QAE?AUiterator@1@PAUnode@1@0ABKJ@Z	0x0045CA09 0x005D87B6
+0x0045E0FA	?Insert@CRetailTree_longkey_buy0045de2f@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0045E074
+0x0045E4B4	?Insert@CRetailTree_longkey_buy0045e2b1@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0045E42E
+0x0045EE0E	?Insert@CRetailTree_longkey_buy0045e797@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0045ED88
+0x0045F4FD	?Insert@CRetailTree_longkey_buy0045f13d@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0045F477
+0x0046180C	?Insert@CRetailTree_longkey_buy0046149e@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x00461786
+0x00461A40	?Insert@CRetailTree_longkey_buy004615c3@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004619BA
+0x00463EB4	?Insert@CRetailTree_longkey_buy004622ec@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x00463E2E
+0x004647B9	?Insert@CRetailTree_longkey_buy004630e7@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x00464733
+0x00465DBC	?Insert@CRetailTree_longkey_buy00461cf3@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x00465D36
+0x004669BF	?Insert@CRetailTree_longkey_buy00462411@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x00466939
+0x00469639	?Insert@CRetailTree_longkey_buy0045c2a2@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004695B3
+0x0046FBC9	?Insert@CRetailTree_longkey_buy0045c4d2@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0046FB43
+0x00472A05	?Insert@CRetailTree_longkey_buy00466255@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0047297F
+0x004E51F6	?Insert@CRetailTree_longkey_buy004e4fef@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004E5170
+0x004E5425	?Insert@CRetailTree_longkey_buy004e4eca@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004E539F 0x005B2A37
+0x004E57AC	?Insert@CRetailTree_longkey_buy004e55cf@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004E5726 0x005BB5EF
+0x004E5BA7	?Insert@CRetailTree_longkey_buy004e597b@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004E5B21
+0x004E6466	?Insert@CRetailTree_longkey_buy004e6210@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004E63E0 0x00801EC0
+0x004E699E	?Insert@CRetailTree_longkey_buy004e6623@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004E6918
+0x004E6C39	?Insert@CRetailTree_longkey_buy004e6748@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004E6BB3
+0x004E7C3B	?Insert@CRetailTree_longkey_buy004e4429@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004E7BB5
+0x004E9299	?Insert@CRetailTree_longkey_buy004e4bee@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004E9213
+0x004E94C8	?Insert@CRetailTree_longkey_buy004e4d19@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004E9442
+0x004EC79D	?Insert@CRetailTree_longkey_buy004ec31c@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004EC717
+0x004ECA59	?Insert@CRetailTree_longkey_buy004ec441@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004EC9D3
+0x004ECEE6	?Insert@CRetailTree_longkey_buy004e9ab1@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x004ECE60
+0x00511430	?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	0x00512DA0
+0x00567AF0	?Insert_CRetailTree_00567af0@CRetailTree_00567af0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x00567BB0 0x00568230
+0x00579FD8	?Insert@CRetailTree_longkey_buy00579f3e@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0057A124
+0x0057A060	?Insert@CRetailTree_longkey_buy00579f5f@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0057A1AA
+0x005808A0	?Insert@CRetailTree_ulongkey_buy00580428@@QAE?AUiterator@1@PAUnode@1@0ABKJ@Z	0x00580D21
+0x0059B1BE	?Insert@CRetailTree_longkey_buy0059afab@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x0059B246 0x0059B35C
+0x005B2337	?Insert@CRetailTree_ulongkey_buy005b200c@@QAE?AUiterator@1@PAUnode@1@0ABKJ@Z	0x005B2872 0x005B2EFE
+0x005B23BF	?Insert@CRetailTree_ulongkey_buy005b2029@@QAE?AUiterator@1@PAUnode@1@0ABKJ@Z	0x005B2447 0x005B28F8
+0x005B24CD	?Insert@CRetailTree_ulongkey_buy005b204b@@QAE?AUiterator@1@PAUnode@1@0ABKJ@Z	0x005B2555 0x005B2B76
+0x005B25DB	?Insert@CRetailTree_ulongkey_buy005b206c@@QAE?AUiterator@1@PAUnode@1@0ABKJ@Z	0x005B2663 0x005B2CB5
+0x005BB220	?Insert@CRetailTree_longkey_buy005baf06@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x005BB2A8 0x005BB85A
+0x005BBCBE	?Insert@CRetailTree_longkey_buy005bbba5@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x005BBD46 0x005BBE32
+0x005F926B	?Insert@CRetailTree_longkey_buy005f8c41@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x005F92F3 0x005F9853
+0x00632A30	?Insert_CRetailTree_00632a30@CRetailTree_00632a30@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x00632990
+0x0067B320	?Insert_CRetailTree_0067b320@CRetailTree_0067b320@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x0067BA30
+0x0067B3E0	?Insert_CRetailTree_0067b3e0@CRetailTree_0067b3e0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x0067BAF0
+0x0067B4A0	?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	0x0067BBB0
+0x0069D520	?_M_insert@CCameraModeMap@@QAE?AUiterator@1@PAUSRbNodeBase@@0ABUSCameraModeValue@@0@Z	0x0069D900
+0x006AE900	?_M_insert@CMovementAccelerationMap@@QAE?AUiterator@1@PAUSRbNodeBase@@0ABU?$pair@$$CBW4EGa..	0x006AE9F0
+0x006DAFA0	?Insert_CRetailTree_006dafa0@CRetailTree_006dafa0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x006DB450
+0x006DB390	?Insert_CRetailTree_006db390@CRetailTree_006db390@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x006DB610
+0x006DCB20	?Insert@CUIBinaryTree@@QAE?AUiterator@1@PAUnode@1@0ABUSUITreePair@@J@Z	0x006DCDD0
+0x006F1280	?Insert@CThingCompareMap@@QAE?AUiterator@1@PAUSRbNodeBase@@0ABUSThingCompareValue@@0@Z	0x006F1EF0
+0x006F4D00	?Insert@CCombatantMap@@QAE?AUiterator@1@PAUSRbNodeBase@@0ABUSCombatantValue@@0@Z	0x006F4F30
+0x0070AEA0	?_M_insert@CEngineTextureDecalMap@@QAE?AUiterator@1@PAUSRbNodeBase@@0ABUSDecalMapValue@@0@..	0x0070AFE0
+0x00739670	?_M_insert@CCombatAbilityTree@@QAE?AU_Rb_tree_iterator@@PAU_Rb_tree_node_base@@0ABUSCombat..	0x00739B00
+0x00783F00	?Insert@CThingMap64@@QAE?AUiterator@1@PAUSRbNodeBase@@0ABUSThingMapValue@@0@Z	0x00784040
+0x00801730	?Insert_CRetailTree_00801730@CRetailTree_00801730@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x008017F0 0x00801CB0
+0x00817D70	?Insert_CRetailTree_00817d70@CRetailTree_00817d70@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x00818000
+0x0085DED0	?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	0x0085E140
+0x00869CA0	?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	0x00868E50 0x00869020
+0x008B29A0	?Insert_CRetailTree_008b29a0@CRetailTree_008b29a0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x008B2DD0
+0x008B2A60	?Insert_CRetailTree_008b2a60@CRetailTree_008b2a60@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x008B2E90
+0x008B2B20	?Insert_CRetailTree_008b2b20@CRetailTree_008b2b20@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSVa..	0x008B2F50
+0x009C2350	?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	0x009C2800
+0x009EF750	?InsertNode@CConsoleInputMap@@QAE?AUIterator@@PAUNode@@0ABUValue@@J@Z	0x009EFB80
+0x00CD300B	?Insert@CRetailTree_longkey_buy00cd2c5b@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z	0x00CD3093 0x00CD34C5
+0x00630FE0	?clear@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharStrin..	none landed
+0x006311D0	??1CRetailTree_erase00630d90@@QAE@XZ	none landed
+0x00631420	??1CRetailTree_erase00630d90@@QAE@XZ	none landed

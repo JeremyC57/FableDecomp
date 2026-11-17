@@ -12,6 +12,8 @@
 //   _Rb_tree_iterator<_Value, _Nonconst_traits<_Value> >; operator++ / operator-- carry same-TU `__declspec(noinline)`
 //   bodies standing in for the out-of-line retail copies; _S_key reads `.first` directly (the _Select1st temporary makes
 //   VC7.1 load the node key first).
+// NF58 (round 7): the local _Rb_tree::_M_insert is declared private as in STLport 4.6 _tree.h (and stlport/fable_map.h), so the call binds
+//   the private (AAE) _M_insert that the re-authored callee row now defines; nothing else changed.
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -180,8 +182,10 @@ public:
 
     iterator begin() { return iterator(_M_leftmost()); }
     iterator end() { return iterator(_M_header._M_data); }
+private:
 
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const value_type& __v, _Base_ptr __w = 0);
+public:
     _Link_type _M_copy(_Link_type __x, _Link_type __p);
     pair<iterator, bool> insert_unique(const value_type& __x);
     iterator insert_unique(iterator __position, const value_type& __x);

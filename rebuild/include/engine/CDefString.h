@@ -133,6 +133,12 @@ public:
  // 0x0076D640 (out of line, emitted in the CTCEnemy TU). Declaration only.
  bool operator!=(const CCharString& text) const;                       // 0x0076D640
 #endif
+#ifdef FABLE_RETAIL_CDEFSTRING_COMPARE_FRIEND
+ // NF58 opt-in (round 7, rows 0x004E5BA7 / 0x004E5B21, map<CDefString, long, CCompareDefString<long> >): both PDBs name the
+ // comparator ??R?$CCompareDefString@J@@QBE_NABVCDefString@@0@Z; retail inlines it as a signed compare of the two TablePos words
+ // (0x004E5BA7 `cmp ecx,[ebx+10h] ; jl`). The comparator reads the private TablePos, so it is a friend here.
+ template<class T> friend class CCompareDefString;
+#endif
 private:
  long TablePos;
 };

@@ -25,10 +25,21 @@ class CPersistContext;
 #include "engine/EObjectAugmentationType.h"
 // CWeaponTrailGraphicSet: Ego_r.pdb (struct_layouts_egor.tsv, 8 bytes: long Attack +0, long Knockdown +4); no shared header of its
 // own, declared with the opt-in that needs it.
+#ifdef FABLE_RETAIL_CWEAPONTRAILGRAPHICSET_CLASS
+// NF58 opt-in (round 7, row 0x004E9299 _Rb_tree<EObjectAugmentationType, pair<.., CWeaponTrailGraphicSet> >::_M_insert): both PDB name
+// sets spell the type as a class (`VCWeaponTrailGraphicSet@@`, 617 symbols, never `U`), and the landed GFSerialiseMapBinaryIn caller
+// 0x004E9156 binds that spelling; same layout, members public.
+class CWeaponTrailGraphicSet {
+public:
+    long Attack;
+    long Knockdown;
+};
+#else
 struct CWeaponTrailGraphicSet {
     long Attack;
     long Knockdown;
 };
+#endif
 #endif
 class CWeaponDef : public CSubDefClassBase {
 public:

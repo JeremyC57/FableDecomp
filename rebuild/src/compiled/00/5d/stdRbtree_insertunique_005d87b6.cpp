@@ -13,6 +13,8 @@
 // `optimize("y", off)` + `optimize("s", on)`, as the landed operator[] 0x005D8933 from the same TU, plus `optimize("a", on)`
 //   (assume no aliasing): retail keeps v.first in edi across the _M_increment call of the interior branch instead of
 //   reloading it through &v; without it VC7.1 reloads, keeps &v in a register and swaps ebx/edi (294 v 319 bytes).
+// NF58 (round 7): the local _Rb_tree::_M_insert is declared private as in STLport 4.6 _tree.h (and stlport/fable_map.h), so the call binds
+//   the private (AAE) _M_insert that the re-authored callee row now defines; nothing else changed.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #pragma optimize("a", on)
@@ -68,7 +70,9 @@ public:
     static const _Key& _S_key(_Base_ptr __x) { return ((_Link_type)__x)->_M_value_field.first; }
     _Link_type& _M_rightmost() const { return (_Link_type&)this->_M_header._M_data->_M_right; }
     size_type size() const { return _M_node_count; }
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const value_type& __v, _Base_ptr __w = 0);   // 0x0045CA8F
+public:
     pair<iterator, bool> insert_unique(const value_type& __x);                                    // 0x0045CA09
     iterator insert_unique(iterator __position, const value_type& __x);
     _STLP_alloc_proxy<_Link_type, allocator<_Rb_tree_node<_Value> > > _M_header;

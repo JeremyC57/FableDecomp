@@ -11,6 +11,8 @@
 //   statics are) so VC7.1 sees they write no memory and keeps v's key in edi across the `++after` call (declared-only
 //   steps reload it: 317v319); the node key is spelled `node->_M_value_field.first` (the _KeyOfValue temporary loads it
 //   before v's key), as in the landed /O2 sibling 0x00AD5030.
+// NF58 (round 7): the local _Rb_tree::_M_insert is declared private as in STLport 4.6 _tree.h (and stlport/fable_map.h), so the call binds
+//   the private (AAE) _M_insert that the re-authored callee row now defines; nothing else changed.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 namespace NUISystem {
@@ -112,7 +114,9 @@ public:
     static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
     static const _Key& _S_key(_Base_ptr __x) { return ((_Link_type)__x)->_M_value_field.first; }
     unsigned int size() const { return _M_node_count; }
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const value_type& __v, _Base_ptr __w = 0);
+public:
     pair<iterator, bool> insert_unique(const value_type& __x);
     iterator insert_unique(iterator __position, const value_type& __x);
 };
