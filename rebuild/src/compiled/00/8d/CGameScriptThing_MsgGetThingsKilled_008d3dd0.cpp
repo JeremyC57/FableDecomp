@@ -1,121 +1,90 @@
 // CGameScriptThing::MsgGetThingsKilled(std::vector<unsigned long>& groups) const -- append the creature group of every "killed creature" entity event (type 0x22) this live thing received in the current script frame interval; whether any was found
-// Leaf: MsgGetThingsKilled
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
-// Naming wave 18: the global stand-in QuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
-//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008D3DD0, length 289 bytes, `ret 4`.
-// Signature from Ego_r.pdb: ?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), the const TC map lower bound @ 0x004365B0, the event's
-//   virtual slot 1 GetType, vector<unsigned long>::push_back(const unsigned long&) @ 0x005178A0.
-//   Global: the quest manager @ 0x013B89FC (PQuestCurrentlyRunning +0x88 -> Script +8 -> PActiveThread +0x2c ->
-//   LastScriptFrame +0x18 / CurrentScriptFrame +0x1c, the landed MsgIsHitByWithFlourish 0x008D1330 helpers).
-// Layout: engine/CGameScriptThing.h PThing +0xc; retail CThing TC 0x42 (CTCEntityEvents) = +0x28 bit 2, map +0x44, dead
-//   bit +0x91; CTCEntityEvents' event list (STLport list<CCountedPointer<CEventBase>>, node value at +8) +0xc;
-//   CEventBase WorldFrame +4; CEventKilledCreature CreatureGroupOfKilledThing +8 (Ego_r.pdb).
-// Shape: the found flag is a byte local cleared first (its zero shared with the early exits' `mov al,bl`); the frame
-//   window is read through the two `__forceinline` quest-manager helpers; each hit pushes the by-value
-//   GetCreatureGroupOfKilledThing() result, an rvalue VC homes in the dead `groups` slot.
-// Name fix (agentNF54): the groups vector is the shared STLport std::vector<unsigned long> (stlport/fable_containers.h; the PDB
-//   parameter type), so the call binds vector<unsigned long>::push_back 0x005178A0 (the local CULongVector stand-in bound
-//   ?push_back@CULongVector@@QAEXABK@Z); push_back stays a call (FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE).
-#include "fable_compiler.h"
+// Leaf: ?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008D3DD0, length 289 bytes, `ret 4`. Ego_r.pdb
+//   ?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z (the CScriptThing slot-55 override).
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x3), the const TC map lower bound 0x004365B0 (PeekTC<const CTCEntityEvents>, 0x42),
+//   the event's GetType (slot 1), vector<unsigned long>::push_back(const unsigned long&) 0x005178A0. Data: the quest manager singleton
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass 0x013B89FC (PQuestCurrentlyRunning +0x88 -> PScript +8 -> PActiveThread +0x2C ->
+//   LastScriptFrame +0x18 / CurrentScriptFrame +0x1C).
+// Shape: the found flag is a byte local cleared first (its zero shared with the early exits); each hit pushes the by-value
+//   GetCreatureGroupOfKilledThing() result, an rvalue VC homes in the dead `groups` slot; push_back stays a call.
+// NF67 (round 7): ported onto the shared headers. The CGameScriptThingMethods stand-in self, the local CQuestManager / ActiveQuest /
+//   ScriptBaseNative / CSpawnedFuncNative / CTBaseSingletonNoDefaultAlloc / CThingNative / CVectorMap / CBaseIntelligentPointer /
+//   CEventBase / CTCEntityEventsNative models and the local ETCInterfaceType are gone. Overlay opt-ins: FABLE_RETAIL_CGAMESCRIPTTHING_MSGGETTHINGSKILLED,
+//   FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_SCRIPT (HasScript / GetScript), FABLE_RETAIL_CSCRIPTBASE_GETPACTIVETHREAD_INLINE,
+//   FABLE_RETAIL_CSPAWNEDFUNCBASE_SCRIPTFRAMES_INLINE. NEntityEvents::CEventKilledCreature has no shared header: local (Ego_r.pdb 12 bytes,
+//   CreatureGroupOfKilledThing +8; FableWin.pdb GetCreatureGroupOfKilledThing / StatGetType). Self now the PDB override (q10463).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#define FABLE_RETAIL_CGAMESCRIPTTHING
+#define FABLE_RETAIL_CGAMESCRIPTTHING_MSGGETTHINGSKILLED
+#define FABLE_RETAIL_CQUESTMANAGER
+#define FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST
+#define FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_SCRIPT
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CSCRIPTBASE_GETPACTIVETHREAD_INLINE
+#define FABLE_RETAIL_CSPAWNEDFUNCBASE_SCRIPTFRAMES_INLINE
+#define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+#define FABLE_RETAIL_CTCENTITYEVENTS
+#define FABLE_RETAIL_CTCENTITYEVENTS_EVENTS
+#include "fable_string.h"
 #include "stlport/fable_containers.h"
-#include "engine/CGameScriptThing.h"
-
-struct CSpawnedFuncNative {
-    unsigned char _pad00[0x18];
-    long LastScriptFrame;                               // +0x18
-    long CurrentScriptFrame;                            // +0x1c
-};
-struct ScriptBaseNative { unsigned char Containers[0x2c]; CSpawnedFuncNative* PActiveThread; };
-struct ActiveQuest { unsigned char State[8]; ScriptBaseNative* Script; };
 #include "engine/CCountedPointer.h"
-template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
-    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
-public:
-    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
-};
-class CQuestManager { public: unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
-FABLE_FORCEINLINE long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
-FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/CScriptThing.h"
+#include "engine/CGameScriptThing.h"
+#include "engine/CSpawnedFuncBase.h"
+#include "engine/CScriptBase.h"
+#include "engine/CQuestManager.h"
+#include "engine/CTCEntityEvents.h"
+#include "engine/NEntityEvents_EEventType.h"
+#include "engine/NEntityEvents_CEventExpressionPerformedTo.h"
+#include "engine/GFDebugPDynamicCast.h"
 
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    ComponentEntry* Start;
-    ComponentEntry* Finish;
-    ComponentEntry* Capacity;
-    const ComponentEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
-struct CThingNative {
-    void* VTable;
-    unsigned char Base[0x1c];
-    unsigned long UsingComponents[9];                   // +0x20
-    ComponentMap Components;                            // +0x44
-    unsigned char Metadata[0x41];
-    unsigned char LifeFlags;                            // +0x91 bit 0: dead
-    bool HasTC(long type) const { if (UsingComponents[type >> 5] & (1UL << (type & 31))) return true; return false; }
-    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const ComponentMap* map = &Components;
-        const ComponentEntry* it = map->LowerBound(type);
-        if (it == map->Finish || interfaceType < it->first)
-            it = map->Finish;
-        return (const T*)it->second;
-    }
-};
-class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* VTable;
-    void* Info;
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-    CThingNative* Get() const { return (CThingNative*)GetPItem(); }
-};
 namespace NEntityEvents {
-class CEventBase { public:
-    virtual ~CEventBase();
-    virtual long GetType() const;                       // slot 1
-    long WorldFrame;                                    // +0x04
-};
-class CEventKilledCreature : public CEventBase { public:
-    unsigned long CreatureGroupOfKilledThing;           // +0x08
+// Local model (no shared header): Ego_r.pdb CEventKilledCreature (12 bytes), FableWin.pdb members.
+class CEventKilledCreature : public CEventBase {
+public:
+    CEventKilledCreature(const CThing& killed, const CThing& killer);
+    virtual ~CEventKilledCreature();
+    virtual EEventType GetType() const;
+    static EEventType FABLE_FASTCALL StatGetType() { return EVENT_KILLED_CREATURE; }
     unsigned long GetCreatureGroupOfKilledThing() const { return CreatureGroupOfKilledThing; }
+private:
+    unsigned long CreatureGroupOfKilledThing;                            // +0x08
 };
 }
-struct SEventNode {                                     // list<CCountedPointer<CEventBase>> node
-    SEventNode* Next;
-    SEventNode* Prev;
-    NEntityEvents::CEventBase* Event;                   // +0x08 (the counted pointer's object)
-    void* EventInfo;
-};
-struct CTCEntityEventsNative {
-    unsigned char _pad00[0xc];
-    SEventNode* Events;                                 // +0x0c the list's sentinel
-};
-struct CGameScriptThingMethods : CGameScriptThing {
-    bool MsgGetThingsKilled(std::vector<unsigned long>& groups) const;
-};
 
-bool CGameScriptThingMethods::MsgGetThingsKilled(std::vector<unsigned long>& groups) const
+bool CGameScriptThing::MsgGetThingsKilled(std::vector<unsigned long>& groups) const
 {
     bool found = false;
-    const CBaseIntelligentPointer* pointer = reinterpret_cast<const CBaseIntelligentPointer*>(PThing);
-    if (pointer->Get() && !(pointer->Get()->LifeFlags & 1)) {
-        long last = LastFrame(CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PQuestCurrentlyRunning);
-        long current = CurrentFrame(CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PQuestCurrentlyRunning);
-        CThingNative* thing = pointer->Get();
-        if (thing->HasTC(0x42)) {
-            const CTCEntityEventsNative* events = thing->GetTC<CTCEntityEventsNative>(0x42);
-            for (SEventNode* node = events->Events->Next; node != events->Events; node = node->Next) {
-                NEntityEvents::CEventBase* event = node->Event;
-                if (event->GetType() == 0x22 && event->WorldFrame > last && event->WorldFrame <= current) {
-                    groups.push_back(static_cast<NEntityEvents::CEventKilledCreature*>(event)->GetCreatureGroupOfKilledThing());
+    if (IS_THING_ALIVE(PThing)) {
+        CQuestManager::CActiveQuest* quest = CQuestManager::Get().GetPActiveQuest();
+        long last_frame = (quest && quest->HasScript()) ? quest->GetScript().GetPActiveThread()->GetLastScriptFrame() : 0;
+        long current_frame = (quest && quest->HasScript()) ? quest->GetScript().GetPActiveThread()->GetCurrentScriptFrame() : 0;
+        const CTCEntityEvents* events;
+        if (PThing->PeekTC(&events)) {
+            for (std::list<CCountedPointer<NEntityEvents::CEventBase> >::const_iterator it = events->GetEvents().begin();
+                 it != events->GetEvents().end(); ++it) {
+                NEntityEvents::CEventBase* event = (*it).Get();
+                if (event->GetType() == NEntityEvents::CEventKilledCreature::StatGetType()
+                    && event->WorldFrame > last_frame && event->WorldFrame <= current_frame) {
+                    groups.push_back(GFDebugPDynamicCast(event, (NEntityEvents::CEventKilledCreature*)0)->GetCreatureGroupOfKilledThing());
                     found = true;
                 }
             }

@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00869ca0   WARN STANDIN_LEAF ?_M_insert@?$_Rb_tree@V?$CDefPointer@$$CBVCArmourDef@@@@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Select1st@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@V?$CCompareDefPointer@$$CBVCArmourDef@@M@@V?$allocator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Nonconst_traits@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@2@0@Z (catalog std::_Rb_tree<CDefPointer<CArmourDef const>, std::pair<CDefPointer<CArmourDef const> const, float>, std::_Select1st<std::pair<CDefPointer<CArmourDef const> const, float>>, CCompareDefPointer<CArmourDef const, float>, std::allocator<std::pair<CDefPointer<CArmourDef const> const, float>>>::_M_insert; names another function)
+00869ca0   RELOCATION_MATCH PASS   _M_insert
+008b9e50   RELOCATION_MATCH PASS   Initialise
+0090fae0   RELOCATION_MATCH PASS   GetPOwnerObject
+0094b8b0   RELOCATION_MATCH PASS   IsRunnable
+00966290   RELOCATION_MATCH PASS   IsExpressionPerfomedTo
+
+WINS: 5
+  00869ca0 RELOCATION_MATCH std::_Rb_tree<CDefPointer<CArmourDef const>, std::pair<CDefPointer<CArmourDef const> const, float>, std::_Select1st<std::pair<CDefPointer<CArmourDef const> const, float>>, CCompareDefPointer<CArmourDef const, float>, std::allocator<std::pair<CDefPointer<CArmourDef const> const, float>>>::?_M_insert@?$_Rb_tree@V?$CDefPointer@$$CBVCArmourDef@@@@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Select1st@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@V?$CCompareDefPointer@$$CBVCArmourDef@@M@@V?$allocator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Nonconst_traits@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@2@0@Z
+  008b9e50 RELOCATION_MATCH CCreatureAction_TeleportOut::?Initialise@CCreatureAction_TeleportOut@@UAEXXZ
+  0090fae0 RELOCATION_MATCH CAIStateGroup_MinionSitAtInn::?GetPOwnerObject@CAIStateGroup_MinionSitAtInn@@MAE_NPAPAVCThing@@@Z
+  0094b8b0 RELOCATION_MATCH CAIStateGroup_SitInPub::?IsRunnable@CAIStateGroup_SitInPub@@MAE_NXZ
+  00966290 RELOCATION_MATCH CAIStateGroup_CarryCrateAndFollow::?IsExpressionPerfomedTo@CAIStateGroup_CarryCrateAndFollow@@ABE_NABVCCharString@@AAV?$CIntelligentPointer@VCThing@@@@@Z

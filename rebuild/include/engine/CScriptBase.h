@@ -33,7 +33,13 @@ public:
     void SetPredicate(const NScript::CPredicateBase&);                   // 0x00CB7920
     void RemovePredicate();
     bool IsActiveThreadTerminating();                                    // 0x00CB7940
+#ifdef FABLE_RETAIL_CSCRIPTBASE_GETPACTIVETHREAD_INLINE
+    // NF67 opt-in (round 7, row 0x008D3DD0): Ego_r.pdb ?GetPActiveThread@CScriptBase@@QAEPAVCSpawnedFuncBase@@XZ with its inline body (retail
+    // reads PActiveThread +0x2C in place, 0x008D3E17). Same declaration; the body is the only change.
+    CSpawnedFuncBase* GetPActiveThread() { return PActiveThread; }
+#else
     CSpawnedFuncBase* GetPActiveThread();
+#endif
     unsigned long GetThreadID();
     void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);     // 0x00CB7E50
     void KillSpawnedFunction(const CCharString&, unsigned long);

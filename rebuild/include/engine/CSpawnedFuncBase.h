@@ -29,8 +29,15 @@ public:
     virtual void OnPredicateFail();                                      // slot 5  0x00CDD410 (order probable)
     virtual void OnInterrupted();                                        // slot 6  0x00CDD420 (order probable)
     unsigned long GetID() const;
+#ifdef FABLE_RETAIL_CSPAWNEDFUNCBASE_SCRIPTFRAMES_INLINE
+    // NF67 opt-in (round 7, row 0x008D3DD0): Ego_r.pdb ?GetLastScriptFrame@CSpawnedFuncBase@@QBEJXZ / ?GetCurrentScriptFrame@CSpawnedFuncBase@@QBEJXZ
+    // with their inline bodies (retail reads +0x18 / +0x1C in place, 0x008D3E1A / 0x008D3E35). Same declarations; the bodies are the only change.
+    long GetLastScriptFrame() const { return LastScriptFrame; }
+    long GetCurrentScriptFrame() const { return CurrentScriptFrame; }
+#else
     long GetLastScriptFrame() const;
     long GetCurrentScriptFrame() const;
+#endif
     const CCharString& GetName() const;
     const CCharString& GetAssociatedRegionName() const;
     void SetAssociatedRegionName(const CCharString&);

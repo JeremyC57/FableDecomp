@@ -15,6 +15,9 @@
 #include "engine/CCountedPointer.h"
 #include "stlport/fable_containers.h"
 namespace NEntityEvents{class CEventBase;}
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_REMOVEEVENTS
+namespace NEntityEvents{template<class F> class CConvFilterToCP;}
+#endif
 class CTCEntityEvents:public CTCBase {
 public:
 #ifdef FABLE_RETAIL_CTCENTITYEVENTS_CTOR_PASS23
@@ -41,6 +44,13 @@ public: CTCEntityEvents(CThing&);
  const std::list<CCountedPointer<NEntityEvents::CEventBase> >& GetEvents() const { return Events; }
  void RemoveEvent(NEntityEvents::CEventBase& event);                // 0x008112D0
 #endif
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_REMOVEEVENTS
+ // NF67 opt-in (round 7, row 0x008A7980 CGameScriptInterface::EntityStopFollowing): FableWin.pdb
+ // ??$RemoveEvents@VCIsEventOfType@NEntityEvents@@@CTCEntityEvents@@QAEXABVCIsEventOfType@NEntityEvents@@@Z, inline in retail: the caller
+ // passes &Events (+0x0C) and the CConvFilterToCP wrapping the filter's address straight to the list's remove_if instance (0x008AC890).
+ // The row defines NEntityEvents::CConvFilterToCP<F> (Ego_r.pdb: F* Filter; no shared header). Body only, no layout change.
+ template<class F> void RemoveEvents(const F& filter) { Events.remove_if(NEntityEvents::CConvFilterToCP<F>(filter)); }
+#endif
 protected:std::list<CCountedPointer<NEntityEvents::CEventBase> > Events;
 #ifdef FABLE_RETAIL_CTCENTITYEVENTS_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
@@ -52,6 +62,31 @@ public:
 #endif
 };
 FABLE_STATIC_ASSERT_AT(50, sizeof(CTCEntityEvents)==0x10);
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_GETEVENT_BODY
+// NF67 opt-in (round 7, row 0x00915190 CAIStateGroup_KidHurtSelfRunToMother::Cleanup): the member template's body, as the instantiation
+// ??$GetEvent@VCEventChildHurtGoToMother@NEntityEvents@@VCIsEventOfType@2@@CTCEntityEvents@@QBE_NPAPAVCEventChildHurtGoToMother@NEntityEvents@@ABVCIsEventOfType@2@@Z
+// (FableWin.pdb; retail 0x00915760, landed) runs it: walk Events newest first, copy each counted pointer, the first event whose GetType is
+// E's (slot 1) and that the filter accepts is stored through out (before the copy is released). Out of line in retail (`call 0x00915760`),
+// so noinline; with the body visible VC7.1 knows the caller's out slot does not escape the call (the caller keeps the event in a
+// register: 0x0091525C `mov esi,[esp+0Ch]`, reused for RemoveEvent), the GETDEF_GLOBAL_BODY idiom. Needs FABLE_RETAIL_STLP_LIST_REVERSE,
+// a complete NEntityEvents::CEventBase and E::StatGetType(). No layout change.
+#if defined(_MSC_VER)
+template<class E,class F> __declspec(noinline)
+#else
+template<class E,class F>
+#endif
+bool CTCEntityEvents::GetEvent(E** out,const F& filter)const
+{
+ for(std::list<CCountedPointer<NEntityEvents::CEventBase> >::const_reverse_iterator it=Events.rbegin();it!=Events.rend();++it){
+  CCountedPointer<NEntityEvents::CEventBase> event=*it;
+  if(event->GetType()==E::StatGetType()&&filter(event.Get())){
+   *out=static_cast<E*>(event.Get());
+   return true;
+  }
+ }
+ return false;
+}
+#endif
 #else
 #ifdef FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
 namespace NEntityEvents{class CEventBase;}

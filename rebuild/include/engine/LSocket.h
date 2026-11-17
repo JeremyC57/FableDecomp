@@ -22,6 +22,11 @@ struct LAddress {
     unsigned short ServerPort;
     LSOCKET_PROTOCOL TransportProtocol;
     LSOCKET_FLAGS TransportFlags;
+#if defined(FABLE_RETAIL_LSOCKET_LADDRESS_CTOR_OUTOFLINE) && !defined(FABLE_RETAIL_LSOCKET_LADDRESS)
+    // NF67 opt-in (round 7, row 0x008F95D0 LSocket::SendBlock): FableWin.pdb ??0LAddress@LHNetworkLib@@QAE@XZ, called out of line in that TU
+    // (0x00841E90, `lea ecx,[esp+38h] ; call`, the this pointer pushed as Send's argument). Declaration only, no layout change.
+    LAddress();                                                          // 0x00841E90
+#endif
 #ifdef FABLE_RETAIL_LSOCKET_LADDRESS
     // Retail opt-in (chunk 892, row 0x008F99A0 LSocket::Receive(vector<char>&)): Ego_r.pdb / FableWin.pdb ??0LAddress@LHNetworkLib@@QAE@XZ
     // and ?ClearData@LAddress@LHNetworkLib@@QAEXXZ (public), inline in retail: each default LAddress builds the STLport empty string
@@ -77,6 +82,11 @@ public:
     FILE* _DEBUGFP;
     bool IsReadable(long);
     bool Receive(std::vector<char>&);
+#ifdef FABLE_RETAIL_LSOCKET_SENDBLOCK
+    // NF67 opt-in (round 7, row 0x008F95D0 itself): Ego_r.pdb / FableWin.pdb ?SendBlock@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@@Z
+    // (public). Declaration only, no layout change.
+    bool SendBlock(std::vector<char>& data);                            // 0x008F95D0
+#endif
 #ifdef FABLE_RETAIL_LSOCKET_RECEIVE
     // Retail opt-in (chunk 892, row 0x008F99A0): the LSocket.cpp members the one-argument Receive reaches, with Ego_r.pdb's access
     // (SI public static __fastcall, CI private static __fastcall, AAE private, QAE public). Declarations; the row defines the bodies

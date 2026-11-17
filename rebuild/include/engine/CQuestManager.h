@@ -147,6 +147,13 @@ public:
         ~CActiveQuest();                                     // 0x004B9B90
         void LoadFromGameState(const CCharString& script) { if (PScript.Data) PScript->LoadGameState(script); }
 #endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_SCRIPT
+        // NF67 opt-in (round 7, row 0x008D3DD0 CGameScriptThing::MsgGetThingsKilled): FableWin.pdb ?HasScript@CActiveQuest@CQuestManager@@QBE_NXZ
+        // and ?GetScript@CActiveQuest@CQuestManager@@QBEAAVCScriptBase@@XZ, inline in retail (0x008D3E10 `mov ecx,[eax+8] ; test ecx,ecx`, then the
+        // script's +0x2C read in place). Bodies only; no layout change. Needs CScriptBase complete for GetScript's callers only.
+        bool HasScript() const { return PScript.Data != 0; }
+        CScriptBase& GetScript() const { return *PScript; }
+#endif
     private:
         long ID;
         const CScriptInfo* PScriptInfo;

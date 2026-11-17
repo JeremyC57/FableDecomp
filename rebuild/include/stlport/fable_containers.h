@@ -1530,6 +1530,27 @@ public:
     // only: retail tail-jumps to the out-of-line instantiation (0x0082C770, ??$remove_if@VCIsMarkerBoundToThing@CMiniMapDisplay@@@..).
     template<class _Predicate> void remove_if(_Predicate pred);
 #endif
+#if defined(FABLE_RETAIL_STLP_LIST_REMOVE_IF_NOINLINE) && !defined(FABLE_RETAIL_STLP_LIST_REMOVE_IF_OUTOFLINE)
+    // NF67 opt-in (round 7, row 0x008A7980 CGameScriptInterface::EntityStopFollowing): the STLport 4.6 _list.c member template
+    // remove_if(_Predicate) body, visible but called out of line, as retail calls list<CCountedPointer<CEventBase> >::remove_if<
+    // CConvFilterToCP<CIsEventOfType> > 0x008AC890 there. Seeing that it keeps no reference to the predicate, VC7.1 packs the caller's
+    // CIsEventOfType temporary into the dead argument slot (0x008A7A4D `mov dword ptr [esp+14h],3`) as retail does. Needs the list
+    // erase(iterator) body (FABLE_RETAIL_STLP_LIST).
+#ifdef _MSC_VER
+    template<class _Predicate> __declspec(noinline) void remove_if(_Predicate __pred) {
+#else
+    template<class _Predicate> void remove_if(_Predicate __pred) {
+#endif
+        iterator __first=begin();
+        iterator __last=end();
+        while(__first!=__last) {
+            iterator __next=__first;
+            ++__next;
+            if(__pred(*__first)) erase(__first);
+            __first=__next;
+        }
+    }
+#endif
 };
 #ifdef FABLE_RETAIL_STLP_LIST_SORT
 // Per-TU opt-in (wf9, row 0x006F3A30): STLport 4.6 _list.c _S_merge (body visible; retail calls the instance out of line, 0x006F04C0)

@@ -128,6 +128,11 @@ public:
  // in retail at 0x0044FC00 (the only PDB spelling of the four bound to it). Declaration only.
  void TransferBinaryIn(CDataInputStream& stream);                       // 0x0044FC00
 #endif
+#ifdef FABLE_RETAIL_CDEFSTRING_EQ_CHARSTRING
+ // NF67 opt-in (round 7, rows 0x00921440 / 0x00966290): Ego_r.pdb / FableWin.pdb ??8CDefString@@QBE_NABVCCharString@@@Z, out of line in
+ // retail at 0x004B7980 (landed; the expression def's instantiation name compared with the caller's CCharString). Declaration only.
+ bool operator==(const CCharString& text) const;                       // 0x004B7980
+#endif
 #ifdef FABLE_RETAIL_CDEFSTRING_NE_CHARSTRING
  // Opt-in (wf14, row 0x0076C9A0 CTCEnemy::OnSerialise): Ego_r.pdb ??9CDefString@@QBE_NABVCCharString@@@Z (0x0077B970), retail
  // 0x0076D640 (out of line, emitted in the CTCEnemy TU). Declaration only.

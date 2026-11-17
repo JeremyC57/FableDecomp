@@ -241178,9 +241178,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00869ca0'
-        Module = 'std::multimap'
-        Source = '00/86/CMemoryAllocatorVariableSize_InsertNodewithrefcount_00869ca0.cpp'
-        TestSource = '00/86/CMemoryAllocatorVariableSize_InsertNodewithrefcount_00869ca0_test.cpp'
+        Module = 'std::_Rb_tree<CDefPointer<CArmourDef const>, std::pair<CDefPointer<CArmourDef const> const, float>, std::_Select1st<std::pair<CDefPointer<CArmourDef const> const, float>>, CCompareDefPointer<CArmourDef const, float>, std::allocator<std::pair<CDefPointer<CArmourDef const> const, float>>>'
+        Source = '00/86/stdRbtree_Minsert_00869ca0.cpp'
+        TestSource = '00/86/stdRbtree_Minsert_00869ca0_test.cpp'
         PassPattern = '00869ca0_TEST PASS'
     }
     [pscustomobject]@{
@@ -275161,9 +275161,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008f7950'
-        Module = '_global'
-        Source = '00/8f/global_CreateDustEffectForCreature_008f7950.cpp'
-        TestSource = '00/8f/global_CreateDustEffectForCreature_008f7950_test.cpp'
+        Module = 'NCombatActionHelpers'
+        Source = '00/8f/NCombatActionHelpers_CreateDustEffectForCreature_008f7950.cpp'
+        TestSource = '00/8f/NCombatActionHelpers_CreateDustEffectForCreature_008f7950_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008f7950_TEST PASS'
     }

@@ -1,141 +1,70 @@
-// CAIStateGroup_CarryCrateAndFollow::IsExpressionPerfomedTo(const CCharString& expression, CIntelligentPointer<CThing>& performer) const -- look for an "expression performed" message naming this expression; on a hit hand back its sender and consume the message
+// CAIStateGroup_CarryCrateAndFollow::IsExpressionPerfomedTo(const CCharString& expression, CIntelligentPointer<CThing>& performer) const -- look for an expression-performed-to event naming this expression; on a hit hand back its performer and consume the event
+// Leaf: ?IsExpressionPerfomedTo@CAIStateGroup_CarryCrateAndFollow@@ABE_NABVCCharString@@AAV?$CIntelligentPointer@VCThing@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00966290, 256 bytes (`ret 8`).
-// Ego_r.pdb: ?IsExpressionPerfomedTo@CAIStateGroup_CarryCrateAndFollow@@ABE_NABVCCharString@@AAV?$CIntelligentPointer@VCThing@@@@@Z.
-// Callees: CVectorMap::LowerBound 0x0040F020 (inlined GetInterface 0x42), the message's virtual slot 1 (+4, type), the
-// payload's virtual slot 10 (+0x28, CDefString by hidden pointer), CDefString::operator==(const CCharString&) 0x004B7980
-// (its argument pushed before the virtual call), the payload's destroy (slot 1), the converting CIntelligentPointer<CThing>
-// temporary (vtable 0x01238C6C: GetPItem 0x00A01B50, ctor 0x00A01B10, SetPItem 0x00A01B90 x2, dtor 0x00A01C10),
-// the receiver's RemoveMessage(CMessage*) 0x008112D0.
-// Shape: the landed AI state-group model; a list walk re-reading the sentinel each pass; a counted copy of the message
-// payload (inline add-ref / release) for the expression compare; on a match `performer = CIntelligentPointer<CThing>(sender)`
-// then the message is removed.
-// Leaf: IsExpressionPerfomedTo@CAIStateGroup_CarryCrateAndFollow
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
-// ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-class CTCBase;
-class CThing;
-class CWorld;
-class CThingAICreature;
-
-// A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
-// {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
-// GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
+// Callees: CVectorMap::LowerBound 0x0040F020 (inline GetTC<CTCEntityEvents>, 0x42), the event's GetType (slot 1), the expression def's
+// GetInstantiationName (CDefClassBase slot 10, CDefString by hidden pointer), CDefString::operator==(const CCharString&) 0x004B7980 (its
+// argument pushed before the virtual call), the def's release (slot 1), the CIntelligentPointer<CThing> temporary (vtable 0x01238C6C:
+// GetPItem 0x00A01B50, ctor 0x00A01B10, SetPItem 0x00A01B90 x2, dtor 0x00A01C10), CTCEntityEvents::RemoveEvent 0x008112D0.
+// Shape: the forward walk of CTCEntityEvents::GetEvents() re-reading the sentinel each pass (the 0x0097FEA0 FindAGuardAndYellForHelp loop);
+// a counted copy of the expression def for the compare; on a match `performer = CIntelligentPointer<CThing>(performed_by)`, then the event
+// is removed.
+// NF67 (round 7): ported onto the shared headers (the 0x0097FEA0 event-walk block). The CTCMessageReceiver / CMessageList / CMessage /
+//   CExpressionPayload / CIVCountedPointer / CIntelligentPointerThingC / CThing / CAIBrain / CAIStateGroupBase stand-ins are gone; overlay
+//   opt-ins FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW_EXPRESSION (the private const member), FABLE_RETAIL_CDEFSTRING_EQ_CHARSTRING,
+//   FABLE_RETAIL_CEVENTEXPRESSIONPERFORMEDTO_GETTERS. 0x008112D0 now binds ?RemoveEvent@CTCEntityEvents@@QAEXAAVCEventBase@NEntityEvents@@@Z (nf41:e80).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_EQ_CHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
-#include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CBaseObject;
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_CTCENTITYEVENTS
+#define FABLE_RETAIL_CTCENTITYEVENTS_EVENTS
+#define FABLE_RETAIL_CEVENTEXPRESSIONPERFORMEDTO_GETTERS
+#define FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW
+#define FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW_EXPRESSION
+#include "fable_string.h"
+#include "engine/CDefString.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_CarryCrateAndFollow.h"
+#include "engine/CTCEntityEvents.h"
+#include "engine/NEntityEvents_EEventType.h"
+#include "engine/NEntityEvents_CEventExpressionPerformedTo.h"
+#include "engine/CExpressionDef.h"
+#include "engine/GFDebugPDynamicCast.h"
 
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
-};
-
-// IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+bool CAIStateGroup_CarryCrateAndFollow::IsExpressionPerfomedTo(const CCharString& expression, CIntelligentPointer<CThing>& performer) const
 {
-    if (((CThing*)p.GetPItem()) != 0) {
-        if (!((CThing*)p.GetPItem())->IsDead())
-            return true;
-    }
-    return false;
-}
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void Cleanup();                     // slot 9  (+0x24)
-    virtual void OnReplace();                   // slot 10 (+0x28)
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void v13();
-    virtual long GetTimeToInitiate();           // slot 14 (+0x38)
-    virtual void v15(); virtual void v16(); virtual void v17();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
-};
-
-class CCharString;
-class CDefString { public:
-    long m_index;
-    bool operator==(const CCharString& other) const;   // 0x004B7980
-};
-
-struct CExpressionPayload {                     // intrusively counted (count +4, destroy = slot 1)
-    virtual void v00();
-    virtual void Destroy();                     // slot 1 (+4)
-    long m_count;                               // +0x04
-    virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
-    virtual void v07(); virtual void v08(); virtual void v09();
-    virtual CDefString GetExpression() const;   // slot 10 (+0x28)
-};
-template <class T> class CIVCountedPointer { public:
-    T* Data;
-    CIVCountedPointer(const CIVCountedPointer& o) : Data(o.Data) { if (Data) ++Data->m_count; }
-    ~CIVCountedPointer() { if (--Data->m_count == 0) Data->Destroy(); }
-    T* operator->() const { return Data; }
-};
-
-struct CMessage {
-    virtual void v00();
-    virtual long GetType() const;               // slot 1 (+4); 3 = expression performed
-    long _04;
-    CBaseIntelligentPointer Sender;             // +0x08
-    CIVCountedPointer<CExpressionPayload> Payload;   // +0x10
-};
-
-struct CMessageList {                           // STLport list<CMessage*>: the sentinel node
-    struct SNode { SNode* _M_next; SNode* _M_prev; CMessage* _M_data; };
-    SNode* _M_node;
-};
-struct CTCMessageReceiver {                     // the interface-0x42 component
-    unsigned char _pad[0x0c];
-    CMessageList Messages;                      // +0x0c
-    void RemoveMessage(CMessage* message);      // 0x008112D0 (manifest "remove_if<..CIsType>" is propagated)
-};
-
-struct CIntelligentPointerThingC : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThingC(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointerThingC& operator=(const CIntelligentPointerThingC& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
-};
-
-struct CAIStateGroup_CarryCrateAndFollow : CAIStateGroupBase {
-    bool IsExpressionPerfomedTo(const CCharString& expression, CIntelligentPointerThingC& performer) const;
-};
-
-bool CAIStateGroup_CarryCrateAndFollow::IsExpressionPerfomedTo(const CCharString& expression, CIntelligentPointerThingC& performer) const
-{
-    CTCMessageReceiver* receiver;
-    if (PBrain->PCreature->GetTC(TCI_ENTITY_EVENTS, &receiver)) {
-        for (CMessageList::SNode* node = receiver->Messages._M_node->_M_next; node != receiver->Messages._M_node; node = node->_M_next) {
-            CMessage* message = node->_M_data;
-            if (message->GetType() == 3) {
-                bool performed;
-                {
-                    CIVCountedPointer<CExpressionPayload> payload = message->Payload;
-                    performed = payload->GetExpression() == expression;
-                }
-                if (performed) {
-                    performer = CIntelligentPointerThingC(((CThing*)message->Sender.GetPItem()));
-                    receiver->RemoveMessage(message);
+    CTCEntityEvents* ptc_events;
+    if (GetCreature().GetTC(&ptc_events)) {
+        for (std::list<CCountedPointer<NEntityEvents::CEventBase> >::const_iterator it = ptc_events->GetEvents().begin();
+             it != ptc_events->GetEvents().end(); ++it) {
+            NEntityEvents::CEventBase* event = (*it).Get();
+            if (event->GetType() == NEntityEvents::CEventExpressionPerformedTo::StatGetType()) {
+                NEntityEvents::CEventExpressionPerformedTo* expression_event = GFDebugPDynamicCast(event, (NEntityEvents::CEventExpressionPerformedTo*)0);
+                if (expression_event->GetPExpressionDef()->GetInstantiationName() == expression) {
+                    performer = CIntelligentPointer<CThing>(expression_event->GetPPerformedBy());
+                    ptc_events->RemoveEvent(*event);
                     return true;
                 }
             }

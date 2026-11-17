@@ -180,6 +180,13 @@ public:
     typedef _Rb_tree_iterator<V,_Const_traits<V> > const_iterator;
     iterator insert_equal(const V&);
 private:
+#if defined(FABLE_RETAIL_STLP_TREE_MINSERT_NOINLINE) && defined(_MSC_VER)
+    // NF67 opt-in (round 7, row 0x00869020 CHitParameters::SetAsModifiedByArmour, with FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY): the
+    // STLport _tree.c body visible but called out of line, as retail calls the armour multimap's _M_insert 0x00869CA0 there. Seeing that
+    // it only reads the value, VC7.1 keeps the converted pair's def pointer in esi through the call and both releases (0x008690CB..
+    // 0x008690E4), as retail does; an opaque call reloads it from the pair's frame slot.
+    __declspec(noinline)
+#endif
     iterator _M_insert(_Rb_tree_node_base*,_Rb_tree_node_base*,const V&,_Rb_tree_node_base* =0);
 public:
 #ifdef FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
@@ -954,6 +961,12 @@ public:
 #endif
     multimap():_M_t(Compare(),A()){}
     iterator insert(const value_type& x){return _M_t.insert_equal(x);}
+#ifdef FABLE_RETAIL_STLP_MULTIMAP_EMPTY
+    // NF67 opt-in (round 7, row 0x00869020 CHitParameters::SetAsModifiedByArmour): STLport 4.6 _multimap.h `bool empty() const
+    // { return _M_t.empty(); }` (the node count tested in place, 0x00869071 `cmp [esp+30h],ebp`). Needs FABLE_RETAIL_STLP_SET_EMPTY (the
+    // tree's empty). Body only, no layout change.
+    bool empty() const { return _M_t.empty(); }
+#endif
 #ifdef FABLE_RETAIL_STLP_MULTIMAP_BEGIN_END
     // Per-TU opt-in (row 0x00ACA830): STLport 4.6 _multimap.h begin() / end() (inline; 0x00ACC24F walks VertexPairContractions
     // from the header's left link to the header).

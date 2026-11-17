@@ -33,6 +33,16 @@ class CEventExpressionPerformedTo : public CEventBase {
 public:
     static EEventType __fastcall StatGetType() { return (EEventType)3; }
     CDefPointer<const CExpressionDef> GetPExpressionDef() const { return PExpressionDef; }
+#ifdef FABLE_RETAIL_CEVENTEXPRESSIONPERFORMEDTO_GETTERS
+    // NF67 opt-in (round 7, rows 0x00921440 / 0x00966290): FableWin.pdb ?GetPPerformedBy@CEventExpressionPerformedTo@NEntityEvents@@QBEPAVCThingCreatureBase@@XZ,
+    // ?GetExtraData1@..@@QBEJXZ, ?GetExtraData2@..@@QBEJXZ, ?GetDurationInFrames@..@@QBEJXZ, inline in retail (0x00921571 `lea ecx,[ebp+8]` +
+    // GetPItem 0x00A01B50; 0x0092159E `mov eax,[ebp+18h]`; 0x009215B1 `mov eax,[ebp+1Ch]`). Bodies only (needs CThingCreatureBase complete
+    // for the Get() cast); no layout change.
+    CThingCreatureBase* GetPPerformedBy() const { return PerformedBy.Get(); }
+    long GetDurationInFrames() const { return DurationInFrames; }
+    long GetExtraData1() const { return ExtraData1; }
+    long GetExtraData2() const { return ExtraData2; }
+#endif
 private:
     CIntelligentPointer<CThingCreatureBase> PerformedBy;                 // +0x08
     CDefPointer<const CExpressionDef> PExpressionDef;                    // +0x10

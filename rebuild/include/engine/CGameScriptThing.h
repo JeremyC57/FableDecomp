@@ -49,6 +49,12 @@ public:
     // (an override: no vtable change).
     virtual bool IsNull() const;                                         // 77 0x008D0110
 #endif
+#ifdef FABLE_RETAIL_CGAMESCRIPTTHING_MSGGETTHINGSKILLED
+    // NF67 opt-in (round 7, row 0x008D3DD0): the CScriptThing slot-55 override Ego_r.pdb
+    // ?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z (retail 0x008D3DD0; engine/CScriptThing.h slot 55).
+    // Declaration only (an override: no vtable change). The includer includes stlport/fable_containers.h first.
+    virtual bool MsgGetThingsKilled(std::vector<unsigned long>& groups) const;   // 55 0x008D3DD0
+#endif
     CIntelligentPointer<CThing> PThing;                                  // +0x0c
     long                        ScriptCounter;                           // +0x14
     unsigned __int64            ThingUID;                                // +0x18

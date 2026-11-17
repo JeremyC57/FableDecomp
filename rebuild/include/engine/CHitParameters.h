@@ -23,6 +23,9 @@ class CMaterialDef;class CThing;
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 class CArmourDef;class CThingGameObject;
 #endif
+#if defined(FABLE_RETAIL_CHITPARAMETERS_SETASMODIFIEDBYARMOUR) && !defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT)
+class CArmourDef;                          // NF67 opt-in below: SetAsModifiedByArmour's parameter type
+#endif
 // Original Ego_r TPI0x2af3a; native OnHit proves offsets0,1,2,e,1a..28,48,50,58.
 // STLport replaces both 16-byte donor containers with12-byte containers: native sizeof60.
 #if defined(FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP) || defined(FABLE_RETAIL_CHITPARAMETERS_SPECIALABILITY)
@@ -134,6 +137,12 @@ bool IsLightningStrike()const;bool IsDivineWrathStrike()const;bool IsUnholyPower
 public:
 void SetHitNegated(bool value){HitNegated=value;}
 void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
+#endif
+#if defined(FABLE_RETAIL_CHITPARAMETERS_SETASMODIFIEDBYARMOUR) && !defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT)
+    // NF67 opt-in (round 7, row 0x00869020 itself): Ego_r.pdb / FableWin.pdb
+    // ?SetAsModifiedByArmour@CHitParameters@@QAEXABVCThing@@AAV?$CDefPointer@$$CBVCArmourDef@@@@@Z (public, the same declaration
+    // FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT carries, without that opt-in's other members). Declaration only: no layout change.
+    void SetAsModifiedByArmour(const CThing&,CDefPointer<const CArmourDef>&);   // 0x00869020
 #endif
     bool IsMoveBackOnHit() const { return MoveBack; }
     bool IsCreateDustParticleEffectOnHit() const { return CreateDustParticleEffectOnHit; }

@@ -1,347 +1,209 @@
-// CHitParameters::SetAsModifiedByArmour(const CThing& thing, CDefPointer<const CArmourDef>& armour) -- collect the thing's armour defs (or the given armour at weight 1 when it has none), raise the recoil / negate / knock-down flags the armour asks for, then run every damage attribute through the armour tree (a ranged hit above the shot build-up time negates the hit), buff it by the hit's augmentations, scale it by the effective damage multiplier and, for absorbing things, clamp the total to the armour absorb value; no damage left and no guaranteed hit negates the hit
-// Leaf: SetAsModifiedByArmour
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00869020, 955 bytes, `ret 8`.
-// Shape notes (what the lane needs to reproduce retail's register/schedule choices):
-//  * same-TU `__declspec(noinline)` stand-ins under `#pragma auto_inline(off)` for three callees whose retail bodies sat
-//    in the same TU: the multimap _M_insert (0x00869CA0; only READS the pair, so the converted pair's key stays in esi
-//    through the insert and both CDefPointer releases), GetArmourWeightsFromThing (0x00868E50; writes the multiplier by
-//    reference without letting its address escape, which lets the `it->second = 0` store and the map-ctor stores sink
-//    below the argument pushes as retail's do) and GetArmourResponseAugmentationDamageMultiplier (0x00868A80; writes only its float&, so
-//    the augmentation loop's `Augmentations._M_finish` re-read is hoisted into edi after the entry test's eax load).
-//    They are not inlined and are not part of the graded leaf.
-//  * the augmentation loop runs on its own `float current = damage;` copy declared inside `if (numAugmentations > 0)`
-//    (retail's `fstp st(0) ; fld [esp+0x18]` reload at the loop entry) and tests `aug != Augmentations._M_finish`.
-//  * the absorb scale loop stores through a reference bound first (`float& entry = ...; entry = entry * scale;`) so the
-//    Increment load stays below the fmul/fstp pair.
+// CHitParameters::SetAsModifiedByArmour(const CThing& thing, CDefPointer<const CArmourDef>& armour) -- collect the thing's armour defs (or the given armour at weight 1 when it has none), raise the recoil / negate / knock-down flags the armour asks for (an AI creature immune to attack negates the hit), then run every damage attribute through the armour weights (a deflectable projectile whose armour threshold beats the shot build-up time negates the hit), buff it by the hit's augmentations, scale it by the toughness damage reduction factor and, for physical things, clamp the total to the thing's health; no damage left and no guaranteed hit negates the hit
+// Leaf: ?SetAsModifiedByArmour@CHitParameters@@QAEXABVCThing@@AAV?$CDefPointer@$$CBVCArmourDef@@@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00869020, 955 bytes, thiscall `ret 8`.
+// NF67 port (round 7): onto the shared headers -- engine/CHitParameters.h (DamageMap std::map<EDamageAttribute,float> +0x30,
+//   Augmentations std::vector<EObjectAugmentationType> +0x3C, PWeapon CIntelligentPointer<CThing> +0x58), engine/CArmourDef.h
+//   (AllHitsKnockdown / AllHitsNegated / AllHitsCauseRecoil +0x60..+0x62), engine/CDefPointer.h, engine/CCompareDefPointer.h, the
+//   STLport multimap<CDefPointer<const CArmourDef>, float, CCompareDefPointer<const CArmourDef, float> > of stlport/fable_map.h
+//   (the tree's _M_insert 0x00869CA0 and _M_erase 0x00869BB0 out of line), engine/CThing.h (CClass::GetType +0x10, GetTypeFlags +0x6C),
+//   engine/CThingAICreature.h (IsImmuneToAttack, +0x1C8 bit 6), engine/CThingPhysical.h (GetHealth +0xB4) and
+//   engine/NThingShot_CTCShotDefinitionBase.h (IsAbleToBeDeflected 0x007BED60 through PeekTC, TCI_SHOT_DEFINITION 119).
+//   `GetTypeFlags() & 2` is the thing-type bit retail tests (`test byte ptr [esi+6Ch],2`) before reading CThingPhysical::Health.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGAICREATURE_ISIMMUNETOATTACK
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
+#define FABLE_RETAIL_CHITPARAMETERS_AUGMENTATIONS
+#define FABLE_RETAIL_CHITPARAMETERS_SETASMODIFIEDBYARMOUR
+#define FABLE_RETAIL_CTCSHOTDEFINITIONBASE_ISABLETOBEDEFLECTED
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_INSERT_EQUAL_BODY
+#define FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
+#define FABLE_RETAIL_STLP_TREE_MINSERT_NOINLINE
+#define FABLE_RETAIL_STLP_SET_EMPTY
+#define FABLE_RETAIL_STLP_MULTIMAP_EMPTY
+#define FABLE_RETAIL_STLP_MULTIMAP_PASS22_ATMOS_ITERATION
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#define FABLE_RETAIL_CARMOURDEF_AUGMENTATIONRESPONSE
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
+#define FABLE_RETAIL_STLP_LIST
+#include "stlport/fable_map.h"
 #include "fable_compiler.h"
-extern "C" void* __cdecl malloc(unsigned int size);            // 0x00BFEA0E
-extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
+#include "engine/CDefPointer.h"
+#include "engine/CArmourDef.h"
+#include "engine/CCompareDefPointer.h"
+#include "engine/EDamageAttribute.h"
+#include "engine/EObjectAugmentationType.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CThingPhysical.h"
+#include "engine/NThingShot_CTCShotDefinitionBase.h"
+#include "engine/ThingAlive.h"
+#include "engine/CHitParameters.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CThingObjectDef.h"
+#include "engine/CAppearanceModifierDef.h"
+#include "engine/CTCHeroAttachableAppearanceModifiers.h"
 
-struct CRbNode {
-    unsigned char _M_color;
-    CRbNode* _M_parent;
-    CRbNode* _M_left;
-    CRbNode* _M_right;
-};
-
-class CArmourDef {
-public:
-    virtual void v00();
-    virtual void DeleteThis();
-    long          RefCount;                                    // +0x04
-    unsigned char _pad08[0x60 - 0x08];
-    bool          CausesKnockDown;                             // +0x60 (descriptive)
-    bool          NegatesHit;                                  // +0x61 (descriptive)
-    bool          CausesRecoil;                                // +0x62 (descriptive)
-};
-
-struct CArmourDefPointer {                                     // CDefPointer<const CArmourDef>
-    CArmourDef* Ptr;
-    FABLE_FORCEINLINE CArmourDefPointer(const CArmourDefPointer& other) : Ptr(other.Ptr) { if (Ptr) ++Ptr->RefCount; }
-    FABLE_FORCEINLINE ~CArmourDefPointer() { if (Ptr) { if (--Ptr->RefCount == 0) Ptr->DeleteThis(); } }
-    CArmourDef* operator->() const { return Ptr; }
-};
-
-struct CArmourPairTemp {                                       // pair<CDefPointer<const CArmourDef>, float>
-    CArmourDefPointer first;
-    float second;
-    CArmourPairTemp(const CArmourDefPointer& a, const float& b) : first(a), second(b) { }
-};
-struct CArmourPair {                                           // pair<const CDefPointer<const CArmourDef>, float>
-    const CArmourDefPointer first;
-    float second;
-    CArmourPair(const CArmourPairTemp& p) : first(p.first), second(p.second) { }
-};
-inline CArmourPairTemp MakeArmourPair(const CArmourDefPointer& a, const float& b) { return CArmourPairTemp(a, b); }
-
-struct CArmourNode : CRbNode { CArmourPair _M_value_field; };
-
-struct CArmourIterator {
-    CRbNode* _M_node;
-    CArmourIterator() { }
-    CArmourIterator(CRbNode* x) : _M_node(x) { }
-    CArmourIterator(const CArmourIterator& other) : _M_node(other._M_node) { }
-};
-
-struct CArmourMap {                                            // multimap<CDefPointer<const CArmourDef>, float> (STLport, 12 bytes)
-    CRbNode* _M_header;
-    unsigned long _M_node_count;
-    unsigned long _M_key_compare;
-    CArmourMap() : _M_header(0)
-    {
-        _M_header = (CRbNode*)malloc(sizeof(CArmourNode));
-        _M_node_count = 0;
-        _M_header->_M_color = 0;
-        _M_header->_M_parent = 0;
-        _M_header->_M_left = _M_header;
-        _M_header->_M_right = _M_header;
-    }
-    ~CArmourMap()
-    {
-        clear();
-        if (_M_header)
-            free(_M_header);
-    }
-    void _M_erase(CRbNode* x);                                 // 0x00869BB0
-    CArmourIterator _M_insert(CRbNode* x, CRbNode* y, const CArmourPair& v, CRbNode* w);   // 0x00869CA0
-    bool empty() const { return _M_node_count == 0; }
-    void clear()
-    {
-        if (_M_node_count != 0) {
-            _M_erase(_M_header->_M_parent);
-            _M_header->_M_left = _M_header;
-            _M_header->_M_parent = 0;
-            _M_header->_M_right = _M_header;
-            _M_node_count = 0;
-        }
-    }
-    CArmourIterator insert(const CArmourPair& v)
-    {
-        CRbNode* y = _M_header;
-        CRbNode* x = _M_header->_M_parent;
-        while (x != 0) {
-            y = x;
-            x = v.first.Ptr < ((CArmourNode*)x)->_M_value_field.first.Ptr ? x->_M_left : x->_M_right;
-        }
-        return _M_insert(x, y, v, 0);
-    }
-};
-
-typedef long EDamageAttribute;
-typedef long EObjectAugmentationType;
-
-struct CDamageNode : CRbNode { EDamageAttribute first; float second; };
-
-FABLE_FORCEINLINE CRbNode* Increment(CRbNode* node)
+// The armour helpers are this TU's anonymous-namespace functions (Ego_r.pdb ?...@?A0x23f4dc30@@YI...; retail 0x008686E0..0x00868E50, all
+// called only from here). Two bodies are visible, as they are in the retail TU, and kept out of line as retail calls them: the
+// texts of the landed rows 0x00868E50 (GetArmourWeightsFromThing, with its GetDef / GetSubDef<CAppearanceModifierDef> helpers)
+// and 0x00868A80 (GetArmourResponseAugmentationDamageMultiplier). Seeing them, VC7.1 knows the weight total and the augmentation
+// buff are written only through their references and CHitParameters is not touched: the map header and `it->second = 0` stores
+// sink below the argument pushes (0x00869065 / 0x0086922A) and Augmentations' end stays in edi across the buff loop (0x00869256).
+template<class T> bool CDefinitionManager::GetDef(long index,CDefPointer<const T>* out) const
 {
-    if (node->_M_right != 0) {
-        node = node->_M_right;
-        while (node->_M_left != 0)
-            node = node->_M_left;
-    } else {
-        CRbNode* y = node->_M_parent;
-        while (node == y->_M_right) {
-            node = y;
-            y = y->_M_parent;
+    if(index>0) {
+        CDefPointer<const CDefClassBase> def=GetPDefFromGlobalIndex(index);
+        if(!def.IsNull()) {
+            out->SetDynamicCast(def);
+            return true;
         }
-        if (node->_M_right != y)
-            node = y;
     }
-    return node;
-}
-
-struct CDamageMap {                                            // map<EDamageAttribute, float> (STLport, 12 bytes)
-    CRbNode* _M_header;
-    unsigned long _M_node_count;
-    unsigned long _M_key_compare;
-    CRbNode* end() const { return _M_header; }
-    CRbNode* find(const EDamageAttribute& k) const
-    {
-        CRbNode* y = _M_header;
-        CRbNode* x = _M_header->_M_parent;
-        while (x != 0) {
-            if (!(((CDamageNode*)x)->first < k)) {
-                y = x;
-                x = x->_M_left;
-            } else
-                x = x->_M_right;
-        }
-        if (y == _M_header || k < ((CDamageNode*)y)->first)
-            y = _M_header;
-        return y;
-    }
-};
-
-struct CAugmentationArray {                                    // vector<EObjectAugmentationType> (12 bytes retail)
-    EObjectAugmentationType* _M_start;
-    EObjectAugmentationType* _M_finish;
-    EObjectAugmentationType* _M_end_of_storage;
-};
-
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CTCWeapon { public:                                             // interface 0x77 (descriptive)
-    bool IsRanged() const;                                     // 0x007BED60 (descriptive)
-};
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char ThingType;                                   // +0x10 (descriptive)
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];                            // +0x20
-    CInterfaceMap m_interfaces;                                // +0x44
-    unsigned char _pad54[0x18];
-    unsigned char Flags6c;                                     // +0x6c (descriptive)
-    unsigned char _pad6d[0x91 - 0x6d];
-    unsigned char Dead : 1;                                    // +0x91 bit 0
-    unsigned char _pad92[0xb4 - 0x92];
-    float         ArmourAbsorb;                                // +0xb4 (descriptive)
-    unsigned char _padb8[0x1c8 - 0xb8];
-    unsigned char Flags1c8;                                    // +0x1c8 (descriptive)
-    FABLE_FORCEINLINE bool IsRangedWeapon() const
-    {
-        if (m_presentBits[3] & 0x800000) {
-            ETCInterfaceType type = (ETCInterfaceType)(0x77);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            return ((CTCWeapon*)(it == map->end() || 0x77 < it->first ? map->end() : it)->second)->IsRanged();
-        }
-        return false;
-    }
-};
-inline bool IsAlive(const CThing* thing) { return thing && !thing->Dead; }
-
-class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* Ptr;
-    long  Index;
-    CBaseObject* GetPItem() const;                                  // 0x00A01B50
-    CThing* operator->() const { return ((CThing*)GetPItem()); }
-};
-
-// The armour helpers sit in this TU's anonymous namespace (Ego_r.pdb ?...@?A0x23f4dc30@@YI..., all taking the armour
-// multimap<CDefPointer<const CArmourDef>, float, CCompareDefPointer<const CArmourDef> >; sweep3, FINDINGS chunk 481).
-namespace {
-void __fastcall GetArmourWeightsFromThing(const CThing& thing, CArmourMap& armours, float& multiplier);   // 0x00868E50
-float __fastcall GetToughnessDamageReductionFactorForThing(const CThing& thing);                       // 0x00868B40
-float __fastcall GetArmourThresholdValueFromArmourWeights(EDamageAttribute attribute, const CArmourMap& armours, float multiplier);   // 0x008686E0
-bool __fastcall GetArmourResponseDamageAttributeDamageMultiplier(EDamageAttribute attribute, const CArmourMap& armours, float multiplier, float& damage);   // 0x008687A0
-bool __fastcall GetArmourResponseAugmentationDamageMultiplier(EObjectAugmentationType type, const CArmourMap& armours, float multiplier, float& damage);    // 0x00868A80
-}
-
-// Layout: retail CHitParameters keeps the PDB bool/float offsets up to +0x2c, then 12-byte STLport containers:
-// DamageMap +0x30, Augmentations +0x3c, PHitLocation +0x48, PHitMaterialDef +0x4c, PThingHitting +0x50, PWeapon +0x58.
-class CHitParameters {
-public:
-    unsigned char _pad00[0x1a];
-    bool          KnockDown;                                   // +0x1a
-    unsigned char _pad1b[0x25 - 0x1b];
-    bool          GuaranteeHit;                                // +0x25
-    bool          Blocked;                                     // +0x26
-    bool          HitNegated;                                  // +0x27
-    bool          CauseRecoil;                                 // +0x28
-    float         ShotBuildupTime;                             // +0x2c
-    CDamageMap    DamageMap;                                   // +0x30
-    CAugmentationArray Augmentations;                          // +0x3c
-    void*         PHitLocation;                                // +0x48
-    void*         PHitMaterialDef;                             // +0x4c
-    CBaseIntelligentPointer PThingHitting;                     // +0x50
-    CBaseIntelligentPointer PWeapon;                           // +0x58
-    void SetAsModifiedByArmour(const CThing& thing, CArmourDefPointer& armour);
-};
-
-// Same-TU read-mostly stand-ins for the __fastcall armour helpers (retail bodies are elsewhere; not inlined, not part of the leaf).
-#pragma auto_inline(off)
-namespace {
-__declspec(noinline) void __fastcall GetArmourWeightsFromThing(const CThing& thing, CArmourMap& armours, float& multiplier)
-{
-    multiplier = thing.ArmourAbsorb;
-    if (thing.Flags6c & 1)
-        armours.clear();
-}
-__declspec(noinline) bool __fastcall GetArmourResponseAugmentationDamageMultiplier(EObjectAugmentationType type, const CArmourMap& armours, float multiplier, float& damage)
-{
-    if (type > 0)
-        damage += multiplier * (float)armours._M_node_count;
     return false;
 }
-}
-#pragma auto_inline(on)
-
-// Same-TU stand-in for the LTCG _M_insert (0x00869CA0): it only READS `v`, so VC7.1 keeps the converted pair's key in
-// a register across the call instead of re-reading the pair's frame slot for the releases. Not inlined, not part of the leaf.
-#pragma auto_inline(off)
-__declspec(noinline) CArmourIterator CArmourMap::_M_insert(CRbNode* x, CRbNode* y, const CArmourPair& v, CRbNode* w)
+template<> bool CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const CAppearanceModifierDef>* out) const
 {
-    CArmourNode* z = (CArmourNode*)malloc(sizeof(CArmourNode));
-    CArmourDef* def = v.first.Ptr;
-    ((CArmourDefPointer*)&z->_M_value_field.first)->Ptr = def;
-    if (def)
-        ++def->RefCount;
-    z->_M_value_field.second = v.second;
-    if (y == _M_header || x != 0 || def < ((CArmourNode*)y)->_M_value_field.first.Ptr) {
-        y->_M_left = z;
-        if (y == _M_header) {
-            _M_header->_M_parent = z;
-            _M_header->_M_right = z;
-        } else if (y == _M_header->_M_left)
-            _M_header->_M_left = z;
-    } else {
-        y->_M_right = z;
-        if (y == _M_header->_M_right)
-            _M_header->_M_right = z;
+    const CSubDefInfo* info;
+    {
+        CCharString name("CAppearanceModifierDef");
+        info=GetPSubDefInfo(name);
     }
-    z->_M_parent = y;
-    z->_M_left = 0;
-    z->_M_right = 0;
-    z->_M_color = 0;
-    ++_M_node_count;
-    return CArmourIterator(z);
+    if(info) {
+        CDefPointer<const CDefClassBase> def=PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
+        out->SetDynamicCast(def);
+        return true;
+    }
+    return false;
 }
-#pragma auto_inline(on)
-
-void CHitParameters::SetAsModifiedByArmour(const CThing& thing, CArmourDefPointer& armour)
+namespace {
+__declspec(noinline) void FABLE_FASTCALL GetArmourWeightsFromThing(const CThing& thing,
+    std::multimap<CDefPointer<const CArmourDef>,float,CCompareDefPointer<const CArmourDef,float> >& armour_weights,
+    float& total_armour_weight)                                                                               // 0x00868E50
 {
-    CArmourMap armours;
-    float multiplier = 0.0f;
-    GetArmourWeightsFromThing(thing, armours, multiplier);
-    if (armours.empty()) {
-        armours.insert(MakeArmourPair(armour, 1.0f));
-        multiplier = 1.0f;
-    }
-    if (armour->CausesRecoil)
-        CauseRecoil = true;
-    if (armour->NegatesHit)
-        HitNegated = true;
-    if (armour->CausesKnockDown)
-        KnockDown = true;
-    if (thing.ThingType == 1 && (thing.Flags1c8 & 0x40))
-        HitNegated = true;
-
-    float damageMultiplier = GetToughnessDamageReductionFactorForThing(thing);
-    long numAugmentations = Augmentations._M_finish - Augmentations._M_start;
-    bool anyDamage = false;
-    float total = 0.0f;
-    for (CRbNode* it = DamageMap._M_header->_M_left; it != DamageMap._M_header; it = Increment(it)) {
-        float damage = ((CDamageNode*)it)->second;
-        CRbNode* end = DamageMap._M_header;
-        EDamageAttribute attribute = ((CDamageNode*)it)->first;
-        if (DamageMap.find(4) != end && IsAlive(((CThing*)PWeapon.GetPItem())) && PWeapon->IsRangedWeapon()) {
-            if (GetArmourThresholdValueFromArmourWeights(attribute, armours, multiplier) > ShotBuildupTime)
-                HitNegated = true;
+    const CGameDefinitionManager& def_man=thing.PeekDefinitionManager();
+    const CTCHeroAttachableAppearanceModifiers* ptc_armour_clothes;
+    if(thing.PeekTC(TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS,&ptc_armour_clothes)) {
+        std::list<long> clothes_list;
+        ptc_armour_clothes->GetAppearanceModifierList(clothes_list,APPEARANCE_CLOTHING);
+        for(std::list<long>::iterator it=clothes_list.begin();it!=clothes_list.end();++it) {
+            CDefPointer<const CThingObjectDef> pdef;
+            long clothing_item_def_index=*it;
+            def_man.GetDef(clothing_item_def_index,&pdef);
+            CDefPointer<const CAppearanceModifierDef> pclothing_def;
+            pdef->GetSubDef(&pclothing_def);
+            if(pclothing_def->ArmourDefIndex>=0) {
+                CDefPointer<const CArmourDef> parmour_def;
+                def_man.GetDef(pclothing_def->ArmourDefIndex,&parmour_def);
+                armour_weights.insert(std::make_pair(parmour_def,pclothing_def->OveralProtectionWeighting));
+                total_armour_weight+=pclothing_def->OveralProtectionWeighting;
+            }
         }
-        ((CDamageNode*)it)->second = 0.0f;
-        if (GetArmourResponseDamageAttributeDamageMultiplier(attribute, armours, multiplier, damage)) {
+    }
+}
+float FABLE_FASTCALL GetToughnessDamageReductionFactorForThing(const CThing& thing);                        // 0x00868B40
+float FABLE_FASTCALL GetArmourThresholdValueFromArmourWeights(EDamageAttribute attribute,
+    const std::multimap<CDefPointer<const CArmourDef>,float,CCompareDefPointer<const CArmourDef,float> >& armour_weights,
+    float total_armour_weight);                                                                               // 0x008686E0
+bool FABLE_FASTCALL GetArmourResponseDamageAttributeDamageMultiplier(EDamageAttribute attribute,
+    const std::multimap<CDefPointer<const CArmourDef>,float,CCompareDefPointer<const CArmourDef,float> >& armour_weights,
+    float total_armour_weight, float& multiplier);                                                            // 0x008687A0
+__declspec(noinline) bool FABLE_FASTCALL GetArmourResponseAugmentationDamageMultiplier(EObjectAugmentationType augmentation,
+    const std::multimap<CDefPointer<const CArmourDef>,float,CCompareDefPointer<const CArmourDef,float> >& armour_weights,
+    float total_armour_weight, float& multiplier)                                                             // 0x00868A80
+{
+    float result = 0.0f;
+    for (std::multimap<CDefPointer<const CArmourDef>,float,CCompareDefPointer<const CArmourDef,float> >::const_iterator it = armour_weights.begin();
+         it != armour_weights.end(); ++it)
+    {
+        float scale = it->second / total_armour_weight * multiplier;
+        float response = 1.0f;
+        std::map<EObjectAugmentationType,float>::const_iterator found = it->first->AugmentationResponse.find(augmentation);
+        if (found != it->first->AugmentationResponse.end())
+            response = found->second;
+        result += response * scale;
+    }
+    multiplier = result;
+    return true;
+}
+}
+
+
+void CHitParameters::SetAsModifiedByArmour(const CThing& thing, CDefPointer<const CArmourDef>& armour)
+{
+    std::multimap<CDefPointer<const CArmourDef>,float,CCompareDefPointer<const CArmourDef,float> > armour_weights;
+    float total_armour_weight = 0.0f;
+    GetArmourWeightsFromThing(thing, armour_weights, total_armour_weight);
+    if (armour_weights.empty()) {
+        armour_weights.insert(std::make_pair(armour, 1.0f));
+        total_armour_weight = 1.0f;
+    }
+    if (armour->AllHitsCauseRecoil)
+        CauseRecoil = true;
+    if (armour->AllHitsNegated)
+        HitNegated = true;
+    if (armour->AllHitsKnockdown)
+        KnockDown = true;
+    if (thing.GetType() == 1 && static_cast<const CThingAICreature&>(thing).IsImmuneToAttack())
+        HitNegated = true;
+
+    float damage_reduction = GetToughnessDamageReductionFactorForThing(thing);
+    long num_augmentations = Augmentations.size();
+    bool any_damage = false;
+    float total_damage = 0.0f;
+    for (std::map<EDamageAttribute,float>::iterator it = DamageMap.begin(); it != DamageMap.end(); ++it) {
+        float damage = it->second;
+        EDamageAttribute attribute = it->first;
+        if (DamageMap.find(DAMAGE_PROJECTILE) != DamageMap.end() && IS_THING_ALIVE(PWeapon.Get())) {
+            const NThingShot::CTCShotDefinitionBase* shot;
+            if (PWeapon->PeekTC(&shot) && shot->IsAbleToBeDeflected()) {
+                if (GetArmourThresholdValueFromArmourWeights(attribute, armour_weights, total_armour_weight) > ShotBuildupTime)
+                    HitNegated = true;
+            }
+        }
+        it->second = 0.0f;
+        if (GetArmourResponseDamageAttributeDamageMultiplier(attribute, armour_weights, total_armour_weight, damage)) {
             float value = damage;
-            if (numAugmentations > 0) {
+            if (num_augmentations > 0) {
                 float current = damage;
-                EObjectAugmentationType* aug = Augmentations._M_start;
-                for (; aug != Augmentations._M_finish; ++aug)
-                {
+                for (std::vector<EObjectAugmentationType>::iterator aug = Augmentations.begin(); aug != Augmentations.end(); ++aug) {
                     float buff = current;
-                    GetArmourResponseAugmentationDamageMultiplier(*aug, armours, multiplier, buff);
+                    GetArmourResponseAugmentationDamageMultiplier(*aug, armour_weights, total_armour_weight, buff);
                     current = buff;
                 }
                 value = current;
             }
             if (value > 0.0001f)
-                anyDamage = true;
-            ((CDamageNode*)it)->second = value * damageMultiplier;
-            total += ((CDamageNode*)it)->second;
+                any_damage = true;
+            it->second = value * damage_reduction;
+            total_damage += it->second;
         }
     }
-    if ((thing.Flags6c & 2) && total > 0.0001f) {
-        float scale = thing.ArmourAbsorb / total;
+    if ((thing.GetTypeFlags() & 2) && total_damage > 0.0001f) {
+        float scale = static_cast<const CThingPhysical&>(thing).GetHealth() / total_damage;
         if (scale < 1.0f) {
-            for (CRbNode* it = DamageMap._M_header->_M_left; it != DamageMap._M_header; it = Increment(it)) {
-                float& entry = ((CDamageNode*)it)->second;
+            for (std::map<EDamageAttribute,float>::iterator it = DamageMap.begin(); it != DamageMap.end(); ++it) {
+                float& entry = it->second;
                 entry = entry * scale;
             }
         }
     }
-    if (!anyDamage && !GuaranteeHit)
+    if (!any_damage && !GuaranteeHit)
         HitNegated = true;
 }
