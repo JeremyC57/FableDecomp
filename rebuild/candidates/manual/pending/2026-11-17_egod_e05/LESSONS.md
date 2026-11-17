@@ -1,0 +1,6 @@
+- 0x006AD700: a parked row's "x87-order" residue vanished at the first compile once the identities came from Ego_d's locals (pcam_man/cam_pos: the camera manager, not a lock target); a remaining one-record x87 swap was a FableWin-sized accessor text (PeekPCurrentAction via CCountedPointer::Get, 10i v 9i).
+- 0x00798940: Ego_d's debug frame offsets are not declaration order (e04's matched 0x0057AEB4 contradicts it); a store-order residue between two block locals closed by declaring the class handle before the scalar. An x87 sum order needing +2 records closed with a FableWin-named helper (GFSqr) for a squared bound.
+- 0x007B6810: a one-instruction scheduling swap (a constant fsub before / after a parameter load) closed by splitting the expression into `x = call(); x -= k;`.
+- 0x0089CE70: a 31-byte Ego_d wrapper whose retail body is 600 bytes = a same-TU private helper EXPANDED at that one call site; defining the helper's body above the wrapper reproduces VC7.1's split (siblings call it, this site inlines it).
+- 0x00A1BA10: check Ego_d's parameter list against the retail mangled name first -- Ego_d can be a later revision with a different signature and body for the same name; then its locals do not apply.
+- 0x00681E60: Ego_d c1 blocks with no loop in retail are unrolled constant-bound loops (wife attitudes 13..17 -> five byte stores), not debug code.

@@ -1,0 +1,21 @@
+--- a/rebuild/include/engine/CThingPlayerCreature.h
++++ b/rebuild/include/engine/CThingPlayerCreature.h
+@@ -185,6 +185,18 @@
+     // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?OnRegionChange@CThingPlayerCreature@@QAEXXZ (0x006AA100, called 0x004A4DDF).
+     void OnRegionChange();                                               // 0x006AA100
+ #endif // FABLE_RETAIL_CTHINGPLAYERCREATURE_ONREGIONCHANGE
++#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_CONTROLLEDMOVE
++protected:
++    // e05 opt-in (egod lane, row 0x006AD700): Ego_r.pdb / FableWin.pdb ?ControlledMove@CThingPlayerCreature@@IAEXXZ (0x0054A890 /
++    // 0x01DF4A90), ?UpdateWalkingControlForces@CThingPlayerCreature@@IAEXXZ (retail 0x006AD260, landed) and
++    // ?ApplyImpulseVelocity@CThingPlayerCreature@@IAEXABVC3DVector@@@Z (Ego_r 0x00546450 / FableWin 0x01DED830; Ego_d
++    // thing_player_creature.obj defines it, parameter `impulse`; expanded in retail 0x006AD910..0x006AD936). All protected
++    // non-virtual (Ego_d class record). Declarations only: no layout change.
++    void ControlledMove();                                               // 0x006AD700
++    void UpdateWalkingControlForces();                                   // 0x006AD260
++    void ApplyImpulseVelocity(const C3DVector& impulse);
++public:
++#endif // FABLE_RETAIL_CTHINGPLAYERCREATURE_CONTROLLEDMOVE
+ };
+ #pragma pack(pop)
+ FABLE_STATIC_ASSERT_AT(178, sizeof(CThingPlayerCreature)==0x208);

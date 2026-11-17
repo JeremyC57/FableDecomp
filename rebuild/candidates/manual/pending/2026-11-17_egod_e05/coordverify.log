@@ -1,0 +1,12 @@
+addr       parity           behav  name
+006ad700   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006ad700   RELOCATION_MATCH PASS   ControlledMove
+00798940   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00798940   RELOCATION_MATCH PASS   FrameUpdate
+007b6810   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+007b6810   RELOCATION_MATCH PASS   FillStack
+
+WINS: 3
+  006ad700 RELOCATION_MATCH CThingPlayerCreature::ControlledMove
+  00798940 RELOCATION_MATCH CTCForcePushed::FrameUpdate
+  007b6810 RELOCATION_MATCH CTCCrateStack::FillStack

@@ -1,0 +1,12 @@
+address	name	evidence
+006ad700	?ControlledMove@CThingPlayerCreature@@IAEXXZ	Ego_r 0x0054A890, FableWin 0x01DF4A90, Ego_d thing_player_creature.obj; RELOCATION_MATCH
+00815870	?GetPCombatFirstHitLocationPosInside@CTCHitLocations@@QBEPBVCHitLocation@NHitLocations@@ABVC3DVector@@@Z	Ego_r 0x0080EBA0 QBE; retail 5-byte jmp to 0x008153C0 (the QAE twin, Ego_r 0x0080E550), only caller 0x006AD7D9
+008153c0	?GetPCombatFirstHitLocationPosInside@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@@Z	Ego_r 0x0080E550; target of the const thunk 0x00815870
+00798940	?FrameUpdate@CTCForcePushed@@UAEXXZ	Ego_r name set + Ego_d tc_force_pushed.obj (CTCForcePushed::FrameUpdate); RELOCATION_MATCH
+008bd0b0	??0CCreatureAction_BeingForcePushed@@QAE@AAVCThingCreatureBase@@@Z	Ego_r 0x008F5700 name set; Ego_d class record (base CCombatActionBase); retail ctor calls the CCombatActionBase ctor 0x00858030
+00798770	?FinishBeingForcePushed@CTCForcePushed@@AAEX_NM@Z	Ego_r name set (private); Ego_d tc_force_pushed.obj; called by 0x00798940 (push 1 / push 0)
+007b6810	?FillStack@CTCCrateStack@@QAEXJABVC3DVector@@0@Z	Ego_r 0x00739070 name set + Ego_d tc_crate_stack.obj (parameters height / marker_pos / marker_dir); RELOCATION_MATCH
+00703210	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	Ego_r name set (the shared header's opt-in spelling); bindings also carry stale CreateThingObject / CreateObject spellings for this address
+0089c910	?CanThingBe_Sensed_ByOtherThing@CGameScriptInterface@@ABE_NABVCScriptThing@@0J@Z	Ego_r 0x008DB0B0; Ego_d game_script_interface.obj; landed siblings call it with sense 1..4; 0x0089CE70 expands it with sense 5
+00a1ad40	?GetPosInDirection@CNavigatorAStar@@ABE?AVC3DVector@@ABV2@ABVC2DVector@@M@Z	Ego_r name set (only CNavigatorAStar member with that signature); Ego_d tc order and parameters (start_pos, direction, distance_to_keep_within); called by 0x00A1BA10 three times
+0070d940	?CalcInterpolatedMeshAnim@CAnimateThing@@ABE?AVC3DAnimationBlendState@@ABVCCompleteAnimation@1@ABVCDelayedAnimation@1@M@Z	Ego_r name set; retail call shape at 0x0070E2BC (hidden result, CurrentAnim at this+0, DelayedAnimQueue front, float 0 / 1)

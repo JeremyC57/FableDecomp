@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CTCHitLocations.h
++++ b/rebuild/include/engine/CTCHitLocations.h
+@@ -75,6 +75,13 @@
+     // whose def's instantiation name equals the argument. Supersedes the descriptive GetPHitLocationFromName (NAME_FIXES.tsv).
+     NHitLocations::CHitLocation* GetPHitLocationWithDefName(const CCharString& defName);   // 0x00815820
+ #endif
++#ifdef FABLE_RETAIL_CTCHITLOCATIONS_POSINSIDE
++    // e05 opt-in (egod lane, row 0x006AD700): Ego_r.pdb ?GetPCombatFirstHitLocationPosInside@CTCHitLocations@@QBEPBVCHitLocation@NHitLocations@@ABVC3DVector@@@Z
++    // (0x0080EBA0) and the non-const QAE twin (0x0080E550). Retail: the const overload is the 5-byte `jmp 0x008153C0` at 0x00815870
++    // (its only caller 0x006AD7D9), 0x008153C0 the non-const body. Declarations only.
++    const NHitLocations::CHitLocation* GetPCombatFirstHitLocationPosInside(const C3DVector& pos) const;   // 0x00815870
++    NHitLocations::CHitLocation* GetPCombatFirstHitLocationPosInside(const C3DVector& pos);               // 0x008153C0
++#endif
+ #ifdef FABLE_RETAIL_CTCHITLOCATIONS_TRIANGLE
+     // Retail opt-in (agentC24, row 0x007BFE30 NThingShot::CTCShotDefinitionBase::UpdateCollision): Ego_r.pdb / FableWin.pdb
+     // ?GetPCombatFirstHitLocationIntersectionWithTriangle@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABV?$vector@VC3DVector@@...

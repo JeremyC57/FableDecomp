@@ -1,0 +1,18 @@
+--- a/rebuild/include/engine/CThingCreatureBase.h
++++ b/rebuild/include/engine/CThingCreatureBase.h
+@@ -380,8 +380,15 @@
+     // 0x00662A00) and ?PeekPCurrentAction@CThingCreatureBase@@QBEPBVCCreatureActionBase@@XZ (inline in retail: `mov eax,[creature+100h]`).
+     // Declaration plus an accessor body: no layout change.
+     const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
++#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_PEEKPCURRENTACTION_GET
++    // e05 opt-in (egod lane, row 0x006AD700): the same accessor through CCountedPointer::Get (FableWin.pdb
++    // ?Get@?$CCountedPointer@VCCreatureActionBase@@@@QBEPAVCCreatureActionBase@@XZ; FableWin's PeekPCurrentAction debug copy is
++    // 10i/25b, this text at /Od 10i/25b, the `.Data` text 9i/20b). Same bytes in release.
++    const CCreatureActionBase* PeekPCurrentAction() const { return PCurrentAction.Get(); }
++#else
+     const CCreatureActionBase* PeekPCurrentAction() const { return PCurrentAction.Data; }
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_BEDSLEEP
+     // Retail opt-in (chunk 2026, row 0x0092DA20 CAIStateGroup_MinionSleep::Update): Ego_r.pdb / FableWin.pdb
+     // ?SheatheAllWeapons@CThingCreatureBase@@QAEXXZ (public, out of line in retail at 0x006647F0, `mov ecx,<creature> ; call`,

@@ -123,7 +123,7 @@ address	kind	name	state	true_length	staged_folder	note
 006aa720	named	CThingPlayerCreature::SetPlayerCreatureActionForMelee	OPEN			
 006ab0e0	named	CThingPlayerCreature::OnHit	OPEN			
 006ac200	named	CThingPlayerCreature::CreateAndAddObjectToInventory	OPEN			
-006ad700	named	CThingPlayerCreature::ControlledMove	IN_PROGRESS			batch e05
+006ad700	named	CThingPlayerCreature::ControlledMove	MATCHED_STAGED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05
 006af4e0	named	CMessageEvent::GetPOriginator<CThing>	OPEN			
 006af7d0	named	CTCPhysicsBase::ImpulseRespondToCollision	OPEN			
 006b5890	identify	_Lower_bound<std::pair<long,float>*,std::_Lower_bound<std::pair<long,float>*,std::pair<long,float>,int>	OPEN			
@@ -222,7 +222,7 @@ address	kind	name	state	true_length	staged_folder	note
 0078fd60	named	CTCDivineWrath::FrameUpdate	OPEN			
 00793370	identify	_global::Vector_InsertRange_CBaseIntelligentPointer	OPEN			
 00795300	named	CTCDivineWrath::FrameUpdate	OPEN			
-00798940	named	CTCForcePushed::FrameUpdate	IN_PROGRESS			batch e05
+00798940	named	CTCForcePushed::FrameUpdate	MATCHED_STAGED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05
 007993f0	named	CTCShopKeeper::WitnessedCrime	OPEN			
 0079a890	named	CTCSummonSpell::IsValidTeleportPos	OPEN			
 0079deb0	named	CTCPhysicalShieldSpell::PlayEffect	OPEN			
@@ -235,7 +235,7 @@ address	kind	name	state	true_length	staged_folder	note
 007b1a30	named	CTCFishing::CreateFish	OPEN			
 007b3120	named	CTCGuard::FrameUpdate	OPEN			
 007b5e50	named	CTCWaterWader::FrameUpdate	OPEN			
-007b6810	named	CTCCrateStack::FillStack	IN_PROGRESS			batch e05
+007b6810	named	CTCCrateStack::FillStack	MATCHED_STAGED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05
 007b6b10	named	CTCCrateStack::FillStacks	OPEN			
 007b8840	named	CTCTavernTable::GetSeat	OPEN			
 007b8cc0	named	CTCTavernTable::GetServingPoint	OPEN			
@@ -353,7 +353,7 @@ address	kind	name	state	true_length	staged_folder	note
 0088bf30	named	CAIBrain::InitStateGroups	OPEN			
 00896b60	named	CGameScriptInterface::CGameScriptInterface::KickOffQuestStartScreen	OPEN			
 0089c910	named	CGameScriptInterface::CanThingBe_Sensed_ByOtherThing	OPEN			
-0089ce70	named	CGameScriptInterface::?IsThingAwareOfOtherThingInAnyWay@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z	IN_PROGRESS			batch e05
+0089ce70	named	CGameScriptInterface::?IsThingAwareOfOtherThingInAnyWay@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z	PARKED			PARKED e05: DIFFER(614v616) pair job with 0x0089C910 (fcomp/fstp v fcompp at 0x0089D096); /d2inlS100 to replace; draft ../2026-11-17_egod_open/e05/0089ce70.cpp
 008a9880	named	CGameScriptInterface::?ScreenFilterFadeTo@CGameScriptInterface@@UBEPAXMMMMMABVCRGBFloatColour@@ABV?$vector@UCScr	OPEN			
 008af990	named	CombatDialogueManager::GetBestSpeechForCreature	OPEN			
 008b6ad0	named	CCreatureAction_MidAttackSide::CCreatureAction_MidAttackSide::Initialise	OPEN			
@@ -558,7 +558,7 @@ address	kind	name	state	true_length	staged_folder	note
 00a1aff0	named	CSteeringAgent::Process	OPEN			
 00a1b5a0	named	CNavigatorAStar::CNavigatorAStar::GetRandomNavigablePos	OPEN			
 00a1ba10	named	CNavigatorAStar::?GetRandomNavigablePos@CNavigatorAStar@@UBE?AVC3DVector@@ABV2@MABVC2DVector@@M@Z	IN_PROGRESS			batch e06
-00a1cc30	named	CNavigatorAStar::ConstructFinalRoute	IN_PROGRESS			batch e05
+00a1cc30	named	CNavigatorAStar::ConstructFinalRoute	PARKED			PARKED e05: matches only with a stand-in body of same-TU 0x00A1A7E0 on local models; pair job with 0x00A1A7E0; draft ../2026-11-17_egod_open/e05/00a1cc30.cpp
 00a1d6e0	named	CNavigatorAStar::CalculateNavigableWidthOfLine	OPEN			
 00a1e110	named	CNavigatorAStar::MoveTowardNextWayPoint	OPEN			
 00a1e5c0	identify	_global::CNavigatorAStar_MoveTowardGoal	OPEN			
