@@ -9,167 +9,30 @@
 //   same order (Dinkumware sizes push NamesUsed to +0x18 there).
 // Callees: CCharString copy ctor 0x0099EC30 (the predicate built in its argument slot), remove_if 0x009E7380 (/Gr),
 //   NamesUsed's _M_upper_bound 0x004B9D50 / _M_lower_bound 0x004B9D00 / erase(first, last) 0x004B9C10 (the tree helpers
-//   are bound under the map<CCharString, long> instantiation: identical code shared with this set<CCharString>; see
-//   NOTES.md), __copy 0x009E6600 (vector::erase's __copy_ptrs), ~CCharString 0x0099EAE0 (the erased tail).
+//   are this set<CCharString> tree's private STLport members, NF80 / NF82),
+//   __copy 0x009E6600 (vector::erase's __copy_ptrs), ~CCharString 0x0099EAE0 (the erased tail).
 // Shape: `NamesUsed.erase(NamesUsed.lower_bound(name), NamesUsed.upper_bound(name))` (equal_range's arguments are
 //   evaluated right to left: upper first); SLONGMap.erase(new_end, end()) is STLport 4.6 vector::erase inlined
 //   (__copy_ptrs -> __copy(last, finish, first, random_access_iterator_tag(), (int*)0), _Destroy, _M_finish = i).
-class CCharStringData;
-class CCharString {
-public:
-    CCharStringData* PStringData;                   // +0x00
-    CCharString(const CCharString& other);          // 0x0099EC30
-    ~CCharString();                                 // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-
-class CSymbolMap;
-
-namespace std {
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-struct input_iterator_tag { input_iterator_tag() { } };
-struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
-struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_iterator_tag() { } };
-struct random_access_iterator_tag : public bidirectional_iterator_tag { random_access_iterator_tag() { } };
-struct __false_type { __false_type() { } };
-
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
-
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> inline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
-{
-    for (; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    __destroy_aux(__first, __last, __false_type());
-}
-
-#pragma auto_inline(off)
-template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__declspec(noinline) _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
-                                                   const random_access_iterator_tag&, _Distance*)
-{                                                   // 0x009E6600 (same-TU body: the tag is never read)
-    for (_Distance __n = __last - __first; __n > 0; --__n) {
-        *__result = *__first;
-        ++__first;
-        ++__result;
-    }
-    return __result;
-}
-#pragma auto_inline(on)
-template <class _InputIter, class _OutputIter>
-inline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
-{
-    return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
-}
-
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;                                  // +0x00
-    _Tp* _M_finish;                                 // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef _Tp* iterator;
-    iterator begin() { return this->_M_start; }
-    iterator end() { return this->_M_finish; }
-    iterator erase(iterator __first, iterator __last)
-    {
-        _Tp* __i = __copy_ptrs(__last, this->_M_finish, __first, __false_type());
-        _Destroy(__i, this->_M_finish);
-        this->_M_finish = __i;
-        return __first;
-    }
-};
-
-template <class _ForwardIter, class _Predicate>
-_ForwardIter __fastcall remove_if(_ForwardIter __first, _ForwardIter __last, _Predicate __pred);   // 0x009E7380
-
-template <class _Tp> struct less { bool operator()(const _Tp& __x, const _Tp& __y) const; };
-template <class _Tp> struct _Identity { const _Tp& operator()(const _Tp& __x) const { return __x; } };
-struct _Rb_tree_node_base {
-    typedef _Rb_tree_node_base* _Base_ptr;
-    bool _M_color;                                  // +0x00
-    _Base_ptr _M_parent;                            // +0x04
-    _Base_ptr _M_left;                              // +0x08
-    _Base_ptr _M_right;                             // +0x0C
-};
-template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base { _Value _M_value_field; };
-struct _Rb_tree_base_iterator {
-    _Rb_tree_node_base* _M_node;
-};
-template <class _Tp> struct _Nonconst_traits { typedef _Tp value_type; typedef _Tp& reference; typedef _Tp* pointer; };
-template <class _Tp> struct _Const_traits { typedef _Tp value_type; typedef const _Tp& reference; typedef const _Tp* pointer; };
-template <class _Value, class _Traits> struct _Rb_tree_iterator : public _Rb_tree_base_iterator {
-    typedef _Rb_tree_iterator<_Value, _Nonconst_traits<_Value> > iterator;
-    _Rb_tree_iterator() { }
-    _Rb_tree_iterator(_Rb_tree_node_base* __x) { _M_node = __x; }
-    _Rb_tree_iterator(const iterator& __it) { _M_node = __it._M_node; }
-};
-template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-class _Rb_tree {
-public:
-    typedef _Rb_tree_node_base* _Base_ptr;
-    typedef _Rb_tree_node<_Value> _Node;
-    typedef _Rb_tree_iterator<_Value, _Nonconst_traits<_Value> > iterator;
-    typedef _Rb_tree_iterator<_Value, _Const_traits<_Value> > const_iterator;
-    _STLP_alloc_proxy<_Node*, _Node, allocator<_Node> > _M_header;   // +0x00
-    unsigned int _M_node_count;                                       // +0x04
-    _Compare _M_key_compare;                                          // +0x08
-    _Base_ptr _M_lower_bound(const _Key& __k) const;                  // 0x004B9D00
-    _Base_ptr _M_upper_bound(const _Key& __k) const;                  // 0x004B9D50
-    iterator lower_bound(const _Key& __k) { return iterator(_M_lower_bound(__k)); }
-    const_iterator lower_bound(const _Key& __k) const { return const_iterator(_M_lower_bound(__k)); }
-    iterator upper_bound(const _Key& __k) { return iterator(_M_upper_bound(__k)); }
-    const_iterator upper_bound(const _Key& __k) const { return const_iterator(_M_upper_bound(__k)); }
-    void erase(iterator __first, iterator __last);                    // 0x004B9C10
-};
-template <class _Key, class _Compare = less<_Key>, class _Alloc = allocator<_Key> >
-class set {
-public:
-    typedef _Rb_tree<_Key, _Key, _Identity<_Key>, _Compare, _Alloc> _Rep_type;
-    typedef typename _Rep_type::iterator _Rep_iterator;
-    typedef typename _Rep_type::const_iterator iterator;
-    _Rep_type _M_t;                                 // 12 bytes
-    iterator lower_bound(const _Key& __x) const { return _M_t.lower_bound(__x); }
-    iterator upper_bound(const _Key& __x) const { return _M_t.upper_bound(__x); }
-    void erase(iterator __first, iterator __last) { _M_t.erase((_Rep_iterator&)__first, (_Rep_iterator&)__last); }
-};
-}
-
-template <class T> class CCompareString { };
-template <class K, class V, class C> class CVectorMap {
-public:
-    typedef std::pair<K, V> value_type;
-    typedef typename std::vector<value_type>::iterator iterator;
-    std::vector<value_type> Data;                   // +0x00 (12-byte STLport vector)
-    C    Compare;                                   // +0x0c (empty)
-    bool Dirty;                                     // +0x0d
-    iterator begin() { return Data.begin(); }
-    iterator end() { return Data.end(); }
-    iterator erase(iterator first, iterator last) { return Data.erase(first, last); }
-};
-
-class CSymbolMap {
-public:
-    class CSymbolInfo {
-    public:
-        CCharString GroupName;                      // +0x00
-        CCharString EntryName;                      // +0x04
-        long        Val;                            // +0x08
-    };
-    void RemoveSymbolsOfGroupType(const CCharString& group_name);
-private:
-    CVectorMap<CCharString, CSymbolInfo, CCompareString<CSymbolInfo> > SLONGMap;   // +0x04
-    std::set<CCharString> NamesUsed;                // +0x14
-    bool CheckForDuplicateSymbols;                  // +0x20
-    virtual void v00();
-};
+// NF82 (q10993 / q10994): moved off the row-local CCharString / CSymbolMap / CVectorMap / vector / set / tree models onto
+//   engine/CSymbolMap.h (FABLE_RETAIL_CSYMBOLMAP + _SLONGMAP and the new overlay opt-in FABLE_RETAIL_CSYMBOLMAP_NAMESUSED: NamesUsed
+//   typed std::set<CCharString>, the method declared), stlport/fable_map.h (FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE: set
+//   lower_bound / upper_bound / erase(first, last) over the out-of-line private tree members), stlport/position_algorithms.h
+//   (out-of-line /Gr remove_if) and fable_containers.h (FABLE_RETAIL_STLP_COPY_NOINLINE: the __copy COMDAT called from the inline
+//   vector::erase). The NamesUsed bounds now bind the private ABE spellings of 0x004B9D00 / 0x004B9D50 (were the public QBE ones).
+//   CPred_HasGroupName (Ego_r.pdb: one CCharString Name) has no shared header; it is the TU's own functor.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CSYMBOLMAP
+#define FABLE_RETAIL_CSYMBOLMAP_SLONGMAP
+#define FABLE_RETAIL_CSYMBOLMAP_NAMESUSED
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE
+#define FABLE_RETAIL_STLP_COPY_NOINLINE
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "stlport/position_algorithms.h"
+#include "engine/CSymbolMap.h"
 
 class CPred_HasGroupName {
 public:

@@ -1,111 +1,50 @@
-// NQuestManager::CRuntimeQuestPersistence::SetQuestScriptPersistScript(const CCharString& quest, const CCharString& script) -- record the persist script for the quest in the quest-script persist map: overwrite the entry when the quest is present, else add {quest, script} and re-sort the map
-// Leaf: SetQuestScriptPersistScript
+// NQuestManager::CRuntimeQuestPersistence::SetQuestScriptPersistScript(const CCharString& quest_name, const CCharString& persist_script) -- record the persist script for the quest in the quest-script persist map: overwrite the entry when the quest is present, else insert {quest, info} and re-sort the map
+// Leaf: ?SetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@QAEXABVCCharString@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B4E30, length 256 bytes (`ret 8`).
-// FableWin.pdb: ?SetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@QAEXABVCCharString@@0@Z (the manifest gives both rows the
-// SetQuestMasterDataPersistScript label; the +0 map row 0x004B4E30 is SetQuestScriptPersistScript, the +0x10 one 0x004B4F30).
-// Callees: CVectorMap<CCharString, CPersistInfo>::LowerBound @ 0x004B9750, CBasicString<char>::operator< @ 0x00429950 (the
-// inline CCharString <), CCharString copy ctor @ 0x0099EC30 / operator= @ 0x0099EFB0 / dtor @ 0x0099EAE0, the pair vector's
-// push_back @ 0x004BB780, SGI sort<pair*, CKeyPairCompareLess> @ 0x004BBB40 (`__fastcall`, the empty comparator by value).
-// Layout: the landed GetQuestMasterDataPersistScript 0x004B27F0 model (PersistScripts +0, MasterDataPersistScripts +0x10;
-// each CVectorMap = 12-byte STLport vector + Compare +0xc + Dirty +0xd).
-// Shape: the map's inline Find (`last` read once after LowerBound), then a CPersistInfo local built from the arguments; a hit
-// assigns it through the inline memberwise operator=, a miss runs the inline Add (pair temporary in its own block, Dirty =
-// true) and the inline SortIfDirty (the test folds, the true store stays before the sort call, false after).
-#include "fable_compiler.h"
-class CCharStringData { public:
-    bool operator<(const CCharStringData& other) const;   // 0x00429950 (CBasicString<char>::operator<)
-};
+// FableWin.pdb / Ego_r.pdb (0x004BA540): ?SetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@QAEXABVCCharString@@0@Z (the
+// manifest gives both setters the SetQuestMasterDataPersistScript label; the +0 map row 0x004B4E30 is SetQuestScriptPersistScript, the
+// +0x10 one 0x004B4F30).
+// Callees: CVectorMap<CCharString, CPersistInfo>::LowerBound 0x004B9750 (the inline Find), CBasicString<char>::operator< 0x00429950 (the
+// inline CCharString <), CCharString copy ctor 0x0099EC30 / operator= 0x0099EFB0 / dtor 0x0099EAE0, the pair vector's push_back
+// 0x004BB780, std::sort<pair*, CKeyPairCompareLess> 0x004BBB40 (`__fastcall`, the empty comparator by value).
+// NF82 (q11007): moved off the row-local CCharStringData / CCharString / CPersistInfo / CVectorMap models onto the shared headers:
+// fable_string.h (FABLE_RETAIL_CCHARSTRING_LESS_INLINE + FABLE_RETAIL_CBASICSTRING_LESS_BODY: the compare binds Ego_r.pdb
+// ??M?$CBasicString@D@@QBE_NABV0@@Z), engine/CQuestManager.h (CRuntimeQuestPersistence's typed maps; NF82 overlay opt-in
+// FABLE_RETAIL_CQUESTMANAGER_PERSISTINFO_SETTERS: the FableWin.pdb CPersistInfo constructors and the two setter declarations) and
+// engine/CVectorMap.h (Find; FableWin.pdb ?Insert@?$CVectorMap@..CPersistInfo..@@QAEXABVCCharString@@ABVCPersistInfo@..@@@Z via
+// FABLE_RETAIL_CVECTORMAP_INSERT_KEYVALUE + _INSERT_VALUE_TYPE: the pair temporary dies before Dirty is set; then FableWin.pdb
+// ?Sort@?$CVectorMap@..CPersistInfo..@@QAEXXZ via FABLE_RETAIL_CVECTORMAP_SORT), with push_back out of line
+// (FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE, 0x004BB780) and std::sort __fastcall (FABLE_RETAIL_STLP_SORT_FASTCALL).
+// Insert then Sort, not Insert then Update: retail has no Dirty test (`mov byte ptr [esi+0Dh],1` straight into the sort's loads).
+// Insert + Update matches this row too, but at 0x004B4F30 (map at +0x10) it reloads and tests Dirty, and through a map reference
+// the store sinks below the loads; Insert + Sort matches both setters, so both are spelled so.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+#define FABLE_RETAIL_CBASICSTRING_LESS_BODY
+#define FABLE_RETAIL_CQUESTMANAGER
+#define FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE
+#define FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS
+#define FABLE_RETAIL_CQUESTMANAGER_PERSISTINFO_SETTERS
+#define FABLE_RETAIL_CVECTORMAP_SORT
+#define FABLE_RETAIL_CVECTORMAP_INSERT_KEYVALUE
+#define FABLE_RETAIL_CVECTORMAP_INSERT_VALUE_TYPE
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+#define FABLE_RETAIL_STLP_SORT_FASTCALL
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CScriptInfo.h"
+#include "engine/CScriptInfoManager.h"
+#include "engine/CQuestManager.h"
+#include "engine/CVectorMap.h"
 
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const CCharString& other);                // 0x0099EC30
-    ~CCharString();                                       // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
-    bool operator<(const CCharString& other) const
-    {
-        if (other.PStringData == PStringData)
-            return false;
-        if (PStringData == 0)
-            return true;
-        if (other.PStringData == 0)
-            return false;
-        return *PStringData < *other.PStringData;
-    }
-};
-
-namespace NQuestManager {
-
-struct CRuntimeQuestPersistence {
-    class CPersistInfo { public:
-        CCharString QuestName;                     // +0x00
-        CCharString PersistScript;                 // +0x04
-        CPersistInfo(const CCharString& questName, const CCharString& persistScript)
-            : QuestName(questName), PersistScript(persistScript) { }
-        FABLE_FORCEINLINE CPersistInfo(const CPersistInfo& other) : QuestName(other.QuestName), PersistScript(other.PersistScript) { }
-        FABLE_FORCEINLINE CPersistInfo& operator=(const CPersistInfo& other)
-        {
-            QuestName = other.QuestName;
-            PersistScript = other.PersistScript;
-            return *this;
-        }
-    };
-    struct SPair {                                 // pair<CCharString, CPersistInfo>, 12 bytes
-        CCharString  first;                        // +0x00
-        CPersistInfo second;                       // +0x04
-        FABLE_FORCEINLINE SPair(const CCharString& key, const CPersistInfo& value) : first(key), second(value) { }
-    };
-    struct CKeyPairCompareLess { };                // empty comparator (1 byte)
-    struct CPersistMap {                           // CVectorMap<CCharString, CPersistInfo>: STLport vector, Compare, Dirty
-        SPair*              m_pFirst;              // +0x00
-        SPair*              m_pLast;               // +0x04
-        SPair*              m_pEnd;                // +0x08
-        CKeyPairCompareLess Compare;               // +0x0c
-        bool                Dirty;                 // +0x0d
-        SPair* LowerBound(const CCharString& key);   // 0x004B9750
-        void   push_back(const SPair& value);        // 0x004BB780 (STLport vector::push_back)
-        SPair* end() { return m_pLast; }
-        SPair* Find(const CCharString& key)
-        {
-            SPair* it = LowerBound(key);
-            SPair* last = m_pLast;
-            return (it == last || key < it->first) ? last : it;
-        }
-        FABLE_FORCEINLINE void Add(const CCharString& key, const CPersistInfo& value)
-        {
-            {
-                SPair pair(key, value);
-                push_back(pair);
-            }
-            Dirty = true;
-            SortIfDirty();
-        }
-        FABLE_FORCEINLINE void SortIfDirty();
-    };
-    CPersistMap PersistScripts;                    // +0x00
-    CPersistMap MasterDataPersistScripts;          // +0x10
-    void SetQuestScriptPersistScript(const CCharString& quest, const CCharString& script);
-    void SetQuestMasterDataPersistScript(const CCharString& quest, const CCharString& script);
-};
-
-void __fastcall sort(CRuntimeQuestPersistence::SPair* first, CRuntimeQuestPersistence::SPair* last,
-                     CRuntimeQuestPersistence::CKeyPairCompareLess comp);   // 0x004BBB40 (SGI sort, /Gr)
-
-FABLE_FORCEINLINE void CRuntimeQuestPersistence::CPersistMap::SortIfDirty()
+void NQuestManager::CRuntimeQuestPersistence::SetQuestScriptPersistScript(const CCharString& quest_name, const CCharString& persist_script)
 {
-    if (Dirty) {
-        sort(m_pFirst, m_pLast, Compare);
-        Dirty = false;
-    }
-}
-
-void CRuntimeQuestPersistence::SetQuestScriptPersistScript(const CCharString& quest, const CCharString& script)
-{
-    SPair* it = PersistScripts.Find(quest);
-    CPersistInfo info(quest, script);
+    CVectorMap<CCharString, CPersistInfo>::iterator it = PersistScripts.Find(quest_name);
+    CPersistInfo info(quest_name, persist_script);
     if (it != PersistScripts.end())
         it->second = info;
-    else
-        PersistScripts.Add(quest, info);
-}
-
+    else {
+        PersistScripts.Insert(quest_name, info);
+        PersistScripts.Sort();
+    }
 }

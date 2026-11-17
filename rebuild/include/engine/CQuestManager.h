@@ -72,6 +72,13 @@ public:
     public:
         CCharString QuestName;                               // +0x00 (pair +4; Ego_r.pdb)
         CCharString PersistScript;                           // +0x04 (pair +8; Ego_r.pdb)
+#ifdef FABLE_RETAIL_CQUESTMANAGER_PERSISTINFO_SETTERS
+        // NF82 opt-in (rows 0x004B4E30 / 0x004B4F30, the two persist-script setters): FableWin.pdb
+        // ??0CPersistInfo@CRuntimeQuestPersistence@NQuestManager@@QAE@ABVCCharString@@0@Z and ??0CPersistInfo@..@@QAE@XZ; inline in retail
+        // (each setter copy-constructs the two strings into a local, 0x004B4E7E / 0x004B4F7E, after the inline Find).
+        CPersistInfo() { }
+        CPersistInfo(const CCharString& quest_name, const CCharString& persist_script) : QuestName(quest_name), PersistScript(persist_script) { }
+#endif
     };
     const CCharString* GetQuestScriptPersistScript(const CCharString& quest_name) const
     {
@@ -81,6 +88,15 @@ public:
         return 0;
     }
     const CCharString* GetQuestMasterDataPersistScript(const CCharString& quest_name) const;   // 0x004B27F0
+#ifdef FABLE_RETAIL_CQUESTMANAGER_PERSISTINFO_SETTERS
+    // NF82 opt-in: Ego_r.pdb 0x004BA540 / 0x004BA660 and FableWin.pdb ?SetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@
+    // QAEXABVCCharString@@0@Z (retail 0x004B4E30, map at +0) and ?SetQuestMasterDataPersistScript@..@@QAEXABVCCharString@@0@Z (retail
+    // 0x004B4F30, map at +0x10). SetQuestScriptPersistScript is also declared by the SAVEGAMESTATE block above.
+#ifndef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+    void SetQuestScriptPersistScript(const CCharString& quest_name, const CCharString& persist_script);   // 0x004B4E30
+#endif
+    void SetQuestMasterDataPersistScript(const CCharString& quest_name, const CCharString& persist_script);   // 0x004B4F30
+#endif
 private:
     CVectorMap<CCharString, CPersistInfo> PersistScripts;       // +0x00 (Ego_r.pdb)
     CVectorMap<CCharString, CPersistInfo> MasterDataPersistScripts;   // +0x10 (Ego_r.pdb)

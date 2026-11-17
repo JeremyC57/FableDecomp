@@ -264,7 +264,9 @@ __declspec(noinline)
 #endif
 typename CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K& key) const
 {
-#ifdef FABLE_RETAIL_CVECTORMAP_INLINE_CONST_LOWERBOUND
+#if defined(FABLE_RETAIL_CVECTORMAP_INLINE_CONST_LOWERBOUND) || defined(FABLE_RETAIL_CVECTORMAP_CONST_LOWERBOUND_COUNT_FIRST)
+    // (NF82 opt-in FABLE_RETAIL_CVECTORMAP_CONST_LOWERBOUND_COUNT_FIRST, row 0x004B97D0: the out-of-line const body with the count taken
+    // before `first`, as retail's CVectorMap<CCharString, CPersistInfo> instance computes it; the inline opt-in's text.)
     long count=this->size();
     const_iterator first=this->begin();
 #else

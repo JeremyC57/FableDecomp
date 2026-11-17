@@ -1,0 +1,2 @@
+q10996	done-already	0	the self row 0x00429950 already lands as ??M?$CBasicString@D@@QBE_NABV0@@Z (probe: MATCH, not-a-binder of a stand-in); its 45 wrong-spelling binders are q11007 (43 ported, 2 blocked)
+q11006	done-already	0	the self row 0x0099B2C0 already lands as ?ToCharString@CWideString@@QBE?AVCCharString@@XZ and 0x009CBE10 binds it so (both not-a-binder); the held binders are q11008

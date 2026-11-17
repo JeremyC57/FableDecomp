@@ -57,7 +57,14 @@ public:
     CThingDeadCreature();                                                // 0x00835C20
     static CThingDeadCreature* __fastcall Create(long defIndex, const C3DVector& position, long a3, const CCharString& scriptName,
                                                  const CAnimFilterBase& filter);   // 0x00835C80
+#ifdef FABLE_RETAIL_CTHINGDEADCREATURE_SETANIMATIONFILTER_OUTOFLINE
+    // NF82 opt-in (row 0x00835AF0): the same member declared only, for the row that owns its out-of-line copy (Ego_d.pdb places
+    // CThingDeadCreature::SetAnimationFilter in thing_dead_creature.obj; retail 0x00835AF0 sits in that TU's range and is the body
+    // below: `call [eax+4]` = Clone on the argument, then Reset 0x00836580 on this+0xD0 = PAnimFilter). Create still expands it.
+    void SetAnimationFilter(const CAnimFilterBase& filter);              // 0x00835AF0
+#else
     void SetAnimationFilter(const CAnimFilterBase& filter) { PAnimFilter.Reset(filter.Clone()); }
+#endif
 protected:
     bool ConstructFromParams(long defIndex, const C3DVector& position, long a3, const CCharString& scriptName)
     {
