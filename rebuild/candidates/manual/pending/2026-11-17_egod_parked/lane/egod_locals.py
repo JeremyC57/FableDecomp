@@ -32,6 +32,8 @@ def walk(j):
             depth += 1; out.append(('block', '', '', ''))
         elif kd == 0x110B:
             off, ti = struct.unpack_from('<iI', m, k + 4); out.append(('bprel', '%+d' % off, '0x%x' % ti, cstr(k + 12)))
+        elif kd == 0x110C:
+            ti, off, sg = struct.unpack_from('<IIH', m, k + 4); out.append(('static', 'S_LDATA32', '0x%x' % ti, cstr(k + 14)))
         elif kd == 0x1111:
             off, ti, rg = struct.unpack_from('<iIH', m, k + 4); out.append(('regrel', 'r%d%+d' % (rg, off), '0x%x' % ti, cstr(k + 14)))
         elif kd in PROC:

@@ -14,9 +14,8 @@ for a in addrs:
 if os.path.isdir(F + "/hdrdiff"): shutil.rmtree(F + "/hdrdiff")
 shutil.copytree(ST + "/hdrdiff", F + "/hdrdiff"); shutil.copy(ST + "/vland.log", F + "/coordverify.log")
 pl = json.load(open(A + "/payload.json"))["result"]["authored"]; pl = [r for r in pl if r["address"].lower().replace("0x", "") in addrs]
-for r in pl:
-    for k in ("source_cpp", "test_cpp"):
-        r[k] = f"{rel}/{'src' if k == 'source_cpp' else 'test'}/{r['address'].lower()}.cpp"
+for r in pl:   # payload entries embed the source / test TEXT: refresh it from the files being staged
+    a = r["address"].lower(); r["source_cpp"] = open(f"{A}/src/{a}.cpp").read(); r["test_cpp"] = open(f"{A}/test/{a}.cpp").read()
 old = json.load(open(F + "/payload.json"))["result"]["authored"] if os.path.exists(F + "/payload.json") else []
 old = [r for r in old if r["address"].lower() not in addrs] + pl
 json.dump({"result": {"authored": old}}, open(F + "/payload.json", "w"), indent=1)
@@ -33,7 +32,7 @@ if os.path.exists(idx): rows = {r["address"]: r for r in csv.DictReader(open(idx
 for r in pl:
     a = r["address"].lower()
     rows[a] = {"address": a, "bytes": lens.get(a, ""), "module": r["module"], "name": r["name"], "state": "MATCHED_STAGED", "grade": grade.get(a, ""),
-               "source": r["source_cpp"], "test": r["test_cpp"], "flags": " ".join(r.get("flags") or []), "headers": rel + "/hdrdiff", "audit": audit}
+               "source": f"{rel}/src/{a}.cpp", "test": f"{rel}/test/{a}.cpp", "flags": " ".join(r.get("flags") or []), "headers": rel + "/hdrdiff", "audit": audit}
 cols = ["address", "bytes", "module", "name", "state", "grade", "source", "test", "flags", "headers", "audit"]
 with open(idx, "w") as f:
     f.write("\t".join(cols) + "\n")

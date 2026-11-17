@@ -18,3 +18,8 @@
   then add Ego_d's locals verbatim; three rows matched in 1-4 grades that way. Check the row's identity first: a catalog label can
   be propagated (0x00C52C40 is libpk CCpuInfo code, not the engine method; Ego_d has nothing for libpk). Visible-body opt-ins with
   noinline (GetDef / GetSubDef / __find / CBasicString::Compare) were needed where retail CALLS the helper.
+- e05 audit: Ego_d also records function-local STATICS (S_LDATA32 inside the function's scopes; egod_locals.py prints them as
+  `static S_LDATA32 type ... <name>` since 2026-11-17). A writable .data constant with one reference is often a block-scope
+  `static float f = ...;` (0x007B6810: 0x0138366C is `f` in the height-2 block): never invent a global name before checking them.
+  Tests: put boundary cases EXACTLY on every compared threshold (and read epsilon-like constants from a global, as retail does, so
+  x87 rounding does not hide a `<` vs `<=` mutant).
