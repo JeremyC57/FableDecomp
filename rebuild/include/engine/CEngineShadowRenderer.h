@@ -77,6 +77,14 @@ public:
     const CShadowRendererSceneData PeekSceneData() { return SceneData; }
 #endif
 private:
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESPACE
+    // Opt-in (NF53, round 7, row 0x00B4F390 UpdateShadowScene; needs _UPDATESCENE for the forward declarations): Ego_r.pdb private members
+    // ?SetShadowClipVolumesToNeverShadow@CEngineShadowRenderer@@AAEXXZ (0x00B4CE20), ?UpdateSpotLightShadowSpace@CEngineShadowRenderer@@AAEXABUCEngineLightingManagerSpotlightParams@@@Z
+    // (0x00B4EF80) and ?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z (0x00B4D370; FableWin.pdb 0x02D74FB0). Declarations only.
+    void SetShadowClipVolumesToNeverShadow();                            // 0x00B4CE20
+    void UpdateSpotLightShadowSpace(const CEngineLightingManagerSpotlightParams& spot_light);   // 0x00B4EF80
+    void UpdateShadowSpace(const CEngineCamera& camera);                 // 0x00B4D370
+#endif
 #ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_CLIPVOLUMES_PASS22
     // Original public records and class descriptors in both PDBs; native00b4bcc0/00b4c550.
     void CalcClipVolume(const class CEngineCamera&);
@@ -89,8 +97,17 @@ private:
     float                     ColourBufferShadowTextureZBias;            // +0x258
     float                     ColourBufferShadowMinWClamp;               // +0x25c
     bool                      EnableShadowBufferDraw;                    // +0x260
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_PACKED_VECTORS
+    // Opt-in (NF53, round 7, row 0x00B4F390): Ego_r.pdb places the two C3DVector members byte-packed after the bool (StaticDataOrigin +0x261,
+    // CameraLookVector +0x26D; retail 0x00B4F3B6 `lea esi,[eax+26Dh]`), while CameraViewMatrix keeps its 4-byte alignment (+0x27C). Without it
+    // the default packing puts them at +0x264 / +0x270. No size change (0x340).
+#pragma pack(push, 1)
+#endif
     C3DVector                 StaticDataOrigin;                          // +0x261
     C3DVector                 CameraLookVector;                          // +0x26d
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_PACKED_VECTORS
+#pragma pack(pop)
+#endif
     CMatrix3x4                CameraViewMatrix;                          // +0x27c
     bool                      PerspectiveShadowsEnabled;                 // +0x2ac
     bool                      SceneOriginLocked;                         // +0x2ad

@@ -6,8 +6,8 @@
 // Label correction: catalogued "~CEnginePrimitiveManagerParticleLineGroup" (propagated); the vtable store 0x012A3CD0 is
 //   CEngineOcclusionManager (rtti-vtables.tsv, slot 1 0x00B8DBE0) and the single caller is its deleting destructor @ 0x00B8F933.
 // Callees: CIndexBuffer::Uninitialise @ 0x00AC1EE0, CVertexBufferWin32::Uninitialise @ 0x00A63200, ~CBaseClassNonCopyable
-//   @ 0x0099A300, the `__fastcall` _Destroy_range of pair<unsigned long, CCountedPointer<CVertexBufferWin32>> @ 0x00B8F470
-//   (first ecx, last edx, the allocator by const reference; manifest names another instantiation), free @ 0x00BFEA14,
+//   @ 0x0099A300, the `__fastcall` STLport std::__destroy_aux of std::pair<unsigned long, CCountedPointer<CVertexBufferWin32>> @ 0x00B8F470
+//   (first ecx, last edx, the __false_type tag by const reference; manifest names another instantiation), free @ 0x00BFEA14,
 //   CEngineComponent::~CEngineComponent @ 0x00B59730 (landed).
 // Layout: Ego_r.pdb CEngineOcclusionManager with 12-byte retail CArray/vector members (PDB 16): FlareTests +0x24024,
 //   PrevFrameFlareTests +0x24030, HandleMapper +0x2403c, PrevFrameHandleMapper +0x24048, FlareVertexBuffers +0x24054,
@@ -99,8 +99,8 @@ template <class T> struct CPODArray {              // CArray<T> / vector<T> of a
     FABLE_FORCEINLINE ~CPODArray() { if (_M_start) free(_M_start); }
 };
 
-template <class T> struct allocator { allocator() {} };
-template <class T> void __fastcall _Destroy_range(T* first, T* last, const allocator<T>& alloc);   // 0x00B8F470 for this T
+#define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
+#include "stlport/fable_containers.h"   // std::pair, std::__false_type, std::__destroy_aux (the /Gr COMDAT 0x00B8F470 for this T, declaration only)
 
 template <class T> class CArray { public:                 // vector<T> of a non-trivial T, 12 bytes
     T* _M_start;
@@ -108,14 +108,13 @@ template <class T> class CArray { public:                 // vector<T> of a non-
     T* _M_end_of_storage;
     FABLE_FORCEINLINE ~CArray()
     {
-        _Destroy_range(_M_start, _M_finish, allocator<T>());
+        std::__destroy_aux(_M_start, _M_finish, std::__false_type());
         if (_M_start)
             free(_M_start);
     }
 };
 
 #include "engine/CCountedPointer.h"
-template <class A, class B> struct pair { A first; B second; };
 
 class CEngineComponent { public:
     virtual void v00();
@@ -129,9 +128,9 @@ class CEngineOcclusionManager : public CEngineComponent { public:   // vtable 0x
     unsigned char                    _pad_0x08[0x24024 - 0x08];   // occluder slots, entry buffers
     CPODArray<COccluderFlareEntry>   FlareTests;                  // +0x24024
     CPODArray<COccluderFlareEntry>   PrevFrameFlareTests;         // +0x24030
-    CPODArray<pair<unsigned long, unsigned long> > HandleMapper;  // +0x2403c
-    CPODArray<pair<unsigned long, unsigned long> > PrevFrameHandleMapper;   // +0x24048
-    CArray<pair<unsigned long, CCountedPointer<CVertexBufferWin32> > > FlareVertexBuffers;   // +0x24054
+    CPODArray<std::pair<unsigned long, unsigned long> > HandleMapper;  // +0x2403c
+    CPODArray<std::pair<unsigned long, unsigned long> > PrevFrameHandleMapper;   // +0x24048
+    CArray<std::pair<unsigned long, CCountedPointer<CVertexBufferWin32> > > FlareVertexBuffers;   // +0x24054
     CVertexShader                    VertexShaderFlareTest;       // +0x24060
     CVertexBufferWin32               UnitBoxVB;                   // +0x24068
     CIndexBuffer                     UnitBoxIB;                   // +0x2409c

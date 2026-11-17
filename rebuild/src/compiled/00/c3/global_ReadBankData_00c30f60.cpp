@@ -1,5 +1,5 @@
 // ReadBankData(void* file, CBankData* data, unsigned long chunk, CLoadLog* log) -- open the bank file's LiOnHeAd segment reader, check its version and wave segments, then read the wave records, the second record table and the criteria into data, logging each failure
-// Leaf: ?ReadBankData@@YIXPAXPAVCBankData@@KPAVCLoadLog@@@Z
+// Leaf: ?ReadBankData@@YIXPAXPAUCBankData@@KPAVCLoadLog@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C30F60, 590 bytes, __fastcall (file ecx, data edx, chunk and log on the stack,
 //   `ret 8`), EH-framed (the 0xB0-byte segment reader, the segment-name temporary).
@@ -17,29 +17,15 @@
 //   segment position, stored before the wrapper is built); the criteria reader is a named local declared just before its
 //   call (its own slot above the temporaries, its stores sunk to the call); the final `if (!log->IsOk()) return;` leaves
 //   a bare call.
-class CString { public:
-    char* m_pchData;
-    CString(const char* text);                          // 0x00C0BFE0
-    ~CString();                                         // 0x00C0BA40
-    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
-    CString& __fastcall operator<<(long value);         // 0x00C0DF00
-};
-class CLoadLog { public:
-    CString& AddError();                                // 0x00C30840
-    bool IsOk() const;                                  // 0x00C307C0
-};
-class CBankData;
+// NF53: the string, log, bank data and segment reader are the shared libpk classes (as the landed twin 0x00C17640 includes them):
+//   engine/CString.h, libpk/CScriptHost.h CLoadLog (AddError 0x00C30840, IsOk 0x00C307C0) and ReadBankInfoCount(CSegmentFile*) 0x00C16E10,
+//   libpk/CBankProcessor.h struct CBankData, libpk/CSegmentFile.h (ErrorCount +0x7C; OpenSegment / GetPosition under
+//   FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23). Was local CString / CLoadLog / CSegmentFile stand-ins.
+#define FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
+#include "libpk/CBankProcessor.h"
+#define FABLE_RETAIL_CSEGMENTFILE_DEFERRED_BANK_PASS23
+#include "libpk/CScriptHost.h"
 
-struct CSegmentFile {                                   // the LiOnHeAd segment reader (0xB0 bytes)
-    unsigned char m_base[0x7c];
-    long          m_errors;                             // +0x7C
-    unsigned char m_segments[0x30];                     // +0x80
-    CSegmentFile(void* file, unsigned long chunk);      // 0x00C2DA20
-    ~CSegmentFile();                                    // 0x00C2DBE0
-    long OpenSegment(const CString& name);              // 0x00C2D9C0
-    unsigned long GetPosition();                        // 0x00C2DA10
-};
-long __fastcall ReadBankInfoCount(CSegmentFile* file);  // 0x00C16E10
 static long HasWaveBankSegments(CSegmentFile* file);    // 0x00C30E90
 
 struct Callback {
@@ -74,7 +60,7 @@ struct AudioBankTableReader_00c3bb50 {
 void __fastcall ReadBankData(void* file, CBankData* data, unsigned long chunk, CLoadLog* log)
 {
     CSegmentFile reader(file, chunk);
-    if (reader.m_errors) {
+    if (reader.ErrorCount) {
         log->AddError() << "There were problems decoding the file segment structure";
         return;
     }

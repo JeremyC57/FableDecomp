@@ -9,12 +9,16 @@
 // class uses engine/CNavSwitchableLeafNode.h.
 // Shape: byte offset kept in ebx (`add ebx,10h`), the vector's first pointer re-read each iteration, the
 // 64-bit ID pushed hi then lo with the `false` first.
+// Name (round 7, NF53): the callee binds ?SetAsBlocked@CNavSwitchableLeafNode@@QAEX_K_N@Z 0x00A78800 (Ego_r.pdb 0x00BBE6F0 / FableWin.pdb)
+//   on the retail engine/CNavSwitchableLeafNode.h (FABLE_RETAIL_CNAVSWITCHABLELEAFNODE: CNavSwitchableLeafNode : CNavNavigableLeafNode :
+//   CANavQuadTreeNode at offset 0), reached by a static_cast of the stored node pointer; was the derived CNavSwitchableLeafNode_Calls view.
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_CANAVQUADTREENODE
+#define FABLE_RETAIL_CNAVNAVIGABLELEAFNODE
+#define FABLE_RETAIL_CNAVSWITCHABLELEAFNODE
+#include "stlport/fable_containers.h"
 #include "engine/CANavQuadTreeNode.h"
 #include "engine/CNavSwitchableLeafNode.h"
-
-struct CNavSwitchableLeafNode_Calls : CNavSwitchableLeafNode {
-    void SetAsBlocked(unsigned __int64 id, bool blocked);  // 0x00A78800
-};
 
 struct SSwitchableNode {                                    // CVectorMap<unsigned __int64, CANavQuadTreeNode*> entry, 16 bytes
     unsigned __int64   ID;
@@ -39,5 +43,5 @@ class CNavQuadTree { public:
 void CNavQuadTree::UnblockAllSwitchableNodes()
 {
     for (unsigned int i = 0; i < SwitchableNodes.size(); ++i)
-        reinterpret_cast<CNavSwitchableLeafNode_Calls*>(SwitchableNodes[i].Node)->SetAsBlocked(SwitchableNodes[i].ID, false);
+        static_cast<CNavSwitchableLeafNode*>(SwitchableNodes[i].Node)->SetAsBlocked(SwitchableNodes[i].ID, false);
 }

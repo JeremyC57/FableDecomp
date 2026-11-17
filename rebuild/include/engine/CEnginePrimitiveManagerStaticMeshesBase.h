@@ -118,6 +118,11 @@ private:
     CVertexShader* VertexShadersStaticSpotShadow;
     CVertexShader* VertexShadersStaticEnvSpotShadow;
     CVertexShader* VertexShaderShadowBufferRender;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_PROTECTED_TAIL
+    // NF53 opt-in (row 0x00BA1A70 CEnginePrimitiveManagerStaticMeshes ctor): the derived constructor stores 1 straight into +0x314
+    // (`mov dword ptr [esi+314h],1`), so the tail members are reachable from the derived class. Access only: no layout change.
+protected:
+#endif
     long OverridePrimitive;
     long RenderOnlyNMeshes;
     long StippleAlphaSolidFactor;

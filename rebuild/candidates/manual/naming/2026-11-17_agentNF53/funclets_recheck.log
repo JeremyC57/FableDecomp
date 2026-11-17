@@ -1,0 +1,22 @@
+addr       parity           behav  name
+01212a58   RELOCATION_MATCH[/EHsc] PASS   Unwind@01212a58
+012115f0   RELOCATION_MATCH[/EHsc] PASS   Unwind@012115f0
+012115f8   RELOCATION_MATCH[/EHsc] PASS   Unwind@012115f8
+01216442   RELOCATION_MATCH[/EHsc] PASS   Unwind@01216442
+0121406c   RELOCATION_MATCH[/EHsc] PASS   Unwind@0121406c
+01214077   RELOCATION_MATCH[/EHsc] PASS   Unwind@01214077
+01211e30   RELOCATION_MATCH[/EHsc] PASS   Unwind@01211e30
+01211e25   OBJDUMP_ERR      PASS   Unwind@01211e25
+01213c1a   RELOCATION_MATCH PASS   Unwind01213c1a
+
+WINS: 8
+  01212a58 RELOCATION_MATCH[/EHsc] _global::Unwind@01212a58
+  012115f0 RELOCATION_MATCH[/EHsc] _global::Unwind@012115f0
+  012115f8 RELOCATION_MATCH[/EHsc] _global::Unwind@012115f8
+  01216442 RELOCATION_MATCH[/EHsc] _global::Unwind@01216442
+  0121406c RELOCATION_MATCH[/EHsc] _global::Unwind@0121406c
+  01214077 RELOCATION_MATCH[/EHsc] _global::Unwind@01214077
+  01211e30 RELOCATION_MATCH[/EHsc] _global::Unwind@01211e30
+  01213c1a RELOCATION_MATCH _global::?AddSampleNameTriggers@CBankProcessor@@QAEXXZ
+# 01213c1a: lines copied verbatim from work/vl_fun5.log (payload: funclet_offset 0, leaf and /EHsc flag from the repo funclet row's own // Leaf: and // Flags: lines, oracle 18 bytes; work/vl_fun4.log without the offset gives DIFFER(395v18), so the funclet block is what was compared).
+# 01211e25: unverified (its unchanged repo parent gives the same OBJDUMP_ERR, work/vl_funbase2.log).

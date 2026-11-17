@@ -10,7 +10,11 @@
 // Shape: the inlined Read keeps the count in eax on the fast path; the count (an inline ReadULong returning by value) and the allocation handle both live in
 //   the dead `stream` argument slot; `Size > 0` gives the unsigned `jbe`.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CCONTAINMENTVOLUME_MOVABLERESOURCE
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL
 #include "engine/CContainmentVolume.h"
+#include "engine/CMovableResourceMemoryPool.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -50,13 +54,6 @@ private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
 };
 
-class CHandleBasedMemoryPool { public:
-    void* GetPointerFromHandle(long handle);                       // 0x00A026B0
-};
-
-class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
-    bool AllocateResource(long* handle, void* owner, unsigned long size, unsigned long alignment);   // 0x00A62E40
-};
 
 struct CContainmentVolume_Methods : CContainmentVolume {
     bool LoadBinary(CDataInputStream& stream, CMovableResourceMemoryPool* pool);

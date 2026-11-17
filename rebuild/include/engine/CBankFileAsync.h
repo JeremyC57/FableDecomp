@@ -26,6 +26,12 @@ public:
     // out of line at 0x009D68B0 (landed GetPTextEntry 0x009C9070 calls it the same way). Declaration only.
     void AsyncUpdatePending();                                           // 0x009D68B0
 #endif
+#if defined(FABLE_RETAIL_CBANKFILEASYNC_ASYNCUPDATEPENDING) && !defined(FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT)
+    // Opt-in (NF53, round 7, rows 0x009F8230 / 0x00B3B7F0): the same Ego_r.pdb / FableWin.pdb ?AsyncUpdatePending@CBankFileAsync@@QAEXXZ
+    // (Ego_r 0x00B2ABD0 / FableWin 0x02FF6B50; out of line at 0x009D68B0) for TUs that do not take the NGameText group-text opt-in.
+    // Declaration only.
+    void AsyncUpdatePending();                                           // 0x009D68B0
+#endif
 #ifdef FABLE_RETAIL_CBANKFILEASYNC_HANDLEFAILEDALLOCATION
     // Retail opt-in (chunk F2, row 0x009D5BF0): Ego_r.pdb / FableWin.pdb ?HandleFailedAllocation@CBankFileAsync@@QAE_NXZ. Declaration only.
     bool HandleFailedAllocation();                                       // 0x009D5BF0

@@ -1,4 +1,4 @@
-// CIndexMap_00c3b0e0::Add(CMessageLog_00c3b0e0* log, void* value, unsigned long index) -- register a value under a numeric index: when the index is already present (slot-17 lookup) append "Index <n> already exists!" to a fresh line of the load log, otherwise insert a new {value, index} node (slot 9; a failed allocation inserts null)
+// CIndexMap_00c3b0e0::Add(CLoadLog* log, void* value, unsigned long index) -- register a value under a numeric index: when the index is already present (slot-17 lookup) append "Index <n> already exists!" to a fresh line of the load log, otherwise insert a new {value, index} node (slot 9; a failed allocation inserts null)
 // Leaf: ?Add@CIndexMap_00c3b0e0@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00c3b0e0, 122 bytes (+ int3 padding), __fastcall `ret 0Ch`.
 // Library: libpk audio bank loader (no PDB/RTTI); descriptive names. The map is a member of the bank reader (caller
@@ -13,15 +13,13 @@
 //   returned stream pointer; `new` + constructor is null-checked and the result (or 0) goes straight to Insert.
 void* __cdecl operator new(unsigned int size);                 // 0x00BFEA1A
 
-class CString { public:                         // the library's MFC-style string, one word
-    char* m_pchData;
-    CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
-    CString& __fastcall operator<<(unsigned long value);    // 0x00C0DF10
-};
-
-struct CMessageLog_00c3b0e0 {
-    CString* NewMessage();                    // 0x00C307E0
-};
+// NF53: the log is the shared libpk CLoadLog (libpk/CScriptHost.h: ?AddMessage@CLoadLog@@QAEAAVCString@@XZ 0x00C307E0, returning
+//   the new line's CString by reference) and the string the shared engine/CString.h (FABLE_RETAIL_CSTRING_BUILDERS appenders);
+//   was the CMessageLog_00c3b0e0 / local CString stand-ins.
+#define FABLE_RETAIL_CSEGMENTFILE_DEFERRED_BANK_PASS23
+#define FABLE_RETAIL_CLOADLOG_MESSAGE_PASS23
+#define FABLE_RETAIL_CSTRING_BUILDERS
+#include "libpk/CScriptHost.h"
 
 struct SIndexNode_00c3b0e0 {                           // 8 bytes
     void* m_pValue;                                         // +0x00
@@ -37,13 +35,13 @@ public:
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
     virtual void v15(); virtual void v16();
     virtual SIndexNode_00c3b0e0* Lookup(const unsigned long* index);     // slot 17 (+0x44)
-    void Add(CMessageLog_00c3b0e0* log, void* value, unsigned long index);
+    void Add(CLoadLog* log, void* value, unsigned long index);
 };
 
-void CIndexMap_00c3b0e0::Add(CMessageLog_00c3b0e0* log, void* value, unsigned long index)
+void CIndexMap_00c3b0e0::Add(CLoadLog* log, void* value, unsigned long index)
 {
     if (Lookup(&index)) {
-        *log->NewMessage() << "Index " << index << " already exists!";
+        log->AddMessage() << "Index " << index << " already exists!";
         return;
     }
     Insert(new SIndexNode_00c3b0e0(value, index));

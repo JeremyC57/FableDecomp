@@ -1,0 +1,83 @@
+addr       parity           behav  name
+006b25e0   RELOCATION_MATCH PASS   GetDef<CSoundThemeDef>
+008c4990   RELOCATION_MATCH PASS   FinishAction
+00988110   RELOCATION_MATCH PASS   EnablePixelShaders
+009b8ad0   RELOCATION_MATCH PASS   Update
+009cfb70   RELOCATION_MATCH PASS   PostInitEntries
+009f8230   WARN RELOC_NAME: ?AsyncUpdatePending@CBankFileAsync@@QAEXXZ -> 009d68b0 labelled '_global::Dtor_RestartReadsBase_009d68b0'
+009f8230   RELOCATION_MATCH PASS   ProcessLoading
+00a754e0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a754e0   RELOCATION_MATCH PASS   LoadBinary
+00a79240   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+00a79240   RELOCATION_MATCH PASS   SetSwitchableNodesAsBlocked
+00ad79c0   WARN RELOC_NAME: ??1COptimisedVertex@QuadricOptimiserInternals@@QAE@XZ -> 00ad7400 labelled 'CWound::Kill'
+00ad79c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00b4f390   RELOCATION_MATCH PASS   UpdateShadowScene
+00b8da80   WARN SHARED_HEADER_AVAILABLE CShaderBase
+00b8da80   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00b8da80   WARN SHARED_HEADER_AVAILABLE CArray
+00b8da80   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b8da80   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@std@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@0@0ABU__false_type@0@@Z -> 00b8f470 labelled 'std::__destroy_aux<std::pair<unsigned long, CCountedPointer<CVertexBufferWin32>> *>'
+00b8da80   RELOCATION_MATCH PASS   ~CEngineOcclusionManager
+00b991d0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b991d0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00b991d0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b991d0   WARN SHARED_HEADER_AVAILABLE CEngineFadeDistance
+00b991d0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00b991d0   RELOCATION_MATCH PASS   UpdateRepeatedStaticMesh
+00bca950   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00bca950   WARN RELOC_NAME: ?IsBusy@CVertexBufferBase@@QBE_NXZ -> 00ac20c0 labelled 'CThingFilter_IsValid::operator()'
+00bca950   WARN RELOC_NAME: ?Sizeof@CVertexBufferBase@@QBEKXZ -> 00ac20d0 labelled 'CThingFilter_IsValid::func_00ac20d0'
+00bca950   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bca950   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00bca950   RELOCATION_MATCH PASS   RenderSpriteTrail
+  WARN leaf 'Combat_ProcessAnimationState' matches no symbol in 00c119d0.obj; graded the largest function
+  WARN leaf 'Combat_ProcessAnimationState' matches no symbol in 00c119d0.obj; graded the largest function
+  WARN leaf 'Combat_ProcessAnimationState' matches no symbol in 00c119d0.obj; graded the largest function
+00c119d0   WARN STANDIN_LEAF ?ProcessAnimationState@CCombatStateTable_00c119d0@@QAEJPAXPAUCEntry_00c119d0@@@Z (catalog _global::Combat_ProcessAnimationState; address-only name)
+00c119d0   RELOCATION_MATCH[/EHsc] PASS   Combat_ProcessAnimationState
+00c1d8c0   WARN RELOC_NAME: ?GetCurrentFrame@CScriptModuleTimer@@QAEKXZ -> 00c1d810 labelled 'NCameraModes::CScriptModuleSelfTerminateBase::IsFinished'
+00c1d8c0   RELOCATION_MATCH PASS   UpdateState
+00c21c20   WARN RELOC_NAME: ?Clear@Object@Row00c21c20@@QAEXH@Z -> 00c20720 labelled 'EmptyStub'
+00c21c20   WARN RELOC_NAME: ?Bind@Object@Row00c21c20@@QAEXPAUOwner@2@@Z -> 00c213c0 labelled 'Thiscall_CreatureOpinionUpdate'
+00c21c20   WARN RELOC_NAME: ?Check@Object@Row00c21c20@@QAEHPAUOwner@2@@Z -> 00c20cb0 labelled 'CSoundEvent::HasPositiveGain'
+00c21c20   WARN RELOC_NAME: ?Yes@Object@Row00c21c20@@QAEXPAUOwner@2@@Z -> 00c21780 labelled 'CSoundEvent::Play'
+00c21c20   WARN RELOC_NAME: ?No@Object@Row00c21c20@@QAEXPAUOwner@2@@Z -> 00c20b00 labelled 'CSoundEvent::PlayVirtual'
+00c21c20   WARN STANDIN_LEAF ?Initialize@Object@Row00c21c20@@QAEXPAUOwner@2@IIIPAVCSoundSample@@JJJIPBXPBII_N44E@Z (catalog CSoundEvent::Initialise; names another function)
+00c21c20   RELOCATION_MATCH PASS   Initialise
+00c30f60   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c30f60   WARN RELOC_NAME: ??1CSegmentFile@@QAE@XZ -> 00c2dbe0 labelled '_global::TeleportData_Destructor_WithUnwind'
+00c30f60   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c30f60   WARN RELOC_NAME: ?GetPosition@CSegmentFile@@QAEKXZ -> 00c2da10 labelled 'CGameScriptThing::GetPThingUniqueID'
+00c30f60   WARN RELOC_NAME: ??0AudioBankTableReader_00c3bb50@@QAE@PAVCSegmentFile@@@Z -> 00c3bb40 labelled '__EH_epilog3'
+00c30f60   RELOCATION_MATCH PASS   ReadBankData
+00c62920   WARN RELOC_NAME: ??0CTestToneAudioStream@@QAE@M@Z -> 00c73ef0 labelled 'CVtable_012bf014::CVtable_012bf014'
+00c62920   RELOCATION_MATCH PASS   CAudioStreamOwner_00c62920
+00e1fef0   RELOCATION_MATCH PASS   WatchForExpressionWait
+012115f8   RELOCATION_MATCH PASS   Unwind@012115f8
+01212a58   RELOCATION_MATCH PASS   Unwind@01212a58
+01214077   RELOCATION_MATCH PASS   Unwind@01214077
+
+WINS: 22
+  006b25e0 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCSoundThemeDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCSoundThemeDef@@@@@Z
+  008c4990 RELOCATION_MATCH CCreatureAction_ScorpionPrepareTailPlunge::?FinishAction@CCreatureAction_ScorpionPrepareTailPlunge@@UAEXXZ
+  00988110 RELOCATION_MATCH CShaderRenderManager::EnablePixelShaders
+  009b8ad0 RELOCATION_MATCH CVectorMap<unsigned long,unsigned long>::?Update@?$CVectorMap@KKV?$CKeyPairCompareLess@KK@@@@QAEXXZ
+  009cfb70 RELOCATION_MATCH CBankFile::PostInitEntries
+  009f8230 RELOCATION_MATCH CGraphicBankManager::?ProcessLoading@CGraphicBankManager@@QAEX_NN@Z
+  00a754e0 RELOCATION_MATCH CContainmentVolume::LoadBinary
+  00a79240 RELOCATION_MATCH CNavQuadTree::?SetSwitchableNodesAsBlocked@CNavQuadTree@@QAEX_K_N@Z
+  00ad79c0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedVertex::??_GCOptimisedVertex@QuadricOptimiserInternals@@QAEPAXI@Z
+  00b4f390 RELOCATION_MATCH CEngineShadowRenderer::?UpdateShadowScene@CEngineShadowRenderer@@QAEXABVCEngineCamera@@_NABUCEngineLightingManagerSpotlightParams@@@Z
+  00b8da80 RELOCATION_MATCH CEngineOcclusionManager::??1CEngineOcclusionManager
+  00b991d0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::UpdateRepeatedStaticMesh
+  00bca950 RELOCATION_MATCH CEnginePrimitiveManagerSpriteTrails::?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z
+  00c119d0 RELOCATION_MATCH[/EHsc] _unattributed::Combat_ProcessAnimationState
+  00c1d8c0 RELOCATION_MATCH CScriptModuleTimer::UpdateState
+  00c21c20 RELOCATION_MATCH CSoundEvent::Initialize
+  00c30f60 RELOCATION_MATCH _global::?ReadBankData@@YIXPAXPAUCBankData@@KPAVCLoadLog@@@Z
+  00c62920 RELOCATION_MATCH CAudioStreamOwner_00c62920::??0CAudioStreamOwner_00c62920@@QAE@PAVIStreamOpener_00c62920@@PBGABUPKCBufferedReaderParams@@@Z
+  00e1fef0 RELOCATION_MATCH NScript::CQR_EscortTraderScript::?WatchForExpressionWait@CQR_EscortTraderScript@NScript@@
+  012115f8 RELOCATION_MATCH _global::Unwind@012115f8
+  01212a58 RELOCATION_MATCH _global::Unwind@01212a58
+  01214077 RELOCATION_MATCH _global::Unwind@01214077

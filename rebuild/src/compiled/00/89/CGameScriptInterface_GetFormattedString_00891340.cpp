@@ -1,9 +1,10 @@
-// CGameScriptInterface::GetFormattedString(const CCharString& symbol, CWideStringVector_Retail& args) const -- look the symbol up in the engine text bank (0x013B86A0 -> +0x14, CDataBank::GetTextBySymbol @ 0x009C95E0), substitute the arguments when the text is not empty (ConstructString @ 0x009C7C20) and return the wide string by value
+// CGameScriptInterface::GetFormattedString(const CCharString& symbol, const std::vector<CWideString>& args) const -- look the symbol up in the engine text bank (0x013B86A0 -> +0x14, CDataBank::GetTextBySymbol @ 0x009C95E0), substitute the arguments when the text is not empty (ConstructString @ 0x009C7C20) and return the wide string by value
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891340, length 87 bytes.
 // Callees: CDataBank::GetTextBySymbol @ 0x009C95E0 (hidden result pointer), CWideString::operator!=(const wchar_t*) @ 0x0099B150 against L"" @ 0x0122D70C, ConstructString @ 0x009C7C20 (__fastcall: the text, the vector), CWideString::CWideString(const CWideString&) @ 0x0099B720, CWideString::~CWideString @ 0x0099B510. Shape: no frame: the temporary wide string is homed in the dead `symbol` argument slot, `this` is unused, the hidden result pointer read into esi only for the copy, `ret 0Ch`.
 // Leaf: GetFormattedString
 // Naming wave 18: the global stand-in g_pEngineGlobals_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+#include "stlport/fable_containers.h"   // std::vector<CWideString> (the args vector; was the CWideStringVector_Retail stand-in)
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
@@ -29,7 +30,6 @@ class CCharString { public:
     const char* GetString() const { return m_pData == 0 ? "" : m_pData->m_pData; }   // inline: "" @ 0x0129AAF4 without a data block (the null case falls through)
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
 };
-struct CWideStringVector_Retail;              // std::vector<CWideString>
 namespace NGameText {
 class CDataBank { public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0 (CDataBank::GetTextBySymbol, by value through the hidden result pointer)
@@ -46,7 +46,9 @@ private: public:
     unsigned char    _pad[0x14];
     CDataBank* m_pTextBank;               // +0x14
 };
-bool __fastcall ConstructString(CWideString* text, CWideStringVector_Retail* args);   // 0x009C7C20
+namespace NGameText {
+bool __fastcall ConstructString(CWideString& text, const std::vector<CWideString>& args);   // 0x009C7C20 Ego_r/FableWin ?ConstructString@NGameText@@YI_NAAVCWideString@@ABV?$vector@..@std@@@Z
+}
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 (CRC)
 class CGameScriptInterface { public:
     virtual void v000();
@@ -60,13 +62,13 @@ protected:
     long GetMinWorldFrameForMessages() const;   // 0x006E7510
     long GetMaxWorldFrameForMessages() const;       // 0x006E7530
 public:
-    CWideString GetFormattedString(const CCharString& symbol, CWideStringVector_Retail& args) const;
+    virtual CWideString GetFormattedString(const CCharString& symbol, const std::vector<CWideString>& args) const;   // Ego_r ?GetFormattedString@CGameScriptInterface@@UBE..; engine/CGameScriptInterface.h slot 715
 };
 
-CWideString CGameScriptInterface::GetFormattedString(const CCharString& symbol, CWideStringVector_Retail& args) const
+CWideString CGameScriptInterface::GetFormattedString(const CCharString& symbol, const std::vector<CWideString>& args) const
 {
     CWideString text = CMainGameComponent::Get()->m_pTextBank->GetTextBySymbol(symbol);
     if (text != L"")
-        ConstructString(&text, &args);
+        NGameText::ConstructString(text, args);
     return text;
 }

@@ -11,25 +11,19 @@
 // LastUsedFrame +0x18); Entries is a retail 12-byte CArray at +0x1c and PFileData (CCountedPointer<CBankFileAsyncData>:
 // object +0x28, count block +0x2c) sits 4 bytes below the PDB offset 0x2c. CResourceList per engine/CResourceList.h
 // (Head +4, CurrentFrame +0x2c). The async record's data size is at +0x10.
-// Shape: the touch is an inline CResource member; the stream arguments evaluate right to left (size pushed before the
+// Shape: the touch is the inline CResource::TouchResource; the stream arguments evaluate right to left (size pushed before the
 // GetData call); the file-data release is an inline CCountedPointer Clear() on the member (block re-read after the
 // decrement, deleter through the block, then the block and object words zeroed).
+// Name (round 7, NF53): ListRemove 0x009FBFB0 / ListInsert 0x009FBF90 are the private CResource members
+//   ?ListRemove@CResource@@AAEXXZ / ?ListInsert@CResource@@AAEXPAV1@0@Z (Ego_r.pdb / FableWin.pdb) reached through the inline
+//   CResource::TouchResource (engine/CResourceList.h FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE); was a local CResourceMethods view
+//   (MarkAsUsed) that bound them as public CResourceMethods members.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
 #include "engine/CResource.h"
 #include "engine/CResourceList.h"
-
-struct CResourceMethods : CResource {
-    static CResource* GetHead(CResourceList* list) { return reinterpret_cast<CResource*>(list->Head); }
-    void ListRemove();                                   // 0x009FBFB0
-    void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
-    void MarkAsUsed()
-    {
-        if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
-            ListRemove();
-            ListInsert(GetHead(ResourceList)->PrevResource, GetHead(ResourceList));
-            LastUsedFrame = ResourceList->CurrentFrame;
-        }
-    }
-};
 
 class CBankFileAsyncData { public:
     unsigned char _pad[0x10];
@@ -75,7 +69,7 @@ class CMemoryDataInputStream { public:
 };
 
 namespace NGameText {
-class CGroupEntry : public CResourceMethods { public:
+class CGroupEntry : public CResource { public:
     void* Entries[3];                                // +0x1c retail CArray<long> (12 bytes)
     CCountedPointer<CBankFileAsyncData> PFileData;   // +0x28
     void* Owner;                                     // +0x30
@@ -92,7 +86,7 @@ class CDataBankGroupEntry { public:
 
 void NGameText::CDataBankGroupEntry::BuildGroup() const
 {
-    PGroup->MarkAsUsed();
+    PGroup->TouchResource();
     if (PGroup->PFileData.Object) {
         if (!PGroup->PFileData->IsFinished())
             PGroup->PFileData->WaitUntilFinished();

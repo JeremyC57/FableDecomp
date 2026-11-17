@@ -14,7 +14,11 @@
 //   the shared `return false` block as the fall-through of the AllocateResource test (`jne success`) with the size guard
 //   jumping forward to it; two separate `if (...) return false;` statements keep the first copy and jump back to it.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CCONTAINMENTVOLUME_MOVABLERESOURCE
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL
 #include "engine/CContainmentVolume.h"
+#include "engine/CMovableResourceMemoryPool.h"
 
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 
@@ -28,22 +32,15 @@ class CPlane { public:
 
 CPlane* __fastcall CopyPlanes(const CPlane* first, const CPlane* last, CPlane* dest);   // 0x00A759E0
 
-class CHandleBasedMemoryPool { public:
-    void* GetPointerFromHandle(long handle);                       // 0x00A026B0
-};
-
-class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
-    bool AllocateResource(long* handle, void* owner, unsigned long size, unsigned long alignment);   // 0x00A62E40
-};
 
 static FABLE_FORCEINLINE bool IsValidSize(__int64 size) { return size >= 0 && size <= 0x7fffffff; }
-static FABLE_FORCEINLINE bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, void* owner);
+static FABLE_FORCEINLINE bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, CMovableResource* owner);
 
 struct CContainmentVolume_Methods : CContainmentVolume {
     bool Initialise(const CPlane* planes, unsigned long count, CMovableResourceMemoryPool* pool);
 };
 
-static FABLE_FORCEINLINE bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, void* owner)
+static FABLE_FORCEINLINE bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, CMovableResource* owner)
 {
     if (!IsValidSize((__int64)bytes))
         return false;
@@ -54,7 +51,7 @@ bool CContainmentVolume_Methods::Initialise(const CPlane* planes, unsigned long 
     Size = count;
     if (count == 0)
         return true;
-    MemoryPool = (::CMovableResourceMemoryPool*)pool;
+    MemoryPool = pool;
     if (pool) {
         unsigned long bytes = count * sizeof(CPlane);
         long handle;

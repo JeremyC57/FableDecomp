@@ -7,25 +7,17 @@
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
 
-struct CTable_00c119d0 { void* Lookup(void* tag); };   // 0x00C1BAC0
+// NF53: the key is the shared libpk CSampleRef (libpk/CSampleRef.h: ctor 0x00C25C50 zeroes the four words, Bind 0x00C25C70 stores
+//   sample/+4/+8/+0xc, Release 0x00C25CB0, dtor 0x00C25CA0); Bind takes four arguments with `this` = the key itself: the tag is
+//   pushed first, then CSoundPlayParameters::GetCategory 0x00C1BAC0 (no stack argument, plain `ret`; the 0x00C12940 spelling)
+//   runs and its result, the entry and the entry's sample follow. Was the CKey/CKeyFields/CTable stand-ins (same bytes).
+#include "libpk/CSampleRef.h"
+struct CSoundPlayParameters { long GetCategory() const; };   // 0x00C1BAC0 (descriptive libpk, as the landed 0x00C12940)
 
 struct CEntry_00c119d0 {
     long m_0;
-    void* m_pOwner;                        // +4
-    CTable_00c119d0 m_table;               // +8
-};
-
-struct CKeyFields_00c119d0 {               // the key's value part at +4
-    unsigned char _body[0xc];
-    void Set(void* owner, CEntry_00c119d0* entry, void* resolved);   // 0x00C25C70
-};
-
-struct CKey_00c119d0 {                     // 0x10-byte lookup key
-    long m_0;
-    CKeyFields_00c119d0 m_fields;          // +4
-    CKey_00c119d0();                       // 0x00C25C50
-    void Clear();                          // 0x00C25CB0
-    ~CKey_00c119d0();                      // 0x00C25CA0
+    CSoundSample* m_pSample;               // +4
+    CSoundPlayParameters m_params;         // +8
 };
 
 struct CStateHit_00c119d0 {
@@ -51,7 +43,7 @@ struct CStateMap_00c119d0 {                // embedded at +0x1f4
     virtual void Slot38();
     virtual void Slot3C();
     virtual void Slot40();
-    virtual CStateHit_00c119d0* Find(CKey_00c119d0* key);   // slot 0x44
+    virtual CStateHit_00c119d0* Find(CSampleRef* key);   // slot 0x44
 };
 
 struct CCombatStateTable_00c119d0 {
@@ -64,10 +56,10 @@ long CCombatStateTable_00c119d0::ProcessAnimationState(void* tag, CEntry_00c119d
 {
     PKCProtectionInstance lock(&g_lock_0143bb14);
     if (entry) {
-        CKey_00c119d0 key;
-        key.m_fields.Set(entry->m_pOwner, entry, entry->m_table.Lookup(tag));
+        CSampleRef key;
+        key.Bind(entry->m_pSample, (long)entry, entry->m_params.GetCategory(), (long)tag);
         CStateHit_00c119d0* hit = m_states.Find(&key);
-        key.Clear();
+        key.Release();
         if (hit)
             return hit->m_state;
     }

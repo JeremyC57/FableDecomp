@@ -1,6 +1,6 @@
 // Levers: twin of 0x00E1FCF0 (EXPRESSION_WAIT, ExpressionDetectedWait): for(;;) with the terminating return first, alive/else-dead branches, every terminate check `do { if (term) return; } while (0);` with a plain-inline ~CScriptThing, nested CBasicString<char>::operator==, ternary IsAlive.
 // CQR_EscortTraderScript::WatchForExpressionWait(CScriptThing trader) -- spawned per trader: each frame, stop when the trader dies; when the hero performs EXPRESSION_WAIT to it, restart the random-speech timer and set ExpressionDetectedWait
-// Leaf: ?WatchForExpressionWait@CQR_EscortTraderScript@@
+// Leaf: ?WatchForExpressionWait@CQR_EscortTraderScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1FEF0, 435 bytes, `ret 0Ch` (the by-value CScriptThing).
 // Callees: CCharString() 0x0099E4B0 / ~CCharString 0x0099EAE0, CScriptBase::IsActiveThreadTerminating 0x00CB7940, the thing's
 //   implementation slots 75 IsAlive (+0x12c) and 29 MsgExpressionPerformedTo(CCharString&) (+0x74, wrapper 0x004AABF0),
@@ -12,38 +12,12 @@
 //   ExpressionDetectedWait store make it WatchForExpressionWait (Ego_r.pdb ?WatchForExpressionWait@CQR_EscortTraderScript).
 #include <string.h>
 #pragma intrinsic(strcmp)
-template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CBasicStringChar (data and inline comparisons)
-    char*         PData;
-    unsigned long StringLength;
-    unsigned long DataLength : 31;
-    bool          UseFastExtend : 1;
-protected:
-    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
-public:
-    bool operator==(const char* text) const { return Compare(PData, text) ? false : true; }
-};
-#pragma pack(push, 1)
-struct CBasicStringChar : public CBasicString<char> {                       // CBasicString<char>, 13 bytes
-};
-class CCharStringData { public:                        // 17 bytes
-    CBasicStringChar Data;                      // +0x00
-    long             NoRefs;                    // +0x0d
-};
-#pragma pack(pop)
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString();                                          // 0x0099E4B0
-    ~CCharString();                                         // 0x0099EAE0
-    bool operator==(const char* text) const
-    {
-        if (PStringData == 0) {
-            if (strcmp(text, "") == 0)
-                return true;
-            return false;
-        }
-        return PStringData->Data == text;
-    }
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE   // Compare(PData,text) ? false : true, expanded in the quest TUs
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_STLPORT_HTTP
+#define FABLE_STLPORT_CONSTRUCTORS
+#include "fable_string.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
@@ -63,19 +37,9 @@ inline bool CScriptThing::IsAlive() const { return PImp.Data ? PImp.Data->IsAliv
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
-struct CQuestScriptBase : CScriptBase {
-    CGameScriptInterface* Game;                             // +0x40
-    void*                 Data;                             // +0x44
-};
-struct CQR_EscortTraderScript : CQuestScriptBase {
-    unsigned char _pad48[0x70 - 0x48];
-    bool          ExpressionDetectedFollow;                 // +0x70
-    bool          ExpressionDetectedWait;                   // +0x71
-    void RestartRandomSpeechTimer();                        // 0x00E1FEB0 (TraderRandomSpeechTimer +0x84)
-    void WatchForExpressionWait(CScriptThing trader);
-};
+#include "engine/NScript_CQR_EscortTraderScript.h"   // Ego_r/FableWin owner, retail base 0x48: ExpressionDetectedFollow +0x70, ExpressionDetectedWait +0x71
 
-void CQR_EscortTraderScript::WatchForExpressionWait(CScriptThing trader)
+void NScript::CQR_EscortTraderScript::WatchForExpressionWait(CScriptThing trader)
 {
     CCharString expression;
     for (;;) {
@@ -84,7 +48,7 @@ void CQR_EscortTraderScript::WatchForExpressionWait(CScriptThing trader)
             do { if (IsActiveThreadTerminating()) return; } while (0);
             if (trader.MsgExpressionPerformedTo(expression) && expression == "EXPRESSION_WAIT") {
                 do { if (IsActiveThreadTerminating()) return; } while (0);
-                RestartRandomSpeechTimer();
+                ResetTraderRandomSpeechTime();
                 ExpressionDetectedWait = true;
             }
         } else {

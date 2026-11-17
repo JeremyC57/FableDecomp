@@ -1,0 +1,81 @@
+addr       parity           behav  name
+0043feb0   RELOCATION_MATCH PASS   GetDef<CGlobalDef>
+00891340   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00891340   RELOCATION_MATCH PASS   GetFormattedString
+0097a630   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0097a630   WARN SHARED_HEADER_AVAILABLE CSoundPair
+0097a630   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097a630   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097a630   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0097a630   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0097a630   RELOCATION_MATCH PASS   Update
+009b89b0   RELOCATION_MATCH PASS   Sort
+009c8700   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData
+009c8700   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009c8700   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+009c8700   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+009c8700   RELOCATION_MATCH PASS   BuildGroup
+009f6720   RELOCATION_MATCH PASS   _Destroy_Record34
+00a5f1c0   RELOCATION_MATCH PASS   AcquireFont
+00a78dd0   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+00a78dd0   RELOCATION_MATCH PASS   UnblockAllSwitchableNodes
+00ad68d0   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@IV1@@std@@YIPAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@PAV1@IABV1@ABU__false_type@0@@Z -> 00ad1690 labelled '_global::UninitFillN_CCountedPointer_00ad1690'
+00ad68d0   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@@std@@YIXPAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@0ABU__false_type@0@@Z -> 00ad37e0 labelled '_global::DestroyRange_CountedPointer_00ad37e0'
+00ad68d0   RELOCATION_MATCH PASS   _M_insert_overflow
+00b3b7f0   WARN SHARED_HEADER_AVAILABLE CSystemManager
+00b3b7f0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager
+00b3b7f0   WARN RELOC_NAME: ?AsyncUpdatePending@CBankFileAsync@@QAEXXZ -> 009d68b0 labelled '_global::Dtor_RestartReadsBase_009d68b0'
+00b3b7f0   RELOCATION_MATCH PASS   ProcessLoading
+00b86bb0   WARN STANDIN_LEAF ?ClearFlagAndRestoreCaptureBlock@CCaptureUser_Retail@@QAEXXZ (catalog AddToInterface; names another function)
+00b86bb0   RELOCATION_MATCH PASS   AddToInterface
+00b936e0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00b936e0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00b936e0   WARN SHARED_HEADER_AVAILABLE CEngineSceneGridCell
+00b936e0   RELOCATION_MATCH PASS   CheckVisibilityResults
+00ba1a70   RELOCATION_MATCH PASS   CEnginePrimitiveManagerStaticMeshes
+00bf2e50   RELOCATION_MATCH PASS   AddNodeAutoExpandTree
+00c17800   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf 'CSoundEvent' matches no symbol in 00c21ba0.obj; graded the largest function
+  WARN leaf 'CSoundEvent' matches no symbol in 00c21ba0.obj; graded the largest function
+  WARN leaf 'CSoundEvent' matches no symbol in 00c21ba0.obj; graded the largest function
+00c21ba0   WARN RELOC_NAME: ??0COcclusion_00c21ba0@@QAE@XZ -> 00c34320 labelled 'CEnginePrimitiveOcclusionManager::CEnginePrimitiveOcclusionManager'
+00c21ba0   WARN RELOC_NAME: ?Init@CScriptModuleBase@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c21ba0   WARN STANDIN_LEAF ??0CScriptModuleBase@@QAE@XZ (catalog CSoundEvent::CSoundEvent; names another function)
+00c21ba0   RELOCATION_MATCH[/EHsc] PASS   CSoundEvent
+00c2e610   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c2e610   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c2e610   WARN RELOC_NAME: ??6CString@@QAIAAV0@ABV0@@Z -> 00c0dea0 labelled 'CString::operator<<(CString const &)'
+00c2e610   WARN RELOC_NAME: ??0CEventTriggerRef@@QAE@PAVCNamedSet@@VCString@@_N@Z -> 00c1eee0 labelled 'CItemAction::CItemAction'
+00c2e610   WARN RELOC_NAME: ?InsertDriver@CEventTriggerRef@@QAEJKPAX@Z -> 00c1f4e0 labelled 'CItemAction::Handle'
+00c2e610   RELOCATION_MATCH PASS   AddSampleNameTriggers
+00c3b0e0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c3b0e0   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c3b0e0   RELOCATION_MATCH PASS   Add
+00e1fcf0   RELOCATION_MATCH PASS   WatchForExpressionFollow
+012115f0   RELOCATION_MATCH PASS   Unwind@012115f0
+01211e30   RELOCATION_MATCH PASS   Unwind@01211e30
+0121406c   RELOCATION_MATCH PASS   Unwind@0121406c
+
+WINS: 22
+  0043feb0 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCGlobalDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCGlobalDef@@@@@Z
+  00891340 RELOCATION_MATCH CGameScriptInterface::GetFormattedString
+  0097a630 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::?Update@CAIStateGroup_CreatureTakeCover@@QAEXXZ
+  009b89b0 RELOCATION_MATCH CVectorMap<unsigned long,unsigned long>::?Sort@?$CVectorMap@KKV?$CKeyPairCompareLess@KK@@@@QAEXXZ
+  009c8700 RELOCATION_MATCH NGameText::CDataBankGroupEntry::BuildGroup
+  009f6720 RELOCATION_MATCH _global::?_Destroy_Record34@@YIXPAVCInputEvent@@0@Z
+  00a5f1c0 RELOCATION_MATCH CStreamingFontDataBankEntry::AcquireFont
+  00a78dd0 RELOCATION_MATCH CNavQuadTree::UnblockAllSwitchableNodes
+  00ad68d0 RELOCATION_MATCH std::vector<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> >::?_M_insert_overflow@?$vector@V?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@V?$allocator@
+  00b3b7f0 RELOCATION_MATCH CEngineResourceManager::?ProcessLoading@CEngineResourceManager@@QAEX_NN@Z
+  00b86bb0 RELOCATION_MATCH _unattributed::?ClearFlagAndRestoreCaptureBlock@CCaptureUser_Retail@@QAEXXZ
+  00b936e0 RELOCATION_MATCH CEngineSceneGridCell::CheckVisibilityResults
+  00ba1a70 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshes::CEnginePrimitiveManagerStaticMeshes
+  00bf2e50 RELOCATION_MATCH CEngineTreeFilerBase::?AddNodeAutoExpandTree@CEngineTreeFilerBase@@AAEPAUCNodeHeader@1@PAU21@0@Z
+  00c17800 RELOCATION_MATCH CBankData::??_GCBankData@@QAEPAXI@Z
+  00c21ba0 RELOCATION_MATCH[/EHsc] CScriptModuleBase::CSoundEvent
+  00c2e610 RELOCATION_MATCH CBankProcessor::?AddSampleNameTriggers@CBankProcessor@@QAEXXZ
+  00c3b0e0 RELOCATION_MATCH CIndexMap_00c3b0e0::?Add@CIndexMap_00c3b0e0@@
+  00e1fcf0 RELOCATION_MATCH NScript::CQR_EscortTraderScript::?WatchForExpressionFollow@CQR_EscortTraderScript@NScript@@
+  012115f0 RELOCATION_MATCH _global::Unwind@012115f0
+  01211e30 RELOCATION_MATCH _global::Unwind@01211e30
+  0121406c RELOCATION_MATCH _global::Unwind@0121406c

@@ -1,6 +1,12 @@
 // CBankFileAsyncData::SetupBuffer(bool) -- take the bank lock and acquire the read buffer from the movable pool or fallback allocator
 // Retail: Fable.exe 0x009D52D0, 310 bytes. Callees include CCriticalSectionLock @ 0x00A62920 / 0x00A629A0, CBankFile::Align @ 0x009CBB90, CMovableResourceMemoryPool::AllocateResource @ 0x00A62E40, CHandleBasedMemoryPool::GetPointerFromHandle @ 0x00A026B0, and CMemoryAllocator::InternalAllocate @ 0x009F2A40.
 // The input-stream object has no generated header; its +0x00 primary view, +0x04 CMovableResource secondary base, +0x10 length, +0x14 skipped bytes, +0x1c pool, +0x20 handle, +0x24 internal allocation size, and +0x28 bank follow landed CBankFileAsyncData siblings. Shared engine headers describe the actual pool, movable resource, CBankFile, and lock layouts.
+// Name (round 7, NF53): AllocateResource 0x00A62E40 is ?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z and
+//   GetPointerFromHandle 0x00A026B0 the inherited ?GetPointerFromHandle@CHandleBasedMemoryPool@@QAEPAXJ@Z (Ego_r.pdb / FableWin.pdb), on the
+//   retail engine/CMovableResourceMemoryPool.h / CHandleBasedMemoryPool.h (FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL /
+//   FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL); was the derived CMovableResourcePoolCalls view.
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL
 #include "engine/CBankFile.h"
 #define CCriticalSectionLock CCriticalSectionLockPdb
 #include "engine/CCriticalSectionLock.h"
@@ -15,10 +21,6 @@ struct CCriticalSectionLock : CCriticalSectionLockPdb {
 };
 struct CBankFileAlign : CBankFile {
     unsigned long Align(unsigned long size); // 0x009CBB90
-};
-struct CMovableResourcePoolCalls : CMovableResourceMemoryPool {
-    bool AllocateResource(long* handle, CMovableResource* owner, unsigned long size, unsigned long flags); // 0x00A62E40
-    void* GetPointerFromHandle(long handle); // inherited CHandleBasedMemoryPool method @ 0x00A026B0
 };
 struct CMemoryAllocatorCalls {
     void* InternalAllocate(long size, unsigned long alignment, bool flag); // 0x009F2A40
@@ -41,7 +43,7 @@ class CBankFileAsyncData { public:
     unsigned long Length; // +0x10
     unsigned long SkipBytes; // +0x14
     unsigned long ThreadedFileUID; // +0x18
-    CMovableResourcePoolCalls* MemoryPool; // +0x1c, the relocatable pool is also the handle pool
+    CMovableResourceMemoryPool* MemoryPool; // +0x1c, the relocatable pool is also the handle pool
     long MemoryHandle; // +0x20
     unsigned long InternalAllocatedBufferSize; // +0x24, native fallback allocation size
     CBankFileAsyncRetail* BankFile; // +0x28

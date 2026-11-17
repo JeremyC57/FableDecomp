@@ -8,34 +8,36 @@
 // LookVector +0x1b4. The headers keep these composites as byte arrays, so they are viewed through C3DVector / CMatrix3x4.
 // Shape: the two C3DVector copies go through `lea` of source and destination and three dword moves; the 12-dword
 // CMatrix3x4 is a POD block copy (`rep movsd`); each branch tail-calls with its own `ret 0Ch`; the camera stays in edx.
+// Leaf: ?UpdateShadowScene@CEngineShadowRenderer@@QAEXABVCEngineCamera@@_NABUCEngineLightingManagerSpotlightParams@@@Z
+// Name (round 7, NF53): Ego_r.pdb ?UpdateShadowScene@CEngineShadowRenderer@@QAEXABVCEngineCamera@@_NABUCEngineLightingManagerSpotlightParams@@@Z
+//   (the landed caller 0x00B484B0 binds it so) and its private callees ?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z
+//   0x00B4D370 (Ego_r 0x009F0370 / FableWin 0x02D74FB0), ?UpdateSpotLightShadowSpace@..@@AAEXABUCEngineLightingManagerSpotlightParams@@@Z
+//   0x00B4EF80, ?SetShadowClipVolumesToNeverShadow@..@@AAEXXZ 0x00B4CE20. Was the derived view CEngineShadowRenderer_UpdateShadowScene over
+//   the flattened layout (pointer parameters, byte offsets); now the retail engine/CEngineShadowRenderer.h members (SceneData.CameraPos,
+//   CameraLookVector, CameraViewMatrix, SceneOriginLocked, RenderingTechnique) and the CEngineCamera accessors, with the overlay opt-in
+//   FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESPACE.
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CENGINESHADOWRENDERER
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_MEMBERS
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESCENE
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESPACE
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_PACKED_VECTORS
+#define FABLE_RETAIL_CENGINECAMERA_POSITION
+#define FABLE_RETAIL_CENGINECAMERA_CLIPSPHERE
+#define FABLE_RETAIL_CENGINECAMERA_LOOKFOV
 #include "engine/CEngineShadowRenderer.h"
 #include "engine/CEngineCamera.h"
 
-#include "engine/C3DVector.h"
-
-class CMatrix3x4 { public:
-    float m[12];
-};
-
-struct CEngineLightingManagerSpotlightParams;
-
-struct CEngineShadowRenderer_UpdateShadowScene : CEngineShadowRenderer {
-    void SetShadowClipVolumesToNeverShadow();                                  // 0x00B4CE20
-    void UpdateSpotLightShadowSpace(CEngineLightingManagerSpotlightParams* spot);   // 0x00B4EF80
-    void UpdateShadowSpace(CEngineCamera* camera);                             // 0x00B4D370
-    void UpdateShadowScene(CEngineCamera* camera, bool spotLight, CEngineLightingManagerSpotlightParams* spot);
-};
-
-void CEngineShadowRenderer_UpdateShadowScene::UpdateShadowScene(CEngineCamera* camera, bool spotLight, CEngineLightingManagerSpotlightParams* spot)
+void CEngineShadowRenderer::UpdateShadowScene(const CEngineCamera& camera, bool spot_light, const CEngineLightingManagerSpotlightParams& spot)
 {
     if (!SceneOriginLocked) {
-        *(C3DVector*)(SceneData + 0x104) = *(C3DVector*)(camera->CameraDesc + 0x40);   // SceneData.CameraPos = CameraDesc.WorldPosition
-        *(C3DVector*)CameraLookVector = *(C3DVector*)&camera->LookVector_X;
-        *(CMatrix3x4*)CameraViewMatrix = *(CMatrix3x4*)camera->ViewTransform;
+        SceneData.CameraPos = camera.PeekCameraPos();
+        CameraLookVector = camera.PeekLookVector();
+        CameraViewMatrix = camera.PeekViewTransform();
     }
-    if (*(long*)RenderingTechnique == 0)
+    if (RenderingTechnique == SHADOW_RENDERING_TECHNIQUE_NONE)
         SetShadowClipVolumesToNeverShadow();
-    else if (spotLight)
+    else if (spot_light)
         UpdateSpotLightShadowSpace(spot);
     else
         UpdateShadowSpace(camera);

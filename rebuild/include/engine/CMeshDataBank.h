@@ -75,6 +75,11 @@ public:
     void SetAnimationMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool, bool use);   // 0x00A24050
     void SetClothMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool);                 // 0x00A240E0
     void SetMeshDataMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool, bool use);    // 0x00A24150
+#ifdef FABLE_RETAIL_CMESHDATABANK_PROCESSLOADINGQUEUE
+    // Opt-in (NF53, round 7, row 0x00B3B7F0 CEngineResourceManager::ProcessLoading): Ego_r.pdb 0x00B5FD80 / FableWin.pdb 0x031333B0
+    // ?ProcessLoadingQueue@CMeshDataBank@@QAEX_NN@Z (retail 0x00A23B00). Declaration only: no layout change.
+    void ProcessLoadingQueue(bool flag, double until);                   // 0x00A23B00
+#endif
 #else
 class CMeshDataBank : public CBankFile {
 public:

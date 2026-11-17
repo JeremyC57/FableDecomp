@@ -75,6 +75,12 @@ public:
     // retail 0x00A23C50, an empty `ret 4` between 0x00A23C40 / 0x00A23C60).
     void BeginLoadingTextures(EBankLoadPriority priority) const;          // 0x00A23C50
 #endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_ARETEXTURESLOADED
+    // Opt-in (NF53, round 7, rows 0x00B9CE10 / 0x00BD1F70): Ego_r.pdb ?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ (donor 0x00B5FEB0, right after
+    // BeginLoadingTextures 0x00B5FEA0 = retail 0x00A23C50); retail 0x00A23C60 is `mov al,1 ; ret` (textures always resident on PC); no
+    // C3DMeshInfo::IsBuilt in either PDB. Declaration only: no layout change.
+    bool AreTexturesLoaded() const;                                      // 0x00A23C60
+#endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_LODERROR
     // Retail opt-in (chunk 2028, rows 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive / 0x00BA6FF0): FableWin.pdb
     // inline ?GetLODError@C3DMeshInfo@@QBEMK@Z (no Ego_r.pdb or Fable.exe copy; LODErrors +0x40 read in place, 0x00B9A64A). Needs

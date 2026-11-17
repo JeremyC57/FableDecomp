@@ -1,0 +1,79 @@
+source	entry	address	correct_symbol	status	note
+nf41	e80	008112d0	?RemoveEvent@CTCEntityEvents@@QAEXAAVCEventBase@NEntityEvents@@@Z	carry	not reached [e80]
+nf41	e39	0056c860	??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@PBVCThing@@@Z	carry	not reached [e39]
+nf41	e25	009d68b0	?AsyncUpdatePending@CBankFileAsync@@QAEXXZ	carry	not reached [e25]
+nf41	e188	00a23c60	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ	carry	not reached [e188]
+nf41	e125	009fbf90	?ListInsert@CResource@@AAEXPAV1@0@Z	carry	not reached [e125]
+nf41	e124	009fbfb0	?ListRemove@CResource@@AAEXXZ	carry	not reached [e124]
+nf41	e120	00a23c50	?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z	carry	not reached [e120]
+nf41	e102	0091f990	??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	carry	not reached [e102]
+nf41	e219	00a2e920	GetDummyObjectPositionAnimated out parameter is C3DDummyObject& (both PDBs: AAV2@), not C3DVector&	carry	not reached [e219]
+nf41	e209	00a03b30	??1CInputEvent@@QAE@XZ	carry	not reached [e209]
+nf41	e200	013bad44	CTCCreatureModeManager::RegisteredModes (static CVectorMap<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo,CKeyPairCompareLess<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo> >); element value member CTCCreatureModeManager::CRegisteredModeInfo::AllocFunc (type CModeBase* (__fastcall*)(CThing&))	carry	not reached [e200]
+nf41	e178	00a78800	?SetAsBlocked@CNavSwitchableLeafNode@@QAEX_K_N@Z	carry	not reached [e178]
+nf41	e155	00a05840	?RestoreCaptureBlock@CRenderStateManager@@QAEXXZ	carry	not reached [e155]
+nf41	e15	00815820	?GetPHitLocationWithDefName@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVCCharString@@@Z	carry	not reached [e15]
+nf41	e90	009cd620	?AddEntry@CBankFile@@QAEXABVCCharString@@K0V?$CCountedPointer@VCBankStateBlock@@@@@Z	carry	not reached [e90]
+nf41	e5	00a358f0	?GetPositionMatrixFromRHSet@C3DMeshObject@@SI?AVCMatrix3x4@@ABVCRightHandedSet@@@Z	carry	not reached [e5]
+nf41	e41	009f2dc0	?Unlock@CSurface@@QBEXXZ	carry	not reached [e41]
+nf41	e40	009e37f0	?IsEquivalent@CPixelFormat@@QBE_NABV1@@Z	carry	not reached [e40]
+nf41	e33	00a3add0	?InternalCompress@CCompressorZlib@@QAEKPBXKAAV?$CArray@E@@@Z	carry	not reached [e33]
+nf41	e222	01436e38	one global, three bound names: g_pEngineSettings_01436e38 / g_pDisplacementRenderer_01436e38 / g_pShadowRenderer	carry	not reached [e222]
+nf41	e212	00b4d370	?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z	carry	not reached [e212]
+nf41	e201	009bee00	?GetPixelShaderVersion@CDisplayManager@@QBEKXZ	carry	not reached [e201]
+nf41	e2	008ce1b0	??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@M_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z	carry	not reached [e2]
+nf41	e177	00a772d0	??0CNavNavigableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@_N@Z	carry	not reached [e177]
+nf41	e164	009fe620	?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z	carry	not reached [e164]
+nf41	e161	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	carry	not reached [e161]
+nf41	e154	009fcba0	?Uninitialise@CGraphicFrameData@@QAEXXZ	carry	not reached [e154]
+nf41	e122	00b2fac0	?GetOccludedFrames@CEnginePrimitiveOcclusionManager@@QAEJAAVCEnginePrimitiveOcclusionInfo@@@Z	carry	not reached [e122]
+nf41	e116	01436e38	one global, three bound names: g_pEngineSettings_01436e38 / g_pDisplacementRenderer_01436e38 / g_pShadowRenderer	carry	not reached [e222]
+nf41	e101	00860060	??0CCreatureAction_GetOutOfBed@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z	carry	not reached [e101]
+nf44	11	008ac890	??$remove_if@V?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@@?$list@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@V?$allocator@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@@std@@@std@@QAEXV?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 008a7980
+nf44	13	009c7c20	?ConstructString@NGameText@@YI_NAAVCWideString@@ABV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=3 bad=1 unv=0 ; wrong binders: 00891340
+nf44	16	00ad7400	??1COptimisedVertex@QuadricOptimiserInternals@@QAE@XZ	carry	not reached in round 6 (NF44); fresh probe ok=4 bad=2 unv=0 ; wrong binders: 00ad79c0 00ad85d0
+nf44	18	00bacd80	?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=8 bad=6 unv=0 ; wrong binders: 00ba1a70 00babb50 00bad040 00bb6e00 00bba480 00bc7e90
+nf44	19	00bc9b30	?FindNode@CEngineTreeFilerBase@@AAEPAUCNodeHeader@1@PAU21@PAK@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=3 unv=0 ; wrong binders: 00bca950 00bcc800 00bf2e50
+nf44	20	00cbe09a	??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=8 bad=1 unv=0 ; wrong binders: 00cbf6dc
+nf44	21	00e1feb0	?ResetTraderRandomSpeechTime@CQR_EscortTraderScript@NScript@@QAEXXZ	carry	triaged (round 6, NF44), no port attempted: both binders are methods of an un-namespaced local CQR_EscortTraderScript (their own leaves lack NScript::), so binding the claim means moving the rows onto engine/NScript_CQR_EscortTraderScript.h, a self rename of both rows (callers via the script thread table) | not reached in round 6 (NF44); fresh probe ok=0 bad=2 unv=0 ; wrong binders: 00e1fcf0 00e1fef0
+nf44	22	00e337c0	?ResetRandomSpeechTime@CV_ArcheryCompetitionScript@NScript@@QAEXXZ	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=1 unv=0 ; wrong binders: 00e33720
+nf44	60	0x008D8120	??0CModeScorpionKingVulnerable@NCreatureMode@@QAE@AAVCThing@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 008c4990
+nf44	61	0x009A3C20	??0CStreamingFontBank@@QAE@PAVCStreamingFontDataBank@@K@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 00a5f1c0
+nf44	62	0x00A026B0	?GetPointerFromHandle@CHandleBasedMemoryPool@@QAEPAXJ@Z	carry	not reached in round 6 (NF44); fresh probe ok=14 bad=2 unv=0 ; wrong binders: 009d52d0 00a8b3a0
+nf44	63	0x00A62E40	?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z	carry	not reached in round 6 (NF44); fresh probe ok=7 bad=4 unv=0 ; wrong binders: 009d52d0 00a754e0 00a755c0 00a8b3a0
+nf44	64	0x00AD37E0	??$__destroy_aux@PAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@@std@@YIXPAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@0ABU__false_type@0@@Z	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=1 unv=0 ; wrong binders: 00ad68d0
+nf44	65	0x00B32010	?SetDrawDistanceQuality@CEnginePrimitiveRenderer@@QAEXW4EEngineVideoOptionQuality@@ABVCEngineVideoOptionsDef@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 00b24690
+nf44	66	0x00B8E690	?DeleteData@?$CCountedPointer@VCVertexBufferWin32@@@@SIXPAX@Z	carry	triaged (round 6, NF44), not attempted: binder 0x00B8EC10 is CCountedPointer_00b8e690::Reset (an address-named stand-in of CCountedPointer<CVertexBufferWin32>::Reset with its own body); binding DeleteData means rewriting it as the shared-header template instance (self rename) whose callers follow | not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 00b8ec10
+nf44	67	0x00B8F470	??$__destroy_aux@PAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@std@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@0@0ABU__false_type@0@@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=1 unv=0 ; wrong binders: 00b8da80
+nf44	70	0x00BCE740	??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitiveAnimatedMesh@@PAVC3DPrimitive2@@W4ERenderMode@@_N@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=1 unv=0 ; wrong binders: 00bd1f70
+nf44	71	0x00BEBBB0	?IsSimulationRunning@CEngineInternalPrimitiveMeshBase@@QBE_NK@Z	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=2 unv=0 ; wrong binders: 00b9e950 00bd1f70
+nf44	73	0x00BF18B0	?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=1 unv=0 ; wrong binders: 00bd1f70
+nf44	74	0x00C13A00	??0logic_error@std@@QAE@ABV01@@Z	carry	triaged (round 6, NF44), not attempted: binder 0x00C13D20 is a CVtable_012b2644 ctor over a local CDrawQuickAccessIconsPC base; the claim (std::logic_error copy ctor at 0x00C13A00) has no shared stdexcept header and the derived class is unidentified (non-RTTI vtable): authoring, not a respell | not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 00c13d20
+nf44	75	0x00C26260	?GetPoolData@CStreamBuffer@@QAEPAXPAUCSoundEventManager@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=2 unv=0 ; wrong binders: 00c1d8c0 00c1ea60
+nf44	80	0x009ADE10	?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z	carry	not reached in round 6 (NF44); fresh probe ok=8 bad=5 unv=0 ; wrong binders: 004384f0 0043feb0 006b25e0 00888e60 00b6bd40
+nf44	81	0x0095C7C0	??$GetAllThingsInRoughArea@VCThingObject@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 0095b3e0
+nf44	83	0x009FC3D0	?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=3 bad=2 unv=0 ; wrong binders: 00a25bd0 00a42980
+nf44	89	0x00C25C50	??0CSampleRef@@QAE@XZ	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=2 unv=0 ; wrong binders: 00c119d0 00c21ba0
+nf44	90	0x00C25C70	?Bind@CSampleRef@@QAEXPAVCSoundSample@@JJJ@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=2 unv=0 ; wrong binders: 00c119d0 00c21c20
+nf44	91	0x00C25CB0	?Release@CSampleRef@@QAEXXZ	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=1 unv=0 ; wrong binders: 00c119d0
+nf44	92	0x00C20C10	?IsAudible@CSoundEvent@@QAE_NPAUCSoundEventManager@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=1 unv=0 ; wrong binders: 00c11f50
+nf44	93	0x00C21620	?Stop@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=6 bad=4 unv=0 ; wrong binders: 00c11f50 00c120a0 00c12460 00c12520
+nf44	97	0x009B85A0	??$sort@PAU?$pair@KK@std@@V?$CKeyPairCompareLess@KK@@@std@@YIXPAU?$pair@KK@0@0V?$CKeyPairCompareLess@KK@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=3 unv=0 ; wrong binders: 009b89b0 009b8ad0 009cfb70
+nf44	98	0x008F8F50	?Send@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@ABULAddress@2@1@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=1 unv=0 ; wrong binders: 008f95d0
+nf44	101	0x00C3A9D0	??1CBufferedRangeReader@@QAE@XZ	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=2 unv=1 ; wrong binders: 00c2dbe0 01213bc8
+nf44	102	0x00C3AA50	?SetRange@CBufferedRangeReader@@QAEJKK@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=1 unv=0 ; wrong binders: 00c2d9c0
+nf44	105	0x00C2DDE0	??1?$PKCTRList@UCSegment@@@@UAE@XZ	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=2 unv=3 ; wrong binders: 00c2dfc0 01213bde
+nf44	106	0x00C2E030	??1CSegmentList@@UAE@XZ	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=2 ; wrong binders: 00c2e080
+nf44	107	0x00C49B90	?ProcessMessage@CMailboxQueue@@QAEJPAX@Z	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=1 unv=0 ; wrong binders: 00c497e0
+nf44	110	0x00C73EF0	??0CTestToneAudioStream@@QAE@M@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=1 unv=0 ; wrong binders: 00c62920
+nf44	111	0x00C2E610	?AddSampleNameTriggers@CBankProcessor@@QAEXXZ	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 00c2eb00
+nf44	112	0x00C307E0	?AddMessage@CLoadLog@@QAEAAVCString@@XZ	carry	not reached in round 6 (NF44); fresh probe ok=6 bad=2 unv=0 ; wrong binders: 00c3ab50 00c3b0e0
+nf44	113	0x00C1F4E0	?InsertDriver@CEventTriggerRef@@QAEJKPAX@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=3 unv=0 ; wrong binders: 00c2e4d0 00c2e610 00c2e7a0
+nf44	114	0x00C17640	?OpenBankFile@@YI_NPAVPKCFileManager@@PBGPAVCScriptHost@@PBUSBankRequest@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 00c08d40
+nf44	117	0x00C16CE0	?RunBankProcessor@@YGXPAVCScriptHost@@PAUCBankData@@PAVCLoadLog@@PBUSBankRequest@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=1 ; wrong binders: 00c17400
+nf44	118	0x00C2EF30	??1CBankData@@QAE@XZ	carry	not reached in round 6 (NF44); fresh probe ok=3 bad=1 unv=4 ; wrong binders: 00c17800
+nf44	119	0x00C16E10	?ReadBankInfoCount@@YIJPAVCSegmentFile@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=1 ; wrong binders: 00c30f60
+nf44	120	0x00C17940	?ReadMetadataData@@YIPAUCBankData@@PAX@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 00c17400
+nf44	122	0x00C0DF20	??6CString@@QAIAAV0@PBG@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=1 ; wrong binders: 00c1a510
+nf44	123	0x00C31DB0	?GetChecked@PKCAutoFile@@QAEPAVCAudioFile@@XZ	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=1 ; wrong binders: 00c172f0
+nf44	126	0x007FD110	??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=5 unv=0 ; wrong binders: 007fbc90 008c2240 0095b020 0095b3e0 00972830

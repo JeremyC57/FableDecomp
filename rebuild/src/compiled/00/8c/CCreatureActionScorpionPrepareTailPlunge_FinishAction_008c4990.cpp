@@ -15,98 +15,43 @@
 // frame across the block (register pressure).
 // Layout: the owner (CIntelligentPointer<CThingCreatureBase>) at +8, the target at +0xa8 (retail CCreatureActionBase is 0xa8).
 #include "fable_compiler.h"
-class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
-#include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CBaseObject;
-class CBaseObjectPointer;
+#define FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CCREATUREACTION_SCORPIONPREPARETAILPLUNGE
+#define FABLE_RETAIL_CCREATUREACTION_SCORPIONPREPARETAILPLUNGE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#include "fable_string.h"
+#include "engine/CThing.h"
 #include "engine/CIntelligentPointer.h"
-
-
-void operator delete(void* p);                  // 0x00BFE9BC
-
-void __fastcall DestroyModeScorpionKingVulnerable(void* object);   // 0x008C57F0: the per-type deleter stored in the block
-
-struct SCountBlock {
-    long  m_references;                         // +0
-    void (__fastcall* m_pfnDestroy)(void*);     // +4
-    void* m_pObject;                            // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(DestroyModeScorpionKingVulnerable), m_pObject(object) { }
-};
-
-struct CModeBase { };
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;                     // +0
-    SCountBlock* m_pCount;                      // +4
-    CCountedPointer(T* object);                 // 0x008C5980 for CModeScorpionKingVulnerable
-    template <class U> CCountedPointer(const CCountedPointer<U>& other)
-        : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
-    ~CCountedPointer()
-    {
-        if (m_pCount && --m_pCount->m_references == 0) {
-            m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-            delete m_pCount;
-        }
-    }
-    T* operator->() const { return m_pObject; }
-};
-
-struct CModeScorpionKingVulnerable : CModeBase {
-    unsigned char _pad[0xb8];
-    CModeScorpionKingVulnerable(CThing* owner); // 0x008D8120
-    void SetTarget(CThing* target);             // 0x008D73E0
-};
-
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
-};
-
-// The counted pointer's constructor is compiled in this TU (0x008C5980, landed separately): its body above the caller
-// under auto_inline(off) tells VC7.1 the local does not escape, so the block pointer stays in esi across AddMode.
-#pragma auto_inline(off)
-CCountedPointer<CModeScorpionKingVulnerable>::CCountedPointer(CModeScorpionKingVulnerable* object)
-    : m_pObject(object)
-{
-    if (object)
-        m_pCount = new SCountBlock(m_pObject);
-    else
-        m_pCount = 0;
-}
-#pragma auto_inline(on)
-
-class CCombatActionBase {
-public:
-    protected: virtual void FinishAction(); public:                // 0x00859A20
-    unsigned char           _pad04[4];
-    CIntelligentPointer<CThing> PCreature;          // +0x08
-    unsigned char           _pad10[0xa8 - 0x10];
-    CIntelligentPointer<CThing> PTarget;            // +0xa8
-    unsigned char           _padb0[0x114 - 0xb0];
-    FABLE_FORCEINLINE CTCCreatureModeManager* GetModeManager() const
-    {
-        CTCCreatureModeManager* modeManager;
-        PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
-        return modeManager;
-    }
-};
-
-class CCreatureAction_ScorpionPrepareTailPlunge : public CCombatActionBase {
-public:
-    virtual void FinishAction();
-};
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/NCreatureMode_CModeScorpionKingVulnerable.h"
+#include "engine/CCreatureAction_ScorpionPrepareTailPlunge.h"
 
 void CCreatureAction_ScorpionPrepareTailPlunge::FinishAction()
 {
     if (PCreature.Get()->GetTypeFlags() & 8) {
-        CThing* target = PTarget.Get();
-        CTCCreatureModeManager* modeManager = GetModeManager();
-        CCountedPointer<CModeScorpionKingVulnerable> mode(new CModeScorpionKingVulnerable(PCreature.Get()));
-        mode->SetTarget(target);
+        CThingCreatureBase* target = static_cast<CThingCreatureBase*>(PTarget.Get());
+        CTCCreatureModeManager* modeManager;
+        PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
+        CCountedPointer<NCreatureMode::CModeScorpionKingVulnerable> mode(new NCreatureMode::CModeScorpionKingVulnerable(*PCreature.Get()));
+        mode->SetTarget(*target);
         modeManager->AddMode(mode);
     }
     CCombatActionBase::FinishAction();

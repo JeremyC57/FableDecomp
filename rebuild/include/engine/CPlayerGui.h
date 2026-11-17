@@ -440,9 +440,17 @@ struct CStatBar;
 class CWorld;
 struct IDirect3DTexture9;
 
+#ifdef FABLE_RETAIL_CPLAYERGUI_PEEKGLOBALDEF
+class CGlobalDef;
+#endif
 #pragma pack(push, 1)
 class CPlayerGui {
 public:
+#ifdef FABLE_RETAIL_CPLAYERGUI_PEEKGLOBALDEF
+    // Opt-in (NF53, round 7, row 0x004384F0): Ego_r.pdb ?PeekGlobalDef@CPlayerGui@@QBEABVCGlobalDef@@XZ (retail 0x004384F0, out of
+    // line; the GLOBAL def of the definition manager by class index 1). Declaration only: no layout change.
+    const CGlobalDef& PeekGlobalDef() const;                 // 0x004384F0
+#endif
     void*                             __vftable;             // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                           World;                 // +0x04
     CPlayerManager*                   PlayerManager;         // +0x08

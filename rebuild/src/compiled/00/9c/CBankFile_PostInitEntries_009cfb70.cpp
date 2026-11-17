@@ -12,27 +12,25 @@
 // propagated), CBankFile::PackRuntimeData() @ 0x009CD740 (tail jump).
 // Shape: CVectorMap::Sort() inline (`if (NeedsSort) { sort(begin, end, Compare); NeedsSort = false; }`), the map's
 // address kept in esi; the comparator byte is zero-extended into eax for the push.
-struct SCRCPair {
-    unsigned long Key;
-    unsigned long Value;
-};
-
-struct CKeyPairCompareLess {
-    unsigned char _empty;
-};
-
-void __fastcall SortCRCPairs(SCRCPair* first, SCRCPair* last, CKeyPairCompareLess compare);   // 0x009B85A0
+// NF53: the pair and comparator are std::pair<unsigned long, unsigned long> and engine/CVectorMap.h CKeyPairCompareLess<unsigned long, unsigned long>
+//   (engine/CBankFile.h: SymbolCRCIndices is CVectorMap<unsigned long, unsigned long, CKeyPairCompareLess<..> >), sorted by the
+//   /Gr STLport std::sort instance 0x009B85A0 (stlport/fable_containers.h FABLE_RETAIL_STLP_SORT_FASTCALL declaration).
+#define FABLE_RETAIL_STLP_SORT_FASTCALL
+#include "stlport/fable_containers.h"
+#include "engine/CVectorMap.h"   // CKeyPairCompareLess<K,V> (the shared definition)
+typedef std::pair<unsigned long, unsigned long> SCRCPair;
+typedef CKeyPairCompareLess<unsigned long, unsigned long> CCRCCompare;
 
 struct CCRCVectorMap {                      // CVectorMap<unsigned long, unsigned long, CKeyPairCompareLess>
     SCRCPair*           _M_start;           // +0x00
     SCRCPair*           _M_finish;          // +0x04
     SCRCPair*           _M_end_of_storage;  // +0x08
-    CKeyPairCompareLess Compare;            // +0x0C
+    CCRCCompare         Compare;            // +0x0C
     bool                NeedsSort;          // +0x0D
     void Sort()
     {
         if (NeedsSort) {
-            SortCRCPairs(_M_start, _M_finish, Compare);
+            std::sort(_M_start, _M_finish, Compare);
             NeedsSort = false;
         }
     }

@@ -1,8 +1,10 @@
-// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<CCountedPointer<CUnprovenPointee_00ad68d0>>) STLport growth insert for an 8-byte counted-pointer element: allocate size + max(size, fill_len) elements, copy-construct the head, x (once, or fill_len times) and the tail unless atend, destroy and free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@V?$CCountedPointer@VCUnprovenPointee_00ad68d0@@@@V?$allocator@
+// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>>) STLport growth insert for an 8-byte counted-pointer element: allocate size + max(size, fill_len) elements, copy-construct the head, x (once, or fill_len times) and the tail unless atend, destroy and free the old block, adopt the new one
+// Leaf: ?_M_insert_overflow@?$vector@V?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@V?$allocator@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD68D0, 218 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
-// Identity: element `CCountedPointer<CUnprovenPointee_00ad68d0>` (descriptive: the pointee is a placeholder); evidence: its only caller is the push_back 0x00AD7380 (no callers or references) in the QuadricOptimiser TU; the element's destroy helper 0x00AD37E0 also serves the COptimisedMesh constructor, which Ego_r gives no counted vector.
+// Identity (NF53): element `CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>` -- Ego_r.pdb COptimisedMesh::SubMeshes (CArray<COptimisedSubMesh>)
+//   holds COptimisedSubMesh::Primitives (CArray<CCountedPointer<COptimisedPrimitive> >, FableWin/Ego_r ?push_back@?$CArray@V?$CCountedPointer@VCOptimisedPrimitive@..),
+//   the one counted vector of the QuadricOptimiser TU, and the destroy helper 0x00AD37E0 serves the COptimisedMesh constructor. Was a placeholder; earlier evidence: its only caller is the push_back 0x00AD7380 (no callers or references) in the QuadricOptimiser TU; the element's destroy helper 0x00AD37E0 also serves the COptimisedMesh constructor, which Ego_r gives no counted vector.
 //   Family F011 (17 byte-identical bodies, one COMDAT per element type): the manifest label "sub_00ad68d0" is
 //   propagated and behavioural. STLport 4.6 vector.c `_M_insert_overflow(pos, x, const __false_type&, fill_len, atend)`
 //   (no EH: _STLP_TRY/_STLP_UNWIND are empty) with the three range helpers out of line.
@@ -21,7 +23,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 #include "engine/CCountedPointer.h"
 
 
-class CUnprovenPointee_00ad68d0;                    // descriptive: pointee type unproven
+namespace QuadricOptimiserInternals { class COptimisedPrimitive; }   // Ego_r.pdb: COptimisedSubMesh::Primitives is CArray<CCountedPointer<COptimisedPrimitive> >
 
 namespace std {
 
@@ -116,5 +118,5 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
     _M_clear();
     _M_set(__new_start, __new_finish, __new_start + __len);
 }
-template void vector<CCountedPointer<CUnprovenPointee_00ad68d0> >::_M_insert_overflow(CCountedPointer<CUnprovenPointee_00ad68d0>*, const CCountedPointer<CUnprovenPointee_00ad68d0>&, const __false_type&, unsigned int, bool);
+template void vector<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> >::_M_insert_overflow(CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>*, const CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>&, const __false_type&, unsigned int, bool);
 } // namespace std

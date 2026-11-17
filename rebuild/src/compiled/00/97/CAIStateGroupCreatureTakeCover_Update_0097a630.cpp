@@ -31,17 +31,19 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CBaseObject;
+// Name (round 7, NF53): the two intelligent-pointer stand-ins are the shared template engine/CIntelligentPointer.h:
+//   0x0056C860 ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@PBVCThing@@@Z (Ego_r.pdb 0x005A6190 + FableWin.pdb 0x01F2AE40; vtable 0x01237F1C
+//   .?AV?$CIntelligentPointer@$$CBVCThing@@@@) out of line (_CTOR_OUTOFLINE) and 0x0091F990
+//   ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z (FableWin.pdb; the
+//   converting ctor from a non-const source, _CONVERT_MUTABLE_OUTOFLINE). Was the namespaced N_0056c860::CIntelligentPointerConstThing and a
+//   local CIntelligentPointerThing; the row's own names for them are now typedefs of the template instances.
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE_OUTOFLINE
 #include "engine/CIntelligentPointer.h"
 class CThingCreatureBase;
-namespace N_0056c860 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
-    virtual void v00();
-    CIntelligentPointerConstThing(CThing* item);                         // 0x0056C860
-    template <class U> CIntelligentPointerConstThing(const CIntelligentPointer<U>& other);   // 0x0091F990 (from CIntelligentPointer<CThingCreatureBase>)
-}; } using N_0056c860::CIntelligentPointerConstThing;
-struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing>
-    virtual void v00();
-};
+typedef CIntelligentPointer<const CThing> CIntelligentPointerConstThing;
+typedef CIntelligentPointer<CThing> CIntelligentPointerThing;
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x006961F0 (ICF: the identical IS_THING_ALIVE<T> instantiations share one body)
 FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {

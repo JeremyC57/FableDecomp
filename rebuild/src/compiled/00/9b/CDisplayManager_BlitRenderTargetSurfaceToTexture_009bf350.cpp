@@ -5,10 +5,12 @@
 // Leaf: BlitRenderTargetSurfaceToTexture
 #include "engine/CSurface.h"
 #include "engine/CTexture.h"
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CPIXELFORMAT_ISEQUIVALENT
 #include "engine/CPixelFormat.h"
 #include "engine/CRenderManagerCore.h"
 struct CPixelFormat_Methods : CPixelFormat {
- CPixelFormat_Methods(){} bool IsEquivalent(const CPixelFormat_Methods&)const; //009E37F0
+ CPixelFormat_Methods(){}   // IsEquivalent: the shared ?IsEquivalent@CPixelFormat@@QBE_NABV1@@Z 0x009E37F0 (FABLE_RETAIL_CPIXELFORMAT_ISEQUIVALENT)
 };
 inline bool operator==(const CPixelFormat_Methods& a,const CPixelFormat_Methods& b){return a.IsEquivalent(b);}
 class C2DExtentsI { public: long X,Y;C2DExtentsI(){} long GetX()const{return X;}long GetY()const{return Y;} };

@@ -1,14 +1,12 @@
 // CScriptModuleBase::CScriptModuleBase() -- EH-framed constructor: own vtable (0x012B3674), the group member at +0x18 built out of line (@ 0x00C25C50, state 0 after it), two dwords at +0x30/+0x34 zeroed, the occlusion-manager member at +0x38 built out of line (@ 0x00C34320, trivially destructible), the polymorphic member at +0x78 given its vtable (0x012B37DC) by its inline constructor, three dwords at +0xa0..+0xa8 and the word at +0xac zeroed, then an out-of-line initialisation with 0 (@ 0x00C20720)
-// Vendor naming V2 (plan phase 1, one address, one name): 0x00C25C50 ??0CKey_00c119d0@@QAE@XZ (was ??0CGroup_00c21ba0@@QAE@XZ)
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C25C50 is ??0CSampleRef@@QAE@XZ (libpk/CSampleRef.h; was ??0CKey_00c119d0 / ??0CGroup_00c21ba0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C21BA0, oracle length 123 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; push edi ; lea ecx,[esi+18h] ; mov [esp+8],esi ; mov dword ptr [esi],offset vtable ; call CGroup::CGroup ; xor edi,edi ; lea ecx,[esi+38h] ; mov [esp+14h],edi ; mov [esi+30h],edi ; mov [esi+34h],edi ; call COcclusion::COcclusion ; mov dword ptr [esi+78h],offset vtable2 ; push edi ; mov ecx,esi ; mov [esi+0A0h],edi ; mov [esi+0A4h],edi ; mov [esi+0A8h],edi ; mov [esi+0ACh],di ; call Init ; mov ecx,[esp+0Ch] ; pop edi ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
 // Only the group member registers an EH state (the others have trivial destructors). The zero
 // register is shared by the state store and the initialisers.
-struct CKey_00c119d0 {                   // +0x18, 0x18 bytes
-    unsigned char _body[0x18];
-    CKey_00c119d0();                     // 0x00C25C50
-    ~CKey_00c119d0();
-};
+// NF53: the +0x18 member is the shared libpk CSampleRef (libpk/CSampleRef.h, 0x10 bytes; ctor 0x00C25C50, out-of-line dtor 0x00C25CA0:
+//   the one EH state), as in CSoundEvent::Initialise 0x00C21C20 (Bind at +0x18) and the key of 0x00C119D0.
+#include "libpk/CSampleRef.h"
 
 struct COcclusion_00c21ba0 {               // +0x38, 0x40 bytes, trivially destructible
     unsigned char _body[0x40];
@@ -24,7 +22,8 @@ struct CListener_00c21ba0 {                // +0x78, 0x28 bytes: vtable 0x012B37
 struct CScriptModuleBase {                 // vtable 0x012B3674
     virtual void v00();
     unsigned char _pad[0x14];
-    CKey_00c119d0 m_group;               // +0x18
+    CSampleRef m_sample;                   // +0x18
+    unsigned char _pad28[8];               // +0x28
     long m_first;                          // +0x30
     long m_second;                         // +0x34
     COcclusion_00c21ba0 m_occlusion;       // +0x38
@@ -38,7 +37,7 @@ struct CScriptModuleBase {                 // vtable 0x012B3674
 };
 
 CScriptModuleBase::CScriptModuleBase()
-    : m_group(), m_first(0), m_second(0), m_occlusion(), m_listener(), m_a0(0), m_a4(0), m_a8(0), m_ac(0)
+    : m_sample(), m_first(0), m_second(0), m_occlusion(), m_listener(), m_a0(0), m_a4(0), m_a8(0), m_ac(0)
 {
     Init(0);
 }

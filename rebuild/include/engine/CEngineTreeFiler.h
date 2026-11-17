@@ -81,9 +81,20 @@ private:
  // into the tree and returns a replacement root (or null). Declaration only.
  CNodeHeader* AddNodeAutoExpandTree(CNodeHeader* root, CNodeHeader* node);   // 0x00BF2E50
 #endif
+#ifdef FABLE_RETAIL_CENGINETREEFILER_LISTTREE
+ // Opt-in (NF53, round 7, row 0x00BF2E50 AddNodeAutoExpandTree): Ego_r.pdb private members ?AddNode@CEngineTreeFilerBase@@AAEXPAUCNodeHeader@1@0@Z
+ // (0x00BF2A10), ?ConvertTreeToList@..@@AAEPAUCNodeHeader@1@PAU21@@Z (0x00BF2AD0), ?ConvertListToTree@..@@AAEPAUCNodeHeader@1@PAU21@@Z
+ // (0x00BF2B50). Declarations only (needs _NODEHEADER_STRUCT for the PDB class key).
+ void AddNode(CNodeHeader* branch, CNodeHeader* node);                 // 0x00BF2A10
+ CNodeHeader* ConvertTreeToList(CNodeHeader* tree);                     // 0x00BF2AD0
+ CNodeHeader* ConvertListToTree(CNodeHeader* list);                     // 0x00BF2B50
+#endif
 #endif
 };
 #ifdef FABLE_RETAIL_CENGINETREEFILER_INLINES
+#ifndef FABLE_RETAIL_CENGINETREEFILER_FINDNODE_DECLONLY
+// (NF53 opt-in FABLE_RETAIL_CENGINETREEFILER_FINDNODE_DECLONLY, row 0x00BF2E50: that TU calls the out-of-line FindNode 0x00BC9B30 instead
+// of expanding it, so the inline bodies below are left out; the private declaration above is the PDB one.)
 #ifdef FABLE_RETAIL_CENGINETREEFILER_FINDNODE_INDEX
 // Retail opt-in (row 0x00BCC800 RenderWeaponTrail): FindNode's text as its unreferenced out-of-line copy 0x00BC9B30 compiles it
 // (66 bytes, MATCH): the child index is a named local and the child table is read twice, with no `child` local (retail keeps the
@@ -109,6 +120,7 @@ FABLE_FORCEINLINE CEngineTreeFilerBase::CNodeHeader* CEngineTreeFilerBase::FindN
   return FindNode(child, key);
  return 0;
 }
+#endif
 #endif
 template<class T>class CEngineTreeFiler:public CEngineTreeFilerBase {
 public:

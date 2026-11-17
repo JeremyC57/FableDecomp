@@ -14,40 +14,18 @@
 // Lever: LowerBound / UpperBound get same-TU `__declspec(noinline)` bodies under `auto_inline(off)` (their landed
 //   binary searches): VC7.1 then treats the by-value ID as uncaptured and keeps it in ebx:ebp across the loop's calls
 //   (the declared-only bounds make it re-read both halves and keep the bool in ebx instead, 80 v 77).
+// Name (round 7, NF53): the callee binds ?SetAsBlocked@CNavSwitchableLeafNode@@QAEX_K_N@Z 0x00A78800 (Ego_r.pdb 0x00BBE6F0 / FableWin.pdb)
+//   on the retail engine/CNavSwitchableLeafNode.h (FABLE_RETAIL_CNAVSWITCHABLELEAFNODE: CNavSwitchableLeafNode : CNavNavigableLeafNode :
+//   CANavQuadTreeNode at offset 0), reached by a static_cast of the stored node pointer; was the derived CNavSwitchableLeafNode_Calls view. The local std::pair /
+//   CKeyPairCompareLess / CVectorMap models are replaced by engine/CVectorMap.h (non-const UpperBound: _PODIUM_UPPERBOUND).
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_CANAVQUADTREENODE
+#define FABLE_RETAIL_CNAVNAVIGABLELEAFNODE
+#define FABLE_RETAIL_CNAVSWITCHABLELEAFNODE
+#define FABLE_RETAIL_CVECTORMAP_PODIUM_UPPERBOUND
+#include "stlport/fable_containers.h"
 #include "engine/CANavQuadTreeNode.h"
 #include "engine/CNavSwitchableLeafNode.h"
-
-struct CNavSwitchableLeafNode_Calls : CNavSwitchableLeafNode {
-    void SetAsBlocked(unsigned __int64 uniqueID, bool blocked);  // 0x00A78800
-};
-
-namespace std {
-template <class _T1, class _T2> class pair {
-public:
-    _T1 first;
-    _T2 second;
-    pair(const _T1& __a, const _T2& __b) : first(__a), second(__b) { }
-};
-}
-
-template <class K, class V> class CKeyPairCompareLess {
-public:
-    bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
-    bool operator()(const K& key, const std::pair<K, V>& entry) const { return key < entry.first; }
-};
-
-template <class K, class V, class C> class CVectorMap {
-public:
-    typedef std::pair<K, V> value_type;
-    typedef value_type* iterator;
-    value_type* First;                                      // +0x00
-    value_type* Last;                                       // +0x04
-    value_type* EndOfStorage;                               // +0x08
-    C           Compare;                                    // +0x0c
-    bool        Dirty;                                      // +0x0d
-    iterator LowerBound(const K& key);                      // 0x00A7DC60
-    iterator UpperBound(const K& key);                      // 0x00A7DCC0
-};
 
 class CNavQuadTree {
 public:
@@ -57,48 +35,12 @@ public:
     void SetSwitchableNodesAsBlocked(unsigned __int64 uniqueID, bool blocked);
 };
 
-// Same-TU bodies of the two bounds (0x00A7DC60 / 0x00A7DCC0, read-only binary searches): VC7.1 then knows neither keeps
-// the key's address, so the by-value ID stays in registers across the loop's calls.
-#pragma auto_inline(off)
-template <class K, class V, class C>
-__declspec(noinline) typename CVectorMap<K, V, C>::iterator CVectorMap<K, V, C>::LowerBound(const K& key)
-{
-    value_type* first = First;
-    int count = Last - First;
-    C comp;
-    while (count > 0) {
-        int half = count / 2;
-        value_type* middle = first + half;
-        if (comp(*middle, key)) {
-            first = middle + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return first;
-}
-template <class K, class V, class C>
-__declspec(noinline) typename CVectorMap<K, V, C>::iterator CVectorMap<K, V, C>::UpperBound(const K& key)
-{
-    value_type* first = First;
-    int count = Last - First;
-    C comp;
-    while (count > 0) {
-        int half = count / 2;
-        value_type* middle = first + half;
-        if (!comp(key, *middle)) {
-            first = middle + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return first;
-}
-#pragma auto_inline(on)
+// The two bounds (0x00A7DC60 / 0x00A7DCC0) are engine/CVectorMap.h's own same-TU bodies (read-only binary searches): VC7.1 then knows
+// neither keeps the key's address, so the by-value ID stays in registers across the loop's calls.
 
 void CNavQuadTree::SetSwitchableNodesAsBlocked(unsigned __int64 uniqueID, bool blocked)
 {
     std::pair<unsigned __int64, CANavQuadTreeNode*>* last = SwitchableNodes.UpperBound(uniqueID);
     for (std::pair<unsigned __int64, CANavQuadTreeNode*>* it = SwitchableNodes.LowerBound(uniqueID); it != last; ++it)
-        reinterpret_cast<CNavSwitchableLeafNode_Calls*>(it->second)->SetAsBlocked(uniqueID, blocked);
+        static_cast<CNavSwitchableLeafNode*>(it->second)->SetAsBlocked(uniqueID, blocked);
 }

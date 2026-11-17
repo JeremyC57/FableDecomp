@@ -1,5 +1,8 @@
 // CEngineSceneGridCell::CheckVisibilityResults -- retain visible primitives and detach newly visible group primitives. Retail00b936e0 complete181bytes; ignored args preserve ABI. Shared fields native, calleeB2FAC0 occluded count, B8FE60 remove, B92450 delete group. Shared flattened primitive headers restore native fields; virtual-only interface restores slot27. No cell/handle header. Callee00b2fa40 resets occlusion record through manager01436e58.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_OCCLUDED
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_SET
 #ifndef _MSC_VER
 #define __forceinline inline
 class CEngineSceneGridCell;
@@ -31,8 +34,10 @@ struct CPrimitiveVirtuals {
 #ifndef _MSC_VER
 class CEnginePrimitiveOcclusionManager { public:unsigned char Header[12];unsigned long PrimitiveOccludeDelay;};
 #endif
-struct CEnginePrimitiveOcclusionManagerMethods:CEnginePrimitiveOcclusionManager {unsigned long GetOccludedFrames(CEnginePrimitiveOcclusionInfo*); //00b2fac0
- FABLE_FORCEINLINE bool IsVisible(CEnginePrimitiveOcclusionInfo* info){if(GetOccludedFrames(info)>PrimitiveOccludeDelay)return false;return true;}
+// NF53: GetOccludedFrames is the shared header's (?GetOccludedFrames@CEnginePrimitiveOcclusionManager@@QAEJAAVCEnginePrimitiveOcclusionInfo@@@Z 0x00B2FAC0,
+//   FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_OCCLUDED + _SET), was the view's own pointer-taking declaration.
+struct CEnginePrimitiveOcclusionManagerMethods:CEnginePrimitiveOcclusionManager {
+ FABLE_FORCEINLINE bool IsVisible(CEnginePrimitiveOcclusionInfo* info){if(IsPrimitiveOccluded(*info))return false;return true;}   // FableWin.pdb inline IsPrimitiveOccluded
 };
 extern CEnginePrimitiveOcclusionManagerMethods* g_pPrimitiveOcclusionManager; //01436e58
 class CEngineSceneGridCell { public:CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;float BoundingBox[6],DrawDistance;CEnginePrimitiveHandle GroupPrimitiveHandle[2];long LocalCount;unsigned long TotalCount,RenderMask,OccludedLayers;unsigned char Flags,OccludedFrames,PreloadFrames;void DeleteOcclusionGroup(long layer,bool reset);bool CheckVisibilityResults(long layer,unsigned long,unsigned long,bool force);};

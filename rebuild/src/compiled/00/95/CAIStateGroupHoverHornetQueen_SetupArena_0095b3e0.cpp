@@ -14,10 +14,16 @@
 // takes its frame slot (an address-taken local's slot is reserved for its whole scope).
 // Layout: HoverHornetQueen from Ego_r.pdb (ArenaCentrePos +0x28); CThingCreatureBase InitialPos +0xe8 (landed creature models).
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_C2DBOXI_ORIGINAL_FOUR_COORD_CTOR
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class TCompare> class CVectorMap;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
@@ -50,37 +56,11 @@ class CThingCreatureBase : public CThing { public:
     unsigned char _pad4c[0xe8 - 0x4c];
     C3DVector InitialPos;                       // +0xe8
 };
-class C2DBoxI { public:
-    long MinX, MinY, MaxX, MaxY;
-    C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
-};
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CThingFilter_HasScriptName { public:
-    CCharString Name;
-    CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
-};
-struct CThingFilter_All {                       // empty filter (descriptive name)
-    CThingFilter_All() { }
-};
-extern "C" void __cdecl free(void* block);    // 0x00BFEA14
-struct CThingPtrVector {                        // STLport vector<CThing*> (12 bytes)
-    CThing** _M_start;
-    CThing** _M_finish;
-    CThing** _M_end_of_storage;
-    CThingPtrVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CThingPtrVector() { if (_M_start) free(_M_start); }
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    CThing*& operator[](unsigned int n) { return _M_start[n]; }
-};
-class CThingSearchTools { public:
-    void GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_All& filter, CThingPtrVector& out) const;   // 0x0095C7C0
-    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasScriptName& filter, CThing** out) const;   // 0x007FD110
-};
+#include "engine/C2DBoxI.h"
+#include "engine/CThingFilter_None.h"
+#include "engine/CThingFilter_HasScriptName.h"
+#include "engine/CThingSearchTools.h"
+class CThingObject;   // the search type of the GetAllThingsInRoughArea instance (FableWin.pdb)
 class CTCSolidToThing { public:                        // interface 0x4d
     void AddThingNotSolidTo(CThing* thing);     // 0x00770FA0
 };
@@ -109,12 +89,12 @@ void CAIStateGroup_HoverHornetQueen::SetupArena()
 {
     SetUpCirclePoints();
     CThing* self = GetCreature();
-    CThingPtrVector things;
+    std::vector<CThing*> things;
     {
         const C3DVector& pos = self->GetPos();
         long x = (long)pos.X;
         long y = (long)pos.Y;
-        PeekThingSearchTools().GetAllThingsInRoughArea(C2DBoxI(x - 60, y - 60, x + 60, y + 60), CThingFilter_All(), things);
+        PeekThingSearchTools().GetAllThingsInRoughArea<CThingObject>(C2DBoxI(x - 60, y - 60, x + 60, y + 60), CThingFilter_None(), things);
     }
     CThingCreatureBase* me = GetCreature();
     if (me->HasTC(0x4d)) {

@@ -4,10 +4,19 @@
 // (labelled "CCountedPointer<std::vector<CCharString>>::Reset", propagated), the inlined copy constructor into the hidden return slot (`inc dword ptr [count]`).
 // Shape: the counted pointer's address in esi, ebx/edi saved only on the create arm (the two constructor arguments are loaded BEFORE operator new: the bank is
 // built by an inline helper whose arguments are evaluated first), `ret 4`.
-struct CStreamingFontBank {
-    unsigned char _body[0x3034];
-    CStreamingFontBank(long a, long b);                            // 0x009A3C20
-};
+// Name (round 7, NF53): the font constructor 0x009A3C20 is ??0CStreamingFontBank@@QAE@PAVCStreamingFontDataBank@@K@Z (Ego_r.pdb / FableWin.pdb;
+//   engine/CStreamingFontBank.h _CTOR), built from the entry's Bank (+0x0C, CStreamingFontDataBank*) and Index (+0x10) as
+//   engine/CStreamingFontDataBankEntry.h lays them out; was a local 0x3034-byte CStreamingFontBank(long, long) model. The counted-pointer
+//   stand-in and the entry's own self name are unchanged (header debt: AcquireFont is const and returns CCountedPointer<CFontBank> in the PDB).
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CFONTBANK
+#define FABLE_RETAIL_CFONTBANK_BASE
+#define FABLE_RETAIL_CSTREAMINGFONTBANK
+#define FABLE_RETAIL_CSTREAMINGFONTBANK_CTOR
+#include "engine/CArray.h"
+#include "engine/CTexture.h"
+#include "engine/CStreamingFontBank.h"
 
 struct CCountedPointer_00a5f1c0 {                        // 8 bytes: object + count block (references first)
     CStreamingFontBank* m_pObject;
@@ -23,15 +32,15 @@ struct CCountedPointer_00a5f1c0 {                        // 8 bytes: object + co
 class CStreamingFontDataBankEntry { public:
     virtual void v00();
     CCountedPointer_00a5f1c0 m_font;                     // +0x04
-    long Bank;                                      // +0x0c
-    long m_b;                                      // +0x10
-    static CStreamingFontBank* CreateBank(long a, long b) { return new CStreamingFontBank(a, b); }
+    CStreamingFontDataBank* Bank;                   // +0x0c
+    unsigned long Index;                            // +0x10
+    static CStreamingFontBank* CreateBank(CStreamingFontDataBank* bank, unsigned long index) { return new CStreamingFontBank(bank, index); }
     CCountedPointer_00a5f1c0 AcquireFont();
 };
 
 CCountedPointer_00a5f1c0 CStreamingFontDataBankEntry::AcquireFont()
 {
     if (!m_font.m_pObject)
-        m_font.Reset(CreateBank(Bank, m_b));
+        m_font.Reset(CreateBank(Bank, Index));
     return m_font;
 }

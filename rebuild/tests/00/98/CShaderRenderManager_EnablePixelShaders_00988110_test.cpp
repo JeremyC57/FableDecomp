@@ -2,16 +2,14 @@
 #include <string.h>
 
 #include "rebuild_abi.h"
-
-struct CDisplayManagerPixelShaderView
-{
-    fable_u32 GetPixelShaderVersion() const;
-};
+#include "engine/Direct3D9Types.h"
+#define FABLE_RETAIL_CDISPLAYMANAGER_PIXELSHADERVERSION
+#include "engine/CDisplayManager.h"
 
 struct CDisplayEnginePixelShaderView
 {
     fable_u8 unknown0000[0x3A3C];
-    CDisplayManagerPixelShaderView* displayManager3A3C;
+    CDisplayManager* displayManager3A3C;
 };
 
 struct CShaderRenderManagerPixelShaderView
@@ -26,20 +24,19 @@ struct CShaderRenderManagerPixelShaderView
 
 static fable_u32 g_PixelShaderVersion = 0;
 
-fable_u32
-CDisplayManagerPixelShaderView::GetPixelShaderVersion() const
+unsigned long CDisplayManager::GetPixelShaderVersion() const
 {
     return g_PixelShaderVersion;
 }
 
 int main()
 {
-    CDisplayManagerPixelShaderView displayManager;
+    static unsigned long displayManagerStorage[1024];   // the callee is stubbed above; no CDisplayManager member is read
     CDisplayEnginePixelShaderView displayEngine;
     CShaderRenderManagerPixelShaderView manager;
     memset(&displayEngine, 0, sizeof(displayEngine));
     memset(&manager, 0, sizeof(manager));
-    displayEngine.displayManager3A3C = &displayManager;
+    displayEngine.displayManager3A3C = reinterpret_cast<CDisplayManager*>(displayManagerStorage);
     manager.displayEngine1D0 = &displayEngine;
 
     g_PixelShaderVersion = 999;

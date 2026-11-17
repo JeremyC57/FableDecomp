@@ -14600,8 +14600,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a23c60'
         Module = 'C3DMeshInfo'
-        Source = '00/a2/global_operator_00a23c60.cpp'
-        TestSource = '00/a2/global_operator_00a23c60_test.cpp'
+        Source = '00/a2/C3DMeshInfo_AreTexturesLoaded_00a23c60.cpp'
+        TestSource = '00/a2/C3DMeshInfo_AreTexturesLoaded_00a23c60_test.cpp'
         PassPattern = 'AUTO_TINY_00a23c60_TEST PASS'
     }
     [pscustomobject]@{
@@ -54098,9 +54098,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad79c0'
-        Module = '_global'
-        Source = '00/ad/CLandscapeBackgroundPatch_vectordeletingdestructor_00ad79c0.cpp'
-        TestSource = '00/ad/CLandscapeBackgroundPatch_vectordeletingdestructor_00ad79c0_test.cpp'
+        Module = 'QuadricOptimiserInternals::COptimisedVertex'
+        Source = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_scalardeletingdestructor_00ad79c0.cpp'
+        TestSource = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_scalardeletingdestructor_00ad79c0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00ad79c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -54917,9 +54917,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c17800'
-        Module = '_global'
-        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c17800.cpp'
-        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c17800_test.cpp'
+        Module = 'CBankData'
+        Source = '00/c1/CBankData_scalardeletingdestructor_00c17800.cpp'
+        TestSource = '00/c1/CBankData_scalardeletingdestructor_00c17800_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00c17800_TEST PASS'
     }
     [pscustomobject]@{
@@ -63207,9 +63207,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c1ea60'
-        Module = 'CTCCreatureNavigation'
-        Source = '00/c1/CTCCreatureNavigation_IsPosNavLineOfSightTo_00c1ea60.cpp'
-        TestSource = '00/c1/CTCCreatureNavigation_IsPosNavLineOfSightTo_00c1ea60_test.cpp'
+        Module = 'CSoundSample'
+        Source = '00/c1/CSoundSample_LoadData_00c1ea60.cpp'
+        TestSource = '00/c1/CSoundSample_LoadData_00c1ea60_test.cpp'
         PassPattern = 'LOS_PARITY_OK'
     }
     [pscustomobject]@{
@@ -89531,9 +89531,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009b8ad0'
-        Module = '_global'
-        Source = '00/9b/CTCVillage_OnInitialActivate_009b8ad0.cpp'
-        TestSource = '00/9b/CTCVillage_OnInitialActivate_009b8ad0_test.cpp'
+        Module = 'CVectorMap<unsigned long,unsigned long>'
+        Source = '00/9b/CVectorMap_Update_009b8ad0.cpp'
+        TestSource = '00/9b/CVectorMap_Update_009b8ad0_test.cpp'
         PassPattern = 'PASS_009b8ad0'
     }
     [pscustomobject]@{
@@ -90616,9 +90616,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009b89b0'
-        Module = '_global'
-        Source = '00/9b/CGuiVarTransferBool_TransferToGui_009b89b0.cpp'
-        TestSource = '00/9b/CGuiVarTransferBool_TransferToGui_009b89b0_test.cpp'
+        Module = 'CVectorMap<unsigned long,unsigned long>'
+        Source = '00/9b/CVectorMap_Sort_009b89b0.cpp'
+        TestSource = '00/9b/CVectorMap_Sort_009b89b0_test.cpp'
         PassPattern = 'PASS_009b89b0'
     }
     [pscustomobject]@{
@@ -150204,9 +150204,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b8ec10'
-        Module = 'CCountedPointer_00b8e690'
-        Source = '00/b8/CCountedPointer00b8e690_Reset_00b8ec10.cpp'
-        TestSource = '00/b8/CCountedPointer00b8e690_Reset_00b8ec10_test.cpp'
+        Module = 'CCountedPointer<CVertexBufferWin32>'
+        Source = '00/b8/CCountedPointer_Reset_00b8ec10.cpp'
+        TestSource = '00/b8/CCountedPointer_Reset_00b8ec10_test.cpp'
         PassPattern = '00b8ec10_TEST PASS'
     }
     [pscustomobject]@{
@@ -198838,8 +198838,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009ade10'
         Module = 'CDefinitionManager'
-        Source = '00/9a/CDefinitionManager_GetPDefFromGlobalIndex_009ade10.cpp'
-        TestSource = '00/9a/CDefinitionManager_GetPDefFromGlobalIndex_009ade10_test.cpp'
+        Source = '00/9a/CDefinitionManager_GetPDefFromClassIndex_009ade10.cpp'
+        TestSource = '00/9a/CDefinitionManager_GetPDefFromClassIndex_009ade10_test.cpp'
         PassPattern = '009ade10_TEST PASS'
     }
     [pscustomobject]@{
@@ -224149,8 +224149,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b6bd40'
         Module = 'CDefinitionManager'
-        Source = '00/b6/CDefinitionManager_GetDefCSoundThemeDef_00b6bd40.cpp'
-        TestSource = '00/b6/CDefinitionManager_GetDefCSoundThemeDef_00b6bd40_test.cpp'
+        Source = '00/b6/CDefinitionManager_GetDef_00b6bd40.cpp'
+        TestSource = '00/b6/CDefinitionManager_GetDef_00b6bd40_test.cpp'
         PassPattern = '00b6bd40_TEST PASS'
     }
     [pscustomobject]@{
@@ -275256,9 +275256,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c21c20'
-        Module = '_global'
-        Source = '00/c2/global_CRebootGameActionHandlerInitialize_00c21c20.cpp'
-        TestSource = '00/c2/global_CRebootGameActionHandlerInitialize_00c21c20_test.cpp'
+        Module = 'CSoundEvent'
+        Source = '00/c2/CSoundEvent_Initialise_00c21c20.cpp'
+        TestSource = '00/c2/CSoundEvent_Initialise_00c21c20_test.cpp'
         PassPattern = '00c21c20_TEST PASS'
     }
     [pscustomobject]@{
@@ -317299,7 +317299,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad68d0'
-        Module = 'std::vector'
+        Module = 'std::vector<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> >'
         Source = '00/ad/stdvector_Minsertoverflow_00ad68d0.cpp'
         TestSource = '00/ad/stdvector_Minsertoverflow_00ad68d0_test.cpp'
         PassPattern = '00ad68d0_TEST PASS'
@@ -380675,16 +380675,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1fcf0'
-        Module = 'CQR_EscortTraderScript'
-        Source = '00/e1/CQREscortTraderScript_WatchForExpressionFollow_00e1fcf0.cpp'
-        TestSource = '00/e1/CQREscortTraderScript_WatchForExpressionFollow_00e1fcf0_test.cpp'
+        Module = 'NScript::CQR_EscortTraderScript'
+        Source = '00/e1/NScriptCQREscortTraderScript_WatchForExpressionFollow_00e1fcf0.cpp'
+        TestSource = '00/e1/NScriptCQREscortTraderScript_WatchForExpressionFollow_00e1fcf0_test.cpp'
         PassPattern = '00e1fcf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e1fef0'
-        Module = 'CQR_EscortTraderScript'
-        Source = '00/e1/CQREscortTraderScript_WatchForExpressionWait_00e1fef0.cpp'
-        TestSource = '00/e1/CQREscortTraderScript_WatchForExpressionWait_00e1fef0_test.cpp'
+        Module = 'NScript::CQR_EscortTraderScript'
+        Source = '00/e1/NScriptCQREscortTraderScript_WatchForExpressionWait_00e1fef0.cpp'
+        TestSource = '00/e1/NScriptCQREscortTraderScript_WatchForExpressionWait_00e1fef0_test.cpp'
         PassPattern = '00e1fef0_TEST PASS'
     }
     [pscustomobject]@{

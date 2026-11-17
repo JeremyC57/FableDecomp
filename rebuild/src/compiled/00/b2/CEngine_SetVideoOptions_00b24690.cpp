@@ -19,7 +19,7 @@
 //   re-indexed from `this` for each of the three users, the texture/mesh definitions are read through the global engine.
 class C2DExtentsI { public: long X; long Y; };
 class C2DExtentsF { public: float X; float Y; };
-enum EEngineVideoOptionQuality { QUALITY_LOW, QUALITY_MEDIUM, QUALITY_HIGH, QUALITY_ULTRA };
+#include "engine/EEngineVideoOptionQuality.h"
 enum ESurfaceMultisampleType { MULTISAMPLE_NONE = 0 };
 enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_OK = 2 };
 class CEngineVideoOptions { public:
@@ -35,10 +35,8 @@ class CEngineVideoOptions { public:
     EEngineVideoOptionQuality EffectsQuality;     // +0x2c
     ESurfaceMultisampleType   Antialiasing;       // +0x30
 };
-class CEngineVideoOptionsDef { public:
-    unsigned char _pad[0x3c];
-    long          HiresTextureMemory;             // +0x3c
-};
+#define FABLE_RETAIL_CENGINEVIDEOOPTIONSDEF_HIRESTEXTUREMEMORY
+#include "engine/CEngineVideoOptionsDef.h"   // HiresTextureMemory +0x3C (retail)
 class CDisplayManager { public:
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel, ESurfaceMultisampleType antialiasing, unsigned long refreshRate);   // 0x009BFF40
     void SetPresentParameters(bool immediate, bool a, bool b);   // 0x009BFF10
@@ -52,7 +50,6 @@ struct CEngineVideoOptionsListener {
     virtual void SetEffectQuality(CEngineVideoOptionsDef* def);   // slot 13 (+0x34)
 };
 class CEngineResourceManager { public: bool ResizeHiresTextureMemory(long size); };        // 0x00B3B4F0
-struct CEngineMeshDetailManager { void SetMeshDetail(EEngineVideoOptionQuality quality, CEngineVideoOptionsDef* def); };   // 0x00B32010
 class CEngineLocalDetailGenerator { public: void UpdateLoadingDistanceVideoOptions(CEngineVideoOptionsDef* def); };   // 0x00B59870
 struct CEngineVideoOptionsSink { void OnVideoOptionsChanged(); };                 // 0x00B2F740
 
@@ -76,10 +73,11 @@ extern CEngineScreenEffectColourFilter* g_pColourFilter;          // 0x01436E40
 extern CShaderBankStateBlock*           g_pShaderBankStateBlock;  // 0x01436E44
 extern CEngineVideoOptionsListener*     g_pVideoOptionsListener;  // 0x01436E54
 extern CEngineVideoOptionsSink*         g_pVideoOptionsSink;      // 0x01436E58
-class CEnginePrimitiveRenderer;
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_PASS22_DRAWDISTANCE
+#include "engine/CEnginePrimitiveRenderer.h"   // ?SetDrawDistanceQuality@CEnginePrimitiveRenderer@@QAEXW4EEngineVideoOptionQuality@@ABVCEngineVideoOptionsDef@@@Z 0x00B32010
 namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
-// The members read here are modelled by the local CEngineMeshDetailManager view of that object (name debt: the shared
-// engine/CEnginePrimitiveRenderer.h retail branch).
+// The primitive renderer is the shared engine/CEnginePrimitiveRenderer.h retail class (SetDrawDistanceQuality, PASS22_DRAWDISTANCE).
 extern CEngineLocalDetailGenerator*     g_pLocalDetailGenerator;  // 0x01436E88
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }       // 0x01436E98
 namespace NEngineInternal { extern CEngine* GPEngine; }                // 0x01436EA4
@@ -113,7 +111,7 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
     g_pVideoOptionsListener->SetEffectQuality(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
     NEngineInternal::GPResourceManager->ResizeHiresTextureMemory(NEngineInternal::GPEngine->PEngineVideoOptionsDefs[VideoOptions.TextureDetail]->HiresTextureMemory);
     CEngineVideoOptionsDef* meshDef = NEngineInternal::GPEngine->PEngineVideoOptionsDefs[VideoOptions.MeshDetail];
-    ((CEngineMeshDetailManager*)NEngineInternal::GPPrimitiveRenderer)->SetMeshDetail(VideoOptions.MeshDetail, meshDef);
+    NEngineInternal::GPPrimitiveRenderer->SetDrawDistanceQuality(VideoOptions.MeshDetail, *meshDef);
     if (g_pLocalDetailGenerator)
         g_pLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(meshDef);
     g_pVideoOptionsSink->OnVideoOptionsChanged();

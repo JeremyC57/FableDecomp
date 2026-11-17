@@ -21,41 +21,18 @@
 extern "C" __declspec(dllimport) int __stdcall WideCharToMultiByte(unsigned int, unsigned long, const unsigned short*, int, char*, int, const char*, int*);
 void __fastcall WideToMultiByte(const unsigned short* source, char* dest, int destSize);   // 0x00C16760
 
-struct PKCAutoFile {                       // libpk PKCAutoFile.cpp: owns an open file object
-    void* m_pFile;                         // +0
-    PKCAutoFile(void* file);               // 0x00C31D80
-    ~PKCAutoFile();                        // 0x00C31D90 (releases the file through its slot 3)
-    void* GetChecked();                    // 0x00C31DB0
-};
-class CString { public:                    // libpk trace line (shared buffer)
-    char* m_pBuffer;
-    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
-};
-class CLoadLog {                           // vtable 0x012B4CC0, 0x34 bytes
-public:
-    virtual void v00();
-    unsigned char _pad04[0x2c];
-    bool m_ok;                             // +0x30
-    CLoadLog();                            // 0x00C308F0
-    ~CLoadLog();                           // 0x00C30940
-    void SetSourceName(const char* name);  // 0x00C308A0 (descriptive)
-    CString& AddError();                   // 0x00C30840 (descriptive: queues an error message, clears m_ok)
-    bool IsOk() const;                     // 0x00C307C0
-};
+// NF53: the file owner, log, string and bank data are the shared libpk classes (as the landed twin 0x00C17640 includes them):
+//   libpk/PKCAutoFile.h (ctor 0x00C31D80, dtor 0x00C31D90, ?GetChecked@PKCAutoFile@@QAEPAVCAudioFile@@XZ 0x00C31DB0), libpk/PKCFileManager.h
+//   (the processor; kept as the caller-bound CProcessor_00c09110 view), libpk/CScriptHost.h CLoadLog, libpk/CBankProcessor.h struct CBankData. Was local stand-ins.
+#define FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
+#include "libpk/CBankProcessor.h"
+#include "libpk/PKCAutoFile.h"
+#define FABLE_RETAIL_CSEGMENTFILE_DEFERRED_BANK_PASS23
+#include "libpk/CScriptHost.h"
 struct CRequest_00c09110;
-class CBankData { public:                  // 0x30 bytes on LoadBank's stack
-    long _words[12];
-    CBankData();                           // 0x00C2EED0
-    ~CBankData();                          // 0x00C2EF30
-};
 bool __fastcall SerialiseBankMetaData(CBankData* data, CRequest_00c09110* request);   // 0x00C17820 (descriptive)
 void __fastcall ReadBankData(void* file, CBankData* data, unsigned long chunk, CLoadLog* log);   // 0x00C30F60 (descriptive)
 
-struct CProcessor_00c09110 {
-    virtual void* Open(void* name);        // slot 0
-};
-
-// 0x00C17260: same-TU static (private convention: log in esi, callee-pop).
 static void __stdcall LoadBank(CLoadLog* log, void* file, CRequest_00c09110* request)
 {
     CBankData data;
@@ -65,6 +42,10 @@ static void __stdcall LoadBank(CLoadLog* log, void* file, CRequest_00c09110* req
             log->AddError() << "There was a problem serialising the extracted meta data.";
     }
 }
+
+struct CProcessor_00c09110 {              // the landed caller 0x00C09110 binds this spelling (libpk/PKCFileManager.h is the class)
+    virtual CAudioFile* Open(void* name);  // slot 0
+};
 
 bool __fastcall Process_00c172f0(CProcessor_00c09110* processor, void* name, void* context, CRequest_00c09110* request)
 {

@@ -9,15 +9,20 @@
 #include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
 #include "engine/CEngineInternalPrimitiveBase.h"
 #include "engine/CEngineInternalPrimitiveRepeatedStaticMesh.h"
-#define C3DMeshInfo C3DMeshInfoLayout
+// Name (round 7, NF53): 0x00A23C50 is ?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z (Ego_r.pdb donor 0x00B5FEA0, between
+//   HasPhysicsMesh and AreTexturesLoaded; retail an empty `ret 4`), called with priority 1 = BANK_LOAD_PRIORITY_NORMAL, and 0x00A256F0
+//   ?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z; both on the shared engine/C3DMeshInfo.h (_ISLOADED, _BEGINLOADINGTEXTURES). Was a renaming-macro
+//   include of the header with a local derived C3DMeshInfo and two call views (C3DMeshInfoLoadingCallView, C3DMeshInfoRet4CallView).
+#define FABLE_RETAIL_CMESHDATABANKENTRY
+#define FABLE_RETAIL_CMESHDATABANK
+#define FABLE_RETAIL_CMESHDATABANK_BASES
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_C3DMESHINFO_ISLOADED
+#define FABLE_RETAIL_C3DMESHINFO_BEGINLOADINGTEXTURES
+#define FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+#include "engine/CEngineRenderEnums.h"
+#include "engine/CMeshDataBank.h"
 #include "engine/C3DMeshInfo.h"
-#undef C3DMeshInfo
-
-class C3DMeshInfo : public C3DMeshInfoLayout
-{
-public:
-    void BeginLoading(unsigned long, bool, bool) const;   // 0x00A256F0
-};
 
 #include "engine/C3DVector.h"
 
@@ -81,13 +86,6 @@ class CEnginePrimitiveHandle { public:
     CEngineInternalPrimitiveRepeatedStaticMesh* Data;
 };
 
-struct C3DMeshInfoLoadingCallView : C3DMeshInfo {
-};
-
-struct C3DMeshInfoRet4CallView {
-    void UnknownRet4(unsigned long argument); // 0x00A23C50; owner/meaning unknown
-};
-
 struct SViewRecord_01436E80 {
     unsigned char UnknownPrefix[4];
     unsigned char NativeByteAt4;
@@ -137,8 +135,8 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes_Methods::UpdateRepeatedStaticMe
 
     C3DMeshInfo* meshInfo = primitive->MeshInfo;
     if (!((SViewRecord_01436E80*)NEngineInternal::GPPrimitiveRenderer)->NativeByteAt4) {
-        reinterpret_cast<C3DMeshInfoLoadingCallView*>(meshInfo)->BeginLoading(0, false, false);
-        reinterpret_cast<C3DMeshInfoRet4CallView*>(meshInfo)->UnknownRet4(1);
+        meshInfo->BeginLoading(0, false, false);
+        meshInfo->BeginLoadingTextures(BANK_LOAD_PRIORITY_NORMAL);
     }
 }
 

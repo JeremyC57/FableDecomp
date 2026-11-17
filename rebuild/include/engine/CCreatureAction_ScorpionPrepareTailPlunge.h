@@ -11,6 +11,11 @@ class CThingCreatureBase;
 class CCreatureAction_ScorpionPrepareTailPlunge : public CCombatActionBase {
 public:
     CCreatureAction_ScorpionPrepareTailPlunge(CThingCreatureBase& creature, CThingCreatureBase& target);   // 0x0097C920
+#ifdef FABLE_RETAIL_CCREATUREACTION_SCORPIONPREPARETAILPLUNGE_FINISHACTION
+    // NF53 opt-in (row 0x008C4990): Ego_r.pdb ?FinishAction@CCreatureAction_ScorpionPrepareTailPlunge@@UAEXXZ (public virtual override
+    // of CCombatActionBase::FinishAction 0x00859A20, which it tail-calls). Declaration only.
+    virtual void FinishAction();                                          // 0x008C4990
+#endif
 protected:
     C3DVector TargetPos;                                                 // +0x114
 };

@@ -1,14 +1,14 @@
 #include <string.h>
 // C3DMesh2::ConvertToMeshStats() -- destroy mesh arrays and migrate the retained bone block into stats memory. Retail Fable.exe @ 0x00A8B3A0, 276 bytes; calls AllocateResource @ 0x00A62E40, GetPointerFromHandle @ 0x00A026B0, Free @ 0x00A62ED0, and virtual RelocateData slot +4. No C3DMesh2 header exists: layout follows landed C3DMesh2::Sizeof/InitialisePointers and RelocateData. The lock assignment uses an ordinary bool pointer to the named member; this preserves the actual field access while matching retail ordering without volatile.
-class C3DMesh2;
-class CMovableResourceMemoryPool {
-public:
-    void FreeResource(long a0);   // 0x00A62ED0 (Ego_r.pdb ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z)
-private: public:
-    bool AllocateResource(long* handle, C3DMesh2* owner, unsigned long size, unsigned long flags); // 0x00A62E40
-    void* GetPointerFromHandle(long handle); // 0x00A026B0
-};
-class C3DMeshStats { public:
+#define FABLE_RETAIL_CMOVABLERESOURCE
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL_FREERESOURCE
+#include "engine/CMovableResource.h"
+#include "engine/CMovableResourceMemoryPool.h"
+// C3DMeshStats derives from CMovableResource at 0 (RTTI .?AVC3DMesh2@@: C3DMeshStats@0;CMovableResource@0), so `this` is the
+// CMovableResource* owner of ?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z.
+class C3DMeshStats : public CMovableResource { public:
     virtual ~C3DMeshStats();
     CMovableResourceMemoryPool* MemoryPool;
     long StatsMemoryHandle;

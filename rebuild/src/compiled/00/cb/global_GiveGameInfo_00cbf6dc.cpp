@@ -40,12 +40,7 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 #include "engine/CSuspendableProcessMicrothread.h"     // retail CASuspendableProcess: Running +4, StopRunning +5
 extern CSuspendableProcessMicrothread* g_pScriptRunner; // 0x013D2838
 
-class CWideScreenMagicPauseEntities {
-public:
-    CWideScreenMagicPauseEntities(CGameScriptInterfaceBase* game);              // 0x00CBE09A
-    ~CWideScreenMagicPauseEntities() { Game->PauseAllNonScriptedEntities(false); }   // 0x00CBE0B3 (inline here)
-    CGameScriptInterfaceBase* Game;         // +0x00
-};
+#include "engine/CWideScreenMagicPauseEntities.h"   // Ego_r TPI: protected Game; ctor(CGameScriptInterfaceBase&) inline, retail calls the COMDAT 0x00CBE09A
 
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
@@ -71,7 +66,7 @@ void __fastcall GiveGameInfo(const std::vector<CCharString>& info)
         CCharString name("");
         pDSTGame->StartMovieSequence(name, movie);
     }
-    CWideScreenMagicPauseEntities pause(pDSTGame);
+    CWideScreenMagicPauseEntities pause(*pDSTGame);
     for (unsigned int i = 0; i < info.size(); ++i) {
         pDSTGame->NewScriptFrame();
         {

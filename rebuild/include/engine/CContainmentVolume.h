@@ -35,10 +35,22 @@ FABLE_STATIC_ASSERT(sizeof(CContainmentVolume) == 0x10);
 class CMovableResourceMemoryPool;
 class CPlane;
 
+#ifdef FABLE_RETAIL_CCONTAINMENTVOLUME_MOVABLERESOURCE
+// NF53 opt-in (rows 0x00A754E0 LoadBinary / 0x00A755C0 Initialise): RTTI .?AVCContainmentVolume@@ has the one base
+// CMovableResource@0 (ghidra_out/rtti_bases.tsv), so the first dword is that base's vptr and `this` converts to the
+// CMovableResource* owner of ?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z 0x00A62E40.
+// Layout unchanged (CMovableResource is the 4-byte vptr; __vftable is then the inherited member).
+#include "engine/CMovableResource.h"
+#endif
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CCONTAINMENTVOLUME_MOVABLERESOURCE
+class CContainmentVolume : public CMovableResource {
+public:
+#else
 class CContainmentVolume {
 public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     CPlane*                     ContainmentPlanes;           // +0x04
     unsigned long               Size;                        // +0x08
     CMovableResourceMemoryPool* MemoryPool;                  // +0x0c
