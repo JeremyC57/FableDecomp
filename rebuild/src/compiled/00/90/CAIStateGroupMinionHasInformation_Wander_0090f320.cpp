@@ -60,38 +60,22 @@ class CAIBrain { public:
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void Cleanup();                     // slot 9  (+0x24)
-    virtual void OnReplace();                   // slot 10 (+0x28)
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void v13();
-    virtual long GetTimeToInitiate();           // slot 14 (+0x38)
-    virtual void v15(); virtual void v16(); virtual void v17();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    // the landed GetRandomObject random step: seed = ror13(seed*0x24A1 + 0x24DF), r = seed % range
-    unsigned long Random(unsigned long range)
-    {
-        unsigned long* seed = GetPWorldSeed();
-        unsigned long next = *seed * 0x24A1U + 0x24DFU;
-        *seed = next;
-        unsigned long rotated = GFROR13(next);
-        *seed = rotated;
-        return rotated % range;
-    }
-public:
-    void Terminate();   // 0x008FCF40
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h;
+// the three AI actions were declared on the derived class: AIAction_MinionWander 0x0097F870 is the header's protected
+// ?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z (_MINIONWANDER) and
+// AIAction_MinionIdle 0x0097FA00 is ?AIAction_MinionIdle@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ (both PDBs; overlay opt-in _MINIONIDLE).
+// The unused Random helper and slot list of the local base went with it.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MINIONIDLE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MINIONWANDER
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
 #define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();
@@ -124,10 +108,6 @@ struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
     long LastFrameWandered;                     // +0x18
     long FrameInitialised;                      // +0x1c
     long WavesWithoutCalling;                   // +0x20
-    long AIAction_MinionWander(long movement, CThingBuilding* building);   // 0x0097F870
-    long AIAction_MinionIdle();                 // 0x0097FA00
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float distance, bool* reached, long movement,
-        bool a, bool b, bool c, CThing* avoid, bool d, float speed);        // 0x0097E890
     bool Wander();
 };
 
@@ -135,7 +115,7 @@ bool CAIStateGroup_MinionHasInformation::Wander()
 {
     CTCInformation* info;
     PBrain->PCreature->GetTC(TCI_AI_SCRATCHPAD, &info);
-    if (AIAction_MinionWander(3, 0) != 2)
+    if (AIAction_MinionWander(AI_MOVEMENT_WALKING, 0) != 2)
         return false;
     if (info->m_state != 4)
         return true;
@@ -153,7 +133,7 @@ bool CAIStateGroup_MinionHasInformation::Wander()
     float radiusSquared = radius * radius;
     if (!(distanceSquared < radiusSquared)) {
         bool reached = false;
-        if (AIAction_MoveToPosProximity(1, spot, radius, &reached, 3, true, false, true, 0, true, 0.0f) != 2) {
+        if (AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, spot, radius, reached, AI_MOVEMENT_WALKING, true, false, true, 0, true, 0.0f) != 2) {
             Terminate();
             return false;
         }

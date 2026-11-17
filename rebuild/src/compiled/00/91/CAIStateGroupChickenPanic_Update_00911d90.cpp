@@ -103,21 +103,17 @@ class CAIBrain { public:
     CThing* GetPCreature() const { return PCreature; }
 };
 
-enum EAIActionReturn { };
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float distance, bool* reached, long movement,
-        bool a, bool b, bool c, CThing* avoid, bool d, float speed);        protected: // 0x0097E890
-    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
-    void Terminate();                           // 0x008FCF40
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h
+// (replaces the local empty enum EAIActionReturn); AIAction_DoNothing 0x0097E200 and Terminate 0x008FCF40 are the header's.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 struct CAIStateGroup_ChickenPanic : CAIStateGroupBase {
     virtual void Update();
@@ -143,7 +139,7 @@ void CAIStateGroup_ChickenPanic::Update()
         C3DVector fleePos;
         if (navigation->GetNearestFleePosition(((const CThing*)chicken->LastAttacker.GetPItem())->PeekPos(), 8.0f, fleePos)) {
             bool reached = false;
-            AIAction_MoveToPosProximity(1, fleePos, 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
+            AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, fleePos, 1.0f, reached, AI_MOVEMENT_RUNNING, true, false, true, 0, true, 0.0f);
         }
     } while (AIAction_DoNothing() == 4);
     Terminate();

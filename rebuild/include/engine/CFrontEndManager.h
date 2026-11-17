@@ -89,6 +89,11 @@ public:
     // ?Draw@CFrontEndManager@NUISystem@@QAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@@Z, both out of line. Declarations only.
     static CFrontEndManager* __fastcall GetInstance();                 // 0x00595582
     void Draw(CIEngine&, CEnginePrimitiveHandle*);                     // 0x00595222
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_UPDATE
+    // NF51 opt-in (2026-11-17, row 0x0042DC94 CNewFrontendGameComponent::Update): Ego_r.pdb ?Update@CFrontEndManager@NUISystem@@QAEXM@Z
+    // (public, out of line at 0x00599E3F). Declaration only: no layout change.
+    void Update(float dt);                                             // 0x00599E3F
+#endif
 protected:
     void AddRegionAndTimeInfo(const CWideString&);                   // 0x00597228
 #ifdef FABLE_RETAIL_CFRONTENDMANAGER_RUN

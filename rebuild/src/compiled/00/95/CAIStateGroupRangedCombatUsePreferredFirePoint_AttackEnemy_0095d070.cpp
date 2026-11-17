@@ -50,26 +50,15 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void Cleanup();                     // slot 9  (+0x24)
-    virtual void OnReplace();                   // slot 10 (+0x28)
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void InitStateGroup();              // slot 13 (+0x34)
-    CAIBrain* PBrain;                           // +0x04
-    CThing* GetCreature() const { return PBrain->PCreature; }
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model plus a
+// made-up CAIStateGroupBaseC view carrying AIAction_PumpCombatActions): the callee 0x0097D980 is the protected
+// ?AIAction_PumpCombatActions@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ (Ego_r.pdb 0x00848740; header _MEMBERS + _PUMPCOMBATACTIONS);
+// the row's GetCreature helper moves to the derived class.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PUMPCOMBATACTIONS
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
@@ -90,11 +79,8 @@ struct CThingPos : CThing {
 
 extern const float g_firePointToleranceSquared;    // 0x0129531C (0.0025f)
 
-struct CAIStateGroupBaseC : CAIStateGroupBase {
-    long AIAction_PumpCombatActions();          // 0x0097D980
-};
-
-struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBaseC {
+struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
+    CThing* GetCreature() const { return PBrain->PCreature; }   // (the row's helper, moved here from its local base model)
     CIntelligentPointer<CThing> PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
     CIntelligentPointer<CThing> PFirePoint;         // +0x1c CIntelligentPointer<CThing>
     long TimeOutCounter;                        // +0x24

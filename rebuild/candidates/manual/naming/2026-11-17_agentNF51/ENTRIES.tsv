@@ -1,0 +1,17 @@
+source	entry	address	correct_symbol	status	note
+nf41	e36	0042bed4	??0CDeletion@NUISystem@@QAE@XZ	carry	not reached [e36]
+nf41	e37	0042cd84	??0CDeletion@NUISystem@@QAE@ABV01@@Z	carry	not reached [e37]
+nf41	e87	0097d8b0	?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z	carry	not reached [e87]
+nf41	e60	00437900	?RemovePerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z	carry	not reached [e60]
+nf41	e98	0094bef0	?StayInShop@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	carry	not reached [e98]
+nf41	e34	0059b5d7	??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z	carry	not reached [e34]
+nf41	e187	00429160	?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ	carry	not reached [e187]
+nf41	e133	0097d980	?AIAction_PumpCombatActions@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ	carry	not reached [e133]
+nf41	e75	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	carry	not reached [e75]
+nf41	e61	004378f0	?AddPerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z	carry	not reached [e61]
+nf41	e168	00595a03	?CanStartAttractMode@CFrontEndManager@NUISystem@@QAE_NXZ	carry	not reached [e168]
+nf41	e112	0097f690	?AIAction_MoveToPreCalcRoute@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCThing@@AA_NW4EMovementType@@ABVCAIFilterBase@1@_N@Z	carry	not reached [e112]
+nf44	2	0043e420	??_9CDrawBase@NPlayerGui@@$BA@AE (vcall thunk, slot 0 = ClearPrimitivesIfNecessary)	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=14 unv=0 ; wrong binders: 00438230 00439070 00c0a010 00c0a040 00c0a060 00c0a080 00c24d10 00c24d40 00c24d60 00c24d80 00c24e70 00c24ea0 00c24ec0 00c24ee0
+nf44	76	0x012366F4	??_7CActionParamSLONG@NUISystem@@6B@	carry	triaged (round 6, NF44), not attempted: the 6 binders construct a local NUISystem::CActionParamLong inside rows that also model NUISystem::CActionParam / CComponent / CAction locally; engine/NUISystem_CActionParamSLONG.h pulls in NUISystem_CComponent.h, so each is a full port of the row onto the NUISystem headers | not reached in round 6 (NF44); fresh probe ok=36 bad=6 unv=0 ; wrong binders: 00549b20 00582ace 0058315b 0059ed42 0059f51e 005b70b8
+nf44	86	0x0097E890	?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z	carry	triaged (round 6, NF44), not attempted: all 25 binders declare AIAction_MoveToPosProximity on local CAIStateGroupBase / derived views (long/bool* signatures); the header opt-in FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY exists, but each row needs the retail CAIStateGroupBase branch (_MEMBERS/_AIACTIONS, enums, bool&, const CThing*) instead of its local model | not reached in round 6 (NF44); fresh probe ok=11 bad=25 unv=0 ; wrong binders: 0090bed0 0090f320 00911d90 009175e0 009195d0 0091bd10 0091ccc0 0092a220 0092ae70 0092afe0 0092bc60 0092c070 00933a40 00937da0 0093c7b0 0093e090 009425f0 009474f0 00947a30 0095e470 0095e900 009647c0 00969470 0097f780 00980770
+nf44	128	0x0064AE80	?DrawAbilityButton@CDrawAbilityButtons@NPlayerGui@@IAEXABVCEnginePrimitivePrepareInfo@@AAV?$vector@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@V?$allocator@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@@std@@JJJM@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 0064db2b

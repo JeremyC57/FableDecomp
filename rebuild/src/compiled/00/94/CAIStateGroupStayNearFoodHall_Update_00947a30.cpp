@@ -6,6 +6,17 @@
 // LowerBound @ 0x004365B0, GFGetVillage @ 0x007EE540, IsCookTime @ 0x00658BB9, Terminate @ 0x008FCF40.
 // The loop continues only while the move action reports 4 and the hall remains live and cooking time continues.
 // Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
+// NF51 (round 7): the AI state-group base is the retail branch of the shared engine/CAIStateGroupBase.h (was its flattened default
+// plus a local AIAction_MoveToPosProximity / Terminate on the derived class): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h, and
+// Terminate 0x008FCF40 the base's ?Terminate@CAIStateGroupBase@@QAEXXZ; Update overrides the base's slot 12
+// (?Update@CAIStateGroup_StayNearFoodHall@@UAEXXZ, Ego_r.pdb / FableWin.pdb).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#include "engine/fable_ai_action_enums.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 class CThing;
@@ -17,12 +28,11 @@ class CThing { public: unsigned char pad0[0x20]; unsigned long flags20; unsigned
 struct CTCVillager;
 class CTCVillage { public: bool IsCookTime_00658bb9(); };
 struct CAIStateGroup_StayNearFoodHall : CAIStateGroupBase {
+public:
     C3DVector Position;
     CBaseIntelligentPointer PFoodHall;
     bool IsInWorkHours();
     void Update();
-    long AIAction_MoveToPosProximity(long, C3DVector, float, bool*, long, bool, bool, bool, CThing*, bool, float);
-    void Terminate();
 };
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 void CAIStateGroup_StayNearFoodHall::Update()
@@ -40,7 +50,7 @@ void CAIStateGroup_StayNearFoodHall::Update()
     if (foodHall->dead & 1) goto done;
     if (!IsInWorkHours()) goto done;
     do {
-        result = AIAction_MoveToPosProximity(2, Position, 4.0f, &reached, 3, true, false, true, 0, true, 0.0f);
+        result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, Position, 4.0f, reached, AI_MOVEMENT_WALKING, true, false, true, 0, true, 0.0f);
         if (!reinterpret_cast<CThing*>(PFoodHall.GetPItem())) goto done;
         foodHall = reinterpret_cast<CThing*>(PFoodHall.GetPItem());
         if (foodHall->dead & 1) goto done;

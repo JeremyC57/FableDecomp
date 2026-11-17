@@ -33,11 +33,8 @@ struct CInterfaceMap {
     SEntry* last;
 };
 long __fastcall GFROR13(unsigned long);    // 0x00497890
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                       // CCharString(const char*, long = -1) 0x0099EBF0 / ~CCharString 0x0099EAE0 (was a local model; the shared base header includes it)
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -108,18 +105,23 @@ class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThingCreatureBase* Creature;               // +0x18
 };
-enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1, AI_ACTION_REPEAT_POLL = 2 };
-enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
-enum EMovementType { MOVEMENT_DEFAULT, MOVEMENT_WALK = 3, MOVEMENT_RUN = 5 };
-class CAIStateGroupBase { public:
-    virtual void v00();
-    CAIBrain* PBrain;                           // +0x04
-    unsigned char _pad08[0x0c];
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h
+// (replace the local EAIActionRepeat / EAIActionReturn / EMovementType with made-up enumerators); AIAction_PerformAction 0x0097D8B0 is
+// the header's (_PERFORMACTIONONCE). Update overrides the base's virtual slot 12, so it mangles ?Update@CAIStateGroup_BalverineWander@@UAEXXZ (both PDBs; was QAE).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTIONONCE
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
+
+struct CAIStateGroup_BalverineWander : CAIStateGroupBase {
+    // (the row's helpers, moved here from its local base model)
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
-    protected:
-    unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
-    public:
-    void Terminate();                           // 0x008FCF40
     unsigned long Random(unsigned long range) const
     {
         unsigned long* seed = GetPWorldSeed();
@@ -127,15 +129,6 @@ class CAIStateGroupBase { public:
         *seed = GFROR13(*seed);
         return *seed % range;
     }
-    EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat repeat, C3DVector pos, float proximity, bool& moving,
-                                                EMovementType anim, bool b1, bool b2, bool b3, const CThing* target,
-                                                bool b4, float f);     // 0x0097E890
-protected:
-    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
-protected:
-    EAIActionReturn AIAction_DoNothing(); public:       // 0x0097E200
-};
-struct CAIStateGroup_BalverineWander : CAIStateGroupBase {
     void Update();
 };
 
@@ -157,8 +150,8 @@ void CAIStateGroup_BalverineWander::Update()
                 dest = startPos;
         }
         bool moving;
-        if (AIAction_MoveToPosProximity(AI_ACTION_REPEAT_UNTIL_DONE, dest, 1.5f, moving, MOVEMENT_WALK, true, false, true, 0,
-                                        true, 0.0f) != AI_ACTION_DONE) {
+        if (AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, dest, 1.5f, moving, AI_MOVEMENT_WALKING, true, false, true, 0,
+                                        true, 0.0f) != AI_ACTION_FINISHED) {
             Terminate();
             return;
         }
@@ -168,5 +161,5 @@ void CAIStateGroup_BalverineWander::Update()
         } else
             AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "ST_IDLE", CSoundPair(), false,
                                    true, false, 0, 0));
-    } while (AIAction_DoNothing() == AI_ACTION_RUNNING);
+    } while (AIAction_DoNothing() == AI_ACTION_IN_PROGRESS);
 }

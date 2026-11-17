@@ -1,0 +1,86 @@
+addr       parity           behav  name
+0053b7f0   WARN SHARED_HEADER_AVAILABLE CManager
+0053b7f0   WARN RELOC_NAME: ?g_ListRegistry@@3U?$list@PAVCList@NUISystem@@@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+0053b7f0   WARN RELOC_NAME: ?find@@YI?AU?$_List_iterator@PAVCList@NUISystem@@@@ABQAVCList@NUISystem@@U1@1@Z -> 0053c8d0 labelled '_unattributed::CVector_0053c8d0'
+0053b7f0   WARN RELOC_NAME: ?erase@?$list@PAVCList@NUISystem@@@@QAE?AU?$_List_iterator@PAVCList@NUISystem@@@@U2@@Z -> 0053c7b9 labelled 'std_list_node_unlink'
+0053b7f0   WARN RELOC_NAME: ??1CActionList@NUISystem@@QAE@XZ -> 005357e0 labelled '_global::StdList_Dtor_005357e0'
+0053b7f0   WARN RELOC_NAME: ??1CStatesVector@NUISystem@@QAE@XZ -> 0053cd46 labelled '_global::StdList_Dtor_0053cd46'
+0053b7f0   RELOCATION_MATCH PASS   ~CList
+00584f15   WARN SHARED_HEADER_AVAILABLE CTCInventory
+00584f15   RELOCATION_MATCH PASS   UnAssignThingPC
+0059ed42   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+0059ed42   RELOCATION_MATCH PASS   AddSellItemToList
+005b70b8   RELOCATION_MATCH PASS   ConstructClothingList
+00744db0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00744db0   RELOCATION_MATCH PASS   ResetPerceptionVariables
+0090f320   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0090f320   WARN SHARED_HEADER_AVAILABLE C3DVector
+0090f320   WARN SHARED_HEADER_AVAILABLE C2DVector
+0090f320   RELOCATION_MATCH PASS   Wander
+009195d0   WARN SHARED_HEADER_AVAILABLE CCreatureNavigationDef
+009195d0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+009195d0   WARN SHARED_HEADER_AVAILABLE CThing
+009195d0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009195d0   RELOCATION_MATCH PASS   Update
+0092a220   WARN SHARED_HEADER_AVAILABLE CThing
+0092a220   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0092a220   RELOCATION_MATCH PASS   MoveToAppropriateDummy
+0092bc60   RELOCATION_MATCH PASS   Update
+00937da0   WARN SHARED_HEADER_AVAILABLE CThing
+00937da0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00937da0   RELOCATION_MATCH PASS   Update
+0093e090   WARN SHARED_HEADER_AVAILABLE CThing
+0093e090   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation
+0093e090   WARN SHARED_HEADER_AVAILABLE CCombatManager
+0093e090   WARN SHARED_HEADER_AVAILABLE CWorld
+0093e090   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093e090   WARN RELOC_NAME: ?OnCombatPositionUnreachable@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z -> 006e9d10 labelled 'CCombatManager::SetAttackerProngAsInvalid'
+0093e090   RELOCATION_MATCH PASS   MoveToEnemyCreatureCombatPosition
+00947a30   WARN SHARED_HEADER_AVAILABLE CThing
+00947a30   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00947a30   WARN SHARED_HEADER_AVAILABLE CTCVillageMember
+00947a30   WARN RELOC_NAME: ?IsCookTime_00658bb9@CTCVillage@@QAE_NXZ -> 00658bb9 labelled 'CTCVillage::IsEatTime'
+00947a30   RELOCATION_MATCH PASS   Update
+0095d070   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095d070   WARN SHARED_HEADER_AVAILABLE C2DVector
+0095d070   WARN RELOC_NAME: ?CanAttackNow@CThingPos@@QAE_NXZ -> 00662410 labelled 'CThingCreatureBase::IsInMeleeAsAttacker'
+0095d070   RELOCATION_MATCH PASS   AttackEnemy
+009647c0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+009647c0   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase
+009647c0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+009647c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009647c0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009647c0   RELOCATION_MATCH PASS   Update
+0096ea50   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096ea50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+0096ea50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+0096ea50   WARN SHARED_HEADER_AVAILABLE CWorld
+0096ea50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0096ea50   WARN SHARED_HEADER_AVAILABLE CCombatManager
+0096ea50   WARN RELOC_NAME: ?IsAttackerReadyToAttack@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z -> 006e93c0 labelled 'CCombatManager::IsCreatureOnRotatingCombatRing'
+0096ea50   RELOCATION_MATCH PASS   AttackEnemy
+00980770   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00980770   WARN SHARED_HEADER_AVAILABLE CThing
+00980770   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase
+00980770   WARN SHARED_HEADER_AVAILABLE CTCCarryable
+00980770   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00980770   WARN SHARED_HEADER_AVAILABLE CWorld
+00980770   RELOCATION_MATCH PASS   AIAction_MoveToPossiblyBlockedObjectAndFace
+
+WINS: 16
+  0053b7f0 RELOCATION_MATCH NUISystem::CList::??1CList
+  00584f15 RELOCATION_MATCH CTCInventory::UnAssignThingPC
+  0059ed42 RELOCATION_MATCH CTCInventoryTrade::?AddSellItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z
+  005b70b8 RELOCATION_MATCH CTCInventoryClothing::?ConstructClothingList@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@3@W4EClothingSuitPart@@_N@Z
+  00744db0 RELOCATION_MATCH CTCPerceiveThing::ResetPerceptionVariables
+  0090f320 RELOCATION_MATCH CAIStateGroup_MinionHasInformation::?Wander@CAIStateGroup_MinionHasInformation@@QAE_NXZ
+  009195d0 RELOCATION_MATCH CAIStateGroup_LookAtInterestingThings::Update
+  0092a220 RELOCATION_MATCH CAIStateGroup_ApprenticeHero::?MoveToAppropriateDummy@CAIStateGroupApprenticeHeroMethods@@QAE_NXZ
+  0092bc60 RELOCATION_MATCH CAIStateGroup_AvoidRegionExit::Update
+  00937da0 RELOCATION_MATCH CAIStateGroup_MinionReactToEnemy::Update
+  0093e090 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition
+  00947a30 RELOCATION_MATCH CAIStateGroup_StayNearFoodHall::Update
+  0095d070 RELOCATION_MATCH CAIStateGroup_RangedCombatUsePreferredFirePoint::?AttackEnemy@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAE_NXZ
+  009647c0 RELOCATION_MATCH CAIStateGroup_StealStealableItem::?Update@CAIStateGroup_StealStealableItem@@UAEXXZ
+  0096ea50 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@QAEXXZ
+  00980770 RELOCATION_MATCH CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace

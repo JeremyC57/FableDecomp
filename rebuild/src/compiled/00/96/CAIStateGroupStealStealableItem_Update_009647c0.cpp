@@ -60,20 +60,23 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    unsigned char _pad08[0x0c];
-    CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    void Terminate();                           // 0x008FCF40
-    protected:
-    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
-    public:
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool b);        // 0x0097DB70
-    long AIAction_MoveToPos(long repeat, C3DVector pos, bool* reached, long a, bool b, bool c, bool d, bool e, long f);   // 0x0097EC00
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float prox, bool* reached, long a, bool b, bool c, bool d, long e, bool f, float g);   // 0x0097E890
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h;
+// AIAction_MoveToPos 0x0097EC00 / AIAction_LookAtPos 0x0097D580 (_MEALACTIONS) and AIAction_PerformActionAndWait 0x0097DB70
+// (_PERFORMACTION, the action by const reference) are the header's protected members.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
+
 struct CAIStateGroup_StealStealableItem : CAIStateGroupBase {
+    CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }   // (the row's helper, moved here from its local base model)
     CIntelligentPointer<CThing> PStealableItem;            // +0x14
     CIntelligentPointerConstThing PEscapePoint;         // +0x1c
     CIntelligentPointer<CThing> PPreviouslyCarriedItem;    // +0x24
@@ -115,7 +118,7 @@ void CAIStateGroup_StealStealableItem::Update()
             return;
         }
         bool reached;
-        result = AIAction_MoveToPos(2, pos, &reached, 5, true, true, false, true, 0);
+        result = AIAction_MoveToPos(ACTION_REPEAT_CALLBACK, pos, reached, AI_MOVEMENT_RUNNING, true, true, 0, true, 0.0f);
     } while (result == 4);
     if (result == 3) {
         do {
@@ -129,7 +132,7 @@ void CAIStateGroup_StealStealableItem::Update()
             }
             CThing* item = reinterpret_cast<CThing*>(PStealableItem.GetPItem());
             bool reached;
-            result = AIAction_MoveToPosProximity(2, ((CThing*)item)->GetPos(), 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
+            result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, ((CThing*)item)->GetPos(), 1.0f, reached, AI_MOVEMENT_RUNNING, true, false, true, 0, true, 0.0f);
         } while (result == 4);
         if (IS_THING_ALIVE(PStealableItem)) {
             CThingCreatureBase* creature = GetCreature();
@@ -173,11 +176,11 @@ void CAIStateGroup_StealStealableItem::Update()
     carrying->RemoveThingFromPrimarySlot(false);
     if (IS_THING_ALIVE(PPreviouslyCarriedItem) && reinterpret_cast<CThing*>(PPreviouslyCarriedItem.GetPItem())->HasTC(TCI_WEAPON))
         reinterpret_cast<CThing*>(PPreviouslyCarriedItem.GetPItem())->Kill(true);
-    long done = AIAction_PerformActionAndWait(&action, false);
+    long done = AIAction_PerformActionAndWait(action, false);
     if (IS_THING_ALIVE(PEscapePoint) && IS_THING_ALIVE(PStealableItem) && done == 2
         && carrying->IsCarryingThing(reinterpret_cast<CThing*>(PStealableItem.GetPItem()))) {
         C3DVector escapePos = ((CThing*)(reinterpret_cast<CThing*>(PEscapePoint.GetPItem())))->GetPos();
-        if (AIAction_MoveToPosProximity(1, escapePos, 1.0f, &arrived, 5, true, false, true, 0, true, 0.0f) == 2) {
+        if (AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, escapePos, 1.0f, arrived, AI_MOVEMENT_RUNNING, true, false, true, 0, true, 0.0f) == 2) {
             ReachedDestination = true;
             const const CTCEscapeFlags* flags;
             static_cast<const CThing*>(GetCreature())->PeekTC(TCI_AI_SCRATCHPAD, &flags);

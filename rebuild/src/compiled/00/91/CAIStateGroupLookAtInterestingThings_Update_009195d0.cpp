@@ -76,19 +76,21 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    unsigned char _pad08[0x0c];                 // +0x08..+0x13
-    CThing* GetCreature() const { return PBrain->PCreature; }
-    void Terminate();                           // 0x008FCF40
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float proximity, bool& arrived, long movement,
-                                     bool a, bool b, bool avoidDynamicObstacles, const CThing* ignore, bool c, float d);   // 0x0097E890
-    protected:
-    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
-    public:
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h;
+// AIAction_LookAtPos 0x0097D580 is the header's protected member (_MEALACTIONS, both PDBs).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
+
 struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBase {
+    CThing* GetCreature() const { return PBrain->PCreature; }   // (the row's helper, moved here from its local base model)
     long FrameToLook;                           // +0x14
 private:
     CThing* FindInterestingThing();             // 0x00919240 Ego_r/FableWin ?FindInterestingThing@CAIStateGroup_LookAtInterestingThings@@AAEPAVCThing@@XZ (private)
@@ -111,7 +113,7 @@ void CAIStateGroup_LookAtInterestingThings::Update()
             return;
         }
         CThing* target = thing.GetPItem();
-        long result = AIAction_MoveToPosProximity(2, target->GetPos(), 6.0f, arrived, 3, true, false,
+        long result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, target->GetPos(), 6.0f, arrived, AI_MOVEMENT_WALKING, true, false,
                                                   navigationDef->AvoidDynamicObstacles, 0, true, 0.0f);
         if (result == 4)
             continue;

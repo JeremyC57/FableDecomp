@@ -28,6 +28,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_INLINE
 #include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
@@ -54,38 +55,19 @@ class CAIBrain { public:
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void Cleanup();                     // slot 9  (+0x24)
-    virtual void OnReplace();                   // slot 10 (+0x28)
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void v13();
-    virtual long GetTimeToInitiate();           // slot 14 (+0x38)
-    virtual void v15(); virtual void v16(); virtual void v17();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    // the landed GetRandomObject random step: seed = ror13(seed*0x24A1 + 0x24DF), r = seed % range
-    unsigned long Random(unsigned long range)
-    {
-        unsigned long* seed = GetPWorldSeed();
-        unsigned long next = *seed * 0x24A1U + 0x24DFU;
-        *seed = next;
-        unsigned long rotated = GFROR13(next);
-        *seed = rotated;
-        return rotated % range;
-    }
-public:
-    void Terminate();   // 0x008FCF40
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model; the
+// row's CAIStateGroupBehaviourBase view now derives it and loses its AI action stand-ins): the callee 0x0097D8B0 is the protected
+// ?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z (Ego_r.pdb 0x00848680; header
+// _PERFORMACTION_NOWAIT), the action by const reference; AIAction_MoveToThingProximity 0x0097E380 / AIAction_LookAtThing 0x0097D6F0
+// (_AIACTIONS, Ego_r.pdb) take the shared CIntelligentPointer<const CThing> built inline from the CIntelligentPointer<CThing> member
+// (_CONVERT_INLINE: base ctor 0x00A01B10, vptr 0x01237F1C, GetPItem, SetPItem; was a local CIntelligentPointerConstThing), with the Ego_r
+// enums of engine/fable_ai_action_enums.h; UpdateEmote 0x00957A20 is protected (Ego_r.pdb ?UpdateEmote@CAIStateGroupBehaviourBase@@IAE_NXZ).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION_NOWAIT
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
 #define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();
@@ -93,11 +75,6 @@ public:
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class CThingCreatureBase;
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>
-    virtual void v00();
-    CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
-
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -116,16 +93,13 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
 
 struct CAIStateGroupBehaviourBase : CAIStateGroupBase {
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
-    long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerConstThing target, float distance, bool* reached,
-        long movement, bool a, bool b, bool c, bool d, float speed);         // 0x0097E380
-    long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing target, long frames, float speed);  // 0x0097D6F0
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
     bool UpdateEmote();                             // 0x00957A20
 };
 
 struct CAIStateGroup_MinionBehaviourSad : CAIStateGroupBehaviourBase {
     unsigned char _pad14[0x34 - 0x14];
-    CBaseIntelligentPointer PSadThing;              // +0x34 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PSadThing;          // +0x34
     unsigned char _pad3c;
     bool Knelt;                                     // +0x3d
     virtual void Update();
@@ -135,18 +109,18 @@ void CAIStateGroup_MinionBehaviourSad::Update()
 {
     if (IS_THING_ALIVE(PSadThing)) {
         bool reached;
-        if (AIAction_MoveToThingProximity(1, PSadThing, 1.5f, &reached, 3, true, false, true, true, 0.0f) != 2) {
+        if (AIAction_MoveToThingProximity(ACTION_REPEAT_UNTIL_FINISHED, PSadThing, 1.5f, reached, AI_MOVEMENT_WALKING, true, false, true, true, 0.0f) != 2) {
             Terminate();
             return;
         }
-        if (AIAction_LookAtThing(1, PSadThing, 0x11, 0.0027777f) != 2) {
+        if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PSadThing, 0x11, 0.0027777f) != 2) {
             Terminate();
             return;
         }
         if (!Knelt) {
             Knelt = true;
             CCharString animation("DROP_TO_KNEES", -1);
-            AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+            AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
                 false, true, false, 0, 0));
         }
         UpdateEmote();

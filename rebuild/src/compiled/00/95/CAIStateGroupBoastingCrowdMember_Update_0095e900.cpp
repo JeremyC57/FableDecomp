@@ -99,33 +99,29 @@ class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThingCreatureBase* Creature;               // +0x18
 };
-enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1, AI_ACTION_REPEAT_POLL = 2 };
-enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
-enum EMovementType { MOVEMENT_DEFAULT, MOVEMENT_WALK = 3, MOVEMENT_RUN = 5 };
-class CAIStateGroupBase { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual bool IsRunnable();                  // slot 5 (+0x14)
-    CAIBrain* PBrain;                           // +0x04
-    unsigned char _pad08[0x0c];
-    CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
-    protected:
-    unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
-    public:
-    void Terminate();                           // 0x008FCF40
-    EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames,
-                                         float speed);   // 0x0097D6F0
-    EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat repeat, C3DVector pos, float proximity, bool& moving,
-                                                EMovementType anim, bool b1, bool b2, bool b3, const CThing* target,
-                                                bool b4, float f);     // 0x0097E890
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h and the AI enums from
+// engine/fable_ai_action_enums.h (were a local CAIStateGroupBase model and made-up local EAIActionRepeat / EAIActionReturn /
+// EMovementType enumerators): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// and AIAction_LookAtThing 0x0097D6F0 the protected _AIACTIONS member (Ego_r.pdb / FableWin.pdb; _MEMBERS + _AIACTIONS +
+// _MOVETOPOSPROXIMITY); GetPWorldSeed 0x008FCFD0 / Terminate 0x008FCF40 the base's; the slot-5 call (+0x14) is the base's
+// IsStillValid() const (vtable 0x01288C60), was a local `IsRunnable` at that slot.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 struct CAIStateGroup_BoastingCrowdMember : CAIStateGroupBase {
+    CThingCreatureBase* GetCreature() const { return PBrain->Creature; }   // (the row's helper, moved here from its local base model)
     CBaseIntelligentPointer PCrowdThing;        // +0x14
-    void Update();
+protected:
+    void Update();                              // slot 12, protected (Ego_r.pdb ?Update@CAIStateGroup_BoastingCrowdMember@@MAEXXZ)
 };
 
 void CAIStateGroup_BoastingCrowdMember::Update()
 {
-    if (IsRunnable()) {
+    if (IsStillValid()) {
         CTCCreatureGroupBoastingCrowd* crowd = 0;
         bool hasCrowd;
         ((CThing*)PCrowdThing.GetPItem())->GetInterface(&crowd, 0x74, &hasCrowd);
@@ -161,16 +157,16 @@ void CAIStateGroup_BoastingCrowdMember::Update()
                 }
                 if (moving) {
                     bool walking;
-                    result = AIAction_MoveToPosProximity(AI_ACTION_REPEAT_POLL, dest, 1.0f, walking, MOVEMENT_RUN, true, true,
+                    result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, dest, 1.0f, walking, AI_MOVEMENT_RUNNING, true, true,
                                                          true, 0, true, 0.0f);
-                    if (result == AI_ACTION_DONE) {
+                    if (result == AI_ACTION_FINISHED) {
                         moving = false;
                         continue;
                     }
                 } else
-                    result = AIAction_LookAtThing(AI_ACTION_REPEAT_POLL, CIntelligentPointer<const CThing>(hero), 1,
+                    result = AIAction_LookAtThing(ACTION_REPEAT_CALLBACK, CIntelligentPointer<const CThing>(hero), 1,
                                                   0.0027777f);
-                if (result != AI_ACTION_RUNNING && result != AI_ACTION_DONE)
+                if (result != AI_ACTION_IN_PROGRESS && result != AI_ACTION_FINISHED)
                     break;
             }
         }

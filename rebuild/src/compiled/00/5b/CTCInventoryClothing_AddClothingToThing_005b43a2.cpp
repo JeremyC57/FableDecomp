@@ -12,12 +12,8 @@
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "stlport/fable_containers.h"   // free 0x00BFEA14
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);           // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();                                            // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
 // STLport 4.6 list<long> (stlport/fable_containers.h): _List_base constructor 0x0042AB58 / destructor 0x0042AB73 out of line
 // (FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE), erase(iterator) out of line at 0x00429B02 (explicit specialisation, declared only).
 template<> std::list<long>::iterator std::list<long>::erase(std::list<long>::iterator position);   // 0x00429B02
@@ -102,36 +98,18 @@ template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingBaseDef>(
 }
 #pragma auto_inline(on)
 
-struct CComponentList { void* m_pNode; ~CComponentList(); };   // 0x0042ABCA
-struct SActionParamPair {
-    unsigned long  first;
-    CComponentList second;
-    SActionParamPair();                                        // 0x0042BED4
-    SActionParamPair(const SActionParamPair& other);           // 0x0042CD84
-};
-namespace NUISystem {
-class CComponent { public:
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual CComponent* FindChild(CCharString name);           // slot 3 (+0x0C)
-    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
-    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21();
-    virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
-    virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33();
-    virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
-    virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
-    virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51();
-    virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57();
-    virtual void v58(); virtual void v59(); virtual void v60(); virtual void v61();
-    virtual void SetActionParameter(SActionParamPair parameter);   // slot 62 (+0xF8)
-    virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68();
-    virtual void v69(); virtual void v70(); virtual void v71(); virtual void v72(); virtual void v73(); virtual void v74();
-    virtual void v75(); virtual void v76(); virtual void v77(); virtual void v78(); virtual void v79(); virtual void v80();
-    virtual void v81(); virtual void v82(); virtual void v83(); virtual void v84(); virtual void v85(); virtual void v86();
-    virtual void v87(); virtual void v88(); virtual void v89(); virtual void v90(); virtual void v91(); virtual void v92();
-    virtual void Slot93();                                     // slot 93 (+0x174)
-};
-}
+// NF51 (round 7): the UI component and the deletion come from the shared headers (were local CComponentList / SActionParamPair /
+// NUISystem::CComponent models; the string is fable_string.h). The 8-byte "pair<unsigned long, list<CComponent*> >" is
+// NUISystem::CDeletion {Method, AssociatedParents} (engine/NUISystem_CDeletion.h): it goes to CComponent slot 62 (+0xF8)
+// SetDeletion(NUISystem::CDeletion) by value (engine/NUISystem_CComponent.h), so 0x0042BED4 / 0x0042CD84 are
+// ??0CDeletion@NUISystem@@QAE@XZ / ??0CDeletion@NUISystem@@QAE@ABV01@@Z (FABLE_RETAIL_CDELETION) and Method 1 = UI_DELETE_THIS_INSTANCE;
+// slot 3 is FindChild(CCharString), slot 93 MakeUnavailableDynamically (was Slot93). ~list<CComponent*> 0x0042ABCA is called out of
+// line while this TU's list<long> keeps its out-of-line _List_base: declared here as an explicit specialisation, as the row does for
+// list<long>::erase.
+#define FABLE_RETAIL_CDELETION
+#include "engine/NUISystem_CComponent.h"
+#include "engine/NUISystem_CDeletion.h"
+template<> std::list<NUISystem::CComponent*, std::allocator<NUISystem::CComponent*> >::~list();   // 0x0042ABCA
 struct SClothingEntry { long SuitPart; NUISystem::CComponent* Component; };
 struct CClothingEntryVector {
     SClothingEntry* _M_start;
@@ -260,11 +238,11 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
                     if (entry->SuitPart == clothing->SuitPart) {
                         NUISystem::CComponent* arrow = entry->Component->FindChild("PC_MENU_ENTRY_ARROW");
                         if (arrow) {
-                            SActionParamPair parameter;
-                            parameter.first = 1;
-                            arrow->SetActionParameter(parameter);
+                            NUISystem::CDeletion deletion;
+                            deletion.Method = NUISystem::CDeletion::UI_DELETE_THIS_INSTANCE;
+                            arrow->SetDeletion(deletion);
                         }
-                        entry->Component->Slot93();
+                        entry->Component->MakeUnavailableDynamically();
                         entry = entries->erase(entry);
                     } else
                         ++entry;

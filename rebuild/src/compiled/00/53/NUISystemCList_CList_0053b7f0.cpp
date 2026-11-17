@@ -1,9 +1,9 @@
 // NUISystem::CList::~CList() -- leave the list registry, unregister the input listener, delete the action lists, then the members and the component
 // Leaf: ??1CList
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0053B7F0, 302 bytes, frame-pointer size TU (optimize "y" off, "s" on).
-// Callees: CComponent::GetDef (slot 108) 0x00530EC0, the STLport list find 0x0053C8D0 (same-TU body, the landed 0x00536A30
+// Callees: CComponent::LoadAndReturnDef (slot 108, engine/NUISystem_CComponent.h) 0x00530EC0, the STLport list find 0x0053C8D0 (same-TU body, the landed 0x00536A30
 // Die model) and erase 0x0053C7B9 on the registry 0x013B8A98, CManager::GetInstance 0x0041E5F2 + slot 5,
-// ~list<CCountedPointer<CAction> > 0x005357E0, operator delete 0x00BFE9BC, free 0x00BFEA14, ~CCountedPointer 0x00429160,
+// ~list<CCountedPointer<CAction> > 0x005357E0, operator delete 0x00BFE9BC, free 0x00BFEA14, CCountedPointer<CAction>::ReleaseData 0x00429160 (the shared engine/CCountedPointer.h, _RELEASEDATA),
 // the states vector dtor 0x0053CD46, ~CChangingStateComponent 0x0052CCF0 (RTTI: CList : CChangingStateComponent : CComponent).
 // Shape: the find body in the TU puts the `this` temporary's store after the argument pushes and the erase result in the
 // iterator's own slot; the action lists are destroyed with a QUALIFIED explicit destructor call plus operator delete
@@ -11,26 +11,18 @@
 // scalar deleting destructor (`push 1 ; call ??_G`) and an unqualified `p->~CActionList()` routes through it with flag 0.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_CUIDEF
+#include "engine/CCountedPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/NUISystem_CUIDef.h"
 #define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
-struct CRefCounted {                               // reference count base at +4 of a def
-    long Count;
-    void DecRef() { --Count; }
-    long GetRefCount() const { return Count; }
-};
-struct CComponentDef {
-    virtual void v00();
-    virtual void Destroy();                        // slot 1 (+0x04)
-    CRefCounted   Ref;                             // +0x04
-    unsigned char _pad08[0x20a - 0x08];
-    bool          RegisterInListRegistry;          // +0x20a
-    void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
-    T* operator->() const { return Object; }
-};
 template <class T> struct _List_node {
     _List_node* _M_next;
     _List_node* _M_prev;
@@ -76,7 +68,7 @@ namespace NUISystem { class CManager { public:
 public:
     static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void RemoveInputListener(CInputListener* listener);   // slot 5 (+0x14)
+    virtual void RemoveObserver(CInputListener* observer);      // slot 5 (+0x14), CObservable::RemoveObserver
 }; }
 namespace NUISystem {
 class CAction;
@@ -87,7 +79,7 @@ struct CThirdBase { virtual void v00(); };         // the vtable at +0x18
 class CComponent : public CComponentRoot, public CInputListener, public CThirdBase {
 public:
     V16(a) V16(b) V16(c) V16(d) V16(e) V16(f) V4(g0) V4(g1) virtual void h0(); virtual void h1(); virtual void h2();
-    virtual CDefPointer<CComponentDef> GetDef();   // slot 108 (+0x1b0) 0x00530EC0
+    virtual CDefPointer<const CUIDef> LoadAndReturnDef() const;   // slot 108 (+0x1b0) 0x00530EC0
     unsigned char _pad1c[0x164 - 0x1c];
 };
 template <class T> struct vector {                 // STLport vector, 12 bytes
@@ -112,11 +104,6 @@ struct CActionList {                               // list<CCountedPointer<CActi
     void* _M_node;
     ~CActionList();                                // 0x005357E0
 };
-struct CCountedPointer_Action {
-    CAction* Data;
-    void*    Info;
-    ~CCountedPointer_Action();                     // 0x00429160
-};
 class CChangingStateComponent : public CComponent {   // RTTI direct base of CList
 public:
     ~CChangingStateComponent();                    // 0x0052CCF0
@@ -134,8 +121,8 @@ public:
     float                  NextScrollingChildPosition[2];   // +0x1a4
     CActionList*           PActionsOnInactive;     // +0x1ac
     CActionList*           PActionsOnSelected;     // +0x1b0
-    CCountedPointer_Action CPActionOnScrollUp;     // +0x1b4
-    CCountedPointer_Action CPActionOnScrollDown;   // +0x1bc
+    CCountedPointer<CAction> CPActionOnScrollUp;       // +0x1b4
+    CCountedPointer<CAction> CPActionOnScrollDown;   // +0x1bc
     long                   DefaultChild;           // +0x1c4
     CBitVector             ScrollingChildrenVisibility;   // +0x1c8
     virtual ~CList();
@@ -143,13 +130,13 @@ public:
 
 CList::~CList()
 {
-    bool registered = GetDef()->RegisterInListRegistry;
+    bool registered = LoadAndReturnDef()->PartOfListTree;
     if (registered) {
         _List_iterator<CList*> it = find(this, g_ListRegistry.begin(), g_ListRegistry.end());
         if (it != g_ListRegistry.end())
             it = g_ListRegistry.erase(it);
     }
-    CManager::GetInstance()->RemoveInputListener(this);
+    CManager::GetInstance()->RemoveObserver(this);
     if (CActionList* p = PActionsOnInactive) { p->CActionList::~CActionList(); operator delete(p); }
     if (CActionList* p = PActionsOnSelected) { p->CActionList::~CActionList(); operator delete(p); }
 }

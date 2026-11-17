@@ -11,8 +11,6 @@
 // Engine header names (NoisePosition +0x14, InvestigatingNoise +0x20, FoundNoiseMaker +0x21); the header flattens
 // the base, so the class is modelled locally.
 // Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
-enum EAIActionRepeat;                         // MS forward enum
-enum EAIActionReturn;                         // MS forward enum
 class CThing;
 #include "engine/C3DVector.h"
 
@@ -28,21 +26,19 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    unsigned char _pad[0x0c];                   // +0x08..+0x13
-protected:
-    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
-public:
-    protected:
-    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
-    public:
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
-                                     bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
-public:
-    void Terminate();   // 0x008FCF40
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h;
+// IsStopping 0x008FD010 and AIAction_LookAtPos 0x0097D580 (_MEALACTIONS) are the header's protected members. Update overrides the
+// base's virtual slot 12, so it mangles ?Update@CAIStateGroup_MinionReactToNoise@@UAEXXZ (both PDBs; was QAE).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 struct CAIStateGroup_MinionReactToNoise : CAIStateGroupBase {
     C3DVector NoisePosition;                    // +0x14
@@ -61,11 +57,11 @@ void CAIStateGroup_MinionReactToNoise::Update()
         }
         PBrain->SuspendSuspendableProcess();
     }
-    if (AIAction_LookAtPos((EAIActionRepeat)(1), NoisePosition, 0x23, 0.05f) == 2) {
+    if (AIAction_LookAtPos(ACTION_REPEAT_UNTIL_FINISHED, NoisePosition, 0x23, 0.05f) == AI_ACTION_FINISHED) {
         bool reached;
         long result;
         do {
-            result = AIAction_MoveToPosProximity(2, NoisePosition, 6.0f, &reached, 3, true, false, true, 0, true, 0.0f);
+            result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, NoisePosition, 6.0f, reached, AI_MOVEMENT_WALKING, true, false, true, 0, true, 0.0f);
         } while (result == 4);
         if (result == 2) {
             InvestigatingNoise = false;

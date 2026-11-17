@@ -287,6 +287,17 @@ public:
                                    NUISystem::CComponent* owner, const CCharString& templateName,
                                    const CCharString& descriptionSymbol, bool checkUsable);          // 0x0058F016
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_STYLEENTRY
+    // NF51 opt-in (2026-11-17, rows 0x00582ACE / 0x0058315B): Ego_r.pdb
+    // ?ConstructStyleEntry@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@ABVCCharString@@0@Z
+    // and ?ConstructStyleEntryPC@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@0ABVCCharString@@0@Z
+    // (public; the same signatures as the FABLE_RETAIL_CTCINVENTORY_ORIGINAL_COMPLETE_CLASS_PASS22 class). Declarations only.
+public:
+    void ConstructStyleEntry(NUISystem::CComponent* list, std::vector<std::pair<long, long> >& styles, const CCharString& headerDefinition,
+                             NUISystem::CComponent* viewport);                                                        // 0x00582ACE
+    void ConstructStyleEntryPC(NUISystem::CComponent* list, std::vector<std::pair<long, long> >& styles, NUISystem::CComponent* owner,
+                               const CCharString& headerDefinition, NUISystem::CComponent* viewport);                 // 0x0058315B
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_QUICKACCESS
     // Nested opt-in (chunk 867, row 0x005F59C7 CTCInventoryAbilities::ConstructPCExpressionsList): the quick-access slots and the
     // two PC menu maps as typed containers (Ego_r.pdb types; retail reads QuickAccessItems begin/end +0x148/+0x14c and clears the

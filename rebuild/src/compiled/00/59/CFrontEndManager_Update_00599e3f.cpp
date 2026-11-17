@@ -4,6 +4,10 @@
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
+#include "engine/FRONTEND_SCREEN.h"
+namespace NUISystem { class CComponent; }
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);                 // 0x0099B720
@@ -152,29 +156,7 @@ struct CScreenStack {
     CComponentBase*& Top();                                // 0x0059B039
     void Pop();                                            // 0x0059AEE5
 };
-struct CScreenNode { unsigned char _b[8]; CScreenNode* Left; CScreenNode* Right; long Key; CComponentBase* Value; };
-extern "C" CScreenNode* __cdecl _Rb_increment(CScreenNode* node);   // 0x004292C0
-struct CScreenMap {
-    CScreenNode* Header;
-    unsigned long Count;
-    unsigned long _08;
-    CComponentBase*& operator[](const long& key);          // 0x0059B5D7
-};
-// same-TU read-only stand-in for the screen map's operator[] (0x0059B5D7): the lookup reads the key, the result is a node value
-#pragma auto_inline(off)
-__declspec(noinline) CComponentBase*& CScreenMap::operator[](const long& key)
-{
-    CScreenNode* y = Header;
-    CScreenNode* x = Header->Left;
-    while (x) {
-        if (!(x->Key < key)) { y = x; x = x->Left; }
-        else x = x->Right;
-    }
-    if (y == Header || key < y->Key)
-        y = Header;
-    return y->Value;
-}
-#pragma auto_inline(on)
+typedef std::map<FRONTEND_SCREEN, NUISystem::CComponent*> CScreenMap;   // the screen map (operator[] 0x0059B5D7, _M_increment 0x004292C0)
 struct CWideStringVector {
     CWideString* _M_start; CWideString* _M_finish; CWideString* _M_end_of_storage;
     CWideStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
@@ -258,7 +240,7 @@ void CFrontEndManager::Update(float dt)
         if (ScreenStack.Top()->IsFinished() || !ScreenStack.Top()->GetStatus().Active) {
             KeyboardActive = false;
             LaunchVirtualKeyboard();
-            if (ScreenStack.Top() == Screens[0x13])
+            if (ScreenStack.Top() == (CComponentBase*)Screens[(FRONTEND_SCREEN)0x13])
                 ScreenStack.Pop();
         }
     }
@@ -275,7 +257,7 @@ void CFrontEndManager::Update(float dt)
             if (it != names._M_finish) {
                 EnableInput(false);
                 LoadProfile(&current);
-                GotoNextScreen(Screens[0x13], false);
+                GotoNextScreen((CComponentBase*)Screens[(FRONTEND_SCREEN)0x13], false);
                 NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
                 NUISystem::CManager::GetInstance()->SetText(manager->GetDef()->ProfileText, true);
             }
@@ -283,10 +265,10 @@ void CFrontEndManager::Update(float dt)
                 bool created = CreateNewProfile(&name);
                 EnableInput(false);
                 if (created)
-                    GotoNextScreen(Screens[0], true);
+                    GotoNextScreen((CComponentBase*)Screens[(FRONTEND_SCREEN)0], true);
                 else {
                     LoadProfile(&current);
-                    GotoNextScreen(Screens[0x1b], false);
+                    GotoNextScreen((CComponentBase*)Screens[(FRONTEND_SCREEN)0x1b], false);
                 }
             }
         }
@@ -296,9 +278,9 @@ void CFrontEndManager::Update(float dt)
             EnableInput(true);
         }
     }
-    for (CScreenNode* node = Screens.Header->Left; node != Screens.Header; node = _Rb_increment(node))
+    for (CScreenMap::iterator node = Screens.begin(); node != Screens.end(); ++node)
     {
-        CComponentBase* screen = node->Value;
+        CComponentBase* screen = (CComponentBase*)(*node).second;
         if (screen)
             screen->Update(dt);
     }

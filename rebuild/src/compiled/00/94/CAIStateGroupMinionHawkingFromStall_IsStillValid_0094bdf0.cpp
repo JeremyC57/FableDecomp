@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionHawkingFromStall::IsStillValid() -- still hawking while the shopkeeper has a shop, it is work
-// Leaf: ?IsStillValid@CAIStateGroup_MinionHawkingFromStall@@UAE_NXZ
+// Leaf: ?IsStillValid@CAIStateGroup_MinionHawkingFromStall@@UBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // hours, and the live hawk target (+0x18) is either the creature itself or the shopkeeper's current thing.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094BDF0, length 173 bytes.
@@ -28,24 +28,16 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual bool IsStillValid();                // slot 5  (+0x14)
-    virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void Cleanup();                     // slot 9  (+0x24)
-    virtual void OnReplace();                   // slot 10 (+0x28)
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void InitStateGroup();              // slot 13 (+0x34)
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-};
+// NF51 (round 7): the AI state-group base and its work-group layer come from the shared headers (were a local CAIStateGroupBase model
+// and a derived-class IsInWorkHours stand-in for 0x0094BEF0): RTTI .?AVCAIStateGroup_MinionHawkingFromStall@@ derives
+// CAIStateGroup_WorkBase<CAIStateGroupBase> (ghidra_out/rtti_bases.tsv), and the callee 0x0094BEF0 is that template's protected const
+// ?StayInShop@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ (Ego_r.pdb 0x009702A0; engine/CAIStateGroup_WorkBase.h,
+// declaration only), was `IsInWorkHours`; IsStillValid overrides the base's const slot 5 (Ego_r.pdb
+// ?IsStillValid@CAIStateGroup_MinionHawkingFromStall@@UBE_NXZ).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIStateGroup_WorkBase.h"
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
     virtual void v00();
@@ -77,18 +69,17 @@ class CTCShopKeeper { public:
     CThing* GetShopThing();                     // 0x00798D80
 };
 
-struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase {
+struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroup_WorkBase<CAIStateGroupBase> {
     unsigned char _pad_0x14[0x4];               // +0x14
     CBaseIntelligentPointerCtor PHawkTarget;    // +0x18
-    bool IsInWorkHours();                       // 0x0094BEF0 (CAIStateGroup_WorkBase)
-    virtual bool IsStillValid();
+    virtual bool IsStillValid() const;
 };
 
-bool CAIStateGroup_MinionHawkingFromStall::IsStillValid()
+bool CAIStateGroup_MinionHawkingFromStall::IsStillValid() const
 {
     CTCShopKeeper* keeper;
     PBrain->PCreature->GetTC(TCI_SHOP_KEEPER, &keeper);
-    if (keeper->GetShopTC() != 0 && IsInWorkHours() && IS_THING_ALIVE(PHawkTarget)) {
+    if (keeper->GetShopTC() != 0 && StayInShop() && IS_THING_ALIVE(PHawkTarget)) {
         CThing* self = PBrain->PCreature;
         if (PHawkTarget.GetPItem() == self)
             return true;

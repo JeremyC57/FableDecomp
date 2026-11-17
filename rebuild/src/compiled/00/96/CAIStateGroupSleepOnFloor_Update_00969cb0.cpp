@@ -108,38 +108,32 @@ class CAIBrain { public:
     CThingCreature* PCreature;                      // +0x18
     void SetOutput(const CBrainOutput& output);  // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;
-    unsigned char Enabled;
-    unsigned char _pad_0x13;
-public:
-    void Terminate();   // 0x008FCF40
-protected:
-    bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model with
+// derived-class AIAction_MoveToThingProximity / AIAction_PerformAction / AIAction_DoNothing stand-ins): the callee 0x0097D8B0 is the
+// protected ?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z (Ego_r.pdb 0x00848680; header
+// _PERFORMACTION_NOWAIT), the action by const reference; AIAction_MoveToThingProximity 0x0097E380 (_AIACTIONS) and AIAction_DoNothing
+// 0x0097E200 / IsStopping 0x008FD010 / Terminate 0x008FCF40 are the base's members (Ego_r.pdb), with the Ego_r enums of
+// engine/fable_ai_action_enums.h.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION_NOWAIT
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 // CIntelligentPointerConstThing = the shared CIntelligentPointer<const CThing> (engine/CIntelligentPointer.h).
 struct CAIStateGroup_SleepOnFloor : CAIStateGroupBase {
     CIntelligentPointer<CThing> PSleepPoint;       // +0x14
     bool Asleep;                                // +0x1c
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
     CThingCreature* GetCreatureThing() const { return PBrain->PCreature; }
-    long AIAction_MoveToThingProximity(long repeat, CIntelligentPointer<const CThing> target, float distance, bool* reached,
-        long movement, bool a, bool b, bool c, bool d, float speed);         // 0x0097E380
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
-    long AIAction_DoNothing();                  // 0x0097E200
     virtual void Update();
 };
 
 void CAIStateGroup_SleepOnFloor::Update()
 {
     bool reached;
-    if (AIAction_MoveToThingProximity(1, PSleepPoint, 1.0f, &reached, 3, true, false, true, true, 0.0f) == 2) {
-        if (AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), "ST_SLEEP_ON_FLOOR_INTO", CSoundPair(),
+    if (AIAction_MoveToThingProximity(ACTION_REPEAT_UNTIL_FINISHED, PSleepPoint, 1.0f, reached, AI_MOVEMENT_WALKING, true, false, true, true, 0.0f) == 2) {
+        if (AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "ST_SLEEP_ON_FLOOR_INTO", CSoundPair(),
                 false, true, false, 0, 0)) == 2) {
             CTCCreatureModeManager* modes;
             PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);

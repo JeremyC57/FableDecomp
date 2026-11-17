@@ -1,5 +1,5 @@
 // NUISystem::CManager::AddActionsListenIgnoreOnList(CComponent* list, CComponent* first, CComponent* second, EEvent event)
-// Leaf: AddActionsListenIgnoreOnList
+// Leaf: ?AddActionsListenIgnoreOnList@CManager@NUISystem@@UAEXPAVCComponent@2@00W4EEvent@2@@Z
 // Retail: Fable.exe @ 0x0041DC9D, 565 bytes, `ret 10h`; /Os + optimize("y", off) TU (ebp frame closed with `leave`, as the
 //   landed CreateLevelSlider 0x00427DC9). `this` is unused.
 // Callees: operator new 0x00BFEA1A, CAction::CAction 0x0042BE50, CCountedPointer<CAction>(CAction*) 0x0042AA29 / its dtor
@@ -7,150 +7,56 @@
 //   list<CActionParam*>::push_back 0x0042B646 (out of line here); the list's virtual slots 67 (+0x10c) and 70 (+0x118).
 // Layout: CAction 0x10 bytes with the param list at +4 and the action-target subobject of a component at +0x18 (landed
 //   CScrollableList::Initialise model); the event parameter is a 12-byte CActionParam (vtable 0x0122F844, type 5).
+// NF51 (round 7): ported onto the shared NUISystem headers (were local CActionParam / CActionParamEvent / CActionParamList /
+// CActionTarget / CAction / CActionPointer / CComponent / CManager models). The counted action is CCountedPointer<NUISystem::CAction>
+// (engine/CCountedPointer.h: its 5-byte destructor jumps to ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ 0x00429160 --
+// the local CActionPointer bound a made-up ??1 there); the event parameter (vtable 0x0122F844, type 5) is NUISystem::CActionParamULONG;
+// 0x0053FDE0 is ?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z (was SetTarget, the
+// component's CActionParam base at +0x18); the list's slots 67 / 70 are AddActionOnSelected / AddActionOnInactive (were descriptive
+// AddListenAction / AddIgnoreAction); the function is the virtual ?AddActionsListenIgnoreOnList@CManager@NUISystem@@UAE..@Z
+// (Ego_r.pdb; engine/NUISystem_CManager.h).
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CMANAGER
+#define FABLE_RETAIL_CACTIONPARAMULONG
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "engine/CCountedPointer.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/NUISystem_CComponent.h"
+#include "engine/NUISystem_CAction.h"
+#include "engine/NUISystem_EActionType.h"
+#include "engine/NUISystem_CActionParamULONG.h"
 namespace NUISystem {
-
-enum EEvent { EVENT_NONE };
-
-class CActionParam { public:
-    long Type;                                          // +0x04
-    CActionParam(long type) : Type(type) {}
-    virtual void v00();
-};
-struct CActionParamEvent : CActionParam {               // vtable 0x0122F844
-    EEvent Value;                                       // +0x08
-    CActionParamEvent(EEvent value) : CActionParam(5), Value(value) {}
-    virtual void v00();
-};
-struct CActionParamList {                               // STLport list<CActionParam*>
-    void* _M_node;
-    void push_back(CActionParam* const& value);         // 0x0042B646
-};
-struct CActionTarget { void* _vf; };
-struct CActionPointer;
-class CAction { public:                                        // retail 0x10 bytes
-    long             ActionType;                        // +0x00
-    CActionParamList UIActionParams;                    // +0x04
-    void*            ThingActionParams;                 // +0x08
-    bool             Valid;                             // +0x0C
-    CAction();                                          // 0x0042BE50
-    void SetTarget(CActionTarget* target, const CActionPointer& self);   // 0x0053FDE0
-    void AddUIActionParam(CActionParam* param) { UIActionParams.push_back(param); }
-};
-struct SCountBlock;
-struct CActionPointer {
-    CAction*     m_pObject;
-    SCountBlock* m_pCount;
-    CActionPointer(CAction* object);                    // 0x0042AA29
-    ~CActionPointer();                                  // 0x00429160
-    CAction* operator->() const { return m_pObject; }
-};
-
-struct CComponentBase {
-    virtual void v000();
-    virtual void v001();
-    virtual void v002();
-    virtual void v003();
-    virtual void v004();
-    virtual void v005();
-    virtual void v006();
-    virtual void v007();
-    virtual void v008();
-    virtual void v009();
-    virtual void v010();
-    virtual void v011();
-    virtual void v012();
-    virtual void v013();
-    virtual void v014();
-    virtual void v015();
-    virtual void v016();
-    virtual void v017();
-    virtual void v018();
-    virtual void v019();
-    virtual void v020();
-    virtual void v021();
-    virtual void v022();
-    virtual void v023();
-    virtual void v024();
-    virtual void v025();
-    virtual void v026();
-    virtual void v027();
-    virtual void v028();
-    virtual void v029();
-    virtual void v030();
-    virtual void v031();
-    virtual void v032();
-    virtual void v033();
-    virtual void v034();
-    virtual void v035();
-    virtual void v036();
-    virtual void v037();
-    virtual void v038();
-    virtual void v039();
-    virtual void v040();
-    virtual void v041();
-    virtual void v042();
-    virtual void v043();
-    virtual void v044();
-    virtual void v045();
-    virtual void v046();
-    virtual void v047();
-    virtual void v048();
-    virtual void v049();
-    virtual void v050();
-    virtual void v051();
-    virtual void v052();
-    virtual void v053();
-    virtual void v054();
-    virtual void v055();
-    virtual void v056();
-    virtual void v057();
-    virtual void v058();
-    virtual void v059();
-    virtual void v060();
-    virtual void v061();
-    virtual void v062();
-    virtual void v063();
-    virtual void v064();
-    virtual void v065();
-    virtual void v066();
-    virtual void AddListenAction(const CActionPointer& action);   // slot 67 (+0x10c) descriptive
-    virtual void v068(); virtual void v069();
-    virtual void AddIgnoreAction(const CActionPointer& action);   // slot 70 (+0x118) descriptive
-    unsigned char _pad04[0x18 - 0x04];
-};
-class CComponent : public CComponentBase, public CActionTarget { public:     // CActionTarget at +0x18
-};
-
-class CManager {
-public:
-    virtual void AddActionsListenIgnoreOnList(CComponent* list, CComponent* first, CComponent* second, EEvent event);
-};
 
 void CManager::AddActionsListenIgnoreOnList(CComponent* list, CComponent* first, CComponent* second, EEvent event)
 {
-    CActionPointer listenFirst(new CAction);
-    listenFirst->ActionType = 0xf5;
-    listenFirst->SetTarget(first, listenFirst);
-    listenFirst->AddUIActionParam(new CActionParamEvent(event));
-    CActionPointer ignoreFirst(new CAction);
-    ignoreFirst->ActionType = 0xf9;
-    ignoreFirst->SetTarget(first, ignoreFirst);
-    ignoreFirst->AddUIActionParam(new CActionParamEvent(event));
-    list->AddListenAction(listenFirst);
-    list->AddIgnoreAction(ignoreFirst);
-    CActionPointer listenSecond(new CAction);
-    listenSecond->ActionType = 0xf5;
-    listenSecond->SetTarget(second, listenSecond);
-    listenSecond->AddUIActionParam(new CActionParamEvent(event));
-    CActionPointer ignoreSecond(new CAction);
-    ignoreSecond->ActionType = 0xf9;
-    ignoreSecond->SetTarget(second, ignoreSecond);
-    ignoreSecond->AddUIActionParam(new CActionParamEvent(event));
-    list->AddListenAction(ignoreSecond);
-    list->AddIgnoreAction(listenSecond);
+    CCountedPointer<CAction> listenFirst(new CAction);
+    listenFirst->ActionType = UI_ACTION_TYPE_OBSERVE_EVENT;
+    listenFirst->AddParam(first, listenFirst);
+    listenFirst->UIActionParams.push_back(new CActionParamULONG(event));
+    CCountedPointer<CAction> ignoreFirst(new CAction);
+    ignoreFirst->ActionType = UI_ACTION_TYPE_IGNORE_EVENT;
+    ignoreFirst->AddParam(first, ignoreFirst);
+    ignoreFirst->UIActionParams.push_back(new CActionParamULONG(event));
+    list->AddActionOnSelected(listenFirst);
+    list->AddActionOnInactive(ignoreFirst);
+    CCountedPointer<CAction> listenSecond(new CAction);
+    listenSecond->ActionType = UI_ACTION_TYPE_OBSERVE_EVENT;
+    listenSecond->AddParam(second, listenSecond);
+    listenSecond->UIActionParams.push_back(new CActionParamULONG(event));
+    CCountedPointer<CAction> ignoreSecond(new CAction);
+    ignoreSecond->ActionType = UI_ACTION_TYPE_IGNORE_EVENT;
+    ignoreSecond->AddParam(second, ignoreSecond);
+    ignoreSecond->UIActionParams.push_back(new CActionParamULONG(event));
+    list->AddActionOnSelected(ignoreSecond);
+    list->AddActionOnInactive(listenSecond);
 }
 
 }

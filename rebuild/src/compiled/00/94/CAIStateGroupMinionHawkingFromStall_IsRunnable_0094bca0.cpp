@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionHawkingFromStall::IsRunnable() -- once the next hawk frame is reached, a silent shopkeeper in work hours with a shop hawks from the shop thing; with no shop thing (and a stall-less shop) it hawks on the spot unless the creature dislikes the player (attitude 3, 4 or 8)
-// Leaf: ?IsRunnable@CAIStateGroup_MinionHawkingFromStall@@QAE_NXZ
+// Leaf: ?IsRunnable@CAIStateGroup_MinionHawkingFromStall@@UAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retry 10b (getsw sweep, FIXES B-15): the opinion reaction manager is read through an inline getter `GetOpinionReactionManager()`; the plain member read gives the parked register/scheduling difference.
@@ -56,28 +56,23 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    CThing* GetCreature() const { return PBrain->PCreature; }
-protected:
-    const CWorld& PeekWorld() const;    // 0x008FCFA0
-public:
-protected:
-    CWorld& GetWorld() const;    // 0x008FCFC0
-public:
-};
+// NF51 (round 7): the AI state-group base and its work-group layer come from the shared headers (were a local CAIStateGroupBase model
+// and a derived-class IsInWorkHours stand-in for 0x0094BEF0): RTTI .?AVCAIStateGroup_MinionHawkingFromStall@@ derives
+// CAIStateGroup_WorkBase<CAIStateGroupBase> (ghidra_out/rtti_bases.tsv), and the callee 0x0094BEF0 is that template's protected const
+// ?StayInShop@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ (Ego_r.pdb 0x009702A0; engine/CAIStateGroup_WorkBase.h,
+// declaration only), was `IsInWorkHours`; PeekWorld 0x008FCFA0 / GetWorld 0x008FCFC0 are the base's protected members (_PEEK,
+// _GOTOBED_WORLD); IsRunnable overrides the base's virtual slot (Ego_r.pdb UAE).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIStateGroup_WorkBase.h"
 
-struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase {
+struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroup_WorkBase<CAIStateGroupBase> {
+    CThing* GetCreature() const { return PBrain->PCreature; }   // (the row's helper, moved here from its local base model)
     long NextHawkFrame;                         // +0x14 (descriptive)
     CIntelligentPointerConstThing PStall;       // +0x18
-    bool IsInWorkHours();                       // 0x0094BEF0 (CAIStateGroup_WorkBase)
     bool IsRunnable();
 };
 
@@ -88,7 +83,7 @@ bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
     CThing* creature = GetCreature();
     if (creature->HasTC(TCI_SHOP_KEEPER)) {
         CTCShopKeeper* keeper = ((CTCShopKeeper*)&creature->GetTC(TCI_SHOP_KEEPER));
-        if (!NCreatureAI::IsSpeaking(*(const CThingCreatureBase*)creature) && IsInWorkHours()) {
+        if (!NCreatureAI::IsSpeaking(*(const CThingCreatureBase*)creature) && StayInShop()) {
             CTCShop* shop = keeper->GetShopTC();
             if (shop) {
                 PStall = keeper->GetShopThing();

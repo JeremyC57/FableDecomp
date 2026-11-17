@@ -8,17 +8,17 @@
 // The by-value C3DVector is built in its argument slot (`sub esp,0Ch ; mov eax,esp ; mov [eax]..`)
 // because it has a user copy constructor; the `reached` bool is an uninitialised local that VC
 // homes in the high byte of the `push ecx` frame slot (`lea eax,[esp+23h]`).
-class CThing;
-
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#include "engine/fable_ai_action_enums.h"
 #include "engine/C3DVector.h"
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
-                                     bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
-    void Terminate();                       // 0x008FCF40
-    unsigned char _pad[0x10];               // +0x4..+0x13
-};
+#include "engine/CAIStateGroupBase.h"
 
 struct CAIStateGroup_AvoidRegionExit : CAIStateGroupBase {
     C3DVector Position;                     // +0x14
@@ -28,6 +28,6 @@ struct CAIStateGroup_AvoidRegionExit : CAIStateGroupBase {
 void CAIStateGroup_AvoidRegionExit::Update()
 {
     bool reached;
-    AIAction_MoveToPosProximity(1, Position, 2.0f, &reached, 5, true, false, true, 0, true, 0.0f);
+    AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, Position, 2.0f, reached, AI_MOVEMENT_RUNNING, true, false, true, 0, true, 0.0f);
     Terminate();
 }

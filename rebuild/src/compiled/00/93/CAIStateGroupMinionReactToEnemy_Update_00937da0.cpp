@@ -55,17 +55,20 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    unsigned char _pad08[0x0c];                 // +0x08..+0x13
-    CThingAICreature* GetCreature() const { return PBrain->PCreature; }
-    void Terminate();                           // 0x008FCF40
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float proximity, bool& arrived, long movement,
-                                     bool a, bool b, bool avoidDynamicObstacles, const CThing* ignore, bool c, float d);   // 0x0097E890
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h;
+// AIAction_LookAtThing 0x0097D6F0 is the header's protected member (_AIACTIONS, Ego_r).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
+
 struct CAIStateGroup_MinionReactToEnemy : CAIStateGroupBase {
+    CThingAICreature* GetCreature() const { return PBrain->PCreature; }   // (the row's helper, moved here from its local base model)
     CIntelligentPointer<CThingCreatureBase> PEnemy;   // +0x14
     virtual void Update();
 };
@@ -83,13 +86,13 @@ void CAIStateGroup_MinionReactToEnemy::Update()
             away.AccurateNormalise();
             away *= 2.4f;
             bool arrived;
-            if (AIAction_MoveToPosProximity(1, GetCreature()->PeekPos() + away, 0.5f, arrived, 3, true, false, true, 0,
+            if (AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, GetCreature()->PeekPos() + away, 0.5f, arrived, AI_MOVEMENT_WALKING, true, false, true, 0,
                                             true, 0.0f) != 2)
                 break;
         }
         if (!IsThingAlive(PEnemy))
             break;
-        long result = AIAction_LookAtThing(2, PEnemy, 0xb, 0.0027777f);
+        long result = AIAction_LookAtThing(ACTION_REPEAT_CALLBACK, PEnemy, 0xb, 0.0027777f);
         if (result != 4 && result != 2)
             break;
     }

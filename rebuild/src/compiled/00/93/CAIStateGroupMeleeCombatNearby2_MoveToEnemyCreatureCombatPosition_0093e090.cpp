@@ -108,32 +108,22 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
-    virtual void v11(); virtual void v12(); virtual void v13();
-    virtual bool IsStillRunnable(bool checkEnemy);  // slot 14 (+0x38)
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-protected:
-    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
-public:
-    long AIAction_MoveToPos(long repeat, C3DVector pos, bool* arrived, long movement, bool a, bool b,
-                            CThing* avoid, bool c, float speed);        // 0x0097EC00
-    long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerConstThing target, float proximity,
-                                       bool* arrived, long movement, bool a, bool b, bool c, bool d, float e);   // 0x0097E380
-    long AIAction_DoNothing();                  // 0x0097E200
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
-                                     bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h;
+// GetWorld 0x008FCFC0 is the header's protected ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (_GOTOBED_WORLD); the local slot list
+// leaves only IsStillRunnable (slot 14), now declared on the derived class.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
+    virtual bool IsStillRunnable(bool checkEnemy);  // slot 14 (+0x38), first after the base's 14 slots (0..13)
     CIntelligentPointerCreature PEnemy;         // +0x14
     bool IsEnemyCreatureInCombatPosition();     // 0x0093DCD0
     bool MoveToEnemyCreatureCombatPosition();
@@ -162,7 +152,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
                 lastFrame = CWorld::GetFrame();
             }
             PBrain->PCreature->GetInterface(&navigation, 7);
-            long result = AIAction_MoveToPosProximity(2, pos, 0.5f, &arrived, 5, true, false, true, ((CThing*)PEnemy.GetPItem()), false, 0.0f);
+            long result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, pos, 0.5f, arrived, AI_MOVEMENT_RUNNING, true, false, true, ((CThing*)PEnemy.GetPItem()), false, 0.0f);
             if (result == 3) {
                 if (PBrain->PCreature->IsInMeleeAsAttacker()) {
                     CThingCreatureBase* self = PBrain->PCreature;

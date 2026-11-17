@@ -85,23 +85,21 @@ class CAIBrain { public:
 };
 
 class CThingBuilding;
-enum EAIActionReturn { };
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    void Terminate();                           // 0x008FCF40
-    long AIAction_MinionWander(long movement, CThingBuilding* building);    // 0x0097F870
-    long AIAction_MinionIdle();                 protected: // 0x0097FA00
-    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
-                                     bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h
+// (replace the local empty enum EAIActionReturn); AIAction_MinionWander 0x0097F870 is the header's protected
+// ?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z (_MINIONWANDER) and
+// AIAction_MinionIdle 0x0097FA00 is ?AIAction_MinionIdle@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ (both PDBs; overlay opt-in _MINIONIDLE).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MINIONIDLE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MINIONWANDER
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 #pragma auto_inline(off)
 long TmplSink(const void* self, long key);      // stand-in: the callee's own work (outside the graded bytes)
@@ -128,7 +126,7 @@ void CAIStateGroup_MinionWander::Update()
     CNavDefHolder def(navDef.m_p);
     bool reached;
     do {
-        if (AIAction_MinionWander(3, 0) != 2)
+        if (AIAction_MinionWander(AI_MOVEMENT_WALKING, 0) != 2)
             return;
         if (AIAction_MinionIdle() != 2)
             return;
@@ -144,7 +142,7 @@ void CAIStateGroup_MinionWander::Update()
         float radiusSq = radius * radius;
         if (!(distSq < radiusSq)) {
             reached = false;
-            if (AIAction_MoveToPosProximity(1, centre, radius, &reached, 3, true, false, def.p->AvoidDynamicObstacles, 0, true, 0.0f) != 2) {
+            if (AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, centre, radius, reached, AI_MOVEMENT_WALKING, true, false, def.p->AvoidDynamicObstacles, 0, true, 0.0f) != 2) {
                 Terminate();
                 return;
             }

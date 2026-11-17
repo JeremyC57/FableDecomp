@@ -86,25 +86,18 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;
-    unsigned char Enabled;
-    unsigned char _pad_0x13;
-    void Terminate();                           // 0x008FCF40
-    protected:
-    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
-    public:
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* arrived, long movement, bool b1,
-        bool b2, bool b3, CThing* faceThing, bool b4, float f);    // 0x0097E890
-    protected:
-    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
-    public:
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
+
 struct CAIStateGroup_WanderAroundShops : CAIStateGroupBase {
     CIntelligentPointer<CThing> Shop;              // +0x14
     CIntelligentPointer<CThing> PrettyThing;       // +0x1c
@@ -136,8 +129,8 @@ void CAIStateGroup_WanderAroundShops::Update()
                 }
                 bool arrived;
                 CThing* pretty = PrettyThing.GetPItem();
-                result = AIAction_MoveToPosProximity(2, pretty->GetPos(), g_ShopBrowseRadius, &arrived,
-                    3, true, false, true, 0, true, 0.0f);
+                result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, pretty->GetPos(), g_ShopBrowseRadius, arrived,
+                    AI_MOVEMENT_WALKING, true, false, true, 0, true, 0.0f);
             } while (result == 4);
             if (result != 2)
                 break;

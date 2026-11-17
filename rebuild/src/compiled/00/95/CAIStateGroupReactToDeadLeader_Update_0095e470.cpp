@@ -99,22 +99,23 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 namespace { extern const long TOTAL_FRAMES_TO_RUN; }                  // 0x013BB738 frame budget
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    unsigned char _pad08[0x0c];
-    CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-protected:
-    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
-public:
-    void Terminate();                           // 0x008FCF40
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float distance, bool* reached, long movement,
-        bool a, bool b, bool c, CThing* avoid, bool d, float speed);        // 0x0097E890
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
+
 struct CAIStateGroup_ReactToDeadLeader : CAIStateGroupBase {
+    CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }   // (the row's helper, moved here from its local base model)
     CIntelligentPointer<CThingCreatureBase> PEnemy;         // +0x14
     long FramesRunning;                         // +0x1c
-    virtual void Update();
+protected:
+    virtual void Update();                      // slot 12, protected (Ego_r.pdb ?Update@CAIStateGroup_ReactToDeadLeader@@MAEXXZ)
 };
 
 void CAIStateGroup_ReactToDeadLeader::Update()
@@ -129,7 +130,7 @@ void CAIStateGroup_ReactToDeadLeader::Update()
         {
             bool reached = false;
             do {
-                result = AIAction_MoveToPosProximity(2, fleePos, 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
+                result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, fleePos, 1.0f, reached, AI_MOVEMENT_RUNNING, true, false, true, 0, true, 0.0f);
                 ++FramesRunning;
             } while (!IsStopping() && IS_THING_ALIVE(PEnemy) && FramesRunning < TOTAL_FRAMES_TO_RUN && result == 4);
         }

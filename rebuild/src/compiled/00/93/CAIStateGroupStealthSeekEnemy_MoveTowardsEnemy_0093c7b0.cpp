@@ -24,13 +24,16 @@ public:
     C3DVector LastPerceivedPos;                 // +0x20
 };
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    unsigned char _pad[0x10];                   // +0x04..+0x13
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
-                                     bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
-    void Terminate();                           // 0x008FCF40
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
     bool IsStillRunnable(const CTCPerceiveThing& perceive) const;   // 0x0093C4E0
@@ -47,7 +50,7 @@ void CAIStateGroup_StealthSeekEnemy::MoveTowardsEnemy(const CTCPerceiveThing* pe
             return;
         }
         C3DVector pos = perceive->LastPerceivedPos;
-        result = AIAction_MoveToPosProximity(2, pos, 1.5f, &arrived, 3, true, false, true, 0, true, 0.0f);
+        result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, pos, 1.5f, arrived, AI_MOVEMENT_WALKING, true, false, true, 0, true, 0.0f);
     } while (result == 4);
     if (result == 1)
         Terminate();

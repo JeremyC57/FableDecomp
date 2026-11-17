@@ -30,15 +30,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 #include "engine/CCountedPointer.h"
-template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
-    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
-public:
-    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
-};
-class CPlayerGui { public:                             // the global (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790
-    void AddPerceivingThing(CThing* thing);     // 0x004378F0 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
-    void RemovePerceivingThing(CThing* thing);  // 0x00437900 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
-};
+// NF51 (round 7): the player GUI and its singleton base come from the shared engine/CPlayerGui.h / engine/CTBaseSingletonNoDefaultAlloc.h
+// (were local CTBaseSingletonNoDefaultAlloc / CPlayerGui models with CThing* parameters): the callees 0x004378F0 / 0x00437900 are
+// Ego_r.pdb ?AddPerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z / ?RemovePerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z (header opt-in
+// FABLE_RETAIL_CPLAYERGUI_PERCEIVERS), taking the parent thing by reference.
+#define FABLE_RETAIL_CPLAYERGUI
+#define FABLE_RETAIL_CPLAYERGUI_PERCEIVERS
+#include "engine/CPlayerGui.h"
 class CDefPointeeBase { public:
     unsigned char _pad00[0x40];
     long StartWithoutTarget;                    // +0x40 CPerceivedThingDef word: 0 = start searching for a target
@@ -74,16 +72,16 @@ class CTCPerceiveThing { public:
     void UpdateDrawPerceivers()
     {
         if (PerceivedThing.GetPItem())
-            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddPerceivingThing(ParentThing);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddPerceivingThing(*ParentThing);
         else
-            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(*ParentThing);
     }
     void SetPerceivedThing(const CThing* thing);
     void SetThingLineOfSight(bool lineOfSight)
     {
         if (LineOfSight != lineOfSight) {
             if (LineOfSight)
-                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
+                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(*ParentThing);
             LineOfSight = lineOfSight;
             if (lineOfSight)
                 UpdateDrawPerceivers();
@@ -95,7 +93,7 @@ class CTCPerceiveThing { public:
     {
         if (ExtendedLineOfSight != lineOfSight) {
             if (ExtendedLineOfSight)
-                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
+                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(*ParentThing);
             ExtendedLineOfSight = lineOfSight;
             if (lineOfSight)
                 UpdateDrawPerceivers();
@@ -105,7 +103,7 @@ class CTCPerceiveThing { public:
     {
         if (IgnoreFOVLineOfSight != lineOfSight) {
             if (IgnoreFOVLineOfSight)
-                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
+                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(*ParentThing);
             IgnoreFOVLineOfSight = lineOfSight;
             if (lineOfSight)
                 UpdateDrawPerceivers();

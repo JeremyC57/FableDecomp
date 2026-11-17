@@ -57,30 +57,17 @@ class CAIBrain { public:
     unsigned char _pad[0x18 - 4];
     CThing* PCreature;                          // +0x18
 };
-enum EAIActionReturn { };
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;
-    unsigned char Enabled;
-    unsigned char _pad_0x13;
-    void Terminate();                           // 0x008FCF40
-protected:
-    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
-    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* arrived, long movement, bool b1,
-        bool b2, bool b3, CThing* faceThing, bool b4, float f);    // 0x0097E890
-    CThing* GetCreature() const { return PBrain->PCreature; }
-    CThingCreatureBase* GetCreatureBase() const { return (CThingCreatureBase*)PBrain->PCreature; }
-    protected:
-    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
-    public:
-    void SetPushableByHero(bool pushable);      // 0x0097E330
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters, and an empty local EAIActionReturn): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
+
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CTCShop { public:
     void SetStockState(long state);             // 0x00773C00
@@ -112,6 +99,7 @@ class CTCTavernBar { public:                           // interface 0xb9
     CIntelligentPointerObject GetJug(long slot);   // 0x007B9F60
 };
 struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
+    CThing* GetCreature() const { return PBrain->PCreature; }   // (the row's helper, moved here from its local base model)
     CBaseIntelligentPointer PJug;               // +0x14 CIntelligentPointer<CThingObject>
     CBaseIntelligentPointer PBar;               // +0x1c CIntelligentPointer<CThingObject>
     CBaseIntelligentPointer PPub;               // +0x24 CIntelligentPointer<CThingBuilding>
@@ -144,7 +132,7 @@ void CAIStateGroup_TavernKeeper::Update()
         bool arrived;
         CTCPhysicsBase* body = ((CThingPos*)PPub.GetPItem())->GetPhysicsTC();
         CThingPos* pubThing = (CThingPos*)PPub.GetPItem();
-        if (AIAction_MoveToPosProximity(1, pubThing->GetPhysPos(), body->Radius, &arrived, 3, true,
+        if (AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, pubThing->GetPhysPos(), body->Radius, arrived, AI_MOVEMENT_WALKING, true,
                 false, true, 0, true, 0.0f) != 2) {
             Terminate();
             return;

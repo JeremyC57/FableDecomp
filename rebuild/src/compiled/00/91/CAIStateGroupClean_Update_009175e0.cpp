@@ -29,11 +29,8 @@ class CThingBuilding { public:
     bool IsPointInside(const C3DVector& point) const; // 0x0082D000
 };
 class CThing;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                       // CCharString(const char*, long = -1) 0x0099EBF0 / ~CCharString 0x0099EAE0 (was a local model; the shared base header includes it)
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -57,28 +54,25 @@ class CAIBrain { public:
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-class CAIStateGroupBase
-{
-protected:
-    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ)
-private:
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual void v10();
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void OnActivate();                  // slot 13 (+0x34)
-    virtual CThingBuilding* GetBuilding();      // slot 14 (+0x38)
-public:
-    void Terminate();   // 0x008FCF40
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; header _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h;
+// the derived-class stand-ins of AIAction_DoNothing 0x0097E200 and AIAction_PerformActionAndWait 0x0097DB70 (was a CCreatureActionBase*)
+// are the header's protected members (_PERFORMACTION: ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z,
+// both PDBs), so the actions pass by const reference; PBrain (+0x04) is the base's, and the local slot list leaves only GetBuilding (slot 14).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 struct CAIStateGroup_Clean : public CAIStateGroupBase {
     virtual void Update();
+    virtual CThingBuilding* GetBuilding();      // slot 14 (+0x38), first after the base's 14 slots (0..13)
 
-    CAIBrain* PBrain;                           // +0x04
-    unsigned char _pad08[0x14 - 0x08];
     bool Cleaning;                              // +0x14
     bool StartingToClean;                       // +0x15
     unsigned char _pad16[0x1c - 0x16];
@@ -86,10 +80,6 @@ struct CAIStateGroup_Clean : public CAIStateGroupBase {
     float FloorHeight;                          // +0x20
     bool Activated;                             // +0x24
     CThing* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_DoNothing();                  // 0x0097E200
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
-        bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
     FABLE_FORCEINLINE unsigned long Random()
     {
         unsigned long* seed = GetPWorldSeed();
@@ -137,13 +127,13 @@ void CAIStateGroup_Clean::Update()
                 Terminate();
                 return;
             }
-            result = AIAction_MoveToPosProximity(2, position, 0.5f, &reached, 3, true, false, true, 0, true, 0.0f);
+            result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, position, 0.5f, reached, AI_MOVEMENT_WALKING, true, false, true, 0, true, 0.0f);
         } while (result == 4);
         if (result != 2)
             break;
         CleaningActionID = -1;
         StartingToClean = true;
-        result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_WASH_FLOOR_INTO",
+        result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_WASH_FLOOR_INTO",
             CSoundPair(), false, true, false, 0, 0), false);
         if (result != 2)
             break;
@@ -153,13 +143,13 @@ void CAIStateGroup_Clean::Update()
         for (long j = 0; j < loops; ++j) {
             CCreatureAction_PlayAnimation wash(GetCreature(), "ST_WASH_FLOOR_LOOP", CSoundPair(), false, true, false, 0, 0);
             CleaningActionID = wash.GetActionID();
-            if (AIAction_PerformActionAndWait(&wash, false) != 2) {
+            if (AIAction_PerformActionAndWait(wash, false) != 2) {
                 Terminate();
                 return;
             }
         }
         Cleaning = false;
-        result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_WASH_FLOOR_OUTOF",
+        result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_WASH_FLOOR_OUTOF",
             CSoundPair(), false, true, false, 0, 0), false);
         if (result != 2)
             break;

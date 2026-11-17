@@ -3,9 +3,10 @@ struct Vec3 { float x, y, z; };
 
 struct CObj34 { char pad[0x44]; float f44; };
 
+class CThing;
 class CTCPerceiveThing { public:
     char pad0[4];      // +0x00
-    int field4;        // +0x04
+    CThing* ParentThing; // +0x04 (Ego_r.pdb CTCBase::ParentThing)
     char pad8[4];      // +0x08
     char field_c[0xc]; // +0x0c getter subobject (address taken)
     float f18;         // +0x18
@@ -15,16 +16,21 @@ class CTCPerceiveThing { public:
     CObj34* p34;       // +0x34
 };
 
-struct GObj {
-    void NotifyA(int arg);   // 0xffcf31c0
-    void NotifyB(int arg);   // 0xffcf31d0
-};
+// NF51 (round 7): the player GUI comes from the shared engine/CPlayerGui.h (was a made-up GObj with NotifyA / NotifyB members and an
+// extern g_obj_13b8790 pointer): 0x013B8790 is the private static CCountedPointer<CPlayerGui>
+// ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A read through the inline
+// CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get() (engine/CTBaseSingletonNoDefaultAlloc.h), and the callees 0x004378F0 / 0x00437900 are
+// Ego_r.pdb ?AddPerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z / ?RemovePerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z (header opt-in
+// FABLE_RETAIL_CPLAYERGUI_PERCEIVERS), taking the component's parent thing (+0x04) by reference.
+class CThing;
+#define FABLE_RETAIL_CPLAYERGUI
+#define FABLE_RETAIL_CPLAYERGUI_PERCEIVERS
+#include "engine/CPlayerGui.h"
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 extern "C" Vec3* __fastcall Getter_d82ca0(void* self);   // 0xffd82ca0
-extern GObj* g_obj_13b8790;                              // ds:0x13b8790
 
 void __fastcall CTCPerceiveThing_SetLastAwareInfo(CTCPerceiveThing* self)
 {
@@ -37,9 +43,9 @@ void __fastcall CTCPerceiveThing_SetLastAwareInfo(CTCPerceiveThing* self)
 
     if (val != 0.0f) {
         if (((CBaseIntelligentPointer*)(self->field_c))->GetPItem()) {
-            g_obj_13b8790->NotifyA(self->field4);
+            CPlayerGui::Get().AddPerceivingThing(*self->ParentThing);
         } else {
-            g_obj_13b8790->NotifyB(self->field4);
+            CPlayerGui::Get().RemovePerceivingThing(*self->ParentThing);
         }
     }
 }

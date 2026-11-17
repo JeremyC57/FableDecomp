@@ -31,26 +31,15 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual bool IsStillValid();                // slot 5  (+0x14)
-    virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void Cleanup();                     // slot 9  (+0x24)
-    virtual void OnReplace();                   // slot 10 (+0x28)
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void InitStateGroup();              // slot 13 (+0x34)
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-public:
-    void Terminate();   // 0x008FCF40
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model and a
+// derived-class AIAction_PerformAction taking a pointer): the callee 0x0097D8B0 is the protected
+// ?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z (Ego_r.pdb 0x00848680; header _MEMBERS +
+// _PERFORMACTION_NOWAIT), the action passed by const reference; Terminate 0x008FCF40 is the base's.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION_NOWAIT
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
     virtual void v00();
@@ -102,7 +91,6 @@ struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
     unsigned char _pad_0x14[0x8];               // +0x14 PEnemy
     float LastKnownEnemyPosX, LastKnownEnemyPosY, LastKnownEnemyPosZ;   // +0x1c
     CThing* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
     bool IsStillRunnable(CTCPerceiveThing* perceive);   // 0x0093C4E0
     void SetWhatsThatAnimation(CTCPerceiveThing* perceive);
 };
@@ -110,7 +98,7 @@ struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
 void CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation(CTCPerceiveThing* perceive)
 {
     CAnimationEntry* animation = ((CThingCreatureAnim*)GetCreature())->GetRandomAnimFromName("WHATS_THAT", -1);
-    long result = AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+    long result = AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
         false, true, false, 0, 0));
     if (result == 2 && IsStillRunnable(perceive)) {
         C3DVector diff(perceive->PosX - LastKnownEnemyPosX, perceive->PosY - LastKnownEnemyPosY,

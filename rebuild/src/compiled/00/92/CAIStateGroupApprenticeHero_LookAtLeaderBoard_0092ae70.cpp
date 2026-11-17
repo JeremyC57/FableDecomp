@@ -1,5 +1,6 @@
 // CAIStateGroup_ApprenticeHero::LookAtLeaderBoard() -- walk to the leaderboard marker and study the leaderboard
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Leaf: ?LookAtLeaderBoard@CAIStateGroup_ApprenticeHero@@IAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092AE70, length 354 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 ("Leaderboard" @ 0x01291BB0, "LeaderboardMarker" @ 0x01291B9C,
 //          "ST_TRAINEE_LOOK_AT_MAP_TABLE" @ 0x01291B7C), the marker finder @ 0x00929FC0, ~CCharString @ 0x0099EAE0,
@@ -13,64 +14,55 @@
 //          target is the converting intelligent pointer built in place; the animation string is block-scoped (it shares
 //          the find names' slot) and its result a named bool returned as `failed ? false : true` (no `xor eax,eax`).
 // Layout: engine/CAIStateGroup_ApprenticeHero.h behind engine/CAIStateGroupBase.h; the marker's physics at +0x60.
+// NF51 (round 7): the AI state-group base, the apprentice class, the string, the intelligent pointer, the things, the physics
+// component and the combat-animation action come from the shared headers, as in the same-TU sibling GoToLibrary 0x0092ACE0 (were
+// local models). The callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h; AIAction_LookAtThing 0x0097D6F0
+// (_AIACTIONS) takes the shared CIntelligentPointer<const CThing>; AIAction_PerformActionAndWait 0x0097DB70 (_PERFORMACTION) takes the
+// action by const reference; GetBoundingInfo 0x006AF640 is the header's const (C3DVector&, float&); the finder 0x00929FC0 is
+// ?GetObjectWithScriptName@CAIStateGroup_ApprenticeHero@@IAEPAVCThingGameObject@@ABVCCharString@@@Z (_SCRIPTNAME). The function itself
+// is declared by the overlay opt-in FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO_LOOKATLEADERBOARD (protected, Ego_r.pdb / FableWin.pdb).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATION
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO
+#define FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO_SCRIPTNAME
+#define FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO_LOOKATLEADERBOARD
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CRightHandedSet.h"
+#include "engine/CThing.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCreatureAction_PlayCombatAnimation.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
 #include "engine/CAIStateGroup_ApprenticeHero.h"
 
-extern "C" double __cdecl sqrt(double);
-#pragma intrinsic(sqrt)
-
-#include "engine/C3DVector.h"
-class CRightHandedSet { public:
-    C3DVector Up;
-    C3DVector Forward;
-};
-class CTCPhysicsBase { public:
-    virtual void p00(); virtual void p01(); virtual void p02(); virtual void p03(); virtual void p04(); virtual void p05();
-    virtual void p06(); virtual void p07(); virtual void p08(); virtual void p09(); virtual void p10(); virtual void p11();
-    virtual void p12(); virtual void p13(); virtual void p14(); virtual void p15(); virtual void p16(); virtual void p17();
-    virtual void p18(); virtual void p19(); virtual void p20(); virtual void p21(); virtual void p22(); virtual void p23();
-    virtual void p24(); virtual void p25(); virtual void p26(); virtual void p27(); virtual void p28(); virtual void p29();
-    virtual void p30(); virtual void p31(); virtual void p32(); virtual void p33(); virtual void p34(); virtual void p35();
-    virtual void p36(); virtual void p37(); virtual void p38(); virtual void p39(); virtual void p40(); virtual void p41();
-    virtual void p42(); virtual void p43(); virtual void p44(); virtual void p45(); virtual void p46(); virtual void p47();
-    virtual void p48(); virtual void p49(); virtual void p50(); virtual void p51(); virtual void p52(); virtual void p53();
-    virtual void p54(); virtual void p55(); virtual void p56(); virtual void p57(); virtual void p58(); virtual void p59();
-    virtual void p60(); virtual void p61(); virtual void p62(); virtual void p63(); virtual void p64(); virtual void p65();
-    virtual void p66(); virtual void p67(); virtual void p68(); virtual void p69(); virtual void p70(); virtual void p71();
-    virtual const CRightHandedSet& GetOrientation() const;   // slot 72 (+0x120)
-    void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
-};
-class CThing { public:
-    const C3DVector& GetPos() const;             // 0x004C73D0
-};
-class CThingGameObject : public CThing { public:
-    unsigned char _00[0x60];
-    CTCPhysicsBase* m_pPhysics;                 // +0x60
-};
-class CThing;
-class CThingCreatureBase;
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
-class CCreatureActionBase { public:
-    virtual void v00();
-    unsigned char _body[0xa4];
-};
-class CCombatActionBase : public CCreatureActionBase { public:
-    unsigned char _combat[0x6c];
-    virtual ~CCombatActionBase();                           // 0x0062E900
-};
-class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
-    long m_loop;                                    // +0x114
-    CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
-};
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThingCreatureBase* PCreature;              // +0x18
-};
 extern float g_LookAtTurnSpeed;            // 0x0138CBA8 (the look turn speed shared with GoToLibrary)
 extern bool g_LeaderboardInUse;                 // 0x013BB6B0
 // The approach distance is TU-local: the only reference to 0x013BB6AC in the whole executable is this function's
@@ -78,54 +70,34 @@ extern bool g_LeaderboardInUse;                 // 0x013BB6B0
 // vector copy; retail stores it after `push 1 ; mov ecx,esi`).
 static float g_LeaderboardApproachDistance;     // 0x013BB6AC
 
-class CBaseObject;
-struct CIntelligentPointerConstThing {          // CIntelligentPointer<const CThing>, 8 bytes
-    void* __vftable;
-    void* m_pItem;
-    CIntelligentPointerConstThing(CThingGameObject* thing);   // 0x0056C860
-    CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other);
-    ~CIntelligentPointerConstThing();
-};
-
-struct CAIStateGroupApprenticeHeroMethods : CAIStateGroup_ApprenticeHero {
-    CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
-    CThingCreatureBase* GetCreature() const { return Brain()->PCreature; }
-    CThingGameObject* FindDummy(const CCharString& name);   // 0x00929FC0
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float distance, bool* reached, long movement,
-        bool a, bool b, bool c, CThing* avoid, bool d, float speed);        // 0x0097E890
-    long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long flags, float turnSpeed);   // 0x0097D6F0
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
-    bool LookAtLeaderBoard();
-};
-
-bool CAIStateGroupApprenticeHeroMethods::LookAtLeaderBoard()
+bool CAIStateGroup_ApprenticeHero::LookAtLeaderBoard()
 {
     if (g_LeaderboardInUse)
         return true;
     CThingGameObject* board;
     {
         CCharString name("Leaderboard");
-        board = FindDummy(name);
+        board = GetObjectWithScriptName(name);
     }
     CThingGameObject* marker;
     {
         CCharString name("LeaderboardMarker");
-        marker = FindDummy(name);
+        marker = GetObjectWithScriptName(name);
     }
     if (!marker || !board)
         return true;
     C3DVector centre;
     float radius;
-    marker->m_pPhysics->GetBoundingInfo(&centre, &radius);
+    marker->GetPhysicsTC()->GetBoundingInfo(centre, radius);
     bool reached;
-    if (AIAction_MoveToPosProximity(1, centre, g_LeaderboardApproachDistance = 0.5f, &reached, 3, true, false, true, 0, true, 0.0f) != 2)
+    if (AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, centre, g_LeaderboardApproachDistance = 0.5f, reached, AI_MOVEMENT_WALKING, true, false, true, 0, true, 0.0f) != 2)
         return false;
-    if (AIAction_LookAtThing(1, board, 0xb, g_LookAtTurnSpeed) != 2)
+    if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, CIntelligentPointer<const CThing>(board), 0xb, g_LookAtTurnSpeed) != 2)
         return false;
     bool failed;
     {
         CCharString animation("ST_TRAINEE_LOOK_AT_MAP_TABLE");
-        failed = AIAction_PerformActionAndWait(&CCreatureAction_PlayCombatAnimation(GetCreature(), animation, true), false) != 2;
+        failed = AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), animation, true), false) != 2;
     }
     return failed ? false : true;
 }

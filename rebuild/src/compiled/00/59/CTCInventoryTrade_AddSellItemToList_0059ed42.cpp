@@ -1,5 +1,5 @@
 // CTCInventoryTrade::AddSellItemToList(long defIndex, long count, NUISystem::CList* list, NUISystem::CViewport* viewport, bool addToTop) -- build the sell-menu entry for one item (a branch entry when the shop holds a default stock item for the def, else a plain entry that is cleared), record it in ItemsToSell, wire its seven actions and add it to the list; returns whether it is a branch entry
-// Leaf: AddSellItemToList@CTCInventoryTrade
+// Leaf: ?AddSellItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
@@ -19,180 +19,57 @@
 //   is the flattened PDB layout (16-byte containers), so the class is modelled locally (landed ctor 0x0059EC48 offsets).
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+// NF51 (round 7): ported onto the shared headers with the same-TU AddWantedItemToList 0x0059CB90 (landed) as the model (were local
+// CTCShop / CActionParam / CActionParamLong / CActionParamString / CAction / CComponent / CList / CManager / CTCInventoryTrade /
+// map<CComponent*, pair<long,long> > models and a same-TU push_back stand-in body). The parameters are NUISystem::CActionParamSLONG
+// (vtable 0x012366F4, ??_7CActionParamSLONG@NUISystem@@6B@; was a local CActionParamLong); 0x005BC4C4 is
+// ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ (was GetTradingThing); the component slots are the header's: 67
+// AddActionOnSelected, 69 AddPreAction, 92 MakeUnavailable, CMenuEntry 151 AddUIActionParam / 152 AddActionOnUnselected / 153
+// AddActionOnVisible, CList 152 AddScrollingChildAndSetOffsets / 153 AddScrollingChildDynamicallyAndSetOffsets (were descriptive
+// AddSelectedAction / AddSecondaryAction / Clear / SetUserParam / AddFocusAction / AddUnfocusAction / AddEntry / AddEntryAtTop); ItemsToSell
+// is the header's map (+0x150).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #define FABLE_RETAIL_CCHARSTRING
-#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_BUILDINGTHING
+#define FABLE_RETAIL_CTCINVENTORYTRADE
+#define FABLE_RETAIL_CTCINVENTORYTRADE_WANTEDLIST
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CTCSHOP_VALIDSTOCK
+#define FABLE_RETAIL_CMENUENTRY_ACTIONPARAMS
+#define FABLE_RETAIL_CMENUENTRY_UNSELECTED_VISIBLE
+#define FABLE_RETAIL_CACTIONPARAMSLONG
+#define FABLE_RETAIL_CCLICKABLE_SHARED_ACTION
+#include "engine/ETCInterfaceType.h"
 #include "engine/CThing.h"
-
-#include "engine/CVectorMap.h"
-class CTCBase;
-
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CTCShop { public:                                        // interface type 0x53
-    bool IsValidStockItem(long defIndex) const;            // 0x007723D0
-};
-namespace NUISystem {
-class CActionParam { public:
-    virtual void v00();
-    long Type;                                          // +0x04
-    CActionParam(long type) : Type(type) {}
-};
-struct CActionParamLong : CActionParam {                // vtable 0x012366F4
-    long Value;                                         // +0x08
-    CActionParamLong(long value) : CActionParam(3), Value(value) {}
-};
-class CActionParamString : public CActionParam { public:
-    CWideString Value;                                  // +0x08
-    CActionParamString(CWideString& text);              // 0x0054DAE0
-};
-struct CActionParamList {
-    void* _M_node;
-    void push_back(CActionParam* const& value);         // 0x0042B646
-};
-}
-void InsertParamNode(void* node, NUISystem::CActionParam* value);
-#pragma auto_inline(off)
-__declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CActionParam* const& value)
-{
-    InsertParamNode(_M_node, value);
-}
-#pragma auto_inline(on)
-#include "engine/CCountedPointer.h"
-namespace NUISystem {
-class CAction { public:
-    long             ActionType;
-    CActionParamList UIActionParams;
-    void*            ThingActionParams;
-    bool             Valid;
-    CAction();                                          // 0x0042BE50
-    void AddParam(CActionParam* param, CCountedPointer<CAction>& self);   // 0x0053FDE0
-};
-struct CComponentBase {
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
-    virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
-    virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034();
-    virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
-    virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049();
-    virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054();
-    virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
-    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064();
-    virtual void v065(); virtual void v066();
-    virtual void AddSelectedAction(const CCountedPointer<CAction>& action);   // slot 67 (+0x10C)
-    virtual void v068();
-    virtual void AddSecondaryAction(const CCountedPointer<CAction>& action);  // slot 69 (+0x114)
-    virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
-    virtual void v075(); virtual void v076(); virtual void v077(); virtual void v078(); virtual void v079();
-    virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084();
-    virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089();
-    virtual void v090(); virtual void v091();
-    virtual void Clear();                                                      // slot 92 (+0x170)
-    virtual void v093(); virtual void v094();
-    virtual void v095(); virtual void v096(); virtual void v097(); virtual void v098(); virtual void v099();
-    virtual void v100(); virtual void v101(); virtual void v102(); virtual void v103(); virtual void v104();
-    virtual void v105(); virtual void v106(); virtual void v107(); virtual void v108(); virtual void v109();
-    virtual void v110(); virtual void v111(); virtual void v112(); virtual void v113(); virtual void v114();
-    virtual void v115(); virtual void v116(); virtual void v117(); virtual void v118(); virtual void v119();
-    virtual void v120(); virtual void v121(); virtual void v122(); virtual void v123(); virtual void v124();
-    virtual void v125(); virtual void v126(); virtual void v127(); virtual void v128(); virtual void v129();
-    virtual void v130(); virtual void v131(); virtual void v132(); virtual void v133(); virtual void v134();
-    virtual void v135(); virtual void v136(); virtual void v137(); virtual void v138(); virtual void v139();
-    virtual void v140(); virtual void v141(); virtual void v142(); virtual void v143(); virtual void v144();
-    virtual void v145(); virtual void v146(); virtual void v147(); virtual void v148(); virtual void v149();
-    virtual void v150();
-    virtual void SetUserParam(CActionParam* param);                            // slot 151 (+0x25C)
-    virtual void AddFocusAction(const CCountedPointer<CAction>& action);      // slot 152 (+0x260)
-    virtual void AddUnfocusAction(const CCountedPointer<CAction>& action);    // slot 153 (+0x264)
-    unsigned char _pad04[0x18 - 0x04];
-};
-class CComponent : public CComponentBase, public CActionParam { public:};
-class CViewport : public CComponent { public:};
-class CList { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
-    virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
-    virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034();
-    virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
-    virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049();
-    virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054();
-    virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
-    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064();
-    virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
-    virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
-    virtual void v075(); virtual void v076(); virtual void v077(); virtual void v078(); virtual void v079();
-    virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084();
-    virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089();
-    virtual void v090(); virtual void v091(); virtual void v092(); virtual void v093(); virtual void v094();
-    virtual void v095(); virtual void v096(); virtual void v097(); virtual void v098(); virtual void v099();
-    virtual void v100(); virtual void v101(); virtual void v102(); virtual void v103(); virtual void v104();
-    virtual void v105(); virtual void v106(); virtual void v107(); virtual void v108(); virtual void v109();
-    virtual void v110(); virtual void v111(); virtual void v112(); virtual void v113(); virtual void v114();
-    virtual void v115(); virtual void v116(); virtual void v117(); virtual void v118(); virtual void v119();
-    virtual void v120(); virtual void v121(); virtual void v122(); virtual void v123(); virtual void v124();
-    virtual void v125(); virtual void v126(); virtual void v127(); virtual void v128(); virtual void v129();
-    virtual void v130(); virtual void v131(); virtual void v132(); virtual void v133(); virtual void v134();
-    virtual void v135(); virtual void v136(); virtual void v137(); virtual void v138(); virtual void v139();
-    virtual void v140(); virtual void v141(); virtual void v142(); virtual void v143(); virtual void v144();
-    virtual void v145(); virtual void v146(); virtual void v147(); virtual void v148(); virtual void v149();
-    virtual void v150(); virtual void v151();
-    virtual void AddEntry(const CCountedPointer<CComponent>& entry);         // slot 152 (+0x260)
-    virtual void AddEntryAtTop(const CCountedPointer<CComponent>& entry);    // slot 153 (+0x264)
-};
-class CManager { public:
-    CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
-                                         float c, CCharString d, float e, CCharString button);   // 0x00428494
-    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
-};
-}
+#include "engine/CTCInventoryTrade.h"
+#include "engine/CTCShop.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/NUISystem_CList.h"
+#include "engine/NUISystem_CViewport.h"
+#include "engine/NUISystem_CMenuEntry.h"
+#include "engine/NUISystem_CAction.h"
+#include "engine/NUISystem_CActionParamSLONG.h"
+#include "engine/NUISystem_CActionParamString.h"
 using namespace NUISystem;
-struct SItemAmount {                                    // pair<long, long>: def index and count
-    long first;
-    long second;
-    SItemAmount(long a, long b) : first(a), second(b) {}
-};
-struct SSellRecord {                                    // pair<CComponent* const, pair<long, long> >
-    CComponent* first;
-    SItemAmount second;
-    SSellRecord(CComponent* a, const SItemAmount& b) : first(a), second(b) {}
-};
-struct CComponentPairMap {                              // map<CComponent*, pair<long, long> > (12 bytes)
-    struct iterator { void* _M_node; };
-    struct insert_result {                              // pair<iterator, bool>
-        iterator first;
-        bool     second;
-        insert_result(const iterator& a, bool b) : first(a), second(b) {}
-    };
-    void*         _M_header;
-    unsigned long _M_node_count;
-    long          _M_key_compare;
-    insert_result insert(const SSellRecord& value);     // 0x005B2872
-};
-class CTCInventoryTrade { public:
-    unsigned char     _pad000[0x150];
-    CComponentPairMap ItemsToSell;                      // +0x150
-    CThing* GetTradingThing();                          // 0x005BC4C4 (CTCInventoryBase)
-    bool AddSellItemToList(long defIndex, long count, CList* list, CViewport* viewport, bool addToTop);
-};
+
 bool CTCInventoryTrade::AddSellItemToList(long defIndex, long count, CList* list, CViewport* viewport, bool addToTop)
 {
     bool isBranch = true;
     CManager* fe = CManager::GetInstance();
     CCountedPointer<CComponent> entry;
     CTCShop* shop = 0;
-    GetTradingThing()->GetTC(TCI_SHOP, &shop);
+    GetBuildingThing()->GetTC(TCI_SHOP, &shop);
     if (shop->IsValidStockItem(defIndex)) {
         entry.Reset(fe->CreateMenuEntryComponent(L"INVALID NAME", 0.0f, 1.0f, "UI_WEAPON_MENU_ENTRY_BRANCH_TEMPLATE_NEW",
                                                  0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
@@ -200,50 +77,50 @@ bool CTCInventoryTrade::AddSellItemToList(long defIndex, long count, CList* list
         isBranch = false;
         entry.Reset(fe->CreateMenuEntryComponent(L"INVALID NAME", 0.0f, 1.0f, "UI_WEAPON_MENU_ENTRY_TEMPLATE_NEW",
                                                  0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
-        entry->Clear();
+        entry->MakeUnavailable();
     }
-    ItemsToSell.insert(SSellRecord(entry.Data, SItemAmount(defIndex, count)));
-    CComponent* comp = entry.Data;
-    CCountedPointer<CAction> select(new CAction);
-    select->ActionType = 0x7d0;
-    select->UIActionParams.push_back(new CActionParamLong(defIndex));
-    select->AddParam(entry.Data, select);
+    ItemsToSell.insert(std::map<CComponent*, std::pair<long, long> >::value_type(entry.Get(), std::pair<long, long>(defIndex, count)));
+    CMenuEntry* menuEntry = static_cast<CMenuEntry*>(entry.Get());
+    CCountedPointer<CAction> addModel(new CAction);
+    addModel->ActionType = UI_ACTION_ADD_MESH_CHILD;
+    addModel->UIActionParams.push_back(new CActionParamSLONG(defIndex));
+    addModel->AddParam(entry.Get(), addModel);
     CWideString model(L"UI_ITEM_MODEL_TEMPLATE_NEW");
-    select->UIActionParams.push_back(new CActionParamString(model));
-    entry->AddSelectedAction(select);
-    CCountedPointer<CAction> focus(new CAction);
-    focus->ActionType = 0x7df;
-    focus->AddParam(entry.Data, focus);
-    comp->AddFocusAction(focus);
-    CCountedPointer<CAction> view(new CAction);
-    view->ActionType = 0x7d7;
-    view->UIActionParams.push_back(new CActionParamLong(defIndex));
-    view->AddParam(viewport, view);
-    view->AddParam(entry.Data, view);
-    entry->AddSelectedAction(view);
-    CCountedPointer<CAction> focusView(new CAction);
-    focusView->ActionType = 0x7e3;
-    focusView->AddParam(entry.Data, focusView);
-    comp->AddFocusAction(focusView);
-    CCountedPointer<CAction> sell(new CAction);
-    sell->ActionType = 0x7d8;
-    sell->UIActionParams.push_back(new CActionParamLong(defIndex));
-    sell->AddParam(entry.Data, sell);
-    entry->AddSecondaryAction(sell);
-    CCountedPointer<CAction> focusSell(new CAction);
-    focusSell->ActionType = 0x7e4;
-    focusSell->AddParam(entry.Data, focusSell);
-    comp->AddFocusAction(focusSell);
-    CCountedPointer<CAction> unfocus(new CAction);
-    unfocus->ActionType = 0x7d6;
-    unfocus->UIActionParams.push_back(new CActionParamLong(defIndex));
-    unfocus->AddParam(entry.Data, unfocus);
-    unfocus->UIActionParams.push_back(new CActionParamLong(count));
-    comp->AddUnfocusAction(unfocus);
-    comp->SetUserParam(entry.Data);
+    addModel->UIActionParams.push_back(new CActionParamString(model));
+    entry->AddActionOnSelected(addModel);
+    CCountedPointer<CAction> removeModel(new CAction);
+    removeModel->ActionType = UI_ACTION_REMOVE_MESH_CHILD;
+    removeModel->AddParam(entry.Get(), removeModel);
+    menuEntry->AddActionOnUnselected(removeModel);
+    CCountedPointer<CAction> loadDesc(new CAction);
+    loadDesc->ActionType = UI_ACTION_LOAD_SELL_ITEM_DESC;
+    loadDesc->UIActionParams.push_back(new CActionParamSLONG(defIndex));
+    loadDesc->AddParam(viewport, loadDesc);
+    loadDesc->AddParam(entry.Get(), loadDesc);
+    entry->AddActionOnSelected(loadDesc);
+    CCountedPointer<CAction> unloadDesc(new CAction);
+    unloadDesc->ActionType = UI_ACTION_UNLOAD_SELL_ITEM_DESC;
+    unloadDesc->AddParam(entry.Get(), unloadDesc);
+    menuEntry->AddActionOnUnselected(unloadDesc);
+    CCountedPointer<CAction> loadMenu(new CAction);
+    loadMenu->ActionType = UI_ACTION_LOAD_SELL_ACTION_MENU;
+    loadMenu->UIActionParams.push_back(new CActionParamSLONG(defIndex));
+    loadMenu->AddParam(entry.Get(), loadMenu);
+    entry->AddPreAction(loadMenu);
+    CCountedPointer<CAction> unloadMenu(new CAction);
+    unloadMenu->ActionType = UI_ACTION_UNLOAD_SELL_ACTION_MENU;
+    unloadMenu->AddParam(entry.Get(), unloadMenu);
+    menuEntry->AddActionOnUnselected(unloadMenu);
+    CCountedPointer<CAction> loadName(new CAction);
+    loadName->ActionType = UI_ACTION_LOAD_ITEM_MENU_ENTRY_NAME;
+    loadName->UIActionParams.push_back(new CActionParamSLONG(defIndex));
+    loadName->AddParam(entry.Get(), loadName);
+    loadName->UIActionParams.push_back(new CActionParamSLONG(count));
+    menuEntry->AddActionOnVisible(loadName);
+    menuEntry->AddUIActionParam(entry.Get());
     if (addToTop)
-        list->AddEntryAtTop(entry);
+        list->AddScrollingChildDynamicallyAndSetOffsets(entry);
     else
-        list->AddEntry(entry);
+        list->AddScrollingChildAndSetOffsets(entry);
     return isBranch;
 }

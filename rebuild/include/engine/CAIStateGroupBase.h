@@ -97,6 +97,12 @@ protected:
         EMovementType movement, bool, bool, bool, const CThing* thing, bool, float);   // 0x0097E890
 #endif
     EAIActionReturn AIAction_DoNothing();                                // 0x0097E200
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MINIONIDLE
+    // NF51 opt-in (2026-11-17, rows 0x0090BED0 / 0x0090F320 / 0x0092C070): Ego_r.pdb 0x0084AC50 / FableWin.pdb 0x02892B60
+    // ?AIAction_MinionIdle@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ (protected; donor order AIAction_MinionWander 0x0084AAA0 then
+    // AIAction_MinionIdle 0x0084AC50 = retail 0x0097F870 / 0x0097FA00, the catalog label), out of line. Declaration only.
+    EAIActionReturn AIAction_MinionIdle();                               // 0x0097FA00
+#endif
 #if defined(FABLE_RETAIL_CAISTATEGROUPBASE_FILTER) || defined(FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD)
 public:
     // Opt-in (chunk 2029, row 0x00915B60 CAIStateGroup_MoveGoodsBase::PlaceGoods; wf11, row 0x009810B0): the nested filter class of Ego_r.pdb /
@@ -122,6 +128,24 @@ protected:
 protected:
     EAIActionReturn AIAction_MoveToPreCalcRoute(const CThing& thing, bool& reached, EMovementType movement, const CAIFilterBase& filter,
         bool b);                                                         // 0x0097F690
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PRECALCROUTEPROXIMITY
+    // NF51 opt-in (2026-11-17, row 0x0097F780): Ego_r.pdb ?SetUpPreCalcNav@CAIStateGroupBase@@IAE?AVC3DVector@@ABVCThing@@@Z (0x0097F5B0)
+    // and ?AIAction_MoveToPreCalcRouteProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@MABVCThing@@AA_NW4EMovementType@@ABVCAIFilterBase@1@_N@Z
+    // (0x0097F780), both protected and out of line. Declarations only; needs FABLE_RETAIL_CAISTATEGROUPBASE_FILTER (the nested filter).
+protected:
+    class C3DVector SetUpPreCalcNav(const CThing& thing);               // 0x0097F5B0
+    EAIActionReturn AIAction_MoveToPreCalcRouteProximity(float proximity, const CThing& thing, bool& reached, EMovementType movement,
+        const CAIFilterBase& filter, bool b);                            // 0x0097F780
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSSIBLYBLOCKED
+    // NF51 opt-in (2026-11-17, row 0x00980770): Ego_r.pdb
+    // ?AIAction_MoveToPossiblyBlockedObjectAndFace@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@V?$CIntelligentPointer@VCThing@@@@AAJMMABVCAIFilterBase@1@PBVCThing@@3M@Z
+    // (protected, out of line, `ret 24h`). Declaration only; needs FABLE_RETAIL_CAISTATEGROUPBASE_FILTER (the nested filter) and
+    // FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS (the CIntelligentPointer forward template).
+protected:
+    EAIActionReturn AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligentPointer<CThing> thing, long& index, float proximity,
+        float seconds, const CAIFilterBase& filter, const CThing* route, const CThing* avoid, float speed);   // 0x00980770
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MINIONWANDER
     // Opt-in (chunk 1024, row 0x00967D40 CAIStateGroup_TavernServer::Update): Ego_r.pdb / FableWin.pdb

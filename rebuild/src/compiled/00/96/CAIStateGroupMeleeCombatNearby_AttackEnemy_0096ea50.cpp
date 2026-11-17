@@ -58,35 +58,18 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
-protected:
-    const CWorld& PeekWorld() const;    // 0x008FCFA0
-public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void Cleanup();                     // slot 9  (+0x24)
-    virtual void OnReplace();                   // slot 10 (+0x28)
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void v13();
-    virtual bool IsStillRunnable(bool checkEnemy);   // slot 14 (+0x38)
-    virtual void v15(); virtual void v16(); virtual void v17();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-protected:
-    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
-public:
-public:
-    void Terminate();   // 0x008FCF40
-protected:
-    bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h and the AI enum from
+// engine/fable_ai_action_enums.h (were a local CAIStateGroupBase model, a derived-class AIAction_PumpCombatActions and a local
+// EAIActionReturn with made-up enumerators): the callee 0x0097D980 is the protected
+// ?AIAction_PumpCombatActions@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ (Ego_r.pdb 0x00848740; header _MEMBERS + _PUMPCOMBATACTIONS);
+// GetWorld 0x008FCFC0 is the header's protected ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (_GOTOBED_WORLD), IsStopping / Terminate
+// the base's; the slot-14 IsStillRunnable(bool) call (+0x38) is declared on the derived class, first after the base's slots 0..13.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PUMPCOMBATACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 
 // Retail builds message filters as an expression chain: `IsOfType(n) && HasExtraData() && IsForThing(t)`.
 // Each `operator&&` returns a CFilter_Bind2/CFilter_Bind3 holding POINTERS to its operands (the filter
@@ -140,14 +123,9 @@ class CWorld { public:
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
 };
 
-struct CAIStateGroupBaseW : CAIStateGroupBase {
-};
-
 class CThingCreatureBase { public:
     bool IsInMeleeAsAttacker() const;         // 0x00662410 (Ego_r/FableWin ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ; manifest label C3DAnimationBlendState::AddCombinationBlend propagated)
 };
-
-enum EAIActionReturn { AI_ACTION_RETURN_NONE, AI_ACTION_RETURN_1, AI_ACTION_RETURN_SUCCEEDED, AI_ACTION_RETURN_3, AI_ACTION_RETURN_4 };
 
 class CCombatManager { public:
     void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);   // 0x006EA450 (NF34: Ego_r + FableWin ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z)
@@ -157,7 +135,7 @@ class CCombatManager { public:
 struct CAIStateGroup_MeleeCombatNearby : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
     bool Archer;                                // +0x1c (engine header)
-    EAIActionReturn AIAction_PumpCombatActions();   // 0x0097D980
+    virtual bool IsStillRunnable(bool checkEnemy);   // slot 14 (+0x38), first after the base's slots 0..13
     bool IsEnemyCreatureNearCombatPosition();   // 0x0096E830
     void AttackEnemy();
     virtual void Cleanup();
@@ -172,7 +150,7 @@ void CAIStateGroup_MeleeCombatNearby::AttackEnemy()
     }
     do {
         EAIActionReturn result = AIAction_PumpCombatActions();
-        if (!IS_THING_ALIVE(PEnemy) || (result != AI_ACTION_RETURN_SUCCEEDED && result != AI_ACTION_RETURN_4))
+        if (!IS_THING_ALIVE(PEnemy) || (result != AI_ACTION_FINISHED && result != AI_ACTION_IN_PROGRESS))
             Terminate();
         if (IsStopping())
             return;

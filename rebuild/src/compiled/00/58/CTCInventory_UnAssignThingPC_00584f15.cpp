@@ -22,59 +22,29 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1); // 0x0099EBF0
-    CCharString(const CCharString& other);           // (declared: by-value arguments are built in place)
-    ~CCharString();                                  // 0x0099EAE0
-};
-
-class CRGBColour { public:
-    unsigned char B, G, R, A;
-    CRGBColour() {}
-};
-
-namespace NUISystem { class CComponent; }
-struct SComponentListNode;
-struct CComponentList {                              // STLport list<NUISystem::CComponent*>: the node pointer only
-    SComponentListNode* m_pNode;
-    ~CComponentList();                               // 0x0042ABCA
-};
-struct SActionParamPair {                            // pair<unsigned long, list<NUISystem::CComponent*> >
-    unsigned long  first;                            // +0x00
-    CComponentList second;                           // +0x04
-    SActionParamPair();                              // 0x0042BED4
-    SActionParamPair(const SActionParamPair& other); // 0x0042CD84
-};
-
+// NF51 (round 7): the string, colour, counted pointer, UI component, deletion and manager come from the shared headers (were local
+// CCharString / CRGBColour / CComponentList / SActionParamPair / NUISystem::CComponent / NUISystem::CManager models). The 8-byte
+// "pair<unsigned long, list<CComponent*> >" is NUISystem::CDeletion {Method, AssociatedParents} (engine/NUISystem_CDeletion.h): it
+// goes to CComponent slot 62 (+0xF8) SetDeletion(NUISystem::CDeletion) by value (engine/NUISystem_CComponent.h), so 0x0042BED4 /
+// 0x0042CD84 are ??0CDeletion@NUISystem@@QAE@XZ / ??0CDeletion@NUISystem@@QAE@ABV01@@Z (FABLE_RETAIL_CDELETION) and Method 1 =
+// UI_DELETE_THIS_INSTANCE; slot 3 is FindChild(CCharString), slots 13 / 14 SetColour / GetColour, slot 60
+// AddChildDynamically(CCountedPointer<CComponent>&) (was a made-up SetContents_slot60); ~list 0x0042ABCA is STLport's body kept
+// out of line (FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CDELETION
+#define FABLE_RETAIL_CMANAGER
+#include "fable_string.h"
+#include "engine/CRGBColour.h"
 #include "engine/CCountedPointer.h"
-
-namespace NUISystem {
-class CComponent { public:
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual CComponent* FindChild(CCharString name); // slot 3 (+0x0C)
-    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
-    virtual void SetColour(const CRGBColour& colour);   // slot 13 (+0x34)
-    virtual CRGBColour GetColour() const;            // slot 14 (+0x38)
-    virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
-    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
-    virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34();
-    virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
-    virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44();
-    virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49();
-    virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54();
-    virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59();
-    virtual void SetContents_slot60(const CCountedPointer<CComponent>& child);   // slot 60 (+0xF0)
-    virtual void v61();
-    virtual void SetActionParameter_slot62(SActionParamPair parameter);   // slot 62 (+0xF8)
-};
-class CManager { public:
-    CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
-};
-}
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "engine/NUISystem_CComponent.h"
+#include "engine/NUISystem_CDeletion.h"
+#include "engine/NUISystem_CManager.h"
 
 struct CLongVector {                                 // retail std::vector<long> {first, last, end}
     long* _M_start;
@@ -95,14 +65,14 @@ void CTCInventory::UnAssignThingPC(unsigned long slot, NUISystem::CComponent* co
     QuickAccessItems[slot] = 0;
     NUISystem::CComponent* icon = container->FindChild(CCharString("PC_EXPRESSION_ITEM_ASSIGNMENT_ICON_INSIDE_CONTAINER", -1));
     if (icon) {
-        SActionParamPair parameter;
-        parameter.first = 1;
-        icon->SetActionParameter_slot62(parameter);
+        NUISystem::CDeletion deletion;
+        deletion.Method = NUISystem::CDeletion::UI_DELETE_THIS_INSTANCE;
+        icon->SetDeletion(deletion);
         CRGBColour colour = icon->GetColour();
         colour.A = 0;
         icon->SetColour(colour);
     }
     NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     CCountedPointer<NUISystem::CComponent> item(manager->CreateComponent("PC_EXPRESSION_ITEM_INSIDE_CONTAINER", false));
-    container->SetContents_slot60(item);
+    container->AddChildDynamically(item);
 }

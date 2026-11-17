@@ -47,6 +47,16 @@ protected:
     // copy 0x02C6B220). Declaration only: no layout change.
     bool GoToLibrary();                                                  // 0x0092ACE0
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO_LOOKATLEADERBOARD
+    // NF51 opt-in (2026-11-17, row 0x0092AE70): Ego_r.pdb / FableWin.pdb ?LookAtLeaderBoard@CAIStateGroup_ApprenticeHero@@IAE_NXZ
+    // (protected). Declaration only: no layout change.
+    bool LookAtLeaderBoard();                                            // 0x0092AE70
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO_LOOKATMAP
+    // NF51 opt-in (2026-11-17, row 0x0092AFE0): Ego_r.pdb / FableWin.pdb ?LookAtMap@CAIStateGroup_ApprenticeHero@@IAE_NXZ
+    // (protected). Declaration only: no layout change.
+    bool LookAtMap();                                                    // 0x0092AFE0
+#endif
 public:
     long              NextFramePractice;                                 // +0x14
     CThingGameObject* PDummy;                                            // +0x18

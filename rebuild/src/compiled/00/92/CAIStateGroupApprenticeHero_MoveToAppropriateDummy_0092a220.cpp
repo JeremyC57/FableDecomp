@@ -11,18 +11,24 @@
 //          block (address re-taken, destroyed before the null test); do/while(result == 4) keeps the loop unrotated; a
 //          named `action` copy read before the dead lookup puts Action in ebx and result in ebp (proximity reloaded).
 #include "fable_compiler.h"
-#define CAIStateGroup_ApprenticeHero CAIStateGroup_ApprenticeHeroLayout
+// NF51 (round 7): the AI state-group base and the apprentice class come from the shared headers (were a local CAIStateGroupBase
+// model plus a layout-renamed include of engine/CAIStateGroup_ApprenticeHero.h, and a local CCharString): the retail branch
+// FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO of engine/CAIStateGroup_ApprenticeHero.h over engine/CAIStateGroupBase.h. The callee
+// 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY) with the Ego_r enums of engine/fable_ai_action_enums.h;
+// GetPWorldSeed 0x008FCFD0 / IsStopping 0x008FD010 / Terminate 0x008FCF40 are the base's members, and the finder 0x00929FC0 is
+// ?GetObjectWithScriptName@CAIStateGroup_ApprenticeHero@@IAEPAVCThingGameObject@@ABVCCharString@@@Z (_SCRIPTNAME, Ego_r.pdb).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO
+#define FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO_SCRIPTNAME
+#include "engine/fable_ai_action_enums.h"
+#include "fable_string.h"
 #include "engine/CAIStateGroup_ApprenticeHero.h"
-#undef CAIStateGroup_ApprenticeHero
-
-class CAIStateGroupBase
-{
-public:
-    void Terminate();   // 0x008FCF40
-};
-class CAIStateGroup_ApprenticeHero : public CAIStateGroupBase, public CAIStateGroup_ApprenticeHeroLayout
-{
-};
 #include "engine/C3DVector.h"
 class CTCBase;
 struct CInterfaceMap {
@@ -64,11 +70,6 @@ class CThing { public:
 };
 class CThingGameObject : public CThing { };
 struct CTCInformation;                          // interface 0xaa
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
@@ -78,11 +79,6 @@ extern bool g_dummyTypeInUse0;                  // 0x013BAE18
 extern bool g_dummyTypeInUse1;                  // 0x013BAE19
 extern bool g_dummyTypeInUse2;                  // 0x013BAE1A
 struct CAIStateGroupApprenticeHeroMethods : CAIStateGroup_ApprenticeHero {
-    CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    bool IsStopping();                          // 0x008FD010
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float proximity, bool* reached, long movement,
-        bool a, bool b, bool c, CThing* target, bool d, float e);   // 0x0097E890
     static bool IsDummyTypeLegal(long dummyType)
     {
         switch (dummyType) {
@@ -92,7 +88,6 @@ struct CAIStateGroupApprenticeHeroMethods : CAIStateGroup_ApprenticeHero {
         }
         return false;
     }
-    CThingGameObject* FindDummy(const CCharString& name);   // 0x00929FC0
     bool MoveToAppropriateDummy();
 };
 bool CAIStateGroupApprenticeHeroMethods::MoveToAppropriateDummy()
@@ -108,7 +103,7 @@ bool CAIStateGroupApprenticeHeroMethods::MoveToAppropriateDummy()
         CThingGameObject* target;
         {
             CCharString name("RangedPractice");
-            target = FindDummy(name);
+            target = GetObjectWithScriptName(name);
         }
         if (!target)
             return false;
@@ -126,14 +121,14 @@ bool CAIStateGroupApprenticeHeroMethods::MoveToAppropriateDummy()
     long result;
     do {
         bool reached;
-        result = AIAction_MoveToPosProximity(2, position, proximity, &reached, 3, true, false, true, 0, true, 0.0f);
+        result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, position, proximity, reached, AI_MOVEMENT_WALKING, true, false, true, 0, true, 0.0f);
         if (IsStopping()) {
             Terminate();
             return false;
         }
         long action = Action;
         CTCInformation* information;
-        Brain()->PCreature->GetInterface(&information, 0xaa);
+        PBrain->PCreature->GetInterface(&information, 0xaa);
         if (!IsDummyTypeLegal(action))
             return false;
     } while (result == 4);

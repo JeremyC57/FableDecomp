@@ -21,16 +21,24 @@ class CManager { public:
     void ClearErrorMessage();                                // 0x0041CE6A
 };
 }
-struct CFrontEndManager {
-    bool IsBlockingControllerMessage();                      // 0x00595A03
-    void Update(float dt);                                   // 0x00599E3F
-};
+// NF51 (round 7): the front-end manager is the shared NUISystem::CFrontEndManager (engine/CFrontEndManager.h, retail branch; was a
+// local global-namespace CFrontEndManager with a made-up IsBlockingControllerMessage): 0x00595A03 is Ego_r.pdb
+// ?CanStartAttractMode@CFrontEndManager@NUISystem@@QAE_NXZ (_RUN) and 0x00599E3F ?Update@CFrontEndManager@NUISystem@@QAEXM@Z (overlay
+// opt-in FABLE_RETAIL_CFRONTENDMANAGER_UPDATE).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CFRONTENDMANAGER
+#define FABLE_RETAIL_CFRONTENDMANAGER_RUN
+#define FABLE_RETAIL_CFRONTENDMANAGER_UPDATE
+#include "fable_string.h"
+#include "engine/CFrontEndManager.h"
 class CNewFrontendGameComponent { public:
     void*             __vftable;                             // +0x00
     unsigned char     _pad04[0xb0];
-    CFrontEndManager* m_pFrontEndManager;                    // +0xb4
+    NUISystem::CFrontEndManager* m_pFrontEndManager;         // +0xb4
     unsigned char     _padB8[0x08];
     double            m_lastUpdateTime;                      // +0xc0
+private:                                                     // Ego_r.pdb: both private (AAE)
     bool IsControllerDisconnected();                         // 0x0042DC63
     void Update();
 };
@@ -40,7 +48,7 @@ void CNewFrontendGameComponent::Update()
     float dt = (float)(GFGetTime() - m_lastUpdateTime);
     if (dt > 0.1f)
         dt = 0.1f;
-    if (IsControllerDisconnected() && !m_pFrontEndManager->IsBlockingControllerMessage()) {
+    if (IsControllerDisconnected() && !m_pFrontEndManager->CanStartAttractMode()) {
         if (!NUISystem::CManager::GetInstance()->m_errorMessageShowing)
             NUISystem::CManager::ShowErrorMessage(NUISystem::ERRORMESSAGE_CONTROLLER_DISCONNECTED);
     } else if (NUISystem::CManager::GetInstance()->m_errorMessageShowing) {

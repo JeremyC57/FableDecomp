@@ -135,6 +135,13 @@ public:
     void GetPrioritisedExpressionDefs(std::vector<long>& defs) const;                                            // 0x005EED8C
     void SetExpressionToButton(long expression, long button);                                                    // 0x005F66D9
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_HUDLEVEL
+    // NF51 opt-in (2026-11-17, row 0x0064DB2B NPlayerGui::CDrawAbilityButtons::DrawAbilityList): FableWin.pdb
+    // ?GetHUDAssignedAbilityLevel@CTCInventoryAbilities@@QBEJXZ (public const; no Ego_r.pdb copy: inline in the release build). Retail
+    // 0x0064DB2B reads CurrentAssignedAbilityLevel +0x144 in place from outside the class (the member is private), so the body is
+    // that read.
+    long GetHUDAssignedAbilityLevel() const { return CurrentAssignedAbilityLevel; }
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ITEMLISTS
     // Opt-in (chunk 1008): the expression item-list builders, FableWin.pdb spellings (out of line in retail):
     // ?ConstructPCItemLists@CTCInventoryAbilities@@QAEXAAV?$vector@U?$pair@JJ@std@@...@std@@PAVCList@NUISystem@@PAVCComponent@5@

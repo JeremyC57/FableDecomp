@@ -33,30 +33,28 @@ class CAIBrain { public:
     CThingPos* PCreature;                       // +0x18
 };
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
-                                     bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
-    protected:
-    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);              // 0x0097D580
-    public:
-};
+// NF51 (round 7): the AI state-group base comes from the shared engine/CAIStateGroupBase.h (was a local CAIStateGroupBase model
+// with long / bool* / CThing* parameters): the callee 0x0097E890 is the protected
+// ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+// (Ego_r.pdb / FableWin.pdb; _MEMBERS + _AIACTIONS + _MOVETOPOSPROXIMITY + _MEALACTIONS for AIAction_LookAtPos 0x0097D580) with the
+// Ego_r enums of engine/fable_ai_action_enums.h. The same-TU stand-in body of the move (which places the uninitialised `reached` in
+// the dead radius argument slot) now defines the header member with its PDB signature.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
 long MoveSink_s7(const void* group, float x, float radius, long movementType);   // stand-in: the movement action's work
 #pragma auto_inline(off)
 // Same-TU stand-in for AIAction_MoveToPosProximity (0x0097E890): reads the position, writes the out flag, lets no
 // argument escape.
-__declspec(noinline) long CAIStateGroupBase::AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType, bool a, bool b, bool c, CThing* leader, bool d, float e)
+__declspec(noinline) EAIActionReturn CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat repeat, C3DVector pos, float radius, bool& reached, EMovementType movementType, bool a, bool b, bool c, const CThing* leader, bool d, float e)
 {
     long status = MoveSink_s7(this, pos.X, radius, movementType);
-    *reached = status == 2;
-    return status;
+    reached = status == 2;
+    return (EAIActionReturn)status;
 }
 #pragma auto_inline(on)
 
@@ -66,16 +64,16 @@ struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
 
 bool CAIStateGroup_WorkAtSchool::MoveAndFace(C3DVector pos, float radius, C3DVector facePos)
 {
-    long movementType = (pos - PBrain->PCreature->GetPos()).GetMagnitude() < 10.0f ? 3 : 5;
+    EMovementType movementType = (pos - PBrain->PCreature->GetPos()).GetMagnitude() < 10.0f ? AI_MOVEMENT_WALKING : AI_MOVEMENT_RUNNING;
     bool reached;
     long result;
     do {
-        result = AIAction_MoveToPosProximity(2, pos, radius, &reached, movementType, true, false, true, 0, true, 0.0f);
+        result = AIAction_MoveToPosProximity(ACTION_REPEAT_CALLBACK, pos, radius, reached, movementType, true, false, true, 0, true, 0.0f);
     } while (result == 4);
     if (result != 2)
         return false;
     do {
-        result = AIAction_LookAtPos((EAIActionRepeat)(2), facePos, 0x11, 0.0027777f);
+        result = AIAction_LookAtPos(ACTION_REPEAT_CALLBACK, facePos, 0x11, 0.0027777f);
     } while (result == 4);
     return result == 2 ? true : false;
 }
