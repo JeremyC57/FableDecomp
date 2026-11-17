@@ -51,6 +51,14 @@ public:
     unsigned char _pad_0x08[0x38 - 0x08];
     CCountedPointer<CBankFileAsyncData> PFileData;                                 // +0x38
 #endif
+#if defined(FABLE_RETAIL_NGAMETEXT_TEXTENTRY_SPEECH) && !defined(FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT)
+    // Opt-in (agentNF54, row 0x0065C781 CTCVillage::FrameUpdate): the speech members the row reads (Ego_r.pdb struct layout
+    // NGameText::CTextEntry: SpeechBank +28 (0x1C), Narrator +32, SoundName +36 (0x24), all CCharString; retail reads +0x1C and +0x24).
+    unsigned char _pad_0x08[0x1c - 0x08];
+    CCharString SpeechBank;                                                        // +0x1C
+    CCharString Narrator;                                                          // +0x20
+    CCharString SoundName;                                                         // +0x24
+#endif
 };
 #ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
 // Opt-in (row 0x009C9280): Ego_r.pdb CDataBankEntry (an empty tag, 1 byte) and CDataBankTextEntry (8 bytes: PText +0, NarratorIndex +4);

@@ -15,15 +15,23 @@
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
-    bool operator!=(const char* text) const;           // 0x0099E960
-    const char* GetString() const;                     // 0x00404310
-};
-CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
+// Name fix (agentNF54): the local CCharString / CTextBank / CGroupEntryRef / CMainGameComponent stand-ins replaced by the shared
+//   fable_string.h, engine/NGameText_CDataBank.h and engine/CMainGameComponent.h: 0x00404310 is ?GetCRC@CCharString@@QBEKXZ (Ego_r +
+//   FableWin; was the made-up GetString), whose CRC goes to ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z 0x009CC410 (Ego_r + FableWin; was the
+//   local CTextBank::LookupValue(const char*)); EntryExists 0x009CC190 and GetPTextEntry 0x009C9070 (was GetPGroupEntry) on the bank read
+//   through the inline CMainGameComponent::GetTextBank(); the entry's speech bank / sound name are CTextEntry::SpeechBank / SoundName.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_NGAMETEXT_TEXTENTRY_SPEECH
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT
+#include "fable_string.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/NGameText_CDataBank.h"
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -93,49 +101,6 @@ public:
 bool __fastcall IS_THING_ALIVE(CThingSoundEmitter* const& thing);   // 0x0065D55F
 #define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
 #include "engine/CASoundManager.h"
-struct CGroupEntryRef {                         // CDefPointer-like counted pointer to the text group entry
-    struct CRefCounted {
-        long m_count;
-        void DecRef() { --m_count; }
-        long GetRefCount() const { return m_count; }
-    };
-    struct CEntryBase {
-        virtual void v00();
-        virtual void Destroy();
-    };
-    struct CEntry : CEntryBase, CRefCounted {
-        FABLE_FORCEINLINE void ReleaseTemporary()
-        {
-            DecRef();
-            if (GetRefCount() == 0)
-                Destroy();
-        }
-        unsigned char _pad08[0x1c - 0x08];
-        CCharString BankName;                   // +0x1c
-        unsigned char _pad20[4];
-        CCharString SoundName;                  // +0x24
-    };
-    CEntry* Object;
-    FABLE_FORCEINLINE ~CGroupEntryRef()
-    {
-        if (Object)
-            Object->ReleaseTemporary();
-    }
-};
-struct CTextBank {
-    long LookupValue(const char* name);         // 0x009CC410
-    bool EntryExists(long id);                  // 0x009CC190
-    CGroupEntryRef GetPGroupEntry(long id, bool create);   // 0x009C9070
-};
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char _pad00[0x14];
-    CTextBank* PTextBank;                       // +0x14
-};
 extern bool g_RepopulateVillages;               // 0x013B86E9
 class CGameTimeManager { public:
     bool IsDay();                               // 0x006BB2C0
@@ -275,15 +240,15 @@ void CTCVillage::FrameUpdate()
         if (was != IsWorkTime())
             text = was ? PDef->CookStartText : PDef->CookEndText;
         if (text != "") {
-            CTextBank* bank = CMainGameComponent::Get()->PTextBank;
-            long id = bank->LookupValue(text.GetString());
-            bool exists = bank->EntryExists(id);
-            CGroupEntryRef::CEntry* entry = bank->GetPGroupEntry(id, false).Object;
+            const NGameText::CDataBank& bank = CMainGameComponent::Get()->GetTextBank();
+            unsigned long id = bank.FindIndexBySymbolCRC(text.GetCRC());
+            bool exists = bank.EntryExists(id);
+            const NGameText::CTextEntry* entry = bank.GetPTextEntry(id, false).operator->();
             if (entry || !exists) {
                 WasCurfewTime = IsCurfewTime();
                 WorkTimeAccordingToCrier = IsWorkTime();
                 if (entry) {
-                    CASoundBank* soundBank = PSoundManager->GetPSoundBank(entry->BankName);
+                    CASoundBank* soundBank = PSoundManager->GetPSoundBank(entry->SpeechBank);
                     if (soundBank) {
                         long sample = soundBank->GetSoundIndexFromSymbol("SND_" + entry->SoundName);
                         if (sample > 0) {

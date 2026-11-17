@@ -28,8 +28,15 @@ class CAnimFrameInfo{public:float Current,Last;
 };
 class CAnimInit{public:
  CAnimInit(){}
+#ifdef FABLE_RETAIL_CANIMINIT_CTOR_OUTOFLINE
+ // Nested opt-in (agentNF54, rows 0x005B33F4 / 0x00728FF0 / 0x00862780): the argument constructor (FableWin.pdb
+ // ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z) out of line, as retail's size-optimised TU emits it at 0x005B33F4 (Frame zeroed,
+ // then Init with the seven arguments re-pushed) and its callers call it. Declaration only; the body is that row's.
+ CAnimInit(unsigned char type,unsigned long typeFlags,long anim,EAnimUpdateMode updateMode,bool looping,unsigned long flags,long priority); // 0x005B33F4
+#else
  CAnimInit(unsigned char type,unsigned long typeFlags,long anim,EAnimUpdateMode updateMode,bool looping,unsigned long flags,long priority)
  {Init(type,typeFlags,anim,updateMode,looping,flags,priority);}
+#endif
  void Init(unsigned char type,unsigned long typeFlags,long anim,EAnimUpdateMode updateMode,bool looping,unsigned long flags,long priority); // 0x0070C050
  EAnimUpdateMode UpdateMode;unsigned char Type;bool Looping;long Anim;float Speed,Alpha,LastAlpha;CAnimFrameInfo Frame;unsigned long Flags,TypeFlags;long Priority;};
 #else

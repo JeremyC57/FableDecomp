@@ -34,10 +34,12 @@ class CAnimationEntry { public:
     long AnimIndex;                                     // +0x00
     unsigned long GetAnimateThingFlags() const;         // 0x005DC390
 };
-class CAnimInit { public:                                      // 0x2c bytes
-    unsigned char _body[0x2c];
-    CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x005B33F4
-};
+// Name fix (agentNF54, e50): the local CAnimInit model is gone; engine/CAnimInit.h (FABLE_RETAIL_CANIMINIT_CTORS + the NF54 overlay
+//   opt-in CTOR_OUTOFLINE) declares the argument constructor with its PDB signature (FableWin.pdb ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z,
+//   retail 0x005B33F4); the local model spelled ??0CAnimInit@@QAE@JJJJ_NKJ@Z.
+#define FABLE_RETAIL_CANIMINIT_CTORS
+#define FABLE_RETAIL_CANIMINIT_CTOR_OUTOFLINE
+#include "engine/CAnimInit.h"
 class CAnimSet;
 struct CCombinationAnim {
     unsigned char _pad00[0x51];
@@ -86,7 +88,7 @@ void CTCCreatureExpression::UpdateBlinking(CAnimateThing& animate, long)
         if (hasBlink) {
             const CAnimationEntry* entry = creature->GetRandomLoadedAnimFromName("ST_BLINK", false);
             if (entry) {
-                CAnimInit init(0xd, 0, entry->AnimIndex, 1, false, entry->GetAnimateThingFlags(), 0x65);
+                CAnimInit init(0xd, 0, entry->AnimIndex, ANIM_UPDATE_FROM_SPEED, false, entry->GetAnimateThingFlags(), 0x65);
                 animate.AddCombinationAnim(init, 0, 0, false, false);
                 Blinking = true;
             }

@@ -1,0 +1,96 @@
+addr       parity           behav  name
+00411060   RELOCATION_MATCH PASS   Transfer<CWideString>
+00458f89   RELOCATION_MATCH PASS   TransferBinaryIn
+00495830   WARN RELOC_NAME: ?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z -> 004091c0 labelled 'CUserProfileManager::LoadFileList'
+00495830   RELOCATION_MATCH PASS   Refresh
+004a21f0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004a21f0   WARN RELOC_NAME: ??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z -> 004ab640 labelled 'CPersistContext::Transfer<CWorld::ESaveType>'
+004a21f0   RELOCATION_MATCH PASS   LoadGameStateInternal
+004ab810   RELOCATION_MATCH PASS   Transfer<double>
+004fb470   MATCH            PASS   GetRegionCount
+005178a0   RELOCATION_MATCH PASS   push_back
+0057cdb5   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef
+0057cdb5   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+0057cdb5   WARN SHARED_HEADER_AVAILABLE CWorld
+0057cdb5   WARN RELOC_NAME: ??0CCrimeMap@@QAE@XZ -> 00581114 labelled 'CDisplayManager::CopyBackBufferToTexture'
+0057cdb5   WARN RELOC_NAME: ??0CMarriageList@@QAE@ABUCMarriageAllocator@@@Z -> 0057fda2 labelled 'CTCHeroStats_Constructor'
+0057cdb5   WARN RELOC_NAME: ?Reset@CMarriageList@@QAEXXZ -> 0057f58e labelled 'std::_List_base<CHeroMarriageInfo,std::allocator<CHeroMarriageInfo> >::clear'
+0057cdb5   RELOCATION_MATCH PASS   CTCHeroStats
+0059c447   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+0059c447   WARN RELOC_CONFLICT: ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z -> 005d97b0 here, 005d99d0 in landed 005c44fa
+0059c447   RELOCATION_MATCH PASS   GetTypeFromDefIndexPC
+005a8a5d   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005a8a5d   WARN SHARED_HEADER_AVAILABLE CThing
+005a8a5d   WARN SHARED_HEADER_AVAILABLE CPlayer
+005a8a5d   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005a8a5d   WARN SHARED_HEADER_AVAILABLE CManager
+005a8a5d   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+005a8a5d   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005a8a5d   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a8a5d   WARN RELOC_NAME: ?CanAddItem@CTCInventoryBase@@QBE_NJ@Z -> 005bf2ed labelled 'NInventory::CTCInventoryBase::IsSpaceInInventoryForItem'
+005a8a5d   RELOCATION_MATCH PASS   ConstructSpecialShopListPC
+005bc0d3   WARN RELOC_NAME: ??$__destroy_aux@PAVCEngineTextureMorph@@@std@@YIXPAVCEngineTextureMorph@@0ABU__false_type@0@@Z -> 005bbf80 labelled '_global::ForEachElem0x14__scalar_deleting_destruct_005bbf80'
+005bc0d3   RELOCATION_MATCH PASS   ~vector
+005c44fa   WARN SHARED_HEADER_AVAILABLE CThing
+005c44fa   WARN SHARED_HEADER_AVAILABLE CTCObjectAugmentations
+005c44fa   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005c44fa   WARN RELOC_NAME: ?OnShowEnded@CTCShowableItem@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+005c44fa   RELOCATION_MATCH PASS   AugmentWeapon
+005ed300   RELOCATION_MATCH PASS   operator=
+00709b10   WARN SHARED_HEADER_AVAILABLE C3DAnimationInterpolator
+00709b10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00709b10   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveAnimatingMesh
+00709b10   WARN RELOC_NAME: ??1CThemeChannelVector@@QAE@XZ -> 007099e0 labelled '_unattributed::Destroy_CRetailVector_007099e0'
+00709b10   RELOCATION_MATCH PASS   ~CEnginePrimitiveMorphedAnimatingMesh
+00728ff0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00728ff0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+00728ff0   WARN SHARED_HEADER_AVAILABLE CAnimateThing
+00728ff0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00728ff0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00728ff0   RELOCATION_MATCH PASS   UpdateBlinking
+007ce1f0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+007ce1f0   RELOCATION_MATCH PASS   __copy
+0080cc40   WARN SHARED_HEADER_AVAILABLE CTCDExplosion
+0080cc40   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+0080cc40   RELOCATION_MATCH PASS   SetSpecificThingsToHit
+008d3dd0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+008d3dd0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+008d3dd0   RELOCATION_MATCH PASS   MsgGetThingsKilled
+0095ab50   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0095ab50   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName
+0095ab50   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0095ab50   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095ab50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095ab50   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+0095ab50   RELOCATION_MATCH PASS   SetUpCirclePoints
+00977c40   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00977c40   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00977c40   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+00977c40   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00977c40   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00977c40   WARN RELOC_NAME: ?GetAllThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasTrackName@@AAUCThingPtrVector@@@Z -> 00978250 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasScriptName>'
+00977c40   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+00977c40   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NK@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+00977c40   RELOCATION_MATCH PASS   OnActivate
+
+WINS: 20
+  00411060 RELOCATION_MATCH CPersistContext::??$Transfer@VCWideString@@@CPersistContext@@QAEXPBDAAVCWideString@@@Z
+  00458f89 RELOCATION_MATCH CPersistTraits<CFloatRange>::?TransferBinaryIn@?$CPersistTraits@VCFloatRange@@@@QAEXAAVCMemoryDataInputStream@@AAVCFloatRange@@@Z
+  00495830 RELOCATION_MATCH CFrontendProfileList::?Refresh@CFrontendProfileList@@QAEXXZ
+  004a21f0 RELOCATION_MATCH CWorld::?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+  004ab810 RELOCATION_MATCH CPersistContext::??$Transfer@N@CPersistContext@@QAEXPBDAAN@Z
+  004fb470 MATCH CWorldMap::?GetRegionCount@CWorldMap@@QBEJXZ
+  005178a0 RELOCATION_MATCH std::vector<unsigned long>::?push_back@?$vector@KV?$allocator@K@std@@@std@@QAEXABK@Z
+  0057cdb5 RELOCATION_MATCH CTCHeroStats::??0CTCHeroStats@@QAE@AAVCThing@@@Z
+  0059c447 RELOCATION_MATCH CTCInventoryTrade::GetTypeFromDefIndexPC
+  005a8a5d RELOCATION_MATCH CTCInventoryTrade::ConstructSpecialShopListPC
+  005bc0d3 RELOCATION_MATCH std::vector<CEngineTextureMorph>::??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ
+  005c44fa RELOCATION_MATCH CTCInventoryWeapons::AugmentWeapon
+  005ed300 RELOCATION_MATCH CIntelligentPointer<const CThing>::??4?$CIntelligentPointer@$$CBVCThing@@@@QAEAAV0@ABV0@@Z
+  00709b10 RELOCATION_MATCH CEnginePrimitiveMorphedAnimatingMesh::??1CEnginePrimitiveMorphedAnimatingMesh
+  00728ff0 RELOCATION_MATCH CTCCreatureExpression::UpdateBlinking
+  007ce1f0 RELOCATION_MATCH std::??$__copy@
+  0080cc40 RELOCATION_MATCH CTCDExplosion::?SetSpecificThingsToHit@CTCDExplosion@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  008d3dd0 RELOCATION_MATCH CGameScriptThing::MsgGetThingsKilled
+  0095ab50 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::?SetUpCirclePoints@CAIStateGroup_HoverHornetQueen@@QAEXXZ
+  00977c40 RELOCATION_MATCH CAIStateGroup_Guildmaster::?OnActivate@CAIStateGroup_Guildmaster@@UAEXXZ

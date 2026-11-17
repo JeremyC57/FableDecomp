@@ -49,7 +49,7 @@ struct CDataBank {
 };
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"
 class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
@@ -85,9 +85,12 @@ private: public:
     unsigned char   _pad18[0x1c - 0x18];
     CPlayerManager* PlayerManager;                      // +0x1c
 };
-class CTCInventoryItem { public:
-    static long __fastcall GetInventoryCategory(long defIndex);   // 0x005D99D0 (Ego_r.pdb ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z; landed 0x005C44FA spelling)
-};
+// Name fix (agentNF54, e114): the 0x005D99D0 stand-in declaration is gone: it is the static
+//   ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z (Ego_r.pdb 0x0055A9A0 + FableWin.pdb 0x01E03620: the TC interface
+//   type of the inventory component that holds the item), declared by engine/CTCInventoryItem.h (FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY); the local empty ETCInterfaceType enum is the shared engine/ETCInterfaceType.h.
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
+#include "engine/CTCInventoryItem.h"
 namespace NUISystem {
 class CActionParam { public:
     virtual void v00();
@@ -198,7 +201,7 @@ bool CTCInventoryTrade::ConstructSellActionsListPC(CComponent* parent, long defI
     CDataBank* bank = CMainGameComponent::Get()->TextBank;
     CTCShop* shop = 0;
     GetTradingThing()->GetInterface(&shop, 0x53);
-    hero->m_present.test(CTCInventoryItem::GetInventoryCategory(defIndex));
+    hero->m_present.test(CTCInventoryItem::GetInventoryType(defIndex));
     CWideString sellText = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL");
     CCountedPointer<CComponent> sellEntry(fe->CreateMenuEntryComponent(sellText, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));

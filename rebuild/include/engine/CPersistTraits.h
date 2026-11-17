@@ -25,7 +25,14 @@ public:
     // ??$GetDefaultVal@<T>@CPersistContext@@KI..XZ); GetDefaultVal<T>() returns a traits object's DefaultVal, which is why retail
     // builds the CCharString default as a constructed temporary copied into the argument slot (0x004B067C..0x004B0693) and stores
     // a plain 0 for the scalar defaults.
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_DEFAULTVAL_COPYINIT
+    // Nested opt-in (agentNF54, row 0x0049F4C0, T = the nested enum CWorld::ESaveType): VC7.1 rejects the value-initialising
+    // mem-initializer `DefaultVal()` for a class-nested enum T (C2065 on the unqualified enum name, C2064); the copy of a
+    // value-initialised T is the same zero (scalar T: same code).
+    CPersistTraits() : DefaultVal(T()) {}
+#else
     CPersistTraits() : DefaultVal() {}
+#endif
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_EMPTY_DTOR
     ~CPersistTraits() {}
 #endif
@@ -87,6 +94,12 @@ public:
  CPersistTraits():DefaultVal() {}
  ~CPersistTraits() {}
  void TransferBinaryIn(CMemoryDataInputStream&,CFloatRange&);
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_CFLOATRANGE_BINARYOUT_FORCEINLINE
+ // Per-TU inline opt-in (agentNF54, row 0x00458F2B CPersistContext::Transfer<CFloatRange>, a size TU): retail expands this body in
+ // place (two CDataOutputStream::WriteFloat 0x00993EE0 calls, LowValue +4 first, 0x00458F4D..0x00458F6C); the plain inline member is
+ // called out of line there. Same body.
+ FABLE_FORCEINLINE
+#endif
  void TransferBinaryOut(CDataOutputStream& os,const CFloatRange& value) {os.WriteFloat(value.LowValue);os.WriteFloat(value.HighValue);}
 };
 #endif

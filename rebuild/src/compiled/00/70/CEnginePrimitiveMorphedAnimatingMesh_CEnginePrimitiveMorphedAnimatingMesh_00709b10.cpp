@@ -10,6 +10,11 @@
 // Shape: the STLport set dtor inline: `if (_M_node_count) { _M_erase(root); leftmost = header; root = 0; rightmost = header;
 // count = 0; }` with &set kept in esi and the header re-read for each store, then `if (header) free(header)`; the counted def
 // release keeps its zero store inside the null test (inline ReleaseTemporary()).
+// Name fix (agentNF54, nf44:5): the local CTextureMorphVector stand-in is gone: the member is the shared std::vector<CEngineTextureMorph>
+//   (engine/CEngineTextureMorph.h), whose destructor stays the out-of-line COMDAT (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE) and binds
+//   FableWin.pdb ??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ (retail 0x005BC0D3).
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "engine/CEngineTextureMorph.h"
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -38,10 +43,6 @@ struct CDefPointer {
             Data = 0;
         }
     }
-};
-struct CTextureMorphVector {                    // vector<CEngineTextureMorph>
-    void* _M_start; void* _M_finish; void* _M_end_of_storage;
-    ~CTextureMorphVector();                     // 0x005BC0D3
 };
 struct CThemeChannelVector {                    // the +0x9c vector
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
@@ -84,7 +85,7 @@ struct CEnginePrimitiveAnimatingMesh {
     unsigned char _pad84[0x90 - 0x84];
 };
 struct CEnginePrimitiveMorphedAnimatingMesh : CEnginePrimitiveAnimatingMesh {
-    CTextureMorphVector TextureMorphs;                  // +0x90
+    std::vector<CEngineTextureMorph> TextureMorphs;                  // +0x90
     CThemeChannelVector ThemeChannels;                  // +0x9c
     CCharStringSet IgnoredBones;                        // +0xa8
     ~CEnginePrimitiveMorphedAnimatingMesh();

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059C447, 617 bytes, size-optimised TU (`push 2 ; pop eax`, `leave`, `or esi,-1`).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall),
 // CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, CCharString::~CCharString @ 0x0099EAE0,
-// GetInventoryCategory(long) @ 0x005D97B0 and the inventory tab-state query @ 0x005D96F0 (both __fastcall, the def index in ecx).
+// CTCInventoryItem::GetInventoryCategory(long) @ 0x005D97B0 and GetUIInventoryCategory(long) @ 0x005D96F0 (both static __fastcall, the def index in ecx).
 // Shape: twelve INVENTORY_CATEGORY_* def indices are looked up (FOOD, GIFTS, TROPHIES, POTIONS unused); each name is a named
 // CCharString in its own block (a temporary would pass the ctor's eax instead of retail's re-`lea`). `this` is never read.
 // The decision is one flat else-if chain with a separate `return` per value, which VC7.1 merges into retail's groups
@@ -10,22 +10,24 @@
 // GetMenuBranchFromDefIndex @ 0x0059B79A has the same chain with a distinct label per case.
 // Name fix (agentNF6 2026-11-10): CTCInventoryItem::GetInventoryCategory 0x005D97B0 is the static ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z (Ego_r.pdb / FableWin.pdb), was a free GetInventoryCategory.
 #pragma optimize("s", on)
-class CCharString { public:
-    void* PImp;
-    CCharString(const char* text, long length);   // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-};
-class CDefinitionManager { public:
-public:
-    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
-};
-class CGameDefinitionManager : public CDefinitionManager { public:
-    static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
-};
-class CTCInventoryItem { public: static long __fastcall GetInventoryCategory(long defIndex); };          // 0x005D97B0
-long __fastcall GetInventoryTabState(long defIndex);          // 0x005D96F0
+// Name fix (agentNF54, e196): the local CCharString / CDefinitionManager / CGameDefinitionManager / CTCInventoryItem models and the
+//   free GetInventoryTabState stand-in are gone: fable_string.h, engine/CGameDefinitionManager.h and engine/CTCInventoryItem.h
+//   (FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY: the static __fastcall def accessors) supply them. 0x005D96F0 is
+//   ?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z (Ego_r.pdb 0x0055A650 + FableWin.pdb 0x01E02250), its result
+//   compared with the EUIInventoryCategory enumerators (both PDBs: TROPHIES 0 .. OTHER 4).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
+#define FABLE_RETAIL_PASS22_INVENTORY_ITEMS_ORIGINAL_ENUM
+#include "fable_string.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CTCInventoryItem.h"
 
-// CTCInventoryTrade: no member is read; a method-only model (the engine header is not needed here).
 class CTCInventoryTrade { public:
     long GetTypeFromDefIndexPC(long defIndex);
 };
@@ -63,15 +65,15 @@ long CTCInventoryTrade::GetTypeFromDefIndexPC(long defIndex)
         return 0;
     else if (category == suits)
         return 0;
-    else if (GetInventoryTabState(defIndex) == 0)
+    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_TROPHIES)
         return 2;
-    else if (GetInventoryTabState(defIndex) == 1)
+    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_POTIONS)
         return 2;
-    else if (GetInventoryTabState(defIndex) == 2)
+    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_GIFTS)
         return 2;
-    else if (GetInventoryTabState(defIndex) == 3)
+    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_PRODUCE)
         return 2;
-    else if (GetInventoryTabState(defIndex) == 4)
+    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_OTHER)
         return 2;
     else
         return 2;

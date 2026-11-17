@@ -7,15 +7,19 @@
 // Copy constructor of a std::pair-like {unsigned long, CSecond_005b12f4} value (the map node value of the
 // manifest label `pair<unsigned_long,...>`): the scalar first member is copied inline and the
 // second member through its out-of-line copy constructor @ 0x005B12F4; `this` is returned.
-// The second type is named from the constructor's label when unique. One of 13 bodies.
-struct CSecond_005b12f4 {
-    void* m_data;
-    CSecond_005b12f4(const CSecond_005b12f4& other);           // 0x005B12F4
-};
+// One of 13 bodies.
+// Name fix (agentNF54, nf44:52): the second member is the shared STLport std::pair<CWideString, long> (stlport/fable_containers.h +
+//   fable_string.h; the CSecond_005b12f4 stand-in is gone), whose copy constructor this size-optimised TU calls out of line: the landed
+//   0x005B12F4 ??0?$pair@VCWideString@@J@std@@QAE@ABU01@@Z (body: CWideString copy, then the long). The enclosing {4-byte key, pair}
+//   value keeps its descriptive stand-in name: its key type is not proven (the neighbouring 0x005B17C6 builds a
+//   pair<NUISystem::CComponent* const, pair<CWideString, long> >, but no second source ties this copy to that map).
+#pragma optimize("s", on)
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
 
 struct SPairLongCSecond_005b12f4 {
-    unsigned long first;                   // +0
-    CSecond_005b12f4 second;                         // +4
+    unsigned long first;                             // +0
+    std::pair<CWideString, long> second;             // +4
     SPairLongCSecond_005b12f4(const SPairLongCSecond_005b12f4& other);
 };
 

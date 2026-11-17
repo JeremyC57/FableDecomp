@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059B79A, 897 bytes, size-optimised TU (`leave`, `or esi,-1`, `and [ecx],0`).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CGameDefinitionManager::Get @ 0x0044C6B0,
 // CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CCharString::~CCharString @ 0x0099EAE0,
-// GetInventoryCategory @ 0x005D97B0, the inventory tab-state query @ 0x005D96F0, and the menu's virtual slot +0x0C
+// GetInventoryCategory @ 0x005D97B0, CTCInventoryItem::GetUIInventoryCategory @ 0x005D96F0, and the menu's virtual slot +0x0C
 // (branch lookup by name, CCharString by value, the callee destroys it).
 // Shape: the same twelve-name lookup and flat else-if chain as GetTypeFromDefIndexPC @ 0x0059C447; every arm fetches
 // one UI_TRADING_MENU_*_ENTRY branch and then stores the tab type. The by-value CCharString is built straight in its
@@ -11,23 +11,24 @@
 // The PC twin @ 0x0059C0C6 is byte-identical apart from the PC_TRADING_MENU_* literals.
 // Name fix (agentNF6 2026-11-10): CTCInventoryItem::GetInventoryCategory 0x005D97B0 is the static ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z (Ego_r.pdb / FableWin.pdb), was a free GetInventoryCategory.
 #pragma optimize("s", on)
-class CCharString { public:
-    void* PImp;
-    CCharString(const char* text, long length);   // 0x0099EBF0
-    CCharString(const CCharString& other);        // 0x0099EC30 (declared: the by-value argument is built in its slot)
-    ~CCharString();                                // 0x0099EAE0
-};
-class CDefinitionManager { public:
-public:
-    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
-};
-class CGameDefinitionManager : public CDefinitionManager { public:
-    static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
-};
-class CTCInventoryItem { public: static long __fastcall GetInventoryCategory(long defIndex); };          // 0x005D97B0
-long __fastcall GetInventoryTabState(long defIndex);          // 0x005D96F0
+// Name fix (agentNF54, e196): the local CCharString / CDefinitionManager / CGameDefinitionManager / CTCInventoryItem models and the
+//   free GetInventoryTabState stand-in are gone: fable_string.h, engine/CGameDefinitionManager.h and engine/CTCInventoryItem.h
+//   (FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY: the static __fastcall def accessors) supply them. 0x005D96F0 is
+//   ?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z (Ego_r.pdb 0x0055A650 + FableWin.pdb 0x01E02250), its result
+//   compared with the EUIInventoryCategory enumerators (both PDBs: TROPHIES 0 .. OTHER 4).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
+#define FABLE_RETAIL_PASS22_INVENTORY_ITEMS_ORIGINAL_ENUM
+#include "fable_string.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CTCInventoryItem.h"
 
-// CTCInventoryTrade: no member is read; a method-only model (the engine header is not needed here).
 struct CMenuBranch;
 struct CMenuTree {
     virtual void V0();
@@ -81,19 +82,19 @@ CMenuBranch* CTCInventoryTrade::GetMenuBranchFromDefIndex(long defIndex, CMenuTr
     } else if (category == suits) {
         branch = menu->GetBranch(CCharString("UI_TRADING_MENU_SUITS_ENTRY", -1));
         *type = 0;
-    } else if (GetInventoryTabState(defIndex) == 0) {
+    } else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_TROPHIES) {
         branch = menu->GetBranch(CCharString("UI_TRADING_MENU_TROPHIES_ENTRY", -1));
         *type = 2;
-    } else if (GetInventoryTabState(defIndex) == 1) {
+    } else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_POTIONS) {
         branch = menu->GetBranch(CCharString("UI_TRADING_MENU_POTIONS_ENTRY", -1));
         *type = 2;
-    } else if (GetInventoryTabState(defIndex) == 2) {
+    } else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_GIFTS) {
         branch = menu->GetBranch(CCharString("UI_TRADING_MENU_GIFTS_ENTRY", -1));
         *type = 2;
-    } else if (GetInventoryTabState(defIndex) == 3) {
+    } else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_PRODUCE) {
         branch = menu->GetBranch(CCharString("UI_TRADING_MENU_PRODUCE_ENTRY", -1));
         *type = 2;
-    } else if (GetInventoryTabState(defIndex) == 4) {
+    } else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_OTHER) {
         branch = menu->GetBranch(CCharString("UI_TRADING_MENU_OTHERS_ENTRY", -1));
         *type = 2;
     } else {

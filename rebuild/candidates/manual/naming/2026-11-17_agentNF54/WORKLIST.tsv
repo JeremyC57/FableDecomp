@@ -1,0 +1,78 @@
+entry	target	correct_symbol	binder_row	bound_symbol_at_probe
+nf41:e105	006bb390	?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z	00957f20	?IsTimeOfDayInRange@CWorldClock@@QAE_NJJ@Z
+nf41:e26	005178a0	?push_back@?$CArray@K@@QAEXABK@Z (probable; folded with the long instantiation) -- BINDING CONFLICT with 00485ff3	009c9280	?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z
+nf41:e26	005178a0	?push_back@?$CArray@K@@QAEXABK@Z (probable; folded with the long instantiation) -- BINDING CONFLICT with 00485ff3	005383dd	?push_back@?$vector@KV?$allocator@K@std@@@std@@QAEXABK@Z
+nf41:e26	005178a0	?push_back@?$CArray@K@@QAEXABK@Z (probable; folded with the long instantiation) -- BINDING CONFLICT with 00485ff3	0053beac	?push_back@?$CRetailVector@J@@QAEXABJ@Z
+nf41:e26	005178a0	?push_back@?$CArray@K@@QAEXABK@Z (probable; folded with the long instantiation) -- BINDING CONFLICT with 00485ff3	008d3dd0	?push_back@CULongVector@@QAEXABK@Z
+nf41:e114	005d99d0	?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z	005a3581	?GetInventoryCategory_005d99d0@@YIJJ@Z
+nf41:e114	005d99d0	?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z	005a731f	?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z
+nf41:e114	005d99d0	?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z	005a8a5d	?GetInventoryInterfaceType@@YIJJ@Z
+nf41:e114	005d99d0	?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z	005c44fa	?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z
+nf41:e114	005d99d0	?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z	00898db0	?GetInventoryCategory_005d99d0@@YIJJ@Z
+nf41:e39	0056c860	??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@PBVCThing@@@Z	00957f20	??0CIntelligentPointerOut@@QAE@PAVCThing@@@Z
+nf41:e196	005d96f0	?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z	0059b79a	?GetInventoryTabState@@YIJJ@Z
+nf41:e196	005d96f0	?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z	0059c0c6	?GetInventoryTabState@@YIJJ@Z
+nf41:e196	005d96f0	?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z	0059c447	?GetInventoryTabState@@YIJJ@Z
+nf41:e173	004ab640	??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z	004a21f0	??$Transfer@W4ESaveType@@@CPersistContext@@QAEXPBDAAW4ESaveType@@ABW41@@Z
+nf41:e173	004ab640	??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z	0049f4c0	??$Transfer@W4ESaveType@@@CPersistContext@@QAEXPBDAAW4ESaveType@@ABW41@@Z
+nf41:e173	004ab640	??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z	004ab7f0	??$Transfer@W4ESaveType@@@CPersistContext@@QAEXPBDAAW4ESaveType@@ABW41@@Z
+nf41:e141	004c79a0	?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ	006a9590	?GetWorldState@CThingCreatureBase@@QAEPAUCWorldState@@XZ
+nf41:e141	004c79a0	?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ	00837050	?GetMeshBank@@YAPAVCMeshDataBank@@XZ
+nf41:e141	004c79a0	?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ	00837060	?GetMeshBank@@YAPAVCMeshDataBank@@XZ
+nf41:e50	005b33f4	??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z	00728ff0	??0CAnimInit@@QAE@JJJJ_NKJ@Z
+nf41:e50	005b33f4	??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z	00862780	??0CAnimInit@@QAE@JJJJ_NKJ@Z
+nf41:e207	004fb470	?GetRegionCount@CWorldMap@@QBEJXZ	0057cdb5	?GetNoMaps@CWorldMap@@QBEJXZ
+nf41:e182	0051cbb0	?ReadFromFile@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	00506bb0	?ReadFromFile@CFileFormatMapHeader@@QAEXPAVCAFile@@PAVCASuspendableProcess@@@Z
+nf41:e182	0051cbb0	?ReadFromFile@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	00506c40	?ReadFromFile@CFileFormatMapHeader@@QAEXPAVCAFile@@PAVCASuspendableProcess@@@Z
+nf41:e174	00516180	??$ReadVar@H@CAFile@@QAEXAAHPAVCASuspendableProcess@@@Z	00500230	?ReadVar@CAFile@@QAEXPAHPAVCASuspendableProcess@@@Z
+nf41:e170	00410ac0	??$Transfer@VCWideString@@@CPersistContext@@QAEXPBDAAVCWideString@@ABV1@@Z	00411060	?Transfer@CPersistContext@@QAEXPBDAAVCWideString@@ABV2@@Z
+nf41:e170	00410ac0	??$Transfer@VCWideString@@@CPersistContext@@QAEXPBDAAVCWideString@@ABV1@@Z	007e8160	?Transfer@CPersistContext@@QAEXPBDAAVCWideString@@ABV2@@Z
+nf41:e8	004d18e0	?push_back@?$CArray@U?$pair@MVCCameraTag@CSubtitledMessage@@@std@@@@QAEXABU?$pair@MVCCameraTag@CSubtitledMessage@@@std@@@Z	004d1eb0	?PushBack@CMorphPairVector24@@QAEXABUSMorphPair24@@@Z
+nf41:e71	004091c0	?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z	00495830	?LoadFileList@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@@std@@AAV?$CMallocVector@UCFileListInfo@@@@@Z
+nf41:e54	0051e580	?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z	004ca010	?GetThingTypeFlags@CThingManager@@QAEKJ@Z
+nf41:e38	005ed300	??4?$CIntelligentPointer@$$CBVCThing@@@@QAEAAV0@ABV0@@Z	00957f20	??4CIntelligentPointerOut@@QAEAAU0@ABU0@@Z
+nf41:e206	004336bc	AddDefinitionType/SDefinitionType/Create*Def (callee spellings in the row)	0042f5a9	?InitAndCompilePlatformSpecific@CStartupDefinitionManager@@QAEX_N@Z
+nf41:e193	005d9930	?IsTrophy@CTCInventoryItem@@SI_NJ@Z	005e4430	?IsAugmentation_005d9930@@YI_NJ@Z
+nf41:e172	0049f180	?ActivateWorld@CWorld@@QAEX_N@Z	00416953	?PostLoad@CWorld@@QAEXJ@Z
+nf41:e171	004ab710	??$Transfer@N@CPersistContext@@QAEXPBDAANABN@Z	004ab810	?Transfer@CPersistContext@@QAEXPBDAANABN@Z
+nf41:e166	004ae810	??$checked_delete@VCScriptConversationManager@@@boost@@YIXPAVCScriptConversationManager@@@Z	004a6ab0	?CheckedDeleteScriptConversationManager@@YIXPAVCScriptConversationManager@@@Z
+nf41:e134	0049d9d0	?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	0095f9a0	?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ
+nf44:1	00412130	std::vector<CWideString>::~vector (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)	0042f50b	
+nf44:1	00412130	std::vector<CWideString>::~vector (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)	0047e07f	
+nf44:1	00412130	std::vector<CWideString>::~vector (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)	00e64f80	
+nf44:3	00466a47	??$TransferVector@J@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z	00467553	
+nf44:4	0049b6b0	?push_back@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@QAEXABVCTexture@@@Z	0049a0b0	
+nf44:5	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	005bc216	
+nf44:5	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	005bc277	
+nf44:5	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	00709b10	
+nf44:5	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	007220f0	
+nf44:5	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	00722270	
+nf44:5	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	007222b0	
+nf44:5	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	00728f80	
+nf44:5	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	00755520	
+nf44:7	005ede93	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	0057770a	
+nf44:7	005ede93	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	005778ca	
+nf44:43	00458f89	?TransferBinaryIn@?$CPersistTraits@VCFloatRange@@@@QAEXAAVCMemoryDataInputStream@@AAVCFloatRange@@@Z	00458f2b	
+nf44:45	00465852	??$GFSerialiseVectorBinaryIn@VCDefString@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z	004e9642	
+nf44:48	004aa140	??$__uninitialized_copy@PAV?$CIntelligentPointer@VCThing@@@@PAV1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@00ABU__false_type@0@@Z	0077e580	
+nf44:49	004aa190	??$__uninitialized_fill_n@PAV?$CIntelligentPointer@VCThing@@@@IV1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@IABV1@ABU__false_type@0@@Z	0065574c	
+nf44:50	004ac940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	007ce1f0	
+nf44:50	004ac940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	008099b0	
+nf44:50	004ac940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	0080cc40	
+nf44:50	004ac940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	008ddad0	
+nf44:50	004ac940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	008e0060	
+nf44:50	004ac940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	0095ab50	
+nf44:50	004ac940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	00970f30	
+nf44:50	004ac940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	009710d0	
+nf44:50	004ac940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	00977c40	
+nf44:52	005b12f4	??0?$pair@VCWideString@@J@std@@QAE@ABU01@@Z	005b1653	
+nf44:52	005b12f4	??0?$pair@VCWideString@@J@std@@QAE@ABU01@@Z	005d84d1	
+nf44:54	005bd597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	0057770a	
+nf44:54	005bd597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	005778ca	
+nf44:54	005bd597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	00587847	
+nf44:54	005bd597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	00589d30	
+nf44:54	005bd597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	0059e2c7	
+nf44:54	005bd597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	0059f304	
+nf44:54	005bd597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	005fce60	
+nf44:94	00404310	?GetCRC@CCharString@@QBEKXZ	0065c781	
+nf44:99	00412880	?resize@?$vector@DV?$allocator@D@std@@@std@@QAEXI@Z	008f9320	

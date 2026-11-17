@@ -72,7 +72,7 @@ template <unsigned int _Nb> class bitset { public:
 class CTCBase;
 // agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
 //   0x0074EE90 idiom); 0x004365B0 is its const LowerBound (both original PDBs, Codex pass 20 / queue land1011bu).
-enum ETCInterfaceType { };
+#include "engine/ETCInterfaceType.h"
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class C> class CVectorMap;
@@ -114,7 +114,12 @@ protected:
 public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
 private: public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };
-long __fastcall GetInventoryInterfaceType(long defIndex);   // 0x005D99D0
+// Name fix (agentNF54, e114): the 0x005D99D0 stand-in declaration is gone: it is the static
+//   ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z (Ego_r.pdb 0x0055A9A0 + FableWin.pdb 0x01E03620: the TC interface
+//   type of the inventory component that holds the item), declared by engine/CTCInventoryItem.h (FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY); the local empty ETCInterfaceType enum is the shared engine/ETCInterfaceType.h.
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
+#include "engine/CTCInventoryItem.h"
 namespace NUISystem {
 class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02();
@@ -193,7 +198,7 @@ NUISystem::CComponent* CTCInventoryTrade::ConstructSpecialShopListPC(const std::
             long count = it->second;
             const CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
             CTCInventoryBase* inventory = 0;
-            hero->GetInterface(&inventory, GetInventoryInterfaceType(defIndex));
+            hero->GetInterface(&inventory, CTCInventoryItem::GetInventoryType(defIndex));
             if (IsItemAffordable(defIndex, true) && (inventory->CanAddItem(defIndex) || IsSpecialCase(defIndex)) && count > 0
                 && !AlreadyHaveSpecial(defIndex))
                 TotSpecialItemsToBuy += it->second;

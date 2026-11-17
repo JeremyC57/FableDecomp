@@ -30979,9 +30979,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0051e580'
-        Module = 'CEditWorldMap'
-        Source = '00/51/CEditWorldMap_GetEditMap_0051e580.cpp'
-        TestSource = '00/51/CEditWorldMap_GetEditMap_0051e580_test.cpp'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_ThingTypeToTypeFlags_0051e580.cpp'
+        TestSource = '00/51/CThingManager_ThingTypeToTypeFlags_0051e580_test.cpp'
         PassPattern = 'OK_0x0051e580'
     }
     [pscustomobject]@{
@@ -38379,8 +38379,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0065574c'
         Module = 'std'
-        Source = '00/65/std_Umove_0065574c.cpp'
-        TestSource = '00/65/std_Umove_0065574c_test.cpp'
+        Source = '00/65/std_uninitializedfilln_0065574c.cpp'
+        TestSource = '00/65/std_uninitializedfilln_0065574c_test.cpp'
         PassPattern = 'UMOVE_0065574c_OK'
     }
     [pscustomobject]@{
@@ -46986,8 +46986,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004fb470'
         Module = 'CWorldMap'
-        Source = '00/4f/CWorldMap_DrawGetNoMaps_004fb470.cpp'
-        TestSource = '00/4f/CWorldMap_DrawGetNoMaps_004fb470_test.cpp'
+        Source = '00/4f/CWorldMap_GetRegionCount_004fb470.cpp'
+        TestSource = '00/4f/CWorldMap_GetRegionCount_004fb470_test.cpp'
         PassPattern = 'DRAWGETNOMAPS_OK'
     }
     [pscustomobject]@{
@@ -89979,9 +89979,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005ed300'
-        Module = 'CIntelligentPointer<CThing_const>'
-        Source = '00/5e/CIntelligentPointerCThingCreatureBase_operator_005ed300.cpp'
-        TestSource = '00/5e/CIntelligentPointerCThingCreatureBase_operator_005ed300_test.cpp'
+        Module = 'CIntelligentPointer<const CThing>'
+        Source = '00/5e/CIntelligentPointer_operator_005ed300.cpp'
+        TestSource = '00/5e/CIntelligentPointer_operator_005ed300_test.cpp'
         PassPattern = 'PASS_005ed300'
     }
     [pscustomobject]@{
@@ -90749,9 +90749,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bc0d3'
-        Module = '_global'
-        Source = '00/5b/CActiveFile_OnReadFinished_005bc0d3.cpp'
-        TestSource = '00/5b/CActiveFile_OnReadFinished_005bc0d3_test.cpp'
+        Module = 'std::vector<CEngineTextureMorph>'
+        Source = '00/5b/stdvector_vector_005bc0d3.cpp'
+        TestSource = '00/5b/stdvector_vector_005bc0d3_test.cpp'
         PassPattern = 'PASS_005bc0d3'
     }
     [pscustomobject]@{
@@ -157969,8 +157969,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005d84d1'
         Module = '_global'
-        Source = '00/5d/CRetailListnode0x10_Buynode_005d84d1.cpp'
-        TestSource = '00/5d/CRetailListnode0x10_Buynode_005d84d1_test.cpp'
+        Source = '00/5d/global_StdListCreateNodesz0x10005d84d1_005d84d1.cpp'
+        TestSource = '00/5d/global_StdListCreateNodesz0x10005d84d1_005d84d1_test.cpp'
         PassPattern = '005d84d1_TEST PASS'
     }
     [pscustomobject]@{
@@ -165867,9 +165867,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0049b6b0'
-        Module = '_global'
-        Source = '00/49/global_PushBackCTexture0049b6b0_0049b6b0.cpp'
-        TestSource = '00/49/global_PushBackCTexture0049b6b0_0049b6b0_test.cpp'
+        Module = 'std::vector<CTexture>'
+        Source = '00/49/stdvector_pushback_0049b6b0.cpp'
+        TestSource = '00/49/stdvector_pushback_0049b6b0_test.cpp'
         PassPattern = '0049b6b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -166042,9 +166042,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005178a0'
-        Module = '_global'
-        Source = '00/51/global_PushBackdword005178a0_005178a0.cpp'
-        TestSource = '00/51/global_PushBackdword005178a0_005178a0_test.cpp'
+        Module = 'std::vector<unsigned long>'
+        Source = '00/51/stdvector_pushback_005178a0.cpp'
+        TestSource = '00/51/stdvector_pushback_005178a0_test.cpp'
         PassPattern = '005178a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -188938,8 +188938,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005b33f4'
         Module = 'CAnimInit'
-        Source = '00/5b/CRumbleEffect005b33f4_Initialise_005b33f4.cpp'
-        TestSource = '00/5b/CRumbleEffect005b33f4_Initialise_005b33f4_test.cpp'
+        Source = '00/5b/CAnimInit_CAnimInit_005b33f4.cpp'
+        TestSource = '00/5b/CAnimInit_CAnimInit_005b33f4_test.cpp'
         PassPattern = '005b33f4_TEST PASS'
     }
     [pscustomobject]@{
@@ -218027,9 +218027,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d1eb0'
-        Module = 'CVectorMap_Morph24'
-        Source = '00/4d/CVectorMapMorph24_Add_004d1eb0.cpp'
-        TestSource = '00/4d/CVectorMapMorph24_Add_004d1eb0_test.cpp'
+        Module = 'CVectorMap<float,CSubtitledMessage::CCameraTag>'
+        Source = '00/4d/CVectorMap_Insert_004d1eb0.cpp'
+        TestSource = '00/4d/CVectorMap_Insert_004d1eb0_test.cpp'
         PassPattern = '004d1eb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -265469,8 +265469,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004ab7f0'
         Module = 'CPersistContext'
-        Source = '00/4a/CPersistContext_TransferESaveType_004ab7f0.cpp'
-        TestSource = '00/4a/CPersistContext_TransferESaveType_004ab7f0_test.cpp'
+        Source = '00/4a/CPersistContext_Transfer_004ab7f0.cpp'
+        TestSource = '00/4a/CPersistContext_Transfer_004ab7f0_test.cpp'
         PassPattern = '004ab7f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -277258,8 +277258,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00458f89'
         Module = 'CPersistTraits<CFloatRange>'
-        Source = '00/45/CPersistTraitsCFloatRange_TransferBinaryIn_00458f89.cpp'
-        TestSource = '00/45/CPersistTraitsCFloatRange_TransferBinaryIn_00458f89_test.cpp'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00458f89.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00458f89_test.cpp'
         PassPattern = '00458f89_TEST PASS'
     }
     [pscustomobject]@{
@@ -294614,8 +294614,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007ce1f0'
         Module = 'std'
-        Source = '00/7c/STL_copy_007ce1f0.cpp'
-        TestSource = '00/7c/STL_copy_007ce1f0_test.cpp'
+        Source = '00/7c/std_copy_007ce1f0.cpp'
+        TestSource = '00/7c/std_copy_007ce1f0_test.cpp'
         PassPattern = '007ce1f0_TEST PASS'
     }
     [pscustomobject]@{

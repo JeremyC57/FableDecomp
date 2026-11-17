@@ -48,37 +48,17 @@ template <class TFilter, class T> __declspec(noinline) bool CThingSearchTools::G
     return true;
 }
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);   // 0x00BFEB10
-class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
-struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
-struct __false_type { __false_type() { } };
-template <class T> struct CRetailVector {               // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* erase(T* first, T* last);                        // 0x004AC0F0
-    void clear() { erase(_M_start, _M_finish); }
-    void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned long fill_len, bool atend);   // 0x004AC940
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) T(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
+// Name fix (agentNF54): the local CBaseIntelligentPointer / CIntelligentPointer / CRetailVector stand-ins replaced by the shared
+//   engine/CIntelligentPointer.h (retail branch, FABLE_RETAIL_CINTELLIGENTPOINTER_COPY) and the STLport 4.6 vector of stlport/fable_containers.h
+//   (erase(first, last) out of line, FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE): the overflow call 0x004AC940 binds
+//   ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z
+//   (the landed row's own leaf; was ?_M_insert_overflow@?$CRetailVector@UCIntelligentPointer@@@@...) and clear()'s erase 0x004AC0F0 the
+//   STLport vector<CIntelligentPointer<CThing> >::erase.
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
+#include "engine/CIntelligentPointer.h"
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
@@ -100,9 +80,9 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
     bool bOneTime;                              // +0x34
     CThing* PEmitter;                           // +0x38
     CThing* PEmitter2;                          // +0x3c
-    CRetailVector<CIntelligentPointer> Things;  // +0x40
+    std::vector<CIntelligentPointer<CThing> > Things;  // +0x40
     long CurrentCirclePoint;                    // +0x4c
-    CRetailVector<CIntelligentPointer> CircleMarkers;   // +0x50
+    std::vector<CIntelligentPointer<CThing> > CircleMarkers;   // +0x50
     long EnemyKnockDownFrame;                   // +0x5c
     void SetUpCirclePoints();
 };
@@ -133,7 +113,7 @@ void CAIStateGroup_HoverHornetQueen::SetUpCirclePoints()
             float distance = (float)sqrt(dx * dx + dy * dy);
             if (distance > maxDistance)
                 maxDistance = distance;
-            CircleMarkers.push_back(CIntelligentPointer(marker));
+            CircleMarkers.push_back(CIntelligentPointer<CThing>(marker));
         }
     } while (IS_THING_ALIVE(marker));
     g_WaspQueenCircleRadius = maxDistance + 12.0f;

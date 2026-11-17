@@ -1,10 +1,10 @@
-// CWorldMap::GetLevelStaticMapChecksum(const CCharString&) -- open the level file from disk, read its level record and map header, and return the map's static checksum
+// CWorldMap::GetLevelStaticMapChecksum(const CCharString&) const -- open the level file from disk, read its level record and map header, and return the map's static checksum
 // Leaf: GetLevelStaticMapChecksum
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00506C40, 249 bytes (256 with padding), `ret 4`.
-//   PDB ?GetLevelStaticMapChecksum@CWorldMap@@QAEKABVCCharString@@@Z.
+//   PDB ?GetLevelStaticMapChecksum@CWorldMap@@QBEKABVCCharString@@@Z (Ego_r.pdb 0x004D47D0, FableWin.pdb 0x01C8C7D0: const).
 // Callees: operator new 0x00BFEA1A (x3), CCharString::ToWideString 0x0099E480, CDiskFileWin32::CDiskFileWin32(const
 //   CWideString&, FileAccessType, unsigned long) 0x0099AD80, ~CWideString 0x0099B510, CFileLargeThemePalette ctor
-//   0x0050EE40 (x2), CAFile slot 5 Seek (x2), CReplaceSerialise<CFileFormatLevel>::ReadFromFile 0x0051A240,
+//   0x0050EE40 (x2), CAFile slot 5 SetPosition (x2), CReplaceSerialise<CFileFormatLevel>::ReadFromFile 0x0051A240,
 //   CReplaceSerialise<CFileFormatMapHeader>::ReadFromFile 0x0051CBB0, operator delete 0x00BFE9BC (x2); the counted
 //   block's deleter 0x0050BE40.
 // Layout: CFileFormatLevel (25 bytes, packed) and CFileFormatMapHeader (0x10822 bytes, StaticMapChecksum +0x1081E)
@@ -13,125 +13,33 @@
 //   the construction flag in ebx, its slot zeroed first; the inline ctor allocates the {1, deleter, object} block only
 //   for a non-null object); the header is a scoped holder deleted after the checksum is read; the file block is
 //   released last (`dec [ebp]`).
-void* operator new(unsigned int size);                 // 0x00BFEA1A
-void operator delete(void* p);                         // 0x00BFE9BC
-class CWideString { public:
-    void* PStringData;
-    ~CWideString();                                    // 0x0099B510
-};
-class CCharString { public:
-    void* PStringData;
-    CWideString ToWideString() const;                  // 0x0099E480
-};
-enum FileAccessType { FILE_ACCESS_READ = 1 };
-class CASuspendableProcess;
-class CAFile
-{
-public:
-    virtual void Slot00();
-    virtual void Slot04();
-    virtual void Slot08();
-    virtual void Slot0C();
-    virtual void Slot10();
-    virtual void Seek(long position);                  // slot 5 (+0x14)
-};
-class CDiskFileWin32 : public CAFile {
-public:
-    CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);         // 0x0099AD80
-    unsigned char _body[0x18];
-};
-void __fastcall Destroy_0050be40(void* object);       // 0x0050BE40: the CAFile deleter stored in the block
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-    CCPPointerInfo(void* data) : RefCount(1), DeleteFunc(Destroy_0050be40), Data(data) { }
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(T* object) : Data(object)
-    {
-        if (object)
-            Info = new CCPPointerInfo(object);
-        else
-            Info = 0;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    T* operator->() const { return Data; }
-};
-struct CFileLargeThemePalette
-{
-    unsigned char Data[0x8400];                        // 33792 bytes
-    CFileLargeThemePalette();                          // 0x0050EE40
-};
+// Name fix (agentNF54): ported onto engine/CFileFormatBrush.h (FABLE_RETAIL_CFILEFORMATBRUSH + FABLE_RETAIL_CFILEFORMAT_MAPHEADER),
+//   engine/CAFile.h, engine/CDiskFileWin32.h, engine/CCountedPointer.h, fable_string.h and engine/CWorldMap.h (my
+//   FABLE_RETAIL_CWORLDMAP_LEVELHEADER opt-in). The header read now binds the PDB
+//   ?ReadFromFile@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z
+//   (Ego_r.pdb 0x004E9260 + FableWin.pdb 0x01CA3CB0); the self row the const PDB spelling; the holder is
+//   boost::scoped_ptr<CFileFormatMapHeader> (FableWin.pdb 0x01CA6EC0) and the deleter the counted pointer's DeleteData
+//   (0x0050BE40, naming wave 1 CCountedPointer<CAFile>::DeleteData).
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_SCOPED_PTR_RESET
+#define FABLE_RETAIL_CDISKFILEWIN32
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CWORLDMAP_LEVELHEADER
+#define FABLE_RETAIL_CFILEFORMATBRUSH
+#define FABLE_RETAIL_CFILEFORMAT_MAPHEADER
+#include "fable_string.h"
+#include "engine/CDiskFileWin32.h"
+#include "engine/CFileFormatBrush.h"
+#include "engine/CWorldMap.h"
 
-#pragma pack(push, 1)
-class CFileFormatLevel;
-class COldFileFormatLevel3;
-template <class TNew, class TOld> class CReplaceSerialise { public:
-    unsigned long ByteLength;                          // +0x00
-    unsigned char SerialiseVersionNumber;              // +0x04
-    void ReadFromFile(CAFile& file, CASuspendableProcess* process);  // 0x0051A240 (<CFileFormatLevel,COldFileFormatLevel3>)
-};
-
-class CFileFormatLevel : public CReplaceSerialise<CFileFormatLevel, COldFileFormatLevel3>
-{ public:
-    long          MapDataOffset;                       // +0x05
-    long          ThingDataOffset;                     // +0x09
-    long          BrushDataOffset;                     // +0x0D
-    long          NavigationDataOffset;                // +0x11
-    long          NavigationSectionsOffset;            // +0x15
-};
-
-class CFileFormatMapHeader
-{ public:
-    unsigned long          ByteLength;                 // +0x00 CReplaceSerialise
-    unsigned char          SerialiseVersionNumber;     // +0x04
-    unsigned long          ThingUIDCount[2];           // +0x05 ulong64
-    unsigned long          WorldSizeX;                 // +0x0D
-    unsigned long          WorldSizeY;                 // +0x11
-    bool                   UsingExtraMapCells;         // +0x15
-    CFileLargeThemePalette LargeThemePalette;          // +0x16
-    unsigned long          VersionNumber;              // +0x8416
-    unsigned long          NoSoundThemeEntries;        // +0x841A
-    CFileLargeThemePalette AtmosThemePalette;          // +0x841E
-    unsigned long          StaticMapChecksum;          // +0x1081E
-    void ReadFromFile(CAFile* file, CASuspendableProcess* process);  // 0x0051CBB0
-};
-#pragma pack(pop)
-
-template <class T>
-struct CScopedPtr
-{
-    T* ptr;
-    CScopedPtr(T* p) : ptr(p) {}
-    ~CScopedPtr() { delete ptr; }
-    T* operator->() const { return ptr; }
-};
-
-class CWorldMap
-{
-public:
-    unsigned long GetLevelStaticMapChecksum(const CCharString& levelName);
-};
-
-unsigned long CWorldMap::GetLevelStaticMapChecksum(const CCharString& levelName)
+unsigned long CWorldMap::GetLevelStaticMapChecksum(const CCharString& levelName) const
 {
     CCountedPointer<CAFile> file(new CDiskFileWin32(levelName.ToWideString(), FILE_ACCESS_READ, 2));
-    CScopedPtr<CFileFormatMapHeader> header(new CFileFormatMapHeader);
-    file->Seek(0);
+    boost::scoped_ptr<CFileFormatMapHeader> header(new CFileFormatMapHeader);
+    file->SetPosition(0);
     CFileFormatLevel level;
-    level.ReadFromFile(*file.Data, 0);
-    file->Seek(level.MapDataOffset);
-    header->ReadFromFile(file.Data, 0);
+    level.ReadFromFile(*file, 0);
+    file->SetPosition(level.MapDataOffset);
+    header->ReadFromFile(*file, 0);
     return header->StaticMapChecksum;
 }

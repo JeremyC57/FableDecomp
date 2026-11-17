@@ -9,17 +9,14 @@
 // Shape: the landed resize(n) form (0x0056A230): the record's user default constructor leaves the key word alone and
 // zeroes the inner vector's three words from one `xor eax,eax`; passed by address with the count, `this` left in ecx; the
 // record's inline destructor is the inner vector's out-of-line one.
-struct CItemVector_00728f80 {                                // std::vector<...>: start/finish/end
-    void* _M_start;
-    void* _M_finish;
-    void* _M_end_of_storage;
-    CItemVector_00728f80() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CItemVector_00728f80();                                 // 0x005BC0D3
-};
-
+// Name fix (agentNF54, nf44:5): the local CItemVector_00728f80 stand-in is gone: the member is the shared std::vector<CEngineTextureMorph>
+//   (engine/CEngineTextureMorph.h), whose destructor stays the out-of-line COMDAT (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE) and binds
+//   FableWin.pdb ??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ (retail 0x005BC0D3).
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "engine/CEngineTextureMorph.h"
 struct SKeyedItems_00728f80 {                                // 0x10 bytes
     long                 m_key;                              // +0x00 (not initialised by the default ctor)
-    CItemVector_00728f80 m_items;                            // +0x04
+    std::vector<CEngineTextureMorph> m_items;                            // +0x04
     SKeyedItems_00728f80() { }
 };
 

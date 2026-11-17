@@ -72,7 +72,12 @@ template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingObjectDef
     return true;
 }
 #pragma auto_inline(on)
-bool __fastcall IsAugmentation_005d9930(long index);                 // 0x005D9930
+// Name fix (agentNF54, e193): the free IsAugmentation_005d9930 stand-in is gone: 0x005D9930 is the static
+//   ?IsTrophy@CTCInventoryItem@@SI_NJ@Z (Ego_r.pdb 0x0055A8E0 + FableWin.pdb 0x01E031A0; the landed self row 0x005D9930), declared by
+//   engine/CTCInventoryItem.h (FABLE_RETAIL_CTCINVENTORYITEM_ISTROPHY).
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_ISTROPHY
+#include "engine/CTCInventoryItem.h"
 class CThing { public: unsigned char _pad00[0x8c]; unsigned short DefIndex; };
 class CTCQuestCard { public:
     void*  vftable;
@@ -197,7 +202,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, boo
             if (PCardDef.P && Completion == COMPLETION_1) {
                 bool found = false;
                 for (unsigned long i = 0; i < PCardDef->RewardObjects.size() && !found; ++i) {
-                    if (IsAugmentation_005d9930(PCardDef->RewardObjects[i])) {
+                    if (CTCInventoryItem::IsTrophy(PCardDef->RewardObjects[i])) {
                         CDefPointer<const CThingObjectDef> reward;
                         CGameDefinitionManager::Get().GetDef(PCardDef->RewardObjects[i], &reward);
                         RenderedObjectDef = PCardDef->RewardObjects[i];

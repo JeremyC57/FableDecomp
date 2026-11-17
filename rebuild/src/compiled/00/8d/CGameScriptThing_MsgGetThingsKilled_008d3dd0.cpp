@@ -15,7 +15,12 @@
 // Shape: the found flag is a byte local cleared first (its zero shared with the early exits' `mov al,bl`); the frame
 //   window is read through the two `__forceinline` quest-manager helpers; each hit pushes the by-value
 //   GetCreatureGroupOfKilledThing() result, an rvalue VC homes in the dead `groups` slot.
+// Name fix (agentNF54): the groups vector is the shared STLport std::vector<unsigned long> (stlport/fable_containers.h; the PDB
+//   parameter type), so the call binds vector<unsigned long>::push_back 0x005178A0 (the local CULongVector stand-in bound
+//   ?push_back@CULongVector@@QAEXABK@Z); push_back stays a call (FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE).
 #include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+#include "stlport/fable_containers.h"
 #include "engine/CGameScriptThing.h"
 
 struct CSpawnedFuncNative {
@@ -37,7 +42,6 @@ FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q-
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class TCompare> class CVectorMap;
 typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
@@ -94,18 +98,11 @@ struct CTCEntityEventsNative {
     unsigned char _pad00[0xc];
     SEventNode* Events;                                 // +0x0c the list's sentinel
 };
-struct CULongVector {                                   // STLport vector<unsigned long>
-    unsigned long* _M_start;
-    unsigned long* _M_finish;
-    unsigned long* _M_end_of_storage;
-    void push_back(const unsigned long& value);         // 0x005178A0
-};
-
 struct CGameScriptThingMethods : CGameScriptThing {
-    bool MsgGetThingsKilled(CULongVector& groups) const;
+    bool MsgGetThingsKilled(std::vector<unsigned long>& groups) const;
 };
 
-bool CGameScriptThingMethods::MsgGetThingsKilled(CULongVector& groups) const
+bool CGameScriptThingMethods::MsgGetThingsKilled(std::vector<unsigned long>& groups) const
 {
     bool found = false;
     const CBaseIntelligentPointer* pointer = reinterpret_cast<const CBaseIntelligentPointer*>(PThing);

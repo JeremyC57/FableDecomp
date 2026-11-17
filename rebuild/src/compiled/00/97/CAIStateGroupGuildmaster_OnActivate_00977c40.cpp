@@ -56,35 +56,15 @@ __declspec(noinline) void CThingSearchTools::GetAllThingsInRoughArea(const C2DBo
     out._M_finish = out._M_start + CollectSink_977c40(this, area.MinX + *(const long*)&filter, 0);
 }
 #pragma auto_inline(on)
-class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
-struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
-struct __false_type { __false_type() { } };
-template <class T> struct CRetailVector {               // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned long fill_len, bool atend);   // 0x004AC940
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) T(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
+// Name fix (agentNF54): the local CBaseIntelligentPointer / CIntelligentPointer / CRetailVector stand-ins replaced by the shared
+//   engine/CIntelligentPointer.h (retail branch, FABLE_RETAIL_CINTELLIGENTPOINTER_COPY) and the STLport 4.6 vector of stlport/fable_containers.h:
+//   the overflow call 0x004AC940 binds
+//   ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z
+//   (the landed row's own leaf; was ?_M_insert_overflow@?$CRetailVector@UCIntelligentPointer@@@@...).
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#include "stlport/fable_containers.h"
+#include "engine/CIntelligentPointer.h"
 class CTCCreatureModeManager { public:                 // interface 0x31
     bool HasMode(unsigned long mode);           // 0x0073A8A0
     bool AddMode(unsigned long mode);           // 0x0073AE10
@@ -106,7 +86,7 @@ struct CAIStateGroup_Guildmaster : CAIStateGroupBase {
     long AttackNum;                             // +0x14
     CBaseIntelligentPointer PEnemy;             // +0x18 CIntelligentPointer<CThingCreatureBase>
     CBaseIntelligentPointer PLastTeleportMarker;   // +0x20 CIntelligentPointer<CThing>
-    CRetailVector<CIntelligentPointer> TeleportMarkers;   // +0x28
+    std::vector<CIntelligentPointer<CThing> > TeleportMarkers;   // +0x28
     long LastWillFrame;                         // +0x34
     long LastTeleportFrame;                     // +0x38
     void FindAndStoreBodyguards();              // 0x00977B10
@@ -127,7 +107,7 @@ void CAIStateGroup_Guildmaster::OnActivate()
     }
     unsigned int count = markers.size();
     for (unsigned int i = 0; i < count; ++i)
-        TeleportMarkers.push_back(CIntelligentPointer(markers[i]));
+        TeleportMarkers.push_back(CIntelligentPointer<CThing>(markers[i]));
     LastWillFrame = 0;
     LastTeleportFrame = 0;
     CTCCreatureModeManager* modes;

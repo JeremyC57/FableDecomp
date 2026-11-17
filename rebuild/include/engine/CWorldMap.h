@@ -132,6 +132,15 @@ public:
     // DrawGetNoMaps is the virtual CIDrawWorldMap slot and GetNoMaps (FableWin only) counts maps, not regions. Declaration only.
     long GetRegionCount() const;                             // 0x004FB470
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_LEVELHEADER
+    // Opt-in (agentNF54, rows 0x00506BB0 / 0x00506C40): Ego_r.pdb + FableWin.pdb ?GetLevelStaticMapChecksum@CWorldMap@@QBEKABVCCharString@@@Z
+    // (public const, retail 0x00506C40) and the protected const overload ?GetLevelDimensions@CWorldMap@@IBE?AVC2DBoxI@@AAVCAFile@@@Z
+    // (retail 0x00506BB0; Ego_r 0x004D4730, FableWin 0x01C8C5F0). Declarations only.
+    unsigned long GetLevelStaticMapChecksum(const CCharString& levelName) const;   // 0x00506C40
+protected:
+    C2DBoxI GetLevelDimensions(CAFile& file) const;                               // 0x00506BB0
+public:
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_SETSOUNDTHEMESDISABLED
     // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?SetSoundThemesDisabled@CWorldMap@@QAEX_N@Z, inline in retail
     // (`mov byte [eax+4Ch],1` = SoundThemesDisabled on GetWorldMap(), 0x004A40CF). Body only: no layout change.

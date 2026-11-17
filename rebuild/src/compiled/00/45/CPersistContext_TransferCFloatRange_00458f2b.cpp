@@ -11,41 +11,24 @@
 // Shape: as CPersistContext::TransferBytePair_004e8fcd @ 0x004E8FCD (landed): the reader local's two zero floats are written (`fldz ; fstp`) before the mode
 // ladder (`dec ; dec ; je ; dec ; jne`: cases 2 and 3); edi is saved only around the save arm. The chunk label "CPersistContext::UpdateShadowScene" is
 // propagated from an unrelated body (the same label sits on 0x004E8FCD).
-class CFloatRange { public: float m_min; float m_max; };
-class CDataOutputStream { public: void WriteFloat(float value); };   // 0x00993EE0
-class CDataInputStream;
+// Name fix (agentNF54): the local CFloatRange / CDataOutputStream / CPersistContext / two-float reader stand-ins replaced by the shared
+//   engine/CPersistContext.h (the one-argument Transfer<T> body, FABLE_RETAIL_CPERSISTCONTEXT_TRANSFER_BINARY_BODY), engine/CPersistTraits.h
+//   (CPersistTraits<CFloatRange>: DefaultVal zero-initialised, the inline TransferBinaryOut writing LowValue then HighValue) and
+//   engine/CFloatRange.h: the "reader" local is the CPersistTraits<CFloatRange> traits object, and its load call 0x00458F89 is
+//   ?TransferBinaryIn@?$CPersistTraits@VCFloatRange@@@@QAEXAAVCMemoryDataInputStream@@AAVCFloatRange@@@Z (Ego_r 0x00467F5B + FableWin
+//   0x019C33B6; was ?TransferBinaryIn@CFloatRangeReader_00458f89@@QAEXPAVCDataInputStream@@PAVCFloatRange@@@Z).
+#define FABLE_RETAIL_CPERSISTCONTEXT
+#define FABLE_RETAIL_CPERSISTCONTEXT_TRANSFER_BINARY_BODY
+#define FABLE_RETAIL_CPERSISTTRAITS_CREATURE_FULL_TYPES_PASS22
+#define FABLE_RETAIL_CFLOATRANGE_ORIGINAL_CTOR_PASS22
+#define FABLE_RETAIL_CPERSISTTRAITS_CFLOATRANGE_BINARYOUT_FORCEINLINE
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CMemoryDataInputStream.h"
+#include "engine/CDataOutputStream.h"
+#include "engine/CPersistContext.h"
 
-struct CFloatRangeReader_00458f89 {               // a two-float reader: both start at zero
-    float m_min;
-    float m_max;
-    CFloatRangeReader_00458f89() : m_min(0.0f), m_max(0.0f) { }
-    void TransferBinaryIn(CDataInputStream* stream, CFloatRange* value);   // 0x00458F89
-};
-
-class CPersistContext { public:
-    unsigned char      _pad0[0x18];
-    long               m_mode;                     // +0x18 (2 = load, 3 = save)
-    unsigned char      _pad1[8];
-    CDataInputStream*  m_pLoadStream;              // +0x24
-    CDataOutputStream* m_pSaveStream;              // +0x28
-    protected: void CheckCRC(const char* name); public:               // 0x00404500
-    template <class T> void Transfer(T& value);
-};
-
-template <> void CPersistContext::Transfer<CFloatRange>(CFloatRange& value_)
-{
-    CFloatRange* value = &value_;
-    CheckCRC("");
-    CFloatRangeReader_00458f89 reader;
-    switch (m_mode) {
-    case 3: {
-        CDataOutputStream* stream = m_pSaveStream;
-        stream->WriteFloat(value->m_max);
-        stream->WriteFloat(value->m_min);
-        break;
-    }
-    case 2:
-        reader.TransferBinaryIn(m_pLoadStream, value);
-        break;
-    }
-}
+template void CPersistContext::Transfer<CFloatRange>(CFloatRange& value);

@@ -1,4 +1,5 @@
 // Global CWorld::~CWorld, retail 0x004A6AB0 (886 bytes).
+// Leaf: ??1CWorld@@UAE@XZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Original identity: egor 3759 / debug 0x004B0430. The manifest's
 // HeroInformationScreens::CBase label is disproved by the two CWorld RTTI
@@ -229,7 +230,13 @@ class C3DAnimationManager { public: virtual ~C3DAnimationManager(); };
 void __fastcall DestroyFactionRange(CFactionPair*,CFactionPair*,CAllocator&);
 void __fastcall CheckedDeleteGameTimeManager(CGameTimeManager*); // 0x004ADD30
 void __fastcall CheckedDeleteBulletTimeManager(CBulletTimeManager*); // 0x004AE080
-void __fastcall CheckedDeleteScriptConversationManager(CScriptConversationManager*); // 0x004AE810
+// Name fix (agentNF54): PScriptConversationManager is boost::scoped_ptr<CScriptConversationManager> (Ego_r.pdb member type) on the shared
+//   boost/scoped_ptr.h, whose inline destructor calls boost::checked_delete<CScriptConversationManager> 0x004AE810 out of line as __fastcall
+//   (opt-in FABLE_RETAIL_SCOPED_PTR_CHECKED_DELETE_FASTCALL): ??$checked_delete@VCScriptConversationManager@@@boost@@YIXPAVCScriptConversationManager@@@Z
+//   (FableWin.pdb 0x01B607B0; the landed row's own leaf), was the free stand-in ?CheckedDeleteScriptConversationManager@@YIXPAVCScriptConversationManager@@@Z.
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_SCOPED_PTR_CHECKED_DELETE_FASTCALL
+#include "boost/scoped_ptr.h"
 
 template<> struct CScopedPtr<CGameTimeManager> {
     CGameTimeManager* Ptr;
@@ -240,11 +247,6 @@ template<> struct CScopedPtr<CBulletTimeManager> {
     CBulletTimeManager* Ptr;
     CScopedPtr() : Ptr(0) { }
     ~CScopedPtr() { CheckedDeleteBulletTimeManager(Ptr); }
-};
-template<> struct CScopedPtr<CScriptConversationManager> {
-    CScriptConversationManager* Ptr;
-    CScopedPtr() : Ptr(0) { }
-    ~CScopedPtr() { CheckedDeleteScriptConversationManager(Ptr); }
 };
 template<> struct CScopedPtr<CFactionManager> {
     CFactionManager* Ptr;
@@ -296,7 +298,7 @@ class CWorld : public CBaseClassNonCopyable, public CIDrawWorld { public:
     CScopedPtr<CBulletTimeManager> PBulletTimeManager;
     CCountedPointer<CMusicManager> PMusicManager;
     CCountedPointer<COpinionReactionManager> POpinionReactionManager;
-    CScopedPtr<CScriptConversationManager> PScriptConversationManager;
+    boost::scoped_ptr<CScriptConversationManager> PScriptConversationManager;
     bool JustLoaded; unsigned char _pad81[3]; CCharString CurrentWorldName;
     long ConsolePauseAtFrameNumber, FrameStarted3DRendering; double LastUpdateTimeLength, LastUpdateTime;
     long CountdownTimer; bool Paused,SlowMotion,ShowDebugText,ShowFPSText,ShowProfileText; unsigned char _padA9[3];

@@ -8,6 +8,13 @@ namespace boost {
 // Boost 1.30 boost/checked_delete.hpp (FableWin.pdb ??$checked_delete@...@boost@@YAXPAV...@Z; inline in retail).
 template<class T> inline void checked_delete(T* x) { typedef char type_must_be_complete[sizeof(T)]; delete x; }
 #endif
+#if defined(FABLE_RETAIL_SCOPED_PTR_CHECKED_DELETE_FASTCALL) && !defined(FABLE_RETAIL_SCOPED_PTR_RESET)
+// Opt-in (agentNF54, row 0x004A6AB0 CWorld::~CWorld): that TU calls boost::checked_delete<CScriptConversationManager> out of line as
+// __fastcall (0x004AE810, x in ecx; FableWin.pdb ??$checked_delete@VCScriptConversationManager@@@boost@@YIXPAVCScriptConversationManager@@@Z,
+// the landed row 0x004AE810) from scoped_ptr's inline destructor. Declaration only.
+#include "rebuild_abi.h"
+template<class T> void FABLE_FASTCALL checked_delete(T* x);
+#endif
 template<class T> class scoped_ptr {
 public:
     explicit scoped_ptr(T* p=0):ptr(p) {}
@@ -19,6 +26,8 @@ public:
     ~scoped_ptr() { checked_delete(ptr); }
     void reset(T* p=0) { scoped_ptr<T>(p).swap(*this); }
     void swap(scoped_ptr& b) { T* tmp=b.ptr; b.ptr=ptr; ptr=tmp; }
+#elif defined(FABLE_RETAIL_SCOPED_PTR_CHECKED_DELETE_FASTCALL)
+    ~scoped_ptr() { checked_delete(ptr); }                      // (agentNF54 opt-in above: the out-of-line checked_delete)
 #else
     ~scoped_ptr();
 #endif

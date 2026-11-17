@@ -9,7 +9,7 @@
 //   GetPItem @ 0x00A01B50, CTCInventoryBase::CreateInventoryObject(long) @ 0x005BE8F3, std::bitset<>::test @ 0x00410DE0
 //   and CVectorMap LowerBound @ 0x0040F020 (inlined GetInterface: 0xBF object augmentations, the item's inventory
 //   category, 0x1A), CTCObjectAugmentations::GetFreeSlot @ 0x00765D50 / AttachAugmentationToSlot(long, long)
-//   @ 0x00768120, CTCInventoryItem::GetInventoryCategory(long) @ 0x005D99D0 (static `__fastcall`), the inventory's
+//   @ 0x00768120, CTCInventoryItem::GetInventoryType(long) @ 0x005D99D0 (static `__fastcall`), the inventory's
 //   virtual slot 79 (+0x13C, RemoveItem(def, 1)), CTCShowableItem::OnShowEnded @ 0x005D8E50 (propagated label).
 // Layout: retail CTCInventoryWeapons PActiveMeleeWeapon +0x134 and PActiveRangedWeapon +0x141 (Ego_r.pdb +0x14C /
 //   +0x159: the same 13-byte {pointer, def index, bool} stride, 0x18 lower in the release base; the intelligent pointer
@@ -21,7 +21,7 @@
 class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -68,9 +68,12 @@ class CTCObjectAugmentations { public:
 struct CTCShowableItem {
     void OnShowEnded();                                     // 0x005D8E50
 };
-class CTCInventoryItem { public:
-    static long __fastcall GetInventoryCategory(long defIndex);    // 0x005D99D0
-};
+// Name fix (agentNF54, e114): the 0x005D99D0 stand-in declaration is gone: it is the static
+//   ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z (Ego_r.pdb 0x0055A9A0 + FableWin.pdb 0x01E03620: the TC interface
+//   type of the inventory component that holds the item), declared by engine/CTCInventoryItem.h (FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY); the local empty ETCInterfaceType enum is the shared engine/ETCInterfaceType.h.
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
+#include "engine/CTCInventoryItem.h"
 
 namespace NInventory {
 class CTCInventoryBase { public:
@@ -119,7 +122,7 @@ void CTCInventoryWeapons::AugmentWeapon(long weaponDefIndex, long augmentationDe
         augmented = augmentations->GetFreeSlot() != -1;
         CThing* owner = ParentThing;
         NInventory::CTCInventoryBase* inventory = 0;
-        owner->GetInterface(&inventory, CTCInventoryItem::GetInventoryCategory(augmentationDefIndex));
+        owner->GetInterface(&inventory, CTCInventoryItem::GetInventoryType(augmentationDefIndex));
         inventory->RemoveItem(augmentationDefIndex, 1);
     }
     if (created) {

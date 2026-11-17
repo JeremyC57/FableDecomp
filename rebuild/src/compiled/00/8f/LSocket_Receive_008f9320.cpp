@@ -1,7 +1,7 @@
-// LSocket::Receive(vector<char>& data, LAddress& from, const LAddress& local) -- reads waiting data: for a named UDP local address (re)creates the bound datagram socket unless NoListeningBinding, selects for 50 us and recvfrom()s into the buffer, records the sender and closes the socket again; otherwise selects the connected socket and recv()s into the buffer (sized by FIONREAD when empty), treating WSAEWOULDBLOCK / WSAEINPROGRESS as no data; updates the receive counters; false on an error or no data
+// LHNetworkLib::LSocket::Receive(vector<char>& data, LAddress& from, const LAddress& local) -- reads waiting data: for a named UDP local address (re)creates the bound datagram socket unless NoListeningBinding, selects for 50 us and recvfrom()s into the buffer, records the sender and closes the socket again; otherwise selects the connected socket and recv()s into the buffer (sized by FIONREAD when empty), treating WSAEWOULDBLOCK / WSAEINPROGRESS as no data; updates the receive counters; false on an error or no data
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): a named `char* buffer = data._M_start;` before recv() gives retail's
 //   push-buffer-then-load-socket order (eax reuse); the parked form passed the member inline and hoisted Socket into ecx.
-// Leaf: ?Receive@LSocket@@
+// Leaf: ?Receive@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@AAULAddress@2@ABU52@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008F9320, 674 bytes (padded to 688), `ret 0xc`, /GS (cookie 0x0139C8A8,
 //   __security_check_cookie 0x00BFE9F9). Ego_r.pdb
@@ -15,151 +15,92 @@
 //   @ 0x008F8370 (landed).
 // Layout: retail LSocket (0x9C bytes) as the landed LSocket rows: Socket +0x38, ConnectionMode +0x60, NoListeningBinding
 //   +0x7c, NrTotalDataReceived +0x8c, NrLastDataReceived +0x94.
-// Shape: the select + result test is the landed IsReadable's inline SelectRead; STLport's one-argument resize(n) is
+// Shape: the select + result test (the PDB private SelectStatus, inline) is the LSOCKET_SELECT_READ expansion below; STLport's one-argument resize(n) is
 //   inlined (`resize(n, char())`) at the two result sites and called out of line for the empty-buffer sizing (VC7.1's
 //   inline budget; modelled with the two-argument form written out); the WSAEWOULDBLOCK / WSAEINPROGRESS range test is
 //   an `||`, so its report block is laid out cold after the epilogue.
+// Name fix (agentNF54): ported onto the shared engine/LSocket.h (FABLE_RETAIL_LSOCKET_RECEIVE / _LADDRESS: LHNetworkLib::LSocket,
+//   LAddress over the STLport std::string, std::vector<char>) with the body the landed one-argument Receive 0x008F99A0 already compiles
+//   for this function in the same TU. The row's own symbol is now the PDB spelling
+//   ?Receive@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@AAULAddress@2@ABU52@@Z (Ego_r + FableWin), which the
+//   landed callers 0x008F99A0 / 0x0090B160 already bind (was ?Receive@LSocket@@QAE_NAAUCCharVector@@AAULAddress@@ABU2@@Z), and the
+//   empty-buffer sizing calls ?resize@?$vector@DV?$allocator@D@std@@@std@@QAEXI@Z 0x00412880 (Ego_r 0x0040E0E0 + FableWin 0x0188AE50,
+//   FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; was the local CCharVector::resize), the two-argument resize 0x004122D0 as
+//   ?resize@?$vector@DV?$allocator@D@std@@@std@@QAEXIABD@Z (was CCharVector) and the error text the STLport basic_string(const char*,
+//   const allocator&) 0x00568440 (was the local CNetErrorString).
 #include "fable_compiler.h"
-extern "C" void __cdecl free(void* block);                                         // 0x00BFEA14
-extern "C" char* __cdecl _itoa(int value, char* buffer, int radix);                // 0x00BFED34
-extern "C" __declspec(dllimport) int __stdcall WSAGetLastError();                  // WSOCK32 #111
+#include "rebuild_abi.h"
+#define FABLE_RETAIL_LSOCKET_LADDRESS
+#define FABLE_RETAIL_LSOCKET_RECEIVE
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "engine/LSocket.h"
+#include "stlport/fable_string_bodies.h"
+extern "C" char* FABLE_CDECL _itoa(int value, char* buffer, int radix);                // 0x00BFED34
+struct sockaddr { unsigned short sa_family; char sa_data[14]; };
+struct hostent { char* h_name; char** h_aliases; short h_addrtype; short h_length; char** h_addr_list; };
+struct timeval { long tv_sec; long tv_usec; };
+struct fd_set { unsigned int fd_count; unsigned int fd_array[64]; };
+#ifdef _MSC_VER
+#define FABLE_WSAAPI __declspec(dllimport) __stdcall
+#else
+#define FABLE_WSAAPI
+#endif
+extern "C" int FABLE_WSAAPI WSAGetLastError();                                                         // WSOCK32 #111
+extern "C" unsigned long FABLE_WSAAPI inet_addr(const char* cp);                                       // WSOCK32 #10
+extern "C" char* FABLE_WSAAPI inet_ntoa(in_addr in);                                                   // WSOCK32 #11
+extern "C" hostent* FABLE_WSAAPI gethostbyname(const char* name);                                      // WSOCK32 #52
+extern "C" unsigned short FABLE_WSAAPI htons(unsigned short value);                                    // WSOCK32 #9
+extern "C" unsigned short FABLE_WSAAPI ntohs(unsigned short value);                                    // WSOCK32 #15
+extern "C" unsigned int FABLE_WSAAPI socket(int af, int type, int protocol);                           // WSOCK32 #23
+extern "C" int FABLE_WSAAPI bind(unsigned int s, const sockaddr* name, int length);                    // WSOCK32 #2
+extern "C" int FABLE_WSAAPI select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds, const timeval* timeout);   // WSOCK32 #18
+extern "C" int FABLE_WSAAPI recvfrom(unsigned int s, char* buffer, int length, int flags, sockaddr_in* from, int* fromLength); // WSOCK32 #17
+extern "C" int FABLE_WSAAPI recv(unsigned int s, char* buffer, int length, int flags);                // WSOCK32 #16
+extern "C" int FABLE_WSAAPI closesocket(unsigned int s);                                               // WSOCK32 #3
+extern "C" int FABLE_STDCALL __WSAFDIsSet(unsigned int fd, fd_set* set);                              // 0x00C003EC (wsock32.lib stub)
 
-namespace std {
-template <class T> class allocator {
-public:
-    allocator() { }
-};
-}
+namespace LHNetworkLib {
 
-struct CNetErrorString {                           // STLport basic_string<char> (12 bytes), built by the out-of-line ctor
-    char* m_start;
-    char* m_finish;
-    char* m_endOfStorage;
-    CNetErrorString(const char* text, const std::allocator<char>& a = std::allocator<char>());   // 0x00568440
-    ~CNetErrorString()
-    {
-        if (m_start)
-            free(m_start);
+// The select + result test (the PDB's private SelectStatus, inline in retail) as a macro over the member Socket, expanded at
+// both sites.
+#define LSOCKET_SELECT_READ(result_, microseconds_) \
+    { \
+        timeval timeout; \
+        timeout.tv_sec = 0; \
+        timeout.tv_usec = (microseconds_); \
+        fd_set readSet; \
+        readSet.fd_count = 0; \
+        if (readSet.fd_count < 64) \
+            readSet.fd_array[readSet.fd_count++] = Socket; \
+        int selected = select(0, &readSet, 0, 0, &timeout); \
+        if (selected == -1) \
+            result_ = false; \
+        else if (selected == 1 && __WSAFDIsSet(Socket, &readSet)) \
+            result_ = true; \
+        else \
+            result_ = false; \
     }
-};
 
-struct CRetailString {                             // STLport basic_string<char>, 12 bytes in retail
-    char* _M_start;
-    char* _M_finish;
-    char* _M_end_of_storage;
-    const char* c_str() const { return _M_start; }
-};
-
-struct LAddress {                                  // Ego_r.pdb names; retail 0x1C bytes (12-byte STLport string)
-    CRetailString  ServerName;                     // +0x00
-    unsigned long  ServerIP;                       // +0x0C
-    unsigned short ServerPort;                     // +0x10
-    long           TransportProtocol;              // +0x14 LSOCKET_PROTOCOL
-    long           TransportFlags;                 // +0x18 LSOCKET_FLAGS
-};
-
-struct timeval {                                   // winsock timeval
-    long tv_sec;
-    long tv_usec;
-};
-
-struct fd_set {                                    // winsock 1.1 fd_set, FD_SETSIZE 64
-    unsigned int fd_count;
-    unsigned int fd_array[64];
-};
-
-extern "C" __declspec(dllimport) int __stdcall select(int nfds, fd_set* readfds, fd_set* writefds, fd_set* exceptfds,
-                                                      const timeval* timeout);   // WSOCK32 #18
-extern "C" int __stdcall __WSAFDIsSet(unsigned int fd, fd_set* set);              // 0x00C003EC (wsock32.lib stub)
-
-#define FD_ZERO(set) (((fd_set*)(set))->fd_count = 0)
-#define FD_SET(fd, set) do { \
-    if (((fd_set*)(set))->fd_count < 64) \
-        ((fd_set*)(set))->fd_array[((fd_set*)(set))->fd_count++] = (fd); \
-} while (0)
-#define FD_ISSET(fd, set) __WSAFDIsSet((unsigned int)(fd), (fd_set*)(set))
-
-struct sockaddr_in {                               // winsock sockaddr_in, 16 bytes
-    short          sin_family;
-    unsigned short sin_port;
-    unsigned long  sin_addr;
-    char           sin_zero[8];
-};
-
-struct CCharVector {                               // STLport vector<char>, 12 bytes in retail
-    char* _M_start;
-    char* _M_finish;
-    char* _M_end_of_storage;
-    unsigned int size() const { return _M_finish - _M_start; }
-    void resize(unsigned int newSize, const char& fill);   // 0x004122D0
-    void resize(unsigned int newSize);                     // 0x00412880
-};
-
-class LSocketServer;
-
-class LSocket {                                    // retail 0x9C bytes (Ego_r.pdb 196 with its larger LAddress/vector)
-public:
-    LAddress       RemoteAddress;                  // +0x00
-    LAddress       LocalAddress;                   // +0x1C
-    unsigned int   Socket;                         // +0x38
-    sockaddr_in    SocketInformation;              // +0x3C
-    sockaddr_in    SocketInterfaceInformation;     // +0x4C
-    bool           ListeningSocket;                // +0x5C
-    long           ConnectionMode;                 // +0x60 LSOCKET_PROTOCOL
-    CCharVector    SendOutputQueue;                // +0x64
-    CCharVector    InternalPacketBuffer;           // +0x70
-    bool           NoListeningBinding;             // +0x7C
-    LSocketServer* ServerObject;                   // +0x80
-    bool           ActivityPending;                // +0x84
-    unsigned long  NrTotalDataSent;                // +0x88
-    unsigned long  NrTotalDataReceived;            // +0x8C
-    unsigned long  NrLastDataSent;                 // +0x90
-    unsigned long  NrLastDataReceived;             // +0x94
-    void*          _DEBUGFP;                       // +0x98
-    static unsigned int __fastcall CreateSocket(const LAddress& address, long protocol);           // 0x008F87A0
-    static bool __fastcall ConvertSockaddr2LAddress(const sockaddr_in& from, LAddress& address);  // 0x008F8BB0
-    bool SetNonBlocking(bool nonBlocking);         // 0x008F8870
-    unsigned long CheckReadSize();                 // 0x008F8370
-    FABLE_FORCEINLINE bool SelectRead(long microseconds)
-    {
-        timeval timeout;
-        timeout.tv_sec = 0;
-        timeout.tv_usec = microseconds;
-        fd_set readSet;
-        FD_ZERO(&readSet);
-        FD_SET(Socket, &readSet);
-        int result = select(0, &readSet, 0, 0, &timeout);
-        if (result == -1)
-            return false;
-        if (result == 1 && FD_ISSET(Socket, &readSet))
-            return true;
-        return false;
-    }
-    bool Receive(CCharVector& data, LAddress& from, const LAddress& local);
-};
-
-extern "C" __declspec(dllimport) int __stdcall recvfrom(unsigned int s, char* buffer, int length, int flags,
-                                                        sockaddr_in* from, int* fromLength);   // WSOCK32 #17
-extern "C" __declspec(dllimport) int __stdcall recv(unsigned int s, char* buffer, int length, int flags);   // WSOCK32 #16
-extern "C" __declspec(dllimport) int __stdcall closesocket(unsigned int s);                       // WSOCK32 #3
-
-bool LSocket::Receive(CCharVector& data, LAddress& from, const LAddress& local)
+bool LSocket::Receive(std::vector<char>& data, LAddress& from, const LAddress& local)
 {
     int received = 0;
     NrLastDataReceived = 0;
-    if (ConnectionMode == 3)
+    if (ConnectionMode == LSP_TCP_PACKET)
         return false;
-    if (local.ServerName.c_str()[0] != 0 && local.TransportProtocol == 2) {   // a named UDP address
+    if (local.ServerName.c_str()[0] != 0 && local.TransportProtocol == LSP_UDP) {   // a named UDP address
         sockaddr_in fromAddress;
         int fromLength = sizeof(fromAddress);
         if (!NoListeningBinding) {
-            Socket = CreateSocket(local, 2);
+            Socket = CreateSocket(local, LSP_UDP);
             SetNonBlocking(true);
         }
-        if (SelectRead(50)) {
-            received = recvfrom(Socket, data._M_start, data.size(), 0, &fromAddress, &fromLength);
+        bool readable;
+        LSOCKET_SELECT_READ(readable, 50)
+        if (readable) {
+            received = recvfrom(Socket, data.begin(), data.size(), 0, &fromAddress, &fromLength);
             if (received == -1) {
-                CNetErrorString error("Winsock Error: ");
+                std::string error("Winsock Error: ");
                 char number[50];
                 _itoa(WSAGetLastError(), number, 10);
                 return false;
@@ -173,14 +114,16 @@ bool LSocket::Receive(CCharVector& data, LAddress& from, const LAddress& local)
     else {
         if (Socket == (unsigned int)-1)
             return false;
-        if (!SelectRead(50))
+        bool readable;
+        LSOCKET_SELECT_READ(readable, 50)
+        if (!readable)
             return false;
         unsigned long size = data.size();
         if (size == 0)
             size = CheckReadSize();
         if (data.size() == 0)
             data.resize(size);
-        char* buffer = data._M_start;
+        char* buffer = data.begin();
         received = recv(Socket, buffer, size, 0);
         if (received == -1) {
             switch (WSAGetLastError()) {
@@ -189,7 +132,7 @@ bool LSocket::Receive(CCharVector& data, LAddress& from, const LAddress& local)
                 received = 0;
                 break;
             default: {
-                CNetErrorString report("Winsock Error: ");
+                std::string report("Winsock Error: ");
                 char number[50];
                 _itoa(WSAGetLastError(), number, 10);
                 return false;
@@ -203,4 +146,6 @@ bool LSocket::Receive(CCharVector& data, LAddress& from, const LAddress& local)
     NrTotalDataReceived += received;
     NrLastDataReceived = received;
     return true;
+}
+
 }

@@ -1,0 +1,102 @@
+addr       parity           behav  name
+0042f50b   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+0042f50b   WARN SHARED_HEADER_AVAILABLE CFrontEndDef
+0042f50b   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit
+0042f50b   WARN SHARED_HEADER_AVAILABLE CDateAndTime
+0042f50b   WARN RELOC_NAME: ??1CMainGameComponentInit@@QAE@XZ -> 004131d0 labelled '_global::Dtor_CCharStringBase_004131d0'
+0042f50b   WARN RELOC_NAME: ??1?$CCountedPointer@$$CBVCFontBank@@@@QAE@XZ -> 0042f948 labelled 'CCountedPointer<CFontBank_const>::Release'
+0042f50b   RELOCATION_MATCH PASS   ~CNewFrontendGameComponent
+00467553   WARN RELOC_NAME: ??$TransferVector@_N@CPersistContext@@QAEXAAV?$vector@_NV?$allocator@_N@std@@@std@@@Z -> 00467597 labelled 'CPersistContext::TransferBinary_00467597'
+00467553   RELOCATION_MATCH PASS   Transfer
+0049b6b0   RELOCATION_MATCH PASS   push_back
+004a6ab0   WARN SHARED_HEADER_AVAILABLE CIDrawWorld
+004a6ab0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004a6ab0   WARN SHARED_HEADER_AVAILABLE CTestQuest
+004a6ab0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+004a6ab0   WARN SHARED_HEADER_AVAILABLE CGameTimeManager
+004a6ab0   WARN SHARED_HEADER_AVAILABLE CFactionManager
+004a6ab0   WARN SHARED_HEADER_AVAILABLE CSystemManager
+004a6ab0   WARN SHARED_HEADER_AVAILABLE C3DAnimationManager
+004a6ab0   WARN RELOC_NAME: ?DestroyCTestQuestRange@@YIXPAVCTestQuest@@0AAUCAllocator@@@Z -> 004abd90 labelled 'std::__destroy_aux'
+004a6ab0   WARN RELOC_NAME: ?CheckedDeleteBulletTimeManager@@YIXPAVCBulletTimeManager@@@Z -> 004ae080 labelled 'boost::checked_delete<CBulletTimeManager>'
+004a6ab0   WARN RELOC_NAME: ?DestroyFactionRange@@YIXPAUCFactionPair@@0AAUCAllocator@@@Z -> 004ad9e0 labelled 'std::__destroy_aux<std::pair<unsigned long, CCountedPointer<CFaction>> *>'
+004a6ab0   WARN RELOC_NAME: ?CheckedDeleteGameTimeManager@@YIXPAVCGameTimeManager@@@Z -> 004add30 labelled 'boost::checked_delete<CGameTimeManager>'
+004a6ab0   WARN STANDIN_LEAF ??1CWorld@@UAE@XZ (catalog NHeroInformationScreens::CBase::~CBase; names another function)
+004a6ab0   RELOCATION_MATCH PASS   ~CBase
+004d1eb0   RELOCATION_MATCH PASS   Insert
+00506bb0   RELOCATION_MATCH PASS   GetLevelDimensions
+0051e580   MATCH            PASS   ThingTypeToTypeFlags
+0059b79a   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+0059b79a   WARN RELOC_CONFLICT: ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z -> 005d97b0 here, 005d99d0 in landed 005c44fa
+0059b79a   RELOCATION_MATCH PASS   GetMenuBranchFromDefIndex
+005a3581   WARN SHARED_HEADER_AVAILABLE CThing
+005a3581   WARN SHARED_HEADER_AVAILABLE CPlayer
+005a3581   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+005a3581   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005a3581   WARN SHARED_HEADER_AVAILABLE CItem
+005a3581   WARN SHARED_HEADER_AVAILABLE CCategory
+005a3581   WARN SHARED_HEADER_AVAILABLE CTCShop
+005a3581   WARN RELOC_NAME: ?GetOwner@CTCInventoryBase@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a3581   WARN RELOC_NAME: ?GetCurrentBuyPrice_007743b0@CTCShop@@QBEJJJ@Z -> 007743b0 labelled 'CTCShop::GetCurrentSellPrice'
+005a3581   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a3581   WARN RELOC_NAME: ?CanAddItem@CTCInventoryBase@@QBE_NJ@Z -> 005bf2ed labelled 'NInventory::CTCInventoryBase::IsSpaceInInventoryForItem'
+005a3581   RELOCATION_MATCH PASS   BuyHighlightedItem
+005b1653   WARN STANDIN_LEAF ??0SPairLongCSecond_005b12f4@@QAE@ABU0@@Z (catalog _unattributed::SPairLongCSecond_005b12f4; address-only name)
+005b1653   RELOCATION_MATCH PASS   SPairLongCSecond_005b12f4
+  WARN leaf '~CAggregate_005bc216' matches no symbol in 005bc216.obj; graded the largest function
+  WARN leaf '~CAggregate_005bc216' matches no symbol in 005bc216.obj; graded the largest function
+005bc216   WARN RELOC_NAME: ??1CMember_004ac8f0@@QAE@XZ -> 004ac8f0 labelled 'CRetailTree_erase004aba70::~CRetailTree_erase004aba70'
+005bc216   WARN RELOC_NAME: ??1CMember_00550a00@@QAE@XZ -> 00550a00 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+005bc216   WARN STANDIN_LEAF ??1CAggregate_005bc216@@QAE@XZ (catalog _unattributed::~CAggregate_005bc216; address-only name)
+005bc216   RELOCATION_MATCH PASS   ~CAggregate_005bc216
+005d84d1   RELOCATION_MATCH PASS   StdList_CreateNode_sz0x10_005d84d1
+0065574c   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAV?$CIntelligentPointer@VCThing@@@@IV1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@IABV1@ABU__false_type@0@@Z -> 004aa190 labelled '_global::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>'
+0065574c   RELOCATION_MATCH PASS   uninitialized_fill_n<CIntelligentPointer<CThing> *,unsigned int,CIntelligentPointer<CThing> >
+007220f0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+007220f0   RELOCATION_MATCH PASS   ScalarDeletingDtor_007220f0
+00755520   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00755520   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00755520   RELOCATION_MATCH PASS   ~SAppearanceDrawRecord_00755520
+007e8160   RELOCATION_MATCH PASS   OnSerialise
+00862780   WARN SHARED_HEADER_AVAILABLE CThing
+00862780   WARN SHARED_HEADER_AVAILABLE CTCCombat
+00862780   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+00862780   WARN SHARED_HEADER_AVAILABLE CPlayer
+00862780   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00862780   WARN SHARED_HEADER_AVAILABLE CAnimateThing
+00862780   WARN RELOC_NAME: ?GetHasInformation@CThingAICreature@@QBE_NXZ -> 008300d0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   WARN RELOC_NAME: ?GetWaveWithInformation@CThingAICreature@@QBE_NXZ -> 008300f0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   WARN RELOC_NAME: ?GetAnimationTransitionInTime@CAnimationEntry@@QBEJXZ -> 005dc1f0 labelled 'CAnimationEntry::GetDelayTime'
+00862780   RELOCATION_MATCH PASS   UpdateIdleAnim
+008f9320   WARN RELOC_ALIAS: ___WSAFDIsSet@8 -> 00c003ec is the import thunk 'WSOCK32.DLL::#151'
+008f9320   WARN RELOC_ALIAS: __itoa -> 00bfed34 is the import thunk 'MSVCR71.DLL::_itoa'
+008f9320   RELOCATION_MATCH PASS   Receive
+00970f30   WARN SHARED_HEADER_AVAILABLE CWorld
+00970f30   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00970f30   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+00970f30   WARN STANDIN_LEAF ?IsRunnableLeaf@UseCoverMethods@@QAE_NXZ (catalog CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf; names another function)
+00970f30   RELOCATION_MATCH PASS   IsRunnableLeaf
+009c9280   WARN RELOC_NAME: ?AsyncUpdatePending@CBankFileAsync@@QAEXXZ -> 009d68b0 labelled '_global::Dtor_RestartReadsBase_009d68b0'
+009c9280   RELOCATION_MATCH PASS   GetTextEntryFromGroup
+
+WINS: 20
+  0042f50b RELOCATION_MATCH CNewFrontendGameComponent::??1CNewFrontendGameComponent
+  00467553 RELOCATION_MATCH CPlayerInventoryDef::?Transfer@CPlayerInventoryDef@@QAEXAAVCPersistContext@@@Z
+  0049b6b0 RELOCATION_MATCH std::vector<CTexture>::?push_back@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEXABVCTexture@@@Z
+  004a6ab0 RELOCATION_MATCH NHeroInformationScreens::CBase::??1CWorld@@UAE@XZ
+  004d1eb0 RELOCATION_MATCH CVectorMap<float,CSubtitledMessage::CCameraTag>::?Insert@?$CVectorMap@MVCCameraTag@CSubtitledMessage@@V?$CKeyPairCompareLess@MVCCameraTag@CSubtitledMessage@@@@@@QAEXABMABVCCameraTag@CSubtitledMessage@@@Z
+  00506bb0 RELOCATION_MATCH CWorldMap::GetLevelDimensions
+  0051e580 MATCH CThingManager::?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z
+  0059b79a RELOCATION_MATCH CTCInventoryTrade::GetMenuBranchFromDefIndex
+  005a3581 RELOCATION_MATCH CTCInventoryTrade::BuyHighlightedItem
+  005b1653 RELOCATION_MATCH _unattributed::SPairLongCSecond_005b12f4
+  005bc216 RELOCATION_MATCH _unattributed::~CAggregate_005bc216
+  005d84d1 RELOCATION_MATCH _global::Buynode
+  0065574c RELOCATION_MATCH std::??$uninitialized_fill_n@PAV?$CIntelligentPointer@VCThing@@@@IV1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@IABV1@@Z
+  007220f0 RELOCATION_MATCH _global::@VecDelDtor@12
+  00755520 RELOCATION_MATCH SAppearanceDrawRecord_00755520::??1SAppearanceDrawRecord_00755520
+  007e8160 RELOCATION_MATCH CTCActionUseReadable::OnSerialise
+  00862780 RELOCATION_MATCH CModeStandBase::?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
+  008f9320 RELOCATION_MATCH LSocket::?Receive@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@AAULAddress@2@ABU52@@Z
+  00970f30 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::?IsRunnableLeaf@UseCoverMethods@@QAE_NXZ
+  009c9280 RELOCATION_MATCH NGameText::CDataBank::?GetTextEntryFromGroup@CDataBank@NGameText@@QBEPBVCTextEntry@2@KABVCCharString@@AA_NPAJ_N@Z

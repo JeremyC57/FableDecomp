@@ -18,6 +18,8 @@
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
 //   `dynamic initializer for '...'`, defining rows named by agentFAM09):
 //   0x013B8B0C DEFAULT_DEATH_RECOVERY_MARKER_NAME (anonymous namespace; initializer 0x0121A7AD), was g_HeroGuildRecoveryMarker.
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CWORLDMAP_REGIONCOUNT   // agentNF54: GetRegionCount 0x004FB470 (engine/CWorldMap.h, reached through engine/CTCBase.h too)
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
@@ -84,8 +86,10 @@ class CGameDefinitionManager { public:
 };
 class CWorld { public: unsigned long* GetWorldSeed() const;     // 0x0049D810
 };
-class CWorldMap { public: long GetNoMaps() const;           // 0x004FB470
-};
+// Name fix (agentNF54): the local CWorldMap stand-in replaced by the shared engine/CWorldMap.h: 0x004FB470 is
+//   ?GetRegionCount@CWorldMap@@QBEJXZ (Ego_r 0x004CEBA0 + FableWin; FABLE_RETAIL_CWORLDMAP_REGIONCOUNT: (end - begin) / sizeof(CRegion) over
+//   Regions +0x2C), was ?GetNoMaps@CWorldMap@@QBEJXZ (GetNoMaps counts maps, FableWin only).
+#include "engine/CWorldMap.h"
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 class CTCHeroStats : public CTCBase { public:
@@ -231,7 +235,7 @@ CTCHeroStats::CTCHeroStats(CThing& owner)
 {
     ExperienceSpentOn.resize(11, 0);
     NumberOfTimesUsedAbility.resize(20, 0);
-    RegionTime.resize(GetWorldMap().GetNoMaps(), 0);
+    RegionTime.resize(GetWorldMap().GetRegionCount(), 0);
     HeroStatsExperience.resize(4, 0);
     UCounter = GFFloatRandom(1.0f, GetWorld().GetWorldSeed());
     VCounter = GFFloatRandom(1.0f, GetWorld().GetWorldSeed());

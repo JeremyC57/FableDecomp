@@ -9,20 +9,26 @@
 // Retail std::list node factory: one malloc'd node (malloc @ 0x00BFEA0E) whose value is
 // copy-constructed in place with placement new (hence the null test on the value address) by the
 // out-of-line copy constructor @ 0x005B12F4; the node is returned. `this` (the list) is unused.
-// The element type is not recoverable beyond its 8-byte size. One of 28 bodies.
+// One of 28 bodies.
+// Name fix (agentNF54, nf44:52): the 8-byte value is the shared STLport std::pair<CWideString, long> (stlport/fable_containers.h +
+//   fable_string.h; the value_type_005b12f4 stand-in is gone): its copy constructor is the landed 0x005B12F4
+//   ??0?$pair@VCWideString@@J@std@@QAE@ABU01@@Z, called out of line in this size-optimised TU. The list itself keeps its descriptive
+//   stand-in (owner unproven).
 #include <new>
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
 extern "C" void* __cdecl malloc(unsigned int size);
 
 struct CRetailList_node0x10 {
-    struct value_type_005b12f4 { unsigned char _body[0x8]; value_type_005b12f4(const value_type_005b12f4& other); };   // copy ctor 0x005B12F4
-    struct node { node* next; node* prev; value_type_005b12f4 value; };
+    typedef std::pair<CWideString, long> value_type;
+    struct node { node* next; node* prev; value_type value; };
     node* head;
-    node* Buynode(const value_type_005b12f4& value);
+    node* Buynode(const value_type& value);
 };
 
-CRetailList_node0x10::node* CRetailList_node0x10::Buynode(const value_type_005b12f4& value)
+CRetailList_node0x10::node* CRetailList_node0x10::Buynode(const value_type& value)
 {
     node* n = (node*)malloc(sizeof(node));
-    new (&n->value) value_type_005b12f4(value);
+    new (&n->value) value_type(value);
     return n;
 }

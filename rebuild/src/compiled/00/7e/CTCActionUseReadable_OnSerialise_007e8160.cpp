@@ -8,16 +8,12 @@
 // const reference and destroyed after: the default value comes from an inline helper that returns a NAMED local by value
 // (VC7.1 has no NRVO, so the local is copied into the return temporary and destroyed at the helper's end). The base
 // OnSerialise is not called; `loading` is unused.
-class CWideString { public:
-    void* m_pData;
-    CWideString();                             // 0x0099AED0
-    CWideString(const CWideString& other);     // 0x0099B720
-    ~CWideString();                            // 0x0099B510
-};
-
-class CPersistContext { public:
-    void Transfer(const char* name, CWideString& value, const CWideString& defaultValue);   // 0x00410AC0
-};
+// Name fix (agentNF54): the local CWideString / CPersistContext stand-ins replaced by the shared fable_string.h and
+//   engine/CPersistContext.h: 0x00410AC0 is the member template instance ??$Transfer@VCWideString@@@CPersistContext@@QAEXPBDAAVCWideString@@ABV1@@Z
+//   (Ego_r 0x0040D1C0 + FableWin 0x01895750; was the non-template ?Transfer@CPersistContext@@QAEXPBDAAVCWideString@@ABV2@@Z).
+#define FABLE_RETAIL_CWIDESTRING
+#include "fable_string.h"
+#include "engine/CPersistContext.h"
 
 inline CWideString EmptyWideString()
 {

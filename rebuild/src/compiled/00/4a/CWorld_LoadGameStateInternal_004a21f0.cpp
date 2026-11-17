@@ -27,6 +27,10 @@
 //   gives retail's frame (0x170 bytes: the autosave string in its own word +0x5C, file +0x64, parser +0x80, the level-path temporaries
 //   +0xA8 / +0xAC after the parser); written as an `if (!SerialisingHeroState) { ... }` block the frame is 0x16C and 107 words differ.
 #define FABLE_RETAIL_CWORLD
+// Name fix (agentNF54): ESaveType is CWorld::ESaveType (both PDBs; engine/CWorld.h opt-in FABLE_RETAIL_CWORLD_NESTED_ESAVETYPE), so the
+//   0x004AB640 transfers bind ??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z (Ego_r 0x004B24D0 +
+//   FableWin 0x01B5DD00; the landed row's own leaf), was the namespace-scope ??$Transfer@W4ESaveType@@@...ABW41@@Z.
+#define FABLE_RETAIL_CWORLD_NESTED_ESAVETYPE
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CWORLD_TYPED_MEMBERS

@@ -1,0 +1,37 @@
+source	entry	address	correct_symbol	status	note
+nf44	94	0x00404310	?GetCRC@CCharString@@QBEKXZ	carry	not reached in round 6 (NF44); fresh probe ok=14 bad=1 unv=0 ; wrong binders: 0065c781
+nf41	e71	004091c0	?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z	carry	not reached [e71]
+nf41	e170	00410ac0	??$Transfer@VCWideString@@@CPersistContext@@QAEXPBDAAVCWideString@@ABV1@@Z	carry	not reached [e170]
+nf44	1	00412130	std::vector<CWideString>::~vector (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)	carry	not reached in round 6 (NF44); fresh probe ok=15 bad=5 unv=0 ; wrong binders: 0042f50b 0047e07f 00597006 00599e3f 00e64f80
+nf44	99	0x00412880	?resize@?$vector@DV?$allocator@D@std@@@std@@QAEXI@Z	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=1 unv=0 ; wrong binders: 008f9320
+nf41	e206	004336bc	AddDefinitionType/SDefinitionType/Create*Def (callee spellings in the row)	carry	not reached [e206]
+nf44	43	0x00458F89	?TransferBinaryIn@?$CPersistTraits@VCFloatRange@@@@QAEXAAVCMemoryDataInputStream@@AAVCFloatRange@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 00458f2b
+nf44	45	0x00465852	??$GFSerialiseVectorBinaryIn@VCDefString@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=3 bad=1 unv=0 ; wrong binders: 004e9642
+nf44	3	00466a47	??$TransferVector@J@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=33 bad=1 unv=0 ; wrong binders: 00467553
+nf44	4	0049b6b0	?push_back@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@QAEXABVCTexture@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=1 unv=0 ; wrong binders: 0049a0b0
+nf41	e134	0049d9d0	?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	carry	not reached [e134]
+nf41	e172	0049f180	?ActivateWorld@CWorld@@QAEX_N@Z	carry	not reached [e172]
+nf44	48	0x004AA140	??$__uninitialized_copy@PAV?$CIntelligentPointer@VCThing@@@@PAV1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@00ABU__false_type@0@@Z	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=1 unv=0 ; wrong binders: 0077e580
+nf44	49	0x004AA190	??$__uninitialized_fill_n@PAV?$CIntelligentPointer@VCThing@@@@IV1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@IABV1@ABU__false_type@0@@Z	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=1 unv=0 ; wrong binders: 0065574c
+nf41	e173	004ab640	??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z	carry	not reached [e173]
+nf41	e171	004ab710	??$Transfer@N@CPersistContext@@QAEXPBDAANABN@Z	carry	not reached [e171]
+nf44	50	0x004AC940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	carry	not reached in round 6 (NF44); fresh probe ok=6 bad=9 unv=0 ; wrong binders: 007ce1f0 008099b0 0080cc40 008ddad0 008e0060 0095ab50 00970f30 009710d0 00977c40
+nf41	e166	004ae810	??$checked_delete@VCScriptConversationManager@@@boost@@YIXPAVCScriptConversationManager@@@Z	carry	not reached [e166]
+nf41	e141	004c79a0	?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ	carry	not reached [e141]
+nf41	e8	004d18e0	?push_back@?$CArray@U?$pair@MVCCameraTag@CSubtitledMessage@@@std@@@@QAEXABU?$pair@MVCCameraTag@CSubtitledMessage@@@std@@@Z	carry	not reached [e8]
+nf41	e207	004fb470	?GetRegionCount@CWorldMap@@QBEJXZ	carry	not reached [e207]
+nf41	e174	00516180	??$ReadVar@H@CAFile@@QAEXAAHPAVCASuspendableProcess@@@Z	carry	not reached [e174]
+nf41	e26	005178a0	?push_back@?$CArray@K@@QAEXABK@Z (probable; folded with the long instantiation) -- BINDING CONFLICT with 00485ff3	carry	not reached [e26]
+nf41	e182	0051cbb0	?ReadFromFile@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	carry	not reached [e182]
+nf41	e54	0051e580	?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z	carry	not reached [e54]
+nf41	e39	0056c860	??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@PBVCThing@@@Z	carry	not reached [e39]
+nf44	52	0x005B12F4	??0?$pair@VCWideString@@J@std@@QAE@ABU01@@Z	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=2 unv=0 ; wrong binders: 005b1653 005d84d1
+nf41	e50	005b33f4	??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z	carry	not reached [e50]
+nf44	5	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	carry	not reached in round 6 (NF44); fresh probe ok=2 bad=8 unv=0 ; wrong binders: 005bc216 005bc277 00709b10 007220f0 00722270 007222b0 00728f80 00755520
+nf44	54	0x005BD597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=9 unv=0 ; wrong binders: 0057770a 005778ca 00587847 00589d30 0059e2c7 0059f304 005fce60 00621720 00621c80
+nf41	e196	005d96f0	?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z	carry	not reached [e196]
+nf41	e193	005d9930	?IsTrophy@CTCInventoryItem@@SI_NJ@Z	carry	not reached [e193]
+nf41	e114	005d99d0	?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z	carry	not reached [e114]
+nf41	e38	005ed300	??4?$CIntelligentPointer@$$CBVCThing@@@@QAEAAV0@ABV0@@Z	carry	not reached [e38]
+nf44	7	005ede93	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	carry	not reached in round 6 (NF44); fresh probe ok=25 bad=2 unv=0 ; wrong binders: 0057770a 005778ca
+nf41	e105	006bb390	?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z	carry	not reached [e105]

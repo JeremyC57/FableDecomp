@@ -52,16 +52,14 @@ class CMainGameComponentInit { public:
     unsigned long _data[4];
     ~CMainGameComponentInit();                             // 0x004131D0
 };
-class CWideString { public:
-    void* PStringData;
-    ~CWideString();                                        // 0x0099B510
-};
-struct CWideStringVector {                                 // STLport vector<CWideString>
-    CWideString* _M_start;
-    CWideString* _M_finish;
-    CWideString* _M_end_of_storage;
-    ~CWideStringVector();                                  // 0x00412130
-};
+// Name fix (agentNF54): the local CWideString / CWideStringVector stand-ins replaced by the shared fable_string.h and
+//   stlport/fable_containers.h: FileNames is std::vector<CWideString> (Ego_r.pdb member type), whose destructor 0x00412130 is
+//   ??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ (Ego_r + FableWin; landed row 0x00412130), out of line
+//   in this TU (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE); was ??1CWideStringVector@@QAE@XZ.
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
 class CDateAndTime { public:
     unsigned char _data[0x10];
 };
@@ -93,7 +91,7 @@ class CNewFrontendGameComponent : public CGameComponent { public:        // vtab
     CCountedPointer<CIEngine>              m_pEngine;                  // +0x58
     CCountedPointer<NGameText::CDataBank>  m_pTextBank;                // +0x60
     CInputManager*                         m_pInputManager;            // +0x68
-    CWideStringVector                      FileNames;                  // +0x6c
+    std::vector<CWideString>               FileNames;                  // +0x6c
     CDateAndTimeVector                     FileTimes;                  // +0x78
     CWideString                            SaveGame;                   // +0x84
 private:

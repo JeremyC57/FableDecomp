@@ -5,21 +5,33 @@
 // player is visible to it and standing inside its home building; remember the player in PBurglar.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00957F20, length 210 bytes (+ int3 padding).
 // Callees: CThingAICreature::GetSleepTimes @ 0x00833390 (two out longs), CAIStateGroupBase::GetWorld @ 0x008FCFC0
-// (twice), the world clock's IsTimeOfDayInRange @ 0x006BB390 (world +0x1c), CBaseIntelligentPointer::GetPItem
+// (twice), CGameTimeManager::IsTimeBetween @ 0x006BB390 (world +0x1c), CBaseIntelligentPointer::GetPItem
 // @ 0x00A01B50 on the creature's home-building pointer (+0x168), the world's player-manager getter @ 0x0049D9D0
 // and its player getter @ 0x00487DD0 (manifest "_Cons_val<...>" labels are propagated and wrong),
 // CanCreatureSeeCreature @ 0x008645E0, the thing position getter @ 0x004C73D0, CThingBuilding::IsPointInside
-// @ 0x0082D000, CIntelligentPointer(CThing*) @ 0x0056C860, CIntelligentPointer::operator= @ 0x005ED300,
+// @ 0x0082D000, CIntelligentPointer<const CThing>(const CThing*) @ 0x0056C860, its operator= @ 0x005ED300,
 // ~CBaseIntelligentPointer @ 0x00A01C10.
 // Shape: the home pointer read through an inline getter (`lea ecx,[eax+168h]`); the time test result and the home pointer are named locals computed before the combined test (bl / ebp);
 // `PBurglar = CIntelligentPointer(player)` through a named out-of-line-constructed pointer + operator=; the clock is a named local (GetPWorld before the argument loads).
 // No engine header for this class; PBurglar is +0x14.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 // Name fix (agentNF6 2026-11-10): NCreatureAI::IsAwareOfThing 0x008645E0 is ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (Ego_r.pdb / FableWin.pdb), was a free CanCreatureSeeCreature(const CThing*, const CThing*, bool).
+// Name fix (agentNF54): the stand-ins CWorldClock, CIntelligentPointerOut, CIntelligentPointerThing and CBaseIntelligentPointerCtor are
+//   gone. The clock is the shared engine/CGameTimeManager.h (FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN: Ego_r.pdb 0x006F6B80 + FableWin.pdb
+//   0x024607E0 ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z); PBurglar is the shared CIntelligentPointer<const CThing> (engine/
+//   CIntelligentPointer.h, out-of-line ctor + operator=: Ego_r.pdb 0x005A6190 + FableWin.pdb 0x01F2AE40
+//   ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@PBVCThing@@@Z; FableWin.pdb 0x02057E90 ??4?$CIntelligentPointer@$$CBVCThing@@@@QAEAAV0@ABV0@@Z,
+//   whose landed row 0x005ED300 and its constructor's RTTI vtable .?AV?$CIntelligentPointer@$$CBVCThing@@@@ name the instance), and the
+//   home pointer the shared CBaseIntelligentPointer (GetPItem 0x00A01B50, ~ 0x00A01C10).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
+#include "engine/C3DVector.h"
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_OUTOFLINE
+#include "engine/CIntelligentPointer.h"
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -53,22 +65,10 @@ protected:
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
-struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointerCtor();              // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointerCtor();             // 0x00A01C10
-};
 
-// `PThing = thing` is the converting-temporary + inline `SetPItem(other.GetPItem())` assignment.
-struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
-    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
-};
-
-#include "engine/C3DVector.h"
+#define FABLE_RETAIL_CGAMETIMEMANAGER
+#define FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN
+#include "engine/CGameTimeManager.h"
 
 class CThingAICreature { public:
     void GetSleepTimes(long& start, long& end) const; // 0x00833390 (NF35: Ego_r + FableWin ?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z)
@@ -81,32 +81,25 @@ class CThingBuilding { public:
 };
 struct CHomeOwner {
     unsigned char _pad[0x168];
-    CBaseIntelligentPointerCtor PHome;          // +0x168
-    CThing* GetPHome() { return PHome.GetPItem(); }
+    CBaseIntelligentPointer PHome;              // +0x168
+    CBaseObject* GetPHome() { return PHome.GetPItem(); }
 };
 
-struct CWorldClock {
-    bool IsTimeOfDayInRange(long start, long end);  // 0x006BB390
-};
 class CPlayer { public:                         // (was the stand-in CPlayerManager: 0x0049D9D0 returns the world's CPlayer)
     CThing* GetPlayerCharacter() const;         // 0x00487DD0 (Ego_r.pdb: CPlayer::PeekPControlledCreature, see NOTES)
 };
 class CWorld { public:
     unsigned char _pad[0x1c];
-    CWorldClock* PClock;                        // +0x1c
+    CGameTimeManager* PClock;                   // +0x1c (boost::scoped_ptr<CGameTimeManager> PGameTimeManager in retail)
     const CPlayer* PeekMyPlayer() const;        // 0x0049D9D0 Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ
 };
 
 class CThingAICreature;
 namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* viewer, const CThing* target, bool ignoreLight); }   // 0x008645E0
 
-struct CIntelligentPointerOut : CBaseIntelligentPointerCtor {
-    CIntelligentPointerOut(CThing* item);       // 0x0056C860
-    CIntelligentPointerOut& operator=(const CIntelligentPointerOut& other);   // 0x005ED300
-};
 
 struct CAIStateGroup_MinionReactToBurglary : CAIStateGroupBase {
-    CIntelligentPointerOut PBurglar;            // +0x14
+    CIntelligentPointer<const CThing> PBurglar; // +0x14
     virtual bool IsRunnable();
 };
 
@@ -115,14 +108,14 @@ bool CAIStateGroup_MinionReactToBurglary::IsRunnable()
     long start;
     long end;
     ((CThingAICreature*)PBrain->PCreature)->GetSleepTimes(start, end);
-    CWorldClock* clock = GetWorld().PClock;
-    bool sleepTime = clock->IsTimeOfDayInRange(start, end);
+    CGameTimeManager* clock = GetWorld().PClock;
+    bool sleepTime = clock->IsTimeBetween(start, end);
     CThingBuilding* home = (CThingBuilding*)((CHomeOwner*)PBrain->PCreature)->GetPHome();
     if (sleepTime && home != 0) {
         CThing* player = GetWorld().PeekMyPlayer()->GetPlayerCharacter();
         if (player != 0 && !player->IsDead() && NCreatureAI::IsAwareOfThing((const CThingAICreature*)(PBrain->PCreature), player, false) &&
             home->IsPointInside(((CThingPos*)player)->GetPosition())) {
-            CIntelligentPointerOut burglar(player);
+            CIntelligentPointer<const CThing> burglar(player);
             PBurglar = burglar;
             return true;
         }

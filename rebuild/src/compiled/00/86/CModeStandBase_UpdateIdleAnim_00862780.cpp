@@ -161,26 +161,13 @@ private: public:
     CPlayerManager* PlayerManager;                      // +0x1c
 };
 
-struct CBlendPair {                                     // the two floats at CAnimInit +0x18
-    float m_first;
-    float m_second;
-    CBlendPair() : m_first(0.0f), m_second(0.0f) { }
-};
-#include "engine/EAnimUpdateMode.h"
-class CAnimInit { public:                                      // 0x2c bytes
-    long          Mode;
-    unsigned char AnimType;
-    bool          Flag05;
-    long          AnimIndex;
-    float         Scales[3];
-    CBlendPair    Blend;                                // +0x18
-    unsigned long Flags;
-    long          Arg24;
-    long          Percent;
-    CAnimInit() { }
-    CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x005B33F4
-    void Init(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050 Ego_r/FableWin ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (agentNF16: was Set)
-};
+// Name fix (agentNF54, e50): the local CAnimInit / CBlendPair models are gone; engine/CAnimInit.h (FABLE_RETAIL_CANIMINIT_CTORS +
+//   the NF54 overlay opt-in CTOR_OUTOFLINE) supplies CAnimInit with its CAnimFrameInfo Frame (+0x18, zeroed by its constructor), Init
+//   0x0070C050 and the out-of-line argument constructor with its PDB signature (FableWin.pdb ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z,
+//   retail 0x005B33F4; the local model spelled ??0CAnimInit@@QAE@JJJJ_NKJ@Z).
+#define FABLE_RETAIL_CANIMINIT_CTORS
+#define FABLE_RETAIL_CANIMINIT_CTOR_OUTOFLINE
+#include "engine/CAnimInit.h"
 
 class CAnimateThing { public:
     long          UpdateMode;              // +0x00
@@ -261,7 +248,7 @@ void CModeStandBase::UpdateIdleAnim(CAnimateThing& anim)
             const CAnimationEntry* entry = creature->GetRandomLoadedAnimFromName(specialName, false);
             if (entry) {
                 CThing* thing = ParentThing;
-                anim.SetMainAnim(CAnimInit(0x19, 0, entry->AnimIndex, 1, false, entry->GetAnimateThingFlags(), 100),
+                anim.SetMainAnim(CAnimInit(0x19, 0, entry->AnimIndex, ANIM_UPDATE_FROM_SPEED, false, entry->GetAnimateThingFlags(), 100),
                                  entry->GetTimeToBlendIn(thing), entry->GetAnimationTransitionInTime());
             }
         } else if (poseName != ""

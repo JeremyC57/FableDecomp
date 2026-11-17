@@ -26,6 +26,11 @@
 //   the miss path, 0x0049F9B1). The file-assembly tail is its own block: that puts the CRC word on the shared temporary slot [esp+18h]
 //   (at function scope it gets its own word +0x88, in a CRC-only block +0x10, in a block from the size-slot rewrite +0x34).
 #define FABLE_RETAIL_CWORLD
+// Name fix (agentNF54): ESaveType is CWorld::ESaveType (both PDBs; engine/CWorld.h opt-in FABLE_RETAIL_CWORLD_NESTED_ESAVETYPE), so the
+//   0x004AB640 transfers bind ??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z (Ego_r 0x004B24D0 +
+//   FableWin 0x01B5DD00; the landed row's own leaf), was the namespace-scope ??$Transfer@W4ESaveType@@@...ABW41@@Z.
+#define FABLE_RETAIL_CWORLD_NESTED_ESAVETYPE
+#define FABLE_RETAIL_CPERSISTTRAITS_DEFAULTVAL_COPYINIT
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CWORLD_TYPED_MEMBERS

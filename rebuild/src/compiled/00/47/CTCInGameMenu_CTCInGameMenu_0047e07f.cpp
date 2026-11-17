@@ -37,19 +37,15 @@ template <class T> struct CPODVector {             // STLport vector of a trivia
     T* erase(T* first, T* last);                   // 0x00485AA7 (vector<CComponent*>)
     void clear() { erase(begin(), end()); }
 };
-struct CWideStringVector {                         // vector<CWideString>
-    void* _M_start; void* _M_finish; void* _M_end_of_storage;
-    ~CWideStringVector();                          // 0x00412130
-};
-class CCharString;
-namespace std {
-template <class _Tp> class allocator;
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
-template <> class vector<CCharString, allocator<CCharString> > { public:                         // vector<CCharString>
-    void* _M_start; void* _M_finish; void* _M_end_of_storage;
-    ~vector();                          // 0x00414EA0
-};
-}
+// Name fix (agentNF54): the local CWideString-vector stand-in and the local std::vector<CCharString> specialisation replaced by
+//   the shared stlport/fable_containers.h + fable_string.h: FileNames is std::vector<CWideString> (Ego_r.pdb member type), whose
+//   destructor 0x00412130 is ??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ (Ego_r + FableWin; landed row
+//   0x00412130; was ??1CWideStringVector@@QAE@XZ); both STLport vector destructors are out of line in this TU
+//   (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE: 0x00412130, and 0x00414EA0 ~vector<CCharString> as before).
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
 struct CPrimitiveHandleVector {                    // vector<CEnginePrimitiveHandle>
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
     ~CPrimitiveHandleVector();                     // 0x00440C40
@@ -151,7 +147,7 @@ public:
     long ItemCount;                                // +0x1c
     long ItemHighlightIndex;                       // +0x20
     long ItemTopIndex;                             // +0x24
-    CWideStringVector FileNames;                   // +0x28
+    std::vector<CWideString> FileNames;            // +0x28
     CPODVector<CDateAndTime> FileTimes;            // +0x34
     CPrimitiveHandleVector PrimitiveHandles;       // +0x40
     CPrimitiveHandleVector MenuPrimitiveHandles;   // +0x4c

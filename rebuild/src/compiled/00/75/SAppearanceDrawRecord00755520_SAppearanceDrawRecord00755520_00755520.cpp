@@ -10,6 +10,11 @@
 // Shape: no vtable store (a plain class); members die in reverse order: the tree destructor inlined (as the landed
 // ~CRetailTree 0x008353F0: erase, head links reset, size zeroed, head freed), then the out-of-line member, then the
 // CIVCountedPointer release (as the landed CHitLocation destructor 0x00710900).
+// Name fix (agentNF54, nf44:5): the local SMember_005bc0d3 stand-in is gone: the member is the shared std::vector<CEngineTextureMorph>
+//   (engine/CEngineTextureMorph.h), whose destructor stays the out-of-line COMDAT (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE) and binds
+//   FableWin.pdb ??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ (retail 0x005BC0D3).
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "engine/CEngineTextureMorph.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 class CIVCountedPointeeBase { public:
@@ -29,10 +34,6 @@ struct CIVCountedPointer {
         }
     }
     ~CIVCountedPointer() { Release(); }
-};
-struct SMember_005bc0d3 {                          // 12 bytes, destroyed out of line
-    unsigned char _body[0x0c];
-    ~SMember_005bc0d3();                           // 0x005BC0D3
 };
 struct CRetailTree_004aba70 {                      // the retail red-black tree {head, size}
     struct node { unsigned char colour; unsigned char _pad[3]; node* parent; node* left; node* right; };
@@ -57,7 +58,7 @@ struct SAppearanceDrawRecord_00755520 {
     unsigned char        _pad00[0x3c];
     CIVCountedPointer    m_pointee;                // +0x3c
     unsigned char        _pad40[0x0c];
-    SMember_005bc0d3     m_member4c;               // +0x4c
+    std::vector<CEngineTextureMorph>     m_member4c;               // +0x4c
     CRetailTree_004aba70 m_tree;                   // +0x58
     ~SAppearanceDrawRecord_00755520();
 };

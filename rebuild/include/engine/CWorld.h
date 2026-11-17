@@ -93,7 +93,9 @@ enum EPlayerMode;
 enum ESaveGameLoadStatus;
 enum ERegionLoadStatus;
 enum EPlayerSpawnStatus;
+#ifndef FABLE_RETAIL_CWORLD_NESTED_ESAVETYPE
 enum ESaveType;
+#endif
 
 #ifndef FABLE_RETAIL_CIDRAWWORLD_DEFINED
 #define FABLE_RETAIL_CIDRAWWORLD_DEFINED
@@ -108,6 +110,14 @@ public:
 
 class CWorld : public CBaseClassNonCopyable, public CIDrawWorld {
 public:
+#ifdef FABLE_RETAIL_CWORLD_NESTED_ESAVETYPE
+    // Opt-in (agentNF54, rows 0x0049F4C0 / 0x004A21F0 / 0x004AB7F0): ESaveType is nested in CWorld -- both PDBs spell its
+    // instances ??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@... (Ego_r 0x004B24D0, FableWin 0x01B5DD00 / 0x01B5E5F0) and
+    // CPersistTraits<CWorld::ESaveType> (FableWin 0x01B637E0). The enumerator names are not in the PDB name sets (the rows store the
+    // values retail uses), so the enum is defined without enumerators; MostRecentSaveType / MostRecentSaveTypeBeforeManualSave below
+    // take this type. Without the opt-in the namespace-scope forward enum above is unchanged.
+    enum ESaveType { };
+#endif
 #ifdef FABLE_RETAIL_CWORLD_CTOR_PASS23
     // Retail opt-in (Codex pass23): both original PDBs ??0CWorld@@QAE@ABVCWorldInit@@@Z.
     CWorld(const class CWorldInit&);

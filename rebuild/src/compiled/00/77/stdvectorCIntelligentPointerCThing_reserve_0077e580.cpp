@@ -31,13 +31,17 @@ template <class T> struct allocator {
     T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
 };
 
-// Same-TU body of the out-of-line copy (0x004AA140), non-template, noinline: VC7.1 then sees that the empty tag is never
-// read and homes it over the live `n` argument slot (`lea eax,[esp+18h]`) as retail does.
+// Same-TU body of the out-of-line copy (0x004AA140), noinline: VC7.1 then sees that the empty tag is never read and homes it
+// over the live `n` argument slot (`lea eax,[esp+18h]`) as retail does. Name fix (agentNF54): written as STLport 4.6's own
+// function template (stl/_uninitialized.h), so the call binds the instance the landed row 0x004AA140 defines,
+// ??$__uninitialized_copy@PAV?$CIntelligentPointer@VCThing@@@@PAV1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@00ABU__false_type@0@@Z
+// (was the non-template ?__uninitialized_copy@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV2@00ABU__false_type@1@@Z).
 #pragma auto_inline(off)
-__declspec(noinline) CIntelligentPointer<CThing>* __fastcall __uninitialized_copy(CIntelligentPointer<CThing>* first,
-    CIntelligentPointer<CThing>* last, CIntelligentPointer<CThing>* result, const __false_type&)   // 0x004AA140
+template <class _InputIter, class _ForwardIter>
+__declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter first, _InputIter last, _ForwardIter result,
+    const __false_type&)   // 0x004AA140
 {
-    CIntelligentPointer<CThing>* cur = result;
+    _ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
         new (cur) CIntelligentPointer<CThing>(*first);
     return cur;

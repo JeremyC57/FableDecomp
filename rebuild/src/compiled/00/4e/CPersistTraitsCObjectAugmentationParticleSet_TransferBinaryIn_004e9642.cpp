@@ -46,16 +46,13 @@ public:
     long Index;
 };
 
-namespace std {
-template <class _Tp> class vector {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-};
-}
+// Name fix (agentNF54): the local one-parameter std::vector stand-in replaced by the shared STLport vector of
+//   stlport/fable_containers.h, so the element vectors and the callee 0x00465852 carry the allocator argument:
+//   ??$GFSerialiseVectorBinaryIn@VCDefString@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z
+//   (Ego_r 0x00462D0E + FableWin 0x0199D394; was the allocator-less ...AAV?$vector@VCDefString@@@std@@@Z).
+#include "stlport/fable_containers.h"
 
-template <class T> void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream& stream, std::vector<T>& out);
+template <class T> void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream& stream, std::vector<T, std::allocator<T> >& out);
 // 0x00465852 = GFSerialiseVectorBinaryIn<CDefString>
 
 class CObjectAugmentationParticleSet {                 // 0x2C bytes in retail

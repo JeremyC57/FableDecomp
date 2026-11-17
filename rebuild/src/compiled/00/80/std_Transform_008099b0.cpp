@@ -16,61 +16,20 @@
 //   `_M_insert_overflow(_M_finish, x, __false_type(), 1, true)` with the tag homed in a frame byte -- then the temporary's
 //   destructor. The 8-byte temporary gives VC7.1's `and esp,-8` frame.
 #include "fable_compiler.h"
-class CBaseObject;
-class CThing;
-
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                 // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();        // 0x00A01C10
-    CBaseObject* GetPItem() const;             // 0x00A01B50
-    void SetPItem(CBaseObject* item);          // 0x00A01B90
-    void* PData;                               // +0x4
-};
-
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
-public:
-    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-};
-
-inline void* operator new(unsigned int, void* where) { return where; }
-
-struct __false_type { __false_type() { } };
+// Name fix (agentNF54): the local CBaseIntelligentPointer / CIntelligentPointer / std::vector / back_insert_iterator stand-ins replaced by
+//   the shared engine/CIntelligentPointer.h (retail branch, FABLE_RETAIL_CINTELLIGENTPOINTER_COPY) over engine/CThing.h and
+//   stlport/fable_containers.h (STLport 4.6 vector with its allocator, FABLE_RETAIL_STLP_BACK_INSERTER): the overflow call 0x004AC940 binds
+//   ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z
+//   (the landed row's own leaf; was the allocator-less public ...QAEXPAV...ABU__false_type@@K_N@Z).
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_STLP_BACK_INSERTER
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
-template <class T1, class T2>
-inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
-
-template <class T> class vector {
-public:
-    typedef T value_type;
-    T* _M_start;                               // +0x0
-    T* _M_finish;                              // +0x4
-    T* _M_end_of_storage;                      // +0x8
-    void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned long fill_len, bool atend);   // 0x004AC940
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            _Construct(_M_finish, x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1UL, true);
-    }
-};
-template <class C> class back_insert_iterator {
-public:
-    C* container;
-    explicit back_insert_iterator(C& cont) : container(&cont) { }
-    back_insert_iterator& operator=(const typename C::value_type& value)
-    {
-        container->push_back(value);
-        return *this;
-    }
-    back_insert_iterator& operator*() { return *this; }
-    back_insert_iterator& operator++() { return *this; }
-};
 template <class InIt, class OutIt, class Fn1>
 OutIt __fastcall _Transform(InIt _First, InIt _Last, OutIt _Dest, Fn1 _Func)
 {

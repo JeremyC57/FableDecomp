@@ -17,6 +17,12 @@
 #ifdef FABLE_RETAIL_STLP_UNINIT_COPY_FORCEINLINE
 #include "fable_compiler.h"
 #endif
+#ifdef FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE
+// Per-TU inline control (agentNF54, row 0x005BC0D3 ~vector<CEngineTextureMorph>): the size-optimised retail TU expands the range
+// _Destroy -> __destroy dispatch (only the /Gr __destroy_aux COMDAT 0x005BBF80 is called); under /Os VC7.1 otherwise calls _Destroy
+// out of line. The same FABLE_FORCEINLINE as FABLE_RETAIL_AUGMENTATION_PARTICLES applies to those two wrappers, nothing else.
+#include "fable_compiler.h"
+#endif
 #if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP) || defined(FABLE_RETAIL_STLP_LIST_SORT) || defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
@@ -336,7 +342,7 @@ template<class I> inline void FABLE_FASTCALL __destroy_aux(I,I,const __true_type
 #else
 template<class I> inline void __destroy_aux(I,I,const __true_type&) { }
 #endif
-#ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
+#if defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.
 template<class I,class T> FABLE_FORCEINLINE void __destroy(I first,I last,T*) {
 #else
@@ -349,7 +355,7 @@ template<class I,class T> inline void __destroy(I first,I last,T*) {
     typedef typename __type_traits<T>::has_trivial_destructor Trivial;
     __destroy_aux(first,last,Trivial());
 }
-#ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
+#if defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.
 template<class I> FABLE_FORCEINLINE void _Destroy(I first,I last) {
 #else

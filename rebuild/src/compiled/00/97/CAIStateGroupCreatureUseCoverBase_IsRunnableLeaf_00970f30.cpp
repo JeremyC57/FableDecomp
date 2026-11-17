@@ -25,16 +25,16 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 inline long CWorld::GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
-struct CIntelligentPointerBaseRetail {virtual ~CIntelligentPointerBaseRetail();void* Data; CIntelligentPointerBaseRetail(); CThingRetail* GetPItem()const;void SetPItem(CThingRetail*);}; //A01B10,A01B50,A01B90,A01C10
-struct CIntelligentPointerRetail:CIntelligentPointerBaseRetail {
- FABLE_FORCEINLINE CIntelligentPointerRetail(CThingRetail* p){SetPItem(p);}
- FABLE_FORCEINLINE CIntelligentPointerRetail(const CIntelligentPointerRetail& p){SetPItem(p.GetPItem());}
-};
-struct CAllocatorTag {CAllocatorTag(){}};
-struct CHandleVector {CIntelligentPointerRetail* first;CIntelligentPointerRetail* last;CIntelligentPointerRetail* capacity;
- void InsertOverflow(CIntelligentPointerRetail*,const CIntelligentPointerRetail&,const CAllocatorTag&,unsigned long,bool); //004AC940
- FABLE_FORCEINLINE void push_back(const CIntelligentPointerRetail& p){if(last!=capacity){if(last)new(last)CIntelligentPointerRetail(p);++last;}else InsertOverflow(last,p,CAllocatorTag(),1,true);}
-};
+// Name fix (agentNF54): the local CIntelligentPointerBaseRetail / CIntelligentPointerRetail / CAllocatorTag / CHandleVector stand-ins
+//   replaced by the shared engine/CIntelligentPointer.h (retail branch, FABLE_RETAIL_CINTELLIGENTPOINTER_COPY) and the STLport 4.6 vector
+//   of stlport/fable_containers.h: CoverList is the PDB vector<CIntelligentPointer<CThing> > (engine header comment), so the overflow call
+//   0x004AC940 binds
+//   ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z
+//   (the landed row's own leaf; was ?InsertOverflow@CHandleVector@@...).
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#include "stlport/fable_containers.h"
+#include "engine/CIntelligentPointer.h"
 struct CThingVector {CThingRetail** first;CThingRetail** last;CThingRetail** capacity;
  CThingVector():first(0),last(0),capacity(0){}
  ~CThingVector(){if(first)free(first);}
@@ -50,7 +50,7 @@ class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens th
 struct UseCoverMethods : public CAIStateGroupBase, CAIStateGroup_CreatureUseCoverBase {
  bool IsRunnableLeaf();
  FABLE_FORCEINLINE CThingRetail* GetCreature(){return (*(CAIBrainRetail**)_pad_0x04)->Creature;}
- FABLE_FORCEINLINE CHandleVector& Covers(){return *(CHandleVector*)CoverList;}
+ FABLE_FORCEINLINE std::vector<CIntelligentPointer<CThing> >& Covers(){return *(std::vector<CIntelligentPointer<CThing> >*)CoverList;}
  FABLE_FORCEINLINE bool& RetailFailedToFindCover(){return FailedToFindCover;}
  FABLE_FORCEINLINE long& RetailFailedTime(){return FailedTime;}
  FABLE_FORCEINLINE C3DVector& RetailFailedToFindCoverAt(){return *(C3DVector*)&FailedToFindCoverAt_X;}
@@ -67,7 +67,7 @@ bool UseCoverMethods::IsRunnableLeaf(){
  ((CCoverDispatch*)this)->GetCoverThingList(things);
  if(!things.empty()){
   ((CCoverDispatch*)this)->FilterCoverList(things);
-  for(CThingRetail** it=things.first;it!=things.last;++it)Covers().push_back(CIntelligentPointerRetail(*it));
+  for(CThingRetail** it=things.first;it!=things.last;++it)Covers().push_back(CIntelligentPointer<CThing>(*it));
   return true;
  }
  RetailFailedToFindCoverAt()=GetCreature()->GetPos();

@@ -1,0 +1,113 @@
+addr       parity           behav  name
+00458f2b   RELOCATION_MATCH PASS   Transfer<CFloatRange>
+0047e07f   WARN SHARED_HEADER_AVAILABLE CDateAndTime
+0047e07f   WARN SHARED_HEADER_AVAILABLE CInventoryDef
+0047e07f   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0047e07f   WARN SHARED_HEADER_AVAILABLE CManager
+  WARN leaf '~CTCInGameMenu' matches no symbol in 0047e07f.obj; graded the largest function
+  WARN leaf '~CTCInGameMenu' matches no symbol in 0047e07f.obj; graded the largest function
+0047e07f   WARN RELOC_NAME: ?g_frontEndNodeList@@3UCNodeList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+0047e07f   WARN RELOC_NAME: ??1CSignatureMap@@QAE@XZ -> 00485e45 labelled 'std::_Rb_tree<CWideString, pair<const CWideString, bool>, _Select1st<..>, less<CWideString>, allocator<..> >::~_Rb_tree'
+0047e07f   WARN RELOC_NAME: ??1CPrimitiveHandleVector@@QAE@XZ -> 00440c40 labelled 'std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>'
+0047e07f   RELOCATION_MATCH PASS   ~CTCInGameMenu
+0049f4c0   WARN RELOC_NAME: ??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z -> 004ab640 labelled 'CPersistContext::Transfer<CWorld::ESaveType>'
+0049f4c0   RELOCATION_MATCH PASS   SaveGameStateInternal
+004ab7f0   WARN RELOC_NAME: ??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z -> 004ab640 labelled 'CPersistContext::Transfer<CWorld::ESaveType>'
+004ab7f0   RELOCATION_MATCH PASS   ESaveType>
+004e9642   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e9642   WARN SHARED_HEADER_AVAILABLE CDefString
+004e9642   WARN SHARED_HEADER_AVAILABLE CObjectAugmentationParticleSet
+004e9642   RELOCATION_MATCH PASS   TransferBinaryIn
+00506c40   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCAFile@@@@SIXPAX@Z -> 0050be40 labelled '_global::DeleteViaVtable0_0050be40'
+00506c40   RELOCATION_MATCH PASS   GetLevelStaticMapChecksum
+0053beac   RELOCATION_MATCH PASS   AddScrollingChildDynamically
+0059c0c6   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+0059c0c6   WARN RELOC_CONFLICT: ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z -> 005d97b0 here, 005d99d0 in landed 005c44fa
+0059c0c6   RELOCATION_MATCH PASS   GetMenuBranchFromDefIndexPC
+005a731f   WARN SHARED_HEADER_AVAILABLE CThing
+005a731f   WARN SHARED_HEADER_AVAILABLE CTCShop
+005a731f   WARN SHARED_HEADER_AVAILABLE CPlayer
+005a731f   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+005a731f   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005a731f   WARN SHARED_HEADER_AVAILABLE CManager
+005a731f   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+005a731f   WARN RELOC_NAME: ?GetControlledCreature@CPlayer@@QAEPAVCThing@@XZ -> 00487dd0 labelled 'CPlayer::PeekPControlledCreature'
+005a731f   WARN RELOC_NAME: ?GetTradingThing@CTCInventoryTrade@@QAEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a731f   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a731f   RELOCATION_MATCH PASS   ConstructSellActionsListPC
+005b33f4   RELOCATION_MATCH PASS   CAnimInit
+005bc277   RELOCATION_MATCH PASS   `scalar deleting destructor'
+005e4430   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005e4430   WARN SHARED_HEADER_AVAILABLE CThing
+005e4430   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+005e4430   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+005e4430   WARN SHARED_HEADER_AVAILABLE CQuestManager
+005e4430   WARN SHARED_HEADER_AVAILABLE CManager
+005e4430   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005e4430   WARN SHARED_HEADER_AVAILABLE CTCQuestCompletionUI
+005e4430   WARN RELOC_NAME: ?GetQuestName@CTCQuestCard@@QAE?AVCWideString@@XZ -> 00702470 labelled 'CTCQuestCard::GetQuestObjective'
+005e4430   RELOCATION_MATCH PASS   Activate
+0065c781   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0065c781   WARN SHARED_HEADER_AVAILABLE CThing
+0065c781   WARN SHARED_HEADER_AVAILABLE CASoundBank
+0065c781   WARN SHARED_HEADER_AVAILABLE CSoundInit
+0065c781   WARN SHARED_HEADER_AVAILABLE CGameTimeManager
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorld
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCLight
+0065c781   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065c781   WARN SHARED_HEADER_AVAILABLE CVillageDef
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065c781   WARN RELOC_NAME: ?ReleaseInvalidTasks@CTCVillage@@QAEXXZ -> 0065be32 labelled 'CGuiControlComboBox_0065be32::ReleaseMembers'
+0065c781   WARN RELOC_NAME: ?IS_THING_ALIVE_004cc340@@YI_NABUCBaseIntelligentPointer@@@Z -> 004cc340 labelled 'IS_THING_ALIVE<CIntelligentPointer<CThing> >'
+0065c781   WARN RELOC_NAME: ?IS_THING_ALIVE_Villager@@YI_NABUCBaseIntelligentPointer@@@Z -> 004ab8f0 labelled '_global::IsThingAlive_004ab8f0'
+0065c781   WARN RELOC_NAME: ?GetVillagerState@CThing@@QAEJXZ -> 00662010 labelled 'CThingCreatureBase::GetProperty'
+0065c781   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0065c781   RELOCATION_MATCH PASS   FrameUpdate
+00728f80   RELOCATION_MATCH PASS   resize
+0077e580   WARN RELOC_NAME: ?_M_clear@?$vector@V?$CIntelligentPointer@VCThing@@@@U?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEXXZ -> 004ac1d0 labelled 'std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>'
+0077e580   RELOCATION_MATCH PASS   reserve
+008099b0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+008099b0   RELOCATION_MATCH PASS   _Transform
+00898db0   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+00898db0   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00898db0   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00898db0   RELOCATION_MATCH PASS   TakeObjectFromHero
+00957f20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00957f20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00957f20   WARN SHARED_HEADER_AVAILABLE CThingAICreature
+00957f20   WARN SHARED_HEADER_AVAILABLE CThingBuilding
+00957f20   WARN SHARED_HEADER_AVAILABLE CPlayer
+00957f20   WARN SHARED_HEADER_AVAILABLE CWorld
+00957f20   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+00957f20   WARN RELOC_NAME: ?GetPlayerCharacter@CPlayer@@QBEPAVCThing@@XZ -> 00487dd0 labelled 'CPlayer::PeekPControlledCreature'
+00957f20   WARN RELOC_NAME: ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+00957f20   RELOCATION_MATCH PASS   IsRunnable
+009710d0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+009710d0   WARN STANDIN_LEAF ?RefreshCoverList@UseCoverMethods@@QAEXXZ (catalog CAIStateGroup_CreatureUseCoverBase::RefreshCoverList; names another function)
+009710d0   RELOCATION_MATCH PASS   RefreshCoverList
+00e64f80   WARN STANDIN_LEAF ?CEngineSubPrimitiveText_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog NScript::CV_ChickenKickingScript::CChickenSign::`scalar deleting destructor'; names another function)
+00e64f80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 20
+  00458f2b RELOCATION_MATCH CPersistContext::??$Transfer@VCFloatRange@@@CPersistContext@@QAEXAAVCFloatRange@@@Z
+  0047e07f RELOCATION_MATCH CTCInGameMenu::~CTCInGameMenu
+  0049f4c0 RELOCATION_MATCH CWorld::?SaveGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+  004ab7f0 RELOCATION_MATCH CPersistContext::??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@@Z
+  004e9642 RELOCATION_MATCH CPersistTraits<CObjectAugmentationParticleSet>::?TransferBinaryIn@?$CPersistTraits@VCObjectAugmentationParticleSet@@
+  00506c40 RELOCATION_MATCH CWorldMap::GetLevelStaticMapChecksum
+  0053beac RELOCATION_MATCH NUISystem::CList::AddScrollingChildDynamically
+  0059c0c6 RELOCATION_MATCH CTCInventoryTrade::GetMenuBranchFromDefIndexPC
+  005a731f RELOCATION_MATCH CTCInventoryTrade::ConstructSellActionsListPC@CTCInventoryTrade
+  005b33f4 RELOCATION_MATCH CAnimInit::??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z
+  005bc277 RELOCATION_MATCH SRecord_005bc277::??_GSRecord_005bc277@@QAEPAXI@Z
+  005e4430 RELOCATION_MATCH CTCQuestCompletionUI::?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@PAVCTCQuestCard@@_N@Z
+  0065c781 RELOCATION_MATCH CTCVillage::?FrameUpdate@CTCVillage@@QAEXXZ
+  00728f80 RELOCATION_MATCH CKeyedVectorVector_00728f80::resize
+  0077e580 RELOCATION_MATCH std::vector<CIntelligentPointer<CThing> >::?reserve@
+  008099b0 RELOCATION_MATCH std::_Transform
+  00898db0 RELOCATION_MATCH CGameScriptInterface::?TakeObjectFromHero@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  00957f20 RELOCATION_MATCH CAIStateGroup_MinionReactToBurglary::?IsRunnable@CAIStateGroup_MinionReactToBurglary@@UAE_NXZ
+  009710d0 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::RefreshCoverList
+  00e64f80 RELOCATION_MATCH CVtable_012e7648::?CEngineSubPrimitiveText_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z

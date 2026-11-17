@@ -1,4 +1,4 @@
-// CWorldMap::GetLevelDimensions(CAFile&) -- reads a level file's map header and returns the world box (0,0,SizeX,SizeY)
+// CWorldMap::GetLevelDimensions(CAFile&) const -- reads a level file's map header and returns the world box (0,0,SizeX,SizeY)
 // Retail 0x00506BB0, 0x8E bytes (CWorldMap.cpp TU). Allocates a CFileFormatMapHeader (PDB 67618 = 0x10822 bytes,
 // packed: CReplaceSerialise base ByteLength +0 / SerialiseVersionNumber +4, WorldSizeX +13, WorldSizeY +17,
 // LargeThemePalette +22, AtmosThemePalette +33822) with operator new 0x00BFEA1A; its constructor only runs the
@@ -8,93 +8,32 @@
 // the file is moved to its MapDataOffset (+5) and the header read with 0x0051CBB0. The header is owned by a small
 // scoped holder, so the result box is written into the caller's slot before the plain `operator delete`
 // (0x00BFE9BC; the header has a trivial destructor). `this` is unused.
-#include <stddef.h>
+// Name fix (agentNF54): ported onto the shared records engine/CFileFormatBrush.h (FABLE_RETAIL_CFILEFORMATBRUSH +
+//   FABLE_RETAIL_CFILEFORMAT_MAPHEADER: CFileFormatMapHeader is a CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHeader8>),
+//   engine/CAFile.h (slot 5 SetPosition) and engine/CWorldMap.h (my FABLE_RETAIL_CWORLDMAP_LEVELHEADER opt-in). The header read now binds
+//   the PDB ?ReadFromFile@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z
+//   (Ego_r.pdb 0x004E9260 + FableWin.pdb 0x01CA3CB0; the local model bound a CFileFormatMapHeader member taking CAFile*), and the
+//   self row the PDB ?GetLevelDimensions@CWorldMap@@IBE?AVC2DBoxI@@AAVCAFile@@@Z (Ego_r 0x004D4730, FableWin 0x01C8C5F0: protected
+//   const). The scoped holder is boost::scoped_ptr<CFileFormatMapHeader> (FableWin.pdb ??1?$scoped_ptr@VCFileFormatMapHeader@@@boost@@QAE@XZ,
+//   0x01CA6EC0; its checked_delete expanded here: FABLE_RETAIL_SCOPED_PTR_RESET), replacing the local CScopedPtr stand-in.
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_SCOPED_PTR_RESET
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CWORLDMAP_LEVELHEADER
+#define FABLE_RETAIL_C2DBOXI_ORIGINAL_FOUR_COORD_CTOR
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_CFILEFORMATBRUSH
+#define FABLE_RETAIL_CFILEFORMAT_MAPHEADER
+#include "engine/CFileFormatBrush.h"
+#include "engine/CWorldMap.h"
 
-class C2DBoxI
-{ public:
-    long TLX;
-    long TLY;
-    long BRX;
-    long BRY;
-    C2DBoxI(long tlx, long tly, long brx, long bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) {}
-};
-
-class CASuspendableProcess;
-
-class CAFile
+C2DBoxI CWorldMap::GetLevelDimensions(CAFile& file) const
 {
-public:
-    virtual void Slot00();
-    virtual void Slot04();
-    virtual void Slot08();
-    virtual void Slot0C();
-    virtual void Slot10();
-    virtual void Seek(long position);                  // slot 5 (+0x14)
-};
-
-struct CFileLargeThemePalette
-{
-    unsigned char Data[0x8400];                        // 33792 bytes
-    CFileLargeThemePalette();                          // 0x0050EE40
-};
-
-#pragma pack(push, 1)
-class CFileFormatLevel;
-class COldFileFormatLevel3;
-template <class TNew, class TOld> class CReplaceSerialise { public:
-    unsigned long ByteLength;                          // +0x00
-    unsigned char SerialiseVersionNumber;              // +0x04
-    void ReadFromFile(CAFile& file, CASuspendableProcess* process);  // 0x0051A240 (<CFileFormatLevel,COldFileFormatLevel3>)
-};
-
-class CFileFormatLevel : public CReplaceSerialise<CFileFormatLevel, COldFileFormatLevel3>
-{ public:
-    long          MapDataOffset;                       // +0x05
-    long          ThingDataOffset;                     // +0x09
-    long          BrushDataOffset;                     // +0x0D
-    long          NavigationDataOffset;                // +0x11
-    long          NavigationSectionsOffset;            // +0x15
-};
-
-class CFileFormatMapHeader
-{ public:
-    unsigned long          ByteLength;                 // +0x00 CReplaceSerialise
-    unsigned char          SerialiseVersionNumber;     // +0x04
-    unsigned long          ThingUIDCount[2];           // +0x05 ulong64
-    unsigned long          WorldSizeX;                 // +0x0D
-    unsigned long          WorldSizeY;                 // +0x11
-    bool                   UsingExtraMapCells;         // +0x15
-    CFileLargeThemePalette LargeThemePalette;          // +0x16
-    unsigned long          VersionNumber;              // +0x8416
-    unsigned long          NoSoundThemeEntries;        // +0x841A
-    CFileLargeThemePalette AtmosThemePalette;          // +0x841E
-    unsigned long          StaticMapChecksum;          // +0x1081E
-    void ReadFromFile(CAFile* file, CASuspendableProcess* process);  // 0x0051CBB0
-};
-#pragma pack(pop)
-
-template <class T>
-struct CScopedPtr
-{
-    T* ptr;
-    CScopedPtr(T* p) : ptr(p) {}
-    ~CScopedPtr() { delete ptr; }
-    T* operator->() const { return ptr; }
-};
-
-class CWorldMap
-{
-public:
-    C2DBoxI GetLevelDimensions(CAFile& file);
-};
-
-C2DBoxI CWorldMap::GetLevelDimensions(CAFile& file)
-{
-    CScopedPtr<CFileFormatMapHeader> header(new CFileFormatMapHeader);
-    file.Seek(0);
+    boost::scoped_ptr<CFileFormatMapHeader> header(new CFileFormatMapHeader);
+    file.SetPosition(0);
     CFileFormatLevel level;
     level.ReadFromFile(file, 0);
-    file.Seek(level.MapDataOffset);
-    header->ReadFromFile(&file, 0);
+    file.SetPosition(level.MapDataOffset);
+    header->ReadFromFile(file, 0);
     return C2DBoxI(0, 0, header->WorldSizeX, header->WorldSizeY);
 }

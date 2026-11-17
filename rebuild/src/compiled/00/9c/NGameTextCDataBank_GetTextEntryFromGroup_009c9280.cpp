@@ -8,7 +8,7 @@
 // Signature: Ego_r.pdb + FableWin.pdb ?GetTextEntryFromGroup@CDataBank@NGameText@@QBEPBVCTextEntry@2@KABVCCharString@@AA_NPAJ_N@Z.
 // Callees: CBankFile::GetEntryDataType 0x009CC210, CDataBank::GetPGroupEntry 0x009C8890 (hidden result), operator+(const
 //   CCharString&, const char*) 0x0099F600 (__fastcall, "_1_5" 0x012783C8), CCharString::~CCharString 0x0099EAE0,
-//   CBasicString<char>::Compare 0x00411570 (__fastcall), vector<long>::push_back 0x005178A0 (folded COMDAT), GFROR13 0x00497890,
+//   CBasicString<char>::Compare 0x00411570 (__fastcall), vector<unsigned long>::push_back 0x005178A0, GFROR13 0x00497890,
 //   CBankFileAsync::AsyncUpdatePending 0x009D68B0, CDataBank::GetTextInfo 0x009C7D00, CDataBankTextEntry::IsLoaded 0x009C7BE0,
 //   CBankFileAsyncData::IsFinished 0x009D54E0, CDataBank::BeginLoadingText 0x009C8630, CDataBank::GetPTextEntry 0x009C9070
 //   (hidden result), free 0x00BFEA14.
@@ -25,6 +25,10 @@
 //   (FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN_FORCEINLINE), engine/GFRandom.h (FABLE_RETAIL_GFRANDOM_RESULT_LOCAL), fable_string.h
 //   (FABLE_RETAIL_CBASICSTRING_COMPARE_BODY; FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQ: retail has no CCharString::operator== call
 //   here, it calls CBasicString<char>::Compare 0x00411570 directly at 0x009C93AD and 0x009C93F4, so operator== is expanded inline).
+// Name fix (agentNF54): the candidate-id array holds unsigned longs -- retail pushes through vector<unsigned long>::push_back
+//   0x005178A0, whose growth path is vector<unsigned long>::_M_insert_overflow 0x00464ACE (vector<long>::push_back is 0x00485FF3);
+//   the collected id is an unsigned long too (GetEntryDataType takes one: Ego_r.pdb ?GetEntryDataType@CBankFile@@QBEKK@Z), so
+//   push_back gets its address with no converted temporary. With CArray<long> the row bound ?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z instead.
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
 #define FABLE_RETAIL_CIVCOUNTEDPOINTER
@@ -49,7 +53,7 @@ const CTextEntry* CDataBank::GetTextEntryFromGroup(unsigned long groupId, const 
 {
     found = false;
     if (groupId > 0 && GetEntryDataType(groupId) == 1) {
-        CArray<long> ids;
+        CArray<unsigned long> ids;
         {
             CIVCountedPointer<const CGroupEntry> group;
             if (GetGroupInfo(groupId) == 0)
@@ -61,7 +65,7 @@ const CTextEntry* CDataBank::GetTextEntryFromGroup(unsigned long groupId, const 
             }
             const CArray<long>& entries = group->GetTextEntries();
             for (unsigned long i = 0; i < entries.size(); ++i) {
-                long id = entries[i];
+                unsigned long id = entries[i];
                 const CDataBankTextEntry* info = GetEntryDataType(id) == 0 ? static_cast<const CDataBankTextEntry*>(Entries[id]) : 0;
                 long narratorIndex = info->GetNarratorIndex();
                 if (Narrators[narratorIndex] == narrator || Narrators[narratorIndex] == narrator + "_1_5")
