@@ -1,0 +1,11 @@
+# NF69 lessons (one line each)
+- A tree rename family (static map + init + atexit + _M_insert + insert_unique + readers + register) ports in one grade per row once one row of each shape is right: copy the landed Gossip pair (0x0121F160) for init/atexit and the 0x005E9100 / 0x005685E0 explicit instantiations for the tree members.
+- The member-template find (FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_DECL) is what a static map's reader calls out of line (`push &key ; push &result ; mov ecx,map ; call`).
+- A destructor with no vptr store is VC7.1's implicit one: when the shared header carries the PDB-generated user declaration, an `#ifndef ..._IMPLICIT_DTOR` opt-in plus a DestroyOne helper gives the exact bytes (0x004DA8B7, 0x004E37BF, 0x004E0080).
+- A free-function ??_G stand-in does not expand an implicit destructor the way the compiler-generated ??_G does, and outside a size TU it expands one the ??_G calls: write the member/base destruction by name, or take the header's declared destructor.
+- Check an entry's claimed class against the struct layout and the RTTI chain before applying it: q10855's CTCTargeted was disproved by member offsets alone, and the name already belonged to 0x004DBF56.
+- Defining the helper a row's source file defines just before it (BeginLoadingGroup for GetPGroupEntry) reproduces retail's mixed inline/out-of-line use in one grade; two fitted helper functions were the old stand-in.
+- An evidence line that cites "Ego_r + FableWin" needs a grep of each table separately: GetCreature / GetTarget / TouchResource are FableWin-only.
+- A row without a `// Leaf:` line that emits a second function (an implicit destructor COMDAT) is graded on the largest function by vland: add the Leaf line before the recheck.
+- Token-identity of an overlay is checkable with `cpp -P` on a one-line TU, normalising the __LINE__-numbered FABLE_STATIC_ASSERT names.
+- Rule slips (2): one Bash call exited 1 (a `cat` of a Source/TestSource pair read as two paths) and one exited 2 (g.sh given a relative row path, before any compile). Both read-only; no file outside my directory was touched and git was never run.

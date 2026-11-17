@@ -30,6 +30,17 @@ public:
     // The includer supplies stlport/fable_map.h and CCharString.
     virtual void OnCreateSpecial(const std::map<CCharString, CCombatSequenceBase* (FABLE_FASTCALL*)(CThingCreatureBase&, CThingCreatureBase&)>& specials);   // 0x008B0B60
 #endif
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCEGENERIC_MODULES
+    // Opt-in (agentNF69, rows 0x008B07E0 / 0x008B0830 / 0x008B0870): Ego_r.pdb + FableWin.pdb ?IsValid@CCombatSequenceGeneric@@UBE_NXZ
+    // (public virtual const, vtable 0x01261D74 slot 12), ?OnStart@CCombatSequenceGeneric@@MAEXXZ and ?OnStop@CCombatSequenceGeneric@@MAEXXZ
+    // (protected virtual, slots 17 / 18): each dispatches to the module the def names in CCombatSequenceBase's static IsValidPredicates /
+    // OnStartModules / OnStopModules. The includer's CCombatSequenceBase declares the matching virtuals. Declarations only.
+    virtual bool IsValid() const;                                        // 0x008B07E0
+protected:
+    virtual void OnStart();                                              // 0x008B0830
+    virtual void OnStop();                                               // 0x008B0870
+public:
+#endif
     CDefPointer<const CCombatSequenceDef> Def;                           // +0x28
 };
 FABLE_STATIC_ASSERT(sizeof(CCombatSequenceGeneric) == 0x2c);

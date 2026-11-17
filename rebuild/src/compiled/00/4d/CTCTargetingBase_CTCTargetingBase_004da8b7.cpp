@@ -1,68 +1,36 @@
-// CTCTargetingBase::~CTCTargetingBase() -- releases the targeting def, destroys the four thing pointers in reverse order, then ~CTCBase (tail jump)
-#include "fable_compiler.h"
+// CTCTargetingBase::~CTCTargetingBase() -- the implicit destructor: release the targeting def (PTargetingDef +0x30), destroy the four thing pointers (+0x25, +0x1D, +0x15, +0x0D) last first, then ~CTCBase (tail jump)
+// Leaf: ??1CTCTargetingBase@@UAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004DA8B7, length 64 bytes; thiscall, size-optimised TU.
+// Identity (agentNF69, q10855 rejected): the class is CTCTargetingBase, not CTCTargeted. (1) The body destroys exactly Ego_r.pdb's
+//   CTCTargetingBase members (struct_layouts_egor.tsv: CIntelligentPointer<CThing> PNearestInterestingThing 13, PScriptOverrideInterestingThing
+//   21, PScriptOverrideRangedTarget 29, PTargetedThing 37, CDefPointer<const CTargetingDef> PTargetingDef 48); Ego_r's CTCTargeted is 24
+//   bytes (TargetingFlags 12, flags 16..18, PTargetingDef 20) with no intelligent pointer. (2) Its callers are the destructors of
+//   CTCTargetingBase's RTTI children (rtti_bases.tsv: CTCTargetingPlayer / CTCTargetingSpirit / CTCTargetingAI : CTCTargetingBase : CTCBase;
+//   CTCTargeted : CTCBase is outside that chain): ~CTCTargetingPlayer 0x004E37BF, the CTCTargetingSpirit ??_G 0x004E1023, 0x004E0080 and the
+//   CTCTargetingBase ??_G 0x007F5D00. (3) ??1CTCTargeted@@UAE@XZ already belongs to the landed row 0x004DBF56 (its vtable's ??_G 0x004DBF3A).
+//   Ego_r.pdb / FableWin.pdb both carry ??1CTCTargetingBase@@UAE@XZ. The catalog's CTCTargeted::~CTCTargeted label is wrong.
+// Layout: engine/CTCTargetingBase.h (the typed FABLE_RETAIL_UPDATE_NEAREST_INTERESTING branch, packed CIntelligentPointer<CThing> members)
+//   over engine/CTCBase.h, engine/CDefPointer.h (forced-inline release: `and dword ptr [..],0` in the non-null arm) and
+//   engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER: the members have no destructor of their own, so
+//   ~CBaseIntelligentPointer 0x00A01C10 is called at each member address). Was a local CTCBase / CDefPointer / __declspec(novtable)
+//   CTCTargetingBase model.
+// Shape: no vtable store, VC7.1's implicit destructor (hdr/ overlay opt-in FABLE_RETAIL_CTCTARGETINGBASE_IMPLICIT_DTOR leaves out the
+//   PDB-generated user declaration); DestroyOne (a destruction by name, ungraded) makes VC7.1 emit the out-of-line implicit ??1.
 #pragma optimize("s", on)
-// Leaf: ??1CTCTargetingBase
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004DA8B7, length 64 bytes. Called from the deleting destructors of
-// CTCTargetingBase's derived components (0x004E009E, 0x004E1030, 0x004E3809, 0x007F5D03).
-// Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 (x4), CTCBase::~CTCBase @ 0x00686830, and the
-// def's virtual slot 1 (destroy) when its reference count drops to zero.
-// Ego_r.pdb CTCTargetingBase (0x38): ScriptOverrideIgnoreEverything +0x0c, PNearestInterestingThing +0x0d,
-// PScriptOverrideInterestingThing +0x15, PScriptOverrideRangedTarget +0x1d, PTargetedThing +0x25 (all
-// CIntelligentPointer<CThing>, UNALIGNED: byte-packed), PTargetingDef (CDefPointer<const CTargetingDef>) +0x30, LookAtCamera +0x34.
-// Shape: no vtable store at all -- the abstract class is `__declspec(novtable)`; the def pointer's inline release keeps the
-// pointer in ecx and clears the member inside the non-null arm with `and dword ptr [..],0` (a size TU:
-// `#pragma optimize("s",on)`, the release `__forceinline`); the intelligent pointers have no destructor of their own, so
-// the base destructor is called directly at each member address, last member first.
-class CThing;
-class CBaseObject;
-
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                     // +0x04
-    bool    ToBeRemoved;                     // +0x08
-    bool    IsInGlobalUpdateTCs;             // +0x09
-    virtual ~CTCBase();                              // 0x00686830
-};
-
-struct CDefPointee {                         // counted def: count at +4, slot 1 destroys
-    virtual void v00();
-    virtual void Destroy();                  // slot 1 (+4)
-    long m_refCount;                         // +0x04
-};
-
-struct CDefPointer {                         // CDefPointer<const CTargetingDef>
-    CDefPointee* Object;
-    FABLE_FORCEINLINE ~CDefPointer()
-    {
-        CDefPointee* def = Object;
-        if (def) {
-            if (--def->m_refCount == 0)
-                def->Destroy();
-            Object = 0;
-        }
-    }
-};
-
-#pragma pack(push, 1)
-class CBaseObjectPointer;
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
+#define FABLE_RETAIL_UPDATE_NEAREST_INTERESTING
+#define FABLE_RETAIL_CTCTARGETINGBASE_IMPLICIT_DTOR
+class C3DVector;
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCTargetingBase.h"
 
-
-struct __declspec(novtable) CTCTargetingBase : CTCBase {
-    bool                ScriptOverrideIgnoreEverything;    // +0x0c
-    CIntelligentPointer<CThing> PNearestInterestingThing;          // +0x0d
-    CIntelligentPointer<CThing> PScriptOverrideInterestingThing;   // +0x15
-    CIntelligentPointer<CThing> PScriptOverrideRangedTarget;       // +0x1d
-    CIntelligentPointer<CThing> PTargetedThing;                    // +0x25
-    unsigned char       _pad_0x2d[3];
-    CDefPointer         PTargetingDef;                     // +0x30
-    bool                LookAtCamera;                      // +0x34
-    ~CTCTargetingBase();
-};
-#pragma pack(pop)
-
-CTCTargetingBase::~CTCTargetingBase()
+// Emission helper: destroying the object by name is what makes VC7.1 emit the out-of-line implicit ??1 (as the landed ~CTCTargeted 0x004DBF56).
+void DestroyOne(CTCTargetingBase* object)
 {
+    object->CTCTargetingBase::~CTCTargetingBase();
 }

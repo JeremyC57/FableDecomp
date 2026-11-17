@@ -72,7 +72,23 @@ public:
     long GetNarratorIndex() const { return NarratorIndex; }
     bool IsLoaded() const;                                                         // 0x009C7BE0
 };
+#ifdef FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY
+// Nested opt-in (agentNF69, row 0x009C8890 GetPGroupEntry): Ego_r.pdb CDataBankGroupEntry (4 bytes: PGroup, a CIVCountedPointer<CGroupEntry>)
+// and its private const members ?BeginLoading@CDataBankGroupEntry@NGameText@@ABEXKAAVCDataBank@2@@Z (0x009C80F0) and
+// ?BuildGroup@CDataBankGroupEntry@NGameText@@ABEXXZ (0x009C8700), both PDBs; CDataBank calls them (a friend). Declarations only.
+class CGroupEntry;
+class CDataBank;
+class CDataBankGroupEntry : public CDataBankEntry {
+    friend class CDataBank;
+public:
+    CIVCountedPointer<CGroupEntry> PGroup;                                         // +0x00
+private:
+    void BeginLoading(unsigned long id, CDataBank& bank) const;                    // 0x009C80F0
+    void BuildGroup() const;                                                       // 0x009C8700
+};
+#else
 class CDataBankGroupEntry : public CDataBankEntry { };
+#endif
 #endif
 #ifdef FABLE_RETAIL_NGAMETEXT_GROUPENTRY
 // Nested opt-in (chunk 1011, row 0x005EB180 CTCTavernGame::SetStateAfterInstructions): the text group a bank entry id names.
@@ -85,10 +101,27 @@ class CDataBankGroupEntry : public CDataBankEntry { };
 }
 #include "engine/CArray.h"
 namespace NGameText {
+#ifdef FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY
+// Nested opt-in (agentNF69, row 0x009C8890): CGroupEntry is a class with public base CResource at offset 0 (Ego_d LF_BCLASS; Ego_r lays out
+// its first 28 bytes as padding = sizeof(CResource), then Entries +28, PFileData +44 (CCountedPointer<CBankFileAsyncData>), Owner +52;
+// ?UnloadResource@CGroupEntry@NGameText@@UAE_NXZ overrides CResource's slot; docs/journal/2026-11/EGOD_FINDINGS.md section 5). Retail's
+// CArray is 12 bytes, so PFileData is +0x28 (0x009C8890 reads [group+28h]) and Owner +0x30. Needs engine/CResource.h's polymorphic class
+// (FABLE_RETAIL_DEF_CLASS_BASE).
+}
+#include "engine/CResource.h"
+namespace NGameText {
+class CGroupEntry : public CResource {
+public:
+    virtual bool UnloadResource();                                                 // Ego_r ?UnloadResource@CGroupEntry@NGameText@@UAE_NXZ
+    CArray<long> Entries;                                                          // +0x1C
+    CCountedPointer<CBankFileAsyncData> PFileData;                                 // +0x28
+    CDataBankGroupEntry* Owner;                                                    // +0x30
+#else
 class CGroupEntry : public CIVCountedPointeeBase {
 public:
     unsigned char _pad_0x08[0x1c - 0x08];
     CArray<long> Entries;                                                          // +0x1C
+#endif
 #ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
     const CArray<long>& GetTextEntries() const { return Entries; }                 // FableWin.pdb ?GetTextEntries@CGroupEntry@NGameText@@QBEABV?$CArray@J@@XZ (inline; not in Ego_r)
 #endif
@@ -97,9 +130,21 @@ public:
 #ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
 // Opt-in (row 0x009C9280): CDataBank : CBankFileAsync (0x164) with the members this row reads at their retail offsets (Ego_r names):
 // Entries +0x1E0 (landed GetTextInfo 0x009C7D00), Narrators +0x204 (landed ConvertNarratorNameToIndex 0x009C7EF0), Seed +0x210.
+#ifdef FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY
+// Nested opt-in (agentNF69, row 0x009C8890): the second base, RTTI .?AVCDataBank@NGameText@@ : CBankFileAsync@0, CResourceBank@356 (0x164,
+// rtti_bases.tsv; engine/CResourceBank.h, 0x7C bytes: ResourceList +0x168, LoadingQueue +0x1A4 here), which fills the padding before
+// Entries +0x1E0; and the out-of-line ?BeginLoadingGroup@CDataBank@NGameText@@QBEXK@Z (0x009C8220, Ego_r.pdb + FableWin.pdb).
+}
+#include "engine/CResourceBank.h"
+namespace NGameText {
+class CDataBank : public CBankFileAsync, public CResourceBank {
+public:
+    void BeginLoadingGroup(unsigned long id) const;                                // 0x009C8220
+#else
 class CDataBank : public CBankFileAsync {
 public:
     unsigned char _pad_0x164[0x1e0 - 0x164];                                       // CResourceBank base and the bank state
+#endif
     CArray<CDataBankEntry*> Entries;                                               // +0x1E0
     unsigned char _pad_0x1ec[0x204 - 0x1ec];                                       // TextEntryBuffer / GroupEntryBuffer
     CArray<CCharString> Narrators;                                                 // +0x204

@@ -1,0 +1,41 @@
+entry	queue_address	correct_symbol	status	binders_ported	note
+q10819	0x008162F0	?StatRegisterClass@CHitLocation@NHitLocations@@SIXXZ	done	1	all slice binders ported: 0x008162F0
+q10820	0x008B08B0	?StatRegisterClass@CCombatSequenceBase@@SIXABV?$map@VCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@ZU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@@5@@std@@@Z	done	2	all slice binders ported: 0x008B08B0 0x008B0D10
+q10821	0x013BAF2C	?RegisteredHitLocationCodelets@CHitLocation@NHitLocations@@0V?$map@W4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@ZU?$less@W4EHitLocationCodelet@@@std@@V?$allocator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@5@@std@@A	done	4	all slice binders ported: 0x00815E80 0x008162F0 0x0121F4F0 0x01229F30
+q10822	0x013BAFA8	?IsValidPredicates@CCombatSequenceBase@@1V?$map@W4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@ZU?$less@W4ECombatSequenceIsValidType@@@std@@V?$allocator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@4@@std@@A	done	4	all slice binders ported: 0x008B07E0 0x0121F680 0x0122A0A0 0x008B08B0
+q10823	0x013BAFB4	?OnStartModules@CCombatSequenceBase@@1V?$map@W4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@ZU?$less@W4ECombatSequenceOnStartModuleType@@@std@@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@4@@std@@A	done	4	all slice binders ported: 0x008B0830 0x0121F6C0 0x0122A100 0x008B08B0
+q10824	0x013BAFC0	?OnStopModules@CCombatSequenceBase@@1V?$map@W4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@ZU?$less@W4ECombatSequenceOnStopModuleType@@@std@@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@4@@std@@A	done	4	all slice binders ported: 0x008B0870 0x0121F700 0x0122A160 0x008B08B0
+q10825	0x00817D70	(STLport _Rb_tree::_M_insert of map<EHitLocationCodelet, void (__fastcall*)(CThing&, const CHitParameters&)>; spell it from stlport/fable_map.h as the landed tree rows do)	done	2	all slice binders ported: 0x00817D70 0x00818000
+q10826	0x00818000	(STLport _Rb_tree::insert_unique of the same EHitLocationCodelet tree)	done	2	all slice binders ported: 0x00818000 0x008162F0
+q10827	0x008B29A0	(_M_insert of map<ECombatSequenceIsValidType, bool (__fastcall*)(const CThingCreatureBase&, const CThingCreatureBase&)>)	done	2	all slice binders ported: 0x008B29A0 0x008B2DD0
+q10828	0x008B2DD0	(insert_unique of the IsValid tree)	done	2	all slice binders ported: 0x008B2DD0 0x008B08B0
+q10829	0x008B2A60	(_M_insert of map<ECombatSequenceOnStartModuleType, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)>)	done	2	all slice binders ported: 0x008B2A60 0x008B2E90
+q10830	0x008B2E90	(insert_unique of the OnStart tree)	done	2	all slice binders ported: 0x008B2E90 0x008B08B0
+q10831	0x008B2B20	(_M_insert of map<ECombatSequenceOnStopModuleType, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)>)	done	2	all slice binders ported: 0x008B2B20 0x008B2F50
+q10832	0x008B2F50	(insert_unique of the OnStop tree)	done	2	all slice binders ported: 0x008B2F50 0x008B08B0
+q10833	0x008F5D00	?HLCTrapDeactivate@NHitLocationCodelets@@YIXAAVCThing@@ABVCHitParameters@@@Z	done	1	all slice binders ported: 0x008162F0
+q10834	0x008F5CF0	?HLCAutoKill@NHitLocationCodelets@@YIXAAVCThing@@ABVCHitParameters@@@Z	done	2	all slice binders ported: 0x008F5CF0 0x008162F0
+q10835	0x008F5D40	?HLCStrawDummy@NHitLocationCodelets@@YIXAAVCThing@@ABVCHitParameters@@@Z	done	1	all slice binders ported: 0x008162F0
+q10836	0x008F5E00	?HLCDragon@NHitLocationCodelets@@YIXAAVCThing@@ABVCHitParameters@@@Z	done	1	all slice binders ported: 0x008162F0
+q10837	0x00905500	?IsTargetBlocking@NCombatSequenceIsValidModules@@YI_NABVCThingCreatureBase@@0@Z	done	1	all slice binders ported: 0x008B08B0
+q10838	0x00905690	?IsToLoadRangedWeapon@NCombatSequenceIsValidModules@@YI_NABVCThingCreatureBase@@0@Z	done	1	all slice binders ported: 0x008B08B0
+q10839	0x009056F0	?IsToFireRangedWeaponAtTarget@NCombatSequenceIsValidModules@@YI_NABVCThingCreatureBase@@0@Z	done	1	all slice binders ported: 0x008B08B0
+q10840	0x00905510	?IsTargetHealthOver75Percent@NCombatSequenceIsValidModules@@YI_NABVCThingCreatureBase@@0@Z	done	1	all slice binders ported: 0x008B08B0
+q10841	0x00905530	?IsMyHealthBelow30Percent@NCombatSequenceIsValidModules@@YI_NABVCThingCreatureBase@@0@Z	done	1	all slice binders ported: 0x008B08B0
+q10842	0x009055E0	?IsBalverineAbleToLunge@NCombatSequenceIsValidModules@@YI_NABVCThingCreatureBase@@0@Z	done	1	all slice binders ported: 0x008B08B0
+q10843	0x009059D0	?IsAbleToSummon@NCombatSequenceIsValidModules@@YI_NABVCThingCreatureBase@@0@Z	done	1	all slice binders ported: 0x008B08B0
+q10844	0x00905A20	?IsTargetInLineOfSight@NCombatSequenceIsValidModules@@YI_NABVCThingCreatureBase@@0@Z	done	1	all slice binders ported: 0x008B08B0
+q10845	0x00905C30	?OnStartContinueAiming@NCombatSequenceOnStartModules@@YIXAAVCThingCreatureBase@@0@Z	done	1	all slice binders ported: 0x008B08B0
+q10846	0x0121F4F0	`dynamic initializer for 'NHitLocations::CHitLocation::RegisteredHitLocationCodelets''	done	1	all slice binders ported: 0x0121F4F0
+q10847	0x0121F680	`dynamic initializer for 'CCombatSequenceBase::IsValidPredicates''	done	1	all slice binders ported: 0x0121F680
+q10848	0x0121F6C0	`dynamic initializer for 'CCombatSequenceBase::OnStartModules''	done	1	all slice binders ported: 0x0121F6C0
+q10849	0x0121F700	`dynamic initializer for 'CCombatSequenceBase::OnStopModules''	done	1	all slice binders ported: 0x0121F700
+q10850	0x01229F30	`dynamic atexit destructor for 'NHitLocations::CHitLocation::RegisteredHitLocationCodelets''	done	1	all slice binders ported: 0x01229F30
+q10851	0x0122A0A0	`dynamic atexit destructor for 'CCombatSequenceBase::IsValidPredicates''	done	1	all slice binders ported: 0x0122A0A0
+q10852	0x0122A100	`dynamic atexit destructor for 'CCombatSequenceBase::OnStartModules''	done	1	all slice binders ported: 0x0122A100
+q10853	0x0122A160	`dynamic atexit destructor for 'CCombatSequenceBase::OnStopModules''	done	1	all slice binders ported: 0x0122A160
+q10854	0x004E37BF	??1CTCTargetingPlayer@@UAE@XZ	done	2	all slice binders ported: 0x004E37BF 0x004E37A3
+q10855	0x004DA8B7	??1CTCTargeted@@UAE@XZ	rejected	6	rejected: the claimed ??1CTCTargeted@@UAE@XZ already belongs to 0x004DBF56 (landed, its own vtable's ??_G 0x004DBF3A); 0x004DA8B7 is ??1CTCTargetingBase@@UAE@XZ (Ego_r.pdb + FableWin.pdb): the body destroys Ego_r's CTCTargetingBase members (PNearestInterestingThing 13 .. PTargetedThing 37, PTargetingDef 48; CTCTargeted is 24 bytes with none of them) and its callers are the destructors of CTCTargetingBase's RTTI children (Player 0x004E37BF, Spirit ??_G 0x004E1023, AI 0x004E0080, plus the CTCTargetingBase ??_G 0x007F5D00). Applied the proven spelling instead: 0x004DA8B7 catalog name -> CTCTargetingBase::~CTCTargetingBase (RENAMES 1), and all binders respelled to ??1CTCTargetingBase@@UAE@XZ: 0x004E37BF, 0x004E1023, 0x004E0080 (self also -> ~CTCTargetingAI), extras 0x004E0064 / 0x007F5D00 (REJECTED.tsv)
+q10856	0x004E1AAF	(STLport ~vector<NPlayerTargeting::CTargetPoint>, spelled from stlport/fable_vector.h)	done	1	all slice binders ported / not-a-binder 0x004E1AAF: 0x004E37BF
+q10857	0x00CD3A16	??A?$map@HVCCharString@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHVCCharString@@@std@@@3@@std@@QAEAAVCCharString@@ABH@Z	done	1	all slice binders ported: 0x00CD3A16
+q10858	0x009C8890	(row NGameText::CDataBank::GetPGroupEntry: NGameText::CGroupEntry is a class with public base CResource at offset 0)	done	1	all slice binders ported / not-a-binder 0x0047EEE4: 0x009C8890

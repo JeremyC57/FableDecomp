@@ -1,0 +1,32 @@
+addr       parity           behav  name
+004e0064   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e37a3   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00815e80   RELOCATION_MATCH PASS   ProcessHitLocationCode
+00818000   WARN RELOC_NAME: ??F?$_Rb_tree_iterator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@2@@std@@QAEAAU01@XZ -> 00817320 labelled 'CRetailTreeIterator::Decrement'
+00818000   RELOCATION_MATCH PASS   insert_unique
+008b0870   RELOCATION_MATCH PASS   OnStop
+008b29a0   RELOCATION_MATCH PASS   _M_insert
+008b2dd0   WARN RELOC_NAME: ??F?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@2@@std@@QAEAAU01@XZ -> 008b1f00 labelled 'CRetailTreeIterator::Decrement'
+008b2dd0   RELOCATION_MATCH PASS   insert_unique
+008f5cf0   RELOCATION_MATCH PASS   HLCAutoKill
+0121f4f0   WARN RELOC_CONFLICT: _$E2 -> 01229f30 here, 01228930 in landed 01219f00
+0121f4f0   WARN RELOC_NAME: _$E2 -> 01229f30 labelled '`dynamic atexit destructor for 'NHitLocations::CHitLocation::RegisteredHitLocationCodelets'''
+0121f4f0   RELOCATION_MATCH PASS   RegisteredHitLocationCodelets''
+0121f700   WARN RELOC_CONFLICT: _$E2 -> 0122a160 here, 01228930 in landed 01219f00
+0121f700   WARN RELOC_NAME: _$E2 -> 0122a160 labelled '`dynamic atexit destructor for 'CCombatSequenceBase::OnStopModules'''
+0121f700   RELOCATION_MATCH PASS   OnStopModules''
+0122a100   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4ECombatSequenceOnStartModuleType@@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStartModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@Z -> 008b1d80 labelled '_unattributed::FreeTree_CTreeOwner_008b1d80'
+0122a100   RELOCATION_MATCH PASS   OnStartModules''
+
+WINS: 11
+  004e0064 RELOCATION_MATCH CTCTargetingAI::?CTCTargetingAI_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  004e37a3 RELOCATION_MATCH CTCTargetingPlayer::?CTCTargetingPlayer_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00815e80 RELOCATION_MATCH NHitLocations::CHitLocation::?ProcessHitLocationCode@CHitLocation@NHitLocations@@QAEXAAVCThing@@ABVCHitParameters@@@Z
+  00818000 RELOCATION_MATCH std::_Rb_tree<EHitLocationCodelet, std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>, std::_Select1st<std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>>, std::less<EHitLocationCodelet>, std::allocator<std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>>>::?insert_unique@?$_Rb_tree@W4EHitLocationCodelet@@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Select1st@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@U?$less@W4EHitLocationCodelet@@@3@V?$allocator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@2@@std@@_N@2@ABU?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@2@@Z
+  008b0870 RELOCATION_MATCH CCombatSequenceGeneric::?OnStop@CCombatSequenceGeneric@@MAEXXZ
+  008b29a0 RELOCATION_MATCH std::_Rb_tree<ECombatSequenceIsValidType, std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>, std::_Select1st<std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>>, std::less<ECombatSequenceIsValidType>, std::allocator<std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>>>::?_M_insert@?$_Rb_tree@W4ECombatSequenceIsValidType@@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceIsValidType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@2@0@Z
+  008b2dd0 RELOCATION_MATCH std::_Rb_tree<ECombatSequenceIsValidType, std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>, std::_Select1st<std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>>, std::less<ECombatSequenceIsValidType>, std::allocator<std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>>>::?insert_unique@?$_Rb_tree@W4ECombatSequenceIsValidType@@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceIsValidType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@std@@@2@@std@@_N@2@ABU?$pair@$$CBW4ECombatSequenceIsValidType@@P6I_NABVCThingCreatureBase@@0@Z@2@@Z
+  008f5cf0 RELOCATION_MATCH NHitLocationCodelets::?HLCAutoKill@NHitLocationCodelets@@YIXAAVCThing@@ABVCHitParameters@@@Z
+  0121f4f0 RELOCATION_MATCH _global::_$E1
+  0121f700 RELOCATION_MATCH _global::_$E1
+  0122a100 RELOCATION_MATCH _global::_$E2

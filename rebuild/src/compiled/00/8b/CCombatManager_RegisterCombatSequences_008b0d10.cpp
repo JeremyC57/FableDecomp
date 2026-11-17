@@ -1,27 +1,32 @@
 // CCombatManager::RegisterCombatSequences() -- registers the 63 combat-sequence factory functions by name in RegisteredCombatSequences, then runs the follow-up registration on the map member
+// Leaf: ?RegisterCombatSequences@CCombatManager@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B0D10, length 1713 bytes. Called once from the CCombatManager ctor
 // (0x006ED474). Callees: RegisterCombatSequence(fn, CCharString name) @ 0x006EAB60 (the map insert; its manifest label
 // CAttachingThingsDialog::SetAttachingThingTypeName is propagated from a byte-identical body), CCharString(const char*,
 // long) @ 0x0099EBF0 (each by-value name is built in its argument slot: `push ecx ; mov ecx,esp`), the 63 `__fastcall`
-// factories 0x008B56D0.. (each news a sequence and runs its ctor), and the tail `jmp 0x008B08B0` on the member at +4.
-// Layout: CCombatManager per Ego_r.pdb (104 bytes): +0 _padding_ (the vptr dword), +4 RegisteredCombatSequences
-// (map<CCharString, CCombatSequenceBase* (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)>), +0x14 Combatants.
-// No engine header exists for CCombatManager, so the member map is a local model.
+// factories 0x008B56D0.. (each news a sequence and runs its ctor), and the tail `jmp 0x008B08B0` (CCombatSequenceBase::StatRegisterClass) with the member at +4.
+// Layout: engine/CCombatManager.h (CBaseClassNonCopyable vptr at +0, RegisteredCombatSequences
+// map<CCharString, CCombatSequenceBase* (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)> at +4), with the hdr/ overlay opt-in
+// FABLE_RETAIL_CCOMBATMANAGER_REGISTERCOMBATSEQUENCES (this function, private per both PDBs, and the 0x006EAB60 insert); CCharString from
+// fable_string.h (FABLE_RETAIL_CCHARSTRING, the 0x0099EBF0 const char* constructor).
+// agentNF69 (q10820): the tail call is CCombatSequenceBase::StatRegisterClass 0x008B08B0 (static __fastcall, ecx = &RegisteredCombatSequences,
+// its by-reference parameter; Ego_d publics + Ego_r.pdb 0x008EBDB0; docs/journal/2026-11/EGOD_FINDINGS.md section 1; Ego_d puts both
+// functions in combat_sequence.obj). Was a local CCombatManager / CCharString model and the CCombatSequenceMap::PostRegister stand-in.
+// CCombatSequenceBase has no shared header (engine/CCombatSequenceBase.h is quarantined): declared below with that static only.
 // Shape: straight-line calls in source order; the names are implicit const char* -> CCharString conversions built in
 // the by-value parameter slot; the last call is a tail call (`lea ecx,[esi+4] ; pop esi ; jmp`).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCOMBATMANAGER_REGISTERCOMBATSEQUENCES
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
 class CThingCreatureBase;
-class CCombatSequenceBase;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();
+class CCombatSequenceBase {
+public:
+    static void __fastcall StatRegisterClass(const std::map<CCharString, CCombatSequenceBase* (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)>& special_sequences);   // 0x008B08B0
 };
-typedef CCombatSequenceBase* (__fastcall* TCombatSequenceCreator)(CThingCreatureBase& attacker, CThingCreatureBase& defender);
-struct CCombatSequenceMap {                              // 16 bytes (STLport map)
-    unsigned char _tree[16];
-    void PostRegister();                                 // 0x008B08B0 (ignores this)
-};
+#include "engine/CCombatManager.h"
 CCombatSequenceBase* __fastcall CreateSeqBanditAttackMiddle(CThingCreatureBase& attacker, CThingCreatureBase& defender);   // 008B56D0
 CCombatSequenceBase* __fastcall CreateSeqBanditAttackSide(CThingCreatureBase& attacker, CThingCreatureBase& defender);   // 008B5710
 CCombatSequenceBase* __fastcall CreateSeqBanditAttackShort(CThingCreatureBase& attacker, CThingCreatureBase& defender);   // 008B5750
@@ -85,14 +90,6 @@ CCombatSequenceBase* __fastcall CreateSeqTwoStrike(CThingCreatureBase& attacker,
 CCombatSequenceBase* __fastcall CreateSeqUnblockableFacing(CThingCreatureBase& attacker, CThingCreatureBase& defender);   // 008B62D0
 CCombatSequenceBase* __fastcall CreateSeqNonInterruptableTwoStrike(CThingCreatureBase& attacker, CThingCreatureBase& defender);   // 008B6310
 CCombatSequenceBase* __fastcall CreateSeqWhisperSortYourselfOut(CThingCreatureBase& attacker, CThingCreatureBase& defender);   // 008B6190
-class CCombatManager {
-public:
-    long               _padding_;                        // +0x00
-    CCombatSequenceMap RegisteredCombatSequences;        // +0x04
-    void RegisterCombatSequence(TCombatSequenceCreator creator, CCharString name);   // 0x006EAB60
-    void RegisterCombatSequences();
-};
-
 void CCombatManager::RegisterCombatSequences()
 {
     RegisterCombatSequence(CreateSeqBanditAttackMiddle, "COMBAT_SEQUENCE_BANDIT_ATTACK_MIDDLE");
@@ -158,5 +155,5 @@ void CCombatManager::RegisterCombatSequences()
     RegisterCombatSequence(CreateSeqUnblockableFacing, "COMBAT_SEQUENCE_UNBLOCKABLE_FACING");
     RegisterCombatSequence(CreateSeqNonInterruptableTwoStrike, "COMBAT_SEQUENCE_NON_INTERRUPTABLE_TWO_STRIKE");
     RegisterCombatSequence(CreateSeqWhisperSortYourselfOut, "COMBAT_SEQUENCE_WHISPER_SORT_YOURSELF_OUT");
-    RegisteredCombatSequences.PostRegister();
+    CCombatSequenceBase::StatRegisterClass(RegisteredCombatSequences);
 }

@@ -31,7 +31,13 @@ private:
  CIntelligentPointer<CThingCreatureBase> PScriptTargetOverride;
  std::list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > > ThingsToNotAttack;
 public:
+#ifndef FABLE_RETAIL_CTCTARGETINGAI_IMPLICIT_DTOR
  virtual ~CTCTargetingAI();
+#else
+ // Opt-in (agentNF69, row 0x004E0080): retail's ??1CTCTargetingAI@@UAE@XZ (0x004E0080) stores no vtable, the mark of VC7.1's implicit
+ // destructor (as ~CTCTargetingBase 0x004DA8B7 under FABLE_RETAIL_CTCTARGETINGBASE_IMPLICIT_DTOR): the PDB-generated user declaration above is
+ // left out so the destructor is the implicit one (same symbol).
+#endif
  CTCTargetingAI & operator=(CTCTargetingAI const & p0);
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTargetingAI)==76);

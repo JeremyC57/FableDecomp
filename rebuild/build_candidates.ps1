@@ -148314,30 +148314,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0121f4f0'
-        Module = '_static_init'
-        Source = '01/21/staticinit_gtree013baf2c_0121f4f0.cpp'
-        TestSource = '01/21/staticinit_gtree013baf2c_0121f4f0_test.cpp'
+        Module = '_global'
+        Source = '01/21/global_dynamicinitializerforNHitLocationsCHitLocationRegisteredHitLocationCodelets_0121f4f0.cpp'
+        TestSource = '01/21/global_dynamicinitializerforNHitLocationsCHitLocationRegisteredHitLocationCodelets_0121f4f0_test.cpp'
         PassPattern = '0121f4f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f680'
-        Module = '_static_init'
-        Source = '01/21/staticinit_gtree013bafa8_0121f680.cpp'
-        TestSource = '01/21/staticinit_gtree013bafa8_0121f680_test.cpp'
+        Module = '_global'
+        Source = '01/21/global_dynamicinitializerforCCombatSequenceBaseIsValidPredicates_0121f680.cpp'
+        TestSource = '01/21/global_dynamicinitializerforCCombatSequenceBaseIsValidPredicates_0121f680_test.cpp'
         PassPattern = '0121f680_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f6c0'
-        Module = '_static_init'
-        Source = '01/21/staticinit_gtree013bafb4_0121f6c0.cpp'
-        TestSource = '01/21/staticinit_gtree013bafb4_0121f6c0_test.cpp'
+        Module = '_global'
+        Source = '01/21/global_dynamicinitializerforCCombatSequenceBaseOnStartModules_0121f6c0.cpp'
+        TestSource = '01/21/global_dynamicinitializerforCCombatSequenceBaseOnStartModules_0121f6c0_test.cpp'
         PassPattern = '0121f6c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f700'
-        Module = '_static_init'
-        Source = '01/21/staticinit_gtree013bafc0_0121f700.cpp'
-        TestSource = '01/21/staticinit_gtree013bafc0_0121f700_test.cpp'
+        Module = '_global'
+        Source = '01/21/global_dynamicinitializerforCCombatSequenceBaseOnStopModules_0121f700.cpp'
+        TestSource = '01/21/global_dynamicinitializerforCCombatSequenceBaseOnStopModules_0121f700_test.cpp'
         PassPattern = '0121f700_TEST PASS'
     }
     [pscustomobject]@{
@@ -165477,9 +165477,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e0080'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_CAggregate004e0080_004e0080.cpp'
-        TestSource = '00/4e/unattributed_CAggregate004e0080_004e0080_test.cpp'
+        Module = 'CTCTargetingAI'
+        Source = '00/4e/CTCTargetingAI_CTCTargetingAI_004e0080.cpp'
+        TestSource = '00/4e/CTCTargetingAI_CTCTargetingAI_004e0080_test.cpp'
         PassPattern = '004e0080_TEST PASS'
     }
     [pscustomobject]@{
@@ -176233,23 +176233,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008b2dd0'
-        Module = '_unattributed'
-        Source = '00/8b/unattributed_InsertUniqueCRetailTree008b2dd0_008b2dd0.cpp'
-        TestSource = '00/8b/unattributed_InsertUniqueCRetailTree008b2dd0_008b2dd0_test.cpp'
+        Module = 'std::_Rb_tree<ECombatSequenceIsValidType, std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>, std::_Select1st<std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>>, std::less<ECombatSequenceIsValidType>, std::allocator<std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>>>'
+        Source = '00/8b/stdRbtree_insertunique_008b2dd0.cpp'
+        TestSource = '00/8b/stdRbtree_insertunique_008b2dd0_test.cpp'
         PassPattern = '008b2dd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008b2e90'
-        Module = '_unattributed'
-        Source = '00/8b/unattributed_InsertUniqueCRetailTree008b2e90_008b2e90.cpp'
-        TestSource = '00/8b/unattributed_InsertUniqueCRetailTree008b2e90_008b2e90_test.cpp'
+        Module = 'std::_Rb_tree<ECombatSequenceOnStartModuleType, std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>, std::_Select1st<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>, std::less<ECombatSequenceOnStartModuleType>, std::allocator<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>>'
+        Source = '00/8b/stdRbtree_insertunique_008b2e90.cpp'
+        TestSource = '00/8b/stdRbtree_insertunique_008b2e90_test.cpp'
         PassPattern = '008b2e90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008b2f50'
-        Module = '_unattributed'
-        Source = '00/8b/unattributed_InsertUniqueCRetailTree008b2f50_008b2f50.cpp'
-        TestSource = '00/8b/unattributed_InsertUniqueCRetailTree008b2f50_008b2f50_test.cpp'
+        Module = 'std::_Rb_tree<ECombatSequenceOnStopModuleType, std::pair<ECombatSequenceOnStopModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>, std::_Select1st<std::pair<ECombatSequenceOnStopModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>, std::less<ECombatSequenceOnStopModuleType>, std::allocator<std::pair<ECombatSequenceOnStopModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>>'
+        Source = '00/8b/stdRbtree_insertunique_008b2f50.cpp'
+        TestSource = '00/8b/stdRbtree_insertunique_008b2f50_test.cpp'
         PassPattern = '008b2f50_TEST PASS'
     }
     [pscustomobject]@{
@@ -176359,9 +176359,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00818000'
-        Module = '_unattributed'
-        Source = '00/81/unattributed_InsertUniqueCRetailTree00818000_00818000.cpp'
-        TestSource = '00/81/unattributed_InsertUniqueCRetailTree00818000_00818000_test.cpp'
+        Module = 'std::_Rb_tree<EHitLocationCodelet, std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>, std::_Select1st<std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>>, std::less<EHitLocationCodelet>, std::allocator<std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>>>'
+        Source = '00/81/stdRbtree_insertunique_00818000.cpp'
+        TestSource = '00/81/stdRbtree_insertunique_00818000_test.cpp'
         PassPattern = '00818000_TEST PASS'
     }
     [pscustomobject]@{
@@ -176464,30 +176464,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00817d70'
-        Module = '_unattributed'
-        Source = '00/81/unattributed_InsertCRetailTree00817d70_00817d70.cpp'
-        TestSource = '00/81/unattributed_InsertCRetailTree00817d70_00817d70_test.cpp'
+        Module = 'std::_Rb_tree<EHitLocationCodelet, std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>, std::_Select1st<std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>>, std::less<EHitLocationCodelet>, std::allocator<std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>>>'
+        Source = '00/81/stdRbtree_Minsert_00817d70.cpp'
+        TestSource = '00/81/stdRbtree_Minsert_00817d70_test.cpp'
         PassPattern = '00817d70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008b29a0'
-        Module = '_unattributed'
-        Source = '00/8b/unattributed_InsertCRetailTree008b29a0_008b29a0.cpp'
-        TestSource = '00/8b/unattributed_InsertCRetailTree008b29a0_008b29a0_test.cpp'
+        Module = 'std::_Rb_tree<ECombatSequenceIsValidType, std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>, std::_Select1st<std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>>, std::less<ECombatSequenceIsValidType>, std::allocator<std::pair<ECombatSequenceIsValidType const, bool (__fastcall *)(CThingCreatureBase const &, CThingCreatureBase const &)>>>'
+        Source = '00/8b/stdRbtree_Minsert_008b29a0.cpp'
+        TestSource = '00/8b/stdRbtree_Minsert_008b29a0_test.cpp'
         PassPattern = '008b29a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008b2a60'
-        Module = '_unattributed'
-        Source = '00/8b/unattributed_InsertCRetailTree008b2a60_008b2a60.cpp'
-        TestSource = '00/8b/unattributed_InsertCRetailTree008b2a60_008b2a60_test.cpp'
+        Module = 'std::_Rb_tree<ECombatSequenceOnStartModuleType, std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>, std::_Select1st<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>, std::less<ECombatSequenceOnStartModuleType>, std::allocator<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>>'
+        Source = '00/8b/stdRbtree_Minsert_008b2a60.cpp'
+        TestSource = '00/8b/stdRbtree_Minsert_008b2a60_test.cpp'
         PassPattern = '008b2a60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008b2b20'
-        Module = '_unattributed'
-        Source = '00/8b/unattributed_InsertCRetailTree008b2b20_008b2b20.cpp'
-        TestSource = '00/8b/unattributed_InsertCRetailTree008b2b20_008b2b20_test.cpp'
+        Module = 'std::_Rb_tree<ECombatSequenceOnStopModuleType, std::pair<ECombatSequenceOnStopModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>, std::_Select1st<std::pair<ECombatSequenceOnStopModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>, std::less<ECombatSequenceOnStopModuleType>, std::allocator<std::pair<ECombatSequenceOnStopModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>>'
+        Source = '00/8b/stdRbtree_Minsert_008b2b20.cpp'
+        TestSource = '00/8b/stdRbtree_Minsert_008b2b20_test.cpp'
         PassPattern = '008b2b20_TEST PASS'
     }
     [pscustomobject]@{
@@ -176779,30 +176779,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '01229f30'
-        Module = '_unattributed'
-        Source = '01/22/unattributed_CleanupLTextTreeWalker101229f30_01229f30.cpp'
-        TestSource = '01/22/unattributed_CleanupLTextTreeWalker101229f30_01229f30_test.cpp'
+        Module = '_global'
+        Source = '01/22/global_dynamicatexitdestructorforNHitLocationsCHitLocationRegisteredHitLocationCodelets_01229f30.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforNHitLocationsCHitLocationRegisteredHitLocationCodelets_01229f30_test.cpp'
         PassPattern = '01229f30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0122a0a0'
-        Module = '_unattributed'
-        Source = '01/22/unattributed_CleanupLTextTreeWalker20122a0a0_0122a0a0.cpp'
-        TestSource = '01/22/unattributed_CleanupLTextTreeWalker20122a0a0_0122a0a0_test.cpp'
+        Module = '_global'
+        Source = '01/22/global_dynamicatexitdestructorforCCombatSequenceBaseIsValidPredicates_0122a0a0.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforCCombatSequenceBaseIsValidPredicates_0122a0a0_test.cpp'
         PassPattern = '0122a0a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0122a100'
-        Module = '_unattributed'
-        Source = '01/22/unattributed_CleanupLTextTreeWalker30122a100_0122a100.cpp'
-        TestSource = '01/22/unattributed_CleanupLTextTreeWalker30122a100_0122a100_test.cpp'
+        Module = '_global'
+        Source = '01/22/global_dynamicatexitdestructorforCCombatSequenceBaseOnStartModules_0122a100.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforCCombatSequenceBaseOnStartModules_0122a100_test.cpp'
         PassPattern = '0122a100_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0122a160'
-        Module = '_unattributed'
-        Source = '01/22/unattributed_CleanupLTextTreeWalker40122a160_0122a160.cpp'
-        TestSource = '01/22/unattributed_CleanupLTextTreeWalker40122a160_0122a160_test.cpp'
+        Module = '_global'
+        Source = '01/22/global_dynamicatexitdestructorforCCombatSequenceBaseOnStopModules_0122a160.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforCCombatSequenceBaseOnStopModules_0122a160_test.cpp'
         PassPattern = '0122a160_TEST PASS'
     }
     [pscustomobject]@{
@@ -182741,9 +182741,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008f5cf0'
-        Module = '_unattributed'
-        Source = '00/8f/unattributed_CallWith008f5cf0_008f5cf0.cpp'
-        TestSource = '00/8f/unattributed_CallWith008f5cf0_008f5cf0_test.cpp'
+        Module = 'NHitLocationCodelets'
+        Source = '00/8f/NHitLocationCodelets_HLCAutoKill_008f5cf0.cpp'
+        TestSource = '00/8f/NHitLocationCodelets_HLCAutoKill_008f5cf0_test.cpp'
         PassPattern = '008f5cf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -202493,8 +202493,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004e37bf'
         Module = 'CTCTargetingPlayer'
-        Source = '00/4e/CGlobalDef_CGlobalDef_004e37bf.cpp'
-        TestSource = '00/4e/CGlobalDef_CGlobalDef_004e37bf_test.cpp'
+        Source = '00/4e/CTCTargetingPlayer_CTCTargetingPlayer_004e37bf.cpp'
+        TestSource = '00/4e/CTCTargetingPlayer_CTCTargetingPlayer_004e37bf_test.cpp'
         PassPattern = '004e37bf_TEST PASS'
     }
     [pscustomobject]@{
@@ -202828,9 +202828,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00815e80'
-        Module = 'CHitLocation'
-        Source = '00/81/CHitLocation_ProcessHitLocationCode_00815e80.cpp'
-        TestSource = '00/81/CHitLocation_ProcessHitLocationCode_00815e80_test.cpp'
+        Module = 'NHitLocations::CHitLocation'
+        Source = '00/81/NHitLocationsCHitLocation_ProcessHitLocationCode_00815e80.cpp'
+        TestSource = '00/81/NHitLocationsCHitLocation_ProcessHitLocationCode_00815e80_test.cpp'
         PassPattern = '00815e80_TEST PASS'
     }
     [pscustomobject]@{
@@ -216956,7 +216956,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004da8b7'
-        Module = 'CTCTargeted'
+        Module = 'CTCTargetingBase'
         Source = '00/4d/CTCTargetingBase_CTCTargetingBase_004da8b7.cpp'
         TestSource = '00/4d/CTCTargetingBase_CTCTargetingBase_004da8b7_test.cpp'
         PassPattern = '004da8b7_TEST PASS'
@@ -229718,9 +229718,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008162f0'
-        Module = '_global'
-        Source = '00/81/global_RegisterThingHandlers_008162f0.cpp'
-        TestSource = '00/81/global_RegisterThingHandlers_008162f0_test.cpp'
+        Module = 'NHitLocations::CHitLocation'
+        Source = '00/81/NHitLocationsCHitLocation_StatRegisterClass_008162f0.cpp'
+        TestSource = '00/81/NHitLocationsCHitLocation_StatRegisterClass_008162f0_test.cpp'
         PassPattern = '008162f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -262548,9 +262548,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008b08b0'
-        Module = 'CScreenEffectPriorityStack'
-        Source = '00/8b/CScreenEffectPriorityStack_Process_008b08b0.cpp'
-        TestSource = '00/8b/CScreenEffectPriorityStack_Process_008b08b0_test.cpp'
+        Module = 'CCombatSequenceBase'
+        Source = '00/8b/CCombatSequenceBase_StatRegisterClass_008b08b0.cpp'
+        TestSource = '00/8b/CCombatSequenceBase_StatRegisterClass_008b08b0_test.cpp'
         PassPattern = '008b08b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -309473,9 +309473,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cd3a16'
-        Module = 'map<long, CCharString>'
-        Source = '00/cd/maplongCCharString_operator_00cd3a16.cpp'
-        TestSource = '00/cd/maplongCCharString_operator_00cd3a16_test.cpp'
+        Module = 'std::map<int, CCharString, std::less<int>, std::allocator<std::pair<const int, CCharString > > >'
+        Source = '00/cd/stdmap_operator_00cd3a16.cpp'
+        TestSource = '00/cd/stdmap_operator_00cd3a16_test.cpp'
         PassPattern = '00cd3a16_TEST PASS'
     }
     [pscustomobject]@{
