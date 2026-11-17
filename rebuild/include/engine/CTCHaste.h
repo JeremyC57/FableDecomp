@@ -9,6 +9,9 @@
 // out-of-line _Rb_tree::insert_unique 0x00580D21) of one value_type temporary, then the private
 // ?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ 0x00800020. Plain inline: an out-of-line copy exists in Ego_r.
 #include "stlport/fable_map.h"
+#ifdef FABLE_RETAIL_CTCHASTE_SETACTIONSPEEDMULTIPLIER_FORCEINLINE
+#include "fable_compiler.h"   // FABLE_FORCEINLINE (NF61 opt-in below)
+#endif
 class CTCHaste : public CTCBase {
 private:
     float Multiplier;bool ToTerminate;long PauseFrames;
@@ -21,9 +24,29 @@ public:
     void UnsetActionSpeedMultiplier(void* key);                          // 0x0058148D
 private:
 #endif
+#ifdef FABLE_RETAIL_CTCHASTE_UNSET_INLINE
+public:
+    // NF61 opt-in (round 7, row 0x00694020 CCreatureActionBase::FrameUpdate): the same Ego_r.pdb member
+    //   ?UnsetActionSpeedMultiplier@CTCHaste@@QAEXPAX@Z with its body visible (the out-of-line copy 0x0058148D is exactly
+    //   `Multipliers.erase(key); UpdateActionSpeedMultiplier();`), which retail expands there (erase(const key_type&) 0x0058119B, then
+    //   0x00800020). Needs FABLE_RETAIL_STLP_TREE_ERASE_KEY (map::erase(const K&)); do not define with FABLE_RETAIL_CTCHASTE_UNSET.
+    void UnsetActionSpeedMultiplier(void* key) { Multipliers.erase(key); UpdateActionSpeedMultiplier(); }
+private:
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HASTE; }
     void SetOnHitPause(long frames) { PauseFrames=frames; }
+#ifdef FABLE_RETAIL_CTCHASTE_SETACTIONSPEEDMULTIPLIER_OUTOFLINE
+    // NF61 opt-in (round 7, row 0x005812AE): the same member declared only, for the row that defines retail's out-of-line copy
+    // (0x005812AE, unreferenced COMDAT; the body below is its text).
+    void SetActionSpeedMultiplier(void* key, float multiplier);
+#else
+#ifdef FABLE_RETAIL_CTCHASTE_SETACTIONSPEEDMULTIPLIER_FORCEINLINE
+    // NF61 opt-in (round 7, row 0x0078B410 CCreatureAction_HeroLoadRangedWeapon::Initialise). Inline-budget: retail expands this body
+    //   there (0x0078B5xx: the pair temporary built in the frame, `lea ecx,[esi+18h] ; call 0x00580D21`, then 0x00800020); VC7.1 calls
+    //   the member out of line in that large caller, also under /d2inlS20 (469 v 493 bytes). Same body.
+    FABLE_FORCEINLINE
+#endif
     void SetActionSpeedMultiplier(void* key, float multiplier)
     {
 #ifdef FABLE_RETAIL_CTCHASTE_MAKE_PAIR
@@ -34,6 +57,7 @@ public:
 #endif
         UpdateActionSpeedMultiplier();
     }
+#endif
 #ifdef FABLE_RETAIL_CTCHASTE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
     // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;

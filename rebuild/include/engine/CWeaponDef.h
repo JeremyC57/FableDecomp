@@ -31,6 +31,12 @@ class CPersistContext;
 // 0x004E9156 binds that spelling; same layout, members public.
 class CWeaponTrailGraphicSet {
 public:
+#ifdef FABLE_RETAIL_CWEAPONTRAILGRAPHICSET_CTOR
+    // NF61 opt-in (round 7, row 0x004E9156 GFSerialiseMapBinaryIn<CWeaponTrailGraphicSet, EObjectAugmentationType, ..>): Ego_r.pdb
+    // ??0CWeaponTrailGraphicSet@@QAE@XZ, inline in retail: both indices -1 (the value-initialised pair<K, V> of that loop stores
+    // `or dword ptr [ebp-1Ch],0FFFFFFFFh ; or dword ptr [ebp-18h],0FFFFFFFFh`, 0x004E91D4 / 0x004E91D8).
+    CWeaponTrailGraphicSet() : Attack(-1), Knockdown(-1) {}
+#endif
     long Attack;
     long Knockdown;
 };

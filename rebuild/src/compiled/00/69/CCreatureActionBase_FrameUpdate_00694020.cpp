@@ -14,7 +14,25 @@
 // Layout: local model -- engine/CCreatureActionBase.h has the PDB (debug STL) container sizes; retail uses 12-byte
 //   STLport vectors: ActionEvents {start +0x84, finish +0x88}, CutSceneEvents tree {header +0x90, count +0x94}; scalar
 //   members as the header (TotalTime +0x10 .. PAnimEntry +0x74). Interfaces 0x8c CTCHaste, 0x42 events, 0x10 sound.
+// NF61 (round 7, q10576): CTCHaste is now the shared engine/CTCHaste.h (FABLE_RETAIL_CTCHASTE: Ego_r.pdb std::map<void*,float>
+//   Multipliers +0x18; the inline SetActionSpeedMultiplier and, through the NF61 overlay opt-in FABLE_RETAIL_CTCHASTE_UNSET_INLINE,
+//   UnsetActionSpeedMultiplier, both expanded here), CCharString fable_string.h, CTCBase engine/CTCBase.h and ETCInterfaceType
+//   engine/ETCInterfaceType.h (STLport pair from stlport/fable_containers.h); the local CTCHaste / CPauseSet / SPausePair / CCharString /
+//   CTCBase / empty-enum / pair models are gone. The insert binds NF58's _Rb_tree<void*, pair<void* const, float>, ...>::insert_unique
+//   0x00580D21, the erase the tree's erase(const key_type&) 0x0058119B, the recalculation ?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ.
+//   The other local views (CThing, CVectorMap specialisation, action-event helpers, cut-scene tree) stay.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCHASTE
+#define FABLE_RETAIL_CTCHASTE_UNSET_INLINE
+#define FABLE_RETAIL_STLP_TREE_ERASE
+#define FABLE_RETAIL_STLP_TREE_ERASE_KEY
 #include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCHaste.h"
 void* __cdecl operator new(unsigned int size);
 extern "C" void __cdecl free(void* p);
 class CMainGameComponent {
@@ -23,13 +41,6 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);             // 0x0099EC30
-    ~CCharString();                                    // 0x0099EAE0
-};
-class CTCBase { public: virtual void v00(); };
 namespace NEntityEvents {
 class CEventBase { public: CEventBase() : Unknown(0) { } virtual void v00(); long Unknown; };
 }
@@ -42,17 +53,6 @@ class CTCEntityEvents : public CTCBase { public:
     void AddEvent(NEntityEvents::CEventBase* event);                  // 0x008113C0
 };
 class CCreatureActionBase;
-struct SPausePair { CCreatureActionBase* first; long second; SPausePair(CCreatureActionBase* a, long b) : first(a), second(b) { } };
-struct SInsertResult { void* it; bool ok; };
-struct CPauseSet {
-    unsigned long Erase(CCreatureActionBase* const& key);   // 0x0058119B
-    SInsertResult Insert(const SPausePair& value);          // 0x00580D21
-};
-class CTCHaste : public CTCBase { public:
-    unsigned char _pad04[0x18 - 0x04];
-    CPauseSet     Paused;                              // +0x18
-    void Recalculate();                                // 0x00800020
-};
 class CSoundPair { public: long FirstSound, LastSound; };
 class CSoundInit { public:
     unsigned char _data[0x20];
@@ -61,8 +61,6 @@ class CSoundInit { public:
 class CTCSoundPlayer : public CTCBase { public:
     unsigned long PlayAttachedSample(const CSoundPair& sound_pair, const CSoundInit& init, bool a, bool b, bool c);   // 0x0066B280
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class TCompare> class CVectorMap;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
@@ -249,9 +247,7 @@ void CCreatureActionBase::FrameUpdate()
     if (PauseTimer-- == 0) {
         CTCHaste* haste;
         if (((CThing*)PCreature.GetPItem())->GetInterface(&haste, 0x8c)) {
-            CCreatureActionBase* key = this;
-            haste->Paused.Erase(key);
-            haste->Recalculate();
+            haste->UnsetActionSpeedMultiplier(this);
         }
     }
     if (FramesRunning == PauseFrame) {
@@ -263,8 +259,7 @@ void CCreatureActionBase::FrameUpdate()
             ((CThing*)PCreature.GetPItem())->AddTC(name, false, 0);
         }
         CTCHaste* haste = (CTCHaste*)creature->m_interfaces.FindInline(0x8c);
-        haste->Paused.Insert(SPausePair(this, 0));
-        haste->Recalculate();
+        haste->SetActionSpeedMultiplier(this, 0.0f);
     }
     if (ActionTime >= 0 && FramesRunning >= ActionTime && !PerformedAction &&
         (AddedActionAnim || PAnimEntry == 0 || *PAnimEntry == 0)) {

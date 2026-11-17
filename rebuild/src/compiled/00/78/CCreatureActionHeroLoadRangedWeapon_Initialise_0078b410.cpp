@@ -2,20 +2,32 @@
 // and a carrying component, register a loading-speed haste multiplier for this action: the primary weapon's ability def
 // gives the multiplier range, the hero's stats def the ability level (adding a CTCHaste when missing)
 // Leaf: ?Initialise@CCreatureAction_HeroLoadRangedWeapon
+// Inline-budget: FABLE_FORCEINLINE CTCHaste::SetActionSpeedMultiplier (NF61 overlay opt-in FABLE_RETAIL_CTCHASTE_SETACTIONSPEEDMULTIPLIER_FORCEINLINE):
+//   retail expands it here; VC7.1 calls it out of line in this caller, also under /d2inlS20 (469 v 493 bytes).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Layout: CThing interface bitset +0x20, map +0x44, def +0x70; CWeaponDef multiplier max +0xbc / min +0xc0; the stats def's
 //   ability table at +0x9c; CTCHaste multipliers map at +0x18.
 // Shape: the 0x68 / 0x46 lookups are const (LowerBound 0x004365B0), the 0x8C one non-const (0x0040F020); the stats def is
 //   returned by value; the ability def pointer is declared before the single `stats && GetSubDef` test (that order gives
 //   retail's slots and the zero register); CDefPointer's destructor nulls the pointer after the release.
+// NF61 (round 7, q10577): CTCHaste is now the shared engine/CTCHaste.h (FABLE_RETAIL_CTCHASTE: Ego_r.pdb std::map<void*,float>
+//   Multipliers +0x18 and the inline SetActionSpeedMultiplier, expanded here as in the landed 0x006A02B0 / 0x008C7280), CCharString
+//   fable_string.h and ETCInterfaceType engine/ETCInterfaceType.h; the local CTCHaste / CHasteMap / CHasteMultiplier / CCharString /
+//   empty-enum models are gone. The insert binds NF58's _Rb_tree<void*, pair<void* const, float>, ...>::insert_unique 0x00580D21 and
+//   the recalculation ?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ (0x00800020). The stats def's +0x9c weighting is the shared
+//   engine/CHeroAbilityStatWeight.h (Ego_r.pdb ?GetParameter@CHeroAbilityStatWeight@@QBEMABVCTCHeroExperience@@@Z 0x00851BD0, the
+//   spelling its landed self and caller 0x006D6EA0 use; was the stand-in CAbilityTable::GetAbilityMultiplier). The local CThing / def /
+//   action views stay.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCHASTE
+#define FABLE_RETAIL_CTCHASTE_SETACTIONSPEEDMULTIPLIER_FORCEINLINE
 #include "fable_compiler.h"
-class CTCBase;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCHaste.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CDefPointeeBase { public:
@@ -44,13 +56,10 @@ template<class T> class CDefPointer { public:
     }
     typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
-class CTCHeroExperience;
-struct CAbilityTable {
-    float GetAbilityMultiplier(const CTCHeroExperience* experience) const;   // 0x00851BD0
-};
+#include "engine/CHeroAbilityStatWeight.h"
 class CHeroCombatDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x9c - 8];
-    CAbilityTable Abilities;                          // +0x9c
+    CHeroAbilityStatWeight Abilities;                 // +0x9c (engine/CHeroAbilityStatWeight.h; GetParameter 0x00851BD0)
 };
 class CWeaponDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xbc - 8];
@@ -108,21 +117,6 @@ public:
 class CTCCarrying { public:                                  // interface 0x46
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
 };
-struct CHasteMultiplier {                             // std::pair<void* const, float>
-    void* first;
-    float second;
-    CHasteMultiplier(void* key, float value) : first(key), second(value) {}
-};
-struct CHasteMap {                                    // map<void*, float>
-    struct iterator { void* node; };
-    struct pairib { iterator first; bool second; };
-    pairib insert(const CHasteMultiplier& value);     // 0x00580D21
-};
-class CTCHaste { public:                                     // interface 0x8C
-    unsigned char _pad00[0x18];
-    CHasteMap Multipliers;                            // +0x18
-    void RecalculateSpeed();                          // 0x00800020
-};
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -167,13 +161,12 @@ void CCreatureAction_HeroLoadRangedWeapon::Initialise()
             CDefPointer<const CHeroCombatDef> stats = GetCreature()->GetPHeroCombatDef();
             CDefPointer<const CWeaponDef> ability;
             if (stats.Object && weaponDef->GetSubDef(&ability)) {
-                float level = stats->Abilities.GetAbilityMultiplier(experience);
+                float level = stats->Abilities.GetParameter(*experience);
                 float multiplier = (ability->MaxMultiplier - ability->MinMultiplier) * level + ability->MinMultiplier;
                 CTCHaste* haste;
                 if (!GetCreature()->GetInterface(&haste, 0x8c))
                     haste = (CTCHaste*)GetCreature()->AddTC("CTCHaste", false, 0);
-                haste->Multipliers.insert(CHasteMultiplier(this, multiplier));
-                haste->RecalculateSpeed();
+                haste->SetActionSpeedMultiplier(this, multiplier);
             }
         }
     }

@@ -48925,9 +48925,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b200c'
-        Module = 'CRegionDialog'
-        Source = '00/5b/CRegionDialog_GetTreeHandleFromMapIndex_005b200c.cpp'
-        TestSource = '00/5b/CRegionDialog_GetTreeHandleFromMapIndex_005b200c_test.cpp'
+        Module = 'std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, std::pair<long, long> >, std::_Select1st<std::pair<NUISystem::CComponent* const, std::pair<long, long> > >, std::less<NUISystem::CComponent* >, std::allocator<std::pair<NUISystem::CComponent* const, std::pair<long, long> > > >'
+        Source = '00/5b/stdRbtree_Mcreatenode_005b200c.cpp'
+        TestSource = '00/5b/stdRbtree_Mcreatenode_005b200c_test.cpp'
         PassPattern = 'PASS_TREEHANDLE_2A'
     }
     [pscustomobject]@{
@@ -123273,44 +123273,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045c4d2'
-        Module = '_global'
-        Source = '00/45/global_TreeNodeAllocData_0045c4d2.cpp'
-        TestSource = '00/45/global_TreeNodeAllocData_0045c4d2_test.cpp'
+        Module = 'std::_Rb_tree<ECombatCreatureType, std::pair<ECombatCreatureType const, long>, std::_Select1st<std::pair<ECombatCreatureType const, long> >, std::less<ECombatCreatureType >, std::allocator<std::pair<ECombatCreatureType const, long> > >'
+        Source = '00/45/stdRbtree_Mcreatenode_0045c4d2.cpp'
+        TestSource = '00/45/stdRbtree_Mcreatenode_0045c4d2_test.cpp'
         PassPattern = 'TREE_NODE_ALLOC_PASS'
     }
     [pscustomobject]@{
         Address = '00431471'
-        Module = '_global'
-        Source = '00/43/global_TreeNodeAllocData_00431471.cpp'
-        TestSource = '00/43/global_TreeNodeAllocData_00431471_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, unsigned long> > >'
+        Source = '00/43/stdRbtree_Mcreatenode_00431471.cpp'
+        TestSource = '00/43/stdRbtree_Mcreatenode_00431471_test.cpp'
         PassPattern = 'TREE_NODE_ALLOC_PASS'
     }
     [pscustomobject]@{
         Address = '0045c8a1'
-        Module = '_global'
-        Source = '00/45/global_TreeNodeAllocData_0045c8a1.cpp'
-        TestSource = '00/45/global_TreeNodeAllocData_0045c8a1_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1st<std::pair<unsigned long const, long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, long> > >'
+        Source = '00/45/stdRbtree_Mcreatenode_0045c8a1.cpp'
+        TestSource = '00/45/stdRbtree_Mcreatenode_0045c8a1_test.cpp'
         PassPattern = 'TREE_NODE_ALLOC_PASS'
     }
     [pscustomobject]@{
         Address = '0042b5a8'
-        Module = '_global'
-        Source = '00/42/global_BinarySearchTreeNodeCreate_0042b5a8.cpp'
-        TestSource = '00/42/global_BinarySearchTreeNodeCreate_0042b5a8_test.cpp'
+        Module = 'std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, long>, std::_Select1st<std::pair<NUISystem::CComponent* const, long> >, std::less<NUISystem::CComponent*>, std::allocator<std::pair<NUISystem::CComponent* const, long> > >'
+        Source = '00/42/stdRbtree_Mcreatenode_0042b5a8.cpp'
+        TestSource = '00/42/stdRbtree_Mcreatenode_0042b5a8_test.cpp'
         PassPattern = 'BST_CREATE_PASS'
     }
     [pscustomobject]@{
         Address = '0042b5ca'
-        Module = '_global'
-        Source = '00/42/global_BinarySearchTreeNodeCreateDuplicate_0042b5ca.cpp'
-        TestSource = '00/42/global_BinarySearchTreeNodeCreateDuplicate_0042b5ca_test.cpp'
+        Module = 'std::_Rb_tree<NUISystem::CManager::EUsedKeys, std::pair<NUISystem::CManager::EUsedKeys const, long>, std::_Select1st<std::pair<NUISystem::CManager::EUsedKeys const, long> >, std::less<NUISystem::CManager::EUsedKeys >, std::allocator<std::pair<NUISystem::CManager::EUsedKeys const, long> > >'
+        Source = '00/42/stdRbtree_Mcreatenode_0042b5ca.cpp'
+        TestSource = '00/42/stdRbtree_Mcreatenode_0042b5ca_test.cpp'
         PassPattern = 'BST_CREATE_DUP_PASS'
     }
     [pscustomobject]@{
         Address = '0042b5ec'
-        Module = '_global'
-        Source = '00/42/global_BinarySearchTreeNodeCreateCopy_0042b5ec.cpp'
-        TestSource = '00/42/global_BinarySearchTreeNodeCreateCopy_0042b5ec_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, EEngine2DLayer>, std::_Select1st<std::pair<long const, EEngine2DLayer> >, std::less<long >, std::allocator<std::pair<long const, EEngine2DLayer> > >'
+        Source = '00/42/stdRbtree_Mcreatenode_0042b5ec.cpp'
+        TestSource = '00/42/stdRbtree_Mcreatenode_0042b5ec_test.cpp'
         PassPattern = 'BST_CREATE_COPY_PASS'
     }
     [pscustomobject]@{
@@ -123967,23 +123967,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045e2b1'
-        Module = '_global'
-        Source = '00/45/global_TreeNodeAllocDataByte_0045e2b1.cpp'
-        TestSource = '00/45/global_TreeNodeAllocDataByte_0045e2b1_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionDeedType, std::pair<EOpinionDeedType const, bool>, std::_Select1st<std::pair<EOpinionDeedType const, bool> >, std::less<EOpinionDeedType >, std::allocator<std::pair<EOpinionDeedType const, bool> > >'
+        Source = '00/45/stdRbtree_Mcreatenode_0045e2b1.cpp'
+        TestSource = '00/45/stdRbtree_Mcreatenode_0045e2b1_test.cpp'
         PassPattern = 'TREE_NODE_ALLOC_BYTE_E2B1_PASS'
     }
     [pscustomobject]@{
         Address = '0045de2f'
-        Module = '_global'
-        Source = '00/45/global_TreeNodeAllocDataByte_0045de2f.cpp'
-        TestSource = '00/45/global_TreeNodeAllocDataByte_0045de2f_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionReactionType, std::pair<EOpinionReactionType const, bool>, std::_Select1st<std::pair<EOpinionReactionType const, bool> >, std::less<EOpinionReactionType >, std::allocator<std::pair<EOpinionReactionType const, bool> > >'
+        Source = '00/45/stdRbtree_Mcreatenode_0045de2f.cpp'
+        TestSource = '00/45/stdRbtree_Mcreatenode_0045de2f_test.cpp'
         PassPattern = 'TREE_NODE_ALLOC_BYTE_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '0045e797'
-        Module = '_global'
-        Source = '00/45/global_TreeNodeAllocDataByte_0045e797.cpp'
-        TestSource = '00/45/global_TreeNodeAllocDataByte_0045e797_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionAttitudeType, std::pair<EOpinionAttitudeType const, bool>, std::_Select1st<std::pair<EOpinionAttitudeType const, bool> >, std::less<EOpinionAttitudeType >, std::allocator<std::pair<EOpinionAttitudeType const, bool> > >'
+        Source = '00/45/stdRbtree_Mcreatenode_0045e797.cpp'
+        TestSource = '00/45/stdRbtree_Mcreatenode_0045e797_test.cpp'
         PassPattern = 'TREE_NODE_ALLOC_BYTE_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -123995,121 +123995,121 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045f13d'
-        Module = '_global'
-        Source = '00/45/global_TreeNodeAllocData_0045f13d.cpp'
-        TestSource = '00/45/global_TreeNodeAllocData_0045f13d_test.cpp'
+        Module = 'std::_Rb_tree<EOpinion, std::pair<EOpinion const, float>, std::_Select1st<std::pair<EOpinion const, float> >, std::less<EOpinion >, std::allocator<std::pair<EOpinion const, float> > >'
+        Source = '00/45/stdRbtree_Mcreatenode_0045f13d.cpp'
+        TestSource = '00/45/stdRbtree_Mcreatenode_0045f13d_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '0046149e'
-        Module = '_global'
-        Source = '00/46/global_TreeNodeAllocData_0046149e.cpp'
-        TestSource = '00/46/global_TreeNodeAllocData_0046149e_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, float>, std::_Select1st<std::pair<EObjectAugmentationType const, float> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, float> > >'
+        Source = '00/46/stdRbtree_Mcreatenode_0046149e.cpp'
+        TestSource = '00/46/stdRbtree_Mcreatenode_0046149e_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004615c3'
-        Module = '_global'
-        Source = '00/46/global_TreeNodeAllocData_004615c3.cpp'
-        TestSource = '00/46/global_TreeNodeAllocData_004615c3_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >'
+        Source = '00/46/stdRbtree_Mcreatenode_004615c3.cpp'
+        TestSource = '00/46/stdRbtree_Mcreatenode_004615c3_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004622ec'
-        Module = '_global'
-        Source = '00/46/global_TreeNodeAllocData_004622ec.cpp'
-        TestSource = '00/46/global_TreeNodeAllocData_004622ec_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, long>, std::_Select1st<std::pair<EHeroTrainableStatType const, long> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, long> > >'
+        Source = '00/46/stdRbtree_Mcreatenode_004622ec.cpp'
+        TestSource = '00/46/stdRbtree_Mcreatenode_004622ec_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '00462411'
-        Module = '_global'
-        Source = '00/46/global_TreeNodeAllocData_00462411.cpp'
-        TestSource = '00/46/global_TreeNodeAllocData_00462411_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, float>, std::_Select1st<std::pair<EHeroTrainableStatType const, float> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, float> > >'
+        Source = '00/46/stdRbtree_Mcreatenode_00462411.cpp'
+        TestSource = '00/46/stdRbtree_Mcreatenode_00462411_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004630e7'
-        Module = '_global'
-        Source = '00/46/global_TreeNodeAllocData_004630e7.cpp'
-        TestSource = '00/46/global_TreeNodeAllocData_004630e7_test.cpp'
+        Module = 'std::_Rb_tree<EWorldMapNameGraphic, std::pair<EWorldMapNameGraphic const, unsigned long>, std::_Select1st<std::pair<EWorldMapNameGraphic const, unsigned long> >, std::less<EWorldMapNameGraphic >, std::allocator<std::pair<EWorldMapNameGraphic const, unsigned long> > >'
+        Source = '00/46/stdRbtree_Mcreatenode_004630e7.cpp'
+        TestSource = '00/46/stdRbtree_Mcreatenode_004630e7_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004e4429'
-        Module = '_global'
-        Source = '00/4e/global_AllocAndCopyFields_004e4429.cpp'
-        TestSource = '00/4e/global_AllocAndCopyFields_004e4429_test.cpp'
+        Module = 'std::_Rb_tree<EQuestCardPrerequisite, std::pair<EQuestCardPrerequisite const, long>, std::_Select1st<std::pair<EQuestCardPrerequisite const, long> >, std::less<EQuestCardPrerequisite >, std::allocator<std::pair<EQuestCardPrerequisite const, long> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004e4429.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004e4429_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004e4d19'
-        Module = '_global'
-        Source = '00/4e/global_TreeNodeAllocData_004e4d19.cpp'
-        TestSource = '00/4e/global_TreeNodeAllocData_004e4d19_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, long>, std::_Select1st<std::pair<EObjectAugmentationType const, long> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, long> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004e4d19.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004e4d19_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004e4eca'
-        Module = '_global'
-        Source = '00/4e/global_TreeNodeAllocData_004e4eca.cpp'
-        TestSource = '00/4e/global_TreeNodeAllocData_004e4eca_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long> >, std::less<long >, std::allocator<std::pair<long const, long> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004e4eca.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004e4eca_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004e4fef'
-        Module = '_global'
-        Source = '00/4e/global_TreeNodeAllocData_004e4fef.cpp'
-        TestSource = '00/4e/global_TreeNodeAllocData_004e4fef_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, float>, std::_Select1st<std::pair<long const, float> >, std::less<long >, std::allocator<std::pair<long const, float> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004e4fef.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004e4fef_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004e55cf'
-        Module = '_global'
-        Source = '00/4e/global_TreeNodeAllocData_004e55cf.cpp'
-        TestSource = '00/4e/global_TreeNodeAllocData_004e55cf_test.cpp'
+        Module = 'std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, long>, std::_Select1st<std::pair<EClothingSuitPart const, long> >, std::less<EClothingSuitPart >, std::allocator<std::pair<EClothingSuitPart const, long> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004e55cf.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004e55cf_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004e597b'
-        Module = '_global'
-        Source = '00/4e/global_TreeNodeAllocData_004e597b.cpp'
-        TestSource = '00/4e/global_TreeNodeAllocData_004e597b_test.cpp'
+        Module = 'std::_Rb_tree<CDefString, std::pair<CDefString const, long>, std::_Select1st<std::pair<CDefString const, long> >, CCompareDefString<long>, std::allocator<std::pair<CDefString const, long> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004e597b.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004e597b_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004e6210'
-        Module = '_global'
-        Source = '00/4e/global_TreeNodeAllocData_004e6210.cpp'
-        TestSource = '00/4e/global_TreeNodeAllocData_004e6210_test.cpp'
+        Module = 'std::_Rb_tree<EIdleStateGroup, std::pair<EIdleStateGroup const, long>, std::_Select1st<std::pair<EIdleStateGroup const, long> >, std::less<EIdleStateGroup >, std::allocator<std::pair<EIdleStateGroup const, long> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004e6210.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004e6210_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004e6623'
-        Module = '_global'
-        Source = '00/4e/global_TreeNodeAllocData_004e6623.cpp'
-        TestSource = '00/4e/global_TreeNodeAllocData_004e6623_test.cpp'
+        Module = 'std::_Rb_tree<EQuakeStrength, std::pair<EQuakeStrength const, float>, std::_Select1st<std::pair<EQuakeStrength const, float> >, std::less<EQuakeStrength >, std::allocator<std::pair<EQuakeStrength const, float> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004e6623.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004e6623_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004e6748'
-        Module = '_global'
-        Source = '00/4e/global_TreeNodeAllocData_004e6748.cpp'
-        TestSource = '00/4e/global_TreeNodeAllocData_004e6748_test.cpp'
+        Module = 'std::_Rb_tree<EQuakeLength, std::pair<EQuakeLength const, float>, std::_Select1st<std::pair<EQuakeLength const, float> >, std::less<EQuakeLength >, std::allocator<std::pair<EQuakeLength const, float> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004e6748.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004e6748_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004e9ab1'
-        Module = '_global'
-        Source = '00/4e/global_TreeNodeAllocData_004e9ab1.cpp'
-        TestSource = '00/4e/global_TreeNodeAllocData_004e9ab1_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionAttitudeType, std::pair<EOpinionAttitudeType const, float>, std::_Select1st<std::pair<EOpinionAttitudeType const, float> >, std::less<EOpinionAttitudeType >, std::allocator<std::pair<EOpinionAttitudeType const, float> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004e9ab1.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004e9ab1_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '004ec31c'
-        Module = '_global'
-        Source = '00/4e/global_TreeNodeAllocData_004ec31c.cpp'
-        TestSource = '00/4e/global_TreeNodeAllocData_004ec31c_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CDefString>, std::_Select1st<std::pair<EObjectAugmentationType const, CDefString> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, CDefString> > >'
+        Source = '00/4e/stdRbtree_Mcreatenode_004ec31c.cpp'
+        TestSource = '00/4e/stdRbtree_Mcreatenode_004ec31c_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124135,9 +124135,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00580428'
-        Module = '_global'
-        Source = '00/58/global_AllocPairGeneric_00580428.cpp'
-        TestSource = '00/58/global_AllocPairGeneric_00580428_test.cpp'
+        Module = 'std::_Rb_tree<void*, std::pair<void* const, float>, std::_Select1st<std::pair<void* const, float> >, std::less<void* >, std::allocator<std::pair<void* const, float> > >'
+        Source = '00/58/stdRbtree_Mcreatenode_00580428.cpp'
+        TestSource = '00/58/stdRbtree_Mcreatenode_00580428_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124149,23 +124149,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059afab'
-        Module = '_global'
-        Source = '00/59/global_AllocatorNodeAllocate24Byte_0059afab.cpp'
-        TestSource = '00/59/global_AllocatorNodeAllocate24Byte_0059afab_test.cpp'
+        Module = 'std::_Rb_tree<FRONTEND_SCREEN, std::pair<FRONTEND_SCREEN const, NUISystem::CComponent*>, std::_Select1st<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent*> >, std::less<FRONTEND_SCREEN >, std::allocator<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent*> > >'
+        Source = '00/59/stdRbtree_Mcreatenode_0059afab.cpp'
+        TestSource = '00/59/stdRbtree_Mcreatenode_0059afab_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '005b2029'
-        Module = '_global'
-        Source = '00/5b/global_AllocPairGeneric_005b2029.cpp'
-        TestSource = '00/5b/global_AllocPairGeneric_005b2029_test.cpp'
+        Module = 'std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, NUISystem::CList*>, std::_Select1st<std::pair<NUISystem::CComponent* const, NUISystem::CList*> >, std::less<NUISystem::CComponent* >, std::allocator<std::pair<NUISystem::CComponent* const, NUISystem::CList*> > >'
+        Source = '00/5b/stdRbtree_Mcreatenode_005b2029.cpp'
+        TestSource = '00/5b/stdRbtree_Mcreatenode_005b2029_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '005b206c'
-        Module = '_global'
-        Source = '00/5b/global_AllocPairGeneric_005b206c.cpp'
-        TestSource = '00/5b/global_AllocPairGeneric_005b206c_test.cpp'
+        Module = 'std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, NUISystem::CComponent*>, std::_Select1st<std::pair<NUISystem::CComponent* const, NUISystem::CComponent*> >, std::less<NUISystem::CComponent* >, std::allocator<std::pair<NUISystem::CComponent* const, NUISystem::CComponent*> > >'
+        Source = '00/5b/stdRbtree_Mcreatenode_005b206c.cpp'
+        TestSource = '00/5b/stdRbtree_Mcreatenode_005b206c_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124177,16 +124177,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005f8c41'
-        Module = '_global'
-        Source = '00/5f/global_BinaryTreeAllocateNode_005f8c41.cpp'
-        TestSource = '00/5f/global_BinaryTreeAllocateNode_005f8c41_test.cpp'
+        Module = 'std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, NUISystem::CComponent*>, std::_Select1st<std::pair<EHeroAbility const, NUISystem::CComponent*> >, std::less<EHeroAbility >, std::allocator<std::pair<EHeroAbility const, NUISystem::CComponent*> > >'
+        Source = '00/5f/stdRbtree_Mcreatenode_005f8c41.cpp'
+        TestSource = '00/5f/stdRbtree_Mcreatenode_005f8c41_test.cpp'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
         Address = '005baf06'
-        Module = '_global'
-        Source = '00/5b/global_TreeNodeAllocateWithTag_005baf06.cpp'
-        TestSource = '00/5b/global_TreeNodeAllocateWithTag_005baf06_test.cpp'
+        Module = 'std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, bool>, std::_Select1st<std::pair<EClothingSuitPart const, bool> >, std::less<EClothingSuitPart >, std::allocator<std::pair<EClothingSuitPart const, bool> > >'
+        Source = '00/5b/stdRbtree_Mcreatenode_005baf06.cpp'
+        TestSource = '00/5b/stdRbtree_Mcreatenode_005baf06_test.cpp'
         PassPattern = 'TREE_NODE_TAG_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -152206,9 +152206,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006adfb0'
-        Module = 'CRetailTreeIterator'
-        Source = '00/6a/CRetailTreeIterator_Decrement_006adfb0.cpp'
-        TestSource = '00/6a/CRetailTreeIterator_Decrement_006adfb0_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<EGameAction const, std::pair<C3DVector, long> >, std::_Nonconst_traits<std::pair<EGameAction const, std::pair<C3DVector, long> > > >'
+        Source = '00/6a/stdRbtreeiterator_operator_006adfb0.cpp'
+        TestSource = '00/6a/stdRbtreeiterator_operator_006adfb0_test.cpp'
         PassPattern = '006adfb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -152234,9 +152234,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006d9860'
-        Module = 'CRetailTreeIterator'
-        Source = '00/6d/CRetailTreeIterator_Decrement_006d9860.cpp'
-        TestSource = '00/6d/CRetailTreeIterator_Decrement_006d9860_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<EHeroExperienceStatCategory const, float>, std::_Nonconst_traits<std::pair<EHeroExperienceStatCategory const, float> > >'
+        Source = '00/6d/stdRbtreeiterator_operator_006d9860.cpp'
+        TestSource = '00/6d/stdRbtreeiterator_operator_006d9860_test.cpp'
         PassPattern = '006d9860_TEST PASS'
     }
     [pscustomobject]@{
@@ -152304,9 +152304,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0070a330'
-        Module = 'CRetailTreeIterator'
-        Source = '00/70/CRetailTreeIterator_Decrement_0070a330.cpp'
-        TestSource = '00/70/CRetailTreeIterator_Decrement_0070a330_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<long const, CEngineTextureDecal>, std::_Nonconst_traits<std::pair<long const, CEngineTextureDecal> > >'
+        Source = '00/70/stdRbtreeiterator_operator_0070a330.cpp'
+        TestSource = '00/70/stdRbtreeiterator_operator_0070a330_test.cpp'
         PassPattern = '0070a330_TEST PASS'
     }
     [pscustomobject]@{
@@ -152360,9 +152360,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00801340'
-        Module = 'CRetailTreeIterator'
-        Source = '00/80/CRetailTreeIterator_Decrement_00801340.cpp'
-        TestSource = '00/80/CRetailTreeIterator_Decrement_00801340_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<EIdleStateGroup const, long>, std::_Nonconst_traits<std::pair<EIdleStateGroup const, long> > >'
+        Source = '00/80/stdRbtreeiterator_operator_00801340.cpp'
+        TestSource = '00/80/stdRbtreeiterator_operator_00801340_test.cpp'
         PassPattern = '00801340_TEST PASS'
     }
     [pscustomobject]@{
@@ -152388,9 +152388,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0085daa0'
-        Module = 'CRetailTreeIterator'
-        Source = '00/85/CRetailTreeIterator_Decrement_0085daa0.cpp'
-        TestSource = '00/85/CRetailTreeIterator_Decrement_0085daa0_test.cpp'
+        Module = 'std::_Rb_tree_iterator<CTCMapwho*, std::_Nonconst_traits<CTCMapwho* > >'
+        Source = '00/85/stdRbtreeiterator_operator_0085daa0.cpp'
+        TestSource = '00/85/stdRbtreeiterator_operator_0085daa0_test.cpp'
         PassPattern = '0085daa0_TEST PASS'
     }
     [pscustomobject]@{
@@ -152983,9 +152983,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008010d0'
-        Module = 'CRetailTreeIterator'
-        Source = '00/80/CRetailTreeIterator_Increment_008010d0.cpp'
-        TestSource = '00/80/CRetailTreeIterator_Increment_008010d0_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<EIdleStateGroup const, long>, std::_Nonconst_traits<std::pair<EIdleStateGroup const, long> > >'
+        Source = '00/80/stdRbtreeiterator_operator_008010d0.cpp'
+        TestSource = '00/80/stdRbtreeiterator_operator_008010d0_test.cpp'
         PassPattern = '008010d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -153865,16 +153865,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00579f3e'
-        Module = '_global'
-        Source = '00/57/CRetailListnode0x48_Buynode_00579f3e.cpp'
-        TestSource = '00/57/CRetailListnode0x48_Buynode_00579f3e_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroTrainableStatType const, SExpSpendUndo> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, SExpSpendUndo> > >'
+        Source = '00/57/stdRbtree_Mcreatenode_00579f3e.cpp'
+        TestSource = '00/57/stdRbtree_Mcreatenode_00579f3e_test.cpp'
         PassPattern = '00579f3e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00579f5f'
-        Module = '_global'
-        Source = '00/57/CRetailListnode0x48_Buynode_00579f5f.cpp'
-        TestSource = '00/57/CRetailListnode0x48_Buynode_00579f5f_test.cpp'
+        Module = 'std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroAbility const, SExpSpendUndo> >, std::less<EHeroAbility >, std::allocator<std::pair<EHeroAbility const, SExpSpendUndo> > >'
+        Source = '00/57/stdRbtree_Mcreatenode_00579f5f.cpp'
+        TestSource = '00/57/stdRbtree_Mcreatenode_00579f5f_test.cpp'
         PassPattern = '00579f5f_TEST PASS'
     }
     [pscustomobject]@{
@@ -153893,16 +153893,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b204b'
-        Module = '_global'
-        Source = '00/5b/CRetailListnode0x1c_Buynode_005b204b.cpp'
-        TestSource = '00/5b/CRetailListnode0x1c_Buynode_005b204b_test.cpp'
+        Module = 'std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> >, std::_Select1st<std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> > >, std::less<NUISystem::CComponent* >, std::allocator<std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> > > >'
+        Source = '00/5b/stdRbtree_Mcreatenode_005b204b.cpp'
+        TestSource = '00/5b/stdRbtree_Mcreatenode_005b204b_test.cpp'
         PassPattern = '005b204b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005bbba5'
-        Module = '_global'
-        Source = '00/5b/CRetailListnode0x1c_Buynode_005bbba5.cpp'
-        TestSource = '00/5b/CRetailListnode0x1c_Buynode_005bbba5_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CEnginePrimitiveHandle>, std::_Select1st<std::pair<long const, CEnginePrimitiveHandle> >, std::less<long >, std::allocator<std::pair<long const, CEnginePrimitiveHandle> > >'
+        Source = '00/5b/stdRbtree_Mcreatenode_005bbba5.cpp'
+        TestSource = '00/5b/stdRbtree_Mcreatenode_005bbba5_test.cpp'
         PassPattern = '005bbba5_TEST PASS'
     }
     [pscustomobject]@{
@@ -153914,9 +153914,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cd2c5b'
-        Module = '_global'
-        Source = '00/cd/CRetailListnode0x18_Buynode_00cd2c5b.cpp'
-        TestSource = '00/cd/CRetailListnode0x18_Buynode_00cd2c5b_test.cpp'
+        Module = 'std::_Rb_tree<int, std::pair<int const, CCharString>, std::_Select1st<std::pair<int const, CCharString> >, std::less<int >, std::allocator<std::pair<int const, CCharString> > >'
+        Source = '00/cd/stdRbtree_Mcreatenode_00cd2c5b.cpp'
+        TestSource = '00/cd/stdRbtree_Mcreatenode_00cd2c5b_test.cpp'
         PassPattern = '00cd2c5b_TEST PASS'
     }
     [pscustomobject]@{
@@ -167218,9 +167218,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00461cf3'
-        Module = 'CRetailList_node0x14_dword'
-        Source = '00/46/CRetailListnode0x14dword_Buynode_00461cf3.cpp'
-        TestSource = '00/46/CRetailListnode0x14dword_Buynode_00461cf3_test.cpp'
+        Module = 'std::_Rb_tree<EWeaponClass, EWeaponClass, std::_Identity<EWeaponClass >, std::less<EWeaponClass >, std::allocator<EWeaponClass > >'
+        Source = '00/46/stdRbtree_Mcreatenode_00461cf3.cpp'
+        TestSource = '00/46/stdRbtree_Mcreatenode_00461cf3_test.cpp'
         PassPattern = '00461cf3_TEST PASS'
     }
     [pscustomobject]@{
@@ -168492,33 +168492,33 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00432aa8'
-        Module = 'CRetailTree_00431471'
-        Source = '00/43/CRetailTree00431471_Copy_00432aa8.cpp'
-        TestSource = '00/43/CRetailTree00431471_Copy_00432aa8_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, unsigned long> > >'
+        Source = '00/43/stdRbtree_Mcopy_00432aa8.cpp'
+        TestSource = '00/43/stdRbtree_Mcopy_00432aa8_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '00432aa8_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045c212'
-        Module = 'CRetailTree_0045c2a2'
-        Source = '00/45/CRetailTree0045c2a2_Copy_0045c212.cpp'
-        TestSource = '00/45/CRetailTree0045c2a2_Copy_0045c212_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CBlendedParticleEffectSet>, std::_Select1st<std::pair<long const, CBlendedParticleEffectSet> >, std::less<long >, std::allocator<std::pair<long const, CBlendedParticleEffectSet> > >'
+        Source = '00/45/stdRbtree_Mcopy_0045c212.cpp'
+        TestSource = '00/45/stdRbtree_Mcopy_0045c212_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '0045c212_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045c442'
-        Module = 'CRetailTree_0045c4d2'
-        Source = '00/45/CRetailTree0045c4d2_Copy_0045c442.cpp'
-        TestSource = '00/45/CRetailTree0045c4d2_Copy_0045c442_test.cpp'
+        Module = 'std::_Rb_tree<ECombatCreatureType, std::pair<ECombatCreatureType const, long>, std::_Select1st<std::pair<ECombatCreatureType const, long> >, std::less<ECombatCreatureType >, std::allocator<std::pair<ECombatCreatureType const, long> > >'
+        Source = '00/45/stdRbtree_Mcopy_0045c442.cpp'
+        TestSource = '00/45/stdRbtree_Mcopy_0045c442_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '0045c442_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045c811'
-        Module = 'CRetailTree_0045c8a1'
-        Source = '00/45/CRetailTree0045c8a1_Copy_0045c811.cpp'
-        TestSource = '00/45/CRetailTree0045c8a1_Copy_0045c811_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1st<std::pair<unsigned long const, long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, long> > >'
+        Source = '00/45/stdRbtree_Mcopy_0045c811.cpp'
+        TestSource = '00/45/stdRbtree_Mcopy_0045c811_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '0045c811_TEST PASS'
     }
@@ -168532,89 +168532,89 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045dd9f'
-        Module = 'CRetailTree_0045de2f'
-        Source = '00/45/CRetailTree0045de2f_Copy_0045dd9f.cpp'
-        TestSource = '00/45/CRetailTree0045de2f_Copy_0045dd9f_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionReactionType, std::pair<EOpinionReactionType const, bool>, std::_Select1st<std::pair<EOpinionReactionType const, bool> >, std::less<EOpinionReactionType >, std::allocator<std::pair<EOpinionReactionType const, bool> > >'
+        Source = '00/45/stdRbtree_Mcopy_0045dd9f.cpp'
+        TestSource = '00/45/stdRbtree_Mcopy_0045dd9f_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '0045dd9f_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045e221'
-        Module = 'CRetailTree_0045e2b1'
-        Source = '00/45/CRetailTree0045e2b1_Copy_0045e221.cpp'
-        TestSource = '00/45/CRetailTree0045e2b1_Copy_0045e221_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionDeedType, std::pair<EOpinionDeedType const, bool>, std::_Select1st<std::pair<EOpinionDeedType const, bool> >, std::less<EOpinionDeedType >, std::allocator<std::pair<EOpinionDeedType const, bool> > >'
+        Source = '00/45/stdRbtree_Mcopy_0045e221.cpp'
+        TestSource = '00/45/stdRbtree_Mcopy_0045e221_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '0045e221_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045e707'
-        Module = 'CRetailTree_0045e797'
-        Source = '00/45/CRetailTree0045e797_Copy_0045e707.cpp'
-        TestSource = '00/45/CRetailTree0045e797_Copy_0045e707_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionAttitudeType, std::pair<EOpinionAttitudeType const, bool>, std::_Select1st<std::pair<EOpinionAttitudeType const, bool> >, std::less<EOpinionAttitudeType >, std::allocator<std::pair<EOpinionAttitudeType const, bool> > >'
+        Source = '00/45/stdRbtree_Mcopy_0045e707.cpp'
+        TestSource = '00/45/stdRbtree_Mcopy_0045e707_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '0045e707_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045f0ad'
-        Module = 'CRetailTree_0045f13d'
-        Source = '00/45/CRetailTree0045f13d_Copy_0045f0ad.cpp'
-        TestSource = '00/45/CRetailTree0045f13d_Copy_0045f0ad_test.cpp'
+        Module = 'std::_Rb_tree<EOpinion, std::pair<EOpinion const, float>, std::_Select1st<std::pair<EOpinion const, float> >, std::less<EOpinion >, std::allocator<std::pair<EOpinion const, float> > >'
+        Source = '00/45/stdRbtree_Mcopy_0045f0ad.cpp'
+        TestSource = '00/45/stdRbtree_Mcopy_0045f0ad_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '0045f0ad_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046140e'
-        Module = 'CRetailTree_0046149e'
-        Source = '00/46/CRetailTree0046149e_Copy_0046140e.cpp'
-        TestSource = '00/46/CRetailTree0046149e_Copy_0046140e_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, float>, std::_Select1st<std::pair<EObjectAugmentationType const, float> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, float> > >'
+        Source = '00/46/stdRbtree_Mcopy_0046140e.cpp'
+        TestSource = '00/46/stdRbtree_Mcopy_0046140e_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '0046140e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00461533'
-        Module = 'CRetailTree_004615c3'
-        Source = '00/46/CRetailTree004615c3_Copy_00461533.cpp'
-        TestSource = '00/46/CRetailTree004615c3_Copy_00461533_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >'
+        Source = '00/46/stdRbtree_Mcopy_00461533.cpp'
+        TestSource = '00/46/stdRbtree_Mcopy_00461533_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '00461533_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00461c63'
-        Module = 'CRetailTree_00461cf3'
-        Source = '00/46/CRetailTree00461cf3_Copy_00461c63.cpp'
-        TestSource = '00/46/CRetailTree00461cf3_Copy_00461c63_test.cpp'
+        Module = 'std::_Rb_tree<EWeaponClass, EWeaponClass, std::_Identity<EWeaponClass >, std::less<EWeaponClass >, std::allocator<EWeaponClass > >'
+        Source = '00/46/stdRbtree_Mcopy_00461c63.cpp'
+        TestSource = '00/46/stdRbtree_Mcopy_00461c63_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '00461c63_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046225c'
-        Module = 'CRetailTree_004622ec'
-        Source = '00/46/CRetailTree004622ec_Copy_0046225c.cpp'
-        TestSource = '00/46/CRetailTree004622ec_Copy_0046225c_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, long>, std::_Select1st<std::pair<EHeroTrainableStatType const, long> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, long> > >'
+        Source = '00/46/stdRbtree_Mcopy_0046225c.cpp'
+        TestSource = '00/46/stdRbtree_Mcopy_0046225c_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '0046225c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00462381'
-        Module = 'CRetailTree_00462411'
-        Source = '00/46/CRetailTree00462411_Copy_00462381.cpp'
-        TestSource = '00/46/CRetailTree00462411_Copy_00462381_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, float>, std::_Select1st<std::pair<EHeroTrainableStatType const, float> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, float> > >'
+        Source = '00/46/stdRbtree_Mcopy_00462381.cpp'
+        TestSource = '00/46/stdRbtree_Mcopy_00462381_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '00462381_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00463057'
-        Module = 'CRetailTree_004630e7'
-        Source = '00/46/CRetailTree004630e7_Copy_00463057.cpp'
-        TestSource = '00/46/CRetailTree004630e7_Copy_00463057_test.cpp'
+        Module = 'std::_Rb_tree<EWorldMapNameGraphic, std::pair<EWorldMapNameGraphic const, unsigned long>, std::_Select1st<std::pair<EWorldMapNameGraphic const, unsigned long> >, std::less<EWorldMapNameGraphic >, std::allocator<std::pair<EWorldMapNameGraphic const, unsigned long> > >'
+        Source = '00/46/stdRbtree_Mcopy_00463057.cpp'
+        TestSource = '00/46/stdRbtree_Mcopy_00463057_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '00463057_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004661c5'
-        Module = 'CRetailTree_00466255'
-        Source = '00/46/CRetailTree00466255_Copy_004661c5.cpp'
-        TestSource = '00/46/CRetailTree00466255_Copy_004661c5_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CCharString>, std::_Select1st<std::pair<long const, CCharString> >, std::less<long >, std::allocator<std::pair<long const, CCharString> > >'
+        Source = '00/46/stdRbtree_Mcopy_004661c5.cpp'
+        TestSource = '00/46/stdRbtree_Mcopy_004661c5_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004661c5_TEST PASS'
     }
@@ -168628,9 +168628,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e4399'
-        Module = 'CRetailTree_004e4429'
-        Source = '00/4e/CRetailTree004e4429_Copy_004e4399.cpp'
-        TestSource = '00/4e/CRetailTree004e4429_Copy_004e4399_test.cpp'
+        Module = 'std::_Rb_tree<EQuestCardPrerequisite, std::pair<EQuestCardPrerequisite const, long>, std::_Select1st<std::pair<EQuestCardPrerequisite const, long> >, std::less<EQuestCardPrerequisite >, std::allocator<std::pair<EQuestCardPrerequisite const, long> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004e4399.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004e4399_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004e4399_TEST PASS'
     }
@@ -168644,89 +168644,89 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e4c89'
-        Module = 'CRetailTree_004e4d19'
-        Source = '00/4e/CRetailTree004e4d19_Copy_004e4c89.cpp'
-        TestSource = '00/4e/CRetailTree004e4d19_Copy_004e4c89_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, long>, std::_Select1st<std::pair<EObjectAugmentationType const, long> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, long> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004e4c89.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004e4c89_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004e4c89_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e4e3a'
-        Module = 'CRetailTree_004e4eca'
-        Source = '00/4e/CRetailTree004e4eca_Copy_004e4e3a.cpp'
-        TestSource = '00/4e/CRetailTree004e4eca_Copy_004e4e3a_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long> >, std::less<long >, std::allocator<std::pair<long const, long> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004e4e3a.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004e4e3a_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004e4e3a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e4f5f'
-        Module = 'CRetailTree_004e4fef'
-        Source = '00/4e/CRetailTree004e4fef_Copy_004e4f5f.cpp'
-        TestSource = '00/4e/CRetailTree004e4fef_Copy_004e4f5f_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, float>, std::_Select1st<std::pair<long const, float> >, std::less<long >, std::allocator<std::pair<long const, float> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004e4f5f.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004e4f5f_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004e4f5f_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e553f'
-        Module = 'CRetailTree_004e55cf'
-        Source = '00/4e/CRetailTree004e55cf_Copy_004e553f.cpp'
-        TestSource = '00/4e/CRetailTree004e55cf_Copy_004e553f_test.cpp'
+        Module = 'std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, long>, std::_Select1st<std::pair<EClothingSuitPart const, long> >, std::less<EClothingSuitPart >, std::allocator<std::pair<EClothingSuitPart const, long> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004e553f.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004e553f_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004e553f_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e58eb'
-        Module = 'CRetailTree_004e597b'
-        Source = '00/4e/CRetailTree004e597b_Copy_004e58eb.cpp'
-        TestSource = '00/4e/CRetailTree004e597b_Copy_004e58eb_test.cpp'
+        Module = 'std::_Rb_tree<CDefString, std::pair<CDefString const, long>, std::_Select1st<std::pair<CDefString const, long> >, CCompareDefString<long>, std::allocator<std::pair<CDefString const, long> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004e58eb.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004e58eb_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004e58eb_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e6180'
-        Module = 'CRetailTree_004e6210'
-        Source = '00/4e/CRetailTree004e6210_Copy_004e6180.cpp'
-        TestSource = '00/4e/CRetailTree004e6210_Copy_004e6180_test.cpp'
+        Module = 'std::_Rb_tree<EIdleStateGroup, std::pair<EIdleStateGroup const, long>, std::_Select1st<std::pair<EIdleStateGroup const, long> >, std::less<EIdleStateGroup >, std::allocator<std::pair<EIdleStateGroup const, long> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004e6180.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004e6180_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004e6180_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e6593'
-        Module = 'CRetailTree_004e6623'
-        Source = '00/4e/CRetailTree004e6623_Copy_004e6593.cpp'
-        TestSource = '00/4e/CRetailTree004e6623_Copy_004e6593_test.cpp'
+        Module = 'std::_Rb_tree<EQuakeStrength, std::pair<EQuakeStrength const, float>, std::_Select1st<std::pair<EQuakeStrength const, float> >, std::less<EQuakeStrength >, std::allocator<std::pair<EQuakeStrength const, float> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004e6593.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004e6593_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004e6593_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e66b8'
-        Module = 'CRetailTree_004e6748'
-        Source = '00/4e/CRetailTree004e6748_Copy_004e66b8.cpp'
-        TestSource = '00/4e/CRetailTree004e6748_Copy_004e66b8_test.cpp'
+        Module = 'std::_Rb_tree<EQuakeLength, std::pair<EQuakeLength const, float>, std::_Select1st<std::pair<EQuakeLength const, float> >, std::less<EQuakeLength >, std::allocator<std::pair<EQuakeLength const, float> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004e66b8.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004e66b8_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004e66b8_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e9a21'
-        Module = 'CRetailTree_004e9ab1'
-        Source = '00/4e/CRetailTree004e9ab1_Copy_004e9a21.cpp'
-        TestSource = '00/4e/CRetailTree004e9ab1_Copy_004e9a21_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionAttitudeType, std::pair<EOpinionAttitudeType const, float>, std::_Select1st<std::pair<EOpinionAttitudeType const, float> >, std::less<EOpinionAttitudeType >, std::allocator<std::pair<EOpinionAttitudeType const, float> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004e9a21.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004e9a21_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004e9a21_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004ec28c'
-        Module = 'CRetailTree_004ec31c'
-        Source = '00/4e/CRetailTree004ec31c_Copy_004ec28c.cpp'
-        TestSource = '00/4e/CRetailTree004ec31c_Copy_004ec28c_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CDefString>, std::_Select1st<std::pair<EObjectAugmentationType const, CDefString> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, CDefString> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004ec28c.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004ec28c_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004ec28c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004ec3b1'
-        Module = 'CRetailTree_004ec441'
-        Source = '00/4e/CRetailTree004ec441_Copy_004ec3b1.cpp'
-        TestSource = '00/4e/CRetailTree004ec441_Copy_004ec3b1_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet>, std::_Select1st<std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet> > >'
+        Source = '00/4e/stdRbtree_Mcopy_004ec3b1.cpp'
+        TestSource = '00/4e/stdRbtree_Mcopy_004ec3b1_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004ec3b1_TEST PASS'
     }
@@ -175533,9 +175533,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cd36c2'
-        Module = '_unattributed'
-        Source = '00/cd/unattributed_ForwardCForwarder00cd36c2_00cd36c2.cpp'
-        TestSource = '00/cd/unattributed_ForwardCForwarder00cd36c2_00cd36c2_test.cpp'
+        Module = 'std::map<int, CCharString, std::less<int>, std::allocator<std::pair<const int, CCharString > > >'
+        Source = '00/cd/stdmap_insert_00cd36c2.cpp'
+        TestSource = '00/cd/stdmap_insert_00cd36c2_test.cpp'
         PassPattern = '00cd36c2_TEST PASS'
     }
     [pscustomobject]@{
@@ -197589,9 +197589,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045c2a2'
-        Module = 'CRetailTree_0045c2a2'
-        Source = '00/45/CRetailTree0045c2a2_BuyNode_0045c2a2.cpp'
-        TestSource = '00/45/CRetailTree0045c2a2_BuyNode_0045c2a2_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CBlendedParticleEffectSet>, std::_Select1st<std::pair<long const, CBlendedParticleEffectSet> >, std::less<long >, std::allocator<std::pair<long const, CBlendedParticleEffectSet> > >'
+        Source = '00/45/stdRbtree_Mcreatenode_0045c2a2.cpp'
+        TestSource = '00/45/stdRbtree_Mcreatenode_0045c2a2_test.cpp'
         PassPattern = '0045c2a2_TEST PASS'
     }
     [pscustomobject]@{
@@ -197624,9 +197624,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00783dd0'
-        Module = 'CRetailTree_00783dd0'
-        Source = '00/78/CRetailTree00783dd0_BuyNode_00783dd0.cpp'
-        TestSource = '00/78/CRetailTree00783dd0_BuyNode_00783dd0_test.cpp'
+        Module = 'std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CIntelligentPointer<CThing> >, std::_Select1st<std::pair<unsigned __int64 const, CIntelligentPointer<CThing> > >, std::less<unsigned __int64 >, std::allocator<std::pair<unsigned __int64 const, CIntelligentPointer<CThing> > > >'
+        Source = '00/78/stdRbtree_Mcreatenode_00783dd0.cpp'
+        TestSource = '00/78/stdRbtree_Mcreatenode_00783dd0_test.cpp'
         PassPattern = '00783dd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -200308,9 +200308,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005812ae'
-        Module = 'CBlockTable_005812ae'
-        Source = '00/58/CBlockTable005812ae_GetBlockData_005812ae.cpp'
-        TestSource = '00/58/CBlockTable005812ae_GetBlockData_005812ae_test.cpp'
+        Module = 'CTCHaste'
+        Source = '00/58/CTCHaste_SetActionSpeedMultiplier_005812ae.cpp'
+        TestSource = '00/58/CTCHaste_SetActionSpeedMultiplier_005812ae_test.cpp'
         PassPattern = '005812ae_TEST PASS'
     }
     [pscustomobject]@{
@@ -215612,9 +215612,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00851cc0'
-        Module = 'CRetailMap_00851cc0'
-        Source = '00/85/CRetailMap00851cc0_Add_00851cc0.cpp'
-        TestSource = '00/85/CRetailMap00851cc0_Add_00851cc0_test.cpp'
+        Module = 'CHeroAbilityStatPackage'
+        Source = '00/85/CHeroAbilityStatPackage_AddStatThreshold_00851cc0.cpp'
+        TestSource = '00/85/CHeroAbilityStatPackage_AddStatThreshold_00851cc0_test.cpp'
         PassPattern = '00851cc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -275061,8 +275061,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006dc070'
         Module = 'CPersistTraits<CHeroStatIncreaseData>'
-        Source = '00/6d/CPersistTraitsCHeroStatIncreaseData_TransferBinaryIn_006dc070.cpp'
-        TestSource = '00/6d/CPersistTraitsCHeroStatIncreaseData_TransferBinaryIn_006dc070_test.cpp'
+        Source = '00/6d/CPersistTraits_TransferBinaryIn_006dc070.cpp'
+        TestSource = '00/6d/CPersistTraits_TransferBinaryIn_006dc070_test.cpp'
         PassPattern = '006dc070_TEST PASS'
     }
     [pscustomobject]@{
@@ -304970,9 +304970,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00802110'
-        Module = 'std::map'
-        Source = '00/80/STLmap_operator_00802110.cpp'
-        TestSource = '00/80/STLmap_operator_00802110_test.cpp'
+        Module = 'std::map<EIdleStateGroup, CAIStateGroupBase*, std::less<EIdleStateGroup >, std::allocator<std::pair<const EIdleStateGroup, CAIStateGroupBase* > > >'
+        Source = '00/80/stdmap_operator_00802110.cpp'
+        TestSource = '00/80/stdmap_operator_00802110_test.cpp'
         PassPattern = '00802110_TEST PASS'
     }
     [pscustomobject]@{
@@ -312126,14 +312126,14 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00553e60'
-        Module = 'std::map<unsigned long, unsigned long>'
-        Source = '00/55/stdmapunsignedlongunsignedlong_operator_00553e60.cpp'
-        TestSource = '00/55/stdmapunsignedlongunsignedlong_operator_00553e60_test.cpp'
+        Module = 'std::map<unsigned long, unsigned long, std::less<unsigned long >, std::allocator<std::pair<const unsigned long, unsigned long > > >'
+        Source = '00/55/stdmap_operator_00553e60.cpp'
+        TestSource = '00/55/stdmap_operator_00553e60_test.cpp'
         PassPattern = '00553e60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005692b0'
-        Module = 'std::map'
+        Module = 'std::map<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, float, std::less<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity >, std::allocator<std::pair<const CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, float > > >'
         Source = '00/56/stdmap_operator_005692b0.cpp'
         TestSource = '00/56/stdmap_operator_005692b0_test.cpp'
         PassPattern = '005692b0_TEST PASS'
@@ -314239,8 +314239,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006dbe00'
         Module = 'CPersistTraits<CComboMultiplierData>'
-        Source = '00/6d/CPersistTraitsCComboMultiplierData_TransferBinaryIn_006dbe00.cpp'
-        TestSource = '00/6d/CPersistTraitsCComboMultiplierData_TransferBinaryIn_006dbe00_test.cpp'
+        Source = '00/6d/CPersistTraits_TransferBinaryIn_006dbe00.cpp'
+        TestSource = '00/6d/CPersistTraits_TransferBinaryIn_006dbe00_test.cpp'
         PassPattern = '006dbe00_TEST PASS'
     }
     [pscustomobject]@{
@@ -334037,8 +334037,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004616d6'
         Module = '_global'
-        Source = '00/46/global_GFSerialiseMapBinaryInfloatEObjectAugmentationTy_004616d6.cpp'
-        TestSource = '00/46/global_GFSerialiseMapBinaryInfloatEObjectAugmentationTy_004616d6_test.cpp'
+        Source = '00/46/global_GFSerialiseMapBinaryIn_004616d6.cpp'
+        TestSource = '00/46/global_GFSerialiseMapBinaryIn_004616d6_test.cpp'
         PassPattern = '004616d6_TEST PASS'
     }
     [pscustomobject]@{
@@ -334072,8 +334072,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00466889'
         Module = '_global'
-        Source = '00/46/global_GFSerialiseMapBinaryInfloatEHeroTrainableStatTyp_00466889.cpp'
-        TestSource = '00/46/global_GFSerialiseMapBinaryInfloatEHeroTrainableStatTyp_00466889_test.cpp'
+        Source = '00/46/global_GFSerialiseMapBinaryIn_00466889.cpp'
+        TestSource = '00/46/global_GFSerialiseMapBinaryIn_00466889_test.cpp'
         PassPattern = '00466889_TEST PASS'
     }
     [pscustomobject]@{
@@ -334479,8 +334479,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004e50c0'
         Module = '_global'
-        Source = '00/4e/global_GFSerialiseMapBinaryInfloatlonglesslong_004e50c0.cpp'
-        TestSource = '00/4e/global_GFSerialiseMapBinaryInfloatlonglesslong_004e50c0_test.cpp'
+        Source = '00/4e/global_GFSerialiseMapBinaryIn_004e50c0.cpp'
+        TestSource = '00/4e/global_GFSerialiseMapBinaryIn_004e50c0_test.cpp'
         PassPattern = '004e50c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -342584,7 +342584,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00466255'
-        Module = 'std::_Rb_tree'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CCharString>, std::_Select1st<std::pair<long const, CCharString> >, std::less<long >, std::allocator<std::pair<long const, CCharString> > >'
         Source = '00/46/stdRbtree_Mcreatenode_00466255.cpp'
         TestSource = '00/46/stdRbtree_Mcreatenode_00466255_test.cpp'
         PassPattern = '00466255_TEST PASS'
@@ -343382,7 +343382,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004ec441'
-        Module = 'std::_Rb_tree'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet>, std::_Select1st<std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004ec441.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004ec441_test.cpp'
         PassPattern = '004ec441_TEST PASS'

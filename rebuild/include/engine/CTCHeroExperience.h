@@ -136,6 +136,13 @@ public:
     // ?ModifyTrainableStatLevel@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@J@Z, out of line at 0x006D6810.
     void ModifyTrainableStatLevel(EHeroTrainableStatType, long);
 #endif
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_SPENDEXPERIENCE
+    // NF61 opt-in (round 7, rows 0x005786B5 BuyStat / 0x005785B3 BuyAbility): Ego_r.pdb
+    // ?SpendExperience@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@J@Z (out of line at 0x006D6F60) and
+    // ?SpendExperience@CTCHeroExperience@@QAEXW4EHeroExperienceStatCategory@@J@Z (0x006D6590): the landed rows' Leafs. Declarations only.
+    void SpendExperience(EHeroTrainableStatType, long);
+    void SpendExperience(EHeroExperienceStatCategory, long);
+#endif
     // Chunk 735 (row 0x00577AC0): ?GetExperiencePointsAvailableToSpend@CTCHeroExperience@@QBEJXZ (Ego_r.pdb / FableWin.pdb),
     // inline in retail (OpenInventoryInternalPC reads +0x14 in place).
     long GetExperiencePointsAvailableToSpend() const { return ExperiencePointsAvailableToSpend; }

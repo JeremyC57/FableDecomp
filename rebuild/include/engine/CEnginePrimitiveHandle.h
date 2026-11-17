@@ -11,6 +11,12 @@
 class CEnginePrimitiveHandle : public CBaseClass {
 public:
     CEnginePrimitiveHandle() { }
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_COPY_DECL
+    // NF61 opt-in (round 7, row 0x005BBBA5 map<long, CEnginePrimitiveHandle>::_M_create_node): the copy constructor, out of line in
+    // retail (0x0043F450: store this class's vtable 0x0122F598, copy Data and add a reference: `test edx,edx ; je ; inc [edx+4]`),
+    // called from the pair<long const, CEnginePrimitiveHandle> copy constructor COMDAT 0x005BB37D. Declaration only.
+    CEnginePrimitiveHandle(const CEnginePrimitiveHandle& other);
+#endif
 #if defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_DTOR)
     // Original FableWin01909120: Clear then implicit member and base destructors.
     virtual ~CEnginePrimitiveHandle() { Clear(); }

@@ -16,14 +16,21 @@
 //   pointer after the length, so the first pointer is copied eax->esi and `it = last` reuses esi), then insert(pair(this, 1.75f)) with the pair and the hidden result in the
 //   frame, the recalculation and the animation name (implicit conversions of the literals, so the strings are
 //   re-addressed with `lea`).
+// NF61 (round 7, q10578): CTCHaste is now the shared engine/CTCHaste.h (FABLE_RETAIL_CTCHASTE: Ego_r.pdb std::map<void*,float>
+//   Multipliers +0x18 and the inline SetActionSpeedMultiplier, expanded here as in the landed 0x006A02B0 / 0x008C7280) and CCharString
+//   fable_string.h; the local CTCHaste / CMultiplierMap / CMultiplierEntry / CCharString models are gone. The insert binds NF58's
+//   _Rb_tree<void*, pair<void* const, float>, ...>::insert_unique 0x00580D21 and the recalculation ?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ
+//   (0x00800020). The local CThing / CCombatActionBase / CIntelligentPointer views stay (their move is separate work).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCHASTE
 #include "fable_compiler.h"
-class CTCBase;
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCHaste.h"
 class CTCParamsBase;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
 struct SInterfaceEntry { long type; CTCBase* component; };
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -73,24 +80,6 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-struct CMultiplierEntry {                             // map<void*, float>::value_type
-    void* first;
-    float second;
-    CMultiplierEntry(void* key, float value) : first(key), second(value) { }
-};
-struct CMultiplierMap {
-    struct node;
-    struct iterator { node* current; };
-    struct insert_result { iterator first; bool second; };
-    void* m_head;
-    insert_result insert(const CMultiplierEntry& value);   // 0x00580D21
-};
-class CTCHaste { public:
-    unsigned char _pad00[0x18];
-    CMultiplierMap Multipliers;                       // +0x18
-    void RecalculateMultiplier();                     // 0x00800020
-};
-
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
@@ -112,8 +101,7 @@ void CCreatureAction_CastStrengthMultiStrike::Initialise()
         creature = PCreature.GetPItem();
     }
     CTCHaste* haste = (CTCHaste*)creature->GetTC(0x8C);
-    haste->Multipliers.insert(CMultiplierEntry(this, 1.75f));
-    haste->RecalculateMultiplier();
+    haste->SetActionSpeedMultiplier(this, 1.75f);
     SetCombatAnimation("MULTI_STRIKE_FRONT");
     CCombatActionBase::Initialise();
 }

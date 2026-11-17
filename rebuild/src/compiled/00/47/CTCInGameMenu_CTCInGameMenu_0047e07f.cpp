@@ -1,4 +1,7 @@
 // CTCInGameMenu::~CTCInGameMenu() -- in-game (pause) menu destructor: unregister, delete the menu components, clear the dialog pointers, tidy the front end, then the members in reverse and the CTCBase base
+// Leaf: ??1CTCInGameMenu@@UAE@XZ
+// Inline-budget: __declspec(noinline) through FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE -- retail calls the map<CWideString,bool> tree
+//   destructor COMDAT 0x00485E45 from the implicit member destructor; recheck_final.log RELOCATION_MATCH PASS.
 // Retail 0x0047E07F, 263 bytes (size-optimised TU: `#pragma optimize("s", on)`; `and dword ptr [m],0`, `pop ecx`
 // after free). Only caller: the deleting destructor 0x004861C6 (vtable 0x01236804 is stored first).
 // Callees: CTCBase::RemoveFromGlobalTCs 0x00686DF0; the components' virtual deleting destructor (slot 0, `push 1`);
@@ -42,17 +45,19 @@ template <class T> struct CPODVector {             // STLport vector of a trivia
 //   destructor 0x00412130 is ??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ (Ego_r + FableWin; landed row
 //   0x00412130; was ??1CWideStringVector@@QAE@XZ); both STLport vector destructors are out of line in this TU
 //   (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE: 0x00412130, and 0x00414EA0 ~vector<CCharString> as before).
+// NF61 (round 7, q10565): the local map<CWideString,bool> stand-in CSignatureMap is replaced by the stlport/fable_map.h map
+//   (Ego_r.pdb member type) with FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE: its implicit destructor calls the tree destructor
+//   COMDAT 0x00485E45 (??1?$_Rb_tree@VCWideString@@...@QAE@XZ, NF58's entry spelling, also bound by the landed 0x005954AD). The
+//   stand-in's fourth word stays as the explicit pad before PMousePointer +0xF0 (the landed layout).
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#define FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
 #include "stlport/fable_containers.h"
 #include "fable_string.h"
+#include "stlport/fable_map.h"
 struct CPrimitiveHandleVector {                    // vector<CEnginePrimitiveHandle>
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
     ~CPrimitiveHandleVector();                     // 0x00440C40
-};
-struct CSignatureMap {                             // map<CWideString,bool>
-    void* _M_header; long _M_node_count; long _M_compare; void* _M_pad;
-    ~CSignatureMap();                              // 0x00485E45
 };
 class CDateAndTime { public: long Words[4]; };
 class CInventoryDef { public:
@@ -169,7 +174,8 @@ public:
     long FramesToWaitToSave;                       // +0xcc
     NUISystem::CComponent* PSaveInProgress;        // +0xd0
     double SaveInProgressTime;                     // +0xd8
-    CSignatureMap Signatures;                      // +0xe0
+    std::map<CWideString, bool> Signatures;        // +0xe0
+    unsigned char _padEC[4];                       // +0xec
     NUISystem::CComponent* PMousePointer;          // +0xf0
     CYesNo* PYesNo;                                // +0xf4
     virtual ~CTCInGameMenu();

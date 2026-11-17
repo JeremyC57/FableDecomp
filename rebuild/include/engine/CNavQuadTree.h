@@ -89,6 +89,11 @@ public:
     void SaveToFile(CAFile& file) const;                                 // 0x00A78B20
 #endif
 private:
+#ifdef FABLE_RETAIL_CNAVQUADTREE_CLEARNODES
+    // NF61 opt-in (round 7, row 0x00A7A7F0 ~CNavQuadTree): Ego_r.pdb ?ClearNodes@CNavQuadTree@@AAEXXZ (private), out of line at
+    // 0x00A792E0 (the destructor's first call). Declaration only.
+    void ClearNodes();                                                   // 0x00A792E0
+#endif
     bool IsAreaBlockedByLines(const C2DBoxF& area, const std::vector<const std::list<C2DLineF>*>& lineLists) const;  // 0x00A76F30
     void SetUpRegions(long mapIndex);                                    // 0x00A7A0A0
 };

@@ -1,5 +1,8 @@
 // CTCInventory::ConstructItemCategoryListPC(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long,long> >& items, NUISystem::CComponent* owner, const CCharString& templateName, const CCharString& descriptionSymbol, bool checkUsable) -- PC inventory category: a branch entry captioned "title x <total count>" with a subtitle, the category description (shown in the owner's viewport) and an optional template component, all registered with the owner's frame; an empty category clears the entry, otherwise the items are merged per def into a map, a sub-list titled "<title>: <name>" gets the merged count, and an items-actions list (the "can't use" variant, with its not-usable entry cleared and the icon action reset, when the hero's carried thing is not alive) gets the same title before ContructItemListsPC fills them
 // Leaf: ConstructItemCategoryListPC@CTCInventory
+// Inline-budget: __declspec(noinline) through the header opt-ins FABLE_RETAIL_STLP_MAP_CTOR_NOINLINE (map<long,long>() COMDAT 0x004DF86C),
+//   FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE (tree destructor COMDAT 0x004DD2B1) and FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE (_M_find 0x00592F92)
+//   -- retail calls all three out of line here (bodies visible, as STLport puts them in every TU); recheck_final.log RELOCATION_MATCH PASS.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005907AB, 1415 bytes, `ret 1Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
@@ -22,9 +25,23 @@
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+// NF61 (round 7, q10567): the local map<long,long> model (CLongLongMap / CLongMapNode) and the local std::pair / make_pair / vector /
+//   bitset stand-ins are replaced by stlport/fable_map.h + stlport/fable_containers.h: FABLE_RETAIL_STLP_MAP (visible _tree.c
+//   insert_unique), FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE (_M_find 0x00592F92 called out of line, as the landed 0x0058EF79 binds it),
+//   the NF61 overlay opt-in FABLE_RETAIL_STLP_MAP_CTOR_NOINLINE (map() COMDAT 0x004DF86C), FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
+//   (the tree destructor COMDAT 0x004DD2B1, as 0x004DF885 binds it) and FABLE_RETAIL_STLP_BITSET_TEST_DECL (bitset<274>::test 0x00410DE0).
+//   The insert binds NF58's _Rb_tree<long, pair<const long, long>, ...>::insert_unique 0x004E539F; ContructItemListsPC now takes the
+//   FableWin.pdb std::map<long,long>& (the spelling its landed row 0x00590198 defines). The other local views stay (CTCInventory,
+//   NUISystem components, CThing, strings: their move is separate work).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_CTOR_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "stlport/fable_map.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -153,30 +170,7 @@ class CManager { public:
 };
 }
 using namespace NUISystem;
-namespace std {
-template <class A, class B> struct pair {
-    A first;
-    B second;
-    pair(const A& a, const B& b) : first(a), second(b) {}
-    template <class U, class V> pair(const pair<U, V>& p) : first(p.first), second(p.second) {}
-};
-template <class A, class B> inline pair<A, B> make_pair(const A& a, const B& b) { return pair<A, B>(a, b); }
-template <class T> struct vector {
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned long n) { return _M_start[n]; }
-    bool empty() const { return _M_start == _M_finish; }
-};
-}
 typedef std::vector<std::pair<long, long> > CItemVector;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
 class CTCBase;
 // agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
 //   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
@@ -204,8 +198,7 @@ struct CTCCarryingSlot {                                // the parent thing's in
 };
 class CThing { public:
     unsigned char _pad00[0x20];
-    std::bitset<274> m_present;                            // +0x20
-    unsigned char _pad21[0x44 - 0x21];
+    std::bitset<274> m_present;                            // +0x20 (9 words, stlport/fable_containers.h)
     CInterfaceMap m_interfaces;                         // +0x44
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const
     {
@@ -219,30 +212,7 @@ class CThing { public:
         return false;
     }
 };
-struct CLongMapNode {
-    long          _M_color;
-    CLongMapNode* _M_parent;
-    CLongMapNode* _M_left;
-    CLongMapNode* _M_right;
-    long          first;                                // +0x10
-    long          second;                               // +0x14
-};
-struct CLongLongMap {                                   // std::map<long, long> (12 bytes)
-    CLongMapNode* _M_header;
-    unsigned long _M_node_count;
-    long          _M_key_compare;
-    typedef std::pair<const long, long> value_type;
-    struct insert_result {
-        CLongMapNode* first;
-        bool          second;
-        insert_result(CLongMapNode* a, bool b) : first(a), second(b) {}
-    };
-    CLongLongMap();                                     // 0x004DF86C
-    ~CLongLongMap();                                    // 0x004DD2B1
-    CLongMapNode* find(const long& key);                // 0x00592F92
-    insert_result insert(const value_type& value);      // 0x004E539F
-    unsigned long size() const { return _M_node_count; }
-};
+typedef std::map<long, long> CLongLongMap;               // STLport 4.6 map<long,long> (stlport/fable_map.h)
 class CTCInventory { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                private: // +0x04
@@ -289,14 +259,14 @@ void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, 
         entry->Clear();
     } else {
         CLongLongMap merged;
-        for (long i = 0; i < items._M_finish - items._M_start; ++i) {
+        for (long i = 0; i < items.end() - items.begin(); ++i) {
             std::pair<long, long>* item = &items[i];
             long key = item->first;
-            CLongMapNode* found = merged.find(key);
-            if (found == merged._M_header)
+            CLongLongMap::iterator found = merged.find(key);
+            if (found == merged.end())
                 merged.insert(std::make_pair(key, item->second));
             else
-                found->second += item->second;
+                (*found).second += item->second;
         }
         CCountedPointer<CComponent> subList(fe->CreateComponent("PC_SUB_LIST", false));
         CComponent* sub = subList.Data;

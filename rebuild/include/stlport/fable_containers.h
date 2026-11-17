@@ -1095,7 +1095,14 @@ template<class _T1,class _T2> struct pair {
     typedef _T2 second_type;
     _T1 first;
     _T2 second;
+#if defined(FABLE_RETAIL_STLP_PAIR_DEFAULT_CTOR_NOINLINE) && defined(_MSC_VER)
+    // NF61 opt-in (round 7, row 0x00469381 GFSerialiseMapBinaryIn<CBlendedParticleEffectSet, long, ..>): the same STLport body, visible
+    // but kept out of line -- retail calls pair<long, CBlendedParticleEffectSet>() as a COMDAT (0x00469435, Ego_r.pdb
+    // ??0?$pair@JVCBlendedParticleEffectSet@@@std@@QAE@XZ) in that size TU, where VC7.1 expands it (also under /d2inlS5).
+    __declspec(noinline) pair():first(_T1()),second(_T2()){}
+#else
     pair():first(_T1()),second(_T2()){}
+#endif
     pair(const _T1& a,const _T2& b):first(a),second(b) { }
     pair(const pair& p):first(p.first),second(p.second) { }
     template<class U1,class U2> pair(const pair<U1,U2>& p):first(p.first),second(p.second){}

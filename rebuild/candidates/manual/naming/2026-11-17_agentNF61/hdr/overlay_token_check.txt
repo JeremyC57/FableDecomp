@@ -1,0 +1,9 @@
+NF61 overlay token check (cpp -P with and without -I hdr/, the row's own #defines; whitespace dropped; fable_static_assert_<__LINE__> typedef names normalised):
+SAME rebuild/src/compiled/00/85/NThingMapCThingMap_InitMapwhoLevels_0085d180.cpp
+SAME rebuild/src/compiled/00/43/C3DAnimationBlendState_C3DAnimationBlendState_0043f450.cpp
+SAME rebuild/src/compiled/00/4e/CPersistTraitsCWeaponTrailGraphicSet_TransferBinaryIn_004e9021.cpp
+SAME rebuild/src/compiled/00/ad/CVertexGroupBlockOptimiser_AddBlocks_00ad9f10.cpp
+SAME rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructPastQuestsList_005fcbe0.cpp
+TOKEN_SAME (mod static-assert line names) rebuild/src/compiled/00/6a/CCreatureActionUnsheatheItemFromInventoryWithHasteAction_FinishAction_006a02b0.cpp   (CTCHaste.h)
+TOKEN_SAME (mod static-assert line names) rebuild/src/compiled/00/57/CTCInventoryExperience_UndoBuyAbility_00576c4f.cpp   (CTCInventoryExperience.h, CTCHeroExperience.h)
+TOKEN_SAME (mod static-assert line names) rebuild/src/compiled/00/a7/CNavQuadTree_IsAreaClear_00a78e20.cpp   (CNavQuadTree.h)

@@ -1,4 +1,6 @@
 // CTCInventoryStats::FrameUpdate() -- counts the creatures the hero killed last frame: walks the owner's entity-event list and, for every kill event (type 0x22) stamped with the previous world frame, bumps that creature's entry in CreaturesKilled (inserting it at 1)
+// Inline-budget: __declspec(noinline) through FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE -- retail calls the map<unsigned long,long> _M_find
+//   COMDAT 0x005D83B3 out of line with its body visible (the job of the old same-TU stand-in); recheck_final.log RELOCATION_MATCH PASS.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CDCCB, length 187 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: std::bitset::test @ 0x00410DE0 and CVectorMap::LowerBound const @ 0x004365B0 (the inline GetInterface for type 0x42 =
@@ -11,20 +13,24 @@
 // Shape: the events component is a named local re-read from the frame for the end() test each pass (`cmp ebx,[eax+0Ch]`); the world
 // frame is read once into the frame; the subject is kept in edi and copied into the find key and the insert pair; `this` is spilled
 // to [ebp-8] for the tree address.
+// NF61 (round 7, q10553): the local map<unsigned long, long> model (CKillMap / SKillNode / SKillPair and its same-TU find / insert
+//   stand-ins) and the local std::pair / std::bitset stand-ins are replaced by stlport/fable_map.h (FABLE_RETAIL_STLP_MAP: the visible _tree.c insert_unique
+//   body; FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE: _M_find visible but out of line -- the stand-ins' job of telling VC7.1 the key / pair
+//   temporaries are only read; FABLE_RETAIL_STLP_BITSET_TEST_DECL: the out-of-line bitset<274>::test 0x00410DE0). find binds the template ??$_M_find@K@ 0x005D83B3 (the spelling the landed 0x005D8548 binds), insert
+//   NF58's _Rb_tree<unsigned long, pair<const unsigned long, long>, ...>::insert_unique 0x0045CA09. The class and its other local
+//   views (CThing, CVectorMap specialisation, events) are unchanged: their move onto engine/CTCInventoryStats.h (a global, polymorphic
+//   class: FrameUpdate is ?FrameUpdate@CTCInventoryStats@@UAEXXZ), CThing.h and CTCEntityEvents.h is separate work.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "stlport/fable_map.h"
 class CTCBase;
 // agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
 //   0x0074EE90 idiom); 0x004365B0 is its const LowerBound (both original PDBs, Codex pass 20 / queue land1011bu).
 enum ETCInterfaceType { };
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class C> class CVectorMap;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
@@ -55,8 +61,7 @@ const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceTyp
 #pragma auto_inline(on)
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    unsigned char _pad_0x21[0x23];
+    std::bitset<274> m_present;                         // +0x20 (9 words, STLport 4.6 stlport/fable_containers.h)
     CInterfaceMap m_interfaces;                      // +0x44
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
@@ -94,44 +99,6 @@ class CTCEntityEvents { public:                             // interface type 0x
 class CWorld { public:
     static long __fastcall GetFrame();                     // 0x0049D870
 };
-struct SKillNode {                                   // the tree node: key +0x10, value +0x14
-    unsigned char _base[0x10];
-    unsigned long Key;
-    long          Value;
-};
-struct SKillPair {                                   // pair<const unsigned long, long>
-    unsigned long first;
-    long          second;
-};
-struct CKillMap {                                    // std::map<unsigned long, long> (the header pointer first)
-    typedef SKillNode* iterator;
-    struct SInsertResult { iterator first; bool second; };   // pair<iterator, bool>
-    SKillNode* _M_header;
-    iterator end() { return _M_header; }
-    iterator find(const unsigned long& key);         // 0x005D83B3
-    SInsertResult insert(const SKillPair& value);    // 0x0045CA09
-};
-SKillNode* InsertKillNode(CKillMap* map, unsigned long key, long value, bool* inserted);
-// Same-TU stand-ins for the STLport map members 0x005D83B3 / 0x0045CA09 (template instantiations whose bodies retail's TU
-// had): both only read their const-reference argument, so VC7.1 knows the key / pair temporaries go no further.
-#pragma auto_inline(off)
-__declspec(noinline) CKillMap::iterator CKillMap::find(const unsigned long& key)
-{
-    SKillNode* y = _M_header;
-    SKillNode* x = *(SKillNode**)(_M_header->_base + 4);
-    while (x) {
-        if (!(x->Key < key)) { y = x; x = *(SKillNode**)(x->_base + 8); }
-        else x = *(SKillNode**)(x->_base + 0xc);
-    }
-    return (y == _M_header || key < y->Key) ? _M_header : y;
-}
-__declspec(noinline) CKillMap::SInsertResult CKillMap::insert(const SKillPair& value)
-{
-    SInsertResult r;
-    r.first = InsertKillNode(this, value.first, value.second, &r.second);
-    return r;
-}
-#pragma auto_inline(on)
 enum { ENTITY_EVENT_CREATURE_KILLED = 0x22 };
 
 namespace NInventory {
@@ -139,7 +106,7 @@ struct CTCInventoryStats {
     unsigned char _pad00[0x04];
     CThing*       ParentThing;                       // +0x04
     unsigned char _pad08[0x134 - 0x08];
-    CKillMap      CreaturesKilled;                   // +0x134
+    std::map<unsigned long, long> CreaturesKilled;     // +0x134
     void FrameUpdate();
 };
 void CTCInventoryStats::FrameUpdate()
@@ -151,15 +118,12 @@ void CTCInventoryStats::FrameUpdate()
             CEntityEvent* event = it->_M_data;
             if (event->GetType() == ENTITY_EVENT_CREATURE_KILLED && event->Frame == frame - 1) {
                 long creature = event->Subject;
-                CKillMap* killed = &CreaturesKilled;
-                SKillNode* found = killed->find(creature);
+                std::map<unsigned long, long>* killed = &CreaturesKilled;
+                std::map<unsigned long, long>::iterator found = killed->find(creature);
                 if (found != killed->end()) {
-                    ++found->Value;
+                    ++(*found).second;
                 } else {
-                    SKillPair value;
-                    value.first = creature;
-                    value.second = 1;
-                    killed->insert(value);
+                    killed->insert(std::map<unsigned long, long>::value_type(creature, 1));
                 }
             }
         }

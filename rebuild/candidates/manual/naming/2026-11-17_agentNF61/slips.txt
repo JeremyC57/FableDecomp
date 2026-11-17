@@ -1,0 +1,6 @@
+1. cp.py KeyError (copyrows.tsv holds the target address, not the entry id): the Bash call exited 1; no grade ran (chained with &&).
+2. 0x004E5A76: a shell-escaped '\&' reached the generated row (SRC_FAIL, one wasted grade).
+3. 006dbe00 check: a grep with no match plus a missing NAME_FIXES.tsv made one Bash call exit 1 (read-only, no file changed).
+4. 0x00A7A7F0 note edit: a quote inside a sed script broke the shell parse; the Bash call exited 2 before running anything (no file changed).
+5. overlay token check on 0x006A02B0: the final cmp found the __LINE__-numbered static-assert typedef name differing and the Bash call exited 1 (read-only).
+6. Inline-budget marker insert: the script assumed a // Leaf: line in 0x005CDCCB (it has none); python raised IndexError and the Bash call exited 1 after marking 0x005907AB only (rerun fixed the rest).

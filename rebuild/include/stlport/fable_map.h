@@ -2,6 +2,9 @@
 #define FABLE_STLPORT_MAP_H
 #include "rebuild_abi.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_STLP_TREE_MCOPY_BODY
+#include "fable_compiler.h"   // NF61 opt-in: FABLE_FORCEINLINE for _M_clone_node below
+#endif
 // STLport4.6.2 _tree.h86-113,140-170,197-218,220-265 and _map.h43-85.
 // One model for every translation unit (Codex pass 11 consolidation).
 // Genuine names, class keys, inheritance and full native three-word tree storage.
@@ -254,6 +257,17 @@ protected:
     __declspec(noinline) _Link_type _M_create_node(const V& x){_Link_type p=this->_M_header.allocate(1);std::_Construct(&p->_M_value_field,x);return p;}
 #else
     _Link_type _M_create_node(const V& x){_Link_type p=this->_M_header.allocate(1);std::_Construct(&p->_M_value_field,x);return p;}
+#endif
+#ifdef FABLE_RETAIL_STLP_TREE_MCOPY_BODY
+    // NF61 opt-in (round 7, the size-TU tree copies 0x00432AA8 .. 0x004EC3B1): STLport 4.6 _tree.h `_M_clone_node` (create the node,
+    // copy the colour, clear both children) and the private _tree.c `_M_copy(x, p)` structural copy (body below). Retail calls each
+    // instance's _M_create_node COMDAT twice from _M_copy (`lea eax,[esi+10h] ; push eax ; call` per cloned node, then the colour /
+    // child stores in place) and calls _M_copy from the tree's operator= and copy constructor. Inline-budget (EXTRA_RULES 2026-11-08,
+    // preference 3): retail expands _M_clone_node at both sites; VC7.1 /Os calls it out of line, also under /d2inlS20 (0x00432AA8:
+    // 115 v 144 bytes both ways), so it is forced here (the landed 0x0045D871 _M_copy needed the same).
+    FABLE_FORCEINLINE _Link_type _M_clone_node(_Link_type x){_Link_type tmp=_M_create_node(x->_M_value_field);tmp->_M_color=x->_M_color;tmp->_M_left=0;tmp->_M_right=0;return tmp;}
+private:
+    _Link_type _M_copy(_Link_type x,_Link_type p);
 #endif
 protected:
     _Link_type& _M_root()const { return (_Link_type&)this->_M_header._M_data->_M_parent; }
@@ -544,6 +558,29 @@ void _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_erase(_Rb_tree_node<V>* x) {
     }
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_TREE_MCOPY_BODY
+// NF61 opt-in: STLport 4.6.2 stl/_tree.c _M_copy (structural copy; x and p must be non-null). Exceptions are off in retail
+// (_STLP_TRY / _STLP_UNWIND(_M_erase(top)) expand to nothing: no unwind state in any retail copy).
+template<class K,class V,class KeyOfValue,class Compare,class A>
+_Rb_tree_node<V>* _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_copy(_Rb_tree_node<V>* x,_Rb_tree_node<V>* p) {
+    _Link_type top=_M_clone_node(x);
+    top->_M_parent=p;
+    if(x->_M_right)
+        top->_M_right=_M_copy(_S_right(x),top);
+    p=top;
+    x=_S_left(x);
+    while(x!=0) {
+        _Link_type y=_M_clone_node(x);
+        p->_M_left=y;
+        y->_M_parent=p;
+        if(x->_M_right)
+            y->_M_right=_M_copy(_S_right(x),y);
+        p=y;
+        x=_S_left(x);
+    }
+    return top;
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
 // STLport 4.6.2 stl/_tree.c 345-383, including complete node construction.
 template<class K,class V,class KeyOfValue,class Compare,class A>
@@ -711,6 +748,12 @@ public:
 #ifdef FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
     // Actual original nonvirtual destructor COMDAT00CDBFB0, called by00D29880.
     ~map();
+#endif
+#if defined(FABLE_RETAIL_STLP_MAP_CTOR_NOINLINE) && defined(_MSC_VER)
+    // NF61 opt-in (round 7, row 0x005907AB CTCInventory::ConstructItemCategoryListPC): the same STLport 4.6 _map.h no-argument
+    // constructor, visible but kept out of line, as that size TU calls the map<long,long> COMDAT 0x004DF86C (`lea ecx,[local] ; call`;
+    // the landed 0x004E0860 binds ??0?$map@JJ...@QAE@XZ there).
+    __declspec(noinline)
 #endif
     map():_M_t(Compare(),A()){}
     explicit map(const Compare& c,const A& a=A()):_M_t(c,a){}

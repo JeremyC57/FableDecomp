@@ -1,5 +1,5 @@
 // CNavQuadTree::~CNavQuadTree() -- free the quad-tree nodes, then tear down the navigation containers in reverse declaration order and the CBaseClassNonCopyable base
-// Leaf: ??1CNavQuadTree
+// Leaf: ??1CNavQuadTree@@UAE@XZ
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A7A7F0, 212 bytes (+ int3 padding). Vtable 0x0129DE64 (CNavQuadTree, RTTI); called
 //   only from the scalar deleting destructor 0x00A85E20 (slot 0). The catalogued name "~CPatchTesselationEdgeStrip" is a
@@ -15,86 +15,19 @@
 //   Regions +0x74, ConnectorNodes +0x78. The user destructor stores the vtable and calls ClearNodes; each member's
 //   inline destructor runs (destroy range with the tag temporary in the `push ecx` frame byte, null-tested free of the
 //   start; the list clears and frees its head node, re-read through edi).
-extern "C" void __cdecl free(void* block);   // 0x00BFEA14
-
-struct __false_type { __false_type() {} };
-
-class CBaseClassNonCopyable {
-public:
-    protected:
-    virtual ~CBaseClassNonCopyable();               // 0x0099A300
-    public:
-};
-
-struct CNavigationLayer;                            // CNavQuadTree::CNavigationLayer (non-trivial destructor)
-class CNavigationTransitionPoint;
-class CNavigationPosition;
-class C2DBoxF;
-class CANavQuadTreeNode;
-struct CNavConnectorNodePair;                       // pair<long, CCountedPointer<CNavConnectorNode> >
-struct SwitchableNodePair;                          // pair<unsigned __int64, CANavQuadTreeNode*>
-
-void __fastcall _Destroy_range(CNavigationLayer* first, CNavigationLayer* last, const __false_type& tag);             // 0x00A85930
-void __fastcall _Destroy_range(CNavConnectorNodePair* first, CNavConnectorNodePair* last, const __false_type& tag);   // 0x00A80E40
-
-template <class T> struct vector {                  // elements with a destructor
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    ~vector()
-    {
-        _Destroy_range(_M_start, _M_finish, __false_type());
-        if (_M_start)
-            free(_M_start);
-    }
-};
-template <class T> struct pod_vector {              // trivially destructible elements
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    ~pod_vector()
-    {
-        if (_M_start)
-            free(_M_start);
-    }
-};
-template <class V> class CVectorMap { public:
-    V    Data;
-    long Compare;                                   // empty comparator, padded
-};
-
-struct CRetailList_ListOfCountedPointer {           // list<CNavRegion>: one head-node pointer
-    void* head;
-    void clear();                                   // 0x00A84110
-    ~CRetailList_ListOfCountedPointer()
-    {
-        clear();
-        if (head)
-            free(head);
-    }
-};
-
-class CNavQuadTree : public CBaseClassNonCopyable { // vtable 0x0129DE64
-public:
-    bool  Initialised;                              // +0x04
-    bool  Activated;                                // +0x05
-    bool  Initialising;                             // +0x06
-    float MapPos[2];                                // +0x08 C2DVector
-    float MapWidth;                                 // +0x10
-    float MapHeight;                                // +0x14
-    long  MapIndex;                                 // +0x18
-    vector<CNavigationLayer>                    NavigationLayers;   // +0x1C
-    pod_vector<CNavigationTransitionPoint>      TransitionPoints;   // +0x28
-    pod_vector<unsigned char>                   TopologyWeights;    // +0x34
-    CVectorMap<pod_vector<SwitchableNodePair> > SwitchableNodes;    // +0x40
-    pod_vector<CNavigationPosition>             ActionPoints;       // +0x50
-    pod_vector<C2DBoxF>                         DetailedAreas;      // +0x5C
-    pod_vector<CNavigationPosition>             RegionSeeds;        // +0x68
-    CRetailList_ListOfCountedPointer            Regions;            // +0x74
-    CVectorMap<vector<CNavConnectorNodePair> >  ConnectorNodes;     // +0x78
-    void ClearNodes();                              // 0x00A792E0
-    virtual ~CNavQuadTree();
-};
+// NF61 (round 7, q10583): moved onto the shared header engine/CNavQuadTree.h (FABLE_RETAIL_CNAVQUADTREE: the retail-layout polymorphic
+//   class with its STLport members; NF61 opt-in FABLE_RETAIL_CNAVQUADTREE_CLEARNODES declares the private ClearNodes) on
+//   stlport/fable_containers.h: FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL (STLport's inline __destroy_aux in the /Gr convention: VC7.1
+//   drops the trivial members' loops and calls the two non-trivial ranges 0x00A85930 / 0x00A80E40 as the COMDATs the landed
+//   0x00A85EC0 / 0x00A838F0 bind) and FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE (the region
+//   list's _List_base<CNavRegion>::clear 0x00A84110). The local CNavQuadTree / vector / list / CVectorMap models are gone; the member
+//   destructors are the implicit ones.
+#define FABLE_RETAIL_CNAVQUADTREE
+#define FABLE_RETAIL_CNAVQUADTREE_CLEARNODES
+#define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#include "engine/CNavQuadTree.h"
 
 CNavQuadTree::~CNavQuadTree()
 {

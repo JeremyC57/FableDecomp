@@ -1,5 +1,5 @@
 // _global::GFSerialiseMapBinaryIn(CMemoryDataInputStream& stream, map<CDefString, long, CCompareDefString<long> >& out) -- clear the map, read the count, then read each CDefString key and long value and insert the pair
-// Leaf: GFSerialiseMapBinaryIn
+// Leaf: ??$GFSerialiseMapBinaryIn@JVCDefString@@V?$CCompareDefString@J@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@VCDefString@@JV?$CCompareDefString@J@@V?$allocator@U?$pair@$$CBVCDefString@@J@std@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004E5A76, 171 bytes, `ret` (__fastcall: the stream in ecx, the map in edx).
 // Identity: FableWin.pdb ??$GFSerialiseMapBinaryIn@JVCDefString@@V?$CCompareDefString@J@@@@YIX..AAV?$map@VCDefString@@J..;
 //   the only caller is the CPersistContext map transfer at 0x004E5A1F (CFlammableDef's serialiser); its writer twin is
@@ -14,93 +14,35 @@
 //   homes the empty traits object on the map spill word (`lea ecx,[ebp-0Ch]`) exactly as retail.
 // Model: engine/CMemoryDataInputStream.h + a methods-only reader adapter (the inline Read: 64-bit range check, memcpy from the
 //   chunk, else ReadWithSrcChunkOverflow).
-#include "fable_compiler.h"
+// Same-TU stand-in for the out-of-line long traits 0x0040FE60 (reads only the stream, writes only through `out`).
+// NF61 (round 7, q10568): moved onto the shared body engine/CPersistTraits.h FABLE_RETAIL_GFSERIALISEMAPBINARYIN (the landed 0x00632B90
+//   / NF61 0x0045DF5E pattern: retail stream models, CPersistTraits, stlport/fable_map.h map with STLP_TREE_CLEAR_OUTOFLINE); the
+//   local std::map / CPersistTraits / stream-reader models are gone. The insert now binds NF58's _Rb_tree::insert_unique and the
+//   self leaf is the PDB-form spelling (CMemoryDataInputStream&, 4-argument STLport map).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM
+#define FABLE_RETAIL_CPERSISTTRAITS
+#define FABLE_RETAIL_CPERSISTTRAITS_BOOL_CLASS
+#define FABLE_RETAIL_GFSERIALISEMAPBINARYIN
+#define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_CPERSISTTRAITS_BINARYIN_BODY   // retail: no DefaultVal store for the value traits, which shares the map-pointer word (the generic traits body is visible)
 #include "engine/CMemoryDataInputStream.h"
-extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
-#pragma intrinsic(memcpy)
-
-class CDataInputStream { friend struct CMemoryDataInputStreamReader;
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
-};
-struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    FABLE_FORCEINLINE void Read(void* buffer, long size)
-    {
-        __int64 newPosition = (__int64)(unsigned long)(position + size);
-        if (!IsValidPosition(newPosition))
-            return;
-        if (chunkLength >= size) {
-            memcpy(buffer, (const void*)chunkBase, size);
-            chunkBase += size;
-            chunkLength -= size;
-            position += size;
-        }
-        else
-            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
-    }
-};
-
-class CDefString {
+#include "engine/CDataOutputStream.h"
+#include "stlport/fable_map.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_TRANSFER
+#define FABLE_RETAIL_CDEFSTRING_COMPARE_FRIEND
+#define FABLE_RETAIL_CCREATUREDEF_TRANSFER
+#include "fable_string.h"
+#include "engine/CDefString.h"
+template<class T> class CCompareDefString {   // Ego_r.pdb / FableWin.pdb ??R?$CCompareDefString@J@@QBE_NABVCDefString@@0@Z; no shared header (NF58 0x004E5B21 text)
 public:
-    long TablePos;                                          // +0x00
-    CDefString() : TablePos(-1) { }
-    void TransferBinaryIn(CMemoryDataInputStreamReader& stream);  // 0x0044FC00
+    bool operator()(const CDefString& a, const CDefString& b) const { return a.TablePos < b.TablePos; }
 };
-template <class T> class CCompareDefString { };
-namespace std {
-template <class T1, class T2> struct pair {
-    T1 first;
-    T2 second;
-    pair() : first(T1()), second(T2()) { }
-    pair(const T1& a, const T2& b) : first(a), second(b) { }
-};
-struct _Rb_tree_iterator { void* _M_node; };
-template <class K, class V, class C> class map {
-public:
-    typedef pair<const K, V> value_type;
-    void*         _M_header;
-    unsigned long _M_node_count;
-    C             _M_key_compare;
-    void clear();                                           // 0x004DBB20
-    pair<_Rb_tree_iterator, bool> insert(const value_type& value);   // 0x004E5B21
-};
-}
-template <class T> struct CPersistTraits {
-    CPersistTraits() { }
-    void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const;
-};
-template <> struct CPersistTraits<CDefString> {
-    void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CDefString* out) const { out->TransferBinaryIn(stream); }
-};
-FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
-{
-    long value;
-    stream.Read(&value, sizeof(value));
-    *out = value;
-}
-// Same-TU stand-in for the out-of-line long traits 0x0040FE60 (reads only the stream, writes only through `out`).
-#pragma auto_inline(off)
-template <> __declspec(noinline) void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStreamReader& stream, long* out) const
-{
-    *out = (long)stream.position;
-}
-#pragma auto_inline(on)
-template <class V, class K, class C>
-void __fastcall GFSerialiseMapBinaryIn(CMemoryDataInputStreamReader& stream, std::map<K, V, C>& out)
-{
-    CPersistTraits<K> keyTraits;
-    CPersistTraits<V> valueTraits;
-    out.clear();
-    long count;
-    ReadCount(stream, &count);
-    for (; count > 0; --count) {
-        std::pair<K, V> value;
-        keyTraits.TransferBinaryIn(stream, &value.first);
-        valueTraits.TransferBinaryIn(stream, &value.second);
-        out.insert(typename std::map<K, V, C>::value_type(value.first, value.second));
-    }
-}
-template void __fastcall GFSerialiseMapBinaryIn<long, CDefString, CCompareDefString<long> >(
-    CMemoryDataInputStreamReader& stream, std::map<CDefString, long, CCompareDefString<long> >& out);
+#include "engine/CPersistTraits.h"
+
+template void FABLE_FASTCALL GFSerialiseMapBinaryIn<long, CDefString, CCompareDefString<long> >(CMemoryDataInputStream& is, std::map<CDefString, long, CCompareDefString<long>, std::allocator<std::pair<const CDefString, long > > >& m);

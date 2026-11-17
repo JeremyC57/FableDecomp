@@ -1,5 +1,9 @@
 // GFSerialiseMapBinaryIn(CMemoryDataInputStream& stream, map<long, CCharString>& out) -- clear the map, read the count, then read each long key and string value and insert the pair
-// Leaf: GFSerialiseMapBinaryIn
+// Leaf: ??$GFSerialiseMapBinaryIn@VCCharString@@JU?$less@J@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@JVCCharString@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCCharString@@@std@@@3@@std@@@Z
+// Flags: /d2inlS20
+// Inline-budget: /d2inlS20 -- the header's inline CPersistTraits<CCharString>::TransferBinaryIn (virtual ReadNullTerminatedString,
+//   CCharString::operator=, the temporary destroyed): retail expands it in this size TU; plain /Os calls it (212 v 233 bytes),
+//   /d2inlS15 still differs (218 v 233), /d2inlS20 matches (NF61 grades).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00472896, length 233 bytes (__fastcall stream, out).
 // Identity: the catalog label <pair<long,long>, CCharString> is propagated; the map here is <long, CCharString>.
 // Callees: map::clear 0x00453607, map::insert 0x0047297F.
@@ -11,114 +15,31 @@
 // Shape: the string traits calls the stream's slot 6 ReadNullTerminatedString (0x00995D30) DIRECTLY through a vtable view
 //   (an inline wrapper re-addresses the string temporary with an extra `lea`); CCharString ctor 0x0099E4B0, dtor 0x0099EAE0,
 //   operator= 0x0099EFB0; the long traits 0x0040FE60 is out of line (stand-in).
-#include "fable_compiler.h"
-#pragma optimize("y", off)
-#pragma optimize("s", on)
-#include "engine/CMemoryDataInputStream.h"
-extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
-#pragma intrinsic(memcpy)
-
-class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString();                                          // 0x0099E4B0
-    CCharString(const CCharString& other);                  // 0x0099EC30
-    ~CCharString();                                         // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
-};
-
 // Virtual-slot view of the stream's vptr (the shared header flattens it to a data word): slot 6 is
 // CMemoryDataInputStream::ReadNullTerminatedString (0x00995D30), returning the string by hidden pointer.
-struct CDataInputStreamVirtuals {
-    virtual void Slot0(); virtual void Slot1(); virtual void Slot2();
-    virtual void Slot3(); virtual void Slot4(); virtual void Slot5();
-    virtual CCharString ReadNullTerminatedString();
-};
-
-class CDataInputStream { friend struct CMemoryDataInputStreamReader;
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
-};
-struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    FABLE_FORCEINLINE void Read(void* buffer, long size)
-    {
-        __int64 newPosition = (__int64)(unsigned long)(position + size);
-        if (!IsValidPosition(newPosition))
-            return;
-        if (chunkLength >= size) {
-            memcpy(buffer, (const void*)chunkBase, size);
-            chunkBase += size;
-            chunkLength -= size;
-            position += size;
-        }
-        else
-            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
-    }
-};
-namespace std {
-template <class T1, class T2> struct pair {
-    T1 first;
-    T2 second;
-    pair() : first(T1()), second(T2()) { }
-    pair(const T1& a, const T2& b) : first(a), second(b) { }
-};
-template <class T> struct less { };
-struct _Rb_tree_iterator {
-    void* _M_node;
-    _Rb_tree_iterator() { }
-    _Rb_tree_iterator(const _Rb_tree_iterator& other) : _M_node(other._M_node) { }
-};
-template <class K, class V, class C> class map {
-public:
-    typedef pair<const K, V> value_type;
-    void*         _M_header;
-    unsigned long _M_node_count;
-    C             _M_key_compare;
-    void clear();                                           // 0x00453607
-    pair<_Rb_tree_iterator, bool> insert(const value_type& value);   // 0x0047297F
-};
-}
-template <class T> struct CPersistTraits {
-    T DefaultVal;
-    CPersistTraits() : DefaultVal() { }
-    void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const;
-};
-template <> FABLE_FORCEINLINE void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryDataInputStreamReader& stream, CCharString* out) const
-{
-    *out = reinterpret_cast<CDataInputStreamVirtuals&>(stream).ReadNullTerminatedString();
-}
-template <> struct CPersistTraits<long> {
-    CPersistTraits() { }
-    void TransferBinaryIn(CMemoryDataInputStreamReader& stream, long* out) const;   // 0x0040FE60
-};
-FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
-{
-    long value;
-    stream.Read(&value, sizeof(value));
-    *out = value;
-}
 // Same-TU stand-in (auto_inline off, noinline) for the out-of-line long traits 0x0040FE60: it reads only the stream and
 // writes only through `out`, which lets VC7.1 home the empty long-traits object on the string traits' word.
-#pragma auto_inline(off)
-__declspec(noinline) void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStreamReader& stream, long* out) const
-{
-    *out = stream.position;
-}
-#pragma auto_inline(on)
-template <class V, class K, class C>
-void __fastcall GFSerialiseMapBinaryIn(CMemoryDataInputStreamReader& stream, std::map<K, V, C>& out)
-{
-    CPersistTraits<K> keyTraits;
-    CPersistTraits<V> valueTraits;
-    out.clear();
-    long count;
-    ReadCount(stream, &count);
-    for (; count > 0; --count) {
-        std::pair<K, V> value;
-        keyTraits.TransferBinaryIn(stream, &value.first);
-        valueTraits.TransferBinaryIn(stream, &value.second);
-        out.insert(typename std::map<K, V, C>::value_type(value.first, value.second));
-    }
-}
-template void __fastcall GFSerialiseMapBinaryIn<CCharString, long, std::less<long> >(
-    CMemoryDataInputStreamReader& stream, std::map<long, CCharString, std::less<long> >& out);
+// NF61 (round 7, q10564): moved onto the shared body engine/CPersistTraits.h FABLE_RETAIL_GFSERIALISEMAPBINARYIN (the landed 0x00632B90
+//   / NF61 0x0045DF5E pattern: retail stream models, CPersistTraits, stlport/fable_map.h map with STLP_TREE_CLEAR_OUTOFLINE); the
+//   local std::map / CPersistTraits / stream-reader models are gone. The insert now binds NF58's _Rb_tree::insert_unique and the
+//   self leaf is the PDB-form spelling (CMemoryDataInputStream&, 4-argument STLport map).
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM
+#define FABLE_RETAIL_CPERSISTTRAITS
+#define FABLE_RETAIL_CPERSISTTRAITS_BOOL_CLASS
+#define FABLE_RETAIL_GFSERIALISEMAPBINARYIN
+#define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_CPERSISTTRAITS_BINARYIN_BODY
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CPERSISTTRAITS_CCHARSTRING_BINARYIN   // inline CCharString traits (virtual ReadNullTerminatedString, operator=), the 0x00632B90 recipe
+#include "engine/CMemoryDataInputStream.h"
+#include "engine/CDataOutputStream.h"
+#include "stlport/fable_map.h"
+#include "fable_string.h"
+#include "engine/CPersistTraits.h"
+
+template void FABLE_FASTCALL GFSerialiseMapBinaryIn<CCharString, long, std::less<long> >(CMemoryDataInputStream& is, std::map<long, CCharString, std::less<long>, std::allocator<std::pair<const long, CCharString > > >& m);

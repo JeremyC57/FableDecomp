@@ -1,0 +1,2 @@
+address	entry	claim	reason
+# none: no queue claim in q10552..q10636 failed its two-source check (blocked entries are in APPLIED.tsv with their reasons)

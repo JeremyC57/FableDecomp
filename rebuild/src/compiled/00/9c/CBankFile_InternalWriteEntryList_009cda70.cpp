@@ -10,12 +10,19 @@
 // Layout: the landed retail CBankFile model (0x009D1320 / 0x009CCCD0): Symbols +0x08, Checksums +0x14, RuntimeData +0x20,
 //   UpdateData +0x2c, PackedDataOffset +0x38, PackedDataSize +0x48, PackedDataType +0x58; FileInformationSize +0xa4 and
 //   FileSize +0xa8 (Ego_r.pdb +0xb4 / +0xb8 less the four 4-byte-short CArrays); CBankFileEntryUpdateData as 0x009D1320.
+// NF61 (round 7, q10552): the local map<unsigned long, unsigned long> model (CULongMap / SULongNode / SInsertResult and its same-TU
+//   operator[] stand-in) is replaced by the stlport/fable_map.h map (typedef kept as CULongMap): insert binds NF58's _Rb_tree
+//   insert_unique 0x00431363, operator[] the 4-argument map spelling (NF61 0x00553E60), the destructor expands one level of _M_erase and calls the tree's 0x0042FE07
+//   for the rest. The other local models (CBankFile, CCharString, CDataOutputStream, CPackedUIntArray,
+//   CBankFileEntryUpdateData) are unchanged; their move onto engine/CBankFile.h is separate work.
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                // 0x00BFEA14
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 #pragma intrinsic(memcpy, memset)
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
@@ -89,71 +96,7 @@ template <class T> class CArray { public:
     bool empty() const { return m_pFirst == m_pLast; }
     T& operator[](unsigned long index) const { return *(begin() + index); }
 };
-struct SULongPair { unsigned long first; unsigned long second; };
-struct SULongNode {
-    unsigned char color;
-    SULongNode*   parent;
-    SULongNode*   left;
-    SULongNode*   right;
-    SULongPair    value;
-};
-struct SULongMapIterator { SULongNode* node; };
-struct SInsertResult { SULongMapIterator it; bool inserted; };
-struct CULongMap {                                     // STLport map<unsigned long, unsigned long>
-    SULongNode*   _M_header;
-    unsigned long _M_node_count;
-    bool          _M_key_compare;
-    CULongMap() : _M_header(0)
-    {
-        _M_header = (SULongNode*)malloc(sizeof(SULongNode));
-        _M_node_count = 0;
-        _M_header->color = 0;
-        _M_header->parent = 0;
-        _M_header->left = _M_header;
-        _M_header->right = _M_header;
-    }
-    void _M_erase_out(SULongNode* x);                  // 0x0042FE07
-    void _M_erase(SULongNode* x)
-    {
-        while (x != 0) {
-            _M_erase_out(x->right);
-            SULongNode* y = x->left;
-            free(x);
-            x = y;
-        }
-    }
-    ~CULongMap()
-    {
-        if (_M_node_count != 0) {
-            _M_erase(_M_header->parent);
-            _M_header->left = _M_header;
-            _M_header->parent = 0;
-            _M_header->right = _M_header;
-            _M_node_count = 0;
-        }
-        if (_M_header)
-            free(_M_header);
-    }
-    SInsertResult insert(const SULongPair& value);     // 0x00431363
-    unsigned long& operator[](const unsigned long& key);   // 0x00553E60
-    static SULongNode* _M_increment(SULongNode* x)
-    {
-        if (x->right != 0) {
-            x = x->right;
-            while (x->left != 0)
-                x = x->left;
-        } else {
-            SULongNode* y = x->parent;
-            while (x == y->right) {
-                x = y;
-                y = y->parent;
-            }
-            if (x->right != y)
-                x = y;
-        }
-        return x;
-    }
-};
+typedef std::map<unsigned long, unsigned long> CULongMap;   // STLport 4.6 map<unsigned long, unsigned long> (stlport/fable_map.h)
 template <class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 class CBankFile { public:          // the landed retail CBankFile model (local: engine/CBankFile.h migration pending)
     unsigned long             Size;                 // +0x04
@@ -196,13 +139,6 @@ class CBankFile { public:          // the landed retail CBankFile model (local: 
     unsigned long InternalWriteEntryList(CDataOutputStream& stream);
 };
 
-#pragma auto_inline(off)
-unsigned long& CULongMap::operator[](const unsigned long& key)
-{
-    _M_header->value.first = key;
-    return _M_header->value.second;
-}
-#pragma auto_inline(on)
 unsigned long CBankFile::InternalWriteEntryList(CDataOutputStream& stream)
 {
     unsigned long dataEnd = stream.GetPosition();
@@ -213,10 +149,7 @@ unsigned long CBankFile::InternalWriteEntryList(CDataOutputStream& stream)
         if (RuntimeData[i].Valid && RuntimeData[i].DataOffset != 0 && !UpdateData[i]->RequiresUpdate) {
             ++count;
             unsigned long type = GetEntryDataType(i);
-            SULongPair value;
-            value.first = type;
-            value.second = 0;
-            typeCounts.insert(value);
+            typeCounts.insert(CULongMap::value_type(type, 0));
             ++typeCounts[type];
             unsigned long end = GetEntryDataOffset(i) + GetEntryDataSize(i);
             dataEnd = Max(dataEnd, end);
@@ -224,10 +157,10 @@ unsigned long CBankFile::InternalWriteEntryList(CDataOutputStream& stream)
                 maxIndex = i;
         }
     }
-    stream.WriteULONG(typeCounts._M_node_count);
-    for (SULongNode* it = typeCounts._M_header->left; it != typeCounts._M_header; it = CULongMap::_M_increment(it)) {
-        stream.WriteULONG(it->value.first);
-        stream.WriteULONG(it->value.second);
+    stream.WriteULONG(typeCounts.size());
+    for (CULongMap::iterator it = typeCounts.begin(); it != typeCounts.end(); ++it) {
+        stream.WriteULONG((*it).first);
+        stream.WriteULONG((*it).second);
     }
     for (unsigned long i = 0; i < UpdateData.size(); ++i) {
         if (RuntimeData[i].Valid && RuntimeData[i].DataOffset != 0) {
