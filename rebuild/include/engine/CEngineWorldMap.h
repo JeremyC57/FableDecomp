@@ -24,6 +24,11 @@ public:
     virtual unsigned long PeekSceneFilterFlags() const;                  // ?PeekSceneFilterFlags@CEngineWorldMap@@UBEKXZ (chunk 731)
     long GetMapCount() const { return MapList.size(); }
     CEngineMap* GetMap(long index) const { return MapList[index]; }
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_ONGAMEMAPLOADED
+    // NF56 opt-in (row 0x00B401E0): Ego_r.pdb 0x009E0560 / FableWin.pdb 0x02D615D0 ?OnGameMapLoaded@CEngineWorldMap@@QAEXJ@Z (public), out of
+    // line at 0x00B401E0 (the CEngine::SetMapAsLoaded 0x00B23E30 tail-jump target). Declaration only.
+    void OnGameMapLoaded(long index);                                    // 0x00B401E0
+#endif
 #ifdef FABLE_RETAIL_CENGINEWORLDMAP_GETMAPXY
     // Retail opt-in (chunk 1013b): FableWin.pdb ?GetMap@CEngineWorldMap@@QBEPAVCEngineMap@@JJ@Z, inline in retail: the map that
     // owns world cell (x, y) from the 32x32-cell index grid Map (0 or less = none), NULL off the grid. Expanded in

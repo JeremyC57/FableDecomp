@@ -1,0 +1,55 @@
+addr       parity           behav  name
+00434a30   RELOCATION_MATCH PASS   ReceiveFeedbackGameEvent
+0049e1d0   RELOCATION_MATCH PASS   ReceiveLocalEvent
+0050f550   RELOCATION_MATCH PASS   Reset
+005bbf80   WARN RELOC_NAME: ??_GCEngineTextureMorph@@QAEPAXI@Z -> 005bbbce labelled 'CKeyedArrayRecord::`scalar_deleting_destructor''
+005bbf80   RELOCATION_MATCH PASS   __destroy_aux<CEngineTextureMorph*>
+005d96f0   RELOCATION_MATCH PASS   GetUIInventoryCategory
+0064ed06   WARN RELOC_NAME: ??0CRetailList_0064ed06@@QAE@ABUCRetailAllocator@@@Z -> 00655ad8 labelled 'std_list_allocate_sentinel'
+0064ed06   RELOCATION_MATCH PASS   CDrawPerceivers
+00696680   MATCH            PASS   find
+006e3ab0   RELOCATION_MATCH PASS   PlaySpeech
+00747b00   RELOCATION_MATCH PASS   IsAvailableForAttack
+00786a30   MATCH            PASS   DeleteData
+007f0300   WARN SHARED_HEADER_AVAILABLE CWorld
+007f0300   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007f0300   WARN SHARED_HEADER_AVAILABLE CThing
+007f0300   RELOCATION_MATCH PASS   IsThingAbleToDig
+00856780   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00856780   RELOCATION_MATCH PASS   IsValidStrikeEventName
+0094bef0   RELOCATION_MATCH PASS   StayInShop
+00978e60   RELOCATION_MATCH PASS   IsRunnableLeaf
+00982eb0   RELOCATION_MATCH PASS   WifeFeelingUpdate
+00985f40   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00985f40   WARN SHARED_HEADER_AVAILABLE CTCWife
+00985f40   RELOCATION_MATCH PASS   WifeClothingUpdate
+00afe9b0   RELOCATION_MATCH PASS   SetPrimitiveInfo
+00b3b8c0   RELOCATION_MATCH PASS   ProcessLoading
+00b8d040   MATCH            PASS   AddFlareTest
+00c17260   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c17260   RELOCATION_MATCH PASS   LoadBank
+00c3aa50   WARN RELOC_NAME: ?Reset@CBufferedRangeReader@@QAEXXZ -> 00c3a9c0 labelled 'NScript::CV_MurderTwistScript::Init'
+00c3aa50   RELOCATION_MATCH PASS   SetRange
+
+WINS: 21
+  00434a30 RELOCATION_MATCH CDisplayEngine::?ReceiveFeedbackGameEvent@CDisplayEngine@@QAEXPBVCGameEvent@@@Z
+  0049e1d0 RELOCATION_MATCH CWorld::?ReceiveLocalEvent@CWorld@@QAEXPBVCGameEvent@@@Z
+  0050f550 RELOCATION_MATCH CCountedPointer<CAFile>::?Reset@?$CCountedPointer@VCAFile@@@@QAEXPAVCAFile@@@Z
+  005bbf80 RELOCATION_MATCH std::??$__destroy_aux@PAVCEngineTextureMorph@@@std@@YIXPAVCEngineTextureMorph@@0ABU__false_type@0@@Z
+  005d96f0 RELOCATION_MATCH CTCInventoryItem::?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z
+  0064ed06 RELOCATION_MATCH NPlayerGui::CDrawPerceivers::CDrawPerceivers
+  00696680 MATCH std::_Rb_tree<EActionRegisteredType,std::pair<const EActionRegisteredType,CCountedPointer<CCreatureActionBase> >,...>::?find@?$_Rb_tree@W4EActionRegisteredType@@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@U?$_Select1st@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@3@U?$less@W4EActionRegisteredType@@@3@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@2@@2@ABW4EActionRegisteredType@@@Z
+  006e3ab0 RELOCATION_MATCH CTCTalk::?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@ABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@_N2@Z
+  00747b00 RELOCATION_MATCH CTCStealth::?IsAvailableForAttack@CTCStealth@@QBE_NXZ
+  00786a30 MATCH CCountedPointer<C3DSkeletalMorphParameter>::?DeleteData@?$CCountedPointer@VC3DSkeletalMorphParameter@@@@SIXPAX@Z
+  007f0300 RELOCATION_MATCH CTCCarriedActionUseSpade::?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z
+  00856780 RELOCATION_MATCH `anonymous namespace::?IsValidStrikeEventName@?A0x
+  0094bef0 RELOCATION_MATCH CAIStateGroup_WorkBase<CAIStateGroupBase>::?StayInShop@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ
+  00978e60 RELOCATION_MATCH CAIStateGroup_CreatureAdvanceInCover::?IsRunnableLeaf@CAIStateGroup_CreatureAdvanceInCover@@MAE_NXZ
+  00982eb0 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?WifeFeelingUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
+  00985f40 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?WifeClothingUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
+  00afe9b0 RELOCATION_MATCH NParticleEngine::CParticle::?SetPrimitiveInfo@CParticle@NParticleEngine@@QAEXJJABVCEnginePrimitiveHandle@@J@Z
+  00b3b8c0 RELOCATION_MATCH CEngineResourceManager::?ProcessLoading@CEngineResourceManager@@UAEXXZ
+  00b8d040 MATCH CEngineOcclusionManager::?AddFlareTest@CEngineOcclusionManager@@QAEXKABVC3DVector@@MJ@Z
+  00c17260 RELOCATION_MATCH _global::?LoadBank@@YGXPAVCLoadLog@@PAXPAUCRequest_00c09110@@@Z
+  00c3aa50 RELOCATION_MATCH CBufferedRangeReader::?SetRange@CBufferedRangeReader@@QAEJKK@Z

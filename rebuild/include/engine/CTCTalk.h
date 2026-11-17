@@ -35,6 +35,16 @@ public:
     // nested result enum's enumerator names are descriptive (the landed callers' spellings): 0 started, 1 failed for good.
     enum ESpeechPlaybackResult { SPEECH_PLAYBACK_STARTED, SPEECH_PLAYBACK_FAILED_FINAL, SPEECH_PLAYBACK_FAILED_RETRY };
     ESpeechPlaybackResult PlayAISpeech(unsigned long textGroup, bool, NSpeechGainManager::EDialogueLayer layer, bool, bool);   // 0x006E3B60
+#ifdef FABLE_RETAIL_CTCTALK_PLAYSPEECH_OVERLOADS
+    // NF56 opt-in (rows 0x006E3AB0 / 0x006E3B10, queue q10426): the three public PlaySpeech overloads, Ego_r.pdb / FableWin.pdb in this
+    // order (Ego_r 0x0070DC40 / 0x0070E010 / 0x0070E050 = retail 0x006E3890 / 0x006E3AB0 / 0x006E3B10):
+    //   ?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@KABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@_N2@Z (index + voice),
+    //   ?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@ABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@_N2@Z (text symbol),
+    //   ?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@KW4EDialogueLayer@NSpeechGainManager@@_N1@Z (index). Declarations only.
+    ESpeechPlaybackResult PlaySpeech(unsigned long textGroup, const CCharString& voice, NSpeechGainManager::EDialogueLayer layer, bool, bool);   // 0x006E3890
+    ESpeechPlaybackResult PlaySpeech(const CCharString& text, NSpeechGainManager::EDialogueLayer layer, bool, bool);                            // 0x006E3AB0
+    ESpeechPlaybackResult PlaySpeech(unsigned long textGroup, NSpeechGainManager::EDialogueLayer layer, bool, bool);                            // 0x006E3B10
+#endif
 #ifdef FABLE_RETAIL_CTCTALK_AISPEECHTEXT
     // Nested opt-in (chunk 802, row 0x00974AA0 CAIStateGroup_JackOfBladesStage2::Update): Ego_r.pdb
     // ?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@ABVCCharString@@_NW4EDialogueLayer@NSpeechGainManager@@11@Z, the text-symbol

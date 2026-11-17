@@ -157,6 +157,12 @@ public:
         friend class CQuestManager;
 #endif
     };
+#ifdef FABLE_RETAIL_CQUESTMANAGER_GETACTIVEQUESTFROMSCRIPTNAME
+    // NF56 opt-in (rows 0x004AF5B0 and its caller 0x004B11A0): FableWin.pdb 0x01C516E0 / Ego_r.pdb 0x004B48E0
+    // ?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z on the full nested CActiveQuest of
+    // FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST (the REGIONLOCK block declares the same member on its partial nested record). Declaration only.
+    CActiveQuest* GetActiveQuestFromScriptName(const CCharString& name) const;    // 0x004AF5B0
+#endif
 #ifndef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
     // (chunk Q25: the SAVEGAMESTATE row uses the LOADGAMESTATE layout, which has no PQuestCurrentlyRunning member)
     CActiveQuest* GetPActiveQuest()const{return PQuestCurrentlyRunning;}

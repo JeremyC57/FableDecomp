@@ -42,6 +42,11 @@ public:
  // (absent from Ego_r = inline in release: `add eax,204h`, the address of ViewportBoxFloat +0x204). No layout change.
  const C2DBoxF& GetViewportFloat() const { return ViewportBoxFloat; }
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_SETVIEWPORT_BOXF
+ // NF56 opt-in (row 0x00A0AA80 CRenderManagerCore::SetAWindow(const C2DBoxF&), which tail-jumps here on DisplayManager +0x3A3C):
+ // Ego_r.pdb 0x00B24470 / FableWin.pdb 0x0301F510 ?SetViewport@CDisplayManager@@QAEXABVC2DBoxF@@@Z = retail 0x009BF490. Declaration only.
+ void SetViewport(const C2DBoxF& viewport);                             // 0x009BF490
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER_VERTEXSHADERVERSION
  // Opt-in (wfE7, row 0x00B33B50): Ego_r.pdb / FableWin.pdb ?GetVertexShaderVersion@CDisplayManager@@QBEKXZ (retail 0x009BEDE0, landed). Declaration only.
  unsigned long GetVertexShaderVersion() const;                         // 0x009BEDE0

@@ -9,32 +9,11 @@
 // C3DSkeletalMorph>) +0x1c.
 // Shape: a CCountedPointer local built from `new` through the raw-pointer constructor (the block's object re-read from the
 // pointer); its destructor decrements the block through the pointer and re-reads it before the destroy and the delete.
-#include <stddef.h>
-void* operator new(size_t size);                        // 0x00BFEA1A
-void operator delete(void* p);                          // 0x00BFE9BC
-void __fastcall Destroy_00786a30(void* object);         // 0x00786A30: the per-type deleter stored in the count block
-class CCPPointerInfo { public:
-    long References;                                    // +0
-    void (__fastcall* PfnDestroy)(void*);               // +4
-    void* Object;                                       // +8
-    CCPPointerInfo(void* object) : References(1), PfnDestroy(Destroy_00786a30), Object(object) { }
-};
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(T* p) : Data(p) { if (Data) Info = new CCPPointerInfo(Data); else Info = 0; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->PfnDestroy(Info->Object);
-                delete Info;
-            }
-        }
-    }
-    T* operator->() const { return Data; }
-};
+// NF56 (round 7, queue q10453): the count block and the counted pointer come from engine/CCountedPointer.h, so the deleter the block
+//   stores binds ?DeleteData@?$CCountedPointer@VC3DSkeletalMorphParameter@@@@SIXPAX@Z (FableWin.pdb 0x02664170, retail 0x00786A30) as in the
+//   sibling CalculateSkeletalMorph 0x00786700. Were local CCPPointerInfo / CCountedPointer<T> models and the stand-in deleter Destroy_00786a30.
+//   The local C3DSkeletalMorphParameter / C3DSkeletalMorph / CTCSkeletalMorph models are pre-existing.
+#include "engine/CCountedPointer.h"
 class C3DSkeletalMorphTarget;
 class C3DSkeletalMorphParameter { public:
     unsigned char _data[0x14];

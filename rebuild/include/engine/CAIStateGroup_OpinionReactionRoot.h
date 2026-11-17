@@ -11,6 +11,47 @@
 class CTCTalk;
 class CThing;
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_WIFEUPDATE
+// NF56 opt-in (round 7, rows 0x00982EB0 / 0x00982F10 / 0x00982F70 / 0x00985F40, the WifeFeeling / WifeGeneral / WifeToHerself /
+// WifeClothing updates): the polymorphic retail class on its RTTI base CAIStateGroupBase (+0, sizeof 0x14 = the flattened __vftable and
+// the four pads below; needs FABLE_RETAIL_CAISTATEGROUPBASE, and FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS + _GOTOBED_WORLD for the protected
+// GetWorld() const 0x008FCFC0), with the same own members at the same offsets, and the private members those rows define or call, in the
+// Ego_r.pdb / FableWin.pdb spellings (AAE): WaitForTextToLoadThenSpeak 0x0095ED80, SayToThingReactingTo 0x0095EE70 and the four updates.
+// The flattened class below is the default, unchanged.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/EOpinionAttitudeType.h"
+#include "engine/EAIAction.h"
+class CCharString;
+namespace NSpeechGainManager { enum EDialogueLayer; }                    // MS forward enum (the row defines the enumerators it uses)
+#pragma pack(push, 1)
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase {
+private:
+    EAIActionReturn WaitForTextToLoadThenSpeak(const CCharString& text, NSpeechGainManager::EDialogueLayer layer);   // 0x0095ED80
+    EAIActionReturn SayToThingReactingTo(const CCharString& text);      // 0x0095EE70
+    bool WifeFeelingUpdate(EOpinionAttitudeType attitude);              // 0x00982EB0
+    bool WifeGeneralUpdate(EOpinionAttitudeType attitude);              // 0x00982F10
+    bool WifeToHerselfUpdate(EOpinionAttitudeType attitude);            // 0x00982F70
+    bool WifeClothingUpdate(EOpinionAttitudeType attitude);             // 0x00985F40
+public:
+    CTCTalk*      PTCTalk;                                   // +0x14
+    unsigned char CurrentReactionType[0x4];                  // +0x18 EOpinionReactionType
+    bool          ReactionFlags[79];                         // +0x1c
+    unsigned char ThingReactingTo[0x9];                      // +0x6b CIntelligentPointer<CThing>
+    unsigned char _pad_0x74[0x4];                            // +0x74
+    unsigned char CurrentUpdateFunc[0x10];                   // +0x78 pmf_3dbe901f
+    bool          LastRunWasTryAndLook;                      // +0x88
+    bool          ReactingToPlayer;                          // +0x89
+    bool          AllowSpeechOnNonPureAISpeaker;             // +0x8a
+    unsigned char _pad_0x8b[0x1];                            // +0x8b
+    float         ExtraDataFloat;                            // +0x8c
+    float         ExtraDataSLONG;                            // +0x90
+    CThing*       ExtraDataPThing;                           // +0x94
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_OpinionReactionRoot) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, PTCTalk) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataPThing) == 0x94);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_BEHAVIOURS
 class COpinionReactionBehaviour;
@@ -154,4 +195,5 @@ FABLE_STATIC_ASSERT_AT(48, offsetof(CAIStateGroup_OpinionReactionRoot, ExtraData
 FABLE_STATIC_ASSERT_AT(49, offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataSLONG) == 0x90);
 FABLE_STATIC_ASSERT_AT(50, offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataPThing) == 0x94);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_WIFEUPDATE
 #endif // FABLE_ENGINE_CAISTATEGROUP_OPINIONREACTIONROOT_H

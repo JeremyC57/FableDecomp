@@ -18,6 +18,12 @@ public:
  CBufferedRangeReader(void* source,unsigned long size);
  ~CBufferedRangeReader();
  long SetRange(unsigned long first,unsigned long count);
+#ifdef FABLE_RETAIL_CBUFFEREDRANGEREADER_RESET
+ // NF56 opt-in (row 0x00C3AA50 SetRange): the range reset out of line at 0x00C3A9C0 (zeroes RangeStart / RangeLength / ReadOffset,
+ // +0x70/+0x74/+0x78). Descriptive name (no libpk symbol): the landed self row's method name Reset (there on the address-named stand-in
+ // CReaderBase_00c4b300; NAME_FIXES). Declaration only.
+ void Reset();
+#endif
  long Read(void* buffer,long count);
  unsigned long GetCount() const;
  PKCBufferedReader Reader;

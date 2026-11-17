@@ -27,6 +27,14 @@ public:
     };
     CEngineMap(const CIDrawMap*,long,long,long,long,long,CCharString,bool);
     ~CEngineMap();
+#ifdef FABLE_RETAIL_CENGINEMAP_ONGAMEMAPLOADED
+    // NF56 opt-in (row 0x00B401E0 CEngineWorldMap::OnGameMapLoaded, which expands both): Ego_r.pdb / FableWin.pdb
+    // ?SetGameMap@CEngineMap@@QAEXPBVCIDrawMap@@@Z (the GameMap +0x08 store) and ?OnGameMapLoaded@CEngineMap@@QAEXJ@Z (Ego_r.pdb 0x009DD5D0 /
+    // FableWin.pdb 0x02D5C390; retail has no out-of-line copy: 0x00B401E0 expands it). The row supplies the inline body. Declarations
+    // (+ the one-store setter); no layout change.
+    void SetGameMap(const CIDrawMap* map) { GameMap = map; }
+    void OnGameMapLoaded(long index);
+#endif
 #ifdef FABLE_RETAIL_CENGINEMAP
     // Retail opt-in (chunk 723): the inline LandscapeMap accessors (Ego_r.pdb / FableWin.pdb ?GetLandscapeMap@CEngineMap@@QBEPAVCEngineLandscapeMap@@XZ,
     // ?SetLandscapeMap@CEngineMap@@QAEXPAVCEngineLandscapeMap@@@Z); ~CEngineLandscapeRenderer 0x00B67920 expands both on +0x00.

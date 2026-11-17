@@ -59,7 +59,6 @@ class CThingCreatureBase { public:
     }
     bool SetCurrentAction(const CCreatureActionBase& action); // 0x006644F0
 };
-bool __fastcall IsThingAbleToDig(CThingCreatureBase* thing);   // 0x007F0300
 struct CTCShowableItem {
     void OnShowEnded();                                 // 0x005D8E50
 };
@@ -73,13 +72,16 @@ class CTCCarriedActionUseBase : public CTCActionUseBase { public:
 };
 struct CTCCarriedActionUseSpade : CTCCarriedActionUseBase {
     virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingCreatureBase*))
+    // NF56 (round 7, queue q10434): Ego_r.pdb 0x007E9D10 / FableWin.pdb 0x02771DE0 ?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z
+    //   (public static __fastcall, by const reference; the landed self row 0x007F0300); was the free stand-in IsThingAbleToDig(CThingCreatureBase*).
+    static bool __fastcall IsThingAbleToDig(const CThingCreatureBase& creature);   // 0x007F0300
 };
 
 void CTCCarriedActionUseSpade::OnActionUse(CThing& thing)
 {
     CThingCreatureBase* user = (CThingCreatureBase*)&thing;
     CTCCarriedActionUseBase::OnActionUse(thing);
-    if (IsThingAbleToDig(user)) {
+    if (IsThingAbleToDig(*user)) {
         CCharString name("Expression_Dig", -1);
         user->SetCurrentAction(CCreatureAction_ActivateQuest(user, 0, name, false));
     }

@@ -14,6 +14,13 @@
 // Shape: the child handle is a reference local into the vector (`lea edi,[edx+edi*8]`); storing the new primitive is the
 //   landed CEnginePrimitiveHandle model (`Clear()` = last-handle notice + `Data = 0`, then `Data = p`, every helper inline, so
 //   two release sequences precede the store); the enable bit is `!(flags & 0x20)` (hoisted into bl).
+// NF56 (round 7, queue q10427): Primitives is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> (stlport/fable_containers.h,
+//   FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL), so the call binds 0x00443F90 as
+//   ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (the self row's STLport spelling, as
+//   0x00602E30 / 0x0064F659). Was the local stand-in CHandleVector (Resize(long)). The local CEnginePrimitiveHandle / CIVCountedPointer
+//   models are pre-existing.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
 class CEnginePrimitive { public:
     long Type;                                         // +0x00
 };
@@ -66,14 +73,6 @@ class CEnginePrimitiveHandle { public:                        // 8 bytes: vptr (
     }
 };
 
-struct CHandleVector {                                 // vector<CEnginePrimitiveHandle> (12 bytes)
-    CEnginePrimitiveHandle* m_pFirst;
-    CEnginePrimitiveHandle* m_pLast;
-    CEnginePrimitiveHandle* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pFirst; }
-    void Resize(long count);                           // 0x00443F90
-    CEnginePrimitiveHandle& operator[](unsigned long index) { return m_pFirst[index]; }
-};
 
 // NF46 (round 7): the 0x01436E84 global is NEngineInternal::GPPrimitiveTypeInfo (Ego_r.pdb / FableWin.pdb
 // ?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A); the manager is its FableWin.pdb inline GetPrimitiveManager(type)
@@ -87,7 +86,7 @@ namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo
 
 struct CEngineInternalPrimitiveGroup : CEngineInternalPrimitiveBase {
     unsigned char _pad38[0x50 - 0x38];
-    CHandleVector Primitives;                          // +0x50
+    std::vector<CEnginePrimitiveHandle> Primitives;    // +0x50
     unsigned long PrimitiveFlags;                      // +0x5c
     void UpdateRenderLayerMask();                      // 0x00BC6180
     void SetChildPrimitive(unsigned long index, const CEnginePrimitive& primitive, unsigned long flags);
@@ -96,7 +95,7 @@ struct CEngineInternalPrimitiveGroup : CEngineInternalPrimitiveBase {
 void CEngineInternalPrimitiveGroup::SetChildPrimitive(unsigned long index, const CEnginePrimitive& primitive, unsigned long flags)
 {
     if (index >= Primitives.size())
-        Primitives.Resize(index + 1);
+        Primitives.resize(index + 1);
     CEnginePrimitiveHandle& handle = Primitives[index];
     CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(primitive.Type);
     bool enable = (flags & 0x20) ? false : true;

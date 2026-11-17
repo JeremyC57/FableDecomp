@@ -12,38 +12,28 @@
 // Shape: the vtable store precedes the vector zeroing (inline member constructors through each
 // vector's address register, all sharing the ebx zero); Active is the first BODY assignment (an
 // initialiser stores it before the vectors), then the Resize calls and the three counter zeroes (Mult and FrameToStart are left untouched).
+// NF56 (round 7, queue q10427): moved onto engine/CTCBetting.h (overlay opt-in FABLE_RETAIL_CTCBETTING_CTOR for the ctor declaration):
+//   BetHandles / MoneyHandles are the header's STLport std::vector<CEnginePrimitiveHandle> (stlport/fable_containers.h), so the calls bind
+//   resize(size_type) 0x00443F90 as ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z
+//   (FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL, the 0x0064F659 pattern). Were the local CRetailHandleVector stand-in (Resize(long)) and a
+//   local CTCBetting model.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
 #define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBETTING
+#define FABLE_RETAIL_CTCBETTING_CTOR
 #include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
-class CThing;
-
-class CEnginePrimitiveHandle;
-
-struct CRetailHandleVector {                                // VC6 Dinkumware vector<CEnginePrimitiveHandle>: three words
-    CEnginePrimitiveHandle* m_pFirst;
-    CEnginePrimitiveHandle* m_pLast;
-    CEnginePrimitiveHandle* m_pEnd;
-    CRetailHandleVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
-    void Resize(long count);                                // 0x00443F90
-};
-
-class CTCBetting : public CTCBase { public:                         // vtable 0x01270624
-    bool                Active;                             // +0x0c
-    CRetailHandleVector BetHandles;                         // +0x10
-    CRetailHandleVector MoneyHandles;                       // +0x1c
-    long                FrameBetWasLastChanged;             // +0x28
-    long                FrameBetChangeStarted;              // +0x2c
-    long                Mult;                               // +0x30
-    long                FrameToStart;                       // +0x34
-    long                PreviousDonation;                   // +0x38
-    CTCBetting(CThing& thing);
-};
+#include "engine/CTCBetting.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CEnginePrimitiveHandle.h"
 
 CTCBetting::CTCBetting(CThing& thing)
     : CTCBase(thing)
 {
     Active = false;
-    BetHandles.Resize(5);
-    MoneyHandles.Resize(5);
+    BetHandles.resize(5);
+    MoneyHandles.resize(5);
     FrameBetWasLastChanged = 0;
     FrameBetChangeStarted = 0;
     PreviousDonation = 0;

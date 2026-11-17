@@ -1,137 +1,61 @@
 // CAIStateGroup_CreatureTakeCover::IsRunnableLeaf() -- gate on the projectile-carrying module, then require a live target outside melee, a projectile weapon, and the cover-base leaf check.
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Leaf: ?IsRunnableLeaf@CAIStateGroup_CreatureTakeCover@@UAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1), @0x00979D80, 258 bytes.
-// Callees: CAIStateGroupBase::GetWorld @0x008FCFC0; NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable @0x00982890 (temporary vtable 0x0128FFD4); CBaseIntelligentPointer::GetPItem @0x00A01B50; IsInMeleeWithCombatWheelAttackers @0x00979910; CVectorMap::LowerBound @0x004365B0; CTCCarrying::GetThingInPrimarySlot @0x006A1440; CTCWeapon::IsProjectileWeapon @0x005DAA40; qualified base IsRunnableLeaf @0x00970F30.
-// The PDB header only exposes a flattened 0x50-byte base area. The fields at +0x14/+0x1f and inherited call behavior follow the landed CreatureTakeCover/CreatureUseCoverBase relatives. GetInterface inlines the presence-bit test at +0x28, then searches the sorted component map.
-#include "fable_compiler.h"
-class CThing;
-
-class CBaseObject;
+// Identity: Ego_r.pdb 0x0099EAA0 / FableWin.pdb 0x02C1CA30 ?IsRunnableLeaf@CAIStateGroup_CreatureTakeCover@@UAE_NXZ (public virtual; the
+//   landed leaf was the QAE spelling: access-only self fix). Name fix (NF56, round 7, queue q10460): the qualified base call 0x00970F30 is
+//   CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf, ?IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase@@MAE_NXZ (Ego_r.pdb 0x00995CE0 /
+//   FableWin.pdb 0x02B85370; retail vtable 0x0128D31C slot 15); was the made-up IsCoverBaseRunnable on a local model of the shared-header
+//   class CAIStateGroup_CreatureTakeCover. The row now sits on the shared headers: the retail class of engine/CAIStateGroup_CreatureTakeCover.h
+//   (overlay opt-in _ISRUNNABLELEAF) on engine/CAIStateGroup_CreatureUseCoverBase.h, engine/CAIStateGroupBase.h (GetWorld 0x008FCFC0,
+//   PBrain +4), engine/CAIBrain.h (Creature +0x18), engine/CThing.h's PeekTC<T> (const CVectorMap::LowerBound 0x004365B0) and
+//   engine/ThingAlive.h's IS_THING_ALIVE, in place of the local CThing / CVectorMap / CAIStateGroupBase / CTCCarrying / CTCWeapon models.
+// Callees: NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon @0x00982890 (temporary vtable 0x0128FFD4; the module models below
+//   are kept as landed: no shared header declares them); CBaseIntelligentPointer::GetPItem @0x00A01B50; IsInMeleeWithCombatWheelAttackers
+//   @0x00979910 (kept as landed); CTCCarrying::GetThingInPrimarySlot @0x006A1440; CTCWeapon::IsProjectileWeapon @0x005DAA40.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTCWEAPON
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_COVERLIST
+#define FABLE_RETAIL_CAISTATEGROUP_CREATURETAKECOVER_ISRUNNABLELEAF
+#include "fable_compiler.h"
+#include "rebuild_abi.h"
+#include <stddef.h>
+#include "stlport/fable_containers.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
-
-
-class CTCBase;
-
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                  // +0x00
-    SEntry* last;                                   // +0x04
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;           // 0x004365B0
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing
-{ public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad_0x4c[0x91 - 0x4c];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-
-    FABLE_FORCEINLINE bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        CInterfaceMap::SEntry* end = map->last;
-        const CInterfaceMap::SEntry* sel;
-        if (it == end)
-            sel = end;
-        else if (it->first <= type)
-            sel = it;
-        else
-            sel = end;
-        return sel;
-    }
-    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-        {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
+#include "engine/ThingAlive.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCCarrying.h"
+#include "engine/CTCWeapon.h"
+#include "engine/CWorld.h"
+#include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-
-class CTCCarrying                                  // interface type 0x46 (word 2 bit 6)
-{ public:
-    CThing* GetThingInPrimarySlot() const;                // 0x006A1440
-};
-
-class CTCWeapon                                    // interface type 0x48 (word 2 bit 8)
-{ public:
-    bool IsProjectileWeapon() const;                      // 0x005DAA40
-};
-
-class CThingCreatureBase : public CThing
-{ public:
-    bool IsIncapacitated();                         // 0x00661E80 (flags byte +0x15c: bit 2, else bit 3; manifest "CText::GetAlignment" is propagated)
-};
-
-FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
-{
-    if (((CThing*)p.GetPItem()) != 0)
-    {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
-            return true;
-    }
-    return false;
-}
-
+#include "engine/CAIStateGroup_CreatureTakeCover.h"
 
 bool __fastcall IsInMeleeWithCombatWheelAttackers(CThing* creature);   // 0x00979910
 
-// pointer form of the alive test: one GetPItem read
-FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* thing)
-{
-    if (thing != 0)
-    {
-        if (!(thing->m_flags91 & 1))
-            return true;
-    }
-    return false;
-}
-
-#pragma pack(push, 1)
-class CWorld;
-class CAIStateGroupBase { public:
-    virtual void v00();
-    CAIBrain* PBrain;                               // +0x04
-    unsigned char _pad08[0x0c];                     // +0x08
-protected:
-    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
-};
-
-struct CAIStateGroup_CreatureTakeCover : CAIStateGroupBase
-{
-    CIntelligentPointer<const CThing> PTargetThing; // +0x14
-    unsigned char _pad1c[3];                        // +0x1c
-    CIntelligentPointer<CThing> PCoverThing;        // +0x1f
-    bool IsCoverBaseRunnable(); // 0x00970F30
-    bool IsRunnableLeaf();
-};
-#pragma pack(pop)
-
-class CWorld;
 namespace NCreatureAI {
 struct __declspec(novtable) CIsRunnableModule {
     CWorld* World; CThing* Creature;
@@ -143,21 +67,20 @@ struct CIsRunnableModuleCarryingProjectileWeapon : CIsRunnableModule {
     virtual bool IsRunnable() const;
 };
 }
-class CWorld;
+
 bool CAIStateGroup_CreatureTakeCover::IsRunnableLeaf()
 {
     if (NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon(&GetWorld(), (CThing*)PBrain->Creature).IsRunnable()
         && IS_THING_ALIVE(PTargetThing)
-        && !IsInMeleeWithCombatWheelAttackers(((CThing*)PTargetThing.GetPItem()))
-        )
+        && !IsInMeleeWithCombatWheelAttackers((CThing*)PTargetThing.GetPItem()))
     {
-        CTCCarrying* carrying;
-        if (((CThing*)PTargetThing.GetPItem())->GetInterface(0x46, &carrying)) {
+        const CTCCarrying* carrying;
+        if (PTargetThing->PeekTC(&carrying)) {
             CThing* weapon = carrying->GetThingInPrimarySlot();
             if (weapon) {
-                CTCWeapon* tcWeapon;
-                if (weapon->GetInterface(0x48, &tcWeapon) && tcWeapon->IsProjectileWeapon()
-                    && IsCoverBaseRunnable())
+                const CTCWeapon* tcWeapon;
+                if (weapon->PeekTC(&tcWeapon) && tcWeapon->IsProjectileWeapon()
+                    && CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf())
                     return true;
             }
         }

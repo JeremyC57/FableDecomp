@@ -87,6 +87,11 @@ public:
     // FableWin.pdb 0x02DD3C30; retail 0x00B3B7F0, `ret 0Ch`). Declaration only: no layout change.
     void ProcessLoading(bool flag, double until);                       // 0x00B3B7F0
 #endif
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_FRAMEEND
+    // NF56 opt-in (row 0x00B3B870): the non-virtual ?FrameEnd@CEngineResourceManager@@QAEXXZ (Ego_r.pdb 0x009D9ED0 / FableWin.pdb 0x02DD3B60;
+    // the virtual CEngineComponent override is the other overload). Declaration only: no layout change.
+    void FrameEnd();                                                     // 0x00B3B870
+#endif
     virtual unsigned long PeekSceneFilterFlags() const;
     // Chunk 723 (rows 0x00BC14E0 / 0x00B71880; folded into this branch at landing): FableWin.pdb inlines
     // ?GetVShaderResource@CEngineResourceManager@@QBEPBVCShaderResource@@W4EShaderBankNo@@@Z (0x00BC14E0 reads bank 21 at +0x2A68),

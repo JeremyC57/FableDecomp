@@ -9,6 +9,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREADVANCEINCOVER_ISRUNNABLELEAF
+// NF56 opt-in (row 0x00978E60): the polymorphic retail class on its base CAIStateGroup_CreatureUseCoverBase (RTTI of vtable 0x0128D4E4:
+// AdvanceInCover : UseCoverBase : EnemyCreatureBase : CAIStateGroupBase : CBaseClass; slot 15 = 0x00978E60; Ego_r.pdb overrides
+// ?GetCoverThingList@CAIStateGroup_CreatureAdvanceInCover@@UAEXAAV?$vector@PAVCThing@@...@Z 0x0099DD10 and ?ProcessCoverThingList@...
+// 0x0099DE50 of the base's slots; no own data: sizeof 0x4C = the base). Needs FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE (+ _COVERLIST,
+// for the base's slot-15 IsRunnableLeaf) and its prerequisites. Member: Ego_r.pdb 0x0099DB40 / FableWin.pdb 0x02C15700
+// ?IsRunnableLeaf@CAIStateGroup_CreatureAdvanceInCover@@MAE_NXZ (protected virtual, slot 15). The flattened class below stays the default
+// (the GETNAME_ALLOC statics are not in this branch).
+#include "engine/CAIStateGroup_CreatureUseCoverBase.h"
+class CAIStateGroup_CreatureAdvanceInCover : public CAIStateGroup_CreatureUseCoverBase {
+protected:
+    virtual bool IsRunnableLeaf();                                       // 0x00978E60
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureAdvanceInCover) == 0x4c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -28,5 +43,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(23, sizeof(CAIStateGroup_CreatureAdvanceInCover) == 0x4c);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_CreatureAdvanceInCover, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_CREATUREADVANCEINCOVER_ISRUNNABLELEAF
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_CREATUREADVANCEINCOVER_H

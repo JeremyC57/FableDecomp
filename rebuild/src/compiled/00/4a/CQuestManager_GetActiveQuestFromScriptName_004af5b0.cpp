@@ -1,6 +1,6 @@
 // CQuestManager::GetActiveQuestFromScriptName(const CCharString& name) const -- the active quest whose QuestName equals the name, or 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AF5B0, length 87 bytes.
-// Leaf: ?GetActiveQuestFromScriptName@CQuestManager
+// Leaf: ?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z
 // Retail bytes: push ebx ; push ebp ; mov ebp,[ecx+38h] ; push esi ; push edi ; mov edi,[ebp] ; cmp edi,ebp ; je N ; mov eax,[esp+14h] ; mov esi,[eax] ;
 //               L: mov ebx,[edi+8] ; mov eax,[ebx+30h] ; cmp eax,esi ; je F ; (null/length tests, Compare, neg/sbb/inc) ; jne F ; mov edi,[edi] ; cmp edi,ebp ; jne L ;
 //               N: ... xor eax,eax ; ret 4 ; F: ... mov eax,ebx ; ret 4
@@ -15,56 +15,28 @@
 // esi for the whole walk although the loop calls Compare (the retail build knows that callee writes no memory; the lane
 // re-reads both after the call), so both are explicit locals here, the block read once after the empty test; the found
 // quest is returned from ebx.
-#include "engine/CQuestManager.h"             // PDB layout: ActiveQuests at +0x44 (debug containers); retail +0x38, see above
-
-// NF52 (round 7): the name test is fable_string.h's inline CCharString::operator==(const CCharString&) (data pointers, null tests,
-// then CBasicString<char>::operator==: StringLength and !Compare), which binds the protected static
-// ?Compare@?$CBasicString@D@@KIJPBD0@Z (0x00411570). Were local CCharStringData / CCharString models, the SameString helper and the
-// made-up Compare_00411570. The CQuestManagerRetail / CActiveQuest / list-node stand-ins are pre-existing (the self leaf is still
-// CQuestManagerRetail; NAME_FIXES.tsv). The Compare template body is visible (FABLE_RETAIL_CBASICSTRING_COMPARE_BODY, as row 0x009C9280):
-// VC7.1 still calls it out of line but knows it writes no memory, so the name's data pointer stays in esi across the loop (retail
-// 0x004AF5BE..0x004AF5C2 loads it once).
+// NF56 (round 7, queue q10445): Ego_r.pdb 0x004B48E0 / FableWin.pdb 0x01C516E0 ?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z
+//   (CActiveQuest is nested in CQuestManager, class key V). The row now defines it on engine/CQuestManager.h: the typed ActiveQuests list
+//   (+0x38, std::list<CCountedPointer<CActiveQuest> >, FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE, which also makes the manager a friend of the
+//   record for QuestName +0x30) and the overlay opt-in FABLE_RETAIL_CQUESTMANAGER_GETACTIVEQUESTFROMSCRIPTNAME. Were the stand-ins
+//   CQuestManagerRetail, a global CActiveQuest and a hand-made list node.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CQUESTMANAGER
+#define FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE
+#define FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST
+#define FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+#define FABLE_RETAIL_CQUESTMANAGER_GETACTIVEQUESTFROMSCRIPTNAME
 #include "fable_string.h"
+#include "engine/CQuestManager.h"
 
-struct CActiveQuest {                          // CQuestManager::CActiveQuest, retail layout
-    long          ID;                          // +0x00
-    void*         PScriptInfo;                 // +0x04 CScriptInfo*
-    void*         PScript[2];                  // +0x08 CCountedPointer<CScriptBase>
-    void*         Regions[3];                  // +0x10 vector<const CRegion*> (retail: 12 bytes)
-    long          MarkerPosition[2];           // +0x1c C2DCoordI
-    bool          Persistent;                  // +0x24
-    bool          LoadedResources;             // +0x25
-    void*         PScriptData[2];              // +0x28 CCountedPointer<CScriptDataBase>
-    CCharString   QuestName;                   // +0x30
-};
-
-class CCPPointerInfo;
-struct SActiveQuestNode {                      // STLport list node of CCountedPointer<CActiveQuest>
-    SActiveQuestNode* next;                    // +0x00
-    SActiveQuestNode* prev;                    // +0x04
-    CActiveQuest*     m_pData;                 // +0x08
-    CCPPointerInfo*   m_pInfo;                 // +0x0c
-};
-
-struct CQuestManagerRetail {                   // retail view of CQuestManager
-    unsigned char     _pad00[0x38];            // +0x00 vptr, PGameScriptThingManager, RuntimeQuestPersistence, RegisteredQuestNames
-    SActiveQuestNode* ActiveQuests;            // +0x38 STLport list: the sentinel node pointer
-    CActiveQuest* GetActiveQuestFromScriptName(const CCharString& name) const;
-};
-
-CActiveQuest* CQuestManagerRetail::GetActiveQuestFromScriptName(const CCharString& name) const
+CQuestManager::CActiveQuest* CQuestManager::GetActiveQuestFromScriptName(const CCharString& name) const
 {
-    SActiveQuestNode* head = ActiveQuests;
-    SActiveQuestNode* node = head->next;
-    if (node != head) {
-        do {
-            CActiveQuest* quest = node->m_pData;
-            if (quest->QuestName == name)
-                return quest;
-            node = node->next;
-        } while (node != head);
+    for (std::list<CCountedPointer<CActiveQuest> >::const_iterator it = ActiveQuests.begin(); it != ActiveQuests.end(); ++it) {
+        CActiveQuest* quest = it->Data;
+        if (quest->QuestName == name)
+            return quest;
     }
     return 0;
 }

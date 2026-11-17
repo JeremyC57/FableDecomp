@@ -11,6 +11,10 @@ public:
  CWideString GetPlayersMoney();
  CWideString GetText(unsigned long);
  void GetHeroStats(CTCHeroStats**);
+#ifdef FABLE_RETAIL_CTCBETTING_CTOR
+ // NF56 opt-in (row 0x007E57C0): Ego_r.pdb 0x007E0C10 / FableWin.pdb 0x02799760 ??0CTCBetting@@QAE@AAVCThing@@@Z. Declaration only.
+ CTCBetting(class CThing& thing);                                     // 0x007E57C0
+#endif
 private:
  bool Active;
  std::vector<CEnginePrimitiveHandle> BetHandles,MoneyHandles;

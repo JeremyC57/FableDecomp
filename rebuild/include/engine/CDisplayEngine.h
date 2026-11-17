@@ -41,6 +41,11 @@ class CWorld;
 #pragma pack(push, 1)
 class CDisplayEngine {
 public:
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_RECEIVEFEEDBACKGAMEEVENT
+    // NF56 opt-in (rows 0x00434A30 and its caller 0x0041649C CMainGameComponent::AddGameEvent): Ego_r.pdb 0x00446820 / FableWin.pdb 0x01ADE350
+    // ?ReceiveFeedbackGameEvent@CDisplayEngine@@QAEXPBVCGameEvent@@@Z (public), out of line in retail at 0x00434A30. Declaration only.
+    void ReceiveFeedbackGameEvent(const class CGameEvent* event);       // 0x00434A30
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_ISLETTERBOXMODE
     // Retail opt-in (wf5, row 0x0064C869 NPlayerGui::CDrawSpiritTargetingCursor::Draw): FableWin.pdb ?IsLetterBoxMode@CDisplayEngine@@QBE_NXZ,
     // inline in retail (the row tests the first byte of LetterBox +0x70 in place: `cmp byte ptr [eax+70h],0`, 0x0064C94F). No layout change.

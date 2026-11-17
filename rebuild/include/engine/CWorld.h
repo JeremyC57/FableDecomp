@@ -178,6 +178,13 @@ public:
     const CGameDefinitionManager& PeekDefinitionManager()const{return *DefinitionManager;}
 #endif
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+#ifdef FABLE_RETAIL_CWORLD_GETFRAMESPERSECOND
+    // NF56 opt-in (row 0x00970F30 CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf): the static frames-per-second read through a world
+    // reference (retail calls GetWorld() 0x008FCFC0, discards it, and reads ?ConstantFPS@CMainGameComponent@@1JA 0x01375550 in place,
+    // 0x00970F69..0x00970F6E). Inline: no PDB has a symbol for it (descriptive name, the spelling of the landed local CWorld models of
+    // rows 0x0093A540 / 0x00913F30 / 0x006CEEA0); the inline body is at the end of this header. No layout change.
+    static long GetFramesPerSecond();
+#endif
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
 #ifdef FABLE_RETAIL_CWORLD_SAVEGAMEMARKERPOS
     // Nested opt-in (row 0x006B08F0 CTCPhysicsBase::OnSerialise): FableWin.pdb ?GetSaveGameMarkerPos@CWorld@@QBEABVC3DVector@@XZ
@@ -499,6 +506,11 @@ public:
     // Chunk 734 (row 0x004A0D90): ?LoadQuestsFromFile@CWorld@@QAEXAAVCAFile@@_N@Z and ?ClearRegisteredQuests@CWorld@@QAEXXZ (QAE in both PDBs).
     void LoadQuestsFromFile(CAFile& file, bool clearRegisteredQuests);   // 0x004A0D90
     void ClearRegisteredQuests();                                // 0x004A08D0
+#ifdef FABLE_RETAIL_CWORLD_RECEIVELOCALEVENT
+    // NF56 opt-in (rows 0x0049E1D0 and its caller 0x0041649C CMainGameComponent::AddGameEvent): Ego_r.pdb 0x004A7380 / FableWin.pdb 0x01B41D10
+    // ?ReceiveLocalEvent@CWorld@@QAEXPBVCGameEvent@@@Z (public), out of line in retail at 0x0049E1D0. Declaration only, no layout change.
+    void ReceiveLocalEvent(const CGameEvent* event);             // 0x0049E1D0
+#endif
 protected:
     const CGameEventDispatch* GetEventDispatchTableEntry(long type) const;   // 0x0049D8E0 ?GetEventDispatchTableEntry@CWorld@@IBEPBVCGameEventDispatch@@J@Z
 #ifdef FABLE_RETAIL_CWORLD_PROCESSEVENT
@@ -877,6 +889,13 @@ public:
     void RenderUpdate(const class CInterpolationInfo* info); // 0x0049E080
 #endif
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+#ifdef FABLE_RETAIL_CWORLD_GETFRAMESPERSECOND
+    // NF56 opt-in (row 0x00970F30 CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf): the static frames-per-second read through a world
+    // reference (retail calls GetWorld() 0x008FCFC0, discards it, and reads ?ConstantFPS@CMainGameComponent@@1JA 0x01375550 in place,
+    // 0x00970F69..0x00970F6E). Inline: no PDB has a symbol for it (descriptive name, the spelling of the landed local CWorld models of
+    // rows 0x0093A540 / 0x00913F30 / 0x006CEEA0); the inline body is at the end of this header. No layout change.
+    static long GetFramesPerSecond();
+#endif
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
 };
 #pragma pack(pop)
@@ -1023,5 +1042,10 @@ FABLE_STATIC_ASSERT_AT(805, offsetof(CWorld, VillagerReactionDebug) == 0x17c);
 FABLE_STATIC_ASSERT_AT(806, offsetof(CWorld, StartTime) == 0x180);
 FABLE_STATIC_ASSERT_AT(807, offsetof(CWorld, TimePlayed) == 0x188);
 FABLE_STATIC_ASSERT_AT(808, offsetof(CWorld, HasInitialisedStartTime) == 0x190);
+
+#ifdef FABLE_RETAIL_CWORLD_GETFRAMESPERSECOND
+#include "engine/CMainGameComponent.h"
+inline long CWorld::GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
+#endif
 
 #endif // FABLE_ENGINE_CWORLD_H

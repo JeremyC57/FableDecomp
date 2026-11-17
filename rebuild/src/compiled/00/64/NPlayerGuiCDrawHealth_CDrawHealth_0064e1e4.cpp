@@ -10,16 +10,19 @@
 // Shape: as the landed CDrawStamina 0x0064E24F: Effects is zeroed through its address in edi (inline member constructor, the
 // pointer reused as `this` of its Resize) with `and dword ptr [..],0` (size TU), the -1.0f is an immediate store, the float zeros
 // and ones come from fldz/fld1, all members in the initialiser list; Effects is resized before the primitive handles.
+// NF56 (round 7, queue q10427): the handle vector is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> (stlport/fable_containers.h,
+//   FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; engine/CEnginePrimitiveHandle.h), so the call binds 0x00443F90 as
+//   ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (the self row's STLport spelling, as
+//   0x00602E30 / 0x0064F659). Was the local stand-in CRetailHandleVector. Other local models are pre-existing.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CEnginePrimitiveHandle.h"
+
 class CPlayerGui;
 
 namespace NPlayerGui {
-
-struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEnginePrimitiveHandle>: three words
-    void* m_pFirst;
-    void* m_pLast;
-    void* m_pEnd;
-    void Resize(long count);                       // 0x00443F90
-};
 
 struct CRetailEmitterVector {                      // VC6 Dinkumware vector<CIntelligentPointer<CParticleEmitter>>
     void* m_pFirst;
@@ -37,7 +40,7 @@ struct CFadeInFadeOutBase {
 class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
-    CRetailHandleVector PrimitiveHandles;          // +0x1c
+    std::vector<CEnginePrimitiveHandle> PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
@@ -60,7 +63,7 @@ CDrawHealth::CDrawHealth(CPlayerGui* gui, void* drawList)
       HealthReductionAlpha(0.0f), HealthFlashTimer(0.0f), LowHealthPulseScale(1.0f), LowHealthPulseDirection(1.0f), PreviousEffect(0)
 {
     Effects.Resize(2);
-    PrimitiveHandles.Resize(12);
+    PrimitiveHandles.resize(12);
 }
 
 }

@@ -1,139 +1,55 @@
 // CAIStateGroup_CreatureAdvanceInCover::IsRunnableLeaf() -- the target is not in melee, holds a projectile weapon, and the cover base's leaf test passes
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00978e60, length 172 bytes (+ int3 padding).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PTargetThing +0x14), CThingCreatureBase::IsInMelee @ 0x00661E80 (Ego_r.pdb), CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf @ 0x00970F30 (qualified base call),
-// CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (twice: carrying 0x46 on the target, weapon 0x48 on the
-// primary-slot thing), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, CTCWeapon::IsProjectileWeapon @ 0x005DAA40.
-// Shape: one && chain with the shared `xor al,al` false exit; both lookups are the out-parameter GetInterface form
-// written in the body, so they share one key slot (inside an inline helper, or as HasTC + FindEntry, they get two). Layout: PTargetThing +0x14, PCoverThing +0x1f (Ego_r.pdb CAIStateGroup_CreatureUseCoverBase, byte-packed).
-#include "fable_compiler.h"
-class CThing;
-
-class CBaseObject;
+// Leaf: ?IsRunnableLeaf@CAIStateGroup_CreatureAdvanceInCover@@MAE_NXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00978E60, length 172 bytes (+ int3 padding).
+// Identity: Ego_r.pdb 0x0099DB40 / FableWin.pdb 0x02C15700 ?IsRunnableLeaf@CAIStateGroup_CreatureAdvanceInCover@@MAE_NXZ (protected virtual;
+//   the landed leaf was the QAE spelling). Name fix (NF56, round 7, queue q10460): the qualified base call 0x00970F30 binds
+//   ?IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase@@MAE_NXZ (Ego_r.pdb 0x00995CE0 / FableWin.pdb 0x02B85370; was the QAE spelling of a
+//   local model of the shared-header class). The row now sits on the shared headers: the retail class of
+//   engine/CAIStateGroup_CreatureAdvanceInCover.h (overlay opt-in _ISRUNNABLELEAF) on engine/CAIStateGroup_CreatureUseCoverBase.h, and
+//   engine/CThing.h's PeekTC<T> (FABLE_RETAIL_CTHING_GETTC_EXPANDED: the UsingComponents bit test, the const CVectorMap::LowerBound 0x004365B0)
+//   in place of the local CThing / CVectorMap / CAIBrain / CTCCarrying / CTCWeapon / CThingCreatureBase models.
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PTargetThing +0x14), CThingCreatureBase::IsInMelee @ 0x00661E80,
+//   CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, CTCWeapon::IsProjectileWeapon @ 0x005DAA40, the base IsRunnableLeaf @ 0x00970F30.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCWEAPON
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_COVERLIST
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREADVANCEINCOVER_ISRUNNABLELEAF
+#include "fable_compiler.h"
+#include "rebuild_abi.h"
+#include <stddef.h>
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
-
-
-class CTCBase;
-
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                  // +0x00
-    SEntry* last;                                   // +0x04
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;           // 0x004365B0
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing
-{ public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad_0x4c[0x91 - 0x4c];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-
-    FABLE_FORCEINLINE bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        CInterfaceMap::SEntry* end = map->last;
-        const CInterfaceMap::SEntry* sel;
-        if (it == end)
-            sel = end;
-        else if (it->first <= type)
-            sel = it;
-        else
-            sel = end;
-        return sel;
-    }
-    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-        {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
-class CAIBrain
-{ public:
-    unsigned char _pad0[0x18];
-    CThing* Creature;                               // +0x18
-};
-
-class CTCCarrying                                  // interface type 0x46 (word 2 bit 6)
-{ public:
-    CThing* GetThingInPrimarySlot() const;                // 0x006A1440
-};
-
-class CTCWeapon                                    // interface type 0x48 (word 2 bit 8)
-{ public:
-    bool IsProjectileWeapon() const;                      // 0x005DAA40
-};
-
-class CThingCreatureBase : public CThing
-{ public:
-    bool IsInMelee() const;                         // 0x00661E80 (flags byte +0x15c: bit 2, else bit 3; manifest "CText::GetAlignment" is propagated)
-};
-
-FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
-{
-    if (((CThing*)p.GetPItem()) != 0)
-    {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
-            return true;
-    }
-    return false;
-}
-
-
-#pragma pack(push, 1)
-struct CAIStateGroup_CreatureUseCoverBase
-{
-    virtual void v00();
-    CAIBrain* PBrain;                               // +0x04
-    unsigned char _pad08[0x0c];                     // +0x08
-    CIntelligentPointer<const CThing> PTargetThing; // +0x14
-    unsigned char _pad1c[3];                        // +0x1c
-    CIntelligentPointer<CThing> PCoverThing;        // +0x1f
-    bool IsRunnableLeaf();                          // 0x00970F30
-};
-#pragma pack(pop)
-
-struct CAIStateGroup_CreatureAdvanceInCover : CAIStateGroup_CreatureUseCoverBase
-{
-    bool IsRunnableLeaf();
-};
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCCarrying.h"
+#include "engine/CTCWeapon.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIStateGroup_CreatureAdvanceInCover.h"
 
 bool CAIStateGroup_CreatureAdvanceInCover::IsRunnableLeaf()
 {
-    if (!((CThingCreatureBase*)PTargetThing.GetPItem())->IsInMelee())
-    {
-        CTCCarrying* carrying;
-        if (((CThing*)PTargetThing.GetPItem())->GetInterface(0x46, &carrying))
-        {
+    if (!PTargetThing->IsInMelee()) {
+        const CTCCarrying* carrying;
+        if (PTargetThing->PeekTC(&carrying)) {
             CThing* weapon = carrying->GetThingInPrimarySlot();
             if (weapon) {
-                CTCWeapon* tcWeapon;
-                if (weapon->GetInterface(0x48, &tcWeapon) && tcWeapon->IsProjectileWeapon()
+                const CTCWeapon* tcWeapon;
+                if (weapon->PeekTC(&tcWeapon) && tcWeapon->IsProjectileWeapon()
                     && CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf())
                     return true;
             }

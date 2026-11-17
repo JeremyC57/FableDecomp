@@ -38,6 +38,13 @@ public:
  bool WaitForSlot(unsigned long slot);
 #endif
  void ReturnBuffer(bool* more);
+ #ifdef FABLE_RETAIL_PKCBUFFEREDREADER_GETSIZE_SEEK
+ // NF56 opt-in (row 0x00C3AA50 CBufferedRangeReader::SetRange): the size getter (returns +0x20) and the absolute seek, out of line at
+ // 0x00C4AA30 / 0x00C4AA40. No libpk PDB or SDK symbol exists: descriptive names, the spellings the landed binders already use
+ // (?GetSize@PKCBufferedReader@@QAEKXZ from 0x00C89C10, ?Seek@PKCBufferedReader@@QAE_NK@Z from 0x00C4AFD0). Declarations only.
+ unsigned long GetSize();
+ bool Seek(unsigned long offset);
+ #endif
  #ifdef FABLE_RETAIL_PKCBUFFEREDREADER_RETURNALLBUFFERS
  // Opt-in (NF42 round 5, row 0x00C4B010): ReturnBuffer(0) until m_outstanding (+0x68) is zero. No libpk PDB or SDK symbol exists:
  // descriptive name, the landed row's method name (was on the address-named class CBufferOwner_00c4b010). Declaration only.

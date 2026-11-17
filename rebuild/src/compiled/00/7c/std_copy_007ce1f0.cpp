@@ -1,5 +1,5 @@
 // std::__copy(CThing** first, CThing** last, back_insert_iterator<vector<CIntelligentPointer<CThing> > > result, const random_access_iterator_tag&, int*) -- STLport random-access copy of a thing-pointer array into a vector of intelligent pointers through a back inserter: each pointer is wrapped in a temporary CIntelligentPointer<CThing> and pushed back; returns the inserter
-// Leaf: ??$__copy@
+// Leaf: ??$__copy@PAPAVCThing@@V?$back_insert_iterator@V?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@std@@H@std@@YI?AV?$back_insert_iterator@V?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@0@PAPAVCThing@@0V10@ABUrandom_access_iterator_tag@0@PAH@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CE1F0, 201 bytes (+7 int3), `ret 10h`, `and esp,-8` frame: /Gr __fastcall
 //   returning the 4-byte back_insert_iterator through the hidden pointer in ecx (it has a user constructor), `first`
 //   in edx, then last, the inserter by value, the tag reference and the distance pointer on the stack.
@@ -22,6 +22,8 @@
 //   ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z
 //   (the landed row's own leaf; was the allocator-less public ...QAEXPAV...@Z), and the row's own symbol gains the allocator argument
 //   and the class key of back_insert_iterator (NAME_FIXES: its landed callers bind stand-ins).
+// Leaf line (NF56, round 7, queue q10458): the full mangled leaf of the instantiation (was truncated to `??$__copy@`), the PDB-shaped
+//   STLport spelling the entry carries; the source is otherwise unchanged.
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY

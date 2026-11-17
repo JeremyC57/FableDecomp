@@ -48,9 +48,6 @@ inline bool IS_THING_ALIVE(const CThing* thing)
     }
     return false;
 }
-class CTCStealth { public:
-    bool IsAvailableForAttack();                        // 0x00747B00
-};
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -79,6 +76,11 @@ struct CThingList {                                     // STLport list<CIntelli
 // ParentThing +0x04, size 0x0C), so the base call binds ?FrameUpdate@CTCBase@@UAEXXZ (0x006868A0, slot 9).
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"
+// NF56 (round 7, queue q10431): CTCStealth comes from engine/CTCStealth.h (the full Ego_r class), so the call binds the const
+//   ?IsAvailableForAttack@CTCStealth@@QBE_NXZ (Ego_r.pdb 0x0075A0C0 / FableWin.pdb 0x02592B00, retail 0x00747B00); was a local CTCStealth
+//   model with a non-const member.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CTCStealth.h"
 class CTCTargetingAI : public CTCBase { public:
     virtual void FrameUpdate();                         // slot 9
     virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33();

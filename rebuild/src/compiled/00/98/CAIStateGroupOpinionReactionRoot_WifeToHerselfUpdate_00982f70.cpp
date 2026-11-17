@@ -1,5 +1,5 @@
 // CAIStateGroup_OpinionReactionRoot::WifeToHerselfUpdate(EOpinionAttitudeType attitude) -- say "TEXT_AI_WIFE_OPINION_ACT_TOHERSELF_" + the attitude's name to the thing being reacted to; true once the speech action has finished (EAIActionReturn 2)
-// Leaf: WifeToHerselfUpdate
+// Leaf: ?WifeToHerselfUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00982F70, length 86 bytes.
 // Identity: the catalog label "CPlayer::SayWifeOpinionToHerself" is a guess; Ego_r.pdb has
 // `?WifeToHerselfUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z` after
@@ -20,9 +20,19 @@
 // call survives with its result unused. CCharString / CWorld / COpinionReactionManager / EOpinionAttitudeType come from their shared
 // headers (fable_string.h, engine/CWorld.h, engine/COpinionReactionManager.h FABLE_RETAIL_GREETING_PASS23). Were local CCharString /
 // CWorld / EOpinionAttitudeType models and the made-up extern g_OpinionAttitudeNames. The local CAIStateGroupBase model is pre-existing.
+// NF56 (round 7, queue q10450): the class comes from engine/CAIStateGroup_OpinionReactionRoot.h (overlay opt-in
+//   FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_WIFEUPDATE: the retail class on its CAIStateGroupBase base), so the row defines the
+//   PDB-private ?WifeToHerselfUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z (Ego_r.pdb 0x009A34E0 / FableWin.pdb
+//   0x02C7EC30) and calls the private speech members (AAE, both PDBs) and the protected base ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ
+//   through engine/CAIStateGroupBase.h; EAIActionReturn is engine/EAIAction.h. Were local CAIStateGroupBase /
+//   CAIStateGroup_OpinionReactionRoot models (public members) and a local EAIActionReturn.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWORLD
 #define FABLE_RETAIL_GREETING_PASS23
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD
+#define FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_WIFEUPDATE
 #include "fable_compiler.h"
 #include "fable_string.h"
 #include "engine/EOpinion.h"
@@ -30,21 +40,12 @@
 #include "engine/CWorld.h"
 class CTCOpinionSource;
 #include "engine/COpinionReactionManager.h"
-enum EAIActionReturn { AI_ACTION_RETURN_RUNNING = 0, AI_ACTION_RETURN_FAILED = 1, AI_ACTION_RETURN_FINISHED = 2 };
-
 namespace NSpeechGainManager { enum EDialogueLayer { DIALOGUE_LAYER_2 = 2 }; }
-
-class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
-    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
-};
-class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
-    EAIActionReturn WaitForTextToLoadThenSpeak(const CCharString& text, NSpeechGainManager::EDialogueLayer layer);   // 0x0095ED80
-    bool WifeToHerselfUpdate(EOpinionAttitudeType attitude);
-};
+#include "engine/CAIStateGroup_OpinionReactionRoot.h"
 
 bool CAIStateGroup_OpinionReactionRoot::WifeToHerselfUpdate(EOpinionAttitudeType attitude)
 {
     CCharString text("TEXT_AI_WIFE_OPINION_ACT_TOHERSELF_", -1);
     text += GetWorld().GetOpinionReactionManager().GetAttitudeString(attitude);
-    return WaitForTextToLoadThenSpeak(text, NSpeechGainManager::DIALOGUE_LAYER_2) == AI_ACTION_RETURN_FINISHED;
+    return WaitForTextToLoadThenSpeak(text, NSpeechGainManager::DIALOGUE_LAYER_2) == AI_ACTION_FINISHED;
 }

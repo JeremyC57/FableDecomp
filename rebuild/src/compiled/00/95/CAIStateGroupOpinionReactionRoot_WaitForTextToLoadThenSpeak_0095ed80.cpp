@@ -1,8 +1,9 @@
 // CAIStateGroup_OpinionReactionRoot::WaitForTextToLoadThenSpeak(const CCharString&, EDialogueLayer) -- retry the speech while its
 // text is still loading, waiting a frame between tries.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095ED80, length 93 bytes (+ int3 padding), `ret 8`.
-// Leaf: ?WaitForTextToLoadThenSpeak@CAIStateGroup_OpinionReactionRoot@@QAE?AW4EAIActionReturn@@ABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@@Z
-//   (the spelling its landed caller 0x00982F70 binds; both PDBs make it private, AAE: NAME_FIXES).
+// Leaf: ?WaitForTextToLoadThenSpeak@CAIStateGroup_OpinionReactionRoot@@AAE?AW4EAIActionReturn@@ABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@@Z
+//   (private, as Ego_r.pdb 0x00983300 and FableWin.pdb 0x02C28520 spell it; coordinator, landing nf56: its caller 0x00982F70
+//   now binds this spelling through engine/CAIStateGroup_OpinionReactionRoot.h WIFEUPDATE).
 // Callees: CTCTalk::PlayAISpeech(const CCharString&, bool, EDialogueLayer, bool, bool) @ 0x006E3B30 on PTCTalk (+0x14) with
 // (text, AllowSpeechOnNonPureAISpeaker (+0x8a, zero-extended), layer, false, true), CAIStateGroupBase::
 // AIAction_DoNothing @ 0x0097E200, CAIStateGroupBase::Terminate @ 0x008FCF40.
@@ -41,6 +42,7 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     bool LastRunWasTryAndLook;                  // +0x88
     bool ReactingToPlayer;                      // +0x89
     bool AllowSpeechOnNonPureAISpeaker;         // +0x8a
+private:
     EAIActionReturn WaitForTextToLoadThenSpeak(const CCharString& text, NSpeechGainManager::EDialogueLayer layer);
 };
 #pragma pack(pop)

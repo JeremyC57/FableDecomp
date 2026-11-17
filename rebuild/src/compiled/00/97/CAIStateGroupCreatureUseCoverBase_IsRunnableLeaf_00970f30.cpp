@@ -1,76 +1,74 @@
 // CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf() -- after a failed cover search wait 8 seconds or 15 units of movement; then gather the cover things: none records the failure here, otherwise filter them into the retained cover handles
-// Leaf: ?IsRunnableLeaf@UseCoverMethods@@QAE_NXZ
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared2D respelled GetSquaredMagnitude2D (the header / FableWin.pdb method, same computation).
-// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
-//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
-// Model: the landed sibling RefreshCoverList 0x009710D0 (same TU). Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (retail
-//   STLport 4.6: 12-byte CoverList): FailedToFindCover +0x34, FailedTime +0x38, FailedToFindCoverAt +0x3c; PBrain +4.
+// Leaf: ?IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase@@MAE_NXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00970F30, 402 bytes.
+// Identity (NF56, round 7, queue q10460): Ego_r.pdb 0x00995CE0 / FableWin.pdb 0x02B85370 ?IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase@@MAE_NXZ
+//   (protected virtual: the override of CAIStateGroup_EnemyCreatureBase slot 15, retail vtable 0x0128D31C slot 15 = 0x00970F30). Was the
+//   stand-in UseCoverMethods::IsRunnableLeaf (a local struct over local CAIStateGroupBase / CWorld / CMainGameComponent / CThingRetail /
+//   CAIBrainRetail / CCoverDispatch models). Now on the retail class of engine/CAIStateGroup_CreatureUseCoverBase.h (opt-in _COVERLIST:
+//   slots 23 GetCoverThingList / 22 ProcessCoverThingList on the PDB vector<CThing*>&), with GetCreature() (PBrain +4, Creature +0x18),
+//   CThing::GetPos 0x004C73D0, CAIStateGroupBase::GetWorld 0x008FCFC0, CWorld::GetFrame 0x0049D870 and the ConstantFPS read
+//   (0x01375550) through CWorld::GetFramesPerSecond (opt-in FABLE_RETAIL_CWORLD_GETFRAMESPERSECOND, descriptive inline: retail calls
+//   GetWorld and discards it). CoverList is the PDB vector<CIntelligentPointer<CThing> > (push_back overflow 0x004AC940).
 // Shape: C3DVector offset (operator-, Z dead) keeps retail frame slots; positive !empty() block puts the failure path last.
-#include "fable_compiler.h"
-#include <stddef.h>
-#include <stdlib.h>
-#include "engine/CAIStateGroup_CreatureUseCoverBase.h"
-#include "engine/C3DVector.h"
-#include "engine/CThing.h"
-struct CThingRetail : public CThing { public:  };   // 0x004C73D0
-struct CAIBrainRetail { unsigned char _pad[0x18]; CThingRetail* Creature; };   // +0x18
-class CWorld { public: static long GetFramesPerSecond(); 
-public:
-    static long __fastcall GetFrame();   // 0x0049D870
-};
-class CMainGameComponent {
-protected:
-    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
-public:
-    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
-};
-inline long CWorld::GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
-// Name fix (agentNF54): the local CIntelligentPointerBaseRetail / CIntelligentPointerRetail / CAllocatorTag / CHandleVector stand-ins
-//   replaced by the shared engine/CIntelligentPointer.h (retail branch, FABLE_RETAIL_CINTELLIGENTPOINTER_COPY) and the STLport 4.6 vector
-//   of stlport/fable_containers.h: CoverList is the PDB vector<CIntelligentPointer<CThing> > (engine header comment), so the overflow call
-//   0x004AC940 binds
-//   ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z
-//   (the landed row's own leaf; was ?InsertOverflow@CHandleVector@@...).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_SQUARED2D_ONE_EXPRESSION_PASS23
+#define FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_GETFRAMESPERSECOND
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_COVERLIST
+#include "fable_compiler.h"
+#include "rebuild_abi.h"
+#include <stddef.h>
+#include <stdlib.h>
 #include "stlport/fable_containers.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
-struct CThingVector {CThingRetail** first;CThingRetail** last;CThingRetail** capacity;
- CThingVector():first(0),last(0),capacity(0){}
- ~CThingVector(){if(first)free(first);}
- bool empty()const{return first==last;}
-};
-struct CCoverDispatch {
- virtual void s00();virtual void s01();virtual void s02();virtual void s03();virtual void s04();virtual void s05();virtual void s06();virtual void s07();virtual void s08();virtual void s09();virtual void s10();virtual void s11();virtual void s12();virtual void s13();virtual void s14();virtual void s15();virtual void s16();virtual void s17();virtual void s18();virtual void s19();virtual void s20();virtual void s21();
- virtual void FilterCoverList(CThingVector&);virtual void GetCoverThingList(CThingVector&);
-};
-class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
-    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
-};
-struct UseCoverMethods : public CAIStateGroupBase, CAIStateGroup_CreatureUseCoverBase {
- bool IsRunnableLeaf();
- FABLE_FORCEINLINE CThingRetail* GetCreature(){return (*(CAIBrainRetail**)_pad_0x04)->Creature;}
- FABLE_FORCEINLINE std::vector<CIntelligentPointer<CThing> >& Covers(){return *(std::vector<CIntelligentPointer<CThing> >*)CoverList;}
- FABLE_FORCEINLINE bool& RetailFailedToFindCover(){return FailedToFindCover;}
- FABLE_FORCEINLINE long& RetailFailedTime(){return FailedTime;}
- FABLE_FORCEINLINE C3DVector& RetailFailedToFindCoverAt(){return *(C3DVector*)&FailedToFindCoverAt_X;}
-};
-bool UseCoverMethods::IsRunnableLeaf(){
- if(RetailFailedToFindCover()){
-  C3DVector offset=RetailFailedToFindCoverAt()-GetCreature()->GetPos();
-  long framesPerSecond=GetWorld().GetFramesPerSecond();
-  long seconds=(CWorld::GetFrame()-RetailFailedTime())/framesPerSecond;
-  if(offset.GetSquaredMagnitude2D()<225.0f&&seconds<8)return false;
-  RetailFailedToFindCover()=false;
- }
- CThingVector things;
- ((CCoverDispatch*)this)->GetCoverThingList(things);
- if(!things.empty()){
-  ((CCoverDispatch*)this)->FilterCoverList(things);
-  for(CThingRetail** it=things.first;it!=things.last;++it)Covers().push_back(CIntelligentPointer<CThing>(*it));
-  return true;
- }
- RetailFailedToFindCoverAt()=GetCreature()->GetPos();
- RetailFailedToFindCover()=true;
- return false;
+#include "engine/CThingAICreature.h"
+#include "engine/CWorld.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_CreatureUseCoverBase.h"
+
+bool CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf()
+{
+    if (FailedToFindCover) {
+        C3DVector offset = FailedToFindCoverAt - GetCreature().GetPos();
+        long framesPerSecond = GetWorld().GetFramesPerSecond();
+        long seconds = (CWorld::GetFrame() - FailedTime) / framesPerSecond;
+        if (offset.GetSquaredMagnitude2D() < 225.0f && seconds < 8)
+            return false;
+        FailedToFindCover = false;
+    }
+    std::vector<CThing*> things;
+    GetCoverThingList(things);
+    if (!things.empty()) {
+        ProcessCoverThingList(things);
+        for (std::vector<CThing*>::iterator it = things.begin(); it != things.end(); ++it)
+            (*(std::vector<CIntelligentPointer<CThing> >*)CoverList).push_back(CIntelligentPointer<CThing>(*it));
+        return true;
+    }
+    FailedToFindCoverAt = GetCreature().GetPos();
+    FailedToFindCover = true;
+    return false;
 }

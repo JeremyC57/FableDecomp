@@ -9,6 +9,13 @@
 // Leaf: DrawOracleSymbols
 #pragma optimize("y",off)
 #pragma optimize("s",on)
+// NF56 (round 7, queue q10427): OraclePrimitiveHandles is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> (stlport/fable_containers.h,
+//   FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL), so the call binds 0x00443F90 as
+//   ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (the self row's STLport spelling, as
+//   0x00602E30 / 0x0064F659). Was the local stand-in HandleArray::Resize(unsigned long). The other local models (and the row's own
+//   DrawQuestNative owner) are pre-existing.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
 #include "engine/CPlayerGui.h"
 #include "engine/_quarantine/CPlayerGuiDef.h"
 #include "engine/CIEngine.h"
@@ -23,14 +30,13 @@ struct CEnginePrimitive2DSprite:CEnginePrimitive {C2DBoxF ClipBox;EEngine2DLayer
  CEnginePrimitive2DSprite(unsigned __int64,const C2DVector&,EEngine2DLayer,unsigned long,unsigned long,EEnginePrimitiveBlendMode,EEngineInterpolationSet,float,float,unsigned char,unsigned char,unsigned char,unsigned char,unsigned long,const C2DVector&,const C2DVector&);
 };
 class CEnginePrimitiveHandle { public:int Unrecovered00;CEnginePersistentPrimitiveBase*Data;}; // actual PDB padding0 and CIVCountedPointer Data4
-struct HandleArray {CEnginePrimitiveHandle*Start,*Finish,*Limit;void Resize(unsigned long);};
 struct EngineMethods:CIEngine {typedef void(EngineMethods::*SetMethod)(CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long);void SetPersistentPrimitive(CEnginePrimitiveHandle&h,const CEnginePrimitive&p,unsigned long f){(this->*static_cast<SetMethod*>(__vftable)[23])(h,p,f);}};
 class CEnginePrimitivePrepareInfo { public:unsigned char Unrecovered00[0x34];EngineMethods*Engine;};
 struct PlayerGuiAlphaView {unsigned char Unrecovered00[0x2a0];float Alpha;};extern PlayerGuiAlphaView*GlobalPlayerGui;
 struct GuiOracleDefView {unsigned char Unrecovered00[0x594];C2DVector OracleSymbolPos,OracleSymbolOffset;};GuiOracleDefView* __fastcall PeekGuiDef();C2DVector __fastcall GFAnchorToTopRight(const C2DVector&);
 struct OracleNode {OracleNode*Next,*Previous;long Graphic;};
 struct OracleList {OracleNode*Head;bool empty()const{return Head->Next==Head;}unsigned long size()const{unsigned long n=0;for(OracleNode*p=Head->Next;p!=Head;p=p->Next)++n;return n;}};
-struct DrawQuestNative {void*VTable;void*PlayerGui;void*PlayerManager;void*World;void*Component;void*Bank;bool Drawing;unsigned char Unrecovered19[0x40-0x19];OracleList OracleSymbols;HandleArray OraclePrimitiveHandles;
+struct DrawQuestNative {void*VTable;void*PlayerGui;void*PlayerManager;void*World;void*Component;void*Bank;bool Drawing;unsigned char Unrecovered19[0x40-0x19];OracleList OracleSymbols;std::vector<CEnginePrimitiveHandle> OraclePrimitiveHandles;
  void DrawOracleSymbols(const CEnginePrimitivePrepareInfo&);
 };
 #ifdef _MSC_VER
@@ -42,6 +48,6 @@ FABLE_STATIC_ASSERT(offsetof(DrawQuestNative,OracleSymbols)==0x40);
 FABLE_STATIC_ASSERT(offsetof(DrawQuestNative,OraclePrimitiveHandles)==0x44);
 #endif
 void DrawQuestNative::DrawOracleSymbols(const CEnginePrimitivePrepareInfo&info){
- if(OracleSymbols.empty())return;Drawing=true;GuiOracleDefView*def=PeekGuiDef();OraclePrimitiveHandles.Resize(OracleSymbols.size());C2DVector position=GFAnchorToTopRight(def->OracleSymbolPos);OracleNode*p=OracleSymbols.Head->Next;if(p==OracleSymbols.Head)return;unsigned long i=0;const C2DVector uvEnd(0,0),uvStart(0,0);
- do{CEnginePrimitive2DSprite sprite(0,C2DVector(position),NativeOracleLayer,p->Graphic,0,NativeSpriteBlend,NativeNoInterpolation,0,0,(unsigned char)(GlobalPlayerGui->Alpha*255.0f),255,255,255,2,uvStart,uvEnd);info.Engine->SetPersistentPrimitive(OraclePrimitiveHandles.Start[i],sprite,0xc0);p=p->Next;position+=def->OracleSymbolOffset;++i;}while(p!=OracleSymbols.Head);
+ if(OracleSymbols.empty())return;Drawing=true;GuiOracleDefView*def=PeekGuiDef();OraclePrimitiveHandles.resize(OracleSymbols.size());C2DVector position=GFAnchorToTopRight(def->OracleSymbolPos);OracleNode*p=OracleSymbols.Head->Next;if(p==OracleSymbols.Head)return;unsigned long i=0;const C2DVector uvEnd(0,0),uvStart(0,0);
+ do{CEnginePrimitive2DSprite sprite(0,C2DVector(position),NativeOracleLayer,p->Graphic,0,NativeSpriteBlend,NativeNoInterpolation,0,0,(unsigned char)(GlobalPlayerGui->Alpha*255.0f),255,255,255,2,uvStart,uvEnd);info.Engine->SetPersistentPrimitive(OraclePrimitiveHandles[i],sprite,0xc0);p=p->Next;position+=def->OracleSymbolOffset;++i;}while(p!=OracleSymbols.Head);
 }

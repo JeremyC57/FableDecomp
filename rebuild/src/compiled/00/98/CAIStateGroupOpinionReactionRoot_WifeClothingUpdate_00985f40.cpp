@@ -1,5 +1,5 @@
 // CAIStateGroup_OpinionReactionRoot::WifeClothingUpdate(EOpinionAttitudeType attitude) -- when the wife has noticed an appearance change, say the
-// Leaf: WifeClothingUpdate
+// Leaf: ?WifeClothingUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // matching "<category prefix><category suffix>" line to the hero; on success clear the noticed flag.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00985F40, length 201 bytes (`ret 4`). PDB: ?WifeClothingUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
@@ -13,6 +13,13 @@
 // Shape: the category out value shares the lookup key's frame word; a NAMED CCharString line destroyed on both returns.
 // Engine header names for the state group; the header flattens the base, so the class is modelled locally.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// NF56 (round 7, queue q10451): the class comes from engine/CAIStateGroup_OpinionReactionRoot.h (overlay opt-in
+//   FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_WIFEUPDATE: the retail class on its CAIStateGroupBase base), so the row defines the
+//   PDB-private ?WifeClothingUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z (Ego_r.pdb 0x009A73A0 / FableWin.pdb
+//   0x02C7E6B0) and calls the private ?SayToThingReactingTo@..@@AAE?AW4EAIActionReturn@@ABVCCharString@@@Z (both PDBs) and the protected base
+//   ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ through engine/CAIStateGroupBase.h (PBrain +0x04 from the same header). Were local
+//   CAIStateGroupBase / CAIStateGroup_OpinionReactionRoot models (public members, a long-returning SayToThingReactingTo). The local
+//   CAIBrain / intelligent-pointer / CTCWife models are pre-existing.
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -29,6 +36,10 @@ class CThing;
 // g_WifeAppearanceLineSuffix. The prefix table 0x013BAB40 and the local CAIStateGroupBase / CAIBrain / intelligent-pointer / CTCWife
 // models are pre-existing (outside this entry).
 #define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD
+#define FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_WIFEUPDATE
 #define FABLE_RETAIL_GREETING_PASS23
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -46,26 +57,6 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual bool IsStillValid();                // slot 5  (+0x14)
-    virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void Cleanup();                     // slot 9  (+0x24)
-    virtual void OnReplace();                   // slot 10 (+0x28)
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void InitStateGroup();              // slot 13 (+0x34)
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-protected:
-    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
-};
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
     virtual void v00();
@@ -90,10 +81,7 @@ class CTCWife { public:
 };
 
 
-class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
-    long SayToThingReactingTo(const CCharString& line);  // 0x0095EE70
-    bool WifeClothingUpdate(EOpinionAttitudeType attitude);
-};
+#include "engine/CAIStateGroup_OpinionReactionRoot.h"
 
 bool CAIStateGroup_OpinionReactionRoot::WifeClothingUpdate(EOpinionAttitudeType attitude)
 {
@@ -103,7 +91,7 @@ bool CAIStateGroup_OpinionReactionRoot::WifeClothingUpdate(EOpinionAttitudeType 
         if (wife->GetAppearanceChangedNoticed(&category)) {
             CCharString line(g_WifeAppearanceLinePrefix[category]);
             line += GetWorld().GetOpinionReactionManager().GetAttitudeString(attitude);
-            if (SayToThingReactingTo(line) == 2) {
+            if (SayToThingReactingTo(line) == AI_ACTION_FINISHED) {
                 wife->ClearAppearanceChangedNoticed(&category);
                 return true;
             }

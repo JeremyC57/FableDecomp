@@ -36,6 +36,9 @@
 #define FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
 #define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
 #define FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD
+// NF56 (round 7, queue q10435): the nested-filter opt-in above opens a `public:` label; RESTORE_PROTECTED (NF49) puts the members after it
+//   back to protected, so the AIAction_PerformActionAndWait call (0x0097DB70) binds the PDB-protected IAE spelling (Ego_r.pdb + FableWin.pdb).
+#define FABLE_RETAIL_CAISTATEGROUPBASE_CAIFILTERBASE_RESTORE_PROTECTED
 #define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
 #define FABLE_RETAIL_CAIBRAIN_GETCREATURE
 #define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE

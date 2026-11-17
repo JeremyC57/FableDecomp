@@ -1,5 +1,5 @@
 // CWorld::ReceiveLocalEvent(const CGameEvent*) -- run the world's local-action handler registered for the event's type, if any
-// Leaf: ?ReceiveLocalEvent@CWorld_Methods@@QAEXPBVCGameEvent@@@Z
+// Leaf: ?ReceiveLocalEvent@CWorld@@QAEXPBVCGameEvent@@@Z
 // Retail: Fable.exe @ 0x0049E1D0, 36 bytes; Ego_r.pdb ?ReceiveLocalEvent@CWorld@@QAEXPBVCGameEvent@@@Z (public). Identity
 //   (sweep1, 2026-10-25; FINDINGS chunk 467): the landed row was CWorld::ProcessEvent, but the PDB's protected ProcessEvent
 //   (?ProcessEvent@CWorld@@IAEXPBVCGameEvent@@@Z) is chunk 467's 0x0049D980, which calls ActionFunction (+0x00); this body
@@ -22,8 +22,11 @@
 // FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKEVENTDISPATCHTABLEENTRY); CGameEventDispatch is engine/CGameEventDispatch.h (included before
 // CWorld.h). Was a local CGameEventDispatch model and the made-up extern GameEventDispatchTable. The CWorld_Methods self stand-in is
 // pre-existing (NAME_FIXES.tsv).
+// NF56 (round 7, queue q10443): Ego_r.pdb 0x004A7380 / FableWin.pdb 0x01B41D10 ?ReceiveLocalEvent@CWorld@@QAEXPBVCGameEvent@@@Z; the body is
+//   defined on CWorld itself (engine/CWorld.h overlay opt-in FABLE_RETAIL_CWORLD_RECEIVELOCALEVENT), no longer on the stand-in CWorld_Methods.
 #include "engine/CGameEventDispatch.h"
 #define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_RECEIVELOCALEVENT
 #include "engine/CWorld.h"
 #include "engine/CGameEvent.h"
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTDISPATCH
@@ -35,10 +38,7 @@ const CGameEventDispatch* CWorld::GetEventDispatchTableEntry(long type) const
     return CMainGameComponent::Get()->PeekEventDispatchTableEntry(type);
 }
 
-struct CWorld_Methods : CWorld {
-    void ReceiveLocalEvent(const CGameEvent* event);
-};
-void CWorld_Methods::ReceiveLocalEvent(const CGameEvent* event)
+void CWorld::ReceiveLocalEvent(const CGameEvent* event)
 {
     const CGameEventDispatch* dispatch = GetEventDispatchTableEntry(event->Type);
     if (dispatch->LocalActionFunction)

@@ -261,6 +261,13 @@ public:
     // ?AddGameEvent@CMainGameComponent@@QAEXABVCGameEvent@@@Z (out of line, 0x0041649C).
     void AddGameEvent(const CGameEvent& event);                     // 0x0041649C
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTISSYSTEMEVENT
+    // NF56 opt-in (row 0x0041649C AddGameEvent): Ego_r.pdb 0x004151A6 / FableWin.pdb 0x018A8762
+    // ?EventIsSystemEvent@CMainGameComponent@@IAE_NPBVCGameEvent@@@Z (protected), out of line in retail at 0x00415FF2. Declaration only.
+protected:
+    bool EventIsSystemEvent(const CGameEvent* event);              // 0x00415FF2
+public:
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
     // Nested opt-in (chunk 755, row 0x00775B40 CTCShop::FrameUpdate): FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
     // (0x018846C0; inline in Ego_r and retail: the caller reads the scoped_ptr word +0x1C in place, 0x00775B4B). PPlayerManager

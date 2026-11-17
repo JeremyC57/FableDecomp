@@ -1,5 +1,5 @@
 // CDisplayEngine::ReceiveFeedbackGameEvent(const CGameEvent*) -- run the display engine's feedback handler registered for the event's type, if any
-// Leaf: ?ReceiveFeedbackGameEvent@CDisplayEngine_Methods@@QAEXPBVCGameEvent@@@Z
+// Leaf: ?ReceiveFeedbackGameEvent@CDisplayEngine@@QAEXPBVCGameEvent@@@Z
 // Retail: Fable.exe @ 0x00434A30, 36 bytes. Catalog label CWorld::ProcessEvent is wrong (ICF/neighbour propagation): the
 // caller CMainGameComponent (0x004164D6) passes ecx = PDisplayEngine (+0x28), and the handler read is FeedbackFunction
 // (+0x20) of the CGameEventDispatch table at 0x013B9288. It sits 0x30 bytes before landed
@@ -18,16 +18,17 @@
 // opt-in FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKEVENTDISPATCHTABLEENTRY; no PMainGameComponent load survives, as in retail).
 // CGameEventDispatch is engine/CGameEventDispatch.h (included before CDisplayEngine.h). Was a local CGameEventDispatch model and the
 // made-up extern GameEventDispatchTable. The CDisplayEngine_Methods self stand-in is pre-existing (NAME_FIXES.tsv).
+// NF56 (round 7, queue q10444): Ego_r.pdb 0x00446820 / FableWin.pdb 0x01ADE350 ?ReceiveFeedbackGameEvent@CDisplayEngine@@QAEXPBVCGameEvent@@@Z;
+//   defined on CDisplayEngine itself (engine/CDisplayEngine.h overlay opt-in FABLE_RETAIL_CDISPLAYENGINE_RECEIVEFEEDBACKGAMEEVENT), no longer on
+//   the stand-in CDisplayEngine_Methods.
 #include "engine/CGameEventDispatch.h"
+#define FABLE_RETAIL_CDISPLAYENGINE_RECEIVEFEEDBACKGAMEEVENT
 #include "engine/CDisplayEngine.h"
 #include "engine/CGameEvent.h"
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTDISPATCH
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKEVENTDISPATCHTABLEENTRY
 #include "engine/CMainGameComponent.h"
-struct CDisplayEngine_Methods : CDisplayEngine {
-    void ReceiveFeedbackGameEvent(const CGameEvent* event);
-};
-void CDisplayEngine_Methods::ReceiveFeedbackGameEvent(const CGameEvent* event)
+void CDisplayEngine::ReceiveFeedbackGameEvent(const CGameEvent* event)
 {
     const CGameEventDispatch* dispatch = CMainGameComponent::Get()->PeekEventDispatchTableEntry(event->Type);
     if (dispatch->FeedbackFunction)

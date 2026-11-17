@@ -25,6 +25,9 @@ class CEngineDef;
 class CEnvironmentDef;
 class CEngineVideoOptionsDef;
 class CEngineLayerRenderer;
+#ifdef FABLE_RETAIL_CENGINE_PEEKVIDEOOPTIONSDEF_TYPED
+#include "engine/EEngineVideoOptionQuality.h"
+#endif
 class CEngine : public CIEngine, public CDeviceResetCallback {
 public:
     virtual bool Initialise(const CEngineInit& init);                    // slot 2 0x00B26360 ?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
@@ -114,6 +117,13 @@ public:
     long             AnisotropicFilteringLevel;                          // +0x158
     unsigned char    RenderLayers[0xc];                                  // +0x15c CArray<CEngineLayerRenderer*>
     unsigned char    EngineComponents[0xc];                              // +0x168 CArray<CEngineComponent*>
+#ifdef FABLE_RETAIL_CENGINE_PEEKVIDEOOPTIONSDEF_TYPED
+    // NF56 opt-in (row 0x00B244F0, the out-of-line body): Ego_r.pdb 0x009AEB40 / FableWin.pdb 0x02CA1700
+    // ?PeekVideoOptionsDef@CEngine@@QAEABVCEngineVideoOptionsDef@@W4EEngineVideoOptionQuality@@@Z on the typed retail members (returns
+    // *PEngineVideoOptionsDefs[quality], +0x120). The flattened branch below declares the same member under FABLE_RETAIL_CENGINE_PEEKVIDEOOPTIONSDEF
+    // for its callers. Declaration only: no layout change.
+    const CEngineVideoOptionsDef& PeekVideoOptionsDef(EEngineVideoOptionQuality quality);   // 0x00B244F0
+#endif
 #ifdef FABLE_RETAIL_CENGINE_GETFRAMEMEMORYPOOL
     // Retail opt-in (agentC40, row 0x00BD2D90): FableWin.pdb ?GetFrameMemoryPool@CEngine@@QAEPAVCSimpleMemoryPool@@XZ (inline in retail:
     // `mov ecx,[GPEngine] ; add ecx,130h`, 0x00BD2DB8). No layout change (the member stays the opaque block).

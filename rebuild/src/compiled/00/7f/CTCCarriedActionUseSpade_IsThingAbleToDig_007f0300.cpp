@@ -46,9 +46,12 @@ class CEngineThemeDef : public CDefClassBase { public:            // Ego_r.pdb C
 };
 
 
-class CWorldMap { public:
-    long GetStrongestEngineThemeAt(const C3DVector& pos, long* weight) const;   // 0x0063ADF0
-};
+// NF56 (round 7, queue q10434): CWorldMap comes from engine/CWorldMap.h (opt-in FABLE_RETAIL_CWORLDMAP_STRONGESTTHEME), so the call binds
+//   ?GetStrongestEngineThemeAt@CWorldMap@@QBEJABVC3DVector@@AAJ@Z (Ego_r.pdb 0x006E84E0, strength by reference; the landed 0x0063DD70 /
+//   0x0063EB20 bind it); was a local CWorldMap model taking long*. The other local models are pre-existing.
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CWORLDMAP_STRONGESTTHEME
+#include "engine/CWorldMap.h"
 
 class CWorld {
 public:
@@ -97,7 +100,7 @@ bool __fastcall CTCCarriedActionUseSpade::IsThingAbleToDig(const CThingCreatureB
         CWorld* world = CMainGameComponent::Get()->PWorld;
         long weight;
         CDefPointer<const CEngineThemeDef> themeDef;
-        if (world->GetDefinitionManager().GetDef(world->PeekWorldMap().GetStrongestEngineThemeAt(creature.GetPos(), &weight), &themeDef)) {
+        if (world->GetDefinitionManager().GetDef(world->PeekWorldMap().GetStrongestEngineThemeAt(creature.GetPos(), weight), &themeDef)) {
             CDefPointer<const CMaterialDef> materialDef;
             world->GetDefinitionManager().GetDef(themeDef->MaterialDef, &materialDef);
             if (materialDef->IsDiggable)

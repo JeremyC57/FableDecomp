@@ -1,0 +1,59 @@
+addr       parity           behav  name
+0041649c   WARN RELOC_NAME: ?SendGameEvent@CNetworkClient@@QAEXPBVCGameEvent@@@Z -> 004ae9a0 labelled 'CTCTrapBase::ManualReset'
+0041649c   RELOCATION_MATCH PASS   AddGameEvent
+00467597   RELOCATION_MATCH PASS   TransferVector<bool>
+0050be40   MATCH            PASS   DeleteData
+0053cfc2   WARN RELOC_NAME: ??0?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE@ABV01@@Z -> 0053cb9b labelled 'std::_Rb_tree::_Rb_tree'
+0053cfc2   RELOCATION_MATCH PASS   push_back
+005d8626   RELOCATION_MATCH PASS   insert
+0064e1e4   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+0064e1e4   RELOCATION_MATCH PASS   CDrawHealth
+00657280   RELOCATION_MATCH PASS   ShowScreenshotMessage
+0069d520   RELOCATION_MATCH PASS   _M_insert
+0072dc70   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+0072dc70   WARN SHARED_HEADER_AVAILABLE CThing
+0072dc70   RELOCATION_MATCH PASS   OnCreate
+007864c0   WARN SHARED_HEADER_AVAILABLE C3DSkeletalMorph
+007864c0   WARN RELOC_NAME: ?ClearParameters@C3DSkeletalMorph@@QAEXXZ -> 00a45410 labelled 'C3DSkeletalMorph::Reset'
+007864c0   WARN RELOC_NAME: ?ApplyParameters@C3DSkeletalMorph@@QAEXXZ -> 00a45330 labelled 'C3DSkeletalMorph::NotifyParamUpdate'
+007864c0   RELOCATION_MATCH PASS   ForceSkeletalMorph
+007e57c0   RELOCATION_MATCH PASS   CTCBetting
+007f69b0   WARN SHARED_HEADER_AVAILABLE CThing
+007f69b0   RELOCATION_MATCH PASS   FrameUpdate
+0085b840   RELOCATION_MATCH PASS   CGetMatchingStrikeEndEventName>
+009710d0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+009710d0   RELOCATION_MATCH PASS   RefreshCoverList
+009810b0   RELOCATION_MATCH PASS   AIAction_FindAGuardAndGiveMessage
+00982f70   RELOCATION_MATCH PASS   WifeToHerselfUpdate
+00a0aa80   RELOCATION_MATCH PASS   SetAWindow
+00b3b870   RELOCATION_MATCH PASS   FrameEnd
+00b86bb0   RELOCATION_MATCH PASS   FinishDisplacementStencilRendering
+00bc65d0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive
+00bc65d0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bc65d0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00bc65d0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00bc65d0   RELOCATION_MATCH PASS   SetChildPrimitive
+00c31d80   MATCH            PASS   PKCAutoFile
+
+WINS: 21
+  0041649c RELOCATION_MATCH CMainGameComponent::?AddGameEvent@CMainGameComponent@@QAEXABVCGameEvent@@@Z
+  00467597 RELOCATION_MATCH CPersistContext::??$TransferVector@_N@CPersistContext@@QAEXAAV?$vector@_NV?$allocator@_N@std@@@std@@@Z
+  0050be40 MATCH CCountedPointer<CAFile>::?DeleteData@?$CCountedPointer@VCAFile@@@@SIXPAX@Z
+  0053cfc2 RELOCATION_MATCH std::vector<std::map<unsigned long,NUISystem::CUIState> >::?push_back@?$vector@V?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@V?$allocator@V?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@@2@@std@@QAEXABV?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@2@@Z
+  005d8626 RELOCATION_MATCH std::list<std::pair<CWideString,long> >::?insert@?$list@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@VCWideString@@J@std@@U?$_Nonconst_traits@U?$pair@VCWideString@@J@std@@@2@@2@U32@ABU?$pair@VCWideString@@J@2@@Z
+  0064e1e4 RELOCATION_MATCH NPlayerGui::CDrawHealth::CDrawHealth
+  00657280 RELOCATION_MATCH NPlayerGui::CDrawNPCName::?ShowScreenshotMessage@CDrawNPCName@NPlayerGui@@QAEXXZ
+  0069d520 RELOCATION_MATCH std::_Rb_tree<NCameraModes::EMode,std::pair<const NCameraModes::EMode,CCountedPointer<NCameraModes::CBaseInit> >,...>::?_M_insert@?$_Rb_tree@W4EMode@NCameraModes@@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@U?$_Select1st@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@@4@U?$less@W4EMode@NCameraModes@@@4@V?$allocator@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@@4@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@2@0@Z
+  0072dc70 RELOCATION_MATCH CTCInventoryMagic::OnCreate
+  007864c0 RELOCATION_MATCH CTCSkeletalMorph::ForceSkeletalMorph
+  007e57c0 RELOCATION_MATCH CTCBetting::??0CTCBetting@@QAE@AAVCThing@@@Z
+  007f69b0 RELOCATION_MATCH CTCTargetingAI::FrameUpdate
+  0085b840 RELOCATION_MATCH std::??$for_each@PAU?$pair@VCCharString@@M@std@@VCGetMatchingStrikeEndEventName@?A0x
+  009710d0 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::?RefreshCoverList@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ
+  009810b0 RELOCATION_MATCH CAIStateGroupBase::?AIAction_FindAGuardAndGiveMessage@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@V?$CDefPointer@$$CBVCMessageEventDef@@@@VC3DVector@@J@Z
+  00982f70 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?WifeToHerselfUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
+  00a0aa80 RELOCATION_MATCH CRenderManagerCore::?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z
+  00b3b870 RELOCATION_MATCH CEngineResourceManager::?FrameEnd@CEngineResourceManager@@QAEXXZ
+  00b86bb0 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::?FinishDisplacementStencilRendering@CEngineScreenEffectDisplacementRenderer@@QAEXXZ
+  00bc65d0 RELOCATION_MATCH CEngineInternalPrimitiveGroup::SetChildPrimitive
+  00c31d80 MATCH PKCAutoFile::??0PKCAutoFile@@QAE@PAVCAudioFile@@@Z

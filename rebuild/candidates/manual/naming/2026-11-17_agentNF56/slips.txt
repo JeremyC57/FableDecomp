@@ -1,0 +1,4 @@
+slip: column missing exit127 (claim ran)
+slip 2: 'which unifdef' in a header-diff loop exited 1 (unifdef not installed); later calls end with true
+slip 3: a probe of 0x004091C0 included engine/CWideString.h, which does not exist (CWideString is in fable_string.h); the cpp precheck failed without #error so q.py ran and returned nothing (grade logged empty); re-probed with the right headers
+slip 4: an 'ls REJECTED.tsv' check on a not-yet-written file ended a recording call with exit 1 (the recording itself had completed)

@@ -7,6 +7,16 @@
 // Vtable 0x0125A670 is not in rtti-vtables.tsv (a CDrawBase-derived drawer with counters, two floats and a list); the chunk label
 // "CDrawMeleeActionButtonEffects::CDrawMeleeActionButtonEffects" belongs to the sibling @ 0x00654258 (vtable 0x0125A714). Frame-pointer size TU.
 // Shape: the float zero/one go through `fldz`/`fld1`, the longs share `xor eax,eax`; the vtable store sits between the tag's lea and the list call.
+// NF56 (round 7, queue q10427): the handle vector is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> (stlport/fable_containers.h,
+//   FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; engine/CEnginePrimitiveHandle.h), so the call binds 0x00443F90 as
+//   ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (the self row's STLport spelling, as
+//   0x00602E30 / 0x0064F659). Was the local stand-in CRetailHandleVector. Other local models are pre-existing.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CEnginePrimitiveHandle.h"
+
 class CPlayerGui;
 
 struct CRetailAllocator { CRetailAllocator() { } };
@@ -18,17 +28,10 @@ struct CRetailList_0064ed06 {                      // VC6 Dinkumware list: one s
 
 namespace NPlayerGui {
 
-struct CRetailHandleVector {
-    void* m_pFirst;
-    void* m_pLast;
-    void* m_pEnd;
-    void Reserve(long count);                      // 0x00443F90
-};
-
 class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
-    CRetailHandleVector PrimitiveHandles;          // +0x1c
+    std::vector<CEnginePrimitiveHandle> PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
@@ -46,7 +49,7 @@ class CDrawPerceivers : public CDrawBase { public:               // vtable 0x012
 CDrawPerceivers::CDrawPerceivers(CPlayerGui* gui, void* drawList)
     : CDrawBase(gui, drawList), m_counterA(0), m_counterB(0), m_progress(0.0f), m_scale(1.0f), m_state(0), m_entries(CRetailAllocator())
 {
-    PrimitiveHandles.Reserve(3);
+    PrimitiveHandles.resize(3);
 }
 
 }

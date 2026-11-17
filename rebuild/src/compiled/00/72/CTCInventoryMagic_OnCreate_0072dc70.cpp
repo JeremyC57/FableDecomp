@@ -10,6 +10,16 @@
 // pointer is zeroed before the call and released by hand at the end without a null test (`dec [esi+4] ; jne`).
 // Layout: CThing PDef +0x70; retail CTCInventoryBase 0x130 bytes, ParentThing +0x04; the CBase subobject at +0x130 (vptr) with
 // its 8-byte-element vector at +0x134; the magic def's inventory-def index at +0x94 (retail offset).
+// NF56 (round 7, queue q10427): the handle vector is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> (stlport/fable_containers.h,
+//   FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; engine/CEnginePrimitiveHandle.h), so the call binds 0x00443F90 as
+//   ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (the self row's STLport spelling, as
+//   0x00602E30 / 0x0064F659). Was the local stand-in CScreenEntryVector. Other local models are pre-existing.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CEnginePrimitiveHandle.h"
+
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -52,23 +62,17 @@ struct CTCInventoryBase_Magic {                 // retail 0x130 bytes
     unsigned char _pad08[0x130 - 0x08];
     void SetPDef(long globalDefIndex);          // 0x005BDB4D
 };
-struct CScreenEntryVector {                     // STLport vector of 8-byte entries
-    void* _M_start;
-    void* _M_finish;
-    void* _M_end_of_storage;
-    void resize(unsigned long n);               // 0x00443F90
-};
 namespace NHeroInformationScreens {
 class CBase { public:                                  // vtable 0x0123A3E0
     virtual void v00();
     virtual void v01();
     virtual void v02();
-    CScreenEntryVector Entries;                 // +0x04
 };
 }
 class CTCInventoryMagic : public CTCInventoryBase_Magic, public NHeroInformationScreens::CBase {
 public:
     virtual void OnCreate();
+    std::vector<CEnginePrimitiveHandle> InventoryMagicPrimitiveHandles;   // +0x134 (Ego_r.pdb; the CBase subobject is only its vptr +0x130)
 };
 
 void CTCInventoryMagic::OnCreate()
@@ -84,7 +88,7 @@ void CTCInventoryMagic::OnCreate()
     CCreatureDef* magicDef = const_cast<CCreatureDef*>(def.Object);
     SetPDef(magicDef->InventoryDefIndex);
     CTCInventoryBase_Magic::OnCreate();
-    Entries.resize(0);
+    InventoryMagicPrimitiveHandles.resize(0);
     if (--magicDef->m_refCount == 0)
         magicDef->Destroy();
 }

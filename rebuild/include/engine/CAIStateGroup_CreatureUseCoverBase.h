@@ -23,6 +23,19 @@ class CAIStateGroup_CreatureUseCoverBase : public CAIStateGroup_EnemyCreatureBas
 protected:
     bool MoveIntoCover(const C3DVector& cover_pos);                      // 0x009711D0 ?MoveIntoCover@CAIStateGroup_CreatureUseCoverBase@@IAE_NABVC3DVector@@@Z
     bool DuckBehindCover(bool param);                                    // 0x009713E0
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_COVERLIST
+    // NF56 opt-in (rows 0x009710D0 RefreshCoverList and 0x00970F30 IsRunnableLeaf): needs FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
+    // (slots 14..21) and stlport/fable_containers.h. Retail vtable 0x0128D31C: slot 15 = 0x00970F30 (the IsRunnableLeaf override,
+    // Ego_r.pdb 0x00995CE0 / FableWin.pdb 0x02B85370 ?IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase@@MAE_NXZ), slot 22 = 0x00902F9A
+    // (FableWin.pdb 0x02B10424 ?ProcessCoverThingList@CAIStateGroup_CreatureUseCoverBase@@MAEXAAV?$vector@PAVCThing@@...@Z, the inline
+    // default), slot 23 = 0x00970DF0 (Ego_r.pdb 0x00995BB0 / FableWin.pdb 0x02B85110 ?GetCoverThingList@...@@MAEXAAV?$vector@PAVCThing@@...@Z);
+    // RefreshCoverList 0x009710D0 = Ego_r.pdb 0x00995E60 / FableWin.pdb 0x02B858C0 ?RefreshCoverList@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ.
+    // Declarations only: the virtuals are the inherited slot 15 and the class's own slots 22/23, no layout change.
+    virtual bool IsRunnableLeaf();                                       // slot 15 0x00970F30
+    virtual void ProcessCoverThingList(std::vector<CThing*>& things);   // slot 22 0x00902F9A
+    virtual void GetCoverThingList(std::vector<CThing*>& things);       // slot 23 0x00970DF0
+    void RefreshCoverList();                                             // 0x009710D0
+#endif
     bool HasDiveAnim;                                                    // +0x1c
     bool HasJumpOutAnims;                                                // +0x1d
     bool TimingCritical;                                                 // +0x1e

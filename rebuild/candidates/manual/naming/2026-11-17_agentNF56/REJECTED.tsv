@@ -1,0 +1,2 @@
+entry	address	rejected_symbol	reason	replacement
+q10468	0x005D84D1	?Buynode@CRetailList_node0x10@@QAEPAUnode@1@ABU?$pair@VCWideString@@J@std@@@Z	the entry symbol is a made-up owner class (CRetailList_node0x10) from an earlier pass; the body is STLport list<pair<CWideString,long> >::_M_create_node and its caller 0x005D8626 is that list insert (thiscall, this passed through)	?_M_create_node@?$list@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@std@@IAEPAU?$_List_node@U?$pair@VCWideString@@J@std@@@2@ABU?$pair@VCWideString@@J@2@@Z

@@ -18,6 +18,11 @@ struct CNetworkPlayer;
 class CNetworkClient : public CInitBaseClass {
 public:
     void Update(long,unsigned long,unsigned long);
+#ifdef FABLE_RETAIL_CNETWORKCLIENT_SENDGAMEEVENT
+    // NF56 opt-in (row 0x0041649C CMainGameComponent::AddGameEvent): Ego_r.pdb 0x004B43E0 / FableWin.pdb 0x01B32F30
+    // ?SendGameEvent@CNetworkClient@@QAEXPBVCGameEvent@@@Z, out of line in retail at 0x004AE9A0. Declaration only.
+    void SendGameEvent(const class CGameEvent* event);              // 0x004AE9A0
+#endif
 #ifdef FABLE_RETAIL_CNETWORKCLIENT_GAMEEVENTPACKAGESET
     // Retail opt-in (chunk 1022, row 0x00418289 CMainGameComponent::Update): Ego_r.pdb (0x004B45C0) / FableWin.pdb (0x01B33070)
     // ?GetGameEventPackageSet@CNetworkClient@@QAE_NPAVCGameEventPackageSet@@@Z, out of line in retail at 0x004AEBA0, and FableWin.pdb

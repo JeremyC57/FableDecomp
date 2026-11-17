@@ -1,0 +1,67 @@
+addr       parity           behav  name
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+0043b050   WARN SHARED_HEADER_AVAILABLE C2DVector
+0043b050   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DSprite
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo
+0043b050   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0043b050   RELOCATION_MATCH PASS   DrawDebugSafeAreas
+004af5b0   RELOCATION_MATCH PASS   GetActiveQuestFromScriptName
+0053cb4f   RELOCATION_MATCH PASS   push_back
+005d84d1   RELOCATION_MATCH PASS   _M_create_node
+005d99d0   RELOCATION_MATCH PASS   GetInventoryType
+0064f6dc   WARN SHARED_HEADER_AVAILABLE C2DVector
+0064f6dc   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0064f6dc   WARN SHARED_HEADER_AVAILABLE CRGBColour
+0064f6dc   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive
+0064f6dc   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+0064f6dc   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo
+0064f6dc   WARN RELOC_NAME: ?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+0064f6dc   RELOCATION_MATCH PASS   DrawOracleSymbols
+0069ca00   MATCH            PASS   operator--
+006e3b10   RELOCATION_MATCH PASS   PlaySpeech
+0077e580   WARN RELOC_NAME: ?_M_clear@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXXZ -> 004ac1d0 labelled 'std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>'
+0077e580   RELOCATION_MATCH PASS   reserve
+007ce1f0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+007ce1f0   RELOCATION_MATCH PASS   __copy
+007f03d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+007f03d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+007f03d0   WARN SHARED_HEADER_AVAILABLE CTCActionUseBase
+007f03d0   WARN RELOC_NAME: ?OnShowEnded@CTCShowableItem@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+007f03d0   RELOCATION_MATCH PASS   OnActionUse
+0085b720   RELOCATION_MATCH PASS   operator()
+00970f30   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+00970f30   RELOCATION_MATCH PASS   IsRunnableLeaf
+00979d80   RELOCATION_MATCH PASS   IsRunnableLeaf
+00982f10   RELOCATION_MATCH PASS   WifeGeneralUpdate
+00a0aa10   MATCH            PASS   SetMaterial
+00b244f0   MATCH            PASS   PeekVideoOptionsDef
+00b401e0   WARN RELOC_NAME: ?OnGameMapLoaded@CEngineLandscapeMap@@QAEXXZ -> 00bdbfe0 labelled '_global::Nop_ret0_00bdbfe0'
+00b401e0   RELOCATION_MATCH PASS   OnGameMapLoaded
+00b8e690   MATCH            PASS   DeleteData
+00c2e080   RELOCATION_MATCH PASS   `scalar deleting destructor'
+01211e13   RELOCATION_MATCH PASS   Unwind@01211e13
+
+WINS: 21
+  0043b050 RELOCATION_MATCH CPlayerGui::DrawDebugSafeAreas
+  004af5b0 RELOCATION_MATCH CQuestManager::?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z
+  0053cb4f RELOCATION_MATCH std::vector<bool>::?push_back@?$vector@_NV?$allocator@_N@std@@@std@@QAEXAB_N@Z
+  005d84d1 RELOCATION_MATCH std::list<std::pair<CWideString,long> >::?_M_create_node@?$list@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@std@@IAEPAU?$_List_node@U?$pair@VCWideString@@J@std@@@2@ABU?$pair@VCWideString@@J@2@@Z
+  005d99d0 RELOCATION_MATCH CTCInventoryItem::?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z
+  0064f6dc RELOCATION_MATCH NPlayerGui_CDrawQuestInfo::DrawOracleSymbols
+  0069ca00 MATCH std::_Rb_tree_iterator<std::pair<const NCameraModes::EMode,CCountedPointer<NCameraModes::CBaseInit> >,std::_Nonconst_traits<...> >::??F?$_Rb_tree_iterator@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@@2@@std@@QAEAAU01@XZ
+  006e3b10 RELOCATION_MATCH CTCTalk::?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@KW4EDialogueLayer@NSpeechGainManager@@_N1@Z
+  0077e580 RELOCATION_MATCH std::vector<CIntelligentPointer<CThing> >::?reserve@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEXI@Z
+  007ce1f0 RELOCATION_MATCH std::??$__copy@PAPAVCThing@@V?$back_insert_iterator@V?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@std@@H@std@@YI?AV?$back_insert_iterator@V?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@0@PAPAVCThing@@0V10@ABUrandom_access_iterator_tag@0@PAH@Z
+  007f03d0 RELOCATION_MATCH CTCCarriedActionUseSpade::OnActionUse
+  0085b720 RELOCATION_MATCH `anonymous namespace::??RCGetMatchingStrikeEndEventName@?A0x
+  00970f30 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::?IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase@@MAE_NXZ
+  00979d80 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::?IsRunnableLeaf@CAIStateGroup_CreatureTakeCover@@UAE_NXZ
+  00982f10 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?WifeGeneralUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
+  00a0aa10 MATCH CRenderManagerCore::?SetMaterial@CRenderManagerCore@@QAEXABVCRGBColour@@0@Z
+  00b244f0 MATCH CEngine::?PeekVideoOptionsDef@CEngine@@QAEABVCEngineVideoOptionsDef@@W4EEngineVideoOptionQuality@@@Z
+  00b401e0 RELOCATION_MATCH CEngineWorldMap::?OnGameMapLoaded@CEngineWorldMap@@QAEXJ@Z
+  00b8e690 MATCH CCountedPointer<CVertexBufferWin32>::?DeleteData@?$CCountedPointer@VCVertexBufferWin32@@@@SIXPAX@Z
+  00c2e080 RELOCATION_MATCH CSegmentList::??_GCSegmentList@@UAEPAXI@Z
+  01211e13 RELOCATION_MATCH _global::Unwind@01211e13

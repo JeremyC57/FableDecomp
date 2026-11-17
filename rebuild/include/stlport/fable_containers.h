@@ -1026,6 +1026,26 @@ template<class _Tp,class _Alloc> FABLE_STLP_OVERFLOW_OUTOFLINE void vector<_Tp,_
 // 0x00AC8CCB). Seeing that reserve never captures the vector, VC7.1 keeps the local vector's _M_finish in a CPU location across the
 // push_back loop (0x00AC8CE1 `mov ebx,[esp+7Ch]` ... 0x00AC8D45 `add ebx,0Ch`); declaration-only reloads it after every store.
 // Pair with FABLE_RETAIL_STLP_VECTOR (the in-class declaration).
+#ifdef FABLE_RETAIL_STLP_VECTOR_RESERVE_ALLOCATE_AND_COPY
+// NF56 opt-in (row 0x0077E580 vector<CIntelligentPointer<CThing> >::reserve, the explicit instantiation): STLport 4.6 stl/_vector.c
+// reserve as written there -- `capacity() < __n`, the old size taken inside, the copy through the member template
+// _M_allocate_and_copy (needs FABLE_RETAIL_STLP_VECTOR_C) -- whose inlined allocate + copy gives retail's frame (the `push ecx` word,
+// the copy's tag homed over the `n` slot: 0x0077E580..0x0077E616); the body below allocates and copies in place and schedules
+// the size computation first (134 v 151 bytes). Same out-of-line placement.
+template<class _Tp,class _Alloc> __declspec(noinline) void vector<_Tp,_Alloc>::reserve(size_type n) {
+    if(capacity()<n) {
+        const size_type old_size=size();
+        _Tp* tmp;
+        if(this->_M_start) {
+            tmp=_M_allocate_and_copy(n,this->_M_start,this->_M_finish);
+            _M_clear();
+        } else {
+            tmp=this->_M_end_of_storage.allocate(n);
+        }
+        _M_set(tmp,tmp+old_size,tmp+n);
+    }
+}
+#else
 template<class _Tp,class _Alloc> __declspec(noinline) void vector<_Tp,_Alloc>::reserve(size_type n) {
     if(size_type(this->_M_end_of_storage._M_data-this->_M_start)<n) {
         const size_type old_size=size();
@@ -1040,6 +1060,7 @@ template<class _Tp,class _Alloc> __declspec(noinline) void vector<_Tp,_Alloc>::r
         _M_set(tmp,tmp+old_size,tmp+n);
     }
 }
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_VECTOR
 // Retail branch (pass 12 header wave): STLport 4.6 _vector.h includes _vector.c, so every retail TU that calls resize() /

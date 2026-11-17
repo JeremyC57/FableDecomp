@@ -16,26 +16,13 @@
 //   stack, `ret 8`), CLoadLog::IsOk 0x00C307C0 (`mov al,[ecx+30h]`), SerialiseBankMetaData 0x00C17820 (__fastcall(data, request)),
 //   CLoadLog::AddError 0x00C30840, CString::operator<< 0x00C0DEC0 (__fastcall, the text 0x012B2CD0).
 // Flags: /EHsc
-class CString { public:                    // libpk trace line (shared buffer)
-    char* m_pBuffer;
-    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
-};
-class CLoadLog {                           // vtable 0x012B4CC0, 0x34 bytes
-public:
-    virtual void v00();
-    unsigned char _pad04[0x2c];
-    bool m_ok;                             // +0x30
-    CLoadLog();                            // 0x00C308F0
-    ~CLoadLog();                           // 0x00C30940
-    CString& AddError();                   // 0x00C30840 (descriptive: queues an error message, clears m_ok)
-    bool IsOk() const;                     // 0x00C307C0
-};
+// NF56 (round 7, queue q10481): the string, log and bank data are the shared libpk classes (as the self row 0x00C30F60 and its twin
+//   0x00C17640 include them): engine/CString.h, libpk/CScriptHost.h CLoadLog (AddError 0x00C30840, IsOk 0x00C307C0), libpk/CBankProcessor.h
+//   struct CBankData (FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23: ctor 0x00C2EED0 / dtor 0x00C2EF30), so the call binds the self spelling
+//   ?ReadBankData@@YIXPAXPAUCBankData@@KPAVCLoadLog@@@Z. Were local CString / CLoadLog / CBankData (class) stand-ins.
+#define FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
+#include "libpk/CBankProcessor.h"
 struct CRequest_00c09110;
-class CBankData { public:                  // 0x30 bytes on LoadBank's stack
-    long _words[12];
-    CBankData();                           // 0x00C2EED0
-    ~CBankData();                          // 0x00C2EF30
-};
 bool __fastcall SerialiseBankMetaData(CBankData* data, CRequest_00c09110* request);   // 0x00C17820 (descriptive)
 void __fastcall ReadBankData(void* file, CBankData* data, unsigned long chunk, CLoadLog* log);   // 0x00C30F60 (descriptive)
 

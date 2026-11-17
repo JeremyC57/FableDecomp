@@ -68,6 +68,17 @@ public:
     static ETCInterfaceType __fastcall GetInventoryType(long defIndex);              // 0x005D99D0
     static EUIInventoryCategory __fastcall GetUIInventoryCategory(long defIndex);    // 0x005D96F0
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_CACHEDEF
+    // NF56 opt-in (rows 0x005D96F0 GetUIInventoryCategory / 0x005D99D0 GetInventoryType): the static def cache the static accessors
+    // read. FableWin.pdb ?CacheDef@CTCInventoryItem@@CI_NJ@Z (private static __fastcall, out of line at 0x005D94B0: loads the thing def and
+    // its CInventoryItemDef for defIndex); the cached CInventoryItemDef pointer at 0x013B8C18 has no PDB data symbol: descriptive name,
+    // the public spelling the landed rows bind (?s_CachedItemDef@CTCInventoryItem@@2V?$CDefPointer@$$CBVCInventoryItemDef@@@@A).
+    // Needs engine/CDefPointer.h and engine/CInventoryItemDef.h. Declarations only; no layout change (statics).
+private:
+    static bool __fastcall CacheDef(long defIndex);                                 // 0x005D94B0
+public:
+    static CDefPointer<const CInventoryItemDef> s_CachedItemDef;                    // 0x013B8C18
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_USEBUTTONACTION
     // Nested opt-in (chunk 1007, row 0x00583E26 CTCInventory::OnItemSelected): FableWin.pdb
     // ?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z, static `__fastcall`, out of line at 0x005D9710

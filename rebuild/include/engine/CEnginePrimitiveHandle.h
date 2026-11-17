@@ -38,6 +38,11 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN
     // Chunk 740 (0x00B03CA0): FableWin.pdb ??4CEnginePrimitiveHandle@@QAEABV0@ABV0@@Z (inline in retail): the counted Data assignment.
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_ASSIGN_FORCEINLINE
+    // NF56 opt-in (row 0x00AFE9B0 CParticle::SetPrimitiveInfo): retail expands the handle assignment in place there (Clear, then the
+    // counted Data assignment); the same text, FABLE_FORCEINLINE. Default unchanged.
+    FABLE_FORCEINLINE
+#endif
     const CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other) {
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
         Clear();

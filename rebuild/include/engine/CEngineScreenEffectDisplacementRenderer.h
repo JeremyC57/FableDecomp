@@ -24,10 +24,20 @@ class CMatrix3x4;
 #include "engine/CPixelShader.h"
 #include "engine/CTVertexColTex1.h"
 class CTexture;
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_FINISHSTENCIL
+#include "engine/CRenderStateCaptureBlock.h"
+#endif
 class CEngineScreenEffectDisplacementRenderer : public CEngineComponent {
 public:
     CEngineScreenEffectDisplacementRenderer(const CEngineInit&); // 0x00B86C00 ??0CEngineScreenEffectDisplacementRenderer@@QAE@ABVCEngineInit@@@Z
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_FINISHSTENCIL
+    // NF56 opt-in (row 0x00B86BB0): Ego_r.pdb 0x00A2D730 / FableWin.pdb 0x02DBA380
+    // ?FinishDisplacementStencilRendering@CEngineScreenEffectDisplacementRenderer@@QAEXXZ (public), out of line at 0x00B86BB0; its body
+    // restores StencilRenderingCaptureBlock (+0x144), which this opt-in types as the CRenderStateCaptureBlock it is (Ego_r.pdb; one bool,
+    // engine/CRenderStateCaptureBlock.h) in place of the opaque 2 bytes (same offset; the next member stays at +0x148).
+    void FinishDisplacementStencilRendering();                          // 0x00B86BB0
+#endif
 #ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_GETENABLE2DDISPLACEMENT
     // Nested opt-in (wfE5, rows 0x00BB0970 / 0x00BAFA00): FableWin.pdb ?GetEnable2DDisplacement@CEngineScreenEffectDisplacementRenderer@@QBE_NXZ
     // (02e96c40, listed right after RenderSpritePrim), inline in retail (`mov cl,[GPScreenEffectDisplacementRenderer + 0xEE]`, 0x00BB1473).
@@ -58,7 +68,11 @@ private:
     CPixelShader    ScreenCopyPixelShader;                   // +0x12c
     CVertexShader   DisplacementVertexShader;                // +0x134
     CPixelShader    DisplacementPixelShader;                 // +0x13c
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_FINISHSTENCIL
+    CRenderStateCaptureBlock StencilRenderingCaptureBlock;   // +0x144
+#else
     unsigned char   StencilRenderingCaptureBlock[2];         // +0x144 CRenderStateCaptureBlock
+#endif
     CTVertexColTex1 DisplacementToBackBufferVerts[4];        // +0x148
     bool            EnableDisplacementTextureView;           // +0x1a8
 };

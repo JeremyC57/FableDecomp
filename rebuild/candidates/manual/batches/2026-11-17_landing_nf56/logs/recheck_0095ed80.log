@@ -1,0 +1,6 @@
+addr       parity           behav  name
+0095ed80   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095ed80   RELOCATION_MATCH PASS   WaitForTextToLoadThenSpeak
+
+WINS: 1
+  0095ed80 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?WaitForTextToLoadThenSpeak@CAIStateGroup_OpinionReactionRoot@@AAE?AW4EAIActionReturn@@ABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@@Z
