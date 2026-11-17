@@ -1,0 +1,4 @@
+- egod e03 0x00B4B8B0: an x87 order on a phi'd vector field (pvec) followed how the arms were written: member-wise stores v Initialise(...) flip c2's operand order; dead locals did not move it.
+- egod e03 0x00753E90: a same-TU member whose out-of-line copy matches with a store first or last can still decide where the store lands in an expanding caller (two expanded copies + join): store-last sinks it to the join.
+- egod e03 0x008E5D40: fwsize of a row with a destructible local is only meaningful with FW_EXTRA=/EHsc (FableWin has EH): it then proved FableWin's inline accessors (IsMoving/GetVelocity/GetPhysicsDef) exactly.
+- egod e03 0x00867D20 / 0x00920DC0 / 0x00B81820: rows parked as 'allocation gap' / 'register tie' on LOCAL MODELS matched at the first compiling grade once ported onto shared headers with Ego_d's locals and the landed twin's text; port first, diagnose later.

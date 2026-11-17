@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/CMeshDataBank.h
++++ b/rebuild/include/engine/CMeshDataBank.h
+@@ -190,6 +190,11 @@
+ #endif
+     CMovableResourceMemoryPool*   ClothMemoryPool_Data;      // +0x368 CCountedPointer<CMovableResourceMemoryPool>::Data
+     CCPPointerInfo*               ClothMemoryPool_Info;      // +0x36c CCountedPointer<CMovableResourceMemoryPool>::Info
++#ifdef FABLE_RETAIL_CMESHDATABANK_GETCLOTHMEMORYPOOL
++    // Opt-in (egod e03, row 0x00B81820): FableWin.pdb ?GetClothMemoryPool@CMeshDataBank@@QAEPAVCMovableResourceMemoryPool@@XZ (inline in
++    // retail: FrameStart reads +0x368 in place, 0x00B8189B). No layout change.
++    CMovableResourceMemoryPool* GetClothMemoryPool() { return ClothMemoryPool_Data; }
++#endif
+     CMovableResourceMemoryPool*   MeshDataMemoryPool_Data;   // +0x370 CCountedPointer<CMovableResourceMemoryPool>::Data
+     CCPPointerInfo*               MeshDataMemoryPool_Info;   // +0x374 CCountedPointer<CMovableResourceMemoryPool>::Info
+     CXboxBufferMemoryPool*        XboxMemoryPool_Data;       // +0x378 CCountedPointer<CXboxBufferMemoryPool>::Data

@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/CEngine.h
++++ b/rebuild/include/engine/CEngine.h
+@@ -58,6 +58,11 @@
+     // Nested opt-in (NF42, row 0x00B23C00): the slot-62 CIEngine override, Ego_r.pdb / FableWin.pdb ?SetSpotlightShadowMode@CEngine@@UAEX_N@Z.
+     virtual void SetSpotlightShadowMode(bool enable);
+ #endif
++#ifdef FABLE_RETAIL_CENGINE_GETNONINTERPOLATEDWORLDTIME
++    // Opt-in (egod e03, row 0x00B81820 CEngineSimulationManager::FrameStart): FableWin.pdb ?GetNonInterpolatedWorldTime@CEngine@@QBENXZ
++    // (Ego_d Engine_Simulation_Manager.obj, 20 debug bytes, first used by FrameStart; inline in retail: `fmul qword [GPEngine+98h]`).
++    double GetNonInterpolatedWorldTime() const { return NonInterpolatedWorldTime; }
++#endif
+ private:
+     void SetDefaultRenderStates();                                       // 0x00B24850 ?SetDefaultRenderStates@CEngine@@AAEXXZ
+     // ??$AddEngineComponent@V<T>@@@CEngine@@AAEXPAV<T>@@AAPAV1@E@Z (Ego_r.pdb; out of line in retail, one COMDAT per component:

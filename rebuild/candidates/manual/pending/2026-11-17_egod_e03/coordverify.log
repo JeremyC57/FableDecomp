@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00920dc0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00920dc0   RELOCATION_MATCH PASS   OnReplace
+008e5d40   RELOCATION_MATCH PASS   Move
+00867d20   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00867d20   RELOCATION_MATCH PASS   FinishAction
+00753e90   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00753e90   RELOCATION_MATCH PASS   LookAtPos
+00b81820   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b81820   RELOCATION_MATCH PASS   FrameStart
+00b4b8b0   RELOCATION_MATCH PASS   CalcLocalWorldToBaseShadowSpace
+
+WINS: 6
+  00920dc0 RELOCATION_MATCH CAIStateGroup_CreatureSeekEnemyUnderground::OnReplace
+  008e5d40 RELOCATION_MATCH CTCPhysicsStandard::Move
+  00867d20 RELOCATION_MATCH CCombatAction_GenericResponseToExplosion::FinishAction
+  00753e90 RELOCATION_MATCH CTCLook::LookAtPos
+  00b81820 RELOCATION_MATCH CEngineSimulationManager::FrameStart
+  00b4b8b0 RELOCATION_MATCH CEngineShadowRenderer::CalcLocalWorldToBaseShadowSpace

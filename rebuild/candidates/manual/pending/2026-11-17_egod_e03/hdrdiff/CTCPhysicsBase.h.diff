@@ -1,0 +1,19 @@
+--- a/rebuild/include/engine/CTCPhysicsBase.h
++++ b/rebuild/include/engine/CTCPhysicsBase.h
+@@ -244,6 +244,16 @@
+ bool IsMoving()const{return Moving;}
+ #endif
+ #endif
++#ifdef FABLE_RETAIL_CTCPHYSICSBASE_MOVE_ACCESSORS
++    // Opt-in (egod e03, row 0x008E5D40 CTCPhysicsStandard::Move; needs _COLLISION_RESPONSE for the typed PhysicsDef): the FableWin.pdb
++    // inline accessors ?GetVelocity@CTCPhysicsBase@@QBEABVC3DVector@@XZ, ?IsMoving@CTCPhysicsBase@@QBE_NXZ and
++    // ?GetPhysicsDef@CTCPhysicsBase@@QBEABVCPhysicsDef@@XZ (no Ego_r.pdb / Fable.exe out-of-line copy; read in place in retail).
++    const C3DVector& GetVelocity() const { return Velocity; }
++#if !(defined(FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING) && defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION))
++    bool IsMoving() const { return Moving; }
++#endif
++    const CPhysicsDef& GetPhysicsDef() const { return *PhysicsDef; }
++#endif
+ #ifdef FABLE_RETAIL_CTCPHYSICSBASE_COLLISION_RESPONSE
+     float GetFriction() const {return PhysicsDef->Friction;}
+     float GetElasticity() const {return PhysicsDef->Elasticity;}

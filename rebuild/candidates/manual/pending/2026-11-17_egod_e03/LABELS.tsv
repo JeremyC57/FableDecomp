@@ -1,0 +1,10 @@
+address	name	evidence
+00b4b8b0	?CalcLocalWorldToBaseShadowSpace@CEngineShadowRenderer@@AAE?AVCMatrix3x4@@ABVC3DVector@@MM@Z	Ego_r + FableWin name sets; Ego_d record
+00753e90	?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z	Ego_r + FableWin; Ego_d tc_look.obj
+00754e70	?GFGetAngleYZTo@@YIMABVC3DVector@@0@Z	Ego_r name set; same-TU body graded RELOCATION_MATCH (reloc_bindings has AngleYZBetweenPositions)
+008e5d40	?Move@CTCPhysicsStandard@@UAEXXZ	Ego_r 0x0090DAD0 + FableWin 0x02AE1560; Ego_d tc_physics_standard_movement.obj
+00920dc0	?OnReplace@CAIStateGroup_CreatureSeekEnemyUnderground@@UAEXXZ	Ego_r + FableWin; Ego_d
+00920960	?OnReplace@CAIStateGroup_CreatureIdleUnderground@@UAEXXZ	Ego_r name set; same-TU body graded
+00b81820	?FrameStart@CEngineSimulationManager@@UAEXABVCEngineComponentParams@@@Z	Ego_r + FableWin; Ego_d
+00b80b40	?RunSimulation@CEnginePrimitiveSimulationInfo@@QAEXXZ	Ego_r + FableWin name sets; Ego_d record; same-TU body MATCH
+00867d20	?FinishAction@CCombatAction_GenericResponseToExplosion@@UAEXXZ	Ego_r + FableWin; Ego_d

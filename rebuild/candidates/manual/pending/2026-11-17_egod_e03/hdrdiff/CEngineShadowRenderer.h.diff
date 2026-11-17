@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/CEngineShadowRenderer.h
++++ b/rebuild/include/engine/CEngineShadowRenderer.h
+@@ -92,6 +92,11 @@
+     void UpdateSpotLightShadowSpace(const CEngineLightingManagerSpotlightParams& spot_light);   // 0x00B4EF80
+     void UpdateShadowSpace(const CEngineCamera& camera);                 // 0x00B4D370
+ #endif
++#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_CALCLOCALWORLD
++    // Opt-in (egod e03, row 0x00B4B8B0): Ego_r.pdb / FableWin.pdb ?CalcLocalWorldToBaseShadowSpace@CEngineShadowRenderer@@AAE?AVCMatrix3x4@@ABVC3DVector@@MM@Z
++    // (private); Ego_d parameter names light_vector / shadow_box_width / shadow_box_length. Declaration only.
++    CMatrix3x4 CalcLocalWorldToBaseShadowSpace(const C3DVector& light_vector, float shadow_box_width, float shadow_box_length);   // 0x00B4B8B0
++#endif
+ #ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_CLIPVOLUMES_PASS22
+     // Original public records and class descriptors in both PDBs; native00b4bcc0/00b4c550.
+     void CalcClipVolume(const class CEngineCamera&);

@@ -1,0 +1,54 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00920dc0",
+    "module": "CAIStateGroup_CreatureSeekEnemyUnderground",
+    "name": "OnReplace",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/src/00920dc0.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/test/00920dc0.cpp",
+    "pass_pattern": "00920dc0_TEST PASS"
+   },
+   {
+    "address": "008e5d40",
+    "module": "CTCPhysicsStandard",
+    "name": "Move",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/src/008e5d40.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/test/008e5d40.cpp",
+    "pass_pattern": "008e5d40_TEST PASS"
+   },
+   {
+    "address": "00867d20",
+    "module": "CCombatAction_GenericResponseToExplosion",
+    "name": "FinishAction",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/src/00867d20.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/test/00867d20.cpp",
+    "pass_pattern": "00867d20_TEST PASS"
+   },
+   {
+    "address": "00753e90",
+    "module": "CTCLook",
+    "name": "LookAtPos",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/src/00753e90.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/test/00753e90.cpp",
+    "pass_pattern": "00753e90_TEST PASS"
+   },
+   {
+    "address": "00b81820",
+    "module": "CEngineSimulationManager",
+    "name": "FrameStart",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/src/00b81820.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/test/00b81820.cpp",
+    "pass_pattern": "00b81820_TEST PASS"
+   },
+   {
+    "address": "00b4b8b0",
+    "module": "CEngineShadowRenderer",
+    "name": "CalcLocalWorldToBaseShadowSpace",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/src/00b4b8b0.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e03/test/00b4b8b0.cpp",
+    "pass_pattern": "00b4b8b0_TEST PASS"
+   }
+  ]
+ }
+}
