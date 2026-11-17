@@ -75,6 +75,12 @@ public:
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_TravellingHeroesScript&, CScriptDataBase*, const CScriptThing&);
         virtual CScriptBase* GetParentScript() const;
+#ifdef FABLE_RETAIL_CV_TRAVELLINGHEROESSCRIPT_THUNDER_GETMASTERDATA
+        // NF71 opt-in (round 7, row 0x00EE2490 CTH_Thunder::Main): FableWin.pdb
+        // ?GetMasterData@CTH_Thunder@CV_TravellingHeroesScript@NScript@@QAEPAVCQ_SunnyvaleMasterData@3@XZ (public; Ego_r.pdb and retail
+        // expand it: `mov eax,[esi+18h] ; cmp dword ptr [eax+4],384h` at 0x00EE24EE).
+        NScript::CQ_SunnyvaleMasterData* GetMasterData() { return PMasterData; }
+#endif
     private:
         virtual void Main();
     protected:

@@ -591,10 +591,17 @@ public:
         _M_finish=_M_start;
         _M_end_of_storage._M_data=_M_start+n;
     }
+#ifdef FABLE_RETAIL_STLP_VECTOR_BASE_DTOR_FREE_UNTESTED
+    // NF71 opt-in (round 7, row 0x008F95D0 LSocket::SendBlock): that TU releases its local vector<char> with a bare `push ecx ; call free`
+    // (0x008F96B8; ReceiveBlock 0x008F9B20 `push esi ; call free` too) while the LAddress strings next to it keep their null test.
+    // FITTED (owner acceptance test 2026-11-14): retail-shaped release, the null test of ~_Vector_base / deallocate dropped; free(0) is a no-op.
+    ~_Vector_base() { free(_M_start); }
+#else
     ~_Vector_base() {
         if (_M_start != 0)
             _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data-_M_start);
     }
+#endif
 protected:
     _Tp* _M_start;
     _Tp* _M_finish;

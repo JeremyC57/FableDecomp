@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-11-17T12:17:08+00:00`
+Generated: `2026-11-17T12:51:33+00:00`
 
 ## Landed reconstruction (live)
 
