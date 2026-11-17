@@ -93,7 +93,7 @@ address	kind	name	state	true_length	staged_folder	note
 0065ad37	named	CTCVillage::UpdateCurfew	OPEN			
 0065cb6b	named	CTCVillage::ReportCrime	OPEN			
 00666310	named	CThingCreatureBase::OnCreate	OPEN			
-0066a9e0	named	CTCSoundPlayer::PlayCollisionSound	IN_PROGRESS			batch e06
+0066a9e0	named	CTCSoundPlayer::PlayCollisionSound	IN_PROGRESS			batch e07
 0066b370	named	CTCSoundPlayer::PlayAllSoundEvents	OPEN			
 0066c900	named	CRegionMinimap::IlluminateRegionMinimapTheme	OPEN			
 00670820	named	CTCCoopSpirit::UpdateMovement	OPEN			
@@ -103,7 +103,7 @@ address	kind	name	state	true_length	staged_folder	note
 0067e290	named	CDegradableDef::CDegradableDef::Transfer	PARKED			PARKED e04: DIFFER(273v273) register renames from the enum Transfer arm 0x0067E2EB; draft ../2026-11-17_egod_open/e04/0067e290.cpp
 00680050	named	CThingObjectDef::?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z	OPEN			
 00681cd0	named	CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero	OPEN			
-00681e60	named	CTCCreatureOpinionOfHero::SetPersonalityOverride	IN_PROGRESS			batch e06
+00681e60	named	CTCCreatureOpinionOfHero::SetPersonalityOverride	IN_PROGRESS			batch e07
 00683770	named	CTCCreatureOpinionOfHero::GetHeadPendingDeed	OPEN			
 00688360	named	CInputProcessControlCreature::?ProcessInput@CInputProcessControlCreature@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OPEN			
 0068dd00	named	CInputProcessUseEnvironment::?ProcessInput@CInputProcessUseEnvironment@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OPEN			
@@ -387,7 +387,7 @@ address	kind	name	state	true_length	staged_folder	note
 0090cc40	named	CAIStateGroup_MinionGossip::?IsRunnable@CAIStateGroup_MinionGossip@@MAE_NXZ	OPEN			
 0090ebe0	identify	_global::FindMessage	OPEN			
 009101c0	named	CAIStateGroup_MinionListenToStory::?Update@CAIStateGroup_MinionListenToStory@@MAEXXZ	OPEN			
-00911300	named	CAIStateGroup_MinionGuardReactToBodyFoundMessage::?Update@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@UAEXXZ	IN_PROGRESS			batch e06
+00911300	named	CAIStateGroup_MinionGuardReactToBodyFoundMessage::?Update@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@UAEXXZ	IN_PROGRESS			batch e07
 009130d0	named	CAIStateGroup_FlyingThingBase::AIAction_RandomFlyToPos	OPEN			
 00914d80	named	CAIStateGroup_KidWanderNearKids::?Update@CAIStateGroup_KidWanderNearKids@@UAEXXZ	OPEN			
 00918a40	named	CAIStateGroup_GazeAtWork::IsRunnable	OPEN			
@@ -623,7 +623,7 @@ address	kind	name	state	true_length	staged_folder	note
 00ab1cc0	identify	_global::BuildEntityScriptBindings_FromVertexIndices	OPEN			
 00ab2160	named	C3DAnimationBuilder::GetIntersection	OPEN			
 00ab2520	named	C3DAnimationBuilder::BuildMeshAnimation	OPEN			
-00ab3870	named	CVertexShaderInput::GenerateD3DDeclaration	IN_PROGRESS			batch e06
+00ab3870	named	CVertexShaderInput::GenerateD3DDeclaration	IN_PROGRESS			batch e07
 00ab4bb0	named	CMouseDX::GetNonExclusiveModeDeviceMouseEvent	OPEN			
 00ab7b00	named	CStaticFontBank::CStaticFontBank::GetStringExtents	PARKED			PARKED e01: DIFFER(287v287) x87 Offset/Advance order at 0x00AB7BB2; draft ../2026-11-17_egod_open/e01/00ab7b00.cpp
 00ab7c20	named	CStaticFontBank::CStaticFontBank::Render	OPEN			
@@ -657,7 +657,7 @@ address	kind	name	state	true_length	staged_folder	note
 00b277a0	named	CEngine::LoadNewScene	OPEN			
 00b27d90	named	CEngine::CEngine::Render	OPEN			
 00b2b9b0	named	CEngineSurfaceCompositionManager::GetComposedSurface	OPEN			
-00b2bd80	named	CEngineSurfaceCompositionManager::WriteTextureToBank	IN_PROGRESS			batch e06
+00b2bd80	named	CEngineSurfaceCompositionManager::WriteTextureToBank	IN_PROGRESS			batch e07
 00b2c010	named	CEngineSurfaceCompositionManager::PreloadCompletedBank	OPEN			
 00b2f760	named	CEnginePrimitiveOcclusionManager::CEnginePrimitiveOcclusionManager	OPEN			
 00b2fd60	named	CEngineCamera::SetupGamut	OPEN			
@@ -716,7 +716,7 @@ address	kind	name	state	true_length	staged_folder	note
 00bc9b30	named	CEngineTreeFilerBase::FindNode	OPEN			
 00bca510	identify	_global::CEngineVertexBufferPool_AllocateBuffer	OPEN			
 00bcee20	named	CEngineInternalPrimitiveAnimatedMesh::?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveAnimatedMesh@@UAE_NAAVC3DBoundingBox@@@Z	OPEN			
-00bcf040	named	CEngineInternalPrimitiveAnimatedMesh::?IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh@@UAE_NABVCEngineCamera@@_N@Z	OPEN			
+00bcf040	named	CEngineInternalPrimitiveAnimatedMesh::?IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh@@UAE_NABVCEngineCamera@@_N@Z	IN_PROGRESS			batch e07
 00bd2360	named	CEnginePrimitiveManagerAnimatedMeshesBase::CEnginePrimitiveManagerAnimatedMeshesBase::PreloadPrimitive	OPEN			
 00bd3070	named	CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive	OPEN			
 00bd6810	named	CEnginePrimitiveManagerAnimatedMeshesBase::RenderDebugBoneHierarchy	OPEN			
