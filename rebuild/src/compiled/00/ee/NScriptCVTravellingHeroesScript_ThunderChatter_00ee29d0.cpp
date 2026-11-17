@@ -8,12 +8,9 @@
 // Layout: Ego_r.pdb CV_TravellingHeroesScript members, each at Ego_r offset - 0x14 (retail CScriptBase is 0x40).
 // Callees: interface slot 7 NewScriptFrame; DoConversation 0x00EE2A80 (landed); IsActiveThreadTerminating 0x00CB7940 (the
 //   trailing check is a tail jump). Data: pGlobalScriptDef 0x0143E90C, TH_ThunderConv_Length at retail +0x928.
-class CScriptDef {                                      // Ego_r.pdb CScriptDef; retail offsets
-public:
-    unsigned char _pad0[0x928];
-    long TH_ThunderConv_Length;                         // +0x928 (Ego_r +0x9ac; the landed DoConversation reads the vectors after it at +0x92c)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

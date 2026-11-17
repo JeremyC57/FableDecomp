@@ -20,46 +20,16 @@
 // Shape: the AddQuestRegion temporaries are built right to left ("Arena" first) and destroyed in reverse.
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : protected _Vector_base<_Tp, _Alloc> {
-public:
-    vector& operator=(const vector& __x);               // 0x00F26C30 for CHeroSoulsRoundDef
-};
-}
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
+// agentNF60: std::vector is the shared STLport 4.6 vector (stlport/fable_containers.h; was a local namespace-std stand-in).
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 class CHeroSoulsWaveDef;
-class CHeroSoulsRoundDef : public CDefClassBase {      // 0x38 bytes (the landed operator= stride)
-public:
-    virtual ~CHeroSoulsRoundDef();
-    virtual void Transfer(CPersistContext& context);
-    virtual void Copy(const CDefClassBase* other);
-    virtual unsigned long GetSizeofClass();
-    long                            NumWaves;           // +0x28
-    std::vector<CHeroSoulsWaveDef>  Waves;              // +0x2c
-};
-class CScriptDef {                                      // retail layout (Ego_r 0x1154 with Dinkumware containers)
-public:
-    unsigned char _before[0x1050];
-    std::vector<CHeroSoulsRoundDef> HeroSoulsRounds;    // +0x1050 (Ego_r 0x1114)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
+// agentNF60: CHeroSoulsRoundDef is engine/CHeroSoulsRoundDef.h (through engine/CScriptDef.h; was a local model).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 #include "engine/CTimer.h"

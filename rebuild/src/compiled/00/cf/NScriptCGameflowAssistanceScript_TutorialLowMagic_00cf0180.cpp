@@ -17,11 +17,8 @@
 // Shape: a rotated `while` over the warning count with the cooldown counter in edi; the def is read into a block-local
 //   pointer before the will-energy call (kept in ebx for the compare); both message strings are implicit
 //   conversion temporaries of the guild-master call (built before the pushes, destroyed after it).
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 struct CGameScriptInterface_Calls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -78,13 +75,11 @@ struct CGameScriptInterface_Calls {
     virtual void v387(); virtual void v388(); virtual void v389(); virtual void v390(); virtual void v391(); virtual void v392(); virtual void v393();
     virtual bool IsHeroControlledByPlayer() const;   // slot 394 (+0x628)
 };
-class CScriptDef { public:
-    unsigned char _pad000[0xff4];
-    float LowWillEnergyThreshold;                       // +0xff4
-    long  WillEnergyWarningCooldown;                    // +0xff8
-    long  MaxWillEnergyWarnings;                        // +0xffc
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: LowWillEnergyThreshold -> LowWillEnergyWarningLevel (+0xff4), WillEnergyWarningCooldown -> LowWillEnergyMessageInterval (+0xff8), MaxWillEnergyWarnings -> WillEnergyMessageLimit (+0xffc).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CQuestMasterData {
     unsigned char _pad00[0x67];
     bool TutorialsDisabled;                             // +0x67
@@ -108,7 +103,7 @@ class CGameflowAssistanceScript : public CScriptBase { public:
 void CGameflowAssistanceScript::Tutorial_LowMagic()
 {
     long cooldown = 0;
-    while (WillEnergyWarningsGiven < pGlobalScriptDef->MaxWillEnergyWarnings) {
+    while (WillEnergyWarningsGiven < pGlobalScriptDef->WillEnergyMessageLimit) {
         GSI->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
@@ -118,12 +113,12 @@ void CGameflowAssistanceScript::Tutorial_LowMagic()
             if (IsActiveThreadTerminating())
                 return;
             if (cooldown <= 0) {
-                CScriptDef* def = pGlobalScriptDef;
-                if (GSI->GetHeroWillEnergyLevel() < def->LowWillEnergyThreshold) {
+                const CScriptDef* def = pGlobalScriptDef.Get();
+                if (GSI->GetHeroWillEnergyLevel() < def->LowWillEnergyWarningLevel) {
                 if (IsActiveThreadTerminating())
                     return;
                 GSI->HeroReceiveMessageFromGuildMaster("TEXT_QST_080_WILL_LOW", "", true, false);
-                cooldown = pGlobalScriptDef->WillEnergyWarningCooldown;
+                cooldown = pGlobalScriptDef->LowWillEnergyMessageInterval;
                 ++WillEnergyWarningsGiven;
                 }
             }

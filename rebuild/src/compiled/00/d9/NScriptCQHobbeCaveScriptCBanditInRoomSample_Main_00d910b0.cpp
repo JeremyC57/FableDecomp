@@ -26,11 +26,8 @@ class CThing;
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CGameScriptInterface.h"
 #include "engine/CEntityScriptBase.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
@@ -40,11 +37,9 @@ inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-class CScriptDef { public:
-    unsigned char _pad[0xcb0];
-    long HC_BanditCallsForHelpDelay;                    // +0xCB0 retail (Ego_r.pdb +0xD60)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_HobbeCaveScript { public:

@@ -24,16 +24,15 @@ extern "C" int __cdecl rand();                           // 0x00BFEB16
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
-class CScriptDef { public:
-    unsigned char _pad[0x9c8];
-    long RandomSpeechTimeMax;                            // +0x9c8
-    long RandomSpeechTimeRange;                          // +0x9cc
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: RandomSpeechTimeMax -> TraderRandomSpeechTimerMax (+0x9c8), RandomSpeechTimeRange -> TraderRandomSpeechTimerVar (+0x9cc).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 void NScript::CQR_EscortTraderScript::ResetTraderRandomSpeechTime()
 {
-    CScriptDef* def = pGlobalScriptDef;
-    long time = pGlobalScriptDef->RandomSpeechTimeMax - rand() % def->RandomSpeechTimeRange;
+    const CScriptDef* def = pGlobalScriptDef.Get();
+    long time = pGlobalScriptDef->TraderRandomSpeechTimerMax - rand() % def->TraderRandomSpeechTimerVar;
     pDSTGame->SetTimer(TraderRandomSpeechTimer.TimerIndex, time);
 }

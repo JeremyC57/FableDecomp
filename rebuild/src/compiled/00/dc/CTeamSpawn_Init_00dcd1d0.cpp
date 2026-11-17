@@ -18,37 +18,15 @@
 //   CV_ChapelOfEvilScript::WatchForExpressions 0x00E6A000).
 #include <string.h>
 
-long __fastcall Compare(const char* a, const char* b);   // 0x00411570
+// agentNF60: CCharString / CCharStringData / CBasicString<char> are fable_string.h's (were local models); CBasicString::operator==(const char*)
+//   expands in place (FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE) over the protected static Compare 0x00411570.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE
+#include "fable_string.h"
 
 #pragma pack(push, 1)
-struct CBasicStringChar {                                // CBasicString<char>, 13 bytes
-    char*         PData;
-    unsigned long StringLength;
-    unsigned long DataLength : 31;
-    bool          UseFastExtend : 1;
-    bool operator==(const char* text) const { return Compare(PData, text) ? false : true; }
-};
-class CCharStringData { public:
-    CBasicStringChar Data;
-    long             NoRefs;
-};
 #pragma pack(pop)
 
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-    const CCharString& operator=(const char* text);      // 0x0099EFE0
-    bool operator==(const char* text) const
-    {
-        if (PStringData == 0) {
-            if (strcmp(text, "") == 0)
-                return true;
-            return false;
-        }
-        return PStringData->Data == text;
-    }
-};
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
 #include "engine/CCountedPointer.h"
@@ -68,12 +46,9 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad000[0xd6c];
-    long GuardReinforcementsYourTeam;                    // +0xd6c (PDB +0xE1C)
-    long GuardReinforcementsEnemyTeam;                   // +0xd70 (PDB +0xE20)
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 struct CQ_OrchardFarmRaidScript {
     unsigned char _pad00[0x78];

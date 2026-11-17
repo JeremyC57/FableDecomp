@@ -25,18 +25,9 @@
 //   predicate headers: 0x012EA43C binds ??_7CIsVariableFalse@NScript@@6B@ (was ??_7CIsFlagFalse@@6B@), 0x012EA430 / 0x00E7E020 the
 //   CPredicate_And<CIsThingAlive,CIsVariableFalse> vtable / ctor (was CAndPredicate).
 #include "fable_compiler.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const char* text);           // 0x0099EFE0
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString(const unsigned short* text);            // 0x0099B6B0
-    ~CWideString();                                     // 0x0099B510
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING                       // agentNF60: was a local CWideString stand-in (ctor 0x0099B6B0, dtor 0x0099B510)
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 void operator delete(void* p);                          // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
@@ -78,11 +69,11 @@ bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, con
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad[0x5e0];
-    long FisticuffsLosingHealth;                        // +0x5e0
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: FisticuffsLosingHealth -> FC_MinimumFighterHealth (+0x5e0).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CV_FisticuffsClubScript { public:                 // Ego_r.pdb / FableWin.pdb NScript::CV_FisticuffsClubScript
     struct CRingFighter;                                // nested entity script
@@ -162,8 +153,8 @@ void CV_FisticuffsClubScript::CRingFighter::Main()
             Game->ClearThingBestEnemyTarget(Me);
             return;
         }
-        const CScriptDef* def = pGlobalScriptDef;
-        if (Game->GetHealth(Me) <= def->FisticuffsLosingHealth) {
+        const const CScriptDef* def = pGlobalScriptDef.Get();
+        if (Game->GetHealth(Me) <= def->FC_MinimumFighterHealth) {
             if (IsActiveThreadTerminating())
                 return;
             CScriptThing loserPos = Game->GetThingWithScriptName("LoserFighterPos");

@@ -13,11 +13,8 @@
 // Naming wave 35: identity reg 00e3787f "AttackingAssassin" in 00e377d0; Alloc 00e382c0; vtable 012e36e8 slot 1; PDB ?Main@CAttackingAssassin@CV_AssassinAttacksScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CAttackingAssassin::Main (wave3/labels_alloc.tsv); PDB ?Main@CAttackingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAttackingAssassin@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CCountedPointer.h"
@@ -64,20 +61,14 @@ public:
 };
 
 
-class CDefString { public:                                    // 4 bytes: a def-side string
-    void* PStringData;
-    operator CCharString() const;                      // 0x00415D70
-};
 extern "C" int __cdecl rand();                         // 0x00BFEB16 (MSVCR71)
-class CScriptDef { public:
-    unsigned char _pad[0x3a0];
-    long AssassinShoutDistance;                        // +0x3a0
-    unsigned char _pad3a4[0x8];
-    CDefString* AssassinTauntsBegin;                   // +0x3ac vector<CDefString> (retail STLport, 12 bytes)
-    CDefString* AssassinTauntsEnd;                     // +0x3b0
-    CDefString* AssassinTauntsEndOfStorage;            // +0x3b4
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: AssassinShoutDistance -> AssassinScreamProximity (+0x3a0).
+// agentNF60: AssassinTauntsBegin / End (+0x3ac / +0x3b0) -> AssassinScreamSoundIds (std::vector<CDefString>, +0x3ac) through size() / operator[].
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CV_AssassinAttacksScript {    // the PDB owner script; only its nested entity class is modelled here
@@ -121,16 +112,16 @@ void NScript::CV_AssassinAttacksScript::CAttackingAssassin::Main()
     if (!HasTaunted) {
         if (IsActiveThreadTerminating())
             return;
-        while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->AssassinShoutDistance)) {
+        while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->AssassinScreamProximity)) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
                 return;
         }
         if (IsActiveThreadTerminating())
             return;
-        unsigned long count = pGlobalScriptDef->AssassinTauntsEnd - pGlobalScriptDef->AssassinTauntsBegin;
+        unsigned long count = pGlobalScriptDef->AssassinScreamSoundIds.size();
         unsigned long index = rand() % count;
-        Game->PlaySoundOnThing(Me, pGlobalScriptDef->AssassinTauntsBegin[index]);
+        Game->PlaySoundOnThing(Me, pGlobalScriptDef->AssassinScreamSoundIds[index]);
         HasTaunted = true;
         scripted.StopFollowingThing(Game->GetHero());
     }

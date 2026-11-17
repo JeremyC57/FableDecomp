@@ -17,7 +17,8 @@
 #include "engine/CDefPointer.h"
 #include "engine/CParentDefClassBase.h"
 class CCharStringData;
-class CCharString{protected:CCharStringData*PStringData;public:CCharString(const char*,long=-1);~CCharString();};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 FABLE_FORCEINLINE CScriptThing::~CScriptThing(){}
 inline bool CScriptThing::IsAlive()const{return PImp.Get()&&PImp->IsAlive();}
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing&thing):Thing(thing){}
@@ -28,8 +29,9 @@ FABLE_FORCEINLINE NScript::CIsThingAlive::~CIsThingAlive(){
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing&,const CScriptThing&,float);
 // Layout: donor CParentDefClassBase3d becomes retail39; first scalar donor40 becomes
 // native3c. EXPERIENCE_GRANT_LARGE donor48 is native44, independently used here.
-class CScriptDef:public CParentDefClassBase{unsigned char unobservedSmallAndMediumGrants[0x44-0x39];public:long EXPERIENCE_GRANT_LARGE;};
-extern CDefPointer<const CScriptDef>pGlobalScriptDef;
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (agentNF60: was a local extern over a local CScriptDef model)
 namespace NScript{
 class CQ_SunnyvaleMasterData;
 // Layout: shared level-script base48 versus donor5c. Original flags retain their

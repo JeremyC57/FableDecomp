@@ -993,11 +993,8 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-class CCharString { public:
- void* PStringData;
- CCharString(const char* text, long length = -1);   // 0x0099EBF0
- ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CBaseObjectDtor {                               // the same root, as its destructor sees it
@@ -1041,13 +1038,9 @@ class CCounter { public:
  bool operator>(float seconds) const;               // 0x00D90670
  CCounter& operator=(float seconds);                // 0x00D90550
 };
-class CScriptDef { public:
- unsigned char _pad[0xcac];
- long HC_BanditTimeBeforeComment;                   // +0xCAC (PDB +0xd5c)
- unsigned char _padcb0[0xcc4 - 0xcb0];
- long HC_BanditCloseToMarkerDistance;               // +0xCC4 (PDB +0xd74)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CQ_HobbeCaveScript {
  unsigned char BaseState[0x6b];
  bool HobbesCloseby;                                // +0x6B (PDB +0x7f)

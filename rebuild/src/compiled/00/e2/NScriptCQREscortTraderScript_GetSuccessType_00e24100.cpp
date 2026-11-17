@@ -1,7 +1,7 @@
 // NScript::CQR_EscortTraderScript::GetSuccessType(const CScriptThing& trader) -- grade a finished escort: untouched trader at full health = 3, then two tiers by hit count and remaining health fraction from the script def, else 0
 // Leaf: ?GetSuccessType@CQR_EscortTraderScript@NScript@@QAE?AW4EscortTraderSuccessType@12@ABVCScriptThing@@@Z
 // Grade: MATCH (retry 9) -- the hit-limit test reads the global directly and the fraction test reads it through a block-local
-//   `CScriptDef* def = pGlobalScriptDef;` declared inside the hit-limit `if`: the global load is CSE'd into the local, which is
+//   `const CScriptDef* def = pGlobalScriptDef.Get();` declared inside the hit-limit `if`: the global load is CSE'd into the local, which is
 //   copied to ebx before the GetHealth call (`mov ebx,eax ; fcomp [ebx+990h]`); with both reads on the global (or one local
 //   covering both) VC7.1 folds the field address (`lea ebx,[eax+990h] ; fcomp [ebx]`) or colours the def/trader pair the other way
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E24100, length 170 bytes, `ret 4`.
@@ -23,14 +23,11 @@ class CScriptThing;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad000[0x988];
-    long  EscortTraderGreatMaxHits;                     // +0x988
-    long  EscortTraderGoodMaxHits;                      // +0x98c
-    float EscortTraderGreatMinHealthFraction;           // +0x990
-    float EscortTraderGoodMinHealthFraction;            // +0x994
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: EscortTraderGreatMaxHits -> EscortTraderHitCountHigh (+0x988), EscortTraderGoodMaxHits -> EscortTraderHitCountMedium (+0x98c), EscortTraderGreatMinHealthFraction -> EscortTraderHealthHigh (+0x990), EscortTraderGoodMinHealthFraction -> EscortTraderHealthMedium (+0x994).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
@@ -56,14 +53,14 @@ CQR_EscortTraderScript::EscortTraderSuccessType CQR_EscortTraderScript::GetSucce
 {
     if (TraderHitCount == 0 && GSI->GetHealth(trader) == TraderInitialHealth)
         return ESCORT_TRADER_SUCCESS_PERFECT;
-    if (TraderHitCount <= pGlobalScriptDef->EscortTraderGreatMaxHits) {
-        CScriptDef* def = pGlobalScriptDef;
-        if (def->EscortTraderGreatMinHealthFraction <= GSI->GetHealth(trader) / TraderInitialHealth)
+    if (TraderHitCount <= pGlobalScriptDef->EscortTraderHitCountHigh) {
+        const CScriptDef* def = pGlobalScriptDef.Get();
+        if (def->EscortTraderHealthHigh <= GSI->GetHealth(trader) / TraderInitialHealth)
             return ESCORT_TRADER_SUCCESS_GREAT;
     }
-    if (TraderHitCount <= pGlobalScriptDef->EscortTraderGoodMaxHits) {
-        CScriptDef* def = pGlobalScriptDef;
-        if (def->EscortTraderGoodMinHealthFraction <= GSI->GetHealth(trader) / TraderInitialHealth)
+    if (TraderHitCount <= pGlobalScriptDef->EscortTraderHitCountMedium) {
+        const CScriptDef* def = pGlobalScriptDef.Get();
+        if (def->EscortTraderHealthMedium <= GSI->GetHealth(trader) / TraderInitialHealth)
             return ESCORT_TRADER_SUCCESS_GOOD;
     }
     return ESCORT_TRADER_SUCCESS_BASIC;

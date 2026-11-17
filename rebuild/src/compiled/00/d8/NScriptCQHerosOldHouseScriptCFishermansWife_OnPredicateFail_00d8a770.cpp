@@ -6,13 +6,8 @@
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CScriptThing::MsgIsKilledBy (slot 18, +0x48; CScriptThing vtable 0x01238C8C); interface slot 156 GiveHeroMorality(float).
 // Data: "SCRIPT_NAME_HERO" @ 0x0125D1C8; pGlobalScriptDef @ 0x0143E90C, HOH_MoralityLoss +0xF64 (Ego_r.pdb CScriptDef +0x1020; retail = PDB - 0xBC here, as HangingTreeProtectBanditsBoastReward +0xF50 / PDB +0x100C).
 // Layout: Ego_r.pdb CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}; the entity's own members keep their Ego_r offsets. Parent: WifeAttackedAndLeft +0x4c (Ego_r.pdb +0x60).
-class CCharString {                                      // 4 bytes: the counted string-data pointer
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);      // 0x0099EBF0
-    ~CCharString();                                       // 0x0099EAE0
-    const CCharString& operator=(const char* text);       // 0x0099EFE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -24,12 +19,9 @@ inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other)
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
-class CScriptDef {
-public:
-    unsigned char _pad000[0xf64];
-    float         HOH_MoralityLoss;                       // +0xf64 (Ego_r.pdb +0x1020)
-};
-extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 namespace NScript {

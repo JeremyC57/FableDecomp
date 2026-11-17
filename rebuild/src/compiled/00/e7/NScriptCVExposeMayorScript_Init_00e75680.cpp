@@ -26,12 +26,11 @@ struct CQuestScriptBase : CScriptBase {                  // retail 0x48 bytes
     void* Owner;                                         // +0x44
 };
 
-class CScriptDef { public:
-    unsigned char _pad[0x588];
-    CCharString ExposeMayorEvidence;                     // +0x588
-    float ExposeMayorMaxFlashDistFromStables;            // +0x58c
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: ExposeMayorEvidence -> ExposeMayorEvidenceDef (+0x588), ExposeMayorMaxFlashDistFromStables -> EMMaxFlashDistFromStables (+0x58c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CV_ExposeMayorScript : public CQuestScriptBase {
@@ -56,12 +55,12 @@ void NScript::CV_ExposeMayorScript::Init()
 {
     Path = 0;
     StageNumber = 0;
-    Evidence = pGlobalScriptDef->ExposeMayorEvidence;
+    Evidence = pGlobalScriptDef->ExposeMayorEvidenceDef;
     HeroFlashedLightsCorrectly = false;
     PrisonerTalkedAboutLamp = false;
     ResetLamp = false;
     SaidYesToBecomeMayor = false;
     QuestCardGiven = false;
     MayorExposeGhostCutscenePlayed = false;
-    MaxFlashDistFromStables = pGlobalScriptDef->ExposeMayorMaxFlashDistFromStables;
+    MaxFlashDistFromStables = pGlobalScriptDef->EMMaxFlashDistFromStables;
 }

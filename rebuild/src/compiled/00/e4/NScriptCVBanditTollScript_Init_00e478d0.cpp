@@ -8,12 +8,9 @@
 // Data: pGlobalScriptDef 0x0143E90C, CScriptDef::TollBanditFee (Ego_r +0x464, retail +0x430: 13 Dinkumware vectors
 //   (0x10) before it are 0xC in retail).
 class CGameScriptInterface;
-class CScriptDef {                                      // Ego_r.pdb CScriptDef; retail offsets (STLport vectors 0xC)
-public:
-    unsigned char _pad0[0x430];
-    long TollBanditFee;                                 // +0x430 (Ego_r +0x464)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 class CPersistContext;
 // CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).

@@ -9,19 +9,11 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CScriptDef { public:                                // the global script definition block
-    unsigned char _pad000[0x5ec];
-    long FisticuffsAllowedHitsBowerstone;          // +0x5ec (region 1)
-    long FisticuffsAllowedHitsOakvale;             // +0x5f0 (region 2)
-    long FisticuffsAllowedHitsBanditCamp;          // +0x5f4 (region 3)
-    long FisticuffsAllowedHitsKnotholeGlade;       // +0x5f8 (region 4)
-    long FisticuffsAllowedHitsScale;               // +0x5fc
-    long FisticuffsFightCountBowerstone;           // +0x600 (region 1)
-    long FisticuffsFightCountOakvale;              // +0x604 (region 2)
-    long FisticuffsFightCountBanditCamp;           // +0x608 (region 3)
-    long FisticuffsFightCountKnotholeGlade;        // +0x60c (region 4)
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: FisticuffsAllowedHitsBowerstone -> FC_BowerstoneAllowedHits (+0x5ec), FisticuffsAllowedHitsOakvale -> FC_OakvaleAllowedHits (+0x5f0), FisticuffsAllowedHitsBanditCamp -> FC_BanditCampAllowedHits (+0x5f4), FisticuffsAllowedHitsKnotholeGlade -> FC_KnotholeGladeAllowedHits (+0x5f8), FisticuffsAllowedHitsScale -> FC_HitsDepletionOverSession (+0x5fc), FisticuffsFightCountBowerstone -> FC_BowerstoneFightCount (+0x600), FisticuffsFightCountOakvale -> FC_OakvaleFightCount (+0x604), FisticuffsFightCountBanditCamp -> FC_BanditCampFightCount (+0x608), FisticuffsFightCountKnotholeGlade -> FC_KnotholeGladeFightCount (+0x60c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CV_FisticuffsClubScript {
 public:
@@ -42,16 +34,16 @@ void NScript::CV_FisticuffsClubScript::SetAllowedHits(long hits)
     switch (RelevantRegion)
     {
     case 1:
-        AllowedHits = (long)(pGlobalScriptDef->FisticuffsAllowedHitsBowerstone - (float)hits / FightCount * pGlobalScriptDef->FisticuffsAllowedHitsScale);
+        AllowedHits = (long)(pGlobalScriptDef->FC_BowerstoneAllowedHits - (float)hits / FightCount * pGlobalScriptDef->FC_HitsDepletionOverSession);
         return;
     case 4:
-        AllowedHits = (long)(pGlobalScriptDef->FisticuffsAllowedHitsKnotholeGlade - (float)hits / FightCount * pGlobalScriptDef->FisticuffsAllowedHitsScale);
+        AllowedHits = (long)(pGlobalScriptDef->FC_KnotholeGladeAllowedHits - (float)hits / FightCount * pGlobalScriptDef->FC_HitsDepletionOverSession);
         return;
     case 2:
-        AllowedHits = (long)(pGlobalScriptDef->FisticuffsAllowedHitsOakvale - (float)hits / FightCount * pGlobalScriptDef->FisticuffsAllowedHitsScale);
+        AllowedHits = (long)(pGlobalScriptDef->FC_OakvaleAllowedHits - (float)hits / FightCount * pGlobalScriptDef->FC_HitsDepletionOverSession);
         return;
     case 3:
-        AllowedHits = (long)(pGlobalScriptDef->FisticuffsAllowedHitsBanditCamp - (float)hits / FightCount * pGlobalScriptDef->FisticuffsAllowedHitsScale);
+        AllowedHits = (long)(pGlobalScriptDef->FC_BanditCampAllowedHits - (float)hits / FightCount * pGlobalScriptDef->FC_HitsDepletionOverSession);
         return;
     }
     AllowedHits = hits;

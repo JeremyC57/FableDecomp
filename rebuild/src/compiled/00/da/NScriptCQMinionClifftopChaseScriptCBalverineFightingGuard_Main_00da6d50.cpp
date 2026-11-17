@@ -26,11 +26,8 @@
 //   Was `?Main@CBalverineFightingGuard@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_MinionClifftopChaseScript moved into NScript); same bytes.
 #include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 class CRGBColour { public:
     unsigned char B, G, R, A;
@@ -74,7 +71,7 @@ class CGameScriptInterface { public:
     VPAD16(sa) VPAD8(sb) VPAD4(sc) VPAD2(sd)                                         // slots 78..107
     virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) const;       // slot 108 (+0x1b0)
     VPAD32(ta) VPAD8(tb) VPAD4(tc) VPAD2(td) VPAD1(te)                               // slots 109..155
-    virtual void GiveHeroMorality(long amount) const;                                // slot 156 (+0x270)
+    virtual void GiveHeroMorality(float amount) const;                                // slot 156 (+0x270) (agentNF60: float, as engine/CGameScriptInterface.h and the PDB def member MCC_SavedGuardMoralityGain)
     VPAD64(ua) VPAD8(ub)                                                             // slots 157..228
     virtual void EntityFollowThing(const CScriptThing& thing, const CScriptThing& target, float distance, bool a) const;   // slot 229 (+0x394)
     VPAD64(va) VPAD16(vb) VPAD8(vc) VPAD2(vd) VPAD1(ve)                              // slots 230..320
@@ -90,13 +87,11 @@ class CGameScriptInterface { public:
     VPAD16(wa2) VPAD8(wb2) VPAD4(wc2)                                                // slots 452..479
     virtual void SetEntityAsRegionFollowing(const CScriptThing& thing, const CScriptThing& leader, bool follow) const;   // slot 480 (+0x780)
 };
-class CScriptDef { public:
-    unsigned char _pad[0xd44];
-    long          GuardTalkDistance;                   // +0xd44
-    unsigned char _pad2[0xd50 - 0xd48];
-    long          GuardRescueMorality;                 // +0xd50
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: GuardTalkDistance -> MCC_GuardTalkingDistance (+0xd44), GuardRescueMorality -> MCC_SavedGuardMoralityGain (+0xd50).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
@@ -193,7 +188,7 @@ void NScript::CQ_MinionClifftopChaseScript::CBalverineFightingGuard::Main()
             return;
         Game->DisplayQuestInfo(true);
         HealthBarID = Game->AddQuestInfoBarHealth(Me, CRGBColour(0, 255, 0, 255), "HUD_QUEST_ICON_GUARD", 1.0f);
-        while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->GuardTalkDistance)) {
+        while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->MCC_GuardTalkingDistance)) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
                 return;
@@ -210,7 +205,7 @@ void NScript::CQ_MinionClifftopChaseScript::CBalverineFightingGuard::Main()
         }
         if (IsActiveThreadTerminating())
             return;
-        Game->GiveHeroMorality(pGlobalScriptDef->GuardRescueMorality);
+        Game->GiveHeroMorality(pGlobalScriptDef->MCC_SavedGuardMoralityGain);
         conversation = Game->AddNewConversation(Me, false, false);
         Game->AddLineToConversation(conversation, "TEXT_QST_045_GUARD_THANKS", false, Me, CScriptThing());
         Game->EntityFollowThing(Me, Game->GetHero(), 3.0f, true);

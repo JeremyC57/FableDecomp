@@ -10,26 +10,12 @@
 // Callees: CScriptThing slot 18 MsgIsKilledBy ("" 0x0122D70E conditional temporary); CCharString(const char*, long)
 //   0x0099EBF0 / ~CCharString 0x0099EAE0; CDefString::operator CCharString() (non-const) 0x00415D70; interface slots 121
 //   GiveHeroObject, 156 GiveHeroMorality. Data: pGlobalScriptDef 0x0143E90C.
-class CCharString {
-public:
-    void* PData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CDefString {                                      // Ego_r.pdb CDefString, 4 bytes
-public:
-    operator CCharString() const;                       // 0x00415D70 (Ego_r / FableWin ??BCDefString@@QBE?AVCCharString@@XZ; naming wave 13)
-    CCharString GetString() const;                      // 0x00415DD0 (FableWin ?GetString@CDefString@@QBE?AVCCharString@@XZ)
-    long _index;
-};
-class CScriptDef {                                      // Ego_r.pdb CScriptDef; retail offsets (agent501: AssassinThreatDistSq +0x720)
-public:
-    unsigned char _pad0[0x738];
-    CDefString IngredientObject;                        // +0x738 (Ego_r +0x794)
-    unsigned char _pad73c[0x768 - 0x73c];
-    float KilledSomeoneForMushroom;                     // +0x768 (Ego_r +0x7c8, after the 16->12 byte vector SickChildsSisterAttentionAnims)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

@@ -6,11 +6,8 @@
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 struct CScriptThingImp {
     virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();
     virtual const C3DVector& GetPosition() const;      // slot 6 (+0x18)
@@ -52,13 +49,11 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
 #include "engine/CGameScriptInterface.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
-class CScriptDef { public:
-    unsigned char _pad[0xe44];
-    long  WomanFleeTriggerDistance;                    // +0xe44
-    long  WomanFleeTalkDistance;                       // +0xe48
-    float WomanFadeTime;                               // +0xe4c
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: WomanFleeTriggerDistance -> WB_ScreamingVillagerDistance (+0xe44), WomanFleeTalkDistance -> WB_ScreamingVillagerScreamsDistance (+0xe48), WomanFadeTime -> WB_ScreamingVillagerFadeOutTime (+0xe4c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CPredicateBase
 {
@@ -118,7 +113,7 @@ void NScript::CQ_WaspBossScript::CFleeingWoman::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->WomanFleeTriggerDistance)) {
+    while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->WB_ScreamingVillagerDistance)) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
@@ -128,7 +123,7 @@ void NScript::CQ_WaspBossScript::CFleeingWoman::Main()
     CScriptThing target = Game->GetThingWithScriptName("FleeingWomanEscapePos");
     if (!IsActiveThreadTerminating()) {
         for (;;) {
-            if (!Talked && IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->WomanFleeTalkDistance)) {
+            if (!Talked && IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->WB_ScreamingVillagerScreamsDistance)) {
                 if (IsActiveThreadTerminating())
                     return;
                 Talked = true;
@@ -149,6 +144,6 @@ void NScript::CQ_WaspBossScript::CFleeingWoman::Main()
         }
         if (IsActiveThreadTerminating())
             return;
-        FadeOutAndKillEntity(Me, true, pGlobalScriptDef->WomanFadeTime, true);
+        FadeOutAndKillEntity(Me, true, pGlobalScriptDef->WB_ScreamingVillagerFadeOutTime, true);
     }
 }

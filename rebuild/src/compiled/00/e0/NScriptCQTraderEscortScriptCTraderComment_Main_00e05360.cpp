@@ -16,11 +16,8 @@
 //   CDarkwoodTrader::OnPredicateFail 0x00E01760); CScriptDef TE_TraderCommentDistance PDB +0xEC0 = retail +0xE10.
 // Shape: generated script code; the trader list is a function-scope vector whose destructor VC7.1 expands at three exits
 //   and calls out of line at the two under `#pragma inline_depth(0)`.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -67,11 +64,9 @@ struct GameCalls {                                      // CGameScriptInterface,
     virtual void v100() const; virtual void v101() const; virtual void v102() const; virtual void v103() const; virtual void v104() const; virtual void v105() const; virtual void v106() const; virtual void v107() const;
     virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) const;   // slot 108 (+0x1b0)
 };
-class CScriptDef { public:
-    unsigned char _pad[0xe10];
-    long          TE_TraderCommentDistance;             // +0xe10 (PDB +0xec0)
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript { class CPredicateBase; }
 class CEntityScriptBase { public:                        // the PDB class the accessors belong to (Ego_r.pdb CEntityScriptBase, global)
     bool IsActiveThreadTerminating() const;             // 0x00F35B30

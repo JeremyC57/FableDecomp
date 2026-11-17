@@ -19,11 +19,8 @@
 // Naming wave 35: identity reg 00e47ce9 "SafeTrader" in 00e479b0; Alloc 00e4a190; vtable 012e4f14 slot 1; PDB ?Main@CSafeTrader@CV_BanditTollScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSafeTrader::Main (wave3/labels_alloc.tsv); PDB ?Main@CSafeTrader@CV_BanditTollScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CSafeTrader@@QAEXXZ`; this source now defines the PDB member (outer stand-in CV_BanditTollScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 enum EHeroAbility { HERO_ABILITY_14 = 14 };
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CCountedPointer.h"
@@ -53,14 +50,11 @@ void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);  // 0x00CBE716
-class CScriptDef { public:
-    unsigned char _pad0[0x42c];
-    long  SafeTraderWarningDistance;                   // +0x42C
-    unsigned char _pad1[0x43c - 0x430];
-    float SafeTraderEscapeDistance;                    // +0x43C
-    float SafeTraderFadeTime;                          // +0x440
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: SafeTraderWarningDistance -> BanditTollTraderWarnDistance (+0x42c), SafeTraderEscapeDistance -> TollBanditCloseToExit (+0x43c), SafeTraderFadeTime -> TollBanditTimeToFade (+0x440).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)
@@ -124,8 +118,8 @@ void NScript::CV_BanditTollScript::CSafeTrader::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptThing escape = Game->GetThingWithScriptName("SafeTraderEscape");
-    long warningDistance = pGlobalScriptDef->SafeTraderWarningDistance;
-    while (IsDistanceBetweenThingsOver(Me, escape, pGlobalScriptDef->SafeTraderEscapeDistance)) {
+    long warningDistance = pGlobalScriptDef->BanditTollTraderWarnDistance;
+    while (IsDistanceBetweenThingsOver(Me, escape, pGlobalScriptDef->TollBanditCloseToExit)) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
@@ -163,5 +157,5 @@ void NScript::CV_BanditTollScript::CSafeTrader::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    FadeOutAndKillEntity(Me, true, pGlobalScriptDef->SafeTraderFadeTime, true);
+    FadeOutAndKillEntity(Me, true, pGlobalScriptDef->TollBanditTimeToFade, true);
 }

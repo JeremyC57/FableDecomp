@@ -13,14 +13,9 @@
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad[0x2a8];
-    long AmbushScamExperience;                           // +0x2a8
-    long AmbushScamRenown;                               // +0x2ac
-    float AmbushScamMoralityEvil;                        // +0x2b0
-    float AmbushScamMoralityGood;                        // +0x2b4
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 struct CV_AmbushScamScript {
     unsigned char _base[0x40];

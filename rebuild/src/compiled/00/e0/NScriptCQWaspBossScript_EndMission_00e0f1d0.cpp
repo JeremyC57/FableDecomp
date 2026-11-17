@@ -12,17 +12,10 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING                       // agentNF60: was a local CWideString stand-in (ctor 0x0099B6B0, dtor 0x0099B510)
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 class CScriptThing;
-class CWideString { public:
-    void* PStringData;
-    CWideString(const unsigned short* text);                 // 0x0099B6B0
-    ~CWideString();                                      // 0x0099B510
-};
 struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
  virtual void NewScriptFrame(void) const; //slot7 0x006e7410
@@ -126,11 +119,9 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v696();
  virtual void StopOverrideMusic(bool) const; //slot697 0x008912a0
 };
-class CScriptDef { public:
-    unsigned char _pad[0xe58];
-    long WB_ExperienceReward;                            // +0xE58 (PDB +0xF08)
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #define FABLE_RETAIL_NSCRIPT

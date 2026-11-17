@@ -14,11 +14,8 @@
 // inline destructor (vtable store, release, zeroing, ~CBaseClass) and the name's; both names are implicit conversions.
 // Naming wave 35: identity reg 00e47af5 "TollBandit" in 00e479b0; Alloc 00e48b40; vtable 012e4d88 slot 2; PDB ?Init@CTollBandit@CV_BanditTollScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CTollBandit::Init (wave3/labels_alloc.tsv); PDB ?Init@CTollBandit@CV_BanditTollScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CTollBandit@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
-class CCharString { public:                                     // 4 bytes: the shared string block pointer
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -32,11 +29,11 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad[0x414];
-    long          TollBanditPayMeDistance;               // +0x414
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: TollBanditPayMeDistance -> TollBanditPayDistance (+0x414).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 extern const char g_strBanditEscapePoint[];              // 0x012E4DA4 "M_BanditEscapePoint"
 extern const char g_strFactionBanditsFriendly[];         // 0x012D218C "FACTION_BANDITS_FRIENDLY"
 
@@ -70,7 +67,7 @@ void NScript::CV_BanditTollScript::CTollBandit::Init()
     TollState = 1;
     TollBanditOnlyCollectsToll = false;
     KilledReluctantTrader = false;
-    TollBanditPayMeDistance = pGlobalScriptDef->TollBanditPayMeDistance;
+    TollBanditPayMeDistance = pGlobalScriptDef->TollBanditPayDistance;
     BanditEscapeMarker = Game->GetThingWithScriptName(g_strBanditEscapePoint);
     Game->EntitySetInFaction(Me, g_strFactionBanditsFriendly);
     Game->EntitySetThingAsWantingMoney(Me, 0);

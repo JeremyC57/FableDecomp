@@ -11,8 +11,8 @@
 //   0x0099EAE0; CGameScriptInterface slots 7 NewScriptFrame, 72 GetThingWithScriptName(const CCharString&), 103
 //   CreateExperienceOrb(const C3DVector&, long) (engine/CGameScriptInterface.h); CScriptThing slot 6 GetPos (on Me) and the
 //   inline IsAlive (0x004AB130 body, devirtualised on the local: PImp->IsAlive() through slot 75).
-// Globals: pGlobalScriptDef 0x0143E90C (the established bound spelling; Ego_r.pdb names it
-//   NGlobalScriptDefs::pGlobalScriptDef, a CDefPointer<CScriptDef> whose first word is read here); 5.0f 0x012C26D8.
+// Globals: pGlobalScriptDef 0x0143E90C (Ego_r.pdb / FableWin.pdb: the unqualified CDefPointer<const CScriptDef> of
+//   engine/fable_script_def_global.h, read through operator->); 5.0f 0x012C26D8.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8} (engine/CEntityScriptBase.h); Ego_r.pdb CM_Experience ParentClass +0x14,
 //   PMasterData +0x18; CQ_SunnyvaleMasterData MotherDodgingKraken +0x84 (Ego_r.pdb +132); CScriptDef
 //   PrisonExperienceForKillingKraken at retail +0xDE0 (Ego_r.pdb +0xE90; the landed CScriptDef ctor 0x00F28F90 has the
@@ -29,22 +29,17 @@ class CThing;
 #include "engine/CScriptThing.h"
 #include "engine/C3DVector.h"
 // CCharString: the engine string's data pointer and the two members used (no shared header with these spellings).
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CGameScriptInterface.h"
 #include "engine/CEntityScriptBase.h"
 #include "engine/CIsThingConscious.h"
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
 inline NScript::CIsThingConscious::~CIsThingConscious() { }
-class CScriptDef { public:
-    unsigned char _pad0[0xde0];
-    long          PrisonExperienceForKillingKraken;    // +0xDE0 retail (Ego_r.pdb +0xE90)
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CQ_SunnyvaleMasterData { public:
     unsigned char _pad0[0x84];

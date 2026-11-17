@@ -941,11 +941,8 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-class CCharString { public:
- void* PStringData;
- CCharString(const char* text, long length = -1);   // 0x0099EBF0
- ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -966,11 +963,11 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 (established spelling; naming wave 35: was g_bScriptAnimationFlag)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
-class CScriptDef { public:
- unsigned char _pad[0xdc4];
- long          GuardMoanDistance;                    // +0xdc4
-};
-extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: GuardMoanDistance -> PrisonGuardMumbleAudioDistance (+0xdc4).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 extern "C" int rand();                               // 0x00BFEB16
 class CEntityScriptBase
 {
@@ -1016,7 +1013,7 @@ void NScript::CQ_PrisonEscapeRescueMotherScript::CGuardMotherEscape::Main()
  while (!Game->CanThingBe_Seen_ByOtherThing(Game->GetHero(), Me) && !Game->CanThingBe_Heard_ByOtherThing(Game->GetHero(), Me)) {
   Game->NewScriptFrame();
   if (IsActiveThreadTerminating()) return;
-  if (IsDistanceBetweenThingsUnder(Game->GetHero(), Me, (float)pGlobalScriptDef->GuardMoanDistance) && rand() % 500 == 0) {
+  if (IsDistanceBetweenThingsUnder(Game->GetHero(), Me, (float)pGlobalScriptDef->PrisonGuardMumbleAudioDistance) && rand() % 500 == 0) {
    if (IsActiveThreadTerminating()) return;
    long conversation = Game->AddNewConversation(Me, false, false);
    Game->AddLineToConversation(conversation, "TEXT_QST_055_GUARD_MOANING_ABOUT_STUFF", false, Me, Game->GetHero());

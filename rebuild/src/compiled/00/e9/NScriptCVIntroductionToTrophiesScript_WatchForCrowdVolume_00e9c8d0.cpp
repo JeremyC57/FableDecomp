@@ -16,12 +16,8 @@
 //   script statement guarded by its own terminate check (the sibling WatchForInsideTavern 0x00E9CB20 style); the CTimer
 //   operators are `__forceinline` after engine/CTimer.h.
 #include "fable_compiler.h"
-class CCharString {
-public:
-    void* PStringData;
-    CCharString();                                      // 0x0099E4B0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
@@ -33,12 +29,9 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 
-class CScriptDef {
-public:
-    unsigned char _before[0x6cc];
-    long TrophiesInsideTavernTimer;                     // +0x6cc
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

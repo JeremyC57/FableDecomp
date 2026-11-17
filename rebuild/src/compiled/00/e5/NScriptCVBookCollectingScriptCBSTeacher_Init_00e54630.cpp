@@ -8,18 +8,9 @@
 // Layout: Ego_r.pdb CBS_Teacher (entity offsets equal retail): ParentClass +0x14, PMasterData +0x18, members from +0x1c;
 //   the parent level script's members sit at Ego_r offset - 0x14 (retail CScriptBase is 0x40).
 // Callees: __ftol2 0x00BFEA70 (the float-to-long conversion).
-class CScriptDef {                                      // Ego_r.pdb CScriptDef; retail offsets (Ego_r - 0x44: 17 vectors of 0x10 are 0xC)
-public:
-    unsigned char _pad0[0x4e0];
-    long  BooksNumberWanted;                            // +0x4e0 (Ego_r +0x524)
-    long  BooksNumberAccepted;                          // +0x4e4
-    long  BooksNumberComment;                           // +0x4e8
-    long  BooksNumberTotal;                             // +0x4ec
-    long  BadBooksForHat;                               // +0x4f0
-    long  GoodBooksForHat;                              // +0x4f4
-    float BooksMoralityReward;                          // +0x4f8
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

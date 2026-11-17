@@ -19,11 +19,8 @@
 // Naming wave 35: identity reg 00e32606 "AC_DummyStatic" in 00e32540; Alloc 00e33bc0; vtable 012e315c slot 1; PDB ?Main@CAC_DummyStatic@CV_ArcheryCompetitionScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CAC_DummyStatic::Main (wave3/labels_alloc.tsv); PDB ?Main@CAC_DummyStatic@CV_ArcheryCompetitionScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -33,11 +30,11 @@ class CCPPointerInfo;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad[0x37c];
-    long          ArcheryDummyStaticPoints;              // +0x37c (descriptive)
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: ArcheryDummyStaticPoints -> ArcheryScoreDummyStatic (+0x37c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CV_ArcheryCompetitionScript {
 public:
@@ -74,7 +71,7 @@ void NScript::CV_ArcheryCompetitionScript::CAC_DummyStatic::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;
-    PointsValue = pGlobalScriptDef->ArcheryDummyStaticPoints;
+    PointsValue = pGlobalScriptDef->ArcheryScoreDummyStatic;
     float distance = 0.0f;
     while (!IsActiveThreadTerminating()) {
         while (ParentClass->ContestState != 3) {

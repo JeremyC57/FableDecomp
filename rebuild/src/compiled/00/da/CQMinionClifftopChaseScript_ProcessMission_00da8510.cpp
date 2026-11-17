@@ -15,21 +15,12 @@
 // Layout (retail = Ego_r.pdb - 0x14, as the landed CQ_MinionClifftopChaseScript sources): MapKeeperSaidDialog +0x48,
 //   MissionFailed +0x49, TrollFlag +0x54, EscapeTimer +0x5c (CTimer), TimerBarID +0x60, ReasonForFailure +0x64.
 #include "fable_compiler.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const char* text);           // 0x0099EFE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING                       // agentNF60: was a local CWideString stand-in (ctor 0x0099B6B0, dtor 0x0099B510)
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
-class CWideString { public:
-    void* PStringData;
-    CWideString(const unsigned short* text);            // 0x0099B6B0
-    ~CWideString();                                     // 0x0099B510
-};
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
@@ -69,11 +60,11 @@ class CTimer { public:                                         // a script timer
     FABLE_FORCEINLINE void Set(long time) { pDSTGame->SetTimer(Index, time); }
     FABLE_FORCEINLINE long Get() const { return pDSTGame->GetTimer(Index); }
 };
-class CScriptDef { public:
-    unsigned char _pad[0xd54];
-    long MinionChaseEscapeTime;                         // +0xd54
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: MinionChaseEscapeTime -> MCC_Timer (+0xd54).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -126,7 +117,7 @@ void CQ_MinionClifftopChaseScript::ProcessMission()
     if (IsActiveThreadTerminating())
         return;
     Game->StopOverrideMusic(false);
-    long escapeTime = pGlobalScriptDef->MinionChaseEscapeTime;
+    long escapeTime = pGlobalScriptDef->MCC_Timer;
     EscapeTimer.Set(escapeTime);
     Game->DisplayQuestInfo(true);
     TimerBarID = Game->AddQuestInfoTimer(EscapeTimer, "HUD_CLOCK_ICON", 1.0f);

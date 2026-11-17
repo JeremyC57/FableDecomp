@@ -23,37 +23,14 @@
 #include "fable_compiler.h"
 #include <string.h>
 class CCharString;
-template <class T> class CBasicString { public:        // 13 bytes, pack(1)
-    T*            PData;                                // +0x00
-    unsigned long StringLength;                         // +0x04
-    unsigned long DataLength : 31;                      // +0x08
-    bool          UseFastExtend : 1;                    // +0x0c
-    FABLE_FORCEINLINE bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
-protected:
-    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 for <char>
-};
+// agentNF60: CCharString / CCharStringData / CBasicString<char> are fable_string.h's (were local models); CBasicString::operator==(const char*)
+//   expands in place (FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE) over the protected static Compare 0x00411570.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE
+#define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+#include "fable_string.h"
 #pragma pack(push, 1)
-class CCharStringData { public:                         // 17 bytes
-    CBasicString<char> Data;                            // +0x00
-    long               NoRefs;                          // +0x0d
-};
 #pragma pack(pop)
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    FABLE_FORCEINLINE bool operator==(const char* text) const
-    {
-        if (PStringData == 0) {
-            if (strcmp(text, "") == 0)
-                return true;
-            return false;
-        }
-        return PStringData->Data == text;
-    }
-};
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -100,20 +77,11 @@ class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
-class CScriptDef { public:
-    unsigned char _pad[0x3e4];
-    long AssassinExperience;                            // +0x3e4
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C
-namespace std {
-template <class T> class allocator { };
-template <class T, class A = allocator<T> > class vector { public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T& operator[](unsigned int n) { return _M_start[n]; }
-};
-}
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
+// agentNF60: std::vector is the shared STLport 4.6 vector (stlport/fable_containers.h; was a local namespace-std stand-in).
+#include "stlport/fable_containers.h"
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"

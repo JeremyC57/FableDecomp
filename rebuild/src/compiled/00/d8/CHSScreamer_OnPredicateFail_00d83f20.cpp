@@ -19,12 +19,6 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad[0xc78];
-    float         ScreamerBarIncrease;             // +0xc78
-    unsigned char _padc7c[8];
-    long          SuperScreamerTimerTime;          // +0xc84
-};
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
@@ -40,7 +34,11 @@ struct CQ_HeroSoulsMotherScript {
 };
 struct CQ_SunnyvaleMasterData;
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
-extern CScriptDef*           pGlobalScriptDef;             // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: ScreamerBarIncrease -> HS_ScreamerInc (+0xc78), SuperScreamerTimerTime -> HS_SecondsBeforeNewSuperScreamer (+0xc84).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 class CHS_Screamer {
 public:
@@ -57,10 +55,10 @@ public:
 void CHS_Screamer::OnPredicateFail()
 {
     --ParentClass->ScreamersAlive;
-    ParentClass->BarToFill += pGlobalScriptDef->ScreamerBarIncrease;
+    ParentClass->BarToFill += pGlobalScriptDef->HS_ScreamerInc;
     if (SuperScreamer) {
         ParentClass->GotSuperScreamer = false;
-        pDSTGame->SetTimer(ParentClass->NewSuperScreamerTimer.TimerIndex, pGlobalScriptDef->SuperScreamerTimerTime);
+        pDSTGame->SetTimer(ParentClass->NewSuperScreamerTimer.TimerIndex, pGlobalScriptDef->HS_SecondsBeforeNewSuperScreamer);
         Game->RemoveThing(SuperScreamerEffect, false, true);
         Game->EntityEndScreamerSuperAttackThing(Me);
     }

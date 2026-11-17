@@ -17,18 +17,14 @@
 // the out-of-line vector<CArenaRoundDef>::operator= 0x00F25980 (FABLE_RETAIL_STLP_VECTOR_ASSIGN).
 #define FABLE_RETAIL_STLP_VECTOR_ASSIGN
 #include "stlport/fable_containers.h"
-class CCharString { public:
-    void* PStringData;
-    const CCharString& operator=(const char* text);        // 0x0099EFE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 
 class CArenaRoundDef;
 
-class CScriptDef { public:
-    unsigned char _pad0[0x1044];
-    std::vector<CArenaRoundDef> ArenaRounds;                   // +0x1044
-};
-extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CQ_ArenaScript {

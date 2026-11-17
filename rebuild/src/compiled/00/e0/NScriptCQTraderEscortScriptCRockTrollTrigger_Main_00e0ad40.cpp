@@ -17,11 +17,8 @@
 // Naming wave 35: identity reg 00e01059 "RockTrollTrigger" in 00e00db0; Alloc 00e03970; vtable 012df634 slot 1; PDB ?Main@CRockTrollTrigger@CQ_TraderEscortScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CRockTrollTrigger::Main (wave3/labels_alloc.tsv); PDB ?Main@CRockTrollTrigger@CQ_TraderEscortScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CRockTrollTrigger@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_TraderEscortScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
@@ -75,11 +72,9 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad[0xe1c];
-    long TE_EarthTrollTriggerDistance;                 // +0xE1C (PDB +0xECC)
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CQ_TraderEscortScript {
 public:

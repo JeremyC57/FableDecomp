@@ -20,11 +20,8 @@
 #include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CTimer;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 struct CScriptThingImpl;
@@ -81,15 +78,9 @@ inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-class CScriptDef { public:
-    unsigned char _pad0[0x5e4];
-    float FC_OutsideRingRange;                          // +0x5e4
-    float FC_RingTimeOut;                               // +0x5e8
-    unsigned char _pad1[0x61c - 0x5ec];
-    float FC_RingRadius;                                // +0x61c
-    long  FC_InsideRingMessageDelay;                    // +0x620
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 namespace NScript {

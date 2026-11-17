@@ -12,11 +12,8 @@
 //   12 IsRegionLoaded, 70 GetHero, 81 GetNearestWithDefName (by value), 611 EntitySetOpinionReactionMask, 880 SetTradingPriceMult;
 //   pGlobalScriptDef 0x0143E90C.
 // Shape: `while (!x)` waits give neg/sbb/inc, `while (!(!x))` gives setne (GOTCHAS chunk 248).
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
@@ -42,17 +39,9 @@ inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, tim
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
-// CDefPointer<const CScriptDef>: local model (engine/CDefPointer.h + CParentDefClassBase.h pull <stddef.h>, which hangs cl in the lane).
-template <class T> class CDefPointer { public:
-    T* Data;
-    T* operator->() const { return Data; }
-};
-class CScriptDef {
-    unsigned char _pad_0x0[0x4fc];
-public:
-    float BordelloHeroTavernPriceMultiplier;            // +0x4fc
-};
-extern CDefPointer<const CScriptDef> pGlobalScriptDef;  // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (agentNF60: was a local extern over a local CScriptDef / CDefPointer model)
 #include "engine/CScriptBase.h"
 namespace NScript {
 class CV_BordelloScript : public CScriptBase {

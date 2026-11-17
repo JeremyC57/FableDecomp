@@ -1013,11 +1013,8 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-class CCharString { public:
- void* PStringData;
- CCharString(const char* text, long length = -1);   // 0x0099EBF0
- ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -1036,11 +1033,11 @@ public:
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 ?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA (established spelling; naming wave 35d: was NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations)
-class CScriptDef { public:
- unsigned char _pad[0xe0c];
- long InfectedBalverineNoticeRange;                 // +0xE0C (descriptive)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: InfectedBalverineNoticeRange -> TE_BalverineTimeToGoDistance (+0xe0c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CQ_TraderEscortScript {
  unsigned char BaseState[0x54];
  bool InfectedTraderCanGetUp;                       // +0x54 (PDB +0x68)
@@ -1074,7 +1071,7 @@ void CInfectedBalverine::Main()
  }
  if (IsActiveThreadTerminating()) return;
  bool done = false;
- long range = pGlobalScriptDef->InfectedBalverineNoticeRange;
+ long range = pGlobalScriptDef->TE_BalverineTimeToGoDistance;
  while (!done) {
   Game->NewScriptFrame();
   if (IsActiveThreadTerminating()) return;

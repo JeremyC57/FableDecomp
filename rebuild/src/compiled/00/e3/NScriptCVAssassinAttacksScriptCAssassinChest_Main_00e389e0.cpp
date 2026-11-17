@@ -22,11 +22,8 @@
 //   above the `test bl,bl` branch and keeps one `test al,al` per arm, as retail does (one test before the if/else gave the
 //   term test first, 482v488).
 class C3DVector;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CBaseClass.h"                         // vtable 0x01231710, ~CBaseClass 0x0099A2E0
 #include "engine/CCountedPointer.h"
@@ -36,11 +33,9 @@ void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 // Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
 inline CScriptThing::~CScriptThing() { }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-class CScriptDef { public:
-    unsigned char _pad[0x3a4];
-    long AssassinChestProximity;                        // +0x3a4 (Ego_r 0x3c8 - 0x24)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT

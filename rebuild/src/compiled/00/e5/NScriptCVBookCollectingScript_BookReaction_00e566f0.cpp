@@ -14,11 +14,8 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 class CScriptThing;
 class CScriptGameResourceObjectScriptedThingBase;
 typedef long EScriptAIPriority;
@@ -160,24 +157,12 @@ class CScriptGameResourceObjectScriptedThingBase { public:      // vtable 0x0127
     void* PImp_Info;
     void Release();                                      // 0x00CD2770
 };
-template <class T> struct vector {                      // STLport vector: {_M_start, _M_finish, _M_end_of_storage}
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T& operator[](unsigned int i) { return *(begin() + i); }
-};
-class CConversation { public:                                   // retail 0x5c bytes
-    unsigned char _pad00[0x28];
-    long Lines;                                          // +0x28
-    unsigned char _pad2c[0x5c - 0x2c];
-};
-class CScriptDef { public:
-    unsigned char _pad000[0x4b0];
-    vector<CCharString> BookBoyMarks;                    // +0x4b0
-    vector<CCharString> BookGirlMarks;                   // +0x4bc
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: CConversation is engine/CConversation.h (Lines +0x28; was a local pad model) and BookReactions the shared STLport
+//   std::vector (stlport/fable_containers.h, through engine/CScriptDef.h; was a local `vector` stand-in).
+// agentNF60: BookBoyMarks / BookGirlMarks (+0x4b0 / +0x4bc, local vector stand-ins) -> BookBoyMarker / BookGirlMarker (std::vector<CCharString>) through operator[].
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 class CScriptBase { public:                                     // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                           // +0x04 .. +0x40
@@ -189,7 +174,7 @@ public:
     GameCalls* Game;                                     // +0x40
     void* Owner;                                         // +0x44
     bool ReadingBook;                                    // +0x48
-    vector<CConversation> BookReactions;                 // +0x4c
+    std::vector<CConversation> BookReactions;                 // +0x4c
     CScriptGameResourceObjectScriptedThingBase seh_Boy;  // +0x58
     CScriptGameResourceObjectScriptedThingBase seh_Girl; // +0x68
     void BookReaction(long book);
@@ -207,8 +192,8 @@ void NScript::CV_BookCollectingScript::BookReaction(long book)
     }
     CScriptThing boy = Game->GetThingWithScriptName("boy0");
     CScriptThing girl = Game->GetThingWithScriptName("girl0");
-    CScriptThing boyMark = Game->GetThingWithScriptName(pGlobalScriptDef->BookBoyMarks[book]);
-    CScriptThing girlMark = Game->GetThingWithScriptName(pGlobalScriptDef->BookGirlMarks[book]);
+    CScriptThing boyMark = Game->GetThingWithScriptName(pGlobalScriptDef->BookBoyMarker[book]);
+    CScriptThing girlMark = Game->GetThingWithScriptName(pGlobalScriptDef->BookGirlMarker[book]);
     Game->StartScriptingEntity(boy, seh_Boy, 4);
     Game->EntityTeleportToThing(boy, boyMark, false);
     Game->SetIsPushableByHero(boy, false);

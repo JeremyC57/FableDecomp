@@ -20,31 +20,11 @@
 //   CTimer::operator= through the global interface; the clear loop re-reads begin / end each pass (`SongThingAvailable[i] = false`
 //   with `i < size()`), the termination test first; the trailing `if (IsActiveThreadTerminating()) return;` keeps only the call.
 class CCharStringData;
-class CCharString {
-public:
-    CCharStringData* PStringData;
-    CCharString();
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const char* text);     // 0x0099EFE0
-};
-namespace std {
-template <class T> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
-template <class _Tp, class _Alloc> class _Vector_base { public:
-    _Tp* _M_start;                                      // +0x0
-    _Tp* _M_finish;                                     // +0x4
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x8
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {   // STLport 4.6, 0xC
-public:
-    typedef unsigned int size_type;
-    typedef _Tp& reference;
-    size_type size() const { return (size_type)(this->_M_finish - this->_M_start); }
-    reference operator[](size_type __n) { return *(this->_M_start + __n); }
-    void resize(size_type __new_size, const _Tp& __x);  // 0x00467686 (vector<bool>: one byte per element)
-};
-}
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
+// agentNF60: std::vector is the shared STLport 4.6 vector (stlport/fable_containers.h; was a local namespace-std stand-in).
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0)
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -60,12 +40,9 @@ public:
 extern CGameScriptInterfaceBase* pDSTGame;              // 0x0143E8F8
 inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 // Layout: Ego_r.pdb CScriptDef BardWanderResetTime +0x828 (2088) less the 24 vectors shrunk 16 -> 12 before it = retail +0x7c8.
-class CScriptDef : public CParentDefClassBase {
-    unsigned char _pad_0x39[0x7c8 - 0x39];
-public:
-    long BardWanderResetTime;                           // +0x7c8
-};
-extern CDefPointer<const CScriptDef> pGlobalScriptDef;  // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (agentNF60: was a local extern over a local CScriptDef model)
 // CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
 #include "engine/CLevelScriptBase.h"

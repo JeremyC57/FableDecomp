@@ -13,11 +13,10 @@
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad000[0x354];
-    const float*  m_pArcheryDistanceBands;                  // +0x354: three ascending distances
-};
-extern CScriptDef* pGlobalScriptDef;                          // 0x0143E90C
+// agentNF60: m_pArcheryDistanceBands (+0x354, the vector start word) -> ArcheryScorePowerLevels.begin() (std::vector<float>, +0x354).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
@@ -41,7 +40,7 @@ using NScript::CV_ArcheryCompetitionScript;
 
 void NScript::CV_ArcheryCompetitionScript::CalculateScoreForHit(long points, float distance)
 {
-    const float* bands = pGlobalScriptDef->m_pArcheryDistanceBands;
+    const float* bands = pGlobalScriptDef->ArcheryScorePowerLevels.begin();
     if (distance < bands[0]) {
         if (IsActiveThreadTerminating())
             return;

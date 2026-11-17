@@ -897,13 +897,8 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-class CCharString { public:
- void* PStringData;
- CCharString();                                     // 0x0099E4B0
- CCharString(const char* text, long length = -1);   // 0x0099EBF0
- const CCharString& operator=(const char* text);          // 0x0099EFE0
- ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -917,13 +912,11 @@ struct CScriptThingImp {
  virtual const C3DVector& GetPosition() const;      // slot 6 (+0x18)
 };
 extern "C" int __cdecl rand();                         // 0x00BFEB16
-class CScriptDef { public:
- unsigned char _pad[0xf88];
- long GuardBlueThreshold;                            // +0xf88 (descriptive)
- long GuardCrossbowThreshold;                        // +0xf8c
- long GuardRedThreshold;                             // +0xf90
-};
-extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: GuardBlueThreshold -> TCE_GuardRangeHighest (+0xf88), GuardCrossbowThreshold -> TCE_GuardRangeHigh (+0xf8c), GuardRedThreshold -> TCE_GuardRangeLow (+0xf90).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CScriptThingVector {                          // STLport vector<CScriptThing> (12 bytes)
  CScriptThing* _M_start;
  CScriptThing* _M_finish;
@@ -986,13 +979,13 @@ void NScript::CQ_TraderConflictEvilScript::CTC_GuardSpawnPoint::Main()
     for (long i = 0; i < 2 && 25 - ParentClass->InitialNumberInRegion - ParentClass->NumberSpawned > 0; ++i) {
      if (IsActiveThreadTerminating()) return;
      CCharString name;
-     if (NumLeftToSpawn(ParentClass) > pGlobalScriptDef->GuardBlueThreshold) {
+     if (NumLeftToSpawn(ParentClass) > pGlobalScriptDef->TCE_GuardRangeHighest) {
       if (IsActiveThreadTerminating()) return;
       name = "CREATURE_BS_GUARD_BLUE";
-     } else if (NumLeftToSpawn(ParentClass) > pGlobalScriptDef->GuardCrossbowThreshold) {
+     } else if (NumLeftToSpawn(ParentClass) > pGlobalScriptDef->TCE_GuardRangeHigh) {
       if (IsActiveThreadTerminating()) return;
       name = "CREATURE_BS_GUARD_BLUE_CROSSBOW";
-     } else if (NumLeftToSpawn(ParentClass) > pGlobalScriptDef->GuardRedThreshold) {
+     } else if (NumLeftToSpawn(ParentClass) > pGlobalScriptDef->TCE_GuardRangeLow) {
       if (IsActiveThreadTerminating()) return;
       name = "CREATURE_BS_GUARD_RED";
      } else {

@@ -18,11 +18,8 @@
 //   Was `?Main@CBanditFirstWave@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_BreakSiegeScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 struct CBase {                                          // vtable 0x01231710
@@ -85,11 +82,11 @@ public:
     void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE3EA
-class CScriptDef { public:
-    unsigned char _pad[0xb8c];
-    float         BanditAttackerBreakOffRange;         // +0xb8c (retail offset)
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: BanditAttackerBreakOffRange -> BS_BanditAwarenessRange (+0xb8c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CQ_BreakSiegeScript {
 public:
@@ -129,7 +126,7 @@ void NScript::CQ_BreakSiegeScript::CBanditFirstWave::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    Game->SetCombatNearbyBreakOffRange(CScriptThing(Me, CScriptThing::InlineCopy()), pGlobalScriptDef->BanditAttackerBreakOffRange);
+    Game->SetCombatNearbyBreakOffRange(CScriptThing(Me, CScriptThing::InlineCopy()), pGlobalScriptDef->BS_BanditAwarenessRange);
     CScriptThing leader = Game->GetThingWithScriptName("ImprisonedBanditLeader");
     while (IsDistanceBetweenThingsOver(Me, leader, 5.0f) && !ParentClass->BanditLeaderFree) {
         Game->NewScriptFrame();

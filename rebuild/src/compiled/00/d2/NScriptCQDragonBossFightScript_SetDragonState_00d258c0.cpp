@@ -15,19 +15,9 @@
 // Shape: speed TU (no pragma). The state is stored first, then an if/else-if chain over the four states (`test`, then
 //   `cmp 1/2/3`); each arm is the script translator's `if (IsActiveThreadTerminating()) return;` guard followed by the
 //   two loads, the def pointer re-read for each (the member stores may alias it). The first arm reuses ecx = this.
-class CScriptDef {
-public:
-    unsigned char _pad000[0xBC0];
-    long DBNumMinionsHighHealth;                        // +0xBC0
-    long DBNumMinionsMediumHealth;
-    long DBNumMinionsLowHealth;
-    long DBNumMinionsVeryLowHealth;                     // +0xBCC
-    long DBNumSummonersHighHealth;                      // +0xBD0
-    long DBNumSummonersMediumHealth;
-    long DBNumSummonersLowHealth;
-    long DBNumSummonersVeryLowHealth;                   // +0xBDC
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)

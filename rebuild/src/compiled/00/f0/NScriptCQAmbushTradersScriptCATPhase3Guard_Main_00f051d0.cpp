@@ -17,11 +17,8 @@
 //   Was `?Main@CAT_Phase3Guard@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 struct CScriptThingImp {
     virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003(); virtual void i004(); virtual void i005();
     virtual const C3DVector& GetPosition() const;   // slot 6 (+0x18)
@@ -208,11 +205,11 @@ class CGameScriptInterface { public:
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
-class CScriptDef { public:
-    unsigned char _pad[0xa38];
-    float ArenaGuardWanderMaxDistance;                 // +0xa38 (retail; PDB name not resolved)
-};
-extern CScriptDef* pGlobalScriptDef;                      // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: ArenaGuardWanderMaxDistance -> AmbushTradersPhase2GuardWanderDistance (+0xa38).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CScriptThingVector {                            // STLport vector<CScriptThing> (12 bytes)
     CScriptThing* _M_start;
     CScriptThing* _M_finish;
@@ -262,7 +259,7 @@ void NScript::CQ_AmbushTradersScript::CAT_Phase3Guard::Main()
     CScriptGameResourceObjectScriptedThingBase handle;
     Game->SetWanderCentrePoint(CScriptThing(Me, CScriptThing::InlineCopy()), Me.GetPos());
     Game->SetWanderMinDistance(CScriptThing(Me, CScriptThing::InlineCopy()), 0.0f);
-    Game->SetWanderMaxDistance(CScriptThing(Me, CScriptThing::InlineCopy()), pGlobalScriptDef->ArenaGuardWanderMaxDistance);
+    Game->SetWanderMaxDistance(CScriptThing(Me, CScriptThing::InlineCopy()), pGlobalScriptDef->AmbushTradersPhase2GuardWanderDistance);
     Game->SetScriptingStateGroup(CScriptThing(Me, CScriptThing::InlineCopy()), 4);
     CScriptThing spy = Game->GetThingWithScriptName("AT_ConvoySpy");
     for (unsigned long i = 0; i < ParentClass->Guards.size(); ++i) {

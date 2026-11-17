@@ -11,30 +11,11 @@
 // Shape: `next = PrizeNumber + 1; if (PrizeNumber == -1) ++next;` gives retail's `lea ecx,[eax+1]` before the compare and
 //   the conditional `inc ecx` (the `prize == -1 ? 0 : prize` then `[prize + 1]` form folds the +1 into `fld [edx+eax*4+4]`
 //   with an `xor eax,eax` arm); STLport `operator[]` is `*(begin() + n)`.
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class vector : protected _Vector_base<_Tp, _Alloc> {
-public:
-    typedef unsigned int size_type;
-    typedef _Tp* iterator;
-    iterator begin() { return this->_M_start; }
-    _Tp& operator[](size_type __n) { return *(begin() + __n); }
-};
-}
-class CScriptDef { public:
-    unsigned char _pad000[0x5d0];
-    std::vector<float> FishPrizeWeights;          // +0x5d0
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: std::vector is the shared STLport 4.6 vector (stlport/fable_containers.h; was a local namespace-std stand-in).
+#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CV_FishingCompetitionScript {
 public:

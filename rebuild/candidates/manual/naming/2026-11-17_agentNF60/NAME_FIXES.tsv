@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	Ego_r.pdb protected static CBasicString<char>::Compare (fable_string.h; landed self row CBasicStringchar_Compare_00411570.cpp); fixed here in 0x00DCD1D0 / 0x00E0A510 (RENAMES s2); NF60 also saw the stand-in in blocked 0x00EE2A80	?Compare@@YIJPBD0@Z (0x00DCD1D0, 0x00E0A510 before this pass); ?Compare_00411570@@YIJPBD0@Z (0x00EE2A80, blocked, unchanged)

@@ -45,7 +45,9 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, 
 enum ETextGroupSelectionMethod { GROUP_SELECT_NONE=0, GROUP_SELECT_RANDOM=1, GROUP_SELECT_RANDOM_NO_REPEAT=2, GROUP_SELECT_SEQUENTIAL=3, GROUP_SELECT_FIRST_ONLY=4 };
 bool FABLE_FASTCALL IsDistanceFromThingToPositionUnder(const CScriptThing&, const C3DVector&, float);   // 0x00CBE4B7
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8
-extern CScriptDef* pGlobalScriptDef;         // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 extern CWideString g_ScriptFormattedText;   // 0x0143E908 (descriptive name: the original is in no PDB / string; the script globals' formatted wide text, set for the results cut-scene and cleared after it)
 template<> std::vector<CWideString>::~vector();     // 0x00412130
 inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }

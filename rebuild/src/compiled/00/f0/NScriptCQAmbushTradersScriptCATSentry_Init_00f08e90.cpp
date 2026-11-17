@@ -24,11 +24,8 @@
 //   copy (InlineCopy tag, as the landed CAT_Sentry::Main), CSpawnedFunc1::Par1 the out-of-line one.
 #include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 void* __cdecl operator new(unsigned int bytes);        // 0x00BFEA1A (MSVCR71)
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
@@ -166,11 +163,9 @@ class CGameScriptInterfaceBase { public:              // the interface CGameScri
     virtual void g778(); virtual void g779(); virtual void g780(); virtual void g781(); virtual void g782(); virtual void g783();
     virtual void SetScriptingStateGroup(CScriptThing thing, EScriptingStateGroups group);   // slot 784 (+0xc40)
 };
-class CScriptDef { public:
-    unsigned char _pad[0x9f0];
-    float AmbushTradersSentryWanderDistance;           // +0x9f0 (retail; Ego_r.pdb 0xa90)
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 class CSpawnedFuncBase { public:                       // 0x34 bytes
     unsigned char _base[0x10];                         // CScriptProcessBase +0x04 .. +0x13 (vptr +0x00)
@@ -198,27 +193,8 @@ class CScriptBase { public:                            // retail 0x40 bytes
     unsigned char _body[0x40];
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& name);   // 0x00CB7E50
 };
-namespace std {                                        // STLport 4.6 vector (12 bytes)
-template <class _Tp> class allocator { public:
-    allocator() { }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc { public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base { public:
-    _Tp* _M_start;                                     // +0x00
-    _Tp* _M_finish;                                    // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-};
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class vector : public _Vector_base<_Tp, _Alloc> { public:
-    typedef unsigned int size_type;
-    typedef _Tp& reference;
-    size_type size() const { return size_type(this->_M_finish - this->_M_start); }
-    reference operator[](size_type __n) { return *(this->_M_start + __n); }
-};
-}
+// agentNF60: std::vector is the shared STLport 4.6 vector (stlport/fable_containers.h; was a local namespace-std stand-in).
+#include "stlport/fable_containers.h"
 class CEntityScriptBase { public:                     // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterfaceBase* Game;                       // +0x04

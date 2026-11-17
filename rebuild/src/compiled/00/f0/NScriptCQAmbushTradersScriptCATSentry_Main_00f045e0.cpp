@@ -18,11 +18,8 @@
 #include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 struct CScriptThingImp {
     virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003(); virtual void i004(); virtual void i005();
@@ -220,11 +217,11 @@ class CGameScriptInterface { public:
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
-class CScriptDef { public:
-    unsigned char _pad[0x9f4];
-    float ArenaSentryScareDistance;                    // +0x9f4 (retail; PDB name not resolved)
-};
-extern CScriptDef* pGlobalScriptDef;                      // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: ArenaSentryScareDistance -> AmbushTradersSpySentryProximity (+0x9f4).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CScriptThingVector {                            // STLport vector<CScriptThing> (12 bytes)
     CScriptThing* _M_start;
     CScriptThing* _M_finish;
@@ -358,7 +355,7 @@ void NScript::CQ_AmbushTradersScript::CAT_Sentry::Main()
 #pragma inline_depth()
             }
         }
-        if (IsDistanceBetweenThingsUnder(Me, spy, pGlobalScriptDef->ArenaSentryScareDistance) && !ParentClass->SpyScared) {
+        if (IsDistanceBetweenThingsUnder(Me, spy, pGlobalScriptDef->AmbushTradersSpySentryProximity) && !ParentClass->SpyScared) {
             if (IsActiveThreadTerminating())
                 {
 #pragma inline_depth(0)

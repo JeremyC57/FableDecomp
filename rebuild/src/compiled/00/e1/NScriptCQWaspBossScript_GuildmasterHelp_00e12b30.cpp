@@ -14,11 +14,8 @@
 // Shape: the low-health test reads pGlobalScriptDef into edi BEFORE the GetHealth call: a named `def` local re-read at the
 //   end of the loop body (the FisticuffsChallenge 0x00E86E60 form); reading the def inside the compare spills the fild.
 #include "fable_compiler.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -35,11 +32,9 @@ namespace NScript {
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
-class CScriptDef { public:
-    unsigned char _pad[0xe34];
-    long WB_LowHealth;                                  // +0xe34
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -99,12 +94,12 @@ void NScript::CQ_WaspBossScript::GuildmasterHelp()
         return;
     Game->Pause(1.0f);
     Game->HeroReceiveMessageFromGuildMaster("TEXT_QST_072_GUILDMASTER_GUIDANCE_40", "", true, true);
-    CScriptDef* def = pGlobalScriptDef;
+    const CScriptDef* def = pGlobalScriptDef.Get();
     while (Game->GetHealth(queen) != def->WB_LowHealth) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
-        def = pGlobalScriptDef;
+        def = pGlobalScriptDef.Get();
     }
     if (IsActiveThreadTerminating())
         return;

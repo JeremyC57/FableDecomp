@@ -14,11 +14,8 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
@@ -51,11 +48,9 @@ template <class A, class B> inline CPredicate_And<A, B> operator&&(const A& firs
 }
 }
 using namespace NScript;
-class CScriptDef { public:
-    unsigned char _pad[0x5e0];
-    long          FC_MinimumFighterHealth;                  // +0x5e0
-};
-extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -108,13 +103,13 @@ void NScript::CV_FisticuffsClubScript::FisticuffsChallenge()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
-        CScriptDef* def = pGlobalScriptDef;
+        const CScriptDef* def = pGlobalScriptDef.Get();
         if (Game->GetHealth(SFighterOne) < def->FC_MinimumFighterHealth) {
             if (IsActiveThreadTerminating())
                 return;
             FightFinished = true;
         }
-        def = pGlobalScriptDef;
+        def = pGlobalScriptDef.Get();
         if (Game->GetHealth(SFighterTwo) < def->FC_MinimumFighterHealth) {
             if (IsActiveThreadTerminating())
                 return;

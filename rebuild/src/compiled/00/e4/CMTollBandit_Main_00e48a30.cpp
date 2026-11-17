@@ -12,20 +12,14 @@
 //   for the discarded CreateCreature result; the "TollBandit" implicit conversion is built before the def-string
 //   conversion (right-to-left argument order, implicit temporaries first).
 namespace NScript { class CPredicateBase; }
-class CCharString { public:                                     // 4 bytes: the shared string block pointer
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
-class CDefString { public:
-    long Index;
-    operator CCharString() const;                        // 0x00415D70
-};
-class CScriptDef { public:
-    unsigned char _pad[0x438];
-    CDefString TollBanditCreature;                       // +0x438
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: TollBanditCreature -> TollBanditCreatureType (+0x438).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
@@ -62,5 +56,5 @@ void NScript::CV_BanditTollScript::CM_TollBandit::Main()
 {
     bool dead = Game->GetThingWithScriptName("TollBandit").IsDead();
     if (dead && !IsActiveThreadTerminating())
-        Game->CreateCreature(pGlobalScriptDef->TollBanditCreature, Me.GetPos(), "TollBandit", false);
+        Game->CreateCreature(pGlobalScriptDef->TollBanditCreatureType, Me.GetPos(), "TollBandit", false);
 }

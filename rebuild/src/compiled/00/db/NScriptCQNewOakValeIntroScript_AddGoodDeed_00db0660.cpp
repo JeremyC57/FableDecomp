@@ -12,12 +12,8 @@
 //   GivenSweets +0x94.
 // Shape: the click-past waits are the rotated script idiom; the objective call is the landed WatchForGotGold
 //   0x00DBE2E0 nested expression.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 void __fastcall AddLogbookTutorialEntry(const CCharString& tag);   // 0x00CBE9EE
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -25,11 +21,9 @@ void __fastcall AddLogbookTutorialEntry(const CCharString& tag);   // 0x00CBE9EE
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad0[0xd64];
-    float OVI_MoralityChangePerDeed;                    // +0xD64
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)

@@ -27,11 +27,8 @@
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);       // 0x0099EBF0
-    ~CCharString();                                        // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 
 #include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
 #define FABLE_RETAIL_NSCRIPT
@@ -69,11 +66,11 @@ class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase 
     virtual void v01();
 };
 
-class CScriptDef { public:
-    unsigned char _pad[0x101c];
-    float PicklockTime;                                    // +0x101C
-};
-extern CScriptDef* pGlobalScriptDef;                           // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: PicklockTime -> PicklockDurationSeconds (+0x101c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 enum EHeroTrainableStatType { HERO_STAT_SKILL = 5 };
 enum EMiniGameType { MINI_GAME_PICKLOCK = 4 };
@@ -133,7 +130,7 @@ void NScript::CExpression_PicklockScript::Main()
         GSI->DisplayMiniGameInfo(true, MINI_GAME_PICKLOCK);
         bool done = false;
         bool failed = false;
-        float time = pGlobalScriptDef->PicklockTime;
+        float time = pGlobalScriptDef->PicklockDurationSeconds;
         time /= (GSI->GetHeroStatLevel(HERO_STAT_SKILL) + 1.0f) / (GSI->GetHeroStatMax(HERO_STAT_SKILL) + 1.0f);
         time *= GSI->GetConstantFPS();
         long count = (long)time;

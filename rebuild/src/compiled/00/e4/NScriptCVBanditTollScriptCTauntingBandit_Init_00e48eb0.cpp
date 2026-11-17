@@ -16,11 +16,8 @@
 //   cleared words, ~CBaseClass); the 0.0f minimum is pushed from the zero register.
 // Naming wave 35: identity reg 00e47bbd "TauntingBandit" in 00e479b0; Alloc 00e48de0; vtable 012e4dd4 slot 2; PDB ?Init@CTauntingBandit@CV_BanditTollScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CTauntingBandit::Init (wave3/labels_alloc.tsv); PDB ?Init@CTauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CTauntingBandit@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
 #include "engine/C3DVector.h"
@@ -42,11 +39,9 @@ inline CScriptThing::~CScriptThing() {}
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad000[0x428];
-    long BanditTollBanditWanderDistance;                 // +0x428 (PDB +0x45C)
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CV_BanditTollScript {    // the PDB owner script; only its nested entity class is modelled here

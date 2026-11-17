@@ -36,11 +36,11 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad[0x298];
-    float AS_BuddyWanderDistance;                        // +0x298
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: AS_BuddyWanderDistance -> AmbushScamBuddyWanderMax (+0x298).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript { class CV_AmbushScamScript; } using NScript::CV_AmbushScamScript;
 struct CQ_SunnyvaleMasterData;
@@ -81,6 +81,6 @@ void NScript::CV_AmbushScamScript::CAS_Buddy::Init()
     BuddyStartPos = Me.GetPos();
     Game->SetWanderCentrePoint(Me, BuddyStartPos);
     Game->SetWanderMinDistance(Me, 0.0f);
-    Game->SetWanderMaxDistance(Me, pGlobalScriptDef->AS_BuddyWanderDistance);
+    Game->SetWanderMaxDistance(Me, pGlobalScriptDef->AmbushScamBuddyWanderMax);
     Game->SetScriptingStateGroup(Me, (EScriptingStateGroups)4);
 }

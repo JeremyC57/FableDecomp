@@ -27,11 +27,9 @@ struct CQ_SunnyvaleMasterData {                    // Ego_r.pdb offsets (no debu
     bool          BodyGuardsMustStandAndWait;      // +0xe3
     bool          BodyGuardsInLimbo;               // +0xe4
 };
-class CScriptDef { public:
-    unsigned char _pad[0x4a4];
-    long          HenchmanPayTimeDelayInSeconds;   // +0x4a4 (Ego_r.pdb +0x4d8)
-};
-extern CScriptDef*           pGlobalScriptDef;             // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.

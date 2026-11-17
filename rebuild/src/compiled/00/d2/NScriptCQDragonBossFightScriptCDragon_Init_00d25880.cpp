@@ -14,14 +14,9 @@
 //   The landed CBS_Teacher::Init model (KidIntro CScriptThing copied memberwise) was the wrong class: CBS_Teacher's Init is
 //   Ego_r 0x00EA9AB0 in CV_BookCollectingScript, and a CScriptThing copy goes through its handle operator=.
 // Model: no engine header for these nested script classes; the base is reduced to its 0x14 bytes.
-class CScriptDef {
-public:
-    unsigned char _pad[0xbb4];
-    float DBDragonMediumHealth;                      // +0xbb4
-    float DBDragonLowHealth;                         // +0xbb8
-    float DBDragonVeryLowHealth;                     // +0xbbc
-};
-extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CEntityScriptBase {

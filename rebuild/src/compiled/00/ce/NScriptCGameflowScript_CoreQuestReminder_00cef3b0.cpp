@@ -10,11 +10,13 @@
 #include "engine/CDefPointer.h"
 #include "engine/CParentDefClassBase.h"
 class CCharStringData;
-class CCharString {protected:CCharStringData*PStringData;public:CCharString(const char*,long=-1);~CCharString();};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 // Layout: donor member0x1084 minus46 vector differences(4 each), and base difference4, equals native0xfc8.
-class CScriptDef:public CParentDefClassBase {unsigned char _pad_0x39[0xfc8-0x39];public:long CoreQuestReminderIntervalSeconds;};
 extern CGameScriptInterfaceBase*pDSTGame;
-extern CDefPointer<const CScriptDef>pGlobalScriptDef;
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (agentNF60: was a local extern over a local CScriptDef model)
 inline CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()){}
 inline CTimer::~CTimer(){pDSTGame->DeregisterTimer(TimerIndex);}
 inline CTimer&CTimer::operator=(long value){pDSTGame->SetTimer(TimerIndex,value);return *this;}

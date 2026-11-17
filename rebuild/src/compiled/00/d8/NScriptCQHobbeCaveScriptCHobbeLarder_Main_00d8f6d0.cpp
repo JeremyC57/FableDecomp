@@ -1008,11 +1008,8 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-class CCharString { public:
- void* PStringData;
- CCharString(const char* text, long length = -1);   // 0x0099EBF0
- ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -1032,11 +1029,11 @@ inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); 
 inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
 inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-class CScriptDef { public:
- unsigned char _pad[0xcc8];
- long LarderAlarmTime;                              // +0xCC8 (descriptive)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: LarderAlarmTime -> HC_HobbeGruntDelay (+0xcc8).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 struct CQ_HobbeCaveScript {
  unsigned char BaseState[0x60];
@@ -1076,7 +1073,7 @@ void CHobbeLarder::Main()
   if (IsActiveThreadTerminating()) return;
   if (Me.IsAwareOfHero() && timer.GetTime() == 0) {
    if (IsActiveThreadTerminating()) return;
-   timer = pGlobalScriptDef->LarderAlarmTime;
+   timer = pGlobalScriptDef->HC_HobbeGruntDelay;
   }
  }
  if (IsActiveThreadTerminating()) return;

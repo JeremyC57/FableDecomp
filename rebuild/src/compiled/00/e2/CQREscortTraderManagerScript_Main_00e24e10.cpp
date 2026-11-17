@@ -11,21 +11,15 @@
 //   callee-saved edi before each interface call; that makes edi a saved register, which VC then also uses as the zero
 //   register (xor edi,edi) for the flag word, the first-run stores and the phase-0 test.
 #include "fable_compiler.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad0[0x9d4];
-    long EscortTraderQuestDayInterval;                  // +0x9d4
-    long EscortTraderQuestStartTime;                    // +0x9d8
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 enum EscortTraderManagerPhase {
     PHASE_ACTIVATE_FIRST, PHASE_WAIT_TRADER_ESCORT, PHASE_ACTIVATE_SECOND, PHASE_WAIT_BANDIT_CAMP, PHASE_ACTIVATE_THIRD,
     PHASE_WAIT_ARENA, PHASE_ACTIVATE_FOURTH, PHASE_WAIT_GRAVEYARD, PHASE_REPEAT
@@ -166,8 +160,8 @@ void CQR_EscortTrader_ManagerScript::Main()
                 if (IsActiveThreadTerminating())
                     return;
                 while (Game->IsRegionLoaded("LookoutPoint")
-                       || DayModInterval(Game->GetDayOfWeek(), pGlobalScriptDef) != 0
-                       || NotPastStartTime(Game->GetTimeOfDay(), pGlobalScriptDef)) {
+                       || DayModInterval(Game->GetDayOfWeek(), pGlobalScriptDef.Get()) != 0
+                       || NotPastStartTime(Game->GetTimeOfDay(), pGlobalScriptDef.Get())) {
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating())
                         return;

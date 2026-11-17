@@ -18,59 +18,26 @@
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
 #include <string.h>
 #pragma intrinsic(strcmp)
-template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CBasicStringChar (data and inline comparisons)
-    char*         PData;
-    unsigned long StringLength;
-    unsigned long DataLength : 31;
-    bool          UseFastExtend : 1;
-protected:
-    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
-public:
-    bool operator==(const char* text) const { return Compare(PData, text) ? false : true; }
-};
+// agentNF60: CCharString / CCharStringData / CBasicString<char> are fable_string.h's (were local models); CBasicString::operator==(const char*)
+//   expands in place (FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE) over the protected static Compare 0x00411570.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE
+#define FABLE_RETAIL_CWIDESTRING                       // agentNF60: was a local CWideString stand-in (ctor 0x0099B6B0, dtor 0x0099B510)
+#include "fable_string.h"
 #pragma pack(push, 1)
-struct CBasicStringChar : public CBasicString<char> {                       // CBasicString<char>, 13 bytes
-};
-class CCharStringData { public:                        // 17 bytes
-    CBasicStringChar Data;                      // +0x00
-    long             NoRefs;                    // +0x0d
-};
 #pragma pack(pop)
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString();                                          // 0x0099E4B0
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-    bool operator==(const char* text) const
-    {
-        if (PStringData == 0) {
-            if (strcmp(text, "") == 0)
-                return true;
-            return false;
-        }
-        return PStringData->Data == text;
-    }
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString();                                          // 0x0099AED0
-    ~CWideString();                                         // 0x0099B510
-    const CWideString& operator=(const wchar_t* text);      // 0x0099B800
-};
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-class CDefStringTable { public:
-    CCharString GetString(long index) const;                      // 0x009D49B0
-};
-extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                    // 0x013CA828
-class CScriptDef { public:
-    unsigned char _pad[0xbb0];
-    long KnotholeGladeSiegeTheme;                           // +0xbb0 (string-table index of the siege music theme)
-};
-extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: CDefStringTable / GDefStringTable 0x013CA828 are fable_definition_table.h's (through engine/CDefString.h; was a local model);
+//   the theme string is the def member's inline CDefString::GetString() (`push [def+0xbb0] ; mov ecx,offset GDefStringTable ; call 0x009D49B0`).
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: KnotholeGladeSiegeTheme -> BS_EnvTheme (+0xbb0).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CQ_BreakSiegeMasterData {
     unsigned char _pad[0xe0];
     bool BreakSiegeCompleted;                               // +0xe0
@@ -113,7 +80,7 @@ void CQ_BreakSiegeScript::WatchForTermination()
     CCharString region;
     Game->SetVillageLimbo(village, true);
     {
-        CCharString theme = GDefStringTable.GetString(pGlobalScriptDef->KnotholeGladeSiegeTheme);
+        CCharString theme = pGlobalScriptDef->BS_EnvTheme.GetString();
         Game->TransitionToTheme(theme, 0.5f);
     }
     Game->EnableDecals(false);
@@ -126,7 +93,7 @@ void CQ_BreakSiegeScript::WatchForTermination()
                 return;
             Game->SetVillageLimbo(village, true);
             {
-                CCharString theme = GDefStringTable.GetString(pGlobalScriptDef->KnotholeGladeSiegeTheme);
+                CCharString theme = pGlobalScriptDef->BS_EnvTheme.GetString();
                 Game->TransitionToTheme(theme, 0.5f);
             }
             Game->EnableDecals(false);

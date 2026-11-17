@@ -11,12 +11,9 @@
 //   EntitySetAsUseMovementInActions, 517 EntitySetAsKillable, 516 EntitySetAsDamageable, 70 GetHero, 498
 //   EntityForceToLookAtThing, 360 SetThingHasInformation, 477 SetThingPersistent; CScriptThing slot 67
 //   SetFriendsWithEverythingFlag. Data: pGlobalScriptDef 0x0143E90C, AssassinThreatDistSq at retail +0x720.
-class CScriptDef {                                      // Ego_r.pdb CScriptDef; retail offsets (agent501: HeroKillsSheriffRenown +0x71c)
-public:
-    unsigned char _pad0[0x720];
-    float AssassinThreatDistSq;                         // +0x720 (Ego_r +0x77c)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 enum ESheriffState { };
 enum EAssassinState { };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0, implicit copy
@@ -26,15 +23,8 @@ enum EAssassinState { };
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-namespace std {
-template <class T> class allocator { };
-template <class T, class A = allocator<T> > class vector {   // STLport 4.6: start, finish, end of storage (0xC)
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-};
-}
+// agentNF60: std::vector is the shared STLport 4.6 vector (stlport/fable_containers.h; was a local namespace-std stand-in).
+#include "stlport/fable_containers.h"
 class CScriptGameResourceObjectScriptedThingBase {      // Ego_r.pdb, 16 bytes: vptr, base word, PImp
 public:
     virtual ~CScriptGameResourceObjectScriptedThingBase();

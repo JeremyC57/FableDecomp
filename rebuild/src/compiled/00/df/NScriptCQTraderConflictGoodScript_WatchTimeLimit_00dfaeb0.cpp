@@ -20,11 +20,8 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CCharString { public:
-    void* Data;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 class CTimer;
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -38,11 +35,11 @@ inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 inline CTimer& CTimer::operator=(long seconds) { pDSTGame->SetTimer(TimerIndex, seconds); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-class CScriptDef { public:
-    unsigned char _pad[0xf84];
-    long TraderConflictGoodTimeLimit;                   // +0xF84 (unnamed in the PDB view)
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: TraderConflictGoodTimeLimit -> TCG_TimeLimit (+0xf84).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CQ_TraderConflictGoodData {
     unsigned char _pad[0x127];
     bool TimeLimitBeaten;                               // +0x127
@@ -78,7 +75,7 @@ void NScript::CQ_TraderConflictGoodScript::WatchTimeLimit()
             return;
         }
     }
-    timer = pGlobalScriptDef->TraderConflictGoodTimeLimit;
+    timer = pGlobalScriptDef->TCG_TimeLimit;
     long element = Game->AddQuestInfoTimer(timer, "HUD_CLOCK_ICON", 1.0f);
     Game->DisplayQuestInfo(true);
     while (!MissionSucceeded) {

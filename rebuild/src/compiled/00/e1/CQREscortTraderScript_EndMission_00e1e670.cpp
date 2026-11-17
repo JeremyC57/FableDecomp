@@ -13,29 +13,18 @@
 // Shape: every string is an implicit conversion temporary (built before the interface load, right to left);
 // each arm repeats its own IsActiveThreadTerminating early return, sharing one exit block.
 typedef unsigned short wchar_t;                     // VC7.1 default: wchar_t is not a native type
-class CWideString {
-public:
-    void* PStringData;
-    CWideString(const wchar_t* text);                  // 0x0099B6B0
-    ~CWideString();                                    // 0x0099B510
-};
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#include "fable_string.h"                              // CWideString / CCharString (agentNF60: were local stand-ins; 0x0099B6B0 / 0x0099B510, 0x0099EBF0 / 0x0099EAE0)
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad0[0x9bc];
-    long EscortTraderRenown;                         // +0x9bc
-};
-extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).

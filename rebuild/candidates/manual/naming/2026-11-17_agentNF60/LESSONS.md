@@ -1,0 +1,11 @@
+# NF60 lessons (one line each)
+- awk compares `$2==a` numerically when both look numeric: row addresses like 00e24090 parse as 0 (scientific notation), so every 00e... row matched; compare `$2""==a""`.
+- A file-name grep with an empty pattern matches every file (a 140 MB includers list); build lookups in python with exact keys, never `grep -F "$b"` on a value that can be empty.
+- Swapping a raw `CScriptDef* pGlobalScriptDef` for the CDefPointer global turns each `pGlobalScriptDef->X` into a (forceinline-free) call that VC7.1 sequences before plain calls in the same expression: retail's read-after-rand shape needs the operands ordered right to left (`Min + rand() % Var`, 0x00EC1CD0) or the rand() in its own statement (0x00E1E960).
+- A local inline const accessor on the def model (`GetAcolyteTimerTime()`) was standing in for CTimer::operator=(long): defining the header operator= inline after engine/CTimer.h and assigning the member reproduces retail's ecx def read (0x00E6AAC0 / 0x00EDC720).
+- Local CScriptDef pad models name members descriptively; map them by retail offset onto engine/CScriptDef.h (work/fmap.py reads its `// +0x` comments) and say so in the row; the offsets, not the names, are the evidence.
+- Vector-word stand-ins (`XBegin` / `XEnd` pointers at a vector's offset) become the header vector's size() / operator[] / begin() with identical bytes.
+- Local `namespace std { vector ... }` stand-ins map onto stlport/fable_containers.h opt-ins by what the local model declared: declaration-only erase(first,last) -> ERASE_RANGE_OUTOFLINE, `~vector();` -> DTOR_OUTOFLINE, `operator=` decl -> ASSIGN, `resize(n,x)` decl -> RESIZE_OUTOFLINE; a plain in-class body -> the default.
+- When removing a block with a text marker, keep its trailing newline in the marker: otherwise the next `^class` regex no longer matches at line start.
+- A transformer imported by another script must guard its main loop (`if __name__=='__main__'`): importing port.py re-ported rows and overwrote hand fixes once.
+- Moving a row onto the heavier shared CCharString / STLport models can exhaust VC7.1's inline budget so a forceinline accessor is still called out of line (0x00E12580); that is a blocked/port, not a header opt-in.

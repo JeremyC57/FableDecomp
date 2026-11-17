@@ -15,19 +15,9 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 #include "fable_compiler.h"
 #define THING_INLINE_COPY
-#define VEC_DTOR
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const char* text);           // 0x0099EFE0
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString(const unsigned short* text);            // 0x0099B6B0
-    ~CWideString();                                     // 0x0099B510
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING                       // agentNF60: was a local CWideString stand-in (ctor 0x0099B6B0, dtor 0x0099B510)
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
@@ -75,34 +65,9 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     ~CScriptThing() {}
 };
-namespace std {
-template<class T> inline void _Destroy(T* first, T* last)
-{
-    for (; first != last; ++first)
-        first->~T();
-}
-template<class T> class allocator { };
-template<class T, class A = allocator<T> > class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-#ifndef VEC_DTOR
-#define VEC_DTOR FABLE_FORCEINLINE
-#endif
-    VEC_DTOR ~vector()
-    {
-        _Destroy(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-    T* erase(T* first, T* last);                        // 0x008AC9D0 for CScriptThing
-    void clear() { erase(_M_start, _M_finish); }
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    T& operator[](unsigned int n) { return _M_start[n]; }
-};
-}
+// agentNF60: std::vector is the shared STLport 4.6 vector (stlport/fable_containers.h; was a local namespace-std stand-in).
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
@@ -117,11 +82,11 @@ class CTimer { public:
     void Set(long time) { pDSTGame->SetTimer(Index, time); }
     long Get() const { return pDSTGame->GetTimer(Index); }
 };
-class CScriptDef { public:
-    unsigned char _pad[0x50];
-    long NPCCommentInterval;                            // +0x50
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: NPCCommentInterval -> NPC_COMMENT_FREQUENCY (+0x50).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -179,6 +144,6 @@ bool NScript::CQ_RansomVictimScript::MakeNPCComment(const CCharString& name, con
             Game->AddLineToConversation(conversation, "TEXT_QST_B06_PRE_RESC_" + other.GetDataString() + "_" + name + "_RESPONSE", false, other, Game->GetHero());
         }
     }
-    NPCCommentTimer.Set(pGlobalScriptDef->NPCCommentInterval);
+    NPCCommentTimer.Set(pGlobalScriptDef->NPC_COMMENT_FREQUENCY);
     return true;
 }

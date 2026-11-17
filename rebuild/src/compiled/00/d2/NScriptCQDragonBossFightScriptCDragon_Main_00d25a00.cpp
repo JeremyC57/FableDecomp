@@ -894,18 +894,9 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-class CScriptDef { public:
- unsigned char _pad0[0xbc0];
- long DBNumMinionsHighHealth;      // +0xbc0 (PDB +0xc68)
- long DBNumMinionsMediumHealth;    // +0xbc4
- long DBNumMinionsLowHealth;       // +0xbc8
- long DBNumMinionsVeryLowHealth;   // +0xbcc
- long DBNumSummonersHighHealth;    // +0xbd0
- long DBNumSummonersMediumHealth;  // +0xbd4
- long DBNumSummonersLowHealth;     // +0xbd8
- long DBNumSummonersVeryLowHealth; // +0xbdc
-};
-extern CScriptDef* pGlobalScriptDef;   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 enum EDragonState { DS_HIGH_HEALTH, DS_MEDIUM_HEALTH, DS_LOW_HEALTH, DS_VERY_LOW_HEALTH, DS_DEAD };
 class CScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
     bool IsActiveThreadTerminating();   // 0x00CB7940 (Ego_r.pdb CScriptBase)

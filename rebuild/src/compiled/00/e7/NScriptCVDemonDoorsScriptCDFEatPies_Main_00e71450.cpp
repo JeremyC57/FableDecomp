@@ -21,11 +21,8 @@
 //   Was `?Main@CDF_EatPies@@QAEXXZ`; this source now defines the PDB member (outer stand-in CV_DemonDoorsScript moved into NScript); same bytes.
 #include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 class CCPPointerInfo { public:
     long RefCount;
@@ -107,11 +104,9 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad[0x1084];
-    float DemonDoor_EatPies_FatnessLevel;               // +0x1084
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CV_DemonDoorsScript {
 public:
@@ -176,7 +171,7 @@ void NScript::CV_DemonDoorsScript::CDF_EatPies::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            CScriptDef* def = pGlobalScriptDef;
+            const CScriptDef* def = pGlobalScriptDef.Get();
             if (!(Game->GetHeroFatness() >= def->DemonDoor_EatPies_FatnessLevel)) {
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);

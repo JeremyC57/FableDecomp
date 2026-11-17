@@ -15,15 +15,8 @@
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}; CScriptThing per the landed script model (12 bytes).
 // Naming wave 35: identity reg 00e011fd "BanditCronies" in 00e00db0; Alloc 00e03730; vtable 012df618 slot 1; PDB ?Main@CBanditCronies@CQ_TraderEscortScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBanditCronies::Main (wave3/labels_alloc.tsv); PDB ?Main@CBanditCronies@CQ_TraderEscortScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBanditCronies@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class CCharString { public:                                     // 4 bytes: the shared string block pointer
-    void* PStringData;
-    CCharString(const CCharString& other);               // 0x0099EC30
-    ~CCharString();                                      // 0x0099EAE0
-};
-class CDefString { public:                                      // 4 bytes: a def-side string
-    void* PStringData;
-    operator CCharString() const;                        // 0x00415D70
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 extern "C" int __cdecl rand();                           // 0x00BFEB16 (MSVCR71)
 
 class CCPPointerInfo;                                   // CCountedPointer's shared block
@@ -41,13 +34,11 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad[0x3ac];
-    CDefString* BC_ShoutSoundsBegin;                     // +0x3ac vector<CDefString> (retail STLport, 12 bytes)
-    CDefString* BC_ShoutSoundsEnd;                       // +0x3b0
-    CDefString* BC_ShoutSoundsEndOfStorage;              // +0x3b4
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: BC_ShoutSoundsBegin / End (+0x3ac / +0x3b0) -> AssassinScreamSoundIds (std::vector<CDefString>, +0x3ac) through size() / operator[].
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
@@ -96,9 +87,9 @@ void NScript::CQ_TraderEscortScript::CBanditCronies::Main()
     }
     if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
-    unsigned long count = pGlobalScriptDef->BC_ShoutSoundsEnd - pGlobalScriptDef->BC_ShoutSoundsBegin;
+    unsigned long count = pGlobalScriptDef->AssassinScreamSoundIds.size();
     unsigned long index = rand() % count;
-    CCharString sound = pGlobalScriptDef->BC_ShoutSoundsBegin[index];
+    CCharString sound = pGlobalScriptDef->AssassinScreamSoundIds[index];
     Game->PlaySoundOnThing(Me, sound);
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     do {

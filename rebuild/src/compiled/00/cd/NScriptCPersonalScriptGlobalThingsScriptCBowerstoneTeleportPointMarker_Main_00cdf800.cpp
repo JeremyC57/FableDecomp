@@ -16,11 +16,8 @@
 // Shape: the landed CBSGateGuard::Main / CKG_Gate::Main flow; the distance is `(float)` of the long def field, pushed
 //   before the GetHero call (right-to-left arguments); the quest name is a named
 //   CCharString local (built before the call's arguments; no EH frame: Main is not built with /EHsc).
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in; ctor 0x0099EBF0, dtor 0x0099EAE0)
 #include "engine/CCountedPointer.h"
 enum ETutorialCategory { TUTORIAL_CATEGORY_TELEPORTING = 31 };   // misc_def_types.h
 #define FABLE_RETAIL_NSCRIPT
@@ -28,11 +25,9 @@ enum ETutorialCategory { TUTORIAL_CATEGORY_TELEPORTING = 31 };   // misc_def_typ
 #include "engine/CGameScriptInterfaceBase.h"
 #include "engine/CEntityScriptBase.h"
 
-class CScriptDef { public:
-    unsigned char _pad[0xfb4];
-    long TeleporterActivationDist;                     // +0xFB4
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef / CScriptDef* stand-in)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 namespace NScript {
 class CQ_SunnyvaleMasterData;

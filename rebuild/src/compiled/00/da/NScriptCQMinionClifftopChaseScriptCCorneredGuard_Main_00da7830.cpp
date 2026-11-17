@@ -19,11 +19,8 @@
 //   Was `?Main@CCorneredGuard@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_MinionClifftopChaseScript moved into NScript); same bytes.
 #include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 class CRGBColour { public:
     unsigned char B, G, R, A;
@@ -81,7 +78,7 @@ class CGameScriptInterface { public:
     VPAD16(p3x0) VPAD8(p3x1) VPAD4(p3x2) VPAD2(p3x3)   // slots 78..107
     virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) const;   // slot 108 (+0x1b0)
     VPAD32(p4x0) VPAD8(p4x1) VPAD4(p4x2) VPAD2(p4x3) VPAD1(p4x4)   // slots 109..155
-    virtual void GiveHeroMorality(long amount) const;   // slot 156 (+0x270)
+    virtual void GiveHeroMorality(float amount) const;   // slot 156 (+0x270) (agentNF60: float, as engine/CGameScriptInterface.h and the PDB def member MCC_SavedGuardMoralityGain)
     VPAD64(p5x0) VPAD8(p5x1)   // slots 157..228
     virtual void EntityFollowThing(const CScriptThing& thing, const CScriptThing& target, float distance, bool a) const;   // slot 229 (+0x394)
     VPAD32(p6x0) VPAD2(p6x1) VPAD1(p6x2)   // slots 230..264
@@ -99,12 +96,11 @@ class CGameScriptInterface { public:
     VPAD16(p12x0) VPAD8(p12x1) VPAD4(p12x2)   // slots 452..479
     virtual void SetEntityAsRegionFollowing(const CScriptThing& thing, const CScriptThing& leader, bool follow) const;   // slot 480 (+0x780)
 };
-class CScriptDef { public:
-    unsigned char _pad[0xd44];
-    unsigned char _pad2[0xd50 - 0xd44];
-    long          GuardRescueMorality;                 // +0xd50
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: GuardRescueMorality -> MCC_SavedGuardMoralityGain (+0xd50).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
@@ -222,7 +218,7 @@ void NScript::CQ_MinionClifftopChaseScript::CCorneredGuard::Main()
         }
         if (IsActiveThreadTerminating())
             return;
-        Game->GiveHeroMorality(pGlobalScriptDef->GuardRescueMorality);
+        Game->GiveHeroMorality(pGlobalScriptDef->MCC_SavedGuardMoralityGain);
         long conversation = Game->AddNewConversation(Me, false, false);
         Game->AddLineToConversation(conversation, "TEXT_QST_045_CORNERED_GUARD_THANKS", false, Me, CScriptThing());
         Game->EntityFollowThing(Me, Game->GetHero(), 3.0f, true);

@@ -16,11 +16,8 @@
 //   Was `?Init@COakValeBanditRaidBandit@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 #include "fable_compiler.h"
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/CCountedPointer.h"
 struct CScriptThingImp;
@@ -35,12 +32,9 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad[0xd5c];
-    float         OVBRBanditSightRadius;           // +0xd5c
-    float         OVBRBanditSoundRadius;           // +0xd60
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript { class CQ_OakValeBanditRaidScript; } using NScript::CQ_OakValeBanditRaidScript;
 struct CQ_SunnyvaleMasterData;
 namespace NScript {

@@ -935,11 +935,8 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-class CCharString { public:
- void* PStringData;
- CCharString(const char* text, long length = -1);   // 0x0099EBF0
- ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -963,11 +960,11 @@ struct CScriptThingImp {
  virtual const C3DVector& GetPosition() const;      // slot 6 (+0x18)
 };
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
-class CScriptDef { public:
- unsigned char _pad[0xe4c];
- float WomanFadeTime;                                // +0xe4c
-};
-extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: WomanFadeTime -> WB_ScreamingVillagerFadeOutTime (+0xe4c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 class CEntityScriptBase
 {
     virtual ~CEntityScriptBase();   // retail slot 0 (the stand-in is polymorphic, as retail: the vptr moves here)
@@ -1027,6 +1024,6 @@ void NScript::CQ_HeroSoulsArenaScript::CHSA_ScreamingVillager::Main()
    if (IsActiveThreadTerminating()) return;
   }
   if (IsActiveThreadTerminating()) return;
-  FadeOutAndKillEntity(Me, true, pGlobalScriptDef->WomanFadeTime, true);
+  FadeOutAndKillEntity(Me, true, pGlobalScriptDef->WB_ScreamingVillagerFadeOutTime, true);
  }
 }

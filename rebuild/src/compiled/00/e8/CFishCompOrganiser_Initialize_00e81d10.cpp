@@ -16,12 +16,8 @@
 #define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
 #include "stlport/fable_containers.h"
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString();                                       // 0x0099E4B0
-    ~CCharString();                                      // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);    // 0x0099EFB0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -34,16 +30,11 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char Data[0x5a0];
-    long          FishTypesInGame;                       // +0x5a0
-    long          FishingRodsInGame;                     // +0x5a4
-    long          FishingPrizes;                         // +0x5a8
-    unsigned char Pad[0xc];
-    std::vector<CCharString> RodDefs;                         // +0x5b8
-    std::vector<CCharString> FishDefs;                        // +0x5c4
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: RodDefs -> FishRodDefNames (+0x5b8), FishDefs -> FishDefNames (+0x5c4).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
@@ -74,14 +65,14 @@ void CFishCompOrganiser::Initialize()
     for (long i = 0; i < FishingRodsInGame; ++i) {
         if (IsActiveThreadTerminating())
             return;
-        RodDef[i] = pGlobalScriptDef->RodDefs[i];
+        RodDef[i] = pGlobalScriptDef->FishRodDefNames[i];
     }
     if (IsActiveThreadTerminating())
         return;
     for (long j = 0; j < FishTypesInGame; ++j) {
         if (IsActiveThreadTerminating())
             return;
-        FishDef[j] = pGlobalScriptDef->FishDefs[j];
+        FishDef[j] = pGlobalScriptDef->FishDefNames[j];
     }
     if (IsActiveThreadTerminating())
         return;

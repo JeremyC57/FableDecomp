@@ -10,13 +10,9 @@
 //   local model (no engine header for CScriptDef, and its PDB offsets do not hold in retail).
 // Shape: a dense `switch` with two shared arms and a default zero -> a bounds check, a 4-entry jump table, two return
 //   blocks and the `xor eax,eax` default.
-class CScriptDef { public:
-    unsigned char _pad000[0x4a4];
-    long          HenchmanPayTimeDelayInSeconds;   // +0x4a4
-    long          HenchmanCheapGoldCost;           // +0x4a8
-    long          HenchmanExpensiveGoldCost;       // +0x4ac
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

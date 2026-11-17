@@ -9,20 +9,11 @@
 //   the parent level script's members sit at Ego_r offset - 0x14 (retail CScriptBase is 0x40).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 ("" 0x0122D70E); CScriptThing::MsgIsKilledBy (slot 18); interface slots
 //   156 GiveHeroMorality, 161 GiveHeroRenownPoints; pGlobalScriptDef 0x0143E90C.
-class CCharString {
-public:
-    void* PData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CScriptDef {                                      // Ego_r.pdb CScriptDef; retail offsets (Ego_r - 0x5c: 23 vectors of 0x10 are 0xC)
-public:
-    unsigned char _pad0[0x708];
-    float HeroKillsSheriffMorality;                     // +0x708 (Ego_r +0x764)
-    unsigned char _pad70c[0x71c - 0x70c];
-    long  HeroKillsSheriffRenown;                       // +0x71c (Ego_r +0x778)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 enum ESheriffState { };                                 // NScript::CV_MurderTwistFinalScript::ESheriffState in Ego_r.pdb (value 4 unnamed here)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/CCountedPointer.h"

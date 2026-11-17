@@ -16,22 +16,12 @@
 #include "fable_compiler.h"
 #include <string.h>
 namespace NScript { class CPredicateBase; }
-class CCharStringData { public:
-    char*         PData;
-    unsigned long Length;
-};
-long __fastcall Compare(const char* a, const char* b);       // 0x00411570
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);         // 0x0099EBF0
-    ~CCharString();                                          // 0x0099EAE0
-    FABLE_FORCEINLINE bool operator==(const char* text) const
-    {
-        if (PStringData == 0)
-            return strcmp(text, "") == 0;
-        return Compare(PStringData->PData, text) == 0;
-    }
-};
+// agentNF60: CCharString / CCharStringData / CBasicString<char> are fable_string.h's (were local models); CBasicString::operator==(const char*)
+//   expands in place (FABLE_RETAIL_CBASICSTRING_TEXT_EQ_COMPARE_ZERO) over the protected static Compare 0x00411570.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_COMPARE_ZERO
+#define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+#include "fable_string.h"
 class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
@@ -119,12 +109,11 @@ struct CGameScriptInterface_Calls {               // slots: ghidra_out/cgsi_slot
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
-class CScriptDef { public:
-    unsigned char _pad000[0xdf4];
-    long          TraderInfectionTime;                       // +0xdf4
-    long          TraderInfectionTimeLong;                   // +0xdf8
-};
-extern CScriptDef* pGlobalScriptDef;                             // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: TraderInfectionTime -> TE_TraderToBalverineDelay (+0xdf4), TraderInfectionTimeLong -> TE_TraderLowInfectionTime (+0xdf8).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CTraderParent {
     unsigned char _pad00[0x5a];
     bool          LongInfection;                             // +0x5a
@@ -167,11 +156,11 @@ void CTraderScript::HandleTrader(long state)
         if (ParentClass->LongInfection) {
             if (IsActiveThreadTerminating())
                 return;
-            pDSTGame->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTimeLong);
+            pDSTGame->SetTimer(Timer, pGlobalScriptDef->TE_TraderLowInfectionTime);
         } else {
             if (IsActiveThreadTerminating())
                 return;
-            pDSTGame->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTime);
+            pDSTGame->SetTimer(Timer, pGlobalScriptDef->TE_TraderToBalverineDelay);
         }
     } else if (Me.GetDataString() == "SCARED") {
         if (IsActiveThreadTerminating())

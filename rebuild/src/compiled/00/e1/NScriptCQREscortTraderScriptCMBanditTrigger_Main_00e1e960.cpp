@@ -25,13 +25,8 @@
 #include "fable_compiler.h"
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);             // 0x0099EC30
-    ~CCharString();                                    // 0x0099EAE0
-    bool operator!=(const char* text) const;           // 0x0099E960
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing;
 #include "engine/CCountedPointer.h"
@@ -919,12 +914,10 @@ inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-struct CCharStringVector { CCharString* _M_start; CCharString* _M_finish; CCharString* _M_end_of_storage; };
-class CScriptDef { public:
-    unsigned char _pad[0x9ac];
-    CCharStringVector EscortBanditTypes;                // +0x9ac (descriptive name)
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: EscortBanditTypes (+0x9ac, a local vector stand-in read through _M_start / _M_finish) -> EscortTraderSpawnedBanditType (std::vector<CCharString>) through size() / operator[].
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CQR_EscortTraderScript {
 public:
@@ -997,8 +990,10 @@ void NScript::CQR_EscortTraderScript::CM_BanditTrigger::Main()
         if (IsActiveThreadTerminating()) return;
     }
     if (IsActiveThreadTerminating()) return;
-    long count = pGlobalScriptDef->EscortBanditTypes._M_finish - pGlobalScriptDef->EscortBanditTypes._M_start;
-    CCharString banditType = pGlobalScriptDef->EscortBanditTypes._M_start[rand() % count];
+    long count = pGlobalScriptDef->EscortTraderSpawnedBanditType.size();
+    long index = rand() % count;                        // agentNF60: rand() before the def read (retail reloads 0x0143E90C after the call;
+                                                        //   an operator-> subscript with rand() inside reads the def first: DIFFER 1018v1004)
+    CCharString banditType = pGlobalScriptDef->EscortTraderSpawnedBanditType[index];
     CScriptThing bandit = Game->CreateCreature(banditType, pos, "AttackingBandit", false);
     if (spawnPoint.GetDataString() != "" && spawnPoint.GetDataString() != "NULL") {
         if (IsActiveThreadTerminating()) return;

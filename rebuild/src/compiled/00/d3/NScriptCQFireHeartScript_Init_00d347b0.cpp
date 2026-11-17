@@ -32,12 +32,8 @@
 #define FABLE_RETAIL_STLP_VECTOR_ASSIGN
 #define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
 #include "stlport/fable_containers.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
@@ -56,26 +52,11 @@ struct CCutsceneArgMap { void* _body[3]; };            // map<CCharString, CChar
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad[0xc04];
-    CCharString FHSunPadFX;                             // +0xC04
-    CCharString FHMoonPadFX;                            // +0xC08
-    long        _padc0c;
-    float       FHPadRadius;                            // +0xC10
-    long        FHNumberOfPads;                         // +0xC14
-    long        FHNumberOfProphets;                     // +0xC18
-    long        FHNumberOfPatterns;                     // +0xC1C
-    long        FHNumberOfRounds;                       // +0xC20
-    long        FHNumberOfSunsEvil;                     // +0xC24
-    long        FHNumberOfSunsGood;                     // +0xC28
-    std::vector<CFireHeartPatternDef> FHPatterns;                 // +0xC2C
-    unsigned char _padc38[0xc48 - 0xc38];
-    long        FHNumberOfVillagers;                    // +0xC48
-    long        _padc4c;
-    float       FHMoralityChangeOnKilled;               // +0xC50
-    float       FHMoralityChangeOnFreed;                // +0xC54
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: _padc0c -> FHPadFXHeight (+0xc0c), _padc4c -> FHHealthChangeWhenZapped (+0xc4c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :

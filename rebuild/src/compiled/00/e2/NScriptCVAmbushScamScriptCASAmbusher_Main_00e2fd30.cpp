@@ -19,14 +19,8 @@
 // Naming wave 35: identity reg 00e2b0de "AS_Ambusher" in 00e2b090; Alloc 00e2bb60; vtable 012e2834 slot 1; PDB ?Main@CAS_Ambusher@CV_AmbushScamScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CAS_Ambusher::Main (wave3/labels_alloc.tsv); PDB ?Main@CAS_Ambusher@CV_AmbushScamScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAS_Ambusher@@UAEXXZ`; this source now defines the PDB member (outer stand-in CV_AmbushScamScript moved into NScript); same bytes.
 #include "fable_compiler.h"
-class CCharString { public:                                     // 4 bytes: the shared string block pointer
-    void* PStringData;
-    ~CCharString();                                      // 0x0099EAE0
-};
-class CDefString { public:                                      // 4 bytes: a def-side string
-    void* PStringData;
-    operator CCharString() const;                        // 0x00415D70
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 extern "C" int __cdecl rand();                           // 0x00BFEB16 (MSVCR71)
 
 class CCPPointerInfo;                                   // CCountedPointer's shared block
@@ -44,14 +38,13 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad[0x2c0];
-    CDefString* AS_AmbushSoundsBegin;                    // +0x2c0 vector<CDefString> (retail STLport, 12 bytes)
-    CDefString* AS_AmbushSoundsEnd;                      // +0x2c4
-    CDefString* AS_AmbushSoundsEndOfStorage;             // +0x2c8
-    float       AS_AmbushDistance;                       // +0x2cc
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: AS_AmbushDistance -> AmbushScamScreamProximity (+0x2cc).
+// agentNF60: AS_AmbushSoundsBegin / End (+0x2c0 / +0x2c4) -> AmbushScamScreamSoundIds (std::vector<CDefString>, +0x2c0) through size() / operator[].
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CV_AmbushScamScript {
@@ -86,17 +79,17 @@ typedef NScript::CV_AmbushScamScript::CAS_Ambusher CAS_Ambusher;    // global sp
 FABLE_FORCEINLINE void CAS_Ambusher::RunAmbush()
 {
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-    while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), pGlobalScriptDef->AS_AmbushDistance)) {
+    while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), pGlobalScriptDef->AmbushScamScreamProximity)) {
         Game->NewScriptFrame();
         if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
     }
     if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
-    unsigned long count = pGlobalScriptDef->AS_AmbushSoundsEnd - pGlobalScriptDef->AS_AmbushSoundsBegin;
+    unsigned long count = pGlobalScriptDef->AmbushScamScreamSoundIds.size();
     unsigned long index = rand() % count;
     {
-        const CCharString& sound = pGlobalScriptDef->AS_AmbushSoundsBegin[index];
+        const CCharString& sound = pGlobalScriptDef->AmbushScamScreamSoundIds[index];
         Game->PlaySoundOnThing(Me, sound);
     }
     do {

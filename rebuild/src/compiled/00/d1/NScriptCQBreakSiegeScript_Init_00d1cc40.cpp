@@ -13,32 +13,18 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad_0x000[0xa8];
-    long BreakSiegeNakedBoastCost;                     // +0xa8
-    long BreakSiegeNakedBoastReward;                   // +0xac
-    long BreakSiegeNoDamageBoastCost;                  // +0xb0
-    long BreakSiegeNoDamageBoastReward;                // +0xb4
-    long BreakSiegeNoWeaponsBoastCost;                 // +0xb8
-    long BreakSiegeNoWeaponsBoastReward;               // +0xbc
-    unsigned char _pad_0x0c0[0xb94 - 0xc0];
-    long BreakSiegeHireNoGuardsBoastCost;              // +0xb94
-    long BreakSiegeKillBanditLeaderBoastCost;          // +0xb98
-    long BreakSiegeHireNoGuardsBoastReward;            // +0xb9c
-    long BreakSiegeKillBanditLeaderBoastReward;        // +0xba0
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: BreakSiegeHireNoGuardsBoastCost -> BS_NoAssistanceBoastAmount (+0xb94), BreakSiegeKillBanditLeaderBoastCost -> BS_KilledLeaderBoastAmount (+0xb98), BreakSiegeHireNoGuardsBoastReward -> BS_NoAssistanceBoastReward (+0xb9c), BreakSiegeKillBanditLeaderBoastReward -> BS_KilledLeaderBoastReward (+0xba0).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad_0x000[0x116];
@@ -101,8 +87,8 @@ void NScript::CQ_BreakSiegeScript::Init()
                    pGlobalScriptDef->BreakSiegeNoDamageBoastReward, false, "", 0);
     Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->BreakSiegeNoWeaponsBoastCost,
                    pGlobalScriptDef->BreakSiegeNoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_HIRENOGUARDS", 25, pGlobalScriptDef->BreakSiegeHireNoGuardsBoastCost,
-                   pGlobalScriptDef->BreakSiegeHireNoGuardsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLBANDITLEADER", 26, pGlobalScriptDef->BreakSiegeKillBanditLeaderBoastCost,
-                   pGlobalScriptDef->BreakSiegeKillBanditLeaderBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_HIRENOGUARDS", 25, pGlobalScriptDef->BS_NoAssistanceBoastAmount,
+                   pGlobalScriptDef->BS_NoAssistanceBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLBANDITLEADER", 26, pGlobalScriptDef->BS_KilledLeaderBoastAmount,
+                   pGlobalScriptDef->BS_KilledLeaderBoastReward, false, "", 0);
 }

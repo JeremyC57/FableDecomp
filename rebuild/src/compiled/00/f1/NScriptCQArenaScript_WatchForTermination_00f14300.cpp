@@ -19,12 +19,8 @@
 //   WhisperKilledByHero +0x74, ArenaFinished +0x75. CScriptDef ArenaSpareWhisperMorality at retail +0xaec (Ego_r +0xb90).
 // Shape: the landed CQ_WizardBattleScript::WatchForTermination 0x00E1AD60 form (`&&` wait, if/else with a terminate test in
 //   each arm, shared deactivation tail); the teleport target is a named CScriptThing local destroyed out of line.
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
@@ -32,12 +28,9 @@ public:
 #include "engine/CLevelScriptBase.h"
 #include "engine/CGameScriptInterfaceBase.h"
 
-class CScriptDef {
-public:
-    unsigned char _before[0xaec];
-    float ArenaSpareWhisperMorality;                    // +0xaec
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CQ_SunnyvaleMasterData {

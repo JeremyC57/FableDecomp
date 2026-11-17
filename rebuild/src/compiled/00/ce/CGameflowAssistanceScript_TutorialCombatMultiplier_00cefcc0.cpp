@@ -16,22 +16,18 @@
 //   bottom as `if (!IsActiveThreadTerminating()) continue; return;` (a plain `while (!flag)` or a bottom `if (term) return;`
 //   rotates it and duplicates the flag test). Every action is guarded by its own IsActiveThreadTerminating
 //   check; the message temporaries are built right to left ("" first) from implicit `const char*` conversions.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptDef { public:
-    unsigned char _pad[0xfd8];
-    long          CombatMultFramesPerLevel;                 // +0xfd8
-    long          CombatMultMasterLevel;                    // +0xfdc
-};
-extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: CombatMultFramesPerLevel -> CombatMultTooLongUnchanged (+0xfd8), CombatMultMasterLevel -> CombatMultStopBotheringAfter (+0xfdc).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 struct CGameflowMasterData {
     unsigned char _pad[0x67];
@@ -70,7 +66,7 @@ void CGameflowAssistanceScript::Tutorial_CombatMultiplier()
                     return;
                 CombatMultHighestLevel = multiplier;
                 CombatMultFramesSinceChange = 0;
-                if (multiplier > pGlobalScriptDef->CombatMultMasterLevel) {
+                if (multiplier > pGlobalScriptDef->CombatMultStopBotheringAfter) {
                     if (IsActiveThreadTerminating())
                         return;
                     GSI->HeroReceiveMessageFromGuildMaster("TEXT_QST_080_MULT_MASTER", "", true, false);
@@ -95,7 +91,7 @@ void CGameflowAssistanceScript::Tutorial_CombatMultiplier()
                 if (IsActiveThreadTerminating())
                     return;
                 ++CombatMultFramesSinceChange;
-                if (CombatMultFramesSinceChange > pGlobalScriptDef->CombatMultFramesPerLevel * CombatMultHighestLevel) {
+                if (CombatMultFramesSinceChange > pGlobalScriptDef->CombatMultTooLongUnchanged * CombatMultHighestLevel) {
                     if (IsActiveThreadTerminating())
                         return;
                     GSI->HeroReceiveMessageFromGuildMaster("TEXT_QST_080_MULT_TRY", "", true, false);

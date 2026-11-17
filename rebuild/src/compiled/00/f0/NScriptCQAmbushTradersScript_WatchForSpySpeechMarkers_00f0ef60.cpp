@@ -23,13 +23,8 @@
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
 #include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-class CCharString { public:
-    void* PStringData;
-    CCharString();                                      // 0x0099E4B0
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
@@ -60,17 +55,12 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad000[0xa40];
-    float AmbushTradersSpySpeechDistance;               // +0xa40
-    unsigned char _pad0a44[0xa4c - 0xa44];
-    long  AmbushTradersSpyProximitySpeechDelay;         // +0xa4c
-    long  AmbushTradersSpySpeechDelay;                  // +0xa50
-    long  AmbushTradersSpyNoSpeechDelay;                // +0xa54
-    long  AmbushTradersSpySentrySpeechDelay;            // +0xa58
-};
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: AmbushTradersSpySpeechDistance -> AmbushTradersSpeechSpyProximity (+0xa40), AmbushTradersSpyProximitySpeechDelay -> AmbushTradersSpySpeechTimerProximity (+0xa4c), AmbushTradersSpySpeechDelay -> AmbushTradersSpySpeechTimerLong (+0xa50), AmbushTradersSpyNoSpeechDelay -> AmbushTradersSpySpeechTimerShort (+0xa54), AmbushTradersSpySentrySpeechDelay -> AmbushTradersSpySpeechTimerSentry (+0xa58).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 namespace NScript {
 struct CTimer {
@@ -142,7 +132,7 @@ void CQ_AmbushTradersScript::WatchForSpySpeechMarkers(CScriptThing spy)
                     return;
 #pragma inline_depth()
                 }
-            SpeechSpyTimer.SetTime(pGlobalScriptDef->AmbushTradersSpySentrySpeechDelay);
+            SpeechSpyTimer.SetTime(pGlobalScriptDef->AmbushTradersSpySpeechTimerSentry);
             if (SpeechSpySentryCount < 5) {
                 if (IsActiveThreadTerminating())
                     {
@@ -194,7 +184,7 @@ void CQ_AmbushTradersScript::WatchForSpySpeechMarkers(CScriptThing spy)
                     return;
 #pragma inline_depth()
                 }
-            SpeechSpyTimer.SetTime(pGlobalScriptDef->AmbushTradersSpyProximitySpeechDelay);
+            SpeechSpyTimer.SetTime(pGlobalScriptDef->AmbushTradersSpySpeechTimerProximity);
             if (SpeechSpyProximityCount < 5) {
                 if (IsActiveThreadTerminating())
                     {
@@ -272,7 +262,7 @@ void CQ_AmbushTradersScript::WatchForSpySpeechMarkers(CScriptThing spy)
                     return;
 #pragma inline_depth()
                 }
-            if (IsDistanceBetweenThingsUnder(spy, marker, pGlobalScriptDef->AmbushTradersSpySpeechDistance)) {
+            if (IsDistanceBetweenThingsUnder(spy, marker, pGlobalScriptDef->AmbushTradersSpeechSpyProximity)) {
                 if (IsActiveThreadTerminating())
                     {
 #pragma inline_depth(0)
@@ -349,7 +339,7 @@ void CQ_AmbushTradersScript::WatchForSpySpeechMarkers(CScriptThing spy)
                         Game->AddLineToConversation(conversation, speech, false, spy, Game->GetHero());
                     }
                 }
-                SpeechSpyTimer.SetTime(pGlobalScriptDef->AmbushTradersSpySpeechDelay);
+                SpeechSpyTimer.SetTime(pGlobalScriptDef->AmbushTradersSpySpeechTimerLong);
             } else {
                 if (IsActiveThreadTerminating())
                     {
@@ -357,7 +347,7 @@ void CQ_AmbushTradersScript::WatchForSpySpeechMarkers(CScriptThing spy)
                         return;
 #pragma inline_depth()
                     }
-                SpeechSpyTimer.SetTime(pGlobalScriptDef->AmbushTradersSpyNoSpeechDelay);
+                SpeechSpyTimer.SetTime(pGlobalScriptDef->AmbushTradersSpySpeechTimerShort);
             }
         }
         EnableSpeechSpy = false;

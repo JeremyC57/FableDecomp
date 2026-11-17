@@ -22,11 +22,11 @@ struct CQuestScriptBase : CScriptBase {                  // retail 0x48 bytes
     void* Owner;                                         // +0x44
 };
 
-class CScriptDef { public:
-    unsigned char _pad[0x624];
-    long FisticuffsAttackWarningLimit;                   // +0x624
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: FisticuffsAttackWarningLimit -> FC_AttackWarnings (+0x624).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CV_FisticuffsClubScript : public CQuestScriptBase {
@@ -47,7 +47,7 @@ void NScript::CV_FisticuffsClubScript::BeenAttacked()
     if (!HeroInFisticuffsClub) {
         if (IsActiveThreadTerminating())
             return;
-        if (AttackWarnings < pGlobalScriptDef->FisticuffsAttackWarningLimit) {
+        if (AttackWarnings < pGlobalScriptDef->FC_AttackWarnings) {
             if (IsActiveThreadTerminating())
                 return;
             ++AttackWarnings;

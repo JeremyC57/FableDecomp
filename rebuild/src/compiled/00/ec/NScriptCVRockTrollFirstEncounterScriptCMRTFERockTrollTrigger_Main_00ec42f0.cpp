@@ -18,12 +18,8 @@
 //   Was `?Main@CM_RTFERockTrollTrigger@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 #include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/C3DVector.h"
 class CCPPointerInfo;
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
@@ -63,11 +59,11 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 };
 }
 using NScript::CIsThingAlive;
-class CScriptDef { public:
-    unsigned char _pad[0x72c];
-    float         RockTrollTriggerDistance;        // +0x72c (descriptive)
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: RockTrollTriggerDistance -> RockTrollTriggerProximity (+0x72c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CQ_RTFEScript {
     unsigned char _pad[0x4e];
     bool          RockTrollSpawned;                // +0x4e (descriptive)
@@ -114,7 +110,7 @@ void NScript::CV_RockTrollFirstEncounterScript::CM_RTFERockTrollTrigger::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptThing spawnPos = Game->GetThingWithScriptName("M_RTFERockTrollSpawnPos");
-    while (!IsDistanceBetweenThingsUnder(Game->GetHero(), Me, pGlobalScriptDef->RockTrollTriggerDistance)) {
+    while (!IsDistanceBetweenThingsUnder(Game->GetHero(), Me, pGlobalScriptDef->RockTrollTriggerProximity)) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             goto done;

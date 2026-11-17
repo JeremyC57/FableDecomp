@@ -154,11 +154,11 @@ struct CTimerManager {
     virtual void SetTimer(long index, long time);   // slot 89 (+0x164)
 };
 extern CTimerManager* g_pScriptTimerManager;  // 0x0143E8F8
-class CScriptDef { public:
-    unsigned char _pad[0xd38];
-    long          NumHitsBetweenForcePushes;  // +0xd38
-};
-extern CScriptDef* pGlobalScriptDef;        // 0x0143E90C
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: NumHitsBetweenForcePushes -> MCNumHitsBetweenForcePushes (+0xd38).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CQ_MinionCampScript {
 public:
@@ -197,7 +197,7 @@ void NScript::CQ_MinionCampScript::CBriarRose::Init()
     Game->SetThingFlags(Me, 1, 0, 0);
     Game->SetThingAsTarget(Me, 0);
     Game->SetThingImmortal(Me, 0);
-    NumHitsBetweenForcePushes = pGlobalScriptDef->NumHitsBetweenForcePushes;
+    NumHitsBetweenForcePushes = pGlobalScriptDef->MCNumHitsBetweenForcePushes;
     ParentClass->m_counter = 0;
     g_pScriptTimerManager->SetTimer(SpeechTimer.TimerIndex, 0);
 }

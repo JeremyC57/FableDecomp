@@ -14,20 +14,10 @@
 //   class-keyed); this row's class is now declared there, and CScorpionHome is nested in it as Ego_r.pdb spells it
 //   (?Main@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ, a private virtual; FableWin ?OnPredicateFail@/?GetParentScript@ the same) (wrapped, struct->class). Same bytes.
 #include "fable_compiler.h"
-#define VEC_DTOR
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const char* text);           // 0x0099EFE0
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString(const unsigned short* text);            // 0x0099B6B0
-    ~CWideString();                                     // 0x0099B510
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING                       // agentNF60: was a local CWideString stand-in (ctor 0x0099B6B0, dtor 0x0099B510)
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 class CCPPointerInfo { public:                                 // CCountedPointer's shared block
@@ -95,43 +85,16 @@ public:
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     ~CScriptThing() {}
 };
-namespace std {
-template<class T> inline void _Destroy(T* first, T* last)
-{
-    for (; first != last; ++first)
-        first->~T();
-}
-template<class T> class allocator { };
-template<class T, class A = allocator<T> > class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-#ifndef VEC_DTOR
-#define VEC_DTOR FABLE_FORCEINLINE
-#endif
-    VEC_DTOR ~vector()
-    {
-        _Destroy(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-    T* erase(T* first, T* last);                        // 0x008AC9D0 for CScriptThing
-    void clear() { erase(_M_start, _M_finish); }
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    T& operator[](unsigned int n) { return _M_start[n]; }
-};
-}
+// agentNF60: std::vector is the shared STLport 4.6 vector (stlport/fable_containers.h; was a local namespace-std stand-in).
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad[0xf0c];
-    float GUI_DepartureBeetles;                         // +0xf0c
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 namespace NScript {
 class CQ_GuildTrainingWoodsDepartureScript {
 public:

@@ -15,49 +15,25 @@
 //   IsDone exit; its element walk is a by-value `_Destroy(first, last)` over the virtual destructor.
 namespace NScript { class CPredicateBase; }
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/C3DVector.h"
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-namespace std {
-template<class T> inline void _Destroy(T* first, T* last)
-{
-    for (; first != last; ++first)
-        first->~T();
-}
-template<class T> class allocator { };
-template<class T, class A = allocator<T> > class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~vector()
-    {
-        _Destroy(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-};
-}
+// agentNF60: std::vector is the shared STLport 4.6 vector (stlport/fable_containers.h; was a local namespace-std stand-in).
+#include "stlport/fable_containers.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad[0x444];
-    unsigned long MaxTauntingBandits;              // +0x444
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: MaxTauntingBandits -> BanditCountForToll (+0x444).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
@@ -82,7 +58,7 @@ void NScript::CV_BanditTollScript::CM_TauntingBandit::Main()
 {
     std::vector<CScriptThing> bandits;
     Game->GetAllThingsWithScriptName("TauntingBandit", bandits);
-    if (bandits.size() < pGlobalScriptDef->MaxTauntingBandits) {
+    if (bandits.size() < pGlobalScriptDef->BanditCountForToll) {
         if (IsActiveThreadTerminating())
             return;
         CScriptThing bandit = Game->CreateCreature(Me.GetDataString(), Me.GetPos(), "TauntingBandit", false);

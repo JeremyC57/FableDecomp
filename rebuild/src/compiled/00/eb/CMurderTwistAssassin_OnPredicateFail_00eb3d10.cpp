@@ -13,23 +13,14 @@
 //   ParentClass +0x14 (its quest state long at +0x4c).
 // Shape: the slot-296 vtable is fetched before the nested slot-655 call (plain nested call); the three literal temporaries
 //   (the objective's trailing arguments) are built right to left before the quest-name result slot is pushed.
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CDefString { public:
-    long Index;
-    operator CCharString() const;                  // 0x00415D70
-};
-class CScriptDef { public:
-    unsigned char _pad[0x704];
-    float         MurderTwistMorality;             // +0x704
-    unsigned char _pad708[0x714 - 0x708];
-    long          MurderTwistRenown;               // +0x714
-    CDefString    MurderTwistReward;               // +0x718
-};
-extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: MurderTwistMorality -> HeroKillsAssassinMorality (+0x704), MurderTwistRenown -> HeroKillsAssassinRenown (+0x714), MurderTwistReward -> HeroKillsAssassinProofOfKill (+0x718).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CScriptThingMethods {
     virtual void v000();
     virtual void v001();
@@ -74,9 +65,9 @@ void CMurderTwistAssassin::OnPredicateFail()
 {
     if (Me.MsgIsKilledBy("")) {
         ParentClass->State = 4;
-        Game->GiveHeroMorality(pGlobalScriptDef->MurderTwistMorality);
-        Game->GiveHeroRenownPoints(pGlobalScriptDef->MurderTwistRenown);
-        Game->GiveHeroObject(pGlobalScriptDef->MurderTwistReward, -1, false);
+        Game->GiveHeroMorality(pGlobalScriptDef->HeroKillsAssassinMorality);
+        Game->GiveHeroRenownPoints(pGlobalScriptDef->HeroKillsAssassinRenown);
+        Game->GiveHeroObject(pGlobalScriptDef->HeroKillsAssassinProofOfKill, -1, false);
         Game->SetQuestCardObjective(Game->GetActiveQuestName(), "TEXT_QUEST_MURDER_TWIST_OBJECTIVE_RETURN", "OakBay", "");
     }
 }

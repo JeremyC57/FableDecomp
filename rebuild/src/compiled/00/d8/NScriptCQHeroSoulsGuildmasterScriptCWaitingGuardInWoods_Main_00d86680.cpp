@@ -17,11 +17,8 @@
 // Naming wave 35: identity reg 00d84f6b "WaitingGuardInWoods" in 00d84d60; Alloc 00d86560; vtable 012d4bd4 slot 1; PDB ?Main@CWaitingGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CWaitingGuardInWoods::Main (wave3/labels_alloc.tsv); PDB ?Main@CWaitingGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CWaitingGuardInWoods@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_HeroSoulsGuildmasterScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/C3DVector.h"
 class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void s000();   // slot 0 (+0x0)
@@ -90,12 +87,11 @@ public:
 };
 }
 using NScript::CQ_HeroSoulsGuildmasterScript;
-class CScriptDef { public:
-    unsigned char _pad[0xc94];
-    long GuildmasterWoodsGuardOuterDistance;           // +0xc94
-    long GuildmasterWoodsGuardInnerDistance;           // +0xc98
-};
-extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: GuildmasterWoodsGuardOuterDistance -> HS_GMLongDistance (+0xc94), GuildmasterWoodsGuardInnerDistance -> HS_GMGuardDistance (+0xc98).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
 namespace NScript {
@@ -134,8 +130,8 @@ void NScript::CQ_HeroSoulsGuildmasterScript::CWaitingGuardInWoods::Main()
            && !Me.MsgIsHitBy("SCRIPT_NAME_HERO")
            && (!Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")
                || Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))
-           && !IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->GuildmasterWoodsGuardInnerDistance)
-           && (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->GuildmasterWoodsGuardOuterDistance)
+           && !IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->HS_GMGuardDistance)
+           && (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->HS_GMLongDistance)
                || !Game->IsCameraPosOnScreen(Me.GetPosition()))) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating()) return;

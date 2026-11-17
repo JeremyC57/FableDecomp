@@ -19,13 +19,12 @@
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
-class CScriptDef { public:
-    unsigned char _pad[0xC88];
-    long          NostroVulnerableTimerThreshold;      // +0xC88
-    long          NostroVulnerableTimerBonus;          // +0xC8C
-};
-extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-inline CScriptDef* GetScriptDef() { return pGlobalScriptDef; }
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: NostroVulnerableTimerThreshold -> HS_TimePerUndeadKilled (+0xc88), NostroVulnerableTimerBonus -> HS_MaxTimeNostroExposed (+0xc8c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
+inline const CScriptDef* GetScriptDef() { return pGlobalScriptDef.Get(); }
 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
@@ -60,8 +59,8 @@ class CQ_HeroSoulsNostroScript { public:
 void CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE::OnPredicateFail()
 {
     --ParentClass->UndeadAlive;
-    if (ParentClass->NostroVulnerableTimer.GetTime() < GetScriptDef()->NostroVulnerableTimerThreshold)
-        ParentClass->NostroVulnerableTimer = ParentClass->NostroVulnerableTimer.GetTime() + GetScriptDef()->NostroVulnerableTimerBonus;
+    if (ParentClass->NostroVulnerableTimer.GetTime() < GetScriptDef()->HS_TimePerUndeadKilled)
+        ParentClass->NostroVulnerableTimer = ParentClass->NostroVulnerableTimer.GetTime() + GetScriptDef()->HS_MaxTimeNostroExposed;
 }
 
 } // namespace NScript

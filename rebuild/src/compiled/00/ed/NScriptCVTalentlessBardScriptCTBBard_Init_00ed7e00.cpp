@@ -24,13 +24,8 @@
 //   increment), so the copy ctor and the CCountedPointer copy are `__forceinline` after the shared header; the by-value
 //   C3DVector needs a memberwise user copy ctor (the implicit copy loads Z before storing Y).
 #include "fable_compiler.h"
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const char* text);     // 0x0099EFE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/C3DVector.h"
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
@@ -39,13 +34,9 @@ FABLE_FORCEINLINE CScriptThing::CScriptThing(const CScriptThing& other) : CBaseC
 #include "engine/CGameScriptInterfaceBase.h"
 #include "engine/CEntityScriptBase.h"
 
-class CScriptDef {
-public:
-    unsigned char _before[0x7c0];
-    float BardWanderDistanceMin;                        // +0x7c0
-    float BardWanderDistanceMax;                        // +0x7c4
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

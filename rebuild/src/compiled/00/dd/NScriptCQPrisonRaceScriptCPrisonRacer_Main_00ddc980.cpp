@@ -25,11 +25,8 @@
 //   Was `?Main@CPrisonRacer@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_PrisonRaceScript moved into NScript); same bytes. Also: callee 0x00DDCF50 respelled MakeRacerComment (PDB ?MakeRacerComment@...; catalog label; was MakePrisonerComment).
 #include "fable_compiler.h"
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
@@ -77,19 +74,9 @@ class CScriptThing : public CBase { public:                           // vtable 
     virtual ~CScriptThing();                                    // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
 };
-namespace std {
-template <class T> class allocator;
-template <class T, class A = allocator<T> > class vector {
-public:                      // STLport vector (retail 12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~vector();                                          // 0x008AC970
-    unsigned long size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned long n) { return _M_start[n]; }
-};
-}
+// agentNF60: std::vector is the shared STLport 4.6 vector (stlport/fable_containers.h; was a local namespace-std stand-in).
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "stlport/fable_containers.h"
 using std::vector;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -114,14 +101,11 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
-class CScriptDef { public:
-    unsigned char _pad000[0xdc8];
-    float PrisonRacerSpeed;                             // +0xdc8
-    float PrisonRacerSprintSpeed;                       // +0xdcc
-    long  PrisonRacerSprintTime;                        // +0xdd0
-    long  PrisonRacerRestTime;                          // +0xdd4
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: PrisonRacerSpeed -> PrisonRacerRunSpeed (+0xdc8), PrisonRacerSprintTime -> PrisonRacerSprintMaxTimeSeconds (+0xdd0), PrisonRacerRestTime -> PrisonRacerSprintRestTimeSeconds (+0xdd4).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
@@ -182,7 +166,7 @@ void NScript::CQ_PrisonRaceScript::CPrisonRacer::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    Game->EntitySetMaxRunningSpeed(Me, pGlobalScriptDef->PrisonRacerSpeed - ParentClass->RacerSpeed * 0.02f);
+    Game->EntitySetMaxRunningSpeed(Me, pGlobalScriptDef->PrisonRacerRunSpeed - ParentClass->RacerSpeed * 0.02f);
     ParentClass->RacerSpeed++;
     CScriptThing warden = Game->GetThingWithScriptName("PrisonRaceWarden");
     bool sprinting = false;
@@ -215,7 +199,7 @@ void NScript::CQ_PrisonRaceScript::CPrisonRacer::Main()
 #pragma inline_depth()
                 }
             sprinting = true;
-            sprintTimer = pGlobalScriptDef->PrisonRacerSprintTime;
+            sprintTimer = pGlobalScriptDef->PrisonRacerSprintMaxTimeSeconds;
             Game->EntitySetMaxRunningSpeed(Me, pGlobalScriptDef->PrisonRacerSprintSpeed - ParentClass->RacerSpeed * 0.02f);
             ParentClass->MakeRacerComment(Me, "SPRINT");
         }
@@ -227,8 +211,8 @@ void NScript::CQ_PrisonRaceScript::CPrisonRacer::Main()
 #pragma inline_depth()
                 }
             sprinting = false;
-            restTimer = pGlobalScriptDef->PrisonRacerRestTime;
-            Game->EntitySetMaxRunningSpeed(Me, pGlobalScriptDef->PrisonRacerSpeed - ParentClass->RacerSpeed * 0.02f);
+            restTimer = pGlobalScriptDef->PrisonRacerSprintRestTimeSeconds;
+            Game->EntitySetMaxRunningSpeed(Me, pGlobalScriptDef->PrisonRacerRunSpeed - ParentClass->RacerSpeed * 0.02f);
             ParentClass->MakeRacerComment(Me, "SLOW");
         }
         if (marker.IsAlive()) {

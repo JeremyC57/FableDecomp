@@ -11,36 +11,18 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const char* text);           // 0x0099EFE0
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString(const unsigned short* text);            // 0x0099B6B0
-    ~CWideString();                                     // 0x0099B510
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING                       // agentNF60: was a local CWideString stand-in (ctor 0x0099B6B0, dtor 0x0099B510)
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad0[0x1f8];
-    long DarkwoodNakedBoastCost;                        // +0x1f8
-    long DarkwoodNakedBoastReward;                      // +0x1fc
-    long DarkwoodNoDamageBoastCost;                     // +0x200
-    long DarkwoodNoDamageBoastReward;                   // +0x204
-    unsigned char _pad208[0xdf8 - 0x208];
-    long TraderEscortIncubationTimeLow;                 // +0xdf8
-    long TraderEscortIncubationTimeMedium;              // +0xdfc
-    long TraderEscortIncubationTimeHigh;                // +0xe00
-    long AllTradersAliveBoastCost;                      // +0xe04
-    long AllTradersAliveBoastReward;                    // +0xe08
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: DarkwoodNakedBoastCost -> TraderEscortNakedBoastCost (+0x1f8), DarkwoodNakedBoastReward -> TraderEscortNakedBoastReward (+0x1fc), DarkwoodNoDamageBoastCost -> TraderEscortNoDamageBoastCost (+0x200), DarkwoodNoDamageBoastReward -> TraderEscortNoDamageBoastReward (+0x204), TraderEscortIncubationTimeLow -> TE_TraderLowInfectionTime (+0xdf8), TraderEscortIncubationTimeMedium -> TE_TraderMediumInfectionTime (+0xdfc), TraderEscortIncubationTimeHigh -> TE_TraderHighInfectionTime (+0xe00), AllTradersAliveBoastCost -> TE_AllTradersAliveBoastCost (+0xe04), AllTradersAliveBoastReward -> TE_AllTradersAliveBoastReward (+0xe08).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad[0x10b];
     bool DarkwoodAllTradersAlive;                       // +0x10b
@@ -116,13 +98,13 @@ void NScript::CQ_TraderEscortScript::Init()
     ShownBalverine = false;
     ShownEarthTroll = false;
     TimesBantered = 0;
-    IncubationTimeLow = pGlobalScriptDef->TraderEscortIncubationTimeLow;
-    IncubationTimeMedium = pGlobalScriptDef->TraderEscortIncubationTimeMedium;
-    IncubationTimeHigh = pGlobalScriptDef->TraderEscortIncubationTimeHigh;
+    IncubationTimeLow = pGlobalScriptDef->TE_TraderLowInfectionTime;
+    IncubationTimeMedium = pGlobalScriptDef->TE_TraderMediumInfectionTime;
+    IncubationTimeHigh = pGlobalScriptDef->TE_TraderHighInfectionTime;
     TraderToTalk = "";
     PMasterData->DarkwoodAllTradersAlive = true;
     PMasterData->DarkwoodPickpocketedAllTraders = 1;
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->DarkwoodNakedBoastCost, pGlobalScriptDef->DarkwoodNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->DarkwoodNoDamageBoastCost, pGlobalScriptDef->DarkwoodNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_ALLTRADERSALIVE", 9, pGlobalScriptDef->AllTradersAliveBoastCost, pGlobalScriptDef->AllTradersAliveBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->TraderEscortNakedBoastCost, pGlobalScriptDef->TraderEscortNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->TraderEscortNoDamageBoastCost, pGlobalScriptDef->TraderEscortNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_ALLTRADERSALIVE", 9, pGlobalScriptDef->TE_AllTradersAliveBoastCost, pGlobalScriptDef->TE_AllTradersAliveBoastReward, false, "", 0);
 }

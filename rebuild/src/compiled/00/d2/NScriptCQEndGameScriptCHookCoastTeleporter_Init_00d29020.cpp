@@ -12,12 +12,8 @@
 // Shape: `fld [UndeadBar] ; fcomp [def] ; test ah,5 ; jp` is VC7.1's `<`.
 // Header debt: engine/CScriptThing.h flattens the vptr into a data member; the virtual calls and the by-value copy need
 //   a polymorphic local model (as the landed entity-script rows use).
-class CCharString {
-public:
-    void* PData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -25,12 +21,9 @@ public:
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-class CScriptDef {                                     // the global script def (TLC member order, landed CScriptDef ctor 0x00F28F90)
-public:
-    unsigned char _pad000[0xbe8];
-    float         EndGame_BarDecrementAmount;           // +0xbe8
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT

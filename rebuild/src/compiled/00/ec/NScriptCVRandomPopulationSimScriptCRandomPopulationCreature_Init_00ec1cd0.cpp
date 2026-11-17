@@ -23,45 +23,22 @@
 // Model: the landed CQ_TraderEscortScript::CDarkwoodTrader::Init 0x00E04BD0 (inline CCharString == const char*) and the
 //   landed CTCAssassinRush::SetFinalAction 0x008CEAE0 (inline counted-pointer assignment, source fields read first).
 // Shape: the gold is a named local (that keeps the `fimul` on its stack slot; inline it gives `fild`/`fmulp`) and the def
-//   pointer is read into a local before rand() (kept in esi for the `idiv`) while the minimum is read through the global
-//   again after the call, as the landed CV_AmbushScamScript::ResetRandomSpeechTime 0x00E1FEB0. pGlobalScriptDef is a
-//   CDefPointer<const CScriptDef> in Ego_r.pdb (dynamic initializer + atexit destructor); modelled as the plain pointer
-//   (its first word) like the landed rows, since the operator-> form evaluates both def reads before rand().
+//   is read before rand() (kept in esi for the `idiv`) while the minimum is read through the global again after the call.
+//   agentNF60: pGlobalScriptDef is the CDefPointer<const CScriptDef> of engine/fable_script_def_global.h (was modelled as a plain
+//   pointer read into a `def` local). VC7.1 evaluates the operands of `+` / `%` right to left, so `Minimum + rand() % Variation`
+//   reads Variation's def before rand() and Minimum's after it (retail 0x00EC1E4B / 0x00EC1E63); `rand() % ... + Minimum` with
+//   operator-> reads both before rand() (DIFFER 537v540).
 #include "fable_compiler.h"
 #include <string.h>
 #include <stdlib.h>
-template <class T> class CBasicString {
-public:
-    T*            PData;                                // +0x00
-    unsigned long StringLength;                         // +0x04
-    unsigned long DataLength : 31;                      // +0x08
-    bool          UseFastExtend : 1;                    // +0x0c
-    FABLE_FORCEINLINE bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
-protected:
-    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 for <char>
-};
+// agentNF60: CCharString / CCharStringData / CBasicString<char> are fable_string.h's (were local models); CBasicString::operator==(const char*)
+//   expands in place (FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE) over the protected static Compare 0x00411570.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE
+#define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+#include "fable_string.h"
 #pragma pack(push, 1)
-class CCharStringData {
-public:
-    CBasicString<char> Data;                            // +0x00
-    long               NoRefs;                          // +0x0d
-};
 #pragma pack(pop)
-class CCharString {
-public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    FABLE_FORCEINLINE bool operator==(const char* text) const
-    {
-        if (PStringData == 0) {
-            if (strcmp(text, "") == 0)
-                return true;
-            return false;
-        }
-        return PStringData->Data == text;
-    }
-};
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
@@ -77,13 +54,9 @@ FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& othe
     return *this;
 }
 
-class CScriptDef {
-public:
-    unsigned char _before[0x724];                       // opaque here
-    long RandomPopulationTraderGoldMinimum;             // +0x724 (Ego_r.pdb +0x780)
-    long RandomPopulationTraderGoldVariation;           // +0x728 (Ego_r.pdb +0x784)
-};
-extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;
@@ -113,8 +86,7 @@ void CV_RandomPopulationSimScript::CRandomPopulationCreature::Init()
     Exit = Game->GetFurthestWithScriptName(Me, "RandomPopulationExit");
     if (Me.GetName() == "RandomPopulationVillager") {
         MyType = 0;
-        CScriptDef* def = pGlobalScriptDef;
-        long gold = rand() % def->RandomPopulationTraderGoldVariation + pGlobalScriptDef->RandomPopulationTraderGoldMinimum;
+        long gold = pGlobalScriptDef->RandomPopulationTraderGoldMinimum + rand() % pGlobalScriptDef->RandomPopulationTraderGoldVariation;
         Game->EntityGiveGold(Me, (long)((1.0f - ParentClass->CurrentPopulationScale[ParentClass->CurrentPopulationRegion]) * gold));
     } else if (Me.GetName() == "RandomPopulationGuard")
         MyType = 1;

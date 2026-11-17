@@ -10,34 +10,17 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad0[0xd8];
-    long NakedBoastCost;                                // +0xd8
-    long NakedBoastReward;                              // +0xdc
-    long NoDamageBoastCost;                             // +0xe0
-    long NoDamageBoastReward;                           // +0xe4
-    long NoWeaponsBoastCost;                            // +0xe8
-    long NoWeaponsBoastReward;                          // +0xec
-    unsigned char _pad0f0[0xccc - 0xf0];
-    long HobbeCaveTimer;                                // +0xccc
-    unsigned char _pad0cd0[0xcf0 - 0xcd0];
-    long KillNymphBoastCost;                            // +0xcf0
-    long KillNymphBoastReward;                          // +0xcf4
-    long SacrificeBoastCost;                            // +0xcf8
-    long SacrificeBoastReward;                          // +0xcfc
-    long BoyNoHarmBoastCost;                            // +0xd00
-    long BoyNoHarmBoastReward;                          // +0xd04
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: NakedBoastCost -> HobbeCaveNakedBoastCost (+0xd8), NakedBoastReward -> HobbeCaveNakedBoastReward (+0xdc), NoDamageBoastCost -> HobbeCaveNoDamageBoastCost (+0xe0), NoDamageBoastReward -> HobbeCaveNoDamageBoastReward (+0xe4), NoWeaponsBoastCost -> HobbeCaveNoWeaponsBoastCost (+0xe8), NoWeaponsBoastReward -> HobbeCaveNoWeaponsBoastReward (+0xec), HobbeCaveTimer -> HC_HobbeSpawnCount (+0xccc), KillNymphBoastCost -> HC_KillNymphBoastCost (+0xcf0), KillNymphBoastReward -> HC_KillNymphBoastReward (+0xcf4), SacrificeBoastCost -> HC_SacrificeBoastCost (+0xcf8), SacrificeBoastReward -> HC_SacrificeBoastReward (+0xcfc), BoyNoHarmBoastCost -> HC_BoyNoHarmBoastCost (+0xd00), BoyNoHarmBoastReward -> HC_BoyNoHarmBoastReward (+0xd04).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CHobbeCaveMasterData {
     unsigned char _pad[0x10d];
     bool HobbeCaveDone;                                 // +0x10d
@@ -94,7 +77,7 @@ void NScript::CQ_HobbeCaveScript::Init()
     Count58 = 0;
     Count5C = 0;
     Flag60 = false;
-    Timer = pGlobalScriptDef->HobbeCaveTimer;
+    Timer = pGlobalScriptDef->HC_HobbeSpawnCount;
     Flag68 = false;
     Flag69 = false;
     Flag6A = false;
@@ -105,10 +88,10 @@ void NScript::CQ_HobbeCaveScript::Init()
     PMasterData->HobbeCaveDone = false;
     PMasterData->HobbeCaveState = 1;
     PMasterData->HobbeCaveActive = true;
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->NakedBoastCost, pGlobalScriptDef->NakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->NoDamageBoastCost, pGlobalScriptDef->NoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->NoWeaponsBoastCost, pGlobalScriptDef->NoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLNYMPH", 0x15, pGlobalScriptDef->KillNymphBoastCost, pGlobalScriptDef->KillNymphBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_SACRIFICE", 0x16, pGlobalScriptDef->SacrificeBoastCost, pGlobalScriptDef->SacrificeBoastReward, true, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_BOYNOHARM", 0x17, pGlobalScriptDef->BoyNoHarmBoastCost, pGlobalScriptDef->BoyNoHarmBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->HobbeCaveNakedBoastCost, pGlobalScriptDef->HobbeCaveNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->HobbeCaveNoDamageBoastCost, pGlobalScriptDef->HobbeCaveNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->HobbeCaveNoWeaponsBoastCost, pGlobalScriptDef->HobbeCaveNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLNYMPH", 0x15, pGlobalScriptDef->HC_KillNymphBoastCost, pGlobalScriptDef->HC_KillNymphBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_SACRIFICE", 0x16, pGlobalScriptDef->HC_SacrificeBoastCost, pGlobalScriptDef->HC_SacrificeBoastReward, true, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_BOYNOHARM", 0x17, pGlobalScriptDef->HC_BoyNoHarmBoastCost, pGlobalScriptDef->HC_BoyNoHarmBoastReward, false, "", 0);
 }

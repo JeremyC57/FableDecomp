@@ -959,15 +959,18 @@ struct CGameScriptInterfaceCalls {
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
-class CScriptDef { public:
-    unsigned char _pad[0x50c];
-    long          AcolyteTimerTime;           // +0x50c
-    long GetAcolyteTimerTime() const { return AcolyteTimerTime; }
-};
-extern CScriptDef* pGlobalScriptDef;        // 0x0143E90C
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: AcolyteTimerTime (read through a local inline GetAcolyteTimerTime(), now the member itself) -> ChapelAcolytePrayerTimer (+0x50c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
+// Retail expands CTimer::operator=(long) inline (Ego_r ??4CTimer@@QAEAAV0@J@Z): slot 89 SetTimer through 0x0143E8F8 (agentNF60: the argument,
+//   the def member read through ecx, is evaluated before the body loads pDSTGame, as retail 0x00E6ACA6; was a direct SetTimer call over a
+//   local GetAcolyteTimerTime() accessor).
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 
 namespace NScript {
 class CV_ChapelOfEvilScript {    // the PDB owner script; only its nested entity class is modelled here
@@ -1015,7 +1018,7 @@ void NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil::Init()
             CCharString("ParentClass.", -1) + CCharString("WatchForAcolyteDeath", -1),
             0, &CQ_AcolyteParentScript::WatchForAcolyteDeath, ParentClass, Thing),
         CCharString("", -1));
-    pDSTGame->SetTimer(Timer.TimerIndex, pGlobalScriptDef->GetAcolyteTimerTime());
+    Timer = pGlobalScriptDef->ChapelAcolytePrayerTimer;
     GSI->SetThingFlags(Thing, 0, 0, 0);
     GSI->SetThingAsTarget(Thing, 0);
 }

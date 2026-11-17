@@ -22,16 +22,8 @@
 //   Was `?Main@CDarkwoodAssassinSpawn@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 extern "C" int __cdecl rand();                           // 0x00BFEB16
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    CCharString(const CCharString& other);               // 0x0099EC30
-    ~CCharString();                                      // 0x0099EAE0
-};
-class CDefString { public:
-    void* PStringData;
-    operator CCharString() const;                        // 0x00415D70
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -61,16 +53,13 @@ inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
  CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-class CScriptDef { public:
-    unsigned char _pad[0x3ac];
-    CDefString* ShoutSoundsBegin;                        // +0x3ac
-    CDefString* ShoutSoundsEnd;                          // +0x3b0
-    CDefString* ShoutSoundsEndOfStorage;                 // +0x3b4
-    unsigned char _pad3b8[0xe14 - 0x3b8];
-    long        DarkwoodAssassinSpawnDistance;           // +0xe14
-    CDefString  DarkwoodAssassinDefName;                 // +0xe18
-};
-extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: DarkwoodAssassinSpawnDistance -> TE_AssassinSpawnDistance (+0xe14), DarkwoodAssassinDefName -> TE_AssassinName (+0xe18).
+// agentNF60: ShoutSoundsBegin / End (+0x3ac / +0x3b0: the vector words) -> AssassinScreamSoundIds (std::vector<CDefString>, +0x3ac) through size() / operator[].
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
@@ -111,10 +100,10 @@ void NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::Main()
     do { if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) return; } while (0);
     CTimer timer;
     timer = 2;
-    long spawnDistance = pGlobalScriptDef->DarkwoodAssassinSpawnDistance;
-    unsigned long count = pGlobalScriptDef->ShoutSoundsEnd - pGlobalScriptDef->ShoutSoundsBegin;
+    long spawnDistance = pGlobalScriptDef->TE_AssassinSpawnDistance;
+    unsigned long count = pGlobalScriptDef->AssassinScreamSoundIds.size();
     unsigned long index = rand() % count;
-    CCharString shout = pGlobalScriptDef->ShoutSoundsBegin[index];
+    CCharString shout = pGlobalScriptDef->AssassinScreamSoundIds[index];
     for (;;) {
         do { if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) return; } while (0);
         if (IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)spawnDistance) && !Game->IsCameraPosOnScreen(Me.GetPos())) {
@@ -128,7 +117,7 @@ void NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::Main()
         Game->NewScriptFrame();
     }
     do { if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) return; } while (0);
-    CScriptThing assassin = Game->CreateCreature(pGlobalScriptDef->DarkwoodAssassinDefName, Me.GetPos(), "DarkwoodAssassin", true);
+    CScriptThing assassin = Game->CreateCreature(pGlobalScriptDef->TE_AssassinName, Me.GetPos(), "DarkwoodAssassin", true);
     Game->SetThingPersistent(assassin, true);
     Game->EntityAttachToScript(assassin, Game->GetActiveQuestName());
     if (rand() % 5 == 0) {

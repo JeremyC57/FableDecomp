@@ -20,11 +20,11 @@ class CScriptThing;
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
-class CScriptDef { public:
-    unsigned char _pad[0x9a4];
-    long          EscortTraderExpressionDetectPeriod;       // +0x9a4
-};
-extern CScriptDef* pGlobalScriptDef;                      // 0x0143E90C
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: EscortTraderExpressionDetectPeriod -> EscortTraderExpressionDetectTimer (+0x9a4).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
@@ -49,7 +49,7 @@ struct CQR_EscortTraderScript : CQuestScriptBase {
 void CQR_EscortTraderScript::ForceDisableFollow(const CScriptThing& trader)
 {
     ExpressionDetectedFollow = false;
-    pDSTGame->SetTimer(TraderExpressionDetectTimer.TimerIndex, pGlobalScriptDef->EscortTraderExpressionDetectPeriod);
+    pDSTGame->SetTimer(TraderExpressionDetectTimer.TimerIndex, pGlobalScriptDef->EscortTraderExpressionDetectTimer);
     GSI->MiniMapRemoveMarker(trader);
     GSI->EntityStopFollowing(trader);
     GSI->EntitySetAsDisplayingEmoteIcon(trader, false);

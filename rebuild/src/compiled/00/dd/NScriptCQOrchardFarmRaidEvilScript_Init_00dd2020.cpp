@@ -11,30 +11,15 @@
 //   built right to left, "" first, before any push); the def's cost/reward are read inline in the argument list.
 // Naming wave 35: identity CScriptInfoManager::RegisterScripts 00cd52d0 stores Alloc 00dd2300 at 00cd7020 with name "Q_OrchardFarmRaidEvil"; Alloc news + stores script vtable 012db7b0; PDB ?Alloc@CQ_OrchardFarmRaidEvilScript@NScript@@SIPAVCScriptBase@@; script vtable slot 3 (slot 1 pushes "Main" 0x012C2F94); PDB Init; refs=1; was CQ_OrchardFarmRaidEvilScript::Init (namespace spelling) (wave3/labels_alloc.tsv); PDB ?Init@CQ_OrchardFarmRaidEvilScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CQ_OrchardFarmRaidEvilScript@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class CCharString { public:
-    void* Data;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:
-    unsigned char _pad0[0x168];
-    long OFEvilNakedBoastCost;   // +0x168
-    long OFEvilNakedBoastReward;   // +0x16C
-    long OFEvilNoDamageBoastCost;   // +0x170
-    long OFEvilNoDamageBoastReward;   // +0x174
-    long OFEvilNoWeaponsBoastCost;   // +0x178
-    long OFEvilNoWeaponsBoastReward;   // +0x17C
-    unsigned char _pad180[0xbf8];
-    long OFE_NoHealthPotionBoastCost;   // +0xD78
-    long OFE_NoHealthPotionBoastReward;   // +0xD7C
-    long OFE_NoBanditsDieBoastCost;   // +0xD80
-    long OFE_NoBanditsDieBoastReward;   // +0xD84
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"

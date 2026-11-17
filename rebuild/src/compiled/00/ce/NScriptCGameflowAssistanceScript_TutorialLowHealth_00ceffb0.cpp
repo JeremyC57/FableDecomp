@@ -12,11 +12,8 @@
 //   HealthWarningsGiven +0x58.
 // Shape: the Tutorial_LowMagic loop with two cooldown counters (low in ebp, critical in ebx) both decremented each
 //   player-controlled frame; the def is read into a block-local pointer before each health call.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 struct CGameScriptInterface_Calls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -73,15 +70,11 @@ struct CGameScriptInterface_Calls {
     virtual void v387(); virtual void v388(); virtual void v389(); virtual void v390(); virtual void v391(); virtual void v392(); virtual void v393();
     virtual bool IsHeroControlledByPlayer() const;   // slot 394 (+0x628)
 };
-class CScriptDef { public:
-    unsigned char _pad000[0xfe0];
-    long LowHealthThreshold;                            // +0xfe0
-    long CriticalHealthThreshold;                       // +0xfe4
-    long LowHealthWarningCooldown;                      // +0xfe8
-    long CriticalHealthWarningCooldown;                 // +0xfec
-    long MaxHealthWarnings;                             // +0xff0
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: LowHealthThreshold -> LowHealthWarning (+0xfe0), CriticalHealthThreshold -> VeryLowHealthWarning (+0xfe4), LowHealthWarningCooldown -> LowHealthMessageInterval (+0xfe8), CriticalHealthWarningCooldown -> VeryLowHealthMessageInterval (+0xfec), MaxHealthWarnings -> HealthMessageLimit (+0xff0).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CQuestMasterData {
     unsigned char _pad00[0x67];
     bool TutorialsDisabled;                             // +0x67
@@ -106,7 +99,7 @@ void CGameflowAssistanceScript::Tutorial_LowHealth()
 {
     long lowCooldown = 0;
     long criticalCooldown = 0;
-    while (HealthWarningsGiven < pGlobalScriptDef->MaxHealthWarnings) {
+    while (HealthWarningsGiven < pGlobalScriptDef->HealthMessageLimit) {
         GSI->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
@@ -115,27 +108,27 @@ void CGameflowAssistanceScript::Tutorial_LowHealth()
         if (GSI->IsHeroControlledByPlayer()) {
             if (IsActiveThreadTerminating())
                 return;
-            CScriptDef* def = pGlobalScriptDef;
-            if (GSI->GetHeroHealth() < def->CriticalHealthThreshold) {
+            const CScriptDef* def = pGlobalScriptDef.Get();
+            if (GSI->GetHeroHealth() < def->VeryLowHealthWarning) {
                 if (IsActiveThreadTerminating())
                     return;
                 if (criticalCooldown <= 0) {
                     if (IsActiveThreadTerminating())
                         return;
                     GSI->HeroReceiveMessageFromGuildMaster("TEXT_QST_080_HEALTH_CRIT", "", true, false);
-                    criticalCooldown = pGlobalScriptDef->CriticalHealthWarningCooldown;
+                    criticalCooldown = pGlobalScriptDef->VeryLowHealthMessageInterval;
                     ++HealthWarningsGiven;
                 }
             } else {
-                CScriptDef* def2 = pGlobalScriptDef;
-                if (GSI->GetHeroHealth() < def2->LowHealthThreshold) {
+                const CScriptDef* def2 = pGlobalScriptDef.Get();
+                if (GSI->GetHeroHealth() < def2->LowHealthWarning) {
                     if (IsActiveThreadTerminating())
                         return;
                     if (lowCooldown <= 0) {
                         if (IsActiveThreadTerminating())
                             return;
                         GSI->HeroReceiveMessageFromGuildMaster("TEXT_QST_080_HEALTH_LOW", "", true, false);
-                        lowCooldown = pGlobalScriptDef->LowHealthWarningCooldown;
+                        lowCooldown = pGlobalScriptDef->LowHealthMessageInterval;
                         ++HealthWarningsGiven;
                     }
                 }

@@ -28,12 +28,11 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptDef { public:                                     // the global script def
-    unsigned char _pad0[0x448];
-    float WanderMinDistance;                            // +0x448
-    float WanderMaxDistance;                            // +0x44c
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
+//   retail offsets) names them: WanderMinDistance -> BeardyBaldyWanderDistanceMin (+0x448), WanderMaxDistance -> BeardyBaldyWanderDistanceMax (+0x44c).
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -51,7 +50,7 @@ using NScript::CV_BeardyBaldyScript;
 void NScript::CV_BeardyBaldyScript::SetWanderPointAndDistance(const CScriptThing& thing, const C3DVector& point)
 {
     GSI->SetWanderCentrePoint(thing, point);
-    GSI->SetWanderMinDistance(thing, pGlobalScriptDef->WanderMinDistance);
-    GSI->SetWanderMaxDistance(thing, pGlobalScriptDef->WanderMaxDistance);
+    GSI->SetWanderMinDistance(thing, pGlobalScriptDef->BeardyBaldyWanderDistanceMin);
+    GSI->SetWanderMaxDistance(thing, pGlobalScriptDef->BeardyBaldyWanderDistanceMax);
     GSI->SetScriptingStateGroup(thing, (EScriptingStateGroups)4);
 }
