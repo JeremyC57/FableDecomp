@@ -62,7 +62,14 @@ class CCharString;
 class CThingCreatureBase;
 class CTCScriptedControl::CActionBase : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONBASE_INLINE_CTOR
+    // NF79 opt-in (row 0x00713140 NTCScriptedControl::CActionDoCreatureAction ctor): the constructor expanded in a derived constructor's
+    // TU (retail 0x00713140 / 0x00713180: the root ctor 0x0099A2F0, then PTCScript / Activated / Terminated zeroed from one register, no
+    // CActionBase vtable store before the derived one); the same three stores as the out-of-line copy 0x00711FA0.
+    CActionBase() : PTCScript(0), Activated(false), Terminated(false) { }
+#else
     CActionBase();
+#endif
     virtual ~CActionBase();                                              // slot 0  0x007185B0 (scalar deleting)
     virtual void Update() = 0;                                           //  1 _purecall
     virtual void OnActivate() { Activated = true; }                      //  2 0x00711FD0
@@ -82,6 +89,6 @@ protected:
     bool Activated;                                                      // +0x08
     bool Terminated;                                                     // +0x09
 };
-FABLE_STATIC_ASSERT(sizeof(CTCScriptedControl::CActionBase) == 0xc);
+FABLE_STATIC_ASSERT_AT(85, sizeof(CTCScriptedControl::CActionBase) == 0xc);
 #endif
 #endif

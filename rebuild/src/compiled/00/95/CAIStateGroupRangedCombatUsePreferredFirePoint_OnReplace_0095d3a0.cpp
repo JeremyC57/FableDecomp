@@ -3,11 +3,12 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // component's user cleared, the pointer reset), then, for a live creature, deregister it from its combat manager
 // when it was a registered combatant and drop the ranged-combat mode (0x19).
+// Leaf: ?OnReplace@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095D3A0, length 285 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PFirePoint x3), CVectorMap::LowerBound @ 0x0040F020
 // (inlined GetInterface: 0xAC = the fire-point component bit 12 of +0x34, unconditional; 0x31 = CTCCreatureModeManager
-// bit 17 of +0x24, tested), the fire point's SetUser(CThing*) @ 0x0087C390 (manifest "CVillageTaskCarryCrate::
-// AssignCreatureToTask" is propagated), CBaseIntelligentPointer ctor/SetPItem/dtor (null temporary, vtable
+// bit 17 of +0x24, tested), CTCSinglePersonOccupiable::SetOccupier(CThingCreatureBase*) @ 0x0087C390 (Ego_r.pdb / FableWin.pdb;
+// engine/CTCSinglePersonOccupiable.h), CBaseIntelligentPointer ctor/SetPItem/dtor (null temporary, vtable
 // 0x01238C6C), the creature's registered-combatant test @ 0x00662410 (manifest "C3DAnimationBlendState::
 // AddCombinationBlend" is propagated), CThingCreatureBase::GetCombatManager @ 0x00661ED0, CCombatManager::
 // DeregisterCombatant @ 0x006ED9C0, CTCCreatureModeManager::RemoveMode @ 0x0073ABA0.
@@ -16,6 +17,8 @@
 // the dead key frame word straight into ecx, as retail); the call is spelled in BOTH arms, hit arm on the lookup
 // expression over a named thing local, so VC7.1 cross-jumps them with the component already in ecx (a joined pointer
 // copies it through eax, +2 bytes). The mode-manager lookup IS tested (out-parameter GetInterface).
+// NF79 (round 7, q10956): the interface-172 fire point is CTCSinglePersonOccupiable (shared header; was the stand-in CTCFirePoint
+// with SetUser(CThing*), a name in neither PDB).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 // Name fix (agentNF26, 2026-11-12): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ
 //   (Ego_r.pdb + FableWin.pdb; body GetCombatManager().IsAttacker(*this)); was IsRegisteredCombatant (in neither PDB).
@@ -165,9 +168,7 @@ class CAIStateGroupBase { public:
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class CThingCreatureBase;
-struct CTCFirePoint {                           // interface 0xAC
-    void SetUser(CThing* user);                 // 0x0087C390
-};
+#include "engine/CTCSinglePersonOccupiable.h"
 class CCombatManager { public:
     void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
 };
@@ -190,12 +191,12 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
 void CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace()
 {
     if (IS_THING_ALIVE(PFirePoint)) {
-        CTCFirePoint* point;
+        CTCSinglePersonOccupiable* point;
         CThing* thing = ((CThing*)PFirePoint.GetPItem());
         if (thing->HasTC(0xac))
-            ((CTCFirePoint*)thing->FindEntry(0xac)->second)->SetUser(0);
+            ((CTCSinglePersonOccupiable*)thing->FindEntry(0xac)->second)->SetOccupier(0);
         else
-            point->SetUser(0);
+            point->SetOccupier(0);
         PFirePoint = CIntelligentPointerThing(0);
     }
     CThingCreatureBase* creature = GetCreature();

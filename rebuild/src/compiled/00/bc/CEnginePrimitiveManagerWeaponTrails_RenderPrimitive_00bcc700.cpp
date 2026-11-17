@@ -21,11 +21,7 @@
 
 #include "engine/C3DVector.h"
 
-class CBaseClassNonCopyable {
-public:
-    virtual ~CBaseClassNonCopyable();
-    CBaseClassNonCopyable();                       // 0x0099A2F0
-};
+#include "engine/CBaseClassNonCopyable.h"   // NF79 (q10957): the protected root ctor ??0CBaseClassNonCopyable@@IAE@XZ 0x0099A2F0 (was a local public model)
 class CEngineInternalPrimitiveBase;
 class CEnginePrimitiveManager;
 class __declspec(novtable) CEngineSubPrimitiveBase : public CBaseClassNonCopyable {   // PDB, 0x18 bytes

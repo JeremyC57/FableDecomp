@@ -19,6 +19,12 @@ protected:
     CTBaseSingleton() { }
 public:
     virtual ~CTBaseSingleton();
+#ifdef FABLE_RETAIL_CTBASESINGLETON_RELEASE_BODY
+    // NF79 per-TU opt-in (row 0x00404490, the out-of-line CTBaseSingleton<CFileInstaller>::Release COMDAT itself): Ego_r.pdb 0x00403CB0 /
+    // FableWin.pdb 0x01871060 ?Release@?$CTBaseSingleton@VCFileInstaller@@@@SIXXZ (public static __fastcall), `PClass.Reset(0);` with the
+    // default CCountedPointer Reset / ReleaseData inline (retail: Info then Data nulled, delete 0x00BFE9BC).
+    static void FABLE_FASTCALL Release() { PClass.Reset(0); }
+#endif
 #ifdef FABLE_RETAIL_CTBASESINGLETON_RELEASE
     // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?Release@?$CTBaseSingleton@VCFileInstaller@@@@SIXXZ (out of line in retail at 0x00404490: PClass.Reset(0)).
     static void FABLE_FASTCALL Release();

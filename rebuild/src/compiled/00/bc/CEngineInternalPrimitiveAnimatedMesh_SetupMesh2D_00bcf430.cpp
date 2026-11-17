@@ -1,7 +1,10 @@
 // CEngineInternalPrimitiveAnimatedMesh::SetupMesh2D() -- once per render frame, fetch LOD 0 of the mesh (flag 0x10) from the mesh info into the render info, clearing the LOD and bone transforms and stamping the frame; false when the mesh info has none
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BCF430, 191 bytes (+ int3 padding), bool in al.
-// Callees: C3DMeshInfo::GetMesh(CCountedPointer<const C3DMesh2>*, unsigned long lod, unsigned long flags) 0x00A25E70 (bool),
+// NF79 (round 7, q10974): C3DMeshInfo is the shared engine/C3DMeshInfo.h (GETMESH: Ego_r.pdb + FableWin.pdb
+//   ?GetMesh@C3DMeshInfo@@QBE_NAAV?$CCountedPointer@$$CBVC3DMesh2@@@@KK@Z, const, the mesh by reference; was the local model's non-const
+//   pointer form). MeshInfo is const-correct already (the call needs only a const C3DMeshInfo).
+// Callees: C3DMeshInfo::GetMesh(CCountedPointer<const C3DMesh2>&, unsigned long lod, unsigned long flags) const 0x00A25E70 (bool),
 //   operator delete 0x00BFE9BC (the counted pointer's info block); the engine singleton 0x01436EA4 (CurrentRenderFrame at retail
 //   +0x88; engine/CEngine.h +0x90, the retail CEngine sits 8 bytes below the PDB there, cf. 0x00B23A90).
 // Layout (retail): CEngineInternalPrimitiveMeshBase::MeshInfo +0x50; RenderInfo (CEngineRenderInfoAnimatedMesh, 4 bytes below
@@ -19,9 +22,13 @@ void __cdecl operator delete(void* block);             // 0x00BFE9BC
 class C3DMesh2;
 #include "engine/CCountedPointer.h"
 
-class C3DMeshInfo { public:
-    bool GetMesh(CCountedPointer<const C3DMesh2>* mesh, unsigned long lod, unsigned long flags);   // 0x00A25E70
-};
+#define FABLE_RETAIL_CMESHDATABANK
+#define FABLE_RETAIL_CMESHDATABANK_BASES
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_CMESHDATABANKENTRY
+#define FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK
+#define FABLE_RETAIL_C3DMESHINFO_GETMESH
+#include "engine/C3DMeshInfo.h"
 
 class CEngine : public CEngineDonor {
  public:
@@ -52,7 +59,7 @@ bool CEngineInternalPrimitiveAnimatedMesh::SetupMesh2D()
     if (RenderInfo.Mesh && RenderInfo.RenderFrame == frame)
         return true;
     CCountedPointer<const C3DMesh2> mesh;
-    if (!MeshInfo->GetMesh(&mesh, 0, 0x10))
+    if (!MeshInfo->GetMesh(mesh, 0, 0x10))
         return false;
     RenderInfo.Mesh = mesh.Data;
     RenderInfo.LOD = 0;

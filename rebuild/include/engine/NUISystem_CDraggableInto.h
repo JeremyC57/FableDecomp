@@ -10,9 +10,15 @@ namespace NUISystem {
 class CDraggableInto : public CHoverable {
 public:
     CDraggableInto(long);                                                       // 0x00558EC0
+#ifdef FABLE_RETAIL_NUISYSTEM_CDRAGGABLEINTO_GETDATAFROMDEF
+    // NF79 opt-in (round 7, row 0x00558E10): Ego_r.pdb + FableWin.pdb ?GetDataFromDef@CDraggableInto@NUISystem@@QAEXXZ, out of line at
+    // 0x00558E10 (Ego_r donor order Initialise / ProcessEvent / ExecuteActions / GetDataFromDef / ctor = retail 0x00558D80 / 0x00558D90 /
+    // 0x00558DE0 / 0x00558E10 / 0x00558EC0). Declaration only, no layout change.
+    void GetDataFromDef();                                                      // 0x00558E10
+#endif
 protected:
     std::list<CCountedPointer<CAction> >* PActions;                 // +0x16c (Ego_r +0x19c)
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CDraggableInto) == 0x170);
+FABLE_STATIC_ASSERT_AT(17, sizeof(NUISystem::CDraggableInto) == 0x170);
 #endif

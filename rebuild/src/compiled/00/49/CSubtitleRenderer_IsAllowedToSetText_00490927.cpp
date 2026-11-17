@@ -2,7 +2,7 @@
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: IsAllowedToSetText
+// Leaf: ?IsAllowedToSetText@CSubtitleRenderer@@QAE_N_N@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad1[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
@@ -26,6 +26,10 @@
 //   inline presence test + the ternary entry pick of the landed 0x0064B5C1 idiom, the type kept in edi. The two
 //   component checks are one `||` of a __forceinline IsComponentActive<T>(thing, type) helper followed by
 //   `return true`: that lays `mov al,1 ; jmp` before the shared `xor al,al` (two inline ifs put the false exit first).
+// NF79 (round 7, q10960): the hero-info screens manager is NHeroInformationScreens::CManager (engine/NHeroInformationScreens_CManager.h,
+//   LAYOUT + ISOPEN: FableWin.pdb ?IsOpen@CManager@NHeroInformationScreens@@QBE_NXZ, inline, the +0x34 byte), so 0x00437CD0 binds
+//   ?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ (Ego_r.pdb + FableWin.pdb; was ..PAUCHeroInfoScreensManager@@,
+//   a stand-in struct). The other local models are pre-existing.
 class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
@@ -93,10 +97,10 @@ private: public:
     unsigned char _pad2[0x161e2 - 0x2c];
     unsigned char m_running;                       // +0x161E2
 };
-struct CHeroInfoScreensManager {
-    unsigned char _pad[0x34];
-    unsigned char m_open;                          // +0x34
-};
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_LAYOUT
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_ISOPEN
+#include "engine/NHeroInformationScreens_CManager.h"
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
@@ -104,7 +108,7 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
 class CPlayerGui { public:
-    CHeroInfoScreensManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
+    NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 
 class CSubtitleRenderer {
@@ -123,7 +127,7 @@ bool CSubtitleRenderer::IsAllowedToSetText(bool force)
         CWorld* world = game->PWorld;
         if (world->IsInSpecialMode())
             break;
-        if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->m_open != 0)
+        if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->IsOpen())
             break;
         const CThingPlayerCreature* hero = ((CPlayer*)((CWorld*)world)->PeekMyPlayer())->PeekPControlledCreature();
         if (!IS_THING_ALIVE(hero))

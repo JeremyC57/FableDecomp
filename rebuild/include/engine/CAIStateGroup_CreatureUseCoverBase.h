@@ -49,6 +49,11 @@ protected:
     bool GetHiddenCoverPos(C3DVector& pos, const CThing& cover);        // 0x00970930 ?GetHiddenCoverPos@..@@IAE_NAAVC3DVector@@ABVCThing@@@Z
     bool CanSeeTarget();                                                 // 0x00970790 ?CanSeeTarget@..@@IAE_NXZ
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_CLEANUPLEAF
+    // NF79 opt-in (round 7, row 0x00970C10): Ego_r.pdb (0x00995F40) + FableWin.pdb (0x02B85A70) ?CleanupLeaf@CAIStateGroup_CreatureUseCoverBase@@MAEXXZ,
+    // the protected override of CAIStateGroup_EnemyCreatureBase's virtual CleanupLeaf (needs ..._ENEMYCREATUREBASE_VSLOTS). Declaration only.
+    virtual void CleanupLeaf();                                          // 0x00970C10
+#endif
     bool HasDiveAnim;                                                    // +0x1c
     bool HasJumpOutAnims;                                                // +0x1d
     bool TimingCritical;                                                 // +0x1e

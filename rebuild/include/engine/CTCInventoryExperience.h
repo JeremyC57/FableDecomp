@@ -103,6 +103,12 @@ public:
     void BuyStat(EHeroTrainableStatType, long);
     void BuyAbility(EHeroAbility, long);
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_SPENDVALUES
+    // NF79 opt-in (round 7, row 0x00574576 OpenInventoryOld): Ego_r.pdb + FableWin.pdb ?InitialiseExperienceSpendValues@CTCInventoryExperience@@QAEXXZ
+    // (0x005724CD) and ?ResetExperienceSpendValues@CTCInventoryExperience@@QAEXXZ (0x0056F03D), public, out of line. Declarations only.
+    void InitialiseExperienceSpendValues();                                         // 0x005724CD
+    void ResetExperienceSpendValues();                                              // 0x0056F03D
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_VIRTUALS
     // Opt-in (chunk 1005): the Ego_r.pdb virtual overrides of the rows of that chunk (vtable 0x0124F11C; slot 29 = 0x0056EF2D,
     // 31 = 0x0056F30B, 86 = 0x00577216 OpenInventoryInternal, 87 = 0x00577AC0 OpenInventoryInternalPC above, 89 / 90 the

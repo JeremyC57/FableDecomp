@@ -7,8 +7,13 @@
 // Callees: CVectorMap::LowerBound 0x0040F020 / const 0x004365B0 (same-TU stand-ins; inlined GetInterface 0x23 (const)
 //   and 0xAC), the region accessor 0x007EE540, CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem
 //   0x00A01B90 / dtor 0x00A01C10, CThingFilter_IsMySleepPoint::operator() 0x006A8930, the blocking test 0x006A8A30,
-//   CThing::GetPos 0x004C73D0, the graphic's virtual slot 72 (+0x120, orientation), the sleep point's SetUser
-//   0x0087C390 (catalog "AssignCreatureToTask", propagated).
+//   CThing::GetPos 0x004C73D0, the graphic's virtual slot 72 (+0x120, orientation),
+//   CTCSinglePersonOccupiable::SetOccupier(CThingCreatureBase*) 0x0087C390 (Ego_r.pdb / FableWin.pdb; engine/CTCSinglePersonOccupiable.h).
+// NF79 (round 7, q10956): the interface-172 sleep point is CTCSinglePersonOccupiable (shared header; was the stand-in CTCSleepPoint with
+//   SetUser(CThing*), a name in neither PDB); the brain's creature is typed CThingCreatureBase (engine/CThingCreatureBase.h chain) so it
+//   passes to SetOccupier as retail's CAIBrain::Creature does. The two filters now bind their Ego_r.pdb / FableWin.pdb spellings
+//   (??RCThingFilter_IsMySleepPoint@@QBE_NABVCThing@@@Z 0x006A8930, ??RCThingFilter_IsOccupiableOccupied@@QBE_NABVCThing@@@Z 0x006A8A30,
+//   as the landed 0x00969FB0 / 0x0095DB90 bind them; were QBE_NPAVCThing and the stand-in CThingFilter_IsBlocked).
 // Layout: CAIStateGroup_GoToBed PBed +0x14, IsBedSleepPointMarker +0x1c, BedPos +0x3c, Rhset +0x48 (Ego_r.pdb).
 // Shape: the out-of-range lookups read an uninitialised component (retail jumps to a load of the empty slot); the list
 // head is a named local; the blocked filter is declared beside the sleep-point filter; operator= names the item first.
@@ -17,6 +22,10 @@ class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float M[6]; };
 #define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -41,6 +50,8 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
 #include "engine/CIntelligentPointer.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCSinglePersonOccupiable.h"
 // CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 struct CPointerListNode {
     CPointerListNode* _M_next;
@@ -58,23 +69,20 @@ public:
 class CThingFilter_IsMySleepPoint { public:
     CThing* Creature;
     CThingFilter_IsMySleepPoint(CThing* creature) : Creature(creature) { }
-    bool operator()(CThing* thing) const;       // 0x006A8930
+    bool operator()(const CThing& thing) const; // 0x006A8930
 };
-struct CThingFilter_IsBlocked {
-    bool operator()(CThing* thing) const;       // 0x006A8A30
-};
-struct CTCSleepPoint {                          // interface 0xAC
-    void SetUser(CThing* user);                 // 0x0087C390
+class CThingFilter_IsOccupiableOccupied { public:
+    bool operator()(const CThing& thing) const; // 0x006A8A30
 };
 class CAIBrain { public:
     unsigned char _pad00[0x18];
-    CThing* Creature;                           // +0x18
+    CThingCreatureBase* Creature;               // +0x18
 };
 class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
-    CThing* GetCreature() const { return PBrain->Creature; }
+    CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
 };
 struct CAIStateGroup_GoToBed : CAIStateGroupBase {
     CIntelligentPointer<CThing> PBed;              // +0x14
@@ -95,13 +103,13 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
         CTCVillage* region = link->GetPVillage();
         if (region && region->_M_node->_M_next != region->_M_node) {
             CThingFilter_IsMySleepPoint isMine(GetCreature());
-            CThingFilter_IsBlocked isBlocked;
+            CThingFilter_IsOccupiableOccupied isOccupied;
             PBed = CIntelligentPointer<CThing>(0);
             float bestDistanceSquared = 0.0f;
             CPointerListNode* head = region->_M_node;
             for (CPointerListNode* node = head->_M_next; node != head; node = node->_M_next) {
                 CThing* bed = ((CThing*)node->_M_data.GetPItem());
-                if (bed && !bed->IsDead() && isMine(bed) && !isBlocked(bed)) {
+                if (bed && !bed->IsDead() && isMine(*bed) && !isOccupied(*bed)) {
                     CThing* me = GetCreature();
                     const C3DVector& bedPos = bed->GetPos();
                     const C3DVector& myPos = me->GetPos();
@@ -119,11 +127,11 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
             }
             if (((CThing*)PBed.GetPItem())) {
                 IsBedSleepPointMarker = true;
-                CTCSleepPoint* point;
+                CTCSinglePersonOccupiable* point;
                 CThing* chosen = ((CThing*)PBed.GetPItem());
                 if (chosen->HasTC(TCI_SINGLE_PERSON_OCCUPIABLE))
-                    point = (CTCSleepPoint*)((CTCSleepPoint*)&chosen->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE));
-                point->SetUser(GetCreature());
+                    point = (CTCSinglePersonOccupiable*)((CTCSinglePersonOccupiable*)&chosen->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE));
+                point->SetOccupier(GetCreature());
                 return true;
             }
         }

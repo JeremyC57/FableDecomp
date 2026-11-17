@@ -14,29 +14,16 @@
 // landed 0x0098EB20).
 // Shape: the inline setters/getters; `mov eax,1` serves both the device compare and the stored `true`; the callback
 // is loaded once for its null test and the call (`ecx` = the empty literal, __fastcall).
+// NF79 (round 7, q10969): the local CFileInstaller / CTBaseSingleton (static `Instance`) models replaced by engine/CFileInstaller.h and
+//   engine/CTBaseSingleton.h (ISALLOCATED inline, GET_DECL: Get 0x00404440 out of line): binds 0x013CA818 as the private static
+//   ?PClass@?$CTBaseSingleton@VCFileInstaller@@@@0V?$CCountedPointer@VCFileInstaller@@@@A (Ego_d.pdb PUB32 + the header member); the local
+//   _OVERLAPPED is the one engine/Win32Types.h declares (through CFileInstaller.h).
 extern "C" __declspec(dllimport) int __stdcall SetEvent(void* event);     // IAT 0x0143FDE0
 
-struct _OVERLAPPED {
-    unsigned long Internal;
-    unsigned long InternalHigh;
-    unsigned long Offset;
-    unsigned long OffsetHigh;
-    void* hEvent;                               // +0x10 (the CFileObject)
-};
-
-class CFileInstaller {
-public:
-    void Unpause();                             // 0x009C3250
-};
-
-#include "engine/CCountedPointer.h"
-
-template <class T> class CTBaseSingleton {
-public:
-    static T& __fastcall Get();                 // 0x00404440
-    static bool Exists() { return Instance.Data != 0; }
-    static CCountedPointer<T> Instance;         // 0x013CA818
-};
+#define FABLE_RETAIL_CTBASESINGLETON_ISALLOCATED
+#define FABLE_RETAIL_CTBASESINGLETON_GET_DECL
+#include "engine/CTBaseSingleton.h"
+#include "engine/CFileInstaller.h"                // also brings engine/Win32Types.h: _OVERLAPPED (hEvent +0x10 carries the CFileObject)
 
 enum EThreadedFileDeviceID { THREADED_FILE_DEVICE_HARD_DISK, THREADED_FILE_DEVICE_DVD };
 enum EFileLoadingStatus { FILE_LOADING_PENDING, FILE_LOADING_READING, FILE_LOADING_READ_ISSUED, FILE_LOADING_READ_COMPLETE };
@@ -80,6 +67,6 @@ void __stdcall CThreadedFileManager::OnFileReadCompletion(unsigned long errorCod
     }
     object->LoadingStatus = FILE_LOADING_READ_COMPLETE;
     SetEvent(object->PManager->Event);
-    if (CTBaseSingleton<CFileInstaller>::Exists())
+    if (CTBaseSingleton<CFileInstaller>::IsAllocated())
         CTBaseSingleton<CFileInstaller>::Get().Unpause();
 }

@@ -2165,9 +2165,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00713140'
-        Module = 'CActionDoCreatureAction'
-        Source = '00/71/CActionDoCreatureAction_CActionDoCreatureAction_00713140.cpp'
-        TestSource = '00/71/CActionDoCreatureAction_CActionDoCreatureAction_00713140_test.cpp'
+        Module = 'NTCScriptedControl::CActionDoCreatureAction'
+        Source = '00/71/NTCScriptedControlCActionDoCreatureAction_CActionDoCreatureAction_00713140.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionDoCreatureAction_CActionDoCreatureAction_00713140_test.cpp'
         PassPattern = 'CActionDoCreatureAction_00713140_TEST PASS'
     }
     [pscustomobject]@{
@@ -6828,9 +6828,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005952c3'
-        Module = 'CFrontEndManager'
-        Source = '00/59/CFrontEndManager_ChangeStateFirstTime_005952c3.cpp'
-        TestSource = '00/59/CFrontEndManager_ChangeStateFirstTime_005952c3_test.cpp'
+        Module = 'NUISystem::CFrontEndManager'
+        Source = '00/59/NUISystemCFrontEndManager_ChangeStateFirstTime_005952c3.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_ChangeStateFirstTime_005952c3_test.cpp'
         PassPattern = 'FSE2_005952c3_TEST PASS'
     }
     [pscustomobject]@{
@@ -32946,9 +32946,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0066e799'
-        Module = '_global'
-        Source = '00/66/CObservable_AddExclusiveObserver_0066e799.cpp'
-        TestSource = '00/66/CObservable_AddExclusiveObserver_0066e799_test.cpp'
+        Module = 'NHeroInformationScreens::CManager'
+        Source = '00/66/NHeroInformationScreensCManager_SelectScreenOfType_0066e799.cpp'
+        TestSource = '00/66/NHeroInformationScreensCManager_SelectScreenOfType_0066e799_test.cpp'
         PassPattern = '0066e799_TEST PASS'
     }
     [pscustomobject]@{
@@ -41220,9 +41220,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00beb540'
-        Module = '_global'
-        Source = '00/be/global_operatornew_00beb540.cpp'
-        TestSource = '00/be/global_operatornew_00beb540_test.cpp'
+        Module = 'CEngineSubPrimitiveBase'
+        Source = '00/be/CEngineSubPrimitiveBase_operatornew_00beb540.cpp'
+        TestSource = '00/be/CEngineSubPrimitiveBase_operatornew_00beb540_test.cpp'
         PassPattern = 'RB_beb540_OK'
     }
     [pscustomobject]@{
@@ -49247,9 +49247,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a5ef30'
-        Module = '_Ucopy<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std'
-        Source = '00/a5/UcopystdTreeconstiteratorstdTreevalstdTsettraitsCCharStringstdlessCCharStringstd_allocatorCCharString0_00a5ef30.cpp'
-        TestSource = '00/a5/UcopystdTreeconstiteratorstdTreevalstdTsettraitsCCharStringstdlessCCharStringstd_allocatorCCharString0_00a5ef30_test.cpp'
+        Module = 'CStreamingFontDataBank'
+        Source = '00/a5/CStreamingFontDataBank_ReadData_00a5ef30.cpp'
+        TestSource = '00/a5/CStreamingFontDataBank_ReadData_00a5ef30_test.cpp'
         PassPattern = 'UCOPY_FWD_OK'
     }
     [pscustomobject]@{
@@ -62149,9 +62149,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009d52b0'
-        Module = 'CEditTransactionBase'
-        Source = '00/9d/CEditTransactionBase_ActionSetEngineTheme_009d52b0.cpp'
-        TestSource = '00/9d/CEditTransactionBase_ActionSetEngineTheme_009d52b0_test.cpp'
+        Module = 'CBankFileAsyncEntry'
+        Source = '00/9d/CBankFileAsyncEntry_ReadDataNonAsync_009d52b0.cpp'
+        TestSource = '00/9d/CBankFileAsyncEntry_ReadDataNonAsync_009d52b0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -74558,8 +74558,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00437cd0'
         Module = 'CPlayerGui'
-        Source = '00/43/CWorld_DrawGetEnvironment_00437cd0.cpp'
-        TestSource = '00/43/CWorld_DrawGetEnvironment_00437cd0_test.cpp'
+        Source = '00/43/CPlayerGui_GetPHeroInfoScreensManager_00437cd0.cpp'
+        TestSource = '00/43/CPlayerGui_GetPHeroInfoScreensManager_00437cd0_test.cpp'
         PassPattern = 'PASS_00437cd0'
     }
     [pscustomobject]@{
@@ -85478,9 +85478,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a36ec0'
-        Module = 'CCountedPointer<constC3DMesh2>'
-        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a36ec0.cpp'
-        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a36ec0_test.cpp'
+        Module = 'CCountedPointer<const C3DMesh2>'
+        Source = '00/a3/CCountedPointer_CCountedPointer_00a36ec0.cpp'
+        TestSource = '00/a3/CCountedPointer_CCountedPointer_00a36ec0_test.cpp'
         PassPattern = 'PASS_00a36ec0'
     }
     [pscustomobject]@{
@@ -150393,9 +150393,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042aa29'
-        Module = 'CCountedPointer_00429f43'
-        Source = '00/42/CCountedPointer00429f43_CCountedPointer00429f43_0042aa29.cpp'
-        TestSource = '00/42/CCountedPointer00429f43_CCountedPointer00429f43_0042aa29_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CAction>'
+        Source = '00/42/CCountedPointer_CCountedPointer_0042aa29.cpp'
+        TestSource = '00/42/CCountedPointer_CCountedPointer_0042aa29_test.cpp'
         PassPattern = '0042aa29_TEST PASS'
     }
     [pscustomobject]@{
@@ -153928,9 +153928,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00404490'
-        Module = '_global'
-        Source = '00/40/global_Release013ca818_00404490.cpp'
-        TestSource = '00/40/global_Release013ca818_00404490_test.cpp'
+        Module = 'CTBaseSingleton<CFileInstaller>'
+        Source = '00/40/CTBaseSingleton_Release_00404490.cpp'
+        TestSource = '00/40/CTBaseSingleton_Release_00404490_test.cpp'
         PassPattern = '00404490_TEST PASS'
     }
     [pscustomobject]@{
@@ -155678,9 +155678,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0087c390'
-        Module = '_unattributed'
-        Source = '00/87/unattributed_AssignTarget0087c390_0087c390.cpp'
-        TestSource = '00/87/unattributed_AssignTarget0087c390_0087c390_test.cpp'
+        Module = 'CTCSinglePersonOccupiable'
+        Source = '00/87/CTCSinglePersonOccupiable_SetOccupier_0087c390.cpp'
+        TestSource = '00/87/CTCSinglePersonOccupiable_SetOccupier_0087c390_test.cpp'
         PassPattern = '0087c390_TEST PASS'
     }
     [pscustomobject]@{
@@ -179677,9 +179677,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0087c3f0'
-        Module = '_global'
-        Source = '00/87/global_IsThingAlive0087c3f0_0087c3f0.cpp'
-        TestSource = '00/87/global_IsThingAlive0087c3f0_0087c3f0_test.cpp'
+        Module = 'CTCSinglePersonOccupiable'
+        Source = '00/87/CTCSinglePersonOccupiable_IsOccupied_0087c3f0.cpp'
+        TestSource = '00/87/CTCSinglePersonOccupiable_IsOccupied_0087c3f0_test.cpp'
         PassPattern = '0087c3f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -197582,9 +197582,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059aee5'
-        Module = 'CScreenStack'
-        Source = '00/59/unattributed_PopValue_0059aee5.cpp'
-        TestSource = '00/59/unattributed_PopValue_0059aee5_test.cpp'
+        Module = 'std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>'
+        Source = '00/59/stddeque_popback_0059aee5.cpp'
+        TestSource = '00/59/stddeque_popback_0059aee5_test.cpp'
         PassPattern = '0059aee5_TEST PASS'
     }
     [pscustomobject]@{
@@ -202674,9 +202674,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a00d90'
-        Module = '_global'
-        Source = '00/a0/CGraphicInfoFrame_InitialiseFrame_00a00d90.cpp'
-        TestSource = '00/a0/CGraphicInfoFrame_InitialiseFrame_00a00d90_test.cpp'
+        Module = 'CGraphicInfoFrame'
+        Source = '00/a0/CGraphicInfoFrame_GetData_00a00d90.cpp'
+        TestSource = '00/a0/CGraphicInfoFrame_GetData_00a00d90_test.cpp'
         PassPattern = '00a00d90_TEST PASS'
     }
     [pscustomobject]@{
@@ -217250,9 +217250,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059b039'
-        Module = 'CScreenStack'
-        Source = '00/59/CDwordDeque_back_0059b039.cpp'
-        TestSource = '00/59/CDwordDeque_back_0059b039_test.cpp'
+        Module = 'std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>'
+        Source = '00/59/stddeque_back_0059b039.cpp'
+        TestSource = '00/59/stddeque_back_0059b039_test.cpp'
         PassPattern = '0059b039_TEST PASS'
     }
     [pscustomobject]@{
@@ -240436,8 +240436,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00558e10'
         Module = 'NUISystem::CDraggableInto'
-        Source = '00/55/NUISystemCDraggableInto_Initialize_00558e10.cpp'
-        TestSource = '00/55/NUISystemCDraggableInto_Initialize_00558e10_test.cpp'
+        Source = '00/55/NUISystemCDraggableInto_GetDataFromDef_00558e10.cpp'
+        TestSource = '00/55/NUISystemCDraggableInto_GetDataFromDef_00558e10_test.cpp'
         PassPattern = '00558e10_TEST PASS'
     }
     [pscustomobject]@{
@@ -269928,8 +269928,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0057770a'
         Module = 'CTCInventoryExperience'
-        Source = '00/57/CTCInventoryExperience_vfunc89_0057770a.cpp'
-        TestSource = '00/57/CTCInventoryExperience_vfunc89_0057770a_test.cpp'
+        Source = '00/57/CTCInventoryExperience_CloseInventoryInternal_0057770a.cpp'
+        TestSource = '00/57/CTCInventoryExperience_CloseInventoryInternal_0057770a_test.cpp'
         PassPattern = '0057770a_TEST PASS'
     }
     [pscustomobject]@{

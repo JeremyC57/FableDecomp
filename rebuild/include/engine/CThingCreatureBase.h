@@ -346,6 +346,11 @@ public:
     // (hidden CDefPointer result; landed callers 0x006D6EA0 / 0x006D7E10 / 0x006D7E70). Declaration only: no layout change.
     CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;        // 0x00663340
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CLEARCURRENTACTION
+    // NF79 opt-in (row 0x008916A0 CGameScriptInterface::SheatheHeroWeapons): Ego_r.pdb 0x0053E2D0 / FableWin.pdb 0x01D9E6D0
+    // ?ClearCurrentAction@CThingCreatureBase@@QAEXXZ, out of line in retail at 0x006633A0 (landed row). Declaration only: no layout change.
+    void ClearCurrentAction();                                           // 0x006633A0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CLEARQUEUED
     // Nested opt-in (chunk 765, row 0x00663600): Ego_r.pdb / FableWin.pdb ?ClearQueuedActions@CThingCreatureBase@@QAEXXZ, out of line in
     // retail (`add ecx,108h ; jmp` the PQueuedActions list's out-of-line clear 0x00669B50). Declaration only: no layout change.

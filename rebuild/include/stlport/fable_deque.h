@@ -14,6 +14,17 @@ template<class T>struct _Deque_iterator_base {
  // Opt-in (chunk Q6, row 0x00912840 CAIStateGroup_FlyingThingBase::AddRandomBezierCurveToPath): STLport 4.6 _deque.h _M_decrement.
  void _M_decrement(){if(_M_cur==_M_first){_M_set_node(_M_node-1);_M_cur=_M_last;}--_M_cur;}
 #endif
+#if defined(FABLE_RETAIL_STLP_DEQUE_BACK_POP_BODIES) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
+ // NF79 per-TU opt-in (rows 0x0059B039 deque<NUISystem::CComponent*>::back / 0x0059AEE5 pop_back): STLport 4.6 _M_decrement, declared
+ // only: retail calls the deque<NUISystem::CComponent*> instance out of line (0x0059AC41, from back() at 0x0059B04F).
+ void _M_decrement();
+#endif
+#if defined(FABLE_RETAIL_STLP_STACK_SIZE_PUSH) && defined(FABLE_RETAIL_STLP_STACK_TOP_POP)
+ // NF79 per-TU opt-in (row 0x00596763 NUISystem::CFrontEndManager::GotoNextScreen): STLport 4.6 _deque.h _M_subtract, declared only:
+ // retail calls the deque<NUISystem::CComponent*> instance out of line (0x0059A8F3; the out-of-line operator- 0x0059AAE3 is a
+ // `jmp` to it) from the inline deque::size() / stack::size().
+ ptrdiff_t _M_subtract(const _Deque_iterator_base& x)const;
+#endif
 };
 template<class T,class Traits>struct _Deque_iterator:public _Deque_iterator_base<T> {
  typedef T value_type;typedef random_access_iterator_tag iterator_category;typedef ptrdiff_t difference_type;
@@ -25,6 +36,12 @@ template<class T,class Traits>struct _Deque_iterator:public _Deque_iterator_base
  bool operator!=(const _Deque_iterator& other)const{return this->_M_cur!=other._M_cur;}
 #ifdef FABLE_STLPORT_DEQUE_PUSH_BACK
  _Deque_iterator& operator--(){this->_M_decrement();return *this;}
+#endif
+#if defined(FABLE_RETAIL_STLP_DEQUE_BACK_POP_BODIES) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
+ _Deque_iterator& operator--(){this->_M_decrement();return *this;}
+#endif
+#if defined(FABLE_RETAIL_STLP_STACK_SIZE_PUSH) && defined(FABLE_RETAIL_STLP_STACK_TOP_POP)
+ difference_type operator-(const _Deque_iterator& x)const{return this->_M_subtract(x);}
 #endif
 };
 template<class T,class Traits>struct iterator_traits<_Deque_iterator<T,Traits> > {
@@ -65,12 +82,28 @@ public:
  } // STLport4.6 _deque.h / _deque.c, expanded in0040C790
 #endif
  deque():_Deque_base<T,A>(A(),0){}
-#if defined(FABLE_RETAIL_STLP_STACK_TOP_POP) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
+#if defined(FABLE_RETAIL_STLP_DEQUE_BACK_POP_BODIES) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
+ // NF79 per-TU opt-in (rows 0x0059B039 / 0x0059AEE5, the out-of-line deque<NUISystem::CComponent*> COMDATs themselves): STLport 4.6 _deque.h
+ // back() and pop_back() with their bodies; _M_pop_back_aux (_deque.c, protected; retail 0x0059AD35) declared only.
+ typedef typename _Deque_base<T,A>::iterator iterator;
+ reference back(){iterator tmp=this->_M_finish;--tmp;return *tmp;}
+ void pop_back(){
+  if(this->_M_finish._M_cur!=this->_M_finish._M_first){--this->_M_finish._M_cur;_Destroy(this->_M_finish._M_cur);}
+  else _M_pop_back_aux();
+ }
+protected:
+ void _M_pop_back_aux();
+public:
+#elif defined(FABLE_RETAIL_STLP_STACK_TOP_POP) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
  // NF76 per-TU opt-in (row 0x00599E3F NUISystem::CFrontEndManager::Update): STLport 4.6 _deque.h back() / pop_back(), declared only:
  // that TU calls the deque<NUISystem::CComponent*> COMDATs (back 0x0059B039, `mov ecx,edi ; call` at 0x00599E9C; pop_back 0x0059AEE5,
  // 0x00599EFF) from the inline stack::top() / pop() below.
  reference back();
  void pop_back();
+#ifdef FABLE_RETAIL_STLP_STACK_SIZE_PUSH
+ // NF79 nested opt-in (row 0x00596763): STLport 4.6 deque::size() over the out-of-line iterator difference (above).
+ size_type size()const{return this->_M_finish-this->_M_start;}
+#endif
 #endif
  ~deque(){std::_Destroy(this->_M_start,this->_M_finish);}
 #if defined(FABLE_RETAIL_STLP_DEQUE_PUSH_BACK_OUTOFLINE) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
@@ -137,6 +170,12 @@ protected:
 template<class T,class Sequence=deque<T> >class stack {protected:Sequence c;public:stack():c(){}explicit stack(const Sequence& s):c(s){}
  typename Sequence::reference top(){return c.back();}
  void pop(){c.pop_back();}
+#ifdef FABLE_RETAIL_STLP_STACK_SIZE_PUSH
+ // NF79 nested opt-in (row 0x00596763): STLport 4.6 _stack.h size() / push() (`return c.size();` / `c.push_back(x);`), inline;
+ // push_back itself comes from FABLE_RETAIL_STLP_DEQUE_PUSH_BACK_OUTOFLINE (retail 0x0059B61C, out of line).
+ typename Sequence::size_type size()const{return c.size();}
+ void push(const typename Sequence::value_type& x){c.push_back(x);}
+#endif
 };
 #else
 template<class T,class Sequence=deque<T> >class stack {protected:Sequence c;public:stack():c(){}explicit stack(const Sequence& s):c(s){}};

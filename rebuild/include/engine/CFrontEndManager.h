@@ -15,6 +15,13 @@ public:
  static CFrontEndManager* __fastcall GetInstance();
  virtual void ProcessEvent(EEvent);
  void CloseVirtualKeyboard(bool);
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_STACKSCREENS
+ // NF79 opt-in (rows 0x005952C3 / 0x005952D8): Ego_r.pdb 0x00601D31 / 0x00602126 and FableWin.pdb 0x0201D44E / 0x0201E772
+ // ?ChangeStateFirstTime@CFrontEndManager@NUISystem@@QAEXXZ and ?DeactivateAllEditBoxes@CFrontEndManager@NUISystem@@QAEXPAVCComponent@2@@Z
+ // (public), both out of line in retail; the full-layout branch's m_stackScreens. Declarations only.
+ void ChangeStateFirstTime();                                                                            // 0x005952C3
+ void DeactivateAllEditBoxes(CComponent*);                                                               // 0x005952D8
+#endif
 #ifdef FABLE_RETAIL_CFRONTENDMANAGER_UPDATE
  // NF76 (row 0x00599E3F): the existing UPDATE opt-in also declares Update in this full-layout branch (Ego_r.pdb
  // ?Update@CFrontEndManager@NUISystem@@QAEXM@Z, public). Declaration only.

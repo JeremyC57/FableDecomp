@@ -12,6 +12,10 @@
 // sort-list type, which is CEngineSubPrimitiveRenderer::AddSubPrimitive's first parameter (Ego_r/FableWin
 // ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z);
 // the chain (second) is unused, as in the sibling 2D managers' Render2DPrimitive(primitive, chain, type) (`ret 0Ch`).
+// NF79 (round 7, q10974): operator new is the base's (both PDBs have ??2CEngineSubPrimitiveBase@@SIPAXI@Z and no derived ??2; engine/
+//   CEngineSubPrimitiveBase.h declares it), so the declaration moved from the local derived model to the local base model: binds 0x00BEB540
+//   as ??2CEngineSubPrimitiveBase@@SIPAXI@Z (was ??2CEngineSubPrimitive2DViewport). The local CBaseClassNonCopyable / CEngineSubPrimitiveBase
+//   models stay (pre-existing; the shared base is not novtable, which the retail vptr stores need).
 class CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();   // 0x0099A300
@@ -34,12 +38,12 @@ class __declspec(novtable) CEngineSubPrimitiveBase : public CBaseClassNonCopyabl
     CEngineInternalPrimitiveBase* m_pPrimitive;    // +0x0C
     CEngineSubPrimitiveBase*      m_pNext;         // +0x10
     CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase& primitive) : m_pPrimitive(&primitive), m_pNext(0) { }
+    static void* __fastcall operator new(unsigned int size);   // 0x00BEB540 (Ego_r.pdb / FableWin.pdb ??2CEngineSubPrimitiveBase@@SIPAXI@Z)
 };
 
 struct CEngineSubPrimitive2DViewport : CEngineSubPrimitiveBase {   // vtable 0x012A7ED0, 0x18 bytes
     unsigned long m_unknown14;                     // +0x14
     CEngineSubPrimitive2DViewport(CEngineInternalPrimitiveBase& primitive) : CEngineSubPrimitiveBase(primitive) { }
-    static void* __fastcall operator new(unsigned int size);   // 0x00BEB540
 };
 
 class CEnginePrimitiveRenderer2D { public:

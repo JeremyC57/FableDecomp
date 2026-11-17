@@ -1,43 +1,28 @@
-// NUISystem::CDraggableInto::CDraggableInto(long owner) -- CHoverable(owner), the three vtables of this class, the target pointer at +0x16c nulled, then Initialize()
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00558EC0, length 54 bytes.
-// Callees: NUISystem::CHoverable::CHoverable(long) @ 0x0055BA20, Initialize @ 0x00558E10 (on `this`, in the constructor body; manifest "CDraggableInto::Initialize").
-// Vtables 0x0124B2D4 / 0x0124B2B0 / 0x0124B2A8 (rtti-vtables.tsv: NUISystem::CDraggableInto): the class overrides virtuals of its primary base and of the two interface
-// bases at +4 and +0x18, so its constructor stores three vtables right after the base constructor returns. The bases' sizes are not in
-// the PDB; the base is modelled as an opaque block up to the first own member. The chunk label "CDraggableInto::CDraggableInto" names the
-// third body of the three; the other two are its ancestors (rtti-vtables.tsv).
+// NUISystem::CDraggableInto::CDraggableInto(long id) -- construct the drop target: hoverable base, no action list yet, then GetDataFromDef()
+// Leaf: ??0CDraggableInto@NUISystem@@QAE@J@Z
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00558EC0, 56 bytes (`ret 4`): CHoverable(long) 0x0055BA20, the three vtables 0x0124B2D4 / 0x0124B2B0 /
+//   0x0124B2A8 (.?AVCDraggableInto@NUISystem@@ at +0 / +4 / +0x18), PActions (+0x16C) = 0, then GetDataFromDef() 0x00558E10.
+// Identity: Ego_r.pdb + FableWin.pdb ??0CDraggableInto@NUISystem@@QAE@J@Z (engine/NUISystem_CDraggableInto.h declares it for 0x00558EC0);
+//   its callee 0x00558E10 is ?GetDataFromDef@CDraggableInto@NUISystem@@QAEXXZ (Ego_r.pdb + FableWin.pdb, donor order; NF79 re-authored that row).
+// NF79 (round 7, q10964 follow-up): ported onto the shared header (+ my overlay opt-in NUISYSTEM_CDRAGGABLEINTO_GETDATAFROMDEF); was a local
+//   CHoverable / interface / CDraggableInto model calling 0x00558E10 as the made-up Initialize, with made-up vtable base names.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_NUISYSTEM_CDRAGGABLEINTO_GETDATAFROMDEF
+#include "engine/NUISystem_CDraggableInto.h"
+
 namespace NUISystem {
-
-struct IComponentA {                             // the interface base at +0x04 (vtable, 0x10 bytes of state)
-    virtual void va00();
-    unsigned char _state[0x10];
-};
-
-struct IComponentB {                             // the interface base at +0x18 (vtable only)
-    virtual void vb00();
-};
-
-struct CComponentRoot {                          // the primary base: vptr at +0
-    virtual void v00();
-};
-
-class CHoverable : public CComponentRoot, public IComponentA, public IComponentB { public:
-    unsigned char _body[0x16c - 0x1c];      // +0x1c .. +0x16c: the base's state
-    CHoverable(long owner);                            // 0x0055BA20
-};
-
-class CDraggableInto : public CHoverable { public:                        // vtables 0x0124B2D4 / 0x0124B2B0 / 0x0124B2A8
-    virtual void v00();
-    virtual void va00();
-    virtual void vb00();
-    void* m_pTarget;                           // +0x16c
-    void Initialize();                         // 0x00558E10
-    CDraggableInto(long owner);
-};
-
-CDraggableInto::CDraggableInto(long owner)
-    : CHoverable(owner), m_pTarget(0)
+CDraggableInto::CDraggableInto(long id)
+    : CHoverable(id), PActions(0)
 {
-    Initialize();
+    GetDataFromDef();
 }
-
 }

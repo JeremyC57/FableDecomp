@@ -48,6 +48,12 @@ public:
 #endif
 private:
     bool InternalGetFrameForcedLoading(unsigned long flags) const;      // 0x009FF6B0
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETDATA
+    // NF79 opt-in (round 7, row 0x00A00D90): FableWin.pdb ?GetData@CGraphicInfoFrame@@ABEPAVCFrameData@1@XZ (private const), out of line in
+    // retail at 0x00A00D90 (creates the frame data on first use through the mutable Data, as GetFrame below does, and returns it).
+    // Declaration only, no layout change.
+    CFrameData* GetData() const;                                         // 0x00A00D90
+#endif
     unsigned short FrameNum;                                 // +0x04
     signed char SmallMipmapLevel;                            // +0x06
     mutable CIVCountedPointer<CFrameData> Data;              // +0x08

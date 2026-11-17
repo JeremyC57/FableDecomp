@@ -228,6 +228,13 @@ public:
     void SpecialAbilityUnfreezeControls();                       // 0x00487150
     void SpecialAbilityFreezeControls();                         // 0x00487170
 #endif
+#ifdef FABLE_RETAIL_CPLAYER_SETUPCONTROLSBASEDONAGGRESSIVEMODE
+    // NF79 opt-in (row 0x00487DE0): Ego_r.pdb ?SetUpControlsBasedOnAggressiveMode@CPlayer@@AAEXXZ (private; callers SetAggressiveMode
+    // 0x00487EB0 / ToggleAggressiveMode 0x00487E90). Declaration only.
+private:
+    void SetUpControlsBasedOnAggressiveMode();                   // 0x00487DE0
+public:
+#endif
     // Retail opt-in (chunk 718): the three character getters, out of line in Ego_r.pdb and retail, in donor order (Ego_r
     // 0x004933F0 / 0x00493650 / 0x00493660 = retail 0x00487B70 / 0x00487DC0 / 0x00487DD0, the neighbours SetPlayerCharacter
     // 0x00493400 / SetControlledCreature 0x00493570 between them in both): ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ

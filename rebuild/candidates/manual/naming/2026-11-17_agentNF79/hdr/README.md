@@ -1,0 +1,25 @@
+# NF79 header overlay (2026-11-17)
+
+Every changed repo header here is a copy of the repo header at the moment I first changed it (base copies in `../orig/`), with
+`#ifdef` opt-ins only: without the opt-in macro each file preprocesses to the same tokens as the repo header (the only non-additive
+edit form is `#ifdef X <new> #else <old line unchanged> #endif`). After each edit I ran `pin_asserts.py rebuild/include hdr <header>`;
+the counts are below. New headers (no repo counterpart) are marked NEW.
+
+| header | opt-ins added | rows | pinned |
+|---|---|---|---|
+| engine/CTCScriptedControl.h | `FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONBASE_INLINE_CTOR`: CTCScriptedControl::CActionBase's default ctor inline (`PTCScript(0), Activated(false), Terminated(false)`, the three stores of the out-of-line copy 0x00711FA0; `#ifdef` inline `#else` the declaration unchanged `#endif`) | 0x00713140 | 1 (the CActionBase sizeof assert, to line 85) |
+| engine/NTCScriptedControl_CActionDoCreatureAction.h | NEW: NTCScriptedControl::CActionDoCreatureAction (Ego_r.pdb members ActionID / ActionSet / Action, vtable 0x01265838 slots 1/2/4, ctor declaration) | 0x00713140 | n/a |
+| engine/CTCInventoryExperience.h | `FABLE_RETAIL_CTCINVENTORYEXPERIENCE_SPENDVALUES`: public `InitialiseExperienceSpendValues()` (0x005724CD) / `ResetExperienceSpendValues()` (0x0056F03D) declarations (Ego_r.pdb + FableWin.pdb) | 0x00574576 | 0 |
+| engine/NHeroInformationScreens_CManager.h | `FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_DEREGISTERALL`: `DeregisterAllScreens()` declaration (0x0066EBE0; Ego_r.pdb + FableWin.pdb) | 0x0089F4A0 | 0 |
+| engine/NUISystem_CDraggableInto.h | `FABLE_RETAIL_NUISYSTEM_CDRAGGABLEINTO_GETDATAFROMDEF`: `GetDataFromDef()` declaration (0x00558E10; Ego_r.pdb + FableWin.pdb, donor order) | 0x00558E10, 0x00558EC0 | 1 (the sizeof assert) |
+| engine/CGraphicInfoFrame.h | `FABLE_RETAIL_CGRAPHICINFOFRAME_GETDATA` (SURFACECOMPOSITION retail branch, private section): `CFrameData* GetData() const` declaration (0x00A00D90; FableWin.pdb ?GetData@CGraphicInfoFrame@@ABEPAVCFrameData@1@XZ) | 0x00A00D90 | 0 |
+| engine/CAIStateGroup_CreatureUseCoverBase.h | `FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_CLEANUPLEAF`: the protected virtual override `CleanupLeaf()` (0x00970C10; Ego_r.pdb + FableWin.pdb MAE) | 0x00970C10 | 0 |
+| stlport/fable_deque.h | `FABLE_RETAIL_STLP_DEQUE_BACK_POP_BODIES` (with `!FABLE_STLPORT_DEQUE_PUSH_BACK`): `_Deque_iterator_base::_M_decrement()` declared only (0x0059AC41), `_Deque_iterator::operator--` inline, and in `deque` the STLport 4.6 bodies of `back()` / `pop_back()` with the protected `_M_pop_back_aux()` declared only (0x0059AD35). This is the one non-additive edit: NF76's `#if defined(FABLE_RETAIL_STLP_STACK_TOP_POP) ...` line became `#elif` after my new `#if` block; with neither macro defined both branches are skipped exactly as before, and with only STACK_TOP_POP the `#elif` takes the old text (token-identical default path checked with `cpp -P`). Nested `FABLE_RETAIL_STLP_STACK_SIZE_PUSH` (needs STLP_STACK_TOP_POP): `_Deque_iterator_base::_M_subtract()` declared only (0x0059A8F3), `_Deque_iterator::operator-` inline, `deque::size()`, `stack::size()` / `stack::push()` inline (push_back from the existing PUSH_BACK_OUTOFLINE) | 0x0059B039, 0x0059AEE5 (BACK_POP_BODIES); 0x00596763 (STACK_SIZE_PUSH) | 0 (no assert in the file) |
+| engine/CFrontEndManager.h | `FABLE_RETAIL_CFRONTENDMANAGER_STACKSCREENS` (full-layout DESTRUCTOR branch): public `ChangeStateFirstTime()` (0x005952C3) and `DeactivateAllEditBoxes(CComponent*)` (0x005952D8) declarations (Ego_r.pdb 0x00601D31 / 0x00602126, FableWin.pdb 0x0201D44E / 0x0201E772) | 0x005952C3, 0x005952D8, 0x00596763 | 0 (the asserts use FABLE_STATIC_ASSERT_AT) |
+| engine/CTBaseSingleton.h | `FABLE_RETAIL_CTBASESINGLETON_RELEASE_BODY`: `static void FABLE_FASTCALL Release() { PClass.Reset(0); }` (Ego_r.pdb 0x00403CB0 / FableWin.pdb 0x01871060; the explicit instantiation's body for 0x00404490), placed before the existing declaration-only RELEASE opt-in | 0x00404490 | 0 |
+| engine/CPlayer.h | `FABLE_RETAIL_CPLAYER_SETUPCONTROLSBASEDONAGGRESSIVEMODE`: private `SetUpControlsBasedOnAggressiveMode()` declaration (0x00487DE0; Ego_r.pdb 0x00493670 / FableWin.pdb 0x01AD04D0 AAE) | 0x00487DE0 | 0 (FABLE_STATIC_ASSERT_AT) |
+| engine/CGamePlayerInterface.h | `FABLE_RETAIL_CGAMEPLAYERINTERFACE_SETCONTROLSCHEME` (default branch): `SetControlScheme(long)` declaration (0x00446EF0; Ego_r.pdb 0x00444480 / FableWin.pdb 0x01A97930; the EXPRESSION_FRAME branch already declares it) | 0x00487DE0 | 0 |
+| engine/CThingCreatureBase.h | `FABLE_RETAIL_CTHINGCREATUREBASE_CLEARCURRENTACTION`: `ClearCurrentAction()` declaration (0x006633A0; Ego_r.pdb 0x0053E2D0 / FableWin.pdb 0x01D9E6D0) | 0x008916A0 | 0 |
+
+Dropped overlays: engine/CBankFile.h (the repo header already had FABLE_RETAIL_CBANKFILE_READENTRYDATA) and engine/CEngineSubPrimitiveBase.h
+(the repo header already declares the private static MemoryPool); neither is in hdr/ or orig/.

@@ -1,253 +1,106 @@
+// Behaviour test for 0x008916A0 CGameScriptInterface::SheatheHeroWeapons (NF79 round 7): the row object now calls the PDB-spelled members
+// (CPlayerManager::GetMainPlayer, CPlayer::GetPControlledCreature, CTCCarrying::IsThingCarryingWeapon, CThingCreatureBase::ClearQueuedActions /
+// FinishCurrentAction / ClearCurrentAction / SetCurrentAction, the CCreatureAction_SheatheItemToInventory ctor) and carries the action's implicit
+// destructor COMDAT, which runs ~CCreatureActionBase. This fixture supplies those imports as recording stubs with the same signatures (link
+// stand-ins only: the row itself is on the shared headers), and checks the call order. Keeps the catalog PassPattern FSE2_008916a0_TEST.
 #include <cstdio>
+#include <cstring>
 
-class CGSISheatheHeroWeapons_Target;
+static unsigned long g_Events[12];
+static unsigned long g_EventCount;
+static void RecordEvent(unsigned long event) { if (g_EventCount < 12) g_Events[g_EventCount] = event; ++g_EventCount; }
 
-class CCreatureActionBase
-{
+class CThing { public: unsigned char m_Bytes[0x91]; unsigned char m_Flags; };   // CThing::Dead is bit 0 of +0x91
+class CCreatureActionBase { public: virtual ~CCreatureActionBase(); };
+class CThingCreatureBase : public CThing {
 public:
-    explicit CCreatureActionBase(unsigned long identity)
-        : m_Identity(identity)
-    {
-    }
-
-    unsigned long m_Identity;
+    void ClearQueuedActions();
+    void FinishCurrentAction();
+    void ClearCurrentAction();
+    bool SetCurrentAction(const CCreatureActionBase& action);
 };
-
-class CThingPlayerCreature;
-class CPlayer
-{
+class CThingPlayerCreature : public CThingCreatureBase { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };
+class CTCCarrying { public: static bool __fastcall IsThingCarryingWeapon(const CThing& thing); };
+class CCreatureAction_SheatheItemToInventory {
 public:
-    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0 (Ego_r.pdb spelling)
+    CCreatureAction_SheatheItemToInventory(CThingCreatureBase& creature, CCreatureActionBase* followUp, long priority);
 };
-
-class CGSISheatheHeroWeapons_LookupSource
-{
-public:
-    CPlayer* BeginLookup();
-};
-
-class CGSISheatheHeroWeapons_Target
-{
-public:
-    bool IsThingCarryingWeapon();
-    void PrepareSheathe();
-    void UpdateSheathe();
-    void FinaliseSheathe();
-    void SetCurrentAction(CCreatureActionBase* action);
-
-    unsigned char m_Unused[0x91];
-    unsigned char m_Flags;
-};
-class CThingPlayerCreature : public CGSISheatheHeroWeapons_Target { };
-
-class CGSISheatheHeroWeapons_ActionStorage
-{
-public:
-    CCreatureActionBase* Construct(
-        CGSISheatheHeroWeapons_Target* target,
-        CCreatureActionBase* previousAction,
-        int priority);
-    void Destroy();
-
-    unsigned char m_Bytes[0xB0];
-};
-
-class CGameScriptInterface
-{
+class CGameScriptInterface {
 public:
     virtual void SheatheHeroWeapons() const;
-
     unsigned char m_Unused[0x10];
-    CGSISheatheHeroWeapons_LookupSource* m_LookupSource;
+    CPlayerManager* PlayerManager;                                        // +0x14
 };
 
-static CGSISheatheHeroWeapons_LookupSource*
-    g_ObservedLookupSource;
-static CPlayer*
-    g_LookupResult;
-static CPlayer*
-    g_ObservedLookupResult;
-static CGSISheatheHeroWeapons_Target* g_Target;
-static CGSISheatheHeroWeapons_Target*
-    g_ObservedTarget;
+static CPlayerManager* g_ObservedManager;
+static CPlayer* g_Player;
+static CThingPlayerCreature* g_Target;
+static const void* g_ObservedTarget;
 static bool g_IsCarryingWeapon;
-static CGSISheatheHeroWeapons_ActionStorage*
-    g_ObservedConstructStorage;
-static CGSISheatheHeroWeapons_Target*
-    g_ObservedConstructTarget;
-static CCreatureActionBase*
-    g_ObservedPreviousAction;
-static int g_ObservedPriority;
-static CCreatureActionBase* g_Action;
-static CGSISheatheHeroWeapons_ActionStorage*
-    g_ObservedDestroyStorage;
-static CCreatureActionBase* g_ObservedCurrentAction;
-static unsigned long g_Events[10];
-static unsigned long g_EventCount;
+static void* g_ConstructedAction;
+static CThingCreatureBase* g_ConstructCreature;
+static CCreatureActionBase* g_ConstructFollowUp;
+static long g_ConstructPriority;
+static const void* g_SetAction;
+static void* g_DestroyedAction;
 
-static void RecordEvent(unsigned long event)
+CPlayer& CPlayerManager::GetMainPlayer() { g_ObservedManager = this; RecordEvent(1); return *g_Player; }
+CThingPlayerCreature* CPlayer::GetPControlledCreature() const { RecordEvent(2); return g_Target; }
+bool __fastcall CTCCarrying::IsThingCarryingWeapon(const CThing& thing) { g_ObservedTarget = &thing; RecordEvent(3); return g_IsCarryingWeapon; }
+void CThingCreatureBase::ClearQueuedActions() { g_ObservedTarget = this; RecordEvent(4); }
+void CThingCreatureBase::FinishCurrentAction() { g_ObservedTarget = this; RecordEvent(5); }
+void CThingCreatureBase::ClearCurrentAction() { g_ObservedTarget = this; RecordEvent(6); }
+CCreatureAction_SheatheItemToInventory::CCreatureAction_SheatheItemToInventory(CThingCreatureBase& creature, CCreatureActionBase* followUp,
+                                                                               long priority)
 {
-    if (g_EventCount < 10)
-        g_Events[g_EventCount] = event;
-    ++g_EventCount;
-}
-
-class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970: the row's inline BeginLookup forwards here
-CPlayer&
-CPlayerManager::GetMainPlayer()
-{
-    g_ObservedLookupSource = (CGSISheatheHeroWeapons_LookupSource*)this;
-    RecordEvent(1);
-    return *g_LookupResult;
-}
-
-CThingPlayerCreature*
-CPlayer::GetPControlledCreature() const
-{
-    g_ObservedLookupResult = const_cast<CPlayer*>(this);
-    RecordEvent(2);
-    return static_cast<CThingPlayerCreature*>(g_Target);
-}
-
-bool CGSISheatheHeroWeapons_Target::IsThingCarryingWeapon()
-{
-    g_ObservedTarget = this;
-    RecordEvent(3);
-    return g_IsCarryingWeapon;
-}
-
-void CGSISheatheHeroWeapons_Target::PrepareSheathe()
-{
-    g_ObservedTarget = this;
-    RecordEvent(4);
-}
-
-void CGSISheatheHeroWeapons_Target::UpdateSheathe()
-{
-    g_ObservedTarget = this;
-    RecordEvent(5);
-}
-
-void CGSISheatheHeroWeapons_Target::FinaliseSheathe()
-{
-    g_ObservedTarget = this;
-    RecordEvent(6);
-}
-
-CCreatureActionBase*
-CGSISheatheHeroWeapons_ActionStorage::Construct(
-    CGSISheatheHeroWeapons_Target* target,
-    CCreatureActionBase* previousAction,
-    int priority)
-{
-    g_ObservedConstructStorage = this;
-    g_ObservedConstructTarget = target;
-    g_ObservedPreviousAction = previousAction;
-    g_ObservedPriority = priority;
+    std::memset(this, 0, 0xB0);                     // the retail temporary: vptr .. PFollowUpAction (+0xA8 Data / +0xAC Info) all null
+    g_ConstructedAction = this; g_ConstructCreature = &creature; g_ConstructFollowUp = followUp; g_ConstructPriority = priority;
     RecordEvent(7);
-    return g_Action;
 }
+bool CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& action) { g_ObservedTarget = this; g_SetAction = &action; RecordEvent(8); return true; }
+CCreatureActionBase::~CCreatureActionBase() { g_DestroyedAction = this; RecordEvent(9); }
 
-void CGSISheatheHeroWeapons_Target::SetCurrentAction(
-    CCreatureActionBase* action)
+static void Reset() { g_EventCount = 0; g_ObservedManager = 0; g_ObservedTarget = 0; g_ConstructedAction = 0; g_SetAction = 0; g_DestroyedAction = 0; }
+static bool Check(const unsigned long* expected, unsigned long count)
 {
-    g_ObservedTarget = this;
-    g_ObservedCurrentAction = action;
-    RecordEvent(8);
-}
-
-void CGSISheatheHeroWeapons_ActionStorage::Destroy()
-{
-    g_ObservedDestroyStorage = this;
-    RecordEvent(9);
-}
-
-static void ResetObservations()
-{
-    g_ObservedLookupSource = 0;
-    g_ObservedLookupResult = 0;
-    g_ObservedTarget = 0;
-    g_ObservedConstructStorage = 0;
-    g_ObservedConstructTarget = 0;
-    g_ObservedPreviousAction =
-        reinterpret_cast<CCreatureActionBase*>(1);
-    g_ObservedPriority = 0;
-    g_ObservedDestroyStorage = 0;
-    g_ObservedCurrentAction = 0;
-    g_EventCount = 0;
-}
-
-static bool CheckEvents(
-    const unsigned long* expected,
-    unsigned long count)
-{
-    if (g_EventCount != count)
-        return false;
-    for (unsigned long index = 0;
-         index < count;
-         ++index)
-    {
-        if (g_Events[index] != expected[index])
-            return false;
-    }
+    if (g_EventCount != count) return false;
+    for (unsigned long i = 0; i < count; ++i) if (g_Events[i] != expected[i]) return false;
     return true;
 }
 
 int main()
 {
-    CGSISheatheHeroWeapons_LookupSource lookupSource;
-    CPlayer lookupResult;
-    CGSISheatheHeroWeapons_Target target = {};
-    CCreatureActionBase action(0x11223344);
-    CGameScriptInterface interfaceObject;
-    interfaceObject.m_LookupSource = &lookupSource;
-    g_LookupResult = &lookupResult;
-    g_Action = &action;
+    static unsigned long storage[0x20];
+    CPlayerManager manager;
+    CPlayer player;
+    static CThingPlayerCreature target;
+    CGameScriptInterface* iface = reinterpret_cast<CGameScriptInterface*>(storage);
+    iface->PlayerManager = &manager;
+    g_Player = &player;
 
-    const unsigned long lookupEvents[] = {1, 2};
-    ResetObservations();
-    g_Target = 0;
-    interfaceObject.SheatheHeroWeapons();
-    if (!CheckEvents(lookupEvents, 2) ||
-        g_ObservedLookupSource != &lookupSource ||
-        g_ObservedLookupResult != &lookupResult)
-        return 1;
+    const unsigned long lookup[] = { 1, 2 };
+    Reset(); g_Target = 0;
+    iface->CGameScriptInterface::SheatheHeroWeapons();
+    if (!Check(lookup, 2) || g_ObservedManager != &manager) { std::printf("FSE2_008916a0_TEST FAIL 1\n"); return 1; }
 
-    ResetObservations();
-    g_Target = &target;
-    target.m_Flags = 1;
-    interfaceObject.SheatheHeroWeapons();
-    if (!CheckEvents(lookupEvents, 2) ||
-        g_ObservedTarget != 0)
-        return 2;
+    Reset(); g_Target = &target; target.m_Flags = 1;                  // dead
+    iface->CGameScriptInterface::SheatheHeroWeapons();
+    if (!Check(lookup, 2) || g_ObservedTarget != 0) { std::printf("FSE2_008916a0_TEST FAIL 2\n"); return 2; }
 
-    const unsigned long unarmedEvents[] = {1, 2, 3};
-    ResetObservations();
-    target.m_Flags = 0;
-    g_IsCarryingWeapon = false;
-    interfaceObject.SheatheHeroWeapons();
-    if (!CheckEvents(unarmedEvents, 3) ||
-        g_ObservedTarget != &target)
-        return 3;
+    const unsigned long unarmed[] = { 1, 2, 3 };
+    Reset(); target.m_Flags = 0; g_IsCarryingWeapon = false;
+    iface->CGameScriptInterface::SheatheHeroWeapons();
+    if (!Check(unarmed, 3) || g_ObservedTarget != &target) { std::printf("FSE2_008916a0_TEST FAIL 3\n"); return 3; }
 
-    const unsigned long sheatheEvents[] = {
-        1, 2, 3, 4, 5, 5, 6, 7, 8, 9
-    };
-    ResetObservations();
-    target.m_Flags = 2;
-    g_IsCarryingWeapon = true;
-    interfaceObject.SheatheHeroWeapons();
-    if (!CheckEvents(sheatheEvents, 10) ||
-        g_ObservedTarget != &target ||
-        g_ObservedConstructTarget != &target ||
-        g_ObservedPreviousAction != 0 ||
-        g_ObservedPriority != 100 ||
-        g_ObservedCurrentAction != &action ||
-        g_ObservedConstructStorage == 0 ||
-        g_ObservedDestroyStorage !=
-            g_ObservedConstructStorage)
-        return 4;
-
+    const unsigned long sheathe[] = { 1, 2, 3, 4, 5, 5, 6, 7, 8, 9 };
+    Reset(); target.m_Flags = 2; g_IsCarryingWeapon = true;           // alive (only bit 0 is Dead)
+    iface->CGameScriptInterface::SheatheHeroWeapons();
+    if (!Check(sheathe, 10) || g_ObservedTarget != &target || g_ConstructCreature != &target || g_ConstructFollowUp != 0
+        || g_ConstructPriority != 100 || g_SetAction != g_ConstructedAction || g_DestroyedAction != g_ConstructedAction) {
+        std::printf("FSE2_008916a0_TEST FAIL 4\n"); return 4;
+    }
     std::printf("FSE2_008916a0_TEST PASS\n");
     return 0;
 }
