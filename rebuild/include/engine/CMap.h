@@ -201,7 +201,7 @@ protected:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT_AT(196, sizeof(CMap)==0x1d40);
+FABLE_STATIC_ASSERT_AT(171, sizeof(CMap)==0x1d40);
 #if defined(FABLE_RETAIL_CMAP_THEMESIZEZ) && defined(FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY)
 // NF70 opt-in (round 7, q10724 / q10735): the one definition of Ego_r.pdb 0x0067A530 / FableWin.pdb 0x02230780
 // ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z (retail 0x0081F910: the strongest of a cell's three engine theme blends; the third
