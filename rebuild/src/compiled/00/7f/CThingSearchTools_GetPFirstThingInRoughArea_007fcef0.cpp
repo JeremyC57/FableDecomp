@@ -1,5 +1,9 @@
 // CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out) -- return the first thing of type T in the mapwho cells under the area that passes the filter (the scratch map list is left uncleared on a hit); instance <CThingFilter_HasDefGlobalIndex, CThing>
-// Leaf: GetPFirstThingInRoughArea
+// Leaf: ??$GetPFirstThingInRoughArea@VCThingFilter_HasDefGlobalIndex@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@PAPAVCThing@@@Z
+// NF59 (round 7, queue q10512): Ego_r.pdb 0x007F81E0 gives this member template const (QBE), as its HasScriptName twin 0x007FD110 and the
+//   landed callers 0x007FBC90 / 0x00972990 bind it; the row's own template, its two helpers and the scratch list are made const / mutable
+//   in the existing local model (the header's FIRSTROUGH_BODY instance differs from retail in two frame slots and one SIB order:
+//   work/attempts/007fcef0_header_body.cpp, 3 grades).
 // Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FCEF0, length 542 bytes (`ret 0xc`).
 // Callees: GetMapsInArea 0x0049C6F0 (forwarder), GetCellExtents 0x0049C700 (C2DBoxI by value), memmove 0x00BFEAE6 (scratch-list clear); filter/compare: CThingFilter_HasDefGlobalIndex 0x006A70B0.
@@ -92,12 +96,12 @@ class CThingSearchTools { public:
     void*      WorldMap;                                   // +0x00
     void*      PThingMapManager;                           // +0x04
     void*      ThingManager;                               // +0x08
-    CMapVector AreaMaps;                                   // +0x0c
-    void GetMapsInArea(const C2DBoxI& area, CMapVector* maps);              // 0x0049C6F0
-    C2DBoxI GetCellExtents(CThingMap* map, const C2DBoxI& area);            // 0x0049C700
-    template<class F, class T> bool GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out);
+    mutable CMapVector AreaMaps;                           // +0x0c (scratch list, written by the const search)
+    void GetMapsInArea(const C2DBoxI& area, CMapVector* maps) const;        // 0x0049C6F0
+    C2DBoxI GetCellExtents(CThingMap* map, const C2DBoxI& area) const;      // 0x0049C700
+    template<class F, class T> bool GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out) const;
 };
-template<class F, class T> bool CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out)
+template<class F, class T> bool CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out) const
 {
     GetMapsInArea(area, &AreaMaps);
     ++g_SearchStamps.Searches;
@@ -139,4 +143,4 @@ template<class F, class T> bool CThingSearchTools::GetPFirstThingInRoughArea(con
     AreaMaps.clear();
     return false;
 }
-template bool CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_HasDefGlobalIndex, CThing >(const C2DBoxI& area, const CThingFilter_HasDefGlobalIndex& filter, CThing** out);
+template bool CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_HasDefGlobalIndex, CThing >(const C2DBoxI& area, const CThingFilter_HasDefGlobalIndex& filter, CThing** out) const;

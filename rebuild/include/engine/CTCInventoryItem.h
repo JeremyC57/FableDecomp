@@ -79,6 +79,36 @@ private:
 public:
     static CDefPointer<const CInventoryItemDef> s_CachedItemDef;                    // 0x013B8C18
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ISCONFISCATABLE
+    // NF59 opt-in (2026-11-17, row 0x005D9790): Ego_r.pdb 0x0055A6F0 / FableWin.pdb 0x01E02690 ?IsConfiscatable@CTCInventoryItem@@SI_NJ@Z,
+    // static `__fastcall`, out of line at 0x005D9790 (Ego_r order GetStartingRightHandedSet / IsConfiscatable / GetInventoryCategory =
+    // retail 0x005D9730 / 0x005D9790 / 0x005D97B0; the body reads CInventoryItemDef::IsConfiscatable +0x5E). Declaration only.
+    static bool __fastcall IsConfiscatable(long defIndex);                            // 0x005D9790
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_GETPDEF_STATIC
+    // NF59 opt-in (2026-11-17, row 0x005D97D0): Ego_r.pdb 0x0055A730 / FableWin.pdb 0x01E02950
+    // ?GetPDef@CTCInventoryItem@@SI?AV?$CDefPointer@$$CBVCInventoryItemDef@@@@J@Z, static `__fastcall`, the CDefPointer result by hidden
+    // pointer, out of line at 0x005D97D0 (after GetInventoryCategory 0x005D97B0 in both PDBs and in retail). Needs engine/CDefPointer.h.
+    static CDefPointer<const CInventoryItemDef> __fastcall GetPDef(long defIndex);    // 0x005D97D0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_GETITEMTOSELECTUPONREMOVAL
+    // NF59 opt-in (2026-11-17, row 0x005D99B0): Ego_r.pdb 0x0055A980 / FableWin.pdb 0x01E034C0
+    // ?GetItemToSelectUponRemoval@CTCInventoryItem@@SIJJ@Z, static `__fastcall`, out of line at 0x005D99B0 (Ego_r order IsBook /
+    // GetItemToSelectUponRemoval / GetInventoryType = retail 0x005D9970 / 0x005D99B0 / 0x005D99D0; reads +0x64). Declaration only.
+    static long __fastcall GetItemToSelectUponRemoval(long defIndex);                 // 0x005D99B0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_GETMAXNUMBEROFITEMS
+    // NF59 opt-in (2026-11-17, row 0x005D99F0): Ego_r.pdb 0x0055A9C0 / FableWin.pdb 0x01E03780 ?GetMaxNumberOfItems@CTCInventoryItem@@SIJJ@Z,
+    // static `__fastcall`, out of line at 0x005D99F0 (after GetInventoryType 0x005D99D0 in both PDBs and in retail; reads
+    // CInventoryItemDef::MaxNumberItems +0x40). Declaration only.
+    static long __fastcall GetMaxNumberOfItems(long defIndex);                        // 0x005D99F0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_GETTUTORIALCATEGORY_STATIC
+    // NF59 opt-in (2026-11-17, row 0x005D9B70): Ego_r.pdb 0x0055AB40 / FableWin.pdb 0x01E03E00
+    // ?GetTutorialCategory@CTCInventoryItem@@SI?AW4ETutorialCategory@@J@Z, static `__fastcall`, out of line at 0x005D9B70 (after IsBuyable
+    // 0x005D9B50 in both PDBs and in retail; reads CInventoryItemDef::TutorialCategory +0x68). Declaration only.
+    static enum ETutorialCategory __fastcall GetTutorialCategory(long defIndex);      // 0x005D9B70
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_USEBUTTONACTION
     // Nested opt-in (chunk 1007, row 0x00583E26 CTCInventory::OnItemSelected): FableWin.pdb
     // ?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z, static `__fastcall`, out of line at 0x005D9710

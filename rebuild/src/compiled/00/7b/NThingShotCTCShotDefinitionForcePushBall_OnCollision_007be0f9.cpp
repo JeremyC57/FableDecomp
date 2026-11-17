@@ -12,8 +12,8 @@
 //   0x007986A0, CThingCreatureBase::SetAttackedByCreature 0x006624F0, CGameDefinitionManager::Get 0x0044C6B0 (catalog
 //   "GFGetPreMainMemoryUsed") / GetDef<CMessageEventDef> 0x007923C0 ("STANDARD_MESSAGE_EVENT_ATTACK" 0x0126E140), CTCBase::
 //   GetWorld 0x00686A70, CMessageEventManager::AddMessage 0x00687730, CTCPerceiveThing::GetPerceivedThing 0x007446A0 (catalog
-//   "_Cons_val<...>") / SetAsIndirectlyAwareOfPerceivedThing 0x007449E0, IS_THING_ALIVE 0x0040DCE0, CTCPhysicalShieldSpell::
-//   FadeOutEffect 0x0072AC40, CThing::Kill 0x004C9B80, CTCShotDefinitionBase::OnCollision 0x007BF510.
+//   "_Cons_val<...>") / SetAsIndirectlyAwareOfPerceivedThing 0x007449E0, IS_THING_ALIVE 0x0040DCE0, CTCSpecialAbilities::
+//   FadeOrKillEffect 0x0072AC40, CThing::Kill 0x004C9B80, CTCShotDefinitionBase::OnCollision 0x007BF510.
 //   Data: inverse-root mantissa table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C.
 // Layout: shot base PEffect +0x0c, PShooter +0x28, PShotDef +0x38 (impact effect +0x40); force-push ball push force +0xa4;
 //   CThing presence bitset +0x20, interface map +0x44, type flags +0x6c; the world's message event manager +0x60.
@@ -65,8 +65,8 @@ FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { 
 #include "engine/CMessageEventDef.h"
 class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/ETCInterfaceType.h"                 // NF59: the shared enum (was a local empty enum), before CVectorMap.h
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -112,7 +112,13 @@ class CTCPerceiveThing { public:
     const CThing* GetPerceivedThing() const;                        // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
     void SetAsIndirectlyAwareOfPerceivedThing();        // 0x007449E0
 };
-class CTCPhysicalShieldSpell { public: void FadeOutEffect(); };   // 0x0072AC40
+// NF59 (round 7, queue q10510): 0x0072AC40 is Ego_r.pdb 0x00741F70 + FableWin.pdb 0x0254A8C0 ?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z
+//   (public static __fastcall, NF55 RENAMES s1), declared by engine/CTCSpecialAbilities.h FULL + TURNCOAT (as NF55's 0x007BD7CA); the local
+//   CTCPhysicalShieldSpell::FadeOutEffect stand-in is gone.
+#define FABLE_RETAIL_CTCBASE                        // the retail component base (GetWorld 0x00686A70; was a local CTCBase model)
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#define FABLE_RETAIL_CTCSPECIALABILITIES_TURNCOAT
+#include "engine/CTCSpecialAbilities.h"
 class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
 };
@@ -134,16 +140,9 @@ class CWorld { public:
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 #include "engine/ECollideType.h"
-class CTCBase { public:                                 // the component base (members this row reads)
-    virtual ~CTCBase();                                 // slot 0
-    CThing*                 ParentThing;                // +0x04
-protected:
-    CWorld& GetWorld() const;                           // 0x00686A70 (Ego_r.pdb / FableWin.pdb IBE)
-};
 namespace NThingShot {
 
-class CTCShotDefinitionBase : public CTCBase { public:
-    unsigned char           _pad08[0x0c - 0x08];
+class CTCShotDefinitionBase : public CTCBase { public:   // engine/CTCBase.h retail (0xc bytes: vptr, ParentThing +0x04, +0x08)
     CBaseIntelligentPointer PEffect;                    // +0x0c
     unsigned char           _pad14[0x28 - 0x14];
     CBaseIntelligentPointer PShooter;                   // +0x28
@@ -202,7 +201,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(ECollideType type, const C3DVec
         }
     }
     if (IS_THING_ALIVE(reinterpret_cast<CThing*>(PEffect.GetPItem())))
-        ((CTCPhysicalShieldSpell*)reinterpret_cast<CThing*>(PEffect.GetPItem()))->FadeOutEffect();
+        CTCSpecialAbilities::FadeOrKillEffect(reinterpret_cast<CThing*>(PEffect.GetPItem()));
     ParentThing->Kill(true);
     } else
         CTCShotDefinitionBase::OnCollision(type, position, normal, thing);

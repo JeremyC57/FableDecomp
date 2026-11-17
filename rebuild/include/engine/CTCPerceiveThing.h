@@ -139,6 +139,17 @@ inline float CTCPerceiveThing::GetTimeBasedVisibilityMultiplier() const
     return (PDef->NightTimeVisibilityMultiplier + PDef->DayTimeVisibilityMultiplier) * 0.5f;
 }
 #endif
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_GETFOV_INLINE
+// NF59 opt-in (queue q10523, row 0x00745120 UpdateLineOfSight): the body of Ego_r.pdb 0x00757070 / FableWin.pdb 0x0258DA60
+// ?GetFOV@CTCPerceiveThing@@QBEMXZ (out-of-line copy 0x007445D0, landed), inline where retail expands it (0x00745120 multiplies the def's
+// FieldOfView by 1/360 in place). The landed UpdateLineOfSight row defined this body itself, a second strong definition of the symbol
+// 0x007445D0 defines. Needs FABLE_RETAIL_HEARING (CPerceivedThingDef) and FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CPerceivedThingDef.h"
+inline float CTCPerceiveThing::GetFOV() const
+{
+    return PDef->FieldOfView / 360.0f;
+}
+#endif
 #else
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING
 // Retail opt-in (chunk 765, row 0x007446A0 CTCPerceiveThing::GetPerceivedThing): the polymorphic class, RTTI .?AVCTCPerceiveThing@@,

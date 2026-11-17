@@ -8,6 +8,9 @@
 #include "engine/CThingSearchTools.h"
 #include "engine/CTCMapwho.h"
 #include "engine/CTCBase.h"
+// NF59 (round 7, queue q10522): CTCPhysicsBase::GetBoundingInfo is declared on engine/CTCPhysicsBase.h's flattened view (NF59 opt-in
+//   FABLE_RETAIL_CTCPHYSICSBASE_FLAT_GETBOUNDINGINFO, Ego_r.pdb 0x006EC5B0); the CTCPhysicsBase_Calls stand-in that redeclared it is gone.
+#define FABLE_RETAIL_CTCPHYSICSBASE_FLAT_GETBOUNDINGINFO
 #include "engine/CTCPhysicsBase.h"
 #include <stddef.h>
 #include <new>
@@ -37,7 +40,6 @@ template<class T> struct RetailVector {
 };
 #include "engine/C3DVector.h"
 // Donor supplies the shared object layout; adapter supplies its recovered method declaration.
-struct CTCPhysicsBase_Calls:CTCPhysicsBase {void GetBoundingInfo(C3DVector&,float&)const;}; // 0x006af640
 class CThing { public:
  unsigned char BeforePhysics[0x60];CTCPhysicsBase* PTCPhysics;unsigned char BeforeType[8];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
@@ -97,7 +99,7 @@ extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovere
 class CThingFilter_CanCollideOrInteractWithThing { public:CTCPhysicsBase* TCPhysics;bool ExcludeCreatures;bool operator()(const CThing&)const;}; // 0x006a8370
 class CThingFilter_OverlappingSphere { public:C3DVector SpherePos;float Radius;
  FABLE_FORCEINLINE bool operator()(const CThing& thing)const{
-  C3DVector centre;float radius;static_cast<const CTCPhysicsBase_Calls*>(thing.PTCPhysics)->GetBoundingInfo(centre,radius);
+  C3DVector centre;float radius;thing.PTCPhysics->GetBoundingInfo(centre,radius);
   float x=centre.X-SpherePos.X,y=centre.Y-SpherePos.Y,z=centre.Z-SpherePos.Z;float r=radius+Radius;
   return z*z+y*y+x*x<r*r;
  }

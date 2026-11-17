@@ -1,0 +1,7 @@
+- 07:57:35 one read-only Bash call (catalog/test lookup loop with cat of a mis-sliced path) exited 1; no file changed
+08:34:36 s1.py call for 0x004675F6 had an unquoted name with <bool> (shell redirection, the call failed silently, no file created); rerun quoted
+08:35:28 0x004675C5 final row assembled without its #pragma optimize(s) line (sed off-by-one): one wasted grade (DIFFER 57v49), fixed
+08:47:56 st.py called with an extra entry-id argument for 13 rows (q10531..q10550): the note column got the entry id; all 13 notes rewritten in one pass
+08:50:30 0x008E57D0 final row assembled by reading rows/008e57d0.cpp inside a group redirected to the same file (truncated its first 7 lines); rebuilt from work/orig
+08:58:49 a read-only Bash call (ls of the vland work dirs, none present) exited 2; no file changed
+08:59:36 rewritten tests 0x004DBE58 / 0x004E1AAF printed their own pass strings instead of the catalogue PassPattern (recheck run A FAIL); fixed, run A repeated

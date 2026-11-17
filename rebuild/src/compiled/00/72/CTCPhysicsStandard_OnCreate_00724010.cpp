@@ -12,6 +12,10 @@
 // Layout: engine/CTCPhysicsStandard.h offsets (local model with real C3DVector/CRightHandedSet members, as the landed
 //   CTCPhysicsControlled::Move 0x00725C40 / CTCPhysicsRigidBody::OnCreate 0x0075B2D0); flag bytes +0x84/+0x85 per the PDB
 //   bitfield order. CThing +0x64 graphic appearance (graphic data +0x44: index +0, type byte +0xd; has-graphic byte +0x51).
+// Name fix (NF59, queue q10515): the callee 0x008E57D0 is Ego_r.pdb ?GetPossibleInteractedWithList@CTCPhysicsStandard@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@M@Z
+//   (protected const, STLport vector<CThing*>&; the self row now emits it). The made-up CThingPtrVector is replaced by the shared
+//   stlport/fable_containers.h vector, and the pre-existing local CTCPhysicsStandard model's declaration of that member is respelled
+//   (protected, const, std::vector<CThing*>&); the rest of the local view is unchanged.
 #include "fable_compiler.h"
 #include <math.h>
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
@@ -24,13 +28,7 @@ class C3DVector { public:
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class C2DBoxI { public: long Left; long Top; long Right; long Bottom; };
 class CThing;
-struct CThingPtrVector {                            // retail STLport vector<CThing*> (12 bytes)
-    CThing** first;
-    CThing** last;
-    CThing** endOfStorage;
-    CThingPtrVector() : first(0), last(0), endOfStorage(0) { }
-    ~CThingPtrVector() { if (first) free(first); }
-};
+#include "stlport/fable_containers.h"                    // the retail STLport vector<CThing*> (12 bytes)
 extern const float DELTA_NOTIONAL_ZERO;       // 0x0129BA3C
 extern const float g_OnGroundTolerance;             // 0x0125A15C
 
@@ -112,7 +110,7 @@ struct CTCPhysicsStandard : public CTCPhysicsBase {
     virtual void v53(); virtual void v54(); virtual void v55();
     V4(14) V4(15) V4(16) V4(17) V4(18) V4(19) V4(20) V4(21) V4(22) V4(23)   // 56-95
     virtual void v96();
-    virtual void UpdateOnSurface(CThingPtrVector& things, C3DVector& position);   // slot 97 (+0x184)
+    virtual void UpdateOnSurface(std::vector<CThing*>& things, C3DVector& position);   // slot 97 (+0x184)
     virtual C2DBoxI GetPossibleCollidedWithArea();  // slot 98 (+0x188)
 
     CThing*         ParentThing;                    // +0x04
@@ -143,7 +141,9 @@ struct CTCPhysicsStandard : public CTCPhysicsBase {
     void CreatePPhysicsMeshInfo(const CGraphicDataRef& graphic);   // 0x006B05A0
     void BaseOnCreate();                            // 0x006B0780 CTCPhysicsBase::OnCreate
     float GetAirResistance();                       // 0x006AFDE0
-    void GetPossibleInteractedWithList(const C2DBoxI& area, CThingPtrVector& things, float speed);   // 0x008E57D0
+protected:
+    void GetPossibleInteractedWithList(const C2DBoxI& area, std::vector<CThing*>& things, float range) const;   // 0x008E57D0 (Ego_r.pdb 0x0090DA20, IBE)
+public:
 };
 
 void CTCPhysicsStandard::OnCreate()
@@ -179,7 +179,7 @@ void CTCPhysicsStandard::OnCreate()
     C3DVector position(Position);
     OnGround = fabs(position.Z - GetWorldMap().GetGroundSizeZAt(position)) < g_OnGroundTolerance;
     if (InteractsWithThingsCheck()) {
-        CThingPtrVector things;
+        std::vector<CThing*> things;
         GetPossibleInteractedWithList(GetPossibleCollidedWithArea(), things, 1.0f);
         C3DVector here(Position);
         UpdateOnSurface(things, here);

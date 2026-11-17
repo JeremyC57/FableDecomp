@@ -1,5 +1,5 @@
 // CInputProcessQuickAccessItems::CancelQuickAccessCharge() -- if the controlled creature is alive, queue game event 0x29 (cancel quick-access charge) for its player carrying the charging quick-access slot and a zero byte
-// Leaf: CancelQuickAccessCharge
+// Leaf: ?CancelQuickAccessCharge@CInputProcessQuickAccessItems@@AAEXXZ
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
@@ -40,25 +40,18 @@ class CThingCreatureBase { public:
     unsigned char m_91_1 : 7;
 };
 class CThingPlayerCreature : public CThingCreatureBase { };
-class CPlayer {
-public:
-    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
-};
-class CWorld; class CGameDefinitionManager; class CGamePlayerInterface;
-class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
-public:
-    virtual void v00();
-    unsigned char           _pad04[0x10];          // +0x04 CAInputProcess
-    CWorld*                 World;                 // +0x14
-    CPlayer*                MyPlayer;              // +0x18
-    CGameDefinitionManager* DefinitionManager;     // +0x1c
-    CMainGameComponent*     Component;             // +0x20
-    CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-};
-class CInputProcessQuickAccessItems : public CInputProcessGameBase {
-public:
-    void CancelQuickAccessCharge();
-};
+// NF59 (round 7, queue q10503): the input process is engine/CInputProcessQuickAccessItems.h (opt-in
+//   FABLE_RETAIL_CINPUTPROCESSQUICKACCESSITEMS_UPDATE declares this member private, Ego_r.pdb 0x006BA6A0 + FableWin.pdb 0x021E61E0
+//   ?CancelQuickAccessCharge@CInputProcessQuickAccessItems@@AAEXXZ) over engine/CInputProcessGameBase.h, and the player engine/CPlayer.h
+//   (PeekPControlledCreature 0x00487DD0), the include block of its caller 0x0068E450; the local CPlayer / CInputProcessGameBase /
+//   CInputProcessQuickAccessItems models (public QAE) are gone.
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CINPUTPROCESSQUICKACCESSITEMS_UPDATE
+#include "fable_compiler.h"
+#include "engine/CPlayer.h"
+#include "engine/CInputProcessGameBase.h"
+#include "engine/CInputProcessQuickAccessItems.h"
 
 void CInputProcessQuickAccessItems::CancelQuickAccessCharge()
 {

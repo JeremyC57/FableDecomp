@@ -23,6 +23,11 @@ private:
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TALK; }
     bool IsTalking() const;
+#ifdef FABLE_RETAIL_CTCTALK_GETDIALOGUEVOICE
+    // NF59 opt-in (row 0x005EB3A0 CTCTavernGame::GetTextWithNarrator): FableWin.pdb 0x01C9F740 ?GetDialogueVoice@CTCTalk@@QBE?AVCCharString@@XZ
+    // (no Ego_r.pdb copy: inline in the release build; the row copies DialogueVoice +0x38 into the by-value temporary). No layout change.
+    CCharString GetDialogueVoice() const { return DialogueVoice; }
+#endif
 #ifdef FABLE_RETAIL_CTCTALK_UPDATE
     // Opt-in (w22 agent2007, row 0x00665860 CThingCreatureBase::UpdateAnimation): Ego_r.pdb / FableWin.pdb
     // ?Update@CTCTalk@@QAEXAAVCAnimateThing@@ABVCAnimateThingUpdate@@@Z (out of line in retail at 0x006E3B90, the talk component's lip-sync

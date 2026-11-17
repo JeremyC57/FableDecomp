@@ -55,7 +55,15 @@ class CAnimateThing {public:
  // `or byte [animator+94h],1`), ?GetMainAnimType@CAnimateThing@@QBEJXZ (inline: MainAnimSet.Type +0x50) and Ego_r.pdb / FableWin.pdb
  // ?RemoveCombinationAnimsOfType@CAnimateThing@@QAEXJ@Z (0x0070D8C0). Needs FABLE_RETAIL_CANIMATETHING_MAINANIM (PeekMainAnim) and
  // FABLE_RETAIL_CANIMSET_TYPE.
+#ifdef FABLE_RETAIL_CANIMATETHING_ISANIMATIONFINISHED
+ // NF59 (queue q10507): 0x0070C0E0 is the private const ?IsAnimationFinished@CAnimateThing@@ABE_NXZ (Ego_r.pdb 0x005752F0 / FableWin.pdb
+ // 0x01E96330; retail placement = FableWin order GetMeshBank / IsAnimationFinished / AnimsCanBeIgnored). FableWin's public
+ // IsMainAnimFinished (0x01D92820; no Ego_r copy, inline in release) is the wrapper a non-member caller (0x00665860) reaches it through;
+ // its body here is the plain forward the retail call site shows (`call 0x0070C0E0`, then the caller's own Interruptable test).
+ bool IsMainAnimFinished()const{return IsAnimationFinished();}
+#else
  bool IsMainAnimFinished()const;                                       // 0x0070C0E0
+#endif
  bool IsInterruptable()const{return Interruptable;}
  void SetInterruptable(bool interruptable){Interruptable=interruptable;}
  long GetMainAnimType()const{return CurrentAnim.MainAnimSet.GetType();}
@@ -69,6 +77,15 @@ class CAnimateThing {public:
  void GetInterpolatedMeshAnim(C3DAnimationBlendState& state, float time) const;   // 0x0070E650
  void GetMeshAnims(C3DAnimationBlendState& state, C3DAnimationBlendState& blend) const;   // 0x0070E6A0
 #endif // FABLE_RETAIL_CANIMATETHING_MESHANIMS
+#ifdef FABLE_RETAIL_CANIMATETHING_ISFINISHED
+ // NF59 opt-in (row 0x00661720; needs FABLE_RETAIL_CANIMATETHING_ISANIMATIONFINISHED): the unreferenced out-of-line accessor at 0x00661720, `IsAnimationFinished() || Interruptable` (the
+ // test 0x00665860 inlines next to SetAsFinished). No PDB names it: descriptive name, the landed catalog's (CAnimateThing::IsFinished).
+ bool IsFinished()const;                                               // 0x00661720
+#endif
+#ifdef FABLE_RETAIL_CANIMATETHING_ISANIMATIONFINISHED
+private:
+ bool IsAnimationFinished()const;                                      // 0x0070C0E0
+#endif
 private:
  CCompleteAnimation CurrentAnim;
  std::list<CDelayedAnimation> DelayedAnimQueue;

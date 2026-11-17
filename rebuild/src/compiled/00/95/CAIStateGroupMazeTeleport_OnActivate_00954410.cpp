@@ -1,17 +1,29 @@
 // CAIStateGroup_MazeTeleport::OnActivate() -- advance the boss to its next phase.
+// Leaf: ?OnActivate@CAIStateGroup_MazeTeleport@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00954410, length 86 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (the inlined interface lookup, type 0xAD = bit 13 of the bitset
 // dword at +0x34), CTCBoss::GetCurrentPhase @ 0x007AED10 (no arguments) and CTCBoss::SetNextBossPhase
 // (long phase, bool) @ 0x007AEDA0 (`push 0` = the bool, pushed before the phase is computed).
 // Shape: uninitialised component local, lookup bool not tested, both paths merge into esi (`jmp`) because the
-// component is used twice (`pBoss->SetNextBossPhase(pBoss->GetCurrentPhase() + 1, false)`). Base layout local.
+// component is used twice (`pBoss->SetNextBossPhase(pBoss->GetBossPhase() + 1, false)`). Base layout local.
 class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound -- the same shape the landed
 // GetInterface_0x.. bodies use, here inlined into the caller through GetTC<T>().
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+// NF59 (round 7, queue q10521): the boss component (interface 0xAD) is engine/CTCBoss.h: GetBossPhase() const 0x007AED10 (Ego_r.pdb
+//   0x007B0660 + FableWin.pdb ?GetBossPhase@CTCBoss@@QBEJXZ, NF55 RENAMES s1) and SetNextBossPhase 0x007AEDA0; the local CTCBoss stand-in
+//   called 0x007AED10 under the made-up GetCurrentPhase. Include block of NF55's CTCBoss rows (0x00954E30).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CCountedPointer.h"
+#include "engine/C3DVector.h"
+#include "engine/CTCBoss.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -52,10 +64,6 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
 };
 
-class CTCBoss { public:                                // interface type 0xAD component
-    long GetCurrentPhase();                     // 0x007AED10
-    void SetNextBossPhase(long phase, bool immediate);  // 0x007AEDA0
-};
 
 struct CAIStateGroup_MazeTeleport : CAIStateGroupBase {
     virtual void OnActivate();
@@ -65,5 +73,5 @@ void CAIStateGroup_MazeTeleport::OnActivate()
 {
     CTCBoss* pBoss;
     PBrain->Creature->GetInterface(&pBoss, 0xAD);
-    pBoss->SetNextBossPhase(pBoss->GetCurrentPhase() + 1, false);
+    pBoss->SetNextBossPhase(pBoss->GetBossPhase() + 1, false);
 }

@@ -30,6 +30,7 @@
 //   CThingFilter_RadiusIntersectsInfiniteLine.h.
 #define FABLE_RETAIL_HEARING
 #define FABLE_RETAIL_CTCPERCEIVETHING_SMELL
+#define FABLE_RETAIL_CTCPERCEIVETHING_GETFOV_INLINE   // NF59 (q10523): GetFOV inline from the header (was defined here: a second strong ?GetFOV@CTCPerceiveThing@@QBEMXZ)
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -82,11 +83,6 @@
 #include "engine/CWorld.h"
 #include "engine/CPlayerGui.h"
 #include "engine/C2DBoxI.h"
-
-float CTCPerceiveThing::GetFOV() const
-{
-    return PDef->FieldOfView / 360.0f;
-}
 
 void CTCPerceiveThing::SetThingLineOfSight(bool line_of_sight)
 {

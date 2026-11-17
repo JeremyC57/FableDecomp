@@ -1,5 +1,5 @@
 // CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo(const CCharString&) -- speak the named AI speech to the
-// Leaf: ?SayToThingReactingTo@CAIStateGroup_OpinionReactionRoot@@QAEJABVCCharString@@@Z
+// Leaf: ?SayToThingReactingTo@CAIStateGroup_OpinionReactionRoot@@AAE?AW4EAIActionReturn@@ABVCCharString@@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // (alive, creature-typed) thing this reaction is about; the speech priority is 0x93 and non-pure-AI speakers get
@@ -16,6 +16,7 @@
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
 class CWorld;
+#include "engine/EAIAction.h"                 // NF59: EAIActionReturn (the PDB result type of SayToThingReactingTo)
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -118,17 +119,21 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
         bool allowNonPureAI);                   // 0x00981350
     long AIAction_SpeakAISpeechToTarget(long repeat, CIntelligentPointerCreature speaker,
         CIntelligentPointerConstThing target, const CCharString& speech, bool interrupt, long priority);  // 0x00981EA0
-    long SayToThingReactingTo(const CCharString& speech);
+private:
+    // NF59 (q10526): Ego_r.pdb 0x00983400 + FableWin.pdb 0x02C285B0 ?SayToThingReactingTo@CAIStateGroup_OpinionReactionRoot@@AAE?AW4EAIActionReturn@@ABVCCharString@@@Z
+    //   (private, EAIActionReturn result: engine/EAIAction.h; engine/CAIStateGroup_OpinionReactionRoot.h WIFEUPDATE declares it so and the
+    //   landed Wife updates 0x00982EB0 / 0x00982F10 / 0x00985F40 bind it); was public returning long.
+    EAIActionReturn SayToThingReactingTo(const CCharString& speech);
 };
 #pragma pack(pop)
 
-long CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo(const CCharString& speech)
+EAIActionReturn CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo(const CCharString& speech)
 {
     if (IS_THING_ALIVE(ThingReactingTo) && IsCreatureThing(((CThing*)ThingReactingTo.GetPItem()))) {
         CThing* target = ((CThing*)ThingReactingTo.GetPItem());
         if (AllowSpeechOnNonPureAISpeaker)
-            return AIAction_SpeakAISpeechToTarget(1, PBrain->PCreature, target, speech, false, 0x93, false);
-        return AIAction_SpeakAISpeechToTarget(1, PBrain->PCreature, target, speech, false, 0x93);
+            return (EAIActionReturn)AIAction_SpeakAISpeechToTarget(1, PBrain->PCreature, target, speech, false, 0x93, false);
+        return (EAIActionReturn)AIAction_SpeakAISpeechToTarget(1, PBrain->PCreature, target, speech, false, 0x93);
     }
-    return 3;
+    return AI_ACTION_FAILED;
 }

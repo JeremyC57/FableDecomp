@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00690030, 805 bytes, `ret 8`, /GS (cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
 // Callees: CPlayer::GetPControlledCreature 0x00487DC0 / PeekPControlledCreature 0x00487DD0 / GetCurrentMode 0x00633BE0, LowerBound
 //   0x0040F020 (non-const, interface 0x6f) and 0x004365B0 (const, interface 0xa7), CInputProcessGameBase 0x00687A90/0x00687BD0/
-//   0x00687C70/0x00687CF0/0x00687D40, GetAssignableSpecialMoveIndexForEvent 0x00445FA0, TriggerSpecialAbility 0x005EED4C,
+//   0x00687C70/0x00687CF0/0x00687D40, GetAssignableSpecialMoveIndexForEvent 0x00445FA0, OnSpecialAbilityButtonPressed 0x005EED4C,
 //   CycleAssignedAbilities 0x005F64DD, CheckTermination 0x0072A860, GetName 0x0072B870, CCharString operator!= 0x0099E960 / dtor
 //   0x0099EAE0, AddGameEvent 0x0041649C on CMainGameComponent::Get() 0x013B86A0, SetAsPerformedEvent 0x00A0D390, _ftol 0x00BFEA70.
 // Layout: engine/CInputProcessGameBase.h fields (MyPlayer +0x18, PGamePlayerInterface +0x24); CThing interface map +0x44,
@@ -20,11 +20,8 @@
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 inline float Abs(float x) { return (float)fabs(x); }
-class CCharString { public:
-    void* PStringData;
-    ~CCharString();                                     // 0x0099EAE0
-    bool operator!=(const char* text) const;            // 0x0099E960
-};
+#define FABLE_RETAIL_CCHARSTRING                    // NF59: fable_string.h's CCharString (~CCharString 0x0099EAE0, operator!=(const char*) 0x0099E960)
+#include "fable_string.h"
 class CInputEvent {
 public:
     unsigned char _pad00[0x28];
@@ -86,10 +83,15 @@ public:
     }
 };
 class CThingPlayerCreature : public CThing { };
-class CTCInventoryAbilities { public:
-    void TriggerSpecialAbility(long index);        // 0x005EED4C (label)
-    void CycleAssignedAbilities(bool forward);     // 0x005F64DD
-};
+// NF59 (round 7, queue q10499): the abilities component is the retail engine/CTCInventoryAbilities.h (opt-ins _ASSIGN:
+//   CycleAssignedAbilities 0x005F64DD; _ONSPECIALABILITYBUTTONPRESSED: Ego_r.pdb 0x0057DBC3 + FableWin.pdb
+//   ?OnSpecialAbilityButtonPressed@CTCInventoryAbilities@@QAEXJ@Z 0x005EED4C, the landed self row's leaf); the local model named the
+//   0x005EED4C call TriggerSpecialAbility (a label no PDB has).
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCINVENTORYABILITIES
+#define FABLE_RETAIL_CTCINVENTORYABILITIES_ASSIGN
+#define FABLE_RETAIL_CTCINVENTORYABILITIES_ONSPECIALABILITYBUTTONPRESSED
+#include "engine/CTCInventoryAbilities.h"
 struct CTCHeroState {                              // interface 0xa7 (descriptive)
     unsigned char _pad00[0x10];
     long          State;                           // +0x10
@@ -140,7 +142,7 @@ void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProc
         hero->GetInterface(&state, 0xa7);
         if (IsEventAssignableSpecialMoveButton(event)) {
             if (IsEventButtonPressed(event)) {
-                abilities->TriggerSpecialAbility(PGamePlayerInterface->GetAssignableSpecialMoveIndexForEvent(event));
+                abilities->OnSpecialAbilityButtonPressed(PGamePlayerInterface->GetAssignableSpecialMoveIndexForEvent(event));
                 processed.SetAsPerformedEvent();
             } else if (IsEventButtonHeld(event)) {
                 processed.SetAsPerformedEvent();

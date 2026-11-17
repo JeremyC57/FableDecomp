@@ -2,7 +2,7 @@
 // Leaf: ProcessInput
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690FD0, length 325 bytes, `ret 8`.
 // Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020, the
-//   menu component's IsActive() @ 0x00625930 (+0x0C), IsClosing() @ 0x00625940 (+0x1C) and RequestClose() @ 0x00625920
+//   menu component's IsActive() @ 0x00625930 (+0x0C), IsQuitting() @ 0x00625940 (+0x1C) and Deactivate() @ 0x00625920
 //   (manifest labels "GetCanItemBeQuickAssigned" / "CTCCreditsUI::Deactivate" are propagated; names as in the landed
 //   CTCInventory::AddCloseInventoryEvent 0x00584A73), CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90,
 //   IsEventButtonReleased @ 0x00687B30, IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance
@@ -27,38 +27,32 @@ public:
     static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
-class CTCQuickAccessMenu { public:
-    bool IsActive() const;                         // 0x00625930
-    bool IsClosing() const;                        // 0x00625940
-    void RequestClose();                           // 0x00625920
-};
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                    // the thing's component map at +0x44
-    STCEntry* m_pFirst;
-    STCEntry* m_pLast;
-    STCEntry* m_pEnd;
-    STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    FABLE_FORCEINLINE CTCQuickAccessMenu* Find(long kind)
-    {
-        STCEntry* it = LowerBound((ETCInterfaceType)kind);
-        return ((CTCQuickAccessMenu*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
-    }
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
+// NF59 (round 7, queue q10497/q10498): the menu component is engine/CTCQuickAccessMenu.h (ISACTIVE, ISQUITTING_ACTIVATE, DEACTIVATE:
+//   Ego_r.pdb / FableWin.pdb IsActive 0x00625930, IsQuitting 0x00625940, Deactivate 0x00625920) and the component map engine/CVectorMap.h
+//   (as the sibling 0x0068FF50); the local CTCQuickAccessMenu stand-in (IsClosing / RequestClose) and CVectorMap specialization are gone.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCQUICKACCESSMENU_ISACTIVE
+#define FABLE_RETAIL_CTCQUICKACCESSMENU_ISQUITTING_ACTIVATE
+#define FABLE_RETAIL_CTCQUICKACCESSMENU_DEACTIVATE
+#include "engine/ETCInterfaceType.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CVectorMap.h"
+#include "engine/CTCQuickAccessMenu.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*> CTCMap;      // engine/CVectorMap.h: the thing's component map at +0x44
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
     unsigned char _pad40[4];
     CTCMap        m_tcs;                           // +0x44
-    unsigned char _pad50[0x91 - 0x50];
+    unsigned char _pad54[0x91 - 0x54];               // the map is the 16-byte CVectorMap (vector + Compare + Dirty)
     unsigned char m_dead : 1;                      // +0x91 bit 0
     FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    FABLE_FORCEINLINE CTCQuickAccessMenu* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE CTCQuickAccessMenu* GetTC(long kind)
+    {
+        CTCMap* map = &m_tcs;
+        CTCMap::value_type* it = map->LowerBound((ETCInterfaceType)kind);
+        return (CTCQuickAccessMenu*)((it == map->end() || kind < it->first) ? map->end() : it)->second;
+    }
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
@@ -78,7 +72,7 @@ void CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProce
     if (!hero || hero->m_dead || !hero->HasTC(0xf6))
         return;
     CTCQuickAccessMenu* menu = hero->GetTC(0xf6);
-    if (!menu->IsActive() || menu->IsClosing())
+    if (!menu->IsActive() || menu->IsQuitting())
         return;
     if (IsEventButtonPressed(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_UP, event))
@@ -90,7 +84,7 @@ void CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProce
         else if (IsEventGameAction(GAME_ACTION_INVENTORY_RIGHT, event))
             NUISystem::CManager::GetInstance()->SendEvent(3);
         else if (IsEventGameAction(GAME_ACTION_OPEN_INVENTORY, event)) {
-            menu->RequestClose();
+            menu->Deactivate();
             processed.SetAsPerformedEvent();
             return;
         } else

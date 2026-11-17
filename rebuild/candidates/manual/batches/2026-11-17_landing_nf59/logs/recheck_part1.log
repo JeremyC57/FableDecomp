@@ -1,0 +1,84 @@
+addr       parity           behav  name
+004675f6   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryIn<bool>
+004e1aaf   WARN RELOC_NAME: ??$__destroy_aux@PAVCTargetPoint@NPlayerTargeting@@@std@@YIXPAVCTargetPoint@NPlayerTargeting@@0ABU__false_type@0@@Z -> 004dbe58 labelled 'std::__destroy_aux<NPlayerTargeting::CTargetPoint *>'
+004e1aaf   RELOCATION_MATCH PASS   ~vector
+005d95c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005d95c0   RELOCATION_MATCH PASS   GetDescription
+005d97b0   RELOCATION_MATCH PASS   GetInventoryCategory
+005d99f0   RELOCATION_MATCH PASS   GetMaxNumberOfItems
+005d9b70   RELOCATION_MATCH PASS   GetTutorialCategory
+00661720   RELOCATION_MATCH PASS   IsFinished
+0068e3c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0068e3c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0068e3c0   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068e3c0   RELOCATION_MATCH PASS   CancelQuickAccessCharge
+00692bc0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00692bc0   RELOCATION_MATCH PASS   GetFrameUpdateTime
+006e28a0   WARN SHARED_HEADER_AVAILABLE CWorld
+006e28a0   WARN RELOC_NAME: ?g_pWorld@@3PAVCWorld@@A -> 013b86a0 labelled 'CMainGameComponent::PMainGameComponent'
+006e28a0   WARN RELOC_NAME: ?GetFrame@CWorld@@QAEJXZ -> 00416225 labelled 'CMainGameComponent::GetCurrentServerFrame'
+006e28a0   RELOCATION_MATCH PASS   IsTalking
+00724010   WARN SHARED_HEADER_AVAILABLE C3DVector
+00724010   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00724010   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00724010   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00724010   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00724010   WARN SHARED_HEADER_AVAILABLE CWorld
+00724010   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00724010   WARN SHARED_HEADER_AVAILABLE CPhysicsDef
+00724010   WARN SHARED_HEADER_AVAILABLE CTCBase
+00724010   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00724010   RELOCATION_MATCH PASS   OnCreate
+00745730   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00745730   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00745730   WARN SHARED_HEADER_AVAILABLE CTCBase
+00745730   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00745730   RELOCATION_MATCH PASS   UpdatePerception
+007aeb70   WARN STANDIN_LEAF ??1?$map@VCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@QAE@XZ (catalog std::map<CCharString, std::vector<CCharString, std::allocator<CCharString>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>>::~map; names another function)
+007aeb70   RELOCATION_MATCH PASS   ~map
+00859a70   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00859a70   WARN SHARED_HEADER_AVAILABLE CManager
+00859a70   WARN SHARED_HEADER_AVAILABLE CTCWeaponTrail
+00859a70   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+00859a70   WARN RELOC_NAME: ?GetAnimManager@@YIPAVCManager@NAnimationEvents@@XZ -> 006f90b0 labelled '_global::GetGlobal_013babb4_006f90b0'
+00859a70   WARN RELOC_NAME: ?ParseStrikeEventName@@YI_NABVCCharString@@AA_N111@Z -> 00856780 labelled '`anonymous namespace'::IsValidStrikeEventName'
+00859a70   RELOCATION_MATCH PASS   SetupCombatStrikeEvents
+008aa510   RELOCATION_MATCH PASS   RemoveGossipFactions
+008ed090   WARN SHARED_HEADER_AVAILABLE CThing
+008ed090   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+008ed090   WARN SHARED_HEADER_AVAILABLE CPlayer
+008ed090   WARN SHARED_HEADER_AVAILABLE CTCBase
+008ed090   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ -> 005d9030 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+008ed090   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+008ed090   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+008ed090   RELOCATION_MATCH PASS   AddItemToInventory
+0095ee70   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095ee70   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095ee70   RELOCATION_MATCH PASS   SayToThingReactingTo
+00bdbfe0   MATCH            PASS   OnGameMapLoaded
+00c3b0c0   MATCH            PASS   SSampleIndexNode
+00c4a0e0   RELOCATION_MATCH PASS   Pop
+01214e75   RELOCATION_MATCH PASS   Unwind@01214e75
+
+WINS: 21
+  004675f6 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@_N@@YIXAAVCMemoryDataInputStream@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z
+  004e1aaf RELOCATION_MATCH std::vector<NPlayerTargeting::CTargetPoint>::??1?$vector@VCTargetPoint@NPlayerTargeting@@V?$allocator@VCTargetPoint@NPlayerTargeting@@@std@@@std@@QAE@XZ
+  005d95c0 RELOCATION_MATCH CTCInventoryItem::?GetDescription@CTCInventoryItem@@SI?AVCWideString@@J@Z
+  005d97b0 RELOCATION_MATCH CTCInventoryItem::?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z
+  005d99f0 RELOCATION_MATCH CTCInventoryItem::?GetMaxNumberOfItems@CTCInventoryItem@@SIJJ@Z
+  005d9b70 RELOCATION_MATCH CTCInventoryItem::?GetTutorialCategory@CTCInventoryItem@@SI?AW4ETutorialCategory@@J@Z
+  00661720 RELOCATION_MATCH CAnimateThing::?IsFinished@CAnimateThing@@QBE_NXZ
+  0068e3c0 RELOCATION_MATCH CInputProcessQuickAccessItems::?CancelQuickAccessCharge@CInputProcessQuickAccessItems@@AAEXXZ
+  00692bc0 RELOCATION_MATCH CCreatureActionBase::?GetFrameUpdateTime@CCreatureActionBase@@MBEMXZ
+  006e28a0 RELOCATION_MATCH CTCTalk::?IsTalking@CTCTalk@@QBE_NXZ
+  00724010 RELOCATION_MATCH CTCPhysicsStandard::OnCreate
+  00745730 RELOCATION_MATCH CTCPerceiveThing::UpdatePerception
+  007aeb70 RELOCATION_MATCH std::map<CCharString, std::vector<CCharString, std::allocator<CCharString>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>>::??1?$map@VCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@QAE@XZ
+  00859a70 RELOCATION_MATCH CCombatActionBase::SetupCombatStrikeEvents
+  008aa510 RELOCATION_MATCH CGameScriptInterface::?RemoveGossipFactions@CGameScriptInterface@@UAEXVCCharString@@@Z
+  008ed090 RELOCATION_MATCH CTCContainer::?AddItemToInventory@CTCContainer@@IAEXAAVCThing@@@Z
+  0095ee70 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?SayToThingReactingTo@CAIStateGroup_OpinionReactionRoot@@AAE?AW4EAIActionReturn@@ABVCCharString@@@Z
+  00bdbfe0 MATCH CEngineLandscapeMap::?OnGameMapLoaded@CEngineLandscapeMap@@QAEXXZ
+  00c3b0c0 MATCH SSampleIndexNode::??0SSampleIndexNode@@QAE@PAXK@Z
+  00c4a0e0 RELOCATION_MATCH CLockedRingBuffer::?Pop@CLockedRingBuffer@@QAEPAVCCodaFrame@@XZ
+  01214e75 RELOCATION_MATCH _global::Unwind@01214e75

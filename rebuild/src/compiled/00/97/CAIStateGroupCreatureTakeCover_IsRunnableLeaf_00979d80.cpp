@@ -11,7 +11,7 @@
 //   engine/ThingAlive.h's IS_THING_ALIVE, in place of the local CThing / CVectorMap / CAIStateGroupBase / CTCCarrying / CTCWeapon models.
 // Callees: NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon @0x00982890 (temporary vtable 0x0128FFD4; the module models below
 //   are kept as landed: no shared header declares them); CBaseIntelligentPointer::GetPItem @0x00A01B50; IsInMeleeWithCombatWheelAttackers
-//   @0x00979910 (kept as landed); CTCCarrying::GetThingInPrimarySlot @0x006A1440; CTCWeapon::IsProjectileWeapon @0x005DAA40.
+//   @0x00979910 (anonymous namespace, NF59); CTCCarrying::GetThingInPrimarySlot @0x006A1440; CTCWeapon::IsProjectileWeapon @0x005DAA40.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -54,7 +54,12 @@
 #include "engine/CAIBrain.h"
 #include "engine/CAIStateGroup_CreatureTakeCover.h"
 
-bool __fastcall IsInMeleeWithCombatWheelAttackers(CThing* creature);   // 0x00979910
+// NF59 (round 7, queue q10527): Ego_r.pdb 0x0099E590 + FableWin.pdb 0x02C1C760 spell 0x00979910 as the file-local (anonymous-namespace)
+//   __fastcall ?IsInMeleeWithCombatWheelAttackers@?A0x...@@YI_NABVCThingCreatureBase@@@Z of the TakeCover TU (the landed self row defines it
+//   so); the global (CThing*) declaration bound a made-up spelling. The ?A0x hash is per TU (EXTRA_RULES: matched by prefix).
+namespace {
+bool __fastcall IsInMeleeWithCombatWheelAttackers(const CThingCreatureBase& creature);   // 0x00979910
+}
 
 namespace NCreatureAI {
 struct __declspec(novtable) CIsRunnableModule {
@@ -72,7 +77,7 @@ bool CAIStateGroup_CreatureTakeCover::IsRunnableLeaf()
 {
     if (NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon(&GetWorld(), (CThing*)PBrain->Creature).IsRunnable()
         && IS_THING_ALIVE(PTargetThing)
-        && !IsInMeleeWithCombatWheelAttackers((CThing*)PTargetThing.GetPItem()))
+        && !IsInMeleeWithCombatWheelAttackers(*static_cast<const CThingCreatureBase*>(PTargetThing.GetPItem())))
     {
         const CTCCarrying* carrying;
         if (PTargetThing->PeekTC(&carrying)) {

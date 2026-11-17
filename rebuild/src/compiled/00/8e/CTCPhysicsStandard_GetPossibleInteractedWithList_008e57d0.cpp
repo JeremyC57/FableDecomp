@@ -1,84 +1,60 @@
 // CTCPhysicsStandard::GetPossibleInteractedWithList(const C2DBoxI& box, vector<CThing*>& things, float extraRadius) const -- when the body interacts or collides with things at all, gather the things in the box that it can collide or interact with, that overlap its sphere (radius + extraRadius) and that have physics (interface 2)
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E57D0, 164 bytes (`ret 0Ch`; PDB ?GetPossibleInteractedWithList@CTCPhysicsStandard@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThing@@...@@M@Z).
-// Callees: virtual GetInteractsWithThings slot 60 (+0xf0), GetCollidesWithThings 57 (+0xe4), GetCollidesWithThingsOneWay 58
-//   (+0xe8), IsExcludingCreatures 61 (+0xf4); CTCBase::PeekThingSearchTools() const @ 0x006AFD40 (GetWorld() const ->
+// Callees: virtual CanInteractWithThings (+0xf0), CanCollideWithThings (+0xe4), CanCollideWithThingsOneWay (+0xe8) and
+//   IsExcludingCreatures (+0xf4) (engine/CTCPhysicsBase.h retail vtable); CTCPhysicsBase::GetThingSearchTools() const @ 0x006AFD40 (GetWorld() const ->
 //   CWorld::PThingSearchTools +0x20; manifest "CThingCreatureBase::GetCombatManager" is propagated), CThingSearchTools::
 //   GetAllThingsInRoughArea<const CThing, vector<CThing*>, CFilter_Bind3<...>> @ 0x008E60D0 (const, box / filter / out).
-// Layout: Ego_r.pdb filters: CThingFilter_CanCollideOrInteractWithThing {TCPhysics, ExcludeCreatures}, CThingFilter_
-//   OverlappingSphere {SpherePos, Radius}, CThingFilter_HasTC {Type}, CFilter_Bind3 {F1, F2, F3} (the Bind3 combination is in
-//   the PDB symbol list); CTCPhysicsBase Position +0x0c, Radius +0x34.
-// Shape: the three filters are named locals (frame: HasTC +4, CanCollide +8, Bind3 +0x10, sphere +0x1c) and the Bind3 a
-//   temporary in the call. C3DVector needs its memberwise user copy constructor: the implicit copy forms `lea eax,[esi+0Ch]`
-//   and reads through it, the user copy reads [esi+0Ch..14h] directly like retail.
+// Layout: Ego_r.pdb filters: CThingFilter_CanCollideOrInteractWithThing {TCPhysics, ExcludeCreatures} (no shared header: modelled
+//   below, constructor + declared operator() only), CThingFilter_OverlappingSphere {SpherePos, Radius}, CThingFilter_HasTC {Type},
+//   CFilter_Bind3 {F1, F2, F3} (engine/ headers); CTCPhysicsBase Position +0x0c, Radius +0x34.
+// Shape: the three filters are named locals (frame: HasTC +4, CanCollide +8, Bind3 +0x10, sphere +0x1c) and the Bind3 a temporary
+//   in the call.
+// Name fix (NF59, queue q10515; NF55 porting 0x00725C40 Move): Ego_r.pdb 0x0090DA20
+//   ?GetPossibleInteractedWithList@CTCPhysicsStandard@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@M@Z
+//   (protected const). The local CTCPhysicsBase (made-up virtual slot names GetCollidesWithThings / GetInteractsWithThings), C2DBoxI,
+//   vector, filter and CThingSearchTools models are replaced by the shared headers: engine/CTCPhysicsStandard.h
+//   (FABLE_RETAIL_CTCPHYSICSSTANDARD_MOVE declares the member), the retail engine/CTCPhysicsBase.h vtable (CanInteractWithThings /
+//   CanCollideWithThings / CanCollideWithThingsOneWay / IsExcludingCreatures, GetThingSearchTools), engine/CThingSearchTools.h (the
+//   template declared), the filter headers and stlport/fable_containers.h.
+// Leaf: ?GetPossibleInteractedWithList@CTCPhysicsStandard@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@M@Z
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTCPHYSICSSTANDARD
+#define FABLE_RETAIL_CTCPHYSICSSTANDARD_MOVE
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE_GETTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
-class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
-class CThing;
-template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
-class CTCPhysicsBase;
-class CThingFilter_CanCollideOrInteractWithThing { public:
-    CTCPhysicsBase* TCPhysics;                          // +0x00
-    bool            ExcludeCreatures;                   // +0x04
-    CThingFilter_CanCollideOrInteractWithThing(CTCPhysicsBase* physics, bool excludeCreatures)
-        : TCPhysics(physics), ExcludeCreatures(excludeCreatures) { }
-};
-class CThingFilter_OverlappingSphere { public:
-    C3DVector SpherePos;                                // +0x00
-    float     Radius;                                   // +0x0c
-    CThingFilter_OverlappingSphere(const C3DVector& pos, float radius) : SpherePos(pos), Radius(radius) { }
-};
-class CThingFilter_HasTC { public:
-    long Type;                                          // ETCInterfaceType
-    CThingFilter_HasTC(long type) : Type(type) { }
-};
-template <class A, class B, class C> class CFilter_Bind3 { public:
-    const A* F1;
-    const B* F2;
-    const C* F3;
-    CFilter_Bind3(const A& a, const B& b, const C& c) : F1(&a), F2(&b), F3(&c) { }
-};
-class CThingSearchTools { public:
-    template <class T, class TContainer, class TFilter>
-    void GetAllThingsInRoughArea(const C2DBoxI& box, const TFilter& filter, TContainer& out) const;   // 0x008E60D0
-};
-class CTCPhysicsBase { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
-    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
-    virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
-    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
-    virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041();
-    virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
-    virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053();
-    virtual void v054(); virtual void v055(); virtual void v056();
-    virtual bool GetCollidesWithThings() const;         // slot 57 (+0xe4)
-    virtual bool GetCollidesWithThingsOneWay() const;   // slot 58 (+0xe8)
-    virtual void v059();
-    virtual bool GetInteractsWithThings() const;        // slot 60 (+0xf0)
-    virtual bool IsExcludingCreatures() const;          // slot 61 (+0xf4)
-    void*     ParentThing;                              // +0x04 (CTCBase)
-    unsigned char _pad08[0x4];
-    C3DVector Position;                                 // +0x0c
-    C3DVector OldPosition;                              // +0x18
-    long      OldPositionLastFrameSet;                  // +0x24
-    C3DVector Velocity;                                 // +0x28
-    float     Radius;                                   // +0x34
-protected:
-    const CThingSearchTools& GetThingSearchTools() const;   // 0x006AFD40 (Ego_r.pdb + FableWin.pdb ?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ)
+#include "engine/C2DBoxI.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CTCPhysicsStandard.h"
+#include "engine/CThingSearchTools.h"
+#include "engine/CThingFilter_OverlappingSphere.h"
+#include "engine/CThingFilter_HasTC.h"
+#include "engine/CFilter_Bind3.h"
+
+// Ego_r.pdb CThingFilter_CanCollideOrInteractWithThing {TCPhysics, ExcludeCreatures}; no shared header yet.
+class CThingFilter_CanCollideOrInteractWithThing : public std::unary_function<CThing,bool> {
+    const CTCPhysicsBase* TCPhysics;                   // +0x00
+    bool                  ExcludeCreatures;            // +0x04
 public:
-};
-struct CTCPhysicsStandard : CTCPhysicsBase {
-    void GetPossibleInteractedWithList(const C2DBoxI& box, vector<CThing*>& things, float extraRadius) const;
+    CThingFilter_CanCollideOrInteractWithThing(const CTCPhysicsBase* physics, bool excludeCreatures)
+        : TCPhysics(physics), ExcludeCreatures(excludeCreatures) { }
+    bool operator()(const CThing& thing) const;
 };
 
-void CTCPhysicsStandard::GetPossibleInteractedWithList(const C2DBoxI& box, vector<CThing*>& things, float extraRadius) const
+void CTCPhysicsStandard::GetPossibleInteractedWithList(const C2DBoxI& area, std::vector<CThing*>& things, float range) const
 {
-    if (GetInteractsWithThings() || GetCollidesWithThings() || GetCollidesWithThingsOneWay()) {
-        CThingFilter_CanCollideOrInteractWithThing canFilter(const_cast<CTCPhysicsStandard*>(this), IsExcludingCreatures());
-        CThingFilter_OverlappingSphere sphereFilter(Position, extraRadius + Radius);
-        CThingFilter_HasTC physicsFilter(2);
-        GetThingSearchTools().GetAllThingsInRoughArea<const CThing>(box,
+    if (CanInteractWithThings() || CanCollideWithThings() || CanCollideWithThingsOneWay()) {
+        CThingFilter_CanCollideOrInteractWithThing canFilter(this, IsExcludingCreatures());
+        CThingFilter_OverlappingSphere sphereFilter(Position, range + Radius);
+        CThingFilter_HasTC physicsFilter(TCI_PHYSICS);
+        GetThingSearchTools().GetAllThingsInRoughArea<const CThing>(area,
             CFilter_Bind3<CThingFilter_CanCollideOrInteractWithThing, CThingFilter_OverlappingSphere, CThingFilter_HasTC>(
                 canFilter, sphereFilter, physicsFilter), things);
     }

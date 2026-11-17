@@ -6,7 +6,13 @@
 // Layout: native006B9510/006B9530 sets are12bytes, so offsets00/04/10 and size1C.
 class CFaction {
 public:
+#ifdef FABLE_RETAIL_CFACTION_CTOR_OUTOFLINE
+    // NF59 opt-in (row 0x006BAED0 CPersistContext::Transfer<CFaction>): Ego_r.pdb 0x006F64E0 ??0CFaction@@QAE@XZ is out of line, and
+    // retail calls it as 0x006BA420 (`call 0x006BA420` building GetDefaultVal's traits local). Declaration only.
+    CFaction();                                                      // 0x006BA420
+#else
     CFaction() {}
+#endif
     ~CFaction(); // original006BA6D0; FableWin02444350.
     CCharString GetName() const { return Name; }
     void InitialiseFromFaction(const CFaction& faction) {

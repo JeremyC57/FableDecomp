@@ -1,4 +1,5 @@
 // CTCContainer::AddItemToInventory(CThing* item) -- put an inventory item (interface 0x1a) into the hero's inventory component of the item's category; anything else is killed
+// Leaf: ?AddItemToInventory@CTCContainer@@IAEXAAVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008ED090, 220 bytes (`ret 4`; the kill arm tail-jumps reusing the argument slot).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (two inlined lookups), the inventory item's category
@@ -71,16 +72,19 @@ protected:
 
 class CTCContainer : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    void AddItemToInventory(CThing* item);
+protected:
+    // NF59 (q10508): Ego_r.pdb 0x00912DB0 ?AddItemToInventory@CTCContainer@@IAEXAAVCThing@@@Z (protected, the item by reference;
+    //   engine/CTCContainer.h ADDITEMS declares it so and the landed caller 0x008ED170 binds it); was public with a CThing* parameter.
+    void AddItemToInventory(CThing& item);
 };
 
-void CTCContainer::AddItemToInventory(CThing* item)
+void CTCContainer::AddItemToInventory(CThing& item)
 {
-    if (item->HasTC(0x1a)) {
-        CTCInventoryItem* inventoryItem = (CTCInventoryItem*)item->GetTC(0x1a);
+    if (item.HasTC(0x1a)) {
+        CTCInventoryItem* inventoryItem = (CTCInventoryItem*)item.GetTC(0x1a);
         long type = inventoryItem->GetInventoryType();
         CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         inventoryItem->AddToInventory(*(NInventory::CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
     } else
-        item->Kill(false);
+        item.Kill(false);
 }

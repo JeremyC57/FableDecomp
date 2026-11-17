@@ -38,6 +38,12 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
+// NF59 (round 7, queue q10538): the helper-name list is the STLport std::vector<CCharString> (stlport/fable_containers.h; its ~vector is the
+//   out-of-line COMDAT 0x00414EA0 here, FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE) and 0x00858E00 is Ego_r.pdb 0x008386C0
+//   ?GetHelperPointNamesFromStrikeEventName@?A0x...@@YIXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N22@Z,
+//   the strike-events TU's anonymous-namespace helper (hash per TU); were the CCharStringVector stand-in and a global declaration.
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "stlport/fable_containers.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -65,15 +71,6 @@ struct CAnimEventVector {                              // std::vector<std::pair<
             free(First);
     }
 };
-struct CCharStringVector {                             // std::vector<CCharString>
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    CCharStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CCharStringVector();                              // 0x00414EA0
-    CCharString& front() { return *_M_start; }
-};
-
 namespace NAnimationEvents {
 class CManager { public:
     virtual void GetEvents(unsigned long animID, CAnimEventVector& events) const;          // slot 0
@@ -106,8 +103,10 @@ __declspec(noinline) bool __fastcall ParseStrikeEventName(const CCharString& eve
 #pragma auto_inline(on)
 CThing* __fastcall GetThingDoingDamageFromCreatureAndEventName(CThing* creature, const CCharString& eventName,
                                                                bool isWeapon, bool legacy, bool primaryLegacy);   // 0x00859040
-void __fastcall GetHelperPointNamesFromStrikeEventName(const CCharString& eventName, CCharStringVector& names,
+namespace {
+void __fastcall GetHelperPointNamesFromStrikeEventName(const CCharString& eventName, std::vector<CCharString>& names,
                                                        bool isWeapon, bool legacy, bool primaryLegacy);   // 0x00858E00
+}
 
 #include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC
@@ -214,7 +213,7 @@ void CCombatActionBase::SetupCombatStrikeEvents()
                 CTCWeaponTrail* trail;
                 if (weapon->GetTC(TCI_WEAPON_TRAIL, &trail)) {
                     long index = trail->GetStrikeEventIndexFromEventName(it->Name);
-                    CCharStringVector helperNames;
+                    std::vector<CCharString> helperNames;
                     GetHelperPointNamesFromStrikeEventName(it->Name, helperNames, isWeapon, legacy, primaryLegacy);
                     StrikeEvents.push_back(CCountedPointer<CStrikeEvent>(new CStrikeEvent(weapon, index, helperNames.front(),
                                                                                           startFrame, isWeapon, legacy, primaryLegacy)));

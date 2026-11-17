@@ -1,4 +1,5 @@
 // CCreatureActionBase::GetFrameUpdateTime() const -- the creature's animation speed multiplier times one frame (1 / frame rate)
+// Leaf: ?GetFrameUpdateTime@CCreatureActionBase@@MBEMXZ
 // Naming wave 18: the global stand-in g_frameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692BC0, length 36 bytes. Vtable slot 62 of the CCreatureActionBase family
@@ -7,46 +8,35 @@
 // @ 0x006655A0. Globals: the long frame rate @ 0x01375550 (`fild`), the float 1.0f @ 0x0122DED8 (`fdivr`: 1.0f / rate).
 // Shape: the frame time is a named float local (`fstp [esp]` into the one-dword frame before the call -- a named float
 // local for a value that must survive a call, GOTCHAS), then the call result is multiplied by it (`fmul [esp]`).
-// NF55 (2026-11-17): the creature is engine/CThingCreatureBase.h (its flattened view; FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ANIMSPEED declares
-//   the PDB ?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ); it was the CThingCreatureBase_Calls stand-in.
-#define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ANIMSPEED
-#include "engine/CThingCreatureBase.h"
-
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
+// NF59 (round 7, queue q10501): Ego_r.pdb 0x00519550 + FableWin.pdb 0x01DB94C0 ?GetFrameUpdateTime@CCreatureActionBase@@MBEMXZ, the protected
+//   virtual (slot 62); re-authored on the retail engine/CCreatureActionBase.h (it declares `protected: virtual float GetFrameUpdateTime() const`,
+//   PCreature +0x08; the include block of the landed PeekWorld 0x00692950) over the retail CThingCreatureBase (UPDATEANIMATION declares
+//   GetAnimationSpeedMultiplier). The landed row defined a public non-virtual member (QBE) of a local CCreatureActionBase /
+//   CBaseIntelligentPointer / CIntelligentPointer model.
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-
-// engine/CCreatureActionBase.h exists but is not used: it is the PDB build's flat pack(1) layout (0xb4 bytes, three
-// containers 4 bytes wider than retail's 0xa8, no vtable or methods); the retail `this` is modelled locally.
-class CCreatureActionBase { public:
-    virtual void v00();
-    unsigned char _pad04[4];                // +0x04
-    CIntelligentPointer<CThingCreatureBase> PCreature;           // +0x08
-    float GetFrameUpdateTime() const;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_UPDATEANIMATION
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCreatureActionBase.h"
 
 float CCreatureActionBase::GetFrameUpdateTime() const
 {
     float frameTime = 1.0f / (float)CMainGameComponent::GetConstantFPS();
-    return PCreature.GetPItem()->GetAnimationSpeedMultiplier() * frameTime;
+    return static_cast<const CThingCreatureBase*>(PCreature.GetPItem())->GetAnimationSpeedMultiplier() * frameTime;
 }

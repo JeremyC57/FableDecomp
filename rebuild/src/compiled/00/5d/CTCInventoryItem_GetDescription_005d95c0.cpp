@@ -16,36 +16,25 @@
 // DecRef()/GetRefCount() pair (load/dec/store, `test edx,edx`), its dead null store dropped.
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
 //   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString.
+// NF59 (round 7, queue q10532): moved onto engine/CTCInventoryItem.h (KINDS declares this static, the CACHEDEF opt-in the private
+//   static ?CacheDef@CTCInventoryItem@@CI_NJ@Z and s_CachedItemDef), engine/CDefPointer.h and fable_string.h's CWideString (copy ctor
+//   0x0099B720, NullString 0x013BCA24), engine/CIVCountedPointer.h (the clearing release) and engine/CIVCountedPointeeBase.h; the local CTCInventoryItem / CDefPointer / CWideString / CIVCountedPointer / CIVCountedPointeeBase models bound CacheDef as public (SI).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_CACHEDEF
+#define FABLE_RETAIL_CTCINVENTORYITEM_KINDS
+#define FABLE_RETAIL_CWIDESTRING_NULLSTRING
+#define FABLE_RETAIL_PASS22_INVENTORY_ITEMS_ORIGINAL_ENUM
+#define FABLE_RETAIL_CLOTHING_DEFS
+#include "fable_compiler.h"
+#include "engine/ETCInterfaceType.h"
+#include "fable_string.h"
+#include "engine/CDefPointer.h"
 #include "engine/CInventoryItemDef.h"
-class CWideString { public:
-    void* PStringData;
-    CWideString(const CWideString& other);              // 0x0099B720
-public:
-    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
-};
-class CIVCountedPointeeBase { public:
-    virtual void Destroy(int flags) const;                    // slot 0
-    virtual void Delete() const;                              // slot 1
-    mutable unsigned long IVRefCount;                           // +0x04
-    void DecRef() const { --IVRefCount; }
-    unsigned long GetRefCount() const { return IVRefCount; }
-    void Release() const
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Delete();
-    }
-};
-template <class T> class CIVCountedPointer { public:           // 4 bytes
-    T* Object;
-    ~CIVCountedPointer()
-    {
-        if (Object) {
-            Object->Release();
-            Object = 0;
-        }
-    }
-};
+#include "engine/CTCInventoryItem.h"
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT_CLEAR
+#include "engine/CIVCountedPointer.h"
 namespace NGameText {
 class CTextEntry : public CIVCountedPointeeBase { public:            // NGameText::CGroupEntry
     CWideString GetText() const;                        // 0x009C7A40
@@ -67,24 +56,13 @@ private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
-class CDefPointeeBase;
-template <class T> class CDefPointer { public:
-    T* Object;
-    T* operator->() const { return Object; }
-};
-class CTCInventoryItem {                                // static API only (instance layout: engine/CTCInventoryItem.h)
-public:
-    static bool __fastcall CacheDef(long defIndex);                     // 0x005D94B0
-    static CWideString __fastcall GetDescription(long defIndex);
-    static CDefPointer<const CInventoryItemDef> s_CachedItemDef;      // 0x013B8C18
-};
 CWideString __fastcall CTCInventoryItem::GetDescription(long defIndex)
 {
     if (CacheDef(defIndex)) {
         if (s_CachedItemDef->ItemDescription > 0) {
             CDataBank* bank = CMainGameComponent::Get()->TextBank;
             const unsigned long& textIndex = s_CachedItemDef->ItemDescription;
-            return bank->GetPTextEntry(textIndex, true).Object->GetText();
+            return bank->GetPTextEntry(textIndex, true)->GetText();
         }
     }
     return CWideString::NullString;

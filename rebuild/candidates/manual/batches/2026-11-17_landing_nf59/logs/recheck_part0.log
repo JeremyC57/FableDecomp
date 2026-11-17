@@ -1,0 +1,69 @@
+addr       parity           behav  name
+004675c5   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<bool>
+004dbe58   RELOCATION_MATCH PASS   CTargetPoint *>
+005bbbce   RELOCATION_MATCH PASS   `scalar deleting destructor'
+005d9790   RELOCATION_MATCH PASS   IsConfiscatable
+005d99b0   RELOCATION_MATCH PASS   GetItemToSelectUponRemoval
+005d9b50   RELOCATION_MATCH PASS   IsBuyable
+00625940   MATCH            PASS   IsQuitting
+006689e0   RELOCATION_MATCH PASS   operator()
+00690fd0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690fd0   WARN SHARED_HEADER_AVAILABLE CManager
+00690fd0   WARN SHARED_HEADER_AVAILABLE CThing
+00690fd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690fd0   RELOCATION_MATCH PASS   ProcessInput
+006baed0   RELOCATION_MATCH PASS   Transfer<CFaction>
+0070c0e0   MATCH            PASS   IsAnimationFinished
+00745120   RELOCATION_MATCH PASS   UpdateLineOfSight
+007ae0e0   RELOCATION_MATCH PASS   _M_erase
+007fcef0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007fcef0   WARN SHARED_HEADER_AVAILABLE CThing
+007fcef0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasDefGlobalIndex
+007fcef0   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QBEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007fcef0   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QBE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+007fcef0   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007fcef0   RELOCATION_MATCH PASS   GetPFirstThingInRoughArea
+008aa2b0   RELOCATION_MATCH PASS   RemoveGossipVillages
+008e60d0   WARN SHARED_HEADER_AVAILABLE CThing
+008e60d0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+008e60d0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+008e60d0   WARN SHARED_HEADER_AVAILABLE CThingFilter_OverlappingSphere
+008e60d0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC
+  WARN leaf 'allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>' matches no symbol in 008e60d0.obj; graded the largest function
+  WARN leaf 'allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>' matches no symbol in 008e60d0.obj; graded the largest function
+008e60d0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+008e60d0   WARN RELOC_CONFLICT: ?LayerInfo_0137dad8@@3PAUCLayerInfo@@A -> 0137dad8 here, 0137dadc in landed 005185f0
+008e60d0   WARN STANDIN_LEAF ?GetAllThingsInRoughArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@ABUFilters@@AAUThingVector@@@Z (catalog GetAllThingsInRoughArea<CThingGameObject_const_,std::vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>; names another function)
+008e60d0   RELOCATION_MATCH PASS   allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>
+00954410   WARN SHARED_HEADER_AVAILABLE CThing
+00954410   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00954410   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00954410   RELOCATION_MATCH PASS   OnActivate
+00b5bbc0   MATCH            PASS   SetDefaultParams
+00c3aac0   RELOCATION_MATCH PASS   CBufferedRangeReader
+00c3bcb0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c3bcb0   RELOCATION_MATCH PASS   LoadCriteria
+01214e60   RELOCATION_MATCH[/GS] PASS   Unwind@01214e60
+
+WINS: 21
+  004675c5 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryOut@_N@@YIXAAVCDataOutputStream@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z
+  004dbe58 RELOCATION_MATCH std::??$__destroy_aux@PAVCTargetPoint@NPlayerTargeting@@@std@@YIXPAVCTargetPoint@NPlayerTargeting@@0ABU__false_type@0@@Z
+  005bbbce RELOCATION_MATCH CEngineTextureMorph::??_GCEngineTextureMorph@@QAEPAXI@Z
+  005d9790 RELOCATION_MATCH CTCInventoryItem::?IsConfiscatable@CTCInventoryItem@@SI_NJ@Z
+  005d99b0 RELOCATION_MATCH CTCInventoryItem::?GetItemToSelectUponRemoval@CTCInventoryItem@@SIJJ@Z
+  005d9b50 RELOCATION_MATCH CTCInventoryItem::?IsBuyable@CTCInventoryItem@@SI_NJ@Z
+  00625940 MATCH CTCQuickAccessMenu::?IsQuitting@CTCQuickAccessMenu@@QBE_NXZ
+  006689e0 RELOCATION_MATCH CThingFilter_OverlappingSphere::??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z
+  00690fd0 RELOCATION_MATCH CInputProcessQuickAccessMenu::ProcessInput
+  006baed0 RELOCATION_MATCH CPersistContext::??$Transfer@VCFaction@@@CPersistContext@@QAEXPBDAAVCFaction@@@Z
+  0070c0e0 MATCH CAnimateThing::?IsAnimationFinished@CAnimateThing@@ABE_NXZ
+  00745120 RELOCATION_MATCH CTCPerceiveThing::?UpdateLineOfSight@CTCPerceiveThing@@AAEXXZ
+  007ae0e0 RELOCATION_MATCH std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@2@@Z
+  007fcef0 RELOCATION_MATCH CThingSearchTools::??$GetPFirstThingInRoughArea@VCThingFilter_HasDefGlobalIndex@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@PAPAVCThing@@@Z
+  008aa2b0 RELOCATION_MATCH CGameScriptInterface::?RemoveGossipVillages@CGameScriptInterface@@UAEXVCCharString@@@Z
+  008e60d0 RELOCATION_MATCH GetAllThingsInRoughArea<CThingGameObject_const_,std::vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>
+  00954410 RELOCATION_MATCH CAIStateGroup_MazeTeleport::?OnActivate@CAIStateGroup_MazeTeleport@@UAEXXZ
+  00b5bbc0 MATCH CEngineScreenEffectRadialBlurRenderer::?SetDefaultParams@CEngineScreenEffectRadialBlurRenderer@@QAEXXZ
+  00c3aac0 RELOCATION_MATCH CBufferedRangeReader::??0CBufferedRangeReader@@QAE@PAXK@Z
+  00c3bcb0 RELOCATION_MATCH CAudioBankTableReader::?LoadCriteria@CAudioBankTableReader@@QAEXPAVCLoadLog@@PAUCriteriaCallback@@@Z
+  01214e60 RELOCATION_MATCH[/GS] _global::Unwind@01214e60

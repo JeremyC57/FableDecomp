@@ -1,5 +1,5 @@
 // CLockedRingBuffer::Pop() -- EH-framed: under the ring's own critical section (PKCProtectionInstance over +0), null when the ring is empty (count +0x20), else the frame at the head slot (index from GetHeadIndex 0x00C49DD0, slot array +0x1c) with the count decremented
-// Leaf: ?Pop@CLockedRingBuffer@@QAEPAUCCodaFrame@@XZ
+// Leaf: ?Pop@CLockedRingBuffer@@QAEPAVCCodaFrame@@XZ
 // Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4A0E0, 144 bytes, __thiscall `ret`; built under /EHsc.
@@ -14,22 +14,18 @@
 #include "libpk/PKCProtectionInstance.h"
 
 
-struct CCodaFrame;
-
-struct CLockedRingBuffer {
-    PKCCriticalSection m_lock;                  // +0x00
-    long          m_capacity;                   // +0x18
-    CCodaFrame**  m_pSlots;                     // +0x1c
-    long          m_count;                      // +0x20
-    long          m_tail;                       // +0x24
-    void Push(CCodaFrame* frame);               // 0x00C49D50
-    long GetHeadIndex();                        // 0x00C49DD0
-    CCodaFrame* Pop();
-};
+// NF59 (round 7, queue q10548): CCodaFrame is a class and CLockedRingBuffer is libpk/CCodaFrameStreamer.h's (opt-in
+//   FABLE_RETAIL_CCODAFRAMESTREAMER_ONFRAMEDONE declares Pop; FABLE_RETAIL_CLOCKEDRINGBUFFER_GETHEADINDEX the head index 0x00C49DD0);
+//   the local struct models bound Pop as ?Pop@CLockedRingBuffer@@QAEPAUCCodaFrame@@XZ. Its only caller OnFrameDone 0x00C497E0 binds
+//   ?Pop@CLockedRingBuffer@@QAEPAVCCodaFrame@@XZ (NF57).
+#define FABLE_RETAIL_CCODAFRAMESTREAMER_PASS23
+#define FABLE_RETAIL_CCODAFRAMESTREAMER_ONFRAMEDONE
+#define FABLE_RETAIL_CLOCKEDRINGBUFFER_GETHEADINDEX
+#include "libpk/CCodaFrameStreamer.h"
 
 CCodaFrame* CLockedRingBuffer::Pop()
 {
-    PKCProtectionInstance lock(&m_lock);
+    PKCProtectionInstance lock(&m_criticalSection);
     if (m_count == 0)
         return 0;
     CCodaFrame* frame = m_pSlots[GetHeadIndex()];

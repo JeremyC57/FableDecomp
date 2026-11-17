@@ -392,6 +392,12 @@ public:
     float            Radius;                                 // +0x34
     CDefPointeeBase* PhysicsDef_Object;                      // +0x38 CDefPointer<CPhysicsDef_const_>::Object
     unsigned char    OldMoving[0x4];                         // +0x3c bitfield group: bool:1
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_FLAT_GETBOUNDINGINFO
+    // NF59 opt-in (row 0x008E60D0, queue q10522): the retail branch's declaration of Ego_r.pdb 0x006EC5B0
+    // ?GetBoundingInfo@CTCPhysicsBase@@QBEXAAVC3DVector@@AAM@Z (out of line at 0x006AF640), for rows on this layout view. Needs C3DVector
+    // declared first. Declaration only: no layout change.
+    void GetBoundingInfo(class C3DVector& centre, float& radius) const;      // 0x006AF640
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_GETMASS
     // agentNF19: the same declaration as the retail branch's opt-in (Ego_r.pdb ?GetMass@CTCPhysicsBase@@QBEMXZ, 0x006AFE00),
     // for rows on this layout view (0x007232E0 CTCPhysicsLight::OnCreate). Declaration only: no layout change.

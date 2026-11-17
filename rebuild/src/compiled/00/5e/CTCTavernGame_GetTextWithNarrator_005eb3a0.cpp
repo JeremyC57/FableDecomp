@@ -52,13 +52,16 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-enum EDialogueLayer { DIALOGUE_LAYER_0 = 0 };
-class CTCTalk { public:
-    unsigned char _base[0x38];
-    CCharString   DialogueVoice;                        // +0x38
-    long PlaySpeech(unsigned long textId, EDialogueLayer layer, bool a, bool b);   // 0x006E3B10
-    CCharString GetDialogueVoice() const { return DialogueVoice; }
-};
+// NF59 (round 7, queue q10540): the talk component is engine/CTCTalk.h (FABLE_RETAIL_CTCTALK_PLAYSPEECH_OVERLOADS: the index overload
+//   ?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@KW4EDialogueLayer@NSpeechGainManager@@_N1@Z, Ego_r.pdb 0x0070E050 + FableWin.pdb
+//   0x023E6DA0; NF59 opt-in FABLE_RETAIL_CTCTALK_GETDIALOGUEVOICE the inline FableWin accessor); the local CTCTalk model and its global
+//   EDialogueLayer enum bound a long-result, global-enum spelling.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCTALK
+#define FABLE_RETAIL_CTCTALK_PLAYSPEECH_OVERLOADS
+#define FABLE_RETAIL_CTCTALK_GETDIALOGUEVOICE
+#include "engine/CTCTalk.h"
 class CTCTavernGame { public:
     void*         __vftable;
     unsigned char _pad04[0xd0 - 0x04];
@@ -70,7 +73,7 @@ CWideString CTCTavernGame::GetTextWithNarrator(unsigned long textId)
 {
     CTCTalk* talk = 0;
     ((CThing*)PGameMaster.GetPItem())->GetTC(TCI_TALK, &talk);
-    talk->PlaySpeech(textId, DIALOGUE_LAYER_0, true, true);
+    talk->PlaySpeech(textId, (NSpeechGainManager::EDialogueLayer)0, true, true);
     static CWideString no_text_entry(L"Missing text entry");
     CDataBank* bank = CMainGameComponent::Get()->PDataBank;
     bool found;

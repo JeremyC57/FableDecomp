@@ -128,9 +128,10 @@ class CTCPerceiveThing : public CTCBase { public:
 private:
     void SetLastAwareInfo();                    // 0x00744730
     void UpdateSmell();                         // 0x00744B50
+    void UpdateLineOfSight();                   // 0x00745120 ?UpdateLineOfSight@CTCPerceiveThing@@AAEXXZ (Ego_r.pdb / FableWin.pdb private;
+                                                //   engine/CTCPerceiveThing.h; NF59 q10523: access-only callee fix, was public)
 public:
     void UpdateHearing();                       // 0x00744FB0
-    void UpdateLineOfSight();                   // 0x00745120
     void UpdatePerception();
     float& GetAwarenessTimer() { return AwarenessTimer; }
 };

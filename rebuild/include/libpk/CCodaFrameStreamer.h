@@ -50,6 +50,11 @@ public:
 #ifdef FABLE_RETAIL_CCODAFRAMESTREAMER_ONFRAMEDONE
  CCodaFrame* Pop(); // 0x00C4A0E0 (guarded)
 #endif
+#ifdef FABLE_RETAIL_CLOCKEDRINGBUFFER_GETHEADINDEX
+ // NF59 opt-in (row 0x00C4A0E0 Pop): the guarded head-slot index out of line at 0x00C49DD0 (tail minus count, wrapped by the capacity);
+ // descriptive name, the spelling the landed self row 0x00C49DD0 defines (?GetHeadIndex@CLockedRingBuffer@@QAEJXZ). Declaration only.
+ long GetHeadIndex(); // 0x00C49DD0
+#endif
 };
 // Layout: C49820 initializes all members, C49650 destroys the same members.
 // Seven slots at12b8138; the destructor is last, not first.
