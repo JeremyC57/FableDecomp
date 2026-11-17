@@ -1,0 +1,4 @@
+address	name	evidence
+00805600	?FrameUpdate@CTCTargetingPlayer@@UAEXXZ	Ego_r + vtable slot 9; matched
+008bf280	?PerformAction@CCreatureAction_GenericFireProjectileWeapon@@UAEXXZ	Ego_r + vtable slot 3; matched
+00b47390	?SetupShaderSpotLight@CEngineLightingManager@@QAEXABVCMatrix3x4@@@Z	Ego_r + FableWin; matched

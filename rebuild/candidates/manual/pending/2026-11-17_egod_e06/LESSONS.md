@@ -1,0 +1,6 @@
+- Check that the Ego_d record is the row's overload: 0x00B47390's only Ego_d record was the no-argument twin's; 0x00A1BA10's was the bool overload. The twin's names still transfer when the bodies share helpers.
+- A same-TU protected helper listed right after the row in egod_tu.txt (0x00805600's PostProcessTargetedThing) is often the row's tail expanded: define it in the row (it also grades at its own address).
+- A small accessor the shared header inlines can be an out-of-line Ego_r member in other TUs (CTCTargeted::IsZTargetable): a declaration-only opt-in reproduces retail's call.
+- A dead spill of a 64-bit value's high word before a call (0x00805796) is a 64-bit add truncated to long (`long x = GetFrame() + GetUniqueID();`).
+- Frame-only residues: the hand885 pk.py packer probe (tools copied to tmp/pk) runs on the lane and prints node order / weights / joins in one compile.
+- A draft's "x87 term order" residue in a matrix product can just be the draft's hand-written product: the shared SetMultiply/PostMultiply nesting matched 0x00B47390 at the first grade.

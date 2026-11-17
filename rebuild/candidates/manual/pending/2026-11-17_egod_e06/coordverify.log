@@ -1,0 +1,14 @@
+addr       parity           behav  name
+008bf280   RELOCATION_MATCH PASS   PerformAction
+00805600   WARN RELOC_NAME: ?GetPPlayerInterface@CMainGameComponent@@QAEPAVCGamePlayerInterface@@XZ -> 00416359 labelled 'CMainGameComponent::GetGamePlayerInterface'
+00805600   WARN RELOC_NAME: ?UpdateTargetedPositionRandomWalk@CTCTargetingPlayer@@IAEXXZ -> 00803540 labelled 'CViewBase_UpdateSeaLevelParticles'
+00805600   WARN RELOC_NAME: ?SetNPCNameDisplay@CPlayerGui@@QAEXABVCWideString@@@Z -> 004379d0 labelled '_global::Forward__Cons_val_std__allocator_std__pair_EHero_via0x248_004379d0'
+00805600   WARN RELOC_NAME: ?IsTransmogrified@NCreatureMode@@YI_NABVCThing@@@Z -> 0085ee10 labelled '_global::IsCreatureButNotHero'
+00805600   RELOCATION_MATCH PASS   FrameUpdate
+00b47390   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b47390   RELOCATION_MATCH PASS   SetupShaderSpotLight
+
+WINS: 3
+  008bf280 RELOCATION_MATCH CCreatureAction_GenericFireProjectileWeapon::PerformAction
+  00805600 RELOCATION_MATCH CTCTargetingPlayer::FrameUpdate
+  00b47390 RELOCATION_MATCH CEngineLightingManager::SetupShaderSpotLight
