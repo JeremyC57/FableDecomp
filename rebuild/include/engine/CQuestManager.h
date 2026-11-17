@@ -125,6 +125,11 @@ public:
     // Original Ego_r complete nested type2c092 and FableWin donor020ed41c.
     class CActiveQuest {
     public:long GetID()const{return ID;}
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_CONTAINSREGION
+        // NF66 opt-in (row 0x004B11A0 IsRegionStartOfRegionLockingMode): Ego_r.pdb / FableWin.pdb
+        // ?ContainsRegion@CActiveQuest@CQuestManager@@QBE_NABVCRegion@@@Z, called out of line in that TU (0x004AFD80). Declaration only.
+        bool ContainsRegion(const class CRegion& region) const;              // 0x004AFD80
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_POSTBOAST
         // Retail opt-in (Codex pass20): both PDBs and native004b29d4 use QuestName+0x30.
         const CCharString& GetName()const{return QuestName;}

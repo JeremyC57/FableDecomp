@@ -34,6 +34,11 @@ public:
     // (const, retail 0x006A1060) and ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (0x006A19B0).
     bool IsCarryingThing(const CThing& thing) const;
     void RemoveThing(CThing& thing);
+#ifdef FABLE_RETAIL_CTCCARRYING_GETALLCARRIEDTHINGS
+    // NF66 opt-in (row 0x00694430): Ego_r.pdb 0x006C6970 ?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+    // (const, out of line at 0x006A2220, landed under that name). Declaration only.
+    void GetAllCarriedThings(std::vector<CThing*>& things) const;   // 0x006A2220
+#endif
     // and (row 0x005CB2B0) ?IsCarryingThing@CTCCarrying@@QBE_NJ@Z (0x006A10A0) / ?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z (0x006A1120),
     // the carry-slot forms.
     bool IsCarryingThing(long slot) const;

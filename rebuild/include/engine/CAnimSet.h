@@ -18,7 +18,19 @@ class CAnimSet{friend class CAnimateThing;public:
  CAnimSet(){}
  CAnimSet(const CAnimSet&);
  bool IsOwnedByMainAnim()const{return OwnedByMainAnim;}
+#ifdef FABLE_RETAIL_CANIMSET_SETASFINISHED_DECL
+ // NF66 opt-in (row 0x00694430 CCreatureActionBase::FinishAction): that TU calls Ego_r ?SetAsFinished@CAnimSet@@QAEXJ@Z out of line
+ // (0x00668A50). Declaration only; without the macro the inline body below is unchanged.
+ void SetAsFinished(long frames);                                     // 0x00668A50
+#ifdef FABLE_RETAIL_CANIMSET_SETUPDATEMODE
+ // (same row) FableWin.pdb inline ?SetUpdateMode@CAnimSet@@QAEXW4EAnimUpdateMode@@@Z and ?SetAsFinished@CAnimSet@@QAEXXZ (retail stores
+ // UpdateMode +0x00 and sets the Finished bit in place, 0x0069451x). Bodies as their names; no layout change.
+ void SetUpdateMode(EAnimUpdateMode mode){UpdateMode=mode;}
+ void SetAsFinished(){Finished=true;}
+#endif
+#else
  void SetAsFinished(long frames){if(!Finished){Finished=true;GFLimitLower(frames,1);ChangeAlphaBy=CurrentAlpha/(float)frames;}}
+#endif
  bool IsValid()const{unsigned int count=Anims.size();return (count==1||(count==2&&Anims[1]>0))&&Anims[0]>0&&count==InternalAlphas.size();}
  float GetChangeAlphaBy()const{return ChangeAlphaBy;}
  void SetChangeAlphaBy(float value){ChangeAlphaBy=value;}

@@ -36,6 +36,13 @@ protected:
  void AddRegionAndTimeInfo(const CWideString&);                                                          // 0x00597228
 #endif
  long RefreshAvailableSavedGamesForProfile();                                                            // 0x00598463
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_REFRESHAVAILABLEPROFILES
+ // NF66 opt-in (rows 0x00596CCE / 0x00597006): Ego_r.pdb 0x00603398 / 0x00603706, FableWin.pdb 0x02018987 / 0x02019104
+ // ?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@IAEJXZ and ?RefreshAvailableProfilesForDelete@..@@IAEJXZ (protected).
+ // Declarations only.
+ long RefreshAvailableProfiles();                                                                        // 0x00596CCE
+ long RefreshAvailableProfilesForDelete();                                                               // 0x00597006
+#endif
 public:
 #endif
 #ifdef FABLE_RETAIL_CFRONTENDMANAGER_BUILDCOMPONENTS

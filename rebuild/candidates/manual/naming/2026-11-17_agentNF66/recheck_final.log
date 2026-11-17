@@ -1,0 +1,21 @@
+addr       parity           behav  name
+0053ad07   RELOCATION_MATCH PASS   AddScrollingChildAndSetOffsets
+0053822b   RELOCATION_MATCH PASS   GetDataFromDef
+0053b321   WARN RELOC_NAME: ??$find@PAPAVCComponent@NUISystem@@PAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@0ABQAV12@@Z -> 0053c91c labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+0053b321   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0053b321   RELOCATION_MATCH PASS   RemoveChild
+0053bf20   RELOCATION_MATCH PASS   AddScrollingChildDynamicallyAndSetOffsets
+006666a0   RELOCATION_MATCH PASS   WorldUpdate
+004b11a0   RELOCATION_MATCH PASS   IsRegionStartOfRegionLockingMode
+00694430   WARN RELOC_NAME: ?GetPActionAnimSet@?A0x3662016c@@YIPAVCAnimSet@@AAVCThingCreatureBase@@J@Z -> 00693250 labelled '_global::GetSingleActionAnimSet'
+00694430   WARN RELOC_NAME: ?SetPItemToUnsheatheAfterCutscene@CThingCreatureBase@@QAEXPAVCThing@@@Z -> 00662450 labelled '_unattributed::AssignTarget_00662450'
+00694430   RELOCATION_MATCH PASS   FinishAction
+
+WINS: 7
+  0053ad07 RELOCATION_MATCH NUISystem::CList::?AddScrollingChildAndSetOffsets@CList@NUISystem
+  0053822b RELOCATION_MATCH CList::GetDataFromDef
+  0053b321 RELOCATION_MATCH NUISystem::CList::?RemoveChild@CList@NUISystem@
+  0053bf20 RELOCATION_MATCH NUISystem::CList::?AddScrollingChildDynamicallyAndSetOffsets@CList@NUISystem
+  006666a0 RELOCATION_MATCH CThingCreatureBase::?WorldUpdate@CThingCreatureBase
+  004b11a0 RELOCATION_MATCH CQuestManager::IsRegionStartOfRegionLockingMode
+  00694430 RELOCATION_MATCH CCreatureActionBase::?FinishAction@CCreatureActionBase@@UAEXXZ

@@ -1,0 +1,23 @@
+entry	address	correct_symbol	status	binders_ported	rows	note
+nf41:e5	0x00A358F0	?GetPositionMatrixFromRHSet@C3DMeshObject@@SI?AVCMatrix3x4@@ABVCRightHandedSet@@@Z	blocked	0	0x0075A530	blocked: 0x0075A530 blocked/header (X-pair tie needs a by-value centre layer no PDB member provides; see STATUS)
+nf41:e199	0x004115A0	??8?$CBasicString@D@@QBE_NPBD@Z	blocked	0	0x004FE630 0x006D41F0	blocked: 0x004FE630 blocked/port (register allocation only, see STATUS); 0x006D41F0 is the coordinator row (not in this slice)
+nf41:e34	0x0059B5D7	??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z	blocked	0	0x00597006	blocked: 0x00597006 blocked/header (same-TU GetProfileNames body)
+q10474	0x004091C0	?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z	blocked	0	0x004091C0	blocked: self row 0x004091C0 blocked/port (not ported in this run; see STATUS)
+nf41:e172	0049f180	?ActivateWorld@CWorld@@QAEX_N@Z	blocked	0	0x00416953	blocked: 0x00416953 blocked/port (not ported in this run)
+nf41:e125	0x009FBF90	?ListInsert@CResource@@AAEXPAV1@0@Z	blocked	0	0x0041B550	blocked: 0x0041B550 blocked/port (not ported in this run)
+nf41:e124	0x009FBFB0	?ListRemove@CResource@@AAEXXZ	blocked	0	0x0041B550	blocked: 0x0041B550 blocked/port (not ported in this run)
+nf41:e164	0x009FE620	?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z	blocked	0	0x0041B550	blocked: 0x0041B550 blocked/port (not ported in this run)
+nf41:e154	0x009FCBA0	?Uninitialise@CGraphicFrameData@@QAEXXZ	blocked	0	0x0041B550	blocked: 0x0041B550 blocked/port (not ported in this run)
+q10445	0x004AF5B0	?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z	done	1	0x004B11A0	every landed binder ported (callers.py 0x004AF5B0: only 0x004B11A0; RM, test PASS)
+q10462	0x0053CB4F	?push_back@?$vector@_NV?$allocator@_N@std@@@std@@QAEXAB_N@Z	done	3	0x0053822B 0x0053AD07 0x0053BF20	every landed binder ported (callers.py 0x0053CB4F: 0x0053822B, 0x0053AD07, 0x0053BF20 ported here; 0x005383DD, 0x0053BEAC, 0x00CDC070 already bind the PDB spelling, probed)
+q10472	0x005178A0	?push_back@?$vector@KV?$allocator@K@std@@@std@@QAEXABK@Z	done	2	0x0053AD07 0x0053BF20	every landed binder ported (callers.py 0x005178A0: 0x0053AD07, 0x0053BF20 ported here; 0x005383DD, 0x0053BEAC, 0x008D3DD0, 0x009C9280 already bind the PDB spelling, probed or row-documented)
+nf41:e36	0x0042bed4	??0CDeletion@NUISystem@@QAE@XZ	blocked	1	0x0053B321 0x00596CCE 0x00597006	0x0053B321 ported; left: 0x00596CCE and 0x00597006 blocked/header (same-TU GetProfileNames body); outside this slice (per agentNF51): 0x005907AB
+nf41:e37	0x0042cd84	??0CDeletion@NUISystem@@QAE@ABV01@@Z	blocked	1	0x0053B321 0x00597006	0x0053B321 ported; left: 0x00597006 blocked/header; outside this slice (per agentNF51): 0x005907AB
+nf44:76	0x012366f4	??_7CActionParamSLONG@NUISystem@@6B@	blocked	0	0x00549B20	blocked: 0x00549B20 blocked/port (not ported in this run)
+nf44:54	0x005BD597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	blocked	5	0x0057770A 0x005778CA 0x00587847 0x00589D30 0x0059E2C7 0x0059F304 0x005FCE60	left: 0x0057770A, 0x005778CA blocked/port (not ported in this run); the other five were ported by NF62
+nf44:7	005ede93	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	blocked	0	0x0057770A 0x005778CA	blocked: 0x0057770A, 0x005778CA blocked/port (not ported in this run)
+q10440	0x00594FA9	?CloseVirtualKeyboard@CFrontEndManager@NUISystem@@QAEX_N@Z	blocked	0	0x00599E3F	blocked: 0x00599E3F blocked/port (not ported in this run)
+q10441	0x00599E3F	?Update@CFrontEndManager@NUISystem@@QAEXM@Z	blocked	0	0x00599E3F	blocked: self row 0x00599E3F blocked/port (not ported in this run)
+nf41:e81	006691c0	?ClearAttackedByCreature@CThingCreatureBase@@QAEXXZ	done	1	0x006666A0	every landed binder ported (callers.py 0x006691C0: 0x006666A0 ported here; 0x006624A0 and 0x0097FEA0 already bind ?ClearAttackedByCreature)
+nf41:e47	006a0150	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z	done	2	0x006666A0 0x00694430	every landed binder ported (callers.py 0x006A0150: 0x006666A0, 0x00694430 ported here; 0x006DEEE0, 0x006DF800 already on the shared header)
+nf41:e53	0065f17b	?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	blocked	0	0x006D53C0	blocked: 0x006D53C0 blocked/port (not ported in this run)

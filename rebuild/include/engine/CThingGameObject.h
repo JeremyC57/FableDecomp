@@ -37,6 +37,13 @@ public:
  virtual void ForceAnim(long p0, bool p1);
  virtual long GetMaterialOnHitByMelee() const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_WORLDUPDATE
+public:
+ // NF66 opt-in (row 0x006666A0): Ego_r.pdb / FableWin.pdb ?WorldUpdate@CThingGameObject@@UAE_NXZ, the CThing slot-19 override, out of
+ // line at 0x00838BA0 (labels chunk 214 / manifest sync 2026-11-03 CThingGameObject::WorldUpdate). Declaration only: an override
+ // adds no slot and no layout.
+ virtual bool WorldUpdate();                                           // 0x00838BA0
+#endif
 
 protected:
     CIntelligentPointer<CThing> PThingStandingOn;

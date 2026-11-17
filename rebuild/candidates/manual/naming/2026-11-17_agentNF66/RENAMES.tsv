@@ -1,0 +1,44 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0053AD07	NUISystem::CList	AddScrollingChildAndSetOffsets	?AddScrollingChildAndSetOffsets@CList@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	NUISystem::CList::AddScrollingChildAndSetOffsets	?AddScrollingChildAndSetOffsets@CList@NUISystem@@QAEXABU?$CCountedPointer@VCComponent@NUISystem@@@2@@Z	Ego_r.pdb 0x005B42E1 + FableWin.pdb 0x0219C4D4 ?AddScrollingChildAndSetOffsets@CList@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z (virtual, engine/NUISystem_CList.h slot); row ported onto the header; no direct callers (callers.py: none, virtual)
+0x0053B321	NUISystem::CList	RemoveChild	?RemoveChild@CList@NUISystem@@UAEXK@Z	NUISystem::CList::RemoveChild	?RemoveChild@CList@NUISystem@@QAEXJ@Z	Ego_r.pdb 0x005B49E0 + FableWin.pdb 0x0219B233 ?RemoveChild@CList@NUISystem@@UAEXK@Z (virtual override of CComponent slot 64, unsigned long); row ported onto engine/NUISystem_CList.h; no direct callers (callers.py: none, virtual)
+0x006666A0	CThingCreatureBase	WorldUpdate	?WorldUpdate@CThingCreatureBase@@UAE_NXZ	CThingCreatureBase::WorldUpdate	?WorldUpdate@CThingCreatureBase@@QAE_NXZ	Ego_r.pdb ?WorldUpdate@CThingCreatureBase@@UAE_NXZ (the row comment; CThing slot-19 override, engine/CThing.h slot 19); row ported onto engine/CThingCreatureBase.h with the NF66 opt-in FABLE_RETAIL_CTHINGCREATUREBASE_WORLDUPDATE. Landed callers 0x006AD9D0 (CThingPlayerCreature::WorldUpdate) and 0x00834760 (CThingAICreature::WorldUpdate) still bind the QAE spelling through local models: NAME_FIXES.tsv
+0x0053BF20	NUISystem::CList	AddScrollingChildDynamicallyAndSetOffsets	?AddScrollingChildDynamicallyAndSetOffsets@CList@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	NUISystem::CList::AddScrollingChildDynamicallyAndSetOffsets	?AddScrollingChildDynamicallyAndSetOffsets@CList@NUISystem@@QAEXABU?$CCountedPointer@VCComponent@NUISystem@@@2@@Z	Ego_r.pdb 0x005B547D ?AddScrollingChildDynamicallyAndSetOffsets@CList@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z (virtual, engine/NUISystem_CList.h); row ported onto the header; no direct callers (callers.py: none)
+# Section 2
+0x0053AD07	?push_back@CComponentVector@NUISystem@@QAEXABQAVCComponent@2@@Z	?push_back@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXABQAVCComponent@NUISystem@@@Z
+0x0053AD07	?push_back@CULongVector@NUISystem@@QAEXABK@Z	?push_back@?$vector@KV?$allocator@K@std@@@std@@QAEXABK@Z
+0x0053AD07	?AddChild@CList@NUISystem@@QAEXABU?$CCountedPointer@VCComponent@NUISystem@@@2@@Z	?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+0x0053AD07	?push_back@CBoolVector@NUISystem@@QAEXAB_N@Z	?push_back@?$vector@_NV?$allocator@_N@std@@@std@@QAEXAB_N@Z
+0x0053822B	?push_back@ComponentVector@NUISystem@@QAEXABQAVCComponent@2@@Z	?push_back@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXABQAVCComponent@NUISystem@@@Z
+0x0053822B	?find@NUISystem@@YIPBKPBK0ABK@Z	??$find@PBKK@std@@YIPBKPBK0ABK@Z
+0x0053822B	?push_back@BoolVector@NUISystem@@QAEXAB_N@Z	?push_back@?$vector@_NV?$allocator@_N@std@@@std@@QAEXAB_N@Z
+0x0053B321	??1?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ	??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+0x0053B321	??0CAction@N_0042bed4@NUISystem@@QAE@XZ	??0CDeletion@NUISystem@@QAE@XZ
+0x0053B321	??0CAction@N_0042bed4@NUISystem@@QAE@ABV012@@Z	??0CDeletion@NUISystem@@QAE@ABV01@@Z
+0x0053B321	?erase@?$vector@PAVCComponent@NUISystem@@@@QAEPAPAVCComponent@NUISystem@@PAPAV23@@Z	?erase@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@NUISystem@@PAPAV34@@Z
+0x0053B321	?RemoveChild@CChangingStateComponent@NUISystem@@QAEXJ@Z	?RemoveChild@CComponent@NUISystem@@UAEXK@Z
+0x0053B321	?pop_front@?$list@PAVCList@NUISystem@@@@QAEXXZ	?pop_front@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXXZ
+0x0053B321	?erase@?$vector@E@@QAEPAEPAE@Z	?erase@?$vector@_NV?$allocator@_N@std@@@std@@QAEPA_NPA_N@Z
+0x0053B321	?find@NUISystem@@YIPAPAVCComponent@1@PAPAV21@0ABQAV21@@Z	??$find@PAPAVCComponent@NUISystem@@PAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@0ABQAV12@@Z
+0x0053B321	?erase@?$vector@UCStateMap@NUISystem@@@@QAEPAUCStateMap@NUISystem@@PAU23@@Z	?erase@?$vector@V?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@V?$allocator@V?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@@2@@std@@QAEPAV?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@2@PAV32@@Z
+0x0053B321	?g_ListRegistry@NUISystem@@3U?$list@PAVCList@NUISystem@@@@A	?GPreviousSelected@CList@NUISystem@@2V?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@A
+0x0053BF20	?push_back@CComponentVector@NUISystem@@QAEXABQAVCComponent@2@@Z	?push_back@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXABQAVCComponent@NUISystem@@@Z
+0x0053BF20	?push_back@CULongVector@NUISystem@@QAEXABK@Z	?push_back@?$vector@KV?$allocator@K@std@@@std@@QAEXABK@Z
+0x0053BF20	?AddChildDynamically@CChangingStateComponent@NUISystem@@QAEXABU?$CCountedPointer@VCComponent@NUISystem@@@2@@Z	?AddChildDynamically@CChangingStateComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+0x0053BF20	?push_back@CBoolVector@NUISystem@@QAEXAB_N@Z	?push_back@?$vector@_NV?$allocator@_N@std@@@std@@QAEXAB_N@Z
+0x0053BF20	?AddChild@CScrollLayout@NUISystem@@QAEXAAV?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@@Z	?push_back@?$vector@V?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@V?$allocator@V?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@@2@@std@@QAEXABV?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@2@@Z
+0x006666A0	?PeekWorld@CThing@@QBEPBVCWorld@@XZ	?PeekWorld@CThing@@IBEABVCWorld@@XZ
+0x006666A0	??1CCreatureAction_UnsheatheItemFromInventory@@QAE@XZ	??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ
+0x006666A0	?UpdateBodyReorientation@CThingCreatureBase@@QAEXXZ	?UpdateBodyReorientation@CThingCreatureBase@@IAEXXZ
+0x006666A0	?ClearLastAttackedByCreature@CThingCreatureBase@@QAEXXZ	?ClearAttackedByCreature@CThingCreatureBase@@QAEXXZ
+0x006666A0	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThingCreatureBase@@PAVCThing@@PAVCCreatureActionBase@@J@Z	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z
+0x006666A0	?GetTurnSpeed@CTCPhysicsBase@@QAEMXZ	?GetTurnSpeedAngleXY@CTCPhysicsBase@@QBEMXZ
+0x006666A0	?WorldUpdate@CThingGameObject@@QAE_NXZ	?WorldUpdate@CThingGameObject@@UAE_NXZ
+0x006666A0	?g_framesPerSecond@@3JA	?ConstantFPS@CMainGameComponent@@1JA
+0x004B11A0	?GetActiveQuestFromScriptName@CQuestManager@@QBEPAUCActiveQuest@@ABVCCharString@@@Z	?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z
+0x004B11A0	?ContainsRegion@CActiveQuest@@QBE_NABVCRegion@@@Z	?ContainsRegion@CActiveQuest@CQuestManager@@QBE_NABVCRegion@@@Z
+0x00694430	?Erase@CActionKeyedMap@@QAEKABQAVCCreatureActionBase@@@Z	?erase@?$_Rb_tree@PAXU?$pair@QAXM@std@@U?$_Select1st@U?$pair@QAXM@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXM@std@@@2@@std@@QAEIABQAX@Z
+0x00694430	??1CCreatureAction_UnsheatheItemFromInventory@@QAE@XZ	??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ
+0x00694430	?GetSingleActionAnimSet@@YIPAVCAnimSet@@PAVCThingCreatureBase@@J@Z	?GetPActionAnimSet@?A0xa55851e5@@YIPAVCAnimSet@@AAVCThingCreatureBase@@J@Z
+0x00694430	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThingCreatureBase@@PAVCThing@@PAVCCreatureActionBase@@J@Z	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z
+0x00694430	?GetAllItems@CTCCarrying@@QAEXAAUCThingVector@@@Z	?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+0x00694430	?RecalculateSpeed@CTCHaste@@QAEXXZ	?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ
