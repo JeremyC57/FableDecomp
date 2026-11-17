@@ -37,7 +37,7 @@ change were left out). It ported 4. Brief, list and records: `naming/2026-11-17_
 - **Funclets:** no EH funclet includes a changed row. funclet_includes_check reports 1,355 checked, 0 broken.
 - **Recheck (`logs/recheck.log`):** all 4 rows graded from the repo after landing: 4 RELOCATION_MATCH, every test PASS. NF71's own
   final run agrees.
-- **Checks:** `naming/rebind.py` and bindings_multi_check at its baseline (`NullCoord`).
+- **Checks:** `naming/rebind.py` removed 21 binding lines and added 6; bindings_multi_check is at its baseline (`NullCoord`).
 
 ## Headers (3 opt-ins in 3 files; lines added only)
 `stlport/fable_containers.h` (`VECTOR_BASE_DTOR_FREE_UNTESTED`, FITTED), `engine/CV_TravellingHeroesScript.h`
