@@ -1,0 +1,6 @@
+- A deliberate `#error` staging probe hung Wine cl under vland (its pragma sweep retries); prove staging with a harmless marker (e.g. a unique symbol in the object) instead.
+- A same-TU stand-in body that only shapes codegen can often be replaced by the REAL neighbouring function's body on the header (retail compiled them in one object): 0x0081F910 graded MATCH and kept 0x0081FA20 RM.
+- libpk header virtual-slot names can be checked against the exe vtable directly (0x012B2748 slots 20 / 21 = 0x00C12520 / 0x00C12460) before reusing them as self names.
+- An implicit template destructor inlines into the generated ??_G; declare it out of line (opt-in) when retail calls it (0x00C2DFC0 -> 0x00C2DDE0).
+- CRGBColour is B,G,R,A in memory: a local {R,G,B,A} model's argument order does not carry over to the header ctor.
+- A mechanical "strip the shared-header models, include the headers" draft only reaches top-level models; rows built on nested / namespaced / address-named stand-ins regrade unchanged, so say "regrade" for them, not "port".

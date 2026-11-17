@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0081fa20   WARN RELOC_NAME: ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z -> 0081f910 labelled 'CMap::GetDominantEngineThemeAt'
+0081fa20   RELOCATION_MATCH PASS   GetThemeSizeZOffsetAt
+00820100   RELOCATION_MATCH PASS   GetThemeSizeZAt
+00837060   WARN RELOC_NAME: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ -> 004c79a0 labelled 'CAnimateThing::GetMeshBank'
+00837060   RELOCATION_MATCH PASS   DrawGetDrawSizeX
+00c120a0   RELOCATION_MATCH[/EHsc] PASS   StopEventsWithField18
+00c2dfc0   WARN RELOC_NAME: ??1?$PKCTRList@UCSegment@@@@UAE@XZ -> 00c2dde0 labelled '_global::SetMemberConst_00c2dde0'
+00c2dfc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+0121168f   RELOCATION_MATCH PASS   Unwind@0121168f
+
+WINS: 6
+  0081fa20 RELOCATION_MATCH CMap::?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+  00820100 RELOCATION_MATCH CMap::?GetThemeSizeZAt@CMap@@IBEMABVC2DCoordI@@@Z
+  00837060 RELOCATION_MATCH CThingTrackNode::?DrawGetDrawSizeX@CThingTrackNode@@QBEXMPAM@Z
+  00c120a0 RELOCATION_MATCH[/EHsc] CSoundEventManager::?StopEventsWithField18@CSoundEventManager@@QAEXPAX@Z
+  00c2dfc0 RELOCATION_MATCH PKCTRList<CSegment>::??_G?$PKCTRList@UCSegment@@@@UAEPAXI@Z
+  0121168f RELOCATION_MATCH _global::Unwind@0121168f

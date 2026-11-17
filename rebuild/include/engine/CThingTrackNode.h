@@ -60,6 +60,14 @@ public:
     virtual bool IsEntitySerialisable() const;  // slot 22, 0x008384E0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_DRAW
+    // NF63 (round 7, rows 0x00837050 / 0x00837060): Ego_r.pdb 0x0082ABA0 / 0x0082ABB0 + FableWin.pdb 0x027FD1F0 / 0x027FD340
+    // ?DrawGetMesh@CThingTrackNode@@QBEKXZ and ?DrawGetDrawSizeX@CThingTrackNode@@QBEXMPAM@Z (public const; Ego_r order after
+    // DrawIsDrawable = retail 0x00837040 / 0x00837050 / 0x00837060). Declarations only, no layout change.
+public:
+    unsigned long DrawGetMesh() const;                                  // 0x00837050
+    void DrawGetDrawSizeX(float, float* out) const;                     // 0x00837060
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingTrackNode)==0xf0);
 #endif

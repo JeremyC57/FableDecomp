@@ -44,6 +44,11 @@ public:
  unsigned long GetByteLength() const;                     // 0x009F2FC0
  class CSurfaceLockedRect Lock(unsigned long flags);      // 0x009F33E0
  void Unlock() const;                                     // 0x009F2DC0
+#ifdef FABLE_RETAIL_CSURFACE_SETPIXEL
+ // NF63 (round 7, row 0x00B4F420): Ego_r.pdb 0x00B46EC0 / FableWin.pdb 0x030C9BB0
+ // ?SetPixel@CSurface@@QAEXJJABVCRGBColour@@ABVCSurfaceLockedRect@@@Z, out of line in retail at 0x009F31C0. Declaration only.
+ void SetPixel(long x, long y, const class CRGBColour& colour, const class CSurfaceLockedRect& rect);   // 0x009F31C0
+#endif
  bool InitialiseAsImage(const class C2DExtentsI& size, const class CPixelFormat& format, bool);   // 0x009F3230
  void CopyFromSurface(const class C2DBoxI* destRect, const CSurface& source, const class C2DBoxI* sourceRect,
                       unsigned long filter);              // 0x009F37E0

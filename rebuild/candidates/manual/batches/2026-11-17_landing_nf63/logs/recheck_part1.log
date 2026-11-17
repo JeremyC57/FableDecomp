@@ -1,0 +1,19 @@
+addr       parity           behav  name
+0081fa90   WARN RELOC_NAME: ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z -> 0081f910 labelled 'CMap::GetDominantEngineThemeAt'
+0081fa90   RELOCATION_MATCH PASS   GetThemeMinCameraSizeZOffsetAt
+00820140   WARN RELOC_NAME: ?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z -> 0081ea50 labelled 'Terrain_InterpolateHeightAtPosition'
+00820140   RELOCATION_MATCH PASS   GetThemeMinCameraSizeZAt
+00b4f420   RELOCATION_MATCH PASS   BuildDepthPackingLookupTexture
+00c12460   WARN RELOC_NAME: ?FindWithField10@CSoundEventSet@@QAEPAVCPooledResource@@PAX@Z -> 00c21ff0 labelled '_unattributed::WriteToFile_00c21ff0'
+00c12460   WARN RELOC_NAME: ?Deactivate@CPooledResource@@QAEXPAUCSoundEventManager@@@Z -> 00c26580 labelled 'NScript::CIsThingAlive::operator()'
+00c12460   RELOCATION_MATCH[/EHsc] PASS   StopEventsWithField10
+00c2eb00   RELOCATION_MATCH PASS   Load
+012116e9   RELOCATION_MATCH PASS   Unwind@012116e9
+
+WINS: 6
+  0081fa90 RELOCATION_MATCH CMap::?GetThemeMinCameraSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+  00820140 RELOCATION_MATCH CMap::?GetThemeMinCameraSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+  00b4f420 RELOCATION_MATCH CEngineShadowRenderer::?BuildDepthPackingLookupTexture@CEngineShadowRenderer@@AAEXXZ
+  00c12460 RELOCATION_MATCH[/EHsc] CSoundEventManager::?StopEventsWithField10@CSoundEventManager@@UAEXPAX@Z
+  00c2eb00 RELOCATION_MATCH CBankProcessor::?Load@CBankProcessor@@QAEXXZ
+  012116e9 RELOCATION_MATCH _global::Unwind@012116e9

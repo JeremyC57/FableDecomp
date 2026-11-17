@@ -28,11 +28,27 @@ public:
     unsigned char UnrecoveredState04[8];
     long Index;
 #ifdef FABLE_RETAIL_CSOUNDEVENTMANAGER_CHECK_EXISTING_PASS23
+#ifdef FABLE_RETAIL_CSOUNDEVENT_KEYFIELDS
+    // NF63 (round 7, row 0x00C120A0): the pointer-identity keys the manager's stop filters compare (+0x10 by StopEventsWithField10
+    // 0x00C12460, +0x18 by 0x00C120A0, +0x24 by StopEventsWithField24 0x00C12520); descriptive names in the header's Field<offset>
+    // spelling (libpk has no PDB). Same layout as the default branch.
+    void* Field10;
+    unsigned long Priority;
+    void* Field18;
+    unsigned char UnrecoveredState1c[8];
+    void* Field24;
+    long Pending;
+#else
     unsigned char UnrecoveredState10[4];
     unsigned long Priority;
     unsigned char UnrecoveredState18[16];
     long Pending;
+#endif
     unsigned char UnrecoveredState2c[4];
+#ifdef FABLE_RETAIL_CSOUNDEVENT_ISACTIVE
+    // NF63 (round 7): the state test at 0x00C20840 (state word +0xAC != 0), landed as ?IsActive@CSoundEvent@@QAEJXZ (0x00C123B0 binds it).
+    long IsActive();                                                    // 0x00C20840
+#endif
     bool IsAudible(CSoundEventManager*);
     void Stop(CSoundEventManager*);
     void RestartPlayback(CSoundEventManager*);

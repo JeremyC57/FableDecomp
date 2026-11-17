@@ -13,29 +13,14 @@
 // Shape: a void member: every `if (!m_pLog->IsOk()) return;` shares one `pop esi ; ret` exit, and the check
 //   after the last step (nothing follows it) collapses to the tail jump into IsOk. A bool version returning false
 //   adds `xor al,al` to the shared exit.
-struct CLoadLog {
-    unsigned char _pad[0x30];
-    bool m_ok;                                     // +0x30
-    bool IsOk() const;                             // 0x00C307C0
-};
-
-struct CBankData {
-    bool Prepare();                                // 0x00C2ED50
-};
-
-struct CBankProcessor {
-    CBankData* m_pData;                        // +0x00
-    void*        m_pManager;                        // +0x04
-    CLoadLog* m_pLog;                        // +0x08
-    void AddSamples();                             // 0x00C2E270
-    void AddDrivers();                             // 0x00C2E480
-    void AddNumberTriggers();                      // 0x00C2E4D0
-    void ProcessAllDrivers();                      // 0x00C2EAB0
-    void ProcessEventTriggers();                   // 0x00C2E610
-    void AddEvents();                              // 0x00C2EA30
-    void AddSubEvents();                           // 0x00C2EA70
-    void Load();
-};
+// NF63 (round 7): moved onto libpk/CBankProcessor.h (BANK_LOAD_WRAPPER_PASS23: the header's CBankProcessor / CBankData and
+// libpk/CScriptHost.h CLoadLog; overlay FABLE_RETAIL_CBANKDATA_PREPARE and _CBANKPROCESSOR_STEPS declare the callees). Binds
+// 0x00C2E610 as ?AddSampleNameTriggers@CBankProcessor@@QAEXXZ (nf44:111; was the local ProcessEventTriggers) and every step on
+// CBankProcessor (was the local CBankProcessor / CBankData / CLoadLog models).
+#define FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
+#define FABLE_RETAIL_CBANKDATA_PREPARE
+#define FABLE_RETAIL_CBANKPROCESSOR_STEPS
+#include "libpk/CBankProcessor.h"
 
 void CBankProcessor::Load()
 {
@@ -54,7 +39,7 @@ void CBankProcessor::Load()
     ProcessAllDrivers();
     if (!m_pLog->IsOk())
         return;
-    ProcessEventTriggers();
+    AddSampleNameTriggers();
     if (!m_pLog->IsOk())
         return;
     AddEvents();

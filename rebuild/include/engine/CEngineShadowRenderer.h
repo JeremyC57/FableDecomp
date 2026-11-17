@@ -64,6 +64,13 @@ public:
     void SetupShadowFuncRenderStates(long stage, const CColorBufferDepthPackParameters& pack_parameters);   // 0x00B50510
     EShadowRenderingTechnique PeekRenderingTechnique() const { return RenderingTechnique; }
     CTexture& GetShadowBufferTexture() { return ShadowBufferTexture; }
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_BUILDDEPTHPACKING
+    // NF63 (round 7, row 0x00B4F420): Ego_r.pdb 0x009EDE70 / FableWin.pdb 0x02D77E40 ?BuildDepthPackingLookupTexture@CEngineShadowRenderer@@AAEXXZ
+    // (private). Declaration only.
+private:
+    void BuildDepthPackingLookupTexture();                               // 0x00B4F420
+public:
+#endif
     CTexture& GetDepthPackingTexture() { return DepthPackingLookupTexture; }
 #ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_PEEKMINWCLAMP
     // Retail opt-in (wfA6b, row 0x00BA6240): FableWin.pdb ?PeekColourBufferShadowMinWClamp@CEngineShadowRenderer@@QBEMXZ (0x02E822A0,

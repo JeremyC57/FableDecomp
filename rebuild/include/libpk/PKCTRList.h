@@ -52,6 +52,12 @@ public:
 template <class T> class PKCTRList : public CTypedListBase {
 public:
     explicit PKCTRList(PKCContainer_00c17b70* impl) : m_pImpl(impl) { }
+#ifdef FABLE_RETAIL_PKCTRLIST_DTOR
+    // NF63 (round 7, row 0x00C2DFC0): the per-instance destructor is out of line in retail (the deleting destructor 0x00C2DFC0 of
+    // PKCTRList<CSegment> calls 0x00C2DDE0, which the CSegmentFile destructor's funclet binds as ??1?$PKCTRList@UCSegment@@@@UAE@XZ);
+    // the implicit one is inlined into ??_G. Declaration only, no layout change.
+    virtual ~PKCTRList();
+#endif
     virtual void MorphToArray();                // slot 5
     virtual void MorphToTree();                 // slot 6
     virtual T* Find(const T* item);             // slot 7

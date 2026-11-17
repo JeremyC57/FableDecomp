@@ -24330,15 +24330,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0081f630	GetNavPreferredAt	CMap	__thiscall	bool	2	CMap *,C2DCoordI *	1	yes	accepted									
 0081f6c0	GetGroundFaceNormalAt	CMap	__thiscall	C3DVector	2	CMap *,C3DVector *	1	yes	accepted									
 0081f910	GetDominantEngineThemeAt	CMap	__thiscall	void	4	CMap *,CMap *,C2DCoordI *,C2DCoordI *	1	yes	accepted									
-0081fa20	GetThemeHeightAt	CMap	__thiscall	float	2	CMap *,C2DCoordI *	1	yes	accepted									
-0081fa90	GetThemeMinCameraHeightAt	CMap	__thiscall	float	2	CMap *,C2DCoordI *	1	yes	accepted									
+0081fa20	GetThemeSizeZOffsetAt	CMap	__thiscall	float	2	CMap *,C2DCoordI *	1	yes	accepted									
+0081fa90	GetThemeMinCameraSizeZOffsetAt	CMap	__thiscall	float	2	CMap *,C2DCoordI *	1	yes	accepted									
 0081fb00	HasWaterAt	CMap	__thiscall	bool	2	CMap *,C2DCoordI *	1	yes	accepted									
 0081fcc0	GetWaterSizeZOffsetAt	CMap	__thiscall	float	2	CMap *,C2DCoordI *	1	yes	accepted									
 0081fec0	GetWaterSizeZOffsetAt	CMap	__thiscall	float	2	CMap *,C3DVector *	1	yes	accepted									
 00820080	GetGroundSizeZAt	CMap	__thiscall	float	2	CMap *,C2DCoordI *	1	yes	accepted									
 008200b0	GetThemeSizeZAt	CMap	__thiscall	bool	1	CGameScriptInterface *	1	yes	accepted									
 00820100	GetThemeSizeZAt	CMap	__thiscall	float	2	CMap *,C2DCoordI *	1	yes	accepted									
-00820140	GetThemeMaxCameraHeightAtPosition	CMap	__thiscall	bool	1	CGameScriptInterface *	1	yes	accepted									
+00820140	GetThemeMinCameraSizeZAt	CMap	__thiscall	bool	1	CGameScriptInterface *	1	yes	accepted									
 008201d0	Forward_SetSizeZAt_via0x1a7c_008201d0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\82\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008201d0.cpp
 008201e0	InitPassabilityFromThemesIfNecessary	CMap	__thiscall	void	2	CMap *,C2DBoxI *	1	yes	accepted									
 008203a0	ApplyScriptedMapBrushUpdate	CMap	__thiscall	void	3	CMap *,float,CScriptedMapBrush *	1	yes	accepted									
@@ -24801,7 +24801,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00836de0	FlipTrackDirection	CThingTrackNode	__thiscall	void	1	CThingTrackNode *	1	yes	accepted									
 00836ee0	SetTrackName	CThingTrackNode	__thiscall	void	2	CThingTrackNode *,CCharString *	1	yes	accepted									
 00837040	DrawIsDrawable	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00837050	GetDrawRecordA	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
+00837050	DrawGetMesh	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00837060	DrawGetDrawSizeX	CThingTrackNode	__thiscall	void	3	CThingTrackNode *,float,float *	1	yes	accepted									
 00837220	UpdateFacingDirection	CThingTrackNode	__thiscall	void	1	CThingTrackNode *	1	yes	accepted									
 008374f0	DrawGetEditDrawInfo	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -44085,16 +44085,16 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c11cb0	UpdateItems	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
 00c11d00	CSoundEventManager	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
 00c11f00	AcquireEvent	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
-00c11f50	CAIStateGroup_OnMapTextureChanged	_global	unknown	undefined	0		0	yes	accepted									
+00c11f50	UpdatePlaybacks	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
 00c12000	ApplyEntries	CEntryOwner_00c12000	__thiscall	void	1	C3DMesh2 *	1	yes	accepted									
 00c12040	HeroWorksInBrothel	CV_BordelloScript	__thiscall	bool	1	CV_BordelloScript *	1	yes	accepted									
-00c120a0	Inventory_ProcessKeyboardBinding	_global	unknown	undefined	0		0	yes	accepted									
+00c120a0	StopEventsWithField18	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
 00c12140	ReleaseTarget	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
 00c12270	CTCHero_OnEntityCreatedByScript	_global	unknown	undefined	0		0	yes	accepted									
 00c12300	GetItemStatistics	CPanel	unknown	undefined	0		0	yes	accepted									
 00c123b0	Shutdown	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
-00c12460	Save_WriteInventoryState	_global	unknown	undefined	0		0	yes	accepted									
-00c12520	Save_WriteEquipmentState	_global	unknown	undefined	0		0	yes	accepted									
+00c12460	StopEventsWithField10	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
+00c12520	StopEventsWithField24	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
 00c125e0	CountWaitingEvents	CSoundEventManager	__thiscall	ulong	2	CPreallocTexturePool *,ulong	1	yes	accepted									
 00c12680	CountPlayingEvents	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
 00c12720	TraceEvents	CSoundEventManager	unknown	undefined	0		0	yes	accepted									
@@ -45480,7 +45480,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c2df60	Less	CVtable_012b4788	unknown	undefined	0		0			discovered	gapscan							
 00c2df80	EqualToKey	CVtable_012b4788	unknown	undefined	0		0			discovered	gapscan							
 00c2dfa0	LessThanKey	CVtable_012b4788	unknown	undefined	0		0			discovered	gapscan							
-00c2dfc0	`scalar deleting destructor'	CVtable_012b4788	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2dfc0.cpp
+00c2dfc0	`scalar deleting destructor'	PKCTRList<CSegment>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2dfc0.cpp
 00c2dfe0	CSegmentList	CSegmentList	__thiscall	undefined	2	CActionParamString *,CWideString *	0	yes	accepted									
 00c2e030	~CSegmentList	CSegmentList	__thiscall	void	1	CActionParamCCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 00c2e080	`scalar deleting destructor'	CSegmentList	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2e080.cpp

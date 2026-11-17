@@ -28,6 +28,12 @@ public:
  unsigned long GetBlockCount();
  void Activate(CSoundEventManager*);
  void Release(CSoundEventManager*);
+#ifdef FABLE_RETAIL_CPOOLEDRESOURCE_DEACTIVATE
+ // NF63 (round 7, rows 0x00C12460 / 0x00C12520): 0x00C26580 sets the state word to 2 and tail-calls the manager's event set
+ // Remove (slot 8): the counterpart of the inline Activate (state 1, Add); Release 0x00C265B0 calls it when the state is 1. Descriptive
+ // name of the landed ?Deactivate@CPooledResource@@ spelling (0x00C265B0's binding), with the manager type both callers pass.
+ void Deactivate(CSoundEventManager*);                               // 0x00C26580
+#endif
 };
 #ifdef FABLE_RETAIL_STREAMED_REQUEST_CALLEES_PASS23
 #include "libpk/CSoundEventManager.h"

@@ -41,6 +41,9 @@ public:
 };
 #endif
 class CAFile;class CScriptedMapBrush;class CScriptedMapBrushInit;
+#ifdef FABLE_RETAIL_CMAP_THEMESIZEZ
+class C3DVector;
+#endif
 #ifdef FABLE_RETAIL_CMAP_NAVIGATIONLAYER
 class C3DVector;
 #endif
@@ -166,6 +169,22 @@ public:
     // Chunk 847 (row 0x0063E590 CWorldMap::GetNavigationLayerAt): Ego_r.pdb ?GetNavigationLayerAt@CMap@@QBEJABVC3DVector@@@Z, out of
     // line in retail at 0x0081E920 (catalog CMap::GetNavigationLayerAt). Declaration only: no layout change.
     long GetNavigationLayerAt(const C3DVector&)const;
+#endif
+#ifdef FABLE_RETAIL_CMAP_THEMESIZEZ
+    // NF63 (round 7, rows 0x0081FA20 / 0x0081FA90 / 0x008200B0 / 0x00820100 / 0x00820140): the theme size-Z family, protected const in
+    // both PDBs (Ego_r.pdb 0x0067A530 / 0x006796E0 / 0x0067AC50 / 0x0067ACC0 / 0x0067B2D0 / 0x0067B320 / 0x0067B370, FableWin.pdb
+    // ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z 0x02230780 ... ?GetThemeMinCameraSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+    // 0x02232270); Ego_r order = retail order 0x0081F910 / 0x0081FA20 / 0x0081FA90 / 0x008200B0 / 0x00820100 / 0x00820140, and the
+    // landed CWorldMap callers 0x0063A390 / 0x0063A540 / 0x0063A7E0 reach the same addresses. Declarations only; no layout change.
+protected:
+    long GetStrongestEngineThemeAt(const C2DCoordI& pos, long& strength) const;   // 0x0081F910
+    float GetGroundSizeZAt(const C3DVector& pos) const;                            // 0x0081EA50
+    float GetThemeSizeZOffsetAt(const C2DCoordI& pos) const;                       // 0x0081FA20
+    float GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const;              // 0x0081FA90
+    float GetThemeSizeZAt(const C3DVector& pos) const;                             // 0x008200B0
+    float GetThemeSizeZAt(const C2DCoordI& pos) const;                             // 0x00820100
+    float GetThemeMinCameraSizeZAt(const C3DVector& pos) const;                    // 0x00820140
+public:
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CMap)==0x1d40);

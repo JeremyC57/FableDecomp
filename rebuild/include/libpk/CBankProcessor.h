@@ -34,6 +34,11 @@ struct CBankData {
 #ifdef FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
  CBankData();~CBankData();
 #endif
+#ifdef FABLE_RETAIL_CBANKDATA_PREPARE
+ // NF63 (round 7, row 0x00C2EB00): the record lists' preparation step 0x00C2ED50 (slot 5 on each list), catalog CBankData::Prepare
+ // (descriptive; libpk has no PDB). Declaration only.
+ bool Prepare();                                                     // 0x00C2ED50
+#endif
 CBankRecordList<SSampleHeader>m_samples;CBankRecordList<SDriverRecord>m_drivers;CBankRecordList<CEventRecord>m_events;};
 struct SIndexNode_00c3abd0{void*m_pValue;unsigned long m_index;};
 // NativeC3ABF0 installs012b5578,impl4=&Tree8,constructs actual40BTreeC194F0.
@@ -108,6 +113,16 @@ struct CBankProcessor{
 #endif
  bool m_bSampleNameTriggers,m_bNamedTriggers;
  void AddSampleNameTriggers();
+#ifdef FABLE_RETAIL_CBANKPROCESSOR_STEPS
+ // NF63 (round 7, row 0x00C2EB00 Load): the processor's steps in Load's call order, catalog names (descriptive; libpk has no PDB; the
+ // landed rows' CChildListLoader spellings are an older chunk's descriptive class). Declarations only, no layout change.
+ void AddSamples();                                                  // 0x00C2E270
+ void AddDrivers();                                                  // 0x00C2E480
+ void AddNumberTriggers();                                           // 0x00C2E4D0
+ void ProcessAllDrivers();                                           // 0x00C2EAB0
+ void AddEvents();                                                   // 0x00C2EA30
+ void AddSubEvents();                                                // 0x00C2EA70
+#endif
 #ifdef FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
  void Load(); // Native C2EB00 complete processor entry.
 #endif

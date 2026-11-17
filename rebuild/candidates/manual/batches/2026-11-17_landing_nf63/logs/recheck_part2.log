@@ -1,0 +1,19 @@
+addr       parity           behav  name
+008200b0   WARN RELOC_NAME: ?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z -> 0081ea50 labelled 'Terrain_InterpolateHeightAtPosition'
+008200b0   RELOCATION_MATCH PASS   GetThemeSizeZAt
+00837050   WARN RELOC_NAME: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ -> 004c79a0 labelled 'CAnimateThing::GetMeshBank'
+00837050   RELOCATION_MATCH PASS   DrawGetMesh
+00c11f50   RELOCATION_MATCH[/EHsc] PASS   UpdatePlaybacks
+00c12520   WARN RELOC_NAME: ?FindWithField24@CSoundEventSet@@QAEPAVCPooledResource@@PAX@Z -> 00c21fa0 labelled '_unattributed::WriteToFile_00c21fa0'
+00c12520   WARN RELOC_NAME: ?Deactivate@CPooledResource@@QAEXPAUCSoundEventManager@@@Z -> 00c26580 labelled 'NScript::CIsThingAlive::operator()'
+00c12520   RELOCATION_MATCH[/EHsc] PASS   StopEventsWithField24
+0121167d   RELOCATION_MATCH PASS   Unwind@0121167d
+012116fb   RELOCATION_MATCH PASS   Unwind@012116fb
+
+WINS: 6
+  008200b0 RELOCATION_MATCH CMap::?GetThemeSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+  00837050 RELOCATION_MATCH CThingTrackNode::?DrawGetMesh@CThingTrackNode@@QBEKXZ
+  00c11f50 RELOCATION_MATCH[/EHsc] CSoundEventManager::?UpdatePlaybacks@CSoundEventManager@@QAEXXZ
+  00c12520 RELOCATION_MATCH[/EHsc] CSoundEventManager::?StopEventsWithField24@CSoundEventManager@@UAEXPAX@Z
+  0121167d RELOCATION_MATCH _global::Unwind@0121167d
+  012116fb RELOCATION_MATCH _global::Unwind@012116fb

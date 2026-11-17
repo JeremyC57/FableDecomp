@@ -1,0 +1,47 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0081FA20	CMap	GetThemeSizeZOffsetAt	?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z	CMap::GetThemeHeightAt	?GetThemeMinCameraSizeZOffsetAt@CMap@@QAEMABVC2DCoordI@@@Z	Ego_r.pdb 0x0067AC50 + FableWin.pdb 0x022309A0 (IBE, const ref); Ego_r order GetStrongestEngineThemeAt / GetThemeForMiniMapAt / GetThemeSizeZOffsetAt / GetThemeMinCameraSizeZOffsetAt = retail 0x0081F910 .. 0x0081FA90; body reads CEngineThemeDef +0x80 (SizeZ); ported onto engine/CMap.h, RM + PASS
+0x0081FA90	CMap	GetThemeMinCameraSizeZOffsetAt	?GetThemeMinCameraSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z	CMap::GetThemeMinCameraHeightAt	?GetThemeMaxCameraSizeZOffsetAt@CMap@@QAEMABVC2DCoordI@@@Z	Ego_r.pdb 0x0067ACC0 + FableWin.pdb 0x02230A90 (IBE); 103-byte twin of 0x0081FA20 at +0x84; called by CWorldMap::GetThemeMinCameraSizeZOffsetAt 0x0063A540 / 0x0063A5F0 (Ego_r names the same pair); RM + PASS
+0x008200B0	CMap	GetThemeSizeZAt	?GetThemeSizeZAt@CMap@@IBEMABVC3DVector@@@Z	CMap::GetThemeSizeZAt	?GetThemeMinCameraHeightAtPosition@CMap@@QAEMABVC2DVector@@@Z	Ego_r.pdb 0x0067B2D0 + FableWin.pdb 0x022321D0 (IBE, C3DVector); the landed CWorldMap::GetThemeSizeZAt 0x0063A390 already binds this address as GetThemeSizeZAt(C3DVector); body = GetThemeSizeZOffsetAt(cell) + GetGroundSizeZAt(pos); RM + PASS
+0x00820100	CMap	GetThemeSizeZAt	?GetThemeSizeZAt@CMap@@IBEMABVC2DCoordI@@@Z	CMap::GetThemeSizeZAt	?GetThemeSizeZAt@CMap@@QAEMABVC2DCoordI@@@Z	Ego_r.pdb 0x0067B320 + FableWin.pdb 0x02232220 (IBE, C2DCoordI overload; follows the C3DVector one in both PDBs and in retail); RM + PASS
+0x00820140	CMap	GetThemeMinCameraSizeZAt	?GetThemeMinCameraSizeZAt@CMap@@IBEMABVC3DVector@@@Z	CMap::GetThemeMaxCameraHeightAtPosition	?GetThemeMaxCameraHeightAtPosition@CMap@@QAEMABVC2DVector@@@Z	Ego_r.pdb 0x0067B370 + FableWin.pdb 0x02232270 (IBE, C3DVector); calls the MinCamera offset twin 0x0081FA90 + GetGroundSizeZAt 0x0081EA50; RM + PASS
+0x00837050	CThingTrackNode	DrawGetMesh	?DrawGetMesh@CThingTrackNode@@QBEKXZ	CThingTrackNode::GetDrawRecordA	?GetDrawRecordA@CThingTrackNode@@QAEJXZ	Ego_r.pdb 0x0082ABA0 + FableWin.pdb 0x027FD1F0 (QBEKXZ); Ego_r order DrawIsDrawable / DrawGetMesh / DrawGetDrawSizeX = retail 0x00837040 / 0x00837050 / 0x00837060; body returns CGlobalDef::TrackGraphic.BankIndex (+0xE6, the mesh); no callers, no vtable slot; RM + PASS
+0x00837060	CThingTrackNode	DrawGetDrawSizeX	?DrawGetDrawSizeX@CThingTrackNode@@QBEXMPAM@Z	CThingTrackNode::DrawGetDrawSizeX	?DrawGetDrawSizeX@CThingTrackNode@@QAEXMPAM@Z	Ego_r.pdb 0x0082ABB0 + FableWin.pdb 0x027FD340 (const: QBE); no landed callers bind the old leaf (reloc_bindings has none); RM + PASS
+0x00C120A0	CSoundEventManager	StopEventsWithField18	?StopEventsWithField18@CSoundEventManager@@QAEXPAX@Z	_global::Inventory_ProcessKeyboardBinding	?ProcessKeyboardBinding@CInventory_00c120a0@@QAEXPAX@Z	descriptive (libpk: no PDB): `this` is the libpk sound-event manager (lock 0x0143BB14, event pool +0x5C, Stop(CSoundEventManager*) 0x00C21620 as the landed CSoundEventManager::Shutdown 0x00C123B0 uses); the non-virtual sibling of the header virtuals StopEventsWithField10 / StopEventsWithField24 (filter key +0x18); catalog label propagated; RM + PASS
+0x00C12460	CSoundEventManager	StopEventsWithField10	?StopEventsWithField10@CSoundEventManager@@UAEXPAX@Z	_global::Save_WriteInventoryState	?UnbindKey@CInventory_00c12460@@QAEXPAX@Z	libpk/CSoundEventManager.h already names vtable 0x012B2748 slot 21 (= 0x00C12460, read from the exe) StopEventsWithField10 (descriptive); RM + PASS
+0x00C12520	CSoundEventManager	StopEventsWithField24	?StopEventsWithField24@CSoundEventManager@@UAEXPAX@Z	_global::Save_WriteEquipmentState	?UnbindKey@CInventory_00c12520@@QAEXPAX@Z	libpk/CSoundEventManager.h names slot 20 (= 0x00C12520) StopEventsWithField24 (descriptive); RM + PASS
+0x00C11F50	CSoundEventManager	UpdatePlaybacks	?UpdatePlaybacks@CSoundEventManager@@QAEXXZ	_global::CAIStateGroup_OnMapTextureChanged	?ProcessThemeElements@CEditControlCentre_00c11f50@@QAEXXZ	descriptive (libpk: no PDB): walks the manager event set's Playbacks pool (+0x224, PKCFrallocStatic<CPlaybackSlot>::Get 0x00C13700), updates each slot and stops its event unless IsAudible, then AssignPendingItems 0x00C10CD0; catalog labels propagated; RM + PASS
+0x00C2DFC0	PKCTRList<CSegment>	`scalar deleting destructor'	??_G?$PKCTRList@UCSegment@@@@UAEPAXI@Z	CVtable_012b4788::`scalar deleting destructor'	?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z	compiler-generated deleting destructor of the libpk/PKCTRList.h instance over CSegment (vtable 0x012B4788, the CSegmentList base); calls ~PKCTRList<CSegment> 0x00C2DDE0 (bound by NF52's ported 0x00C2DBE0 funclet); RM + PASS
+0x00B4F420	CEngineShadowRenderer	BuildDepthPackingLookupTexture	?BuildDepthPackingLookupTexture@CEngineShadowRenderer@@AAEXXZ	CEngineShadowRenderer::BuildDepthPackingLookupTexture	?BuildDepthPackingLookupTexture@ShadowLookupMethods@@QAEXXZ	Ego_r.pdb 0x009EDE70 + FableWin.pdb 0x02D77E40 (private AAE); the old row defined it on a derived stand-in struct; RM + PASS
+# Section 2
+0x008200B0	?GetThemeMinCameraSizeZOffsetAt@CMap@@QAEMPAVC2DCoordI@@@Z (0x0081FA20)	?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+0x008200B0	?InterpolateHeightAtPosition@CMap@@QAEMABVC2DVector@@@Z (0x0081EA50)	?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+0x00820100	?GetThemeMinCameraSizeZOffsetAt@CMap@@QAEMABVC2DCoordI@@@Z (0x0081FA20)	?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+0x00820140	?GetThemeMaxCameraSizeZOffsetAt@CMap@@QAEMPAVC2DCoordI@@@Z (0x0081FA90)	?GetThemeMinCameraSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+0x00820140	?InterpolateHeightAtPosition@CMap@@QAEMABVC2DVector@@@Z (0x0081EA50)	?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+0x0081FA20	?GetDominantEngineThemeAt@CMap@@QAEJABVC2DCoordI@@PAJ@Z (0x0081F910)	?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z
+0x0081FA90	?GetDominantEngineThemeAt@CMap@@QAEJABVC2DCoordI@@PAJ@Z (0x0081F910)	?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z
+0x00837050	?GetMeshBank@@YAPAVCMeshDataBank@@XZ (0x004C79A0)	?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ
+0x00837060	?GetMeshBank@@YAPAVCMeshDataBank@@XZ (0x004C79A0)	?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ
+0x00C120A0	?Process@CEntity_00c120a0@@QAEXPAUCInventory_00c120a0@@@Z (0x00C21620)	?Stop@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z
+0x00C120A0	?IsBound@CEntity_00c120a0@@QAEJXZ (0x00C20840)	?IsActive@CSoundEvent@@QAEJXZ
+0x00C120A0	?Get@CEntityArray_00c120a0@@QAEPAUCEntity_00c120a0@@K@Z (0x00C13620)	?Get@?$PKCFrallocStatic@VCSoundEvent@@@@QAEPAVCSoundEvent@@K@Z
+0x00C12460	?Release@CEntity_00c12460@@QAEXPAUCInventory_00c12460@@@Z (0x00C21620)	?Stop@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z
+0x00C12460	?Find@CObservable_00c12460@@QAEPAUCObserver_00c12460@@PAX@Z (0x00C21FF0)	?FindWithField10@CSoundEventSet@@QAEPAVCPooledResource@@PAX@Z
+0x00C12460	?Detach@CObserver_00c12460@@QAEXPAUCInventory_00c12460@@@Z (0x00C26580)	?Deactivate@CPooledResource@@QAEXPAUCSoundEventManager@@@Z
+0x00C12520	?Release@CEntity_00c12520@@QAEXPAUCInventory_00c12520@@@Z (0x00C21620)	?Stop@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z
+0x00C12520	?Find@CObservable_00c12520@@QAEPAUCObserver_00c12520@@PAX@Z (0x00C21FA0)	?FindWithField24@CSoundEventSet@@QAEPAVCPooledResource@@PAX@Z
+0x00C12520	?Detach@CObserver_00c12520@@QAEXPAUCInventory_00c12520@@@Z (0x00C26580)	?Deactivate@CPooledResource@@QAEXPAUCSoundEventManager@@@Z
+0x00C11F50	?Validate@CElement_00c11f50@@QAE_NPAUCEditControlCentre_00c11f50@@@Z (0x00C20C10)	?IsAudible@CSoundEvent@@QAE_NPAUCSoundEventManager@@@Z
+0x00C11F50	?Process@CElement_00c11f50@@QAEXPAUCEditControlCentre_00c11f50@@@Z (0x00C21620)	?Stop@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z
+0x00C11F50	?Refresh@CEntry_00c11f50@@QAEXXZ (0x00C276B0)	?Update@CPlaybackSlot@@QAEXXZ
+0x00C11F50	?Get@CEntryArray_00c11f50@@QAEPAUCEntry_00c11f50@@K@Z (0x00C13700)	?Get@?$PKCFrallocStatic@UCPlaybackSlot@@@@QAEPAUCPlaybackSlot@@K@Z
+0x00C11F50	?Refresh@CEditControlCentre_00c11f50@@QAEXXZ (0x00C10CD0)	?AssignPendingItems@CSoundEventManager@@QAEXXZ
+0x00C2DFC0	?CLandscapeBackgroundPatch_dtor_00c2dde0@@YIXPAVCLandscapeBackgroundPatch@@@Z (0x00C2DDE0)	??1?$PKCTRList@UCSegment@@@@UAE@XZ
+0x00B4F420	?Unlock@SurfaceNative@@QAEXXZ (0x009F2DC0)	?Unlock@CSurface@@QBEXXZ
+0x00B4F420	?Lock@SurfaceNative@@QAE?AULockedRectNative@@K@Z (0x009F33E0)	?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z
+0x00B4F420	?SetPixel@SurfaceNative@@... (0x009F31C0)	?SetPixel@CSurface@@QAEXJJABVCRGBColour@@ABVCSurfaceLockedRect@@@Z
+0x00B4F420	?GetSurface@TextureMethods@@... (0x009F9E00)	?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z
+0x00B4F420	?Initialise@TextureMethods@@... (0x009FA280)	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z
+0x00B4F420	?Initialise@PixelMethods@@... (0x009E3790)	?Initialise@CPixelFormat@@QAEXJJJJ_N@Z
+0x00C2EB00	?ProcessEventTriggers@CBankProcessor@@QAEXXZ (0x00C2E610)	?AddSampleNameTriggers@CBankProcessor@@QAEXXZ
+0x00C2EB00	?IsOk@CLoadLog@@QBE_NXZ (local model)	?IsOk@CLoadLog@@QBE_NXZ (libpk/CScriptHost.h, same spelling)

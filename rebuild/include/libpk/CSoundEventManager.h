@@ -87,6 +87,19 @@ struct CSoundEventManager {
 #endif
  long m_nextId;
  CSoundEvent* PlayDriver(void*,long,const CPKVoiceParams*,long);
+#ifdef FABLE_RETAIL_CSOUNDEVENTMANAGER_STOPFIELD18
+ // NF63 (round 7, row 0x00C120A0): the non-virtual sibling of StopEventsWithField10 / StopEventsWithField24 (slots 21 / 20): under the
+ // module lock, every active pooled event whose +0x18 key is the argument is stopped. No caller or table reference in retail;
+ // descriptive name in the header's spelling. Declaration only.
+ void StopEventsWithField18(void*);                                   // 0x00C120A0
+#endif
+#ifdef FABLE_RETAIL_CSOUNDEVENTMANAGER_UPDATEPLAYBACKS
+ // NF63 (round 7, row 0x00C11F50): the playback-slot walk (called by 0x00C1C110) and the pending-item pass it ends with (catalog
+ // CSoundEventManager::AssignPendingItems 0x00C10CD0; also called by the landed 0x00C11330 / 0x00C12880). Descriptive names (libpk has
+ // no PDB). Declarations only.
+ void UpdatePlaybacks();                                              // 0x00C11F50
+ void AssignPendingItems();                                           // 0x00C10CD0
+#endif
 };
 #else
 struct CSoundEventManager {

@@ -1,0 +1,62 @@
+addr       parity           behav  name
+0081fa20   WARN RELOC_NAME: ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z -> 0081f910 labelled 'CMap::GetDominantEngineThemeAt'
+0081fa20   WARN STANDIN_LEAF ?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z (catalog CMap::GetThemeHeightAt; names another function)
+0081fa20   RELOCATION_MATCH PASS   GetThemeHeightAt
+0081fa90   WARN RELOC_NAME: ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z -> 0081f910 labelled 'CMap::GetDominantEngineThemeAt'
+0081fa90   WARN STANDIN_LEAF ?GetThemeMinCameraSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z (catalog CMap::GetThemeMinCameraHeightAt; names another function)
+0081fa90   RELOCATION_MATCH PASS   GetThemeMinCameraHeightAt
+008200b0   WARN RELOC_NAME: ?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z -> 0081fa20 labelled 'CMap::GetThemeHeightAt'
+008200b0   WARN RELOC_NAME: ?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z -> 0081ea50 labelled 'Terrain_InterpolateHeightAtPosition'
+008200b0   RELOCATION_MATCH PASS   GetThemeSizeZAt
+00820100   WARN RELOC_NAME: ?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z -> 0081fa20 labelled 'CMap::GetThemeHeightAt'
+00820100   RELOCATION_MATCH PASS   GetThemeSizeZAt
+00820140   WARN RELOC_NAME: ?GetThemeMinCameraSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z -> 0081fa90 labelled 'CMap::GetThemeMinCameraHeightAt'
+00820140   WARN RELOC_NAME: ?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z -> 0081ea50 labelled 'Terrain_InterpolateHeightAtPosition'
+00820140   WARN STANDIN_LEAF ?GetThemeMinCameraSizeZAt@CMap@@IBEMABVC3DVector@@@Z (catalog CMap::GetThemeMaxCameraHeightAtPosition; names another function)
+00820140   RELOCATION_MATCH PASS   GetThemeMaxCameraHeightAtPosition
+00837050   WARN RELOC_NAME: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ -> 004c79a0 labelled 'CAnimateThing::GetMeshBank'
+00837050   WARN STANDIN_LEAF ?DrawGetMesh@CThingTrackNode@@QBEKXZ (catalog CThingTrackNode::GetDrawRecordA; names another function)
+00837050   RELOCATION_MATCH PASS   GetDrawRecordA
+00837060   WARN RELOC_NAME: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ -> 004c79a0 labelled 'CAnimateThing::GetMeshBank'
+00837060   RELOCATION_MATCH PASS   DrawGetDrawSizeX
+00b4f420   RELOCATION_MATCH PASS   BuildDepthPackingLookupTexture
+00c11f50   WARN STANDIN_LEAF ?UpdatePlaybacks@CSoundEventManager@@QAEXXZ (catalog _global::CAIStateGroup_OnMapTextureChanged; names another function)
+00c11f50   RELOCATION_MATCH PASS   CAIStateGroup_OnMapTextureChanged
+00c120a0   WARN STANDIN_LEAF ?StopEventsWithField18@CSoundEventManager@@QAEXPAX@Z (catalog _global::Inventory_ProcessKeyboardBinding; names another function)
+00c120a0   RELOCATION_MATCH PASS   Inventory_ProcessKeyboardBinding
+00c12460   WARN RELOC_NAME: ?FindWithField10@CSoundEventSet@@QAEPAVCPooledResource@@PAX@Z -> 00c21ff0 labelled '_unattributed::WriteToFile_00c21ff0'
+00c12460   WARN RELOC_NAME: ?Deactivate@CPooledResource@@QAEXPAUCSoundEventManager@@@Z -> 00c26580 labelled 'NScript::CIsThingAlive::operator()'
+00c12460   WARN STANDIN_LEAF ?StopEventsWithField10@CSoundEventManager@@UAEXPAX@Z (catalog _global::Save_WriteInventoryState; names another function)
+00c12460   RELOCATION_MATCH PASS   Save_WriteInventoryState
+00c12520   WARN RELOC_NAME: ?FindWithField24@CSoundEventSet@@QAEPAVCPooledResource@@PAX@Z -> 00c21fa0 labelled '_unattributed::WriteToFile_00c21fa0'
+00c12520   WARN RELOC_NAME: ?Deactivate@CPooledResource@@QAEXPAUCSoundEventManager@@@Z -> 00c26580 labelled 'NScript::CIsThingAlive::operator()'
+00c12520   WARN STANDIN_LEAF ?StopEventsWithField24@CSoundEventManager@@UAEXPAX@Z (catalog _global::Save_WriteEquipmentState; names another function)
+00c12520   RELOCATION_MATCH PASS   Save_WriteEquipmentState
+00c2dfc0   WARN RELOC_NAME: ??1?$PKCTRList@UCSegment@@@@UAE@XZ -> 00c2dde0 labelled '_global::SetMemberConst_00c2dde0'
+00c2dfc0   WARN STANDIN_LEAF ??_G?$PKCTRList@UCSegment@@@@UAEPAXI@Z (catalog CVtable_012b4788::`scalar deleting destructor'; names another function)
+00c2dfc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00c2eb00   RELOCATION_MATCH PASS   Load
+0121167d   RELOCATION_MATCH PASS   Unwind@0121167d
+0121168f   RELOCATION_MATCH PASS   Unwind@0121168f
+012116e9   RELOCATION_MATCH PASS   Unwind@012116e9
+012116fb   RELOCATION_MATCH PASS   Unwind@012116fb
+
+WINS: 18
+  0081fa20 RELOCATION_MATCH CMap::?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+  0081fa90 RELOCATION_MATCH CMap::?GetThemeMinCameraSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+  008200b0 RELOCATION_MATCH CMap::?GetThemeSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+  00820100 RELOCATION_MATCH CMap::?GetThemeSizeZAt@CMap@@IBEMABVC2DCoordI@@@Z
+  00820140 RELOCATION_MATCH CMap::?GetThemeMinCameraSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+  00837050 RELOCATION_MATCH CThingTrackNode::?DrawGetMesh@CThingTrackNode@@QBEKXZ
+  00837060 RELOCATION_MATCH CThingTrackNode::?DrawGetDrawSizeX@CThingTrackNode@@QBEXMPAM@Z
+  00b4f420 RELOCATION_MATCH CEngineShadowRenderer::?BuildDepthPackingLookupTexture@CEngineShadowRenderer@@AAEXXZ
+  00c11f50 RELOCATION_MATCH _unattributed::?UpdatePlaybacks@CSoundEventManager@@QAEXXZ
+  00c120a0 RELOCATION_MATCH _unattributed::?StopEventsWithField18@CSoundEventManager@@QAEXPAX@Z
+  00c12460 RELOCATION_MATCH _unattributed::?StopEventsWithField10@CSoundEventManager@@UAEXPAX@Z
+  00c12520 RELOCATION_MATCH _unattributed::?StopEventsWithField24@CSoundEventManager@@UAEXPAX@Z
+  00c2dfc0 RELOCATION_MATCH CVtable_012b4788::??_G?$PKCTRList@UCSegment@@@@UAEPAXI@Z
+  00c2eb00 RELOCATION_MATCH CBankProcessor::?Load@CBankProcessor@@QAEXXZ
+  0121167d RELOCATION_MATCH _global::Unwind@0121167d
+  0121168f RELOCATION_MATCH _global::Unwind@0121168f
+  012116e9 RELOCATION_MATCH _global::Unwind@012116e9
+  012116fb RELOCATION_MATCH _global::Unwind@012116fb

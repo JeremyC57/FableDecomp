@@ -55372,9 +55372,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c2dfc0'
-        Module = 'CVtable_012b4788'
-        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2dfc0.cpp'
-        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2dfc0_test.cpp'
+        Module = 'PKCTRList<CSegment>'
+        Source = '00/c2/PKCTRList_scalardeletingdestructor_00c2dfc0.cpp'
+        TestSource = '00/c2/PKCTRList_scalardeletingdestructor_00c2dfc0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00c2dfc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -190343,9 +190343,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c120a0'
-        Module = '_unattributed'
-        Source = '00/c1/unattributed_ProcessKeyboardBinding00c120a0_00c120a0.cpp'
-        TestSource = '00/c1/unattributed_ProcessKeyboardBinding00c120a0_00c120a0_test.cpp'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_StopEventsWithField18_00c120a0.cpp'
+        TestSource = '00/c1/CSoundEventManager_StopEventsWithField18_00c120a0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c120a0_TEST PASS'
     }
@@ -190495,9 +190495,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c11f50'
-        Module = '_unattributed'
-        Source = '00/c1/unattributed_ProcessThemeElements00c11f50_00c11f50.cpp'
-        TestSource = '00/c1/unattributed_ProcessThemeElements00c11f50_00c11f50_test.cpp'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_UpdatePlaybacks_00c11f50.cpp'
+        TestSource = '00/c1/CSoundEventManager_UpdatePlaybacks_00c11f50_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c11f50_TEST PASS'
     }
@@ -192558,17 +192558,17 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c12460'
-        Module = '_unattributed'
-        Source = '00/c1/unattributed_UnbindKey00c12460_00c12460.cpp'
-        TestSource = '00/c1/unattributed_UnbindKey00c12460_00c12460_test.cpp'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_StopEventsWithField10_00c12460.cpp'
+        TestSource = '00/c1/CSoundEventManager_StopEventsWithField10_00c12460_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c12460_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c12520'
-        Module = '_unattributed'
-        Source = '00/c1/unattributed_UnbindKey00c12520_00c12520.cpp'
-        TestSource = '00/c1/unattributed_UnbindKey00c12520_00c12520_test.cpp'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_StopEventsWithField24_00c12520.cpp'
+        TestSource = '00/c1/CSoundEventManager_StopEventsWithField24_00c12520_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c12520_TEST PASS'
     }
@@ -201898,15 +201898,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008200b0'
         Module = 'CMap'
-        Source = '00/82/CMap_GetThemeMinCameraHeightAtPosition_008200b0.cpp'
-        TestSource = '00/82/CMap_GetThemeMinCameraHeightAtPosition_008200b0_test.cpp'
+        Source = '00/82/CMap_GetThemeSizeZAt_008200b0.cpp'
+        TestSource = '00/82/CMap_GetThemeSizeZAt_008200b0_test.cpp'
         PassPattern = '008200b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00820140'
         Module = 'CMap'
-        Source = '00/82/CMap_GetThemeMaxCameraHeightAtPosition_00820140.cpp'
-        TestSource = '00/82/CMap_GetThemeMaxCameraHeightAtPosition_00820140_test.cpp'
+        Source = '00/82/CMap_GetThemeMinCameraSizeZAt_00820140.cpp'
+        TestSource = '00/82/CMap_GetThemeMinCameraSizeZAt_00820140_test.cpp'
         PassPattern = '00820140_TEST PASS'
     }
     [pscustomobject]@{
@@ -220121,8 +220121,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00837050'
         Module = 'CThingTrackNode'
-        Source = '00/83/CThingTrackNode_GetDrawRecordA_00837050.cpp'
-        TestSource = '00/83/CThingTrackNode_GetDrawRecordA_00837050_test.cpp'
+        Source = '00/83/CThingTrackNode_DrawGetMesh_00837050.cpp'
+        TestSource = '00/83/CThingTrackNode_DrawGetMesh_00837050_test.cpp'
         PassPattern = '00837050_TEST PASS'
     }
     [pscustomobject]@{
@@ -248495,15 +248495,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0081fa20'
         Module = 'CMap'
-        Source = '00/81/CMap_GetThemeHeightAt_0081fa20.cpp'
-        TestSource = '00/81/CMap_GetThemeHeightAt_0081fa20_test.cpp'
+        Source = '00/81/CMap_GetThemeSizeZOffsetAt_0081fa20.cpp'
+        TestSource = '00/81/CMap_GetThemeSizeZOffsetAt_0081fa20_test.cpp'
         PassPattern = '0081fa20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0081fa90'
         Module = 'CMap'
-        Source = '00/81/CMap_GetThemeMinCameraHeightAt_0081fa90.cpp'
-        TestSource = '00/81/CMap_GetThemeMinCameraHeightAt_0081fa90_test.cpp'
+        Source = '00/81/CMap_GetThemeMinCameraSizeZOffsetAt_0081fa90.cpp'
+        TestSource = '00/81/CMap_GetThemeMinCameraSizeZOffsetAt_0081fa90_test.cpp'
         PassPattern = '0081fa90_TEST PASS'
     }
     [pscustomobject]@{

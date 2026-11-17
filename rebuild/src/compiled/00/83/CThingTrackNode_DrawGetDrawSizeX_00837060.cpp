@@ -1,34 +1,28 @@
-// CThingTrackNode::DrawGetDrawSizeX(float, float*) -- writes the node's draw size along x (the node's scale at +0x9c times the size field of the global mesh bank's draw record at +0xe6) to the out-parameter; the float argument is unused
+// CThingTrackNode::DrawGetDrawSizeX(float, float*) const -- writes the node's draw size along x (the thing's Scale +0x9C times the global definition's TrackGraphic RenderSizeX, CGlobalDef +0xE6 +0x08) to the out-parameter; the float argument is unused
+// Leaf: ?DrawGetDrawSizeX@CThingTrackNode@@QBEXMPAM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00837060, length 35 bytes (`ret 8`: a float and the out pointer).
-// Callees: the global mesh-bank getter @ 0x004C79A0 (manifest "CAnimateThing::GetMeshBank"; it ignores ecx
-// and reads [0x013B8A1C]->+0x20->+0xd0, so it is modelled as a free function).
-// Shape: `this` is kept in esi across the getter call; the dead `add eax,0E6h` next to `fmul [eax+0EEh]`
-// is a named POINTER local to the packed draw record at +0xe6 (the direct `Get()->m_size.m_x` form folds
-// the offset and drops the add); `size->m_x * m_scale` loads the scale first (`fld [a] ; fmul [b]` = b * a).
-// The record is byte-packed in retail (+0xe6 is not dword aligned): `#pragma pack(1)` describes it.
-#pragma pack(push, 1)
-struct CMeshInfoSize {                             // the draw-size record at +0xe6 of the mesh bank
-    long  m_a;                                     // +0x00 (read alone by the sibling getter 0x00837050)
-    long  m_b;                                     // +0x04
-    float m_x;                                     // +0x08
-};
-class CMeshDataBank { public:
-    unsigned char _pad[0xe6];
-    CMeshInfoSize m_size;                          // +0xe6
-};
-#pragma pack(pop)
-
-CMeshDataBank* GetMeshBank();                      // 0x004C79A0
-
-class CThingTrackNode { public:
-    void*         m_vtable;                        // +0x00
-    unsigned char _pad04[0x98];                    // +0x04
-    float         m_scale;                         // +0x9c
-    void DrawGetDrawSizeX(float unused, float* out);
-};
-
-void CThingTrackNode::DrawGetDrawSizeX(float unused, float* out)
+// Callees: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ @ 0x004C79A0 (protected const).
+// Shape: `this` is kept in esi across the call; the dead `add eax,0E6h` next to `fmul [eax+0EEh]` is a named POINTER local to the
+// track graphic (the direct form folds the offset and drops the add); `graphic->RenderSizeX * Scale` loads the scale first.
+// NF63 (round 7): moved onto engine/CThingTrackNode.h (CThingGameObject -> CThingPhysical -> CThing; Scale is CThingPhysical's
+// protected +0x9C) and engine/CGlobalDef.h / CEngineGraphic.h; self ?DrawGetDrawSizeX@CThingTrackNode@@QBEXMPAM@Z (Ego_r.pdb 0x0082ABB0 +
+// FableWin.pdb 0x027FD340: const, was QAE in a local no-base model); 0x004C79A0 was a free cdecl GetMeshBank() stand-in.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_PEEKGLOBALDEFINITION
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGTRACKNODE
+#define FABLE_RETAIL_CTHINGTRACKNODE_DRAW
+#include "fable_string.h"
+#include "engine/CGlobalDef.h"
+#include "engine/CThingTrackNode.h"
+void CThingTrackNode::DrawGetDrawSizeX(float unused, float* out) const
 {
-    CMeshInfoSize* size = &GetMeshBank()->m_size;
-    *out = size->m_x * m_scale;
+    const CEngineGraphic* graphic = &PeekGlobalDefinition().TrackGraphic;
+    *out = graphic->RenderSizeX * Scale;
 }
