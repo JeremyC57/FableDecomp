@@ -49,7 +49,11 @@ class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
 };
-CThing* __fastcall CreateParticleEffect(long effect, const C3DVector* pos);   // 0x0072AB70
+// NF49 (round 7): CreateParticleEffect 0x0072AB70 is the public static __fastcall
+// ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r.pdb / FableWin.pdb), declared by
+// engine/CTCSpecialAbilities.h; was a free stand-in taking `const C3DVector*` (same register passing: ecx = effect, edx = &pos).
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#include "engine/CTCSpecialAbilities.h"
 
 class CBaseObject;
 struct CBaseIntelligentPointer {                        // 8 bytes: vptr + item
@@ -130,12 +134,12 @@ void CTCTurncoat::ModifyTurncoatedness(float amount)
         CurrentTurncoatedness = 0.0f;
     if (CurrentTurncoatedness >= CreatureTurncoatResistance) {
         if (PDef->TurncoatActivateEffect)
-            CreateParticleEffect(PDef->TurncoatActivateEffect, &ParentThing->GetPos());
+            CTCSpecialAbilities::CreateParticleEffect(PDef->TurncoatActivateEffect, ParentThing->GetPos());
         if (!IsThingAlive(TurncoatedEffect)) {
             long effect = PDef->TurncoatedEffect;
             if (effect) {
                 {
-                    CIntelligentPointer created(CreateParticleEffect(effect, &ParentThing->GetPos()));
+                    CIntelligentPointer created(CTCSpecialAbilities::CreateParticleEffect(effect, ParentThing->GetPos()));
                     TurncoatedEffect.SetPItem((CBaseObject*)(((CThing*)created.GetPItem())));
                 }
                 if (IS_THING_ALIVE(&TurncoatedEffect)) {

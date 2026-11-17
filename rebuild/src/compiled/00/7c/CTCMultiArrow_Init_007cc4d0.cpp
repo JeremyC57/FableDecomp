@@ -21,76 +21,39 @@
 #include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 class CThing;
 class CTCBase;
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+// NF49 (round 7): the def classes come from the shared headers (were local CCharString / CDefPointeeBase / CDefPointer / CSpecialEffectsDef / CDefClassBase / CDefinitionManager / CGameDefinitionManager models with same-TU stand-in GetSubDef / GetEffectFromString bodies over made-up FindDef_CDefClassBase_GetSubDef_0 /
+// Lookup_CSpecialEffectsDef_CalcAndLookup callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom), so the caller's handles stay uncaptured as with the stand-ins.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/C3DVector.h"
-
-class CDefPointeeBase { public:
-    virtual void Destroy();
-    virtual void Delete();                              // slot 1 (+0x04)
-    long m_refCount;                                    // +0x04
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object && --Object->m_refCount == 0)
-            Object->Delete();
-    }
-    T* operator->() const { return Object; }
-};
-class CSpecialEffectsDef : public CDefPointeeBase { public:
-    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
-};
-long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString& name);   // stand-in callee
-#pragma auto_inline(off)
-// Stand-in body (out of line in retail): writes the out value only, so the effect index's address does not escape.
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
-{
-    long found = Lookup_CSpecialEffectsDef_CalcAndLookup(this, name);
-    if (found < 0)
-        return false;
-    value = found;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
-};
-void* FindDef_CDefClassBase_GetSubDef_0();
-#pragma auto_inline(off)
-// Same-TU stand-in for GetSubDef<CSpecialEffectsDef> (the landed 0x007CC2B0 idiom): writes the out slot only.
-bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>* out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
+#include "engine/CGameDefinitionManager.h"
+// The manager calls are CGameDefinitionManager::Get() 0x0044C6B0, CDefinitionManager::GetGlobalIndexFromClassIndex 0x009AD390 and
+// the member template GetDef<CSpecialAbilitiesMultiArrowDef> 0x007CC8E0 (FableWin.pdb
+// ??$GetDef@VCSpecialAbilitiesMultiArrowDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesMultiArrowDef@@@@@Z;
+// FABLE_RETAIL_CGAMEDEFINITIONMANAGER drops the default-path GetDef that would hide it).
 class CSpecialAbilitiesMultiArrowDef : public CDefClassBase { public:
-    unsigned char _pad08[0x3c - 0x08];
+    unsigned char _pad25[0x3c - 0x25];                  // (the shared CDefClassBase is 0x25 bytes, packed)
     long  NumberOfShots[4];                             // +0x3c
     long  NumberInVolley[4];                            // +0x4c
     float AmmoEffectCreationDelaySecs;                  // +0x5c
     long  CastSound;                                    // +0x60 (CDefString)
 };
 
-class CDefinitionManager {
-public:
-    long GetGlobalIndexFromClassIndex(const CCharString& className, long classIndex) const;   // 0x009AD390
-    bool GetDef(long index, CDefPointer<const CSpecialAbilitiesMultiArrowDef>* out) const;    // 0x007CC8E0
-};
-class CGameDefinitionManager : public CDefinitionManager {
-public:
-    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-};
 class CDefStringTable { public:
     CCharString GetString(long id) const;                    // 0x009D49B0
 };
@@ -105,7 +68,6 @@ public:
 // agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
 //   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
 enum ETCInterfaceType { };
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class C> class CVectorMap;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
@@ -209,7 +171,11 @@ public:
     const C3DVector& GetPos() const;              // 0x004C73D0
     void MakeNoise(const CCharString& noise);          // 0x00662110 (CThingCreatureBase)
 };
-CThing* __fastcall CreateParticleEffect(long type, const C3DVector& position);   // 0x0072AB70
+// NF49 (round 7): CreateParticleEffect 0x0072AB70 is the public static __fastcall
+// ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r.pdb / FableWin.pdb), declared by
+// engine/CTCSpecialAbilities.h; was a free stand-in.
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#include "engine/CTCSpecialAbilities.h"
 
 class CTCInventoryAbilities {
 public:
@@ -266,12 +232,12 @@ void CTCMultiArrow::Init()
     ((const CThing*)ParentThing)->GetInterface(&holder, 0x13);
     ApplyEffectOnWeapon(holder->PWeapon.GetPItem());
     CreateAmmoEffect();
-    CDefPointer<CSpecialEffectsDef> effects;
+    CDefPointer<const CSpecialEffectsDef> effects;
     {
         long effect = 0;
-        bool found = ((CDefClassBase*)PDef.Object)->GetSubDef(&effects) && effects->GetEffectFromString("CAST_EFFECT", effect);
+        bool found = PDef->GetSubDef(&effects) && effects->GetEffectFromString("CAST_EFFECT", effect);
         if (found)
-            CreateParticleEffect(effect, parent->GetPos());
+            CTCSpecialAbilities::CreateParticleEffect(effect, parent->GetPos());
     }
     CTCSoundPlayer* player;
     if (parent->GetInterface(&player, 0x10)) {

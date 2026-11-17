@@ -25,62 +25,26 @@
 class CThing;
 class CBaseObject;
 class CTCBase;
-
-class CCharString {
-public:
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    void* m_pStringData;
-};
-
-class CDefPointeeBase { public:
-    virtual void Destroy();                            // slot 0
-    virtual void Delete();                             // slot 1 (+0x04)
-    long m_refCount;                                   // +0x04
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object && --Object->m_refCount == 0)
-            Object->Delete();
-    }
-    T* operator->() const { return Object; }
-};
-class CSpecialEffectsDef : public CDefPointeeBase { public:
-    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
-};
-long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString& name);   // stand-in callee
-// Stand-in body (out of line in retail): it writes the out value only, so VC7.1 knows the effect index's address does
-// not escape the call (the 0x008D9740 GetEffectFromString idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
-{
-    long found = Lookup_CSpecialEffectsDef_CalcAndLookup(this, name);
-    if (found < 0)
-        return false;
-    value = found;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);       // 0x00669580
-};
+// NF49 (round 7): the def classes come from the shared headers (were local CCharString / CDefPointeeBase / CDefPointer /
+// CSpecialEffectsDef / CDefClassBase models with same-TU stand-in GetSubDef / GetEffectFromString bodies over made-up
+// FindDef_CDefClassBase_GetSubDef_0 / Lookup_CSpecialEffectsDef_CalcAndLookup callees): the call at 0x00669580 is the member
+// template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z (Ego_r.pdb /
+// FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10 idiom), and
+// CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY,
+// the 0x007941D0 idiom), so the def handle and the effect index stay uncaptured as with the stand-ins.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CSpecialAbilitiesMultiArrowDef : public CDefClassBase { public: };
-void* FindDef_CDefClassBase_GetSubDef_0();             // stand-in callee of the stand-in body below
-// Same-TU stand-in for the out-of-line GetSubDef<CSpecialEffectsDef> (the landed 0x008C4170 idiom): it writes the out
-// slot only inline, so VC7.1 knows the def pointer's address does not escape and keeps the def in ebp.
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>* out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -107,7 +71,11 @@ public:
         return false;
     }
 };
-CThing* __fastcall CreateParticleEffect(long type, const C3DVector& position);   // 0x0072AB70
+// NF49 (round 7): CreateParticleEffect 0x0072AB70 is the public static __fastcall
+// ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r.pdb / FableWin.pdb), declared by
+// engine/CTCSpecialAbilities.h; was a free stand-in.
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#include "engine/CTCSpecialAbilities.h"
 
 class CTCDParticleEmitter {
 public:
@@ -165,11 +133,11 @@ public:
 void CTCMultiArrow::CreateAmmoEffect()
 {
     --CreateAmmoEffectCount;
-    CDefPointer<CSpecialEffectsDef> effects;
+    CDefPointer<const CSpecialEffectsDef> effects;
     long effectIndex = 0;
     if (PDef->GetSubDef(&effects)) {
         if (effects->GetEffectFromString("AMMO_EFFECT", effectIndex)) {
-            CIntelligentPointer<CThing> effect(CreateParticleEffect(effectIndex, ParentThing->GetPos()));
+            CIntelligentPointer<CThing> effect(CTCSpecialAbilities::CreateParticleEffect(effectIndex, ParentThing->GetPos()));
             if (IS_THING_ALIVE(effect)) {
                 CTCDParticleEmitter* emitter;
                 ((CThing*)effect.GetPItem())->GetInterface(&emitter, 0x4b);

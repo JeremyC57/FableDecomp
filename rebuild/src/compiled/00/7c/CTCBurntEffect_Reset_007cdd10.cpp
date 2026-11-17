@@ -18,31 +18,28 @@
 //   `dynamic initializer for '...'`, defining rows named by agentFAM09):
 //   0x013BAC34 SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME (global, const; initializer 0x0121E620), was g_BurntHelperB.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CCharString / CDefPointer / CSpecialEffectsDef / CDefClassBase models with same-TU stand-in bodies over made-up LookupEffectStandIn / FindDef_CDefClassBase_GetSubDef_0 callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/CTCBase.h"
 
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
-struct CEffectDef {
-    virtual void v00();
-    virtual void Destroy();                           // slot 1
-    long RefCount;                                    // +0x04
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-};
-template <class T> class CDefPointer { public:
-    T* Data;
-    CDefPointer() : Data(0) {}
-    ~CDefPointer() { if (Data) { if (--Data->RefCount == 0) Data->Destroy(); } }
-    T* operator->() const { return Data; }
-};
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CEffectDef>* out);     // 0x00669580
-};
 class CSpecialAbilitiesBurntEffectDef : public CDefClassBase { public:
-    unsigned char _pad00[0x3c];
+    unsigned char _pad25[0x3c - 0x25];   // (the shared CDefClassBase is 0x25 bytes, packed)
     float FadeInTime;                                 // +0x3c
     float FadeOutTimeStart;                           // +0x40
     float FadeOutTime;                                // +0x44
@@ -125,25 +122,7 @@ class CTCBurntEffect : public CTCBase { public:
     void Reset();
 };
 
-long LookupEffectStandIn(const CEffectDef* def, const CCharString& name);   // stand-in callee
-__declspec(noinline) bool CEffectDef::GetEffectFromString(const CCharString& name, long& type) const
-{
-    long found = LookupEffectStandIn(this, name);
-    if (found < 0)
-        return false;
-    type = found;
-    return true;
-}
 
-void* FindDef_CDefClassBase_GetSubDef_0();             // stand-in callee
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CEffectDef>* out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
 
 void CTCBurntEffect::Reset()
 {
@@ -151,7 +130,7 @@ void CTCBurntEffect::Reset()
     FadeInTime = (long)(PDef->FadeInTime * CMainGameComponent::GetConstantFPS());
     FadeOutTimeStart = (long)(PDef->FadeOutTimeStart * CMainGameComponent::GetConstantFPS());
     FadeOutTime = (long)(PDef->FadeOutTime * CMainGameComponent::GetConstantFPS());
-    CDefPointer<CEffectDef> def;
+    CDefPointer<const CSpecialEffectsDef> def;
     long type = 0;
     C3DVector position = ParentThing->GetPos();
     if (GetDef()->GetSubDef(&def) && def->GetEffectFromString("SINGE_EFFECT", type)) {

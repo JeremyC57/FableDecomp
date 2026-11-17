@@ -22,17 +22,33 @@
 #include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CDefStringTable / CDefNative / CEffectsDef / CEffectsDefPointer / CLightningSpellDef / CLightningSpellDefPointer / CGameDefinitionManager / CCharString models with same-TU stand-in bodies over made-up GetSubDefIndex / GetEffectsDefFromGlobalIndex callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_FORCEINLINE_GETSTRING
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CSpecialAbilitiesLightningSpellDef.h"
+// NF49: the manager and the lightning def come from engine/CGameDefinitionManager.h and engine/CSpecialAbilitiesLightningSpellDef.h
+// (were local CDefinitionManager / CGameDefinitionManager / CLightningSpellDef / CLightningSpellDefPointer / CDefStringTable models):
+// GetDef 0x007A35D0 is the member template ??$GetDef@VCSpecialAbilitiesLightningSpellDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesLightningSpellDef@@@@@Z
+// (FableWin.pdb; declared only, as the row had it), the def's InitSound (+0x110, Ego_r) is read through CDefString::GetString
+// (FABLE_RETAIL_CDEFSTRING_FORCEINLINE_GETSTRING: GDefStringTable.GetString(TablePos) in place) and CombatMultiplierIncreaseTime is +0x10C.
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 class CTCBase;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CDefStringTable { public:
-    CCharString GetString(long id) const;                     // 0x009D49B0
-};
-extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                   // 0x013CA828
 extern unsigned long g_InvalidSoundHandle;              // 0x0129D25C
 class CMainGameComponent {
 protected:
@@ -124,53 +140,6 @@ struct CCreaturePointer : CBaseIntelligentPointer {     // CIntelligentPointer<C
     CCreaturePointer& operator=(const CCreaturePointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
-struct CDefNative {
-    virtual void v00();
-    virtual void Delete();
-    long RefCount;                                      // +0x04
-};
-struct CEffectsDef : CDefNative {
-    void Lookup(const CCharString& name, long* out);    // 0x00669D30
-};
-struct CEffectsDefPointer {
-    CEffectsDef* Object;
-    CEffectsDefPointer() : Object(0) { }
-    ~CEffectsDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Delete(); } }
-    CEffectsDef* operator->() const { return Object; }
-};
-struct CLightningSpellDef : CDefNative {
-    unsigned char _pad08[0x10c - 0x08];
-    float CombatMultiplierTime;                         // +0x10c (descriptive)
-    long InitSoundName;                                 // +0x110 (descriptive)
-    bool GetSubDef(CEffectsDefPointer* out);            // 0x00669580
-};
-struct CLightningSpellDefPointer {
-    CLightningSpellDef* Object;
-    CLightningSpellDefPointer() : Object(0) { }
-    CLightningSpellDef* operator->() const { return Object; }
-};
-long* GetSubDefIndex(CLightningSpellDef* def, const CCharString& name);
-CEffectsDef* GetEffectsDefFromGlobalIndex(long index);
-#pragma auto_inline(off)
-// Same-TU stand-in for GetSubDef 0x00669580: VC7.1 then knows the out pointer's address does not escape, so the
-//   effects def is held in a register for the lookups and its release (as retail).
-bool CLightningSpellDef::GetSubDef(CEffectsDefPointer* out)
-{
-    long* pIndex = GetSubDefIndex(this, "CEffectsDef");
-    if (pIndex) {
-        out->Object = GetEffectsDefFromGlobalIndex(*pIndex);
-        return true;
-    }
-    return false;
-}
-class CDefinitionManager { public:
-    long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
-};
-#pragma auto_inline(on)
-class CGameDefinitionManager { public:
-    static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
-    bool GetDef(long index, CLightningSpellDefPointer* out) const;   // 0x007A35D0
-};
 
 // (NF34: the local empty EHeroAbility enum is replaced by engine/EHeroAbility.h, included above)
 struct CWillButtonHelperTimer {                         // retail 0x34 bytes
@@ -200,7 +169,7 @@ class CTCWillLightning : public CTCBase { public:               // vtable 0x0126
     long  AIHoldingDownTimer;                           // +0x1c
     long  PrimaryHandEffect;                            // +0x20
     long  SecondaryHandEffect;                          // +0x24
-    CLightningSpellDefPointer m_lspDef;                 // +0x28
+    CDefPointer<const CSpecialAbilitiesLightningSpellDef> m_lspDef;   // +0x28
     CWillButtonHelperTimer m_tTimer;                    // +0x2c
     float m_fTime;                                      // +0x60
     float m_fTimeBase;                                  // +0x64
@@ -253,16 +222,16 @@ CTCWillLightning::CTCWillLightning(CThing& parent)
     if (ParentThing->HasTC(0x10)) {
         CTCSoundPlayer* sound = ParentThing->GetTC<CTCSoundPlayer>(0x10);
         {
-            CCharString name = GDefStringTable.GetString(m_lspDef->InitSoundName);
+            CCharString name = m_lspDef->InitSound.GetString();
             ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(name, 0, 0, 0, -1);
         }
     }
-    CEffectsDefPointer effects;
+    CDefPointer<const CSpecialEffectsDef> effects;
     if (m_lspDef->GetSubDef(&effects)) {
-        effects->Lookup("LIGHTNING_BEAM_LARGE_EFFECT", &g_LightningBeamLargeEffect);
-        effects->Lookup("LIGHTNING_BEAM_EFFECT", &g_LightningBeamEffect);
-        effects->Lookup("LIGHTNING_HAND_EFFECT", &PrimaryHandEffect);
-        effects->Lookup("LIGHTNING_HAND_EFFECT_NO_LIGHT", &SecondaryHandEffect);
+        effects->GetEffectFromString("LIGHTNING_BEAM_LARGE_EFFECT", g_LightningBeamLargeEffect);
+        effects->GetEffectFromString("LIGHTNING_BEAM_EFFECT", g_LightningBeamEffect);
+        effects->GetEffectFromString("LIGHTNING_HAND_EFFECT", PrimaryHandEffect);
+        effects->GetEffectFromString("LIGHTNING_HAND_EFFECT_NO_LIGHT", SecondaryHandEffect);
     }
     m_cbpPlayer = CCreaturePointer(ParentThing);
     long level = 0;
@@ -283,6 +252,6 @@ CTCWillLightning::CTCWillLightning(CThing& parent)
         m_bPlayedSound = false;
     }
     BeamsInitialised = false;
-    m_CombatMultiplierTimer = (long)(CMainGameComponent::GetConstantFPS() * m_lspDef->CombatMultiplierTime);
+    m_CombatMultiplierTimer = (long)(CMainGameComponent::GetConstantFPS() * m_lspDef->CombatMultiplierIncreaseTime);
     CGameDefinitionManager::Get();
 }

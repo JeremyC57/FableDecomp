@@ -13,6 +13,23 @@
 //        register walks the regions; the best score starts at 1000 and is added to the score only when one was found.
 //        Regions[i] goes through the STLport `*(begin() + i)` operator[] with an inline begin(); a raw `*(_M_start + i)`
 //        loads Pos.Y before Radius in the hoisted sum (operand order flips).
+// NF49 (round 7): the def classes come from the shared headers (were local CShoveHaPennyRegionDef / CRegionVector / CTavernGameShoveHaPennyDef / CShoveHaPennyDefPointer / CDefClassBase models and a same-TU
+// stand-in GetSubDef body over made-up FindRef_CDefClassBase_GetSubDef_0 callees): the call at 0x007D1260 is the member template
+// ??$GetSubDef@VCTavernGameShoveHaPennyDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameShoveHaPennyDef@@@@@Z (Ego_r.pdb / FableWin.pdb), its body visible
+// and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameShoveHaPennyDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CThing;
 class C2DVector { public: float X, Y; };
 #include "engine/C3DVector.h"
@@ -25,55 +42,8 @@ class Coin { public:                                   // 0x3c bytes (packed in 
     long      Owner;                            // +0x34
     unsigned long Sound;                        // +0x38
 };
-class CShoveHaPennyRegionDef { public:                 // 0x30 bytes
-    unsigned char _defbase[0x28];
-    float         Start;                        // +0x28
-    float         Score;                        // +0x2c
-};
-struct CRegionVector {                          // STLport vector<CShoveHaPennyRegionDef> (12 bytes)
-    CShoveHaPennyRegionDef* _M_start;
-    CShoveHaPennyRegionDef* _M_finish;
-    CShoveHaPennyRegionDef* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-    CShoveHaPennyRegionDef* begin() const { return _M_start; }
-    CShoveHaPennyRegionDef& operator[](unsigned long i) const { return *(begin() + i); }
-};
 
-class CTavernGameShoveHaPennyDef { public:
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-    long          m_count;                      // +0x04
-    unsigned char _pad_0x08[0x19c];
-    CRegionVector Regions;                      // +0x1a4
-    void Release()
-    {
-        if (--m_count == 0)
-            Destroy();
-    }
-};
-struct CShoveHaPennyDefPointer {                // CDefPointer<const CTavernGameShoveHaPennyDef>
-    CTavernGameShoveHaPennyDef* Object;
-    CShoveHaPennyDefPointer() : Object(0) {}
-    ~CShoveHaPennyDefPointer() { if (Object) Object->Release(); }
-    CTavernGameShoveHaPennyDef* operator->() const { return Object; }
-};
 
-class CDefClassBase { public:
-    bool GetSubDef(CShoveHaPennyDefPointer* out);   // 0x007D1260
-};
-CTavernGameShoveHaPennyDef* FindRef_CDefClassBase_GetSubDef_0(CDefClassBase* defClass);   // stand-in callee of the stand-in body below
-// Stand-in body (the real 0x007D1260 is in this TU, out of line, see the landed CDefClassBase_GetSubDef007d1260): it only
-// writes the def through the out parameter, so VC7.1 knows the caller's address-taken pointer does not escape the call.
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CShoveHaPennyDefPointer* out)
-{
-    CTavernGameShoveHaPennyDef* def = FindRef_CDefClassBase_GetSubDef_0(this);
-    if (!def)
-        return false;
-    out->Object = def;
-    return true;
-}
-#pragma auto_inline(on)
 
 struct CThingDefOwner {
     unsigned char  _pad_0x00[0x70];
@@ -96,7 +66,7 @@ struct CTCTavernGameShoveHaPenny {
 
 void CTCTavernGameShoveHaPenny::CalcScores()
 {
-    CShoveHaPennyDefPointer def;
+    CDefPointer<const CTavernGameShoveHaPennyDef> def;
     Owner->DefClass->GetSubDef(&def);
     Score = 0;
     for (Coin* coin = CoinsBegin; coin != CoinsEnd; ++coin) {

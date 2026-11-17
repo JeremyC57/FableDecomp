@@ -16,14 +16,26 @@
 // ebp thanks to the GetSubDef stand-in (`dec [ebp+4] ; jne`); found and effect lookups are nested ifs; the effect name is a temporary in the dead out
 // slot; StartUpEffect is assigned from an intelligent-pointer temporary; the emitter is the out-parameter GetInterface.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CDefHolder / CBerserkEffectsDef / CCharString / CDefPointeeBase / CDefPointer / CDefClassBase models with same-TU stand-in bodies over made-up FindSubDef / FindEffect callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom), so the caller's handles stay uncaptured as with the stand-ins.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CTCBase;
 class CBaseObject;
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -49,7 +61,11 @@ class CThing { public:
         return false;
     }
 };
-CThing* __fastcall CreateParticleEffect(long effect, const C3DVector& position);   // 0x0072AB70
+// NF49 (round 7): CreateParticleEffect 0x0072AB70 is the public static __fastcall
+// ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r.pdb / FableWin.pdb), declared by
+// engine/CTCSpecialAbilities.h; was a free stand-in.
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#include "engine/CTCSpecialAbilities.h"
 class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
@@ -79,57 +95,6 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-class CDefPointeeBase { public:
-    virtual void Destroy();                             // slot 0
-    virtual void Delete();                              // slot 1 (+0x04)
-    long m_refCount;                                    // +0x04
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object && --Object->m_refCount == 0)
-            Object->Delete();
-    }
-    T* operator->() const { return Object; }
-};
-template <class T> struct CDefHolder {
-    T* Object;
-    CDefHolder(T* object) : Object(object) { }
-    ~CDefHolder()
-    {
-        if (Object && --Object->m_refCount == 0)
-            Object->Delete();
-    }
-    T* operator->() const { return Object; }
-};
-struct CBerserkEffectsDef : CDefPointeeBase {
-    long FindEffect(const CCharString& name);
-    bool GetEffect(const CCharString& name, long* effect);   // 0x00669D30
-};
-class CDefClassBase : public CDefPointeeBase { public:
-    CDefPointeeBase* FindSubDef();
-    bool GetSubDef(CDefPointer<CBerserkEffectsDef>* out);     // 0x00669580
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for GetSubDef<CBerserkEffectsDef> (its instantiation lives in this TU in retail): VC7.1 then knows the
-// out pointer does not escape, keeps the def in a register and reuses the out slot.
-bool CDefClassBase::GetSubDef(CDefPointer<CBerserkEffectsDef>* out)
-{
-    CDefPointeeBase* p = FindSubDef();
-    out->Object = (CBerserkEffectsDef*)p;
-    if (p)
-        ++p->m_refCount;
-    return p != 0;
-}
-bool CBerserkEffectsDef::GetEffect(const CCharString& name, long* effect)
-{
-    long e = FindEffect(name);
-    *effect = e;
-    return e != 0;
-}
-#pragma auto_inline(on)
 class CTCBerserk {
 public:
     void*                        __vftable;             // +0x00
@@ -143,11 +108,11 @@ public:
 
 void CTCBerserk::CreateStartingEffect()
 {
-    CDefPointer<CBerserkEffectsDef> def;
+    CDefPointer<const CSpecialEffectsDef> def;
     long effect = 0;
     if (PDef->GetSubDef(&def)) {
-        if (def->GetEffect("STARTUP_EFFECT", &effect)) {
-            StartUpEffect = CIntelligentPointer<CThing>(CreateParticleEffect(effect, ParentThing->GetPos()));
+        if (def->GetEffectFromString("STARTUP_EFFECT", effect)) {
+            StartUpEffect = CIntelligentPointer<CThing>(CTCSpecialAbilities::CreateParticleEffect(effect, ParentThing->GetPos()));
             if (IS_THING_ALIVE(StartUpEffect)) {
                 CTCDParticleEmitter* emitter;
                 ((CThing*)StartUpEffect.GetPItem())->GetInterface(&emitter, 0x4b);

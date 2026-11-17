@@ -112,6 +112,12 @@ public:
         virtual bool operator()() const;
     };
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_CAIFILTERBASE_RESTORE_PROTECTED
+    // NF49 opt-in (2026-11-17, row 0x009378F0): the `public:` above (for the nested filter) leaves the members that follow public, so
+    // a row defining _FINDAGUARD binds ?AIAction_PerformActionAndWait / _LookAtThing / _MoveToThingProximity@CAIStateGroupBase@@QAE..;
+    // Ego_r.pdb + FableWin.pdb spell all three protected (IAE). Access label only.
+protected:
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FILTER
 protected:
     EAIActionReturn AIAction_MoveToPreCalcRoute(const CThing& thing, bool& reached, EMovementType movement, const CAIFilterBase& filter,

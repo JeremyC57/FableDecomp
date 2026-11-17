@@ -19,84 +19,42 @@
 //   `dynamic initializer for '...'`, defining rows named by agentFAM09):
 //   0x013BAC34 SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME (global, const; initializer 0x0121E620), was g_LeftHandAttachmentName.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CCharString / CDefVirtual / CDefBase / CDefPointer / CSpecialEffectsDef / CDefClassBase models with same-TU stand-in bodies over made-up Lookup_CSpecialEffectsDef_GetEffectFromString / Find_CDefClassBase_GetSubDef callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom), so the caller's handles stay uncaptured as with the stand-ins.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY   // NF49: before the first CDefinitionManager.h include (see the manager note below)
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CTCBase;
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
 class CDefString { public: long Index; };
 class CDefStringTable { public:
     CCharString GetString(long index) const;           // 0x009D49B0 Ego_r/FableWin ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (agentNF16)
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)              // 0x013CA828
-struct CDefVirtual {
-    virtual ~CDefVirtual();                           // slot 0
-    virtual void Destroy();                           // slot 1
-};
-struct CDefBase : CDefVirtual {
-    long m_refCount;                                  // +0x04
-};
-class CSpecialEffectsDef : public CDefBase { public:
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-};
-long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
-{
-    long found = Lookup_CSpecialEffectsDef_GetEffectFromString(this, name);
-    if (found < 0)
-        return false;
-    type = found;
-    return true;
-}
-#pragma auto_inline(on)
-template <class T> class CDefPointer { public:
-    T* m_p;
-    CDefPointer() : m_p(0) { }
-    ~CDefPointer()
-    {
-        if (m_p && --m_p->m_refCount == 0)
-            m_p->Destroy();
-    }
-    T* operator->() const { return m_p; }
-};
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
-};
-void* Find_CDefClassBase_GetSubDef(const void* owner);
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out)
-{
-    void* def = Find_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out.m_p = (T*)def;
-    return true;
-}
-#pragma auto_inline(on)
 class CSpecialAbilitiesMultiArrowDef : public CDefClassBase { public:
-    unsigned char _pad08[0x60 - 0x08];
+    unsigned char _pad25[0x60 - 0x25];   // (the shared CDefClassBase is 0x25 bytes, packed)
     CDefString    CastSound;                          // +0x60
 };
-class CDefinitionManager { public:
-    long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
-};
-class CGameDefinitionManager { public:
-    static CGameDefinitionManager& __fastcall Get();                      // 0x0044C6B0
-    bool GetDef(long index, CDefPointer<CSpecialAbilitiesMultiArrowDef>* out);   // 0x007CC8E0
-};
-void* FindDef_CGameDefinitionManager_GetDef(long index);
-#pragma auto_inline(off)
-__declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer<CSpecialAbilitiesMultiArrowDef>* out)
-{
-    void* def = FindDef_CGameDefinitionManager_GetDef(index);
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
+// NF49: the manager calls come from engine/CGameDefinitionManager.h (were local CDefinitionManager / CGameDefinitionManager
+// models with a same-TU stand-in GetDef body over a made-up FindDef_CGameDefinitionManager_GetDef callee): GetDef 0x007CC8E0 is the
+// member template ??$GetDef@VCSpecialAbilitiesMultiArrowDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesMultiArrowDef@@@@@Z
+// (FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY);
+// FABLE_RETAIL_CGAMEDEFINITIONMANAGER drops the default-path GetDef that would hide it.
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "engine/CGameDefinitionManager.h"
 class CTCSoundPlayer { public:
     unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
 };
@@ -134,7 +92,11 @@ class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 extern const CCharString SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;          // 0x013BAC34
-CThing* __fastcall CreateParticleEffect(long type, const C3DVector* position);   // 0x0072AB70
+// NF49 (round 7): CreateParticleEffect 0x0072AB70 is the public static __fastcall
+// ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r.pdb / FableWin.pdb), declared by
+// engine/CTCSpecialAbilities.h; was a free stand-in taking `const C3DVector*` (same register passing: ecx = effect, edx = &pos).
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#include "engine/CTCSpecialAbilities.h"
 class CSoundPair { public:
     long First, Second;
     CSoundPair() : First(0), Second(0) { }
@@ -176,7 +138,7 @@ CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingC
     : CCombatActionBase(creature, 0x91, CSoundPair()), Level(0)
 {
     SetCombatAnimation("ST_MULTI_ARROW_CAST");
-    CDefPointer<CSpecialAbilitiesMultiArrowDef> def;
+    CDefPointer<const CSpecialAbilitiesMultiArrowDef> def;
     long index;
     {
         CCharString name("SPECIAL_ABILITIES_MULTI_ARROW_DEF");
@@ -188,11 +150,11 @@ CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingC
         CCharString soundName = GDefStringTable.GetString(def->CastSound.Index);
         ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(soundName, 1, 0, 0, -1);
     }
-    CDefPointer<CSpecialEffectsDef> effects;
+    CDefPointer<const CSpecialEffectsDef> effects;
     long effectType = 0;
-    if (def->GetSubDef(effects)) {
+    if (def->GetSubDef(&effects)) {
         if (effects->GetEffectFromString("CAST_EFFECT", effectType)) {
-            CThing* effect = CreateParticleEffect(effectType, &GetCreature()->GetPos());
+            CThing* effect = CTCSpecialAbilities::CreateParticleEffect(effectType, GetCreature()->GetPos());
             CTCDParticleEmitter* emitter;
             if (effect && !effect->IsDead() && effect->GetInterface(&emitter, 0x4b))
                 emitter->AttachToThing(*GetCreature(), 10, SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, 0);

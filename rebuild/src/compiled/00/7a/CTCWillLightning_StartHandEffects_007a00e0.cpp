@@ -54,7 +54,11 @@ class CThing { public:
     }
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
-CThing* __fastcall CreateParticleEffect(long effect, const C3DVector* pos);   // 0x0072AB70
+// NF49 (round 7): CreateParticleEffect 0x0072AB70 is the public static __fastcall
+// ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r.pdb / FableWin.pdb), declared by
+// engine/CTCSpecialAbilities.h; was a free stand-in taking `const C3DVector*` (same register passing: ecx = effect, edx = &pos).
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#include "engine/CTCSpecialAbilities.h"
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -119,11 +123,11 @@ void CTCWillLightning::StartHandEffects()
     if (m_lsState == 6)
         return;
     if (IsRightHanded()) {
-        m_tpRightHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(PrimaryHandEffect, &((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
-        m_tpLeftHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(SecondaryHandEffect, &((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
+        m_tpRightHandEffect = CIntelligentPointer<CThing>(CTCSpecialAbilities::CreateParticleEffect(PrimaryHandEffect, ((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
+        m_tpLeftHandEffect = CIntelligentPointer<CThing>(CTCSpecialAbilities::CreateParticleEffect(SecondaryHandEffect, ((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
     } else {
-        m_tpRightHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(SecondaryHandEffect, &((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
-        m_tpLeftHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(PrimaryHandEffect, &((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
+        m_tpRightHandEffect = CIntelligentPointer<CThing>(CTCSpecialAbilities::CreateParticleEffect(SecondaryHandEffect, ((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
+        m_tpLeftHandEffect = CIntelligentPointer<CThing>(CTCSpecialAbilities::CreateParticleEffect(PrimaryHandEffect, ((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
     }
     if (IS_THING_ALIVE(m_tpRightHandEffect)) {
         CTCDParticleEmitter* emitter = ((CThing*)m_tpRightHandEffect.GetPItem())->GetInterface<CTCDParticleEmitter>(0x4b);

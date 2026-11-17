@@ -23,6 +23,24 @@
 //   ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z -- a static __fastcall member taking
 //   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
 //   are classes (V in every PDB signature).
+// NF49 (round 7): the def classes come from the shared headers (were local CDefPointer<const CTavernGameDef> / CCharString / CDefStringTable / CRefCounted / CDefVirtual / CTavernGameDef / CTavernGameSpotTheAdditionDef / CSpotTheAdditionDefPointer / CDefinitionManager / CDefClassBase models and a same-TU
+// stand-in GetSubDef body): the call at 0x007D9A80 is the member template
+// ??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z (Ego_r.pdb / FableWin.pdb), its body visible
+// and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CDEFSTRING_FORCEINLINE_GETSTRING
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameSpotTheAdditionDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #pragma pack(push, 1)
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float Up[3], Forward[3]; };
@@ -31,92 +49,9 @@ class CRightHandedSet { public: float Up[3], Forward[3]; };
 class CThing;
 class CThingObject;
 
-class CCharString { public:
-    void* m_data;
-    ~CCharString();                             // 0x0099EAE0
-};
-class CDefStringTable {
-public:
-    CCharString GetString(long) const;   // 0x009D49B0
-};
-extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 
-struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
-    long GetRefCount() const { return m_count; }
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
-    unsigned char _pad_0x08[0x88];
-    long CameraName;                            // +0x90 CDefString
-    void ReleaseTemporary()
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
-template <class T> class CDefPointer;
-template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)                            // CDefPointer<const CTavernGameDef>
-    CTavernGameDef* Object;
-    CDefPointer() : Object(0) {}
-    ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
-    CTavernGameDef* operator->() const { return Object; }
-};
 
-class CTavernGameSpotTheAdditionDef : public CDefVirtual { public:
-    long m_count;                               // +0x04
-    unsigned char _pad_0x08[0x28];
-    float CoverWidth;                           // +0x30
-    float CoverLength;                          // +0x34
-    unsigned char _pad_0x38[0x2c];
-    long  PointerModel;                         // +0x64
-    float PointerHeightOffset;                  // +0x68
-    unsigned char _pad_0x6c[0x10];
-    float LengthMovementScale;                  // +0x7c
-    float HeightMovementScale;                  // +0x80
-    void Release() { if (--m_count == 0) Destroy(); }
-};
-struct CSpotTheAdditionDefPointer {             // CDefPointer<const CTavernGameSpotTheAdditionDef>
-    CTavernGameSpotTheAdditionDef* Object;
-    CSpotTheAdditionDefPointer() : Object(0) {}
-    ~CSpotTheAdditionDefPointer() { if (Object) Object->Release(); }
-    CTavernGameSpotTheAdditionDef* operator->() const { return Object; }
-};
-class CDefinitionManager { public:
-    CTavernGameSpotTheAdditionDef* PeekDefFromGlobalIndex(long index);   // stand-in only
-};
-class CDefClassBase { public:
-    virtual long* GetSubDefIndex(const char* name);       // stand-in only (retail: slot 14, CCharString name)
-    unsigned char       _pad_0x04[0x18];
-    CDefinitionManager* m_pManager;             // +0x1c
-    bool GetSubDef_007d9a80(CSpotTheAdditionDefPointer& out);   // 0x007D9A80 (GetSubDef<CTavernGameSpotTheAdditionDef>)
-};
 
-// Stand-in for the same-module GetSubDef<CTavernGameSpotTheAdditionDef> body (0x007D9A80; not graded here): compiled
-// above the caller without inlining so VC7.1 sees, as retail's whole-program build did, that the def pointer it fills
-// does not escape.
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef_007d9a80(CSpotTheAdditionDefPointer& out)
-{
-    long* index = GetSubDefIndex("CTavernGameSpotTheAdditionDef");
-    if (index == 0)
-        return false;
-    CTavernGameSpotTheAdditionDef* def = m_pManager->PeekDefFromGlobalIndex(*index);
-    if (out.Object != def) {
-        if (out.Object)
-            out.Object->Release();
-        out.Object = def;
-        if (def)
-            ++def->m_count;
-    }
-    return true;
-}
-#pragma auto_inline(on)
 
 class CThing { public:
     unsigned char  _pad_0x00[0x70];
@@ -154,7 +89,7 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
     bool          FirstRound;                   // +0x14c
     CRightHandedSet GamePositionRHSet;          // +0x14d
     C3DVector     GamePositionPos;              // +0x165
-    void GetDef(CSpotTheAdditionDefPointer* out) { ParentThing->PDef->GetSubDef_007d9a80(*out); }
+    void GetDef(CDefPointer<const CTavernGameSpotTheAdditionDef>* out) { ParentThing->PDef->GetSubDef(out); }
     void EnterGame();
 };
 
@@ -164,10 +99,10 @@ void CTCTavernGameSpotTheAddition::EnterGame()
     CDefPointer<const CTavernGameDef> gameDef;
     CTCTavernGame::GetDef(&gameDef);
     {
-        CCharString camera = GDefStringTable.GetString(gameDef->CameraName);
+        CCharString camera = gameDef->CameraName.GetString()   /* NF49: CDefString::GetString, GDefStringTable.GetString(TablePos) in place */;
         CameraUseCameraPoint(camera);
     }
-    CSpotTheAdditionDefPointer def;
+    CDefPointer<const CTavernGameSpotTheAdditionDef> def;
     GetDef(&def);
     CurrentTime = 0;
     Pointer = CreateGamePiece(def->PointerModel);

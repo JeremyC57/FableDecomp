@@ -12,40 +12,27 @@
 // Layout: retail CThing interface bitset +0x20, CVectorMap +0x44; CThingAICreature's last-attacker intelligent pointer +0xF4
 // (descriptive); the world's message event manager +0x60; the faction component (TC 0x49) keeps its faction at +0x18.
 #include "fable_compiler.h"
+// NF49 (round 7): the string, the def handle, the message-event def and the manager come from the shared headers (were local
+// CCharString / CMessageEventDef / CDefPointer / CDefinitionManager models plus a same-TU stand-in GetDef body over a made-up
+// FindDef_2e60 callee): the lookup at 0x007923C0 is the by-name member template
+// ??$GetDef@VCMessageEventDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCMessageEventDef@@@@@Z (FableWin.pdb),
+// with the header's same-TU body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY, the stand-in's role: the slot does not escape);
+// the hand-written release after the base OnDie is the shared handle's function-end destructor.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CMessageEventDef.h"
 class C3DVector;
 class CFaction;
 class CTCBase;
 class CMessageEvent;
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length);         // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-
-class CMessageEventDef { public:
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long m_count;                                       // +4
-};
-struct CDefPointer {
-    CMessageEventDef* m_p;
-    CDefPointer() : m_p(0) { }
-};
-class CDefinitionManager { public:
-    bool GetDef(const CCharString& name, CDefPointer& def);   // 0x007923C0
-};
-void* FindDef_2e60(const CCharString& name);
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer& def)
-{
-    void* found = FindDef_2e60(name);
-    if (!found)
-        return false;
-    *(void**)&def = found;
-    return true;
-}
-#pragma auto_inline(on)
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -157,17 +144,17 @@ public:
 
 void CThingAICreature::OnDie()
 {
-    CDefPointer def;
+    CDefPointer<const CMessageEventDef> def;
     CThing* killer = LastAttacker.GetPItem();
     if (killer && killer->IsKiller()) {
         bool found;
         {
             CCharString name("STANDARD_MESSAGE_EVENT_MURDER", -1);
-            found = GetDefinitionManager()->GetDef(name, def);
+            found = GetDefinitionManager()->GetDef(name, &def);
         }
         if (found) {
             CMessageEventManager* manager = GetWorld().MessageEventManager;
-            manager->AddMessage(*def.m_p, PeekPos(), killer, this, 0);
+            manager->AddMessage(*def, PeekPos(), killer, this, 0);
         }
     }
     CTCWife* wife = 0;
@@ -188,7 +175,4 @@ void CThingAICreature::OnDie()
     else if (wife)
         wife->Died();
     CThingCreatureBase::OnDie();
-    const CMessageEventDef* object = def.m_p;
-    if (object && --const_cast<CMessageEventDef*>(object)->m_count == 0)
-        const_cast<CMessageEventDef*>(object)->Destroy();
 }

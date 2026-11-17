@@ -7,6 +7,23 @@
 //   false;` -- retail keeps the cell passable for Passability <= 0); the cell pointer steps before x.
 // Callees: CMap theme lookup 0x0081F910 (labelled CopyPos), CGameDefinitionManager::Get 0x0044C6B0 (__fastcall), CDefinitionManager::GetDef<T> 0x0063F3A0, CMap::GetGroundFaceNormalAt 0x0081F6C0; constants 0.0f @ 0x0122DEDC, 0.7f @ 0x01255318.
 // Layout: no CMap engine header; local model (height field +0x1A7C: cells +0x10 of 12 bytes, width +0x204, height +0x208; passability flag +0x1D38; theme def flags +0xA0 bit 0, passability +0x80).
+// NF49 (round 7): the def classes and the manager come from the shared headers (were local CThemeDef / CDefPointer /
+// CDefinitionManager / CGameDefinitionManager models plus a same-TU stand-in GetDef body over a made-up
+// FindDef_CDefinitionManager_GetDef callee): the lookup at 0x0063F3A0 is the member template
+// ??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z (FableWin.pdb; the landed
+// 0x0063DD70 / 0x0066CF00 include chain), with the header's same-TU body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY, the
+// stand-in's role). The descriptive CThemeDef is CEngineThemeDef (the template argument the FableWin symbol names); it has no
+// shared header (engine/_quarantine only), so it stays modelled on the shared CDefClassBase as landed 0x0063DD70 does.
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CGameDefinitionManager.h"
 #include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI Min;
@@ -27,39 +44,11 @@ struct CHeightField {
     long              Height;                   // +0x208
     CHeightFieldCell* GetCell(long x, long y) { return &Cells[(Height - y) * (Width + 1) + x]; }
 };
-struct CThemeDef {
-    virtual void v00();
-    virtual void Delete();                      // slot 1
-    long          m_refCount;                   // +0x04
-    unsigned char _pad08[0x78];
+class CEngineThemeDef : public CDefClassBase { public:            // Ego_r.pdb CEngineThemeDef (no shared header); retail offsets
+    unsigned char _pad_0x25[0x80 - 0x25];
     float         Passability;                  // +0x80
     unsigned char _pad84[0x1c];
     unsigned char Flags;                        // +0xa0 bit 0: passable
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (--Object->m_refCount == 0) Object->Delete(); }
-    T* operator->() const { return Object; }
-};
-class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThemeDef>* out);   // 0x0063F3A0
-};
-void* FindDef_CDefinitionManager_GetDef(CDefinitionManager* manager, long index);   // stand-in callee
-// Same-TU stand-in for the GetDef<CThemeDef> instantiation (a template member compiled in the caller's TU): it writes the
-// out slot only, so VC7.1 knows the def pointer's address does not escape the call.
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CThemeDef>* out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef(this, index);
-    if (!def)
-        return false;
-    out->Object = (CThemeDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-class CGameDefinitionManager : public CDefinitionManager { public:
-    static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 class CMap { public:
     virtual void v00();
@@ -100,7 +89,7 @@ void CMap::InitPassabilityFromThemesIfNecessary(const C2DBoxI& area)
                 theme = GetThemeIndexAt(pos, &weight);
             }
             if (theme > 0) {
-                CDefPointer<CThemeDef> def;
+                CDefPointer<const CEngineThemeDef> def;
                 CGameDefinitionManager::Get().GetDef(theme, &def);
                 if (!(def->Flags & 1) || def->Passability > 0.0f)
                     passable = false;

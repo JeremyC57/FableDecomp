@@ -6,36 +6,27 @@
 // Callees: CTCTavernGame::OnInitialActivate 0x005EA650, CDefClassBase::GetSubDef<T> 0x007D9A80, LowerBound 0x0040F020 / 0x004365B0 (const),
 //   CCharString ctor 0x0099EBF0, CTCNamedUserActionPoints::GetFreeNamedActionPoint 0x007FF190, CTCTavernGame::CreateGamePiece 0x005EA9B0,
 //   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, 0x00686D60 (game view), PositionCover 0x007D7F10
+// NF49 (round 7): the def classes come from the shared headers (were local CSpotTheAdditionDef (Cover +0x2C, PointerModel +0x64) / CCharString / CDefBase / CDefPointer / CDefClassBase models and a same-TU
+// stand-in GetSubDef body over made-up FindSubDef callees): the call at 0x007D9A80 is the member template
+// ??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z (Ego_r.pdb / FableWin.pdb), its body visible
+// and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameSpotTheAdditionDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
-class CCharString { public:
-    void* m_data;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();
-};
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long RefCount;                                      // +0x04
-};
-struct CSpotTheAdditionDef : CDefBase {                 // descriptive
-    unsigned char _pad08[0x2c - 0x08];
-    long CoverThingType;                                // +0x2c
-    unsigned char _pad30[0x64 - 0x30];
-    long GamePieceType;                                 // +0x64
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
-};
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CSpotTheAdditionDef>* def) const;   // 0x007D9A80
-};
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -142,34 +133,25 @@ struct CTCTavernGameSpotTheAddition : public CTCBase {
     void OnInitialActivate();
 };
 #pragma pack(pop)
-CSpotTheAdditionDef* FindSubDef(const CDefClassBase* defClass);
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CDefPointer<CSpotTheAdditionDef>* out) const
-{
-    CSpotTheAdditionDef* def = FindSubDef(this);
-    out->Object = def;
-    return def != 0;
-}
-#pragma auto_inline(on)
 
 void CTCTavernGameSpotTheAddition::OnInitialActivate()
 {
     OnInitialActivateBase();
-    CDefPointer<CSpotTheAdditionDef> def;
+    CDefPointer<const CTavernGameSpotTheAdditionDef> def;
     ParentThing->DefClass->GetSubDef(&def);
     CThing* thing = ParentThing;
     CTCNamedUserActionPoints* points = 0;
     thing->GetInterface(&points, 46);
     points->GetFreeNamedActionPoint(*thing, GamePositionPos, GamePositionRHSet, CCharString("DUMMY_OBJECT_GAME_POSITION"),
                                     GamePositionActionPointIndex, 0, true);
-    GamePiece = CreateGamePiece(def->GamePieceType);
+    GamePiece = CreateGamePiece(def->PointerModel);
     CoverState = 0;
     Cover = 0;
     CTCLinkedThings* links;
     if (ParentThing->GetInterfaceC(&links, 0x21)) {
         for (CLinkNode* node = links->Head->Next; node != links->Head; node = node->Next) {
             CThing* t = node->Item.GetPItem();
-            if (t && !t->Dead && t->DefIndex == def->CoverThingType) {
+            if (t && !t->Dead && t->DefIndex == def->Cover) {
                 Cover = t;
                 CoverPosition = t->GetPos();
                 CoverRHSet = t->Frame->GetRHSet();

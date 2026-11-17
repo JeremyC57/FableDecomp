@@ -7,43 +7,29 @@
 // Shape: the string is a named local built first (`push -1 ; push offset` before the frame stores); the CDefPointer word and the
 // result are zeroed in the frame (the result through edi, which also carries the final return); the def pointer is copied into
 // esi right after GetSubDef, before the test, and released last; the module is a size TU (the counted-def release stays out of line).
-// Layout: engine/CCreatureActionBase.h (PDB) agrees on PCreature at +8 (item at +0xc); `this` is modelled locally.
-class CCharString { public:                        // one pointer (PStringData)
-    void* m_pData;
-    CCharString(const char* text, long length);   // 0x0099EBF0
-    ~CCharString();                         // 0x0099EAE0
-};
+// Layout: engine/CCreatureActionBase.h (PDB) agrees on PCreature at +8 (item at +0xc); `this` is modelled locally.#include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CSubDef / CCharString / CDefPointer / CSpecialEffectsDef models with same-TU stand-in bodies over made-up FindDef_CThing_GetSubDef_0 callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 
-class CSpecialEffectsDef { public:
-    bool GetEffectFromString(CCharString const&a0, long&a1) const;   // 0x00669D30 (Ego_r.pdb ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z)
-};
-struct CSubDef {                            // CDefBase: vptr, then the reference count at +4
-    virtual void v00();
-    virtual void Destroy();                 // slot 1 (+4)
-    long m_count;                           // +4
-};
 
-struct CDefPointer {                        // CDefPointer<T>: one word, zero-initialised; released by hand below
-    CSubDef* m_p;
-    CDefPointer() : m_p(0) { }
-};
 
-class CThing { public:                             // the creature (its def-class base carries GetSubDef)
-    bool GetSubDef(CDefPointer& def);       // 0x00669580
-};
-void* FindDef_CThing_GetSubDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CThing::GetSubDef(CDefPointer& out)
-{
-    void* def = FindDef_CThing_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)&out = def;
-    return true;
-}
-#pragma auto_inline(on)
+// NF49: retail passes the intelligent pointer's item word (+0x0C, read inline) straight to GetSubDef<CSpecialEffectsDef> as `this`.
+// The landed model gave CThing a GetSubDef member for that; the true receiver type is unproven, so the row now reads the item as the
+// shared CDefClassBase through a pointer cast (same bytes; a coordinator judgment, listed in NF49's NOTES).
+class CThing;
 
 struct CIntelligentPointer {                // CIntelligentPointer<CThingCreatureBase>: vptr + item
     virtual void v00();
@@ -61,22 +47,16 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
 
 long CCreatureActionBase::GetActionSpeedParameter()
 {
-    CDefPointer def;
+    CDefPointer<const CSpecialEffectsDef> def;   // NF49: the shared handle; its destructor is the release the row wrote by hand
     long result = 0;                        // the register result (edi), whose zero also initialises the out word
     long value = 0;                         // the addressed out word (frame slot)
-    CSubDef* p;
     {
         CCharString name("SOUL_EFFECT", -1);
-        bool found = PCreature->GetSubDef(def);
-        p = def.m_p;                        // the pointer local, loaded right after the lookup
+        bool found = ((const CDefClassBase*)PCreature.operator->())->GetSubDef(&def);   // NF49: receiver as the row modelled it (note above)
         if (found) {
-            ((CSpecialEffectsDef*)p)->GetEffectFromString(name, *(&value));
+            def->GetEffectFromString(name, *(&value));
             result = value;                 // read into edi before the string destructor and the release
         }
-    }
-    if (p) {
-        if (--p->m_count == 0)
-            p->Destroy();
     }
     return result;
 }

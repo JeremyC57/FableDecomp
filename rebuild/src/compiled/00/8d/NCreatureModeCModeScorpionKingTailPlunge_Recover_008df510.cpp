@@ -22,61 +22,24 @@
 //   def lives in ebp after the call, its slot reused by the TAIL_DUST_EFFECT temporary), a counted out pointer released at
 //   the function end, GetTCIfPresent (`xor ecx,ecx` default) and IS_THING_ALIVE.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CCountedDefPointer / CCharString / CDefVirtual / CDefBase / CSpecialEffectsDef / CDefClassBase models with same-TU stand-in bodies over made-up Lookup_CSpecialEffectsDef_GetEffectFromString / Find_CDefClassBase_GetSubDef callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-struct CDefVirtual {
-    virtual ~CDefVirtual();                     // slot 0
-    virtual void Destroy();                     // slot 1
-};
-struct CDefBase : CDefVirtual {
-    long m_refCount;                            // +0x04
-    void Release()
-    {
-        if (--m_refCount == 0)
-            Destroy();
-    }
-};
-template <class T> struct CCountedDefPointer {
-    T* m_p;
-    CCountedDefPointer() : m_p(0) { }
-    ~CCountedDefPointer()
-    {
-        if (m_p)
-            m_p->Release();
-    }
-};
-class CSpecialEffectsDef : public CDefBase { public:
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-};
-long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
-{
-    long found = Lookup_CSpecialEffectsDef_GetEffectFromString(this, name);
-    if (found < 0)
-        return false;
-    type = found;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CCountedDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
-};
-void* Find_CDefClassBase_GetSubDef(const void* owner);
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CCountedDefPointer<T>& out)
-{
-    void* def = Find_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out.m_p = (T*)def;
-    return true;
-}
-#pragma auto_inline(on)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -180,11 +143,11 @@ void CModeScorpionKingTailPlunge::Recover()
 {
     if (IS_THING_ALIVE(PTailEmitter))
         PTailEmitter.GetPItem()->Kill(true);
-    CCountedDefPointer<CSpecialEffectsDef> effects;
+    CDefPointer<const CSpecialEffectsDef> effects;   // NF49: the shared handle (was a local CCountedDefPointer)
     long effectType = 0;
-    ParentThing->PDef->GetSubDef(effects);
-    if (effects.m_p) {
-        if (effects.m_p->GetEffectFromString("TAIL_DUST_EFFECT", effectType))
+    ParentThing->PDef->GetSubDef(&effects);
+    if (effects.Get()) {
+        if (effects.Get()->GetEffectFromString("TAIL_DUST_EFFECT", effectType))
             CTCDParticleEmitter::Create(effectType, *(&TailPos), false);
     }
     PCreature->GetTCIfPresent<CTCBoss>(0xad)->ClearEffects();

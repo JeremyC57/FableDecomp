@@ -16,72 +16,24 @@
 // slot nor the effect-type word escapes: the `PDeathEffect = CIntelligentPointer<CThing>(effect)` temporary (forceinline ctor: base
 // ctor, vtable store, SetPItem) then overlays the dead effect-type word as in retail.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CDefSlot / CDefPointer / CCharString / CDefVirtual / CDefBase / CSpecialEffectsDef / CDefClassBase models with same-TU stand-in bodies over made-up Find_CSpecialEffectsDef_GetEffectFromString / Find_CDefClassBase_GetSubDef callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-struct CDefBase : CDefVirtual {
-    long m_refCount;                            // +0x04
-};
-class CSpecialEffectsDef : public CDefBase { public:
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-};
-template <class T> struct CDefSlot {         // the out-slot GetSubDef fills (counted reference handed over)
-    T* m_p;
-    CDefSlot() : m_p(0) { }
-};
-template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
-{
-    if (def && --def->m_refCount == 0)
-        def->Destroy();
-}
-long Find_CSpecialEffectsDef_GetEffectFromString(const CSpecialEffectsDef* def, const CCharString& name);   // stand-in callee
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
-{
-    long found = Find_CSpecialEffectsDef_GetEffectFromString(this, name);
-    if (found < 0)
-        return false;
-    type = found;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefClassBase : public CDefBase { public:
-    bool GetSubDef(CDefSlot<CSpecialEffectsDef>& out);   // 0x00669580
-};
-void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefSlot<CSpecialEffectsDef>& out)
-{
-    void* def = Find_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out.m_p = (CSpecialEffectsDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-struct CDefPointer {                            // CDefPointer<const CDefClassBase> by value
-    CDefClassBase* Object;
-    CDefPointer(const CDefPointer& o) : Object(o.Object)
-    {
-        if (Object)
-            ++Object->m_refCount;
-    }
-    ~CDefPointer()
-    {
-        if (Object && --Object->m_refCount == 0)
-            Object->Destroy();
-    }
-    CDefClassBase* operator->() const { return Object; }
-};
 class CThing;
 class CTCDParticleEmitter {
 public:
@@ -95,11 +47,11 @@ class CThing { public:
     unsigned char _pad2c[0x5c - 0x2c];
     CTCDParticleEmitter* m_pParticleEmitter;    // +0x5c cached component
     unsigned char _pad60[0x70 - 0x60];
-    CDefPointer PDef;                           // +0x70
+    CDefPointer<const CDefClassBase> PDef;      // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
-    CDefPointer GetDef() const { return PDef; }
+    CDefPointer<const CDefClassBase> GetDef() const { return PDef; }
     bool GetTCParticleEmitter(CTCDParticleEmitter** out)
     {
         if (m_presentBits2 & (1UL << 11)) {
@@ -135,10 +87,10 @@ void CCreatureAction_WaspQueenDeath::Initialise()
 {
     SetCombatAnimation("FALL_TO_DEATH");
     CCombatActionBase::Initialise();
-    CDefSlot<CSpecialEffectsDef> effectsSlot;
+    CDefPointer<const CSpecialEffectsDef> effectsSlot;   // NF49: the shared handle; its destructor is the release the row wrote by hand
     long effectType = 0;
-    ((CThing*)PCreature.GetPItem())->GetDef()->GetSubDef(effectsSlot);
-    CSpecialEffectsDef* effects = effectsSlot.m_p;
+    ((CThing*)PCreature.GetPItem())->GetDef()->GetSubDef(&effectsSlot);
+    const CSpecialEffectsDef* effects = effectsSlot.Get();
     if (effects) {
         bool found;
         {
@@ -156,6 +108,5 @@ void CCreatureAction_WaspQueenDeath::Initialise()
                 }
             }
         }
-        ReleaseDef(effectsSlot.m_p);
     }
 }

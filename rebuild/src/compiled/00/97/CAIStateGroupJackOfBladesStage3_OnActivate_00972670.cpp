@@ -13,6 +13,29 @@
 // landed 0x008CB620 model; each hit location is fetched into a named local (its name temporary dies first) and then set.
 // Layout: CTCWillPower (interface 0xce) flag byte +0x18 (descriptive, as landed 0x009098E0's component).
 #include "fable_compiler.h"
+// NF49 (round 7): the AI state-group base, the def handle and the manager come from the shared headers (were local CCharString / CRefCounted / CDefVirtual / CCombatTypeDef / CDefNonConst / CDefinitionManager / CAIStateGroupBase models):
+// the manager accessor 0x008FCFB0 is the protected const ?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ
+// (Ego_r.pdb / FableWin.pdb; engine/CAIStateGroupBase.h _MEMBERS + _PEEKDEFINITIONMANAGER + _PROTECTED), was a made-up
+// GetPDefinitionManager returning CDefinitionManager*; FABLE_RETAIL_CGAMEDEFINITIONMANAGER drops the default-path GetDef that would hide
+// CDefinitionManager's member templates.
+// GetDef 0x00669770 is the by-name member template ??$GetDef@VCCombatTypeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z
+// (declared only, as the row had it).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER_PROTECTED
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CCombatTypeDef.h"
+class CCombatTypeDef;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -41,46 +64,8 @@ class CThing { public:
         return component;
     }
 };
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-struct CRefCounted {                            // second base of the def: the count at +4
-    long m_count;
-    void DecRef() { --m_count; }
-    long GetRefCount() const { return m_count; }
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-class CCombatTypeDef : public CDefVirtual, public CRefCounted { public:   // Ego_r.pdb (was the row-local CAttackStyleDef)
-    void ReleaseTemporary()
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
 // agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
 //   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
-template <class T> struct CDefNonConst { typedef T Type; };
-template <class T> struct CDefNonConst<const T> { typedef T Type; };
-template <class T> class CDefPointer { public:
-    typename CDefNonConst<T>::Type* m_p;
-    CDefPointer() : m_p(0) { }
-    ~CDefPointer()
-    {
-        if (m_p) {
-            m_p->ReleaseTemporary();
-            m_p = 0;
-        }
-    }
-};
-class CDefinitionManager { public:
-    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* def) const;   // 0x00669770 GetDef<CCombatTypeDef> (Ego_r.pdb)
-};
 struct CTCWillPower {                           // interface 0xce
     unsigned char _pad0[0x18];
     bool Active;                                // +0x18 (descriptive)
@@ -98,13 +83,8 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    CThing* GetCreature() const { return PBrain->PCreature; }
-    CDefinitionManager* GetPDefinitionManager();   // 0x008FCFB0
-};
 struct CAIStateGroup_JackOfBladesStage3 : CAIStateGroupBase {
+    CThing* GetCreature() const { return PBrain->PCreature; }   // (the row's helper, moved here from its local base model)
     virtual void OnActivate();
 };
 
@@ -117,7 +97,7 @@ void CAIStateGroup_JackOfBladesStage3::OnActivate()
     CDefPointer<const CCombatTypeDef> def;
     {
         CCharString name("HERO_JACK_OF_BLADES_ATTACK_STYLE_LAST_STAND");
-        GetPDefinitionManager()->GetDef(name, &def);
+        PeekDefinitionManager().GetDef(name, &def);
     }
     combat->SetCombatType(def);
     CTCHitLocations* hitLocations = GetCreature()->GetTCIfPresent<CTCHitLocations>(0x7f);

@@ -21,60 +21,30 @@
 //   share one frame slot (the first enregistered in edi after its GetDef), which needs same-TU `auto_inline(off)` GetDef
 //   stand-ins so VC7.1 sees the out pointers do not escape (GOTCHAS I-3 / the landed 0x0083C1E0 idiom); the
 //   second def's dereference lets VC drop both destructors' null tests on the success path.
+// NF49 (round 7): the def classes and the manager come from the shared headers (were local CDefPointeeBase / CEngineThemeDef /
+// CMaterialDef / CDefPointer / CDefinitionManager models plus same-TU stand-in GetDef bodies over made-up
+// FindDef_CDefinitionManager_GetDef_0 / _1 callees): the lookups are the member template instances
+// ??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z (0x0063F3A0) and
+// ??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z (0x0066C340) (FableWin.pdb), with the
+// header's same-TU body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY, the stand-ins' role); CMaterialDef is engine/CMaterialDef.h
+// (IsDiggable +0x4d); CEngineThemeDef has no shared header (engine/_quarantine only), so it stays modelled on the shared CDefClassBase.
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CMaterialDef.h"
 #include "engine/C3DVector.h"
 
-class CDefPointeeBase { public:                                        // counted def object: vptr, reference count at +4
-    virtual void v00();
-    virtual void Destroy() const;                               // slot 1
-    mutable long RefCount;                                      // +0x04
-};
-
-class CEngineThemeDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x8c - 0x08];
+class CEngineThemeDef : public CDefClassBase { public:            // Ego_r.pdb CEngineThemeDef (no shared header); retail offsets
+    unsigned char _pad_0x25[0x8c - 0x25];
     long          MaterialDef;                                  // +0x8c
 };
 
-class CMaterialDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x4d - 0x08];
-    bool          IsDiggable;                                   // +0x4d
-};
-
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object && --Object->RefCount == 0)
-            Object->Destroy();
-    }
-    T* operator->() const { return Object; }
-};
-
-void* FindDef_CDefinitionManager_GetDef_0();                    // stand-in callees of the stand-in bodies below
-void* FindDef_CDefinitionManager_GetDef_1();
-
-class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<const CEngineThemeDef>* out);   // 0x0063F3A0
-    bool GetDef(long index, CDefPointer<const CMaterialDef>* out);      // 0x0066C340
-};
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const CEngineThemeDef>* out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const CMaterialDef>* out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef_1();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
 
 class CWorldMap { public:
     long GetStrongestEngineThemeAt(const C3DVector& pos, long* weight) const;   // 0x0063ADF0

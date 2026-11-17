@@ -11,66 +11,24 @@
 //   intelligent-pointer temporary and the bone-name string (frame 0xc); the definition is a counted reference in its own
 //   block (add-ref, GetSubDef, release), the effect sub-def is released by hand at the end (known non-null: no test).
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CDefSlot / CCharString / CDefVirtual / CDefBase / CDefPointer / CSpecialEffectsDef / CDefClassBase models with same-TU stand-in bodies over made-up Lookup_CSpecialEffectsDef_GetEffectFromString / Find_CDefClassBase_GetSubDef callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-struct CDefBase : CDefVirtual {
-    long m_refCount;                            // +0x04
-};
-class CSpecialEffectsDef : public CDefBase { public:
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-};
-template <class T> struct CDefSlot {            // the out-slot GetSubDef fills (counted reference handed over)
-    T* m_p;
-    CDefSlot() : m_p(0) { }
-};
-template <class T> class CDefPointer { public:         // a counted def reference
-    T* Object;
-    CDefPointer(T* object) : Object(object) { if (Object) ++Object->m_refCount; }
-    ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-};
-template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
-{
-    if (--def->m_refCount == 0)
-        def->Destroy();
-}
-long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);   // stand-in callee
-// Stand-in body (out of line in retail): it writes the out type only, so VC7.1 knows the effect type's address does
-// not escape the call.
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
-{
-    long found = Lookup_CSpecialEffectsDef_GetEffectFromString(this, name);
-    if (found < 0)
-        return false;
-    type = found;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefSlot<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
-};
-void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefSlot<T>& out)
-{
-    void* def = Find_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out.m_p = (T*)def;
-    return true;
-}
-#pragma auto_inline(on)
 class CThing;
 class CTCDParticleEmitter {
 public:
@@ -84,7 +42,7 @@ class CThing { public:
     unsigned char        _pad44[0x5c - 0x44];
     CTCDParticleEmitter* m_pParticleEmitter;    // +0x5c
     unsigned char        _pad60[0x70 - 0x60];
-    CDefClassBase*       m_pDef;                // +0x70
+    CDefPointer<CDefClassBase> m_pDef;          // +0x70 (NF49: the def handle; the counted copy below is its copy constructor)
     unsigned char        _pad74[0x91 - 0x74];
     unsigned char        m_flags91;             // +0x91 bit 0: dead
     unsigned long HasTC(long interfaceType) const
@@ -123,13 +81,13 @@ struct CModeJackOfBladesFloat {
 
 void CModeJackOfBladesFloat::OnActivate()
 {
-    CDefSlot<CSpecialEffectsDef> effectsSlot;
+    CDefPointer<const CSpecialEffectsDef> effectsSlot;   // NF49: the shared handle; its destructor is the release the row wrote by hand
     long effectType = 0;
     {
         CDefPointer<CDefClassBase> def(PCreature->m_pDef);
-        def->GetSubDef(effectsSlot);
+        def->GetSubDef(&effectsSlot);
     }
-    CSpecialEffectsDef* effects = effectsSlot.m_p;
+    const CSpecialEffectsDef* effects = effectsSlot.Get();
     if (effects) {
         if (effects->GetEffectFromString("FLOAT_POWER", effectType)) {
             CThing* effect = CTCDParticleEmitter::Create(effectType, *(&PCreature->GetPos()), false);
@@ -141,6 +99,5 @@ void CModeJackOfBladesFloat::OnActivate()
                 }
             }
         }
-        ReleaseDef(effects);
     }
 }

@@ -14,93 +14,26 @@
 //          is 12 bytes in retail); CTCTavernGameSpotTheAddition::CurrentRound +0xf0 (PDB +0x108).
 // Shape: as the ShoveHaPenny override 0x007CFF40, but the round count is the inline `size()` of a vector member, which
 //        is not a dereference of the def pointer, so the sub-def's release keeps its null test (`test edi,edi ; je`).
+// NF49 (round 7): the string and def classes come from the shared headers (were local CWideString / CCharString / CRefCounted / CDefVirtual / CDefBase / CLongVector / CTavernGameDef / CTavernGameSpotTheAdditionDef / CDefPointer / CSpotTheAdditionDefPointer / CDefClassBase models
+// and a same-TU stand-in GetSubDef body): the call at 0x007D9A80 is the member template
+// ??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z (Ego_r.pdb / FableWin.pdb), its body visible
+// and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10 idiom); GFIntToCharString / the CWideString
+// operator+ overloads / CCharString::ToWideString are the fable_string.h / engine/fable_script_text.h declarations.
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
-class CWideString { public:
-    void* m_data;
-    ~CWideString();                             // 0x0099B510
-};
-class CCharString { public:
-    void* m_data;
-    ~CCharString();                             // 0x0099EAE0
-    CWideString ToWideString() const;           // 0x0099E480
-};
-CCharString __fastcall GFIntToCharString(long value);                         // 0x0099F830
-CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  // 0x0099BE70
-CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);      // 0x0099BF30
-
-struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
-    long GetRefCount() const { return m_count; }
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-struct CDefBase : CDefVirtual, CRefCounted {
-    void Release()
-    {
-        if (--m_count == 0)
-            Destroy();
-    }
-    void ReleaseTemporary()
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
-struct CLongVector {                            // STLport vector<long> (12 bytes in retail)
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    long size() const { return _M_finish - _M_start; }
-};
-class CTavernGameDef : public CDefBase { public:
-    unsigned char _pad_0x08[0xb8];
-    unsigned long AdditionalInfo;               // +0xc0
-};
-class CTavernGameSpotTheAdditionDef : public CDefBase { public:
-    unsigned char _pad_0x08[0x3c];
-    CLongVector   ItemsPerRound;                // +0x44
-};
-template <class T> class CDefPointer;
-template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)                            // CDefPointer<const CTavernGameDef>
-    CTavernGameDef* Object;
-    CDefPointer() : Object(0) {}
-    ~CDefPointer()
-    {
-        if (Object) {
-            Object->ReleaseTemporary();
-            Object = 0;
-        }
-    }
-    CTavernGameDef* operator->() const { return Object; }
-};
-struct CSpotTheAdditionDefPointer {                // CDefPointer<const CTavernGameSpotTheAdditionDef>
-    CTavernGameSpotTheAdditionDef* Object;
-    CSpotTheAdditionDefPointer() : Object(0) {}
-    ~CSpotTheAdditionDefPointer() { if (Object) Object->Release(); }
-    CTavernGameSpotTheAdditionDef* operator->() const { return Object; }
-};
-
-class CDefClassBase { public:
-    bool GetSubDef(CSpotTheAdditionDefPointer* out);   // 0x007D9A80
-};
-CTavernGameSpotTheAdditionDef* FindRef_CDefClassBase_GetSubDef_0(CDefClassBase* defClass);   // stand-in callee of the stand-in body below
-// Stand-in body (the real 0x007D9A80 is in this TU, out of line, see the landed CDefClassBase_GetSubDef007d9a80): it only
-// writes the def through the out parameter, so VC7.1 knows the caller's address-taken pointer does not escape the call
-// (retail's same-TU knowledge: the sub-def stays in edi across every later call).
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CSpotTheAdditionDefPointer* out)
-{
-    CTavernGameSpotTheAdditionDef* def = FindRef_CDefClassBase_GetSubDef_0(this);
-    if (!def)
-        return false;
-    out->Object = def;
-    return true;
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/fable_script_text.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameSpotTheAdditionDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 
 class CThing { public:
     unsigned char  _pad_0x00[0x70];
@@ -124,7 +57,7 @@ CWideString CTCTavernGameSpotTheAddition::GetAdditionalInfo()
 {
     CDefPointer<const CTavernGameDef> def;
     GetDef(&def);
-    CSpotTheAdditionDefPointer spotDef;
+    CDefPointer<const CTavernGameSpotTheAdditionDef> spotDef;
     Owner->DefClass->GetSubDef(&spotDef);
     return GetText(def->AdditionalInfo) + GFIntToCharString(CurrentRound + 1).ToWideString() + L"/"
          + GFIntToCharString(spotDef->ItemsPerRound.size()).ToWideString();

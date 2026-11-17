@@ -1,0 +1,5 @@
+- An opt-in #define placed after the header's first include (here CDefinitionManager.h via CDefClassBase_GetSubDef.h) is silently ignored by the include guard: two DIFFER grades on 0x008CE6F0 / 0x008CE900 until GETDEF_GLOBAL_BODY moved into the top block.
+- A header block that opens `public:` for a nested class (CAIStateGroupBase _FILTER / _FINDAGUARD) silently flips the access of every later opt-in member: diff the row's bindings orig-vs-new, not only the slice targets (0x009378F0 PerformActionAndWait IAE -> QAE until an access opt-in restored it).
+- Keep shared includes and def models at global scope when the row's model lives in a private namespace (0x008F7950): template arguments then mangle as the PDB's.
+- An orig (pO) vs ported (pS) relocation diff by offset (work/diffrel.sh) generates RENAMES section 2 and catches regressions; run it over every row before the final recheck.
+- The final recheck of ~50 rows does not fit a foreground call: run it once in the background with a large inner timeout and the overlay set.

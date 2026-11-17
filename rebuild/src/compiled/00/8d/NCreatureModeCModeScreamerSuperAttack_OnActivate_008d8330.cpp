@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D8330, 285 bytes, plain `ret` (virtual).
 // Callees: CModeStandBase::OnActivate 0x008621A0 (qualified base call, first), CThingAICreature::SuspendAI(bool,
 //   long) 0x00833A10, CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTarget +0x74, twice), CDefClassBase::GetSubDef<
-//   CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580, CCharString(const char*, long) 0x0099EBF0 /
+//   CSpecialEffectsDef>(CDefPointer<const CSpecialEffectsDef>&) 0x00669580, CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&) 0x00669D30 (result
 //   ignored), CThing::GetPos 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool) 0x006E0880,
 //   CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / dtor 0x00A01C10.
@@ -14,60 +14,28 @@
 // effect-type long is declared before the sub-def slot, and GetEffectFromString gets a same-TU stand-in body (writes only the
 // `long&`), so VC7.1 knows the word does not escape and stores its zero first, after the def's null test, as retail.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CCharString / CDefVirtual / CDefBase / CDefPointer / CSpecialEffectsDef / CDefClassBase models with same-TU stand-in bodies over made-up Find_CSpecialEffectsDef_GetEffectFromString / LookupSpecialEffectsDef callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/C3DVector.h"
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
 
 static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-struct CDefBase : CDefVirtual {
-    long m_refCount;                            // +0x04
-};
-class CSpecialEffectsDef : public CDefBase { public:
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-};
-long Find_CSpecialEffectsDef_GetEffectFromString(const CSpecialEffectsDef* def, const CCharString& name);   // stand-in callee
-// Stand-in body (the real one is out of line in retail): it writes the effect type only, so VC7.1 knows the
-// effect-type word's address does not escape the call.
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
-{
-    long found = Find_CSpecialEffectsDef_GetEffectFromString(this, name);
-    if (found < 0)
-        return false;
-    type = found;
-    return true;
-}
-#pragma auto_inline(on)
-template <class T> class CDefPointer { public:
-    T* m_p;
-    CDefPointer() : m_p(0) { }
-    ~CDefPointer() { if (m_p && DecRefToZero(m_p->m_refCount)) m_p->Destroy(); }
-};
-class CDefClassBase : public CDefBase { public:
-    bool GetSubDef(CDefPointer<CSpecialEffectsDef>& out);   // 0x00669580 GetSubDef<CSpecialEffectsDef>
-};
 
-// Same-TU stand-in for the out-of-line GetSubDef<CSpecialEffectsDef> (0x00669580, landed): it only fills the out
-// pointer (retail's LTCG knew the slot does not escape, so the def stays in ebp for the final release).
-CSpecialEffectsDef* LookupSpecialEffectsDef(const CDefClassBase* owner);   // the manager lookup inside 0x00669580
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>& out)
-{
-    CSpecialEffectsDef* def = LookupSpecialEffectsDef(this);
-    if (def == 0)
-        return false;
-    ++def->m_refCount;
-    out.m_p = def;
-    return true;
-}
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
@@ -83,14 +51,14 @@ class CThing : public CThingAnimatable { public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  Dead : 1;                    // +0x91 bit 0
     const C3DVector& GetPos() const;       // 0x004C73D0
-    void GetSpecialEffectsDef(CDefPointer<CSpecialEffectsDef>& out) const
+    void GetSpecialEffectsDef(CDefPointer<const CSpecialEffectsDef>& out) const
     {
         CDefClassBase* def = PBaseDef;
         if (def)
-            ++def->m_refCount;
-        def->GetSubDef(out);
-        if (def && --def->m_refCount == 0)
-            def->Destroy();
+            ++def->IVRefCount;
+        def->GetSubDef(&out);
+        if (def && --def->IVRefCount == 0)
+            def->Delete();
     }
 };
 
@@ -133,9 +101,9 @@ void CModeScreamerSuperAttack::OnActivate()
     if (((CThing*)target->GetPItem()) == 0 || ((CThing*)target->GetPItem())->Dead)
         return;
     long effectType = 0;
-    CDefPointer<CSpecialEffectsDef> slot;
+    CDefPointer<const CSpecialEffectsDef> slot;
     ParentThing->GetSpecialEffectsDef(slot);
-    slot.m_p->GetEffectFromString("SUPER_ATTACK_BEAM", effectType);
+    slot.Get()->GetEffectFromString("SUPER_ATTACK_BEAM", effectType);
     CThing* beam = CTCDParticleEmitter::Create(effectType, *(&ParentThing->GetPos()), false);
     if (beam && !beam->Dead)
         PLightningBeamParticleEmitter = CIntelligentPointerThing(beam);

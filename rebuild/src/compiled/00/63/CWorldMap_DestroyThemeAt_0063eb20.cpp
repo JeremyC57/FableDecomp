@@ -2,7 +2,7 @@
 // def's destruction theme: paints the destruction theme on layer 0 of the block, records the block in
 // DestroyedThemePositions, clears layers 1 and 2, sets the block's blend to 0xff and, when the block's map is loaded
 // and changeable, resets the map's engine blend at the local block
-// Leaf: DestroyThemeAt
+// Leaf: ?DestroyThemeAt@CWorldMap@@QAEXABVC3DVector@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063EB20, 350 bytes, `ret 4`, 8-aligned frame. PDB
 //   ?DestroyThemeAt@CWorldMap@@QAEXABVC3DVector@@@Z.
@@ -15,6 +15,25 @@
 // Layout: retail CWorldMap::DestroyedThemePositions +0xb0 (12-byte STLport vector of C2DCoordI; PDB +0xd0);
 //   CEngineThemeDef::DestructionThemeDef retail +0x98 (PDB +0x9c, def layouts sit 4 below the PDB); the def's count at +4.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes and the manager come from the shared headers (were local CDefPointeeBase / CEngineThemeDef /
+// CDefPointer / CDefinitionManager models plus a same-TU stand-in GetDef(long, CDefPointer&) body): the lookup at 0x0063F3A0 is the
+// member template ??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z (FableWin.pdb;
+// the landed sibling 0x0063DD70 include chain), with the header's same-TU body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY,
+// the stand-in's role); the def handle is the shared CDefPointer<const CEngineThemeDef>. The manager accessor 0x004FB310 is
+// ?PeekDefinitionManager@CWorldMap@@IBEABVCGameDefinitionManager@@XZ (protected const; Ego_r.pdb, engine/CWorldMap.h
+// _ISTHEMEDESTROYABLE), was declared public returning const CDefinitionManager& in the row's local CWorldMap model.
+// CEngineThemeDef has no shared header (engine/_quarantine only), so it stays modelled on the shared CDefClassBase as in 0x0063DD70.
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CGameDefinitionManager.h"
 #include <new>
 struct __false_type { __false_type() { } };
 #include "engine/C3DVector.h"
@@ -33,55 +52,10 @@ struct CCoordVector {                              // STLport vector<C2DCoordI> 
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-class CDefPointeeBase { public:
-    virtual void v00();
-    virtual void Destroy();                        // slot 1
-    long m_refCount;                               // +0x04
-};
-class CEngineThemeDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x98 - 0x08];
+class CEngineThemeDef : public CDefClassBase { public:            // Ego_r.pdb CEngineThemeDef (no shared header); retail offsets
+    unsigned char _pad_0x25[0x98 - 0x25];
     long          DestructionThemeDef;             // +0x98
 };
-static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-    CDefPointer& operator=(const CDefPointer& other)
-    {
-        if (Object != other.Object) {
-            if (Object) {
-                if (--Object->m_refCount == 0)
-                    Object->Destroy();
-                Object = 0;
-            }
-            Object = other.Object;
-            if (Object)
-                ++Object->m_refCount;
-        }
-        return *this;
-    }
-};
-class CDefinitionManager { public:
-    CDefPointer<CEngineThemeDef> GetPDefFromGlobalIndex(long index) const;      // 0x009AD9E0
-    bool GetDef(long globalIndex, CDefPointer<CEngineThemeDef>& out) const;   // 0x0063F3A0
-};
-// Same-TU stand-in for GetDef<T> 0x0063F3A0 (the landed body): retail's LTCG knowledge that the def pointer's address
-// does not escape the lookup.
-#pragma auto_inline(off)
-bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CEngineThemeDef>& out) const
-{
-    if (globalIndex <= 0)
-        return false;
-    CDefPointer<CEngineThemeDef> def = GetPDefFromGlobalIndex(globalIndex);
-    if (def.Object) {
-        out = def;
-        return true;
-    }
-    return false;
-}
-#pragma auto_inline(on)
 enum EThemePaintType { THEME_PAINT_NORMAL };
 class CMap {
 public:
@@ -112,8 +86,10 @@ public:
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
     virtual bool IsPosChangeable(const C2DCoordI& pos) const;       // slot 25 (+0x64)
     bool IsPosInMap(const C3DVector& pos) const;                    // 0x004FC600
-    long GetStrongestEngineThemeAt(const C3DVector& pos, long* layer) const;     // 0x0063ADF0
-    const CDefinitionManager& PeekDefinitionManager() const;        // 0x004FB310
+    long GetStrongestEngineThemeAt(const C3DVector& pos, long& layer) const;     // 0x0063ADF0 (Ego_r.pdb: long&, as landed 0x0063DD70)
+protected:
+    const CGameDefinitionManager& PeekDefinitionManager() const;    // 0x004FB310
+public:
     void SetThemeAtBlock(const C2DCoordI& pos, unsigned long theme, unsigned long layer, EThemePaintType type);   // 0x0063A970
     void SetThemeBlendAtBlock(const C2DCoordI& pos, unsigned char blend, unsigned long layer, EThemePaintType type);   // 0x0063A9E0
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const;   // 0x004FC3C0
@@ -126,9 +102,9 @@ void CWorldMap::DestroyThemeAt(const C3DVector& pos)
     if (!IsPosInMap(pos))
         return;
     long layer;
-    long theme = GetStrongestEngineThemeAt(pos, &layer);
-    CDefPointer<CEngineThemeDef> def;
-    PeekDefinitionManager().GetDef(theme, def);
+    long theme = GetStrongestEngineThemeAt(pos, layer);
+    CDefPointer<const CEngineThemeDef> def;
+    PeekDefinitionManager().GetDef(theme, &def);
     unsigned long destructionTheme = def->DestructionThemeDef;
     if (destructionTheme != 0) {
         C2DCoordI block((long)pos.X, (long)pos.Y);

@@ -20,6 +20,23 @@
 //   ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z -- a static __fastcall member taking
 //   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
 //   are classes (V in every PDB signature).
+// NF49 (round 7): the def classes come from the shared headers (were local CDefVirtual / CTavernGameSpotTheAdditionDef / CSpotTheAdditionDefPointer / CDefinitionManager / CDefClassBase models and a same-TU
+// stand-in GetSubDef body): the call at 0x007D9A80 is the member template
+// ??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z (Ego_r.pdb / FableWin.pdb), its body visible
+// and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameSpotTheAdditionDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include <math.h>
 #pragma intrinsic(cos, sin)
 
@@ -29,56 +46,7 @@ const float TWO_PI = 6.2831855f;
 class CRightHandedSet { public: float Up[3], Forward[3]; };
 class CThing;
 
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-class CTavernGameSpotTheAdditionDef : public CDefVirtual { public:
-    long m_count;                               // +0x04
-    unsigned char _pad_0x08[0x28];
-    float CoverWidth;                           // +0x30
-    float CoverLength;                          // +0x34
-    unsigned char _pad_0x38[0x44];
-    float LengthMovementScale;                  // +0x7c
-    float HeightMovementScale;                  // +0x80
-    void Release() { if (--m_count == 0) Destroy(); }
-};
-struct CSpotTheAdditionDefPointer {             // CDefPointer<const CTavernGameSpotTheAdditionDef>
-    CTavernGameSpotTheAdditionDef* Object;
-    CSpotTheAdditionDefPointer() : Object(0) {}
-    ~CSpotTheAdditionDefPointer() { if (Object) Object->Release(); }
-    CTavernGameSpotTheAdditionDef* operator->() const { return Object; }
-};
-class CDefinitionManager { public:
-    CTavernGameSpotTheAdditionDef* PeekDefFromGlobalIndex(long index);   // stand-in only
-};
-class CDefClassBase { public:
-    virtual long* GetSubDefIndex(const char* name);       // stand-in only (retail: slot 14, CCharString name)
-    unsigned char       _pad_0x04[0x18];
-    CDefinitionManager* m_pManager;             // +0x1c
-    bool GetSubDef_007d9a80(CSpotTheAdditionDefPointer& out);  // 0x007D9A80 (GetSubDef<CTavernGameSpotTheAdditionDef>)
-};
 
-// Stand-in for the same-module GetSubDef<CTavernGameSpotTheAdditionDef> body (0x007D9A80; not graded here): compiled
-// above the caller without inlining so VC7.1 sees, as retail's whole-program build did, that the def pointer it fills
-// does not escape.
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef_007d9a80(CSpotTheAdditionDefPointer& out)
-{
-    long* index = GetSubDefIndex("CTavernGameSpotTheAdditionDef");
-    if (index == 0)
-        return false;
-    CTavernGameSpotTheAdditionDef* def = m_pManager->PeekDefFromGlobalIndex(*index);
-    if (out.Object != def) {
-        if (out.Object)
-            out.Object->Release();
-        out.Object = def;
-        if (def)
-            ++def->m_count;
-    }
-    return true;
-}
-#pragma auto_inline(on)
 
 class CThing { public:
     unsigned char  _pad_0x00[0x70];
@@ -104,14 +72,14 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
     unsigned char KnickKnacks[0xc];             // +0x110 vector<KnickKnack>
     C3DVector     BoardPos;                     // +0x11c
     CRightHandedSet BoardRHSet;                 // +0x128
-    void GetDef(CSpotTheAdditionDefPointer* out) { ParentThing->PDef->GetSubDef_007d9a80(*out); }
+    void GetDef(CDefPointer<const CTavernGameSpotTheAdditionDef>* out) { ParentThing->PDef->GetSubDef(out); }
     void PositionCover(float fraction);
 };
 
 void CTCTavernGameSpotTheAddition::PositionCover(float fraction)
 {
     if (Cover) {
-        CSpotTheAdditionDefPointer def;
+        CDefPointer<const CTavernGameSpotTheAdditionDef> def;
         GetDef(&def);
         float eased = (float)((1.0 - cos(fraction * 0.5f * (double)TWO_PI)) * 0.5);
         float angle = (float)(eased * 0.5f * (double)TWO_PI);

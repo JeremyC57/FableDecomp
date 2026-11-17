@@ -10,43 +10,27 @@
 //         Selected +0x148, FirstRound (bool) +0x14c; CTCTavernGame::GameWon +0x21 (PDB +0x29).
 // Shape: the sub-def is fetched (and then unused) through an inline accessor; one ebx zero serves the out slot, the stores
 //        and the release's null test (CDefPointer dtor `if (Object) Object->Release()`, the pointee's inline Release).
-struct CDefPointee {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-    long m_count;                               // +0x04
-    void Release()
-    {
-        if (--m_count == 0)
-            Destroy();
-    }
-};
-class CTavernGameSpotTheAdditionDef : public CDefPointee { public:};
-struct CDefPointer {
-    CTavernGameSpotTheAdditionDef* Object;
-    CDefPointer() : Object(0) {}
-    ~CDefPointer()
-    {
-        if (Object && --Object->m_count == 0)
-            Object->Destroy();
-    }
-};
+// NF49 (round 7): the string and def classes come from the shared headers (were local CDefPointee / CTavernGameSpotTheAdditionDef / CDefPointer / CDefClassBase models
+// and a same-TU stand-in GetSubDef body): the call at 0x007D9A80 is the member template
+// ??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z (Ego_r.pdb / FableWin.pdb), its body visible
+// and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10 idiom); GFIntToCharString / the CWideString
+// operator+ overloads / CCharString::ToWideString are the fable_string.h / engine/fable_script_text.h declarations.
+#include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/fable_script_text.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameSpotTheAdditionDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer* out);           // 0x007D9A80
-};
-void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer* out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
 class CThing { public:
     unsigned char _pad_0x00[0x70];
     CDefClassBase* DefHolder;                   // +0x70
@@ -71,7 +55,7 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
     unsigned char _pad_0x101[0x47];
     long    Selected;                           // +0x148
     bool    FirstRound;                         // +0x14c
-    void GetSpotDef(CDefPointer* out) { ParentThing->DefHolder->GetSubDef(out); }
+    void GetSpotDef(CDefPointer<const CTavernGameSpotTheAdditionDef>* out) { ParentThing->DefHolder->GetSubDef(out); }
     void PositionCover(float fraction);         // 0x007D7F10
     void NewGame();
 };
@@ -80,7 +64,7 @@ void CTCTavernGameSpotTheAddition::NewGame()
 {
     CTCTavernGame::NewGame();
     CDefClassBase* defClass = ParentThing->DefHolder;
-    CDefPointer def;
+    CDefPointer<const CTavernGameSpotTheAdditionDef> def;
     defClass->GetSubDef(&def);
     CurrentTime = 0.0f;
     CurrentRound = 0;

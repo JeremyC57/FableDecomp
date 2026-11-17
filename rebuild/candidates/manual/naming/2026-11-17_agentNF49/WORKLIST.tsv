@@ -1,0 +1,68 @@
+entry	target	correct_symbol	binder_row	bound_symbol_at_probe
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	007c3070	?GetSubDef@CThing@@QAE_NAAUCDefPointer@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	007c6aa0	?GetSubDef@CSpecialAbilitiesTurncoatSpellDef@@QAE_NPAUCEffectTablePointer@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	006637d0	?GetSubDef@CDefClassBaseMethods@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	0078c4c0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@UCBerserkEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	007f2410	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAU?$CDefPointerSlot@VCSpecialEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	008b9e50	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	008c4cb0	?GetSubDef@CDefClassBase@@QAE_NAAU?$CDefSlot@VCSpecialEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	008d8330	?GetSubDef@CDefClassBase@@QAE_NAAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	008d9740	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAU?$CDefSlot@VCSpecialEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	008df510	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAU?$CCountedDefPointer@VCSpecialEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	007a9fe0	?GetSubDef@CAssassinRushDef@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	007cc2b0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	007f08b0	?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	008f3630	?GetSubDef@CDefClassBase@@QAE_NPAPAVCSpecialEffectsDef@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	007cdd10	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@UCEffectDef@@@@@Z
+nf41:e110	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	007a09b0	?GetSubDef@CLightningSpellDef@@QAE_NPAUCEffectsDefPointer@@@Z
+nf41:e183	0063f3a0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	008f7950	?GetDef@CGameDefinitionManager@NDust008f7950@@QAE_NHAAPAUCEngineThemeDef@2@@Z
+nf41:e183	0063f3a0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	0063eb20	?GetDef@CDefinitionManager@@QBE_NJAAV?$CDefPointer@VCEngineThemeDef@@@@@Z
+nf41:e183	0063f3a0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	007f0300	?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z
+nf41:e183	0063f3a0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	0081fa20	?GetDef@CDefinitionManager@@QAE_NJPAPAVCEngineThemeDef@@@Z
+nf41:e183	0063f3a0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	0081fa90	?GetDef@CDefinitionManager@@QAE_NJPAPAVCEngineThemeDef@@@Z
+nf41:e183	0063f3a0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	0081fb00	?GetDef@CDefinitionManager@@QAE_NJPAPAVCEngineThemeDef@@@Z
+nf41:e183	0063f3a0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	0081fcc0	?GetDef@CDefinitionManager@@QAE_NJPAPAVCEngineThemeDef@@@Z
+nf41:e183	0063f3a0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	008201e0	?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@UCThemeDef@@@@@Z
+nf41:e32	007d9a80	??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z	007d7ec0	?GetSubDef@CDefClassBase@@QAE_NPAUCDefPointer@@@Z
+nf41:e32	007d9a80	??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z	007d7f10	?GetSubDef_007d9a80@CDefClassBase@@QAE_NAAUCSpotTheAdditionDefPointer@@@Z
+nf41:e32	007d9a80	??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z	007d7fd0	?GetSubDef_007d9a80@CDefClassBase@@QAE_NAAUCSpotTheAdditionDefPointer@@@Z
+nf41:e32	007d9a80	??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z	007d80c0	?GetSubDef@CDefClassBase@@QAE_NPAUCDefPointer@@@Z
+nf41:e32	007d9a80	??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z	007d8160	?GetSubDef@CDefClassBase@@QAE_NPAUCSpotTheAdditionDefPointer@@@Z
+nf41:e32	007d9a80	??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z	007d8290	?GetSubDef@CDefClassBase@@QAE_NPAUCSpotTheAdditionDefPointer@@@Z
+nf41:e32	007d9a80	??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z	007d83c0	?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@UCSpotTheAdditionDef@@@@@Z
+nf41:e78	007923c0	??$GetDef@VCMessageEventDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCMessageEventDef@@@@@Z	007be0f9	?GetDef@CGameDefinitionManager@@QAE_NABVCCharString@@PAV?$CDefPointer@VCMessageEventDef@@@@@Z
+nf41:e78	007923c0	??$GetDef@VCMessageEventDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCMessageEventDef@@@@@Z	00832e60	?GetDef@CDefinitionManager@@QAE_NABVCCharString@@AAUCDefPointer@@@Z
+nf41:e78	007923c0	??$GetDef@VCMessageEventDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCMessageEventDef@@@@@Z	00849140	?GetDef@CDefinitionManager@@QAE_NABVCCharString@@AAUCDefPointer@@@Z
+nf41:e78	007923c0	??$GetDef@VCMessageEventDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCMessageEventDef@@@@@Z	009378f0	?GetDef@CDefinitionManager@@QAE_NABVCCharString@@AAUCDefPointer@@@Z
+nf41:e77	008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	00917130	?GetPDefinitionManager@CAIStateGroupBase@@QBEPAVCDefinitionManager@@XZ
+nf41:e77	008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	009378f0	?GetPDefinitionManager@CAIStateGroupBase@@QAEPAVCDefinitionManager@@XZ
+nf41:e77	008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	00972830	?GetPDefinitionManager@CAIStateGroupJackOfBladesBaseMethods@@QAEPAVCDefinitionManager@@XZ
+nf41:e77	008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	00972670	?GetPDefinitionManager@CAIStateGroupBase@@QAEPAVCDefinitionManager@@XZ
+nf41:e130	004ab990	??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z	0069adc0	?GetDef@CDefinitionManager@@QAE_NABVCCharString@@PAV?$CDefPointer@VCCameraManagerSetDef@@@@@Z
+nf41:e130	004ab990	??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z	0082d3b0	?GetDef@CDefinitionManager@@QAE_NABVCCharString@@PAV?$CDefPointer@VCCameraManagerSetDef@@@@@Z
+nf41:e130	004ab990	??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z	00972830	?GetDef@CDefinitionManager@@QAE_NABVCCharString@@PAV?$CDefPointer@VCCameraManagerSetDef@@@@@Z
+nf41:e95	007d4bd0	??$GetSubDef@VCTavernGameCoinGolfDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@@Z	007d3510	?GetSubDef_007d4bd0@CDefClassBase@@QAE_NPAUCDefPointer@@@Z
+nf41:e95	007d4bd0	??$GetSubDef@VCTavernGameCoinGolfDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@@Z	007d3700	?GetSubDef@CDefClassBase@@QAE_NPAUCCoinGolfDefPointer@@@Z
+nf41:e129	00637650	??$GetDef@VCCameraModeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z	00636e90	?GetDef@CGameDefinitionManager@@QAE_NABVCCharString@@AAV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
+nf44:12	008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	00917130	
+nf44:12	008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	009378f0	
+nf44:12	008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	00972670	
+nf44:12	008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	00972830	
+nf44:129	007d1260	??$GetSubDef@VCTavernGameShoveHaPennyDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameShoveHaPennyDef@@@@@Z	007cf860	
+nf44:129	007d1260	??$GetSubDef@VCTavernGameShoveHaPennyDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameShoveHaPennyDef@@@@@Z	007cff40	
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	0078c4c0	?CreateParticleEffect@@YIPAVCThing@@JABVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	0078c610	?CreateParticleEffect@@YIPAVCThing@@JABVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	007a00e0	?CreateParticleEffect@@YIPAVCThing@@JPBVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	007c6aa0	?CreateParticleEffect@@YIPAVCThing@@JPBVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	007c7a00	?CreateParticleEffect@@YIPAVCThing@@JPBVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	007c8de0	?CreateParticleEffect@@YIPAVCThing@@JABVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	007c93b0	?CreateParticleEffect@@YIPAVCThing@@JABVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	007cc2b0	?CreateParticleEffect@@YIPAVCThing@@JABVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	007cc4d0	?CreateParticleEffect@@YIPAVCThing@@JABVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	007ccb00	?CreateParticleEffect@@YIPAVCThing@@JABVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	008ce6f0	?CreateParticleEffect@@YIPAVCThing@@JPBVC3DVector@@@Z
+nf41:e109	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	008ce900	?CreateParticleEffect@@YIPAVCThing@@JPBVC3DVector@@@Z
+nf41:e111	00669d30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	0078c4c0	?GetEffect@CBerserkEffectsDef@@QAE_NABVCCharString@@PAJ@Z
+nf41:e111	00669d30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	007c6aa0	?Lookup@CEffectTableDef@@QAE_NABVCCharString@@PAJ@Z
+nf41:e111	00669d30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	007cdd10	?GetEffectFromString@CEffectDef@@QBE_NABVCCharString@@AAJ@Z
+nf41:e111	00669d30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	007a09b0	?Lookup@CEffectsDef@@QAEXABVCCharString@@PAJ@Z

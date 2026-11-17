@@ -12,58 +12,32 @@
 // Layout: Ego_r.pdb CTCAssassinRush less 4 past the 12-byte vector (PDef +0x14, AssassinTrail +0x18,
 // AssassinDisplacementTrail +0x20, SpellLevel +0x8c, RadialBlurFadeKey +0x98); retail def blur block +0x44..+0x64.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CCharString / CDefPointer / CSpecialEffectsDef models with same-TU stand-in bodies over made-up FindDef_CDefClassBase_GetSubDef_0 / Lookup_CSpecialEffectsDef_CalcAndLookup callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CTCBase;
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CSpecialEffectsDef { public:
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long RefCount;                                      // +0x04
-    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
-};
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-};
-long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString& name);   // stand-in callee
-// Stand-in body (out of line in retail @ 0x00669D30): it writes the out value only, so VC7.1 knows the local's address
-// does not escape the call (the landed 0x008C8380 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
-{
-    long found = Lookup_CSpecialEffectsDef_CalcAndLookup(this, name);
-    if (found < 0)
-        return false;
-    value = found;
-    return true;
-}
-#pragma auto_inline(on)
-void* FindDef_CDefClassBase_GetSubDef_0();             // stand-in callee
-struct CAssassinRushDef {
-    unsigned char _pad00[0x44];
+struct CAssassinRushDef : CDefClassBase {               // NF49: the ability def (no shared header) on the shared CDefClassBase
+    unsigned char _pad25[0x44 - 0x25];
     float         BlurHeight;                           // +0x44
     float         BlurStrength;                         // +0x48
     float         BlurFadeTime;                         // +0x4c
     float         Blur[6];                              // +0x50..+0x64
-    bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580 (CDefClassBase)
 };
-// Stand-in body (the real one @ 0x00669580 is out of line): it writes the out slot only (the landed 0x008C8380 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CAssassinRushDef::GetSubDef(CDefPointer<CSpecialEffectsDef>* out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -174,7 +148,7 @@ class CTCAssassinRush : public CTCBase { public:
 
 void CTCAssassinRush::CreateTrailingEffect()
 {
-    CDefPointer<CSpecialEffectsDef> effects;
+    CDefPointer<const CSpecialEffectsDef> effects;
     long lowEffect = 0;
     CThing* parent = ParentThing;
     if (PDef->GetSubDef(&effects)) {

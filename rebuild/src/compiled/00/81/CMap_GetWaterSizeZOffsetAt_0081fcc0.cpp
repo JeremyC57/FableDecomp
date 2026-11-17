@@ -7,6 +7,21 @@
 //   WaterHeight is retail +0x6c (PDB +0x70).
 // Shape: the coordinates copied into locals, nested scopes with one raw def pointer per layer released by hand on the way out. GetDef is a same-TU stand-in that only writes its out slot.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes and the manager come from the shared headers (were local CDefPointeeBase / CDefinitionManager
+// models plus a same-TU stand-in GetDef body over a made-up FindDef_CDefinitionManager_GetDef_0 callee): the lookups at 0x0063F3A0 are
+// the member template ??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z (FableWin.pdb;
+// the landed 0x0063DD70 / 0x0066CF00 include chain), with the header's same-TU body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY,
+// the stand-in's role); each raw def pointer released by hand is a CDefPointer<const CEngineThemeDef> released by its scope-end
+// destructor. CEngineThemeDef has no shared header (engine/_quarantine only), so it stays modelled on the shared CDefClassBase.
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefinitionManager.h"
 class C2DCoordI { public:
     long X, Y;
 };
@@ -35,30 +50,10 @@ struct CEngineThemePaletteEntry {                  // 8 bytes
     long DefIndex;
     long Count;
 };
-class CDefPointeeBase { public:
-    virtual void v00();
-    virtual void DestroySelf();
-    long RefCount;
-};
-class CEngineThemeDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x6c - 8];
+class CEngineThemeDef : public CDefClassBase { public:            // Ego_r.pdb CEngineThemeDef (no shared header); retail offsets
+    unsigned char _pad_0x25[0x6c - 0x25];
     float         WaterHeight;                     // +0x6c (retail)
-    long          WaterType;                       // +0x70 (retail)
 };
-class CDefinitionManager { public:
-    bool GetDef(long index, CEngineThemeDef** out);   // 0x0063F3A0
-};
-void* FindDef_CDefinitionManager_GetDef_0();       // stand-in callee of the stand-in body below
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CEngineThemeDef** out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
 class CMap { public:
     unsigned char                            _pad00[0x1c];
     CDefinitionManager*                      DefinitionManager;   // +0x1c
@@ -79,30 +74,24 @@ float CMap::GetWaterSizeZOffsetAt(const C2DCoordI& pos)
     float height = 0.0f;
     long index0 = EngineThemePalette[HeightMap->GetCellIncludingExtraCells(x, y).EngineThemePaletteIndex[0]].DefIndex;
     if (index0 > 0) {
-        CEngineThemeDef* def0 = 0;
+        CDefPointer<const CEngineThemeDef> def0;
         DefinitionManager->GetDef(index0, &def0);
         unsigned char blend0 = HeightMap->GetCellIncludingExtraCells(x, y).EngineBlend[0];
         height = blend0 * def0->WaterHeight * (1.0f / 255.0f);
         long index1 = EngineThemePalette[HeightMap->GetCellIncludingExtraCells(x, y).EngineThemePaletteIndex[1]].DefIndex;
         if (index1 > 0) {
-            CEngineThemeDef* def1 = 0;
+            CDefPointer<const CEngineThemeDef> def1;
             DefinitionManager->GetDef(index1, &def1);
             unsigned char blend1 = HeightMap->GetCellIncludingExtraCells(x, y).EngineBlend[1];
             height += blend1 * def1->WaterHeight * (1.0f / 255.0f);
             long index2 = EngineThemePalette[HeightMap->GetCellIncludingExtraCells(x, y).EngineThemePaletteIndex[2]].DefIndex;
             if (index2 > 0) {
-                CEngineThemeDef* def2 = 0;
+                CDefPointer<const CEngineThemeDef> def2;
                 DefinitionManager->GetDef(index2, &def2);
                 unsigned char blend2 = (unsigned char)(255 - blend1 - blend0);
                 height += blend2 * def2->WaterHeight * (1.0f / 255.0f);
-                if (--def2->RefCount == 0)
-                    def2->DestroySelf();
             }
-            if (--def1->RefCount == 0)
-                def1->DestroySelf();
         }
-        if (--def0->RefCount == 0)
-            def0->DestroySelf();
     }
     return height;
 }

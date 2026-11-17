@@ -1,3 +1,26 @@
+// NF49 (round 7): the def and manager classes come from the shared headers (were local CCharString / CDefPointeeBase / CRegionDef / CCameraManagerSetDef / CDefinitionManager models with
+// same-TU stand-in GetDef bodies over made-up Lookup_CDefinitionManager_GetDef / _GetDefByName callees): GetDef 0x004AB990 is the
+// member template ??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z
+// and GetDef 0x004AB920 its by-index sibling ??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z
+// (FableWin.pdb), both bodies visible and kept out of line (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY / _GETDEF_GLOBAL_BODY);
+// the region's def handle is CRegion::GetPRegionDef() (engine/CRegion.h; engine/CRegionDef.h CameraManagerSetIndex +0x48) and the camera
+// manager's setter takes const CDefPointer<const CCameraManagerSetDef>& (Ego_r.pdb / FableWin.pdb, retail 0x0069AC90; its
+// same-TU stand-in body is the row's own, kept).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CRegionDef.h"
+#define FABLE_RETAIL_CREGION
+#define FABLE_RETAIL_CREGION_PREGIONDEF
+#include "engine/CRegion.h"   // NF49: the region (was a local model) and its inline GetPRegionDef (FableWin.pdb), copied in place as retail
+#include "engine/CCameraManagerSetDef.h"
 // CGameCameraManager::SetUpMainCameraManagerSetDef() -- use the current region's camera manager set (its def's
 // CameraManagerSetIndex), or the CAMERA_MANAGER_SET_DEFAULT set when the region names none
 // Leaf: SetUpMainCameraManagerSetDef
@@ -16,68 +39,9 @@
 // and SetCameraManagerSetDef are same-TU noinline stand-in bodies (retail's LTCG saw the callees keep no reference to
 // the slot), so the set-def release is `mov ecx,[slot] ; dec [ecx+4] ; jne` with no re-read of the slot.
 
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length);     // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
 
-class CDefPointeeBase { public:
-    virtual void v00();
-    virtual void Destroy();                         // slot 1
-    long m_refCount;                                // +0x04
-    void AddRef() { ++m_refCount; }
-    void Release() { if (--m_refCount == 0) Destroy(); }
-};
-class CRegionDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x40];
-    long CameraManagerSetIndex;                     // +0x48
-};
-class CCameraManagerSetDef : public CDefPointeeBase { public:};
 
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) {}
-    CDefPointer(T* object) : Object(object) { if (Object) Object->AddRef(); }
-    ~CDefPointer()
-    {
-        if (Object)
-            Object->Release();
-    }
-};
 
-class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CCameraManagerSetDef>* def);                 // 0x004AB920
-    bool GetDef(const CCharString& name, CDefPointer<CCameraManagerSetDef>* def);    // 0x004AB990
-};
-void* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callees
-void* Lookup_CDefinitionManager_GetDefByName(const void* manager, const CCharString& name);
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CCameraManagerSetDef>* def)
-{
-    void* found = Lookup_CDefinitionManager_GetDef(this, index);
-    if (!found)
-        return false;
-    def->Object = (CCameraManagerSetDef*)found;
-    return true;
-}
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer<CCameraManagerSetDef>* def)
-{
-    void* found = Lookup_CDefinitionManager_GetDefByName(this, name);
-    if (!found)
-        return false;
-    def->Object = (CCameraManagerSetDef*)found;
-    return true;
-}
-#pragma auto_inline(on)
-
-template <class T> class CDefPointer;
-class CRegion { public:
-    unsigned char _pad00[0x24];
-    CDefPointer<CRegionDef> m_pDef;                 // +0x24
-};
 class CWorldMap { public:
     long GetLoadedRegion() const;                  // 0x004FB150
 public:
@@ -97,25 +61,25 @@ public:
     virtual void v00();
     unsigned char _pad004[0x70];
     CWorld* World;                                  // +0x74
-    void SetCameraManagerSetDef(const CDefPointer<CCameraManagerSetDef>& def);   // 0x0069AC90
+    void SetCameraManagerSetDef(const CDefPointer<const CCameraManagerSetDef>& def);   // 0x0069AC90
     void SetUpMainCameraManagerSetDef();
 };
-void Store_CGameCameraManager_SetCameraManagerSetDef(CGameCameraManager* manager, CCameraManagerSetDef* def);   // stand-in callee
+void Store_CGameCameraManager_SetCameraManagerSetDef(CGameCameraManager* manager, const CCameraManagerSetDef* def);   // stand-in callee
 #pragma auto_inline(off)
-__declspec(noinline) void CGameCameraManager::SetCameraManagerSetDef(const CDefPointer<CCameraManagerSetDef>& def)
+__declspec(noinline) void CGameCameraManager::SetCameraManagerSetDef(const CDefPointer<const CCameraManagerSetDef>& def)
 {
-    Store_CGameCameraManager_SetCameraManagerSetDef(this, def.Object);
+    Store_CGameCameraManager_SetCameraManagerSetDef(this, def.Get());
 }
 #pragma auto_inline(on)
 
 void CGameCameraManager::SetUpMainCameraManagerSetDef()
 {
     CWorld* world = World;
-    CDefPointer<CRegionDef> regionDef(world->PeekWorldMap()->GetRegion(world->PeekWorldMap()->GetLoadedRegion()).m_pDef.Object);
-    if (regionDef.Object) {
-        CDefPointer<CCameraManagerSetDef> setDef;
-        if (regionDef.Object->CameraManagerSetIndex > 0) {
-            World->DefinitionManager->GetDef(regionDef.Object->CameraManagerSetIndex, &setDef);
+    CDefPointer<const CRegionDef> regionDef(world->PeekWorldMap()->GetRegion(world->PeekWorldMap()->GetLoadedRegion()).GetPRegionDef());
+    if (regionDef.Get()) {
+        CDefPointer<const CCameraManagerSetDef> setDef;
+        if (regionDef->CameraManagerSetIndex > 0) {
+            World->DefinitionManager->GetDef(regionDef->CameraManagerSetIndex, &setDef);
         } else {
             CCharString name("CAMERA_MANAGER_SET_DEFAULT", -1);
             World->DefinitionManager->GetDef(name, &setDef);

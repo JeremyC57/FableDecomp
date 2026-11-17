@@ -16,6 +16,21 @@
 // Layout (supersedes any local-model note above): engine/CPlayerGui.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
 #include "fable_compiler.h"
+// NF49 (round 7): the def and manager classes come from the shared headers (were local CCharString / CDefPointee / CDefPointer / CCameraModeDef / CGameDefinitionManager models):
+// GetDef 0x00637650 is the member template ??$GetDef@VCCameraModeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
+// (FableWin.pdb; by-name lookup, out of line in retail, declared only as the row had it); FABLE_RETAIL_CGAMEDEFINITIONMANAGER drops
+// the default-path GetDef that would hide it.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CCameraModeDef.h"
+class CCameraModeDef;                                  // (the header's default branch declares nothing; no member is read here)
 #define CPlayerGui CPlayerGuiDonor
 #include "engine/CPlayerGui.h"
 #undef CPlayerGui
@@ -26,11 +41,6 @@ class CProcessedInput;
 void* operator new(unsigned int size);                 // 0x00BFEA1A
 void __fastcall Destroy_0056c0f0(void* object);        // 0x0056C0F0
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
 
 class CAInputProcess { public:
     virtual void VFunc00();
@@ -43,34 +53,6 @@ class CPlayerGui : public CPlayerGuiDonor {
 };
 extern CPlayerGui* g_pPlayerGui;                       // 0x013B8790
 
-struct CDefPointee {                                   // a counted definition
-    virtual void v00();
-    virtual void DeleteThis() const;                   // slot 1 (+0x04)
-    mutable long RefCount;                             // +0x04
-    void DecRef() const { --RefCount; }
-    long GetRefCount() const { return RefCount; }
-    void Release() const
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            DeleteThis();
-    }
-};
-template <class T> class CDefPointer { public:
-    T* Data;
-    CDefPointer() : Data(0) { }
-    ~CDefPointer()
-    {
-        if (Data)
-            Data->Release();
-    }
-};
-class CCameraModeDef : public CDefPointee { public: };
-
-class CGameDefinitionManager { public:
-    static CGameDefinitionManager& __fastcall Get();  // 0x0044C6B0
-    bool GetDef(const CCharString& name, CDefPointer<const CCameraModeDef>& def);   // 0x00637650
-};
 
 struct SCountBlock {
     long References;                                   // +0
@@ -130,7 +112,7 @@ void CPlayer_Methods::InitModeViewHero(EPlayerMode mode, CProcessedInput* input)
     g_pPlayerGui->ResetDrawSpiritsHealth();
     g_pPlayerGui->DisplayBottomHalfGUI = false;
     CDefPointer<const CCameraModeDef> def;
-    CGameDefinitionManager::Get().GetDef("CAMERA_MODE_PC_VIEW_HERO", def);
+    CGameDefinitionManager::Get().GetDef("CAMERA_MODE_PC_VIEW_HERO", &def);
     CGameCameraManager* camera;
     ((CWorld*)World)->CameraSource->GetCameraManager(&camera);
     camera->PushCameraMode(CCountedPointer<NCameraModes::CBase>(new NCameraModes::CMoveOnCylinder(camera, def)));

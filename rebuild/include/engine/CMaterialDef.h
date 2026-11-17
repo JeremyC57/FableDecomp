@@ -17,6 +17,11 @@ class CMaterialDef:public CParentDefClassBase {public:
 // ?Alloc@CMaterialDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
 public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
+#ifdef FABLE_RETAIL_CMATERIALDEF_GETRANDOMSLIDEFOOTPARTICLEEFFECT
+// NF49 opt-in (2026-11-17, row 0x008F7950 NCombatActionHelpers::CreateDustEffectForCreature): Ego_r.pdb
+// ?GetRandomSlideFootParticleEffect@CMaterialDef@@QBEJXZ (retail 0x008EE5A0, landed; labels_familypass6 L093). Declaration only; no layout change.
+public: long GetRandomSlideFootParticleEffect() const;
+#endif
 };
 // Layout: original parent base, native OnHit reads +44/+48; six STL containers contract by4bytes.
 FABLE_STATIC_ASSERT_AT(17, offsetof(CMaterialDef,OnHitRumbleLevel)==0x44);

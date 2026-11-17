@@ -12,6 +12,21 @@
 // Layout (retail CTCTurncoatSpell = Ego_r.pdb less 4 after the timer): PDef +0x40, PTarget +0x44, LoopingSound +0x50,
 //   TurncoatingEffectOnMe +0x74, TurncoatingEffectOnTarget +0x7c.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CEffectTableDef / CEffectTablePointer / CSpellDefPointer models with same-TU stand-in bodies over made-up GetSubDefIndex / GetEffectTableFromGlobalIndex callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), so the caller's handles stay uncaptured as with the stand-ins.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CBaseObject;
@@ -22,7 +37,11 @@ class CBaseObject;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-CThing* __fastcall CreateParticleEffect(long effect, const C3DVector* pos);   // 0x0072AB70
+// NF49 (round 7): CreateParticleEffect 0x0072AB70 is the public static __fastcall
+// ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r.pdb / FableWin.pdb), declared by
+// engine/CTCSpecialAbilities.h; was a free stand-in taking `const C3DVector*` (same register passing: ecx = effect, edx = &pos).
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#include "engine/CTCSpecialAbilities.h"
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -60,52 +79,13 @@ public:
 private:    // 0x0066BD00
 };
 
-struct CEffectTableDef {                                // descriptive
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long m_count;                                       // +0x04
-    bool Lookup(const CCharString& name, long* value);  // 0x00669D30
-};
-struct CEffectTablePointer {
-    CEffectTableDef* Object;
-    CEffectTablePointer() : Object(0) { }
-    ~CEffectTablePointer()
-    {
-        if (Object) {
-            if (--Object->m_count == 0)
-                Object->Destroy();
-        }
-    }
-    CEffectTableDef* operator->() const { return Object; }
-};
-class CSpecialAbilitiesTurncoatSpellDef { public:
-    bool GetSubDef(CEffectTablePointer* out);           // 0x00669580
-};
-long* GetSubDefIndex(CSpecialAbilitiesTurncoatSpellDef* def, const CCharString& name);
-CEffectTableDef* GetEffectTableFromGlobalIndex(long index);
-#pragma auto_inline(off)
-// Same-TU stand-in for GetSubDef 0x00669580: VC7.1 then knows the out pointer's address does not escape, so the
-//   effect table is held in a register for the lookups and its release (as retail).
-bool CSpecialAbilitiesTurncoatSpellDef::GetSubDef(CEffectTablePointer* out)
-{
-    long* pIndex = GetSubDefIndex(this, "CEffectTableDef");
-    if (pIndex) {
-        out->Object = GetEffectTableFromGlobalIndex(*pIndex);
-        return true;
-    }
-    return false;
-}
-#pragma auto_inline(on)
-struct CSpellDefPointer {
-    CSpecialAbilitiesTurncoatSpellDef* Object;
-    CSpecialAbilitiesTurncoatSpellDef* operator->() const { return Object; }
-};
+#include "engine/CSpecialAbilitiesTurncoatSpellDef.h"   // NF49: the shared def class (was a local stand-in with a GetSubDef member)
 
 class CTCTurncoatSpell { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x40 - 0x08];
-    CSpellDefPointer PDef;                              // +0x40
+    CDefPointer<const CSpecialAbilitiesTurncoatSpellDef> PDef;   // +0x40
     CIntelligentPointer<CThing> PTarget;                // +0x44
     long LevelOfSpell;                                  // +0x4c
     unsigned long LoopingSound;                         // +0x50
@@ -123,19 +103,19 @@ void CTCTurncoatSpell::StartTurncoatingEffects()
     if (ParentThing->GetTC(TCI_SOUND_PLAYER, &sound))
         LoopingSound = ((CTCSoundPlayer*)sound)->PlayAttachedCriteria("HERO_ABILITY_TURNCOAT_CONTINUOUS", 0, 0, 0, -1);
     {   // own scope: the table/effect slots are then packed after the sound name's (retail F+0 table, F+4 effect/name)
-        CEffectTablePointer table;
+        CDefPointer<const CSpecialEffectsDef> table;
         long effect = 0;
         if (PDef->GetSubDef(&table)) {
-            if (table->Lookup("HERO_TURNCOATING_EFFECT", &effect)) {
-                TurncoatingEffectOnMe = CIntelligentPointer<CThing>(CreateParticleEffect(effect, &ParentThing->GetPos()));
+            if (table->GetEffectFromString("HERO_TURNCOATING_EFFECT", effect)) {
+                TurncoatingEffectOnMe = CIntelligentPointer<CThing>(CTCSpecialAbilities::CreateParticleEffect(effect, ParentThing->GetPos()));
                 if (IS_THING_ALIVE(TurncoatingEffectOnMe)) {
                     CTCDParticleEmitter* emitter;
                     ((CThing*)TurncoatingEffectOnMe.GetPItem())->GetTC(TCI_PARTICLE_EMITTER, &emitter);
                     emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
                 }
             }
-            if (table->Lookup("ENEMY_TURNCOATING_EFFECT", &effect)) {
-                TurncoatingEffectOnTarget = CIntelligentPointer<CThing>(CreateParticleEffect(effect, &((CThing*)PTarget.GetPItem())->GetPos()));
+            if (table->GetEffectFromString("ENEMY_TURNCOATING_EFFECT", effect)) {
+                TurncoatingEffectOnTarget = CIntelligentPointer<CThing>(CTCSpecialAbilities::CreateParticleEffect(effect, ((CThing*)PTarget.GetPItem())->GetPos()));
                 if (IS_THING_ALIVE(TurncoatingEffectOnTarget)) {
                     CTCDParticleEmitter* emitter;
                     ((CThing*)TurncoatingEffectOnTarget.GetPItem())->GetTC(TCI_PARTICLE_EMITTER, &emitter);

@@ -46,11 +46,23 @@ FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 }
 FABLE_FORCEINLINE void C3DVector::Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
 FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+// NF49 (round 7): the string, the def handle, the message-event def and the manager come from the shared headers (were local
+// CCharString / CDefBase / CMessageEventDef / CDefPointer / CGameDefinitionManager models plus a same-TU stand-in GetDef body over a
+// made-up FindRef_GetDef_0 callee): the lookup at 0x007923C0 is the by-name member template
+// ??$GetDef@VCMessageEventDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCMessageEventDef@@@@@Z (FableWin.pdb;
+// neither PDB has a CGameDefinitionManager::GetDef), with the header's same-TU body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY,
+// the stand-in's role); CGameDefinitionManager::Get 0x0044C6B0 is the header's static.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CMessageEventDef.h"
 class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
@@ -106,20 +118,6 @@ class CTCDParticleEmitter { public:
 };
 
 
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long RefCount;                                      // +0x04
-    FABLE_FORCEINLINE void Release() { if (--RefCount == 0) Destroy(); }
-};
-class CMessageEventDef : public CDefBase { public: };
-
-template <class T> class CDefPointer { public:
-    T* Data;
-    CDefPointer() : Data(0) { }
-    FABLE_FORCEINLINE ~CDefPointer() { if (Data) Data->Release(); }
-    T* operator->() const { return Data; }
-};
 class CThingShotDef { public:
     unsigned char _pad00[0x40];
     long          ImpactEffect;                         // +0x40
@@ -132,21 +130,6 @@ class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* MessageEventManager;          // +0x60
 };
-class CGameDefinitionManager { public:
-    static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
-    bool GetDef(const CCharString& name, CDefPointer<CMessageEventDef>* def);   // 0x007923C0
-};
-CMessageEventDef* FindRef_GetDef_0();
-#pragma auto_inline(off)
-bool CGameDefinitionManager::GetDef(const CCharString& name, CDefPointer<CMessageEventDef>* def)
-{
-    CMessageEventDef* found = FindRef_GetDef_0();
-    if (!found)
-        return false;
-    def->Data = found;
-    return true;
-}
-#pragma auto_inline(on)
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
@@ -201,7 +184,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(ECollideType type, const C3DVec
                 pushed->SetUpForcePush(-away, PushForce, shooter);
             }
             thing->SetAttackedByCreature(shooter);
-            CDefPointer<CMessageEventDef> def;
+            CDefPointer<const CMessageEventDef> def;
             bool found;
             {
                 CCharString name("STANDARD_MESSAGE_EVENT_ATTACK");
@@ -209,7 +192,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(ECollideType type, const C3DVec
             }
             if (found) {
                 CMessageEventManager* manager = GetWorld().MessageEventManager;
-                manager->AddMessage(*def.Data, ((CThing*)thing)->GetPos(), shooter, thing, 1);
+                manager->AddMessage(*def, ((CThing*)thing)->GetPos(), shooter, thing, 1);
             }
             if (thing->HasTC(0x34)) {
                 CTCPerceiveThing* perceive = thing->GetTC<CTCPerceiveThing>(0x34);

@@ -12,56 +12,24 @@
 // Names: catalog "FrameUpdate" sits on 0x007C9180, but this row is the vtable slot-9 override; 0x007C9180 is a non-virtual helper.
 // Layout: retail CTCFireballSpell = Ego_r.pdb minus 4 after the timer; timer CurrentState +0x20, WillIncrementedFlag +0x38.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CCharString / CDefVirtual / CDefBase / CDefPointer / CSpecialEffectsDef / CDefClassBase models with same-TU stand-in bodies over made-up Lookup_CSpecialEffectsDef_GetEffectFromString / Find_CDefClassBase_GetSubDef callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom), so the caller's handles stay uncaptured as with the stand-ins.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-struct CDefBase : CDefVirtual {
-    long m_refCount;                            // +0x04
-};
-template <class T> class CDefPointer { public:          // the out slot GetSubDef fills
-    T* m_p;
-    CDefPointer() : m_p(0) { }
-};
-template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
-{
-    if (def && --def->m_refCount == 0)
-        def->Destroy();
-}
-class CSpecialEffectsDef : public CDefBase { public:
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-};
-long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);   // stand-in callee
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
-{
-    long found = Lookup_CSpecialEffectsDef_GetEffectFromString(this, name);
-    if (found < 0)
-        return false;
-    type = found;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
-};
-void* Find_CDefClassBase_GetSubDef(const void* owner);
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out)
-{
-    void* def = Find_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out.m_p = (T*)def;
-    return true;
-}
-#pragma auto_inline(on)
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -100,7 +68,11 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public:
     void MakeNoise(const CCharString& noise);   // 0x00662110
 };
-CThing* __fastcall CreateParticleEffect(long effect, const C3DVector& position);   // 0x0072AB70
+// NF49 (round 7): CreateParticleEffect 0x0072AB70 is the public static __fastcall
+// ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r.pdb / FableWin.pdb), declared by
+// engine/CTCSpecialAbilities.h; was a free stand-in.
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#include "engine/CTCSpecialAbilities.h"
 class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
@@ -191,12 +163,11 @@ void CTCFireballSpell::FrameUpdate()
     CThingCreatureBase* parent = ParentThing;
     if (StartEffect) {
         StartEffect = false;
-        CDefPointer<CSpecialEffectsDef> effectsSlot;
+        CDefPointer<const CSpecialEffectsDef> effects;     // NF49: the shared handle; its destructor is the release the stand-in ReleaseDef did here
         long effectType = 0;
-        bool found = PDef->GetSubDef(effectsSlot) && effectsSlot.m_p->GetEffectFromString("BUILDUP_EFFECT", effectType);
-        CSpecialEffectsDef* effects = effectsSlot.m_p;
+        bool found = PDef->GetSubDef(&effects) && effects->GetEffectFromString("BUILDUP_EFFECT", effectType);
         if (found) {
-            FireballBuildUpEffect = CIntelligentPointer<CThing>(CreateParticleEffect(effectType, parent->GetPos()));
+            FireballBuildUpEffect = CIntelligentPointer<CThing>(CTCSpecialAbilities::CreateParticleEffect(effectType, parent->GetPos()));
             if (IS_THING_ALIVE(FireballBuildUpEffect)) {
                 CTCDParticleEmitter* emitter;
                 CThing* effect = FireballBuildUpEffect.GetPItem();
@@ -205,7 +176,6 @@ void CTCFireballSpell::FrameUpdate()
                 emitter->AttachToThing(*ParentThing, 10, FireballAttachmentName, 0, 0.0f);
             }
         }
-        ReleaseDef(effects);
     }
     if (Timer.WillIncrementedFlag && Timer.WillAccumulatedLevel <= MaxLevelAllowableByStamina)
         ProcessLevellingUpFX();

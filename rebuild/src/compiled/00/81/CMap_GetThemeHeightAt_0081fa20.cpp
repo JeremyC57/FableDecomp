@@ -1,4 +1,5 @@
 // CMap::GetThemeHeightAt(const C2DCoordI& pos) -- the dominant engine theme at a map cell; when it covers the cell fully (blend >= 255) the theme definition's float at +0x80 (PDB CEngineThemeDef Height, one dword lower in retail), else 0
+// Leaf: ?GetThemeMinCameraSizeZOffsetAt@CMap@@QAEMABVC2DCoordI@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081FA20, length 103 bytes (twin of 0x0081FA90 at the neighbouring float).
 // Callees: CMap::GetDominantEngineThemeAt(const C2DCoordI&, long* blend) @ 0x0081F910 (the manifest's "CopyPos" label is wrong: it returns the
 //   palette's theme def index and writes the blend), CDefinitionManager::GetDef<CEngineThemeDef> @ 0x0063F3A0 (manifest label GetDef<CThingPhysicalSwitchDef>,
@@ -8,6 +9,21 @@
 //   re-read), a copied register local for the def (worse), a CDefPointer object with an unchecked release destructor (same frame).
 // next: lane gap: multi-local homing into a dead argument slot.
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes and the manager come from the shared headers (were local CDefPointeeBase / CDefinitionManager
+// models plus a same-TU stand-in GetDef body over a made-up FindDef_CDefinitionManager_GetDef_0 callee): the lookups at 0x0063F3A0 are
+// the member template ??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z (FableWin.pdb;
+// the landed 0x0063DD70 / 0x0066CF00 include chain), with the header's same-TU body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY,
+// the stand-in's role); each raw def pointer released by hand is a CDefPointer<const CEngineThemeDef> released by its scope-end
+// destructor. CEngineThemeDef has no shared header (engine/_quarantine only), so it stays modelled on the shared CDefClassBase.
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefinitionManager.h"
 class CWorld;
 class C2DCoordI { public:
     long X, Y;
@@ -30,6 +46,11 @@ class CHeightMapInit { public:                            // PDB, 12 bytes
     long           SizeY;
     unsigned long* WorldSeed;
 };
+class CEngineThemeDef : public CDefClassBase { public:            // Ego_r.pdb CEngineThemeDef (no shared header); retail offsets
+    unsigned char _pad_0x25[0x80 - 0x25];
+    float Height;                                  // +0x80 (retail)
+    float MinCameraHeight;                         // +0x84 (retail)
+};
 class CMap;
 class CHeightMap { public:                                // retail layout (PDB CHeightMap with the 12-byte release vector)
     virtual ~CHeightMap();                         // slot 0: the scalar deleting destructor
@@ -50,33 +71,6 @@ template <class T> struct scoped_ptr {
     T* operator->() const { return ptr; }
     void reset(T* p) { T* old = ptr; ptr = p; delete old; }
 };
-class CDefPointeeBase { public:
-    virtual void v00();
-    virtual void DestroySelf();
-    long RefCount;
-    void Release() { --RefCount; if (RefCount == 0) DestroySelf(); }
-};
-class CEngineThemeDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x80 - 8];
-    float Height;
-    float MinCameraHeight;
-};
-class CDefinitionManager { public:
-    bool GetDef(long index, CEngineThemeDef** out);   // 0x0063F3A0
-};
-void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CEngineThemeDef** out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
 class CMap { public:
     unsigned char       _pad00[0x1c];
     CDefinitionManager* DefinitionManager;           // +0x1c
@@ -101,12 +95,9 @@ float CMap::GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos)
     long blend;
     long themeIndex = GetDominantEngineThemeAt(pos, &blend);
     if (blend >= 255.0f) {
-        CEngineThemeDef* def = 0;
+        CDefPointer<const CEngineThemeDef> def;
         DefinitionManager->GetDef(themeIndex, &def);
-        float value = def->Height;
-        if (--def->RefCount == 0)
-            def->DestroySelf();
-        return value;
+        return def->Height;
     }
     return 0.0f;
 }

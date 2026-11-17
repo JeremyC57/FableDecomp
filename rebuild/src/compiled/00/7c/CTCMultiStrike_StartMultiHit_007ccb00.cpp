@@ -16,72 +16,31 @@
 //   its 12-byte map/vector: Position +0x02, Direction +0x0E, PHitLocation +0x48, PWeapon +0x58; the multi-strike def's
 //   DelayTimeSecs vector at +0x6C (retail).
 #include "fable_compiler.h"
+// NF49 (round 7): the def classes come from the shared headers (were local CCharString / CDefPointeeBase / CDefPointer / CSpecialEffectsDef / CDefClassBase models with same-TU stand-in bodies over made-up Lookup_CSpecialEffectsDef_CalcAndLookup / FindDef_CDefClassBase_GetSubDef_0 callees): the call at
+// 0x00669580 is the member template ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+// (Ego_r.pdb / FableWin.pdb), its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10
+// idiom), and CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body
+// (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY, the 0x007941D0 idiom), so the caller's handles stay uncaptured as with the stand-ins.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CSpecialAbilitiesMultiStrikeDef.h"   // NF49: the shared def class (was a local model over a local CStdVector)
 class CTCBase;
 class CThing;
 class CBaseObject;
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
 #include "engine/C3DVector.h"
 
-class CDefPointeeBase { public:
-    virtual void Destroy();
-    virtual void Delete();                              // slot 1 (+0x04)
-    long m_refCount;                                    // +0x04
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object && --Object->m_refCount == 0)
-            Object->Delete();
-    }
-    T* operator->() const { return Object; }
-};
-class CSpecialEffectsDef : public CDefPointeeBase { public:
-    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
-};
-long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString& name);   // stand-in callee
-#pragma auto_inline(off)
-// Stand-in body (out of line in retail): writes the out value only, so the effect index's address does not escape.
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
-{
-    long found = Lookup_CSpecialEffectsDef_CalcAndLookup(this, name);
-    if (found < 0)
-        return false;
-    value = found;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
-};
-void* FindDef_CDefClassBase_GetSubDef_0();
-#pragma auto_inline(off)
-// Same-TU stand-in for GetSubDef<CSpecialEffectsDef> (the landed 0x007CC2B0 idiom): writes the out slot only.
-bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>* out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-template <class T> struct CStdVector {                 // STLport vector, 12 bytes in retail
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T& operator[](long i) const { return _M_start[i]; }
-};
-class CSpecialAbilitiesMultiStrikeDef : public CDefClassBase { public:
-    unsigned char     _pad08[0x6c - 0x08];
-    CStdVector<float> DelayTimeSecs;                   // +0x6c
-};
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -90,7 +49,6 @@ public:
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class TCompare> class CVectorMap;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
@@ -170,7 +128,11 @@ public:
     CPlayer& GetPlayer();                        // 0x004C7A30
     long GetJoystickDeviceNumber() const;              // 0x004C7CA0
 };
-CThing* __fastcall CreateParticleEffect(long type, const C3DVector& position);   // 0x0072AB70
+// NF49 (round 7): CreateParticleEffect 0x0072AB70 is the public static __fastcall
+// ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r.pdb / FableWin.pdb), declared by
+// engine/CTCSpecialAbilities.h; was a free stand-in.
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#include "engine/CTCSpecialAbilities.h"
 
 namespace NHitLocations { class CHitLocation; }
 #pragma pack(push, 1)
@@ -257,11 +219,11 @@ void CTCMultiStrike::StartMultiHit(const CHitParameters& hit, CThing* target)
     StrikeStarted = true;
     NumHits = 1;
     DelayTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->DelayTimeSecs[SpellLevel]);
-    CDefPointer<CSpecialEffectsDef> effects;
+    CDefPointer<const CSpecialEffectsDef> effects;
     long effect = 0;
-    bool found = ((CDefClassBase*)PDef.Object)->GetSubDef(&effects) && effects->GetEffectFromString("HIT_EFFECT", effect);
+    bool found = PDef->GetSubDef(&effects) && effects->GetEffectFromString("HIT_EFFECT", effect);
     if (found)
-        CreateParticleEffect(effect, target->GetPos());
+        CTCSpecialAbilities::CreateParticleEffect(effect, target->GetPos());
     const CThing* parentThing = ParentThing;
     if (parentThing->HasTC(0x13)) {
         CThing* weapon =((CThing*) ((CTCWeaponHolder*)parentThing->GetTC(0x13))->PWeapon.GetPItem());

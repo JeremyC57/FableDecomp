@@ -13,54 +13,33 @@
 #include "fable_compiler.h"
 #define FABLE_RETAIL_CTCBASE                                 // agentNF19: the virtual CTCBase model (slot 6 OnInitialActivate 0x00686870)
 #include "engine/CTCBase.h"
-
-class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
+// NF49 (round 7): the def classes come from the shared headers (were local CCharString / CDefClassBase / CDefPointer /
+// CSpecialEffectsDef models with same-TU stand-in GetSubDef / GetEffectFromString bodies over made-up LookUpSubDef /
+// Lookup_CSpecialEffectsDef_GetEffectFromString callees): the call at 0x00669580 is the member template
+// ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z (Ego_r.pdb / FableWin.pdb),
+// its body visible and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10 idiom), and
+// CSpecialEffectsDef::GetEffectFromString 0x00669D30 is the header's same-TU noinline body (FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY,
+// the 0x007941D0 idiom), so the caller's out handle and effect index stay uncaptured as with the stand-ins.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
 #include "engine/C3DVector.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 
-template <class T> class CDefPointer;
-class CDefClassBase { public:
-    virtual void v00();
-    virtual void Destroy() const;                           // slot 1
-    mutable long RefCount;                                  // +0x04
-    bool GetSubDef(CDefPointer<const class CSpecialEffectsDef>* out) const;   // GetSubDef<CSpecialEffectsDef> 0x00669580
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object && --Object->RefCount == 0)
-            Object->Destroy();
-    }
-    T* operator->() const { return Object; }
-};
-class CSpecialEffectsDef : public CDefClassBase { public:
-    bool GetEffectFromString(const CCharString& name, long& effect) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
-};
 
 class CTCBaseComponent;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);   // stand-in callee
-// Stand-in body (out of line in retail @ 0x00669D30): it writes the out value only, so VC7.1 knows the local's address
-// does not escape the call (the 0x008D9740 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
-{
-    long found = Lookup_CSpecialEffectsDef_GetEffectFromString(this, name);
-    if (found < 0)
-        return false;
-    value = found;
-    return true;
-}
-#pragma auto_inline(on)
 
 struct CInterfaceBits {                                     // bitset<> at CThing+0x20
     unsigned long _M_w[9];
@@ -89,17 +68,6 @@ class CThing { public:
     }
     const C3DVector& GetPos() const;                   // 0x004C73D0
 };
-// Same-TU stand-in for the GetSubDef<T> COMDAT (as the landed 0x00801A50): with the body visible VC7.1 sees that the out
-// pointer does not escape and keeps the def object in ebp through to its release, as retail.
-const CDefClassBase* LookUpSubDef(const CDefClassBase* def);
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CDefPointer<const CSpecialEffectsDef>* out) const
-{
-    const CSpecialEffectsDef* def = (const CSpecialEffectsDef*)LookUpSubDef(this);
-    out->Object = def;
-    return def != 0;
-}
-#pragma auto_inline(on)
 
 class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long effect, const C3DVector& position, bool attached);   // 0x006E0880
@@ -139,8 +107,8 @@ struct CDefClassBaseT : CDefClassBase {
 };
 template <class T> struct CDefCopy {
     T* Object;
-    CDefCopy(T* object) : Object(object) { if (Object) ++Object->RefCount; }
-    ~CDefCopy() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
+    CDefCopy(T* object) : Object(object) { if (Object) ++Object->IVRefCount; }
+    ~CDefCopy() { if (Object && --Object->IVRefCount == 0) Object->Delete(); }
     T* operator->() const { return Object; }
 };
 struct CThingWithDef : CThing {

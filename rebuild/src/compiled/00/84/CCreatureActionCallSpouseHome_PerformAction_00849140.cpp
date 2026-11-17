@@ -10,29 +10,25 @@
 // ebp right after the lookup result is moved to bl; inside the `if` the creature is fetched twice into locals (the first unused), the
 // manager into a third (edi, `this` being dead by then), then the five arguments right to left (0, 0, the creature, its position, the def).
 // Layout: retail CCreatureActionBase is 0xa8 bytes with PCreature at +8; no engine header for this class, so `this` is modelled locally.
+// NF49 (round 7): the string, the def handle, the message-event def and the manager come from the shared headers (were local
+// CCharString / CMessageEventDef / CDefPointer / CDefinitionManager models): the lookup at 0x007923C0 is the by-name member template
+// ??$GetDef@VCMessageEventDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCMessageEventDef@@@@@Z (FableWin.pdb),
+// with its same-TU body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY: the template is instantiated in every TU that uses it,
+// so VC7.1 sees the out-handle is only assigned through `out` and keeps the def in ebp); the hand-written release on a pointer
+// local is the shared handle's scope-end destructor.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CMessageEventDef.h"
 class C3DVector;
 class CMessageEvent;
 
-class CCharString { public:                        // one pointer (PStringData)
-    void* m_pData;
-    CCharString(const char* text, long length);   // 0x0099EBF0
-    ~CCharString();                         // 0x0099EAE0
-};
-
-class CMessageEventDef { public:                   // CDefBase: vptr, then the reference count at +4
-    virtual void v00();
-    virtual void Destroy();                 // slot 1 (+4)
-    long m_count;                           // +4
-};
-
-struct CDefPointer {                        // CDefPointer<CMessageEventDef>: one word, zero-initialised; released by hand below
-    CMessageEventDef* m_p;
-    CDefPointer() : m_p(0) { }
-};
-
-class CDefinitionManager { public:
-    bool GetDef(const CCharString& name, CDefPointer& def);   // 0x007923C0
-};
 
 class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
     const C3DVector& PeekPos() const;   // 0x006A4D00
@@ -81,22 +77,16 @@ class CCreatureAction_CallSpouseHome : public CCreatureActionBase { public:
 
 void CCreatureAction_CallSpouseHome::PerformAction()
 {
-    CDefPointer def;
-    CMessageEventDef* p;
+    CDefPointer<const CMessageEventDef> def;
     bool found;
     {
         CCharString name("STANDARD_MESSAGE_EVENT_CALL_SPOUSE_HOME", -1);
-        found = GetPDefinitionManager()->GetDef(name, def);
+        found = GetPDefinitionManager()->GetDef(name, &def);
     }
-    p = def.m_p;
     if (found) {
         CThing* pCreatureThing = PCreature.GetPItem();   // fetched but unused: retail keeps the dead call
         CThing* pCreature = PCreature.GetPItem();
         CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;   // named: resolved before the arguments
-        pManager->AddMessage(*p, pCreature->PeekPos(), PCreature.GetPItem(), 0, 0);
-    }
-    if (p) {
-        if (--p->m_count == 0)
-            p->Destroy();
+        pManager->AddMessage(*def, pCreature->PeekPos(), PCreature.GetPItem(), 0, 0);
     }
 }

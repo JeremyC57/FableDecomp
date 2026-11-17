@@ -9,38 +9,27 @@
 // CTCTavernGame::Score -- PDB +0x34, retail 8 bytes lower). The definition pointer is taken into a
 // named local right after the getter (kept in edi across the two calls) and released by hand at the
 // end without a null test (`dec [edi+4] ; jne ; call [vt+4]`).
-struct CDefObject {
-    virtual void v00();
-    virtual void Destroy();                         // slot 1 (+0x04)
-    long m_refCount;                                // +0x04
-};
-
-class CTavernGameCoinGolfDef : public CDefObject { public:
-    unsigned char _pad[0x50];
-    long m_par;                                     // +0x58
-};
-
-struct CDefPointer {                                // CDefPointer<const CTavernGameCoinGolfDef>
-    CTavernGameCoinGolfDef* m_p;
-    CDefPointer() : m_p(0) {}
-};
-
-class CDefClassBase { public:
-    bool GetSubDef_007d4bd0(CDefPointer* out);               // 0x007D4BD0
-};
-void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef_007d4bd0(CDefPointer* out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
+// NF49 (round 7): the string and def classes come from the shared headers (were local CDefObject / CTavernGameCoinGolfDef / CDefPointer / CDefClassBase models
+// and a same-TU stand-in GetSubDef body): the call at 0x007D4BD0 is the member template
+// ??$GetSubDef@VCTavernGameCoinGolfDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@@Z (Ego_r.pdb / FableWin.pdb), its body visible
+// and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10 idiom); GFIntToCharString / the CWideString
+// operator+ overloads / CCharString::ToWideString are the fable_string.h / engine/fable_script_text.h declarations.
+#include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CTAVERNGAMECOINGOLFDEF_SUBDEF
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/fable_script_text.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameCoinGolfDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 
 class CThing { public:
     unsigned char _pad[0x70];
@@ -66,13 +55,11 @@ class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
 void CTCTavernGameCoinGolf::vfunc_32()
 {
     CTCTavernGameCoinBase::NewRound();
-    CDefPointer defSlot;
-    m_pParentThing->GetDefinition()->GetSubDef_007d4bd0(&defSlot);
+    CDefPointer<const CTavernGameCoinGolfDef> defSlot;
+    m_pParentThing->GetDefinition()->GetSubDef(&defSlot);
     Score = 0;
-    CTavernGameCoinGolfDef* def = defSlot.m_p;
-    m_par = def->m_par;
+    const CTavernGameCoinGolfDef* def = defSlot.Get();
+    m_par = def->StartingCourse;                    // NF49: the shared def's +0x58 member
     SetupForNewRound();
     SetState(16);
-    if (--def->m_refCount == 0)
-        def->Destroy();
 }

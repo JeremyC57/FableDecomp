@@ -4,6 +4,22 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00917130.
 // Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "fable_compiler.h"
+// NF49 (round 7): the AI state-group base and the manager come from the shared headers (were local CAIStateGroupBase /
+// CDefinitionManager models): the manager accessor 0x008FCFB0 is the protected const
+// ?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ (Ego_r.pdb / FableWin.pdb; engine/CAIStateGroupBase.h
+// _MEMBERS + _PEEKDEFINITIONMANAGER + _PROTECTED), was a made-up GetPDefinitionManager returning CDefinitionManager*; the nested
+// CAIFilterBase is the header's (_FILTER, which needs the _AIACTIONS forward enums); GetDefGlobalIndexFromName 0x009AD410 is
+// engine/CDefinitionManager.h's const member, reached through CGameDefinitionManager.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_FILTER
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER_PROTECTED
 #include <stdlib.h>
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
@@ -15,6 +31,10 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 // CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CAIStateGroupBase.h"
 namespace { extern CCharString LOG_DEF_NAME; }      // "OBJECT_KNOTHOLE_LOG_MOVEABLE"
 namespace { extern CCharString PICK_UP_ANIM_NAME; }      // "ST_WORK_GET_CRATE"
 namespace { extern CCharString HOLDING_LOG_ANIM_NAME; }      // "ST_HOLDING_CRATE"
@@ -67,30 +87,12 @@ template <class T> template <class Tag> __declspec(noinline) void vector<T>::_M_
 class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
 };
-class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name) const;    // 0x009AD410
-};
 struct CThingCreature : CThing {
     void* GetAnimFromName(const CCharString& name, long index); // 0x00662A00
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreature* PCreature;                  // +0x18
-};
-class CAIStateGroupBase { public:
-    class CAIFilterBase { public:                      // vtable 0x0128FD20
-        virtual bool operator()(CThing* thing) const;   // 0x00916A50
-    };
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;
-    unsigned char Enabled;
-    unsigned char _pad_0x13;
-    CDefinitionManager* GetPDefinitionManager() const;  // 0x008FCFB0
-    void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_MoveGoodsBase : CAIStateGroupBase {
     bool FetchGoods(CIntelligentPointer<CThing> source, float distance, vector<const CCharString*> anims,
@@ -119,7 +121,7 @@ void CAIStateGroup_ThrowLogsOnFire::Update()
     const CTCCarrying* carrying;
     PBrain->PCreature->PeekTC(TCI_CARRYING, &carrying);
     if (carrying->GetThingInPrimarySlot() == 0) {
-        GetPDefinitionManager()->GetDefGlobalIndexFromName(LOG_DEF_NAME);
+        PeekDefinitionManager().GetDefGlobalIndexFromName(LOG_DEF_NAME);
         PBrain->PCreature->GetAnimFromName(HOLDING_LOG_ANIM_NAME, 0);
         vector<const CCharString*> getAnims;
         getAnims.push_back(&PICK_UP_ANIM_NAME);

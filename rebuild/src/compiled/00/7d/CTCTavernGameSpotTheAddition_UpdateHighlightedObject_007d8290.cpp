@@ -13,6 +13,23 @@
 //        `radius + radius`, the index counter shares the def's zero register; the planar distance is
 //        sqrt(dx*dx + dy*dy) with the fsqrt intrinsic (VC emits the Y term first); the sound name is a block-scoped
 //        named string; the def was dereferenced, so its release has no null test.
+// NF49 (round 7): the def classes come from the shared headers (were local CTavernGameSpotTheAdditionDef / CSpotTheAdditionDefPointer / CDefClassBase models and a same-TU
+// stand-in GetSubDef body over made-up FindRef_CDefClassBase_GetSubDef_0 callees): the call at 0x007D9A80 is the member template
+// ??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z (Ego_r.pdb / FableWin.pdb), its body visible
+// and kept out of line (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE, the 0x0066BC10 idiom).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameSpotTheAdditionDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
 #include "engine/C3DVector.h"
@@ -25,41 +42,7 @@ struct KnickKnack {                             // 0x10 bytes
     CThing*   Thing;                            // +0x0c (CThingObject*)
 };
 
-class CTavernGameSpotTheAdditionDef { public:
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-    long          m_count;                      // +0x04
-    unsigned char _pad_0x08[0x54];
-    float         KnickKnackRadius;             // +0x5c
-    void Release()
-    {
-        if (--m_count == 0)
-            Destroy();
-    }
-};
-struct CSpotTheAdditionDefPointer {             // CDefPointer<const CTavernGameSpotTheAdditionDef>
-    CTavernGameSpotTheAdditionDef* Object;
-    CSpotTheAdditionDefPointer() : Object(0) {}
-    ~CSpotTheAdditionDefPointer() { if (Object) Object->Release(); }
-    CTavernGameSpotTheAdditionDef* operator->() const { return Object; }
-};
 
-class CDefClassBase { public:
-    bool GetSubDef(CSpotTheAdditionDefPointer* out);   // 0x007D9A80
-};
-CTavernGameSpotTheAdditionDef* FindRef_CDefClassBase_GetSubDef_0(CDefClassBase* defClass);   // stand-in callee of the stand-in body below
-// Stand-in body (the real 0x007D9A80 is in this TU, out of line, see the landed CDefClassBase_GetSubDef007d9a80): it only
-// writes the def through the out parameter, so VC7.1 knows the caller's address-taken pointer does not escape the call.
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CSpotTheAdditionDefPointer* out)
-{
-    CTavernGameSpotTheAdditionDef* def = FindRef_CDefClassBase_GetSubDef_0(this);
-    if (!def)
-        return false;
-    out->Object = def;
-    return true;
-}
-#pragma auto_inline(on)
 
 struct CThingDefOwner {
     unsigned char  _pad_0x00[0x70];
@@ -84,7 +67,7 @@ struct CTCTavernGameSpotTheAddition {
 
 void CTCTavernGameSpotTheAddition::UpdateHighlightedObject()
 {
-    CSpotTheAdditionDefPointer def;
+    CDefPointer<const CTavernGameSpotTheAdditionDef> def;
     Owner->DefClass->GetSubDef(&def);
     float radius = def->KnickKnackRadius;
     float bestDist = radius + radius;
