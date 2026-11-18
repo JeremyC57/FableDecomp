@@ -265,7 +265,7 @@ address	kind	name	state	true_length	staged_folder	note
 007db5c0	named	CTCTavernGameCardBlackjack::Split	OPEN			
 007dd540	named	CTCCreatureFlyInCircles::UpdateSwoop	OPEN			
 007e0f20	named	CTCAICreatureWillPowerIndicator::FrameUpdate	PARKED			PARKED e03: DIFFER(531v537) presence-word load into ecx at 0x007E0F2A; one frame word shared with fx_index; draft ../2026-11-17_egod_open/e03/007e0f20.cpp
-007e8a40	named	CTCFlourishTarget::ProcessActionMovementDelta	IN_PROGRESS			batch e13
+007e8a40	named	CTCFlourishTarget::ProcessActionMovementDelta	MATCHED_STAGED	482	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13
 007e9460	identify	CTCAvoidRegionExit::CTCAvoidRegionExit::vfunc_9	OPEN			
 007ebea0	named	CTCActionUseBed::OnActionUse	OPEN			
 007ec710	named	CTCActionUseBed::GlobalUpdate	OPEN			
@@ -504,7 +504,7 @@ address	kind	name	state	true_length	staged_folder	note
 009b9770	named	CParsedItem::InitAsFloat	OPEN			
 009b9d70	named	CStringParser::SkipPastNewline	OPEN			
 009bbcc0	named	CPersistContext::TransferSubComponentLoadText	OPEN			
-009bca20	named	_global::DisplayCenteredText	IN_PROGRESS			batch e13
+009bca20	named	_global::DisplayCenteredText	MATCHED_STAGED	1104	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13
 009bce70	identify	_global::GetCharWidthW	OPEN			
 009bcef0	identify	_global::GetCharWidthW	OPEN			
 009bd460	named	CMovieSubtitles::ParseSubtitles	OPEN			
@@ -532,7 +532,7 @@ address	kind	name	state	true_length	staged_folder	note
 009faf70	named	CTexture::GenerateMipmapsWithGPU	MATCHED_STAGED	407	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
 009fb110	named	CTexture::SaveToDataStream	OPEN			
 009fb3f0	named	CTexture::LoadFromDataStream	OPEN			
-009fb750	named	CTexture::LoadFromDataStreamToPreallocatedSurface	IN_PROGRESS			batch e13
+009fb750	named	CTexture::LoadFromDataStreamToPreallocatedSurface	MATCHED_STAGED	789	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13
 009fde80	named	CGraphicInfoFrame::CFrameData::BeginLoading	OPEN			
 009fe780	named	CGraphicInfo::InitialiseFramesAsSurfaceSections	OPEN			
 00a04200	identify	_global::Math_NormalizeVector2D	OPEN			

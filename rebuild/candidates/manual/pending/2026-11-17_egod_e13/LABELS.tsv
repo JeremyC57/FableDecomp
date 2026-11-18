@@ -1,0 +1,5 @@
+address	name	evidence
+0x009BCA20	?DisplayCenteredText@@YIXABVCFontBank@@ABVCWideString@@ABVC2DBoxF@@@Z	Ego_r / FableWin name sets + Ego_d lib_xmv_player.obj; called by landed CMovieSubtitles::Play 0x009BD910
+0x007E8A40	?ProcessActionMovementDelta@CTCFlourishTarget@@QBEXAAVC3DVector@@@Z	Ego_r 0x007E38A0 after OnInitialActivate / OnRemove; Ego_d tc_flourish_target.obj
+0x007E8A20	?OnRemove@CTCFlourishTarget@@UAEXXZ	see NAME_FIXES.tsv
+0x009FB750	?LoadFromDataStreamToPreallocatedSurface@CTexture@@QAEXAAVCDataInputStream@@@Z	Ego_r name set; Ego_d lib_texture.obj

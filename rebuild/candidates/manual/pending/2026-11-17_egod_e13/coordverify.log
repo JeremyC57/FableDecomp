@@ -1,0 +1,12 @@
+addr       parity           behav  name
+009bca20   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+009bca20   RELOCATION_MATCH PASS   DisplayCenteredText
+007e8a40   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007e8a40   RELOCATION_MATCH PASS   ProcessActionMovementDelta
+009fb750   WARN RELOC_CONFLICT: ??0?$vector@EV?$allocator@E@std@@@std@@QAE@I@Z -> 005136b0 here, 00514e20 in landed 00996610
+009fb750   RELOCATION_MATCH PASS   LoadFromDataStreamToPreallocatedSurface
+
+WINS: 3
+  009bca20 RELOCATION_MATCH _global::DisplayCenteredText
+  007e8a40 RELOCATION_MATCH CTCFlourishTarget::ProcessActionMovementDelta
+  009fb750 RELOCATION_MATCH CTexture::LoadFromDataStreamToPreallocatedSurface

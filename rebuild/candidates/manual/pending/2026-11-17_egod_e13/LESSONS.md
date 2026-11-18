@@ -1,0 +1,7 @@
+# e13 lessons (one line each)
+- A visible noinline same-TU body of the callee that receives a local's address (CTexture::Lock's hidden result slot) let VC7.1 keep that local's fields in registers across later calls; it replaced a fitted `width` local Ego_d does not list and gave Ego_d's data_length retail's register (0x009FB750: 5 hunks -> RELOCATION_MATCH; prove with a stub first, then the real body graded at its own address).
+- Same-TU members defined plainly in Ego_d object order reproduced retail's call / expand split without `#pragma auto_inline(off)` (0x008EEC70: ApplyImpulse / ForceToVel called, GetVel / ApplyMove expanded).
+- A header accessor can add a test retail lacks: C3DAnimationBlendState::HasSkeletalMorph checks Data for null, retail only tests the morph (0x00A3C3B0: 781 -> 777 bytes with the direct `!anim1.Data->SkeletalMorph.IsNull()`).
+- A shared lerp helper with a by-value first parameter (GFGetInterpolatedValue) keeps old_val on the x87 stack (`fld a ; fld b ; fsub st(1) ; ... fstp st(0)`) where the one-expression lerp re-reads it.
+- Existing FITTED body opt-ins of a matched twin carry over: VFONTMAXHEIGHT_PAREN closed 0x009BCA20 as it closed 0x00497FD0; CROSS_MEMBER_X_GROUP closed a dot-order residue in 0x007E8A40 at the first try (sweep the existing Cross / Dot opt-ins before writing new text).
+- Behaviour tests built with g++ on x86-64 have 64-bit `long`: mutants about 32-bit sign / zero extension must be checked with `int` / `unsigned int` (vt.py's VC7.1 run is the real judge).
