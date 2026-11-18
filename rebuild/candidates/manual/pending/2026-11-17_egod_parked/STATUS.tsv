@@ -265,7 +265,7 @@ address	kind	name	state	true_length	staged_folder	note
 007db5c0	named	CTCTavernGameCardBlackjack::Split	OPEN			
 007dd540	named	CTCCreatureFlyInCircles::UpdateSwoop	OPEN			
 007e0f20	named	CTCAICreatureWillPowerIndicator::FrameUpdate	PARKED			PARKED e03: DIFFER(531v537) presence-word load into ecx at 0x007E0F2A; one frame word shared with fx_index; draft ../2026-11-17_egod_open/e03/007e0f20.cpp
-007e8a40	named	CTCFlourishTarget::ProcessActionMovementDelta	OPEN			
+007e8a40	named	CTCFlourishTarget::ProcessActionMovementDelta	IN_PROGRESS			batch e13
 007e9460	identify	CTCAvoidRegionExit::CTCAvoidRegionExit::vfunc_9	OPEN			
 007ebea0	named	CTCActionUseBed::OnActionUse	OPEN			
 007ec710	named	CTCActionUseBed::GlobalUpdate	OPEN			
@@ -284,7 +284,7 @@ address	kind	name	state	true_length	staged_folder	note
 008008b0	named	CTCPreCalculatedNavigationRoute::LoadRoute	OPEN			
 00802e00	named	CTCTargetingPlayer::SetPTargetedThing	OPEN			
 00803280	named	CTCTargetingPlayer::UpdateTargetThreatening	OPEN			
-00803540	named	CTCTargetingPlayer::UpdateTargetedPositionRandomWalk	OPEN			
+00803540	named	CTCTargetingPlayer::UpdateTargetedPositionRandomWalk	IN_PROGRESS			batch e13
 00805600	named	CTCTargetingPlayer::FrameUpdate	MATCHED_STAGED	641	rebuild/candidates/manual/pending/2026-11-17_egod_e06	batch e06
 0080aad1	named	CTCActionUseBuyHouse::OnCreate	OPEN			
 0080bfec	named	CPersistContext_TransferableVector<CHeroMarriageInfo>::Resize	OPEN			
@@ -370,7 +370,7 @@ address	kind	name	state	true_length	staged_folder	note
 008e9b70	named	NCreatureMode::CModeStrafe::AnimUpdate	OPEN			
 008edc70	identify	_gapscan::sub_008edc70	OPEN			
 008eeb40	named	Mass::ForceToVel	OPEN			
-008eec70	named	Mass::Collide	OPEN			
+008eec70	named	Mass::Collide	IN_PROGRESS			batch e13
 008ef200	named	Coin::Coin	OPEN			
 008ef520	named	CTCTavernGameCoinBase::UpdateCoins	OPEN			
 008efb00	named	CTCTavernGameCoinBase::FindObstacles	OPEN			
@@ -504,7 +504,7 @@ address	kind	name	state	true_length	staged_folder	note
 009b9770	named	CParsedItem::InitAsFloat	OPEN			
 009b9d70	named	CStringParser::SkipPastNewline	OPEN			
 009bbcc0	named	CPersistContext::TransferSubComponentLoadText	OPEN			
-009bca20	named	_global::DisplayCenteredText	OPEN			
+009bca20	named	_global::DisplayCenteredText	IN_PROGRESS			batch e13
 009bce70	identify	_global::GetCharWidthW	OPEN			
 009bcef0	identify	_global::GetCharWidthW	OPEN			
 009bd460	named	CMovieSubtitles::ParseSubtitles	OPEN			
@@ -532,7 +532,7 @@ address	kind	name	state	true_length	staged_folder	note
 009faf70	named	CTexture::GenerateMipmapsWithGPU	MATCHED_STAGED	407	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
 009fb110	named	CTexture::SaveToDataStream	OPEN			
 009fb3f0	named	CTexture::LoadFromDataStream	OPEN			
-009fb750	named	CTexture::LoadFromDataStreamToPreallocatedSurface	OPEN			
+009fb750	named	CTexture::LoadFromDataStreamToPreallocatedSurface	IN_PROGRESS			batch e13
 009fde80	named	CGraphicInfoFrame::CFrameData::BeginLoading	OPEN			
 009fe780	named	CGraphicInfo::InitialiseFramesAsSurfaceSections	OPEN			
 00a04200	identify	_global::Math_NormalizeVector2D	OPEN			
@@ -573,7 +573,7 @@ address	kind	name	state	true_length	staged_folder	note
 00a364e0	named	C3DMeshObject::GetDummyObjectPositionStatic	OPEN			
 00a36a80	named	C3DMeshObject::GetDummyObjectPositionAnimated	OPEN			
 00a3a410	named	CWADBank::AddFile	OPEN			
-00a3c3b0	named	C3DAnimationBlendState::SetInterpolate	OPEN			
+00a3c3b0	named	C3DAnimationBlendState::SetInterpolate	IN_PROGRESS			batch e13
 00a43cd0	identify	_global::Vector_InsertRange_CDataBankTextEntry	OPEN			
 00a43e30	identify	_global::CVertexBufferWin32_SizeofElements	OPEN			
 00a44420	named	_global::GFIsPointInTriangle	OPEN			
