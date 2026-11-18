@@ -491,7 +491,7 @@ address	kind	name	state	true_length	staged_folder	note
 0099e690	named	_global::GFCharStringToFloat	OPEN			
 0099f570	named	_global::operator+	OPEN			
 0099f600	named	_global::operator+	OPEN			
-0099f7a0	identify	_global::CWideString_AppendChar	IN_PROGRESS			batch e16 (identify)
+0099f7a0	identify	_global::CWideString_AppendChar	PARKED			PARKED e16 (identified ??H@YI?AVCCharString@@ABV0@D@Z): DIFFER(130v130) only with a refs local Ego_d does not list; shared-header spellings give 126v130 (inline copy inc at 0x0099F7BF); ../2026-11-17_egod_open/e16/
 0099fb60	identify	_global::GFIntToCharString_JoinList	OPEN			
 009a01c0	named	CBasicString<char>::ExtendData	OPEN			
 009a08b0	named	_global::GFFloatToCharString	OPEN			
@@ -523,7 +523,7 @@ address	kind	name	state	true_length	staged_folder	note
 009e55a0	named	CSymbolMap::ParseEnum	OPEN			
 009e84d0	named	CPersistTraits<C3DVector>::TransferIn	OPEN			
 009ebdd0	named	CConsoleCommandBase::?ProcessCommandLine@CConsoleCommandBase@@MAE_NABVCCharString@@AAVCConsole@@@Z	OPEN			
-009f18f0	identify	_global::CircularBuffer_Read	IN_PROGRESS			batch e16 (identify)
+009f18f0	identify	_global::CircularBuffer_Read	PARKED			PARKED e16 (identified ?GetData@CGameEventDataPackage@@QAEXJPAX@Z): DIFFER(166v166) register permutation (c2prio this 75 v read_pos 61); ../2026-11-17_egod_open/e16/
 009f39a0	identify	_global::CSurface_CopySurfaceData	OPEN			
 009f3da0	named	CSurface::CopyToMemoryB8G8R8A8	OPEN			
 009f4590	named	CSurface::SaveAsTGA	OPEN			
@@ -743,7 +743,7 @@ address	kind	name	state	true_length	staged_folder	note
 00c52c40	named	CEngineInternalPrimitiveParticleGroup::GetRenderLayerMask	PARKED			PARKED e04: DIFFER(75v75); not an Ego_d row: the catalog label is propagated, the function is libpk CCpuInfo::GetCyrixModelName (descriptive); ecx/eax tie like its twin 0x00C52BB0 (254 grades); recommend leave; draft ../2026-11-17_egod_open/e04/00c52c40.cpp
 00c5e2c0	identify	_gapscan::sub_00c5e2c0	OPEN			
 00c604e0	named	CEnvironmentSpellEffectInterface::CEnvironmentSpellEffectInterface	OPEN			
-00c62370	identify	_global::Quaternion_FromAxisAngle	IN_PROGRESS			batch e16 (identify)
+00c62370	identify	_global::Quaternion_FromAxisAngle	PARKED			PARKED e16 (descriptive name GetRandomPointInSphere, libpk, no PDB): RELOCATION_MATCH + test PASS but strict headers reject its local C3DVector model (SHARED_HEADER_AVAILABLE): libpk calls operator+ 0x00C257E0 / GetMagnitude 0x00C25970 out of line while engine/C3DVector.h force-inlines them; needs a libpk vector opt-in; draft 00c62370.localmodel_match.cpp; ../2026-11-17_egod_open/e16/
 00c77800	identify	_global::CAudioChannel_SetupAudioFilter	OPEN			
 00cb2590	identify	_global::ImeUI_FormatCompStringDisplay	OPEN			
 00cddcb0	named	NScript::CPersonalScriptMainScript::Main	OPEN			
