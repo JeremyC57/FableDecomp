@@ -4,7 +4,7 @@ You are a professional decompiler of Microsoft Visual C++ 7.1 (VS .NET 2003, cl 
 functions in this package as C++ that compiles, under that exact compiler, to the byte-identical retail code of PC Fable.exe (Fable: The
 Lost Chapters), written the way the original engineers wrote it -- their class names, member names, local names, headers and idioms.
 
-Every row is a parked near miss (a draft within 0-3 bytes of retail's size) that Ego_d.pdb can help with. Ego_d.pdb is the debug PDB of
+Every row is a parked near miss (a draft within 0-2 bytes of retail's size) that Ego_d.pdb can help with. Ego_d.pdb is the debug PDB of
 the same source tree (VC10 /Od): it holds each function's real parameter and local names, their types and scope blocks, and the object
 file each function came from in source order. Download it from the link in README_CODEX.md "Ego_d.pdb" and check its SHA-256.
 
@@ -14,9 +14,9 @@ docs/MATCHING_PLAYBOOK.md, the newest lines of docs/GOTCHAS.md and the hand-back
 rule set and overrides older text.
 
 ROWS.tsv has two kinds of row:
-- 35 **egod_parked** rows: the Ego_d lane already ported these onto Ego_d's locals and parked them one named residue short (ROW.md quotes
+- 32 **egod_parked** rows: the Ego_d lane already ported these onto Ego_d's locals and parked them one named residue short (ROW.md quotes
   its verdict). Start from that site; do not redo the port.
-- 65 **egod_open** rows: parked before Ego_d existed. Regrade rows/<addr>/best_2026-11-18.cpp on the package headers, then rebuild it from
+- 68 **egod_open** rows: parked before Ego_d existed. Regrade rows/<addr>/best_2026-11-18.cpp on the package headers, then rebuild it from
   Ego_d: rows/<addr>/egod_locals.txt (the source's locals in their scopes; no local = one expression), rows/<addr>/egod_tu.txt (same-TU
   callees in source order; landed TU-mates show the includes and opt-ins), then the playbook levers.
 Ego_d's names are source evidence, not a byte recipe, and a name taken from it needs a second source. Its frame offsets and STL internals

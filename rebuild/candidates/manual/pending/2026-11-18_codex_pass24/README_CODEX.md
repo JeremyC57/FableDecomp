@@ -51,13 +51,13 @@ What it is NOT: frame offsets, inlining, code generation and STL internals are V
 - Ego_d's debug length equals FableWin's /Od size, so it is a free size check for an /Od build of your source.
 
 ## The rows (`ROWS.tsv`, column `kind`; every row is one bounded function -- the extent scan agrees with the recorded retail length)
-### 35 `egod_parked` rows: the Ego_d lane's own near misses
+### 32 `egod_parked` rows: the Ego_d lane's own near misses
 Worked on 2026-11-17 WITH Ego_d's locals and TU and parked one residue short; ROW.md quotes the lane's verdict (mostly same-size
 `DIFFER(NvN)` with one named site: a load swap, one scheduling slot, a register rename in one arm, a call to a forwarder instead of the
-real getter). `best_2026-11-18.cpp` is that lane's draft; its folder notes are `handback_*`. Start from the named site; do not redo the port.
+real getter). Two (0x0099F7A0, 0x009F18F0) carry made-up catalog names the lane identified from Ego_d (ROW.md, the note); name them only with a second source. `best_2026-11-18.cpp` is that lane's draft; its folder notes are `handback_*`. Start from the named site; do not redo the port.
 
-### 65 `egod_open` rows: parked before Ego_d, within 0-3 bytes of retail's size
-Every one has a draft within 3 bytes of retail's length (7 already the same size), a complete Ego_d locals record with at least two named
+### 68 `egod_open` rows: parked before Ego_d, within 0-2 bytes of retail's size
+Every one has a draft within 2 bytes of retail's length (7 already the same size), a complete Ego_d locals record with at least two named
 locals, and a parked residue class Ego_d speaks to (register-tie, stack-slot/frame, x87-order, block/arm-layout; others unclassified).
 Nobody has looked at them with Ego_d. Regrade `best_2026-11-18.cpp` on the package headers, then rebuild it from Ego_d: the source's
 locals in their scopes, the TU's callees, the landed TU-mates' includes. `docs/PARKED_INDEX.tsv` and `prior/` record what was tried.

@@ -28,6 +28,8 @@
 00a90260	496	egod_parked	PARKED e03: DIFFER(498v496) Ego_d-faithful port, ebx/edi swapped from 0x00A90271; /Od text 786 v 869 (source incomplete); draft ../2026-11-17_egod_open/e03/00a90260.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e03/00a90260.cpp
 0089ce70	616	egod_parked	PARKED e05: DIFFER(614v616) pair job with 0x0089C910 (fcomp/fstp v fcompp at 0x0089D096); /d2inlS100 to replace; draft ../2026-11-17_egod_open/e05/0089ce70.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e05/0089ce70.cpp
 007e0f20	537	egod_parked	PARKED e03: DIFFER(531v537) presence-word load into ecx at 0x007E0F2A; one frame word shared with fx_index; draft ../2026-11-17_egod_open/e03/007e0f20.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e03/007e0f20.cpp
+009f18f0	166	egod_parked	PARKED e16 (identified ?GetData@CGameEventDataPackage@@QAEXJPAX@Z): DIFFER(166v166) register permutation (c2prio this 75 v read_pos 61); ../2026-11-17_egod_open/e16/	rebuild/candidates/manual/pending/2026-11-17_egod_open/e16/009f18f0.cpp
+0099f7a0	130	egod_parked	PARKED e16 (identified ??H@YI?AVCCharString@@ABV0@D@Z): DIFFER(130v130) only with a refs local Ego_d does not list; shared-header spellings give 126v130 (inline copy inc at 0x0099F7BF); ../2026-11-17_egod_open/e16/	rebuild/candidates/manual/pending/2026-11-17_egod_open/e16/0099f7a0.cpp
 005ac10e	3532	egod_open	acctC round six: round 6 final (2026-11-16): DIFFER(3532v3532); latest draft 005ac10e.cpp + NOTES.md in the folder (grep the ad	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE9/005ac10e.cpp
 00931390	3863	egod_open	acctC round six: round 6 final (2026-11-16): DIFFER(3863v3863); latest draft 00931390.cpp + NOTES.md in the folder (grep the ad	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE9/00931390.cpp
 00a86110	1967	egod_open	DIFFER(1967v1967)	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00a86110.cpp
@@ -96,5 +98,3 @@
 00d0ee70	1989	egod_open	DIFFER(1991v1989)	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d0ee70.cpp
 00ac9a60	745	egod_open	DIFFER(743v745)	rebuild/candidates/manual/pending/2026-10-27_linux_hand688/differ/00ac9a60.cpp
 006a03a0	825	egod_open	DIFFER(827v825)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/006a03a0.cpp
-00a229e0	689	egod_open	DIFFER(691v689)	rebuild/candidates/manual/pending/2026-11-10_linux_hand1020/differ/00a229e0.cpp
-00be2cd0	1088	egod_open	DIFFER(1091v1088)	rebuild/candidates/manual/pending/2026-10-23_linux_hand316/differ/00be2cd0.cpp

@@ -12,11 +12,11 @@ record), still parked, with a draft on record and a retail length of 24-4,000 by
 
 | kind | rows | what they are |
 |---|---:|---|
-| egod_parked | 35 | the Ego_d lane's own near misses: worked WITH Ego_d on 2026-11-17 and parked one named residue short (34 same size) |
-| egod_open | 65 | parked before Ego_d: the draft is 0-3 bytes off retail's size (7 same size), at least two named Ego_d locals, residue class register-tie / stack-slot / x87-order / block-layout / incomplete-model or unclassified; ranked by size delta, then class, then named-local count |
+| egod_parked | 32 | the Ego_d lane's own near misses: worked WITH Ego_d on 2026-11-17 and parked one named residue short (29 same size); two of them (0x0099F7A0, 0x009F18F0) are rows the lane identified from its IDENTIFY list |
+| egod_open | 68 | parked before Ego_d: the draft is 0-2 bytes off retail's size (7 same size), at least two named Ego_d locals, residue class register-tie / stack-slot / x87-order / block-layout / incomplete-model or unclassified; ranked by size delta, then class, then named-local count |
 
-Left out: the two Ego_d lane rows that matched but are held (0x009D8650 naked helper, 0x009FDE80 unaudited), one lane row parked far from
-size, and rows whose residue is flags, inline-vs-call, bounds or EH (Ego_d does not speak to them). Every row's recorded retail length
+Left out: the two Ego_d lane rows that matched but are held (0x009D8650 naked helper, 0x009FDE80 unaudited), lane rows parked far from size, as a
+codegen gap (0x006B5890) or on a pair job / local model (0x00A1CC30, 0x00C62370), and rows whose residue is flags, inline-vs-call, bounds or EH (Ego_d does not speak to them). Every row's recorded retail length
 equals the bounds extent scan.
 
 Seven rows' `closest_version` pointed at a behaviour test, not a source; this commit points them at the draft in the same folder

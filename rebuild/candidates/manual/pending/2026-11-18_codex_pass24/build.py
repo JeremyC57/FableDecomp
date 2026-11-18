@@ -108,9 +108,13 @@ for a, ln, kind, grade, path in sel:
     for p_ in sorted(set(glob.glob(f'{P}/pending/{hb}/*.md') + glob.glob(f'{P}/pending/{hb}/STATUS.tsv') + glob.glob(f'{fold}/*.md'))):
         if os.path.getsize(p_) < 400000:
             dst = 'handback_' + os.path.relpath(p_, f'{P}/pending/{hb}').replace('/', '__'); shutil.copy(p_, f'{d}/{dst}'); hf.append(dst)
+    # two Ego_d-lane rows from its IDENTIFY list (made-up catalog names; the lane identified them): name and object from the lane's ledger
+    OVR = {'0099f7a0': ('operator+', 'BBBLibrary\\Debug\\lib_char_string.obj', False),   # ??H@YI?AVCCharString@@ABV0@D@Z; several operator+ records: locals not extracted
+           '009f18f0': ('CGameEventDataPackage::GetData', 'BBBLibrary\\Debug\\lib_game_event.obj', True)}
     E = EGN.get(a, {}); en = E.get('egod_name', ''); objs = [x for x in E.get('egod_objects', '').split(' | ') if x]
+    if a in OVR: en, objs, E = OVR[a][0], [OVR[a][1]], {'egod_records_same_name': 'identified by the Ego_d lane;', 'egod_debug_length': '?'}
     if objs: open(f'{d}/egod_tu.txt', 'w').write(egod_tu(objs, en))
-    if PDB and en:
+    if PDB and en and OVR.get(a, (0, 0, True))[2]:
         raw = subprocess.run(['python3', '-I', f'{HERE}/tools/egod_locals.py', PDB, en], capture_output=True, text=True).stdout
         open(f'{d}/egod_locals.raw.txt', 'w').write(raw)
         if TYP:

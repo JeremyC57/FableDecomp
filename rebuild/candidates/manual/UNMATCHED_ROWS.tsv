@@ -668,7 +668,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0099e690	_global	GFCharStringToFloat	352	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/0099e690.cpp	original
 0099f570	_global	operator+	144	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/0099f570.cpp	original
 0099f600	_global	operator+	144	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0099f600.test.cpp	original
-0099f7a0	_global	CWideString_AppendChar	144	parked	egod e16 (identified ??H@YI?AVCCharString@@ABV0@D@Z): DIFFER(130v130)	0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0099f7a0.cpp	original
+0099f7a0	_global	CWideString_AppendChar	144	reserved (pass24, egod_parked)	egod e16 (identified ??H@YI?AVCCharString@@ABV0@D@Z): DIFFER(130v130)	0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0099f7a0.cpp	original
 0099fb60	_global	GFIntToCharString_JoinList	592	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/0099fb60.cpp	original
 009a01c0	CBasicString<char>	ExtendData	320	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand526/differ/009a01c0.cpp	original
 009a08b0	_global	GFFloatToCharString	560	parked	DIFFER(458v491)	3	rebuild/candidates/manual/pending/2026-10-21_linux_hand260/differ/009a08b0.cpp	original
@@ -703,7 +703,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009e55a0	CSymbolMap	ParseEnum	1328	parked	DIFFER(1332v1317)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/009e55a0.cpp	original
 009e84d0	CPersistTraits<C3DVector>	TransferIn	1856	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand469/differ/009e84d0.cpp	original
 009ebdd0	CConsoleCommandBase	?ProcessCommandLine@CConsoleCommandBase@@MAE_NABVCCharString@@AAVCConsole@@@Z	1632	parked	DIFFER(1584v1625)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009ebdd0.cpp	original
-009f18f0	_global	CircularBuffer_Read	176	parked	egod e16 (identified ?GetData@CGameEventDataPackage@@QAEXJPAX@Z): DIFFER(166v166)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1019/differ/009f18f0.cpp	original
+009f18f0	_global	CircularBuffer_Read	176	reserved (pass24, egod_parked)	egod e16 (identified ?GetData@CGameEventDataPackage@@QAEXJPAX@Z): DIFFER(166v166)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1019/differ/009f18f0.cpp	original
 009f39a0	_global	CSurface_CopySurfaceData	352	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/009f39a0.cpp	original
 009f3da0	CSurface	CopyToMemoryB8G8R8A8	592	parked	DIFFER(589v582)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/009f3da0.cpp	original
 009f4590	CSurface	SaveAsTGA	896	parked	DIFFER(916v864)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/009f4590.cpp	original
@@ -741,7 +741,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a1d6e0	CNavigatorAStar	CalculateNavigableWidthOfLine	1872	parked		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a1d6e0.cpp	original
 00a1e110	CNavigatorAStar	MoveTowardNextWayPoint	608	parked	DIFFER(596v601)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a1e110.cpp	original
 00a1e5c0	_global	CNavigatorAStar_MoveTowardGoal	5440	parked	DIFFER(5437v5437)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00a1e5c0.cpp	original
-00a229e0	CRightHandedSet	CRightHandedSet	704	reserved (pass24, egod_open)	DIFFER(691v689)	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1020/differ/00a229e0.cpp	original
+00a229e0	CRightHandedSet	CRightHandedSet	704	parked	DIFFER(691v689)	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1020/differ/00a229e0.cpp	original
 00a23190	CRightHandedSet	Interpolate	1904	parked	DIFFER(366v1508)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand322/differ/00a23190.cpp	original
 00a24cd0	C3DMeshInfo	?Reset@C3DMeshInfo@@EAEXXZ	112	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand518/differ/00a24cd0.cpp	original
 00a25040	CMeshBankStateBlock	CMeshBankStateBlock::CreateCRC	992	parked	DIFFER(942v990)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand291/differ/00a25040.cpp	original
@@ -963,7 +963,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00bd71b0	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitive	28	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(2121v2116)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/differ/00bd71b0.cpp	original
 00be2120	CEngineInternalPrimitive2DViewport	CEngineInternalPrimitive2DViewport::ClearChildPrimitive	112	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(97v97)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00be2120.cpp	original
 00be2b70	_global	BuildBlendingTables_ComputeBlendFactor	352	parked	DIFFER(343v343)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand531/differ/00be2b70.cpp	original
-00be2cd0	CEngineLandscapeMeshBuilder	BuildSharedIndexBufferGenerationTables	1088	reserved (pass24, egod_open)	DIFFER(1091v1088)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand316/differ/00be2cd0.cpp	original
+00be2cd0	CEngineLandscapeMeshBuilder	BuildSharedIndexBufferGenerationTables	1088	parked	DIFFER(1091v1088)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand316/differ/00be2cd0.cpp	original
 00be37e0	CLandscapeTesselatorBase	TesselateEdgeGeneric	304	parked		0	rebuild/candidates/manual/pending/2026-10-20_linux_hand224/differ/00be37e0.cpp	original
 00be3970	CLandscapePatchTesselator	?TesselateEdge@CLandscapePatchTesselator@@EAEXPAVCPatchTesselationEdgeStrip@@JJ_N1W4LANDSC	2400	parked		0	rebuild/candidates/manual/pending/2026-11-08_linux_hand873/differ/00be3970.cpp	original
 00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>	TesselateEdge	2352	parked		0	rebuild/candidates/manual/pending/2026-11-05_linux_hand785/differ/00be4660.test.cpp	gapscan/boundary
