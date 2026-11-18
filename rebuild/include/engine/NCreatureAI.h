@@ -15,6 +15,11 @@ bool FABLE_FASTCALL IsToAttackTarget(CThingAICreature*,const CThingCreatureBase*
 #endif
 // Both original PDBs, native008645e0; original IsRunnable donor02c2c6dd.
 bool FABLE_FASTCALL IsAwareOfThing(const CThingAICreature*,const CThing*,bool);
+#ifdef FABLE_RETAIL_NCREATUREAI_WILLING_TO_ATTACK
+// Retail opt-in (egod3a, row 0x00803280 CTCTargetingPlayer::UpdateTargetThreatening): reloc_bindings / Ego_r.pdb
+// ?IsWillingToAttackTarget@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@@Z (0x008648A0, __fastcall). Declaration only.
+bool FABLE_FASTCALL IsWillingToAttackTarget(const CThingAICreature*,const CThing*);
+#endif
 #ifdef FABLE_RETAIL_NCREATUREAI_AWARE_INDIRECTLY
 // Retail opt-in (agentNF41, row 0x00960FC0): Ego_r.pdb / FableWin.pdb ?IsAwareOfThingIndirectly@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z
 // (0x00864700, __fastcall, ret 4).

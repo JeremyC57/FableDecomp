@@ -1,0 +1,7 @@
+address	name	evidence
+00a6c640	?CalculateBoundingInfo@CPhysicsMesh@@AAEXXZ	FableWin.pdb 0x030F8770 + Ego_d record
+00a229e0	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	Ego_r/Ego_d (4th record, C3DAngles parameter)
+00803280	?UpdateTargetThreatening@CTCTargetingPlayer@@QAEXXZ	Ego_r.pdb (header FRAMEUPDATE opt-in) + Ego_d record (tc_targeting_player.obj)
+008645e0	?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z	reloc_bindings + NCreatureAI.h
+008648a0	?IsWillingToAttackTarget@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@@Z	reloc_bindings (0x0093C2F0)
+005149f0	?_M_fill_insert@?$vector@GV?$allocator@G@std@@@std@@QAEXPAGIABG@Z	reloc_bindings (0x0099BB80)

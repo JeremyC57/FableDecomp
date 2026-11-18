@@ -14,6 +14,9 @@
 #include "engine/CVectorMap.h"
 class C3DMeshVolume;
 #endif
+#if defined(FABLE_RETAIL_CPHYSICSMESH_CALCULATEBOUNDINGINFO) && !defined(FABLE_RETAIL_CPHYSICSMESH_INTERSECTION_PASS23)
+#include "engine/CArray.h"
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_INTERSECTION_PASS23
 #include "engine/CArray.h"
 #include "engine/C3DTriangle2.h"
@@ -60,6 +63,11 @@ public:
         const C3DVector& from, const C3DVector& to) const;   // 0x00A17690
 #endif
 private:
+#ifdef FABLE_RETAIL_CPHYSICSMESH_CALCULATEBOUNDINGINFO
+    // Retail opt-in (egod2a, row 0x00A6C640): Ego_r.pdb / FableWin.pdb ?CalculateBoundingInfo@CPhysicsMesh@@AAEXXZ (private).
+    // With it TotalPoints is typed (CArray<C3DVector>, same 12 bytes at +0x3C). Declaration only.
+    void CalculateBoundingInfo();                                        // 0x00A6C640
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_FULL_COLLISION_PASS23
     // Both PDBs: private const; native caller00a187ac and debug031994f0.
     bool GetPointIntersectionFromToUsingFullCollision(const C3DVector& from,
@@ -84,6 +92,9 @@ private:
     // Original field types in both PDBs; native00a17822/+30,00a1782f/+3c.
     CArray<C3DTriangle2> TotalFaceIndices;
     CArray<C3DVector> TotalPoints;
+#elif defined(FABLE_RETAIL_CPHYSICSMESH_CALCULATEBOUNDINGINFO)
+    unsigned char TotalFaceIndices[12];                //0x30 CArray<C3DTriangle2>
+    CArray<C3DVector> TotalPoints;                     //0x3c
 #else
     unsigned char TotalFaceIndices[12];                //0x30 CArray<C3DTriangle2>
     unsigned char TotalPoints[12];                     //0x3c CArray<C3DVector>

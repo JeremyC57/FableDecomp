@@ -24,6 +24,12 @@ public:
     // retail at 0x00BE2B70 (`push normal ; push direction ; mov ecx,[renderer+10h] lea` at 0x00B673B0, float in st0). Declaration only.
     float GetMappingDirectionBlend(LANDSCAPE_TEXTURE_MAPPING_DIRECTION direction, const C3DVector& normal);   // 0x00BE2B70
 #endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPEMESHBUILDER_GENERATIONTABLES
+    // Retail opt-in (egod2a, row 0x00BE2CD0): Ego_r.pdb ?BuildSharedIndexBufferGenerationTables@CEngineLandscapeMeshBuilder@@QAEXPAVC2DCoordI@@PAG1JJAAJ@Z
+    // (public; parameter names from Ego_d.pdb). Called by BuildSharedIndexBuffers 0x00BE3110. Declaration only.
+    void BuildSharedIndexBufferGenerationTables(class C2DCoordI* verts, unsigned short* tri_striped_indicies, unsigned short* tri_list_indicies,
+                                                long width, long height, long& tri_striped_index_count);   // 0x00BE2CD0
+#endif
     CIndexBuffer* SharedIndexBuffers[17][17];                            // +0x04
 };
 FABLE_STATIC_ASSERT_AT(24, sizeof(CEngineLandscapeMeshBuilder) == 0x488);

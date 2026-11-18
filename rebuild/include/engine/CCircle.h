@@ -6,6 +6,11 @@
 class CCircle {
 public:
     float GetRadius() const { return Radius; }
+#ifdef FABLE_RETAIL_CCIRCLE_SET
+    // Retail opt-in (egod2a, row 0x00A6C640): FableWin.pdb ?Set@CCircle@@QAEXABVC2DVector@@M@Z (38b/16i at /Od; the COMDAT right after
+    // CPhysicsMesh::CalculateBoundingInfo), inline in retail (0x00A6C82B..0x00A6C83A). Body only.
+    void Set(const C2DVector& centre, float radius) { Centre = centre; Radius = radius; }
+#endif
 public:
     C2DVector Centre;                                   //0x0
     float     Radius;                                   //0x8

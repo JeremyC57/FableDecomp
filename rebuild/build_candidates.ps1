@@ -399396,6 +399396,27 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT1267'
         PassPattern = '00b40260_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a6c640'
+        Module = 'CPhysicsMesh'
+        Source = '00/a6/CPhysicsMesh_CalculateBoundingInfo_00a6c640.cpp'
+        TestSource = '00/a6/CPhysicsMesh_CalculateBoundingInfo_00a6c640_test.cpp'
+        PassPattern = '00a6c640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a229e0'
+        Module = 'CRightHandedSet'
+        Source = '00/a2/CRightHandedSet_CRightHandedSet_00a229e0.cpp'
+        TestSource = '00/a2/CRightHandedSet_CRightHandedSet_00a229e0_test.cpp'
+        PassPattern = '00a229e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00803280'
+        Module = 'CTCTargetingPlayer'
+        Source = '00/80/CTCTargetingPlayer_UpdateTargetThreatening_00803280.cpp'
+        TestSource = '00/80/CTCTargetingPlayer_UpdateTargetThreatening_00803280_test.cpp'
+        PassPattern = '00803280_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -50,6 +50,14 @@ public:
 public:
     void InitialiseFromOBB(const C3DBoundingBox& obb, const class CMatrix3x4& transform);
 #endif
+#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_SETMINMAX
+    // Retail opt-in (egod2a, row 0x00A6C640 CPhysicsMesh::CalculateBoundingInfo): FableWin.pdb ?SetMinMax@C3DBoundingBox@@QAEXABVC3DVector@@0@Z
+    // (60b/24i at /Od) and ?GetDiagonal@C3DBoundingBox@@QBE?BVC3DVector@@XZ (58b/22i, the size of GetCenter): inline in retail
+    // (0x00A6C738..0x00A6C782 corner stores, 0x00A6C7B3..0x00A6C7E8 the half difference). Bodies only; no layout change.
+public:
+    void SetMinMax(const C3DVector& min_coord, const C3DVector& max_coord) { MinCoord = min_coord; MaxCoord = max_coord; }
+    const C3DVector GetDiagonal() const { return (MaxCoord - MinCoord) * 0.5f; }
+#endif
 #ifdef FABLE_RETAIL_C3DBOUNDINGBOX_SETCENTERDIAG
     // Retail opt-in (wfE8, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?SetCenterDiag@C3DBoundingBox@@QAEXABVC3DVector@@0@Z,
     // inline in retail (0x00A30172..0x00A301FF: MinCoord = center - diagonal stored, then MaxCoord = center + diagonal).

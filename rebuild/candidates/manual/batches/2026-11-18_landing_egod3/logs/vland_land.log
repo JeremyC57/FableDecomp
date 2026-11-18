@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00a6c640   RELOCATION_MATCH PASS   CalculateBoundingInfo
+00a229e0   RELOCATION_MATCH PASS   CRightHandedSet
+00803280   WARN RELOC_NAME: ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+00803280   RELOCATION_MATCH PASS   UpdateTargetThreatening
+
+WINS: 3
+  00a6c640 RELOCATION_MATCH CPhysicsMesh::CalculateBoundingInfo
+  00a229e0 RELOCATION_MATCH CRightHandedSet::CRightHandedSet
+  00803280 RELOCATION_MATCH CTCTargetingPlayer::UpdateTargetThreatening
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CPhysicsMesh_CalculateBoundingInfo_00a6c640
+  CRightHandedSet_CRightHandedSet_00a229e0
+  CTCTargetingPlayer_UpdateTargetThreatening_00803280

@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+008645e0	?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z	reloc_bindings (landed 0x009210A0) + engine/NCreatureAI.h "both original PDBs"; called by 0x00803280 with ecx creature, edx thing, push 1	catalog/manifest label CMainGameComponent::BeginInputLoading (propagated); ?Shim_008645e0@@YIJPAUCShimTarget_008645e0@@PAXJ@Z
+00a6c640	?CalculateBoundingInfo@CPhysicsMesh@@AAEXXZ	FableWin.pdb + Ego_d (private)	?CalculateBoundingInfo@CPhysicsMesh@@QAEXXZ (old draft)

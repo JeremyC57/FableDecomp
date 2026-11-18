@@ -1,0 +1,14 @@
+address	grade	bytes	test	grades_used	notes
+00a6c640	RELOCATION_MATCH	517v517	PASS	27	vland strict RELOCATION_MATCH PASS; COORDINATOR: one-text conflict, see NOTES; new opt-in FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_SQUARED_SUM (fitted paren, see NOTES)
+00a229e0	RELOCATION_MATCH	689v689	PASS	3	vland strict RELOCATION_MATCH PASS; row-level fix only (parenthesised rotation entries), no new header opt-in
+00be2cd0	DIFFER	1091v1088	-	3	register-allocation cascade (c2prio: const 1 split to eax, poly_within_quad edi, cursor base +1); STLP_VECTOR body + implicit vert conversion: no change; parked; BELOW the parking minimum this round (no full hand rewrite yet)
+0059fee3	DIFFER	1552v1556	-	4	this/ptc_inventory colouring (c2prio: this prio 17 ebx, ptc_inventory 13 split, const 0 immediate; retail: ptc_inventory=0 in ebx, this homed then esi); PeekTC form = identical bytes; ESCALATE; BELOW the parking minimum this round (no full hand rewrite yet)
+0091c220	DIFFER	416v419	-	1	old local-model draft (97 masked diff lines); needs a new CAIStateGroup_NymphAttack header (none exists) + port; not started
+00935c40	DIFFER	499v502	-	1	old local-model draft (72 masked); needs a new CAIStateGroup_MinionPutOutFires header; siblings 0x00935AD0/0x00936020 partly local; not started
+0076cce0	DIFFER	751v754	-	1	old local-model draft (97 masked); CTCEnemy.h exists, landed TU siblings 0x0076D1B0/0x0076D270/0x0076D2F0; port not started
+0068ef50	DIFFER	547v550	-	1	old local-model draft (114 masked, /GS); no CInputProcessUseRangedWeapon header; siblings local models; not started
+00bc7660	DIFFER	695v692	-	1	old local-model draft (111 masked); landed sibling 0x00BC6DB0 RenderSubPrimitive is on 15 shared headers (port base); Ego_d: primitive is CEngineInternalPrimitive2DText&, alpha_mask_info, z, {graphic_frame}; not started
+00803280	RELOCATION_MATCH	551v551	PASS	3	vland strict RELOCATION_MATCH PASS; ported onto shared headers (sibling 0x00803D60 set) + 2 new hdr additions
+00490494	DIFFER	1073v1094	-	1	old local-model draft under hdr_STALE (167 masked); not started
+0092d1f0	SRC_FAIL	-	-	1	old local-model draft fails today (leaf ?FindFreeBed@CAIStateGroup_GoToBed@@IAE_N_N@Z not emitted under hdr_STALE); landed siblings 0x0092D6F0 / 0x0092C740 / 0x0092DA20 on shared headers (port base); not started
+

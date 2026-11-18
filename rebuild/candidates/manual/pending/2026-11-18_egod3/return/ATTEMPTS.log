@@ -1,0 +1,67 @@
+00a6c640	baseline r2 draft	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe D1	DIFFER(517v517)	diff=46 masked=12
+00a6c640	probe D2	DIFFER(517v517)	diff=46 masked=12
+00a6c640	probe D3	DIFFER(517v517)	diff=46 masked=12
+00a6c640	probe control	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe D2 again	DIFFER(517v517)	diff=46 masked=12
+00a6c640	a1: INITIALISE_SUB INITIALISE_ADD INITIALISE_SCALE	DIFFER(533v517)	diff=45 masked=49
+00a6c640	a2: INITIALISE_SUB INITIALISE_ADD INITIALISE_SCALE MAGNITUDE_SQUARED_LOCAL	DIFFER(533v517)	diff=43 masked=47
+00a6c640	a3: INITIALISE_ADD INITIALISE_SCALE	DIFFER(533v517)	diff=45 masked=49
+00a6c640	a4: INITIALISE_SUB INITIALISE_SCALE	DIFFER(533v517)	diff=45 masked=49
+00a6c640	a5: INITIALISE_SUB INITIALISE_ADD	DIFFER(517v517)	diff=2 masked=2
+00a6c640	a6: SCALE_NAMED_RESULT	DIFFER(533v517)	diff=45 masked=49
+00a6c640	a7: SUBTRACT_NAMED_RESULT ADD_NAMED_RESULT	DIFFER(517v517)	diff=2 masked=2
+00a6c640	a8: SCALE_X_PAREN	DIFFER(517v517)	diff=8 masked=8
+00a6c640	probe M: GetMagnitude2D squared-sum+GFFastSqrt (+GetMagnitude same form)	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe MG: GetMagnitude2D squared-sum+GFFastSqrt (+GetMagnitude same form)	DIFFER(517v517)	diff=46 masked=12
+00a6c640	probe b0	DIFFER(517v517)	diff=46 masked=2
+00a6c640	probe b2	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe b3	DIFFER(517v517)	diff=46 masked=2
+00a6c640	probe b4	DIFFER(517v517)	diff=2 masked=2
+00a6c640	c1 max_vector declared first (Ego_d bprel order)	PREFLIGHT_FAIL
+00a6c640	probe c1b0	DIFFER(517v517)	diff=54 masked=8
+00a6c640	probe f1	RELOCATION_MATCH	diff=0 masked=0
+00a6c640	probe f2	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe f3	DIFFER(514v517)	diff=48 masked=4
+00a6c640	probe e1	RELOCATION_MATCH	diff=0 masked=0
+00a6c640	probe e2	RELOCATION_MATCH	diff=0 masked=0
+00a6c640	probe e3	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe g1	DIFFER(517v517)	diff=46 masked=2
+00a6c640	probe g2	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe g3	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe g4	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe g5	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe g6	DIFFER(517v517)	diff=2 masked=2
+00a6c640	probe g7	RELOCATION_MATCH	diff=0 masked=0
+00a6c640	e1 as opt-in MAGNITUDE2D_SQUARED_SUM in hdr	PREFLIGHT_FAIL
+00a6c640	e1 as opt-in MAGNITUDE2D_SQUARED_SUM in hdr	RELOCATION_MATCH	diff=0 masked=0
+00a229e0	baseline r2 draft	DIFFER(689v689)	diff=12 masked=12
+00a229e0	ruler: parens around all 9 rotation entries	RELOCATION_MATCH	diff=0 masked=0
+00a229e0	final src: parenthesised rotation entries	RELOCATION_MATCH	diff=0 masked=0
+00be2cd0	baseline r2 draft	DIFFER(1091v1088)	diff=341 masked=339
+00a229e0	window w8	DIFFER(689v689)	diff=8 masked=8
+00a229e0	window w8b	DIFFER(689v689)	diff=8 masked=8
+00a229e0	window w10	DIFFER(689v689)	diff=6 masked=6
+00a229e0	final regrade after comment edit	RELOCATION_MATCH	diff=0 masked=0
+00be2cd0	be2 a (a=STLP_VECTOR body, b=implicit vert conv, c=both)	DIFFER(1091v1088)	diff=341 masked=339
+00be2cd0	be2 b (a=STLP_VECTOR body, b=implicit vert conv, c=both)	DIFFER(1091v1088)	diff=341 masked=339
+00be2cd0	be2 c (a=STLP_VECTOR body, b=implicit vert conv, c=both)	DIFFER(1091v1088)	diff=341 masked=339
+0091c220	triage draft as-is (hdr_STALE)	DIFFER(416v419)	diff=105 masked=97
+00935c40	triage draft as-is (hdr_STALE)	DIFFER(499v502)	diff=82 masked=72
+0076cce0	triage draft as-is (hdr_STALE)	DIFFER(751v754)	diff=97 masked=97
+0068ef50	triage draft as-is (hdr_STALE)	DIFFER(547v550)	diff=154 masked=114
+00bc7660	triage draft as-is (hdr_STALE)	DIFFER(695v692)	diff=111 masked=111
+00803280	triage draft as-is (hdr_STALE)	DIFFER(548v551)	diff=69 masked=47
+00490494	triage draft as-is (hdr_STALE)	DIFFER(1073v1094)	diff=303 masked=167
+0092d1f0	triage draft as-is (hdr_STALE)	'?FindFreeBed@CAIStateGroup_GoToBed@@IAE_N_N@Z'	diff=66 masked=64
+00803280	port v1 on shared headers (sibling 0x00803D60 set)	SRC_FAIL	diff=0 masked=0
+00803280	port v2: one-arg GetTC/PeekTC, CTCWEAPON opt-ins	DIFFER(553v551)	diff=55 masked=55
+00803280	v3: ParentThing direct in the three fastcall tests	RELOCATION_MATCH	diff=0 masked=0
+0059fee3	baseline r2 draft	DIFFER(1552v1556)	diff=598 masked=310
+0059fee3	PeekTC(GetInventoryType(item_def), &ptc_inventory) (no inventory_type local: Ego_d has none)	DIFFER(1552v1556)	diff=598 masked=310
+00a6c640	final regrade (current hdr/)	RELOCATION_MATCH	diff=0 masked=0
+00a229e0	final regrade (current hdr/)	RELOCATION_MATCH	diff=0 masked=0
+00803280	final regrade (current hdr/)	RELOCATION_MATCH	diff=0 masked=0
+00a6c640	regrade after header comment edit	RELOCATION_MATCH	diff=0 masked=0
+0059fee3	ruler: FABLE_RETAIL_ASSERT(ptc_inventory) after the lookup (extra ref)	DIFFER(1552v1556)	diff=598 masked=310
+0059fee3	ruler: dead-arm FABLE_RETAIL_ASSERT(ptc_inventory) (DEAD_ARM on)	DIFFER(1552v1556)	diff=598 masked=310

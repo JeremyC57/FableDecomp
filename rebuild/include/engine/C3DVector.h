@@ -481,7 +481,18 @@ public:
     // (FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D selects this body alone: row 0x009711D0 and the chunk 2029 rows 0x00915B60 / 0x0094E7B0 /
     // 0x0097BDA0. FableWin.pdb ?GetMagnitude2D@C3DVector@@QBEMXZ, no Ego_r.pdb or Fable.exe copy: inline in release. 0x00915D8F..0x00915DA3
     // squares X, adds Y squared, then fsqrt.)
+#ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_SQUARED_SUM
+    // Retail opt-in (egod3a, row 0x00A6C640 CPhysicsMesh::CalculateBoundingInfo): the squared sum in one parenthesised named local, then
+    // GFFastSqrt. FableWin.pdb ?GetMagnitude2D@C3DVector@@QBEMXZ (0x01D9FAA0) is 52b/21i in the VC10 /Od build; this text is 49b/20i
+    // at VC7.1 /Od plus VC10's one extra instruction (3 bytes) for the float pushed from memory (`push ecx ; fld ; fstp [esp]`), the
+    // same correction that maps GFFastSqrt 19b/8i -> FableWin 22b/9i. The parentheses are a no-code PAREN tuple: with them the row's
+    // last scheduling region (81-tuple cap) ends before the circle radius store and `pop edi` issues after `fsqrt` (0x00A6C839).
+    // CAVEAT: under FableWin's /Gr a `return sqrtf(squared);` spelling lands on the same size, so the size fixes the one named sum,
+    // not the callee. FITTED for the parentheses. Body only; the running-sum default below is unchanged.
+    inline float GetMagnitude2D()const {float squared=(X*X+Y*Y);return GFFastSqrt(squared);}
+#else
     inline float GetMagnitude2D()const {float squared=X*X;squared+=Y*Y;return GFFastSqrt(squared);}
+#endif
 #endif
 #if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && (defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ONE_EXPRESSION) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ORIGINAL_SUM_PASS23)) && !defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
     // New ORIGINAL_SUM_PASS23 opt-in: original FableWin01d9faa0 is52B, no source locals,

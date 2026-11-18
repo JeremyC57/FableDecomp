@@ -30,6 +30,11 @@ public:
     const C3DVector GetCenter() const { return Center; }
 #endif
     float GetRadius() const { return Radius; }
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_SET
+    // Retail opt-in (egod2a, row 0x00A6C640): FableWin.pdb ?Set@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z (44b/18i at /Od), inline in
+    // retail (0x00A6C78B..0x00A6C818: centre copied, then the radius). Body only.
+    void Set(const C3DVector& center, float radius) { Center = center; Radius = radius; }
+#endif
 #ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_FASTBUILD
     // Retail opt-in (chunk Q8, row 0x00ADD690): Ego_r.pdb ?FastBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@J@Z, out of
     // line in retail at 0x00ADD690 (the axis-aligned box centre, then the largest squared distance from it). Declaration only.
