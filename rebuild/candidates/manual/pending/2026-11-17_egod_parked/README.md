@@ -109,3 +109,19 @@ Open owner items, also recorded in the batch READMEs:
 - row-local MIN/MAX macros (e08 0x00B45CF0, e11 0x00B45720);
 - the /d2inlT444 flag on 0x00B3FC40 (e12);
 - landed rows that bind wrong names or are local models (see NAME_FIXES.tsv and each INDEX audit text).
+
+## Coordinator decisions (owner-delegated, 2026-11-18: "match retail, behave exactly like retail, be portable")
+1. **Whole-function asm helper (0x009D8650 MicroThreadSleep): accepted.**
+   - The rule is amended in `docs/pipeline/ASM_RULES.md`, and `crawl/purity.py` now accepts the case only in helper headers.
+   - The row matches and behaves like retail. Its portable twin keeps the protocol, but it is not portable on its own: a FABLE_PORTABLE build needs portable branches in CreateMicroThread 0x009D8710 and SwitchToMicroThread 0x009D87F0 (separate stacks, as the fibre path already does), and the POSIX stack copy relies on frame layout. That is tracked as a follow-up.
+   - The row is staged only after its independent audit.
+2. **X-first GFGetWorld2DDistance opt-in (0x007993F0, e10): accepted.**
+   - FableWin's /Od size matches the X-first text exactly, which is the only evidence about the original.
+   - The two bodies differ only in the order of two independent float subtractions, with the same rounding points, so their results are bit-identical.
+   - Landed 0x009711D0's Y-first default is the fitted text. The main lane should revisit it.
+3. **Row-local MIN / MAX macros (0x00B45CF0 e08, 0x00B45720 e11): kept.**
+   - Retail evaluates the clamped value twice, which the macros reproduce exactly; std::min / max cannot.
+   - The macros are portable. The same-TU landed twin 0x00B45510 defines them locally, and one TU has one text.
+4. **/d2inlT444 on 0x00B3FC40 (e12): kept.**
+   - Landed 0x00B3F5E0 in the same TU carries the same flag: one TU, one flag set.
+   - Without it, the row's object emits a non-retail PeekMapNormal. A flag cannot affect behaviour, and other compilers ignore it.
