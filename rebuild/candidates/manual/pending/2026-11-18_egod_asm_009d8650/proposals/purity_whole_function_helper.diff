@@ -1,0 +1,39 @@
+--- a/tools/decomp_pipeline/crawl/purity.py
++++ b/tools/decomp_pipeline/crawl/purity.py
+@@ -93,11 +93,24 @@
+     return " ".join(l.split(RETAIL_ASM_TAG, 1)[1] for l in text.splitlines() if RETAIL_ASM_TAG in l)
+ 
+ 
+-def _retail_asm(text):
+-    if RETAIL_ASM_TAG not in text or _EMIT.search(text) or "naked" in text:
++RETAIL_ASM_FUNCTION_TAG = "// Retail-asm-function:"
++
++
++def _whole_function(text):
++    """A helper header whose routine the original wrote entirely in assembler (no compiler prologue / epilogue): it may define
++    the function `__declspec(naked)` with its own `ret`, when a `// Retail-asm-function:` line cites a retail address and the
++    proof (e.g. 0x009D8650 MicroThreadSleep: VC7.1 never saves ebp around inline asm, retail pushes it second; Ego_d.pdb's /Od
++    length equals retail's). Proposal (asm1, 2026-11-18): helper headers only -- `classify` still grades any row text that
++    spells `naked` / `__asm` as `naked_asm`."""
++    return any(RETAIL_ASM_FUNCTION_TAG in l and _VA.search(l.split(RETAIL_ASM_FUNCTION_TAG, 1)[1]) for l in text.splitlines())
++
++
++def _retail_asm(text, helper_header=False):
++    whole = helper_header and _whole_function(text)
++    if RETAIL_ASM_TAG not in text or _EMIT.search(text) or ("naked" in text and not whole):
+         return False
+     ins = _asm_instructions(text)
+-    if not ins or any(_EXIT.match(i) for i in ins):
++    if not ins or (not whole and any(_EXIT.match(i) for i in ins)):
+         return False
+     ev = _evidence(text)
+     if not _VA.search(ev):
+@@ -165,7 +178,7 @@
+         mnems = {re.split(r"[\s,]+", i.strip(), 1)[0].lower() for i in _asm_instructions(text)
+                  if i.strip() and not i.strip().endswith(":")}
+         mnems = {m for m in mnems if re.fullmatch(r"[a-z][a-z0-9]*", m)}
+-        _header_cache[key] = (names, mnems, bool(names) and _retail_asm(text), text)
++        _header_cache[key] = (names, mnems, bool(names) and _retail_asm(text, helper_header=True), text)
+     return _header_cache[key]
+ 
+ 

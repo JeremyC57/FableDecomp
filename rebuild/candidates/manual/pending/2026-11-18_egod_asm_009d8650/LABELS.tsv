@@ -1,0 +1,3 @@
+address	name	evidence
+009d8650	MicroThread::MicroThreadSleep	FableWin 0x02F6CA00 / Ego_r 0x00B2B980 ?MicroThreadSleep@MicroThread@@YIXXZ + Ego_d lib_microthread.obj order + reloc_bindings (caller 0x00A44690)
+013ca898	MicroThread::PGlobalStackPointer	Ego_d.pdb + Anniversary PDB S_LDATA32 (see NAME_FIXES.tsv)

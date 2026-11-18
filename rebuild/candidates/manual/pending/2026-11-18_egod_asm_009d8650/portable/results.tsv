@@ -1,0 +1,9 @@
+subject	step	status	detail
+engine/MicroThreadSleep.h	vc71-hdr-asm	OK	
+engine/MicroThreadSleep.h	vc71-hdr-portable	OK	
+test_MicroThreadSleep.cpp	vc71-asm	PASS	asm path, S (separate stacks)      ok (24 trace points, 0 bad) | asm path, C (shared stack + copy)  ok (24 trace points, 0 bad) | test_MicroThreadSleep asm: PASS
+test_MicroThreadSleep.cpp	vc71-dual	PASS	asm path, S (separate stacks)      ok (24 trace points, 0 bad) | asm path, C (shared stack + copy)  ok (24 trace points, 0 bad) | Win32 twin, S (fibres)             ok (24 trace points, 0 bad) | Win32 twin, C                      n/a (fibres have stacks of their own) | test_MicroThreadSleep asm+portable: PASS
+test_MicroThreadSleep.cpp	vc71-portable	PASS	Win32 twin, S (fibres)             ok (24 trace points, 0 bad) | Win32 twin, C                      n/a (fibres have stacks of their own) | test_MicroThreadSleep portable: PASS
+engine/MicroThreadSleep.h	gxx-hdr	OK	
+test_MicroThreadSleep.cpp	gxx-portable	PASS	POSIX twin, S (ucontext)           ok (24 trace points, 0 bad) | POSIX twin, C (shared stack + copy) ok (24 trace points, 0 bad) | test_MicroThreadSleep portable: PASS
+test_MicroThreadSleep.cpp	gxx-m32-compile	SKIPPED	no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
