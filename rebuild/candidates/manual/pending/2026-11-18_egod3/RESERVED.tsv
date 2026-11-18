@@ -1,0 +1,13 @@
+kind	address	module	name	length_estimate	residue_class	best_grade_on_record
+named	00a6c640	CPhysicsMesh	CalculateBoundingInfo	528	stack-slot/frame	egod2a: DIFFER(517v517) -- instruction- and frame-identical except `pop edi` before the final fstp; differ/00a6c640.cpp | leaf is ?CalculateBoundingInfo@CPhysicsMesh@@AAEXXZ (private; FableWin 0x030F8770), not QAE
+named	00a229e0	CRightHandedSet	CRightHandedSet	704		egod2a: DIFFER(689v689) -- frame + all x87 equal; first Normalise's `mov esi,17Ch` hoisted to 0x00A22ADF (retail 0x00A22BB8 after the table load); differ/00a229e0.cpp
+named	00be2cd0	CEngineLandscapeMeshBuilder	BuildSharedIndexBufferGenerationTables	1088	register-tie	egod2a: DIFFER(1091v1088) -- ported onto shared headers (CArray, C2DCoordI, new hdr opt-in for the method decl); allocation residue unchanged from the old draft; differ/00be2cd0.cpp
+named	0059fee3	CTCInventoryTrade	AddBuyItemToList	1556	register-tie	egod2a: DIFFER(1552v1556) -- Ego_d names / value_pair / declaration orders do not move the `this` split (retail: memory home then esi; ours ebx throughout); differ/0059fee3.cpp
+named	0091c220	CAIStateGroup_NymphAttack	IsTargetInLineOfSight	432	stack-slot/frame	DIFFER(416v419)
+named	00935c40	CAIStateGroup_MinionPutOutFires	GoToWell	512	stack-slot/frame	DIFFER(499v502)
+named	0076cce0	CTCEnemy	IsEnemyOf	768	stack-slot/frame	DIFFER(751v754)
+named	0068ef50	CInputProcessUseRangedWeapon	ProcessRangedAttackInput	560	stack-slot/frame	DIFFER(547v550)
+named	00bc7660	CEnginePrimitiveManagerText	CEnginePrimitiveManagerText::Render2DPrimitive	704	stack-slot/frame	DIFFER(695v692)
+named	00803280	CTCTargetingPlayer	UpdateTargetThreatening	704	stack-slot/frame	DIFFER(548v551)
+named	00490494	CSubtitleRenderer	DrawPreparePrimitivesForEngine	1094	x87-order	DIFFER(1097v1094)
+named	0092d1f0	CAIStateGroup_GoToBed	FindFreeBed	1040	x87-order	DIFFER(1034v1031)
