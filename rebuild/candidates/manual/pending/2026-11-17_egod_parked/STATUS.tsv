@@ -126,7 +126,7 @@ address	kind	name	state	true_length	staged_folder	note
 006ad700	named	CThingPlayerCreature::ControlledMove	MATCHED_STAGED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05
 006af4e0	named	CMessageEvent::GetPOriginator<CThing>	OPEN			
 006af7d0	named	CTCPhysicsBase::ImpulseRespondToCollision	OPEN			
-006b5890	identify	_Lower_bound<std::pair<long,float>*,std::_Lower_bound<std::pair<long,float>*,std::pair<long,float>,int>	IN_PROGRESS			batch e14 (identify)
+006b5890	identify	_Lower_bound<std::pair<long,float>*,std::_Lower_bound<std::pair<long,float>*,std::pair<long,float>,int>	PARKED			PARKED e14 (identified): ??$__lower_bound@PAU?$pair@JM@std@@... (environment.obj; reloc_bindings + Ego_r Dinkumware twin 0x006F1B30); DIFFER(76v76): retail keeps val.second on the x87 stack across the loop, VC7.1 RTM never does in any tried spelling / flag (codegen gap); draft ../2026-11-17_egod_open/e14/006b5890.cpp
 006b97e0	identify	_global::CWorld_InitFactions	OPEN			
 006bb860	identify	_gapscan::sub_006bb860	OPEN			
 006bd900	named	CMusicManager::PlayMusic	OPEN			
@@ -518,7 +518,7 @@ address	kind	name	state	true_length	staged_folder	note
 009cec60	named	CBankFile::Update	OPEN			
 009cfbc0	named	CBankFile::ReadEntryList	OPEN			
 009d0880	named	CBankFile::ReadFileInformation	OPEN			
-009d8650	identify	_global::MicroThreadSleep	IN_PROGRESS			batch e14 (identify)
+009d8650	identify	_global::MicroThreadSleep	PARKED			PARKED e14 (identified): ?MicroThreadSleep@MicroThread@@YIXXZ (Ego_d order + FableWin 0x02F6CA00 + Ego_r 0x00B2B980); original was naked asm (writes esp and fs:[0]; Ego_d /Od length 36 = retail); a shared-header naked macro reproduces all 36 bytes (probe_asmhdr) but ASM_RULES needs a FABLE_PORTABLE twin a stack switch cannot have: OWNER DECISION; draft ../2026-11-17_egod_open/e14/009d8650.cpp
 009e3f60	named	CPixelFormat::ConvertRGBToPFDData	OPEN			
 009e55a0	named	CSymbolMap::ParseEnum	OPEN			
 009e84d0	named	CPersistTraits<C3DVector>::TransferIn	OPEN			
