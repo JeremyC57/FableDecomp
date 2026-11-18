@@ -122,8 +122,13 @@ names proven vs descriptive, and anything the coordinator must decide.
 ## Budget for this lane (the coordinator's direction; overrides any older "never stop" wording)
 There are 14 rows and you are the only author, so work BREADTH FIRST:
 - Pass 1: take each row in order. Port the draft onto today's headers, apply the Ego_d facts (locals, scopes, types, same-TU
-  bodies), grade. Keep going on a row while grades move; when about 40 grades (or two changes of LEVEL) in a row bring no progress,
-  write differ/<addr>.cpp + NOTES.md / STATUS.tsv for it and go to the next row.
-- Pass 2 (only after every row of your list had pass 1): go back to the open rows that moved most, with everything you learned.
+  bodies), grade. Keep going on a row while grades move; up to about 100 grades per row (owner, 2026-11-18). After two changes
+  of LEVEL with no progress, write at least one fully hand-authored rewrite of the block before parking; then write
+  differ/<addr>.cpp + NOTES.md / STATUS.tsv for it and go to the next row.
+- Pass 2 (only after every row of your list had pass 1): go back to the open rows that moved most, with everything you learned;
+  no fixed cap while grades move.
+- Hand authoring often beats automated tools (owner, 2026-11-18): read the retail disassembly at the differing site and the
+  landed TU siblings, decide what statement the programmer wrote, and write it by hand with Ego_d's locals in their scopes and
+  order. Variant generators and sweeps only answer one specific question; they are not how the source is found.
 - Keep NOTES.md / STATUS.tsv current after every row (your context may end at any time). Do not stop while you still have budget
   and an open row; your final message is the hand-over summary.
