@@ -184,7 +184,7 @@ address	kind	name	state	true_length	staged_folder	note
 00745840	identify	CTCPerceiveThing::CTCPerceiveThing::vfunc_11	OPEN			
 00746db0	identify	_global::GetStabPosOnThing	OPEN			
 00747c70	named	CTCStealth::UpdateDangerInfo	MATCHED_STAGED	303	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
-00749620	identify	_global::CTargetPoint_Vector_PushBack	OPEN			
+00749620	identify	_global::CTargetPoint_Vector_PushBack	IN_PROGRESS			batch e16 (identify)
 0074a4e0	named	CTCCreatureGenerator::DoNavCheck	OPEN			
 0074b2b0	named	CTCCreatureGenerator::CreateCreatures	OPEN			
 0074b77c	identify	_global::CTCCreatureGenerator_SpawnInArea	OPEN			
@@ -491,7 +491,7 @@ address	kind	name	state	true_length	staged_folder	note
 0099e690	named	_global::GFCharStringToFloat	OPEN			
 0099f570	named	_global::operator+	OPEN			
 0099f600	named	_global::operator+	OPEN			
-0099f7a0	identify	_global::CWideString_AppendChar	OPEN			
+0099f7a0	identify	_global::CWideString_AppendChar	IN_PROGRESS			batch e16 (identify)
 0099fb60	identify	_global::GFIntToCharString_JoinList	OPEN			
 009a01c0	named	CBasicString<char>::ExtendData	OPEN			
 009a08b0	named	_global::GFFloatToCharString	OPEN			
@@ -509,8 +509,8 @@ address	kind	name	state	true_length	staged_folder	note
 009bcef0	identify	_global::GetCharWidthW	IN_PROGRESS			batch e15 (identify)
 009bd460	named	CMovieSubtitles::ParseSubtitles	OPEN			
 009c33a0	named	_global::GetMarkerFileName	OPEN			
-009c37a0	identify	_global::CodeSection_SetReadyAndSignal	OPEN			
-009c3820	identify	_global::CodeSection_DecrementAndSignal	OPEN			
+009c37a0	identify	_global::CodeSection_SetReadyAndSignal	IN_PROGRESS			batch e16 (identify)
+009c3820	identify	_global::CodeSection_DecrementAndSignal	IN_PROGRESS			batch e16 (identify)
 009c3fb0	named	CFileInstaller::ProcessActiveFileForWrite	OPEN			
 009c5170	identify	_global::CPatchTesselationEdgeStrip_DestructorHelper	OPEN			
 009c8c00	identify	NGameText::CDataBank::NGameText::CDataBank::vfunc_12	OPEN			
@@ -523,7 +523,7 @@ address	kind	name	state	true_length	staged_folder	note
 009e55a0	named	CSymbolMap::ParseEnum	OPEN			
 009e84d0	named	CPersistTraits<C3DVector>::TransferIn	OPEN			
 009ebdd0	named	CConsoleCommandBase::?ProcessCommandLine@CConsoleCommandBase@@MAE_NABVCCharString@@AAVCConsole@@@Z	OPEN			
-009f18f0	identify	_global::CircularBuffer_Read	OPEN			
+009f18f0	identify	_global::CircularBuffer_Read	IN_PROGRESS			batch e16 (identify)
 009f39a0	identify	_global::CSurface_CopySurfaceData	OPEN			
 009f3da0	named	CSurface::CopyToMemoryB8G8R8A8	OPEN			
 009f4590	named	CSurface::SaveAsTGA	OPEN			
@@ -708,7 +708,7 @@ address	kind	name	state	true_length	staged_folder	note
 00ba9830	named	CEnginePrimitiveManagerMeshBase::GetReflectionTexture	MATCHED_STAGED	570	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04
 00ba9cb0	identify	_global::ComputeParticleVisibilityDistance	OPEN			
 00baa870	named	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList	OPEN			
-00bba1e0	identify	_global::CGuiControlTreePane_OnFileLoadComplete	IN_PROGRESS			batch e15 (identify)
+00bba1e0	identify	_global::CGuiControlTreePane_OnFileLoadComplete	PARKED			PARKED e15 (identified): ??_GCEngineInternalPrimitiveParticleGroup@@UAEPAXI@Z (RTTI vtable 0x012A59D4 slot 0 + FableWin 0x02EA4D00); DIFFER(30v82): VC7.1 calls the implicit ??1 where retail expands it; next attempt from Engine_Primitive_Manager_Particle_Group.obj (not Decals.obj); draft ../2026-11-17_egod_open/e15/00bba1e0.cpp
 00bbe090	named	CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderSingleSpriteTrail	OPEN			
 00bc3f30	named	CEnginePrimitiveManagerParticleLineGroup::RenderSubPrimitive	OPEN			
 00bc6930	named	CEnginePrimitiveManagerText::CEnginePrimitiveManagerText::RenderPrimitive	OPEN			
@@ -743,7 +743,7 @@ address	kind	name	state	true_length	staged_folder	note
 00c52c40	named	CEngineInternalPrimitiveParticleGroup::GetRenderLayerMask	PARKED			PARKED e04: DIFFER(75v75); not an Ego_d row: the catalog label is propagated, the function is libpk CCpuInfo::GetCyrixModelName (descriptive); ecx/eax tie like its twin 0x00C52BB0 (254 grades); recommend leave; draft ../2026-11-17_egod_open/e04/00c52c40.cpp
 00c5e2c0	identify	_gapscan::sub_00c5e2c0	OPEN			
 00c604e0	named	CEnvironmentSpellEffectInterface::CEnvironmentSpellEffectInterface	OPEN			
-00c62370	identify	_global::Quaternion_FromAxisAngle	OPEN			
+00c62370	identify	_global::Quaternion_FromAxisAngle	IN_PROGRESS			batch e16 (identify)
 00c77800	identify	_global::CAudioChannel_SetupAudioFilter	OPEN			
 00cb2590	identify	_global::ImeUI_FormatCompStringDisplay	OPEN			
 00cddcb0	named	NScript::CPersonalScriptMainScript::Main	OPEN			
