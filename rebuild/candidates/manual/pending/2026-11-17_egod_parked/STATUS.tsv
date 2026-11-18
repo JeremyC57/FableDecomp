@@ -24,7 +24,7 @@ address	kind	name	state	true_length	staged_folder	note
 00493281	named	CSubtitleRenderer::ClickPast	OPEN			
 00497b60	named	CProgressDisplay::CalculateNextTextTag	OPEN			
 00497fd0	named	CProgressDisplay::DisplayCenteredText	MATCHED_STAGED	1076	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
-00498410	identify	_global::GetCharWidthW	IN_PROGRESS			batch e15 (identify)
+00498410	identify	_global::GetCharWidthW	MATCHED_STAGED	120	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
 0049ed80	identify	_global::ConsoleSetFreeCameraLookVector	OPEN			
 004a1c8e	named	CTCTrophy::OnShowTrophyInitialise	OPEN			
 004a1cb0	named	CWorld::CWorld::PreparePrimitivesForEngine	OPEN			
@@ -144,7 +144,7 @@ address	kind	name	state	true_length	staged_folder	note
 006cc270	named	CTCCreatureNavigation::DrawPreparePrimitivesForRendering	OPEN			
 006cddf0	named	CGroundNavigatorExternalInterface::?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z	OPEN			
 006d5d30	named	CThingAICreature::UpdateAI	OPEN			
-006d63f0	identify	_global::Math_FracPart	IN_PROGRESS			batch e15 (identify)
+006d63f0	identify	_global::Math_FracPart	MATCHED_STAGED	68	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
 006d6fa0	named	CTCHeroExperience::GetTrainableStatPossibleLevelUpAmount	OPEN			
 006d8980	named	CTCHeroExperience::UpgradeTrainableStat	OPEN			
 006ddd30	named	CTCTrophy::OnTrophyUseAction	OPEN			
@@ -505,8 +505,8 @@ address	kind	name	state	true_length	staged_folder	note
 009b9d70	named	CStringParser::SkipPastNewline	OPEN			
 009bbcc0	named	CPersistContext::TransferSubComponentLoadText	OPEN			
 009bca20	named	_global::DisplayCenteredText	MATCHED_STAGED	1104	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13
-009bce70	identify	_global::GetCharWidthW	IN_PROGRESS			batch e15 (identify)
-009bcef0	identify	_global::GetCharWidthW	IN_PROGRESS			batch e15 (identify)
+009bce70	identify	_global::GetCharWidthW	MATCHED_STAGED	120	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
+009bcef0	identify	_global::GetCharWidthW	MATCHED_STAGED	120	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
 009bd460	named	CMovieSubtitles::ParseSubtitles	OPEN			
 009c33a0	named	_global::GetMarkerFileName	OPEN			
 009c37a0	identify	_global::CodeSection_SetReadyAndSignal	IN_PROGRESS			batch e16 (identify)
@@ -729,7 +729,7 @@ address	kind	name	state	true_length	staged_folder	note
 00be6880	named	CLandscapeBackgroundPatch::BuildDefaultSection	OPEN			
 00beb6c0	identify	_global::Interpolate_Quaternion_Scale_Matrix	OPEN			
 00bebca0	named	CEnginePrimitiveManagerMeshBase::PreloadReflectionTexture	OPEN			
-00bf2980	identify	_gapscan::sub_00bf2980	IN_PROGRESS			batch e15 (identify)
+00bf2980	identify	_gapscan::sub_00bf2980	MATCHED_STAGED	96	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
 00bf2b50	named	CEngineTreeFilerBase::ConvertListToTree	OPEN			
 00bfa2a0	named	CLocalDetailPrimitiveRepeatedMesh::Load	OPEN			
 00bfad90	named	CLocalDetailPrimitiveMeshZSpriteBatch::RenderUpdate	OPEN			

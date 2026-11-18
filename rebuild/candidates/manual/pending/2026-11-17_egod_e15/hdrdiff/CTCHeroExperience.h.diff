@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CTCHeroExperience.h
++++ b/rebuild/include/engine/CTCHeroExperience.h
+@@ -179,6 +179,13 @@
+     // the hero's TCI_HERO_EXPERIENCE component). Declaration only.
+     void OnRegionLoad();                                                 // 0x006D7570
+ #endif // FABLE_RETAIL_CTCHEROEXPERIENCE_ONREGIONLOAD
++#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_FRACTIONCOMPLETE
++public:
++    // Opt-in (w23 e15, row 0x006D63F0): Ego_r.pdb 0x00587B20 / FableWin.pdb 0x01EEE540
++    // ?GetExperiencePickupMultiplierCurrentLevelFractionComplete@CTCHeroExperience@@QBEMXZ (public const; Ego_d.pdb tc_hero_experience.obj
++    // right after GetRunningNumHits 0x006D63A0; one caller, CDrawCombatMultiplier::Draw 0x006482B0). Declaration only.
++    float GetExperiencePickupMultiplierCurrentLevelFractionComplete() const;   // 0x006D63F0
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(170, sizeof(CTCHeroExperience)==96);
+ #else

@@ -1,0 +1,23 @@
+--- a/rebuild/include/engine/CProgressDisplay.h
++++ b/rebuild/include/engine/CProgressDisplay.h
+@@ -41,7 +41,13 @@
+     bool FormatTextForVWindow(const C2DBoxF& window, const CFontBank& font, const CWideString& text,
+                               CWideString& formatted_text, C2DBoxF& formatted_window) const;   // 0x00497F80
+     void DisplayCenteredText(const CFontBank& font, const CWideString& text, const C2DBoxF& window) const;   // 0x00497FD0
++#ifdef FABLE_RETAIL_CPROGRESSDISPLAY_GETCHARWIDTHW_U16
++    // Opt-in (w23 e15 audit, row 0x00498410): the wide char spelled unsigned short (retail VC7.1 wchar_t; Ego_r.pdb
++    // ?GetCharWidthW@CProgressDisplay@@CII_W@Z, VC7.1 object ?..@@CIIG@Z), so the row definition matches under compilers with a native wchar_t.
++    static unsigned int __fastcall GetCharWidthW(unsigned short c);      // 0x00498410
++#else
+     static unsigned int __fastcall GetCharWidthW(wchar_t c);             // 0x00498410
++#endif
+     static CCountedPointer<CFontBank> PFont;                             // 0x013B8998
+     std::vector<CTexture> ProgressTextures;                              // +0x04
+     std::vector<CTexture> GuildSealTextures;                             // +0x10
+@@ -71,5 +77,5 @@
+     bool IgnoreNextBeginRenderCall;                                      // +0x82
+     bool IgnoreNextEndRenderCall;                                        // +0x83
+ };
+-FABLE_STATIC_ASSERT(sizeof(CProgressDisplay) == 0x88);
++FABLE_STATIC_ASSERT_AT(74, sizeof(CProgressDisplay) == 0x88);
+ #endif // FABLE_ENGINE_CPROGRESSDISPLAY_H

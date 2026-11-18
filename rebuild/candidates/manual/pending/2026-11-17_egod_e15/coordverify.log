@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00498410   RELOCATION_MATCH PASS   GetCharWidthW
+009bce70   RELOCATION_MATCH PASS   GetCharWidthW
+009bcef0   RELOCATION_MATCH PASS   GetCharWidthW
+00bf2980   RELOCATION_MATCH PASS   GetTreeMemSize
+006d63f0   RELOCATION_MATCH PASS   GetExperiencePickupMultiplierCurrentLevelFractionComplete
+
+WINS: 5
+  00498410 RELOCATION_MATCH CProgressDisplay::GetCharWidthW
+  009bce70 RELOCATION_MATCH CXMVPlayer::GetCharWidthW
+  009bcef0 RELOCATION_MATCH CMovieSubtitles::GetCharWidthW
+  00bf2980 RELOCATION_MATCH CEngineTreeFilerBase::GetTreeMemSize
+  006d63f0 RELOCATION_MATCH CTCHeroExperience::GetExperiencePickupMultiplierCurrentLevelFractionComplete

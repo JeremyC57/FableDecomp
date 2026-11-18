@@ -1,0 +1,31 @@
+--- a/rebuild/include/engine/CMovieSubtitles.h
++++ b/rebuild/include/engine/CMovieSubtitles.h
+@@ -12,6 +12,10 @@
+ #include "stlport/fable_containers.h"
+ #include "engine/C2DBoxF.h"
+ namespace NGameText { class CDataBank; }
++#ifdef FABLE_RETAIL_CMOVIESUBTITLES_GETCHARWIDTHW
++#include "engine/CCountedPointer.h"
++class CFontBank;
++#endif
+ class CASoundManager;
+ class CSubTitle;
+ class CMovieSubtitles {
+@@ -28,6 +32,16 @@
+     CWideString                 FormattedText;                           // +0x14
+     C2DBoxF                     VSubtitleWindow;                         // +0x18
+     long                        FrameCounter;                            // +0x28
++#ifdef FABLE_RETAIL_CMOVIESUBTITLES_GETCHARWIDTHW
++    // Opt-in (w23 e15, row 0x009BCEF0): Ego_r.pdb ?GetCharWidthW@CMovieSubtitles@@SII_W@Z (public static __fastcall; retail VC7.1
++    // wide char = unsigned short -> SIIG) and the protected static CCountedPointer<CFontBank> PFont (Ego_d.pdb LF_STMEMBER; Ego_r.pdb
++    // `dynamic initializer for 'CMovieSubtitles::PFont''), 0x013CA7F8 (also read by Play 0x009BD910, landed under the descriptive
++    // extern g_pSubtitleFont). Statics only: no layout change.
++    static unsigned int __fastcall GetCharWidthW(unsigned short c);             // 0x009BCEF0
++protected:
++    static CCountedPointer<CFontBank> PFont;                             // 0x013CA7F8
++public:
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CMovieSubtitles) == 0x2c);
++FABLE_STATIC_ASSERT_AT(32, sizeof(CMovieSubtitles) == 0x2c);
+ #endif // FABLE_ENGINE_CMOVIESUBTITLES_H
