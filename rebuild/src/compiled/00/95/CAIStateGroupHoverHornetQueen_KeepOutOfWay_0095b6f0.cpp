@@ -1,55 +1,82 @@
 // CAIStateGroup_HoverHornetQueen::KeepOutOfWay() -- choose a safe circle point near the target, otherwise idle; clear timing-critical mode afterward.
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail0095b6f0 length297. Queen donor CurrentCirclePoint/CircleMarkers/TimingCritical are four/eight bytes too high.
-// PlayAnimation donor sizec0 differs retailb4; use native lifecycle view with a real virtual base destructor.
+// Leaf: ?KeepOutOfWay@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0095B6F0, length 297 bytes.
+// Callees: IsStillRunnable 0x0095A420, CAIStateGroupBase::Terminate 0x008FCF40, CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTargetThing),
+//   CThing::GetPos 0x004C73D0, CAIStateGroupBase::AIAction_DoNothing 0x0097E200, GotoSafestCirclePoint 0x0095AD20 (EMovementType 9),
+//   CCharString(const char*, long) 0x0099EBF0 ("ST_IDLE" 0x0127138C) / ~CCharString 0x0099EAE0, CCreatureAction_PlayAnimation ctor 0x008424F0,
+//   AIAction_PerformActionAndWait 0x0097DB70, ~CCreatureActionBase 0x00693EF0. 15.0f @ 0x0124E640.
+// Identity (agentNF77, q10884): Ego_r.pdb + FableWin.pdb ?KeepOutOfWay@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ (protected,
+//   EAIActionReturn); the self leaf was a local CQueenNative::KeepOutOfWay returning long. The action temporary's destruction is
+//   ~CCreatureActionBase (??1CCreatureActionBase@@UAE@XZ, both PDBs), formerly bound as a local ??1CActionNative@@UAE@XZ.
+// Layout: engine/CAIStateGroup_HoverHornetQueen.h (the ATTACK_PASS23 retail branch: STLport vectors, CircleMarkers +0x50, TimingCritical +0x60;
+//   overlay opt-in FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_KEEPOUTOFWAY declares KeepOutOfWay / GotoSafestCirclePoint) on
+//   CAIStateGroup_HoverMovementBase / CAIStateGroup_EnemyCreatureBase (PTargetThing +0x14) / CAIStateGroupBase / CAIBrain, and
+//   engine/CCreatureAction_PlayAnimation.h with FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION_IMPLICIT_DTOR (the derived action destructor is
+//   compiler-generated: the temporary's destruction calls ~CCreatureActionBase straight, 0x0095B7EA). Was a local CAIBrain / CThing /
+//   CQueenNative / CQueenPointer / CActionNative / CPlayAnimationNative / CAnimationSound model.
+// Shape: the 2D distance is a plain sqrt of the XY deltas (the fsqrt with both deltas kept on the x87 stack); the circle-marker test is the
+//   vector's size (`test ecx,0FFFFFFF8h` on the byte span).
 #include <math.h>
-#ifdef _MSC_VER
-#include "engine/CAIStateGroup_HoverHornetQueen.h"
-#include "engine/CCreatureAction_PlayAnimation.h"
-#include "engine/CAIBrain.h"
-#include "fable_string.h"
-#else
-class CAIBrain { public:char prefix[24];void* Creature;};
-class CCharString { public:void* storage_;CCharString(const char*,long);~CCharString();};
-#endif
-#include "engine/C3DVector.h"
-class CThing { public: const C3DVector& GetPos() const; };
-struct CQueenThing : public CThing { public:  }; //004c73d0
-class CBaseObject;
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_C3DVECTOR
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-struct CQueenPointer {virtual ~CQueenPointer();CQueenThing* item;}; //00a01b50
-struct CAnimationSound {long first,last;CAnimationSound():first(0),last(0){}};
-struct CActionNative {virtual ~CActionNative();char state[0xa4];}; //00693ef0
-struct CPlayAnimationNative:CActionNative {bool UseAnimationMovement,UsePhysics,StayOnLastFrame,Looping;long NumberOfTimesToLoop;bool AnimMayNeedCameraPositionUpdatedInSpeakAndWait;
-CPlayAnimationNative(CQueenThing*,const CCharString&,const CAnimationSound&,bool,bool,bool,long,long); //008424f0
-};
-struct CQueenNative {
-virtual ~CQueenNative();CAIBrain* brain;unsigned char baseState[12];CQueenPointer target;
-C3DVector StartPos,ArenaCentrePos;bool bOneTime;unsigned char alignment[3];CQueenThing* PEmitter;CQueenThing* PEmitter2;unsigned char Things[12];
-long CurrentCirclePoint;CQueenPointer* first;CQueenPointer* last;CQueenPointer* capacity;long allocator;bool TimingCritical;
-bool IsStillRunnable();void Terminate(); //0095a420,008fcf40
-long AIAction_DoNothing();long GotoSafestCirclePoint(long); //0097e200,0095ad20
-long AIAction_PerformActionAndWait(CActionNative*,bool); //0097db70
-CQueenThing* GetCreature(){return (CQueenThing*)brain->Creature;}
-long KeepOutOfWay();
-};
-long CQueenNative::KeepOutOfWay(){
-if(!IsStillRunnable()){Terminate();return 1;}
-TimingCritical=true;
-CQueenThing* creature=GetCreature();
-const C3DVector& enemy=((CQueenThing*)((CBaseIntelligentPointer*)&target)->GetPItem())->GetPos();
-const C3DVector& owner=creature->GetPos();
-float dx=owner.X-enemy.X,dy=owner.Y-enemy.Y;
-long result;
-if((float)sqrt(dx*dx+dy*dy)<15.0f){
-if((unsigned long)(last-first)==0)result=AIAction_DoNothing();else result=GotoSafestCirclePoint(9);
-if(result==3||!IsStillRunnable()){TimingCritical=false;return result;}
-}else{
-CCharString animation("ST_IDLE",-1);
-result=AIAction_PerformActionAndWait(&CPlayAnimationNative(GetCreature(),animation,CAnimationSound(),false,true,false,0,0),false);
-}
-if(!IsStillRunnable())Terminate();
-TimingCritical=false;return result;
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION
+#define FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION_IMPLICIT_DTOR
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_ATTACK_PASS23
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_KEEPOUTOFWAY
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCreatureAction_PlayAnimation.h"
+#include "engine/CAIStateGroup_HoverHornetQueen.h"
+
+EAIActionReturn CAIStateGroup_HoverHornetQueen::KeepOutOfWay()
+{
+    if (!IsStillRunnable()) {
+        Terminate();
+        return AI_ACTION_TERMINATE_PROCESS;
+    }
+    TimingCritical = true;
+    CThingAICreature& creature = GetCreature();
+    const C3DVector& enemy = PTargetThing->GetPos();
+    const C3DVector& owner = creature.GetPos();
+    float dx = owner.X - enemy.X, dy = owner.Y - enemy.Y;
+    EAIActionReturn result;
+    if ((float)sqrt(dx * dx + dy * dy) < 15.0f) {
+        if (CircleMarkers.size() == 0)
+            result = AIAction_DoNothing();
+        else
+            result = GotoSafestCirclePoint(EMovementType(9));
+        if (result == AI_ACTION_FAILED || !IsStillRunnable()) {
+            TimingCritical = false;
+            return result;
+        }
+    } else {
+        CCharString animation("ST_IDLE");
+        result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(), false, true, false, 0, 0), false);
+    }
+    if (!IsStillRunnable())
+        Terminate();
+    TimingCritical = false;
+    return result;
 }

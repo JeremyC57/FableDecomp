@@ -186,6 +186,34 @@ public:
     NUISystem::CComponent* ConstructTradeDescriptionWeapon(long itemDefIndex, unsigned long count, bool buying, bool special);     // 0x005A9CBE
     NUISystem::CComponent* ConstructTradeDescriptionClothing(long itemDefIndex, unsigned long count, bool buying, bool special);   // 0x005AAF28
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_BUYHIGHLIGHTEDITEM
+    // NF89 opt-in (row 0x005A3581): Ego_r.pdb + FableWin.pdb ?BuyHighlightedItem@CTCInventoryTrade@@QAEXXZ (public; the row defines it).
+public:
+    void BuyHighlightedItem();                                                     // 0x005A3581
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_ITEMCOUNTFORCATEGORY
+    // NF89 opt-in (row 0x0059B740): Ego_r.pdb + FableWin.pdb ?GetItemCountForCategory@CTCInventoryTrade@@QAEJXZ (public). Declaration only.
+public:
+    long GetItemCountForCategory();                                                // 0x0059B740
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_PROCESSTRADEACTION
+    // NF89 opt-in (row 0x005AEBFE; needs FABLE_RETAIL_CTCINVENTORYBASE_VTABLE): Ego_r.pdb + FableWin.pdb ?ProcessTradeAction@CTCInventoryTrade@@UAEXXZ
+    // (the override of NInventory::CTCInventoryBase slot 68; the row defines it), ?GetIsEnabled@CTCInventoryTrade@@UBE_NXZ (the slot-75 override,
+    // out of line; called through the vtable) and ?SellHighlightedItem@CTCInventoryTrade@@QAEXXZ (0x005A3436). Declarations only; the
+    // overrides add no slot.
+public:
+    virtual void ProcessTradeAction();                                             // 68 0x005AEBFE
+    virtual bool GetIsEnabled() const;                                             // 75
+    void SellHighlightedItem();                                                    // 0x005A3436
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_TRADECATEGORY
+    // NF89 opt-in (rows 0x0059C6B0 / 0x0059CF49; needs the NInventory::EInventoryCategoryIdentifier enum: FABLE_RETAIL_CCATEGORY_CATEGORYIDENTIFIER or
+    // ORIGINAL_COMPLETE_METHODS_PASS22): Ego_r.pdb + FableWin.pdb ?GetCategoryIndexForTradeType@CTCInventoryTrade@@QAEJXZ (0x0059B6F4) and
+    // ?RemoveAllItemsFromCategory@CTCInventoryTrade@@QAEXW4EInventoryCategoryIdentifier@NInventory@@@Z (0x0059CF49), public. Declarations only.
+public:
+    long GetCategoryIndexForTradeType();                                           // 0x0059B6F4
+    void RemoveAllItemsFromCategory(NInventory::EInventoryCategoryIdentifier category);   // 0x0059CF49
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYTRADE_BUYPOSSIBILITY
     // Retail opt-in (chunk 1009, row 0x005A9A87 RefreshBuyPossibility): Ego_r.pdb / FableWin.pdb
     // ?RefreshBuyPossibilityNumbers@CTCInventoryTrade@@AAEXXZ (0x005A3734, out of line; the console twin of
@@ -269,6 +297,16 @@ private:
     bool AddItemOfTypeToInventory(long itemDefIndex, long count);                  // 0x0059C6B0
 public:
 #endif // FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMOFTYPE
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMTOINVENTORY
+// NF92 opt-in (round 7, q11211 / q11215 rows 0x0059C710 / 0x0059C6DD): Ego_r.pdb (0x00608E5E / 0x00608E2B) + FableWin.pdb (0x02314571 /
+// 0x02314422) ?AddItemToInventory@CTCInventoryTrade@@UAE_NJJ_N0J0@Z and ?AddItemToInventory@CTCInventoryTrade@@UAE_NAAVCThing@@_N1J1@Z (public
+// virtual overrides of the CTCInventoryBase pair); the retail CTCInventoryTrade vtable 0x01253034 holds 0x0059C6DD at slot 80 and 0x0059C710 at
+// slot 81 (VC7.1 reverses the overload group, as in NInventory_CTCInventoryBase.h). Parameter names: Ego_d.pdb. Declaration only (no layout
+// change; the vtable exists).
+public:
+    virtual bool AddItemToInventory(long itemDefIndex, long count, bool add_selected, bool add_quick_access, long price_bought_for, bool silent);   // 81 0x0059C710
+    virtual bool AddItemToInventory(CThing& item, bool add_selected, bool add_quick_access, long price_bought_for, bool silent);                  // 80 0x0059C6DD
+#endif // FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMTOINVENTORY
 };
 FABLE_STATIC_ASSERT_AT(251, sizeof(CTCInventoryTrade) == 0x230);
 FABLE_STATIC_ASSERT_AT(252, offsetof(CTCInventoryTrade, NotInStock) == 0x140);
@@ -279,6 +317,34 @@ FABLE_STATIC_ASSERT_AT(256, offsetof(CTCInventoryTrade, SpecialItemString) == 0x
 FABLE_STATIC_ASSERT_AT(257, offsetof(CTCInventoryTrade, ItemBuyLists) == 0x200);
 FABLE_STATIC_ASSERT_AT(258, offsetof(CTCInventoryTrade, PTop_Level_List) == 0x220);
 FABLE_STATIC_ASSERT_AT(259, offsetof(CTCInventoryTrade, PCurrentOpenTradeMenu) == 0x224);
+#if defined(FABLE_RETAIL_CTCINVENTORYTRADE_TRADECATEGORY) && defined(FABLE_RETAIL_CTCINVENTORYTRADE_TRADECATEGORY_BODY)
+// NF91 opt-in (round 7, q11201 / q11204: one definition of 0x0059B6F4): the body of Ego_r.pdb + FableWin.pdb
+// ?GetCategoryIndexForTradeType@CTCInventoryTrade@@QAEJXZ, out of line in retail at 0x0059B6F4 (35 bytes) and called (E8) from 0x0059C6B0 /
+// 0x0059C6DD / 0x0059C710 / 0x0059C747 / 0x0059CF49. Defined inline + noinline, so an includer emits it as a pick-any COMDAT; the owner row
+// 0x0059B6F4 takes its address (nf86 / nf88 scaffolding) and grades RELOCATION_MATCH with COMDAT selection 2. Measured limit: a caller that
+// needs retail's `mov edx,ecx ; call ; push eax ; mov ecx,edx` (0x0059C6B0) does NOT get it from this body (DIFFER 47 v 45, `push esi` form,
+// with or without an earlier address-taking reference and with the noinline dropped under inline_depth(0)); only the landed same-TU strong
+// `auto_inline(off)` copy gives it. Such callers keep their landed form (coordinator decision). The .data pair at 0x0137CCDC ({11 -> 0},
+// {12 -> 1}) has no name in any PDB, label set or FSE: CTradeTypeCategory / g_TradeTypeCategories are the landed rows' descriptive spellings.
+// Needs the TRADECATEGORY declaration.
+struct CTradeTypeCategory {
+    long Ident;                                                                    // EInventoryCategoryIdentifier value
+    long CategoryIndex;                                                            // trade category index
+};
+extern CTradeTypeCategory g_TradeTypeCategories[2];                                // 0x0137CCDC: {11,0}, {12,1}
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+inline long CTCInventoryTrade::GetCategoryIndexForTradeType()
+{
+    long ident = CategoryIdent;
+    for (long i = 0; i < 2; ++i) {
+        if (g_TradeTypeCategories[i].Ident == ident)
+            return g_TradeTypeCategories[i].CategoryIndex;
+    }
+    return -1;
+}
+#endif
 #endif // FABLE_ENGINE_CTCINVENTORYTRADE_RETAIL_H
 #else // generated flattened default (unchanged)
 #ifndef FABLE_ENGINE_CTCINVENTORYTRADE_H

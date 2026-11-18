@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q11190	0x00A355F0	family follow-up note: "its callers 0x00A35670 / 0x00A35690 / 0x00A2F2D0 bind stand-ins"	partly rejected: 0x00A35670 / 0x00A35690 did (ported here), but 0x00A2F2D0 C3DMeshStats::LoadBinary binds no address of this slice (probe work/old_00a2f2d0.txt: its relocations reach 0x00A35580 / 0x00A34DF0 resize, and the sort call site 0x00A2FED6 lies outside its 1129 bytes, in an unlanded function); marked not-a-binder

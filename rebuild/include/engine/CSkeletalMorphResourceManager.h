@@ -30,5 +30,5 @@ public:
 private:
     std::map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> > CachedMorphs;   // +0x04
 };
-FABLE_STATIC_ASSERT(sizeof(CSkeletalMorphResourceManager) == 0x10);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CSkeletalMorphResourceManager) == 0x10);
 #endif

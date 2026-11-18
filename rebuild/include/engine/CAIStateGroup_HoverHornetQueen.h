@@ -24,6 +24,14 @@ protected:
     bool IsStillRunnable();                                              // 0x0095A420 ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ
     void Attack();
     void Spawn();                                                        // 0x0095B820 ?Spawn@CAIStateGroup_HoverHornetQueen@@IAEXXZ
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_KEEPOUTOFWAY
+    // Retail opt-in (agentNF77, row 0x0095B6F0): Ego_r.pdb / FableWin.pdb ?KeepOutOfWay@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ
+    // (protected) and ?GotoSafestCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@W4EMovementType@@@Z (protected, out of
+    // line in retail at 0x0095AD20: `push 9 ; mov ecx,esi ; call`, 0x0095B77A). Declarations only, no layout change. Needs the forward
+    // enums (CAIStateGroupBase.h).
+    EAIActionReturn KeepOutOfWay();                                      // 0x0095B6F0
+    EAIActionReturn GotoSafestCirclePoint(EMovementType movement);       // 0x0095AD20
+#endif
     C3DVector StartPos;                                                  // +0x1c
     C3DVector ArenaCentrePos;                                            // +0x28
     bool bOneTime;                                                       // +0x34
@@ -38,7 +46,7 @@ protected:
     enum eWaspDirection { WASP_DIRECTION_CLOCKWISE=0, WASP_DIRECTION_ANTICLOCKWISE=1 };
     eWaspDirection RouteDirection;                                     // +0x64, original protected field
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverHornetQueen) == 0x68);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CAIStateGroup_HoverHornetQueen) == 0x68);
 #elif defined(FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN)
 // Retail opt-in (chunk Q17, row 0x0095B820 CAIStateGroup_HoverHornetQueen::Spawn): the polymorphic retail class. RTTI
 // .?AVCAIStateGroup_HoverHornetQueen@@ : CAIStateGroup_HoverMovementBase : CAIStateGroup_EnemyCreatureBase (PTargetThing +0x14).

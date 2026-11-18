@@ -239,6 +239,15 @@ protected:
         CIntelligentPointer<const CThing> target, const CCharString& speech, bool interrupt, long priority);       // 0x00981EA0
     EAIActionReturn AIAction_SpeakAISpeechToTarget(EAIActionRepeat repeat, CIntelligentPointer<CThingCreatureBase> speaker,
         CIntelligentPointer<const CThing> target, unsigned long speech, bool interrupt, long priority);            // 0x009812C0
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_SPEAKAISPEECH_WAIT
+    // NF84 nested opt-in (round 7, row 0x00981EA0 and its callers): the seven-argument AIAction_SpeakAISpeechToTarget the six-argument
+    // forwarder 0x00981EA0 calls with a trailing `true` (retail 0x00981350, landed: the speech name looked up in the text bank, then
+    // AIAction_SpeakToTarget 0x00980BD0). Neither PDB has a seven-argument overload (TLC added the trailing flag); spelt as its sibling
+    // AIAction_SpeakToTarget(..., bool interrupt, long priority, bool wait) 0x00980BD0 (Ego_r ..K_NJ3@Z) with the speech as the PDB
+    // six-argument overload's `const CCharString&`. Descriptive (NOTES). Declaration only: no layout change.
+    EAIActionReturn AIAction_SpeakAISpeechToTarget(EAIActionRepeat repeat, CIntelligentPointer<CThingCreatureBase> speaker,
+        CIntelligentPointer<const CThing> target, const CCharString& speech, bool interrupt, long priority, bool wait);   // 0x00981350
+#endif
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD_YELL
 protected:

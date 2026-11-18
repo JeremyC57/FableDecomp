@@ -1,272 +1,276 @@
-// CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalPrimitiveBase&, CEngineSubPrimitiveChain&, ESubPrimitiveType) -- queue a 2D animated mesh: the 2D static-mesh culling and load sequence (0x00B9E950), then SetupMesh2D, the LOD transform stored into the render info, generated objects, simulation start, and one pool-allocated CEngineSubPrimitiveAnimatedMesh per sub-mesh whose material is not hidden by the primitive's visibility vector (type 0x26 only)
-// Leaf: Render2DPrimitive
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00BD1F70, length 1004 bytes (`ret 0Ch`, virtual).
-// Layout (supersedes any local-model note above): engine/CEngineLightingManager.h now has the retail STLport 4.6 offsets, so the data
-//   members come from the shared header; the class below keeps only the declarations this body needs.
-#define CEngineLightingManager CEngineLightingManagerDonor
+// CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalPrimitiveBase&, CEngineSubPrimitiveChain&, ESubPrimitiveType) -- queue a 2D animated mesh: the 2D static-mesh culling (viewport, 2D alpha-mask clip box, layer enable), initialise once, interpolate the object transform, start (or require) the mesh load, set the mesh up, copy the transform into the render info, then queue one pool-allocated CEngineSubPrimitiveAnimatedMesh per mesh primitive that its morph info does not hide, at the layer's sort distance
+// Leaf: ?Render2DPrimitive@CEnginePrimitiveManager2DAnimatedMeshes@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00BD1F70, length 1004 bytes (`ret 0Ch`, virtual slot 10).
+// Identity: Ego_r.pdb ?Render2DPrimitive@CEnginePrimitiveManager2DAnimatedMeshes@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z
+//   (vtable slot 10 of .?AVCEnginePrimitiveManager2DAnimatedMeshes@@).
+// Port (agentNF77, round 7; nf41:e120 / e188, nf44:70 / 71 / 73): moved off the local CEngineInternalPrimitive2DAnimatedMesh / C3DMeshInfo /
+//   C3DMesh2 / CMeshMaterial / CSubMesh / CMatrix3x4 / morph-info / CDisplayManager / clip / CEnginePrimitiveTypeInfo / renderer / sub-primitive /
+//   manager models and the CEngineLightingManagerDonor renaming include onto the shared headers, with the 0x00BD71B0 (3D
+//   CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitive) preamble and inline helper bodies (GetHiddenMaterials forced inline: retail
+//   expands it here, 0x00BD2175..0x00BD21BD), the 0x00BB0970 alpha-mask clip helper, the repo retail branches of
+//   engine/CEngineInternalPrimitive2DAnimatedMesh.h / CEngineInternalPrimitive2DMorphedAnimatedMesh.h, and the overlay opt-ins / new headers
+//   (hdr/README.md): new engine/CEnginePrimitiveManager2DAnimatedMeshes.h, CEngineInternalPrimitiveAnimatedMesh.h _SETUPMESH2D,
+//   CEnginePrimitiveManagerMeshBase.h _RENDERMODE2D, CEngineSubPrimitiveRenderer.h _SORTGRANULARITY, and the repo C3DMeshInfo.h _ISLOADED /
+//   _ARETEXTURESLOADED.
+// Binders now on their PDB spellings: 0x00A23C50 ?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z (nf41:e120), 0x00A23C60
+//   ?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ (nf41:e188), 0x00BCE740 ??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitiveAnimatedMesh@@PAVC3DPrimitive2@@W4ERenderMode@@_N@Z
+//   (nf44:70), 0x00BEBBB0 ?IsSimulationRunning@CEngineInternalPrimitiveMeshBase@@QBE_NK@Z (nf44:71), 0x00BF18B0
+//   ?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z (nf44:73), 0x00BCF430
+//   ?SetupMesh2D@CEngineInternalPrimitiveAnimatedMesh@@QAE_NXZ, 0x00A256F0 / 0x00A23E40 BeginLoading / IsLoaded, 0x00BEC8D0
+//   InitialiseHiddenMaterials, 0x00BEB540 ??2CEngineSubPrimitiveBase@@SIPAXI@Z, 0x01436E74 ?GPSubPrimitiveRenderer@NEngineInternal@@3PAVCEngineSubPrimitiveRenderer@@A;
+//   slots 33 / 34 / 15 are the virtual CalcInterpolatedObjectTransform(CMatrix3x4&, float, bool) const / InitialiseSimulation /
+//   GetWorldPosition (was local GetLODTransform / InitialiseSimulation / GetRenderData).
+// Shape: the object transform is interpolated into a local CMatrix3x4 and copied into the render info after SetupMesh2D (`rep movsd`);
+//   the render info is a named pointer (the Lights store precedes the type test); GetWorldPosition's result is unused (the call stays:
+//   virtual); the flags / render mode / sort granularity are as the 2D static-mesh twin 0x00B9E950.
+#define FABLE_RETAIL_PASS22_ANIMATED_MESH_RENDER
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ORIGINAL_CACHE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_WORLDPOS
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DANIMATEDMESH
+#define FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_SUBPRIMITIVE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_BLOCKONLOAD
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_APPROPRIATELOD
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DISTANCE
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHRENDER
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_ADDGENERATEDOBJECTS
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_FINDLOCALLIGHTS
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ISPERSISTENT
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_RESETOCCLUSIONINFO
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_SET
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_OCCLUDED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_ISOCCLUDED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_GETRENDERINFO
+#define FABLE_RETAIL_CMESHDATABANK_BASES
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK
+#define FABLE_RETAIL_CGRAPHICDATABANK_BANKFILE
+#define FABLE_RETAIL_CMESHDATABANKENTRY
+#define FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX
+#define FABLE_RETAIL_C3DMESHINFO_BOUNDINGSPHERE
+#define FABLE_RETAIL_C3DMESHINFO_GETMESH
+#define FABLE_RETAIL_C3DMESHINFO_LODERROR
+#define FABLE_RETAIL_C3DMESHINFO_DETAILLEVEL
+#define FABLE_RETAIL_C3DMESHINFO_BEGINLOADINGTEXTURES
+#define FABLE_RETAIL_C3DMESH2_PRIMITIVES
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_STLP_VECTOR_ORIGINAL_FRONT_PASS22
+#define FABLE_RETAIL_STLP_SET_EMPTY
+#define FABLE_RETAIL_CENGINEMESHEFFECT
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SILHOUETTES
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_RENDERSETTINGS
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER
+#define FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINESHADOWRENDERER
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_MEMBERS
+#define FABLE_RETAIL_CSHADOWRENDERERSCENEDATA_COPY
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_PEEKSCENEDATA
+#define FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_ADD
+#define FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_ADDTYPED
+#define FABLE_RETAIL_CENGINECLOTHRENDERER_MEMBERS
+#define FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CINDEXBUFFER
+#define FABLE_RETAIL_CMOVABLERESOURCE
+#define FABLE_RETAIL_CSIMPLEMEMORYPOOL
+#define FABLE_RETAIL_C3DPRIMITIVE2_CLOTHPRIMITIVES
+#define FABLE_RETAIL_C3DBOUNDINGSPHERE_CENTER_VALUE
+#define FABLE_RETAIL_C3DBOUNDINGSPHERE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_GET
+#define FABLE_RETAIL_C3DMESHMATERIAL_FLAG_ACCESSORS
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C4DVECTOR
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_PEEKGLOBALSHADOWMODE
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_LIGHTSINSPHERE
+#define FABLE_RETAIL_CENGINECAMERA_POSITION
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL
+#define FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
+#define FABLE_RETAIL_CPLANE_ACCESSORS
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CMATRIX3X4
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO
+#define FABLE_RETAIL_CENGINEPRIMITIVE2DVIEWPORTMANAGER
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTH2D
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_MEMBERS
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_LAYER2DTODISTANCE
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_LAYER2DTOZ
+#define FABLE_RETAIL_CDISPLAYMANAGER
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CDISPLAYMANAGER_GETVIEWPORT
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_C3DMESHINFO_ISLOADED
+#define FABLE_RETAIL_C3DMESHINFO_ARETEXTURESLOADED
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_RENDERMODE2D
+#define FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_SORTGRANULARITY
+#define FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_SETTERS_ALPHAFLOAT
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_SETUPMESH2D
+#include "engine/Direct3D9Types.h"
+#include "engine/CRenderManager.h"
+#include "engine/CEngineFadeDistance.h"
+#include "engine/CRGBColour.h"
+#include "engine/CEnginePrimitiveHandle.h"
+#include "engine/CEngineRenderEnums.h"
+#include "engine/CEnginePrimitiveManagerAnimatedMeshesBase.h"
+#include "engine/CEngineInternalPrimitiveAnimatedMesh.h"
+#include "engine/CEngineInternalPrimitiveMorphedAnimatedMesh.h"
+#include "engine/CEngineInternalPrimitive2DMorphedAnimatedMesh.h"
+#include "engine/CEngineSubPrimitiveAnimatedMesh.h"
+#include "engine/CEngineSubPrimitiveBoundingBox.h"
+#include "engine/CEngineSubPrimitiveRenderer.h"
+#include "engine/C3DMeshInfo.h"
+#include "engine/C3DMesh2.h"
+#include "engine/C3DPrimitive2.h"
+#include "engine/C3DMeshMaterial.h"
+#include "engine/CEngineMeshEffect.h"
+#include "engine/CEngineShadowRenderer.h"
+#include "engine/CEnginePrimitiveRenderer.h"
+#include "engine/CEngineClothRenderer.h"
+#include "engine/GFFloatToLongNear.h"
+#include "engine/GFFastFloatToLong.h"
+#include "engine/CEngineCamera.h"
+#include "engine/CEnginePrimitiveOcclusionManager.h"
 #include "engine/CEngineLightingManager.h"
-#undef CEngineLightingManager
-#include <stddef.h>
-enum EEngine2DLayer { };                         // Ego_r.pdb layer enum (passed as a 32-bit value)
-enum ESubPrimitiveType { };                       // the renderer's sort-list index (values unused here)
-class CEngineInternalPrimitiveBase;
-class CEngineSubPrimitiveChain;
-class C3DMesh2;
-struct CRefInfo { long RefCount; };
-struct CCountedMeshPointer {                       // CCountedPointer<const C3DMesh2>
-    C3DMesh2* Object;
-    CRefInfo* Info;
-    CCountedMeshPointer() : Object(0), Info(0) { }
-    ~CCountedMeshPointer();                        // 0x00A36EC0
-};
-class C3DMeshInfo { public:
-    void BeginLoading(unsigned long priority, bool urgent, bool wait);   // 0x00A256F0
-    void SetLoadPriority(long priority);           // 0x00A23C50
-    bool IsLoaded() const;                               // 0x00A23E40
-    bool IsBuilt();                                // 0x00A23C60
-    bool GetMesh(CCountedMeshPointer& mesh, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
-};
-struct CMeshMaterial {                             // 0x30 bytes
-    unsigned char _pad00[0x20];
-    unsigned char Flags;                           // +0x20 (bit 0: sort list 0x10)
-    unsigned char _pad21[8];
-    bool          AlphaTest;                       // +0x29
-    bool          AlphaBlend;                      // +0x2a
-    unsigned char _pad2b[5];
-};
-struct CSubMesh {                                  // 0xa0 bytes
-    unsigned char _pad00[4];
-    long          MaterialIndex;                   // +0x04
-    unsigned char _pad08[0x18];
-    void*         SimulationStart;                 // +0x20
-    void*         SimulationEnd;                   // +0x24
-    unsigned char _pad28[0x78];
-};
-class C3DMesh2 { public:
-    unsigned char  _pad00[0x8c];
-    CMeshMaterial* Materials;                      // +0x8c
-    unsigned long  SubMeshCount;                   // +0x90
-    CSubMesh*      SubMeshes;                      // +0x94
-    unsigned char  _pad98[0xe4 - 0x98];
-    bool           HasSimulation;                  // +0xe4
-};
-class CEngineLocalLightArray;
-class CEngineLightingManager : public CEngineLightingManagerDonor {
- public:
-};
-namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
+#include "engine/CShaderRenderManager.h"
+#include "engine/CEnginePrimitiveTypeInfo.h"
+#include "engine/CEnginePrimitive2DViewportManager.h"
+#include "engine/C2DAlphaMaskInfo.h"
+#include "engine/GFDebugPDynamicCast.h"
+#include "engine/CEnginePrimitiveRenderer2D.h"
+#include "engine/CDisplayManager.h"
+#include "engine/CEnginePrimitiveManager2DAnimatedMeshes.h"
 
-class CMatrix3x4 { public: float m[12]; };
-#include "engine/C3DVector.h"
-struct CByteVector {                               // STLport vector<unsigned char>, 12 bytes
-    unsigned char* _M_start;
-    unsigned char* _M_finish;
-    unsigned char* _M_end_of_storage;
-    bool empty() const { return _M_start == _M_finish; }
-    unsigned char* GetData() { return _M_finish - _M_start ? _M_start : (unsigned char*)this; }
-};
-struct CEngineInternalPrimitiveMorphInfo {
-    unsigned char _pad00[0x24];
-    void*         Def;                             // +0x24
-    unsigned char _pad28[4];
-    CByteVector   HiddenMaterials;                 // +0x2c
-    void InitialiseHiddenMaterials(const C3DMesh2& mesh);   // 0x00BEC8D0 (PDB)
-};
-class CEngineInternalPrimitive2DAnimatedMesh { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14();
-    virtual void GetRenderData(C3DVector* out);   // slot 15 (+0x3c)
-    virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32();
-    virtual CMatrix3x4 GetLODTransform(float distance, bool force);   // slot 33 (+0x84)
-    virtual void InitialiseSimulation(C3DMeshInfo* info, C3DMesh2* mesh);   // slot 34 (+0x88)
-    unsigned char  _pad04[4];
-    long           Type;                           // +0x08
-    unsigned long  Flags;                          // +0x0c
-    unsigned char  _pad10[0x17];
-    unsigned char  Alpha;                          // +0x27
-    unsigned char  _pad28[4];
-    long           LODIndex;                       // +0x2c
-    unsigned char  _pad30[0x20];
-    C3DMeshInfo*   MeshInfo;                       // +0x50
-    unsigned char  _pad54[0x8c];
-    void*          LightArray;                     // +0xe0 RenderInfo.Lights
-    C3DMesh2*      CurrentMesh;                    // +0xe4 RenderInfo.Mesh
-    unsigned char  _pade8[4];
-    CMatrix3x4     Transform;                      // +0xec
-    unsigned char  _pad11c[0xc];
-    bool           Initialised;                    // +0x128
-    unsigned char  _pad129[3];
-    long           Layer;                          // +0x12c
-    float          ScreenTLX, ScreenTLY, ScreenBRX, ScreenBRY;   // +0x130
-    unsigned char  _pad140[0x10];
-    CEngineInternalPrimitiveMorphInfo Visibility;              // +0x150
-    void Initialise();                             // 0x00BCF4F0
-    bool SetupMesh2D();                            // 0x00BCF430
-    bool IsSimulationRunning(unsigned long subMesh);   // 0x00BEBBB0
-};
-struct SLODEntry { float Distance; float _pad[2]; };
-extern SLODEntry g_LODTable_0143b934[];            // 0x0143B934
-
-class CDisplayManager { public:
-    unsigned char _pad[0x1f4];
-    long          ViewportTLX, ViewportTLY, ViewportBRX, ViewportBRY;   // +0x1f4
-};
-namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
-
-struct C2DClipInfo {
-    long          Active;                          // +0x00
-    long          Enabled;                         // +0x04
-    unsigned char _pad08[0x10];
-    float         TLX, TLY, BRX, BRY;              // +0x18
-    bool          Valid;                           // +0x28
-};
-struct C2DClipOwner {
-    unsigned char _pad0[0xc];
-    C2DClipInfo   Clip;                            // +0x0c
-};
-class CEnginePrimitiveTypeInfo { public:
-    unsigned char _pad[0x94];
-    C2DClipOwner* ClipOwner;                       // +0x94
-};
-namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
-
-class CEnginePrimitiveRenderer2D { public:
-    unsigned char _pad[0x320];
-    bool          LayerEnabled[1];                 // +0x320
-    float Layer2DToSortDistance(EEngine2DLayer layer); // 0x00B4A6A0
-};
-namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }   // 0x01436E7C
-struct CSimulationSettings { unsigned char _pad[0xa4]; bool Enabled; };
-class CEnginePrimitiveRenderer { public:
-    unsigned char        _pad000[4];
-    bool                 Loading;                  // +0x04
-    unsigned char        _pad005[0x2f0 - 5];
-    CSimulationSettings* Simulation;               // +0x2f0
-};
-namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
-
-struct CBase {
-    virtual void v00();
-    CBase();
-};
-class __declspec(novtable) CEngineSubPrimitiveBase : public CBase { public:
-    unsigned long                 RenderFlags;     // +0x04
-    unsigned char                 Alpha;           // +0x08
-    static void* __fastcall operator new(unsigned int size);   // 0x00BEB540
-};
-class CEngineSubPrimitiveAnimatedMesh : public CEngineSubPrimitiveBase { public:   // 0x24 bytes
-    unsigned char _pad0c[0x24 - 0xc];
-    CEngineSubPrimitiveAnimatedMesh(CEngineInternalPrimitive2DAnimatedMesh* primitive, CSubMesh* subMesh, long list, bool simulated);   // 0x00BCE740
-};
-class CEnginePrimitiveManager;
-class CEngineSubPrimitiveRenderer { public:
-    unsigned char _pad[0x10];
-    float         DepthBias;                       // +0x10
-    void AddSubPrimitive(ESubPrimitiveType type, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720 (Ego_r/FableWin ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z)
-};
-extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;   // 0x01436E74
-
-class CEnginePrimitiveManager2DAnimatedMeshes { public:
-    void* SceneList;                               // +0x04
-    bool  Enable;                                  // +0x08
-    virtual void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type);
-    void AddGeneratedObjects(CEngineInternalPrimitive2DAnimatedMesh* mesh, CMatrix3x4* transform);   // 0x00BF18B0
-};
-
-void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type)
+namespace NEngineInternal {
+extern CDisplayManager* GPDisplayManager;                     // 0x01436E1C
+extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo;         // 0x01436E84
+extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D;     // 0x01436E7C
+extern CEnginePrimitiveRenderer* GPPrimitiveRenderer;         // 0x01436E80
+extern CEngineLightingManager* GPLightingManager;             // 0x01436E9C
+extern CEngineSubPrimitiveRenderer* GPSubPrimitiveRenderer;   // 0x01436E74
+extern CEngineShadowRenderer* GPShadowRenderer;               // 0x01436E60
+}
+inline bool CEnginePrimitiveManager::GetBlockOnLoad()
+{ return NEngineInternal::GPPrimitiveRenderer->GetBlockOnLoad(); }
+inline const C2DAlphaMaskInfo* CEnginePrimitive2DViewportManager::GetCurrentAlphaMask() { return &AlphaMaskInfo; }
+FABLE_FORCEINLINE const C2DAlphaMaskInfo* CEnginePrimitiveRenderUtil::GetCurrent2DAlphaMaskInfo()
 {
-    if (!Enable)
+    CEnginePrimitive2DViewportManager* manager = GFDebugPDynamicCast(NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(ENGINE_PRIMITIVE_2D_VIEWPORT),
+                                                                      (CEnginePrimitive2DViewportManager*)0);
+    return manager->GetCurrentAlphaMask();
+}
+inline unsigned long CEnginePrimitiveRenderUtil::CalculateSubPrimitiveRenderFlags(bool primitive_alphaed,
+    bool texture_has_alpha,bool texture_has_boolean_alpha,unsigned long primitive_mod_flags,bool in_shadow_range)
+{
+    if((primitive_mod_flags & 0x100) && texture_has_alpha) texture_has_boolean_alpha=true;
+    bool use_stipple_alpha=(primitive_mod_flags & 0x200)!=0;
+    unsigned long flags=0;
+    if(primitive_alphaed) {
+        if(use_stipple_alpha) flags |= 0xa;
+        else flags |= 5;
+    }
+    if(texture_has_boolean_alpha) flags |= 2;
+    else if(texture_has_alpha) flags |= 5;
+    if(in_shadow_range && NEngineInternal::GPShadowRenderer->PeekRenderEnabled()) {
+        flags |= 0x200;
+        if(NEngineInternal::GPLightingManager->PeekGlobalShadowMode()==(ELightingManagerShadowMode)2) flags |= 0x10;
+    }
+    if(primitive_mod_flags & 0x800) flags |= 0xc0;
+    if(primitive_mod_flags & 8) flags |= 0x180;
+    return flags;
+}
+inline ERenderMode CEnginePrimitiveManagerMeshBase::GetAppropriateRenderMode2D(const C3DMeshMaterial* material,
+    unsigned long modifier_flags,unsigned long subprim_render_flags)
+{
+    if (material->GetMapFlags() & 1) return RENDER_MODE_2D_TEXTURE;
+    return RENDER_MODE_2D_UNTEXTURED;
+}
+FABLE_FORCEINLINE const unsigned char* CEngineInternalPrimitiveMorphInfo::GetHiddenMaterials(const C3DMesh2& mesh)
+{
+    if (HiddenMaterialNames.empty()) return 0;
+    if (HiddenMaterials.empty()) InitialiseHiddenMaterials(mesh);
+    return HiddenMaterials.GetAsCArray();
+}
+
+void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalPrimitiveBase& primitive_base, CEngineSubPrimitiveChain& subprim_chain, ESubPrimitiveType type)
+{
+    if (!GetEnable())
         return;
-    CEngineInternalPrimitive2DAnimatedMesh& mesh = (CEngineInternalPrimitive2DAnimatedMesh&)primitive;
-    CDisplayManager* display = NEngineInternal::GPDisplayManager;
-    if (mesh.ScreenTLX > display->ViewportBRX || mesh.ScreenBRX < display->ViewportTLX ||
-        mesh.ScreenTLY > display->ViewportBRY || mesh.ScreenBRY < display->ViewportTLY)
+    CEngineInternalPrimitive2DAnimatedMesh& primitive = static_cast<CEngineInternalPrimitive2DAnimatedMesh&>(primitive_base);
+    const C2DBoxI& viewport = NEngineInternal::GPDisplayManager->GetViewport();
+    if (viewport.BRX < primitive.ClipBox.TLX || viewport.TLX > primitive.ClipBox.BRX || viewport.BRY < primitive.ClipBox.TLY || viewport.TLY > primitive.ClipBox.BRY)
         return;
-    C2DClipInfo& clip = NEngineInternal::GPPrimitiveTypeInfo->ClipOwner->Clip;
-    if (clip.Enabled && clip.Active && clip.Valid) {
-        if (mesh.ScreenTLX > clip.BRX || mesh.ScreenBRX < clip.TLX || mesh.ScreenTLY > clip.BRY || mesh.ScreenBRY < clip.TLY)
+    const C2DAlphaMaskInfo* clip_info = GetCurrent2DAlphaMaskInfo();
+    if (clip_info->AlphaMaskBankIndex && clip_info->AlphaMaskBank && clip_info->MaskObjectsOutsideAlphaMask) {
+        if (primitive.ClipBox.TLX > clip_info->AlphaMaskClipBox.BRX || primitive.ClipBox.BRX < clip_info->AlphaMaskClipBox.TLX ||
+            primitive.ClipBox.TLY > clip_info->AlphaMaskClipBox.BRY || primitive.ClipBox.BRY < clip_info->AlphaMaskClipBox.TLY)
             return;
     }
-    const long& layer = mesh.Layer;
-    if (!NEngineInternal::GPPrimitiveRenderer2D->LayerEnabled[layer])
+    const EEngine2DLayer& layer = primitive.Layer;
+    if (!NEngineInternal::GPPrimitiveRenderer2D->GetEnable2DLayer(layer))
         return;
-    if (!mesh.Initialised)
-        mesh.Initialise();
-    CMatrix3x4 transform = mesh.GetLODTransform(g_LODTable_0143b934[mesh.LODIndex].Distance, true);
-    bool urgent = (mesh.Flags >> 7) & 1;
-    C3DMeshInfo* info = mesh.MeshInfo;
-    if (!NEngineInternal::GPPrimitiveRenderer->Loading) {
-        info->BeginLoading(0, false, false);
-        info->SetLoadPriority(urgent ? 2 : 1);
+    if (!primitive.Initialised)
+        primitive.Initialise();
+    CMatrix3x4 obj_transform;
+    primitive.CalcInterpolatedObjectTransform(obj_transform, primitive.GetCurrentInterpolate(), true);
+    bool urgent = (primitive.EnginePrimitiveFlags >> 7) & 1;
+    const C3DMeshInfo* mesh_info = primitive.MeshInfo;
+    if (!GetBlockOnLoad()) {
+        mesh_info->BeginLoading(0, false, false);
+        mesh_info->BeginLoadingTextures(urgent ? (EBankLoadPriority)2 : (EBankLoadPriority)1);
     }
-    if (!urgent && !NEngineInternal::GPPrimitiveRenderer->Loading) {
-        C3DMeshInfo* current = mesh.MeshInfo;
-        if (!current->IsLoaded())
+    if (!urgent && !GetBlockOnLoad()) {
+        const C3DMeshInfo* current_mesh_info = primitive.MeshInfo;
+        if (!current_mesh_info->IsLoaded())
             return;
-        if (!current->IsBuilt())
+        if (!current_mesh_info->AreTexturesLoaded())
             return;
     }
-    if (!mesh.SetupMesh2D())
+    if (!primitive.SetupMesh2D())
         return;
-    C3DMesh2* data = mesh.CurrentMesh;
-    mesh.Transform = transform;
-    AddGeneratedObjects(&mesh, &transform);
-    if (data->HasSimulation)
-        mesh.InitialiseSimulation(mesh.MeshInfo, data);
-    mesh.LightArray = NEngineInternal::GPLightingManager->EmptyLightArray;
-    unsigned char* hidden = 0;
-    const long& primitiveType = mesh.Type;
-    if (primitiveType == 0x26) {
-        CEngineInternalPrimitiveMorphInfo& visibility = mesh.Visibility;
-        if (!visibility.Def)
-            hidden = 0;
-        else {
-            if (visibility.HiddenMaterials.empty())
-                visibility.InitialiseHiddenMaterials(*data);
-            hidden = visibility.HiddenMaterials.GetData();
-        }
+    CEngineRenderInfoAnimatedMesh* render_info = primitive.GetRenderInfo();
+    const C3DMesh2* mesh = render_info->Mesh;
+    render_info->ObjectTransform = obj_transform;
+    AddGeneratedObjects(primitive, obj_transform);
+    if (mesh->ContainsCloth()) primitive.InitialiseSimulation(primitive.MeshInfo, *mesh);
+    render_info->Lights = &NEngineInternal::GPLightingManager->EmptyLightArray;
+    const unsigned char* hidden_materials = 0;
+    if (primitive.GetType() == ENGINE_PRIMITIVE_2D_MORPHED_ANIMATING_MESH) {
+        CEngineInternalPrimitive2DMorphedAnimatedMesh& morph_primitive = static_cast<CEngineInternalPrimitive2DMorphedAnimatedMesh&>(primitive);
+        hidden_materials = morph_primitive.Morph.GetHiddenMaterials(*mesh);
     }
-    C3DVector renderData;
-    mesh.GetRenderData(&renderData);
-    unsigned long count = data->SubMeshCount;
-    for (unsigned long i = 0; i < count; ++i) {
-        CSubMesh* subMesh = &data->SubMeshes[i];
-        long materialIndex = subMesh->MaterialIndex;
-        if (hidden && hidden[materialIndex])
-            continue;
-        CMeshMaterial& material = data->Materials[materialIndex];
-        bool alphaTest = material.AlphaTest;
-        long alpha = mesh.Alpha;
-        bool blend = material.AlphaBlend;
-        if ((mesh.Flags & 0x100) && alphaTest)
-            blend = true;
-        unsigned long flags = 0;
-        if (blend)
-            flags = 2;
-        else if (alphaTest)
-            flags = 5;
-        if (mesh.Flags & 0x800)
-            flags |= 0xc0;
-        if (mesh.Flags & 8)
-            flags |= 0x180;
-        long list = (material.Flags & 1) ? 0x10 : 0xf;
-        bool simulated;
-        if (subMesh->SimulationStart != subMesh->SimulationEnd && NEngineInternal::GPPrimitiveRenderer->Simulation->Enabled &&
-            mesh.IsSimulationRunning(i))
-            simulated = true;
-        else
-            simulated = false;
-        CEngineSubPrimitiveAnimatedMesh* subPrimitive = new CEngineSubPrimitiveAnimatedMesh(&mesh, subMesh, list, simulated);
-        subPrimitive->Alpha = alpha;
-        subPrimitive->RenderFlags = flags;
-        float depth = NEngineInternal::GPPrimitiveRenderer2D->Layer2DToSortDistance((EEngine2DLayer)mesh.Layer);
-        if (flags & 1)
-            depth -= g_pEngineSubPrimitiveRenderer->DepthBias * 9.3132257e-10f;
-        g_pEngineSubPrimitiveRenderer->AddSubPrimitive(type, subPrimitive, depth, (CEnginePrimitiveManager*)this);
+    C3DVector world_pos;
+    primitive.GetWorldPosition(world_pos);
+    unsigned long no_primitives = mesh->GetPrimitiveCount();
+    for (unsigned long c_prim = 0; c_prim < no_primitives; ++c_prim) {
+        C3DPrimitive2* mesh_prim = mesh->GetPrimitive(c_prim);
+        long material_index = mesh_prim->GetMaterialIndex();
+        if (hidden_materials && hidden_materials[material_index]) continue;
+        const C3DMeshMaterial* material = mesh->GetMaterial(material_index);
+        long prim_alpha = primitive.Alpha;
+        unsigned long render_flags = CalculateSubPrimitiveRenderFlags(false, material->IsTransparent(), material->IsBooleanAlpha(),
+            primitive.EnginePrimitiveFlags, false);
+        ERenderMode render_mode = GetAppropriateRenderMode2D(material, primitive.EnginePrimitiveFlags, render_flags);
+        bool use_cloth = mesh_prim->HasCloth() && NEngineInternal::GPPrimitiveRenderer->GetClothRenderer().GetEnable()
+            && primitive.IsSimulationRunning(c_prim);
+        CEngineSubPrimitiveAnimatedMesh* subprim = new CEngineSubPrimitiveAnimatedMesh(&primitive, mesh_prim, render_mode, use_cloth);
+        subprim->SetAlpha(static_cast<unsigned char>(prim_alpha));
+        subprim->SetRenderFlags(render_flags);
+        float distance = NEngineInternal::GPPrimitiveRenderer2D->Layer2DToSortDistance(primitive.Layer);
+        if (render_flags & 1)
+            distance -= NEngineInternal::GPSubPrimitiveRenderer->GetSortGranularity();
+        NEngineInternal::GPSubPrimitiveRenderer->AddSubPrimitive(type, subprim, distance, this);
     }
 }

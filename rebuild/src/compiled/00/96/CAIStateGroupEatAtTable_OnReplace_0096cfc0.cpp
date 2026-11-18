@@ -1,4 +1,8 @@
 // CAIStateGroup_EatAtTable::OnReplace() -- drop modes 0x28, free the table seat (getting up when seated), drop/replace the carried tankard, then drop the sitting mode unless the get-up took it
+// NF86 (round 7, q11116): the free-function declaration of 0x0085FF10 respelt in place to the PDB spelling NF84 landed there,
+//   ?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z (namespace NCreatureMode; the creature by
+//   reference as CThingCreatureBase, the animation by const reference); was ?GetUpFromSitting@@YI_NPAVCThing@@JPBVCCharString@@PAVCAIBrain@@@Z.
+//   No shared header declares it, so the declaration stays in the row; the row's other local models are unchanged.
 // Leaf: ?OnReplace@CAIStateGroup_EatAtTable@@UAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096CFC0, length 463 bytes.
@@ -30,7 +34,10 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-bool __fastcall GetUpFromSitting(CThing* creature, long movement, const CCharString* anim, CAIBrain* brain);   // 0x0085FF10
+class CThingCreatureBase;
+namespace NCreatureMode {
+bool __fastcall GetUpFromSitting(CThingCreatureBase& creature, long sit_mode_type, const CCharString& anim, CAIBrain* brain);   // 0x0085FF10
+}
 class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
@@ -75,7 +82,7 @@ void CAIStateGroup_EatAtTable::OnReplace()
             bool gotUp;
             {
                 CCharString anim("SIT_AT_TABLE_OUTOF");
-                gotUp = GetUpFromSitting(GetCreature(), 11, &anim, PBrain);
+                gotUp = NCreatureMode::GetUpFromSitting(*(CThingCreatureBase*)GetCreature(), 11, anim, PBrain);
             }
             if (gotUp)
                 removeSitMode = false;

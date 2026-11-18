@@ -37,6 +37,13 @@ protected:
     virtual void OnDie();                                        // slot 11 0x006A9590
 private:
 #endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_PREONKILL
+// NF91 opt-in (round 7, q11200 / q11205 row 0x006AB300): Ego_r.pdb (0x00549470) + FableWin.pdb ?PreOnKill@CThingPlayerCreature@@MAE_NXZ (protected
+// virtual, the CThing slot-13 override; the vtable 0x012457FC holds 0x006AB300 at slot 13, 0x01245830). Declaration only: no layout change.
+protected:
+    virtual bool PreOnKill();                                    // slot 13 0x006AB300
+private:
+#endif
 
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_EXPRESSIONS
 public:
@@ -133,11 +140,11 @@ protected:
     unsigned char _pad_0x204[4];
 public:
     static void CheckRetailLayout() {
-        FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, ControlledMovementType) == 0x17c);
-        FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, LastRelativeMovementAcceleration) == 0x1c0);
-        FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, LastThingCollisionNormal) == 0x1cd);
-        FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, PHeroCombatDef) == 0x1e8);
-        FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, MovementBandType) == 0x200);
+        FABLE_STATIC_ASSERT_AT(129, offsetof(CThingPlayerCreature, ControlledMovementType) == 0x17c);
+        FABLE_STATIC_ASSERT_AT(130, offsetof(CThingPlayerCreature, LastRelativeMovementAcceleration) == 0x1c0);
+        FABLE_STATIC_ASSERT_AT(131, offsetof(CThingPlayerCreature, LastThingCollisionNormal) == 0x1cd);
+        FABLE_STATIC_ASSERT_AT(132, offsetof(CThingPlayerCreature, PHeroCombatDef) == 0x1e8);
+        FABLE_STATIC_ASSERT_AT(133, offsetof(CThingPlayerCreature, MovementBandType) == 0x200);
     }
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the

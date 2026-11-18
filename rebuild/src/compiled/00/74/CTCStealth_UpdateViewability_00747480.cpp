@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00747480, length 119 bytes.
 // Callees: CThing::GetPos @ 0x004C73D0 (returns const C3DVector&; manifest label "CVertexBufferWin32::DoSizeof" is propagated),
-// CTCBase::GetWorldMap @ 0x00686D30, CWorldMap::GetStrongestEngineThemeAt(const C3DVector&, long*) @ 0x0063ADF0, CTCBase::GetDefinitionManager
+// CTCBase::GetWorldMap @ 0x00686D30, CWorldMap::GetStrongestEngineThemeAt(const C3DVector&, long&) const @ 0x0063ADF0 (Ego_r.pdb; engine/CWorldMap.h), CTCBase::GetDefinitionManager
 // @ 0x006869D0, CDefinitionManager::GetDef<CEngineThemeDef>(long, CDefPointer*) @ 0x0063F3A0 (manifest instantiation "<CThingPhysicalSwitchDef>"
 // is a byte twin), the def's virtual slot 1 (destroy). Constant 1e-4f @ 0x0129BA3C.
 // Layout: CTCStealth Viewable +0x0C, Sneaking +0x0F (retail = PDB); engine theme def float at +0x88.
@@ -13,9 +13,11 @@
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
-class CWorldMap { public:
-    long GetStrongestEngineThemeAt(const C3DVector& pos, long* weight);   // 0x0063ADF0
-};
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CWORLDMAP_STRONGESTTHEME
+#include "engine/CWorldMap.h"   // ?GetStrongestEngineThemeAt@CWorldMap@@QBEJABVC3DVector@@AAJ@Z, 0x0063ADF0
 class CEngineThemeDef { public:
     virtual void v00();
     virtual void Destroy() const;               // slot 1
@@ -72,7 +74,7 @@ void CTCStealth::UpdateViewability()
     if (Sneaking) {
         const C3DVector& position = ParentThing->GetPos();
         long weight;
-        long theme = GetWorldMap().GetStrongestEngineThemeAt(position, &weight);
+        long theme = GetWorldMap().GetStrongestEngineThemeAt(position, weight);
         CDefPointer<const CEngineThemeDef> def;
         GetDefinitionManager().GetDef(theme, &def);
         if (def.Object) {

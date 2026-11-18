@@ -1,0 +1,12 @@
+entry	queue_address	correct_symbol	status	binders_ported	note
+q10945	0x008C1600	?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush@@IAE_NAAVC3DVector@@@Z	done	1	all slice binders ported: 0x008C1600
+q10946	0x008AC060	??$remove_if@PAVC3DVector@@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@0V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@@Z	done	1	all slice binders ported / not-a-binder 0x008AC060: 0x008C1600
+q10947	0x007C0FB0	?AddThingToAvoid@CTCShotDefinitionBase@NThingShot@@QAEXABVCThing@@@Z	done	1	all slice binders ported: 0x007C0FB0
+q10948	0x004F97B3	??0?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QAE@ABV01@@Z	done	3	all slice binders ported: 0x004F97B3 0x00812170 0x006DCFA0
+q10949	0x004E7720	?clear@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@QAEXXZ	done	1	all slice binders ported: 0x004E7720
+q10950	0x004F9660	??4?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@QAEAAV01@ABV01@@Z	done	1	all slice binders ported / not-a-binder 0x004F9660: 0x004F914A
+q10951	0x0081EE60	?AddThemeDefIndexToPalette@CMap@@IAEEK@Z (callee 0x008F70F0)	blocked	1	rows left: 0x0081EE60 (blocked); ported: 0x0063A970
+q10952	0x009F5170	?CalculateInternalChecksum@CInputManager@@QBEKXZ	done	1	all slice binders ported / not-a-binder 0x009F5170: 0x009F53C0
+q10953	0x00429288	?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ	done-already	0	the self row 0x00429288 already defines the entry spelling (NF75) and its only slice binder 0x00570332 already binds it (graded unmodified: RM, xref); the reloc_bindings.tsv destructor line for 0x00570332 is stale
+q10954	0x00597B20	?GotoProfileMenu@CFrontEndManager@NUISystem@@IAEXXZ	done	3	all slice binders ported: 0x00597B20 0x00599D5C 0x0059A238
+q10955	0x00429288	?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ	done-already	0	same rows as q10953 (coordinator duplicate): 0x00429288 defines ReleaseData, 0x00570332 binds it (both graded unmodified: RM)

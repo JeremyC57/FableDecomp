@@ -99,11 +99,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionPrepareTailPlunge) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionPrepareTailPlunge, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_X) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_Y) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_Z) == 0x11c);
+FABLE_STATIC_ASSERT_AT(97, sizeof(CCreatureAction_ScorpionPrepareTailPlunge) == 0x120);
+FABLE_STATIC_ASSERT_AT(98, offsetof(CCreatureAction_ScorpionPrepareTailPlunge, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(99, offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_X) == 0x114);
+FABLE_STATIC_ASSERT_AT(100, offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_Y) == 0x118);
+FABLE_STATIC_ASSERT_AT(101, offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_Z) == 0x11c);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_SCORPIONPREPARETAILPLUNGE
 #endif // FABLE_ENGINE_CCREATUREACTION_SCORPIONPREPARETAILPLUNGE_H

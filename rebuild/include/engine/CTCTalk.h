@@ -117,7 +117,7 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCTalk)==0x3c);
+FABLE_STATIC_ASSERT_AT(105, sizeof(CTCTalk)==0x3c);
 #ifdef FABLE_RETAIL_CTCTALK_PLAYSPEECH_INLINES
 // Nested opt-in (wf10 row 0x006E3580): the bodies of IsTalking (out-of-line copy 0x006E28A0) and SetAsUsingNarrator (0x006E2CF0),
 // which retail's CTCTalk TU expands in PlaySpeech. Needs CMainGameComponent (GetCurrentServerFrame out of line), CGameDefinitionManager

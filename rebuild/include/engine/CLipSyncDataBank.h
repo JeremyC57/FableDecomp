@@ -19,6 +19,35 @@ class CSpeechAnalyser;
 class CLipSyncDataBankEntry;
 class CLipSyncSampleData;
 #endif
+#ifdef FABLE_RETAIL_CLIPSYNCDATABANK_CLASS
+// NF68 overlay opt-in (row 0x00A42980 CLipSyncDataBankEntry::BeginLoading): the retail class. RTTI .?AVCLipSyncDataBank@@ (vtable
+// 0x0129D3D4; the landed caller of SetResourceBank 0x00992470 constructs it with 0x00A42B80, base ctor CBankFile::ConstructorInitialize
+// 0x009D5F80) derives CBankFileAsync (engine/CBankFileAsync.h, retail sizeof 0x164); Ego_r.pdb members Entries
+// (CArray<CLipSyncDataBankEntry>), ResourceBank (CCountedPointer<CResourceBank>), SkipUpdate, PhonemeBank at the retail offsets of the
+// generated layout below (Ego_r.pdb's SpeechAnalyser has no retail slot: the default layout ends at 0x180 with PhonemeBank at +0x17c).
+// Needs the retail engine/CBankFileAsync.h class (FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS or FABLE_RETAIL_CBANKFILEASYNC_DATA) and
+// FABLE_RETAIL_DEF_CLASS_BASE. Entries stays opaque here (its element type has no shared header).
+#include "engine/CBankFileAsync.h"
+#include "engine/CCountedPointer.h"
+class CLipSyncDataBankEntry;
+class CLipSyncSampleData;
+class CLipSyncDataBank : public CBankFileAsync {
+public:
+#ifdef FABLE_RETAIL_CLIPSYNCDATABANK_LIPSYNCDATA
+    const CLipSyncDataBankEntry* PeekLipSyncInfo(unsigned long index) const;          // 0x00A42830
+    CCountedPointer<CLipSyncSampleData> GetLipSyncData(unsigned long index) const;    // 0x00A42FC0
+#endif
+    unsigned char                   Entries[0xc];            // +0x164 CArray<CLipSyncDataBankEntry>
+    CCountedPointer<CResourceBank>  ResourceBank;            // +0x170
+    bool                            SkipUpdate;              // +0x178
+    CPhonemeDataBank*               PhonemeBank;             // +0x17c
+};
+FABLE_STATIC_ASSERT(sizeof(CLipSyncDataBank) == 0x180);
+FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, Entries) == 0x164);
+FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, ResourceBank) == 0x170);
+FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, SkipUpdate) == 0x178);
+FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, PhonemeBank) == 0x17c);
+#else
 #pragma pack(push, 1)
 class CLipSyncDataBank {
 public:
@@ -101,13 +130,14 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CLipSyncDataBank) == 0x180);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, object) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, Entries) == 0x164);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, ResourceBank_Data) == 0x170);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, ResourceBank_Info) == 0x174);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, SkipUpdate) == 0x178);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, PhonemeBank) == 0x17c);
+FABLE_STATIC_ASSERT_AT(104, sizeof(CLipSyncDataBank) == 0x180);
+FABLE_STATIC_ASSERT_AT(105, offsetof(CLipSyncDataBank, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(106, offsetof(CLipSyncDataBank, object) == 0x4);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CLipSyncDataBank, Entries) == 0x164);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CLipSyncDataBank, ResourceBank_Data) == 0x170);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CLipSyncDataBank, ResourceBank_Info) == 0x174);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CLipSyncDataBank, SkipUpdate) == 0x178);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CLipSyncDataBank, PhonemeBank) == 0x17c);
+#endif // FABLE_RETAIL_CLIPSYNCDATABANK_CLASS
 
 #endif // FABLE_ENGINE_CLIPSYNCDATABANK_H

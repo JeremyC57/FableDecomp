@@ -10,10 +10,10 @@
 // destructor (@ 0x008FD288) is reached by tail call. Member types are named from the destructor
 // labels when unique, else by the destructor address. The manifest label (`_Dest_val<...>` /
 // `~allocator<CMacro>,CMacro>`) is propagated. One of 13 bodies of this shape.
-struct CMember_004406d0 {
-    unsigned char _body[0x8];
-    ~CMember_004406d0();                            // 0x004406D0
-};
+// NF72 (round 7, q10901): the +0x28 call @ 0x004406D0 now binds the STLport
+//   ??1?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@XZ (ported this round):
+//   the CMember_004406d0 stand-in became std::vector<CIntelligentPointer<CThing> > from the shared stlport/fable_containers.h
+//   (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE, declaration only). The aggregate's own name stays a stand-in.
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();                            // 0x008FD288
@@ -21,13 +21,16 @@ class CAIStateGroupBase { public:
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "stlport/fable_containers.h"
+class CThing;
 
 struct CAggregate_0090332e {
     CAIStateGroupBase m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0x14];
     CBaseIntelligentPointer m_18;            // +0x18
     CBaseIntelligentPointer m_20;            // +0x20
-    CMember_004406d0 m_28;            // +0x28
+    std::vector<CIntelligentPointer<CThing> > m_28;   // +0x28 (~vector 0x004406D0, out-of-line COMDAT)
     ~CAggregate_0090332e();
 };
 

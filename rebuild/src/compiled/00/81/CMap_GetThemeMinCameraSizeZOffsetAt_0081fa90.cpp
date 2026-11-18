@@ -9,6 +9,9 @@
 //   re-read), a copied register local for the def (worse), a CDefPointer object with an unchecked release destructor (same frame).
 // next: lane gap: multi-local homing into a dead argument slot.
 #include "fable_compiler.h"
+// NF70 (round 7, q10735): the body of 0x0081F910 GetStrongestEngineThemeAt that this TU needs visible (retail compiled both in one object) now
+//   comes from its one definition in engine/CMap.h (opt-in FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY: `inline __declspec(noinline)`), not
+//   from a copy in this file; the row 0x0081F910 emits it.
 // NF63 (round 7): moved onto engine/CMap.h. The self is ?GetThemeMinCameraSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z (protected const; Ego_r.pdb and
 // FableWin.pdb, retail order after GetStrongestEngineThemeAt 0x0081F910; FABLE_RETAIL_CMAP_THEMESIZEZ in the overlay); the callee
 // 0x0081F910 is ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z (both PDBs, strength by reference; was the local
@@ -23,6 +26,7 @@
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CMAP_THEMESIZEZ
+#define FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY
 #define FABLE_RETAIL_CMAP_THEMEPALETTE
 #define FABLE_RETAIL_CMAP_ENGINEACCESSORS
 #define FABLE_RETAIL_CHEIGHTMAP_GETCELL
@@ -41,31 +45,6 @@ class CEngineThemeDef : public CDefClassBase { public:            // Ego_r.pdb C
     float Height;                                  // +0x80 (retail)
     float MinCameraHeight;                         // +0x84 (retail)
 };
-#pragma auto_inline(off)
-long CMap::GetStrongestEngineThemeAt(const C2DCoordI& pos, long& strength) const
-{
-    long best = 0;
-    long bestIndex = -1;
-    long blend0 = HeightMap->GetCell(pos).GetEngineBlend(0);
-    if (blend0 > 0) {
-        bestIndex = 0;
-        best = blend0;
-    }
-    long remaining = 3 - blend0;
-    long blend1 = HeightMap->GetCell(pos).GetEngineBlend(1);
-    if (blend1 > best) {
-        bestIndex = 1;
-        best = blend1;
-    }
-    remaining -= blend1;
-    if (remaining > best) {
-        strength = remaining;
-        return GetEngineThemeAtIncludingExtraCells(pos.X, pos.Y, 2);
-    }
-    strength = best;
-    return GetEngineThemeAtIncludingExtraCells(pos.X, pos.Y, bestIndex);
-}
-#pragma auto_inline(on)
 float CMap::GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const
 {
     long blend;

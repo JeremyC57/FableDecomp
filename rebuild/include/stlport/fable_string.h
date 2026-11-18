@@ -39,7 +39,20 @@ distance(const I& first,const I& last) { return __distance(first,last,typename i
 
 // Authentic STLport4.6.2 char_traits.h125..150,207..209; native403c60.
 template<class C,class I> class __char_traits_base {
+#ifdef FABLE_RETAIL_STLP_CHAR_TRAITS_COMPARE_INLINE
+// NF73 opt-in (row 0x004091C0 CUserProfileManager::GetSortedSaveNamesAndTimes): STLport 4.6.2 char_traits.h __char_traits_base::compare
+// and eq, inline. With FABLE_RETAIL_STLP_CHAR_TRAITS_LENGTH a `text == L""` test folds n to 0 and the loop away: retail tests
+// `(finish - start) & ~1` and goes straight to the true arm with no call to the out-of-line compare 0x00403C60 (0x004092D3..0x004092DE).
+public:static bool __cdecl eq(const C& c1,const C& c2) { return c1==c2; }
+static int __cdecl compare(const C* s1,const C* s2,size_t n) {
+    for (size_t i = 0; i < n; ++i)
+        if (!eq(s1[i], s2[i]))
+            return s1[i] < s2[i] ? -1 : 1;
+    return 0;
+}
+#else
 public:static int __cdecl compare(const C*,const C*,size_t);
+#endif
 #ifdef FABLE_RETAIL_STLP_CHAR_TRAITS_LENGTH
     // Opt-in (chunk 2032, row 0x009C47A0 CFileInstaller::AddFile): STLport 4.6.2 char_traits.h __char_traits_base::length, inline.
     // For a literal argument the loop folds to a constant: `filename == L""` tests `(finish - start) & ~1` and pushes n = 0 to the

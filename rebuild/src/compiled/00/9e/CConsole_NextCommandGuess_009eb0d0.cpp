@@ -1,4 +1,5 @@
 // CConsole::NextCommandGuess() -- step the command guess: unless the front line still equals (case-insensitively) the lower-cased user entry, advance GuessPos through the registered inputs and show the next input whose name starts with the user entry, else leave guess mode
+// Leaf: ?NextCommandGuess@CConsole@@AAEXXZ
 // Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
 //   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EB0D0, 327 bytes (336 with padding).
@@ -18,92 +19,64 @@
 // line (string dtor, then the base dtor, no vtable re-store) and the name die at the end of the statement.
 // Layout: the retail CConsole offsets of the landed rows (0x009EA660, 0x009EB260): FrontCommandLine +0x1c,
 // BackCommandLine +0x2c, RegisteredConsoleInputs +0x40, GuessPos +0x68.
-extern "C" int __cdecl _stricmp(const char* a, const char* b);                  // 0x00BFEBA8
-extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int n);   // 0x00BFEAF8
+// NF87 (2026-11-17): moved onto the CConsole model of NF85's landed 0x009EAFF0 SetGuessMode row (CConsole has no shared header):
+//   the private members Ego_r.pdb + FableWin.pdb spell (?NextCommandGuess@CConsole@@AAEXXZ, ?SetGuessMode@CConsole@@AAEXXZ), the
+//   STLport map<CCharString, CCountedPointer<CConsoleInputBase> > (its iterator's out-of-line operator++ 0x009EE470 under the STLport
+//   spelling, TREE_INC_OUTOFLINE) and fable_string.h's EqualsCaseInsensitive / StartsWith (the inline _stricmp / strncmp tests).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_GETASLOWERCASE
+#define FABLE_RETAIL_CCHARSTRING_STARTSWITH
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_INC_OUTOFLINE
+#include "fable_string.h"
+#include "stlport/fable_map.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CCharStringData { public:
-    const char*   PData;                    // +0
-    unsigned long StringLength;             // +4
+class CConsole;
+class CConsoleInputBase {
+public:
+    virtual ~CConsoleInputBase();                                                  // slot 0
+    virtual bool ProcessCommandLine(const CCharString& line, CConsole& console) = 0;   // slot 1
+    virtual CCharString GetFormattedName() const = 0;                              // slot 2 (+8)
+    CCharString Name;                                                              // +0x04
 };
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const CCharString& other);  // 0x0099EC30
-    ~CCharString();                         // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString GetAsLowerCase() const;            // 0x0099ED10
-    const char* GetData() const
-    {
-        if (PStringData == 0)
-            return "";                      // 0x0129AAF4
-        return PStringData->PData;
-    }
-    bool IsEqualNoCase(const CCharString& other) const { return _stricmp(GetData(), other.GetData()) == 0; }
-    unsigned long GetLength() const
-    {
-        if (PStringData == 0)
-            return 0;
-        return PStringData->StringLength;
-    }
+class CConsoleCommandLine : public CBaseClass {
+    friend class CConsole;
+public:
+    CConsoleCommandLine(const CCharString& text);           // 0x009EEA10
+private:
+    CCharString GetString() const { return CurrentEntry; }
+    CCharString CurrentEntry;                               // +0x04
+    bool        UserEntry;                                  // +0x08
+    long        CursorPosition;                             // +0x0c
 };
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CConsoleCommandLine : public CBaseClass { public:   // vtable 0x0129C400 (16 bytes)
-    CCharString CurrentEntry;               // +0x04
-    bool        UserEntry;                  // +0x08
-    long        CursorPosition;             // +0x0c
-    CConsoleCommandLine(const CCharString& entry);      // 0x009EEA10
-    CCharString GetEntry() const { return CurrentEntry; }
-};
-class CConsoleInputBase { public:
-    virtual void v00();
-    virtual void v01();
-    virtual CCharString GetFormattedName() const;       // slot 2 (+0x08)
-};
-struct CInputPointer {                      // CCountedPointer<CConsoleInputBase>
-    CConsoleInputBase* Object;
-    void*              Info;
-    CConsoleInputBase* operator->() const { return Object; }
-};
-struct SInputNode {                         // STLport _Rb_tree_node<pair<const CCharString, CCountedPointer<..>>>
-    unsigned char  _M_color;
-    SInputNode*    _M_parent;
-    SInputNode*    _M_left;
-    SInputNode*    _M_right;
-    CCharString    first;                   // +0x10
-    CInputPointer  second;                  // +0x14
-};
-struct CInputIterator {
-    SInputNode* _M_node;
-    CInputIterator& operator++();           // 0x009EE470
-    SInputNode* operator->() const { return _M_node; }
-};
-struct CInputMap {                          // map<CCharString, CCountedPointer<CConsoleInputBase>> (12 bytes)
-    SInputNode*   _M_header;
-    unsigned long _M_node_count;
-    unsigned char _M_compare;
-};
-struct CConsole_Retail {
-    virtual void v00();
-    unsigned char       _maps[0x18];        // +0x04 KeyBindingMap, +0x10 StringBindingMap
-    CConsoleCommandLine FrontCommandLine;   // +0x1c
-    CConsoleCommandLine BackCommandLine;    // +0x2c
-    CCharString         HelpBarString;      // +0x3c
-    CInputMap           RegisteredConsoleInputs;    // +0x40
-    unsigned char       _pad4c[0x1c];       // +0x4c CommandLineHistory .. GuessMode
-    CInputIterator      GuessPos;           // +0x68
-    void SetGuessMode();                    // 0x009EAFF0
+
+class CConsole {
+public:
+    virtual ~CConsole();
+private:
+    void SetGuessMode();                                    // 0x009EAFF0
     void NextCommandGuess();
+    unsigned char _pad04[0x1c - 4];                         // KeyBindingMap +0x04, StringBindingMap +0x10
+    CConsoleCommandLine FrontCommandLine;                   // +0x1c
+    CConsoleCommandLine BackCommandLine;                    // +0x2c
+    CCharString HelpBarString;                              // +0x3c
+    std::map<CCharString, CCountedPointer<CConsoleInputBase> > RegisteredConsoleInputs;   // +0x40
+    unsigned char _pad4c[0x65 - 0x4c];                      // CommandLineHistory .. MovingIntoHistory
+    bool GuessMode;                                         // +0x65
+    std::map<CCharString, CCountedPointer<CConsoleInputBase> >::iterator GuessPos;      // +0x68
 };
 
-void CConsole_Retail::NextCommandGuess()
+void CConsole::NextCommandGuess()
 {
-    CCharString userEntry = BackCommandLine.GetEntry().GetAsLowerCase();
-    bool unchanged = FrontCommandLine.GetEntry().IsEqualNoCase(userEntry);
+    CCharString userEntry = BackCommandLine.GetString().GetAsLowerCase();
+    bool unchanged = FrontCommandLine.GetString().EqualsCaseInsensitive(userEntry);
     if (unchanged)
         return;
     ++GuessPos;
-    if (GuessPos._M_node != RegisteredConsoleInputs._M_header
-        && strncmp(GuessPos->first.GetData(), userEntry.GetData(), userEntry.GetLength()) == 0) {
-        FrontCommandLine = GuessPos->second->GetFormattedName();
+    if (GuessPos != RegisteredConsoleInputs.end() && (*GuessPos).first.StartsWith(userEntry)) {
+        FrontCommandLine = (*GuessPos).second->GetFormattedName();
     } else {
         SetGuessMode();
     }

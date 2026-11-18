@@ -1,68 +1,82 @@
 // CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing(C3DVector&) -- find a live available cover, release old cover, retain and occupy the new one; yield after a failed position test.
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail0x00970CD0,277 bytes. Uses shared UseCoverBase, Base and Brain storage. Inherited enemy handle+0x14 is opaque in the generated group header.
-// CThing retail component map+0x44 differs from donor+0x48; narrow retail shell preserves audited fields. Brain dispatch slot2 is retained through a methods-only view of the shared header's vtable prefix.
+// Retail 0x00970CD0, 277 bytes.
+// Leaf: ?GetHiddenCoverPosAndSetUpCoverThing@CAIStateGroup_CreatureUseCoverBase@@IAE_NAAVC3DVector@@@Z
+// NF76 port (2026-11-17): rewritten on the retail CAIStateGroup_CreatureUseCoverBase class (the 0x0097CCD0 / 0x00970590 macro block:
+//   CREATUREUSECOVERBASE + ADVANCE + TAKECOVER + TYPED_COVERLIST over the EnemyCreatureBase / CAIStateGroupBase / CAIBrain retail
+//   branches); every local model deleted (UseCoverMethods, CThingRetail, CIntelligentPointerRetail, CIntelligentVector, CBrainDispatch,
+//   CTCOccupiableMethods, CVectorMap / pair / ETCInterfaceType). Bindings now under their PDB spellings: ClearCoverThing 0x00970B60
+//   ?ClearCoverThing@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ (queue q10886), GetHiddenCoverPos 0x00970930 (Ego_r.pdb, ABVCThing),
+//   the interface-172 component CTCSinglePersonOccupiable (engine header; overlay ISOCCUPIED: IsOccupied 0x0087C3F0, Ego_r.pdb) with
+//   SetOccupier 0x0087C390 (Ego_r.pdb), and the brain's SuspendSuspendableProcess (CSuspendableProcessMicrothread slot 2, 0x00A44840,
+//   CAIBRAIN_SUSPENDABLE_BASE). Self: Ego_r.pdb ?GetHiddenCoverPosAndSetUpCoverThing@..@@IAE_NAAVC3DVector@@@Z (protected; the landed
+//   leaf was the stand-in UseCoverMethods' QAE). Locals as Ego_d.pdb names them (cover_pos, it, pthingobj, ptc_new_cover).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_COVERLIST
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_ADVANCE
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_TYPED_COVERLIST
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_TAKECOVER
+#define FABLE_RETAIL_CTCSINGLEPERSONOCCUPIABLE_ISOCCUPIED
+#include "rebuild_abi.h"
 #include "fable_compiler.h"
-#include "engine/CAIStateGroup_CreatureUseCoverBase.h"
+#include "stlport/fable_containers.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/C3DVector.h"
+#include "engine/C2DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CWorld.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-#include "engine/C3DVector.h"
-struct CThingRetail;
-class CBaseObject;
-#define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerRetail { virtual void v00(); void* PData;   }; //00A01B50/00A01B90
-struct CIntelligentVector { CIntelligentPointerRetail* first; CIntelligentPointerRetail* last; CIntelligentPointerRetail* capacity; unsigned char allocators[4];
- struct iterator { CIntelligentPointerRetail* p; explicit iterator(CIntelligentPointerRetail* q):p(q){} CIntelligentPointerRetail& operator*()const{return *p;} iterator operator++(int){iterator old(p);++p;return old;} bool operator!=(const iterator& other)const{return p!=other.p;} };
- iterator begin(){return iterator(first);} iterator end(){return iterator(last);} bool empty()const{return first==last;}
-};
-struct CBrainDispatch { virtual void v00();virtual void v01();virtual bool SuspendSuspendableProcess(); }; //slot2, 0x00A44840 verified in CAIBrain vtable0x012780C4
-struct CTCOccupiableMethods { bool IsOccupied(); void SetOccupier(CThingRetail*); }; //0087C3F0,0087C390
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:typedef std::pair<ETCInterfaceType, CTCBase*> Entry;Entry* first;Entry* last;Entry* LowerBound(const ETCInterfaceType& key);};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap; //0040F020
-struct CThingRetail {
- unsigned char inherited[0x20];unsigned long UsingComponents[9];CInterfaceMap Components;
- unsigned char beforeDeath[0x91-0x4c];unsigned char deathFlags;
- FABLE_FORCEINLINE bool GetOccupiable(CTCOccupiableMethods** out) {
-  if(UsingComponents[5]&0x1000) {
-   ETCInterfaceType key = (ETCInterfaceType)(172);CInterfaceMap* map=&Components;CInterfaceMap::Entry* it=map->LowerBound(key);
-   if(it==map->last || 172<it->first)it=map->last;
-   *out=(CTCOccupiableMethods*)((void*)it->second);return true;
-  }return false;
- }
-};
-struct UseCoverMethods : CAIStateGroup_CreatureUseCoverBase {
- FABLE_FORCEINLINE CIntelligentPointerRetail& Enemy(){return *(CIntelligentPointerRetail*)_pad_0x14;}
- FABLE_FORCEINLINE CIntelligentPointerRetail& Cover(){return *(CIntelligentPointerRetail*)PCoverThing;}
- FABLE_FORCEINLINE CIntelligentVector& Candidates(){return *(CIntelligentVector*)CoverList;}
- bool GetHiddenCoverPos(C3DVector&,CThingRetail*); //00970930
- void ClearCover(); //00970B60
- bool GetHiddenCoverPosAndSetUpCoverThing(C3DVector&);
-};
-bool UseCoverMethods::GetHiddenCoverPosAndSetUpCoverThing(C3DVector& result)
+#include "engine/CAIStateGroup_CreatureUseCoverBase.h"
+#include "engine/CTCSinglePersonOccupiable.h"
+
+bool CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing(C3DVector& cover_pos)
 {
- if(Candidates().empty())return false;
- CIntelligentVector::iterator it=Candidates().begin();
- do {
-  if(!((CThingRetail*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem()) || (((CThingRetail*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())->deathFlags&1))return false;
-  CIntelligentPointerRetail& candidate=*it++;
-  if(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem()) && !(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem())->deathFlags&1)) {
-   if(GetHiddenCoverPos(result,((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem()))) {
-    CTCOccupiableMethods* occupiable;
-    if(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem())->GetOccupiable(&occupiable) && !occupiable->IsOccupied()) {
-     ClearCover();
-     ((CBaseIntelligentPointer*)&(Cover()))->SetPItem((CBaseObject*)(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem())));
-     occupiable->SetOccupier((CThingRetail*)((CAIStateGroupBase*)this)->PBrain->Creature);
-     return true;
-    }
-   }else ((CBrainDispatch*)((CAIStateGroupBase*)this)->PBrain)->SuspendSuspendableProcess();
-  }
- }while(it!=Candidates().end());
- return false;
+    if (CoverList.empty())
+        return false;
+    std::vector<CIntelligentPointer<CThing> >::iterator it = CoverList.begin();
+    do {
+        if (!IS_THING_ALIVE(PTargetThing))
+            return false;
+        CIntelligentPointer<CThing>& pthingobj = *it++;
+        if (IS_THING_ALIVE(pthingobj)) {
+            if (GetHiddenCoverPos(cover_pos, *pthingobj.Get())) {
+                CTCSinglePersonOccupiable* ptc_new_cover;
+                if (pthingobj->GetTC(&ptc_new_cover) && !ptc_new_cover->IsOccupied()) {
+                    ClearCoverThing();
+                    PCoverThing = pthingobj;
+                    ptc_new_cover->SetOccupier(PBrain->Creature);
+                    return true;
+                }
+            } else
+                PBrain->SuspendSuspendableProcess();
+        }
+    } while (it != CoverList.end());
+    return false;
 }

@@ -52,6 +52,16 @@ public:
 #ifdef FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SHOT_DEFINITION;}
 #endif
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_ISABLETOBEDEFLECTED
+    // NF67 opt-in (round 7, row 0x00869020 CHitParameters::SetAsModifiedByArmour): Ego_r.pdb ?IsAbleToBeDeflected@CTCShotDefinitionBase@NThingShot@@QBE_NXZ,
+    // out of line in retail at 0x007BED60 (`mov al,[ecx+68h] ; ret` = CanBeDeflected +0x68 below, Ego_r +0x6C; its one caller
+    // 0x008691F3 reaches it through the TCI_SHOT_DEFINITION (119 = 0x77) lookup of the hit's weapon: bit 23 of +0x2C, LowerBound 0x004365B0).
+    // StatGetInterfaceType as FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT / FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE declare it. Declarations only: no layout change.
+#if !defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) && !defined(FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE)
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SHOT_DEFINITION;}
+#endif
+    bool IsAbleToBeDeflected() const;                                   // 0x007BED60
+#endif
     CThing* GetPWeapon() const;                                         // 0x007BEFF0
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_UPDATE
     // NF66 opt-in (row 0x006666A0 CThingCreatureBase::WorldUpdate): Ego_r.pdb ?Update@CTCShotDefinitionBase@NThingShot@@QAEXXZ (public,
@@ -65,6 +75,12 @@ public:
     // the members they fill (AccuracyPercentage, DamageMultiplier, ShotBuildupTime; descriptive).
     void Init(CDefPointer<const CThingShotDef> def, CThing* shooter, CThing* weapon, const CThing* target, float accuracy,
               float damageMultiplier, float buildupTime, const CDefPointer<const CMeleeCombatAbilityDef>& ability);   // 0x007C0690
+#endif
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_ADDTHINGTOAVOID
+    // NF74 opt-in (row 0x008F3630 CCreatureAction_DragonRearUpFull::PerformAction): Ego_r.pdb / FableWin.pdb
+    // ?AddThingToAvoid@CTCShotDefinitionBase@NThingShot@@QAEXABVCThing@@@Z, out of line in retail at 0x007C0FB0 (66 bytes, `ret 4`: the
+    // thing pushed onto HitThingsList through a CIntelligentPointer<const CThing>, Ego_d local `ip`). Declaration only.
+    void AddThingToAvoid(const CThing& thing);                           // 0x007C0FB0
 #endif
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT_POSITION
     // Retail opt-in (wf9, row 0x008C6860 CCreatureAction_TrollThrowProjectile::PerformAction): the target-position overload, Ego_r.pdb

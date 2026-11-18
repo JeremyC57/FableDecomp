@@ -1,4 +1,7 @@
 // CCreatureActionBase::EditUpdate(float) -- per-frame update: remember the last running time; a finished action clears the creature's current action; otherwise accumulate the frame time step, run the movement update once the start frame is reached, finish (virtual slot 4) when the total time has elapsed, else recompute the frames running from the elapsed seconds, clamped to the total
+// NF83 (round 7, q11031 binder): PCreature takes its Ego_r.pdb type CIntelligentPointer<CThingCreatureBase> (the row's own local
+//   intelligent-pointer template) and ClearCurrentAction comes from engine/CThingCreatureBase.h (flattened branch, NF83 overlay opt-in
+//   CTHINGCREATUREBASE_FLAT_CLEARCURRENTACTION) instead of the local CThing model, so the call binds the PDB member spelling.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692DB0, length 149 bytes (+ int3 padding). `ret 4`: the float argument is unused.
@@ -12,9 +15,9 @@
 // through the register copy (`cmp eax,edi ; jle`).
 // Layout: engine/CCreatureActionBase.h (PDB) agrees on every member used (TotalTime +0x10, AnimDelayTime +0x18, FramesRunning
 // +0x1c, RunningTimeSeconds +0x40, LastRunningTimeSeconds +0x44, StartFrame +0x48, Finished +0x61); a local model carries the virtual slots.
-class CThing { public:
-    void ClearCurrentAction();              // 0x006633A0
-};
+class CThing;
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_CLEARCURRENTACTION   // NF83: ?ClearCurrentAction@CThingCreatureBase@@QAEXXZ
+#include "engine/CThingCreatureBase.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -55,7 +58,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v60(); virtual void v61();
     virtual float GetFrameTimeStep();       // slot 62 (+0xf8)
     unsigned char _pad04[4];                // +0x04
-    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThingCreatureBase> PCreature;   // +0x08 (Ego_r.pdb type)
     long  TotalTime;                        // +0x10
     long  ActionTime;                       // +0x14
     long  AnimDelayTime;                    // +0x18

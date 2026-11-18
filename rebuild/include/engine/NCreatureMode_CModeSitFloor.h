@@ -25,6 +25,17 @@ class CModeSitBase : public CTCCreatureModeManager::CModeBase {
 public:
     CModeSitBase(CThing& thing);
     virtual ~CModeSitBase();
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_FRAMEUPDATE
+    // NF83 opt-in (round 7, row 0x008D6C80): Ego_r.pdb 0x00818010 / FableWin.pdb 0x02842320 ?FrameUpdate@CModeSitBase@NCreatureMode@@UAEXXZ,
+    // the CModeBase slot-3 override (needs FABLE_RETAIL_CMODEBASE_VIRTUALS). Declaration only: an override adds no slot and no layout.
+    virtual void FrameUpdate();                                          // slot 3, 0x008D6C80
+#endif
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_REMOVEMODEWITHACTION
+    // NF83 opt-in (round 7, row 0x008D7230): Ego_r.pdb 0x008185A0 / FableWin.pdb 0x028423A0
+    // ?RemoveModeWithAction@CModeSitBase@NCreatureMode@@QAEXABVCCreatureActionBase@@@Z (public; PRemoveAction.Reset(action.Clone())),
+    // out of line in retail at 0x008D7230. Declaration only: no layout change.
+    void RemoveModeWithAction(const CCreatureActionBase& action);        // 0x008D7230
+#endif
 protected:
     long IdleCounter;                                                    // +0x1c
     bool PlayingIdle;                                                    // +0x20
@@ -63,9 +74,9 @@ private:
 };
 #endif
 }
-FABLE_STATIC_ASSERT(sizeof(NCreatureMode::CModeSitBase) == 0x2c);
-FABLE_STATIC_ASSERT(sizeof(NCreatureMode::CModeSitFloor) == 0x38);
+FABLE_STATIC_ASSERT_AT(66, sizeof(NCreatureMode::CModeSitBase) == 0x2c);
+FABLE_STATIC_ASSERT_AT(67, sizeof(NCreatureMode::CModeSitFloor) == 0x38);
 #ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITTAVERNSTOOL
-FABLE_STATIC_ASSERT(sizeof(NCreatureMode::CModeSitTavernStool) == 0x38);
+FABLE_STATIC_ASSERT_AT(69, sizeof(NCreatureMode::CModeSitTavernStool) == 0x38);
 #endif
 #endif // FABLE_ENGINE_NCREATUREMODE_CMODESITFLOOR_H

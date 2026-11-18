@@ -23,6 +23,11 @@ public:
     // engine/C3DVector.h and CCombatActionBase's Initialise declaration (FABLE_RETAIL_CCOMBATACTIONBASE_RECOVER) first.
 public:
     virtual void Initialise();                                           // 0x00865F40
+#ifdef FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_FINISHACTION
+    // NF74 opt-in (row 0x008C2550 CCombatAction_StrikeResponseJackOfBladesIntoRush::FinishAction): Ego_r.pdb / FableWin.pdb
+    // ?FinishAction@CCombatAction_GenericStrikeResponseBase@@UAEXXZ (0x008663D0, called directly by the derived FinishAction).
+    virtual void FinishAction();                                         // 0x008663D0
+#endif
 protected:
     CIntelligentPointer<const CThing> PThingThatHit;                     // +0x114
     C3DVector PointOfHit,DirectionOfHit;                                 // +0x11C, +0x128

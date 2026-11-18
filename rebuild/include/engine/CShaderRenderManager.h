@@ -492,6 +492,13 @@ public:
     bool GetPixelShadersEnabled() const { return PixelShadersEnabled; }
     bool GetVertexShadersEnabled() const;                                // ?GetVertexShadersEnabled@CShaderRenderManager@@QBE_NXZ
     bool IsFixedFunctionVertexMode() const { return FixedFunctionVertexMode; }
+#elif defined(FABLE_RETAIL_CSHADERRENDERMANAGER_GETSHADERSENABLED_INLINE)
+    // NF68 opt-in (row 0x00B32AD0 CEnginePrimitiveRenderer::PreRenderLayer): FableWin.pdb ?GetVertexShadersEnabled@CShaderRenderManager@@QBE_NXZ
+    // (0x02DB1B50) / ?GetPixelShadersEnabled@CShaderRenderManager@@QBE_NXZ (0x02DB1B30), inline getters (no Fable.exe copy): retail reads
+    // VertexShadersEnabled +0x390 / PixelShadersEnabled +0x391 in place (0x00B32AD8 / 0x00B32AEA).
+    bool GetPixelShadersEnabled() const { return PixelShadersEnabled; }
+    bool GetVertexShadersEnabled() const { return VertexShadersEnabled; }
+    bool IsFixedFunctionVertexMode() const;
 #else
     bool GetPixelShadersEnabled() const;                                 // ?GetPixelShadersEnabled@CShaderRenderManager@@QBE_NXZ
     bool GetVertexShadersEnabled() const;                                // ?GetVertexShadersEnabled@CShaderRenderManager@@QBE_NXZ

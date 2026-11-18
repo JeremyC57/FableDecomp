@@ -55,8 +55,11 @@ public:
 class CThingPhysical;
 
 class CThingGameObject : public CThing {
-public:
-    bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, const CCharString& scriptName,
+protected:
+    // NF75 (round 7, land1117fu q10920): Ego_r.pdb ?ConstructFromParams@CThingGameObject@@IAE_NJABVC3DVector@@JKABVCCharString@@PAVCThingPhysical@@2_N@Z
+    //   (protected, the position by const reference; engine/CThingGameObject.h FABLE_RETAIL_CTHINGGAMEOBJECT_LEVELSCRIPT declares the same),
+    //   as the landed self row 0x008388D0 defines it; was a public declaration taking the position by pointer (same bytes).
+    bool ConstructFromParams(long defIndex, const C3DVector& pos, long a3, unsigned long a4, const CCharString& scriptName,
                              CThingPhysical* creator, CThingPhysical* originalCreator, bool a8);   // 0x008388D0
 };
 class CThingBuilding : public CThingGameObject {
@@ -64,7 +67,7 @@ public:
     static CClass* __fastcall Alloc();                  // 0x0052AC10
     bool ConstructFromParams(long defIndex, const C3DVector& position, long a3, const CCharString& scriptName)
     {
-        return CThingGameObject::ConstructFromParams(defIndex, &position, a3, 1, scriptName, 0, 0, true);
+        return CThingGameObject::ConstructFromParams(defIndex, position, a3, 1, scriptName, 0, 0, true);
     }
     static CThingBuilding* __fastcall Create(long defIndex, const C3DVector& position, long a3, const CCharString& scriptName);
 };

@@ -1,0 +1,2 @@
+tag	address	claimed_symbol	reason
+q10475	0x009F6720	?_Destroy_Record34@@YIXPAVCInputEvent@@0@Z	superseded: the honest port of the only binder (0x009F6890 onto stlport/fable_containers.h, as NF56/NF65 asked) binds the STLport library spelling ??$_Destroy@PAVCInputEvent@@@std@@YIXPAVCInputEvent@@0@Z; one address, one name: the landed descriptive self name of 0x009F6720 should follow (NAME_FIXES.tsv), not the binder. The binder row itself is ported (entry counted done in APPLIED.tsv)

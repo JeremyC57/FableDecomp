@@ -1,5 +1,5 @@
 // CMap::InitPassabilityFromThemesIfNecessary(const C2DBoxI&) -- when the map still needs it, mark each height-field cell of the area passable unless its theme forbids it or the ground there is steeper than a 0.7 normal
-// Leaf: InitPassabilityFromThemesIfNecessary
+// Leaf: ?InitPassabilityFromThemesIfNecessary@CMap@@QAEXABVC2DBoxI@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Shape: same-TU out-only stand-ins for GetDef<CThemeDef> (0x0063F3A0) and CMap::GetThemeIndexAt (0x0081F910) keep the
 //   cell position, the weight and the def from escaping (x in edi, one shared out/def word, the def released without a
@@ -14,79 +14,54 @@
 // 0x0063DD70 / 0x0066CF00 include chain), with the header's same-TU body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY, the
 // stand-in's role). The descriptive CThemeDef is CEngineThemeDef (the template argument the FableWin symbol names); it has no
 // shared header (engine/_quarantine only), so it stays modelled on the shared CDefClassBase as landed 0x0063DD70 does.
+// NF70 (round 7, land1117fu q10724 / q10735): moved onto engine/CMap.h (the local CMap / CHeightField / C2DBoxI models and the same-TU
+//   stand-in GetThemeIndexAt body over the made-up LookUpThemeIndex_CMap are gone). The theme lookup is the PDB
+//   ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z 0x0081F910, whose real body this TU sees through its one definition in the
+//   header (FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY, `inline __declspec(noinline)`; retail compiled both in one object);
+//   GetGroundFaceNormalAt is the PDB const member (was QAE). Overlay opt-in FABLE_RETAIL_CMAP_INITPASSABILITYFROMTHEMES declares both.
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CMAP_THEMESIZEZ
+#define FABLE_RETAIL_CMAP_THEMEPALETTE
+#define FABLE_RETAIL_CMAP_ENGINEACCESSORS
+#define FABLE_RETAIL_CMAP_INITPASSABILITYFROMTHEMES
+#define FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY
+#define FABLE_RETAIL_CHEIGHTMAP_GETCELL
+#define FABLE_RETAIL_CHEIGHTMAPCELL_ACCESSORS
+#define FABLE_RETAIL_CHEIGHTMAPCELL
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_SCOPED_PTR
 #include "fable_string.h"
 #include "engine/CDefClassBase.h"
 #include "engine/CDefPointer.h"
 #include "engine/CGameDefinitionManager.h"
 #include "engine/C3DVector.h"
-class C2DBoxI { public:
-    C2DCoordI Min;
-    C2DCoordI Max;
-};
-struct CHeightFieldCell {
-    unsigned char _pad00[9];
-    unsigned char Reserved : 1;
-    unsigned char Passable : 1;                 // +0x09 bit 1
-    unsigned char _rest : 6;
-    unsigned char _pad0a[2];
-};
-struct CHeightField {
-    unsigned char     _pad00[0x10];
-    CHeightFieldCell* Cells;                    // +0x10
-    unsigned char     _pad14[0x1f0];
-    long              Width;                    // +0x204
-    long              Height;                   // +0x208
-    CHeightFieldCell* GetCell(long x, long y) { return &Cells[(Height - y) * (Width + 1) + x]; }
-};
+#include "engine/CMap.h"
 class CEngineThemeDef : public CDefClassBase { public:            // Ego_r.pdb CEngineThemeDef (no shared header); retail offsets
     unsigned char _pad_0x25[0x80 - 0x25];
     float         Passability;                  // +0x80
     unsigned char _pad84[0x1c];
     unsigned char Flags;                        // +0xa0 bit 0: passable
 };
-class CMap { public:
-    virtual void v00();
-    unsigned char _pad04[0x1a78];
-    CHeightField* HeightField;                  // +0x1a7c
-    unsigned char _pad1a80[0x2b8];
-    bool          PassabilityNeedsInit;         // +0x1d38
-    long GetThemeIndexAt(const C2DCoordI& pos, long* weight);         // 0x0081F910
-    C3DVector GetGroundFaceNormalAt(const C3DVector& pos);            // 0x0081F6C0
-    void InitPassabilityFromThemesIfNecessary(const C2DBoxI& area);
-};
-long LookUpThemeIndex_CMap(CMap* map, long x, long y, long& weight);   // stand-in callee
-// Same-TU stand-in for CMap::GetThemeIndexAt (0x0081F910, compiled in this TU in retail): it reads the cell coordinates
-// by value and writes the out weight only, so neither the position nor the weight escapes.
-#pragma auto_inline(off)
-__declspec(noinline) long CMap::GetThemeIndexAt(const C2DCoordI& pos, long* weight)
-{
-    long w;
-    long index = LookUpThemeIndex_CMap(this, pos.X, pos.Y, w);
-    *weight = w;
-    return index;
-}
-#pragma auto_inline(on)
 
 void CMap::InitPassabilityFromThemesIfNecessary(const C2DBoxI& area)
 {
-    if (!PassabilityNeedsInit)
+    if (!InitialisePassabilityFromThemes)
         return;
-    CHeightField* heightField = HeightField;
+    CHeightMap* heightMap = HeightMap.get();
     C2DCoordI pos;
-    for (pos.Y = area.Min.Y; pos.Y < area.Max.Y; ++pos.Y) {
-        CHeightFieldCell* cell = heightField->GetCell(area.Min.X, pos.Y);
-        for (pos.X = area.Min.X; pos.X < area.Max.X; ++cell, ++pos.X) {
+    for (pos.Y = area.TLY; pos.Y < area.BRY; ++pos.Y) {
+        CHeightMapCell* cell = &heightMap->GetCell(C2DCoordI(area.TLX, pos.Y));
+        for (pos.X = area.TLX; pos.X < area.BRX; ++cell, ++pos.X) {
             bool passable = true;
             long theme;
             {
-                long weight;
-                theme = GetThemeIndexAt(pos, &weight);
+                long strength;
+                theme = GetStrongestEngineThemeAt(pos, strength);
             }
             if (theme > 0) {
                 CDefPointer<const CEngineThemeDef> def;

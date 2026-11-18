@@ -3,7 +3,19 @@
 // CGameDefinitionManager quarantined header is sizeof1/vptr4 inconsistent; singleton returns actual CDefinitionManager.
 //44C6B0 definition manager singleton,8ABF80/8ABFF0 GetDef (propagated template names wrong),
 //A24260 CMeshDataBank entry accessor (shared shape; not inventory ability), A23E40 IsLoaded,A256F0 BeginLoading.
+// NF79 (round 7, q10974): the mesh is reached through the shared headers' const accessors: CMeshDataBank::PeekMeshInfo 0x00A24260
+//   (?PeekMeshInfo@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z, the landed self row; engine/CMeshDataBank.h PEEKINFO), then C3DMeshInfo::IsLoaded
+//   0x00A23E40 / BeginLoading 0x00A256F0 (Ego_r.pdb + FableWin.pdb, both const; engine/C3DMeshInfo.h ISLOADED on the retail
+//   CMeshDataBankEntry branch); was the stand-ins C3DMeshInfoMethods / CMeshDataBankMethods::GetMesh. The bank pointer is read before the
+//   index (retail `mov edx,[ebx+4]` first). Other stand-ins (CDefinitionManagerMethods, the local CDefPointer, CGameScriptInterfaceMethods)
+//   pre-existing.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CMESHDATABANK
+#define FABLE_RETAIL_CMESHDATABANK_PEEKINFO
+#define FABLE_RETAIL_CMESHDATABANKENTRY
+#define FABLE_RETAIL_CMESHDATABANK_BASES
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_C3DMESHINFO_ISLOADED
 #include "engine/CGameScriptInterface.h"
 #include "engine/CWorld.h"
 #include "engine/CDefinitionManager.h"
@@ -25,8 +37,6 @@ class CGameDefinitionManager : public CDefinitionManagerMethods { public: static
 bool CDefinitionManagerMethods::GetObjectDef(const CCharString& meshName,CDefPointer<CThingObjectDefNative>& out){CDefPointer<CDefPointeeNative> p=GetPDefByName(meshName);if(p.Object){out.Reset(static_cast<CThingObjectDefNative*>(p.Object));return true;}return false;}
 bool CDefinitionManagerMethods::GetCreatureDef(const CCharString& meshName,CDefPointer<CThingCreatureDefNative>& out){CDefPointer<CDefPointeeNative> p=GetPDefByName(meshName);if(p.Object){out.Reset(static_cast<CThingCreatureDefNative*>(p.Object));return true;}return false;}
 #pragma auto_inline(on)
-struct C3DMeshInfoMethods:C3DMeshInfo {bool IsLoaded()const;void BeginLoading(unsigned long,bool,bool);};
-struct CMeshDataBankMethods:CMeshDataBank {C3DMeshInfoMethods* GetMesh(unsigned long);};
 struct CGameScriptInterfaceMethods:CGameScriptInterface {void BeginLoadingMesh(const CCharString&)const;};
 FABLE_STATIC_ASSERT(sizeof(DefReleaseSlot)==4);
 FABLE_STATIC_ASSERT(offsetof(CThingObjectDefNative,Graphic)==0x70);
@@ -38,8 +48,8 @@ void CGameScriptInterfaceMethods::BeginLoadingMesh(const CCharString& meshName)c
  else if(CGameDefinitionManager::Get().GetCreatureDef(meshName,creature))graphic=&creature.Object->Graphic;
  else return;
  if(graphic&&(graphic->Type==4||graphic->Type==5)){
- CMeshDataBankMethods* bank=static_cast<CMeshDataBankMethods*>(World->PMainMeshBank_Data);
- C3DMeshInfoMethods* mesh=bank->GetMesh(graphic->BankIndex);
+ CMeshDataBank* bank=World->PMainMeshBank_Data;
+ const C3DMeshInfo* mesh=bank->PeekMeshInfo(graphic->BankIndex);
  if(!mesh->IsLoaded())mesh->BeginLoading((unsigned long)-1,false,false);
  }
 }

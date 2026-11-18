@@ -18,5 +18,5 @@ public:
  ~CObjectAugmentationSoundSet();
  CObjectAugmentationSoundSet & operator=(const CObjectAugmentationSoundSet & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CObjectAugmentationSoundSet)==12);
+FABLE_STATIC_ASSERT_AT(15, sizeof(CObjectAugmentationSoundSet)==12);
 #endif

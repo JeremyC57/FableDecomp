@@ -1,0 +1,104 @@
+address	change	grade	test	grades_used	entries	note
+004b39b0	ported	RELOCATION_MATCH	PASS	2	q11087	q11087 binder: moved off six row-local class models onto CQuestManager.h / CVectorMap.h / CWorld.h / CThingManager.h / fable_containers.h with overlay opt-ins CQUESTMANAGER_CLEARQUESTPERSISTSCRIPT (inline ClearPersistScript, Ego_r+FableWin), CVECTORMAP_ERASEFROMKEY (FableWin + Ego_d locals), CVECTORMAP_UPPERBOUND_COUNT_FIRST; binds LowerBound under the CPersistInfo spelling (s2)
+004b3ce0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11056	probe: binds 0x004BB270 and 0x004B9C10 under the set<CCharString> spellings (erase(const K&) / erase(iterator, iterator))
+004b4e30	not-a-binder	RELOCATION_MATCH	unchanged	1	q11087	NF82 port; probe binds 0x004B9750 / 0x004BBB40 under the CPersistInfo LowerBound / sort spellings
+004b4f30	not-a-binder	RELOCATION_MATCH	unchanged	1	q11087	NF82 port; probe binds 0x004B9750 / 0x004BBB40 under the CPersistInfo LowerBound / sort spellings
+004b84a0	ported	MATCH	PASS	2	q11057	self row re-authored as the explicit instantiation of the DISTANCE_INPUT_NOINLINE body over the set<CCharString> iterator
+004b9750	ported	RELOCATION_MATCH	PASS	2	q11087	q11087 queue row: moved off the row-local CVectorMap model onto engine/CVectorMap.h + fable_string.h with the overlay opt-in FABLE_RETAIL_CVECTORMAP_LOWERBOUND_COUNT_FIRST; own symbol respelled CQuestMapValue -> CPersistInfo (RENAMES s1)
+004b9c10	ported	RELOCATION_MATCH	PASS	2	q11056	self row re-authored on stlport/fable_map.h + fable_string.h (set<CCharString> erase(iterator, iterator)); _M_erase 0x004ABA70 now bound under the set<CCharString> spelling
+004b9d00	not-a-binder	RELOCATION_MATCH	unchanged	1	q11056	NF80/NF82 set<CCharString> _M_lower_bound, own leaf right (evidence row only; no entry address bound)
+004b9d50	not-a-binder	RELOCATION_MATCH	unchanged	1	q11056	NF82 set<CCharString> _M_upper_bound, own leaf right (evidence row only; no entry address bound)
+004ba180	not-a-binder	RELOCATION_MATCH	unchanged	1	q11088	NF82 self row; own leaf is the q11088 symbol
+004babf0	ported	RELOCATION_MATCH	PASS	2	q11088	__pop_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+004bb270	not-a-binder	RELOCATION_MATCH	unchanged	1	q11056 q11057 q11058	NF82 port; probe: own leaf is the set<CCharString> erase(const K&) and it binds 0x004B84A0 / 0x004B9C10 under the entry spellings
+004bbb40	not-a-binder	RELOCATION_MATCH	unchanged	1	q11089	NF82 self row; own leaf is the q11089 symbol
+004bbbc0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11089	probe of the landed row: its +0x0F call already binds 0x004BBB40 under the exact q11089 symbol (??$sort@PAU?$pair@..CPersistInfo..); the queue's ?helper_4bbb40 binding is stale; row untouched
+004dfd60	not-a-binder	RELOCATION_MATCH	unchanged	1	q11074	NF82 self row (__unguarded_insertion_sort_aux template); the wrong binding of it is in 0x004E415D
+004e1d68	not-a-binder	RELOCATION_MATCH	unchanged	1	q11072	NF82 __make_heap self row (evidence row; the wrong binding of it is in 0x004E36C3, fixed there)
+004e3686	not-a-binder	RELOCATION_MATCH	unchanged	1	q11074	NF82 self row (__insertion_sort template); the wrong binding of it is in 0x004E415D
+004e36c3	ported	RELOCATION_MATCH	PASS	2	q11072	make_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+004e415d	ported	RELOCATION_MATCH	PASS	2	q11074	__final_insertion_sort moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+004e41dd	not-a-binder	RELOCATION_MATCH	unchanged	1	q11073	probe: own leaf already the q11073 STLport sort_heap spelling (NF82 0x004E6E9E binds it); only the catalog name was wrong: RENAMES s1 name-only line, no row change
+004e6e9e	not-a-binder	RELOCATION_MATCH	unchanged	1	q11072 q11073	NF82 port; probe binds 0x004E36C3 / 0x004E41DD as the make_heap / sort_heap template spellings
+004eb9a6	not-a-binder	RELOCATION_MATCH	unchanged	1	q11074	probe: binds 0x004E415D under ??$__final_insertion_sort@..YIX.. (the template spelling q11074 gives the self row)
+0056f69f	not-a-binder	RELOCATION_MATCH	unchanged	1	q11059	NF82 port; probe binds 0x00428494 as ...ABVCCharString@@MV5@MV5@@Z (the PDB spelling)
+0056f8a4	ported	RELOCATION_MATCH	PASS	2	q11059	ported onto NUISystem_CManager.h / CTCInventoryExperience.h / fable_string.h (NF82 0x0056F69F recipe); 0x00428494 now bound as the PDB ..MV5@MV5@@Z spelling
+005949a5	not-a-binder	RELOCATION_MATCH	unchanged	1	q11072	evidence row only (the operator-delete forwarder model 0x004E36C3 was copied from); binds no entry address
+005a731f	ported	RELOCATION_MATCH	PASS	6	q11059	ported onto the shared headers (console twin 0x005A45F6 recipe): 0x00428494 binds the PDB ..MV5@MV5@@Z spelling; own leaf fixed to the PDB JJ_N; 8 stand-in bindings respelled (s2). The hero type is the shared engine/CThingPlayerCreature.h retail branch (a first port kept the twin's empty local CThingPlayerCreature model; replaced before hand-back, see NOTES)
+005c323a	ported	RELOCATION_MATCH	PASS	5	q11059	ported onto the shared headers (sibling 0x005C574E recipe); 0x00428494 binds the PDB ..MV5@MV5@@Z spelling; 1 SRC_FAIL (enum) and 2 DIFFER forms before VISIBLE_CALLED_CTOR matched
+005c3444	ported	RELOCATION_MATCH	PASS	3	q11059	ported onto the shared headers (twin 0x005C323A recipe + CWIDESTRING_NULLSTRING / CTCINVENTORYITEM_DETAILS); 0x00428494 binds the PDB ..MV5@MV5@@Z spelling (1 SRC_FAIL: the NullString opt-in)
+005e0fe0	ported	RELOCATION_MATCH	PASS	2	q11075	copy_backward moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+005e1a40	not-a-binder	RELOCATION_MATCH	unchanged	1	q11075	NF82 port; probe binds 0x005E0FE0 as ??$copy_backward@PAVCCharString@@PAV1@@std@@YIPAVCCharString@@PAV1@00@Z
+005e1be0	ported	RELOCATION_MATCH	PASS	2	q11076	__make_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+005e27f0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11077	probe: own leaf already ??$sort_heap@PAVCCharString@@U?$less@VCCharString@@@std@@@std@@YIX.. (the q11077 symbol) and it binds 0x005E1170 as the template __adjust_heap
+005e2eb0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11076 q11077	NF82 port; probe binds 0x005E1BE0 / 0x005E27F0 as the __make_heap / sort_heap template spellings
+006276f0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11059	probe: GetItemsListUI itself makes no call to 0x00428494; the stand-in declaration is only used by the file's ungraded copy of ConstructItemCategoryList (0x00626E40 has its own row, on the header)
+006969d0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11069	NF82 self row: probe emits the private STLport _M_insert spelling of the entry
+00696b70	ported	RELOCATION_MATCH	PASS	3	q11069	ported on stlport/fable_map.h (NF80 0x009EFB80 recipe): _M_insert 0x006969D0 bound under its private AAE spelling; own leaf unchanged (1 SRC_FAIL: generator typo)
+006b94e0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11058	probe: binds 0x004BB270 as ?erase@?$_Rb_tree@VCCharString@@V1@...QAEIABVCCharString@@@Z (the q11058 spelling); the reloc_bindings stand-in line is stale
+006b9510	not-a-binder	RELOCATION_MATCH	unchanged	1	q11058	probe: both calls bind 0x004BB270 under the set<CCharString> erase(const K&) spelling; reloc_bindings stand-in is stale
+006b9530	not-a-binder	RELOCATION_MATCH	unchanged	1	q11058	probe: binds 0x004BB270 under the set<CCharString> erase(const K&) spelling
+006bcec0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11061	NF82 self row: probe emits the private STLport _M_lower_bound spelling of the entry
+006bd140	not-a-binder	RELOCATION_MATCH	unchanged	1	q11070	NF82 self row: probe emits the private STLport _M_insert spelling of the entry
+006bd3a0	ported	RELOCATION_MATCH	PASS	3	q11070	ported on stlport/fable_map.h (NF82 0x008ACA90 hinted recipe): _M_insert 0x006BD140 bound under its private AAE spelling (was public QAE); own leaf unchanged (1 grade lost to a prefix leaf that picked the unhinted overload)
+006bd6a0	ported	RELOCATION_MATCH	PASS	2	q11061	ported on stlport/fable_map.h (0x009AC5D0 recipe): binds 0x006BCEC0 as the private _Rb_tree _M_lower_bound and 0x006BD3A0 as the tree insert_unique; own leaf is the 4-argument map spelling
+0071f890	not-a-binder	RELOCATION_MATCH	unchanged	1	q11062	NF82 self row: probe emits the private STLport _M_lower_bound spelling of the entry
+00721640	ported	RELOCATION_MATCH	PASS	3	q11062	ported on stlport/fable_map.h: binds 0x0071F890 as the private _Rb_tree _M_lower_bound and the tree insert_unique; own leaf is the 4-argument map spelling (1 DIFFER: CDATEANDTIME_CTOR)
+00756100	not-a-binder	RELOCATION_MATCH	unchanged	1	q11063	NF82 self row: probe emits the private STLport _M_lower_bound spelling of the entry
+00756b60	ported	RELOCATION_MATCH	PASS	2	q11063	ported on stlport/fable_map.h BOUNDS_OUTOFLINE (explicit equal_range): binds 0x00756100 / 0x007564F0 under the private ABE spellings (were QBE stand-ins)
+00756be0	ported	RELOCATION_MATCH	PASS	2	q11063	ported on stlport/fable_map.h: binds 0x00756100 as the private _Rb_tree _M_lower_bound and the tree insert_unique; own leaf is the 4-argument map spelling
+00756c60	ported	RELOCATION_MATCH	PASS	2	q11063	ported on stlport/fable_map.h BOUNDS_OUTOFLINE + DISTANCE_INPUT_NOINLINE (the 0x004BB270 recipe): binds 0x00756100 / 0x007564F0 under the private ABEPAU_Rb_tree_node_base spellings (were _Rb_tree_node<V>* stand-ins); own leaf unchanged
+0077e170	ported	RELOCATION_MATCH	PASS	2	q11078	__copy_backward moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+0077e730	not-a-binder	RELOCATION_MATCH	unchanged	1	q11090	NF82 self row; own leaf is the q11090 symbol
+0077e8f0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11091	NF82 self row; own leaf is the q11091 symbol
+0077e960	not-a-binder	RELOCATION_MATCH	unchanged	1	q11078 q11092	NF82 port; binds 0x0077E170 as the template __copy_backward spelling
+0077ea60	ported	RELOCATION_MATCH	PASS	2	q11090	__adjust_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+0077ecb0	ported	RELOCATION_MATCH	PASS	2	q11092	__insertion_sort moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+0077ed20	ported	RELOCATION_MATCH	PASS	2	q11080	__pop_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+0077eda0	ported	RELOCATION_MATCH	PASS	2	q11079	__make_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+0077f190	ported	RELOCATION_MATCH	PASS	3	q11081	sort_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1); regraded once (RELOCATION_MATCH) after an unused nested opt-in was removed from the overlay
+0077f2c0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11079 q11080 q11081 q11093	NF82 port; binds 0x0077EDA0 / 0x0077ED20 / 0x0077F190 as the template spellings
+0077f370	ported	RELOCATION_MATCH	PASS	2	q11091 q11093	__introsort_loop moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+007acbb0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11064	NF82 self row: probe emits the private STLport _M_lower_bound spelling of the entry
+007acc00	not-a-binder	RELOCATION_MATCH	unchanged	1	q11065	NF82 self row: probe emits the private STLport _M_lower_bound spelling of the entry
+007ade60	not-a-binder	RELOCATION_MATCH	unchanged	1	q11064	probe: binds 0x007ACBB0 under the private _Rb_tree _M_lower_bound spelling (already right)
+007aebe0	ported	RELOCATION_MATCH	PASS	2	q11065	ported on stlport/fable_map.h + VECTOR_COPY_OUTOFLINE (replaces the same-TU vector copy stand-in): binds 0x007ACC00 private _M_lower_bound, 0x007ACEA0 as the two-argument vector copy ctor; own leaf is the 4-argument map spelling
+008364b0	ported	MATCH	PASS	2	q11060	self row re-authored as the explicit instantiation of CCountedPointer<CAnimFilterBase>::DeleteData (was the sub_ / CallIfSet placeholder); file name should move from gapscan_sub008364b0
+00836580	not-a-binder	RELOCATION_MATCH	unchanged	1	q11060	NF82 port; probe binds 0x008364B0 as ?DeleteData@?$CCountedPointer@VCAnimFilterBase@@@@SIXPAX@Z
+008adf10	ported	RELOCATION_MATCH	PASS	2	q11064	ported on stlport/fable_map.h (0x009AC5D0 recipe): binds 0x007ACBB0 as the private _Rb_tree _M_lower_bound; own leaf is the 4-argument map spelling
+008ae420	not-a-binder	RELOCATION_MATCH	unchanged	1	q11065	probe: binds 0x007ACC00 under the private _Rb_tree _M_lower_bound spelling (already right)
+009aad60	not-a-binder	RELOCATION_MATCH	unchanged	1	q11066	NF82 self row: probe emits the private STLport _M_lower_bound spelling of the entry
+009aae00	not-a-binder	RELOCATION_MATCH	unchanged	1	q11067	NF82 self row: probe emits the private STLport _M_lower_bound spelling of the entry
+009ab120	not-a-binder	RELOCATION_MATCH	unchanged	1	q11071	NF82 self row: probe emits the private STLport _M_insert spelling of the entry
+009abb10	ported	RELOCATION_MATCH	PASS	2	q11071	ported on stlport/fable_map.h (NF82 0x008ACA90 hinted recipe): _M_insert 0x009AB120 bound under its private AAE spelling; own leaf unchanged
+009ac530	ported	RELOCATION_MATCH	PASS	3	q11066	ported on stlport/fable_map.h + NF85 opt-in FABLE_RETAIL_NBANKFILEMANAGER_CCONTAINEDBANK_CTOR: binds 0x009AAD60 as the private _Rb_tree _M_lower_bound and the tree insert_unique; own leaf is the 4-argument map spelling (1 DIFFER without the ctor)
+009ac700	ported	RELOCATION_MATCH	PASS	3	q11067	ported on stlport/fable_map.h (0x009AC5D0 recipe, __default_constructed default value): binds 0x009AAE00 as the private _Rb_tree _M_lower_bound; own leaf is the 4-argument map spelling (1 DIFFER: V() default)
+009b4940	not-a-binder	RELOCATION_MATCH	unchanged	1	q11084	NF82 self row (pair<CCharString, unsigned long> __push_heap); evidence row
+009b5c70	not-a-binder	RELOCATION_MATCH	unchanged	1	q11084	NF82 self row; own leaf is the q11084 symbol
+009b6d80	ported	RELOCATION_MATCH	PASS	2	q11084	__pop_heap_aux moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+009b8170	ported	RELOCATION_MATCH	PASS	3	q11084	sort_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1); regraded once (RELOCATION_MATCH) after an unused nested opt-in was removed from the overlay
+009e5360	not-a-binder	RELOCATION_MATCH	unchanged	1	q11056	NF82 port; probe: binds 0x004B9C10 as the set<CCharString> erase(iterator, iterator) spelling
+009eaff0	ported	RELOCATION_MATCH	PASS	4	q11068	ported onto fable_string.h + stlport/fable_map.h: binds 0x009EEC10 as the private _Rb_tree _M_lower_bound (was ?_Lbound@CCommandMap@@ stand-in); own leaf private AAE per both PDBs; 2 DIFFER forms before the landed helper form matched
+009eec10	not-a-binder	RELOCATION_MATCH	unchanged	1	q11068	NF82 self row: probe emits the private STLport _M_lower_bound spelling of the entry
+00a32960	not-a-binder	RELOCATION_MATCH	unchanged	1	q11096	self row: own leaf ??4C3DMeshVolume@@QAEAAV0@ABV0@@Z (the q11096 symbol)
+00a333a0	ported	RELOCATION_MATCH	PASS	1	q11096	q11096 binder: moved off the row-local CCharString / counted-pointer / Named / Pair models onto fable_containers.h (STLP_DECAL_HEAP __push_heap, /Gr) + C3DMeshVolume.h + CVectorMap.h; binds 0x00A32960 as ??4C3DMeshVolume@@QAEAAV0@ABV0@@Z (s2); own symbol the std template instance its caller 0x00A33A70 binds (RENAMES s1)
+00a34420	ported	RELOCATION_MATCH	PASS	2	q11096	__pop_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+00a3f140	not-a-binder	RELOCATION_MATCH	unchanged	1	q11082	evidence row for the CSoundBankLH* element; binds no entry address
+00a403f0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11083	NF82 self row; own leaf is the q11083 symbol
+00a40590	not-a-binder	RELOCATION_MATCH	unchanged	1	q11082	evidence row for the CSoundBankLH* element; binds no entry address
+00a408e0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11082 q11083	NF82 port; binds 0x00A403F0 under the q11083 symbol; own leaf is the q11082 symbol
+00a41260	ported	RELOCATION_MATCH	PASS	2	q11082 q11085	__pop_heap_aux moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+00a41480	not-a-binder	RELOCATION_MATCH	unchanged	1	q11082	evidence row for the CSoundBankLH* element; binds no entry address
+00a41960	ported	RELOCATION_MATCH	PASS	3	q11082 q11086	sort_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1); regraded once (RELOCATION_MATCH) after an unused nested opt-in was removed from the overlay
+00a41b60	not-a-binder	RELOCATION_MATCH	unchanged	1	q11082 q11086	NF82-era row: binds 0x00A408E0 under the q11082 symbol and 0x00A41960 under ??$sort_heap@..PAVCSoundBankLH.. (the symbol q11086 gives the self row)
+00a41e20	not-a-binder	RELOCATION_MATCH	unchanged	1	q11082	evidence row for the CSoundBankLH* element; binds no entry address
+00a707d0	ported	RELOCATION_MATCH	PASS	1	q11096	q11096 binder: moved off the row-local CCharString / counted-pointer / Named / Pair models onto fable_containers.h (STLP_DECAL_HEAP __push_heap, /Gr) + C3DMeshVolume.h + CVectorMap.h; binds 0x00A32960 as ??4C3DMeshVolume@@QAEAAV0@ABV0@@Z (s2); own symbol the std template instance its caller 0x00A71220 binds (RENAMES s1)
+00a708e0	not-a-binder	RELOCATION_MATCH	unchanged	1	q11096	NF82 port; binds 0x00A32960 as ??4C3DMeshVolume@@QAEAAV0@ABV0@@Z
+00a71370	not-a-binder	RELOCATION_MATCH	unchanged	1	q11094 q11096	NF82 port; binds 0x00A32960 as ??4C3DMeshVolume@@QAEAAV0@ABV0@@Z; own leaf is the q11094 symbol
+00a71be0	ported	RELOCATION_MATCH	PASS	2	q11094	__pop_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+00af3290	not-a-binder	RELOCATION_MATCH	unchanged	1	q11095	NF82 self row; own leaf is the q11095 symbol
+00af3430	ported	RELOCATION_MATCH	PASS	2	q11095	__pop_heap moved onto fable_containers.h + fable_string.h (/Gr); same-TU callees bound under the template spellings (s2); own symbol the std template instance (RENAMES s1)
+007564f0	ported	RELOCATION_MATCH	PASS	2	-	claimed (extra): the equal_range port binds its private ABE spelling, so the self row moved onto stlport/fable_map.h (the 0x00756100 recipe) with the ABE leaf
+004b9850	ported	RELOCATION_MATCH	PASS	1	-	claimed (extra, q11087 callee): moved onto engine/CVectorMap.h (PODIUM_UPPERBOUND + NF85 UPPERBOUND_COUNT_FIRST) + CQuestManager.h; own symbol respelled CQuestMapValue -> CPersistInfo (RENAMES s1)
+004b84f0	ported	RELOCATION_MATCH	PASS	1	-	claimed (extra, q11087 callee): STLport __copy explicit instantiation on fable_containers.h (STLP_COPY_NOINLINE); own placeholder leaf respelled to the std template instance (RENAMES s1); outside caller 0x004B41F0 in NAME_FIXES
+004b93e0	ported	RELOCATION_MATCH	PASS	1	-	claimed (extra, q11087 callee): STLport __destroy_aux explicit instantiation on fable_containers.h (STLP_DESTROY_AUX_NOINLINE_FASTCALL); own symbol respelled (RENAMES s1); outside callers 0x004B41F0 / 0x004B4770 in NAME_FIXES

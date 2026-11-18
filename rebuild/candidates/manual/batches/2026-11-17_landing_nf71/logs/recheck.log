@@ -1,0 +1,12 @@
+addr       parity           behav  name
+006a0150   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory
+008f95d0   RELOCATION_MATCH PASS   SendBlock
+00e12580   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00e12580   RELOCATION_MATCH PASS   DoMission
+00ee2490   RELOCATION_MATCH PASS   Main
+
+WINS: 4
+  006a0150 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z
+  008f95d0 RELOCATION_MATCH LHNetworkLib::LSocket::?SendBlock@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@@Z
+  00e12580 RELOCATION_MATCH NScript::CQ_WaspBossScript::?DoMission@CQ_WaspBossScript@NScript@@QAEXXZ
+  00ee2490 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Thunder::?Main@CTH_Thunder@CV_TravellingHeroesScript@NScript@@EAEXXZ

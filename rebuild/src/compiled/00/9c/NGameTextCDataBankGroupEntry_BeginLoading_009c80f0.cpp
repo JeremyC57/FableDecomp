@@ -1,90 +1,56 @@
-// NGameText::CDataBankGroupEntry::BeginLoading -- create asynchronous group resource.
-// Retail009C80F0,296 bytes. Native resource bank164; resource lists168/1A4; PMF is not used by CCPPointerInfo.
-#include "fable_compiler.h"
-#define CDataBank CDataBankLegacy
-#define CIVCountedPointer CIVCountedPointerLegacy
-#include "fable_game_text_bank.h"
-#undef CIVCountedPointer
-#undef CDataBank
-#define CResource CResourcePdb
-#define CResourceList CResourceListPdb
-#include "engine/CResource.h"
-#include "engine/CResourceList.h"
-#undef CResourceList
-#undef CResource
-#include "engine/CIVCountedPointeeBase.h"
-class CResourceList;
-class CResource { public:
- virtual ~CResource();virtual void Delete()const;
- virtual bool UnloadResource();virtual unsigned long GetUnloadableMemory()const;
- virtual bool IsResourceLoaded()const;virtual void OnResourceLoaded();
- virtual bool CanAbortResourceLoad(long)const;virtual void OnResourceLoadAborted();
- virtual unsigned long GetDebugMemoryInUse()const;virtual void ResetDebugMemoryInUse();
- unsigned long IVRefCount;class CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;
-private:
- void ListRemove(); //009FBFB0
-public:
-private:
- void ListInsert(CResource*a0, CResource*a1); //009FBF90
-public:
- void Touch();
-};
-class CResourceList { public:
- void* VTable;CResource Head;unsigned long ResourceCount;long AllocatedMemory,MaximumMemory;unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;
- bool MakeFreeSpace(unsigned long); //009FC4F0
-};
-FABLE_FORCEINLINE void CResource::Touch(){if(ResourceList&&LastUsedFrame!=ResourceList->CurrentFrame){ListRemove();ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);LastUsedFrame=ResourceList->CurrentFrame;}}
-template<class T>struct CArrayNative {T* First;T* Last;T* End;T& operator[](unsigned long n)const{return First[n];}};
-
+// NGameText::CDataBankGroupEntry::BeginLoading(unsigned long id, CDataBank& bank) const -- when the group is not loaded, start the asynchronous
+// read of the whole bank entry, create the group resource over the read and add it to the bank's resource bank (then trim the resource
+// cache); touch the group in its resource list
+// Leaf: ?BeginLoading@CDataBankGroupEntry@NGameText@@ABEXKAAVCDataBank@2@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009C80F0, 296 bytes.
+// Callees: CBankFileAsync::GetAsyncEntry 0x009D58D0, CBankFile::GetEntryDataSize 0x009CC240, CBankFileAsyncEntry::BeginReadDataAutoAlloc
+//   0x009D6100, operator new 0x00BFEA1A, CGroupEntry ctor 0x009C8060, CResourceBank::AddResource 0x009FC380, CResourceList::MakeFreeSpace
+//   0x009FC4F0, CResource::TouchResource (inline), operator delete 0x00BFE9BC (count blocks).
+// NF72 (round 7, q10906 / q10881 / q10883): Ego_r.pdb 0x00B15DC0 + FableWin.pdb 0x02F75330 ?BeginLoading@CDataBankGroupEntry@NGameText@@ABEXKAAVCDataBank@2@@Z
+//   (private const, CDataBank&), declared by engine/NGameText_CDataBank.h GETPGROUPENTRY (NF69) and bound by the ported BeginLoadingGroup /
+//   GetPGroupEntry. Ported off the renaming-macro CDataBank / CIVCountedPointer / CResource / CResourceList models and the local counted-pointer,
+//   bank and group models onto that header (with the 0x009C8890 macro block): CDataBank : CBankFileAsync, CResourceBank; CGroupEntry : CResource
+//   (overlay opt-in NGAMETEXT_CGROUPENTRY_CTOR: the Ego_r / FableWin ctor 0x009C8060). The calls now bind the PDB spellings: GetAsyncEntry
+//   (CBankFileAsync, GETASYNCENTRY) and ?BeginReadDataAutoAlloc@CBankFileAsyncEntry@@QAE?AV?$CCountedPointer@VCBankFileAsyncData@@@@KKW4EThreadedFilePriority@@@Z
+//   (Ego_r.pdb 0x00B2A240; CBankFileAsyncEntry has no shared header). PGroup is written through const_cast (the member is not mutable in the header).
+//   gDataBankReadPriority (0x01396314) is the landed descriptive name (no PDB data symbol found), now typed EThreadedFilePriority.
+//   Without 0x009C8890's FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES: Reset releases with one slot-1 call, as retail does here.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+#define FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCELIST_MAKEFREESPACE
+#define FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+#define FABLE_RETAIL_CBANKFILEASYNC_GETASYNCENTRY
+#define FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
+#define FABLE_RETAIL_NGAMETEXT_CGROUPENTRY_CTOR
 #include "fable_string.h"
-#include <new>
-struct NativePointerInfo {
- unsigned long Count;void (__fastcall *Destroy)(void*);void* Object; // actual CCPPointerInfo; native callback9A42B0
+#include "engine/NGameText_CDataBank.h"
+#include "engine/EThreadedFilePriority.h"
+
+class CBankFileAsyncEntry {
+public:
+    CCountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long offset, unsigned long size, EThreadedFilePriority priority);   // 0x009D6100
 };
-#if defined(_MSC_VER)
-FABLE_STATIC_ASSERT(sizeof(NativePointerInfo)==12);
-#endif
-template<class T>struct CountedPointer {
- T* Data;NativePointerInfo* Info;
- CountedPointer():Data(0),Info(0){}
- CountedPointer(const CountedPointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->Count;}
- FABLE_FORCEINLINE ~CountedPointer(){if(Info){--Info->Count;if(Info->Count==0){Info->Destroy(Info->Object);operator delete(Info);}}Data=0;Info=0;}
- T* operator->()const{return Data;}
-};
-template<class T>struct OwnedIVPointer {
- T* Object;OwnedIVPointer():Object(0){}
- FABLE_FORCEINLINE ~OwnedIVPointer(){Reset();}
- FABLE_FORCEINLINE void Reset(){T* old=Object;if(old){if(!--old->IVRefCount)old->Delete();Object=0;}}
- FABLE_FORCEINLINE void Adopt(T* value){Reset();Object=value;}
- T* operator->()const{return Object;}
-};
-class CBankFileAsyncData { public:};
-class CBankFileAsyncEntry { public:CountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long,unsigned long,long);}; //009D6100
-extern long gDataBankReadPriority; //01396314 used as EThreadedFilePriority
-class CResourceBank { public:void* VTable;class CResourceList ResourceList,LoadingQueue;void AddResource(CResource&);}; //009FC380
-class CBankFile { public:
-    unsigned long GetEntryDataSize(unsigned long a0) const;   // 0x009CC240 (Ego_r.pdb ?GetEntryDataSize@CBankFile@@QBEKK@Z)
-};
+extern EThreadedFilePriority gDataBankReadPriority;        // 0x01396314 (landed descriptive name)
+
 namespace NGameText {
-class CDataBank;class CDataBankGroupEntry;
-class CGroupEntry:public CResource { public:
- virtual bool UnloadResource();
- CArrayNative<long> Entries;CountedPointer<CBankFileAsyncData> PFileData;const CDataBankGroupEntry* Owner;
- CGroupEntry(CountedPointer<CBankFileAsyncData>&,const CDataBankGroupEntry*); //009C8060 native34 donor38, real array12 vs16
-};
-class CDataBankGroupEntry { public:OwnedIVPointer<CGroupEntry> PGroup;void BeginLoading(unsigned long,CDataBank*);};
-class CDataBank { public:
- unsigned char BankAsyncState[0x164];class CResourceBank ResourceBank;
- CountedPointer<CBankFileAsyncEntry> GetAsyncEntry(unsigned long); //009D58D0
-};
-void CDataBankGroupEntry::BeginLoading(unsigned long index,CDataBank* bank){
- if(!PGroup.Object){
-  CountedPointer<CBankFileAsyncEntry> entry=bank->GetAsyncEntry(index);
-  CountedPointer<CBankFileAsyncData> data=entry->BeginReadDataAutoAlloc(0,((CBankFile*)bank)->GetEntryDataSize(index),gDataBankReadPriority);
-  PGroup.Adopt(new CGroupEntry(data,this));
-  bank->ResourceBank.AddResource(*PGroup.Object);
-  bank->ResourceBank.ResourceList.MakeFreeSpace(0);
- }
- PGroup->Touch();
+void CDataBankGroupEntry::BeginLoading(unsigned long id, CDataBank& bank) const
+{
+    if (PGroup.IsNull()) {
+        CCountedPointer<CBankFileAsyncEntry> entry = bank.GetAsyncEntry(id);
+        CCountedPointer<CBankFileAsyncData> data = entry->BeginReadDataAutoAlloc(0, bank.GetEntryDataSize(id), gDataBankReadPriority);
+        const_cast<CDataBankGroupEntry*>(this)->PGroup.Reset(new CGroupEntry(data, this));
+        bank.AddResource(*PGroup);
+        bank.ResourceList.MakeFreeSpace(0);
+    }
+    PGroup->TouchResource();
 }
 }

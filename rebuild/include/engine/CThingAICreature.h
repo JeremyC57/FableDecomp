@@ -46,6 +46,13 @@ public:
     // Both original public const PeekMotherCreature declarations; native+180 intelligent pointer.
     const CThingAICreature* PeekMotherCreature()const{return MotherCreature.Get();}
 #endif
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_GETMOTHERCREATURE
+    // NF67 opt-in (round 7, row 0x00915190 CAIStateGroup_KidHurtSelfRunToMother::Cleanup): FableWin.pdb
+    // ?GetMotherCreature@CThingAICreature@@QBEPAV1@XZ (const, returns the mutable pointer), inline in retail (0x009151EA `lea ecx,[eax+180h]`,
+    // GetPItem 0x00A01B50; the result then takes the non-const GetTC lookup 0x0040F020). Needs the MotherCreature member
+    // (FABLE_RETAIL_CTHINGAICREATURE_HOMEBUILDING + _SAVE). Body only, no layout change.
+    CThingAICreature* GetMotherCreature()const{return MotherCreature.Get();}
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_ANIMEXISTS
     // Retail opt-in (agentNF9, row 0x00830F20): Ego_r.pdb / FableWin.pdb ?AnimExists@CThingAICreature@@MBE_NABVCCharString@@_N@Z (protected
     // const virtual, the override of CThingCreatureBase's slot 73: CThingAICreature vtable 0x0127293C slot 73 = 0x00830F20). Declaration only.
@@ -110,6 +117,12 @@ public:
     // Nested opt-in (chunk 854, row 0x00924C70 CAIStateGroup_KrakenAttack::Update): FableWin.pdb ?SetAsImmuneToAttack@CThingAICreature@@QAEX_N@Z
     // (Ego_r.pdb has the ?IsImmuneToAttack@..QBE_NXZ twin), inline in retail: `or cl,40h` on +0x1C8 = bit 6 ImmuneToAttack below.
     void SetAsImmuneToAttack(bool immune) { ImmuneToAttack = immune; }
+#endif
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_ISIMMUNETOATTACK
+    // NF67 opt-in (round 7, row 0x00869020 CHitParameters::SetAsModifiedByArmour): FableWin.pdb ?IsImmuneToAttack@CThingAICreature@@QBE_NXZ,
+    // inline in retail (0x00869120 `test byte ptr [esi+1C8h],40h` = bit 6 ImmuneToAttack below, after the CClass type test `cmp byte ptr
+    // [esi+10h],1`). Body only, no layout change.
+    bool IsImmuneToAttack() const { return ImmuneToAttack; }
 #endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_INITFROMDEF
     // Nested opt-in (agentNF12, 2026-11-11, row 0x008338D0): Ego_r.pdb / FableWin.pdb ?InitialiseFromDef@CThingAICreature@@IAEXXZ (protected)

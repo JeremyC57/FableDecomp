@@ -1,211 +1,78 @@
-// CThing::WorldUpdate() -- frame-update every live (not pending-removal) component on the update list while the thing is alive; then sweep the global pending-removal list: drop entries whose thing is gone or dead, and for this thing's entries unhook the component (driver pointer, update list, interface map), delete it and drop the entry; always false
-// Leaf: WorldUpdate
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004C8050, length 393 bytes (plain `ret`, no frame pointer; Ego_r.pdb
-//   `?WorldUpdate@CThing@@UAE_NXZ`).
-// Callees: CTCBase virtual slots 9 (+0x24, FrameUpdate), 21 (+0x54, GetInterfaceType, as the landed RemoveTC 0x004C9840),
-//   24 (+0x60, IsDriver: the PDB's `?IsDriver@CTCBase@@UBE_NXZ`, and the hit clears PTCDriver) and 0 (scalar deleting
-//   destructor, flag 1); CBaseIntelligentPointer::GetPItem 0x00A01B50 and ~CBaseIntelligentPointer 0x00A01C10;
-//   list<CTCBase*>::remove(const value_type&) 0x004CC150 (update list); CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
-//   0x0040F020; free 0x00BFEA14 (STLport node of the pending-removal list).
-// Data: CThing::TCsToBeRemoved 0x013B8A24 (static list<STCRemoval>; the landed RemoveTC's g_TCRemovalList).
-// Layout: retail CThing (Ego_r.pdb minus 4 for the CVectorMap, minus 8 more for the 4-byte STLport list): Components +0x44
-//   (first +0x44, last +0x48), UpdateComponentsList +0x54, PTCDriver +0x5C, Dead +0x91 bit 0 (as landed); CTCBase
-//   pending-removal flag +0x08 (as landed); STCRemoval {CIntelligentPointer<CThing> +0x00, CTCBase* +0x08}.
-// Shape: the update loop tests Dead at the head of every pass; the sweep re-reads the list head each pass and tests the
-//   entry through an inline "thing alive" helper (`if (!alive) erase; else if (mine) {..; erase} else ++it` -- written
-//   out, VC7.1 keeps the merged erase at the bottom instead of at the stale test); both erases are STLport list::erase
-//   (unlink, element destructor, free); the component is unhooked from the update list through a same-TU noinline
-//   list::remove stand-in (the component stays in ebp across it) and from the interface map through the inline find
-//   (key copy in the shared frame word, the type in ebx), a forward scan over equal keys and STLport vector::erase
-//   (`copy(pos + 1, finish, pos)`, --finish); the same-TU LowerBound stand-in shares the key word with the component.
-#include "fable_compiler.h"
-extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
-
-class CThing;
-class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                        // +0x04
-    virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
-    CBaseObject* GetPItem() const;                               // 0x00A01B50
-};
-struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPointer<CThing>
-};
-
-class CTCBase { public:
-    virtual ~CTCBase();                                     // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
-    virtual void v07(); virtual void v08();
-    virtual void FrameUpdate();                             // slot 9 (+0x24)
-    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
-    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
-    virtual long GetInterfaceType() const;                  // slot 21 (+0x54)
-    virtual void v22(); virtual void v23();
-    virtual bool IsDriver() const;                          // slot 24 (+0x60)
-    CThing* ParentThing;                                    // +0x04
-    bool    PendingRemoval;                                 // +0x08
-};
-
-template <class T> struct SListNode {
-    SListNode* _M_next;
-    SListNode* _M_prev;
-    T          _M_data;
-};
-template <class T> struct CListIterator {                   // STLport _List_iterator
-    SListNode<T>* _M_node;
-    CListIterator() { }
-    CListIterator(SListNode<T>* n) : _M_node(n) { }
-    T& operator*() const { return _M_node->_M_data; }
-    T* operator->() const { return &_M_node->_M_data; }
-    CListIterator& operator++() { _M_node = _M_node->_M_next; return *this; }
-    bool operator==(const CListIterator& other) const { return _M_node == other._M_node; }
-    bool operator!=(const CListIterator& other) const { return _M_node != other._M_node; }
-};
-template <class T> struct CRetailList {                     // STLport list (4 bytes: the head node)
-    SListNode<T>* _M_node;
-    CListIterator<T> begin() { return CListIterator<T>(_M_node->_M_next); }
-    CListIterator<T> end() { return CListIterator<T>(_M_node); }
-    CListIterator<T> erase(CListIterator<T> position)
-    {
-        SListNode<T>* next = position._M_node->_M_next;
-        SListNode<T>* prev = position._M_node->_M_prev;
-        SListNode<T>* n = position._M_node;
-        prev->_M_next = next;
-        next->_M_prev = prev;
-        n->_M_data.~T();
-        free(n);
-        return CListIterator<T>(next);
-    }
-    void remove(const T& value);                            // 0x004CC150 (T = CTCBase*)
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for list<CTCBase*>::remove 0x004CC150 (STLport's body): VC7.1 then knows the value's address does
-// not escape, so the component stays in a register across the call (retail's LTCG knowledge).
-template <class T> __declspec(noinline) void CRetailList<T>::remove(const T& value)
-{
-    CListIterator<T> first = begin();
-    CListIterator<T> last = end();
-    while (first != last) {
-        CListIterator<T> next = first;
-        ++next;
-        if (*first == value)
-            erase(first);
-        first = next;
-    }
-}
-#pragma auto_inline(on)
-
-struct STCRemoval {
-    CIntelligentPointer PThing;                             // +0x00
-    CTCBase*            PTC;                                // +0x08
-};
-
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;                                          // +0x00
-    SEntry* last;                                           // +0x04
-    SEntry* end_of_storage;                                 // +0x08
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-    SEntry* end() { return last; }
-    SEntry* find(long type)
-    {
-        long key = type;
-        SEntry* it = LowerBound(&key);
-        if (it == last || type < it->type)
-            it = last;
-        return it;
-    }
-    static FABLE_FORCEINLINE SEntry* copy(SEntry* first, SEntry* lastIt, SEntry* result)
-    {
-        for (int n = int(lastIt - first); n > 0; --n) {
-            *result = *first;
-            ++first;
-            ++result;
-        }
-        return result;
-    }
-    FABLE_FORCEINLINE SEntry* erase(SEntry* position)
-    {
-        if (position + 1 != last)
-            copy(position + 1, last, position);
-        --last;
-        return position;
-    }
-};
-
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound 0x0040F020 (STLport lower_bound over the 8-byte entries; the landed
-// 0x00848730 idiom): the key's address does not escape, so its frame word is shared.
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
-
-class CThing {
-public:
-    virtual bool WorldUpdate();
-    unsigned char           _pad04[0x44 - 0x04];
-    CInterfaceMap           Components;                     // +0x44
-    unsigned char           _pad50[4];
-    CRetailList<CTCBase*>   UpdateComponentsList;           // +0x54
-    unsigned char           _pad58[4];                      // +0x58 SerialisationSectionName
-    CTCBase*                PTCDriver;                      // +0x5c
-    unsigned char           _pad60[0x91 - 0x60];
-    unsigned char           m_flags;                        // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    static CRetailList<STCRemoval> TCsToBeRemoved;          // 0x013B8A24
-};
-
-// The thing behind an intelligent pointer is still there and not dead (descriptive name; retail inlines it).
-inline bool IsThingAlive(const CBaseIntelligentPointer& pointer)
-{
-    return ((CThing*)pointer.GetPItem()) != 0 && !((CThing*)pointer.GetPItem())->IsDead();
-}
+// CThing::WorldUpdate() -- frame-update every component on the update list that is not to be removed while the thing is alive; then sweep
+//   the pending-removal list CThing::TCsToBeRemoved: drop entries whose thing is gone or dead, and for this thing's entries unhook the
+//   component (driver pointer, update list, interface map), delete it and drop the entry; always false
+// Leaf: ?WorldUpdate@CThing@@UAE_NXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004C8050, 393 bytes, plain `ret`; CThing vtable slot 19.
+// Name: Ego_r.pdb `?WorldUpdate@CThing@@UAE_NXZ` + FableWin.pdb (slot 19, engine/CThing.h FABLE_RETAIL_CTHING_ORIGINAL_VTABLE). Locals and scopes
+//   from Ego_d.pdb (egod_locals.py): `it` / `pbase` in the update loop block, `it` / `ptc_base` / `components_it` / `tc_interface_type` in the
+//   sweep block.
+// Callees: CTCBase slots 9 FrameUpdate (+0x24), 24 IsDriver (+0x60), 21 GetInterfaceType (+0x54) and the scalar deleting destructor (+0);
+//   CBaseIntelligentPointer::GetPItem 0x00A01B50 (x3: IS_THING_ALIVE's null test and IsDead, then the owner compare) and
+//   ~CBaseIntelligentPointer 0x00A01C10 (list erase); list<CTCBase*>::remove 0x004CC150; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
+//   0x0040F020 (inside the inline Find); free 0x00BFEA14 (the pending-removal node).
+// Data: CThing::TCsToBeRemoved 0x013B8A24 (q11218 spelling, engine/CThing.h FABLE_RETAIL_CTHING_TCSTOBEREMOVED).
+// Shape: the sweep tests the entry through the original IS_THING_ALIVE<CIntelligentPointer<CThing> > (engine/ThingAlive.h, FableWin.pdb
+//   0x01CCA150), which puts the merged erase at the failed test as retail does; list<CTCBase*>::remove is the implicit same-TU instance
+//   of the STLport _list.c body (NF92 opt-in FABLE_RETAIL_STLP_LIST_REMOVE_NOINLINE), so VC7.1 keeps ptc_base in ebp across the call and
+//   shares the argument's frame word with the Find key, and `this` is the spilled frame word (0x004C805E).
+// Port (NF92, q11218 binder): was a local July model (CRetailList / CInterfaceMap / STCRemoval, same-TU noinline stand-ins for remove and
+//   LowerBound, a descriptive IsThingAlive) binding 0x013B8A24 as ?TCsToBeRemoved@CThing@@2V?$CRetailList@USTCRemoval@@@@A; now on the shared
+//   headers.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE_SERIALISE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+#define FABLE_RETAIL_CTHING_TCSTOBEREMOVED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_REMOVE_NOINLINE
+#include "fable_string.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/ThingAlive.h"
 
 bool CThing::WorldUpdate()
 {
-    for (CListIterator<CTCBase*> it = UpdateComponentsList.begin(); it != UpdateComponentsList.end(); ++it) {
-        if (IsDead())
-            return false;
-        CTCBase* tc = *it;
-        if (!tc->PendingRemoval)
-            tc->FrameUpdate();
+    {
+        for (std::list<CTCBase*>::iterator it = UpdateComponentsList.begin(); it != UpdateComponentsList.end(); ++it) {
+            if (IsDead())
+                return false;
+            CTCBase* pbase = *it;
+            if (!pbase->IsToBeRemoved())
+                pbase->FrameUpdate();
+        }
     }
     if (IsDead())
         return false;
-    CListIterator<STCRemoval> it = TCsToBeRemoved.begin();
-    while (it != TCsToBeRemoved.end()) {
-        if (!IsThingAlive(it->PThing))
-            it = TCsToBeRemoved.erase(it);
-        else if (((CThing*)it->PThing.GetPItem()) == this) {
-            CTCBase* tc = it->PTC;
-            if (tc != 0) {
-                if (tc->IsDriver())
-                    PTCDriver = 0;
-                UpdateComponentsList.remove(tc);
-                long type = tc->GetInterfaceType();
-                CInterfaceMap::SEntry* entry = Components.find(type);
-                while (entry != Components.end() && entry->component != tc && entry->type == type)
-                    ++entry;
-                Components.erase(entry);
-                delete tc;
-                it->PTC = 0;
-            }
-            it = TCsToBeRemoved.erase(it);
-        } else
-            ++it;
+    {
+        std::list<std::pair<CIntelligentPointer<CThing>, CTCBase*> >::iterator it = TCsToBeRemoved.begin();
+        while (it != TCsToBeRemoved.end()) {
+            if (!IS_THING_ALIVE(it->first))
+                it = TCsToBeRemoved.erase(it);
+            else if (it->first.Get() == this) {
+                CTCBase* ptc_base = it->second;
+                if (ptc_base) {
+                    if (ptc_base->IsDriver())
+                        PTCDriver = 0;
+                    UpdateComponentsList.remove(ptc_base);
+                    ETCInterfaceType tc_interface_type = ptc_base->GetInterfaceType();
+                    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::iterator components_it = Components.Find(tc_interface_type);
+                    while (components_it != Components.end() && components_it->second != ptc_base && components_it->first == tc_interface_type)
+                        ++components_it;
+                    Components.erase(components_it);
+                    delete ptc_base;
+                    it->second = 0;
+                }
+                it = TCsToBeRemoved.erase(it);
+            } else
+                ++it;
+        }
     }
     return false;
 }

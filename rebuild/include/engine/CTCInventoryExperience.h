@@ -86,6 +86,11 @@ public:
     CWideString GetExperienceAbilityMovieName(EHeroAbility);                        // 0x0056E75F
     CWideString GetExperienceAbilityDescription(long,long);                         // 0x0056FE7C
     CRGBFloatColour GetExperienceAbilityColour(EHeroAbility);                       // 0x0056EDD2
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_TRAINABLESTATTYPE
+    // NF89 opt-in (row 0x0056E632): Ego_r.pdb + FableWin.pdb ?GetHeroTrainableStatType@CTCInventoryExperience@@QAE?AW4EHeroTrainableStatType@@J@Z
+    // (public, out of line at 0x0056E632; the landed caller 0x0057229B binds this spelling). Declaration only.
+    EHeroTrainableStatType GetHeroTrainableStatType(long button);                   // 0x0056E632
+#endif
 #ifndef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_VIRTUALS
     virtual void OpenInventoryInternalPC(bool);                                     // 0x00577AC0
 #endif
@@ -102,6 +107,12 @@ public:
     // (0x005786B5) and ?BuyAbility@CTCInventoryExperience@@QAEXW4EHeroAbility@@J@Z (0x005785B3), public. Declarations only.
     void BuyStat(EHeroTrainableStatType, long);
     void BuyAbility(EHeroAbility, long);
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_SPENDVALUES
+    // NF79 opt-in (round 7, row 0x00574576 OpenInventoryOld): Ego_r.pdb + FableWin.pdb ?InitialiseExperienceSpendValues@CTCInventoryExperience@@QAEXXZ
+    // (0x005724CD) and ?ResetExperienceSpendValues@CTCInventoryExperience@@QAEXXZ (0x0056F03D), public, out of line. Declarations only.
+    void InitialiseExperienceSpendValues();                                         // 0x005724CD
+    void ResetExperienceSpendValues();                                              // 0x0056F03D
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_VIRTUALS
     // Opt-in (chunk 1005): the Ego_r.pdb virtual overrides of the rows of that chunk (vtable 0x0124F11C; slot 29 = 0x0056EF2D,
@@ -214,7 +225,7 @@ public:
     virtual bool IsInventoryScreen() const;
 #endif // FABLE_RETAIL_CTCINVENTORYEXPERIENCE_HISCREEN
 };
-FABLE_STATIC_ASSERT(sizeof(CTCInventoryExperience) == 0x270);
+FABLE_STATIC_ASSERT_AT(183, sizeof(CTCInventoryExperience) == 0x270);
 #endif
 #else
 #ifndef FABLE_ENGINE_CTCINVENTORYEXPERIENCE_H
@@ -356,51 +367,51 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCInventoryExperience) == 0x270);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, TutorialSoundHandles) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, UndoableStatBuys) == 0x140);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, UndoableAbilityBuys) == 0x14c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperiencePrimitiveHandles) == 0x158);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperienceStrengthPrimitiveHandles) == 0x164);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperienceSkillPrimitiveHandles) == 0x170);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperienceWeaponMagicPrimitiveHandles) == 0x17c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperienceAbilityMagicPrimitiveHandles) == 0x188);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperiencePureMagicPrimitiveHandles) == 0x194);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, OpenedExperienceSpending) == 0x1a0);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, Animators) == 0x1a4);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, AnimIt) == 0x1a8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, OrigGeneral) == 0x1ac);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, OrigStrength) == 0x1b0);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, OrigSkill) == 0x1b4);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, OrigWill) == 0x1b8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, statIndicatorPos) == 0x1bc);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, statIndicatorMax) == 0x1c0);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, pYesNo) == 0x1c4);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperienceSpendAdd) == 0x1c8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperienceSpendRemove) == 0x1d0);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, pViewport) == 0x1d8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, pTextViewport) == 0x1dc);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperienceSpendValuesPool) == 0x1e0);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperienceSpendValuesStats) == 0x1ec);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperienceSpendValuesAbility) == 0x1f8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExperienceSpendMagnitude) == 0x204);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, MenuDisplayListExperienceItem) == 0x208);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, CreateBecauseOfUndo) == 0x214);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, NumItems) == 0x218);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, DestroyEverything) == 0x21c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, PreviousScreenType) == 0x220);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, UpgradableStats) == 0x224);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, UpgradableAbilities) == 0x230);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, ExpSliders) == 0x23c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, TutorialsPlayed) == 0x248);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, AccumFadeTime) == 0x254);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, PMousePointer) == 0x258);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, Counter) == 0x25c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, PointsGeneral) == 0x260);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, PointsStrength) == 0x264);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, PointsSkill) == 0x268);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, PointsWill) == 0x26c);
+FABLE_STATIC_ASSERT_AT(325, sizeof(CTCInventoryExperience) == 0x270);
+FABLE_STATIC_ASSERT_AT(326, offsetof(CTCInventoryExperience, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(327, offsetof(CTCInventoryExperience, TutorialSoundHandles) == 0x134);
+FABLE_STATIC_ASSERT_AT(328, offsetof(CTCInventoryExperience, UndoableStatBuys) == 0x140);
+FABLE_STATIC_ASSERT_AT(329, offsetof(CTCInventoryExperience, UndoableAbilityBuys) == 0x14c);
+FABLE_STATIC_ASSERT_AT(330, offsetof(CTCInventoryExperience, ExperiencePrimitiveHandles) == 0x158);
+FABLE_STATIC_ASSERT_AT(331, offsetof(CTCInventoryExperience, ExperienceStrengthPrimitiveHandles) == 0x164);
+FABLE_STATIC_ASSERT_AT(332, offsetof(CTCInventoryExperience, ExperienceSkillPrimitiveHandles) == 0x170);
+FABLE_STATIC_ASSERT_AT(333, offsetof(CTCInventoryExperience, ExperienceWeaponMagicPrimitiveHandles) == 0x17c);
+FABLE_STATIC_ASSERT_AT(334, offsetof(CTCInventoryExperience, ExperienceAbilityMagicPrimitiveHandles) == 0x188);
+FABLE_STATIC_ASSERT_AT(335, offsetof(CTCInventoryExperience, ExperiencePureMagicPrimitiveHandles) == 0x194);
+FABLE_STATIC_ASSERT_AT(336, offsetof(CTCInventoryExperience, OpenedExperienceSpending) == 0x1a0);
+FABLE_STATIC_ASSERT_AT(337, offsetof(CTCInventoryExperience, Animators) == 0x1a4);
+FABLE_STATIC_ASSERT_AT(338, offsetof(CTCInventoryExperience, AnimIt) == 0x1a8);
+FABLE_STATIC_ASSERT_AT(339, offsetof(CTCInventoryExperience, OrigGeneral) == 0x1ac);
+FABLE_STATIC_ASSERT_AT(340, offsetof(CTCInventoryExperience, OrigStrength) == 0x1b0);
+FABLE_STATIC_ASSERT_AT(341, offsetof(CTCInventoryExperience, OrigSkill) == 0x1b4);
+FABLE_STATIC_ASSERT_AT(342, offsetof(CTCInventoryExperience, OrigWill) == 0x1b8);
+FABLE_STATIC_ASSERT_AT(343, offsetof(CTCInventoryExperience, statIndicatorPos) == 0x1bc);
+FABLE_STATIC_ASSERT_AT(344, offsetof(CTCInventoryExperience, statIndicatorMax) == 0x1c0);
+FABLE_STATIC_ASSERT_AT(345, offsetof(CTCInventoryExperience, pYesNo) == 0x1c4);
+FABLE_STATIC_ASSERT_AT(346, offsetof(CTCInventoryExperience, ExperienceSpendAdd) == 0x1c8);
+FABLE_STATIC_ASSERT_AT(347, offsetof(CTCInventoryExperience, ExperienceSpendRemove) == 0x1d0);
+FABLE_STATIC_ASSERT_AT(348, offsetof(CTCInventoryExperience, pViewport) == 0x1d8);
+FABLE_STATIC_ASSERT_AT(349, offsetof(CTCInventoryExperience, pTextViewport) == 0x1dc);
+FABLE_STATIC_ASSERT_AT(350, offsetof(CTCInventoryExperience, ExperienceSpendValuesPool) == 0x1e0);
+FABLE_STATIC_ASSERT_AT(351, offsetof(CTCInventoryExperience, ExperienceSpendValuesStats) == 0x1ec);
+FABLE_STATIC_ASSERT_AT(352, offsetof(CTCInventoryExperience, ExperienceSpendValuesAbility) == 0x1f8);
+FABLE_STATIC_ASSERT_AT(353, offsetof(CTCInventoryExperience, ExperienceSpendMagnitude) == 0x204);
+FABLE_STATIC_ASSERT_AT(354, offsetof(CTCInventoryExperience, MenuDisplayListExperienceItem) == 0x208);
+FABLE_STATIC_ASSERT_AT(355, offsetof(CTCInventoryExperience, CreateBecauseOfUndo) == 0x214);
+FABLE_STATIC_ASSERT_AT(356, offsetof(CTCInventoryExperience, NumItems) == 0x218);
+FABLE_STATIC_ASSERT_AT(357, offsetof(CTCInventoryExperience, DestroyEverything) == 0x21c);
+FABLE_STATIC_ASSERT_AT(358, offsetof(CTCInventoryExperience, PreviousScreenType) == 0x220);
+FABLE_STATIC_ASSERT_AT(359, offsetof(CTCInventoryExperience, UpgradableStats) == 0x224);
+FABLE_STATIC_ASSERT_AT(360, offsetof(CTCInventoryExperience, UpgradableAbilities) == 0x230);
+FABLE_STATIC_ASSERT_AT(361, offsetof(CTCInventoryExperience, ExpSliders) == 0x23c);
+FABLE_STATIC_ASSERT_AT(362, offsetof(CTCInventoryExperience, TutorialsPlayed) == 0x248);
+FABLE_STATIC_ASSERT_AT(363, offsetof(CTCInventoryExperience, AccumFadeTime) == 0x254);
+FABLE_STATIC_ASSERT_AT(364, offsetof(CTCInventoryExperience, PMousePointer) == 0x258);
+FABLE_STATIC_ASSERT_AT(365, offsetof(CTCInventoryExperience, Counter) == 0x25c);
+FABLE_STATIC_ASSERT_AT(366, offsetof(CTCInventoryExperience, PointsGeneral) == 0x260);
+FABLE_STATIC_ASSERT_AT(367, offsetof(CTCInventoryExperience, PointsStrength) == 0x264);
+FABLE_STATIC_ASSERT_AT(368, offsetof(CTCInventoryExperience, PointsSkill) == 0x268);
+FABLE_STATIC_ASSERT_AT(369, offsetof(CTCInventoryExperience, PointsWill) == 0x26c);
 
 #endif // FABLE_ENGINE_CTCINVENTORYEXPERIENCE_H
 #endif

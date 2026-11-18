@@ -7,6 +7,12 @@
 #include "engine/CArray.h"
 template<class K,class V> class CKeyPairCompareLess {
 public:
+#ifdef FABLE_RETAIL_CKEYPAIRCOMPARELESS_FORCEINLINE
+    // Per-TU inline opt-in (NF80, q10923: the /Os STLport heap / insertion-sort TUs of the CVectorMap<CCharString, ..> sorts, rows
+    // 0x004DFDBB / 0x004E1C8A): retail expands the pair compare in place there (0x004DFDD6..0x004DFDEA: the two key pointers,
+    // the CCharString pointer tests, then `call 0x00429950`), where under optimize("s") the plain inline body is called out of line.
+    FABLE_FORCEINLINE
+#endif
     bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b) const { return a.first<b.first; }
 #if defined(FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND) || defined(FABLE_RETAIL_CVECTORMAP_ORIGINAL_FIND)
     // chunk 849 (row 0x00501450): the key/key overload, the second of the two the Codex pass 13 TPI read gives CKeyPairCompareLess; the
@@ -190,6 +196,24 @@ public:
     void Sort();
     void Update() { if(Dirty) Sort(); }
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_DEALLOCATEMEMORY
+    // NF87 opt-in (row 0x004B41F0 CRuntimeQuestPersistence::Clear): Ego_r.pdb / FableWin.pdb ?DeallocateMemory@?$CVectorMap@VCCharString@@
+    // VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@..@@QAEXXZ (Ego_d.pdb locals this, temp), out of line in retail (0x004BB6B0, landed).
+    // Declaration only.
+    void DeallocateMemory();
+#endif
+#ifdef FABLE_RETAIL_CVECTORMAP_ERASEFROMKEY
+    // NF85 opt-in (row 0x004B39B0 CQuestManager::ClearQuestPersistScript): FableWin.pdb ?EraseFromKey@?$CVectorMap@VCCharString@@VCPersistInfo@
+    // CRuntimeQuestPersistence@NQuestManager@@..@@QAEXABVCCharString@@@Z (Ego_d.pdb locals: key, `lower`, then `upper` in an inner block),
+    // inline in retail: LowerBound, the end() test, UpperBound, then the vector's range erase. Needs FABLE_RETAIL_CVECTORMAP_PODIUM_UPPERBOUND.
+    void EraseFromKey(const K& key) {
+        iterator lower=LowerBound(key);
+        if(lower!=this->end()) {
+            iterator upper=UpperBound(key);
+            this->erase(lower,upper);
+        }
+    }
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_SETDIRTY
     // Opt-in (chunk Q7, row 0x0086BFB0 CRandomAppearanceMorph::TransferBinaryIn): Ego_r.pdb ?SetDirty@?$CVectorMap@..@@QAEX_N@Z
     // (CSkeletalMorph, CSkeletalMorphs::CEntry, CAnimComponentBase instances), inline in retail (`mov byte ptr [map+0Dh],0`).
@@ -224,8 +248,16 @@ inline typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType
 template<class K,class V,class CompareType>
 __declspec(noinline) typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K& key)
 {
+#ifdef FABLE_RETAIL_CVECTORMAP_LOWERBOUND_COUNT_FIRST
+    // NF85 opt-in (row 0x004B9750, CVectorMap<CCharString, CRuntimeQuestPersistence::CPersistInfo>::LowerBound): the count taken before
+    // `first`, the non-const twin of NF82's FABLE_RETAIL_CVECTORMAP_CONST_LOWERBOUND_COUNT_FIRST (retail 0x004B9750 and the const
+    // 0x004B97D0 are byte-identical apart from the operator< call displacement).
+    long count=this->size();
+    iterator first=this->begin();
+#else
     iterator first=this->begin();
     long count=this->end()-first;
+#endif
     while(count>0) {
         long half=count/2;
         iterator middle=first+half;
@@ -237,10 +269,20 @@ __declspec(noinline) typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K
 #endif
 #ifdef FABLE_RETAIL_CVECTORMAP_PODIUM_UPPERBOUND
 template<class K,class V,class CompareType>
+#ifdef FABLE_RETAIL_CVECTORMAP_UPPERBOUND_COUNT_FIRST
+// NF85 opt-in (rows 0x004B9850 / 0x004B39B0, the CVectorMap<CCharString, CRuntimeQuestPersistence::CPersistInfo> instance): out of line
+// (every retail caller calls it) with the count taken before `first`, as the LowerBound twin 0x004B9750 computes it.
+__declspec(noinline)
+#endif
 typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::UpperBound(const K& key)
 {
+#ifdef FABLE_RETAIL_CVECTORMAP_UPPERBOUND_COUNT_FIRST
+    long count=this->size();
+    iterator first=this->begin();
+#else
     iterator first=this->begin();
     long count=this->end()-first;
+#endif
     while(count>0){
         long half=count/2;
         iterator middle=first+half;
@@ -258,7 +300,9 @@ __declspec(noinline)
 #endif
 typename CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K& key) const
 {
-#ifdef FABLE_RETAIL_CVECTORMAP_INLINE_CONST_LOWERBOUND
+#if defined(FABLE_RETAIL_CVECTORMAP_INLINE_CONST_LOWERBOUND) || defined(FABLE_RETAIL_CVECTORMAP_CONST_LOWERBOUND_COUNT_FIRST)
+    // (NF82 opt-in FABLE_RETAIL_CVECTORMAP_CONST_LOWERBOUND_COUNT_FIRST, row 0x004B97D0: the out-of-line const body with the count taken
+    // before `first`, as retail's CVectorMap<CCharString, CPersistInfo> instance computes it; the inline opt-in's text.)
     long count=this->size();
     const_iterator first=this->begin();
 #else

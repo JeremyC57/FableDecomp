@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00869020   WARN RELOC_NAME: ?IsAbleToBeDeflected@CTCShotDefinitionBase@NThingShot@@QBE_NXZ -> 007bed60 labelled '_global::GetMember_byte0x68_007bed60'
+00869020   RELOCATION_MATCH PASS   SetAsModifiedByArmour
+00869ca0   WARN STANDIN_LEAF ?_M_insert@?$_Rb_tree@V?$CDefPointer@$$CBVCArmourDef@@@@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Select1st@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@V?$CCompareDefPointer@$$CBVCArmourDef@@M@@V?$allocator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Nonconst_traits@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@2@0@Z (catalog std::multimap::_M_insert; names another function)
+00869ca0   RELOCATION_MATCH PASS   _M_insert
+008a7980   RELOCATION_MATCH PASS   EntityStopFollowing
+008af850   RELOCATION_MATCH PASS   PlayBattleCry
+008b9e50   RELOCATION_MATCH PASS   Initialise
+008d3dd0   RELOCATION_MATCH PASS   MsgGetThingsKilled
+008f7950   RELOCATION_MATCH PASS   CreateDustEffectForCreature
+0090fae0   RELOCATION_MATCH PASS   GetPOwnerObject
+00915190   RELOCATION_MATCH PASS   Cleanup
+00921440   RELOCATION_MATCH PASS   IsExpressionPerfomedTo
+0094b8b0   RELOCATION_MATCH PASS   IsRunnable
+00961880   RELOCATION_MATCH PASS   Update
+009627c0   RELOCATION_MATCH PASS   Update
+00966290   RELOCATION_MATCH PASS   IsExpressionPerfomedTo
+0096c4f0   RELOCATION_MATCH PASS   Update
+
+WINS: 15
+  00869020 RELOCATION_MATCH CHitParameters::?SetAsModifiedByArmour@CHitParameters@@QAEXABVCThing@@AAV?$CDefPointer@$$CBVCArmourDef@@@@@Z
+  00869ca0 RELOCATION_MATCH std::multimap::?_M_insert@?$_Rb_tree@V?$CDefPointer@$$CBVCArmourDef@@@@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Select1st@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@V?$CCompareDefPointer@$$CBVCArmourDef@@M@@V?$allocator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Nonconst_traits@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@2@0@Z
+  008a7980 RELOCATION_MATCH CGameScriptInterface::?EntityStopFollowing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  008af850 RELOCATION_MATCH CombatDialogueManager::?PlayBattleCry@CombatDialogueManager@@QAE_NAAVCThingCreatureBase@@@Z
+  008b9e50 RELOCATION_MATCH CCreatureAction_TeleportOut::?Initialise@CCreatureAction_TeleportOut@@UAEXXZ
+  008d3dd0 RELOCATION_MATCH CGameScriptThing::?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z
+  008f7950 RELOCATION_MATCH _global::?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  0090fae0 RELOCATION_MATCH CAIStateGroup_MinionSitAtInn::?GetPOwnerObject@CAIStateGroup_MinionSitAtInn@@MAE_NPAPAVCThing@@@Z
+  00915190 RELOCATION_MATCH CAIStateGroup_KidHurtSelfRunToMother::?Cleanup@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ
+  00921440 RELOCATION_MATCH CAIStateGroup_MinionFollowThing::?IsExpressionPerfomedTo@CAIStateGroup_MinionFollowThing@@IAE_NABVCCharString@@@Z
+  0094b8b0 RELOCATION_MATCH CAIStateGroup_SitInPub::?IsRunnable@CAIStateGroup_SitInPub@@MAE_NXZ
+  00961880 RELOCATION_MATCH CAIStateGroup_BanditKingLunge::?Update@CAIStateGroup_BanditKingLunge@@MAEXXZ
+  009627c0 RELOCATION_MATCH CAIStateGroup_IceTrollIcicleAssault::?Update@CAIStateGroup_IceTrollIcicleAssault@@MAEXXZ
+  00966290 RELOCATION_MATCH CAIStateGroup_CarryCrateAndFollow::?IsExpressionPerfomedTo@CAIStateGroup_CarryCrateAndFollow@@ABE_NABVCCharString@@AAV?$CIntelligentPointer@VCThing@@@@@Z
+  0096c4f0 RELOCATION_MATCH CAIStateGroup_Thunder::?Update@CAIStateGroup_Thunder@@UAEXXZ

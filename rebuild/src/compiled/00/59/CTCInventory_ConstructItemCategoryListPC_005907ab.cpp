@@ -1,5 +1,5 @@
 // CTCInventory::ConstructItemCategoryListPC(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long,long> >& items, NUISystem::CComponent* owner, const CCharString& templateName, const CCharString& descriptionSymbol, bool checkUsable) -- PC inventory category: a branch entry captioned "title x <total count>" with a subtitle, the category description (shown in the owner's viewport) and an optional template component, all registered with the owner's frame; an empty category clears the entry, otherwise the items are merged per def into a map, a sub-list titled "<title>: <name>" gets the merged count, and an items-actions list (the "can't use" variant, with its not-usable entry cleared and the icon action reset, when the hero's carried thing is not alive) gets the same title before ContructItemListsPC fills them
-// Leaf: ConstructItemCategoryListPC@CTCInventory
+// Leaf: ?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4_N@Z
 // Inline-budget: __declspec(noinline) through the header opt-ins FABLE_RETAIL_STLP_MAP_CTOR_NOINLINE (map<long,long>() COMDAT 0x004DF86C),
 //   FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE (tree destructor COMDAT 0x004DD2B1) and FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE (_M_find 0x00592F92)
 //   -- retail calls all three out of line here (bodies visible, as STLport puts them in every TU); recheck_final.log RELOCATION_MATCH PASS.
@@ -21,291 +21,145 @@
 //   actions-list name is a ternary on a `usable` flag (VC threads the flag test, laying the normal-name arm out of line)
 //   built as a named CCharString; the merged entry goes in through `insert(make_pair(key, count))` (the count is loaded
 //   into a register before the key store; a direct pair constructor stores it at once).
-// Layout: retail CTCInventory ParentThing +0x04; engine/CTCInventory.h is the PDB layout, so `this` is a local model.
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+// NF80 (q10943): moved onto the shared headers, the 0x005F45B5 recipe: engine/CTCInventory.h (retail branch, PCMENUS + the overlay's
+//   ITEMCATEGORYLIST: ContructItemListsPC / private CreateMenuDescPC), engine/NUISystem_CManager / _CList / _CText / _CViewport /
+//   _CDeletion.h, engine/CThing.h (PeekTC expanded: the const LowerBound 0x004365B0), engine/CTCTargetingBase.h and engine/ThingAlive.h. The old placeholder vtable's
+//   names are the headers' slots: 59 AddChild, 62 SetDeletion(CDeletion) (the local "CAction" record is NUISystem::CDeletion: Method,
+//   then the AssociatedParents list; FableWin.pdb ??0CDeletion@NUISystem@@QAE@ABV01@@Z = 0x0042CD84), 92 MakeUnavailable, 124
+//   AddPositionChild, CText 142 GetValue / 144 SetValue, CList AddNonScrollingChild / AddScrollingChildAndSetOffsets /
+//   InitialiseOffsets / SetDefaultChild, CViewport 142 AddFakeChild, and the parent thing's interface 8 is CTCTargetingBase (TCI_TARGETING;
+//   slot 33 GetPTargetedThing).
+#define FABLE_RETAIL_CDELETION
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
-// NF61 (round 7, q10567): the local map<long,long> model (CLongLongMap / CLongMapNode) and the local std::pair / make_pair / vector /
-//   bitset stand-ins are replaced by stlport/fable_map.h + stlport/fable_containers.h: FABLE_RETAIL_STLP_MAP (visible _tree.c
-//   insert_unique), FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE (_M_find 0x00592F92 called out of line, as the landed 0x0058EF79 binds it),
-//   the NF61 overlay opt-in FABLE_RETAIL_STLP_MAP_CTOR_NOINLINE (map() COMDAT 0x004DF86C), FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
-//   (the tree destructor COMDAT 0x004DD2B1, as 0x004DF885 binds it) and FABLE_RETAIL_STLP_BITSET_TEST_DECL (bitset<274>::test 0x00410DE0).
-//   The insert binds NF58's _Rb_tree<long, pair<const long, long>, ...>::insert_unique 0x004E539F; ContructItemListsPC now takes the
-//   FableWin.pdb std::map<long,long>& (the spelling its landed row 0x00590198 defines). The other local views stay (CTCInventory,
-//   NUISystem components, CThing, strings: their move is separate work).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE_COMPONENT
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORY
+#define FABLE_RETAIL_CTCINVENTORY_QUICKACCESS
+#define FABLE_RETAIL_CTCINVENTORY_PCMENUS
+#define FABLE_RETAIL_CTCINVENTORY_ITEMCATEGORYLIST
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_IS_THING_ALIVE_NOINLINE
+#define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_STLP_MAP_CTOR_NOINLINE
 #define FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
 #define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "stlport/fable_map.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    bool operator!=(const char* text) const;            // 0x0099E960
-};
-CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
-class CWideString { public:
-    void* PStringData;
-    CWideString(const CWideString& other);              // 0x0099B720
-    ~CWideString();                                     // 0x0099B510
-    const CWideString& operator+=(const CWideString& other);        // 0x0099B8D0
-    const CWideString& operator+=(const unsigned short* text);      // 0x0099B940
-};
-CWideString __fastcall GetXString();                    // 0x005CC772
-CWideString __fastcall GFIntToWideString(long value);     // 0x00405F00
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
-};
-struct CGameSubsystem {
-    unsigned char _pad00[0x14];
-    CDataBank*    TextBank;                             // +0x14
-};
-namespace { extern CCharString TITLE_NAME; }                  // 0x013B8B4C ("ITEMS TITLE")
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
 #include "engine/CCountedPointer.h"
-namespace NUISystem {
-struct CActionParamList {                               // STLport list<CActionParam*> (one node pointer)
-    void* _M_node;
-    ~CActionParamList();                                // 0x0042ABCA
-};
-class CAction { public:                                        // console action record, 8 bytes
-    long             ActionType;
-    CActionParamList UIActionParams;
-    CAction();                                          // 0x0042BED4
-    CAction(const CAction& other);                      // 0x0042CD84
-};
-class CComponent { public:
-    virtual void v000(); virtual void v001(); virtual void v002();
-    virtual CComponent* FindChild(CCharString name);                       // slot 3 (+0x0C)
-    virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
-    virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
-    virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034();
-    virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
-    virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049();
-    virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054();
-    virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058();
-    virtual void AddChildAtEnd(const CCountedPointer<CComponent>& child);  // slot 59 (+0xEC)
-    virtual void v060(); virtual void v061();
-    virtual void SetAction(CAction action);                                    // slot 62 (+0xF8)
-    virtual void v063(); virtual void v064();
-    virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
-    virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
-    virtual void v075(); virtual void v076(); virtual void v077(); virtual void v078(); virtual void v079();
-    virtual void v080(); virtual void v081(); virtual void v082();
-    virtual void SetName(const CCharString& name);                         // slot 83 (+0x14C)
-    virtual void v084(); virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088();
-    virtual void v089(); virtual void v090(); virtual void v091();
-    virtual void Clear();                                                  // slot 92 (+0x170)
-    virtual void v093(); virtual void v094(); virtual void v095(); virtual void v096(); virtual void v097();
-    virtual void v098(); virtual void v099(); virtual void v100(); virtual void v101(); virtual void v102();
-    virtual void v103(); virtual void v104(); virtual void v105(); virtual void v106(); virtual void v107();
-    virtual void v108(); virtual void v109(); virtual void v110(); virtual void v111(); virtual void v112();
-    virtual void v113(); virtual void v114(); virtual void v115(); virtual void v116(); virtual void v117();
-    virtual void v118(); virtual void v119(); virtual void v120(); virtual void v121(); virtual void v122();
-    virtual void v123();
-    virtual void AddFrameMember(CComponent* member);                       // slot 124 (+0x1F0)
-    virtual void v125(); virtual void v126(); virtual void v127(); virtual void v128(); virtual void v129();
-    virtual void v130(); virtual void v131(); virtual void v132(); virtual void v133(); virtual void v134();
-    virtual void v135(); virtual void v136(); virtual void v137(); virtual void v138(); virtual void v139();
-    virtual void v140(); virtual void v141();
-    virtual const CWideString& GetText();                                  // slot 142 (+0x238)
-    virtual void v143();
-    virtual void SetText(const CWideString& text, bool a, bool b);         // slot 144 (+0x240)
-    virtual void SetHeader(const CCountedPointer<CComponent>& header);     // slot 145 (+0x244)
-    virtual void v146(); virtual void v147(); virtual void v148(); virtual void v149(); virtual void v150();
-    virtual void v151();
-    virtual void AddEntry(const CCountedPointer<CComponent>& entry);       // slot 152 (+0x260)
-    virtual void v153(); virtual void v154(); virtual void v155();
-    virtual void SetItemCount(long count);                                 // slot 156 (+0x270)
-    virtual void v157();
-    virtual void SetSelectedIndex(long index);                             // slot 158 (+0x278)
-};
-class CViewport { public:                                      // the description viewport (its slot 142 takes the content)
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
-    virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
-    virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034();
-    virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
-    virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049();
-    virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054();
-    virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
-    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064();
-    virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
-    virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
-    virtual void v075(); virtual void v076(); virtual void v077(); virtual void v078(); virtual void v079();
-    virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084();
-    virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089();
-    virtual void v090(); virtual void v091(); virtual void v092(); virtual void v093(); virtual void v094();
-    virtual void v095(); virtual void v096(); virtual void v097(); virtual void v098(); virtual void v099();
-    virtual void v100(); virtual void v101(); virtual void v102(); virtual void v103(); virtual void v104();
-    virtual void v105(); virtual void v106(); virtual void v107(); virtual void v108(); virtual void v109();
-    virtual void v110(); virtual void v111(); virtual void v112(); virtual void v113(); virtual void v114();
-    virtual void v115(); virtual void v116(); virtual void v117(); virtual void v118(); virtual void v119();
-    virtual void v120(); virtual void v121(); virtual void v122(); virtual void v123(); virtual void v124();
-    virtual void v125(); virtual void v126(); virtual void v127(); virtual void v128(); virtual void v129();
-    virtual void v130(); virtual void v131(); virtual void v132(); virtual void v133(); virtual void v134();
-    virtual void v135(); virtual void v136(); virtual void v137(); virtual void v138(); virtual void v139();
-    virtual void v140(); virtual void v141();
-    virtual void SetContent(CComponent* content);                          // slot 142 (+0x238)
-};
-class CList : public CComponent { public:};
-class CManager { public:
-    CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-    CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
-                                         float c, CCharString d, float e, CCharString button);   // 0x00428494
-    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
-};
-}
-using namespace NUISystem;
-typedef std::vector<std::pair<long, long> > CItemVector;
-class CTCBase;
-// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
-//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
-enum ETCInterfaceType { };
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class C> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
-    value_type* _M_start;                                   // +0x00 (the STLport vector)
-    value_type* _M_finish;                                  // +0x04
-    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
-    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CBaseObject;
-bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0
-struct CTCCarryingSlot {                                // the parent thing's interface 8
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32();
-    virtual CBaseObject* GetHeldThing();                // slot 33 (+0x84)
-};
-class CThing { public:
-    unsigned char _pad00[0x20];
-    std::bitset<274> m_present;                            // +0x20 (9 words, stlport/fable_containers.h)
-    CInterfaceMap m_interfaces;                         // +0x44
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const
-    {
-        if (m_present.test(kind)) {
-            ETCInterfaceType key = (ETCInterfaceType)kind;
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            *out = (T*)((it == map->_M_finish || kind < it->first) ? map->_M_finish : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
-typedef std::map<long, long> CLongLongMap;               // STLport 4.6 map<long,long> (stlport/fable_map.h)
-class CTCInventory { public:
-    void*   __vftable;                                  // +0x00
-    CThing* ParentThing;                                private: // +0x04
-    CCountedPointer<CComponent> CreateMenuDescPC(const CCharString& descriptionSymbol); public:   // 0x00582673
-    void ContructItemListsPC(CLongLongMap& items, CList* subList, CComponent* owner, CCountedPointer<CComponent>& actionsList);   // 0x00590198
-    void ConstructItemCategoryListPC(CWideString& title, CList* list, CItemVector& items, CComponent* owner,
-                                     const CCharString& templateName, const CCharString& descriptionSymbol, bool checkUsable);
-};
-void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, CItemVector& items, CComponent* owner,
-                                               const CCharString& templateName, const CCharString& descriptionSymbol, bool checkUsable)
+#include "engine/CThing.h"
+#include "engine/CTCInventory.h"
+#include "engine/CTCTargetingBase.h"
+#include "engine/ThingAlive.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/NUISystem_CList.h"
+#include "engine/NUISystem_CText.h"
+#include "engine/NUISystem_CViewport.h"
+#include "engine/NUISystem_CDeletion.h"
+#include "engine/CTCInventoryStats.h"
+CWideString FABLE_FASTCALL GFIntToWideString(long value);     // 0x00405F00
+
+namespace { extern CCharString TITLE_NAME; }                  // 0x013B8B4C ("ITEMS TITLE")
+
+void CTCInventory::ConstructItemCategoryListPC(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long, long> >& items,
+                                               NUISystem::CComponent* owner, const CCharString& templateName,
+                                               const CCharString& descriptionSymbol, bool checkUsable)
 {
-    CManager* fe = CManager::GetInstance();
-    CViewport* viewport = (CViewport*)owner->FindChild("PC_DESCRIPTION_VIEWPORT");
-    CComponent* frame = owner->FindChild("PC_UI_FRAME");
-    CCountedPointer<CComponent> subtitle;
+    NUISystem::CManager* fe = NUISystem::CManager::GetInstance();
+    NUISystem::CViewport* viewport = static_cast<NUISystem::CViewport*>(owner->FindChild("PC_DESCRIPTION_VIEWPORT"));
+    NUISystem::CComponent* frame = owner->FindChild("PC_UI_FRAME");
+    CCountedPointer<NUISystem::CComponent> subtitle;
     CWideString caption(title);
     if (!items.empty()) {
-        caption += GetXString();
+        caption += CTCInventoryStats::GetXString();
         long total = 0;
         for (unsigned long i = 0; i < items.size(); ++i)
             total += items[i].second;
         caption += GFIntToWideString(total);
     }
     subtitle.Reset(fe->CreateComponent("PC_SUBTITLE", false));
-    subtitle->SetText(caption, true, true);
-    CCountedPointer<CComponent> entry(fe->CreateMenuEntryComponent(caption, 0.0f, 1.0f, "PC_MENU_ENTRY_BRANCH_TEMPLATE",
-                                                                   0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
-    entry->AddChildAtEnd(subtitle);
+    static_cast<NUISystem::CText*>(subtitle.Get())->SetValue(caption, true, true);
+    CCountedPointer<NUISystem::CComponent> entry(fe->CreateMenuEntryComponent(caption, 0.0f, 1.0f, "PC_MENU_ENTRY_BRANCH_TEMPLATE",
+                                                                              0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
+    entry->AddChild(subtitle);
     if (frame)
-        frame->AddFrameMember(subtitle.Data);
-    list->AddEntry(entry);
-    CCountedPointer<CComponent> description = CreateMenuDescPC(descriptionSymbol);
-    entry->AddChildAtEnd(description);
+        frame->AddPositionChild(subtitle.Get());
+    list->AddScrollingChildAndSetOffsets(entry);
+    CCountedPointer<NUISystem::CComponent> description = CreateMenuDescPC(descriptionSymbol);
+    entry->AddChild(description);
     if (frame)
-        frame->AddFrameMember(description.Data);
-    viewport->SetContent(description.Data);
+        frame->AddPositionChild(description.Get());
+    viewport->AddFakeChild(description.Get());
     if (templateName != "") {
-        CCountedPointer<CComponent> extra(fe->CreateComponent(templateName, false));
-        entry->AddChildAtEnd(extra);
+        CCountedPointer<NUISystem::CComponent> extra(fe->CreateComponent(templateName, false));
+        entry->AddChild(extra);
         if (frame)
-            frame->AddFrameMember(extra.Data);
+            frame->AddPositionChild(extra.Get());
     }
     if (items.empty()) {
-        entry->Clear();
+        entry->MakeUnavailable();
     } else {
-        CLongLongMap merged;
+        std::map<long, long> merged;
         for (long i = 0; i < items.end() - items.begin(); ++i) {
             std::pair<long, long>* item = &items[i];
             long key = item->first;
-            CLongLongMap::iterator found = merged.find(key);
+            std::map<long, long>::iterator found = merged.find(key);
             if (found == merged.end())
                 merged.insert(std::make_pair(key, item->second));
             else
                 (*found).second += item->second;
         }
-        CCountedPointer<CComponent> subList(fe->CreateComponent("PC_SUB_LIST", false));
-        CComponent* sub = subList.Data;
-        entry->AddChildAtEnd(subList);
-        sub->SetItemCount(merged.size());
-        CCountedPointer<CComponent> titleComp(fe->CreateComponent("PC_ITEM_TITLE", false));
-        CComponent* titleObject = titleComp.Data;
-        CWideString titleText(titleObject->GetText());
+        CCountedPointer<NUISystem::CComponent> subList(fe->CreateComponent("PC_SUB_LIST", false));
+        NUISystem::CList* sub = static_cast<NUISystem::CList*>(subList.Get());
+        entry->AddChild(subList);
+        sub->InitialiseOffsets(merged.size());
+        CCountedPointer<NUISystem::CComponent> titleComp(fe->CreateComponent("PC_ITEM_TITLE", false));
+        NUISystem::CText* titleObject = static_cast<NUISystem::CText*>(titleComp.Get());
+        CWideString titleText(titleObject->GetValue());
         titleText += L":";
         titleText += title;
-        titleObject->SetText(titleText, true, true);
+        titleObject->SetValue(titleText, true, true);
         titleComp->SetName(TITLE_NAME);
-        sub->SetHeader(titleComp);
+        sub->AddNonScrollingChild(titleComp);
         if (frame)
-            frame->AddFrameMember(titleComp.Data);
+            frame->AddPositionChild(titleComp.Get());
         bool usable = true;
-        CTCCarryingSlot* carrying;
-        if (checkUsable && ParentThing->GetInterface(&carrying, 8) && !IS_THING_ALIVE(carrying->GetHeldThing()))
+        const CTCTargetingBase* targeting;
+        if (checkUsable && ParentThing->PeekTC(TCI_TARGETING, &targeting) && !IS_THING_ALIVE(targeting->GetPTargetedThing()))
             usable = false;
         CCharString actionsListName(usable ? "PC_UI_LIST_ITEMS_ACTIONS" : "PC_UI_LIST_ITEMS_ACTIONS_CANT_USE");
-        CCountedPointer<CComponent> actions(CManager::GetInstance()->CreateComponent(actionsListName, false));
-        CComponent* actionsList = actions.Data;
-        actionsList->SetSelectedIndex(0);
+        CCountedPointer<NUISystem::CComponent> actions(NUISystem::CManager::GetInstance()->CreateComponent(actionsListName, false));
+        NUISystem::CList* actionsList = static_cast<NUISystem::CList*>(actions.Get());
+        actionsList->SetDefaultChild((long)0);
         if (!usable) {
-            CComponent* notUsable = actionsList->FindChild("PC_UI_MENU_ENTRY_ITEM_ACTION_NOT_USE");
-            notUsable->Clear();
-            CComponent* icon = notUsable->FindChild("UI_ACTION_ICON");
+            NUISystem::CComponent* notUsable = actionsList->FindChild("PC_UI_MENU_ENTRY_ITEM_ACTION_NOT_USE");
+            notUsable->MakeUnavailable();
+            NUISystem::CComponent* icon = notUsable->FindChild("UI_ACTION_ICON");
             if (icon) {
-                CAction reset;
-                reset.ActionType = 1;
-                icon->SetAction(reset);
+                NUISystem::CDeletion deletion;
+                deletion.Method = NUISystem::CDeletion::UI_DELETE_THIS_INSTANCE;
+                icon->SetDeletion(deletion);
             }
         }
-        CCountedPointer<CComponent> actionsTitle(fe->CreateComponent("PC_ITEM_TITLE", false));
-        actionsTitle->SetText(titleText, true, true);
+        CCountedPointer<NUISystem::CComponent> actionsTitle(fe->CreateComponent("PC_ITEM_TITLE", false));
+        static_cast<NUISystem::CText*>(actionsTitle.Get())->SetValue(titleText, true, true);
         actionsTitle->SetName(TITLE_NAME);
-        actionsList->SetHeader(actionsTitle);
+        actionsList->AddNonScrollingChild(actionsTitle);
         if (frame)
-            frame->AddFrameMember(actionsTitle.Data);
-        ContructItemListsPC(merged, (CList*)sub, owner, actions);
+            frame->AddPositionChild(actionsTitle.Get());
+        ContructItemListsPC(merged, sub, owner, actions);
     }
 }

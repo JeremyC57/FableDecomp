@@ -7,6 +7,9 @@
 // read through the inline public accessors Get() / GetConstantFPS() (Ego_r + FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ).
 // Members whose classes have no shared header are opaque `unsigned char X[N]` carrying their real type in a comment.
 #include "engine/CGameComponent.h"
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INITSTRUCTURE
+#include "engine/CMainGameComponentInit.h"
+#endif
 class CGame;
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT
 class CGameDefinitionManager;
@@ -178,7 +181,14 @@ protected:
 #else
     unsigned char PMainGraphicBank[8];              // +0x161C8 CCountedPointer<CGraphicDataBank>
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INITSTRUCTURE
+    // NF73 opt-in (row 0x00416953 PostInit): the member typed, Ego_r.pdb CMainGameComponent::InitStructure (CMainGameComponentInit,
+    // engine/CMainGameComponentInit.h: InitialWorldName +0x0, InitialWorldHolySiteName +0x4, InitialQuestName +0x8, SaveGameName +0xC),
+    // read in place by PostInit (0x00416979 `cmp [esi+161DCh]`). Same size and offset.
+    CMainGameComponentInit InitStructure;           // +0x161D0
+#else
     unsigned char InitStructure[0x10];              // +0x161D0 CMainGameComponentInit
+#endif
     bool Initialised;                               // +0x161E0
     bool AllowRender;                               // +0x161E1
     bool Rendered;                                  // +0x161E2

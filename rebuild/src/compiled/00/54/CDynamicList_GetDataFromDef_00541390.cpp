@@ -11,21 +11,21 @@
 #include <new>
 #include "engine/CIVCountedPointeeBase.h"
 #include "rebuild_abi.h"
+// NF75 (round 7, land1117fu q10918): the index search is STLport 4.6 find(first, last, val) (inline forwarder) over the out-of-line
+//   std::__find<const unsigned long*, unsigned long> 0x00535F5A, whose body the TU sees (stlport/fable_algorithm.h
+//   FIND_RANDOM_DISPATCH + FIND_NOINLINE_BODY, the landed 0x007BF510 form); was the same-TU noinline stand-in
+//   NUISystem::FindIndex(.., const RandomAccessTag&).
+#define FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
+#define FABLE_RETAIL_STLP_FIND_NOINLINE_BODY
+#include "stlport/fable_containers.h"
+#include "stlport/fable_algorithm.h"
 #define CComponent CComponentDonor
 #include "engine/_quarantine/CComponent.h"
 #undef CComponent
 namespace NUISystem {
 class CComponent;
 struct ChildPointer {CComponent* Data;void* CountInfo;CComponent* GetPItem()const{return Data;}operator CComponent*()const{return GetPItem();}};
-struct RandomAccessTag {RandomAccessTag(){}};struct FalseType {FalseType(){}};
-const unsigned long* __fastcall FindIndex(const unsigned long*,const unsigned long*,const unsigned long&,const RandomAccessTag&); //00535F5A
-#pragma auto_inline(off)
-const unsigned long* __fastcall FindIndex(const unsigned long* first,const unsigned long* last,const unsigned long& value,const RandomAccessTag&){
- long groups=(last-first)/4;
- for(;groups>0;--groups){if(*first==value)return first;++first;if(*first==value)return first;++first;if(*first==value)return first;++first;if(*first==value)return first;++first;}
- switch(last-first){case 3:if(*first==value)return first;++first;case 2:if(*first==value)return first;++first;case 1:if(*first==value)return first;}return last;
-}
-#pragma auto_inline(on)
+struct FalseType {FalseType(){}};
 struct ChildArray {ChildPointer* Start;ChildPointer* Finish;ChildPointer* Limit;unsigned long size()const{return Finish-Start;}ChildPointer& operator[](unsigned long n){return Start[n];}};
 struct IndexArray {unsigned long* Start;unsigned long* Finish;unsigned long* Limit;};
 struct Vector2 {float X,Y;};
@@ -75,7 +75,7 @@ void CDynamicList::GetDataFromDef(){
  NumVisible=definition->DownLimit-definition->UpLimit;
  for(unsigned long i=0;i<Children.size();++i){
   const unsigned long* last=definition->NonScrollingChildren.Finish;
-  if(FindIndex(definition->NonScrollingChildren.Start,last,i,RandomAccessTag())==last){AppendScrollingChild(Children[i]);}
+  if(std::find<const unsigned long*>(definition->NonScrollingChildren.Start,last,i)==last){AppendScrollingChild(Children[i]);}
  }
 }
 }

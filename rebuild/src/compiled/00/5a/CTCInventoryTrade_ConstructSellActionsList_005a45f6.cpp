@@ -5,6 +5,9 @@
 //   landed ConstructBuyActionsList 0x005A3E47, ported from it.
 // Callees: as 0x005A3E47, plus CTCShop::IsValidStockItem(long) const 0x007723D0; no IsItemAffordable / inventory-room clamp (the hero's
 //   inventory component is looked up and dropped: only its UsingComponents test 0x00410DE0 survives, 0x005A46B6).
+// NF87 (2026-11-17): the hero pointer type is engine/CThingPlayerCreature.h's retail branch (FABLE_RETAIL_CTHINGPLAYERCREATURE over the
+//   retail creature chain CTHINGPHYSICAL / CTHINGGAMEOBJECT / CTHINGCREATUREBASE, with CCLASSFACTORY), as NF85 moved the twin 0x005A731F,
+//   not the old empty local `class CThingPlayerCreature : public CThing`.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -19,6 +22,11 @@
 #define FABLE_RETAIL_CTCINVENTORYTRADE
 #define FABLE_RETAIL_CTCINVENTORYTRADE_ACTIONSLISTS
 #define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #define FABLE_RETAIL_STLP_LIST
@@ -37,6 +45,7 @@
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
 #include "engine/ETCInterfaceType.h"
 #include "engine/CThing.h"
+#include "engine/CThingPlayerCreature.h"
 #include "engine/CTCInventoryTrade.h"
 #include "engine/CTCShop.h"
 #include "engine/CTCInventoryItem.h"
@@ -51,7 +60,6 @@
 using namespace NUISystem;
 using NGameText::CDataBank;
 
-class CThingPlayerCreature : public CThing { };
 
 CWideString FABLE_FASTCALL GFIntToWideString(long value);                 // 0x00405F00
 

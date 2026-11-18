@@ -1,0 +1,87 @@
+addr       parity           behav  name
+00450903   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@Z -> 00450903 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00450903   WARN STANDIN_LEAF ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@Z (catalog LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray; names another function)
+00450903   RELOCATION_MATCH PASS   BuildTreeArray
+0045128d   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@Z -> 00450903 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+0045128d   RELOCATION_MATCH PASS   RbTree_Clear_0045128d
+004e6e0c   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@Z -> 004e6e0c labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+004e6e0c   WARN RELOC_NAME: ??_G?$pair@$$CBJVCComboMultiplierData@@@std@@QAEPAXI@Z -> 004e3625 labelled '_global::ScalarDeletingDtor_004e3625'
+004e6e0c   WARN STANDIN_LEAF ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@Z (catalog LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray; names another function)
+004e6e0c   RELOCATION_MATCH PASS   BuildTreeArray
+00595845   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00595845   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+00595845   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00595845   WARN SHARED_HEADER_AVAILABLE CObserver
+00595845   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00595845   WARN RELOC_NAME: ?back@?$deque@PAVCComponent@NUISystem@@@std@@QAEAAPAVCComponent@NUISystem@@XZ -> 0059b039 labelled 'CScreenStack::Top'
+00595845   RELOCATION_MATCH PASS   GotoNewProfileScreen
+00599d5c   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00599d5c   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+00599d5c   WARN SHARED_HEADER_AVAILABLE CGameJoystickManager
+00599d5c   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent
+00599d5c   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00599d5c   RELOCATION_MATCH PASS   DoPressStart
+0059a238   WARN SHARED_HEADER_AVAILABLE CFileInstaller
+0059a238   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0059a238   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+0059a238   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent
+0059a238   WARN SHARED_HEADER_AVAILABLE CVirtualKeyboard
+0059a238   WARN RELOC_NAME: ?Compare_Unsigned16Array@CWideString@@SA_NPBX0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0059a238   WARN RELOC_NAME: ?RestartAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ -> 0042dbee labelled 'CNewFrontendGameComponent::ResetAttractModeTimer'
+0059a238   RELOCATION_MATCH PASS   Action
+0063a970   RELOCATION_MATCH PASS   SetThemeAtBlock
+0063a9e0   RELOCATION_MATCH PASS   SetThemeBlendAtBlock
+0063aa50   RELOCATION_MATCH PASS   GetThemeAtBlock
+0063aab0   RELOCATION_MATCH PASS   GetThemeBlendAtBlock
+0063eb20   RELOCATION_MATCH PASS   DestroyThemeAt
+006dc020   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@Z -> 00450903 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dc020   WARN STANDIN_LEAF ??1?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QAE@XZ (catalog CRetailTree_erase00450903::~CRetailTree_erase00450903; names another function)
+006dc020   RELOCATION_MATCH PASS   ~CRetailTree_erase00450903
+006dc350   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@Z -> 00450903 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dc350   RELOCATION_MATCH PASS   GFSerialiseMapBinaryOut
+0081ee60   RELOCATION_MATCH PASS   SetEngineThemeAt
+0081efc0   MATCH            PASS   SetEngineBlendAt
+0081f090   MATCH            PASS   GetEngineThemeAt
+0081f170   RELOCATION_MATCH PASS   GetEngineBlendAt
+00868a40   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@Z -> 00450903 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00868a40   RELOCATION_MATCH PASS   ClearAllDamage
+008c2550   RELOCATION_MATCH PASS   FinishAction
+009edc50   MATCH            PASS   DeleteViaVtable0_009edc50
+009ee540   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCConsoleInputBase@@@@SIXPAX@Z -> 009edc50 labelled '_global::DeleteViaVtable0_009edc50'
+009ee540   RELOCATION_MATCH PASS   Reset
+008c1600   RELOCATION_MATCH PASS   GetValidRushPosition
+004e81e4   WARN STANDIN_LEAF ??1?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@QAE@XZ (catalog std::list<T_004e81e4>::~list; names another function)
+004e81e4   RELOCATION_MATCH PASS   ~list
+004ebb1c   WARN RELOC_NAME: ??1CAttackHistoryComboVector@@QAE@XZ -> 004e81c1 labelled '_global::StdList_Dtor_004e81c1'
+004ebb1c   WARN RELOC_NAME: ??1CStatIncreaseMap@@QAE@XZ -> 004e81fb labelled 'std::list<T_004e81fb>::~list'
+004ebb1c   WARN RELOC_NAME: ??1CLongDefStringMap@@QAE@XZ -> 004dd21c labelled '_global::StdList_Dtor_004dd21c'
+004ebb1c   WARN RELOC_NAME: ??1?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@QAE@XZ -> 004e81e4 labelled 'std::list<T_004e81e4>::~list'
+004ebb1c   RELOCATION_MATCH PASS   ~CHeroExperienceDef
+006db060   RELOCATION_MATCH PASS   TransferBinaryOut
+
+WINS: 25
+  00450903 RELOCATION_MATCH LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@Z
+  0045128d RELOCATION_MATCH _global::?clear@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QAEXXZ
+  004e6e0c RELOCATION_MATCH LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@Z
+  00595845 RELOCATION_MATCH NUISystem::CFrontEndManager::?GotoNewProfileScreen@CFrontEndManager@NUISystem@@IAEXXZ
+  00599d5c RELOCATION_MATCH NUISystem::CFrontEndManager::?DoPressStart@CFrontEndManager@NUISystem@@IAEXXZ
+  0059a238 RELOCATION_MATCH CFrontEndManager::?Action@CFrontEndManager@NUISystem
+  0063a970 RELOCATION_MATCH CWorldMap::?SetThemeAtBlock@CWorldMap@@QAEXABVC2DCoordI@@KKW4EThemePaintType@@@Z
+  0063a9e0 RELOCATION_MATCH CWorldMap::?SetThemeBlendAtBlock@CWorldMap@@QAEXABVC2DCoordI@@EKW4EThemePaintType@@@Z
+  0063aa50 RELOCATION_MATCH CWorldMap::?GetThemeAtBlock@CWorldMap@@QBEKABVC2DCoordI@@KW4EThemePaintType@@@Z
+  0063aab0 RELOCATION_MATCH CWorldMap::?GetThemeBlendAtBlock@CWorldMap@@QBEKABVC2DCoordI@@KW4EThemePaintType@@@Z
+  0063eb20 RELOCATION_MATCH CWorldMap::?DestroyThemeAt@CWorldMap@@QAEXABVC3DVector@@@Z
+  006dc020 RELOCATION_MATCH CRetailTree_erase00450903::??1?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QAE@XZ
+  006dc350 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryOut@VCComboMultiplierData@@JU?$less@J@std@@@@YIXAAVCDataOutputStream@@ABV?$map@JVCComboMultiplierData@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@3@@std@@@Z
+  0081ee60 RELOCATION_MATCH CMap::?SetEngineThemeAt@CMap@@IAEXJJKKW4EThemePaintType@@@Z
+  0081efc0 MATCH CMap::?SetEngineBlendAt@CMap@@IAEXJJEKW4EThemePaintType@@@Z
+  0081f090 MATCH CMap::?GetEngineThemeAt@CMap@@IBEKJJKW4EThemePaintType@@@Z
+  0081f170 RELOCATION_MATCH CMap::?GetEngineBlendAt@CMap@@IBEEJJKW4EThemePaintType@@@Z
+  00868a40 RELOCATION_MATCH CHitParameters::?ClearAllDamage@CHitParameters@@QAEXXZ
+  008c2550 RELOCATION_MATCH CCombatAction_StrikeResponseJackOfBladesIntoRush::?FinishAction@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ
+  009edc50 MATCH _global::?DeleteData@?$CCountedPointer@VCConsoleInputBase@@@@SIXPAX@Z
+  009ee540 RELOCATION_MATCH CCountedPointer_009edc50::?Reset@?$CCountedPointer@VCConsoleInputBase@@@@QAEXPAVCConsoleInputBase@@@Z
+  008c1600 RELOCATION_MATCH CCombatAction_StrikeResponseJackOfBladesIntoRush::?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush@@IAE_NAAVC3DVector@@@Z
+  004e81e4 RELOCATION_MATCH std::??1?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@QAE@XZ
+  004ebb1c RELOCATION_MATCH CHeroExperienceDef::??1CHeroExperienceDef
+  006db060 RELOCATION_MATCH CPersistTraits<CComboMultiplierData>::?TransferBinaryOut@?$CPersistTraits@VCComboMultiplierData@@@@QAEXAAVCDataOutputStream@@ABVCComboMultiplierData@@@Z

@@ -1,0 +1,41 @@
+target	caller_row	status	bound
+0x00A35490	0x00A355F0	OTHER-STANDIN	?IntrosortLoop_00a35490@@YIXPAUSElement16@@00JUSCompare@@@Z
+0x00A73910	0x00A73B20	OTHER-STANDIN	?IntrosortLoop_00a73910@@YIXPAUSElement16@@00JUSCompare@@@Z
+0x00A73A00	0x00A73BA0	OTHER-STANDIN	?IntrosortLoop_00a73a00@@YIXPAUSElement16@@00JUSCompare@@@Z
+0x005BC4B2	0x006223C0	RIGHT	?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ
+0x005BC4B2	0x00622A00	RIGHT	?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ
+0x005BD1AE	0x006223C0	RIGHT	?GetCategoryThingAssociation@CCategory@NInventory@@QBEPAVCThing@@XZ
+0x005BC8AC	0x0059D820	RIGHT	?GetUniqueItemCountInCategory@CCategory@NInventory@@QBEJXZ
+0x005BC8AC	0x005BD054	RIGHT (was OLDLEAF ?GetUniqueItemCountInCategory@CCategory_Retail@@QAEJXZ; 0x005BD054 ported at hand-back)	?GetUniqueItemCountInCategory@CCategory@NInventory@@QBEJXZ
+0x005BF482	0x0058578B	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x0058807D	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x00590235	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x0059D820	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x005A30A1	OTHER-STANDIN	?GetAllItems@CTCInventoryItem@@QBEXAAU?$vector@U?$pair@JJ@std@@@std@@@Z
+0x005BF482	0x005A4CDD	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x005A8C66	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x005B76D1	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x005B8743	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x005BF77D	OTHER-STANDIN	?GetAllItems@CTCInventoryBase@NInventory@@QAEXAAUCItemVector@@@Z
+0x005BF482	0x005C8459	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x005C9A95	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x005CB780	OTHER-STANDIN	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAUCItemVector@@@Z
+0x005BF482	0x005CE0E6	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x005D1F0C	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x005F4C8F	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x00607330	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x006096E0	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x005BF482	0x006276F0	RIGHT	?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+0x0056E5AB	0x0057713F	RIGHT	?ResetStatIndicatorValues@CTCInventoryExperience@@QAEXXZ
+0x0056E632	0x0057229B	RIGHT	?GetHeroTrainableStatType@CTCInventoryExperience@@QAE?AW4EHeroTrainableStatType@@J@Z
+0x0059C6B0	0x0059D820	RIGHT	?AddItemOfTypeToInventory@CTCInventoryTrade@@AAE_NJJ@Z
+0x0059C6B0	0x005A30A1	OTHER-STANDIN	?AddItemOfTypeToInventory@CTCInventoryTrade@@QAEXJJ@Z
+0x0059D9AD	0x0059E2C7	RIGHT	?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
+0x0059D9AD	0x0059F304	RIGHT	?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
+0x0059D9AD	0x005A3436	RIGHT	?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
+0x0059D9AD	0x005A4CDD	RIGHT	?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
+0x0059D9AD	0x005A5B31	RIGHT	?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
+0x0059D9AD	0x005A8C66	RIGHT	?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
+0x0056E5AB	0x0056EC79	RIGHT (E9 tail jump 0x0056EC87; probe work/old_0056ec79.txt)	?ResetStatIndicatorValues@CTCInventoryExperience@@QAEXXZ
+0x005BD1AE	0x0061A040	RIGHT (E9 tail jump 0x0061A053; ported here)	?GetCategoryThingAssociation@CCategory@NInventory@@QBEPAVCThing@@XZ
+0x005BD054	0x005BDCB4	OTHER-STANDIN (E9 tail jump 0x005BDCD5; probe work/old_005bdcb4.txt; NAME_FIXES)	?HighlightNextItem@CCategory_Retail@@QAEXXZ

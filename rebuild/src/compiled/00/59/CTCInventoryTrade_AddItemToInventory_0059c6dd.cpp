@@ -1,56 +1,61 @@
-// CTCInventoryTrade::AddItemToInventory(CThing*, bool, long, long, long) -- slot 80: adds a thing to the category of the current trade type with the given silent flag and price; true on success
+// CTCInventoryTrade::AddItemToInventory(CThing& item, bool add_selected, bool add_quick_access, long price_bought_for, bool silent) -- vtable
+//   slot 80: add the thing to the category of the current trade type (selected flag and price passed on); true on success
+// Leaf: ?AddItemToInventory@CTCInventoryTrade@@UAE_NAAVCThing@@_N1J1@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059C6DD, 51 bytes. rtti-vtables: CTCInventoryTrade 0x01253034 slot 80 (`ret 14h`).
-// Callees: CTCInventoryTrade::GetCategoryIndexForTradeType @ 0x0059B6F4, CTCInventoryBase::GetCategoryWithIndex(long)
-// @ 0x005BCE3C, NInventory::CCategory::AddItem(CThing*, bool, long) @ 0x005BF5A4. Arguments 3 and 5 are not used by this
-// override (named unused0/unused1); the real method name is unknown.
-// Shape: `mov edx,ecx ; call GetCategoryIndexForTradeType ; push eax ; mov ecx,edx` -- `this` survives the first call in
-// EDX, which only works because VC7.1 knows the registers a function compiled EARLIER IN THE SAME TRANSLATION UNIT
-// clobbers (0x0059B6F4 touches only eax/ecx). The callee is therefore defined above the forwarder, its body
-// reconstructed from 0x0059B6F4 (a two-entry {category identifier, category index} table scan at 0x0137CCDC, -1 if absent) and
-// kept out of line with `#pragma auto_inline(off)`; declared-only, the call clobbers edx and VC uses `push esi`.
-// Size TU (`#pragma optimize("s", on)`, the trade module). +0x170 is CTCInventoryTrade::CategoryIdent (PDB +0x19C,
-// EInventoryCategoryIdentifier): engine/CTCInventoryTrade.h sits 0x2C bytes above retail at this point (smaller
-// retail base, vector, list and maps), so the header is not included and a local model carries the PDB name.
-// `if (category && AddItem(...)) return true; return false;` gives the retail `test al,al ; je ; mov al,1 ; jmp` exits.
-// The local view is named CTCInventoryTrade so it does not shadow the PDB header engine/CTCInventoryTrade.h.
+// Callees: CTCInventoryTrade::GetCategoryIndexForTradeType 0x0059B6F4, NInventory::CTCInventoryBase::GetCategoryWithIndex(long) 0x005BCE3C,
+//   NInventory::CCategory::AddItem(CThing&, bool, long) 0x005BF5A4 (called with arguments 1, 2, 4; add_quick_access and silent unused; was bound
+//   as the pointer form ?AddItem@CCategory@NInventory@@QAE_NPAVCThing@@_NJ@Z).
+// Shape: `mov edx,ecx ; call GetCategoryIndexForTradeType ; push eax ; mov ecx,edx` -- `this` survives the first call in EDX, which only
+//   works because VC7.1 knows the registers a function compiled EARLIER IN THE SAME TRANSLATION UNIT clobbers (0x0059B6F4 touches only
+//   eax/ecx): the same-TU body below.
+//   `if (pcategory && AddItem(...)) return true; return false;` gives the retail `test al,al ; je ; mov al,1 ; jmp` exits.
+// Identity (NF92, q11215): Ego_r.pdb 0x00608E2B + FableWin.pdb 0x02314422 ?AddItemToInventory@CTCInventoryTrade@@UAE_NAAVCThing@@_N1J1@Z (public
+//   virtual, the 5-argument overload: `ret 14h`); Ego_d.pdb names the parameters and the local pcategory. Was the made-up vfunc_80 on a local
+//   CTCInventoryTrade / CTCInventoryBase_Retail / NInventory::CCategory model; now on engine/CTCInventoryTrade.h (NF92 opt-in ADDITEMTOINVENTORY).
 #pragma optimize("s", on)
-class CThing;
-namespace NInventory {
-class CCategory { public:
-    bool AddItem(CThing* thing, bool silent, long price);               // 0x005BF5A4
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
+#define FABLE_RETAIL_CTCINVENTORYBASE_CATEGORYWITHINDEX
+#define FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+#define FABLE_RETAIL_CCATEGORY_CATEGORYIDENTIFIER
+#define FABLE_RETAIL_CTCINVENTORYTRADE
+#define FABLE_RETAIL_CTCINVENTORYTRADE_TRADECATEGORY
+#define FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMTOINVENTORY
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CCATEGORY_ADDITEM_THING
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCInventoryTrade.h"
+// Same-TU body of GetCategoryIndexForTradeType 0x0059B6F4 (landed; kept out of line), as in the landed 0x0059C6B0 (NF89) text unchanged: VC7.1
+//   then knows it touches only eax/ecx, so `this` survives the call in edx as retail does. The shared-header inline body (NF91 opt-in
+//   TRADECATEGORY_BODY) gives DIFFER 47v45 on 0x0059C6B0 and 57v55 here (NF91 / NF92); this strong copy joins the open one-definition entry
+//   q11204 with 0x0059C6B0. The table keeps the landed 0x0059B6F4 row's descriptive spelling.
+struct CTradeTypeCategory {
+    long Ident;          // EInventoryCategoryIdentifier value
+    long CategoryIndex;  // trade category index
 };
-}
-struct SCategoryIdentIndex {
-    long CategoryIdent;
-    long CategoryIndex;
-};
-extern SCategoryIdentIndex g_categoryIdentIndices[2];   // 0x0137CCDC
-struct CTCInventoryBase_Retail {
-    virtual void v00();
-    unsigned char _pad_0x04[0x130 - 4];
-    NInventory::CCategory* GetCategoryWithIndex(long index);   // 0x005BCE3C
-};
-class CTCInventoryTrade : CTCInventoryBase_Retail { public:
-    unsigned char _pad_0x130[0x170 - 0x130];
-    long CategoryIdent;                             // +0x170
-    bool vfunc_80(CThing* thing, bool silent, long unused0, long price, long unused1);
-public:
-    long GetCategoryIndexForTradeType();   // 0x0059B6F4
-};
+extern CTradeTypeCategory g_TradeTypeCategories[2];    // 0x0137CCDC: {11,0}, {12,1}
 #pragma auto_inline(off)
 long CTCInventoryTrade::GetCategoryIndexForTradeType()
 {
-    for (long i = 0; i < 2; ++i)
-        if (g_categoryIdentIndices[i].CategoryIdent == CategoryIdent)
-            return g_categoryIdentIndices[i].CategoryIndex;
+    long ident = CategoryIdent;
+    for (long i = 0; i < 2; ++i) {
+        if (g_TradeTypeCategories[i].Ident == ident)
+            return g_TradeTypeCategories[i].CategoryIndex;
+    }
     return -1;
 }
 #pragma auto_inline(on)
-
-bool CTCInventoryTrade::vfunc_80(CThing* thing, bool silent, long unused0, long price, long unused1)
+bool CTCInventoryTrade::AddItemToInventory(CThing& item, bool add_selected, bool add_quick_access, long price_bought_for, bool silent)
 {
-    NInventory::CCategory* category = GetCategoryWithIndex(GetCategoryIndexForTradeType());
-    if (category && category->AddItem(thing, silent, price))
+    NInventory::CCategory* pcategory = GetCategoryWithIndex(GetCategoryIndexForTradeType());
+    if (pcategory && pcategory->AddItem(item, add_selected, price_bought_for))
         return true;
     return false;
 }

@@ -18,6 +18,10 @@ class CInventoryDef;
 // ItemType +0, NumberOfItems +4, PPerItemData +8, AverageBoughtPrice +0x10; out-of-line ??0 (copy) 0x005C08E6, ??4, ??1).
 #include "stlport/fable_containers.h"
 #include "engine/CCountedPointer.h"
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_GETINVENTORYITEMDEF
+#include "engine/CDefPointer.h"
+class CInventoryItemDef;
+#endif
 namespace NInventory {
 class CPerItemData;
 class CItem {
@@ -28,6 +32,46 @@ public:
 #ifdef FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
     bool IsSlotEmpty() const { return NumberOfItems == 0; }
     void GetItemThings(std::vector<std::pair<long,long> >&) const;
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_GETINVENTORYITEMDEF
+    // NF92 opt-in (round 7, q11208 self row 0x005BDE50 CItem::IsSlotFull): Ego_r.pdb (0x00620733) + FableWin.pdb
+    // ?GetInventoryItemDef@CItem@NInventory@@ABE?AV?$CDefPointer@$$CBVCInventoryItemDef@@@@XZ (private const), out of line in retail at
+    // 0x005BD82E (the landed self row defines this spelling). Declaration only: no layout change. Includes engine/CDefPointer.h
+    // (needs FABLE_RETAIL_DEF_CLASS_BASE).
+private:
+    CDefPointer<const ::CInventoryItemDef> GetInventoryItemDef() const;       // 0x005BD82E
+public:
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_ISSLOTFULL
+    // NF90 opt-in (round 7, q11184 row 0x005BF19C CCategory::IsSpaceInCategoryForItem): Ego_r.pdb (0x00620B75) + FableWin.pdb
+    // ?IsSlotFull@CItem@NInventory@@QBE_NXZ (public const), out of line in retail at 0x005BDE50. Declaration only: no layout change.
+    bool IsSlotFull() const;                            // 0x005BDE50
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_UPDATEITEMSTATS
+    // NF90 opt-in (round 7, q11182 binder row 0x005BF16E CCategory::UpdateItemStatsForThing): Ego_r.pdb (0x00621B5D) + FableWin.pdb
+    // ?UpdateItemStats@CItem@NInventory@@QAEXABVCThing@@@Z (public), out of line in retail at 0x005BEDCB. Declaration only: no layout change.
+    void UpdateItemStats(const ::CThing& thing);        // 0x005BEDCB
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_ADDITEM
+    // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF060 CCategory::AddItem): Ego_r.pdb (0x00621A1C) + FableWin.pdb
+    // ?AddItem@CItem@NInventory@@QAEXJJJ@Z (public; the landed self row 0x005BEC92 defines this spelling). Declaration only.
+    void AddItem(long itemType, long number, long price); // 0x005BEC92
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_GETMAXIMUMNUMBEROFITEMS
+    // NF92 opt-in (round 7, q11214 self row 0x005BDDE4 CItem::AddInventoryItem): Ego_r.pdb (0x00620834) + FableWin.pdb (0x0235FFF2)
+    // ?GetMaximumNumberOfItems@CItem@NInventory@@QBEJXZ (public const), out of line in retail at 0x005BD931 (the landed self row defines this
+    // spelling; 0x005BDDE4 binds it so). Declaration only: no layout change.
+    long GetMaximumNumberOfItems() const;               // 0x005BD931
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_ADDINVENTORYITEM
+    // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF103 CCategory::AddInventoryItem): Ego_r.pdb (0x00620B0A) + FableWin.pdb
+    // ?AddInventoryItem@CItem@NInventory@@QAEXABV12@@Z (public), out of line in retail at 0x005BDDE4. Declaration only.
+    void AddInventoryItem(const CItem& item);           // 0x005BDDE4
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_ADDITEM_THING
+    // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF5A4 CCategory::AddItem(CThing&, bool, long)): Ego_r.pdb (0x00622353) + FableWin.pdb
+    // ?AddItem@CItem@NInventory@@QAEXAAVCThing@@J@Z (public; the landed self row 0x005BF556 defines this spelling). Declaration only.
+    void AddItem(::CThing& thing, long price);          // 0x005BF556
 #endif
     long ItemType;                                      // +0x00
     long NumberOfItems;                                 // +0x04
@@ -58,6 +102,13 @@ public:
     long QuestPersistentRefCount;                       // +0x1C
     float BestFishWeight;                               // +0x20
 };
+}
+#endif
+#if defined(FABLE_RETAIL_CCATEGORY_CATEGORYIDENTIFIER) && !defined(FABLE_RETAIL_CTCINVENTORYBASE_ORIGINAL_COMPLETE_METHODS_PASS22)
+// NF89 opt-in (row 0x0059B740): the namespace enum the Ego_r.pdb ?GetCategoryIdentifier@CCategory@NInventory@@QBE?AW4EInventoryCategoryIdentifier@2@XZ
+// returns, for TUs without the ORIGINAL_COMPLETE_METHODS_PASS22 block (which defines the same enum below); the text is that block's line.
+namespace NInventory {
+enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_NONE=0, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_STRENGTH=1, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_SKILL=2, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_WILL_WEAPON_MAGIC=3, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_WILL_ABILITY_MAGIC=4, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_WILL_PURE_MAGIC=5, INVENTORY_CATEGORY_IDENTIFIER_MAP_WORLD_MAP=6, INVENTORY_CATEGORY_IDENTIFIER_MAP_REGIONS=7, INVENTORY_CATEGORY_IDENTIFIER_MAP_QUESTS=8, INVENTORY_CATEGORY_IDENTIFIER_MAP_TELEPORTS=9, INVENTORY_CATEGORY_IDENTIFIER_MAP_HOUSES=10, INVENTORY_CATEGORY_IDENTIFIER_TRADE_BUY=11, INVENTORY_CATEGORY_IDENTIFIER_TRADE_SELL=12, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_FLAME=13, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_EXTRA_DAMAGE=14, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_SILVER=15, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_LIGHTNING=16, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_DIAMOND=17, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_ADD_SLOT=18, INVENTORY_CATEGORY_MAX_IDENTIFIERS=19 };
 }
 #endif
 #ifdef FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
@@ -96,6 +147,21 @@ namespace NInventory { class CCategory; class CItem; class CPerItemData;
 enum EInventoryIdentifier { INVENTORY_IDENTIFIER_NONE=0, INVENTORY_IDENTIFIER_INVENTORY=1, INVENTORY_IDENTIFIER_CLOTHING=2, INVENTORY_IDENTIFIER_WEAPONS=3, INVENTORY_IDENTIFIER_ABILITIES=4, INVENTORY_IDENTIFIER_MAP=5, INVENTORY_IDENTIFIER_MAGIC=6, INVENTORY_IDENTIFIER_STATS=7, INVENTORY_IDENTIFIER_EXPERIENCE=8, INVENTORY_IDENTIFIER_TRADE=9, INVENTORY_IDENTIFIER_AUGMENT=10, INVENTORY_IDENTIFIER_QUEST_SELECT=11, INVENTORY_IDENTIFIER_QUEST_REVIEW=12, INVENTORY_IDENTIFIER_MAX_IDENTIFIERS=13 };
 enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_NONE=0, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_STRENGTH=1, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_SKILL=2, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_WILL_WEAPON_MAGIC=3, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_WILL_ABILITY_MAGIC=4, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_WILL_PURE_MAGIC=5, INVENTORY_CATEGORY_IDENTIFIER_MAP_WORLD_MAP=6, INVENTORY_CATEGORY_IDENTIFIER_MAP_REGIONS=7, INVENTORY_CATEGORY_IDENTIFIER_MAP_QUESTS=8, INVENTORY_CATEGORY_IDENTIFIER_MAP_TELEPORTS=9, INVENTORY_CATEGORY_IDENTIFIER_MAP_HOUSES=10, INVENTORY_CATEGORY_IDENTIFIER_TRADE_BUY=11, INVENTORY_CATEGORY_IDENTIFIER_TRADE_SELL=12, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_FLAME=13, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_EXTRA_DAMAGE=14, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_SILVER=15, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_LIGHTNING=16, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_DIAMOND=17, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_ADD_SLOT=18, INVENTORY_CATEGORY_MAX_IDENTIFIERS=19 };
 enum ETextLayout { INVENTORY_TEXT_LAYOUT_LEFT=0, INVENTORY_TEXT_LAYOUT_CENTRE=1, INVENTORY_TEXT_LAYOUT_RIGHT=2, INVENTORY_TEXT_LAYOUT__MAX=3 };
+}
+#endif
+#if defined(FABLE_RETAIL_NINVENTORY_CCATEGORY_ACCESSORS) && !defined(FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22)
+// NF87 opt-in (rows 0x006223C0 CTCInventoryQuests::ProcessQuestActivateAction, 0x0059D820 CTCInventoryTrade::InitialiseSellableItems): two
+// out-of-line NInventory::CCategory accessors, Ego_r.pdb + FableWin.pdb spellings: ?GetCategoryThingAssociation@CCategory@NInventory@@
+// QBEPAVCThing@@XZ (0x005BD1AE, `jmp CBaseIntelligentPointer::GetPItem`: PAssociatedThing +0x00, the only CCategory member of either PDB
+// returning a CThing*) and ?GetUniqueItemCountInCategory@CCategory@NInventory@@QBEJXZ (0x005BC8AC). Declarations only: the category's
+// members are not modelled here (see engine/CCategory.h).
+class CThing;
+namespace NInventory {
+class CCategory {
+public:
+    CThing* GetCategoryThingAssociation() const;                                               // 0x005BD1AE
+    long GetUniqueItemCountInCategory() const;                                                 // 0x005BC8AC
+};
 }
 #endif
 namespace NInventory {
@@ -374,6 +440,16 @@ public:
  long GetSelectedCategoryIndex() const;                                                       // 0x005BC4B2
  void SetSelectedCategoryIndex(long index);                                                   // 0x005BC4B6
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_CATEGORYWITHINDEX
+ // NF87 opt-in (row 0x006223C0): Ego_r.pdb + FableWin.pdb ?GetCategoryWithIndex@CTCInventoryBase@NInventory@@QAEPAVCCategory@2@J@Z, out of
+ // line in retail at 0x005BCE3C. Declaration only.
+ NInventory::CCategory* GetCategoryWithIndex(long index);                                     // 0x005BCE3C
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_CATEGORYCOUNT
+ // NF87 opt-in (row 0x0059D820 CTCInventoryTrade::InitialiseSellableItems): Ego_r.pdb + FableWin.pdb
+ // ?GetCategoryCount@CTCInventoryBase@NInventory@@QBEJXZ, out of line in retail at 0x005BCE2F (the category vector's size). Declaration only.
+ long GetCategoryCount() const;                                                               // 0x005BCE2F
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTION
  // Retail opt-in (chunk 1003, row 0x005B48A2 CTCInventoryClothing::OnItemSelected): Ego_r.pdb ?DeselectAll@CTCInventoryBase@NInventory@@IAEXXZ
  // (protected, out of line at 0x005BCCF1) and ?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z (protected, 0x005BDFB1). Declarations only.
@@ -387,6 +463,31 @@ public:
  // ?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ (protected const), out of line at 0x005BCAE3. Declaration only.
 protected:
  long GetHighlightedItem() const;                                                             // 0x005BCAE3
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_RESETINVENTORYANIM
+ // NF89 opt-in (row 0x005A3581 CTCInventoryTrade::BuyHighlightedItem): Ego_r.pdb + FableWin.pdb
+ // ?ResetInventoryAnim@CTCInventoryBase@NInventory@@QAEXJ@Z (public), out of line at 0x005BCD2D. Declaration only.
+ void ResetInventoryAnim(long itemDefIndex);                                                  // 0x005BCD2D
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_NUMBEROFSLOTSFORCATEGORY
+ // NF89 opt-in (q11167, rows 0x0056E5AB / 0x005BD328): Ego_r.pdb (0x00620259) + FableWin.pdb ?GetNumberOfSlotsForCategory@CTCInventoryBase@NInventory@@QBEJJ@Z
+ // (public const), out of line at 0x005BD328 (Categories[index].GetNumberOfSlots()). Declaration only.
+ long GetNumberOfSlotsForCategory(long index) const;                                          // 0x005BD328
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ADDINVENTORYITEM
+ // NF92 opt-in (round 7, q11216 row 0x005BF4A3): Ego_r.pdb 0x00622247 + FableWin.pdb 0x0236BE37 ?AddInventoryItem@CTCInventoryBase@NInventory@@AAE_NABVCItem@2@@Z
+ // (private; the ORIGINAL_COMPLETE_METHODS_PASS22 member record declares `bool AddInventoryItem(const NInventory::CItem&)` too),
+ // out of line in retail at 0x005BF4A3 (find the item's category, CCategory::AddInventoryItem 0x005BF103, OnItemAdded). Declaration only.
+private:
+ bool AddInventoryItem(const CItem& item);                                                    // 0x005BF4A3
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_GETALLSELECTEDITEMS
+ // NF90 opt-in (round 7, q11185 row 0x005BEAF5): Ego_r.pdb 0x006213AB ?GetAllSelectedItems@CTCInventoryBase@NInventory@@IBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+ // (protected const; the ORIGINAL_COMPLETE_METHODS_PASS22 branch declares it there too), out of line at 0x005BEAF5. Declaration only.
+protected:
+ void GetAllSelectedItems(std::vector<long>& items) const;                                    // 0x005BEAF5
 public:
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_CAPTUREBACKBUFFER
@@ -414,6 +515,12 @@ public:
 protected:
  CThing* CreateInventoryObject(long itemDefIndex);
 public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_RESURRECTIONITEM
+ // Retail opt-in (agentNF89 draft, carried by agentNF91 for row 0x005BF77D, q11205): Ego_r.pdb (0x00622645) + FableWin.pdb (0x02366C9E)
+ // ?GetResurrectionItemInInventory@CTCInventoryBase@NInventory@@QAEPAVCThing@@XZ (public; the first owned item whose def has a
+ // CResurrectionItemDef sub-def and whose created object is a resurrection item). Declaration only: no layout change.
+ CThing* GetResurrectionItemInInventory();                           // 0x005BF77D
 #endif
  enum EInventorySelectionState { INVENTORY_SELECTION_STATE_CATEGORIES=0,INVENTORY_SELECTION_STATE_ITEMS=1,INVENTORY_SELECTION_STATE_MAX_STATES=2 };
  enum ESelectionState { SELECTION_STATE_NONE=0,SELECTION_STATE_OFF=1,SELECTION_STATE_ON=2,SELECTION_STATE_SEL=3,SELECTION_STATE_MAX=4 };

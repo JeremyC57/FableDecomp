@@ -1,144 +1,72 @@
-// CAIStateGroup_CreatureUseCoverBase::CleanupLeaf() -- release a live cover thing's cover point, empty the cover list, clear PCoverThing and TimingCritical
-// Leaf: CleanupLeaf@CAIStateGroup_CreatureUseCoverBase
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+// CAIStateGroup_CreatureUseCoverBase::CleanupLeaf() -- release a live cover thing's cover point (SetOccupier(0)), empty the cover list, clear PCoverThing and TimingCritical
+// Leaf: ?CleanupLeaf@CAIStateGroup_CreatureUseCoverBase@@MAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00970C10, length 192 bytes.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020
-// (type 0xAC), cover-point call @ 0x0087C390 with 0, vector<CIntelligentPointer<CThing> >::erase(first, last) @ 0x004AC0F0
-// (an inline clear() member -- written in the caller it swaps ebx/edi), CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10.
-// Shape: the component pointer is deliberately unset when the interface is absent (retail calls through the dead
-// key slot `mov eax,[esp+8]`), so the lookup is `T* tc; if (HasTC(k)) tc = GetTC(k); tc->SetUser(0);`.
+// Identity: Ego_r.pdb (0x00995F40) + FableWin.pdb (0x02B85A70) ?CleanupLeaf@CAIStateGroup_CreatureUseCoverBase@@MAEXXZ: the protected override of
+//   CAIStateGroup_EnemyCreatureBase's virtual CleanupLeaf (the landed leaf was the public non-virtual QAE spelling).
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (type 0xAC),
+//   CTCSinglePersonOccupiable::SetOccupier(0) @ 0x0087C390 (Ego_r.pdb / FableWin.pdb; was the stand-in CTCCoverPoint::SetUser),
+//   vector<CIntelligentPointer<CThing> >::erase(first, last) @ 0x004AC0F0 (clear(), the erase out of line), CBaseIntelligentPointer ctor / SetPItem /
+//   dtor @ 0x00A01B10 / 0x00A01B90 / 0x00A01C10.
+// Shape: the component pointer is deliberately unset when the interface is absent (retail calls through the dead key slot), so the GetTC result
+//   is ignored before the SetOccupier(0) call.
+// NF79 (round 7, q10956): ported onto the shared headers with the 0x00970B60 / NF76 0x00970CD0 macro block plus my overlay opt-in
+//   CAISTATEGROUP_CREATUREUSECOVERBASE_CLEANUPLEAF and the repo opt-in STLP_VECTOR_ERASE_RANGE_OUTOFLINE; every local model is gone.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_COVERLIST
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_ADVANCE
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_TYPED_COVERLIST
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_TAKECOVER
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_CLEANUPLEAF
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "rebuild_abi.h"
 #include "fable_compiler.h"
-class CThing;
+#include "stlport/fable_containers.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/C3DVector.h"
+#include "engine/C2DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CWorld.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_CreatureUseCoverBase.h"
+#include "engine/CTCSinglePersonOccupiable.h"
 
-class CBaseObject;
-struct CBaseIntelligentPointer
-{
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
-};
-
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{ public:
-    virtual void v00();
-    CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
-    T* Get() const { return (T*)GetPItem(); }
-};
-
-class CTCBase;
-
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing
-{ public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-
-    FABLE_FORCEINLINE bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    FABLE_FORCEINLINE CInterfaceMap::value_type* FindEntry(long type)    // the entry; `->component` read at the call site
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        CInterfaceMap::value_type* end = map->end();
-        CInterfaceMap::value_type* sel;
-        if (it == end)
-            sel = end;
-        else if (it->first <= type)
-            sel = it;
-        else
-            sel = end;
-        return sel;
-    }
-    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-        {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
-class CAIBrain
-{ public:
-    unsigned char _pad0[0x18];
-    CThing* Creature;                               // +0x18
-};
-
-struct CTCCoverPoint                                // interface type 0xAC component (word 5 bit 12: `test ch,10h` on +0x34)
-{
-    void SetUser(CThing* user);                     // 0x0087C390 (one argument; manifest "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated)
-};
-
-struct CCoverList                                   // vector<CIntelligentPointer<CThing> > at +0x28 {first, last, end}
-{
-    CIntelligentPointer<CThing>* first;
-    CIntelligentPointer<CThing>* last;
-    CIntelligentPointer<CThing>* end_of_storage;
-    CIntelligentPointer<CThing>* erase(CIntelligentPointer<CThing>* from, CIntelligentPointer<CThing>* to);   // 0x004AC0F0
-    void clear() { erase(first, last); }
-};
-
-FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
-{
-    if (((CThing*)p.GetPItem()) != 0)
-    {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
-            return true;
-    }
-    return false;
-}
-
-#pragma pack(push, 1)
-struct CAIStateGroup_CreatureUseCoverBase           // retail layout = Ego_r.pdb (byte-packed: PCoverThing at the odd +0x1f)
-{
-    void* __vftable;                                // +0x00
-    CAIBrain* PBrain;                               // +0x04
-    unsigned char _pad08[0x0c];                     // +0x08 CAIStateGroupBase tail
-    CIntelligentPointer<const CThing> PTargetThing; // +0x14
-    unsigned char _pad1c[2];                        // +0x1c HasDiveAnim, HasJumpOutAnims
-    bool TimingCritical;                            // +0x1e
-    CIntelligentPointer<CThing> PCoverThing;        // +0x1f
-    unsigned char _pad27;                           // +0x27
-    CCoverList CoverList;                           // +0x28
-    void ClearCoverThing();
-    void CleanupLeaf();
-};
-#pragma pack(pop)
 
 void CAIStateGroup_CreatureUseCoverBase::CleanupLeaf()
 {
-    if (IS_THING_ALIVE(PCoverThing))
-    {
-        CThing* thing = ((CThing*)PCoverThing.GetPItem());
-        CTCCoverPoint* cover;
-        if (thing->HasTC(0xac))
-            cover = (CTCCoverPoint*)thing->FindEntry(0xac)->second;
-        cover->SetUser(0);
+    if (IS_THING_ALIVE(PCoverThing)) {
+        CTCSinglePersonOccupiable* ptc_cover;
+        PCoverThing->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE, &ptc_cover);
+        ptc_cover->SetOccupier(0);
     }
     CoverList.clear();
-    PCoverThing.SetPItem((CBaseObject*)(((CThing*)CIntelligentPointer<CThing>(0).GetPItem())));
+    PCoverThing = CIntelligentPointer<CThing>(0);
     TimingCritical = false;
 }

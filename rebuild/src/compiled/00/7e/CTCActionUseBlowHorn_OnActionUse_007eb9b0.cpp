@@ -1,64 +1,56 @@
 // CTCActionUseBlowHorn::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThingCreatureBase_Retail*)] -- run the base slot, then make a live creature blow this horn
-// Leaf: OnActionUse
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Leaf: ?OnActionUse@CTCActionUseBlowHorn@@UAEXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EB9B0, length 90 bytes. Slot 28 of the CTCActionUseBlowHorn
 // vtable 0x0123F564 (rtti-vtables.tsv).
-// Callees: CTCActionUseBase's slot 28 @ 0x007EAB90 (an empty `ret 4`, called non-virtually; manifest "$E2"),
-// CCreatureAction_BlowHorn::CCreatureAction_BlowHorn(CThingCreatureBase*, CThing*) @ 0x00842EC0,
-// CThingCreatureBase::SetCurrentAction(CCreatureActionBase*) @ 0x006644F0, CBaseIntelligentPointer::
-// ~CBaseIntelligentPointer @ 0x00A01C10 (the action's PObjectToUse), CCreatureActionBase::~CCreatureActionBase
-// @ 0x00693EF0 (it stores vtable 0x01259D24 = CCreatureActionBase; the manifest's
-// "CPhysicsMeshInfo::~CPhysicsMeshInfo" is a propagated name).
-//
-// Layout: the retail action is 0xb0 bytes -- the 0xa8-byte CCreatureActionBase, then PObjectToUse
-// (CIntelligentPointer<CThing>, PDB +0xb4) at +0xa8. The creature's dead flag is bit 0 of the byte at +0x91.
-// Shape: the creature argument is held in esi across the base call; a null or dead creature does nothing;
-// otherwise the action is a TEMPORARY in the call expression (address taken, VC extension C4238 -- as the
-// landed 0x00920960) built in the 0xb0-byte frame and destroyed after the call through the derived
-// class's implicit destructor (member pointer, then the base; no vtable store of its own). The horn
-// (ParentThing) is read into a named local: retail loads it into edi, the dead `this` register
-// (`mov edi,[edi+4] ; push edi`); read inline in the call it lands in eax.
-// Header note: engine/CCreatureActionBase.h, CThingCreatureBase.h and CCreatureAction_BlowHorn.h hold the
-// flattened PDB layouts only (the retail action is 0xc bytes narrower), so the action classes and the
-// creature are modelled locally with a _Retail suffix.
-#include "engine/CThing.h"
-
-struct CCreatureActionBase_Retail {
-    virtual void v00();
-    unsigned char _body[0xa4];                  // +0x04..+0xa7
-    ~CCreatureActionBase_Retail();                     // 0x00693EF0
-};
-
-struct CThingCreatureBase_Retail : CThing {
-    bool SetCurrentAction(CCreatureActionBase_Retail* action);   // 0x006644F0
-};
-
-class CBaseObject;
-class CBaseObjectPointer;
+// Callees: CTCActionUseBase::OnActionUse @ 0x007EAB90 (an empty `ret 4`, called non-virtually),
+// CCreatureAction_BlowHorn::CCreatureAction_BlowHorn(CThingCreatureBase&, CThing&) @ 0x00842EC0,
+// CThingCreatureBase::SetCurrentAction(const CCreatureActionBase&) @ 0x006644F0, CBaseIntelligentPointer::
+// ~CBaseIntelligentPointer @ 0x00A01C10 (the action's PObjectToUse), CCreatureActionBase::~CCreatureActionBase @ 0x00693EF0.
+// Identity (agentNF77, q10884): Ego_r.pdb / FableWin.pdb ?OnActionUse@CTCActionUseBlowHorn@@UAEXAAVCThing@@@Z. The action temporary's
+//   destruction ends in ??1CCreatureActionBase@@UAE@XZ (both PDBs; RTTI CCreatureAction_BlowHorn : CCreatureActionBase), formerly bound as a
+//   local ??1CCreatureActionBase_Retail@@QAE@XZ; SetCurrentAction now binds its PDB spelling ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z.
+// Layout: engine/CCreatureAction_BlowHorn.h (overlay retail opt-in FABLE_RETAIL_CCREATUREACTION_BLOWHORN: on CCreatureActionBase, PObjectToUse
+//   +0xA8, sizeof 0xB0, no user-declared destructor, as retail's compiler-generated one), engine/CCreatureActionBase.h, CThingCreatureBase.h,
+//   CTCActionUseBase.h (VSLOTS: slot 28 OnActionUse) over CTCBase.h (ParentThing +0x04). CTCActionUseBlowHorn has no shared header: local, on
+//   the shared base (Ego_r.pdb: no own members). Was a local CCreatureActionBase_Retail / CThingCreatureBase_Retail /
+//   CCreatureAction_BlowHorn_Retail / CTCActionUseBase model.
+// Shape: the creature argument is held in esi across the base call; a null or dead creature does nothing; otherwise the action is a
+// temporary in the call, built in the 0xb0-byte frame and destroyed after the call through the derived class's implicit destructor
+// (member pointer, then the base; no vtable store of its own). The horn (ParentThing) is read into a named local: retail loads it into
+// edi, the dead `this` register (`mov edi,[edi+4] ; push edi`).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_BLOWHORN
+#define FABLE_RETAIL_STLP_LIST
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCreatureAction_BlowHorn.h"
+#include "engine/CTCActionUseBase.h"
 
-struct CCreatureAction_BlowHorn_Retail : CCreatureActionBase_Retail {
-    CBaseIntelligentPointer PObjectToUse;       // +0xa8
-    CCreatureAction_BlowHorn_Retail(CThingCreatureBase_Retail* creature, CThing* horn);   // 0x00842EC0
-};
-
-class CTCActionUseBase { public:
-    // +0x00 vptr (OnActionUse is virtual)
-    CThing* ParentThing;                        // +0x04 (CTCBase)
-    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was vfunc_28(CThingCreatureBase_Retail*))
-};
-
-struct CTCActionUseBlowHorn : CTCActionUseBase {
-    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingCreatureBase_Retail*))
+// CTCActionUseBlowHorn (no shared header; RTTI .?AVCTCActionUseBlowHorn@@ : CTCActionUseBase, Ego_r.pdb: no own members).
+class CTCActionUseBlowHorn : public CTCActionUseBase {
+public:
+    virtual void OnActionUse(CThing& user);                              // slot 28 0x007EB9B0
 };
 
 void CTCActionUseBlowHorn::OnActionUse(CThing& thing)
 {
-    CThingCreatureBase_Retail* creature = (CThingCreatureBase_Retail*)&thing;
+    CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(&thing);
     CTCActionUseBase::OnActionUse(thing);
     if (creature != 0 && !creature->IsDead()) {
-        CThing* horn = ParentThing;
-        creature->SetCurrentAction(&CCreatureAction_BlowHorn_Retail(creature, horn));
+        CThing& horn = GetParentThing();
+        creature->SetCurrentAction(CCreatureAction_BlowHorn(*creature, horn));
     }
 }

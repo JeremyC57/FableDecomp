@@ -30,6 +30,13 @@ FABLE_STATIC_ASSERT(sizeof(CCombatAction_StrikeResponseJackOfBladesIntoRush) == 
 class CCombatAction_StrikeResponseJackOfBladesIntoRush : public CCombatAction_GenericStrikeResponseBase {
 public:
     virtual void Initialise();                                           // 0x008C12D0
+#ifdef FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH_FINISHACTION
+    // NF74 opt-in (row 0x008C2550): Ego_r.pdb / FableWin.pdb ?FinishAction@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ
+    // and the protected ?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush@@IAE_NAAVC3DVector@@@Z (0x008C1600).
+    virtual void FinishAction();                                         // 0x008C2550
+protected:
+    bool GetValidRushPosition(C3DVector& rush_to_pos);                   // 0x008C1600
+#endif
 protected:
     bool CauseRush;                                                      // +0x148
 };

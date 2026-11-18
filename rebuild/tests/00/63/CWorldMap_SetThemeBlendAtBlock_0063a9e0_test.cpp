@@ -1,3 +1,9 @@
+// NF81 (round 7): the row moved onto engine/CWorldMap.h + engine/CMap.h, so it defines the PDB class spelling ABVC2DCoordI@@ and
+//   calls the protected CMap theme member (both PDBs). This test keeps the legacy header with the landed opt-in
+//   FABLE_RETAIL_CMAP_ENGINETHEME_PROTECTED and the NF81 opt-in FABLE_RETAIL_WORLDMAPTHEME_C2DCOORDI_SHARED (engine/C2DCoordI.h,
+//   members X / Y), so its stubs and its call carry the same names as the row.
+#define FABLE_RETAIL_CMAP_ENGINETHEME_PROTECTED
+#define FABLE_RETAIL_WORLDMAPTHEME_C2DCOORDI_SHARED
 #include <stdio.h>
 #include <string.h>
 #include "candidates/world_map_theme.h"
@@ -51,8 +57,8 @@ C2DCoordI CWorldMap::ConvertWorldMapCoordsToLocalCoords(
 {
     Record('C');
     C2DCoordI localCoord;
-    localCoord.x = worldMapCoord.x - mapNumber;
-    localCoord.y = worldMapCoord.y - mapNumber * 2;
+    localCoord.X = worldMapCoord.X - mapNumber;
+    localCoord.Y = worldMapCoord.Y - mapNumber * 2;
     return localCoord;
 }
 
@@ -100,8 +106,8 @@ int main()
     fake.vtable = vtable;
     CWorldMap* const worldMap = reinterpret_cast<CWorldMap*>(&fake);
     C2DCoordI worldCoord;
-    worldCoord.x = 37;
-    worldCoord.y = 81;
+    worldCoord.X = 37;
+    worldCoord.Y = 81;
 
     Reset();
     g_mapNumber = 0;

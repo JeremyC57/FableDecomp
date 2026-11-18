@@ -21,6 +21,12 @@ public:
     void FadeIn(float time, bool);                                       // 0x006C3BD0
     void AddThingToFade(CThing&);                                        // 0x006C3DF0
     bool IsFading() const { return FadingIn || FadingOut; }              // COMDAT 0x0049D310
+#ifdef FABLE_RETAIL_CTCFADEOUTANDIN_SDD_FRIEND
+    // NF75 opt-in (round 7, land1117fu q10936, row 0x006C4430): the landed free-function stand-in for the compiler-generated
+    // ??_GCTCFadeOutAndIn@@UAEPAXI@Z (it expands the implicit destructor: ~vector FadingThings 0x004406D0, then ~CTCBase) reaches the
+    // protected FadingThings by name as a friend, instead of an offset cast. Declaration only; no layout change.
+    friend void* FABLE_FASTCALL CTCFadeOutAndIn_CompositeScalarDeletingDestructor(void* andIn, int, unsigned int flags);
+#endif
 protected:
     bool FadingOut;                                                      // +0x0c
     bool FadingIn;                                                       // +0x0d

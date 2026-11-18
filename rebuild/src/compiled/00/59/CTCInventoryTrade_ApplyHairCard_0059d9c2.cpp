@@ -1,47 +1,43 @@
-// CTCInventoryTrade::ApplyHairCard(const CHairCardDef*) -- if the owning thing has the attachable-appearance-modifiers component (interface 0x5E), applies the card's appearance modifier with replacement
-// Leaf: ?ApplyHairCard@CTCInventoryTrade_Retail@@QAEXPBVCHairCardDef@@@Z
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
-// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// CTCInventoryTrade::ApplyHairCard(const CHairCardDef&) -- if the owning thing has the attachable-appearance-modifiers component (interface 0x5E), applies the card's hair object as an appearance modifier with replacement
+// Leaf: ?ApplyHairCard@CTCInventoryTrade@@QAEXABVCHairCardDef@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059D9C2, 78 bytes.
-// Callees: std::bitset::test @ 0x00410DE0 (the thing's interface presence bits at +0x20), CVectorMap<ETCInterfaceType,
-//          CTCBase*>::LowerBound @ 0x0040F020 (the sorted interface map at +0x44),
-//          CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierWithReplace(long) @ 0x00706950.
-//
-// Shape: the thing's inline GetInterface(type, &out) of the landed 0x007BEA08 / 0x007504E0 family -- bitset test, key in
-// the `push ecx` frame slot, the map pointer a named local (`add esi,44h`), a miss (end or larger key) taking the end
-// entry, the component handed out through the OUT parameter so it stays in eax (`mov eax,[eax+4] ... mov ecx,eax`).
-// Frame pointer in a size TU: `#pragma optimize("y", off)` + `optimize("s", on)`; under "s" the helper is only inlined
-// when `__forceinline` (otherwise VC calls it out of line). +4 is CTCBase::ParentThing. The card's +0x28 word is named
-// from use. Local model (no engine headers for CThing / the card def).
-#include "engine/CTCBase.h"
-// The local view is named CTCInventoryTrade_Retail so it does not shadow the PDB header engine/CTCInventoryTrade.h.
+// Callees: std::bitset<274>::test @ 0x00410DE0 (the thing's interface presence bits at +0x20), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
+//   @ 0x0040F020 (the sorted interface map at +0x44), CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierWithReplace(long) @ 0x00706950.
+// Callers: CTCInventoryTrade::ProcessTradeAction 0x005AEBFE, BuyItem 0x005AF64E, BuyItemPC 0x005B0AAC.
+// Shape: the thing's inline GetTC(type, &out) (CThing.h FABLE_RETAIL_CTHING_GETTC_EXPANDED) -- bitset test, key in the `push ecx` frame slot,
+//   the map pointer a named local (`add esi,44h`), a miss taking the end entry; frame pointer in a size TU (`optimize("y", off)` + "s").
+// Name fix (agentNF91, q11198): Ego_r.pdb + FableWin.pdb ?ApplyHairCard@CTCInventoryTrade@@QAEXABVCHairCardDef@@@Z (a const reference);
+//   engine/CTCInventoryTrade.h declares it at this address. The old row defined ?ApplyHairCard@CTCInventoryTrade_Retail@@QAEXPBVCHairCardDef@@@Z
+//   on a local CTCInventoryTrade_Retail / CHairCardDef / CTCHeroAttachableAppearanceModifiers model; now on the shared headers (the retail
+//   CTCInventoryTrade, CHairCardDef over CSubDefClassBase with HairObject +0x28, and the NF91 overlay opt-in
+//   FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_ADDWITHREPLACE, Ego_r.pdb + FableWin.pdb).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CTCBase;
-
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
+#define FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+#define FABLE_RETAIL_CTCINVENTORYTRADE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
-#include "engine/CVectorMap.h"
-
+#define FABLE_RETAIL_CHAIRCARDDEF
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_ADDWITHREPLACE
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCInventoryTrade.h"
+#include "engine/CHairCardDef.h"
+#include "engine/CVectorMap.h"
 #include "engine/CThing.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CTCHeroAttachableAppearanceModifiers { public:
-    void AddAppearanceModifierWithReplace(long modifierDefIndex);   // 0x00706950
-};
-
-class CHairCardDef { public:
-    unsigned char _pad_0x00[0x28];
-    long AppearanceModifier;                  // +0x28
-};
-
-struct CTCInventoryTrade_Retail : CTCBase {
-    void ApplyHairCard(const CHairCardDef* card);
-};
-
-void CTCInventoryTrade_Retail::ApplyHairCard(const CHairCardDef* card)
+#include "engine/CTCHeroAttachableAppearanceModifiers.h"
+void CTCInventoryTrade::ApplyHairCard(const CHairCardDef& hairCard)
 {
     CTCHeroAttachableAppearanceModifiers* modifiers;
     if (ParentThing->GetTC(TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS, &modifiers))
-        modifiers->AddAppearanceModifierWithReplace(card->AppearanceModifier);
+        modifiers->AddAppearanceModifierWithReplace(hairCard.HairObject);
 }

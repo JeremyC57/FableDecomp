@@ -22,6 +22,14 @@ public:
     void SetAtmosTheme(long index, unsigned char theme) { AtmosThemes[index] = theme; }
     void SetAtmosBlend(long index, unsigned char blend) { AtmosBlends[index] = blend; }
     void SetSoundTheme(signed char sound_theme) { SoundTheme = sound_theme; }
+#ifdef FABLE_RETAIL_CGAMEMAPCELL_ATMOSGETTERS
+    // NF81 opt-in (round 7, rows 0x0081F090 / 0x0081F170 CMap::GetEngineThemeAt / GetEngineBlendAt): FableWin.pdb
+    // ?GetAtmosTheme@CGameMapCell@@QBEEJ@Z (0x01B50F50; inline in retail: 0x0081F115 reads AtmosThemes[index] in place; Ego_d.pdb
+    // parameter index) and Ego_r.pdb 0x006F3800 / FableWin.pdb 0x024A07A0 ?GetAtmosBlend@CGameMapCell@@QBEEJ@Z (out of line in retail
+    // at 0x006B74E0, the landed row; called from 0x0081F1EF). No layout change.
+    unsigned char GetAtmosTheme(long index) const { return AtmosThemes[index]; }
+    unsigned char GetAtmosBlend(long index) const;                                 // 0x006B74E0
+#endif
     unsigned char AtmosThemes[3];                                                  // +0x00
     unsigned char AtmosBlends[2];                                                  // +0x03
     signed char   SoundTheme;                                                      // +0x05
@@ -46,8 +54,8 @@ private:
     long                      SizeY;                                               // +0x20
 };
 #ifdef _MSC_VER
-FABLE_STATIC_ASSERT(sizeof(CGameMapCell) == 7);
-FABLE_STATIC_ASSERT(sizeof(CGameMap) == 0x24);
+FABLE_STATIC_ASSERT_AT(49, sizeof(CGameMapCell) == 7);
+FABLE_STATIC_ASSERT_AT(50, sizeof(CGameMap) == 0x24);
 #endif
 #else
 class CGameMap;

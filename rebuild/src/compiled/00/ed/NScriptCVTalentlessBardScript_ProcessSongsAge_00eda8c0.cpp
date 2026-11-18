@@ -1,86 +1,52 @@
 // NScript::CV_TalentlessBardScript::ProcessSongsAge() -- adds the age verse to the bard's song list: OLD above BardHeroAgeHigh, MEDIUM above BardHeroAgeMedium, YOUNG otherwise
 // Leaf: ?ProcessSongsAge@CV_TalentlessBardScript@NScript@@QAEXXZ
+// Flags: /d2inlT59
+// Inline-budget: /d2inlT59 -- STLport vector<CCharString>::push_back (plain inline) is expanded at the first (OLD) site and called out of
+//   line (COMDAT 0x0044BFF0) at the MEDIUM / YOUNG sites in retail; with the default budget VC7.1 lays the three sites out differently
+//   (DIFFER 238v236, NF60/NF68); /d2inlT40, /d2inlT55, /d2inlT57 and /d2inlT58 call it at every site (160 bytes), /d2inlT59 and
+//   /d2inlT62 match, /d2inlT150 keeps the default layout: 59 is the smallest matching value (58 graded, DIFFER 160v236).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EDA8C0, 236 bytes (padded to 240), plain `ret`.
 //   PDB name ?ProcessSongsAge@CV_TalentlessBardScript@NScript@@QAEXXZ.
-// Callees: CGameScriptInterface slot 171 GetHeroAge() (+0x2ac, float); CCharString(const char*, long) 0x0099EBF0,
-//   copy ctor 0x0099EC30, ~CCharString 0x0099EAE0; std::vector<CCharString>::push_back 0x0044BFF0 (out of line) and
-//   its overflow helper _M_insert_overflow 0x00433530.
-// Data: the script def 0x0143E90C (BardHeroAgeHigh +0x7d8, BardHeroAgeMedium +0x7dc: Ego_r.pdb 0x838/0x83c - 0x60).
+// Callees: CGameScriptInterface GetHeroAge() (virtual), CCharString(const char*, long) 0x0099EBF0, copy ctor 0x0099EC30, ~CCharString
+//   0x0099EAE0; std::vector<CCharString>::push_back 0x0044BFF0 (out of line at two sites) and its overflow helper _M_insert_overflow
+//   0x00433530.
+// Data: the script def 0x0143E90C pGlobalScriptDef (BardHeroAgeHigh / BardHeroAgeMedium).
 // Strings: "TEXT_QST_163_AGE_OLD" 0x012F3B14, "TEXT_QST_163_AGE_MEDIUM" 0x012F3AFC, "TEXT_QST_163_AGE_YOUNG" 0x012F3AE4.
-// Shape: STLport push_back sits in VC7.1's inline-once cost band (the lane inlines every site), so the first call site
-//   uses a __forceinline copy of the same body and the other two call the out-of-line member; the first site is
-//   expanded (placement copy with VC's null test, finish re-read and advanced, overflow helper with a __false_type
-//   tag in a frame byte), the other two call the out-of-line copy; the age compares are `GetHeroAge() > (long)`
-//   (`fild ; fcompp ; test ah,5 ; jp`).
-// Layout (retail): Game +0x40, SongItems +0x68 (landed ProcessSongsQuestComplete 0x00ED9B40).
-#include "fable_compiler.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
-namespace std { struct __false_type { __false_type() {} }; }
-inline void* operator new(unsigned int, void* where) { return where; }
-namespace std {
-template <class _Tp> class allocator;
-template <class _Tp, class _Alloc> class vector;
-template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-protected:
-    void _M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&,
-                            unsigned int fill_len, bool atend);    // 0x00433530
-public:
-    void push_back(const CCharString& x);               // 0x0044BFF0 (out of line)
-    FABLE_FORCEINLINE void push_back_inline(const CCharString& x)   // the same STLport body, expanded at the first site
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) CCharString(x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
-}
-class CScriptDef { public:
-    unsigned char _pad[0x7d8];
-    long BardHeroAgeHigh;                               // +0x7d8
-    long BardHeroAgeMedium;                             // +0x7dc
-};
-extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+// Port (NF68, round 7, from NF60's draft): the local NScript::CV_TalentlessBardScript model is replaced by
+//   engine/NScript_CV_TalentlessBardScript.h on the macro block of the landed sibling WatchForResetWanderCentre 0x00ED94D0 (Game reference,
+//   SongItems +0x68); CCharString, the STLport vector and pGlobalScriptDef come from the shared headers (NF60).
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CGameScriptInterface.h"
-namespace NScript {
-class CV_TalentlessBardScript { public:
-    unsigned char _base[0x40];
-    CGameScriptInterface* Game;                         // +0x40
-    void* Data;                                         // +0x44
-    unsigned char _flags48[0x20];                       // +0x48 .. stBard, BardWanderTime
-    std::vector<CCharString, std::allocator<CCharString> > SongItems;                        // +0x68
-    void ProcessSongsAge();
-};
-void CV_TalentlessBardScript::ProcessSongsAge()
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CPREDICATEBASE_NOVTABLE
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/C3DVector.h"
+#include "engine/EScriptingStateGroups.h"
+#include "engine/CGameScriptInterfaceBase.h"
+#include "engine/CIsThingAlive.h"
+#include "engine/CTimer.h"
+#include "engine/NScript_CV_TalentlessBardScript.h"
+#include "engine/fable_script_def_global.h"
+
+void NScript::CV_TalentlessBardScript::ProcessSongsAge()
 {
-    CScriptDef* def = pGlobalScriptDef;
-    if (Game->GetHeroAge() > def->BardHeroAgeHigh) {
+    if (Game.GetHeroAge() > pGlobalScriptDef->BardHeroAgeHigh) {
         CCharString verse("TEXT_QST_163_AGE_OLD", -1);
-        SongItems.push_back_inline(verse);
+        SongItems.push_back(verse);
+    }
+    else if (Game.GetHeroAge() > pGlobalScriptDef->BardHeroAgeMedium) {
+        CCharString verse("TEXT_QST_163_AGE_MEDIUM", -1);
+        SongItems.push_back(verse);
     }
     else {
-        CScriptDef* def = pGlobalScriptDef;
-        if (Game->GetHeroAge() > def->BardHeroAgeMedium) {
-            CCharString verse("TEXT_QST_163_AGE_MEDIUM", -1);
-            SongItems.push_back(verse);
-        }
-        else {
-            CCharString verse("TEXT_QST_163_AGE_YOUNG", -1);
-            SongItems.push_back(verse);
-        }
+        CCharString verse("TEXT_QST_163_AGE_YOUNG", -1);
+        SongItems.push_back(verse);
     }
-}
 }

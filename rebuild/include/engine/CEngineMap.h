@@ -33,6 +33,11 @@ public:
     // landed self row). Declaration only.
     void OpenDevelopmentStaticMap(class CStaticMapBankFile& file, STATIC_MAP_OPEN_STATE state);   // 0x00B42530
 #endif
+#ifdef FABLE_RETAIL_CENGINEMAP_CLOSESTATICMAP
+    // NF76 opt-in (row 0x00B42530 CEngineMap::OpenDevelopmentStaticMap): Ego_r.pdb 0x009E3120 ?CloseStaticMap@CEngineMap@@QAEXXZ (public,
+    // out of line at 0x00B3EF40: `mov ecx,esi ; call` at 0x00B42549). Declaration only.
+    void CloseStaticMap();                                               // 0x00B3EF40
+#endif
 #ifdef FABLE_RETAIL_CENGINEMAP_ONGAMEMAPLOADED
     // NF56 opt-in (row 0x00B401E0 CEngineWorldMap::OnGameMapLoaded, which expands both): Ego_r.pdb / FableWin.pdb
     // ?SetGameMap@CEngineMap@@QAEXPBVCIDrawMap@@@Z (the GameMap +0x08 store) and ?OnGameMapLoaded@CEngineMap@@QAEXJ@Z (Ego_r.pdb 0x009DD5D0 /

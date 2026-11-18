@@ -1,257 +1,93 @@
-// CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition(C3DVector*) -- gather the valid positions within the battle def's rush-away distance (+2) of Jack, drop those closer than the rush-away distance to Jack and those within 21 of the boss phase start position, then try random candidates until one Jack can navigate to (copied to *out); returns whether one was found
-// Leaf: ?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition(C3DVector&) -- gather the valid positions within the battle def's rush-away distance (+2) of Jack, drop those closer than the rush-away distance to Jack and those within 21 of the boss phase start position, then try random candidates until one Jack can navigate to (copied to rush_pos); returns whether one was found
+// Leaf: ?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush@@IAE_NAAVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C1600, 761 bytes (+ int3 padding), `ret 4`.
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), GetSubDef<CJackOfBladesBattleDef> 0x008C33E0 (same-TU
-//   stand-in), CVectorMap::LowerBound 0x0040F020 (same-TU stand-in), CCreatureActionBase::GetPWorld 0x00692940, CWorld virtual
-//   slot 12 (+0x30, world map), NCreatureHiding::GetValidPositions 0x0074A5D0 (__fastcall), CThing::GetPos 0x004C73D0,
-//   STLport remove_if<C3DVector*, pred> 0x008AC060 / 0x008C34A0 (__fastcall, 16-byte predicate by value), STLport __copy
-//   <C3DVector> 0x0074CA20 (same-TU stand-in), CWorld::GetWorldSeed 0x0049D810, GFROR13 0x00497890,
-//   CTCCreatureNavigation::IsAbleToNavigateFromPosToPos 0x006CB620, free 0x00BFEA14 (vector storage), def release via slot 1.
-// Layout: CJackOfBladesBattleDef::RushAwayDistance retail +0x7c (PDB +0x80); CTCBoss (interface 0xAD) PhaseStartPos +0x22
-//   (packed); CWorld thing-search tools +0x20; navigation is interface 7.
-// Shape: the boss and navigation out pointers are never null-initialised (the absent path reads the stale argument slot, as
-//   retail); same-TU LowerBound and __copy bodies put both lookup keys in one frame word and home the empty iterator-tag
-//   temporaries in the dead argument slot; the near-Jack predicate is a NAMED local built from a named creature pointer and a
-//   named distance (GetPItem, distance spill, GetPos, X/Y on the x87 stack, Z through the frame), and the first erase
-//   takes `positions.end()` captured right after the size test (retail's edi survives the calls); the second erase is the
-//   plain expression form; `while (!found && size)` with if/else (no break) keeps retail's top-tested loop and the
-//   `mov bl,1` / `mov bl,[found]` exits.
-// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
+// Name (NF78, q10945): Ego_r.pdb 0x008FA430 / FableWin.pdb 0x02A0EBE0 ?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush@@IAE_NAAVC3DVector@@@Z
+//   (protected, C3DVector&); the landed caller FinishAction 0x008C2550 binds it so through the shared header.
+// Port (NF78, round 7; q10945 / q10946): every class from the shared headers (the 0x008C2550 block: CCombatAction_StrikeResponseJackOfBladesIntoRush.h
+//   FINISHACTION declares the protected GetValidRushPosition(C3DVector&)); the local CThing / CWorld / CTCBoss / CCombatActionBase /
+//   CIntelligentPointer / CVectorMap / CDefPointer / vector models and the stand-in bodies are gone. p_jack_def, ptc_boss, validPositions,
+//   ptc_nav, found, random_index and rush_pos are the Ego_d.pdb names (NF74's 0x008C2550 text).
+// Shape (FITTED, carried over from the landed row's Shape levers; not Ego_d locals): the named world / creature / search locals give
+//   retail's GetWorld, GetPItem, GetWorld call order before GetValidPositions; last (end() captured after the size test), me, distance and
+//   the named too_close predicate give the first erase; found declared before the navigation GetTC; the named self pointer is read before
+//   the candidate element (grades 1-4: 744, 760, 761 DIFFER, then RM).
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), CDefClassBase::GetSubDef<CJackOfBladesBattleDef> 0x008C33E0 (same-TU
+//   noinline header body), CVectorMap::LowerBound 0x0040F020 (GetTC expanded), CCreatureActionBase::GetWorld 0x00692940, CWorld virtual
+//   slot 12 (world map), NCreatureHiding::GetValidPositions 0x0074A5D0, CThing::GetPos 0x004C73D0, STLport remove_if 0x008AC060
+//   (unary_negate<CVectorFilter_FurtherFromPointThan>, both PDBs) and 0x008C34A0 (its landed row's descriptive CIsOutsideRadius: the
+//   phase filter's class is unproven, NF74 REJECTED.tsv), STLport __copy<C3DVector> 0x0074CA20, CWorld::GetWorldSeed 0x0049D810,
+//   GFROR13 0x00497890, CTCCreatureNavigation::IsAbleToNavigateFromPosToPos 0x006CB620, free 0x00BFEA14, def release via slot 1.
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_STLP_REMOVE_COPY_IF
+#define FABLE_RETAIL_STLP_NOT1
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGABLE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CTCBOSS_GETPHASESTARTPOS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CTHINGBASEDEF
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED   // CTCBoss::PhaseStartPos at +0x22 (alignment 1, engine/CTCBoss.h; as 0x009547D0)
 #include "fable_compiler.h"
-#include <stdlib.h>
+#include <math.h>
 #include "engine/C3DVector.h"
-namespace std {
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-#pragma auto_inline(off)
-template <class _RandomAccessIter, class _OutputIter, class _Distance>   // 0x0074CA20 <C3DVector*, C3DVector*, int>
-__declspec(noinline) _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
-                                                   const random_access_iterator_tag&, _Distance*)
-{
-    for (_Distance __n = __last - __first; __n > 0; --__n) {
-        *__result = *__first;
-        ++__first;
-        ++__result;
-    }
-    return __result;
-}
-}
-#pragma auto_inline(on)
-struct CPositionVector {                                // STLport vector<C3DVector> (12 bytes)
-    C3DVector* _M_start;
-    C3DVector* _M_finish;
-    C3DVector* _M_end_of_storage;
-    CPositionVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CPositionVector() { if (_M_start) free(_M_start); }
-    C3DVector* begin() const { return _M_start; }
-    C3DVector* end() const { return _M_finish; }
-    long size() const { return _M_finish - _M_start; }
-    C3DVector& operator[](long i) { return *(begin() + i); }
-    C3DVector* erase(C3DVector* first, C3DVector* last)
-    {
-        C3DVector* newFinish = std::__copy(last, _M_finish, first, std::random_access_iterator_tag(), (int*)0);
-        _M_finish = newFinish;
-        return first;
-    }
-    C3DVector* erase(C3DVector* pos)
-    {
-        if (pos + 1 != _M_finish)
-            std::__copy(pos + 1, _M_finish, pos, std::random_access_iterator_tag(), (int*)0);
-        --_M_finish;
-        return pos;
-    }
-};
-class CWorldMap;
-class CThingSearchTools;
-class CTCShapeManager;
-void __fastcall GetValidPositions(CPositionVector& positions, const CWorldMap& map, const CThingSearchTools& search,
-                                  const C3DVector& pos, float radius, bool flag, const CTCShapeManager* shapes);   // 0x0074A5D0
-long __fastcall GFROR13(unsigned long);  // 0x00497890
-inline unsigned long GFRandom(unsigned long* seed)
-{
-    *seed = *seed * 0x24a1 + 0x24df;
-    *seed = GFROR13(*seed);
-    return *seed;
-}
-#define VF(n) virtual void v##n();
-class CWorld { public:
-    VF(0) VF(1) VF(2) VF(3) VF(4) VF(5) VF(6) VF(7) VF(8) VF(9) VF(10) VF(11)
-    virtual const CWorldMap& GetWorldMap();             // slot 12 (+0x30)
-    unsigned char      _pad04[0x20 - 0x04];
-    CThingSearchTools* PThingSearchTools;               // +0x20
-    unsigned long* GetWorldSeed() const;                    // 0x0049D810
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "engine/CJackOfBladesBattleDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCPhysicsBase.h"
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTCBOSS_GETGENERICCOUNTER
+#include "engine/CTCBoss.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CIntelligentPointer.h"
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#include "engine/CThingCreatureBase.h"
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+#define FABLE_RETAIL_CCOMBATACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_RECOVER
+#define FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_TYPED
+#define FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH
+#define FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH_FINISHACTION
+#include "engine/CCombatAction_StrikeResponseJackOfBladesIntoRush.h"
+#include "stlport/fable_containers.h"
+#include "engine/CVectorFilter_FurtherFromPointThan.h"
+#include "engine/NCreatureHiding.h"
+#include "engine/CWorld.h"
+#include "engine/CTCCreatureNavigation.h"
+#include "engine/GFRandom.h"
+// NF81 (round 7, q10988): the body (and the CIsOutsideRadius predicate and the remove_if declaration) moved unchanged into the NF81
+//   overlay header engine/CCombatAction_StrikeResponseJackOfBladesIntoRush_GetValidRushPosition.h, the one text this row and its caller
+//   FinishAction 0x008C2550 (a visible noinline COMDAT there) share.
+// NF88 (round 7, q11162, coordinator ruling: one definition): the row no longer defines the header's _DEFINE macro (a strong, nodup copy that
+//   clashed with FinishAction's COMDAT at whole-image link, LNK2005). It includes the `inline __declspec(noinline)` body like every includer
+//   and makes VC7.1 emit it as a pick-any COMDAT (selection 2) through the anonymous-namespace reference below (the 0x00860150 pattern).
+//   The member is protected, so the reference is taken through an anonymous derived class that is never instantiated.
+#include "engine/CCombatAction_StrikeResponseJackOfBladesIntoRush_GetValidRushPosition.h"
 
-class CTCBase;
-// agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
-//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
-enum ETCInterfaceType { };
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class C> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
-    value_type* _M_start;                                   // +0x00 (the STLport vector)
-    value_type* _M_finish;                                  // +0x04
-    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-#pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
-{
-    value_type* lo = _M_start;
-    long n = _M_finish - _M_start;
-    while (n > 0) {
-        long half = n >> 1;
-        value_type* mid = lo + half;
-        if (mid->first < key) {
-            lo = mid + 1;
-            n -= half + 1;
-        } else {
-            n = half;
-        }
-    }
-    return lo;
-}
-#pragma auto_inline(on)
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long RefCount;                                      // +0x04
-};
-class CJackOfBladesBattleDef : public CDefBase { public:
-    unsigned char _pad08[0x7c - 0x08];
-    float         RushAwayDistance;                     // +0x7c (PDB +0x80)
-};
-template<class T> class CDefPointer { public:                  // released without a null test
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
-};
-class CDefClassBase : public CDefBase { public:
-    bool GetSubDef(CDefPointer<CJackOfBladesBattleDef>* out);   // 0x008C33E0
-};
-void* FindSubDef_CJackOfBladesBattleDef(CDefClassBase* defClass);
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CJackOfBladesBattleDef>* out)
-{
-    void* def = FindSubDef_CJackOfBladesBattleDef(this);
-    if (!def)
-        return false;
-    out->Object = (CJackOfBladesBattleDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-
-#pragma pack(push, 1)
-class CTCBoss { public:                                        // interface 0xAD
-    unsigned char _pad00[0x22];
-    C3DVector     PhaseStartPos;                        // +0x22
-};
-#pragma pack(pop)
-class CTCCreatureNavigation { public:                          // interface 7
-    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance) const;   // 0x006CB620
-};
-class CThing { public:
-    unsigned char   _pad0[0x20];
-    unsigned long   m_presentBits[9];                   // +0x20
-    CInterfaceMap   m_interfaces;                       // +0x44
-    unsigned char   _pad4c[0x70 - 0x4c];
-    CDefClassBase*  m_pDef;                             // +0x70
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    CDefClassBase* GetDef() const { return m_pDef; }
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->_M_finish || interfaceType < it->first)
-                it = map->_M_finish;
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the header's inline (noinline) GetValidRushPosition so this object emits it out of
+// line as a pick-any COMDAT (retail's 0x008C1600). Internal to this TU; the class is never instantiated and the function never called.
+class CGetValidRushPositionReference : public CCombatAction_StrikeResponseJackOfBladesIntoRush {
 public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
+    static bool (CCombatAction_StrikeResponseJackOfBladesIntoRush::*Reference())(C3DVector&);
 };
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
-struct CDistancePredicate {                             // remove_if predicate 0x008AC060 (16 bytes by value)
-    float     Distance;
-    C3DVector Pos;
-    CDistancePredicate(float distance, const C3DVector& pos) : Distance(distance), Pos(pos) { }
-};
-struct CPhaseDistancePredicate {                        // remove_if predicate 0x008C34A0 (16 bytes by value)
-    float     Distance;
-    C3DVector Pos;
-    CPhaseDistancePredicate(float distance, const C3DVector& pos) : Distance(distance), Pos(pos) { }
-};
-C3DVector* __fastcall RemoveIf(C3DVector* first, C3DVector* last, CDistancePredicate pred);        // 0x008AC060
-C3DVector* __fastcall RemoveIf(C3DVector* first, C3DVector* last, CPhaseDistancePredicate pred);   // 0x008C34A0
-
-class CCombatActionBase {
-public:
-    virtual void Initialise();
-    unsigned char           _pad04[4];
-    CIntelligentPointer<CThing> PCreature;                  // +0x08
-    unsigned char           _pad10[0x114 - 0x10];
-    CWorld* GetPWorld() const;                          // 0x00692940
-};
-class CCombatAction_StrikeResponseJackOfBladesIntoRush : public CCombatActionBase {
-public:
-    bool GetValidRushPosition(C3DVector* out);
-};
-
-bool CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition(C3DVector* out)
+// Out of class, so it is an ordinary (not inline) function that VC7.1 compiles even though nothing calls it.
+bool (CCombatAction_StrikeResponseJackOfBladesIntoRush::*CGetValidRushPositionReference::Reference())(C3DVector&)
 {
-    CDefPointer<CJackOfBladesBattleDef> def;
-    PCreature.GetPItem()->GetDef()->GetSubDef(&def);
-    CTCBoss* boss;
-    PCreature.GetPItem()->GetInterface(&boss, 0xad);
-    CPositionVector positions;
-    CWorld* world = GetPWorld();
-    CThing* creature = PCreature.GetPItem();
-    const CThingSearchTools& search = *GetPWorld()->PThingSearchTools;
-    GetValidPositions(positions, world->GetWorldMap(), search, creature->GetPos(), def->RushAwayDistance + 2.0f, false, 0);
-    if (positions.size() == 0)
-        return false;
-    C3DVector* last = positions.end();
-    CThing* me = PCreature.GetPItem();
-    float distance = def->RushAwayDistance;
-    CDistancePredicate tooClose(distance, me->GetPos());
-    positions.erase(RemoveIf(positions.begin(), positions.end(), tooClose), last);
-    positions.erase(RemoveIf(positions.begin(), positions.end(), CPhaseDistancePredicate(21.0f, boss->PhaseStartPos)),
-                    positions.end());
-    bool found = false;
-    CTCCreatureNavigation* navigation;
-    PCreature.GetPItem()->GetInterface(&navigation, 7);
-    while (!found && positions.size() != 0) {
-        unsigned long count = positions.size();
-        unsigned long random = GFRandom(GetPWorld()->GetWorldSeed());
-        unsigned long index = count ? random % count : 0;
-        CThing* self = PCreature.GetPItem();
-        if (navigation->IsAbleToNavigateFromPosToPos(self->GetPos(), positions[index], 0.0f)) {
-            *out = positions[index];
-            found = true;
-        } else {
-            positions.erase(positions.begin() + index);
-        }
-    }
-    return found;
+    return &CGetValidRushPositionReference::GetValidRushPosition;
+}
 }

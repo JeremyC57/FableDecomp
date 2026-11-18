@@ -26,7 +26,13 @@ public:
     CCreatureAction_SheatheItemToInventory(CThingCreatureBase& creature, CCreatureActionBase* followUp, long priority);   // 0x0069FFD0
     CCreatureAction_SheatheItemToInventory(CThingCreatureBase& creature, const CCharString& animation, CCreatureActionBase* followUp,
                                            long priority);
+#ifndef FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_IMPLICIT_DTOR
     virtual ~CCreatureAction_SheatheItemToInventory();                        // 0x0048C950
+#else
+    // Retail opt-in (NF77, row 0x0048C950): the destructor is the implicit one (virtual through CCreatureActionBase). Its retail COMDAT
+    // 0x0048C950 stores no vptr (push esi ; mov esi,ecx ; <PFollowUpAction release inline> ; mov ecx,esi ; pop esi ; jmp 0x00693EF0), which
+    // only the compiler-generated destructor gives: a user-declared one stores the vptr first (GOTCHAS 73). Name unchanged (??1...@@UAE@XZ).
+#endif
     virtual void Initialise();
     virtual void PerformAction();                                             // 0x0069F4F0
     virtual void FinishAction();                                              // 0x0069F670
@@ -35,6 +41,6 @@ private:
     static CCharString __fastcall GetAnimationToUse(const CThing& creature);
     CCountedPointer<CCreatureActionBase> PFollowUpAction;                     // +0xA8
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SheatheItemToInventory) == 0xB0);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CCreatureAction_SheatheItemToInventory) == 0xB0);
 #endif
 #endif // FABLE_ENGINE_CCREATUREACTION_SHEATHEITEMTOINVENTORY_H

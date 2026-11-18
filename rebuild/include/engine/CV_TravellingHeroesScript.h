@@ -18,6 +18,12 @@ public:
     virtual void Main();
     virtual void Init();
     virtual void OnPersist(CPersistContext&);
+#ifdef FABLE_RETAIL_CV_TRAVELLINGHEROESSCRIPT_THUNDER
+    // NF68 opt-in (row 0x00EE2490 CTH_Thunder::Main): Ego_r.pdb / FableWin.pdb ?ThunderChatter@CV_TravellingHeroesScript@NScript@@QAEXXZ
+    // (retail 0x00EE29D0) and ?PlayCutscene@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@@Z (retail 0x00EE2DB0). Declarations only.
+    void ThunderChatter();                                               // 0x00EE29D0
+    void PlayCutscene(CCharString name);                                 // 0x00EE2DB0
+#endif
     CScriptGameResourceObjectScriptedThingBase seh_Rival;
     CScriptGameResourceObjectScriptedThingBase seh_Girl;
     CScriptGameResourceObjectScriptedThingBase seh_Boy;
@@ -69,6 +75,12 @@ public:
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_TravellingHeroesScript&, CScriptDataBase*, const CScriptThing&);
         virtual CScriptBase* GetParentScript() const;
+#ifdef FABLE_RETAIL_CV_TRAVELLINGHEROESSCRIPT_THUNDER_GETMASTERDATA
+        // NF71 opt-in (round 7, row 0x00EE2490 CTH_Thunder::Main): FableWin.pdb
+        // ?GetMasterData@CTH_Thunder@CV_TravellingHeroesScript@NScript@@QAEPAVCQ_SunnyvaleMasterData@3@XZ (public; Ego_r.pdb and retail
+        // expand it: `mov eax,[esi+18h] ; cmp dword ptr [eax+4],384h` at 0x00EE24EE).
+        NScript::CQ_SunnyvaleMasterData* GetMasterData() { return PMasterData; }
+#endif
     private:
         virtual void Main();
     protected:
@@ -182,5 +194,5 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_TravellingHeroesScript) == 0x8c);
+FABLE_STATIC_ASSERT_AT(185, sizeof(NScript::CV_TravellingHeroesScript) == 0x8c);
 #endif

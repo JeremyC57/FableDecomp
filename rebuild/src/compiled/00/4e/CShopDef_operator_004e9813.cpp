@@ -14,6 +14,9 @@
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CAttitudeFloatMap are now the STLport std::map<EOpinionAttitudeType, float> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+#include "engine/EOpinionAttitudeType.h"
 class CCharString { public:
     void* m_pStringData;
     const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
@@ -21,10 +24,6 @@ class CCharString { public:
 struct CShopItemDefVector {                                 // vector<CShopItemDef> (12 bytes)
     void* m_first; void* m_last; void* m_end;
     CShopItemDefVector& operator=(const CShopItemDefVector& other);   // 0x004E9AD3
-};
-struct CAttitudeFloatMap {                                  // map<EOpinionAttitudeType,float> (12 bytes)
-    void* head; unsigned long size; unsigned long _compare;
-    CAttitudeFloatMap& operator=(const CAttitudeFloatMap& other);     // 0x004E99AE
 };
 
 // def vtable 0x01241F9C: slot 0 0x004E26D5 (implicit inline dtor); real overrides from the def vtable scan
@@ -40,9 +39,9 @@ class CShopDef : public CDefClassBase { public:                           // vta
     float BuyPriceMultiplier;                               // +0x58
     float SellPriceMultiplier;                              // +0x5c
     float AttitudeBuyPriceMultiplierDefault;                // +0x60
-    CAttitudeFloatMap AttitudeBuyPriceMultiplier;           // +0x64
+    std::map<EOpinionAttitudeType, float> AttitudeBuyPriceMultiplier;           // +0x64
     float AttitudeSellPriceMultiplierDefault;               // +0x70
-    CAttitudeFloatMap AttitudeSellPriceMultiplier;          // +0x74
+    std::map<EOpinionAttitudeType, float> AttitudeSellPriceMultiplier;          // +0x74
     float MaxStockChangePerSell;                            // +0x80
     float MaxStockChangePerBuy;                             // +0x84
     float MaxStockRevertPerDay;                             // +0x88

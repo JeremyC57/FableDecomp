@@ -40,6 +40,16 @@ public:
  // (out of line at 0x006EBDD0). Declaration only; needs engine/EUnsheatheWeaponType.h.
  void CreatureUnsheathWeapon(CThingCreatureBase& creature, EUnsheatheWeaponType type);   // 0x006EBDD0
 #endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_REGISTERCOMBATSEQUENCES
+ // Opt-in (agentNF69, row 0x008B0D10): Ego_r.pdb (0x008EC2B0) + FableWin.pdb (0x02A2F600) private ?RegisterCombatSequences@CCombatManager@@AAEXXZ
+ // (retail 0x008B0D10, called once from the constructor 0x006ED3F0, which binds that spelling) and the name -> creator insert it calls 63
+ // times, 0x006EAB60, under the landed binding ?RegisterCombatSequence@CCombatManager@@QAEXP6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@ZVCCharString@@@Z
+ // (in neither PDB name set: Ego_r and FableWin inline it). Declarations only; the includer supplies CCombatSequenceBase.
+ void RegisterCombatSequence(CCombatSequenceBase* (__fastcall* creator)(CThingCreatureBase&,CThingCreatureBase&),CCharString name);   // 0x006EAB60
+private:
+ void RegisterCombatSequences();                                                                                     // 0x008B0D10
+public:
+#endif
  void RegisterCombatant(CThingCreatureBase&,CThingCreatureBase&,bool);
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_SETATTACKERREADY
  // Opt-in (row 0x00972CC0): Ego_r.pdb + FableWin.pdb ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z (0x006EA450, landed).

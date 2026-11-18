@@ -1,4 +1,7 @@
 // CTCKrakenTentacle::CTCKrakenTentacle(CThing* thing) -- CTCBase(thing), own vtable, null def pointer and thing pointers, strike state cleared, empty DummyName, DoneDeathStuff false
+// NF83 (round 7, q11021 / q11022 binder): the local CBaseIntelligentPointer-derived vtable stand-in(s) replaced by the shared
+//   engine/CIntelligentPointer.h CIntelligentPointer<CThing> / <CThingCreatureBase> (vtables ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C,
+//   ??_7?$CIntelligentPointer@VCThingCreatureBase@@@@6B@ 0x0123E7D8).
 // Leaf: ??0CTCKrakenTentacle@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
 //   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCKrakenTentacle@@QAE@AAVCThing@@@Z).
@@ -25,10 +28,6 @@ class CCharString { public:
 };
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing() { }
-};
 namespace N_004a96f0 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     virtual void v00();
     CIntelligentPointerConstThing(const CThing* item);   // 0x004A96F0
@@ -42,8 +41,8 @@ template <class T> class CDefPointer { public:
 class CTCKrakenTentacle : public CTCBase { public:                // vtable 0x012407BC
     CDefPointer<CKrakenTentacleDef> PTentacleDef;   // +0x0c
     CIntelligentPointerConstThing   PKraken;        // +0x10
-    CIntelligentPointerThing        PObstruction;   // +0x18
-    CIntelligentPointerThing        PRippleEffect;  // +0x20
+    CIntelligentPointer<CThing>        PObstruction;   // +0x18
+    CIntelligentPointer<CThing>        PRippleEffect;  // +0x20
     bool      CanStrike;                            // +0x28
     bool      Tracking;                             // +0x29
     bool      IsStriking;                           // +0x2a

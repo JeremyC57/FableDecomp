@@ -1,5 +1,9 @@
 // CAIStateGroup_BanditKingLunge::IsRunnable() -- runnable when CanLungeAtPlayer(hero) holds and the hero is inside the lunge radius (squared XY distance < 16.0f @ 0x01238164): target the hero
-// Leaf: IsRunnable@CAIStateGroup_BanditKingLunge
+// Leaf: ?IsRunnable@CAIStateGroup_BanditKingLunge@@MAE_NXZ
+// NF75 (round 7, land1117fu q10925): IsRunnable is the protected virtual of Ego_r.pdb 0x00985B50 / FableWin.pdb (MAE, as
+//   engine/CAIStateGroup_BanditKingLunge.h declares it); the row's pre-existing local declaration is now under protected: (was public, UAE).
+// NF72 (round 7, q10861): the callee 0x009613A0 CanLungeAtPlayer is protected (Ego_r.pdb + FableWin.pdb IAE); its local declaration is
+//   now under `protected:`, so the call binds ?CanLungeAtPlayer@CAIStateGroup_BanditKingLunge@@IAE_NPAVCThing@@@Z.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009614A0, length 169 bytes (+ int3 padding).
@@ -55,8 +59,10 @@ struct CAIStateGroup_BanditKingLunge
     unsigned char _pad08[0x0c];                     // +0x08
     CBaseIntelligentPointer PTargetThing;           // +0x14
     CPlayerManager* GetPPlayerManager();            // 0x008FCF90
-    bool CanLungeAtPlayer(CThing* hero);            // 0x009613A0
-    virtual bool IsRunnable();
+protected:
+    bool CanLungeAtPlayer(CThing* hero);            // 0x009613A0 ?CanLungeAtPlayer@CAIStateGroup_BanditKingLunge@@IAE_NPAVCThing@@@Z (protected)
+    virtual bool IsRunnable();                      // ?IsRunnable@CAIStateGroup_BanditKingLunge@@MAE_NXZ (protected virtual)
+public:
 };
 
 bool CAIStateGroup_BanditKingLunge::IsRunnable()

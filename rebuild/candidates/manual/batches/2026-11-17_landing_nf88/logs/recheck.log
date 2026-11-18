@@ -1,0 +1,52 @@
+addr       parity           behav  name
+004508d6   RELOCATION_MATCH PASS   _M_erase
+004db853   RELOCATION_MATCH PASS   clear
+004dd1db   RELOCATION_MATCH PASS   ~_Rb_tree
+005bdf08   RELOCATION_MATCH PASS   GetNumberOfItemsOfTypeInInventory
+005be839   WARN RELOC_NAME: ??$find_if@PBVCItem@NInventory@@VCIsSameItemType@@@std@@YIPBVCItem@NInventory@@PBV12@0VCIsSameItemType@@@Z -> 005c1921 labelled 'std::vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_>::_Ucopy<std::pair<long,CCountedPointer<CContainmentVolume>_>*>'
+005be839   RELOCATION_MATCH PASS   GetBoughtPrice
+005be8b1   WARN RELOC_NAME: ??$find_if@PBVCItem@NInventory@@VCIsSameItemType@@@std@@YIPBVCItem@NInventory@@PBV12@0VCIsSameItemType@@@Z -> 005c1921 labelled 'std::vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_>::_Ucopy<std::pair<long,CCountedPointer<CContainmentVolume>_>*>'
+005be8b1   RELOCATION_MATCH PASS   GetPerItemDataForItem
+005be8d3   RELOCATION_MATCH PASS   GetPerItemDataForItem
+005bead5   RELOCATION_MATCH PASS   GetBoughtPrice
+005bf1d7   RELOCATION_MATCH PASS   GetAmountOfItemsContainable
+005bf2ed   WARN RELOC_NAME: ?IsSpaceInCategoryForItem@CCategory@NInventory@@QBE_NJ@Z -> 005bf19c labelled 'CCategory::CanAddItem'
+005bf2ed   RELOCATION_MATCH PASS   IsSpaceInInventoryForItem
+005bf30d   RELOCATION_MATCH PASS   GetAmountOfItemsContainable
+005c0653   MATCH            PASS   __find_if
+005c08c0   RELOCATION_MATCH PASS   find_if
+005d8e70   RELOCATION_MATCH PASS   GetBoughtPrice
+00664670   RELOCATION_MATCH PASS   SetCurrentAction
+00686f10   WARN RELOC_NAME: ?RegisteredTCs@CTCBase@@0V?$CVectorMap@VCCharString@@VCRegisteredTCInfo@CTCBase@@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@@A -> 013ba89c labelled 'CTCBase::RegisteredTCs (CVectorMap<CCharString, CTCBase::CRegisteredTCInfo, CKeyPairCompareLess<...>>)'
+00686f10   RELOCATION_MATCH PASS   AllocateTC
+006dc450   RELOCATION_MATCH PASS   GFSerialiseMapBinaryOut
+006dd1c0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@Z -> 004e6e43 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dd1c0   WARN RELOC_NAME: ??0?$map@W4EHeroExperienceStatCategory@@MU?$less@W4EHeroExperienceStatCategory@@@std@@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@QAE@ABV01@@Z -> 004f9960 labelled '_Rb_tree::_Rb_tree'
+006dd1c0   RELOCATION_MATCH PASS   GFSerialiseMapBinaryIn
+0081f910   MATCH            PASS   GetStrongestEngineThemeAt
+008c1600   RELOCATION_MATCH PASS   GetValidRushPosition
+0091d190   WARN RELOC_NAME: ??$GetEvent@VCEventApologyReceived@NEntityEvents@@VCEventFilter_None@2@@CTCEntityEvents@@QBE_NPAPAVCEventApologyReceived@NEntityEvents@@ABVCEventFilter_None@2@@Z -> 0091d0a0 labelled 'CTCEntityEvents::GetEvent<NEntityEvents::CEventApologyReceived, NEntityEvents::CEventFilter_None>'
+0091d190   RELOCATION_MATCH PASS   Update
+
+WINS: 21
+  004508d6 RELOCATION_MATCH std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, float>, std::_Select1st<std::pair<EObjectAugmentationType const, float> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, float> > >::?_M_erase@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@2@@Z
+  004db853 RELOCATION_MATCH std::_Rb_tree<EHeroExperienceStatCategory, std::pair<EHeroExperienceStatCategory const, float>, std::_Select1st<std::pair<EHeroExperienceStatCategory const, float> >, std::less<EHeroExperienceStatCategory >, std::allocator<std::pair<EHeroExperienceStatCategory const, float> > >::?clear@?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@U?$less@W4EHeroExperienceStatCategory@@@3@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@QAEXXZ
+  004dd1db RELOCATION_MATCH std::_Rb_tree<EHeroExperienceStatCategory, std::pair<EHeroExperienceStatCategory const, float>, std::_Select1st<std::pair<EHeroExperienceStatCategory const, float> >, std::less<EHeroExperienceStatCategory >, std::allocator<std::pair<EHeroExperienceStatCategory const, float> > >::??1?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@U?$less@W4EHeroExperienceStatCategory@@@3@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@QAE@XZ
+  005bdf08 RELOCATION_MATCH CTCInventoryBase::?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
+  005be839 RELOCATION_MATCH NInventory::CCategory::?GetBoughtPrice@CCategory@NInventory@@QBEJJ@Z
+  005be8b1 RELOCATION_MATCH NInventory::CCategory::?GetPerItemDataForItem@CCategory@NInventory@@QBEPBVCPerItemData@2@J@Z
+  005be8d3 RELOCATION_MATCH NInventory::CTCInventoryBase::?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z
+  005bead5 RELOCATION_MATCH NInventory::CTCInventoryBase::?GetBoughtPrice@CTCInventoryBase@NInventory@@QBEJJ@Z
+  005bf1d7 RELOCATION_MATCH NInventory::CCategory::?GetAmountOfItemsContainable@CCategory@NInventory@@QBEJJ@Z
+  005bf2ed RELOCATION_MATCH NInventory::CTCInventoryBase::?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z
+  005bf30d RELOCATION_MATCH NInventory::CTCInventoryBase::?GetAmountOfItemsContainable@CTCInventoryBase@NInventory@@QBEJJ@Z
+  005c0653 MATCH std::??$__find_if@PBVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@YIPBVCCategory@NInventory@@PBV12@0VCIsInventoryCategory@2@ABUrandom_access_iterator_tag@0@@Z
+  005c08c0 RELOCATION_MATCH std::??$find_if@PBVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@YIPBVCCategory@NInventory@@PBV12@0VCIsInventoryCategory@2@@Z
+  005d8e70 RELOCATION_MATCH CTCInventoryItem::?GetBoughtPrice@CTCInventoryItem@@QBEJXZ
+  00664670 RELOCATION_MATCH CThingCreatureBase::?SetCurrentAction@CThingCreatureBase@@QAE_NABV?$CCountedPointer@VCCreatureActionBase@@@@@Z
+  00686f10 RELOCATION_MATCH CTCBase::?AllocateTC@CTCBase@@SIPAV1@ABVCCharString@@AAVCThing@@@Z
+  006dc450 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryOut@VCHeroStatIncreaseData@@W4EDamageAttribute@@U?$less@W4EDamageAttribute@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EDamageAttribute@@VCHeroStatIncreaseData@@U?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@4@@std@@@Z
+  006dd1c0 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@VCHeroStatIncreaseData@@W4EDamageAttribute@@U?$less@W4EDamageAttribute@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EDamageAttribute@@VCHeroStatIncreaseData@@U?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@4@@std@@@Z
+  0081f910 MATCH CMap::?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z
+  008c1600 RELOCATION_MATCH CCombatAction_StrikeResponseJackOfBladesIntoRush::?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush@@IAE_NAAVC3DVector@@@Z
+  0091d190 RELOCATION_MATCH CAIStateGroup_MinionReactToApology::?Update@CAIStateGroup_MinionReactToApology@@UAEXXZ

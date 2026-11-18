@@ -1,68 +1,30 @@
-// std::__find_if(const NInventory::CCategory* first, const NInventory::CCategory* last, CIsCategoryWithDefIndex pred, const random_access_iterator_tag&) -- STLport random-access find_if over the inventory categories: the first category whose GlobalDefIndex equals the predicate's def index, else last
-// Leaf: ??$__find_if@
-// Retail: Fable.exe @ 0x005C0653, 112 bytes, `ret 8`: __fastcall (/Gr template TU) -- first in ecx, last in edx (kept in ebx),
-// the 4-byte predicate BY VALUE and the unused category tag on the stack. Only caller: the find_if forwarder @ 0x005C08C0
-// (catalog "_Umove<EWeaponClass*>" propagated; landed as FindCategoryWithDefIndex by CTCInventoryBase::GetBoughtPrice
-// 0x005BE8D3), called with GetInventoryCategory(itemType) @ 0x005D97B0 over CTCInventoryBase::Categories (+0x20).
-// Element: retail NInventory::CCategory is 0x2C bytes (the PDB's 16-byte vector is 12 in retail, so engine/CCategory.h, 0x30,
-// sits 4 bytes high): GlobalDefIndex at +0x1C is the compared word (`cmp [ecx+1Ch],esi`); the stride is the `push 2Ch ; pop edi`.
-// Body: STLport 4.x _algo.c __find_if (four inlined predicate calls per trip, then the 3/2/1 remainder switch); size TU.
-// Const instantiation: the caller chain is const (Ego_r: GetBoughtPrice@CTCInventoryBase is `QBE`); twin 0x005C06C3 is the
-// non-const one (AddItem).
-// Retail evidence for the local model: the 0x2C stride; engine/CCategory.h has the PDB (0x30) layout, so it is not included.
+// std::__find_if(const NInventory::CCategory* first, const NInventory::CCategory* last, NInventory::CIsInventoryCategory pred,
+//   const random_access_iterator_tag&) -- STLport 4.6 _algo.c random-access find_if over the inventory categories: the first category whose
+//   GlobalDefIndex equals the predicate's Index, else last
+// Leaf: ??$__find_if@PBVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@YIPBVCCategory@NInventory@@PBV12@0VCIsInventoryCategory@2@ABUrandom_access_iterator_tag@0@@Z
+// Retail: Fable.exe @ 0x005C0653, 112 bytes, `ret 8`: __fastcall (/Gr template TU) -- first in ecx, last in edx (kept in ebx), the 4-byte
+//   predicate BY VALUE and the unused category tag on the stack. Only caller: the find_if forwarder 0x005C08C0 (NF88, q11159).
+// Body: four inlined predicate calls per trip (`cmp [ecx+1Ch],esi`: the retail CCategory is 0x2C bytes with GlobalDefIndex at +0x1C, the
+//   stride `push 2Ch ; pop edi`), then the 3/2/1 remainder switch; size TU. Twin 0x005C06C3 is the non-const instantiation.
+// Identity (NF88, q11159 follow-on): the predicate is NInventory::CIsInventoryCategory {Index} (Ego_r.pdb layout; FableWin.pdb
+//   ??RCIsInventoryCategory@NInventory@@QBE_NABVCCategory@1@@Z and ??$_Find_if@PBVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@
+//   0x02376C93, the Dinkumware counterpart of this function). Descriptive by library (STLport). Was spelled over the made-up predicate
+//   CIsCategoryWithDefIndex and a local NInventory::CCategory model (leaf ??$__find_if@PBVCCategory@NInventory@@UCIsCategoryWithDefIndex@@...).
+// Port (NF88): one explicit instantiation of stlport/fable_algorithm.h with the NF88 opt-ins FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS(_BODY)
+//   over engine/CCategory.h (PASS22 class + NF88 opt-in FABLE_RETAIL_CCATEGORY_ITEMQUERIES: the predicate, a friend of CCategory).
 #pragma optimize("s", on)
-namespace std {
-struct input_iterator_tag {};
-struct forward_iterator_tag : public input_iterator_tag {};
-struct bidirectional_iterator_tag : public forward_iterator_tag {};
-struct random_access_iterator_tag : public bidirectional_iterator_tag {};
-// STLport 4.x _algo.c: the random-access __find_if, four predicate calls per trip, then the 3/2/1 remainder switch.
-template <class RandomAccessIter, class Predicate>
-RandomAccessIter __fastcall __find_if(RandomAccessIter first, RandomAccessIter last, Predicate pred, const random_access_iterator_tag&)
-{
-    int trip_count = (last - first) >> 2;
-    for ( ; trip_count > 0 ; --trip_count) {
-        if (pred(*first)) return first;
-        ++first;
-        if (pred(*first)) return first;
-        ++first;
-        if (pred(*first)) return first;
-        ++first;
-        if (pred(*first)) return first;
-        ++first;
-    }
-    switch (last - first) {
-    case 3:
-        if (pred(*first)) return first;
-        ++first;
-    case 2:
-        if (pred(*first)) return first;
-        ++first;
-    case 1:
-        if (pred(*first)) return first;
-    case 0:
-    default:
-        return last;
-    }
-}
-}
-class CTCInventoryBase;
-namespace NInventory {
-class CCategory {                               // retail layout, 0x2C bytes
-public:
-    unsigned char PAssociatedThing[0x8];        // +0x00 CIntelligentPointer<CThing>
-    unsigned char ItemsInCategory[0xC];         // +0x08 vector<NInventory::CItem> (retail 12 bytes)
-    void* PDef_Object;                          // +0x14 CDefPointer<const CInventoryCategoryDef>
-    CTCInventoryBase* PInventory;               // +0x18
-    long GlobalDefIndex;                        // +0x1C
-    long SelectedItemIndex;                     // +0x20
-    long HighlightedItemIndex;                  // +0x24
-    bool Selected;                              // +0x28
-    bool DisplayItems;                          // +0x29
-};
-}
-struct CIsCategoryWithDefIndex {
-    long DefIndex;                              // +0x00
-    bool operator()(const NInventory::CCategory& category) const { return category.GlobalDefIndex == DefIndex; }
-};
-template const NInventory::CCategory* __fastcall std::__find_if(const NInventory::CCategory*, const NInventory::CCategory*, CIsCategoryWithDefIndex, const std::random_access_iterator_tag&);
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+#define FABLE_RETAIL_CCATEGORY_ITEMQUERIES
+#define FABLE_RETAIL_STLP_FIND_IF_INPUT
+#define FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS
+#define FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS_BODY
+#include "rebuild_abi.h"
+#include "stlport/fable_containers.h"
+class CThing;                                   // engine/CCategory.h's PASS22 class names CIntelligentPointer<CThing>
+#include "engine/CCategory.h"
+#include "stlport/fable_algorithm.h"
+
+template const NInventory::CCategory* FABLE_FASTCALL std::__find_if(const NInventory::CCategory*, const NInventory::CCategory*,
+    NInventory::CIsInventoryCategory, const std::random_access_iterator_tag&);

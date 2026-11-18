@@ -38,7 +38,7 @@ public:
  virtual ~CCreatureAction_PerformExpression();
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PerformExpression)==200);
+FABLE_STATIC_ASSERT_AT(34, sizeof(CCreatureAction_PerformExpression)==200);
 #endif
 #else
 #ifndef FABLE_ENGINE_CCREATUREACTION_PERFORMEXPRESSION_H
@@ -104,18 +104,18 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PerformExpression) == 0xc8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, PExpressionDef_Object) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, PPerformToThing) == 0xac);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, ExpressionItemDefIndex) == 0xb4);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, EmoteIconAdded) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, ReplacedAction) == 0xb9);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, Extended) == 0xba);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, ButtonHeld) == 0xbb);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, SoundEffectID) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, ExtraData1) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, ExtraData2) == 0xc4);
+FABLE_STATIC_ASSERT_AT(100, sizeof(CCreatureAction_PerformExpression) == 0xc8);
+FABLE_STATIC_ASSERT_AT(101, offsetof(CCreatureAction_PerformExpression, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(102, offsetof(CCreatureAction_PerformExpression, PExpressionDef_Object) == 0xa8);
+FABLE_STATIC_ASSERT_AT(103, offsetof(CCreatureAction_PerformExpression, PPerformToThing) == 0xac);
+FABLE_STATIC_ASSERT_AT(104, offsetof(CCreatureAction_PerformExpression, ExpressionItemDefIndex) == 0xb4);
+FABLE_STATIC_ASSERT_AT(105, offsetof(CCreatureAction_PerformExpression, EmoteIconAdded) == 0xb8);
+FABLE_STATIC_ASSERT_AT(106, offsetof(CCreatureAction_PerformExpression, ReplacedAction) == 0xb9);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CCreatureAction_PerformExpression, Extended) == 0xba);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CCreatureAction_PerformExpression, ButtonHeld) == 0xbb);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CCreatureAction_PerformExpression, SoundEffectID) == 0xbc);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CCreatureAction_PerformExpression, ExtraData1) == 0xc0);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CCreatureAction_PerformExpression, ExtraData2) == 0xc4);
 
 #endif // FABLE_ENGINE_CCREATUREACTION_PERFORMEXPRESSION_H
 

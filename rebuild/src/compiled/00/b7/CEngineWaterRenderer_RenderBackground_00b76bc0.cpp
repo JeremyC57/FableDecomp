@@ -1,5 +1,14 @@
 // CEngineWaterRenderer::RenderBackground(float time) -- bind the water bump map on stages 0/1 and the environment map on stage 2 with their blend states, pick the high-end or low-end background shaders, upload the four water bone matrices and either the bump constant (high end) or the low-end colour pixel constants, then draw the alphaed and the opaque background patch lists
-// Leaf: RenderBackground
+// Leaf: ?RenderBackground@CEngineWaterRenderer@@AAEXM@Z
+// NF79 (round 7, q10973): the lighting object 0x01436E9C is NEngineInternal::GPLightingManager (Ego_d.pdb PUB32
+//   ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A in ghidra_out/egod_carved_names.tsv, and the landed 2D / 3D mesh and
+//   particle rows that bind it), declared as they do; the colour read through it (+0x3C: the first theme channel's +0x00) is the header's
+//   PeekGlobalDiffuseColour() (engine/CEngineLightingManager.h PEEKGLOBALDIFFUSE; was a stand-in CEngineLightingView with an
+//   "AmbientColour" pointer). For that header the local C4DVector / CRGBFloatColour / CMatrix3x4 / CArray models gave way to the shared
+//   headers (the local CShaderRenderManager now indexes PSConstTable with operator[], reads ReservedPresets through GetAsCArray() / size());
+//   BoneMatrices.resize binds std::vector<CPreTransposedBoneMatrix>::resize 0x00B7EDF0 (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE; was a
+//   CArray spelling); RenderBackground / RenderBackgroundList private as Ego_r.pdb spells them. Other local models (CShaderRenderManager,
+//   CRenderManagerCore, CRenderStateManager, CTexture, CEngineWaterRenderer) pre-existing.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B76BC0, length 1965 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?RenderBackground@CEngineWaterRenderer@@AAEXM@Z.
@@ -19,34 +28,20 @@
 
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
-class CRGBFloatColour;
-class C4DVector { public:
-    float X, Y, Z, W;
-    C4DVector() { }
-    C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
-    inline C4DVector(const CRGBFloatColour& c);
-};
-class CRGBFloatColour { public:
-    float R, G, B, A;
-    CRGBFloatColour() { }
-    CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
-};
-inline CRGBFloatColour operator*(const CRGBFloatColour& a, const CRGBFloatColour& b) { return CRGBFloatColour(a.R * b.R, a.G * b.G, a.B * b.B, a.A * b.A); }
-inline C4DVector::C4DVector(const CRGBFloatColour& c) : X(c.R), Y(c.G), Z(c.B), W(c.A) { }
-class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
-
+#define FABLE_RETAIL_CRGBFLOATCOLOUR
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#define FABLE_RETAIL_C4DVECTOR
+#define FABLE_RETAIL_CMATRIX3X4
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_PEEKGLOBALDIFFUSE
+#include "engine/C4DVector.h"
+#include "engine/CRGBFloatColour.h"
+#include "engine/CMatrix3x4.h"
+#include "engine/CArray.h"
+#include "engine/CEngineLightingManager.h"
 struct CPreTransposedBoneMatrix {
     float M[12];
     CPreTransposedBoneMatrix() { }
-};
-
-template <class T> class CArray { public:
-    T* First;
-    T* Last;
-    T* End;
-    unsigned long Size() const { return Last - First; }
-    const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
-    void resize(unsigned int n, const T& value);        // 0x00B7EDF0 for CPreTransposedBoneMatrix
 };
 
 class CShaderConstantRange { public:
@@ -74,15 +69,15 @@ public:
 
     void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
     {
-        *(PSConstTable.First + index) = value;
+        PSConstTable[index] = value;
         UpdateFlags |= 2;
     }
 
     FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
-            SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),
-                           CurrentVSConstantLayout->ReservedPresets.Size());
+            SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetAsCArray(),
+                           CurrentVSConstantLayout->ReservedPresets.size());
         if (UpdateFlags & 1)
             UpdatePixelShader();
         if (UpdateFlags & 2)
@@ -409,11 +404,7 @@ extern unsigned long g_renderStateValue_01396dcc;  // 0x01396DCC
 extern unsigned long g_renderStateValue_01396dd0;  // 0x01396DD0
 
 
-struct CEngineLightingView {                       // @ 0x01436E9C
-    unsigned char _pad0[0x3c];
-    const CRGBFloatColour* AmbientColour;                // +0x3C
-};
-extern CEngineLightingView* g_pEngineLighting;     // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C
 
 class CEngineWaterBackgroundSubPatch;
 
@@ -443,6 +434,7 @@ class CEngineWaterRenderer { public:                      // retail layout (12-b
     CMatrix3x4 BoneMatrix0;                        // +0x504
     unsigned char _pad534[0x5c0 - 0x534];
     float WaterBumpFactor;                         // +0x5C0
+private:                                           // Ego_r.pdb: ?RenderBackgroundList / ?RenderBackground@CEngineWaterRenderer@@AAE..
     void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time);   // 0x00B6E260
     void RenderBackground(float time);
 };
@@ -477,7 +469,7 @@ void CEngineWaterRenderer::RenderBackground(float time)
     } else {
         static C4DVector lowEndConstant(0.8f, 0.8f, 0.0f, 0.0f);
         static CRGBFloatColour lowEndColour(0.0f, 0.4f, 0.8f, 1.0f);
-        CRGBFloatColour colour = lowEndColour * *g_pEngineLighting->AmbientColour;
+        CRGBFloatColour colour = lowEndColour * NEngineInternal::GPLightingManager->PeekGlobalDiffuseColour();
         NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, lowEndConstant);
         NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(colour));
     }

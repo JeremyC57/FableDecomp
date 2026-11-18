@@ -104,5 +104,5 @@ private:
  CThing& ParentThing;
 public:CAnimFromFileInfo AnimFromFileInfo;
 };
-FABLE_STATIC_ASSERT(sizeof(CAnimateThing)==0xbc);
+FABLE_STATIC_ASSERT_AT(84, sizeof(CAnimateThing)==0xbc);
 #endif

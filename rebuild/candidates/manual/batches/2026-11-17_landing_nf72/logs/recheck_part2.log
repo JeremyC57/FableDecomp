@@ -1,0 +1,66 @@
+addr       parity           behav  name
+004b8940   RELOCATION_MATCH PASS   ~list
+004e3ee1   WARN SHARED_HEADER_AVAILABLE CTCBase
+004e3ee1   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+004e3ee1   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004e3ee1   WARN RELOC_NAME: ??1CEmitterVector@@QAE@XZ -> 004e1b08 labelled '_global::StdList_Dtor_004e1b08'
+004e3ee1   RELOCATION_MATCH PASS   ~CTCDExplosion
+007bed60   MATCH            PASS   IsAbleToBeDeflected
+00817740   MATCH            PASS   find<EHitLocationCodelet>
+008b1d80   RELOCATION_MATCH PASS   _M_erase
+008b1f70   MATCH            PASS   operator--
+008b2450   MATCH            PASS   find<ECombatSequenceOnStartModuleType>
+008b2860   RELOCATION_MATCH PASS   ~CRetailTree_erase008b1d80
+008e31d0   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesThunderLightningStormDef>
+0091e750   WARN SHARED_HEADER_AVAILABLE C3DVector
+0091e750   WARN SHARED_HEADER_AVAILABLE CThing
+0091e750   WARN SHARED_HEADER_AVAILABLE CSoundPair
+0091e750   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0091e750   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091e750   WARN RELOC_NAME: ??$GetEvent@VCEventChildHurtGoToMother@NEntityEvents@@VCIsEventOfType@2@@CTCEntityEvents@@QBE_NPAPAVCEventChildHurtGoToMother@NEntityEvents@@ABVCIsEventOfType@2@@Z -> 00915760 labelled 'CTCEntityEvents::GetEvent<NEntityEvents::CEventChildHurtGoToMother,NEntityEvents::CIsEventOfType>'
+0091e750   RELOCATION_MATCH PASS   Update
+00938bf0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00938bf0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00938bf0   WARN RELOC_NAME: ?ForEachSeat@@YI?AUCAddFreeSeat@@UCSeatListIterator@@0U1@@Z -> 00938e90 labelled 'std::for_each<std::_List_iterator<CIntelligentPointer<CThing>, std::_Const_traits<CIntelligentPointer<CThing>>>, CAddFreeSeatToList>'
+00938bf0   RELOCATION_MATCH PASS   GetRandomFreeSeatInBuilding
+009619c0   RELOCATION_MATCH PASS   CCreatureAction_BanditKingLunge
+00970b60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00970b60   WARN RELOC_NAME: ?SetUser@CTCCoverPoint@@QAEXPAVCThing@@@Z -> 0087c390 labelled '_unattributed::AssignTarget_0087c390'
+00970b60   RELOCATION_MATCH PASS   ClearCoverThing
+009c8220   RELOCATION_MATCH PASS   BeginLoadingGroup
+009cd740   WARN RELOC_NAME: ?Clear@CPackedUIntArray@@QAEXXZ -> 00a629d0 labelled 'CPackedUIntArray::~CPackedUIntArray'
+009cd740   RELOCATION_MATCH PASS   PackRuntimeData
+009d5260   RELOCATION_MATCH PASS   CBankFileAsyncEntry
+009f63b0   MATCH            PASS   __copy_ptrs<CInputEvent const*,CInputEvent*>
+009f6720   RELOCATION_MATCH PASS   _Destroy<CInputEvent*>
+00a62120   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a62120   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a62120   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a62120   WARN RELOC_NAME: ??1CMemoryDataInputStream@@QAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00a62120   RELOCATION_MATCH PASS   CShaderBankEntry
+00ad7b50   RELOCATION_MATCH PASS   COptimisedVertex*>
+00b32300   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b32300   RELOCATION_MATCH PASS   InitialiseGlobalLights
+
+WINS: 21
+  004b8940 RELOCATION_MATCH std::list<CIntelligentPointer<CThing>, std::allocator<CIntelligentPointer<CThing>>>::??1?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@XZ
+  004e3ee1 RELOCATION_MATCH CTCDExplosion::??1CTCDExplosion
+  007bed60 MATCH NThingShot::CTCShotDefinitionBase::?IsAbleToBeDeflected@CTCShotDefinitionBase@NThingShot@@QBE_NXZ
+  00817740 MATCH std::_Rb_tree<EHitLocationCodelet, std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>, std::_Select1st<std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>>, std::less<EHitLocationCodelet>, std::allocator<std::pair<EHitLocationCodelet const, void (__fastcall *)(CThing &, CHitParameters const &)>>>::??$find@W4EHitLocationCodelet@@@?$_Rb_tree@W4EHitLocationCodelet@@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Select1st@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@U?$less@W4EHitLocationCodelet@@@3@V?$allocator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHitLocationCodelet@@P6IXAAVCThing@@ABVCHitParameters@@@Z@std@@@2@@1@ABW4EHitLocationCodelet@@@Z
+  008b1d80 RELOCATION_MATCH std::_Rb_tree<ECombatSequenceOnStartModuleType, std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>, std::_Select1st<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>, std::less<ECombatSequenceOnStartModuleType>, std::allocator<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>>::?_M_erase@?$_Rb_tree@W4ECombatSequenceOnStartModuleType@@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStartModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@Z
+  008b1f70 MATCH std::_Rb_tree_iterator<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>, std::_Nonconst_traits<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>>::??F?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@std@@QAEAAU01@XZ
+  008b2450 MATCH std::_Rb_tree<ECombatSequenceOnStartModuleType, std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>, std::_Select1st<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>, std::less<ECombatSequenceOnStartModuleType>, std::allocator<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall *)(CThingCreatureBase &, CThingCreatureBase &)>>>::??$find@W4ECombatSequenceOnStartModuleType@@@?$_Rb_tree@W4ECombatSequenceOnStartModuleType@@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStartModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@1@ABW4ECombatSequenceOnStartModuleType@@@Z
+  008b2860 RELOCATION_MATCH CRetailTree_erase008b1d80::??1CRetailTree_erase008b1d80@@QAE@XZ
+  008e31d0 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCSpecialAbilitiesThunderLightningStormDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesThunderLightningStormDef@@@@@Z
+  0091e750 RELOCATION_MATCH CAIStateGroup_MinionMotherConsoleChild::Update
+  00938bf0 RELOCATION_MATCH CAIStateGroup_UsesSeat::?GetRandomFreeSeatInBuilding@CAIStateGroup_UsesSeat@@IBEPAVCThingObject@@AAVCThingBuilding@@@Z
+  009619c0 RELOCATION_MATCH CCreatureAction_BanditKingLunge::??0CCreatureAction_BanditKingLunge@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+  00970b60 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::?ClearCoverThing@CAIStateGroup_CreatureUseCoverBase@@IAEXXZ
+  009c8220 RELOCATION_MATCH NGameText::CDataBank::?BeginLoadingGroup@CDataBank@NGameText@@QBEXK@Z
+  009cd740 RELOCATION_MATCH CBankFile::?PackRuntimeData@CBankFile@@AAEXXZ
+  009d5260 RELOCATION_MATCH CBankFileAsyncEntry::CBankFileAsyncEntry
+  009f63b0 MATCH std::??$__copy_ptrs@PBVCInputEvent@@PAV1@@std@@YIPAVCInputEvent@@PBV1@0PAV1@ABU__false_type@0@@Z
+  009f6720 RELOCATION_MATCH std::??$_Destroy@PAVCInputEvent@@@std@@YIXPAVCInputEvent@@0@Z
+  00a62120 RELOCATION_MATCH CShaderBankEntry::CShaderBankEntry
+  00ad7b50 RELOCATION_MATCH std::??$__uninitialized_copy@PAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@@std@@YIPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@00ABU__false_type@0@@Z
+  00b32300 RELOCATION_MATCH CEnginePrimitiveRenderer::?InitialiseGlobalLights@CEnginePrimitiveRenderer@@AAEXXZ

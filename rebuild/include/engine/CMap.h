@@ -47,6 +47,13 @@ class C3DVector;
 #ifdef FABLE_RETAIL_CMAP_NAVIGATIONLAYER
 class C3DVector;
 #endif
+#ifdef FABLE_RETAIL_CMAP_ENGINETHEMEAT
+// NF81 opt-in (round 7, q10951 / q10977..q10980, rows 0x0081EE60 / 0x0081EFC0 / 0x0081F090 / 0x0081F170): the paint target of the
+// per-cell theme accessors. Ego_r.pdb / FableWin.pdb W4EThemePaintType (a plain enum; its enumerators are in neither name set, so these
+// two are DESCRIPTIVE): 0 paints the height map's engine theme layers (CHeightMapCell +4 / +7), 1 the game map's atmos themes
+// (CGameMapCell +0 / +3), as the retail bodies test `PaintType == 0` then `== 1`.
+enum EThemePaintType { THEME_PAINT_ENGINE = 0, THEME_PAINT_ATMOS = 1 };
+#endif
 // Retail class (header wave 2026-11-03, Codex pass 12 row 0x00821010): RTTI .?AVCMap@@ : CIDrawMap@0, CBaseClassNonCopyable@4
 // (ghidra_out/rtti_bases.tsv); every Ego_r.pdb data member in order (struct_layouts_egor.tsv), composites without a shared header
 // opaque at retail STLport sizes; sizeof 0x1D40.
@@ -135,7 +142,7 @@ protected:
     }
     void CopyPos(const CMap& source, const C2DCoordI& from, const C2DCoordI& to);   // 0x0081F240
 #endif
-public:
+protected: // NF75 (q10924): Ego_r.pdb / FableWin.pdb ?AddThemeDefIndexToPalette@CMap@@IAEEK@Z is protected (was public: here)
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex); // 0x008F70F0
 #endif
 public:
@@ -176,6 +183,14 @@ public:
     // FABLE_RETAIL_CREGION_LOADFROMFILE makes it (GOTCHAS NF29). Access only: no layout change.
     friend class CWorldMap;
 #endif
+#ifdef FABLE_RETAIL_CMAP_INITPASSABILITYFROMTHEMES
+    // NF70 opt-in (round 7, row 0x008201E0): Ego_r.pdb 0x0067B410 / FableWin.pdb 0x02238570
+    // ?InitPassabilityFromThemesIfNecessary@CMap@@QAEXABVC2DBoxI@@@Z and its callee Ego_r.pdb 0x0067A2A0 / FableWin.pdb 0x02239240
+    // ?GetGroundFaceNormalAt@CMap@@QBE?AVC3DVector@@ABV2@@Z (retail 0x0081F6C0, out of line; landed 0x0063AB10 binds it). Declarations only
+    // (C3DVector is forward-declared above under FABLE_RETAIL_CMAP_THEMESIZEZ); no layout change.
+    void InitPassabilityFromThemesIfNecessary(const C2DBoxI& area);    // 0x008201E0
+    C3DVector GetGroundFaceNormalAt(const C3DVector& pos) const;       // 0x0081F6C0
+#endif
 #ifdef FABLE_RETAIL_CMAP_THEMESIZEZ
     // NF63 (round 7, rows 0x0081FA20 / 0x0081FA90 / 0x008200B0 / 0x00820100 / 0x00820140): the theme size-Z family, protected const in
     // both PDBs (Ego_r.pdb 0x0067A530 / 0x006796E0 / 0x0067AC50 / 0x0067ACC0 / 0x0067B2D0 / 0x0067B320 / 0x0067B370, FableWin.pdb
@@ -192,6 +207,54 @@ protected:
     float GetThemeMinCameraSizeZAt(const C3DVector& pos) const;                    // 0x00820140
 public:
 #endif
+#ifdef FABLE_RETAIL_CMAP_ENGINETHEMEAT
+    // NF81 opt-in (round 7): Ego_r.pdb 0x00679A70 / 0x00679BD0 / 0x00679CA0 / 0x00679D80 and FableWin.pdb 0x02237B90 / 0x02237F90 /
+    // 0x022380B0 / 0x02238200 ?SetEngineThemeAt@CMap@@IAEXJJKKW4EThemePaintType@@@Z, ?SetEngineBlendAt@CMap@@IAEXJJEKW4EThemePaintType@@@Z,
+    // ?GetEngineThemeAt@CMap@@IBEKJJKW4EThemePaintType@@@Z, ?GetEngineBlendAt@CMap@@IBEEJJKW4EThemePaintType@@@Z (protected; Ego_r order =
+    // retail 0x0081EE60 / 0x0081EFC0 / 0x0081F090 / 0x0081F170, out of line; the CWorldMap block accessors 0x0063A970..0x0063AAB0 call
+    // them). Parameter names from Ego_d.pdb. Declarations only; no layout change.
+protected:
+    void SetEngineThemeAt(long x, long y, unsigned long theme_def_index, unsigned long index, EThemePaintType PaintType);   // 0x0081EE60
+    void SetEngineBlendAt(long x, long y, unsigned char blend, unsigned long index, EThemePaintType PaintType);            // 0x0081EFC0
+    unsigned long GetEngineThemeAt(long x, long y, unsigned long index, EThemePaintType PaintType) const;                  // 0x0081F090
+    unsigned char GetEngineBlendAt(long x, long y, unsigned long index, EThemePaintType PaintType) const;                  // 0x0081F170
+public:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CMap)==0x1d40);
+FABLE_STATIC_ASSERT_AT(171, sizeof(CMap)==0x1d40);
+#if defined(FABLE_RETAIL_CMAP_THEMESIZEZ) && defined(FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY)
+// NF70 opt-in (round 7, q10724 / q10735): the one definition of Ego_r.pdb 0x0067A530 / FableWin.pdb 0x02230780
+// ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z (retail 0x0081F910: the strongest of a cell's three engine theme blends; the third
+// weighs 3 - blend0 - blend1). Retail compiled it in one object with its callers GetThemeSizeZOffsetAt 0x0081FA20 / GetThemeMinCameraSizeZOffsetAt
+// 0x0081FA90: they call it out of line, but VC7.1 sees that it only writes through `strength` and homes their strength local in the dead
+// argument slot. Those rows define this macro and get the body `inline __declspec(noinline)` (a COMDAT, never expanded); the row 0x0081F910
+// defines FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_DEFINE too and so emits it as an ordinary out-of-line definition. Needs
+// FABLE_RETAIL_CHEIGHTMAP_GETCELL, FABLE_RETAIL_CHEIGHTMAPCELL_ACCESSORS and FABLE_RETAIL_CMAP_ENGINEACCESSORS. No layout change.
+#ifndef FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_DEFINE
+inline __declspec(noinline)
+#endif
+long CMap::GetStrongestEngineThemeAt(const C2DCoordI& pos, long& strength) const
+{
+    long best = 0;
+    long bestIndex = -1;
+    long blend0 = HeightMap->GetCell(pos).GetEngineBlend(0);
+    if (blend0 > 0) {
+        bestIndex = 0;
+        best = blend0;
+    }
+    long remaining = 3 - blend0;
+    long blend1 = HeightMap->GetCell(pos).GetEngineBlend(1);
+    if (blend1 > best) {
+        bestIndex = 1;
+        best = blend1;
+    }
+    remaining -= blend1;
+    if (remaining > best) {
+        strength = remaining;
+        return GetEngineThemeAtIncludingExtraCells(pos.X, pos.Y, 2);
+    }
+    strength = best;
+    return GetEngineThemeAtIncludingExtraCells(pos.X, pos.Y, bestIndex);
+}
+#endif
 #endif

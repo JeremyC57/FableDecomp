@@ -20,15 +20,18 @@
 //   view): type byte +0x10 (here 1 = an AI creature, 2 = the player creature), component-present bits +0x20, interface map +0x44,
 //   ScriptName +0x74, DefGlobalIndex +0x8c, PlayerNumber +0x90 (PDB +0x84/+0x9c/+0xa0, the 0x10 retail CThing shift).
 //   CThingPlayerCreatureInit as Ego_r.pdb (12 bytes).
+// NF79 (round 7, q10960): the hero-info screens manager is NHeroInformationScreens::CManager on the shared headers
+//   (engine/NHeroInformationScreens_CManager.h + my overlay opt-in NHEROINFORMATIONSCREENS_CMANAGER_DEREGISTERALL, engine/CPlayerGui.h):
+//   0x00437CD0 binds ?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ (was ..PAUCManager@@),
+//   0x0066EBE0 ?DeregisterAllScreens@CManager@NHeroInformationScreens@@QAEXXZ (Ego_r.pdb + FableWin.pdb; was the global-scope stand-in), and
+//   the player GUI singleton 0x013B8790 is read through CPlayerGui::Get() (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@..; was
+//   the stand-in global g_pPlayerGui). The local CCharString model is now fable_string.h (needed by the manager header); the other
+//   local models are pre-existing.
 #include "fable_compiler.h"
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #include "engine/CCountedPointer.h"
 class CThing;
@@ -151,13 +154,11 @@ class CThingPlayerCreature : public CThing { public:
     static CThingPlayerCreature* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                                    const CThingPlayerCreatureInit& init);  // 0x006AC910
 };
-struct CManager {
-    void DeregisterAllScreens();                        // 0x0066EBE0
-};
-class CPlayerGui { public:
-    CManager* GetPHeroInfoScreensManager() const;       // 0x00437CD0
-};
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_DEREGISTERALL
+#define FABLE_RETAIL_CPLAYERGUI
+#include "engine/NHeroInformationScreens_CManager.h"
+#include "engine/CPlayerGui.h"
 class CPlayer { public:
     void SetPlayerCharacter(CThingPlayerCreature* creature);   // 0x00487B80
     void SetControlledCreature(CThingPlayerCreature* creature);         // 0x00487CF0
@@ -196,7 +197,7 @@ CScriptThing CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, c
             } else if (old->m_type == 2) {
                 CDefPointer<const CThingCreatureDef> def;
                 if (DefinitionManager->GetDef(index, &def)) {
-                    g_pPlayerGui->GetPHeroInfoScreensManager()->DeregisterAllScreens();
+                    CPlayerGui::Get().GetPHeroInfoScreensManager()->DeregisterAllScreens();
                     CThingPlayerCreatureInit init;
                     CThingPlayerCreature* creature = CThingPlayerCreature::Create(index, old->GetPos(), old->PlayerNumber, init);
                     if (creature) {

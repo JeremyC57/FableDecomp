@@ -169,17 +169,17 @@ struct CBankProcessor{
 #endif
 };
 #ifdef FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
-FABLE_STATIC_ASSERT(sizeof(CBankData)==0x30);
-FABLE_STATIC_ASSERT(sizeof(CSampleIndexMap)==0x30);
-FABLE_STATIC_ASSERT(sizeof(CBankProcessor)==0x7c);
-FABLE_STATIC_ASSERT(offsetof(CBankProcessor,m_samples)==0x3c);
-FABLE_STATIC_ASSERT(offsetof(CBankProcessor,m_pCriteriaTriggers)==0x6c);
-FABLE_STATIC_ASSERT(offsetof(CBankProcessor,m_option74)==0x74);
-FABLE_STATIC_ASSERT(offsetof(CBankProcessor,m_bSampleNameTriggers)==0x79);
-FABLE_STATIC_ASSERT(offsetof(CBankProcessor,m_bNamedTriggers)==0x7a);
-FABLE_STATIC_ASSERT(sizeof(SBankRequest)==0x14);
-FABLE_STATIC_ASSERT(offsetof(SBankRequest,SampleNameTriggers)==0x0c);
-FABLE_STATIC_ASSERT(offsetof(SBankRequest,EnableBothExtra)==0x11);
+FABLE_STATIC_ASSERT_AT(108, sizeof(CBankData)==0x30);
+FABLE_STATIC_ASSERT_AT(109, sizeof(CSampleIndexMap)==0x30);
+FABLE_STATIC_ASSERT_AT(110, sizeof(CBankProcessor)==0x7c);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CBankProcessor,m_samples)==0x3c);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CBankProcessor,m_pCriteriaTriggers)==0x6c);
+FABLE_STATIC_ASSERT_AT(113, offsetof(CBankProcessor,m_option74)==0x74);
+FABLE_STATIC_ASSERT_AT(114, offsetof(CBankProcessor,m_bSampleNameTriggers)==0x79);
+FABLE_STATIC_ASSERT_AT(115, offsetof(CBankProcessor,m_bNamedTriggers)==0x7a);
+FABLE_STATIC_ASSERT_AT(116, sizeof(SBankRequest)==0x14);
+FABLE_STATIC_ASSERT_AT(117, offsetof(SBankRequest,SampleNameTriggers)==0x0c);
+FABLE_STATIC_ASSERT_AT(118, offsetof(SBankRequest,EnableBothExtra)==0x11);
 #endif
 #endif
 #endif

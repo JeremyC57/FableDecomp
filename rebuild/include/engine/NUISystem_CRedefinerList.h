@@ -32,5 +32,5 @@ protected:
     CComponent* PAcceptButton;                                      // +0x18c
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CRedefinerList) == 0x190);
+FABLE_STATIC_ASSERT_AT(30, sizeof(NUISystem::CRedefinerList) == 0x190);
 #endif

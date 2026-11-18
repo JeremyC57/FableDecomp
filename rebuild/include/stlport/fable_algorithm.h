@@ -65,6 +65,26 @@ template <class R, class T> inline mem_fun_ref_t<R, T> mem_fun_ref(R (T::*pfn)()
     return mem_fun_ref_t<R, T>(pfn);
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_CONST_MEM_FUN_REF
+// NF90 opt-in (round 7, q11183 row 0x005BD96B NInventory::CCategory::GetFirstEmptySlot): STLport 4.6.2 _function_adaptors.h const_mem_fun_ref_t
+// and its mem_fun_ref overload for a const member (FableWin.pdb ??$mem_fun_ref@_NVCItem@NInventory@@@std@@...const_mem_fun_ref_t and
+// ??0?$const_mem_fun_ref_t@_NVCItem@NInventory@@@std@@QAE@P8CItem@NInventory@@BE_NXZ@Z: the find_if predicate of that function; retail pushes
+// the 4-byte functor, the address of CItem::IsSlotEmpty, by value: `push 5BC46Ch`, 0x005BD974). No layout change elsewhere.
+}
+#include "stlport/fable_containers.h"
+namespace std {
+template <class _Ret, class _Tp>
+class const_mem_fun_ref_t : public unary_function<_Tp,_Ret> {
+  typedef _Ret (_Tp::*__fun_type)(void) const;
+public:
+  explicit const_mem_fun_ref_t(__fun_type __pf) : _M_f(__pf) {}
+  _Ret operator()(const _Tp& __r) const { return (__r.*_M_f)(); }
+private:
+  __fun_type _M_f;
+};
+template <class _Result, class _Tp> inline const_mem_fun_ref_t<_Result, _Tp>
+mem_fun_ref(_Result (_Tp::*__f)() const) { return const_mem_fun_ref_t<_Result,_Tp>(__f); }
+#endif
 #ifdef FABLE_RETAIL_STLP_FOR_EACH_BODY
 // Retail opt-in (chunk 1018, row 0x0067E290 CDegradableDef::Transfer): STLport 4.6 _algo.h for_each with its body visible, which that
 // TU expands in place (0x0067E37F..0x0067E398: the CSetEngineGraphicType functor's byte store in a `cmp eax,edi ; jne` loop).
@@ -231,6 +251,44 @@ template <class _ForwardIter, class _Tp> _ForwardIter FABLE_FASTCALL lower_bound
  *
  */
 // Modified only for this project's names and calling-convention spelling.
+#ifdef FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS
+// NF88 nested opt-in (round 7, q11159; rows 0x005C08C0 / 0x005C0653 and the inventory callers): STLport 4.6 _algo.c random-access
+// `__find_if(first, last, pred, const random_access_iterator_tag&)`, which find_if picks for pointer iterators (a better match than the
+// input-iterator overload above). A `__fastcall` COMDAT in retail (0x005C0653 for const NInventory::CCategory* with CIsInventoryCategory,
+// `ret 8`); declaration only unless FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS_BODY, the four-per-trip loop and the 3/2/1 remainder switch.
+template<class RandomAccessIter,class Predicate>
+RandomAccessIter FABLE_FASTCALL __find_if(RandomAccessIter first,RandomAccessIter last,Predicate pred,const random_access_iterator_tag&)
+#ifdef FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS_BODY
+{
+    typename iterator_traits<RandomAccessIter>::difference_type trip_count = (last - first) >> 2;
+    for ( ; trip_count > 0 ; --trip_count) {
+        if (pred(*first)) return first;
+        ++first;
+        if (pred(*first)) return first;
+        ++first;
+        if (pred(*first)) return first;
+        ++first;
+        if (pred(*first)) return first;
+        ++first;
+    }
+    switch (last - first) {
+    case 3:
+        if (pred(*first)) return first;
+        ++first;
+    case 2:
+        if (pred(*first)) return first;
+        ++first;
+    case 1:
+        if (pred(*first)) return first;
+    case 0:
+    default:
+        return last;
+    }
+}
+#else
+;
+#endif
+#endif
 #ifdef FABLE_RETAIL_STLP_FIND_IF_GUARD_BODY_PASS23
 // Genuine existing STLport find_if / input-category dispatcher definitions.
 // Native0066000a calls real __find_if0065f9ab; natural visibility first.

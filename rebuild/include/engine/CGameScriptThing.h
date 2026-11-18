@@ -49,6 +49,12 @@ public:
     // (an override: no vtable change).
     virtual bool IsNull() const;                                         // 77 0x008D0110
 #endif
+#ifdef FABLE_RETAIL_CGAMESCRIPTTHING_MSGGETTHINGSKILLED
+    // NF67 opt-in (round 7, row 0x008D3DD0): the CScriptThing slot-55 override Ego_r.pdb
+    // ?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z (retail 0x008D3DD0; engine/CScriptThing.h slot 55).
+    // Declaration only (an override: no vtable change). The includer includes stlport/fable_containers.h first.
+    virtual bool MsgGetThingsKilled(std::vector<unsigned long>& groups) const;   // 55 0x008D3DD0
+#endif
     CIntelligentPointer<CThing> PThing;                                  // +0x0c
     long                        ScriptCounter;                           // +0x14
     unsigned __int64            ThingUID;                                // +0x18
@@ -59,10 +65,10 @@ public:
     float                       AngleXY;                                 // +0x40
     CWorld*                     World;                                   // +0x44
 };
-FABLE_STATIC_ASSERT(sizeof(CGameScriptThing) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, PThing) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, Name) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, World) == 0x44);
+FABLE_STATIC_ASSERT_AT(56, sizeof(CGameScriptThing) == 0x48);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CGameScriptThing, PThing) == 0xc);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CGameScriptThing, Name) == 0x20);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CGameScriptThing, World) == 0x44);
 #else // flattened Ego_r layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -92,21 +98,21 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CGameScriptThing) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, PThing) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, ScriptCounter) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, ThingUID) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, Name_PStringData) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, DataString_PStringData) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, Pos_X) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, Pos_Y) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, Pos_Z) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, HomePos_X) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, HomePos_Y) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, HomePos_Z) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, AngleXY) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, World) == 0x44);
+FABLE_STATIC_ASSERT_AT(89, sizeof(CGameScriptThing) == 0x48);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CGameScriptThing, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(91, offsetof(CGameScriptThing, PThing) == 0xc);
+FABLE_STATIC_ASSERT_AT(92, offsetof(CGameScriptThing, ScriptCounter) == 0x14);
+FABLE_STATIC_ASSERT_AT(93, offsetof(CGameScriptThing, ThingUID) == 0x18);
+FABLE_STATIC_ASSERT_AT(94, offsetof(CGameScriptThing, Name_PStringData) == 0x20);
+FABLE_STATIC_ASSERT_AT(95, offsetof(CGameScriptThing, DataString_PStringData) == 0x24);
+FABLE_STATIC_ASSERT_AT(96, offsetof(CGameScriptThing, Pos_X) == 0x28);
+FABLE_STATIC_ASSERT_AT(97, offsetof(CGameScriptThing, Pos_Y) == 0x2c);
+FABLE_STATIC_ASSERT_AT(98, offsetof(CGameScriptThing, Pos_Z) == 0x30);
+FABLE_STATIC_ASSERT_AT(99, offsetof(CGameScriptThing, HomePos_X) == 0x34);
+FABLE_STATIC_ASSERT_AT(100, offsetof(CGameScriptThing, HomePos_Y) == 0x38);
+FABLE_STATIC_ASSERT_AT(101, offsetof(CGameScriptThing, HomePos_Z) == 0x3c);
+FABLE_STATIC_ASSERT_AT(102, offsetof(CGameScriptThing, AngleXY) == 0x40);
+FABLE_STATIC_ASSERT_AT(103, offsetof(CGameScriptThing, World) == 0x44);
 
 #endif // FABLE_RETAIL_CGAMESCRIPTTHING
 

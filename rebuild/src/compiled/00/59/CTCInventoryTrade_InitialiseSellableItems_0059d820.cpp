@@ -1,131 +1,79 @@
-// CTCInventoryTrade::InitialiseSellableItems() -- select category 12, gather every item of the hero's three inventory components (interfaces 0x11, 0x13, 0x12), add each buyable one (positive def index) to the trade inventory and total their counts as the sell count, then refresh the unique count of the selected category and the category count
-// Leaf: InitialiseSellableItems
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed.
-// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
-//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+// CTCInventoryTrade::InitialiseSellableItems() -- select the sell category, gather every item of the hero's three inventory components, add each sellable one (positive def index) to the trade inventory and total their counts as the sell count, then refresh the unique count of the selected category and the category count
+// Leaf: ?InitialiseSellableItems@CTCInventoryTrade@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059D820, 397 bytes, plain `ret`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (`push 11h ; pop ebx`).
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449960 (engine 0x013B86A0 +0x1C), CPlayer::PeekPControlledCreature
-//   @ 0x00487DD0, std::bitset<>::test @ 0x00410DE0 and the const CVectorMap LowerBound @ 0x004365B0 (the inlined
-//   GetInterface), CTCInventoryBase::GetAllItems(vector<NInventory::CItem>&) @ 0x005BF482 (landed, another TU),
-//   CTCBase owner getter @ 0x005BC4C4 (label "CWorld::DrawGetEnvironment" is propagated), CTCInventoryItem::IsSellable (NF34: was IsBuyable)
-//   (long) @ 0x005D9B30 (static `__fastcall`), CTCInventoryTrade::AddItemOfTypeToInventory(long, long) @ 0x0059C6B0,
-//   NInventory::CTCInventoryBase::GetSelectedCategory @ 0x005BCACE, CCategory::GetUniqueItemCountInCategory
-//   @ 0x005BC8AC, the category-count getter @ 0x005BCE2F (label "CWorldMap::DrawGetNoMaps" is propagated), the CRT
-//   free thunk @ 0x00BFEA14 (the item vector's storage).
-// Shape: the three lookups are the out-parameter GetInterface with the result ignored into one pointer initialised
-//   to 0 once (edi doubles as the zero register; an absent interface keeps the previous pointer); `total` is declared
-//   before the hero lookup (its zero store precedes the GetMainPlayer call); the owner's HasTC(0x53) is evaluated and discarded; the item vector
-//   escapes (GetAllItems is not a TU-mate here), so its start and size are re-read every pass.
-// Layout: retail CTCInventoryTrade (Ego_r.pdb order, release containers): CategoryCount +0x160, ItemSellCount +0x164,
-//   ItemSellUniqueCount +0x16C, CategoryIdent +0x170; NInventory::CItem 8 bytes (def index, count) as 0x005BF77D.
-#include "fable_compiler.h"
+// Identity: Ego_r.pdb + FableWin.pdb ?InitialiseSellableItems@CTCInventoryTrade@@QAEXXZ (engine/CTCInventoryTrade.h PCINVENTORY).
+// Callees: CPlayerManager::GetMainPlayer() const @ 0x00449960, CPlayer::PeekPControlledCreature @ 0x00487DD0, std::bitset<274>::test @
+//   0x00410DE0 and the const CVectorMap LowerBound @ 0x004365B0 (the inline PeekTC), CTCInventoryBase::GetAllItems(vector<pair<long, long> >&)
+//   const @ 0x005BF482, CTCInventoryBase::GetBuildingThing @ 0x005BC4C4 (Ego_r + FableWin), CTCInventoryItem::IsSellable @ 0x005D9B30
+//   (static `__fastcall`), CTCInventoryTrade::AddItemOfTypeToInventory @ 0x0059C6B0 (private), CTCInventoryBase::GetSelectedCategory @
+//   0x005BCACE / GetCategoryCount @ 0x005BCE2F, NInventory::CCategory::GetUniqueItemCountInCategory @ 0x005BC8AC, the CRT free thunk @
+//   0x00BFEA14 (the item vector's storage).
+// Shape: the three lookups are PeekTC with the result ignored into one pointer initialised to 0 once (an absent component keeps the
+//   previous pointer); `total` is declared before the hero lookup; the building's HasTC(TCI_SHOP) is evaluated and discarded; the item
+//   vector escapes (GetAllItems is not a TU-mate here), so its start and size are re-read every pass.
+// NF87: moved off the row-local CThing / CPlayer / CPlayerManager / CMainGameComponent / CTCInventoryBase / CTCInventoryTrade / CCategory /
+//   CTCInventoryItem / item-vector models onto the shared headers (overlay opt-ins NINVENTORY_CCATEGORY_ACCESSORS,
+//   CTCINVENTORYBASE_CATEGORYCOUNT), so 0x005BC4C4 binds GetBuildingThing.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-
-extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
-
-class CTCBase;
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_BUILDINGTHING
+#define FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
+#define FABLE_RETAIL_CTCINVENTORYBASE_CATEGORYCOUNT
+#define FABLE_RETAIL_NINVENTORY_CCATEGORY_ACCESSORS
+#define FABLE_RETAIL_CTCINVENTORYTRADE
+#define FABLE_RETAIL_CTCINVENTORYTRADE_PCINVENTORY
+#define FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMOFTYPE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
-#include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    std::bitset<274> present;                                  // +0x20
-    CInterfaceMap m_interfaces;                             // +0x44
-    bool HasTC(long type) const { return present.test(type); }
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (present.test(interfaceType)) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
-class CThingPlayerCreature : public CThing { };
-class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };          // 0x00487DD0
-class CPlayerManager { public: const CPlayer& GetMainPlayer() const; };          // 0x00449960
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char _pad00[0x1c];
-    CPlayerManager* PlayerManager;                          // +0x1C
-};
-
-namespace NInventory {
-class CItem { public:
-    long DefIndex;                                          // +0x00
-    long Count;                                             // +0x04
-};
-class CCategory { public:
-    long GetUniqueItemCountInCategory() const;              // 0x005BC8AC
-};
-}
-struct CItemVector {                                        // STLport vector<NInventory::CItem> (12 bytes)
-    NInventory::CItem* _M_start;
-    NInventory::CItem* _M_finish;
-    NInventory::CItem* _M_end_of_storage;
-    CItemVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CItemVector()
-    {
-        if (_M_start)
-            free(_M_start);
-    }
-    unsigned long size() const { return _M_finish - _M_start; }
-    NInventory::CItem& operator[](unsigned long n) { return _M_start[n]; }
-};
-class CTCInventoryItem { public:
-    static bool __fastcall IsSellable(long defIndex);       // 0x005D9B30 (NF34: Ego_r + FableWin ?IsSellable@CTCInventoryItem@@SI_NJ@Z, def +0x5C)
-};
-
-struct CTCInventoryBase {
-    void*         __vftable;                                // +0x00
-    CThing*       ParentThing;                              // +0x04 CTCBase
-    unsigned char _pad08[0x160 - 0x08];
-    CThing* GetOwner() const;                               // 0x005BC4C4
-    void GetAllItems(CItemVector& items);                   // 0x005BF482
-    NInventory::CCategory* GetSelectedCategory();           // 0x005BCACE
-    long GetCategoryCount() const;                          // 0x005BCE2F
-};
-class CTCInventoryTrade : public CTCInventoryBase { public:
-    long          CategoryCount;                            // +0x160
-    long          ItemSellCount;                            // +0x164
-    long          ItemBuyCount;                             // +0x168
-    long          ItemSellUniqueCount;                      // +0x16C
-    long          CategoryIdent;                            // +0x170 EInventoryCategoryIdentifier
-    bool AddItemOfTypeToInventory(long defIndex, long count);   // 0x0059C6B0
-    void InitialiseSellableItems();
-};
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+#define FABLE_RETAIL_CPLAYERMANAGER
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_KINDS
+#define FABLE_RETAIL_CTCINVENTORYITEM_ISSELLABLE
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CTCInventoryTrade.h"
+#include "engine/CTCInventoryItem.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CPlayerManager.h"
+#include "engine/CPlayer.h"
 
 void CTCInventoryTrade::InitialiseSellableItems()
 {
-    CategoryIdent = 0xc;
+    CategoryIdent = (EInventoryCategoryIdentifier)12;
     long total = 0;
-    const CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().PeekPControlledCreature();
-    CItemVector items;
-    CTCInventoryBase* inventory = 0;
-    hero->GetInterface(&inventory, 0x11);
+    const CThingPlayerCreature* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
+    std::vector<std::pair<long, long> > items;
+    const NInventory::CTCInventoryBase* inventory = 0;
+    hero->PeekTC(TCI_INVENTORY, &inventory);
     inventory->GetAllItems(items);
-    hero->GetInterface(&inventory, 0x13);
+    hero->PeekTC(TCI_INVENTORY_WEAPONS, &inventory);
     inventory->GetAllItems(items);
-    hero->GetInterface(&inventory, 0x12);
+    hero->PeekTC(TCI_INVENTORY_CLOTHING, &inventory);
     inventory->GetAllItems(items);
-    bool isShop = GetOwner()->HasTC(0x53);
+    GetBuildingThing()->HasTC(TCI_SHOP);
     for (unsigned long i = 0; i < items.size(); ++i) {
-        long defIndex = items[i].DefIndex;
+        long defIndex = items[i].first;
         if (defIndex > 0 && CTCInventoryItem::IsSellable(defIndex)) {
-            AddItemOfTypeToInventory(defIndex, items[i].Count);
-            total += items[i].Count;
+            AddItemOfTypeToInventory(defIndex, items[i].second);
+            total += items[i].second;
         }
     }
     ItemSellCount = total;

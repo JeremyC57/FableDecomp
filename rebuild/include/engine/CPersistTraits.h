@@ -47,6 +47,32 @@ public:
     void TransferOut(CPersistContext& context,CCharString& out,const T& value);
 #endif
 };
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_COMBOMULTIPLIERDATA_BINARYOUT
+// NF81 opt-in (round 7, q10986 binder, row 0x006DC350 GFSerialiseMapBinaryOut<CComboMultiplierData, long>): the traits of
+// CHeroExperienceDef::ComboMultiplierMap's value, as the CWoundMorphs / CExpressionSet specialisations below: DefaultVal and the
+// writer Ego_r.pdb 0x0058ACE0 / FableWin.pdb 0x01F0ADD0 ?TransferBinaryOut@?$CPersistTraits@VCComboMultiplierData@@@@QAEXAAVCDataOutputStream@@ABVCComboMultiplierData@@@Z
+// (by const reference; retail 0x006DB060, out of line). Needs engine/CComboMultiplierData.h and engine/CDataOutputStream.h first. Do
+// not combine with a CPersistTraits<CComboMultiplierData> member specialisation of the primary template (0x006DCFA0's TransferBinaryIn).
+template<> class CPersistTraits<CComboMultiplierData> {
+public:
+    CComboMultiplierData DefaultVal;
+    CPersistTraits():DefaultVal() {}
+    void TransferBinaryOut(CDataOutputStream& os,const CComboMultiplierData& value);              // 0x006DB060
+};
+#endif
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_HEROSTATINCREASEDATA_BINARYOUT
+// NF88 opt-in (round 7, q11152 binder, row 0x006DC450 GFSerialiseMapBinaryOut<CHeroStatIncreaseData, EDamageAttribute>): the traits of
+// CHeroExperienceDef::StatIncreasePerHitType's value, as the CComboMultiplierData opt-in above: DefaultVal and the writer Ego_r.pdb
+// 0x0058AD90 / FableWin.pdb 0x01F0B550 ?TransferBinaryOut@?$CPersistTraits@VCHeroStatIncreaseData@@@@QAEXAAVCDataOutputStream@@ABVCHeroStatIncreaseData@@@Z
+// (by const reference; retail 0x006DB0F0, out of line). Needs engine/CHeroStatIncreaseData.h and engine/CDataOutputStream.h first. Do
+// not combine with a CPersistTraits<CHeroStatIncreaseData> instantiation of the primary template in the same TU.
+template<> class CPersistTraits<CHeroStatIncreaseData> {
+public:
+    CHeroStatIncreaseData DefaultVal;
+    CPersistTraits():DefaultVal() {}
+    void TransferBinaryOut(CDataOutputStream& os,const CHeroStatIncreaseData& value);             // 0x006DB0F0
+};
+#endif
 #ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
 #include "engine/CMemoryDataInputStream.h"
 #include "engine/CWoundMorphs.h"
@@ -247,7 +273,18 @@ template<class T> inline void CPersistTraits<T>::TransferIn(CPersistContext& con
 template<> class CPersistTraits<bool> {
 public:
     bool DefaultVal;
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_BOOL_BINARYIN_NOINLINE
+    // NF78 opt-in (round 7, row 0x007ADBF0 GFSerialiseMapBinaryIn<bool, CCharString>): the reader's body (the landed 0x00403EB0 text:
+    // the inline 1-byte CMemoryDataInputStream::ReadEBOOL into the value) visible to the TU but kept out of line, as retail calls the
+    // 0x00403EB0 COMDAT there; seeing it reads only the stream and writes only the value, VC7.1 shares the count's and the traits'
+    // frame words as retail does (frame 0x20; declared only, 0x28). Same function, same spelling.
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    void TransferBinaryIn(CMemoryDataInputStream& is,bool& value) { value=is.ReadEBOOL(); }   // 0x00403EB0
+#else
     void TransferBinaryIn(CMemoryDataInputStream&,bool&);     // 0x00403EB0
+#endif
     void TransferBinaryOut(CDataOutputStream& stream,const bool& value) { stream.WriteEBOOL(value); }
     void TransferIn(CPersistContext&,CStringParser&,bool&);
 };

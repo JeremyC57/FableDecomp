@@ -1,4 +1,6 @@
 // CAIStateGroup_BanditSitRoundCampfire::Drink() -- drink a bottle by the campfire for a random 5..10 seconds, throw it away and get drunker
+// NF83 (round 7, q11027..q11029 self): leaf respelt to the private bool PDB spelling ?Drink@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ
+//   (both PDBs; NF79 0x0093AD70 binds it so) by an in-place edit of the row's local model (no shared header exists for this class).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093A8C0, length 377 bytes.
 // Callees: CThingCreatureBase::SheatheAllWeapons @ 0x006647F0, GetPWorldSeed @ 0x008FCFD0, GFFloatRandom(float, ulong*) @ 0x004978A0,
@@ -89,9 +91,10 @@ struct CAIStateGroup_BanditSitRoundCampfire : public CAIStateGroupBase {
     unsigned char _pad08[0x0c];                     // +0x08
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
     void DestroyItem(const CCharString& slot);      // 0x008FD1B0
-    long Drink();
+private:
+    bool Drink();                               // private (Ego_r.pdb 0x0095DD10 / FableWin.pdb 0x02B7F7B0 AAE_NXZ)
 };
-long CAIStateGroup_BanditSitRoundCampfire::Drink()
+bool CAIStateGroup_BanditSitRoundCampfire::Drink()
 {
     PBrain->Creature->SheatheAllWeapons();
     float duration = GFFloatRandom(5.0f, GetPWorldSeed()) + 5.0f;

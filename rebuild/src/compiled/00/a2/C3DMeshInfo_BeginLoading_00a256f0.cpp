@@ -12,7 +12,12 @@
 // CPhysicsMeshInfo::BeginLoading 0x00A25BD0 family.
 // Layout: C3DMeshInfo Bank +4, Index +8, MeshData +0xc, LODDataSizes[4] +0x50 (engine/C3DMeshInfo.h); CMeshData and
 // C3DMeshLODInfo from the landed RemoveLOD 0x00A249A0 / C3DMeshLODInfo ctor 0x00A24430.
-// Leaf: BeginLoading
+// Leaf: ?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z
+// NF79 (round 7, q10974): the member is const in both PDBs (Ego_r.pdb 0x00B618A0 + FableWin.pdb 0x0313D800 ?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z;
+//   engine/C3DMeshInfo.h ISLOADED declares it so for 0x00A256F0; Ego_r donor order IsLoaded 0x00B60090 / BeginLoading 0x00B618A0 / GetMesh
+//   0x00B62470 = retail 0x00A23E40 / 0x00A256F0 / 0x00A25E70; the landed caller 0x00A25E70 already binds the const spelling). In the row's
+//   pre-existing local models: BeginLoading const, MeshData mutable, the inline C3DMeshLODInfo constructor taking const C3DMeshInfo* as the
+//   PDB one does (??0C3DMeshLODInfo@@AAE@PBVC3DMeshInfo@@K@Z, both PDBs). Was ?BeginLoading@C3DMeshInfo@@QAEXK_N0@Z.
 #include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 struct SCountBlock {
@@ -131,7 +136,7 @@ class C3DMeshLODInfo : public CResource { public:                // vtable 0x012
     unsigned char                       LOD;             // +0x30
     bool                                UsedMeshStats;   // +0x31
     virtual void v00();
-    C3DMeshLODInfo(C3DMeshInfo* meshInfo, unsigned char lod) : MeshInfo(meshInfo), LOD(lod), UsedMeshStats(false) {}
+    C3DMeshLODInfo(const C3DMeshInfo* meshInfo, unsigned char lod) : MeshInfo(const_cast<C3DMeshInfo*>(meshInfo)), LOD(lod), UsedMeshStats(false) {}
 };
 struct __declspec(novtable) CCountedBase {
     virtual void v00();
@@ -149,13 +154,13 @@ class C3DMeshInfo { public:
     virtual void v00();
     CMeshDataBank*               Bank;             // +0x04
     unsigned long                Index;            // +0x08
-    CIVCountedPointer<CMeshData> MeshData;         // +0x0c
+    mutable CIVCountedPointer<CMeshData> MeshData; // +0x0c (written by the const BeginLoading)
     unsigned char _pad10[0x40];
     unsigned long LODDataSizes[4];                 // +0x50
-    void BeginLoading(unsigned long lod, bool unusedFlag, bool urgent);
+    void BeginLoading(unsigned long lod, bool unusedFlag, bool urgent) const;
 };
 
-void C3DMeshInfo::BeginLoading(unsigned long lod, bool unusedFlag, bool urgent)
+void C3DMeshInfo::BeginLoading(unsigned long lod, bool unusedFlag, bool urgent) const
 {
     if (lod > 3)
         lod = 3;

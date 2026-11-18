@@ -1,5 +1,8 @@
 // CCreatureAction_UseObject::FrameUpdate() -- finish at once when the used thing is gone; while using the dummy point: keep the base FrameUpdate running until the creature has stopped moving/turning to it, then (with no proximity left and a usable CTCActionUse on the thing) snap the creature's physics to the dummy facing and position; finally the per-frame slot-4 and slot-3 virtuals
 // Leaf: ?FrameUpdate@CCreatureAction_UseObject@@UAEXXZ
+// NF70 (round 7, land1117fu q10804): CCreatureActionBase::FrameUpdate is the protected virtual of Ego_r.pdb 0x0051A410 / FableWin.pdb
+//   0x01DB65E0 (?FrameUpdate@CCreatureActionBase@@MAEXXZ, base vtable 0x01259D24 slot 56 = 0x00694020); declared so in the row's local base
+//   model, which also makes this override the virtual the PDBs name (UAE).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069FCE0, length 369 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PUsedThing +0xa8, PCreature +8), this object's virtual slots 4 (+0x10) and
@@ -66,7 +69,9 @@ class CCreatureActionBase { public:                    // retail sizeof 0xa8
     unsigned char           _pad04[4];
     CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
-    void FrameUpdate();                         // 0x00694020
+protected:
+    virtual void FrameUpdate();                 // 0x00694020 (slot 56)
+public:
 };
 class CCreatureAction_UseObject : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> PUsedThing;         // +0xa8

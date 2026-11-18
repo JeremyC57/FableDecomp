@@ -1,11 +1,5 @@
-// CTCInventoryTrade::ConstructSellActionsListPC(NUISystem::CComponent* parent, long defIndex, unsigned long count, bool addAsChild) -- PC variant of 0x005A45F6 (PC list and entry templates, 0/1 entry scales): build the sell-actions sub-list for one item: a "sell" entry plus "sell 10", "sell 50" and "sell all (n)" entries as the count allows; when the count is non-zero and the shop holds a default stock item for the def, remember the list in ItemSellLists[parent], attach it to the parent and return true, else return false
-// Grade: RELOCATION_MATCH
-// Lever: same-TU noinline stand-in body for the map operator[] template (0x005B3167): with it visible VC7.1 schedules the `parent` / &actionsList loads above the store through the returned reference, as retail.
-// Leaf: ConstructSellActionsListPC@CTCInventoryTrade
-// Plan phase 3 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed. Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
-// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
-//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+// CTCInventoryTrade::ConstructSellActionsListPC(NUISystem::CComponent* parent, long itemDefIndex, long count, bool dynamically) -- PC variant of 0x005A45F6 (PC list and entry templates, 0/1 entry scales): builds the sell-actions sub-list for one item: a "sell" entry plus "sell 10", "sell 50" and "sell all (n)" entries as the count allows; when the count is non-zero and the shop stocks the item, remembers the list in ItemSellLists[parent] and attaches it to the parent
+// Leaf: ?ConstructSellActionsListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005A731F, 1735 bytes, `ret 10h`, bool in al (bl). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
 //   CCountedPointer<CComponent>(T*) 0x00429C15 / dtor 0x004291DE, CPlayerManager::GetMainPlayer 0x00449960 (CMainGameComponent::Get()
@@ -22,239 +16,134 @@
 //   the list object is read into a local before the map operator[] call; the two returns share the destructor tail through bl.
 // Layout: retail CTCInventoryTrade ItemSellLists +0x20C (map<CComponent*, CComponent*>, PDB +0x258); CActionParamULONG
 //   (vtable 0x0122F844, type 5) 12 bytes.
-// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
-//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h). The counted
-//   pointers are CCountedPointer<NUISystem::CComponent> (were <CComponentBase>, the local primary-base model: 0x00429C15 / 0x004291DE).
+// NF85 (q11059): moved off the row-local CCharString / CWideString / CDataBank / CThing / CTCShop / CPlayer / CPlayerManager /
+//   CMainGameComponent / NUISystem CActionParam / CActionParamULONG / CAction / CComponent / CManager / map stand-in / CTCInventoryTrade
+//   models onto the shared headers, with the include and opt-in set of its landed console twin 0x005A45F6 (same TU). Bindings that change:
+//   CreateMenuEntryComponent 0x00428494 now binds the Ego_r.pdb spelling ..MV5@MV5@@Z (the local model's non-const 6th parameter gave the
+//   stand-in ..MV5@M2@Z); the own leaf is the Ego_r.pdb / FableWin.pdb ?ConstructSellActionsListPC@..@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z
+//   (count is `long`, as CTCInventoryTrade.h and the landed caller CManager::Action 0x0041E6D3 have it; the old row said unsigned long).
+//   The hero pointer type is engine/CThingPlayerCreature.h's retail branch (FABLE_RETAIL_CTHINGPLAYERCREATURE over the retail creature
+//   chain CTHINGPHYSICAL / CTHINGGAMEOBJECT / CTHINGCREATUREBASE), not the twin's empty local `class CThingPlayerCreature : public CThing`.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
-#include "fable_compiler.h"
-#include "engine/CCountedPointer.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString(const unsigned short* text);            // 0x0099B6B0
-    CWideString(const CWideString& other);              // 0x0099B5F0
-    ~CWideString();                                     // 0x0099B510
-};
-CWideString __fastcall IntToWideString(long value);                                 // 0x00405F00
-CWideString __fastcall operator+(const CWideString& left, const CWideString& right); // 0x0099BE70
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_BUILDINGTHING
+#define FABLE_RETAIL_CTCINVENTORYBASE_CONTAINABLE
+#define FABLE_RETAIL_CTCINVENTORYTRADE
+#define FABLE_RETAIL_CTCINVENTORYTRADE_ACTIONSLISTS
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
-#include "engine/CVectorMap.h"
-#include "engine/ETCInterfaceType.h"
-class CTCBase;
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                            // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            long type = wanted;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            CInterfaceMap::value_type* found = (it == map->end() || wanted < it->first) ? map->end() : it;
-            *out = (T*)found->second;
-            return true;
-        }
-        return false;
-    }
-};
-class CTCShop { public:                                        // interface type 0x53
-    bool IsValidStockItem(long defIndex) const;            // 0x007723D0
-};
-class CPlayer { public: CThing* GetControlledCreature(); };  // 0x00487DD0
-class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char   _pad00[0x14];
-    CDataBank*      TextBank;                           // +0x14
-    unsigned char   _pad18[0x1c - 0x18];
-    CPlayerManager* PlayerManager;                      // +0x1c
-};
-// Name fix (agentNF54, e114): the 0x005D99D0 stand-in declaration is gone: it is the static
-//   ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z (Ego_r.pdb 0x0055A9A0 + FableWin.pdb 0x01E03620: the TC interface
-//   type of the inventory component that holds the item), declared by engine/CTCInventoryItem.h (FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY); the local empty ETCInterfaceType enum is the shared engine/ETCInterfaceType.h.
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CTCSHOP
+#define FABLE_RETAIL_CTCSHOP_SHOPTYPE
+#define FABLE_RETAIL_CTCSHOP_VALIDSTOCK
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CPLAYERMANAGER
+#define FABLE_RETAIL_PLAYER
 #define FABLE_RETAIL_CTCINVENTORYITEM
 #define FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
+#define FABLE_RETAIL_CACTIONPARAMULONG
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CTCInventoryTrade.h"
+#include "engine/CTCShop.h"
 #include "engine/CTCInventoryItem.h"
-namespace NUISystem {
-class CActionParam { public:
-    virtual void v00();
-    long Type;                                          // +0x04
-    CActionParam(long type) : Type(type) {}
-};
-class CActionParamULONG : public CActionParam { public:               // vtable 0x0122F844
-    unsigned long Value;                                // +0x08
-    CActionParamULONG(unsigned long value) : CActionParam(5), Value(value) {}
-};
-struct CActionParamList {
-    void* _M_node;
-    void push_back(CActionParam* const& value);         // 0x0042B646
-};
-}
-void InsertParamNode(void* node, NUISystem::CActionParam* value);
-#pragma auto_inline(off)
-__declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CActionParam* const& value)
-{
-    InsertParamNode(_M_node, value);
-}
-#pragma auto_inline(on)
-
-namespace NUISystem {
-class CAction { public:
-    long             ActionType;
-    CActionParamList UIActionParams;
-    void*            ThingActionParams;
-    bool             Valid;
-    CAction();                                          // 0x0042BE50
-};
-class CComponent;
-struct CComponentBase {
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
-    virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
-    virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034();
-    virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
-    virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049();
-    virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054();
-    virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058();
-    virtual void AddChildAtEnd(const CCountedPointer<CComponent>& child);   // slot 59 (+0xEC)
-    virtual void AddChild(const CCountedPointer<CComponent>& child);        // slot 60 (+0xF0)
-    virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
-    virtual void AddPressedAction(const CCountedPointer<CAction>& action);     // slot 66 (+0x108)
-    virtual void v067(); virtual void v068(); virtual void v069();
-    virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
-    virtual void v075(); virtual void v076(); virtual void v077(); virtual void v078(); virtual void v079();
-    virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084();
-    virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089();
-    virtual void v090(); virtual void v091(); virtual void v092(); virtual void v093(); virtual void v094();
-    virtual void v095(); virtual void v096(); virtual void v097(); virtual void v098(); virtual void v099();
-    virtual void v100(); virtual void v101(); virtual void v102(); virtual void v103(); virtual void v104();
-    virtual void v105(); virtual void v106(); virtual void v107(); virtual void v108(); virtual void v109();
-    virtual void v110(); virtual void v111(); virtual void v112(); virtual void v113(); virtual void v114();
-    virtual void v115(); virtual void v116(); virtual void v117(); virtual void v118(); virtual void v119();
-    virtual void v120(); virtual void v121(); virtual void v122(); virtual void v123(); virtual void v124();
-    virtual void v125(); virtual void v126(); virtual void v127(); virtual void v128(); virtual void v129();
-    virtual void v130(); virtual void v131(); virtual void v132(); virtual void v133(); virtual void v134();
-    virtual void v135(); virtual void v136(); virtual void v137(); virtual void v138(); virtual void v139();
-    virtual void v140(); virtual void v141(); virtual void v142(); virtual void v143(); virtual void v144();
-    virtual void v145(); virtual void v146(); virtual void v147(); virtual void v148(); virtual void v149();
-    virtual void v150(); virtual void v151();
-    virtual void AddEntry(const CCountedPointer<CComponent>& entry);        // slot 152 (+0x260)
-    virtual void v153(); virtual void v154(); virtual void v155();
-    virtual void SetItemCount(long count);                                      // slot 156 (+0x270)
-    virtual void v157();
-    virtual void SetSelectedIndex(long index);                                  // slot 158 (+0x278)
-    unsigned char _pad04[0x18 - 0x04];
-};
-class CComponent : public CComponentBase, public CActionParam { public:};
-class CManager {
-public:
-    static CManager* __fastcall GetInstance();  // 0x0041E5F2
- public:
-    CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-    CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
-                                         float c, CCharString d, float e, CCharString button);   // 0x00428494
-};
-}
+#include "engine/CMainGameComponent.h"
+#include "engine/CPlayerManager.h"
+#include "engine/CPlayer.h"
+#include "engine/NGameText_CDataBank.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/NUISystem_CList.h"
+#include "engine/NUISystem_CAction.h"
+#include "engine/NUISystem_CActionParamULONG.h"
 using namespace NUISystem;
-struct CComponentMap {                                  // map<CComponent*, CComponent*> (12 bytes)
-    void*         _M_header;
-    unsigned long _M_node_count;
-    long          _M_key_compare;
-    CComponentBase*& operator[](CComponent* const& key);   // 0x005B3167 (same-TU noinline stand-in body below)
-};
-CComponentBase** FindOrInsertSellList_5b3167(CComponentMap* map, CComponent* key);
-#pragma auto_inline(off)
-__declspec(noinline) CComponentBase*& CComponentMap::operator[](CComponent* const& key) { return *FindOrInsertSellList_5b3167(this, key); }
-#pragma auto_inline(on)
-class CTCInventoryTrade { public:
-    unsigned char _pad000[0x20c];
-    CComponentMap ItemSellLists;                        // +0x20c
-    CThing* GetTradingThing();                          // 0x005BC4C4 (CTCInventoryBase)
-    bool ConstructSellActionsListPC(CComponent* parent, long defIndex, unsigned long count, bool addAsChild);
-};
-bool CTCInventoryTrade::ConstructSellActionsListPC(CComponent* parent, long defIndex, unsigned long count, bool addAsChild)
+using NGameText::CDataBank;
+
+
+CWideString FABLE_FASTCALL GFIntToWideString(long value);                 // 0x00405F00
+
+
+bool CTCInventoryTrade::ConstructSellActionsListPC(CComponent* parent, long itemDefIndex, long count, bool dynamically)
 {
-    CManager* fe = CManager::GetInstance();
+    CManager* manager = CManager::GetInstance();
     CCountedPointer<CComponent> actionsList(CManager::GetInstance()->CreateComponent("PC_LIST_SELL_ACTIONS", false));
-    CComponentBase* list = actionsList.Data;
-    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetControlledCreature();
-    CDataBank* bank = CMainGameComponent::Get()->TextBank;
+    CList* list = static_cast<CList*>(actionsList.Get());
+    const NInventory::CTCInventoryBase* inventory = 0;
+    const CThingPlayerCreature* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     CTCShop* shop = 0;
-    GetTradingThing()->GetInterface(&shop, 0x53);
-    hero->m_present.test(CTCInventoryItem::GetInventoryType(defIndex));
-    CWideString sellText = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL");
-    CCountedPointer<CComponent> sellEntry(fe->CreateMenuEntryComponent(sellText, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
-                                                                          0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
+    const CDataBank& textBank = CMainGameComponent::Get()->GetTextBank();
+    GetBuildingThing()->GetTC(TCI_SHOP, &shop);
+    hero->PeekTC(CTCInventoryItem::GetInventoryType(itemDefIndex), &inventory);
+    CWideString sellText = textBank.GetTextBySymbol("TEXT_GUI_MENU_SELL");
+    CCountedPointer<CComponent> sellEntry(manager->CreateMenuEntryComponent(sellText, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
+                                                                            0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     CCountedPointer<CAction> sellAction(new CAction);
-    sellAction->ActionType = 0x25;
-    sellEntry->AddPressedAction(sellAction);
-    if (count > 50)
-        list->SetItemCount(4);
-    else if (count > 10)
-        list->SetItemCount(3);
-    else if (count > 1)
-        list->SetItemCount(2);
+    sellAction->ActionType = UI_ACTION_TYPE_SELL;
+    sellEntry->AddAction(sellAction);
+    unsigned long quantity = count;
+    if (quantity > 50)
+        list->InitialiseOffsets(4);
+    else if (quantity > 10)
+        list->InitialiseOffsets(3);
+    else if (quantity > 1)
+        list->InitialiseOffsets(2);
     else
-        list->SetItemCount(1);
-    list->SetSelectedIndex(0);
-    list->AddEntry(sellEntry);
-    if (count > 10) {
-        CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + IntToWideString(10);
-        CCountedPointer<CComponent> entry(fe->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
-                                                                          0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
+        list->InitialiseOffsets(1);
+    list->SetDefaultChild(0L);
+    list->AddScrollingChildAndSetOffsets(sellEntry);
+    if (quantity > 10) {
+        CWideString label = textBank.GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + GFIntToWideString(10);
+        CCountedPointer<CComponent> entry(manager->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
+                                                                            0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
-        action->ActionType = 0x52;
+        action->ActionType = UI_ACTION_TYPE_SELL_BULK;
         action->UIActionParams.push_back(new CActionParamULONG(10));
-        entry->AddPressedAction(action);
-        list->AddEntry(entry);
+        entry->AddAction(action);
+        list->AddScrollingChildAndSetOffsets(entry);
     }
-    if (count > 50) {
-        CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + IntToWideString(50);
-        CCountedPointer<CComponent> entry(fe->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
-                                                                          0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
+    if (quantity > 50) {
+        CWideString label = textBank.GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + GFIntToWideString(50);
+        CCountedPointer<CComponent> entry(manager->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
+                                                                            0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
-        action->ActionType = 0x52;
+        action->ActionType = UI_ACTION_TYPE_SELL_BULK;
         action->UIActionParams.push_back(new CActionParamULONG(50));
-        entry->AddPressedAction(action);
-        list->AddEntry(entry);
+        entry->AddAction(action);
+        list->AddScrollingChildAndSetOffsets(entry);
     }
-    if (count > 1) {
-        CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL_ALL") + CWideString(L" (") + IntToWideString(count) + CWideString(L")");
-        CCountedPointer<CComponent> entry(fe->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
-                                                                          0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
+    if (quantity > 1) {
+        CWideString label = textBank.GetTextBySymbol("TEXT_GUI_MENU_SELL_ALL") + CWideString(L" (") + GFIntToWideString(quantity) + CWideString(L")");
+        CCountedPointer<CComponent> entry(manager->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
+                                                                            0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
-        action->ActionType = 0x52;
-        action->UIActionParams.push_back(new CActionParamULONG(count));
-        entry->AddPressedAction(action);
-        list->AddEntry(entry);
+        action->ActionType = UI_ACTION_TYPE_SELL_BULK;
+        action->UIActionParams.push_back(new CActionParamULONG(quantity));
+        entry->AddAction(action);
+        list->AddScrollingChildAndSetOffsets(entry);
     }
-    if (count != 0 && shop->IsValidStockItem(defIndex)) {
-        CComponentBase* listObject = actionsList.Data;
-        ItemSellLists[parent] = listObject;
-        if (addAsChild)
-            parent->AddChild(actionsList);
+    if (quantity != 0 && shop->IsValidStockItem(itemDefIndex)) {
+        ItemSellLists[parent] = actionsList.Get();
+        if (dynamically)
+            parent->AddChildDynamically(actionsList);
         else
-            parent->AddChildAtEnd(actionsList);
+            parent->AddChild(actionsList);
         return true;
     }
     return false;

@@ -1,133 +1,97 @@
-// NCreatureMode::CModeIntangible::OnDeactivate() -- the creature becomes tangible again: re-enable physics, mapwho and targeting, make it bloody-willable, and for a player creature resume its animation, restore its Damageable bit and start the queued on-deactivate action
-// Leaf: ?OnDeactivate@CModeIntangible
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+// NCreatureMode::CModeIntangible::OnDeactivate() -- the creature becomes tangible again: re-enable gravity and finish the base deactivation,
+//   make it drawable-off, put it back in the mapwho, re-enable physics and its default interaction flags, make it bloody-willable and
+//   targetable, and for a player creature resume its AI, restore its Damageable bit and start the queued on-deactivate action
+// Leaf: ?OnDeactivate@CModeIntangible@NCreatureMode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E74F0, 258 bytes (padded to 272), `ret`; vtable 0x01268514 slot 6.
-// Name: FableWin.pdb `?OnDeactivate@CModeIntangible@NCreatureMode@@UAEXXZ` (slot 6; slot 5 OnActivate 0x008E7390, slot 3
+// Name: Ego_r.pdb 0x0090F0D0 + FableWin.pdb ?OnDeactivate@CModeIntangible@NCreatureMode@@UAEXXZ (slot 6; slot 5 OnActivate 0x008E7390, slot 3
 //   FrameUpdate 0x008E7600, landed).
-// Callees: the physics component's virtual slots 38 (+0x98, CTCPhysicsStandard 0x007235E0), 36 (+0x90, 0x00723630) and
-//   44 (+0xB0, 0x00723A50: re-apply the def's physics flags); CThing::SetAsDrawable (slot 28, +0x70, 0x004C8E50);
-//   CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, types 0x3a mapwho and 9 targeted);
-//   CTCWillResponse::SetThingAsNotBloodyWillableAtAll @ 0x007E4040 (static `__fastcall`, bool in dl);
-//   CThingAICreature::SuspendAI @ 0x00833A10; CThingCreatureBase::SetCurrentAction(const CCountedPointer&) @ 0x00664670
-//   (returns bool; the manifest label `_Cons_val<...>` is propagated); the action's virtual slot 4 (+0x10) when it is refused.
-// Layout: Ego_r.pdb CModeIntangible (0x44): CModeBase ParentThing +4, Active +0x18; Timer +0x30, BossPhase +0x34,
-//   WasDamageable +0x38, PActionOnDeactivate (CCountedPointer<CCreatureActionBase>) +0x3c. The thing (landed CModeDragonFlying /
-//   CModeIntangible::FrameUpdate models): type byte +0x10, presence bitset +0x20, interface map +0x44, PhysicsTC +0x60 (PDB +0x70),
-//   CThingPhysical::Damageable bit 0 of +0xBC (PDB +0xD4).
-// Shape: CModeBase::OnDeactivate is the inline `Active = false` between the first two calls; the player-creature tail runs on a
-//   named thing local (edi survives the calls); the bit store is a one-bit bitfield assignment (xor/and/xor).
-#include "fable_compiler.h"
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CTCPhysicsBase { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void SetFlag85Bit2(bool on);        // slot 36 (+0x90), 0x00723630
-    virtual void v37();
-    virtual void SetPhysicsActive(bool on);     // slot 38 (+0x98), 0x007235E0
-    virtual void v39(); virtual void v40(); virtual void v41(); virtual void v42();
-    virtual void SetPhysicsFlags(unsigned long flags);   // slot 43 (+0xAC), 0x007234C0
-    virtual void ResetPhysicsFlagsToDef();      // slot 44 (+0xB0), 0x00723A50
-};
-struct CModeBase;
-class CCreatureActionBase { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual void OnRefused();                   // slot 4 (+0x10)
-};
-#include "engine/CCountedPointer.h"
-class CThingAICreature { public:
-    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
-};
-class CThing { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
-    virtual void SetAsDrawable(bool drawable);  // slot 28 (+0x70), 0x004C8E50
-    unsigned char   _pad04[0x0c];
-    unsigned char   m_type;                     // +0x10 (1 = player creature)
-    unsigned char   _pad11[0x0f];
-    unsigned long   m_presentBits[9];           // +0x20 std::bitset of interface types
-    CInterfaceMap   m_interfaces;               // +0x44
-    unsigned char   _pad54[0xc];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    unsigned char   _pad64[0x58];
-    unsigned char   Damageable : 1;             // +0xBC bit 0 (CThingPhysical)
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    bool SetCurrentAction(const CCountedPointer<CCreatureActionBase>& action); // 0x00664670
-};
-class CTCMapwho { public:                              // interface 0x3a
-    unsigned char _pad00[0x50];
-    unsigned char InMapwho : 1;                 // +0x50 bit 0
-};
-class CTCTargeted { public:                            // interface 9
-    unsigned char _pad00[0x10];
-    bool          Targetable;                   // +0x10
-};
-class CTCWillResponse { public:
-    static void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
-};
-
-struct CModeBase {                              // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
-    CThing*       ParentThing;                  // +0x04
-    unsigned char WeaponBasedFilter[0x0c];      // +0x08 CAnimFilterOfGroup
-    long          FramesBeforeRemovingSelf;     // +0x14
-    bool          Active;                       // +0x18
-    void OnDeactivate() { Active = false; }
-};
+// Callees: the physics component's virtual slots 38 EnableGravity (+0x98), 36 EnablePhysics (+0x90) and 44 ReturnToDefaultInteractionFlags
+//   (+0xB0) (engine/CTCPhysicsBase.h); CThing::SetAsDrawable (slot 28, +0x70); CVectorMap::LowerBound 0x0040F020 (the expanded GetTC of
+//   CTCMapwho, type 0x3A, and CTCTargeted, type 9); CTCWillResponse::SetThingAsNotBloodyWillableAtAll 0x007E4040 (static __fastcall, bool in dl);
+//   CThingAICreature::SuspendAI 0x00833A10; CThingCreatureBase::SetCurrentAction(const CCountedPointer<CCreatureActionBase>&) 0x00664670;
+//   the action's virtual slot 4 (+0x10, FinishAction) when it is refused.
+// Layout: Ego_r.pdb NCreatureMode::CModeIntangible (0x44): the NCreatureMode::CModeDragonBase base (0x30: CModeBase ParentThing +4, Active +0x18;
+//   Filter +0x1C, PTarget +0x28), then Timer +0x30, BossPhase +0x34, WasDamageable +0x38, PActionOnDeactivate (CCountedPointer<CCreatureActionBase>)
+//   +0x3C. No shared header exists for CModeIntangible: it is declared here, on the shared base.
+// Shape: the start is the expanded qualified CModeDragonBase::OnDeactivate() call (EnableGravity(true) through the physics slot 38, then
+//   `mov byte ptr [esi+18h],0`, the inline CModeBase::OnDeactivate): its one body is inline in engine/CModeDragonBase.h (NF92 opt-in
+//   FABLE_RETAIL_CMODEDRAGONBASE_ONDEACTIVATE_INLINE; out-of-line COMDAT 0x008E72B0), on NF90's inline CModeBase::OnDeactivate. The
+//   player-creature tail runs on a named thing local (edi survives the calls); the Damageable store is the one-bit bitfield assignment (xor/and/xor).
+// One definition (NF92, q11224): the same two statements are CModeDragonBase::OnDeactivate 0x008E72B0, and the sibling OnActivate pair
+//   (0x008E7290 / 0x008E7390) opens the same way; a same-TU probe (work/probe_008e74f0_expand.cpp) grades this row RELOCATION_MATCH from the
+//   qualified call and 0x008E72B0 MATCH. See NOTES (FableWin.pdb places the original body in the .cpp; the header inline is the repo's spelling).
+// Port (NF90, q11187 binder / q11189): was an all-local July model of CThing (v00..v27 placeholders), CTCPhysicsBase, CCreatureActionBase,
+//   CThingAICreature, CModeBase, CTCMapwho, CTCTargeted and CTCWillResponse binding 0x00664670 as ?SetCurrentAction@CThing@@...; now on the shared
+//   headers (the 0x008D6C80 / 0x008E7E70 define sets) + engine/CModeDragonBase.h (NF90 opt-in FABLE_RETAIL_CMODEDRAGONBASE_MODEBASE).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGPHYSICAL_HITSETTERS
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_SETCURRENTACTION_COUNTED
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGAICREATURE_DRAINED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODEBASE_ONDEACTIVATE_INLINE
+#define FABLE_RETAIL_CMODEDRAGONBASE_MODEBASE
+#define FABLE_RETAIL_CMODEDRAGONBASE_ONDEACTIVATE_INLINE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCMAPWHO
+#define FABLE_RETAIL_CTCMAPWHO_STATTYPE
+#define FABLE_RETAIL_CTCMAPWHO_SETINMAP
+#define FABLE_RETAIL_CTCTARGETED
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CTCMapwho.h"
+#include "engine/CTCTargeted.h"
+#include "engine/CTCWillResponse.h"
+#include "engine/CModeDragonBase.h"
 
 namespace NCreatureMode {
-struct CModeIntangible : CModeBase {            // vtable 0x01268514
-    unsigned char _pad1c[0x14];
-    long          Timer;                        // +0x30
-    long          BossPhase;                    // +0x34
-    bool          WasDamageable;                // +0x38
-    CCountedPointer<CCreatureActionBase> PActionOnDeactivate;   // +0x3c
-    void OnDeactivate();
+class CModeIntangible : public CModeDragonBase {
+public:
+    virtual void OnDeactivate();
+protected:
+    long Timer;                                                   // +0x30
+    long BossPhase;                                               // +0x34
+    bool WasDamageable;                                           // +0x38
+    CCountedPointer<CCreatureActionBase> PActionOnDeactivate;     // +0x3C
 };
 
 void CModeIntangible::OnDeactivate()
 {
-    ParentThing->PhysicsTC->SetPhysicsActive(true);
-    CModeBase::OnDeactivate();
-    ParentThing->SetAsDrawable(false);
+    CModeDragonBase::OnDeactivate();
+    ParentThing.SetAsDrawable(false);
     CTCMapwho* mapwho;
-    if (ParentThing->GetInterface(&mapwho, 0x3a))
-        mapwho->InMapwho = 1;
-    ParentThing->PhysicsTC->SetFlag85Bit2(true);
-    ParentThing->PhysicsTC->ResetPhysicsFlagsToDef();
-    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(ParentThing, false);
+    if (ParentThing.GetTC(&mapwho))
+        mapwho->SetInMap(true);
+    ParentThing.GetPhysicsTC()->EnablePhysics(true);
+    ParentThing.GetPhysicsTC()->ReturnToDefaultInteractionFlags();
+    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(&ParentThing, false);
     CTCTargeted* targeted;
-    if (ParentThing->GetInterface(&targeted, 9))
-        targeted->Targetable = true;
-    CThing* thing = ParentThing;
-    if (thing->m_type == 1) {
-        ((CThingAICreature*)thing)->SuspendAI(false, this);
-        thing->Damageable = WasDamageable;
+    if (ParentThing.GetTC(&targeted))
+        targeted->SetTargetable(true);
+    CThing& thing = ParentThing;
+    if (thing.GetType() == 1) {
+        static_cast<CThingAICreature&>(thing).SuspendAI(false, this);
+        static_cast<CThingPhysical&>(thing).SetAsDamageable(WasDamageable);
         if (PActionOnDeactivate.Data) {
-            if (!thing->SetCurrentAction(PActionOnDeactivate))
-                PActionOnDeactivate->OnRefused();
+            if (!static_cast<CThingCreatureBase&>(thing).SetCurrentAction(PActionOnDeactivate))
+                PActionOnDeactivate->FinishAction();
         }
     }
 }

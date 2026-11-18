@@ -1,0 +1,79 @@
+addr       parity           behav  name
+004585bd   WARN RELOC_NAME: ??1?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@QAE@XZ -> 00451a85 labelled '_global::StdList_Dtor_00451a85'
+004585bd   RELOCATION_MATCH PASS   ~CArmourDef
+0053cb9b   RELOCATION_MATCH PASS   map
+0057b783   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0057b783   WARN SHARED_HEADER_AVAILABLE CPlayer
+0057b783   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard
+0057b783   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef
+0057b783   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+0057b783   WARN SHARED_HEADER_AVAILABLE CWorld
+0057b783   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0057b783   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057b783   RELOCATION_MATCH PASS   Vomit
+0059aae3   RELOCATION_MATCH PASS   operator-
+0059b4fe   WARN RELOC_NAME: ??$__uninitialized_copy@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@@std@@YI?AU?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@0@0U10@ABU__true_type@0@@Z -> 0059b49b labelled 'CStaticMeshPlacement_0059b49b::CStaticMeshPlacement_0059b49b'
+0059b4fe   RELOCATION_MATCH PASS   deque
+0059b576   RELOCATION_MATCH PASS   _M_push_back_aux_v
+006644f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+006644f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006644f0   WARN SHARED_HEADER_AVAILABLE CTCCombat
+006644f0   WARN SHARED_HEADER_AVAILABLE CThing
+006644f0   WARN RELOC_NAME: ?TakeOver@CCreatureActionBase@@QAEXABUCActionState@@@Z -> 00669280 labelled 'CCreatureActionBase::SetPreceedingPAnimEntry'
+006644f0   RELOCATION_MATCH PASS   SetCurrentAction
+006dc020   RELOCATION_MATCH PASS   ~CPersistTraits
+00789358   RELOCATION_MATCH PASS   ~CHitParameters
+0085ff10   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0085ff10   RELOCATION_MATCH PASS   GetUpFromSitting
+00928e20   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00928e20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00928e20   WARN SHARED_HEADER_AVAILABLE CSoundPair
+00928e20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00928e20   WARN SHARED_HEADER_AVAILABLE CTCExclusiveUse
+00928e20   WARN SHARED_HEADER_AVAILABLE CWorld
+00928e20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00928e20   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+00928e20   RELOCATION_MATCH PASS   OnReplace
+009387f0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+009387f0   RELOCATION_MATCH PASS   OnReplace
+009621f0   WARN SHARED_HEADER_AVAILABLE CTCStealth
+009621f0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+009621f0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+009621f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009621f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009621f0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009621f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009621f0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+009621f0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+009621f0   RELOCATION_MATCH PASS   Update
+0097d8b0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097d8b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097d8b0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0097d8b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0097d8b0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0097d8b0   RELOCATION_MATCH PASS   AIAction_PerformAction
+0097db70   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097db70   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097db70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0097db70   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0097db70   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0097db70   RELOCATION_MATCH PASS   AIAction_PerformActionAndWait
+00981ea0   RELOCATION_MATCH PASS   AIAction_SpeakAISpeechToTarget
+
+WINS: 16
+  004585bd RELOCATION_MATCH CArmourDef::??1CArmourDef@@UAE@XZ
+  0053cb9b RELOCATION_MATCH std::map<unsigned long, NUISystem::CUIState>::??0?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE@ABV01@@Z
+  0057b783 RELOCATION_MATCH CTCHeroStats::Vomit
+  0059aae3 RELOCATION_MATCH std::_Deque_iterator<NUISystem::CComponent *, std::_Nonconst_traits<NUISystem::CComponent *>>::??G?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QBEHABU01@@Z
+  0059b4fe RELOCATION_MATCH std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::??0?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+  0059b576 RELOCATION_MATCH std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::?_M_push_back_aux_v@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXABQAVCComponent@NUISystem@@@Z
+  006644f0 RELOCATION_MATCH CThingCreatureBase::?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+  006dc020 RELOCATION_MATCH CPersistTraits<CComboMultiplierData>::??1?$CPersistTraits@VCComboMultiplierData@@@@QAE@XZ
+  00789358 RELOCATION_MATCH CHitParameters::??1CHitParameters@@QAE@XZ
+  0085ff10 RELOCATION_MATCH NCreatureMode::?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z
+  00928e20 RELOCATION_MATCH CAIStateGroup_BanditPlayDice::?OnReplace@CAIStateGroup_BanditPlayDice@@QAEXXZ
+  009387f0 RELOCATION_MATCH CAIStateGroup_UsesSeat::?OnReplace@CAIStateGroup_UsesSeat@@UAEXXZ
+  009621f0 RELOCATION_MATCH CAIStateGroup_IceTrollIcicleAttack::?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ
+  0097d8b0 RELOCATION_MATCH CAIStateGroupBase::?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z
+  0097db70 RELOCATION_MATCH CAIStateGroupBase::AIAction_PerformActionAndWait
+  00981ea0 RELOCATION_MATCH CAIStateGroupBase::?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$CIntelligentPointer@$$CBVCThing@@@@ABVCCharString@@_NJ@Z

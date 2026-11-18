@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00a84160   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@_K_N@std@@U12@HV?$CKeyPairCompareLess@_K_N@@@std@@YIXPAU?$pair@_K_N@0@00HV?$CKeyPairCompareLess@_K_N@@@Z -> 00a83ab0 labelled 'std::__introsort_loop<std::pair<unsigned __int64, bool> *, std::pair<unsigned __int64, bool>, int, CKeyPairCompareLess<unsigned __int64, bool>>'
+00a84160   RELOCATION_MATCH PASS   sort<std::pair<unsigned __int64,bool>*,CKeyPairCompareLess<unsigned __int64,bool> >
+
+WINS: 1
+  00a84160 RELOCATION_MATCH std::??$sort@PAU?$pair@_K_N@std@@V?$CKeyPairCompareLess@_K_N@@@std@@YIXPAU?$pair@_K_N@0@0V?$CKeyPairCompareLess@_K_N@@@Z

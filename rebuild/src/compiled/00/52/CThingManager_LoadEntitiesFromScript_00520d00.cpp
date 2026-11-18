@@ -19,8 +19,12 @@
 //   STLP_TREE_CONSTFIND (set::find const), FABLE_RETAIL_CCHARSTRING_LESS_INLINE. The Codex body is kept. CCharString::operator< inline
 //   over the same-TU noinline CBasicString<char>::operator< body (pure reads) lets VC7.1 keep set::end() in esi across the first
 //   _M_find as retail does (declared out of line: one extra `mov esi,[ebx]` reload and a 12-byte longer loop alignment).
+// NF80 (q10763): this TU's own explicit specialisation of CBasicString<char>::operator< (a second strong definition of
+//   ??M?$CBasicString@D@@QBE_NABV0@@Z beside the self row 0x00429950) is replaced by fable_string.h's FABLE_RETAIL_CBASICSTRING_LESS_BODY:
+//   the same body as an inline, never-inlined COMDAT, so the TU keeps its mod/ref knowledge of the call and the symbol has one definition.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+#define FABLE_RETAIL_CBASICSTRING_LESS_BODY
 #define FABLE_RETAIL_CDATAINPUTSTREAM
 #define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
 #define FABLE_RETAIL_CWORLD
@@ -73,22 +77,6 @@
 #include "engine/CQuestManager.h"
 #include "engine/CLevelLoader.h"
 #include "engine/CASuspendableProcess.h"
-// CBasicString<char>::operator< 0x00429950 (landed), the callee of the set<CCharString> _M_find 0x004B9370: its body in the TU,
-// kept out of line, as retail's TU sees it.
-#pragma auto_inline(off)
-template<> __declspec(noinline) bool CBasicString<char>::operator<(const CBasicString<char>& other) const
-{
-    const char* b=other.PData;
-    const char* a=PData;
-    for(;;) {
-        if(*a==0 && *b==0) return false;
-        if(*a<*b) return true;
-        if(*a>*b) return false;
-        ++a;
-        ++b;
-    }
-}
-#pragma auto_inline(on)
 namespace NProgressDisplay {void __fastcall DisplayProgress(const CCharString&,float,bool,bool);}
 
 extern unsigned long g_LoadTickInterval;   // 0x01375714 (established spelling)

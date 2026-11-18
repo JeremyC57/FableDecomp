@@ -1,97 +1,28 @@
-// CHeroExperienceDef::operator=(const CHeroExperienceDef&) -- memberwise def assignment: CDefClassBase part, three vector<long>, the seven maps, two floats and the attack-history combo vector; returns *this
-// Leaf: ??4CHeroExperienceDef
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004F914A, length 189 bytes; size-optimised def TU.
-// Callees: CDefClassBase::operator= @ 0x00431F10, vector<long>::operator= @ 0x00454886 (x3),
-//          map<long,CDefString>::operator= @ 0x004F9207 (x5), map<long,CComboMultiplierData>::operator=
-//          @ 0x004F9660, map<EDamageAttribute,CHeroStatIncreaseData>::operator= @ 0x004F9831,
-//          vector<CAttackHistoryCombo>::operator= @ 0x004F932C.
-// Identity: the manifest label "CThingBuildingDef::operator=" is propagated over every def assignment.
-// The body is reached through the `jmp` thunk at 0x004F9145 in slot 19 of vtable 0x0124390C =
-// CHeroExperienceDef (rtti-vtables.tsv). PDB CHeroExperienceDef (Ego_r) puts its members at
-// +0x28.. with 16-byte containers; retail STLport/Dinkumware containers are 12 bytes, so the
-// members sit at +0x28/+0x34/+0x40 (vectors), +0x4c/+0x58 (maps), +0x64/+0x68 (floats),
-// +0x6c/+0x78/+0x84/+0x90/+0x9c (maps) and +0xa8 (vector), exactly the offsets the body uses.
-// The tree assignments keep the class names their landed bodies carry (CRetailTree_<copy fn>).
-// Shape: the compiler-generated memberwise assignment written out in declaration order; the two
-// floats copy through eax (single float member assignment is an integer move), the last member's
-// address is formed with `add edi,0A8h` because nothing reads `other` after it.
-// The generated engine headers flatten the bases (no base operator= to call), so the class is local.
-#pragma optimize("s", on)   // the def module is size-optimised
-
+// CHeroExperienceDef::operator=(const CHeroExperienceDef& other) -- the member-wise assignment (modelled as the compiler-generated one): the def base (CDefClassBase::operator= out of line), the three long vectors, the eight maps (each tree's operator= out of line) and the two floats in declaration order, then the attack-combo vector; returns *this
+// Leaf: ??4CHeroExperienceDef@@QAEAAV0@ABV0@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004F914A, 189 bytes, thiscall `ret 4`; size-optimised def TU.
+// Name: Ego_r.pdb 0x0050C49F + FableWin.pdb 0x01B9BE44 ??4CHeroExperienceDef@@QAEAAV0@ABV0@@Z.
+// Callees: CDefClassBase::operator= 0x00431F10, vector<long>::operator= 0x00454886 (x3), _Rb_tree<long, pair<const long, CDefString> ..>
+//   ::operator= 0x004F9207 (x5), _Rb_tree<long, pair<const long, CComboMultiplierData> ..>::operator= 0x004F9660, _Rb_tree<EDamageAttribute,
+//   pair<const EDamageAttribute, CHeroStatIncreaseData> ..>::operator= 0x004F9831 (q11179 / NF90), vector<CAttackHistoryCombo>::operator=
+//   0x004F932C.
+// Layout: engine/CHeroExperienceDef.h, FABLE_RETAIL_CHEROEXPERIENCEDEF_TRANSFER (the Ego_r.pdb STLport member types, retail 0xB4).
+// Shape: the compiler-generated assignment; each map's implicit operator= is `_M_t = x._M_t` (the tree's out-of-line operator=), the
+//   vectors' operator= is STLport's out-of-class _vector.c body (declared only: FABLE_RETAIL_STLP_VECTOR_ASSIGN).
+#pragma optimize("s", on)
 #define FABLE_RETAIL_DEF_CLASS_BASE
-#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CATTACKHISTORYCOMBO
+#define FABLE_RETAIL_CHEROEXPERIENCEDEF_TRANSFER
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_map.h"
+#include "engine/CHeroExperienceDef.h"
 
-struct CLongVector {                    // retail std::vector<long> (12 bytes)
-    long* m_first;
-    long* m_last;
-    long* m_end;
-    CLongVector& operator=(const CLongVector& other);   // 0x00454886
-};
-
-struct CRetailTree_004f927a {           // map<long, CDefString> (head + size + empty compare, 12 bytes)
-    void* head;
-    unsigned long size;
-    unsigned long _compare;
-    CRetailTree_004f927a& operator=(const CRetailTree_004f927a& other);   // 0x004F9207
-};
-
-struct CRetailTree_004f96d3 {           // map<long, CComboMultiplierData>
-    void* head;
-    unsigned long size;
-    unsigned long _compare;
-    CRetailTree_004f96d3& operator=(const CRetailTree_004f96d3& other);   // 0x004F9660
-};
-
-struct CRetailTree_004f98a4 {           // map<EDamageAttribute, CHeroStatIncreaseData>
-    void* head;
-    unsigned long size;
-    unsigned long _compare;
-    CRetailTree_004f98a4& operator=(const CRetailTree_004f98a4& other);   // 0x004F9831
-};
-
-struct CAttackHistoryComboVector {      // retail std::vector<CAttackHistoryCombo> (12 bytes)
-    void* m_first;
-    void* m_last;
-    void* m_end;
-    CAttackHistoryComboVector& operator=(const CAttackHistoryComboVector& other);   // 0x004F932C
-};
-
-// def vtable 0x0124390C: slot 0 0x004EBB00 (implicit inline dtor); real overrides from the def vtable scan
-class CHeroExperienceDef : public CDefClassBase { public:                         // vtable 0x0124390C
-    CLongVector ExperienceLevelThresholds;                          // +0x28
-    CLongVector HeroLevelTitles;                                    // +0x34
-    CLongVector FallbackMultipliers;                                // +0x40
-    CRetailTree_004f927a SoundIntensityThresholds;                  // +0x4c
-    CRetailTree_004f96d3 ComboMultiplierMap;                        // +0x58
-    float ExperienceMultiplierParamPerUnitComboMultiplier;          // +0x64
-    float ExperienceMultiplierRegionChangeMultiplier;               // +0x68
-    CRetailTree_004f927a ComboMultiplierIncrease;                   // +0x6c
-    CRetailTree_004f927a ComboMultiplierLock;                       // +0x78
-    CRetailTree_004f927a ComboMultiplierLost;                       // +0x84
-    CRetailTree_004f927a ComboMultiplierRunningHitsIncrease;        // +0x90
-    CRetailTree_004f98a4 StatIncreasePerHitType;                    // +0x9c
-    CAttackHistoryComboVector AttackHistoryCombos;                  // +0xa8
-    CHeroExperienceDef& operator=(const CHeroExperienceDef& other);
-    virtual void Transfer(CPersistContext& context);         // slot 18 0x006D8F10
-    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004F9145
-    virtual unsigned long GetSizeofClass();                  // slot 20 0x004EBA68
-};
-
-CHeroExperienceDef& CHeroExperienceDef::operator=(const CHeroExperienceDef& other)
-{
-    CDefClassBase::operator=(other);
-    ExperienceLevelThresholds = other.ExperienceLevelThresholds;
-    HeroLevelTitles = other.HeroLevelTitles;
-    FallbackMultipliers = other.FallbackMultipliers;
-    SoundIntensityThresholds = other.SoundIntensityThresholds;
-    ComboMultiplierMap = other.ComboMultiplierMap;
-    ExperienceMultiplierParamPerUnitComboMultiplier = other.ExperienceMultiplierParamPerUnitComboMultiplier;
-    ExperienceMultiplierRegionChangeMultiplier = other.ExperienceMultiplierRegionChangeMultiplier;
-    ComboMultiplierIncrease = other.ComboMultiplierIncrease;
-    ComboMultiplierLock = other.ComboMultiplierLock;
-    ComboMultiplierLost = other.ComboMultiplierLost;
-    ComboMultiplierRunningHitsIncrease = other.ComboMultiplierRunningHitsIncrease;
-    StatIncreasePerHitType = other.StatIncreasePerHitType;
-    AttackHistoryCombos = other.AttackHistoryCombos;
-    return *this;
+namespace {
+// Fidelity: scaffolding, not retail: the shared header declares no operator=, so the assignment is the compiler-generated one, whose
+// member-wise order and out-of-line member calls retail matches (the PDB name sets list ??4 either way). This TU emits its
+// out-of-line COMDAT through this use; retail's callers are outside this row.
+void AssignHeroExperienceDef(CHeroExperienceDef& def, const CHeroExperienceDef& other)
+{ def = other; }
 }

@@ -1,137 +1,111 @@
-// CAIStateGroup_CreatureFindCover::Update() -- take cover from a live enemy: re-aware the perception of it, pick a hidden cover position, move in and keep ducking while close to the cover
-// Leaf: ?Update@CAIStateGroupCreatureFindCoverMethods@@QAEXXZ
-// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0097CCD0, length 351 bytes.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, Terminate @ 0x008FCF40, CVectorMap::LowerBound @ 0x0040F020 (inlined
-//          GetInterface 0x34 = CTCPerceiveThing, bit 20 of +0x24), CTCPerceiveThing::GetPerceivedThing @ 0x007446A0 (manifest
-//          "_Cons_val<...>" is propagated) and SetAsDirectlyAwareOfPerceivedThing @ 0x007449B0, GetHiddenCoverPosAndSetUpCoverThing
-//          @ 0x00970CD0, SetFailedToFindCover @ 0x00970590, MoveIntoCover @ 0x009711D0, DuckBehindCover(bool) @ 0x009713E0,
-//          GetHiddenCoverPos(C3DVector&, CThing*) @ 0x00970930, CThing::GetPos @ 0x004C73D0, IsStillRunnable @ 0x0097CB10.
-// Globals: 1.0f @ 0x0122DED8.
-// Shape: the enemy is fetched before the perception's target call (ebp) for the comparison; after moving into cover the
-//          group ducks while the cover and the enemy live, the hidden cover position stays within 1.0 of the creature (XY,
-//          a named float from fsqrt) and the group is still runnable; every exit terminates.
-// Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (pack(1): enemy +0x14, PCoverThing +0x1F) behind engine/CAIStateGroupBase.h.
-#include "fable_compiler.h"
-#define CAIStateGroup_CreatureUseCoverBase CAIStateGroup_CreatureUseCoverBaseLayout
-#include "engine/CAIStateGroup_CreatureUseCoverBase.h"
-#undef CAIStateGroup_CreatureUseCoverBase
-
-class CAIStateGroupBase
-{
-public:
-    void Terminate();   // 0x008FCF40
-};
-class CAIStateGroup_EnemyCreatureBase : public CAIStateGroupBase
-{
-public:
-};
-class CAIStateGroup_CreatureUseCoverBase : public CAIStateGroup_EnemyCreatureBase, public CAIStateGroup_CreatureUseCoverBaseLayout
-{
-};
-
-extern "C" double __cdecl sqrt(double);
-#pragma intrinsic(sqrt)
-
-#include "engine/C3DVector.h"
-class C2DVector { public:
-    float x, y;
-    float GetLength() const { return (float)sqrt(x * x + y * y); }
-};
-
-class CTCBase;
+// CAIStateGroup_CreatureFindCover::Update() -- while the enemy lives: become directly aware of it when it is the perceived thing, find hidden
+// cover (or record the failure), move into it and duck behind it until the cover or the enemy dies, the creature drifts more than 1.0 from the
+// hidden spot, or the state stops being runnable; then terminate
+// Leaf: ?Update@CAIStateGroup_CreatureFindCover@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0097CCD0 (virtual, plain `ret`).
+// Callees: CTCPerceiveThing::GetPerceivedThing 0x007446A0 / SetAsDirectlyAwareOfPerceivedThing 0x007449B0, GetHiddenCoverPosAndSetUpCoverThing
+//   0x00970CD0, SetAtFailed 0x00970590, MoveIntoCover 0x009711D0, DuckBehindCover 0x009713E0, GetHiddenCoverPos 0x00970930, IsStillRunnable
+//   0x0097CB10, Terminate 0x008FCF40.
+// NF72 (round 7, q10885): the row bound 0x00970590 as the descriptive SetFailedToFindCover on the stand-in CAIStateGroupCreatureFindCoverMethods
+//   (and its own leaf on that stand-in), over a renaming-macro model of CAIStateGroup_CreatureUseCoverBase. Ported onto the shared headers with the
+//   macro block of the sibling CAIStateGroup_CreatureTakeCover::Update 0x0097A630 (NF68) and the overlay opt-in
+//   FABLE_RETAIL_CAISTATEGROUP_CREATUREFINDCOVER_UPDATE (engine/CAIStateGroup_CreatureFindCover.h: the retail class, Ego_r.pdb public virtual Update,
+//   protected IsStillRunnable).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
-#include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CTCPerceiveThing { public:                       // interface 0x34
-    const CThing* GetPerceivedThing() const;    // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ
-    void SetAsDirectlyAwareOfPerceivedThing();  // 0x007449B0
-};
-class CBaseObject;
-class CBaseObjectPointer;
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CAIGAMECAMERABASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_COVERLIST
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_ADVANCE
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_TYPED_COVERLIST
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_TAKECOVER
+#define FABLE_RETAIL_CTCPERCEIVETHING
+#define FABLE_RETAIL_CTCPERCEIVETHING_SETASDIRECTLYAWARE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_TARGETFACE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH
+#define FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION
+#define FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION_IMPLICIT_DTOR
+#define FABLE_RETAIL_CCREATUREACTION_PROJECTILECROUCH_CLASS
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "rebuild_abi.h"
+#include "fable_compiler.h"
+#include "stlport/fable_containers.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/NCreatureMode.h"
+#include "engine/C3DVector.h"
+#include "engine/C2DVector.h"
 #include "engine/CIntelligentPointer.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/CWorld.h"
+#include "engine/CAIGameCameraBase.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_CreatureUseCoverBase.h"
+#include "engine/CTCPerceiveThing.h"
+#include "engine/GFRandom.h"
+#include "fable_string.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCreatureAction_PlayAnimation.h"
+#include "engine/CCreatureAction_ProjectileCrouch.h"
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREFINDCOVER_UPDATE
+#include "engine/CAIStateGroup_CreatureFindCover.h"
 
-FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+void CAIStateGroup_CreatureFindCover::Update()
 {
-    if (p.Get() != 0) {
-        if (!p.Get()->IsDead())
-            return true;
-    }
-    return false;
-}
-FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* const& thing)
-{
-    if (thing != 0) {
-        if (!thing->IsDead())
-            return true;
-    }
-    return false;
-}
-struct CIntelligentPointerVector {              // vector<CIntelligentPointer<CThing> > (retail: first, last, end of storage)
-    CIntelligentPointer<CThing>* first;
-    CIntelligentPointer<CThing>* last;
-    CIntelligentPointer<CThing>* endOfStorage;
-    unsigned long size() const { return (unsigned long)(last - first); }
-    void erase(CIntelligentPointer<CThing>* from, CIntelligentPointer<CThing>* to);   // 0x004AC0F0
-    void clear() { erase(first, last); }
-};
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
-
-struct CAIStateGroupCreatureFindCoverMethods : CAIStateGroup_CreatureUseCoverBase {
-    CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
-    CThing* GetCreature() const { return Brain()->PCreature; }
-    CIntelligentPointer<CThing>& Enemy() { return *(CIntelligentPointer<CThing>*)_pad_0x14; }
-    CIntelligentPointer<CThing>& Cover() { return *(CIntelligentPointer<CThing>*)PCoverThing; }
-    bool GetHiddenCoverPosAndSetUpCoverThing(C3DVector& result);   // 0x00970CD0
-    void SetFailedToFindCover();                // 0x00970590
-    bool MoveIntoCover(C3DVector& pos);         // 0x009711D0
-    bool DuckBehindCover(bool dive);            // 0x009713E0
-    bool GetHiddenCoverPos(C3DVector& result, CThing* cover);   // 0x00970930
-    bool IsStillRunnable();                     // 0x0097CB10
-    void Update();
-};
-
-void CAIStateGroupCreatureFindCoverMethods::Update()
-{
-    if (!IS_THING_ALIVE(Enemy())) {
+    if (!IS_THING_ALIVE(PTargetThing)) {
         Terminate();
         return;
     }
-    CTCPerceiveThing* perception;
-    if (GetCreature()->GetTC(TCI_PERCEIVE_THING, &perception)) {
-        CThing* enemy = Enemy().Get();
-        if (perception->GetPerceivedThing() == enemy)
-            perception->SetAsDirectlyAwareOfPerceivedThing();
+    CThingAICreature& me = GetCreature();
+    if (me.HasTC(TCI_PERCEIVE_THING)) {
+        CTCPerceiveThing& perceive = static_cast<CTCPerceiveThing&>(me.GetTC(TCI_PERCEIVE_THING));
+        if (perceive.GetPerceivedThing() == PTargetThing.Get())
+            perceive.SetAsDirectlyAwareOfPerceivedThing();
     }
-    C3DVector coverPos;
-    if (!GetHiddenCoverPosAndSetUpCoverThing(coverPos)) {
-        SetFailedToFindCover();
+    C3DVector cover_pos;
+    if (!GetHiddenCoverPosAndSetUpCoverThing(cover_pos)) {
+        SetAtFailed();
         Terminate();
         return;
     }
-    if (MoveIntoCover(coverPos)) {
+    if (MoveIntoCover(cover_pos)) {
         do {
             DuckBehindCover(true);
-            if (!IS_THING_ALIVE(Cover().Get()))
+            if (!IS_THING_ALIVE(PCoverThing.Get()))
                 break;
-            if (!IS_THING_ALIVE(Enemy()))
+            if (!IS_THING_ALIVE(PTargetThing))
                 break;
-            C3DVector hidden;
-            GetHiddenCoverPos(hidden, Cover().Get());
-            const C3DVector& pos = GetCreature()->GetPos();
-            C2DVector delta;
-            delta.x = hidden.X - pos.X;
-            delta.y = hidden.Y - pos.Y;
-            float distance = delta.GetLength();
-            if (distance > 1.0f)
+            C3DVector hidden_pos;
+            GetHiddenCoverPos(hidden_pos, *PCoverThing.Get());
+            const C3DVector& pos = GetCreature().GetPos();
+            if (C2DVector(hidden_pos.X - pos.X, hidden_pos.Y - pos.Y).GetMagnitude() > 1.0f)
                 break;
         } while (IsStillRunnable());
     }

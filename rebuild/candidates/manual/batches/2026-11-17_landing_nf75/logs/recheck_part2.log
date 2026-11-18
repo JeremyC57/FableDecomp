@@ -1,0 +1,52 @@
+addr       parity           behav  name
+00429486   RELOCATION_MATCH PASS   ShareData
+004f9784   RELOCATION_MATCH PASS   pair
+0054e980   WARN RELOC_NAME: ??$__find@PAPAVCComponent@NUISystem@@PAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@0ABQAV12@ABUrandom_access_iterator_tag@0@@Z -> 00535fe4 labelled 'std::__find<NUISystem::CComponent **, NUISystem::CComponent *>'
+0054e980   RELOCATION_MATCH PASS   RemoveChild
+00597006   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00597006   RELOCATION_MATCH PASS   RefreshAvailableProfilesForDelete
+0059a994   RELOCATION_MATCH PASS   ReleaseData
+006b0850   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+006b0850   WARN SHARED_HEADER_AVAILABLE CWorld
+006b0850   WARN SHARED_HEADER_AVAILABLE CPhysicsMeshObject
+006b0850   WARN SHARED_HEADER_AVAILABLE CTCBase
+006b0850   WARN RELOC_NAME: ?GetPhysicsMeshInfo@CMeshBank@@QAEPAVCPhysicsMeshInfo@@J@Z -> 00a24250 labelled 'CMeshDataBank::PeekPhysicsMeshInfo'
+006b0850   RELOCATION_MATCH PASS   GetPhysicsMeshObject
+0072c6e0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0072c6e0   RELOCATION_MATCH PASS   CTCSpecialAbilities
+0081f910   MATCH            PASS   GetStrongestEngineThemeAt
+008200b0   WARN RELOC_NAME: ?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z -> 0081ea50 labelled 'Terrain_InterpolateHeightAtPosition'
+008200b0   RELOCATION_MATCH PASS   GetThemeSizeZAt
+008201e0   RELOCATION_MATCH PASS   InitPassabilityFromThemesIfNecessary
+0082d920   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0082d920   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+0082d920   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0082d920   RELOCATION_MATCH PASS   Create
+00892e80   RELOCATION_MATCH PASS   ActivateQuest
+008f70f0   RELOCATION_MATCH PASS   AddThemeDefIndexToPalette
+009614a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+009614a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009614a0   WARN RELOC_NAME: ?GetPPlayerManager@CAIStateGroup_BanditKingLunge@@QAEPAVCPlayerManager@@XZ -> 008fcf90 labelled 'CAIStateGroupBase::GetPlayerManager'
+009614a0   RELOCATION_MATCH PASS   IsRunnable
+009d5260   RELOCATION_MATCH PASS   CBankFileAsyncEntry
+009f5bd0   WARN SHARED_HEADER_AVAILABLE CChecksum
+009f5bd0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+009f5bd0   RELOCATION_MATCH PASS   CInputManager
+
+WINS: 16
+  00429486 RELOCATION_MATCH CCountedPointer<NUISystem::CList>::?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z
+  004f9784 RELOCATION_MATCH std::pair<long const, CComboMultiplierData>::??0?$pair@$$CBJVCComboMultiplierData@@@std@@QAE@ABU01@@Z
+  0054e980 RELOCATION_MATCH NUISystem::CScrollingViewport::RemoveChild
+  00597006 RELOCATION_MATCH NUISystem::CFrontEndManager::?RefreshAvailableProfilesForDelete@CFrontEndManager@NUISystem@@IAEJXZ
+  0059a994 RELOCATION_MATCH CCountedPointer<NUISystem::CScrollableList>::?ReleaseData@?$CCountedPointer@VCScrollableList@NUISystem@@@@QAEXXZ
+  006b0850 RELOCATION_MATCH CTCPhysicsBase::GetPhysicsMeshObject
+  0072c6e0 RELOCATION_MATCH CTCSpecialAbilities::??0CTCSpecialAbilities
+  0081f910 MATCH CMap::?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z
+  008200b0 RELOCATION_MATCH CMap::?GetThemeSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+  008201e0 RELOCATION_MATCH CMap::?InitPassabilityFromThemesIfNecessary@CMap@@QAEXABVC2DBoxI@@@Z
+  0082d920 RELOCATION_MATCH CThingBuilding::?Create@CThingBuilding@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z
+  00892e80 RELOCATION_MATCH CGameScriptInterface::?CGameScriptInterface_ActivateQuest@@YGXABVCCharString@@@Z
+  008f70f0 RELOCATION_MATCH CMap::?AddThemeDefIndexToPalette@CMap@@IAEEK@Z
+  009614a0 RELOCATION_MATCH CAIStateGroup_BanditKingLunge::?IsRunnable@CAIStateGroup_BanditKingLunge@@MAE_NXZ
+  009d5260 RELOCATION_MATCH CBankFileAsyncEntry::??0CBankFileAsyncEntry@@AAE@AAVCBankFileAsync@@K@Z
+  009f5bd0 RELOCATION_MATCH CInputManager::??0CInputManager

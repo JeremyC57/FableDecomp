@@ -177,6 +177,12 @@ template<class Size> inline char* fill_n(char* first,Size n,const char& value) {
 #endif
 #ifdef FABLE_RETAIL_STLP_FILL_LOCAL_ITERATOR
 template<class I,class T> inline void fill(I begin,I last,const T& x) { I first=begin; for(;first!=last;++first) *first=x; }
+#elif defined(FABLE_RETAIL_STLP_FILL_NOINLINE) && defined(_MSC_VER)
+// NF68 opt-in (row 0x00AD85D0): the same STLport body, kept out of line as a __fastcall COMDAT (0x00AD78D0: first in ecx, last in
+// edx, `ret 4`), as that retail TU calls it.
+#pragma auto_inline(off)
+template<class I,class T> __declspec(noinline) void __fastcall fill(I first,I last,const T& x) { for(;first!=last;++first) *first=x; }
+#pragma auto_inline(on)
 #else
 template<class I,class T> inline void fill(I first,I last,const T& x) { for(;first!=last;++first) *first=x; }
 #endif
@@ -222,11 +228,19 @@ inline void* __copy_trivial(const void* first,const void* last,void* result) {
 #endif
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
+#elif defined(FABLE_RETAIL_STLP_COPY_PTRS_FALSE_NOINLINE) && defined(_MSC_VER)
+// NF68 opt-in (row 0x009F6890 vector<CInputEvent>::operator=): the same STLport body, kept out of line as a __fastcall COMDAT
+// (0x009F63B0: first in ecx, last in edx, result + tag on the stack, `ret 8`), as that retail TU calls it.
+#pragma auto_inline(off)
+template<class Input,class Output> __declspec(noinline) Output __fastcall __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
 #else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
 #endif
     return __copy(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);
 }
+#if defined(FABLE_RETAIL_STLP_COPY_PTRS_FALSE_NOINLINE) && !(defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)) && defined(_MSC_VER)
+#pragma auto_inline(on)
+#endif
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
 #else
@@ -275,12 +289,20 @@ template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T*
 #ifdef FABLE_RETAIL_STLP_PASS22_COPY_BACKWARD_FASTCALL
 // Actual native00B8EF60 has first/last in ECX/EDX andRET12; original STLport loop.
 template<class R,class B,class D> inline B FABLE_FASTCALL __copy_backward(R first,R last,B result,const random_access_iterator_tag&,D*) {
+#elif defined(FABLE_RETAIL_STLP_COPY_BACKWARD_NOINLINE) && defined(_MSC_VER)
+// NF68 opt-in (row 0x00AD85D0): the same STLport loop, kept out of line as a __fastcall COMDAT (0x00AD7120: first in ecx, last in
+// edx, `ret 0Ch`), as that retail TU calls it. (auto_inline is restored after the body below.)
+#pragma auto_inline(off)
+template<class R,class B,class D> __declspec(noinline) B __fastcall __copy_backward(R first,R last,B result,const random_access_iterator_tag&,D*) {
 #else
 template<class R,class B,class D> inline B __copy_backward(R first,R last,B result,const random_access_iterator_tag&,D*) {
 #endif
     for(D n=last-first;n>0;--n) *--result=*--last;
     return result;
 }
+#if defined(FABLE_RETAIL_STLP_COPY_BACKWARD_NOINLINE) && !defined(FABLE_RETAIL_STLP_PASS22_COPY_BACKWARD_FASTCALL) && defined(_MSC_VER)
+#pragma auto_inline(on)
+#endif
 template<class I,class O> inline O __copy_backward_ptrs(I first,I last,O result,const __false_type&) {
     return __copy_backward(first,last,result,random_access_iterator_tag(),(typename iterator_traits<I>::difference_type*)0);
 }
@@ -294,6 +316,13 @@ template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T*
 template<class T,class U> inline void FABLE_FASTCALL _Construct(T* p,const U& v) { new(p) T(v); }
 template<class T> inline void FABLE_FASTCALL _Destroy(T* p) { p->~T(); }
 inline void FABLE_FASTCALL _Destroy(char*,char*) { }
+#elif defined(FABLE_RETAIL_STLP_CONSTRUCT_FASTCALL)
+// NF87 opt-in (row 0x007AE0C0, the out-of-line _Construct of pair<const CCharString, vector<CCharString> >): the /Gr TU's _construct.h
+// _Construct as a __fastcall COMDAT (p in ecx, the value in edx; the placement-new null test, then the pair's two copy constructors).
+// The default branch's text with __fastcall on _Construct only.
+template<class T,class U> inline void __fastcall _Construct(T* p,const U& v) { new(p) T(v); }
+template<class T> inline void _Destroy(T* p) { p->~T(); }
+inline void _Destroy(char*,char*) { }
 #elif defined(FABLE_RETAIL_STLP_CONSTRUCT_BYVAL)
 // Per-TU opt-in (row 0x00754050 CTCLook::UpdateTurningAnims): _Construct taking its value BY VALUE. The inlined push_back then
 // copies the element out of the argument temporary into register-held fields before the placement store (retail 0x007541E0:
@@ -369,12 +398,20 @@ template<class I> FABLE_FORCEINLINE void _Destroy(I first,I last) {
 #else
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class I> inline void FABLE_FASTCALL _Destroy(I first,I last) {
+#elif defined(FABLE_RETAIL_STLP_DESTROY_RANGE_NOINLINE) && defined(_MSC_VER)
+// NF68 opt-in (row 0x009F6890 vector<CInputEvent>::operator=): the same STLport range _Destroy, kept out of line as a __fastcall
+// COMDAT (0x009F6720: first in ecx, last in edx, plain `ret`), as that retail TU calls it.
+#pragma auto_inline(off)
+template<class I> __declspec(noinline) void __fastcall _Destroy(I first,I last) {
 #else
 template<class I> inline void _Destroy(I first,I last) {
 #endif
 #endif
     __destroy(first,last,(typename iterator_traits<I>::value_type*)0);
 }
+#if defined(FABLE_RETAIL_STLP_DESTROY_RANGE_NOINLINE) && !(defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)) && !(defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)) && defined(_MSC_VER)
+#pragma auto_inline(on)
+#endif
 // _uninitialized.h
 #ifdef FABLE_STLP_OUTOFLINE_UNINIT_COPY
 // Opt-in (chunk 760, row 0x00CBC130 vector::_M_insert_overflow): like FABLE_STLP_OUTOFLINE_UNINIT_FILL_N below, the retail TU keeps
@@ -470,11 +507,23 @@ template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,co
 template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,const T& x,const __true_type&) {
     return std::fill_n(first,n,x);
 }
+#if defined(FABLE_RETAIL_STLP_UNINITIALIZED_FILL_N_NOINLINE) && defined(_MSC_VER)
+// NF68 opt-in (row 0x00AD85D0 vector<QuadricOptimiserInternals::COptimisedVertex>::_M_fill_insert): the same STLport body, kept out
+// of line as a __fastcall COMDAT (0x00AD7B90: first in ecx, n in edx, `ret 4`), as that retail TU calls it.
+#pragma auto_inline(off)
+template<class I,class N,class T> __declspec(noinline) I __fastcall uninitialized_fill_n(I first,N n,const T& x) {
+    typedef typename iterator_traits<I>::value_type Value;
+    typedef typename __type_traits<Value>::is_POD_type IsPOD;
+    return __uninitialized_fill_n(first,n,x,IsPOD());
+}
+#pragma auto_inline(on)
+#else
 template<class I,class N,class T> inline I uninitialized_fill_n(I first,N n,const T& x) {
     typedef typename iterator_traits<I>::value_type Value;
     typedef typename __type_traits<Value>::is_POD_type IsPOD;
     return __uninitialized_fill_n(first,n,x,IsPOD());
 }
+#endif
 // _alloc.h (malloc-based allocator)
 #ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE
 // Per-TU opt-in (row 0x00D30030): STLport's allocator<T>::deallocate forwards to __sgi_alloc = __malloc_alloc<0>::deallocate,
@@ -549,10 +598,17 @@ public:
         _M_finish=_M_start;
         _M_end_of_storage._M_data=_M_start+n;
     }
+#ifdef FABLE_RETAIL_STLP_VECTOR_BASE_DTOR_FREE_UNTESTED
+    // NF71 opt-in (round 7, row 0x008F95D0 LSocket::SendBlock): that TU releases its local vector<char> with a bare `push ecx ; call free`
+    // (0x008F96B8; ReceiveBlock 0x008F9B20 `push esi ; call free` too) while the LAddress strings next to it keep their null test.
+    // FITTED (owner acceptance test 2026-11-14): retail-shaped release, the null test of ~_Vector_base / deallocate dropped; free(0) is a no-op.
+    ~_Vector_base() { free(_M_start); }
+#else
     ~_Vector_base() {
         if (_M_start != 0)
             _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data-_M_start);
     }
+#endif
 protected:
     _Tp* _M_start;
     _Tp* _M_finish;
@@ -702,7 +758,7 @@ public:
     // the call (retail 0x00B15840 `mov ebx,[esp+14h]` ... 0x00B1587C `test ebx,ebx; push ebx; call free`; declaration-only: reloaded, 3784v3779).
     vector& operator=(const vector& x);
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data-this->_M_start); }
-#ifndef FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_ORIGINAL_SCOPE_PASS22
+#if !defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_ORIGINAL_SCOPE_PASS22) && !defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_DECL)
     template <class _ForwardIter> _Tp* _M_allocate_and_copy(size_type n,_ForwardIter first,_ForwardIter last) {
         _Tp* result=this->_M_end_of_storage.allocate(n);
         __uninitialized_copy(first,last,result,_IsPODType());
@@ -826,6 +882,13 @@ public:
         --this->_M_finish;_Destroy(this->_M_finish);return position;
     }
 #endif
+#if defined(FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_NOINLINE) && defined(_MSC_VER)
+    // NF73 opt-in (rows 0x00596CCE / 0x00597006, through FABLE_RETAIL_CFRONTENDMANAGER_GETPROFILENAMES_BODY): the STLport
+    // erase(first, last) body below, visible but kept out of line, as the retail CFrontEndManager TU calls it (vector<CWideString>::erase
+    // 0x00412450 from GetProfileNames 0x005955AB). Unlike the declaration-only FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE, c2 then
+    // knows erase keeps no address of the vector. Mirror of FABLE_RETAIL_STLP_VECTOR_ERASE_NOINLINE.
+    __declspec(noinline)
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
     // Per-TU opt-in (chunk 773, row 0x00671600 CThingCreatureDef::Transfer; like FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE): STLport's
     // erase(first, last) is one inline body, which VC7.1 expanded in some TUs and called as a COMDAT in others; that TU calls
@@ -945,13 +1008,24 @@ protected:
     void _M_insert_overflow(iterator position,const _Tp& x,const __false_type&,size_type fillLength,bool atEnd);
     void _M_insert_overflow(iterator position,const _Tp& x,const __true_type&,size_type fillLength,bool atEnd);
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_CLEAR_DECL
+    // NF68 opt-in (row 0x009F6890): the same protected STLport member, called out of line in that retail TU (vector<CInputEvent>::_M_clear
+    // 0x009F6850, landed ?_M_clear@...@IAEXXZ). Declaration only.
+    void _M_clear();
+#else
     void _M_clear() {
         _Destroy(this->_M_start,this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start,this->_M_end_of_storage._M_data-this->_M_start);
     }
+#endif
     void _M_set(iterator s,iterator f,iterator e) {
         this->_M_start=s;this->_M_finish=f;this->_M_end_of_storage._M_data=e;
     }
+#if defined(FABLE_RETAIL_STLP_VECTOR_C) && defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_DECL) && !defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_ORIGINAL_SCOPE_PASS22)
+    // NF68 opt-in (row 0x009F6890): STLport 4.6 _vector.h's protected member template, called out of line in that retail TU
+    // (vector<CInputEvent>::_M_allocate_and_copy<const CInputEvent*> 0x009F65E0, thiscall `ret 0Ch`). Declaration only.
+    template <class _ForwardIter> _Tp* _M_allocate_and_copy(size_type n,_ForwardIter first,_ForwardIter last);
+#endif
 #if defined(FABLE_RETAIL_STLP_VECTOR_C) && defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_ORIGINAL_SCOPE_PASS22)
     // Authenticated STLport4.6.2 _vector.h491..525: protected, in-class, after _M_clear/_M_set.
     template <class _ForwardIter> _Tp* _M_allocate_and_copy(size_type n,_ForwardIter first,_ForwardIter last) {
@@ -1227,6 +1301,18 @@ template<class _InputIterator> inline ptrdiff_t distance(const _InputIterator& f
     return __distance(first,last,input_iterator_tag());
 }
 #endif
+#if defined(FABLE_RETAIL_STLP_DISTANCE_INPUT_NOINLINE) && !defined(FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE)
+// NF82 opt-in (row 0x004BB270, set<CCharString>'s _Rb_tree::erase(const key_type&)): the same STLport 4.6 _iterator_base.h distance() /
+// input-iterator __distance(), the body visible but kept out of line as a __cdecl COMDAT, as retail calls it (0x004B84A0, `call` at
+// 0x004BB2A6 with the two tree iterators by reference and the tag pushed); seeing the body, VC7.1 knows it writes nothing and keeps the
+// equal_range iterators in registers across the call, as retail does.
+template<class _InputIterator> __declspec(noinline) ptrdiff_t __cdecl __distance(const _InputIterator& first,const _InputIterator& last,const input_iterator_tag&) {
+    ptrdiff_t n=0; _InputIterator it(first); while(it!=last) { ++it; ++n; } return n;
+}
+template<class _InputIterator> inline ptrdiff_t distance(const _InputIterator& first,const _InputIterator& last) {
+    return __distance(first,last,input_iterator_tag());
+}
+#endif
 template<class _Tp,class _Alloc> class _List_base {
 public:
 #if defined(FABLE_RETAIL_STLP_LIST_BASE_VISIBLE_NOINLINE)
@@ -1453,7 +1539,12 @@ public:
     // with the input-iterator __distance loop inlined (NUISystem::CList::ChangeState 0x0053A0A1 counts the
     // GPreviousSelected nodes in place: mov ecx,[ecx] ; inc edi ; cmp ecx,eax ; jne); push_front(x) is insert(begin(), x)
     // (out of line in that TU at 0x0053CA3C).
-#ifdef FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE
+#if defined(FABLE_RETAIL_STLP_LIST_SIZE_DECL)
+    // NF76 per-TU opt-in (row 0x006D53C0 CTCFollowed::FrameUpdate): STLport 4.6 _list.h size(), declared only. That TU calls the
+    // list<CIntelligentPointer<CThingAICreature> > instance out of line (`mov ecx,edi ; call 0x0065F17B` at 0x006D562F, the GFRandom
+    // range; ?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@..@std@@@std@@QBEIXZ, queue entry nf41:e53).
+    size_t size() const;
+#elif defined(FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE)
     // chunk 849 (row 0x0057E2F1): STLport 4.6's own spelling, `size_type __result = distance(begin(), end()); return __result;`. The
     // copy-of-first loop keeps the head in eax and walks ecx (`mov eax,[ebx+1D8h] ; mov ecx,[eax] ; .. mov ecx,[ecx] ; inc edx ;
     // cmp ecx,eax`, 0x0057EBA3, before the vector reserve); the for-loop form above swaps the two CPU locations.
@@ -1501,6 +1592,12 @@ public:
     void pop_back() { iterator tmp=end(); erase(--tmp); }
 #endif
 #endif
+#ifdef FABLE_RETAIL_STLP_LIST_ASSIGN_BODY
+    // NF78 opt-in (round 7, row 0x00ADD020 list<CVertexGroupBlock>::operator=): STLport 4.6 _list.c operator=(const list&) (body after
+    // the class) and _list.h erase(first, last), declared only: retail calls that instance's erase COMDAT (0x00ADC4E0) from it.
+    iterator erase(iterator first,iterator last);
+    list& operator=(const list& x);
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_ASSIGN_POPBACK_DECL
     // Per-TU opt-in (wf20, row 0x00AD9F10 CVertexGroupBlockOptimiser::AddBlocks): STLport 4.6 _list.c operator=(const list&) and
     // _list.h pop_back(), called out of line by that row (list<CVertexGroupBlock> 0x00ADD020 / 0x00ADC790). Declarations only.
@@ -1512,6 +1609,27 @@ public:
     // only (its body is in _list.c). Retail calls the list<long> instance out of line (?remove@?$list@JV?$allocator@J@std@@@std@@QAEXABJ@Z
     // 0x0084ACE0, FableWin.pdb name set); a row that needs the same-TU body defines it as an explicit specialisation.
     void remove(const _Tp& __val);
+#endif
+#if defined(FABLE_RETAIL_STLP_LIST_REMOVE_NOINLINE) && !defined(FABLE_RETAIL_STLP_LIST_REMOVE_DECL)
+    // NF92 opt-in (round 7, q11218 row 0x004C8050 CThing::WorldUpdate): the STLport 4.6 _list.c remove(const _Tp&) body, visible but
+    // called out of line, as retail calls list<CTCBase*>::remove 0x004CC150 (?remove@?$list@PAVCTCBase@@V?$allocator@PAVCTCBase@@@std@@@std@@
+    // QAEXABQAVCTCBase@@@Z) from its implicit instantiation in the caller's TU. Seeing that the body keeps no reference to the value, VC7.1
+    // leaves the caller's component in a register across the call (0x004C8129: ebp reused for GetInterfaceType, the compare and the delete)
+    // and shares the argument's frame word with the later Find key. Needs the list erase(iterator) body (FABLE_RETAIL_STLP_LIST).
+#ifdef _MSC_VER
+    __declspec(noinline) void remove(const _Tp& __val) {
+#else
+    void remove(const _Tp& __val) {
+#endif
+        iterator __first = begin();
+        iterator __last = end();
+        while (__first != __last) {
+            iterator __next = __first;
+            ++__next;
+            if (__val == *__first) erase(__first);
+            __first = __next;
+        }
+    }
 #endif
 #ifdef FABLE_RETAIL_STLP_LIST_SORT
     // Per-TU opt-in (wf9, row 0x006F3A30): STLport 4.6 _list.h swap(list&), splice(iterator, list&, iterator) and the member
@@ -1530,7 +1648,48 @@ public:
     // only: retail tail-jumps to the out-of-line instantiation (0x0082C770, ??$remove_if@VCIsMarkerBoundToThing@CMiniMapDisplay@@@..).
     template<class _Predicate> void remove_if(_Predicate pred);
 #endif
+#if defined(FABLE_RETAIL_STLP_LIST_REMOVE_IF_NOINLINE) && !defined(FABLE_RETAIL_STLP_LIST_REMOVE_IF_OUTOFLINE)
+    // NF67 opt-in (round 7, row 0x008A7980 CGameScriptInterface::EntityStopFollowing): the STLport 4.6 _list.c member template
+    // remove_if(_Predicate) body, visible but called out of line, as retail calls list<CCountedPointer<CEventBase> >::remove_if<
+    // CConvFilterToCP<CIsEventOfType> > 0x008AC890 there. Seeing that it keeps no reference to the predicate, VC7.1 packs the caller's
+    // CIsEventOfType temporary into the dead argument slot (0x008A7A4D `mov dword ptr [esp+14h],3`) as retail does. Needs the list
+    // erase(iterator) body (FABLE_RETAIL_STLP_LIST).
+#ifdef _MSC_VER
+    template<class _Predicate> __declspec(noinline) void remove_if(_Predicate __pred) {
+#else
+    template<class _Predicate> void remove_if(_Predicate __pred) {
+#endif
+        iterator __first=begin();
+        iterator __last=end();
+        while(__first!=__last) {
+            iterator __next=__first;
+            ++__next;
+            if(__pred(*__first)) erase(__first);
+            __first=__next;
+        }
+    }
+#endif
 };
+#ifdef FABLE_RETAIL_STLP_LIST_ASSIGN_BODY
+// NF78 opt-in: STLport 4.6 _list.c operator=: assign over the existing elements pairwise, then erase the surplus or insert copies of
+// the rest (range insert = _M_insert_dispatch).
+template<class _Tp,class _Alloc>
+list<_Tp,_Alloc>& list<_Tp,_Alloc>::operator=(const list<_Tp,_Alloc>& x) {
+    if(this!=&x) {
+        iterator first1=begin();
+        iterator last1=end();
+        const_iterator first2=x.begin();
+        const_iterator last2=x.end();
+        while(first1!=last1 && first2!=last2)
+            *first1++=*first2++;
+        if(first2==last2)
+            erase(first1,last1);
+        else
+            insert(last1,first2,last2);
+    }
+    return *this;
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_SORT
 // Per-TU opt-in (wf9, row 0x006F3A30): STLport 4.6 _list.c _S_merge (body visible; retail calls the instance out of line, 0x006F04C0)
 // and _S_sort, free templates (__fastcall in the /Gr STL TUs: the list(s) in ecx/edx, the comparator by value on the stack).
@@ -1598,6 +1757,24 @@ public:
     bool test(size_t n) const;
 #else
     bool test(size_t n) const { if(n>=_Nb) __stl_throw_out_of_range("bitset"); return _Unchecked_test(n); }
+#endif
+#ifdef FABLE_RETAIL_STLP_BITSET_SET_DECL
+    // NF90 per-TU opt-in (round 7, q11188 binder row 0x004C9D60 CThing::AddTC): STLport 4.6 _bitset.h set(size_t) (the range check, then
+    // _Unchecked_set), declared only. That retail TU calls the bitset<274> instance out of line (0x004CC090, landed as std::bitset::set,
+    // `push type ; lea ecx,[UsingComponents] ; call` at 0x004C9F13) while it expands test() in place. No layout change.
+    bitset<_Nb>& set(size_t n);
+#endif
+#ifdef FABLE_RETAIL_STLP_BITSET_RESET_DECL
+    // NF92 per-TU opt-in (round 7, q11218 binder row 0x004C9840 CThing::RemoveTC): STLport 4.6 _bitset.h reset(size_t) (the range check, then
+    // _Unchecked_reset), declared only. That retail TU calls the bitset<274> instance out of line (0x004CC0D0, `push type ; lea ecx,
+    // [UsingComponents] ; call`), the twin of NF90's set() 0x004CC090. No layout change.
+    bitset<_Nb>& reset(size_t n);
+#endif
+#if defined(FABLE_RETAIL_STLP_BITSET_RESET) && !defined(FABLE_RETAIL_STLP_BITSET_RESET_DECL)
+    // NF92 per-TU opt-in (round 7, q11218 binder row 0x004C8310 CThing::~CThing): STLport 4.6 _bitset.h reset(size_t) and _Unchecked_reset
+    // inline, as that retail TU expands them (the range check against 274 with the cold puts / abort block, then the word and-not).
+    bitset<_Nb>& _Unchecked_reset(size_t n) { this->_M_w[this->_S_whichword(n)] &= ~this->_S_maskbit(n); return *this; }
+    bitset<_Nb>& reset(size_t n) { if(n>=_Nb) __stl_throw_out_of_range("bitset"); return _Unchecked_reset(n); }
 #endif
 #ifdef FABLE_RETAIL_STLP_BITSET_INDEX
     // Per-TU opt-in (plan phase 4, 2026-11-05): STLport 4.6 _bitset.h bitset<_Nb>::reference and operator[]. Retail expands the
@@ -1705,6 +1882,47 @@ void sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
 // comparator pushed: 0x0076C000 / 0x0076C1A0 are bound as ??$sort@...@std@@YIX...; the landed 0x00767DA0 local model spells the
 // same). A declaration only.
 template<class _RandomAccessIter,class _Compare> void __fastcall sort(_RandomAccessIter,_RandomAccessIter,_Compare);
+#ifdef FABLE_RETAIL_STLP_SORT_FASTCALL_BODY
+// NF72 opt-in (row 0x00A84160 sort<pair<unsigned __int64, bool>*, CKeyPairCompareLess<unsigned __int64, bool> >): STLport 4.6 _algo.c
+// sort(first, last, comp), the __fastcall COMDAT itself (first in ecx, last in edx, the comparator pushed, `ret 4`): the empty-range
+// test, __introsort_loop (out of line, __fastcall: the (T*)0, the depth __lg(n) * 2 and the comparator pushed) and the inline
+// __final_insertion_sort, whose __insertion_sort and __unguarded_insertion_sort_aux are out of line __fastcall instantiations -- the
+// FABLE_RETAIL_STLP_SORT_INLINE text with sort defined __fastcall. Declarations only for the three out-of-line helpers.
+#ifndef __stl_threshold
+#define __stl_threshold 16
+#endif
+template<class _Size> inline _Size __lg(_Size __n) { _Size __k; for(__k=0;__n!=1;__n>>=1) ++__k; return __k; }
+template<class _RandomAccessIter,class _Tp,class _Size,class _Compare>
+void __fastcall __introsort_loop(_RandomAccessIter __first,_RandomAccessIter __last,_Tp*,_Size __depth_limit,_Compare __comp);
+template<class _RandomAccessIter,class _Compare>
+void __fastcall __insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp);
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first,_RandomAccessIter __last,_Tp*,_Compare __comp);
+template<class _RandomAccessIter,class _Compare>
+inline void __unguarded_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    __unguarded_insertion_sort_aux(__first,__last,(typename iterator_traits<_RandomAccessIter>::value_type*)0,__comp);
+}
+template<class _RandomAccessIter,class _Compare>
+#if defined(_MSC_VER)
+__forceinline
+#else
+inline
+#endif
+void __final_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    if(__last-__first>__stl_threshold) {
+        __insertion_sort(__first,__first+__stl_threshold,__comp);
+        __unguarded_insertion_sort(__first+__stl_threshold,__last,__comp);
+    } else
+        __insertion_sort(__first,__last,__comp);
+}
+template<class _RandomAccessIter,class _Compare>
+void __fastcall sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    if(__first!=__last) {
+        __introsort_loop(__first,__last,(typename iterator_traits<_RandomAccessIter>::value_type*)0,__lg(__last-__first)*2,__comp);
+        __final_insertion_sort(__first,__last,__comp);
+    }
+}
+#endif
 #else
 template<class _RandomAccessIter,class _Compare> void sort(_RandomAccessIter,_RandomAccessIter,_Compare);
 #endif
@@ -1792,14 +2010,29 @@ template<class _InputIter,class _OutputIter> _OutputIter __fastcall copy(_InputI
 // argument slot as retail does (0x00808AD2). __unguarded_linear_insert (0x008074A0, landed) is declared only.
 template<class _ForwardIter1,class _ForwardIter2> inline void iter_swap(_ForwardIter1 a,_ForwardIter2 b) { swap(*a,*b); }
 template<class _RandomAccessIter,class _BidirectionalIter,class _Distance>
+#ifdef FABLE_RETAIL_STLP_SORT_COPY_BACKWARD_AUX_INLINE
+// NF85 opt-in (row 0x005E0FE0, the /O2 CCharString sort TU's out-of-line copy_backward; with FABLE_RETAIL_STLP_SORT_COPY_BACKWARD_NOINLINE):
+// the same STLport __copy_backward, plain inline, so that TU's copy_backward COMDAT carries the copy loop itself (retail 0x005E0FE0
+// calls only CCharString::operator=); the #else arm is the repo's out-of-line __fastcall form (0x00806310 / 0x0077E170).
+inline _BidirectionalIter __copy_backward(_RandomAccessIter first,_RandomAccessIter last,
+#else
 FABLE_STLP_NOINLINE _BidirectionalIter FABLE_STLP_FASTCALL __copy_backward(_RandomAccessIter first,_RandomAccessIter last,
+#endif
                                                                            _BidirectionalIter result,const random_access_iterator_tag&,_Distance*) {
     for(_Distance n=last-first;n>0;--n) *--result=*--last;
     return result;
 }
+#if defined(FABLE_RETAIL_STLP_SORT_COPY_BACKWARD_NOINLINE) && defined(_MSC_VER)
+// NF82 opt-in (row 0x005E1A40, the /O2 CCharString sort TU): the same STLport copy_backward, kept out of line as the __fastcall COMDAT that
+// TU's __linear_insert calls (0x005E0FE0: first / last in ecx / edx, result pushed).
+template<class _BI1,class _BI2> __declspec(noinline) _BI2 __fastcall copy_backward(_BI1 first,_BI1 last,_BI2 result) {
+    return __copy_backward(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);
+}
+#else
 template<class _BI1,class _BI2> inline _BI2 copy_backward(_BI1 first,_BI1 last,_BI2 result) {
     return __copy_backward(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);
 }
+#endif
 template<class _RandomAccessIter,class _Tp,class _Compare>
 _RandomAccessIter FABLE_STLP_FASTCALL __unguarded_partition(_RandomAccessIter first,_RandomAccessIter last,_Tp pivot,_Compare comp) {
     for(;;) {
@@ -1812,7 +2045,23 @@ _RandomAccessIter FABLE_STLP_FASTCALL __unguarded_partition(_RandomAccessIter fi
     }
 }
 template<class _RandomAccessIter,class _Tp,class _Compare>
+#ifdef FABLE_RETAIL_STLP_UNGUARDED_LINEAR_INSERT_BODY
+// NF82 opt-in (row 0x004DD80B, the registered-TC table sort of pair<CCharString, CTCBase::CRegisteredTCInfo>): the STLport 4.6 _algo.c
+// __unguarded_linear_insert body, for the row that owns the out-of-line instantiation (__fastcall: last in ecx, the by-value element
+// and the comparator pushed).
+void FABLE_STLP_FASTCALL __unguarded_linear_insert(_RandomAccessIter last,_Tp val,_Compare comp) {
+    _RandomAccessIter next=last;
+    --next;
+    while(comp(val,*next)) {
+        *last=*next;
+        last=next;
+        --next;
+    }
+    *last=val;
+}
+#else
 void FABLE_STLP_FASTCALL __unguarded_linear_insert(_RandomAccessIter last,_Tp val,_Compare comp);
+#endif
 template<class _RandomAccessIter,class _Tp,class _Compare>
 void FABLE_STLP_FASTCALL __linear_insert(_RandomAccessIter first,_RandomAccessIter last,_Tp val,_Compare comp) {
     if(comp(val,*first)) {
@@ -1820,6 +2069,71 @@ void FABLE_STLP_FASTCALL __linear_insert(_RandomAccessIter first,_RandomAccessIt
         *first=val;
     } else
         __unguarded_linear_insert(last,val,comp);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_INSERTION_SORT_BODY
+// NF82 opt-in (row 0x004E3686, the registered-TC table sort of pair<CCharString, CTCBase::CRegisteredTCInfo>): STLport 4.6 _algo.c
+// __insertion_sort(first, last, comp), out of line in retail and __fastcall (the /Gr algorithm TU: first/last in ecx/edx, the empty
+// comparator pushed, `ret 4`); each element goes through the out-of-line __linear_insert (0x004E1C8A there), declared here unless
+// FABLE_RETAIL_STLP_SORT_INTERNALS carries its body.
+#ifndef FABLE_RETAIL_STLP_SORT_INTERNALS
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void __fastcall __linear_insert(_RandomAccessIter first,_RandomAccessIter last,_Tp val,_Compare comp);
+#endif
+template<class _RandomAccessIter,class _Compare>
+void __fastcall __insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    if(__first==__last) return;
+    for(_RandomAccessIter __i=__first+1;__i!=__last;++__i)
+        __linear_insert(__first,__i,typename iterator_traits<_RandomAccessIter>::value_type(*__i),__comp);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_UNGUARDED_INSERTION_SORT_AUX_BODY
+// NF82 opt-in (row 0x004DFD60, the same sort): STLport 4.6 _algo.c __unguarded_insertion_sort_aux(first, last, _Tp*, comp), out of
+// line in retail and __fastcall (first/last in ecx/edx, the (T*)0 and the comparator pushed, `ret 8`); each element goes through the
+// out-of-line __unguarded_linear_insert (0x004DD80B there), declared here unless FABLE_RETAIL_STLP_SORT_INTERNALS declares it.
+#ifndef FABLE_RETAIL_STLP_SORT_INTERNALS
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void __fastcall __unguarded_linear_insert(_RandomAccessIter last,_Tp val,_Compare comp);
+#endif
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first,_RandomAccessIter __last,_Tp*,_Compare __comp) {
+    for(_RandomAccessIter __i=__first;__i!=__last;++__i)
+        __unguarded_linear_insert(__i,_Tp(*__i),__comp);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_PARTIAL_SORT_BODY
+// NF82 opt-in (row 0x004E6E9E, the registered-TC table sort of pair<CCharString, CTCBase::CRegisteredTCInfo>): STLport 4.6 _algo.c
+// __partial_sort(first, middle, last, _Tp*, comp), out of line in retail and __fastcall (first/middle in ecx/edx, last, the (T*)0 and the
+// comparator pushed, `ret 0Ch`); make_heap / sort_heap are the out-of-line __fastcall front ends of that /Os TU (0x004E36C3 /
+// 0x004E41DD there) and __pop_heap is out of line (0x004E1D20), declared here unless FABLE_RETAIL_STLP_HEAP / _POP_HEAP_AUX_PASS22 carry it.
+#ifdef FABLE_RETAIL_STLP_PARTIAL_SORT_INLINE_MAKE_HEAP
+// (nested NF82 opt-in, row 0x005E2EB0, an /O2 TU) make_heap as the STLport inline front end over the out-of-line __make_heap (0x005E1BE0
+// there); with FABLE_RETAIL_STLP_HEAP the __pop_heap body is visible and expands, as that TU does.
+#ifndef FABLE_RETAIL_STLP_MAKE_HEAP_BODY
+template<class _RandomAccessIterator,class _Compare,class _Tp,class _Distance>
+void __fastcall __make_heap(_RandomAccessIterator __first,_RandomAccessIterator __last,_Compare __comp,_Tp*,_Distance*);
+#endif
+template<class _RandomAccessIterator,class _Compare>
+inline void make_heap(_RandomAccessIterator __first,_RandomAccessIterator __last,_Compare __comp) {
+    __make_heap(__first,__last,__comp,(typename iterator_traits<_RandomAccessIterator>::value_type*)0,(ptrdiff_t*)0);
+}
+#else
+template<class _RandomAccessIterator,class _Compare>
+void __fastcall make_heap(_RandomAccessIterator __first,_RandomAccessIterator __last,_Compare __comp);
+#endif
+template<class _RandomAccessIterator,class _Compare>
+void __fastcall sort_heap(_RandomAccessIterator __first,_RandomAccessIterator __last,_Compare __comp);
+#if !defined(FABLE_RETAIL_STLP_HEAP) && !defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
+template<class _RandomAccessIterator,class _Tp,class _Compare,class _Distance>
+void __fastcall __pop_heap(_RandomAccessIterator first,_RandomAccessIterator last,_RandomAccessIterator result,_Tp val,_Compare comp,_Distance*);
+#endif
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void __fastcall __partial_sort(_RandomAccessIter __first,_RandomAccessIter __middle,_RandomAccessIter __last,_Tp*,_Compare __comp) {
+    make_heap(__first,__middle,__comp);
+    for(_RandomAccessIter __i=__middle;__i<__last;++__i)
+        if(__comp(*__i,*__first))
+            __pop_heap(__first,__middle,__i,_Tp(*__i),__comp,(ptrdiff_t*)0);
+    sort_heap(__first,__middle,__comp);
 }
 #endif
 #ifdef FABLE_RETAIL_STLP_INTROSORT_LOOP
@@ -1893,6 +2207,22 @@ void FABLE_STLP_FASTCALL __pop_heap(_RandomAccessIterator first,_RandomAccessIte
                                     _Tp val,_Compare comp,_Distance*) {
     *result=*first;
     __adjust_heap(first,_Distance(0),_Distance(last-first),val,comp);
+}
+#endif
+#if defined(FABLE_RETAIL_STLP_HEAP) && defined(FABLE_RETAIL_STLP_MAKE_HEAP_BODY)
+// NF82 opt-in (row 0x004E1D68, the registered-TC table sort of pair<CCharString, CTCBase::CRegisteredTCInfo>): STLport 4.6 _heap.c
+// __make_heap(first, last, comp, _Tp*, _Distance*), out of line in retail and __fastcall (the /Gr algorithm TU: first/last in ecx/edx,
+// `ret 0Ch`), over the out-of-line __adjust_heap declared above (0x004DFDBB there).
+template<class _RandomAccessIterator,class _Compare,class _Tp,class _Distance>
+void FABLE_STLP_FASTCALL __make_heap(_RandomAccessIterator __first,_RandomAccessIterator __last,_Compare __comp,_Tp*,_Distance*) {
+    if(__last-__first<2) return;
+    _Distance __len=__last-__first;
+    _Distance __parent=(__len-2)/2;
+    while(true) {
+        __adjust_heap(__first,__parent,__len,_Tp(*(__first+__parent)),__comp);
+        if(__parent==0) return;
+        __parent--;
+    }
 }
 #endif
 #ifdef FABLE_RETAIL_STLP_REMOVE_COPY_IF
@@ -1973,6 +2303,101 @@ __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex,
 
 
 
+#endif
+
+#ifdef FABLE_RETAIL_STLP_SORT_HEAP_BODY
+// NF85 opt-in (rows 0x0077F190 / 0x00A41960 / 0x009B8170, the /Gr pair<CCharString, ..> sort TUs): STLport 4.6 _heap.c
+// `sort_heap(first, last, comp) { while (last - first > 1) pop_heap(first, last--, comp); }`, the out-of-line __fastcall COMDAT (first in
+// ecx, last in edx, the empty comparator pushed, `ret 4`), with _heap.h pop_heap and _heap.c __pop_heap_aux / __pop_heap inline over the
+// out-of-line __adjust_heap (declared here unless FABLE_RETAIL_STLP_HEAP / _DECAL_HEAP carry it). The text of the landed CCharString
+// instance 0x005E27F0.
+#if !defined(FABLE_RETAIL_STLP_HEAP) && !defined(FABLE_RETAIL_STLP_DECAL_HEAP)
+template<class _RandomAccessIterator,class _Distance,class _Tp,class _Compare>
+void __fastcall __adjust_heap(_RandomAccessIterator first,_Distance holeIndex,_Distance len,_Tp val,_Compare comp);
+#endif
+#if !defined(FABLE_RETAIL_STLP_HEAP)
+template<class _RandomAccessIterator,class _Tp,class _Compare,class _Distance>
+inline void __pop_heap(_RandomAccessIterator first,_RandomAccessIterator last,_RandomAccessIterator result,_Tp val,_Compare comp,_Distance*) {
+    *result=*first;
+    __adjust_heap(first,_Distance(0),_Distance(last-first),val,comp);
+}
+#endif
+#if !defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
+template<class _RandomAccessIterator,class _Tp,class _Compare>
+inline void __pop_heap_aux(_RandomAccessIterator first,_RandomAccessIterator last,_Tp*,_Compare comp) {
+    __pop_heap(first,last-1,last-1,_Tp(*(last-1)),comp,(ptrdiff_t*)0);
+}
+#endif
+template<class _RandomAccessIterator,class _Compare>
+inline void pop_heap(_RandomAccessIterator first,_RandomAccessIterator last,_Compare comp) {
+    __pop_heap_aux(first,last,(typename iterator_traits<_RandomAccessIterator>::value_type*)0,comp);
+}
+template<class _RandomAccessIterator,class _Compare>
+void __fastcall sort_heap(_RandomAccessIterator first,_RandomAccessIterator last,_Compare comp) {
+    while(last-first>1)
+        pop_heap(first,last--,comp);
+}
+#endif
+#if defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_FASTCALL_BODY) && !defined(FABLE_RETAIL_STLP_SORT_HEAP_BODY) && !defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
+// NF85 opt-in (rows 0x009B6D80 / 0x00A41260, the /Gr pair<CCharString, ..> sort TUs): STLport 4.6 _heap.c __pop_heap_aux(first, last,
+// _Tp*, comp) as the out-of-line __fastcall COMDAT (first in ecx, last in edx, the (T*)0 and the comparator pushed, `ret 8`), with
+// __pop_heap inline over the out-of-line __adjust_heap (declared here unless FABLE_RETAIL_STLP_HEAP / _DECAL_HEAP carry it).
+#if !defined(FABLE_RETAIL_STLP_HEAP) && !defined(FABLE_RETAIL_STLP_DECAL_HEAP)
+template<class _RandomAccessIterator,class _Distance,class _Tp,class _Compare>
+void __fastcall __adjust_heap(_RandomAccessIterator first,_Distance holeIndex,_Distance len,_Tp val,_Compare comp);
+#endif
+#if !defined(FABLE_RETAIL_STLP_HEAP)
+template<class _RandomAccessIterator,class _Tp,class _Compare,class _Distance>
+inline void __pop_heap(_RandomAccessIterator first,_RandomAccessIterator last,_RandomAccessIterator result,_Tp val,_Compare comp,_Distance*) {
+    *result=*first;
+    __adjust_heap(first,_Distance(0),_Distance(last-first),val,comp);
+}
+#endif
+template<class _RandomAccessIterator,class _Tp,class _Compare>
+void __fastcall __pop_heap_aux(_RandomAccessIterator first,_RandomAccessIterator last,_Tp*,_Compare comp) {
+    __pop_heap(first,last-1,last-1,_Tp(*(last-1)),comp,(ptrdiff_t*)0);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_MAKE_HEAP_FRONT_BODY
+// NF85 opt-in (row 0x004E36C3, the /Os registered-TC table sort; not with FABLE_RETAIL_STLP_PARTIAL_SORT_INLINE_MAKE_HEAP): STLport 4.6
+// _heap.c `make_heap(first, last, comp) { __make_heap(first, last, comp, _STLP_VALUE_TYPE(..), _STLP_DISTANCE_TYPE(..)); }`, the
+// out-of-line __fastcall front end (`push 0 ; push 0 ; push comp ; call __make_heap ; ret 4`) over the out-of-line __make_heap
+// (0x004E1D68 there; declared here unless FABLE_RETAIL_STLP_HEAP + _MAKE_HEAP_BODY give its body).
+#if !(defined(FABLE_RETAIL_STLP_HEAP) && defined(FABLE_RETAIL_STLP_MAKE_HEAP_BODY))
+template<class _RandomAccessIterator,class _Compare,class _Tp,class _Distance>
+void __fastcall __make_heap(_RandomAccessIterator __first,_RandomAccessIterator __last,_Compare __comp,_Tp*,_Distance*);
+#endif
+template<class _RandomAccessIterator,class _Compare>
+void __fastcall make_heap(_RandomAccessIterator __first,_RandomAccessIterator __last,_Compare __comp) {
+    __make_heap(__first,__last,__comp,(typename iterator_traits<_RandomAccessIterator>::value_type*)0,(ptrdiff_t*)0);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_FINAL_INSERTION_SORT_BODY
+// NF85 opt-in (row 0x004E415D, the /Os registered-TC table sort): STLport 4.6 _algo.c __final_insertion_sort(first, last, comp) as the
+// out-of-line __fastcall COMDAT (first in ecx, last in edx, the comparator pushed, `ret 4`) over the out-of-line __insertion_sort
+// (0x004E3686) and __unguarded_insertion_sort_aux (0x004DFD60), declared here unless FABLE_RETAIL_STLP_INSERTION_SORT_BODY /
+// _UNGUARDED_INSERTION_SORT_AUX_BODY give their bodies; __unguarded_insertion_sort is the inline _algo.c forwarder.
+#ifndef FABLE_RETAIL_STLP_INSERTION_SORT_BODY
+template<class _RandomAccessIter,class _Compare>
+void __fastcall __insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp);
+#endif
+#ifndef FABLE_RETAIL_STLP_UNGUARDED_INSERTION_SORT_AUX_BODY
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first,_RandomAccessIter __last,_Tp*,_Compare __comp);
+#endif
+template<class _RandomAccessIter,class _Compare>
+inline void __unguarded_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    __unguarded_insertion_sort_aux(__first,__last,(typename iterator_traits<_RandomAccessIter>::value_type*)0,__comp);
+}
+template<class _RandomAccessIter,class _Compare>
+void __fastcall __final_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    if(__last-__first>16) {
+        __insertion_sort(__first,__first+16,__comp);
+        __unguarded_insertion_sort(__first+16,__last,__comp);
+    }
+    else
+        __insertion_sort(__first,__last,__comp);
+}
 #endif
 
 }

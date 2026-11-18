@@ -1,40 +1,39 @@
-// NInventory::CTCInventoryBase::IsSpaceInInventoryForItem(long itemDefIndex) const -- whether the inventory can take one more of the
-// item: maps the item definition to its inventory category, finds the category with that index and asks it.
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF2ED, length 32 bytes (tail call). Ego_r.pdb + FableWin.pdb
-// ?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z (the catalog's GetItemDescription label here is a propagated
-// CItem name; the landed caller 0x00849700 binds this spelling).
-// Callees: ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z @ 0x005D97B0 (static `__fastcall`, the definition index in ecx; Ego_r.pdb +
-// FableWin.pdb), the SGI find_if over Categories @ 0x005C08C0 (`__fastcall` template: first in ecx, last in edx, the category index on
-// the stack; the landed 0x005BDF08 FindCategoryWithDefIndex model), ?IsSpaceInCategoryForItem@CCategory@NInventory@@QBE_NJ@Z
-// @ 0x005BF19C (Ego_r.pdb + FableWin.pdb; GetSlotWithItemsOfType then GetFirstEmptySlot inside).
-// Shape: retail does not compare the found category against end -- the result is used directly (the tail `jmp`, which VC7.1 emits
-// only with the found category as a named local; folding it into one expression pre-pushes itemDefIndex and calls).
-// Layout: retail CTCInventoryBase Categories {first, last, end} at +0x20 (the landed 0x005BDF08 model).
-// Leaf: IsSpaceInInventoryForItem
-#pragma optimize("s",on)
-class CTCInventoryItem { public:
-    static long __fastcall GetInventoryCategory(long itemDefIndex);   // 0x005D97B0
-};
+// NInventory::CTCInventoryBase::IsSpaceInInventoryForItem(long itemDefIndex) const -- whether the inventory can take one more of the item: finds
+//   the category of the item's inventory category index and asks it (CCategory::IsSpaceInCategoryForItem 0x005BF19C, tail jump)
+// Leaf: ?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF2ED, 32 bytes, `jmp` (the callee's `ret 4` returns for it); size-optimised TU.
+// Name: Ego_r.pdb 0x0062209A + FableWin.pdb ?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z (the landed caller 0x00849700 binds
+//   this spelling; the catalog's GetItemDescription label here is a propagated CItem name). Callee Ego_r.pdb + FableWin.pdb
+//   ?IsSpaceInCategoryForItem@CCategory@NInventory@@QBE_NJ@Z @ 0x005BF19C.
+// Callees: CTCInventoryItem::GetInventoryCategory 0x005D97B0 (static __fastcall), std::find_if<const CCategory*, CIsInventoryCategory>
+//   0x005C08C0 over Categories (+0x20), CCategory::IsSpaceInCategoryForItem 0x005BF19C.
+// Shape: as 0x005BEAD5 (byte twin): no end check; the found category is a named local, so the final call is a sibling `jmp`.
+// Port (NF88, round 7, q11159 binder: it bound 0x005C08C0 as the free stand-in ?FindCategoryWithDefIndex@NInventory@@YIPAVCCategory@1@PAV21@0J@Z):
+//   the local NInventory::CCategory / CTCInventoryBase / CCategoryVector models are gone: the row is the 0x005BEAD5 form (NInventory_CTCInventoryBase.h
+//   with ALL_ITEMS_CHAIN_PASS22 + BUILDINGTHING, CCategory.h NF88 opt-in FABLE_RETAIL_CCATEGORY_ITEMQUERIES, CTCInventoryItem.h CATEGORY,
+//   fable_algorithm.h find_if declared).
+#pragma optimize("s", on)
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
+#define FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+#define FABLE_RETAIL_CTCINVENTORYBASE_BUILDINGTHING
+#define FABLE_RETAIL_CCATEGORY_ITEMQUERIES
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
+#define FABLE_RETAIL_STLP_FIND_IF_INPUT
+#define FABLE_RETAIL_STLP_FIND_IF_CALLED_PASS23
+#include "engine/NInventory_CTCInventoryBase.h"
+#include "engine/CTCInventoryItem.h"
+#include "stlport/fable_algorithm.h"
+
 namespace NInventory {
-class CCategory { public:                               // 0x2C bytes
-    unsigned char _body[0x2C];
-    bool IsSpaceInCategoryForItem(long itemDefIndex) const;   // 0x005BF19C
-};
-CCategory* __fastcall FindCategoryWithDefIndex(CCategory* first, CCategory* last, long categoryDefIndex);   // 0x005C08C0
-struct CCategoryVector {                         // std::vector<CCategory> (12 bytes)
-    CCategory* _M_start;
-    CCategory* _M_finish;
-    CCategory* _M_end_of_storage;
-};
-class CTCInventoryBase { public:                        // retail 0x130 bytes
-    unsigned char   _pad00[0x20];
-    CCategoryVector Categories;                  // +0x20
-    bool IsSpaceInInventoryForItem(long itemDefIndex) const;
-};
 bool CTCInventoryBase::IsSpaceInInventoryForItem(long itemDefIndex) const
 {
-    CCategory* category = FindCategoryWithDefIndex(Categories._M_start, Categories._M_finish,
-                                                   CTCInventoryItem::GetInventoryCategory(itemDefIndex));
+    const CCategory* category = std::find_if(Categories.begin(), Categories.end(),
+                                             CIsInventoryCategory(CTCInventoryItem::GetInventoryCategory(itemDefIndex)));
     return category->IsSpaceInCategoryForItem(itemDefIndex);
 }
 }

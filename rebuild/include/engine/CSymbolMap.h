@@ -14,6 +14,11 @@
 #include "engine/CVectorMap.h"
 template<class V> class CCompareString { };
 #endif
+#if defined(FABLE_RETAIL_CSYMBOLMAP) && defined(FABLE_RETAIL_CSYMBOLMAP_NAMESUSED)
+// NF82 opt-in (row 0x009E5360 CSymbolMap::RemoveSymbolsOfGroupType): NamesUsed typed as the Ego_r.pdb
+// std::set<CCharString,std::less<CCharString>,std::allocator<CCharString> > (STLport 4.6 _set.h, 12 bytes in retail).
+#include "stlport/fable_map.h"
+#endif
 class CSymbolMap : public CBaseClassNonCopyable {
 public:
     CSymbolMap();
@@ -66,8 +71,16 @@ protected:
 protected:
     unsigned char SLONGMap[16];      // CVectorMap<CCharString,CSymbolInfo,CCompareString<CSymbolInfo> >
 #endif
+#if defined(FABLE_RETAIL_CSYMBOLMAP) && defined(FABLE_RETAIL_CSYMBOLMAP_NAMESUSED)
+public:
+    // Ego_r.pdb / FableWin.pdb ?RemoveSymbolsOfGroupType@CSymbolMap@@QAEXABVCCharString@@@Z (0x009E5360, public).
+    void RemoveSymbolsOfGroupType(const CCharString& group_name);
+protected:
+    std::set<CCharString> NamesUsed;                             // +0x14
+#else
     unsigned char NamesUsed[12];     // std::set<CCharString,std::less<CCharString>,std::allocator<CCharString> >
+#endif
     bool CheckForDuplicateSymbols;
 };
-FABLE_STATIC_ASSERT(sizeof(CSymbolMap)==0x24);
+FABLE_STATIC_ASSERT_AT(72, sizeof(CSymbolMap)==0x24);
 #endif

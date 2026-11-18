@@ -28,8 +28,15 @@ public:
     CWideString GetProfileName() const;                                  // 0x00851890
     void Confirm();                                                      // 0x00851920
     void Update(float deltaTime);                                        // FableWin.pdb ?Update@CVirtualKeyboard@@QAEXM@Z
+#ifdef FABLE_RETAIL_CVIRTUALKEYBOARD_INLINE_STATE
+    // NF76 opt-in (row 0x00599E3F NUISystem::CFrontEndManager::Update): the same FableWin.pdb accessors with their bodies, inline in retail
+    // (`cmp byte ptr [eax+5],bl` 0x00599F0C Done, `cmp byte ptr [eax+4],bl` 0x00599F15 Canceled; no out-of-line copy in Fable.exe).
+    bool IsDone() const { return Done; }
+    bool WasCanceled() const { return Canceled; }
+#else
     bool IsDone() const;                                                 // FableWin.pdb ?IsDone@CVirtualKeyboard@@QBE_NXZ
     bool WasCanceled() const;                                            // FableWin.pdb ?WasCanceled@CVirtualKeyboard@@QBE_NXZ
+#endif
     void Render(CIEngine& engine);                                       // FableWin.pdb ?Render@CVirtualKeyboard@@QAEXAAVCIEngine@@@Z
     CWideString            ProfileName;                                  // +0x00
     bool                   Canceled;                                     // +0x04
@@ -38,10 +45,10 @@ public:
     NUISystem::CEditBox*   PEntryBox;                                    // +0x0c
 };
 
-FABLE_STATIC_ASSERT(sizeof(CVirtualKeyboard) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, Canceled) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, PEntryScreen) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, PEntryBox) == 0xc);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CVirtualKeyboard) == 0x10);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CVirtualKeyboard, Canceled) == 0x4);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CVirtualKeyboard, PEntryScreen) == 0x8);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CVirtualKeyboard, PEntryBox) == 0xc);
 
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
@@ -62,12 +69,12 @@ struct CVirtualKeyboard {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CVirtualKeyboard) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, ProfileName_PStringData) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, Canceled) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, Done) == 0x5);
-FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, PEntryScreen) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, PEntryBox) == 0xc);
+FABLE_STATIC_ASSERT_AT(65, sizeof(CVirtualKeyboard) == 0x10);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CVirtualKeyboard, ProfileName_PStringData) == 0x0);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CVirtualKeyboard, Canceled) == 0x4);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CVirtualKeyboard, Done) == 0x5);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CVirtualKeyboard, PEntryScreen) == 0x8);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CVirtualKeyboard, PEntryBox) == 0xc);
 
 #endif // FABLE_RETAIL_CVIRTUALKEYBOARD
 

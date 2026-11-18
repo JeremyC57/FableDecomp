@@ -30,6 +30,12 @@ public:
  // PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z (FableWin 0x02DB2510, right after ??0CSortElement@...@QAE@KPAVCEngineSubPrimitiveBase@@@Z
  // 0x02DB2490); CSortElement is Ego_r.pdb's {SortValue, SubPrimitive} (8 bytes) with FableWin's (sort value, sub-primitive) constructor.
  void AddSubPrimitive(ESubPrimitiveType type,CEngineSubPrimitiveBase* subPrimitive,float distance,CEnginePrimitiveManager* manager);   // 0x00B84720
+#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_SORTGRANULARITY
+ // Retail opt-in (agentNF77, row 0x00B9E950): FableWin.pdb ?GetSortGranularity@CEngineSubPrimitiveRenderer@@QAEMXZ (no Ego_r.pdb or Fable.exe
+ // copy: inline), the sort-key step MaxSortDistance / 2^30 (the inverse of SetMaxSortDistance's multiplier): Render2DPrimitive reads
+ // `fld [renderer+10h] ; fmul [9.3132257e-10f]` in place (0x00B9EC73, float pool 0x012A41C0). No layout change.
+ float GetSortGranularity(){return MaxSortDistance*(1.0f/1073741824.0f);}
+#endif
  class CSortElement {public:unsigned long Key;void* Primitive;
   CSortElement(unsigned long sortValue,CEngineSubPrimitiveBase* subPrimitive):Key(sortValue),Primitive(subPrimitive){}};
 #else

@@ -56,7 +56,9 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonReleased(const CInputEvent& event);            // 0x00687B30
+protected:   // Ego_r.pdb / FableWin.pdb protected const (NF70 q10789)
+    bool IsEventButtonReleased(const CInputEvent& event) const;      // 0x00687B30
+public:
     bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& vector) const; // 0x00687D00
 };
 class CInputProcessStrafe : public CInputProcessGameBase {

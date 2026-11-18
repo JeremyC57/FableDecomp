@@ -7,7 +7,12 @@
 // the binary search written in place on ONE iterator variable -- a separate lower_bound helper copies its result
 // esi -> eax -- with `len / 2` = `cdq ; sub ; sar`, then the end/greater select); a weighted pick on GFFloatRandom: `r < a`,
 // else `r - a < 1.0f` (`fld a ; fsubr st(1)`), the four activity calls tail-merged into one `test al,al ; jne` loop test.
-// Leaf: SitMain@CAIStateGroup_BanditSitRoundCampfire
+// Leaf: ?SitMain@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ
+// NF79 (round 7, q10971): the local model's activity members made private as both PDBs spell them (Ego_r.pdb 0x0095D960 / 0x0095DA00 /
+//   0x0095DBF0 / 0x0095DD10 / 0x0095DEC0 and FableWin.pdb 0x02B7F370 / 0x02B7F440 / 0x02B7FA80 / 0x02B7F7B0 / 0x02B7F180 ?Idle / ?Eat /
+//   ?Singsong / ?Drink / ?SitMain@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ): binds Singsong 0x0093A7A0 under NF77's landed self
+//   spelling (was the public QAE), Idle / Eat / Drink likewise (NAME_FIXES for their self rows), and the self leaf is the private SitMain.
+//   The class has no shared header (the model stays local).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 #include "fable_compiler.h"
 class CTCBase;
@@ -149,6 +154,7 @@ struct CAIStateGroupSeed : CAIStateGroupBase {
 };
 
 struct CAIStateGroup_BanditSitRoundCampfire : CAIStateGroupSeed {
+private:                                        // Ego_r.pdb + FableWin.pdb: all five activity members are private (AAE)
     bool Idle();                                // 0x0093A540
     bool Eat();                                 // 0x0093A5C0
     bool Singsong();                            // 0x0093A7A0

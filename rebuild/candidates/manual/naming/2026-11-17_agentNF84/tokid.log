@@ -1,0 +1,10 @@
+engine/CArmourDef.h	CGameDefinitionManager_InitAndCompile_0044c72b	19751 lines	IDENTICAL
+engine/CAIStateGroupBase.h	global_ISTHINGALIVE_006961f0	16324 lines	IDENTICAL
+engine/CAIStateGroupBase.h	CAIStateGroupMinionSitAtHome_CAIStateGroupMinionSitAtHome_008ff35a	141 lines	IDENTICAL
+engine/CAIStateGroupBase.h	CAIStateGroupEarthTroll_CAIStateGroupEarthTroll_009003a0	138 lines	IDENTICAL
+engine/CAIStateGroupBase.h	CAIStateGroupMinionWorkInInn_GetFreeBench_0090bc60	15295 lines	IDENTICAL
+stlport/fable_deque.h	CSubtitleRenderer_SetText_00492973	16689 lines	IDENTICAL
+stlport/fable_map.h	NUISystemCManager_AddActionsListenIgnoreOnList_0041dc9d	3207 lines	IDENTICAL
+stlport/fable_map.h	COpinionReactionMaskDef_operator_0045dd05	2136 lines	IDENTICAL
+stlport/fable_map.h	stdRbtree_operator_0045dd2c	2041 lines	IDENTICAL
+stlport/fable_map.h	stdRbtree_insertunique_004619ba	2072 lines	IDENTICAL

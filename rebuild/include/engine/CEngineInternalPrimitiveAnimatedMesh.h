@@ -29,6 +29,12 @@ public:
 #endif
  virtual void CalcInterpolatedObjectTransform(CMatrix3x4&,float,bool)const;
  virtual void InitialiseSimulation(const C3DMeshInfo*,const C3DMesh2&);
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_SETUPMESH2D
+ // Retail opt-in (agentNF77, row 0x00BD1F70 CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive): Ego_r.pdb / FableWin.pdb
+ // ?SetupMesh2D@CEngineInternalPrimitiveAnimatedMesh@@QAE_NXZ (public; out of line in retail at 0x00BCF430: `mov ecx,ebp ; call`, 0x00BD2111).
+ // Declaration only: no layout change.
+ bool SetupMesh2D();                                                     // 0x00BCF430
+#endif
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_BONESCALINGS
  // Retail opt-in (chunk Q32, row 0x00BD2A90): Ego_r.pdb / FableWin.pdb ?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z
  // (public const; retail 0x00BD2A90, called from 0x00B83798). Being const, it fills the Cache through a mutable member (below).

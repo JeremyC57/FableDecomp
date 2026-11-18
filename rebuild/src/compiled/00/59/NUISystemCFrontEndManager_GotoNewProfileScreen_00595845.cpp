@@ -1,5 +1,5 @@
 // NUISystem::CFrontEndManager::GotoNewProfileScreen() -- start creating a new profile: flag the profile manager, refresh the profile names, play the new-profile sound and close the current screen
-// Leaf: ?GotoNewProfileScreen@CFrontEndManager@NUISystem@@QAEXXZ
+// Leaf: ?GotoNewProfileScreen@CFrontEndManager@NUISystem@@IAEXXZ
 // Retail: Fable.exe @ 0x00595845, 176 bytes, plain `ret`; callers 0x00599D8A, 0x0059A70A.
 // Body: CTBaseSingleton<CUserProfileManager>::Get() (0x0040D2A0) .UseNewProfileValues = true; a local
 // vector<CWideString> filled by GetProfileNames (0x005955AB) and destroyed by ~vector 0x00412130; m_bStartNewGame and
@@ -108,8 +108,7 @@ public:
     bool                    GoToKeyboard;                // +0xa0
 protected:
     void GetProfileNames(std::vector<CWideString>& names);   // 0x005955AB (Ego_r.pdb + FableWin.pdb: protected, IAE)
-public:
-    void GotoNewProfileScreen();
+    void GotoNewProfileScreen();                             // NF81 (q10982): Ego_r.pdb 0x006030E9 / FableWin.pdb 0x0201D7DE protected, IAE
 };
 void CFrontEndManager::GotoNewProfileScreen()
 {

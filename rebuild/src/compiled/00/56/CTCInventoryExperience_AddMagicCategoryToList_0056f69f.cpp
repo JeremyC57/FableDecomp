@@ -11,91 +11,52 @@
 // Layout: retail CTCInventoryExperience pTextViewport +0x1DC (landed ctor 0x0057832D).
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+// NF82 (q11002): moved off the row-local CWideString / CCharString / NUISystem::CComponent (slot padding) / CList / CViewport / CManager /
+//   CTCInventoryExperience models onto the shared headers (the 0x00573792 AddStatToListPC recipe of the same class): fable_string.h,
+//   engine/CTCInventoryExperience.h (FABLE_RETAIL_CTCINVENTORYEXPERIENCE + _PRIVATE: Ego_r.pdb private AddSoundAction /
+//   AddMagicCategoryToList, pTextViewport +0x1DC), engine/NUISystem_CManager.h (Ego_r.pdb CreateMenuEntryComponent(const CWideString&,
+//   float, float, const CCharString&, float, const CCharString, float, CCharString): the call now binds the PDB spelling
+//   ..MV5@MV5@@Z, was the stand-in ..MV5@M2@Z), NUISystem_CList.h (slot 152 AddScrollingChildAndSetOffsets), NUISystem_CViewport.h
+//   (slot 142 AddFakeChild) and NUISystem_CText.h (slot 144 SetValue(const CWideString&, bool, bool) on the created components,
+//   cast as the sibling rows do).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-
-class CWideString {
-public:
-    void* m_pStringData;
-    ~CWideString();                                   // 0x0099B510
-};
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();                                   // 0x0099EAE0
-    CWideString ToWideString() const;                 // 0x0099E480
-};
-
-namespace NUISystem {
-class CComponent;
-}
-#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
-#include "engine/CCountedPointer.h"
-typedef CCountedPointer<NUISystem::CComponent> CComponentPointer;   // (T*) ctor 0x00429C15 (called), ~CCountedPointer 0x004291DE
-
-#define V10(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3(); virtual void n##4(); \
-    virtual void n##5(); virtual void n##6(); virtual void n##7(); virtual void n##8(); virtual void n##9();
-namespace NUISystem {
-struct CGUIElement;
-class CComponent { public:
-    V10(v0) V10(v1) V10(v2) V10(v3) V10(v4)
-    virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54();
-    virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58();
-    virtual void AddChild(const CComponentPointer& child);    // slot 59 (+0xEC)
-    V10(v6) V10(v7) V10(v8) V10(v9) V10(w0) V10(w1) V10(w2) V10(w3)
-    virtual void w40(); virtual void w41();
-    virtual void AddViewportChild(CComponent* child); // slot 142 (+0x238)
-    virtual void w43();
-    virtual void SetText(const CWideString& text, bool a, bool b);   // slot 144 (+0x240)
-    virtual void w45(); virtual void w46(); virtual void w47(); virtual void w48(); virtual void w49();
-    virtual void w50(); virtual void w51();
-    virtual void AddItem(const CComponentPointer& item);      // slot 152 (+0x260)
-};
-class CList : public CComponent { public:
-};
-class CViewport : public CComponent { public:
-};
-class CManager { public:
-    CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-    CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
-                                         float c, CCharString d, float e, CCharString f);   // 0x00428494
-    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
-};
-}
-
-class CTCInventoryExperience { public:
-    void*                 __vftable;                  // +0x00
-    unsigned char         _pad_0x04[0x1D8];
-    NUISystem::CViewport* pTextViewport;              // +0x1DC
-private:
-    // Ego_r.pdb / FableWin.pdb ?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z (private); landing 2026-11-03f respell (was public QAE).
-    void AddSoundAction(NUISystem::CComponent* element, CCharString soundName);   // 0x0056F615
-    // Ego_r.pdb / FableWin.pdb ?AddMagicCategoryToList@CTCInventoryExperience@@AAE... (private, as the row itself).
-    void AddMagicCategoryToList(NUISystem::CList* list, CWideString title, CCharString definition, NUISystem::CList* subList,
-                                CWideString description, CCharString icon);
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCINVENTORYEXPERIENCE
+#define FABLE_RETAIL_CTCINVENTORYEXPERIENCE_PRIVATE
+#define FABLE_RETAIL_CMANAGER
+#define FABLE_RETAIL_CTEXT
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CTCInventoryExperience.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/NUISystem_CList.h"
+#include "engine/NUISystem_CViewport.h"
+#include "engine/NUISystem_CText.h"
 
 void CTCInventoryExperience::AddMagicCategoryToList(NUISystem::CList* list, CWideString title, CCharString definition,
                                                     NUISystem::CList* subList, CWideString description, CCharString icon)
 {
     NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
-    CComponentPointer entry(frontEnd->CreateMenuEntryComponent(title, 0.0f, 0.0f, "UI_WEAPON_MENU_ENTRY_BRANCH_TEMPLATE_NEW",
-                                                               0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
-    CComponentPointer subPointer(subList);
+    CCountedPointer<NUISystem::CComponent> entry(frontEnd->CreateMenuEntryComponent(title, 0.0f, 0.0f, "UI_WEAPON_MENU_ENTRY_BRANCH_TEMPLATE_NEW",
+                                                                                    0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
+    CCountedPointer<NUISystem::CComponent> subPointer(subList);
     AddSoundAction(entry.operator->(), "SND_TEXT_QST_TUTORIAL_GUI_EXPSPEND_SUB_ALL");
-    CComponentPointer definitionPointer(NUISystem::CManager::GetInstance()->CreateComponent(definition, false));
+    CCountedPointer<NUISystem::CComponent> definitionPointer(NUISystem::CManager::GetInstance()->CreateComponent(definition, false));
     entry->AddChild(subPointer);
     entry->AddChild(definitionPointer);
-    CComponentPointer descriptionPointer(frontEnd->CreateComponent("UI_EXPSPEND_CAT_DESC", false));
-    descriptionPointer->SetText(icon.ToWideString(), true, true);
+    CCountedPointer<NUISystem::CComponent> descriptionPointer(frontEnd->CreateComponent("UI_EXPSPEND_CAT_DESC", false));
+    static_cast<NUISystem::CText*>(descriptionPointer.operator->())->SetValue(icon.ToWideString(), true, true);
     entry->AddChild(descriptionPointer);
     if (pTextViewport)
-        pTextViewport->AddViewportChild(descriptionPointer.Data);
-    CComponentPointer subtitlePointer(frontEnd->CreateComponent("UI_ONE_OFF_SUBTITLE", false));
-    subtitlePointer->SetText(description, true, true);
+        pTextViewport->AddFakeChild(descriptionPointer.Data);
+    CCountedPointer<NUISystem::CComponent> subtitlePointer(frontEnd->CreateComponent("UI_ONE_OFF_SUBTITLE", false));
+    static_cast<NUISystem::CText*>(subtitlePointer.operator->())->SetValue(description, true, true);
     entry->AddChild(subtitlePointer);
-    list->AddItem(entry);
+    list->AddScrollingChildAndSetOffsets(entry);
 }

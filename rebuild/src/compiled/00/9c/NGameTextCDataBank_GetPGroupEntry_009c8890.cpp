@@ -1,82 +1,66 @@
-// NGameText::CDataBank::GetPGroupEntry -- load/materialise a group and retain it.
-// Leaf: GetPGroupEntry
-// Retail009C8890,247 bytes. Native Entries1E0 vs donor254; two native3C resource lists at168/1A4.
-#include "fable_compiler.h"
-#define CDataBank CDataBankLegacy
-#define CIVCountedPointer CIVCountedPointerLegacy
-#include "fable_game_text_bank.h"
-#undef CIVCountedPointer
-#undef CDataBank
-#define CResource CResourcePdb
-#define CResourceList CResourceListPdb
-#include "engine/CResource.h"
-#include "engine/CResourceList.h"
-#undef CResourceList
-#undef CResource
-#include "engine/CIVCountedPointeeBase.h"
-class CResourceList;
-class CResource { public:
- virtual ~CResource();virtual void Delete()const;
- virtual bool UnloadResource();virtual unsigned long GetUnloadableMemory()const;
- virtual bool IsResourceLoaded()const;virtual void OnResourceLoaded();
- virtual bool CanAbortResourceLoad(long)const;virtual void OnResourceLoadAborted();
- virtual unsigned long GetDebugMemoryInUse()const;virtual void ResetDebugMemoryInUse();
- unsigned long IVRefCount;class CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;
-private:
- void ListRemove(); //009FBFB0
-public:
-private:
- void ListInsert(CResource*a0, CResource*a1); //009FBF90
-public:
- void Touch();
-};
-class CResourceList { public:
- void* VTable;CResource Head;unsigned long ResourceCount;long AllocatedMemory,MaximumMemory;unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;
- bool MakeFreeSpace(unsigned long); //009FC4F0
-};
-FABLE_FORCEINLINE void CResource::Touch(){if(ResourceList&&LastUsedFrame!=ResourceList->CurrentFrame){ListRemove();ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);LastUsedFrame=ResourceList->CurrentFrame;}}
-template<class T>struct CArrayNative {T* First;T* Last;T* End;T& operator[](unsigned long n)const{return First[n];}};
-template<class T>class CIVCountedPointer { public:
- T* Object;
- CIVCountedPointer(T* p):Object(p){if(Object)++const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount;}
- CIVCountedPointer(const CIVCountedPointer& p):Object(p.Object){if(Object)++const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount;}
- ~CIVCountedPointer(){if(Object&&!--const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount)Object->Delete();}
-};
-class CBankFileAsyncData { public:public:
-    bool IsFinished() const;   // 0x009D54E0
-}; //009D54E0
-class CBankFile
-{
-public:
-    unsigned long GetEntryDataType(unsigned long) const;   // 0x009CC210
-};
-class CBankFileAsync : public CBankFile
-{
-public:
-};
+// NGameText::CDataBank::GetPGroupEntry(unsigned long id, bool allow_pending) const -- the text group an entry id names: flush the pending bank reads, and when the group is not loaded (and pending groups are not allowed) start loading it and return null; otherwise build it (a first load, then a resource-cache trim; or a finished read), touch it in its resource list and return a counted pointer to it
+// Leaf: ?GetPGroupEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCGroupEntry@NGameText@@@@K_N@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8890, 247 bytes, thiscall (`ret 0Ch`: hidden result, id, allow_pending).
+// Name: Ego_r.pdb (0x00B16130) / FableWin.pdb (0x02F6FBE0) carry the Leaf symbol; called from 0x0047EEE4, 0x0048F6BD, 0x0054FBC0, 0x00594FDB,
+//   0x00595CC1, 0x005EB180, 0x00639BA0 and others (callers.py).
+// agentNF69 (q10858): ported onto engine/NGameText_CDataBank.h. docs/journal/2026-11/EGOD_FINDINGS.md section 5 settles CGroupEntry: a class
+//   with public base CResource at offset 0 (Ego_d LF_BCLASS; Ego_r's 28 bytes of base, Entries at +28), so the group's TouchResource (the
+//   LRU list walk) is CResource's. hdr/ overlay opt-in FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY (inside FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT):
+//   CGroupEntry : CResource (Entries +0x1C, PFileData +0x28, Owner +0x30); CDataBankGroupEntry's PGroup (+0) and its private const
+//   BeginLoading 0x009C80F0 / BuildGroup 0x009C8700; CDataBank's second base CResourceBank at +0x164 (RTTI; ResourceList +0x168) and
+//   BeginLoadingGroup 0x009C8220. Was a local model of CResource / CResourceList / CIVCountedPointer / CBankFile / CDataBank under renaming
+//   macros, with the made-up callee spellings FlushAsyncUpdates / QueueGroupLoad and public non-const BeginLoading / BuildGroup.
+// Callees (both PDBs' spellings): CBankFile::GetEntryDataType 0x009CC210, CBankFileAsync::AsyncUpdatePending 0x009D68B0,
+//   CBankFileAsyncData::IsFinished 0x009D54E0, CDataBank::BeginLoadingGroup 0x009C8220, CDataBankGroupEntry::BeginLoading 0x009C80F0 /
+//   BuildGroup 0x009C8700, CResourceList::MakeFreeSpace 0x009FC4F0, CResource::ListRemove 0x009FBFB0 / ListInsert 0x009FBF90.
+// Shape: BeginLoadingGroup is defined here as in its source file (GetGroupInfo, then the entry's BeginLoading with the bank): VC7.1 calls it
+//   out of line on the not-loaded path and expands it on the first-load path, as retail does.
+//   That helper body, graded on its own (q.py 0x009C8220, leaf ?BeginLoadingGroup@CDataBank@NGameText@@QBEXK@Z), is RELOCATION_MATCH too. CResource::TouchResource (FableWin.pdb, inline)
+//   is engine/CResourceList.h's forced-inline body; the result is CIVCountedPointer's converting constructor (AddRef `inc [edi+4]`).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+#define FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCELIST_MAKEFREESPACE
+#define FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+#include "fable_string.h"
+#include "engine/NGameText_CDataBank.h"
 
 namespace NGameText {
-class CDataBank;class CDataBankGroupEntry;
-class CGroupEntry:public CResource { public:virtual bool UnloadResource();CArrayNative<long> Entries;CBankFileAsyncData* PFileData;void* FileDataInfo;CDataBankGroupEntry* Owner;};
-class CDataBankGroupEntry { public:CGroupEntry* PGroup;void BeginLoading(unsigned long,CDataBank*);/*009C80F0*/void BuildGroup();/*009C8700*/};
-class CDataBank : public CBankFileAsync { public:
- unsigned char BankAsyncState[0x168];CResourceList ResourceCache,OtherResourceCache;CArrayNative<CDataBankGroupEntry*> Entries;
- void FlushAsyncUpdates()const; //009D68B0: invokes009D6730 then009D5A90
- void QueueGroupLoad(unsigned long)const; //009C8220 out-of-line BeginLoadingGroup; manifest text label incorrect
- CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long,bool)const;
- FABLE_FORCEINLINE void BeginLoadingGroup(unsigned long n)const{if(GetEntryDataType(n)==1&&Entries[n])Entries[n]->BeginLoading(n,const_cast<CDataBank*>(this));}
-};
-CIVCountedPointer<const CGroupEntry> CDataBank::GetPGroupEntry(unsigned long n,bool allowPending)const {
- if(GetEntryDataType(n)==1){
- CDataBankGroupEntry* entry=Entries[n];
- if(entry){
- FlushAsyncUpdates();
- if(!(entry->PGroup&&(!entry->PGroup->PFileData||entry->PGroup->PFileData->IsFinished()))&&!allowPending){QueueGroupLoad(n);return CIVCountedPointer<const CGroupEntry>(0);}
- if(!entry->PGroup){BeginLoadingGroup(n);entry->BuildGroup();const_cast<CResourceList&>(ResourceCache).MakeFreeSpace(0);}
- else if(entry->PGroup->PFileData)entry->BuildGroup();
- entry->PGroup->Touch();
- return CIVCountedPointer<const CGroupEntry>(entry->PGroup);
- }}
- return CIVCountedPointer<const CGroupEntry>(0);
+void CDataBank::BeginLoadingGroup(unsigned long id) const
+{
+    const CDataBankGroupEntry* entry = GetGroupInfo(id);
+    if (entry)
+        entry->BeginLoading(id, const_cast<CDataBank&>(*this));
+}
+
+CIVCountedPointer<const CGroupEntry> CDataBank::GetPGroupEntry(unsigned long id, bool allow_pending) const
+{
+    const CDataBankGroupEntry* entry = GetGroupInfo(id);
+    if (entry) {
+        const_cast<CDataBank*>(this)->AsyncUpdatePending();
+        bool loaded = !entry->PGroup.IsNull() && (entry->PGroup->PFileData.IsNull() || entry->PGroup->PFileData->IsFinished());
+        if (!loaded && !allow_pending) {
+            BeginLoadingGroup(id);
+            return CIVCountedPointer<const CGroupEntry>();
+        }
+        if (entry->PGroup.IsNull()) {
+            BeginLoadingGroup(id);
+            entry->BuildGroup();
+            const_cast<CDataBank*>(this)->ResourceList.MakeFreeSpace(0);
+        }
+        else if (!entry->PGroup->PFileData.IsNull())
+            entry->BuildGroup();
+        entry->PGroup->TouchResource();
+        return entry->PGroup;
+    }
+    return CIVCountedPointer<const CGroupEntry>();
 }
 }

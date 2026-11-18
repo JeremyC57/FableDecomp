@@ -1,5 +1,8 @@
 // CTCHeroStats::Vomit() -- makes the hero throw up: plays the puke into/loop/out-of action for a drunkenness-scaled random time, counts it, posts the deed and empties the beer reservoir
 // Leaf: Vomit
+// NF84 (round 7, q11050 binder): the local CThingCreatureBase model's IsFreeToPerformAction respelt in place to the Ego_r.pdb /
+//   FableWin.pdb form ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z (const, by const reference; the
+//   landed self row 0x00662210 defines it), as NF83 did in 0x00662210 itself; the call passes the action by reference.
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
@@ -52,7 +55,7 @@ class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { 
 };
 
 class CThingCreatureBase : public CThing { public:
-    bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
+    bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210
     bool SetCurrentAction(const CCreatureActionBase& action);        // 0x006644F0
 };
 class CThingPlayerCreature : public CThingCreatureBase { public:};
@@ -139,7 +142,7 @@ void CTCHeroStats::Vomit()
     CTCHeroOnlineScoreboard* scoreboard;
     ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
     scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)15, (float)NumberOfVomits, false);
-    if (hero->IsFreeToPerformAction(&action)) {
+    if (hero->IsFreeToPerformAction(action)) {
         FrameToVomit = -1;
         if (hero) {
             CTCHeroOpinionDeedLog* log;

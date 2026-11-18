@@ -23,6 +23,9 @@ class CMaterialDef;class CThing;
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 class CArmourDef;class CThingGameObject;
 #endif
+#if defined(FABLE_RETAIL_CHITPARAMETERS_SETASMODIFIEDBYARMOUR) && !defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT)
+class CArmourDef;                          // NF67 opt-in below: SetAsModifiedByArmour's parameter type
+#endif
 // Original Ego_r TPI0x2af3a; native OnHit proves offsets0,1,2,e,1a..28,48,50,58.
 // STLport replaces both 16-byte donor containers with12-byte containers: native sizeof60.
 #if defined(FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP) || defined(FABLE_RETAIL_CHITPARAMETERS_SPECIALABILITY)
@@ -135,6 +138,12 @@ public:
 void SetHitNegated(bool value){HitNegated=value;}
 void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
 #endif
+#if defined(FABLE_RETAIL_CHITPARAMETERS_SETASMODIFIEDBYARMOUR) && !defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT)
+    // NF67 opt-in (round 7, row 0x00869020 itself): Ego_r.pdb / FableWin.pdb
+    // ?SetAsModifiedByArmour@CHitParameters@@QAEXABVCThing@@AAV?$CDefPointer@$$CBVCArmourDef@@@@@Z (public, the same declaration
+    // FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT carries, without that opt-in's other members). Declaration only: no layout change.
+    void SetAsModifiedByArmour(const CThing&,CDefPointer<const CArmourDef>&);   // 0x00869020
+#endif
     bool IsMoveBackOnHit() const { return MoveBack; }
     bool IsCreateDustParticleEffectOnHit() const { return CreateDustParticleEffectOnHit; }
 #ifdef FABLE_RETAIL_CHITPARAMETERS_EFFECTONHIT
@@ -165,6 +174,19 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
     CHitParameters();                                                    // 0x007A3BC0
     ~CHitParameters();                                                   // 0x00789358
     void SetThingHitting(CThing& thing);                                 // 0x008685F0
+#endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_COPY_CTOR
+    // NF78 opt-in (round 7, row 0x00812170): Ego_r.pdb ??0CHitParameters@@QAE@ABV0@@Z (0x00807C70; retail 0x00812170, called by
+    // NEntityEvents::CEventHitBase's constructor 0x00811760): the memberwise copy, out of line. Declaration only: no layout change.
+    // Needs FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS + _DAMAGEMAP + _AUGMENTATIONS (the real member types).
+public:
+    CHitParameters(const CHitParameters& other);                         // 0x00812170
+#endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_CLEARALLDAMAGE
+    // NF81 opt-in (round 7, q10986 binder, row 0x00868A40): Ego_r.pdb 0x0083EC50 / FableWin.pdb 0x02810E60 ?ClearAllDamage@CHitParameters@@QAEXXZ
+    // (public; retail 0x00868A40, out of line: `DamageMap.clear()`). Needs FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP. Declaration only: no layout change.
+public:
+    void ClearAllDamage();                                               // 0x00868A40
 #endif
 #ifdef FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR
     // Retail opt-in (wf17, row 0x00854DD0 CCreatureAction_SpiritAttack::PerformAction): Ego_r.pdb

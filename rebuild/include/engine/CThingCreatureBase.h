@@ -289,6 +289,12 @@ public:
     }
     virtual void OnHit(CHitParameters&);
     bool SetCurrentAction(const CCreatureActionBase&);
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETCURRENTACTION_COUNTED
+    // NF83 opt-in (round 7, row 0x008D6C80 NCreatureMode::CModeSitBase::FrameUpdate): Ego_r.pdb 0x005429A0 / FableWin.pdb 0x01D94200
+    // ?SetCurrentAction@CThingCreatureBase@@QAE_NABV?$CCountedPointer@VCCreatureActionBase@@@@@Z, out of line in retail at 0x00664670
+    // (the landed 0x00712B60 binds it so). Declaration only: no layout change.
+    bool SetCurrentAction(const CCountedPointer<CCreatureActionBase>&);  // 0x00664670
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_WORLDUPDATE
     // NF66 opt-in (row 0x006666A0): Ego_r.pdb / FableWin.pdb ?WorldUpdate@CThingCreatureBase@@UAE_NXZ (the CThing slot-19 override,
     // retail 0x006666A0) and the protected ?UpdateBodyReorientation@CThingCreatureBase@@IAEXXZ (out of line at 0x006622D0).
@@ -345,6 +351,11 @@ public:
     // ?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ, out of line in retail at 0x00663340
     // (hidden CDefPointer result; landed callers 0x006D6EA0 / 0x006D7E10 / 0x006D7E70). Declaration only: no layout change.
     CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;        // 0x00663340
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CLEARCURRENTACTION
+    // NF79 opt-in (row 0x008916A0 CGameScriptInterface::SheatheHeroWeapons): Ego_r.pdb 0x0053E2D0 / FableWin.pdb 0x01D9E6D0
+    // ?ClearCurrentAction@CThingCreatureBase@@QAEXXZ, out of line in retail at 0x006633A0 (landed row). Declaration only: no layout change.
+    void ClearCurrentAction();                                           // 0x006633A0
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CLEARQUEUED
     // Nested opt-in (chunk 765, row 0x00663600): Ego_r.pdb / FableWin.pdb ?ClearQueuedActions@CThingCreatureBase@@QAEXXZ, out of line in
@@ -552,6 +563,18 @@ class CThingBodyReorienter;
 #pragma pack(push, 1)
 class CThingCreatureBase {
 public:
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ISFREETOPERFORMACTION
+    // NF83 opt-in (round 7, row 0x00969AE0 CAIStateGroup_SleepOnFloor::OnReplace) for the flattened view, the same declaration as the
+    // retail branch: Ego_r.pdb 0x0053D090 / FableWin.pdb 0x01D9E350 ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z,
+    // out of line in retail at 0x00662210. Declaration only; no layout change.
+    bool IsFreeToPerformAction(const CCreatureActionBase&) const;       // 0x00662210
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_CLEARCURRENTACTION
+    // NF83 opt-in (round 7, row 0x00692DB0 CCreatureActionBase::EditUpdate) for the flattened view, the same declaration as the retail
+    // branch's CLEARCURRENTACTION: Ego_r.pdb 0x0053E2D0 / FableWin.pdb 0x01D9E6D0 ?ClearCurrentAction@CThingCreatureBase@@QAEXXZ, out of
+    // line in retail at 0x006633A0. Declaration only; no layout change.
+    void ClearCurrentAction();                                           // 0x006633A0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ANIMSPEED
     // NF55 opt-in (2026-11-17, row 0x00692BC0 CCreatureActionBase::GetFrameUpdateTime) for the flattened view, the same declaration as the
     // retail branch's UPDATEANIMATION block: Ego_r.pdb / FableWin.pdb ?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ, out of line

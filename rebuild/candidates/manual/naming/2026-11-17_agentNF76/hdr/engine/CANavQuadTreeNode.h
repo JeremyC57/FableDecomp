@@ -1,0 +1,182 @@
+#ifndef FABLE_ENGINE_CANAVQUADTREENODE_H
+#define FABLE_ENGINE_CANAVQUADTREENODE_H
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE
+#ifndef FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_C2DBOXF
+#endif
+// Retail opt-in (2026-11-03, chunk 721 row 0x00A1CEB0 CNavigatorAStar::Initialise; extended by chunk 736): the polymorphic retail class. RTTI
+// .?AVCANavQuadTreeNode@@ vtable 0x0129CBBC. Slots as the landed CNavNavigableLeafNode rows (0x00A76490, 0x00A76B90): 0 dtor,
+// 1/2 GetNeighbours (overloads in reverse order), 3 HasNeighbours, 4 IsNeighbourOf, 5 GetRegionID (+0x14), 6 GetNodeType
+// (+0x18; Ego_r ?GetNodeType@...@@UBE?AW4ENavQuadTreeNodeType@@XZ), 7 GetRegion, 8 GetPreferabilityCost. Members: Ego_r names
+// and offsets (Position +4, QuadTreeLevel +0xc, NavLayer +0xd, LeafNode +0xe, Blocked +0xf), sizeof 0x10.
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "engine/C2DVector.h"
+#include "engine/C2DBoxF.h"
+#include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR
+#include "engine/CBaseClassNonCopyable.h"
+#endif
+class CNavRegion;
+class CAFile;
+template <class T, int N> class CSmallVector;
+#if defined(FABLE_RETAIL_CANAVQUADTREENODE_SAVETOFILE) || defined(FABLE_RETAIL_CANAVQUADTREENODE_LOADSLOTS)
+// (LOADSLOTS: chunk 2054, row 0x00A7AF60 CNavQuadTree::LoadFromFile needs the same enum and slots 16..22, see below.)
+#include "stlport/fable_map.h"
+enum ENavQuadTreeNeighbours { };                     // FableWin.pdb W4ENavQuadTreeNeighbours (enumerators not recovered)
+#endif
+// chunk 736: the per-level node side table GetSize reads (float[] @ 0x0129DCAC: 32, 16, 8, 4, 2, 1, 0.5); no PDB data symbol
+// (descriptive; the spelling of the landed 0x00A76640 / 0x00A76CC0 rows).
+extern const float g_QuadTreeLevelSizes[];
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_ORIGINAL_ACCESS
+// Both original PDB enum records; native GetNodeType returns0..3.
+enum ENavQuadTreeNodeType { NAV_QUAD_TREE_NON_LEAF_NODE=0, NAV_QUAD_TREE_NAVIGABLE_NODE=1, NAV_QUAD_TREE_BLOCKED_NODE=2, NAV_QUAD_TREE_SWITCHABLE_NODE=3 };
+#else
+enum ENavQuadTreeNodeType {                          // Ego_r enum; enumerator names descriptive (values from the landed rows)
+    NAV_NODE_QUADTREE = 0, NAV_NODE_NAVIGABLE = 1, NAV_NODE_BLOCKED = 2, NAV_NODE_SWITCHABLE = 3
+};
+#endif
+class CANavQuadTreeNode
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR
+    : public CBaseClassNonCopyable
+#endif
+{
+public:
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR
+    // NF76 opt-in (row 0x00A79930, the generator CNavSwitchableLeafNode ctor): RTTI .?AVCANavQuadTreeNode@@ : CBaseClassNonCopyable
+    // (ghidra_out/rtti_bases.tsv; its out-of-line ctor 0x0099A2F0 is called first, 0x00A79939 / 0x00A772D9) and Ego_r.pdb
+    // ??0CANavQuadTreeNode@@QAE@ABVC2DVector@@EE@Z, inline in those ctors (Position, level, layer, LeafNode = true, Blocked = false in
+    // init-list order: the landed out-of-line copy 0x00A76370). Parameter names Ego_d.pdb. The base adds no member (vptr only).
+    CANavQuadTreeNode(const C2DVector& pos, unsigned char quad_tree_level, unsigned char nav_layer)
+        : Position(pos), QuadTreeLevel(quad_tree_level), NavLayer(nav_layer), LeafNode(true), Blocked(false) { }
+#endif
+    virtual ~CANavQuadTreeNode();                                                        // slot 0
+    virtual const CSmallVector<const CANavQuadTreeNode*, 8>* GetNeighbours() const;      // slot 2
+    virtual CSmallVector<const CANavQuadTreeNode*, 8>* GetNeighbours();                  // slot 1
+    virtual bool HasNeighbours() const;                                                  // slot 3
+    virtual bool IsNeighbourOf(const CANavQuadTreeNode*) const;                          // slot 4
+    virtual long GetRegionID() const;                                                    // slot 5 (+0x14)
+#ifdef FABLE_RETAIL_NAV_NODETYPE_ORIGINAL_POLYMORPHISM_PASS23
+    // Both original PDBs: pure introducing slot24. Native base table129cbbc+18 is purecall.
+    virtual ENavQuadTreeNodeType GetNodeType() const=0;
+#else
+    virtual ENavQuadTreeNodeType GetNodeType() const;
+#endif                                    // slot 6 (+0x18)
+    virtual const CNavRegion* GetRegion() const;                                         // slot 7
+    virtual unsigned char GetPreferabilityCost() const;                                  // slot 8
+    // chunk 736 (rows 0x00A78E20 / 0x00A7A0A0): slots 9..22 of 0x0129CBBC / 0x0129DCD4 in PDB order (Ego_r CNavQuadTreeNode
+    // MakeRegion 0xBBBCD0, AddNavigable... 0xBBBD30, RemoveRegionZero 0xBBBD90 = retail 0x00A75FC0 / 0x00A76010 / 0x00A76060,
+    // slots 12 / 13 / 14: SetUpRegions calls [vtbl+30h] / [vtbl+34h] / [vtbl+38h]). Ego_r spells the protected ones `M`.
+    virtual bool IsSwitchable() const;                                                   // slot 9
+    virtual bool IsSwitchableOn(unsigned __int64) const;                                 // slot 10
+protected:
+    // chunk 747 (row 0x00A770B0 CNavQuadTree::GetNodeAt): retail calls the protected slot 11 from CNavQuadTree (`call [edx+2Ch]`
+    // on the cell node), so the original grants CNavQuadTree access.
+    friend class CNavQuadTree;
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_FRIENDNODE
+    // Nested opt-in (chunk 768, row 0x00A76770 CNavQuadTreeNode::GetLeafNodeAt): the quad node recurses through its children's
+    // protected slot 11 (`jmp [eax+2Ch]` on TLNode..BRNode, CANavQuadTreeNode*), so the original grants CNavQuadTreeNode access too.
+    friend class CNavQuadTreeNode;
+#endif
+    virtual const CANavQuadTreeNode* GetLeafNodeAt(const C2DVector&) const;              // slot 11
+public:
+    virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);          // slot 12 (+0x30)
+    virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);  // slot 13
+    virtual bool RemoveRegionZero();                                                     // slot 14 (+0x38)
+    virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const;   // slot 15
+    // slots 16..22 (SetUpNeighboursWithLeaf, SetUpNeighbours, CalculateChildrenNeighbours, RemoveNeighbours, AddToIndexTable,
+    // SaveToFile, ConvertIndexesToPointers) are not called through this model; not declared.
+#if defined(FABLE_RETAIL_CANAVQUADTREENODE_SAVETOFILE) || defined(FABLE_RETAIL_CANAVQUADTREENODE_LOADSLOTS)
+    // LOADSLOTS (chunk 2054, row 0x00A7AF60 CNavQuadTree::LoadFromFile): the same slots; LoadFromFile calls slot 22 through the base
+    // pointer (`call [eax+58h]` at 0x00A7B799; CNavQuadTree is a friend).
+    // Nested opt-in (chunk Q22, row 0x00A78B20 CNavQuadTree::SaveToFile): slots 16..22 in PDB order, all protected in FableWin.pdb
+    // (`MAE` / `MBE`: ?SetUpNeighboursWithLeaf@CANavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAV1@@Z, ?SetUpNeighbours@..@@MAEX..,
+    // ?CalculateChildrenNeighbours@..@@MAEXXZ, ?RemoveNeighbours@..@@MAEXXZ, ?AddToIndexTable@..@@MBEXAAJAAV?$map@PBVCANavQuadTreeNode@@J..,
+    // ?SaveToFile@CANavQuadTreeNode@@MBEXAAVCAFile@@ABV?$map@..@@_NABVC2DVector@@@Z, ?ConvertIndexesToPointers@..@@MAEXABV?$map@JPAV..).
+    // The friend CNavQuadTree calls slots 20 / 21 (`call [edx+50h]` 0x00A78CA0, `call [edx+54h]` 0x00A78CFE). The neighbour-side
+    // enum's enumerators are not recovered (no PDB enum record on disk); declared without them.
+protected:
+    virtual void SetUpNeighboursWithLeaf(enum ENavQuadTreeNeighbours, CANavQuadTreeNode*);                  // slot 16
+    virtual void SetUpNeighbours(enum ENavQuadTreeNeighbours, CANavQuadTreeNode*);                          // slot 17
+    virtual void CalculateChildrenNeighbours();                                                             // slot 18
+    virtual void RemoveNeighbours();                                                                        // slot 19
+    virtual void AddToIndexTable(long&, std::map<const CANavQuadTreeNode*, long>&) const;                   // slot 20 (+0x50)
+    virtual void SaveToFile(CAFile&, const std::map<const CANavQuadTreeNode*, long>&, bool, const C2DVector&) const;   // slot 21 (+0x54)
+    virtual void ConvertIndexesToPointers(const std::map<long, CANavQuadTreeNode*>&);                       // slot 22
+public:
+#endif
+    // Ego_r ?GetSize@CANavQuadTreeNode@@QBEMXZ (out of line in Ego_r, inline in retail) and ?GetAreaCovering@CANavQuadTreeNode@@
+    // QBE?AVC2DBoxF@@XZ (retail 0x00A763B0; CNavQuadTree::IsAreaClear 0x00A78E20 expands it: `fld size[level] ; fmul 0.5 ; fst`).
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_GETSIZE_OUTOFLINE
+    // Nested opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): that TU calls the out-of-line copy 0x00A75B30
+    // (?GetSize@CANavQuadTreeNode@@QBEMXZ, the landed row; `mov ecx,esi ; call 0x00A75B30 ; fimul [esp+24h]` at 0x00A1C4B5 and
+    // 0x00A1C4CD, as IsRouteClear 0x00A1A66C) where the inline body below would be expanded.
+    float GetSize() const;                                                               // 0x00A75B30
+#else
+    float GetSize() const { return g_QuadTreeLevelSizes[QuadTreeLevel]; }
+#endif
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_AREA_OUTOFLINE
+    // Nested opt-in (chunk 784, row 0x00A15890 CNavigatorManager::OutputWorld): that /O2 TU calls the out-of-line copy 0x00A763B0
+    // at every site (seven calls: `push <box> ; mov ecx,<node> ; call 0x00A763B0`) where the inline body below would be expanded.
+    C2DBoxF GetAreaCovering() const;                                                     // 0x00A763B0
+#else
+    C2DBoxF GetAreaCovering() const
+    {
+        float half = GetSize() * 0.5f;
+        return C2DBoxF(Position.X - half, Position.Y - half, half + Position.X, half + Position.Y);
+    }
+#endif
+    bool operator==(const CANavQuadTreeNode&) const;                                     // 0x00A763F0 ??8CANavQuadTreeNode@@QBE_NABV0@@Z
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_ISNAVIGABLE
+    // Retail opt-in (Codex pass18): original FableWin02973240 tests Blocked+0f.
+    bool IsNavigable() const {return !Blocked;}
+#endif
+    const C2DVector& GetPosition() const { return Position; }                            // Ego_r ?GetPosition@CANavQuadTreeNode@@QBEABVC2DVector@@XZ
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_ORIGINAL_ACCESS
+    // FableWin031A6570 and both PDBs: public const long getter, protected byte at0d.
+    long GetNavLayer() const { return NavLayer; }
+protected:
+#endif
+    C2DVector     Position;                                                              // +0x04
+    unsigned char QuadTreeLevel;                                                         // +0x0c
+    unsigned char NavLayer;                                                              // +0x0d
+    bool          LeafNode;                                                              // +0x0e
+    bool          Blocked;                                                               // +0x0f
+};
+FABLE_STATIC_ASSERT_AT(126, sizeof(CANavQuadTreeNode) == 0x10);
+#ifndef FABLE_RETAIL_CANAVQUADTREENODE_ORIGINAL_ACCESS
+FABLE_STATIC_ASSERT_AT(128, offsetof(CANavQuadTreeNode, NavLayer) == 0xd);
+#endif
+#else // flattened Ego_r layout (the landed default, unchanged)
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CANavQuadTreeNode = 0x10.
+// Retail evidence: 0 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+#pragma pack(push, 1)
+class CANavQuadTreeNode {
+public:
+    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+    float         Position_X;                                // +0x04 C2DVector::X
+    float         Position_Y;                                // +0x08 C2DVector::Y
+    unsigned char QuadTreeLevel;                             // +0x0c
+    unsigned char NavLayer;                                  // +0x0d
+    bool          LeafNode;                                  // +0x0e
+    bool          Blocked;                                   // +0x0f
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT_AT(152, sizeof(CANavQuadTreeNode) == 0x10);
+FABLE_STATIC_ASSERT_AT(153, offsetof(CANavQuadTreeNode, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(154, offsetof(CANavQuadTreeNode, Position_X) == 0x4);
+FABLE_STATIC_ASSERT_AT(155, offsetof(CANavQuadTreeNode, Position_Y) == 0x8);
+FABLE_STATIC_ASSERT_AT(156, offsetof(CANavQuadTreeNode, QuadTreeLevel) == 0xc);
+FABLE_STATIC_ASSERT_AT(157, offsetof(CANavQuadTreeNode, NavLayer) == 0xd);
+FABLE_STATIC_ASSERT_AT(158, offsetof(CANavQuadTreeNode, LeafNode) == 0xe);
+FABLE_STATIC_ASSERT_AT(159, offsetof(CANavQuadTreeNode, Blocked) == 0xf);
+
+#endif // FABLE_RETAIL_CANAVQUADTREENODE
+#endif // FABLE_ENGINE_CANAVQUADTREENODE_H

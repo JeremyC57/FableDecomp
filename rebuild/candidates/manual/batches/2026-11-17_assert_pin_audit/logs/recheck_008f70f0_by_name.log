@@ -1,0 +1,5 @@
+addr       parity           behav  name
+008f70f0   RELOCATION_MATCH PASS   AddThemeDefIndexToPalette
+
+WINS: 1
+  008f70f0 RELOCATION_MATCH CMap::AddThemeDefIndexToPalette

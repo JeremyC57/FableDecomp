@@ -1,5 +1,5 @@
 // CCreatureActionBase::FrameUpdate() -- per-frame action tick: report progress, dispatch due action events and drop the finished ones, run the movement update at the animation end, finish at TotalTime, advance FramesRunning from the running time, release / start the haste pause, perform the action at ActionTime (with its sound), fire due cut-scene events, and clamp the frame count
-// Leaf: FrameUpdate
+// Leaf: ?FrameUpdate@CCreatureActionBase@@MAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -215,7 +215,9 @@ class CCreatureActionBase { public:
     SCutSceneTree           CutSceneEvents;            // +0x90
 
     void UpdateActionMovement();                       // 0x00692AA0
-    void FrameUpdate();
+protected:
+    virtual void FrameUpdate();                        // Ego_r.pdb 0x0051A410 / FableWin.pdb 0x01DB65E0 ?FrameUpdate@CCreatureActionBase@@MAEXXZ
+                                                       //   (protected virtual, engine/CCreatureActionBase.h; NF64 q10720); the last slot here, so no other slot moves
 };
 
 void CCreatureActionBase::FrameUpdate()

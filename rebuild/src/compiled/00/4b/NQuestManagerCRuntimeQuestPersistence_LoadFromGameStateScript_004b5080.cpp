@@ -1,149 +1,61 @@
-// NQuestManager::CRuntimeQuestPersistence::LoadFromGameStateScript(const CCharString&) -- empty both persist maps, then parse every START_NEW_QUEST <quest> <script> END_NEW_QUEST block of the game-state text into the quest-script map and every START_NEW_MASTER_QUEST_DATA block into the master-data map, re-sorting each map once if anything was added
-// Leaf: LoadFromGameStateScript
+// NQuestManager::CRuntimeQuestPersistence::LoadFromGameStateScript(CCharString&) -- empty both persist maps, then parse every START_NEW_QUEST <quest> <script> END_NEW_QUEST block of the game-state text into the quest-script map and every START_NEW_MASTER_QUEST_DATA block into the master-data map, re-sorting each map once if anything was added
+// Leaf: ?LoadFromGameStateScript@CRuntimeQuestPersistence@NQuestManager@@QAEXAAVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004B5080, 1149 bytes (int3 padded to 1152), `ret 4`.
-// Callees: ClearAll 0x004B41F0 (manifest "CQuestManager::RotateQuestPersistenceVectors" is descriptive), CStringParser ctor
-//   0x00404720 and its implicit inline dtor (~list 0x004046B0, two ~CCharString, ~CBaseClass 0x0099A2E0),
-//   SkipPastNextItemIfIs 0x009B9E00, ReadAsStringUntilString 0x009BA330, ReadAsStringUntilWhitespace 0x009BA4A0,
-//   SkipWhitespace 0x009B9C60, NextItemIs 0x009B9BA0, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / copy
-//   0x0099EC30 / operator= 0x0099EFB0 / ~ 0x0099EAE0, the STLport _M_insert_overflow 0x004BB400 of push_back, the
-//   maps' sort 0x004BBB40 (`__fastcall(first, last, compare)`).
-// Layout: as the landed sibling NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript 0x00CB8440 and the
-//   landed SetQuestScriptPersistScript 0x004B4E30 (PersistScripts +0, MasterDataPersistScripts +0x10; each CVectorMap =
-//   12-byte STLport vector + Compare +0xc + Dirty +0xd; element pair<CCharString, CPersistInfo> 12 bytes).
-#include "fable_compiler.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString();                                 // 0x0099E4B0
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);         // 0x0099EC30
-    ~CCharString();                                // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
-public:
-    void* m_pHead;
-    ~list();                   // 0x004046B0
-};
-} // namespace std
-class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
-    char*                    String;               // +0x04
-    unsigned long            BaseLineOffset;       // +0x08
-    CCharString              Filename;             // +0x0c
-    CCharString              TempCharString;       // +0x10
-    std::list<CStringParserCommentBoundaries> Comments;             // +0x14
-    void (*ErrorCallback)(CCharString*);           // +0x18
-    long                     CursorPos[3];         // +0x1c
-    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
-                  long baseLineOffset);            // 0x00404720
-    bool SkipPastString(const CCharString& item);              // 0x009B9BA0 NF35: Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (catalog CStringParser::SkipPastString)
-    long SkipWhitespace();                                 // 0x009B9C60
-    bool SkipPastNextItemIfIs(const CCharString& item);    // 0x009B9E00
-    CCharString ReadAsStringUntilString(const CCharString& end);   // 0x009BA330
-    CCharString ReadAsStringUntilWhitespace();             // 0x009BA4A0
-    bool SkipPastText(const char* text)
-    {
-        CCharString item(text);
-        return SkipPastNextItemIfIs(item);
-    }
-};
-struct __false_type { __false_type() { } };
-inline void* operator new(unsigned int, void* p) { return p; }
+// Identity: Ego_r.pdb (0x004BB5D0) / FableWin.pdb (0x01C5F1D0) ?LoadFromGameStateScript@CRuntimeQuestPersistence@NQuestManager@@QAEXAAVCCharString@@@Z
+//   (a non-const reference: engine/CQuestManager.h declares it so and the landed caller CQuestManager::LoadGameState 0x004B5500 binds
+//   AAV); the old row's const-reference leaf (ABV) was a stand-in.
+// Callees: CRuntimeQuestPersistence::Clear 0x004B41F0 (Ego_r / FableWin), CStringParser ctor 0x00404720 and its implicit inline dtor
+//   (~list 0x004046B0, two ~CCharString, ~CBaseClass 0x0099A2E0), SkipPastNextItemIfIs 0x009B9E00, ReadAsStringUntilString 0x009BA330,
+//   ReadAsStringUntilWhitespace 0x009BA4A0, SkipWhitespace 0x009B9C60, SkipPastString 0x009B9BA0, CCharString() 0x0099E4B0 /
+//   (const char*, long) 0x0099EBF0 / copy 0x0099EC30 / operator= 0x0099EFB0 / ~ 0x0099EAE0, the STLport _M_insert_overflow 0x004BB400
+//   of push_back, and std::sort 0x004BBB40 (`__fastcall(first, last, compare)`).
+// Shape: CVectorMap::Insert (push_back of a value_type temporary, then Dirty) per block, then each map's Update (Sort when Dirty).
+// NF87: moved off the row-local CCharString / CStringParser / CRuntimeQuestPersistence / CPersistMap models onto the shared headers, so
+//   Clear and std::sort bind their PDB / STLport spellings.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+#define FABLE_RETAIL_CBASICSTRING_LESS_BODY
+#define FABLE_RETAIL_CSTRINGPARSER
+#define FABLE_RETAIL_CQUESTMANAGER
+#define FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE
+#define FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS
+#define FABLE_RETAIL_NQUESTMANAGER_CRUNTIMEQUESTPERSISTENCE_CLEAR
+#define FABLE_RETAIL_CVECTORMAP_SORT
+#define FABLE_RETAIL_CVECTORMAP_INSERT_KEYVALUE
+#define FABLE_RETAIL_CVECTORMAP_INSERT_VALUE_TYPE
+#define FABLE_RETAIL_STLP_SORT_FASTCALL
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CStringParser.h"
+#include "engine/CScriptInfo.h"
+#include "engine/CScriptInfoManager.h"
+#include "engine/CQuestManager.h"
+#include "engine/CVectorMap.h"
 
-namespace NQuestManager {
-struct CRuntimeQuestPersistence {
-    class CPersistInfo { public:
-        CCharString QuestName;                     // +0x00
-        CCharString PersistScript;                 // +0x04
-        CPersistInfo() { }
-        FABLE_FORCEINLINE CPersistInfo(const CPersistInfo& other) : QuestName(other.QuestName), PersistScript(other.PersistScript) { }
-    };
-    struct SPair {                                 // pair<CCharString, CPersistInfo>, 12 bytes
-        CCharString  first;                        // +0x00
-        CPersistInfo second;                       // +0x04
-        FABLE_FORCEINLINE SPair(const CCharString& key, const CPersistInfo& value) : first(key), second(value) { }
-        FABLE_FORCEINLINE SPair(const SPair& other) : first(other.first), second(other.second) { }
-    };
-    struct CKeyPairCompareLess { };
-    struct CPersistMap {
-        SPair*              _M_start;              // +0x00
-        SPair*              _M_finish;             // +0x04
-        SPair*              _M_end_of_storage;     // +0x08
-        CKeyPairCompareLess Compare;               // +0x0c
-        bool                Dirty;                 // +0x0d
-        void _M_insert_overflow(SPair* position, const SPair& value, const __false_type&, unsigned int count, bool atEnd);   // 0x004BB400
-        void push_back(const SPair& value)
-        {
-            if (_M_finish != _M_end_of_storage) {
-                if (_M_finish) new (_M_finish) SPair(value);
-                ++_M_finish;
-            } else
-                _M_insert_overflow(_M_finish, value, __false_type(), 1, true);
-        }
-    };
-    CPersistMap PersistScripts;                    // +0x00
-    CPersistMap MasterDataPersistScripts;          // +0x10
-    void ClearAll();                               // 0x004B41F0
-    void LoadFromGameStateScript(const CCharString& text);
-};
-void __fastcall sort(CRuntimeQuestPersistence::SPair* first, CRuntimeQuestPersistence::SPair* last,
-                     CRuntimeQuestPersistence::CKeyPairCompareLess comp);   // 0x004BBB40
-}
-
-void NQuestManager::CRuntimeQuestPersistence::LoadFromGameStateScript(const CCharString& text)
+void NQuestManager::CRuntimeQuestPersistence::LoadFromGameStateScript(CCharString& text)
 {
-    ClearAll();
-    CStringParser parser(text, 0, CCharString(""), 0);
-    {
-        CCharString start("START_NEW_QUEST");
-        parser.ReadAsStringUntilString(start);
-    }
-    while (parser.SkipPastText("START_NEW_QUEST")) {
+    Clear();
+    CStringParser parser(text);
+    parser.ReadAsStringUntilString("START_NEW_QUEST");
+    while (parser.SkipPastNextItemIfIs("START_NEW_QUEST")) {
         parser.SkipWhitespace();
         CPersistInfo info;
         info.QuestName = parser.ReadAsStringUntilWhitespace();
         parser.SkipWhitespace();
-        {
-            CCharString end("END_NEW_QUEST");
-            info.PersistScript = parser.ReadAsStringUntilString(end);
-        }
-        PersistScripts.push_back(SPair(info.QuestName, info));
-        PersistScripts.Dirty = true;
-        {
-            CCharString end("END_NEW_QUEST");
-            parser.SkipPastString(end);
-        }
+        info.PersistScript = parser.ReadAsStringUntilString("END_NEW_QUEST");
+        PersistScripts.Insert(info.QuestName, info);
+        parser.SkipPastString("END_NEW_QUEST");
     }
-    {
-        CCharString start("START_NEW_MASTER_QUEST_DATA");
-        parser.ReadAsStringUntilString(start);
-    }
-    while (parser.SkipPastText("START_NEW_MASTER_QUEST_DATA")) {
-        CPersistMap& masterData = MasterDataPersistScripts;
+    parser.ReadAsStringUntilString("START_NEW_MASTER_QUEST_DATA");
+    while (parser.SkipPastNextItemIfIs("START_NEW_MASTER_QUEST_DATA")) {
         parser.SkipWhitespace();
         CPersistInfo info;
         info.QuestName = parser.ReadAsStringUntilWhitespace();
         parser.SkipWhitespace();
-        {
-            CCharString end("END_NEW_MASTER_QUEST_DATA");
-            info.PersistScript = parser.ReadAsStringUntilString(end);
-        }
-        masterData.push_back(SPair(info.QuestName, info));
-        masterData.Dirty = true;
-        {
-            CCharString end("END_NEW_MASTER_QUEST_DATA");
-            parser.SkipPastString(end);
-        }
+        info.PersistScript = parser.ReadAsStringUntilString("END_NEW_MASTER_QUEST_DATA");
+        MasterDataPersistScripts.Insert(info.QuestName, info);
+        parser.SkipPastString("END_NEW_MASTER_QUEST_DATA");
     }
-    if (PersistScripts.Dirty) {
-        sort(PersistScripts._M_start, PersistScripts._M_finish, PersistScripts.Compare);
-        PersistScripts.Dirty = false;
-    }
-    if (MasterDataPersistScripts.Dirty) {
-        sort(MasterDataPersistScripts._M_start, MasterDataPersistScripts._M_finish, MasterDataPersistScripts.Compare);
-        MasterDataPersistScripts.Dirty = false;
-    }
+    PersistScripts.Update();
+    MasterDataPersistScripts.Update();
 }

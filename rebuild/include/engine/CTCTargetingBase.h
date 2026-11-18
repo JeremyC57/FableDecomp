@@ -56,10 +56,16 @@ protected:
  CDefPointer<CTargetingDef const > PTargetingDef;
  bool LookAtCamera;
 public:
+#ifndef FABLE_RETAIL_CTCTARGETINGBASE_IMPLICIT_DTOR
  virtual ~CTCTargetingBase();
+#else
+ // Opt-in (agentNF69, rows 0x004DA8B7 / 0x004E37BF): retail's ??1CTCTargetingBase@@UAE@XZ (0x004DA8B7) stores no vtable, the mark of
+ // VC7.1's implicit destructor (as the landed implicit ~CTCTargeted 0x004DBF56 and ~CTCTargetingPlayer 0x004E37BF): the class declares
+ // none, and ~CTCBase is virtual. The PDB-generated declaration above is left out so the destructor is the implicit one (same symbol).
+#endif
  CTCTargetingBase & operator=(const CTCTargetingBase & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCTargetingBase)==56);
+FABLE_STATIC_ASSERT_AT(62, sizeof(CTCTargetingBase)==56);
 #else
 #include "engine/CTCBase.h"
 #include "engine/CDefPointer.h"

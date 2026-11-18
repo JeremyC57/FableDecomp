@@ -1,5 +1,8 @@
 // CCreatureAction_PickUpGenericBox::FrameUpdate() -- base FrameUpdate; finish the action when the box is gone or dead, or when its CTCCarryable (type 0x47) component has a carrier and the creature cannot quick-assign it
-// Leaf: ?FrameUpdate@CCreatureAction_PickUpGenericBox@@QAEXXZ
+// Leaf: ?FrameUpdate@CCreatureAction_PickUpGenericBox@@UAEXXZ
+// NF70 (round 7, land1117fu q10804): CCreatureActionBase::FrameUpdate is the protected virtual of Ego_r.pdb 0x0051A410 / FableWin.pdb
+//   0x01DB65E0 (?FrameUpdate@CCreatureActionBase@@MAEXXZ, base vtable 0x01259D24 slot 56 = 0x00694020); declared so in the row's local base
+//   model, which also makes this override the virtual the PDBs name (UAE).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00848AE0, length 143 bytes.
 // Model: rebuild/include/engine/CCreatureAction_PickUpGenericBox.h is the flattened PDB layout and sits high against the bytes (CCreatureActionBase is 0xb4 bytes in the PDB, 0xa8 in retail: retail containers are 12 bytes), so `this` is a local model with the retail offsets.
@@ -41,7 +44,9 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4
     unsigned char _pad04[0xa8 - 4];
-    void FrameUpdate();                     // 0x00694020
+protected:
+    virtual void FrameUpdate();             // 0x00694020 (slot 56)
+public:
     bool GetCanItemBeQuickAssigned();       // 0x006925A0
 };
 class CCreatureAction_PickUpGenericBox : public CCreatureActionBase { public:

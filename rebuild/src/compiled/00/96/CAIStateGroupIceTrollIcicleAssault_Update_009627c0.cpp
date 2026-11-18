@@ -1,54 +1,73 @@
 // CAIStateGroup_IceTrollIcicleAssault::Update() -- mark the target in danger, wait for current actions and perform the icicle assault before terminating.
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Retail009627c0 length260. Shared group/Base/Brain layout. CThing component map44 differs donor48.
-// Action retail114 uses real combat-base virtual destructor; generated Into donor size12c differs native114.
-#include "fable_compiler.h"
-#ifdef _MSC_VER
-#include "engine/CAIStateGroup_IceTrollIcicleAssault.h"
+// Leaf: ?Update@CAIStateGroup_IceTrollIcicleAssault@@MAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009627C0, 260 bytes. Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTarget +0x14),
+//   CVectorMap::LowerBound 0x0040F020 (inline GetTC, interface 54 CTCStealth), CTCStealth::SetAsInDanger 0x00747B80,
+//   CThingCreatureBase::IsPerformingAnyAction 0x006622A0, CAIStateGroupBase::AIAction_DoNothing 0x0097E200,
+//   CCreatureAction_IceTrollIcicleAssaultInto ctor 0x00962990, CAIStateGroupBase::AIAction_CombatPerformActionAndWait 0x0097DA40,
+//   ~CCombatActionBase 0x0062E900, CAIStateGroupBase::Terminate 0x008FCF40.
+// NF67 (round 7): ported onto the shared headers (the 0x00961640 / 0x0093C030 / 0x0095BCF0 macro blocks). The IceAssaultMethods /
+//   CIceThing / CIceMap / CStealth / CIcePointer / CIceCombatAction stand-ins and the local CVectorMap / std::pair / ETCInterfaceType
+//   models are gone; the retail classes come from overlay opt-ins FABLE_RETAIL_CAISTATEGROUP_ICETROLLICICLEASSAULT and
+//   FABLE_RETAIL_CCREATUREACTION_ICETROLLICICLEASSAULTINTO. 0x006622A0 now binds ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (nf41:e106).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CTCSTEALTH_STATTYPE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_COMBATPERFORMACTION
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUP_ICETROLLICICLEASSAULT
+#define FABLE_RETAIL_CCREATUREACTION_ICETROLLICICLEASSAULTINTO
+#include "rebuild_abi.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCStealth.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CCreatureAction_IceTrollIcicleAssaultInto.h"
-#else
-class CAIBrain{ public:char prefix[24];void* Creature;};
-class CAIStateGroupBase{ public:void* vtable;CAIBrain* PBrain;char state[12];};
-struct CAIStateGroup_IceTrollIcicleAssault:CAIStateGroupBase{void* PTarget[2];};
-#define __forceinline inline
-#endif
-struct CIceThing;
-struct CStealth {void SetAsInDanger(CIceThing*,long);}; //00747b80
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:typedef std::pair<ETCInterfaceType, CTCBase*> Entry;Entry* first;Entry* last;Entry* LowerBound(const ETCInterfaceType& key);};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CIceMap; //0040f020
-struct CIceThing {char prefix[0x20];unsigned long components[9];CIceMap map;char beforeDead[0x45];unsigned char dead;
-bool IsPerformingAnyAction(); //006622a0
-FABLE_FORCEINLINE bool GetStealth(CStealth** out){if(components[1]&0x400000){ETCInterfaceType key = (ETCInterfaceType)(54);CIceMap* m=&map;CIceMap::Entry* it=m->LowerBound(key);if(it==m->last||54<it->first)it=m->last;*out=(CStealth*)((void*)it->second);return true;}return false;}
-};
-class CBaseObject;
-#define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-struct CIcePointer {}; //00a01b50, methods view over opaque shared PTarget
-struct CIceCombatAction {virtual ~CIceCombatAction();char state[0x110];}; //0062e900
-struct CIceTrollIcicleAssaultIntoNative:CIceCombatAction{CIceTrollIcicleAssaultIntoNative(CIceThing*,CIceThing*);}; //00962990
-struct IceAssaultMethods:CAIStateGroup_IceTrollIcicleAssault {
-FABLE_FORCEINLINE CIcePointer& Target(){return *(CIcePointer*)PTarget;}
-FABLE_FORCEINLINE CIceThing* Creature(){return (CIceThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
-FABLE_FORCEINLINE bool TargetAlive(){if(((CIceThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem()))if(!(((CIceThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem())->dead&1))return true;return false;}
-void Terminate();long AIAction_DoNothing();long AIAction_CombatPerformActionAndWait(CIceCombatAction*,bool); //008fcf40,0097e200,0097da40
-void Update();
-};
-void IceAssaultMethods::Update(){
-if(!TargetAlive()){Terminate();return;}
-CStealth* stealth;
-if(((CIceThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem())->GetStealth(&stealth))stealth->SetAsInDanger(Creature(),3);
-while(Creature()->IsPerformingAnyAction())if(AIAction_DoNothing()==1)goto finish;
-if(TargetAlive()){
-CIceThing* actor=Creature();
-long result=AIAction_CombatPerformActionAndWait(&CIceTrollIcicleAssaultIntoNative(actor,((CIceThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem())),false);
-if(result==2){Terminate();return;}
-}
-finish:Terminate();
+#include "engine/CAIStateGroup_IceTrollIcicleAssault.h"
+
+void CAIStateGroup_IceTrollIcicleAssault::Update()
+{
+    if (!IS_THING_ALIVE(PTarget)) {
+        Terminate();
+        return;
+    }
+    CTCStealth* stealth;
+    if (PTarget->GetTC(&stealth))
+        stealth->SetAsInDanger(GetCreature(), (NStealth::EDangerStatus)3);
+    while (GetCreature().IsPerformingAnyAction()) {
+        if (AIAction_DoNothing() == AI_ACTION_TERMINATE_PROCESS)
+            goto finish;
+    }
+    if (IS_THING_ALIVE(PTarget)) {
+        CThingAICreature* creature = &GetCreature();
+        EAIActionReturn ret = AIAction_CombatPerformActionAndWait(CCreatureAction_IceTrollIcicleAssaultInto(*creature, *PTarget), false);
+        if (ret == AI_ACTION_FINISHED) {
+            Terminate();
+            return;
+        }
+    }
+finish:
+    Terminate();
 }

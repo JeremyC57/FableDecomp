@@ -94,9 +94,17 @@ public:
 public:
 #endif
 #endif
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_STARTGAME
+    // NF76 opt-in (row 0x00599E3F NUISystem::CFrontEndManager::Update): Ego_r.pdb ?StartGame@CNewFrontendGameComponent@@QAEXXZ, expanded in
+    // that row (`mov eax,[edi] ; mov ecx,edi ; call [eax+10h]` = CGameComponent slot 4 SetQuit, then `mov byte ptr [edi+29h],1`,
+    // 0x00599FC6..0x0059A1C9; the body is reconstructed from those bytes), and ?LoadGame@CNewFrontendGameComponent@@QAEXAAVCWideString@@@Z
+    // (out of line at 0x00594F36). No layout change.
+    void StartGame() { SetQuit(); m_bCreateGame = true; }
+    void LoadGame(CWideString& game);                                    // 0x00594F36
+#endif
     static CNewFrontendGameComponent* __fastcall Get() { return m_pNewFrontendGameComponent; }
     bool IsTextBankInitialised() const { return !m_pTextBank.IsNull(); }
     const NGameText::CDataBank& GetTextBank() const { return *m_pTextBank; }
 };
-FABLE_STATIC_ASSERT(sizeof(CNewFrontendGameComponent) == 0x148);
+FABLE_STATIC_ASSERT_AT(89, sizeof(CNewFrontendGameComponent) == 0x148);
 #endif

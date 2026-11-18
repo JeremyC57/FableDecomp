@@ -52,6 +52,12 @@ public:
     virtual void RelocateData(long,void*,void*,long);
     const CParticleSimulation& PeekInitialSimulation() const { return InitialSimulation; }
     CParticleSimulation& GetInitialSimulation() { return InitialSimulation; }
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_REMAPBONEINDICES_PUBLIC
+    // NF70 opt-in (round 7, row 0x00AC3AF0): Ego_r.pdb / FableWin.pdb 0x033371C0 ?RemapBoneIndices@CParticleProgram@@QAEXAAV?$map@KKU?$less@K@std@@V?$
+    // allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z, the public overload (landed 0x00AE3A30) that C3DClothPrimitive::RemapBoneIndices forwards to.
+    // Declaration only (needs stlport/fable_map.h); no layout change.
+    void RemapBoneIndices(std::map<unsigned long, unsigned long>& remap);   // 0x00AE3A30
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEPROGRAM_PASS22_CLEARGROUPS
     // Retail opt-in (Codex pass 22): both original PDBs name ClearGroups; native 00AE3510 clears these two arrays.
     void ClearGroups();

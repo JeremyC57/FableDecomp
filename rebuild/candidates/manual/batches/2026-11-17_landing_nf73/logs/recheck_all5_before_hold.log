@@ -1,0 +1,22 @@
+addr       parity           behav  name
+004091c0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004091c0   RELOCATION_MATCH PASS   GetSortedSaveNamesAndTimes
+00416953   RELOCATION_MATCH PASS   PostInit
+005955ab   RELOCATION_MATCH PASS   GetProfileNames
+00596cce   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00596cce   WARN RELOC_CONFLICT: ?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z -> 0059aa86 here, 00429486 in landed 005729d8
+00596cce   WARN RELOC_CONFLICT: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 0059a994 here, 00429288 in landed 0041e6d3
+00596cce   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 0059a994 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+00596cce   RELOCATION_MATCH PASS   RefreshAvailableProfiles
+00597006   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00597006   WARN RELOC_CONFLICT: ?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z -> 0059aa86 here, 00429486 in landed 005729d8
+00597006   WARN RELOC_CONFLICT: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 0059a994 here, 00429288 in landed 0041e6d3
+00597006   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 0059a994 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+00597006   RELOCATION_MATCH PASS   RefreshAvailableProfilesForDelete
+
+WINS: 5
+  004091c0 RELOCATION_MATCH CUserProfileManager::?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z
+  00416953 RELOCATION_MATCH CMainGameComponent::?PostInit@CMainGameComponent@@MAEXXZ
+  005955ab RELOCATION_MATCH NUISystem::CFrontEndManager::?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  00596cce RELOCATION_MATCH NUISystem::CFrontEndManager::?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@IAEJXZ
+  00597006 RELOCATION_MATCH NUISystem::CFrontEndManager::?RefreshAvailableProfilesForDelete@CFrontEndManager@NUISystem@@IAEJXZ

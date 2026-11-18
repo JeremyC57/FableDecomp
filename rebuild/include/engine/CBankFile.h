@@ -82,7 +82,16 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
     // Ego_r.pdb CBankFile::CRuntimeData (12 bytes): DataOffset +0, DataSize +4, DataType +8, Valid +9.
+#ifdef FABLE_RETAIL_CBANKFILE_CRUNTIMEDATA_CTOR
+    // NF68 opt-in (row 0x009CEAE0 CBankFile::AllocateBuffers): FableWin.pdb ??0CRuntimeData@CBankFile@@QAE@XZ (a class: the PDB
+    // spellings, and the landed resize 0x009D4010 leaf, read VCRuntimeData@CBankFile); retail AllocateBuffers zeroes the four
+    // members of the resize temporary one by one (inline).
+    class CRuntimeData {
+    public:
+        CRuntimeData() : DataOffset(0), DataSize(0), DataType(0), Valid(false) {}
+#else
     struct CRuntimeData {
+#endif
         unsigned long DataOffset;
         unsigned long DataSize;
         unsigned char DataType;
@@ -111,8 +120,14 @@ public:
 #else
     unsigned char               UpdateData[0xc];             // +0x2c CArray<CBankFileEntryUpdateData_*>
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_PACKRUNTIMEDATA
+    // NF72 opt-in (row 0x009CD740 CBankFile::PackRuntimeData): the Ego_r.pdb member types (needs FABLE_RETAIL_CBANKFILE_FILENAMEINDICES).
+    CPackedUIntArray            PackedDataOffset;            // +0x38
+    CPackedUIntArray            PackedDataSize;              // +0x48
+#else
     unsigned char               PackedDataOffset[0x10];      // +0x38 CPackedUIntArray
     unsigned char               PackedDataSize[0x10];        // +0x48 CPackedUIntArray
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
     CPackedUIntArray            PackedDataType;              // +0x58
 #else
@@ -141,7 +156,12 @@ public:
     unsigned long               HeaderSize;                  // +0xa0
     unsigned long               FileInformationSize;         // +0xa4
     unsigned long               FileSize;                    // +0xa8
+#ifdef FABLE_RETAIL_CBANKFILE_SYMBOLINDICES
+    // NF68 opt-in (row 0x009CEAE0; needs FABLE_RETAIL_CBANKFILE_FILENAMEINDICES): Ego_r.pdb member type.
+    std::map<CCharString,unsigned long> SymbolIndices;       // +0xac
+#else
     unsigned char               SymbolIndices[0xc];          // +0xac map<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>_>
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES
     std::map<CCharString,unsigned long> OldSymbolIndices;    // +0xb8
 #else
@@ -204,6 +224,18 @@ private:
     void InitEntry(unsigned long index, const CCharString& symbol, const CCharString& filename);   // 0x009CE050 (PDB AAEXKABVCCharString@@0@Z)
 public:
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_PACKRUNTIMEDATA
+    // NF72 opt-in (row 0x009CD740): Ego_r.pdb 0x00B1C8D0 ?PackRuntimeData@CBankFile@@AAEXXZ (private). Declaration only.
+private:
+    void PackRuntimeData();                                              // 0x009CD740
+public:
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_ALLOCATEBUFFERS
+    // NF68 opt-in (row 0x009CEAE0): Ego_r.pdb 0x00B1CED0 / FableWin.pdb 0x02F9BF90 ?AllocateBuffers@CBankFile@@AAEXK@Z (private).
+private:
+    void AllocateBuffers(unsigned long size);                            // 0x009CEAE0
+public:
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_ENTRIES
     // Retail opt-in (chunk 2018, row 0x00B2D330 CEngineSurfaceCompositionManager::UpdateDiskCacheTexture): Ego_r.pdb
     // ?FindIndexBySymbol@CBankFile@@QBEKABVCCharString@@@Z (Ego_r 0x00B1A780 = retail 0x009CCDC0, the landed manifest label) and
@@ -212,6 +244,11 @@ public:
     unsigned long FindIndexBySymbol(const CCharString& symbol) const;                                  // 0x009CCDC0
     void AddEntry(const CCharString& symbol, unsigned long data_type, const CCharString& filename,
                   CCountedPointer<CBankStateBlock> state_block);                                        // 0x009CD620
+#endif
+#if defined(FABLE_RETAIL_CBANKFILE_PEEKENTRYUPDATEDATA) && defined(FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES)
+    // NF76 opt-in (row 0x00B41FA0 CEngineWorldMap::LoadWaterData): FableWin.pdb ?PeekEntryUpdateData@CBankFile@@QBEPBVCBankFileEntryUpdateData@@K@Z,
+    // inline in retail (`mov eax,[bank+2Ch] ; mov ebx,[eax+edi*4]`, 0x00B41FC1, the bank at CEngineWorldMap +0x34). Body only.
+    const CBankFileEntryUpdateData* PeekEntryUpdateData(unsigned long index) const { return UpdateData[index]; }
 #endif
 #ifdef FABLE_RETAIL_CBANKFILE_SETISSTATICMAP
     // Retail opt-in (chunk 2018, row 0x00B2CB40 CEngineSurfaceCompositionManager::CEngineSurfaceCompositionManager): the one-bool
@@ -230,6 +267,11 @@ public:
     // ?FindIndexBySymbol@CBankFile@@QBEKABVCCharString@@@Z, out of line in retail at 0x009CCDC0 (manifest label propagated).
     unsigned long FindIndexBySymbol(const class CCharString& symbol) const;   // 0x009CCDC0
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_ALIGN
+    // NF72 opt-in (row 0x009D5260 CBankFileAsyncEntry::CBankFileAsyncEntry): Ego_r.pdb 0x00B198E0 ?Align@CBankFile@@QBEKK@Z (retail 0x009CBB90,
+    // the landed CBankFile::Align), out of line. Declaration only.
+    unsigned long Align(unsigned long size) const;                       // 0x009CBB90
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
     // Retail opt-in (chunk 1021, row 0x00BEC680 CEngineInternalPrimitiveMeshBase::CollectStats): Ego_r.pdb
     // ?GetEntryDataSize@CBankFile@@QBEKK@Z (0x00B19F40 = retail 0x009CC240, next to GetEntryDataType 0x009CC210), out of line.
@@ -243,44 +285,44 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CBankFile) == 0x110);
+FABLE_STATIC_ASSERT_AT(246, sizeof(CBankFile) == 0x110);
 #ifndef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
-FABLE_STATIC_ASSERT(offsetof(CBankFile, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(248, offsetof(CBankFile, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CBankFile, Size) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, Symbols) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, Checksums) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, RuntimeData) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, UpdateData) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, PackedDataOffset) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, PackedDataSize) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, PackedDataType) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, PackedValid) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, OpenFlags) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, BankFile_Data) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, BankFile_Info) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, Filename_PStringData) == 0x84);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, BankHandle_PStringData) == 0x88);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, RetailMode) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, ReadOnly) == 0x8d);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, WrittenToFile) == 0x8e);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, Solid) == 0x8f);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, ChangeCount) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, FileValid) == 0x94);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, UpdatingFlag) == 0x95);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, Alignment) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, BankFormatVersion) == 0x9c);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, HeaderSize) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, FileInformationSize) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, FileSize) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, SymbolIndices) == 0xac);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, OldSymbolIndices) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, FilenameIndices) == 0xc4);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, SymbolCRCIndices) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, BlockOrder) == 0xe0);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, ProgressCallback) == 0xec);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, HeaderEnumerationType_PStringData) == 0xf0);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, WarningFlag) == 0xf4);
-FABLE_STATIC_ASSERT(offsetof(CBankFile, ChecksumCache) == 0xf8);
+FABLE_STATIC_ASSERT_AT(250, offsetof(CBankFile, Size) == 0x4);
+FABLE_STATIC_ASSERT_AT(251, offsetof(CBankFile, Symbols) == 0x8);
+FABLE_STATIC_ASSERT_AT(252, offsetof(CBankFile, Checksums) == 0x14);
+FABLE_STATIC_ASSERT_AT(253, offsetof(CBankFile, RuntimeData) == 0x20);
+FABLE_STATIC_ASSERT_AT(254, offsetof(CBankFile, UpdateData) == 0x2c);
+FABLE_STATIC_ASSERT_AT(255, offsetof(CBankFile, PackedDataOffset) == 0x38);
+FABLE_STATIC_ASSERT_AT(256, offsetof(CBankFile, PackedDataSize) == 0x48);
+FABLE_STATIC_ASSERT_AT(257, offsetof(CBankFile, PackedDataType) == 0x58);
+FABLE_STATIC_ASSERT_AT(258, offsetof(CBankFile, PackedValid) == 0x68);
+FABLE_STATIC_ASSERT_AT(259, offsetof(CBankFile, OpenFlags) == 0x78);
+FABLE_STATIC_ASSERT_AT(260, offsetof(CBankFile, BankFile_Data) == 0x7c);
+FABLE_STATIC_ASSERT_AT(261, offsetof(CBankFile, BankFile_Info) == 0x80);
+FABLE_STATIC_ASSERT_AT(262, offsetof(CBankFile, Filename_PStringData) == 0x84);
+FABLE_STATIC_ASSERT_AT(263, offsetof(CBankFile, BankHandle_PStringData) == 0x88);
+FABLE_STATIC_ASSERT_AT(264, offsetof(CBankFile, RetailMode) == 0x8c);
+FABLE_STATIC_ASSERT_AT(265, offsetof(CBankFile, ReadOnly) == 0x8d);
+FABLE_STATIC_ASSERT_AT(266, offsetof(CBankFile, WrittenToFile) == 0x8e);
+FABLE_STATIC_ASSERT_AT(267, offsetof(CBankFile, Solid) == 0x8f);
+FABLE_STATIC_ASSERT_AT(268, offsetof(CBankFile, ChangeCount) == 0x90);
+FABLE_STATIC_ASSERT_AT(269, offsetof(CBankFile, FileValid) == 0x94);
+FABLE_STATIC_ASSERT_AT(270, offsetof(CBankFile, UpdatingFlag) == 0x95);
+FABLE_STATIC_ASSERT_AT(271, offsetof(CBankFile, Alignment) == 0x98);
+FABLE_STATIC_ASSERT_AT(272, offsetof(CBankFile, BankFormatVersion) == 0x9c);
+FABLE_STATIC_ASSERT_AT(273, offsetof(CBankFile, HeaderSize) == 0xa0);
+FABLE_STATIC_ASSERT_AT(274, offsetof(CBankFile, FileInformationSize) == 0xa4);
+FABLE_STATIC_ASSERT_AT(275, offsetof(CBankFile, FileSize) == 0xa8);
+FABLE_STATIC_ASSERT_AT(276, offsetof(CBankFile, SymbolIndices) == 0xac);
+FABLE_STATIC_ASSERT_AT(277, offsetof(CBankFile, OldSymbolIndices) == 0xb8);
+FABLE_STATIC_ASSERT_AT(278, offsetof(CBankFile, FilenameIndices) == 0xc4);
+FABLE_STATIC_ASSERT_AT(279, offsetof(CBankFile, SymbolCRCIndices) == 0xd0);
+FABLE_STATIC_ASSERT_AT(280, offsetof(CBankFile, BlockOrder) == 0xe0);
+FABLE_STATIC_ASSERT_AT(281, offsetof(CBankFile, ProgressCallback) == 0xec);
+FABLE_STATIC_ASSERT_AT(282, offsetof(CBankFile, HeaderEnumerationType_PStringData) == 0xf0);
+FABLE_STATIC_ASSERT_AT(283, offsetof(CBankFile, WarningFlag) == 0xf4);
+FABLE_STATIC_ASSERT_AT(284, offsetof(CBankFile, ChecksumCache) == 0xf8);
 
 #endif // FABLE_ENGINE_CBANKFILE_H

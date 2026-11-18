@@ -7,6 +7,11 @@
 // the body the landed 0x005472A0 GFRandomNoRepeat and 0x007FEDE0 expand). Created the same day by chunk 1014 (0x00929FC0 draft) and
 // Codex pass 18; this is Codex's statement order, the spelling that matched 0x008E7F80.
 long FABLE_FASTCALL GFROR13(unsigned long value);                    // 0x00497890
+#ifdef FABLE_RETAIL_GFRANDOM_OUTOFLINE
+// NF76 per-TU opt-in (row 0x006D53C0 CTCFollowed::FrameUpdate): the same function called out of line, as that TU does (`mov edx,ebx ;
+// mov ecx,eax ; call 0x004CDAE0` at 0x006D5638; Ego_r.pdb ?GFRandom@@YIKKPAK@Z, the spelling landed 0x0057B9D7 binds). Declaration only.
+unsigned long FABLE_FASTCALL GFRandom(unsigned long range, unsigned long* seed);    // 0x004CDAE0
+#else
 inline unsigned long FABLE_FASTCALL GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed *= 0x24a1;
@@ -26,4 +31,5 @@ inline unsigned long FABLE_FASTCALL GFRandom(unsigned long range, unsigned long*
     return 0;
 #endif
 }
+#endif
 #endif

@@ -1,219 +1,117 @@
-// CCombatAction_StrikeResponseJackOfBladesIntoRush::FinishAction() -- bump Jack's rush counter (interface 0xAD; wraps to 1
-//   past the battle def's MaxRushCount), then, when CauseRush is set and a valid rush position exists, take the 2D distance
+// CCombatAction_StrikeResponseJackOfBladesIntoRush::FinishAction() -- bump Jack's boss GenericCounter (CTCBoss, TCI_BOSS 0xAD; wraps to 1
+//   past the battle def's NumGetHitsBeforeRush), then, when CauseRush is set and a valid rush position exists, take the 2D distance
 //   and the normalised direction to it, run the base strike-response FinishAction and make Jack cast an assassin rush along
 //   that direction with a "RUSH_OUTOF" combat animation as its final action; otherwise just the base FinishAction.
-// Leaf: FinishAction
-// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
-// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
+// Leaf: ?FinishAction@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C2550, 607 bytes (+ int3 padding), virtual, no EH frame.
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), CVectorMap::LowerBound 0x0040F020 (same-TU stand-in),
-//   CDefClassBase::GetSubDef<CJackOfBladesBattleDef> 0x008C33E0 (same-TU stand-in), GetValidRushPosition 0x008C1600 (same-TU
-//   stand-in), CThing::GetPos 0x004C73D0, CCombatAction_GenericStrikeResponseBase::FinishAction 0x008663D0, operator new
-//   0x00BFEA1A, CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CCreatureAction_PlayCombatAnimation 0x008B7FF0,
-//   CCountedPointer<T>(T*) 0x00695880 (same-TU stand-in; ICF-shared, catalog label names CFileInstaller::CFileInfo),
-//   CCreatureAction_CastAssassinRush 0x008CE1B0 / ~ 0x0072D990, CThingCreatureBase::SetCurrentAction 0x006644F0, operator
-//   delete 0x00BFE9BC, def release through vtable slot 1. Fast inverse-sqrt table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C.
-// Layout: local model -- the PDB-generated engine/CCombatAction_StrikeResponseJackOfBladesIntoRush.h is opaque padding of the
-//   PDB size 0x164 while retail CauseRush sits at +0x148 (PDB +0x160; retail CCombatActionBase is 0x114, PCreature +8,
-//   GenericStrikeResponseBase 0x148), so the class is modelled locally like the landed sibling 0x008C2810. CJackOfBladesBattleDef
-//   MaxRushCount +0x40, CTCRushCounter RushCount +0x10.
-// Shape: the same-TU stand-ins for every out-of-line callee that takes a local's address (LowerBound key, GetSubDef out,
-//   rushPosition, finalAction) let VC7.1 pack the frame as retail does: the delta reuses the dead rushPosition words (dz
-//   spilled to rushPosition.Z), counter / flag / finalAction.Data share +20h, finalAction.Info stays in esi across the rush
-//   calls. GetSubDef goes through an inline CThing wrapper so the creature is fetched before &def is pushed; the incremented
-//   count is a named local (without it esi/edi swap); Normalise(delta) before delta.Get2DLength() with `const float&` scaling
-//   gives retail's x87 order (cached dx2/dy2, sqrt last). The CDefPointer null test is dropped by the GetSubDef stand-in.
-// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
-#include "fable_compiler.h"
-extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
-{
-    unsigned long bits = *(unsigned long*)&lengthSquared;
-    unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
-    float r = *(float*)&estimate;
-    return (3.0f - r * r * lengthSquared) * r * 0.5f;
-}
-extern "C" double __cdecl sqrt(double);
-#pragma intrinsic(sqrt)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    FABLE_FORCEINLINE float Get2DLength() const { return (float)sqrt(X * X + Y * Y); }
-};
-FABLE_FORCEINLINE C3DVector operator*(const C3DVector& v, const float& s) { return C3DVector(v.X * s, v.Y * s, v.Z * s); }
-FABLE_FORCEINLINE C3DVector Normalise(const C3DVector& v) { return v * FastInvSqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z); }
-FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-void __cdecl operator delete(void* block);            // 0x00BFE9BC
-
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CJackOfBladesBattleDef { public:
-    virtual void v00();
-    virtual void Destroy();                            // slot 1
-    long RefCount;                                     // +0x04
-    unsigned char _pad08[0x40 - 0x08];
-    long MaxRushCount;                                 // +0x40
-};
-struct CDefPointer_CJackOfBladesBattleDef {          // CDefPointer<const CJackOfBladesBattleDef>
-    CJackOfBladesBattleDef* Data;
-    CDefPointer_CJackOfBladesBattleDef() : Data(0) { }
-    ~CDefPointer_CJackOfBladesBattleDef()
-    {
-        if (Data && --Data->RefCount == 0)
-            Data->Destroy();
-    }
-    CJackOfBladesBattleDef* operator->() const { return Data; }
-};
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer_CJackOfBladesBattleDef* out) const;   // 0x008C33E0
-};
-void* FindSubDef_CJackOfBladesBattleDef(const CDefClassBase* def);
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer_CJackOfBladesBattleDef* out) const
-{
-    void* found = FindSubDef_CJackOfBladesBattleDef(this);
-    if (!found)
-        return false;
-    out->Data = (CJackOfBladesBattleDef*)found;
-    return true;
-}
-#pragma auto_inline(on)
-
-struct CTCRushCounter {                                // interface 0xad
-    unsigned char _pad[0x10];
-    long RushCount;                                    // +0x10
-};
-
-class CCreatureActionBase;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                    // +0x20
-    CInterfaceMap m_interfaces;                        // +0x44
-    unsigned char _pad54[0x1c];
-    CDefClassBase* PDef;                               // +0x70
-    const C3DVector& GetPos() const;              // 0x004C73D0
-    FABLE_FORCEINLINE bool GetSubDef(CDefPointer_CJackOfBladesBattleDef* out) const { return PDef->GetSubDef(out); }
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
-class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
-};
-
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), CVectorMap::LowerBound 0x0040F020 (GetTC expanded, same-TU
+//   noinline header body), CDefClassBase::GetSubDef<CJackOfBladesBattleDef> 0x008C33E0 (same-TU noinline header body,
+//   engine/CDefClassBase_GetSubDef.h), GetValidRushPosition(C3DVector&) 0x008C1600 (same-TU, visible noinline below), CThing::GetPos
+//   0x004C73D0, CCombatAction_GenericStrikeResponseBase::FinishAction 0x008663D0, operator new 0x00BFEA1A, CCharString 0x0099EBF0 /
+//   ~CCharString 0x0099EAE0, CCreatureAction_PlayCombatAnimation(CThingCreatureBase&, const CCharString&, bool) 0x008B7FF0,
+//   CCountedPointer<CCreatureActionBase>(CCreatureActionBase*) 0x00695880 (visible noinline, FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR),
+//   CCreatureAction_CastAssassinRush(CThingCreatureBase&, const C3DVector&, float, bool, long, CCountedPointer<CCreatureActionBase>)
+//   0x008CE1B0 / ~ 0x0072D990, CThingCreatureBase::SetCurrentAction 0x006644F0, operator delete 0x00BFE9BC, def release through
+//   vtable slot 1. Fast inverse-sqrt table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C.
+// Port (NF74, round 7; nf41:e2): every class from the shared headers, the 17 local models and the stand-in bodies gone -- the
+//   Initialise sibling 0x008C12D0's block (CCreatureActionBase PCreature +0x08, CCombatActionBase, CCombatAction_GenericStrikeResponseBase
+//   TYPED, CCombatAction_StrikeResponseJackOfBladesIntoRush CauseRush +0x148, CTCBoss GetGenericCounter / SetGenericCounter, CDefPointer
+//   <const CJackOfBladesBattleDef> NumGetHitsBeforeRush +0x40), RushToPos 0x009735D0's CCreatureAction_PlayCombatAnimation /
+//   CCreatureAction_CastAssassinRush, and the NF74 overlay opt-ins CCombatAction_GenericStrikeResponseBase.h FINISHACTION,
+//   CCombatAction_StrikeResponseJackOfBladesIntoRush.h FINISHACTION (FinishAction + the protected Ego_r GetValidRushPosition(C3DVector&))
+//   and CTCBoss.h GETPHASESTARTPOS (FableWin inline). Locals carry the Ego_d.pdb names.
+// Shape: GetValidRushPosition's body is visible but out of line, as in the retail TU, so VC7.1 sees that rush_to_pos's address is not
+//   kept: retail reuses its dead words for the rush vector (dz spilled to rush_to_pos.Z; frame 0x16C; with the declaration only the
+//   frame is 0x178, NF81 grade 1). NF81 (round 7, q10988): the row no longer carries its own older copy of that body (the rejected
+//   CVectorFilter_FurtherFromPointThan phase filter); it includes the one text, the landed 0x008C1600 body, from the NF81 overlay header
+//   engine/CCombatAction_StrikeResponseJackOfBladesIntoRush_GetValidRushPosition.h as an `inline __declspec(noinline)` COMDAT (never
+//   expanded; the row 0x008C1600 defines it), as engine/CMap.h does for GetStrongestEngineThemeAt. The call binds 0x008C1600. Normalise is the
+//   PAREN_SQUARES_ZYX body and GetMagnitude2D the one-expression FableWin body: the shared X*X / Y*Y products land in retail's slots.
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
-struct CCountedItem { };
-class CCPPointerInfo { public:
-    long m_count;
-    void (CCountedItem::*m_pfnDestroy)();
-    CCountedItem* m_pItem;
-};
-struct CCountedPointer_CCreatureActionBase {           // CCountedPointer<CCreatureActionBase>
-    CCreatureActionBase* Data;
-    CCPPointerInfo*      Info;
-    CCountedPointer_CCreatureActionBase(CCreatureActionBase* item);   // 0x00695880
-    CCountedPointer_CCreatureActionBase(const CCountedPointer_CCreatureActionBase& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->m_count;
-    }
-    ~CCountedPointer_CCreatureActionBase()
-    {
-        if (Info) {
-            if (--Info->m_count == 0) {
-                (Info->m_pItem->*Info->m_pfnDestroy)();
-                operator delete(Info);
-            }
-        }
-    }
-};
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_STLP_REMOVE_COPY_IF
+#define FABLE_RETAIL_STLP_NOT1
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGABLE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CTCBOSS_GETPHASESTARTPOS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CTHINGBASEDEF
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED   // CTCBoss::PhaseStartPos at +0x22 (alignment 1, engine/CTCBoss.h; as 0x008C1600 / 0x009547D0), so the visible GetValidRushPosition COMDAT is compiled as at its own row
+#define FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_ZYX
+#define FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D
+#define FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ORIGINAL_SUM_PASS23
+#include "fable_compiler.h"
+#include <math.h>
+#include "engine/C3DVector.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "engine/CJackOfBladesBattleDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCPhysicsBase.h"
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTCBOSS_GETGENERICCOUNTER
+#include "engine/CTCBoss.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CIntelligentPointer.h"
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#include "engine/CThingCreatureBase.h"
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+#define FABLE_RETAIL_CCOMBATACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_RECOVER
+#define FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_TYPED
+#define FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH
+#define FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH_FINISHACTION
+#define FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR
+#define FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATION
+#define FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH
+#include "engine/CCombatAction_StrikeResponseJackOfBladesIntoRush.h"
+#include "engine/CCreatureAction_PlayCombatAnimation.h"
+#include "engine/CCreatureAction_CastAssassinRush.h"
+#include "stlport/fable_containers.h"
+#include "engine/CVectorFilter_FurtherFromPointThan.h"
+#include "engine/NCreatureHiding.h"
+#include "engine/CWorld.h"
+#include "engine/CTCCreatureNavigation.h"
+#include "engine/GFRandom.h"
+#include "engine/CCombatAction_StrikeResponseJackOfBladesIntoRush_GetValidRushPosition.h"   // NF81 overlay: the 0x008C1600 body, visible noinline
 
-class CCreatureActionBase { public:
-    virtual void v00();
-    unsigned char _pad04[4];
-    CBaseIntelligentPointer PCreature;                 // +0x08
-    unsigned char _pad10[0xa8 - 0x10];
-    CThingCreatureBase* GetCreature() const { return reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
-};
-class CCombatActionBase : public CCreatureActionBase { public:       // retail sizeof 0x114
-    unsigned char _combat[0x114 - 0xa8];
-};
-class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
-    unsigned char _pad114[0x118 - 0x114];
-    CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
-};
-class CCreatureAction_CastAssassinRush : public CCombatActionBase { public:   // retail sizeof 0x138
-    unsigned char _pad114[0x138 - 0x114];
-    CCreatureAction_CastAssassinRush(CThingCreatureBase* owner, const C3DVector& dir, float distance, bool useCollision, long level,
-                                     CCountedPointer_CCreatureActionBase finalAction);   // 0x008CE1B0
-    ~CCreatureAction_CastAssassinRush();               // 0x0072D990
-};
-
-class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:   // retail sizeof 0x148
-    unsigned char _pad114[0x148 - 0x114];
-    virtual void FinishAction();                       // 0x008663D0
-};
-class CCombatAction_StrikeResponseJackOfBladesIntoRush : public CCombatAction_GenericStrikeResponseBase { public:
-    bool CauseRush;                                    // +0x148 (PDB +0x160)
-    bool GetValidRushPosition(C3DVector& position);    // 0x008C1600
-    virtual void FinishAction();
-};
-
-C3DVector FindRushPosition(CCombatAction_StrikeResponseJackOfBladesIntoRush* action);
-bool IsRushPositionValid(CCombatAction_StrikeResponseJackOfBladesIntoRush* action);
-CCPPointerInfo* NewPointerInfo(CCreatureActionBase* item);
-#pragma auto_inline(off)
-__declspec(noinline) bool CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition(C3DVector& position)
-{
-    position = FindRushPosition(this);
-    return IsRushPositionValid(this);
-}
-__declspec(noinline) CCountedPointer_CCreatureActionBase::CCountedPointer_CCreatureActionBase(CCreatureActionBase* item)
-    : Data(item), Info(NewPointerInfo(item))
-{
-}
-#pragma auto_inline(on)
 
 void CCombatAction_StrikeResponseJackOfBladesIntoRush::FinishAction()
 {
-    CTCRushCounter* counter;
-    reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem())->GetInterface(&counter, 0xad);
-    CDefPointer_CJackOfBladesBattleDef def;
-    reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem())->GetSubDef(&def);
-    long count = counter->RushCount + 1;
-    if (count > def->MaxRushCount)
-        counter->RushCount = 1;
+    CTCBoss* ptc_boss;
+    reinterpret_cast<CThing*>(PCreature.GetPItem())->GetTC(TCI_BOSS, &ptc_boss);
+    CDefPointer<const CJackOfBladesBattleDef> p_jack_def;
+    reinterpret_cast<CThing*>(PCreature.GetPItem())->PeekBaseDef().GetSubDef<CJackOfBladesBattleDef>(&p_jack_def);
+    long number_of_hits = ptc_boss->GetGenericCounter() + 1;
+    if (number_of_hits > p_jack_def->NumGetHitsBeforeRush)
+        ptc_boss->SetGenericCounter(1);
     else
-        counter->RushCount = count;
-    C3DVector rushPosition;
-    if (CauseRush && GetValidRushPosition(rushPosition)) {
-        C3DVector delta = rushPosition - reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem())->GetPos();
-        C3DVector direction = Normalise(delta);
-        float distance = delta.Get2DLength();
-        CThingCreatureBase* creature = reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem());
+        ptc_boss->SetGenericCounter(number_of_hits);
+    C3DVector rush_to_pos;
+    if (CauseRush && GetValidRushPosition(rush_to_pos)) {
+        C3DVector rush_vector = rush_to_pos - reinterpret_cast<CThing*>(PCreature.GetPItem())->GetPos();
+        C3DVector rush_direction = rush_vector;
+        rush_direction.Normalise();
+        float rush_distance = rush_vector.GetMagnitude2D();
+        CThingCreatureBase* pthing_creature = reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem());
         CCombatAction_GenericStrikeResponseBase::FinishAction();
-        CCountedPointer_CCreatureActionBase finalAction(new CCreatureAction_PlayCombatAnimation(creature, "RUSH_OUTOF", true));
-        GetCreature()->SetCurrentAction(CCreatureAction_CastAssassinRush(creature, direction, distance, false, 0, finalAction));
+        CCountedPointer<CCreatureActionBase> paction(new CCreatureAction_PlayCombatAnimation(*pthing_creature, "RUSH_OUTOF", true));
+        reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem())->SetCurrentAction(
+            CCreatureAction_CastAssassinRush(*pthing_creature, rush_direction, rush_distance, false, 0, paction));
     } else
         CCombatAction_GenericStrikeResponseBase::FinishAction();
 }

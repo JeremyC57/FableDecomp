@@ -1,21 +1,25 @@
+// CCreatureAction_StartBlocking::FrameUpdate() -- set the action's +0x10 word to 2, then run the base CCombatActionBase::FrameUpdate (tail jmp)
+// Leaf: ?FrameUpdate@CCreatureAction_StartBlocking@@UAEXXZ
+// NF75 (round 7, land1117fu q10916): the base call binds Ego_r.pdb / FableWin.pdb ?FrameUpdate@CCombatActionBase@@UAEXXZ (public virtual,
+//   0x00859D80; was the extern "C" stand-in @FrameUpdate_CCombatActionBase@4), called non-virtually as retail's tail `jmp` shows; the
+//   row's own member is the PDB ?FrameUpdate@CCreatureAction_StartBlocking@@UAEXXZ (public virtual; was a __fastcall non-virtual).
+//   In the row's pre-existing local model the first word is the vptr of those virtuals (was `int vtbl`); no field moves.
 class CCombatActionBase
 { public:
-    int vtbl;
+    virtual void FrameUpdate();     // 0x00859D80
     int IntelligentPointer;
     int field_8;
     int field_c;
     int field_10;
 };
 
-extern "C" void __fastcall FrameUpdate_CCombatActionBase(CCombatActionBase* self);
-
 class CCreatureAction_StartBlocking : public CCombatActionBase
 { public:
-    void __fastcall FrameUpdate();
+    virtual void FrameUpdate();
 };
 
-void __fastcall CCreatureAction_StartBlocking::FrameUpdate()
+void CCreatureAction_StartBlocking::FrameUpdate()
 {
     field_10 = 2;
-    FrameUpdate_CCombatActionBase(this);
+    CCombatActionBase::FrameUpdate();
 }

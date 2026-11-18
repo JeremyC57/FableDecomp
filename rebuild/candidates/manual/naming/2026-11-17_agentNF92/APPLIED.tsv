@@ -1,0 +1,20 @@
+entry	queue_address	correct_symbol	status	binders_ported	note
+q11206	0x004F99DE	?_M_copy@?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperience	done	2	all slice binders ported / not-a-binder 0x004F9960 0x00461533 0x004F97B3: 0x004F99DE 0x004F9A6E
+q11207	0x006D9D90	??F?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@	done	1	all slice binders ported / not-a-binder 0x006DCE90 0x0083AEA0: 0x006D9D90
+q11208	0x005BDE50	?IsSlotFull@CItem@NInventory@@QBE_NXZ	done	1	all slice binders ported / not-a-binder 0x005BF19C 0x005BF5A4: 0x005BDE50
+q11209	0x005BEDCB	?UpdateItemStats@CItem@NInventory@@QAEXABVCThing@@@Z	done	1	all slice binders ported / not-a-binder 0x005BF16E: 0x005BEDCB
+q11210	0x005BC479	?SetSelectedItemIndex@CCategory@NInventory@@QAEXJ@Z	done	2	all slice binders ported / not-a-binder 0x005BF060: 0x005BC479 0x005BD9B2
+q11211	0x005BF060	?AddItem@CCategory@NInventory@@QAE_NJ_NJJ@Z	done	2	all slice binders ported: 0x0059C710 0x005BF32D; 0x0059C6B0 deferred: held by NF91 (HELD.txt)
+q11212	0x005C0C86	??$find_if@PBVCItem@NInventory@@V?$const_mem_fun_ref_t@_NVCItem@NInventory@@@std	done	2	all slice binders ported / not-a-binder 0x005BD96B 0x005C08C0 0x005C0653: 0x005C0C86 0x005C0965
+q11213	0x005BC46C	?IsSlotEmpty@CItem@NInventory@@QBE_NXZ	done	0	done already: the only binder 0x005BD96B (NF90 port) binds 0x005BC46C as ?IsSlotEmpty@CItem@NInventory@@QBE_NXZ (reloc_bindings 57a95dc34c, probe unchanged); not-a-binder 0x005BD96B, no edit
+q11214	0x005BDDE4	?AddInventoryItem@CItem@NInventory@@QAEXABV12@@Z	done	1	all slice binders ported / not-a-binder 0x005BF103: 0x005BDDE4
+q11215	0x005BF5A4	?AddItem@CCategory@NInventory@@QAE_NAAVCThing@@_NJ@Z	blocked	1	rows left: 0x005BF654 (blocked); ported: 0x0059C6DD
+q11216	0x005BF103	?AddInventoryItem@CCategory@NInventory@@QAE_NABVCItem@2@@Z	done	1	all slice binders ported: 0x005BF4A3
+q11217	0x004C73E0	?InitTC@CThing@@AAEXPAVCTCBase@@@Z	done	1	all slice binders ported / not-a-binder 0x004C9D60: 0x004C73E0
+q11218	0x013B8A24	?TCsToBeRemoved@CThing@@0V?$list@U?$pair@V?$CIntelligentPointer@VCThing@@@@PAVCT	done	5	all slice binders ported / not-a-binder 0x004C9D60: 0x0121A440 0x01228CE0 0x004C8050 0x004C8310 0x004C9840
+q11219	0x004CCCE0	?_M_insert_overflow@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$al	done	2	all slice binders ported / not-a-binder 0x004C9D60: 0x004CCCE0 0x004CD2F0
+q11220	0x004CD5D0	??$sort@PAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$CKeyPairCompareLess@W	done	2	all slice binders ported / not-a-binder 0x004C9D60: 0x004CD5D0 0x004CD650
+q11221	0x004DD21C	??1?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefS	done	1	all slice binders ported / not-a-binder 0x004E81E4 0x004E81FB 0x004EBB1C: 0x004DD21C
+q11222	0x004E81C1	??1?$vector@VCAttackHistoryCombo@@V?$allocator@VCAttackHistoryCombo@@@std@@@std@	done	1	all slice binders ported / not-a-binder 0x004EBB1C: 0x004E81C1
+q11223	0x004F9207	??4?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefS	done	2	all slice binders ported / not-a-binder 0x004F914A: 0x004F9207 0x004F927A
+q11224	0x008E72B0 0x008E74F0	(coordinator: CModeDragonBase::OnDeactivate one definition?)	done	2	all slice binders ported: 0x008E72B0 0x008E74F0

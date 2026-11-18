@@ -11,6 +11,7 @@
 // DirectionBeingPushed members through the three-float constructor (retail `mov eax,[edi+2Ch] ; mov ecx,[edi+30h] ; ...`).
 // Layout: landed CTCForcePushed_SetUpForcePush_007986a0 model; CHitParameters CreateDustParticleEffectOnHit +0x24, GuaranteeHit +0x25 (PDB).
 #include "fable_compiler.h"
+#include "engine/EDamageAttribute.h"                // NF70 (round 7, q10800): the attribute parameter is the PDB enum, as engine/CHitParameters.h declares it
 class CThing;
 class CBaseObject;
 namespace NHitLocations { class CHitLocation; }
@@ -35,7 +36,7 @@ public:
                    const C3DVector& position, const C3DVector& direction, bool knockDown, bool blockable,
                    bool flourish, bool blockCounter);                       // 0x00789238
     ~CHitParameters();                              // 0x00789358
-    void AddDamageWithAttribute(long attribute, float damage);             // 0x00868CA0 (EDamageAttribute)
+    void AddDamageWithAttribute(EDamageAttribute attribute, float damage); // 0x00868CA0 (Ego_r.pdb / FableWin.pdb: the enum; NF70 q10800)
 };
 
 class CBaseObjectPointer;
@@ -114,7 +115,7 @@ public:
     {
         CHitParameters hit(0, PThingCausingForcePush.GetPItem(), 0, position, direction, true, false, false, false);
         hit.GuaranteeHit = true;
-        hit.AddDamageWithAttribute(8, damage);
+        hit.AddDamageWithAttribute(DAMAGE_GENERIC_WILL, damage);
         hit.CreateDustParticleEffectOnHit = false;
         owner->OnHit(hit);
     }

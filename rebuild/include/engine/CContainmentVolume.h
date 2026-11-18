@@ -57,11 +57,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CContainmentVolume) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CContainmentVolume, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CContainmentVolume, ContainmentPlanes) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CContainmentVolume, Size) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CContainmentVolume, MemoryPool) == 0xc);
+FABLE_STATIC_ASSERT_AT(48, sizeof(CContainmentVolume) == 0x10);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CContainmentVolume, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CContainmentVolume, ContainmentPlanes) == 0x4);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CContainmentVolume, Size) == 0x8);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CContainmentVolume, MemoryPool) == 0xc);
 
 #endif // FABLE_RETAIL_CCONTAINMENTVOLUME
 #endif // FABLE_ENGINE_CCONTAINMENTVOLUME_H

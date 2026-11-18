@@ -1,0 +1,72 @@
+addr       parity           behav  name
+00429288   RELOCATION_MATCH PASS   ReleaseData
+004f9660   RELOCATION_MATCH PASS   operator=
+00541390   WARN RELOC_NAME: ?InsertOverflow@ScrollingArray@NUISystem@@QAEXPAPAVCComponent@2@ABQAV32@ABUFalseType@2@K_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+00541390   RELOCATION_MATCH PASS   GetDataFromDef
+00596cce   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00596cce   RELOCATION_MATCH PASS   RefreshAvailableProfiles
+0059a238   WARN SHARED_HEADER_AVAILABLE CFileInstaller
+0059a238   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0059a238   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+0059a238   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent
+0059a238   WARN SHARED_HEADER_AVAILABLE CVirtualKeyboard
+0059a238   WARN RELOC_NAME: ?Compare_Unsigned16Array@CWideString@@SA_NPBX0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0059a238   WARN RELOC_NAME: ?RestartAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ -> 0042dbee labelled 'CNewFrontendGameComponent::ResetAttractModeTimer'
+0059a238   RELOCATION_MATCH PASS   Action
+0061ab30   WARN SHARED_HEADER_AVAILABLE CAFile
+0061ab30   WARN SHARED_HEADER_AVAILABLE CTestQuest
+0061ab30   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+0061ab30   WARN SHARED_HEADER_AVAILABLE CQuestManager
+0061ab30   WARN SHARED_HEADER_AVAILABLE CWorld
+0061ab30   WARN SHARED_HEADER_AVAILABLE CTCBase
+0061ab30   WARN RELOC_NAME: ?LoadQuestHSP@CWorld@@QAEXABVCCharString@@@Z -> 004a0940 labelled 'CWorld::TeleportHeroToHSP'
+0061ab30   RELOCATION_MATCH PASS   ActivateSelectedTestQuest
+006c80e0   RELOCATION_MATCH PASS   _M_insert_overflow
+0081f240   RELOCATION_MATCH PASS   CopyPos
+0081fa90   RELOCATION_MATCH PASS   GetThemeMinCameraSizeZOffsetAt
+00820140   WARN RELOC_NAME: ?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z -> 0081ea50 labelled 'Terrain_InterpolateHeightAtPosition'
+00820140   RELOCATION_MATCH PASS   GetThemeMinCameraSizeZAt
+00829d90   WARN SHARED_HEADER_AVAILABLE CDateAndTime
+00829d90   WARN SHARED_HEADER_AVAILABLE CWorld
+00829d90   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00829d90   WARN SHARED_HEADER_AVAILABLE CRegionMinimap
+00829d90   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay
+00829d90   WARN RELOC_NAME: ?GenerateAndSave@CRegionMinimap@@QAEXPAVCWorldMap@@ABVCWideString@@@Z -> 0066dc50 labelled 'CRegionMinimap::CreateRegionMinimap'
+00829d90   WARN RELOC_NAME: ?IsLoaded@CRegionMinimap@@QBE_NXZ -> 0066c610 labelled 'C3DMeshInfo::HasPhysicsMesh'
+00829d90   WARN RELOC_NAME: ?GetTexture@CRegionMinimap@@QBEPAVCTexture@@XZ -> 0066caf0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00829d90   WARN RELOC_NAME: ?FreeData@CRegionMinimap@@QAEXXZ -> 0066c7a0 labelled 'CRenderTarget::DetachTarget'
+00829d90   RELOCATION_MATCH PASS   InitialiseMiniMapFileLoading_Region
+0085bad0   RELOCATION_MATCH PASS   FrameUpdate
+008e6390   RELOCATION_MATCH PASS   FrameUpdate
+00938bf0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00938bf0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00938bf0   WARN RELOC_NAME: ??$for_each@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@VCAddFreeSeatToList@@@std@@YI?AVCAddFreeSeatToList@@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@0@0V1@@Z -> 00938e90 labelled 'std::for_each<std::_List_iterator<CIntelligentPointer<CThing>, std::_Const_traits<CIntelligentPointer<CThing>>>, CAddFreeSeatToList>'
+00938bf0   RELOCATION_MATCH PASS   GetRandomFreeSeatInBuilding
+009cfb70   RELOCATION_MATCH PASS   PostInitEntries
+009f5650   WARN SHARED_HEADER_AVAILABLE CInputEventPackage
+009f5650   WARN SHARED_HEADER_AVAILABLE CChecksum
+009f5650   WARN SHARED_HEADER_AVAILABLE CInputManager
+009f5650   RELOCATION_MATCH PASS   LoadEventPackage
+00ada240   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock
+00ada240   WARN RELOC_NAME: ??0CGroupArray@@QAE@ABU0@@Z -> 00535470 labelled 'std::vector::vector'
+00ada240   WARN RELOC_NAME: ??0CGroupToIndexMap@@QAE@ABU0@@Z -> 00a96e40 labelled 'std::map::map'
+00ada240   RELOCATION_MATCH PASS   Process
+
+WINS: 17
+  00429288 RELOCATION_MATCH CCountedPointer<NUISystem::CList>::?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ
+  004f9660 RELOCATION_MATCH std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >::??4?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@QAEAAV01@ABV01@@Z
+  00541390 RELOCATION_MATCH CDynamicList::GetDataFromDef
+  00596cce RELOCATION_MATCH NUISystem::CFrontEndManager::?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@IAEJXZ
+  0059a238 RELOCATION_MATCH CFrontEndManager::?Action@CFrontEndManager@NUISystem
+  0061ab30 RELOCATION_MATCH CTCInventoryQuests::ActivateSelectedTestQuest
+  006c80e0 RELOCATION_MATCH std::vector<std::pair<long, COpinionDeed *>, std::allocator<std::pair<long, COpinionDeed *>>>::?_M_insert_overflow@?$vector@U?$pair@JPAVCOpinionDeed@@@std@@V?$allocator@U?$pair@JPAVCOpinionDeed@@@std@@@2@@std@@IAEXPAU?$pair@JPAVCOpinionDeed@@@2@ABU32@ABU__false_type@2@I_N@Z
+  0081f240 RELOCATION_MATCH CMap::?CopyPos@CMap@@IAEXABV1@ABVC2DCoordI@@1@Z
+  0081fa90 RELOCATION_MATCH CMap::?GetThemeMinCameraSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+  00820140 RELOCATION_MATCH CMap::?GetThemeMinCameraSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+  00829d90 RELOCATION_MATCH CMiniMapDisplay::InitialiseMiniMapFileLoading_Region
+  0085bad0 RELOCATION_MATCH CCreatureActionHeroJump::?FrameUpdate@CCreatureActionHeroJump@@UAEXXZ
+  008e6390 RELOCATION_MATCH CCreatureAction_CastStrengthMultiStrike::?FrameUpdate@CCreatureAction_CastStrengthMultiStrike@@UAEXXZ
+  00938bf0 RELOCATION_MATCH CAIStateGroup_UsesSeat::?GetRandomFreeSeatInBuilding@CAIStateGroup_UsesSeat@@IBEPAVCThingObject@@AAVCThingBuilding@@@Z
+  009cfb70 RELOCATION_MATCH CBankFile::?PostInitEntries@CBankFile@@AAEXXZ
+  009f5650 RELOCATION_MATCH CInputManager::?LoadEventPackage@CInputManager@@IAEXXZ
+  00ada240 RELOCATION_MATCH CVertexGroupBlockOptimiser::Process

@@ -1,195 +1,76 @@
 // NCreatureMode::CModeThunderLightningStorm::CreateLightningBeams() -- spawn NumberOfBeams LIGHTNING_BEAM_EFFECT things at the
 //   caster (main beams, flagged MainBeamsCreated) and NumberOfBeams LIGHTNING_BEAM_END_EFFECT things, keeping intelligent pointers
 //   to the live ones in the two emitter vectors; the special-effects sub-def reference is released at the end
-// Leaf: CreateLightningBeams
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Leaf: ?CreateLightningBeams@CModeThunderLightningStorm@NCreatureMode@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DDAD0, 661 bytes (`ret`).
-// Matching: the first GetEffectFromString (0x00669D30) and the first push_back (0x004AD520) stay out of line; at the second site
-//   VC7.1 inlines both (CRC Calc + map find, and the STLport placement-new push_back with the 0x004AC940 overflow). The inline
-//   CRC needs `len` then `str` as named locals in that order (retail's `[ecx+esi]` index-first SIB); `y = Header; return y;` and
-//   the caller's `!= Effects.end()` member re-read give retail's find tail.
-#include "fable_compiler.h"
-#include "engine/C3DVector.h"
-extern char g_emptyString[];                            // 0x0129AAF4
-extern const unsigned long g_crcTable_0129a168[256];    // 0x0129A168
-struct CStringData { char* Text; unsigned long Length; };
-class CCharString { public:
-    CStringData* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
-    const char* c_str() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
-};
-FABLE_FORCEINLINE unsigned long CalcCRC(unsigned long seed, const char* data, unsigned long length)
-{
-    if (length == 0)
-        return seed;
-    for (unsigned long index = 0; index < length; ++index)
-        seed = g_crcTable_0129a168[((const unsigned char*)data)[index] ^ (seed & 0xff)] ^ (seed >> 8);
-    return seed;
-}
-struct CDefBase {
-    virtual ~CDefBase();                        // slot 0
-    virtual void Destroy();                     // slot 1
-    long m_refCount;                            // +0x04
-};
-template <class T> class CDefPointer { public:
-    T* m_p;
-    CDefPointer() : m_p(0) { }
-};
-struct SEffectNode {                            // STLport _Rb_tree_node<pair<const unsigned long, long> >
-    long          Color;
-    SEffectNode*  Parent;                       // +0x04
-    SEffectNode*  Left;                         // +0x08
-    SEffectNode*  Right;                        // +0x0c
-    unsigned long Key;                          // +0x10
-    long          Value;                        // +0x14
-};
-struct CEffectMap {
-    SEffectNode* Header;
-    SEffectNode* end() const { return Header; }
-    FABLE_FORCEINLINE SEffectNode* find(const unsigned long& key) const
-    {
-        SEffectNode* y = Header;
-        SEffectNode* x = Header->Parent;
-        while (x != 0) {
-            if (!(x->Key < key)) {
-                y = x;
-                x = x->Left;
-            } else
-                x = x->Right;
-        }
-        if (y == Header || key < y->Key)
-            y = Header;
-        return y;
-    }
-};
-class CSpecialEffectsDef : public CDefBase { public:
-    unsigned char _pad08[0x28 - 0x08];
-    CEffectMap    Effects;                      // +0x28 map<unsigned long, long> (header node pointer)
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-    FABLE_FORCEINLINE bool GetEffectFromStringInline(const CCharString& name, long& type) const
-    {
-        unsigned long len = name.Length();
-        const char* str = name.c_str();
-        unsigned long key = CalcCRC(0, str, len);
-        SEffectNode* it = Effects.find(key);
-        if (it != Effects.end()) {
-            type = it->Value;
-            return true;
-        }
-        return false;
-    }
-};
-long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
-{
-    long found = Lookup_CSpecialEffectsDef_GetEffectFromString(this, name);
-    if (found < 0)
-        return false;
-    type = found;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
-};
-void* Find_CDefClassBase_GetSubDef(const void* owner);
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out)
-{
-    void* def = Find_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out.m_p = (T*)def;
-    return true;
-}
-#pragma auto_inline(on)
-class CSpecialAbilitiesThunderLightningStormDef : public CDefClassBase { public:
-    unsigned char _pad08[0x3c - 0x08];
-    long          NumberOfBeams;                // +0x3c
-};
-class CThing { public:
-    unsigned char  _pad0[0x91];
-    unsigned char  m_flags91;                   // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
-class CTCDParticleEmitter { public:
-    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
-};
-
-class CBaseObject;
+// Flags: /d2inlT65
+// Inline-budget: /d2inlT65 -- LTCG per-site split: GetEffectFromString 0x00669D30 and push_back 0x004AD520 called at the first site, expanded (CCRC::Calc and the map find included) at the second; default / T70 / T80 expand both push_backs, T60 also calls Calc, T40 expands nothing; T65 matches (T61-T64 not bisected for budget).
+// Port (NF74, round 7; nf44:50): every class from the shared headers (the 16 local models and the stand-in GetSubDef /
+//   GetEffectFromString bodies gone), on the macro block of the landed sibling CreateSkyBeam 0x008DAA80 plus STLport's
+//   vector<CIntelligentPointer<CThing> > (push_back inline; _M_insert_overflow 0x004AC940 visible but out of line). Retail is
+//   link-time code generated, so VC7.1's inliner decides per call site: the first GetEffectFromString (0x00669D30) and the first
+//   push_back (0x004AD520) are calls, the second ones are expanded (CCRC::Calc and the map find included); the visible inline
+//   bodies (NF74 overlay opt-in FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_INLINE, the existing FABLE_RETAIL_CCRC_PASS22_BODY, the
+//   STLport const find FABLE_RETAIL_STLP_TREE_CONSTFIND, CIntelligentPointer's copy ctor FABLE_RETAIL_CINTELLIGENTPOINTER_COPY) let it
+//   decide. Locals carry the Ego_d.pdb names. FITTED: the NF74 overlay opt-in FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_NAMED_ARGS
+//   (length then text as named locals before the CRC; Ego_d lists only `it` in GetEffectFromString) gives retail's index-first
+//   `movzx edi,byte ptr [ecx+esi]` (0x008DDC00); without it the only difference is that SIB order (661 v 661).
+#define FABLE_RETAIL_CTCDPARTICLEEMITTER_FULL
+#define FABLE_RETAIL_SKYBEAM_ORIGINAL
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_INLINE
+#define FABLE_RETAIL_CCRC_PASS22_BODY
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_NAMED_ARGS
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
-    CIntelligentPointerThing(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
-inline void* operator new(unsigned int, void* place) { return place; }
-struct __false_type { __false_type() {} };
-struct CIntelligentPointerVector {                    // STLport vector<CIntelligentPointer<CThing> > (12 bytes)
-    CIntelligentPointerThing* _M_start;
-    CIntelligentPointerThing* _M_finish;
-    CIntelligentPointerThing* _M_end_of_storage;
-    void push_back(const CIntelligentPointerThing& x); // 0x004AD520
-    void _M_insert_overflow(CIntelligentPointerThing* position, const CIntelligentPointerThing& x, const __false_type&,
-                            unsigned int count, bool atEnd);   // 0x004AC940
-    FABLE_FORCEINLINE void push_back_inline(const CIntelligentPointerThing& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) CIntelligentPointerThing(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODEBASE_PARENTTHING
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "engine/CThing.h"
+#include "engine/C3DVector.h"
+#include "engine/CSpecialAbilitiesThunderLightningStormDef.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CTCDParticleEmitter.h"
+#include "engine/NCreatureMode_CModeThunderLightningStorm.h"
+#include "engine/ThingAlive.h"
 
-struct CModeBase {
-    virtual ~CModeBase();
-    CThing* ParentThing;                        // +0x04
-    unsigned char _pad08[0x14];
-};
-namespace NCreatureMode {
-struct CModeThunderLightningStorm : CModeBase {
-    unsigned char             _pad1c[0x74 - 0x1c];
-    CIntelligentPointerVector LightningBeamParticleEmitters;     // +0x74
-    CIntelligentPointerVector LightningBeamEndParticleEmitters;  // +0x80
-    CIntelligentPointerThing  PSkyBeam;                          // +0x8c
-    CIntelligentPointerThing  PCreatorEffect;                    // +0x94
-    CIntelligentPointerThing  PHandGlow;                         // +0x9c
-    CSpecialAbilitiesThunderLightningStormDef* PLightningStormDef;   // +0xa4
-    CIntelligentPointerVector HitThings;                         // +0xa8
-    bool                      MainBeamsCreated;                  // +0xb4
-    void CreateLightningBeams();
-};
-
-void CModeThunderLightningStorm::CreateLightningBeams()
+void NCreatureMode::CModeThunderLightningStorm::CreateLightningBeams()
 {
-    CDefPointer<CSpecialEffectsDef> effectsSlot;
-    long effectType = 0;
-    PLightningStormDef->GetSubDef(effectsSlot);
-    CSpecialEffectsDef* effects = effectsSlot.m_p;
-    if (effects->GetEffectFromString("LIGHTNING_BEAM_EFFECT", effectType)) {
-        MainBeamsCreated = true;
-        C3DVector position = ParentThing->GetPos();
-        for (long i = 0; i < PLightningStormDef->NumberOfBeams; ++i) {
-            CThing* beam = CTCDParticleEmitter::Create(effectType, position, false);
-            if (beam && !(beam->m_flags91 & 1))
-                LightningBeamParticleEmitters.push_back(CIntelligentPointerThing(beam));
-        }
-    }
-    if (effects->GetEffectFromStringInline("LIGHTNING_BEAM_END_EFFECT", effectType)) {
-        C3DVector position = ParentThing->GetPos();
-        for (long i = 0; i < PLightningStormDef->NumberOfBeams; ++i) {
-            CThing* beam = CTCDParticleEmitter::Create(effectType, position, false);
-            if (beam && !(beam->m_flags91 & 1))
-                LightningBeamEndParticleEmitters.push_back_inline(CIntelligentPointerThing(beam));
-        }
-    }
-    if (--effects->m_refCount == 0)
-        effects->Destroy();
-}
+ CDefPointer<const CSpecialEffectsDef> pspecial_fx_def;
+ long effect_index=0;
+ PLightningStormDef->GetSubDef(&pspecial_fx_def);
+ if(pspecial_fx_def->GetEffectFromString("LIGHTNING_BEAM_EFFECT",effect_index)) {
+  MainBeamsCreated=true;
+  C3DVector weapon_pos=GetParentThing().GetPos();
+  for(long n=0;n<PLightningStormDef->NumBeams;++n) {
+   CThing* p_emitter_thing=CTCDParticleEmitter::Create(effect_index,weapon_pos,false);
+   if(IS_THING_ALIVE(p_emitter_thing))LightningBeamParticleEmitters.push_back(CIntelligentPointer<CThing>(p_emitter_thing));
+  }
+ }
+ if(pspecial_fx_def->GetEffectFromString("LIGHTNING_BEAM_END_EFFECT",effect_index)) {
+  C3DVector weapon_pos=GetParentThing().GetPos();
+  for(long n=0;n<PLightningStormDef->NumBeams;++n) {
+   CThing* p_emitter_thing=CTCDParticleEmitter::Create(effect_index,weapon_pos,false);
+   if(IS_THING_ALIVE(p_emitter_thing))LightningBeamEndParticleEmitters.push_back(CIntelligentPointer<CThing>(p_emitter_thing));
+  }
+ }
 }

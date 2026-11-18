@@ -1,72 +1,43 @@
-#include "candidates/world_map_theme.h"
+// CMap::GetEngineThemeAt(long x, long y, unsigned long index, EThemePaintType PaintType) const -- read one theme layer of a map cell:
+// paint type 0 gives the theme definition index of the height-map cell's engine theme layer (through the map's theme palette), paint
+// type 1 the atmos theme of the game-map cell that holds the height-map position; any other paint type gives 0.
+// Leaf: ?GetEngineThemeAt@CMap@@IBEKJJKW4EThemePaintType@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0081F090, 147 bytes, `ret 10h`.
+// Name: Ego_r.pdb 0x00679CA0 / FableWin.pdb 0x022380B0 ?GetEngineThemeAt@CMap@@IBEKJJKW4EThemePaintType@@@Z (protected const); Ego_d.pdb
+//   parameters x, y, index, PaintType and the block locals theme_palette_index (unsigned long) and gpos (C2DCoordI).
+//   NF81 (round 7, q10978): re-authored on engine/CMap.h; the July row (candidates/world_map_theme.h with a local storage cast model)
+//   never byte-matched (DIFFER 145 v 147).
+// Callees: none out of line; inline: CHeightMap::GetCell, CHeightMapCell::GetEngineThemePaletteIndex, CMap::HeightMapUnitToGameMapUnit,
+//   CGameMap::GetCell, CGameMapCell::GetAtmosTheme (FableWin.pdb).
+// Layout: CMap ThemePaletteEntryList +0x1A6C (8-byte CThemePaletteEntry, ThemeDefIndex +0), GameMap +0x1A78, HeightMap +0x1A7C;
+//   CHeightMap Cells +0x10, SizeX +0x204, SizeY +0x208; CGameMap Cells +0x04, SizeX +0x1C, SizeY +0x20.
+#define FABLE_RETAIL_CMAP_THEMEPALETTE
+#define FABLE_RETAIL_CMAP_LOADFROMFILE          // CMap::HeightMapUnitToGameMapUnit
+#define FABLE_RETAIL_CMAP_ENGINETHEMEAT         // NF81 overlay: EThemePaintType and the protected per-cell theme accessors
+#define FABLE_RETAIL_CHEIGHTMAPCELL
+#define FABLE_RETAIL_CHEIGHTMAPCELL_ACCESSORS
+#define FABLE_RETAIL_CHEIGHTMAP_GETCELL
+#define FABLE_RETAIL_CGAMEMAP
+#define FABLE_RETAIL_CGAMEMAPCELL_ATMOSGETTERS  // NF81 overlay: GetAtmosTheme (inline) / GetAtmosBlend (0x006B74E0)
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_SCOPED_PTR
+class CASuspendableProcess;
+#include "engine/CMap.h"
+#include "engine/CHeightMap.h"
+#include "engine/CGameMap.h"
 
-namespace
-{
-struct ThemePaletteEntry
-{
-    unsigned long themeId;
-    unsigned long reserved;
-};
 
-struct QuarterThemeGrid
+unsigned long CMap::GetEngineThemeAt(long x, long y, unsigned long index, EThemePaintType PaintType) const
 {
-    unsigned char padding_00[0x04];
-    unsigned char* data;
-    unsigned char padding_08[0x14];
-    long width;
-    long height;
-};
-
-struct GameMapThemeGrid
-{
-    unsigned char padding_00[0x10];
-    unsigned char* data;
-    unsigned char padding_14[0x1F0];
-    long width;
-    long maxY;
-};
-
-struct CMapThemeStorage
-{
-    unsigned char padding_00[0x1A6C];
-    ThemePaletteEntry* paletteBegin;
-    ThemePaletteEntry* paletteEnd;
-    ThemePaletteEntry* paletteCapacity;
-    QuarterThemeGrid* quarterGrid;
-    GameMapThemeGrid* gameGrid;
-};
-}
-
-FABLE_STATIC_ASSERT(offsetof(CMapThemeStorage, paletteBegin) == 0x1A6C);
-FABLE_STATIC_ASSERT(offsetof(CMapThemeStorage, quarterGrid) == 0x1A78);
-FABLE_STATIC_ASSERT(offsetof(CMapThemeStorage, gameGrid) == 0x1A7C);
-FABLE_STATIC_ASSERT(offsetof(QuarterThemeGrid, data) == 0x04);
-FABLE_STATIC_ASSERT(offsetof(QuarterThemeGrid, width) == 0x1C);
-FABLE_STATIC_ASSERT(offsetof(QuarterThemeGrid, height) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(GameMapThemeGrid, data) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(GameMapThemeGrid, width) == 0x204);
-FABLE_STATIC_ASSERT(offsetof(GameMapThemeGrid, maxY) == 0x208);
-
-unsigned long CMap::GetEngineThemeAt(
-    long x,
-    long y,
-    unsigned long themeValue,
-    EThemePaintType paintType) const
-{
-    const CMapThemeStorage* storage =
-        reinterpret_cast<const CMapThemeStorage*>(this);
-    if (paintType == EThemePaintType_Default)
+    if (PaintType == THEME_PAINT_ENGINE)
     {
-        const GameMapThemeGrid* grid = storage->gameGrid;
-        const unsigned char paletteIndex = grid->data[
-            ((grid->maxY - y) * (grid->width + 1) + x) * 0x0C + 4 + themeValue];
-        return storage->paletteBegin[paletteIndex].themeId;
+        unsigned long theme_palette_index = HeightMap->GetCell(C2DCoordI(x, y)).GetEngineThemePaletteIndex(index);
+        return ThemePaletteEntryList[theme_palette_index].ThemeDefIndex;
     }
-    if (paintType == EThemePaintType_Replace)
+    else if (PaintType == THEME_PAINT_ATMOS)
     {
-        const QuarterThemeGrid* grid = storage->quarterGrid;
-        return grid->data[
-            ((grid->height - y / 4 - 1) * grid->width + x / 4) * 7 + themeValue];
+        C2DCoordI gpos(HeightMapUnitToGameMapUnit(x), HeightMapUnitToGameMapUnit(y));
+        return GameMap->GetCell(gpos).GetAtmosTheme(index);
     }
     return 0;
 }

@@ -1,5 +1,5 @@
 // std::deque::_M_reallocate_map(size_t __nodes_to_add, bool __add_at_front) -- (<NUISystem::CComponent*>) grow or recentre the node map, then re-point start and finish
-// Leaf: ?_M_reallocate_map@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXI_N@Z
+// Leaf: ?_M_reallocate_map@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXI_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059B0C3, 251 bytes, thiscall, `ret 8`.
 // Identity (proven): 0x80-byte nodes (32 pointers); the same TU's _Deque_base constructor 0x0059AEF9 / _M_initialize_map 0x0059AC9F are deque<NUISystem::CComponent*>'s (CFrontEndManager::m_stackScreens; its users are the landed CFrontEndManager members).
 // Callees: std::__copy_trivial 0x00405BA0, std::__copy_trivial_backward 0x00405BC0 (both `__fastcall`, out of line in
@@ -7,6 +7,10 @@
 // Shape (family M070, representative 0x00493D30): STLport 4.6 _deque.c `_M_reallocate_map`; frame-pointer size TU
 //   (`optimize("y", off)` + `("s", on)`): new_map_size / new_map in the two frame words, `(max)` by reference (the
 //   `lea edx,[ebp+8]` select), the map allocator's allocate/deallocate and `_M_set_node` inline.
+// NF86 (round 7, q11103 follow-on): access-only self respell to STLport 4.6's protected _M_reallocate_map (IAE; _deque.h and
+//   stlport/fable_deque.h declare it protected), the spelling its only caller 0x0059B4D8 now binds from the shared header; the
+//   pre-existing local deque model is respelt in place (a `protected:` label), the full port onto fable_deque.h (which has no
+//   _M_reallocate_map body yet) stays open. Descriptive by library (STLport; both PDBs are Dinkumware builds).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -51,6 +55,7 @@ public:
     iterator _M_finish;                                   // +0x10
     _STLP_alloc_proxy<_Map_pointer, _Tp*, allocator<_Tp*> > _M_map;   // +0x20
     _STLP_alloc_proxy<size_type, _Tp, _Alloc> _M_map_size;            // +0x24
+protected:
     void _M_reallocate_map(size_type __nodes_to_add, bool __add_at_front);
 };
 template <class _Tp, class _Alloc>

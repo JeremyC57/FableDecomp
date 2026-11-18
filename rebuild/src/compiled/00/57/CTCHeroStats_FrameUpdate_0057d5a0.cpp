@@ -13,7 +13,7 @@
 //          GFGetCurrentFrame() @ 0x0049D870, _ftol @ 0x00BFEA70, CThing virtual slot 59 (+0xEC, ModifyHealth(float, bool)),
 //          CBaseIntelligentPointer::GetPItem() @ 0x00A01B50, IS_THING_ALIVE(CThing* const&) @ 0x00436380,
 //          CTCObjectAugmentations::GetHealthToAddThisFrame() @ 0x00766260 / GetStaminaToAddThisFrame() @ 0x00766330,
-//          CTCHaste::RemoveMultiplier(CTCHeroStats*) @ 0x0058148D, CTCHeroStats::ProcessDrunkenness() @ 0x0057CB7E.
+//          CTCHaste::UnsetActionSpeedMultiplier(void*) @ 0x0058148D (Ego_r.pdb; was the made-up RemoveMultiplier(CTCHeroStats*)), CTCHeroStats::ProcessDrunkenness() @ 0x0057CB7E.
 // Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Shape: interfaces 0xA7 (a component whose +0xC byte blocks stamina refill), 0x93 (presence only), 0x13
 // CTCInventoryWeapons (active melee +0x134 / ranged +0x141 weapon pointers, const pick), 0xBF CTCObjectAugmentations
@@ -129,7 +129,7 @@ struct CStaminaRefillBlocker {                       // interface 0xA7
 
 class CTCHeroStats;
 class CTCHaste { public:                                    // interface 0x8C
-    void RemoveMultiplier(CTCHeroStats* stats);      // 0x0058148D
+    void UnsetActionSpeedMultiplier(void* key);      // 0x0058148D, Ego_r.pdb ?UnsetActionSpeedMultiplier@CTCHaste@@QAEXPAX@Z
 };
 
 class CWorldMap { public:
@@ -260,7 +260,7 @@ void CTCHeroStats::FrameUpdate()
     if (speedFrames > 0 && --speedFrames <= 0) {
         CTCHaste* haste = 0;
         ParentThing->GetInterface(&haste, 0x8C);
-        haste->RemoveMultiplier(this);
+        haste->UnsetActionSpeedMultiplier(this);
     }
     ProcessDrunkenness();
 }

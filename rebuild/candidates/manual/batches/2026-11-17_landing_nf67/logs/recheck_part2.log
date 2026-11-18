@@ -1,0 +1,13 @@
+addr       parity           behav  name
+008a7980   RELOCATION_MATCH PASS   EntityStopFollowing
+008d3dd0   RELOCATION_MATCH PASS   MsgGetThingsKilled
+00915190   RELOCATION_MATCH PASS   Cleanup
+00961880   RELOCATION_MATCH PASS   Update
+0096c4f0   RELOCATION_MATCH PASS   Update
+
+WINS: 5
+  008a7980 RELOCATION_MATCH CGameScriptInterface::?EntityStopFollowing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  008d3dd0 RELOCATION_MATCH CGameScriptThing::?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z
+  00915190 RELOCATION_MATCH CAIStateGroup_KidHurtSelfRunToMother::?Cleanup@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ
+  00961880 RELOCATION_MATCH CAIStateGroup_BanditKingLunge::?Update@CAIStateGroup_BanditKingLunge@@MAEXXZ
+  0096c4f0 RELOCATION_MATCH CAIStateGroup_Thunder::?Update@CAIStateGroup_Thunder@@UAEXXZ

@@ -1,5 +1,7 @@
 // CAIStateGroup_UsesSeat::IsSeatValid() -- the seat thing exists and its action-point component reports usable
-// Leaf: ?IsSeatValid@CAIStateGroup_UsesSeat@@QAE_NXZ
+// Leaf: ?IsSeatValid@CAIStateGroup_UsesSeat@@IAE_NXZ
+// NF72 (round 7, q10864): access-only fix: IsSeatValid is protected in Ego_r.pdb + FableWin.pdb (IAE; engine/CAIStateGroup_UsesSeat.h); the
+//   local declaration is now under `protected:`. The bytes are unchanged.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00938580, length 98 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), CVectorMap::LowerBound @ 0x0040F020 (inlined
@@ -65,6 +67,7 @@ struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     long SeatPosIndex;                          // +0x20
     float SeatPos[3];                           // +0x24 C3DVector
     bool SittingOnBench;                        // +0x30
+protected:
     bool IsSeatValid();
 };
 

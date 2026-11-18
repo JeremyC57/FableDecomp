@@ -32,6 +32,16 @@ public:
     // Declaration only.
     void AsyncUpdatePending();                                           // 0x009D68B0
 #endif
+#ifdef FABLE_RETAIL_CBANKFILEASYNC_UPDATEPENDING_BODY
+    // NF72 opt-in (round 7, q10905, row 0x009D68B0 AsyncUpdatePending): Ego_r.pdb 0x00B2A6E0 / FableWin.pdb 0x02FF6EC0
+    // ?ProcessDisposalList@CBankFileAsync@@QAEXXZ (public, retail 0x009D6730) and Ego_r.pdb 0x00B29C60 / FableWin.pdb 0x02FF6F90
+    // ?RestartAbortedReads@CBankFileAsync@@AAEXXZ (private, retail 0x009D5A90), the two calls AsyncUpdatePending makes.
+    // Declarations only; pair with FABLE_RETAIL_CBANKFILEASYNC_ASYNCUPDATEPENDING for AsyncUpdatePending itself.
+    void ProcessDisposalList();                                          // 0x009D6730
+private:
+    void RestartAbortedReads();                                          // 0x009D5A90
+public:
+#endif
 #ifdef FABLE_RETAIL_CBANKFILEASYNC_HANDLEFAILEDALLOCATION
     // Retail opt-in (chunk F2, row 0x009D5BF0): Ego_r.pdb / FableWin.pdb ?HandleFailedAllocation@CBankFileAsync@@QAE_NXZ. Declaration only.
     bool HandleFailedAllocation();                                       // 0x009D5BF0
@@ -42,6 +52,12 @@ public:
     // (0x009D66A0), the counted pointers passed by value. Declarations only.
     void SetLoadingMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool);                        // 0x00B3E820
     void SetLoadingMemoryFailureHandler(CCountedPointer<CLoadingMemoryFailureHandler> handler);        // 0x009D66A0
+#endif
+#ifdef FABLE_RETAIL_CBANKFILEASYNC_GETASYNCENTRY
+    // NF68 opt-in (rows 0x00A42980 / 0x00A25BD0): the PDB name of retail 0x009D58D0 is Ego_r.pdb 0x00B29950 / FableWin.pdb 0x02FF69A0
+    // ?GetAsyncEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z (the landed self row 0x009D58D0 spells it so);
+    // neither PDB has a CreateEntry (the CREATEENTRY opt-in below). Declaration only.
+    CCountedPointer<class CBankFileAsyncEntry> GetAsyncEntry(unsigned long index);   // 0x009D58D0
 #endif
 #ifdef FABLE_RETAIL_CBANKFILEASYNC_CREATEENTRY
     // agentC27 (row 0x009FDE80): Ego_r.pdb ?CreateEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z, retail 0x009D58D0.

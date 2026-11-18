@@ -1,0 +1,75 @@
+addr       parity           behav  name
+004c9d60   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+004c9d60   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+004c9d60   RELOCATION_MATCH PASS   AddTC
+004e3644   RELOCATION_MATCH PASS   ScalarDeletingDtor_004e3644
+004e6e43   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@Z -> 004e6e43 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+004e6e43   WARN RELOC_NAME: ??_G?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@QAEPAXI@Z -> 004e3644 labelled '_global::ScalarDeletingDtor_004e3644'
+004e6e43   WARN STANDIN_LEAF ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@Z (catalog LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray; names another function)
+004e6e43   RELOCATION_MATCH PASS   BuildTreeArray
+004e7749   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@Z -> 004e6e43 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+004e7749   RELOCATION_MATCH PASS   RbTree_Clear_004e7749
+004e81fb   WARN STANDIN_LEAF ??1?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@QAE@XZ (catalog std::list<T_004e81fb>::~list; names another function)
+004e81fb   RELOCATION_MATCH PASS   ~list
+004ebb1c   WARN RELOC_NAME: ??1?$vector@VCAttackHistoryCombo@@V?$allocator@VCAttackHistoryCombo@@@std@@@std@@QAE@XZ -> 004e81c1 labelled '_global::StdList_Dtor_004e81c1'
+004ebb1c   WARN RELOC_NAME: ??1?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@QAE@XZ -> 004e81fb labelled 'std::list<T_004e81fb>::~list'
+004ebb1c   WARN RELOC_NAME: ??1?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@2@@std@@QAE@XZ -> 004dd21c labelled '_global::StdList_Dtor_004dd21c'
+004ebb1c   RELOCATION_MATCH PASS   ~CHeroExperienceDef
+004f914a   RELOCATION_MATCH PASS   operator=
+004f9831   WARN STANDIN_LEAF ??4?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@QAEAAV01@ABV01@@Z (catalog CRetailTree_004f98a4::operator=; names another function)
+004f9831   RELOCATION_MATCH PASS   operator=
+004f98a4   WARN STANDIN_LEAF ?_M_copy@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@PAU32@0@Z (catalog CRetailTree_004f9934::Copy; names another function)
+004f98a4   RELOCATION_MATCH PASS   Copy
+004f9934   WARN RELOC_NAME: ??0?$map@W4EHeroExperienceStatCategory@@MU?$less@W4EHeroExperienceStatCategory@@@std@@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@QAE@ABV01@@Z -> 004f9960 labelled '_Rb_tree::_Rb_tree'
+004f9934   RELOCATION_MATCH PASS   _M_create_node
+004f9960   WARN STANDIN_LEAF ??0?$map@W4EHeroExperienceStatCategory@@MU?$less@W4EHeroExperienceStatCategory@@@std@@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@QAE@ABV01@@Z (catalog _Rb_tree::_Rb_tree; names another function)
+004f9960   RELOCATION_MATCH PASS   _Rb_tree
+005bd96b   WARN RELOC_NAME: ??$find_if@PBVCItem@NInventory@@V?$const_mem_fun_ref_t@_NVCItem@NInventory@@@std@@@std@@YIPBVCItem@NInventory@@PBV12@0V?$const_mem_fun_ref_t@_NVCItem@NInventory@@@0@@Z -> 005c0c86 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+005bd96b   RELOCATION_MATCH PASS   GetFirstEmptySlot
+005be85b   WARN RELOC_NAME: ??$find_if@PBVCItem@NInventory@@VCIsSameItemType@@@std@@YIPBVCItem@NInventory@@PBV12@0VCIsSameItemType@@@Z -> 005c1921 labelled 'std::vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_>::_Ucopy<std::pair<long,CCountedPointer<CContainmentVolume>_>*>'
+005be85b   RELOCATION_MATCH PASS   GetSlotWithItemsOfType
+005beaf5   WARN RELOC_NAME: ?erase@?$vector@JV?$allocator@J@std@@@std@@QAEPAJPAJ0@Z -> 00440590 labelled 'Buffer_Relocate'
+005beaf5   RELOCATION_MATCH PASS   GetAllSelectedItems
+005bf060   RELOCATION_MATCH PASS   AddItem
+005bf103   RELOCATION_MATCH PASS   AddInventoryItem
+005bf16e   RELOCATION_MATCH PASS   UpdateItemStatsForThing
+005bf19c   WARN STANDIN_LEAF ?IsSpaceInCategoryForItem@CCategory@NInventory@@QBE_NJ@Z (catalog CCategory::CanAddItem; names another function)
+005bf19c   RELOCATION_MATCH PASS   CanAddItem
+005bf5a4   RELOCATION_MATCH PASS   AddItem
+005c1921   WARN STANDIN_LEAF ??$find_if@PBVCItem@NInventory@@VCIsSameItemType@@@std@@YIPBVCItem@NInventory@@PBV12@0VCIsSameItemType@@@Z (catalog std::vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_>::_Ucopy<std::pair<long,CCountedPointer<CContainmentVolume>_>*>; names another function)
+005c1921   RELOCATION_MATCH PASS   pair<long,CCountedPointer<CContainmentVolume>_>*>
+006dc9b0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@Z -> 004e6e43 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dc9b0   RELOCATION_MATCH PASS   RbTree_Clear_006dc9b0
+006dcbf0   WARN RELOC_NAME: ??0?$map@W4EHeroExperienceStatCategory@@MU?$less@W4EHeroExperienceStatCategory@@@std@@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@QAE@ABV01@@Z -> 004f9960 labelled '_Rb_tree::_Rb_tree'
+006dcbf0   RELOCATION_MATCH PASS   _M_insert
+006dce90   WARN RELOC_NAME: ??F?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@std@@QAEAAU01@XZ -> 006d9d90 labelled 'CRetailTreeIterator::Decrement'
+006dce90   RELOCATION_MATCH PASS   InsertUnique_CRetailTree_006dce90
+00739e60   MATCH            PASS   OnDeactivate
+008e74f0   RELOCATION_MATCH PASS   OnDeactivate
+
+WINS: 25
+  004c9d60 RELOCATION_MATCH CThing::?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+  004e3644 RELOCATION_MATCH _global::??_G?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@QAEPAXI@Z
+  004e6e43 RELOCATION_MATCH LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@Z
+  004e7749 RELOCATION_MATCH _global::?clear@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@QAEXXZ
+  004e81fb RELOCATION_MATCH std::??1?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@QAE@XZ
+  004ebb1c RELOCATION_MATCH CHeroExperienceDef::??1CHeroExperienceDef@@UAE@XZ
+  004f914a RELOCATION_MATCH CHeroExperienceDef::??4CHeroExperienceDef@@QAEAAV0@ABV0@@Z
+  004f9831 RELOCATION_MATCH CRetailTree_004f98a4::??4?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  004f98a4 RELOCATION_MATCH CRetailTree_004f9934::?_M_copy@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@PAU32@0@Z
+  004f9934 RELOCATION_MATCH std::_Rb_tree::?_M_create_node@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@ABU?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@2@@Z
+  004f9960 RELOCATION_MATCH _Rb_tree::??0?$map@W4EHeroExperienceStatCategory@@MU?$less@W4EHeroExperienceStatCategory@@@std@@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@QAE@ABV01@@Z
+  005bd96b RELOCATION_MATCH CCategory::?GetFirstEmptySlot@CCategory@NInventory@@ABEJXZ
+  005be85b RELOCATION_MATCH CCategory::?GetSlotWithItemsOfType@CCategory@NInventory@@ABEJJ@Z
+  005beaf5 RELOCATION_MATCH CTCInventoryBase::?GetAllSelectedItems@CTCInventoryBase@NInventory@@IBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+  005bf060 RELOCATION_MATCH CCategory::?AddItem@CCategory@NInventory@@QAE_NJ_NJJ@Z
+  005bf103 RELOCATION_MATCH CCategory::?AddInventoryItem@CCategory@NInventory@@QAE_NABVCItem@2@@Z
+  005bf16e RELOCATION_MATCH CCategory::?UpdateItemStatsForThing@CCategory@NInventory@@QAEXABVCThing@@@Z
+  005bf19c RELOCATION_MATCH CCategory::?IsSpaceInCategoryForItem@CCategory@NInventory@@QBE_NJ@Z
+  005bf5a4 RELOCATION_MATCH CCategory::?AddItem@CCategory@NInventory@@QAE_NAAVCThing@@_NJ@Z
+  005c1921 RELOCATION_MATCH std::find_if<const NInventory::??$find_if@PBVCItem@NInventory@@VCIsSameItemType@@@std@@YIPBVCItem@NInventory@@PBV12@0VCIsSameItemType@@@Z
+  006dc9b0 RELOCATION_MATCH _global::?clear@?$map@W4EDamageAttribute@@VCHeroStatIncreaseData@@U?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@4@@std@@QAEXXZ
+  006dcbf0 RELOCATION_MATCH std::_Rb_tree::?_M_insert@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@2@0@Z
+  006dce90 RELOCATION_MATCH _unattributed::?insert_unique@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@2@@Z
+  00739e60 MATCH CTCCreatureModeManager::CModeBase::?OnDeactivate@CModeBase@CTCCreatureModeManager@@UAEXXZ
+  008e74f0 RELOCATION_MATCH NCreatureMode::CModeIntangible::?OnDeactivate@CModeIntangible@NCreatureMode@@UAEXXZ

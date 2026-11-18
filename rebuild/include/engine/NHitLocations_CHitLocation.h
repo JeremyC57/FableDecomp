@@ -47,11 +47,16 @@ private:
  EActionRegisteredType BlockResponseAction;
  bool Enabled;
  static std::map<enum EHitLocationCodelet,void (__fastcall*)(CThing &,CHitParameters const &),std::less<enum EHitLocationCodelet>,std::allocator<std::pair<enum EHitLocationCodelet const ,void (__fastcall*)(CThing &,CHitParameters const &)> > > RegisteredHitLocationCodelets;
+#ifdef FABLE_RETAIL_CHITLOCATION_TREGISTEREDHITLOCATIONCODELETMAP
+ // Opt-in (agentNF69, rows 0x008162F0 StatRegisterClass / 0x00815E80 ProcessHitLocationCode): the nested typedef of the static above,
+ // Ego_d.pdb LF_NESTTYPE NHitLocations::CHitLocation::TRegisteredHitLocationCodeletMap (docs/journal/2026-11/EGOD_FINDINGS.md section 1).
+ typedef std::map<enum EHitLocationCodelet,void (__fastcall*)(CThing &,CHitParameters const &)> TRegisteredHitLocationCodeletMap;
+#endif
 public:
  ~CHitLocation();
  NHitLocations::CHitLocation & operator=(const NHitLocations::CHitLocation & p0);
 };}
-FABLE_STATIC_ASSERT(sizeof(NHitLocations::CHitLocation)==24);
+FABLE_STATIC_ASSERT_AT(54, sizeof(NHitLocations::CHitLocation)==24);
 #else
 #include "engine/EActionRegisteredType.h"
 class CThing;
@@ -78,6 +83,6 @@ public:
 #endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NHitLocations::CHitLocation)==0x18);
+FABLE_STATIC_ASSERT_AT(81, sizeof(NHitLocations::CHitLocation)==0x18);
 #endif
 #endif

@@ -146,6 +146,12 @@ public:
     // retail 0x00446B10 (`ret 0Ch`; landed callers CTCStealth::FrameUpdate 0x00747DA0 and the CGameScriptInterface button rows).
     bool IsGameActionEventInQueue(EGameAction action, EInputButtonEventType type, long device) const;   // 0x00446B10
 #endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_SETCONTROLSCHEME
+    // NF79 opt-in (row 0x00487DE0 CPlayer::SetUpControlsBasedOnAggressiveMode): Ego_r.pdb / FableWin.pdb
+    // ?SetControlScheme@CGamePlayerInterface@@QAEXJ@Z (declared in the EXPRESSION_FRAME branch above too), out of line in retail at
+    // 0x00446EF0. Declaration only, the layout below is unchanged.
+    void SetControlScheme(long scheme);                                  // 0x00446EF0
+#endif
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_SPECIALMOVEBUTTONS
     // Nested opt-in (chunk 1008b, row 0x005F6BD6 CTCInventoryAbilities::SetAbilityAsAvailable): Ego_r.pdb / FableWin.pdb
     // ?GetNumberOfAssignableSpecialMoveButtons@CGamePlayerInterface@@QBEJXZ (the class's getter of the AssignableSpecialMoveButtons

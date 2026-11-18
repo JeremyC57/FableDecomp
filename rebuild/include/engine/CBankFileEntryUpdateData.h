@@ -35,6 +35,15 @@ private:
 #else
     unsigned char Filenames[0x8];                                   // +0x0C CSmallVector<CCharString,8>
 #endif
+#ifdef FABLE_RETAIL_CBANKFILEENTRYUPDATEDATA_READINFO
+    // NF76 opt-in (row 0x00B41FA0 CEngineWorldMap::LoadWaterData): FableWin.pdb ?GetInfoSize@CBankFileEntryUpdateData@@QBEKXZ (inline in
+    // retail: `mov esi,[ebx+4]`, 0x00B41FC8) and Ego_r.pdb / FableWin.pdb ?ReadInfo@CBankFileEntryUpdateData@@QBEXKPAXK@Z (out of line
+    // at 0x009CBE90). No layout change.
+public:
+    unsigned long GetInfoSize() const { return InfoSize; }
+    void ReadInfo(unsigned long offset, void* buffer, unsigned long size) const;   // 0x009CBE90
+private:
+#endif
     bool RequiresUpdate;                                            // +0x14
     bool Exists;                                                    // +0x15
 #ifdef FABLE_RETAIL_CBANKFILEENTRYUPDATEDATA_RETAIL

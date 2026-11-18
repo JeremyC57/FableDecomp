@@ -78,6 +78,11 @@ public:
     // +0x24) right after CResource::CResource, with no CDefPointeeBase / CDefClassBase vtable store left.
 private:
     friend class CParentDefClassBase;
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_CTOR_SUBDEF_FRIEND
+    // NF83 opt-in (round 7, row 0x00749810 CTCNoise::CTCNoise): the inline CSubDefClassBase ctor
+    // (FABLE_RETAIL_CSUBDEFCLASSBASE_CTOR_INLINE) reaches this private ctor too; retail expands both in the CTCNoiseDef member ctor.
+    friend class CSubDefClassBase;
+#endif
     CDefClassBase() : PDefManager(0), Setup(0), Template(0), DefaultValsApplied(0) { }
 public:
 #elif defined(FABLE_RETAIL_DEF_CLASS_BASE_CTOR_DECL)

@@ -1,5 +1,5 @@
 // CGameCameraManager::IsObservedThingInMelee() -- true when the observed thing is alive, has its combat component (interface type 0x36) and that component's melee target index (+0x34) is set (>= 0)
-// Leaf: ?IsObservedThingInMelee@CGameCameraManager@@QAE_NXZ
+// Leaf: ?IsObservedThingInMelee@CGameCameraManager@@ABE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006994F0, length 108 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times, on PObservedThing), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
@@ -30,10 +30,12 @@ class CGameCameraManager { public:
     void*                   __vftable;      // +0x00
     unsigned char           _pad04[0xfc];   // +0x04
     CIntelligentPointer<CThing> PObservedThing; // +0x100
-    bool IsObservedThingInMelee();
+private:
+    bool IsObservedThingInMelee() const;   // Ego_r.pdb ?IsObservedThingInMelee@CGameCameraManager@@ABE_NXZ (private const; NF70 q10745)
+public:
 };
 
-bool CGameCameraManager::IsObservedThingInMelee()
+bool CGameCameraManager::IsObservedThingInMelee() const
 {
     if (PObservedThing.Get() && !PObservedThing.Get()->IsDead()) {
         const CTCCombat* combat;

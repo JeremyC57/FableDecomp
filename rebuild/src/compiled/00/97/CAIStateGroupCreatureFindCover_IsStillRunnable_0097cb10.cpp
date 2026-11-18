@@ -1,3 +1,7 @@
+// Leaf: ?IsStillRunnable@CAIStateGroup_CreatureFindCover@@IAE_NXZ
+// NF75 (round 7, land1117fu q10933): IsStillRunnable is protected in Ego_r.pdb 0x009A18C0 (IAE; engine/CAIStateGroup_CreatureFindCover.h
+//   declares it so, and the ported caller 0x0097CCD0 binds that spelling); the row's pre-existing local declaration is now under
+//   protected: (was public, QAE).
 // `operator*=(const float&)` (chunk 278 / 00880510 lever) spills the Newton-step reciprocal and multiplies from memory as
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation).
@@ -131,7 +135,9 @@ struct CAIStateGroup_CreatureFindCover
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
     CIntelligentPointer<const CThing> PEnemy;       // +0x14
-    bool IsStillRunnable();
+protected:
+    bool IsStillRunnable();                         // ?IsStillRunnable@CAIStateGroup_CreatureFindCover@@IAE_NXZ (Ego_r.pdb 0x009A18C0, protected)
+public:
 };
 
 bool CAIStateGroup_CreatureFindCover::IsStillRunnable()

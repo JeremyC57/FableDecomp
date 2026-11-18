@@ -20,6 +20,9 @@
 // Shape: the user destructor clears the global; the members' implicit destructors follow (SortBuffer's STLport ~vector = `if
 //   (_M_start) free`, then VC7.1's counted reverse loop over the array -- ebp = 15, esi stepping back 0x18 -- freeing each
 //   list's buffer), then the CEngineComponent base through ebx (= this+4, computed for the vtable store) and the primary base.
+// NF83 (round 7, q11035 binder): 0x0143BAC4 is the private static ?MemoryPool@CEngineSubPrimitiveBase@@0PAVCSimpleMemoryPool@@A (Ego_d.pdb
+//   PUB32 + engine/CEngineSubPrimitiveBase.h), reached through the header's renderer friend opt-in (was the extern stand-in
+//   PFrameMemoryPool_0143bac4).
 #include "engine/CBaseClassNonCopyable.h"
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 #include "engine/CArray.h"
@@ -31,10 +34,10 @@ public:
     bool          RenderEnabled;                             // +0x08
     unsigned char KeepAlive;                                 // +0x09
 };
-class CEngineSubPrimitiveBase;
 class CSimpleMemoryPool;
+#define FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_RENDERER_FRIEND   // the renderer reaches the private static MemoryPool
+#include "engine/CEngineSubPrimitiveBase.h"
 enum ERenderPassType { RENDER_PASS_TYPE_00b84390 };
-extern CSimpleMemoryPool* PFrameMemoryPool_0143bac4;         // 0x0143BAC4 (= &GEngine->FrameMemoryPool, set by the constructor)
 class CEngineSubPrimitiveRenderer : public CBaseClassNonCopyable, public CEngineComponent {
 public:
     class CSortElement {
@@ -62,5 +65,5 @@ public:
 };
 CEngineSubPrimitiveRenderer::~CEngineSubPrimitiveRenderer()
 {
-    PFrameMemoryPool_0143bac4 = 0;
+    CEngineSubPrimitiveBase::MemoryPool = 0;
 }

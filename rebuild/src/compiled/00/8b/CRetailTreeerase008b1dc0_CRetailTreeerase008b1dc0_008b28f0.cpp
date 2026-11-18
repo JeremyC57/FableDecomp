@@ -9,25 +9,19 @@
 // head's left/parent/right are reset through `head` re-read per store and size is zeroed; finally
 // the head node itself is released with free @ 0x00BFEA14 (null-checked). Only the erase callee
 // distinguishes the instantiations, so the class is named by it. One of 108 bodies.
-extern "C" void __cdecl free(void* block);
-
-struct CRetailTree_erase008b1dc0 {
-    struct node { unsigned char colour; unsigned char _pad[3]; node* parent; node* left; node* right; };
-    node* head;
-    unsigned long size;
-    void Erase(node* root);                // 0x008B1DC0
+// Leaf: ??1CRetailTree_erase008b1dc0@@QAE@XZ
+// NF72 (round 7, q10892): the erase call @ 0x008B1DC0 binds the STLport
+// ?_M_erase@?$_Rb_tree@W4ECombatSequenceOnStopModuleType@@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStopModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceOnStopModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@Z
+// (ported this round, rows/008b1dc0.cpp) through the shared stlport/fable_map.h: the stand-in now derives from std::map<ECombatSequenceOnStopModuleType, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)>,
+// whose inline ~map / ~_Rb_tree (clear) / ~_Rb_tree_base give this body (NF50 form, 0x006311D0). Its own name stays a stand-in: the
+// address has no caller and no data reference, so ~_Rb_tree vs. ~map vs. an owner destructor is not provable.
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
+class CThingCreatureBase;
+enum ECombatSequenceOnStopModuleType;
+struct CRetailTree_erase008b1dc0 : std::map<ECombatSequenceOnStopModuleType, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)> {   // stand-in: a map<ECombatSequenceOnStopModuleType, ...> destructor
     ~CRetailTree_erase008b1dc0();
 };
-
 CRetailTree_erase008b1dc0::~CRetailTree_erase008b1dc0()
 {
-    if (size) {
-        Erase(head->parent);
-        head->left = head;
-        head->parent = 0;
-        head->right = head;
-        size = 0;
-    }
-    if (head)
-        free(head);
 }

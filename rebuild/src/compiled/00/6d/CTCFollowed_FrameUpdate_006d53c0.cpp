@@ -17,218 +17,112 @@
 //         FramesSincePlayerMoved +0x18, LastPlayerPosition +0x1C; CThing UID +0x18, TC present bits +0x20, TC map +0x44.
 // Shape: IsTimeToUpdate loads GetWorld() into a named local and the UID before the static GetFrame call; a reference local to
 //        AIFollowers._M_node gives retail's cached &head (edi) in the culling loop, while the random-pick loop uses begin()/end()
-//        and reloads the head each pass; CThing is modelled with a plain _vfptr word (a virtual would pad the __int64 UID to +0x20);
-//        the deed TC and the TC 0x7A pointer are uninitialised when the TC is missing, as in retail; the idle-reaction follower
-//        and Thing are named locals so they are read before the PostDeed pushes.
-// Vtable check: RELOCATION_MATCH; the only relocation beyond callees/globals is the CIntelligentPointer vftable 0x01238C6C (rtti-vtables.tsv).
-#include "fable_compiler.h"
-class CBaseObject;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
-    CBaseObject* PItem;
-};
-class CThing;
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-    T* Get() const { return (T*)GetPItem(); }
-};
-#include "engine/C3DVector.h"
-// agentNF16: the stand-in CTCMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed 0x0074EE90
-//   idiom); 0x0040F020 / 0x004365B0 are its LowerBound and const LowerBound (NF14 / established spelling; Codex pass 20, both PDBs;
-//   the const one was the invented LowerBoundConst).
-class CTCBase;
-enum ETCInterfaceType { };
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class C> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
-    value_type* _M_start;
-    value_type* _M_finish;
-    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
-    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
-    FABLE_FORCEINLINE void* Find(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)type;
-        value_type* it = LowerBound(key);
-        if (it == _M_finish || it->first > type)
-            it = _M_finish;
-        return it->second;
-    }
-    FABLE_FORCEINLINE void* FindConst(long type) const
-    {
-        ETCInterfaceType key = (ETCInterfaceType)type;
-        const value_type* it = LowerBound(key);
-        if (it == _M_finish || it->first > type)
-            it = _M_finish;
-        return it->second;
-    }
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
-class CThing {
-public:
-    void* _vfptr;
-    unsigned char _pad04[0x18 - 0x04];
-    unsigned __int64 UID;                               // +0x18
-    unsigned long PresentBits[9];                       // +0x20
-    CTCMap TCs;                                         // +0x44
-    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
-class CTCCreatureOpinionOfHero {
-public:
-    bool IsWillingToContinueFollowingHero() const;      // 0x006818F0
-};
+// Leaf: ?FrameUpdate@CTCFollowed@@UAEXXZ
+// NF76 port (2026-11-17): every local model of a class with a shared header deleted; the row now compiles on engine/CTCFollowed.h,
+//   CTCBase.h (ParentThing, GetWorld, WORLDSEED GetPWorldSeed), CThing.h (GETTC_EXPANDED GetTC / PeekTC), CThingAICreature.h,
+//   CIntelligentPointer.h, CTCHeroOpinionDeedLog.h, CTCCreatureOpinionOfHero.h, CTCRegionFollower.h, CPlayerGui.h (singleton Get),
+//   CMainGameComponent.h, CWorld.h, GFRandom.h and stlport/fable_containers.h. Bindings now under their PDB spellings:
+//   AIFollowers is the PDB list<CIntelligentPointer<CThingAICreature> > (size 0x0065F17B out of line: overlay STLP_LIST_SIZE_DECL,
+//   queue entry nf41:e53); the TC 0x7A component is CTCRegionFollower (Ego_d.pdb local ptc_region_follower) and 0x006AEBA0 is its
+//   RemoveFollower(CThing&) (Ego_r.pdb); the made-up OnFollowerLeft is ?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z (0x006D5050);
+//   GetRandom is ?GetPWorldSeed@CTCBase@@IBEPAKXZ (0x00686DA0); GFRandom is ?GFRandom@@YIKKPAK@Z (Ego_r.pdb; overlay
+//   GFRANDOM_OUTOFLINE keeps the call). The self is virtual: Ego_r.pdb 0x0070A220 ?FrameUpdate@CTCFollowed@@UAEXXZ.
+//   Locals as Ego_d.pdb names them (ptc_deedlog, it, pcreature, ptc_opinion, ptc_region_follower, follower, follower_chosen).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE_WORLDSEED
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CPLAYERGUI
+#define FABLE_RETAIL_CTCHEROOPINIONDEEDLOG
+#define FABLE_RETAIL_CTCCREATUREOPINIONOFHERO
+#define FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_GREET
+#define FABLE_RETAIL_CTCREGIONFOLLOWER
+#define FABLE_RETAIL_CTCREGIONFOLLOWER_REGIONLOAD
+#define FABLE_RETAIL_GFRANDOM_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_SIZE_DECL
+#define FABLE_RETAIL_STLP_LIST_REMOVE_DECL
+#include "stlport/fable_containers.h"
+#include "engine/GFRandom.h"
+#include "fable_string.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CWorld.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CPlayerGui.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCFollowed.h"
 #include "engine/EOpinionDeedType.h"
-enum EOpinionPostDeedType { };                   // Ego_r.pdb enum (values used here by number)
-class CFaction;
-class CThingAICreature;
-class CTCHeroOpinionDeedLog {
-public:
-    long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
-                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990 Ego_r.pdb / FableWin.pdb (engine/CTCHeroOpinionDeedLog.h)
-};
-class CTCDependents {
-public:
-    void AddDependentThing(CThing* thing);              // 0x006AEBA0
-};
-#include "engine/CCountedPointer.h"
-template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
-    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
-public:
-    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
-};
-class CPlayerGui {
-public:
-    void UpdateMiniMapMarkers(bool value);              // 0x004378C0
-};
-class CMainGameComponent {
-protected:
-    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
-public:
-    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
-};
-class CWorld {
-public:
-    static long __fastcall GetFrame();                             // 0x0049D870
-};
-class CRandom;
-long __fastcall GFRandom(long range, CRandom* rng);     // 0x004CDAE0
-extern "C" void free(void*);                            // 0x00BFEA14
-struct CFollowerNode {
-    CFollowerNode* _M_next;
-    CFollowerNode* _M_prev;
-    CIntelligentPointer<CThing> _M_data;
-};
-namespace std {                                         // STLport 4.6 list (one node pointer)
-template <class _Tp> class allocator;
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
-public:
-    void* _M_node;
-    void remove(const _Tp& value);                      // 0x0065DE8A for _Tp = CIntelligentPointer<CThing> (FableWin ?remove@?$list@..)
-};
-}
-struct CFollowerList {
-    CFollowerNode* _M_node;
-    bool empty() const { return _M_node->_M_next == _M_node; }
-    CFollowerNode* begin() const { return _M_node->_M_next; }
-    CFollowerNode* end() const { return _M_node; }
-    long size() const;                                  // 0x0065F17B
-    FABLE_FORCEINLINE CFollowerNode* erase(CFollowerNode* pos)
-    {
-        CFollowerNode* next = pos->_M_next;
-        CFollowerNode* prev = pos->_M_prev;
-        prev->_M_next = next;
-        next->_M_prev = prev;
-        pos->_M_data.~CIntelligentPointer<CThing>();
-        free(pos);
-        return next;
-    }
-};
-class CTCBase {
-public:
-    virtual void v00();
-    CThing* Thing;                                      // +0x04
-    unsigned char _pad08[4];
-    CRandom* GetRandom() const;                         // 0x00686DA0
-protected:
-    CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
-};
-class CTCFollowed : public CTCBase {
-public:
-    std::list<CIntelligentPointer<CThing> > Followers;  // +0x0C (Ego_r.pdb CTCFollowed::Followers)
-    CFollowerList AIFollowers;                          // +0x10 (Ego_r.pdb CTCFollowed::AIFollowers; element modelled as CIntelligentPointer<CThing>)
-    long FrameLastIdleReaction;                         // +0x14
-    long FramesSincePlayerMoved;                        // +0x18
-    C3DVector LastPlayerPosition;                       // +0x1C
-    void CullNullFollowers();                           // 0x006D5260
-    void OnFollowerLeft(CThing* follower);              // 0x006D5050
-    FABLE_FORCEINLINE bool IsTimeToUpdate() const
-    {
-        CWorld* world = &GetWorld();
-        unsigned __int64 uid = Thing->UID;
-        return (world->GetFrame() + uid) % 10 == 0;
-    }
-    void FrameUpdate();
-};
+#include "engine/CTCHeroOpinionDeedLog.h"
+#include "engine/CTCCreatureOpinionOfHero.h"
+#include "engine/CTCRegionFollower.h"
 
 void CTCFollowed::FrameUpdate()
 {
     ++FramesSincePlayerMoved;
-    if (IsTimeToUpdate()) {
+    if ((GetWorld().GetFrame() + ParentThing->GetUniqueID()) % 10 == 0) {
         CullNullFollowers();
         if (!AIFollowers.empty()) {
-            CFollowerNode*& head = AIFollowers._M_node;
-            CTCHeroOpinionDeedLog* deeds;
-            if (Thing->HasTC(0x51))
-                deeds = (CTCHeroOpinionDeedLog*)Thing->TCs.Find(0x51);
-            for (CFollowerNode* node = head->_M_next; node != head; ) {
-                CThing* follower = node->_M_data.Get();
-                if (follower->HasTC(0x4f) && ((CTCCreatureOpinionOfHero*)follower->TCs.FindConst(0x4f))->IsWillingToContinueFollowingHero()) {
-                    node = node->_M_next;
-                    continue;
+            CTCHeroOpinionDeedLog* ptc_deedlog;
+            ParentThing->GetTC(&ptc_deedlog);
+            {
+                std::list<CIntelligentPointer<CThingAICreature> >::iterator it = AIFollowers.begin();
+                while (it != AIFollowers.end()) {
+                    CThingAICreature* pcreature = (*it).Get();
+                    const CTCCreatureOpinionOfHero* ptc_opinion;
+                    if (pcreature->PeekTC(&ptc_opinion) && ptc_opinion->IsWillingToContinueFollowingHero()) {
+                        ++it;
+                    } else {
+                        it = AIFollowers.erase(it);
+                        Followers.remove(CIntelligentPointer<CThing>(pcreature));
+                        CPlayerGui::Get().UpdateMiniMapMarkers(false);
+                        {
+                            CTCRegionFollower* ptc_region_follower;
+                            ParentThing->GetTC(&ptc_region_follower);
+                            ptc_region_follower->RemoveFollower(*pcreature);
+                        }
+                        ptc_deedlog->PostDeed(OPINION_DEED_TYPE_FOLLOWER_QUIT, ParentThing->GetPos(), pcreature, pcreature,
+                                              (EOpinionPostDeedType)1, false, false, 0, false, 0);
+                        RemoveEmoteIcon(*pcreature);
+                    }
                 }
-                node = AIFollowers.erase(node);
-                Followers.remove(CIntelligentPointer<CThing>(follower));
-                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
-                CTCDependents* dependents;
-                if (Thing->HasTC(0x7a))
-                    dependents = (CTCDependents*)Thing->TCs.Find(0x7a);
-                dependents->AddDependentThing(follower);
-                deeds->PostDeed(OPINION_DEED_TYPE_FOLLOWER_QUIT, Thing->GetPos(), follower, (CThingAICreature*)follower, (EOpinionPostDeedType)1, false, false, 0, false, 0);
-                OnFollowerLeft(follower);
             }
-            const C3DVector& pos = Thing->GetPos();
+            const C3DVector& pos = ParentThing->GetPos();
             float dx = pos.X - LastPlayerPosition.X;
             float dy = pos.Y - LastPlayerPosition.Y;
             if (dx * dx + dy * dy > 9.0f) {
-                LastPlayerPosition = Thing->GetPos();
+                LastPlayerPosition = ParentThing->GetPos();
                 FramesSincePlayerMoved = 0;
             } else if (FramesSincePlayerMoved > CMainGameComponent::GetConstantFPS() * 5.0f) {
-                CWorld* world = &GetWorld();
-                long fps = CMainGameComponent::GetConstantFPS();
-                if (world->GetFrame() - FrameLastIdleReaction > fps * 10.0f) {
-                    long pick = GFRandom(AIFollowers.size(), GetRandom());
-                    long n = 0;
-                    for (CFollowerNode* node = AIFollowers.begin(); node != AIFollowers.end(); node = node->_M_next, ++n) {
-                        if (n == pick) {
-                            CIntelligentPointer<CThing>& p = node->_M_data;
-                            CThing* follower = p.Get();
-                            CThing* thing = Thing;
-                            deeds->PostDeed(OPINION_DEED_TYPE_FOLLOWER_IDLEBORED, thing->GetPos(), follower, (CThingAICreature*)p.Get(), (EOpinionPostDeedType)1, false, false, 0, false, 0);
+                if (GetWorld().GetFrame() - FrameLastIdleReaction > CMainGameComponent::GetConstantFPS() * 10.0f) {
+                    long follower = GFRandom(AIFollowers.size(), GetPWorldSeed());
+                    long follower_chosen = 0;
+                    for (std::list<CIntelligentPointer<CThingAICreature> >::iterator it = AIFollowers.begin(); it != AIFollowers.end(); ++it) {
+                        if (follower_chosen == follower) {
+                            ptc_deedlog->PostDeed(OPINION_DEED_TYPE_FOLLOWER_IDLEBORED, GetParentThing().GetPos(), (*it).Get(), (*it).Get(),
+                                                  (EOpinionPostDeedType)1, false, false, 0, false, 0);
                             FrameLastIdleReaction = GetWorld().GetFrame();
                             break;
                         }
+                        ++follower_chosen;
                     }
                 }
             }
         }
     }
-    if (IsTimeToUpdate())
+    if ((GetWorld().GetFrame() + ParentThing->GetUniqueID()) % 10 == 0)
         CullNullFollowers();
 }

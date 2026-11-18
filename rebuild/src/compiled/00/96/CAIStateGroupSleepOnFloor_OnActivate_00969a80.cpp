@@ -1,89 +1,47 @@
-// CAIStateGroup_SleepOnFloor::OnActivate() -- assign the creature to the floor thing's village task and clear the sleeping flag
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00969A80, length 92 bytes (+ int3 padding).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the floor pointer at +0x14),
-// CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the thing's interface map at
-// +0x44, key by address), CVillageTaskBase::AssignCreatureToTask(CThing*) @ 0x0087C390 (the
-// manifest's "CarryCrate" label is the propagated one; the component is interface 0xac).
-// Shape: the inlined `thing->GetInterface(0xac, &task)` lookup (presence bitset at +0x20, dword word
-// 5 bit 12 -> `test ch,10h`, the lower bound with the key in the `push ecx` slot, end-or-larger ->
-// the end entry) with its bool result IGNORED, so when the bit is clear the uninitialised `task`
-// slot ([esp+4]) is what gets used (retail bug reproduced). Then PBrain->Creature is assigned to
-// the task and the flag at +0x1c is cleared. The result slot shares the frame with the key.
-#include "fable_compiler.h"
-class CThing;
+// CAIStateGroup_SleepOnFloor::OnActivate() -- reserve the sleep point for the creature (SetOccupier) and clear the asleep flag
+// Leaf: ?OnActivate@CAIStateGroup_SleepOnFloor@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00969A80, length 92 bytes (+ int3 padding); Ego_r.pdb ?OnActivate@CAIStateGroup_SleepOnFloor@@UAEXXZ.
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PSleepPoint +0x14), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
+//   @ 0x0040F020 (the thing's interface map +0x44), CTCSinglePersonOccupiable::SetOccupier(CThingCreatureBase*) @ 0x0087C390 (Ego_r.pdb /
+//   FableWin.pdb; engine/CTCSinglePersonOccupiable.h; the component is interface 0xAC = TCI_SINGLE_PERSON_OCCUPIABLE).
+// Shape: the inlined GetTC lookup (presence bitset +0x20, dword 5 bit 12 -> `test ch,10h`) with its bool result IGNORED, so when the
+//   bit is clear the uninitialised component slot is used (retail bug reproduced). Then the brain's creature is set as the occupier
+//   and Asleep (+0x1c) is cleared.
+// Layout: Ego_r.pdb CAIStateGroup_SleepOnFloor (32 bytes: PSleepPoint CIntelligentPointer<CThing> +0x14, Asleep +0x1c) over the
+//   shared engine/CAIStateGroupBase.h; the class has no shared header, so its two members are declared here.
+// NF79 (round 7, q10956): ported onto the shared headers (macro block of the landed GoToBed rows 0x0092D6F0 / 0x0092C740); was a
+//   local CThing / CBaseIntelligentPointer / CAIBrain / CAIStateGroupBase model calling 0x0087C390 as the stand-in
+//   CVillageTaskBase::AssignCreatureToTask(CThing*) (a propagated manifest label); member names now Ego_r's (were PFloor / Sleeping).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/CThingAICreature.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CTCSinglePersonOccupiable.h"
 
-class CVillageTaskBase { public:
-    void AssignCreatureToTask(CThing* creature);    // 0x0087C390
-};
-
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    FABLE_FORCEINLINE bool GetInterface(long type, CVillageTaskBase** out)
-    {
-        if (m_presentBits[type / 32] & (1 << (type % 32))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = ((CVillageTaskBase*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
-
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+class CAIStateGroup_SleepOnFloor : public CAIStateGroupBase {
 public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* Creature;                           // +0x18
-};
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-};
-
-struct CAIStateGroup_SleepOnFloor : CAIStateGroupBase {
-    CIntelligentPointer<CThing> PFloor;             // +0x14 CIntelligentPointer<CThing>
-    bool Sleeping;                              // +0x1c
     virtual void OnActivate();
+protected:
+    CIntelligentPointer<CThing> PSleepPoint;                             // +0x14
+    bool Asleep;                                                         // +0x1c
 };
 
 void CAIStateGroup_SleepOnFloor::OnActivate()
 {
-    CVillageTaskBase* task;
-    PFloor.GetPItem()->GetInterface(0xac, &task);
-    task->AssignCreatureToTask(PBrain->Creature);
-    Sleeping = false;
+    CTCSinglePersonOccupiable* ptc_sleep_point;
+    PSleepPoint->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE, &ptc_sleep_point);
+    ptc_sleep_point->SetOccupier(&GetCreature());
+    Asleep = false;
 }

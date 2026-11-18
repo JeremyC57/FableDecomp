@@ -1,0 +1,8 @@
+entry	queue_address	correct_symbol	status	binders_ported	note
+q10884	0x00693EF0	??1CCreatureActionBase@@UAE@XZ	done	7	all slice binders ported: 0x0048C950 0x009400F0 0x0093A7A0 0x0095B6F0 0x00715560 0x00941E00 0x007EB9B0
+q10478	0x00A23C60	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ	done	1	all slice binders ported: 0x00B9E950
+nf41:e120	0x00A23C50	?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z	done	1	all slice binders ported: 0x00BD1F70
+nf41:e188	0x00A23C60	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ	done	1	all slice binders ported: 0x00BD1F70
+nf44:70	0x00BCE740	??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitiveAnimatedMesh@@PAVC3DPrimitive2@@W4ERenderMode@@_N@Z	done	1	all slice binders ported: 0x00BD1F70
+nf44:71	0x00BEBBB0	?IsSimulationRunning@CEngineInternalPrimitiveMeshBase@@QBE_NK@Z	done	1	all slice binders ported: 0x00BD1F70
+nf44:73	0x00BF18B0	?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z	done	1	all slice binders ported: 0x00BD1F70

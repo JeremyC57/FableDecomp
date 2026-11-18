@@ -1,72 +1,81 @@
-// CLipSyncDataBankEntry::BeginLoading(unsigned long,CLipSyncDataBank&). Leaf: BeginLoading
-// Leaf: BeginLoading
-#include "engine/CLipSyncDataBank.h"
+// CLipSyncDataBankEntry::BeginLoading(unsigned long index, CLipSyncDataBank& bank) -- when the entry has no data resource yet, create one
+// for this entry and bank, start the asynchronous read of the whole bank entry at the lip-sync loading priority and queue the resource
+// on the bank's resource bank
+// Leaf: ?BeginLoading@CLipSyncDataBankEntry@@AAEXKAAVCLipSyncDataBank@@@Z
+// Identity: Ego_r.pdb 0x00B544B0 / FableWin.pdb 0x0310FE80 ?BeginLoading@CLipSyncDataBankEntry@@AAEXKAAVCLipSyncDataBank@@@Z (private;
+//   the landed caller CLipSyncDataBank::BeginLoadingEntry 0x00A42AC0 already binds this spelling).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A42980, 253 bytes.
+// Callees: operator new 0x00BFEA1A, CResource::CResource 0x009FBEC0 (the inline CData constructor, FableWin.pdb
+//   ??0CData@CLipSyncDataBankEntry@@QAE@AAV1@AAVCLipSyncDataBank@@@Z; vtable 0x0129D3A4), CBankFileAsync::GetAsyncEntry 0x009D58D0,
+//   CBankFile::GetEntryDataSize 0x009CC240, CBankFileAsyncEntry::BeginReadDataAutoAlloc 0x009D6100, CCountedPointer<CBankFileAsyncData>
+//   operator= 0x009A4440, CResourceBank::AddToLoadingQueue 0x009FC3D0 (nf44:83), operator delete 0x00BFE9BC (count blocks).
+// Port (NF68): the local ResourceNative / IVNative / BankNative / ResourceBankNative / Counted models are gone: engine/CResource.h and
+//   engine/CIVCountedPointeeBase.h (FABLE_RETAIL_DEF_CLASS_BASE), engine/CIVCountedPointer.h (Reset / Release), engine/CCountedPointer.h,
+//   engine/CBankFile.h + engine/CBankFileAsync.h (GetAsyncEntry, GetEntryDataSize), engine/CResourceBank.h (AddToLoadingQueue) and the
+//   overlay opt-in FABLE_RETAIL_CLIPSYNCDATABANK_CLASS (the retail CLipSyncDataBank : CBankFileAsync). Local models remain only for the
+//   classes with no shared header: CLipSyncDataBankEntry (Ego_r.pdb: Data, Duration) with its CData (Ego_r.pdb: LipSyncData, FileData,
+//   Owner, Bank) and CBankFileAsyncEntry (declaration of BeginReadDataAutoAlloc only).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CBANKFILEASYNC_DATA
+#define FABLE_RETAIL_CBANKFILEASYNC_GETASYNCENTRY
+#define FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CLIPSYNCDATABANK_CLASS
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
 #include "engine/CBankFile.h"
+#include "engine/CBankFileAsync.h"
 #include "engine/CResource.h"
-#include "engine/CResourceList.h"
-#include "engine/CActiveFile.h"
-#include "engine/CIVCountedPointeeBase.h"
-struct CountInfo {unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
-template<class T>struct Counted {
- T* Data;CountInfo* Info;
- Counted():Data(0),Info(0){}
- Counted(const Counted& b):Data(b.Data),Info(b.Info){if(Info)++Info->RefCount;}
- Counted& operator=(const Counted&); //FileData specialization009A4440
- ~Counted(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}
+#include "engine/CResourceBank.h"
+#include "engine/CIVCountedPointer.h"
+#include "engine/EThreadedFilePriority.h"
+#include "engine/CLipSyncDataBank.h"
+
+class CBankFileAsyncData;
+class CBankFileAsyncEntry {
+public:
+    CCountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long offset, unsigned long size, EThreadedFilePriority priority);   // 0x009D6100
 };
-struct ResourceNative;
-struct IVNative {
- virtual ~IVNative(); virtual void Delete()const; //42D930
- unsigned long IVRefCount;
- long Release()const {unsigned long r=--const_cast<IVNative*>(this)->IVRefCount;if(!r)Delete();return (long)r;}
- void ReleaseReference()const {if(--const_cast<IVNative*>(this)->IVRefCount==0)Delete();}
- long GetRefCount()const{return (long)IVRefCount;}
+
+// The read priority global of the lip-sync bank (0x01397700); no PDB name is known for it (descriptive, as landed).
+extern EThreadedFilePriority LipSyncLoadingPriority;
+
+class CLipSyncDataBankEntry {
+public:
+    class CData : public CResource {
+    public:
+        CData(CLipSyncDataBankEntry& owner, CLipSyncDataBank& bank) : Owner(&owner), Bank(&bank) {}
+        virtual ~CData();
+        virtual bool UnloadResource();
+        virtual bool IsResourceLoaded() const;
+        virtual void OnResourceLoaded();
+        CCountedPointer<CLipSyncSampleData> LipSyncData;   // +0x1c
+        CCountedPointer<CBankFileAsyncData> FileData;      // +0x24
+        CLipSyncDataBankEntry*              Owner;         // +0x2c
+        CLipSyncDataBank*                   Bank;          // +0x30
+    };
+private:
+    friend class CLipSyncDataBank;
+    void BeginLoading(unsigned long index, CLipSyncDataBank& bank);
+    CIVCountedPointer<CData> Data;                           // +0x00
+    float                    Duration;                       // +0x04
 };
-// Native VT12354A4, derived VT129D3A4. Hierarchy and all ten genuine slots.
-struct ResourceNative:IVNative {
- ResourceNative(); //9FBEC0 PDBB6BD70
- virtual ~ResourceNative();
- virtual bool UnloadResource(); //slot2
- virtual unsigned long GetUnloadableMemory()const; //slot3 9FBEF0
- virtual bool IsResourceLoaded()const; //slot4
- virtual void OnResourceLoaded(); //slot5
- virtual bool CanAbortResourceLoad(long)const; //slot6 42D970
- virtual void OnResourceLoadAborted(); //slot7 42D980
- virtual unsigned long GetDebugMemoryInUse()const; //slot8 9FBF00
- virtual void ResetDebugMemoryInUse(); //slot9 9FBF10
- CResourceList* ResourceList;ResourceNative* PrevResource;ResourceNative* NextResource;unsigned long ResourceSize,LastUsedFrame;
-};
-struct AsyncData;struct LipSyncSampleData;
-enum EThreadedFilePriority { RetailPriority3=3, RetailPriority6=6 }; // descriptive numeric names; original enumerator names unavailable
-struct AsyncEntry {Counted<AsyncData> BeginReadDataAutoAlloc(unsigned long,unsigned long,EThreadedFilePriority);}; //9D6100
-struct ResourceBankNative {void AddResource(ResourceNative&);}; //9FC3D0 PDBB6C2B0
-struct BankNative {
- unsigned char BaseAndEntries[0x170];ResourceBankNative* ResourceBank;CountInfo* ResourceBankInfo;
- Counted<AsyncEntry> CreateEntry(unsigned long); //9D58D0 descriptive identity: constructs CBankFileAsyncEntry, not propagated WorldMap label
- unsigned long GetEntryDataSize(unsigned long)const; //9CC240 PDBB19F40
-};
-extern EThreadedFilePriority LipSyncLoadingPriority; //01397700 enum EThreadedFilePriority
-struct LipSyncEntry {
- struct DataResource:ResourceNative {
-  Counted<LipSyncSampleData> LipSyncData;Counted<AsyncData> FileData;LipSyncEntry* Owner;BankNative* Bank;
-  DataResource(LipSyncEntry& owner,BankNative& bank):ResourceNative(),Owner(&owner),Bank(&bank){} //PDB03110030, nativeA43580
-  virtual ~DataResource();virtual bool UnloadResource();virtual bool IsResourceLoaded()const;virtual void OnResourceLoaded();
- };
- DataResource* Data;float Duration;
- void BeginLoading(unsigned long index,BankNative& bank);
-};
-void LipSyncEntry::BeginLoading(unsigned long index,BankNative& bank){
- if(!Data){
-  DataResource* fresh=new DataResource(*this,bank);
-  if(Data){Data->ReleaseReference();Data=0;}
-  Data=fresh;
-  Counted<AsyncEntry> entry=bank.CreateEntry(index);
-  unsigned long size=bank.GetEntryDataSize(index);
-  DataResource* resource=Data;
-  resource->FileData=entry.Data->BeginReadDataAutoAlloc(0,size,LipSyncLoadingPriority);
-  bank.ResourceBank->AddResource(*Data);
- }
+FABLE_STATIC_ASSERT(sizeof(CLipSyncDataBankEntry::CData) == 0x34);
+FABLE_STATIC_ASSERT(sizeof(CLipSyncDataBankEntry) == 0x8);
+
+void CLipSyncDataBankEntry::BeginLoading(unsigned long index, CLipSyncDataBank& bank)
+{
+    if (Data.IsNull()) {
+        Data.Reset(new CData(*this, bank));
+        CCountedPointer<CBankFileAsyncEntry> entry = bank.GetAsyncEntry(index);
+        unsigned long size = bank.GetEntryDataSize(index);
+        Data->FileData = entry->BeginReadDataAutoAlloc(0, size, LipSyncLoadingPriority);
+        bank.ResourceBank->AddToLoadingQueue(*Data);
+    }
 }
-FABLE_STATIC_ASSERT(sizeof(ResourceNative)==0x1c);
-FABLE_STATIC_ASSERT(sizeof(LipSyncEntry::DataResource)==0x34);
-FABLE_STATIC_ASSERT(offsetof(BankNative,ResourceBank)==0x170);

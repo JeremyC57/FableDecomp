@@ -1,5 +1,11 @@
 // CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& action) -- make `action` (its preceding action when it has one, else a clone) the creature's current action when the creature is free to perform it: the new action takes over from the old one and starts; if it is still current afterwards, update it now during a frame update and tell the unfinished old action it was replaced. A refused combat action is offered to the combat component (0x30) as the possible queued action
+// NF86 (round 7, q11115): the local CCountBlock / CCountedPointer stand-in is replaced by the shared engine/CCountedPointer.h (Reset declared
+//   only: FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL), so the call at 0x00668D90 binds the explicit instantiation NF83 landed there,
+//   ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z (was ?Reset_00668d90@..).
 // Leaf: ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+// NF84 (round 7, q11050 binder): the local CThingCreatureBase model's IsFreeToPerformAction respelt in place to the Ego_r.pdb /
+//   FableWin.pdb form ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z (const, by const reference; the
+//   landed self row 0x00662210 defines it), as NF83 did in 0x00662210 itself; the call passes the action by reference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006644F0, length 384 bytes (`ret 4`).
 //   Signature from Ego_r.pdb `?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z`; the
 //   CCountedPointer overload follows at 0x00664670.
@@ -19,32 +25,8 @@
 #include "fable_compiler.h"
 class CTCBase;
 
-void __fastcall Destroy_CCreatureActionBase(void* object);
-struct SCountBlock {
-    long m_references;                                  // +0
-    void (__fastcall* m_pfnDestroy)(void*);             // +4
-    void* m_pObject;                                    // +8
-};
-
-template<class T> class CCountedPointer { public:
-    T*           m_pObject;                             // +0
-    SCountBlock* m_pCount;                              // +4
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount)
-            ++m_pCount->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (m_pCount && --m_pCount->m_references == 0) {
-            m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-            delete m_pCount;
-        }
-    }
-    void Reset_00668d90(T* object);                              // 0x00668D90
-    T* operator->() const { return m_pObject; }
-    T* Get() const { return m_pObject; }
-};
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"                    // NF86: CCountedPointer<T> {Data, Info}; Reset(T*) out of line (0x00668D90)
 
 struct CActionState { unsigned char _body[4]; };
 class CCreatureActionBase { public:
@@ -106,21 +88,21 @@ class CThingCreatureBase : public CThing { public:
     CCountedPointer<CCreatureActionBase> PCurrentAction;   // +0x100
     unsigned char _pad108[0x15c - 0x108];
     unsigned char CurrentlyFrameUpdating : 1;           // +0x15c bit 0
-    bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
+    bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210
     void UpdateAction();                                // 0x006643C0
     bool SetCurrentAction(const CCreatureActionBase& action);
 };
 
 bool CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& action)
 {
-    if (IsFreeToPerformAction(&action)) {
+    if (IsFreeToPerformAction(action)) {
         CCountedPointer<CCreatureActionBase> oldAction = PCurrentAction;
         if (action.HasPrecedingAction()) {
             CCreatureActionBase* preceding = 0;
             action.GetPrecedingAction(&preceding);
-            PCurrentAction.Reset_00668d90(preceding);
+            PCurrentAction.Reset(preceding);
         } else {
-            PCurrentAction.Reset_00668d90(action.Clone());
+            PCurrentAction.Reset(action.Clone());
         }
         CCountedPointer<CCreatureActionBase> newAction = PCurrentAction;
         if (oldAction.Get())

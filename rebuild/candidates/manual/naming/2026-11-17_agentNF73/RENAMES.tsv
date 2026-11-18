@@ -1,0 +1,33 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x004091C0	CUserProfileManager	GetSortedSaveNamesAndTimes	?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z	LoadFileList	?LoadFileList@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z	Ego_r.pdb 0x00408280 / FableWin.pdb 0x0187D7D0 same mangled name; engine/CUserProfileManager.h SAVELIST declares it at 0x004091C0 and both landed callers (0x00495830, 0x00597DF7) already bind it (reloc_bindings.tsv); Ego_d.pdb holds the function with these parameters (names, times) and locals; old leaf dumped from the landed object (xref2)
+0x00596CCE	CFrontEndManager	RefreshAvailableProfiles	?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@IAEJXZ	RefreshAvailableProfiles	?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@QAEJXZ	leaf-only (access): Ego_r.pdb 0x00603398 / FableWin.pdb 0x02018987 ?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@IAEJXZ (protected); engine/CFrontEndManager.h REFRESHAVAILABLEPROFILES (NF66) declares it protected; old leaf from the landed object; callers 0x00597B20 / 0x0059A238 bind the old spelling (NAME_FIXES.tsv)
+0x00597006	CFrontEndManager	RefreshAvailableProfilesForDelete	?RefreshAvailableProfilesForDelete@CFrontEndManager@NUISystem@@IAEJXZ	RefreshAvailableProfilesForDelete	?RefreshAvailableProfilesForDelete@CFrontEndManager@NUISystem@@QAEKXZ	leaf-only (access + long result): Ego_r.pdb 0x00603706 / FableWin.pdb 0x02019104 ?RefreshAvailableProfilesForDelete@CFrontEndManager@NUISystem@@IAEJXZ; header REFRESHAVAILABLEPROFILES; old leaf from the landed object; caller 0x0059A238 binds ..QAEJXZ (NAME_FIXES.tsv)
+# Section 2
+0x004091C0	?GetFileModifiedTime@@YI?AVCDateAndTime@@ABVCWideString@@@Z	?GetFileModifiedTime@CAFile@@SI?AVCDateAndTime@@ABVCWideString@@@Z
+0x005955AB	?ConvertToCharString@CWideString@@QBE?AVCCharString@@XZ	?ToCharString@CWideString@@QBE?AVCCharString@@XZ
+0x005955AB	??_C@_00CNPNBAHC@?$AA@	?NullChar@CCharString@@1DB
+0x005955AB	?IsPathFile@@YI_NABVCWideString@@@Z	?IsPathFile@CAFile@@SI_NABVCWideString@@@Z
+0x00596CCE	?GetProfileNames@CFrontEndManager@NUISystem@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+0x00596CCE	??0SActionParamPair@@QAE@XZ	??0CDeletion@NUISystem@@QAE@XZ
+0x00596CCE	??0SActionParamPair@@QAE@ABU0@@Z	??0CDeletion@NUISystem@@QAE@ABV01@@Z
+0x00596CCE	??1CComponentList@@QAE@XZ	??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+0x00596CCE	??0CActionParamString@NUISystem@@QAE@ABVCWideString@@@Z	??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z
+0x00596CCE	?push_back@CActionParamList@NUISystem@@QAEXABQAVCActionParam@2@@Z	?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z
+0x00597006	?GetProfileNames@CFrontEndManager@NUISystem@@QAEXAAUCWideStringVector@2@@Z	?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+0x00597006	??ACScreenMap@NUISystem@@QAEAAPAVCComponent@1@ABW4FRONTEND_SCREEN@1@@Z	??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z
+0x00597006	??0CAction@N_0042bed4@NUISystem@@QAE@XZ	??0CDeletion@NUISystem@@QAE@XZ
+0x00597006	??0CAction@N_0042bed4@NUISystem@@QAE@ABU012@@Z	??0CDeletion@NUISystem@@QAE@ABV01@@Z
+0x00597006	??1CActionParamListOwned@NUISystem@@QAE@XZ	??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+0x00597006	?ShareData@CListPointer@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z	?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z
+0x00597006	??0CActionParamString@NUISystem@@QAE@ABVCWideString@@@Z	??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z
+0x00597006	?push_back@CActionParamList@NUISystem@@QAEXABQAVCActionParam@2@@Z	?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z
+0x00597006	?Release@CListPointer@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ
+0x00597006	??1CWideStringVector@NUISystem@@QAE@XZ	??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ
+0x00416953	?LoadGame@CWorld@@QAE_NABVCWideString@@_N@Z	?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z
+0x00416953	?GetLevelsDirectory@@YI?AVCWideString@@XZ	?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ
+0x00416953	?g_bExportStaticMaps@@3_NA	?g_bCompileFrontendDefinitions@@3_NA
+0x00416953	?g_b13B8616@@3_NA	?g_bRuntimeLevelFiles@@3_NA
+0x00416953	?GetMapPath2@CWorld@@QBE?AVCWideString@@ABV2@@Z	?ConvertWorldToISMThingyPath@CWorld@@QBE?AVCWideString@@ABV2@@Z
+0x00416953	?ConvertWorldToStaticMapPath2@CWorld@@QBE?AVCWideString@@ABV2@_N1@Z	?ConvertWorldToISMThingyPath@CWorld@@QBE?AVCWideString@@ABV2@_N1@Z
+0x00416953	?PostLoad@CWorld@@QAEXJ@Z	?ActivateWorld@CWorld@@QAEX_N@Z
+0x00416953	?ActivateQuest@CQuestManager@@QAEXABVCCharString@@_N1@Z	?ActivateQuest@CQuestManager@@QAE_NABVCCharString@@_N1@Z

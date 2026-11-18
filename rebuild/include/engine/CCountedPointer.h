@@ -130,17 +130,24 @@ public:
             Info = 0;
     }
 #endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_COPY_DECL_ONLY
+    // NF76 per-TU opt-in (row 0x00B42530 CEngineMap::OpenDevelopmentStaticMap): that TU calls the copy constructor COMDAT
+    // (??0?$CCountedPointer@VCBankFileAsyncEntry@@@@QAE@ABV0@@Z 0x009D69A0, Ego_r.pdb / FableWin.pdb name set) for a by-value argument
+    // where the body below would be expanded. Declaration only; the retail body is the default one.
+    CCountedPointer(const CCountedPointer& other);
+#else
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
     {
         if (Info)
             ++Info->RefCount;
     }
+#endif
     template <class U> CCountedPointer(const CCountedPointer<U>& other) : Data(other.Data), Info(other.Info)
     {
         if (Info)
             ++Info->RefCount;
     }
-#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY)
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_NOINLINE)
     // Per-TU opt-in (agentNF 2026-11-10, the NUISystem TUs): the destructor is `{ ReleaseData(); }` and ReleaseData is the release with
     // Data zeroed before Info. Evidence: Ego_r.pdb ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ is a 5-byte function (0x00438DDC,
     // next symbol 0x00438DE1) and retail has the same 5-byte `jmp` COMDAT at 0x00429C53 (-> 0x004291DE), called at the scope ends of
@@ -201,7 +208,27 @@ public:
     bool IsNull() const { return Data == 0; }
     unsigned long GetReferenceCount() const { return Info ? Info->RefCount : 0; }   // unproven body (FableWin name only)
     void Validate() const;                                               // FableWin.pdb only (debug build check)
-#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY)
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_NOINLINE)
+    // NF73 opt-in (row 0x00597006 CFrontEndManager::RefreshAvailableProfilesForDelete): the _RELEASEDATA body (Data zeroed before Info),
+    // visible to the TU but kept out of line, as the retail CFrontEndManager TU calls its COMDATs (0x004291DE CComponent, 0x00429160
+    // CAction, 0x0059A994 CList) yet keeps the local CCountedPointer<CList>'s data pointer in ebx across the button loop
+    // (0x005970F7 `mov ebx,[ebp-34h]` ... 0x005971CE `mov ecx,ebx`): c2 knows the release keeps no address of the pointer.
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    void ReleaseData()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
+#elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY)
     void ReleaseData();                                                  // out of line (0x004291DE for CComponent): the _RELEASEDATA body
 #elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA)
     void ReleaseData()                                                   // 0x004291DE (CComponent): Data zeroed before Info

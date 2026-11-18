@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00869020   WARN RELOC_NAME: ?IsAbleToBeDeflected@CTCShotDefinitionBase@NThingShot@@QBE_NXZ -> 007bed60 labelled '_global::GetMember_byte0x68_007bed60'
+00869020   RELOCATION_MATCH PASS   SetAsModifiedByArmour
+008af850   RELOCATION_MATCH PASS   PlayBattleCry
+008f7950   RELOCATION_MATCH PASS   CreateDustEffectForCreature
+00921440   RELOCATION_MATCH PASS   IsExpressionPerfomedTo
+009627c0   RELOCATION_MATCH PASS   Update
+
+WINS: 5
+  00869020 RELOCATION_MATCH CHitParameters::?SetAsModifiedByArmour@CHitParameters@@QAEXABVCThing@@AAV?$CDefPointer@$$CBVCArmourDef@@@@@Z
+  008af850 RELOCATION_MATCH CombatDialogueManager::?PlayBattleCry@CombatDialogueManager@@QAE_NAAVCThingCreatureBase@@@Z
+  008f7950 RELOCATION_MATCH NCombatActionHelpers::?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  00921440 RELOCATION_MATCH CAIStateGroup_MinionFollowThing::?IsExpressionPerfomedTo@CAIStateGroup_MinionFollowThing@@IAE_NABVCCharString@@@Z
+  009627c0 RELOCATION_MATCH CAIStateGroup_IceTrollIcicleAssault::?Update@CAIStateGroup_IceTrollIcicleAssault@@MAEXXZ

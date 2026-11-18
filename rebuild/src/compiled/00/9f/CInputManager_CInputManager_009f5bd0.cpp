@@ -25,6 +25,11 @@ class CKeyboard;
 class CJoystick;
 struct CCountedJoystick;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+// NF75 (round 7, land1117fu q10929): the two event vectors are the shared STLport std::vector<CInputEvent> (was the NativeVector
+//   stand-in); clear() calls the out-of-line erase(first, last) 0x009F67E0 as retail does (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE),
+//   bound as ?erase@?$vector@VCInputEvent@@V?$allocator@VCInputEvent@@@std@@@std@@QAEPAVCInputEvent@@PAV3@0@Z (was ?erase@?$NativeVector@..).
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 template<class T> struct NativeAllocator {};
 template<class T> struct NativeStorageEnd:NativeAllocator<T> { T* Value; NativeStorageEnd(T* p):Value(p){} };
 template<class T> struct NativeVector { T* Start; T* Finish; NativeStorageEnd<T> End; NativeVector():Start(0),Finish(0),End(Start){} T* erase(T*,T*); void clear(){erase(Start,Finish);} struct iterator { T* current; iterator(T* p):current(p){} iterator operator+(int n)const{return iterator(current+n);} T& operator*()const{return *current;} }; iterator begin()const{return iterator(Start);} T& operator[](int n) const { return *(begin()+n); } };
@@ -100,8 +105,8 @@ NATIVE_ONLY(sizeof(CDiskFileWin32)==sizeof(DonorCDiskFileWin32));
 class CInputManagerInit { public: bool UseMouse,UseJoystick,UseKeyboard; };
 class CInputManager : public CBaseClass { public:
     CInputManager(const CInputManagerInit&,bool);
-    NativeVector<CInputEvent> ProcessedEvents;
-    NativeVector<CInputEvent> EventStore;
+    std::vector<CInputEvent> ProcessedEvents;      // STLport 4.6 (stlport/fable_containers.h)
+    std::vector<CInputEvent> EventStore;
     int NoStoredEvents;
     int NoEventScansRunning;
     NativeScoped<CMouse> PMouse;

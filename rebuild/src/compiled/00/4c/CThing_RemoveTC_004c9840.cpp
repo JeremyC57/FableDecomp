@@ -1,134 +1,43 @@
-// CThing::RemoveTC(long type) -- deferred removal of a thing component: find the TC of `type`; unless already flagged, flag it, clear its presence bit, queue {this, tc} on the global pending-removal list and notify the TC
+// CThing::RemoveTC(ETCInterfaceType type) -- deferred removal of a thing component: find the TC of `type`; unless already flagged, flag it,
+//   clear its presence bit, queue {this, tc} on CThing::TCsToBeRemoved and notify the TC (OnRemove)
 // Leaf: ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x004C9840, 224 bytes incl. padding (ret 4). Manifest label "CBaseObject::OnPropertyChanged"
-//          is propagated; the body is CThing::RemoveTC(long) (GOTCHAS wave 25 chunks 140/163).
-// Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, the TC's virtual slot 21 (+0x54, interface type),
-//          std::bitset<274>::reset(pos) @ 0x004CC0D0, CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 /
-//          GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
-//          list<STCRemoval>::insert(iterator, const STCRemoval&) @ 0x004CCC80 on the global list @ 0x013B8A24 (push_back),
-//          the TC's virtual slot 2 (+8).
-// Layout (CThing): interface presence bitset +0x20, interface map {first +0x44, last +0x48} of {type, CTCBase*};
-//          CTCBase: pending-removal flag +8.
-// Shape: the inline find (lower bound, then end unless the key matches; `type` re-read from its slot); push_back = insert(end(), v)
-//          with the end iterator built in its by-value slot (user copy ctor) and the returned iterator in the dead `type` slot;
-//          the node value is {CIntelligentPointer<CThing>, CTCBase*} built from a CIntelligentPointer(this) temporary.
-// Name fix (agentNF5 2026-11-10): Ego_r.pdb / FableWin.pdb ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z (the interface-type enum), was (long).
-enum ETCInterfaceType;                                       // MS forward enum (CThing::RemoveTC 0x004C9840 takes it)
-class CThing;
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer(T* item) { SetPItem(item); }
-    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
-class CTCBase { public:
-    virtual void v00(); virtual void v01();
-    virtual void OnRemove();                    // slot 2 (+0x08)
-    virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
-    virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
-    virtual long GetInterfaceType();            // slot 21 (+0x54)
-    void* PThing;                               // +0x04
-    bool  PendingRemoval;                       // +0x08
-};
-
-struct STCRemoval {
-    CIntelligentPointer<CThing> PThing;                 // +0x00
-    CTCBase*            PTC;                    // +0x08
-    STCRemoval(const CIntelligentPointer<CThing>& thing, CTCBase* tc) : PThing(thing), PTC(tc) { }
-};
-
-struct STCRemovalNode { STCRemovalNode* next; STCRemovalNode* prev; STCRemoval value; };
-struct STCRemovalIterator {
-    STCRemovalNode* node;
-    STCRemovalIterator(STCRemovalNode* n) : node(n) { }
-    STCRemovalIterator(const STCRemovalIterator& o) : node(o.node) { }
-};
-struct CTCRemovalList {
-    STCRemovalNode* head;
-    STCRemovalIterator end() { return STCRemovalIterator(head); }
-    struct SInsertResult { STCRemovalNode* node; };
-    SInsertResult insert(STCRemovalIterator where, const STCRemoval& value);   // 0x004CCC80
-    void push_back(const STCRemoval& value) { insert(end(), value); }
-};
-extern CTCRemovalList g_TCRemovalList;          // 0x013B8A24
-
-struct CTCBitset {
-    unsigned long m_words[9];
-    CTCBitset& reset(unsigned int pos);         // 0x004CC0D0
-};
-// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
-//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class C> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
-    value_type* _M_start;                                   // +0x00 (the STLport vector)
-    value_type* _M_finish;                                  // +0x04
-    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
-    value_type* find(const ETCInterfaceType& type)
-    {
-        value_type* it = LowerBound(type);
-        if (it == _M_finish || type < it->first)
-            it = _M_finish;
-        return it;
-    }
-    value_type* end() const { return _M_finish; }
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound (STLport lower_bound over the 8-byte {type, component} entries): compiled above
-// the caller so VC7.1 knows the key's address does not escape and packs the lookup keys as retail (the landed 0x00848730 idiom).
-CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
-{
-    value_type* it = _M_start;
-    int len = int(_M_finish - _M_start);
-    while (len > 0) {
-        int half = len / 2;
-        value_type* middle = it + half;
-        if (middle->first < key) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
-
-class CThing { public:
-    void*         __vftable;                    // +0x00
-    unsigned char _pad04[0x1c];
-    CTCBitset     m_presentBits;                // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    void RemoveTC(ETCInterfaceType type);
-};
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004C9840, 224 bytes incl. padding (ret 4).
+// Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (the inline Find), the TC's virtual slot 21 GetInterfaceType,
+//   std::bitset<274>::reset(size_t) 0x004CC0D0 (out of line), CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / dtor
+//   0x00A01C10 (the CIntelligentPointer<CThing>(this) temporary and the pair copy), list::insert(iterator, const value_type&) 0x004CCC80 on
+//   CThing::TCsToBeRemoved 0x013B8A24 (push_back), the TC's virtual slot 2 OnRemove.
+// Identity: Ego_r.pdb / FableWin.pdb ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z; Ego_d.pdb names the parameter `type` and the locals it,
+//   ptc (inner scope).
+// Port (NF92, q11218 binder): the local CThing / CTCBase / CVectorMap / bitset / list / CIntelligentPointer models (it bound the list as the
+//   made-up ?g_TCRemovalList@@3UCTCRemovalList@@A) moved onto engine/CThing.h (NF90 opt-in FABLE_RETAIL_CTHING_TCSTOBEREMOVED), CTCBase.h,
+//   CIntelligentPointer.h (COPY: the pair copy goes through GetPItem / SetPItem) and stlport/fable_containers.h (STLP_LIST_INSERT_OUTOFLINE,
+//   NF92 opt-in STLP_BITSET_RESET_DECL).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_TCSTOBEREMOVED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE
+#define FABLE_RETAIL_STLP_BITSET_RESET_DECL
+#include "fable_string.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
 
 void CThing::RemoveTC(ETCInterfaceType type)
 {
-    CInterfaceMap::value_type* it = m_interfaces.find(type);
-    if (it == m_interfaces.end())
-        return;
-    CTCBase* tc = it->second;
-    if (tc->PendingRemoval)
-        return;
-    tc->PendingRemoval = true;
-    m_presentBits.reset(tc->GetInterfaceType());
-    g_TCRemovalList.push_back(STCRemoval(CIntelligentPointer<CThing>(this), tc));
-    tc->OnRemove();
+    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::iterator it = Components.Find(type);
+    if (it != Components.end()) {
+        CTCBase* ptc = it->second;
+        if (!ptc->ToBeRemoved) {
+            ptc->ToBeRemoved = true;
+            UsingComponents.reset(ptc->GetInterfaceType());
+            TCsToBeRemoved.push_back(std::pair<CIntelligentPointer<CThing>, CTCBase*>(CIntelligentPointer<CThing>(this), ptc));
+            ptc->OnRemove();
+        }
+    }
 }

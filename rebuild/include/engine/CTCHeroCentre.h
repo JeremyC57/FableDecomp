@@ -24,6 +24,11 @@ public:
     // VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@Z (out of line at 0x0077DBC0, landed). Declaration only.
     bool GetQuestCards(std::vector<CIntelligentPointer<CThing> >& cards) const;                  // 0x0077DBC0
 #endif
+#ifdef FABLE_RETAIL_CTCHEROCENTRE_REMOVEQUESTCARD
+    // NF87 opt-in (row 0x006223C0 CTCInventoryQuests::ProcessQuestActivateAction): Ego_r.pdb ?RemoveQuestCard@CTCHeroCentre@@QAEXPAVCThing@@@Z,
+    // out of line in retail at 0x0077D400 (Ego_d.pdb parameter pThing). Declaration only.
+    void RemoveQuestCard(class CThing* pThing);                         // 0x0077D400
+#endif
 #ifndef FABLE_RETAIL_CTCHEROCENTRE_VSLOTS
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
 #endif
@@ -46,15 +51,15 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCHeroCentre) == 0x34);
+FABLE_STATIC_ASSERT_AT(49, sizeof(CTCHeroCentre) == 0x34);
 #ifndef FABLE_RETAIL_CTCHEROCENTRE_VSLOTS
-FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CTCHeroCentre, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, PDef_Object) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, CurrentGUIMode) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, FrameQuestCardListFrom) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, QuestCards) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, QuestCardPositions) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, WaitingForTutorialToFinish) == 0x30);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CTCHeroCentre, PDef_Object) == 0xc);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CTCHeroCentre, CurrentGUIMode) == 0x10);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CTCHeroCentre, FrameQuestCardListFrom) == 0x14);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CTCHeroCentre, QuestCards) == 0x18);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CTCHeroCentre, QuestCardPositions) == 0x24);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CTCHeroCentre, WaitingForTutorialToFinish) == 0x30);
 
 #endif // FABLE_ENGINE_CTCHEROCENTRE_H

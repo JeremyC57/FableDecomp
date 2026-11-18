@@ -9,18 +9,21 @@
 // CAnimatedBlock: GroupCount (uchar) +0x17, Groups uchar[18] +0x18).
 // Shape: STLport `*(begin() + i)` over the cloth array (size re-read each pass); each group byte widened into the
 // operator[] key temporary and replaced by the low byte of the mapped value.
-// Leaf: RemapBoneIndices@C3DPrimitive2
+// Leaf: ?RemapBoneIndices@C3DPrimitive2@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
-struct CBoneMap {                                   // map<unsigned long, unsigned long>
-    unsigned long& operator[](const unsigned long& key);   // 0x00553E60
-};
+// NF64 (round 7, q10718): the bone remap is the Ego_r.pdb std::map<unsigned long, unsigned long> (stlport/fable_map.h; its operator[] is
+//   the out-of-line COMDAT 0x00553E60 NF61 re-authored); was the stand-in std::map<unsigned long, unsigned long>. That also gives this row and its two callees the
+//   Ego_r.pdb parameter spelling (AAV?$map@KK...).
+#include "stlport/fable_map.h"
 class C3DClothPrimitive { public:
-    void RemapBoneIndices(CBoneMap& remap);         // 0x00AC3AF0
+    void RemapBoneIndices(std::map<unsigned long, unsigned long>& remap);         // 0x00AC3AF0
 };
+class C3DPrimitive2;
 namespace N3DPrimitive {
-class CDeviceIndependent { public:
-    void RemapBoneIndices(CBoneMap& remap);         // 0x00A90D60
+class CDeviceIndependent {
+    friend class ::C3DPrimitive2;
+    void RemapBoneIndices(std::map<unsigned long, unsigned long>& remap);         // 0x00A90D60 (Ego_r.pdb 0x00BD3240: private, AAE)
 };
 }
 #include "engine/CCountedPointer.h"
@@ -42,10 +45,10 @@ class C3DPrimitive2 { public:
     unsigned char _30[0x18];
     unsigned long AnimatedBlockCount;               // +0x48
     CAnimatedBlock* AnimatedBlocks;                 // +0x4c
-    void RemapBoneIndices(CBoneMap& remap);
+    void RemapBoneIndices(std::map<unsigned long, unsigned long>& remap);
 };
 
-void C3DPrimitive2::RemapBoneIndices(CBoneMap& remap)
+void C3DPrimitive2::RemapBoneIndices(std::map<unsigned long, unsigned long>& remap)
 {
     Data->RemapBoneIndices(remap);
     for (unsigned long i = 0; i < ClothPrimitives.size(); ++i)

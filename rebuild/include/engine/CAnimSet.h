@@ -83,5 +83,5 @@ bool Forwards:1;
 bool HadUpdate:1;
 bool OwnedByMainAnim:1;
 };
-FABLE_STATIC_ASSERT(sizeof(CAnimSet)==0x54);
+FABLE_STATIC_ASSERT_AT(74, sizeof(CAnimSet)==0x54);
 #endif

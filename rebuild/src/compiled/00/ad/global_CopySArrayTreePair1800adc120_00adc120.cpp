@@ -8,17 +8,15 @@
 // /Gr algorithm TU: __fastcall, first in ecx, last in edx, result + the tag reference + the null distance pointer on
 // the stack (callers push `0`, `lea` of a dead slot, result).
 // Label correction: the catalog's `_Copy_impl<std::pair<CCharString,CCharString>*,...>` is propagated; same element shape as 0x00ADC0D0 (a second instantiation in the same TU: identical body, separate COMDAT).
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CRetailTree_0045c811 are now the STLport std::map<unsigned long, long> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
 struct SArray0C_0045bc09 {                       // 12 bytes, assigned out of line
     void* m_words[3];
     SArray0C_0045bc09& operator=(const SArray0C_0045bc09& other);   // 0x0045BC09
 };
-struct CRetailTree_0045c811 {                    // 12 bytes, assigned out of line
-    void* m_words[3];
-    CRetailTree_0045c811& operator=(const CRetailTree_0045c811& other);   // 0x0045C79E
-};
 struct SArrayTreePair18_00adc120 {               // 24 bytes; implicit memberwise operator=
     SArray0C_0045bc09 m_values;        // +0x00
-    CRetailTree_0045c811 m_tree;        // +0x0c
+    std::map<unsigned long, long> m_tree;        // +0x0c
 };
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

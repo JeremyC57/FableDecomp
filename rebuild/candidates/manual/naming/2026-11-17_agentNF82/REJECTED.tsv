@@ -1,0 +1,2 @@
+entry_or_address	claim	source	reason
+# none: no queue claim was rejected. Corrections to landed comments (not queue claims) are in NOTES.md (0x009B5800 long -> unsigned long; 0x00A403F0/0x00A408E0 unsigned long -> CSoundBankLH*).

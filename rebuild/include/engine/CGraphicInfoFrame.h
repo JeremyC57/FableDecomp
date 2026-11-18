@@ -48,6 +48,12 @@ public:
 #endif
 private:
     bool InternalGetFrameForcedLoading(unsigned long flags) const;      // 0x009FF6B0
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETDATA
+    // NF79 opt-in (round 7, row 0x00A00D90): FableWin.pdb ?GetData@CGraphicInfoFrame@@ABEPAVCFrameData@1@XZ (private const), out of line in
+    // retail at 0x00A00D90 (creates the frame data on first use through the mutable Data, as GetFrame below does, and returns it).
+    // Declaration only, no layout change.
+    CFrameData* GetData() const;                                         // 0x00A00D90
+#endif
     unsigned short FrameNum;                                 // +0x04
     signed char SmallMipmapLevel;                            // +0x06
     mutable CIVCountedPointer<CFrameData> Data;              // +0x08
@@ -69,8 +75,8 @@ public:
     unsigned long TouchedFrame;                              // +0x3C
     const CGraphicInfoFrame* GraphicInfoFrame;               // +0x40
 };
-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame)==0x10);
-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame::CFrameData)==0x44);
+FABLE_STATIC_ASSERT_AT(67, sizeof(CGraphicInfoFrame)==0x10);
+FABLE_STATIC_ASSERT_AT(68, sizeof(CGraphicInfoFrame::CFrameData)==0x44);
 inline bool CGraphicInfoFrame::IsLoaded() const { return !Data.IsNull() && Data->Frame.IsInitialised(); }
 inline long CGraphicInfoFrame::GetCurrentLoadedMipmapLevel() const { return !Data.IsNull() ? Data->CurrentMipmapLevel : -1; }
 // FableWin.pdb ?GetFrame@CGraphicInfoFrame@@QBE_NAAVCGraphicFrame@@KK@Z: no Ego_r.pdb copy and no retail out-of-line copy, expanded in its

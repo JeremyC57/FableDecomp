@@ -6,6 +6,10 @@
 // optimize("s", on)). Called by the scalar deleting destructor 0x004E3EC5 (CTCDExplosion vtable 0x01242A54 slot 0).
 // Callees: vector<CIntelligentPointer<CThing> >::~vector @ 0x004406D0 (x3), vector<pair<CIntelligentPointer<CThing>,long> >
 // ::~vector @ 0x004E1B08, CTCBase::~CTCBase @ 0x00686830 (tail jump).
+// NF72 (round 7, q10901): the three ~vector calls @ 0x004406D0 now bind the STLport
+//   ??1?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@XZ (ported this round):
+//   the local CThingPointerVector stand-in became std::vector<CIntelligentPointer<CThing> > from the shared stlport/fable_containers.h
+//   (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE: declaration only, retail calls the COMDAT). The rest of the row is unchanged.
 // Shape: reverse member order with the RETAIL offsets (12-byte vectors, PDB 16): SpecifiedThingsToHit +0x6c, ImmuneThings
 // +0x60, HitThings +0x54, Emitters +0x40, then the inlined CDefPointer release of PExplosionDef (+0x38).
 #include "fable_compiler.h"
@@ -46,12 +50,9 @@ struct CDefPointer {                        // CDefPointer<T>: the pointee's cou
 
 #include "engine/C3DVector.h"
 
-struct CThingPointerVector {                // vector<CIntelligentPointer<CThing> > (12 bytes)
-    void* First;
-    void* Last;
-    void* End;
-    ~CThingPointerVector();                 // 0x004406D0
-};
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "stlport/fable_containers.h"
+typedef std::vector<CIntelligentPointer<CThing> > CThingPointerVector;   // 12 bytes; ~vector 0x004406D0 (out-of-line COMDAT)
 
 struct CEmitterVector {                     // vector<pair<CIntelligentPointer<CThing>, long> > (12 bytes)
     void* First;

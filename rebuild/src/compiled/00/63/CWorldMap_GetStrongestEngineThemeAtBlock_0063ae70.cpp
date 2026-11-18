@@ -8,29 +8,21 @@
 // ?GetStrongestEngineThemeAt@CMap@@IBEJABVC2DCoordI@@AAJ@Z; manifest label "CMap::CopyPos" is a propagation).
 // Shape: as SetGroundSizeZAtBlock 0x0063A910 (named frame block, setter arguments pushed before the map fetch); the
 // two exits keep their own epilogues, the miss path returns 0.
-class C2DCoordI {
-public:
-    long X, Y;
-    C2DCoordI(long x, long y) : X(x), Y(y) { }
-};
-
-class CMap {
-public:
-    long GetStrongestEngineThemeAt(const C2DCoordI& pos, long& strength) const;   // 0x0081F910
-};
-
-class CWorldMap {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual bool IsMapLoaded(long map) const;                    // slot 10 (+0x28) 0x004FC050
-    virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16();
-    virtual long GetMapNumberAt(const C2DCoordI& pos) const;     // slot 17 (+0x44) 0x004FC080
-    virtual CMap& GetMap(long map);                              // slot 18 (+0x48) 0x0051CE20
-    virtual const CMap& PeekMap(long map) const;                 // slot 19 (+0x4C) 0x0051CE40
-    C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const;    // 0x004FC3C0
-    long GetStrongestEngineThemeAtBlock(const C2DCoordI& pos, long& strength) const;
-};
+// NF70 (round 7, land1117fu q10724 / q10735): moved onto engine/CMap.h + engine/CWorldMap.h (the local CMap / CWorldMap / C2DCoordI models are gone; NF62's 0x0063A540
+//   define block); the CMap callee is the protected const PDB member, reached as CWorldMap is CMap's friend (FABLE_RETAIL_CMAP_CWORLDMAP_FRIEND).
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CMAP_THEMESIZEZ
+#define FABLE_RETAIL_CMAP_CWORLDMAP_FRIEND
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CWORLDMAP_CONVERTCOORDSTOLOCALBLOCK
+#define FABLE_RETAIL_CWORLDMAP_STRONGESTTHEMEATBLOCK
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/C2DCoordI.h"
+#include "engine/CMap.h"
+#include "engine/CWorldMap.h"
 
 long CWorldMap::GetStrongestEngineThemeAtBlock(const C2DCoordI& pos, long& strength) const
 {

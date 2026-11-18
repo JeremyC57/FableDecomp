@@ -1,5 +1,5 @@
 // NGameText::CDataBankGroupEntry::BuildGroup() const -- touch the group's resource (move it to the most-recently-used end of its list), and if its file data was loaded asynchronously, wait for it, parse the group from a memory stream over it, and drop the file data
-// Leaf: BuildGroup
+// Leaf: ?BuildGroup@CDataBankGroupEntry@NGameText@@ABEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8700, length 190 bytes (+ int3 padding), `ret`.
 // Callees: CResource::ListRemove @ 0x009FBFB0, CResource::ListInsert(prev, next) @ 0x009FBF90,
 // CBankFileAsyncData::IsFinished @ 0x009D54E0, ::WaitUntilFinished @ 0x009D5B60, ::GetData @ 0x009D5530 (Ego_r / FableWin order GetData, PeekData; byte-twin of the const PeekData 0x009D5580),
@@ -18,6 +18,9 @@
 //   ?ListRemove@CResource@@AAEXXZ / ?ListInsert@CResource@@AAEXPAV1@0@Z (Ego_r.pdb / FableWin.pdb) reached through the inline
 //   CResource::TouchResource (engine/CResourceList.h FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE); was a local CResourceMethods view
 //   (MarkAsUsed) that bound them as public CResourceMethods members.
+// NF72 (round 7, q10907; access-only): BuildGroup is private const in Ego_r.pdb 0x00B16030 + FableWin.pdb 0x02F75620
+//   (?BuildGroup@CDataBankGroupEntry@NGameText@@ABEXXZ; CDataBank calls it as a friend, agentNF69's 0x009C8890); the local declaration moves
+//   under private: (was the public QAE spelling). Bytes unchanged.
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
@@ -80,6 +83,7 @@ class CGroupEntry : public CResource { public:
 namespace NGameText {
 class CDataBankGroupEntry { public:
     CGroupEntry* PGroup;                 // +0 CIVCountedPointer<NGameText::CGroupEntry>
+private:
     void BuildGroup() const;             // ?BuildGroup@CDataBankGroupEntry@NGameText@@ABEXXZ (private in the PDB)
 };
 }

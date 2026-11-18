@@ -1,0 +1,234 @@
+#ifndef FABLE_ENGINE_CTHINGPLAYERCREATURE_H
+#define FABLE_ENGINE_CTHINGPLAYERCREATURE_H
+#include "engine/CThingCreatureBase.h"
+#if defined(FABLE_RETAIL_CTHINGPLAYERCREATURE) && defined(FABLE_RETAIL_CTHINGCREATUREBASE)
+// Retail branch (chunk 732, rows 0x006AA2E0 / 0x006AA720 / 0x006AABE0 / 0x006AB820 / 0x006ACA30): the Ego_r.pdb CThingPlayerCreature
+// members over the retail CThingCreatureBase (0x160), at the retail offsets every landed CThingPlayerCreature row reads (OnCreate
+// 0x006A9EF0, OnCollision 0x006AD580, ResolveMovementAcceleration 0x006AB770, GetCurrentMaxMovementSpeed 0x006AB5D0): ControlPos
+// +0x160 .. MovementBandType +0x200 (Ego_r +0x188 .. +0x22C: the retail creature chain sits 0x28 lower, and the STLport map is 0xC
+// where Ego_r's is 0x10). The two collision vectors are byte-packed in the PDB too (CollidedWithThing +0x1CC, LastThingCollisionNormal
+// +0x1CD, LastThingCollisionPosition +0x1D9; Ego_r +0x1F8 / +0x1F9 / +0x205), so the class is packed to 1 with the PDB's alignment
+// gaps spelled out. Allocation size 0x208 (Create 0x006AC910 `push 208h`): the last dword is not in the Ego_r member list.
+#include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ACCELERATIONMAP
+// Opt-in (wf7, row 0x006AD3C0 ApplyRelativeMovementAcceleration): RelativeMovementAccelerationComponents typed as the Ego_r.pdb
+// member type map<EGameAction,pair<C3DVector,long> > (STLport, 0xC bytes in retail) instead of the opaque byte array.
+#include "stlport/fable_map.h"
+#endif
+enum EControlledMovementType;
+enum EMovementBandType;
+enum ECombatZone;
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_RELATIVEMOVEMENT
+enum EGameAction;                                            // MS forward enum (engine/fable_nscript_forward.h)
+#endif
+class CHeroCombatDef;
+class CPlayerMovementDef;
+class CCreatureAbilityDef;
+class CEnginePrimitivePrepareInfo;
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_CREATEANDADD
+class CThingObject;
+#endif
+#pragma pack(push, 1)
+class CThingPlayerCreature : public CThingCreatureBase {
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ONDIE
+// NF62 opt-in (2026-11-17, row 0x006A9590): Ego_r.pdb ?OnDie@CThingPlayerCreature@@MAEXXZ (protected virtual, the CThing slot-11 override; vtable
+// 0x01245828 holds 0x006A9590). Declaration only: no layout change.
+protected:
+    virtual void OnDie();                                        // slot 11 0x006A9590
+private:
+#endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_PREONKILL
+// NF91 opt-in (round 7, q11200 / q11205 row 0x006AB300): Ego_r.pdb (0x00549470) + FableWin.pdb ?PreOnKill@CThingPlayerCreature@@MAE_NXZ (protected
+// virtual, the CThing slot-13 override; the vtable 0x012457FC holds 0x006AB300 at slot 13, 0x01245830). Declaration only: no layout change.
+protected:
+    virtual bool PreOnKill();                                    // slot 13 0x006AB300
+private:
+#endif
+
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_EXPRESSIONS
+public:
+    // Opt-in (row 0x006AC430): Ego_r.pdb / FableWin.pdb ?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z 0x006AC390 and
+    // ?LearnExpression@CThingPlayerCreature@@QAE_NABVCCharString@@J_N@Z 0x006AC430. Declarations only: no layout change.
+    bool IsExpressionAvailable(const CCharString& expressionName) const;          // 0x006AC390
+    bool LearnExpression(const CCharString& expressionName, long quickAccessSlot, bool silent);   // 0x006AC430
+#endif
+public:
+    CThingPlayerCreature();
+    // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingPlayerCreature@@SIPAVCClass@@XZ.
+    static CClass* __fastcall Alloc();
+    // Ego_r.pdb / FableWin.pdb spellings (vtable 0x012457FC).
+    virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x006AA2E0 UAE
+    virtual bool SetActionForMelee(const CCreatureAbilityDef& ability);                     // 0x006AABE0 UAE
+    void OnCollisionWithObject(CThing* thing);                                             // 0x006ACA30 QAE
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_CREATEANDADD
+    // Nested opt-in (chunk 2039, row 0x006ACA30 OnCollisionWithObject): Ego_r.pdb / FableWin.pdb
+    // ?CreateAndAddObjectToInventory@CThingPlayerCreature@@QAEPAVCThingObject@@JJ_NABVCCharString@@@Z, out of line in retail at
+    // 0x006AC200 (`ret 10h`; the row pushes the container entry's name, 1, -1 and its def index). Declaration only.
+    CThingObject* CreateAndAddObjectToInventory(long defIndex, long, bool, const CCharString& scriptName);   // 0x006AC200 QAE
+#endif
+    float GetCurrentRelativeMovementAngleXY() const;                                      // 0x006A9640 QBE
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_RELATIVEMOVEMENT
+    // Nested opt-in (chunk 1012, row 0x0062BD80 CWorld::EAControlledCreatureStrafe): Ego_r.pdb / FableWin.pdb
+    // ?ApplyRelativeMovementAcceleration@CThingPlayerCreature@@QAEXABVC3DVector@@W4EGameAction@@@Z, out of line in retail at
+    // 0x006AD3C0. Declaration only (EGameAction is the MS forward enum of engine/fable_nscript_forward.h).
+    void ApplyRelativeMovementAcceleration(const C3DVector& acceleration, EGameAction action);   // 0x006AD3C0 QAE
+#endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_MOVEMENTSPEEDS
+    // Retail opt-in (chunk 802, row 0x008EACB0): Ego_r.pdb / FableWin.pdb ?InitialiseMovementSpeeds@CThingPlayerCreature@@QAEXXZ (the
+    // landed row 0x006A9A00), called out of line. Declaration only: no layout change.
+    void InitialiseMovementSpeeds();                                                       // 0x006A9A00 QAE
+#endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_CREATE
+    // Nested opt-in (chunk Q25, row 0x00489D40 CPlayer::CreateCharacter): Ego_r.pdb / FableWin.pdb
+    // ?Create@CThingPlayerCreature@@SIPAV1@JABVC3DVector@@JABVCThingPlayerCreatureInit@@@Z (public static __fastcall), out of line in
+    // retail at 0x006AC910 (`push 208h ; call operator new`, then ConstructFromParams 0x006A9DD0). Declaration only.
+    static CThingPlayerCreature* __fastcall Create(long defIndex, const C3DVector& position, long playerNumber, const class CThingPlayerCreatureInit& init);   // 0x006AC910
+#endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_CONSTRUCT
+    // Nested opt-in (agentNF11, row 0x006A9DD0): Ego_r.pdb / FableWin.pdb
+    // ?ConstructFromParams@CThingPlayerCreature@@IAE_NJABVC3DVector@@JABVCThingPlayerCreatureInit@@@Z (protected non-virtual, `ret 10h`).
+    // Declaration only (CThingPlayerCreatureInit forward-declared).
+protected:
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, const class CThingPlayerCreatureInit& init);   // 0x006A9DD0
+#endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_MOVEMENTBAND
+    // Retail opt-in (chunk Q9, row 0x006AB430): Ego_r.pdb / FableWin.pdb
+    // ?GetMovementBandTypeFromJoytickMagnitude@CThingPlayerCreature@@IBE?AW4EMovementBandType@@M@Z (protected const, `ret 4`; the PDB
+    // spelling "Joytick"). The body reads PPlayerMovementDef's joystick bands (engine/CPlayerMovementDef.h). Declaration only.
+protected:
+    EMovementBandType GetMovementBandTypeFromJoytickMagnitude(float magnitude) const;   // 0x006AB430 IBE
+#endif
+protected:
+    void SetPlayerCreatureActionForMelee(ECombatZone zone, const C3DVector& direction, CThing* target,
+                                         const CCreatureAbilityDef& ability);              // 0x006AA720 IAE
+    void ResolveFacingDirection();                                                         // 0x006AB820 IAE
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_MAXTURNSPEED
+    // Nested opt-in (chunk 2041, row 0x006AB820 ResolveFacingDirection): Ego_r.pdb 0x005469C0 / FableWin.pdb 0x01DF7490
+    // ?GetMaxTurnSpeed@CThingPlayerCreature@@IBEMXZ (protected const), out of line in retail at 0x006A99D0 (landed; the row calls it
+    // four times). Declaration only.
+    float GetMaxTurnSpeed() const;                                                         // 0x006A99D0 IBE
+#endif
+    C3DVector ControlPos;                                    // +0x160
+    C3DVector ControlMoveByVector;                           // +0x16c
+    unsigned char MovedByPlayer:1, Jumping:1, Pad1:1;        // +0x178
+    unsigned char _pad_0x179[3];
+    EControlledMovementType ControlledMovementType;          // +0x17c
+    C3DVector MovementAcceleration;                          // +0x180
+    float MaxSlowWalkingSpeed;                               // +0x18c
+    float MaxWalkingSpeed;                                   // +0x190
+    float MaxJoggingSpeed;                                   // +0x194
+    float MaxRunningSpeed;                                   // +0x198
+    float MaxSprintingSpeed;                                 // +0x19c
+    float MaxFlyingSpeed;                                    // +0x1a0
+    float MaxStrafingSpeed;                                  // +0x1a4
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ACCELERATIONMAP
+    std::map<EGameAction, std::pair<C3DVector, long> > RelativeMovementAccelerationComponents;   // +0x1a8 (STLport, 0xC)
+#else
+    unsigned char RelativeMovementAccelerationComponents[0xc];   // +0x1a8 map<EGameAction,pair<C3DVector,long> > (STLport, 0xC)
+#endif
+    C3DVector RelativeMovementAcceleration;                  // +0x1b4
+    C3DVector LastRelativeMovementAcceleration;              // +0x1c0
+    bool CollidedWithThing;                                  // +0x1cc
+    C3DVector LastThingCollisionNormal;                      // +0x1cd
+    C3DVector LastThingCollisionPosition;                    // +0x1d9
+    unsigned char _pad_0x1e5[3];
+    CDefPointer<const CHeroCombatDef> PHeroCombatDef;        // +0x1e8
+    CDefPointer<const CPlayerMovementDef> PPlayerMovementDef;    // +0x1ec
+    C3DVector ImpulseVelocity;                               // +0x1f0
+    float LeanAngle;                                         // +0x1fc
+    EMovementBandType MovementBandType;                      // +0x200
+    unsigned char _pad_0x204[4];
+public:
+    static void CheckRetailLayout() {
+        FABLE_STATIC_ASSERT_AT(129, offsetof(CThingPlayerCreature, ControlledMovementType) == 0x17c);
+        FABLE_STATIC_ASSERT_AT(130, offsetof(CThingPlayerCreature, LastRelativeMovementAcceleration) == 0x1c0);
+        FABLE_STATIC_ASSERT_AT(131, offsetof(CThingPlayerCreature, LastThingCollisionNormal) == 0x1cd);
+        FABLE_STATIC_ASSERT_AT(132, offsetof(CThingPlayerCreature, PHeroCombatDef) == 0x1e8);
+        FABLE_STATIC_ASSERT_AT(133, offsetof(CThingPlayerCreature, MovementBandType) == 0x200);
+    }
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool DrawIsDisplayingInformation() const;  // slot 33, 0x006A9560
+public:
+    virtual bool IsAffectedByDamage() const;  // slot 47, 0x0052ABA0
+public:
+    virtual bool IsControlled() const;  // slot 76, 0x0052ABB0
+public:
+    virtual bool IsPlayerCharacter() const;  // slot 77, 0x0052ABE0
+public:
+    virtual bool IsToUnsheatheItemsAfterCutscenes() const;  // slot 88, 0x0052ABD0
+public:
+    virtual bool FeelsGravity() const;  // slot 91, 0x006A9570
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_VSLOTS2
+// agentFAM04 (2026-11-11): retail CThingPlayerCreature overrides (TLC vtable slots aligned with the Xbox 360 Test PDB
+// order; Ego_r.pdb / FableWin.pdb spellings). Declarations only (no layout change).
+public:
+    virtual void CopyGameState(const CThing&);                           // slot 7, 0x006A94B0
+    virtual void DrawUpdate(const class CInterpolationInfo*);            // slot 26, 0x006A9550
+    virtual bool DrawGetThingDisplayInformation(class CThingDrawInformation*) const;   // slot 34, 0x006A9D10
+    virtual float GetMaxPushingSpeed(const C3DVector&) const;            // slot 78, 0x006A9C20
+    virtual float GetMaxWalkingSpeed(const C3DVector&) const;            // slot 79, 0x006A98A0
+    virtual float GetMaxJoggingSpeed(const C3DVector&) const;            // slot 80, 0x0052ABC0
+    virtual float GetMaxRunningSpeed(const C3DVector&) const;            // slot 81, 0x006A9890
+    virtual float GetMaxSprintingSpeed(const C3DVector&) const;          // slot 82, 0x006A9880
+    virtual float GetMaxFlyingSpeed(const C3DVector&) const;             // slot 83, 0x006A98B0
+    virtual float GetMaxHoverSpeedSlow(const C3DVector&) const;          // slot 84, 0x006A9C30
+    virtual float GetMaxHoverSpeedMedium(const C3DVector&) const;        // slot 85, 0x006A9C40
+    virtual float GetMaxHoverSpeedFast(const C3DVector&) const;          // slot 86, 0x006A9C50
+    virtual float GetMaxAcceleration() const;                            // slot 87, 0x006A9C10
+protected:
+    virtual const class CEngineGraphic* GetCurrentGraphic() const;       // slot 90, 0x006A99C0
+public:
+    virtual EControlledMovementType GetControlledMovementType() const;   // slot 92, 0x006A9870
+public:
+#endif // FABLE_RETAIL_CTHINGPLAYERCREATURE_VSLOTS2
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ONREGIONCHANGE
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?OnRegionChange@CThingPlayerCreature@@QAEXXZ (0x006AA100, called 0x004A4DDF).
+    void OnRegionChange();                                               // 0x006AA100
+#endif // FABLE_RETAIL_CTHINGPLAYERCREATURE_ONREGIONCHANGE
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT_AT(178, sizeof(CThingPlayerCreature)==0x208);
+#else
+// Original sole base CThingCreatureBase; native Create006ac91c allocates208.
+// Complete original tail ControlPos through MovementBandType is unused here.
+class CThingPlayerCreature:public CThingCreatureBase {
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ONDIE
+// NF62 opt-in (2026-11-17, row 0x006A9590): Ego_r.pdb ?OnDie@CThingPlayerCreature@@MAEXXZ (protected virtual, the CThing slot-11 override; vtable
+// 0x01245828 holds 0x006A9590). Declaration only: no layout change.
+protected:
+    virtual void OnDie();                                        // slot 11 0x006A9590
+private:
+#endif
+
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_EXPRESSIONS
+public:
+    // Opt-in (row 0x006AC430): Ego_r.pdb / FableWin.pdb ?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z 0x006AC390 and
+    // ?LearnExpression@CThingPlayerCreature@@QAE_NABVCCharString@@J_N@Z 0x006AC430. Declarations only: no layout change.
+    bool IsExpressionAvailable(const CCharString& expressionName) const;          // 0x006AC390
+    bool LearnExpression(const CCharString& expressionName, long quickAccessSlot, bool silent);   // 0x006AC430
+#endif
+private: unsigned char _pad_0x160[0xa8];
+public: CThingPlayerCreature();
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE
+    // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingPlayerCreature@@SIPAVCClass@@XZ.
+    static CClass* __fastcall Alloc();
+#endif
+};
+FABLE_STATIC_ASSERT_AT(198, sizeof(CThingPlayerCreature)==0x208);
+#endif
+#if defined(FABLE_RETAIL_PLAYER) && defined(FABLE_RETAIL_CINTELLIGENTPOINTER) && defined(FABLE_ENGINE_CPLAYER_H)
+// Retail opt-in (chunk 728): the inline FableWin-only CPlayer::GetPPlayerCharacter declared in engine/CPlayer.h (PlayerCharacter +0x34).
+inline CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return PlayerCharacter.Get(); }
+#ifdef FABLE_RETAIL_PLAYER_NEARESTVILLAGE
+// Original FableWin01a828b0, expanded by native00488620/004886f0.
+inline const CThingPlayerCreature* CPlayer::PeekPPlayerCharacter() const {return PlayerCharacter.Get();}
+#endif
+#endif
+#endif

@@ -11,19 +11,24 @@
 // Shape: the mesh info, the bank and the bank's physics mesh info are named locals (edi / eax / ebx) taken before the argument list; the ctor's
 //   arguments evaluate right to left (scale, orientation, position, the GetMesh temporary); the temporary counted pointer is
 //   released with the inline ReleaseTemporary (DecRef / GetRefCount on the ref-count base at +4).
+// NF75 (round 7, land1117fu q10930): GetMesh returns CIVCountedPointer<const CPhysicsMesh> and the CPhysicsMeshObject constructor takes
+//   it, as Ego_r.pdb / FableWin.pdb spell both (?GetMesh@CPhysicsMeshInfo@@QBE?AV?$CIVCountedPointer@$$CBVCPhysicsMesh@@@@XZ 0x00A262B0,
+//   ??0CPhysicsMeshObject@@QAE@ABV?$CIVCountedPointer@$$CBVCPhysicsMesh@@@@ABVC3DVector@@ABVCRightHandedSet@@M@Z 0x00A12CC0); the row's
+//   pre-existing local declarations used the non-const pointee. The local ref-count base is released through the const pointee (mutable
+//   count, const ReleaseTemporary / Destroy); same bytes.
 #include "engine/C3DVector.h"
 class CRightHandedSet;
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;                       // released through CIVCountedPointer<const T>
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CRefVirtual {
     virtual void v00();
-    virtual void Destroy();                     // slot 1
+    virtual void Destroy() const;               // slot 1
 };
 class CPhysicsMesh : public CRefVirtual, public CRefCounted { public:
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -35,7 +40,7 @@ template <class T> class CIVCountedPointer { public:
     ~CIVCountedPointer() { if (Data) Data->ReleaseTemporary(); }
 };
 class CPhysicsMeshInfo { public:
-    CIVCountedPointer<CPhysicsMesh> GetMesh() const;   // 0x00A262B0
+    CIVCountedPointer<const CPhysicsMesh> GetMesh() const;   // 0x00A262B0 ?GetMesh@CPhysicsMeshInfo@@QBE?AV?$CIVCountedPointer@$$CBVCPhysicsMesh@@@@XZ
 };
 struct CMeshBank {
     CPhysicsMeshInfo* GetPhysicsMeshInfo(long index);  // 0x00A24250
@@ -46,7 +51,7 @@ class CWorld { public:
 };
 class CPhysicsMeshObject { public:
     unsigned char _body[0x40];
-    CPhysicsMeshObject(const CIVCountedPointer<CPhysicsMesh>& mesh, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00A12CC0
+    CPhysicsMeshObject(const CIVCountedPointer<const CPhysicsMesh>& mesh, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00A12CC0
 };
 class CThingPhysicsMeshInfo { public:
     unsigned short BankIndex;                   // +0x00

@@ -39,8 +39,10 @@ public:
     static bool __fastcall PathExists(const CWideString&);   // 0x00999230
     static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, unsigned short* firstFile);   // 0x00999760
     static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, unsigned short* nextFile);     // 0x00999850
+    // NF75 (round 7, land1117fu q10940): IsPathFile is CAFile's static member (engine/CAFile.h; ?IsPathFile@CAFile@@SI_NABVCWideString@@@Z, as
+    //   the landed 0x0049EF50 / 0x005955AB bind it); was a namespace-level free function.
+    static bool __fastcall IsPathFile(const CWideString& path);                       // 0x00999A30
 };                                 // 0x00999230
-bool __fastcall IsPathFile(const CWideString& path);                                 // 0x00999A30
 
 class CSystemManager;
 class CDriveManager { public:
@@ -69,7 +71,7 @@ void CUserProfileManager::DeleteProfile(const CWideString& profileName)
     CFindFileData data;
     if (CAFile::StartFileScan(pattern, handle, data.FileName)) {
         do {
-            bool isFile = CAFile::PathExists(data.FileName) && IsPathFile(data.FileName);
+            bool isFile = CAFile::PathExists(data.FileName) && CAFile::IsPathFile(data.FileName);
             if (isFile)
                 g_pDriveManager->DeleteFile(data.FileName);
         } while (CAFile::ScanNextFile(pattern, handle, data.FileName));

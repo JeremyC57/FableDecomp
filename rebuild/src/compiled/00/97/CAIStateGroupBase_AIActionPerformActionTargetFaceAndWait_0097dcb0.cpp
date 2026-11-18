@@ -12,6 +12,9 @@
 //   PAction +0x20, LookAtThing +0x40); brain creature +0x18, creature CurrentAction +0x100 (landed 0x0097DB70).
 // Shape: natural code; the CBrainOutput ctor is plain inline and VC7.1 itself calls it out of line for the first output
 //   and inlines it for the per-tick look output; the counted-pointer assignment from Clone() is the out-of-line operator=.
+// NF83 (round 7, q11020 binder): the stand-in CCountedPointer_CCreatureActionBase / SCountBlock (and its CountedDestroy declaration of
+//   0x00668610) replaced by the shared engine/CCountedPointer.h CCountedPointer<CCreatureActionBase>: SetAsPerformAction calls the
+//   out-of-line Reset(T*) 0x00668D90 (was a stand-in operator=(T*) at that address), the inline ctor release is the header ReleaseData.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CThing { public:
@@ -47,41 +50,7 @@ class CThingCreatureBase : public CThing { public:
     CCreatureActionBase* CurrentAction;         // +0x100
     bool IsPerformingAnyAction() const;               // 0x006622A0
 };
-void __fastcall CountedDestroy(void* object);   // 0x00668610
-struct SCountBlock {
-    long m_references;
-    void (__fastcall* m_pfnDestroy)(void*);
-    void* m_pObject;
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(CountedDestroy), m_pObject(object) { }
-};
-struct CCountedPointer_CCreatureActionBase {
-    CCreatureActionBase* m_pObject;
-    SCountBlock*         m_pCount;
-    CCountedPointer_CCreatureActionBase() : m_pObject(0), m_pCount(0) { }
-    FABLE_FORCEINLINE void Release()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;
-            }
-        }
-    }
-    FABLE_FORCEINLINE void Reset(CCreatureActionBase* object)
-    {
-        Release();
-        m_pCount = 0;
-        m_pObject = object;
-    }
-    CCountedPointer_CCreatureActionBase& operator=(CCreatureActionBase* object);   // 0x00668D90
-    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
-    {
-        Release();
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-};
+#include "engine/CCountedPointer.h"   // CCountedPointer<CCreatureActionBase>: Reset(T*) 0x00668D90 out of line
 class CNavigationInput { public:
     float Destination[3];
     float Proximity;
@@ -93,7 +62,7 @@ class CBrainOutput { public:
     unsigned long                       Types;            // +0x00
     long                                LookFlags;        // +0x04
     CNavigationInput                    NavigationInput;  // +0x08
-    CCountedPointer_CCreatureActionBase PAction;          // +0x20
+    CCountedPointer<CCreatureActionBase> PAction;         // +0x20
     C3DVector                           MoveToPos;        // +0x28
     C3DVector                           LookAtPos;        // +0x34
     CIntelligentPointerConstThing       LookAtThing;      // +0x40
@@ -106,13 +75,13 @@ class CBrainOutput { public:
     FABLE_FORCEINLINE void SetAsPerformAction(const CCreatureActionBase* action)
     {
         Types |= 8;
-        PAction = action->Clone();
+        PAction.Reset(action->Clone());
     }
     CBrainOutput() : NavigationInput(), PAction(), LookAtThing()
     {
         Types = 0;
         LookFlags = 0;
-        PAction.Reset(0);
+        PAction.ReleaseData();
     }
 };
 class CAIBrain { public:

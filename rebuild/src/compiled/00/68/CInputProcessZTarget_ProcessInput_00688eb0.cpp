@@ -89,8 +89,10 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
+protected:   // Ego_r.pdb / FableWin.pdb protected const (NF70 q10790; the landed 0x00687A90 / 0x00687BD0 spellings)
+    bool IsEventButtonPressed(const CInputEvent& event) const;        // 0x00687A90
+    bool IsEventButtonHeld(const CInputEvent& event) const;           // 0x00687BD0
+public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessZTarget : public CInputProcessGameBase {

@@ -1,0 +1,8 @@
+# NF73 lessons (one line each)
+- A "same-TU callee body" residue (frame size, loop not strength-reduced, a pointer not kept in a register) needs the whole escape chain visible: the callee body AND the library bodies it calls kept visible-noinline; a visible body that calls declaration-only STLport members still lets the local escape (0x00596CCE: 838v824 until push_back / _M_insert_overflow / erase were NOINLINE, then RM).
+- Two rows of one TU can need different visibility for the same template: the CList pointer stays in ebx only in 0x00597006 (ReleaseData visible-noinline); 0x00596CCE reloads it from memory anyway (register pressure), so it matches either way.
+- Never overlay the root fable_string.h: it is `#pragma once` only, so a copy plus the repo file both open and CWideString is defined twice; overlay stlport/fable_string.h instead and include it first (macro guard).
+- An overlaid header is only seen if the row includes it before any repo header that includes it relatively (MSVC searches the includer's directory first); include the overlaid headers first.
+- Read the header's vtable comments and the Ego_r name tables before trusting a landed placeholder: slot 90 vfunc_90 was CloseInventoryInternalPC, PostLoad(long) was ActivateWorld(bool), GetMapPath2 was ConvertWorldToISMThingyPath, SetDisplayEngine was CWorld::PostInit(CDisplayEngine&).
+- A control grade without a new opt-in (004091C0: DIFFER 560v534) is the cheapest proof that the opt-in is needed, for hdr/README.
+- Budget: porting 5 rows to RM left 1-2 grades for each of the 5 heaviest rows; take the TU family whose recipe you already hold first, and start the 10+-header rows only with a fresh budget.

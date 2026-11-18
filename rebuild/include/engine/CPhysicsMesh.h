@@ -27,6 +27,11 @@ public:
     const C3DBoundingSphere& GetBoundingSphere() const { return BoundingSphere; }
     bool HasBoundingSphereIntersectedFromTo(float sphere_radius,
         const C3DVector& from, const C3DVector& to) const;
+#ifdef FABLE_RETAIL_CPHYSICSMESH_SIZEOF
+    // NF68 opt-in (row 0x00A25BD0 CPhysicsMeshInfo::BeginLoading): Ego_r.pdb 0x00B4D8F0 / FableWin.pdb 0x030F8DD0
+    // ?Sizeof@CPhysicsMesh@@QBEJXZ (retail 0x00A6C900, out of line; the landed CPhysicsMeshInfo::Sizeof 0x00A26370 binds it). Declaration only.
+    long Sizeof() const;                                                 // 0x00A6C900
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_NAVIGATION
     // Retail opt-in (wf5, row 0x00A11D10 CPhysicsMeshObject::GetNavigationLevelAt): the member's Ego_r.pdb type (same offset and
     // size), FableWin.pdb's inline ?GetNavigationContainmentVolumes@CPhysicsMesh@@QBEABV?$CVectorMap@JVC3DMeshVolume@@..@@XZ and

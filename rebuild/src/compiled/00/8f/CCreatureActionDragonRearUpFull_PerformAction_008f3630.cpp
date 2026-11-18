@@ -1,299 +1,121 @@
 // CCreatureAction_DragonRearUpFull::PerformAction() -- ground slam: look up JACK_DRAGON_GROUND_SLAM's CThingShotDef, create the
-// Grade: RELOCATION_MATCH -- the last x87/push interleave (retail sinks the X*r store below the &ability/0.0f/1.0f Init
-//   pushes) is a VC7.1 scheduling-window effect: the block is scheduled in fixed-size windows counted from its start, and
-//   the Newton step written `0.5f * (r * (3.0f - lengthSquared * (r * r)))` carries two more (later-folded) x87 IR
-//   instructions than `(3.0f - r * r * lengthSquared) * r * 0.5f`, which moves the window edge from fstp X up to fld X.
-//   Same emitted FastInvSqrt bytes either way; `(r * r) * lengthSquared` matches too.
 // shot thing at the dragon's position dropped to ground height + 0.25, keep it in PShot, add its shot TC (named by the def's
 // TCName) and Init it toward position + flat facing * 10 with the dragon's accuracy, exclude the dragon from its hits, then
 // spawn the GROUND_SLAM_EXPLOSION effect at the dragon and release the defs.
 // Leaf: ?PerformAction@CCreatureAction_DragonRearUpFull@@UAEXXZ
-// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008F3630, 880 bytes, plain `ret`.
-// Callees: CGameDefinitionManager::Get 0x0044C6B0, GetDefGlobalIndexFromName 0x009AD410, CCreatureActionBase::GetPWorld
-//   0x00692940, CDefinitionManager::GetDef<CThingShotDef> 0x0078B230, CWorldMap::GetGroundSizeZAt 0x0063A300, CThing::Create
-//   0x00703210 (__fastcall), CIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10/B50/B90/C10 (vtable 0x01238C6C),
-//   GetSubDef<CWeaponDef> 0x0042B1A6, GetShotAccuracyPercentage 0x00663B10, CDefStringTable::GetString 0x009D49B0,
-//   CThing::AddTC 0x004C9D60, physics GetFacing (slot 70, +0x118), CTCShotDefinitionBase::Init 0x007BF790 / AddHitThing
-//   0x007C0FB0, GetSubDef<CSpecialEffectsDef> 0x00669580, CSpecialEffectsDef::GetEffectFromString 0x00669D30,
-//   CreateEffectThing 0x006E0880 (__fastcall).
-// Shape: same-TU auto_inline(off) stand-ins for the out-param callees; the inline GetPhysics() accessor fixes the GetFacing
-//   / FastInvSqrt / release scratch registers; a __forceinline GetDef wrapper evaluates GetPWorld before the pushes.
-//   An inline CThing::GetDef() (PDef) accessor on the weapon sub-def path gives retail's callee-saved map (this/&PShot/shot
-//   TC/effects = ebp, shotDef = edi); a plain `->PDef` read swaps edi/ebp.
-//   The FastInvSqrt Newton step must keep its explicit grouping (see the grade line): the plain left-to-right form emits
-//   the same instructions but stores X*r right after its fmul, ahead of the Init pushes.
-// Layout: local model -- retail CCombatActionBase is 0x114 bytes (PShot at +0x114, PDB +0x12c).
-// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
+// Port (NF74, round 7; nf41:e110): every class from the shared headers (the 29 local models and the stand-in GetSubDef<CWeaponDef> /
+//   GetDef<CThingShotDef> bodies gone) -- the TrollThrowProjectile 0x008C6860 block (CTCShotDefinitionBase INIT / INIT_POSITION, GetSubDef,
+//   CGameDefinitionManager, CWorld), engine/CCreatureAction_DragonRearUpFull.h (PShot +0x114), Ego_d.pdb locals (start_pos, pshot_def,
+//   def_num, pobject, pweapon_def, acc, ptc_shot, facing_direction, target_pos, pspecial_fx, fx_index, p_emitter; the `creature_pos`
+//   reference is not an Ego_d local: FITTED, it gives retail's one GetPos call and the (X, Y, Z + 10) construction). The special-effects
+//   path binds GetSubDef<CSpecialEffectsDef> 0x00669580 as the queued nf41:e110 spelling. NF74 overlay opt-ins
+//   FABLE_RETAIL_CCREATUREACTION_DRAGONREARUPFULL_PERFORMACTION and FABLE_RETAIL_CTCSHOTDEFINITIONBASE_ADDTHINGTOAVOID (both PDBs'
+//   ?AddThingToAvoid@CTCShotDefinitionBase@NThingShot@@QAEXABVCThing@@@Z = the landed descriptive AddHitThing 0x007C0FB0). The existing
+//   no-code PAREN opt-in FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_PAREN places VC7.1's scheduling-region cut (the X*r store below the Init
+//   pushes) as in the landed text's note; NEWTON_GROUPED / SQUARE_PAREN / STEP_PAREN and the default leave one interleave off.
 #include "fable_compiler.h"
-extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
-{
-    unsigned long bits = *(unsigned long*)&lengthSquared;
-    unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
-    float r = *(float*)&estimate;
-    return 0.5f * (r * (3.0f - lengthSquared * (r * r)));
-}
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    FABLE_FORCEINLINE void Normalise() { float r = FastInvSqrt(X * X + Y * Y + Z * Z); X *= r; Y *= r; Z *= r; }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-};
-class CRightHandedSet;
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-class CDefStringTable { public:
-    CCharString GetString(long index) const;                 // 0x009D49B0
-};
-extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)               // 0x013CA828
-
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();                            // slot 1
-    long RefCount;                                     // +0x04
-    void Release() { if (--RefCount == 0) Destroy(); }
-};
-class CWeaponDef : public CDefBase { public: };
-class CSpecialEffectsDef : public CDefBase { public:
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-};
-long Lookup_GetEffectFromString(const void* def, const CCharString& name);
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
-{
-    long found = Lookup_GetEffectFromString(this, name);
-    if (found < 0)
-        return false;
-    type = found;
-    return true;
-}
-#pragma auto_inline(on)
-class CThingShotDef : public CDefBase { public:
-    unsigned char _pad08[0x60 - 0x08];
-    long TCName;                                       // +0x60
-    unsigned char _pad64[0x7c - 0x64];
-    long Thing;                                        // +0x7c
-};
-template <class T> struct CDefPointerByValue {
-    T* m_p;
-    CDefPointerByValue(T* p) : m_p(p) { ++p->RefCount; }
-    CDefPointerByValue(const CDefPointerByValue& o) : m_p(o.m_p) { ++m_p->RefCount; }
-    ~CDefPointerByValue();
-};
-struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
-    long GetRefCount() const { return m_count; }
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();
-};
-class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
-    void ReleaseTemporary()
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
-template <class T> class CDefPointer { public:
-    T* m_p;
-    CDefPointer() : m_p(0) { }
-    ~CDefPointer()
-    {
-        if (m_p) {
-            m_p->ReleaseTemporary();
-            m_p = 0;
-        }
-    }
-};
-// agentNF15: the GetSubDef out slot is CDefPointer<const CWeaponDef> (Ego_r.pdb member template), released by hand: a dtor-less
-//   specialisation that reads as the raw pointer (the landed agentNF14 idiom for hand-released out slots).
-template <> class CDefPointer<const CWeaponDef> { public:
-    CWeaponDef* Object;
-    CDefPointer() : Object(0) { }
-    CWeaponDef* operator->() const { return Object; }
-    operator CWeaponDef*() const { return Object; }
-};
-class CDefClassBase { public:
-    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r.pdb member template)
-    bool GetSubDef(CSpecialEffectsDef** out);          // 0x00669580
-};
-void* FindSubDef_CWeaponDef(const CDefClassBase* def);
-void* FindSubDef_CSpecialEffectsDef(const CDefClassBase* def);
-#pragma auto_inline(off)
-template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out) const
-{
-    void* found = FindSubDef_CWeaponDef(this);
-    if (!found)
-        return false;
-    out->Object = (CWeaponDef*)found;
-    return true;
-}
-__declspec(noinline) bool CDefClassBase::GetSubDef(CSpecialEffectsDef** out)
-{
-    void* found = FindSubDef_CSpecialEffectsDef(this);
-    if (!found)
-        return false;
-    *out = (CSpecialEffectsDef*)found;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
-    bool GetDefShot(long index, CThingShotDef** out);  // 0x0078B230
-    FABLE_FORCEINLINE bool GetDef(long index, CThingShotDef** out) { return GetDefShot(index, out); }
-};
-class CGameDefinitionManager : public CDefinitionManager { public:
-    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-};
-void* FindDef_CThingShotDef(CDefinitionManager* manager, long index);
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDefShot(long index, CThingShotDef** out)
-{
-    void* found = FindDef_CThingShotDef(this, index);
-    if (!found)
-        return false;
-    *out = (CThingShotDef*)found;
-    return true;
-}
-#pragma auto_inline(on)
-class CWorldMap { public:
-    float GetGroundSizeZAt(const C3DVector& pos) const;   // 0x0063A300
-};
-class CWorld { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual CWorldMap* GetWorldMap();                  // slot 12 (+0x30)
-    unsigned char       _pad04[0x10 - 0x04];
-    CDefinitionManager* PDefinitionManager;            // +0x10
-};
-
-class CTCBase;
-class CTCParamsBase;
-class CTCPhysicsBase { public:
-#define VF(n) virtual void v##n();
-#define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
-    VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
-    virtual C3DVector GetFacing();                     // slot 70 (+0x118)
-#undef VF
-#undef VF10
-};
-class CThing { public:
-    unsigned char         _pad0[0x60];
-    CTCPhysicsBase*       PhysicsTC;                   // +0x60
-    unsigned char         _pad64[0x70 - 0x64];
-    CDefClassBase*        PDef;                        // +0x70
-    unsigned char         _pad74[0x90 - 0x74];
-    signed char           PlayerNumber;                // +0x90
-    const C3DVector& GetPos() const;              // 0x004C73D0
-    FABLE_FORCEINLINE CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
-    CDefClassBase* GetDef() const { return PDef; }
-    long GetPlayerNumber() const { return PlayerNumber; }
-    CTCBase* AddTC(const CCharString& name, bool init, const CTCParamsBase* params);   // 0x004C9D60
-};
-class CThingCreatureBase : public CThing { public:
-    long GetShotAccuracyPercentage();                  // 0x00663B10
-};
-class CThingObject : public CThing { public:
-    static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player, const CRightHandedSet* orientation,
-                                           unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r/FableWin ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
-};
-FABLE_FORCEINLINE CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
-{
-    return CThingObject::Create(defIndex, position, creature->PlayerNumber, 0, 0, name);
-}
-class CTCDParticleEmitter { public:
-    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
-};
-
-struct CTCShotDefinitionBase {
-    void Init(CDefPointerByValue<CThingShotDef> def, CThing* shooter, CThing* origin, const C3DVector* target, float accuracy,
-              float a, float b, CDefPointer<CMeleeCombatAbilityDef>* ability);   // 0x007BF790
-    void AddHitThing(CThing* thing);                   // 0x007C0FB0
-};
-
-class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThingCreatureBase* m_pItem;
-    CBaseIntelligentPointer();                         // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
-    CThingCreatureBase* GetPItem() const;              // 0x00A01B50
-    void SetPItem(CBaseObject* item);                       // 0x00A01B90
-};
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer() { }
-    CIntelligentPointer(CThing* item) { SetPItem((CBaseObject*)item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)other.GetPItem()); return *this; }
-};
-
-class CCombatActionBase { public:
-    virtual void PerformAction();
-    unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;                 // +0x08
-    unsigned char           _pad10[0x114 - 0x10];
-    CWorld* GetPWorld() const;                         // 0x00692940
-};
-
-class CCreatureAction_DragonRearUpFull : public CCombatActionBase { public:
-    CIntelligentPointer PShot;                         // +0x114 (PDB +0x12c)
-    virtual void PerformAction();
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTHINGSHOTDEF_DEFSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_GETSHOTACCURACYPERCENTAGE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_PAREN
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCREATUREACTION_DRAGONREARUPFULL
+#define FABLE_RETAIL_CCREATUREACTION_DRAGONREARUPFULL_PERFORMACTION
+#define FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT
+#define FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT_POSITION
+#define FABLE_RETAIL_CTCSHOTDEFINITIONBASE_ADDTHINGTOAVOID
+#define FABLE_RETAIL_CTCDPARTICLEEMITTER_FULL
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_PEEKDEFINITIONMANAGER
+#define FABLE_RETAIL_SKYBEAM_ORIGINAL
+#define FABLE_RETAIL_CTHINGOBJECT_CREATE
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "fable_definition_table.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingObject.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CWeaponDef.h"
+#include "engine/CThingShotDef.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CWorld.h"
+#include "engine/CWorldMap.h"
+#include "engine/CTCDParticleEmitter.h"
+#include "engine/NThingShot_CTCShotDefinitionBase.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_DragonRearUpFull.h"
 
 void CCreatureAction_DragonRearUpFull::PerformAction()
 {
-    long index = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("JACK_DRAGON_GROUND_SLAM");
-    CThingShotDef* shotDef;
-    {
-        CThingShotDef* out = 0;
-        GetPWorld()->PDefinitionManager->GetDef(index, &out);
-        shotDef = out;
-    }
-    const C3DVector& creaturePos = PCreature.GetPItem()->GetPos();
-    C3DVector position(creaturePos.X, creaturePos.Y, creaturePos.Z + 10.0f);
-    position.Z = GetPWorld()->GetWorldMap()->GetGroundSizeZAt(position) + 0.25f;
-    CThing* thing = CreateThingObject(shotDef->Thing, position, PCreature.GetPItem(), "");
-    if (thing) {
-        PShot = CIntelligentPointer(thing);
-        CDefPointer<const CWeaponDef> weaponDef;
-        CDefClassBase* creatureDef = PCreature.GetPItem()->GetDef();
-        creatureDef->GetSubDef(&weaponDef);
-        long accuracy = PCreature.GetPItem()->GetShotAccuracyPercentage();
-        CTCShotDefinitionBase* shot;
+    long def_num = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("JACK_DRAGON_GROUND_SLAM");
+    CDefPointer<const CThingShotDef> pshot_def;
+    GetWorld().PeekDefinitionManager().GetDef(def_num, &pshot_def);
+    const C3DVector& creature_pos = PCreature->GetPos();
+    C3DVector start_pos(creature_pos.X, creature_pos.Y, creature_pos.Z + 10.0f);
+    start_pos.Z = GetWorld().GetWorldMap().GetGroundSizeZAt(start_pos) + 0.25f;
+    CThing* pobject = CThingObject::Create(pshot_def->ObjectDef, start_pos, PCreature->GetPlayerNumber(), 0, 0, "");
+    if (pobject) {
+        PShot = CIntelligentPointer<CThing>(pobject);
+        CDefPointer<const CWeaponDef> pweapon_def;
+        PCreature->PeekBaseDef().GetSubDef(&pweapon_def);
+        long acc = PCreature->GetShotAccuracyPercentage();
+        NThingShot::CTCShotDefinitionBase* ptc_shot;
         {
-            CCharString name = GDefStringTable.GetString(shotDef->TCName);
-            shot = (CTCShotDefinitionBase*)PShot.GetPItem()->AddTC(name, true, 0);
+            CCharString name = pshot_def->ShotDefinitionClassName.GetString();
+            ptc_shot = static_cast<NThingShot::CTCShotDefinitionBase*>(PShot->AddTC(name, true, 0));
         }
-        C3DVector facing = PCreature.GetPItem()->GetPhysics()->GetFacing();
-        facing.Z = 0.0f;
-        facing.Normalise();
-        C3DVector target = position + facing * 10.0f;
-        {
-            CDefPointer<CMeleeCombatAbilityDef> ability;
-            shot->Init(shotDef, PCreature.GetPItem(), 0, &target, (float)accuracy, 1.0f, 0.0f, &ability);
+        C3DVector facing_direction = PCreature->GetPhysicsTC()->GetFacingVector();
+        facing_direction.Z = 0.0f;
+        facing_direction.Normalise();
+        C3DVector target_pos = start_pos + facing_direction * 10.0f;
+        ptc_shot->Init(pshot_def, PCreature.Get(), 0, target_pos, (float)acc, 1.0f, 0.0f, CDefPointer<const CMeleeCombatAbilityDef>());
+        ptc_shot->AddThingToAvoid(*PCreature);
+    }
+    CDefPointer<const CSpecialEffectsDef> pspecial_fx;
+    long fx_index = 0;
+    PCreature->PeekBaseDef().GetSubDef(&pspecial_fx);
+    if (!pspecial_fx.IsNull()) {
+        if (pspecial_fx->GetEffectFromString("GROUND_SLAM_EXPLOSION", fx_index)) {
+            CThing* p_emitter = CTCDParticleEmitter::Create(fx_index, PCreature->GetPos(), false);
         }
-        shot->AddHitThing(PCreature.GetPItem());
-        if (weaponDef)
-            weaponDef->Release();
     }
-    CSpecialEffectsDef* effects = 0;
-    long effectType = 0;
-    CThing* creature = PCreature.GetPItem();
-    creature->GetDef()->GetSubDef(&effects);
-    if (effects) {
-        if (effects->GetEffectFromString("GROUND_SLAM_EXPLOSION", effectType))
-            CTCDParticleEmitter::Create(effectType, *(&PCreature.GetPItem()->GetPos()), false);
-        effects->Release();
-    }
-    shotDef->Release();
 }

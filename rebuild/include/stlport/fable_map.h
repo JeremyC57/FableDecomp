@@ -40,6 +40,13 @@ struct _Rb_tree_node_base {
     _Rb_tree_node_base* _M_parent;
     _Rb_tree_node_base* _M_left;
     _Rb_tree_node_base* _M_right;
+#ifdef FABLE_RETAIL_STLP_TREE_COPY_CTOR_SMINMAX
+    // NF84 per-TU opt-in (round 7, row 0x0053CB9B map<unsigned long, NUISystem::CUIState>::map(const map&)): STLport 4.6 _tree.h's static
+    // node-base walks, declared only: that TU calls them out of line (`call 0x0041C7E0` / `call 0x0041C800`, __cdecl, landed
+    // _Rb_tree_node_base::_S_minimum / _S_maximum; the landed 0x0042CE7A binds the same spellings). No layout change.
+    static _Rb_tree_node_base* _S_minimum(_Rb_tree_node_base* x);       // 0x0041C7E0
+    static _Rb_tree_node_base* _S_maximum(_Rb_tree_node_base* x);       // 0x0041C800
+#endif
 };
 template<class V> struct _Rb_tree_node:public _Rb_tree_node_base { V _M_value_field; };
 template<class Dummy> class _Rb_global {
@@ -180,6 +187,13 @@ public:
     typedef _Rb_tree_iterator<V,_Const_traits<V> > const_iterator;
     iterator insert_equal(const V&);
 private:
+#if defined(FABLE_RETAIL_STLP_TREE_MINSERT_NOINLINE) && defined(_MSC_VER)
+    // NF67 opt-in (round 7, row 0x00869020 CHitParameters::SetAsModifiedByArmour, with FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY): the
+    // STLport _tree.c body visible but called out of line, as retail calls the armour multimap's _M_insert 0x00869CA0 there. Seeing that
+    // it only reads the value, VC7.1 keeps the converted pair's def pointer in esi through the call and both releases (0x008690CB..
+    // 0x008690E4), as retail does; an opaque call reloads it from the pair's frame slot.
+    __declspec(noinline)
+#endif
     iterator _M_insert(_Rb_tree_node_base*,_Rb_tree_node_base*,const V&,_Rb_tree_node_base* =0);
 public:
 #ifdef FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
@@ -282,6 +296,40 @@ private:
     // only (retail calls each instance's _M_copy COMDAT from operator=; NF61's MCOPY_BODY rows define them). Body of operator= below.
 private:
     _Link_type _M_copy(_Link_type x,_Link_type p);
+#endif
+#ifdef FABLE_RETAIL_STLP_TREE_COPY_CTOR_BODY
+    // NF78 opt-in (round 7, row 0x004F97B3 map<EDamageAttribute,float>::map(const map&)): STLport 4.6.2 _tree.h copy constructor (the
+    // header node allocated by the base, then an empty tree or the source root _M_copy'd under the header with leftmost / rightmost
+    // re-derived, then the count). Inline; the map copy constructor (FABLE_RETAIL_STLP_MAP_COPY_CTOR_BODY) expands it and calls the
+    // instance's _M_copy COMDAT (0x00461533 for that tree). The base takes no allocator state (fable_map.h's allocator is empty).
+    // Inline-budget (EXTRA_RULES 2026-11-08, preference 3): forced -- VC7.1 /Os calls it out of line at every budget (row 0x004F97B3
+    // grades: default, /d2inlS22, /d2inlS60 all 18 v 126 bytes).
+public:
+    FABLE_FORCEINLINE _Rb_tree(const _Rb_tree& x):_Rb_tree_base<V,A>(A()),_M_node_count(0),_M_key_compare(x._M_key_compare) {
+        if(x._M_root()==0)
+            _M_empty_initialize();
+        else {
+            this->_M_header._M_data->_M_color=false;
+            _M_root()=_M_copy(x._M_root(),this->_M_header._M_data);
+#ifdef FABLE_RETAIL_STLP_TREE_COPY_CTOR_SMINMAX
+            // NF84 (row 0x0053CB9B): STLport's `_S_minimum(_M_root())` / `_S_maximum(_M_root())`, the node-base walks out of line.
+            _M_leftmost()=static_cast<_Link_type>(_Rb_tree_node_base::_S_minimum(_M_root()));
+            _M_rightmost()=static_cast<_Link_type>(_Rb_tree_node_base::_S_maximum(_M_root()));
+#else
+            _Rb_tree_node_base* n=_M_root();
+            while(n->_M_left!=0) n=n->_M_left;
+            _M_leftmost()=static_cast<_Link_type>(n);
+            n=_M_root();
+            while(n->_M_right!=0) n=n->_M_right;
+            _M_rightmost()=static_cast<_Link_type>(n);
+#endif
+        }
+        _M_node_count=x._M_node_count;
+    }
+#if !defined(FABLE_RETAIL_STLP_TREE_MCOPY_BODY) && !defined(FABLE_RETAIL_STLP_TREE_ASSIGN_BODY)
+private:
+    _Link_type _M_copy(_Link_type x,_Link_type p);
+#endif
 #endif
 protected:
     _Link_type& _M_root()const { return (_Link_type&)this->_M_header._M_data->_M_parent; }
@@ -784,6 +832,11 @@ public:
     // map&) 0x00A96E40 (landed; call at 0x00AD97FB with ecx = &finish->GroupToIndexMap). Declaration only here.
     map(const map& x);
 #endif
+#ifdef FABLE_RETAIL_STLP_MAP_COPY_CTOR_BODY
+    // NF78 opt-in (round 7, row 0x004F97B3): STLport 4.6.2 _map.h `map(const _Self& __x) : _M_t(__x._M_t) {}` (needs
+    // FABLE_RETAIL_STLP_TREE_COPY_CTOR_BODY); the map<EDamageAttribute,float> COMDAT 0x004F97B3 that the landed 0x006DCB20 and 0x004F9784 call.
+    map(const map& x):_M_t(x._M_t){}
+#endif
 #ifdef FABLE_RETAIL_STLP_MAP
     // Retail branch (pass 12 header wave, 0x00E0A820): STLport 4.6 _map.h declares the no-argument constructor separately
     // (`map() : _M_t(_Compare(), allocator_type()) {}` and `explicit map(const _Compare&, const allocator_type& = ...)`), so a
@@ -954,6 +1007,12 @@ public:
 #endif
     multimap():_M_t(Compare(),A()){}
     iterator insert(const value_type& x){return _M_t.insert_equal(x);}
+#ifdef FABLE_RETAIL_STLP_MULTIMAP_EMPTY
+    // NF67 opt-in (round 7, row 0x00869020 CHitParameters::SetAsModifiedByArmour): STLport 4.6 _multimap.h `bool empty() const
+    // { return _M_t.empty(); }` (the node count tested in place, 0x00869071 `cmp [esp+30h],ebp`). Needs FABLE_RETAIL_STLP_SET_EMPTY (the
+    // tree's empty). Body only, no layout change.
+    bool empty() const { return _M_t.empty(); }
+#endif
 #ifdef FABLE_RETAIL_STLP_MULTIMAP_BEGIN_END
     // Per-TU opt-in (row 0x00ACA830): STLport 4.6 _multimap.h begin() / end() (inline; 0x00ACC24F walks VertexPairContractions
     // from the header's left link to the header).

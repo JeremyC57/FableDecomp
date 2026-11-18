@@ -164,6 +164,12 @@ public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 protected: virtual CCreatureActionBase* Clone() const;
 public: class CStrikeEvent;
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+    // NF75 opt-in (round 7, land1117fu q10916, rows 0x0085BAD0 / 0x008E6390): Ego_r.pdb 0x0083A360 / FableWin.pdb 0x0282A4B0
+    // ?FrameUpdate@CCombatActionBase@@UAEXXZ (public virtual, over the protected CCreatureActionBase::FrameUpdate, slot 56), out of line in
+    // retail at 0x00859D80; derived FrameUpdate overrides call it directly (tail `jmp`). Declaration only; no layout change.
+public: virtual void FrameUpdate();                                      // 0x00859D80
+#endif
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
     // Chunk 764 (row 0x0096DBC0): Ego_r.pdb ?Initialise@CCombatActionBase@@UAEXXZ (0x00857520, called directly by the derived
     // Initialise) and ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z (0x008574D0).
@@ -221,6 +227,12 @@ public: class CStrikeEvent;
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 protected: virtual CCreatureActionBase* Clone() const;
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+    // NF75 opt-in (round 7, land1117fu q10916, rows 0x0085BAD0 / 0x008E6390): Ego_r.pdb 0x0083A360 / FableWin.pdb 0x0282A4B0
+    // ?FrameUpdate@CCombatActionBase@@UAEXXZ (public virtual, over the protected CCreatureActionBase::FrameUpdate, slot 56), out of line in
+    // retail at 0x00859D80; derived FrameUpdate overrides call it directly (tail `jmp`). Declaration only; no layout change.
+public: virtual void FrameUpdate();                                      // 0x00859D80
+#endif
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_OWN_VIRTUALS
     // Retail opt-in (wf8, row 0x008C61C0 CCreatureAction_TrollWhackGroundBase::WhackGround): the eleven virtuals CCombatActionBase
     // adds to CCreatureActionBase's seventy (Ego_r.pdb class record, the names and order of the PDB branch above), so a derived

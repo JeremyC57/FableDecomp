@@ -27,5 +27,5 @@ private:
  unsigned long StringPos,Line;
  bool ReadNextNumber(CWParsedItem*);
 };
-FABLE_STATIC_ASSERT(sizeof(CWStringParser)==16);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CWStringParser)==16);
 #endif

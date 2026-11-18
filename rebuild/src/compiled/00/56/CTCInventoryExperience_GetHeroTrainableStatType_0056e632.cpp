@@ -1,44 +1,38 @@
 // CTCInventoryExperience::GetHeroTrainableStatType(long button) -- map the selected category + button to a trainable stat
-// Retail 0x0056E632, 66 bytes, ret 4. Only caller: UpdateExperienceSpendStat (0x0057229B), so this is
-// the STAT lookup (the manifest label GetHeroTrainableAbilityType is propagated from the 20-entry twin
-// 0x0056E674 that UpdateExperienceSpendAbility calls).
-// Shape: the selected category's identifier (0 when nothing is selected) is the first key; a linear
-// scan of the static 10-entry table at 0x0137C8E8 ({result, category, button}, 12 bytes) stops at the
-// first {category, button} match and returns that entry's result. The loop is strength-reduced to a
-// pointer at the `button` word (`cmp [eax-4],esi ; ... ; cmp eax,end ; jl`); an unmatched scan reads
-// entry [10] -- retail has no not-found case.
-// Callees: CTCInventoryBase::GetSelectedCategory 0x005BCACE, CCategory::GetCategoryIdentifier 0x005BD1B3.
-// Size-optimised module: `#pragma optimize("s", on)`.
-// Leaf: GetHeroTrainableStatType
+// Leaf: ?GetHeroTrainableStatType@CTCInventoryExperience@@QAE?AW4EHeroTrainableStatType@@J@Z
+// Retail 0x0056E632, 66 bytes, ret 4. Only caller: UpdateExperienceSpendStat (0x0057229B, which binds this spelling).
+// Shape: the selected category's identifier (0 when nothing is selected) is the first key; a linear scan of the static 10-entry table at
+//   0x0137C8E8 ({result, category, button}, 12 bytes) stops at the first {category, button} match and returns that entry's result. The loop is
+//   strength-reduced to a pointer at the `button` word; an unmatched scan reads entry [10] -- retail has no not-found case.
+// Callees: NInventory::CTCInventoryBase::GetSelectedCategory 0x005BCACE, NInventory::CCategory::GetCategoryIdentifier 0x005BD1B3.
+// Name fix (agentNF89, q11170): Ego_r.pdb + FableWin.pdb ?GetHeroTrainableStatType@CTCInventoryExperience@@QAE?AW4EHeroTrainableStatType@@J@Z (the
+//   return is the global enum; the old leaf returned long). Moved off the row-local CTCInventoryExperience / CCategory / empty-enum models onto
+//   engine/CTCInventoryExperience.h (overlay opt-in CTCINVENTORYEXPERIENCE_TRAINABLESTATTYPE), NInventory_CTCInventoryBase.h (SELECTEDOWNED) and
+//   CCategory.h (PASS22, CCATEGORY_CATEGORYIDENTIFIER). The table keeps its descriptive name: no PDB, label or sibling repo names the file
+//   static at 0x0137C8E8 (descriptive, see NOTES).
 #pragma optimize("s", on)
-
-// agentNF20 (2026-11-11): NInventory::CCategory::GetCategoryIdentifier is the Ego_r.pdb spelling
-//   ?GetCategoryIdentifier@CCategory@NInventory@@QBE?AW4EInventoryCategoryIdentifier@2@XZ (const, the namespace enum; enumerators not in the name sets).
-namespace NInventory {
-enum EInventoryCategoryIdentifier { };
-class CCategory { public:
-    EInventoryCategoryIdentifier GetCategoryIdentifier() const;   // 0x005BD1B3
-};
-}
-using NInventory::CCategory;
-
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
+#define FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
+#define FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+#define FABLE_RETAIL_CCATEGORY_CATEGORYIDENTIFIER
+#define FABLE_RETAIL_CTCINVENTORYEXPERIENCE
+#define FABLE_RETAIL_CTCINVENTORYEXPERIENCE_TRAINABLESTATTYPE
+#include "engine/ETCInterfaceType.h"
+#include "engine/EHeroTrainableStatType.h"
+#include "engine/CTCInventoryExperience.h"
 struct STrainableEntry {
     long Result;        // +0x0 EHeroTrainableStatType
-    long Category;      // +0x4 EInventoryCategoryIdentifier
+    long Category;      // +0x4 NInventory::EInventoryCategoryIdentifier
     long Button;        // +0x8
 };
-
-extern STrainableEntry g_TrainableStatTable[10];   // 0x0137C8E8
-
-class CTCInventoryExperience { public:
-    CCategory* GetSelectedCategory();   // 0x005BCACE (CTCInventoryBase)
-    long GetHeroTrainableStatType(long button);
-};
-
-long CTCInventoryExperience::GetHeroTrainableStatType(long button)
+extern STrainableEntry g_TrainableStatTable[10];   // 0x0137C8E8 (file static of the experience TU; descriptive name)
+EHeroTrainableStatType CTCInventoryExperience::GetHeroTrainableStatType(long button)
 {
     long category = 0;
-    CCategory* selected = GetSelectedCategory();
+    NInventory::CCategory* selected = GetSelectedCategory();
     if (selected)
         category = selected->GetCategoryIdentifier();
     long i;
@@ -46,5 +40,5 @@ long CTCInventoryExperience::GetHeroTrainableStatType(long button)
         if (g_TrainableStatTable[i].Category == category && g_TrainableStatTable[i].Button == button)
             break;
     }
-    return g_TrainableStatTable[i].Result;
+    return (EHeroTrainableStatType)g_TrainableStatTable[i].Result;
 }

@@ -1,36 +1,55 @@
-// CGameScriptInterface::RemoveAllHeroWeapons() -- snapshot inventory entries, remove each, then reset active weapons
-// Retail00898600; native vector3 pointers and pair<long,long> entries; removal takes two longs; destructor uses free BFEA14.
-#include <stdlib.h>
-#include "engine/CGameScriptInterface.h"
-#include "engine/CPlayerManager.h"
-#define CPlayer CPlayerPdb
-#include "engine/CPlayer.h"
-#undef CPlayer
+// CGameScriptInterface::RemoveAllHeroWeapons() const -- snapshot the hero's weapon-inventory entries, remove each, then remove the confiscated items
+// Leaf: ?RemoveAllHeroWeapons@CGameScriptInterface@@UBEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00898600, 205 bytes (vtable slot 135 of CGameScriptInterface).
+// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, the non-const CVectorMap LowerBound 0x0040F020
+//   (the inline GetTC; the bitset test is inline), NInventory::CTCInventoryBase::GetAllItems 0x005BF482, virtual RemoveItemFromInventory (slot 79)
+//   and RemoveAllConfiscatedItems (slot 74), the CRT free 0x00BFEA14 (the item vector's storage).
+// Name fix (agentNF89, q11171): Ego_r.pdb + FableWin.pdb ?RemoveAllHeroWeapons@CGameScriptInterface@@UBEXXZ (engine/CGameScriptInterface.h slot 135);
+//   0x005BF482 is ?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@..@std@@@Z. Moved off the row-local
+//   CGameScriptInterfaceMethods / CThingNative / CPlayer (renaming macro) / CTCInventoryWeaponsNative / vtable-union / item-vector models onto the
+//   shared headers (the 0x0089FEB0 recipe for the hero; NInventory_CTCInventoryBase.h VTABLE).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CPLAYERMANAGER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
+#define FABLE_RETAIL_CTCINVENTORYBASE_BUILDINGTHING
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
 #include "fable_string.h"
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; // 004365B0 names,0040F020 other uses: identical body
-// Native CThing map+44; donor+48. Life flag+91 and inventory19 bit are verified in retail.
-struct CThingNative {void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char State[0x45];unsigned char LifeFlags;};
-class CThingPlayerCreature : public CThingNative { };
-class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
-struct ItemPair {long Index,Count;};
-struct ItemVector {ItemPair *Start,*Finish,*End;ItemVector():Start(0),Finish(0),End(0){}~ItemVector(){if(Start)free(Start);}};
-struct CTCInventoryWeaponsNative {void* VTable;void GetAllItems(ItemVector&);}; //005BF482
-union InventorySlot {void* Native;void(CTCInventoryWeaponsNative::*RemoveItem)(long,long);void(CTCInventoryWeaponsNative::*Clear)();}; // native slots79 and74
-struct CGameScriptInterfaceMethods:CGameScriptInterface {void RemoveAllHeroWeapons()const;};
-void CGameScriptInterfaceMethods::RemoveAllHeroWeapons()const{
- CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();
- if(hero && !(hero->LifeFlags&1) && (hero->UsingComponents[0]&0x80000)) {
- ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)19);ComponentEntry* end=map->Finish;
- CTCInventoryWeaponsNative* inventory=static_cast<CTCInventoryWeaponsNative*>(((void*)(it==end||it->first>19?end:it)->second));
- ItemVector items;inventory->GetAllItems(items);
- for(ItemPair* p=items.Start;p!=items.Finish;++p)(inventory->*reinterpret_cast<InventorySlot*>(inventory->VTable)[79].RemoveItem)(p->Index,p->Count);
- (inventory->*reinterpret_cast<InventorySlot*>(inventory->VTable)[74].Clear)();
- }
+#include "stlport/fable_containers.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CPlayer.h"
+#include "engine/CPlayerManager.h"
+#include "engine/NInventory_CTCInventoryBase.h"
+#include "engine/CGameScriptInterface.h"
+void CGameScriptInterface::RemoveAllHeroWeapons() const
+{
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    NInventory::CTCInventoryBase* inventory;
+    if (hero && !hero->IsDead() && hero->GetTC(TCI_INVENTORY_WEAPONS, &inventory)) {
+        std::vector<std::pair<long, long> > items;
+        inventory->GetAllItems(items);
+        for (std::vector<std::pair<long, long> >::iterator it = items.begin(); it != items.end(); ++it)
+            inventory->RemoveItemFromInventory(it->first, it->second);
+        inventory->RemoveAllConfiscatedItems();
+    }
 }

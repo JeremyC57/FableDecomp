@@ -126,6 +126,16 @@ public:
     };
     static unsigned long __fastcall StatGetDriverType();                // 0x006869C0
     static void __fastcall RegisterTCs();                               // 0x004EE23F
+#ifdef FABLE_RETAIL_CTCBASE_REGISTRY_LOOKUP
+    // Nested opt-in (NF80, q10923: rows 0x00686F10 / 0x00686F60 / 0x00686FA0): the registry lookups, Ego_r.pdb and FableWin.pdb
+    // ?AllocateTC@CTCBase@@SIPAV1@ABVCCharString@@AAVCThing@@@Z (0x00686F10), ?GetPTCInfo@CTCBase@@SIPBVCRegisteredTCInfo@1@ABVCCharString@@@Z
+    // (0x00686F60) and ?Clone@CTCBase@@QAEPAV1@XZ (0x00686FA0), in that order in both PDBs and in retail. Clone expands AllocateTC in
+    // place (0x00686FB8..0x00686FEC: LowerBound, the end test, the inline CCharString compare, `call [ebx+4]`), so its body is the
+    // FABLE_RETAIL_CTCBASE_ALLOCATETC_BODY opt-in below the class (0x00686F10 adds _DEFINE for the ordinary definition).
+    static CTCBase* __fastcall AllocateTC(const CCharString& name, CThing& owner);          // 0x00686F10
+    static const CRegisteredTCInfo* __fastcall GetPTCInfo(const CCharString& name);          // 0x00686F60
+    CTCBase* Clone();                                                                         // 0x00686FA0
+#endif
 private:
     static CVectorMap<CCharString, CRegisteredTCInfo> RegisteredTCs;    // 0x013BA89C
 public:
@@ -200,10 +210,24 @@ public:
     bool    ToBeRemoved;                                                 // +0x08
     bool    IsInGlobalUpdateTCs;                                         // +0x09
 };
-FABLE_STATIC_ASSERT(sizeof(CTCBase) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCBase, ParentThing) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CTCBase, ToBeRemoved) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CTCBase, IsInGlobalUpdateTCs) == 0x9);
+FABLE_STATIC_ASSERT_AT(203, sizeof(CTCBase) == 0xc);
+FABLE_STATIC_ASSERT_AT(204, offsetof(CTCBase, ParentThing) == 0x4);
+FABLE_STATIC_ASSERT_AT(205, offsetof(CTCBase, ToBeRemoved) == 0x8);
+FABLE_STATIC_ASSERT_AT(206, offsetof(CTCBase, IsInGlobalUpdateTCs) == 0x9);
+#if defined(FABLE_RETAIL_CTCBASE_REGISTRY_LOOKUP) && defined(FABLE_RETAIL_CTCBASE_ALLOCATETC_BODY)
+// (NF80) the one definition of CTCBase::AllocateTC 0x00686F10: inline for an includer that expands it (Clone 0x00686FA0), an ordinary
+// definition with FABLE_RETAIL_CTCBASE_ALLOCATETC_DEFINE (the self row 0x00686F10).
+#ifndef FABLE_RETAIL_CTCBASE_ALLOCATETC_DEFINE
+inline
+#endif
+CTCBase* __fastcall CTCBase::AllocateTC(const CCharString& name, CThing& owner)
+{
+    CVectorMap<CCharString, CRegisteredTCInfo>::iterator it = RegisteredTCs.LowerBound(name);
+    if (it == RegisteredTCs.end() || name < it->first)
+        return 0;
+    return it->second.AllocFunc(owner);
+}
+#endif
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -232,11 +256,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCBase) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCBase, ParentThing) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CTCBase, ToBeRemoved) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CTCBase, IsInGlobalUpdateTCs) == 0x9);
+FABLE_STATIC_ASSERT_AT(235, sizeof(CTCBase) == 0xc);
+FABLE_STATIC_ASSERT_AT(236, offsetof(CTCBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(237, offsetof(CTCBase, ParentThing) == 0x4);
+FABLE_STATIC_ASSERT_AT(238, offsetof(CTCBase, ToBeRemoved) == 0x8);
+FABLE_STATIC_ASSERT_AT(239, offsetof(CTCBase, IsInGlobalUpdateTCs) == 0x9);
 
 #endif // FABLE_RETAIL_CTCBASE
 

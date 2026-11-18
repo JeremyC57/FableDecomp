@@ -1,143 +1,92 @@
-// NInventory::CItem::UpdateItemStats(CThing* thing) -- refresh the item's per-item data from the thing it was made from: a
-// weapon (interface 0x48) copies its kill count and wield time and its augmentations (interface 0xbf, else cleared), a
-// trophy (0x39) its witnesses-ahead count when positive, a fish (0xdc) takes the last-caught fish weight when heavier (then
-// zeroes it); while the quest-persistent ref count is unset (-1, or no data yet), an analogue-loading weapon (0x1a) marks the
-// item quest-persistent unless the quest manager is between start and finish screens, and resets the ref count to 0
-// Leaf: UpdateItemStats
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad1[0x23] removed.
-// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
-//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// NInventory::CItem::UpdateItemStats(const CThing& item) -- refresh the item's per-item data from the thing it was made from: a weapon
+//   copies its kill count and wield time and its augmentations (else clears them), a trophy its best witnesses-ahead count when positive, a
+//   fish takes CTCFish::MostRecentFishWeight when heavier (then zeroes it); while the quest-persistent ref count is unset (-1, or no data
+//   yet), an inventory item that is not to persist until its quest completes marks the item quest-persistent unless the quest manager is
+//   between the start and finish screens, and resets the ref count to 0
+// Leaf: ?UpdateItemStats@CItem@NInventory@@QAEXABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005BEDCB, 574 bytes; size-optimised frame-pointer TU (`push 48h ; pop esi`, `leave`).
-// Callees: std::bitset::test 0x00410DE0, CVectorMap::LowerBound 0x004365B0 (const overload; the second copy of 0x0040F020),
-//   operator new 0x00BFEA1A, CPerItemData ctor 0x005C14A6, CCountedPointer<CPerItemData>::Reset 0x005C1946 (the landed
-//   CItem::AddItem 0x005BEC92 names), the augmentation component's vector fill 0x00766920 (labelled
-//   CParticleMorphs_InitFromDef; clears then refills the out vector), vector<long>::erase 0x00440590 (the inline clear()),
-//   CTCWeapon::IsAnalogueLoading 0x005D9270, CQuestManager::IsBetweenQuestStartAndFinishScreens 0x004AF290 on the global
-//   quest manager 0x013B89FC; global last fish weight float 0x013BAE80.
-// Layout: retail CPerItemData is 0x24 bytes (Ego_r.pdb 0x28 with a 16-byte vector; retail STLport vector is 12), so every
-//   member after Augmentations is -4 from the PDB; CItem as engine/CItem.h (the counted pointer at +0x08 spelled as a
-//   struct so Reset can be called); the thing's presence bitset +0x20 and interface map +0x44 as the landed
-//   unattributed_GetInterface0x53 0x005BB999.
-// Shape: every interface fetch goes through the inline out-parameter GetInterface (the key words then share one frame slot,
-//   the last one the dead argument slot); writing the lookups out longhand gives a third frame word.
+// Identity (NF92, q11209): Ego_r.pdb 0x00621B5D + FableWin.pdb ?UpdateItemStats@CItem@NInventory@@QAEXABVCThing@@@Z (public); the landed
+//   0x005BF556 (CItem::AddItem) and the ported 0x005BF16E (CCategory::UpdateItemStatsForThing) bind this address under it. Ego_d.pdb names
+//   the parameter `item` and the locals ptc_weapon / ptc_trophy / ptc_fish, then ptc_augmentations and ptc_inventory_item in inner scopes.
+// Callees: std::bitset<274>::test 0x00410DE0 and CVectorMap::LowerBound 0x004365B0 (the const PeekTC expansion), operator new,
+//   CPerItemData ctor 0x005C14A6, CCountedPointer<CPerItemData>::Reset 0x005C1946, CTCObjectAugmentations::GetAugmentations 0x00766920,
+//   vector<long>::erase 0x00440590 (clear), CTCInventoryItem::IsToNotPersistUntilQuestCompleted 0x005D9270 (Ego_r 0x0055A1C0 / FableWin
+//   0x01E01220; was bound as the made-up CTCWeapon::IsAnalogueLoading_005d9270), CQuestManager::IsBetweenQuestStartAndFinishScreens
+//   0x004AF290 on CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass; CTCFish::MostRecentFishWeight 0x013BAE80 (Ego_d.pdb PUB32).
+// Port (NF92): was a local model of a dozen classes (global CItem with a CThing* parameter, CThing / CTCWeapon / CTCTrophy / CPerItemData /
+//   CQuestManager stand-ins); now on the shared headers with the NF90 opt-in _CITEM_UPDATEITEMSTATS and the NF92 opt-ins
+//   CTCINVENTORYITEM_ISTONOTPERSISTUNTILQUESTCOMPLETED / CTCFISH_MOSTRECENTFISHWEIGHT.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
-class CTCBase;
-#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
-#include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct vector_long {
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    long* erase(long* first, long* last);  // 0x00440590
-    void clear() { erase(_M_start, _M_finish); }
-};
-struct CPerItemData {                      // 0x24 bytes
-    vector_long Augmentations;             // +0x00
-    long  NumberOfKills;                   // +0x0c
-    long  TimeWielded;                     // +0x10
-    long  BestTrophyWitnessesAheadToDate;  // +0x14
-    bool  QuestPersistent;                 // +0x18
-    long  QuestPersistentRefCount;         // +0x1c
-    float BestFishWeight;                  // +0x20
-    CPerItemData();                        // 0x005C14A6
-};
-struct CCountedPointer_PerItemData {
-    CPerItemData* Data;
-    void*         Info;
-    void Reset(CPerItemData* object);      // 0x005C1946
-};
-class CTCWeapon { public:
-    unsigned char _pad[0x1c];
-    long NumberOfKills;                    // +0x1c
-    long TimeWielded;                      // +0x20
-    bool IsAnalogueLoading_005d9270();              // 0x005D9270
-};
-struct CTCAugmentations {
-    void GetAugmentations(vector_long* out);   // 0x00766920
-};
-class CTCTrophy { public:
-    unsigned char _pad[0x18];
-    long WitnessesAhead;                   // +0x18
-};
-class CThing { public:
-    unsigned char _pad0[0x20];
-    std::bitset<274> m_present;               // +0x20
-    CInterfaceMap m_interfaces;            // +0x44
-    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType)
-    {
-        if (m_present.test(interfaceType)) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *out = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
-#include "engine/CCountedPointer.h"
-template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
-    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
-public:
-    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
-};
-class CQuestManager { public:
-public:
-    bool IsBetweenQuestStartAndFinishScreens() const;   // 0x004AF290
-};
-extern float g_lastFishWeight;             // 0x013BAE80
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCWEAPON
+#define FABLE_RETAIL_CTCWEAPON_MEMBERS
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_ISTONOTPERSISTUNTILQUESTCOMPLETED
+#define FABLE_RETAIL_CTCFISH_MOSTRECENTFISHWEIGHT
+#define FABLE_RETAIL_CTCOBJECTAUGMENTATIONS_GETAUGMENTATIONS
+#define FABLE_RETAIL_CQUESTMANAGER
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
+#define FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA
+#define FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA_CTOR
+#define FABLE_RETAIL_NINVENTORY_CITEM_UPDATEITEMSTATS
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CTCWeapon.h"
+#include "engine/CTCTrophy.h"
+#include "engine/CTCFish.h"
+#include "engine/CTCInventoryItem.h"
+#include "engine/CTCObjectAugmentations.h"
+#include "engine/CQuestManager.h"
+#include "engine/NInventory_CTCInventoryBase.h"
 
-struct CItem {
-    long ItemType;                         // +0x00
-    long NumberOfItems;                    // +0x04
-    CCountedPointer_PerItemData PPerItemData;   // +0x08
-    long AverageBoughtPrice;               // +0x10
-    void UpdateItemStats(CThing* thing);
-    FABLE_FORCEINLINE void EnsurePerItemData() { if (!PPerItemData.Data) PPerItemData.Reset(new CPerItemData()); }
-};
-
-void CItem::UpdateItemStats(CThing* thing)
+namespace NInventory {
+void CItem::UpdateItemStats(const ::CThing& item)
 {
-    CTCWeapon* weapon;
-    CTCTrophy* trophy;
-    if (thing->GetInterface(&weapon, 0x48)) {
-        EnsurePerItemData();
-        PPerItemData.Data->NumberOfKills = weapon->NumberOfKills;
-        PPerItemData.Data->TimeWielded = weapon->TimeWielded;
-        CTCAugmentations* aug;
-        if (thing->GetInterface(&aug, 0xbf))
-            aug->GetAugmentations(&PPerItemData.Data->Augmentations);
+    const CTCWeapon* ptc_weapon;
+    const CTCTrophy* ptc_trophy;
+    if (item.PeekTC(&ptc_weapon)) {
+        if (PPerItemData.IsNull())
+            PPerItemData.Reset(new CPerItemData);
+        PPerItemData->NumberOfKills = ptc_weapon->NumThingsKilled;
+        PPerItemData->TimeWielded = ptc_weapon->TimeWielded;
+        const CTCObjectAugmentations* ptc_augmentations;
+        if (item.PeekTC(&ptc_augmentations))
+            ptc_augmentations->GetAugmentations(PPerItemData->Augmentations);
         else
-            PPerItemData.Data->Augmentations.clear();
-    } else if (thing->GetInterface(&trophy, 0x39)) {
-        if (trophy->WitnessesAhead > 0) {
-            EnsurePerItemData();
-            PPerItemData.Data->BestTrophyWitnessesAheadToDate = trophy->WitnessesAhead;
+            PPerItemData->Augmentations.clear();
+    } else if (item.PeekTC(TCI_TROPHY, &ptc_trophy)) {
+        if (ptc_trophy->BestWitnessesAheadToDate > 0) {
+            if (PPerItemData.IsNull())
+                PPerItemData.Reset(new CPerItemData);
+            PPerItemData->BestTrophyWitnessesAheadToDate = ptc_trophy->BestWitnessesAheadToDate;
         }
-    } else if (thing->m_present.test(0xdc)) {
-        EnsurePerItemData();
-        CPerItemData* data = PPerItemData.Data;
-        if (g_lastFishWeight > data->BestFishWeight) {
-            data->BestFishWeight = g_lastFishWeight;
-            g_lastFishWeight = 0.0f;
+    } else if (item.HasTC(CTCFish::StatGetInterfaceType())) {
+        if (PPerItemData.IsNull())
+            PPerItemData.Reset(new CPerItemData);
+        if (CTCFish::MostRecentFishWeight > PPerItemData->BestFishWeight) {
+            PPerItemData->BestFishWeight = CTCFish::MostRecentFishWeight;
+            CTCFish::MostRecentFishWeight = 0.0f;
         }
     }
-    if (!PPerItemData.Data || PPerItemData.Data->QuestPersistentRefCount == -1) {
-        CTCWeapon* loader;
-        if (thing->GetInterface(&loader, 0x1a) && loader && loader->IsAnalogueLoading_005d9270()) {
-            EnsurePerItemData();
-            if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsBetweenQuestStartAndFinishScreens())
-                PPerItemData.Data->QuestPersistent = false;
+    if (PPerItemData.IsNull() || PPerItemData->QuestPersistentRefCount == -1) {
+        const CTCInventoryItem* ptc_inventory_item;
+        if (item.PeekTC(&ptc_inventory_item) && ptc_inventory_item && ptc_inventory_item->IsToNotPersistUntilQuestCompleted()) {
+            if (PPerItemData.IsNull())
+                PPerItemData.Reset(new CPerItemData);
+            if (CQuestManager::Get().IsBetweenQuestStartAndFinishScreens())
+                PPerItemData->QuestPersistent = false;
             else
-                PPerItemData.Data->QuestPersistent = true;
-            PPerItemData.Data->QuestPersistentRefCount = 0;
+                PPerItemData->QuestPersistent = true;
+            PPerItemData->QuestPersistentRefCount = 0;
         }
     }
+}
 }

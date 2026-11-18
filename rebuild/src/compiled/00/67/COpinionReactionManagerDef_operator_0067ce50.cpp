@@ -16,6 +16,10 @@
 //   FrequencyTraitsHigh +0x328 (PDB +0x354/+0x358).
 // Shape: the implicit assignment written out; CParentDefClassBase's implicit assignment inlines (the name
 //   word loaded before the map's address arithmetic, the map vector out of line, then the sorted byte).
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CRetailTree_004e9a21, CRetailTree_0045dd9f are now the STLport std::map<EOpinionAttitudeType, float>, std::map<EOpinionReactionType, bool> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+#include "engine/EOpinionAttitudeType.h"
+enum EOpinionReactionType;
 #pragma pack(push, 1)
 class CDefClassBase { public:
     unsigned char _body[0x21];                          // +0x04 .. +0x24 (PDefManager, GlobalIndex, Setup bits, ...)
@@ -58,10 +62,6 @@ struct CRetailTree_0067d250 { void* head; unsigned long size; unsigned long _com
     CRetailTree_0067d250& operator=(const CRetailTree_0067d250& other); };             // 0x0067D190
 struct CRetailTree_0067d3b0 { void* head; unsigned long size; unsigned long _compare;   // map<EOpinionReactionType, float>
     CRetailTree_0067d3b0& operator=(const CRetailTree_0067d3b0& other); };             // 0x0067D2F0
-struct CRetailTree_004e9a21 { void* head; unsigned long size; unsigned long _compare;   // map<EOpinionAttitudeType, float>
-    CRetailTree_004e9a21& operator=(const CRetailTree_004e9a21& other); };             // 0x004E99AE
-struct CRetailTree_0045dd9f { void* head; unsigned long size; unsigned long _compare;   // map<EOpinionReactionType, bool>
-    CRetailTree_0045dd9f& operator=(const CRetailTree_0045dd9f& other); };             // 0x0045DD2C
 
 struct CReactionMatchList {                             // list<CReactionMatch_*> (retail: the head pointer)
     void* m_head;
@@ -76,11 +76,11 @@ class COpinionReactionManagerDef : public CParentDefClassBase { public:         
     CRetailTree_0067d0f0 AttitudeCondition;                             // +0x48
     CRetailTree_0067d250 TargetingCondition;                            // +0x54
     CRetailTree_0067d3b0 PreReactionDelay;                              // +0x60
-    CRetailTree_004e9a21 ToleranceToBeingHit;                           // +0x6c
-    CRetailTree_0045dd9f BlockFurtherReactions;                         // +0x78
-    CRetailTree_0045dd9f AllowSpeechOnNonPureAISpeaker;                 // +0x84
-    CRetailTree_0045dd9f AllowWhileCarrying;                            // +0x90
-    CRetailTree_0045dd9f AllowWhileFollowingPlayer;                     // +0x9c
+    std::map<EOpinionAttitudeType, float> ToleranceToBeingHit;                           // +0x6c
+    std::map<EOpinionReactionType, bool> BlockFurtherReactions;                         // +0x78
+    std::map<EOpinionReactionType, bool> AllowSpeechOnNonPureAISpeaker;                 // +0x84
+    std::map<EOpinionReactionType, bool> AllowWhileCarrying;                            // +0x90
+    std::map<EOpinionReactionType, bool> AllowWhileFollowingPlayer;                     // +0x9c
     CReactionMatchList Matches;                                         // +0xa8
     CReactionFrequencyTraitsArray FrequencyTraitsArray;                 // +0xac
     CReactionFrequencyTraits** FrequencyTraits;                         // +0x324

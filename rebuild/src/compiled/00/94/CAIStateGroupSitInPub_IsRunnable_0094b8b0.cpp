@@ -1,158 +1,76 @@
 // CAIStateGroup_SitInPub::IsRunnable() -- for a villager: find the nearest pub building of its village (property
-// Leaf: ?IsRunnable@CAIStateGroup_SitInPub@@UAE_NXZ
-// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
-// 0x20) from the creature's position, join it as a customer, remember it and pick a seat (a validated task seat,
-// else a random free one); runnable while the seat is valid.
+// 0x20) from the creature's position, join it as a customer, remember it and pick a seat (a bench with one person
+// sitting there, else a random free one); runnable while the seat is valid.
+// Leaf: ?IsRunnable@CAIStateGroup_SitInPub@@MAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094B8B0, length 245 bytes (+ int3 padding). Vtable slot 11 of
 // CAIStateGroup_SitInPub (0x0128BF04).
-// Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0x23 = CTCVillager bit 3 of +0x24, 0x7B = the
-// pub component bit 27 of +0x2c), GFGetPVillageInterface @ 0x007EE540, CThing::GetPosition @ 0x004C73D0,
-// CTCVillage::FindNearestBuildingWithProperty(const C3DVector&, long) @ 0x00658E38, CTCGatherPointBase::AddAsUser
-// @ 0x007FFEB0, the out-of-line CIntelligentPointer<const CThing>(CThing*) @ 0x004A96F0 / converting operator=
-// @ 0x004A9760 / ~CBaseIntelligentPointer @ 0x00A01C10, FindAndValidateTask @ 0x0094B840, CAIStateGroup_UsesSeat::
-// GetRandomFreeSeatInBuilding @ 0x00938BF0 / SetSeat @ 0x009106E0 / IsSeatValid @ 0x00938580.
-// Shape: `PBuilding = pub;` -- the CIntelligentPointer<const CThing> temporary is an IMPLICIT conversion through the
-// out-of-line converting constructor, so the out-of-line operator= gets `lea eax,[temp]` (an explicit temporary
-// reuses the constructor's eax); the AddAsUser argument goes through the inline GetCreature() accessor (a direct
-// PBrain->PCreature swaps the register roles); the seat is `if (task) SetSeat(task); else SetSeat(random);` (the
-// two calls cross-jump, `this` set in both predecessors).
-// ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-class CTCBase;
-class CWorld;
-
-// A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
-// {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
-// GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
+// Callees: CVectorMap::LowerBound @ 0x0040F020 (inline GetTC: TCI_VILLAGE_MEMBER 0x23 bit 3 of +0x24; TCI_GATHER_POINT 0x7B bit 27 of
+// +0x2c, HasTC first), CTCVillageMember::GetPVillage @ 0x007EE540, CThing::GetPos @ 0x004C73D0,
+// CTCVillage::GetNearestBuildingWithProperty @ 0x00658E38, CTCGatherPointBase::AddAsUser @ 0x007FFEB0, the out-of-line
+// CIntelligentPointer<CThing>(CThing*) @ 0x004A96F0 / operator= @ 0x004A9760 / ~CBaseIntelligentPointer @ 0x00A01C10,
+// GetBenchWithOnePersonSittingThere @ 0x0094B840, CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding @ 0x00938BF0 / SetSeat @ 0x009106E0 /
+// IsSeatValid @ 0x00938580.
+// Shape: `PBuilding = pub;` -- the CIntelligentPointer<CThing> temporary is an IMPLICIT conversion through the out-of-line
+// constructor, so the out-of-line operator= gets `lea eax,[temp]`; the seat is `if (bench) SetSeat(bench); else SetSeat(random);`
+// (the two calls cross-jump, `this` set in both predecessors).
+// NF67 (round 7): ported onto the shared headers. The local CThing / CThingPos / CBaseIntelligentPointer / CIntelligentPointerConstThing /
+//   CIntelligentPointerThingB / CAIBrain / CAIStateGroupBase / CTCVillage / CTCVillageMember / CTCGatherPointBase / CAIStateGroup_UsesSeat
+//   models are gone; the class chain comes from overlay opt-ins FABLE_RETAIL_CAISTATEGROUP_SITINPUB (-> _USESSEAT, new overlay header
+//   engine/CAIStateGroup_UsesSeat.h). 0x00658E38 now binds the PDB GetNearestBuildingWithProperty (nf41:e93); 0x004A96F0 / 0x004A9760 bind
+//   ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z / ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z; 0x0094B840 is the PDB
+//   GetBenchWithOnePersonSittingThere (was the stand-in FindAndValidateTask).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
-#include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-#include "engine/C3DVector.h"
-
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CThing* item);                // 0x00A01B90
-};
-
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
-};
-
-// IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
-{
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
-            return true;
-    }
-    return false;
-}
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
-
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void Cleanup();                     // slot 9  (+0x24)
-    virtual void OnReplace();                   // slot 10 (+0x28)
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void v13();
-    virtual long GetTimeToInitiate();           // slot 14 (+0x38)
-    virtual void v15(); virtual void v16(); virtual void v17();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    // the landed GetRandomObject random step: seed = ror13(seed*0x24A1 + 0x24DF), r = seed % range
-    unsigned long Random(unsigned long range)
-    {
-        unsigned long* seed = GetPWorldSeed();
-        unsigned long next = *seed * 0x24A1U + 0x24DFU;
-        *seed = next;
-        unsigned long rotated = GFROR13(next);
-        *seed = rotated;
-        return rotated % range;
-    }
-};
-
-// vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
-#define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();
-#define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
-extern "C" double __cdecl sqrt(double);
-#pragma intrinsic(sqrt)
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>
-    virtual void v00();
-    CIntelligentPointerConstThing(CThing* item);                        // 0x004A96F0 (out of line)
-};
-struct CIntelligentPointerThingB : CBaseIntelligentPointer {         // CIntelligentPointer<CThing>
-    virtual void v00();
-    CIntelligentPointerThingB& operator=(const CIntelligentPointerConstThing& other);   // 0x004A9760 (out of line)
-};
-struct CThingPos : CThing {
-};
-struct CTCVillager;
-class CTCVillage { public:
-    CThing* FindNearestBuildingWithProperty(const C3DVector& pos, long property);   // 0x00658E38
-};
-class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
-class CTCGatherPointBase { public:                     // interface 0x7B on the pub
-    bool AddAsUser(CThing* user);               // 0x007FFEB0
-};
-class CThingObject;
-
-struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
-    CThing* GetCreature() const { return PBrain->PCreature; }
-    CBaseIntelligentPointer PSeat;              // +0x14 CIntelligentPointer<CThing>
-    unsigned char _pad1c[0x34 - 0x1c];
-    CThingObject* GetRandomFreeSeatInBuilding(CThing* building);   // 0x00938BF0
-protected:
-    void SetSeat(CThingObject* seat);           // 0x009106E0
-public:
-    bool IsSeatValid();                         // 0x00938580
-};
-struct CAIStateGroup_SitInPub : CAIStateGroup_UsesSeat {
-    CIntelligentPointerThingB PBuilding;        // +0x34
-    CThingObject* FindAndValidateTask(CThing* building);   // 0x0094B840
-    virtual bool IsRunnable();
-};
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGBUILDING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_OUTOFLINE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CTCVILLAGE
+#define FABLE_RETAIL_CTCVILLAGE_TAVERN
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_CAISTATEGROUP_SITINPUB
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CThingBuilding.h"
+#include "engine/CTCVillageMember.h"
+#include "engine/CTCVillage.h"
+#include "engine/CTCGatherPointBase.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_SitInPub.h"
 
 bool CAIStateGroup_SitInPub::IsRunnable()
 {
-    CTCVillager* villager;
-    if (PBrain->PCreature->GetTC(TCI_VILLAGE_MEMBER, &villager)) {
-        CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
+    CTCVillageMember* villager;
+    if (GetCreature().GetTC(&villager)) {
+        CTCVillage* village = villager->GetPVillage();
         if (village) {
-            CThing* pub = village->FindNearestBuildingWithProperty(((CThingPos*)PBrain->PCreature)->GetPos(), 0x20);
+            CThingBuilding* pub = village->GetNearestBuildingWithProperty(GetCreature().GetPos(), (ESimBuildingProperty)0x20);
             if (pub && pub->HasTC(TCI_GATHER_POINT)) {
                 CTCGatherPointBase* gather;
                 pub->GetTC(TCI_GATHER_POINT, &gather);
                 if (gather->AddAsUser(GetCreature())) {
                     PBuilding = pub;
-                    CThingObject* seat = FindAndValidateTask(pub);
+                    CThingObject* seat = GetBenchWithOnePersonSittingThere(*pub);
                     if (seat)
                         SetSeat(seat);
                     else
-                        SetSeat(GetRandomFreeSeatInBuilding(pub));
+                        SetSeat(GetRandomFreeSeatInBuilding(*pub));
                 }
             }
         }

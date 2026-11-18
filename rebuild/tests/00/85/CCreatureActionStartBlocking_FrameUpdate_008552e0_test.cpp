@@ -2,33 +2,31 @@
 
 class CCombatActionBase
 { public:
-    int vtbl;
+    virtual void FrameUpdate();     // 0x00859D80
     int IntelligentPointer;
     int field_8;
     int field_c;
     int field_10;
 };
 
-extern "C" void __fastcall FrameUpdate_CCombatActionBase(CCombatActionBase* self);
-
 class CCreatureAction_StartBlocking : public CCombatActionBase
 { public:
-    void __fastcall FrameUpdate();
+    virtual void FrameUpdate();
 };
 
-void __fastcall CCreatureAction_StartBlocking::FrameUpdate()
+void CCreatureAction_StartBlocking::FrameUpdate()
 {
     field_10 = 2;
-    FrameUpdate_CCombatActionBase(this);
+    CCombatActionBase::FrameUpdate();
 }
 
 static int g_called = 0;
 static CCombatActionBase* g_self = 0;
 
-extern "C" void __fastcall FrameUpdate_CCombatActionBase(CCombatActionBase* self)
+void CCombatActionBase::FrameUpdate()
 {
     g_called = 1;
-    g_self = self;
+    g_self = this;
 }
 
 int main()

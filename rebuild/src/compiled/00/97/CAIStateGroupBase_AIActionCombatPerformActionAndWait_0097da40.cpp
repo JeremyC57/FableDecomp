@@ -1,4 +1,7 @@
 // CAIStateGroupBase::AIAction_CombatPerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced) -- post the action in a brain output (flag 8), then yield while the creature is still performing an action (optionally only while it is still this action's id), reporting 1 (stopping) or 2 (done)
+// NF86 (round 7, q11115): the local CCountBlock / CCountedPointer stand-in is replaced by the shared engine/CCountedPointer.h (Reset declared
+//   only: FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL), so the call at 0x00668D90 binds the explicit instantiation NF83 landed there,
+//   ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z (was ?Reset@CCountedPointer@@QAEXPAX@Z); the local Clone() returns CCreatureActionBase* (its PDB type).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097DA40, 297 bytes (`ret 8`).
 // Callees: CAIStateGroupBase::IsStopping 0x008FD010, CCreatureActionBase::GetActionID 0x00692620 (`mov eax,[ecx+28h]`;
 // manifest "CWorld::DrawGetEnvironment" is propagated), CBrainOutput::CBrainOutput 0x00835620, the action's virtual
@@ -20,39 +23,15 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-struct CCountBlock                                  // CCountedPointer's shared block
-{
-    long Count;                                     // +0x00
-    void (__fastcall* Destroy)(void* object);       // +0x04
-    void* Object;                                   // +0x08
-};
-
-struct CCountedPointer                              // CCountedPointer<..> {object, block}
-{
-    void* Object;                                   // +0x00
-    CCountBlock* Block;                             // +0x04
-    void Reset(void* object);                       // 0x00668D90
-    ~CCountedPointer()
-    {
-        if (Block)
-        {
-            --Block->Count;
-            if (Block->Count == 0)
-            {
-                Block->Destroy(Block->Object);
-                delete Block;
-            }
-        }
-        Object = 0;
-        Block = 0;
-    }
-};
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"                // NF86: CCountedPointer<T> {Data, Info}; Reset(T*) out of line (0x00668D90)
+class CCreatureActionBase;
 
 class CBrainOutput                                 // 0x48 bytes
 { public:
     unsigned long Flags;                            // +0x00 (8: perform action, 0x20: pump combat actions)
     unsigned char _pad04[0x20 - 0x04];
-    CCountedPointer PAction;                        // +0x20
+    CCountedPointer<CCreatureActionBase> PAction;   // +0x20
     unsigned char _pad28[0x40 - 0x28];
     CBaseIntelligentPointer PTarget;                // +0x40 CIntelligentPointer<const CThing>
     CBrainOutput();                                 // 0x00835620
@@ -73,7 +52,7 @@ class CCreatureActionBase
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
-    virtual void* Clone() const;                    // slot 11 (+0x2c)
+    virtual CCreatureActionBase* Clone() const;                    // slot 11 (+0x2c)
     long GetActionID() const;                       // 0x00692620
 };
 

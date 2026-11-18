@@ -20,6 +20,15 @@
 class CAIStateGroup_CreatureTakeCover : public CAIStateGroup_CreatureUseCoverBase {
 public:
     virtual bool IsRunnableLeaf();                                       // 0x00979D80
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATURETAKECOVER_UPDATE
+    // NF68 opt-in (rows 0x0097A630 / 0x00979F70): Ego_r.pdb ?Update@CAIStateGroup_CreatureTakeCover@@UAEXXZ and the private members
+    // IsStillRunnable (0x00979E90), AttackTargetThing (0x00979F70), MoveFromCoverToFiringPosition (0x0097A1B0). Declarations only.
+    virtual void Update();                                               // 0x0097A630
+private:
+    bool IsStillRunnable();                                              // 0x00979E90 ?IsStillRunnable@..@@AAE_NXZ
+    bool AttackTargetThing();                                            // 0x00979F70 ?AttackTargetThing@..@@AAE_NXZ
+    bool MoveFromCoverToFiringPosition(const C3DVector& pos, const CIntelligentPointer<const CThing>& cover);   // 0x0097A1B0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureTakeCover) == 0x4c);
 #else

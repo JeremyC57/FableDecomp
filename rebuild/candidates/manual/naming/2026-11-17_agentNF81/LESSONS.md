@@ -1,0 +1,9 @@
+# NF81 lessons (one line each)
+- A July storage-cast row that never matched (CMap theme accessors) re-authors on the shared header in one grade when written from the retail disassembly plus the Ego_d block locals; the 174 v 207 residue was one shared offset expression where retail has two separate store statements.
+- MSVC pads a class's own vfptr to the class alignment (8 with a double member), so adding `virtual` to a row-local model shifts every member by 4; a retail vptr that belongs to a base (CObserver) needs the real base, i.e. the header port, not a local vtable.
+- A row that includes a shared header inside a `namespace X {` block mangles that header's classes as X:: (0x0059A238's leaf spells ?$CCountedPointer@...@2@); check the include position before trusting a leaf.
+- A caller that needs to "see" an out-of-line callee's body for frame sharing (0x008C2550 -> 0x008C1600) takes the body from a shared header as `inline __declspec(noinline)` with a _DEFINE macro for the owning row; adding the owner's define set (C3DVECTOR_PACKED) makes the two COMDATs byte-identical.
+- callers.py finds binders WORKLIST misses (0x0063EB20 for q10977, 0x0059A238 for q10982, 0x004EBB1C for 0x004E81E4); run it on every self address before declaring an entry done.
+- Tests that link a row whose member turned protected can stay on their legacy header: define the protected opt-in and call through a test-only derived class with a using-declaration.
+- An STLport map writer/reader TU that expands one level of _M_erase in the traits destructor is fixed by FABLE_RETAIL_STLP_TREE_MERASE_NOINLINE (0x006DC350: 273 -> 244 bytes).
+- Two retail addresses never share one STLport member name (no ICF): before naming a second clear / destructor of the same tree, find which address already holds the name (0x0045128D clear vs the speed-TU 0x00869900).

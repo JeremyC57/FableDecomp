@@ -1,86 +1,64 @@
-// CTCEntityEvents::GetEvent(TEvent** out, const TFilter& filter) const [TEvent = NEntityEvents::CEventExpressionPerformedTo, TFilter = NEntityEvents::CIsEventOfType] -- the newest event of type 0x3 (CEventExpressionPerformedTo) whose type is also the filter's type
-// Leaf: GetEvent
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00922440, 141 bytes (`ret 8`, bool in al).
-// Callees: GetType (vtable slot 1, twice: the type test and CIsEventOfType), the count block DeleteFunc, operator delete 0x00BFE9BC.
-// Identity: the catalog labels every one of these byte-similar bodies CEventChildHurtGoToMother; the event type
-// 0x3 is the constant GetType of CEventExpressionPerformedTo (its RTTI vtable slot 1).
-// Model: `this` is engine/CTCEntityEvents.h (Events +0x0c, opaque there: read through the local STLport list model);
-// the counted pointer, the event base and the filters are local models (CEventBase from Ego_r.pdb).
-// Shape: the loop copies each counted pointer (count ++ / -- with the DeleteFunc + operator delete release on
-// both exits); rend() is re-read through `this` every iteration; *out is stored before the copy is released.
+// CTCEntityEvents::GetEvent<NEntityEvents::CEventExpressionPerformedTo, NEntityEvents::CIsEventOfType>(CEventExpressionPerformedTo** out,
+// const CIsEventOfType& filter) const -- the newest event of type 3 (CEventExpressionPerformedTo) that the filter accepts
+// Leaf: ??$GetEvent@VCEventExpressionPerformedTo@NEntityEvents@@VCIsEventOfType@2@@CTCEntityEvents@@QBE_NPAPAVCEventExpressionPerformedTo@NEntityEvents@@ABVCIsEventOfType@2@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00922440 (`ret 8`, bool in al).
+// NF72 (round 7, q10866): moved off the local stand-in CTCEntityEventsMethods (and its local CEventBase / list / filter models) onto
+//   engine/CTCEntityEvents.h's member-template body FABLE_RETAIL_CTCENTITYEVENTS_GETEVENT_BODY (NF67) and the shared
+//   engine/NEntityEvents_CEventExpressionPerformedTo.h, with the macro block and the local CIsEventOfType model (no shared header) of its
+//   ported caller CAIStateGroup_MinionFollowThing::IsExpressionPerfomedTo 0x00921440 (NF67). Evidence: FableWin.pdb names this
+//   instantiation (_fablewin_api.tsv); 0x00921440 binds it.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_EQ_CHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_REVERSE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_CTCENTITYEVENTS
+#define FABLE_RETAIL_CTCENTITYEVENTS_EVENTS
+#define FABLE_RETAIL_CTCENTITYEVENTS_GETEVENT_BODY
+#define FABLE_RETAIL_CEVENTEXPRESSIONPERFORMEDTO_GETTERS
+#define FABLE_RETAIL_CAISTATEGROUP_MINIONFOLLOWTHING
+#include <string.h>
+#include "fable_string.h"
+#include "engine/CDefString.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCAIScratchpad.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_MinionFollowThing.h"
 #include "engine/CTCEntityEvents.h"
-
-void __cdecl operator delete(void* block);            // 0x00BFE9BC
-
-// CCountedPointer<T>: the object and its shared count block {RefCount, __fastcall DeleteFunc(Data), Data}.
-#include "engine/CCountedPointer.h"
-
-// NEntityEvents::CEventBase (Ego_r.pdb: vptr +0, WorldFrame +4); GetType is vtable slot 1.
-struct CEventBase {
-    virtual ~CEventBase();
-    virtual long GetType() const;
-    long WorldFrame;                                  // +0x04
-};
-
-// CTCEntityEvents::Events (+0x0c): STLport list<CCountedPointer<CEventBase> > (the node pointer at +0),
-// walked newest first through a reverse_iterator (`*rit` is the node before the current one).
-struct CEventList {
-    struct SNode { SNode* _M_next; SNode* _M_prev; CCountedPointer<CEventBase> _M_data; };
-    SNode* _M_node;
-    struct reverse_iterator {
-        SNode* current;
-        reverse_iterator(SNode* node) : current(node) {}
-        const CCountedPointer<CEventBase>& operator*() const { SNode* tmp = current->_M_prev; return tmp->_M_data; }
-        reverse_iterator& operator++() { current = current->_M_prev; return *this; }
-        bool operator!=(const reverse_iterator& o) const { return current != o.current; }
-    };
-    reverse_iterator rbegin() const { return reverse_iterator(_M_node); }
-    reverse_iterator rend() const { return reverse_iterator(_M_node->_M_next); }
-};
-
+#include "engine/NEntityEvents_EEventType.h"
+#include "engine/NEntityEvents_CEventExpressionPerformedTo.h"
+#include "engine/CExpressionDef.h"
 namespace NEntityEvents {
-class CIsEventCreatedAfter { public:
-    long WorldFrame;
-    bool operator()(const CEventBase& event) const { return event.WorldFrame > WorldFrame; }
-};
-class CIsEventCreatedBeforeOrOn { public:
-    long WorldFrame;
-    bool operator()(const CEventBase& event) const { return event.WorldFrame <= WorldFrame; }
-};
-class CIsEventOfType { public:
-    long Type;
-    bool operator()(const CEventBase& event) const { return event.GetType() == Type; }
+// Local model (no shared header): FableWin.pdb ??0CIsEventOfType@NEntityEvents@@QAE@W4EEventType@1@@Z / ??R..QBE_NPBVCEventBase@1@@Z.
+class CIsEventOfType {
+public:
+    CIsEventOfType(EEventType type) : Type(type) {}
+    bool operator()(const CEventBase* event) const { return event->GetType() == Type; }
+private:
+    EEventType Type;
 };
 }
-template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
-    const A& First;
-    const B& Second;
-    template <class T> bool operator()(const T& event) const { return First(event) && Second(event); }
-};
-namespace NEntityEvents {
-class CEventExpressionPerformedTo : public CEventBase { public: enum { EventType = 0x3 }; };
-}
 
-struct CTCEntityEventsMethods : CTCEntityEvents {
-    const CEventList& GetEvents() const { return *(const CEventList*)Events; }
-    template <class TEvent, class TFilter> bool GetEvent(TEvent** out, const TFilter& filter) const;
-};
-
-// The newest event of TEvent's type that passes the filter: stored to *out, true; false when none.
-template <class TEvent, class TFilter>
-bool CTCEntityEventsMethods::GetEvent(TEvent** out, const TFilter& filter) const
-{
-    for (CEventList::reverse_iterator it = GetEvents().rbegin(); it != GetEvents().rend(); ++it)
-    {
-        CCountedPointer<CEventBase> event = *it;
-        if (event->GetType() == TEvent::EventType && filter(*(TEvent*)event.Data))
-        {
-            *out = (TEvent*)event.Data;
-            return true;
-        }
-    }
-    return false;
-}
-
-template bool CTCEntityEventsMethods::GetEvent<NEntityEvents::CEventExpressionPerformedTo, NEntityEvents::CIsEventOfType >(NEntityEvents::CEventExpressionPerformedTo**, const NEntityEvents::CIsEventOfType&) const;
+template bool CTCEntityEvents::GetEvent<NEntityEvents::CEventExpressionPerformedTo, NEntityEvents::CIsEventOfType>(NEntityEvents::CEventExpressionPerformedTo** out, const NEntityEvents::CIsEventOfType& filter) const;

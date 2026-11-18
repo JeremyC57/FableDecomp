@@ -1,4 +1,6 @@
 // CAIStateGroup_BanditSitRoundCampfire::Eat() -- cook a chicken by the campfire for a random 10..20 seconds, then (if that ran to the end) eat it for 5..10 seconds; drop the carried item
+// NF83 (round 7, q11027..q11029 self): leaf respelt to the private bool PDB spelling ?Eat@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ
+//   (both PDBs; NF79 0x0093AD70 binds it so) by an in-place edit of the row's local model (no shared header exists for this class).
 // Leaf: Eat@CAIStateGroup_BanditSitRoundCampfire
 // Retail @ 0x0093A5C0, 466 bytes. Callees as the landed sibling Drink 0x0093A8C0 (same TU): SheatheAllWeapons 0x006647F0,
 //   GetPWorldSeed 0x008FCFD0, GFFloatRandom 0x004978A0, CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0,
@@ -52,7 +54,8 @@ struct CAIStateGroup_BanditSitRoundCampfire : public CAIStateGroupBase {
     unsigned char _pad08[0x0c];                     // +0x08
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
     void DestroyItem(const CCharString& slot);      // 0x008FD1B0
-    bool Eat();
+private:
+    bool Eat();                                 // private (Ego_r.pdb 0x0095DA00 / FableWin.pdb 0x02B7F440 AAE_NXZ)
 };
 bool CAIStateGroup_BanditSitRoundCampfire::Eat()
 {

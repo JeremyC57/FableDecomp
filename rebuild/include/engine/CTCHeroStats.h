@@ -437,6 +437,14 @@ public:
     long GetRenownLevelMaxLevel() const { return RenownMaxLevel; }
     // GetAge / GetBestTrophyWitnesses: FABLE_RETAIL_CTCHEROSTATS_AGE / FABLE_RETAIL_CTCHEROSTATS_TROPHYWITNESSES.
 #endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_SPENTEXPERIENCE
+    // NF76 opt-in (row 0x005778CA CTCInventoryExperience::CloseInventoryInternalPC; needs FABLE_RETAIL_CTCHEROSTATS_SERIALISE): Ego_r.pdb /
+    // FableWin.pdb ?AddSpentExperience@CTCHeroStats@@QAEXJ@Z and ?GetExperienceSpentOn@CTCHeroStats@@QAEAAV?$vector@JV?$allocator@J@std@@@std@@XZ,
+    // inline in retail (`add [eax+13Ch],edi` 0x0057792F; `mov eax,[eax+18h] ; lea eax,[eax+ecx*4] ; add [eax],edi` 0x0057793F). Bodies only.
+public:
+    void AddSpentExperience(long amount) { TotalSpentExperience += amount; }
+    std::vector<long>& GetExperienceSpentOn() { return ExperienceSpentOn; }
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_GETRENOWNLEVEL
     // Nested opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): FableWin.pdb ?GetRenownLevel@CTCHeroStats@@QBEJXZ
     // (0x01E6E164), inline in retail (absent from Ego_r.pdb's out-of-line set; the row reads RenownLevel +0x70 in place, `cmp [ecx+70h],edi`

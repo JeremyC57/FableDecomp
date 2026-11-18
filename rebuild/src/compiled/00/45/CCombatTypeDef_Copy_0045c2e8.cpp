@@ -11,6 +11,9 @@
 // to 0x3c: PDB +0x40 -> retail +0x3c, and every container after that moves up another 4.
 // Shape: memberwise assignment in declaration order; containers through their out-of-line operator=,
 // scalars as dword/byte moves.
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CRetailTree_0045c442 are now the STLport std::map<ECombatCreatureType, long> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+#include "engine/ECombatCreatureType.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -33,12 +36,6 @@ struct CStringVector {                  // retail std::vector<CCharString> (12 b
     CStringVector& operator=(const CStringVector& other);   // 0x00432EE9
 };
 
-struct CRetailTree_0045c442 {           // retail std::map<ECombatCreatureType,long> (12 bytes)
-    void* head;
-    unsigned long size;
-    unsigned long _comp;
-    CRetailTree_0045c442& operator=(const CRetailTree_0045c442& other);   // 0x0045C3CF
-};
 
 class CCombatTypeDef : public CParentDefClassBase { public:   // vtable 0x01233744
     CLongVector          DefenderCombatRingOccupationNumbers;  // +0x3c
@@ -53,7 +50,7 @@ class CCombatTypeDef : public CParentDefClassBase { public:   // vtable 0x012337
     float                SideLimit;                            // +0x78
     float                RearLimit;                            // +0x7c
     float                PreferredCombatDistance;              // +0x80
-    CRetailTree_0045c442 AttackPatterns;                       // +0x84
+    std::map<ECombatCreatureType, long> AttackPatterns;                       // +0x84
     long                 CombatCreatureType;                   // +0x90 ECombatCreatureType
     bool                 AlwaysAttackIfNearest;                // +0x94
     bool                 KnockdownCausesStun;                  // +0x95

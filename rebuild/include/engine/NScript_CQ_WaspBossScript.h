@@ -14,6 +14,13 @@ public:
     virtual void Main();
     virtual void Init();
     virtual void OnPersist(CPersistContext&);
+#ifdef FABLE_RETAIL_CQ_WASPBOSSSCRIPT_DOMISSION
+    // NF68 opt-in (row 0x00E12580 DoMission): the members DoMission calls or is (no PDB name in either name set: Ego_r inlines them;
+    // the landed rows 0x00E12580 / 0x00E12B30 / 0x00E12F20 use these names). Declarations only.
+    void DoMission();                                                    // 0x00E12580
+    void GuildmasterHelp();                                              // 0x00E12B30 (Ego_r.pdb ?GuildmasterHelp@CQ_WaspBossScript@NScript@@QAEXXZ)
+    void WaspIntro();                                                    // 0x00E12F20
+#endif
     void EndMission();
     void Outro();
     bool MissionSucceeded;
@@ -45,5 +52,5 @@ public:
 #endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_WaspBossScript)==0x5c);
+FABLE_STATIC_ASSERT_AT(48, sizeof(NScript::CQ_WaspBossScript)==0x5c);
 #endif

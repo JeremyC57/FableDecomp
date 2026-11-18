@@ -51,10 +51,14 @@
 //   engine/CScriptInfo.h (overlay opt-in FABLE_RETAIL_CSCRIPTINFO_ACCESSORS); stlport/fable_map.h (overlay opt-in
 //   FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE). CCodeSectionManager and CTCDayOrNightOnlySupport have no shared header (declarations
 //   only here).
+// NF80 (q10763): this TU's own explicit specialisation of CBasicString<char>::operator< (a second strong definition of
+//   ??M?$CBasicString@D@@QBE_NABV0@@Z beside the self row 0x00429950) is replaced by fable_string.h's FABLE_RETAIL_CBASICSTRING_LESS_BODY:
+//   the same body as an inline, never-inlined COMDAT, so the TU keeps its mod/ref knowledge of the call and the symbol has one definition.
 #define FABLE_RETAIL_CARRAY
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_CONCAT_STRING
 #define FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+#define FABLE_RETAIL_CBASICSTRING_LESS_BODY
 #define FABLE_RETAIL_CWORLD
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CWORLD_GAMESCRIPTINTERFACE
@@ -85,21 +89,6 @@
 #include "engine/CQuestManager.h"
 #include "engine/CWorldMap.h"
 
-// CBasicString<char>::operator< 0x00429950 (landed): its real body in the TU, kept out of line, as retail's TU sees it.
-#pragma auto_inline(off)
-template<> __declspec(noinline) bool CBasicString<char>::operator<(const CBasicString<char>& other) const
-{
-    const char* b=other.PData;
-    const char* a=PData;
-    for(;;) {
-        if(*a==0 && *b==0) return false;
-        if(*a<*b) return true;
-        if(*a>*b) return false;
-        ++a;
-        ++b;
-    }
-}
-#pragma auto_inline(on)
 class CCodeSectionManager : public CTBaseSingleton<CCodeSectionManager> {   // 0x2c bytes; the instance pointer is 0x013CAA68
 public:
     CCodeSectionManager();                                    // 0x009F0320

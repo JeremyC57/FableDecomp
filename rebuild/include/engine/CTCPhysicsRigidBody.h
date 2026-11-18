@@ -112,7 +112,7 @@ private:
     unsigned char Body[0x1b8];                                      // +0xa0 CRigidBody
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCPhysicsRigidBody) == 0x258);
+FABLE_STATIC_ASSERT_AT(110, sizeof(CTCPhysicsRigidBody) == 0x258);
 #endif // FABLE_RETAIL_CTCPHYSICSRIGIDBODY
 
 #endif // FABLE_ENGINE_CTCPHYSICSRIGIDBODY_H

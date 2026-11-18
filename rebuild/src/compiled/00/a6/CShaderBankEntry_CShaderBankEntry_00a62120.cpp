@@ -86,7 +86,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
 };
 
 class CBankFile { public:
-    unsigned long GetEntryDataSize(unsigned long index);                                         // 0x009CC240
+    unsigned long GetEntryDataSize(unsigned long index) const;                                   // 0x009CC240 ?GetEntryDataSize@CBankFile@@QBEKK@Z (NF72, q10882: Ego_r.pdb const)
     void ReadEntryData(unsigned long index, unsigned long offset, void* buffer, unsigned long size);   // 0x009CC2A0
 };
 class CShaderDataBank : public CBankFile { public:};

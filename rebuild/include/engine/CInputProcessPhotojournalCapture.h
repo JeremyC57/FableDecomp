@@ -25,5 +25,5 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessPhotojournalCapture) == 0x28);
+FABLE_STATIC_ASSERT_AT(23, sizeof(CInputProcessPhotojournalCapture) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSPHOTOJOURNALCAPTURE_H

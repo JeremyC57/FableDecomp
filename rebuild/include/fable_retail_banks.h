@@ -51,6 +51,13 @@ namespace NBankFileManager
         unsigned long InfoOffset;                                        // +0x08
         unsigned long InfoSize;                                          // +0x0C
         unsigned long Alignment;                                         // +0x10
+#ifdef FABLE_RETAIL_NBANKFILEMANAGER_CCONTAINEDBANK_CTOR
+        // NF85 opt-in (row 0x009AC530 map<CCharString, CContainedBank>::operator[]): FableWin.pdb ??0CContainedBank@NBankFileManager@@QAE@XZ,
+        // the user default constructor (all five words zero), inline: STLport's `value_type(k, _Tp())` then builds the zeroed default in
+        // its own frame temporary and copies it into the pair, as retail 0x009AC530 does (`sub esp,30h`); without it VC7.1 folds the
+        // value-initialised POD straight into the pair. Layout unchanged.
+        CContainedBank() : DataVersion(0), EntryCount(0), InfoOffset(0), InfoSize(0), Alignment(0) {}
+#endif
     };
     class CRetailBank : public CBaseClassNonCopyable
     {
@@ -63,8 +70,8 @@ namespace NBankFileManager
         CCharString FilePath;                                            // +0x24
     };
 }
-FABLE_STATIC_ASSERT(sizeof(NBankFileManager::CContainedBank) == 0x14);
-FABLE_STATIC_ASSERT(sizeof(NBankFileManager::CRetailBank) == 0x28);
+FABLE_STATIC_ASSERT_AT(66, sizeof(NBankFileManager::CContainedBank) == 0x14);
+FABLE_STATIC_ASSERT_AT(67, sizeof(NBankFileManager::CRetailBank) == 0x28);
 
 class CBankFileManager : public CBaseClass
 {
@@ -99,6 +106,11 @@ public:
     CWideString GetRetailHeaderFilePath(const CCharString& bankHandle) const;   // 0x009A7ED0
 #endif
     void Close();
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_SETBANKALIAS
+    // NF87 opt-in (row 0x009A8150): Ego_r.pdb + FableWin.pdb ?SetBankAlias@CBankFileManager@@QAEXABVCCharString@@0@Z; Ego_d.pdb names the
+    // parameters bank_handle, alias (BankAliasMap[alias] = bank_handle).
+    void SetBankAlias(const CCharString& bank_handle, const CCharString& alias);   // 0x009A8150
+#endif
 #ifdef FABLE_RETAIL_CBANKFILEMANAGER_ISUSINGRETAILBANKS
     // Retail opt-in (wfE7, row 0x00B3CB30): FableWin.pdb ?IsUsingRetailBanks@CBankFileManager@@QBE_NXZ (0x02DD27A0; no Ego_r.pdb or Fable.exe
     // copy: inline, the CEngineResourceManager ctor tests the byte UsingRetailBanks +0x14 = 0x013CA7B0 in place, 0x00B3CD56).
@@ -110,7 +122,12 @@ protected:
     std::map<CCharString, CBankInfo> Banks;                              // +0x04
     std::list<CCountedPointer<NBankFileManager::CRetailBank> > RetailBanks;   // +0x10
     bool UsingRetailBanks;                                               // +0x14
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_BANKALIASMAP
+    // NF87 opt-in (row 0x009A8150 SetBankAlias): the member as its Ego_r.pdb type, the retail 12-byte STLport map (operator[] 0x009AC700).
+    std::map<CCharString, CCharString> BankAliasMap;                     // +0x18
+#else
     unsigned char BankAliasMap[0x0C];                                    // +0x18 std::map<CCharString,CCharString>
+#endif
     CWideString BasePath;                                                // +0x24
     unsigned char CreatedRetailBanks[0x0C];                              // +0x28 std::set<CWideString>
     unsigned long FileVersion;                                           // +0x34

@@ -1,0 +1,158 @@
+addr       parity           behav  name
+00451240   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@2@@Z -> 004508d6 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00451240   RELOCATION_MATCH PASS   RbTree_Clear_00451240
+00451a85   RELOCATION_MATCH PASS   StdList_Dtor_00451a85
+004da252   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@U?$less@W4EHeroExperienceStatCategory@@@3@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@2@@Z -> 004da252 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+004da252   WARN STANDIN_LEAF ?_M_erase@?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@U?$less@W4EHeroExperienceStatCategory@@@3@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@2@@Z (catalog LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray; names another function)
+004da252   RELOCATION_MATCH PASS   BuildTreeArray
+0053ccd0   RELOCATION_MATCH PASS   UninitFillN_CElement12_0053cb9b_0053ccd0
+0059686d   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0059686d   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+0059686d   WARN SHARED_HEADER_AVAILABLE CObserver
+0059686d   WARN SHARED_HEADER_AVAILABLE CManager
+0059686d   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+0059686d   RELOCATION_MATCH PASS   GotoSpecificPreviousScreen
+00597b20   WARN SHARED_HEADER_AVAILABLE CObserver
+00597b20   WARN SHARED_HEADER_AVAILABLE CManager
+00597b20   RELOCATION_MATCH PASS   GotoProfileMenu
+0059b2cc   WARN RELOC_NAME: ??$__copy@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@H@std@@YI?AU?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@0@0U10@ABUrandom_access_iterator_tag@0@PAH@Z -> 0059afd7 labelled 'std::__copy<std::_Deque_iterator<NUISystem::CComponent *, std::_Nonconst_traits<NUISystem::CComponent *>>, std::_Deque_iterator<NUISystem::CComponent *, std::_Nonconst_traits<NUISystem::CComponent *>>, int>'
+0059b2cc   WARN STANDIN_LEAF ??$__copy_aux@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@@std@@YI?AU?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@0@0U10@ABU__false_type@0@@Z (catalog CNavigatorAStar_0059b2cc::MoveToNavLineOfSightProximity; names another function)
+0059b2cc   RELOCATION_MATCH PASS   MoveToNavLineOfSightProximity
+0059b49b   WARN RELOC_NAME: ??$__copy_aux@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@@std@@YI?AU?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@0@0U10@ABU__false_type@0@@Z -> 0059b2cc labelled 'CNavigatorAStar_0059b2cc::MoveToNavLineOfSightProximity'
+0059b49b   WARN STANDIN_LEAF ??$__uninitialized_copy@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@@std@@YI?AU?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@0@0U10@ABU__true_type@0@@Z (catalog CStaticMeshPlacement_0059b49b::CStaticMeshPlacement_0059b49b; names another function)
+0059b49b   RELOCATION_MATCH PASS   CStaticMeshPlacement_0059b49b
+0059b4d8   RELOCATION_MATCH PASS   _M_reserve_map_at_back
+006644f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006644f0   WARN SHARED_HEADER_AVAILABLE CTCCombat
+006644f0   WARN SHARED_HEADER_AVAILABLE CThing
+006644f0   WARN RELOC_NAME: ?TakeOver@CCreatureActionBase@@QAEXABUCActionState@@@Z -> 00669280 labelled 'CCreatureActionBase::SetPreceedingPAnimEntry'
+006644f0   RELOCATION_MATCH PASS   SetCurrentAction
+006dbfe0   WARN STANDIN_LEAF ??0?$CPersistTraits@VCComboMultiplierData@@@@QAE@XZ (catalog CUnprovenContainer_006dbfe0::CUnprovenContainer_006dbfe0; names another function)
+006dbfe0   RELOCATION_MATCH PASS   CUnprovenContainer_006dbfe0
+006dc1b0   WARN STANDIN_LEAF ??0?$CPersistTraits@VCHeroStatIncreaseData@@@@QAE@XZ (catalog CUnprovenContainer_006dc1b0::CUnprovenContainer_006dc1b0; names another function)
+006dc1b0   RELOCATION_MATCH PASS   CUnprovenContainer_006dc1b0
+006dc1f0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@U?$less@W4EHeroExperienceStatCategory@@@3@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@2@@Z -> 004da252 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dc1f0   WARN STANDIN_LEAF ??1?$CPersistTraits@VCHeroStatIncreaseData@@@@QAE@XZ (catalog CRetailTree_erase004da252::~CRetailTree_erase004da252; names another function)
+006dc1f0   RELOCATION_MATCH PASS   ~CRetailTree_erase004da252
+00812110   RELOCATION_MATCH PASS   ScalarDeletingDtor_00812110
+00812150   RELOCATION_MATCH PASS   DeleteObject_00812150
+0085ff10   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0085ff10   RELOCATION_MATCH PASS   GetUpFromSitting
+00860150   RELOCATION_MATCH PASS   CCreatureAction_GetUpFromSitting
+008d6d40   WARN RELOC_NAME: ?SetCurrentAction@CThingCreatureBase@@QAE_NABV?$CCountedPointer@VCCreatureActionBase@@@@@Z -> 00664670 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008d6d40   RELOCATION_MATCH PASS   FrameUpdate
+008e7e70   RELOCATION_MATCH PASS   OnDeactivate
+00928e20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00928e20   WARN SHARED_HEADER_AVAILABLE CSoundPair
+00928e20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00928e20   WARN SHARED_HEADER_AVAILABLE CTCExclusiveUse
+00928e20   WARN SHARED_HEADER_AVAILABLE CWorld
+00928e20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00928e20   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+00928e20   RELOCATION_MATCH PASS   OnReplace
+009498b0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+009498b0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009498b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009498b0   RELOCATION_MATCH PASS   OnReplace
+0094dc40   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+0094dc40   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0094dc40   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0094dc40   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0094dc40   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0094dc40   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0094dc40   RELOCATION_MATCH PASS   ThrowRocks
+0095ee70   RELOCATION_MATCH PASS   SayToThingReactingTo
+009621f0   WARN SHARED_HEADER_AVAILABLE CTCStealth
+009621f0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+009621f0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+009621f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009621f0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009621f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009621f0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+009621f0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+009621f0   RELOCATION_MATCH PASS   Update
+0096cfc0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096cfc0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0096cfc0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0096cfc0   WARN SHARED_HEADER_AVAILABLE CTCTavernTankard
+0096cfc0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096cfc0   WARN RELOC_NAME: ?IsSeatTaken@CTCSeatTable@@QAE_NJ@Z -> 007b8570 labelled 'NInventory::CTCInventoryBase::GetSelectedCategory'
+0096cfc0   RELOCATION_MATCH PASS   OnReplace
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CTCStealth
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096ddb0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+0096ddb0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0096ddb0   RELOCATION_MATCH PASS   OnReplace
+0097d8b0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097d8b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097d8b0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0097d8b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0097d8b0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0097d8b0   RELOCATION_MATCH PASS   AIAction_PerformAction
+0097da40   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097da40   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097da40   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0097da40   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0097da40   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0097da40   RELOCATION_MATCH PASS   AIAction_CombatPerformActionAndWait
+0097db70   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097db70   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097db70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0097db70   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0097db70   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0097db70   RELOCATION_MATCH PASS   AIAction_PerformActionAndWait
+00981350   RELOCATION_MATCH PASS   AIAction_SpeakAISpeechToTarget
+00b9c110   WARN STANDIN_LEAF ??_GCEngineSubPrimitiveBase@@UAEPAXI@Z (catalog CEngineSubPrimitiveBase::`scalar_deleting_destructor'; names another function)
+00b9c110   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b9c130   WARN STANDIN_LEAF ??_GCEngineSubPrimitiveBoundingBox@@UAEPAXI@Z (catalog CEngineSubPrimitiveBoundingBox::`scalar_deleting_destructor'; names another function)
+00b9c130   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bca060   WARN STANDIN_LEAF ??_GCEngineSubPrimitiveSpriteTrail@@UAEPAXI@Z (catalog CEngineSubPrimitiveSpriteTrail::`scalar_deleting_destructor'; names another function)
+00bca060   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00812280   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCHitParameters@@@@SIXPAX@Z -> 00812150 labelled '_global::DeleteObject_00812150'
+00812280   RELOCATION_MATCH PASS   Reset
+0059b0c3   WARN RELOC_NAME: ?__copy_trivial@std@@YIPAXPBX0PAX@Z -> 00405ba0 labelled 'Std_Move_Backward'
+0059b0c3   RELOCATION_MATCH PASS   _M_reallocate_map
+0059afd7   WARN RELOC_NAME: ?_M_increment@?$_Deque_iterator_base@PAVCComponent@NUISystem@@@std@@QAEXXZ -> 0059aaf9 labelled 'CTCInventoryExperience::IncrementStatIndicator'
+0059afd7   RELOCATION_MATCH PASS   CComponent *>>, int>
+
+WINS: 36
+  00451240 RELOCATION_MATCH _global::?clear@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@QAEXXZ
+  00451a85 RELOCATION_MATCH _global::??1?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@QAE@XZ
+  004da252 RELOCATION_MATCH LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@W4EHeroExperienceStatCategory@@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@U?$less@W4EHeroExperienceStatCategory@@@3@V?$allocator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@2@@Z
+  0053ccd0 RELOCATION_MATCH _global::??$__uninitialized_fill_n@PAV?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@IV12@@std@@YIPAV?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@0@PAV10@IABV10@ABU__false_type@0@@Z
+  0059686d RELOCATION_MATCH NUISystem::CFrontEndManager::?GotoSpecificPreviousScreen@CFrontEndManager@NUISystem@@QAEXPAVCComponent@2@@Z
+  00597b20 RELOCATION_MATCH NUISystem::CFrontEndManager::?GotoProfileMenu@CFrontEndManager@NUISystem@@IAEXXZ
+  0059b2cc RELOCATION_MATCH CNavigatorAStar_0059b2cc::??$__copy_aux@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@@std@@YI?AU?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@0@0U10@ABU__false_type@0@@Z
+  0059b49b RELOCATION_MATCH CStaticMeshPlacement_0059b49b::??$__uninitialized_copy@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@@std@@YI?AU?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@0@0U10@ABU__true_type@0@@Z
+  0059b4d8 RELOCATION_MATCH std::deque::?_M_reserve_map_at_back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXI@Z
+  006644f0 RELOCATION_MATCH CThingCreatureBase::?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+  006dbfe0 RELOCATION_MATCH CUnprovenContainer_006dbfe0::??0?$CPersistTraits@VCComboMultiplierData@@@@QAE@XZ
+  006dc1b0 RELOCATION_MATCH CUnprovenContainer_006dc1b0::??0?$CPersistTraits@VCHeroStatIncreaseData@@@@QAE@XZ
+  006dc1f0 RELOCATION_MATCH CRetailTree_erase004da252::??1?$CPersistTraits@VCHeroStatIncreaseData@@@@QAE@XZ
+  00812110 RELOCATION_MATCH _global::??_GCHitParameters@@QAEPAXI@Z
+  00812150 RELOCATION_MATCH _global::?DeleteData@?$CCountedPointer@VCHitParameters@@@@SIXPAX@Z
+  0085ff10 RELOCATION_MATCH NCreatureMode::?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z
+  00860150 RELOCATION_MATCH CCreatureAction_GetUpFromSitting::??0CCreatureAction_GetUpFromSitting@@QAE@AAVCThingCreatureBase@@ABVCCharString@@J_N@Z
+  008d6d40 RELOCATION_MATCH NCreatureMode::CModeSleepBed::?FrameUpdate@CModeSleepBed@NCreatureMode@@UAEXXZ
+  008e7e70 RELOCATION_MATCH NCreatureMode::CModeBriarRoseConcentrate::?OnDeactivate@CModeBriarRoseConcentrate@NCreatureMode@@UAEXXZ
+  00928e20 RELOCATION_MATCH CAIStateGroup_BanditPlayDice::?OnReplace@CAIStateGroup_BanditPlayDice@@QAEXXZ
+  009498b0 RELOCATION_MATCH CAIStateGroup_GoToPub::?OnReplace@CAIStateGroup_GoToPub@@UAEXXZ
+  0094dc40 RELOCATION_MATCH CAIStateGroup_TrollBase::ThrowRocks
+  0095ee70 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?SayToThingReactingTo@CAIStateGroup_OpinionReactionRoot@@AAE?AW4EAIActionReturn@@ABVCCharString@@@Z
+  009621f0 RELOCATION_MATCH CAIStateGroup_IceTrollIcicleAttack::?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ
+  0096cfc0 RELOCATION_MATCH CAIStateGroup_EatAtTable::?OnReplace@CAIStateGroup_EatAtTable@@UAEXXZ
+  0096ddb0 RELOCATION_MATCH CAIStateGroup_ScreamerPursueTarget::OnReplace
+  0097d8b0 RELOCATION_MATCH CAIStateGroupBase::?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z
+  0097da40 RELOCATION_MATCH CAIStateGroupBase::AIAction_CombatPerformActionAndWait
+  0097db70 RELOCATION_MATCH CAIStateGroupBase::AIAction_PerformActionAndWait
+  00981350 RELOCATION_MATCH CAIStateGroupBase::?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$CIntelligentPointer@$$CBVCThing@@@@ABVCCharString@@_NJ4@Z
+  00b9c110 RELOCATION_MATCH CEngineSubPrimitiveBase::??_GCEngineSubPrimitiveBase@@UAEPAXI@Z
+  00b9c130 RELOCATION_MATCH CEngineSubPrimitiveBoundingBox::??_GCEngineSubPrimitiveBoundingBox@@UAEPAXI@Z
+  00bca060 RELOCATION_MATCH CEngineSubPrimitiveSpriteTrail::??_GCEngineSubPrimitiveSpriteTrail@@UAEPAXI@Z
+  00812280 RELOCATION_MATCH CCountedPointer_00812150::?Reset@?$CCountedPointer@VCHitParameters@@@@QAEXPAVCHitParameters@@@Z
+  0059b0c3 RELOCATION_MATCH std::deque::?_M_reallocate_map@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXI_N@Z
+  0059afd7 RELOCATION_MATCH std::??$__copy@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@H@std@@YI?AU?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@0@0U10@ABUrandom_access_iterator_tag@0@PAH@Z

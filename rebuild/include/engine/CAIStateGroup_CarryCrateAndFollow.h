@@ -19,6 +19,14 @@ class CThing;
 class CAIStateGroup_CarryCrateAndFollow : public CAIStateGroupBase {
 public:
     virtual void OnReplace();                                            // slot 10 0x00966030
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW_EXPRESSION
+    // NF67 opt-in (round 7, row 0x00966290): Ego_r.pdb / FableWin.pdb
+    // ?IsExpressionPerfomedTo@CAIStateGroup_CarryCrateAndFollow@@ABE_NABVCCharString@@AAV?$CIntelligentPointer@VCThing@@@@@Z (private const;
+    // the PDB spelling "Perfomed"), retail 0x00966290. Declaration only.
+private:
+    bool IsExpressionPerfomedTo(const CCharString& expression, CIntelligentPointer<CThing>& performer) const;   // 0x00966290
+public:
+#endif
 protected:
     CIntelligentPointer<CThing> PCrate;                                  // +0x14
     CIntelligentPointer<CThing> PPreviouslyCarriedItem;                  // +0x1c
@@ -27,7 +35,7 @@ protected:
     long ActionPointIndex;                                               // +0x30
     long PickUpActionID;                                                 // +0x34
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CarryCrateAndFollow) == 0x38);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CAIStateGroup_CarryCrateAndFollow) == 0x38);
 #else
 
 #pragma pack(push, 1)

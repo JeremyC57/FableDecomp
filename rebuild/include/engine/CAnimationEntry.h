@@ -26,6 +26,11 @@ public:
     static std::map<CCharString, CIVCountedPointer<CAnimComponentBase> > RegisteredComponentsByToken;          // 0x013B8C1C
     static CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > RegisteredComponentsByType;      // 0x013B8C28
     static CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > RegisteredComponentDefaults;     // 0x013B8C38
+#ifdef FABLE_RETAIL_CANIMATIONENTRY_TRANSITION_CTOR
+    // NF71 opt-in (round 7, row 0x006A0150 CCreatureAction_UnsheatheItemFromInventory ctor): Ego_r.pdb / FableWin.pdb
+    // ??0CAnimationEntry@@QAE@ABV0@J@Z (retail 0x005DEC70, called out of line: the copy with a new transition-in time). Declaration only.
+    CAnimationEntry(const CAnimationEntry& other, long transitionInTime);   // 0x005DEC70
+#endif
 #ifdef FABLE_RETAIL_CANIMATIONENTRY_ACCESSORS
     // Retail opt-in (chunk 1006, row 0x005B3E4E CTCInventoryClothing::GlobalUpdate): Ego_r.pdb / FableWin.pdb
     // ?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ (retail 0x005DC390) and ?GetTransitionTime@CAnimationEntry@@QBEJXZ (0x005DC1D0),
@@ -55,5 +60,5 @@ public:
     CDefString                             GroupName;     // +0x08
     CIVCountedPointer<CAnimComponentMap>   Components;    // +0x0c
 };
-FABLE_STATIC_ASSERT(sizeof(CAnimationEntry) == 0x10);
+FABLE_STATIC_ASSERT_AT(58, sizeof(CAnimationEntry) == 0x10);
 #endif // FABLE_ENGINE_CANIMATIONENTRY_H

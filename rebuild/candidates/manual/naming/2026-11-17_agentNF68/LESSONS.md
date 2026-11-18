@@ -1,0 +1,15 @@
+# NF68 lessons (one line each)
+- A row whose landed sibling already sits on the shared headers ports in one grade: copy the sibling's macro block verbatim (0x00B7FA20 from 0x00B7C510, 0x00A79A30 from the caller 0x00A7AF60, 0x00B76BC0 from 0x00B70230).
+- The "register tie" of the render-state rows is a c2 record-id effect of the whole TU: the honest port with the real PDB inlines (FableWin SetVertexShadersEnable(bool, bool*), typed shared-data members) fixed 0x00B32AD0's A A A A B B B pattern in one grade where NF45's fitted local forms failed.
+- Fewer IL records ahead of the tracked-state expansions move the bookmark test/or operand swap later; every FITTED named local (SETRENDERSTATE_DESIRED / _BOOKMARK / ADDSTATE_DIRTY) moves it one site earlier.
+- STLport helpers retail calls as __fastcall COMDATs come out right from same-TU noinline bodies under #pragma auto_inline(off); read the callee's `ret N` first to pick the overload (uninitialized_fill_n `ret 4` = the public three-argument form, not __uninitialized_fill_n with the tag).
+- The STLport port of a stand-in binder can prove the library spelling of a landed descriptive self name (0x009F6720 _Destroy_Record34 -> std::_Destroy); file the self as a NAME_FIX rather than bending the binder to the placeholder.
+- Under the PASS22 shader method order, SetBoneMatrixCount's resize expands inline unless FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE is defined (0x00B76BC0: 2049 v 1965 bytes).
+- End every multi-file `diff | grep -c` loop with `; true`: grep -c exits 1 on a zero count (one slip here).
+- Keep blocked drafts out of rows/ (work/att/), so the payload builders never pick an unported draft as a changed row.
+- The inline budget can replace an inline_depth pragma region: NF60's 0x00E12580 draft is RELOCATION_MATCH pragma-free with `/d2inlT62` (default 1626 / T40 1187 / retail 1446 bytes); probe the per-row budget on a pragma-free copy before keeping `#pragma inline_depth`.
+- Bisect the inline budget down to the smallest matching N (0x00EDA8C0: 62 matched, 59 is the smallest; 57 / 58 still DIFFER).
+- A row whose class chain has shared retail branches (CAIStateGroup* cover chain, CBankFileAsync / CResource / CIVCountedPointer) ports in 2-4 grades once the missing members are added as declaration opt-ins; most "15-class" bodies needed only 3-6 declarations.
+- IS_THING_ALIVE on an intelligent pointer reads GetPItem twice; where retail reads it once the test is on the raw pointer (`IS_THING_ALIVE(p.Get())`).
+- A by-value accessor temporary inside a call argument is released after the call; retail that releases it first wants the value in a named local before the call (0x00979F70 speech group).
+- Guard every `rm -r` target with `${VAR:?}` (the safety check refuses a bare variable path).

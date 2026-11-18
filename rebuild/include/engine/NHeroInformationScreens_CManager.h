@@ -34,6 +34,11 @@ public:
     // out of line at 0x0066EB11 (every inventory screen's OnCreate registers itself; the landed bound spelling). Declaration only.
     void RegisterScreen(const CBase* screen);           // 0x0066EB11
 #endif
+#ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_DEREGISTERALL
+    // NF79 opt-in (round 7, row 0x0089F4A0 CGameScriptInterface::TurnCreatureInto): Ego_r.pdb + FableWin.pdb
+    // ?DeregisterAllScreens@CManager@NHeroInformationScreens@@QAEXXZ, out of line at 0x0066EBE0. Declaration only.
+    void DeregisterAllScreens();                        // 0x0066EBE0
+#endif
 #ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_LAYOUT
     // Retail opt-in (chunk 853, row 0x0043A570 ~CPlayerGui): the inline ~CManager (Ego_r.pdb ??1CManager@NHeroInformationScreens@@QAE@XZ,
     // non-virtual; boost::checked_delete then operator delete, no vtable store) frees three STLport vectors at +0x1C, +0x10, +0x04 in that

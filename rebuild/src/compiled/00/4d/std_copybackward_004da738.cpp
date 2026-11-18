@@ -9,44 +9,17 @@
 // Callees: std::pair<CCharString, CTCBase::CRegisteredTCInfo>::operator= 0x004DA56A (landed, J-family pair assignment) (thiscall, `ret 4`), once per element.
 // Shape: STLport 4.6 _algobase.h random-access __copy_backward verbatim; the count is a shift (0x10-byte elements) and the
 //   result pointer is decremented in its own stack slot (the J070 __copy model, backwards).
+// NF82 (q11001): moved off the row-local CCharString / pair models and the renaming-macro include of engine/CTCBase.h (`#define CTCBase
+//   CTCBasePdb` with a local CTCBase on top) onto the shared headers: stlport/fable_containers.h (FABLE_RETAIL_STLP_SORT_INTERNALS: the
+//   STLport 4.6 _algobase.h __copy_backward body, explicit instantiation), engine/CTCBase.h (FABLE_RETAIL_CTCBASE_REGISTRY: the retail
+//   CTCBase::CRegisteredTCInfo) and fable_string.h. The own symbol is unchanged; NF80's 0x004E1C8A binds it.
 #pragma optimize("s", on)
-class CCharString {                                      // 4 bytes (Ego_r)
-public:
-    void* PStringData;                                   // +0x0
-    CCharString(const CCharString& other);               // 0x0099EC30
-    ~CCharString();                                      // 0x0099EAE0
-};
-#define CTCBase CTCBasePdb
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE_REGISTRY
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_SORT_INTERNALS
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
 #include "engine/CTCBase.h"
-#undef CTCBase
-class CThing;
-class CTCBase : public CTCBasePdb {                      // engine/CTCBase.h is data-only: the nested record is added here
-public:
-    class CRegisteredTCInfo {                            // Ego_r.pdb, 12 bytes
-    public:
-        CTCBase*      (__fastcall* AllocFunc)(CThing&);  // +0x0
-        unsigned long DriverType;                        // +0x4
-        CCharString   Name;                              // +0x8
-    };
-};
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;                                           // +0x0
-    _T2 second;                                          // +0x4
-    pair& operator=(const pair& __o);                    // 0x004DA56A for pair<CCharString, CTCBase::CRegisteredTCInfo> (implicit; out of line in retail)
-};
-}
-namespace std {
-struct random_access_iterator_tag { };
-template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-_BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result,
-                                   const random_access_iterator_tag&, _Distance*)
-{
-    for (_Distance __n = __last - __first; __n > 0; --__n)
-        *--__result = *--__last;
-    return __result;
-}
-typedef std::pair<CCharString, CTCBase::CRegisteredTCInfo> TElement_004da738;
-template TElement_004da738* __copy_backward<TElement_004da738*, TElement_004da738*, int>(TElement_004da738*, TElement_004da738*, TElement_004da738*,
-                                                                         const random_access_iterator_tag&, int*);
-}
+template std::pair<CCharString,CTCBase::CRegisteredTCInfo>* FABLE_STLP_FASTCALL std::__copy_backward(std::pair<CCharString,CTCBase::CRegisteredTCInfo>*,
+ std::pair<CCharString,CTCBase::CRegisteredTCInfo>*,std::pair<CCharString,CTCBase::CRegisteredTCInfo>*,const std::random_access_iterator_tag&,int*);

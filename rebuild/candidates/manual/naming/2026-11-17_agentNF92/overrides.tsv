@@ -1,0 +1,2 @@
+q11211	done	2	all slice binders ported: 0x0059C710 0x005BF32D; 0x0059C6B0 deferred: held by NF91 (HELD.txt)
+q11213	done	0	done already: the only binder 0x005BD96B (NF90 port) binds 0x005BC46C as ?IsSlotEmpty@CItem@NInventory@@QBE_NXZ (reloc_bindings 57a95dc34c, probe unchanged); not-a-binder 0x005BD96B, no edit

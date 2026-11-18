@@ -19,17 +19,15 @@
 //   `_STLP_alloc_proxy(a, 0)` end-of-storage member: the address-taken allocator temporary makes VC7.1 reload
 //   start/finish from memory in resize (`mov eax,[edi+4] ; mov ecx,[edi]`); with plain zero member initialisers the
 //   zeros are forwarded into registers (`mov eax,ebx ; mov ecx,ebx`, 162 v 161 bytes).
+// NF75 (round 7, land1117fu q10917): the local CBoolVector / allocator / _STLP_alloc_proxy / __copy_trivial stand-ins are replaced by
+//   the shared STLport std::vector<bool> of stlport/fable_containers.h (Ego_r.pdb CTCSpecialAbilities::AbilityAvailability is
+//   std::vector<bool>); the fill-insert call binds ?_M_fill_insert@?$vector@_NV?$allocator@_N@std@@@std@@QAEXPA_NIAB_N@Z (0x004676EF).
 extern "C" void* __cdecl malloc(unsigned int size);                                  // 0x00BFEA0E
-extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
+
+#include "stlport/fable_containers.h"
 
 class CThing;
 class CThingCreatureBase;
-
-inline void* __copy_trivial(const void* first, const void* last, void* result)
-{
-    return (last == first) ? result :
-        ((char*)memmove(result, first, ((const char*)last - (const char*)first))) + ((const char*)last - (const char*)first);
-}
 
 struct CUndeadFollower {                        // CTCSpecialAbilities::CUndeadFollower, 20 bytes
     long          Health;
@@ -56,42 +54,6 @@ struct CUndeadFollowerList {                    // STLport list<CUndeadFollower>
     ~CUndeadFollowerList();
 };
 
-template <class T> struct allocator {
-    allocator() {}
-    allocator(const allocator&) {}
-};
-template <class Value, class Tp, class MaybeReboundAlloc>
-struct _STLP_alloc_proxy : public MaybeReboundAlloc {
-    Value _M_data;
-    _STLP_alloc_proxy(const MaybeReboundAlloc& a, Value p) : MaybeReboundAlloc(a), _M_data(p) {}
-};
-struct CBoolVector {                            // STLport vector<bool> as retail builds it: one byte per element
-    typedef allocator<bool> allocator_type;
-    bool* _M_start;
-    bool* _M_finish;
-    _STLP_alloc_proxy<bool*, bool, allocator_type> _M_end_of_storage;
-    explicit CBoolVector(const allocator_type& a = allocator_type()) : _M_start(0), _M_finish(0), _M_end_of_storage(a, (bool*)0) {}
-    ~CBoolVector();
-    bool* begin() { return _M_start; }
-    bool* end() { return _M_finish; }
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    bool* erase(bool* first, bool* last)
-    {
-        bool* i = (bool*)__copy_trivial(last, _M_finish, first);
-        _M_finish = i;
-        return first;
-    }
-    void _M_fill_insert(bool* pos, unsigned int n, const bool& x);   // 0x004676EF
-    void insert(bool* pos, unsigned int n, const bool& x) { _M_fill_insert(pos, n, x); }
-    void resize(unsigned int newSize, const bool& x)
-    {
-        if (newSize < size())
-            erase(begin() + newSize, end());
-        else
-            insert(end(), newSize - size(), x);
-    }
-};
-
 class CTCBase {
 public:
     CTCBase(CThing& thing);                     // 0x00686800
@@ -112,7 +74,7 @@ public:
     EHeroAbility        CurrentAbility;         // +0x10
     CUndeadFollowerList UndeadFollowers;        // +0x14
     CThingCreatureBase* Creature;               // +0x18
-    CBoolVector         AbilityAvailability;    // +0x1c
+    std::vector<bool>   AbilityAvailability;    // +0x1c (STLport 4.6, stlport/fable_containers.h)
 };
 
 CTCSpecialAbilities::CTCSpecialAbilities(CThing& thing)

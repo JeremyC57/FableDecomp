@@ -71,7 +71,7 @@ class CQuestManager { public:
     void DeactivateQuest(const CCharString& name, unsigned long reason);        // 0x004B43D0
     void ClearQuestPersistScript(const CCharString& name);                     // 0x004B39B0
     bool ActivateTestQuestCard(const CCharString& name, const CCharString& cardDefName);   // 0x004B4C50
-    void ActivateQuest(const CCharString& name, bool a, bool b);               // 0x004B4A10
+    bool ActivateQuest(const CCharString& name, bool a, bool b);               // 0x004B4A10 (NF75 q10942: Ego_r.pdb bool result, ?ActivateQuest@CQuestManager@@QAE_NABVCCharString@@_N1@Z; was void)
 };
 class CWorld { public:
     void LoadQuestHSP(const CCharString& hspName);  // 0x004A0940

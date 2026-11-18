@@ -1,0 +1,25 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x008F95D0	LHNetworkLib::LSocket	SendBlock	?SendBlock@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@@Z	LHNetworkLib::LSocket::SendBlock	?SendBlock@LSocket@LHNetworkLib@@QAE_NAAUByteBuffer@2@@Z	leaf only: the landed row bound its own name on a local ByteBuffer stand-in; the shared LSocket.h SENDBLOCK declaration takes std::vector<char>& (Ego_r.pdb / FableWin.pdb ?SendBlock@LSocket@LHNetworkLib@@QAE_NAAV?$vector@D...); no direct retail callers (callers.py 008f95d0: none)
+0x006A0150	CCreatureAction_UnsheatheItemFromInventory	CCreatureAction_UnsheatheItemFromInventory	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z	CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_UnsheatheItemFromInventory	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThingCreatureBase@@PAVCThing@@PAVCCreatureActionBase@@J@Z	leaf only (q10502): Ego_r.pdb 0x006C4A60 + FableWin.pdb, and engine/CCreatureAction_UnsheatheItemFromInventory.h; the landed callers 0x006666A0 / 0x00694430 / 0x006DEEE0 / 0x006DF800 already bind this spelling through the header (callers.py 006a0150; four more call sites are in unlanded code)
+# Section 2
+0x00E12580	?WaspMenace@CQ_WaspBossScript@NScript@@QAEXXZ	?EndMission@CQ_WaspBossScript@NScript@@QAEXXZ
+0x00E12580	?pGlobalScriptDef@@3PAVCScriptDef@@A	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A
+0x008F95D0	?Fill@ByteBuffer@LHNetworkLib@@QAEXPADIABD@Z	?_M_fill_insert@?$vector@DV?$allocator@D@std@@@std@@QAEXPADIABD@Z
+0x008F95D0	?Send@LSocket@LHNetworkLib@@QAE_NABUByteBuffer@2@ABULAddress@2@1@Z	?Send@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@ABULAddress@2@1@Z
+0x00EE2490	??0CScriptThing@@QAE@ABU0@@Z	??0CScriptThing@@QAE@ABV0@@Z
+0x00EE2490	??4CCharString@@QAEAAU0@PBD@Z	??4CCharString@@QAEABV0@PBD@Z
+0x00EE2490	??H@YI?AUCCharString@@ABU0@0@Z	??H@YI?AVCCharString@@ABV0@0@Z
+0x00EE2490	??ACCutsceneArgMap@@QAEAAUCCharString@@ABU1@@Z	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z
+0x00EE2490	?AddSpawnedFunction@CScriptBase@NScript@@QAEXPAUCSpawnedFuncBase@@ABUCCharString@@@Z	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z
+0x00EE2490	?IsDistanceBetweenThingsUnder@@YI_NABUCScriptThing@@0M@Z	?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z
+0x00EE2490	??0CSpawnedFuncBase@@QAE@ABUCCharString@@K@Z	??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z
+0x00EE2490	??1CIsThingAlive@@QAE@XZ	??1CIsThingAlive@NScript@@UAE@XZ
+0x00EE2490	?PlayCutscene@CV_TravellingHeroesScript@NScript@@QAEXUCCharString@@@Z	?PlayCutscene@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@@Z
+0x00EE2490	?SetPredicate@CEntityScriptBase@NScript@@QAEXAAUCIsThingAlive@@@Z	?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+0x00EE2490	?IsActiveThreadTerminating@CEntityScriptBase@NScript@@QBE_NXZ	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+0x00EE2490	??_7CIsThingAlive@@6B@	??_7CIsThingAlive@NScript@@6B@
+0x00EE2490	??_7?$CSpawnedFunc@UCV_TravellingHeroesScript@NScript@@@@6B@	??_7?$CSpawnedFunc@VCV_TravellingHeroesScript@NScript@@@@6B@
+0x006A0150	?GetAnimationToUse@@YI?AVCCharString@@PAVCThingCreatureBase@@PAVCThing@@@Z	?GetAnimationToUse@CCreatureAction_UnsheatheItemFromInventory@@CI?AVCCharString@@ABVCThing@@0@Z
+0x006A0150	?GetAnimationFromName@@YIABVCAnimationEntry@@PAVCThingCreatureBase@@ABVCCharString@@@Z	?GetRandomAnimFromName@CCreatureActionBase@@KIABVCAnimationEntry@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+0x006A0150	??0CCreatureActionBase@@QAE@PAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z	??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z
+0x006A0150	?DeleteCreatureAction@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z

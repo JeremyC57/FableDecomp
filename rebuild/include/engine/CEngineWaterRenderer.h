@@ -419,6 +419,11 @@ private:
     bool SetSeaBackgroundTexturesAndUVModes();
     void SetupSeaBackgroundShaderConstantsAndFog();
 #endif
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_SETUPSEANONREFLECTIVEFOREGROUND
+    // NF68 opt-in (row 0x00B7FA20): FableWin.pdb 0x02D501F0 ?SetupSeaNonReflectiveForegroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ
+    // (private; retail's out-of-line copy 0x00B7FA20 has no direct caller, RenderSeaNonReflectiveForeground 0x00B77E20 expands it).
+    void SetupSeaNonReflectiveForegroundShaderConstantsAndFog();         // 0x00B7FA20
+#endif
     void RenderSeaBackground(float time);                                // ?RenderSeaBackground@CEngineWaterRenderer@@AAEXM@Z
     void RenderEnvironmentMap();                                         // ?RenderEnvironmentMap@CEngineWaterRenderer@@AAEXXZ
     void RenderIceForeground(float time);                                // ?RenderIceForeground@CEngineWaterRenderer@@AAEXM@Z
@@ -651,6 +656,12 @@ public:
     // (public, out of line at 0x00B6D4D0) on the flattened default layout, for callers that reach the renderer through a pointer only.
     // The includer provides CCharString. Declaration only, no layout change.
     void OpenStaticMapForUse(CStaticMapBankFile* file, CCharString symbol);   // 0x00B6D4D0
+#endif
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_LOADNONPATCHDATA_DECL
+    // NF76 opt-in (row 0x00B41FA0 CEngineWorldMap::LoadWaterData): Ego_r.pdb ?LoadNonPatchData@CEngineWaterRenderer@@QAEXAAVCMemoryDataInputStream@@0@Z
+    // (public, out of line at 0x00B6DAF0) on the flattened default layout, for callers that reach the renderer through a pointer only.
+    // Declaration only, no layout change.
+    void LoadNonPatchData(class CMemoryDataInputStream& data, class CMemoryDataInputStream& header);   // 0x00B6DAF0
 #endif
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char        _pad_0x04[0x4];                     // +0x04

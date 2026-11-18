@@ -122,7 +122,7 @@ namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; 
 namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }             // 0x01436E60
 extern CEngineSimulationManager*                g_pEngineSimulationManager;          // 0x01436E68
 extern CEnginePrimitiveAttachmentManager*       g_pEnginePrimitiveAttachmentManager; // 0x01436E70
-extern CEngineSubPrimitiveRenderer*             g_pEngineSubPrimitiveRenderer;       // 0x01436E74
+namespace NEngineInternal { extern CEngineSubPrimitiveRenderer* GPSubPrimitiveRenderer; }   // 0x01436E74 (Ego_d.pdb PUB32; NF83 respelt from g_pEngineSubPrimitiveRenderer)
 namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }        // 0x01436E7C
 namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }          // 0x01436E80
 namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }          // 0x01436E84
@@ -178,7 +178,7 @@ bool CEngine::Initialise(const CEngineInit& init)
     AddEngineComponent(new CEngineBillboardGenerator(), g_pEngineBillboardGenerator, 0);
     AddEngineComponent(new CEngineScreenEffectOutlineGlow(init), NEngineInternal::GPScreenEffectOutlineGlow, 0);
     AddEngineComponent(new CEngineScreenEffectDisplacementRenderer(init), NEngineInternal::GPScreenEffectDisplacementRenderer, 0);
-    AddEngineComponent(new CEngineSubPrimitiveRenderer(), g_pEngineSubPrimitiveRenderer, 0);
+    AddEngineComponent(new CEngineSubPrimitiveRenderer(), NEngineInternal::GPSubPrimitiveRenderer, 0);
     AddEngineComponent(new CEnginePrimitiveRenderer(), NEngineInternal::GPPrimitiveRenderer, 0);
     AddEngineComponent(new CEnginePrimitiveRenderer2D(), NEngineInternal::GPPrimitiveRenderer2D, 0);
     AddEngineComponent(new CEngineLightingManager(), NEngineInternal::GPLightingManager, 0);

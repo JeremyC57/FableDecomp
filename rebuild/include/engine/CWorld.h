@@ -495,6 +495,18 @@ public:
     CWideString GetPathNameForFileName(const CWideString& fileName) const;   // 0x0049EF50 ?GetPathNameForFileName@CWorld@@QBE?AVCWideString@@ABV2@@Z
     bool LoadGameState(const CWideString& name, bool loadNow);  // 0x004A3200 ?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z
     bool AutoLoadRespawn();                                      // 0x004A5E90 ?AutoLoadRespawn@CWorld@@QAE_NXZ
+#ifdef FABLE_RETAIL_CWORLD_STATICMAPEXPORT
+    // NF73 opt-in (row 0x00416953 CMainGameComponent::PostInit, static-map export): Ego_r.pdb / FableWin.pdb public const path helpers,
+    // out of line in retail (Ego_r order StaticMap(3) 0x004A6940, LevelWAD 0x004A69E0, ISMThingy(3) 0x004A6A50, StaticMap(1) 0x004A7150,
+    // ISMThingy(1) 0x004A71D0 = retail 0x0049D550, 0x0049D610, 0x0049D6B0, 0x0049DDD0, 0x0049DEC0, the landed rows' names; the ISM pair
+    // builds the .ism / _RT.ism paths). Declarations only.
+#ifndef FABLE_RETAIL_CWORLD_LOAD_ORIGINAL
+    CWideString ConvertWorldToStaticMapPath(const CWideString& worldPath) const;                      // 0x0049DDD0
+#endif
+    CWideString ConvertWorldToStaticMapPath(const CWideString& worldPath, bool b1, bool b2) const;    // 0x0049D550
+    CWideString ConvertWorldToISMThingyPath(const CWideString& worldPath) const;                      // 0x0049DEC0
+    CWideString ConvertWorldToISMThingyPath(const CWideString& worldPath, bool b1, bool b2) const;    // 0x0049D6B0
+#endif
 #ifdef FABLE_RETAIL_CWORLD_LOAD_ORIGINAL
     // Both original exact member types and module560 named calls.
     void Load(const CWideString&);

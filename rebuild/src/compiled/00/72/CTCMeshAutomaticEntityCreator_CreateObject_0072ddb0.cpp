@@ -1,4 +1,5 @@
 // CTCMeshAutomaticEntityCreator::CreateObject(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance) -- create the named object at every dummy of that name
+// Leaf: ?CreateObject@CTCMeshAutomaticEntityCreator@@AAEXABVCCharString@@0PAVCTCGraphicAppearance@NGraphicAppearance@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072DDB0, length 403 bytes (+ int3 padding), esp frame, `ret 0Ch`.
@@ -9,7 +10,7 @@
 // CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::AddTC @ 0x004C9D60,
 // CVectorMap::LowerBound @ 0x0040F020 (inline GetInterface 0x32 = CTCCreatedEntity, bitset word +0x24 bit 18),
 // CTCCreatedEntity::SetPCreator @ 0x005ED440 (label "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated), and the
-// same-TU AddOwnedEntityTC @ 0x0072DD60 (landed; called here, inlined in CreateParticle 0x0072E130).
+// same-TU AddThingToOwnerTC @ 0x0072DD60 (landed; called here, inlined in CreateParticle 0x0072E130).
 // Strings: "" @ 0x0122D70E, "CTCCreatedEntity" @ 0x0123AA60.
 // Shape: the empty script name is a NAMED CCharString in its own block around the factory call (an unnamed temporary
 // argument pushes the ctor's eax and lands in another frame slot); the creator's scale is copied through an inline
@@ -90,7 +91,8 @@ protected:
     const CWorldMap& PeekWorldMap() const;   // 0x00686D20
 };
 struct CTCMeshAutomaticEntityCreator : CTCBase {
-    void AddOwnedEntityTC(CThing* created);           // 0x0072DD60
+private:   // both private in Ego_r.pdb (NF70 q10749): ?AddThingToOwnerTC@CTCMeshAutomaticEntityCreator@@AAEXAAVCThing@@@Z, ?CreateObject@...@@AAEX...
+    void AddThingToOwnerTC(CThing& thing);           // 0x0072DD60
     void CreateObject(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);
 };
 
@@ -118,7 +120,7 @@ void CTCMeshAutomaticEntityCreator::CreateObject(const CCharString& dummyName, c
                     CTCCreatedEntity* created;
                     object->GetInterface(&created, 0x32);
                     created->SetPCreator(ParentThing);
-                    AddOwnedEntityTC(object);
+                    AddThingToOwnerTC(*object);
                 }
             }
         }

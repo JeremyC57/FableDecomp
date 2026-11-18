@@ -1,73 +1,47 @@
-// CQuestManager::ClearQuestPersistScript(const CCharString& questName) -- drop the quest's runtime persistence entries and clear the thing manager's persistence data for that section
+// CQuestManager::ClearQuestPersistScript(const CCharString& quest_name) -- drop the quest's runtime persistence entries and clear the thing manager's persistence data for that section
+// Leaf: ?ClearQuestPersistScript@CQuestManager@@QAEXABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B39B0, length 106 bytes (`ret 4`).
+// Identity: Ego_r.pdb 0x004B9D90 / FableWin.pdb ?ClearQuestPersistScript@CQuestManager@@QAEXABVCCharString@@@Z; Ego_d.pdb locals this,
+//   quest_name. Its inline callees: ?ClearPersistScript@CRuntimeQuestPersistence@NQuestManager@@QAEXABVCCharString@@@Z (Ego_r / FableWin)
+//   and FableWin.pdb ?EraseFromKey@?$CVectorMap@VCCharString@@VCPersistInfo@..@@QAEXABVCCharString@@@Z (Ego_d locals key, lower, upper).
 // Callees: CVectorMap<CCharString, CPersistInfo>::LowerBound @ 0x004B9750 / UpperBound @ 0x004B9850, STLport
-// __copy(first, last, result, random_access_iterator_tag, ptrdiff_t*) @ 0x004B84F0 (`__fastcall`; catalog "_Move"),
-// __destroy_aux(first, last, __false_type) @ 0x004B93E0 (`__fastcall`; catalog "vector::_Destroy"),
-// CWorld::GetThingManager (slot 3, +0xc), CThingManager::ClearPersistenceDataForSection(const CCharString&)
-// @ 0x00520C70 (an `add ecx,0A0h ; jmp` forwarder to CEntityRuntimePersistence).
-// Layout: retail CQuestManager: RuntimeQuestPersistence +0xc whose first member is the CVectorMap (STLport vector
-// begin +0, finish +4) of 12-byte pair<CCharString, CPersistInfo>; World +0x7c (PDB +0xd8).
-// Shape: the range erase of [LowerBound(key), UpperBound(key)) written out over a map reference: end() is taken once
-// into a local right after LowerBound (it is both the emptiness test and __copy's `last`; ebx), UpperBound goes into
-// a local before the __copy pushes, _Destroy re-reads the finish; both empty tags sit in the dead name-argument
-// slot; `this` lives in the `push ecx` frame word; the name is pushed before the GetThingManager call. The plain
-// `erase(it, UpperBound(key))` member form re-reads the finish for __copy and pushes before calling UpperBound.
-// Leaf: ClearQuestPersistScript
-#include <stddef.h>
+//   __copy(first, last, result, random_access_iterator_tag, ptrdiff_t*) @ 0x004B84F0 (`__fastcall`), __destroy_aux(first, last,
+//   __false_type) @ 0x004B93E0 (`__fastcall`), CWorld::GetThingManager (slot 3), CThingManager::ClearPersistenceDataForSection @ 0x00520C70.
+// Shape: EraseFromKey's range erase is STLport vector::erase(first, last) inline; with UpperBound's body in the TU VC7.1 knows it writes no
+//   memory, so the finish read for the end() test is reused as __copy's `last`.
+// NF85 (q11087): moved off the row-local CCharString / CPersistMap / CQuestManager / CWorld / CThingManager models onto the shared
+//   headers (overlay opt-ins FABLE_RETAIL_CQUESTMANAGER_CLEARQUESTPERSISTSCRIPT, FABLE_RETAIL_CVECTORMAP_ERASEFROMKEY,
+//   FABLE_RETAIL_CVECTORMAP_UPPERBOUND_COUNT_FIRST), so LowerBound binds the CPersistInfo spelling.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+#define FABLE_RETAIL_CBASICSTRING_LESS_BODY
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGMANAGER
+#define FABLE_RETAIL_CTHINGMANAGER_ACCESSORS
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CQUESTMANAGER
+#define FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE
+#define FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS
+#define FABLE_RETAIL_CQUESTMANAGER_CLEARQUESTPERSISTSCRIPT
+#define FABLE_RETAIL_CVECTORMAP_PODIUM_UPPERBOUND
+#define FABLE_RETAIL_CVECTORMAP_UPPERBOUND_COUNT_FIRST
+#define FABLE_RETAIL_CVECTORMAP_LOWERBOUND_COUNT_FIRST
+#define FABLE_RETAIL_CVECTORMAP_ERASEFROMKEY
+#define FABLE_RETAIL_STLP_COPY_NOINLINE
+#define FABLE_RETAIL_STLP_DESTROY_AUX_NOINLINE_FASTCALL
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingManager.h"
+#include "engine/CWorld.h"
+#include "engine/CScriptInfo.h"
+#include "engine/CScriptInfoManager.h"
+#include "engine/CQuestManager.h"
+#include "engine/CVectorMap.h"
 
-struct __false_type { __false_type() {} };
-struct random_access_iterator_tag { random_access_iterator_tag() {} };
-
-class CCharString { public: void* PStringData; };
-
-namespace NQuestManager {
-struct CPersistInfo { CCharString a; CCharString b; };
-}
-struct CPersistPair {                               // pair<CCharString, CPersistInfo>, 12 bytes
-    CCharString                 first;
-    NQuestManager::CPersistInfo second;
-};
-
-CPersistPair* __fastcall CopyPairs(CPersistPair* first, CPersistPair* last, CPersistPair* result,
-                                   const random_access_iterator_tag& tag, ptrdiff_t* distance);   // 0x004B84F0
-void __fastcall DestroyPairs(CPersistPair* first, CPersistPair* last, const __false_type& tag);    // 0x004B93E0
-
-struct CPersistMap {                                // CVectorMap<CCharString, CPersistInfo>
-    CPersistPair* _M_start;
-    CPersistPair* _M_finish;
-    CPersistPair* _M_end_of_storage;
-    CPersistPair* LowerBound(const CCharString& key);   // 0x004B9750
-    CPersistPair* UpperBound(const CCharString& key);   // 0x004B9850
-    CPersistPair* end() { return _M_finish; }
-};
-
-class CThingManager { public:
-    void ClearPersistenceDataForSection(const CCharString& section);   // 0x00520C70
-};
-
-class CWorld { public:
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual CThingManager& GetThingManager();       // slot 3 (+0xc)
-};
-
-class CQuestManager { public:
-    unsigned char _pad00[0xc];
-    CPersistMap   RuntimeQuestPersistence;          // +0x0c (its quest map)
-    unsigned char _pad18[0x64];
-    CWorld*       World;                            // +0x7c
-    void ClearQuestPersistScript(const CCharString& questName);
-};
-
-void CQuestManager::ClearQuestPersistScript(const CCharString& questName)
+void CQuestManager::ClearQuestPersistScript(const CCharString& quest_name)
 {
-    CPersistMap& map = RuntimeQuestPersistence;
-    CPersistPair* it = map.LowerBound(questName);
-    CPersistPair* end = map.end();
-    if (it != end) {
-        CPersistPair* last = map.UpperBound(questName);
-        CPersistPair* i = CopyPairs(last, end, it, random_access_iterator_tag(), (ptrdiff_t*)0);
-        DestroyPairs(i, map._M_finish, __false_type());
-        map._M_finish = i;
-    }
-    World->GetThingManager().ClearPersistenceDataForSection(questName);
+    RuntimeQuestPersistence.ClearPersistScript(quest_name);
+    World->GetThingManager().ClearPersistenceDataForSection(quest_name);
 }

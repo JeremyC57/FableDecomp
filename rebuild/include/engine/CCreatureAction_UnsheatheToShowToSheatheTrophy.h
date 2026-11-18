@@ -32,5 +32,5 @@ public:
     CCharString                 ShowAnimName;                                // +0xb8
     CIntelligentPointer<CThing> Trophy;                                      // +0xbc
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheToShowToSheatheTrophy) == 0xc4);
+FABLE_STATIC_ASSERT_AT(29, sizeof(CCreatureAction_UnsheatheToShowToSheatheTrophy) == 0xc4);
 #endif

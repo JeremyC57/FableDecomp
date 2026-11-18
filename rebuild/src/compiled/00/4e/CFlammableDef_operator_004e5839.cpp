@@ -15,18 +15,19 @@
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
-
-struct CContainmentMap {                // std::map<CDefString, long, CCompareDefString<long> > (retail STLport _Rb_tree, 12 bytes)
-    void* m_pHeader;
-    unsigned long m_nodeCount;
-    unsigned char m_keyCompare;
-    CContainmentMap& operator=(const CContainmentMap& other);   // 0x004E5878
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CContainmentMap are now the STLport std::map<CDefString, long, CCompareDefString<long> > from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
+class CDefString;
+template<class T> class CCompareDefString {   // Ego_r.pdb / FableWin.pdb ??R?$CCompareDefString@J@@QBE_NABVCDefString@@0@Z; no shared header (as the self row 0x004E5878)
+public:
+    bool operator()(const CDefString& a, const CDefString& b) const;
 };
+
 
 class CFireEffectCreationSet { public:         // PDB 0x18 bytes (retail 0x14): vptr, a base byte at +4, ContainmentMap +8
     virtual void v00();
     bool m_baseFlag;                    // +0x04 (unnamed base-class byte in the PDB)
-    CContainmentMap ContainmentMap;     // +0x08
+    std::map<CDefString, long, CCompareDefString<long> > ContainmentMap;     // +0x08
     FABLE_FORCEINLINE CFireEffectCreationSet& operator=(const CFireEffectCreationSet& other)
     {
         m_baseFlag = other.m_baseFlag;

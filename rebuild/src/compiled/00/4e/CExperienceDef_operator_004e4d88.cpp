@@ -14,29 +14,19 @@
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
-
-struct CLongFloatMap {                    // std::map<long, float> (retail STLport _Rb_tree, 12 bytes)
-    void* m_pHeader;
-    unsigned long m_nodeCount;
-    unsigned char m_keyCompare;
-    CLongFloatMap& operator=(const CLongFloatMap& other);   // 0x004E4EEC
-};
+// NF70 (round 7, land1117fu): the stand-in tree struct(s) CLongFloatMap, CLongLongMap are now the STLport std::map<long, float>, std::map<long, long> from stlport/fable_map.h; the implicit map/set operator= is inline and calls the instance's out-of-line _Rb_tree::operator=.
+#include "stlport/fable_map.h"
 
 
-struct CLongLongMap {                    // std::map<long, long> (retail STLport _Rb_tree, 12 bytes)
-    void* m_pHeader;
-    unsigned long m_nodeCount;
-    unsigned char m_keyCompare;
-    CLongLongMap& operator=(const CLongLongMap& other);   // 0x004E4DC7
-};
+
 
 
 // def vtable 0x01242104: slot 0 0x004E27C4 (implicit inline dtor); real overrides from the def vtable scan
 class CExperienceDef : public CDefClassBase { public:
     long OrbCombiningParticleEffect;    // +0x28
-    CLongFloatMap ParticleScalesPerExperiencePoints;// +0x2c
-    CLongLongMap PickupParticleEffectsPerExperiencePoints;// +0x38
-    CLongFloatMap LifeTimeForDistanceThresholds;// +0x44
+    std::map<long, float> ParticleScalesPerExperiencePoints;// +0x2c
+    std::map<long, long> PickupParticleEffectsPerExperiencePoints;// +0x38
+    std::map<long, float> LifeTimeForDistanceThresholds;// +0x44
     CExperienceDef& operator=(const CExperienceDef& other);
     virtual void Transfer(CPersistContext& context);         // slot 18 0x004E5011
     virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E4D83

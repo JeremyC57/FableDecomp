@@ -1,4 +1,7 @@
 // CThingDeadCreature::CThingDeadCreature() -- construct the physical thing as type 13, the game-object layer (its standing-on intelligent pointer) and the dead creature's own members (null animation filter, null killer, no body reorienter, decay not started)
+// NF83 (round 7, q11021 / q11022 binder): the local CBaseIntelligentPointer-derived vtable stand-in(s) replaced by the shared
+//   engine/CIntelligentPointer.h CIntelligentPointer<CThing> / <CThingCreatureBase> (vtables ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C,
+//   ??_7?$CIntelligentPointer@VCThingCreatureBase@@@@6B@ 0x0123E7D8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00835C20, length 94 bytes (+ int3 padding).
 // Callees: CThingPhysical::CThingPhysical(long type) @ 0x005296B0 (out of line, called with 13; manifest label
 // "CTCDPhysicalObstruction" is propagated), CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (twice).
@@ -17,11 +20,8 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
+class CThing;
 
-struct CThingPointer : CBaseIntelligentPointer {            // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CThingPointer() { }
-};
 
 struct CCreaturePointer : CBaseIntelligentPointer {         // CIntelligentPointer<const CThingCreatureBase>, vtable 0x0125AAEC
     virtual void v00();
@@ -49,7 +49,7 @@ class CThingPhysical { public:
 };
 
 class CThingGameObject : public CThingPhysical { public:      // vtable 0x01244F7C
-    CThingPointer PThingStandingOn;             // +0xc0
+    CIntelligentPointer<CThing> PThingStandingOn;             // +0xc0
     unsigned char m_gameObjectFlags;            // +0xc8 (bitfield group, not initialised here)
     unsigned char _padc9[7];                    // +0xc9 tail padding: the PDB size 0xe8 is the 0xe1 data rounded to 8
     virtual void v00();

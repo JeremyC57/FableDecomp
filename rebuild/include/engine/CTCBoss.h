@@ -23,6 +23,11 @@ public:
  // Opt-in (wf20, row 0x00972990): FableWin.pdb ?SetPhaseStartPos@CTCBoss@@QAEXABVC3DVector@@@Z, inline in retail (3-dword copy at +0x22).
  void SetPhaseStartPos(const C3DVector& pos){PhaseStartPos=pos;}
 #endif
+#ifdef FABLE_RETAIL_CTCBOSS_GETPHASESTARTPOS
+ // NF74 opt-in (the same-TU GetValidRushPosition 0x008C1600 in row 0x008C2550): FableWin.pdb ?GetPhaseStartPos@CTCBoss@@QBEABVC3DVector@@XZ,
+ // inline (no Ego_r / Fable.exe copy). No layout change.
+ const C3DVector& GetPhaseStartPos() const { return PhaseStartPos; }
+#endif
  bool HasBossDef()const{return !PBossDef.IsNull();}
 #ifdef FABLE_RETAIL_CTCBOSS_GENERICCOUNTER
  // Opt-in (chunk 2009, row 0x00952890 CAIStateGroup_JackDragon::UpdateGround): FableWin.pdb ?GetGenericCounter@CTCBoss@@QBEJXZ, inline in
@@ -82,5 +87,5 @@ private:
  std::vector<CIntelligentPointer<CThingAICreature> > HelperCreatures;
  std::vector<CIntelligentPointer<CThing> > Effects;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCBoss)==72);
+FABLE_STATIC_ASSERT_AT(85, sizeof(CTCBoss)==72);
 #endif

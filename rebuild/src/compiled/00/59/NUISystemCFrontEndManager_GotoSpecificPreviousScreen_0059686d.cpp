@@ -15,38 +15,18 @@
 // Shape: the unwind loop keeps the remaining count in a local re-read after each pop (`count = size()`), and `screen` is
 // copied to a local: that gives retail's duplicated size() call, `screen` held in ebx and `this` spilled to [ebp-4]
 // (a `while (size() > 0)` condition cross-jumps the two size() calls, 9 bytes shorter).
+// NF86 (round 7, q11112 / q11113): the local std::deque / stack (and map) models are replaced by stlport/fable_deque.h (NF79 / NF83 opt-ins
+//   STACK_TOP_POP + STACK_SIZE_PUSH + DEQUE_PUSH_BACK_OUTOFLINE, as NF83's 0x0059672A, and the NF86 overlay opt-in FABLE_RETAIL_STLP_STACK_EMPTY):
+//   size() now binds the STLport _M_subtract 0x0059A8F3 (was ??G?$_Deque_iterator@..), and back 0x0059B039 / pop_back 0x0059AEE5 /
+//   push_back 0x0059B61C bind the deque<NUISystem::CComponent*, allocator<..> > spellings their rows define (were the allocator-less forms).
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-namespace std {
-template <class T> struct _Deque_iterator {
-    T*  _M_cur;
-    T*  _M_first;
-    T*  _M_last;
-    T** _M_node;
-    int operator-(const _Deque_iterator& other) const;   // 0x0059A8F3 for CComponent*
-};
-template <class T> class deque {
-public:
-    _Deque_iterator<T> _M_start;                         // +0x00
-    _Deque_iterator<T> _M_finish;                        // +0x10
-    T**                _M_map;
-    unsigned int       _M_map_size;
-    unsigned int size() const { return _M_finish - _M_start; }
-    bool empty() const { return _M_finish._M_cur == _M_start._M_cur; }
-    T& back();                                           // 0x0059B039
-    void push_back(const T& x);                          // 0x0059B61C
-    void pop_back();                                     // 0x0059AEE5
-};
-template <class T, class C = deque<T> > class stack {
-public:
-    C c;
-    unsigned int size() const { return c.size(); }
-    bool empty() const { return c.empty(); }
-    T& top() { return c.back(); }
-    void push(const T& x) { c.push_back(x); }
-    void pop() { c.pop_back(); }
-};
-}
+#define FABLE_RETAIL_STLP_DEQUE_PUSH_BACK_OUTOFLINE
+#define FABLE_RETAIL_STLP_STACK_TOP_POP
+#define FABLE_RETAIL_STLP_STACK_SIZE_PUSH
+#define FABLE_RETAIL_STLP_STACK_EMPTY
+#include "stlport/fable_deque.h"
+namespace NUISystem { class CComponent; }
 class CUserProfileManager {
 public:
     void Load();                                         // 0x0040D350 (catalog name)

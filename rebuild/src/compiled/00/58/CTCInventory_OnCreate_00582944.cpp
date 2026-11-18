@@ -1,12 +1,13 @@
 // CTCInventory::OnCreate() -- registers the inventory screen with the GUI manager, resolves its inventory def from the thing's CInventory sub-def, runs the base OnCreate and leaves quick-access assignment off
-// Leaf: OnCreate
+// Leaf: ?OnCreate@CTCInventory@@QAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00582944, 137 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), no EH frame.
-// Callees: the player GUI global @ 0x013B8790's manager getter @ 0x00437CD0 (+0x32C) and its RegisterScreen
-//          @ 0x0066EB11 (argument = this as the screen base at +0x130, null-safe `neg ; sbb ; and`),
+// Callees: CPlayerGui::GetPHeroInfoScreensManager @ 0x00437CD0 (+0x32C) on the singleton @ 0x013B8790, and
+//          NHeroInformationScreens::CManager::RegisterScreen(const CBase*) @ 0x0066EB11 (argument = this as the
+//          NHeroInformationScreens::CBase base at +0x130, null-safe `neg ; sbb ; and`),
 //          CDefClassBase::GetSubDef<CInventorySubDef>(CDefPointer*) @ 0x00485815, NInventory::CTCInventoryBase::SetPDef
 //          (long) @ 0x005BDB4D, NInventory::CTCInventoryBase::OnCreate() @ 0x005C0121 (qualified base call),
 //          SetQuickAccessAssign(bool) @ 0x00581A14.
@@ -17,6 +18,10 @@
 // copy ctor and dtor only inline as `__forceinline`.
 // Layout: CTCInventory screen base subobject +0x130, quick-access-assign-pending flag +0x1CE; retail CThing def
 // pointer object +0x70; sub-def +0x78 the inventory def's global index.
+// NF79 (round 7, q10960): the screen manager is NHeroInformationScreens::CManager and the screen base NHeroInformationScreens::CBase
+//   (engine/NHeroInformationScreens_CManager.h REGISTER opt-in, NHeroInformationScreens_CBase.h; Ego_r.pdb / FableWin.pdb
+//   ?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ and ?RegisterScreen@CManager@NHeroInformationScreens@@QAEXPBVCBase@2@@Z);
+//   were the stand-ins CScreenManager / CScreenBase / CPlayerGui::GetScreenManager. The other local models are pre-existing.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -72,13 +77,9 @@ class CThing { public:
     FABLE_FORCEINLINE CDefPointer<CThingDef> GetDef() const { return PDef; }
 };
 
-struct CScreenBase {
-    virtual void v00();
-};
-
-struct CScreenManager {
-    void RegisterScreen(CScreenBase* screen);        // 0x0066EB11
-};
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER
+#include "engine/NHeroInformationScreens_CManager.h"
 
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -87,7 +88,7 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
 class CPlayerGui { public:
-    CScreenManager* GetScreenManager();              // 0x00437CD0 (+0x32C)
+    NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0 (+0x32C)
 };
 
 
@@ -99,7 +100,7 @@ struct CTCInventoryBase {
     void OnCreate();                                 // 0x005C0121
 };
 
-class CTCInventory : public CTCInventoryBase, public CScreenBase { public:    // CScreenBase at +0x130
+class CTCInventory : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:    // CBase at +0x130
     unsigned char _pad_0x134[0x9A];
     bool          QuickAccessAssignPending;          // +0x1CE
 
@@ -109,7 +110,7 @@ class CTCInventory : public CTCInventoryBase, public CScreenBase { public:    //
 
 void CTCInventory::OnCreate()
 {
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetScreenManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefPointer<const CCreatureDef> pdef;
     ParentThing->GetDef()->GetSubDef(&pdef);
     CCreatureDef* def = pdef.Object;

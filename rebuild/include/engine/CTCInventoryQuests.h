@@ -43,6 +43,11 @@ class CEnginePrimitivePrepareInfo;
 class CTCInventoryQuests : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_INVENTORY_QUESTS; }
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_GETSELECTEDCATEGORYASSOCIATION
+    // NF89 opt-in (q11165..q11167, row 0x0061A040): Ego_r.pdb + FableWin.pdb ?GetSelectedCategoryAssociation@CTCInventoryQuests@@QAEPAVCThing@@XZ
+    // (public, non-virtual; outside the MEMBERS block, no layout change), out of line at 0x0061A040 in the CTCInventoryQuests TU. Declaration only.
+    CThing* GetSelectedCategoryAssociation();                                                      // 0x0061A040
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_MEMBERS
     // Retail opt-in (chunk 1023, row 0x0061A6A0): the slot-4 override ?OnCreate@CTCInventoryQuests@@UAEXXZ (vtable 0x012585B4) and the
     // first members after the NHeroInformationScreens::CBase subobject (+0x130), Ego_r.pdb names and order at the retail offsets the
@@ -63,6 +68,11 @@ public:
     void InitialiseQuestCardList();                                                                // 0x00621A20
 #endif
     long QuestCardCount;                                                                           // +0x150
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_PROCESSQUESTACTIVATEACTION
+    // NF87 opt-in (row 0x006223C0): Ego_r.pdb + FableWin.pdb ?ProcessQuestActivateAction@CTCInventoryQuests@@UAE_NXZ, the override of
+    // NInventory::CTCInventoryBase slot 70 (vtable 0x012585B4 +0x118 = 0x006223C0). Needs FABLE_RETAIL_CTCINVENTORYBASE_VTABLE.
+    virtual bool ProcessQuestActivateAction();                                                     // 70 0x006223C0
+#endif
 #if defined(FABLE_RETAIL_CTCINVENTORYQUESTS_OPENINVENTORY) && !defined(FABLE_RETAIL_CTCINVENTORYQUESTS_QUESTLIST) && !defined(FABLE_RETAIL_CTCINVENTORYQUESTS_OPENPC)
     // (chunk Q24, row 0x00622A00) the members after QuestCardCount; the QUESTLIST and OPENPC blocks below declare the same list.
     bool Teleport;                                                                                 // +0x154

@@ -68,10 +68,10 @@ public:
     bool              Critical;                                          // +0x2d
 };
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_ApprenticeHero) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, NextFramePractice) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Interaction) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Critical) == 0x2d);
+FABLE_STATIC_ASSERT_AT(61, sizeof(CAIStateGroup_ApprenticeHero) == 0x30);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CAIStateGroup_ApprenticeHero, NextFramePractice) == 0x14);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CAIStateGroup_ApprenticeHero, Interaction) == 0x24);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CAIStateGroup_ApprenticeHero, Critical) == 0x2d);
 
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>

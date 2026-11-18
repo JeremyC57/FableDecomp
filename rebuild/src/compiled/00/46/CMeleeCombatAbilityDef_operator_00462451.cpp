@@ -10,6 +10,10 @@
 // members +0x40..+0x84 sit at retail +0x3c..+0x78 (retail base 0x39 bytes, containers 12 bytes).
 // Shape: memberwise assignment in declaration order; CDefString is a 4-byte handle copied as a dword,
 // bools as byte moves, containers through their out-of-line operator=.
+// NF70 (round 7, land1117fu q10774): the local CHeroAbilityStatPackage model is gone; it comes from its shared header (Ego_r.pdb: one member,
+//   StatThresholds map<EHeroTrainableStatType,long>). Its implicit assignment is inline and calls the instance's out-of-line STLport
+//   _Rb_tree::operator= 0x004621E9.
+#include "engine/CHeroAbilityStatPackage.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -29,12 +33,6 @@ struct CWeaponClassVector {             // retail std::vector<EWeaponClass> (12 
     CWeaponClassVector& operator=(const CWeaponClassVector& other);   // 0x004624C6
 };
 
-class CHeroAbilityStatPackage { public:        // retail 12 bytes (a map of stat requirements)
-    void*         m_allocator;
-    void*         m_head;
-    unsigned long m_size;
-    CHeroAbilityStatPackage& operator=(const CHeroAbilityStatPackage& other);   // 0x004621E9
-};
 
 class CMeleeCombatAbilityDef : public CParentDefClassBase { public:  // vtable 0x01234D5C
     CDefString FlourishAnimName;                // +0x3c

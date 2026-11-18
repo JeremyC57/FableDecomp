@@ -11,6 +11,13 @@
 // Opt: size TU (unaligned entry). Shape: manager and component locals bound after the GetInstance call keep screen+4 in a
 // register across AddObserver (retail esi reuse); the expression form recomputes it from the stack.
 #pragma optimize("s", on)
+// NF83 (round 7, q11026 binder): the local std::deque / std::stack models replaced by stlport/fable_deque.h (stack::push inline,
+//   deque::push_back out of line: FABLE_RETAIL_STLP_STACK_TOP_POP + _STACK_SIZE_PUSH + _DEQUE_PUSH_BACK_OUTOFLINE, the NF79 0x00596763 set);
+//   push_back now binds the allocator-form ?push_back@?$deque@PAVCComponent@NUISystem@@V?$allocator@...@@QAEXABQAV... (both PDBs).
+#define FABLE_RETAIL_STLP_DEQUE_PUSH_BACK_OUTOFLINE
+#define FABLE_RETAIL_STLP_STACK_TOP_POP
+#define FABLE_RETAIL_STLP_STACK_SIZE_PUSH
+#include "stlport/fable_deque.h"
 namespace NUISystem {
 class CUIInterface {
 public:
@@ -35,18 +42,6 @@ public:
 class CManager : public CObservable {
 public:
     static CManager* __fastcall GetInstance();           // 0x0041E5F2
-};
-}
-namespace std {
-template <class T> class deque {
-public:
-    unsigned char _body[0x28];
-    void push_back(const T& x);                          // 0x0059B61C for NUISystem::CComponent*
-};
-template <class T, class Seq = deque<T> > class stack {
-public:
-    Seq c;
-    void push(const T& x) { c.push_back(x); }
 };
 }
 namespace NUISystem {

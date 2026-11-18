@@ -107,6 +107,12 @@ public:
     // ??$Transfer@VCObjectAugmentationParticleSet@@@CPersistContext@@QAEXPBDAAV..@Z forms), so the landed row's descriptive spelling is kept.
     void TransferHelper(CObjectAugmentationParticleSet* value);         // 0x004E9550 (descriptive)
 #endif
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERHELPER_WEAPONTRAILGRAPHICSET
+    // NF70 opt-in (round 7, row 0x004E8FCD): the same one-argument transfer for CWeaponTrailGraphicSet (`ret 4`: CheckCRC(""), a
+    // CPersistTraits<CWeaponTrailGraphicSet> object, TransferBinaryIn 0x004E9021 for MODE_LOAD_BINARY, two WriteSLONG for MODE_SAVE_BINARY).
+    // No PDB names it; descriptive, spelled like the particle-set sibling above. Declaration only (elaborated class); no layout change.
+    void TransferHelper(class CWeaponTrailGraphicSet* value);           // 0x004E8FCD (descriptive)
+#endif
 #ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
     template<class T> void TransferSubComponent(T& value) { CheckCRC(""); value.Transfer(*this); }
 #endif

@@ -9,9 +9,12 @@
 // (slot 29, +0x74), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10
 // (CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8, CIntelligentPointer<CThing> vtable 0x01238C6C),
 // GetFirePointList(vector<CThing*>&) @ 0x0095D4C0 (same TU), std::sort over the points with a by-position comparator
-// @ 0x0095E010 (register-passed first/last; manifest "std_sort_Introsort"), CThing::GetPos @ 0x004C73D0, the fire
-// point's occupant setter @ 0x0087C390 (manifest "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated),
+// @ 0x0095E010 (register-passed first/last; manifest "std_sort_Introsort"), CThing::GetPos @ 0x004C73D0,
+// CTCSinglePersonOccupiable::SetOccupier(CThingCreatureBase*) @ 0x0087C390 (Ego_r.pdb / FableWin.pdb; engine/CTCSinglePersonOccupiable.h),
 // free @ 0x00BFEA14 (the vector's storage).
+// NF79 (round 7, q10956): the interface-172 fire point is CTCSinglePersonOccupiable (shared header; was the stand-in CTCFirePoint with
+// SetOccupant(CThing*), a name in neither PDB); the brain's creature is typed CThingCreatureBase (engine/CThingCreatureBase.h chain) so
+// it passes to SetOccupier as retail's CAIBrain::Creature does.
 // Layout: engine/CAIStateGroup_RangedCombatUsePreferredFirePoint.h (PEnemy +0x14, PFirePoint +0x1c, TimeOutCounter +0x24)
 // over the landed local CAIStateGroupBase model (the generated header flattens the vptr). Retail STLport vector = 12 bytes.
 // Shape: GetFirePointList gets a same-TU noinline stand-in whose body does not let the vector's address escape: VC then
@@ -21,13 +24,19 @@
 // built in its argument slot through C3DVector's memberwise copy ctor.
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #include "engine/C3DVector.h"
 
 class CBaseObject;
-#define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase> (vtable 0x0123E7D8)
     virtual void v00();
@@ -65,12 +74,10 @@ struct CTCEnemySource {                         // interface 8
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
     virtual CThing* GetEnemy() const;                 // slot 29 (+0x74)
 };
-struct CTCFirePoint {                           // interface 0xac
-    void SetOccupant(CThing* creature);         // 0x0087C390
-};
+#include "engine/CTCSinglePersonOccupiable.h"
 class CAIBrain { public:
     unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
+    CThingCreatureBase* PCreature;              // +0x18
 };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -122,9 +129,9 @@ bool CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable()
         SortFirePoints(points._M_start, points._M_finish, CCompareDistanceTo(PBrain->PCreature->GetPos()));
         if (points.size() > 0) {
             PFirePoint = CIntelligentPointerThing(*points._M_start);
-            CTCFirePoint* firePoint;
+            CTCSinglePersonOccupiable* firePoint;
             ((CThing*)PFirePoint.GetPItem())->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE, &firePoint);
-            firePoint->SetOccupant(PBrain->PCreature);
+            firePoint->SetOccupier(PBrain->PCreature);
             return true;
         }
     }

@@ -9,6 +9,14 @@ class CPackedUIntArray {
 public:
     unsigned long operator[](unsigned long index) const;            // 0x00A629F0
     unsigned long GetSize() const { return Size; }
+#ifdef FABLE_RETAIL_CPACKEDUINTARRAY_PACK
+    // NF72 opt-in (row 0x009CD740 CBankFile::PackRuntimeData): Ego_r.pdb / FableWin.pdb ?Initialise@CPackedUIntArray@@QAEXPBXKJK@Z
+    // (retail 0x00A62D80), ?Sizeof@CPackedUIntArray@@QBEKXZ (0x00A62A60, landed CPackedUIntArray::Sizeof) and ?Clear@CPackedUIntArray@@QAEXXZ
+    // (0x00A629D0), all out of line. Declarations only: no layout change.
+    void Initialise(const void* data, unsigned long bits, long stride, unsigned long count);   // 0x00A62D80
+    unsigned long Sizeof() const;                                   // 0x00A62A60
+    void Clear();                                                   // 0x00A629D0
+#endif
 private:
     unsigned long* PackedInts;                                      // +0x00
     unsigned long Size;                                             // +0x04

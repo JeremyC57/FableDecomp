@@ -72,6 +72,13 @@ public:
     public:
         CCharString QuestName;                               // +0x00 (pair +4; Ego_r.pdb)
         CCharString PersistScript;                           // +0x04 (pair +8; Ego_r.pdb)
+#ifdef FABLE_RETAIL_CQUESTMANAGER_PERSISTINFO_SETTERS
+        // NF82 opt-in (rows 0x004B4E30 / 0x004B4F30, the two persist-script setters): FableWin.pdb
+        // ??0CPersistInfo@CRuntimeQuestPersistence@NQuestManager@@QAE@ABVCCharString@@0@Z and ??0CPersistInfo@..@@QAE@XZ; inline in retail
+        // (each setter copy-constructs the two strings into a local, 0x004B4E7E / 0x004B4F7E, after the inline Find).
+        CPersistInfo() { }
+        CPersistInfo(const CCharString& quest_name, const CCharString& persist_script) : QuestName(quest_name), PersistScript(persist_script) { }
+#endif
     };
     const CCharString* GetQuestScriptPersistScript(const CCharString& quest_name) const
     {
@@ -81,6 +88,26 @@ public:
         return 0;
     }
     const CCharString* GetQuestMasterDataPersistScript(const CCharString& quest_name) const;   // 0x004B27F0
+#ifdef FABLE_RETAIL_CQUESTMANAGER_CLEARQUESTPERSISTSCRIPT
+    // NF85 opt-in (row 0x004B39B0 CQuestManager::ClearQuestPersistScript): Ego_r.pdb / FableWin.pdb
+    // ?ClearPersistScript@CRuntimeQuestPersistence@NQuestManager@@QAEXABVCCharString@@@Z (Ego_d.pdb: this, quest_name; one call), inline
+    // in retail: PersistScripts' EraseFromKey. Needs FABLE_RETAIL_CVECTORMAP_ERASEFROMKEY.
+    void ClearPersistScript(const CCharString& quest_name) { PersistScripts.EraseFromKey(quest_name); }
+#endif
+#ifdef FABLE_RETAIL_NQUESTMANAGER_CRUNTIMEQUESTPERSISTENCE_CLEAR
+    // NF87 opt-in (row 0x004B41F0): Ego_r.pdb / FableWin.pdb ?Clear@CRuntimeQuestPersistence@NQuestManager@@QAEXXZ (Ego_d.pdb: this only,
+    // four calls in its 49-byte /Od body), out of line in retail; its one caller is LoadFromGameStateScript 0x004B5080. Declaration only.
+    void Clear();
+#endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_PERSISTINFO_SETTERS
+    // NF82 opt-in: Ego_r.pdb 0x004BA540 / 0x004BA660 and FableWin.pdb ?SetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@
+    // QAEXABVCCharString@@0@Z (retail 0x004B4E30, map at +0) and ?SetQuestMasterDataPersistScript@..@@QAEXABVCCharString@@0@Z (retail
+    // 0x004B4F30, map at +0x10). SetQuestScriptPersistScript is also declared by the SAVEGAMESTATE block above.
+#ifndef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+    void SetQuestScriptPersistScript(const CCharString& quest_name, const CCharString& persist_script);   // 0x004B4E30
+#endif
+    void SetQuestMasterDataPersistScript(const CCharString& quest_name, const CCharString& persist_script);   // 0x004B4F30
+#endif
 private:
     CVectorMap<CCharString, CPersistInfo> PersistScripts;       // +0x00 (Ego_r.pdb)
     CVectorMap<CCharString, CPersistInfo> MasterDataPersistScripts;   // +0x10 (Ego_r.pdb)
@@ -101,6 +128,14 @@ public:
     // Opt-in (chunk 2052, row 0x0049F4C0 CWorld::SaveGameStateInternal): Ego_r.pdb ?SaveGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z,
     // out of line at 0x004B64E0 (called on [0x013B89FC], the singleton). Declaration only.
     void SaveGameState(CPersistContext& context);                       // 0x004B64E0
+#endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEQUESTCARDS
+    // NF87 opt-in (row 0x006223C0 CTCInventoryQuests::ProcessQuestActivateAction): Ego_r.pdb + FableWin.pdb
+    // ?ActivateFeatCard@CQuestManager@@QAE_NPAVCThing@@@Z (0x004B1590) and ?ActivateQuestCard@CQuestManager@@QAE_NPAVCThing@@_N@Z (0x004B4AA0),
+    // out of line in retail; parameter names from Ego_d.pdb (pquest_card, load_res). Declarations only.
+public:
+    bool ActivateFeatCard(CThing* pquest_card);                         // 0x004B1590
+    bool ActivateQuestCard(CThing* pquest_card, bool load_res);         // 0x004B4AA0
 #endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE_CONTEXT
     // Opt-in (chunk 2052, row 0x004A21F0): Ego_r.pdb ?LoadGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z (0x004B6380) and
@@ -146,6 +181,13 @@ public:
             : ID(id), PScriptInfo(0), Persistent(true), LoadedResources(loaded_resources), QuestName(quest_name) { }
         ~CActiveQuest();                                     // 0x004B9B90
         void LoadFromGameState(const CCharString& script) { if (PScript.Data) PScript->LoadGameState(script); }
+#endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_SCRIPT
+        // NF67 opt-in (round 7, row 0x008D3DD0 CGameScriptThing::MsgGetThingsKilled): FableWin.pdb ?HasScript@CActiveQuest@CQuestManager@@QBE_NXZ
+        // and ?GetScript@CActiveQuest@CQuestManager@@QBEAAVCScriptBase@@XZ, inline in retail (0x008D3E10 `mov ecx,[eax+8] ; test ecx,ecx`, then the
+        // script's +0x2C read in place). Bodies only; no layout change. Needs CScriptBase complete for GetScript's callers only.
+        bool HasScript() const { return PScript.Data != 0; }
+        CScriptBase& GetScript() const { return *PScript; }
 #endif
     private:
         long ID;
@@ -414,6 +456,11 @@ public:
 #endif
     // Ego_r.pdb / FableWin.pdb ?LoadGameState@CQuestManager@@QAEXAAVCStringParser@@@Z (retail 0x004B5500).
     void LoadGameState(CStringParser& parser);
+#ifdef FABLE_RETAIL_CQUESTMANAGER_CLEARQUESTPERSISTSCRIPT
+    // (NF85, row 0x004B39B0) Ego_r.pdb / FableWin.pdb ?ClearQuestPersistScript@CQuestManager@@QAEXABVCCharString@@@Z (Ego_d.pdb: this,
+    // quest_name): the runtime persistence entry dropped, then the thing manager's persistence data for that section.
+    void ClearQuestPersistScript(const CCharString& quest_name);
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
     // (chunk Q25) Ego_r.pdb / FableWin.pdb ?SaveGameState@CQuestManager@@QAEXAAVCCharString@@@Z (retail 0x004B5EE0) and the private
     // ?SaveMasterScriptDataToGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z (retail 0x004B5030).

@@ -1,12 +1,12 @@
 // CAIStateGroup_SleepOnFloor::OnReplace() -- release the sleep point (clear its occupant when it is this creature, drop the pointer); when asleep, play ST_SLEEP_ON_FLOOR_OUTOF if the creature is free to act and remove creature mode 0xD
-// Leaf: OnReplace
+// Leaf: ?OnReplace@CAIStateGroup_SleepOnFloor@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00969AE0, length 460 bytes (plain `ret`, virtual slot 10).
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10 (temporary
 //          vtable 0x01238C6C), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface ternary form: 0xAC the occupiable
 //          sleep point = bit 12 of +0x34, 0x31 CTCCreatureModeManager = bit 17 of +0x24; misses read the never-written
-//          key slot), the point's GetOccupant @ 0x0087C3E0 / SetOccupant @ 0x0087C390 (manifest "CVillageTaskCarryCrate::
-//          AssignCreatureToTask" is propagated), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
+//          key slot), CTCSinglePersonOccupiable::GetOccupier @ 0x0087C3E0 / SetOccupier @ 0x0087C390 (Ego_r.pdb / FableWin.pdb;
+//          engine/CTCSinglePersonOccupiable.h), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
 //          CCreatureAction_PlayAnimation ctor @ 0x008424F0 / ~CCreatureActionBase @ 0x00693EF0, CBrainOutput ctor
 //          @ 0x00835620 (implicit dtor inlined: IP +0x40, then the counted pointer +0x20), CThingCreatureBase::
 //          IsFreeToPerformAction @ 0x00662210, the action's virtual slot 11 (+0x2C, Clone), CCountedPointer::Reset
@@ -18,6 +18,8 @@
 //          animation name is the IMPLICIT const char* -> CCharString conversion (built before the other arguments, like
 //          the landed 0x008424F0 callers); the action is used through a CCreatureActionBase* (a direct `action.Clone()`
 //          is devirtualised); the brain-output test goes through an inline creature getter (register rotation).
+// NF79 (round 7, q10956): the interface-172 sleep point is CTCSinglePersonOccupiable (shared header; was the stand-in CTCOccupiable
+//          with GetOccupant / SetOccupant(CThing*)); the creature local is read through the row's GetCreature() as the occupier's type.
 class CTCBase;
 class CThingCreatureBase;
 #define FABLE_RETAIL_CCHARSTRING
@@ -31,11 +33,9 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
 #include "engine/CIntelligentPointer.h"
-
-struct CTCOccupiable {                          // interface 0xac
-    CThing* GetOccupant();                      // 0x0087C3E0
-    void SetOccupant(CThing* occupant);         // 0x0087C390
-};
+#include "engine/CTCSinglePersonOccupiable.h"
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ISFREETOPERFORMACTION   // NF83: IsFreeToPerformAction QBE_NABV (both PDBs)
+#include "engine/CThingCreatureBase.h"
 class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
@@ -49,7 +49,7 @@ class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
-    virtual void* Clone() const;                    // slot 11 (+0x2c)
+    virtual CCreatureActionBase* Clone() const;     // slot 11 (+0x2c)
     unsigned char _body[0xa4];
     virtual ~CCreatureActionBase();                         // 0x00693EF0
 };
@@ -58,34 +58,16 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
-struct CCountBlock { long Count; void (__fastcall* Destroy)(void* object); void* Object; };
-struct CCountedPointer {
-    void* Object;
-    CCountBlock* Block;
-    void Reset(void* object);                       // 0x00668D90
-    ~CCountedPointer()
-    {
-        if (Block) {
-            --Block->Count;
-            if (Block->Count == 0) {
-                Block->Destroy(Block->Object);
-                delete Block;
-            }
-        }
-        Object = 0;
-        Block = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CBrainOutput { public:                               // 0x48 bytes
     unsigned long Flags;                            // +0x00 (8: perform action)
     unsigned char _pad04[0x20 - 0x04];
-    CCountedPointer PAction;                        // +0x20
+    CCountedPointer<CCreatureActionBase> PAction;   // +0x20 (Reset(T*) 0x00668D90 out of line)
     unsigned char _pad28[0x40 - 0x28];
     CBaseIntelligentPointer PTarget;                // +0x40
     CBrainOutput();                                 // 0x00835620
 };
 struct CThingCreature : CThing {
-    bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -112,17 +94,17 @@ struct CAIStateGroup_SleepOnFloor : CAIStateGroupBase {
 
 void CAIStateGroup_SleepOnFloor::OnReplace()
 {
-    CTCOccupiable* point;
+    CTCSinglePersonOccupiable* point;
     PSleepPoint.Get()->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE, &point);
-    CThing* creature = PBrain->PCreature;
-    if (point->GetOccupant() == creature)
-        point->SetOccupant(0);
+    CThingCreatureBase* creature = GetCreature();
+    if (point->GetOccupier() == creature)
+        point->SetOccupier(0);
     PSleepPoint = CIntelligentPointer<CThing>(0);
     if (Asleep) {
         CCreatureAction_PlayAnimation action(GetCreature(), "ST_SLEEP_ON_FLOOR_OUTOF", CSoundPair(), false, true, false, 0, 0);
         CCreatureActionBase* pAction = &action;
         CBrainOutput output;
-        if (GetCreatureThing()->IsFreeToPerformAction(pAction)) {
+        if (GetCreature()->IsFreeToPerformAction(*pAction)) {
             output.Flags |= 8;
             output.PAction.Reset(pAction->Clone());
             PBrain->SetOutput(output);

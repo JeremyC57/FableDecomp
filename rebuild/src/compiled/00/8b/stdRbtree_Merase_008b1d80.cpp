@@ -1,0 +1,12 @@
+// _Rb_tree<ECombatSequenceOnStartModuleType, pair<ECombatSequenceOnStartModuleType const, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)>, _Select1st<pair<ECombatSequenceOnStartModuleType const, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)> >, less<ECombatSequenceOnStartModuleType>, allocator<pair<ECombatSequenceOnStartModuleType const, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)> > >::_M_erase(_Rb_tree_node<V>* x) -- STLport 4.6 _tree.c: erase the subtree without rebalancing (recursive on the right, iterative on the left)
+// Leaf: ?_M_erase@?$_Rb_tree@W4ECombatSequenceOnStartModuleType@@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@U?$less@W4ECombatSequenceOnStartModuleType@@@3@V?$allocator@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECombatSequenceOnStartModuleType@@P6IXAAVCThingCreatureBase@@0@Z@std@@@2@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008B1D80.
+// Identity: the tree of CCombatSequenceBase::OnStartModules (0x013BAFB4) (Ego_d's map type, EGOD_FINDINGS section 1); descriptive-by-library (STLport 4.6 spelling from stlport/fable_map.h;
+//   both PDBs are Dinkumware).
+// NF72 (round 7, q10891): was a generic stand-in tree (descriptive address-suffixed class); re-authored as the explicit instantiation of the out-of-line _Rb_tree member (fable_map.h),
+//   the form of NF69's landed tree rows of the same maps (0x00818000 / 0x008B2DD0); the callers NF69 ported bind this symbol.
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
+class CThingCreatureBase;
+enum ECombatSequenceOnStartModuleType;
+template void std::_Rb_tree<ECombatSequenceOnStartModuleType, std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)>, std::_Select1st<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)> >, std::less<ECombatSequenceOnStartModuleType>, std::allocator<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)> > >::_M_erase(std::_Rb_tree_node<std::pair<ECombatSequenceOnStartModuleType const, void (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)> >*);

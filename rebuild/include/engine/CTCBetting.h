@@ -34,7 +34,7 @@ public:
     virtual void FrameUpdate();           // slot 9, 0x007E4E30
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCBetting)==0x3c);
+FABLE_STATIC_ASSERT_AT(33, sizeof(CTCBetting)==0x3c);
 #else
 class CTCBetting;
 #endif

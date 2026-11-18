@@ -1,0 +1,293 @@
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_DESTRUCTOR
+#ifndef FABLE_ENGINE_CFRONTENDMANAGER_H
+#define FABLE_ENGINE_CFRONTENDMANAGER_H
+#include "engine/NUISystem_CComponent.h"
+#include "engine/FRONTEND_SCREEN.h"
+#include "engine/CDateAndTime.h"
+#include "stlport/fable_deque.h"
+class CNewFrontendGameComponent;class CVirtualKeyboard;
+namespace NUISystem {
+class CFrontEndManager:public CObserver {
+public:
+ CFrontEndManager();
+ virtual ~CFrontEndManager();
+ virtual void Action(CCountedPointer<CAction>&);
+ static CFrontEndManager* __fastcall GetInstance();
+ virtual void ProcessEvent(EEvent);
+ void CloseVirtualKeyboard(bool);
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_UPDATE
+ // NF76 (row 0x00599E3F): the existing UPDATE opt-in also declares Update in this full-layout branch (Ego_r.pdb
+ // ?Update@CFrontEndManager@NUISystem@@QAEXM@Z, public). Declaration only.
+ void Update(float);                                                                                     // 0x00599E3F
+#endif
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_VIRTUALKEYBOARD
+ // NF76 opt-in (row 0x00599E3F Update): Ego_r.pdb ?LaunchVirtualKeyboard@CFrontEndManager@NUISystem@@QAEXXZ (0x00596917),
+ // ?GotoNextScreen@CFrontEndManager@NUISystem@@QAEXPAVCComponent@2@_N@Z (0x00596763) and the protected
+ // ?CreateNewProfile@CFrontEndManager@NUISystem@@IAE_NAAVCWideString@@@Z (0x0059697A), all out of line. Declarations only.
+ void LaunchVirtualKeyboard();                                                                           // 0x00596917
+ void GotoNextScreen(CComponent*,bool);                                                                  // 0x00596763
+protected:
+ bool CreateNewProfile(CWideString&);                                                                    // 0x0059697A
+public:
+#endif
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_GOTOPREVIOUSSCREEN
+ // NF57 opt-in (q10440, row 0x00594FA9 CloseVirtualKeyboard): Ego_r.pdb 0x006043E7 / FableWin.pdb 0x02010F48
+ // ?GotoPreviousScreen@CFrontEndManager@NUISystem@@QAEX_N@Z, out of line at 0x00597BF2. Declaration only.
+ void GotoPreviousScreen(bool);                                                                         // 0x00597BF2
+#endif
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_SAVEDGAMES
+ // Opt-in (chunk 2003, row 0x00598463 RefreshAvailableSavedGamesForProfile): Ego_r.pdb / FableWin.pdb spellings of the members that
+ // row calls, all out of line in retail (reloc_bindings.tsv; the Ego_r donor order GetProfileNames, ConstructFileDescription, ...,
+ // GetSavedGameNames, RefreshAvailableSavedGamesForProfile matches retail's). Declarations only.
+ CComponent* CreateComponent(const CCharString&);                                                       // 0x00594F94
+ CComponent* CreateFrontEndButtonComponent(CWideString&,float,const CCharString&,const CCharString&,bool); // 0x00596A68
+ bool VerifySignatureCached(const CWideString&);                                                         // 0x005957D9
+protected:
+ void ConstructFileDescription(unsigned long,CComponent*,CComponent*,CWideString&);                      // 0x00595CC1
+ void GetSavedGameNames(std::vector<CWideString>&);                                                      // 0x00597DF7
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_ADDREGION
+ // Nested opt-in (chunk 2013, row 0x00597DF7): the protected AddRegionAndTimeInfo of the FABLE_RETAIL_CFRONTENDMANAGER branch,
+ // declared in the full-layout branch too (Ego_r / FableWin ?AddRegionAndTimeInfo@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z).
+ void AddRegionAndTimeInfo(const CWideString&);                                                          // 0x00597228
+#endif
+ long RefreshAvailableSavedGamesForProfile();                                                            // 0x00598463
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_REFRESHAVAILABLEPROFILES
+ // NF66 opt-in (rows 0x00596CCE / 0x00597006): Ego_r.pdb 0x00603398 / 0x00603706, FableWin.pdb 0x02018987 / 0x02019104
+ // ?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@IAEJXZ and ?RefreshAvailableProfilesForDelete@..@@IAEJXZ (protected).
+ // Declarations only.
+ long RefreshAvailableProfiles();                                                                        // 0x00596CCE
+ long RefreshAvailableProfilesForDelete();                                                               // 0x00597006
+#endif
+public:
+#endif
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_BUILDCOMPONENTS
+ // Opt-in (wfA5, row 0x00598A1C BuildComponents): FableWin.pdb spellings; declarations only (all out of line in retail).
+ void BuildComponents(bool);                                                                             // 0x00598A1C
+ void InitScreenStack(CComponent*);                                                                      // 0x0059672A
+protected:
+ void GetProfileNames(std::vector<CWideString>&);                                                        // 0x005955AB
+ CWideString GenerateAboutMessage() const;                                                               // 0x00594FDB
+ void LoadProfile(const CWideString&);                                                                   // 0x0059899A
+#endif
+protected:
+ CWideString MediaPlayerErrorString;
+ std::list<CActionParam*> UIActionParams;
+ CNewFrontendGameComponent* PGameComponent;
+ static CFrontEndManager* m_pInstance;
+ std::stack<CComponent*> m_stackScreens;
+ std::vector<CComponent*> m_vComponents;
+ std::map<FRONTEND_SCREEN,CComponent*> m_mapScreens;
+ CVirtualKeyboard* m_pVirtualKeyboard;
+ bool m_bStartNewGame;
+ std::vector<CDateAndTime> m_vFileTimes;
+ std::vector<CCharString> FileRegionNames,FileRegionMiniMapNames;
+ std::vector<long> FilePlayTimes;
+ CComponent* PScreenToDeactivate;CComponent* PScreenToActivate;
+ bool GoToKeyboard;
+ CComponent* PScreenToDeactivateForStartGame;CComponent* PScreenToDeactivateForLoadGame;
+ CWideString GameToLoad,ProfileToDelete;
+ unsigned long BlocksOnUNeeded,BlocksOnTNeeded,NumberSaveGames;
+ bool m_bQuitFromGame;
+ std::map<CWideString,bool> Signatures;
+ double InstallationPauseStartTime;
+ bool InstallationPaused,FinalInstallationNeverPause;
+};
+FABLE_STATIC_ASSERT_AT(59, sizeof(CFrontEndManager)==224);
+}
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_GETPROFILENAMES_BODY
+// NF73 opt-in (rows 0x00596CCE RefreshAvailableProfiles / 0x00597006 RefreshAvailableProfilesForDelete): the body of the landed
+// GetProfileNames 0x005955AB (rebuild/src/compiled/00/59/NUISystemCFrontEndManager_GetProfileNames_005955ab.cpp, the same text and
+// Ego_d.pdb local names), visible to the CFrontEndManager TU rows but kept out of line, as retail compiles it in that TU and calls it
+// (0x00596CEB / 0x00597023). VC7.1 then knows it writes only vProfileNames, and lays out the callers' loops and frames as retail
+// does. Needs FABLE_RETAIL_CFRONTENDMANAGER_BUILDCOMPONENTS (the protected declaration), FABLE_RETAIL_CCHARSTRING_ENDSWITH,
+// FABLE_RETAIL_CAFILE, FABLE_RETAIL_CAFILE_SCANNEXTFILE and FABLE_RETAIL_CAFILE_SPLITPATH_WIDE defined by the includer (before
+// fable_string.h). push_back 0x004128A0 and erase 0x00412450 are called out of line: the callers that need retail's escape knowledge
+// define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE + FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE + FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_NOINLINE
+// (visible, kept out of line; stlport/fable_containers.h included first).
+#include "engine/CAFile.h"
+#include "fable_resource_directories.h"
+namespace NUISystem {
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+inline void CFrontEndManager::GetProfileNames(std::vector<CWideString>& vProfileNames)
+{
+    vProfileNames.clear();
+    CWideString dir_search_path = NResourceDirectoryNames::GetSaveDir() + L"*";
+    CAFile::CFileScanInfo scan_info;
+    wchar_t pathname[262];
+    bool found_one = CAFile::StartFileScan(dir_search_path, scan_info, pathname);
+    while (found_one) {
+        CWideString search_path(pathname);
+        bool dots;
+        {
+            CCharString dot(".");
+            dots = search_path.ToCharString().EndsWith(dot);
+        }
+        if (!dots && !CAFile::IsPathFile(dir_search_path)) {
+            search_path += L"\\";
+            CWideString search_directory_name;
+            CAFile::SplitPath(search_path, 0, &search_directory_name, 0, 0);
+            CWideString profile_search_path = CWideString(search_path) + L"*.bin";
+            CAFile::CFileScanInfo profile_scan_info;
+            wchar_t profile_pathname[262];
+            bool found_one_profile = CAFile::StartFileScan(profile_search_path, profile_scan_info, profile_pathname);
+            while (found_one_profile) {
+                CWideString profileName;
+                {
+                    CWideString entry(pathname);
+                    CAFile::SplitPath(entry, 0, 0, &profileName, 0);
+                }
+                vProfileNames.push_back(profileName);
+                found_one_profile = CAFile::ScanNextFile(profile_search_path, profile_scan_info, profile_pathname);
+            }
+        }
+        found_one = CAFile::ScanNextFile(dir_search_path, scan_info, pathname);
+    }
+}
+}
+#endif
+#endif
+#else
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER
+#ifndef FABLE_ENGINE_CFRONTENDMANAGER_H
+#define FABLE_ENGINE_CFRONTENDMANAGER_H
+// Retail opt-in (chunk 735, row 0x00597228 AddRegionAndTimeInfo): the PDB class NUISystem::CFrontEndManager (class key V; RTTI
+// .?AVCFrontEndManager@NUISystem@@ with the single base NUISystem::CObserver at +0, rtti_bases.tsv; vtable 0x012521A8) at the
+// retail STLport offsets of the generated layout below: FileRegionNames +0x74, FileRegionMiniMapNames +0x80 (vector<CCharString>),
+// FilePlayTimes +0x8C (vector<long>), sizeof 0xE0. ?VerifySignatureCached@CFrontEndManager@NUISystem@@QAE_NABVCWideString@@@Z
+// (0x005957D9, landed) and the protected ?AddRegionAndTimeInfo@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z (Ego_r +
+// FableWin). Everything else stays opaque; the global `CFrontEndManager` layout of the default path is unchanged.
+#include "engine/NUISystem_CComponent.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+namespace NUISystem {
+class CFrontEndManager : public CObserver {
+public:
+    bool VerifySignatureCached(const CWideString&);                  // 0x005957D9
+    // Chunk 774 (bake 0x0042DF9E CNewFrontendGameComponent::Draw): Ego_r.pdb ?GetInstance@CFrontEndManager@NUISystem@@SIPAV12@XZ and
+    // ?Draw@CFrontEndManager@NUISystem@@QAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@@Z, both out of line. Declarations only.
+    static CFrontEndManager* __fastcall GetInstance();                 // 0x00595582
+    void Draw(CIEngine&, CEnginePrimitiveHandle*);                     // 0x00595222
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_UPDATE
+    // NF51 opt-in (2026-11-17, row 0x0042DC94 CNewFrontendGameComponent::Update): Ego_r.pdb ?Update@CFrontEndManager@NUISystem@@QAEXM@Z
+    // (public, out of line at 0x00599E3F). Declaration only: no layout change.
+    void Update(float dt);                                             // 0x00599E3F
+#endif
+protected:
+    void AddRegionAndTimeInfo(const CWideString&);                   // 0x00597228
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_RUN
+public:
+    // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?ChangeStateFirstTime@CFrontEndManager@NUISystem@@QAEXXZ (0x005952C3), ?CanStartAttractMode@..@@QAE_NXZ
+    // (0x00595A03, `xor al,al ; ret` on PC; called after the 120 s idle test) and the inline
+    // ?SetMediaPlayerErrorString@CFrontEndManager@NUISystem@@QAEXAAVCWideString@@@Z (Run 0x0042EDF4: CWideString::operator= on +0x14).
+    void ChangeStateFirstTime();                                       // 0x005952C3
+    bool CanStartAttractMode();                                        // 0x00595A03
+    void SetMediaPlayerErrorString(CWideString& error) { MediaPlayerErrorString = error; }
+protected:
+    CWideString MediaPlayerErrorString;                                // +0x14
+    unsigned char _pad_0x18[0x74 - 0x18];                            // +0x18 UIActionParams .. m_vFileTimes
+#else
+    unsigned char _pad_0x14[0x74 - 0x14];                            // +0x14 MediaPlayerErrorString .. m_vFileTimes (generated layout below)
+#endif
+    std::vector<CCharString> FileRegionNames;                        // +0x74
+    std::vector<CCharString> FileRegionMiniMapNames;                 // +0x80
+    std::vector<long>        FilePlayTimes;                          // +0x8c
+    unsigned char _pad_0x98[0xe0 - 0x98];                            // +0x98 PScreenToDeactivate .. FinalInstallationNeverPause
+};
+FABLE_STATIC_ASSERT_AT(104, sizeof(CFrontEndManager) == 0xe0);
+}
+#endif
+#else
+#ifndef FABLE_ENGINE_CFRONTENDMANAGER_H
+#define FABLE_ENGINE_CFRONTENDMANAGER_H
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CFrontEndManager = 0xf8.
+// Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CFrontEndManager = 0xe0.
+// Retail evidence: 0 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+struct CComponent;
+class CNewFrontendGameComponent;
+struct CVirtualKeyboard;
+class CWideStringData;
+
+#pragma pack(push, 1)
+struct CFrontEndManager {
+    void*                      __vftable;                    // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char              _pad_0x04[0xc];               // +0x04
+    unsigned char              _pad_0x10[0x1];               // +0x10
+    unsigned char              _pad_0x11[0x3];               // +0x11
+    CWideStringData*           MediaPlayerErrorString_PStringData; // +0x14 CWideString::PStringData
+    unsigned char              UIActionParams[0x4];          // +0x18 list<NUISystem::CActionParam_*,std::allocator<NUISystem::CActionParam_*>_>
+    CNewFrontendGameComponent* PGameComponent;               // +0x1c
+    unsigned char              m_stackScreens[0x28];         // +0x20 stack<NUISystem::CComponent_*,std::deque<NUISystem::CComponent_*,std::allocator<NUISystem::CComponent_*>_>_>
+    unsigned char              m_vComponents[0xc];           // +0x48 vector<NUISystem::CComponent_*,std::allocator<NUISystem::CComponent_*>_>
+    unsigned char              m_mapScreens[0xc];            // +0x54 map<FRONTEND_SCREEN,NUISystem::CComponent_*,std::less<FRONTEND_SCREEN>,std::allocator<std::pair<FRONTEND_SCREEN_const_,NUISystem::CComponent_*>_>_>
+    CVirtualKeyboard*          m_pVirtualKeyboard;           // +0x60
+    bool                       m_bStartNewGame;              // +0x64
+    unsigned char              _pad_0x65[0x1];               // +0x65
+    unsigned char              _pad_0x66[0x2];               // +0x66
+    unsigned char              m_vFileTimes[0xc];            // +0x68 vector<CDateAndTime,std::allocator<CDateAndTime>_>
+    unsigned char              FileRegionNames[0xc];         // +0x74 vector<CCharString,std::allocator<CCharString>_>
+    unsigned char              FileRegionMiniMapNames[0xc];  // +0x80 vector<CCharString,std::allocator<CCharString>_>
+    unsigned char              FilePlayTimes[0xc];           // +0x8c vector<long,std::allocator<long>_>
+    CComponent*                PScreenToDeactivate;          // +0x98
+    CComponent*                PScreenToActivate;            // +0x9c
+    bool                       GoToKeyboard;                 // +0xa0
+    unsigned char              _pad_0xa1[0x3];               // +0xa1
+    CComponent*                PScreenToDeactivateForStartGame; // +0xa4
+    CComponent*                PScreenToDeactivateForLoadGame; // +0xa8
+    CWideStringData*           GameToLoad_PStringData;       // +0xac CWideString::PStringData
+    CWideStringData*           ProfileToDelete_PStringData;  // +0xb0 CWideString::PStringData
+    unsigned long              BlocksOnUNeeded;              // +0xb4
+    unsigned long              BlocksOnTNeeded;              // +0xb8
+    unsigned long              NumberSaveGames;              // +0xbc
+    bool                       m_bQuitFromGame;              // +0xc0
+    unsigned char              _pad_0xc1[0x1];               // +0xc1
+    unsigned char              _pad_0xc2[0x2];               // +0xc2
+    unsigned char              Signatures[0xc];              // +0xc4 map<CWideString,bool,std::less<CWideString>,std::allocator<std::pair<CWideString_const_,bool>_>_>
+    double                     InstallationPauseStartTime;   // +0xd0
+    bool                       InstallationPaused;           // +0xd8
+    bool                       FinalInstallationNeverPause;  // +0xd9
+    unsigned char              _pad_0xda[0x6];               // +0xda
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT_AT(166, sizeof(CFrontEndManager) == 0xe0);
+FABLE_STATIC_ASSERT_AT(167, offsetof(CFrontEndManager, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(168, offsetof(CFrontEndManager, MediaPlayerErrorString_PStringData) == 0x14);
+FABLE_STATIC_ASSERT_AT(169, offsetof(CFrontEndManager, UIActionParams) == 0x18);
+FABLE_STATIC_ASSERT_AT(170, offsetof(CFrontEndManager, PGameComponent) == 0x1c);
+FABLE_STATIC_ASSERT_AT(171, offsetof(CFrontEndManager, m_stackScreens) == 0x20);
+FABLE_STATIC_ASSERT_AT(172, offsetof(CFrontEndManager, m_vComponents) == 0x48);
+FABLE_STATIC_ASSERT_AT(173, offsetof(CFrontEndManager, m_mapScreens) == 0x54);
+FABLE_STATIC_ASSERT_AT(174, offsetof(CFrontEndManager, m_pVirtualKeyboard) == 0x60);
+FABLE_STATIC_ASSERT_AT(175, offsetof(CFrontEndManager, m_bStartNewGame) == 0x64);
+FABLE_STATIC_ASSERT_AT(176, offsetof(CFrontEndManager, m_vFileTimes) == 0x68);
+FABLE_STATIC_ASSERT_AT(177, offsetof(CFrontEndManager, FileRegionNames) == 0x74);
+FABLE_STATIC_ASSERT_AT(178, offsetof(CFrontEndManager, FileRegionMiniMapNames) == 0x80);
+FABLE_STATIC_ASSERT_AT(179, offsetof(CFrontEndManager, FilePlayTimes) == 0x8c);
+FABLE_STATIC_ASSERT_AT(180, offsetof(CFrontEndManager, PScreenToDeactivate) == 0x98);
+FABLE_STATIC_ASSERT_AT(181, offsetof(CFrontEndManager, PScreenToActivate) == 0x9c);
+FABLE_STATIC_ASSERT_AT(182, offsetof(CFrontEndManager, GoToKeyboard) == 0xa0);
+FABLE_STATIC_ASSERT_AT(183, offsetof(CFrontEndManager, PScreenToDeactivateForStartGame) == 0xa4);
+FABLE_STATIC_ASSERT_AT(184, offsetof(CFrontEndManager, PScreenToDeactivateForLoadGame) == 0xa8);
+FABLE_STATIC_ASSERT_AT(185, offsetof(CFrontEndManager, GameToLoad_PStringData) == 0xac);
+FABLE_STATIC_ASSERT_AT(186, offsetof(CFrontEndManager, ProfileToDelete_PStringData) == 0xb0);
+FABLE_STATIC_ASSERT_AT(187, offsetof(CFrontEndManager, BlocksOnUNeeded) == 0xb4);
+FABLE_STATIC_ASSERT_AT(188, offsetof(CFrontEndManager, BlocksOnTNeeded) == 0xb8);
+FABLE_STATIC_ASSERT_AT(189, offsetof(CFrontEndManager, NumberSaveGames) == 0xbc);
+FABLE_STATIC_ASSERT_AT(190, offsetof(CFrontEndManager, m_bQuitFromGame) == 0xc0);
+FABLE_STATIC_ASSERT_AT(191, offsetof(CFrontEndManager, Signatures) == 0xc4);
+FABLE_STATIC_ASSERT_AT(192, offsetof(CFrontEndManager, InstallationPauseStartTime) == 0xd0);
+FABLE_STATIC_ASSERT_AT(193, offsetof(CFrontEndManager, InstallationPaused) == 0xd8);
+FABLE_STATIC_ASSERT_AT(194, offsetof(CFrontEndManager, FinalInstallationNeverPause) == 0xd9);
+
+#endif // FABLE_ENGINE_CFRONTENDMANAGER_H
+#endif
+
+#endif
