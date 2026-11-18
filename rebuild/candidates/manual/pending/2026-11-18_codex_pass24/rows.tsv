@@ -1,0 +1,100 @@
+00f3abf0	605	egod_parked	PARKED e04: DIFFER(605v605) one placement hunk at 0x00F3AC0C with an extra local; this in ebx v ebp in the Ego_d-pure port; try the real CalcBestCompressionForBlock body 0x00F3A890; draft ../2026-11-17_egod_open/e04/00f3abf0.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e04/00f3abf0.cpp
+00680050	439	egod_parked	PARKED e09: DIFFER(439v439) one load swap at 0x00680196 (pappearance_def reload v cleanup flag); draft ../2026-11-17_egod_open/e09/00680050.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e09/00680050.cpp
+00903f30	254	egod_parked	PARKED e01: DIFFER(254v254) register tie proute/ai_move_type; draft ../2026-11-17_egod_open/e01/00903f30.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e01/00903f30.cpp
+00919240	508	egod_parked	PARKED e03: DIFFER(508v508) entry scheduling 0x0091924A..0x0091925D; draft ../2026-11-17_egod_open/e03/00919240.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e03/00919240.cpp
+0066a9e0	626	egod_parked	PARKED e07: DIFFER(626v626) instruction-identical; call target 0x00415D70 (??BCDefString forwarder) v retail 0x00415DD0 GetString at 0x0066AC08 (inline decision inside the pre-compiled forwarder); draft ../2026-11-17_egod_open/e07/0066a9e0.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e07/0066a9e0.cpp
+00acd960	383	egod_parked	PARKED e02: DIFFER(383v383) esi/edi/ebp naming only (colouring order); draft ../2026-11-17_egod_open/e02/00acd960.cpp; label: row is Optimise, 0x00AC8360 is CVertexPairContraction::IsIllegal	rebuild/candidates/manual/pending/2026-11-17_egod_open/e02/00acd960.cpp
+00837220	716	egod_parked	PARKED e09: DIFFER(716v716) Normalise mov edx,17Ch order 0x008373EC + cross-product third component operand order 0x00837419; draft ../2026-11-17_egod_open/e09/00837220.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e09/00837220.cpp
+0070e2a0	618	egod_parked	PARKED e06: DIFFER(618v618) frame slots only (second blend-state temporary needs its own slot); new CTCSkeletalMorph.h in e06 overlay; draft ../2026-11-17_egod_open/e06/0070e2a0.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e06/0070e2a0.cpp
+0067e290	273	egod_parked	PARKED e04: DIFFER(273v273) register renames from the enum Transfer arm 0x0067E2EB; draft ../2026-11-17_egod_open/e04/0067e290.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e04/0067e290.cpp
+00a1ba10	642	egod_parked	PARKED e06: DIFFER(642v642) x87 operand order of ahead + ADDITIONAL_HEIGHT_TO_CHECK_Z_FROM; no Ego_d record for this overload; draft ../2026-11-17_egod_open/e06/00a1ba10.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e06/00a1ba10.cpp
+007c81f0	768	egod_parked	PARKED e11: DIFFER(768v768) frame layout only (STLport find iterator-tag byte [esp+27h] v 33h, hit_direction 28h v 24h); no test yet; new CTCHitOnCollision.h in e11 overlay; draft ../2026-11-17_egod_open/e11/007c81f0.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e11/007c81f0.cpp
+00698170	693	egod_parked	PARKED e08: DIFFER(693v693) one scheduling slot at 0x00698299 (mov esi,[origin] v fld/fmul); callees CCamera::GetFOV 0x00A0BEB0, C3DVector::AccurateNormalise; draft ../2026-11-17_egod_open/e08/00698170.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e08/00698170.cpp
+00a3c3b0	777	egod_parked	PARKED e13: DIFFER(777v777) 4 integer loads v fstp st(0) in the unrolled loop; ported to shared headers; draft ../2026-11-17_egod_open/e13/00a3c3b0.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e13/00a3c3b0.cpp
+00ab7b00	287	egod_parked	PARKED e01: DIFFER(287v287) x87 Offset/Advance order at 0x00AB7BB2; draft ../2026-11-17_egod_open/e01/00ab7b00.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e01/00ab7b00.cpp
+00b30610	710	egod_parked	PARKED e09: DIFFER(710v710) corner-sum association; shared-header ports 434 / 588 bytes (VC7.1 shares more corner sums); draft ../2026-11-17_egod_open/e09/00b30610.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e09/00b30610.cpp
+00b9d730	429	egod_parked	PARKED e03: DIFFER(429v429) radius*Scale operand order at 0x00B9D7A4; draft ../2026-11-17_egod_open/e03/00b9d730.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e03/00b9d730.cpp
+00837570	697	egod_parked	PARKED e09: DIFFER(697v697) flag-store schedule at entry + last-line temp slots (scheduling tie; twins show both orders); draft ../2026-11-17_egod_open/e09/00837570.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e09/00837570.cpp
+00b50370	406	egod_parked	PARKED e02: DIFFER(406v406) body constants 1.0 / 8.0 / 0.1 register split and store order (0x00B5045F..0x00B504B4); draft ../2026-11-17_egod_open/e02/00b50370.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e02/00b50370.cpp
+00803540	1108	egod_parked	PARKED e13: DIFFER(1108v1108) 2 scheduling sites 0x0080380E / 0x00803890; Ego_d debug body 786 v 278 instructions (a debug-only block decides the scheduling); draft ../2026-11-17_egod_open/e13/00803540.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e13/00803540.cpp
+00f3e120	1411	egod_parked	e17: DIFFER(1411v1411) reload pairs 0x00F3E291 / 0x00F3E3C5 swapped; draft ../2026-11-17_egod_open/e17/00f3e120.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e17/00f3e120.cpp
+00761280	733	egod_parked	PARKED e10: DIFFER(733v733) one home-slot store (max_index) at 0x00761374 v retail 0x0076138B; /Od 146 v FableWin 162 instructions (text incomplete); draft ../2026-11-17_egod_open/e10/00761280.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e10/00761280.cpp
+00657580	1057	egod_parked	PARKED e12: DIFFER(1057v1057) branch-1 Y sum operand order at 0x00657663 only; new NPlayerGui CDrawQuickAccessIcons(PC) headers in e12 overlay; draft ../2026-11-17_egod_open/e12/00657580.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e12/00657580.cpp
+008eec70	1129	egod_parked	PARKED e13: DIFFER(1129v1129) one-instruction mov eax,esp tie; auto_inline / Gr no longer needed; draft ../2026-11-17_egod_open/e13/008eec70.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e13/008eec70.cpp
+00875fb0	1315	egod_parked	e17: DIFFER(1315v1315) loop-init scheduled two FP stores later than retail 0x008760C0; draft ../2026-11-17_egod_open/e17/00875fb0.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e17/00875fb0.cpp
+00a55f90	259	egod_parked	PARKED e01: DIFFER(259v259) x87 order vxvy/vxvz loads; draft ../2026-11-17_egod_open/e01/00a55f90.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e01/00a55f90.cpp
+006e89b0	344	egod_parked	PARKED e02: DIFFER(344v344) one scheduling slot in the first path epilogue (0x006E8A79..7C); draft ../2026-11-17_egod_open/e02/006e89b0.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e02/006e89b0.cpp
+00c52c40	75	egod_parked	PARKED e04: DIFFER(75v75); not an Ego_d row: the catalog label is propagated, the function is libpk CCpuInfo::GetCyrixModelName (descriptive); ecx/eax tie like its twin 0x00C52BB0 (254 grades); recommend leave; draft ../2026-11-17_egod_open/e04/00c52c40.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e04/00c52c40.cpp
+00a90260	496	egod_parked	PARKED e03: DIFFER(498v496) Ego_d-faithful port, ebx/edi swapped from 0x00A90271; /Od text 786 v 869 (source incomplete); draft ../2026-11-17_egod_open/e03/00a90260.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e03/00a90260.cpp
+0089ce70	616	egod_parked	PARKED e05: DIFFER(614v616) pair job with 0x0089C910 (fcomp/fstp v fcompp at 0x0089D096); /d2inlS100 to replace; draft ../2026-11-17_egod_open/e05/0089ce70.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e05/0089ce70.cpp
+007e0f20	537	egod_parked	PARKED e03: DIFFER(531v537) presence-word load into ecx at 0x007E0F2A; one frame word shared with fx_index; draft ../2026-11-17_egod_open/e03/007e0f20.cpp	rebuild/candidates/manual/pending/2026-11-17_egod_open/e03/007e0f20.cpp
+005ac10e	3532	egod_open	acctC round six: round 6 final (2026-11-16): DIFFER(3532v3532); latest draft 005ac10e.cpp + NOTES.md in the folder (grep the ad	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE9/005ac10e.cpp
+00931390	3863	egod_open	acctC round six: round 6 final (2026-11-16): DIFFER(3863v3863); latest draft 00931390.cpp + NOTES.md in the folder (grep the ad	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE9/00931390.cpp
+00a86110	1967	egod_open	DIFFER(1967v1967)	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00a86110.cpp
+007f6200	1458	egod_open	DIFFER(1458v1458)	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/007f6200.cpp
+005253f0	2263	egod_open	DIFFER(2263v2263)	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/005253f0.cpp
+00ae3c30	2310	egod_open	acctC round six: round 6 final (2026-11-16): DIFFER(2310v2310); latest draft 00ae3c30.cpp + NOTES.md in the folder (grep the ad	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfA6/00ae3c30.cpp
+00ade080	2735	egod_open	acctC round six: round 6 final (2026-11-16): DIFFER(2735v2735); latest draft 00ade080.cpp + NOTES.md in the folder (grep the ad	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfA6/00ade080.cpp
+0058f016	1587	egod_open	DIFFER(1588v1587)	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/differ/0058f016.cpp
+00589402	1582	egod_open	DIFFER(1581v1582)	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/differ/00589402.cpp
+007bb1f0	960	egod_open	DIFFER(959v960)	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007bb1f0.cpp
+00b63800	1023	egod_open	DIFFER(1022v1023)	rebuild/candidates/manual/pending/2026-10-22_linux_hand286/differ/00b63800.cpp
+00830fe0	1504	egod_open	DIFFER(1505v1504)	rebuild/candidates/manual/pending/2026-10-24_linux_hand327/differ/00830fe0.cpp
+0059fc17	716	egod_open	DIFFER(715v716)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0059fc17.cpp
+00929020	507	egod_open	DIFFER(506v507)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00929020.cpp
+0099c1e0	609	egod_open	DIFFER(610v609)	rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/0099c1e0.cpp
+006ddd30	841	egod_open	DIFFER(842v841)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/006ddd30.cpp
+009552c0	861	egod_open	DIFFER(862v861)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/009552c0.cpp
+007f68b0	255	egod_open	DIFFER(256v255)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/007f68b0.cpp
+007f4990	449	egod_open	DIFFER(448v449)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/007f4990.cpp
+00940310	494	egod_open	DIFFER(493v494)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00940310.cpp
+009582d0	1098	egod_open	DIFFER(1097v1098)	rebuild/candidates/manual/pending/2026-10-23_linux_hand313/differ/009582d0.cpp
+00f38ff0	1842	egod_open	DIFFER(1841v1842)	rebuild/candidates/manual/pending/2026-10-27_linux_hand650/differ/00f38ff0.cpp
+00a571a0	654	egod_open	DIFFER(653v654)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00a571a0.cpp
+00926060	386	egod_open	DIFFER(387v386)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00926060.cpp
+0091b570	498	egod_open	DIFFER(499v498)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0091b570.cpp
+006d8980	183	egod_open	DIFFER(182v183)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/006d8980.cpp
+008e9b70	1705	egod_open	DIFFER(1706v1705)	rebuild/candidates/manual/pending/2026-11-06_linux_hand824/differ/008e9b70.cpp
+00afae50	2405	egod_open	DIFFER(2406v2405)	rebuild/candidates/manual/pending/2026-11-04_linux_hand738/differ/00afae50.cpp
+00677970	2272	egod_open	DIFFER(2273v2272)	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00677970.cpp
+004a1cb0	1330	egod_open	DIFFER(1331v1330)	rebuild/candidates/manual/pending/2026-11-03_linux_hand734/differ/004a1cb0.cpp
+0093fcd0	1053	egod_open	DIFFER(1052v1053)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/0093fcd0.cpp
+00671600	1450	egod_open	DIFFER(1449v1450)	rebuild/candidates/manual/pending/2026-11-04_linux_hand773/differ/00671600.cpp
+0094ab00	2067	egod_open	DIFFER(2068v2067)	rebuild/candidates/manual/pending/2026-11-07_linux_hand827/differ/0094ab00.cpp
+0074a4e0	234	egod_open	DIFFER(233v234)	rebuild/candidates/manual/pending/2026-11-10_linux_hand1016/differ/0074a4e0.cpp
+006bd900	169	egod_open	DIFFER(170v169)	rebuild/candidates/manual/pending/2026-10-27_linux_hand680/differ/006bd900.cpp
+00adefc0	471	egod_open	DIFFER(472v471)	rebuild/candidates/manual/pending/2026-10-27_linux_hand690/differ/00adefc0.cpp
+00877840	1023	egod_open	DIFFER(1021v1023)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00877840.cpp
+0068dd00	1471	egod_open	DIFFER(1469v1471)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/0068dd00.cpp
+00766dd0	1067	egod_open	DIFFER(1065v1067)	rebuild/candidates/manual/pending/2026-10-24_linux_hand326/differ/00766dd0.cpp
+0072fb70	1278	egod_open	DIFFER(1280v1278)	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/0072fb70.cpp
+00a36a80	747	egod_open	DIFFER(745v747)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00a36a80.cpp
+00ac7750	495	egod_open	DIFFER(497v495)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00ac7750.cpp
+007a76f0	1239	egod_open	DIFFER(1237v1239)	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/007a76f0.cpp
+006a64d0	865	egod_open	DIFFER(867v865)	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006a64d0.cpp
+009397e0	571	egod_open	DIFFER(569v571)	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/009397e0.cpp
+00699670	761	egod_open	DIFFER(759v761)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00699670.cpp
+00a18fc0	1125	egod_open	DIFFER(1123v1125)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00a18fc0.cpp
+00b45a40	683	egod_open	DIFFER(681v683)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00b45a40.cpp
+008f18c0	770	egod_open	DIFFER(772v770)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/008f18c0.cpp
+006c0970	419	egod_open	DIFFER(421v419)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/006c0970.cpp
+00697f80	490	egod_open	DIFFER(492v490)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00697f80.cpp
+006af7d0	612	egod_open	DIFFER(614v612)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/006af7d0.cpp
+00935580	617	egod_open	DIFFER(615v617)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00935580.cpp
+00b242d0	293	egod_open	DIFFER(295v293)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00b242d0.cpp
+006e3890	529	egod_open	DIFFER(531v529)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/006e3890.cpp
+008b6ad0	344	egod_open	DIFFER(342v344)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/008b6ad0.cpp
+00918a40	116	egod_open	DIFFER(114v116)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00918a40.cpp
+00b6dc40	771	egod_open	DIFFER(773v771)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00b6dc40.cpp
+00add690	648	egod_open	DIFFER(646v648)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00add690.cpp
+00879070	1251	egod_open	DIFFER(1249v1251)	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00879070.cpp
+00873e10	2386	egod_open	DIFFER(2384v2386)	rebuild/candidates/manual/pending/2026-11-07_linux_hand831/differ/00873e10.cpp
+00b0d360	2240	egod_open	DIFFER(2242v2240)	rebuild/candidates/manual/pending/2026-11-04_linux_hand739/differ/00b0d360.cpp
+007c0ad0	938	egod_open	DIFFER(936v938)	rebuild/candidates/manual/pending/2026-11-11_linux_hand1026/differ/007c0ad0.cpp
+007542b0	2266	egod_open	DIFFER(2268v2266)	rebuild/candidates/manual/pending/2026-11-07_linux_hand830/differ/007542b0.cpp
+00a3a410	920	egod_open	DIFFER(918v920)	rebuild/candidates/manual/pending/2026-10-27_linux_hand686/differ/00a3a410.cpp
+00d0ee70	1989	egod_open	DIFFER(1991v1989)	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d0ee70.cpp
+00ac9a60	745	egod_open	DIFFER(743v745)	rebuild/candidates/manual/pending/2026-10-27_linux_hand688/differ/00ac9a60.cpp
+006a03a0	825	egod_open	DIFFER(827v825)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/006a03a0.cpp
+00a229e0	689	egod_open	DIFFER(691v689)	rebuild/candidates/manual/pending/2026-11-10_linux_hand1020/differ/00a229e0.cpp
+00be2cd0	1088	egod_open	DIFFER(1091v1088)	rebuild/candidates/manual/pending/2026-10-23_linux_hand316/differ/00be2cd0.cpp
