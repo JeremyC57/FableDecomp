@@ -1,0 +1,14 @@
+addr       parity           behav  name
+008f3310   RELOCATION_MATCH PASS   PerformAction
+00985440   RELOCATION_MATCH PASS   HeroImitationPlayUpdate
+00b3fc40   RELOCATION_MATCH PASS   PeekInterpolatedMapNormal
+00949580   RELOCATION_MATCH PASS   WalktoSeatAndSit
+00497fd0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+00497fd0   RELOCATION_MATCH PASS   DisplayCenteredText
+
+WINS: 5
+  008f3310 RELOCATION_MATCH CCreatureAction_DragonFireBlastBase::PerformAction
+  00985440 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::HeroImitationPlayUpdate
+  00b3fc40 RELOCATION_MATCH CEngineMap::PeekInterpolatedMapNormal
+  00949580 RELOCATION_MATCH CAIStateGroup_GoToPub::WalktoSeatAndSit
+  00497fd0 RELOCATION_MATCH CProgressDisplay::DisplayCenteredText

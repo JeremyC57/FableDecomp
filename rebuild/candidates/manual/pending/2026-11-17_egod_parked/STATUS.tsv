@@ -23,7 +23,7 @@ address	kind	name	state	true_length	staged_folder	note
 00491ad2	named	CSubtitleRenderer::ProcessEmbeddedHighlightTags	OPEN			
 00493281	named	CSubtitleRenderer::ClickPast	OPEN			
 00497b60	named	CProgressDisplay::CalculateNextTextTag	OPEN			
-00497fd0	named	CProgressDisplay::DisplayCenteredText	IN_PROGRESS			batch e12
+00497fd0	named	CProgressDisplay::DisplayCenteredText	MATCHED_STAGED	1076	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
 00498410	identify	_global::GetCharWidthW	OPEN			
 0049ed80	identify	_global::ConsoleSetFreeCameraLookVector	OPEN			
 004a1c8e	named	CTCTrophy::OnShowTrophyInitialise	OPEN			
@@ -88,7 +88,7 @@ address	kind	name	state	true_length	staged_folder	note
 00642aa0	named	CMinimapData::PopulateMinimapThemeList	OPEN			
 0064fdb4	identify	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::vfunc_0	OPEN			
 00651273	identify	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_0	OPEN			
-00657580	named	NPlayerGui::CDrawQuickAccessIconsPC::Draw	IN_PROGRESS			batch e12
+00657580	named	NPlayerGui::CDrawQuickAccessIconsPC::Draw	PARKED			PARKED e12: DIFFER(1057v1057) branch-1 Y sum operand order at 0x00657663 only; new NPlayerGui CDrawQuickAccessIcons(PC) headers in e12 overlay; draft ../2026-11-17_egod_open/e12/00657580.cpp
 00659625	named	CTCVillage::UpdateTorchTasks	OPEN			
 0065ad37	named	CTCVillage::UpdateCurfew	OPEN			
 0065cb6b	named	CTCVillage::ReportCrime	MATCHED_STAGED	747	rebuild/candidates/manual/pending/2026-11-17_egod_e11	batch e11
@@ -378,7 +378,7 @@ address	kind	name	state	true_length	staged_folder	note
 008f12d0	named	CTCTavernGameCardBase::ProcessInput	OPEN			
 008f18c0	named	CTCTavernGameCardBase::UpdateHighlightedCard	OPEN			
 008f1e30	named	CTCTavernGameCardBase::EnterGame	OPEN			
-008f3310	named	CCreatureAction_DragonFireBlastBase::?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ	IN_PROGRESS			batch e12
+008f3310	named	CCreatureAction_DragonFireBlastBase::?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ	MATCHED_STAGED	796	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
 008f45f0	named	CCreatureAction_DragonSwoop::?FrameUpdate@CCreatureAction_DragonSwoop@@UAEXXZ	OPEN			
 008f61a0	named	CHeightMap::Resize	OPEN			
 008f92fd	identify	_gapscan::sub_008f92fd	OPEN			
@@ -444,7 +444,7 @@ address	kind	name	state	true_length	staged_folder	note
 009478a0	named	CAIStateGroup_StayNearFoodHall::?IsRunnable@CAIStateGroup_StayNearFoodHall@@UAE_NXZ	OPEN			
 00947eb0	named	CAIStateGroup_GoToPub::GetObjectWithScriptName	OPEN			
 00948880	named	CAIStateGroup_GoToPub::Drink	OPEN			
-00949580	named	CAIStateGroup_GoToPub::WalktoSeatAndSit	IN_PROGRESS			batch e12
+00949580	named	CAIStateGroup_GoToPub::WalktoSeatAndSit	MATCHED_STAGED	808	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
 0094ab00	named	CAIStateGroup_GoToPub::Update	OPEN			
 0094dd90	named	CAIStateGroup_RockTroll::CAIStateGroup_RockTroll::Update	OPEN			
 0094fc00	named	CAIStateGroup_JackDragon::CreateIBC	OPEN			
@@ -481,7 +481,7 @@ address	kind	name	state	true_length	staged_folder	note
 00980bd0	named	CAIStateGroupBase::AIAction_SpeakToTarget	OPEN			
 00981410	identify	_global::AIAction_InteractWith	OPEN			
 00984f60	named	CAIStateGroup_OpinionReactionRoot::FleeUpdate	OPEN			
-00985440	named	CAIStateGroup_OpinionReactionRoot::HeroImitationPlayUpdate	IN_PROGRESS			batch e12
+00985440	named	CAIStateGroup_OpinionReactionRoot::HeroImitationPlayUpdate	MATCHED_STAGED	625	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
 00986ed0	named	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby::CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	MATCHED_STAGED	353	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
 0098e7d0	identify	_global::CThreadedFileManager_ProcessPendingRequests	OPEN			
 009919c0	identify	_global::RegisterSoundBanks	OPEN			
@@ -666,7 +666,7 @@ address	kind	name	state	true_length	staged_folder	note
 00b31160	named	CEngineCamera::ProcessDebugScript	OPEN			
 00b33390	named	CEnginePrimitiveRenderer::ProcessPrimitiveStats	OPEN			
 00b3bc90	named	CEngineResourceManager::SetupEditorAnimation	OPEN			
-00b3fc40	named	CEngineMap::PeekInterpolatedMapNormal	IN_PROGRESS			batch e12
+00b3fc40	named	CEngineMap::PeekInterpolatedMapNormal	MATCHED_STAGED	528	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
 00b40260	named	CEngineMap::PeekHasWaterFast	OPEN			
 00b40670	named	CEngineMap::PeekWaterType	OPEN			
 00b412a0	named	CEngineMap::PeekHasWater	OPEN			

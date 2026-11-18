@@ -1,0 +1,35 @@
+--- a/rebuild/include/engine/CAIStateGroup_GoToPub.h
++++ b/rebuild/include/engine/CAIStateGroup_GoToPub.h
+@@ -29,6 +29,11 @@
+     bool GetSeat(CThing* table = 0, const CCharString* seat_name = 0);      // 0x009482A0
+     void FreeSeat();                                                        // 0x009486D0
+     bool GetBar();                                                          // 0x009490D0
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GOTOPUB_WALKTOSEATANDSIT
++    // Opt-in (egod e12, row 0x00949580): Ego_r.pdb / FableWin.pdb ?WalktoSeatAndSit@CAIStateGroup_GoToPub@@IAE_N_N@Z (protected;
++    // Ego_d parameter name). Declaration only.
++    bool WalktoSeatAndSit(bool during_pub_time);                            // 0x00949580
++#endif
+     CIntelligentPointer<CThingBuilding>   PPub;                             // +0x14
+     CIntelligentPointer<CThingObject>     PBar;                             // +0x1C
+     CIntelligentPointer<CThingObject>     PTable;                           // +0x24
+@@ -50,14 +55,14 @@
+     long            TimeBeforeAskingForBeer;                                // +0xA4
+ public:
+     static void CheckRetailLayout() {
+-        FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_GoToPub, PPub) == 0x14);
+-        FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_GoToPub, SeatIndex) == 0x3c);
+-        FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_GoToPub, ActionPointIndex) == 0x64);
+-        FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_GoToPub, NextFramePub) == 0x68);
+-        FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_GoToPub, UnderScriptControl) == 0xa1);
++        FABLE_STATIC_ASSERT_AT(53, offsetof(CAIStateGroup_GoToPub, PPub) == 0x14);
++        FABLE_STATIC_ASSERT_AT(54, offsetof(CAIStateGroup_GoToPub, SeatIndex) == 0x3c);
++        FABLE_STATIC_ASSERT_AT(55, offsetof(CAIStateGroup_GoToPub, ActionPointIndex) == 0x64);
++        FABLE_STATIC_ASSERT_AT(56, offsetof(CAIStateGroup_GoToPub, NextFramePub) == 0x68);
++        FABLE_STATIC_ASSERT_AT(57, offsetof(CAIStateGroup_GoToPub, UnderScriptControl) == 0xa1);
+     }
+ };
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_GoToPub) == 0xa8);
++FABLE_STATIC_ASSERT_AT(60, sizeof(CAIStateGroup_GoToPub) == 0xa8);
+ #endif // FABLE_RETAIL_CAISTATEGROUP_GOTOPUB
+ #if defined(FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC) && !defined(FABLE_RETAIL_CAISTATEGROUP_GOTOPUB)
+ // Without the retail model: the class's static registry entry points only (no layout).
