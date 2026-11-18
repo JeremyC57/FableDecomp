@@ -57,8 +57,10 @@ The owner asked the coordinator to decide, keeping three goals: match retail, be
 - **Owner, 2026-11-18:** "As long as it does not affect matching or portability, it should be fine." So this section is in force,
   and a row that uses it lands only when (1) it matches retail (RELOCATION_MATCH / MATCH, behaviour test PASS) and (2) its
   `FABLE_PORTABLE` twin is portable on its own: no reliance on frame layout or one ABI, the portable branches its callers need exist,
-  and the dual-path test passes on the portable build. Until both hold the row stays held (0x009D8650: its callers CreateMicroThread
-  0x009D8710 / SwitchToMicroThread 0x009D87F0 have no portable branches yet, and the POSIX twin copies a stack at a fixed address).
+  and the dual-path test passes on the portable build. Until both hold the row stays held. First case landed 2026-11-18:
+  0x009D8650 MicroThreadSleep, once engine/MicroThreadSleep.h gave every micro-thread its own context and stack in the portable
+  build (ucontext / fibres; no stack copying, no frame-layout reliance) and its callers CreateMicroThread 0x009D8710,
+  SwitchToMicroThread 0x009D87F0 and ~MicroThreadDetails 0x009D88D0 got FABLE_PORTABLE branches (their matching bytes unchanged).
 
 ## `volatile` (2026-11-05 audit, `rebuild/candidates/manual/naming/2026-11-05_volatile_audit/`)
 `volatile` is standard, portable C++, not asm. It may appear only where retail used it:

@@ -399374,6 +399374,13 @@ $catalog = @(
         TestSource = '00/74/stdvector_pushback_00749620_test.cpp'
         PassPattern = '00749620_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009d8650'
+        Module = 'MicroThread'
+        Source = '00/9d/MicroThread_MicroThreadSleep_009d8650.cpp'
+        TestSource = '00/9d/MicroThread_MicroThreadSleep_009d8650_test.cpp'
+        PassPattern = '009d8650_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

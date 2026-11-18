@@ -12,14 +12,14 @@ struct ByteVector {
 struct Info { bool Dead; ByteVector Stack; };
 static unsigned char g_stack[128];
 static Info* ActiveThread;
-static unsigned char* SavedStackPointer;
+static unsigned char* PGlobalStackPointer;
 static unsigned char* StackTop = g_stack + 128;
-static void RestoreStack(ByteVector& s) { SavedStackPointer = StackTop - s.size(); std::memmove(SavedStackPointer, s.begin(), s.size()); }
-static void PreserveStack(ByteVector& s) { unsigned int size = StackTop - SavedStackPointer; s.resize(size); std::memmove(s.begin(), SavedStackPointer, size); }
+static void RestoreStack(ByteVector& s) { PGlobalStackPointer = StackTop - s.size(); std::memmove(PGlobalStackPointer, s.begin(), s.size()); }
+static void PreserveStack(ByteVector& s) { unsigned int size = StackTop - PGlobalStackPointer; s.resize(size); std::memmove(s.begin(), PGlobalStackPointer, size); }
 static void MicroThreadSleep()
 {
     // the thread runs: it checks its image is in place, pushes 4 bytes, and may die
-    SavedStackPointer -= 4; SavedStackPointer[0] = 0xAA; SavedStackPointer[3] = 0xBB;
+    PGlobalStackPointer -= 4; PGlobalStackPointer[0] = 0xAA; PGlobalStackPointer[3] = 0xBB;
     if (ActiveThread->Stack.size() == 6) ActiveThread->Dead = true;
 }
 static bool SwitchToMicroThread(Info* info)

@@ -698,7 +698,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009cec60	CBankFile	Update	1856	parked	DIFFER(1840v1850)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand690/differ/009cec60.test.cpp	original
 009cfbc0	CBankFile	ReadEntryList	1984	parked	DIFFER(1973v1969)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009cfbc0.cpp	original
 009d0880	CBankFile	ReadFileInformation	1648	parked	DIFFER(1570v1635)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009d0880.cpp	original
-009d8650	_global	MicroThreadSleep	96	parked	RELOCATION_MATCH + PASS (egod, held: whole-function asm helper header; pending/2026-11-18_egod_asm_009d8650/README.md)	0	rebuild/candidates/manual/pending/2026-11-18_egod_asm_009d8650/src/009d8650.cpp	original
 009e3f60	CPixelFormat	ConvertRGBToPFDData	576	parked	DIFFER(179v189)	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/009e3f60.cpp	original
 009e55a0	CSymbolMap	ParseEnum	1328	parked	DIFFER(1332v1317)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/009e55a0.cpp	original
 009e84d0	CPersistTraits<C3DVector>	TransferIn	1856	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand469/differ/009e84d0.cpp	original

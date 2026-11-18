@@ -8,7 +8,15 @@
 #define __forceinline inline
 #endif
 #include "engine/CArray.h"
+#ifdef FABLE_PORTABLE
+#include "engine/MicroThreadSleep.h"
+#endif
 // Layout: no active micro-thread header; bool Dead+4 and saved-stack vector+8, confirmed by original stack-size method.
-namespace MicroThread {class MicroThreadInfo {public:virtual void MarkAsDead();virtual unsigned int MicroThreadStackSize()const;virtual FABLE_FORCEINLINE ~MicroThreadInfo(){}bool Dead;};class MicroThreadDetails:public MicroThreadInfo {public:std::vector<unsigned char> Stack;}; }
+namespace MicroThread {class MicroThreadInfo {public:virtual void MarkAsDead();virtual unsigned int MicroThreadStackSize()const;virtual FABLE_FORCEINLINE ~MicroThreadInfo(){}bool Dead;};class MicroThreadDetails:public MicroThreadInfo {public:
+#ifdef FABLE_PORTABLE
+// Portable build: release the thread's context (a Win32 fibre; nothing on POSIX) -- engine/MicroThreadSleep.h; the matching build is unchanged.
+~MicroThreadDetails(){if(!Stack.empty())fable_portable::MicroThreadRelease(&Stack[0]);}
+#endif
+std::vector<unsigned char> Stack;}; }
 
 void DestroyCandidate(MicroThread::MicroThreadDetails* p){p->MicroThreadDetails::~MicroThreadDetails();}

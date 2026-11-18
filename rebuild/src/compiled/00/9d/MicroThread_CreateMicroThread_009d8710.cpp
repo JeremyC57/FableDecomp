@@ -11,6 +11,9 @@
 // Shape: Dead is stored before the derived vtable (the base constructor's own vtable store is dead), the vector's
 // three zero pointers after it; the iterator-category tag temporary lives in the high byte of the frame word
 // below the 0x20-byte image (`lea eax,[esp+0Fh]`, pushed first); the image's zero words reuse the null-test zero.
+// Portable build (FABLE_PORTABLE, engine/MicroThreadSleep.h): the new thread's Stack holds its own context and stack instead of
+// retail's fabricated register frame; the matching build is unchanged.
+#include "engine/MicroThreadSleep.h"
 extern void* __cdecl operator new(unsigned int size);   // 0x00BFEA1A
 
 namespace std
@@ -91,6 +94,12 @@ namespace MicroThread
     MicroThreadInfo* __fastcall CreateMicroThread(void (*entry)(void*), void* argument)
     {
         MicroThreadDetails* details = new MicroThreadDetails;
+#ifdef FABLE_PORTABLE
+        details->Stack.insert(details->Stack.begin(), fable_portable::MicroThreadZeroImage(),
+                              fable_portable::MicroThreadZeroImage() + fable_portable::MicroThreadImageBytes());
+        fable_portable::MicroThreadInit(details->Stack.begin(), entry, argument, MicroThreadReturn);
+        return details;
+#else
         SInitialStackFrame frame;
         frame.ExceptionChain = &DummyExceptionBlock;
         frame.Edi = 0;
@@ -102,5 +111,6 @@ namespace MicroThread
         frame.Argument = argument;
         details->Stack.insert(details->Stack.begin(), (unsigned char*)&frame, (unsigned char*)(&frame + 1));
         return details;
+#endif
     }
 }

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009d8650   RELOCATION_MATCH PASS   MicroThreadSleep
+
+WINS: 1
+  009d8650 RELOCATION_MATCH MicroThread::MicroThreadSleep
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  MicroThread_MicroThreadSleep_009d8650

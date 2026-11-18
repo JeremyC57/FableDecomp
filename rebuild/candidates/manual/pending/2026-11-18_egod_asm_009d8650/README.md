@@ -1,5 +1,9 @@
 # egod lane: 0x009D8650 MicroThread::MicroThreadSleep under the asm rules (2026-11-18) -- HELD FOR OWNER DECISION
 
+**LANDED 2026-11-18** (landing microthread, `../../batches/2026-11-18_landing_microthread/`) after the portable twin was made portable on
+its own: the header and test landed are the reworked ones in rebuild/include/engine/MicroThreadSleep.h and
+rebuild/tests/portable/test_MicroThreadSleep.cpp, not `hdrdiff/` / `portable/` here.
+
 **Owner, 2026-11-18:** "As long as it does not affect matching or portability, it should be fine." The rule change (ASM_RULES "Whole-function
 asm helpers", crawl/purity.py) stands. This row still waits on portability: the FABLE_PORTABLE twin must work on its own (portable
 branches for CreateMicroThread 0x009D8710 / SwitchToMicroThread 0x009D87F0; no same-address stack copy that relies on frame layout).

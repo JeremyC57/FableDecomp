@@ -8,8 +8,11 @@
 // Classes (PDB): MicroThreadInfo = {vptr, bool Dead (+4)}; MicroThreadDetails : MicroThreadInfo adds the STLport
 //   vector<unsigned char> Stack at +8 (12 bytes in retail; the Ego_r layout is 16). Every thread is created as a
 //   MicroThreadDetails (CreateMicroThread 0x009D8710), so the info pointer is used as one.
-// Globals (MicroThread TU, descriptive names -- data symbols are not in the name sets): active thread 0x013CA894 (4 refs,
-//   all in this TU: GetActiveMicroThread reads it), saved stack pointer 0x013CA898, shared stack top 0x013CA8A0.
+// Globals (MicroThread TU): active thread 0x013CA894 (4 refs, all in this TU: GetActiveMicroThread reads it; descriptive name),
+//   the parked side's stack pointer 0x013CA898 = PGlobalStackPointer (Ego_d.pdb S_LDATA32 in lib_microthread.obj + the Anniversary
+//   PDB; declared by engine/MicroThreadSleep.h), shared stack top 0x013CA8A0 (descriptive name).
+// Portable build (FABLE_PORTABLE): each thread has its own context and stack (engine/MicroThreadSleep.h), so RestoreStack /
+//   PreserveStack move the resume token instead of copying a stack image; the matching build is unchanged.
 // Callees: MSVCR71 memmove (import thunk 0x00BFEAE6, twice), MicroThreadSleep() 0x009D8650 (the stack switch),
 //   STLport vector<unsigned char>::resize(size_type, const unsigned char&) 0x00486189 (out of line).
 // Shape: the active thread is a TU-STATIC global whose address is never taken: VC7.1 then knows its store cannot alias the
@@ -18,6 +21,7 @@
 //   ("sub edx,[esi]", store before the pushes) -- the old 124v124 residue. The saved-stack store does kill them (retail
 //   re-reads [esi] after it), so that global stays extern. resize(n) is STLport's one-argument overload forwarding
 //   unsigned char() (zero byte in the high byte of the "push ecx" slot); "return !info->IsDead()" gives "sete al".
+#include "engine/MicroThreadSleep.h"
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
 namespace std
@@ -63,23 +67,34 @@ namespace MicroThread
     };
 
     static MicroThreadInfo* ActiveThread;                 // 0x013CA894 (TU-static: only this TU touches it)
-    extern unsigned char*   SavedStackPointer;            // 0x013CA898
     extern unsigned char*   StackTop;                     // 0x013CA8A0
 
     void __fastcall MicroThreadSleep();                   // 0x009D8650
 
+#ifdef FABLE_PORTABLE
     static inline void RestoreStack(std::vector<unsigned char>& stack)
     {
-        SavedStackPointer = StackTop - stack.size();
-        memmove(SavedStackPointer, stack.begin(), stack.size());
+        PGlobalStackPointer = fable_portable::MicroThreadResumeToken(stack.begin());
     }
 
     static inline void PreserveStack(std::vector<unsigned char>& stack)
     {
-        unsigned int size = StackTop - SavedStackPointer;
-        stack.resize(size);
-        memmove(stack.begin(), SavedStackPointer, size);
+        fable_portable::MicroThreadParkToken(stack.begin(), PGlobalStackPointer);
     }
+#else
+    static inline void RestoreStack(std::vector<unsigned char>& stack)
+    {
+        PGlobalStackPointer = StackTop - stack.size();
+        memmove(PGlobalStackPointer, stack.begin(), stack.size());
+    }
+
+    static inline void PreserveStack(std::vector<unsigned char>& stack)
+    {
+        unsigned int size = StackTop - PGlobalStackPointer;
+        stack.resize(size);
+        memmove(stack.begin(), PGlobalStackPointer, size);
+    }
+#endif
 
     bool __fastcall SwitchToMicroThread(MicroThreadInfo* info)
     {

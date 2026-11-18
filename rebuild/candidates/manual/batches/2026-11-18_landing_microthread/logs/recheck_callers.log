@@ -1,0 +1,9 @@
+addr       parity           behav  name
+009d8710   RELOCATION_MATCH PASS   CreateMicroThread
+009d87f0   RELOCATION_MATCH PASS   SwitchToMicroThread
+009d88d0   RELOCATION_MATCH PASS   ~MicroThreadDetails
+
+WINS: 3
+  009d8710 RELOCATION_MATCH MicroThread::CreateMicroThread
+  009d87f0 RELOCATION_MATCH MicroThread::?SwitchToMicroThread@MicroThread@@YI_NPAVMicroThreadInfo@1@@Z
+  009d88d0 RELOCATION_MATCH MicroThread::MicroThreadDetails::??1MicroThreadDetails@MicroThread@@UAE@XZ
