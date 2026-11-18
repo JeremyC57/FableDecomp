@@ -346,6 +346,13 @@ protected:
     CWorldMap& GetWorldMap();                                          // 0x006AF620
     const CWorldMap& GetWorldMap() const;                              // 0x006AF630
 #endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_GROUNDHEIGHT
+    // Retail opt-in (egod2a, row 0x007243C0 CTCPhysicsStandard::UpdateVelocityForImpassability): ?GetGroundHeight@CTCPhysicsBase@@QAEMABVC3DVector@@@Z
+    // (reloc_bindings.tsv 0x00880200, bound by the landed 0x008E5480), out of line. Declaration only.
+public:
+    float GetGroundHeight(const C3DVector& pos);                       // 0x00880200
+protected:
+#endif
 #if defined(FABLE_RETAIL_CTCPHYSICSBASE_SETVELOCITY_OUTOFLINE) && !(defined(FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING) && defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION))
     // Retail opt-in (chunk Q20, rows 0x007BCF7F / 0x007BD845 InitMovement): Ego_r.pdb ?SetVelocity@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
     // called out of line there (0x007BD188 `call 0x0066F9B0`, the landed body: store Velocity, then SetAsMoving(true)). Declaration

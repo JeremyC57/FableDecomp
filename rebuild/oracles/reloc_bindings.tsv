@@ -40180,3 +40180,4 @@ __wcsicmp	00f3fb84	00599e3f
 ?PFont@CMovieSubtitles@@1V?$CCountedPointer@VCFontBank@@@@A	013ca7f8	009bcef0
 ?GetTreeMemSize@CEngineTreeFilerBase@@AAEJPAUCNodeHeader@1@@Z	00bf2980	00bf2980
 ?_M_insert_overflow@?$vector@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@@2@@std@@IAEXPAU?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@2@ABU32@ABU__false_type@2@I_N@Z	00749420	00749620
+?GetImpassabilityFactorAround@CWorldMap@@QBEXABVC3DVector@@AAV?$vector@MV?$allocator@M@std@@@std@@_N@Z	0063e3c0	007243c0

@@ -1,0 +1,51 @@
+#ifndef FABLE_ENGINE_C3DBOUNDINGSPHERE_H
+#define FABLE_ENGINE_C3DBOUNDINGSPHERE_H
+// C3DBoundingSphere (Ego_r TPI, struct_layouts_egor.tsv): public Center +0 (C3DVector), Radius +0x0C, size 0x10.
+// Default ctor FableWin ??0C3DBoundingSphere@@QAE@XZ (0x02D3EB90; inline in retail: 0x00AC2BE0 zero-fills the 16 bytes of each
+// new C3DMeshPartitionBuilderElement's sphere). AccurateBuildFromPoints(const vector<C3DVector>&, float): Ego_r 0x00BFAAE0,
+// out of line in retail. GetRadius: FableWin ?GetRadius@C3DBoundingSphere@@QBEMXZ (inline in retail).
+#include "engine/C3DVector.h"
+#include "stlport/fable_containers.h"
+class C3DBoundingSphere {
+public:
+    C3DBoundingSphere() : Center(0.0f,0.0f,0.0f), Radius(0.0f) { }
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_ADDTOBOUNDS
+    // Opt-in (wfD6, row 0x00B01900): Ego_r ?AddToBounds@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z, out of line at 0x00ADDD80 (reloc_bindings). Declaration only.
+    void AddToBounds(const C3DVector& point, float radius);
+#endif
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE
+    // Retail opt-in (chunk 734, row 0x004A1CB0): FableWin.pdb ??0C3DBoundingSphere@@QAE@ABVC3DVector@@M@Z, inline in retail
+    // (PreparePrimitivesForEngine builds the sphere in place from GetBoundingInfo's centre / radius, 0x004A20F6..0x004A2134).
+    C3DBoundingSphere(const C3DVector& center, float radius) : Center(center), Radius(radius) { }
+#endif
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_COPY
+    // Retail opt-in (wf15, row 0x00BDF100): FableWin.pdb ??0C3DBoundingSphere@@QAE@ABV0@@Z (memberwise; inline in retail,
+    // alternating copy registers at 0x00BDF241 / landed 0x00BDFE70).
+    C3DBoundingSphere(const C3DBoundingSphere& other) : Center(other.Center), Radius(other.Radius) { }
+#endif
+    void AccurateBuildFromPoints(const std::vector<C3DVector>&,float);
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_CENTER_VALUE
+    // Retail opt-in (Codex 2026-11-10): FableWin GetCenter at02ca7de0 returns
+    // a const C3DVector value. HasBoundingSphereIntersectedFromTo binds it by reference.
+    const C3DVector GetCenter() const { return Center; }
+#endif
+    float GetRadius() const { return Radius; }
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_SET
+    // Retail opt-in (egod2a, row 0x00A6C640): FableWin.pdb ?Set@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z (44b/18i at /Od), inline in
+    // retail (0x00A6C78B..0x00A6C818: centre copied, then the radius). Body only.
+    void Set(const C3DVector& center, float radius) { Center = center; Radius = radius; }
+#endif
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_FASTBUILD
+    // Retail opt-in (chunk Q8, row 0x00ADD690): Ego_r.pdb ?FastBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@J@Z, out of
+    // line in retail at 0x00ADD690 (the axis-aligned box centre, then the largest squared distance from it). Declaration only.
+    void FastBuildFromPoints(const C3DVector* points,long count);
+#endif
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_BUILDFROMSUBSPHERES
+    // Retail opt-in (wf4, row 0x00ADDBE0): Ego_r.pdb / FableWin.pdb ?BuildFromSubSpheres@C3DBoundingSphere@@QAEXPBV1@J@Z, out of
+    // line in retail at 0x00ADDBE0 (box around the sub-spheres, centre on it, radius grown to enclose each). Declaration only.
+    void BuildFromSubSpheres(const C3DBoundingSphere* spheres,long count);
+#endif
+    C3DVector Center;
+    float Radius;
+};
+#endif

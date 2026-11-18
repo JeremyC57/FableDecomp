@@ -25,8 +25,20 @@ namespace std { template<class T> struct less; template<class K,class C,class A>
 #ifdef FABLE_RETAIL_CWORLDMAP_ISTHEMEDESTROYABLE
 class CGameDefinitionManager;
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_IMPASSABILITYAROUND
+#include "engine/C2DCoordI.h"
+class C3DVector;
+// Retail opt-in (egod2a, row 0x007243C0): ?g_BlockNeighbourOffsets@@3QBVC2DCoordI@@B, the nine block neighbour offsets read by
+// CWorldMap::GetImpassabilityFactorAround (reloc_bindings.tsv 0x01385978, bound by 0x0063E3C0) and the row's loop (0x0072445E).
+extern const C2DCoordI g_BlockNeighbourOffsets[9];                    // 0x01385978
+#endif
 class CWorldMap : public CBaseClassNonCopyable, public CIDrawWorldMap {
 public:
+#ifdef FABLE_RETAIL_CWORLDMAP_IMPASSABILITYAROUND
+    // Ego_r.pdb ?GetImpassabilityFactorAround@CWorldMap@@QBEXABVC3DVector@@AAV?$vector@MV?$allocator@M@std@@@std@@_N@Z (out of line,
+    // retail 0x0063E3C0; called at 0x0072441E). Declaration only.
+    void GetImpassabilityFactorAround(const C3DVector& pos, std::vector<float>& factors, bool navigation) const;   // 0x0063E3C0
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_HEIGHT_BELOW
  class CThingFilterBase: public std::unary_function<CThing,bool> {public: virtual bool operator()(const CThing&)const{return true;}};
  float GetHeightZBelowAt(const C3DVector&,float,bool,const CThingFilterBase&)const;

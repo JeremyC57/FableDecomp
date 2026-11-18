@@ -1,0 +1,9 @@
+addr       parity           behav  name
+007243c0   WARN RELOC_NAME: ?GetGroundHeight@CTCPhysicsBase@@QAEMABVC3DVector@@@Z -> 00880200 labelled 'NUISystem::CSpellContainerList::AddChild'
+007243c0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+007243c0   RELOCATION_MATCH PASS   UpdateVelocityForImpassability
+00b40260   RELOCATION_MATCH PASS   PeekHasWaterFast
+
+WINS: 2
+  007243c0 RELOCATION_MATCH CTCPhysicsStandard::?UpdateVelocityForImpassability@CTCPhysicsStandard@@IAEXABVC3DVector@@AAV2@@Z
+  00b40260 RELOCATION_MATCH CEngineMap::?PeekHasWaterFast@CEngineMap@@QBE_NJJ@Z

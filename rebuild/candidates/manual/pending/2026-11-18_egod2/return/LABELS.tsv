@@ -1,0 +1,8 @@
+00a6c640	?CalculateBoundingInfo@CPhysicsMesh@@AAEXXZ	FableWin.pdb 0x030F8770 + Ego_d
+00a229e0	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	Ego_r 0x00B8B300 / FableWin 0x031E19F0
+00be2cd0	?BuildSharedIndexBufferGenerationTables@CEngineLandscapeMeshBuilder@@QAEXPAVC2DCoordI@@PAG1JJAAJ@Z	Ego_r (landed caller 0x00BE3110 comment) + Ego_d
+007243c0	?UpdateVelocityForImpassability@CTCPhysicsStandard@@IAEXABVC3DVector@@AAV2@@Z	Ego_r / FableWin (header IMPULSE opt-in) + Ego_d
+00880200	?GetGroundHeight@CTCPhysicsBase@@QAEMABVC3DVector@@@Z	reloc_bindings (landed 0x008E5480); manifest label NUISystem::CSpellContainerList::AddChild is wrong
+0063e3c0	?GetImpassabilityFactorAround@CWorldMap@@QBEXABVC3DVector@@AAV?$vector@MV?$allocator@M@std@@@std@@_N@Z	Ego_r.pdb name; called at 0x0072441E
+01385978	?g_BlockNeighbourOffsets@@3QBVC2DCoordI@@B	reloc_bindings (bound by 0x0063E3C0)
+00b40260	?PeekHasWaterFast@CEngineMap@@QBE_NJJ@Z	Ego_r/FableWin (header PEEKWATER opt-in) + Ego_d

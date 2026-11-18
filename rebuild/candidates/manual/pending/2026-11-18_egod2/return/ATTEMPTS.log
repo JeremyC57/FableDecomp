@@ -1,0 +1,106 @@
+00a229e0 grade DIFFER(691v689) a1_draft.cpp draft as-is baseline
+00a229e0 grade DIFFER(709v689) a1_v1.cpp Ego_d locals v1
+00a229e0 grade DIFFER(691v689) a1_v2.cpp interleaved column-major entries
+00a229e0 grade DIFFER(689v689) a1_v3.cpp vyvz before vy2
+00a229e0 grade DIFFER(689v689) a1_v4.cpp vyvz before E12
+00a229e0 grade DIFFER(689v689) a1_v5.cpp TransformVector(source,dest) temp
+00a229e0 grade DIFFER(689v689) a1_v6.cpp Up members then TransformVector(Up)
+00a229e0 grade DIFFER(689v689) a1_v7.cpp GFSin/GFCos helpers
+00a229e0 grade DIFFER(689v689) a1_v8.cpp v8
+00a229e0 grade DIFFER(689v689) a1_v9.cpp v9
+00a229e0 grade DIFFER(689v689) a1_v10.cpp v10
+00a229e0 grade DIFFER(689v689) a1_n.cpp normalise opt NONE
+00a229e0 grade DIFFER(689v689) a1_n.cpp normalise opt NORMALISE_PAREN_SQUARES_ZYX
+00a229e0 grade DIFFER(689v689) a1_n.cpp normalise opt NORMALISE_LOCALS
+00a229e0 grade DIFFER(689v689) a1_n.cpp normalise opt NORMALISE_NAMED_SQUARED
+00a229e0 grade DIFFER(689v689) a1_n.cpp normalise opt NORMALISE_UNPAREN
+00a229e0 grade DIFFER(689v689) a1_n.cpp normalise opt NORMALISE_LOCALS_XYZ
+00a229e0 grade DIFFER(689v689) a1_g_NEWTON_GROUPED.cpp GFFastOneOverSqrt NEWTON_GROUPED
+00a229e0 grade DIFFER(689v689) a1_g_NEWTON_SQUARE_PAREN.cpp GFFastOneOverSqrt NEWTON_SQUARE_PAREN
+00a229e0 grade DIFFER(689v689) a1_g_NEWTON_STEP_PAREN.cpp GFFastOneOverSqrt NEWTON_STEP_PAREN
+00a229e0 grade DIFFER(689v689) a1_g_NEWTON_PAREN.cpp GFFastOneOverSqrt NEWTON_PAREN
+00a229e0 grade DIFFER(689v689) a1_g_ORIGINAL_UNION.cpp GFFastOneOverSqrt ORIGINAL_UNION
+00a229e0 grade DIFFER(689v689) a1_par6.cpp diag par6
+00a229e0 grade DIFFER(689v689) a1_par1.cpp diag par1
+00a229e0 grade DIFFER(689v689) a1_v7.cpp v7 regrade for listing
+00a229e0 grade DIFFER(689v689) a1_dk.cpp probe paren ruler k=4
+00a229e0 grade DIFFER(689v689) a1_dk.cpp probe paren ruler k=12
+00a229e0 grade DIFFER(689v689) a1_dk.cpp probe paren ruler k=24
+00a229e0 grade DIFFER(689v689) a1_dk.cpp probe paren ruler k=40
+00a229e0 grade DIFFER(689v689) a1_dk.cpp probe paren ruler k=60
+00a229e0 grade DIFFER(689v689) a1_gs.cpp normalise gs
+00a229e0 grade DIFFER(689v689) a1_gs2.cpp normalise gs2
+00a229e0 grade DIFFER(689v689) a1_gs3.cpp normalise gs3
+00a229e0 grade DIFFER(689v689) a1_sq.cpp GFSqr named result (FableWin 22b/10i)
+00a229e0 probe GFSqr named result 19b/9i (FW 22b/10i) -> no change; overlay removed
+00be2cd0 grade DIFFER(1091v1088) b2_v1.cpp port: shared headers + Ego_d locals, i loop
+00be2cd0 grade DIFFER(1091v1088) b2_v2.cpp tri arms ==1 first; needs_order_flip strip flag
+00be2cd0 grade DIFFER(1093v1088) b2_A.cpp decl order A
+00be2cd0 grade DIFFER(1093v1088) b2_B.cpp decl order B
+00be2cd0 grade DIFFER(1091v1088) b2_C.cpp decl order C
+0059fee3 grade DIFFER(1552v1556) c3_draft.cpp draft as-is
+0059fee3 grade DIFFER(1552v1556) c3_v1.cpp Ego_d names + value_pair
+0059fee3 grade DIFFER(1552v1556) c3_A.cpp decl order A
+0059fee3 grade DIFFER(1552v1556) c3_B.cpp decl order B
+0059fee3 grade DIFFER(1552v1556) c3_C.cpp decl order C
+00a6c640 grade SRC_FAIL d8_v1.cpp shared headers + Ego_d + FableWin helper set
+00a6c640 grade SRC_FAIL sz.cpp probe sizeof CArray<C3DVector>
+00a6c640 grade OBJDUMP_ERR sz.cpp probe sizes
+00a6c640 grade SRC_FAIL sz.cpp probe CPhysicsMesh size BOUNDS
+00a6c640 grade SRC_FAIL sz.cpp probe CPhysicsMesh size CALCULATEBOUNDINGINFO
+00a6c640 grade SRC_FAIL sz.cpp probe CPhysicsMesh size NONE
+00a6c640 grade DIFFER(513v517) d8_v1.cpp DEF_CLASS_BASE + MAGNITUDE2D
+00a6c640 grade DIFFER(517v517) d8_A.cpp centre/diag from locals A
+00a6c640 grade DIFFER(517v517) d8_B.cpp centre/diag from locals B
+00a6c640 grade DIFFER(517v517) d8_C.cpp statement order C
+00a6c640 grade DIFFER(517v517) d8_D.cpp statement order D
+00a6c640 grade DIFFER(517v517) d8_E.cpp statement order E
+00a6c640 grade DIFFER(517v517) d8_F.cpp magnitude2D variant F
+00a6c640 grade DIFFER(517v517) d8_G.cpp magnitude2D variant G
+00a6c640 grade SRC_FAIL d8_H.cpp circle centre H
+00a6c640 grade DIFFER(517v517) d8_I.cpp circle centre I
+00a6c640 grade SRC_FAIL d8_H.cpp circle centre H regrade err
+00a6c640 grade DIFFER(517v517) d8_H.cpp C2DVector(centre) with C2DVECTOR
+00a6c640 grade DIFFER(514v517) d8_m_MAGNITUDE_SQUARED_LOCAL.cpp GetMagnitude MAGNITUDE_SQUARED_LOCAL
+00a6c640 grade DIFFER(515v517) d8_m_MAGNITUDE_XY_THEN_Z.cpp GetMagnitude MAGNITUDE_XY_THEN_Z
+00a6c640 grade DIFFER(517v517) d8_m_MAGNITUDE_NAMED_SQUARED.cpp GetMagnitude MAGNITUDE_NAMED_SQUARED
+00a6c640 grade DIFFER(517v517) d8_m_MAGNITUDE_X_THEN_YZ.cpp GetMagnitude MAGNITUDE_X_THEN_YZ
+00a6c640 grade DIFFER(517v517) d8_J.cpp divide by 2.0f
+007243c0 grade SRC_FAIL m13_v1.cpp full port onto shared headers + Ego_d
+007243c0 grade SRC_FAIL m13_v1.cpp fmod fix
+007243c0 grade SRC_FAIL m13_v1.cpp CWORLDMAP on
+007243c0 grade DIFFER(630v617) m13_v1.cpp retail class opt-ins
+007243c0 grade SRC_FAIL m13_v2.cpp row13 v2 Clear/Initialise
+007243c0 grade SRC_FAIL m13_v3.cpp row13 v3 Clear/Initialise
+007243c0 grade DIFFER(630v617) m13_v2.cpp row13 v2 Clear/Initialise
+007243c0 grade DIFFER(630v617) m13_v3.cpp row13 v3 Clear/Initialise
+007243c0 grade DIFFER(617v617) m13_v4.cpp to_impass = block offset vector + cell_offset (Z 0)
+007243c0 grade DIFFER(617v617) m13_d_DOT_XY_THEN_Z.cpp Dot DOT_XY_THEN_Z
+007243c0 grade DIFFER(617v617) m13_d_DOT_ORIGINAL_SCOPE_PASS23.cpp Dot DOT_ORIGINAL_SCOPE_PASS23
+007243c0 grade RELOCATION_MATCH m13_d_DOT_ORDERED_XYZ.cpp Dot DOT_ORDERED_XYZ
+007243c0 grade DIFFER(617v617) m13_d_DOT_GROUPED.cpp Dot DOT_GROUPED
+00b40260 grade SRC_FAIL k11_v1.cpp twin PeekWaterDepth text + Ego_d t0/t1/t2 nesting
+00b40260 grade DIFFER(181v1037) k11_v1.cpp twin text + EWaterType enum
+00b40260 grade DIFFER(753v1037) k11_v1.cpp twin flag /d2inlT576
+00b40260 grade DIFFER(753v1037) k11_v1.cpp probe /d2inlT800
+00b40260 grade RELOCATION_MATCH k11_v1.cpp probe /d2inlT2000
+00b40260 grade RELOCATION_MATCH k11_v1.cpp bisect /d2inlT1400
+00b40260 grade DIFFER(753v1037) k11_v1.cpp bisect /d2inlT1100
+00b40260 grade DIFFER(753v1037) k11_v1.cpp bisect /d2inlT1250
+00b40260 grade RELOCATION_MATCH k11_v1.cpp bisect /d2inlT1325
+00b40260 grade RELOCATION_MATCH k11_v1.cpp bisect /d2inlT1287
+00b40260 grade RELOCATION_MATCH k11_v1.cpp bisect /d2inlT1268
+00b40260 grade DIFFER(753v1037) k11_v1.cpp bisect /d2inlT1259
+00b40260 grade DIFFER(753v1037) k11_v1.cpp bisect /d2inlT1263
+00b40260 grade DIFFER(753v1037) k11_v1.cpp bisect /d2inlT1265
+00b40260 grade DIFFER(753v1037) k11_v1.cpp bisect /d2inlT1266
+00b40260 grade RELOCATION_MATCH k11_v1.cpp bisect /d2inlT1267
+00b40260 grade RELOCATION_MATCH k11_v1.cpp regrade T1267
+00a6c640 grade SRC_FAIL d8_K.cpp hand variant K
+00a6c640 grade DIFFER(517v517) d8_L.cpp hand variant L
+00a6c640 grade DIFFER(517v517) d8_K1.cpp circle radius via C2DVector::GetMagnitude K1
+00a6c640 grade DIFFER(517v517) d8_K2.cpp circle radius via C2DVector::GetMagnitude K2
+00a6c640 grade DIFFER(517v517) d8_M.cpp GetMagnitude2D FableWin-size text (squared local + sqrt(float))
+00a6c640 grade DIFFER(514v517) d8_M_MAGNITUDE_SQUARED_LOCAL.cpp M9 mag2d + MAGNITUDE_SQUARED_LOCAL
+00a6c640 grade DIFFER(504v517) d8_M_MAGNITUDE_XY_THEN_Z.cpp M9 mag2d + MAGNITUDE_XY_THEN_Z
+00a6c640 grade DIFFER(517v517) d8_M_MAGNITUDE_X_THEN_YZ.cpp M9 mag2d + MAGNITUDE_X_THEN_YZ

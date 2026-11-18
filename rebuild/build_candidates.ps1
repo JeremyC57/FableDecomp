@@ -399381,6 +399381,21 @@ $catalog = @(
         TestSource = '00/9d/MicroThread_MicroThreadSleep_009d8650_test.cpp'
         PassPattern = '009d8650_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007243c0'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_UpdateVelocityForImpassability_007243c0.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_UpdateVelocityForImpassability_007243c0_test.cpp'
+        PassPattern = '007243c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b40260'
+        Module = 'CEngineMap'
+        Source = '00/b4/CEngineMap_PeekHasWaterFast_00b40260.cpp'
+        TestSource = '00/b4/CEngineMap_PeekHasWaterFast_00b40260_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT1267'
+        PassPattern = '00b40260_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

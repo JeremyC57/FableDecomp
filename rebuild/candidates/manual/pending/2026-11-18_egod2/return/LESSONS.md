@@ -1,0 +1,6 @@
+- egod_locals.py prints only the first complete Ego_d record of a name: for overloaded constructors run a copy that prints every record (0x00A229E0: the 4th).
+- A long single-block x87 function (0x00A229E0): Ego_d's product locals declared right before first use, entries written in retail's store order, closed 124 -> 209/222 at once; a named vector local Ego_d does not list costs frame words.
+- 0x007243C0: a C3DVector built from int offsets plus a vector with a constant 0 Z (`C3DVector((float)o.X,(float)o.Y,0.0f) + cell_offset`) gives retail's fild-Y-first, folded Z and an UNaligned loop head; the 3-arg ctor with the sums inline gave X first and an aligned head behind a jmp.
+- Zeroing stored Z, Y, X is C3DVector::Clear() (chained assignment, FABLE_RETAIL_C3DVECTOR_CLEAR), not a (0,0,0) constructor.
+- 0x00B40260: a landed twin in the same TU (PeekWaterDepth) gave every include / opt-in; the row matched at the first compile apart from one inline decision. Look for the twin before reading the old draft.
+- vland reads the payload key `flags` (not `compiler_flags`) for a row's Flags line.

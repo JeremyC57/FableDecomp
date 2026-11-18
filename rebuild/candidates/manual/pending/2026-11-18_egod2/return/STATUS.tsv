@@ -1,0 +1,15 @@
+address	grade	bytes	test	grades_used	notes
+00a229e0	DIFFER	689v689	-	38	frame + all x87 equal; first Normalise's `mov esi,17Ch` hoisted to 0x00A22ADF (retail 0x00A22BB8 after the table load); differ/00a229e0.cpp
+00be2cd0	DIFFER	1091v1088	-	6	ported onto shared headers (CArray, C2DCoordI, new hdr opt-in for the method decl); allocation residue unchanged from the old draft; differ/00be2cd0.cpp
+0059fee3	DIFFER	1552v1556	-	5	Ego_d names / value_pair / declaration orders do not move the `this` split (retail: memory home then esi; ours ebx throughout); differ/0059fee3.cpp
+0091c220	OPEN	-	-	0	NOT_ATTEMPTED (read only: local-model draft; needs CAIStateGroup_NymphAttack header + CGameCameraManager Tools +0x78, see NOTES)
+0076cce0	OPEN	-	-	0	NOT_ATTEMPTED
+0068ef50	OPEN	-	-	0	NOT_ATTEMPTED
+00bc7660	OPEN	-	-	0	NOT_ATTEMPTED
+00a6c640	DIFFER	517v517	-	32	instruction- and frame-identical except `pop edi` before the final fstp; differ/00a6c640.cpp
+00803280	OPEN	-	-	0	NOT_ATTEMPTED
+00935c40	OPEN	-	-	0	NOT_ATTEMPTED (read only: needs a new CAIStateGroup_MinionPutOutFires header + CThingFilter_ObjectHasProperty, see NOTES)
+00b40260	RELOCATION_MATCH	1037v1037	PASS	15	vland strict RELOCATION_MATCH PASS with Flags /d2inlT1267 (Inline-budget line; coordinator decision); src/ + test/
+00490494	OPEN	-	-	0	NOT_ATTEMPTED
+007243c0	RELOCATION_MATCH	617v617	PASS	14	vland strict RELOCATION_MATCH PASS; src/ + test/; new hdr opt-ins CTCPHYSICSBASE_GROUNDHEIGHT, CWORLDMAP_IMPASSABILITYAROUND
+0092d1f0	OPEN	-	-	0	NOT_ATTEMPTED
