@@ -1,0 +1,3 @@
+kind	address	module	name
+named	0059fee3	CTCInventoryTrade	AddBuyItemToList
+named	00be2cd0	CEngineLandscapeMeshBuilder	BuildSharedIndexBufferGenerationTables
