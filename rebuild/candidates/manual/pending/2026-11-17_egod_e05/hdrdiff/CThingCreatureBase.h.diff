@@ -1,6 +1,6 @@
 --- a/rebuild/include/engine/CThingCreatureBase.h
 +++ b/rebuild/include/engine/CThingCreatureBase.h
-@@ -380,8 +380,15 @@
+@@ -391,8 +391,15 @@
      // 0x00662A00) and ?PeekPCurrentAction@CThingCreatureBase@@QBEPBVCCreatureActionBase@@XZ (inline in retail: `mov eax,[creature+100h]`).
      // Declaration plus an accessor body: no layout change.
      const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00

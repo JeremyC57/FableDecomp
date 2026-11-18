@@ -3,7 +3,6 @@ addr       parity           behav  name
 00ba9830   RELOCATION_MATCH PASS   GetReflectionTexture
 00871fd0   RELOCATION_MATCH PASS   UpdateXYVars
 00954f40   RELOCATION_MATCH PASS   Update
-0057aeb4   WARN RELOC_NAME: ?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z -> 005be8d3 labelled 'CTCInventoryBase::GetBoughtPrice'
 0057aeb4   RELOCATION_MATCH PASS   GetFavouriteWeapon
 005ad305   WARN RELOC_NAME: ??0?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@QAE@XZ -> 005157f0 labelled 'std::_Rb_tree<T_node0x14_005157f0>::_Rb_tree'
 005ad305   WARN RELOC_NAME: ??1?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QAE@XZ -> 004ac140 labelled 'CRetailTree_erase004a9cb0::~CRetailTree_erase004a9cb0'

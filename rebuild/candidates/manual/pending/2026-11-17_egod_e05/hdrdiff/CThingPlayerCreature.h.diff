@@ -1,6 +1,6 @@
 --- a/rebuild/include/engine/CThingPlayerCreature.h
 +++ b/rebuild/include/engine/CThingPlayerCreature.h
-@@ -185,6 +185,18 @@
+@@ -192,6 +192,18 @@
      // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?OnRegionChange@CThingPlayerCreature@@QAEXXZ (0x006AA100, called 0x004A4DDF).
      void OnRegionChange();                                               // 0x006AA100
  #endif // FABLE_RETAIL_CTHINGPLAYERCREATURE_ONREGIONCHANGE

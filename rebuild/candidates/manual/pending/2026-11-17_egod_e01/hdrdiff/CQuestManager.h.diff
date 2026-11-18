@@ -9,7 +9,7 @@
  class CRegion;
  namespace std {
  // STLport 4.6 _algobase.c: the random-access __find (out of line in retail: 0x004B74E0 for const CRegion* const*, __fastcall);
-@@ -130,6 +130,14 @@
+@@ -165,6 +165,14 @@
          // ?ContainsRegion@CActiveQuest@CQuestManager@@QBE_NABVCRegion@@@Z, called out of line in that TU (0x004AFD80). Declaration only.
          bool ContainsRegion(const class CRegion& region) const;              // 0x004AFD80
  #endif
@@ -24,7 +24,7 @@
  #ifdef FABLE_RETAIL_CQUESTMANAGER_POSTBOAST
          // Retail opt-in (Codex pass20): both PDBs and native004b29d4 use QuestName+0x30.
          const CCharString& GetName()const{return QuestName;}
-@@ -168,6 +176,10 @@
+@@ -210,6 +218,10 @@
      // FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST (the REGIONLOCK block declares the same member on its partial nested record). Declaration only.
      CActiveQuest* GetActiveQuestFromScriptName(const CCharString& name) const;    // 0x004AF5B0
  #endif

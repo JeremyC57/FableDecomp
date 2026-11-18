@@ -1,6 +1,6 @@
 --- a/rebuild/include/engine/CVectorMap.h
 +++ b/rebuild/include/engine/CVectorMap.h
-@@ -273,4 +273,44 @@
+@@ -317,4 +317,44 @@
      }
      return first;
  }
