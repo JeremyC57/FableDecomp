@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+0x00BE2CD0	RELOCATION_MATCH(/GS)	1088	PASS	~6 (incl. 2 mutants)	test written; vland PASS
+0x0059FEE3	RELOCATION_MATCH	1556	PASS	~8 (incl. 5 mutants)	ported to engine/CThingPlayerCreature.h (4 existing opt-ins); test written; vland PASS

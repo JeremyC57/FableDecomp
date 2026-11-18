@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00be2cd0   RELOCATION_MATCH[/GS] PASS   BuildSharedIndexBufferGenerationTables
+0059fee3   RELOCATION_MATCH PASS   AddBuyItemToList
+
+WINS: 2
+  00be2cd0 RELOCATION_MATCH[/GS] CEngineLandscapeMeshBuilder::BuildSharedIndexBufferGenerationTables
+  0059fee3 RELOCATION_MATCH CTCInventoryTrade::AddBuyItemToList
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEngineLandscapeMeshBuilder_BuildSharedIndexBufferGenerationTables_00be2cd0
+  CTCInventoryTrade_AddBuyItemToList_0059fee3

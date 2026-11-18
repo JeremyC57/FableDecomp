@@ -399417,6 +399417,21 @@ $catalog = @(
         TestSource = '00/80/CTCTargetingPlayer_UpdateTargetThreatening_00803280_test.cpp'
         PassPattern = '00803280_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00be2cd0'
+        Module = 'CEngineLandscapeMeshBuilder'
+        Source = '00/be/CEngineLandscapeMeshBuilder_BuildSharedIndexBufferGenerationTables_00be2cd0.cpp'
+        TestSource = '00/be/CEngineLandscapeMeshBuilder_BuildSharedIndexBufferGenerationTables_00be2cd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00be2cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059fee3'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_AddBuyItemToList_0059fee3.cpp'
+        TestSource = '00/59/CTCInventoryTrade_AddBuyItemToList_0059fee3_test.cpp'
+        PassPattern = '0059fee3_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

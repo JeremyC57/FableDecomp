@@ -1,0 +1,12 @@
+00be2cd0	baseline src/00be2cd0.cpp (/GS)	RELOCATION_MATCH
+00be2cd0	mutant: drop poly_verts[1] compare	RELOCATION_MATCH-of-mutant (test PASS: equivalent mutant, see NOTES)
+00be2cd0	mutant: vert < 0 -> vert <= 0	mutant (test FAIL 1x1 strip)
+00be2cd0	regrade real source	RELOCATION_MATCH
+00be2cd0	mutants a-e: drop <0, drop >0x7fffffff, drop if(tri_list), ==1 -> ==0, drop strip==0 test	mutants (test FAIL / crash on all 5)
+00be2cd0	regrade real source	RELOCATION_MATCH
+0059fee3	baseline (local CThingPlayerCreature class)	RELOCATION_MATCH
+0059fee3	engine/CThingPlayerCreature.h + CTHINGCREATUREBASE + CTHINGPLAYERCREATURE only	SRC_FAIL (C2039 PeekTC not a member)
+0059fee3	+ CTHINGPHYSICAL + CTHINGGAMEOBJECT	RELOCATION_MATCH
+0059fee3	mutants r1-r5: quantity>=0, drop IsSpecialCase, drop !already_have_special, invert dynamic, drop IsItemAffordable	mutants (test FAIL on all 5)
+0059fee3	regrade real source	RELOCATION_MATCH
+both	vland read-only (strict headers)	00be2cd0 RELOCATION_MATCH[/GS] PASS; 0059fee3 RELOCATION_MATCH PASS
