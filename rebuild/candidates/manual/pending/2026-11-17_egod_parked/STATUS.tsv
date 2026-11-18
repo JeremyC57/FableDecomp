@@ -45,7 +45,7 @@ address	kind	name	state	true_length	staged_folder	note
 005239cd	identify	_global::CThingDeadCreature_SavePersistentState	OPEN			
 00524290	identify	_global::CThingManager_SaveGameState	OPEN			
 00524ec0	named	NThingManager::CEntityRuntimePersistence::LoadFromGameStateBinary	OPEN			
-005253f0	named	CThingManager::LoadGameState	IN_PROGRESS			batch e17
+005253f0	named	CThingManager::LoadGameState	OPEN			(e17 queued, not attempted: wind-down)
 0053e9a0	identify	NUISystem::CScrollingViewport::NUISystem::CScrollingViewport::vfunc_1	OPEN			
 005458a0	named	NUISystem::CSpellContainer::AssignSpell	OPEN			
 0054e6f0	identify	NUISystem::CScrollingViewport::NUISystem::CScrollingViewport::vfunc_2	OPEN			
@@ -273,7 +273,7 @@ address	kind	name	state	true_length	staged_folder	note
 007ef710	named	CTCDecapitation::Decapitate	OPEN			
 007f0c70	named	CTCKrakenTentacle::TrackTarget	OPEN			
 007f4990	named	CTCHasName::GetNPCShortName	OPEN			
-007f6200	named	CTCTargetingAI::UpdatePBestEnemyCreatureForAttack	IN_PROGRESS			batch e17
+007f6200	named	CTCTargetingAI::UpdatePBestEnemyCreatureForAttack	OPEN			(e17 queued, not attempted: wind-down)
 007f68b0	named	CTCTargetingAI::GetPBestCreatureForInteractionType	OPEN			
 007f7ef0	identify	_Find_if<CThing**,std::_Find_if<CThing**,std::unary_negate<CIsTriggerActivated>_>	OPEN			
 007fa26c	named	CTCActionUseBuyHouse::OnCreate	OPEN			
@@ -336,7 +336,7 @@ address	kind	name	state	true_length	staged_folder	note
 008722d0	identify	_global::ParticleMorph_UpdatePositionWithVelocity	OPEN			
 00873690	identify	_global::CVertexBufferWin32_UpdateTransform	OPEN			
 00873e10	named	NCameraModes::CPCMouseLook::Update	OPEN			
-00875fb0	named	NCameraModes::DrawSquare	IN_PROGRESS			batch e17
+00875fb0	named	NCameraModes::DrawSquare	PARKED			e17: DIFFER(1315v1315) loop-init scheduled two FP stores later than retail 0x008760C0; draft ../2026-11-17_egod_open/e17/00875fb0.cpp
 008764e0	named	NCameraModes::DrawPyramid	OPEN			
 00877840	named	NCameraModes::CTools::IsLineOfSight	OPEN			
 00878430	named	CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	MATCHED_STAGED	673	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08
@@ -533,7 +533,7 @@ address	kind	name	state	true_length	staged_folder	note
 009fb110	named	CTexture::SaveToDataStream	OPEN			
 009fb3f0	named	CTexture::LoadFromDataStream	OPEN			
 009fb750	named	CTexture::LoadFromDataStreamToPreallocatedSurface	MATCHED_STAGED	789	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13
-009fde80	named	CGraphicInfoFrame::CFrameData::BeginLoading	IN_PROGRESS			batch e17
+009fde80	named	CGraphicInfoFrame::CFrameData::BeginLoading	MATCHED_UNAUDITED			e17 (stopped at wind-down): RELOCATION_MATCH 1265 + test PASS by the author (Ego_d C3DExtentsI dimensions local closed the frame); NOT yet coordinator-verified or audited; source, test and overlay in ../2026-11-17_egod_open/e17/
 009fe780	named	CGraphicInfo::InitialiseFramesAsSurfaceSections	OPEN			
 00a04200	identify	_global::Math_NormalizeVector2D	OPEN			
 00a0be30	named	CCamera::SetView	OPEN			
@@ -606,7 +606,7 @@ address	kind	name	state	true_length	staged_folder	note
 00a79b30	named	CNavQuadTreeNode::Initialise	OPEN			
 00a7a0a0	named	CNavQuadTree::SetUpRegions	OPEN			
 00a7a8d0	named	CNavQuadTree::Initialise	OPEN			
-00a86110	named	CIPhysicsFacesSegmentBase::CalculateDividingPlane	IN_PROGRESS			batch e17
+00a86110	named	CIPhysicsFacesSegmentBase::CalculateDividingPlane	OPEN			(e17 queued, not attempted: wind-down)
 00a868c0	named	CIPhysicsFacesSegmentBase::Calculate	OPEN			
 00a87960	named	CSBIAgents::CSBIAgents::Process	OPEN			
 00a880c0	named	CSBCCorridor::?Process@CSBCCorridor@@UAE_NPBVCSteeringAgent@@@Z	OPEN			
@@ -769,7 +769,7 @@ address	kind	name	state	true_length	staged_folder	note
 00f3cf50	named	CTriangleStripifier2::CalcSectionPolyMask	OPEN			
 00f3d200	named	CTriangleStripifier2::CheckForReshadedVerts	OPEN			
 00f3d980	named	CTriangleStripifier2::BuildRings	OPEN			
-00f3e120	named	CTriangleStripifier2::FindBestStartVertex	IN_PROGRESS			batch e17
+00f3e120	named	CTriangleStripifier2::FindBestStartVertex	PARKED			e17: DIFFER(1411v1411) reload pairs 0x00F3E291 / 0x00F3E3C5 swapped; draft ../2026-11-17_egod_open/e17/00f3e120.cpp
 00f3e6b0	identify	_global::CTriangleStripifier2_ProcessTriangles	OPEN			
 00f3ea50	identify	_global::GenerateTriangleListAndStrip	OPEN			
 0132d470	identify	_global::InvalidDecode_HaltStub	OPEN			

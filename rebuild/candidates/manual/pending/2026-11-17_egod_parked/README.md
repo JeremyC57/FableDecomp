@@ -83,3 +83,29 @@ was not contiguous enough to keep), and the 98 rows that are not plain C++.
 - `RESERVED.tsv`: kind (`named` / `identify`), address, module, name, length estimate, residue class, best grade on record.
 - `EGOD_NAMED.tsv`, `EGOD_IDENTIFY.tsv`: the two lists above.
 - `lane/egod_locals.py`: the locals printer (`--tsv` gives one summary line per name).
+
+## Hand-back state (2026-11-18, wind-down on FullDecomp-B)
+`STATUS.tsv` is the ledger (one line per reserved row):
+- **68 MATCHED_STAGED** in `../2026-11-17_egod_e01` .. `../2026-11-17_egod_e16` (no e09 folder: that batch matched nothing).
+  - Each folder has `INDEX.tsv` with the true lengths and the audit text, plus `src/`, `test/`, `payload.json`, `hdrdiff/` (additions only, under new opt-ins), `coordverify.log` and the batch notes.
+  - Every staged row passed three checks: the author's match; an independent rule audit (identity audit too for IDENTIFY rows), whose validated fixes were applied; and coordinator re-verification (read-only vland, strict headers).
+  - e01..e10 were re-verified against the headers merged on 2026-11-18, with `hdrdiff/` rebased.
+- **1 MATCHED_HELD:** 0x009D8650 MicroThread::MicroThreadSleep (`../2026-11-18_egod_asm_009d8650/README.md`). It needs two owner decisions: whether naked asm may live in a helper header (proposed purity diff included), and whether the protocol-equivalent portable twin is acceptable.
+- **1 MATCHED_UNAUDITED:** 0x009FDE80, matched by e17 just before the wind-down. Not yet verified or audited; its files are in `../2026-11-17_egod_open/e17/`.
+- **37 PARKED:** the best draft of each, with notes, is in `../2026-11-17_egod_open/<batch>/`. The STATUS note gives the exact residue.
+- **667 OPEN.**
+- Name fixes found along the way are in `NAME_FIXES.tsv` (batch column).
+
+Lane tools are in `lane/`:
+- `mkagent_egod.py` builds a batch;
+- `promote_egod.py` stages a batch;
+- `rebase_overlay.py` re-bases an overlay after a FullDecomp merge;
+- `egod_locals.py` prints a function's Ego_d locals, statics and scopes;
+- `egod_type.py` resolves Ego_d type indices;
+- `LESSONS_EGOD.md` records what closed rows.
+
+Open owner items, also recorded in the batch READMEs:
+- the X-first GFGetWorld2DDistance opt-in (e10);
+- row-local MIN/MAX macros (e08 0x00B45CF0, e11 0x00B45720);
+- the /d2inlT444 flag on 0x00B3FC40 (e12);
+- landed rows that bind wrong names or are local models (see NAME_FIXES.tsv and each INDEX audit text).
