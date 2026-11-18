@@ -10,12 +10,19 @@
 // raised after a yield inside a __try is caught by THAT side's handler, on the thread and on the scheduler (the fs:[0] chain head
 // is parked and restored per side); the parked frame { chain, edi, esi, ebp, ebx, return } lies on the parked thread's stack with
 // its chain head = the thread's own SEH registration, linked to the first frame's &DummyExceptionBlock; the shared stack's guard
-// word is intact. A mutant without the chain-head swap, the ebp save or the global exchange fails or crashes.
+// word is intact; each side's ebx / esi / edi come back unchanged and uncrossed (every yield goes through SleepKeepingRegisters,
+// built with optimisation so three values stay live in ebx / esi / edi across the switch); fs:[0] after a yield equals fs:[0]
+// before it (read with the VC7.1 intrinsic __readfsdword: a mismatch is counted and the exception skipped, so a chain-head bug
+// FAILS instead of hanging the dispatcher). Mutants that fail: no chain-head save / restore, chain head not written back, no ebp
+// save, global not updated, store before load, crossed ebx / ebp, crossed esi / edi, crossed ebx / esi, chain pushed first.
+// Survives (not observable: CreateMicroThread zeroes all four register slots): a symmetric permutation of the esi / edi saves.
 #include <stdio.h>
 #include <string.h>
 
 extern "C" __declspec(dllimport) void __stdcall RaiseException(unsigned long code, unsigned long flags, unsigned long count,
                                                                const unsigned long* arguments);
+extern "C" unsigned long __readfsdword(unsigned long offset);
+#pragma intrinsic(__readfsdword)
 
 namespace MicroThread
 {
@@ -50,6 +57,36 @@ static void Trace(int v)
         g_trace[g_count++] = v;
 }
 
+static unsigned long g_salt[3] = { 0x1234567ul, 0x2345678ul, 0x3456789ul };
+static int g_regBad;                                          // callee-saved registers lost or crossed by a switch
+static int g_chainBad;                                        // fs:[0] not this side's after a switch
+
+static unsigned long KeepExpected(unsigned long seed)
+{
+    unsigned long a = seed * 3 + g_salt[0], b = seed * 5 + g_salt[1], c = seed * 7 + g_salt[2];
+    return a * 11 + b * 13 + c * 17;
+}
+
+// The test is built /Od (locals in memory); this one function is optimised so that a, b and c live in ebx / esi / edi across the
+// switch (VC7.1: a in esi, b in edi, c in ebx): a lost or crossed register changes the result.
+#pragma optimize("gt", on)
+static unsigned long SleepKeepingRegisters(unsigned long seed)
+{
+    unsigned long a = seed * 3 + g_salt[0], b = seed * 5 + g_salt[1], c = seed * 7 + g_salt[2];
+    MicroThread::MicroThreadSleep();
+    return a * 11 + b * 13 + c * 17;
+}
+#pragma optimize("", on)
+
+static void Yield(unsigned long seed)                         // every switch of the test, on both sides
+{
+    unsigned long chain = __readfsdword(0);
+    if (SleepKeepingRegisters(seed) != KeepExpected(seed))
+        ++g_regBad;
+    if (__readfsdword(0) != chain)
+        ++g_chainBad;
+}
+
 static void __cdecl ThreadReturnTrap()                        // MicroThreadReturn's slot: never reached (the body sleeps forever)
 {
     Trace(-1);
@@ -65,9 +102,9 @@ static void __cdecl ThreadBody(void* argument)
     for (int k = 0; k < 3; ++k) {
         Trace(200 + id * 10 + k);
         __try {
-            MicroThread::MicroThreadSleep();                  // yield with this side's registration on the chain
+            Yield(1000 + id * 100 + k);                       // yield with this side's registration on the chain
             sum = sum * 31 + k;
-            if ((k + id) & 1)
+            if (((k + id) & 1) && !g_chainBad)
                 RaiseException(0xE0000000 | (id * 16 + k), 0, 0, 0);
             Trace(300 + id * 10 + k);
         }
@@ -124,7 +161,7 @@ static void SwitchTo(int t, int shared, unsigned char** token)
     }
     else
         MicroThread::PGlobalStackPointer = token[t];
-    MicroThread::MicroThreadSleep();
+    Yield(2000 + t);
     CheckParkedFrame(t);
     if (shared) {
         g_imageSize[t] = (unsigned long)(g_stackTop - MicroThread::PGlobalStackPointer);      // PreserveStack
@@ -145,6 +182,8 @@ static int RunScenario(unsigned char* stack, int shared)
     unsigned long schedulerSum = 5;
     g_count = 0;
     g_badFrames = 0;
+    g_regBad = 0;
+    g_chainBad = 0;
     for (int t = 0; t < kThreads; ++t) {
         MicroThread::SInitialStackFrame* frame;
         g_done[t] = 0;
@@ -170,7 +209,7 @@ static int RunScenario(unsigned char* stack, int shared)
             __try {
                 SwitchTo(t, shared, token);
                 schedulerSum = schedulerSum * 7 + round * 2 + t;
-                if (round & 1)
+                if ((round & 1) && !g_chainBad)
                     RaiseException(0xE0001000 | round, 0, 0, 0);
                 Trace(600 + round * 10 + t);
             }
@@ -179,7 +218,7 @@ static int RunScenario(unsigned char* stack, int shared)
             }
         }
     }
-    int bad = g_badFrames;
+    int bad = g_badFrames + g_regBad + g_chainBad;
     if (g_count != 24)
         ++bad;
     for (int i = 0; i < 24 && i < g_count; ++i)

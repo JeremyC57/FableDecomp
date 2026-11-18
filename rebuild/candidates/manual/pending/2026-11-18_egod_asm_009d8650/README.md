@@ -1,4 +1,4 @@
-# egod lane: 0x009D8650 MicroThread::MicroThreadSleep under the asm rules (2026-11-18) -- HELD FOR OWNER DECISION
+# egod lane: 0x009D8650 MicroThread::MicroThreadSleep under the asm rules (2026-11-18) -- STAGED (owner-delegated decision 2026-11-18)
 
 Owner: "Fix the naked asm row to follow our current rules." Identity ?MicroThreadSleep@MicroThread@@YIXXZ (Ego_d object order +
 FableWin 0x02F6CA00 + Ego_r 0x00B2B980). A 36-byte stack switch: it writes esp (0x009D865D `mov esp,[0x013CA898]`) and fs:[0].
@@ -29,3 +29,20 @@ Why it is NOT staged as a match (both need the owner):
    C++ does not guarantee (works on x86-64 GCC / Clang, not on ABIs such as AArch64).
 Names found on the way (NAME_FIXES.tsv): 0x013CA898 = PGlobalStackPointer (Ego_d + Anniversary PDB; landed code says
 SavedStackPointer), plus the TU's other statics (two mapped by declaration order only: verify before respelling).
+
+## Decision and staging (2026-11-18)
+The owner delegated the decision ("match retail, behave exactly like retail, be portable"). The coordinator accepted the
+whole-function asm helper case (docs/pipeline/ASM_RULES.md "Whole-function asm helpers"; tools/decomp_pipeline/crawl/purity.py now
+accepts naked + ret only in a helper header carrying `// Retail-asm-function:`; re-classifying all 56,612 row sources and 31 helper
+headers changes nothing). An independent audit confirmed the identity and rule compliance and strengthened the test (values kept in
+esi / edi / ebx across each switch; fs:[0] chain head checked), and the coordinator re-verified: RELOCATION_MATCH, test PASS, graded
+retail_asm (`coordverify.log`, no pragma fallback).
+
+Portability statement: the retail path is byte-identical and behaviour-tested. The FABLE_PORTABLE twin is protocol-equivalent, not
+identical: POSIX ucontext (token = a ucontext_t* on the parked side's stack) / Win32 fibres (token = fibre handle, plus a
+running-fibre variable retail does not have); retail's 24-byte saved frame and its fs:[0] handling are not reproduced. It is not
+usable in a portable build yet: CreateMicroThread 0x009D8710 needs a portable first-entry branch (makecontext / CreateFiber) and, on
+Win32, SwitchToMicroThread 0x009D87F0 needs a branch that skips its stack-image copy; the POSIX stack copy relies on frame layout
+(tested on x86-64 g++ / clang++ -O0..-Os, not guaranteed by C++ or on AArch64). Follow-up tracked in ../2026-11-17_egod_parked.
+Names: 0x013CA898 PGlobalStackPointer, 0x013CA894 PActiveScript, 0x013CA89C ThreadStackSize meet the two-source rule (Ego_d data
+record + donor order / spacing / types matching retail use); 0x013CA8A0 / 0x013CA8A4 are order-only (do not respell yet).
