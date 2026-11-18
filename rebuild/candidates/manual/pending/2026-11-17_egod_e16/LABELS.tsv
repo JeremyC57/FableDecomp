@@ -1,0 +1,7 @@
+address	name	evidence
+009c37a0	?OnFileReadCompletion@CFileInstaller@@KGXKKPAU_OVERLAPPED@@@Z	Ego_d TU order + Ego_r/FableWin name tables (donor order matches retail)
+009c3820	?OnFileWriteCompletion@CFileInstaller@@KGXKKPAU_OVERLAPPED@@@Z	Ego_d TU order + Ego_r/FableWin name tables (donor order matches retail)
+00c62370	GetRandomPointInSphere	descriptive (libpk): random point in a sphere; one name with landed caller CAmbientTrigger::Play 0x00C62530
+00749620	?push_back@?$vector@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@@2@@std@@QAEXABU?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@2@@Z	Ego_d TU + Ego_r name (same vector) + caller SetAsInDanger; STLport spelling
+0099f7a0	??H@YI?AVCCharString@@ABV0@D@Z	Ego_d params/locals + Ego_r/FableWin overload order
+009f18f0	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	Ego_d TU order + Ego_r/FableWin name tables

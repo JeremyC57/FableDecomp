@@ -1,0 +1,10 @@
+addr       parity           behav  name
+009c37a0   RELOCATION_MATCH PASS   OnFileReadCompletion
+009c3820   RELOCATION_MATCH PASS   OnFileWriteCompletion
+00749620   WARN STANDIN_LEAF ?push_back@?$vector@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@@2@@std@@QAEXABU?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@2@@Z (catalog std::vector::?push_back@?$vector@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@@2@@std@@QAEXABU?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@2@@Z; names another function)
+00749620   RELOCATION_MATCH PASS   push_back
+
+WINS: 3
+  009c37a0 RELOCATION_MATCH CFileInstaller::OnFileReadCompletion
+  009c3820 RELOCATION_MATCH CFileInstaller::OnFileWriteCompletion
+  00749620 RELOCATION_MATCH std::vector::push_back

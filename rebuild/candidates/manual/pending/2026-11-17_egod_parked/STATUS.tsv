@@ -184,7 +184,7 @@ address	kind	name	state	true_length	staged_folder	note
 00745840	identify	CTCPerceiveThing::CTCPerceiveThing::vfunc_11	OPEN			
 00746db0	identify	_global::GetStabPosOnThing	OPEN			
 00747c70	named	CTCStealth::UpdateDangerInfo	MATCHED_STAGED	303	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
-00749620	identify	_global::CTargetPoint_Vector_PushBack	IN_PROGRESS			batch e16 (identify)
+00749620	identify	_global::CTargetPoint_Vector_PushBack	MATCHED_STAGED	105	rebuild/candidates/manual/pending/2026-11-17_egod_e16	batch e16
 0074a4e0	named	CTCCreatureGenerator::DoNavCheck	OPEN			
 0074b2b0	named	CTCCreatureGenerator::CreateCreatures	OPEN			
 0074b77c	identify	_global::CTCCreatureGenerator_SpawnInArea	OPEN			
@@ -509,8 +509,8 @@ address	kind	name	state	true_length	staged_folder	note
 009bcef0	identify	_global::GetCharWidthW	MATCHED_STAGED	120	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
 009bd460	named	CMovieSubtitles::ParseSubtitles	OPEN			
 009c33a0	named	_global::GetMarkerFileName	OPEN			
-009c37a0	identify	_global::CodeSection_SetReadyAndSignal	IN_PROGRESS			batch e16 (identify)
-009c3820	identify	_global::CodeSection_DecrementAndSignal	IN_PROGRESS			batch e16 (identify)
+009c37a0	identify	_global::CodeSection_SetReadyAndSignal	MATCHED_STAGED	128	rebuild/candidates/manual/pending/2026-11-17_egod_e16	batch e16
+009c3820	identify	_global::CodeSection_DecrementAndSignal	MATCHED_STAGED	151	rebuild/candidates/manual/pending/2026-11-17_egod_e16	batch e16
 009c3fb0	named	CFileInstaller::ProcessActiveFileForWrite	OPEN			
 009c5170	identify	_global::CPatchTesselationEdgeStrip_DestructorHelper	OPEN			
 009c8c00	identify	NGameText::CDataBank::NGameText::CDataBank::vfunc_12	OPEN			
