@@ -130,5 +130,10 @@ There are 14 rows and you are the only author, so work BREADTH FIRST:
 - Hand authoring often beats automated tools (owner, 2026-11-18): read the retail disassembly at the differing site and the
   landed TU siblings, decide what statement the programmer wrote, and write it by hand with Ego_d's locals in their scopes and
   order. Variant generators and sweeps only answer one specific question; they are not how the source is found.
+- Stuck row (owner, 2026-11-18): before parking a row you feel you cannot get, escalate it to a Fable advisor -- the `advisor`
+  tool if you have it, else one foreground Agent with model "fable" as a read-only reviewer. Give it the residue (retail vs ours at
+  the differing addresses), your best source, ref/<addr>/ and your ATTEMPTS.log lines, and ask for the original statement shape
+  and 1-3 hand-written candidates. It writes only in tmp/advisor_<addr>/; you grade its candidates, log them ("advisor: ...") and
+  park only if they fail. One escalation per row, plus one more if the first answer moved the residue.
 - Keep NOTES.md / STATUS.tsv current after every row (your context may end at any time). Do not stop while you still have budget
   and an open row; your final message is the hand-over summary.
