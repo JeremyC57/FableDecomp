@@ -26,7 +26,8 @@ source is `retail_asm` when:
   * it carries a `// Retail-asm: <evidence>` line that cites at least one retail address (0x00......)
     and names at least one instruction that its `__asm` code contains (the evidence ties the block to
     retail bytes, and the grader's byte match proves the block reproduces them);
-  * it has no `naked` and no `_emit` (the function's prologue and epilogue stay compiler-emitted);
+  * it has no `naked` and no `_emit` (the function's prologue and epilogue stay compiler-emitted) -- except a shared
+    helper header with a `// Retail-asm-function:` line (ASM_RULES "Whole-function asm helpers", 2026-11-18);
   * no `__asm` statement returns (`ret`/`retn`/`iret`): the function exits through C++.
 There is no instruction-count cap and branches inside the block are allowed (owner, 2026-10-27: a fixed
 cap is arbitrary when retail is proven to run a longer block). The old 8-instruction / no-branch rule
@@ -100,7 +101,7 @@ def _whole_function(text):
     """A helper header whose routine the original wrote entirely in assembler (no compiler prologue / epilogue): it may define
     the function `__declspec(naked)` with its own `ret`, when a `// Retail-asm-function:` line cites a retail address and the
     proof (e.g. 0x009D8650 MicroThreadSleep: VC7.1 never saves ebp around inline asm, retail pushes it second; Ego_d.pdb's /Od
-    length equals retail's). Proposal (asm1, 2026-11-18): helper headers only -- `classify` still grades any row text that
+    length equals retail's). ASM_RULES "Whole-function asm helpers" (2026-11-18): helper headers only -- `classify` still grades any row text that
     spells `naked` / `__asm` as `naked_asm`."""
     return any(RETAIL_ASM_FUNCTION_TAG in l and _VA.search(l.split(RETAIL_ASM_FUNCTION_TAG, 1)[1]) for l in text.splitlines())
 
