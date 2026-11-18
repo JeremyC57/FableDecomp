@@ -54,6 +54,11 @@ The owner asked the coordinator to decide, keeping three goals: match retail, be
   publish the token, resume the other side; each side keeps its registers, locals and exception handlers) and the dual-path test
   must prove the same interleaving. Where the twin is not portable on its own (e.g. it needs portable branches in the routine's
   callers, or relies on frame layout), the row's INDEX says so and the gap is tracked until those branches exist.
+- **Owner, 2026-11-18:** "As long as it does not affect matching or portability, it should be fine." So this section is in force,
+  and a row that uses it lands only when (1) it matches retail (RELOCATION_MATCH / MATCH, behaviour test PASS) and (2) its
+  `FABLE_PORTABLE` twin is portable on its own: no reliance on frame layout or one ABI, the portable branches its callers need exist,
+  and the dual-path test passes on the portable build. Until both hold the row stays held (0x009D8650: its callers CreateMicroThread
+  0x009D8710 / SwitchToMicroThread 0x009D87F0 have no portable branches yet, and the POSIX twin copies a stack at a fixed address).
 
 ## `volatile` (2026-11-05 audit, `rebuild/candidates/manual/naming/2026-11-05_volatile_audit/`)
 `volatile` is standard, portable C++, not asm. It may appear only where retail used it:

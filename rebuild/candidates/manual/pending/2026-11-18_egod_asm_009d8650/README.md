@@ -1,5 +1,9 @@
 # egod lane: 0x009D8650 MicroThread::MicroThreadSleep under the asm rules (2026-11-18) -- HELD FOR OWNER DECISION
 
+**Owner, 2026-11-18:** "As long as it does not affect matching or portability, it should be fine." The rule change (ASM_RULES "Whole-function
+asm helpers", crawl/purity.py) stands. This row still waits on portability: the FABLE_PORTABLE twin must work on its own (portable
+branches for CreateMicroThread 0x009D8710 / SwitchToMicroThread 0x009D87F0; no same-address stack copy that relies on frame layout).
+
 Owner: "Fix the naked asm row to follow our current rules." Identity ?MicroThreadSleep@MicroThread@@YIXXZ (Ego_d object order +
 FableWin 0x02F6CA00 + Ego_r 0x00B2B980). A 36-byte stack switch: it writes esp (0x009D865D `mov esp,[0x013CA898]`) and fs:[0].
 
