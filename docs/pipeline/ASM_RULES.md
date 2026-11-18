@@ -40,6 +40,21 @@ EXTRA_RULES.md, the briefs, the handoffs, older journal entries. The earlier rou
 6. **Bytes the linker copied from a VC7.1 library or a vendor's shipped `.asm`** are a separate grade, `toolchain_library`
    (`docs/pipeline/LIBRARY_SIGNATURES.md`), and are not covered by this page.
 
+## Whole-function asm helpers (owner-delegated decision, 2026-11-18)
+The owner asked the coordinator to decide, keeping three goals: match retail, behave exactly like retail, be portable.
+- **When:** only where the original routine had no compiler prologue or epilogue, so no inline-asm function body can produce
+  retail's bytes (VC7.1 emits its own prologue around `__asm`). The proof is a measured attempt table (rule 4) plus independent
+  evidence that the original was written this way (e.g. Ego_d.pdb's /Od length equals retail's). First case: 0x009D8650
+  MicroThread::MicroThreadSleep, a stack and SEH-chain switch.
+- **How:** the whole definition (`__declspec(naked)` with its own `ret`) sits in a shared helper header, macro-wrapped under the
+  routine's PDB name, with `// Retail-asm-helper:`, `// Retail-asm:` and a `// Retail-asm-function: <retail address + proof>`
+  line. Rule 5 still holds for rows and tests: they never spell `naked` / `__asm` / `_emit`; the row includes the header and
+  invokes the macro, and grades `retail_asm` (crawl/purity.py accepts naked + ret only in such a helper header).
+- **Portable twin:** a context switch cannot be written in ISO C++. The twin must preserve the routine's protocol (park this side,
+  publish the token, resume the other side; each side keeps its registers, locals and exception handlers) and the dual-path test
+  must prove the same interleaving. Where the twin is not portable on its own (e.g. it needs portable branches in the routine's
+  callers, or relies on frame layout), the row's INDEX says so and the gap is tracked until those branches exist.
+
 ## `volatile` (2026-11-05 audit, `rebuild/candidates/manual/naming/2026-11-05_volatile_audit/`)
 `volatile` is standard, portable C++, not asm. It may appear only where retail used it:
 - **Retail's bytes depend on it:** without it VC7.1 drops reads that retail keeps. Examples: CFileInstaller's cross-thread flags,
