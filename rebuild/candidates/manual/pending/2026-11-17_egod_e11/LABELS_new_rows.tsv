@@ -1,0 +1,5 @@
+address	name	evidence
+0x0095A3D0	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@IAEJXZ	NEW (uncatalogued) retail out-of-line copy, 20 bytes; Ego_r 0x0097EC90 / FableWin 0x02C11400; row 0x0095B9E0's body grades MATCH
+0x0095A3F0	?GetPreviousCirclePoint@CAIStateGroup_HoverHornetQueen@@IAEJXZ	NEW (uncatalogued) retail out-of-line copy, 20 bytes; Ego_r 0x0097ECB0 / FableWin 0x02C11440; row 0x0095B9E0's body grades MATCH
+0x0095A9A0	?GotoNextCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@W4EMovementType@@@Z	NEW (uncatalogued) retail out-of-line copy, 33 bytes (`call 0x0095A6C0 ; ret 4`); Ego_r 0x0097F210 / FableWin 0x02C11480; row body grades RELOCATION_MATCH
+0x0095A9D0	?GotoPreviousCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@W4EMovementType@@@Z	NEW (uncatalogued) retail out-of-line copy, 33 bytes; Ego_r 0x0097F240 / FableWin 0x02C114B0; row body grades RELOCATION_MATCH

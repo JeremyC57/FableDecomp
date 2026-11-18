@@ -1,0 +1,10 @@
+addr       parity           behav  name
+0065cb6b   RELOCATION_MATCH PASS   ReportCrime
+0095b9e0   RELOCATION_MATCH PASS   DiveBomb
+00b45720   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b45720   RELOCATION_MATCH PASS   CalcSWLighting
+
+WINS: 3
+  0065cb6b RELOCATION_MATCH CTCVillage::ReportCrime
+  0095b9e0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::DiveBomb
+  00b45720 RELOCATION_MATCH CEngineLightingManager::CalcSWLighting

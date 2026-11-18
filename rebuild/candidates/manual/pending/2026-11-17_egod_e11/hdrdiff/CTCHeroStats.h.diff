@@ -1,0 +1,19 @@
+--- a/rebuild/include/engine/CTCHeroStats.h
++++ b/rebuild/include/engine/CTCHeroStats.h
+@@ -424,6 +424,16 @@
+     long GetNumberOfDrinks() const { return NumberOfDrinks; }
+     long GetNumberOfCrimes() const { return NumberOfCrimes; }
+     long GetTotalFine() const { return TotalFine; }
++#ifdef FABLE_RETAIL_CTCHEROSTATS_CRIMECOUNTS
++    // e10 nested opt-in (row 0x0065CB6B CTCVillage::ReportCrime; needs FABLE_RETAIL_CTCHEROSTATS_PERSONALITY): the inline accessors Ego_d.pdb
++    // keeps in tc_village.obj right after ReportCrime (CTCHeroStats::SetNumberOfCrimes / GetNumberOfCrimesOfMurder / SetNumberOfCrimesOfMurder /
++    // SetTotalFine; FableWin.pdb ?SetNumberOfCrimes@CTCHeroStats@@QAEXJ@Z family); retail `inc [esi+0F4h]` / `add [esi+0FCh],edi` / `inc [esi+0F8h]`
++    // (0x0065CC58 / 0x0065CC5E / 0x0065CD77). Bodies only: no layout change.
++    void SetNumberOfCrimes(long val) { NumberOfCrimes = val; }
++    long GetNumberOfCrimesOfMurder() const { return NumberOfCrimesOfMurder; }
++    void SetNumberOfCrimesOfMurder(long val) { NumberOfCrimesOfMurder = val; }
++    void SetTotalFine(long val) { TotalFine = val; }
++#endif
+     long GetFinePaid() const { return FinePaid; }
+     long GetTimesThrownOut() const { return TimesThrownOut; }
+     long GetTotalBribeAmount() const { return TotalBribeAmount; }

@@ -1,0 +1,17 @@
+--- a/rebuild/include/engine/CTCVillage.h
++++ b/rebuild/include/engine/CTCVillage.h
+@@ -156,6 +156,14 @@
+ public:
+     long GetFineAmountForCurrentCrimes();                    // 0x0065A41C
+ #endif
++#ifdef FABLE_RETAIL_CTCVILLAGE_WITNESSEDCRIME
++    // e09 opt-in (row 0x007993F0 CTCShopKeeper::WitnessedCrime): Ego_r.pdb / FableWin.pdb ?HasCrimeBeenReported@CTCVillage@@QAE_NJ@Z
++    // (retail 0x0065914B, landed), ?ReportCrime@CTCVillage@@QAEXJ@Z (0x0065CB6B) and ?StartSecuritySweep@CTCVillage@@QAEX_N@Z (0x00659C32,
++    // landed), all public and out of line (Ego_d.pdb tc_village.obj records with parameters deed_handle / urgent). Declarations only.
++    bool HasCrimeBeenReported(long deed_handle);              // 0x0065914B
++    void ReportCrime(long deed_handle);                       // 0x0065CB6B
++    void StartSecuritySweep(bool urgent);                     // 0x00659C32
++#endif
+ #ifdef FABLE_RETAIL_CTCVILLAGE_CRIMES
+     // Retail opt-in (agentNF14, row 0x0065C1FC): Ego_r.pdb ?RemoveCrime@CTCVillage@@QAEXJ@Z (retail 0x0065C146, out of line) and
+     // ?RemoveCrimeIfApologisable@CTCVillage@@QAEXJ@Z (0x0065C1FC), both public. Declarations only: no layout change.

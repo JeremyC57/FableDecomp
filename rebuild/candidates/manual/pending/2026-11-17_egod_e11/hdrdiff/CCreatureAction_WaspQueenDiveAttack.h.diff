@@ -1,0 +1,33 @@
+--- a/rebuild/include/engine/CCreatureAction_WaspQueenDiveAttack.h
++++ b/rebuild/include/engine/CCreatureAction_WaspQueenDiveAttack.h
+@@ -8,6 +8,19 @@
+ // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+ #include <stddef.h>
+ #include "rebuild_abi.h"
++#ifdef FABLE_RETAIL_CCREATUREACTION_WASPQUEENDIVEATTACK_BASE
++// e11 opt-in (row 0x0095B9E0 CAIStateGroup_HoverHornetQueen::DiveBomb): the CCreatureAction_WaspQueenPrimaryAttack PASS23 shape -- the
++// class derives CCombatActionBase (own RTTI 0x01281304, base ctor 0x00857F30, landed ctor 0x008C5410) with no own data (generated retail
++// size 0x114 = CCombatActionBase's), and its public constructor Ego_r.pdb / FableWin.pdb
++// ??0CCreatureAction_WaspQueenDiveAttack@@QAE@AAVCThingCreatureBase@@0@Z (out of line at 0x008C5410). Temporaries are destroyed by the
++// base destructor 0x0062E900 (DiveBomb 0x0095BC90).
++#include "engine/CCombatActionBase.h"
++class CThingCreatureBase;
++class CCreatureAction_WaspQueenDiveAttack : public CCombatActionBase {
++public:
++    CCreatureAction_WaspQueenDiveAttack(CThingCreatureBase& creature, CThingCreatureBase& enemy);   // 0x008C5410
++};
++#else
+ 
+ #pragma pack(push, 1)
+ class CCreatureAction_WaspQueenDiveAttack {
+@@ -27,7 +40,8 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_WaspQueenDiveAttack) == 0x114);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_WaspQueenDiveAttack, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_WaspQueenDiveAttack) == 0x114);
++FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_WaspQueenDiveAttack, __vftable) == 0x0);
+ 
++#endif // FABLE_RETAIL_CCREATUREACTION_WASPQUEENDIVEATTACK_BASE
+ #endif // FABLE_ENGINE_CCREATUREACTION_WASPQUEENDIVEATTACK_H

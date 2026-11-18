@@ -1,0 +1,19 @@
+--- a/rebuild/include/engine/CTCHeroOpinionDeedLog.h
++++ b/rebuild/include/engine/CTCHeroOpinionDeedLog.h
+@@ -24,6 +24,16 @@
+ private:
+     bool InformRelevantThingsOfDeed(long handle, CThingAICreature* creature, EOpinionPostDeedType postType,
+                                     const CFaction* faction, bool b1);                                          // 0x006C6040
++#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_CRIMES
++    // e10 opt-in (row 0x0065CB6B CTCVillage::ReportCrime): Ego_r.pdb ?SetVillageForCrimes@CTCHeroOpinionDeedLog@@QAEXAAVCThing@@@Z (0x006C55E0),
++    // ?SetCrimeDeedReportedToVillage@CTCHeroOpinionDeedLog@@QAEXJ@Z (0x006C5A50), ?FindCriminalDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@PBVCThing@@@Z
++    // (0x006C5800), all public and out of line (calls at 0x0065CBD8 / 0x0065CBE2 / 0x0065CD07). Declarations only: no layout change.
++public:
++    void SetVillageForCrimes(CThing& village);                           // 0x006C55E0
++    void SetCrimeDeedReportedToVillage(long deed_handle);                // 0x006C5A50
++    long FindCriminalDeed(EOpinionDeedType deed_type, const CThing* target);   // 0x006C5800
++private:
++#endif
+ #ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_DEEDS
+     // Nested opt-in (chunk 794, row 0x006C6040 InformRelevantThingsOfDeed): Ego_r.pdb OpinionDeedMap (std::map<long, COpinionDeed*>,
+     // retail +0x0C: `lea esi,[edi+0Ch]` then the out-of-line find 0x006C7830) and

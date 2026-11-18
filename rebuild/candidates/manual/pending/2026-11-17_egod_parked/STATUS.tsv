@@ -91,7 +91,7 @@ address	kind	name	state	true_length	staged_folder	note
 00657580	named	NPlayerGui::CDrawQuickAccessIconsPC::Draw	IN_PROGRESS			batch e12
 00659625	named	CTCVillage::UpdateTorchTasks	OPEN			
 0065ad37	named	CTCVillage::UpdateCurfew	OPEN			
-0065cb6b	named	CTCVillage::ReportCrime	IN_PROGRESS			batch e11
+0065cb6b	named	CTCVillage::ReportCrime	MATCHED_STAGED	747	rebuild/candidates/manual/pending/2026-11-17_egod_e11	batch e11
 00666310	named	CThingCreatureBase::OnCreate	OPEN			
 0066a9e0	named	CTCSoundPlayer::PlayCollisionSound	PARKED			PARKED e07: DIFFER(626v626) instruction-identical; call target 0x00415D70 (??BCDefString forwarder) v retail 0x00415DD0 GetString at 0x0066AC08 (inline decision inside the pre-compiled forwarder); draft ../2026-11-17_egod_open/e07/0066a9e0.cpp
 0066b370	named	CTCSoundPlayer::PlayAllSoundEvents	OPEN			
@@ -250,7 +250,7 @@ address	kind	name	state	true_length	staged_folder	note
 007c57c0	named	CTCGhostSword::AddSword	OPEN			
 007c60a0	named	CTCGhostSword::UpdateGhostSwordParticleEffects	OPEN			
 007c7c40	named	CTCTurncoat::FrameUpdate	MATCHED_STAGED	744	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10
-007c81f0	named	CTCHitOnCollision::OnCollision	IN_PROGRESS			batch e11
+007c81f0	named	CTCHitOnCollision::OnCollision	PARKED			PARKED e11: DIFFER(768v768) frame layout only (STLport find iterator-tag byte [esp+27h] v 33h, hit_direction 28h v 24h); no test yet; new CTCHitOnCollision.h in e11 overlay; draft ../2026-11-17_egod_open/e11/007c81f0.cpp
 007c977c	named	CTCCreatureGeneratorCreator::OnSerialise	OPEN			
 007c99f0	named	CTCCreatureGeneratorCreator::FrameUpdate	OPEN			
 007d00f0	named	CTCTavernGameShoveHaPenny::FrameUpdate	OPEN			
@@ -457,7 +457,7 @@ address	kind	name	state	true_length	staged_folder	note
 00955c90	named	CAIStateGroup_MazeTutorialBattle::CAIStateGroup_MazeTutorialBattle::Update	OPEN			
 00957c30	named	CAIStateGroup_MinionBehaviourCrowdBase::?IsRunnable@CAIStateGroup_MinionBehaviourCrowdBase@@UAE_NXZ	OPEN			
 009582d0	named	CAIStateGroup_MinionReactToTrespassing::?Update@CAIStateGroup_MinionReactToTrespassing@@UAEXXZ	OPEN			
-0095b9e0	named	CAIStateGroup_HoverHornetQueen::DiveBomb	IN_PROGRESS			batch e11
+0095b9e0	named	CAIStateGroup_HoverHornetQueen::DiveBomb	MATCHED_STAGED	782	rebuild/candidates/manual/pending/2026-11-17_egod_e11	batch e11
 0095ef80	named	CAIStateGroup_OpinionReactionRoot::?IsRunnable@CAIStateGroup_OpinionReactionRoot@@UAE_NXZ	OPEN			
 00960120	named	CAIStateGroup_DeedReactionRoot::Update	OPEN			
 00961ca0	named	CAIStateGroup_IceTrollIcicleAttack::?IsRunnable@CAIStateGroup_IceTrollIcicleAttack@@MAE_NXZ	OPEN			
@@ -674,7 +674,7 @@ address	kind	name	state	true_length	staged_folder	note
 00b43720	named	CEngineMap::PeekThemeId	OPEN			
 00b43870	named	CEngineMap::PeekThemeBlend	OPEN			
 00b439c0	named	CEngineMap::PeekLandscapeHeight	OPEN			
-00b45720	named	CEngineLightingManager::CalcSWLighting	IN_PROGRESS			batch e11
+00b45720	named	CEngineLightingManager::CalcSWLighting	MATCHED_STAGED	787	rebuild/candidates/manual/pending/2026-11-17_egod_e11	batch e11
 00b45a40	named	CEngineLightingManager::CalcSWLightingNoClipSeparateMainLight	OPEN			
 00b45cf0	named	CEngineLightingManager::CalcSWLightingNoClip	MATCHED_STAGED	697	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08
 00b47390	named	CEngineLightingManager::SetupShaderSpotLight	MATCHED_STAGED	665	rebuild/candidates/manual/pending/2026-11-17_egod_e06	batch e06

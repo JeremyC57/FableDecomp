@@ -1,0 +1,5 @@
+address	name	evidence
+0x0065CB6B	?ReportCrime@CTCVillage@@QAEXJ@Z	Ego_r / FableWin decorated name; Ego_d tc_village.obj record; RELOCATION_MATCH
+0x0095B9E0	?DiveBomb@CAIStateGroup_HoverHornetQueen@@IAEXXZ	Ego_r / FableWin decorated name (protected); Ego_d record; RELOCATION_MATCH
+0x00B45720	?CalcSWLighting@CEngineLightingManager@@QAE?AVCRGBFloatColour@@ABVC3DVector@@0ABVCEngineLocalLightArray@@@Z	Ego_r order (0x009BA660 global-only, 0x009BA8A0 this) = retail 0x00B45510 / 0x00B45720; RELOCATION_MATCH
+0x007C81F0	?OnCollision@CTCHitOnCollision@@QAEXABVC3DVector@@0AAVCThing@@@Z	Ego_r / FableWin; Ego_d class record (public OnCollision); parked DIFFER
