@@ -29,3 +29,8 @@
   private statics and inline accessor names; a whole new header from them matched in 9 grades (0x00AB3870). An x87 order residue in
   an expanded matrix transform closed with the OTHER PDB overload (two-argument TransformPoint). An overlay header that another
   repo header pulls first stays invisible: include it right after fable_string.h in the row.
+- e10-e12: egod_tu.txt omits common inline COMDATs (C2DVector::operator+ is used but not listed): "not in the list" is no evidence
+  a callee was out of line; decide from the retail call / expansion. Helpers you define often DO have uncatalogued out-of-line retail
+  copies (0x0095B9E0's four circle-point helpers): search the disassembly near the row and grade there. A c2 record-id operand-order
+  site that flips with a no-code-local count (period 4) closed with the landed sibling's natural spelling (two-argument PeekTC).
+  Sentinel tests need values below AND above the sentinel; lighting / clamp tests need unsaturated cases.
