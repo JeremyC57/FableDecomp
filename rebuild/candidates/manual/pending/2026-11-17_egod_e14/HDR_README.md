@@ -1,0 +1,6 @@
+# e14 header overlay (copies of TODAY's repo headers + additions under NEW opt-ins only; no default path changed, no assert moved in meaning)
+- engine/CClassFactory.h  FABLE_RETAIL_CCLASSFACTORY_TYPEACCESSORS  inline GetTypeName (public QBE) / IsClassTypeRegistered (IBE) / GetTypeList(unsigned long) (IAE)  Ego_r + FableWin names; row 0x0051EA30 reads ClassTypeInfo[type].Used / .TypeList in place. Inserted inside the class before ClassTypeInfo; FABLE_STATIC_ASSERT_AT(39/61..65) lines shift by 11 (their ids unchanged).
+- engine/CThingManager.h  FABLE_RETAIL_CTHINGMANAGER_FILLRENDERLISTS  public inline GetTypeList(unsigned char) + private FillRenderListsWithAllEntities() decl  Ego_r 0x00528AA0 / FableWin; needs TYPEACCESSORS. Inserted after the ACCESSORS block; FABLE_STATIC_ASSERT_AT(216) shifts by 12 lines (id unchanged).
+- Asserts: every FABLE_STATIC_ASSERT in both headers is already the pinned `FABLE_STATIC_ASSERT_AT(<id>, ...)` form, so the line shifts
+  rename no typedef. Diffs against today's repo headers: hdr/CClassFactory.h.diff, hdr/CThingManager.h.diff (additions only).
+  lane_merge/equiv_check.py was not run (new opt-in names only; no landed row defines them, so no landed row's code changes).

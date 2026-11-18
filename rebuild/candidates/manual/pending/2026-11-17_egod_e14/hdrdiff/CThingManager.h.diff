@@ -1,0 +1,19 @@
+--- a/rebuild/include/engine/CThingManager.h
++++ b/rebuild/include/engine/CThingManager.h
+@@ -182,6 +182,16 @@
+     CThingSearchTools& GetThingSearchTools();                           // 0x0051E490
+     void ClearPersistenceDataForSection(const CCharString& section);   // 0x00520C70
+ #endif
++#ifdef FABLE_RETAIL_CTHINGMANAGER_FILLRENDERLISTS
++public:
++    // Opt-in (egod e14, row 0x0051EA30): Ego_r.pdb / FableWin.pdb ?GetTypeList@CThingManager@@QAEAAV?$list@PAVCClass@@...@std@@E@Z (public,
++    // the unsigned char overload: `movzx eax,bl` at 0x0051EA4E; inline in retail) and the private ?FillRenderListsWithAllEntities@CThingManager@@AAEXXZ
++    // (retail 0x0051EA30; Ego_r 0x00528AA0 just before SetUpdateAndRenderAllFlag 0x00528B10 = retail 0x0051EA90, its only caller).
++    // Needs FABLE_RETAIL_CCLASSFACTORY_TYPEACCESSORS. No layout change.
++    std::list<CClass*>& GetTypeList(unsigned char type) { return CClassFactory::GetTypeList(type); }
++private:
++    void FillRenderListsWithAllEntities();                              // 0x0051EA30
++#endif
+ protected:
+     virtual void OnCreateClass(CClass&);
+     virtual void OnDeleteClass(CClass&);

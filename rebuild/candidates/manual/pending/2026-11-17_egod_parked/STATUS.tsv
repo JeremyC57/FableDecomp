@@ -12,8 +12,8 @@ address	kind	name	state	true_length	staged_folder	note
 00428494	named	NUISystem::CManager::CreateMenuEntryComponent	OPEN			
 00435190	named	CDisplayEngine::?InitEngine@CDisplayEngine@@MAE_NXZ	OPEN			
 00437d10	named	CPlayerGui::FormatStringForArea	OPEN			
-00442d50	identify	_global::Catch@0047e8cc	IN_PROGRESS			batch e14 (identify)
-004430f0	identify	_global::Catch@0047e8cc	IN_PROGRESS			batch e14 (identify)
+00442d50	identify	_global::Catch@0047e8cc	MATCHED_STAGED	78	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14
+004430f0	identify	_global::Catch@0047e8cc	MATCHED_STAGED	78	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14
 00446d10	identify	_global::ProcessCombatInput_MapInputsToActions	OPEN			
 00446ef0	named	CGamePlayerInterface::SetControlScheme	OPEN			
 0048e0a2	identify	_global::DrawBox	OPEN			
@@ -24,7 +24,7 @@ address	kind	name	state	true_length	staged_folder	note
 00493281	named	CSubtitleRenderer::ClickPast	OPEN			
 00497b60	named	CProgressDisplay::CalculateNextTextTag	OPEN			
 00497fd0	named	CProgressDisplay::DisplayCenteredText	MATCHED_STAGED	1076	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
-00498410	identify	_global::GetCharWidthW	OPEN			
+00498410	identify	_global::GetCharWidthW	IN_PROGRESS			batch e15 (identify)
 0049ed80	identify	_global::ConsoleSetFreeCameraLookVector	OPEN			
 004a1c8e	named	CTCTrophy::OnShowTrophyInitialise	OPEN			
 004a1cb0	named	CWorld::CWorld::PreparePrimitivesForEngine	OPEN			
@@ -40,7 +40,7 @@ address	kind	name	state	true_length	staged_folder	note
 004ce550	named	CSubtitledMessage::CSubtitledMessage	OPEN			
 004cebb0	named	CSubtitledMessage::GetMessagesFromTextName	OPEN			
 005148d0	identify	_global::CEngineWorldMap_MoveConstructor	OPEN			
-0051ea30	identify	_gapscan::sub_0051ea30	IN_PROGRESS			batch e14 (identify)
+0051ea30	identify	_gapscan::sub_0051ea30	MATCHED_STAGED	88	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14
 00521cf0	identify	_global::CThingManager_LoadMorphFromScript	OPEN			
 005239cd	identify	_global::CThingDeadCreature_SavePersistentState	OPEN			
 00524290	identify	_global::CThingManager_SaveGameState	OPEN			
@@ -144,7 +144,7 @@ address	kind	name	state	true_length	staged_folder	note
 006cc270	named	CTCCreatureNavigation::DrawPreparePrimitivesForRendering	OPEN			
 006cddf0	named	CGroundNavigatorExternalInterface::?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z	OPEN			
 006d5d30	named	CThingAICreature::UpdateAI	OPEN			
-006d63f0	identify	_global::Math_FracPart	OPEN			
+006d63f0	identify	_global::Math_FracPart	IN_PROGRESS			batch e15 (identify)
 006d6fa0	named	CTCHeroExperience::GetTrainableStatPossibleLevelUpAmount	OPEN			
 006d8980	named	CTCHeroExperience::UpgradeTrainableStat	OPEN			
 006ddd30	named	CTCTrophy::OnTrophyUseAction	OPEN			
@@ -173,7 +173,7 @@ address	kind	name	state	true_length	staged_folder	note
 00726980	named	CTCPhysicsNavigator::PerformForcedMovement	OPEN			
 00726ce0	named	CTCPhysicsNavigator::Move	OPEN			
 007280c0	named	CTCRandomAppearanceMorph::UpdateMorphSet	OPEN			
-0072aaf0	identify	_global::UseSpecialAbility_CTCMultiStrike	IN_PROGRESS			batch e14 (identify)
+0072aaf0	identify	_global::UseSpecialAbility_CTCMultiStrike	MATCHED_STAGED	66	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14
 0072f380	named	CTCDummyVillager::OnSerialise	OPEN			
 0072f750	named	CTCDummyVillager::CreateVillager	OPEN			
 0072fb70	named	CTCDummyVillager::FrameUpdate	OPEN			
@@ -505,8 +505,8 @@ address	kind	name	state	true_length	staged_folder	note
 009b9d70	named	CStringParser::SkipPastNewline	OPEN			
 009bbcc0	named	CPersistContext::TransferSubComponentLoadText	OPEN			
 009bca20	named	_global::DisplayCenteredText	MATCHED_STAGED	1104	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13
-009bce70	identify	_global::GetCharWidthW	OPEN			
-009bcef0	identify	_global::GetCharWidthW	OPEN			
+009bce70	identify	_global::GetCharWidthW	IN_PROGRESS			batch e15 (identify)
+009bcef0	identify	_global::GetCharWidthW	IN_PROGRESS			batch e15 (identify)
 009bd460	named	CMovieSubtitles::ParseSubtitles	OPEN			
 009c33a0	named	_global::GetMarkerFileName	OPEN			
 009c37a0	identify	_global::CodeSection_SetReadyAndSignal	OPEN			
@@ -708,7 +708,7 @@ address	kind	name	state	true_length	staged_folder	note
 00ba9830	named	CEnginePrimitiveManagerMeshBase::GetReflectionTexture	MATCHED_STAGED	570	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04
 00ba9cb0	identify	_global::ComputeParticleVisibilityDistance	OPEN			
 00baa870	named	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList	OPEN			
-00bba1e0	identify	_global::CGuiControlTreePane_OnFileLoadComplete	OPEN			
+00bba1e0	identify	_global::CGuiControlTreePane_OnFileLoadComplete	IN_PROGRESS			batch e15 (identify)
 00bbe090	named	CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderSingleSpriteTrail	OPEN			
 00bc3f30	named	CEnginePrimitiveManagerParticleLineGroup::RenderSubPrimitive	OPEN			
 00bc6930	named	CEnginePrimitiveManagerText::CEnginePrimitiveManagerText::RenderPrimitive	OPEN			
@@ -729,7 +729,7 @@ address	kind	name	state	true_length	staged_folder	note
 00be6880	named	CLandscapeBackgroundPatch::BuildDefaultSection	OPEN			
 00beb6c0	identify	_global::Interpolate_Quaternion_Scale_Matrix	OPEN			
 00bebca0	named	CEnginePrimitiveManagerMeshBase::PreloadReflectionTexture	OPEN			
-00bf2980	identify	_gapscan::sub_00bf2980	OPEN			
+00bf2980	identify	_gapscan::sub_00bf2980	IN_PROGRESS			batch e15 (identify)
 00bf2b50	named	CEngineTreeFilerBase::ConvertListToTree	OPEN			
 00bfa2a0	named	CLocalDetailPrimitiveRepeatedMesh::Load	OPEN			
 00bfad90	named	CLocalDetailPrimitiveMeshZSpriteBatch::RenderUpdate	OPEN			

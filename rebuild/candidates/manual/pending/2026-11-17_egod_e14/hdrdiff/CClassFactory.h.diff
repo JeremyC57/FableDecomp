@@ -1,0 +1,20 @@
+--- a/rebuild/include/engine/CClassFactory.h
++++ b/rebuild/include/engine/CClassFactory.h
+@@ -35,6 +35,17 @@
+     CClass* AllocateClass(const CCharString&);                          // 0x00A371C0
+ protected:
+ #endif
++#ifdef FABLE_RETAIL_CCLASSFACTORY_TYPEACCESSORS
++    // Opt-in (egod e14, row 0x0051EA30 CThingManager::FillRenderListsWithAllEntities): Ego_r.pdb / FableWin.pdb
++    // ?GetTypeName@CClassFactory@@QBEABVCCharString@@K@Z (public), ?IsClassTypeRegistered@CClassFactory@@IBE_NK@Z and
++    // ?GetTypeList@CClassFactory@@IAEAAV?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@K@Z (protected); no out-of-line retail copy (the
++    // row reads ClassTypeInfo[type].Used / .TypeList in place, 0x0051EA43 / 0x0051EA54). Bodies: the ClassTypeInfo element's members.
++public:
++    const CCharString& GetTypeName(unsigned long type) const { return ClassTypeInfo[type].Name; }
++protected:
++    bool IsClassTypeRegistered(unsigned long type) const { return ClassTypeInfo[type].Used; }
++    std::list<CClass*>& GetTypeList(unsigned long type) { return ClassTypeInfo[type].TypeList; }
++#endif
+     std::vector<CClassTypeInfo> ClassTypeInfo;                          // +4 (header wave 2026-11-03: typed for row 0x00522A20, ClassTypeInfo.size())
+     unsigned long MaxClassTypeID;
+     unsigned long NoAllocatedClasses;

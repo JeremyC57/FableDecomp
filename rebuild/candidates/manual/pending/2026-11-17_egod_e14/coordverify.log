@@ -1,0 +1,12 @@
+addr       parity           behav  name
+0072aaf0   RELOCATION_MATCH PASS   SetupMultiStrike
+00442d50   WARN RELOC_NAME: ??1?$_List_base@VSDamageValue@CDrawDamage@NPlayerGui@@V?$allocator@VSDamageValue@CDrawDamage@NPlayerGui@@@std@@@std@@QAE@XZ -> 0043fcf0 labelled '_global::StdList_Clear_0043fcf0'
+00442d50   RELOCATION_MATCH PASS   ??_GCDrawDamage@NPlayerGui@@QAEPAXI@Z
+004430f0   RELOCATION_MATCH PASS   ??_GCDrawNPCName@NPlayerGui@@QAEPAXI@Z
+0051ea30   RELOCATION_MATCH PASS   FillRenderListsWithAllEntities
+
+WINS: 4
+  0072aaf0 RELOCATION_MATCH CTCSpecialAbilities::SetupMultiStrike
+  00442d50 RELOCATION_MATCH NPlayerGui::CDrawDamage::??_GCDrawDamage@NPlayerGui@@QAEPAXI@Z
+  004430f0 RELOCATION_MATCH NPlayerGui::CDrawNPCName::??_GCDrawNPCName@NPlayerGui@@QAEPAXI@Z
+  0051ea30 RELOCATION_MATCH CThingManager::FillRenderListsWithAllEntities

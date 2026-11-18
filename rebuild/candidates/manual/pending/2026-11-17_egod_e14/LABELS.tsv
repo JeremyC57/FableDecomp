@@ -1,0 +1,7 @@
+address	name	evidence
+00442d50	??_GCDrawDamage@NPlayerGui@@QAEPAXI@Z	Ego_d player_gui.obj order + FableWin.pdb ??_G name + reloc_bindings 0x0043FCF0 _List_base<SDamageValue> dtor
+004430f0	??_GCDrawNPCName@NPlayerGui@@QAEPAXI@Z	Ego_d player_gui.obj order + FableWin.pdb ??_G name + reloc_bindings 0x0099B510 CWideString dtor (Ego_r Name +0x28)
+0072aaf0	?SetupMultiStrike@CTCSpecialAbilities@@AAE_NXZ	Ego_d order + Ego_r 0x007418C0 + string 0x0123D374
+0051ea30	?FillRenderListsWithAllEntities@CThingManager@@AAEXXZ	Ego_d order + Ego_r 0x00528AA0 + sole caller SetUpdateAndRenderAllFlag
+006b5890	??$__lower_bound@PAU?$pair@JM@std@@U12@U?$less@U?$pair@JM@std@@@2@H@std@@YIPAU?$pair@JM@0@PAU10@0ABU10@U?$less@U?$pair@JM@std@@@0@PAH@Z	reloc_bindings + Ego_r Dinkumware twin 0x006F1B30
+009d8650	?MicroThreadSleep@MicroThread@@YIXXZ	Ego_d order + FableWin/Ego_r name tables + caller 0x009D87F0
