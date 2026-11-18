@@ -11,6 +11,10 @@
 #endif
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCCRATESTACK_FILLSTACK
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+#endif
 class CThing;
 class CTCCrateStack : public CTCBase {
 public:
@@ -18,6 +22,17 @@ public:
     long GetNumCrates() const;                                           // 0x007B6660
     CThing* GetNextCrate() const;                                        // 0x007B6750
     CThing* RemoveNextCrate();                                           // 0x007B6790
+#ifdef FABLE_RETAIL_CTCCRATESTACK_FILLSTACK
+    // e05 opt-in (egod lane, row 0x007B6810): Ego_r.pdb ?FillStack@CTCCrateStack@@QAEXJABVC3DVector@@0@Z (public; Ego_d parameter names
+    // height / marker_pos / marker_dir) and the three Ego_d / Ego_r data members (FirstCrate +0x0C, SecondCrate +0x14, CrateDefIndex
+    // +0x1C; private; retail FillStack reads +0x1C as the def index and stores the crates at +0x0C / +0x14). Needs engine/CIntelligentPointer.h
+    // (FABLE_RETAIL_CINTELLIGENTPOINTER) and engine/C3DVector.h. Retail sizeof 0x20.
+    void FillStack(long height, const C3DVector& marker_pos, const C3DVector& marker_dir);   // 0x007B6810
+private:
+    CIntelligentPointer<CThing> FirstCrate;                              // +0x0C
+    CIntelligentPointer<CThing> SecondCrate;                             // +0x14
+    long CrateDefIndex;                                                  // +0x1C
+#endif
 };
 #endif
 #endif // FABLE_ENGINE_CTCCRATESTACK_H

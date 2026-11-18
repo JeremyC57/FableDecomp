@@ -1,6 +1,6 @@
 address	kind	name	state	true_length	staged_folder	note
 00402510	named	_global::GFMain	OPEN			
-00408820	named	CUserProfileManager::ResetAssignedInputsWASD	MATCHED_STAGED	185	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
+00408820	named	CUserProfileManager::ResetAssignedInputsWASD	LANDED	185	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01; landed 2026-11-18 (landing egod)
 00409730	named	CUserProfileManager::VerifySignature	OPEN			
 00409b70	named	CUserProfileManager::SetDefaultValuesForNewProfile	OPEN			
 0040a7f0	named	CUserProfileManager::ApplyVideoValues	OPEN			
@@ -12,8 +12,8 @@ address	kind	name	state	true_length	staged_folder	note
 00428494	named	NUISystem::CManager::CreateMenuEntryComponent	OPEN			
 00435190	named	CDisplayEngine::?InitEngine@CDisplayEngine@@MAE_NXZ	OPEN			
 00437d10	named	CPlayerGui::FormatStringForArea	OPEN			
-00442d50	identify	_global::Catch@0047e8cc	MATCHED_STAGED	78	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14
-004430f0	identify	_global::Catch@0047e8cc	MATCHED_STAGED	78	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14
+00442d50	identify	_global::Catch@0047e8cc	LANDED	78	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14; landed 2026-11-18 (landing egod)
+004430f0	identify	_global::Catch@0047e8cc	LANDED	78	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14; landed 2026-11-18 (landing egod)
 00446d10	identify	_global::ProcessCombatInput_MapInputsToActions	OPEN			
 00446ef0	named	CGamePlayerInterface::SetControlScheme	OPEN			
 0048e0a2	identify	_global::DrawBox	OPEN			
@@ -23,14 +23,14 @@ address	kind	name	state	true_length	staged_folder	note
 00491ad2	named	CSubtitleRenderer::ProcessEmbeddedHighlightTags	OPEN			
 00493281	named	CSubtitleRenderer::ClickPast	OPEN			
 00497b60	named	CProgressDisplay::CalculateNextTextTag	OPEN			
-00497fd0	named	CProgressDisplay::DisplayCenteredText	MATCHED_STAGED	1076	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
-00498410	identify	_global::GetCharWidthW	MATCHED_STAGED	120	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
+00497fd0	named	CProgressDisplay::DisplayCenteredText	LANDED	1076	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12; landed 2026-11-18 (landing egod)
+00498410	identify	_global::GetCharWidthW	LANDED	120	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15; landed 2026-11-18 (landing egod)
 0049ed80	identify	_global::ConsoleSetFreeCameraLookVector	OPEN			
 004a1c8e	named	CTCTrophy::OnShowTrophyInitialise	OPEN			
 004a1cb0	named	CWorld::CWorld::PreparePrimitivesForEngine	OPEN			
-004b01b0	named	CQuestManager::IsRegionValidInRegionLockingMode	MATCHED_STAGED	277	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
+004b01b0	named	CQuestManager::IsRegionValidInRegionLockingMode	LANDED	277	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01; landed 2026-11-18 (landing egod)
 004b1d30	named	CQuestManager::SetQuestAsCompleted	OPEN			
-004b2890	named	CQuestManager::PostBoastTransfer	MATCHED_STAGED	569	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04
+004b2890	named	CQuestManager::PostBoastTransfer	LANDED	569	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04; landed 2026-11-18 (landing egod)
 004b2ca0	identify	_global::WorldMap_BuildLoadSectionsList	OPEN			
 004bc1a0	identify	_gapscan::sub_004bc1a0	OPEN			
 004c08c0	named	NGraphicAppearance::CTCGraphicAppearance::GetDummyObject	OPEN			
@@ -40,7 +40,7 @@ address	kind	name	state	true_length	staged_folder	note
 004ce550	named	CSubtitledMessage::CSubtitledMessage	OPEN			
 004cebb0	named	CSubtitledMessage::GetMessagesFromTextName	OPEN			
 005148d0	identify	_global::CEngineWorldMap_MoveConstructor	OPEN			
-0051ea30	identify	_gapscan::sub_0051ea30	MATCHED_STAGED	88	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14
+0051ea30	identify	_gapscan::sub_0051ea30	LANDED	88	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14; landed 2026-11-18 (landing egod)
 00521cf0	identify	_global::CThingManager_LoadMorphFromScript	OPEN			
 005239cd	identify	_global::CThingDeadCreature_SavePersistentState	OPEN			
 00524290	identify	_global::CThingManager_SaveGameState	OPEN			
@@ -56,7 +56,7 @@ address	kind	name	state	true_length	staged_folder	note
 0055c6f0	identify	NUISystem::CMouseCursor::NUISystem::CMouseCursor::vfunc_1	OPEN			
 0055d810	named	CTCPhotojournalCapture::OnCaptionEntered	OPEN			
 0055dc00	named	CTCPhotojournalCapture::CreateScreen	OPEN			
-0057aeb4	named	CTCHeroStats::GetFavouriteWeapon	MATCHED_STAGED	427	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04
+0057aeb4	named	CTCHeroStats::GetFavouriteWeapon	LANDED	427	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04; landed 2026-11-18 (landing egod)
 0057b43f	named	CTCHeroStats::RenderHeroDrunkenness	OPEN			
 0057d23b	identify	_global::FrameUpdate_ApplyMorphEffect	OPEN			
 005850fd	named	CTCInventory::GetStyleCardsListUIComponent	OPEN			
@@ -67,7 +67,7 @@ address	kind	name	state	true_length	staged_folder	note
 0059fee3	named	CTCInventoryTrade::AddBuyItemToList	OPEN			
 005a94bd	named	CTCInventoryTrade::OpenInventory	OPEN			
 005ac10e	named	CTCInventoryTrade::ConstructActualBuyInventoryPC	OPEN			
-005ad305	named	CTCInventoryTrade::ApplyTattooCard	MATCHED_STAGED	620	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04
+005ad305	named	CTCInventoryTrade::ApplyTattooCard	LANDED	620	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04; landed 2026-11-18 (landing egod)
 005b9641	named	CTCInventoryClothing::DrawPreparePrimitivesForRendering	OPEN			
 005ca68e	named	CTCInventoryWeapons::SetupActiveWeaponsOnCarrier	OPEN			
 005cd4c4	named	CTCInventoryStats::BuildHeroClass	OPEN			
@@ -91,7 +91,7 @@ address	kind	name	state	true_length	staged_folder	note
 00657580	named	NPlayerGui::CDrawQuickAccessIconsPC::Draw	PARKED			PARKED e12: DIFFER(1057v1057) branch-1 Y sum operand order at 0x00657663 only; new NPlayerGui CDrawQuickAccessIcons(PC) headers in e12 overlay; draft ../2026-11-17_egod_open/e12/00657580.cpp
 00659625	named	CTCVillage::UpdateTorchTasks	OPEN			
 0065ad37	named	CTCVillage::UpdateCurfew	OPEN			
-0065cb6b	named	CTCVillage::ReportCrime	MATCHED_STAGED	747	rebuild/candidates/manual/pending/2026-11-17_egod_e11	batch e11
+0065cb6b	named	CTCVillage::ReportCrime	LANDED	747	rebuild/candidates/manual/pending/2026-11-17_egod_e11	batch e11; landed 2026-11-18 (landing egod)
 00666310	named	CThingCreatureBase::OnCreate	OPEN			
 0066a9e0	named	CTCSoundPlayer::PlayCollisionSound	PARKED			PARKED e07: DIFFER(626v626) instruction-identical; call target 0x00415D70 (??BCDefString forwarder) v retail 0x00415DD0 GetString at 0x0066AC08 (inline decision inside the pre-compiled forwarder); draft ../2026-11-17_egod_open/e07/0066a9e0.cpp
 0066b370	named	CTCSoundPlayer::PlayAllSoundEvents	OPEN			
@@ -103,7 +103,7 @@ address	kind	name	state	true_length	staged_folder	note
 0067e290	named	CDegradableDef::CDegradableDef::Transfer	PARKED			PARKED e04: DIFFER(273v273) register renames from the enum Transfer arm 0x0067E2EB; draft ../2026-11-17_egod_open/e04/0067e290.cpp
 00680050	named	CThingObjectDef::?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z	PARKED			PARKED e09: DIFFER(439v439) one load swap at 0x00680196 (pappearance_def reload v cleanup flag); draft ../2026-11-17_egod_open/e09/00680050.cpp
 00681cd0	named	CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero	OPEN			
-00681e60	named	CTCCreatureOpinionOfHero::SetPersonalityOverride	MATCHED_STAGED	626	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07
+00681e60	named	CTCCreatureOpinionOfHero::SetPersonalityOverride	LANDED	626	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07; landed 2026-11-18 (landing egod)
 00683770	named	CTCCreatureOpinionOfHero::GetHeadPendingDeed	OPEN			
 00688360	named	CInputProcessControlCreature::?ProcessInput@CInputProcessControlCreature@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OPEN			
 0068dd00	named	CInputProcessUseEnvironment::?ProcessInput@CInputProcessUseEnvironment@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OPEN			
@@ -123,7 +123,7 @@ address	kind	name	state	true_length	staged_folder	note
 006aa720	named	CThingPlayerCreature::SetPlayerCreatureActionForMelee	OPEN			
 006ab0e0	named	CThingPlayerCreature::OnHit	OPEN			
 006ac200	named	CThingPlayerCreature::CreateAndAddObjectToInventory	OPEN			
-006ad700	named	CThingPlayerCreature::ControlledMove	MATCHED_STAGED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05
+006ad700	named	CThingPlayerCreature::ControlledMove	LANDED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05; landed 2026-11-18 (landing egod)
 006af4e0	named	CMessageEvent::GetPOriginator<CThing>	OPEN			
 006af7d0	named	CTCPhysicsBase::ImpulseRespondToCollision	OPEN			
 006b5890	identify	_Lower_bound<std::pair<long,float>*,std::_Lower_bound<std::pair<long,float>*,std::pair<long,float>,int>	PARKED			PARKED e14 (identified): ??$__lower_bound@PAU?$pair@JM@std@@... (environment.obj; reloc_bindings + Ego_r Dinkumware twin 0x006F1B30); DIFFER(76v76): retail keeps val.second on the x87 stack across the loop, VC7.1 RTM never does in any tried spelling / flag (codegen gap); draft ../2026-11-17_egod_open/e14/006b5890.cpp
@@ -132,7 +132,7 @@ address	kind	name	state	true_length	staged_folder	note
 006bd900	named	CMusicManager::PlayMusic	OPEN			
 006c0970	named	CTCBuyableHouse::CreateSignPost	OPEN			
 006c0b20	named	CTCBuyableHouse::FindPosToCreateNewVillager	OPEN			
-006c14d0	named	CTCBuyableHouse::OnInitialActivate	MATCHED_STAGED	734	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10
+006c14d0	named	CTCBuyableHouse::OnInitialActivate	LANDED	734	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10; landed 2026-11-18 (landing egod)
 006c1ed0	identify	_Copy_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>,std::_Iterator_base0>,std::back_insert_iterator<std::list<CIntelligentPointer<CThingAICreature>,std::_Copy_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingAICr	OPEN			
 006c5a80	named	CTCHeroOpinionDeedLog::CTCHeroOpinionDeedLog	OPEN			
 006c6040	named	CTCHeroOpinionDeedLog::InformRelevantThingsOfDeed	OPEN			
@@ -144,7 +144,7 @@ address	kind	name	state	true_length	staged_folder	note
 006cc270	named	CTCCreatureNavigation::DrawPreparePrimitivesForRendering	OPEN			
 006cddf0	named	CGroundNavigatorExternalInterface::?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z	OPEN			
 006d5d30	named	CThingAICreature::UpdateAI	OPEN			
-006d63f0	identify	_global::Math_FracPart	MATCHED_STAGED	68	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
+006d63f0	identify	_global::Math_FracPart	LANDED	68	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15; landed 2026-11-18 (landing egod)
 006d6fa0	named	CTCHeroExperience::GetTrainableStatPossibleLevelUpAmount	OPEN			
 006d8980	named	CTCHeroExperience::UpgradeTrainableStat	OPEN			
 006ddd30	named	CTCTrophy::OnTrophyUseAction	OPEN			
@@ -173,7 +173,7 @@ address	kind	name	state	true_length	staged_folder	note
 00726980	named	CTCPhysicsNavigator::PerformForcedMovement	OPEN			
 00726ce0	named	CTCPhysicsNavigator::Move	OPEN			
 007280c0	named	CTCRandomAppearanceMorph::UpdateMorphSet	OPEN			
-0072aaf0	identify	_global::UseSpecialAbility_CTCMultiStrike	MATCHED_STAGED	66	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14
+0072aaf0	identify	_global::UseSpecialAbility_CTCMultiStrike	LANDED	66	rebuild/candidates/manual/pending/2026-11-17_egod_e14	batch e14; landed 2026-11-18 (landing egod)
 0072f380	named	CTCDummyVillager::OnSerialise	OPEN			
 0072f750	named	CTCDummyVillager::CreateVillager	OPEN			
 0072fb70	named	CTCDummyVillager::FrameUpdate	OPEN			
@@ -183,8 +183,8 @@ address	kind	name	state	true_length	staged_folder	note
 00734c60	named	CTCCombat::SetStruck	OPEN			
 00745840	identify	CTCPerceiveThing::CTCPerceiveThing::vfunc_11	OPEN			
 00746db0	identify	_global::GetStabPosOnThing	OPEN			
-00747c70	named	CTCStealth::UpdateDangerInfo	MATCHED_STAGED	303	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
-00749620	identify	_global::CTargetPoint_Vector_PushBack	MATCHED_STAGED	105	rebuild/candidates/manual/pending/2026-11-17_egod_e16	batch e16
+00747c70	named	CTCStealth::UpdateDangerInfo	LANDED	303	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01; landed 2026-11-18 (landing egod)
+00749620	identify	_global::CTargetPoint_Vector_PushBack	LANDED	105	rebuild/candidates/manual/pending/2026-11-17_egod_e16	batch e16; landed 2026-11-18 (landing egod)
 0074a4e0	named	CTCCreatureGenerator::DoNavCheck	OPEN			
 0074b2b0	named	CTCCreatureGenerator::CreateCreatures	OPEN			
 0074b77c	identify	_global::CTCCreatureGenerator_SpawnInArea	OPEN			
@@ -193,7 +193,7 @@ address	kind	name	state	true_length	staged_folder	note
 0074ec50	named	CTCContainerRewardHero::CreateItemPickupContainer	OPEN			
 00752b00	named	CTCLook::SetHeadLooking	OPEN			
 00753630	named	CTCLook::InitialiseTurningViaAnimation	OPEN			
-00753e90	named	CTCLook::LookAtPos	MATCHED_STAGED	447	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03
+00753e90	named	CTCLook::LookAtPos	LANDED	447	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03; landed 2026-11-18 (landing egod)
 007542b0	named	CTCLook::CTCLook::OnAppearanceDraw	OPEN			
 00754d80	identify	_For_each<std::pair<float,CAnimationEntry_const*>*,_anon_247890BC::_For_each<std::pair<float,CAnimationEntry_const*>*,_anon_247890BC::CGetBestTurningAnim>	OPEN			
 0075ddf0	named	CTCCameraPointScriptedSpline::UpdateSplines	OPEN			
@@ -222,8 +222,8 @@ address	kind	name	state	true_length	staged_folder	note
 0078fd60	named	CTCDivineWrath::FrameUpdate	OPEN			
 00793370	identify	_global::Vector_InsertRange_CBaseIntelligentPointer	OPEN			
 00795300	named	CTCDivineWrath::FrameUpdate	OPEN			
-00798940	named	CTCForcePushed::FrameUpdate	MATCHED_STAGED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05
-007993f0	named	CTCShopKeeper::WitnessedCrime	MATCHED_STAGED	698	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10
+00798940	named	CTCForcePushed::FrameUpdate	LANDED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05; landed 2026-11-18 (landing egod)
+007993f0	named	CTCShopKeeper::WitnessedCrime	LANDED	698	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10; landed 2026-11-18 (landing egod)
 0079a890	named	CTCSummonSpell::IsValidTeleportPos	OPEN			
 0079deb0	named	CTCPhysicalShieldSpell::PlayEffect	OPEN			
 0079e5f0	named	CTCPhysicalShieldSpell::CTCPhysicalShieldSpell	OPEN			
@@ -235,7 +235,7 @@ address	kind	name	state	true_length	staged_folder	note
 007b1a30	named	CTCFishing::CreateFish	OPEN			
 007b3120	named	CTCGuard::FrameUpdate	OPEN			
 007b5e50	named	CTCWaterWader::FrameUpdate	OPEN			
-007b6810	named	CTCCrateStack::FillStack	MATCHED_STAGED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05
+007b6810	named	CTCCrateStack::FillStack	LANDED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05; landed 2026-11-18 (landing egod)
 007b6b10	named	CTCCrateStack::FillStacks	OPEN			
 007b8840	named	CTCTavernTable::GetSeat	OPEN			
 007b8cc0	named	CTCTavernTable::GetServingPoint	OPEN			
@@ -249,7 +249,7 @@ address	kind	name	state	true_length	staged_folder	note
 007c3fb0	named	CTCHealLife::FrameUpdate	OPEN			
 007c57c0	named	CTCGhostSword::AddSword	OPEN			
 007c60a0	named	CTCGhostSword::UpdateGhostSwordParticleEffects	OPEN			
-007c7c40	named	CTCTurncoat::FrameUpdate	MATCHED_STAGED	744	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10
+007c7c40	named	CTCTurncoat::FrameUpdate	LANDED	744	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10; landed 2026-11-18 (landing egod)
 007c81f0	named	CTCHitOnCollision::OnCollision	PARKED			PARKED e11: DIFFER(768v768) frame layout only (STLport find iterator-tag byte [esp+27h] v 33h, hit_direction 28h v 24h); no test yet; new CTCHitOnCollision.h in e11 overlay; draft ../2026-11-17_egod_open/e11/007c81f0.cpp
 007c977c	named	CTCCreatureGeneratorCreator::OnSerialise	OPEN			
 007c99f0	named	CTCCreatureGeneratorCreator::FrameUpdate	OPEN			
@@ -258,14 +258,14 @@ address	kind	name	state	true_length	staged_folder	note
 007d2ff0	named	CTCTavernGameCoinGolf::FrameUpdate	OPEN			
 007d3f80	named	CTCTavernGameCoinGolf::OnInitialActivate	OPEN			
 007d75a0	named	CTCTavernGameCardPairs::GetRandomCard	PARKED			PARKED e08: DIFFER(268v465) needs the inline CCardDef default ctor / copy-assign / dtor bodies; card_sorting_types.h clashes with engine/CTCTavernGameCardBase.h / Pairs.h (reconcile first); draft ../2026-11-17_egod_open/e08/007d75a0.cpp
-007da400	named	CTCTavernGameCardBlackjack::GetCurrentScore	MATCHED_STAGED	280	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
-007da520	named	CTCTavernGameCardBlackjack::GetRequiredScore	MATCHED_STAGED	286	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
-007da640	named	CTCTavernGameCardBlackjack::GetBet	MATCHED_STAGED	274	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
+007da400	named	CTCTavernGameCardBlackjack::GetCurrentScore	LANDED	280	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01; landed 2026-11-18 (landing egod)
+007da520	named	CTCTavernGameCardBlackjack::GetRequiredScore	LANDED	286	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01; landed 2026-11-18 (landing egod)
+007da640	named	CTCTavernGameCardBlackjack::GetBet	LANDED	274	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01; landed 2026-11-18 (landing egod)
 007dac10	named	CTCTavernGameCardBlackjack::DealCards	OPEN			
 007db5c0	named	CTCTavernGameCardBlackjack::Split	OPEN			
 007dd540	named	CTCCreatureFlyInCircles::UpdateSwoop	OPEN			
 007e0f20	named	CTCAICreatureWillPowerIndicator::FrameUpdate	PARKED			PARKED e03: DIFFER(531v537) presence-word load into ecx at 0x007E0F2A; one frame word shared with fx_index; draft ../2026-11-17_egod_open/e03/007e0f20.cpp
-007e8a40	named	CTCFlourishTarget::ProcessActionMovementDelta	MATCHED_STAGED	482	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13
+007e8a40	named	CTCFlourishTarget::ProcessActionMovementDelta	LANDED	482	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13; landed 2026-11-18 (landing egod)
 007e9460	identify	CTCAvoidRegionExit::CTCAvoidRegionExit::vfunc_9	OPEN			
 007ebea0	named	CTCActionUseBed::OnActionUse	OPEN			
 007ec710	named	CTCActionUseBed::GlobalUpdate	OPEN			
@@ -285,7 +285,7 @@ address	kind	name	state	true_length	staged_folder	note
 00802e00	named	CTCTargetingPlayer::SetPTargetedThing	OPEN			
 00803280	named	CTCTargetingPlayer::UpdateTargetThreatening	OPEN			
 00803540	named	CTCTargetingPlayer::UpdateTargetedPositionRandomWalk	PARKED			PARKED e13: DIFFER(1108v1108) 2 scheduling sites 0x0080380E / 0x00803890; Ego_d debug body 786 v 278 instructions (a debug-only block decides the scheduling); draft ../2026-11-17_egod_open/e13/00803540.cpp
-00805600	named	CTCTargetingPlayer::FrameUpdate	MATCHED_STAGED	641	rebuild/candidates/manual/pending/2026-11-17_egod_e06	batch e06
+00805600	named	CTCTargetingPlayer::FrameUpdate	LANDED	641	rebuild/candidates/manual/pending/2026-11-17_egod_e06	batch e06; landed 2026-11-18 (landing egod)
 0080aad1	named	CTCActionUseBuyHouse::OnCreate	OPEN			
 0080bfec	named	CPersistContext_TransferableVector<CHeroMarriageInfo>::Resize	OPEN			
 0080c6d0	named	CTCDExplosion::UpdateDynamicHitThings	OPEN			
@@ -313,7 +313,7 @@ address	kind	name	state	true_length	staged_folder	note
 0083d2e0	named	CThingMarker::DrawPreparePrimitivesForRendering	OPEN			
 0083e1f0	named	CThingScriptUIDReplacer::CThingScriptUIDReplacer	OPEN			
 008411d0	identify	_global::LHHttp2_HandleResponse	OPEN			
-00843310	named	CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended	MATCHED_STAGED	347	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
+00843310	named	CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended	LANDED	347	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02; landed 2026-11-18 (landing egod)
 00844600	named	CCreatureAction_Read::CCreatureAction_Read::PerformAction	OPEN			
 00844740	named	CCreatureAction_DropGift::PerformAction	OPEN			
 00844bc0	named	CCreatureAction_GiveItemToThing::?PerformAction@CCreatureAction_GiveItemToThing@@UAEXXZ	OPEN			
@@ -329,17 +329,17 @@ address	kind	name	state	true_length	staged_folder	note
 00865f40	named	CCombatAction_GenericStrikeResponseBase::Initialise	OPEN			
 008664f0	named	CCombatAction_GenericStrikeResponseKnockdown::?Initialise@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ	OPEN			
 00867200	named	CCombatAction_GenericResponseToExplosion::?Initialise@CCombatAction_GenericResponseToExplosion@@UAEXXZ	OPEN			
-00867d20	named	CCombatAction_GenericResponseToExplosion::CCombatAction_GenericResponseToExplosion::FinishAction	MATCHED_STAGED	507	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03
-0086b9d0	named	CRandomAppearanceMorph::GetRandomSkeletalMorph	MATCHED_STAGED	389	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
-0086be40	named	CRandomAppearanceMorph::GetRandomBodyParts	MATCHED_STAGED	294	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
-00871fd0	named	NCameraModes::CStringAndCageBase::UpdateXYVars	MATCHED_STAGED	124	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04
+00867d20	named	CCombatAction_GenericResponseToExplosion::CCombatAction_GenericResponseToExplosion::FinishAction	LANDED	507	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03; landed 2026-11-18 (landing egod)
+0086b9d0	named	CRandomAppearanceMorph::GetRandomSkeletalMorph	LANDED	389	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02; landed 2026-11-18 (landing egod)
+0086be40	named	CRandomAppearanceMorph::GetRandomBodyParts	LANDED	294	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02; landed 2026-11-18 (landing egod)
+00871fd0	named	NCameraModes::CStringAndCageBase::UpdateXYVars	LANDED	124	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04; landed 2026-11-18 (landing egod)
 008722d0	identify	_global::ParticleMorph_UpdatePositionWithVelocity	OPEN			
 00873690	identify	_global::CVertexBufferWin32_UpdateTransform	OPEN			
 00873e10	named	NCameraModes::CPCMouseLook::Update	OPEN			
 00875fb0	named	NCameraModes::DrawSquare	PARKED			e17: DIFFER(1315v1315) loop-init scheduled two FP stores later than retail 0x008760C0; draft ../2026-11-17_egod_open/e17/00875fb0.cpp
 008764e0	named	NCameraModes::DrawPyramid	OPEN			
 00877840	named	NCameraModes::CTools::IsLineOfSight	OPEN			
-00878430	named	CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	MATCHED_STAGED	673	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08
+00878430	named	CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	LANDED	673	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08; landed 2026-11-18 (landing egod)
 00879070	named	NCameraModes::CProjectileWeapon::GetHeightParamForPostionWithPhi	OPEN			
 00879680	identify	_global::ProjectileWeapon_CalcPhiAngle	OPEN			
 00879900	named	NCameraModes::CProjectileWeapon::Update	OPEN			
@@ -357,7 +357,7 @@ address	kind	name	state	true_length	staged_folder	note
 008a9880	named	CGameScriptInterface::?ScreenFilterFadeTo@CGameScriptInterface@@UBEPAXMMMMMABVCRGBFloatColour@@ABV?$vector@UCScr	OPEN			
 008af990	named	CombatDialogueManager::GetBestSpeechForCreature	OPEN			
 008b6ad0	named	CCreatureAction_MidAttackSide::CCreatureAction_MidAttackSide::Initialise	OPEN			
-008bf280	named	CCreatureAction_GenericFireProjectileWeapon::PerformAction	MATCHED_STAGED	638	rebuild/candidates/manual/pending/2026-11-17_egod_e06	batch e06
+008bf280	named	CCreatureAction_GenericFireProjectileWeapon::PerformAction	LANDED	638	rebuild/candidates/manual/pending/2026-11-17_egod_e06	batch e06; landed 2026-11-18 (landing egod)
 008dbc80	named	NCreatureMode::CModeDragonFlying::FrameUpdate	OPEN			
 008dcc80	named	NCreatureMode::CModeJackOfBladesFlash::Flash	OPEN			
 008dec80	named	NCreatureMode::CModeJackOfBladesFlash::FrameUpdate	OPEN			
@@ -365,7 +365,7 @@ address	kind	name	state	true_length	staged_folder	note
 008e18d0	named	NCreatureMode::CModeThunderLightningStorm::UpdateLightningBeams	OPEN			
 008e28f0	identify	NCreatureMode::CModeThunderLightningStorm::NCreatureMode::CModeThunderLightningStorm::vfunc_3	OPEN			
 008e5880	named	CTCPhysicsStandard::PerformStepBasedMovement	OPEN			
-008e5d40	named	CTCPhysicsStandard::Move	MATCHED_STAGED	441	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03
+008e5d40	named	CTCPhysicsStandard::Move	LANDED	441	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03; landed 2026-11-18 (landing egod)
 008e8e50	identify	_global::GetStrafeAnimationName	OPEN			
 008e9b70	named	NCreatureMode::CModeStrafe::AnimUpdate	OPEN			
 008edc70	identify	_gapscan::sub_008edc70	OPEN			
@@ -374,11 +374,11 @@ address	kind	name	state	true_length	staged_folder	note
 008ef200	named	Coin::Coin	OPEN			
 008ef520	named	CTCTavernGameCoinBase::UpdateCoins	OPEN			
 008efb00	named	CTCTavernGameCoinBase::FindObstacles	OPEN			
-008f0bd0	named	CTCTavernGameCardBase::DealCards	MATCHED_STAGED	722	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10
+008f0bd0	named	CTCTavernGameCardBase::DealCards	LANDED	722	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10; landed 2026-11-18 (landing egod)
 008f12d0	named	CTCTavernGameCardBase::ProcessInput	OPEN			
 008f18c0	named	CTCTavernGameCardBase::UpdateHighlightedCard	OPEN			
 008f1e30	named	CTCTavernGameCardBase::EnterGame	OPEN			
-008f3310	named	CCreatureAction_DragonFireBlastBase::?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ	MATCHED_STAGED	796	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
+008f3310	named	CCreatureAction_DragonFireBlastBase::?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ	LANDED	796	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12; landed 2026-11-18 (landing egod)
 008f45f0	named	CCreatureAction_DragonSwoop::?FrameUpdate@CCreatureAction_DragonSwoop@@UAEXXZ	OPEN			
 008f61a0	named	CHeightMap::Resize	OPEN			
 008f92fd	identify	_gapscan::sub_008f92fd	OPEN			
@@ -387,21 +387,21 @@ address	kind	name	state	true_length	staged_folder	note
 0090cc40	named	CAIStateGroup_MinionGossip::?IsRunnable@CAIStateGroup_MinionGossip@@MAE_NXZ	OPEN			
 0090ebe0	identify	_global::FindMessage	OPEN			
 009101c0	named	CAIStateGroup_MinionListenToStory::?Update@CAIStateGroup_MinionListenToStory@@MAEXXZ	OPEN			
-00911300	named	CAIStateGroup_MinionGuardReactToBodyFoundMessage::?Update@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@UAEXXZ	MATCHED_STAGED	666	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07
+00911300	named	CAIStateGroup_MinionGuardReactToBodyFoundMessage::?Update@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@UAEXXZ	LANDED	666	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07; landed 2026-11-18 (landing egod)
 009130d0	named	CAIStateGroup_FlyingThingBase::AIAction_RandomFlyToPos	OPEN			
 00914d80	named	CAIStateGroup_KidWanderNearKids::?Update@CAIStateGroup_KidWanderNearKids@@UAEXXZ	OPEN			
 00918a40	named	CAIStateGroup_GazeAtWork::IsRunnable	OPEN			
 00919240	named	CAIStateGroup_LookAtInterestingThings::FindInterestingThing	PARKED			PARKED e03: DIFFER(508v508) entry scheduling 0x0091924A..0x0091925D; draft ../2026-11-17_egod_open/e03/00919240.cpp
 00919ae0	named	CAIStateGroup_BuyFromSeller::?Update@CAIStateGroup_BuyFromSeller@@UAEXXZ	OPEN			
 0091b570	named	CAIStateGroup_SeekPerceivedThing::CAIStateGroup_SeekPerceivedThing::Update	OPEN			
-0091c0d0	named	CAIStateGroup_NymphFloatAround::CAIStateGroup_NymphFloatAround::IsRunnable	MATCHED_STAGED	81	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04
+0091c0d0	named	CAIStateGroup_NymphFloatAround::CAIStateGroup_NymphFloatAround::IsRunnable	LANDED	81	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04; landed 2026-11-18 (landing egod)
 0091c220	named	CAIStateGroup_NymphAttack::IsTargetInLineOfSight	OPEN			
 0091c6a0	named	CAIStateGroup_NymphAttack::?Update@CAIStateGroup_NymphAttack@@UAEXXZ	OPEN			
 0091e270	named	CAIStateGroup_HoverAttack::IsEnemyRunningAway	OPEN			
 0091ec30	named	CAIStateGroup_CreatureRangedCombat2::?Update@CAIStateGroup_CreatureRangedCombat2@@MAEXXZ	OPEN			
 0091f140	named	CAIStateGroup_TestTestTest::CAIStateGroup_TestTestTest::Update	OPEN			
 00920a00	named	CAIStateGroup_CreatureSeekEnemyUnderground::?Update@CAIStateGroup_CreatureSeekEnemyUnderground@@MAEXXZ	OPEN			
-00920dc0	named	CAIStateGroup_CreatureSeekEnemyUnderground::CAIStateGroup_CreatureSeekEnemyUnderground::OnReplace	MATCHED_STAGED	455	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03
+00920dc0	named	CAIStateGroup_CreatureSeekEnemyUnderground::CAIStateGroup_CreatureSeekEnemyUnderground::OnReplace	LANDED	455	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03; landed 2026-11-18 (landing egod)
 009216e0	named	CAIStateGroup_MinionFollowThing::CAIStateGroup_MinionFollowThing::IsRunnable	OPEN			
 00921990	named	CAIStateGroup_MinionFollowThing::?Update@CAIStateGroup_MinionFollowThing@@MAEXXZ	OPEN			
 00922860	named	CAIStateGroup_Drunk::?Update@CAIStateGroup_Drunk@@UAEXXZ	OPEN			
@@ -419,7 +419,7 @@ address	kind	name	state	true_length	staged_folder	note
 00931390	named	CAIStateGroup_MinionReactToCriminal::?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ	OPEN			
 00932b50	named	CAIStateGroup_MinionGuardReactToCriminal::?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ	OPEN			
 009334f0	named	CAIStateGroup_MinionGuardReactToBribe::?Update@CAIStateGroup_MinionGuardReactToBribe@@UAEXXZ	OPEN			
-00933db0	named	CAIStateGroup_MinionKidAnnoy::CAIStateGroup_MinionKidAnnoy::Update	MATCHED_STAGED	347	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
+00933db0	named	CAIStateGroup_MinionKidAnnoy::CAIStateGroup_MinionKidAnnoy::Update	LANDED	347	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02; landed 2026-11-18 (landing egod)
 00935580	named	CAIStateGroup_MinionFaceHero::?IsRunnable@CAIStateGroup_MinionFaceHero@@UAE_NXZ	OPEN			
 00935c40	named	CAIStateGroup_MinionPutOutFires::GoToWell	OPEN			
 00935e40	named	CAIStateGroup_MinionPutOutFires::PutOutFire	OPEN			
@@ -444,20 +444,20 @@ address	kind	name	state	true_length	staged_folder	note
 009478a0	named	CAIStateGroup_StayNearFoodHall::?IsRunnable@CAIStateGroup_StayNearFoodHall@@UAE_NXZ	OPEN			
 00947eb0	named	CAIStateGroup_GoToPub::GetObjectWithScriptName	OPEN			
 00948880	named	CAIStateGroup_GoToPub::Drink	OPEN			
-00949580	named	CAIStateGroup_GoToPub::WalktoSeatAndSit	MATCHED_STAGED	808	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
+00949580	named	CAIStateGroup_GoToPub::WalktoSeatAndSit	LANDED	808	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12; landed 2026-11-18 (landing egod)
 0094ab00	named	CAIStateGroup_GoToPub::Update	OPEN			
 0094dd90	named	CAIStateGroup_RockTroll::CAIStateGroup_RockTroll::Update	OPEN			
 0094fc00	named	CAIStateGroup_JackDragon::CreateIBC	OPEN			
 00950cf0	named	CAIStateGroup_JackDragon::UpdateStrafe	OPEN			
 00951070	named	CAIStateGroup_JackDragon::IntoGround	OPEN			
 00951fb0	named	CAIStateGroup_JackDragon::UpdateHover	OPEN			
-00954f40	named	CAIStateGroup_MazeTeleport::CAIStateGroup_MazeTeleport::Update	MATCHED_STAGED	604	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04
+00954f40	named	CAIStateGroup_MazeTeleport::CAIStateGroup_MazeTeleport::Update	LANDED	604	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04; landed 2026-11-18 (landing egod)
 009552c0	named	CAIStateGroup_MazeShieldedChase::CAIStateGroup_MazeShieldedChase::Update	OPEN			
 00955620	named	CAIStateGroup_MazeDefensiveMeleeCombat::?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ	OPEN			
 00955c90	named	CAIStateGroup_MazeTutorialBattle::CAIStateGroup_MazeTutorialBattle::Update	OPEN			
 00957c30	named	CAIStateGroup_MinionBehaviourCrowdBase::?IsRunnable@CAIStateGroup_MinionBehaviourCrowdBase@@UAE_NXZ	OPEN			
 009582d0	named	CAIStateGroup_MinionReactToTrespassing::?Update@CAIStateGroup_MinionReactToTrespassing@@UAEXXZ	OPEN			
-0095b9e0	named	CAIStateGroup_HoverHornetQueen::DiveBomb	MATCHED_STAGED	782	rebuild/candidates/manual/pending/2026-11-17_egod_e11	batch e11
+0095b9e0	named	CAIStateGroup_HoverHornetQueen::DiveBomb	LANDED	782	rebuild/candidates/manual/pending/2026-11-17_egod_e11	batch e11; landed 2026-11-18 (landing egod)
 0095ef80	named	CAIStateGroup_OpinionReactionRoot::?IsRunnable@CAIStateGroup_OpinionReactionRoot@@UAE_NXZ	OPEN			
 00960120	named	CAIStateGroup_DeedReactionRoot::Update	OPEN			
 00961ca0	named	CAIStateGroup_IceTrollIcicleAttack::?IsRunnable@CAIStateGroup_IceTrollIcicleAttack@@MAE_NXZ	OPEN			
@@ -481,8 +481,8 @@ address	kind	name	state	true_length	staged_folder	note
 00980bd0	named	CAIStateGroupBase::AIAction_SpeakToTarget	OPEN			
 00981410	identify	_global::AIAction_InteractWith	OPEN			
 00984f60	named	CAIStateGroup_OpinionReactionRoot::FleeUpdate	OPEN			
-00985440	named	CAIStateGroup_OpinionReactionRoot::HeroImitationPlayUpdate	MATCHED_STAGED	625	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
-00986ed0	named	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby::CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	MATCHED_STAGED	353	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
+00985440	named	CAIStateGroup_OpinionReactionRoot::HeroImitationPlayUpdate	LANDED	625	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12; landed 2026-11-18 (landing egod)
+00986ed0	named	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby::CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	LANDED	353	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02; landed 2026-11-18 (landing egod)
 0098e7d0	identify	_global::CThreadedFileManager_ProcessPendingRequests	OPEN			
 009919c0	identify	_global::RegisterSoundBanks	OPEN			
 00991c10	identify	_global::CMainGameComponent_RegisterSoundBank	OPEN			
@@ -504,13 +504,13 @@ address	kind	name	state	true_length	staged_folder	note
 009b9770	named	CParsedItem::InitAsFloat	OPEN			
 009b9d70	named	CStringParser::SkipPastNewline	OPEN			
 009bbcc0	named	CPersistContext::TransferSubComponentLoadText	OPEN			
-009bca20	named	_global::DisplayCenteredText	MATCHED_STAGED	1104	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13
-009bce70	identify	_global::GetCharWidthW	MATCHED_STAGED	120	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
-009bcef0	identify	_global::GetCharWidthW	MATCHED_STAGED	120	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
+009bca20	named	_global::DisplayCenteredText	LANDED	1104	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13; landed 2026-11-18 (landing egod)
+009bce70	identify	_global::GetCharWidthW	LANDED	120	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15; landed 2026-11-18 (landing egod)
+009bcef0	identify	_global::GetCharWidthW	LANDED	120	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15; landed 2026-11-18 (landing egod)
 009bd460	named	CMovieSubtitles::ParseSubtitles	OPEN			
 009c33a0	named	_global::GetMarkerFileName	OPEN			
-009c37a0	identify	_global::CodeSection_SetReadyAndSignal	MATCHED_STAGED	128	rebuild/candidates/manual/pending/2026-11-17_egod_e16	batch e16
-009c3820	identify	_global::CodeSection_DecrementAndSignal	MATCHED_STAGED	151	rebuild/candidates/manual/pending/2026-11-17_egod_e16	batch e16
+009c37a0	identify	_global::CodeSection_SetReadyAndSignal	LANDED	128	rebuild/candidates/manual/pending/2026-11-17_egod_e16	batch e16; landed 2026-11-18 (landing egod)
+009c3820	identify	_global::CodeSection_DecrementAndSignal	LANDED	151	rebuild/candidates/manual/pending/2026-11-17_egod_e16	batch e16; landed 2026-11-18 (landing egod)
 009c3fb0	named	CFileInstaller::ProcessActiveFileForWrite	OPEN			
 009c5170	identify	_global::CPatchTesselationEdgeStrip_DestructorHelper	OPEN			
 009c8c00	identify	NGameText::CDataBank::NGameText::CDataBank::vfunc_12	OPEN			
@@ -529,10 +529,10 @@ address	kind	name	state	true_length	staged_folder	note
 009f4590	named	CSurface::SaveAsTGA	OPEN			
 009f57a0	named	CInputManager::?Update@CInputManager@@UAEXXZ	OPEN			
 009f73c0	named	CVsyncCallbackTimer::OnPostSwapScreens	OPEN			
-009faf70	named	CTexture::GenerateMipmapsWithGPU	MATCHED_STAGED	407	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
+009faf70	named	CTexture::GenerateMipmapsWithGPU	LANDED	407	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02; landed 2026-11-18 (landing egod)
 009fb110	named	CTexture::SaveToDataStream	OPEN			
 009fb3f0	named	CTexture::LoadFromDataStream	OPEN			
-009fb750	named	CTexture::LoadFromDataStreamToPreallocatedSurface	MATCHED_STAGED	789	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13
+009fb750	named	CTexture::LoadFromDataStreamToPreallocatedSurface	LANDED	789	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13; landed 2026-11-18 (landing egod)
 009fde80	named	CGraphicInfoFrame::CFrameData::BeginLoading	MATCHED_UNAUDITED			e17 (stopped at wind-down): RELOCATION_MATCH 1265 + test PASS by the author (Ego_d C3DExtentsI dimensions local closed the frame); NOT yet coordinator-verified or audited; source, test and overlay in ../2026-11-17_egod_open/e17/
 009fe780	named	CGraphicInfo::InitialiseFramesAsSurfaceSections	OPEN			
 00a04200	identify	_global::Math_NormalizeVector2D	OPEN			
@@ -623,13 +623,13 @@ address	kind	name	state	true_length	staged_folder	note
 00ab1cc0	identify	_global::BuildEntityScriptBindings_FromVertexIndices	OPEN			
 00ab2160	named	C3DAnimationBuilder::GetIntersection	OPEN			
 00ab2520	named	C3DAnimationBuilder::BuildMeshAnimation	OPEN			
-00ab3870	named	CVertexShaderInput::GenerateD3DDeclaration	MATCHED_STAGED	668	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07
+00ab3870	named	CVertexShaderInput::GenerateD3DDeclaration	LANDED	668	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07; landed 2026-11-18 (landing egod)
 00ab4bb0	named	CMouseDX::GetNonExclusiveModeDeviceMouseEvent	OPEN			
 00ab7b00	named	CStaticFontBank::CStaticFontBank::GetStringExtents	PARKED			PARKED e01: DIFFER(287v287) x87 Offset/Advance order at 0x00AB7BB2; draft ../2026-11-17_egod_open/e01/00ab7b00.cpp
 00ab7c20	named	CStaticFontBank::CStaticFontBank::Render	OPEN			
 00ac70f0	identify	_global::GetInverseMatrixPart	OPEN			
 00ac7750	named	QuadricOptimiserInternals::COptimisedPrimitive::ComputeOptimalVertexPlacement	OPEN			
-00ac7cb0	named	QuadricOptimiserInternals::COptimisedPrimitive::GetFaceNormal	MATCHED_STAGED	350	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
+00ac7cb0	named	QuadricOptimiserInternals::COptimisedPrimitive::GetFaceNormal	LANDED	350	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02; landed 2026-11-18 (landing egod)
 00ac8360	named	QuadricOptimiserInternals::CVertexPairContraction::IsIllegal	OPEN			
 00ac9a60	named	QuadricOptimiserInternals::COptimisedPrimitive::FindAdjacentFaces	OPEN			
 00accbf0	named	QuadricOptimiserInternals::COptimisedPrimitive::PerformSubContraction	OPEN			
@@ -657,7 +657,7 @@ address	kind	name	state	true_length	staged_folder	note
 00b277a0	named	CEngine::LoadNewScene	OPEN			
 00b27d90	named	CEngine::CEngine::Render	OPEN			
 00b2b9b0	named	CEngineSurfaceCompositionManager::GetComposedSurface	OPEN			
-00b2bd80	named	CEngineSurfaceCompositionManager::WriteTextureToBank	MATCHED_STAGED	641	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07
+00b2bd80	named	CEngineSurfaceCompositionManager::WriteTextureToBank	LANDED	641	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07; landed 2026-11-18 (landing egod)
 00b2c010	named	CEngineSurfaceCompositionManager::PreloadCompletedBank	OPEN			
 00b2f760	named	CEnginePrimitiveOcclusionManager::CEnginePrimitiveOcclusionManager	OPEN			
 00b2fd60	named	CEngineCamera::SetupGamut	OPEN			
@@ -666,7 +666,7 @@ address	kind	name	state	true_length	staged_folder	note
 00b31160	named	CEngineCamera::ProcessDebugScript	OPEN			
 00b33390	named	CEnginePrimitiveRenderer::ProcessPrimitiveStats	OPEN			
 00b3bc90	named	CEngineResourceManager::SetupEditorAnimation	OPEN			
-00b3fc40	named	CEngineMap::PeekInterpolatedMapNormal	MATCHED_STAGED	528	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12
+00b3fc40	named	CEngineMap::PeekInterpolatedMapNormal	LANDED	528	rebuild/candidates/manual/pending/2026-11-17_egod_e12	batch e12; landed 2026-11-18 (landing egod)
 00b40260	named	CEngineMap::PeekHasWaterFast	OPEN			
 00b40670	named	CEngineMap::PeekWaterType	OPEN			
 00b412a0	named	CEngineMap::PeekHasWater	OPEN			
@@ -674,11 +674,11 @@ address	kind	name	state	true_length	staged_folder	note
 00b43720	named	CEngineMap::PeekThemeId	OPEN			
 00b43870	named	CEngineMap::PeekThemeBlend	OPEN			
 00b439c0	named	CEngineMap::PeekLandscapeHeight	OPEN			
-00b45720	named	CEngineLightingManager::CalcSWLighting	MATCHED_STAGED	787	rebuild/candidates/manual/pending/2026-11-17_egod_e11	batch e11
+00b45720	named	CEngineLightingManager::CalcSWLighting	LANDED	787	rebuild/candidates/manual/pending/2026-11-17_egod_e11	batch e11; landed 2026-11-18 (landing egod)
 00b45a40	named	CEngineLightingManager::CalcSWLightingNoClipSeparateMainLight	OPEN			
-00b45cf0	named	CEngineLightingManager::CalcSWLightingNoClip	MATCHED_STAGED	697	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08
-00b47390	named	CEngineLightingManager::SetupShaderSpotLight	MATCHED_STAGED	665	rebuild/candidates/manual/pending/2026-11-17_egod_e06	batch e06
-00b4b8b0	named	CEngineShadowRenderer::CalcLocalWorldToBaseShadowSpace	MATCHED_STAGED	421	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03
+00b45cf0	named	CEngineLightingManager::CalcSWLightingNoClip	LANDED	697	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08; landed 2026-11-18 (landing egod)
+00b47390	named	CEngineLightingManager::SetupShaderSpotLight	LANDED	665	rebuild/candidates/manual/pending/2026-11-17_egod_e06	batch e06; landed 2026-11-18 (landing egod)
+00b4b8b0	named	CEngineShadowRenderer::CalcLocalWorldToBaseShadowSpace	LANDED	421	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03; landed 2026-11-18 (landing egod)
 00b4d370	named	CEngineShadowRenderer::UpdateShadowSpace	OPEN			
 00b4ef80	named	CEngineShadowRenderer::UpdateSpotLightShadowSpace	OPEN			
 00b4f8e0	named	CEngineShadowRenderer::InitialiseTextures	OPEN			
@@ -695,17 +695,17 @@ address	kind	name	state	true_length	staged_folder	note
 00b6df50	named	CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader	OPEN			
 00b6df90	named	CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader	OPEN			
 00b6dfd0	named	CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader	OPEN			
-00b80ce0	named	CEngineClothSimulationMeshBase::CEngineClothSimulationMeshBase::GetDeltaTransform	MATCHED_STAGED	682	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08
-00b81820	named	CEngineSimulationManager::CEngineSimulationManager::FrameStart	MATCHED_STAGED	433	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03
+00b80ce0	named	CEngineClothSimulationMeshBase::CEngineClothSimulationMeshBase::GetDeltaTransform	LANDED	682	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08; landed 2026-11-18 (landing egod)
+00b81820	named	CEngineSimulationManager::CEngineSimulationManager::FrameStart	LANDED	433	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03; landed 2026-11-18 (landing egod)
 00b84b20	identify	_global::RadixSort_CountingPass_b84b20	OPEN			
 00b8c830	named	CEngineEnvironment::CEngineEnvironment::FrameStart	OPEN			
 00b8ccf0	named	CEngineEnvironment::CEngineEnvironment::WorldFrameUpdate	OPEN			
 00b92950	named	CEngineSceneGrid::RenderCellClippedAndCheckVisibility	OPEN			
 00b9d220	named	CEngineInternalPrimitive2DStaticMesh::CEngineInternalPrimitive2DStaticMesh::CalcInterpolatedObjectTransform	OPEN			
 00b9d730	named	CEnginePrimitiveManagerStaticMeshesBase::IsInsideFustrum	PARKED			PARKED e03: DIFFER(429v429) radius*Scale operand order at 0x00B9D7A4; draft ../2026-11-17_egod_open/e03/00b9d730.cpp
-00b9e120	named	CEngineInternalPrimitive2DStaticMesh::Initialise	MATCHED_STAGED	365	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02
+00b9e120	named	CEngineInternalPrimitive2DStaticMesh::Initialise	LANDED	365	rebuild/candidates/manual/pending/2026-11-17_egod_e02	batch e02; landed 2026-11-18 (landing egod)
 00ba4c10	named	CEnginePrimitiveManagerStaticMeshesBase::?PreloadPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@UAE_NAAVCEngineInternalPrimitiv	OPEN			
-00ba9830	named	CEnginePrimitiveManagerMeshBase::GetReflectionTexture	MATCHED_STAGED	570	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04
+00ba9830	named	CEnginePrimitiveManagerMeshBase::GetReflectionTexture	LANDED	570	rebuild/candidates/manual/pending/2026-11-17_egod_e04	batch e04; landed 2026-11-18 (landing egod)
 00ba9cb0	identify	_global::ComputeParticleVisibilityDistance	OPEN			
 00baa870	named	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList	OPEN			
 00bba1e0	identify	_global::CGuiControlTreePane_OnFileLoadComplete	PARKED			PARKED e15 (identified): ??_GCEngineInternalPrimitiveParticleGroup@@UAEPAXI@Z (RTTI vtable 0x012A59D4 slot 0 + FableWin 0x02EA4D00); DIFFER(30v82): VC7.1 calls the implicit ??1 where retail expands it; next attempt from Engine_Primitive_Manager_Particle_Group.obj (not Decals.obj); draft ../2026-11-17_egod_open/e15/00bba1e0.cpp
@@ -716,7 +716,7 @@ address	kind	name	state	true_length	staged_folder	note
 00bc9b30	named	CEngineTreeFilerBase::FindNode	OPEN			
 00bca510	identify	_global::CEngineVertexBufferPool_AllocateBuffer	OPEN			
 00bcee20	named	CEngineInternalPrimitiveAnimatedMesh::?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveAnimatedMesh@@UAE_NAAVC3DBoundingBox@@@Z	OPEN			
-00bcf040	named	CEngineInternalPrimitiveAnimatedMesh::?IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh@@UAE_NABVCEngineCamera@@_N@Z	MATCHED_STAGED	658	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07
+00bcf040	named	CEngineInternalPrimitiveAnimatedMesh::?IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh@@UAE_NABVCEngineCamera@@_N@Z	LANDED	658	rebuild/candidates/manual/pending/2026-11-17_egod_e07	batch e07; landed 2026-11-18 (landing egod)
 00bd2360	named	CEnginePrimitiveManagerAnimatedMeshesBase::CEnginePrimitiveManagerAnimatedMeshesBase::PreloadPrimitive	OPEN			
 00bd3070	named	CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive	OPEN			
 00bd6810	named	CEnginePrimitiveManagerAnimatedMeshesBase::RenderDebugBoneHierarchy	OPEN			
@@ -729,7 +729,7 @@ address	kind	name	state	true_length	staged_folder	note
 00be6880	named	CLandscapeBackgroundPatch::BuildDefaultSection	OPEN			
 00beb6c0	identify	_global::Interpolate_Quaternion_Scale_Matrix	OPEN			
 00bebca0	named	CEnginePrimitiveManagerMeshBase::PreloadReflectionTexture	OPEN			
-00bf2980	identify	_gapscan::sub_00bf2980	MATCHED_STAGED	96	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15
+00bf2980	identify	_gapscan::sub_00bf2980	LANDED	96	rebuild/candidates/manual/pending/2026-11-17_egod_e15	batch e15; landed 2026-11-18 (landing egod)
 00bf2b50	named	CEngineTreeFilerBase::ConvertListToTree	OPEN			
 00bfa2a0	named	CLocalDetailPrimitiveRepeatedMesh::Load	OPEN			
 00bfad90	named	CLocalDetailPrimitiveMeshZSpriteBatch::RenderUpdate	OPEN			

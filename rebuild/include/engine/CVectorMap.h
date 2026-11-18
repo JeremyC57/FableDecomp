@@ -317,4 +317,44 @@ typename CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>
     }
     return first;
 }
+#if defined(FABLE_RETAIL_CVECTORMAP_UPPERBOUND) && defined(FABLE_RETAIL_CVECTORMAP_UPPERBOUND_BODY)
+// Per-TU opt-in (egod e02, row 0x0086B9D0 CRandomAppearanceMorph::GetRandomSkeletalMorph): the body of the const UpperBound declared by
+// FABLE_RETAIL_CVECTORMAP_UPPERBOUND: an ordinary out-of-class template member, visible in the TU (VC7.1 keeps it out of line by itself;
+// graded without and with noinline: same bytes) (Ego_d random_appearance_morph.obj
+// instantiates LowerBound / UpperBound<long, CSkeletalMorph> in the row's TU: retail 0x0086A930 / 0x0086A980; the landed 0x0086A980 text:
+// `!(key < middle->first)` moves first past middle). With it VC7.1 knows the calls write no memory and does not reload *seed after
+// them (0x0086BAD4: `imul ebp,ebp,24A1h` on the value stored before the UpperBound / LowerBound calls).
+template<class K,class V,class CompareType>
+typename CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::UpperBound(const K& key) const
+{
+    const_iterator first=this->begin();
+    long count=this->end()-first;
+    while(count>0) {
+        long half=count/2;
+        const_iterator middle=first+half;
+        if(!(key<middle->first)) { first=middle+1; count-=half+1; }
+        else count=half;
+    }
+    return first;
+}
+#endif
+#if defined(FABLE_RETAIL_CVECTORMAP_GETKEYLIST) && defined(FABLE_RETAIL_CVECTORMAP_GETKEYLIST_BODY)
+// Per-TU opt-in (egod e02, row 0x0086B9D0): the body of GetKeyList (declared by FABLE_RETAIL_CVECTORMAP_GETKEYLIST), an ordinary
+// out-of-class template member visible in the TU (VC7.1 keeps it out of line by itself, as in the retail TU; Ego_d random_appearance_morph.obj instantiates GetKeyList<long, CSkeletalMorph> = retail 0x0086D240). Ego_d
+// locals key_list, no_key, last_key, it; retail 0x0086D240: no_key = true, last_key = 0, each new key pushed (the inline vector<long>
+// push_back), then last_key = it->first and no_key = false.
+template<class K,class V,class CompareType>
+void CVectorMap<K,V,CompareType>::GetKeyList(std::vector<K>& key_list) const
+{
+    bool no_key=true;
+    K last_key=0;
+    for(const_iterator it=this->begin();it!=this->end();++it) {
+        if(no_key||it->first!=last_key) {
+            key_list.push_back(it->first);
+            last_key=it->first;
+            no_key=false;
+        }
+    }
+}
+#endif
 #endif

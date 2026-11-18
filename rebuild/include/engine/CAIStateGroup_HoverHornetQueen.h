@@ -45,6 +45,20 @@ protected:
     // Both original TPI enums; declaration access is not encoded by LF_NESTTYPE.
     enum eWaspDirection { WASP_DIRECTION_CLOCKWISE=0, WASP_DIRECTION_ANTICLOCKWISE=1 };
     eWaspDirection RouteDirection;                                     // +0x64, original protected field
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_DIVEBOMB
+    // e11 nested opt-in (row 0x0095B9E0 DiveBomb): Ego_r.pdb / FableWin.pdb protected members ?DiveBomb@CAIStateGroup_HoverHornetQueen@@IAEXXZ
+    // (0x0095B9E0), ?GetNextCirclePoint@..@@IAEJXZ, ?GetPreviousCirclePoint@..@@IAEJXZ, ?GotoNextCirclePoint@..@@IAE?AW4EAIActionReturn@@W4EMovementType@@@Z,
+    // ?GotoPreviousCirclePoint@..@@IAE?AW4EAIActionReturn@@W4EMovementType@@@Z (defined in the class's .cpp: Ego_d hover queen object order
+    // GotoSafestCirclePoint, GetNextCirclePoint, GetPreviousCirclePoint, GotoNextCirclePoint, GotoPreviousCirclePoint, GotoCirclePoint; retail
+    // has them out of line at 0x0095A3D0 / 0x0095A3F0 / 0x0095A9A0 / 0x0095A9D0 and expands them in DiveBomb 0x0095BA0C..0x0095BA3E) and ?GotoCirclePoint@..@@IAE?AW4EAIActionReturn@@JW4EMovementType@@@Z
+    // (0x0095A6C0, landed). Ego_d parameter names n / movement_type. Declarations only: no layout change.
+    void DiveBomb();                                                     // 0x0095B9E0
+    long GetNextCirclePoint();                                           // 0x0095A3D0
+    long GetPreviousCirclePoint();                                       // 0x0095A3F0
+    EAIActionReturn GotoNextCirclePoint(EMovementType movement_type);    // 0x0095A9A0
+    EAIActionReturn GotoPreviousCirclePoint(EMovementType movement_type);   // 0x0095A9D0
+    EAIActionReturn GotoCirclePoint(long n, EMovementType movement_type);   // 0x0095A6C0
+#endif
 };
 FABLE_STATIC_ASSERT_AT(41, sizeof(CAIStateGroup_HoverHornetQueen) == 0x68);
 #elif defined(FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN)

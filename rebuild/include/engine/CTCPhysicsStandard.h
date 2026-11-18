@@ -42,6 +42,13 @@ protected:
     void UpdateIsMoving();                                                                   // 0x008E5270
     void PerformStepBasedMovement(std::vector<CThing*>& things, C3DVector& pos);             // 0x008E5880
     void GetPossibleInteractedWithList(const C2DBoxI& area, std::vector<CThing*>& things, float range) const;   // 0x008E57D0
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_MOVE_OVERRIDE
+    // Nested opt-in (egod e03, row 0x008E5D40): Ego_r.pdb / FableWin.pdb ?Move@CTCPhysicsStandard@@UAEXXZ, the CTCPhysicsBase::Move
+    // override (Ego_d tc_physics_standard_movement.obj, first function). Declaration only: no vtable or layout change.
+public:
+    virtual void Move();
+protected:
+#endif
 public:
 #endif
 #ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_IMPULSE

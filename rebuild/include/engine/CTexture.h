@@ -39,6 +39,17 @@ public:
     // (public, `ret 4`). Declaration only: no layout change.
     void LoadFromDataStreamToPreallocatedSurface(class CDataInputStream& in);   // 0x009FB750
 #endif
+#ifdef FABLE_RETAIL_CTEXTURE_LEVELBYTELENGTH
+    // Retail opt-in (egod e13, row 0x009FB750): Ego_r.pdb / Ego_d.pdb ?GetLevelByteLength@CTexture@@QBEKK@Z (0x009F9E80, landed) and
+    // ?GetPixelFormat@CTexture@@QBE?AVCPixelFormat@@XZ (0x009F9D80, landed), defined in the CTexture TU (Ego_d lib_texture.obj) before
+    // LoadFromDataStreamToPreallocatedSurface, which expands both (0x009FB831..0x009FB86F: GetLevelDesc(level), GetLevelDesc(0),
+    // CPixelFormat(D3DFORMAT) 0x009E3830, GetColourDepth 0x009E3820, `* Width * Height >> 3`). Declarations only (the TU defines them);
+    // GetPixelFormat is skipped when FORMATQUERIES / EXTENTS_INLINE already declare it.
+    unsigned long GetLevelByteLength(unsigned long level) const;          // 0x009F9E80
+#if !defined(FABLE_RETAIL_CTEXTURE_FORMATQUERIES) && !defined(FABLE_RETAIL_CTEXTURE_EXTENTS_INLINE)
+    CPixelFormat GetPixelFormat() const;                                 // 0x009F9D80
+#endif
+#endif
 #ifdef FABLE_RETAIL_CTEXTURE_SIZED
     // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb
     // ??0CTexture@@QAE@ABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@@Z, inline in retail (0x00AB95A2: the +4 word's top
@@ -84,6 +95,11 @@ public:
 #ifdef FABLE_RETAIL_CTEXTURE_GETNOLEVELS
     // Opt-in (row 0x00B8B780): Ego_r.pdb / FableWin.pdb ?GetNoLevels@CTexture@@QBEJXZ (out of line, 0x009F9DF0). Declaration only.
     long GetNoLevels() const;                                            // 0x009F9DF0
+#endif
+#ifdef FABLE_RETAIL_CTEXTURE_GETLEVELBYTELENGTH
+    // Opt-in (egod e07, row 0x00B2BD80): Ego_r.pdb ?GetLevelByteLength@CTexture@@QBEJJ@Z (Ego_r 0x00B6A2C0 = retail 0x009F9E80, after
+    // GetSurfaceLevel 0x009F9E00), out of line in retail (`push level ; call`). Declaration only.
+    long GetLevelByteLength(long level) const;                           // 0x009F9E80
 #endif
 #ifdef FABLE_RETAIL_CTEXTURE_FORMATQUERIES
     // Opt-in (wfE5, rows 0x00BB0970 / 0x00BAFA00): Ego_r.pdb ?GetPixelFormat@CTexture@@QBE?AVCPixelFormat@@XZ (0x009F9D80, hidden result),

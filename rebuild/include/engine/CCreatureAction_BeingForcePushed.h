@@ -9,6 +9,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BEINGFORCEPUSHED_COMBAT
+// e05 opt-in (egod lane, row 0x00798940 CTCForcePushed::FrameUpdate): the real class over the shared CCombatActionBase (Ego_d.pdb
+// record 0x42928: base CCombatActionBase, no members of its own; retail sizeof 0x114 = the base). Ego_r.pdb
+// ??0CCreatureAction_BeingForcePushed@@QAE@AAVCThingCreatureBase@@@Z (retail 0x008BD0B0, `ret 4`; it calls the CCombatActionBase
+// ctor 0x00858030). Ego_d marks the destructor compiler-generated: none declared, the temporary's implicit destructor calls
+// ~CCombatActionBase 0x0062E900 (0x0079896A), as CCreatureAction_DuckAndCover. Needs engine/CCombatActionBase.h's retail branch.
+#include "engine/CCombatActionBase.h"
+class CThingCreatureBase;
+class CCreatureAction_BeingForcePushed : public CCombatActionBase {
+public:
+    CCreatureAction_BeingForcePushed(CThingCreatureBase& creature);     // 0x008BD0B0
+};
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCreatureAction_BeingForcePushed) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BeingForcePushed {
 public:
@@ -27,7 +41,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BeingForcePushed) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BeingForcePushed, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_BeingForcePushed) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_BeingForcePushed, __vftable) == 0x0);
+#endif
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BEINGFORCEPUSHED_H

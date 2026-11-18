@@ -74,6 +74,15 @@ public:
     // Opt-in (bwf1 / agentC2, row 0x00BB3E80): FableWin.pdb inline ?GetCount@CEngineLocalLightArray@@QBEJXZ (9 debug instructions).
     long GetCount() const { return LightCount; }
 #endif
+#ifdef FABLE_RETAIL_CENGINELOCALLIGHTARRAY_PEEKLIGHT
+    // egod opt-in (e08, row 0x00B45CF0): FableWin.pdb ?PeekLight@CEngineLocalLightArray@@QBEABVCEngineLocalLightElement@@K@Z and (when
+    // FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT does not already declare it) ?GetCount@CEngineLocalLightArray@@QBEJXZ, both inline
+    // (Ego_d lists them in the lighting manager's object next to CalcSWLightingNoClip; no retail out-of-line copy). Bodies only.
+    const CEngineLocalLightElement& PeekLight(unsigned long index) const { return Lights[index]; }
+#ifndef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT
+    long GetCount() const { return LightCount; }
+#endif
+#endif
     unsigned long            LightCount;                                 // +0x00
     CEngineLocalLightElement Lights[8];                                  // +0x04
 };
@@ -100,6 +109,19 @@ class CEngineLocalLightArray;
 #endif
 class CEngineLightingManager : public CEnginePrimitiveManager, public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_CALCSWLIGHTINGNOCLIP
+    // egod opt-in (e08, row 0x00B45CF0): Ego_r.pdb / FableWin.pdb
+    // ?CalcSWLightingNoClip@CEngineLightingManager@@QAEXABVC3DVector@@0ABVCEngineLocalLightArray@@AAVCRGBFloatColour@@@Z (Ego_d parameter
+    // names pos, normal, light_array, light_result). Declaration only, no layout change.
+    void CalcSWLightingNoClip(const C3DVector& pos,const C3DVector& normal,const CEngineLocalLightArray& light_array,CRGBFloatColour& light_result);
+#endif
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_CALCSWLIGHTING_LOCALLIGHTS
+    // e11 opt-in (row 0x00B45720): Ego_r.pdb / FableWin.pdb ?CalcSWLighting@CEngineLightingManager@@QAE?AVCRGBFloatColour@@ABVC3DVector@@0ABVCEngineLocalLightArray@@@Z
+    // (the overload with the local lights; Ego_r order: the global-only overload 0x009BA660, this one 0x009BA8A0 = retail 0x00B45510 /
+    // 0x00B45720). Parameter names as the global-only overload's Ego_d record and CalcSWLightingNoClip's (pos, normal, light_array).
+    // Declaration only, no layout change.
+    CRGBFloatColour CalcSWLighting(const C3DVector& pos,const C3DVector& normal,const CEngineLocalLightArray& light_array);
+#endif
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_PEEKGLOBALDIFFUSE
     // Original public const reference accessor, donor02CA1E00; native reads first ThemeChannel.
     const CRGBFloatColour& PeekGlobalDiffuseColour() const { return ThemeChannels[0].DiffuseColour; }

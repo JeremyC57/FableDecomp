@@ -28,6 +28,11 @@ public:
  bool SetupMesh(float,float);
 #endif
  virtual void CalcInterpolatedObjectTransform(CMatrix3x4&,float,bool)const;
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ISINSIDEFRUSTUM
+ // Opt-in (egod e07, row 0x00BCF040): Ego_r.pdb ?IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh@@UAE_NABVCEngineCamera@@_N@Z, the override
+ // of the CEngineInternalPrimitiveBase virtual (same slot). Declaration only; no layout change.
+ virtual bool IsInsideFrustum(const CEngineCamera& frustum,bool distance_test_only);
+#endif
  virtual void InitialiseSimulation(const C3DMeshInfo*,const C3DMesh2&);
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_SETUPMESH2D
  // Retail opt-in (agentNF77, row 0x00BD1F70 CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive): Ego_r.pdb / FableWin.pdb

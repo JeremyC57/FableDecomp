@@ -183,6 +183,10 @@ template<class I,class T> inline void fill(I begin,I last,const T& x) { I first=
 #pragma auto_inline(off)
 template<class I,class T> __declspec(noinline) void __fastcall fill(I first,I last,const T& x) { for(;first!=last;++first) *first=x; }
 #pragma auto_inline(on)
+#elif defined(FABLE_RETAIL_STLP_FILL_FASTCALL)
+// Opt-in (egod e07, row 0x00681E60): STLport 4.6 _algobase.h generic fill as retail's __fastcall instance ??$fill@PA_N_N@std@@YIXPA_N0AB_N@Z
+// (0x00685430, first / last in ecx / edx, the value by reference on the stack; reloc_bindings). Same body.
+template<class I,class T> inline void FABLE_FASTCALL fill(I first,I last,const T& x) { for(;first!=last;++first) *first=x; }
 #else
 template<class I,class T> inline void fill(I first,I last,const T& x) { for(;first!=last;++first) *first=x; }
 #endif

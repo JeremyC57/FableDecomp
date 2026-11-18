@@ -263,5 +263,24 @@ typedef struct _D3DPRESENT_PARAMETERS_
     UINT                FullScreen_RefreshRateInHz;
     UINT                PresentationInterval;
 } D3DPRESENT_PARAMETERS;
+#ifdef FABLE_RETAIL_D3DVERTEXELEMENT9
+// Opt-in (egod e07, row 0x00AB3870 CVertexShaderInput::GenerateD3DDeclaration): the d3d9types.h vertex element (Ego_r / Ego_d
+// _D3DVERTEXELEMENT9, 8 bytes: Stream +0, Offset +2, Type +4, Method +5, Usage +6, UsageIndex +7) and the declaration enumerators the
+// rows use (SDK values). No layout change elsewhere.
+typedef unsigned short WORD;
+typedef unsigned char BYTE;
+typedef struct _D3DVERTEXELEMENT9
+{
+    WORD    Stream;
+    WORD    Offset;
+    BYTE    Type;
+    BYTE    Method;
+    BYTE    Usage;
+    BYTE    UsageIndex;
+} D3DVERTEXELEMENT9, *LPD3DVERTEXELEMENT9;
+typedef enum _D3DDECLMETHOD { D3DDECLMETHOD_DEFAULT = 0 } D3DDECLMETHOD;
+typedef enum _D3DDECLTYPE { D3DDECLTYPE_FLOAT1 = 0, D3DDECLTYPE_UNUSED = 17 } D3DDECLTYPE;
+typedef enum _D3DDECLUSAGE { D3DDECLUSAGE_POSITION = 0, D3DDECLUSAGE_TEXCOORD = 5 } D3DDECLUSAGE;
+#endif
 #endif
 

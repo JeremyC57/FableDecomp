@@ -112,4 +112,16 @@ private:
 };
 } // namespace NCameraModes
 FABLE_STATIC_ASSERT(sizeof(NCameraModes::CTools) == 0x20);
+#if defined(FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_AVERAGE_PAREN) && defined(FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_OUTOFLINE)
+// FITTED (chosen by grading; FableWin /Od size not reproduced). Opt-in (egod e04, row 0x00871FD0 NCameraModes::CStringAndCageBase::UpdateXYVars): the body of the declared-only template
+// ??$GetRollingAverage@M@CTools@NCameraModes@@QBEMABM0M@Z (Ego_d / FableWin: no named locals) as an inline out-of-class definition,
+// the same arithmetic as the ROLLING_AVERAGE in-class body with the return expression parenthesised: the outer PAREN tuple lets c2
+// schedule the caller's `fld [esi+0ACh]` (0x00871FF5) ahead of the first result's dword copy `mov eax,[esp+4]` (0x00871FFB), as retail.
+// The other users keep their bytes with this text (0x00697CC0 inline, 0x0084EAF0 / 0x008FCC60 in-row bodies regraded). Needs
+// FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_AVERAGE + _ROLLING_OUTOFLINE. No layout change.
+namespace NCameraModes {
+template<class T> inline T CTools::GetRollingAverage(const T& current_val,const T& new_val,float weight) const
+{return ((current_val*weight+new_val)/(weight+1.0f));}
+}
+#endif
 #endif

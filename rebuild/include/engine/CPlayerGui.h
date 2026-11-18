@@ -250,6 +250,11 @@ public:
     bool IsShowSpecialAbilityButtons() const { return ShowSpecialAbilityButtons; }
 #endif
 public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
+#ifdef FABLE_RETAIL_CPLAYERGUI_NPCNAMEDISPLAY
+    // e06 egod opt-in (row 0x00805600 CTCTargetingPlayer::FrameUpdate): Ego_r.pdb / FableWin.pdb ?SetNPCNameDisplay@CPlayerGui@@QAEXABVCWideString@@@Z,
+    // out of line at 0x004379D0 (the forward to the CDrawNPCName drawer, `mov ecx,[ecx+248h]`; landed callee 0x00657230). Declaration only.
+    void SetNPCNameDisplay(const CWideString& name);                     // 0x004379D0
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_AUTOPICKUP
     // Retail opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb ?AddAutoPickup@CPlayerGui@@QAEXJ@Z
     // (Ego_r 0x0044A630, 16 bytes, between OnHeroHit and AddHitByMelee), out of line in retail at 0x00437980 (`mov ecx,[ecx+2FCh] ;

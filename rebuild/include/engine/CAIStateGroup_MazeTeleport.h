@@ -8,6 +8,24 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZETELEPORT
+// Retail opt-in (egod e04, row 0x00954F40 CAIStateGroup_MazeTeleport::Update): the polymorphic class. Ego_d.pdb LF_CLASS 0x5F403: base
+// CAIStateGroup_MazeBase (engine/_quarantine/CAIStateGroup_MazeBase.h, existing opt-in FABLE_RETAIL_CAISTATEGROUP_MAZEBASE, as landed 0x00956060), no data members of its own (Ego_r sizeof 0x20 = the base's), public
+// virtual Update / IsRunnable / OnActivate (retail 0x00954F40 / 0x009543B0 / 0x00954410; Ego_r ?Update@CAIStateGroup_MazeTeleport@@UAEXXZ),
+// destructor compiler-generated (not declared). The flattened default layout below is unchanged; its two pinned asserts keep their
+// FABLE_STATIC_ASSERT_AT ids (the lines moved down by this block).
+#ifndef FABLE_RETAIL_CAISTATEGROUP_MAZEBASE
+#define FABLE_RETAIL_CAISTATEGROUP_MAZEBASE
+#endif
+#include "engine/_quarantine/CAIStateGroup_MazeBase.h"
+class CAIStateGroup_MazeTeleport : public CAIStateGroup_MazeBase {
+public:
+    virtual void Update();                                               // slot 12 0x00954F40
+    virtual bool IsRunnable();                                           // slot 11 0x009543B0
+    virtual void OnActivate();                                           // 0x00954410
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeTeleport) == 0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -23,5 +41,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_MazeTeleport) == 0x20);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_MazeTeleport, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MAZETELEPORT
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZETELEPORT_H

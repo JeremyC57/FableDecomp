@@ -102,6 +102,11 @@ public:
     // Retail opt-in (Codex pass18): FableWin GetBoundingSphere returns original stored sphere by value.
     C3DBoundingSphere GetBoundingSphere()const{return BoundingSphere;}
 #endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_SAFEBOUNDINGRADIUS
+    // Opt-in (egod e07, row 0x00BCF040): FableWin.pdb ?GetSafeBoundingRadius@C3DMeshInfo@@QBEMXZ, inline in retail (SafeBoundingRadius +0x38
+    // read in place, 0x00BCF195). Body only.
+    float GetSafeBoundingRadius()const{return SafeBoundingRadius;}
+#endif
 private:
     class CMeshData;
     CIVCountedPointer<CMeshData> MeshData;

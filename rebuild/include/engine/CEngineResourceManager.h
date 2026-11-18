@@ -56,7 +56,12 @@ enum EIndexBufferPool;
 enum EVertexBufferPool;
 enum EGraphicBankNo;                                         // MS forward enum (no enumerator name recovered)
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKMESHBANK
+#ifdef FABLE_RETAIL_EMESHBANKNO_ENUMERATORS
+// Opt-in (egod e03, row 0x00B81820): Ego_d.pdb LF_ENUM 0x66775 EMeshBankNo enumerators (MAIN 0, EDITOR 1, ENGINE 2, MAX_MESH_BANKS 3).
+enum EMeshBankNo { MAIN_MESH_BANK_NO = 0, EDITOR_MESH_BANK_NO = 1, ENGINE_MESH_BANK_NO = 2, MAX_MESH_BANKS = 3 };
+#else
 enum EMeshBankNo;                                            // MS forward enum (no enumerator name recovered)
+#endif
 #endif
 class CEngineInit;
 class CEngineMemoryInit;

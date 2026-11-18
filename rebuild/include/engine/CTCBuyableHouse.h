@@ -23,6 +23,11 @@ public:
 #endif
     bool GetOwnedByPlayer() const { return OwnedByPlayer; }
     bool GetRented() const { return Rented; }
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_ONINITIALACTIVATE
+    // e09 opt-in (row 0x006C14D0): Ego_r.pdb / FableWin.pdb ?OnInitialActivate@CTCBuyableHouse@@UAEXXZ (public virtual, the CTCBase
+    // OnInitialActivate slot override). Declaration only.
+    virtual void OnInitialActivate();                                    // 0x006C14D0
+#endif
 #ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_ISFORSALE
     // Nested opt-in (chunk 2025, row 0x00600B60): Ego_r.pdb ?IsForSale@CTCBuyableHouse@@QBE_NXZ, out of line at 0x006BF960 (landed
     // row; reloc_bindings binds the same symbol from 0x0082ACD0). Declaration only.

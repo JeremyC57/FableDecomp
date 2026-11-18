@@ -28,6 +28,16 @@ public:
     enum ETargetNextThingMethod { TARGET_NEXT_NULL=0,TARGET_NEXT_NEXT=1,TARGET_NEXT_LEFT=2,TARGET_NEXT_RIGHT=3 };
     typedef std::vector<NPlayerTargeting::CTargetPoint> TTargetPointList;
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_FRAMEUPDATE
+    // e06 egod opt-in (row 0x00805600): Ego_r.pdb ?FrameUpdate@CTCTargetingPlayer@@UAEXXZ (the CTCBase slot-9 override),
+    // ?UpdateTargetThreatening@CTCTargetingPlayer@@QAEXXZ (0x00803280) and the protected ?PostProcessTargetedThing@CTCTargetingPlayer@@IAEXXZ
+    // (0x00803B20; Ego_d tc_targeting_player.obj puts it right after FrameUpdate, which expands it at 0x00805851..0x00805877).
+public:
+    virtual void FrameUpdate();                                 // 0x00805600
+    void UpdateTargetThreatening();                             // 0x00803280
+protected:
+    void PostProcessTargetedThing();                            // 0x00803B20
+#endif
 protected:
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
     void UpdateTargetList();
@@ -91,12 +101,12 @@ private:
     bool          LockedOntoEnemy;                              // +0xf4
 public:
     static void CheckRetailLayout() {
-        FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, ZLockTargetSelectionTimer) == 0x38);
-        FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPos) == 0x84);
-        FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffset3D) == 0x9c);
-        FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffset) == 0xb4);
-        FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffsetSecondOrder) == 0xcc);
-        FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, LockedOntoEnemy) == 0xf4);
+        FABLE_STATIC_ASSERT_AT(94, offsetof(CTCTargetingPlayer, ZLockTargetSelectionTimer) == 0x38);
+        FABLE_STATIC_ASSERT_AT(95, offsetof(CTCTargetingPlayer, TargetedPos) == 0x84);
+        FABLE_STATIC_ASSERT_AT(96, offsetof(CTCTargetingPlayer, TargetedPosOffset3D) == 0x9c);
+        FABLE_STATIC_ASSERT_AT(97, offsetof(CTCTargetingPlayer, TargetedPosOffset) == 0xb4);
+        FABLE_STATIC_ASSERT_AT(98, offsetof(CTCTargetingPlayer, TargetedPosOffsetSecondOrder) == 0xcc);
+        FABLE_STATIC_ASSERT_AT(99, offsetof(CTCTargetingPlayer, LockedOntoEnemy) == 0xf4);
     }
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).

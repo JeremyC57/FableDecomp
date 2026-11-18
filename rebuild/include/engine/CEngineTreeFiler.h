@@ -89,6 +89,14 @@ private:
  CNodeHeader* ConvertTreeToList(CNodeHeader* tree);                     // 0x00BF2AD0
  CNodeHeader* ConvertListToTree(CNodeHeader* list);                     // 0x00BF2B50
 #endif
+#ifdef FABLE_RETAIL_CENGINETREEFILER_MEMSIZE
+ // Opt-in (w23 e15, row 0x00BF2980): Ego_r.pdb 0x00AAA0B0 / 0x00AAA0E0 and FableWin.pdb 0x02EF0510 / 0x02EF0560 private
+ // ?GetNodeMemSize@CEngineTreeFilerBase@@AAEJPAUCNodeHeader@1@@Z (retail out-of-line copy 0x00BF2950) and
+ // ?GetTreeMemSize@CEngineTreeFilerBase@@AAEJPAUCNodeHeader@1@@Z (0x00BF2980); Ego_d.pdb Engine_Tree_Filer.obj order FreeNode,
+ // GetNodeMemSize, GetTreeMemSize, DeleteTree. Declarations only (needs _NODEHEADER_STRUCT for the PDB class key).
+ long GetNodeMemSize(CNodeHeader* node);                                // 0x00BF2950
+ long GetTreeMemSize(CNodeHeader* node);                                // 0x00BF2980
+#endif
 #endif
 };
 #ifdef FABLE_RETAIL_CENGINETREEFILER_INLINES

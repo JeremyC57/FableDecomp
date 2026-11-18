@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00408820   RELOCATION_MATCH PASS   ResetAssignedInputsWASD
+
+WINS: 1
+  00408820 RELOCATION_MATCH CUserProfileManager::ResetAssignedInputsWASD

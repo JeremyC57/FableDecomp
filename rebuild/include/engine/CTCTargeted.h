@@ -40,7 +40,14 @@ public:
 #endif
 #endif
     unsigned long GetTargetingFlags() const { return TargetingFlags; }
+#ifdef FABLE_RETAIL_CTCTARGETED_ISZTARGETABLE_DECL
+    // e06 egod opt-in (row 0x00805600 CTCTargetingPlayer::FrameUpdate, another TU): Ego_r.pdb ?IsZTargetable@CTCTargeted@@QBE_NXZ is an
+    // out-of-line member (Ego_r donor 0x007E44D0 = retail 0x007EA290, between IsTargetable and ReturnToDefaultTargetingFlags); callers
+    // outside tc_targeted.obj call it (0x008056F0, 0x006A84F0's landed row). Declaration only.
+    bool IsZTargetable() const;                                          // 0x007EA290
+#else
     bool IsZTargetable() const { if (TargetingFlags & 4) return true; return false; }   // two-return form: only it folds to `test byte ptr [eax+0Ch],4` under VC7.1 (the `!= 0` / `?:` forms emit shr/test)
+#endif
     // Chunk 755 (row 0x00729F60 CTCActionUseScriptedHook::OnInitialActivate): FableWin.pdb ?SetTargetable@CTCTargeted@@QAEX_N@Z (inline in
     // retail: `mov byte ptr [ecx+10h],1` at 0x00729FDD) and ?AddTargetingFlag@CTCTargeted@@QAEXW4ETargetingType@@@Z (out of line, 0x007EA240).
     void SetTargetable(bool targetable) { Targetable = targetable; }

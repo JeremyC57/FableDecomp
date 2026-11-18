@@ -237,6 +237,11 @@ public:
     const CFontBank& PeekDebugFont()const{return *PDebugFont;}
 #endif
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_GETPPLAYERINTERFACE
+    // e06 egod opt-in (row 0x00805600): Ego_r.pdb / FableWin.pdb ?GetPPlayerInterface@CMainGameComponent@@QAEPAVCGamePlayerInterface@@XZ,
+    // out of line at 0x00416359 (landed local models call it GetGamePlayerInterface: name fix). Declaration only.
+    CGamePlayerInterface* GetPPlayerInterface();                         // 0x00416359
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_SAMPLEBANK_WORLDSEED
     // Opt-in (chunk 1024, row 0x006B3B80 CEnvironment::LightingFlash): Ego_r.pdb ?GetSampleBank@CMainGameComponent@@QBEAAVCASoundBank@@XZ
     // and ?GetWorldSeed@CMainGameComponent@@QBEPAKXZ, inline in retail (the caller reads PSampleBank +0x10 in place and forms

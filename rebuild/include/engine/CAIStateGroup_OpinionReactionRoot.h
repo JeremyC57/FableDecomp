@@ -32,6 +32,12 @@ private:
     bool WifeGeneralUpdate(EOpinionAttitudeType attitude);              // 0x00982F10
     bool WifeToHerselfUpdate(EOpinionAttitudeType attitude);            // 0x00982F70
     bool WifeClothingUpdate(EOpinionAttitudeType attitude);             // 0x00985F40
+#ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_HEROIMITATION
+    // Nested opt-in (egod e12, row 0x00985440; with _WIFEUPDATE): Ego_r.pdb / FableWin.pdb ?TurnToFace@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
+    // (retail 0x0095EDF0, out of line) and ?HeroImitationPlayUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ (0x00985440). Declarations only.
+    bool TurnToFace();                                                  // 0x0095EDF0
+    bool HeroImitationPlayUpdate();                                     // 0x00985440
+#endif
 public:
     CTCTalk*      PTCTalk;                                   // +0x14
     unsigned char CurrentReactionType[0x4];                  // +0x18 EOpinionReactionType

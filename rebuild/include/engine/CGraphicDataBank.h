@@ -232,6 +232,13 @@ public:
         CPixelFormat PixelFormat;                                             // +0x0C
         unsigned char TransparencyType,MipmapLevels,IsFlatAnimatedGraphic:1;  // +0x10
         unsigned long FrameDataSize,CompressedMipmapSizes[1];                 // +0x14
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_GRAPHICHEADER_SAVE
+        // Opt-in (egod e07, row 0x00B2BD80 CEngineSurfaceCompositionManager::WriteTextureToBank): Ego_r.pdb ??0CGraphicHeader@CGraphicDataBank@@QAE@XZ
+        // (Ego_r 0x00B57C50 = retail 0x009FD6C0, called out of line at 0x00B2BF1D) and ?Save@CGraphicHeader@CGraphicDataBank@@QBEXAAVCDataOutputStream@@@Z
+        // (Ego_r 0x00B56930 = retail 0x009FD1E0). Declarations only; no layout change.
+        CGraphicHeader();                                                     // 0x009FD6C0
+        void Save(class CDataOutputStream& stream) const;                     // 0x009FD1E0
+#endif
     };
     CGraphicDataBank();                                      // 0x009FEA20
     void Initialise(const CGraphicDataBankInit& init);       // 0x009FD4E0

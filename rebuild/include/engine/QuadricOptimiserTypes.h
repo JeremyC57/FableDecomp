@@ -70,6 +70,11 @@ class CVertexPairContraction {public:
  bool Exists,Unsplit;CArray<CSubContraction> SubContractions;float Weight2,Cost;C3DVector ResultingPosition;
  std::multimap<float,CCountedPointer<CVertexPairContraction> >::iterator ListIterator;
  CVertexPairContraction():Exists(true),Unsplit(false),ListIterator(0){}
+#ifdef FABLE_RETAIL_QUADRIC_CVERTEXPAIRCONTRACTION_ISILLEGAL
+ // Retail opt-in (egod e02, row 0x00ACD960): Ego_r.pdb 0x00C61350 ?IsIllegal@CVertexPairContraction@QuadricOptimiserInternals@@QAE_NXZ
+ // (right after CleanUp 0x00C61090; retail 0x00AC8360 calls CleanUp 0x00AC7B00 first). Out of line in retail; declaration only.
+ bool IsIllegal();                                                                                  // 0x00AC8360
+#endif
 };
 class CContractionReference {public:
  CCountedPointer<CVertexPairContraction> Contraction;unsigned long SubIndex;

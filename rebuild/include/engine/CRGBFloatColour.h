@@ -114,6 +114,12 @@ public:
 #endif
 #endif
     CRGBFloatColour& operator*=(const CRGBFloatColour& other) { R *= other.R; G *= other.G; B *= other.B; A *= other.A; return *this; }
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_TO_C3DVECTOR
+    // egod opt-in (e08, row 0x00B45CF0 CEngineLightingManager::CalcSWLightingNoClip): FableWin.pdb ??BCRGBFloatColour@@QBE?AVC3DVector@@XZ
+    // (operator C3DVector, debug COMDAT 0x02CF7270; no Ego_r.pdb or retail out-of-line copy: inline), R, G, B as X, Y, Z. Ego_d types the
+    // row's colour accumulator `col` as a C3DVector built from the CRGBFloatColour sum. Body only, no layout change.
+    operator C3DVector() const { return C3DVector(R, G, B); }
+#endif
 #ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_SCALE
     // Opt-in (chunk 2020, row 0x006414A0 CTCLight::DrawLight): FableWin.pdb ??XCRGBFloatColour@@QAEAAV0@M@Z (operator*=(float)), inline
     // in retail (0x0064194A..0x00641982: R, G, B, A each `fld ; fmul [scale] ; fstp` in member order; no out-of-line copy is bound).

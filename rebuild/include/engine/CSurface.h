@@ -152,6 +152,14 @@ public:
  // the row defines it beside GetPixelFormat (FABLE_RETAIL_CSURFACE_PIXELFORMAT). Declaration only; do not combine with _LOCK / _CLEAR.
  unsigned long GetByteLength()const;                      // 0x009F2FC0
 #endif
+#ifdef FABLE_RETAIL_CSURFACE_TEXTUREMIPMAP
+ // Retail opt-in (egod e02, row 0x009FAF70 CTexture::GenerateMipmapsWithGPU): Ego_r.pdb 0x00B46BF0 / FableWin.pdb
+ // ?InitialiseFromTextureMipmap@CSurface@@QAEXPAUIDirect3DSurface9@@@Z (retail 0x009F2F10, bound) and the user copy constructor
+ // ??0CSurface@@QAE@ABV0@@Z (retail 0x009F2D60, bound; called for CTexture::GetSurfaceLevel's by-value result, 0x009FB03D).
+ // Declarations only; no layout change.
+ CSurface(const CSurface& other);                         // 0x009F2D60
+ void InitialiseFromTextureMipmap(IDirect3DSurface9* surface);   // 0x009F2F10
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_SWIZZLE
  // Retail opt-in (agentNF20, 2026-11-11, rows 0x009F4330 / 0x009F4360): Ego_r.pdb (0x00B48030 / 0x00B48060, the order of retail) +
  // FableWin.pdb ?Swizzle@CSurface@@QAEXK@Z / ?Unswizzle@CSurface@@QAEXK@Z; the PC bodies only lock (Lock 0x009F33E0) and Unlock.

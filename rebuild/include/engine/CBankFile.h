@@ -282,6 +282,14 @@ public:
     // ?ReadEntryData@CBankFile@@QAEXKKPAXK@Z (retail 0x009CC2A0), out of line: entry index, byte offset, buffer, size.
     void ReadEntryData(unsigned long index, unsigned long offset, void* buffer, unsigned long size);   // 0x009CC2A0
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_ENTRYWRITE
+    // Opt-in (egod e07, row 0x00B2BD80 CEngineSurfaceCompositionManager::WriteTextureToBank): Ego_r.pdb ?InternalResizeEntryData@CBankFile@@QAEXKK@Z
+    // (retail 0x009D1260, landed), ?InternalWriteEntryData@CBankFile@@QAEXKKPBXK@Z (0x009CCCD0) and
+    // ?UpdateEntryInfoOnly@CBankFile@@QAEXKAAVCDataInputStream@@K@Z (0x009CC8B0), all out of line (Ego_d parameter names). Declarations only.
+    void InternalResizeEntryData(unsigned long index, unsigned long data_size);                         // 0x009D1260
+    void InternalWriteEntryData(unsigned long index, unsigned long dest_offset, const void* src_data, unsigned long src_size);   // 0x009CCCD0
+    void UpdateEntryInfoOnly(unsigned long index, class CDataInputStream& info, unsigned long info_size); // 0x009CC8B0
+#endif
 };
 #pragma pack(pop)
 

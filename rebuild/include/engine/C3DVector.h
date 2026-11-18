@@ -453,7 +453,12 @@ public:
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
 #endif
 #endif
-#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQUARED_LOCAL)
+#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_X_THEN_YZ)
+    // Retail opt-in (egod e03, row 0x008E5D40 CTCPhysicsStandard::Move): the named squared sum as X plus the Y/Z pair. There retail loads
+    // the copied components Z, Y, X and forms (Y*Y + Z*Z) + X*X (0x008E5D57..0x008E5D85); FableWin.pdb ?GetMagnitude@C3DVector@@QBEMXZ
+    // is 26i/66b (this text, fwsize SAME). FITTED grouping (the other 26i texts give other orders there). Body only.
+    FABLE_VECTOR_INLINE float GetMagnitude()const{float squared=X*X+(Y*Y+Z*Z);return (float)sqrt(squared);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQUARED_LOCAL)
     // Retail opt-in (row 0x00B4D370): FableWin ?GetMagnitude@C3DVector@@QBEMXZ text (26i / 66b at /Od, fwsize SAME): the sum in a named
     // local, then sqrtf (as the C2DVector FABLE_RETAIL_C2DVECTOR_MAGNITUDE_SQUARED_LOCAL opt-in).
     FABLE_VECTOR_INLINE float GetMagnitude()const{float squared=X*X+Y*Y+Z*Z;return sqrtf(squared);}
@@ -576,7 +581,13 @@ public:
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
     // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
     static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0
-#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_NAMED_SQUARED)
+#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_LOCALS_YZX)
+    // Retail opt-in (egod e03, row 0x008E5D40 CTCPhysicsStandard::Move): the components read into locals x, y, z, then the squared length
+    // as a running sum Y, Z, X (the NORMALISE_LOCALS text in another order). There retail loads X, Y, Z (0x008E5E17..0x008E5E21) and
+    // forms (Y*Y + Z*Z) + X*X. FableWin.pdb ?Normalise@C3DVector@@QAEAAV1@XZ is 48i/133b, this text 47i/130b (NORMALISE_LOCALS too).
+    // FITTED order. Body only: no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float x=X;float y=Y;float z=Z;float squared=y*y;squared+=z*z;squared+=x*x;float one_on_magnitude=GFFastOneOverSqrt(squared);X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_NAMED_SQUARED)
     // Retail opt-in (wfE8 8th agent, row 0x00ACA830 COptimisedPrimitive::Initialise): IsNonZero as ONE expression (FableWin.pdb
     // ?IsNonZero 0x01B4F100 31i/91b = this text at /Od) and Normalise with its squared length in a named local (FITTED: no whole-sum
     // CSE with IsNonZero, so the three products are shared and VC7.1 orders them per site, as retail does: X,Z,Y at 0x00ACABD2 /

@@ -7,6 +7,10 @@
 // bytes 0x013B861B / 0x013B861C, this one is set only around the front-end movies). The two statics have no PDB data symbol:
 // descriptive names.
 #include "engine/CRGBColour.h"
+#ifdef FABLE_RETAIL_CXMVPLAYER_GETCHARWIDTHW
+#include "engine/CCountedPointer.h"
+class CFontBank;
+#endif
 class CXMVPlayer {
 public:
     static void __fastcall SetClearColour(CRGBColour colour) { ClearColour = colour; }
@@ -14,5 +18,14 @@ public:
 private:
     static CRGBColour ClearColour;                                           // 0x013961E0 (descriptive)
     static bool SkipOnAnyButton;                                             // 0x013CA7E9 (descriptive)
+#ifdef FABLE_RETAIL_CXMVPLAYER_GETCHARWIDTHW
+    // Opt-in (w23 e15, row 0x009BCE70): Ego_r.pdb ?GetCharWidthW@CXMVPlayer@@SII_W@Z (public static __fastcall; retail VC7.1 wide char =
+    // unsigned short -> SIIG) and Ego_d.pdb's private static CCountedPointer<CFontBank> PlayerFont (LF_STMEMBER; `dynamic initializer
+    // for 'CXMVPlayer::PlayerFont'`), 0x013CA7F0 (read only by 0x009BCE70 and its atexit destructor 0x0122A6C0 (initializer 0x01224070)). Needs engine/CCountedPointer.h.
+public:
+    static unsigned int __fastcall GetCharWidthW(unsigned short c);                 // 0x009BCE70
+private:
+    static CCountedPointer<CFontBank> PlayerFont;                            // 0x013CA7F0
+#endif
 };
 #endif

@@ -52,6 +52,12 @@ namespace NGraphicAppearance { class CTCGraphicAppearance; }
 // Original donor024CFED8 instantiates this checked cast; debug checks vanish in retail.
 template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From* value,To*) { return static_cast<To*>(value); }
 #endif
+#if defined(FABLE_RETAIL_GFDEBUGDYNAMICCAST) && !defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && !defined(FABLE_RETAIL_CTCHEALLIFE_START_ORIGINAL)
+// e05 opt-in (egod lane, row 0x00798940): the same checked cast for any row. FableWin.pdb
+// ??$GFDebugDynamicCast@VCThingCreatureBase@@VCThingPhysical@@@@YIPAVCThingPhysical@@PAVCThingCreatureBase@@PAV0@@Z; Ego_d
+// tc_force_pushed.obj instantiates GFDebugDynamicCast<CThingCreatureBase,CThingPhysical>. Identical body.
+template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From* value,To*) { return static_cast<To*>(value); }
+#endif
 #ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
 class CPersistContext;class CMemoryDataInputStream;class CInterpolationInfo;class CThingInfo;class CEditEngineDrawInfo;class CThingDrawInformation;class CThingPhysicalDebugInfo;class CEnginePrimitivePrepareInfo;enum ECollideType;
 #endif

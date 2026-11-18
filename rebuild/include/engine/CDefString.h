@@ -25,6 +25,10 @@ public:
 #ifdef FABLE_RETAIL_EXPRESSION_FRAME
  bool operator!=(const char*)const;
 #endif
+#ifdef FABLE_RETAIL_CDEFSTRING_NE_DEFSTRING
+ // Opt-in (egod e07, row 0x00681E60): FableWin.pdb ??9CDefString@@QBE_NABV0@@Z (0x01D95D70), inline in retail (0x00681E9D: mov ecx,[eax] then cmp ecx,[ebp] compares the two TablePos words). Body only.
+ bool operator!=(const CDefString& other)const{return TablePos!=other.TablePos;}
+#endif
 #if defined(FABLE_RETAIL_CDEFSTRING_NOTEQUAL) && !defined(FABLE_RETAIL_EXPRESSION_FRAME)
  // Opt-in (chunk 2026, row 0x0092DA20 CAIStateGroup_MinionSleep::Update): Ego_r.pdb / FableWin.pdb ??9CDefString@@QBE_NPBD@Z, out of line
  // in retail at 0x005FA740 (`push offset "" ; mov ecx,<def+34h> ; call`, 0x0092DF45; already bound by that spelling). Declaration only.
