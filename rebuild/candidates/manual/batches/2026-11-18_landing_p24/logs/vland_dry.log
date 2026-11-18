@@ -1,0 +1,75 @@
+addr       parity           behav  name
+00acd960   RELOCATION_MATCH PASS   Optimise
+00ab7b00   RELOCATION_MATCH PASS   GetStringExtents
+00b9d730   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b9d730   RELOCATION_MATCH PASS   IsInsideFustrum
+00761280   WARN RELOC_ALIAS: __CItanh -> 00bfece2 is the import thunk 'MSVCR71.DLL::_CItanh'
+00761280   RELOCATION_MATCH PASS   DrawPrimitiveLineOverLandscape
+00657580   WARN RELOC_NAME: ?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z -> 00643be2 labelled 'NUISystem::CComponent::CanMove'
+00657580   RELOCATION_MATCH PASS   Draw
+00a55f90   RELOCATION_MATCH PASS   SetFromVectorAndAngle
+00a86110   RELOCATION_MATCH PASS   CalculateDividingPlane
+005253f0   WARN RELOC_NAME: ?LoadFromGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersistContext@@@Z -> 00524ec0 labelled 'CDrawQuestInfo_LoadDeadCreatures'
+005253f0   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+005253f0   RELOCATION_MATCH PASS   LoadGameState
+0058f016   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled 'CCountedPointer<NUISystem::CComponent>::ReleaseData'
+0058f016   RELOCATION_MATCH PASS   ConstructItemCategoryList
+00b63800   RELOCATION_MATCH PASS   LoadNewScene
+00830fe0   RELOCATION_MATCH PASS   SerialiseGameState
+00929020   RELOCATION_MATCH PASS   IsRunnable
+006ddd30   RELOCATION_MATCH PASS   OnTrophyUseAction
+007f68b0   WARN RELOC_NAME: ??$GetPBestThingInRoughArea@V?$CFilter_Bind3@VCThingFilter_IsAvailableForCreatureInteraction@@VCThingFilter_IsAICreatureAwareOf@@V?$unary_negate@VCThingFilter_IsIncapacitated@@@std@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_IsAvailableForCreatureInteraction@@VCThingFilter_IsAICreatureAwareOf@@V?$unary_negate@VCThingFilter_IsIncapacitated@@@std@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z -> 007f7340 labelled 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>'
+007f68b0   RELOCATION_MATCH PASS   GetPBestCreatureForInteractionType
+007f4990   WARN RELOC_NAME: ?DoesNPCNameEntryExistForThing@CThingManager@@QAE_N_K@Z -> 0051f010 labelled '_unattributed::Contains'
+007f4990   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+007f4990   RELOCATION_MATCH PASS   GetNPCShortName
+00940310   RELOCATION_MATCH PASS   Update
+009582d0   RELOCATION_MATCH PASS   Update
+00f38ff0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00f38ff0   RELOCATION_MATCH PASS   SetBaseBlendModes
+00926060   RELOCATION_MATCH PASS   Update
+006d8980   RELOCATION_MATCH PASS   UpgradeTrainableStat
+006bd900   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006bd900   RELOCATION_MATCH PASS   PlayMusic
+00877840   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00877840   RELOCATION_MATCH PASS   IsLineOfSight
+00ac7750   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00ac7750   WARN RELOC_NAME: ?GetInverseMatrixPart@CQuadric@QuadricOptimiserInternals@@QBE?AVCMatrix3x4@@XZ -> 00ac70f0 labelled 'QuadricOptimiserInternals::CQuadric::GetMatrixPart'
+00ac7750   RELOCATION_MATCH PASS   ComputeOptimalVertexPlacement
+00b45a40   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b45a40   RELOCATION_MATCH PASS   CalcSWLightingNoClipSeparateMainLight
+006c0970   RELOCATION_MATCH PASS   CreateSignPost
+00697f80   RELOCATION_MATCH PASS   Is2DAreaInViewingFrustrum
+00b242d0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b242d0   RELOCATION_MATCH PASS   ConvertWorldPosToScreenPos
+008b6ad0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 28
+  00acd960 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::Optimise
+  00ab7b00 RELOCATION_MATCH CStaticFontBank::GetStringExtents
+  00b9d730 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::IsInsideFustrum
+  00761280 RELOCATION_MATCH NShape::DrawPrimitiveLineOverLandscape
+  00657580 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIconsPC::Draw
+  00a55f90 RELOCATION_MATCH CMatrix3x4::SetFromVectorAndAngle
+  00a86110 RELOCATION_MATCH CIPhysicsFacesSegmentBase::CalculateDividingPlane
+  005253f0 RELOCATION_MATCH CThingManager::LoadGameState
+  0058f016 RELOCATION_MATCH CTCInventory::ConstructItemCategoryList
+  00b63800 RELOCATION_MATCH CEngineSkyRenderer::LoadNewScene
+  00830fe0 RELOCATION_MATCH CThingAICreature::SerialiseGameState
+  00929020 RELOCATION_MATCH CAIStateGroup_BanditPlayDice::IsRunnable
+  006ddd30 RELOCATION_MATCH CTCTrophy::OnTrophyUseAction
+  007f68b0 RELOCATION_MATCH CTCTargetingAI::GetPBestCreatureForInteractionType
+  007f4990 RELOCATION_MATCH CTCHasName::GetNPCShortName
+  00940310 RELOCATION_MATCH CAIStateGroup_VillageTaskPickCrops::Update
+  009582d0 RELOCATION_MATCH CAIStateGroup_MinionReactToTrespassing::Update
+  00f38ff0 RELOCATION_MATCH CSurfaceCompositor::SetBaseBlendModes
+  00926060 RELOCATION_MATCH CAIStateGroup_WifeGiveYouGift::Update
+  006d8980 RELOCATION_MATCH CTCHeroExperience::UpgradeTrainableStat
+  006bd900 RELOCATION_MATCH CMusicManager::PlayMusic
+  00877840 RELOCATION_MATCH NCameraModes::CTools::IsLineOfSight
+  00ac7750 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::ComputeOptimalVertexPlacement
+  00b45a40 RELOCATION_MATCH CEngineLightingManager::CalcSWLightingNoClipSeparateMainLight
+  006c0970 RELOCATION_MATCH CTCBuyableHouse::CreateSignPost
+  00697f80 RELOCATION_MATCH CGameCameraManager::Is2DAreaInViewingFrustrum
+  00b242d0 RELOCATION_MATCH CEngine::ConvertWorldPosToScreenPos
+  008b6ad0 RELOCATION_MATCH CCreatureAction_MidAttackSide::Initialise

@@ -10,6 +10,9 @@ class CChunkedFileChunk;
 class C3DMeshFilePrimitiveChunk;
 #endif
 namespace QuadricOptimiserInternals {
+#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_OPTIMALPLACEMENT
+class CQuadric;
+#endif
 class CUniqueVertex;class COptimisedVertex;class COptimisedFace;class COptimisedEdge;class CVertexPairContraction;
 class COptimisationParameters {public:float Scaling,EdgeWeight,EdgeCost,GroupWeight,TextureWeight,TexturePenalty,UnsplitTextureWeight,UnsplitNormalWeight,HighPenalty;unsigned long MaximumBonesPerVertex;};
 class COptimisedPrimitive {
@@ -22,6 +25,10 @@ private:
  std::multimap<float,CCountedPointer<CVertexPairContraction> > VertexPairContractions;
  long SegmentCount;CArray<float> SegmentSizes;CArray<CCountedPointer<CChunkedFileChunk> > SubChunksToKeep;
  COptimisationParameters Parameters;
+#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_OPTIMALPLACEMENT
+ // Retail opt-in (Codex pass 24): the original private member, retail 0x00AC7750.
+ C3DVector ComputeOptimalVertexPlacement(const CQuadric&,const C3DVector&,const C3DVector&);
+#endif
 #ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_SUBCOST
  // Retail opt-in (Codex pass 17): exact original private nonconst method.
  float ComputeSubContractionCost(const CSubContraction&,const C3DVector&);

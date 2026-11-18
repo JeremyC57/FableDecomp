@@ -9,6 +9,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSPECIALABILITIESBATTLECHARGEDEF_STARTUP_PASS24
+#include "engine/CParentDefClassBase.h"
+#include "stlport/fable_containers.h"
+// The original definition derives from CParentDefClassBase, as Ego_d TPI records.
+class CSpecialAbilitiesBattleChargeDef : public CParentDefClassBase {
+public:
+    float RunSpeed;
+    std::vector<float> DashDistance;
+    std::vector<float> RadiusOfEffect;
+    std::vector<float> BattleChargeDamage;
+    float BattleChargeCombatMultiplierFactor;
+    float BattleChargeRadialStartSeconds;
+    float BattleChargeRadialEndSeconds;
+    float BattleChargeRadialThreshold;
+    float BattleChargeRadialLength;
+    float BattleChargeRadialIntensity;
+    float BattleChargeRadialFade;
+    float BattleChargeRadialRange;
+    float BattleChargeRadialTwist;
+    float PoseDelaySecs;
+    float ChargeDelay;
+    std::vector<long> NumPeopleHit;
+    float DragonExtraGumphRadiusMultiplier;
+    float DragonExtraGumphRadius;
+};
+FABLE_STATIC_ASSERT(sizeof(CSpecialAbilitiesBattleChargeDef) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, RunSpeed) == 0x3c);
+#else
 #pragma pack(push, 1)
 class CSpecialAbilitiesBattleChargeDef {
 public:
@@ -45,25 +73,26 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSpecialAbilitiesBattleChargeDef) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, RunSpeed) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, DashDistance) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, RadiusOfEffect) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeDamage) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeCombatMultiplierFactor) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialStartSeconds) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialEndSeconds) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialThreshold) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialLength) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialIntensity) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialFade) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialRange) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialTwist) == 0x84);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, PoseDelaySecs) == 0x88);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, ChargeDelay) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, NumPeopleHit) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, DragonExtraGumphRadiusMultiplier) == 0x9c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBattleChargeDef, DragonExtraGumphRadius) == 0xa0);
+FABLE_STATIC_ASSERT_AT(48, sizeof(CSpecialAbilitiesBattleChargeDef) == 0xa4);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CSpecialAbilitiesBattleChargeDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CSpecialAbilitiesBattleChargeDef, RunSpeed) == 0x3c);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CSpecialAbilitiesBattleChargeDef, DashDistance) == 0x40);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CSpecialAbilitiesBattleChargeDef, RadiusOfEffect) == 0x4c);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeDamage) == 0x58);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeCombatMultiplierFactor) == 0x64);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialStartSeconds) == 0x68);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialEndSeconds) == 0x6c);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialThreshold) == 0x70);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialLength) == 0x74);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialIntensity) == 0x78);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialFade) == 0x7c);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialRange) == 0x80);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CSpecialAbilitiesBattleChargeDef, BattleChargeRadialTwist) == 0x84);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CSpecialAbilitiesBattleChargeDef, PoseDelaySecs) == 0x88);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CSpecialAbilitiesBattleChargeDef, ChargeDelay) == 0x8c);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CSpecialAbilitiesBattleChargeDef, NumPeopleHit) == 0x90);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CSpecialAbilitiesBattleChargeDef, DragonExtraGumphRadiusMultiplier) == 0x9c);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CSpecialAbilitiesBattleChargeDef, DragonExtraGumphRadius) == 0xa0);
 
+#endif // Battle charge retail opt-in
 #endif // FABLE_ENGINE_CSPECIALABILITIESBATTLECHARGEDEF_H

@@ -1,0 +1,20 @@
+{
+  "address": "0x0089CE70",
+  "leaf": "?IsThingAwareOfOtherThingInAnyWay@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z",
+  "retail_bytes": 616,
+  "object_bytes": 614,
+  "extra_flags": [
+    "/d2inlS100"
+  ],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.9931662870159453,
+  "first_unequal_masked_offset": 23,
+  "relocation_count": 15,
+  "source_sha256": "7eefc064de0b2bbb18048087e6a696df6eb5e25d2f309973ea58fb40d6faabf1",
+  "test_sha256": "30716099838b548e7cddccd308570e9155384a0b197f62f9d6c8d76d8a415eab",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0089ce70_TEST PASS",
+    "g++ -std=c++03 -O0": "0089ce70_TEST PASS"
+  },
+  "status": "PARKED"
+}

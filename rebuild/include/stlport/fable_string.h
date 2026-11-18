@@ -351,7 +351,13 @@ private:
 #endif
     }
     template<class I> _Self& _M_assign_dispatch(I f,I l,const __false_type&);
+#ifdef FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24
+public:
+#endif
     template<class I> _Self& append(I f,I l,const forward_iterator_tag&);
+#ifdef FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24
+private:
+#endif
     template<class I> _Self& _M_append_dispatch(I f,I l,const __false_type&) { return append(f,l,forward_iterator_tag()); }
 };
 template<class C,class T,class A> basic_string<C,T,A>::basic_string():_Base(allocator_type()) {

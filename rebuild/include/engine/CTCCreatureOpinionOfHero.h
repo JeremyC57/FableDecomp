@@ -115,6 +115,9 @@ public:
 
 class CTCCreatureOpinionOfHero : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_MINION_TRESPASS_UPDATE_PASS24
+    template<class Filter> const COpinionDeed* FindMostRecentDeed(EOpinionDeedType, const Filter&,long*,bool) const;
+#endif
     CTCCreatureOpinionOfHero(CThing& thing);                             // 0x00684420 ??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z
     virtual void OnSerialise(CPersistContext& context, bool loading);   //  1 0x00684610 (public: Ego_r UAE)
     virtual void OnInitialActivate();                                    //  6 0x006815C0

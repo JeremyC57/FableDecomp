@@ -8,4 +8,8 @@ inline void FABLE_FASTCALL GFLimit(T& value, const L& lower, const U& upper)
     if (value < lower) value = lower;
     else if (value > upper) value = upper;
 }
+#ifdef FABLE_RETAIL_CTCTALK_VOICED_GROUP_PASS24
+template <class T>
+const T& FABLE_FASTCALL GFLimitReturn(const T& value, const T& lower, const T& upper);
+#endif
 #endif

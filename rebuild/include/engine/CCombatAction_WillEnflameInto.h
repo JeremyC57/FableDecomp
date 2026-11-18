@@ -9,6 +9,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATACTION_WILLENFLAMEINTO_MAZE
+#include "engine/CCombatActionBase.h"
+class CThing;
+class CCombatAction_WillEnflameInto : public CCombatActionBase {
+public:
+    CCombatAction_WillEnflameInto(CThingCreatureBase& creature, long level); // 0x009567F0
+    long Level;
+protected:
+    virtual CCreatureActionBase* Clone() const;
+};
+FABLE_STATIC_ASSERT(sizeof(CCombatAction_WillEnflameInto) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillEnflameInto, Level) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCombatAction_WillEnflameInto {
 public:
@@ -77,8 +90,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatAction_WillEnflameInto) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillEnflameInto, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillEnflameInto, Level) == 0x114);
+FABLE_STATIC_ASSERT_AT(80, sizeof(CCombatAction_WillEnflameInto) == 0x118);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CCombatAction_WillEnflameInto, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCombatAction_WillEnflameInto, Level) == 0x114);
 
+#endif // 0x009552C0 retail opt-in
 #endif // FABLE_ENGINE_CCOMBATACTION_WILLENFLAMEINTO_H

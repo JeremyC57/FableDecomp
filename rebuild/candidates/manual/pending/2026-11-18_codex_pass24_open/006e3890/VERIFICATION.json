@@ -1,0 +1,18 @@
+{
+  "address": "0x006E3890",
+  "leaf": "?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@KABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@_N2@Z",
+  "retail_bytes": 529,
+  "object_bytes": 546,
+  "extra_flags": [],
+  "strict_instruction_hunks": 11,
+  "strict_instruction_ratio": 0.7855297157622739,
+  "first_unequal_masked_offset": 53,
+  "relocation_count": 22,
+  "source_sha256": "2eb28d29b9d79c039bae4ec6b8adf8657a7092779abe16e721e9b34984ed4211",
+  "test_sha256": "d27b273c9227c3baea3ed423dcf0b1e6e060ebcf0196e9c62dbccd64c282a8c3",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "006e3890_TEST PASS",
+    "g++ -std=c++03 -O0": "006e3890_TEST PASS"
+  },
+  "status": "PARKED"
+}

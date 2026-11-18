@@ -158,6 +158,11 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
     // (the +0x1C byte read in place, passed to CTCShotDefinitionBase::OnHitByMelee). Body only: no layout change.
     bool IsBlockable() const { return Blockable; }
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_SETBLOCKABLE
+    // Retail opt-in (Codex pass 24): FableWin donor 0x0271EDE0 and
+    // the expanded store in CTCHitOnCollision::OnCollision.
+    void SetBlockable(bool blockable) { Blockable = blockable; }
+#endif
 #ifdef FABLE_RETAIL_CHITPARAMETERS_LOCATIONCTOR
     // Opt-in (chunk 2053, row 0x0087F3A0): FableWin.pdb ??0CHitParameters@@QAE@PAVCHitLocation@NHitLocations@@PAVCThing@@1@Z (out of line,
     // retail 0x0087FF60, landed; FableWin lists it right after CCombatAction_KickThingOnGround::PerformAction, its first user) and Ego_r.pdb

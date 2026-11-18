@@ -1,0 +1,22 @@
+{
+  "address": "0x00F3E120",
+  "leaf": "?FindBestStartVertex@CTriangleStripifier2@@AAEJABV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@V?$CArray@G@@@@@Z",
+  "retail_bytes": 1411,
+  "object_bytes": 1411,
+  "extra_flags": [
+    "/Gr",
+    "/d2inlT70"
+  ],
+  "strict_instruction_hunks": 4,
+  "strict_instruction_ratio": 0.9956989247311828,
+  "first_unequal_masked_offset": 370,
+  "relocation_count": 30,
+  "source_sha256": "d8a5e7b0be517de0088e6e3bc9ac0320f49618b60f5ab13c97265c09d8f36795",
+  "test_sha256": "dd0269000ea3169e4bc576ffea66a117797a2a23afb5452b2de7069d43456044",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00f3e120_TEST PASS",
+    "g++ -std=c++03 -O0": "00f3e120_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 8
+}

@@ -14,6 +14,10 @@ public:
  virtual void UpdateAddParticle(CParticleSystem&,const CParticleUpdateParameters<unsigned long,unsigned long>&,C3DVector,C3DVector,float);
 #endif
  virtual void Update(CParticleSystem&,const CParticleUpdateParameters<unsigned long,unsigned long>&,bool&);
+#ifdef FABLE_RETAIL_CPSCUPDATENORMAL_DATABASE_SERIALISE
+ // Retail opt-in (Codex pass 24): Ego_r and FableWin give the override in vtable slot 17, 0x00B0D360.
+ virtual void DatabaseSerialise(CPersistContext&, const CEmitterDatabaseSerialiseInfo&);
+#endif
 protected:
  float GetCurrentFadeValue()const;
     unsigned long FadeInEndInteger : 10;           // +0x0c

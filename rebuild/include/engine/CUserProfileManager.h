@@ -34,6 +34,33 @@ public:
     // Retail opt-in (Codex pass22): both original TPI method records; donor020FF164 selects these two fields.
     bool GetShowTargetingStatus() const { return UseNewProfileValues ? ShowTargetingStatusNewProfile : ShowTargetingStatus; }
 #endif
+#ifdef FABLE_RETAIL_PCMOUSELOOK_PASS24
+    bool IsCameraXYInverted() const { return UseNewProfileValues ? CameraXYInvertedNewProfile : CameraXYInverted; }
+    bool IsCameraYZInverted() const { return UseNewProfileValues ? CameraYZInvertedNewProfile : CameraYZInverted; }
+    bool IsCameraPCBowXYInverted() const { return UseNewProfileValues ? CameraPCBowXYInvertedNewProfile : CameraPCBowXYInverted; }
+    bool IsCameraPCBowYZInverted() const { return UseNewProfileValues ? CameraPCBowYZInvertedNewProfile : CameraPCBowYZInverted; }
+    bool IsCameraResetting() const { return UseNewProfileValues ? CameraResettingNewProfile : CameraResetting; }
+    float GetCameraSensitivity() const { return UseNewProfileValues ? CameraSensitivityNewProfile : CameraSensitivity; }
+    unsigned char _pad_00[0x0c];
+    bool UseNewProfileValues;
+    unsigned char _pad_0d[2];
+    bool CameraXYInverted, CameraYZInverted;
+    unsigned char _pad_11[2];
+    bool CameraPCBowXYInverted, CameraPCBowYZInverted;
+    unsigned char _pad_15[0x79-0x15];
+    bool CameraResetting;
+    unsigned char _pad_7a[2];
+    float CameraSensitivity;
+    unsigned char _pad_80[0xcf-0x80];
+    bool CameraXYInvertedNewProfile, CameraYZInvertedNewProfile;
+    unsigned char _pad_d1[2];
+    bool CameraPCBowXYInvertedNewProfile, CameraPCBowYZInvertedNewProfile;
+    unsigned char _pad_d5[0x12c-0xd5];
+    bool CameraResettingNewProfile;
+    unsigned char _pad_12d[3];
+    float CameraSensitivityNewProfile;
+    unsigned char _pad_134[12];
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_CYLINDER_INPUT
  // Retail opt-in (Codex pass23): original FableWin methods and native0085c4a4..0085c54d.
  bool IsCameraPCViewHeroXYInverted() const { return UseNewProfileValues ? CameraPCViewHeroXYInvertedNewProfile : CameraPCViewHeroXYInverted; }

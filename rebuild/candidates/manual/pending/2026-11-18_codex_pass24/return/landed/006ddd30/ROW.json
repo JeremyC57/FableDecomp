@@ -1,0 +1,19 @@
+{
+  "status": "RELOCATION_MATCH",
+  "attempts": 29,
+  "leaf": "?OnTrophyUseAction@CTCTrophy@@QAEXAAVCThingCreatureBase@@@Z",
+  "assigned_name": "?OnTrophyUseAction@CTCTrophy@@QAEXAAVCThingCreatureBase@@@Z",
+  "retail_size": 841,
+  "object_size": 841,
+  "flags": [],
+  "lever": "The CDefString implicit conversion places the temporary cleanup flag after the native argument setup.",
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "relocated_operands": 55,
+  "total_recorded_grades": 36,
+  "source_sha256": "30d9ad8dc9b7607f3ffbb42d9dace12869f854c47989f68a8d8a4edc74795fc0",
+  "test_sha256": "f09868071efd552900c12a497942e6b583eb3e5629e26089b13731ad175c3686",
+  "extra_flags": []
+}

@@ -1,0 +1,19 @@
+{
+  "status": "RELOCATION_MATCH",
+  "attempts": 66,
+  "leaf": "?ConvertWorldPosToScreenPos@CEngine@@UBE_NABVC3DVector@@AAVC2DVector@@@Z",
+  "assigned_name": "?ConvertWorldPosToScreenPos@CEngine@@UBE_NABVC3DVector@@AAVC2DVector@@@Z",
+  "retail_size": 293,
+  "object_size": 293,
+  "flags": [],
+  "lever": "Two-reference camera overloads, assigned input and separate output component stores.",
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 3,
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "total_recorded_grades": 79,
+  "source_sha256": "b299f4578b730b3475afb446092016bd2b704e292d7c0fe082dae743c01161b5",
+  "test_sha256": "3c5c8c27d92456d94ef80c42fa738f7183769e80d67a9a2399012a42c20b6fda",
+  "extra_flags": []
+}

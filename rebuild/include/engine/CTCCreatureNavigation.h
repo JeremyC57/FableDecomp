@@ -91,6 +91,10 @@ public:
     bool IsPosNavLineOfSightToPos(const C3DVector& from, const C3DVector& to) const;                       // 0x006CB610
 #endif
 #endif
+#ifdef FABLE_RETAIL_MINION_CRIMINAL_UPDATE_PASS24
+public:
+    bool IsPosNavigable(const C3DVector& pos) const;
+#endif
 #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_NEARBYDIRECTED
 public:
     // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb

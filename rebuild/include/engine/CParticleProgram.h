@@ -26,6 +26,10 @@
 #include "engine/CParticleSimulation.h"
 #include "engine/CMemoryDataOutputStream.h"
 #include "engine/CArray.h"
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_READ_PASS24
+#include "engine/CVectorMap.h"
+#include "engine/C3DGroup2.h"
+#endif
 #include "engine/C3DTriangle2.h"
 #include "engine/C3DQuad2.h"
 #ifdef FABLE_RETAIL_CPARTICLEPROGRAM_RENDERACCESS
@@ -47,6 +51,13 @@ class CParticleContext;
 class CParticleDistanceConstraint;
 class CParticleProgram : public CMovableResource {
 public:
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_READ_PASS24
+    bool ReadFromFile(CDataInputStream&, CMovableResourceMemoryPool&);
+private:
+    bool AllocateArrays(unsigned long,CMovableResourceMemoryPool&);
+    static void FABLE_FASTCALL ReadGroups(CDataInputStream&, CArray<C3DGroup2>&);
+public:
+#endif
     CParticleProgram();
     virtual ~CParticleProgram();
     virtual void RelocateData(long,void*,void*,long);
@@ -92,7 +103,11 @@ private:
     static void __fastcall RemapBoneIndices(std::map<unsigned long, unsigned long>& remap, CArray<C3DGroup2>& groups);   // 0x00AE3920
 #endif
     CParticleSimulation InitialSimulation;                   // +0x08
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_READ_PASS24
+    CVectorMap<CCharString,unsigned long,CKeyPairCompareLess<CCharString,unsigned long> > ExportParticles;
+#else
     unsigned char ExportParticles[16];                       // +0x88 CVectorMap<CCharString,unsigned long,CKeyPairCompareLess<CCharString,unsigned long> >
+#endif
     CArray<C3DTriangle2> RenderTris;                         // +0x98
     CArray<C3DQuad2> RenderQuads;                            // +0xA4
 #ifdef FABLE_RETAIL_CPARTICLEPROGRAM_RENDERACCESS
@@ -130,8 +145,16 @@ private:
     unsigned char IndexedTextureCoords[12];                  // +0xC4 CArray<C2DVector>
 #endif
     unsigned char TempVertexPositions[12];                   // +0xD0 CArray<C4DVector>
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_READ_PASS24
+    CArray<long> ParticleIndices;
+#else
     unsigned char ParticleIndices[12];                       // +0xDC CArray<long>
+#endif
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_READ_PASS24
+    CArray<long> VertexIndices;
+#else
     unsigned char VertexIndices[12];                         // +0xE8 CArray<long>
+#endif
     bool BezierEnable;                                       // +0xF4
     float AveragePatchSize;                                  // +0xF8
 #ifdef FABLE_RETAIL_CPARTICLEPROGRAM_PASS22_CLEARGROUPS

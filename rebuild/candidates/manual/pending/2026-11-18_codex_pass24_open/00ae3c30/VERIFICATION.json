@@ -1,0 +1,19 @@
+{
+  "address": "0x00AE3C30",
+  "leaf": "?ReadFromFile@CParticleProgram@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z",
+  "retail_bytes": 2310,
+  "object_bytes": 2310,
+  "extra_flags": [],
+  "strict_instruction_hunks": 1,
+  "strict_instruction_ratio": 0.9930555555555556,
+  "first_unequal_masked_offset": 1149,
+  "relocation_count": 39,
+  "source_sha256": "c0aa4969efe0f31004e8088a9b728a1a5ff20d1edc68857eccdad3b0683bce9c",
+  "test_sha256": "cad0c07a868b8e5ca8a37bcf76bb93f6f9c7cf17735c51ced6166dec4f64ae98",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00ae3c30_TEST PASS",
+    "g++ -std=c++03 -O0": "00ae3c30_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 11
+}

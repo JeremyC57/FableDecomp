@@ -1,0 +1,18 @@
+{
+  "address": "0x00AFAE50",
+  "leaf": "?AddToBoundingSphere@CPSCRenderSprite@NParticleEngine@@UAE_NAAVC3DBoundingSphere@@MAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@@Z",
+  "retail_bytes": 2405,
+  "object_bytes": 2413,
+  "extra_flags": [],
+  "strict_instruction_hunks": 156,
+  "strict_instruction_ratio": 0.5743519781718963,
+  "first_unequal_masked_offset": 11,
+  "relocation_count": 53,
+  "source_sha256": "fc23472ce4a5c8c41481d5181288c3163c4df4da147321bda94581b54117cd69",
+  "test_sha256": "23aaf40c417d59987b508a25584d3386c0705e8ea918e9a610b31bfd47f132a8",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00afae50_TEST PASS",
+    "g++ -std=c++03 -O0": "00afae50_TEST PASS"
+  },
+  "status": "PARKED"
+}

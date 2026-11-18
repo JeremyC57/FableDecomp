@@ -1,0 +1,134 @@
+{
+  "address": "0x00F38FF0",
+  "leaf": "?SetBaseBlendModes@CSurfaceCompositor@@IAEXXZ",
+  "retail_bytes": 1842,
+  "object_bytes": 1842,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 14,
+  "source_sha256": "19e71135ed47acfc9ad1259bb86a10621d0cb2a8bf1463de10d2df8fd494e473",
+  "test_sha256": "2c3027c8f1f82f5f85943b8aba848866911fb707ab80960907d54ac236926269",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00f38ff0_TEST PASS",
+    "g++ -std=c++03 -O0": "00f38ff0_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "c079fd1d39d5c170068f8d139334c0a6387c80f270ff65439165ab0bcd30e7bd",
+  "operands": [
+    {
+      "offset": 4,
+      "type": "REL32",
+      "symbol": "?GFGetSystemManager@@YIPAVCSystemManager@@XZ",
+      "base": "0x009A4EC0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 16,
+      "type": "DIR32",
+      "symbol": "?D3DTextureUVModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396DC8",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 124,
+      "type": "DIR32",
+      "symbol": "?D3DTextureUVModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396DC8",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 326,
+      "type": "DIR32",
+      "symbol": "?D3DPolyCullModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396FB0",
+      "coff_addend": 8,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 524,
+      "type": "DIR32",
+      "symbol": "?D3DPolyFillModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396FA4",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 627,
+      "type": "DIR32",
+      "symbol": "?D3DPolyShadeModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396F9C",
+      "coff_addend": 4,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1028,
+      "type": "DIR32",
+      "symbol": "?D3DTextureArgumentModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396EE8",
+      "coff_addend": 8,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 1129,
+      "type": "DIR32",
+      "symbol": "?D3DTextureArgumentModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396EE8",
+      "coff_addend": 4,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 1230,
+      "type": "DIR32",
+      "symbol": "?D3DTextureOperationModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396E70",
+      "coff_addend": 12,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 1331,
+      "type": "DIR32",
+      "symbol": "?D3DTextureArgumentModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396EE8",
+      "coff_addend": 8,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 1432,
+      "type": "DIR32",
+      "symbol": "?D3DTextureArgumentModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396EE8",
+      "coff_addend": 4,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 1533,
+      "type": "DIR32",
+      "symbol": "?D3DTextureOperationModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396E70",
+      "coff_addend": 12,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 1634,
+      "type": "DIR32",
+      "symbol": "?D3DTextureOperationModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396E70",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 1737,
+      "type": "DIR32",
+      "symbol": "?D3DTextureOperationModeTable@CRenderStateManager@@0PAKA",
+      "base": "0x01396E70",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

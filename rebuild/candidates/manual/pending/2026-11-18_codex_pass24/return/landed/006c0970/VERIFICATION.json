@@ -1,0 +1,166 @@
+{
+  "address": "0x006C0970",
+  "leaf": "?CreateSignPost@CTCBuyableHouse@@AAEPAVCThing@@ABVCCharString@@_N@Z",
+  "retail_bytes": 419,
+  "object_bytes": 419,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 18,
+  "source_sha256": "37e3df40a17e06f914322db1f7f7a5520092192ab95aaea81d5c4cfa4db59052",
+  "test_sha256": "96c6aea3f792db185c31354590e86c42d2949232771525ea3461c3ad30121c6f",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "006c0970_TEST PASS",
+    "g++ -std=c++03 -O0": "006c0970_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "4982ef40284c2a6ddaba6b565893c7c33350eab194026f91eb626a36df5d7532",
+  "operands": [
+    {
+      "offset": 27,
+      "type": "REL32",
+      "symbol": "?GetSignPostPos@CTCBuyableHouse@@AAE_N_NAAVC3DVector@@PAVCRightHandedSet@@@Z",
+      "base": "0x006BFCD0",
+      "coff_addend": 0,
+      "evidence": "landed direct target and both donor signatures"
+    },
+    {
+      "offset": 46,
+      "type": "REL32",
+      "symbol": "?Get@CGameDefinitionManager@@SIAAV1@XZ",
+      "base": "0x0044C6B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 53,
+      "type": "REL32",
+      "symbol": "?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z",
+      "base": "0x009AD410",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 60,
+      "type": "DIR32",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "base": "0x0122D70E",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 71,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 105,
+      "type": "REL32",
+      "symbol": "?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z",
+      "base": "0x00703210",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 116,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 148,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "base": "0x0040F020",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 174,
+      "type": "DIR32",
+      "symbol": "??_C@_0P@BGGLKNCG@CTCOwnedEntity?$AA@",
+      "base": "0x0123AA74",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 179,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 195,
+      "type": "REL32",
+      "symbol": "?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z",
+      "base": "0x004C9D60",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 206,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 217,
+      "type": "REL32",
+      "symbol": "?SetPOwner@CTCOwnedEntity@@QAEXPAVCThing@@@Z",
+      "base": "0x007E8590",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 224,
+      "type": "REL32",
+      "symbol": "?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ",
+      "base": "0x00686D40",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 231,
+      "type": "REL32",
+      "symbol": "?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ",
+      "base": "0x00449970",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 238,
+      "type": "REL32",
+      "symbol": "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ",
+      "base": "0x00487DC0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 271,
+      "type": "REL32",
+      "symbol": "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+      "base": "0x004C73D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 280,
+      "type": "REL32",
+      "symbol": "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+      "base": "0x004C73D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

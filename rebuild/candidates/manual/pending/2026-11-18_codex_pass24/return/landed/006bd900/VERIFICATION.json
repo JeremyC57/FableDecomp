@@ -1,0 +1,54 @@
+{
+  "address": "0x006BD900",
+  "leaf": "?PlayMusic@CMusicManager@@IAEXJABVCFadeTimes@1@J@Z",
+  "retail_bytes": 169,
+  "object_bytes": 169,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 4,
+  "source_sha256": "0880445e73abab63ce09d2196cfe2c2d80068942cfc1b6ac7b4538e96e3715aa",
+  "test_sha256": "b829203106aa3c9fd13ba6fec2aaf214c06a951980534d0c6f3c4bdfac881783",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "006bd900_TEST PASS",
+    "g++ -std=c++03 -O0": "006bd900_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "a28c64e2c059b0f05bf2dd010af9b8098a418bba7993db58564e29120b8dfc74",
+  "operands": [
+    {
+      "offset": 3,
+      "type": "DIR32",
+      "symbol": "?PSoundManager@@3PAVCASoundManager@@A",
+      "base": "0x013B8394",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; reloc_bindings"
+    },
+    {
+      "offset": 31,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@JVCRegisteredMusicEntry@CMusicManager@@V?$CKeyPairCompareLess@JVCRegisteredMusicEntry@CMusicManager@@@@@@QAEPAU?$pair@JVCRegisteredMusicEntry@CMusicManager@@@std@@ABJ@Z",
+      "base": "0x006BE5E0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE"
+    },
+    {
+      "offset": 100,
+      "type": "REL32",
+      "symbol": "?PathExists@CAFile@@SI_NABVCWideString@@@Z",
+      "base": "0x00999230",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 114,
+      "type": "DIR32",
+      "symbol": "?PSoundManager@@3PAVCASoundManager@@A",
+      "base": "0x013B8394",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

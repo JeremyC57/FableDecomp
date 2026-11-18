@@ -1,0 +1,18 @@
+{
+  "address": "0x00918A40",
+  "leaf": "?IsRunnable@CAIStateGroup_GazeAtWork@@MAE_NXZ",
+  "retail_bytes": 116,
+  "object_bytes": 114,
+  "extra_flags": [],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.945054945054945,
+  "first_unequal_masked_offset": 12,
+  "relocation_count": 4,
+  "source_sha256": "c599311fd6a56d29df0ee1b5cdba898ab3c0bd497d2fbae4f2216657364dc140",
+  "test_sha256": "33def4ec1b940b94b0cc08d8aeae95198b9a48f5f25935ed0b8220217bc77ca6",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00918a40_TEST PASS",
+    "g++ -std=c++03 -O0": "00918a40_TEST PASS"
+  },
+  "status": "PARKED"
+}

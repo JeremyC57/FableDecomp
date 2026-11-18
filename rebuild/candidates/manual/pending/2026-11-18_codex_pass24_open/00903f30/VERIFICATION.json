@@ -1,0 +1,19 @@
+{
+  "address": "0x00903F30",
+  "leaf": "?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z",
+  "retail_bytes": 254,
+  "object_bytes": 254,
+  "extra_flags": [],
+  "strict_instruction_hunks": 10,
+  "strict_instruction_ratio": 0.8876404494382022,
+  "first_unequal_masked_offset": 69,
+  "relocation_count": 7,
+  "source_sha256": "001f2455635f2c95ca49a114534ae2909e5996e09c40c764884f14865ecffae0",
+  "test_sha256": "752f9d381b76d3f2d203fcb75e633e06e0b9855034649e939752743abe420bb3",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00903f30_TEST PASS",
+    "g++ -std=c++03 -O0": "00903f30_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 11
+}

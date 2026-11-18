@@ -1,0 +1,19 @@
+{
+  "address": "0x009F18F0",
+  "leaf": "?GetData@CGameEventDataPackage@@QAEXJPAX@Z",
+  "retail_bytes": 166,
+  "object_bytes": 166,
+  "extra_flags": [],
+  "strict_instruction_hunks": 20,
+  "strict_instruction_ratio": 0.5633802816901409,
+  "first_unequal_masked_offset": 1,
+  "relocation_count": 0,
+  "source_sha256": "dca61ebfb5550dda142d60448ef6142aad606f2053887831d09857751007e3fa",
+  "test_sha256": "a7a6cbdc55d6af985b735f815cbb2d6b1684186bf5e6fbe91b674b7b9732fa1d",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "009f18f0_TEST PASS",
+    "g++ -std=c++03 -O0": "009f18f0_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 111
+}

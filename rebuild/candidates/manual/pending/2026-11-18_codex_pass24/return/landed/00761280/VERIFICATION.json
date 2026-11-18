@@ -1,0 +1,126 @@
+{
+  "address": "0x00761280",
+  "leaf": "?DrawPrimitiveLineOverLandscape@NShape@@YIXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@22ABVCRGBColour@@@Z",
+  "retail_bytes": 733,
+  "object_bytes": 733,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 13,
+  "source_sha256": "2ac6a03488d3e2946b4fbe42e0c2e7b02e3d634da30e2eec558a062fe6c4263a",
+  "test_sha256": "50bf8befad1a97d5ed6f5ea1de7de2cfcbd13a657d7aa7ed994ab4c33959c474",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00761280_TEST PASS",
+    "g++ -std=c++03 -O0": "00761280_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "9f2ff09740cce9c1b99092d0b0c711d696be61d102754b5dd7a21cdea53cb244",
+  "operands": [
+    {
+      "offset": 65,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 75,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 85,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 149,
+      "type": "DIR32",
+      "symbol": "__real@3d4ccccd",
+      "base": "0x0125A15C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 154,
+      "type": "REL32",
+      "symbol": "__CItanh",
+      "base": "0x00BFECE2",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 160,
+      "type": "DIR32",
+      "symbol": "__real@4014000000000000",
+      "base": "0x01231678",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 166,
+      "type": "DIR32",
+      "symbol": "__real@3fd0000000000000",
+      "base": "0x01238010",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 237,
+      "type": "REL32",
+      "symbol": "__ftol2",
+      "base": "0x00BFEA70",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 276,
+      "type": "REL32",
+      "symbol": "?GetGroundSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z",
+      "base": "0x0063A300",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 282,
+      "type": "DIR32",
+      "symbol": "__real@3e19999a",
+      "base": "0x0126A1F4",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 410,
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "base": "0x0122DED8",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 499,
+      "type": "REL32",
+      "symbol": "?GetGroundSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z",
+      "base": "0x0063A300",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 505,
+      "type": "DIR32",
+      "symbol": "__real@3e19999a",
+      "base": "0x0126A1F4",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

@@ -9,6 +9,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTWILLLIGHTNINGSPELL_MAZE
+#include "engine/CCombatActionBase.h"
+class CThing;
+class CCreatureAction_CastWillLightningSpell : public CCombatActionBase {
+public:
+    CCreatureAction_CastWillLightningSpell(CThingCreatureBase& creature, long level, float secs, CThing& target); // 0x008BCA00
+    long Level;
+    float Secs;
+protected:
+    virtual CCreatureActionBase* Clone() const;
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastWillLightningSpell) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillLightningSpell, Level) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillLightningSpell, Secs) == 0x118);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_CastWillLightningSpell {
 public:
@@ -78,9 +93,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastWillLightningSpell) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillLightningSpell, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillLightningSpell, Level) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillLightningSpell, Secs) == 0x118);
+FABLE_STATIC_ASSERT_AT(81, sizeof(CCreatureAction_CastWillLightningSpell) == 0x11c);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_CastWillLightningSpell, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_CastWillLightningSpell, Level) == 0x114);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_CastWillLightningSpell, Secs) == 0x118);
 
+#endif // 0x009552C0 retail opt-in
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTWILLLIGHTNINGSPELL_H

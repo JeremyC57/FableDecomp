@@ -8,6 +8,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_WAD_ADD_FILE_PASS24
+#include "engine/CBankStateBlock.h"
+class CWADBankStateBlock : public CBankStateBlock {
+public:
+    virtual ~CWADBankStateBlock();
+    virtual void GetDefault(CBankStateBlock& block);
+    virtual unsigned long CreateCRC();
+protected:
+    virtual void Set(const CBankStateBlock* block);
+    class CStateBlock {};
+    CStateBlock State;
+};
+FABLE_STATIC_ASSERT(sizeof(CWADBankStateBlock) == 0x8);
+#else
 #pragma pack(push, 1)
 class CWADBankStateBlock {
 public:
@@ -16,8 +30,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CWADBankStateBlock) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CWADBankStateBlock, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CWADBankStateBlock, State) == 0x4);
+FABLE_STATIC_ASSERT_AT(19, sizeof(CWADBankStateBlock) == 0x8);
+FABLE_STATIC_ASSERT_AT(20, offsetof(CWADBankStateBlock, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(21, offsetof(CWADBankStateBlock, State) == 0x4);
 
+#endif
 #endif // FABLE_ENGINE_CWADBANKSTATEBLOCK_H

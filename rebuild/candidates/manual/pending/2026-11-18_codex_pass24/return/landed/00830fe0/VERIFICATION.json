@@ -1,0 +1,542 @@
+{
+  "address": "0x00830FE0",
+  "leaf": "?SerialiseGameState@CThingAICreature@@UAE_NAAVCPersistContext@@@Z",
+  "retail_bytes": 1504,
+  "object_bytes": 1504,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 65,
+  "source_sha256": "2214c38ae9eaa8ae3714089fd9e6ac4cc5aa9f7ad4ee1f5798dbf9784a5bd650",
+  "test_sha256": "373db8727b698f7dd783ff0da81f9e8c4eb2684b4a7e9bf66126af09dc19e1b0",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00830fe0_TEST PASS",
+    "g++ -std=c++03 -O0": "00830fe0_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "4390358b298df8c328421c5eeb453de5abbc1d941ad7ab2358b19d7c06acd493",
+  "operands": [
+    {
+      "offset": 13,
+      "type": "REL32",
+      "symbol": "?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z",
+      "base": "0x006628E0",
+      "coff_addend": 0,
+      "evidence": "landed direct target and both donor signatures"
+    },
+    {
+      "offset": 40,
+      "type": "DIR32",
+      "symbol": "??_C@_0BB@ILOMKIFK@HasRelationships?$AA@",
+      "base": "0x01272900",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 56,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 63,
+      "type": "REL32",
+      "symbol": "??2@YAPAXI@Z",
+      "base": "0x00BFEA1A",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 117,
+      "type": "REL32",
+      "symbol": "?Reset@?$CCountedPointer@VCRelationshipsInit@CThingAICreature@@@@QAEXPAVCRelationshipsInit@CThingAICreature@@@Z",
+      "base": "0x00834D30",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 145,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 160,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 180,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 205,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 220,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 240,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 266,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 281,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 301,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 327,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 342,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 362,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 388,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 403,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 423,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 443,
+      "type": "DIR32",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "base": "0x0122D70E",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 450,
+      "type": "REL32",
+      "symbol": "?CheckCRC@CPersistContext@@IAEXPBD@Z",
+      "base": "0x00404500",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 476,
+      "type": "REL32",
+      "symbol": "?WriteFloat@CDataOutputStream@@QAEXM@Z",
+      "base": "0x00993EE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 498,
+      "type": "REL32",
+      "symbol": "?TransferBinaryIn@?$CPersistTraits@M@@QAEXAAVCMemoryDataInputStream@@AAM@Z",
+      "base": "0x0040EFB0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 503,
+      "type": "DIR32",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "base": "0x0122D70E",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 510,
+      "type": "REL32",
+      "symbol": "?CheckCRC@CPersistContext@@IAEXPBD@Z",
+      "base": "0x00404500",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 536,
+      "type": "REL32",
+      "symbol": "?WriteFloat@CDataOutputStream@@QAEXM@Z",
+      "base": "0x00993EE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 558,
+      "type": "REL32",
+      "symbol": "?TransferBinaryIn@?$CPersistTraits@M@@QAEXAAVCMemoryDataInputStream@@AAM@Z",
+      "base": "0x0040EFB0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 563,
+      "type": "DIR32",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "base": "0x0122D70E",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 570,
+      "type": "REL32",
+      "symbol": "?CheckCRC@CPersistContext@@IAEXPBD@Z",
+      "base": "0x00404500",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 596,
+      "type": "REL32",
+      "symbol": "?WriteFloat@CDataOutputStream@@QAEXM@Z",
+      "base": "0x00993EE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 618,
+      "type": "REL32",
+      "symbol": "?TransferBinaryIn@?$CPersistTraits@M@@QAEXAAVCMemoryDataInputStream@@AAM@Z",
+      "base": "0x0040EFB0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 642,
+      "type": "DIR32",
+      "symbol": "??_C@_0BA@PAACOGFE@HomeBuildingUID?$AA@",
+      "base": "0x01266DA4",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 657,
+      "type": "REL32",
+      "symbol": "??$Transfer@_K@CPersistContext@@QAEXPBDAA_KAB_K@Z",
+      "base": "0x0044BB00",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 674,
+      "type": "DIR32",
+      "symbol": "??_C@_0BA@FCAPDLNK@WorkBuildingUID?$AA@",
+      "base": "0x01266D94",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 689,
+      "type": "REL32",
+      "symbol": "??$Transfer@_K@CPersistContext@@QAEXPBDAA_KAB_K@Z",
+      "base": "0x0044BB00",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 706,
+      "type": "DIR32",
+      "symbol": "??_C@_0BC@IHPKBNEF@FatherCreatureUID?$AA@",
+      "base": "0x012728EC",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 721,
+      "type": "REL32",
+      "symbol": "??$Transfer@_K@CPersistContext@@QAEXPBDAA_KAB_K@Z",
+      "base": "0x0044BB00",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 738,
+      "type": "DIR32",
+      "symbol": "??_C@_0BC@DLAJJGLN@MotherCreatureUID?$AA@",
+      "base": "0x012728D8",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 753,
+      "type": "REL32",
+      "symbol": "??$Transfer@_K@CPersistContext@@QAEXPBDAA_KAB_K@Z",
+      "base": "0x0044BB00",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 770,
+      "type": "DIR32",
+      "symbol": "??_C@_0BC@IOMAFNLM@SpouseCreatureUID?$AA@",
+      "base": "0x012728C4",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 785,
+      "type": "REL32",
+      "symbol": "??$Transfer@_K@CPersistContext@@QAEXPBDAA_KAB_K@Z",
+      "base": "0x0044BB00",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 829,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "base": "0x00BFE9BC",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 850,
+      "type": "DIR32",
+      "symbol": "??_C@_0BE@GPKAILJE@OverridingBrainName?$AA@",
+      "base": "0x012728B0",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 857,
+      "type": "REL32",
+      "symbol": "??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@@Z",
+      "base": "0x00411010",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 885,
+      "type": "DIR32",
+      "symbol": "??_C@_0BK@NKCOEDIA@EnableCreatureAutoPlacing?$AA@",
+      "base": "0x01272894",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 896,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 943,
+      "type": "DIR32",
+      "symbol": "??_C@_0P@POMMGMGP@HasInformation?$AA@",
+      "base": "0x01272884",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 954,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1004,
+      "type": "DIR32",
+      "symbol": "??_C@_0BG@MJEFCHKB@WanderWithInformation?$AA@",
+      "base": "0x0127286C",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1015,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1065,
+      "type": "DIR32",
+      "symbol": "??_C@_0BE@FLMAEOJB@WaveWithInformation?$AA@",
+      "base": "0x01272858",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1076,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1130,
+      "type": "DIR32",
+      "symbol": "??_C@_0BK@NEGBALEG@ContinueAIWithInformation?$AA@",
+      "base": "0x0127283C",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1137,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1189,
+      "type": "DIR32",
+      "symbol": "??_C@_0BE@KJLHCLNP@AllowedToFollowHero?$AA@",
+      "base": "0x01272828",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1204,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1256,
+      "type": "DIR32",
+      "symbol": "??_C@_0CE@GIBGAGMF@RegionFollowingOverriddenFromScr@",
+      "base": "0x01272804",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1267,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1316,
+      "type": "DIR32",
+      "symbol": "??_C@_0BK@CBGFEKLC@RespondingToFollowAndWait?$AA@",
+      "base": "0x012727E8",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1328,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1378,
+      "type": "DIR32",
+      "symbol": "??_C@_0N@GEODIMEL@CanBeCourted?$AA@",
+      "base": "0x012727D8",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1389,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1439,
+      "type": "DIR32",
+      "symbol": "??_C@_0N@JOCAFKNO@CanBeMarried?$AA@",
+      "base": "0x012727C8",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1450,
+      "type": "REL32",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "base": "0x004045C0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

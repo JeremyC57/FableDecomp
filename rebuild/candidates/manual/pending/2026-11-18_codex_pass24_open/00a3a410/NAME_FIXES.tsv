@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x009E9B20	??9CDateAndTime@@QBE_NABV0@@Z	Ego_r 0x00B3BB50 and FableWin 0x0308BC60 agree. Its landed native body negates date equality. Native CWADBank::AddFile at 0x00A3A59F calls it before the zero-result exit to 0x00A3A76F.	??8CDateAndTime@@QBE_NABV0@@Z

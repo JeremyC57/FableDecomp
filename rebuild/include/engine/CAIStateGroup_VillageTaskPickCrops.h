@@ -8,6 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CROP_TASK_UPDATE_PASS24
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CVillageTaskPickCrops.h"
+class CAIStateGroup_VillageTaskPickCrops : public CAIStateGroupBase {
+public:
+    virtual void Update();
+protected:
+    bool IsTimeForWork() const;
+private:
+    CIntelligentPointer<CVillageTaskPickCrops> PTask;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_VillageTaskPickCrops)==0x1c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -29,4 +42,5 @@ FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_VillageTaskPickCrops) == 0x1c);
 FABLE_STATIC_ASSERT_AT(23, offsetof(CAIStateGroup_VillageTaskPickCrops, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_VillageTaskPickCrops, PTask) == 0x14);
 
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_VILLAGETASKPICKCROPS_H

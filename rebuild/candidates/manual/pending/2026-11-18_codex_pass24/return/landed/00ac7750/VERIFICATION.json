@@ -1,0 +1,78 @@
+{
+  "address": "0x00AC7750",
+  "leaf": "?ComputeOptimalVertexPlacement@COptimisedPrimitive@QuadricOptimiserInternals@@AAE?AVC3DVector@@ABVCQuadric@2@ABV3@1@Z",
+  "retail_bytes": 495,
+  "object_bytes": 495,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 7,
+  "source_sha256": "c1c4e973be394df238b15a57f6a2b20c308757ab04157d6d835fe51b54b6df93",
+  "test_sha256": "41fbbe1cb51d580da2508a5cde5c24f2abb932b37683376a69df70d70de56d29",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00ac7750_TEST PASS",
+    "g++ -std=c++03 -O0": "00ac7750_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "75d8d4902a3732dcde9a02bf1798dcc3124e791d22817cbb346940d1fb7f46a1",
+  "operands": [
+    {
+      "offset": 42,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 52,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 66,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 159,
+      "type": "DIR32",
+      "symbol": "?DELTA_NOTIONAL_ZERO@@3MB",
+      "base": "0x0129BA3C",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 186,
+      "type": "REL32",
+      "symbol": "?GetInverseMatrixPart@CQuadric@QuadricOptimiserInternals@@QBE?AVCMatrix3x4@@XZ",
+      "base": "0x00AC70F0",
+      "coff_addend": 0,
+      "evidence": "independent leaf audit, two PDBs and Ego_d TU order"
+    },
+    {
+      "offset": 315,
+      "type": "REL32",
+      "symbol": "?EvaluateError@CQuadric@QuadricOptimiserInternals@@QBENABVC3DVector@@@Z",
+      "base": "0x00AC6D50",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 329,
+      "type": "REL32",
+      "symbol": "?EvaluateError@CQuadric@QuadricOptimiserInternals@@QBENABVC3DVector@@@Z",
+      "base": "0x00AC6D50",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

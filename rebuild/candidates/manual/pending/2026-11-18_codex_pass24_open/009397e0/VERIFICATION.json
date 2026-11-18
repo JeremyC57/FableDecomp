@@ -1,0 +1,18 @@
+{
+  "address": "0x009397E0",
+  "leaf": "?OnReplace@CAIStateGroup_SitRoundCampfire@@UAEXXZ",
+  "retail_bytes": 571,
+  "object_bytes": 569,
+  "extra_flags": [],
+  "strict_instruction_hunks": 5,
+  "strict_instruction_ratio": 0.9690140845070423,
+  "first_unequal_masked_offset": 208,
+  "relocation_count": 27,
+  "source_sha256": "2fd2a660b908b1d36db5e5344d5b077e75e4d4ebef5bdfa36c7a008ca0150376",
+  "test_sha256": "0fc77274ffba4d536dc378dbbf4a6b532ad8ff561f639cee4eabe495e3c7d64b",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "009397e0_TEST PASS",
+    "g++ -std=c++03 -O0": "009397e0_TEST PASS"
+  },
+  "status": "PARKED"
+}

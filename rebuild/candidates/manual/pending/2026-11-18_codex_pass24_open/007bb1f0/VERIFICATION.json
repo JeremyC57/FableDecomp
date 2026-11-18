@@ -1,0 +1,18 @@
+{
+  "address": "0x007BB1F0",
+  "leaf": "?FrameUpdate@CTCTrespasser@@UAEXXZ",
+  "retail_bytes": 960,
+  "object_bytes": 958,
+  "extra_flags": [],
+  "strict_instruction_hunks": 10,
+  "strict_instruction_ratio": 0.9517470881863561,
+  "first_unequal_masked_offset": 18,
+  "relocation_count": 39,
+  "source_sha256": "eb11f8578e2908eae6d5bcafbc65e062e4e597b85a897b1a1588f4599561194c",
+  "test_sha256": "a3eb8968a7428fdac016bd4322d8e9b98e0fbbc21477ae7c244f8e81226c2b03",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "007bb1f0_TEST PASS",
+    "g++ -std=c++03 -O0": "007bb1f0_TEST PASS"
+  },
+  "status": "PARKED"
+}

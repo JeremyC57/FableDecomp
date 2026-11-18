@@ -1,0 +1,190 @@
+{
+  "address": "0x00A86110",
+  "leaf": "?CalculateDividingPlane@CIPhysicsFacesSegmentBase@@KI?AVCPlane@@ABV?$CArray@VC3DVector@@@@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@G@@J@Z",
+  "retail_bytes": 1967,
+  "object_bytes": 1967,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 21,
+  "source_sha256": "984bee325db0e7a549f5a9ca1832ce8d0cd069987c006b839d82e1869a921d43",
+  "test_sha256": "150d6af3c6812b0a07f3796a4e9487c222803e8a465a1a73d4c916c9003c2294",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00a86110_TEST PASS",
+    "g++ -std=c++03 -O0": "00a86110_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "80a06e45377a3a99f5b50691f8ffd7d7e164816b4a103573491d2567eca1de87",
+  "operands": [
+    {
+      "offset": 102,
+      "type": "DIR32",
+      "symbol": "?SDividingPlaneNormalTable@?A0x8d38082b@@3PAVC3DVector@@A",
+      "base": "0x01398658",
+      "coff_addend": 0,
+      "evidence": "Ego_d anonymous array, FableWin dynamic initializer and prior native target audit; TU discriminator differs with file path"
+    },
+    {
+      "offset": 507,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 521,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 531,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 541,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 781,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 791,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 805,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1019,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1029,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1043,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1260,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1270,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1280,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1487,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1497,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1511,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1774,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1784,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1798,
+      "type": "DIR32",
+      "symbol": "__real@3eaaaa9f",
+      "base": "0x0129DE9C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 1860,
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "base": "0x0122DED8",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

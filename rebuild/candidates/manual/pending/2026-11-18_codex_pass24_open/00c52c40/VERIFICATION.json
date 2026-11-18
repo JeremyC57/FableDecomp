@@ -1,0 +1,19 @@
+{
+  "address": "0x00C52C40",
+  "leaf": "?GetCyrixModelName@CCpuInfo@@QBEPBDXZ",
+  "retail_bytes": 75,
+  "object_bytes": 75,
+  "extra_flags": [],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.896551724137931,
+  "first_unequal_masked_offset": 39,
+  "relocation_count": 6,
+  "source_sha256": "b86dc7f0dfea7b5ab6a8c5672f11213ddee66be879074056eb20a23af9b6ec3a",
+  "test_sha256": "5c3add1f902eb1d4b14041d5e5d84557e401a9ec599d3553977b1e9dc510a893",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00c52c40_TEST PASS",
+    "g++ -std=c++03 -O0": "00c52c40_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 3
+}

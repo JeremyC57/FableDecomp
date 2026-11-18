@@ -1,0 +1,854 @@
+{
+  "address": "0x0058F016",
+  "leaf": "?ConstructItemCategoryList@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4_N@Z",
+  "retail_bytes": 1587,
+  "object_bytes": 1587,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 104,
+  "source_sha256": "378db849e5f99f7cb1071139e8ea817c1c9011e6e99d08c47b5295f2818bb67d",
+  "test_sha256": "214ceac631c042ddff3441d17c21ecd0c877a212a8613dc6d98a25abd5b46b57",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0058f016_TEST PASS",
+    "g++ -std=c++03 -O0": "0058f016_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "24f7d622af55aac6de7ee34ff78830d276da1acbc255f1aea52156c822e8fe36",
+  "operands": [
+    {
+      "offset": 13,
+      "type": "REL32",
+      "symbol": "?GetInstance@CManager@NUISystem@@SIPAV12@XZ",
+      "base": "0x0041E5F2",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 30,
+      "type": "DIR32",
+      "symbol": "??_C@_0CA@LPMOEJHA@UI_SCROLLING_VIEWPORT_TEXT_AREA?$AA@",
+      "base": "0x01237550",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 38,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 65,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@ABV0@@Z",
+      "base": "0x0099B720",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 83,
+      "type": "REL32",
+      "symbol": "?GetXString@CTCInventoryStats@@SI?AVCWideString@@XZ",
+      "base": "0x005CC772",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 92,
+      "type": "REL32",
+      "symbol": "??YCWideString@@QAEABV0@ABV0@@Z",
+      "base": "0x0099B8D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 100,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 133,
+      "type": "REL32",
+      "symbol": "?GFIntToWideString@@YI?AVCWideString@@J@Z",
+      "base": "0x00405F00",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 142,
+      "type": "REL32",
+      "symbol": "??YCWideString@@QAEABV0@ABV0@@Z",
+      "base": "0x0099B8D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 150,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 156,
+      "type": "DIR32",
+      "symbol": "??_C@_0BE@CGIODBDI@UI_ONE_OFF_SUBTITLE?$AA@",
+      "base": "0x0124E72C",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 164,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 177,
+      "type": "REL32",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "base": "0x0041DB1D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 186,
+      "type": "REL32",
+      "symbol": "?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z",
+      "base": "0x00429C6F",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 194,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 219,
+      "type": "DIR32",
+      "symbol": "??_C@_0CJ@IGKMLEAL@UI_WEAPON_MENU_ENTRY_BRANCH_TEMP@",
+      "base": "0x01237208",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 227,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 236,
+      "type": "DIR32",
+      "symbol": "??_C@_0BC@NNOGNHJ@PC_BUTTON_BASTARD?$AA@",
+      "base": "0x01236ED0",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 241,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 257,
+      "type": "DIR32",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "base": "0x0122D70E",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 263,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 298,
+      "type": "REL32",
+      "symbol": "?CreateMenuEntryComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MMABVCCharString@@MV5@MV5@@Z",
+      "base": "0x00428494",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 307,
+      "type": "REL32",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "base": "0x00429C15",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 315,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 360,
+      "type": "REL32",
+      "symbol": "?CreateMenuDesc@CTCInventory@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z",
+      "base": "0x005820E7",
+      "coff_addend": 0,
+      "evidence": "landed direct target and both donor signatures"
+    },
+    {
+      "offset": 398,
+      "type": "REL32",
+      "symbol": "??9CCharString@@QBE_NPBD@Z",
+      "base": "0x0099E960",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 415,
+      "type": "REL32",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "base": "0x0041DB1D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 424,
+      "type": "REL32",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "base": "0x00429C15",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 447,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 468,
+      "type": "DIR32",
+      "symbol": "??_C@_0BJ@LFBNCFDC@UI_SELECTION_ARROW_RIGHT?$AA@",
+      "base": "0x01237150",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 475,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 494,
+      "type": "REL32",
+      "symbol": "??0CDeletion@NUISystem@@QAE@XZ",
+      "base": "0x0042BED4",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 516,
+      "type": "REL32",
+      "symbol": "??0CDeletion@NUISystem@@QAE@ABV01@@Z",
+      "base": "0x0042CD84",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 532,
+      "type": "REL32",
+      "symbol": "??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ",
+      "base": "0x0042ABCA",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 556,
+      "type": "REL32",
+      "symbol": "??0?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE@XZ",
+      "base": "0x004DF86C",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 597,
+      "type": "REL32",
+      "symbol": "??$_M_find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBJJ@std@@@1@ABJ@Z",
+      "base": "0x00592F92",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 630,
+      "type": "REL32",
+      "symbol": "?insert_unique@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Nonconst_traits@U?$pair@$$CBJJ@std@@@2@@std@@_N@2@ABU?$pair@$$CBJJ@2@@Z",
+      "base": "0x004E539F",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 662,
+      "type": "DIR32",
+      "symbol": "??_C@_0M@HGIPBKAG@UI_SUB_LIST?$AA@",
+      "base": "0x012303E8",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 670,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 685,
+      "type": "REL32",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "base": "0x0041DB1D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 694,
+      "type": "REL32",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "base": "0x00429C15",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 702,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 711,
+      "type": "DIR32",
+      "symbol": "??_C@_0BB@EEGPNOOG@UI_BACK_FOR_LIST?$AA@",
+      "base": "0x012302EC",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 719,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 732,
+      "type": "REL32",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "base": "0x0041DB1D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 741,
+      "type": "REL32",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "base": "0x00429C15",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 749,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 797,
+      "type": "DIR32",
+      "symbol": "??_C@_0O@GFPMFDEM@UI_ITEM_TITLE?$AA@",
+      "base": "0x01251BCC",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 805,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 818,
+      "type": "REL32",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "base": "0x0041DB1D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 827,
+      "type": "REL32",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "base": "0x00429C15",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 835,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 857,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@ABV0@@Z",
+      "base": "0x0099B720",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 862,
+      "type": "DIR32",
+      "symbol": "??_C@_15ELOONFKJ@?$AA?3?$AA?5?$AA?$AA@",
+      "base": "0x01236A50",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 870,
+      "type": "REL32",
+      "symbol": "??YCWideString@@QAEABV0@PBG@Z",
+      "base": "0x0099B940",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 881,
+      "type": "REL32",
+      "symbol": "??YCWideString@@QAEABV0@ABV0@@Z",
+      "base": "0x0099B8D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 909,
+      "type": "DIR32",
+      "symbol": "?TITLE_NAME@?A0x67e1af37@@3VCCharString@@A",
+      "base": "0x013B8B4C",
+      "coff_addend": 0,
+      "evidence": "bound TU-local object, module discriminator normalized"
+    },
+    {
+      "offset": 959,
+      "type": "REL32",
+      "symbol": "?test@?$bitset@$0BBC@@std@@QBE_NI@Z",
+      "base": "0x00410DE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 988,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "base": "0x004365B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1024,
+      "type": "REL32",
+      "symbol": "??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z",
+      "base": "0x0040DCE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1040,
+      "type": "DIR32",
+      "symbol": "??_C@_0BP@JIEFKECB@UI_LIST_ITEMS_ACTIONS_CANT_USE?$AA@",
+      "base": "0x01251BAC",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1050,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1061,
+      "type": "REL32",
+      "symbol": "?GetInstance@CManager@NUISystem@@SIPAV12@XZ",
+      "base": "0x0041E5F2",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1068,
+      "type": "REL32",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "base": "0x0041DB1D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1077,
+      "type": "REL32",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "base": "0x00429C15",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1109,
+      "type": "DIR32",
+      "symbol": "??_C@_0CC@IODDAEJO@UI_MENU_ENTRY_ITEM_ACTION_NOT_US@",
+      "base": "0x01251B88",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1117,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1152,
+      "type": "DIR32",
+      "symbol": "??_C@_0P@KCKKFKJB@UI_ACTION_ICON?$AA@",
+      "base": "0x01251B78",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1157,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1180,
+      "type": "REL32",
+      "symbol": "??0CDeletion@NUISystem@@QAE@XZ",
+      "base": "0x0042BED4",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1202,
+      "type": "REL32",
+      "symbol": "??0CDeletion@NUISystem@@QAE@ABV01@@Z",
+      "base": "0x0042CD84",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1219,
+      "type": "REL32",
+      "symbol": "??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ",
+      "base": "0x0042ABCA",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1228,
+      "type": "DIR32",
+      "symbol": "??_C@_0BB@EEGPNOOG@UI_BACK_FOR_LIST?$AA@",
+      "base": "0x012302EC",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1236,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1250,
+      "type": "REL32",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "base": "0x0041DB1D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1259,
+      "type": "REL32",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "base": "0x00429C15",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1267,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1273,
+      "type": "DIR32",
+      "symbol": "??_C@_0BD@EADPGCII@UI_SELECT_FOR_LIST?$AA@",
+      "base": "0x012302D8",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1281,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1295,
+      "type": "REL32",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "base": "0x0041DB1D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1304,
+      "type": "REL32",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "base": "0x00429C15",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1312,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1346,
+      "type": "DIR32",
+      "symbol": "??_C@_0O@GFPMFDEM@UI_ITEM_TITLE?$AA@",
+      "base": "0x01251BCC",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 1354,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1368,
+      "type": "REL32",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "base": "0x0041DB1D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1377,
+      "type": "REL32",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "base": "0x00429C15",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1385,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1414,
+      "type": "DIR32",
+      "symbol": "?TITLE_NAME@?A0x67e1af37@@3VCCharString@@A",
+      "base": "0x013B8B4C",
+      "coff_addend": 0,
+      "evidence": "bound TU-local object, module discriminator normalized"
+    },
+    {
+      "offset": 1454,
+      "type": "REL32",
+      "symbol": "?ContructItemLists@CTCInventory@@QAEXAAV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z",
+      "base": "0x0058EF79",
+      "coff_addend": 0,
+      "evidence": "landed direct target and both donor signatures"
+    },
+    {
+      "offset": 1462,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1470,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1478,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1486,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1494,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1502,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1510,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1518,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1526,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1534,
+      "type": "REL32",
+      "symbol": "??1?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE@XZ",
+      "base": "0x004DD2B1",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1542,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1550,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1558,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1566,
+      "type": "REL32",
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "base": "0x004291DE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1578,
+      "type": "DIR32",
+      "symbol": "??_C@_0BG@LOPALFBL@UI_LIST_ITEMS_ACTIONS?$AA@",
+      "base": "0x01251B60",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

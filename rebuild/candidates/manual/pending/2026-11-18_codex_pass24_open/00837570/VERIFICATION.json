@@ -1,0 +1,19 @@
+{
+  "address": "0x00837570",
+  "leaf": "?Save@CThingTrackNode@@UAEXAAVCCharString@@@Z",
+  "retail_bytes": 697,
+  "object_bytes": 697,
+  "extra_flags": [],
+  "strict_instruction_hunks": 7,
+  "strict_instruction_ratio": 0.9701492537313433,
+  "first_unequal_masked_offset": 5,
+  "relocation_count": 66,
+  "source_sha256": "1bcce5248ef963ea5e0102bbfc06111665b6bc8c35c578aa6d86984fe968ad2e",
+  "test_sha256": "314cfe0e1ce3481b820b70f53d4c8f959ae14ada386cac5f440037d1bbaa4d4d",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00837570_TEST PASS",
+    "g++ -std=c++03 -O0": "00837570_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 19
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PARKED",
+  "attempts": 27,
+  "leaf": "?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ",
+  "assigned_name": "?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ",
+  "retail_size": 3863,
+  "object_size": 3863,
+  "flags": [],
+  "lever": "The door vector storage, talk receiver registers and branch alignment still differ.",
+  "residue": "The door vector storage, talk receiver registers and branch alignment still differ.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 203,
+  "relocations_verified": 203,
+  "relocations_unpaired": 0,
+  "total_recorded_grades": 35,
+  "source_sha256": "c6b504f2454ff0e86d99114e8d7755c2857edb397bf780e7cb2f59719b620174",
+  "test_sha256": "261b38c39089bb6173ec317c52ca4b9f1c43dfb70d508b18af0d495e64e61827",
+  "extra_flags": []
+}

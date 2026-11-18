@@ -1,0 +1,18 @@
+{
+  "address": "0x00B30610",
+  "leaf": "?ClipBox@CEngineCamera@@QBE_NABVCMatrix3x4@@@Z",
+  "retail_bytes": 710,
+  "object_bytes": 678,
+  "extra_flags": [],
+  "strict_instruction_hunks": 37,
+  "strict_instruction_ratio": 0.5,
+  "first_unequal_masked_offset": 59,
+  "relocation_count": 10,
+  "source_sha256": "e12107555e14a301845ec77521f87be9dd01d444ec84f687f230b51ca2bc58d5",
+  "test_sha256": "f46ae333598d067a784d8298b0b6164d42e01e2d6020d422e5b0cba97f4fbdd7",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00b30610_TEST PASS",
+    "g++ -std=c++03 -O0": "00b30610_TEST PASS"
+  },
+  "status": "PARKED"
+}

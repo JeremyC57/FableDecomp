@@ -1,0 +1,390 @@
+{
+  "address": "0x009582D0",
+  "leaf": "?Update@CAIStateGroup_MinionReactToTrespassing@@UAEXXZ",
+  "retail_bytes": 1098,
+  "object_bytes": 1098,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 46,
+  "source_sha256": "2d2b7f7ddef983d39ea5a87cae652edde15af3107920c710b624d34fe819a887",
+  "test_sha256": "bf82fa74ec1da09d0574c7165674572197e71372866d378b5df85e8dbe3c6a1a",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "009582d0_TEST PASS",
+    "g++ -std=c++03 -O0": "009582d0_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "1bf168c5861a1b9b581a722a776c83fcbec56ea5663f25cc8d549d7c2f58a9dd",
+  "operands": [
+    {
+      "offset": 32,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 62,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 69,
+      "type": "REL32",
+      "symbol": "?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ",
+      "base": "0x008FCF90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 76,
+      "type": "REL32",
+      "symbol": "?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ",
+      "base": "0x00449970",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 83,
+      "type": "REL32",
+      "symbol": "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ",
+      "base": "0x00487DC0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 94,
+      "type": "REL32",
+      "symbol": "??0CBaseIntelligentPointer@@QAE@XZ",
+      "base": "0x00A01B10",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 107,
+      "type": "DIR32",
+      "symbol": "??_7?$CIntelligentPointer@VCThing@@@@6B@",
+      "base": "0x01238C6C",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 112,
+      "type": "REL32",
+      "symbol": "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+      "base": "0x00A01B90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 124,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 132,
+      "type": "REL32",
+      "symbol": "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+      "base": "0x00A01B90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 141,
+      "type": "REL32",
+      "symbol": "??1CBaseIntelligentPointer@@UAE@XZ",
+      "base": "0x00A01C10",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 153,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 168,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 196,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 211,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 258,
+      "type": "REL32",
+      "symbol": "??0CBaseIntelligentPointer@@QAE@XZ",
+      "base": "0x00A01B10",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 266,
+      "type": "DIR32",
+      "symbol": "??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@",
+      "base": "0x01237F1C",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 271,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 279,
+      "type": "REL32",
+      "symbol": "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+      "base": "0x00A01B90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 288,
+      "type": "REL32",
+      "symbol": "?AIAction_MoveToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@MAA_NW4EMovementType@@_N444M@Z",
+      "base": "0x0097E380",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 297,
+      "type": "REL32",
+      "symbol": "?GetFrame@CWorld@@SIJXZ",
+      "base": "0x0049D870",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 306,
+      "type": "DIR32",
+      "symbol": "?FRAMES_BETWEEN_CHECKING_IS_STILL_VALID@?A0x5f506541@@3JA",
+      "base": "0x0138D2D4",
+      "coff_addend": 0,
+      "evidence": "Ego_d module static and decorated public; original initializer value and elapsed-frame comparisons"
+    },
+    {
+      "offset": 321,
+      "type": "REL32",
+      "symbol": "?GetFrame@CWorld@@SIJXZ",
+      "base": "0x0049D870",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 341,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 482,
+      "type": "REL32",
+      "symbol": "??$FindMostRecentDeed@V?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@PAJ_N@Z",
+      "base": "0x0092E630",
+      "coff_addend": 0,
+      "evidence": "both donor template signatures and the same three deed calls in the landed sibling"
+    },
+    {
+      "offset": 524,
+      "type": "REL32",
+      "symbol": "??$FindMostRecentDeed@V?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@PAJ_N@Z",
+      "base": "0x0092E630",
+      "coff_addend": 0,
+      "evidence": "both donor template signatures and the same three deed calls in the landed sibling"
+    },
+    {
+      "offset": 566,
+      "type": "REL32",
+      "symbol": "??$FindMostRecentDeed@V?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@PAJ_N@Z",
+      "base": "0x0092E630",
+      "coff_addend": 0,
+      "evidence": "both donor template signatures and the same three deed calls in the landed sibling"
+    },
+    {
+      "offset": 584,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 595,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 648,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 663,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 695,
+      "type": "REL32",
+      "symbol": "??0CBaseIntelligentPointer@@QAE@XZ",
+      "base": "0x00A01B10",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 703,
+      "type": "DIR32",
+      "symbol": "??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@",
+      "base": "0x01237F1C",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 708,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 716,
+      "type": "REL32",
+      "symbol": "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+      "base": "0x00A01B90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 725,
+      "type": "REL32",
+      "symbol": "?AIAction_LookAtThing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@JM@Z",
+      "base": "0x0097D6F0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 734,
+      "type": "REL32",
+      "symbol": "?GetFrame@CWorld@@SIJXZ",
+      "base": "0x0049D870",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 743,
+      "type": "DIR32",
+      "symbol": "?FRAMES_BETWEEN_CHECKING_IS_STILL_VALID@?A0x5f506541@@3JA",
+      "base": "0x0138D2D4",
+      "coff_addend": 0,
+      "evidence": "Ego_d module static and decorated public; original initializer value and elapsed-frame comparisons"
+    },
+    {
+      "offset": 758,
+      "type": "REL32",
+      "symbol": "?GetFrame@CWorld@@SIJXZ",
+      "base": "0x0049D870",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 778,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 919,
+      "type": "REL32",
+      "symbol": "??$FindMostRecentDeed@V?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@PAJ_N@Z",
+      "base": "0x0092E630",
+      "coff_addend": 0,
+      "evidence": "both donor template signatures and the same three deed calls in the landed sibling"
+    },
+    {
+      "offset": 961,
+      "type": "REL32",
+      "symbol": "??$FindMostRecentDeed@V?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@PAJ_N@Z",
+      "base": "0x0092E630",
+      "coff_addend": 0,
+      "evidence": "both donor template signatures and the same three deed calls in the landed sibling"
+    },
+    {
+      "offset": 1003,
+      "type": "REL32",
+      "symbol": "??$FindMostRecentDeed@V?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@PAJ_N@Z",
+      "base": "0x0092E630",
+      "coff_addend": 0,
+      "evidence": "both donor template signatures and the same three deed calls in the landed sibling"
+    },
+    {
+      "offset": 1021,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1032,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1086,
+      "type": "REL32",
+      "symbol": "?Terminate@CAIStateGroupBase@@QAEXXZ",
+      "base": "0x008FCF40",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

@@ -87,6 +87,10 @@ public:
 #endif
 #endif
 #endif
+#ifdef FABLE_RETAIL_CMATRIX4X4_ALIGNEDPREMULTIPLYTRANSPOSED_DEFINITION
+    // Retail opt-in (Codex pass 24): the FableWin/Ego_r public member also has an out-of-line copy at 0x00ADEFC0.
+    void AlignedPreMultiplyTransposed(const CMatrix4x4& matrix);
+#endif
 #ifdef FABLE_RETAIL_CMATRIX4X4_ALIGNEDTRANSFORMTRANSPOSEDASSUMEW
     // Retail opt-in (agentC42, row 0x00A5CB90): Ego_r.pdb / FableWin.pdb ?AlignedTransformTransposedAssumeW@CMatrix4x4@@QBEXPBVC4DVector@@PAV2@KM@Z
     // (reloc-bound from CParticleSimulation::ApplyDragging 0x00ADF300): count aligned vectors, SSE kernel of

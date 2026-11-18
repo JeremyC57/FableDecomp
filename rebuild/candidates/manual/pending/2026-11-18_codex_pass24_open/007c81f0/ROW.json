@@ -1,0 +1,18 @@
+{
+  "status": "PARKED",
+  "attempts": 13,
+  "leaf": "?OnCollision@CTCHitOnCollision@@QAEXABVC3DVector@@0AAVCThing@@@Z",
+  "assigned_name": "?OnCollision@CTCHitOnCollision@@QAEXABVC3DVector@@0AAVCThing@@@Z",
+  "retail_size": 768,
+  "object_size": 768,
+  "flags": [],
+  "lever": "The iterator tag and hit_direction stack positions differ from 0x007C8210.",
+  "residue": "The iterator tag and hit_direction stack positions differ from 0x007C8210.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 21,
+  "test_kind": "copied_submitted_body_with_stubs",
+  "total_recorded_grades": 19,
+  "source_sha256": "94264d144b4eaefb1a954e946fefb6ca0f91f51a5204f4dd09a1ccff8bac0f66",
+  "test_sha256": "f6ae416bc542f0bd905d06a2f7254050f777d0f61e1dbca29066bfdd787d4be1",
+  "extra_flags": []
+}

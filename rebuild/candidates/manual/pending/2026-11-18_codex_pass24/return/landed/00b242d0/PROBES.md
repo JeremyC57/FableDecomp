@@ -1,0 +1,70 @@
+# Compiler probes
+
+- package baseline — LEAF_REVIEW_REQUIRED.
+- tail base camera assign components — DIFFER, 227 v 293 bytes, 14 instruction hunks, first unequal byte at 0x00B242D4.
+- tail base camera cast2d — DIFFER, 249 v 293 bytes, 17 instruction hunks, first unequal byte at 0x00B242D4.
+- tail base camera component ltr — DIFFER, 249 v 293 bytes, 16 instruction hunks, first unequal byte at 0x00B242D4.
+- tail base camera initialise2d — DIFFER, 225 v 293 bytes, 14 instruction hunks, first unequal byte at 0x00B242D4.
+- tail base camera named copy — DIFFER, 281 v 293 bytes, 14 instruction hunks, first unequal byte at 0x00B242DF.
+- tail base camera named src — DIFFER, 251 v 293 bytes, 20 instruction hunks, first unequal byte at 0x00B242D4.
+- tail base camera natural transform — DIFFER, 161 v 293 bytes, 6 instruction hunks, first unequal byte at 0x00B242D4.
+- tail base camera original pair — DIFFER, 249 v 293 bytes, 16 instruction hunks, first unequal byte at 0x00B242D4.
+- tail base camera output vector cast — DIFFER, 249 v 293 bytes, 16 instruction hunks, first unequal byte at 0x00B242D4.
+- tail base camera second inner scope — DIFFER, 249 v 293 bytes, 16 instruction hunks, first unequal byte at 0x00B242D4.
+- tail base camera sibling one argument — DIFFER, 283 v 293 bytes, 22 instruction hunks, first unequal byte at 0x00B242D4.
+- tail base camera transform to from — DIFFER, 249 v 293 bytes, 16 instruction hunks, first unequal byte at 0x00B242D4.
+- tail camera assign components — COMPILE_FAIL.
+- tail camera cast2d — COMPILE_FAIL.
+- tail camera component ltr — COMPILE_FAIL.
+- tail camera initialise2d — COMPILE_FAIL.
+- tail camera more arg from to — DIFFER, 263 v 293 bytes, 13 instruction hunks, first unequal byte at 0x00B242DF.
+- tail camera more array copy — DIFFER, 279 v 293 bytes, 13 instruction hunks, first unequal byte at 0x00B242DF.
+- tail camera more assign input — DIFFER, 311 v 293 bytes, 4 instruction hunks, first unequal byte at 0x00B242DF.
+- tail camera more assign vector 3d — DIFFER, 265 v 293 bytes, 13 instruction hunks, first unequal byte at 0x00B242DF.
+- tail camera more const input — DIFFER, 281 v 293 bytes, 15 instruction hunks, first unequal byte at 0x00B242DF.
+- tail camera more copy construct explicit — DIFFER, 279 v 293 bytes, 13 instruction hunks, first unequal byte at 0x00B242DF.
+- tail camera more fov sign guard — DIFFER, 281 v 293 bytes, 15 instruction hunks, first unequal byte at 0x00B242DF.
+- tail camera more initialise explicit — DIFFER, 279 v 293 bytes, 13 instruction hunks, first unequal byte at 0x00B242DF.
+- tail camera more named dst reuse — DIFFER, 265 v 293 bytes, 13 instruction hunks, first unequal byte at 0x00B242DF.
+- tail camera more ordered member copy — DIFFER, 253 v 293 bytes, 17 instruction hunks, first unequal byte at 0x00B242D4.
+- tail camera more project named tail — DIFFER, 265 v 293 bytes, 12 instruction hunks, first unequal byte at 0x00B242DF.
+- tail camera named copy — COMPILE_FAIL.
+- tail camera named src — COMPILE_FAIL.
+- tail camera natural transform — COMPILE_FAIL.
+- tail camera original pair — COMPILE_FAIL.
+- tail camera output vector cast — COMPILE_FAIL.
+- tail camera second inner scope — COMPILE_FAIL.
+- tail camera sibling one argument — COMPILE_FAIL.
+- tail camera transform to from — COMPILE_FAIL.
+- tail direct fixture — MASKED_MATCH_PENDING_AUDIT, 293 v 293 bytes, 0 instruction hunks.
+- tail final — MASKED_MATCH_PENDING_AUDIT, 293 v 293 bytes, 0 instruction hunks.
+- tail isolated fixture — MASKED_MATCH_PENDING_AUDIT, 293 v 293 bytes, 0 instruction hunks.
+- tail projection export components components — MASKED_MATCH_PENDING_AUDIT, 293 v 293 bytes, 0 instruction hunks.
+- tail projection export components temp2d — DIFFER, 295 v 293 bytes, 6 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection export components to2d — DIFFER, 311 v 293 bytes, 4 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr accumulate components — MASKED_MATCH_PENDING_AUDIT, 293 v 293 bytes, 0 instruction hunks.
+- tail projection expr accumulate temp2d — DIFFER, 295 v 293 bytes, 6 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr accumulate to2d — DIFFER, 311 v 293 bytes, 4 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr copy from components — DIFFER, 265 v 293 bytes, 3 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr copy from temp2d — DIFFER, 265 v 293 bytes, 3 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr copy from to2d — DIFFER, 274 v 293 bytes, 2 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr float ref components — MASKED_MATCH_PENDING_AUDIT, 293 v 293 bytes, 0 instruction hunks.
+- tail projection expr float ref temp2d — DIFFER, 295 v 293 bytes, 6 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr float ref to2d — DIFFER, 311 v 293 bytes, 4 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr invz last components — MASKED_MATCH_PENDING_AUDIT, 293 v 293 bytes, 0 instruction hunks.
+- tail projection expr invz last temp2d — DIFFER, 295 v 293 bytes, 6 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr invz last to2d — DIFFER, 311 v 293 bytes, 4 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr reverse x components — MASKED_MATCH_PENDING_AUDIT, 293 v 293 bytes, 0 instruction hunks.
+- tail projection expr reverse x temp2d — DIFFER, 295 v 293 bytes, 6 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr reverse x to2d — DIFFER, 311 v 293 bytes, 4 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr xparens components — MASKED_MATCH_PENDING_AUDIT, 293 v 293 bytes, 0 instruction hunks.
+- tail projection expr xparens temp2d — DIFFER, 295 v 293 bytes, 6 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr xparens to2d — DIFFER, 311 v 293 bytes, 4 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr yfirst components — DIFFER, 289 v 293 bytes, 3 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr yfirst temp2d — DIFFER, 289 v 293 bytes, 8 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection expr yfirst to2d — DIFFER, 303 v 293 bytes, 2 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection rvalue assign components — DIFFER, 265 v 293 bytes, 3 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection rvalue assign temp2d — DIFFER, 265 v 293 bytes, 3 instruction hunks, first unequal byte at 0x00B242DF.
+- tail projection rvalue assign to2d — DIFFER, 274 v 293 bytes, 2 instruction hunks, first unequal byte at 0x00B242DF.
+
+The selected result is RELOCATION_MATCH (293 object bytes, 293 retail bytes). The final test passed with VC7.1 and GNU C++03. GRADE_HISTORY.tsv includes all recorded compiler runs, including baseline and verification repeats.

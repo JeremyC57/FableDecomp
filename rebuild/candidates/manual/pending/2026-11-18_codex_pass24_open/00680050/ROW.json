@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "attempts": 30,
+  "leaf": "?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z",
+  "assigned_name": "?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z",
+  "retail_size": 439,
+  "object_size": 439,
+  "flags": [],
+  "lever": "After HasDummyObject, retail reloads pappearance_def.Object into edi at 0x00680196 and the conditional temporary-cleanup bitmask into eax at 0x0068019A. The selected compiler build reloads those independent values in the opposite order.",
+  "residue": "After HasDummyObject, retail reloads pappearance_def.Object into edi at 0x00680196 and the conditional temporary-cleanup bitmask into eax at 0x0068019A. The selected compiler build reloads those independent values in the opposite order.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 24,
+  "total_recorded_grades": 36,
+  "source_sha256": "3730e3bc53c454932ce8b6a2162d0e34d51e60155f6c85a0579ece7acf3463a3",
+  "test_sha256": "49b00d3c71074a27160f8951d8049330f0bd482c056b76949e8aea90726ce36b",
+  "extra_flags": []
+}

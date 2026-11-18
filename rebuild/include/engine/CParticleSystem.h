@@ -112,7 +112,12 @@ public:CParticleSystem();virtual ~CParticleSystem();
  std::list<CDecal*>& GetDecalList(){return Decals;}
 #endif
  void TransformVectorIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformVector(v);}}
- void TransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformPoint(v);}}
+ 
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_BOUNDING_TRANSFORM_PASS24
+    // Inline-budget: native 00AFB213, 00AFB381 and 00AFB537 expands the original member in CPSCRenderSprite::AddToBoundingSphere.
+    FABLE_FORCEINLINE
+#endif
+    void TransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformPoint(v);}}
  void InverseTransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetInverseSystemTransform(t);t.TransformPoint(v);}}
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM_GENERATEPARTICLE
  // Retail opt-in (wfE8 6th agent, row 0x00B10B10 CPSCEmitterGeneric::GenerateParticle): FableWin.pdb ?TransformVectorIfWorld@ / ?InverseTransformVector

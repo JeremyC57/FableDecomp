@@ -1,0 +1,18 @@
+{
+  "address": "0x008F18C0",
+  "leaf": "?UpdateHighlightedCard@CTCTavernGameCardBase@@UAEXXZ",
+  "retail_bytes": 770,
+  "object_bytes": 795,
+  "extra_flags": [],
+  "strict_instruction_hunks": 21,
+  "strict_instruction_ratio": 0.4727272727272727,
+  "first_unequal_masked_offset": 2,
+  "relocation_count": 13,
+  "source_sha256": "7c3671591eba3cd44e55edd53eb3b0e8153462700632d127247b7531c9b75cf8",
+  "test_sha256": "29a9b31f18c5413802b8ec9068087a90a4dd4ee5627d851d44d6d324623678a8",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "008f18c0_TEST PASS",
+    "g++ -std=c++03 -O0": "008f18c0_TEST PASS"
+  },
+  "status": "PARKED"
+}

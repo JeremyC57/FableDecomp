@@ -1,0 +1,30 @@
+{
+  "address": "0x00B9D730",
+  "leaf": "?IsInsideFustrum@CEnginePrimitiveManagerStaticMeshesBase@@AAE_NPBVC3DPrimitive2@@ABVCEngineInternalPrimitiveStaticMesh@@@Z",
+  "retail_bytes": 429,
+  "object_bytes": 429,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 1,
+  "source_sha256": "4e7a7bfbe2c77363e8b1e3fb9f3a28ca63c2a718814536ed7d920894b858558f",
+  "test_sha256": "e0d9db005ea7fae9167a18ea81dee1f82d6e40b81c04257776344db15cc784f1",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00b9d730_TEST PASS",
+    "g++ -std=c++03 -O0": "00b9d730_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "90fec5f160825c78525789c703d909b54b15e41ff08cedf03eb647ba0a7e91c9",
+  "operands": [
+    {
+      "offset": 121,
+      "type": "DIR32",
+      "symbol": "?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A",
+      "base": "0x01436EA0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

@@ -1,0 +1,19 @@
+{
+  "address": "0x007F6200",
+  "leaf": "?UpdatePBestEnemyCreatureForAttack@CTCTargetingAI@@QAEX_N@Z",
+  "retail_bytes": 1458,
+  "object_bytes": 1458,
+  "extra_flags": [],
+  "strict_instruction_hunks": 36,
+  "strict_instruction_ratio": 0.8641975308641975,
+  "first_unequal_masked_offset": 31,
+  "relocation_count": 75,
+  "source_sha256": "5b064324deda0c5585078d85749b8c4e97f4e53d74cec12f02b9baaebcd196df",
+  "test_sha256": "0ca675173a1e59bc59b746c5b0df3bbfeb5239f198217d33a5e075205a597081",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "007f6200_TEST PASS",
+    "g++ -std=c++03 -O0": "007f6200_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 437
+}

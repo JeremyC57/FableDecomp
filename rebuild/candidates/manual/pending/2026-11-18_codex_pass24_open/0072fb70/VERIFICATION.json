@@ -1,0 +1,18 @@
+{
+  "address": "0x0072FB70",
+  "leaf": "?FrameUpdate@CTCDummyVillager@@UAEXXZ",
+  "retail_bytes": 1278,
+  "object_bytes": 1319,
+  "extra_flags": [],
+  "strict_instruction_hunks": 40,
+  "strict_instruction_ratio": 0.7903430749682337,
+  "first_unequal_masked_offset": 41,
+  "relocation_count": 53,
+  "source_sha256": "21de7bcaa8c7c16d1580d39b9cc3c96893263eac0fa12f7347f1b8e754c2950f",
+  "test_sha256": "807baae7376eeaaa7e2c476c0aa34a19df98adb098af09eca87ccc4734ccfa9d",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0072fb70_TEST PASS",
+    "g++ -std=c++03 -O0": "0072fb70_TEST PASS"
+  },
+  "status": "PARKED"
+}

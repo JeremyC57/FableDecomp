@@ -8,6 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_MINION_TRESPASS_UPDATE_PASS24
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CAIStateGroup_MinionReactToTrespassing : public CAIStateGroupBase {
+public:
+    virtual void Update();
+private:
+    bool IsStillRunnable(bool ignore_frame_check);
+    CIntelligentPointer<CThing> PHero;
+    long LastFrameCheckedIsStillValid;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionReactToTrespassing)==0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -31,4 +44,5 @@ FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_MinionReactToTrespassing, __vf
 FABLE_STATIC_ASSERT_AT(25, offsetof(CAIStateGroup_MinionReactToTrespassing, PHero) == 0x14);
 FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_MinionReactToTrespassing, LastFrameCheckedIsStillValid) == 0x1c);
 
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONREACTTOTRESPASSING_H

@@ -1,0 +1,18 @@
+{
+  "address": "0x00A3A410",
+  "leaf": "?AddFile@CWADBank@@QAEXABVCWideString@@@Z",
+  "retail_bytes": 920,
+  "object_bytes": 942,
+  "extra_flags": [],
+  "strict_instruction_hunks": 41,
+  "strict_instruction_ratio": 0.6900175131348512,
+  "first_unequal_masked_offset": 9,
+  "relocation_count": 49,
+  "source_sha256": "63c5fd31acb81586d38ef503b7adc2e8f668faa4c847b4a5ce52b9c09ab66393",
+  "test_sha256": "947b689b74f7a3834a449dd4e6e1eb7a4a550613419e180a3cc36d98c23ff2b6",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00a3a410_TEST PASS",
+    "g++ -std=c++03 -O0": "00a3a410_TEST PASS"
+  },
+  "status": "PARKED"
+}

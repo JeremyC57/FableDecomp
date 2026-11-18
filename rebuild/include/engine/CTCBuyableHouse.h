@@ -107,6 +107,9 @@ public:
     // Retail opt-in (w22 wf19, row 0x006BFCD0): Ego_r.pdb / FableWin.pdb ?GetSignPostPos@CTCBuyableHouse@@AAE_N_NAAVC3DVector@@PAVCRightHandedSet@@@Z
     // (private). Declaration only: no layout or vtable change.
 private:
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_CREATE_SIGN_POST_PASS24
+    CThing* CreateSignPost(const CCharString& sign_post_def, bool main);
+#endif
     bool GetSignPostPos(bool main, class C3DVector& pos, class CRightHandedSet* orientation);   // 0x006BFCD0
 public:
 #endif

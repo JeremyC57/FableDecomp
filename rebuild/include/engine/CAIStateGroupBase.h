@@ -153,6 +153,13 @@ protected:
     // in retail at 0x0097F870 (the inline WanderWithinTavern pushes the pub, then 3 = AI_MOVEMENT_WALKING). Declaration only.
     EAIActionReturn AIAction_MinionWander(EMovementType movement, class CThingBuilding* building);   // 0x0097F870
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_GETTHINGMANAGER_PASS24
+    CThingManager& GetThingManager() const;                              // 0x008FCF60
+#endif
+#ifdef FABLE_RETAIL_MINION_CRIMINAL_UPDATE_PASS24
+protected:
+    EAIActionReturn AIAction_PerformActionTargetFace(const class CCreatureActionBase& action, CIntelligentPointer<const CThing> target);
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTIONONCE
     // Nested opt-in (chunk Q22, row 0x0096CD70 CAIStateGroup_EatAtTable::Update): Ego_r.pdb
     // ?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z (protected; Ego_r 0x00848680,

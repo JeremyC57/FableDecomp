@@ -8,6 +8,24 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZESHIELDEDCHASE
+#include "engine/_quarantine/CAIStateGroup_MazeBase.h"
+
+class CAIStateGroup_MazeShieldedChase : public CAIStateGroup_MazeBase {
+public:
+    virtual void Update();
+    virtual void OnActivate();
+    virtual void Cleanup();
+    virtual bool IsRunnable();
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+    static CCharString FABLE_FASTCALL GetName();
+    static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    bool IsStillRunnable();                                             // 0x00954740
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeShieldedChase) == 0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -24,4 +42,5 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_MazeShieldedChase) == 0x20);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_MazeShieldedChase, __vftable) == 0x0);
 
+#endif // 0x009552C0 retail opt-in
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZESHIELDEDCHASE_H

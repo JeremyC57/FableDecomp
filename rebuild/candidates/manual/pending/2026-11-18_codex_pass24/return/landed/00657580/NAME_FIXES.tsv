@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00445950	?GetNumberOfQuickAccessItemButtons@CGamePlayerInterface@@QBEJXZ	Both PDBs plus ordered adjacent slot getters and typed 0x006575FE caller	?GetCount@CItemList@@QAEKXZ | ?GetNumQuickAccessSlots@CGameProfile@@QBEKXZ
+0x00643BE2	?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	Both PDBs and native vector identity copy through its hidden result	NUISystem::CComponent::CanMove

@@ -1,0 +1,23 @@
+{
+  "status": "PARKED",
+  "attempts": 20,
+  "leaf": "?Update@CPCMouseLook@NCameraModes@@UAEXXZ",
+  "assigned_name": "?Update@CPCMouseLook@NCameraModes@@UAEXXZ",
+  "retail_size": 2386,
+  "object_size": 2384,
+  "flags": [],
+  "lever": "The shared Z-Y-X dot product improves the grade to 2384 of 2386 bytes. The first difference is in input sensitivity stack placement, followed by current DollyLength and rotation scheduling.",
+  "residue": "The shared Z-Y-X dot product improves the grade to 2384 of 2386 bytes. The first difference is in input sensitivity stack placement, followed by current DollyLength and rotation scheduling.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 82,
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_header_optins",
+  "strict_hunks": 15,
+  "loose_hunks": 11,
+  "unresolved_operands": 0,
+  "verified_operands": 82,
+  "total_recorded_grades": 26,
+  "source_sha256": "9d839357ab8c0977abd7796d1611b327935bc94a7aafe961c32ded58c4abf9ee",
+  "test_sha256": "777d74e2b85d5d64f5ae7fb268db8b1b37c6440b06d632e1c71ab373c193e7db",
+  "extra_flags": []
+}

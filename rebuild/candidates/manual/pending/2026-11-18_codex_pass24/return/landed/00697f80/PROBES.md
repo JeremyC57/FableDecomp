@@ -1,0 +1,57 @@
+# Compiler probes
+
+- package baseline — LEAF_REVIEW_REQUIRED.
+- tail direct fixture — MASKED_MATCH_PENDING_AUDIT, 490 v 490 bytes, 0 instruction hunks.
+- tail emitted leaf diagnostic — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail final — MASKED_MATCH_PENDING_AUDIT, 490 v 490 bytes, 0 instruction hunks.
+- tail frustum add parens — COMPILE_FAIL.
+- tail frustum angle counter — COMPILE_FAIL.
+- tail frustum bound twopi — MASKED_MATCH_PENDING_AUDIT, 490 v 490 bytes, 0 instruction hunks.
+- tail frustum direct angles — COMPILE_FAIL.
+- tail frustum flat difference — COMPILE_FAIL.
+- tail frustum from perp method — COMPILE_FAIL.
+- tail frustum more c3dvector crosswithup — MASKED_MATCH_PENDING_AUDIT, 490 v 490 bytes, 0 instruction hunks.
+- tail frustum more c3dvector initialise add — DIFFER, 494 v 490 bytes, 24 instruction hunks, first unequal byte at 0x00697F82.
+- tail frustum more c3dvector initialise scale — DIFFER, 490 v 490 bytes, 1 instruction hunks, first unequal byte at 0x006980A2.
+- tail frustum more c3dvector initialise sub — DIFFER, 490 v 490 bytes, 6 instruction hunks, first unequal byte at 0x00697FC8.
+- tail frustum more c3dvector named result sub — DIFFER, 490 v 490 bytes, 6 instruction hunks, first unequal byte at 0x00697FC8.
+- tail frustum more c3dvector original component ctor — DIFFER, 490 v 490 bytes, 1 instruction hunks, first unequal byte at 0x006980A2.
+- tail frustum more c3dvector scale named result — DIFFER, 490 v 490 bytes, 1 instruction hunks, first unequal byte at 0x006980A2.
+- tail frustum more c3dvector scale x paren — DIFFER, 490 v 490 bytes, 1 instruction hunks, first unequal byte at 0x006980A2.
+- tail frustum more c3dvector subtract x group — DIFFER, 490 v 490 bytes, 4 instruction hunks, first unequal byte at 0x00697FCF.
+- tail frustum more c3dvector subtract xy group — DIFFER, 490 v 490 bytes, 6 instruction hunks, first unequal byte at 0x00697FBD.
+- tail frustum more frustum add parens — DIFFER, 490 v 490 bytes, 1 instruction hunks, first unequal byte at 0x006980A2.
+- tail frustum more frustum angle counter — DIFFER, 490 v 490 bytes, 1 instruction hunks, first unequal byte at 0x006980A2.
+- tail frustum more frustum named angle — DIFFER, 490 v 490 bytes, 1 instruction hunks, first unequal byte at 0x006980A2.
+- tail frustum more frustum scale parens — DIFFER, 490 v 490 bytes, 1 instruction hunks, first unequal byte at 0x006980A2.
+- tail frustum more frustum trig parens — DIFFER, 490 v 490 bytes, 1 instruction hunks, first unequal byte at 0x006980A2.
+- tail frustum named angle — COMPILE_FAIL.
+- tail frustum named constructor — COMPILE_FAIL.
+- tail frustum named cos — COMPILE_FAIL.
+- tail frustum named vector — COMPILE_FAIL.
+- tail frustum ref cos — COMPILE_FAIL.
+- tail frustum scale parens — COMPILE_FAIL.
+- tail frustum shared — COMPILE_FAIL.
+- tail frustum trig parens — COMPILE_FAIL.
+- tail frustum vector initialise scale — COMPILE_FAIL.
+- tail frustum vector scale named result — COMPILE_FAIL.
+- tail frustum vector scale x paren — COMPILE_FAIL.
+- tail hdr frustum add parens — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail hdr frustum angle counter — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail hdr frustum direct angles — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail hdr frustum flat difference — DIFFER, 490 v 490 bytes, 1 instruction hunks, first unequal byte at 0x006980A2.
+- tail hdr frustum from perp method — DIFFER, 492 v 490 bytes, 2 instruction hunks, first unequal byte at 0x006980AC.
+- tail hdr frustum named angle — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail hdr frustum named constructor — DIFFER, 519 v 490 bytes, 31 instruction hunks, first unequal byte at 0x00697F82.
+- tail hdr frustum named cos — DIFFER, 486 v 490 bytes, 13 instruction hunks, first unequal byte at 0x00698048.
+- tail hdr frustum named vector — DIFFER, 490 v 490 bytes, 26 instruction hunks, first unequal byte at 0x00697F80.
+- tail hdr frustum ref cos — DIFFER, 486 v 490 bytes, 13 instruction hunks, first unequal byte at 0x00698048.
+- tail hdr frustum scale parens — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail hdr frustum shared — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail hdr frustum trig parens — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail hdr frustum vector initialise scale — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail hdr frustum vector scale named result — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail hdr frustum vector scale x paren — DIFFER, 492 v 490 bytes, 3 instruction hunks, first unequal byte at 0x006980A2.
+- tail isolated fixture — MASKED_MATCH_PENDING_AUDIT, 490 v 490 bytes, 0 instruction hunks.
+
+The selected result is RELOCATION_MATCH (490 object bytes, 490 retail bytes). The final test passed with VC7.1 and GNU C++03. GRADE_HISTORY.tsv includes all recorded compiler runs, including baseline and verification repeats.

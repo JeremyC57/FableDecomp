@@ -110,6 +110,16 @@ public:
   point.Y=WindowCenterY-one_over_z*HalfWindowHeight*point.Y;
  }
 #endif
+#ifdef FABLE_RETAIL_CENGINECAMERA_VIEWTOSCREEN_TWO_ARGS
+ // Retail opt-in (Codex pass 24): Ego_d Engine.obj 119- and 35-byte two-argument methods,
+ // FableWin 0x02C9F690/0x02C9F730; 0x00B242D0 expands the two view transformations.
+ void TransformViewToScreen(const C3DVector& from,C3DVector& to)const{
+  const float invz=1.0f/from.Z;
+  to.X=from.X*HalfWindowWidth*invz+WindowCenterX;
+  to.Y=WindowCenterY-invz*HalfWindowHeight*from.Y;
+  to.Z=from.Z;
+ }
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_SCREENTOWORLD
  // Opt-in (chunk 1020, row 0x00BCF4F0 CEngineInternalPrimitive2DAnimatedMesh::Initialise): FableWin.pdb
  // ?TransformScreenXYLinearZToView@CEngineCamera@@QBEXAAVC3DVector@@@Z, ?TransformViewToWorld@CEngineCamera@@QBEXAAVC3DVector@@@Z and

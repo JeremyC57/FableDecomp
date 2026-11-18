@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00AC70F0	?GetInverseMatrixPart@CQuadric@QuadricOptimiserInternals@@QBE?AVCMatrix3x4@@XZ	Ego_r 0x00C5F9C0 and FableWin 0x034BF810 give the same leaf. Ego_d lists it in the quadric module. Retail 0x00AC7809 passes a hidden matrix and reads the inverse coefficients.	CQuadric::GetMatrixPart (old manifest/signature label); GetInverseMatrixPart (unqualified corrected label)

@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "attempts": 23,
+  "leaf": "?DrawSquare@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@1M@Z",
+  "assigned_name": "?DrawSquare@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@1M@Z",
+  "retail_size": 1315,
+  "object_size": 1315,
+  "flags": [],
+  "lever": "The loop initializer is scheduled after two float stores where retail places it between them at 0x008760C0.",
+  "residue": "The loop initializer is scheduled after two float stores where retail places it between them at 0x008760C0.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 20,
+  "total_recorded_grades": 29,
+  "source_sha256": "bf58095a4eef1bee97e703eba91d9f345c5b6785fa3640a881a7d7e724848026",
+  "test_sha256": "aa850e1da9d1da185a40785d2551136dba71df97117fce3f7a6d979f348c52bd",
+  "extra_flags": []
+}

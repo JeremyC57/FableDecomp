@@ -1,0 +1,19 @@
+{
+  "status": "PARKED",
+  "attempts": 18,
+  "leaf": "?AlreadyHaveSpecial@CTCInventoryTrade@@AAE_NJ@Z",
+  "assigned_name": "?AlreadyHaveSpecial@CTCInventoryTrade@@AAE_NJ@Z",
+  "retail_size": 716,
+  "object_size": 725,
+  "flags": [],
+  "lever": "The tattoo card pointer, size home and loop coloring still differ.",
+  "residue": "The tattoo card pointer, size home and loop coloring still differ.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 19,
+  "relocations_verified": 19,
+  "relocations_unpaired": 0,
+  "total_recorded_grades": 23,
+  "source_sha256": "0b9e81f2226e60ee474073e4733d5d11db80e143765366288665731d3d2a1f22",
+  "test_sha256": "06487275d72635629073e99a174c70a3aaf44535501fe408fd1500002d971fc3",
+  "extra_flags": []
+}

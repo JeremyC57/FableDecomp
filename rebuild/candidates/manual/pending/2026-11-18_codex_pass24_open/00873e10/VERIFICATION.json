@@ -1,0 +1,18 @@
+{
+  "address": "0x00873E10",
+  "leaf": "?Update@CPCMouseLook@NCameraModes@@UAEXXZ",
+  "retail_bytes": 2386,
+  "object_bytes": 2384,
+  "extra_flags": [],
+  "strict_instruction_hunks": 15,
+  "strict_instruction_ratio": 0.974076983503535,
+  "first_unequal_masked_offset": 222,
+  "relocation_count": 82,
+  "source_sha256": "9d839357ab8c0977abd7796d1611b327935bc94a7aafe961c32ded58c4abf9ee",
+  "test_sha256": "777d74e2b85d5d64f5ae7fb268db8b1b37c6440b06d632e1c71ab373c193e7db",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00873e10_TEST PASS",
+    "g++ -std=c++03 -O0": "00873e10_TEST PASS"
+  },
+  "status": "PARKED"
+}

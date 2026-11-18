@@ -1,0 +1,21 @@
+{
+  "address": "0x00B6DC40",
+  "leaf": "?ProcessSeaLoading@CEngineWaterRenderer@@AAE_NXZ",
+  "retail_bytes": 771,
+  "object_bytes": 771,
+  "extra_flags": [
+    "/d2inlT200"
+  ],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.9957805907172996,
+  "first_unequal_masked_offset": 162,
+  "relocation_count": 31,
+  "source_sha256": "16752009a7dbf6b0962170847bf94c441b99730b7cb9ff31e4120df62353a0e2",
+  "test_sha256": "9b7d586b975ce0004bfc027d9380d7705aa39588bd3303a9367e81eed02654ec",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00b6dc40_TEST PASS",
+    "g++ -std=c++03 -O0": "00b6dc40_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 7
+}

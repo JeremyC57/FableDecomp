@@ -1,0 +1,18 @@
+{
+  "address": "0x007542B0",
+  "leaf": "?OnAppearanceDraw@CTCLook@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z",
+  "retail_bytes": 2266,
+  "object_bytes": 2220,
+  "extra_flags": [],
+  "strict_instruction_hunks": 75,
+  "strict_instruction_ratio": 0.7207514944491887,
+  "first_unequal_masked_offset": 22,
+  "relocation_count": 39,
+  "source_sha256": "8ed19bb843069fab4d6d3b3b89d3bf5c35013c6abf31266bb5ce2555ce26b204",
+  "test_sha256": "204d50c7dcadaae46b1138107ccc0b62bcb93c1ae68cf7b190ddef0014ed47fc",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "007542b0_TEST PASS",
+    "g++ -std=c++03 -O0": "007542b0_TEST PASS"
+  },
+  "status": "PARKED"
+}

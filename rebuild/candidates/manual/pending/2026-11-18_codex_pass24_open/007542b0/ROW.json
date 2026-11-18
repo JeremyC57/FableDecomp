@@ -1,0 +1,19 @@
+{
+  "status": "PARKED",
+  "attempts": 17,
+  "leaf": "?OnAppearanceDraw@CTCLook@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z",
+  "assigned_name": "?OnAppearanceDraw@CTCLook@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z",
+  "retail_size": 2266,
+  "object_size": 2220,
+  "flags": [],
+  "lever": "The shared owner, render mesh and attachment classes retain the native receiver offsets and frame extent. Retained handles, index-slot evaluation and the two eye transform schedules remain different.",
+  "residue": "The shared owner, render mesh and attachment classes retain the native receiver offsets and frame extent. Retained handles, index-slot evaluation and the two eye transform schedules remain different.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 39,
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "total_recorded_grades": 21,
+  "source_sha256": "8ed19bb843069fab4d6d3b3b89d3bf5c35013c6abf31266bb5ce2555ce26b204",
+  "test_sha256": "204d50c7dcadaae46b1138107ccc0b62bcb93c1ae68cf7b190ddef0014ed47fc",
+  "extra_flags": []
+}

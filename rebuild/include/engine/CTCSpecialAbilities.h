@@ -106,7 +106,12 @@ FABLE_STATIC_ASSERT_AT(52, sizeof(CTCSpecialAbilities)==0x28);
 class CTCSpecialAbilities : public CTCBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_SPECIAL_ABILITIES; }
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_STRAFE_CALLS_PASS24
+    bool GetAbilityMutexLock() const;
+    CCharString GetCurrentAbilityStrafeAnim() const;
+#else
     bool GetAbilityMutexLock() const { return AbilityMutexLock; }
+#endif
 #ifdef FABLE_RETAIL_CTCSPECIALABILITIES_ISABILITYAVAILABLE
     // Retail opt-in (bwf1 / agentC2, row 0x00651B04): FableWin.pdb ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z (0x0072C430).
     bool IsAbilityAvailable(EHeroAbility ability) const;                 // 0x0072C430

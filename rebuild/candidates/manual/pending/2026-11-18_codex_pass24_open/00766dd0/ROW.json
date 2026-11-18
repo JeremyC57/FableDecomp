@@ -1,0 +1,19 @@
+{
+  "status": "PARKED",
+  "attempts": 19,
+  "leaf": "?FrameUpdate@CTCObjectAugmentations@@UAEXXZ",
+  "assigned_name": "?FrameUpdate@CTCObjectAugmentations@@UAEXXZ",
+  "retail_size": 1067,
+  "object_size": 1161,
+  "flags": [],
+  "lever": "The shared owner and STLport containers retain the native predicate calls and component names. Vector allocation, period scheduling, and iterator code generation still differ.",
+  "residue": "The shared owner and STLport containers retain the native predicate calls and component names. Vector allocation, period scheduling, and iterator code generation still differ.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 30,
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "total_recorded_grades": 23,
+  "source_sha256": "6bbb479606138f0314a5f8d06432a39d7075cd0a2e14a18075466ff337307386",
+  "test_sha256": "bd732de1ecc8fbc19c60f052c123a0472c3c5abed84c04801d6463cec5cd59a0",
+  "extra_flags": []
+}

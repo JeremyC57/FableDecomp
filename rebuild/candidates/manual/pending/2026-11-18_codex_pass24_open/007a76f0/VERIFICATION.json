@@ -1,0 +1,18 @@
+{
+  "address": "0x007A76F0",
+  "leaf": "?CreateStartUpEffect@CTCBattleCharge@@AAEXXZ",
+  "retail_bytes": 1239,
+  "object_bytes": 1219,
+  "extra_flags": [],
+  "strict_instruction_hunks": 95,
+  "strict_instruction_ratio": 0.654054054054054,
+  "first_unequal_masked_offset": 2,
+  "relocation_count": 80,
+  "source_sha256": "5d4a83fd8121972b4f27e269423fa4e5e8f8f2ebdd93a195e0c2aeae853c1f99",
+  "test_sha256": "fbfc89bd81700327cf7134b48c619ea9dd4f4d0bd14d98e340d4d90419a8f52c",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "007a76f0_TEST PASS",
+    "g++ -std=c++03 -O0": "007a76f0_TEST PASS"
+  },
+  "status": "PARKED"
+}

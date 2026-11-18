@@ -25,6 +25,10 @@ class CExpressionSet;
 class CCreatureStatsDef;
 class CCreatureDef : public CSubDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CCREATUREDEF_RESPAWN_PASS24
+    // FableWin and native GetSubDef<CCreatureDef> use the same class literal.
+    static CCharString FABLE_FASTCALL StatGetTypeName() { return CCharString("CCreatureDef", -1); }
+#endif
     virtual void Transfer(CPersistContext& context);
     unsigned char _pad_0x25[3];
 #ifdef FABLE_RETAIL_CPERSIST_ORIGINAL_CLASS_TYPES_PASS22

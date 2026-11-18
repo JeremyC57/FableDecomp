@@ -1,0 +1,5 @@
+# Crop task update
+
+Ego_r 009641C0 and FableWin 02B98430 identify the public virtual state method. Retail uses it at vtable address 0128BB0C. The package’s same-TU IsTimeForWork, IsRunnable and Cleanup functions agree on the receiver. Ego_d names ptc_village_mem, pcrop, pvillage, nav_route_calculated and ret in the function scope. The smart-pointer constructor, GetPItem calls and +0x14 task member corroborate the two smart-pointer types.
+
+The separate missing-task and missing-village-member returns restore the exact component receiver move. Declaring pcrop in function scope after rejecting an unaccepted task accounts for the two distinct eight-byte smart-pointer slots. The return value of PerformActionAndWait must be tested before destroying the crop action. Thirteen independent fixture setups exercise rejected and invalidated tasks, stopped work, retries, movement failure, and both action results. The final merged-header regrade and both host tests passed. See MAIN_RELOCATIONS.json for every caller operand.

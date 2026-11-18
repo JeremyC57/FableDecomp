@@ -1,0 +1,18 @@
+{
+  "address": "0x00699670",
+  "leaf": "?UpdateHeightLimits@CGameCameraManager@@AAEXXZ",
+  "retail_bytes": 761,
+  "object_bytes": 759,
+  "extra_flags": [],
+  "strict_instruction_hunks": 28,
+  "strict_instruction_ratio": 0.7974413646055437,
+  "first_unequal_masked_offset": 36,
+  "relocation_count": 16,
+  "source_sha256": "267c782c13822d568082e50fb389f2b1afb3a01a434e18e098bb71dbb542be7b",
+  "test_sha256": "c3a1615af7be7e5c999f2dff1b957297f8527206489402f6118a11eb40670744",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00699670_TEST PASS",
+    "g++ -std=c++03 -O0": "00699670_TEST PASS"
+  },
+  "status": "PARKED"
+}

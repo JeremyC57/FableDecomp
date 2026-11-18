@@ -44,6 +44,9 @@ class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Seco
 public: bool IsValid() const; // original PDB declaration; native 0x009E9C60
 #endif
 public: CDateAndTime();
+#ifdef FABLE_RETAIL_WAD_ADD_FILE_PASS24
+bool operator!=(const CDateAndTime& other) const;
+#endif
 #ifdef FABLE_RETAIL_CDATEANDTIME_TOFILETIME
 // Nested opt-in (chunk 2013, row 0x00595CC1): Ego_r.pdb / FableWin.pdb ?ToFileTime@CDateAndTime@@QBE?AU_FILETIME@@XZ, out of line in
 // retail (0x009E9D40; reloc_bindings.tsv, bound by the landed 0x0047EEE4; hidden result slot pushed at 0x00595DBA).

@@ -160,6 +160,10 @@ public:
     // neither PDB has). Declaration only, the layout below is unchanged.
     long GetNumberOfAssignableSpecialMoveButtons() const;               // 0x00445940
 #endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSBUTTONS
+    // Retail opt-in (Codex pass 24): both PDBs, native call 0x006575FE.
+    long GetNumberOfQuickAccessItemButtons() const;
+#endif
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSQUEUE
     // Opt-in (FAM13, row 0x005EE99D CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue): Ego_r.pdb / FableWin.pdb
     // ?IsQuickAccessEventInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z, retail 0x004460C0 (scans QuickAccessItemButtons

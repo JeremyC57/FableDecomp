@@ -10,10 +10,32 @@
 #endif
 #include "rebuild_abi.h"
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCTRESPASSER_FRAMEUPDATE
+#include "engine/CIntelligentPointer.h"
+#include "engine/EOpinionDeedType.h"
+#include "stlport/fable_containers.h"
+class CThing;
+class CThingAICreature;
+#endif
 class CTCTrespasser : public CTCBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_TRESPASSER; }
     virtual void LeavingRegion();                                        // slot 28 (+0x70)
+#ifdef FABLE_RETAIL_CTCTRESPASSER_FRAMEUPDATE
+    virtual void FrameUpdate();
+private:
+    EOpinionDeedType GetDeedType(long index) const;
+    bool SeeIfAnyOccupantsKnowAboutDeed(long index, EOpinionDeedType deed_type);
+    long InsideBuildingNotTrespassingDeedHandle;
+    long DeedHandles[3];
+    long CurrentDeedHandleIndex;
+    long OccupantsKnowOfDeedHandleIndex;
+    unsigned long FrameSomeoneWasInformedOfLastDeed;
+    unsigned long FramePlayerLeft;
+    bool AttachedOpinionSource;
+    CIntelligentPointer<CThing> TrespassingThing;
+    std::list<CIntelligentPointer<CThingAICreature> > OccupantsOfCurrentTrespassingThing;
+#endif
 };
 #endif
 #endif // FABLE_ENGINE_CTCTRESPASSER_H

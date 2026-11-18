@@ -45,6 +45,10 @@ public:
 protected:
     void SetBlendMode(ECompositeBlendType blend);                        // 0x00F38A10
 #endif
+#ifdef FABLE_RETAIL_CSURFACECOMPOSITOR_BASE_BLEND_PASS24
+protected:
+    void SetBaseBlendModes();
+#endif
 private:
     ECompositeBlendType            CurrentBlend;             // +0x04
     CRenderStateCaptureBlock       StateCaptureBlock;        // +0x08

@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00C52C40	?GetCyrixModelName@CCpuInfo@@QBEPBDXZ	Native 0x00C52E40 caller, Cyrix literals, and libpk sibling Intel and AMD CPUID helpers	CEngineInternalPrimitiveParticleGroup::GetRenderLayerMask

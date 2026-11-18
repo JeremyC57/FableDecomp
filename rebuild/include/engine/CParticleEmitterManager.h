@@ -6,6 +6,9 @@
 // Layout: both original PDB type records and donor Update02F3F4C0;
 // native B0DC20 member accesses use the original retail container sizes.
 class CIEngine;
+#ifdef FABLE_RETAIL_CPARTICLEEMITTERMANAGER_PREPAREPRIMITIVES_PASS24
+class CEnginePrimitivePrepareInfo;
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEEMITTERMANAGER_CREATE2D
 class C2DVector;
 #ifdef _MSC_VER
@@ -15,6 +18,10 @@ enum EEngine2DLayer { };
 #endif
 #endif
 namespace NParticleEngine {
+#ifdef FABLE_RETAIL_CPARTICLEEMITTERMANAGER_PREPAREPRIMITIVES_PASS24
+extern bool RenderingEnabled;
+inline bool FABLE_FASTCALL IsRenderingEnabled() { return RenderingEnabled; }
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEEMITTERMANAGER_BULLETTIME_PASS23
 // Exact original namespace/free fastcall/reference singleton; native00aeaaf0.
 class CParticleEmitterManager;
@@ -22,6 +29,9 @@ CParticleEmitterManager& FABLE_FASTCALL GetParticleEmitterManager();
 #endif
 class CParticleEmitterManager {
 public:
+#ifdef FABLE_RETAIL_CPARTICLEEMITTERMANAGER_PREPAREPRIMITIVES_PASS24
+ void PreparePrimitives(const ::CEnginePrimitivePrepareInfo& info);
+#endif
  bool GetEnableDecals()const{return EnableDecals;}
  const NFractal::CPerlinNoise& PeekPerlinNoise()const{return PerlinNoise;}
  CParticleEmitter* CreateDecalEmitter(long,const C3DVector&,bool,const CRightHandedSet&);

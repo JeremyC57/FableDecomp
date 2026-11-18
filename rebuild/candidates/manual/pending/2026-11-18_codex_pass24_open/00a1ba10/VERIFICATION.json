@@ -1,0 +1,19 @@
+{
+  "address": "0x00A1BA10",
+  "leaf": "?GetRandomNavigablePos@CNavigatorAStar@@UBE?AVC3DVector@@ABV2@MABVC2DVector@@M@Z",
+  "retail_bytes": 642,
+  "object_bytes": 642,
+  "extra_flags": [],
+  "strict_instruction_hunks": 3,
+  "strict_instruction_ratio": 0.9829787234042553,
+  "first_unequal_masked_offset": 248,
+  "relocation_count": 13,
+  "source_sha256": "f9d0c4ec9b15e9be5df6776481783a9f380421cb1948e842ebda9cc26269804d",
+  "test_sha256": "4a84b8e32b02750a86161ac0106cb6122d3cb7210af67354b3807ba24633ce11",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00a1ba10_TEST PASS",
+    "g++ -std=c++03 -O0": "00a1ba10_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 13
+}

@@ -28,6 +28,9 @@ class CAnimateThing {public:
  void Update(const CAnimateThingUpdate& update);                       // 0x0070E8B0
 #endif
  void GetAllCombinationAnims(std::vector<CAnimSet*>&);
+#ifdef FABLE_RETAIL_CANIMATETHING_REMOVE_COMBINATION_CALL_PASS24
+ void RemoveCombinationAnim(const CAnimSet* anim);
+#endif
 #ifdef FABLE_RETAIL_CANIMATETHING_GETTHINGSCALE
  // Retail opt-in (row 0x0070CE10): FableWin.pdb ?GetThingScale@CAnimateThing@@QBEMXZ, inline in retail (the caller reads Scale +0x88).
  float GetThingScale()const{return Scale;}
@@ -96,7 +99,16 @@ private:
  CCompleteAnimation CurrentAnim;
  std::list<CDelayedAnimation> DelayedAnimQueue;
  CDelayedAnimation DelayedAnim;
+#ifdef FABLE_RETAIL_CANIMATETHING_CALCCACHEDANIMS
+ // Retail opt-in (Codex pass 24). Ego_d const this and native writes at
+ // 0x0070E2A0 corroborate mutable cached animation state.
+ mutable C3DAnimationBlendState StartAnimState,EndAnimState,LastStartAnimState,LastEndAnimState;
+ void CalcCachedAnims() const;
+ C3DAnimationBlendState CalcInterpolatedMeshAnim(const CCompleteAnimation&, const CDelayedAnimation&, float) const;
+ const CThing& GetParentThing() const { return ParentThing; }
+#else
  C3DAnimationBlendState StartAnimState,EndAnimState,LastStartAnimState,LastEndAnimState;
+#endif
  float Scale,ChangeAlphaBy;
  long AnimDelay;
  bool Interruptable:1;

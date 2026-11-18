@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "attempts": 11,
+  "leaf": "?Transfer@CDegradableDef@@UAEXAAVCPersistContext@@@Z",
+  "assigned_name": "?Transfer@CDegradableDef@@UAEXAAVCPersistContext@@@Z",
+  "retail_size": 273,
+  "object_size": 273,
+  "flags": [],
+  "lever": "The enum transfer arm exchanges scalar registers from 0x0067E2EB.",
+  "residue": "The enum transfer arm exchanges scalar CPU operands from 0x0067E2EB.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 17,
+  "total_recorded_grades": 17,
+  "source_sha256": "0ca7e807688ab2d485fc549c5c0c70db646924676ab265031943cc5ff12dca22",
+  "test_sha256": "786373bd91716787d071418edd60830479a442d65d070471d514c6fbd800c16a",
+  "extra_flags": []
+}

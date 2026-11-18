@@ -1,0 +1,158 @@
+{
+  "address": "0x008B6AD0",
+  "leaf": "?Initialise@CCreatureAction_MidAttackSide@@UAEXXZ",
+  "retail_bytes": 344,
+  "object_bytes": 344,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 17,
+  "source_sha256": "38add110058e7fa0e2dfcde01b1376fed4e6f00ae57b48291ca2153fcbc855c3",
+  "test_sha256": "95eb16f3154710d2652ef61984711a3a452e3dca44741b0731247a7cdd1a0330",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "008b6ad0_TEST PASS",
+    "g++ -std=c++03 -O0": "008b6ad0_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "8417599b9000e5170ffd8adecc80937c66650e7da24071975a4da2318e81976a",
+  "operands": [
+    {
+      "offset": 16,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 28,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 35,
+      "type": "REL32",
+      "symbol": "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+      "base": "0x004C73D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 44,
+      "type": "REL32",
+      "symbol": "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+      "base": "0x004C73D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 79,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 162,
+      "type": "DIR32",
+      "symbol": "?GFastOneOverSqrtTable@@3PAKA",
+      "base": "0x013CE558",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 198,
+      "type": "DIR32",
+      "symbol": "__real@40400000",
+      "base": "0x0122DED4",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 208,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 250,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 260,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 282,
+      "type": "DIR32",
+      "symbol": "??_C@_0BH@IMAMOGDP@STRIKE_MEDIUM_RIGHT_90?$AA@",
+      "base": "0x0127A534",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 287,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 299,
+      "type": "DIR32",
+      "symbol": "??_C@_0BG@HDAHJHGD@STRIKE_MEDIUM_LEFT_90?$AA@",
+      "base": "0x0127A51C",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 304,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 316,
+      "type": "REL32",
+      "symbol": "?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z",
+      "base": "0x008574D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 325,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 332,
+      "type": "REL32",
+      "symbol": "?Initialise@CCombatActionBase@@UAEXXZ",
+      "base": "0x00857520",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

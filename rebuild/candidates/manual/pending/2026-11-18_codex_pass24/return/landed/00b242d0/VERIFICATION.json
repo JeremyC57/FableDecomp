@@ -1,0 +1,46 @@
+{
+  "address": "0x00B242D0",
+  "leaf": "?ConvertWorldPosToScreenPos@CEngine@@UBE_NABVC3DVector@@AAVC2DVector@@@Z",
+  "retail_bytes": 293,
+  "object_bytes": 293,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 3,
+  "source_sha256": "b299f4578b730b3475afb446092016bd2b704e292d7c0fe082dae743c01161b5",
+  "test_sha256": "3c5c8c27d92456d94ef80c42fa738f7183769e80d67a9a2399012a42c20b6fda",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00b242d0_TEST PASS",
+    "g++ -std=c++03 -O0": "00b242d0_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "76513ed65b2e66a98736284f6d836f6e5fee51cf9ad1108f20e1e927409aac25",
+  "operands": [
+    {
+      "offset": 45,
+      "type": "DIR32",
+      "symbol": "?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A",
+      "base": "0x01436EA0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 206,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 219,
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "base": "0x0122DED8",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "assigned_name": "?OnReplace@CAIStateGroup_SitRoundCampfire@@UAEXXZ",
+  "leaf": "?OnReplace@CAIStateGroup_SitRoundCampfire@@UAEXXZ",
+  "attempts": 12,
+  "retail_size": 571,
+  "object_size": 569,
+  "flags": [],
+  "lever": "The shared random rotation restores the native seed update before the external call. Around 009398C2 the seed pointer enters EDX where retail retains it in EDI.",
+  "residue": "The shared random rotation restores the native seed update before the external call. Around 009398C2 the seed pointer enters EDX where retail retains it in EDI.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "total_recorded_grades": 17,
+  "source_sha256": "2fd2a660b908b1d36db5e5344d5b077e75e4d4ebef5bdfa36c7a008ca0150376",
+  "test_sha256": "0fc77274ffba4d536dc378dbbf4a6b532ad8ff561f639cee4eabe495e3c7d64b",
+  "extra_flags": []
+}

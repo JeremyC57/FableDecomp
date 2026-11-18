@@ -1,0 +1,214 @@
+{
+  "address": "0x00657580",
+  "leaf": "?Draw@CDrawQuickAccessIconsPC@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z",
+  "retail_bytes": 1057,
+  "object_bytes": 1057,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 24,
+  "source_sha256": "844d517d9ba854e6baf044741bd56038bd310ac44edcbc0ef110ae0dbbecd985",
+  "test_sha256": "28c79b1db899056cb520f975e3c63b62f97e386b15ed774ff6104cc1b4b26bd0",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00657580_TEST PASS",
+    "g++ -std=c++03 -O0": "00657580_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "0fb7f83b2016c03d43a4eddde653ccf7491dc7e722af79d803f649cd86dd3be4",
+  "operands": [
+    {
+      "offset": 16,
+      "type": "REL32",
+      "symbol": "?Draw@CDrawQuickAccessIcons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z",
+      "base": "0x00652FA4",
+      "coff_addend": 0,
+      "evidence": "retail caller and two PDB signatures"
+    },
+    {
+      "offset": 23,
+      "type": "REL32",
+      "symbol": "?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ",
+      "base": "0x00643D7C",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 30,
+      "type": "REL32",
+      "symbol": "?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ",
+      "base": "0x00487DD0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 90,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "base": "0x004365B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 119,
+      "type": "REL32",
+      "symbol": "?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ",
+      "base": "0x00643D7C",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 127,
+      "type": "REL32",
+      "symbol": "?GetNumberOfQuickAccessItemButtons@CGamePlayerInterface@@QBEJXZ",
+      "base": "0x00445950",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE"
+    },
+    {
+      "offset": 150,
+      "type": "REL32",
+      "symbol": "?GetQuickAccessItemGraphicIndex@CTCInventory@@QBEJJ@Z",
+      "base": "0x00581FA4",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 179,
+      "type": "REL32",
+      "symbol": "?PeekGuiDef@CPlayerGui@@SIABVCPlayerGuiDef@@XZ",
+      "base": "0x00438570",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 214,
+      "type": "REL32",
+      "symbol": "?GFAnchorToBottomLeft@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z",
+      "base": "0x00643CDA",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 251,
+      "type": "DIR32",
+      "symbol": "?HUDRingAlpha@@3JA",
+      "base": "0x01375744",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 323,
+      "type": "REL32",
+      "symbol": "?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z",
+      "base": "0x00643D5D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 352,
+      "type": "REL32",
+      "symbol": "?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z",
+      "base": "0x00643BE2",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE"
+    },
+    {
+      "offset": 364,
+      "type": "REL32",
+      "symbol": "??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z",
+      "base": "0x00493AC2",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 494,
+      "type": "REL32",
+      "symbol": "?GFAnchorToBottomLeft@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z",
+      "base": "0x00643CDA",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 516,
+      "type": "DIR32",
+      "symbol": "?HUDRingAlpha@@3JA",
+      "base": "0x01375744",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 601,
+      "type": "REL32",
+      "symbol": "?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z",
+      "base": "0x00643D5D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 634,
+      "type": "REL32",
+      "symbol": "?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z",
+      "base": "0x00643BE2",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE"
+    },
+    {
+      "offset": 648,
+      "type": "REL32",
+      "symbol": "??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z",
+      "base": "0x00493AC2",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 704,
+      "type": "DIR32",
+      "symbol": "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+      "base": "0x013B8790",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 731,
+      "type": "DIR32",
+      "symbol": "__real@4f800000",
+      "base": "0x0122DCB4",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 760,
+      "type": "DIR32",
+      "symbol": "?HUDRingAlpha@@3JA",
+      "base": "0x01375744",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 833,
+      "type": "REL32",
+      "symbol": "?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z",
+      "base": "0x00643D5D",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 860,
+      "type": "REL32",
+      "symbol": "?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z",
+      "base": "0x00643BE2",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE"
+    },
+    {
+      "offset": 877,
+      "type": "REL32",
+      "symbol": "??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z",
+      "base": "0x00493AC2",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

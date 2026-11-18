@@ -1,0 +1,462 @@
+{
+  "address": "0x006DDD30",
+  "leaf": "?OnTrophyUseAction@CTCTrophy@@QAEXAAVCThingCreatureBase@@@Z",
+  "retail_bytes": 841,
+  "object_bytes": 841,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 55,
+  "source_sha256": "30d9ad8dc9b7607f3ffbb42d9dace12869f854c47989f68a8d8a4edc74795fc0",
+  "test_sha256": "f09868071efd552900c12a497942e6b583eb3e5629e26089b13731ad175c3686",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "006ddd30_TEST PASS",
+    "g++ -std=c++03 -O0": "006ddd30_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "b7798e8be265d7784959490029908fa4a964b9879b5671e709409345f3931e35",
+  "operands": [
+    {
+      "offset": 27,
+      "type": "DIR32",
+      "symbol": "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+      "base": "0x013B8790",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 38,
+      "type": "REL32",
+      "symbol": "?GetMiniGameType@CDrawQuestInfo@NPlayerGui@@QBE?AW4EMiniGameType@@XZ",
+      "base": "0x00644D54",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 53,
+      "type": "REL32",
+      "symbol": "?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ",
+      "base": "0x00686D40",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 60,
+      "type": "REL32",
+      "symbol": "?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ",
+      "base": "0x00449970",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 67,
+      "type": "REL32",
+      "symbol": "?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ",
+      "base": "0x00633BE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 97,
+      "type": "DIR32",
+      "symbol": "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+      "base": "0x013B8790",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 102,
+      "type": "REL32",
+      "symbol": "?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ",
+      "base": "0x00437CD0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 116,
+      "type": "REL32",
+      "symbol": "?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ",
+      "base": "0x00686D40",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 123,
+      "type": "REL32",
+      "symbol": "?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ",
+      "base": "0x00449970",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 130,
+      "type": "REL32",
+      "symbol": "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ",
+      "base": "0x00487DC0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 187,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "base": "0x0040F020",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 240,
+      "type": "REL32",
+      "symbol": "?clear@?$_List_base@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEXXZ",
+      "base": "0x00510D40",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 332,
+      "type": "REL32",
+      "symbol": "?GetWorld@CTCBase@@IBEAAVCWorld@@XZ",
+      "base": "0x00686A70",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 346,
+      "type": "REL32",
+      "symbol": "??$GetAllThings@VCThingAICreature@@V?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@V?$CFilter_Bind5@VCThingFilter_HasTC@@V1@VCThingFilter_HasScriptSupervision@@V?$CFilter_Not@VCThingFilter_AICreatureHasProperty@@@@V?$CFilter_Not@VCThingFilter_IsLyingDown@@@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind5@VCThingFilter_HasTC@@V1@VCThingFilter_HasScriptSupervision@@V?$CFilter_Not@VCThingFilter_AICreatureHasProperty@@@@V?$CFilter_Not@VCThingFilter_IsLyingDown@@@@@@AAV?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@@Z",
+      "base": "0x006DFA50",
+      "coff_addend": 0,
+      "evidence": "same-TU instantiation, both donor signatures and landed direct target"
+    },
+    {
+      "offset": 370,
+      "type": "REL32",
+      "symbol": "?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z",
+      "base": "0x006DDCD0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 377,
+      "type": "DIR32",
+      "symbol": "??_C@_0BK@CCGCEHAC@TEXT_GUI_TROPHY_PLAY_GAME?$AA@",
+      "base": "0x0125FD24",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 386,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 392,
+      "type": "DIR32",
+      "symbol": "?PMainGameComponent@CMainGameComponent@@1PAV1@A",
+      "base": "0x013B86A0",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 410,
+      "type": "REL32",
+      "symbol": "?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z",
+      "base": "0x009C95E0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 419,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 430,
+      "type": "REL32",
+      "symbol": "?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ",
+      "base": "0x0065F17B",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 441,
+      "type": "REL32",
+      "symbol": "?ConstructString@NGameText@@YI_NAAVCWideString@@JJ@Z",
+      "base": "0x009C7B80",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 446,
+      "type": "DIR32",
+      "symbol": "??_C@_1BM@MAMGJOI@?$AAT?$AAE?$AAX?$AAT?$AA_?$AAG?$AAU?$AAI?$AA_?$AAH?$AAE?$AAL?$AAP?$AA?$AA@",
+      "base": "0x0125FD08",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 455,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@PBG@Z",
+      "base": "0x0099B6B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 468,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@ABV0@@Z",
+      "base": "0x0099B720",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 476,
+      "type": "DIR32",
+      "symbol": "??_C@_11LOCGONAA@?$AA?$AA@",
+      "base": "0x0122D70C",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 481,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@PBG@Z",
+      "base": "0x0099B6B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 489,
+      "type": "DIR32",
+      "symbol": "??_C@_11LOCGONAA@?$AA?$AA@",
+      "base": "0x0122D70C",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 494,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@PBG@Z",
+      "base": "0x0099B6B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 509,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@ABV0@@Z",
+      "base": "0x0099B720",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 516,
+      "type": "REL32",
+      "symbol": "?StartDialogBox@CTCTrophy@@AAEXVCWideString@@K000@Z",
+      "base": "0x006DD7E0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 525,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 534,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 551,
+      "type": "DIR32",
+      "symbol": "??_C@_0BK@KFHLJMKH@TEXT_GUI_TROPHY_NO_PEOPLE?$AA@",
+      "base": "0x0125FCEC",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 560,
+      "type": "REL32",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "base": "0x0099EBF0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 565,
+      "type": "DIR32",
+      "symbol": "?PMainGameComponent@CMainGameComponent@@1PAV1@A",
+      "base": "0x013B86A0",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 583,
+      "type": "REL32",
+      "symbol": "?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z",
+      "base": "0x009C95E0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 592,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 600,
+      "type": "DIR32",
+      "symbol": "??_C@_11LOCGONAA@?$AA?$AA@",
+      "base": "0x0122D70C",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 605,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@PBG@Z",
+      "base": "0x0099B6B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 613,
+      "type": "DIR32",
+      "symbol": "??_C@_11LOCGONAA@?$AA?$AA@",
+      "base": "0x0122D70C",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 618,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@PBG@Z",
+      "base": "0x0099B6B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 626,
+      "type": "DIR32",
+      "symbol": "??_C@_11LOCGONAA@?$AA?$AA@",
+      "base": "0x0122D70C",
+      "coff_addend": 0,
+      "evidence": "Full COFF literal with terminator"
+    },
+    {
+      "offset": 631,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@PBG@Z",
+      "base": "0x0099B6B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 646,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@ABV0@@Z",
+      "base": "0x0099B720",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 653,
+      "type": "REL32",
+      "symbol": "?StartDialogBox@CTCTrophy@@AAEXVCWideString@@K000@Z",
+      "base": "0x006DD7E0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 662,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 690,
+      "type": "REL32",
+      "symbol": "??2@YAPAXI@Z",
+      "base": "0x00BFEA1A",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 720,
+      "type": "DIR32",
+      "symbol": "?GDefStringTable@@3VCDefStringTable@@A",
+      "base": "0x013CA828",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 725,
+      "type": "REL32",
+      "symbol": "?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z",
+      "base": "0x009D49B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 749,
+      "type": "REL32",
+      "symbol": "??0CCreatureAction_ShowTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@J@Z",
+      "base": "0x006DF730",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE"
+    },
+    {
+      "offset": 763,
+      "type": "REL32",
+      "symbol": "?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z",
+      "base": "0x00668D90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 777,
+      "type": "REL32",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "base": "0x0099EAE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 789,
+      "type": "REL32",
+      "symbol": "?SetCurrentAction@CThingCreatureBase@@QAE_NABV?$CCountedPointer@VCCreatureActionBase@@@@@Z",
+      "base": "0x00664670",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 824,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "base": "0x00BFE9BC",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

@@ -16,9 +16,12 @@ class CThing;
 class CAIStateGroup_MazeBase : public CAIStateGroupBase {
 protected:
     CIntelligentPointer<CThing> PTargetThing;                            // +0x14
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZEBASE_ENEMY_KNOCKDOWN
+    bool HasEnemyBeenKnockedDown();                                    // 0x00954130
+#endif
     long EnemyKnockDownFrame;                                            // +0x1c
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeBase) == 0x20);
+FABLE_STATIC_ASSERT_AT(21, sizeof(CAIStateGroup_MazeBase) == 0x20);
 #else
 #pragma pack(push, 1)
 struct CAIStateGroup_MazeBase {
@@ -32,10 +35,10 @@ struct CAIStateGroup_MazeBase {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeBase) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, PTargetThing) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, EnemyKnockDownFrame) == 0x1c);
+FABLE_STATIC_ASSERT_AT(35, sizeof(CAIStateGroup_MazeBase) == 0x20);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CAIStateGroup_MazeBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CAIStateGroup_MazeBase, PTargetThing) == 0x14);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CAIStateGroup_MazeBase, EnemyKnockDownFrame) == 0x1c);
 
 #endif // opt-in
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZEBASE_H

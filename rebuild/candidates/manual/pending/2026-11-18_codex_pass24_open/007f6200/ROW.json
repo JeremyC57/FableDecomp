@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "assigned_name": "?UpdatePBestEnemyCreatureForAttack@CTCTargetingAI@@QAEX_N@Z",
+  "leaf": "?UpdatePBestEnemyCreatureForAttack@CTCTargetingAI@@QAEX_N@Z",
+  "attempts": 13,
+  "retail_size": 1458,
+  "object_size": 1458,
+  "flags": [],
+  "lever": "The old enemy and receiver occupy opposite frame words near 007F621C. The later component-selection paths retain additional differences.",
+  "residue": "The old enemy and receiver occupy opposite frame words near 007F621C. The later component-selection paths retain additional differences.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "total_recorded_grades": 18,
+  "source_sha256": "5b064324deda0c5585078d85749b8c4e97f4e53d74cec12f02b9baaebcd196df",
+  "test_sha256": "0ca675173a1e59bc59b746c5b0df3bbfeb5239f198217d33a5e075205a597081",
+  "extra_flags": []
+}

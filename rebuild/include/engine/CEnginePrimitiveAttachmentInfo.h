@@ -4,7 +4,12 @@
 #include "fable_string.h"
 class CEnginePrimitiveAttachmentInfo {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTINFO_EYEDRAW_PASS24
+ // Native 0x00754736/0x0075473F and 0x00754AA4/0x00754AAD construct both string members in place.
+ CEnginePrimitiveAttachmentInfo() {}
+#else
  CEnginePrimitiveAttachmentInfo();
+#endif
  unsigned long Flags;
  CCharString ParentDummyName;
  long ParentDummyIndex;

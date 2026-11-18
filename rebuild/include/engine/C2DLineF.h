@@ -12,6 +12,11 @@ class C2DLineF {
 public:
     C2DVector Point1;                                                    // +0x00
     C2DVector Point2;                                                    // +0x08
+#ifdef FABLE_RETAIL_C2DLINEF_POINT_ON_LINE_PASS24
+    C2DVector GetPointOnInfiniteLine(const C2DVector& point) const;
+    float GetPointOnLine(const C2DVector& point,C2DVector& point_on_line,float radius,
+                         C2DVector* point_on_infinite_line,bool* off_start) const;
+#endif
     float GetLowestX() const { return (float)Min<double>(Point1.X, Point2.X); }
     float GetHighestX() const { return (float)Max<double>(Point1.X, Point2.X); }
     float GetLowestY() const { return (float)Min<double>(Point1.Y, Point2.Y); }

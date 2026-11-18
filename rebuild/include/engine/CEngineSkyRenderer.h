@@ -53,6 +53,10 @@ public:
     CEngineSkyRenderer(const CEngineInit& init);                         // 0x00B625E0
     virtual ~CEngineSkyRenderer();                                       // slot 0  0x00B621A0
     virtual unsigned long PeekSceneFilterFlags() const;                  // slot 10 ?PeekSceneFilterFlags@CEngineSkyRenderer@@UBEKXZ (Ego_r / FableWin; chunk 731)
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_LOADNEWSCENE
+    // Ego_r 0x00A17120 and FableWin 0x02D410F0. Retail scene-load override at 0x00B63800.
+    virtual bool LoadNewScene(const class CEngineComponentLoadNewSceneParams& load_params);
+#endif
     float              CloudHeightOffset;                                // +0x0c
     float              CloudTextureOffset;                               // +0x10
     float              CloudTextureMulitplier;                           // +0x14
@@ -117,11 +121,11 @@ private:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineSkyRenderer) == 0x194);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarFieldVertexBuffer) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudVertexShader) == 0xe8);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarCount) == 0x150);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, PSkyDef) == 0x190);
+FABLE_STATIC_ASSERT_AT(120, sizeof(CEngineSkyRenderer) == 0x194);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CEngineSkyRenderer, StarFieldVertexBuffer) == 0x24);
+FABLE_STATIC_ASSERT_AT(122, offsetof(CEngineSkyRenderer, CloudVertexShader) == 0xe8);
+FABLE_STATIC_ASSERT_AT(123, offsetof(CEngineSkyRenderer, StarCount) == 0x150);
+FABLE_STATIC_ASSERT_AT(124, offsetof(CEngineSkyRenderer, PSkyDef) == 0x190);
 #else // flattened Ego_r layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -170,39 +174,39 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEngineSkyRenderer) == 0x194);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudHeightOffset) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudTextureOffset) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudTextureMulitplier) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudSpeedMultiplier) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudMaxSpeed) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudMinSpeed) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarFieldVertexBuffer) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, VertexBuffer) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, IndexBuffer) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, SolidBaseBandVertexBuffer) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, SolidBaseBandIndexBuffer) == 0xd4);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudVertexShader) == 0xe8);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, SkyVertexShader) == 0xf0);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarFieldVertexShader) == 0xf8);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarFieldPixelShader) == 0x100);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarFieldReflectionVertexShader) == 0x108);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, SkySpriteVertexShader) == 0x110);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, BaseBandVertexShader) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudPixelShader) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, SkyPixelShader) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, SkySpritePixelShader) == 0x130);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, BaseBandPixelShader) == 0x138);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, ScreenSpaceSpriteVertexShader) == 0x140);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, ScreenSpaceSpritePixelShader) == 0x148);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarCount) == 0x150);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarBitmapFilePath_PStringData) == 0x154);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarVBFilePath_PStringData) == 0x158);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudVector) == 0x15c);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudVectorHistory) == 0x16c);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, EnableClouds) == 0x18c);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, PSkyDef_Object) == 0x190);
+FABLE_STATIC_ASSERT_AT(173, sizeof(CEngineSkyRenderer) == 0x194);
+FABLE_STATIC_ASSERT_AT(174, offsetof(CEngineSkyRenderer, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(175, offsetof(CEngineSkyRenderer, CloudHeightOffset) == 0xc);
+FABLE_STATIC_ASSERT_AT(176, offsetof(CEngineSkyRenderer, CloudTextureOffset) == 0x10);
+FABLE_STATIC_ASSERT_AT(177, offsetof(CEngineSkyRenderer, CloudTextureMulitplier) == 0x14);
+FABLE_STATIC_ASSERT_AT(178, offsetof(CEngineSkyRenderer, CloudSpeedMultiplier) == 0x18);
+FABLE_STATIC_ASSERT_AT(179, offsetof(CEngineSkyRenderer, CloudMaxSpeed) == 0x1c);
+FABLE_STATIC_ASSERT_AT(180, offsetof(CEngineSkyRenderer, CloudMinSpeed) == 0x20);
+FABLE_STATIC_ASSERT_AT(181, offsetof(CEngineSkyRenderer, StarFieldVertexBuffer) == 0x24);
+FABLE_STATIC_ASSERT_AT(182, offsetof(CEngineSkyRenderer, VertexBuffer) == 0x58);
+FABLE_STATIC_ASSERT_AT(183, offsetof(CEngineSkyRenderer, IndexBuffer) == 0x8c);
+FABLE_STATIC_ASSERT_AT(184, offsetof(CEngineSkyRenderer, SolidBaseBandVertexBuffer) == 0xa0);
+FABLE_STATIC_ASSERT_AT(185, offsetof(CEngineSkyRenderer, SolidBaseBandIndexBuffer) == 0xd4);
+FABLE_STATIC_ASSERT_AT(186, offsetof(CEngineSkyRenderer, CloudVertexShader) == 0xe8);
+FABLE_STATIC_ASSERT_AT(187, offsetof(CEngineSkyRenderer, SkyVertexShader) == 0xf0);
+FABLE_STATIC_ASSERT_AT(188, offsetof(CEngineSkyRenderer, StarFieldVertexShader) == 0xf8);
+FABLE_STATIC_ASSERT_AT(189, offsetof(CEngineSkyRenderer, StarFieldPixelShader) == 0x100);
+FABLE_STATIC_ASSERT_AT(190, offsetof(CEngineSkyRenderer, StarFieldReflectionVertexShader) == 0x108);
+FABLE_STATIC_ASSERT_AT(191, offsetof(CEngineSkyRenderer, SkySpriteVertexShader) == 0x110);
+FABLE_STATIC_ASSERT_AT(192, offsetof(CEngineSkyRenderer, BaseBandVertexShader) == 0x118);
+FABLE_STATIC_ASSERT_AT(193, offsetof(CEngineSkyRenderer, CloudPixelShader) == 0x120);
+FABLE_STATIC_ASSERT_AT(194, offsetof(CEngineSkyRenderer, SkyPixelShader) == 0x128);
+FABLE_STATIC_ASSERT_AT(195, offsetof(CEngineSkyRenderer, SkySpritePixelShader) == 0x130);
+FABLE_STATIC_ASSERT_AT(196, offsetof(CEngineSkyRenderer, BaseBandPixelShader) == 0x138);
+FABLE_STATIC_ASSERT_AT(197, offsetof(CEngineSkyRenderer, ScreenSpaceSpriteVertexShader) == 0x140);
+FABLE_STATIC_ASSERT_AT(198, offsetof(CEngineSkyRenderer, ScreenSpaceSpritePixelShader) == 0x148);
+FABLE_STATIC_ASSERT_AT(199, offsetof(CEngineSkyRenderer, StarCount) == 0x150);
+FABLE_STATIC_ASSERT_AT(200, offsetof(CEngineSkyRenderer, StarBitmapFilePath_PStringData) == 0x154);
+FABLE_STATIC_ASSERT_AT(201, offsetof(CEngineSkyRenderer, StarVBFilePath_PStringData) == 0x158);
+FABLE_STATIC_ASSERT_AT(202, offsetof(CEngineSkyRenderer, CloudVector) == 0x15c);
+FABLE_STATIC_ASSERT_AT(203, offsetof(CEngineSkyRenderer, CloudVectorHistory) == 0x16c);
+FABLE_STATIC_ASSERT_AT(204, offsetof(CEngineSkyRenderer, EnableClouds) == 0x18c);
+FABLE_STATIC_ASSERT_AT(205, offsetof(CEngineSkyRenderer, PSkyDef_Object) == 0x190);
 
 #endif // FABLE_RETAIL_CENGINESKYRENDERER
 #endif // FABLE_ENGINE_CENGINESKYRENDERER_H

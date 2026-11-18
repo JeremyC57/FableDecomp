@@ -1,0 +1,18 @@
+{
+  "status": "PARKED",
+  "attempts": 15,
+  "leaf": "?Update@CAIStateGroup_SeekPerceivedThing@@UAEXXZ",
+  "assigned_name": "?Update@CAIStateGroup_SeekPerceivedThing@@UAEXXZ",
+  "retail_size": 498,
+  "object_size": 515,
+  "flags": [],
+  "lever": "Shared perception, list, filter and animation types reproduce the call boundaries. The compiler still allocates the actor, list and rectangle temporaries differently.",
+  "residue": "Shared list, filter, perception and animation types preserve the call boundaries. The compiler still allocates the actor, list and rectangle temporaries differently.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "total_recorded_grades": 19,
+  "source_sha256": "1245068d53f4b048ebf18b3952d57e84d0c152d274b5317ba59a46ea7e823f64",
+  "test_sha256": "470f4fff87498924494024fac349a45d2000a5e2995f76daa71a624e2643b981",
+  "extra_flags": []
+}

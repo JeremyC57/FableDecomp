@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "attempts": 17,
+  "leaf": "?UpdateFacingDirection@CThingTrackNode@@QAEXXZ",
+  "assigned_name": "?UpdateFacingDirection@CThingTrackNode@@QAEXXZ",
+  "retail_size": 716,
+  "object_size": 716,
+  "flags": [],
+  "lever": "The third normalization setup and cross-product Z operand order differ at 0x008373EC and 0x00837419.",
+  "residue": "The third normalization setup and cross-product Z operand order differ at 0x008373EC and 0x00837419.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 16,
+  "total_recorded_grades": 23,
+  "source_sha256": "86388f2a8c9a2256dab4966b8689a6aae05240aef8f29cf27b2ce08090a31530",
+  "test_sha256": "3bb10a9e6f336514fa1a9e1e2d709568a77d77cc6602e67682ac201c5690c18c",
+  "extra_flags": []
+}

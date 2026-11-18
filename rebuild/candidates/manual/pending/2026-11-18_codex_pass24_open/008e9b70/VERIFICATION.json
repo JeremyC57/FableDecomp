@@ -1,0 +1,18 @@
+{
+  "address": "0x008E9B70",
+  "leaf": "?AnimUpdate@CModeStrafe@NCreatureMode@@UAEXAAVCAnimateThing@@@Z",
+  "retail_bytes": 1705,
+  "object_bytes": 1736,
+  "extra_flags": [],
+  "strict_instruction_hunks": 86,
+  "strict_instruction_ratio": 0.7647577092511013,
+  "first_unequal_masked_offset": 6,
+  "relocation_count": 68,
+  "source_sha256": "ae52cc750807436ff6c7fa2035ca2fc0244c7d9aa73c8ea560a988a863d5ed72",
+  "test_sha256": "f763724e5420fae4a4fc304e2c9dc2f20caa9b3a87df6d44ea91f70a6d93d4cc",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "008e9b70_TEST PASS",
+    "g++ -std=c++03 -O0": "008e9b70_TEST PASS"
+  },
+  "status": "PARKED"
+}

@@ -1,0 +1,18 @@
+{
+  "address": "0x0099C1E0",
+  "leaf": "?Replace@CWideString@@QAEXABV1@0@Z",
+  "retail_bytes": 609,
+  "object_bytes": 613,
+  "extra_flags": [],
+  "strict_instruction_hunks": 38,
+  "strict_instruction_ratio": 0.3865168539325843,
+  "first_unequal_masked_offset": 2,
+  "relocation_count": 30,
+  "source_sha256": "6f7fe1b1865a2506ddef23ac904cf9ec2e23cd1cf08fd53f2856e7a598fdcbd8",
+  "test_sha256": "b60d4eae19e24c06bcf3e9458cdc254f2d5ded721d828b5fedc5576cef950939",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0099c1e0_TEST PASS",
+    "g++ -std=c++03 -O0": "0099c1e0_TEST PASS"
+  },
+  "status": "PARKED"
+}

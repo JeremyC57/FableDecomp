@@ -1,0 +1,86 @@
+{
+  "address": "0x007F68B0",
+  "leaf": "?GetPBestCreatureForInteractionType@CTCTargetingAI@@UBEPAVCThingCreatureBase@@W4ECreatureInteractionType@@@Z",
+  "retail_bytes": 255,
+  "object_bytes": 255,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 8,
+  "source_sha256": "419387fe4cd1276d09c87954e2606f34b11d7c4df2bb90dba896e780946ae290",
+  "test_sha256": "d303bbe52f6df76e14a61c645241415eff8627f410da800fb52a6b32def77f7e",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "007f68b0_TEST PASS",
+    "g++ -std=c++03 -O0": "007f68b0_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "84df84fc05c5cce136e42251a2702afff77bcb83f0b72131ee19ea83a3091522",
+  "operands": [
+    {
+      "offset": 17,
+      "type": "REL32",
+      "symbol": "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+      "base": "0x004C73D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 51,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "base": "0x004365B0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 87,
+      "type": "REL32",
+      "symbol": "__ftol2",
+      "base": "0x00BFEA70",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 97,
+      "type": "REL32",
+      "symbol": "__ftol2",
+      "base": "0x00BFEA70",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 108,
+      "type": "REL32",
+      "symbol": "?GetSightRadius@CTCPerceiveThing@@QBEMXZ",
+      "base": "0x007448F0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 113,
+      "type": "REL32",
+      "symbol": "__ftol2",
+      "base": "0x00BFEA70",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 230,
+      "type": "REL32",
+      "symbol": "?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ",
+      "base": "0x00686D90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 237,
+      "type": "REL32",
+      "symbol": "??$GetPBestThingInRoughArea@V?$CFilter_Bind3@VCThingFilter_IsAvailableForCreatureInteraction@@VCThingFilter_IsAICreatureAwareOf@@V?$unary_negate@VCThingFilter_IsIncapacitated@@@std@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_IsAvailableForCreatureInteraction@@VCThingFilter_IsAICreatureAwareOf@@V?$unary_negate@VCThingFilter_IsIncapacitated@@@std@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z",
+      "base": "0x007F7340",
+      "coff_addend": 0,
+      "evidence": "two PDB specializations and independently identified native search body"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

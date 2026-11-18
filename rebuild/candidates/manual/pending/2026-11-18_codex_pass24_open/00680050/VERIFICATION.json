@@ -1,0 +1,19 @@
+{
+  "address": "0x00680050",
+  "leaf": "?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z",
+  "retail_bytes": 439,
+  "object_bytes": 439,
+  "extra_flags": [],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.9928571428571429,
+  "first_unequal_masked_offset": 327,
+  "relocation_count": 24,
+  "source_sha256": "3730e3bc53c454932ce8b6a2162d0e34d51e60155f6c85a0579ece7acf3463a3",
+  "test_sha256": "49b00d3c71074a27160f8951d8049330f0bd482c056b76949e8aea90726ce36b",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00680050_TEST PASS",
+    "g++ -std=c++03 -O0": "00680050_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 4
+}

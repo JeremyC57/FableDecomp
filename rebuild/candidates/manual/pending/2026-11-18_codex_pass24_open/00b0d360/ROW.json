@@ -1,0 +1,19 @@
+{
+  "status": "PARKED",
+  "attempts": 31,
+  "leaf": "?DatabaseSerialise@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z",
+  "assigned_name": "?DatabaseSerialise@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z",
+  "retail_size": 2240,
+  "object_size": 2240,
+  "flags": [],
+  "lever": "At 0x00B0DAA0 and 0x00B0DAB0 the following float default occupies +0x14 instead of the retired context argument word +0x28.",
+  "residue": "At 0x00B0DAA0 and 0x00B0DAB0 the following float default occupies +0x14 instead of the retired context argument word +0x28.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 108,
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "total_recorded_grades": 35,
+  "source_sha256": "e3599fb5ad2918d1bacd12b02bd78b6f1f5182f8a888e127df7f638bfbc71a81",
+  "test_sha256": "f04926e6547ebae3b88aac937a19c02e0e35d2dceb8f2ffb019558870bd06ca4",
+  "extra_flags": []
+}

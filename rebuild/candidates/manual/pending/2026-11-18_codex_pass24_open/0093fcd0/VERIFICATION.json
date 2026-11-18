@@ -1,0 +1,19 @@
+{
+  "address": "0x0093FCD0",
+  "leaf": "?Update@CAIStateGroup_VillageTaskSecuritySweep@@UAEXXZ",
+  "retail_bytes": 1053,
+  "object_bytes": 1053,
+  "extra_flags": [],
+  "strict_instruction_hunks": 72,
+  "strict_instruction_ratio": 0.6595419847328244,
+  "first_unequal_masked_offset": 2,
+  "relocation_count": 41,
+  "source_sha256": "227de5547c9da7335787eecda1b9936e4b613e9c9269211b65597647724b1bf0",
+  "test_sha256": "a7e78293543946d088b5e3bd380ffe5897d77918f56aeabc820ad9979c25cbdb",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0093fcd0_TEST PASS",
+    "g++ -std=c++03 -O0": "0093fcd0_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 585
+}

@@ -6,6 +6,9 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_HIGHLIGHT_COLOUR_PUBLIC_PASS24
+#include "engine/CRGBColour.h"
+#endif
 #include <stddef.h>
 #include "rebuild_abi.h"
 #ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
@@ -44,7 +47,11 @@ public: CTavernGameCardBaseDef& operator=(const CTavernGameCardBaseDef&);
     float         PointerHeightOffset;                       // +0x48
     long          PointerParticleEffect;                     // +0x4c
     float         HighlightWidth;                            // +0x50
+#ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_HIGHLIGHT_COLOUR_PUBLIC_PASS24
+    CRGBColour HighlightColourGood;
+#else
     unsigned char HighlightColourGood[0x4];                  // +0x54 CRGBColour
+#endif
     unsigned char HighlightColourBad[0x4];                   // +0x58 CRGBColour
     float         CardSeparation;                            // +0x5c
     float         TableSeparation;                           // +0x60
@@ -105,28 +112,28 @@ public:
 #pragma pack(pop)
 #endif
 
-FABLE_STATIC_ASSERT(sizeof(CTavernGameCardBaseDef) == 0x84);
+FABLE_STATIC_ASSERT_AT(108, sizeof(CTavernGameCardBaseDef) == 0x84);
 #ifndef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CTavernGameCardBaseDef, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, ControlType) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, CardWidth) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, CardHeight) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, ImpulseScaleXbox) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, ImpulseScalePC) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, PointerModel) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, MoveSpeed) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, TurnSpeed) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, PointerHeightOffset) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, PointerParticleEffect) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, HighlightWidth) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, HighlightColourGood) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, HighlightColourBad) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, CardSeparation) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, TableSeparation) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, PackOffset_X) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, PackOffset_Y) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, CardOrders) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, CardPack) == 0x78);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CTavernGameCardBaseDef, ControlType) == 0x28);
+FABLE_STATIC_ASSERT_AT(113, offsetof(CTavernGameCardBaseDef, CardWidth) == 0x2c);
+FABLE_STATIC_ASSERT_AT(114, offsetof(CTavernGameCardBaseDef, CardHeight) == 0x30);
+FABLE_STATIC_ASSERT_AT(115, offsetof(CTavernGameCardBaseDef, ImpulseScaleXbox) == 0x34);
+FABLE_STATIC_ASSERT_AT(116, offsetof(CTavernGameCardBaseDef, ImpulseScalePC) == 0x38);
+FABLE_STATIC_ASSERT_AT(117, offsetof(CTavernGameCardBaseDef, PointerModel) == 0x3c);
+FABLE_STATIC_ASSERT_AT(118, offsetof(CTavernGameCardBaseDef, MoveSpeed) == 0x40);
+FABLE_STATIC_ASSERT_AT(119, offsetof(CTavernGameCardBaseDef, TurnSpeed) == 0x44);
+FABLE_STATIC_ASSERT_AT(120, offsetof(CTavernGameCardBaseDef, PointerHeightOffset) == 0x48);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CTavernGameCardBaseDef, PointerParticleEffect) == 0x4c);
+FABLE_STATIC_ASSERT_AT(122, offsetof(CTavernGameCardBaseDef, HighlightWidth) == 0x50);
+FABLE_STATIC_ASSERT_AT(123, offsetof(CTavernGameCardBaseDef, HighlightColourGood) == 0x54);
+FABLE_STATIC_ASSERT_AT(124, offsetof(CTavernGameCardBaseDef, HighlightColourBad) == 0x58);
+FABLE_STATIC_ASSERT_AT(125, offsetof(CTavernGameCardBaseDef, CardSeparation) == 0x5c);
+FABLE_STATIC_ASSERT_AT(126, offsetof(CTavernGameCardBaseDef, TableSeparation) == 0x60);
+FABLE_STATIC_ASSERT_AT(127, offsetof(CTavernGameCardBaseDef, PackOffset_X) == 0x64);
+FABLE_STATIC_ASSERT_AT(128, offsetof(CTavernGameCardBaseDef, PackOffset_Y) == 0x68);
+FABLE_STATIC_ASSERT_AT(129, offsetof(CTavernGameCardBaseDef, CardOrders) == 0x6c);
+FABLE_STATIC_ASSERT_AT(130, offsetof(CTavernGameCardBaseDef, CardPack) == 0x78);
 
 #endif // FABLE_ENGINE_CTAVERNGAMECARDBASEDEF_H

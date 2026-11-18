@@ -1,0 +1,19 @@
+{
+  "address": "0x00837220",
+  "leaf": "?UpdateFacingDirection@CThingTrackNode@@QAEXXZ",
+  "retail_bytes": 716,
+  "object_bytes": 716,
+  "extra_flags": [],
+  "strict_instruction_hunks": 3,
+  "strict_instruction_ratio": 0.9848484848484849,
+  "first_unequal_masked_offset": 460,
+  "relocation_count": 16,
+  "source_sha256": "86388f2a8c9a2256dab4966b8689a6aae05240aef8f29cf27b2ce08090a31530",
+  "test_sha256": "3bb10a9e6f336514fa1a9e1e2d709568a77d77cc6602e67682ac201c5690c18c",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00837220_TEST PASS",
+    "g++ -std=c++03 -O0": "00837220_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 9
+}

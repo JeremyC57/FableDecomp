@@ -1,0 +1,21 @@
+{
+  "status": "RELOCATION_MATCH",
+  "attempts": 13,
+  "leaf": "?Optimise@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXM@Z",
+  "assigned_name": "?Optimise@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXM@Z",
+  "retail_size": 383,
+  "object_size": 383,
+  "flags": [
+    "/Gr"
+  ],
+  "lever": "Separating the legality guard from the fold-over check and continuing only after repricing restores the allocator order.",
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 11,
+  "total_recorded_grades": 25,
+  "source_sha256": "8463c51b4400bcf2cd63f900d09e2f771cdfc08b6be916e086f07d834827484b",
+  "test_sha256": "2384ed2a1b23f8037b30ca7460689d93fcfcfa30adfa71df76db5659ece2128d",
+  "extra_flags": [
+    "/Gr"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "address": "0x00ACD960",
+  "leaf": "?Optimise@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXM@Z",
+  "retail_bytes": 383,
+  "object_bytes": 383,
+  "extra_flags": [
+    "/Gr"
+  ],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 11,
+  "source_sha256": "8463c51b4400bcf2cd63f900d09e2f771cdfc08b6be916e086f07d834827484b",
+  "test_sha256": "2384ed2a1b23f8037b30ca7460689d93fcfcfa30adfa71df76db5659ece2128d",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00acd960_TEST PASS",
+    "g++ -std=c++03 -O0": "00acd960_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "816eb052e7d917b2e7813168680c07d7300850f640a78d136840b41c973ed5fa",
+  "operands": [
+    {
+      "offset": 90,
+      "type": "REL32",
+      "symbol": "?_Rebalance_for_erase@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@AAPAU32@11@Z",
+      "base": "0x0042A34E",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 127,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "base": "0x00BFE9BC",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 148,
+      "type": "REL32",
+      "symbol": "_free",
+      "base": "0x00BFEA14",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 178,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "base": "0x00BFE9BC",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 221,
+      "type": "REL32",
+      "symbol": "?IsIllegal@CVertexPairContraction@QuadricOptimiserInternals@@QAE_NXZ",
+      "base": "0x00AC8360",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE"
+    },
+    {
+      "offset": 233,
+      "type": "REL32",
+      "symbol": "?DetectFoldOver@COptimisedPrimitive@QuadricOptimiserInternals@@AAE_NABVCVertexPairContraction@2@@Z",
+      "base": "0x00ACD900",
+      "coff_addend": 0,
+      "evidence": "Row naming and relocation audit"
+    },
+    {
+      "offset": 258,
+      "type": "REL32",
+      "symbol": "?UpdateCost@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXABV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@Z",
+      "base": "0x00AC8A60",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 268,
+      "type": "REL32",
+      "symbol": "?PerformContraction@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXAAVCVertexPairContraction@2@@Z",
+      "base": "0x00ACD840",
+      "coff_addend": 0,
+      "evidence": "Row naming and relocation audit"
+    },
+    {
+      "offset": 292,
+      "type": "REL32",
+      "symbol": "?erase@?$_Rb_tree@MU?$pair@$$CBMV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@U?$_Select1st@U?$pair@$$CBMV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@@2@U?$less@M@2@V?$allocator@U?$pair@$$CBMV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBMV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBMV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@@2@@2@@Z",
+      "base": "0x00AD3C30",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 314,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "base": "0x00BFE9BC",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 366,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "base": "0x00BFE9BC",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

@@ -1,0 +1,18 @@
+{
+  "address": "008b6ad0",
+  "status": "RELOCATION_MATCH",
+  "leaf": "?Initialise@CCreatureAction_MidAttackSide@@UAEXXZ",
+  "size": 344,
+  "test": "VC7.1 and GNU C++03 PASS",
+  "grades": 19,
+  "assigned_name": "?Initialise@CCreatureAction_MidAttackSide@@UAEXXZ",
+  "retail_size": 344,
+  "object_size": 344,
+  "attempts": 19,
+  "total_recorded_grades": 32,
+  "source_sha256": "38add110058e7fa0e2dfcde01b1376fed4e6f00ae57b48291ca2153fcbc855c3",
+  "test_sha256": "95eb16f3154710d2652ef61984711a3a452e3dca44741b0731247a7cdd1a0330",
+  "extra_flags": [],
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS"
+}

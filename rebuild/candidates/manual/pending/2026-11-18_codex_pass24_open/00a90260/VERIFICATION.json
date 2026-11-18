@@ -1,0 +1,18 @@
+{
+  "address": "0x00A90260",
+  "leaf": "?CreateDegenerateTriangleIndexBuffer@C3DPrimitive2@@AAE_NXZ",
+  "retail_bytes": 496,
+  "object_bytes": 498,
+  "extra_flags": [],
+  "strict_instruction_hunks": 35,
+  "strict_instruction_ratio": 0.7595628415300546,
+  "first_unequal_masked_offset": 18,
+  "relocation_count": 10,
+  "source_sha256": "71a85a4a1ec12f2ece15f309c3cebfc8e177cad7a3514da39cc89fbe96ddb781",
+  "test_sha256": "855024fee086385b9bae123b78f850c7214d9f47e843e81a1776945a848847c2",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00a90260_TEST PASS",
+    "g++ -std=c++03 -O0": "00a90260_TEST PASS"
+  },
+  "status": "PARKED"
+}

@@ -1,0 +1,19 @@
+{
+  "address": "0x0070E2A0",
+  "leaf": "?CalcCachedAnims@CAnimateThing@@ABEXXZ",
+  "retail_bytes": 618,
+  "object_bytes": 618,
+  "extra_flags": [],
+  "strict_instruction_hunks": 7,
+  "strict_instruction_ratio": 0.9644444444444444,
+  "first_unequal_masked_offset": 138,
+  "relocation_count": 15,
+  "source_sha256": "4fe43b2dff8ad2728cb1d0862878d6081c6ccd385948bba0d260782c077a20fa",
+  "test_sha256": "5eba41ada9b9eb52621be23a9ea3402113b5f126de69798ace071bbd26cc7cb3",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0070e2a0_TEST PASS",
+    "g++ -std=c++03 -O0": "0070e2a0_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 8
+}

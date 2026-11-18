@@ -1,0 +1,19 @@
+{
+  "address": "0x006E89B0",
+  "leaf": "?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z",
+  "retail_bytes": 344,
+  "object_bytes": 344,
+  "extra_flags": [],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.9914529914529915,
+  "first_unequal_masked_offset": 202,
+  "relocation_count": 12,
+  "source_sha256": "171f039725689861d77a6013d42c08cec4b0e25f713a382c9872a9b52e54509a",
+  "test_sha256": "15f3c18faf232b31b6def1759dab218e1b783aa24c417319b01015b637f51f16",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "006e89b0_TEST PASS",
+    "g++ -std=c++03 -O0": "006e89b0_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 3
+}

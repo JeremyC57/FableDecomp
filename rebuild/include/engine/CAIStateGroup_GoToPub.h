@@ -29,6 +29,11 @@ protected:
     bool GetSeat(CThing* table = 0, const CCharString* seat_name = 0);      // 0x009482A0
     void FreeSeat();                                                        // 0x009486D0
     bool GetBar();                                                          // 0x009490D0
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GOTOPUB_UPDATE_PASS24
+    bool ChooseAction(bool during_pub_time);
+    bool Drink();
+    bool PayAtBar();
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GOTOPUB_WALKTOSEATANDSIT
     // Opt-in (egod e12, row 0x00949580): Ego_r.pdb / FableWin.pdb ?WalktoSeatAndSit@CAIStateGroup_GoToPub@@IAE_N_N@Z (protected;
     // Ego_d parameter name). Declaration only.

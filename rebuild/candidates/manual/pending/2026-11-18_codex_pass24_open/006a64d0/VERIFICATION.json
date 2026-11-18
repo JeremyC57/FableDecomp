@@ -1,0 +1,19 @@
+{
+  "address": "0x006A64D0",
+  "leaf": "?DrawPreparePrimitivesForRendering@CThingPhysical@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z",
+  "retail_bytes": 865,
+  "object_bytes": 865,
+  "extra_flags": [],
+  "strict_instruction_hunks": 23,
+  "strict_instruction_ratio": 0.9027237354085603,
+  "first_unequal_masked_offset": 2,
+  "relocation_count": 48,
+  "source_sha256": "f58b92231da28db022032004c840f28744a93f3f189c1ad0659733b55b179060",
+  "test_sha256": "2a0f4bbaddda4ee2513d948f2cb7fce2f9923fdad688615711174bc1f04d04fe",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "006a64d0_TEST PASS",
+    "g++ -std=c++03 -O0": "006a64d0_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 25
+}

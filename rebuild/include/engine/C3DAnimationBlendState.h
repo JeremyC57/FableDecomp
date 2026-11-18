@@ -16,6 +16,10 @@
 #include "engine/C3DAnimationStateAlpha.h"
 class C3DSkeletalMorph;
 #endif
+#ifdef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_SETSKELETALMORPH
+#include "engine/CCountedPointer.h"
+class C3DSkeletalMorph;
+#endif
 class C3DAnimationState;
 class C3DAnimationStateBase;
 template <class T> class CIVCountedPointer;
@@ -31,6 +35,14 @@ public:
     // Opt-in (row 0x004BD6E0 CTCGraphicAppearance::SetPrimitive): the compiler-generated constructor and destructor, which retail
     // expands in place there (0x004BD719..0x004BD73F: ~CBaseClass ctor, vptr 0x01239838, Data=0; 0x004BD9C4..0x004BD9EA: Data
     // released, ~CBaseClass, no vptr re-store), as the landed implicit 0x004C2DD0 / 0x004C2DF0 rows model them.
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_SETSKELETALMORPH
+    // Retail opt-in (Codex pass 24). Both PDBs and native 0x00A3C350.
+    void SetSkeletalMorph(const CCountedPointer<const C3DSkeletalMorph>&);
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_SETINTERPOLATE
+    // Retail opt-in (Codex pass 24): both PDBs and retail 0x00A3C3B0.
+    void SetInterpolate(const C3DAnimationBlendState& anim1, const C3DAnimationBlendState& anim2, float weight2);
 #endif
     void SetBaseAnimation(const C3DAnimationState& state);               // 0x00A3C260
     void SetBaseAnimation(const CIVCountedPointer<C3DAnimationStateBase>& state);

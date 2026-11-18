@@ -1,0 +1,23 @@
+{
+  "status": "PARKED",
+  "attempts": 19,
+  "leaf": "?Initialise@CCreatureAction_UseObject@@UAEXXZ",
+  "assigned_name": "?Initialise@CCreatureAction_UseObject@@UAEXXZ",
+  "retail_size": 825,
+  "object_size": 855,
+  "flags": [
+    "/Gr"
+  ],
+  "lever": "The shared action and graphic classes use the original dummy lookup and bounding query. The animation scan, registry calls, and x87 evaluation order still differ.",
+  "residue": "The shared action and graphic classes use the original dummy lookup and bounding query. The animation scan, registry calls, and x87 evaluation order still differ.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 31,
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "total_recorded_grades": 23,
+  "source_sha256": "532ca2f5d037dc00af001cbb06e110c0141612037b76e42476e8dc1b067f44d3",
+  "test_sha256": "59bb0357b90ad177fd63bcf152e1b046de75dedd62e1be4d90cdcd7d71231c10",
+  "extra_flags": [
+    "/Gr"
+  ]
+}

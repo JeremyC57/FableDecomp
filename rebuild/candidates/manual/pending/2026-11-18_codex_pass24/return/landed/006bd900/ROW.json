@@ -1,0 +1,18 @@
+{
+  "address": "006bd900",
+  "status": "RELOCATION_MATCH",
+  "leaf": "?PlayMusic@CMusicManager@@IAEXJABVCFadeTimes@1@J@Z",
+  "size": 169,
+  "test": "VC7.1 and GNU C++03 PASS",
+  "grades": 12,
+  "assigned_name": "?PlayMusic@CMusicManager@@IAEXJABVCFadeTimes@1@J@Z",
+  "retail_size": 169,
+  "object_size": 169,
+  "attempts": 12,
+  "total_recorded_grades": 25,
+  "source_sha256": "0880445e73abab63ce09d2196cfe2c2d80068942cfc1b6ac7b4538e96e3715aa",
+  "test_sha256": "b829203106aa3c9fd13ba6fec2aaf214c06a951980534d0c6f3c4bdfac881783",
+  "extra_flags": [],
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS"
+}

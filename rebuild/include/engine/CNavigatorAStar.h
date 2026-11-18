@@ -120,6 +120,14 @@ private:
  void CullWayPoints(long);
 private:
  void MoveTowardNextWayPoint(const C3DVector &, float, float, C3DVector &, bool, bool, bool, bool);
+#ifdef FABLE_RETAIL_CNAVIGATORASTAR_RANDOMPOS
+private:
+    C3DVector GetPosInDirection(const C3DVector&, const C2DVector&, float) const;
+public:
+    // Retail opt-in (Codex pass 24): both PDBs and the native virtual dispatch.
+    virtual C3DVector GetRandomNavigablePos(const C3DVector&, float, bool) const;
+    virtual C3DVector GetRandomNavigablePos(const C3DVector&, float, const C2DVector&, float) const;
+#endif
 public:
  virtual void UpdateLastPosition(const C3DVector &);
 public:

@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x007448F0	?GetSightRadius@CTCPerceiveThing@@QBEMXZ	Ego_r 0x007573B0 and FableWin exact public agree. Native multiplies SightRadius at +0x40. 0x00744950 reads ExtendedSightRadius at +0x44. See land1113fy and land1011an in NAME_FIXES_QUEUE.tsv.	?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ

@@ -1,0 +1,19 @@
+{
+  "address": "0x0067E290",
+  "leaf": "?Transfer@CDegradableDef@@UAEXAAVCPersistContext@@@Z",
+  "retail_bytes": 273,
+  "object_bytes": 273,
+  "extra_flags": [],
+  "strict_instruction_hunks": 10,
+  "strict_instruction_ratio": 0.8823529411764706,
+  "first_unequal_masked_offset": 92,
+  "relocation_count": 17,
+  "source_sha256": "0ca7e807688ab2d485fc549c5c0c70db646924676ab265031943cc5ff12dca22",
+  "test_sha256": "786373bd91716787d071418edd60830479a442d65d070471d514c6fbd800c16a",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0067e290_TEST PASS",
+    "g++ -std=c++03 -O0": "0067e290_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 19
+}

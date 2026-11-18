@@ -1,0 +1,38 @@
+{
+  "address": "0x00AB7B00",
+  "leaf": "?GetStringExtents@CStaticFontBank@@UBE?AVC2DExtentsF@@PB_W_N@Z",
+  "retail_bytes": 287,
+  "object_bytes": 287,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 2,
+  "source_sha256": "ae6d5fbf53dfe67f7c19b8802c246a9bd760af0a1bfdf791f888b67b6360c48d",
+  "test_sha256": "5bd7333236462aca01711ee75484aa4bb3e75a2ece0d619b67f1a8c3d62f73ef",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00ab7b00_TEST PASS",
+    "g++ -std=c++03 -O0": "00ab7b00_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "6436eeed8a24fce8ef50765e220498483845ad7801c38814d9b9d69ec7fe6504",
+  "operands": [
+    {
+      "offset": 8,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 47,
+      "type": "DIR32",
+      "symbol": "__real@4f800000",
+      "base": "0x0122DCB4",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

@@ -1,0 +1,17 @@
+{
+  "status": "RELOCATION_MATCH",
+  "attempts": 14,
+  "leaf": "?GetStringExtents@CStaticFontBank@@UBE?AVC2DExtentsF@@PB_W_N@Z",
+  "assigned_name": "?GetStringExtents@CStaticFontBank@@UBE?AVC2DExtentsF@@PB_W_N@Z",
+  "retail_size": 287,
+  "object_size": 287,
+  "flags": [],
+  "lever": "Associate the signed glyph offset with the pen position before adding the advance.",
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 2,
+  "total_recorded_grades": 27,
+  "source_sha256": "ae6d5fbf53dfe67f7c19b8802c246a9bd760af0a1bfdf791f888b67b6360c48d",
+  "test_sha256": "5bd7333236462aca01711ee75484aa4bb3e75a2ece0d619b67f1a8c3d62f73ef",
+  "extra_flags": []
+}

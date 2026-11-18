@@ -49,11 +49,32 @@ public:
     CStaticFontBank(CFontDataBank* bank, unsigned long index);           // 0x00AB8E10
 #endif
     virtual ~CStaticFontBank();                                          // slot 0 (??_G 0x00AB9990, ??1 0x00AB7A70)
+#ifdef FABLE_RETAIL_CSTATICFONTBANK_FINDGLYPH
+    // Retail opt-in (Codex pass 24): FableWin and Ego_r name slot 1.
+    virtual C2DExtentsF GetStringExtents(const FableFontWideChar* text, bool) const;
+#else
     virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const;   // slot 1 0x00AB7B00
+#endif
     virtual float GetFontMaxHeight() const;                              // slot 2 0x00AB7A50
     virtual void PrepareToRender(bool = true) const;                     // slot 3 0x00AB83A0
     virtual void Render(const CWideString& text, const C3DVector& pos, float scale, const CRGBColour& colour, unsigned long flags, const CTexture* texture = 0) const;   // slot 5 0x00AB7C20
 protected:
+#ifdef FABLE_RETAIL_CSTATICFONTBANK_FINDGLYPH
+    // FableWin names FindGlyph and Ego_d gives its three locals.
+    CGlyph* FindGlyph(unsigned short ch) const
+    {
+        const unsigned long bankIndex = ch >> 6;
+        const GlyphBank& bank = GlyphBanks[bankIndex];
+        if (!bank.Glyphs)
+            return 0;
+
+        const unsigned long index = (ch & 63) - bank.FirstGlyph;
+        if (index >= bank.NoGlyphs)
+            return 0;
+
+        return &bank.Glyphs[index];
+    }
+#endif
     unsigned long MaxHeight;                                             // +0x10
     long          Weight;                                                // +0x14
     bool          Italics;                                               // +0x18
@@ -68,7 +89,7 @@ protected:
 #endif
     CTexture*     PTexture;                                              // +0x2030
 };
-FABLE_STATIC_ASSERT(sizeof(CStaticFontBank) == 0x2034);
+FABLE_STATIC_ASSERT_AT(71, sizeof(CStaticFontBank) == 0x2034);
 #else
 class CTexture;
 
@@ -92,19 +113,19 @@ struct CStaticFontBank {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CStaticFontBank) == 0x2034);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, m_maxHeight) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, MaxHeight) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, Weight) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, Italics) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, TextureSize_X) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, TextureSize_Y) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, MinChar) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, MaxChar) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, TotalNoGlyphs) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, GlyphBanks) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, PTexture) == 0x2030);
+FABLE_STATIC_ASSERT_AT(95, sizeof(CStaticFontBank) == 0x2034);
+FABLE_STATIC_ASSERT_AT(96, offsetof(CStaticFontBank, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(97, offsetof(CStaticFontBank, m_maxHeight) == 0x4);
+FABLE_STATIC_ASSERT_AT(98, offsetof(CStaticFontBank, MaxHeight) == 0x10);
+FABLE_STATIC_ASSERT_AT(99, offsetof(CStaticFontBank, Weight) == 0x14);
+FABLE_STATIC_ASSERT_AT(100, offsetof(CStaticFontBank, Italics) == 0x18);
+FABLE_STATIC_ASSERT_AT(101, offsetof(CStaticFontBank, TextureSize_X) == 0x1c);
+FABLE_STATIC_ASSERT_AT(102, offsetof(CStaticFontBank, TextureSize_Y) == 0x20);
+FABLE_STATIC_ASSERT_AT(103, offsetof(CStaticFontBank, MinChar) == 0x24);
+FABLE_STATIC_ASSERT_AT(104, offsetof(CStaticFontBank, MaxChar) == 0x28);
+FABLE_STATIC_ASSERT_AT(105, offsetof(CStaticFontBank, TotalNoGlyphs) == 0x2c);
+FABLE_STATIC_ASSERT_AT(106, offsetof(CStaticFontBank, GlyphBanks) == 0x30);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CStaticFontBank, PTexture) == 0x2030);
 #endif // FABLE_RETAIL_CSTATICFONTBANK
 
 #endif // FABLE_ENGINE_CSTATICFONTBANK_H

@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "attempts": 12,
+  "leaf": "?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z",
+  "assigned_name": "?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z",
+  "retail_size": 254,
+  "object_size": 254,
+  "flags": [],
+  "lever": "The allocator exchanges proute and ai_move_type from 0x00903F75.",
+  "residue": "The allocator exchanges proute and ai_move_type from 0x00903F75.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 7,
+  "total_recorded_grades": 18,
+  "source_sha256": "001f2455635f2c95ca49a114534ae2909e5996e09c40c764884f14865ecffae0",
+  "test_sha256": "752f9d381b76d3f2d203fcb75e633e06e0b9855034649e939752743abe420bb3",
+  "extra_flags": []
+}

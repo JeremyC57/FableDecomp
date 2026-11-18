@@ -1,0 +1,19 @@
+{
+  "address": "0x00B0D360",
+  "leaf": "?DatabaseSerialise@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z",
+  "retail_bytes": 2240,
+  "object_bytes": 2240,
+  "extra_flags": [],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.9969465648854962,
+  "first_unequal_masked_offset": 1859,
+  "relocation_count": 108,
+  "source_sha256": "e3599fb5ad2918d1bacd12b02bd78b6f1f5182f8a888e127df7f638bfbc71a81",
+  "test_sha256": "f04926e6547ebae3b88aac937a19c02e0e35d2dceb8f2ffb019558870bd06ca4",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00b0d360_TEST PASS",
+    "g++ -std=c++03 -O0": "00b0d360_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 2
+}

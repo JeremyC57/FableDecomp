@@ -1,0 +1,18 @@
+{
+  "address": "0x0074A4E0",
+  "leaf": "?DoNavCheck@CTCCreatureGenerator@@IAEXABVCThingCreatureBase@@@Z",
+  "retail_bytes": 234,
+  "object_bytes": 232,
+  "extra_flags": [],
+  "strict_instruction_hunks": 8,
+  "strict_instruction_ratio": 0.9122807017543859,
+  "first_unequal_masked_offset": 35,
+  "relocation_count": 3,
+  "source_sha256": "1a48d1bc1fa247eef709e8ba79341862d2f1a0b6f7e270efce34dbb6e60910de",
+  "test_sha256": "f4ff575b94e85bf4c8663af660906a2275569213d804b8d0531b6bc05731204d",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0074a4e0_TEST PASS",
+    "g++ -std=c++03 -O0": "0074a4e0_TEST PASS"
+  },
+  "status": "PARKED"
+}

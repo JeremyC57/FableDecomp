@@ -1,0 +1,17 @@
+{
+  "status": "RELOCATION_MATCH",
+  "attempts": 19,
+  "leaf": "?SetFromVectorAndAngle@CMatrix3x4@@QAEXABVC3DVector@@M@Z",
+  "assigned_name": "?SetFromVectorAndAngle@CMatrix3x4@@QAEXABVC3DVector@@M@Z",
+  "retail_size": 259,
+  "object_size": 259,
+  "flags": [],
+  "lever": "A const reference to the axis restores the two cross-product loads; use the canonical TWO_PI scale.",
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 1,
+  "total_recorded_grades": 32,
+  "source_sha256": "5f380c842448e01022060b8ca85029028f6eaa119f39fc27ace6c0e1c461a797",
+  "test_sha256": "33afabec0ca5492edb7d32e2a9796e1f3e2a7d548877f4b20da40a484263d9b8",
+  "extra_flags": []
+}

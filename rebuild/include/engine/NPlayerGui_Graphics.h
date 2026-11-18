@@ -11,7 +11,12 @@ namespace NPlayerGui {
 inline C2DBoxF FABLE_FASTCALL GFToScreen(const C2DBoxF& box){return box;}
 #endif
 // Original Ego00686ac7/FableWin020d908c: PC mapping copies the input vector.
+#ifdef FABLE_RETAIL_NPLAYERGUI_GFTOSCREEN_CALLED
+// Retail opt-in (Codex pass 24): both PDB names and three calls to 0x00643BE2.
+C2DVector FABLE_FASTCALL GFToScreen(const C2DVector& pos);
+#else
 inline C2DVector FABLE_FASTCALL GFToScreen(const C2DVector& pos) { return pos; }
+#endif
 #ifdef FABLE_RETAIL_NPLAYERGUI_ANCHORS
 // Retail opt-in (chunk 2043, row 0x0064ED4F NPlayerGui::CDrawDamage::Draw): the 640x480 GUI anchoring helpers, Ego_r.pdb / FableWin.pdb
 // ?GFAnchorTo{TopLeft,TopRight,BottomLeft,BottomRight}@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z (__fastcall, hidden C2DVector result).

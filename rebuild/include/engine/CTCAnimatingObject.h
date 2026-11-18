@@ -21,6 +21,10 @@ public:
     void PlayAnimation(long anim, long priority, bool loop);             // 0x007F9010
 #endif
     void PlayDefaultAnimation();                                         // 0x007F8F30
+#ifdef FABLE_RETAIL_CTCANIMATINGOBJECT_MANUAL_FRAME_PASS24
+    void SetCurrentAnimAsManualUpdate();
+    void SetFractionComplete(float fraction);
+#endif
 #ifdef FABLE_RETAIL_CTCANIMATINGOBJECT_PLAYANIMATION_NAME
     // wf22 row 0x007E1FC0 CTCAmbientBird::FrameUpdate: Ego_r.pdb ?PlayAnimation@CTCAnimatingObject@@QAEXABVCCharString@@J_N@Z (public).
     void PlayAnimation(const CCharString& name, long priority, bool looping);   // 0x007F90B0

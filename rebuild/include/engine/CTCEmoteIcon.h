@@ -30,7 +30,11 @@ public: bool IsText() const;
 public: bool IsIcon() const;
 public: const CWideString & GetText() const;
 public: long GetIcon() const;
+#ifdef FABLE_RETAIL_CTCTALK_VOICED_GROUP_PASS24
+public: void SetReplaceable(bool replaceable) { Replaceable=replaceable; }
+#else
 public: void SetReplaceable(bool p0);
+#endif
 public: bool IsReplaceable() const;
 public: void SetActiveTimer(float p0);
 public: void SetAsEnabled(bool p0);
@@ -64,5 +68,5 @@ private: CTCEmoteIcon(CThing & p0);
 public: virtual ~CTCEmoteIcon();
 public: CTCEmoteIcon & operator=(const CTCEmoteIcon & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCEmoteIcon)==48);
+FABLE_STATIC_ASSERT_AT(67, sizeof(CTCEmoteIcon)==48);
 #endif

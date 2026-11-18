@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x009F18F0	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	Ego_d lib_game_event.obj, both release PDBs and native 32-byte ring callers	CircularBuffer_Read | ?ReadBytes@CGameEvent@@QAEXJPAX@Z | ?Read@CReadBuffer@@QAEXKPAX@Z | ?ReadBytes@SPacketBuffer@@QAEXJPAX@Z | ?Read@CMemoryBuffer@@QAEXKPAX@Z

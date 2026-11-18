@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x008C3510	??$GetSubDef@VCMazeBattleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCMazeBattleDef@@@@@Z	Ego_r 0x008FB350 and FableWin 0x02A15310 agree. Ego_d Update local p_maze_def is CDefPointer<const CMazeBattleDef>, and the native call is at 0x009552E4.	CDefClassBase::GetSubDef<CAICreatureWillPowerIndicatorDef>, GetSubDefStandIn_008c3510
+0x00906AC0	??0CCreatureAction_CombatIdle@@QAE@AAVCThingCreatureBase@@0@Z	Ego_r 0x0092D680 and FableWin 0x02B3EBA0 agree. Native constructor stores CCreatureAction_CombatIdle vtable at 0x012632B4.	CCombatAction_GenericResponseToDrainClose
+0x00906B00	??0CCreatureAction_CombatBoast@@QAE@AAVCThingCreatureBase@@0@Z	Ego_r 0x0092D6C0 and FableWin 0x02B3F890 agree. Native constructor stores CCreatureAction_CombatBoast vtable at 0x012633FC.	CCombatAction_GenericResponseToDrain

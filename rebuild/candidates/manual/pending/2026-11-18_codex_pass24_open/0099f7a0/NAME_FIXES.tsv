@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0099F7A0	??H@YI?AVCCharString@@ABV0@D@Z	Both PDBs and native narrow-string copy and byte append	CWideString_AppendChar

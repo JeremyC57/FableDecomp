@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0066A920	?InternalPlaySoundEventAtPos@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVC3DVector@@ABVCCharString@@_N3@Z	Ego_r and FableWin exact private method and the five matching native calls	?InternalPlaySoundEventAtPos@CTCSoundPlayer@@QAEKAAVCASoundBank@@ABVC3DVector@@ABVCCharString@@_N3@Z

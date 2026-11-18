@@ -289,6 +289,14 @@ private:
 public:
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_CONSOLEMENUS
+#ifdef FABLE_RETAIL_CTCINVENTORY_CONSOLEMENU_HELPERS
+public:
+    void ContructItemLists(std::map<long, long>& thingmap, NUISystem::CList* plist_cat,
+                           NUISystem::CComponent* ptop_list, CCountedPointer<NUISystem::CComponent>& pactions_list);
+private:
+    CCountedPointer<NUISystem::CComponent> CreateMenuDesc(const CCharString& text_tag_name);
+public:
+#endif
     // Nested opt-in (chunk 1007, rows 0x00590235 / 0x0058F016; needs FABLE_RETAIL_CTCINVENTORY_QUICKACCESS for the vector include):
     // the console twins of the PCMENUS pair, FableWin.pdb / Ego_r.pdb spellings
     //   ?GetItemsListUIComponent@CTCInventory@@QAEPAVCComponent@NUISystem@@PAV23@@Z                                0x00590235
@@ -301,6 +309,12 @@ public:
                                    const CCharString& descriptionSymbol, bool checkUsable);          // 0x0058F016
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_STYLEENTRY
+#ifdef FABLE_RETAIL_CTCINVENTORY_STYLECARDS_LIST
+public:
+    // Original directory names from Ego_r 0x005FCF94 and FableWin 0x02124B99.
+    void GetStyleCardsListUIComponent(long tot_num_haircut_cards, long tot_num_facial_hair_cards,
+                                     long tot_num_tattoo_cards, NUISystem::CComponent* pparent_list);
+#endif
     // NF51 opt-in (2026-11-17, rows 0x00582ACE / 0x0058315B): Ego_r.pdb
     // ?ConstructStyleEntry@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@ABVCCharString@@0@Z
     // and ?ConstructStyleEntryPC@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@0ABVCCharString@@0@Z

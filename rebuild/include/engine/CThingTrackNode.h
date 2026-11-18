@@ -45,6 +45,16 @@ public:
     const CCharString& PeekTrackName() const { return TrackName; }
     bool IsTrackStart() const { return IsStart; }
     bool IsTrackEnd() const { return IsEnd; }
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_GET_NODES
+    // Retail opt-in (Codex pass 24): FableWin 0x020308D0 and 0x020308F0,
+    // and Ego_d's class record. Inlined retail reads 0x00837227 / 0x00837253.
+    CThingTrackNode* GetNextNode() { return NextNode; }
+    CThingTrackNode* GetPreviousNode() { return PreviousNode; }
+#endif
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_SAVE
+    // Retail opt-in (Codex pass 24): both PDBs and retail vtable identify Save.
+    virtual void Save(CCharString& script);
+#endif
 #ifdef FABLE_RETAIL_CTHINGTRACKNODE_PEEK_NEXT
     // Original FableWin0202f650, both donor class records; native traversal00860aa0.
     const CThingTrackNode* PeekNextNode()const{return NextNode;}

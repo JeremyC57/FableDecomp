@@ -43,7 +43,11 @@ public: void SetAsFaceMovementDirection();
 public: void SetAsLookAtPos(const C3DVector&,long);
 public: void SetAsLookAtThing(const CThing&,long);
 public: void SetAsMoveToPos(const C3DVector&,const CNavigationInput&);
+#ifdef FABLE_RETAIL_CBRAINOUTPUT_ACTION_CALLED_PASS24
+public: void SetAsPerformAction(const CCreatureActionBase& action);
+#else
 public: void SetAsPerformAction(const CCreatureActionBase& action) { Types |= 8; PAction.Reset(action.Clone()); }
+#endif
 public: const C3DVector& PeekLookAtPos() const;
 public: const CThing* PeekLookAtThing() const;
 public: const C3DVector& PeekMoveToPos() const;
@@ -101,8 +105,8 @@ inline void CBrainOutput::SetAsLookAtThing(const CThing& thing, long lookFlags)
 // none of the campfire / action-point classes below, whose CCombatActionBase prerequisites clash with other opt-ins).
 // Include engine/CCreatureActionBase.h with FABLE_RETAIL_CCREATUREACTIONBASE first: the inline SetAsPerformAction needs the complete
 // class (its forward declaration, with CThing's, is above class CNavigationInput).
-FABLE_STATIC_ASSERT(sizeof(CNavigationInput)==0x18);
-FABLE_STATIC_ASSERT(sizeof(CBrainOutput)==0x48);
+FABLE_STATIC_ASSERT_AT(104, sizeof(CNavigationInput)==0x18);
+FABLE_STATIC_ASSERT_AT(105, sizeof(CBrainOutput)==0x48);
 #else
 class CTCUserActionPointBase : public CTCBase {
 public: CTCUserActionPointBase(CThing&);
@@ -175,8 +179,8 @@ public: CAIStateGroup_SitRoundCampfire();
 public: virtual ~CAIStateGroup_SitRoundCampfire();
 public: CAIStateGroup_SitRoundCampfire& operator=(const CAIStateGroup_SitRoundCampfire&);
 };
-FABLE_STATIC_ASSERT(sizeof(CBrainOutput)==0x48);
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GetUpFromSitting)==0x11c);
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SitRoundCampfire)==0x28);
+FABLE_STATIC_ASSERT_AT(178, sizeof(CBrainOutput)==0x48);
+FABLE_STATIC_ASSERT_AT(179, sizeof(CCreatureAction_GetUpFromSitting)==0x11c);
+FABLE_STATIC_ASSERT_AT(180, sizeof(CAIStateGroup_SitRoundCampfire)==0x28);
 #endif // FABLE_RETAIL_CBRAINOUTPUT_ONLY
 #endif

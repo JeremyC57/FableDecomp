@@ -1,0 +1,9 @@
+[
+  {
+    "symbol": "?IsStillRunnable@CAIStateGroup_MinionReactToTrespassing@@AAE_N_N@Z",
+    "retail_extent": 295,
+    "emitted_size": 295,
+    "masked_equal": true,
+    "note": "Emitted copy of the nonreserved helper is graded separately from the reserved caller."
+  }
+]

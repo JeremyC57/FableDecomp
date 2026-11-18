@@ -84,6 +84,10 @@ public:
     const CShadowRendererSceneData PeekSceneData() { return SceneData; }
 #endif
 private:
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_INITIALISETEXTURES
+    // Retail opt-in (Codex pass 24): both PDB names and call at 0x00B504FB.
+    bool InitialiseTextures();
+#endif
 #ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESPACE
     // Opt-in (NF53, round 7, row 0x00B4F390 UpdateShadowScene; needs _UPDATESCENE for the forward declarations): Ego_r.pdb private members
     // ?SetShadowClipVolumesToNeverShadow@CEngineShadowRenderer@@AAEXXZ (0x00B4CE20), ?UpdateSpotLightShadowSpace@CEngineShadowRenderer@@AAEXABUCEngineLightingManagerSpotlightParams@@@Z

@@ -12,6 +12,9 @@
 // of +0x42 (`shr dl,6 ; and dl,1`), 0x006A5DC0 / 0x006A609C. CThingComponentSet / CDefString stay opaque (no shared header).
 class CThingBaseDef : public CParentDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CTHINGCREATUREDEF_TRANSFER_PASS24
+    virtual void Transfer(class CPersistContext& persist);
+#endif
     unsigned char Components[8];                                 // +0x39 CThingComponentSet
     bool AvailableInEditor:1, AlwaysFrameUpdate:1, StartKillLocked:1, LevelLess:1, IsDrawable:1, IsDrawableInEditor:1,
         ForceNoSerialise:1, InMapSearches:1;                     // +0x41

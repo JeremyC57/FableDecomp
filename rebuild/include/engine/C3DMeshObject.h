@@ -38,11 +38,16 @@ public:
 #endif
 protected:
  const C3DMeshInfo* MeshInfo;
+#ifdef FABLE_RETAIL_C3DMESHOBJECT_DUMMY_PAIR_PASS24
+public:
+ void GetDummyObjectPositionAnimated(const CCharString&, long, const class C3DAnimationBlendState&, const class C3DAnimationBlendState&, float, class C3DAnimationManager&, C3DVector&, C3DVector&, C3DVector&, bool) const;
+private:
+#endif
  CCountedPointer<const C3DMeshStats> Mesh;
  CMatrix3x4 PositionMatrix;
  bool InversePositionMatrixSetup;
  CMatrix3x4 InversePositionMatrix;
  float Scale;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshObject)==120);
+FABLE_STATIC_ASSERT_AT(47, sizeof(C3DMeshObject)==120);
 #endif

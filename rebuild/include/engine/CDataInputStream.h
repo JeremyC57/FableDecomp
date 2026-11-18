@@ -58,6 +58,15 @@ public:
     }
 #endif
     template<class T> FABLE_FORCEINLINE T ReadType() { T val; Read(&val,sizeof(T)); return val; }
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_LOADGAME_PASS24
+    // Retail opt-in (Codex pass 24): FableWin ReadUHUGE and ReadType<unsigned __int64>; two dword reads in 0x005253F0.
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_UID_EXPAND_PASS24
+    // Inline-budget: native 00525667 expands the UID reader through ReadType, leaving only the chunk-overflow slow path.
+    FABLE_FORCEINLINE
+#endif
+    unsigned __int64 ReadUHUGE() { return ReadType<unsigned __int64>(); }
+    CCharString ReadPresizedString(); // Both PDBs and the call to 0x00996390.
+#endif
     FABLE_FORCEINLINE unsigned long ReadULONG() { return ReadType<unsigned long>(); }
     FABLE_FORCEINLINE long ReadSLONG() { return ReadType<long>(); }
     // Chunk 779 (row 0x00AAD650 CWaveLoader::LoadWaveFile): FableWin.pdb ?ReadUWORD@CDataInputStream@@QAEGXZ, ?ReadSWORD@..@@QAEFXZ and

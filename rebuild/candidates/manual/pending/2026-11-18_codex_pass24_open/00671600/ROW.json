@@ -1,0 +1,21 @@
+{
+  "status": "PARKED",
+  "assigned_name": "?Transfer@CThingCreatureDef@@UAEXAAVCPersistContext@@@Z",
+  "leaf": "?Transfer@CThingCreatureDef@@UAEXAAVCPersistContext@@@Z",
+  "attempts": 15,
+  "retail_size": 1450,
+  "object_size": 1449,
+  "flags": [
+    "/Gr"
+  ],
+  "lever": "At 00671B06 the byte temporary and flag storage enter AL and CL in the opposite order while updating IsIndestructible. The corresponding shift and mask reverse as well.",
+  "residue": "At 00671B06 the byte temporary and flag storage enter AL and CL in the opposite order while updating IsIndestructible. The corresponding shift and mask reverse as well.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "total_recorded_grades": 20,
+  "source_sha256": "709dc720025abe666d37e2cc5f8b945c4e8ad11fa72d76448f4e8d40828afa9f",
+  "test_sha256": "89a606192d6336f868e4bb0a911ebf2fadea7be99aaac34dfb76cac0c246e40b",
+  "extra_flags": [
+    "/Gr"
+  ]
+}

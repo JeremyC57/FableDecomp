@@ -1,0 +1,182 @@
+{
+  "address": "0x00B45A40",
+  "leaf": "?CalcSWLightingNoClipSeparateMainLight@CEngineLightingManager@@QAEXABVC3DVector@@0ABVCEngineLocalLightArray@@AAVCRGBFloatColour@@2@Z",
+  "retail_bytes": 683,
+  "object_bytes": 683,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 20,
+  "source_sha256": "fb66e60add3d3aed029eb0e5d8fb1482a6a1b9d9c791853422f4a11c81422fa9",
+  "test_sha256": "1c4a2d6c49534039b8f7a56abdb65ba046fcdfd1505a2d26fb788f74fa541265",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00b45a40_TEST PASS",
+    "g++ -std=c++03 -O0": "00b45a40_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "629cf40916ccb639e5ccbd813d02bc1999cba86cbe9a47eb0f4e6c9046077271",
+  "operands": [
+    {
+      "offset": 32,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 49,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 59,
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "base": "0x0122DED8",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 74,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 101,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 129,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 144,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 355,
+      "type": "DIR32",
+      "symbol": "?GFastOneOverSqrtTable@@3PAKA",
+      "base": "0x013CE558",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 391,
+      "type": "DIR32",
+      "symbol": "__real@40400000",
+      "base": "0x0122DED4",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 401,
+      "type": "DIR32",
+      "symbol": "__real@3f000000",
+      "base": "0x0122F59C",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 453,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 468,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 476,
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "base": "0x0122DED8",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 491,
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "base": "0x0122DED8",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 497,
+      "type": "DIR32",
+      "symbol": "?DELTA_NOTIONAL_ZERO@@3MB",
+      "base": "0x0129BA3C",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 553,
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "base": "0x0122DED8",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 568,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 583,
+      "type": "DIR32",
+      "symbol": "__real@00000000",
+      "base": "0x0122DEDC",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 591,
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "base": "0x0122DED8",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 606,
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "base": "0x0122DED8",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

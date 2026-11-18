@@ -838,11 +838,23 @@ public:
     // (whose own body expands _M_insert_overflow). A declaration only here, so the row calls it.
     void push_back(const _Tp& x);
 #else
+#ifdef FABLE_RETAIL_STLP_VECTOR_PUSHBACK_FINISH_LOCAL_PASS24
+    // Keep the append position across construction. The sky load loop uses the same pointer for the write and increment.
+    void push_back(const _Tp& x) {
+        iterator finish = this->_M_finish;
+        if (finish != this->_M_end_of_storage._M_data) {
+            _Construct(finish, x);
+            this->_M_finish = finish + 1;
+        } else
+            _M_insert_overflow(finish, x, _IsPODType(), 1, true);
+    }
+#else
     void push_back(const _Tp& x) {
         if(this->_M_finish!=this->_M_end_of_storage._M_data) {
             _Construct(this->_M_finish,x); ++this->_M_finish;
         } else _M_insert_overflow(this->_M_finish,x,_IsPODType(),1,true);
     }
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_INSERT_OUTOFLINE
     // Per-TU opt-in (chunk 1021, row 0x006B3E60 CEnvironment::SetWeightedThemes; like FABLE_RETAIL_STLP_VECTOR_ERASE_OUTOFLINE): STLport's
@@ -1557,6 +1569,10 @@ public:
     size_t size() const { ptrdiff_t n=0; for(const_iterator first=begin(),last=end();first!=last;++first) ++n; return n; }
 #endif
     _Tp& front() { return *begin(); }
+#ifdef FABLE_RETAIL_STLP_LIST_CONST_FRONT
+    // Retail opt-in (Codex pass 24). Original STLport 4.6 const overload.
+    const _Tp& front() const { return *begin(); }
+#endif
     void push_front(const _Tp& x) { insert(begin(),x); }
     // chunk 736 (row 0x00A7A0A0): STLport 4.6 _list.h back(): `iterator __tmp = end(); return *(--__tmp);` (SetUpRegions reads
     // Regions.back() as the list head's _M_prev before each MakeRegion call: `mov eax,[edx+4] ; add eax,8`).

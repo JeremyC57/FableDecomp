@@ -1,0 +1,19 @@
+{
+  "address": "0x00931390",
+  "leaf": "?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ",
+  "retail_bytes": 3863,
+  "object_bytes": 3863,
+  "extra_flags": [],
+  "strict_instruction_hunks": 29,
+  "strict_instruction_ratio": 0.975609756097561,
+  "first_unequal_masked_offset": 27,
+  "relocation_count": 203,
+  "source_sha256": "c6b504f2454ff0e86d99114e8d7755c2857edb397bf780e7cb2f59719b620174",
+  "test_sha256": "261b38c39089bb6173ec317c52ca4b9f1c43dfb70d508b18af0d495e64e61827",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00931390_TEST PASS",
+    "g++ -std=c++03 -O0": "00931390_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 1279
+}

@@ -76,6 +76,9 @@ public:
  // C3DMesh2 overrides (UBE); declared here in source order so VC's overload grouping gives retail's C3DMesh2 slots: 4/5
  // GetHelperPointPositionAnimated (0x00A898D0 / 0x00A89740), 6/7 GetDummyObjectPositionAnimated (two-state 0x00A89E40 / one-state
  // 0x00A89A70), 8/9 GetDummyObjectTransformAnimated (two-state 0x00A8A5F0, called through +0x20 at 0x00B39141 / one-state 0x00A8A220).
+#ifdef FABLE_RETAIL_C3DMESHOBJECT_DUMMY_PAIR_PASS24
+ const std::pair<unsigned long, C3DDummyObject>* FindDummyObjectsBegin(unsigned long name_crc) const;
+#endif
  const C3DDummyObject* GetDummyObject(unsigned long name_crc,unsigned long index)const;   // 0x00A2E920
  virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint&,const C3DAnimationBlendState&,C3DAnimationManager&)const=0;
  virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&)const=0;

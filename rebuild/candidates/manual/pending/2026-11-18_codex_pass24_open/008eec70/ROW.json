@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "attempts": 27,
+  "leaf": "?Collide@Mass@@SI_NPAV1@0VC2DVector@@11MMMM@Z",
+  "assigned_name": "?Collide@Mass@@SI_NPAV1@0VC2DVector@@11MMMM@Z",
+  "retail_size": 1129,
+  "object_size": 1129,
+  "flags": [],
+  "lever": "The return-buffer address at 0x008EEF2E moves across the x87 calculation.",
+  "residue": "The return-buffer address at 0x008EEF2E moves across the x87 calculation.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 12,
+  "total_recorded_grades": 33,
+  "source_sha256": "27a5e662a1f93b30be28f8ff9d2bcc4d44a7c99cfa391cea88d733f7945a70c1",
+  "test_sha256": "ea22fdd06a514700487433282b4260af64988e6076f74ba74435013b48aa8189",
+  "extra_flags": []
+}

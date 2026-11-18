@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x008F0B20	?GetCardDef@CTCTavernGameCardBase@@QAEXPAV?$CDefPointer@$$CBVCTavernGameCardBaseDef@@@@@Z	The card-base virtual and landed sibling pass the const tavern card definition handle; both donor spellings agree with the shared declaration.	?GetCardDef@CTCTavernGameCardBase@@QAEXPAUCCardDefPointer@@@Z | ?GetCardDef@CTCTavernGameCardBase@@QAEXPAUCDefPointer@@@Z | ?GetCardDef@CTCTavernGameCardBase@@QAEXPAV?$CDefPointer@VCTavernGameCardBaseDef@@@@@Z | ?GetCardDef@CTCTavernGameCardBlackjack@@QAEXPAUCDefPointer@@@Z

@@ -36,6 +36,12 @@ public:
 private:
     unsigned char HealthOverTimeEffects[4];
 protected:
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_SCALE_ACCESS_PASS24
+public:
+    // FableWin 0x01D815E0 and the native 0x007543CC eye-scale load.
+    float GetScale() const { return Scale; }
+protected:
+#endif
     float Scale;
     CIntelligentPointer<CThingPhysical> PLastCreator;
     CIntelligentPointer<CThingPhysical> POriginalCreator;
@@ -51,6 +57,12 @@ public:
     CThingPhysical(unsigned long type);                                  // 0x005296B0
 #endif
     const C3DVector& PeekPos() const;
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_SAVE_CALLED
+protected:
+    // Ego_r and FableWin give the protected virtual Save. Native 0x00837586 calls 0x006A4BA0.
+    virtual void Save(CCharString& script);
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_CONSTRUCTFROMPARAMS
     // NF62 opt-in (2026-11-17, row 0x006A5950): Ego_r.pdb ?ConstructFromParams@CThingPhysical@@IAE_NJABVC3DVector@@JKPAV1@1_N@Z (protected),
     // out of line at 0x006A5950 (`ret 1Ch`; CThingGameObject::ConstructFromParams 0x008388D0 calls it qualified). Needs
@@ -147,6 +159,10 @@ public:
 public:
     virtual bool UseHighDetailQuadTree() const;  // slot 57, 0x005297C0
 public:
+#endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_DEBUGDRAW_PASS24
+public:
+    virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
 #endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_VSLOTS2
 // agentFAM04 (2026-11-11): retail CThingPhysical overrides of CThing virtuals (TLC vtable slots aligned with the Xbox 360

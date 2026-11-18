@@ -1,0 +1,18 @@
+{
+  "status": "RELOCATION_MATCH",
+  "assigned_name": "?Update@CAIStateGroup_WifeGiveYouGift@@UAEXXZ",
+  "leaf": "?Update@CAIStateGroup_WifeGiveYouGift@@UAEXXZ",
+  "retail_size": 386,
+  "object_size": 386,
+  "flags": [],
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "relocated_operands": 20,
+  "lever": "Original playback result as the postcondition of the retry loop",
+  "attempts": 8,
+  "total_recorded_grades": 16,
+  "source_sha256": "08dc3a7dc860d3cb720979a248b0688beaf8aff52d94498b28e7cb53499a0ade",
+  "test_sha256": "41ce703783704aff381e1905c8ede2b55e62ffe059d8592268f3d1878fab20ed",
+  "extra_flags": [],
+  "residue": "All nonrelocated bytes and all bound targets agree."
+}

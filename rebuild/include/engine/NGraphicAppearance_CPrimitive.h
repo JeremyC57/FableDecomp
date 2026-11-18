@@ -16,7 +16,12 @@ public:
  EPrimitiveType Type;
  CEnginePrimitiveHandle PrimitiveHandle;
  long BankIndex;
+#ifdef FABLE_RETAIL_NGRAPHICAPPEARANCE_CPRIMITIVE_EYEDRAW_PASS24
+ // Both PDBs and the two native 0x00642390 calls in 0x007542B0.
+ CPrimitive(EPrimitiveType type, long bank_index = 0);
+#else
  CPrimitive(EPrimitiveType type,long bank_index=0):Type(type),BankIndex(bank_index){}
+#endif
  ~CPrimitive();
 };
 }

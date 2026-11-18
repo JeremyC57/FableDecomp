@@ -48,7 +48,16 @@ class CAnimSet{friend class CAnimateThing;public:
  // the Finished bit +0x51 & 2). Declaration of IsFinished only.
  long GetType()const{return Type;}
  unsigned long GetFlags()const{return Flags;}                         // ?GetFlags@CAnimSet@@QBEKXZ (inline: +0x40)
+#ifdef FABLE_RETAIL_CANIMSET_STRAFE_ACCESSORS_PASS24
+ bool IsFinished() const { return Anims.empty() || Finished; }
+ long GetAnimIndex() const { return Anims[0]; }
+ float GetPercentageComplete() const { return CurrentPercentageComplete; }
+ void SetAsUpdated(bool updated) { HadUpdate = updated; }
+ void SetAlpha(float alpha);
+ void SetInternalAlpha(long index, float alpha, bool immediate);
+#else
  bool IsFinished()const;                                               // 0x00668A80
+#endif
 #endif
 private:
 #ifdef FABLE_RETAIL_CANIMSET_UPDATEDISTANCE

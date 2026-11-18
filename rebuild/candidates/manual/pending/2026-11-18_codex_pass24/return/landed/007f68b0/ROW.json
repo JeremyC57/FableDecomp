@@ -1,0 +1,19 @@
+{
+  "status": "RELOCATION_MATCH",
+  "attempts": 30,
+  "leaf": "?GetPBestCreatureForInteractionType@CTCTargetingAI@@UBEPAVCThingCreatureBase@@W4ECreatureInteractionType@@@Z",
+  "assigned_name": "?GetPBestCreatureForInteractionType@CTCTargetingAI@@UBEPAVCThingCreatureBase@@W4ECreatureInteractionType@@@Z",
+  "retail_size": 255,
+  "object_size": 255,
+  "flags": [],
+  "lever": "Cache the parent as the original const AI creature reference and initialise the result before constructing the search box. Bind the original sight radius and rough-area specialization.",
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "relocated_operands": 8,
+  "total_recorded_grades": 35,
+  "source_sha256": "419387fe4cd1276d09c87954e2606f34b11d7c4df2bb90dba896e780946ae290",
+  "test_sha256": "d303bbe52f6df76e14a61c645241415eff8627f410da800fb52a6b32def77f7e",
+  "extra_flags": []
+}

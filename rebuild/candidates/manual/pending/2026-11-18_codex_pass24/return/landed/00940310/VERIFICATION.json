@@ -1,0 +1,270 @@
+{
+  "address": "0x00940310",
+  "leaf": "?Update@CAIStateGroup_VillageTaskPickCrops@@UAEXXZ",
+  "retail_bytes": 494,
+  "object_bytes": 494,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 31,
+  "source_sha256": "9013b9f8350ee8f8f2e9024e008f5bb6a10522bd78125aedbbab1f6c9001e82c",
+  "test_sha256": "3918be9ad3d0f6072efb88227b42808c22b1067f93e409fb795b7591c74225ad",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00940310_TEST PASS",
+    "g++ -std=c++03 -O0": "00940310_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "5025dc61c1bafd66823430fd7bc5fe619109c9f84f1de7687541851007317cab",
+  "operands": [
+    {
+      "offset": 23,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 79,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "base": "0x0040F020",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 103,
+      "type": "REL32",
+      "symbol": "?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ",
+      "base": "0x007EE540",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 127,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 135,
+      "type": "REL32",
+      "symbol": "?SetCropTaskAsAcceptedByThing@CTCVillage@@QAE_NAAVCVillageTaskPickCrops@@ABVCThing@@@Z",
+      "base": "0x00658561",
+      "coff_addend": 0,
+      "evidence": "landed direct target and both donor signatures"
+    },
+    {
+      "offset": 150,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 158,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 168,
+      "type": "REL32",
+      "symbol": "??0?$CIntelligentPointer@VCThingObject@@@@QAE@PAVCThingObject@@@Z",
+      "base": "0x0065E133",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 180,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 195,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 224,
+      "type": "REL32",
+      "symbol": "?IsTimeForWork@CAIStateGroup_VillageTaskPickCrops@@IBE_NXZ",
+      "base": "0x00940120",
+      "coff_addend": 0,
+      "evidence": "landed direct target and both donor signatures"
+    },
+    {
+      "offset": 266,
+      "type": "REL32",
+      "symbol": "??0CBaseIntelligentPointer@@QAE@XZ",
+      "base": "0x00A01B10",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 276,
+      "type": "DIR32",
+      "symbol": "??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@",
+      "base": "0x01237F1C",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 281,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 289,
+      "type": "REL32",
+      "symbol": "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+      "base": "0x00A01B90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 298,
+      "type": "REL32",
+      "symbol": "?AIAction_MoveToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@MAA_NW4EMovementType@@_N444M@Z",
+      "base": "0x0097E380",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 319,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 330,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 365,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 376,
+      "type": "REL32",
+      "symbol": "??0CCreatureAction_PickCrop@@QAE@AAVCThingCreatureBase@@AAVCThingObject@@@Z",
+      "base": "0x009405F0",
+      "coff_addend": 0,
+      "evidence": "FableWin exact symbol, landed constructor/destructor, native object lifetime and shared class"
+    },
+    {
+      "offset": 384,
+      "type": "REL32",
+      "symbol": "?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z",
+      "base": "0x0097DB70",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 399,
+      "type": "REL32",
+      "symbol": "??1CCreatureAction_PickCrop@@UAE@XZ",
+      "base": "0x009400F0",
+      "coff_addend": 0,
+      "evidence": "FableWin exact symbol, landed constructor/destructor, native object lifetime and shared class"
+    },
+    {
+      "offset": 406,
+      "type": "REL32",
+      "symbol": "?Terminate@CAIStateGroupBase@@QAEXXZ",
+      "base": "0x008FCF40",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 415,
+      "type": "REL32",
+      "symbol": "??1CBaseIntelligentPointer@@UAE@XZ",
+      "base": "0x00A01C10",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 431,
+      "type": "REL32",
+      "symbol": "??0CBaseIntelligentPointer@@QAE@XZ",
+      "base": "0x00A01B10",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 445,
+      "type": "DIR32",
+      "symbol": "??_7?$CIntelligentPointer@VCVillageTaskPickCrops@@@@6B@",
+      "base": "0x0128B0A0",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 450,
+      "type": "REL32",
+      "symbol": "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+      "base": "0x00A01B90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 459,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 467,
+      "type": "REL32",
+      "symbol": "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+      "base": "0x00A01B90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 476,
+      "type": "REL32",
+      "symbol": "??1CBaseIntelligentPointer@@UAE@XZ",
+      "base": "0x00A01C10",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 483,
+      "type": "REL32",
+      "symbol": "?Terminate@CAIStateGroupBase@@QAEXXZ",
+      "base": "0x008FCF40",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

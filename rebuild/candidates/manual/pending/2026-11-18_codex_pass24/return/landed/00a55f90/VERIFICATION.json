@@ -1,0 +1,30 @@
+{
+  "address": "0x00A55F90",
+  "leaf": "?SetFromVectorAndAngle@CMatrix3x4@@QAEXABVC3DVector@@M@Z",
+  "retail_bytes": 259,
+  "object_bytes": 259,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 1,
+  "source_sha256": "5f380c842448e01022060b8ca85029028f6eaa119f39fc27ace6c0e1c461a797",
+  "test_sha256": "33afabec0ca5492edb7d32e2a9796e1f3e2a7d548877f4b20da40a484263d9b8",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00a55f90_TEST PASS",
+    "g++ -std=c++03 -O0": "00a55f90_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "12b5499c0aa50b157340366c18c2157d0b374e8c5030d3b8307e13a1a38d3a49",
+  "operands": [
+    {
+      "offset": 13,
+      "type": "DIR32",
+      "symbol": "?TWO_PI@@3NB",
+      "base": "0x0124F2B8",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

@@ -47,6 +47,10 @@ public:
 #ifdef FABLE_RETAIL_CTHINGMANAGER_NPCNAMES
     // Retail opt-in (Codex pass18): Ego_r0052d760/FableWin01d45200; public original member.
     void SetNameForThing(unsigned __int64 uid,const CWideString& new_name);
+#ifdef FABLE_RETAIL_CTHINGMANAGER_NPCSHORTNAME
+    bool DoesNPCNameEntryExistForThing(unsigned __int64 uid);
+    CWideString GetNameForThing_OnlyCalledFromTCHasName(unsigned __int64 uid);
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_RUNTIMESAVE
     // Opt-in (row 0x00523CF0): Ego_r.pdb ?SaveEntitiesToScript@CThingManager@@QAEXAAVCCharString@@JABV?$vector@PAVCThing@@...AAV?$vector@VCCharString@@...
@@ -105,6 +109,10 @@ public:
 #endif
 #else
     CThing* GetPThingWithUID(unsigned __int64);                         // Ego_r.pdb ?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z (0x00821010)
+#endif
+#ifdef FABLE_RETAIL_CTHINGMANAGER_LOADHERO_SCRIPT_PASS24
+    // Retail opt-in (Codex pass 24): Ego_r public LoadHeroStateScript(CStringParser&) and the call to 0x00520570.
+    void LoadHeroStateScript(CStringParser&);
 #endif
     void LoadHeroStateBinary(CPersistContext&);
     // Ego_r + FableWin signatures (2026-11-03, row 0x00522720): the name set and thing vector are references.

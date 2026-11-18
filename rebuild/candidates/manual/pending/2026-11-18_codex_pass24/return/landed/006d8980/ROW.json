@@ -1,0 +1,17 @@
+{
+  "address": "006d8980",
+  "leaf": "?UpgradeTrainableStat@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@@Z",
+  "status": "RELOCATION_MATCH",
+  "size": 183,
+  "test": "VC7.1 and GNU C++03 PASS",
+  "assigned_name": "?UpgradeTrainableStat@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@@Z",
+  "retail_size": 183,
+  "object_size": 183,
+  "attempts": 12,
+  "total_recorded_grades": 25,
+  "source_sha256": "f67a4b9cde40ea841ad3e6933ca60f7f96532ab4c5605f1acd83b71a73f2e6e9",
+  "test_sha256": "c30be41a779f364aa7781a0a7c92e706d5d09a2d9ee9f33cb19a49a9368dd16d",
+  "extra_flags": [],
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS"
+}

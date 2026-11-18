@@ -1,0 +1,18 @@
+{
+  "address": "0x00ADEFC0",
+  "leaf": "?AlignedPreMultiplyTransposed@CMatrix4x4@@QAEXABV1@@Z",
+  "retail_bytes": 471,
+  "object_bytes": 472,
+  "extra_flags": [],
+  "strict_instruction_hunks": 9,
+  "strict_instruction_ratio": 0.9102564102564102,
+  "first_unequal_masked_offset": 321,
+  "relocation_count": 1,
+  "source_sha256": "40dfa9fca4899e85d75a47c0bf908a9fd124dd356e19499a6a4c37173be76f83",
+  "test_sha256": "afb49cd501eae44406d6877f8fbf7bf1bf039274a0e8262bcb1d25c210b66f47",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00adefc0_TEST PASS",
+    "g++ -std=c++03 -O0": "00adefc0_TEST PASS"
+  },
+  "status": "PARKED"
+}

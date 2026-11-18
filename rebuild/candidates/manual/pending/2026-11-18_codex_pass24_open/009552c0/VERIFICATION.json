@@ -1,0 +1,19 @@
+{
+  "address": "0x009552C0",
+  "leaf": "?Update@CAIStateGroup_MazeShieldedChase@@UAEXXZ",
+  "retail_bytes": 861,
+  "object_bytes": 861,
+  "extra_flags": [],
+  "strict_instruction_hunks": 6,
+  "strict_instruction_ratio": 0.9355932203389831,
+  "first_unequal_masked_offset": 379,
+  "relocation_count": 44,
+  "source_sha256": "4e6c05ed0308b48e28e9b46b4e881829ba60919efd7d0ddce141e31503182b0a",
+  "test_sha256": "09a2ea34b8ff86ab293cc4f9f0342f07fe6ac7c07b6dfc2d02ccace749aad36d",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "009552c0_TEST PASS",
+    "g++ -std=c++03 -O0": "009552c0_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 148
+}

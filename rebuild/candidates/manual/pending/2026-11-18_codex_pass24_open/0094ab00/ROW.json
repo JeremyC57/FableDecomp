@@ -1,0 +1,19 @@
+{
+  "status": "PARKED",
+  "attempts": 11,
+  "leaf": "?Update@CAIStateGroup_GoToPub@@MAEXXZ",
+  "assigned_name": "?Update@CAIStateGroup_GoToPub@@MAEXXZ",
+  "retail_size": 2067,
+  "object_size": 1949,
+  "flags": [],
+  "lever": "The shared version still emits calls where retail expands list insertion and the component-map search. Pointer temporary slots and the early branch layout also differ.",
+  "residue": "The shared version still emits calls where retail expands list insertion and the component-map search. Pointer temporary slots and the early branch layout also differ.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 100,
+  "relocations_verified": 93,
+  "relocations_unpaired": 7,
+  "total_recorded_grades": 17,
+  "source_sha256": "0e8ce84268387150cb4807ce7524d2207ba0c3b311e70680176ec40e10efb1e6",
+  "test_sha256": "8c162a7506a4d570a003449994126539616b5f31b105410701e3ff03908bc853",
+  "extra_flags": []
+}

@@ -11,6 +11,9 @@
 #include "engine/CDefPointer.h"
 #include "engine/ETCInterfaceType.h"
 class CActionUseDef;
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_TUTORIAL_PASS24
+#include "engine/fable_nscript_forward.h"
+#endif
 #ifdef FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS3
 // agentFAM05 (2026-11-11): the return type of GetWhenToActivate (mangled W4EWhenToActivate@@, a global enum; the enumerators are not in the name
 // sets, so the rows write the retail values as casts).
@@ -20,6 +23,10 @@ enum EWhenToActivate { };
 class CTCActionUseBase : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ON_ACTION_USE; }
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_TUTORIAL_PASS24
+    // Both original PDBs and native 0x0068E050 / 0x0068E0B7.
+    ETutorialCategory GetTutorialCategory() const;                    // 0x007EAC00
+#endif
     bool IsUsable() const { return Usable; }                             // PLACEHOLDER accessor name (inline member read in the row)
 #ifdef FABLE_RETAIL_CTCACTIONUSEBASE_ANIMGROUPNAME
     // Retail opt-in (wf7, row 0x00847DF0 CCreatureAction_UseLamp::Initialise): Ego_r.pdb / FableWin.pdb
@@ -72,5 +79,5 @@ public:
 #endif // FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS3
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CTCActionUseBase) == 0x14);
+FABLE_STATIC_ASSERT_AT(75, sizeof(CTCActionUseBase) == 0x14);
 #endif

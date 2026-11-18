@@ -1,0 +1,20 @@
+{
+  "address": "0x006A03A0",
+  "leaf": "?Initialise@CCreatureAction_UseObject@@UAEXXZ",
+  "retail_bytes": 825,
+  "object_bytes": 855,
+  "extra_flags": [
+    "/Gr"
+  ],
+  "strict_instruction_hunks": 42,
+  "strict_instruction_ratio": 0.5566600397614314,
+  "first_unequal_masked_offset": 2,
+  "relocation_count": 31,
+  "source_sha256": "532ca2f5d037dc00af001cbb06e110c0141612037b76e42476e8dc1b067f44d3",
+  "test_sha256": "59bb0357b90ad177fd63bcf152e1b046de75dedd62e1be4d90cdcd7d71231c10",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "006a03a0_TEST PASS",
+    "g++ -std=c++03 -O0": "006a03a0_TEST PASS"
+  },
+  "status": "PARKED"
+}

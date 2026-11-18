@@ -31,11 +31,15 @@ public:
     virtual bool IsThingInvolvedWithTask(const CThing &) const;
     virtual void RemoveThingFromTask(const CThing &,bool &);
     bool IsBetterThan(const CVillageTaskPickCrops *,const CThing &) const;
+#ifdef FABLE_RETAIL_CROP_TASK_UPDATE_PASS24
+    CThingObject* GetCrop() {return Crop.Get();}
+#else
     CThingObject * GetCrop();
+#endif
     virtual ~CVillageTaskPickCrops();
     CVillageTaskPickCrops & operator=(const CVillageTaskPickCrops &);
 };
-FABLE_STATIC_ASSERT(sizeof(CVillageTaskPickCrops)==0x18);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CVillageTaskPickCrops)==0x18);
 #else
 #pragma pack(push, 1)
 class CVillageTaskPickCrops {
@@ -52,10 +56,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CVillageTaskPickCrops) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CVillageTaskPickCrops, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CVillageTaskPickCrops, Crop) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CVillageTaskPickCrops, CreatureAssignedToTask) == 0x10);
+FABLE_STATIC_ASSERT_AT(55, sizeof(CVillageTaskPickCrops) == 0x18);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CVillageTaskPickCrops, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CVillageTaskPickCrops, Crop) == 0x8);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CVillageTaskPickCrops, CreatureAssignedToTask) == 0x10);
 
 #endif // FABLE_RETAIL_CVILLAGETASKPICKCROPS
 #endif // FABLE_ENGINE_CVILLAGETASKPICKCROPS_H

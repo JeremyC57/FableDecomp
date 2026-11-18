@@ -1,0 +1,63 @@
+# Compiler probes
+
+- package baseline — LEAF_REVIEW_REQUIRED.
+- tail deliverable — DIFFER, 773 v 771 bytes, 6 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail emitted leaf diagnostic — DIFFER, 773 v 771 bytes, 6 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail pdb rekey — DIFFER, 773 v 771 bytes, 6 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea inline t100 — DIFFER, 603 v 771 bytes, 30 instruction hunks, first unequal byte at 0x00B6DC44.
+- tail sea inline t120 — DIFFER, 691 v 771 bytes, 24 instruction hunks, first unequal byte at 0x00B6DC44.
+- tail sea inline t150 — DIFFER, 691 v 771 bytes, 24 instruction hunks, first unequal byte at 0x00B6DC44.
+- tail sea inline t175 — DIFFER, 691 v 771 bytes, 24 instruction hunks, first unequal byte at 0x00B6DC44.
+- tail sea inline t200 — DIFFER, 765 v 771 bytes, 3 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea inline t250 — DIFFER, 765 v 771 bytes, 3 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea inline t85 — DIFFER, 575 v 771 bytes, 30 instruction hunks, first unequal byte at 0x00B6DC44.
+- tail sea shape2 empty alt branch — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape2 empty flag once after — DIFFER, 771 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DCE2.
+- tail sea shape2 empty local flag — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape2 empty move state flag — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape2 empty return have bool — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape2 empty return local — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape2 empty return positive have bool — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape2 invert branch — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape2 lexical stream scope — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape2 nested if else — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape2 nonempty first — DIFFER, 774 v 771 bytes, 8 instruction hunks, first unequal byte at 0x00B6DC59.
+- tail sea shape2 split empty with while — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape3 append same assignment — DIFFER, 771 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DCE2.
+- tail sea shape3 empty clear in else — DIFFER, 771 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DCE2.
+- tail sea shape3 empty clear in separate arm — DIFFER, 771 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DCE2.
+- tail sea shape3 empty clear through alias — DIFFER, 771 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DCE2.
+- tail sea shape3 empty combined checks — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape3 empty condition bit — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape3 empty new pdb globals — DIFFER, 771 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DCE2.
+- tail sea shape3 empty per branch — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape3 empty return label — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape3 empty return live val — DIFFER, 771 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DCE2.
+- tail sea shape3 empty return no work — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape3 reordered initial declarations — DIFFER, 771 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DCE2.
+- tail sea shape early return counter — DIFFER, 765 v 771 bytes, 3 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape equality operator — DIFFER, 807 v 771 bytes, 4 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape known early return — DIFFER, 765 v 771 bytes, 3 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape release dupe — DIFFER, 765 v 771 bytes, 3 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape same test after — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape same test no nested — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape split early out — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape split named have — DIFFER, 775 v 771 bytes, 2 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shape test false outside helper — DIFFER, 765 v 771 bytes, 3 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail sea shared — COMPILE_FAIL.
+- tail sea shared opaque — DIFFER, 575 v 771 bytes, 30 instruction hunks, first unequal byte at 0x00B6DC44.
+- tail structure guard 1 named — DIFFER, 773 v 771 bytes, 6 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail structure guard 2 named — DIFFER, 773 v 771 bytes, 6 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail structure guard 3 named — DIFFER, 773 v 771 bytes, 6 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail structure guard 4 named — DIFFER, 773 v 771 bytes, 6 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail structure local entry assign — DIFFER, 773 v 771 bytes, 6 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail target named requested check — DIFFER, 773 v 771 bytes, 6 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail target read current entry — COMPILE_FAIL.
+- tail target read size then priority — DIFFER, 778 v 771 bytes, 19 instruction hunks, first unequal byte at 0x00B6DC44.
+- tail target separate read size — DIFFER, 778 v 771 bytes, 25 instruction hunks, first unequal byte at 0x00B6DC44.
+- tail target stream after result — DIFFER, 775 v 771 bytes, 11 instruction hunks, first unequal byte at 0x00B6DC60.
+- tail target temporary read handle — DIFFER, 777 v 771 bytes, 18 instruction hunks, first unequal byte at 0x00B6DC42.
+
+- The materialized async bank headers preserve the old assert typedef identity and default declarations. VC7.1 emits 771 bytes with the same two instruction hunks. The isolated copied-body fixture passes both compilers.
+
+The selected result is PARKED (771 object bytes, 771 retail bytes). The final test passed with VC7.1 and GNU C++03. GRADE_HISTORY.tsv includes all recorded compiler runs, including baseline and verification repeats.

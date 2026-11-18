@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "assigned_name": "?Replace@CWideString@@QAEXABV1@0@Z",
+  "leaf": "?Replace@CWideString@@QAEXABV1@0@Z",
+  "attempts": 17,
+  "retail_size": 609,
+  "object_size": 613,
+  "flags": [],
+  "lever": "The current prefix lifetime leaves a larger frame and different ownership-counter and destructor scheduling. The public underlying append specialization and reference-count ownership are present.",
+  "residue": "The current prefix lifetime leaves a larger frame and different ownership-counter and destructor scheduling. The public underlying append specialization and reference-count ownership are present.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "total_recorded_grades": 26,
+  "source_sha256": "6f7fe1b1865a2506ddef23ac904cf9ec2e23cd1cf08fd53f2856e7a598fdcbd8",
+  "test_sha256": "b60d4eae19e24c06bcf3e9458cdc254f2d5ded721d828b5fedc5576cef950939",
+  "extra_flags": []
+}

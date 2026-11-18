@@ -1,0 +1,18 @@
+{
+  "address": "0x0059FC17",
+  "leaf": "?AlreadyHaveSpecial@CTCInventoryTrade@@AAE_NJ@Z",
+  "retail_bytes": 716,
+  "object_bytes": 725,
+  "extra_flags": [],
+  "strict_instruction_hunks": 9,
+  "strict_instruction_ratio": 0.9685767097966729,
+  "first_unequal_masked_offset": 100,
+  "relocation_count": 19,
+  "source_sha256": "0b9e81f2226e60ee474073e4733d5d11db80e143765366288665731d3d2a1f22",
+  "test_sha256": "06487275d72635629073e99a174c70a3aaf44535501fe408fd1500002d971fc3",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0059fc17_TEST PASS",
+    "g++ -std=c++03 -O0": "0059fc17_TEST PASS"
+  },
+  "status": "PARKED"
+}

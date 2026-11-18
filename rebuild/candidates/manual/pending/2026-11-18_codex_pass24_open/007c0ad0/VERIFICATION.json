@@ -1,0 +1,18 @@
+{
+  "address": "0x007C0AD0",
+  "leaf": "?CreateShot@NThingShot@@YIPAVCThing@@JPAV2@0PBV2@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@PBVC3DVector@@PBVCRightHandedSet@@@Z",
+  "retail_bytes": 938,
+  "object_bytes": 936,
+  "extra_flags": [],
+  "strict_instruction_hunks": 28,
+  "strict_instruction_ratio": 0.7962962962962963,
+  "first_unequal_masked_offset": 44,
+  "relocation_count": 52,
+  "source_sha256": "1c744dae734e3e99c64332713148c8097dd7b0f00c709d3ca99a1828ede1c2bc",
+  "test_sha256": "f318b82a580203de6705bb0b6a451347506ca5d17b53913092b221224a886567",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "007c0ad0_TEST PASS",
+    "g++ -std=c++03 -O0": "007c0ad0_TEST PASS"
+  },
+  "status": "PARKED"
+}

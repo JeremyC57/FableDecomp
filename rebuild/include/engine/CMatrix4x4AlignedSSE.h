@@ -184,10 +184,19 @@ namespace fable_portable
 // Outside the include guard: engine/CMatrix4x4.h includes this header again once the class is complete.
 #if defined(FABLE_RETAIL_CMATRIX4X4) && defined(FABLE_ENGINE_CMATRIX4X4_H) && !defined(FABLE_CMATRIX4X4_ALIGNEDSETMULTIPLY_DEFINED)
 #define FABLE_CMATRIX4X4_ALIGNEDSETMULTIPLY_DEFINED
+#ifdef FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG
+// Retail opt-in (Codex pass 24): original Ego_d public and pass 22 donor load at 0x04BBFB19.
+extern bool GEnableSIMD;
+#else
 extern bool g_SSEAvailable;                                              // 0x013D2880 ?g_SSEAvailable@@3_NA
+#endif
 FABLE_FORCEINLINE void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& a, const CMatrix4x4& b)
 {
+#ifdef FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG
+    if (GEnableSIMD) {
+#else
     if (g_SSEAvailable) {
+#endif
         const CMatrix4x4* pa = &a;
         const CMatrix4x4* pb = &b;
         CMatrix4x4* pdst = this;

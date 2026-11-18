@@ -1,0 +1,18 @@
+{
+  "address": "0x00589402",
+  "leaf": "?GetStyleCardsListUIComponent@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z",
+  "retail_bytes": 1582,
+  "object_bytes": 1564,
+  "extra_flags": [],
+  "strict_instruction_hunks": 34,
+  "strict_instruction_ratio": 0.7432675044883303,
+  "first_unequal_masked_offset": 46,
+  "relocation_count": 87,
+  "source_sha256": "25a01238e26096e86e57c7054ab9ac4af590b6f463377994f4bfc34530b94405",
+  "test_sha256": "8e34de55f4b4c4fbf0a27f019f705b96b6c2fca3ecf60cfa84c1d0ac43bdb2c9",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00589402_TEST PASS",
+    "g++ -std=c++03 -O0": "00589402_TEST PASS"
+  },
+  "status": "PARKED"
+}

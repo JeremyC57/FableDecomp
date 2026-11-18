@@ -93,6 +93,11 @@ public:
     // retail at 0x00AF85E0 (calls GetOneOverTickRate 0x00AEAA00); the row calls it at 0x00B0456B. Declaration only.
     float GetInterpolatedLifetimerInSeconds(float fraction) const;
 #endif
+    
+#ifdef FABLE_RETAIL_CPARTICLE_BOUNDING_ACTIVE_PASS24
+    // Inline-budget: native 00AFB170 expands the original member in CPSCRenderSprite::AddToBoundingSphere.
+    FABLE_FORCEINLINE
+#endif
     bool IsActive(float time) const
     {
         if (Lifetimer > 0) return true;
@@ -105,6 +110,11 @@ public:
     // Opt-in (wfD6, row 0x00B01900): FableWin ?GetInterpolatedOrientation@CParticle@NParticleEngine@@QBE?AVCQuaternion@@M@Z, the landed
     // out-of-line copy 0x00B05620's text (expanded in 0x00B01900). Needs FABLE_RETAIL_CQUATERNION_SLERPFROMIDENTITY and its body.
     FABLE_FORCEINLINE CQuaternion GetInterpolatedOrientation(float t) const { CQuaternion change; change.SetSlerpFromIdentity(OrientationChange, t); CQuaternion result = Orientation * change; return result; }
+#endif
+    
+#ifdef FABLE_RETAIL_CPARTICLE_BOUNDING_RECORDED_PASS24
+    // Inline-budget: native 00AFB2EA and 00AFB467 expands the original member in CPSCRenderSprite::AddToBoundingSphere.
+    FABLE_FORCEINLINE
 #endif
     C3DVector GetRecordedPos(float delay,float interp)const{
         float t=delay+1.0f-interp;

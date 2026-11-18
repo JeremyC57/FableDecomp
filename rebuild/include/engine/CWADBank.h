@@ -9,6 +9,14 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_WAD_ADD_FILE_PASS24
+#include "engine/CBankFileAsync.h"
+class CWADBank : public CBankFileAsync {
+public:
+    void AddFile(const CWideString& name);
+};
+FABLE_STATIC_ASSERT(sizeof(CWADBank) == 0x164);
+#else
 #pragma pack(push, 1)
 class CWADBank {
 public:
@@ -41,9 +49,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CWADBank) == 0x164);
+FABLE_STATIC_ASSERT_AT(44, sizeof(CWADBank) == 0x164);
 #ifndef FABLE_RETAIL_CWADBANK_VIRTUAL_DTOR
-FABLE_STATIC_ASSERT(offsetof(CWADBank, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CWADBank, __vftable) == 0x0);
 #endif
 
+#endif
 #endif // FABLE_ENGINE_CWADBANK_H

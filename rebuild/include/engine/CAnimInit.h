@@ -11,8 +11,12 @@ class CAnimFrameInfo {public:
 };
 class CAnimInit {public:
  CAnimInit(){}
+#ifdef FABLE_RETAIL_CANIMINIT_STRAFE_CALLED_PASS24
+ CAnimInit(unsigned char type,unsigned long type_flags,long anim,EAnimUpdateMode mode,bool looping,unsigned long flags,long priority);
+#else
  CAnimInit(unsigned char type,unsigned long type_flags,long anim,EAnimUpdateMode mode,bool looping,unsigned long flags,long priority)
  {Init(type,type_flags,anim,mode,looping,flags,priority);}
+#endif
  void Init(unsigned char,unsigned long,long,EAnimUpdateMode,bool,unsigned long,long);
  void Clear();
  EAnimUpdateMode UpdateMode;unsigned char Type;bool Looping;long Anim;float Speed,Alpha,LastAlpha;CAnimFrameInfo Frame;unsigned long Flags,TypeFlags;long Priority;

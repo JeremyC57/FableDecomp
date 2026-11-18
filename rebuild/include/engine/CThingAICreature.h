@@ -214,6 +214,10 @@ public:
         CRelationshipsInit() : HomeBuildingUID(0), WorkBuildingUID(0), FatherCreatureUID(0), MotherCreatureUID(0), SpouseCreatureUID(0) { }
     };
     virtual bool ConstructFromLevelScript(const char* script);          // 0x008315C0
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_SERIALISEGAMESTATE
+    // Original Ego_r 0x00537E70, FableWin 0x01D6DD30 and native vtable slot 3.
+    virtual bool SerialiseGameState(class CPersistContext& context);            // 0x00830FE0
+#endif
 private:
     CCountedPointer<CRelationshipsInit> RelationshipsInit;               // +0x160
 #else

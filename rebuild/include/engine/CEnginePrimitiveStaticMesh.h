@@ -9,6 +9,10 @@
 #include "engine/CRGBColour.h"
 class CEnginePrimitiveStaticMesh:public CEnginePrimitive {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVESTATICMESH_EYEDRAW_PASS24
+    // The native eye draw expands the base and the default mesh fields in place.
+    CEnginePrimitiveStaticMesh() : CEnginePrimitive(static_cast<EEnginePrimitiveType>(8), static_cast<EEngineInterpolationSet>(0)) {}
+#endif
     CEnginePrimitiveStaticMesh(unsigned __int64,unsigned long,const C3DVector&,const CRightHandedSet&,float,bool,unsigned char,CRGBColour,float,EEngineInterpolationSet,const CEnginePrimitiveThemeChannelDesc&,bool);
     unsigned long MeshIndex;
     C3DVector WorldPos;
@@ -21,7 +25,7 @@ public:
     unsigned char Lit:1;
     bool BulletTimeAffectsCloth;
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveStaticMesh)==76);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CEnginePrimitiveStaticMesh)==76);
 #endif
 #endif
 // Retail opt-in (Codex pass22): Original Ego_r size76 and complete fields; FableWin uses8-byte CIVCountedPointer and size80. Native0077BD70 ctor177.

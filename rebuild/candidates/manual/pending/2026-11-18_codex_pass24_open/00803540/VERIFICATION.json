@@ -1,0 +1,19 @@
+{
+  "address": "0x00803540",
+  "leaf": "?UpdateTargetedPositionRandomWalk@CTCTargetingPlayer@@IAEXXZ",
+  "retail_bytes": 1108,
+  "object_bytes": 1108,
+  "extra_flags": [],
+  "strict_instruction_hunks": 5,
+  "strict_instruction_ratio": 0.9756838905775076,
+  "first_unequal_masked_offset": 716,
+  "relocation_count": 26,
+  "source_sha256": "8b2498a0a4463a4f353df1e49a8741037a474709b1fbd3ec197f01ebe6edc789",
+  "test_sha256": "16c2f5f210d163684e686ae16f41acd16f961b8ebf626b16f6309530578f5503",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00803540_TEST PASS",
+    "g++ -std=c++03 -O0": "00803540_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 38
+}

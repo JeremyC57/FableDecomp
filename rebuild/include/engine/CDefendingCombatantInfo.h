@@ -52,6 +52,11 @@ public:
   // (same opt-in) ?GetRing@CCombatWheel@CDefendingCombatantInfo@@QBEPBVCCombatRing@2@J@Z (0x006E8520) and
   // ?GetRingRadius@..@@QBEMJ@Z (0x006E8850), out of line in retail. Declarations only.
   const CCombatRing* GetRing(long index) const;                                  // 0x006E8520
+#ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PLACEMENTVECTOR
+  // Retail opt-in (Codex pass 24). Both PDBs and the hidden result at
+  // 0x006E89B0 identify this const method.
+  C3DVector GetAttackerPlacementVector(const CThingCreatureBase&, const CThingCreatureBase&, long) const;
+#endif
   float GetRingRadius(long ring) const;                                          // 0x006E8850
 #endif
   std::vector<CCombatRing> CombatRings;};

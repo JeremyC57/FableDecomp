@@ -12,6 +12,11 @@
 #include "engine/CIntelligentPointer.h"
 #include "engine/ETCInterfaceType.h"
 class CThing;
+#ifdef FABLE_RETAIL_CTCBATTLECHARGE_STARTUP_PASS24
+#include "engine/C3DVector.h"
+#include "engine/CDefPointer.h"
+class CSpecialAbilitiesBattleChargeDef;
+#endif
 #pragma pack(push, 1)
 class CTCBattleCharge : public CTCBase {
 public:
@@ -36,7 +41,23 @@ public:
 #endif // FABLE_RETAIL_CTCBATTLECHARGE_VSLOTS
 private:
     CIntelligentPointer<CThing> PTarget;                                 // +0x0c
+#ifdef FABLE_RETAIL_CTCBATTLECHARGE_STARTUP_PASS24
+    // Ego_d complete class and native reads at 0x007A7724–0x007A7755.
+    void CreateStartUpEffect();
+    CDefPointer<const CSpecialAbilitiesBattleChargeDef> PDef;             // +0x14
+    unsigned char _unmodelled_0x18[0x2E - 0x18];
+    bool DirectionOverride;                                              // +0x2E
+    C3DVector DirectionOverrideVector;                                   // +0x2F
+    unsigned char _unmodelled_0x3B[0x40 - 0x3B];
+    long SpellLevel;                                                     // +0x40
+    unsigned char _unmodelled_0x44[0x50 - 0x44];
+    CIntelligentPointer<CThing> ShieldEffect;                             // +0x50
+    CIntelligentPointer<CThing> LeftFeetEffect;                           // +0x58
+    CIntelligentPointer<CThing> RightFeetEffect;                          // +0x60
+    unsigned char _unmodelled_0x68[0x88 - 0x68];
+#else
     unsigned char _unmodelled_0x14[0x88 - 0x14];                         // +0x14 PDef .. PeopleHit (not modelled)
+#endif
     bool IsZTargetting;                                                  // +0x88
     unsigned char _unmodelled_0x89[0x94 - 0x89];                         // +0x89 .. +0x93
 };

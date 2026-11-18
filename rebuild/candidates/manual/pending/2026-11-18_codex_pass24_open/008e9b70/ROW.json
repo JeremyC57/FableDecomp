@@ -1,0 +1,19 @@
+{
+  "status": "PARKED",
+  "attempts": 11,
+  "leaf": "?AnimUpdate@CModeStrafe@NCreatureMode@@UAEXAAVCAnimateThing@@@Z",
+  "assigned_name": "?AnimUpdate@CModeStrafe@NCreatureMode@@UAEXAAVCAnimateThing@@@Z",
+  "retail_size": 1705,
+  "object_size": 1736,
+  "flags": [],
+  "lever": "The shared model keeps the animation decisions and targets. The prologue, construction order and frame stores still differ from retail.",
+  "residue": "The shared model keeps the animation decisions and targets. The prologue, construction order and frame stores still differ from retail.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 68,
+  "relocations_verified": 68,
+  "relocations_unpaired": 0,
+  "total_recorded_grades": 17,
+  "source_sha256": "ae52cc750807436ff6c7fa2035ca2fc0244c7d9aa73c8ea560a988a863d5ed72",
+  "test_sha256": "f763724e5420fae4a4fc304e2c9dc2f20caa9b3a87df6d44ea91f70a6d93d4cc",
+  "extra_flags": []
+}

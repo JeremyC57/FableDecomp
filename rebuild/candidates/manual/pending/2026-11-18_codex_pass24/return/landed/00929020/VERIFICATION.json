@@ -1,0 +1,134 @@
+{
+  "address": "0x00929020",
+  "leaf": "?IsRunnable@CAIStateGroup_BanditPlayDice@@MAE_NXZ",
+  "retail_bytes": 507,
+  "object_bytes": 507,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 14,
+  "source_sha256": "86bc1c13c533f78b40aa46ccb43e11f92752d338e6eecd8d8835c745a3a23782",
+  "test_sha256": "9ed259acbdf1c7087851c0b58283c765f68e18e001c8618f7c3e13ab67e6c92a",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00929020_TEST PASS",
+    "g++ -std=c++03 -O0": "00929020_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "ffee58160069e9b545726a5152abb4bef2aea42c8c14d8342ca6c8cbf6479b5a",
+  "operands": [
+    {
+      "offset": 7,
+      "type": "REL32",
+      "symbol": "?GetFrame@CWorld@@SIJXZ",
+      "base": "0x0049D870",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 106,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "base": "0x0040F020",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 129,
+      "type": "REL32",
+      "symbol": "?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ",
+      "base": "0x007EE540",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 170,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 185,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 205,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 229,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 259,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "base": "0x0040F020",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 292,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 326,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 335,
+      "type": "REL32",
+      "symbol": "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+      "base": "0x004C73D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 344,
+      "type": "REL32",
+      "symbol": "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+      "base": "0x004C73D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 416,
+      "type": "REL32",
+      "symbol": "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+      "base": "0x00A01B50",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 480,
+      "type": "REL32",
+      "symbol": "?GetFrame@CWorld@@SIJXZ",
+      "base": "0x0049D870",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

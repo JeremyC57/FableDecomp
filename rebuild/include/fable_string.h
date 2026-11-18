@@ -37,6 +37,12 @@ protected:
     std::basic_string<unsigned short> Data;
 public:
     long NoRefs;
+#ifdef FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24
+    void Append(const wchar_t* text,long length) {
+        if (length < 0) Data.append(text);
+        else Data.append(text, text + length);
+    }
+#endif
     bool operator==(const CWideStringData& other) const { const std::basic_string<unsigned short>& other_data=other.Data; return Data==other_data; }
 #ifdef FABLE_RETAIL_CWIDESTRING_TOCHARSTRING_BODY
     // Retail opt-in (NF80, q10939: row 0x0099B2C0 CWideString::ToCharString): Ego_r.pdb ?GetLength@CWideStringData@@QBEJXZ and
@@ -219,6 +225,12 @@ class CWideString
 {
 public:
     CWideString();
+#ifdef FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24
+    void SetAsSubString(const wchar_t* data, long length) { SetString(data,length); }
+protected:
+    void MakeOwnCopyOfData();
+public:
+#endif
     CWideString(const CWideString& other);
 #ifdef FABLE_RETAIL_CWIDESTRING
     // Retail converts bare wide literals implicitly (0x006286F0 Replace(L".xmv", L".wmv"): each temporary's address is
@@ -598,7 +610,26 @@ public:
     // byte below 0x80; its twin 0x0099ED10 calls tolower, ?GetAsLowerCase@CCharString@@QBE?AV1@XZ). Declaration only.
     CCharString GetAsUpperCase() const;                        // 0x0099EE20
 #endif
-#ifdef FABLE_RETAIL_CCHARSTRING_REPLACE
+#if defined(FABLE_RETAIL_CCHARSTRING_REPLACE_EGOD_PASS24)
+    // Inline-budget: four complete CCharString::Replace bodies occur in 005253F0.
+    FABLE_FORCEINLINE void Replace(const CCharString& What,const CCharString& With) {
+        CCharString ret_str;
+        char* data = (char*)GetAsCharArray();
+        char* what = (char*)What.GetAsCharArray();
+        char* prev = data;
+        char* res = strstr(data,what);
+        while (res) {
+            *res=0;
+            res+=strlen(what);
+            ret_str+=CCharString(prev);
+            ret_str+=With;
+            prev=res;
+            res=strstr(res,what);
+        }
+        ret_str+=CCharString(prev);
+        *this=ret_str;
+    }
+#elif defined(FABLE_RETAIL_CCHARSTRING_REPLACE)
     // Retail opt-in (chunk 848, row 0x005253F0 CThingManager::LoadGameState): FableWin.pdb ?Replace@CCharString@@QAEXABV1@0@Z (0x018D9CA0,
     // public, void (const CCharString&, const CCharString&)), inline in retail: LoadGameState expands it four times (0x0052573A..0x005257FD:
     // a default-constructed result, strstr 0x00BFEB3A over the text, the match cut with `mov byte ptr [esi],0`, the search length by the

@@ -1,0 +1,19 @@
+{
+  "address": "0x00B50370",
+  "leaf": "??0CEngineShadowRenderer@@QAE@XZ",
+  "retail_bytes": 406,
+  "object_bytes": 406,
+  "extra_flags": [],
+  "strict_instruction_hunks": 3,
+  "strict_instruction_ratio": 0.922077922077922,
+  "first_unequal_masked_offset": 242,
+  "relocation_count": 6,
+  "source_sha256": "cbc6bcf09e1cc8400607101015a2d77408530f5653276f5ff91171c37ae39a6b",
+  "test_sha256": "8834a3e0fd381c77a64daee2547e0f732f028366cd76a3152a1c763298fe70bd",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00b50370_TEST PASS",
+    "g++ -std=c++03 -O0": "00b50370_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 74
+}

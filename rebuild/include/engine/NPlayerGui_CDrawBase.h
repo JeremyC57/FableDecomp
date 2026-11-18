@@ -10,6 +10,9 @@
 #ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_HANDLES
 #include "engine/CEnginePrimitiveHandle.h"
 #endif
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_GETPLAYER_CALLED
+class CPlayer;
+#endif
 class CPlayerGui; class CPlayerManager; class CWorld; class CMainGameComponent; class CGraphicDataBank; class CEnginePrimitiveHandle;
 #if defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CLEAREFFECTS) || defined(FABLE_RETAIL_NPLAYERGUI_CURSOR_ORIGINAL_DECLARATIONS_PASS22)
 template<class T> class CIntelligentPointer;
@@ -50,6 +53,9 @@ public:
 #elif defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_ORIGINAL_GETPLAYER)
     // Retail opt-in (Codex pass22): both PDB overloads and native00643D7C tail-call00449970.
     CPlayer& GetPlayer() { return PlayerManager->GetMainPlayer(); }
+#elif defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_GETPLAYER_CALLED)
+    // Retail opt-in (Codex pass 24): both PDBs and the call to 0x00643D7C.
+    CPlayer& GetPlayer();
 #endif
 #ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CTOR
     // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): Ego_r.pdb / FableWin.pdb

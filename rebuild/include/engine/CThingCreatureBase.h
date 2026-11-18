@@ -345,6 +345,14 @@ public:
     CCombatManager& GetCombatManager();                                  // 0x00661ED0
     // Chunk 774 (rows 0x007A4520 CTCWillEnflame::PlaySoundW, ...): Ego_r.pdb 0x0053CF90 / FableWin.pdb 0x01D9C460
     // ?MakeNoise@CThingCreatureBase@@QAEXABVCCharString@@@Z, out of line in retail at 0x00662110 (landed row). Declaration only.
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_PERSONALSPACE_PASS24
+    // Ego_r and FableWin agree on the static method. Native 0x006A05A0 and 0x006A0614 call it.
+    static float FABLE_FASTCALL GetPersonalSpaceRadius();              // 0x00661CC0
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_EYEGRAPHIC_PASS24
+    // Both original PDBs and the native 0x0075430D call.
+    const class CEngineGraphic& GetEyeGraphic() const;                 // 0x00662160
+#endif
     void MakeNoise(const CCharString& noiseName);                        // 0x00662110
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_HEROCOMBATDEF
     // Nested opt-in (chunk 777, row 0x00803540 CTCTargetingPlayer::UpdateTargetedPositionRandomWalk): Ego_r.pdb / FableWin.pdb

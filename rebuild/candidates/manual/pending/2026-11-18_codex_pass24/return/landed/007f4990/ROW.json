@@ -1,0 +1,19 @@
+{
+  "status": "RELOCATION_MATCH",
+  "attempts": 18,
+  "leaf": "?GetNPCShortName@CTCHasName@@QAE?AVCWideString@@XZ",
+  "assigned_name": "?GetNPCShortName@CTCHasName@@QAE?AVCWideString@@XZ",
+  "retail_size": 449,
+  "object_size": 449,
+  "flags": [],
+  "lever": "Separate the stored-name and default-name lifetimes with the Ego_d else scope.",
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "relocated_operands": 24,
+  "total_recorded_grades": 26,
+  "source_sha256": "030d60cfcb23a054e70734e3293f90f159aca713b9dd66efac3f2f4e953a8d45",
+  "test_sha256": "246d6ddc4ccedc990fd0ae67c4003f5833203858b0536dabb41df03bdb0c1a0e",
+  "extra_flags": []
+}

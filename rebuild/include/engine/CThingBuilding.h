@@ -28,6 +28,10 @@ protected:
     bool OverrideAutomaticLocking;
 #endif
 public:
+#ifdef FABLE_RETAIL_MINION_CRIMINAL_UPDATE_PASS24
+    bool IsLocked() const;
+    bool IsLockable() const;
+#endif
     static long __fastcall StatGetType() { return 3; }
 #ifdef FABLE_RETAIL_CTHINGBUILDING_TYPEFLAGS
     static unsigned long FABLE_FASTCALL StatGetTypeFlags(){return 0x47;}
@@ -92,5 +96,5 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CThingBuilding)==0xd8);
+FABLE_STATIC_ASSERT_AT(95, sizeof(CThingBuilding)==0xd8);
 #endif

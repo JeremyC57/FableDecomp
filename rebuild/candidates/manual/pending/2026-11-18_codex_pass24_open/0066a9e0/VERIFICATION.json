@@ -1,0 +1,19 @@
+{
+  "address": "0x0066A9E0",
+  "leaf": "?PlayCollisionSound@CTCSoundPlayer@@QAEXABVC3DVector@@ABV?$CDefPointer@$$CBVCMaterialDef@@@@1@Z",
+  "retail_bytes": 626,
+  "object_bytes": 626,
+  "extra_flags": [],
+  "strict_instruction_hunks": 1,
+  "strict_instruction_ratio": 0.9951690821256038,
+  "first_unequal_masked_offset": 545,
+  "relocation_count": 42,
+  "source_sha256": "fb4e2f087310d8c50f3aa59b9a89bdc9a6f5c5d2c718400d4f15baac8d9cc92b",
+  "test_sha256": "ec448509eb41c2ebde631323a68697cadef5bfd607dc420d584110be4ec0718a",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0066a9e0_TEST PASS",
+    "g++ -std=c++03 -O0": "0066a9e0_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 1
+}

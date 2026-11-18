@@ -1,0 +1,18 @@
+{
+  "address": "0x00935580",
+  "leaf": "?IsRunnable@CAIStateGroup_MinionFaceHero@@UAE_NXZ",
+  "retail_bytes": 617,
+  "object_bytes": 605,
+  "extra_flags": [],
+  "strict_instruction_hunks": 30,
+  "strict_instruction_ratio": 0.6629213483146067,
+  "first_unequal_masked_offset": 4,
+  "relocation_count": 24,
+  "source_sha256": "7ce0ab586da9d361a7432a9c600f1eb73d64ca9c49459b8597fd3fa092e029b2",
+  "test_sha256": "0f61f6d21947bc2f6d7ec8a8d398045cace1207dd1a2dcf2279eec6f03a46a57",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00935580_TEST PASS",
+    "g++ -std=c++03 -O0": "00935580_TEST PASS"
+  },
+  "status": "PARKED"
+}

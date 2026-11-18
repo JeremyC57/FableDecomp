@@ -1,0 +1,20 @@
+{
+  "address": "0x00671600",
+  "leaf": "?Transfer@CThingCreatureDef@@UAEXAAVCPersistContext@@@Z",
+  "retail_bytes": 1450,
+  "object_bytes": 1449,
+  "extra_flags": [
+    "/Gr"
+  ],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.9908883826879271,
+  "first_unequal_masked_offset": 1287,
+  "relocation_count": 73,
+  "source_sha256": "709dc720025abe666d37e2cc5f8b945c4e8ad11fa72d76448f4e8d40828afa9f",
+  "test_sha256": "89a606192d6336f868e4bb0a911ebf2fadea7be99aaac34dfb76cac0c246e40b",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00671600_TEST PASS",
+    "g++ -std=c++03 -O0": "00671600_TEST PASS"
+  },
+  "status": "PARKED"
+}

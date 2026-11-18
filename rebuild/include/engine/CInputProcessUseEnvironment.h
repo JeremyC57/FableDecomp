@@ -7,9 +7,16 @@
 // Member names: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv). Virtuals other than the inherited destructor are not modelled.
 #include "rebuild_abi.h"
 #include "engine/CInputProcessGameBase.h"
+#ifdef FABLE_RETAIL_CINPUTPROCESSUSEENVIRONMENT_PASS24
+class CInputEvent;
+class CProcessedInput;
+#endif
 class CInputProcessUseEnvironment : public CInputProcessGameBase {
 public:
     CInputProcessUseEnvironment(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_CINPUTPROCESSUSEENVIRONMENT_PASS24
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessUseEnvironment) == 0x28);
+FABLE_STATIC_ASSERT_AT(14, sizeof(CInputProcessUseEnvironment) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSUSEENVIRONMENT_H

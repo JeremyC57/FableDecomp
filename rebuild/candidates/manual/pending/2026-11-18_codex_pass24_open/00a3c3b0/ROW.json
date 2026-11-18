@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "attempts": 22,
+  "leaf": "?SetInterpolate@C3DAnimationBlendState@@QAEXABV1@0M@Z",
+  "assigned_name": "?SetInterpolate@C3DAnimationBlendState@@QAEXABV1@0M@Z",
+  "retail_size": 777,
+  "object_size": 777,
+  "flags": [],
+  "lever": "Grouping the slerp weight reduces the residue to three induction and reload hunks at 0x00A3C57A.",
+  "residue": "Grouping the slerp weight reduces the residue to three induction and reload hunks at 0x00A3C57A.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 5,
+  "total_recorded_grades": 28,
+  "source_sha256": "2cec5dae7ed70eda1cc5ee4a5409e8bcaf93461f3afe881cad89db3424cf44f7",
+  "test_sha256": "0d6f362cc2390fdfc39f109c0d278ecb5d9f527538c9607b41a17026800599f4",
+  "extra_flags": []
+}

@@ -1,0 +1,166 @@
+{
+  "address": "0x00B63800",
+  "leaf": "?LoadNewScene@CEngineSkyRenderer@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z",
+  "retail_bytes": 1023,
+  "object_bytes": 1023,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 18,
+  "source_sha256": "e5107cb60de09c064203ca5b54221dc77b95e59c2b94738b8fc8287179bcdb18",
+  "test_sha256": "c3992b1306479d03da7545931a8ad029bd0aa430c9f94385b842000ffea703a3",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00b63800_TEST PASS",
+    "g++ -std=c++03 -O0": "00b63800_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "35a81b7b06e20a2752b583946dfe845419f41278fc08dd84f83c7094834cbc62",
+  "operands": [
+    {
+      "offset": 4,
+      "type": "DIR32",
+      "symbol": "?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A",
+      "base": "0x01436E8C",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 118,
+      "type": "REL32",
+      "symbol": "?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z",
+      "base": "0x00464ACE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 180,
+      "type": "REL32",
+      "symbol": "?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z",
+      "base": "0x00464ACE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 242,
+      "type": "REL32",
+      "symbol": "?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z",
+      "base": "0x00464ACE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 316,
+      "type": "REL32",
+      "symbol": "?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z",
+      "base": "0x00464ACE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 378,
+      "type": "REL32",
+      "symbol": "?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z",
+      "base": "0x00464ACE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 440,
+      "type": "REL32",
+      "symbol": "?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z",
+      "base": "0x00464ACE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 554,
+      "type": "REL32",
+      "symbol": "?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z",
+      "base": "0x00464ACE",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 620,
+      "type": "DIR32",
+      "symbol": "?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A",
+      "base": "0x01436E98",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 795,
+      "type": "REL32",
+      "symbol": "?ListRemove@CResource@@AAEXXZ",
+      "base": "0x009FBFB0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 813,
+      "type": "REL32",
+      "symbol": "?ListInsert@CResource@@AAEXPAV1@0@Z",
+      "base": "0x009FBF90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 847,
+      "type": "REL32",
+      "symbol": "?ListRemove@CResource@@AAEXXZ",
+      "base": "0x009FBFB0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 865,
+      "type": "REL32",
+      "symbol": "?ListInsert@CResource@@AAEXPAV1@0@Z",
+      "base": "0x009FBF90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 905,
+      "type": "REL32",
+      "symbol": "?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z",
+      "base": "0x009FDE80",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 914,
+      "type": "REL32",
+      "symbol": "??2@YAPAXI@Z",
+      "base": "0x00BFEA1A",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 929,
+      "type": "REL32",
+      "symbol": "??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z",
+      "base": "0x009FE380",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 967,
+      "type": "REL32",
+      "symbol": "?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z",
+      "base": "0x009FDE80",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 1004,
+      "type": "REL32",
+      "symbol": "_free",
+      "base": "0x00BFEA14",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

@@ -229,6 +229,10 @@ protected:
     // Retail opt-in (Codex pass17): both PDBs and native006afe60 prove the real def handle.
     CDefPointer<const CPhysicsDef> PhysicsDef;
     void RespondToCollision(const CPhysicsCollideResponse& response_info,C3DVector& velocity) const;
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_IMPULSE_COLLISION
+    // Retail opt-in (Codex pass 24): the protected const Ego_r and FableWin member, retail 0x006AF7D0.
+    void ImpulseRespondToCollision(const CPhysicsCollideResponse& response_info, C3DVector& current_velocity) const;
+#endif
 #else
     unsigned char PhysicsDef[4];
 #endif

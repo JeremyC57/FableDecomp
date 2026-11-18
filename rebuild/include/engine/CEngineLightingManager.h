@@ -115,6 +115,12 @@ public:
     // names pos, normal, light_array, light_result). Declaration only, no layout change.
     void CalcSWLightingNoClip(const C3DVector& pos,const C3DVector& normal,const CEngineLocalLightArray& light_array,CRGBFloatColour& light_result);
 #endif
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_CALCSWLIGHTING_SEPARATE_MAIN
+    // Retail opt-in (Codex pass 24): the original public member, retail 0x00B45A40.
+    void CalcSWLightingNoClipSeparateMainLight(const C3DVector& pos, const C3DVector& normal,
+        const CEngineLocalLightArray& light_array, CRGBFloatColour& main_light_result,
+        CRGBFloatColour& misc_light_result);
+#endif
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_CALCSWLIGHTING_LOCALLIGHTS
     // e11 opt-in (row 0x00B45720): Ego_r.pdb / FableWin.pdb ?CalcSWLighting@CEngineLightingManager@@QAE?AVCRGBFloatColour@@ABVC3DVector@@0ABVCEngineLocalLightArray@@@Z
     // (the overload with the local lights; Ego_r order: the global-only overload 0x009BA660, this one 0x009BA8A0 = retail 0x00B45510 /

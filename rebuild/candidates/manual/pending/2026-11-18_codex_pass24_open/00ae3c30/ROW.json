@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "assigned_name": "?ReadFromFile@CParticleProgram@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z",
+  "leaf": "?ReadFromFile@CParticleProgram@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z",
+  "attempts": 32,
+  "retail_size": 2310,
+  "object_size": 2310,
+  "flags": [],
+  "lever": "At 00AE40AC the texture-coordinate buffer starts in EDI rather than EAX. Retail copies EAX to EDI after the count test. The later read and the remainder of the function realign.",
+  "residue": "At 00AE40AC the texture-coordinate buffer starts in EDI rather than EAX. Retail copies EAX to EDI after the count test. The later read and the remainder of the function realign.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "total_recorded_grades": 38,
+  "source_sha256": "c0aa4969efe0f31004e8088a9b728a1a5ff20d1edc68857eccdad3b0683bce9c",
+  "test_sha256": "cad0c07a868b8e5ca8a37bcf76bb93f6f9c7cf17735c51ced6166dec4f64ae98",
+  "extra_flags": []
+}

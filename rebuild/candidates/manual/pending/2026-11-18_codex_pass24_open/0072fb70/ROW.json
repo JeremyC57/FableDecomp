@@ -1,0 +1,19 @@
+{
+  "status": "PARKED",
+  "attempts": 18,
+  "leaf": "?FrameUpdate@CTCDummyVillager@@UAEXXZ",
+  "assigned_name": "?FrameUpdate@CTCDummyVillager@@UAEXXZ",
+  "retail_size": 1278,
+  "object_size": 1319,
+  "flags": [],
+  "lever": "The shared village and spawn APIs retain the native second marker pass, including frustum and line-of-sight gating. Definition cleanup, vector allocation and marker traversal scheduling still differ.",
+  "residue": "The shared village and spawn APIs retain the native second marker pass, including frustum and line-of-sight gating. Definition cleanup, vector allocation and marker traversal scheduling still differ.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 53,
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "total_recorded_grades": 22,
+  "source_sha256": "21de7bcaa8c7c16d1580d39b9cc3c96893263eac0fa12f7347f1b8e754c2950f",
+  "test_sha256": "807baae7376eeaaa7e2c476c0aa34a19df98adb098af09eca87ccc4734ccfa9d",
+  "extra_flags": []
+}

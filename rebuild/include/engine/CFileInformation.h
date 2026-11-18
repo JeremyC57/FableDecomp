@@ -4,9 +4,13 @@
 #include "engine/CDateAndTime.h"
 // Original PDB complete class: three CDateAndTime values at0/28/56, bool84, size88.
 class CFileInformation { public:
+#ifdef FABLE_RETAIL_WAD_ADD_FILE_PASS24
+ CFileInformation() { }
+#else
  CFileInformation();
+#endif
  CDateAndTime CreationTime,LastAccessTime,LastWriteTime;
  bool ReadOnly;
 };
-FABLE_STATIC_ASSERT(sizeof(CFileInformation)==88);
+FABLE_STATIC_ASSERT_AT(11, sizeof(CFileInformation)==88);
 #endif

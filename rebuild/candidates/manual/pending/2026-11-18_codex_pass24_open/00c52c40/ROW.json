@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "attempts": 10,
+  "leaf": "?GetCyrixModelName@CCpuInfo@@QBEPBDXZ",
+  "assigned_name": "?GetCyrixModelName@CCpuInfo@@QBEPBDXZ",
+  "retail_size": 75,
+  "object_size": 75,
+  "flags": [],
+  "lever": "The CPUID model selection uses the other available register from 0x00C52C40.",
+  "residue": "The CPUID model selection uses the other available CPU operand from 0x00C52C40.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 6,
+  "total_recorded_grades": 16,
+  "source_sha256": "b86dc7f0dfea7b5ab6a8c5672f11213ddee66be879074056eb20a23af9b6ec3a",
+  "test_sha256": "5c3add1f902eb1d4b14041d5e5d84557e401a9ec599d3553977b1e9dc510a893",
+  "extra_flags": []
+}

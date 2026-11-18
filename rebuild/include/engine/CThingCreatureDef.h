@@ -6,8 +6,69 @@
 #include "engine/CEngineGraphic.h"
 #endif
 // Original TPI0x14ae8; complete native14c, original flags begin148.
+#ifdef FABLE_RETAIL_CTHINGCREATUREDEF_TRANSFER_PASS24
+#include "engine/ECreatureType.h"
+#include "engine/CEngineGraphic.h"
+#include "stlport/fable_containers.h"
+// Names and widths from the Ego_d type records; the native transfer passes each by address.
+enum ESex { SEX_NULL, SEX_MALE, SEX_FEMALE, NO_OF_SEXES };
+enum ENavigatorType { NAV_INIT_GROUND = 1, NAV_INIT_FLYER = 2 };
+enum EControlledMovementType { CONTROLLED_MOVEMENT_NULL = 0 };
+enum ECreatureInteractionType { CREATURE_INTERACTION_NULL = 0 };
+enum EThingCreatureProperty { THING_CREATURE_PROPERTY_NULL = 0 };
+#endif
 class CThingCreatureDef : public CThingBaseDef {
 public:
+#ifdef FABLE_RETAIL_CTHINGCREATUREDEF_TRANSFER_PASS24
+    virtual void Transfer(class CPersistContext& persist);
+    float StunTimeMin;
+    float StunTimeMax;
+    float StunHealthThreshold;
+    float DazedTimeMin;
+    float DazedTimeMax;
+    long  DazedHealthThreshold;
+    float NumSecondsToPersistOnDeath;
+    float MaxSlowWalkingSpeed;
+    float MaxWalkingSpeed;
+    float MaxJoggingSpeed;
+    float MaxRunningSpeed;
+    float MaxPushingSpeed;
+    float MaxFlyingSpeed;
+    float MaxHoverSpeedSlow;
+    float MaxHoverSpeedMedium;
+    float MaxHoverSpeedFast;
+    float SpeedRandomisationFactor;
+    float MaxAcceleration;
+    float HearingRadius;
+    float FOV;
+    ESex  Sex;
+    ECreatureType CreatureType;
+    std::vector<ENavigatorType> NavigatorTypes;
+    long  InitialWeaponDef;
+    long  PrimaryMeleeWeaponDef;
+    long  SecondaryMeleeWeaponDef;
+    long  RangedWeaponDef;
+    long  InitialSheathedWeapon;
+    long  BrainDef;
+    ECreatureInteractionType CreatureInteractionType;
+    EThingCreatureProperty Property;
+    float Damage;
+    long  DamageEffectDef;
+    long  StunnedParticle;
+    CEngineGraphic Graphic;
+    CEngineGraphic EyeGraphic;
+    long  DefaultOwner;
+    EControlledMovementType ControlledMovementType;
+    long  CombatTypeDef;
+    bool  ResetCombatTypeOnUnsheatheDefaultWeapons;
+    long  HeroCombatDef;
+    long  HeroCombatPCDef;
+    float CombatDiameter;
+    bool  DeferHitsIfBehindHitter : 1;
+    long  LeaderTypeDef;
+    float RecoverEvadeHitsPercent;
+    long  DeadBodyDecayEffect;
+#else
 #if defined(FABLE_RETAIL_CTHINGCREATUREDEF_MEMBERS)
     // Opt-in (agentNF12, 2026-11-11, row 0x008338D0 CThingAICreature::InitialiseFromDef): the Ego_r.pdb members between the base and the
     // flag block, in order and spelling, at the retail offsets (PDB - 4 up to NavigatorTypes, a 12-byte STLport vector; PDB - 8 after).
@@ -76,6 +137,7 @@ public:
     unsigned char _pad_0x70[0xd8];
 #endif
 #endif // FABLE_RETAIL_CTHINGCREATUREDEF_MEMBERS
+#endif
     bool LeaveDeadCreature:1;
     bool AbleToStrafe:1;
     bool CreateDummyOnDeath:1;

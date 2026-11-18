@@ -21,6 +21,9 @@ class CThingPlayerCreature;
 class CThingBuilding;
 class CAIStateGroup_MinionReactToCriminal : public CAIStateGroupBase {
 public:
+#ifdef FABLE_RETAIL_MINION_CRIMINAL_UPDATE_PASS24
+    virtual void Update();
+#endif
     virtual bool IsStillValid() const;                                   // slot 5 0x00931200
 private:
     bool IsValid() const;                                                // 0x00930EE0
@@ -33,7 +36,7 @@ private:
     mutable bool MeInsideHouse;                                          // +0x2e
     mutable bool GuardInsideHouse;                                       // +0x2f
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionReactToCriminal) == 0x30);
+FABLE_STATIC_ASSERT_AT(36, sizeof(CAIStateGroup_MinionReactToCriminal) == 0x30);
 #else
 
 #pragma pack(push, 1)

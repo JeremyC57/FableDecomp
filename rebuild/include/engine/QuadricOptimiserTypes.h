@@ -21,6 +21,14 @@ class CQuadric {public:double AA,AB,AC,AD,BB,BC,BD,CC,CD,DD,Weight;void operator
  // ?GetInverseMatrixPart@CQuadric@QuadricOptimiserInternals@@QBE?AVCMatrix3x4@@XZ, out of line in retail at 0x00AC70F0. Declaration only.
  CMatrix3x4 GetInverseMatrixPart()const;
 #endif
+#ifdef FABLE_RETAIL_CQUADRIC_OPTIMALPLACEMENT
+ // Retail opt-in (Codex pass 24): FableWin and Ego_r carry these two helpers expanded at 0x00AC77B6 and 0x00AC780E.
+ double GetDeterminant() const {
+    double det = AA * (BB * CC - BC * BC) + AC * (BC * AB - AC * BB) + AB * (AC * BC - CC * AB);
+    return det;
+ }
+ C3DVector GetVectorPart() const { return C3DVector((float)AD, (float)BD, (float)CD); }
+#endif
 #ifdef FABLE_RETAIL_CQUADRIC_MEMBERS
  // Retail opt-in (row 0x00ACA830): Ego_r.pdb / FableWin.pdb ?Clear@CQuadric@QuadricOptimiserInternals@@QAEXXZ (0x00AC6CE0),
  // ??XCQuadric@QuadricOptimiserInternals@@QAEXN@Z (0x00AC6EF0; both same-TU out-of-line definitions that 0x00ACA830 expands) and
@@ -36,6 +44,10 @@ class CQuadric {public:double AA,AB,AC,AD,BB,BC,BD,CC,CD,DD,Weight;void operator
 // FableWin.pdb ?AddIndex@CIndexList@QuadricOptimiserInternals@@QAEXK@Z (inline), ~CUniqueVertex 0x00AD4A70 out of line.
 class CIndexList {public:
  std::set<unsigned long> Indices;
+#ifdef FABLE_RETAIL_QUADRIC_CINDEXLIST_INTERSECTION
+ // Retail opt-in (Codex pass 24): both PDBs name the public const member at 0x00AC8960.
+ CIndexList GetIntersection(const CIndexList& other) const;
+#endif
  void AddIndex(unsigned long index){Indices.insert(index);}
 };
 class CUniqueVertex {public:

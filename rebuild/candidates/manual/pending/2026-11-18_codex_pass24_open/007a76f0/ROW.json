@@ -1,0 +1,19 @@
+{
+  "status": "PARKED",
+  "attempts": 16,
+  "leaf": "?CreateStartUpEffect@CTCBattleCharge@@AAEXXZ",
+  "assigned_name": "?CreateStartUpEffect@CTCBattleCharge@@AAEXXZ",
+  "retail_size": 1239,
+  "object_size": 1219,
+  "flags": [],
+  "lever": "The shared owner uses the original battle definition, effect map, noise and particle APIs. The direction construction and three intelligent-pointer effect blocks retain different stack and instruction schedules.",
+  "residue": "The shared owner uses the original battle definition, effect map, noise and particle APIs. The direction construction and three intelligent-pointer effect blocks retain different stack and instruction schedules.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 80,
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "total_recorded_grades": 20,
+  "source_sha256": "5d4a83fd8121972b4f27e269423fa4e5e8f8f2ebdd93a195e0c2aeae853c1f99",
+  "test_sha256": "fbfc89bd81700327cf7134b48c619ea9dd4f4d0bd14d98e340d4d90419a8f52c",
+  "extra_flags": []
+}

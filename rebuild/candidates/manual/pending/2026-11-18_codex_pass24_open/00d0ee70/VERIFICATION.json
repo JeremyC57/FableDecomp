@@ -1,0 +1,18 @@
+{
+  "address": "0x00D0EE70",
+  "leaf": "?CheckForFirstAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ",
+  "retail_bytes": 1989,
+  "object_bytes": 1991,
+  "extra_flags": [],
+  "strict_instruction_hunks": 94,
+  "strict_instruction_ratio": 0.6211382113821138,
+  "first_unequal_masked_offset": 2,
+  "relocation_count": 82,
+  "source_sha256": "eede95f94b7662e006a3b341765d6413047c3b1c5bface3cd2c51e1561b5c97c",
+  "test_sha256": "1bf2460d6022f702f1130b1e5196c1db3d2804f2157592f0025884806b2cc2cd",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00d0ee70_TEST PASS",
+    "g++ -std=c++03 -O0": "00d0ee70_TEST PASS"
+  },
+  "status": "PARKED"
+}

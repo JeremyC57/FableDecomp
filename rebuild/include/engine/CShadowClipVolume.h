@@ -19,6 +19,11 @@
 class C3DBoundingBox;
 class CShadowClipVolume {
 public:
+#ifdef FABLE_RETAIL_CSHADOWCLIPVOLUME_CTOR
+    // Retail opt-in (Codex pass 24): FableWin donor 0x02D748E0, expanded
+    // in the shadow-renderer construction at 0x00B50382.
+    CShadowClipVolume() : ClipPlaneCount(0), ClipToSphere(false) { }
+#endif
     CPlane            ClipPlanes[8];                                     // +0x00
     long              ClipPlaneCount;                                    // +0x80
     C3DBoundingSphere BoundingSphere;                                    // +0x84

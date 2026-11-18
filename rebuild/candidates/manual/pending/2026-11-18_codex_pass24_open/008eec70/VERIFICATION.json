@@ -1,0 +1,19 @@
+{
+  "address": "0x008EEC70",
+  "leaf": "?Collide@Mass@@SI_NPAV1@0VC2DVector@@11MMMM@Z",
+  "retail_bytes": 1129,
+  "object_bytes": 1129,
+  "extra_flags": [],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.9973333333333333,
+  "first_unequal_masked_offset": 702,
+  "relocation_count": 12,
+  "source_sha256": "27a5e662a1f93b30be28f8ff9d2bcc4d44a7c99cfa391cea88d733f7945a70c1",
+  "test_sha256": "ea22fdd06a514700487433282b4260af64988e6076f74ba74435013b48aa8189",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "008eec70_TEST PASS",
+    "g++ -std=c++03 -O0": "008eec70_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 122
+}

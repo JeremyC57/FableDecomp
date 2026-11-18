@@ -1,0 +1,182 @@
+{
+  "address": "0x00926060",
+  "leaf": "?Update@CAIStateGroup_WifeGiveYouGift@@UAEXXZ",
+  "retail_bytes": 386,
+  "object_bytes": 386,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 20,
+  "source_sha256": "08dc3a7dc860d3cb720979a248b0688beaf8aff52d94498b28e7cb53499a0ade",
+  "test_sha256": "41ce703783704aff381e1905c8ede2b55e62ffe059d8592268f3d1878fab20ed",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00926060_TEST PASS",
+    "g++ -std=c++03 -O0": "00926060_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "c5416512c694e1511402619ea67e71c39899768db9f6e06653d9e2d6630a1c16",
+  "operands": [
+    {
+      "offset": 41,
+      "type": "REL32",
+      "symbol": "?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ",
+      "base": "0x008FCF90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 48,
+      "type": "REL32",
+      "symbol": "?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ",
+      "base": "0x00449970",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 55,
+      "type": "REL32",
+      "symbol": "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ",
+      "base": "0x00487DC0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 126,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "base": "0x0040F020",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 149,
+      "type": "DIR32",
+      "symbol": "?TEXT_TO_SAY@?A0x03ffcbec@@3VCCharString@@A",
+      "base": "0x013BB690",
+      "coff_addend": 0,
+      "evidence": "bound TU-local object, module discriminator normalized"
+    },
+    {
+      "offset": 160,
+      "type": "DIR32",
+      "symbol": "?NullChar@CCharString@@1DB",
+      "base": "0x0129AAF4",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 173,
+      "type": "DIR32",
+      "symbol": "?PMainGameComponent@CMainGameComponent@@1PAV1@A",
+      "base": "0x013B86A0",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 184,
+      "type": "REL32",
+      "symbol": "?Calc@CCRC@@SIKKPBXK@Z",
+      "base": "0x004014A0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 192,
+      "type": "REL32",
+      "symbol": "?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z",
+      "base": "0x009CC410",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 228,
+      "type": "REL32",
+      "symbol": "??0CBaseIntelligentPointer@@QAE@XZ",
+      "base": "0x00A01B10",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 241,
+      "type": "DIR32",
+      "symbol": "??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@",
+      "base": "0x01237F1C",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 246,
+      "type": "REL32",
+      "symbol": "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+      "base": "0x00A01B90",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 255,
+      "type": "REL32",
+      "symbol": "?AIAction_MoveToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@MAA_NW4EMovementType@@_N444M@Z",
+      "base": "0x0097E380",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 264,
+      "type": "REL32",
+      "symbol": "?GetFrame@CWorld@@SIJXZ",
+      "base": "0x0049D870",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 300,
+      "type": "REL32",
+      "symbol": "?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@K_NW4EDialogueLayer@NSpeechGainManager@@00@Z",
+      "base": "0x006E3B60",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 312,
+      "type": "REL32",
+      "symbol": "?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ",
+      "base": "0x0097E200",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 324,
+      "type": "REL32",
+      "symbol": "?Terminate@CAIStateGroupBase@@QAEXXZ",
+      "base": "0x008FCF40",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 342,
+      "type": "DIR32",
+      "symbol": "?ConstantFPS@CMainGameComponent@@1JA",
+      "base": "0x01375550",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 347,
+      "type": "REL32",
+      "symbol": "?GetFrame@CWorld@@SIJXZ",
+      "base": "0x0049D870",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 374,
+      "type": "REL32",
+      "symbol": "?Terminate@CAIStateGroupBase@@QAEXXZ",
+      "base": "0x008FCF40",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

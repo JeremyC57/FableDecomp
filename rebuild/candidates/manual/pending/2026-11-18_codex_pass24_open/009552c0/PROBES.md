@@ -1,0 +1,72 @@
+# Compiler probes
+
+- middle tail maze baseline — DIFFER, 868 v 861 bytes, 39 instruction hunks.
+- middle tail maze common last conditional bool — DIFFER, 906 v 861 bytes, 48 instruction hunks.
+- middle tail maze common last conditional ref — DIFFER, 912 v 861 bytes, 46 instruction hunks.
+- middle tail maze common last exit repeat — DIFFER, 899 v 861 bytes, 46 instruction hunks.
+- middle tail maze common last normal — DIFFER, 864 v 861 bytes, 14 instruction hunks.
+- middle tail maze common last positive condargs — DIFFER, 864 v 861 bytes, 14 instruction hunks.
+- middle tail maze common last return void — DIFFER, 899 v 861 bytes, 46 instruction hunks.
+- middle tail maze early goto conditional bool — DIFFER, 914 v 861 bytes, 48 instruction hunks.
+- middle tail maze early goto conditional ref — DIFFER, 920 v 861 bytes, 46 instruction hunks.
+- middle tail maze early goto exit repeat — DIFFER, 907 v 861 bytes, 46 instruction hunks.
+- middle tail maze early goto normal — DIFFER, 872 v 861 bytes, 14 instruction hunks.
+- middle tail maze early goto positive condargs — DIFFER, 872 v 861 bytes, 14 instruction hunks.
+- middle tail maze early goto return void — DIFFER, 907 v 861 bytes, 46 instruction hunks.
+- middle tail maze goto post action blocks — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze goto post action current — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze goto post action goto — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze goto post action spell named — DIFFER, 883 v 861 bytes, 9 instruction hunks.
+- middle tail maze goto post action with ret — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze guard negated blocks — DIFFER, 874 v 861 bytes, 15 instruction hunks.
+- middle tail maze guard negated current — DIFFER, 874 v 861 bytes, 15 instruction hunks.
+- middle tail maze guard negated goto — DIFFER, 874 v 861 bytes, 15 instruction hunks.
+- middle tail maze guard negated spell named — DIFFER, 896 v 861 bytes, 16 instruction hunks.
+- middle tail maze guard negated with ret — DIFFER, 874 v 861 bytes, 15 instruction hunks.
+- middle tail maze guard ret before blocks — DIFFER, 869 v 861 bytes, 16 instruction hunks.
+- middle tail maze guard ret before current — DIFFER, 869 v 861 bytes, 16 instruction hunks.
+- middle tail maze guard ret before goto — DIFFER, 869 v 861 bytes, 16 instruction hunks.
+- middle tail maze guard ret before spell named — DIFFER, 891 v 861 bytes, 16 instruction hunks.
+- middle tail maze guard ret before with ret — DIFFER, 869 v 861 bytes, 16 instruction hunks.
+- middle tail maze inverse early conditional bool — DIFFER, 906 v 861 bytes, 49 instruction hunks.
+- middle tail maze inverse early conditional ref — DIFFER, 912 v 861 bytes, 47 instruction hunks.
+- middle tail maze inverse early exit repeat — DIFFER, 899 v 861 bytes, 47 instruction hunks.
+- middle tail maze inverse early normal — DIFFER, 864 v 861 bytes, 15 instruction hunks.
+- middle tail maze inverse early positive condargs — DIFFER, 864 v 861 bytes, 15 instruction hunks.
+- middle tail maze inverse early return void — DIFFER, 899 v 861 bytes, 47 instruction hunks.
+- middle tail maze mutable inline — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze mutable outline both — DIFFER, 837 v 861 bytes, 16 instruction hunks.
+- middle tail maze mutable outline look — DIFFER, 869 v 861 bytes, 24 instruction hunks.
+- middle tail maze nested if blocks — DIFFER, 860 v 861 bytes, 15 instruction hunks.
+- middle tail maze nested if current — DIFFER, 860 v 861 bytes, 15 instruction hunks.
+- middle tail maze nested if goto — DIFFER, 860 v 861 bytes, 15 instruction hunks.
+- middle tail maze nested if spell named — DIFFER, 871 v 861 bytes, 21 instruction hunks.
+- middle tail maze nested if with ret — DIFFER, 860 v 861 bytes, 15 instruction hunks.
+- middle tail maze original binding — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze outer ret blocks — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze outer ret current — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze outer ret goto — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze outer ret spell named — DIFFER, 883 v 861 bytes, 9 instruction hunks.
+- middle tail maze outer ret with ret — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze parked final — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze real vector — COMPILE_FAIL.
+- middle tail maze ret else blocks — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze ret else current — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze ret else goto — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze ret else spell named — DIFFER, 883 v 861 bytes, 9 instruction hunks.
+- middle tail maze ret else with ret — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze ret outside blocks — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze ret outside current — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze ret outside goto — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze ret outside spell named — DIFFER, 883 v 861 bytes, 9 instruction hunks.
+- middle tail maze ret outside with ret — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze shared — COMPILE_FAIL.
+- middle tail maze stock conditional bool — DIFFER, 906 v 861 bytes, 43 instruction hunks.
+- middle tail maze stock conditional ref — DIFFER, 908 v 861 bytes, 45 instruction hunks.
+- middle tail maze stock exit repeat — DIFFER, 902 v 861 bytes, 43 instruction hunks.
+- middle tail maze stock normal — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze stock positive condargs — DIFFER, 861 v 861 bytes, 6 instruction hunks.
+- middle tail maze stock return void — DIFFER, 902 v 861 bytes, 45 instruction hunks.
+- middle tail maze vector original — DIFFER, 880 v 861 bytes, 18 instruction hunks.
+
+The selected result is PARKED (861 object bytes, 861 retail bytes). The final test passed with VC7.1 and GNU C++03. GRADE_HISTORY.tsv includes all recorded compiler runs, including baseline and verification repeats.

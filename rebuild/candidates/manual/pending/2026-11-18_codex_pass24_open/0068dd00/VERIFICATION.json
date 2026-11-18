@@ -1,0 +1,20 @@
+{
+  "address": "0x0068DD00",
+  "leaf": "?ProcessInput@CInputProcessUseEnvironment@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z",
+  "retail_bytes": 1471,
+  "object_bytes": 1617,
+  "extra_flags": [
+    "/GS"
+  ],
+  "strict_instruction_hunks": 84,
+  "strict_instruction_ratio": 0.6180257510729614,
+  "first_unequal_masked_offset": 2,
+  "relocation_count": 48,
+  "source_sha256": "9da641ab46cf85652d15f16b254916257e89d264e9d3bb4dd9700e38a05b24e9",
+  "test_sha256": "2e1ce4ed9c62cf1c09a4ff19cea1b952d62757ae04f7c38e6c107e708d7db291",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "0068dd00_TEST PASS",
+    "g++ -std=c++03 -O0": "0068dd00_TEST PASS"
+  },
+  "status": "PARKED"
+}

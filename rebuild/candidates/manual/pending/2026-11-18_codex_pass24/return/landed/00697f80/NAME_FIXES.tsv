@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00875120	?IsPosInViewingFrustrum@CTools@NCameraModes@@QBE_NABVC3DVector@@00M@Z	Ego_r 0x0085B8F0 and FableWin 0x029C2520 agree on the const namespaced member. Retail 0x00697F50 and 0x00698126 call with three positions and FOV.	CTools::IsPosInViewingFrustrum (catalog shorthand); CTools_00697f50::IsPosInViewingFrustrum (landed local model)

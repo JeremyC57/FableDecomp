@@ -1,5 +1,9 @@
 # Codex pass 24 reservation (2026-11-18, owner): 100 parked near misses that Ego_d.pdb can help
 
+**Returned and released 2026-11-18:** Codex's hand-back (28 RELOCATION_MATCH, 72 PARKED) landed all 28 in landing p24
+(`../../batches/2026-11-18_landing_p24/`, 21,463 bytes, with its 135 headers merged). `RESERVED.tsv` is now `RELEASED.tsv`; the 72
+parked rows' closest sources are in `../2026-11-18_codex_pass24_open/`; Codex's top-level files are in `return/`.
+
 Owner: "Get a hand off zip ready with 100 near miss rows that ego_d has a good chance of helping. And include drive link to pdb in
 handoff. This is for codex".
 

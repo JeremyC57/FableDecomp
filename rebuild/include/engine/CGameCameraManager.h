@@ -75,6 +75,9 @@ private:
 public:
 #endif
 private:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_HEIGHTLIMITS_PASS24
+    void UpdateHeightLimits();
+#endif
     void SetCameraManagerDef(const CDefPointer<const CCameraManagerDef>& def);         // 0x0069A850 (Ego_r.pdb AAE: private)
 public:
     class CQuake {                                                       // Ego_r.pdb CGameCameraManager::CQuake, 0x30 bytes

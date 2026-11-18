@@ -1,0 +1,60 @@
+# Compiler probes
+
+- package baseline — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail deliverable — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail force matrix same tu — DIFFER, 472 v 471 bytes, 14 instruction hunks, first unequal byte at 0x00ADF0F6.
+- tail force matrix same tu accessors — DIFFER, 472 v 471 bytes, 12 instruction hunks, first unequal byte at 0x00ADF101.
+- tail force matrix same tu copy — DIFFER, 472 v 471 bytes, 14 instruction hunks, first unequal byte at 0x00ADF0F6.
+- tail matrix counter tests — DIFFER, 472 v 471 bytes, 13 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix dest reference — DIFFER, 472 v 471 bytes, 13 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix direct — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix in branch pointers — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix increments — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix integer indices — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix late sum — DIFFER, 472 v 471 bytes, 10 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix named sums — DIFFER, 472 v 471 bytes, 11 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix paired sums — DIFFER, 472 v 471 bytes, 13 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix same tu — DIFFER, 50 v 471 bytes, 6 instruction hunks, first unequal byte at 0x00ADEFC8.
+- tail matrix same tu accessors — DIFFER, 50 v 471 bytes, 6 instruction hunks, first unequal byte at 0x00ADEFC8.
+- tail matrix same tu copy — DIFFER, 50 v 471 bytes, 6 instruction hunks, first unequal byte at 0x00ADEFC8.
+- tail matrix terms 0123 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 0132 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 0213 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 0231 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 0312 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 0321 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 1023 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 1032 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 1203 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 1230 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 1302 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 1320 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 2013 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 2031 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 2103 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 2130 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 2301 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 2310 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 3012 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 3021 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 3102 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 3120 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 3201 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix terms 3210 — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix transpose sums — DIFFER, 472 v 471 bytes, 9 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix unaliased fixed — DIFFER, 472 v 471 bytes, 10 instruction hunks, first unequal byte at 0x00ADF101.
+- tail matrix unroll accumulate lhs — COMPILE_FAIL.
+- tail matrix unroll accumulate retail — COMPILE_FAIL.
+- tail matrix unroll accumulate rhs — COMPILE_FAIL.
+- tail matrix unroll flat lhs — DIFFER, 905 v 471 bytes, 17 instruction hunks, first unequal byte at 0x00ADEFE1.
+- tail matrix unroll flat retail — DIFFER, 905 v 471 bytes, 17 instruction hunks, first unequal byte at 0x00ADEFE1.
+- tail matrix unroll flat rhs — DIFFER, 905 v 471 bytes, 17 instruction hunks, first unequal byte at 0x00ADEFE1.
+- tail matrix unroll nested lhs — DIFFER, 905 v 471 bytes, 16 instruction hunks, first unequal byte at 0x00ADEFE1.
+- tail matrix unroll nested retail — DIFFER, 905 v 471 bytes, 16 instruction hunks, first unequal byte at 0x00ADEFE1.
+- tail matrix unroll nested rhs — DIFFER, 905 v 471 bytes, 16 instruction hunks, first unequal byte at 0x00ADEFE1.
+- tail matrix unroll pair lhs — DIFFER, 905 v 471 bytes, 17 instruction hunks, first unequal byte at 0x00ADEFE1.
+- tail matrix unroll pair retail — DIFFER, 905 v 471 bytes, 17 instruction hunks, first unequal byte at 0x00ADEFE1.
+- tail matrix unroll pair rhs — DIFFER, 905 v 471 bytes, 17 instruction hunks, first unequal byte at 0x00ADEFE1.
+- tail matrix without row alias — COMPILE_FAIL.
+
+The selected result is PARKED (472 object bytes, 471 retail bytes). The final test passed with VC7.1 and GNU C++03. GRADE_HISTORY.tsv includes all recorded compiler runs, including baseline and verification repeats.

@@ -1,0 +1,19 @@
+{
+  "status": "PARKED",
+  "attempts": 28,
+  "leaf": "?ConstructActualBuyInventoryPC@CTCInventoryTrade@@AAEXXZ",
+  "assigned_name": "?ConstructActualBuyInventoryPC@CTCInventoryTrade@@AAEXXZ",
+  "retail_size": 3532,
+  "object_size": 3532,
+  "flags": [],
+  "lever": "Retail reloads the category children before the frame in the subtitle join. The rebuilt instructions are reversed.",
+  "residue": "Retail reloads the category children before the frame in the subtitle join. The rebuilt instructions are reversed.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 210,
+  "relocations_verified": 210,
+  "relocations_unpaired": 0,
+  "total_recorded_grades": 38,
+  "source_sha256": "4985d5c83cf936b764fb4464815d3f98bbf7bf98c83c5ec871c7ad28b9a553cf",
+  "test_sha256": "036f8c53ef1c2fdf14b7c15b353d7923e653db6a9484420101a88475a1df6e00",
+  "extra_flags": []
+}

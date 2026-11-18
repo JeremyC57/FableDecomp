@@ -5,6 +5,10 @@
 // PositionIndex (`movzx edi,word ptr [ecx+eax*4]`, 0x00BB204B).
 class C3DClothRenderVertex {
 public:
+#ifdef FABLE_RETAIL_C3DCLOTHRENDERVERTEX_DEFAULT_CTOR_PASS24
+    // FableWin 033587B0; native 00AE3F32 passes an existing stack word without initializing either index.
+    C3DClothRenderVertex() {}
+#endif
     unsigned short PositionIndex;                                        // +0x00
     unsigned short TexCoordIndex;                                        // +0x02
 };

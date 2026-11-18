@@ -43,10 +43,14 @@ protected:
     CEnginePrimitiveHandle TrailPrimHandle;     // +0x48
     long          ChildTrailPrimIndex;          // +0x50
 public:
+#ifdef FABLE_RETAIL_CPSCRENDERSPRITE_BOUNDING_PASS24
+    // Retail opt-in (Codex pass 24): FableWin and slot 19 in the CPSCRenderSprite vtable at 0x00AFAE50.
+    virtual bool AddToBoundingSphere(C3DBoundingSphere&, const float, CParticleSystem&, const CParticleUpdateParameters<unsigned long,unsigned long>&);
+#endif
     virtual void ClearAllPrimitives(CIEngine*,CEnginePrimitiveHandle&);
     virtual void PreparePrimitives(const float time, const CEnginePrimitivePrepareInfo& info, CParticleSystem& system,
                                    const CParticleUpdateParameters<unsigned long, unsigned long>& params, CEnginePrimitiveHandle& handle);
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CPSCRenderSprite)==0x54);
+FABLE_STATIC_ASSERT_AT(51, sizeof(NParticleEngine::CPSCRenderSprite)==0x54);
 #endif

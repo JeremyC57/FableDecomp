@@ -1,0 +1,19 @@
+{
+  "address": "0x006AF7D0",
+  "leaf": "?ImpulseRespondToCollision@CTCPhysicsBase@@IBEXABVCPhysicsCollideResponse@@AAVC3DVector@@@Z",
+  "retail_bytes": 612,
+  "object_bytes": 612,
+  "extra_flags": [],
+  "strict_instruction_hunks": 16,
+  "strict_instruction_ratio": 0.8857142857142857,
+  "first_unequal_masked_offset": 170,
+  "relocation_count": 5,
+  "source_sha256": "36cccec52f0ba232b83516174e076d3ddd7636cf92d1187f8a5dc42957254aff",
+  "test_sha256": "a94075c42133df9bc73b2841689aff264cd0f14ded1edf78f1298241b0b81483",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "006af7d0_TEST PASS",
+    "g++ -std=c++03 -O0": "006af7d0_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 70
+}

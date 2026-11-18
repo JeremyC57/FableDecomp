@@ -1,0 +1,10 @@
+# Compiler and reconstruction findings
+
+- 00877840, NCameraModes::CTools::IsLineOfSight. The four camera-hit branches need the per-branch temporaries shown by Ego_d. Returning false inside the positive hit branch, followed by a final true return, places the last conditional jump at the retail address. The result verified across 1,023 bytes and six relocations.
+- 006C0970, CTCBuyableHouse::CreateSignPost. The shared physics, owned-entity, player and object creation headers recover the x87 radius calculation and the owner lookup without local models. Real receiver and return types eliminated the last differences across 419 bytes.
+- 005253F0, CThingManager::LoadGameState. The distinct data, what, prev and res pointers and ret_str accumulator from the debug string-replacement routine reproduce all four inline copies. The UID reader and section cleanup must also appear at the native call sites. All 2,263 bytes verified.
+- 0066A9E0, CTCSoundPlayer::PlayCollisionSound. An older masked equality concealed the wrong conversion call. The submitted version uses the native GetString member at 00415DD0. It still differs at one unmasked byte and remains parked.
+- 00A18FC0, flyer movement. The Ego_d flyer module names the minimum-flight-height constant and the additional probe vector together. The two objects have distinct purposes, corroborated by the native altitude clamp and the landed sibling navigation routine.
+- 00A36A80, dummy-object animation. The Ego_d snippet describes the adjacent one-state overload. The native argument list and the other two PDBs establish the two-state overload and the shared pair-return lookup. The port builds at retail length and still differs in its frame and transforms.
+- 0072FB70, village spawning. The native code has a second pass over candidate markers with visibility tests. Preserving that pass matters even when the resulting code is farther from an old draft's byte count.
+- 00AC7750, quadric optimization. An unguarded forward declaration changed the default preprocessed text of two neighbours. The corrected opt-in retains the verified row and both neighbours' original tokens.

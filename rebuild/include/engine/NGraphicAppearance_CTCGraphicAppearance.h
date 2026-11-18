@@ -98,6 +98,9 @@ public: CTCGraphicAppearance(CThing&); virtual ~CTCGraphicAppearance();
 public:
     // Both original PDBs and native004c11f0: const owner, output reference.
     bool GetStaticFocalPosIfLoaded(C3DVector&) const;
+#ifdef FABLE_RETAIL_PCMOUSELOOK_PASS24
+    C3DVector GetStaticFocalPos() const;
+#endif
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
     C3DVector GetCameraFocalPos(float)const;
     C3DVector GetStaticCameraFocalPos()const{return GetCameraFocalPos(1.0f);}
@@ -194,6 +197,10 @@ public:
     // Retail opt-in (Codex pass20): both PDBs and donor0222b060 call sequence.
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_PASS22_PROXIMITY
     void RefreshPrimitivePos(CPrimitive*,const C3DPositionInterpolator&,const C3DOrientationInterpolator&);
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_EYEDRAW_PASS24
+    // Ego_r 0x004C07E0 and FableWin 0x01D095E0. Native calls at 0x0075437F and 0x007547D0.
+    const CPrimitive* GetFirstPrimitiveWithDummyObject(const CCharString& name) const;
 #endif
     float GetFadeDistance() const;
     CPrimitive* AddPersistentPrimitive(const CPrimitive&);
@@ -333,6 +340,10 @@ public:
     // retail (0x004C08C0; catalog name agrees; the row pushes 1.0f, the set, the position, 0, 0, the name). Declaration only.
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& pos, CRightHandedSet& orientation,
                         float scale) const;                  // 0x004C08C0
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_USEOBJECT_PASS24
+    // Ego_r and FableWin agree on the const prefix lookup. Native 0x006A03EB calls it.
+    void GetDummyObjectNamesStartingWith(std::vector<CCharString>& names, const CCharString& prefix) const;
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_DUMMYOBJECTNAMES
     // Retail opt-in (chunk Q23, row 0x00814260 CTCBoastingPodium::OnInitialActivate): Ego_r.pdb

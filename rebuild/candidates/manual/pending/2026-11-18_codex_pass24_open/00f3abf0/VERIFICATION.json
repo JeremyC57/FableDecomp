@@ -1,0 +1,19 @@
+{
+  "address": "0x00F3ABF0",
+  "leaf": "?CalcCompressionScript@CRangeCompressor@@AAEJAAV?$CArray@UCScriptEntry@CRangeCompressor@@@@PBEJJJ@Z",
+  "retail_bytes": 605,
+  "object_bytes": 605,
+  "extra_flags": [],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.9957446808510638,
+  "first_unequal_masked_offset": 26,
+  "relocation_count": 15,
+  "source_sha256": "f611426969b3986eea6e17c716eaf88d09aa41e74ac894259e31663327427881",
+  "test_sha256": "6a5fcb4f6e54b7b000b0094a2fc04338aa8e1ff64cff854d391bb33071e00e60",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00f3abf0_TEST PASS",
+    "g++ -std=c++03 -O0": "00f3abf0_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 4
+}

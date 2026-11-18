@@ -8,6 +8,9 @@ class CMemoryDataInputStream : public CDataInputStream {
 public:
     CMemoryDataInputStream() : StreamSource(0) { }
     CMemoryDataInputStream(const void*,unsigned long);
+#ifdef FABLE_RETAIL_WAD_ADD_FILE_PASS24
+    CMemoryDataInputStream(const class CMemoryDataOutputStream& source);
+#endif
 #ifdef FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_CHARSTRING
     // Nested opt-in (chunk 775, row 0x009A8170): Ego_r.pdb ??0CMemoryDataInputStream@@QAE@ABVCCharString@@@Z (0x00995F50).
     CMemoryDataInputStream(const CCharString&);
@@ -28,7 +31,7 @@ public:
 private:
     const unsigned char* StreamSource;
 };
-FABLE_STATIC_ASSERT(sizeof(CMemoryDataInputStream)==28);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CMemoryDataInputStream)==28);
 #endif
 #else
 #ifndef FABLE_ENGINE_CMEMORYDATAINPUTSTREAM_H
@@ -54,14 +57,14 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CMemoryDataInputStream) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CMemoryDataInputStream, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CMemoryDataInputStream, position) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CMemoryDataInputStream, sourceLength) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CMemoryDataInputStream, chunkBase) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CMemoryDataInputStream, chunkPosition) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CMemoryDataInputStream, chunkLength) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CMemoryDataInputStream, StreamSource) == 0x18);
+FABLE_STATIC_ASSERT_AT(57, sizeof(CMemoryDataInputStream) == 0x1c);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CMemoryDataInputStream, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CMemoryDataInputStream, position) == 0x4);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CMemoryDataInputStream, sourceLength) == 0x8);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CMemoryDataInputStream, chunkBase) == 0xc);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CMemoryDataInputStream, chunkPosition) == 0x10);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CMemoryDataInputStream, chunkLength) == 0x14);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CMemoryDataInputStream, StreamSource) == 0x18);
 
 #endif // FABLE_ENGINE_CMEMORYDATAINPUTSTREAM_H
 

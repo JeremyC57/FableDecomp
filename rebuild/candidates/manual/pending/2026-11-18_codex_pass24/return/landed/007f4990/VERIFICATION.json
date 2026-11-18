@@ -1,0 +1,214 @@
+{
+  "address": "0x007F4990",
+  "leaf": "?GetNPCShortName@CTCHasName@@QAE?AVCWideString@@XZ",
+  "retail_bytes": 449,
+  "object_bytes": 449,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 24,
+  "source_sha256": "030d60cfcb23a054e70734e3293f90f159aca713b9dd66efac3f2f4e953a8d45",
+  "test_sha256": "246d6ddc4ccedc990fd0ae67c4003f5833203858b0536dabb41df03bdb0c1a0e",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "007f4990_TEST PASS",
+    "g++ -std=c++03 -O0": "007f4990_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "de904bf0b91141cb3d5e98c72aea75326ee02632852d67ac70c45ea3bdd706b2",
+  "operands": [
+    {
+      "offset": 21,
+      "type": "REL32",
+      "symbol": "?GetThingManager@CTCBase@@IAEAAVCThingManager@@XZ",
+      "base": "0x00686AE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 28,
+      "type": "REL32",
+      "symbol": "?DoesNPCNameEntryExistForThing@CThingManager@@QAE_N_K@Z",
+      "base": "0x0051F010",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE"
+    },
+    {
+      "offset": 55,
+      "type": "REL32",
+      "symbol": "?GetThingManager@CTCBase@@IAEAAVCThingManager@@XZ",
+      "base": "0x00686AE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 62,
+      "type": "REL32",
+      "symbol": "?GetNameForThing_OnlyCalledFromTCHasName@CThingManager@@QAE?AVCWideString@@_K@Z",
+      "base": "0x0051F040",
+      "coff_addend": 0,
+      "evidence": "landed direct target and both donor signatures"
+    },
+    {
+      "offset": 78,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@ABV0@@Z",
+      "base": "0x0099B720",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 87,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 103,
+      "type": "DIR32",
+      "symbol": "?PMainGameComponent@CMainGameComponent@@1PAV1@A",
+      "base": "0x013B86A0",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 116,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@XZ",
+      "base": "0x0099AED0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 130,
+      "type": "REL32",
+      "symbol": "?EntryExists@CBankFile@@QBE_NK@Z",
+      "base": "0x009CC190",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 152,
+      "type": "REL32",
+      "symbol": "?GetEntryDataType@CBankFile@@QBEKK@Z",
+      "base": "0x009CC210",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 177,
+      "type": "REL32",
+      "symbol": "?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z",
+      "base": "0x009C9070",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 191,
+      "type": "REL32",
+      "symbol": "?GetText@CTextEntry@NGameText@@QBE?AVCWideString@@XZ",
+      "base": "0x009C7A40",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 201,
+      "type": "REL32",
+      "symbol": "??4CWideString@@QAEABV0@ABV0@@Z",
+      "base": "0x0099B7D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 210,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 237,
+      "type": "REL32",
+      "symbol": "?GetPGroupEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCGroupEntry@NGameText@@@@K_N@Z",
+      "base": "0x009C8890",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 259,
+      "type": "REL32",
+      "symbol": "_rand",
+      "base": "0x00BFEB16",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 285,
+      "type": "REL32",
+      "symbol": "?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z",
+      "base": "0x009C9070",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 299,
+      "type": "REL32",
+      "symbol": "?GetText@CTextEntry@NGameText@@QBE?AVCWideString@@XZ",
+      "base": "0x009C7A40",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 309,
+      "type": "REL32",
+      "symbol": "??4CWideString@@QAEABV0@ABV0@@Z",
+      "base": "0x0099B7D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 318,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 402,
+      "type": "REL32",
+      "symbol": "?GetThingManager@CTCBase@@IAEAAVCThingManager@@XZ",
+      "base": "0x00686AE0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 409,
+      "type": "REL32",
+      "symbol": "?SetNameForThing@CThingManager@@QAEX_KABVCWideString@@@Z",
+      "base": "0x00521A90",
+      "coff_addend": 0,
+      "evidence": "landed direct target and both donor signatures"
+    },
+    {
+      "offset": 425,
+      "type": "REL32",
+      "symbol": "??0CWideString@@QAE@ABV0@@Z",
+      "base": "0x0099B720",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 434,
+      "type": "REL32",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "base": "0x0099B510",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

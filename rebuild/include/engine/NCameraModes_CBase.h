@@ -66,7 +66,13 @@ public:
  const C3DVector & GetPosition() const;
 #endif
  void SetPosition(const C3DVector & p0);
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_GETOBSERVEDPOS_INLINE
+ // Retail opt-in (Codex pass 24): FableWin 0x022035B0 and Ego_d Camera_Manager.obj identify this inline getter.
+ // The 0x00697F80 expansion copies LookAt.Position from +0x10.
+ const C3DVector & GetObservedPos() const { return LookAt.Position; }
+#else
  const C3DVector & GetObservedPos() const;
+#endif
  void SetObservedPos(const C3DVector & p0);
  void SetFOV(float p0);
 #ifndef FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS // agentFAM04 (2026-11-11)
@@ -122,7 +128,11 @@ protected:
  const NCameraModes::CTools & GetCamTools() const;
  const CWorld & GetWorld() const;
  void SetCameraModeDef(const CDefPointer<CCameraModeDef const > & p0);
+#ifdef FABLE_RETAIL_PCMOUSELOOK_PASS24
+ const C2DVector & GetRightStickVector() const { return RightStickVector; }
+#else
  const C2DVector & GetRightStickVector() const;
+#endif
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_CYLINDER_INPUT
  // Retail opt-in (Codex pass23): FableWin original accessor and native0085c490 read LeftStickVector at+98.
  const C2DVector & GetLeftStickVector() const { return LeftStickVector; }

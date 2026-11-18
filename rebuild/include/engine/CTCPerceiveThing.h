@@ -259,6 +259,9 @@ public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_PERCEIVE_THING;}
     float GetExtendedSightRadius()const;
 #endif
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_ALERTNEARBY_PASS24
+    void SetAsIndirectlyAwareOfPerceivedThing();                        // 0x007449E0
+#endif
     const CThing* GetPerceivedThing() const;                             // 0x007446A0
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_SETASDIRECTLYAWARE
     // NF68 opt-in (row 0x0097A630 CAIStateGroup_CreatureTakeCover::Update): Ego_r.pdb ?SetAsDirectlyAwareOfPerceivedThing@CTCPerceiveThing@@QAEXXZ,

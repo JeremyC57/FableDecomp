@@ -1,0 +1,17 @@
+{
+  "status": "RELOCATION_MATCH",
+  "assigned_name": "?Update@CAIStateGroup_MinionReactToTrespassing@@UAEXXZ",
+  "leaf": "?Update@CAIStateGroup_MinionReactToTrespassing@@UAEXXZ",
+  "attempts": 21,
+  "retail_size": 1098,
+  "object_size": 1098,
+  "flags": [],
+  "lever": "The native RTTI descriptor for the vtable at 01238C6C identifies CIntelligentPointer<CThing>. The look call takes 0.0027777f. The signed module static FRAMES_BETWEEN_CHECKING_IS_STILL_VALID is present in Ego_d and initialized to 30 in retail. Three calls from IsStillRunnable use the typed FindMostRecentDeed specialization.",
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "total_recorded_grades": 27,
+  "source_sha256": "2d2b7f7ddef983d39ea5a87cae652edde15af3107920c710b624d34fe819a887",
+  "test_sha256": "bf82fa74ec1da09d0574c7165674572197e71372866d378b5df85e8dbe3c6a1a",
+  "extra_flags": []
+}

@@ -1,0 +1,18 @@
+{
+  "address": "0x00AC9A60",
+  "leaf": "?FindAdjacentFaces@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXXZ",
+  "retail_bytes": 745,
+  "object_bytes": 743,
+  "extra_flags": [],
+  "strict_instruction_hunks": 48,
+  "strict_instruction_ratio": 0.7297830374753451,
+  "first_unequal_masked_offset": 3,
+  "relocation_count": 17,
+  "source_sha256": "ca64c10ddaeac85d1bcd90baf7837a5ecc28293e9522b64bda3e4294b825ea1f",
+  "test_sha256": "ad7cbf6b7a013027ad24844d7d5cfaac9fa3c93e2b4c0965ef37e97768dcab04",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00ac9a60_TEST PASS",
+    "g++ -std=c++03 -O0": "00ac9a60_TEST PASS"
+  },
+  "status": "PARKED"
+}

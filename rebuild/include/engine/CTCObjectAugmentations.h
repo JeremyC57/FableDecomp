@@ -76,6 +76,7 @@ public:
 #include "engine/CThingBaseDef.h"
 #include "engine/CAugmentationDef.h"
 #include "engine/CDefClassBase_GetSubDef.h"
+#ifndef FABLE_RETAIL_CTCOBJECTAUGMENTATIONS_FRAME_OUTLINE_HELPERS
 inline bool CTCObjectAugmentations::HasAugmentationOfType(EObjectAugmentationType type)const{
  for(long c1=0;c1<Augmentations.size();++c1){
   if(Augmentations[c1].Get()){
@@ -97,7 +98,8 @@ inline bool CTCObjectAugmentations::HasCombinationOfAugmentations(EObjectAugment
  }
  return (result&types)==types;
 }
-FABLE_STATIC_ASSERT(sizeof(CTCObjectAugmentations)==112);
+#endif
+FABLE_STATIC_ASSERT_AT(100, sizeof(CTCObjectAugmentations)==112);
 // Inline-budget: native 00767b8c calls this exact original destructor at 0076b0e0.
 // Explicit instantiation adds no new specialization or function body.
 // Inline-budget: native periodic-vector destruction expands this exact generic range body.

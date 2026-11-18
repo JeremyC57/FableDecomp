@@ -143,6 +143,12 @@ protected:
     void Apply2DStaticVertexShaderEnv();
     void Apply2DStaticVertexShaderDP3Bump();
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_ISINSIDEFUSTRUM
+private:
+    // Retail opt-in (Codex pass 24). Both PDBs and the call at 0x00BA1140
+    // identify the private sphere-cull method.
+    bool IsInsideFustrum(const C3DPrimitive2*, const CEngineInternalPrimitiveStaticMesh&);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(92, sizeof(CEnginePrimitiveManagerStaticMeshesBase)==0x318);
 

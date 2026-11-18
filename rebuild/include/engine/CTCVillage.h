@@ -66,6 +66,12 @@ public:
 #ifdef FABLE_RETAIL_CTCVILLAGE_ENABLE_DEF_TYPES
     void EnableVillagerDefTypes(bool,const CCharString&);
 #endif
+#ifdef FABLE_RETAIL_VILLAGETASK_SECURITYSWEEP_UPDATE_PASS24
+    bool SetSecuritySweepTaskAsAcceptedByThing(CVillageTaskSecuritySweep&, const CThing&);
+#endif
+#ifdef FABLE_RETAIL_CROP_TASK_UPDATE_PASS24
+    bool SetCropTaskAsAcceptedByThing(class CVillageTaskPickCrops&,const CThing&);
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_TORCHTASK
     bool SetTorchTaskAsAcceptedByThing(CVillageTaskTorch&,const CThing&);
     void SetTorchTaskAsCompleted(CIntelligentPointer<CVillageTaskTorch>);

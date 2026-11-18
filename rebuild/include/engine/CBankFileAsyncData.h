@@ -5,6 +5,9 @@
 #include "engine/CThreadedFileObjectDesc.h"
 class CBankFileAsync;
 class CMovableResourceMemoryPool;
+#ifdef FABLE_RETAIL_CBANKFILEASYNCDATA_WATER
+template<class T> class CCountedPointer;
+#endif
 // Retail opt-in (Codex pass 17): Ego_r complete type c0a1 is 0x48; FableWin bd6b has the same core plus debug-only trailing fields.
 // Both give CThreadedFileCallback@0, CMovableResource@4, and BankFile as a reference.
 class CBankFileAsyncData : public CThreadedFileCallback, public CMovableResource {
@@ -22,6 +25,18 @@ public:
     bool WaitUntilFinished();
     void* GetData();
     unsigned long GetLength()const{return Length;}
+#endif
+#ifdef FABLE_RETAIL_CBANKFILEASYNCDATA_WATER
+    // Ego_r and FableWin agree on the original member names and signatures.
+    // Retail IsFinished 0x009D54E0, GetData 0x009D5530 and DiscardAsyncData 0x009D68A0.
+#ifndef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+    bool IsFinished() const;
+    void* GetData();
+#ifndef FABLE_RETAIL_CBANKFILEASYNCDATA_PEEKDATA
+    unsigned long GetLength() const { return Length; }
+#endif
+#endif
+    static void FABLE_FASTCALL DiscardAsyncData(CCountedPointer<CBankFileAsyncData>&);
 #endif
     virtual ~CBankFileAsyncData();
 #ifdef FABLE_RETAIL_CBANKFILEASYNCDATA_SIZEOF
@@ -68,5 +83,5 @@ private:
     volatile bool AllowRestart;
     bool Aborted;
 };
-FABLE_STATIC_ASSERT(sizeof(CBankFileAsyncData)==0x48);
+FABLE_STATIC_ASSERT_AT(71, sizeof(CBankFileAsyncData)==0x48);
 #endif

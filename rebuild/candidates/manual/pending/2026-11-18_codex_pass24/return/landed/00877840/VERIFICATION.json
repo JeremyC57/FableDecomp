@@ -1,0 +1,70 @@
+{
+  "address": "0x00877840",
+  "leaf": "?IsLineOfSight@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@1AAV5@2AAMPAPBVCThing@@W4ELOSTest@12@_N@Z",
+  "retail_bytes": 1023,
+  "object_bytes": 1023,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 6,
+  "source_sha256": "6ce998545659a9954d57c02f50e52ca3d080749ce1be756663f8637ca314947c",
+  "test_sha256": "556d003fac20ba865ed9f8fc4be51b36a67a13033195e5d14129947fcfeace90",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00877840_TEST PASS",
+    "g++ -std=c++03 -O0": "00877840_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "2bb399b80f9e01544e3bf7c1865ce44cacfbfca891918b3d33ce8608cc747ed3",
+  "operands": [
+    {
+      "offset": 52,
+      "type": "DIR32",
+      "symbol": "?DELTA_NOTIONAL_ZERO@@3MB",
+      "base": "0x0129BA3C",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 58,
+      "type": "DIR32",
+      "symbol": "?DELTA_NOTIONAL_ZERO@@3MB",
+      "base": "0x0129BA3C",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 153,
+      "type": "REL32",
+      "symbol": "?GetThingPointIntersectionFromTo@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@1AAV5@2PAPBVCThing@@_NW4ELOSTest@12@@Z",
+      "base": "0x008771A0",
+      "coff_addend": 0,
+      "evidence": "both donor signatures, shared member declaration and direct native camera query"
+    },
+    {
+      "offset": 297,
+      "type": "REL32",
+      "symbol": "?GetThemePointIntersectionFromTo@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1_N@Z",
+      "base": "0x008754A0",
+      "coff_addend": 0,
+      "evidence": "both donor signatures, shared member declaration and direct native camera query"
+    },
+    {
+      "offset": 528,
+      "type": "REL32",
+      "symbol": "?GetThemePointIntersectionFromTo@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1_N@Z",
+      "base": "0x008754A0",
+      "coff_addend": 0,
+      "evidence": "both donor signatures, shared member declaration and direct native camera query"
+    },
+    {
+      "offset": 763,
+      "type": "REL32",
+      "symbol": "?GetLandscapePointIntersectionFromTo@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1_N@Z",
+      "base": "0x00875550",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

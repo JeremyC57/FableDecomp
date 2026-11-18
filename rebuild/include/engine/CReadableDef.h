@@ -8,6 +8,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CREADABLEDEF_USEINFO_PASS24
+#include "engine/CSubDefClassBase.h"
+class CReadableDef : public CSubDefClassBase {
+public:
+    bool UseInfoDisplay;                                           // +0x25
+};
+FABLE_STATIC_ASSERT(sizeof(CReadableDef) == 0x26);
+FABLE_STATIC_ASSERT(offsetof(CReadableDef, UseInfoDisplay) == 0x25);
+#else
 #pragma pack(push, 1)
 class CReadableDef {
 public:
@@ -17,8 +26,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CReadableDef) == 0x26);
-FABLE_STATIC_ASSERT(offsetof(CReadableDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CReadableDef, UseInfoDisplay) == 0x25);
+FABLE_STATIC_ASSERT_AT(20, sizeof(CReadableDef) == 0x26);
+FABLE_STATIC_ASSERT_AT(21, offsetof(CReadableDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(22, offsetof(CReadableDef, UseInfoDisplay) == 0x25);
 
+#endif // Readable definition retail opt-in
 #endif // FABLE_ENGINE_CREADABLEDEF_H

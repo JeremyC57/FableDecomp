@@ -1,0 +1,18 @@
+{
+  "address": "0x00ADD690",
+  "leaf": "?FastBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@J@Z",
+  "retail_bytes": 648,
+  "object_bytes": 646,
+  "extra_flags": [],
+  "strict_instruction_hunks": 3,
+  "strict_instruction_ratio": 0.9890590809628009,
+  "first_unequal_masked_offset": 556,
+  "relocation_count": 5,
+  "source_sha256": "0853459b02405a69176a2dd7e8d1e8a2ee7d5ef601df4d65f8ff1443e54481d3",
+  "test_sha256": "6bf1ea63343e43b02a82c581f95fe743c879677a88c9ca0784e8f7737980197c",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00add690_TEST PASS",
+    "g++ -std=c++03 -O0": "00add690_TEST PASS"
+  },
+  "status": "PARKED"
+}

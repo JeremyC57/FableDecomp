@@ -1,0 +1,62 @@
+{
+  "address": "0x006D8980",
+  "leaf": "?UpgradeTrainableStat@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@@Z",
+  "retail_bytes": 183,
+  "object_bytes": 183,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 5,
+  "source_sha256": "f67a4b9cde40ea841ad3e6933ca60f7f96532ab4c5605f1acd83b71a73f2e6e9",
+  "test_sha256": "c30be41a779f364aa7781a0a7c92e706d5d09a2d9ee9f33cb19a49a9368dd16d",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "006d8980_TEST PASS",
+    "g++ -std=c++03 -O0": "006d8980_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "16ff3ec689e34f256c97b9b2a2e49d47e7746563dca02900a33c051a52bc1f54",
+  "operands": [
+    {
+      "offset": 84,
+      "type": "REL32",
+      "symbol": "?UpdateAbilitiesForStat@CTCHeroExperience@@AAEXW4EHeroTrainableStatType@@_N@Z",
+      "base": "0x006D8170",
+      "coff_addend": 0,
+      "evidence": "Row naming and relocation audit"
+    },
+    {
+      "offset": 93,
+      "type": "REL32",
+      "symbol": "?OnStatLevelChange@CTCHeroExperience@@AAEX_N@Z",
+      "base": "0x006D83B0",
+      "coff_addend": 0,
+      "evidence": "Row naming and relocation audit"
+    },
+    {
+      "offset": 100,
+      "type": "REL32",
+      "symbol": "?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ",
+      "base": "0x006869D0",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 138,
+      "type": "REL32",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "base": "0x0040F020",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 173,
+      "type": "REL32",
+      "symbol": "?SetAge@CTCHeroStats@@QAEXM@Z",
+      "base": "0x0057B05F",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

@@ -1,0 +1,18 @@
+{
+  "address": "0x00A18FC0",
+  "leaf": "?MoveToPosProximity@CNavigatorFlyer@@UAE?AW4ENavigatorReturn@@ABVC3DVector@@0MMAAV3@_N22222M@Z",
+  "retail_bytes": 1125,
+  "object_bytes": 1127,
+  "extra_flags": [],
+  "strict_instruction_hunks": 61,
+  "strict_instruction_ratio": 0.654014598540146,
+  "first_unequal_masked_offset": 2,
+  "relocation_count": 19,
+  "source_sha256": "018a8f75e47dab7d83309580aafb4de29c4e508d8de4c79a70ab8acd0d33ddbb",
+  "test_sha256": "083ed695f3f155d6df2734b5692789cdc544fdbd62afaf5079f379838039fd9a",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00a18fc0_TEST PASS",
+    "g++ -std=c++03 -O0": "00a18fc0_TEST PASS"
+  },
+  "status": "PARKED"
+}

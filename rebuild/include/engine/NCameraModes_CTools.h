@@ -35,6 +35,15 @@ enum EMeshType { MESH_TYPE_NONE = 0, MESH_TYPE_OCCUPIED = 1 };
 #endif
 class CTools {
 public:
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_FRUSTRUM_POS
+    // Retail opt-in (Codex pass 24): Ego_r 0x0085B8F0 and FableWin 0x029C2520 name this const member.
+    // Retail 0x00697F50 and 0x00697F80 call the same body at 0x00875120 with two other positions and Camera.GetFOV().
+    bool IsPosInViewingFrustrum(const C3DVector& pos, const C3DVector& look_at, const C3DVector& camera, float fov) const;
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_ISPOSINVIEWINGFRUSTRUM
+    // Retail opt-in (Codex pass 24): both PDB names and 0x00875120.
+    bool IsPosInViewingFrustrum(const C3DVector&, const C3DVector&, const C3DVector&, float) const;
+#endif
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_MESHTYPE
     const EMeshType TestMeshForOccupationAndGetType(const CPhysicsMeshObject& mesh,const C3DVector& position,const C3DVector& up,float& height) const;   // 0x00875B10
 #endif
@@ -62,6 +71,10 @@ public:
     bool IsLineOfSight(const C3DVector&,const C3DVector&,C3DVector&,C3DVector&,float&,const CThing**,ELOSTest,bool)const;
 #else
     enum ELOSTest { };
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_LINEOFSIGHT_PASS24
+    // Ego_r PDB and retail call at 0x008754A0.
+    bool GetThemePointIntersectionFromTo(const C3DVector&, const C3DVector&, C3DVector&, C3DVector&, bool) const;
 #endif
     bool GetThingPointIntersectionFromTo(const std::vector<const CThing*>&, const C3DVector&, const C3DVector&, C3DVector&,
         C3DVector&, const CThing**, bool, ELOSTest) const;           // 0x008771A0
@@ -111,7 +124,7 @@ private:
     float CameraThemeOffsetDistance;                                  // +0x1C
 };
 } // namespace NCameraModes
-FABLE_STATIC_ASSERT(sizeof(NCameraModes::CTools) == 0x20);
+FABLE_STATIC_ASSERT_AT(114, sizeof(NCameraModes::CTools) == 0x20);
 #if defined(FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_AVERAGE_PAREN) && defined(FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_OUTOFLINE)
 // FITTED (chosen by grading; FableWin /Od size not reproduced). Opt-in (egod e04, row 0x00871FD0 NCameraModes::CStringAndCageBase::UpdateXYVars): the body of the declared-only template
 // ??$GetRollingAverage@M@CTools@NCameraModes@@QBEMABM0M@Z (Ego_d / FableWin: no named locals) as an inline out-of-class definition,

@@ -1,0 +1,18 @@
+{
+  "address": "0x00677970",
+  "leaf": "?TransferIn@?$CPersistTraits@VCReactionFrequencyTraitsArray@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCReactionFrequencyTraitsArray@@@Z",
+  "retail_bytes": 2272,
+  "object_bytes": 2304,
+  "extra_flags": [],
+  "strict_instruction_hunks": 112,
+  "strict_instruction_ratio": 0.6730205278592375,
+  "first_unequal_masked_offset": 2,
+  "relocation_count": 162,
+  "source_sha256": "8be8a14c76e51a90e48b86a37a24ff6db3840e6e97f6ec92e1b3101a745df32d",
+  "test_sha256": "e449e1d5591a10aa2462eb624e1d07e8839f18c9eede960ba254ee5a5095ed2a",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00677970_TEST PASS",
+    "g++ -std=c++03 -O0": "00677970_TEST PASS"
+  },
+  "status": "PARKED"
+}

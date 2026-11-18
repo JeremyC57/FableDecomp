@@ -110,6 +110,12 @@ public:
     virtual void BulletTimeFrameUpdate();  // slot 10, 0x0066A910
 public:
 #endif // FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS3
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_INTERNALPLAYSOUNDEVENTATPOS
+    // Retail opt-in (Codex pass 24, 0x0066A9E0). The call at 0x0066AA5C
+    // and both PDBs identify this private sound-event entry point.
+private:
+    unsigned long InternalPlaySoundEventAtPos(class CASoundBank&, const C3DVector&, const CCharString&, bool, bool);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(92, sizeof(CTCSoundPlayer)==36);
 #endif

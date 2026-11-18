@@ -1,0 +1,19 @@
+{
+  "address": "00a86110",
+  "leaf": "?CalculateDividingPlane@CIPhysicsFacesSegmentBase@@KI?AVCPlane@@ABV?$CArray@VC3DVector@@@@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@G@@J@Z",
+  "status": "RELOCATION_MATCH",
+  "size": 1967,
+  "distinct_source_hashes": 63,
+  "relocation_count": 21,
+  "test": "VC7.1 and GNU C++03 PASS",
+  "assigned_name": "?CalculateDividingPlane@CIPhysicsFacesSegmentBase@@KI?AVCPlane@@ABV?$CArray@VC3DVector@@@@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@G@@J@Z",
+  "retail_size": 1967,
+  "object_size": 1967,
+  "attempts": 63,
+  "total_recorded_grades": 76,
+  "source_sha256": "984bee325db0e7a549f5a9ca1832ce8d0cd069987c006b839d82e1869a921d43",
+  "test_sha256": "150d6af3c6812b0a07f3796a4e9487c222803e8a465a1a73d4c916c9003c2294",
+  "extra_flags": [],
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS"
+}

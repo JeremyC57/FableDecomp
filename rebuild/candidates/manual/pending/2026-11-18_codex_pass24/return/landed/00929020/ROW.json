@@ -1,0 +1,19 @@
+{
+  "status": "RELOCATION_MATCH",
+  "attempts": 13,
+  "leaf": "?IsRunnable@CAIStateGroup_BanditPlayDice@@MAE_NXZ",
+  "assigned_name": "?IsRunnable@CAIStateGroup_BanditPlayDice@@MAE_NXZ",
+  "retail_size": 507,
+  "object_size": 507,
+  "flags": [],
+  "lever": "Read the creature before the marker position and keep the original explicit return arms.",
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "source_policy": "shared_headers",
+  "relocated_operands": 14,
+  "total_recorded_grades": 21,
+  "source_sha256": "86bc1c13c533f78b40aa46ccb43e11f92752d338e6eecd8d8835c745a3a23782",
+  "test_sha256": "9ed259acbdf1c7087851c0b58283c765f68e18e001c8618f7c3e13ab67e6c92a",
+  "extra_flags": []
+}

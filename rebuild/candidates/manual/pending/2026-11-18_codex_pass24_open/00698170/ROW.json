@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "attempts": 19,
+  "leaf": "?IsVolumeInViewingFrustrum@CGameCameraManager@@UBE_NABVC3DVector@@M@Z",
+  "assigned_name": "?IsVolumeInViewingFrustrum@CGameCameraManager@@UBE_NABVC3DVector@@M@Z",
+  "retail_size": 693,
+  "object_size": 693,
+  "flags": [],
+  "lever": "The first CTools calculation schedules an origin reload across the x87 operation at 0x00698299.",
+  "residue": "The first CTools calculation schedules an origin reload across the x87 operation at 0x00698299.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 9,
+  "total_recorded_grades": 25,
+  "source_sha256": "7d8bbe79b1492246dd4da75f46114ef72d28c8c6949691cd5a735ec7abe24fb7",
+  "test_sha256": "82848b2a453b360278d522d9dd9c75e1c9e740cb8c19f9a22903ab80ebf6a794",
+  "extra_flags": []
+}

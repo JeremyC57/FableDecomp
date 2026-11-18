@@ -1,0 +1,17 @@
+{
+  "status": "PARKED",
+  "assigned_name": "?CalcCompressionScript@CRangeCompressor@@AAEJAAV?$CArray@UCScriptEntry@CRangeCompressor@@@@PBEJJJ@Z",
+  "leaf": "?CalcCompressionScript@CRangeCompressor@@AAEJAAV?$CArray@UCScriptEntry@CRangeCompressor@@@@PBEJJJ@Z",
+  "attempts": 23,
+  "retail_size": 605,
+  "object_size": 605,
+  "flags": [],
+  "lever": "The EDI-to-EBX copy straddles the block-width guard at 00F3AC0C in the opposite order. The selected function otherwise has the full retail extent.",
+  "residue": "The EDI-to-EBX copy straddles the block-width guard at 00F3AC0C in the opposite order. The selected function otherwise has the full retail extent.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "test_kind": "copied_submitted_body_with_stubs",
+  "total_recorded_grades": 28,
+  "source_sha256": "f611426969b3986eea6e17c716eaf88d09aa41e74ac894259e31663327427881",
+  "test_sha256": "6a5fcb4f6e54b7b000b0094a2fc04338aa8e1ff64cff854d391bb33071e00e60",
+  "extra_flags": []
+}

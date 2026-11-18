@@ -8,6 +8,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_WIFE_GIFT_UPDATE_PASS24
+#include "engine/CAIStateGroupBase.h"
+// Ego_d lists the state method and its wife and player variables. Native offsets
+// and both class records place the three derived fields immediately after the base.
+class CAIStateGroup_WifeGiveYouGift : public CAIStateGroupBase {
+public:
+    virtual void Update();
+private:
+    long FrameToSpeakNext;
+    long GiftToGiveDef;
+    bool DeliveredGiveSpeech;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_WifeGiveYouGift) == 0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -34,4 +48,5 @@ FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_WifeGiveYouGift, FrameToSpeakN
 FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_WifeGiveYouGift, GiftToGiveDef) == 0x18);
 FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_WifeGiveYouGift, DeliveredGiveSpeech) == 0x1c);
 
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_WIFEGIVEYOUGIFT_H

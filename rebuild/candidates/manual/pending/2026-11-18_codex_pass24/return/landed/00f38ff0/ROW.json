@@ -1,0 +1,18 @@
+{
+  "address": "00f38ff0",
+  "status": "RELOCATION_MATCH",
+  "leaf": "?SetBaseBlendModes@CSurfaceCompositor@@IAEXXZ",
+  "size": 1842,
+  "attempts": 1,
+  "test": "VC7.1 and GNU C++03 PASS",
+  "relocations": 14,
+  "assigned_name": "?SetBaseBlendModes@CSurfaceCompositor@@IAEXXZ",
+  "retail_size": 1842,
+  "object_size": 1842,
+  "total_recorded_grades": 11,
+  "source_sha256": "19e71135ed47acfc9ad1259bb86a10621d0cb2a8bf1463de10d2df8fd494e473",
+  "test_sha256": "2c3027c8f1f82f5f85943b8aba848866911fb707ab80960907d54ac236926269",
+  "extra_flags": [],
+  "residue": "All nonrelocated bytes and all bound targets agree.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS"
+}

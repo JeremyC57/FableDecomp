@@ -1,0 +1,19 @@
+{
+  "address": "0x005AC10E",
+  "leaf": "?ConstructActualBuyInventoryPC@CTCInventoryTrade@@AAEXXZ",
+  "retail_bytes": 3532,
+  "object_bytes": 3532,
+  "extra_flags": [],
+  "strict_instruction_hunks": 2,
+  "strict_instruction_ratio": 0.9991071428571429,
+  "first_unequal_masked_offset": 2635,
+  "relocation_count": 210,
+  "source_sha256": "4985d5c83cf936b764fb4464815d3f98bbf7bf98c83c5ec871c7ad28b9a553cf",
+  "test_sha256": "036f8c53ef1c2fdf14b7c15b353d7923e653db6a9484420101a88475a1df6e00",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "005ac10e_TEST PASS",
+    "g++ -std=c++03 -O0": "005ac10e_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 4
+}

@@ -1,0 +1,78 @@
+{
+  "address": "0x00697F80",
+  "leaf": "?Is2DAreaInViewingFrustrum@CGameCameraManager@@UBE_NABVC3DVector@@M@Z",
+  "retail_bytes": 490,
+  "object_bytes": 490,
+  "extra_flags": [],
+  "strict_instruction_hunks": 0,
+  "strict_instruction_ratio": 1.0,
+  "first_unequal_masked_offset": null,
+  "relocation_count": 7,
+  "source_sha256": "6241d7b32328c2e3286adc03a5ae43a89919365d746a210c80975bcbe46dea6f",
+  "test_sha256": "0beccc5150e31ff4a2bf77a5e71871347a6e0187f505a295914caad48cf17d47",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00697f80_TEST PASS",
+    "g++ -std=c++03 -O0": "00697f80_TEST PASS"
+  },
+  "status": "RELOCATION_MATCH",
+  "resolved_sha256": "afafb1246b7d2c6ad9d798fcaa8927e6366bc3dae9796255896299d71bc6d135",
+  "operands": [
+    {
+      "offset": 15,
+      "type": "REL32",
+      "symbol": "?GetFOV@CCamera@@QBEMXZ",
+      "base": "0x00A0BEB0",
+      "coff_addend": 0,
+      "evidence": "reloc_bindings"
+    },
+    {
+      "offset": 108,
+      "type": "REL32",
+      "symbol": "?AccurateNormalise@C3DVector@@QAEAAV1@XZ",
+      "base": "0x00A14440",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 143,
+      "type": "REL32",
+      "symbol": "?AccurateNormalise@C3DVector@@QAEAAV1@XZ",
+      "base": "0x00A14440",
+      "coff_addend": 0,
+      "evidence": "NAME_FIXES_QUEUE; reloc_bindings"
+    },
+    {
+      "offset": 183,
+      "type": "DIR32",
+      "symbol": "?TWO_PI@@3NB",
+      "base": "0x0124F2B8",
+      "coff_addend": 0,
+      "evidence": "ESTABLISHED_SPELLINGS; reloc_bindings"
+    },
+    {
+      "offset": 423,
+      "type": "REL32",
+      "symbol": "?IsPosInViewingFrustrum@CTools@NCameraModes@@QBE_NABVC3DVector@@00M@Z",
+      "base": "0x00875120",
+      "coff_addend": 0,
+      "evidence": "Row naming and relocation audit"
+    },
+    {
+      "offset": 437,
+      "type": "DIR32",
+      "symbol": "__real@3dcccccd",
+      "base": "0x0122EE58",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    },
+    {
+      "offset": 447,
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "base": "0x0122DED8",
+      "coff_addend": 0,
+      "evidence": "IEEE literal width and payload"
+    }
+  ],
+  "unequal_masked_bytes_at_same_offsets": 0
+}

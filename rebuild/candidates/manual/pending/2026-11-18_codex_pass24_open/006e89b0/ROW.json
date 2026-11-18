@@ -1,0 +1,18 @@
+{
+  "status": "PARKED",
+  "attempts": 35,
+  "leaf": "?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z",
+  "assigned_name": "?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z",
+  "retail_size": 344,
+  "object_size": 344,
+  "flags": [],
+  "lever": "In the preferred-distance branch, retail multiplies prong.X by the distance at 0x006E8A7A before restoring esi at 0x006E8A7C. The selected compiler build restores esi first.",
+  "residue": "In the preferred-distance branch, retail multiplies prong.X by the distance at 0x006E8A7A before restoring esi at 0x006E8A7C. The selected compiler build restores esi first.",
+  "test_status": "VC7.1 /Od /W3 /GR- and GNU C++03 PASS",
+  "relocated_operands": 12,
+  "test_kind": "copied_submitted_body_with_stubs",
+  "total_recorded_grades": 40,
+  "source_sha256": "171f039725689861d77a6013d42c08cec4b0e25f713a382c9872a9b52e54509a",
+  "test_sha256": "15f3c18faf232b31b6def1759dab218e1b783aa24c417319b01015b637f51f16",
+  "extra_flags": []
+}

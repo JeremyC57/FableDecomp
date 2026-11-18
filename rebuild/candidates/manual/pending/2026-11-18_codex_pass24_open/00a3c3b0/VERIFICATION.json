@@ -1,0 +1,19 @@
+{
+  "address": "0x00A3C3B0",
+  "leaf": "?SetInterpolate@C3DAnimationBlendState@@QAEXABV1@0M@Z",
+  "retail_bytes": 777,
+  "object_bytes": 777,
+  "extra_flags": [],
+  "strict_instruction_hunks": 3,
+  "strict_instruction_ratio": 0.9925650557620818,
+  "first_unequal_masked_offset": 458,
+  "relocation_count": 5,
+  "source_sha256": "2cec5dae7ed70eda1cc5ee4a5409e8bcaf93461f3afe881cad89db3424cf44f7",
+  "test_sha256": "0d6f362cc2390fdfc39f109c0d278ecb5d9f527538c9607b41a17026800599f4",
+  "test_checks": {
+    "VC7.1 /Od /W3 /GR-": "00a3c3b0_TEST PASS",
+    "g++ -std=c++03 -O0": "00a3c3b0_TEST PASS"
+  },
+  "status": "PARKED",
+  "unequal_masked_bytes_at_same_offsets": 12
+}

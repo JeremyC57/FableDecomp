@@ -1,0 +1,127 @@
+# Compiler probes
+
+- package baseline — LEAF_REVIEW_REQUIRED.
+- tail deliverable — DIFFER, 497 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail emitted leaf diagnostic — DIFFER, 497 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail pdb rekey — DIFFER, 497 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric casts both errors — DIFFER, 489 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric det guard predicate — DIFFER, 487 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC77A1.
+- tail quadric det named — DIFFER, 487 v 495 bytes, 23 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric distance expr short circuit — DIFFER, 507 v 495 bytes, 16 instruction hunks, first unequal byte at 0x00AC77A1.
+- tail quadric egod names and order — DIFFER, 489 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric final — MASKED_MATCH_PENDING_AUDIT, 495 v 495 bytes, 0 instruction hunks.
+- tail quadric midpoint local sum — DIFFER, 511 v 495 bytes, 30 instruction hunks, first unequal byte at 0x00AC7763.
+- tail quadric midpoint named components — DIFFER, 477 v 495 bytes, 28 instruction hunks, first unequal byte at 0x00AC7766.
+- tail quadric negative vector shared sum — DIFFER, 493 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric negative vector then transform — DIFFER, 533 v 495 bytes, 19 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric original det 0 0 0 0 — MASKED_MATCH_PENDING_AUDIT, 495 v 495 bytes, 0 instruction hunks.
+- tail quadric original det 0 0 0 1 — MASKED_MATCH_PENDING_AUDIT, 495 v 495 bytes, 0 instruction hunks.
+- tail quadric original det 0 0 1 0 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 0 0 1 1 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 0 1 0 0 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 0 1 0 1 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 0 1 1 0 — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 0 1 1 1 — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 1 0 0 0 — DIFFER, 495 v 495 bytes, 3 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 1 0 0 1 — DIFFER, 495 v 495 bytes, 3 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 1 0 1 0 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 1 0 1 1 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 1 1 0 0 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 1 1 0 1 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 1 1 1 0 — DIFFER, 495 v 495 bytes, 6 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 1 1 1 1 — DIFFER, 495 v 495 bytes, 6 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 2 0 0 0 — DIFFER, 495 v 495 bytes, 3 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 2 0 0 1 — DIFFER, 495 v 495 bytes, 3 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 2 0 1 0 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 2 0 1 1 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 2 1 0 0 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 2 1 0 1 — DIFFER, 495 v 495 bytes, 4 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 2 1 1 0 — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 2 1 1 1 — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 3 0 0 0 — DIFFER, 495 v 495 bytes, 3 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 3 0 0 1 — DIFFER, 495 v 495 bytes, 3 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 3 0 1 0 — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 3 0 1 1 — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 3 1 0 0 — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 3 1 0 1 — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 3 1 1 0 — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric original det 3 1 1 1 — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric shared — COMPILE_FAIL.
+- tail quadric shared complete — DIFFER, 487 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric sqrs through named lhs — DIFFER, 487 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric stage2 double midpoint — DIFFER, 487 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric stage2 early exit — DIFFER, 508 v 495 bytes, 18 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric stage2 midpoint first — DIFFER, 489 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 new det — DIFFER, 489 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 reject before distance — DIFFER, 489 v 495 bytes, 16 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric stage2 reverse predicate — DIFFER, 489 v 495 bytes, 8 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xyz left — DIFFER, 495 v 495 bytes, 13 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xyz left reverse factors — DIFFER, 495 v 495 bytes, 14 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xyz right — DIFFER, 495 v 495 bytes, 7 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xyz right reverse factors — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xyz steps — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xyz steps reverse factors — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xzy left — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xzy left reverse factors — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xzy right — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xzy right reverse factors — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xzy steps — DIFFER, 495 v 495 bytes, 13 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 xzy steps reverse factors — DIFFER, 495 v 495 bytes, 14 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yxz left — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yxz left reverse factors — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yxz right — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yxz right reverse factors — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yxz steps — DIFFER, 495 v 495 bytes, 13 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yxz steps reverse factors — DIFFER, 495 v 495 bytes, 14 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yzx left — DIFFER, 495 v 495 bytes, 7 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yzx left reverse factors — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yzx right — DIFFER, 495 v 495 bytes, 13 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yzx right reverse factors — DIFFER, 495 v 495 bytes, 14 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yzx steps — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 yzx steps reverse factors — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zxy left — DIFFER, 495 v 495 bytes, 13 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zxy left reverse factors — DIFFER, 495 v 495 bytes, 14 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zxy right — DIFFER, 495 v 495 bytes, 13 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zxy right reverse factors — DIFFER, 495 v 495 bytes, 14 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zxy steps — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zxy steps reverse factors — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zyx left — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zyx left reverse factors — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zyx right — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zyx right reverse factors — DIFFER, 495 v 495 bytes, 11 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zyx steps — DIFFER, 495 v 495 bytes, 7 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage2 zyx steps reverse factors — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage3 det 0 — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage3 det 1 — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage3 det 10 — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage3 det 2 — DIFFER, 495 v 495 bytes, 3 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric stage3 det 3 — DIFFER, 495 v 495 bytes, 3 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric stage3 det 4 — DIFFER, 495 v 495 bytes, 3 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric stage3 det 5 — DIFFER, 495 v 495 bytes, 3 instruction hunks, first unequal byte at 0x00AC77BB.
+- tail quadric stage3 det 6 — DIFFER, 497 v 495 bytes, 33 instruction hunks, first unequal byte at 0x00AC7750.
+- tail quadric stage3 det 7 — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage3 det 8 — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage3 det 9 — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage4 actual midpoint init — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage4 both distances named — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage4 det inline cond — DIFFER, 495 v 495 bytes, 5 instruction hunks, first unequal byte at 0x00AC77B9.
+- tail quadric stage4 distance const — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage4 donor locals — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage4 grouped ctor — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage4 invert return — DIFFER, 495 v 495 bytes, 15 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric stage4 matrix const — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage4 midpoint const — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric stage4 midpoint mutates after — DIFFER, 490 v 495 bytes, 15 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric stage4 named negative — DIFFER, 537 v 495 bytes, 32 instruction hunks, first unequal byte at 0x00AC7781.
+- tail quadric stage4 vect part const — DIFFER, 495 v 495 bytes, 2 instruction hunks, first unequal byte at 0x00AC77C9.
+- tail quadric unrolled distance — DIFFER, 487 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail structure guard 1 named — DIFFER, 497 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail structure guard 2 named — DIFFER, 497 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail structure local edge assign — DIFFER, 521 v 495 bytes, 28 instruction hunks, first unequal byte at 0x00AC7763.
+- tail structure local mid assign — DIFFER, 520 v 495 bytes, 37 instruction hunks, first unequal byte at 0x00AC7758.
+- tail structure local optimalError assign — DIFFER, 497 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+- tail structure local optimal assign — DIFFER, 520 v 495 bytes, 36 instruction hunks, first unequal byte at 0x00AC7758.
+- tail structure return 1 bound reference — COMPILE_FAIL.
+- tail structure return 2 bound reference — DIFFER, 497 v 495 bytes, 25 instruction hunks, first unequal byte at 0x00AC7781.
+
+The selected result is RELOCATION_MATCH (495 object bytes, 495 retail bytes). The final test passed with VC7.1 and GNU C++03. GRADE_HISTORY.tsv includes all recorded compiler runs, including baseline and verification repeats.
