@@ -1,0 +1,113 @@
+// CTCTargetingPlayer::UpdateTargetedPositionRandomWalk() -- while a ranged weapon is drawn, random-walk the targeted position: a new random second-order direction, the 2D offset advanced by its delta, and the 3D offset rebuilt in the plane across the camera-to-target line, scaled by the pull-back amount and the hero's shaky-cursor stats
+// Grade: DIFFER(1108v1108) -- e13 (Ego_d names): scheduling only, 2 sites: the sine copy `mov [esi+0CCh],edx` before `fcos` (retail after, 0x0080380E); `lea eax,[esi+9Ch] ; mov ecx,eax ; pop edi` three x87 ops late (retail 0x00803890). Ego_d debug body is 786i/3123b v our 278i/990b at /Od: a ~500-instruction block (Ego_d scope with size / tan_angle / max_angle / rad_outer / rad_inner / rad_use / line / offset_size / angle_use, plus need_new_desired_pos / offset_scale / offset_scale_second_order) compiles away in release; its c2 numbering is the likely lever
+// Leaf: ?UpdateTargetedPositionRandomWalk@CTCTargetingPlayer@@IAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00803540, 1,108 bytes, thiscall `ret`, 0x44-byte frame, no EH frame.
+// Identity: Ego_r.pdb / FableWin.pdb ?UpdateTargetedPositionRandomWalk@CTCTargetingPlayer@@IAEXXZ (protected). Ego_r donor order
+//   GetPBestThingForMeleeAttack 0x007FE510, UpdateTargetThreatening 0x007FE5D0, UpdateTargetedPositionRandomWalk 0x007FE840,
+//   PostProcessTargetedThing 0x007FED60 matches retail 0x008031E0 .. 0x00803540 .. 0x00803B20; the body writes the PDB members
+//   TargetedPosOffset3D +0x9C, TargetedPosOffset +0xB4 (+= DeltaTargetedPosOffset +0xBC) and TargetedPosOffsetSecondOrder +0xCC and
+//   reads TargetedPos +0x84; called from CTCTargetingPlayer::FrameUpdate at 0x00805814. Catalog "CViewBase_UpdateSeaLevelParticles"
+//   (forge autoname) is wrong.
+// Callees: CVectorMap LowerBound 0x0040F020 (GetTC<CTCHeroRangedAttacks>, interface 129) / const 0x004365B0 (PeekTC<const
+//   CTCHeroExperience>, 104), CTCHeroRangedAttacks::GetPullBackAmount 0x00789A70 / GetShotAccuracyFraction 0x00789A80 (its value
+//   unused, the call kept), CTCBase::GetWorld 0x00686A70, CAIGameCameraBase::GetCameraManager(const CGameCameraManager**) const
+//   (slot 10, +0x28), CThingCreatureBase::GetPHeroCombatDef 0x00663340 (twice; CDefPointer temporaries), CHeroAbilityStatWeight::
+//   GetParameter 0x00851BD0, C3DVector::AccurateNormalise 0x00A14440 (twice), CWorld::GetWorldSeed 0x0049D810, GFFloatRandom
+//   0x004978A0 (twice). Constants: DELTA_NOTIONAL_ZERO 0x0129BA3C, 1.0f, 1/7 0x012722EC, 0.1f 0x0122EE58, -1.0f 0x0122DEE0,
+//   TWO_PI 0x0124F2B8 (double), 0.0f 0x0122DEDC.
+// Shape: the distance test is `!(dist_to_target < DELTA_NOTIONAL_ZERO)` (`test ah,5 ; jnp` to the exit); `C3DVector x_axis(0.0f, 0.0f, 0.0f)`
+//   gives retail's operand order in the inlined operator^; the C2DVector(sin, cos) temporary needs no named sine / cosine (e13: same
+//   7 hunks without them, and Ego_d lists none). The 3D offset's first term is multiplied by a literal 0.0f.
+// Headers: overlay branches FABLE_RETAIL_CTCTARGETINGPLAYER (CTCTargetingPlayer : CTCTargetingBase, typed members),
+//   FABLE_RETAIL_CTCHERORANGEDATTACKS, FABLE_RETAIL_CHEROCOMBATDEF_RANGED (+ new CFloatRange.h / CHeroAbilityStatWeight.h) and
+//   FABLE_RETAIL_CTHINGCREATUREBASE_HEROCOMBATDEF (GetPHeroCombatDef).
+// Next idea: the two residues are list-scheduler placements of integer ops among x87 ops in one block; try a C2DVector
+//   returning helper for the sine/cosine pair (FableWin has no such member: InitialiseFromAngles(float, float) is the nearest) or
+//   a different split of the two TargetedPosOffset3D statements, and compare the x87 dependency chains instruction by instruction.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CAIGAMECAMERABASE
+#define FABLE_RETAIL_CGAMECAMERAMANAGER
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_HEROCOMBATDEF
+#define FABLE_RETAIL_CTCHEROEXPERIENCE
+#define FABLE_RETAIL_CHEROCOMBATDEF_RANGED
+#define FABLE_RETAIL_CTCHERORANGEDATTACKS
+#define FABLE_RETAIL_CTCTARGETINGPLAYER
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CTCBase.h"
+#include "engine/C3DVector.h"
+#include "engine/C2DVector.h"
+#include "engine/CWorld.h"
+#include "engine/CAIGameCameraBase.h"
+#include "engine/CCamera.h"
+#include "engine/CGameCameraManager.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CHeroCombatDef.h"
+#include "engine/CTCHeroExperience.h"
+#include "engine/CTCHeroRangedAttacks.h"
+#include "engine/CTCTargetingPlayer.h"
+
+float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
+extern const double TWO_PI;                                          // 0x0124F2B8
+
+void CTCTargetingPlayer::UpdateTargetedPositionRandomWalk()
+{
+    CTCHeroRangedAttacks* ptc_ranged;
+    if (GetParentThing().GetTC(&ptc_ranged)) {
+        float build_up = ptc_ranged->GetPullBackAmount();
+        float accuracy = ptc_ranged->GetShotAccuracyFraction();
+        float shake_radius = build_up;
+        const CGameCameraManager* pcam_man;
+        GetWorld().PeekGameCamera()->GetCameraManager(&pcam_man);
+        C3DVector line_to_target_pos = TargetedPos - pcam_man->GetCamera().PeekWorldPos();
+        float dist_to_target = line_to_target_pos.GetMagnitude();
+        if (!(dist_to_target < DELTA_NOTIONAL_ZERO)) {
+            line_to_target_pos /= dist_to_target;
+            float main_radius = dist_to_target * (1.0f / 7.0f);
+            float second_order_radius = main_radius * 0.1f;
+            const CTCHeroExperience* ptc_exp;
+            if ((GetParentThing().GetTypeFlags() & 8) && GetParentThing().PeekTC(&ptc_exp)) {
+                CThingCreatureBase& creature = static_cast<CThingCreatureBase&>(GetParentThing());
+                if (!creature.GetPHeroCombatDef().IsNull()) {
+                    const CHeroCombatDef& hero_combat_def = *creature.GetPHeroCombatDef();
+                    float weight = hero_combat_def.RangedAccuracyShakeyCursorWeighting.GetParameter(*ptc_exp);
+                    shake_radius = ((hero_combat_def.RangedAccuracyShakeyCursor.HighValue - hero_combat_def.RangedAccuracyShakeyCursor.LowValue) * weight
+                                    + hero_combat_def.RangedAccuracyShakeyCursor.LowValue) * build_up;
+                    second_order_radius = main_radius * hero_combat_def.RangedAccuracyShakeFractionOfRadius;
+                }
+            }
+            C3DVector x_axis(0.0f, 0.0f, 0.0f);
+            if (fabs(line_to_target_pos.X) > fabs(line_to_target_pos.Y)) {
+                x_axis.Y = 1.0f;
+                x_axis.X = line_to_target_pos.Y / line_to_target_pos.X * -1.0f;
+            } else {
+                x_axis.X = 1.0f;
+                x_axis.Y = line_to_target_pos.X / line_to_target_pos.Y * -1.0f;
+            }
+            x_axis.AccurateNormalise();
+            C3DVector y_axis = x_axis ^ line_to_target_pos;
+            y_axis.AccurateNormalise();
+            float angle = GFFloatRandom(1.0f, GetWorld().GetWorldSeed());
+            float random_walk_mag = GFFloatRandom(second_order_radius, GetWorld().GetWorldSeed());
+            TargetedPosOffsetSecondOrder = C2DVector((float)sin(angle * TWO_PI), (float)cos(angle * TWO_PI));
+            TargetedPosOffset += DeltaTargetedPosOffset;
+            TargetedPosOffset3D = (x_axis * TargetedPosOffset.X + y_axis * TargetedPosOffset.Y) * main_radius * build_up * 0.0f;
+            TargetedPosOffset3D += y_axis * TargetedPosOffsetSecondOrder.Y * random_walk_mag * shake_radius;
+        }
+    }
+}

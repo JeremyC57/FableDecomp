@@ -12,8 +12,8 @@ address	kind	name	state	true_length	staged_folder	note
 00428494	named	NUISystem::CManager::CreateMenuEntryComponent	OPEN			
 00435190	named	CDisplayEngine::?InitEngine@CDisplayEngine@@MAE_NXZ	OPEN			
 00437d10	named	CPlayerGui::FormatStringForArea	OPEN			
-00442d50	identify	_global::Catch@0047e8cc	OPEN			
-004430f0	identify	_global::Catch@0047e8cc	OPEN			
+00442d50	identify	_global::Catch@0047e8cc	IN_PROGRESS			batch e14 (identify)
+004430f0	identify	_global::Catch@0047e8cc	IN_PROGRESS			batch e14 (identify)
 00446d10	identify	_global::ProcessCombatInput_MapInputsToActions	OPEN			
 00446ef0	named	CGamePlayerInterface::SetControlScheme	OPEN			
 0048e0a2	identify	_global::DrawBox	OPEN			
@@ -40,7 +40,7 @@ address	kind	name	state	true_length	staged_folder	note
 004ce550	named	CSubtitledMessage::CSubtitledMessage	OPEN			
 004cebb0	named	CSubtitledMessage::GetMessagesFromTextName	OPEN			
 005148d0	identify	_global::CEngineWorldMap_MoveConstructor	OPEN			
-0051ea30	identify	_gapscan::sub_0051ea30	OPEN			
+0051ea30	identify	_gapscan::sub_0051ea30	IN_PROGRESS			batch e14 (identify)
 00521cf0	identify	_global::CThingManager_LoadMorphFromScript	OPEN			
 005239cd	identify	_global::CThingDeadCreature_SavePersistentState	OPEN			
 00524290	identify	_global::CThingManager_SaveGameState	OPEN			
@@ -126,7 +126,7 @@ address	kind	name	state	true_length	staged_folder	note
 006ad700	named	CThingPlayerCreature::ControlledMove	MATCHED_STAGED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05
 006af4e0	named	CMessageEvent::GetPOriginator<CThing>	OPEN			
 006af7d0	named	CTCPhysicsBase::ImpulseRespondToCollision	OPEN			
-006b5890	identify	_Lower_bound<std::pair<long,float>*,std::_Lower_bound<std::pair<long,float>*,std::pair<long,float>,int>	OPEN			
+006b5890	identify	_Lower_bound<std::pair<long,float>*,std::_Lower_bound<std::pair<long,float>*,std::pair<long,float>,int>	IN_PROGRESS			batch e14 (identify)
 006b97e0	identify	_global::CWorld_InitFactions	OPEN			
 006bb860	identify	_gapscan::sub_006bb860	OPEN			
 006bd900	named	CMusicManager::PlayMusic	OPEN			
@@ -173,7 +173,7 @@ address	kind	name	state	true_length	staged_folder	note
 00726980	named	CTCPhysicsNavigator::PerformForcedMovement	OPEN			
 00726ce0	named	CTCPhysicsNavigator::Move	OPEN			
 007280c0	named	CTCRandomAppearanceMorph::UpdateMorphSet	OPEN			
-0072aaf0	identify	_global::UseSpecialAbility_CTCMultiStrike	OPEN			
+0072aaf0	identify	_global::UseSpecialAbility_CTCMultiStrike	IN_PROGRESS			batch e14 (identify)
 0072f380	named	CTCDummyVillager::OnSerialise	OPEN			
 0072f750	named	CTCDummyVillager::CreateVillager	OPEN			
 0072fb70	named	CTCDummyVillager::FrameUpdate	OPEN			
@@ -284,7 +284,7 @@ address	kind	name	state	true_length	staged_folder	note
 008008b0	named	CTCPreCalculatedNavigationRoute::LoadRoute	OPEN			
 00802e00	named	CTCTargetingPlayer::SetPTargetedThing	OPEN			
 00803280	named	CTCTargetingPlayer::UpdateTargetThreatening	OPEN			
-00803540	named	CTCTargetingPlayer::UpdateTargetedPositionRandomWalk	IN_PROGRESS			batch e13
+00803540	named	CTCTargetingPlayer::UpdateTargetedPositionRandomWalk	PARKED			PARKED e13: DIFFER(1108v1108) 2 scheduling sites 0x0080380E / 0x00803890; Ego_d debug body 786 v 278 instructions (a debug-only block decides the scheduling); draft ../2026-11-17_egod_open/e13/00803540.cpp
 00805600	named	CTCTargetingPlayer::FrameUpdate	MATCHED_STAGED	641	rebuild/candidates/manual/pending/2026-11-17_egod_e06	batch e06
 0080aad1	named	CTCActionUseBuyHouse::OnCreate	OPEN			
 0080bfec	named	CPersistContext_TransferableVector<CHeroMarriageInfo>::Resize	OPEN			
@@ -370,7 +370,7 @@ address	kind	name	state	true_length	staged_folder	note
 008e9b70	named	NCreatureMode::CModeStrafe::AnimUpdate	OPEN			
 008edc70	identify	_gapscan::sub_008edc70	OPEN			
 008eeb40	named	Mass::ForceToVel	OPEN			
-008eec70	named	Mass::Collide	IN_PROGRESS			batch e13
+008eec70	named	Mass::Collide	PARKED			PARKED e13: DIFFER(1129v1129) one-instruction mov eax,esp tie; auto_inline / Gr no longer needed; draft ../2026-11-17_egod_open/e13/008eec70.cpp
 008ef200	named	Coin::Coin	OPEN			
 008ef520	named	CTCTavernGameCoinBase::UpdateCoins	OPEN			
 008efb00	named	CTCTavernGameCoinBase::FindObstacles	OPEN			
@@ -518,7 +518,7 @@ address	kind	name	state	true_length	staged_folder	note
 009cec60	named	CBankFile::Update	OPEN			
 009cfbc0	named	CBankFile::ReadEntryList	OPEN			
 009d0880	named	CBankFile::ReadFileInformation	OPEN			
-009d8650	identify	_global::MicroThreadSleep	OPEN			
+009d8650	identify	_global::MicroThreadSleep	IN_PROGRESS			batch e14 (identify)
 009e3f60	named	CPixelFormat::ConvertRGBToPFDData	OPEN			
 009e55a0	named	CSymbolMap::ParseEnum	OPEN			
 009e84d0	named	CPersistTraits<C3DVector>::TransferIn	OPEN			
@@ -573,7 +573,7 @@ address	kind	name	state	true_length	staged_folder	note
 00a364e0	named	C3DMeshObject::GetDummyObjectPositionStatic	OPEN			
 00a36a80	named	C3DMeshObject::GetDummyObjectPositionAnimated	OPEN			
 00a3a410	named	CWADBank::AddFile	OPEN			
-00a3c3b0	named	C3DAnimationBlendState::SetInterpolate	IN_PROGRESS			batch e13
+00a3c3b0	named	C3DAnimationBlendState::SetInterpolate	PARKED			PARKED e13: DIFFER(777v777) 4 integer loads v fstp st(0) in the unrolled loop; ported to shared headers; draft ../2026-11-17_egod_open/e13/00a3c3b0.cpp
 00a43cd0	identify	_global::Vector_InsertRange_CDataBankTextEntry	OPEN			
 00a43e30	identify	_global::CVertexBufferWin32_SizeofElements	OPEN			
 00a44420	named	_global::GFIsPointInTriangle	OPEN			
