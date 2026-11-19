@@ -10,4 +10,4 @@ stack-slot order depends on them in some rows (GOTCHAS, landing fz).
   - CCreatureAction_UseWallMount 0xb0 is inside its new opt-in branch.
 
 **Recheck** of the rows graded under the unpinned names (`recheck_list.txt`, 492 rows: every 11-19 landing and respell, plus the 387 CompilerFlags rows
-and the 26 pass-pattern rows): IN PROGRESS at this commit. Result to follow in this README.
+and the 26 pass-pattern rows): 492 / 492 MATCH or RELOCATION_MATCH + PASS after the pins (`recheck_good.txt`).
