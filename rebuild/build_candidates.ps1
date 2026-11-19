@@ -399801,6 +399801,70 @@ $catalog = @(
         TestSource = '00/a9/CMatrix4x4_AlignedPreScale_00a9d480_test.cpp'
         PassPattern = '00a9d480_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004c10e0'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4c/NGraphicAppearanceCTCGraphicAppearance_GetStaticFocalPos_004c10e0.cpp'
+        TestSource = '00/4c/NGraphicAppearanceCTCGraphicAppearance_GetStaticFocalPos_004c10e0_test.cpp'
+        PassPattern = '004c10e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e1210'
+        Module = 'std'
+        Source = '00/5e/std_adjustheappairEAnimComponentCIVCountedPointerCAn_005e1210.cpp'
+        TestSource = '00/5e/std_adjustheappairEAnimComponentCIVCountedPointerCAn_005e1210_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '005e1210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00746db0'
+        Module = 'NStealth'
+        Source = '00/74/NStealth_GetStabPosOnThing_00746db0.cpp'
+        TestSource = '00/74/NStealth_GetStabPosOnThing_00746db0_test.cpp'
+        PassPattern = '00746db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007621c0'
+        Module = 'NShape::CShape'
+        Source = '00/76/NShapeCShape_UpdateSelectedPoint_007621c0.cpp'
+        TestSource = '00/76/NShapeCShape_UpdateSelectedPoint_007621c0_test.cpp'
+        PassPattern = '007621c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00789ce0'
+        Module = '`anonymous namespace''
+        Source = '00/78/anonymousnamespace_GetDamageMultiplierFromThingAtBuildUpTime_00789ce0.cpp'
+        TestSource = '00/78/anonymousnamespace_GetDamageMultiplierFromThingAtBuildUpTime_00789ce0_test.cpp'
+        PassPattern = '00789ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080dc90'
+        Module = '`anonymous namespace'::CThingFilter_IsEvadeExplosion'
+        Source = '00/80/anonymousnamespaceCThingFilterIsEvadeExplosion_operator_0080dc90.cpp'
+        TestSource = '00/80/anonymousnamespaceCThingFilterIsEvadeExplosion_operator_0080dc90_test.cpp'
+        PassPattern = '0080dc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6ebe0'
+        Module = 'CVtable_012bedb8'
+        Source = '00/c6/CVtable012bedb8_RebuildGain_00c6ebe0.cpp'
+        TestSource = '00/c6/CVtable012bedb8_RebuildGain_00c6ebe0_test.cpp'
+        PassPattern = '00c6ebe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00774c60'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_StockDisplay_00774c60.cpp'
+        TestSource = '00/77/CTCShop_StockDisplay_00774c60_test.cpp'
+        PassPattern = '00774c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00738a80'
+        Module = 'CTCEntityEvents'
+        Source = '00/73/CTCEntityEvents_CIsHitEventHitBy_00738a80.cpp'
+        TestSource = '00/73/CTCEntityEvents_CIsHitEventHitBy_00738a80_test.cpp'
+        PassPattern = '00738a80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

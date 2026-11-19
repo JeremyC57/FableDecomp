@@ -1,0 +1,10 @@
+address	name	evidence
+004c10e0	NGraphicAppearance::CTCGraphicAppearance::GetStaticFocalPos	Ego_r.pdb + FableWin.pdb object order (see NAME_FIXES.tsv)
+005e1210	std::__adjust_heap<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase> >*,int,std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase> >,CKeyPairCompareLess<EAnimComponent,CIVCountedPointer<CAnimComponentBase> > >	see NAME_FIXES.tsv
+00746db0	NStealth::GetStabPosOnThing	see NAME_FIXES.tsv
+00789ce0	`anonymous namespace'::GetDamageMultiplierFromThingAtBuildUpTime	see NAME_FIXES.tsv
+0080dc90	`anonymous namespace'::CThingFilter_IsEvadeExplosion::operator()	see NAME_FIXES.tsv
+00c6ebe0	CVtable_012bedb8::RebuildGain	unchanged: descriptive (libpk, no PDB/RTTI/donor copy); owner-accepted vendor naming V2 labels_vendor_v2_2026-11-04.tsv:72 + reloc_bindings
+00774c60	CTCShop::StockDisplay	unchanged (Ego_r + FableWin ?StockDisplay@CTCShop@@QAEXXZ)
+006b5890	std::__lower_bound<std::pair<long,float>*,std::pair<long,float>,std::less<std::pair<long,float> >,int>	see NAME_FIXES.tsv
+00738a80	CTCEntityEvents::GetEvent<const NEntityEvents::CEventHitBy,CFilter_Bind3<NEntityEvents::CIsHitEventHitByMelee,std::unary_negate<NEntityEvents::CIsHitEventBlocked>,NEntityEvents::CIsHitEventHitBy> >	unchanged (Ego_r + FableWin decorated name in the Leaf)

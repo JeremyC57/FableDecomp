@@ -109,6 +109,21 @@ public:
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN_FORCEINLINE
     FABLE_FORCEINLINE
 #endif
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN_EARLY_RETURN
+    // Nested opt-in (w24 hand3a, row 0x005E1210 std::__adjust_heap over pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >):
+    // the operator= of FableWin.pdb ??4?$CIVCountedPointer@VCAnimComponentBase@@@@QAEAAV0@ABV0@@Z (debug copy 0x01FAD9C0: the same-pointer
+    // test returns *this at once, `jne` over `mov eax,[ebp-4] ; jmp`; then Release, the copy, the conditional AddRef, `return *this`).
+    // The pointers are compared through InternalGetObject() (debug calls 0x01FADA70 ?InternalGetObject@..@@QBEPAVCIVCountedPointeeBase@@XZ
+    // twice); needs FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT, which declares it. Same semantics and the same retail instructions as the
+    // branch below.
+    CIVCountedPointer& operator=(const CIVCountedPointer& other) {
+        if (InternalGetObject() == other.InternalGetObject()) return *this;
+        Release();
+        Object = other.Object;
+        if (Object) Object->AddRef();
+        return *this;
+    }
+#else
     CIVCountedPointer& operator=(const CIVCountedPointer& other) {
         if (Object != other.Object) {
             Release();
@@ -117,6 +132,7 @@ public:
         }
         return *this;
     }
+#endif
 #endif
     T* operator->() const { return static_cast<T*>(Object); }
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT

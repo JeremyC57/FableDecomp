@@ -25,6 +25,14 @@ class CIsHitEventBlocked:public std::unary_function<const CEventHitBase*,bool> {
 }
 #ifdef FABLE_RETAIL_NENTITYEVENTS_CISHITEVENTHITBY
 #include "engine/NEntityEvents_CEventHitBase.h"
+#ifdef FABLE_RETAIL_NENTITYEVENTS_CISHITEVENTHITBY_LOCAL
+// Nested opt-in (hand3a w24, row 0x00738A80 GetEvent<const CEventHitBy, CFilter_Bind3<Melee, unary_negate<Blocked>, HitBy> >): the original
+// body with its named local -- Ego_d.pdb ??RCIsHitEventHitBy locals pevent, phit_by (CThing*) and FableWin.pdb 0x0250E970 (GetPHitBy result
+// stored to [ebp-4], then compared with HitBy). Same instructions; the local is one more candidate in the caller's block (c2 K), which
+// gives retail's esi = event data / edi = count block there. Body only: default path unchanged.
+inline bool NEntityEvents::CIsHitEventHitBy::operator()(const CEventHitBase* pevent)const{CThing* phit_by=pevent->GetPHitBy();return phit_by==HitBy;}
+#else
 inline bool NEntityEvents::CIsHitEventHitBy::operator()(const CEventHitBase* event)const{return event->GetPHitBy()==HitBy;}
+#endif
 #endif
 #endif

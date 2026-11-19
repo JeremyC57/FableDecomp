@@ -40242,3 +40242,9 @@ __wcsicmp	00f3fb84	00599e3f
 ?GetComponentCost@CPSCSplineBase@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z	00b202c0	00b05c60
 ?CUnprovenMixKernel_00c6aae0@@YAXPBFKPAJFF@Z	00c6aae0	00c6ac90
 ?g_SSEAvailable@@3_NA	013d2880	00a9d480
+?GetRenderPositionForThing@?A0x75bb2adf@@YI?AVC3DVector@@ABVCThing@@M@Z	004bbf00	004c10e0
+??$__push_heap@PAU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@HU12@V?$CKeyPairCompareLess@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@std@@YIXPAU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@0@HHU10@V?$CKeyPairCompareLess@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@Z	005e0940	005e1210
+??$__find@PAPAVC3DVector@@PAV1@@std@@YIPAPAVC3DVector@@PAPAV1@0ABQAV1@ABUrandom_access_iterator_tag@0@@Z	00764080	007621c0
+?_M_insert_overflow@?$vector@PAVC3DVector@@V?$allocator@PAVC3DVector@@@std@@@std@@IAEXPAPAVC3DVector@@ABQAV3@ABU__true_type@2@I_N@Z	00765130	007621c0
+?GetLineOutFromClosestPointOnFiniteLineToPoint@NPhysicsHelpers@@YI?AVC3DVector@@ABV2@00@Z	008f5b50	0080dc90
+?IsTravellingAway@CThingFilter_IsEvadeExplosion@?A0xd48c9e3e@@QBE_NABVC3DVector@@0@Z	0080c140	0080dc90

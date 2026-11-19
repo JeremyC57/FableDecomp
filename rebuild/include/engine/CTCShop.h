@@ -69,6 +69,12 @@ public:
 #endif
     std::vector<GoodsPlace> GetFreeSaleItemPlaces(bool);
     void AddSaleItem(long,const GoodsPlace&);
+#ifdef FABLE_RETAIL_CTCSHOP_ADDSALEITEMPLACES
+    // Opt-in (hand3a w24, rows 0x00774B40 GetFreeSaleItemPlaces / 0x00774C60 StockDisplay): Ego_r.pdb / FableWin.pdb
+    // ?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z (FableWin 0x0261A260), out of line in retail at 0x007748E0 (landed;
+    // GetFreeSaleItemPlaces calls it with the parent thing, 0x00774B61). Declaration only: no layout change.
+    void AddSaleItemPlacesFromThing(const CThing* thing);                // 0x007748E0
+#endif
 #ifdef FABLE_RETAIL_CTCSHOP
     // Retail opt-in (chunk 755, row 0x00775B40 FrameUpdate): Ego_r.pdb public members called by FrameUpdate, all out of line in
     // retail (declarations only, no layout change): ?SetAlarm@CTCShop@@QAEX_N@Z 0x00773C90, ?RemoveStockItemsFromShop@CTCShop@@QAEXXZ

@@ -1,0 +1,38 @@
+addr       parity           behav  name
+004c10e0   WARN STANDIN_LEAF ?GetStaticFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@XZ (catalog _global::CTCGraphicAppearance_UpdateHelperPointOffset; names another function)
+004c10e0   RELOCATION_MATCH PASS   GetStaticFocalPos
+005e1210   WARN STANDIN_LEAF ??$__adjust_heap@PAU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@HU12@V?$CKeyPairCompareLess@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@std@@YIXPAU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@0@HHU10@V?$CKeyPairCompareLess@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@Z (catalog _Adjust_heap<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>*,int,std::_Adjust_heap<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>*,int,std::pa; names another function)
+005e1210   RELOCATION_MATCH PASS   __adjust_heap<pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase> >*,int,pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase> >,CKeyPairCompareLess<EAnimComponent,CIVCountedPointer<CAnimComponentBase> > >
+00746db0   RELOCATION_MATCH PASS   GetStabPosOnThing
+007621c0   RELOCATION_MATCH PASS   UpdateSelectedPoint
+00789ce0   WARN RELOC_ALIAS: __CItanh -> 00bfece2 is the import thunk 'MSVCR71.DLL::_CItanh'
+00789ce0   RELOCATION_MATCH PASS   GetDamageMultiplierFromThingAtBuildUpTime
+0080dc90   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0080dc90   RELOCATION_MATCH PASS   operator()
+00c6ebe0   RELOCATION_MATCH PASS   RebuildGain
+00774c60   RELOCATION_MATCH PASS   StockDisplay
+00738a80   WARN RELOC_NAME: ??RCIsHitEventHitByMelee@NEntityEvents@@QBE_NPBVCEventHitBase@1@@Z -> 00810f80 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00738a80   WARN STANDIN_LEAF ??$GetEvent@$$CBVCEventHitBy@NEntityEvents@@V?$CFilter_Bind3@VCIsHitEventHitByMelee@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsHitEventHitBy@2@@@@CTCEntityEvents@@QBE_NPAPBVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind3@VCIsHitEventHitByMelee@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsHitEventHitBy@2@@@@Z (catalog GetEvent<NEntityEvents::CEventHitBy_const_,CFilter_Bind3<NEntityEvents::CIsHitEventHitByMelee,std::unary_negate<NEntityEvents::CIsHitEventBlocked>,NEntityEvents::GetEvent<NEntityEvents::CEventHitBy_const_,CFilter_Bind3<NEntityEvents::CIsHitEventHitByMe; names another function)
+00738a80   RELOCATION_MATCH PASS   GetEvent<const NEntityEvents::CEventHitBy,CFilter_Bind3<NEntityEvents::CIsHitEventHitByMelee,std::unary_negate<NEntityEvents::CIsHitEventBlocked>,NEntityEvents::CIsHitEventHitBy> >
+
+WINS: 9
+  004c10e0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?GetStaticFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@XZ
+  005e1210 RELOCATION_MATCH std::??$__adjust_heap@PAU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@HU12@V?$CKeyPairCompareLess@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@std@@
+  00746db0 RELOCATION_MATCH NStealth::?GetStabPosOnThing@NStealth@@YI?AVC3DVector@@AAVCThing@@@Z
+  007621c0 RELOCATION_MATCH NShape::CShape::?UpdateSelectedPoint@CShape@NShape@@QAE_NABVC3DVector@@@Z
+  00789ce0 RELOCATION_MATCH `anonymous namespace'::?GetDamageMultiplierFromThingAtBuildUpTime@
+  0080dc90 RELOCATION_MATCH `anonymous namespace'::CThingFilter_IsEvadeExplosion::??RCThingFilter_IsEvadeExplosion@
+  00c6ebe0 RELOCATION_MATCH CVtable_012bedb8::?RebuildGain@CVtable_012bedb8@@QAEX_N@Z
+  00774c60 RELOCATION_MATCH CTCShop::?StockDisplay@CTCShop@@QAEXXZ
+  00738a80 RELOCATION_MATCH CTCEntityEvents::??$GetEvent@$$CBVCEventHitBy@NEntityEvents@@V?$CFilter_Bind3@VCIsHitEventHitByMelee@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsHitEventHitBy@2@@@@CTCEntityEvents@@QBE_NPAPBVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind3@VCIsHitEventHitByMelee@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsHitEventHitBy@2@@@@Z
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  NGraphicAppearanceCTCGraphicAppearance_GetStaticFocalPos_004c10e0
+  std_adjustheappairEAnimComponentCIVCountedPointerCAn_005e1210
+  NStealth_GetStabPosOnThing_00746db0
+  NShapeCShape_UpdateSelectedPoint_007621c0
+  anonymousnamespace_GetDamageMultiplierFromThingAtBuildUpTime_00789ce0
+  anonymousnamespaceCThingFilterIsEvadeExplosion_operator_0080dc90
+  CVtable012bedb8_RebuildGain_00c6ebe0
+  CTCShop_StockDisplay_00774c60
+  CTCEntityEvents_CIsHitEventHitBy_00738a80

@@ -41,6 +41,11 @@ public:
  // __fastcall), out of line in retail at 0x00762620. Declaration only: no layout change.
  static void FABLE_FASTCALL StatOnSerialise(CTCShapeManager&,CPersistContext&,long,const C2DCoordI&,class C2DBoxF&);   // 0x00762620
 #endif
+#ifdef FABLE_RETAIL_NSHAPE_CSHAPE_UPDATESELECTEDPOINT
+ // Retail opt-in (w24 hand3a, row 0x007621C0): Ego_r.pdb / FableWin.pdb ?UpdateSelectedPoint@CShape@NShape@@QAE_NABVC3DVector@@@Z
+ // (FableWin debug\tc_geometric_shapes.obj #100, 0x025DC6E0), out of line in retail at 0x007621C0. Declaration only: no layout change.
+ bool UpdateSelectedPoint(const C3DVector& pos);                      // 0x007621C0
+#endif
  CTCShapeManager& Owner;
  std::vector<C3DVector> Points;
  std::vector<std::vector<C3DVector>::iterator> SelectedPoints;
