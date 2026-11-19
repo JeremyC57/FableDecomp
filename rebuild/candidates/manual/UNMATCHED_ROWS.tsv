@@ -752,7 +752,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b17bd0	NParticleEngine::CPSCAttractor	InterpolateTo	928	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b17bd0.cpp	gapscan/boundary
 00b19c60	NParticleEngine::CPSCLight	PreparePrimitives	2528	parked	DIFFER(2546v2516)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand737/differ/00b19c60.test.cpp	gapscan/boundary
 00b1bc80	NParticleEngine::CPSCDecalRenderer	GetComponentCost	288	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b1bc80.cpp	gapscan/boundary
-00b1dc70	CPSCDecalRenderer	AddToBoundingSphere	864	reserved (hand3c, not plain C++)		0	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00b1dc70.cpp	original
 00b20ba0	CSplinePosParamData	Update	400	parked	DIFFER(397v391)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b20ba0.cpp	original
 00b20d30	CSplinePosParamData	GetClosestParameterisedControlPoints	672	parked	DIFFER(563v578)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00b20d30.cpp	original
 00b22670	NParticleEngine::CPSCSplineBase	DatabaseSerialise	1232	parked	DIFFER(1201v1217)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00b22670.cpp	original

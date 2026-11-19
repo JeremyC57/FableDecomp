@@ -400890,6 +400890,13 @@ $catalog = @(
         TestSource = '00/b6/CEngineWaterRenderer_GetIceForegroundColbuffShadowedVertexShader_00b6dfd0_test.cpp'
         PassPattern = '00b6dfd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b1dc70'
+        Module = 'NParticleEngine::CPSCDecalRenderer'
+        Source = '00/b1/NParticleEngineCPSCDecalRenderer_AddToBoundingSphere_00b1dc70.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_AddToBoundingSphere_00b1dc70_test.cpp'
+        PassPattern = '00b1dc70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

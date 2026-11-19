@@ -68,6 +68,13 @@ public:
     virtual void WriteBinary(CDataOutputStream& out) const;
     virtual void DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo& info);
     virtual void DatabaseCopy(const CPSCBase& other);
+#ifdef FABLE_RETAIL_CPSCDECALRENDERER_ADDTOBOUNDINGSPHERE
+    // hand3c opt-in (row 0x00B1DC70): Ego_r.pdb / FableWin.pdb ?AddToBoundingSphere@CPSCDecalRenderer@NParticleEngine@@UAE_NAAVC3DBoundingSphere@@M
+    // AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@@Z (FableWin 0x02F55EB0), the CPSCBase override; Ego_d.pdb parameter names.
+    // Declaration only: no layout change (the slot is CPSCBase's).
+    virtual bool AddToBoundingSphere(C3DBoundingSphere& bsphere_list, const float interpolate, CParticleSystem& system,
+                                     const CParticleUpdateParameters<unsigned long, unsigned long>& params);   // 0x00B1DC70
+#endif
 #ifdef FABLE_RETAIL_CPSCDECALRENDERER_DECALCOLLIDES
 protected:
     // hand3c opt-in (row 0x00B1D550): Ego_r.pdb / FableWin.pdb ?DecalCollides@CPSCDecalRenderer@NParticleEngine@@IAE_NAAVCParticleSystem@2@
