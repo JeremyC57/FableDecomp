@@ -400736,6 +400736,13 @@ $catalog = @(
         TestSource = '00/62/CTCInventoryQuests_InitialiseQuestCardList_00621a20_test.cpp'
         PassPattern = '00621a20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008dd7e0'
+        Module = 'NCreatureMode::CModeThunderLightningStorm'
+        Source = '00/8d/NCreatureModeCModeThunderLightningStorm_UpdateDamage_008dd7e0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeThunderLightningStorm_UpdateDamage_008dd7e0_test.cpp'
+        PassPattern = '008dd7e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

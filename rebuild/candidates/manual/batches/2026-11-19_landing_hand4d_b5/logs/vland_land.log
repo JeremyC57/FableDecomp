@@ -1,0 +1,10 @@
+addr       parity           behav  name
+008dd7e0   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@@Z -> 008e3c50 labelled 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>'
+008dd7e0   WARN RELOC_NAME: ??$__find@PAV?$CIntelligentPointer@VCThing@@@@V1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@0ABV1@ABUrandom_access_iterator_tag@0@@Z -> 006c4060 labelled 'FableFind_006c4060::find<FableFind_006c4060::CBaseIntelligentPointer, FableFind_006c4060::CBaseIntelligentPointer>'
+008dd7e0   RELOCATION_MATCH PASS   UpdateDamage
+
+WINS: 1
+  008dd7e0 RELOCATION_MATCH NCreatureMode::CModeThunderLightningStorm::?UpdateDamage@CModeThunderLightningStorm@NCreatureMode@@AAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NCreatureModeCModeThunderLightningStorm_UpdateDamage_008dd7e0

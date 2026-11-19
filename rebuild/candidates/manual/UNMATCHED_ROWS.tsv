@@ -441,7 +441,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 008dbc80	NCreatureMode::CModeDragonFlying	FrameUpdate	2320	parked	DIFFER(2323v2319)	1	rebuild/candidates/manual/pending/2026-11-07_linux_hand831/differ/008dbc80.cpp	gapscan/boundary
 008dcc80	NCreatureMode::CModeJackOfBladesFlash	Flash	1136	parked	DIFFER(1v1136)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008dcc80.cpp	original
 008dd0f0	CModeScorpionKingVulnerable	OnActivate	1520	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008dd0f0.cpp	original
-008dd7e0	CModeThunderLightningStorm	UpdateDamage	752	reserved (hand4d, in-house)	DIFFER(744v744)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/008dd7e0.cpp	original
 008de080	CModeDragonStrafeBurninate	FrameUpdate	1440	parked	DIFFER(5v1437)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008de080.cpp	original
 008de7a0	CModeIceTrollGroundSmashIcicleAssault	FrameUpdate	1248	parked	DIFFER(5v1239)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008de7a0.cpp	original
 008dec80	NCreatureMode::CModeJackOfBladesFlash	FrameUpdate	1680	parked	DIFFER(1647v1665)	1	rebuild/candidates/manual/pending/2026-11-07_linux_hand831/differ/008dec80.cpp	gapscan/boundary
