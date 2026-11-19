@@ -21,6 +21,8 @@
 //   test's temporaries ecx:edi; the volatile ExitThread read is retail's dead `mov cl,[eax+7Ah]` in the inlined setter.
 // Flags: /d2inlT120 (inline threshold: >=110 expands the setter at the first site only; the default expands neither)
 // Leaf: ?IsFileCopyNecessary@CFileInstaller@@IBE_NAAV?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@@Z
+// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
+//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CCOMPRESSORZLIB
@@ -43,13 +45,11 @@ extern "C" __declspec(dllimport) void* __stdcall CreateFileW(const wchar_t* name
 extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* h);
 extern "C" __declspec(dllimport) int __stdcall GetFileSizeEx(void* h, LARGE_INTEGER* size);
 
-inline void FABLE_FASTCALL CFileInstaller::SetDirtyDiscError(bool error)
+inline void FABLE_FASTCALL CFileInstaller::SetDirtyDiscError(bool on)
 {
-    CCriticalSectionLock lock(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
-    DirtyDisc = error;
-    if (CTBaseSingleton<CFileInstaller>::Get().ExitThread || error)
-        error = true;
-    CTBaseSingleton<CFileInstaller>::Get().ExitThread = error;
+    CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
+    DirtyDisc = on;
+    CTBaseSingleton<CFileInstaller>::Get().ExitThread = CTBaseSingleton<CFileInstaller>::Get().ExitThread || on;
 }
 
 bool CFileInstaller::IsFileCopyNecessary(CCountedPointer<CFileInfo const>& file) const

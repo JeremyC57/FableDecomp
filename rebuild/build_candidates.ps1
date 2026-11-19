@@ -400635,6 +400635,27 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT150'
         PassPattern = '00699e60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0084e590'
+        Module = 'NCameraModes::CBase'
+        Source = '00/84/NCameraModesCBase_UpdateTrackMeleeOpponents_0084e590.cpp'
+        TestSource = '00/84/NCameraModesCBase_UpdateTrackMeleeOpponents_0084e590_test.cpp'
+        PassPattern = '0084e590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006668a0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetPossibleCombatAnimations_006668a0.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetPossibleCombatAnimations_006668a0_test.cpp'
+        PassPattern = '006668a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c33a0'
+        Module = '_global'
+        Source = '00/9c/global_GetMarkerFileName_009c33a0.cpp'
+        TestSource = '00/9c/global_GetMarkerFileName_009c33a0_test.cpp'
+        PassPattern = '009c33a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

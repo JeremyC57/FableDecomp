@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009c33a0   RELOCATION_MATCH PASS   GetMarkerFileName
+
+WINS: 1
+  009c33a0 RELOCATION_MATCH _global::?GetMarkerFileName@@YI?AVCWideString@@ABV1@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  global_GetMarkerFileName_009c33a0

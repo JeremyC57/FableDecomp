@@ -1,0 +1,250 @@
+--- orig/CFileInstallerCActiveFile_OnWriteFinished_009c38c0.cpp	2026-11-19 15:27:01.938254601 +0000
++++ CFileInstallerCActiveFile_OnWriteFinished_009c38c0.cpp	2026-11-19 15:28:08.654333488 +0000
+@@ -2,6 +2,8 @@
+ //   source's write time onto it, close both files, and when the file wants a marker create "<name>_<ext>.mkf" beside it (a failure
+ //   raises the dirty-disc error)
+ // Leaf: ?OnWriteFinished@CActiveFile@CFileInstaller@@QAEXXZ
++// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
++//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
+ // Flags: none
+ // Retail: Fable.exe (TLC, VC7.1) @ 0x009C38C0, 409 bytes, no frame pointer, no SEH, `ret`. Callees: CloseHandle / CreateFileW /
+ //   SetFilePointer / SetEndOfFile / GetFileSize / GetFileTime / SetFileTime (IAT), CWideString copy 0x0099B720, operator const
+@@ -12,8 +14,8 @@
+ // Shape: FableWin.pdb 0x0304B490 statement for statement (its ASSERTs and the timing debug print compiled out; the print's
+ //   GFGetTime() call stays); Ego_d locals distance_to_move, src_filetime, time, size_mb, pathname, flags, file_size, dst_filetime,
+ //   marker_name, mrk_handle. SetDirtyDiscError (0x009C3530) is inline here with the FableWin.pdb 0x0304C9B0 text
+-//   `Get().ExitThread = Get().ExitThread || on;`: the landed `if (... || error) error = true;` spelling gives DIFFER(409v409) here
+-//   (eax/ecx/edx rotated by one from 0x009C392B), while this text matches here and at 0x009C3530 and 0x009C4440 alike (measured).
++//   `Get().ExitThread = Get().ExitThread || on;`: the old `if (... || error) error = true;` spelling gave DIFFER(409v409) here
++//   (eax/ecx/edx rotated by one from 0x009C392B), while this text matches here and at every other CFileInstaller row (measured).
+ //   ExitThread is volatile in the shared header (retail's dead `mov al,[eax+7Ah]`).
+ // GetMarkerFileName: FableWin.pdb static `GetMarkerFileName` 0x0304C700 (no decoration: file static; Ego_d locals dst_name,
+ //   marker_file_drive / _dir / _name / _ext, marker_path). Declared __fastcall (FableWin's default for free functions, @@YI) and
+@@ -45,11 +47,11 @@
+ extern "C" __declspec(dllimport) int __stdcall GetFileTime(void* h, _FILETIME* creation, _FILETIME* access, _FILETIME* write);
+ extern "C" __declspec(dllimport) int __stdcall SetFileTime(void* h, const _FILETIME* creation, const _FILETIME* access, const _FILETIME* write);
+ 
+-inline void FABLE_FASTCALL CFileInstaller::SetDirtyDiscError(bool error)
++inline void FABLE_FASTCALL CFileInstaller::SetDirtyDiscError(bool on)
+ {
+-    CCriticalSectionLock lock(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
+-    DirtyDisc = error;
+-    CTBaseSingleton<CFileInstaller>::Get().ExitThread = CTBaseSingleton<CFileInstaller>::Get().ExitThread || error;
++    CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
++    DirtyDisc = on;
++    CTBaseSingleton<CFileInstaller>::Get().ExitThread = CTBaseSingleton<CFileInstaller>::Get().ExitThread || on;
+ }
+ 
+ static __declspec(noinline) CWideString FABLE_FASTCALL GetMarkerFileName(const CWideString& dst_name)
+--- orig/CFileInstaller_IsFileCopyNecessary_009c4440.cpp	2026-11-19 15:27:01.935416242 +0000
++++ CFileInstaller_IsFileCopyNecessary_009c4440.cpp	2026-11-19 15:28:08.655214274 +0000
+@@ -21,6 +21,8 @@
+ //   test's temporaries ecx:edi; the volatile ExitThread read is retail's dead `mov cl,[eax+7Ah]` in the inlined setter.
+ // Flags: /d2inlT120 (inline threshold: >=110 expands the setter at the first site only; the default expands neither)
+ // Leaf: ?IsFileCopyNecessary@CFileInstaller@@IBE_NAAV?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@@Z
++// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
++//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
+ #define FABLE_RETAIL_CCHARSTRING
+ #define FABLE_RETAIL_CWIDESTRING
+ #define FABLE_RETAIL_CCOMPRESSORZLIB
+@@ -43,13 +45,11 @@
+ extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* h);
+ extern "C" __declspec(dllimport) int __stdcall GetFileSizeEx(void* h, LARGE_INTEGER* size);
+ 
+-inline void FABLE_FASTCALL CFileInstaller::SetDirtyDiscError(bool error)
++inline void FABLE_FASTCALL CFileInstaller::SetDirtyDiscError(bool on)
+ {
+-    CCriticalSectionLock lock(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
+-    DirtyDisc = error;
+-    if (CTBaseSingleton<CFileInstaller>::Get().ExitThread || error)
+-        error = true;
+-    CTBaseSingleton<CFileInstaller>::Get().ExitThread = error;
++    CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
++    DirtyDisc = on;
++    CTBaseSingleton<CFileInstaller>::Get().ExitThread = CTBaseSingleton<CFileInstaller>::Get().ExitThread || on;
+ }
+ 
+ bool CFileInstaller::IsFileCopyNecessary(CCountedPointer<CFileInfo const>& file) const
+--- orig/CFileInstaller_OnFileReadCompletion_009c37a0.cpp	2026-11-19 15:27:01.929663653 +0000
++++ CFileInstaller_OnFileReadCompletion_009c37a0.cpp	2026-11-19 15:28:08.654913943 +0000
+@@ -1,5 +1,7 @@
+ // CFileInstaller::OnFileReadCompletion(unsigned long err, unsigned long no_bytes, _OVERLAPPED* pover) -- ReadFileEx completion routine: on an I/O error flag a dirty disc (inline SetDirtyDiscError), then under the installer's lock post the finished read and signal the installer's event
+ // Leaf: ?OnFileReadCompletion@CFileInstaller@@KGXKKPAU_OVERLAPPED@@@Z
++// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
++//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
+ // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C37A0, 128 bytes, `ret 0Ch` (protected static __stdcall).
+ // Identity: Ego_d.pdb lib_file_installer.obj lists OnFileReadCompletion (params err / no_bytes / pover, locals cs / pread);
+ //   Ego_r.pdb ?OnFileReadCompletion@CFileInstaller@@KGXKKPAU_OVERLAPPED@@@Z sits between StartWritingFile and
+@@ -20,9 +22,7 @@
+ {
+     CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
+     DirtyDisc = on;
+-    if (CTBaseSingleton<CFileInstaller>::Get().ExitThread || on)
+-        on = true;
+-    CTBaseSingleton<CFileInstaller>::Get().ExitThread = on;
++    CTBaseSingleton<CFileInstaller>::Get().ExitThread = CTBaseSingleton<CFileInstaller>::Get().ExitThread || on;
+ }
+ 
+ void FABLE_STDCALL CFileInstaller::OnFileReadCompletion(unsigned long err, unsigned long no_bytes, _OVERLAPPED* pover)
+--- orig/CFileInstaller_OnFileWriteCompletion_009c3820.cpp	2026-11-19 15:27:01.932747403 +0000
++++ CFileInstaller_OnFileWriteCompletion_009c3820.cpp	2026-11-19 15:28:08.654595329 +0000
+@@ -1,5 +1,7 @@
+ // CFileInstaller::OnFileWriteCompletion(unsigned long err, unsigned long no_bytes, _OVERLAPPED* pover) -- WriteFileEx completion routine: on an I/O error flag a dirty disc (inline SetDirtyDiscError), then under the installer's lock add the bytes written to the active file, retire the write, signal the installer's event and free the write record
+ // Leaf: ?OnFileWriteCompletion@CFileInstaller@@KGXKKPAU_OVERLAPPED@@@Z
++// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
++//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
+ // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C3820, 151 bytes, `ret 0Ch` (protected static __stdcall).
+ // Identity: Ego_d.pdb lib_file_installer.obj lists OnFileWriteCompletion (params err / no_bytes / pover, locals cs / pwrite)
+ //   right after OnFileReadCompletion's twin PostFileReadCompletion; Ego_r.pdb ?OnFileWriteCompletion@CFileInstaller@@KGXKKPAU_OVERLAPPED@@@Z
+@@ -20,9 +22,7 @@
+ {
+     CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
+     DirtyDisc = on;
+-    if (CTBaseSingleton<CFileInstaller>::Get().ExitThread || on)
+-        on = true;
+-    CTBaseSingleton<CFileInstaller>::Get().ExitThread = on;
++    CTBaseSingleton<CFileInstaller>::Get().ExitThread = CTBaseSingleton<CFileInstaller>::Get().ExitThread || on;
+ }
+ 
+ void FABLE_STDCALL CFileInstaller::OnFileWriteCompletion(unsigned long err, unsigned long no_bytes, _OVERLAPPED* pover)
+--- orig/CFileInstaller_SetDirtyDiscError_009c3530.cpp	2026-11-19 15:27:01.926820082 +0000
++++ CFileInstaller_SetDirtyDiscError_009c3530.cpp	2026-11-19 15:27:58.684222792 +0000
+@@ -1,70 +1,24 @@
+-// CFileInstaller::SetDirtyDiscError(bool error) -- record a dirty-disc read error and make the installer thread exit
++// CFileInstaller::SetDirtyDiscError(bool on) -- record a dirty-disc read error and make the installer thread exit
+ // Leaf: ?SetDirtyDiscError@CFileInstaller@@KIX_N@Z
+-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009C3530, 72 bytes, `ret` (protected static __fastcall, error in cl).
++// Retail: Fable.exe (TLC, VC7.1) function @ 0x009C3530, 72 bytes, `ret` (protected static __fastcall, on in cl).
+ // Identity: FableWin.pdb ?SetDirtyDiscError@CFileInstaller@@KIX_N@Z; it is inlined into OnFileReadCompletion 0x009C37A0
+ //   and OnFileWriteCompletion 0x009C3820 (`SetDirtyDiscError(true)`, the same lock / store / Get pair).
+ // Callees: CTBaseSingleton<CFileInstaller>::Get 0x00404440 (out of line), CCriticalSectionLock ctor 0x00A62920 /
+-//   dtor 0x00A629A0.  Global: the dirty-disc flag byte 0x013CA814 (landed Pause 0x009C31E0 calls it g_installerNoPauseWait).
++//   dtor 0x00A629A0.  Global: CFileInstaller::DirtyDisc 0x013CA814 (Ego_r.pdb static member).
+ // Layout: retail CFileInstaller (Ego_r.pdb minus the 16->12 CArray and 12->4 list shrink): CriticalSection +0x04, ExitThread +0x7A.
+-// Shape: `if (Get().ExitThread || error) error = true; Get().ExitThread = error;` -- reusing the bool argument keeps it in
+-//   bl (`mov bl,1` on both true arms); `ExitThread = ExitThread || error` materialises 0/1 in ebx instead.
+-struct _RTL_CRITICAL_SECTION { unsigned char _body[0x18]; };   // Win32 critical section, 24 bytes
++// Shape: FableWin.pdb 0x0304C9B0 statement for statement: `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names: on, cs).
++//   The same text is inlined by OnFileReadCompletion 0x009C37A0, OnFileWriteCompletion 0x009C3820, StartReadingFile 0x009C3590,
++//   StartWritingFile 0x009C3660, CActiveFile::OnWriteFinished 0x009C38C0 and IsFileCopyNecessary 0x009C4440.
++// Retail-volatile: 0x009C3555 `mov cl,byte ptr [eax+7Ah]` -- ExitThread is read through the volatile member of the shared header
++//   (written by the main thread, polled by the installer threads; see engine/CFileInstaller.h).
++#define FABLE_RETAIL_CCRITICALSECTIONLOCK
++#define FABLE_RETAIL_CTBASESINGLETON_GET_DECL
++#include "engine/CFileInstaller.h"
++#include "engine/CCriticalSectionLock.h"
+ 
+-class CCriticalSectionLock {                    // 8 bytes on the stack (Ego_r.pdb)
+-public:
+-    CCriticalSectionLock(_RTL_CRITICAL_SECTION& section, bool tryLock);   // 0x00A62920
+-    ~CCriticalSectionLock();                                              // 0x00A629A0
+-    void Release();                                                       // 0x00A62960
+-    _RTL_CRITICAL_SECTION* CriticalSection;     // +0x00
+-    bool Locked;                                // +0x04
+-};
+-
+-template <class T> class CTBaseSingleton {
+-public:
+-    static T& __fastcall Get();                 // CFileInstaller: 0x00404440 (out of line)
+-};
+-
+-class CFileInstaller {
+-public:
+-    class CActiveFile;
+-    void*                 _padding_;            // +0x00
+-    _RTL_CRITICAL_SECTION CriticalSection;      // +0x04
+-    unsigned char         _pad1c[0x14];         // +0x1C BufferChunks (CArray, 12), PReadBuffer, PWriteBuffer
+-    long                  AvailableBuffers;     // +0x30
+-    long                  AllocatedInputBuffers;// +0x34
+-    void*                 FilesToCopy;          // +0x38 STLport lists are 4 bytes
+-    void*                 FilesToFinish;        // +0x3C
+-    void*                 ActiveFiles;          // +0x40
+-    unsigned char         CompletedFiles[0xC];  // +0x44 STLport set (12 bytes)
+-    CActiveFile*          PCurrentReadFile;     // +0x50
+-    CActiveFile*          PCurrentWriteFile;    // +0x54
+-    long                  NoActiveReads;        // +0x58
+-    long                  NoActiveWrites;       // +0x5C
+-    bool                  WriteMode;            // +0x60
+-    unsigned long         BufferChunkSize;      // +0x64
+-    unsigned long         NoBufferChunks;       // +0x68
+-    long                  NoTotalBytesWritten;  // +0x6C
+-    long                  TotalSizeOfAllFiles;  // +0x70
+-    void*                 PCompletedRead;       // +0x74
+-    bool                  ThreadFinished;       // +0x78
+-    bool                  DecompressionThreadFinished; // +0x79
+-    bool                  ExitThread;           // +0x7A
+-    bool                  Running;              // +0x7B
+-    unsigned long         Paused;               // +0x7C
+-    bool                  Completed;            // +0x80
+-    bool                  IgnoreTimeStampWhenCopying;  // +0x81
+-    void*                 Event;                // +0x84
+-    void*                 DecompressionEvent;   // +0x88
+-    static bool           DirtyDiscError;       // 0x013CA814
+-protected:
+-    static void __fastcall SetDirtyDiscError(bool error);
+-};
+-
+-void __fastcall CFileInstaller::SetDirtyDiscError(bool error)
++void FABLE_FASTCALL CFileInstaller::SetDirtyDiscError(bool on)
+ {
+-    CCriticalSectionLock lock(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
+-    DirtyDiscError = error;
+-    if (CTBaseSingleton<CFileInstaller>::Get().ExitThread || error)
+-        error = true;
+-    CTBaseSingleton<CFileInstaller>::Get().ExitThread = error;
+-}
+\ No newline at end of file
++    CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
++    DirtyDisc = on;
++    CTBaseSingleton<CFileInstaller>::Get().ExitThread = CTBaseSingleton<CFileInstaller>::Get().ExitThread || on;
++}
+--- orig/CFileInstaller_StartReadingFile_009c3590.cpp	2026-11-19 15:27:01.940908244 +0000
++++ CFileInstaller_StartReadingFile_009c3590.cpp	2026-11-19 15:28:08.653295327 +0000
+@@ -1,5 +1,7 @@
+ // CFileInstaller::StartReadingFile(CActiveFile& file) -- open the active file's source for reading outside the installer lock (dirty-disc error and thread exit on failure; otherwise its size, the disc sector read size and the start time), then make it the current read file
+ // Leaf: ?StartReadingFile@CFileInstaller@@IAEXAAVCActiveFile@1@@Z
++// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
++//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
+ // Retail-volatile: 0x009C35FC: mov al,[eax+7Ah] then 0x009C3608: mov byte ptr [eax+7Ah],1 -- the discarded read of ExitThread || error is kept, the VC7.1 codegen of a volatile member; ExitThread is written by the main thread (SetDirtyDiscError / shutdown) and polled by the installer threads. Owner 2026-11-01: recreate retail (precedent 0x009C4F20).
+ // Retail: Fable.exe @ 0x009C3590, 194 bytes, ret 4. Ego_r: protected ?StartReadingFile@CFileInstaller@@IAEXAAVCActiveFile@1@@Z.
+ //   Callees (PDB-bound): CWideString copy ctor / operator const unsigned short* / dtor, CTBaseSingleton<CFileInstaller>::Get,
+@@ -42,10 +44,10 @@
+  unsigned char unobservedBeforeRead[0x50-0x1c];CActiveFile*PCurrentReadFile;
+  unsigned char unobservedBeforeExit[0x7a-0x54];volatile bool ExitThread;   // +0x7A (volatile: see the Retail-volatile line)
+  static bool DirtyDisc;
+- static void __fastcall SetDirtyDiscError(bool error){
+-  CCriticalSectionLock lock(CTBaseSingleton<CFileInstaller>::Get().CriticalSection,false);
+-  DirtyDisc=error;
+-  CTBaseSingleton<CFileInstaller>::Get().ExitThread=CTBaseSingleton<CFileInstaller>::Get().ExitThread||error;
++ static void __fastcall SetDirtyDiscError(bool on){
++  CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection,false);
++  DirtyDisc=on;
++  CTBaseSingleton<CFileInstaller>::Get().ExitThread=CTBaseSingleton<CFileInstaller>::Get().ExitThread||on;
+  }
+  void StartReadingFile(CActiveFile&file);
+  void StartWritingFile(CActiveFile&file,unsigned long outputSize);
+--- orig/CFileInstaller_StartWritingFile_009c3660.cpp	2026-11-19 15:27:01.943709198 +0000
++++ CFileInstaller_StartWritingFile_009c3660.cpp	2026-11-19 15:28:08.653806009 +0000
+@@ -1,5 +1,7 @@
+ // CFileInstaller::StartWritingFile(CActiveFile& file, unsigned long output_size) -- outside the installer lock create the destination (directory, sector size, CreateFileW, start time), pre-size it to whole sectors, and raise the dirty-disc error when the create or the size check fails
+ // Leaf: ?StartWritingFile@CFileInstaller@@IAEXAAVCActiveFile@1@K@Z
++// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
++//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
+ // Retail-volatile: 0x009C36F7: mov al,[eax+7Ah] then 0x009C3703: mov [eax+7Ah],bl, and again 0x009C3763 / 0x009C376F -- the discarded
+ //   reads of ExitThread || error are kept, the VC7.1 codegen of a volatile member; ExitThread is written by the main thread
+ //   (SetDirtyDiscError / shutdown) and polled by the installer threads. Owner 2026-11-01: recreate retail (precedent 0x009C4F20).
+@@ -42,10 +44,10 @@
+  unsigned char unobservedBeforeRead[0x50-0x1c];CActiveFile*PCurrentReadFile;
+  unsigned char unobservedBeforeExit[0x7a-0x54];volatile bool ExitThread;   // +0x7A (volatile: see the Retail-volatile line)
+  static bool DirtyDisc;
+- static void __fastcall SetDirtyDiscError(bool error){
+-  CCriticalSectionLock lock(CTBaseSingleton<CFileInstaller>::Get().CriticalSection,false);
+-  DirtyDisc=error;
+-  CTBaseSingleton<CFileInstaller>::Get().ExitThread=CTBaseSingleton<CFileInstaller>::Get().ExitThread||error;
++ static void __fastcall SetDirtyDiscError(bool on){
++  CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection,false);
++  DirtyDisc=on;
++  CTBaseSingleton<CFileInstaller>::Get().ExitThread=CTBaseSingleton<CFileInstaller>::Get().ExitThread||on;
+  }
+  void StartReadingFile(CActiveFile&file);
+  void StartWritingFile(CActiveFile&file,unsigned long outputSize);

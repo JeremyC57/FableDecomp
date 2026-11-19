@@ -6,7 +6,8 @@
 // mask (3), the source thing excluded, both physics components present, the source collides with things or one way, the tested one
 // collides, its circle overlaps (strict, 2D), then the functor (a double recording its calls) -- its true result sets the return value.
 // Three runs: (1) source collides one way only: the functor sees exactly the passing things in order, one returns true -> true;
-// (2) the same with every functor answer false -> false; (3) a source that collides neither way -> no functor call, false.
+// (2) the same with every functor answer false -> false; (3) a source that collides neither way -> no functor call, false; (4) a source
+// that collides with things -> the same set; (5) a source with no physics component -> no functor call, false.
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -217,6 +218,9 @@ int main()
     g_collides[NTHINGS] = 1;
     bool r4 = Run(centre, filters);
     check(r4 && g_opCalls == 8, "a source that collides with things passes the same set");
+    *(void**)(filters + 12) = 0;
+    bool r5 = Run(centre, filters);
+    check(!r5 && g_opCalls == 0, "a source with no physics component passes nothing");
     if (!g_fail) printf("0066a1e0_TEST PASS\n");
     return g_fail;
 }

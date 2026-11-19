@@ -185,6 +185,12 @@ public:
  // FableWin.pdb ?GetObservedThing@CGameCameraManager@@QBEPBVCThingGameObject@@XZ, inline in retail (row 0x0084D910 reads
  // PObservedThing +0x100 in place: `lea ecx,[eax+100h] ; call CBaseIntelligentPointer::GetPItem`).
  const CThingGameObject* GetObservedThing() const { return PObservedThing.Get(); }
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_LOOKAROUND_WORLD
+ // hand4b nested opt-in (row 0x0084E590 NCameraModes::CBase::UpdateTrackMeleeOpponents): FableWin.pdb ?GetWorld@CGameCameraManager@@QBEABVCWorld@@XZ
+ // (debug 0x021F5FF0) -- the FABLE_RETAIL_CGAMECAMERAMANAGER_WORLD getter for this branch, inline in retail (0x0084E62D..0x0084E643
+ // `mov eax,[ebp+40h] ; mov ecx,[eax+74h] ; mov ecx,[ecx+20h]`: CBase::CameraManager, World +0x74, the world's search tools). No layout change.
+ const CWorld& GetWorld() const { return World; }
+#endif
 private:
 #endif
  CCamera Camera,OldCamera;

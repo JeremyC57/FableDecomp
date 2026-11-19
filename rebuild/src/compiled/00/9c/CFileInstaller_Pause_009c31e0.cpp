@@ -3,7 +3,7 @@
 // Leaf: ?Pause@CFileInstaller@@QAEXXZ
 // Callees: CCriticalSectionLock::CCriticalSectionLock @ 0x00A62920 (the section, false), CCriticalSectionLock::Release @ 0x00A62960,
 // ~CCriticalSectionLock @ 0x00A629A0 (an 8-byte stack local), KERNEL32 SetEvent (IAT 0x0143FDE0), KERNEL32 WaitForSingleObjectEx (IAT 0x0143FE08).
-// Global: the static bool CFileInstaller::DirtyDiscError @ 0x013CA814 (tested `mov al,[g] ; test al,al ; jne`): the only
+// Global: the static bool CFileInstaller::DirtyDisc @ 0x013CA814 (tested `mov al,[g] ; test al,al ; jne`): the only
 // writer is the static CFileInstaller::SetDirtyDiscError(bool) 0x009C3530 (Ego_r.pdb ?SetDirtyDiscError@CFileInstaller@@
 // KIX_N@Z; `mov [0x013CA814],bl` under the installer lock), and the read/write/decompress paths test it (FINDINGS chunk
 // 411). The member name is descriptive (the PDB name sets carry no static data names).
@@ -35,7 +35,7 @@ class CFileInstaller { public:
     void*                  Event;         // +0x84
     unsigned char          _pad88[4];
     void*                  PauseStartEvent;        // +0x8c
-    static bool            DirtyDiscError;         // 0x013CA814 (descriptive name)
+    static bool            DirtyDisc;         // 0x013CA814 (Ego_r.pdb / FableWin.pdb public ?DirtyDisc@CFileInstaller@@1_NA)
     void Pause();
 };
 
@@ -43,7 +43,7 @@ void CFileInstaller::Pause()
 {
     CCriticalSectionLock lock(CriticalSection, false);
     ++Paused;
-    if (Running && !(Paused > 1) && !DirtyDiscError) {
+    if (Running && !(Paused > 1) && !DirtyDisc) {
         ((CCriticalSectionLock*)&lock)->Release();
         SetEvent(Event);
         WaitForSingleObjectEx(PauseStartEvent, 0xFFFFFFFF, 1);

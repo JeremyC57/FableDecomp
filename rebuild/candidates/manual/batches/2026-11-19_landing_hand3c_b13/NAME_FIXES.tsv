@@ -1,0 +1,1 @@
+013ca814	?DirtyDisc@CFileInstaller@@1_NA	Ego_r.pdb + FableWin.pdb publics ?DirtyDisc@CFileInstaller@@1_NA (protected static bool); shared engine/CFileInstaller.h already spells DirtyDisc	?g_installerNoPauseWait@@3_NA (landed Pause 0x009C31E0, reloc_bindings); ?DirtyDiscError@CFileInstaller@@2_NA (landed 0x009C3530 local class; respelled in b13)

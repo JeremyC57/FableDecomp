@@ -89,6 +89,14 @@ class CTCGraphicAppearance : public CTCBase {
     // line at 0x004C12D0 (landed), alone -- without the STATIC_FOCAL / UPDATE_LIST chain that also declares it. Declaration only.
 public:
     C3DVector GetCameraFocalPos(float) const;                            // 0x004C12D0
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_STATICCAMERAFOCALPOS
+    // Nested opt-in (hand4b w24, row 0x0084E590 NCameraModes::CBase::UpdateTrackMeleeOpponents): Ego_d.pdb / FableWin.pdb
+    // ?GetStaticCameraFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@XZ (Ego_d debug length 34; FableWin 0x017DB16C
+    // called by that row's donor), absent from Ego_r.pdb: inline in release, the call GetCameraFocalPos(1.0f) 0x004C12D0 (the body of the
+    // UPDATE_LIST branch below). Retail then computes the focal position before pushing the caller's other arguments (0x0084E69F..
+    // 0x0084E6B1). Default path unchanged.
+    C3DVector GetStaticCameraFocalPos() const { return GetCameraFocalPos(1.0f); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_ELECTROCUTED_LIFETIMES_PASS23
 // Both original PDB complete class declarations; normal-lifetime fixture construction.

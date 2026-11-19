@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0084e590   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@$$CBVCThingCreatureBase@@V?$vector@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsCreatureThreatTo@@VCThingFilter_IsAwareOfThing@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsCreatureThreatTo@@VCThingFilter_IsAwareOfThing@@@@AAV?$vector@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@@Z -> 0084f850 labelled 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>'
+0084e590   RELOCATION_MATCH PASS   UpdateTrackMeleeOpponents
+
+WINS: 1
+  0084e590 RELOCATION_MATCH NCameraModes::CBase::?UpdateTrackMeleeOpponents@CBase@NCameraModes@@
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCBase_UpdateTrackMeleeOpponents_0084e590

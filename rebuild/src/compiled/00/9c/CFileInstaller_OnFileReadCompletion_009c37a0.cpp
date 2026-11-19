@@ -1,5 +1,7 @@
 // CFileInstaller::OnFileReadCompletion(unsigned long err, unsigned long no_bytes, _OVERLAPPED* pover) -- ReadFileEx completion routine: on an I/O error flag a dirty disc (inline SetDirtyDiscError), then under the installer's lock post the finished read and signal the installer's event
 // Leaf: ?OnFileReadCompletion@CFileInstaller@@KGXKKPAU_OVERLAPPED@@@Z
+// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
+//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C37A0, 128 bytes, `ret 0Ch` (protected static __stdcall).
 // Identity: Ego_d.pdb lib_file_installer.obj lists OnFileReadCompletion (params err / no_bytes / pover, locals cs / pread);
 //   Ego_r.pdb ?OnFileReadCompletion@CFileInstaller@@KGXKKPAU_OVERLAPPED@@@Z sits between StartWritingFile and
@@ -20,9 +22,7 @@ void FABLE_FASTCALL CFileInstaller::SetDirtyDiscError(bool on)
 {
     CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
     DirtyDisc = on;
-    if (CTBaseSingleton<CFileInstaller>::Get().ExitThread || on)
-        on = true;
-    CTBaseSingleton<CFileInstaller>::Get().ExitThread = on;
+    CTBaseSingleton<CFileInstaller>::Get().ExitThread = CTBaseSingleton<CFileInstaller>::Get().ExitThread || on;
 }
 
 void FABLE_STDCALL CFileInstaller::OnFileReadCompletion(unsigned long err, unsigned long no_bytes, _OVERLAPPED* pover)

@@ -5256,7 +5256,7 @@ __imp__GetWindowRect@8	01440308	009bed10
 ?Uninitialise@CTexture@@QAEXXZ	009f9f70	009c2f50
 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z	00a62920	009c31e0
 ??1CCriticalSectionLock@@QAE@XZ	00a629a0	009c31e0
-?g_installerNoPauseWait@@3_NA	013ca814	009c31e0
+?DirtyDisc@CFileInstaller@@2_NA	013ca814	009c31e0
 __imp__WaitForSingleObjectEx@12	0143fe08	009c31e0
 ?ProcessReadCompletionData@CFileInstaller@@QAEXPAX@Z	009c4120	009c42f0
 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z	00a62920	009c5110
@@ -13077,7 +13077,6 @@ _g_TimerInitialised	013caa10	009e1bc0
 ?PlayerRegistered@CXMVPlayer@@2_NA	013ca7e8	009bd020
 ?RegisterSection@CCodeSectionManager@@QAEKVCCharString@@0_N1@Z	009f05a0	009bd020
 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z	00a62920	009c3530
-?DirtyDiscError@CFileInstaller@@2_NA	013ca814	009c3530
 ?HasStreamInput@CCompressorZlib@@QBE_NXZ	00a3a7e0	009c4230
 ?ProcessActiveFileForDecompression@CFileInstaller@@IAEXAAVCActiveFile@1@@Z	009c3c20	009c4230
 ?Release@CCriticalSectionLock@@QAEXXZ	00a62960	009c4230
@@ -40307,3 +40306,9 @@ __imp__SetFileTime@16	0143fd64	009c38c0
 ?DEFAULT_CAMERA_MODE_DEF@?A0x289d77e1@@3V?$CDefPointer@$$CBVCCameraModeDef@@@@A	013ba8d8	00699e60
 ?PreloadScriptedCamera@CGameCameraManager@@AAEXV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z	00699b00	00699e60
 ?UpdateCleanupFlags@CGameCameraManager@@AAEXXZ	00697c60	00699e60
+??$GetAllThingsInRoughArea@$$CBVCThingCreatureBase@@V?$vector@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsCreatureThreatTo@@VCThingFilter_IsAwareOfThing@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsCreatureThreatTo@@VCThingFilter_IsAwareOfThing@@@@AAV?$vector@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@@Z	0084f850	0084e590
+??0C3DFrustrum@?A0x1c136806@@QAE@ABVC3DVector@@0@Z	0084f4d0	0084e590
+?AddPoint@C3DFrustrum@?A0x1c136806@@QAEXABVC3DVector@@M@Z	0084e390	0084e590
+?UpdateFrustrum@C3DFrustrum@?A0x1c136806@@QAEXXZ	0084d0e0	0084e590
+??4?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@QAEAAV01@ABV01@@Z	00669bb0	006668a0
+?push_back@?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@QAEXABQBVCAnimationEntry@@@Z	005e1eb0	006668a0

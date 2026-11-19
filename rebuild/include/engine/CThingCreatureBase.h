@@ -460,6 +460,12 @@ public:
     const class CAnimationEntry& GetRandomCombatAnimationFromName(const CCharString& name) const;                              // 0x00667B30
     long GetAppropriateCombatAnimationFromList(const std::vector<const class CAnimationEntry*>& anims) const;                 // 0x00666B50
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_POSSIBLECOMBATANIMS
+    // Retail opt-in (hand4c, row 0x006668A0): Ego_r.pdb / FableWin.pdb
+    // ?GetPossibleCombatAnimations@CThingCreatureBase@@QBE_NABVCCharString@@AAV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z
+    // (Ego_r release\thing_creature_base.obj 0x00540A20, FableWin debug 0x01D9B740). Declaration only (needs std::vector).
+    bool GetPossibleCombatAnimations(const CCharString& name, std::vector<const class CAnimationEntry*>& anim_list) const;      // 0x006668A0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMFILTER
     // Retail opt-in (chunk 1010b, row 0x008A8C60 CGameScriptInterface::EntitySetAsSittingOnFloor): Ego_r.pdb / FableWin.pdb
     // ?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z (const,

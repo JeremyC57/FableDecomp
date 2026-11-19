@@ -1,0 +1,8 @@
+addr       parity           behav  name
+006668a0   RELOCATION_MATCH PASS   GetPossibleCombatAnimations
+
+WINS: 1
+  006668a0 RELOCATION_MATCH CThingCreatureBase::?GetPossibleCombatAnimations@CThingCreatureBase@@QBE_NABVCCharString@@AAV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingCreatureBase_GetPossibleCombatAnimations_006668a0

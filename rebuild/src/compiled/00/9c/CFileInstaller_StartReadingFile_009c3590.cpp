@@ -1,5 +1,7 @@
 // CFileInstaller::StartReadingFile(CActiveFile& file) -- open the active file's source for reading outside the installer lock (dirty-disc error and thread exit on failure; otherwise its size, the disc sector read size and the start time), then make it the current read file
 // Leaf: ?StartReadingFile@CFileInstaller@@IAEXAAVCActiveFile@1@@Z
+// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
+//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
 // Retail-volatile: 0x009C35FC: mov al,[eax+7Ah] then 0x009C3608: mov byte ptr [eax+7Ah],1 -- the discarded read of ExitThread || error is kept, the VC7.1 codegen of a volatile member; ExitThread is written by the main thread (SetDirtyDiscError / shutdown) and polled by the installer threads. Owner 2026-11-01: recreate retail (precedent 0x009C4F20).
 // Retail: Fable.exe @ 0x009C3590, 194 bytes, ret 4. Ego_r: protected ?StartReadingFile@CFileInstaller@@IAEXAAVCActiveFile@1@@Z.
 //   Callees (PDB-bound): CWideString copy ctor / operator const unsigned short* / dtor, CTBaseSingleton<CFileInstaller>::Get,
@@ -42,10 +44,10 @@ protected:
  unsigned char unobservedBeforeRead[0x50-0x1c];CActiveFile*PCurrentReadFile;
  unsigned char unobservedBeforeExit[0x7a-0x54];volatile bool ExitThread;   // +0x7A (volatile: see the Retail-volatile line)
  static bool DirtyDisc;
- static void __fastcall SetDirtyDiscError(bool error){
-  CCriticalSectionLock lock(CTBaseSingleton<CFileInstaller>::Get().CriticalSection,false);
-  DirtyDisc=error;
-  CTBaseSingleton<CFileInstaller>::Get().ExitThread=CTBaseSingleton<CFileInstaller>::Get().ExitThread||error;
+ static void __fastcall SetDirtyDiscError(bool on){
+  CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection,false);
+  DirtyDisc=on;
+  CTBaseSingleton<CFileInstaller>::Get().ExitThread=CTBaseSingleton<CFileInstaller>::Get().ExitThread||on;
  }
  void StartReadingFile(CActiveFile&file);
  void StartWritingFile(CActiveFile&file,unsigned long outputSize);

@@ -12,19 +12,19 @@ struct Lock {
 };
 class CFileInstaller { public:
     bool Running; unsigned int Paused; void* Event; void* PauseStartEvent;
-    static bool DirtyDiscError;   // 0x013CA814
+    static bool DirtyDisc;   // 0x013CA814
     void Pause()
     {
         Lock lock;
         ++Paused;
-        if (Running && !(Paused > 1) && !DirtyDiscError) {
+        if (Running && !(Paused > 1) && !DirtyDisc) {
             lock.Unlock();
             SetEvent_(Event);
             WaitForSingleObjectEx_(PauseStartEvent, 0xFFFFFFFF, 1);
         }
     }
 };
-bool CFileInstaller::DirtyDiscError = false;
+bool CFileInstaller::DirtyDisc = false;
 static int Fail() { std::printf("009c31e0_TEST FAIL\n"); return 1; }
 int main()
 {
@@ -36,7 +36,7 @@ int main()
     if (f.Paused != 2 || g_sets != 1 || g_waits != 1 || g_unlocks != 2) return Fail();
     f.Paused = 0; f.Running = false; f.Pause();
     if (f.Paused != 1 || g_sets != 1) return Fail();
-    f.Paused = 0; f.Running = true; CFileInstaller::DirtyDiscError = true; f.Pause();
+    f.Paused = 0; f.Running = true; CFileInstaller::DirtyDisc = true; f.Pause();
     if (f.Paused != 1 || g_sets != 1 || g_locks != 4 || g_unlocks != 4) return Fail();
     std::printf("009c31e0_TEST PASS\n");
     return 0;

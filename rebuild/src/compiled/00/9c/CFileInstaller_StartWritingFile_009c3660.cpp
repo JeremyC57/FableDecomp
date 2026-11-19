@@ -1,5 +1,7 @@
 // CFileInstaller::StartWritingFile(CActiveFile& file, unsigned long output_size) -- outside the installer lock create the destination (directory, sector size, CreateFileW, start time), pre-size it to whole sectors, and raise the dirty-disc error when the create or the size check fails
 // Leaf: ?StartWritingFile@CFileInstaller@@IAEXAAVCActiveFile@1@K@Z
+// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
+//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
 // Retail-volatile: 0x009C36F7: mov al,[eax+7Ah] then 0x009C3703: mov [eax+7Ah],bl, and again 0x009C3763 / 0x009C376F -- the discarded
 //   reads of ExitThread || error are kept, the VC7.1 codegen of a volatile member; ExitThread is written by the main thread
 //   (SetDirtyDiscError / shutdown) and polled by the installer threads. Owner 2026-11-01: recreate retail (precedent 0x009C4F20).
@@ -42,10 +44,10 @@ protected:
  unsigned char unobservedBeforeRead[0x50-0x1c];CActiveFile*PCurrentReadFile;
  unsigned char unobservedBeforeExit[0x7a-0x54];volatile bool ExitThread;   // +0x7A (volatile: see the Retail-volatile line)
  static bool DirtyDisc;
- static void __fastcall SetDirtyDiscError(bool error){
-  CCriticalSectionLock lock(CTBaseSingleton<CFileInstaller>::Get().CriticalSection,false);
-  DirtyDisc=error;
-  CTBaseSingleton<CFileInstaller>::Get().ExitThread=CTBaseSingleton<CFileInstaller>::Get().ExitThread||error;
+ static void __fastcall SetDirtyDiscError(bool on){
+  CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection,false);
+  DirtyDisc=on;
+  CTBaseSingleton<CFileInstaller>::Get().ExitThread=CTBaseSingleton<CFileInstaller>::Get().ExitThread||on;
  }
  void StartReadingFile(CActiveFile&file);
  void StartWritingFile(CActiveFile&file,unsigned long outputSize);

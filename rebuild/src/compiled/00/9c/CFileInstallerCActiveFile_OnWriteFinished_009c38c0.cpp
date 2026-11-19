@@ -2,6 +2,8 @@
 //   source's write time onto it, close both files, and when the file wants a marker create "<name>_<ext>.mkf" beside it (a failure
 //   raises the dirty-disc error)
 // Leaf: ?OnWriteFinished@CActiveFile@CFileInstaller@@QAEXXZ
+// SetDirtyDiscError text: FableWin.pdb 0x0304C9B0 `Get().ExitThread = Get().ExitThread || on;` (Ego_d.pdb names on, cs), the one
+//   spelling every CFileInstaller row shares (0x009C3530 and the rows that inline it).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009C38C0, 409 bytes, no frame pointer, no SEH, `ret`. Callees: CloseHandle / CreateFileW /
 //   SetFilePointer / SetEndOfFile / GetFileSize / GetFileTime / SetFileTime (IAT), CWideString copy 0x0099B720, operator const
@@ -12,8 +14,8 @@
 // Shape: FableWin.pdb 0x0304B490 statement for statement (its ASSERTs and the timing debug print compiled out; the print's
 //   GFGetTime() call stays); Ego_d locals distance_to_move, src_filetime, time, size_mb, pathname, flags, file_size, dst_filetime,
 //   marker_name, mrk_handle. SetDirtyDiscError (0x009C3530) is inline here with the FableWin.pdb 0x0304C9B0 text
-//   `Get().ExitThread = Get().ExitThread || on;`: the landed `if (... || error) error = true;` spelling gives DIFFER(409v409) here
-//   (eax/ecx/edx rotated by one from 0x009C392B), while this text matches here and at 0x009C3530 and 0x009C4440 alike (measured).
+//   `Get().ExitThread = Get().ExitThread || on;`: the old `if (... || error) error = true;` spelling gave DIFFER(409v409) here
+//   (eax/ecx/edx rotated by one from 0x009C392B), while this text matches here and at every other CFileInstaller row (measured).
 //   ExitThread is volatile in the shared header (retail's dead `mov al,[eax+7Ah]`).
 // GetMarkerFileName: FableWin.pdb static `GetMarkerFileName` 0x0304C700 (no decoration: file static; Ego_d locals dst_name,
 //   marker_file_drive / _dir / _name / _ext, marker_path). Declared __fastcall (FableWin's default for free functions, @@YI) and
@@ -45,11 +47,11 @@ extern "C" __declspec(dllimport) unsigned long __stdcall GetFileSize(void* h, un
 extern "C" __declspec(dllimport) int __stdcall GetFileTime(void* h, _FILETIME* creation, _FILETIME* access, _FILETIME* write);
 extern "C" __declspec(dllimport) int __stdcall SetFileTime(void* h, const _FILETIME* creation, const _FILETIME* access, const _FILETIME* write);
 
-inline void FABLE_FASTCALL CFileInstaller::SetDirtyDiscError(bool error)
+inline void FABLE_FASTCALL CFileInstaller::SetDirtyDiscError(bool on)
 {
-    CCriticalSectionLock lock(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
-    DirtyDisc = error;
-    CTBaseSingleton<CFileInstaller>::Get().ExitThread = CTBaseSingleton<CFileInstaller>::Get().ExitThread || error;
+    CCriticalSectionLock cs(CTBaseSingleton<CFileInstaller>::Get().CriticalSection, false);
+    DirtyDisc = on;
+    CTBaseSingleton<CFileInstaller>::Get().ExitThread = CTBaseSingleton<CFileInstaller>::Get().ExitThread || on;
 }
 
 static __declspec(noinline) CWideString FABLE_FASTCALL GetMarkerFileName(const CWideString& dst_name)
