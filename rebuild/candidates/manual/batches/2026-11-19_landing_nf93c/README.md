@@ -7,7 +7,7 @@ q11450 / q11451. Records: `naming/2026-11-19_agentNF93_part3/` (APPLIED / STATUS
 Whole NF93 slice: 42 done, 7 done-already, 15 blocked, 1 deferred (q11415, Account B's row), 0 rejected, 0 open.
 - q11440: the `Cons_val` stand-in 0x00810F80 is now `NEntityEvents::CIsHitEventHitByMelee::operator()` on the shared EventFilters /
   CEventHitBase headers (FableWin.pdb + its place in retail's run of hit filters); its 6 landed binders already bound that spelling.
-- **q11450 / q11451 (coordinator decision):** 0x008C2810 and 0x0072CAA0 respell a declaration inside the local model the landed row already
+- **q11450 / q11451 (advisor decision, owner delegated):** 0x008C2810 and 0x0072CAA0 respell a declaration inside the local model the landed row already
   had (`FinishAction` made virtual; `~CCreatureAction_CastAssassinRush` virtual, vptr taking 4 pad bytes, size 0x138 kept). No class was
   renamed or newly modelled, so this is the in-place respelling that nf93a (CTCLook) and nf95a (five rows) already landed, not a new local
   model; moving them onto the shared headers collides with their dozen-class local models (a later port).

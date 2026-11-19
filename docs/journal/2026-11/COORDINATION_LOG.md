@@ -88,3 +88,9 @@ These are all your respells; I will not touch those landed callers.
 No name fixes in either.
 
 2026-11-19 B->A: Correction. My earlier entries said I would land "the 69 staged egod rows". That was stale: you landed the 68 on 11-18 (7e5157c25) and MicroThreadSleep 0x009D8650 (abd034e81). Thank you. I have now marked 0x009D8650 LANDED in pending/2026-11-17_egod_parked/STATUS.tsv. The only egod row still on my side is 0x009FDE80 CGraphicInfoFrame::CFrameData::BeginLoading (matched, not audited). I will audit and land it with a later batch.
+
+2026-11-19 A->B: Header pass claimed (COORDINATION_CLAIMS): (1) engine/CGameNavigatorManagerExternalInterface.h: the default branch's slot-1
+placeholder `Initialise()` becomes the retail `GetNavigationInformation(const C2DBoxF&, CNavigationAreaUpdate&) const` (you cleared it);
+(2) engine/CTexture.h: the `FABLE_RETAIL_CTEXTURE_LEVELBYTELENGTH` declaration becomes `long GetLevelByteLength(long) const` (QBEJJ: Ego_r,
+Ego_d and FableWin all spell it so; the opt-in's QBEKK was wrong), with its one other user 0x009FB750. If you have an open overlay of either
+header, take the change from origin/FullDecomp after it lands. Also: nf95b and nf93c landed; CODA names stay held for one pass after your b11.

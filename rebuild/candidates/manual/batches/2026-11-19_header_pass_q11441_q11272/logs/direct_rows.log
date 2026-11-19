@@ -1,0 +1,32 @@
+addr       parity           behav  name
+009fb750   RELOCATION_MATCH PASS   CTexture::LoadFromDataStreamToPreallocatedSurface
+009f9e80   RELOCATION_MATCH PASS   CTexture::GetLevelByteLength
+00b2bd80   RELOCATION_MATCH PASS   CEngineSurfaceCompositionManager::WriteTextureToBank
+009fd830   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData
+009fd830   RELOCATION_MATCH PASS   CGraphicInfoFrame::CFrameData::GetUnloadableMemory
+006b2960   RELOCATION_MATCH PASS   CGameNavigatorManagerExternalInterface::GetNavigationInformation
+004a6e30   WARN RELOC_NAME: ??0CFactionManager@@QAE@ABVCWorld@@@Z -> 006b97e0 labelled 'CWorld_InitFactions'
+004a6e30   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0ABU__false_type@0@@Z -> 004ad9e0 labelled 'std::__destroy_aux<std::pair<unsigned long, CCountedPointer<CFaction>> *>'
+004a6e30   RELOCATION_MATCH PASS   CWorld::Init
+004ab210   WARN SHARED_HEADER_AVAILABLE CGameNavigatorManagerExternalInterface
+004ab210   RELOCATION_MATCH PASS   CGameNavigatorManagerExternalInterface::Clone
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 004a9260.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 004a9260.obj; graded the largest function
+004a9260   WARN STANDIN_LEAF ??_GCNavigatorManagerExternalInterface@@UAEPAXI@Z (catalog CGameNavigatorManagerExternalInterface::`scalar deleting destructor'; names another function)
+004a9260   RELOCATION_MATCH PASS   CGameNavigatorManagerExternalInterface::`scalar deleting destructor'
+0049cdd0   RELOCATION_MATCH PASS   CNavigatorManagerExternalInterface::`scalar deleting destructor'
+00a175a0   WARN SHARED_HEADER_AVAILABLE CNavigatorQueueManager
+00a175a0   WARN RELOC_NAME: ??1?$list@U?$pair@JPBVCNavigatorBase@@@std@@V?$allocator@U?$pair@JPBVCNavigatorBase@@@std@@@2@@std@@QAE@XZ -> 00a16cb0 labelled '_global::StdList_Clear_00a16cb0'
+00a175a0   RELOCATION_MATCH PASS   CNavigatorManager::`scalar deleting destructor'
+
+WINS: 10
+  009fb750 RELOCATION_MATCH CTexture::?LoadFromDataStreamToPreallocatedSurface@CTexture@@QAEXAAVCDataInputStream@@@Z
+  009f9e80 RELOCATION_MATCH CTexture::?GetLevelByteLength@CTexture@@QBEJJ@Z
+  00b2bd80 RELOCATION_MATCH CEngineSurfaceCompositionManager::?WriteTextureToBank@CEngineSurfaceCompositionManager@@AAEXAAVCTexture@@AAVCGraphicDataBank@@K_N@Z
+  009fd830 RELOCATION_MATCH CGraphicInfoFrame::CFrameData::?GetUnloadableMemory@CFrameData@@QAEJXZ
+  006b2960 RELOCATION_MATCH CGameNavigatorManagerExternalInterface::?GetNavigationInformation@CGameNavigatorManagerExternalInterface@@UBEXABVC2DBoxF@@AAVCNavigationAreaUpdate@@@Z
+  004a6e30 RELOCATION_MATCH CWorld::?Init@CWorld@@UAEXXZ
+  004ab210 RELOCATION_MATCH CGameNavigatorManagerExternalInterface::Clone
+  004a9260 RELOCATION_MATCH CGameNavigatorManagerExternalInterface::ScalarDeletingDestructor
+  0049cdd0 RELOCATION_MATCH CNavigatorManagerExternalInterface::??_GCNavigatorManagerExternalInterface@@UAEPAXI@Z
+  00a175a0 RELOCATION_MATCH CNavigatorManager::??_GCNavigatorManager@@UAEPAXI@Z
