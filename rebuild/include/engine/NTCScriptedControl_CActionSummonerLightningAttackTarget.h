@@ -17,7 +17,13 @@ public:
     virtual void OnAdd();                                                //  3 0x007122A0
     virtual CCharString GetActionName() const;                           //  4 0x00718DD0
 private:
+#ifdef FABLE_RETAIL_CACTIONSUMMONERLIGHTNINGATTACKTARGET_PTARGET
+    // Retail opt-in (hand2b_more, row 0x007175D0 Update): PTarget typed as Ego_r.pdb / FableWin.pdb record it (CScriptThing; Update
+    // calls its IsAlive slot 75 +0x12C and GetPThing slot 11 +0x2C). Needs engine/CScriptThing.h (FABLE_RETAIL_NSCRIPT) first.
+    CScriptThing PTarget;                                                // +0x0c
+#else
     unsigned char PTarget[0xc];                                          // +0x0c CScriptThing
+#endif
     bool StartedAttack;                                                  // +0x18
     bool TurnedToFace;                                                   // +0x19
     CActionTurnToFacePosition TurnToFaceAction;                          // +0x1c

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+007175d0   RELOCATION_MATCH PASS   Update
+
+WINS: 1
+  007175d0 RELOCATION_MATCH NTCScriptedControl::CActionSummonerLightningAttackTarget::Update
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NTCScriptedControlCActionSummonerLightningAttackTarget_Update_007175d0

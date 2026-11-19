@@ -399900,6 +399900,13 @@ $catalog = @(
         TestSource = '00/7b/CTCShotDefinitionProjectile_InitMovement_007bbb3b_test.cpp'
         PassPattern = '007bbb3b_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007175d0'
+        Module = 'NTCScriptedControl::CActionSummonerLightningAttackTarget'
+        Source = '00/71/NTCScriptedControlCActionSummonerLightningAttackTarget_Update_007175d0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionSummonerLightningAttackTarget_Update_007175d0_test.cpp'
+        PassPattern = '007175d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

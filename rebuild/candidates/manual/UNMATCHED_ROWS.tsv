@@ -245,7 +245,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0070e710	CAnimateThing	CAnimateThing	416	parked	DIFFER(420v416)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0070e710.cpp	original
 0070e8b0	CAnimateThing	CAnimateThing::UpdateFrameLogic	896	parked	DIFFER(882v881)	1	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/0070e8b0.cpp	original
 00714370	CActionMoveTo	OnActivate	960	parked	DIFFER(950v948)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00714370.cpp	original
-007175d0	NTCScriptedControl::CActionSummonerLightningAttackTarget	NTCScriptedControl::CActionSummonerLightningAttackTarget::vfunc_1	320	reserved (hand2b, in-house)	DIFFER(318v318)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand638/differ/007175d0.cpp	gapscan/boundary
 0071d020	CTCHeroMorph	OnSerialise	912	parked	DIFFER(942v911)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/hdr/0071d020.verify.cpp	original
 00723110	std	std::vector_ReserveAndCopy	304	reserved (hand2b, in-house)	DIFFER(300v300)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand523/differ/00723110.cpp	original
 00723e50	_global	CCharacter_UpdateOrientation	320	parked	DIFFER(306v310)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand523/differ/00723e50.cpp	original

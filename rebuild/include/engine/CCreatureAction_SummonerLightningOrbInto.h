@@ -9,6 +9,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SUMMONERLIGHTNINGORBINTO_CLASS
+// Retail opt-in (hand2b_more, row 0x007175D0 CActionSummonerLightningAttackTarget::Update): the polymorphic class over CCombatActionBase
+// (retail 0x114) with Ego_r.pdb's one own member POrb (CIntelligentPointer<CThing>, retail +0x114; sizeof 0x11c, the row's temporary
+// `lea ecx,[esp+128h]` = +0x114 of [esp+14h]). FableWin.pdb ??0CCreatureAction_SummonerLightningOrbInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+// (retail 0x008CBD90). No user-declared destructor: the temporary's implicit one calls ~CBaseIntelligentPointer 0x00A01C10, then
+// ~CCombatActionBase 0x0062E900. Needs engine/CIntelligentPointer.h and engine/CCombatActionBase.h first.
+class CThingCreatureBase; class CThing;
+class CCreatureAction_SummonerLightningOrbInto : public CCombatActionBase {
+public:
+    CCreatureAction_SummonerLightningOrbInto(CThingCreatureBase& creature, CThing& target);   // 0x008CBD90
+private:
+    CIntelligentPointer<CThing> POrb;                                    // +0x114
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SummonerLightningOrbInto) == 0x11c);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_SummonerLightningOrbInto {
 public:
@@ -81,4 +96,5 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SummonerLightningOrbInto) == 0x11c);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SummonerLightningOrbInto, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SummonerLightningOrbInto, POrb) == 0x114);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_SUMMONERLIGHTNINGORBINTO_CLASS
 #endif // FABLE_ENGINE_CCREATUREACTION_SUMMONERLIGHTNINGORBINTO_H

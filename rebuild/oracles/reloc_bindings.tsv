@@ -40253,3 +40253,4 @@ __wcsicmp	00f3fb84	00599e3f
 ?CalcBestCompressionForBlock@CRangeCompressor@@AAEJABV?$CArray@K@@JAAUCScriptEntry@1@@Z	00f3a890	00f3abf0
 ?push_back@?$vector@UCScriptEntry@CRangeCompressor@@V?$allocator@UCScriptEntry@CRangeCompressor@@@std@@@std@@QAEXABUCScriptEntry@CRangeCompressor@@@Z	00f3b420	00f3abf0
 ?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ	007befb0	007bbb3b
+??0CCreatureAction_SummonerLightningOrbInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	008cbd90	007175d0
