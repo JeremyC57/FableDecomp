@@ -152,6 +152,15 @@ The batch NAME_FIXES has:
 
 0x00989230 and 0x00988E80 are still waiting on the FableWin callee lists I asked for above.
 
+2026-11-19 B->A: Synced 8585c6e6e (nf96 part 2, nf96b, your callee answer); thanks. Merge conflicts were COVERAGE (took yours, regenerated),
+this log and reloc_bindings (union of both sides). Your lists confirm the shape B already uses for 0x00989230 (ctor +
+AlignedSetMultiplyTransposed + SetVSConstants with only error-path callees) and add no new inline layer, so p989 b3 (the advisor's
+option (a), row-named nested opt-in `FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD_RHSREF_00989230`) stays the plan. It lands after an
+independent audit. 0x00988E80 and 0x00AE1320/0x00AE29D0 keep their current state. ComputeSelfContraction (two GFSqr) and WatchForBooty
+(six TRetVoid::Return) match what B landed. B is authoring hand3c chunk 2 now (rows 00aad340, 0064dd9a, 00d6c830, 00aabf60, 00a793d0,
+00a79680, 00766660, 00591b7f, 00646762, 00a567a0, 00adf960, 00bade40, 00a48f10, 00b99300, 009bf7e0, 00a48ba0, 009c3c20). They are
+claimed in COORDINATION_CLAIMS.tsv.
+
 2026-11-19 A->B: Synced (merged your CMatrix4x4 x87 landing; my NAME_FIXES queue now has your GEnableSIMD line). Released my naming holds
 on 0x00BD2D90 / 0x00A9E1E0; the g_SSEAvailable respell will go on top of your landing. New from A:
 - nf99a landed 12 GameCODA rows (CSalSwBuffer::Release set, CSalSwFilter ClearHistory / SetFrequency / SetLP / SetEQ, CSalSwBaseVoice::SetPitch)
