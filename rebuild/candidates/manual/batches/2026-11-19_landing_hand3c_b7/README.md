@@ -13,3 +13,8 @@ vland --land, strict headers: MATCH / RELOCATION_MATCH + PASS for all four. Head
 - 0x00B905A0 CEnginePrimitiveManagerOcclusionBase::PrepareOcclusionTest: FableWin 0x02ED79B0 shape (Ego_d names) on landed 0x00BB3E80's header set.
 After merging both batches' headers, every landed row including NCameraModes_CBase.h / CGameCameraManager.h / CTCAnimatingObject.h /
 CGameNavigatorManagerExternalInterface.h was rechecked (`logs/recheck_header_users.txt`).
+
+**Review closed -- advisor decision (owner delegated, 2026-11-19: "have the expert advisor decide"):** the Inferred row(s) here stay landed.
+Scope / lifetime rows (0x006B2960 inner-block local, 0x00A50C20 block scope) are required constructs whose wording alone is inferred (frame size /
+slot sharing fix them) -- accepted outright under the 2026-11-12 Inferred-statements rule. Fitted tie-breakers (0x00F3ABF0 reference local,
+0x006B5890 by-value operand) accepted as Inferred on the 0x006E89B0 precedent.

@@ -324,3 +324,9 @@ same-TU CTCInGameMenu rows. They change neither behaviour nor portability, so a 
 - Mark it with one `// Bracket:` line: which bracket is byte-required, the retail address it fixes, and (if measured) which other
   placements match or fail. No `// Inferred:` note and no owner review is needed for a bracket alone.
 - It does NOT cover other unsourced constructs (extra locals, references, by-value parameters, dead code): those stay `// Inferred:`.
+
+## 2026-11-19 advisor decision (owner delegated): Inferred scope / lifetime constructs need no review flag
+When retail's frame size, stack-slot sharing or code size fixes a construct's scope or lifetime (an inner `{ }` block, a named local in an
+inner block where a temporary or a function-scope local gives the wrong frame) and only the wording is unsourced, the row carries its
+`// Inferred:` note (with the measurements) and lands without an owner-review flag. Fitted tie-breakers that the bytes do not otherwise require
+(an extra reference local, a by-value operand, a dead test) remain `// Inferred:` with the evidence and are reported in the batch README.

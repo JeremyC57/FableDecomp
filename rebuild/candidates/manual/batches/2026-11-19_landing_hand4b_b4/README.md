@@ -6,3 +6,8 @@ multimap<CCharString,float>, stats members protected; retail copies them member 
 All 46 landed users of those headers rechecked. `// Inferred:` the scratch-buffer part sits in its own block after the instance registration
 (retail frame 8: `matches` shares the CIntelligentPointer temporary's frame word, 0x00A50D0C = 0x00A50C77's slot); with Ego_d's function-scope
 locals (newer revision) the frame is 0xC. Name fix: 0x009F49A0 is ?Unlock@CScratchBuffer@@QAEXXZ (catalog `_global::SetMemberConst_009f49a0`).
+
+**Review closed -- advisor decision (owner delegated, 2026-11-19: "have the expert advisor decide"):** the Inferred row(s) here stay landed.
+Scope / lifetime rows (0x006B2960 inner-block local, 0x00A50C20 block scope) are required constructs whose wording alone is inferred (frame size /
+slot sharing fix them) -- accepted outright under the 2026-11-12 Inferred-statements rule. Fitted tie-breakers (0x00F3ABF0 reference local,
+0x006B5890 by-value operand) accepted as Inferred on the 0x006E89B0 precedent.
