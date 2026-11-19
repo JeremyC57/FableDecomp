@@ -1,0 +1,2 @@
+address	name	evidence
+0063fd40	CThingSearchTools::GetAllThingsInRoughArea<CThing,std::list<CThing*>,CFilter_Bind2<CThingFilter_OverlappingCircle,CWorldMap::CThingFilterBase> >	Ego_r + FableWin name sets; RELOCATION_MATCH

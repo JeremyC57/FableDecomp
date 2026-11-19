@@ -1,0 +1,10 @@
+addr       parity           behav  name
+0063fd40   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0063fd40   WARN STANDIN_LEAF ??$GetAllThingsInRoughArea@VCThing@@V?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilterBase@CWorldMap@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilterBase@CWorldMap@@@@AAV?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z (catalog CThingSearchTools::ForEachInRoughArea; names another function)
+0063fd40   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+
+WINS: 1
+  0063fd40 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThing@@V?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilterBase@CWorldMap@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilterBase@CWorldMap@@@@AAV?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingSearchTools_GetAllThingsInRoughArea_0063fd40

@@ -400184,6 +400184,13 @@ $catalog = @(
         TestSource = '00/9c/CFileInstallerCActiveFile_OnWriteFinished_009c38c0_test.cpp'
         PassPattern = '009c38c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0063fd40'
+        Module = 'CThingSearchTools'
+        Source = '00/63/CThingSearchTools_GetAllThingsInRoughArea_0063fd40.cpp'
+        TestSource = '00/63/CThingSearchTools_GetAllThingsInRoughArea_0063fd40_test.cpp'
+        PassPattern = '0063fd40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

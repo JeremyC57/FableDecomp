@@ -124,7 +124,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00639e40	CTCRegionDisplay	GlobalDraw	944	parked	DIFFER(958v930)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00639e40.cpp	original
 0063f4b0	CThingSearchTools	ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThi	784	reserved (hand3c, not plain C++)	DIFFER(769v769)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand307/differ/0063f4b0.cpp	original
 0063f7c0	CThingSearchTools	ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigat	800	parked	DIFFER(769v769)	6	rebuild/candidates/manual/pending/2026-11-12_linux_handQ23/differ/0063f7c0.cpp	original
-0063fd40	CThingSearchTools	ForEachInRoughArea	704	reserved (hand4c, in-house)	DIFFER(661v661)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand470/differ/0063fd40.cpp	original
 00642aa0	CMinimapData	PopulateMinimapThemeList	3376	parked	DIFFER(1308v1340)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00642aa0.cpp	gapscan/boundary
 00644677	CDrawLetterBoxBlackBars	Draw	454	parked	DIFFER(439v454)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/00644677.cpp	original
 00645853	NPlayerGui::CStatBar	DrawStatBox	1174	parked	DIFFER(1160v1174)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00645853.cpp	original
