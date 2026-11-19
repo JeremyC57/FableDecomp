@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00c52bb0   RELOCATION_MATCH PASS   GetAMDModelName
+
+WINS: 1
+  00c52bb0 RELOCATION_MATCH CCpuInfo::?GetAMDModelName@CCpuInfo@@
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCpuInfo_GetAMDModelName_00c52bb0

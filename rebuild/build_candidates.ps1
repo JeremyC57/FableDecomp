@@ -400120,6 +400120,28 @@ $catalog = @(
         TestSource = '00/64/NPlayerGuiCDrawFishingGame_Draw_00649e8b_test.cpp'
         PassPattern = '00649e8b_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c52bb0'
+        Module = 'CCpuInfo'
+        Source = '00/c5/CCpuInfo_GetAMDModelName_00c52bb0.cpp'
+        TestSource = '00/c5/CCpuInfo_GetAMDModelName_00c52bb0_test.cpp'
+        PassPattern = '00c52bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082a020'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_GetDrawPosition_0082a020.cpp'
+        TestSource = '00/82/CMiniMapDisplay_GetDrawPosition_0082a020_test.cpp'
+        PassPattern = '0082a020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bd845'
+        Module = 'NThingShot::CTCShotDefinitionDrainLife'
+        Source = '00/7b/NThingShotCTCShotDefinitionDrainLife_InitMovement_007bd845.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionDrainLife_InitMovement_007bd845_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 none'
+        PassPattern = '007bd845_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

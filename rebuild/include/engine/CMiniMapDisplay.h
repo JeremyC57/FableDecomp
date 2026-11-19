@@ -24,6 +24,16 @@ class CThing;
 // Retail opt-in (wf12, row 0x0082B7E0 DrawMarkers): the members after Markers typed at the generated retail offsets
 // (MarkerFlashFade +0x24 .. UpdateRequired +0xBC), the two handle vectors typed (clear/resize on +0x10), and the protected
 // DrawMarkers / DrawMarker / AddAutoMarker (Ego_r.pdb mangled names) plus the inline CMarkerInfo::IsHeroMarker.
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_GETDRAWPOSITION
+// Nested opt-in (hand3c, row 0x0082A020 GetDrawPosition): RegionMinimap typed as the retail CRegionMinimap (0x64 bytes; needs
+// FABLE_RETAIL_CREGIONMINIMAP) and the Ego_r.pdb / FableWin.pdb methods ?GetDrawPosition@CMiniMapDisplay@@QBE?AVC2DVector@@ABVC3DVector@@
+// ABVC2DBoxF@@@Z (0x0082A020), ?GetRelativeMapSize@CMiniMapDisplay@@QBEXAAVC2DVector@@@Z (out of line, 0x00829C70) and the FableWin
+// inline ?GetRelativePosOnMap@CMiniMapDisplay@@QBEXABVC3DVector@@AAVC2DVector@@@Z (0x027D3920; Ego_d locals mapOrigin / mapExtents;
+// expanded at 0x0082A02A..0x0082A051). No layout change.
+#include "engine/CRegionMinimap.h"
+#include "engine/C2DVector.h"
+#include "engine/C3DVector.h"
+#endif
 #include "engine/CFadeInFadeOutBase.h"
 class CEnginePrimitiveHandle; class CEnginePrimitivePrepareInfo; class C2DBoxF; class CRegion; class CTexture;
 #endif
@@ -80,6 +90,40 @@ protected:
     bool DrawMarker(const CEnginePrimitivePrepareInfo& info, const CMarkerInfo& marker, long index,
                     const C2DBoxF& box, unsigned char alpha, bool front);                         // 0x0082A570
     void DrawMarkers(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front);   // 0x0082B7E0
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_GETDRAWPOSITION
+public:
+    void GetRelativePosOnMap(const C3DVector& worldPos, C2DVector& relativePos) const
+    {
+        C2DCoordI mapOrigin;
+        C2DExtentsI mapExtents;
+        RegionMinimap.GetRegionMapExtents(mapOrigin, mapExtents);
+        relativePos.X = (worldPos.X - mapOrigin.X) / mapExtents.X;
+        relativePos.Y = (worldPos.Y - mapOrigin.Y) / mapExtents.Y;
+    }
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_RELATIVEMAPSIZE_BODY
+    // Nested opt-in (hand3c, row 0x0082A020): the FableWin.pdb body of ?GetRelativeMapSize@CMiniMapDisplay@@QBEXAAVC2DVector@@@Z
+    // (0x027D3850; Ego_d locals size / mapOrigin / mapExtents), visible but kept out of line as retail's TU keeps it (0x00829C70, the
+    // function before GetDrawPosition): the caller then knows `size` is only written. Needs FABLE_RETAIL_C2DVECTOR_INITIALISE.
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    void GetRelativeMapSize(C2DVector& size) const
+    {
+        C2DCoordI mapOrigin;
+        C2DExtentsI mapExtents;
+        RegionMinimap.GetRegionMapExtents(mapOrigin, mapExtents);
+        if (mapExtents.X == mapExtents.Y)
+            size.Initialise(1.0f, 1.0f);
+        else if (mapExtents.X > mapExtents.Y)
+            size.Initialise(1.0f, (float)mapExtents.Y / mapExtents.X);
+        else if (mapExtents.X < mapExtents.Y)
+            size.Initialise((float)mapExtents.X / mapExtents.Y, 1.0f);
+    }
+#else
+    void GetRelativeMapSize(C2DVector& size) const;                                               // 0x00829C70
+#endif
+    C2DVector GetDrawPosition(const C3DVector& position, const C2DBoxF& renderBox) const;         // 0x0082A020
+#endif
 private:
     std::vector<CEnginePrimitiveHandle> MapPrimitiveHandles;      // +0x04
     std::vector<CEnginePrimitiveHandle> MarkerPrimitiveHandles;   // +0x10
@@ -92,7 +136,11 @@ private:
     bool          MiniMapIsHeadsmansHillSouth;               // +0x43
     unsigned char MinimapList[0xc];                          // +0x44 vector<CMinimapData>
     CTexture*     RegionMinimapTexture;                      // +0x50
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_GETDRAWPOSITION
+    CRegionMinimap RegionMinimap;                            // +0x54
+#else
     unsigned char RegionMinimap[0x64];                       // +0x54 CRegionMinimap
+#endif
     CRegion*      PRegion;                                   // +0xb8
     bool          UpdateRequired;                            // +0xbc
 #else

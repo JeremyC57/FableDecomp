@@ -28,6 +28,11 @@ class CWorldMap; class CGameDefinitionManager;
 #pragma pack(push, 1)
 class CRegionMinimap {
 public:
+#if defined(FABLE_RETAIL_CREGIONMINIMAP_EXTENTS_NOINLINE) && defined(_MSC_VER)
+    // Opt-in (hand3c, row 0x0082A020 CMiniMapDisplay::GetDrawPosition): the same body, visible but kept out of line, as the minimap
+    // display TU calls the copy at 0x0066C6A0 (`lea ecx,[edi+54h] ; call`, 0x0082A035) instead of expanding it.
+    __declspec(noinline)
+#endif
     void GetRegionMapExtents(C2DCoordI& topLeft, C2DExtentsI& extents) const
     {
         topLeft = RegionMapBox.GetTLPos();

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+007bd845   RELOCATION_MATCH PASS   InitMovement
+
+WINS: 1
+  007bd845 RELOCATION_MATCH NThingShot::CTCShotDefinitionDrainLife::?InitMovement@CTCShotDefinitionDrainLife@NThingShot@@MAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NThingShotCTCShotDefinitionDrainLife_InitMovement_007bd845

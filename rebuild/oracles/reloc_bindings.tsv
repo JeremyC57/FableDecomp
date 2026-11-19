@@ -40284,3 +40284,8 @@ _MOVE_TO_PRONG_NAV_PROXIMITY	01261d68	006e94d0
 ?InitialiseAnimationSequences@C3DAnimation2@@AAE_NAAV1@ABVC3DMesh2@@_NAAK@Z	00a50510	00a50c20
 ?UpdateMiniGame@CDrawQuestInfo@NPlayerGui@@QAEXABVCRGBColour@@@Z	00644f85	00649e8b
 ?UpdateMiniGame@CDrawQuestInfo@NPlayerGui@@QAEXMJJ@Z	00644efd	00649e8b
+?GDummyInt1@@3JA	013b83b8	0082a020
+?GDummyInt2@@3JA	013b83bc	0082a020
+?GetRegionMapExtents@CRegionMinimap@@QBEXAAVC2DCoordI@@AAVC2DExtentsI@@@Z	0066c6a0	0082a020
+?GetRelativeMapSize@CMiniMapDisplay@@QBEXAAVC2DVector@@@Z	00829c70	0082a020
+??$GetSubDef@VCThingDrainLifeShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingDrainLifeShotDef@@@@@Z	007be92e	007bd845

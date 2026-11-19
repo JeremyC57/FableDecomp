@@ -321,7 +321,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 007bcc40	NThingShot::CTCShotDefinitionDragonFireball	NThingShot::CTCShotDefinitionDragonFireball::vfunc_33	807	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand471/differ/007bcc40.cpp	gapscan/boundary
 007bd2d1	CTCShotDefinitionThrow	OnSubShotTrigger	598	parked	DIFFER(599v598)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/007bd2d1.cpp	original
 007bd527	CTCShotDefinitionProjectilePredictive	OnSubShotTrigger	675	parked	DIFFER(672v675)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/007bd527.cpp	original
-007bd845	CTCShotDefinitionDrainLife	InitMovement	642	reserved (hand4b, in-house)	DIFFER(642v642)	5	rebuild/candidates/manual/pending/2026-11-12_linux_handQ20/differ/007bd845.cpp	original
 007bee40	NThingShot::CTCShotDefinitionThrow	NThingShot::CTCShotDefinitionThrow::vfunc_36	352	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007bee40.cpp	gapscan/boundary
 007bfa90	CTCShotDefinitionBase	GetWeaponTrailGraphic	928	parked	DIFFER(929v926)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand305/differ/007bfa90.cpp	original
 007c0ad0	NThingShot	CreateShot	944	parked	codex pass24 PARKED: The creature-shot constructor and class-name comparisons have different expansion and temporary placement from retail.	15	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/007c0ad0/007c0ad0.cpp	original
@@ -379,7 +378,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00821850	CMap	InitCachedVolumes	560	parked	DIFFER(555v551)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00821850.cpp	original
 00825e00	_global	CAFile_ReadPrimitive	288	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/hdr/00825e00.cpp	original
 00828710	CRegionConnectionGraph	InitialiseGraph	1296	parked	DIFFER(1225v1289)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00828710.cpp	original
-0082a020	CMiniMapDisplay	GetDrawPosition	352	reserved (hand3c, not plain C++)	DIFFER(332v343)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/0082a020.test.cpp	original
 0082a570	CMiniMapDisplay	DrawMarker	800	parked	DIFFER(788v792)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0082a570.cpp	original
 0082afa0	CMiniMapDisplay	InitialiseRegionExitMarkers	1408	parked	DIFFER(16v1393)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0082afa0.cpp	original
 00832260	CThingAICreature	InitialActivate	1088	parked	DIFFER(1052v1076)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand327/differ/00832260.cpp	original
@@ -912,7 +910,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c4de00	_global	CAudioSoundBuffer_TransferPCMData	944	parked	DIFFER(934v929)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand769/differ/00c4de00.cpp	original
 00c4f600	_global	PropertySerializer_GetPropertyTypeCode	9216	parked	acctC round six: round 6 final (2026-11-16): DIFFER(9204v9204); latest draft 00c4f600.cpp + NOTES.md in the folder (grep the ad	11	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE12/00c4f600.cpp	original
 00c51f50	_global	CDrawGuildSeal_SetProperty	2288	parked		0	rebuild/candidates/manual/pending/2026-11-08_linux_hand874/differ/00c51f50.cpp	original
-00c52bb0	CCpuInfo	GetAMDModelName	144	reserved (hand4a, in-house)	DIFFER(140v140)	7	rebuild/candidates/manual/pending/2026-11-08_linux_hand868/test/00c52bb0.cpp	original
 00c52c40	CEngineInternalPrimitiveParticleGroup	GetRenderLayerMask	80	parked	codex pass24 PARKED: The CPUID model selection uses the other available CPU operand from 0x00C52C40.	11	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00c52c40/00c52c40.cpp	original
 00c54c10	CAudioSource	ApplyParameters	656	parked	DIFFER(651v651)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand761/differ/00c54c10.cpp	original
 00c590e0	_gapscan	sub_00c590e0	224	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand632/differ/00c590e0.cpp	gapscan/boundary
