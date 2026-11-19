@@ -347,3 +347,19 @@ functions may be graded as library code like the CRT rows). Shape: advisor decis
   and channel counts differ in places).
 - **Scope:** CAGE / Toolkit ship source, so hits there follow the vendor_libs.tsv rule (compile the unmodified vendor source), not this one. Landed C++
   hits stay C++.
+
+## 2026-11-19 advisor decision (owner delegated): `__assume(0)` as an unreachable-end marker
+The owner's acctC rule (WF_RULES.md line 117) rules out `__assume` as a spelling of a release ASSERT. That stands.
+
+A separate, narrow use is accepted: `__assume(0)` as an `_MSC_VER`-guarded unreachable marker, the same form the shared CPersistContext.h switch
+defaults use. All of these are required:
+- retail lacks the guarding test at cited addresses;
+- a second release build (Ego_r VC10) drops the same test;
+- the plain fall-off-end spelling was graded and differs.
+
+Rules for the source:
+- Write `#ifdef _MSC_VER __assume(0); #elif defined(__GNUC__) __builtin_unreachable(); #endif` so the portable build has a terminator.
+- Mark it with an `// Inferred:` line.
+- Never use it for its side effects (GOTCHAS: it changes float parameter forwarding and scratch rotation).
+
+First case: 0x005DC340 CAnimationSet::GetAnim (hand4f b2).

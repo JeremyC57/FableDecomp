@@ -400897,6 +400897,13 @@ $catalog = @(
         TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_AddToBoundingSphere_00b1dc70_test.cpp'
         PassPattern = '00b1dc70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005dc340'
+        Module = 'CAnimationSet'
+        Source = '00/5d/CAnimationSet_GetAnim_005dc340.cpp'
+        TestSource = '00/5d/CAnimationSet_GetAnim_005dc340_test.cpp'
+        PassPattern = '005dc340_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

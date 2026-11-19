@@ -1,0 +1,8 @@
+addr       parity           behav  name
+005dc340   RELOCATION_MATCH PASS   GetAnim
+
+WINS: 1
+  005dc340 RELOCATION_MATCH CAnimationSet::?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAnimationSet_GetAnim_005dc340

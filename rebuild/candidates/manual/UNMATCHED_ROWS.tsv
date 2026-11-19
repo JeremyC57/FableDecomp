@@ -92,7 +92,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 005ca68e	CTCInventoryWeapons	SetupActiveWeaponsOnCarrier	1535	parked	DIFFER(1538v1535)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1006/differ/005ca68e.cpp	original
 005cd4c4	CTCInventoryStats	BuildHeroClass	499	parked	DIFFER(483v499)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/005cd4c4.cpp	original
 005cda50	CTCInventoryStats	GlobalUpdate	366	parked	DIFFER(359v366)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/005cda50.cpp	original
-005dc340	CAnimationSet	GetAnim	80	reserved (hand4f, in-house)	DIFFER(56v66)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand680/differ/005dc340.cpp	original
 005dcc00	CAnimationSet	GetRandomAnim	272	parked	DIFFER(278v264)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/005dcc00.cpp	original
 005dcd10	_global	CTCInventoryAbilities_GetRandomAbility	608	parked	DIFFER(659v608)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/005dcd10.cpp	original
 005eabc0	CTCTavernGame	PositionMesh	512	parked	DIFFER(495v511)	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1016/differ/005eabc0.cpp	original
