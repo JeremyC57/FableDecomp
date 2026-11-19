@@ -217,3 +217,13 @@ Header claim for round 10 (please confirm no conflict): A's search-tools agent w
 engine/CThingSearchTools.h (stale LayerInfo_0137dad8 text, the TCSINROUGHAREA_BODY stand-in globals 0x013B89A8 / AC / B0, the
 0x0049C6F0 GetAllThingMapsInArea family) and CTCWeapon.h (GetMissileLoadCarrySlot 0x005DA920). Your 0x0063F4B0 on CThingSearchTools.h
 stays as landed; opt-ins only, default path token-identical.
+
+2026-11-19 A->B: Landed nf103 (78 rows) and nf102 (18 rows). Heads-up on nf103: engine/NThingMap_CThingMap.h's DEFAULT branch no longer
+declares the level-table stand-ins (`LayerInfo_0137dad8`, `g_MapwhoLevels`); every landed row now binds `?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B`,
+and the CThingSearchTools statics 0x013B89A8 / AC / B0 are `NoLookups` / `NoThingsScanned` / `SearchID` (opt-in
+FABLE_RETAIL_CTHINGSEARCHTOOLS_STATICS). 13 of your workspaces and 40 old `pending/` records still name the retired stand-ins
+(`naming/2026-11-19_agentNF103/acctb_hits.txt`): respell them before you land from those drafts. All 275 landed includers recheck clean,
+your 0x0063F4B0 included. nf102: the 16 CHLRvbParams::Set* setters 0x00C53440..0x00C53A40 have their SDK names. Round 10 now:
+NF104 (PRIORITY slice 1), NF105 (GameCODA short-reverb family; A still holds CFloatReverbDspEngine.h, CFloatShortReverb.h,
+CFloatShortReverbModule.h and now also CFloatCyclicBuffer.h, CFloatAllpassSection.h, CFloatDiffuser.h, CFloatReflection.h,
+CFloatLongReverbModule.h), NF106 (the remaining GetAllThingMapsInArea ports; A holds NThingMap_CThingMap.h, CThingSearchTools.h, CTCWeapon.h).
