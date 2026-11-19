@@ -4,6 +4,9 @@
 #ifdef FABLE_RETAIL_PASS22_CCODA3D_CREATE
 #define C_CAPS_REVERB (0x00000080)
 #endif
+#ifdef FABLE_RETAIL_CSALSW3D_CALCPARAMS
+#define C_CAPS_EAX (0x00002000)   /* CODA.h (SDK 2.10): EAX API support (hand4c w24, row 0x00C54C10) */
+#endif
 struct _CSWMIXERCAPS {
  unsigned int nSamplesPerSec;
  unsigned int nMinFrameSamples;

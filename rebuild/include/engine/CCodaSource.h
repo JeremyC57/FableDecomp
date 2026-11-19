@@ -63,6 +63,10 @@ public:
  void EAXSet(const _GUID*,int,void*,int);
  void EAXGet(const _GUID*,int,void*,int);
 #endif
+#ifdef FABLE_RETAIL_CSALSW3D_CALCPARAMS
+ // Retail opt-in (hand4c w24, row 0x00C54C10): SDK 2.10 CodeView public ?GetCaps@CCodaSource@@QBEIXZ; release reads +0x0c.
+ unsigned int GetCaps()const{return m_ffCaps;}
+#endif
  bool IsBufferSet()const{return m_pBuffer!=0 || (m_Queue.IsCreated() && !m_Queue.IsEmpty());}
  // Native Play returns its voice-acquisition error or zero; SDK2.10 changed this return to void.
  int Play(bool bLooping);

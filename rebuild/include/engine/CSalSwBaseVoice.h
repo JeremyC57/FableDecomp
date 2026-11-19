@@ -48,6 +48,13 @@ protected:
  bool CalcLevelEnvelope(const _CLEVELENVELOPE*,bool);
  bool IsMultiEnvReleased() const {return (m_ffStatus & 0x4000)!=0;}
 #endif
+#ifdef FABLE_RETAIL_CSALSW3D_CALCPARAMS
+ // Retail opt-in (hand4c w24, row 0x00C54C10): SDK 2.10 CodeView protected members. SetPitch is
+ // ?SetPitch@CSalSwBaseVoice@@IAEXMABUCODASOURCE@@@Z (native 0x00C5A500); ReleasePlayBuffer (the Dbg CalcParams calls it) is
+ // expanded by the release: 0x00C54C46 `lea ecx,[esi+0B4h] ; call CSalSwBuffer::Release ; mov [esi+0Ch],0` (m_pcBuffer).
+ void SetPitch(float,const CODASOURCE&);
+ void ReleasePlayBuffer(){m_PlayBuffer.Release();m_pcBuffer=0;}
+#endif
  _CBUFFERDESC m_BufferDesc;
  float m_fMultiEnvPitch;
  float m_fMultiEnvPitchDelta;

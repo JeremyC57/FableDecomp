@@ -4,6 +4,9 @@
 #include "engine/CSalVoice.h"
 // Layout: native flags+28, params+2c, pitch LFO ends+4c.
 struct EAXSOURCE_tag;
+#ifdef FABLE_RETAIL_CSALSW3D_CALCPARAMS
+class CCodaVector;
+#endif
 class CSalBaseVoice:public CSalVoice {
 public: virtual ~CSalBaseVoice();
 public: virtual bool IsCreated() const;
@@ -28,6 +31,13 @@ protected:
  void CalcPitchLFO(const _CPITCHLFO*);
  static float FABLE_CDECL CalcExpDelta(float,float);
  static float FABLE_CDECL CalcPitchDelta(float,float,float);
+#endif
+#ifdef FABLE_RETAIL_CSALSW3D_CALCPARAMS
+ // Retail opt-in (hand4c w24, row 0x00C54C10): SDK 2.10 CodeView protected members of CSalBaseVoice. GetHrtfMode (unsigned, const)
+ // is the mode field of m_ffParams (release 0x00C54D65 `and ecx,3C00h`); CalcAzimuthElevation is the protected static
+ // ?CalcAzimuthElevation@CSalBaseVoice@@KAXAAM0ABVCCodaVector@@@Z (native 0x00C599C0).
+ unsigned int GetHrtfMode() const { return m_ffParams & 0x3c00; }
+ static void FABLE_CDECL CalcAzimuthElevation(float&,float&,const CCodaVector&);
 #endif
  const CSalBuffer *m_pcBuffer;
  CREFTIME m_rtBufferPlay;

@@ -79,6 +79,13 @@ class CCodaContext : public CCodaObject { public:
     unsigned int GetHFReference()const{return m_uiHFReference;}
 #endif
     CRESOURCEDESC* GetResourceCounts(CRESOURCEDESC* pResourceDesc) const;   // descriptive name: absent from SDK 2.10
+#ifdef FABLE_RETAIL_CSALSW3D_CALCPARAMS
+    // Retail opt-in (hand4c w24, row 0x00C54C10; needs the member tail: define FABLE_RETAIL_PASS22_CCODA3D_CREATE too): SDK 2.10
+    // CodeView public accessors ?GetEAX@CCodaContext@@QBEPAVCCodaEAX@@XZ / ?GetDistanceUnits@ / ?GetMacroFxFactor@ (QBEMXZ).
+    CCodaEAX* GetEAX()const{return m_EAX;}
+    float GetDistanceUnits()const{return m_fDistanceUnits;}
+    float GetMacroFxFactor()const{return m_fMacroFxFactor;}
+#endif
 private:
     CSalPlatform* m_pSal;                                // +0x04
     CCoda2DSource* m_2DSourceMem;                                 // +0x08

@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00c54c10   WARN RELOC_NAME: ?SetPitch@CSalSwBaseVoice@@IAEXMABUCODASOURCE@@@Z -> 00c5a500 labelled 'CSoftwareVoice::UpdateStep'
+00c54c10   WARN RELOC_NAME: ?Release@CSalSwBuffer@@QAEXXZ -> 00c5ce40 labelled 'CAudioRingBuffer::Clear'
+00c54c10   WARN RELOC_NAME: ?CalcAzimuthElevation@CSalBaseVoice@@KAXAAM0ABVCCodaVector@@@Z -> 00c599c0 labelled '_global::ComputeAzimuthElevation'
+00c54c10   WARN RELOC_NAME: ?SetLowPass@CSalIIRFilter@@QAEXHM@Z -> 00c6c000 labelled 'COnePoleLowPass::SetLevel'
+00c54c10   WARN RELOC_NAME: ?sal_levelToGain@@YAMH@Z -> 00c54ae0 labelled '_global::MillibelsToAmplitude_00c54ae0'
+00c54c10   WARN RELOC_NAME: ?SAL_CalcMacroFxGains@@YAXMMMMPAM@Z -> 00c6be60 labelled 'Audio_ComputeFrequencyResponse'
+00c54c10   WARN RELOC_NAME: ?SetLP@CSalSwFilter@@QAEXPBU_CLPFILTER@@M@Z -> 00c6bc80 labelled 'CStateVariableFilter::SetParameters'
+00c54c10   WARN RELOC_NAME: ?ClearHistory@CSalSwFilter@@QAEXXZ -> 00c6b720 labelled 'CStateVariableFilter::Reset'
+00c54c10   WARN RELOC_NAME: ?SetEQ@CSalSwFilter@@QAEXPBU_CEQFILTER@@M@Z -> 00c6bd00 labelled 'CStateVariableFilter::SetParametersWithGain'
+00c54c10   WARN STANDIN_LEAF ?CalcParams@CSalSw3DVoice@@QAEXPBVCCoda3DSource@@I@Z (catalog CAudioSource::ApplyParameters; names another function)
+00c54c10   RELOCATION_MATCH PASS   CalcParams
+
+WINS: 1
+  00c54c10 RELOCATION_MATCH CSalSw3DVoice::?CalcParams@CSalSw3DVoice@@QAEXPBVCCoda3DSource@@I@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CSalSw3DVoice_CalcParams_00c54c10

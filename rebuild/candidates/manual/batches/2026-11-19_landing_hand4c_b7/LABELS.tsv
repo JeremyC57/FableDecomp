@@ -1,0 +1,18 @@
+address	name	evidence
+0063fd40	CThingSearchTools::GetAllThingsInRoughArea<CThing,std::list<CThing*>,CFilter_Bind2<CThingFilter_OverlappingCircle,CWorldMap::CThingFilterBase> >	Ego_r + FableWin name sets; RELOCATION_MATCH
+00518340	CThingSearchTools::GetAllTCsInRoughArea<CTCCreatureGenerator,CThingFilter_IsInQuestOrNullQuest,std::vector<const CTCCreatureGenerator*> >	Ego_d + Ego_r name sets; RELOCATION_MATCH (b3)
+0066a1e0	CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_SolidToThing,CThingFilter_PhysicsFlagsSolidToThing,CThingFilter_OverlappingCircle>,`anonymous namespace'::CThingFindHeightZBelowAt>	Ego_d + FableWin name sets; RELOCATION_MATCH (b4)
+006668a0	CThingCreatureBase::GetPossibleCombatAnimations	Ego_r + FableWin name sets (QBE_N..); RELOCATION_MATCH (b5)
+005542f0	NUISystem::CMorphingSprite::GetDataFromDef	Ego_r + FableWin (QAEXXZ); RELOCATION_MATCH (b6)
+00c54c10	CSalSw3DVoice::CalcParams	CODAApi.lib SalSw3DVoice.obj body + CODAApiDbg CodeView; RELOCATION_MATCH (b7)
+00c54ae0	sal_levelToGain	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)
+00c5a500	CSalSwBaseVoice::SetPitch	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)
+00c5ce40	CSalSwBuffer::Release	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)
+00c599c0	CSalBaseVoice::CalcAzimuthElevation	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)
+00c6c000	CSalIIRFilter::SetLowPass	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)
+00c6be60	SAL_CalcMacroFxGains	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)
+00c6bc80	CSalSwFilter::SetLP	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)
+00c6bd00	CSalSwFilter::SetEQ	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)
+00c6b720	CSalSwFilter::ClearHistory	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)
+00c77800	CFloatReverbParameterTranslator::UpdateDecayTimes	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)
+00c88e60	CReverbFnsSSE::ApplyFilterOrder2_quad	GameCODA 2.10 SDK release relocation / byte-identical object body (NAME_FIXES.tsv)

@@ -400750,6 +400750,13 @@ $catalog = @(
         TestSource = '00/a7/CNavQuadTree_GetNodeAt_00a770b0_test.cpp'
         PassPattern = '00a770b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c54c10'
+        Module = 'CSalSw3DVoice'
+        Source = '00/c5/CSalSw3DVoice_CalcParams_00c54c10.cpp'
+        TestSource = '00/c5/CSalSw3DVoice_CalcParams_00c54c10_test.cpp'
+        PassPattern = '00c54c10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

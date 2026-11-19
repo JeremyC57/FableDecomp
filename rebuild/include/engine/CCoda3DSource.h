@@ -20,6 +20,11 @@ public:
  virtual ~CCoda3DSource();
  virtual bool Is3D()const;
  void Commit(const CCodaObjectList&,const CCodaObjectList&,unsigned int);
+#ifdef FABLE_RETAIL_CSALSW3D_CALCPARAMS
+ // Retail opt-in (hand4c w24, row 0x00C54C10 CSalSw3DVoice::CalcParams): SDK 2.10 CodeView public accessor
+ // ?Get3DParams@CCoda3DSource@@QBEABUCODA3DSOURCE@@XZ (the CODAApiDbg CalcParams calls it); the release reads m_3D in place.
+ const CODA3DSOURCE& Get3DParams()const{return m_3D;}
+#endif
 private:
  CODA3DSOURCE m_3D;
  CCodaVector m_vPosition;

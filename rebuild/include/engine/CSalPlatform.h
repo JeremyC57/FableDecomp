@@ -42,6 +42,10 @@ public:
  void ProcessXtc();
  int ProcessOutput();
  CREFTIME GetReferenceTime(){_LARGE_INTEGER time;QueryPerformanceCounter(&time);return time.QuadPart-timerStart.QuadPart;}
+#ifdef FABLE_RETAIL_CSALSW3D_CALCPARAMS
+ // Retail opt-in (hand4c w24, row 0x00C54C10): SDK 2.10 CodeView public ?GetReverb@CSalPlatform@@QBEPAVCSalBaseReverb@@XZ (+0x17c).
+ CSalBaseReverb* GetReverb()const{return m_pReverb;}
+#endif
 private:
 #ifdef FABLE_RETAIL_CSALPLATFORM_CREATE_SW_PASS23
  // SDK private CreateSwVoices; native00c3f800/caller00c3fca9 proves bool in this fork.
