@@ -5,7 +5,7 @@
 //   that expand it name it FtoL (landed 0x00C6B240) or carry the block inline (0x00C40F50 AmplitudeToMillibels,
 //   0x00C42F50 CAudioObject::SetGain, 0x00C3FF70 RoundHalfDownToLong). Distinct from the engine's GFFloatToLongNear
 //   (engine/GFFloatToLongNear.h): the same two instructions in a different library.
-// Retail-asm-helper: FtoL, LIBPK_FTOL
+// Retail-asm-helper: FtoL, LIBPK_FTOL, sal_ftoi, sal_round
 // Retail-asm: 0x00C6B241 `fld dword [esp+8]` + 0x00C6B245 `fistp dword ptr [esp]` (the out-of-line copy), 0x00C40F50
 //   AmplitudeToMillibels and 0x00C3FF70 RoundHalfDownToLong: a float reloaded with `fld` and stored with a bare dword
 //   `fistp`. VC7.1 `(long)x` calls _ftol2, `/QIfist` emits `fistp qword`: the original is inline asm (rasm1 evidence).

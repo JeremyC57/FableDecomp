@@ -237,7 +237,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00766dd0	CTCObjectAugmentations	FrameUpdate	1072	parked	codex pass24 PARKED: The shared owner and STLport containers retain the native predicate calls and component names. Vector allocation, period scheduling, and iterator code generation still differ.	23	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00766dd0/00766dd0.cpp	original
 0076cce0	CTCEnemy	IsEnemyOf	768	parked	egod3a: DIFFER 751v754 -- old local-model draft (97 masked); CTCEnemy.h exists, landed TU siblings 0x0076D1B0/0x0076D270/0x0076D2F0; port not started	5	rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/0076cce0.cpp	original
 0076e6a0	CTCWeaponTrail	DrawAddWeaponTrails	960	parked	DIFFER(911v951)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand306/differ/0076e6a0.cpp	original
-00774d20	_global	CTCShop_SellHighlightedItem	1152	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand4d; open, see its HANDOFF.md)	DIFFER(1149v1149)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00774d20.cpp	original
 00775350	CTCShop	UpdateStock	2000	parked	DIFFER(1971v1988)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00775350.cpp	original
 0077a430	CTCDExperienceOrb	FrameUpdate	1120	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(1140v1115)	5	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077a430.cpp	original
 0077a890	CTCDExperienceOrb	Create	720	parked	DIFFER(724v707)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand684/differ/0077a890.cpp	original
@@ -550,7 +549,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00984f60	CAIStateGroup_OpinionReactionRoot	FleeUpdate	864	parked	DIFFER(856v863)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand653/differ/00984f60.cpp	original
 00987040	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	operator()	384	parked	DIFFER(370v374)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00987040.cpp	original
 00988e80	CShaderRenderManager	UpdateLocalisedSphereMapping	944	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(889v917)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00988e80.test.cpp	original
-00989230	CShaderRenderManager	UpdateObjectSpaceTextureTransform	640	open-escalated (hand3c; AlignedSetMultiply x87 term-order class with 00988e80 00ae1320 00ae29d0)	DIFFER(636v636)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00989230.test.cpp	original
 0098e7d0	_global	CThreadedFileManager_ProcessPendingRequests	848	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/0098e7d0.cpp	original
 0098ecd0	CThreadedFileManager	ProcessObjects	800	parked	DIFFER(777v786)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0098ecd0.cpp	original
 009919c0	_global	RegisterSoundBanks	592	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/009919c0.cpp	original
@@ -836,7 +834,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c3a7d0	CRampedParam_00c3a8f0	Advance	288	parked	DIFFER(272v273)	6	rebuild/candidates/manual/pending/2026-11-04_linux_hand768/differ/00c3a7d0.cpp	original
 00c3da60	CCombatActionManager	CreateEnvironmentCombatAction	288	parked	DIFFER(261v282)	3	rebuild/candidates/manual/pending/2026-10-20_linux_hand231/differ/00c3da60.cpp	original
 00c40d10	CEffectOwner_00c40750	CommitProperties	272	parked	DIFFER(252v272)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand774/differ/00c40d10.test.cpp	original
-00c41fb0	CCombatant	CCombatant::ComputeDerivedCombatStats	1584	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(1531v1570)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00c41fb0.cpp	original
 00c425e0	_global	Hero_ProcessExperienceBlockParry	224	parked	Codex pass 23 (whole parent in the 0x012152D0 draft): 221 v 217, extra receiver lea and scratch order	1	rebuild/candidates/manual/pending/2026-11-16_codex_pass23_open/012152d0/012152d0.cpp	original
 00c461e0	CMatrix	CMatrix::InterpolateViewport	256	parked	DIFFER(135v163)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand760/differ/00c461e0.cpp	original
 00c4de00	_global	CAudioSoundBuffer_TransferPCMData	944	parked	DIFFER(934v929)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand769/differ/00c4de00.cpp	original

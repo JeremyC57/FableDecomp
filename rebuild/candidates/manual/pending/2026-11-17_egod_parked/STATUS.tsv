@@ -533,7 +533,7 @@ address	kind	name	state	true_length	staged_folder	note
 009fb110	named	CTexture::SaveToDataStream	OPEN			
 009fb3f0	named	CTexture::LoadFromDataStream	OPEN			
 009fb750	named	CTexture::LoadFromDataStreamToPreallocatedSurface	LANDED	789	rebuild/candidates/manual/pending/2026-11-17_egod_e13	batch e13; landed 2026-11-18 (landing egod)
-009fde80	named	CGraphicInfoFrame::CFrameData::BeginLoading	MATCHED_UNAUDITED			e17 (stopped at wind-down): RELOCATION_MATCH 1265 + test PASS by the author (Ego_d C3DExtentsI dimensions local closed the frame); NOT yet coordinator-verified or audited; source, test and overlay in ../2026-11-17_egod_open/e17/
+009fde80	named	CGraphicInfoFrame::CFrameData::BeginLoading	AUDITED_HELD			e17 (stopped at wind-down): RELOCATION_MATCH 1265 + test PASS by the author (Ego_d C3DExtentsI dimensions local closed the frame); NOT yet coordinator-verified or audited; source, test and overlay in ../2026-11-17_egod_open/e17/
 009fe780	named	CGraphicInfo::InitialiseFramesAsSurfaceSections	OPEN			
 00a04200	identify	_global::Math_NormalizeVector2D	OPEN			
 00a0be30	named	CCamera::SetView	OPEN			

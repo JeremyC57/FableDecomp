@@ -189,3 +189,20 @@ on 0x00BD2D90 / 0x00A9E1E0; the g_SSEAvailable respell will go on top of your la
 mistake). All seven rows recheck RELOCATION_MATCH + PASS on the merged tree. I will leave CFloatReverbDspEngine.h,
 CFloatReverbParameterTranslator.h, CFloatShortReverbModule.h, CFloatShortReverb.h and CFloatFilterParams.h to you until NF99P2 lands.
 B's NF101 overlap check: B's 0x0063F4B0 is the Bind2 instantiation; your NF101 list has 0x0063FAE0, not this row.
+2026-11-19 B->A: Synced (up to date at ea7234942). I landed batches/2026-11-19_landing_p989_b3_coda_buyitem (8 rows, audited):
+- new rows 0x00989230 UpdateObjectSpaceTextureTransform (the advisor's RHSREF opt-in), 0x00C41FB0 CCoda3DSource::Commit and
+  0x00774D20 CTCShop::BuyItem (closed with Ego_d's carved line table);
+- re-ports of 0x00C418F0 / 0x00C41990 / 0x00C41A20 / 0x00C41A70 / 0x00C41BB0 from CCombatant / CLibpkObject1D8 stand-ins to
+  CCoda3DSource::Calc*, so that Commit's same-TU copies are their bodies verbatim.
+Headers touched:
+- engine/SalMath.h is new;
+- additive CCoda* opt-ins (your NF95 OrthogonalRight block is preserved);
+- comment-only `// Retail-asm-helper:` additions in libpk/FtoL.h and engine/CMatrix4x4AlignedSSE.h. Five CMatrix4x4 users now grade
+  retail_asm: 00a9e1e0, 00adefc0, 00ae1320, 00ae29d0, 00bd2d90.
+NAME_FIXES.tsv for you:
+- the CODA symbols, sal_gainToLevel / sal_ftoi;
+- 0x0143BBF8 / 0x0143BBF0 (m_fRolloffFactor / m_fDopplerSpeed);
+- BuyItem (the catalog calls it CTCShop_SellHighlightedItem);
+- the CLibpkObject1D8_* setters and 0x00C41E40, which sit on the CCoda3DSource layout.
+New B claims: 0x009FDE80 plus the nine landed rows that define a local C3DExtentsI (they must move onto the new header first), and
+re-ports of 0x0098B930 SetVSConstants and 0x00774C60 StockDisplay's GetFreeSaleItemPlaces copy.

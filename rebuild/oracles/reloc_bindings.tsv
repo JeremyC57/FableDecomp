@@ -7400,8 +7400,6 @@ __imp__CreateSemaphoreA@16	0143fea8	00c36120
 ?g_pManager_0143bb5c@@3PAUCManager_00c3e730@@A	0143bb5c	00c40800
 ?g_renderFlags_0143bc28@@3KA	0143bc28	00c40830
 __CIpow	00bfeb40	00c40e50
-?g_damageResistanceScale@@3MA	0143bbf8	00c41990
-?g_combatLightingScale@@3MA	0143bbf0	00c41a20
 ??0CAIStateGroupBase_00c42d60@@QAE@XZ	00c4cf20	00c42d60
 ??0CCoverMember_00c42d60@@QAE@XZ	00c44250	00c42d60
 ??_7CAIStateGroup_CreatureUseCoverBase_00c42d60@@6B@	012b5a88	00c42d60
@@ -40182,3 +40180,9 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ??RCThingFilter_IsMySleepPoint@@QBE_NABVCThing@@@Z	006a8930	00969fb0
 ??RCThingFilter_CanBeUsedAsCover@@QBE_NABVCThing@@@Z	006a7ab0	00971530
 ??RCThingFilter_MakesLineWithPosInDirectionOfLine@@QBE_NABVCThing@@@Z	006a7ad0	00971530
+?CalcConeGain@CCoda3DSource@@ABEMXZ	00c41a70	00c41fb0
+?CalcDirectionAndDistance@CCoda3DSource@@AAEMAAVCCodaVector@@ABV2@@Z	00c418f0	00c41fb0
+?CalcDistanceGain@CCoda3DSource@@ABEMXZ	00c41990	00c41fb0
+?CalcDoppler@CCoda3DSource@@ABEMXZ	00c41a20	00c41fb0
+?CalcEnvFxGain@CCoda3DSource@@ABEMM@Z	00c41bb0	00c41fb0
+?sal_gainToLevel@@YAHM@Z	00c40f50	00c41fb0

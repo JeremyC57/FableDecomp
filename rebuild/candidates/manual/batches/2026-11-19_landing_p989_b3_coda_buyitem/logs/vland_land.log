@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00989230   RELOCATION_MATCH PASS   UpdateObjectSpaceTextureTransform
+00c418f0   RELOCATION_MATCH PASS   CalcDirectionAndDistance
+00c41990   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c41990   RELOCATION_MATCH PASS   CalcDistanceGain
+00c41a20   RELOCATION_MATCH PASS   CalcDoppler
+00c41a70   RELOCATION_MATCH PASS   CalcConeGain
+00c41bb0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c41bb0   RELOCATION_MATCH PASS   CalcEnvFxGain
+00c41fb0   RELOCATION_MATCH PASS   Commit
+00774d20   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00774d20   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00774d20   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00774d20   WARN RELOC_ALIAS: _ceil -> 00bfeb9c is the import thunk 'MSVCR71.DLL::ceil'
+00774d20   WARN STANDIN_LEAF ?BuyItem@CTCShop@@QAEXJ@Z (catalog _global::CTCShop_SellHighlightedItem; names another function)
+00774d20   RELOCATION_MATCH PASS   BuyItem
+
+WINS: 8
+  00989230 RELOCATION_MATCH CShaderRenderManager::?UpdateObjectSpaceTextureTransform@CShaderRenderManager@@AAEXXZ
+  00c418f0 RELOCATION_MATCH CCoda3DSource::?CalcDirectionAndDistance@CCoda3DSource@@AAEMAAVCCodaVector@@ABV2@@Z
+  00c41990 RELOCATION_MATCH CCoda3DSource::?CalcDistanceGain@CCoda3DSource@@ABEMXZ
+  00c41a20 RELOCATION_MATCH CCoda3DSource::?CalcDoppler@CCoda3DSource@@ABEMXZ
+  00c41a70 RELOCATION_MATCH CCoda3DSource::?CalcConeGain@CCoda3DSource@@ABEMXZ
+  00c41bb0 RELOCATION_MATCH CCoda3DSource::?CalcEnvFxGain@CCoda3DSource@@ABEMM@Z
+  00c41fb0 RELOCATION_MATCH CCoda3DSource::?Commit@CCoda3DSource@@QAEXABVCCodaObjectList@@0I@Z
+  00774d20 RELOCATION_MATCH CTCShop::?BuyItem@CTCShop@@QAEXJ@Z
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CShaderRenderManager_UpdateObjectSpaceTextureTransform_00989230
+  CCoda3DSource_CalcDirectionAndDistance_00c418f0
+  CCoda3DSource_CalcDistanceGain_00c41990
+  CCoda3DSource_CalcDoppler_00c41a20
+  CCoda3DSource_CalcConeGain_00c41a70
+  CCoda3DSource_CalcEnvFxGain_00c41bb0
+  CCoda3DSource_Commit_00c41fb0
+  CTCShop_BuyItem_00774d20

@@ -4,7 +4,7 @@
 // register (`mov [esp],ecx ; ... ; mov edx,[esp]`), the operands sit in fixed xmm registers, and no register allocation
 // crosses the block. A `__forceinline` function would copy each operand into a parameter slot of its own; VC7.1 then
 // re-reads the scale through a pointer (`mov eax,s ; movaps xmm3,[eax]`), which retail never does (see chunk 748 NOTES).
-// Retail-asm-helper: GF_SSE_MATRIX_PRESCALE_TRANSPOSED, GF_SSE_MATRIX_PRESCALE, GF_SSE_MATRIX_MULTIPLY, AlignedSetMultiply
+// Retail-asm-helper: GF_SSE_MATRIX_PRESCALE_TRANSPOSED, GF_SSE_MATRIX_PRESCALE, GF_SSE_MATRIX_MULTIPLY, AlignedSetMultiply, AlignedSetMultiplyTransposed, AlignedPreMultiplyTransposed
 // Retail-asm: 0x00A9D5C9 `mov edx,[esp]` + 0x00A9D5CC `movaps xmm3,[esp+10h]` + 0x00A9D5DC `mulps xmm0,xmm3`
 //   (CMatrix4x4::AlignedPreScaleTransposed), 0x00A9D4EA `shufps xmm4,xmm4,55h` (CMatrix4x4::AlignedPreScale), and the same
 //   blocks expanded in C3DAnimationManager::ApplyBoneMorphScaling 0x00A9D7C1 / 0x00A9D8C5, GF_SSE_MATRIX_MULTIPLY: CShaderRenderManager 0x009892A9 `movaps xmm0,[edx]`. VC7.1 RTM 3077 intrinsics
@@ -193,6 +193,9 @@ extern bool g_SSEAvailable;                                              // 0x01
 #if defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD) && !defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_ACCESSORS)
 #error FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD is nested in FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_ACCESSORS
 #endif
+#if defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD_RHSREF_00989230) && !defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD)
+#error FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD_RHSREF_00989230 is nested in FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD
+#endif
 #if defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD) && !defined(FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS)
 #error FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD needs FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS
 #endif
@@ -217,9 +220,21 @@ FABLE_FORCEINLINE void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& lhs, con
         GF_SSE_MATRIX_MULTIPLY(dest, src1, src2);
     } else {
         CMatrix4x4& m = *this;
+#ifdef FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD_RHSREF_00989230
+        // Retail opt-in for row 0x00989230 CShaderRenderManager::UpdateObjectSpaceTextureTransform ONLY (nested in ..._EGOD; no other user
+        // defines it, so the five users above compile the unchanged text). Inferred: a named reference to rhs, read through by the sum.
+        // It is not an Ego_d local; it stands in for one symbol the row's donor compiles that no evidence names. VC7.1 orders the four x87
+        // products of each element by a mod-4 count of the function's live symbols; under the Ego_d body the row's Ego_d text is exactly
+        // one unit short (one added live statement gives retail exactly). Unit table and candidates tried: the row's `// Inferred:` line.
+        const CMatrix4x4& r = rhs;
+        for (long c1 = 0; c1 < 4; ++c1)
+            for (long c2 = 0; c2 < 4; ++c2)
+                m(c1, c2) = lhs(c1, 0) * r(0, c2) + lhs(c1, 1) * r(1, c2) + lhs(c1, 2) * r(2, c2) + lhs(c1, 3) * r(3, c2);
+#else
         for (long c1 = 0; c1 < 4; ++c1)
             for (long c2 = 0; c2 < 4; ++c2)
                 m(c1, c2) = lhs(c1, 0) * rhs(0, c2) + lhs(c1, 1) * rhs(1, c2) + lhs(c1, 2) * rhs(2, c2) + lhs(c1, 3) * rhs(3, c2);
+#endif
     }
 }
 #else

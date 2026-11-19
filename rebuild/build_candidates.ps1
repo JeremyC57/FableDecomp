@@ -194425,13 +194425,7 @@ $catalog = @(
         TestSource = '00/85/CCombatActionBase_SetUpCombatAnimationNotes_00859ec0_test.cpp'
         PassPattern = '00859ec0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00c41a20'
-        Module = 'CCombatant'
-        Source = '00/c4/CCombatant_ComputeLightingAdjustment_00c41a20.cpp'
-        TestSource = '00/c4/CCombatant_ComputeLightingAdjustment_00c41a20_test.cpp'
-        PassPattern = '00c41a20_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '006e8730'
         Module = 'CCombatManager'
@@ -223154,20 +223148,8 @@ $catalog = @(
         TestSource = '00/a3/CCompressorZlib_InternalCompress_00a3add0_test.cpp'
         PassPattern = '00a3add0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00c41990'
-        Module = 'CCombatant'
-        Source = '00/c4/CCombatant_ComputeDamageResistance_00c41990.cpp'
-        TestSource = '00/c4/CCombatant_ComputeDamageResistance_00c41990_test.cpp'
-        PassPattern = '00c41990_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00c41bb0'
-        Module = 'CCombatant'
-        Source = '00/c4/CCombatant_ComputeSpellPower_00c41bb0.cpp'
-        TestSource = '00/c4/CCombatant_ComputeSpellPower_00c41bb0_test.cpp'
-        PassPattern = '00c41bb0_TEST PASS'
-    }
+
+
     [pscustomobject]@{
         Address = '00cafce0'
         Module = 'CRendererPosPassThru'
@@ -258935,13 +258917,7 @@ $catalog = @(
         TestSource = '00/8e/CMaterialDef_GetBlendedSwordHitEffect_008ee790_test.cpp'
         PassPattern = '008ee790_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00c41a70'
-        Module = 'CCombatant'
-        Source = '00/c4/CCombatant_ComputeEffectiveRange_00c41a70.cpp'
-        TestSource = '00/c4/CCombatant_ComputeEffectiveRange_00c41a70_test.cpp'
-        PassPattern = '00c41a70_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00437ae0'
         Module = 'CPlayerGui'
@@ -370838,13 +370814,7 @@ $catalog = @(
         TestSource = '00/5d/CTCWeapon_SetProjectileWeaponLoaded_005dac50_test.cpp'
         PassPattern = '005dac50_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00c418f0'
-        Module = 'CLibpkObject1D8'
-        Source = '00/c4/CLibpkObject1D8_NormaliseCopy_00c418f0.cpp'
-        TestSource = '00/c4/CLibpkObject1D8_NormaliseCopy_00c418f0_test.cpp'
-        PassPattern = '00c418f0_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '0084d7e0'
         Module = 'NCameraModes::CBase'
@@ -401049,6 +401019,62 @@ $catalog = @(
         Source = '00/a1/C3DCoordI_operator_00a13c20.cpp'
         TestSource = '00/a1/C3DCoordI_operator_00a13c20_test.cpp'
         PassPattern = '00a13c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00989230'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateObjectSpaceTextureTransform_00989230.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateObjectSpaceTextureTransform_00989230_test.cpp'
+        PassPattern = '00989230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c418f0'
+        Module = 'CCoda3DSource'
+        Source = '00/c4/CCoda3DSource_CalcDirectionAndDistance_00c418f0.cpp'
+        TestSource = '00/c4/CCoda3DSource_CalcDirectionAndDistance_00c418f0_test.cpp'
+        PassPattern = '00c418f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c41990'
+        Module = 'CCoda3DSource'
+        Source = '00/c4/CCoda3DSource_CalcDistanceGain_00c41990.cpp'
+        TestSource = '00/c4/CCoda3DSource_CalcDistanceGain_00c41990_test.cpp'
+        PassPattern = '00c41990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c41a20'
+        Module = 'CCoda3DSource'
+        Source = '00/c4/CCoda3DSource_CalcDoppler_00c41a20.cpp'
+        TestSource = '00/c4/CCoda3DSource_CalcDoppler_00c41a20_test.cpp'
+        PassPattern = '00c41a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c41a70'
+        Module = 'CCoda3DSource'
+        Source = '00/c4/CCoda3DSource_CalcConeGain_00c41a70.cpp'
+        TestSource = '00/c4/CCoda3DSource_CalcConeGain_00c41a70_test.cpp'
+        PassPattern = '00c41a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c41bb0'
+        Module = 'CCoda3DSource'
+        Source = '00/c4/CCoda3DSource_CalcEnvFxGain_00c41bb0.cpp'
+        TestSource = '00/c4/CCoda3DSource_CalcEnvFxGain_00c41bb0_test.cpp'
+        PassPattern = '00c41bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c41fb0'
+        Module = 'CCoda3DSource'
+        Source = '00/c4/CCoda3DSource_Commit_00c41fb0.cpp'
+        TestSource = '00/c4/CCoda3DSource_Commit_00c41fb0_test.cpp'
+        PassPattern = '00c41fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00774d20'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_BuyItem_00774d20.cpp'
+        TestSource = '00/77/CTCShop_BuyItem_00774d20_test.cpp'
+        PassPattern = '00774d20_TEST PASS'
     }
 )
 
