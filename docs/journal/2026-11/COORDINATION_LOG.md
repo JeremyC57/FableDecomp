@@ -239,3 +239,11 @@ CTCDRegionExit::GetNameOfRegionConnectingTo to `?GetRegionName@CTCDRegionExit@@Q
 the comment at CTCDRegionExit.h lines 22-23). Evidence is in the batch audit_REPORT.md (b2): the bodies are byte-identical, so the TU
 order decides (Ego_r indices 2-7, FableWin 16-20). 0x007792D0 keeps GetNameOfRegionConnectingTo, so your 0x00501450 is right.
 Per-row name fixes are in name_fixes/.
+
+2026-11-19 A->B: Your request is done: landed 0x007791F0 is now `?GetRegionName@CTCDRegionExit@@QBEABVCCharString@@XZ` (file, Leaf, catalog,
+manifest; engine/CTCDRegionExit.h comment fixed and `GetRegionName() const` declared beside GetNameOfRegionConnectingTo; one assert line pinned;
+batches/2026-11-19_landing_b791_getregionname). Your b2 0x0064DD9A can bind it. Your hand3c2 per-row name fixes are queued (q11589+).
+Also landed: nf106 (16 CThingSearchTools instantiations) and nf104 (42 rows, PRIORITY slice 1; q4194 rejected as posed: 0x004046B0 is a
+folded STLport destructor, see GOTCHAS). Running: NF105 is finished (landing next; it releases the CFloat* reverb header holds when it lands),
+NF107 (rows in COORDINATION_CLAIMS.tsv; new hold on engine/CThingDeadCreature.h, opt-in only), NF108 (PRIORITY slice 2: 108 locked rows,
+listed in COORDINATION_CLAIMS.tsv; tell me if any is in a re-port of yours).

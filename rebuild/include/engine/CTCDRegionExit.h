@@ -19,9 +19,10 @@ public:
     // rough-area TCD scan 0x00518900 pushes (`push 19h`). The static itself is inlined everywhere in retail.
     static unsigned long __fastcall StatGetDriverType() { return 25; }
 #endif
-    // ?GetNameOfRegionConnectingTo@CTCDRegionExit@@QBEABVCCharString@@XZ: two byte-identical retail copies, 0x007791F0 and
-    // 0x007792D0 (both landed under this name); the row calls 0x007792D0.
+    // ?GetNameOfRegionConnectingTo@CTCDRegionExit@@QBEABVCCharString@@XZ is 0x007792D0 (the row calls it); its byte-identical twin
+    // 0x007791F0 is ?GetRegionName@CTCDRegionExit@@QBEABVCCharString@@XZ (Ego_r / FableWin TU order; Account B's hand3c2 b2 audit).
     const CCharString& GetNameOfRegionConnectingTo() const;
+    const CCharString& GetRegionName() const;
 private:
     bool             Active;                                             // +0x0c
     bool             InLetterBoxMode;                                    // +0x0d
@@ -55,5 +56,5 @@ public:
     virtual void CreateAdditionalTCs();
 #endif // FABLE_RETAIL_CTCDREGIONEXIT_DRIVERSLOTS
 };
-FABLE_STATIC_ASSERT(sizeof(CTCDRegionExit) == 0x38);
+FABLE_STATIC_ASSERT_AT(58, sizeof(CTCDRegionExit) == 0x38);
 #endif

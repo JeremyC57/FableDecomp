@@ -1,0 +1,3 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x007791f0	CTCDRegionExit	GetRegionName	?GetRegionName@CTCDRegionExit@@QBEABVCCharString@@XZ	CTCDRegionExit::GetNameOfRegionConnectingTo	?GetNameOfRegionConnectingTo@CTCDRegionExit@@QBEABVCCharString@@XZ	Account B hand3c2 b2 audit: byte-identical twin of 0x007792D0; Ego_r / FableWin TU order (GetRegionName 4, GetDisplayName 5, GetNameOfRegionConnectingTo 6)
+# Section 2

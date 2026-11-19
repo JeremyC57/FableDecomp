@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00501450   WARN RELOC_NAME: ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 0048d400 labelled 'CThingSearchTools::GetAllThings<CThing,std::vector<CThing*>,CThingFilter_HasTC>'
+00501450   RELOCATION_MATCH PASS   CWorldMap::GenerateRegionConnectivityGraph
+0050a650   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsInQuestOrNullQuest
+0050a650   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+0050a650   WARN SHARED_HEADER_AVAILABLE CNavigationAreaUpdate
+0050a650   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z -> 005163b0 labelled 'CThingSearchTools::GetAllLeafThings<CThingBuilding, std::list<CThingPhysical const *, std::allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>'
+0050a650   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingObject@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z -> 00516530 labelled 'CThingSearchTools::GetAllLeafThings<CThingObject, std::list<CThingPhysical const *, std::allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>'
+0050a650   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingVillage@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z -> 005166b0 labelled 'CThingSearchTools::GetAllLeafThings<CThingVillage, std::list<CThingPhysical const *, std::allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>'
+0050a650   WARN RELOC_NAME: ??$GetAllTCsInRoughArea@VCTCCreatureGenerator@@VCThingFilter_IsInQuestOrNullQuest@@V?$vector@PBVCTCCreatureGenerator@@V?$allocator@PBVCTCCreatureGenerator@@@std@@@std@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_IsInQuestOrNullQuest@@AAV?$vector@PBVCTCCreatureGenerator@@V?$allocator@PBVCTCCreatureGenerator@@@std@@@std@@@Z -> 00518340 labelled 'CThingSearchTools::GetAllTCsInRoughArea<CTCCreatureGenerator,CThingFilter_IsInQuestOrNullQuest,std::vector<CT'
+0050a650   WARN RELOC_NAME: ??$GetAllTCDsInRoughArea@VCTCDNavigationSeed@@VCThingFilter_IsInQuestOrNullQuest@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_IsInQuestOrNullQuest@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z -> 005185f0 labelled 'CThingSearchTools::GetAllTCDsInRoughArea<CTCDNavigationSeed,CThingFilter_IsInQuestOrNullQuest,std::vector<const CThing*,std::allocator<const CThing*> > >'
+0050a650   WARN RELOC_NAME: ??$GetAllTCDsInRoughArea@VCTCDRegionExit@@VCThingFilter_IsInQuestOrNullQuest@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_IsInQuestOrNullQuest@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z -> 00518900 labelled 'CThingSearchTools::GetAllTCDsInRoughArea<CTCDRegionExit,CThingFilter_IsInQuestOrNullQuest,std::vector<const CThing*,std::allocator<const CThing*> > >'
+0050a650   RELOCATION_MATCH PASS   CWorldMap::GetMapNavigationAreaInit
+00518900   RELOCATION_MATCH PASS   CThingSearchTools::GetAllTCDsInRoughArea<CTCDRegionExit,CThingFilter_IsInQuestOrNullQuest,std::vector<const CThing*,std::allocator<const CThing*> > >
+0072a410   MATCH            PASS   CTCActionUseScriptedHook::IsSerialiseCreatable
+0072a420   MATCH            PASS   CTCActionUseScriptedHook::IsComponentSerialisable
+00778f90   MATCH            PASS   CTCDRegionExit::CreateAdditionalTCs
+007791f0   WARN SHARED_HEADER_AVAILABLE CRegion
+007791f0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+007791f0   RELOCATION_MATCH PASS   CTCDRegionExit::GetRegionName
+00779940   MATCH            PASS   CTCDRegionExit::IsDriverType
+00779950   MATCH            PASS   CTCDRegionExit::IsComponentSerialisable
+00779960   MATCH            PASS   CTCDRegionExit::HasFrameUpdate
+
+WINS: 10
+  00501450 RELOCATION_MATCH CWorldMap::?GenerateRegionConnectivityGraph@CWorldMap@@QAEXXZ
+  0050a650 RELOCATION_MATCH CWorldMap::?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z
+  00518900 RELOCATION_MATCH CThingSearchTools::??$GetAllTCDsInRoughArea@VCTCDRegionExit@@VCThingFilter_IsInQuestOrNullQuest@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_IsInQuestOrNullQuest@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z
+  0072a410 MATCH CTCActionUseScriptedHook::?IsSerialiseCreatable@CTCActionUseScriptedHook@@UBE_NXZ
+  0072a420 MATCH CTCActionUseScriptedHook::?IsComponentSerialisable@CTCActionUseScriptedHook@@UBE_NXZ
+  00778f90 MATCH CTCDRegionExit::?CreateAdditionalTCs@CTCDRegionExit@@UAEXXZ
+  007791f0 RELOCATION_MATCH CTCDRegionExit::?GetRegionName@CTCDRegionExit@@QBEABVCCharString@@XZ
+  00779940 MATCH CTCDRegionExit::?IsDriverType@CTCDRegionExit@@UBE_NJ@Z
+  00779950 MATCH CTCDRegionExit::?IsComponentSerialisable@CTCDRegionExit@@UBE_NXZ
+  00779960 MATCH CTCDRegionExit::?HasFrameUpdate@CTCDRegionExit@@UBE_NXZ

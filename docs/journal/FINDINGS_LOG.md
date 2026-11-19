@@ -1318,3 +1318,6 @@ against CODAApi.lib, or stay compiled C++?
   - Our new GameCODA tests report their named SKIPs and pass the portable steps.
   - The one failure is `rows/00b98e10_ClipSubSectionsSIMD_driver.cpp` vc71-row-dual, "output lengths differ". That driver and its row have not changed since landing gb (7392e2e66, 2026-11-15), and the tool change only affects files tagged `// Portable-check-requires-lib:`. So the failure is pre-existing and unrelated; it is for whoever owns that row.
   - Log: batches/2026-11-19_landing_hand4d_b11/logs/portable_twins_full_tree_without_sdk.tsv.
+- 2026-11-19 (A, nf104 follow-up): landed 0x008ED590 CObjectFamilyDef::GetRandomObject grades DIFFER(141v166) PASS from HEAD in the Linux
+  lane, unchanged by any round-10 edit (last touched by agentNF15, 2026-11-11). It sits on rebuild/include/candidates/object_family_compiled.h,
+  which declares GFROR13 as `YIKK`; the PDB spelling `?GFROR13@@YIJK@Z` is queued (NF104 NAME_FIXES, q4413). Pre-existing; not reverted.

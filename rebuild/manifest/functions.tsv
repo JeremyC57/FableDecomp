@@ -21027,7 +21027,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00778fa0	CTCDRegionExit	CTCDRegionExit	__thiscall	undefined	2	CTCChest *,CThing *	0	yes	accepted									
 00779000	Construct	CTCDRegionExit	__thiscall	void	2	CTCDCameraPoint *,C3DVector *	1	yes	accepted									
 00779080	MoveHeroThroughExit	CTCDRegionExit	__thiscall	void	1	CTCDRegionExit *	1	yes	accepted									
-007791f0	GetNameOfRegionConnectingTo	CTCDRegionExit	__thiscall	CCharString *	1	CTCDRegionExit *	1	yes	accepted									
+007791f0	GetRegionName	CTCDRegionExit	__thiscall	CCharString *	1	CTCDRegionExit *	1	yes	accepted									
 00779260	GetDisplayName	CTCDRegionExit	__thiscall	CCharString *	1	CTCDRegionExit *	1	yes	accepted									
 007792d0	GetNameOfRegionConnectingTo	CTCDRegionExit	__thiscall	CCharString *	1	CTCDRegionExit *	1	yes	accepted									
 00779340	SetUpPEntranceConnectedToFromUID	CTCDRegionExit	__thiscall	void	1	CTCActionUseScriptedHook *	1	yes	accepted									

@@ -231560,8 +231560,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007791f0'
         Module = 'CTCDRegionExit'
-        Source = '00/77/CTCDRegionExit_GetNameOfRegionConnectingTo_007791f0.cpp'
-        TestSource = '00/77/CTCDRegionExit_GetNameOfRegionConnectingTo_007791f0_test.cpp'
+        Source = '00/77/CTCDRegionExit_GetRegionName_007791f0.cpp'
+        TestSource = '00/77/CTCDRegionExit_GetRegionName_007791f0_test.cpp'
         PassPattern = '007791f0_TEST PASS'
     }
     [pscustomobject]@{
