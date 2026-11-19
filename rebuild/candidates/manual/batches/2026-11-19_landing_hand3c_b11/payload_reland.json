@@ -1,0 +1,15 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00644fc5",
+    "module": "NPlayerGui::CDrawQuestInfo",
+    "name": "GetElementByIndex",
+    "source_cpp": "// NPlayerGui::CDrawQuestInfo::GetElementByIndex(long index) const -- the quest-info element whose ID is index, or null\n// Leaf: ?GetElementByIndex@CDrawQuestInfo@NPlayerGui@@QBEPAVCQuestInfoElement@12@J@Z\n// Flags: none\n// Retail: Fable.exe (TLC, VC7.1) @ 0x00644FC5, 32 bytes, no frame pointer, `ret 4`. No callees: a top-tested walk of Elements (+0x58)\n//   comparing each element's ID (+4).\n// Re-port (hand3c b11, coordinator-approved): the landed row was a local model with the non-const ?GetElementByIndex@..QAE.. spelling;\n//   Ego_r.pdb / FableWin.pdb give the const QBE member. Body: FableWin.pdb 0x020EC8C4 (Ego_d locals it / pelement; its ASSERT(pelement)\n//   compiled out), the same text row 0x0064D404 DrawMiniGameInfo defines earlier in its TU (retail source order). An ordinary member\n//   definition: no scaffolding needed.\n// Pragmas: `#pragma optimize(\"s\", on)` only (the HUD TU's mode; `optimize(\"y\", off)` adds a frame pointer: DIFFER(35v32)).\n// Headers: NPlayerGui_CDrawQuestInfo.h + FABLE_RETAIL_CDRAWQUESTINFO_DRAWMINIGAMEINFO (the GetElementByIndex declaration).\n#pragma optimize(\"s\", on)\n#define FABLE_RETAIL_DEF_CLASS_BASE\n#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE\n#define FABLE_RETAIL_CDRAWQUESTINFO_DRAWMINIGAMEINFO\n#include \"engine/NPlayerGui_CDrawQuestInfo.h\"\n\nnamespace NPlayerGui {\nCDrawQuestInfo::CQuestInfoElement* CDrawQuestInfo::GetElementByIndex(long index) const\n{\n    for (std::list<CCountedPointer<CQuestInfoElement> >::const_iterator it = Elements.begin(); it != Elements.end(); ++it)\n    {\n        CQuestInfoElement* pelement = (*it).Get();\n        if (pelement->ID == index)\n            return pelement;\n    }\n    return 0;\n}\n}\n",
+    "test_cpp": "// Behaviour test for NPlayerGui::CDrawQuestInfo::GetElementByIndex (0x00644FC5), a portable model of the row: the first element in\n// list order whose ID matches, else null.\n#include <stdio.h>\n#include <list>\nstruct Elem { long ID; };\nstatic const Elem* GetElementByIndex(const std::list<const Elem*>& elements, long index)\n{\n    for (std::list<const Elem*>::const_iterator it = elements.begin(); it != elements.end(); ++it)\n        if ((*it)->ID == index)\n            return *it;\n    return 0;\n}\nint main()\n{\n    int bad = 0;\n    Elem a = { 3 }, b = { 7 }, c = { 7 };\n    std::list<const Elem*> l; l.push_back(&a); l.push_back(&b); l.push_back(&c);\n    if (GetElementByIndex(l, 3) != &a) ++bad;\n    if (GetElementByIndex(l, 7) != &b) ++bad;          // first match wins\n    if (GetElementByIndex(l, 9) != 0) ++bad;\n    if (GetElementByIndex(std::list<const Elem*>(), 3) != 0) ++bad;\n    printf(bad ? \"00644fc5_TEST FAIL\\n\" : \"00644fc5_TEST PASS\\n\");\n    return bad ? 1 : 0;\n}\n",
+    "pass_pattern": "00644fc5_TEST PASS",
+    "leaf": "?GetElementByIndex@CDrawQuestInfo@NPlayerGui@@QBEPAVCQuestInfoElement@12@J@Z"
+   }
+  ]
+ }
+}

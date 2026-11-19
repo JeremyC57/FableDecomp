@@ -1209,7 +1209,7 @@ $catalog = @(
         Module = 'CThingCreatureBase'
         Source = '00/66/CThingCreatureBase_IsChild_00661f70.cpp'
         TestSource = '00/66/CThingCreatureBase_IsChild_00661f70_test.cpp'
-        PassPattern = 'CThingCreatureBase_00661f70_TEST PASS'
+        PassPattern = '00661f70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066e7bd'
@@ -400169,6 +400169,20 @@ $catalog = @(
         Source = '00/64/NPlayerGuiCDrawQuestInfo_DrawMiniGameInfo_0064d404.cpp'
         TestSource = '00/64/NPlayerGuiCDrawQuestInfo_DrawMiniGameInfo_0064d404_test.cpp'
         PassPattern = '0064d404_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cc800'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/6c/CTCCreatureNavigation_FrameUpdate_006cc800.cpp'
+        TestSource = '00/6c/CTCCreatureNavigation_FrameUpdate_006cc800_test.cpp'
+        PassPattern = '006cc800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c38c0'
+        Module = 'CFileInstaller::CActiveFile'
+        Source = '00/9c/CFileInstallerCActiveFile_OnWriteFinished_009c38c0.cpp'
+        TestSource = '00/9c/CFileInstallerCActiveFile_OnWriteFinished_009c38c0_test.cpp'
+        PassPattern = '009c38c0_TEST PASS'
     }
 )
 

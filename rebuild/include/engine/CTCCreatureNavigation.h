@@ -5,6 +5,16 @@
 #include "engine/ETCInterfaceType.h"
 #endif
 class CNavigatorBase;
+#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_FRAMEUPDATE
+// Opt-in (hand3c, row 0x006CC800 FrameUpdate): Agents typed as the Ego_r.pdb vector<const CSteeringAgent*> (12 bytes, same offset; the
+// row's FrameUpdateThing functor fills it through ForEachInRoughArea 0x006CE800), the FableWin.pdb private inline
+// ?GetParentCreature@CTCCreatureNavigation@@ABEAAVCThingCreatureBase@@XZ (retail reads ParentThing +0x04 in place: the creature base is
+// at offset 0 of the thing) and the CTCBase slot-9 override ?FrameUpdate@CTCCreatureNavigation@@UAEXXZ (0x006CC800). Needs the retail
+// CTCBase (FABLE_RETAIL_CTCBASE) and CThingCreatureBase chain. No layout change.
+#include "stlport/fable_containers.h"
+#include "engine/CThingCreatureBase.h"
+class CSteeringAgent;
+#endif
 #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION
 class C2DVector;
 class C3DVector;
@@ -21,7 +31,11 @@ private:
     unsigned char   NavigationTarget[0x18];                  // +0x1c CNavigationInput
     float           Speed;                                   // +0x34
     unsigned char   PThingToNotAvoid[0x8];                   // +0x38 CIntelligentPointer<CThing_const_>
+#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_FRAMEUPDATE
+    std::vector<const CSteeringAgent*> Agents;               // +0x40
+#else
     unsigned char   Agents[0xc];                             // +0x40 vector<CSteeringAgent_const_*,std::allocator<CSteeringAgent_const_*>_>
+#endif
     long            NextUpdate;                              // +0x4c
     long            FrameLastNavigated;                      // +0x50
     bool            CalculatingNewRoute;                     // +0x54
@@ -30,6 +44,11 @@ private:
     unsigned char   _pad_0x57[0x1];                          // +0x57
     float           ProximityForDirectApproach;              // +0x58
     float           CurrentSpeed;                            // +0x5c
+#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_FRAMEUPDATE
+    CThingCreatureBase& GetParentCreature() const { return static_cast<CThingCreatureBase&>(*ParentThing); }
+public:
+    virtual void FrameUpdate();                                          // slot 9 0x006CC800
+#endif
 public:
 #ifdef FABLE_RETAIL_KID_EVADE_LIFETIMES_PASS23
     // Original lifetime declarations, fixture definitions do not replace row calls.

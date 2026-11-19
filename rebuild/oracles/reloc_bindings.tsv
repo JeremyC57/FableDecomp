@@ -40291,3 +40291,8 @@ _MOVE_TO_PRONG_NAV_PROXIMITY	01261d68	006e94d0
 ??$GetSubDef@VCThingDrainLifeShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingDrainLifeShotDef@@@@@Z	007be92e	007bd845
 ?CalculateLevel@CEngineSceneMap@@ABEKM@Z	00b91920	00b93b30
 ?GetElementByIndex@CDrawQuestInfo@NPlayerGui@@QBEPAVCQuestInfoElement@12@J@Z	00644fc5	0064d404
+??$ForEachInRoughArea@VCThing@@VCThingFilter_IsNot@@UFrameUpdateThing@?A0x6b7eae57@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsNot@@ABUFrameUpdateThing@?A0x6b7eae57@@@Z	006ce800	006cc800
+?GetCurrentSpeed@CThingCreatureBase@@QBEMXZ	00661cd0	006cc800
+?GetMarkerFileName@@YI?AVCWideString@@ABV1@@Z	009c33a0	009c38c0
+__imp__GetFileTime@16	0143fd60	009c38c0
+__imp__SetFileTime@16	0143fd64	009c38c0

@@ -32,6 +32,13 @@ public:
     virtual void OnDie();                                        // slot 11 0x00663F50
 private:
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_GETCURRENTSPEED
+// Opt-in (hand3c, row 0x006CC800 CTCCreatureNavigation::FrameUpdate): Ego_r.pdb / FableWin.pdb ?GetCurrentSpeed@CThingCreatureBase@@QBEMXZ
+// (public const, out of line at 0x00661CD0, landed; called at 0x006CC88B / 0x006CC8AA). Declaration only.
+public:
+    float GetCurrentSpeed() const;                                       // 0x00661CD0
+private:
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ISCHILD
 // Retail opt-in (agentC23, row 0x0058578B CTCInventory::OpenInventory; first written by the acctB lane): Ego_r.pdb / FableWin.pdb
 // ?IsChild@CThingCreatureBase@@QBE_NXZ, out of line at 0x00661F70 (the default branch declares it too). Declaration only.

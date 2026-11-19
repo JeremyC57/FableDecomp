@@ -198,7 +198,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006cbac0	CTCCreatureNavigation	GetNextNavPosOnRoute	880	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_hand1024/differ/006cbac0.cpp	original
 006cbe80	CTCCreatureNavigation	GetNearestFleePositionBehindCover	752	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_hand1024/differ/006cbe80.cpp	original
 006cc270	CTCCreatureNavigation	DrawPreparePrimitivesForRendering	1088	parked	DIFFER(1035v1085)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006cc270.alt.cpp	gapscan/boundary
-006cc800	CTCCreatureNavigation	FrameUpdate	848	reserved (hand3c, not plain C++)	DIFFER(401v399)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/006cc800.cpp	original
 006cddf0	CGroundNavigatorExternalInterface	?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z	1056	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/006cddf0.cpp	original
 006d5d30	CThingAICreature	UpdateAI	912	parked	DIFFER(883v897)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand307/differ/006d5d30.cpp	original
 006d6fa0	CTCHeroExperience	GetTrainableStatPossibleLevelUpAmount	224	parked	DIFFER(228v220)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/006d6fa0.cpp	original
@@ -618,7 +617,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009bd460	CMovieSubtitles	ParseSubtitles	1200	parked	DIFFER(1174v1193)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/009bd460.cpp	original
 009bf7e0	CDisplayManager	CreateDevice	848	reserved (hand3c, not plain C++)	DIFFER(824v846)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand284/differ/009bf7e0.cpp	original
 009c33a0	_global	GetMarkerFileName	368	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/009c33a0.cpp	original
-009c38c0	CActiveFile	OnWriteFinished	416	reserved (hand3c, not plain C++)	DIFFER(414v409)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/009c38c0.cpp	original
 009c3c20	CFileInstaller	ProcessActiveFileForDecompression	912	reserved (hand3c, not plain C++)	DIFFER(877v909)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/009c3c20.cpp	original
 009c3fb0	CFileInstaller	ProcessActiveFileForWrite	368	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/009c3fb0.cpp	original
 009c5170	_global	CPatchTesselationEdgeStrip_DestructorHelper	416	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/009c5170.cpp	original

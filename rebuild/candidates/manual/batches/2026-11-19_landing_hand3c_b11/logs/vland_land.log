@@ -1,0 +1,12 @@
+addr       parity           behav  name
+006cc800   RELOCATION_MATCH PASS   FrameUpdate
+009c38c0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+009c38c0   RELOCATION_MATCH PASS   OnWriteFinished
+
+WINS: 2
+  006cc800 RELOCATION_MATCH CTCCreatureNavigation::?FrameUpdate@CTCCreatureNavigation@@UAEXXZ
+  009c38c0 RELOCATION_MATCH CFileInstaller::CActiveFile::?OnWriteFinished@CActiveFile@CFileInstaller@@QAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCCreatureNavigation_FrameUpdate_006cc800
+  CFileInstallerCActiveFile_OnWriteFinished_009c38c0
