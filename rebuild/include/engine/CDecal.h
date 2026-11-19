@@ -77,6 +77,33 @@ public:
     void SetMinLife(float minLife) { MinLife = minLife; }
     float GetAlphaFactor(float t) const { return (AlphaFactor[0] - AlphaFactor[1]) * t + AlphaFactor[1]; }
     float GetSizeFactor(float t) const { return (SizeFactor[0] - SizeFactor[1]) * t + SizeFactor[1]; }
+#ifdef FABLE_RETAIL_CDECAL_POOLING
+    // hand3c nested opt-in (row 0x00B1D790 CPSCDecalRenderer::PoolDecal): FableWin.pdb bodies, all expanded in retail --
+    // ?GetGraphicFrame@..@QBEMXZ (0x02F575F0) / ?SetGraphicFrame@..@QAEXM@Z (0x02F575D0) on +0x48, ?GetAlphaFactor@..@QBEMXZ (0x02F576F0,
+    // AlphaFactor[0]), ?IncrementSizeFactor@..@QAEXM@Z (0x02F57610) / ?IncrementAlphaFactor@..@QAEXM@Z (0x02F57680: once per frame -- set
+    // the collision bit, UpdateTimer = Lifetimer, keep the old factor in [1], add to [0]) and ?Deactivate@..@QAEXXZ (0x02F57710, clears
+    // the active bit). Bodies only: no layout change.
+    float GetGraphicFrame() const { return GraphicFrame; }
+    void SetGraphicFrame(float frame) { GraphicFrame = frame; }
+    float GetAlphaFactor() const { return AlphaFactor[0]; }
+    void IncrementSizeFactor(float increment) {
+        if (!SizeCollisionThisFrame) {
+            SizeCollisionThisFrame = true;
+            UpdateTimer = Lifetimer;
+            SizeFactor[1] = SizeFactor[0];
+            SizeFactor[0] = SizeFactor[0] + increment;
+        }
+    }
+    void IncrementAlphaFactor(float increment) {
+        if (!AlphaCollisionThisFrame) {
+            AlphaCollisionThisFrame = true;
+            UpdateTimer = Lifetimer;
+            AlphaFactor[1] = AlphaFactor[0];
+            AlphaFactor[0] = AlphaFactor[0] + increment;
+        }
+    }
+    void Deactivate() { Active = false; }
+#endif
 #ifdef FABLE_RETAIL_CDECAL_GETSIZEFACTOR_NOARG
     // hand3c nested opt-in (row 0x00B1D550): FableWin.pdb ?GetSizeFactor@CDecal@NParticleEngine@@QBEMXZ (FableWin 0x02F56D60: `fld [this+38h]`),
     // the no-argument overload, inline in retail (0x00B1D705 `fmul [edx+38h]`). Body only: no layout change.

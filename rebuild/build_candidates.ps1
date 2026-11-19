@@ -400869,6 +400869,13 @@ $catalog = @(
         TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_DecalCollides_00b1d550_test.cpp'
         PassPattern = '00b1d550_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b1d790'
+        Module = 'NParticleEngine::CPSCDecalRenderer'
+        Source = '00/b1/NParticleEngineCPSCDecalRenderer_PoolDecal_00b1d790.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_PoolDecal_00b1d790_test.cpp'
+        PassPattern = '00b1d790_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

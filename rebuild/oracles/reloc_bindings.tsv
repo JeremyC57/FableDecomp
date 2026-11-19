@@ -40357,3 +40357,4 @@ _MAX_NODE_SIZE	01230894	00a770b0
 ?resize@?$vector@U?$pair@KJ@std@@V?$allocator@U?$pair@KJ@std@@@2@@std@@QAEXI@Z	00a39ae0	00a38c20
 ?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatMapHeader1@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader1@@@@PBX@Z	00512c70	005148d0
 ?DeleteData@?$CCountedPointer@VCOldFileFormatMapHeader2@@@@SIXPAX@Z	0050d1f0	005148d0
+?DecalCollides@CPSCDecalRenderer@NParticleEngine@@IAE_NAAVCParticleSystem@2@ABU?$_List_iterator@PAVCDecal@NParticleEngine@@U?$_Nonconst_traits@PAVCDecal@NParticleEngine@@@std@@@std@@MAAU45@AAM@Z	00b1d550	00b1d790

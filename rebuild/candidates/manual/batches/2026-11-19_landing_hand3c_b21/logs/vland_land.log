@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00b1d790   RELOCATION_MATCH PASS   PoolDecal
+
+WINS: 1
+  00b1d790 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::?PoolDecal@CPSCDecalRenderer@NParticleEngine@@IAE_NAAVCParticleSystem@2@AAU?$_List_iterator@PAVCDecal@NParticleEngine@@U?$_Nonconst_traits@PAVCDecal@NParticleEngine@@@std@@@std@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCPSCDecalRenderer_PoolDecal_00b1d790

@@ -76,6 +76,13 @@ protected:
     bool DecalCollides(CParticleSystem& system, const std::list<CDecal*>::iterator& it_decal, float decal_size,
                        std::list<CDecal*>::iterator& it_collison_decal, float& collison_decal_size);   // 0x00B1D550
 #endif
+#ifdef FABLE_RETAIL_CPSCDECALRENDERER_POOLDECAL
+protected:
+    // hand3c opt-in (row 0x00B1D790): Ego_r.pdb / FableWin.pdb ?PoolDecal@CPSCDecalRenderer@NParticleEngine@@IAE_NAAVCParticleSystem@2@
+    // AAV?$_List_iterator@..PAVCDecal@NParticleEngine@@..@std@@@Z (protected; FableWin 0x02F56D80). Needs _DECALCOLLIDES (the forward
+    // declarations). Declaration only: no layout change.
+    bool PoolDecal(CParticleSystem& system, std::list<CDecal*>::iterator& it_decal);   // 0x00B1D790
+#endif
 };
 }
 FABLE_STATIC_ASSERT_AT(64, sizeof(NParticleEngine::CPSCDecalRenderer)==0x64);
