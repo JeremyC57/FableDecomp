@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00733b70   WARN STANDIN_LEAF ?PlayCombatStrikeSounds@CTCCombat@@QAEXXZ (catalog _global::CTCCreature_PlayDeathFlourish; names another function)
+00733b70   RELOCATION_MATCH PASS   PlayCombatStrikeSounds
+
+WINS: 1
+  00733b70 RELOCATION_MATCH CTCCombat::?PlayCombatStrikeSounds@CTCCombat@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCCombat_PlayCombatStrikeSounds_00733b70

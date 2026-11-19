@@ -40267,3 +40267,4 @@ __wcsicmp	00f3fb84	00599e3f
 ?GetPWorldSeed@CBase@NCameraModes@@QBEPAKXZ	0084d2b0	00853670
 ??$GetSubDef@VCAnimatingObjectDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAnimatingObjectDef@@@@@Z	007f9330	007f8c20
 ??RFrameUpdateThing@?A0x9ae3f8c6@@QBE_NABVCThing@@@Z	006ce730	006ce800
+?GetOnHitSound@CTCHeroExperience@@QBE?AVCCharString@@XZ	006d8bf0	00733b70

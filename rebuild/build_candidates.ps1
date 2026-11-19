@@ -400043,6 +400043,13 @@ $catalog = @(
         TestSource = '00/6c/CThingSearchTools_ForEachInRoughAreaCThingCThingFilterIsNotFrameUp_006ce800_test.cpp'
         PassPattern = '006ce800_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00733b70'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_PlayCombatStrikeSounds_00733b70.cpp'
+        TestSource = '00/73/CTCCombat_PlayCombatStrikeSounds_00733b70_test.cpp'
+        PassPattern = '00733b70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

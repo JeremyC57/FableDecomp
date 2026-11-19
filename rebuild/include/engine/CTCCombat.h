@@ -112,6 +112,17 @@ private:
 #endif
  CCombatManager& GetCombatManager(){return CombatManager;}
  CThingCreatureBase& GetParentCreature(){return *ParentCreature;}
+#ifdef FABLE_RETAIL_CTCCOMBAT_STRIKESOUNDS
+ // Opt-in (hand4a, row 0x00733B70): Ego_r.pdb ?PlayCombatStrikeSounds@CTCCombat@@QAEXXZ (public; retail 0x00733B70) and the private
+ // const accessors ?GetParentCreature@CTCCombat@@ABEABVCThingCreatureBase@@XZ (FableWin 0x024FBF80) / ?GetPHeroCombatDef@CTCCombat@@ABE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ
+ // (Ego_r 0x0074B5E0, FableWin 0x024FBF30: GetParentCreature().GetPHeroCombatDef()), inline in retail (the row calls
+ // CThingCreatureBase::GetPHeroCombatDef 0x00663340 on [this+24h]). Needs engine/CThingCreatureBase.h (HEROCOMBATDEF) included first.
+ const CThingCreatureBase& GetParentCreature() const{return *ParentCreature;}
+ CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const{return GetParentCreature().GetPHeroCombatDef();}
+public:
+ void PlayCombatStrikeSounds();                                      // 0x00733B70
+private:
+#endif
 #ifdef FABLE_RETAIL_CTCCOMBAT_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
     // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;

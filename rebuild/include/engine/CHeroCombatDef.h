@@ -92,6 +92,12 @@ public:
     CHeroAbilityStatWeight RangedAccuracyShakeyCursorWeighting; // +0x68
     float RangedAccuracyShakeFractionOfRadius;                  // +0x74
     unsigned char _pad_0x78[0xec - 0x78];
+#elif defined(FABLE_RETAIL_CHEROCOMBATDEF_STRIKESOUNDS)
+    // Nested opt-in (hand4a, row 0x00733B70 CTCCombat::PlayCombatStrikeSounds): Ego_r.pdb MeleeCombatPlayStrikeSounds (bool, Ego_r +0xFE,
+    // 0x1C above retail like MeleeStrikeNumFramesPauseOnHeroStrike +0x108 / +0xEC); the row tests [def+0E2h] (0x00733C26). No size change.
+    unsigned char _pad_0x39[0xe2 - 0x39];
+    bool MeleeCombatPlayStrikeSounds;                           // +0xE2
+    unsigned char _pad_0xe3[0xec - 0xe3];
 #else
     unsigned char _pad_0x39[0xb3];
 #endif
