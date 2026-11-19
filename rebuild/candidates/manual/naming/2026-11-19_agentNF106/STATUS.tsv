@@ -1,0 +1,59 @@
+address	change	grade	test	grades_used	entries	note
+00436500	-	-	-	0	q11281	not-a-binder: self row already the PDB spelling (NF94); entry q11281 open (binders 0x0078954D / 0x0078971D not started)
+0049c6f0	-	-	-	0	q11280,q11283	not-a-binder: self row already the PDB spelling (NF94)
+006b2720	port	RELOCATION_MATCH	PASS (b1; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, vector K016 recipe 0x0095C7C0: ORIGINAL_ROUGHAREA + THISEND + CELL_BYTEOFFSET); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+006ce300	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007197c0	port	RELOCATION_MATCH	PASS (b1; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, vector K016 recipe 0x0095C7C0: ORIGINAL_ROUGHAREA + THISEND + CELL_BYTEOFFSET); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+007313b0	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+0074d710	port	RELOCATION_MATCH	PASS (b1; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, vector K016 recipe 0x0095C7C0: ORIGINAL_ROUGHAREA + THISEND + CELL_BYTEOFFSET); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+007512e0	-	DIFFER	-	1	q11280,q11283	blocked: port. port tried once with FIRSTROUGH + FIRSTROUGH_BODY (work/try/007512e0.cpp): DIFFER, as NF59 found for 0x007FCEF0 (two frame slots, one SIB order); the GetPFirst rows need a FITTED first-rough body opt-in (CELL_BYTEOFFSET-like, guarded y loop)
+0077adf0	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+00785dd0	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	2	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+0078954d	-	-	-	0	q11280,q11283,q11281	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+0078971d	-	-	-	0	q11280,q11283,q11281	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+0078db20	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+00792e50	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf already the PDB QBE spelling; respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+007930b0	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+0079a050	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+0079a280	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+0079bf30	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+007a5190	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+007a63d0	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+007a9300	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007a9580	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007c3c20	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+007f4500	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007f5d20	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007f70d0	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007f7340	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007f9c00	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007fcef0	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007fd110	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007fdb10	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+007fe730	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+00809a70	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+0080a550	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+0080e670	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+0080e8e0	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+0080ecc0	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+00851490	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+008786e0	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+008ad710	port	RELOCATION_MATCH	PASS (b1; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, vector K016 recipe 0x0095C7C0: ORIGINAL_ROUGHAREA + THISEND + CELL_BYTEOFFSET); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+008e4100	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+008e60d0	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+00905d10	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+009147e0	-	DIFFER(558v567)	-	1	q11280,q11283	blocked: port. port tried once: BESTROUGH + BESTROUGH_BODY + CTHINGCOMPARE_NEAREST_OUTOFLINE explicit instantiation (work/try/009147e0.cpp) is 9 bytes short; the landed local model inlines a pointer-taking CThingFilter_ScaresBirds, the shared header declares operator()(const CThingCreatureBase&) out of line: needs a body/filter variant (not resumed: context)
+0091a750	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf already the PDB QBE spelling; respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+0091adb0	port	RELOCATION_MATCH	PASS (b2; recheck_final.log)	1	q11280,q11283	port (explicit instantiation, std::list EGOD recipe 0x0085B2A0 / 0x006FE7C0); self leaf QAE -> PDB QBE (RENAMES s1); respells 0x0049C6F0 / 0x0049C700 (RENAMES s2)
+0091ba40	port	RELOCATION_MATCH	PASS (recheck_final; recheck_final.log)	1	q11280,q11283	port onto TCSINROUGHAREA_EGOD (0x00518340 define set + CTCPerceiveThing / IsPerceivingThing); self leaf stand-in ?GetAllTCsInRoughArea@CThingSearchTools_Calls@@... -> PDB ??$GetAllTCsInRoughArea@VCTCPerceiveThing@@... (RENAMES s1; no landed caller); work/try/0091ba40.q first form
+00937080	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+00937420	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+00937690	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+0093cdb0	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+00942390	-	SRC_FAIL	-	1	q11280,q11283	blocked: port. port tried once (work/try/00942390.cpp): CFilter_Bind2.h passes the thing by reference, the row-local CIsVeryCloseMotionlessCreature::operator() takes const CThing* (C2664); needs the filter respelled to the PDB reference form first
+009595c0	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+0095db90	-	DIFFER(752v602)	-	3	q11280,q11283	blocked: port. 3 forms (work/try/0095db90.cpp), as 0x00969FB0 (ROUGHAREABODY without STLP_VECTOR_OVERFLOW_OUTOFLINE, only form 3 compiled): 752 vs 602 bytes; untested: the K016 vector define set
+00969fb0	-	DIFFER(752v602)	-	3	q11280,q11283	blocked: port. 3 forms (work/try/00969fb0.cpp), only the third compiled: ROUGHAREABODY explicit instantiation (forms 1-2: include errors, class CTCMapwho; order and unary_negate needs FABLE_RETAIL_STLP_REMOVE_COPY_IF); form 3 is 752 bytes vs retail 602, WITHOUT STLP_VECTOR_OVERFLOW_OUTOFLINE (retail calls 0x00436AC0 out of line). Untested: the K016 vector define set that matched 0x0074D710 (first form for the next round)
+0096f260	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+009793d0	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins
+00987430	-	-	-	0	q11280,q11283	blocked: port (not attempted this round, 0 grades; context). Still binds the 0x0049C6F0 / 0x0049C700 stand-ins

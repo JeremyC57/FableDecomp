@@ -273820,9 +273820,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0091ba40'
-        Module = 'CThingSearchTools_Calls'
-        Source = '00/91/CThingSearchToolsCalls_GetAllTCsInRoughArea_0091ba40.cpp'
-        TestSource = '00/91/CThingSearchToolsCalls_GetAllTCsInRoughArea_0091ba40_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/91/CThingSearchTools_GetAllTCsInRoughArea_0091ba40.cpp'
+        TestSource = '00/91/CThingSearchTools_GetAllTCsInRoughArea_0091ba40_test.cpp'
         PassPattern = '0091ba40_TEST PASS'
     }
     [pscustomobject]@{
@@ -369431,9 +369431,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007197c0'
-        Module = 'CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase, std'
-        Source = '00/71/CThingSearchToolsGetAllThingsInRoughAreaCThingCreatureBasestd_vectorCThingCreatureBaseCThingFilterNone_007197c0.cpp'
-        TestSource = '00/71/CThingSearchToolsGetAllThingsInRoughAreaCThingCreatureBasestd_vectorCThingCreatureBaseCThingFilterNone_007197c0_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/71/CThingSearchTools_GetAllThingsInRoughArea_007197c0.cpp'
+        TestSource = '00/71/CThingSearchTools_GetAllThingsInRoughArea_007197c0_test.cpp'
         PassPattern = '007197c0_TEST PASS'
     }
     [pscustomobject]@{

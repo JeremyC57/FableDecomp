@@ -1,0 +1,2 @@
+# recheck of every landed row the exe scan finds referencing a respelled target: 88 rows
+good 88 bad 0

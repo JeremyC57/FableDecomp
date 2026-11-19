@@ -40081,8 +40081,6 @@ _sc_fDefaultLongReverbInputDelay	012bf138	00c78150
 ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z	0049c700	00436d60
 ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z	0049c6f0	00436d60
 ?_M_insert_overflow@?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@IAEXPAPBVCThing@@ABQBV3@ABU__true_type@2@I_N@Z	0049c370	00518900
-?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z	0049c700	006b2720
-?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z	0049c6f0	006b2720
 ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools_Calls@@QBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z	0049c700	006ce300
 ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z	0049c6f0	006ce300
 ?push_back@ThingVector@@QAEXABQBVCThingCreatureBase@@@Z	006ce530	006ce300
@@ -40091,7 +40089,6 @@ _sc_fDefaultLongReverbInputDelay	012bf138	00c78150
 ??RCThingFilter_CanCollideWithThing@@QBE_NABVCThing@@@Z	006a8300	0075bc40
 ??RCThingFilter_In2DRange@@QBE_NABVCThing@@@Z	006a76b0	0077adf0
 ?_M_insert_overflow@ThingVector@@QAEXPAPAVCThing@@ABQAV2@ABUFalseType@@I_N@Z	00436ac0	0077adf0
-??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z	006689e0	00785dd0
 ??RCThingFilter_IsThingAbleToBeEngagedInCombat@@QBE_NABVCThing@@@Z	006a7580	0078954d
 ?GetCell@CThingMap@NThingMap@@QAEAAUCThingMapCell@@EKK@Z	00436830	0078954d
 ?GetMapwhoArea@CThingSearchTools_Calls@@QBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@JABV2@@Z	00436500	0078954d
@@ -40104,12 +40101,8 @@ _sc_fDefaultLongReverbInputDelay	012bf138	00c78150
 ?push_back@ThingVector@@QAEXABQAVCThingGameObject@@@Z	0078915c	0078971d
 ?GetAccuracyPercentageFromThingAtBuildUpTime@?A0xc3dd47c9@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	00789d90	00789ff0
 ?GetDamageMultiplierFromThingAtBuildUpTime@?A0xc3dd47c9@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	00789ce0	00789ff0
-??RCThingFilter_CanBeHitByEpicSpell@@QBE_NABVCThing@@@Z	006a8d30	0078db20
-?GetCellExtents@CThingSearchTools@@QBE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z	0049c700	00792e50
-?GetMapsInArea@CThingSearchTools@@QBEXABVC2DBoxI@@PAUCMapVector@@@Z	0049c6f0	00792e50
 ??RCThingCompare_Nearest@@QBEPAVCThingCreatureBase@@PAV1@0@Z	00782560	0079a050
 ??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z	00799e30	0079a050
-??RCThingFilter_In3DRange@@QBE_NABVCThing@@@Z	006a7780	007a63d0
 ?_M_insert_overflow@ThingVector@@QAEXPAPAVCThingPhysical@@ABQAV2@ABUFalseType@@I_N@Z	007a91a0	007a9300
 ??RCThingFilter_HasInstantiationName@@QBE_NABVCThing@@@Z	006a7c00	007a9580
 ??RCThingFilter_HasDefGlobalIndex@@QBE_NABVCThing@@@Z	006a70b0	007b6300
@@ -40140,7 +40133,6 @@ _sc_fDefaultLongReverbInputDelay	012bf138	00c78150
 ?_M_insert_overflow@ThingVector@@QAEXPAV?$CIntelligentPointer@$$CBVCThing@@@@ABV2@ABUFalseType@@I_N@Z	00739550	008786e0
 ?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z	006a15a0	008e4100
 ?_M_insert_overflow@ThingVector@@QAEXPAPAVCThingAICreature@@ABQAV2@ABUFalseType@@I_N@Z	00515cc0	008e4100
-??RCThingFilter_IsPerceivingThing@@QBE_NABVCThing@@@Z	006a80e0	0091ba40
 ??RCThingFilter_HasBeenDiscovered@@QBE_NABVCThing@@@Z	006a84b0	00937420
 ??RCThingFilter_IsAnAlly@@QBE_NABVCThing@@@Z	006a7a40	00937420
 ??RCThingCompare_Nearest@@QBEPAUCThingMask10007@@PAU1@0@Z	0093c9a0	0093cdb0
@@ -40185,3 +40177,7 @@ _sc_fDefaultLongReverbInputDelay	012bf138	00c78150
 ?SetInterruptable@CEventPlayOptions@LHA@@QAEX_N@Z	00c0a880	00aabf60
 ?SetLoopCount@CEventPlayOptions@LHA@@QAEXH@Z	00c0a860	00aabf60
 ?GFGetHermiteSplinePosition@@YIXAAVC3DVector@@ABV1@111M@Z	00a56670	00a567a0
+??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z	006689e0	00785dd0
+??RCThingFilter_CanBeHitByEpicSpell@@QBE_NABVCThing@@@Z	006a8d30	0078db20
+??RCThingFilter_In3DRange@@QBE_NABVCThing@@@Z	006a7780	007a63d0
+??RCThingFilter_IsPerceivingThing@@QBE_NABVCThing@@@Z	006a80e0	0091ba40
