@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00540320   WARN RELOC_NAME: ??BCWideString@@QBEPB_WXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+00540320   RELOCATION_MATCH PASS   KeyPressed
+
+WINS: 1
+  00540320 RELOCATION_MATCH NUISystem::CEditBox::?KeyPressed@CEditBox@NUISystem@@UAEX_W@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NUISystemCEditBox_KeyPressed_00540320

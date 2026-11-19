@@ -400656,6 +400656,14 @@ $catalog = @(
         TestSource = '00/9c/global_GetMarkerFileName_009c33a0_test.cpp'
         PassPattern = '009c33a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00540320'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_KeyPressed_00540320.cpp'
+        TestSource = '00/54/NUISystemCEditBox_KeyPressed_00540320_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        PassPattern = '00540320_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
