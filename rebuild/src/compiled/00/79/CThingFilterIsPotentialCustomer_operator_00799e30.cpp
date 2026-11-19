@@ -10,6 +10,10 @@
 //   const @ 0x004C73D0; 6.0f @ 0x0126C11C.
 // Layout (Ego_r.pdb, matches retail): ShopperContainer +0, Pos +4, TCShopKeeper +0x10, AllowExistingShopper +0x14;
 //   CTCBase::ParentThing +4. CThing (retail, 0x10 below the PDB): thing-type byte +0x10, bitset +0x20, map +0x44.
+// Name fix (NF93, round 8, q11293): 0x00662000 is CThingCreatureBase::GetCreatureType() const returning ECreatureType (Ego_r.pdb 0x0053CE50 /
+//   FableWin.pdb 0x01D9A450 ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ; engine/CThingCreatureBase.h CREATURETYPE): the
+//   local declaration (long GetCreatureType) respelled in place, the enum from the shared engine/ECreatureType.h.
+#include "engine/ECreatureType.h"
 #include "fable_compiler.h"
 class CTCBase { public: void* vfptr; class CThing* ParentThing; };
 class C3DVector { public:
@@ -35,7 +39,7 @@ FABLE_FORCEINLINE float Length(const C3DVector& v)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingCreatureBase : public CThing { public:
-    long GetCreatureType() const;                       // 0x00662000
+    ECreatureType GetCreatureType() const;              // 0x00662000
 };
 
 class CTCVillage { public:

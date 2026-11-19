@@ -18,6 +18,11 @@ class CThingCreatureBase;
 class CCombatAction_WillShieldInto : public CCombatActionBase {
 public:
     CCombatAction_WillShieldInto(CThingCreatureBase& owner, float shield_up_time, float shield_health);   // 0x00956760
+#ifdef FABLE_RETAIL_CCOMBATACTION_WILLSHIELDINTO_FINISHACTION
+    // NF93 opt-in (round 8, q11261 / q11262 row 0x008C29F0): Ego_r.pdb / FableWin.pdb ?FinishAction@CCombatAction_WillShieldInto@@UAEXXZ
+    // (the CCombatActionBase slot-4 override, 0x008C29F0). Declaration only: no layout change.
+    virtual void FinishAction();                                         // slot 4, 0x008C29F0
+#endif
 private:
     float ShieldUpTime;                                                  // +0x114
     float ShieldHealth;                                                  // +0x118
@@ -93,10 +98,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatAction_WillShieldInto) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillShieldInto, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillShieldInto, ShieldUpTime) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillShieldInto, ShieldHealth) == 0x118);
+FABLE_STATIC_ASSERT_AT(96, sizeof(CCombatAction_WillShieldInto) == 0x11c);
+FABLE_STATIC_ASSERT_AT(97, offsetof(CCombatAction_WillShieldInto, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(98, offsetof(CCombatAction_WillShieldInto, ShieldUpTime) == 0x114);
+FABLE_STATIC_ASSERT_AT(99, offsetof(CCombatAction_WillShieldInto, ShieldHealth) == 0x118);
 
 #endif // FABLE_RETAIL_CCOMBATACTION_WILLSHIELDINTO
 #endif // FABLE_ENGINE_CCOMBATACTION_WILLSHIELDINTO_H

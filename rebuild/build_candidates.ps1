@@ -171395,9 +171395,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0072d990'
-        Module = '_unattributed'
-        Source = '00/72/unattributed_CBase0062e900Derived0072d990_0072d990.cpp'
-        TestSource = '00/72/unattributed_CBase0062e900Derived0072d990_0072d990_test.cpp'
+        Module = 'CCreatureAction_CastAssassinRush'
+        Source = '00/72/CCreatureActionCastAssassinRush_CCreatureActionCastAssassinRush_0072d990.cpp'
+        TestSource = '00/72/CCreatureActionCastAssassinRush_CCreatureActionCastAssassinRush_0072d990_test.cpp'
         PassPattern = '0072d990_TEST PASS'
     }
     [pscustomobject]@{
@@ -216944,9 +216944,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0085ee10'
-        Module = '_global'
-        Source = '00/85/global_IsCreatureButNotHero_0085ee10.cpp'
-        TestSource = '00/85/global_IsCreatureButNotHero_0085ee10_test.cpp'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsTransmogrified_0085ee10.cpp'
+        TestSource = '00/85/NCreatureMode_IsTransmogrified_0085ee10_test.cpp'
         PassPattern = '0085ee10_TEST PASS'
     }
     [pscustomobject]@{

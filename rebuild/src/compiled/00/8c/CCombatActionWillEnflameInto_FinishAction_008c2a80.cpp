@@ -1,4 +1,5 @@
 // CCombatAction_WillEnflameInto::FinishAction() -- base FinishAction, then hand the creature a temporary CCreatureAction_CastWillEnflameSpell(creature, Level) as its current action
+// Leaf: ?FinishAction@CCombatAction_WillEnflameInto@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C2A80, length 70 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, fetched into edi BEFORE the base
 // call: a named local), CCombatActionBase::FinishAction @ 0x00859A20 (base virtual, non-virtual call),
@@ -9,36 +10,54 @@
 // Level is the long at +0x114 (Ego_r.pdb name; the engine header has it at +0x12c for the PDB build, retail's
 // CCombatActionBase is 0x114 bytes, so the layout is modelled locally).
 // Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
-class CCreatureActionBase;
-struct CThingCreatureBase_Calls {              // engine/CThingCreatureBase.h exists but is not used: only its SetCurrentAction call is used
-    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
-};
-
-struct CCreatureAction_CastWillEnflameSpell_Retail {              // engine/CCreatureAction_CastWillEnflameSpell.h exists but is not used: the retail temporary is 0x11c bytes (the PDB build's header differs: base 0x12c); only its ctor/dtor and size matter here
-    unsigned char _body[0x11c];
-    CCreatureAction_CastWillEnflameSpell_Retail(CThingCreatureBase_Calls* creature, long level);   // 0x008BB450
-    ~CCreatureAction_CastWillEnflameSpell_Retail();                                          // 0x0062E900
-    operator const CCreatureActionBase&() const { return *reinterpret_cast<const CCreatureActionBase*>(this); }
-};
-
+// Port (NF93, q11261 / q11262): the local CThingCreatureBase_Calls / CCreatureAction_CastWillEnflameSpell_Retail / CCombatActionBase
+//   stand-ins replaced by the shared headers (the 0x008C2980 / WillHealInto 0x008C2AD0 recipe) with the WillEnflameInto _MAZE block and
+//   the NF93 opt-ins CCOMBATACTION_WILLENFLAMEINTO_FINISHACTION / CCREATUREACTION_CASTWILLENFLAMESPELL_CLASS: SetCurrentAction 0x006644F0
+//   and the temporary's destructor 0x0062E900 (~CCombatActionBase) now bind the PDB spellings; own leaf QAE -> UAE (slot-4 override).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_HASTC_FORCEINLINE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
-class CCombatActionBase { public:
-    virtual void v00();
-    unsigned char _pad04[4];                    // +0x04
-    CBaseIntelligentPointer PCreature;          // +0x08
-    unsigned char _pad10[0x114 - 0x10];         // +0x10
-    void FinishAction();                        // 0x00859A20
-};
-
-class CCombatAction_WillEnflameInto : public CCombatActionBase { public:
-    long Level;                                 // +0x114
-    void FinishAction();
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTION_WILLENFLAMEINTO_MAZE
+#define FABLE_RETAIL_CCOMBATACTION_WILLENFLAMEINTO_FINISHACTION
+#define FABLE_RETAIL_CCREATUREACTION_CASTWILLENFLAMESPELL_CLASS
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCombatAction_WillEnflameInto.h"
+#include "engine/CCreatureAction_CastWillEnflameSpell.h"
 
 void CCombatAction_WillEnflameInto::FinishAction()
 {
-    CThingCreatureBase_Calls* creature = reinterpret_cast<CThingCreatureBase_Calls*>(PCreature.GetPItem());
+    CThingCreatureBase* pcreature = PCreature.Get();
     CCombatActionBase::FinishAction();
-    creature->SetCurrentAction(CCreatureAction_CastWillEnflameSpell_Retail(creature, Level));
+    pcreature->SetCurrentAction(CCreatureAction_CastWillEnflameSpell(*pcreature, Level));
 }

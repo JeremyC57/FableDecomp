@@ -1,4 +1,5 @@
 // CCreatureAction_BriarRoseShotFarInto::FinishAction() -- base FinishAction, then hand the creature a temporary CCreatureAction_BriarRoseShotFarOutof(creature, target) as its current action
+// Leaf: ?FinishAction@CCreatureAction_BriarRoseShotFarInto@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C2C50, length 91 bytes. Vtable slot 4 (FinishAction) of
 // CCreatureAction_BriarRoseShotFarInto (0x01294A2C).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8 into edi, PTarget at +0xa8 into ebx: both named
@@ -11,48 +12,54 @@
 // Shape: the implicit destructor of the temporary is inlined as member destructor + base destructor with NO vtable
 // stores: both the temporary's class and its CIntelligentPointer member are modelled `__declspec(novtable)` (their own
 // constructors are out of line, so only the destructor's dead vtable stores are affected).
-class CThingCreatureBase;
-
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThingCreatureBase* m_pItem;            // +0x04
-    CThingCreatureBase* GetPItem() const;   // 0x00A01B50
-    virtual ~CBaseIntelligentPointer();             // 0x00A01C10
-};
-
-struct __declspec(novtable) CIntelligentPointer : CBaseIntelligentPointer {   // implicit destructor: no vtable store of its own
-    virtual void v00();
-};
-
-class CCombatActionBase { public:                  // retail sizeof 0x114
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    protected: virtual void FinishAction(); public:            // slot 4, 0x00859A20
-    unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
-    unsigned char _pad10[0xa8 - 0x10];      // +0x10 rest of CCreatureActionBase (0xa8 bytes in retail)
-    CBaseIntelligentPointer PTarget;        // +0xa8 CIntelligentPointer<CThing>
-    unsigned char _padb0[0x114 - 0xb0];     // +0xb0
-    virtual ~CCombatActionBase();                   // 0x0062E900
-};
-
-struct CThingCreatureBase_Calls {
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
-};
-
-struct __declspec(novtable) CCreatureAction_BriarRoseShotFarOutof : CCombatActionBase {   // sizeof 0x11c; constructed out of line
-    CIntelligentPointer PTarget;            // +0x114 (the member its constructor @ 0x008C39A0 builds)
-    virtual void v00();
-    CCreatureAction_BriarRoseShotFarOutof(CThingCreatureBase* creature, CThingCreatureBase* target);   // 0x008C39A0
-};
-
-class CCreatureAction_BriarRoseShotFarInto : public CCombatActionBase { public:
-    virtual void FinishAction();
-};
+// Port (NF93, q11261 / q11262): the local CBaseIntelligentPointer / novtable CIntelligentPointer / CCombatActionBase / CThingCreatureBase_Calls /
+//   CCreatureAction_BriarRoseShotFarOutof stand-ins replaced by the shared headers (the 0x008C2980 recipe) with the NF93 opt-ins
+//   CCREATUREACTION_BRIARROSESHOTFARINTO_CLASS / CCREATUREACTION_BRIARROSESHOTFAROUTOF_CLASS: SetCurrentAction 0x006644F0 and ~CCombatActionBase
+//   0x0062E900 now bind the PDB spellings. The Ego_r ctor takes (CThingCreatureBase&, CThingCreatureBase&): the target is PTarget's item as a creature.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_HASTC_FORCEINLINE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFARINTO_CLASS
+#define FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFAROUTOF_CLASS
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_BriarRoseShotFarInto.h"
+#include "engine/CCreatureAction_BriarRoseShotFarOutof.h"
 
 void CCreatureAction_BriarRoseShotFarInto::FinishAction()
 {
-    CThingCreatureBase* creature = PCreature.GetPItem();
-    CThingCreatureBase* target = PTarget.GetPItem();
+    CThingCreatureBase* pcreature = PCreature.Get();
+    CThingCreatureBase* ptarget = static_cast<CThingCreatureBase*>(PTarget.Get());
     CCombatActionBase::FinishAction();
-    ((CThingCreatureBase_Calls*)creature)->SetCurrentAction(CCreatureAction_BriarRoseShotFarOutof(creature, target));
+    pcreature->SetCurrentAction(CCreatureAction_BriarRoseShotFarOutof(*pcreature, *ptarget));
 }

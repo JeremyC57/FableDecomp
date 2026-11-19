@@ -32,6 +32,10 @@ class CThing { public:
     }
 };
 
+// Name fix (NF93, round 8, q11293): 0x00662000 is CThingCreatureBase::GetCreatureType() const returning ECreatureType (Ego_r.pdb 0x0053CE50 /
+//   FableWin.pdb 0x01D9A450 ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ; engine/CThingCreatureBase.h CREATURETYPE): the
+//   local declaration (GetCreatureCategory) respelled in place, the enum from the shared engine/ECreatureType.h.
+#include "engine/ECreatureType.h"
 // The type test: the mask is copied into a local first, so VC7.1 folds `x & 0` for CThing late
 // and keeps retail's `xor al,al ; jne` (a constant enum operand folds the whole test away).
 template <class T> inline bool IsThingOfType(const CThing* thing)
@@ -59,7 +63,7 @@ class CThingGameObject : public CThing { public:
 };
 class CThingCreatureBase : public CThingGameObject { public:
     enum { ThingTypeMask = 0xf };
-    long GetCreatureCategory() const;               // 0x00662000: def (+0xe0)->+0xc4
+    ECreatureType GetCreatureType() const;          // 0x00662000: def (+0xe0)->+0xc4
 };
 class CThingAICreature : public CThingCreatureBase { public:
     enum { ThingTypeMask = 0x1f };
@@ -70,7 +74,7 @@ class CThingFilter_IsNot { public:
     bool operator()(const CThing& thing) const;      // 0x006A76A0 Ego_r/FableWin ??RCThingFilter_IsNot@@QBE_NABVCThing@@@Z
 };
 class CThingFilter_IsChild { public:                         // inline: the creature's category getter == 1
-    bool operator()(const CThingCreatureBase& creature) const { return creature.GetCreatureCategory() == 1; }   // Ego_r/FableWin take a reference
+    bool operator()(const CThingCreatureBase& creature) const { return creature.GetCreatureType() == 1; }   // Ego_r/FableWin take a reference
 };
 template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;

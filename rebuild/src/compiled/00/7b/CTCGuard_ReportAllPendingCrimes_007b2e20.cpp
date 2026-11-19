@@ -9,7 +9,7 @@
 //   LowerBound 0x0040F020 (interfaces 0x51 hero deed log, 0x4F creature opinion of hero), CTCVillage::ReportCrime(long)
 //   0x0065CB6B, CTCCreatureOpinionOfHero::KnowsOfDeed(long, EOpinionDeedType, bool) const 0x00681AE0,
 //   CTCCreatureOpinionOfHero::InformOfDeed(long, bool) 0x00683590, CTCHeroOpinionDeedLog::GetDeedEffectsDef(long)
-//   0x006C5630 (CDefPointer by hidden pointer), CTCVillage::RecalculateSecuritySweep(long) 0x00659C32 (landed name),
+//   0x006C5630 (CDefPointer by hidden pointer), CTCVillage::StartSecuritySweep(bool) 0x00659C32,
 //   deque<CCrimeWaitingForBribe>::clear() 0x007B4B00.
 // Globals: the main game component 0x013B86A0 (+0x24 the world).
 // Layout: CTCGuard PendingCrimes +0x14 (STLport deque: start iterator +0x14, finish +0x24; 0x80-byte nodes = 16 crimes);
@@ -17,7 +17,10 @@
 // Shape: `if (village) { hero; log = 0; if (hero) GetInterface(&log, 0x51); severe = false; for (it = begin, end; it !=
 //   end; ++it) { crime = *it; village->ReportCrime(..); if (village thing has 0x4F) { if (!op->KnowsOfDeed(..))
 //   op->InformOfDeed(.., false); } if (log) { effects = log->PeekPDeedEffectsDef((EOpinionDeedType)(it->Type)); severity 2/3 -> severe; } }
-//   if (severe) village->RecalculateSecuritySweep(0); } PendingCrimes.clear();`
+//   if (severe) village->StartSecuritySweep(false); } PendingCrimes.clear();`
+// Name fix (NF93, round 8, q11284 / q11288): 0x00659C32 is CTCVillage::StartSecuritySweep(bool urgent) (Ego_r.pdb 0x0069D890 / FableWin.pdb
+//   0x02161B25 ?StartSecuritySweep@CTCVillage@@QAEX_N@Z; Ego_d tc_village.obj; the landed self row spells it so), not the made-up
+//   RecalculateSecuritySweep(long): the local CTCVillage declaration respelled in place (the call still pushes 0 = false).
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -112,7 +115,7 @@ class CTCVillage { public:
     virtual void v00();
     CThing* PThing;                                     // +0x04 (CTCBase)
     void ReportCrime(long deedHandle);                  // 0x0065CB6B
-    void RecalculateSecuritySweep(long flags);          // 0x00659C32
+    void StartSecuritySweep(bool urgent);              // 0x00659C32 Ego_r.pdb / FableWin.pdb ?StartSecuritySweep@CTCVillage@@QAEX_N@Z
 };
 
 class CCrimeWaitingForBribe {                           // 8 bytes
@@ -225,7 +228,7 @@ void CTCGuard::ReportAllPendingCrimes(CTCVillage* village)
             }
         }
         if (severe)
-            village->RecalculateSecuritySweep(0);
+            village->StartSecuritySweep(false);
     }
     PendingCrimes.clear();
 }

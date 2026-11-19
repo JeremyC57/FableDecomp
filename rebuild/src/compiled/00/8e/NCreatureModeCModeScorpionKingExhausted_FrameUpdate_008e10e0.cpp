@@ -9,6 +9,8 @@
 // Layout: retail CModeScorpionKingExhausted (the landed Recover / ctor 0x008D82B0): RecoveryCount +0x68 (Ego_r.pdb +0x68).
 // Shape: `T* p = 0; if (HasTC(k)) p = GetTC<T>(k);` (the `xor ecx,ecx` preload); a non-zero count is decremented and the
 //   function returns (if/else), so the recover test sits in the else arm with its own epilogue.
+// Name fix (NF93, round 8, q11261 / q11262): Recover is private in Ego_r.pdb (?Recover@CModeScorpionKingExhausted@NCreatureMode@@AAEXXZ);
+//   the local declaration is wrapped in `private:` so the call binds the PDB spelling of the ported 0x008DF640.
 class CTCBase;
 
 #define FABLE_RETAIL_CTHING
@@ -44,7 +46,9 @@ struct CModeScorpionKingExhausted : CModeStandBase {   // vtable 0x012858A0
     unsigned char Filter[0x0c];            // +0x6c CAnimFilterOfGroup
     void*         PCreature;               // +0x78
     bool          bRecovering;             // +0x7c
-    void Recover();                        // 0x008DF640
+private:
+    void Recover();                        // 0x008DF640 Ego_r.pdb ?Recover@CModeScorpionKingExhausted@NCreatureMode@@AAEXXZ (private)
+public:
     void FrameUpdate();
 };
 }

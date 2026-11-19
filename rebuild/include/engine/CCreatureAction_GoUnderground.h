@@ -9,6 +9,16 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_GOUNDERGROUND_CLASS
+// NF93 opt-in (round 8, q11261 / q11262 row 0x009208E0): the polymorphic retail class on CCombatActionBase (0x114;
+// ghidra_out/rtti_bases.tsv .?AVCCreatureAction_GoUnderground@@ : CCombatActionBase; no own members, sizeof 0x114 as below) with its
+// Ego_r.pdb 0x008F0E90 / FableWin.pdb ctor ??0CCreatureAction_GoUnderground@@QAE@AAVCThingCreatureBase@@@Z, out of line in retail at
+// 0x008B8110 (stores vtable 0x0127A894, RTTI CCreatureAction_GoUnderground); the implicit destructor reaches ~CCombatActionBase 0x0062E900. Needs the retail engine/CCombatActionBase.h first.
+class CCreatureAction_GoUnderground : public CCombatActionBase {
+public:
+    CCreatureAction_GoUnderground(CThingCreatureBase& creature);         // 0x008B8110
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_GoUnderground {
 public:
@@ -27,7 +37,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GoUnderground) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_GoUnderground, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_GoUnderground) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_GoUnderground, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_GOUNDERGROUND_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_GOUNDERGROUND_H

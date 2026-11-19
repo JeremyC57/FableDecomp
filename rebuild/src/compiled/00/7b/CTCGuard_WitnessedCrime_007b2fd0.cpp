@@ -10,7 +10,7 @@
 // CTCVillageMember::GetPVillage @ 0x007EE540, CTCVillage::HasCrimeBeenReported(long) @ 0x0065914B (descriptive), CBaseIntelligentPointer::
 // GetPItem @ 0x00A01B50, CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0, CTCHeroOpinionDeedLog::
 // GetDeedEffectsDef(long) @ 0x006C5630 (CDefPointer by hidden pointer), CWorld::GetFrame @ 0x0049D870, CTCGuard's crime report
-// @ 0x007B2C70 (village, handle, deed type, self flag; named descriptively), CTCVillage::RecalculateSecuritySweep(long) @ 0x00659C32.
+// @ 0x007B2C70 (village, handle, deed type, self flag; named descriptively), CTCVillage::StartSecuritySweep(bool) @ 0x00659C32.
 // Globals: the main game component @ 0x013B86A0 (+0x24 the world).
 // Layout: CTCGuard retail = Ego_r.pdb + 0x10 past the deque (STLport deque 0x28 bytes): LastCrimeSeenSeverity +0x44,
 // FrameLastCrimeSeen +0x48. COpinionDeed: Type +0x00, the perpetrator's intelligent pointer +0x18. COpinionDeedEffectsDef
@@ -18,6 +18,9 @@
 // Shape: the deed log comes through the landed GetInterface idiom (uninitialised pointer, the dead argument slot read when the
 // interface is absent); the effects def pointer's release is the DecRef / GetRefCount form (as the landed InformOfDeed
 // 0x00683590); the self test reads ParentThing before the GetPItem call.
+// Name fix (NF93, round 8, q11284 / q11288): 0x00659C32 is CTCVillage::StartSecuritySweep(bool urgent) (Ego_r.pdb 0x0069D890 / FableWin.pdb
+//   0x02161B25 ?StartSecuritySweep@CTCVillage@@QAEX_N@Z; Ego_d tc_village.obj; the landed self row spells it so), not the made-up
+//   RecalculateSecuritySweep(long): the local CTCVillage declaration respelled in place (the call still pushes 0 = false).
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -116,7 +119,7 @@ class CTCHeroOpinionDeedLog { public:                          // interface 0x51
     CDefPointer<const COpinionDeedEffectsDef> PeekPDeedEffectsDef(EOpinionDeedType deedType) const;   // 0x006C5630 Ego_r/FableWin ?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z (agentNF16: was GetDeedEffectsDef)
 };
 class CTCVillage { public:
-    void RecalculateSecuritySweep(long flags);          // 0x00659C32
+    void StartSecuritySweep(bool urgent);              // 0x00659C32 Ego_r.pdb / FableWin.pdb ?StartSecuritySweep@CTCVillage@@QAEX_N@Z
 public:
     bool HasCrimeBeenReported(long);   // 0x0065914B
 };
@@ -160,5 +163,5 @@ void CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle)
     }
     ReportCrime(village, deedHandle, deed.Type, self);
     if (severe)
-        village->RecalculateSecuritySweep(0);
+        village->StartSecuritySweep(false);
 }

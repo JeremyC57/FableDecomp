@@ -1,5 +1,7 @@
-// CTCSkeletalMorph::CTCSkeletalMorph(CThing* thing) -- CTCBase(thing), unchanged, empty Morphs array, then PSkeletalMorph takes a new C3DSkeletalMorph
+// CTCSkeletalMorph::CTCSkeletalMorph(CThing& thing) -- CTCBase(thing), unchanged, empty Morphs array, then PSkeletalMorph takes a new C3DSkeletalMorph
 // Leaf: ??0CTCSkeletalMorph@@QAE@AAVCThing@@@Z
+// Name fix (NF93, round 8, q11269): the header comment spelled the parameter CThing*; Ego_r.pdb 0x0078DC70 / FableWin.pdb ??0CTCSkeletalMorph@@QAE@AAVCThing@@@Z
+//   take CThing& (the code and leaf already did). Comment only.
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
 //   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCSkeletalMorph@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).

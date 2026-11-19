@@ -1,5 +1,7 @@
-// CTexture::GetSurfaceLevel(unsigned long level) -- returns a CSurface for one mip level: IDirect3DTexture9::GetSurfaceLevel (COM slot 18) fetches the level's surface, a local CSurface adopts it (InitialiseFromTextureMipmap) and is copied out
-// Leaf: ?GetSurfaceLevel@CTexture
+// CTexture::GetSurfaceLevel(long level) -- returns a CSurface for one mip level: IDirect3DTexture9::GetSurfaceLevel (COM slot 18) fetches the level's surface, a local CSurface adopts it (InitialiseFromTextureMipmap) and is copied out
+// Leaf: ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z
+// Name fix (NF93, round 8, q11274): Ego_r.pdb 0x00B69E10 / FableWin.pdb 0x030DB020 ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z (long level),
+//   as engine/CTexture.h (SIZED) and the landed 0x009FA100 bind it; was (unsigned long level), ?..K@Z, in no PDB. The level is passed on unchanged.
 // Retail: Fable.exe @ 0x009F9E00, 96 bytes. Returns the CSurface through the hidden result pointer (`ret 8`).
 // Callees: IDirect3DTexture9::GetSurfaceLevel (`call [ecx+48h]`, `this` pushed), CSurface::InitialiseFromTextureMipmap
 // @ 0x009F2F10, CSurface::CSurface(const CSurface&) @ 0x009F2D60, CSurface::Uninitialise @ 0x009F2E20 (the inline
@@ -54,10 +56,10 @@ public:
     IDirect3DTexture9* PD3DTexture;                // +0x00
     unsigned long      ByteLength : 28;            // +0x04
     unsigned long      AllocationSource : 4;       // +0x04
-    CSurface GetSurfaceLevel(unsigned long level) const;
+    CSurface GetSurfaceLevel(long level) const;
 };
 
-CSurface CTexture::GetSurfaceLevel(unsigned long level) const
+CSurface CTexture::GetSurfaceLevel(long level) const
 {
     IDirect3DSurface9* d3dSurface;
     PD3DTexture->GetSurfaceLevel(level, &d3dSurface);

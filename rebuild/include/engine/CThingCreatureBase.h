@@ -123,6 +123,12 @@ public:float GetHeightZBelowAt(const C3DVector& pos,bool,bool)const;
 // called with `push 1 ; push 1 ; push <probe>` and ecx = the brain's creature, 0x00912E5D / 0x00912F35). Declaration only.
 public:float GetHeightZBelowAt(const C3DVector& pos,bool,bool)const;      // 0x00666D40
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_GETDAZEDHEALTHTHRESHOLD
+// NF93 opt-in (round 8, q11261 row 0x008663D0 CCombatAction_GenericStrikeResponseBase::FinishAction): Ego_r.pdb 0x0053CEF0 / FableWin.pdb
+// 0x01D9A580 ?GetDazedHealthThreshold@CThingCreatureBase@@QBEMXZ (public const, float in st0), out of line in retail at 0x00662090.
+// Declaration only: no layout change.
+public:float GetDazedHealthThreshold()const;                              // 0x00662090
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHEALTH
 public:
  void SetHealth(float health){Health=health;}

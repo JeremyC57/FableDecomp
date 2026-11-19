@@ -1,4 +1,5 @@
 // CCreatureAction_WaspQueenDie::FinishAction() -- base FinishAction; count the death loop: on the fifth loop kill the creature, otherwise restart the action with a fresh CCreatureAction_WaspQueenDie(creature, LoopNum)
+// Leaf: ?FinishAction@CCreatureAction_WaspQueenDie@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C5370, length 158 bytes.
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 // (PCreature at +8), CThing::Kill(bool) @ 0x004C9B80, CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long,
@@ -9,64 +10,66 @@
 // The creature is a named local fetched before the temporary, so LoopNum is re-read after that call (retail
 // `mov esi,[esi+114h]`) and the incremented value is not kept in a callee-saved register (`mov eax,ecx ; cmp eax,5`).
 // LoopNum (Ego_r.pdb +0x12c) is +0x114 in retail (CCombatActionBase is 0x114 bytes); modelled locally.
-class CThingCreatureBase;
+// Port (NF93, q11261 / q11262): the local CSoundPair / CBaseIntelligentPointer / CIntelligentPointer / CCombatActionBase / CThingCreatureBase
+//   stand-ins replaced by the shared headers (the 0x008C2980 recipe: retail CCombatActionBase with the SOUNDCTOR (creature, priority, sound) ctor
+//   0x00858030, engine/CSoundPair.h, CThing::Kill(bool) 0x004C9B80): SetCurrentAction 0x006644F0 and ~CCombatActionBase 0x0062E900 now bind the
+//   PDB spellings; own leaf QAE -> UAE (slot-4 override). CCreatureAction_WaspQueenDie has no shared header: it stays a row-local class on the
+//   shared CCombatActionBase with its FableWin.pdb inline ctor ??0CCreatureAction_WaspQueenDie@@QAE@AAVCThingCreatureBase@@J@Z (not in Ego_r).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_HASTC_FORCEINLINE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCombatActionBase.h"
 
-class CSoundPair { public:
-    long m_first;
-    long m_second;
-    CSoundPair() : m_first(0), m_second(0) { }
-};
-
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+class CCreatureAction_WaspQueenDie : public CCombatActionBase {        // retail sizeof 0x118, vtable 0x01280D84 (no shared header)
 public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
-
-class CCombatActionBase { public:
-    virtual void v00();
-    unsigned char _pad04[4];                    // +0x04
-    CIntelligentPointer<CThingCreatureBase> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
-    unsigned char _pad10[0x114 - 0x10];         // +0x10
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    virtual ~CCombatActionBase();                       // 0x0062E900
-    void FinishAction();                        // 0x00859A20
-};
-
-class CThingCreatureBase { public:
-    void Kill(bool b);                                        // 0x004C9B80 (CThing)
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
-};
-
-class CCreatureAction_WaspQueenDie : public CCombatActionBase { public:   // retail sizeof 0x118, vtable 0x01280D84
-    long LoopNum;                               // +0x114
-    virtual void v00();
-    CCreatureAction_WaspQueenDie(CThingCreatureBase* owner, long loopNum)
-        : CCombatActionBase(owner, 250, CSoundPair())
-        , LoopNum(loopNum)
+    CCreatureAction_WaspQueenDie(CThingCreatureBase& creature, long loop_num)   // FableWin.pdb inline ctor
+        : CCombatActionBase(creature, 250, CSoundPair())
+        , LoopNum(loop_num)
     {
     }
-    void FinishAction();
+    virtual void FinishAction();                                         // slot 4, 0x008C5370
+protected:
+    long LoopNum;                                                        // +0x114 (Ego_r.pdb +0x12c)
 };
 
 void CCreatureAction_WaspQueenDie::FinishAction()
 {
     CCombatActionBase::FinishAction();
     if (++LoopNum == 5) {
-        PCreature.GetPItem()->Kill(true);
+        PCreature.Get()->Kill(true);
         return;
     }
-    CThingCreatureBase* creature = PCreature.GetPItem();   // fetched first: LoopNum is re-read after this call
-    PCreature.GetPItem()->SetCurrentAction(CCreatureAction_WaspQueenDie(creature, LoopNum));
+    CThingCreatureBase* pcreature = PCreature.Get();   // fetched first: LoopNum is re-read after this call
+    PCreature.Get()->SetCurrentAction(CCreatureAction_WaspQueenDie(*pcreature, LoopNum));
 }

@@ -1,4 +1,8 @@
 // CTCTargetingPlayer::PostProcessTargetedThing() -- refreshes the threatening state when the targeted thing is no longer the last threatened one, then reports the parent thing's controlled-creature check
+// Leaf: ?PostProcessTargetedThing@CTCTargetingPlayer@@QAE_NXZ
+// Name fix (NF93, round 8, q11270): the tail call is NCreatureMode::IsTransmogrified(const CThing&) 0x0085EE10 (Ego_r.pdb
+//   ?IsTransmogrified@NCreatureMode@@YI_NABVCThing@@@Z, the `__fastcall` free helper; FableWin.pdb the same), not a made-up
+//   CThing::IsControlledCreature member; the local CThing model (that one member) is gone, the header's forward declaration remains.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00803B20, length 48 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50 on PLastThreatenedThing, the virtual GetPTargetedThing()
 // (slot 33, +0x84), CTCTargetingPlayer::UpdateTargetThreatening() @ 0x00803280, and the parent thing's bool check
@@ -12,9 +16,8 @@
 // final call's result is returned (sibling jump through `mov ecx,[esi+4]`).
 class CBaseObject;
 
-class CThing { public:
-    bool IsControlledCreature();             // 0x0085EE10
-};
+#define FABLE_RETAIL_NCREATUREMODE_ISTRANSMOGRIFIED
+#include "engine/NCreatureMode.h"            // NCreatureMode::IsTransmogrified(const CThing&) 0x0085EE10 (Ego_r.pdb, __fastcall)
 
 struct CBaseIntelligentPointer {
     void*        __vftable;
@@ -46,5 +49,5 @@ bool CTCTargetingPlayer::PostProcessTargetedThing()
     CThing* lastThreatened = PLastThreatenedThing.Get();
     if (GetPTargetedThing() != lastThreatened)
         UpdateTargetThreatening();
-    return ParentThing->IsControlledCreature();
+    return NCreatureMode::IsTransmogrified(*ParentThing);
 }

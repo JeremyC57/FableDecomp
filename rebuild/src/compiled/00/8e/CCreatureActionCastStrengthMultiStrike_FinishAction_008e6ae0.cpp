@@ -10,51 +10,61 @@
 // dead-flag tests; target, owner and the call's owner are three named locals fetched in that order before the temporary is built
 // (an inline `Owner.GetPItem()->SetCurrentAction(T(Owner.GetPItem(), ...))` fetches `this` after the temporary and drops the ebx 1).
 // Layout: NumberOfStrikes at retail +0x114 (PDB +0x12c); thing byte +0x91 bit 0 = dead.
+// Port (NF93, q11261 / q11262): the local CThingCreatureBase / CCreatureActionBase / CCombatActionBase (Owner / Target stand-in member names) /
+//   CCreatureAction_CastStrengthMultiStrike stand-ins replaced by the shared headers (the 0x008C2980 recipe) with the NF75 _CLASS block and the
+//   NF93 opt-in CCREATUREACTION_CASTSTRENGTHMULTISTRIKE_CTOR: SetCurrentAction 0x006644F0, the ctor 0x008E6A70 and ~CCombatActionBase 0x0062E900
+//   now bind the PDB spellings; members are the Ego_r PCreature (+8) / PTarget (+0xa8).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTHING
-#define FABLE_RETAIL_CTHING_STATEACCESS
-#include "engine/CThing.h"
-
-class CCreatureActionBase;
-class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
-};
-
-class CBaseObject;
-class CBaseObjectPointer;
+#define FABLE_RETAIL_CTHING_HASTC_FORCEINLINE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHMULTISTRIKE_CLASS
+#define FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHMULTISTRIKE_CTOR
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
-
-
-class CCreatureActionBase { public:
-    virtual void v00();
-};
-
-class CCombatActionBase : public CCreatureActionBase { public:
-    long _pad04;
-    CIntelligentPointer<CThingCreatureBase> Owner;              // +0x08 (the owning creature)
-    unsigned char _pad10[0xa8 - 0x10];
-    CIntelligentPointer<CThingCreatureBase> Target;             // +0xa8 (the action's target)
-    unsigned char _padb0[0x114 - 0xb0];
-    protected: virtual void FinishAction(); public:                // 0x00859A20
-};
-
-class CCreatureAction_CastStrengthMultiStrike : public CCombatActionBase { public:   // retail sizeof 0x118
-    long NumberOfStrikes;                       // +0x114 (PDB +0x12c)
-    CCreatureAction_CastStrengthMultiStrike(CThingCreatureBase* owner, CThing* target, long numberOfStrikes);   // 0x008E6A70
-    ~CCreatureAction_CastStrengthMultiStrike(); // 0x0062E900
-    virtual void FinishAction();
-};
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_CastStrengthMultiStrike.h"
 
 void CCreatureAction_CastStrengthMultiStrike::FinishAction()
 {
     CCombatActionBase::FinishAction();
-    if (NumberOfStrikes > 1 && Owner.Get() && !Owner.Get()->IsDead()
-        && Target.Get() && !Target.Get()->IsDead()) {
-        CThing* target = Target.Get();
-        CThingCreatureBase* owner = Owner.Get();
-        CThingCreatureBase* creature = Owner.Get();
-        creature->SetCurrentAction(CCreatureAction_CastStrengthMultiStrike(owner, target, NumberOfStrikes - 1));
+    if (NumberOfStrikes > 1 && PCreature.Get() && !PCreature.Get()->IsDead()
+        && PTarget.Get() && !PTarget.Get()->IsDead()) {
+        CThing* ptarget = PTarget.Get();
+        CThingCreatureBase* powner = PCreature.Get();
+        CThingCreatureBase* pcreature = PCreature.Get();
+        pcreature->SetCurrentAction(CCreatureAction_CastStrengthMultiStrike(*powner, *ptarget, NumberOfStrikes - 1));
     } else {
-        Owner.Get()->RemoveTC((ETCInterfaceType)(0x8c));
+        PCreature.Get()->RemoveTC((ETCInterfaceType)(0x8c));
     }
 }

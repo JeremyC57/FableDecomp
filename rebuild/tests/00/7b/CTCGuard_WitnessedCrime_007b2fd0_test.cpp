@@ -87,7 +87,7 @@ static long g_handled;
 static int g_sweeps; static long g_sweepFlags;
 class CTCVillage { public:
     bool IsDeedHandled(long handle) { return handle == g_handled; }
-    void RecalculateSecuritySweep(long flags) { ++g_sweeps; g_sweepFlags = flags; }
+    void StartSecuritySweep(bool urgent) { ++g_sweeps; g_sweepFlags = urgent; }
 };
 static CTCVillage* g_village;
 class CTCVillageMember { public: CTCVillage* GetPVillage() const { return g_village; } };
@@ -131,7 +131,7 @@ void CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle)
     }
     ReportCrime(village, deedHandle, deed.Type, self);
     if (severe)
-        village->RecalculateSecuritySweep(0);
+        village->StartSecuritySweep(false);
 }
 
 static int g_fail;

@@ -2,6 +2,8 @@
 // object plus its frame data and loading texture, minus the mip levels above the touched/small level that are not
 // resident (each level a quarter of the one above)
 // Leaf: GetDebugMemoryInUse
+// Name fix (NF93, round 8, q11274): the local CSurface / CTexture models (GetMipmapSurface, a made-up name) replaced by the shared
+//   engine/CTexture.h (SIZED: Ego_r.pdb ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z 0x009F9E00) and engine/CSurface.h (the 0x009FED30 set).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FDCB0, length 226 bytes, `ret`.
 // Callees: CGraphicFrameData::Sizeof @ 0x009FCBF0, CManagedTexture::Sizeof @ 0x00A69E60, CTexture::GetNoLevels
 // @ 0x009F9DF0, the CTexture mip-surface getter (CSurface by hidden pointer) @ 0x009F9E00 (labelled GetNoLevels too),
@@ -16,22 +18,15 @@
 // level is two Dinkumware min statements over long temporaries (the first result re-used in its slot); the mip-surface temporary is destroyed through CSurface's inline dtor; the loop
 // subtracts then quarters.
 
-class CSurface {
-public:
-    virtual void v00();
-    void* PD3DSurface;
-    unsigned long AllocationSource;
-    void* PAllocatedMemory;
-    ~CSurface() { Uninitialise(); }
-    void Uninitialise();                            // 0x009F2E20
-    unsigned long GetByteLength() const;            // 0x009F2FC0
-};
-
-class CTexture {
-public:
-    long GetNoLevels() const;                       // 0x009F9DF0
-    CSurface GetMipmapSurface(long level) const;    // 0x009F9E00
-};
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CTEXTURE_SIZED
+#define FABLE_RETAIL_CTEXTURE_LEVELS
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CSURFACE_COPYFROMMEMORY
+#define FABLE_RETAIL_CSURFACE_LOADGRAPHICFRAME
+#include "engine/CTexture.h"                       // GetNoLevels 0x009F9DF0, GetSurfaceLevel 0x009F9E00 (Ego_r.pdb, const, hidden result)
+#include "engine/CSurface.h"                       // inline ~CSurface (Uninitialise 0x009F2E20), GetByteLength 0x009F2FC0
 
 class CGraphicFrameData {
 public:
@@ -90,7 +85,7 @@ long CGraphicInfoFrame::CFrameData::GetDebugMemoryInUse() const
     long memory = Sizeof();
     long level = Min<long>(TouchedMipmapLevel, GraphicInfoFrame->SmallMipmapLevel);
     level = Min<long>(level, Frame.GetTexture()->GetNoLevels());
-    long levelSize = Frame.GetTexture()->GetMipmapSurface(0).GetByteLength();
+    long levelSize = Frame.GetTexture()->GetSurfaceLevel(0).GetByteLength();
     for (; level > 0; --level) {
         memory -= levelSize;
         levelSize /= 4;

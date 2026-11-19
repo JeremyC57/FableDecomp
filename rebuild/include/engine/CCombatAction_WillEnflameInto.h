@@ -16,11 +16,16 @@ class CCombatAction_WillEnflameInto : public CCombatActionBase {
 public:
     CCombatAction_WillEnflameInto(CThingCreatureBase& creature, long level); // 0x009567F0
     long Level;
+#ifdef FABLE_RETAIL_CCOMBATACTION_WILLENFLAMEINTO_FINISHACTION
+    // NF93 opt-in (round 8, q11261 / q11262 row 0x008C2A80): Ego_r.pdb / FableWin.pdb ?FinishAction@CCombatAction_WillEnflameInto@@UAEXXZ
+    // (the CCombatActionBase slot-4 override, 0x008C2A80). Declaration only: no layout change.
+    virtual void FinishAction();                                         // slot 4, 0x008C2A80
+#endif
 protected:
     virtual CCreatureActionBase* Clone() const;
 };
-FABLE_STATIC_ASSERT(sizeof(CCombatAction_WillEnflameInto) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillEnflameInto, Level) == 0x114);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CCombatAction_WillEnflameInto) == 0x118);
+FABLE_STATIC_ASSERT_AT(23, offsetof(CCombatAction_WillEnflameInto, Level) == 0x114);
 #else
 #pragma pack(push, 1)
 class CCombatAction_WillEnflameInto {
