@@ -40297,3 +40297,5 @@ _MOVE_TO_PRONG_NAV_PROXIMITY	01261d68	006e94d0
 __imp__GetFileTime@16	0143fd60	009c38c0
 __imp__SetFileTime@16	0143fd64	009c38c0
 ?_M_insert_overflow@?$vector@PBVCTCCreatureGenerator@@V?$allocator@PBVCTCCreatureGenerator@@@std@@@std@@IAEXPAPBVCTCCreatureGenerator@@ABQBV3@ABU__true_type@2@I_N@Z	00514f40	00518340
+?GetTargetGain@NSpeechGainManager@@YIMABVCActiveDialogueInfo@1@ABV?$vector@VCDialogueLayerDef@NSpeechGainManager@@V?$allocator@VCDialogueLayerDef@NSpeechGainManager@@@std@@@std@@@Z	006e2b70	006e31e0
+?_M_create_node@?$list@VCActiveDialogueInfo@NSpeechGainManager@@V?$allocator@VCActiveDialogueInfo@NSpeechGainManager@@@std@@@std@@IAEPAU?$_List_node@VCActiveDialogueInfo@NSpeechGainManager@@@2@ABVCActiveDialogueInfo@NSpeechGainManager@@@Z	006e4cb0	006e31e0

@@ -19,6 +19,9 @@
 #include "stlport/fable_containers.h"
 #include "engine/CDefClassBase.h"
 #include "engine/CMainGameComponent.h"
+#ifdef FABLE_RETAIL_NSPEECHGAINMANAGER_ACTIVEDIALOGUEINFO
+#include "engine/CIntelligentPointer.h"           // CActiveDialogueInfo::ThingSpeaking (opt-in below)
+#endif
 class CWorld;
 class CThing;
 namespace NSpeechGainManager {
@@ -67,7 +70,40 @@ public:
     float ReleaseMaxDeltaPerFrame;                                       // +0x04
 };
 
+#ifdef FABLE_RETAIL_NSPEECHGAINMANAGER_ACTIVEDIALOGUEINFO
+// Opt-in (hand4b w24, row 0x006E31E0 OnDialogueStart): the layer enum and the active-line record, complete.
+// EDialogueLayer: Ego_d.pdb / Ego_r.pdb LF_ENUM NSpeechGainManager::EDialogueLayer (int): DIALOGUE_LAYER_FOREGROUND 0, _MIDGROUND 1,
+//   _BACKGROUND 2, _LAST 3 (the landed same-TU rows' local DIALOGUE_LAYER_0/1/2/NONE stand-ins are these values).
+// CActiveDialogueInfo: Ego_d.pdb / Ego_r.pdb NSpeechGainManager::CActiveDialogueInfo (24 bytes, no vtable): ThingSpeaking
+//   CIntelligentPointer<CThing> +0, SoundID +8, Layer +0xC, IsLayerHead +0x10, OutputGain +0x14; three constructors (default
+//   0x006E2AF0, ??0CActiveDialogueInfo@NSpeechGainManager@@QAE@AAVCThing@@KW4EDialogueLayer@1@_N@Z 0x006E2B30, copy 0x006E4900, all
+//   landed) and the compiler-generated destructor / operator=. The (CThing&, ...) constructor is inline in OnDialogueStart (0x006E339E..
+//   0x006E33D8: base ctor 0x00A01B10, the CIntelligentPointer<CThing> vtable, SetPItem(&thing) 0x00A01B90, the three argument stores,
+//   OutputGain 0). Parameter names descriptive (the Ego_d.pdb ctor records carry only `this`). The copy is the implicit memberwise one
+//   (needs FABLE_RETAIL_CINTELLIGENTPOINTER_COPY for the pointer member). No change to any default path.
+enum EDialogueLayer {
+    DIALOGUE_LAYER_FOREGROUND = 0,
+    DIALOGUE_LAYER_MIDGROUND = 1,
+    DIALOGUE_LAYER_BACKGROUND = 2,
+    DIALOGUE_LAYER_LAST = 3
+};
+class CActiveDialogueInfo {
+public:
+    CActiveDialogueInfo(CThing& thing_speaking, unsigned long sound_id, EDialogueLayer layer, bool is_layer_head)
+        : ThingSpeaking(&thing_speaking), SoundID(sound_id), Layer(layer), IsLayerHead(is_layer_head), OutputGain(0.0f) { }
+    CIntelligentPointer<CThing> ThingSpeaking;                           // +0x00
+    unsigned long SoundID;                                               // +0x08
+    EDialogueLayer Layer;                                                // +0x0c
+    bool IsLayerHead;                                                    // +0x10
+    float OutputGain;                                                    // +0x14
+};
+FABLE_STATIC_ASSERT(sizeof(CActiveDialogueInfo) == 0x18);
+// Ego_r.pdb ?GetTargetGain@NSpeechGainManager@@YIMABVCActiveDialogueInfo@1@ABV?$vector@VCDialogueLayerDef@NSpeechGainManager@@..@std@@@Z
+// (retail 0x006E2B70, landed). Declaration only.
+float __fastcall GetTargetGain(const CActiveDialogueInfo& info, const std::vector<CDialogueLayerDef>& layer_defs);   // 0x006E2B70
+#else
 class CActiveDialogueInfo;
+#endif
 
 extern long g_LastUpdateFrame;                                           // 0x013BAB8C
 extern std::vector<unsigned short> g_LayerSpeakerCounts;                 // 0x013BAB94

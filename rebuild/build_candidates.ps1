@@ -400198,6 +400198,13 @@ $catalog = @(
         TestSource = '00/51/CThingSearchTools_GetAllTCsInRoughArea_00518340_test.cpp'
         PassPattern = '00518340_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006e31e0'
+        Module = 'NSpeechGainManager'
+        Source = '00/6e/NSpeechGainManager_OnDialogueStart_006e31e0.cpp'
+        TestSource = '00/6e/NSpeechGainManager_OnDialogueStart_006e31e0_test.cpp'
+        PassPattern = '006e31e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -23,7 +23,7 @@
 // out of line. The same FABLE_FORCEINLINE as FABLE_RETAIL_AUGMENTATION_PARTICLES applies to those two wrappers, nothing else.
 #include "fable_compiler.h"
 #endif
-#if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP) || defined(FABLE_RETAIL_STLP_LIST_SORT) || defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
+#if defined(FABLE_RETAIL_STLP_LIST_CREATE_NODE_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP) || defined(FABLE_RETAIL_STLP_LIST_SORT) || defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
 #define FABLE_STLP_FASTCALL __fastcall
@@ -1514,6 +1514,13 @@ public:
     template<class Input> void _M_insert_dispatch(iterator position,Input first,Input last,const __false_type&) { for(;first!=last;++first) insert(position,*first); }
 #endif
 protected:
+#ifdef FABLE_RETAIL_STLP_LIST_CREATE_NODE_NOINLINE
+    // Per-TU opt-in (hand4b w24, row 0x006E31E0 NSpeechGainManager::OnDialogueStart): STLport 4.6 _list.h _M_create_node, body
+    // visible but kept out of line, as the retail TU calls the list<CActiveDialogueInfo> COMDAT 0x006E4CB0 from the inlined
+    // insert(iterator, const T&) (`push edx ; mov ecx,13BABA0h ; call 0x006E4CB0`, 0x006E33C5..0x006E33E0, then the four link
+    // stores in place). Same body as the default; no layout change.
+    FABLE_STLP_NOINLINE
+#endif
     _List_node<_Tp>* _M_create_node(const _Tp& x) {
         _List_node<_Tp>* p=this->_M_node.allocate(1);
 #ifdef FABLE_RETAIL_STLP_LIST_CONSTRUCT_HELPER

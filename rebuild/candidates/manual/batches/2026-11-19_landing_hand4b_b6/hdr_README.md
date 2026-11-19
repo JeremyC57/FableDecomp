@@ -1,0 +1,10 @@
+# hand4b header overlay (copies of the CURRENT repo headers + new opt-ins only)
+
+Batch-4 opt-ins (C3DANIMATIONSTATS_TIMINGEVENTS, C3DANIMATION2_INSTANCELIST, CSIMPLEMEMORYPOOL_RESET) were merged with 86163b82c1 and
+removed from here. Each file below is a copy of the repo header with one NEW opt-in; no default path changes.
+
+| file | new opt-in | used by | what it adds |
+|---|---|---|---|
+| engine/CGameCameraManager.h | `FABLE_RETAIL_CGAMECAMERAMANAGER_LOOKAROUND_WORLD` (nested in `..._LOOKAROUND` + `..._GETOBSERVEDTHING`) | 0x0084E590 (in progress) | public inline `const CWorld& GetWorld() const { return World; }` in the LOOKAROUND branch (the `..._WORLD` getter exists only in the default branch, whose class has no GetObservedThing). FableWin.pdb ?GetWorld@CGameCameraManager@@QBEABVCWorld@@XZ (debug 0x021F5FF0); inline in retail 0x0084E62D..0x0084E643 (`mov eax,[ebp+40h] ; mov ecx,[eax+74h] ; mov ecx,[ecx+20h]`). No layout change. |
+| stlport/fable_containers.h | `FABLE_RETAIL_STLP_LIST_CREATE_NODE_NOINLINE` (also added to the `FABLE_STLP_NOINLINE` definition condition) | 0x006E31E0 (batch 6) | `FABLE_STLP_NOINLINE` on list::_M_create_node (body unchanged, visible): retail's TU calls the list<CActiveDialogueInfo> COMDAT 0x006E4CB0 from the inlined insert (`push edx ; mov ecx,13BABA0h ; call 0x006E4CB0` at 0x006E33C5..0x006E33E0, then the four link stores in place). This TU's out-of-line copy grades RELOCATION_MATCH at 0x006E4CB0 itself. No layout change. |
+| engine/NSpeechGainManager.h | `FABLE_RETAIL_NSPEECHGAINMANAGER_ACTIVEDIALOGUEINFO` | 0x006E31E0 (batch 6) | the complete `EDialogueLayer` (Ego_d/Ego_r LF_ENUM: DIALOGUE_LAYER_FOREGROUND 0, _MIDGROUND 1, _BACKGROUND 2, _LAST 3), `CActiveDialogueInfo` (Ego_d/Ego_r 24 bytes: ThingSpeaking, SoundID, Layer, IsLayerHead, OutputGain; the inline `(CThing&, unsigned long, EDialogueLayer, bool)` constructor of ??0CActiveDialogueInfo@NSpeechGainManager@@QAE@AAVCThing@@KW4EDialogueLayer@1@_N@Z) and the `GetTargetGain` declaration (0x006E2B70); includes engine/CIntelligentPointer.h under the opt-in. Without it the header still forward-declares the class (default unchanged). |

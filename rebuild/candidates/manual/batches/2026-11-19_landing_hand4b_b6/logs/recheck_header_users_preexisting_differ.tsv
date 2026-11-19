@@ -1,0 +1,3 @@
+006e4560	006e4560   DIFFER(36v37)    PASS   std::fill<NSpeechGainManager::CResponseTimes*,NSpeechGainManager::CResponseTimes>
+006e49a0	006e49a0   DIFFER(43v44)    PASS   std::__uninitialized_copy<NSpeechGainManager::CResponseTimes*,NSpeechGainManager::CResponseTimes*>
+006e4a00	006e4a00   DIFFER(39v40)    PASS   std::uninitialized_fill_n<NSpeechGainManager::CResponseTimes*,unsigned int,NSpeechGainManager::CResponseTimes>
