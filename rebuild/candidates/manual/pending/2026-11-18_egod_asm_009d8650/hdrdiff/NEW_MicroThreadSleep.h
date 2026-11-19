@@ -14,17 +14,19 @@
 // Retail-asm-helper: FABLE_MICROTHREAD_SLEEP_DEFINITION
 // Retail-asm-function: 0x009D8650, all 36 bytes hand asm with no compiler prologue: VC7.1 never saves ebp around an inline-asm
 //   block (probes nn1-nn4: 28 / 42 / 40 / 42 bytes, compiler pushes ebx esi edi first), retail pushes ebp second; Ego_d.pdb /Od
-//   length 36 = retail (a debug C++ body has an ebp frame and /RTC fill). Read by the proposed purity.py change only.
+//   length 36 = retail (a debug C++ body has an ebp frame), and its S_GPROC32 (type void() __fastcall) records
+//   DbgStart 0 / DbgEnd 0x24, i.e. no prologue or epilogue even at /Od (the (int) overload's record: DbgStart 7). crawl/purity.py
+//   reads this line (_whole_function).
 // Retail-asm: 0x009D8650 `push ebx` / 0x009D8651 `push ebp` / 0x009D8652 `push esi` / 0x009D8653 `push edi`, 0x009D8654
 //   `mov eax, dword ptr fs:[0]` + 0x009D865A `push eax`, 0x009D865B `mov eax, esp`, 0x009D865D `mov esp, dword ptr [0x013CA898]`,
 //   0x009D8663 `mov dword ptr [0x013CA898], eax`, 0x009D8668 `pop eax` + 0x009D8669 `mov dword ptr fs:[0], eax`, 0x009D866F..72
 //   `pop edi` / `pop esi` / `pop ebp` / `pop ebx`, 0x009D8673 `ret` (36 bytes, no compiler prologue).
 //   Why asm: the body loads esp from memory (0x009D865D); no VC7.1 C++ spelling or intrinsic writes esp (rule-4 table: 32 C++ and
-//   12 intrinsic spellings graded, all DIFFER: the asm1 hand-back README.md). __readfsdword / __writefsdword DO exist in VC7.1 RTM and
+//   12 intrinsic spellings graded, all DIFFER: rebuild/candidates/manual/pending/2026-11-18_egod_asm_009d8650/ATTEMPTS_AND_DESIGN.md). __readfsdword / __writefsdword DO exist in VC7.1 RTM and
 //   emit the 64 A1 / 64 A3 forms, but the chain head travels through push eax / pop eax on the switched stacks, which no intrinsic
 //   does. Why a naked definition: VC7.1 never saves ebp around an inline-asm block and puts its own push ebx / esi / edi first
 //   (probes: 28 / 40 / 42 bytes), so retail's push ebx / push ebp / push esi / push edi frame exists only as hand asm in a function
-//   without a compiler prologue; Ego_d.pdb's /Od body is 36 bytes too (a debug C++ body has a frame and /RTC fill), so the
+//   without a compiler prologue; Ego_d.pdb's /Od body is 36 bytes too with DbgStart 0 (a debug C++ body has an ebp frame), so the
 //   original source defined it the same way.
 //
 // Contract (what callers rely on): after MicroThreadSleep returns on side B, PGlobalStackPointer holds side A's resume token and
