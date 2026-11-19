@@ -11,6 +11,7 @@
 //     entries, and how busy each core was at which clock (/proc/stat, cpufreq),
 //   - which code of the binary the time in libraries (locks, the clock, the GL driver) is for.
 // Costs about 1% of the CPU.
+#include "code_share.hpp"
 #include "w32.hpp"
 #include "recomp_clock.h"
 
@@ -86,11 +87,13 @@ void onProf(int, siginfo_t*, void* ctx) {
     Sample s{};
     uintptr_t fp = 0, sp = 0;
 #if defined(__aarch64__)
+    host::codeshare::sample(uc->uc_mcontext.pc);
     s.pc = uc->uc_mcontext.pc;
     s.lr = uc->uc_mcontext.regs[30];
     fp = uc->uc_mcontext.regs[29];
     sp = uc->uc_mcontext.sp;
 #elif defined(__x86_64__)
+    host::codeshare::sample(static_cast<uintptr_t>(uc->uc_mcontext.gregs[REG_RIP]));
     s.pc = static_cast<uintptr_t>(uc->uc_mcontext.gregs[REG_RIP]);
     fp = static_cast<uintptr_t>(uc->uc_mcontext.gregs[REG_RBP]);
     sp = static_cast<uintptr_t>(uc->uc_mcontext.gregs[REG_RSP]);
@@ -565,6 +568,7 @@ void startProfiler() {
     sa.sa_flags = SA_SIGINFO | SA_RESTART;
     sigemptyset(&sa.sa_mask);
     sigaction(SIGPROF, &sa, nullptr);
+    host::codeshare::profilerOwnsSigprof();
     itimerval tv{};
     tv.it_interval.tv_usec = 1000;
     tv.it_value.tv_usec = 1000;

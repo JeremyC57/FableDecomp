@@ -116,6 +116,7 @@ option(FABLE_A53_ERRATA "Cortex-A53 errata 835769 (compiler) and 843419 (linker)
 if(NOT ANDROID)  # the hot-range markers, the huge-page remap, FABLE_PMU counters
   target_sources(FableRecomp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/codelayout.cpp)
   set_property(SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/main_posix.cpp APPEND PROPERTY COMPILE_DEFINITIONS FABLE_CODELAYOUT=1)
+  set_property(SOURCE ${WIN_DIR}/code_share.cpp APPEND PROPERTY COMPILE_DEFINITIONS FABLE_CODELAYOUT=1)
 endif()
 if(FABLE_LLD OR FABLE_SYMBOL_ORDER)
   find_program(FABLE_LD_LLD NAMES ld.lld DOC "lld, the linker FABLE_LLD and FABLE_SYMBOL_ORDER use")

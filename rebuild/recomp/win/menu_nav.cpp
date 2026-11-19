@@ -830,7 +830,12 @@ static bool safeRead(uint32_t addr, void* out, size_t n) {
     return process_vm_readv(self, &local, 1, &remote, 1, 0) == static_cast<ssize_t>(n);
 }
 #else
-static bool safeRead(uint32_t addr, void* out, size_t n) { std::memcpy(out, gp<const void>(addr), n); return true; }
+// Windows: ReadProcessMemory fails on an unmapped or protected page instead of faulting (a plain
+// copy crashed the first run at the Guild: defNameGuess followed a garbage def-table entry).
+static bool safeRead(uint32_t addr, void* out, size_t n) {
+    SIZE_T got = 0;
+    return ReadProcessMemory(GetCurrentProcess(), gp<const void>(addr), out, n, &got) && got == n;
+}
 #endif
 
 // Harness diagnostics: the name of a def by global index, read from the definition

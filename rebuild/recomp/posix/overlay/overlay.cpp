@@ -1,4 +1,5 @@
 // See overlay.hpp.
+#include "code_share.hpp"
 #include "overlay.hpp"
 
 #include "host.hpp"
@@ -49,7 +50,7 @@ uint32_t ticks() {
     return static_cast<uint32_t>(duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count());
 }
 
-enum Item { RESUME, GRAPHICS, VOLUME, FPS, STATS, LOGLEVEL, SCREENSHOT, EXIT, COUNT };
+enum Item { RESUME, GRAPHICS, VOLUME, FPS, STATS, CODESHARE, LOGLEVEL, SCREENSHOT, EXIT, COUNT };
 // the graphics page: the game's own Video Options (resolution, refresh rate, anti-aliasing,
 // aspect ratio, the detail levels, brightness, vsync) plus direct levers on the engine
 enum GfxItem { G_RES, G_REFRESH, G_AA, G_ASPECT, G_LANDSCAPE, G_MODEL, G_TEXTURE, G_SHADOW, G_EFFECTS, G_BRIGHT, G_VSYNC, G_FPS, G_DRAW, G_GLOW, G_WATER, G_WEATHER, G_DISTORT, G_CHARLOD, G_BACK, G_COUNT };
@@ -132,6 +133,7 @@ std::string label(int i) {
         case VOLUME: return "Volume: " + std::to_string(static_cast<int>(w32::masterVolume() * 100 + 0.5f)) + "%  (left/right)";
         case FPS: return std::string("Show FPS: ") + (g_fps ? "on" : "off");
         case STATS: return std::string("Renderer statistics: ") + (g_stats ? "on" : "off");
+        case CODESHARE: return std::string("Code share (FullDecomp vs original): ") + (host::codeshare::on() ? "on" : "off");
         case LOGLEVEL: return "Log level: " + std::to_string(host::g_logLevel) + (host::g_logLevel == 0 ? " (errors)" : host::g_logLevel == 1 ? " (info)" : " (every call, slow)");
         case SCREENSHOT: return "Save a screenshot (Fable/save/)";
         case EXIT: return g_exiting ? "Exiting..." : "Exit the game";
@@ -145,6 +147,7 @@ void activate(int i) {
         case GRAPHICS: g_page = 1; g_sel = 0; break;
         case FPS: g_fps = !g_fps; break;
         case STATS: g_stats = !g_stats; break;
+        case CODESHARE: host::codeshare::toggle(); break;
         case LOGLEVEL: host::g_logLevel = (host::g_logLevel + 1) % 3; break;
         case VOLUME: w32::setMasterVolume(w32::masterVolume() >= 0.99f ? 0.0f : w32::masterVolume() + 0.1f); break;
         case SCREENSHOT: g_shot = true; g_open = false; break;
@@ -278,6 +281,7 @@ std::vector<Line> lines(int width, int height) {
         out.push_back({4, 4, buf, 0xFFFFFF40});
     }
     if (g_stats) out.push_back({4, 4 + (g_fps ? ch : 0), g_statsText, 0xFFFFFF40});
+    if (host::codeshare::on()) out.push_back({4, 4 + (g_fps ? ch : 0) + (g_stats ? ch : 0), host::codeshare::line(), 0xFF80FF80});
     if (!g_toast.empty() && ticks() < g_toastUntil) out.push_back({(width - static_cast<int>(g_toast.size()) * cw) / 2, height - 3 * ch, g_toast, 0xFFFFFFFF});
     if (!g_open) return out;
     const int count = g_page == 1 ? G_COUNT : COUNT;
