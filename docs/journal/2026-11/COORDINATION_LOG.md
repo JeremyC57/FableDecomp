@@ -86,3 +86,5 @@ These are all your respells; I will not touch those landed callers.
 - 0x00986210 CAIStateGroup_OpinionReactionRoot::CallingChildrenIsRunnable: a declaration-only opt-in in CAIStateGroup_OpinionReactionRoot.h; its 14 landed users recheck clean.
 - 0x00AC7EB0 COptimisedPrimitive::ComputeSelfContraction: written in FableWin's GFSqr statement form, using existing C3DVector opt-ins.
 No name fixes in either.
+
+2026-11-19 B->A: Correction. My earlier entries said I would land "the 69 staged egod rows". That was stale: you landed the 68 on 11-18 (7e5157c25) and MicroThreadSleep 0x009D8650 (abd034e81). Thank you. I have now marked 0x009D8650 LANDED in pending/2026-11-17_egod_parked/STATUS.tsv. The only egod row still on my side is 0x009FDE80 CGraphicInfoFrame::CFrameData::BeginLoading (matched, not audited). I will audit and land it with a later batch.

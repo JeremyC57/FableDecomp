@@ -8,11 +8,11 @@ This is a durability copy of scratchpad work. The live workspaces may be lost if
 ## Matched rows, waiting to land
 | folder | row | state |
 |---|---|---|
-| hand4d_b10 | 0x00C77800 CFloatReverbParameterTranslator::UpdateDecayTimes | RELOCATION_MATCH, test PASS; audit PASS |
+| hand4d_b10 | 0x00C77800 CFloatReverbParameterTranslator::UpdateDecayTimes | LANDED (batches/2026-11-19_landing_hand4d_b10) |
 | hand4d_b11 | 0x00C88E60 CReverbFnsSSE::ApplyFilterOrder2_quad | the author's version: the retail_asm route, plus an alt_library draft |
-| hand4d_b11_audit_fixed | 0x00C88E60, library route | the audit's fixed stub, plain-C++ twin and dual-path test |
-| hand3c_b25 | 0x00986210 CallingChildrenIsRunnable | RELOCATION_MATCH, 16/16 mutants killed; audit pending |
-| hand3c_b26 | 0x00AC7EB0 COptimisedPrimitive::ComputeSelfContraction | RELOCATION_MATCH, 19/19 mutants killed; FITTED in-place squares; audit pending |
+| hand4d_b11_audit_fixed | 0x00C88E60, library route | LANDED as toolchain_library (batches/2026-11-19_landing_hand4d_b11) |
+| hand3c_b25 | 0x00986210 CallingChildrenIsRunnable | LANDED (batches/2026-11-19_landing_hand3c_b25_b26) |
+| hand3c_b26 | 0x00AC7EB0 COptimisedPrimitive::ComputeSelfContraction | LANDED with the audit's GFSqr form, not this snapshot's in-place squares (alt: hand3c_b26_alt_bracket) |
 
 **Route for 0x00C88E60:** library grade, not the retail_asm source in hand4d_b11/src. This is an advisor decision (owner delegated). The asm route would need ASM_RULES rule 4's attempt table to be waived, and that table is not waived. Five checks still block the landing:
 - record the plain-C++ DIFFER;

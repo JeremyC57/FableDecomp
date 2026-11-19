@@ -518,7 +518,7 @@ address	kind	name	state	true_length	staged_folder	note
 009cec60	named	CBankFile::Update	OPEN			
 009cfbc0	named	CBankFile::ReadEntryList	OPEN			
 009d0880	named	CBankFile::ReadFileInformation	OPEN			
-009d8650	identify	_global::MicroThreadSleep	MATCHED_STAGED	36	rebuild/candidates/manual/pending/2026-11-18_egod_asm_009d8650	asm1 (owner-delegated decision): RELOCATION_MATCH retail_asm via whole-function asm helper; audited; portable twin protocol-equivalent, needs portable branches in CreateMicroThread / SwitchToMicroThread (follow-up)
+009d8650	identify	_global::MicroThreadSleep	LANDED (abd034e81, Account A)	36	rebuild/candidates/manual/pending/2026-11-18_egod_asm_009d8650	asm1 (owner-delegated decision): RELOCATION_MATCH retail_asm via whole-function asm helper; audited; portable twin protocol-equivalent, needs portable branches in CreateMicroThread / SwitchToMicroThread (follow-up)
 009e3f60	named	CPixelFormat::ConvertRGBToPFDData	OPEN			
 009e55a0	named	CSymbolMap::ParseEnum	OPEN			
 009e84d0	named	CPersistTraits<C3DVector>::TransferIn	OPEN			
