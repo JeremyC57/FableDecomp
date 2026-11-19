@@ -273851,9 +273851,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005185f0'
-        Module = 'CThingSearchTools_Calls'
-        Source = '00/51/CThingSearchToolsCalls_GetAllTCDsInRoughArea_005185f0.cpp'
-        TestSource = '00/51/CThingSearchToolsCalls_GetAllTCDsInRoughArea_005185f0_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/51/CThingSearchTools_GetAllTCDsInRoughArea_005185f0.cpp'
+        TestSource = '00/51/CThingSearchTools_GetAllTCDsInRoughArea_005185f0_test.cpp'
         PassPattern = '005185f0_TEST PASS'
     }
     [pscustomobject]@{

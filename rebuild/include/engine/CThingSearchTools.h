@@ -771,4 +771,47 @@ bool CThingSearchTools::ForEachInRoughArea(const C2DBoxI& area,const Filter& fil
     return got_one;
 }
 #endif
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCDSINROUGHAREA_EGOD) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA) && !defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_EGOD)
+// NF101 opt-in (round 9, q11280 / q11283, row 0x005185F0, the <CTCDNavigationSeed, CThingFilter_IsInQuestOrNullQuest, std::vector<const
+// CThing*> > instance): the GetAllTCDsInRoughArea<T,Filter,Container> body defined out of class (in-class declaration: TCSINROUGHAREA;
+// appended after the retail / non-retail branches so no assert line moves): the TCSINROUGHAREA_EGOD walk of GetAllTCsInRoughArea above
+// (GetAllThingMapsInArea 0x0049C6F0, the NoLookups / NoThingsScanned / SearchID statics, ClipAndConvertWorldMapAreaToLocalArea 0x0049C700,
+// GetMapwhoArea, GetWidth / GetHeight, PeekCell) with the driver test of the TCSINROUGHAREA_BODY copy: the parent thing's HasTCDriver()
+// (PTCDriver +0x5C), GetTCDriver().IsDriverType(T::StatGetDriverType()) (`push 15h ; call [edx+70h]`, 0x00518754) and the filter, then
+// push_back(loop_thing) (a CThing* local: a CThing& one changes the register allocation, graded DIFFER 595v597); retail has no null test
+// on the parent thing here (0x00518737..0x00518745). Local names follow the TCs EGOD body
+// (same world_map.obj; descriptive where Ego_d's TCD record was not read). Needs ROUGHAREA_EGOD, FABLE_RETAIL_CTHING_TCDRIVER,
+// FABLE_RETAIL_CTCDRIVERBASE_ISDRIVERTYPE and T::StatGetDriverType at the point of instantiation.
+template<class T,class Filter,class Container>
+void CThingSearchTools::GetAllTCDsInRoughArea(const C2DBoxI& area,const Filter& filter_func,Container& things) const {
+    GetAllThingMapsInArea(area,const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps));
+    ++NoLookups;
+    NoThingsScanned=0;
+    ++SearchID;
+    for(std::vector<NThingMap::CThingMap*>::const_iterator it=AreaMaps.begin();it!=AreaMaps.end();++it) {
+        NThingMap::CThingMap& thing_map=**it;
+        C2DBoxI local_area=ClipAndConvertWorldMapAreaToLocalArea(thing_map,area);
+        for(long c1=0;c1<NThingMap::MaxLayers;++c1) {
+            C2DBoxI clipped_area=GetMapwhoArea(thing_map,c1,local_area);
+            if(clipped_area.GetWidth()==0 || clipped_area.GetHeight()==0)
+                continue;
+            for(long cy=clipped_area.TLY;cy<clipped_area.BRY;++cy) {
+                const NThingMap::CThingMapCell* pcell=&thing_map.PeekCell((unsigned char)c1,clipped_area.TLX,cy);
+                for(long cx=clipped_area.TLX;cx<clipped_area.BRX;++cx,++pcell) {
+                    for(const NThingMap::CMapwhoNode* ploop_node=pcell->PFirstNode;ploop_node;ploop_node=ploop_node->PNext) {
+                        CTCMapwho* pmapwho=ploop_node->PMapwho;
+                        if(pmapwho->GetSearchID()<SearchID) {
+                            pmapwho->SetSearchID(SearchID);
+                            CThing* loop_thing=&pmapwho->GetParentThing();
+                            if(loop_thing->HasTCDriver() && loop_thing->GetTCDriver().IsDriverType(T::StatGetDriverType()) && filter_func(*loop_thing))
+                                things.push_back(loop_thing);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps).clear();
+}
+#endif
 #endif // FABLE_ENGINE_CTHINGSEARCHTOOLS_H

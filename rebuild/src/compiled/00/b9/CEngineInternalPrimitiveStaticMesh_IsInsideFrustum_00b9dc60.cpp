@@ -1,73 +1,60 @@
-// CEngineInternalPrimitiveStaticMesh::IsInsideFrustum(const CEngineCamera& camera, bool ignoreFrustum) -- the mesh's world-space bounding sphere centre (local centre through the object transform) must lie within the primitive's fade distance of the camera; unless ignoreFrustum, the sphere (radius scaled by +0x58) must also overlap the near / far depth range along the look vector and lie inside the four side frustum planes
-// Leaf: IsInsideFrustum
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local LengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B9DC60, `ret 8`. Ego_r.pdb: ?IsInsideFrustum@CEngineInternalPrimitiveStaticMesh@@UAE_NABVCEngineCamera@@_N@Z (virtual).
-// Callees: 0x00BEB660 (the primitive's fade distance: FadeDistance +0x18, or clamped to the global camera's range when OverrideFadeDistance).
-// Layout: engine/CEngineInternalPrimitiveStaticMesh.h -- MeshInfo (C3DMeshInfo*) is the header's `_pad_0x50` word, the radius scale
-//   the float at +0x58 (`field58`), ObjectTransform the opaque bytes at +0x70; engine/C3DMeshInfo.h BoundingSphere +0x28;
-//   engine/CEngineCamera.h -- CameraDesc (+0x14) holds the camera position at +0x54 and the near / far depths at +0x6c / +0x70,
-//   LookVector +0x1b4, FrustrumPlanes CPlane[4] +0x1c0. `this` is the shared header; the virtual is a __fastcall free function.
-// Shape: the world centre is three plain sums (VC7.1 canonicalises them to z,y,x as retail), the camera-relative dots are
-//   written x+y+z (emitted z,y,x); the radius is the double-widened product of the landed GetBoundingSphereWorldSpace 0x00B9DBD0,
-//   stored into the dead bool argument slot. The near / far tests must be ONE `||` condition: two separate early returns
-//   duplicate the `fstp st(0)` false exit inline instead of sharing retail's tail block.
+// CEngineInternalPrimitiveStaticMesh::IsInsideFrustum(const CEngineCamera& frustum, bool distance_test_only) -- the mesh's world-space
+//   bounding sphere centre (the local centre through ObjectTransform) must lie within the primitive's max draw distance of the camera;
+//   unless distance_test_only, the sphere (radius scaled by Scale) must also pass the camera's ClipSphere (near / far along the look
+//   vector, then the four side planes)
+// Leaf: ?IsInsideFrustum@CEngineInternalPrimitiveStaticMesh@@UAE_NABVCEngineCamera@@_N@Z
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00B9DC60, 547 bytes, __thiscall virtual, `ret 8`. Ego_r.pdb / FableWin.pdb
+//   ?IsInsideFrustum@CEngineInternalPrimitiveStaticMesh@@UAE_NABVCEngineCamera@@_N@Z.
+// Callees: CEngineInternalPrimitiveMeshBase::GetMaxDrawDistance 0x00BEB660 (const). CMatrix3x4::TransformPoint and
+//   CEngineCamera::ClipSphere are expanded in place (FableWin.pdb debug copies only).
+// Port (NF101, 2026-11-19, q11277): moved off the flattened header branch (a free __fastcall stand-in over byte casts) onto the retail
+//   class chain, the 0x00BCF040 (CEngineInternalPrimitiveAnimatedMesh::IsInsideFrustum) define set; the callee 0x00BEB660 now binds
+//   the PDB ?GetMaxDrawDistance@CEngineInternalPrimitiveMeshBase@@QBEMXZ (was the free stand-in CEnginePrimitive_ComputeFadeDistance).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_RESETOCCLUSIONINFO
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMESHBASE_GETMAXDRAWDISTANCE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CMESHDATABANKENTRY
+#define FABLE_RETAIL_CMESHDATABANK_BASES
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_CGRAPHICDATABANK_BANKFILE
+#define FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX
+#define FABLE_RETAIL_C3DMESHINFO_BOUNDINGSPHERE
+#define FABLE_RETAIL_C3DBOUNDINGBOX
+#define FABLE_RETAIL_C3DBOUNDINGSPHERE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CMATRIX3X4
+#define FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_SOURCE_DEST_SUMS
+#define FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINECAMERA_POSITION
+#define FABLE_RETAIL_CENGINECAMERA_CLIPSPHERE
+#define FABLE_RETAIL_CENGINECAMERADESC_STRUCT
 #include "fable_compiler.h"
-#include "engine/CEngineInternalPrimitiveStaticMesh.h"
-#include "engine/C3DMeshInfo.h"
-#include "engine/CEngineCamera.h"
-
 #include "engine/C3DVector.h"
-class CPlane { public: C3DVector Normal; float D; };
-class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+#include "engine/CMatrix3x4.h"
+#include "engine/C3DMeshInfo.h"
+#include "engine/CEngineCameraDesc.h"
+#include "engine/CEngineCamera.h"
+#include "engine/CEnginePrimitiveOcclusionInfo.h"
+#include "engine/CEngineInternalPrimitiveStaticMesh.h"
 
-float __fastcall CEnginePrimitive_ComputeFadeDistance(const CEngineInternalPrimitiveStaticMesh* self);   // 0x00BEB660
-
-static FABLE_FORCEINLINE const C3DBoundingSphere& LocalSphere(const CEngineInternalPrimitiveStaticMesh* self)
+bool CEngineInternalPrimitiveStaticMesh::IsInsideFrustum(const CEngineCamera& frustum, bool distance_test_only)
 {
-    const C3DMeshInfo* info = *(C3DMeshInfo* const*)self->_pad_0x50;
-    return *(const C3DBoundingSphere*)info->BoundingSphere;
-}
-static FABLE_FORCEINLINE const float* Transform(const CEngineInternalPrimitiveStaticMesh* self)
-{
-    return (const float*)self->ObjectTransform;
-}
-static FABLE_FORCEINLINE const C3DVector& CameraPosition(const CEngineCamera& camera) { return *(const C3DVector*)(camera.CameraDesc + 0x40); }
-static FABLE_FORCEINLINE float CameraNear(const CEngineCamera& camera) { return *(const float*)(camera.CameraDesc + 0x58); }
-static FABLE_FORCEINLINE float CameraFar(const CEngineCamera& camera) { return *(const float*)(camera.CameraDesc + 0x5c); }
-static FABLE_FORCEINLINE const CPlane* Planes(const CEngineCamera& camera) { return (const CPlane*)camera.FrustrumPlanes; }
-
-static FABLE_FORCEINLINE bool SphereInFrustum(const CEngineCamera& camera, const C3DVector& centre, float radius)
-{
-    C3DVector d = centre - CameraPosition(camera);
-    float depth = d.X * camera.LookVector_X + d.Y * camera.LookVector_Y + d.Z * camera.LookVector_Z;
-    if (depth + radius < CameraNear(camera) || depth - radius > CameraFar(camera))
+    C3DVector center;
+    ObjectTransform.TransformPoint(MeshInfo->GetBoundingSphere().Center, center);
+    C3DVector delta = center - frustum.PeekCameraPos();
+    float max_draw_dist = GetMaxDrawDistance();
+    if (delta.GetSquaredMagnitude() > max_draw_dist * max_draw_dist)
         return false;
-    const CPlane* planes = Planes(camera);
-    if (d.X * planes[2].Normal.X + d.Y * planes[2].Normal.Y + d.Z * planes[2].Normal.Z > radius)
-        return false;
-    if (d.X * planes[3].Normal.X + d.Y * planes[3].Normal.Y + d.Z * planes[3].Normal.Z > radius)
-        return false;
-    if (d.X * planes[0].Normal.X + d.Y * planes[0].Normal.Y + d.Z * planes[0].Normal.Z > radius)
-        return false;
-    if (d.X * planes[1].Normal.X + d.Y * planes[1].Normal.Y + d.Z * planes[1].Normal.Z > radius)
-        return false;
-    return true;
-}
-
-bool __fastcall IsInsideFrustum(CEngineInternalPrimitiveStaticMesh* self, int /*edx*/, const CEngineCamera& camera, bool ignoreFrustum)
-{
-    const C3DVector& c = LocalSphere(self).Center;
-    float x = c.X, y = c.Y, z = c.Z;
-    const float* m = Transform(self);
-    C3DVector centre(x * m[0] + y * m[3] + z * m[6] + m[9],
-                     x * m[1] + y * m[4] + z * m[7] + m[10],
-                     x * m[2] + y * m[5] + z * m[8] + m[11]);
-    C3DVector delta = centre - CameraPosition(camera);
-    float fade = CEnginePrimitive_ComputeFadeDistance(self);
-    if (delta.GetSquaredMagnitude() > fade * fade)
-        return false;
-    if (ignoreFrustum)
+    if (distance_test_only)
         return true;
-    double radius = LocalSphere(self).Radius;
-    return SphereInFrustum(camera, centre, (float)(radius * *(const float*)&self->field58));
+    float radius = MeshInfo->GetBoundingSphere().Radius * Scale;
+    return frustum.ClipSphere(center, radius);
 }

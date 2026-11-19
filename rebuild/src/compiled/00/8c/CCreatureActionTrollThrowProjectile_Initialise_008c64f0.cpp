@@ -1,243 +1,134 @@
-// CCreatureAction_TrollThrowProjectile::Initialise() -- name the animation PROJECTILE_ATTACK_THROW_ROCK and run the
-//   combat base Initialise; create the projectile thing named by the creature's ability def at the creature's
-//   position, remember it, and (when the creature can carry) put it in the CARRY_SLOT_TROLL_THROW_ROCK(_LEFT) slot;
-//   then roll 0..99 against the creature's willpower-indicator def chance and copy its value into the TC 0x30
+// CCreatureAction_TrollThrowProjectile::Initialise() -- name the animation PROJECTILE_ATTACK_THROW_ROCK and run the combat base
+//   Initialise; create the object of the shot def the creature's weapon def names at the creature's position, keep it in PShot and
+//   (when the creature can carry) put it in the CARRY_SLOT_TROLL_THROW_ROCK(_LEFT) slot by the animation's start handedness, hidden
+//   (ShotAlpha 0); then roll 0..99 against the creature's troll battle def PercentageChanceToUseSecondaryShotType and set the combat
+//   component's ShotOverrideType to its SecondaryShotType
 // Leaf: ?Initialise@CCreatureAction_TrollThrowProjectile@@UAEXXZ
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008C64F0, length 688 bytes, plain `ret` (virtual).
-// Callees: SetCombatAnimation 0x008574D0, CCombatActionBase::Initialise 0x00857520, GetPItem 0x00A01B50, CDefClassBase
-//   GetSubDef<CWeaponDef> 0x0042B1A6 / GetSubDef<CAICreatureWillPowerIndicatorDef> 0x008C78F0, GetPWorld 0x00692940,
-//   CDefinitionManager::GetDef<physical def> 0x0078B230, CThing::GetPosition 0x004C73D0, CThingObject::Create
-//   0x00703210 (__fastcall), CIntelligentPointer ctor 0x00A01B10 / Set 0x00A01B90 / dtor 0x00A01C10, LowerBound
-//   0x0040F020, 0x00669CB0 (weapon-hand query, out param), GetPDefinitionManager 0x00692910, GetDefGlobalIndex
-//   0x009AD410, CTCCarrying::AddThing(CThing*, long, bool) 0x006A1F80, CTCGraphicAppearance 0x004BFAC0,
-//   GetWorldSeed 0x0049D810, GFROR13 0x00497890 (__fastcall), CCharString 0x0099EBF0 / ~ 0x0099EAE0.
-// Layout: action +0x08 PCreature, +0x74 combat TC pointer, +0x114 PProjectile, +0x12c long flag (retail bytes);
-//   creature +0x70 def, +0x90 player (signed char), +0x64 graphic appearance TC.
-// Naming wave 17: CTCGraphicAppearance is NGraphicAppearance::CTCGraphicAppearance (Ego_r ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z; a class) -- the local model moved into the namespace (name-only).
+// Flags: none
+// Inferred: the handedness component pointer lives in an inner block that ends before the slot-name temporaries -- retail shares one
+//   frame word between it and the CCharString temporary (0x008C6638 `lea eax,[esp+1Ch]` out-pointer, 0x008C664C `lea ecx,[esp+1Ch]` string,
+//   frame 0x18); declared at the GetTC block scope the out-pointer keeps its own word (graded DIFFER 682v682, frame 0x1C). The named
+//   start_handedness carries the value out of the block; ruled out: nothing else changes the frame.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008C64F0, 688 bytes, __thiscall virtual (vtable 0x01281694), plain `ret`.
+// Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; CCombatActionBase::SetCombatAnimation 0x008574D0 and
+//   Initialise 0x00857520 (qualified); CBaseIntelligentPointer::GetPItem 0x00A01B50; CDefClassBase::GetSubDef<CWeaponDef> 0x0042B1A6 and
+//   <CTrollBattleDef> 0x008C78F0 (out of line); CCreatureActionBase::GetWorld 0x00692940 / PeekDefinitionManager 0x00692910;
+//   CDefinitionManager::GetDef<CThingShotDef> 0x0078B230; CThing::GetPos 0x004C73D0; CThingObject::Create 0x00703210 (static
+//   __fastcall); CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / dtor 0x00A01C10 (the inline CIntelligentPointer<CThing>
+//   temporary and assignment); CVectorMap<ETCInterfaceType,CTCBase*,..>::LowerBound 0x0040F020 (the expanded GetTC<CTCCarrying> /
+//   <CTCCombat>); CAnimationEntry::GetComponent<CAnimComponentCombatHandedness> 0x00669CB0; CDefinitionManager::GetDefGlobalIndexFromName
+//   0x009AD410; CTCCarrying::PutThingInCarrySlot 0x006A1F80; NGraphicAppearance::CTCGraphicAppearance::SetAlpha 0x004BFAC0;
+//   CWorld::GetWorldSeed 0x0049D810; GFROR13 0x00497890 (the inline GFRandom).
+// Port (NF101, 2026-11-19, q11260): moved off its 23-class local model (stand-in GetSubDef / GetDef / GetWeaponHand bodies) onto the
+//   shared headers (0x008C6860 define set); Create now binds the PDB
+//   ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z (was a by-pointer CThingObject::Create stand-in).
 #include "fable_compiler.h"
-namespace NGraphicAppearance { class CTCGraphicAppearance; }
-using NGraphicAppearance::CTCGraphicAppearance;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);         // 0x0099EBF0
-    ~CCharString();                                          // 0x0099EAE0
-};
-#include "engine/C3DVector.h"
-class CRightHandedSet;
-long __fastcall GFROR13(unsigned long value);       // 0x00497890
-
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();                                  // slot 1
-    long RefCount;                                           // +4
-};
-// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
-//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
-template <class T> struct CDefNonConst { typedef T Type; };
-template <class T> struct CDefNonConst<const T> { typedef T Type; };
-template <class T> class CDefPointer { public:
-    typename CDefNonConst<T>::Type* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
-    typename CDefNonConst<T>::Type* operator->() const { return Object; }
-};
-class CWeaponDef : public CDefBase { public:
-    unsigned char _pad08[0xa0 - 8];
-    long          ProjectileDef;                             // +0xa0
-};
-struct CPhysicalDef : CDefBase {
-    unsigned char _pad08[0x7c - 8];
-    long          DefIndex;                                  // +0x7c
-};
-struct CWillPowerIndicatorDef : CDefBase {
-    unsigned char _pad08[0x48 - 8];
-    float         Chance;                                    // +0x48
-    long          Value;                                     // +0x4c
-};
-class CDefClassBase { public:
-    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r.pdb member template)
-    bool GetSubDef(CDefPointer<CWillPowerIndicatorDef>* out);   // 0x008C78F0
-};
-class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r + FableWin spelling)
-};
-struct CPhysicalDefManager {
-    bool GetDef(long index, CDefPointer<CPhysicalDef>* out);   // 0x0078B230
-};
-CWeaponDef* FindAbilityDef(const CDefClassBase* def);                 // stand-ins: the def lookups (not graded here)
-CWillPowerIndicatorDef* FindWillPowerDef(const CDefClassBase* def);
-CPhysicalDef* FindPhysicalDef(long index);
-#pragma auto_inline(off)
-template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out) const
-{
-    CWeaponDef* def = FindAbilityDef(this);
-    out->Object = def;
-    return def != 0;
-}
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CWillPowerIndicatorDef>* out)
-{
-    CWillPowerIndicatorDef* def = FindWillPowerDef(this);
-    out->Object = def;
-    return def != 0;
-}
-__declspec(noinline) bool CPhysicalDefManager::GetDef(long index, CDefPointer<CPhysicalDef>* out)
-{
-    CPhysicalDef* def = FindPhysicalDef(index);
-    out->Object = def;
-    return def != 0;
-}
-#pragma auto_inline(on)
-class CWorld { public:
-    unsigned char        _pad00[0x10];
-    CPhysicalDefManager* PDefs;                              // +0x10
-    unsigned long* GetWorldSeed() const;                          // 0x0049D810
-};
-inline unsigned long GFRandom(unsigned long* seed)
-{
-    *seed = *seed * 0x24a1 + 0x24df;
-    *seed = GFROR13(*seed);
-    return *seed;
-}
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing;
-class CTCCarrying { public:
-    void AddThing(CThing* thing, long slot, bool now);       // 0x006A1F80
-};
-namespace NGraphicAppearance {
-class CTCGraphicAppearance {
-public:
-    void SetAlpha(unsigned char alpha);                      // 0x004BFAC0 (was the stand-in SetVisibleFlag)
-};
-} // namespace NGraphicAppearance
-
-struct CTCWillPower {
-    unsigned char _pad00[0x7c];
-    long          Value;                                     // +0x7c
-};
-class CThing {
-public:
-    unsigned char         _pad00[0x20];
-    unsigned long         m_presentBits[9];                  // +0x20
-    CInterfaceMap         m_interfaces;                      // +0x44
-    unsigned char         _pad54[0x10];
-    CTCGraphicAppearance* PGraphicAppearance;                // +0x64
-    unsigned char         _pad68[0x70 - 0x68];
-    CDefClassBase*        PDef;                              // +0x70
-    unsigned char         _pad74[0x90 - 0x74];
-    signed char           Player;                            // +0x90
-    const C3DVector& GetPos() const;    // 0x004C73D0
-    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
-class CThingObject : public CThing { public:
-    static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player,
-                                           CRightHandedSet* orientation, unsigned long flags,
-                                           const CCharString& name);   // 0x00703210
-};
-class CBaseObject;
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTHINGSHOTDEF_DEFSTRING
+#define FABLE_RETAIL_CTROLLBATTLEDEF_MEMBERS
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGOBJECT_CREATE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_ANIMCOMPONENT
+#define FABLE_RETAIL_CANIMATIONENTRY_GETCOMPONENT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCREATUREACTION_TROLLTHROWPROJECTILE
+#define FABLE_RETAIL_CTCCARRYING_PUTTHING
+#define FABLE_RETAIL_CTCCOMBAT
+#define FABLE_RETAIL_CTCCOMBAT_SHOTOVERRIDE
+#define FABLE_RETAIL_CCOMBATABILITY
+#define FABLE_RETAIL_CCOMBATABILITYDATA
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETALPHA
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_PEEKDEFINITIONMANAGER
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "fable_definition_table.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerThing : CBaseIntelligentPointer {
-    CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other)
-    {
-        SetPItem((CBaseObject*)(((CThing*)other.GetPItem())));
-        return *this;
-    }
-};
-struct SWeaponHand {
-    unsigned char _pad00[8];
-    long          Hand;                                      // +0x08
-};
-struct CCombatTC {
-    void GetWeaponHand(SWeaponHand** out);                   // 0x00669CB0
-};
-SWeaponHand* FindWeaponHand(const CCombatTC* tc);            // stand-in: the hand lookup (not graded here)
-#pragma auto_inline(off)
-__declspec(noinline) void CCombatTC::GetWeaponHand(SWeaponHand** out)
-{
-    *out = FindWeaponHand(this);
-}
-#pragma auto_inline(on)
-class CCombatActionBase { public:
-    virtual void v00();
-    virtual void Initialise();                               // 0x00857520
-    unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;                       // +0x08
-    unsigned char           _pad10[0x74 - 0x10];
-    CCombatTC*              PCombat;                         // +0x74
-    void SetCombatAnimation(const CCharString& name);          // 0x008574D0
-    CThing* GetCreature() const { return ((CThing*)PCreature.GetPItem()); }
-    CDefinitionManager* GetPDefinitionManager() const;       // 0x00692910
-    CWorld* GetPWorld() const;                               // 0x00692940
-};
-class CCreatureAction_TrollThrowProjectile : public CCombatActionBase { public:
-    unsigned char            _pad78[0x114 - 0x78];
-    CIntelligentPointerThing PProjectile;                    // +0x114
-    unsigned char            _pad11c[0x12c - 0x11c];
-    long                     ProjectileVisible;              // +0x12c
-    virtual void Initialise();
-};
+#include "engine/CDefPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingObject.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CTCCarrying.h"
+#include "engine/CTCCombat.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
+#include "engine/CWeaponDef.h"
+#include "engine/CThingShotDef.h"
+#include "engine/CTrollBattleDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CWorld.h"
+#include "engine/GFRandom.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAnimComponentCombatHandedness.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_TrollThrowProjectile.h"
 
 void CCreatureAction_TrollThrowProjectile::Initialise()
 {
-    {
-        CCharString animation("PROJECTILE_ATTACK_THROW_ROCK");
-        SetCombatAnimation(animation);
-    }
+    SetCombatAnimation("PROJECTILE_ATTACK_THROW_ROCK");
     CCombatActionBase::Initialise();
-    CDefPointer<const CWeaponDef> ability;
-    CThing* self = GetCreature();
-    self->PDef->GetSubDef(&ability);
-    CDefPointer<CPhysicalDef> projectileDef;
-    CWorld* world = GetPWorld();
-    world->PDefs->GetDef(ability->ProjectileDef, &projectileDef);
-    CThingObject* thing;
-    {
-        CCharString name("");
-        CThing* owner = GetCreature();
-        CThing* creature = GetCreature();
-        thing = CThingObject::Create(projectileDef->DefIndex, &creature->GetPos(), owner->Player, 0, 0, name);
-    }
-    if (thing) {
-        {
-            PProjectile = CIntelligentPointerThing(thing);
-        }
-        CTCCarrying* carrying;
-        if (GetCreature()->GetInterface(&carrying, 0x46)) {
-            SWeaponHand* hand;
-            PCombat->GetWeaponHand(&hand);
+    CDefPointer<const CWeaponDef> pweapon_def;
+    PCreature->PeekBaseDef().GetSubDef(&pweapon_def);
+    CDefPointer<const CThingShotDef> pshot_def;
+    GetWorld().PeekDefinitionManager().GetDef(pweapon_def->Shot, &pshot_def);
+    CThingObject* pobject = CThingObject::Create(pshot_def->ObjectDef, PCreature->GetPos(), PCreature->GetPlayerNumber(), 0, 0, "");
+    if (pobject) {
+        PShot = CIntelligentPointer<CThing>(pobject);
+        CTCCarrying* ptc_carrying;
+        if (PCreature->GetTC(&ptc_carrying)) {
+            long start_handedness;
+            {
+                const CAnimComponentCombatHandedness* phandedness;
+                PAnimEntry->GetComponent(&phandedness);
+                start_handedness = phandedness->StartHandedness;
+            }
             long slot;
-            if (hand->Hand == 1)
-                slot = GetPDefinitionManager()->GetDefGlobalIndexFromName("CARRY_SLOT_TROLL_THROW_ROCK_LEFT");
+            if (start_handedness == 1)
+                slot = PeekDefinitionManager().GetDefGlobalIndexFromName("CARRY_SLOT_TROLL_THROW_ROCK_LEFT");
             else
-                slot = GetPDefinitionManager()->GetDefGlobalIndexFromName("CARRY_SLOT_TROLL_THROW_ROCK");
-            carrying->AddThing(thing, slot, true);
+                slot = PeekDefinitionManager().GetDefGlobalIndexFromName("CARRY_SLOT_TROLL_THROW_ROCK");
+            ptc_carrying->PutThingInCarrySlot(*pobject, slot, true);
         }
-        ProjectileVisible = 0;
-        thing->PGraphicAppearance->SetAlpha((unsigned char)ProjectileVisible);
+        ShotAlpha = 0;
+        pobject->GetTCGraphicAppearance()->SetAlpha((unsigned char)ShotAlpha);
     }
-    CDefPointer<CWillPowerIndicatorDef> willPower;
-    CDefClassBase* creatureDef = GetCreature()->PDef;
-    if (creatureDef->GetSubDef(&willPower)) {
-        unsigned long roll = GFRandom(GetPWorld()->GetWorldSeed()) % 100;
-        CTCWillPower* tc;
-        if ((float)roll < willPower->Chance && GetCreature()->GetInterface(&tc, 0x30) && willPower->Value > 0)
-            tc->Value = willPower->Value;
+    CDefPointer<const CTrollBattleDef> ptroll_battle_def;
+    if (PCreature->PeekBaseDef().GetSubDef(&ptroll_battle_def)) {
+        unsigned long chance = GFRandom(100, GetWorld().GetWorldSeed());
+        CTCCombat* ptc_combat;
+        if ((float)chance < ptroll_battle_def->PercentageChanceToUseSecondaryShotType && PCreature->GetTC(&ptc_combat)
+            && ptroll_battle_def->SecondaryShotType > 0)
+            ptc_combat->ShotOverrideType = ptroll_battle_def->SecondaryShotType;
     }
 }

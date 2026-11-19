@@ -149,6 +149,12 @@ public:
     bool IsInvulnerableDuringGenericResponse:1;
     bool IsPushedByExplosions:1;
     unsigned char _pad_0x14a[2];
+#ifdef FABLE_RETAIL_CTHINGCREATUREDEF_VALIDATE
+// NF101 opt-in (round 9, q11286, row 0x00670D50): Ego_r.pdb / FableWin.pdb
+// ?Validate@CThingCreatureDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z (public const virtual, the CThingObjectDef::Validate
+// shape of engine/CThingObjectDef.h). Declaration only (elaborated classes: needs no include); no layout change.
+public: virtual void Validate(const class CValidateDefinitionInitBase& validate,const class CCharString& instantiation_name) const;
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREDEF_ALLOC
 // Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
 // ?Alloc@CThingCreatureDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.

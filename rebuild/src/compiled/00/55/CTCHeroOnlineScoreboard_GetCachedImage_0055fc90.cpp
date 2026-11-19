@@ -8,9 +8,11 @@
 // wchar_t*) 0x0099BF30, ~CWideString 0x0099B510, GFIntToCharString 0x0099F830, CCharString::ToWideString 0x0099E480,
 // ~CCharString 0x0099EAE0, CWideString::operator+= 0x0099B8D0 / 0x0099B940, CAFile::StartFileScan 0x00999760, CWideString(const
 // wchar_t*) 0x0099B6B0, operator new 0x00BFEA1A, CTexturePointer::Reset 0x005669C0, CPixelFormat::Initialise
-// 0x009E3790, CTexture::Initialise 0x009FA280, CTexture::GetSurface 0x009F9E00, CSurface::LoadFromBitmapFileTo
+// 0x009E3790, CTexture::Initialise 0x009FA280, CTexture::GetSurfaceLevel 0x009F9E00, CSurface::LoadFromBitmapFileTo
 // PreallocatedSurface 0x009F2DD0, CSurface::Uninitialise 0x009F2E20 (inline ~CSurface, vtable 0x0122F84C), the count
 // block's destroy function, operator delete 0x00BFE9BC.
+// Name fix (NF101, round 9, q11274): 0x009F9E00 respelled in place from the made-up non-const GetSurface to the PDB
+//   ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z (the landed self row's leaf; Ego_r.pdb 0x00B69E10 / FableWin.pdb 0x030DB020).
 // Layout: retail PictureCache +0x10 (12-byte STLport map; node value +0x14); CCountedPointer {object, count block}, the
 // count block {references, destroy(object) __fastcall, object} as the landed Reset 0x005669C0.
 // Shape: same-TU noinline stand-ins for Reset and find (the texture's and iterator's addresses never escape, so its
@@ -72,7 +74,7 @@ class CTexture { public:
     unsigned long AllocationSource : 4;
     CTexture() : PD3DTexture(0), ByteLength(0), AllocationSource(0) { }
     bool Initialise(const C2DExtentsI& size, long levels, const CPixelFormat& format, unsigned long usage, long pool, bool dynamic, bool renderTarget);   // 0x009FA280
-    CSurface GetSurface(long level);                 // 0x009F9E00
+    CSurface GetSurfaceLevel(long level) const;      // 0x009F9E00 (Ego_r.pdb / FableWin.pdb ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z)
 };
 
 struct SCountBlock {
@@ -207,7 +209,7 @@ CTexturePointer CTCHeroOnlineScoreboard::GetCachedImage(const CWideString& folde
             CPixelFormat format;
             format.Initialise(8, 8, 8, 8, false);
             texture->Initialise(C2DExtentsI(256, 256), 1, format, 0, 1, false, false);
-            texture->GetSurface(0).LoadFromBitmapFileToPreallocatedSurface(name, 3);
+            texture->GetSurfaceLevel(0).LoadFromBitmapFileToPreallocatedSurface(name, 3);
         }
         PictureCache[id] = texture;
     } else {

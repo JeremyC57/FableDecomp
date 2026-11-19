@@ -9,6 +9,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_HEROLOADRANGEDWEAPON_CLASS
+// NF101 opt-in (round 9, q11260, row 0x0078B070 PerformAction): the polymorphic retail class on CCreatureActionBase (ghidra_out/rtti_bases.tsv;
+// vtable 0x0126B9D4, slot 3 = PerformAction 0x0078B070) with its two own members as below (Ego_r.pdb PRangedWeapon CIntelligentPointer<CThing>,
+// PAmmo CIntelligentPointer<CThingObject>; retail +0xA8 / +0xB0, sizeof 0xB8). Needs engine/CCreatureActionBase.h, engine/CIntelligentPointer.h
+// and CThingObject declared first. Declares only the member the row defines.
+class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase {
+public:
+    virtual void PerformAction();                                        // 0x0078B070
+protected:
+    CIntelligentPointer<CThing>       PRangedWeapon;                     // +0xA8
+    CIntelligentPointer<CThingObject> PAmmo;                             // +0xB0
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_HeroLoadRangedWeapon {
 public:
@@ -51,9 +64,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_HeroLoadRangedWeapon) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_HeroLoadRangedWeapon, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_HeroLoadRangedWeapon, PRangedWeapon) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_HeroLoadRangedWeapon, PAmmo) == 0xb0);
+FABLE_STATIC_ASSERT_AT(54, sizeof(CCreatureAction_HeroLoadRangedWeapon) == 0xb8);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CCreatureAction_HeroLoadRangedWeapon, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CCreatureAction_HeroLoadRangedWeapon, PRangedWeapon) == 0xa8);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CCreatureAction_HeroLoadRangedWeapon, PAmmo) == 0xb0);
+#endif // FABLE_RETAIL_CCREATUREACTION_HEROLOADRANGEDWEAPON_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_HEROLOADRANGEDWEAPON_H

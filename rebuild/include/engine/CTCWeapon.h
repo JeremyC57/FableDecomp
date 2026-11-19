@@ -45,6 +45,12 @@ public:
     bool IsMeleeWeapon() const;                              // 0x005DAA00
     bool IsProjectileWeapon() const;                         // 0x005DAA40
     bool IsUsableBy(const CThing&) const;                    // 0x005DAB10
+#ifdef FABLE_RETAIL_CTCWEAPON_GETMISSILELOADCARRYSLOT
+    // NF101 opt-in (round 9, q11260, row 0x0078B070): Ego_r.pdb (0x0063A760) / FableWin.pdb (0x0239B390)
+    // ?GetMissileLoadCarrySlot@CTCWeapon@@QBEJXZ (const), out of line at 0x005DA920 (reads the weapon def's MissileLoadCarrySlot +0x94 through
+    // a CDefPointer copy; landed binder 0x008D5790 already spells it). Declaration only.
+    long GetMissileLoadCarrySlot() const;                    // 0x005DA920
+#endif
 #ifdef FABLE_RETAIL_CTCWEAPON_READYPROJECTILE
     // Retail opt-in (chunk Q17, row 0x008BF500): ?ReadyProjectile@CTCWeapon@@QAEXXZ, out of line at 0x005DA4E0. The name is the landed
     // binding's (in neither PDB name set). Declaration only.

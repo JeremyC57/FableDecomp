@@ -1,0 +1,30 @@
+addr       parity           behav  name
+00518130   RELOCATION_MATCH PASS   CThingSearchTools::ForEachInRoughArea<CThingPhysical,CThingFilter_None,bool (__fastcall*)(CThingPhysical&)>
+005185f0   RELOCATION_MATCH PASS   CThingSearchTools::GetAllTCDsInRoughArea<CTCDNavigationSeed,CThingFilter_IsInQuestOrNullQuest,std::vector<const CThing*,std::allocator<const CThing*> > >
+0055fc90   WARN SHARED_HEADER_AVAILABLE CAFile
+0055fc90   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0055fc90   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+0055fc90   WARN SHARED_HEADER_AVAILABLE CSurface
+0055fc90   WARN SHARED_HEADER_AVAILABLE CTexture
+0055fc90   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard
+0055fc90   WARN RELOC_NAME: ?GetSaveDir@@YI?AVCWideString@@XZ -> 0041a5b0 labelled 'NResourceDirectoryNames::GetScoreboardImageCacheDir'
+0055fc90   WARN RELOC_NAME: ??ACPictureMap@@QAEAAUCTexturePointer@@ABJ@Z -> 005698a0 labelled '_global::RBTree_SearchOrCreate'
+0055fc90   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard::GetCachedImage
+0063fae0   RELOCATION_MATCH PASS   CThingSearchTools::GetAllThingsInRoughArea<CThingGameObject, std::list<CThingGameObject const *, std::allocator<CThingGameObject const *>>, CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsNot>>
+00670d50   RELOCATION_MATCH PASS   CThingCreatureDef::Validate
+0078b070   WARN RELOC_NAME: ?GetMissileLoadCarrySlot@CTCWeapon@@QBEJXZ -> 005da920 labelled 'CTCWeapon::GetWeaponDefLongAt94'
+0078b070   RELOCATION_MATCH PASS   CCreatureAction_HeroLoadRangedWeapon::PerformAction
+00848500   RELOCATION_MATCH PASS   CCreatureAction_GetPlateFromCupboard::PerformAction
+008c64f0   RELOCATION_MATCH PASS   CCreatureAction_TrollThrowProjectile::Initialise
+00b9dc60   RELOCATION_MATCH PASS   CEngineInternalPrimitiveStaticMesh::IsInsideFrustum
+
+WINS: 9
+  00518130 RELOCATION_MATCH CThingSearchTools::??$ForEachInRoughArea@VCThingPhysical@@VCThingFilter_None@@P6I_NAAV1@@Z@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_None@@ABQ6I_NAAVCThingPhysical@@@Z@Z
+  005185f0 RELOCATION_MATCH CThingSearchTools::??$GetAllTCDsInRoughArea@VCTCDNavigationSeed@@VCThingFilter_IsInQuestOrNullQuest@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_IsInQuestOrNullQuest@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z
+  0055fc90 RELOCATION_MATCH CTCHeroOnlineScoreboard::GetCachedImage
+  0063fae0 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThingGameObject@@V?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsNot@@V1@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsNot@@V1@@@AAV?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@@Z
+  00670d50 RELOCATION_MATCH CThingCreatureDef::?Validate@CThingCreatureDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+  0078b070 RELOCATION_MATCH CCreatureAction_HeroLoadRangedWeapon::?PerformAction@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ
+  00848500 RELOCATION_MATCH CCreatureAction_GetPlateFromCupboard::?PerformAction@CCreatureAction_GetPlateFromCupboard@@UAEXXZ
+  008c64f0 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?Initialise@CCreatureAction_TrollThrowProjectile@@UAEXXZ
+  00b9dc60 RELOCATION_MATCH CEngineInternalPrimitiveStaticMesh::?IsInsideFrustum@CEngineInternalPrimitiveStaticMesh@@UAE_NABVCEngineCamera@@_N@Z
