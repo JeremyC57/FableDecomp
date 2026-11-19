@@ -11,5 +11,10 @@ class CThingCreatureBase;
 class CCombatAction_WillForcePushInto : public CCombatActionBase {
 public:
     CCombatAction_WillForcePushInto(CThingCreatureBase& owner) : CCombatActionBase(owner, 150, GetSoundPair(owner, "SWORD_SWING")) { }
+#ifdef FABLE_RETAIL_CCOMBATACTION_WILLFORCEPUSHINTO_FINISHACTION
+    // NF93 opt-in (round 8, q11261 / q11262 row 0x008C2980): Ego_r.pdb / FableWin.pdb ?FinishAction@CCombatAction_WillForcePushInto@@UAEXXZ
+    // (vtable slot 4, 0x008C2980). Declaration only: no layout change.
+    virtual void FinishAction();                                         // slot 4, 0x008C2980
+#endif
 };
 #endif

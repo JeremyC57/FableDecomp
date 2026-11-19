@@ -1,51 +1,24 @@
-// CRandomAppearanceMorph::GetRandomMorphSet(unsigned long& seed, CMorphSet& morphSet, bool flag) -- roll a complete random morph set: skeletal morphs, body parts, then the general texture morphs
+// CRandomAppearanceMorph::GetRandomMorphSet(unsigned long& seed, CMorphSet& morph_set, bool flag) const -- roll a complete random morph set:
+//   skeletal morphs, body parts, then the general texture morphs
+// Leaf: ?GetRandomMorphSet@CRandomAppearanceMorph@@QBEXAAKAAVCMorphSet@1@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086BF70, length 58 bytes (`ret 0Ch`). Called from 0x00728181
 // (CTCRandomAppearanceMorph). Callees: GetRandomSkeletalMorph @ 0x0086B9D0, GetRandomBodyParts @ 0x0086BE40,
-// GetRandomTextureMorphs @ 0x0086B810 (all CRandomAppearanceMorph members; prototypes from the manifest).
-// Layout: retail container sizes (CArray = 12 bytes, CVectorMap = 16): the class's GeneralTextureMorphs map at +0x28,
-// CMorphSet's GeneralTextureMorphs array at +0x18 (BodyParts +0x00, SkeletalMorphs +0x0c; the PDB's 16-byte CArrays put
-// it at +0x20).
+// GetRandomTextureMorphs @ 0x0086B810 (all protected const CRandomAppearanceMorph members, Ego_r.pdb / FableWin.pdb IBE).
+// Identity: Ego_r.pdb (0x00857780) + FableWin.pdb ?GetRandomMorphSet@CRandomAppearanceMorph@@QBEXAAKAAVCMorphSet@1@_N@Z (public const).
 // Shape: three member calls forwarding the seed and the set; the last passes group 0, the class's general texture-morph map
 // (`lea ecx,[esi+28h]`) and the set's array (`add edi,18h` on the set register, no longer needed).
-// Leaf: GetRandomMorphSet
-// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
-#include "engine/CArray.h"
-struct CKeyPairCompareLess {};
-template<class K, class V> class CVectorMap { public:
-    CArray<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted;
-};
+// Port (NF93, q11250 / q11251): was a local CRandomAppearanceMorph / CMorphSet / CVectorMap model with public non-const QAE callees and a
+//   global CMorphSet; now on engine/CRandomAppearanceMorph.h (opt-ins _SKELETAL and the NF93 _GETRANDOMMORPHSET declaration).
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_SKELETAL
+#define FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_GETRANDOMMORPHSET
+#include "engine/CRandomAppearanceMorph.h"
 
-struct CBodyPartMesh;
-struct CSkeletalMorph;
-struct CTextureMorph;
-
-struct CMorphSet {
-    struct CMeshTextureSet;
-    struct CMorphSetSkeletalMorph;
-    struct CMorphSetTextureMorph;
-    CArray<CMeshTextureSet>        BodyParts;           // +0x00
-    CArray<CMorphSetSkeletalMorph> SkeletalMorphs;      // +0x0c
-    CArray<CMorphSetTextureMorph>  GeneralTextureMorphs;// +0x18
-};
-
-class CRandomAppearanceMorph { public:
-    CArray<CArray<CBodyPartMesh> >                    BodyParts;               // +0x00
-    CArray<CVectorMap<unsigned long, CTextureMorph> > BodyPartTextureMorphs;   // +0x0c
-    CVectorMap<long, CSkeletalMorph>                  SkeletalMorphs;          // +0x18
-    CVectorMap<unsigned long, CTextureMorph>          GeneralTextureMorphs;    // +0x28
-    unsigned long                                     MaxTextureGroupID;       // +0x38
-
-    void GetRandomSkeletalMorph(unsigned long& seed, CMorphSet& morphSet);                     // 0x0086B9D0
-    void GetRandomBodyParts(unsigned long& seed, CMorphSet& morphSet, bool flag);              // 0x0086BE40
-    void GetRandomTextureMorphs(unsigned long& seed, unsigned long groupID,
-                                CVectorMap<unsigned long, CTextureMorph>& textureMorphs,
-                                CArray<CMorphSet::CMorphSetTextureMorph>& result);             // 0x0086B810
-    void GetRandomMorphSet(unsigned long& seed, CMorphSet& morphSet, bool flag);
-};
-
-void CRandomAppearanceMorph::GetRandomMorphSet(unsigned long& seed, CMorphSet& morphSet, bool flag)
+void CRandomAppearanceMorph::GetRandomMorphSet(unsigned long& seed, CMorphSet& morph_set, bool flag) const
 {
-    GetRandomSkeletalMorph(seed, morphSet);
-    GetRandomBodyParts(seed, morphSet, flag);
-    GetRandomTextureMorphs(seed, 0, GeneralTextureMorphs, morphSet.GeneralTextureMorphs);
+    GetRandomSkeletalMorph(seed, morph_set);
+    GetRandomBodyParts(seed, morph_set, flag);
+    GetRandomTextureMorphs(seed, 0, GeneralTextureMorphs, morph_set.GeneralTextureMorphs);
 }

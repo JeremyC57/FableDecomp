@@ -123,6 +123,15 @@ public:
     void OracleSymbolPopFront();                                         // 0x006463F0
     void DisplayMiniGameInfo(bool, EMiniGameType, long);                 // 0x00654593
 #endif
+#ifdef FABLE_RETAIL_CDRAWQUESTINFO_ORACLESYMBOLPUSHBACK
+    // Retail opt-in (NF95, row 0x0064A3A1 OracleSymbolPushBack, queue q11225): Ego_r.pdb / FableWin.pdb
+    // ?OracleSymbolPushBack@CDrawQuestInfo@NPlayerGui@@QAEXABVCCharString@@@Z (0x0064A3A1, landed) and
+    // ?GetScriptSpriteBySymbol@CDrawQuestInfo@NPlayerGui@@QBEJABVCCharString@@@Z (public const; 0x0064A37B, landed under that leaf).
+    // Declarations only: no layout change.
+public:
+    void OracleSymbolPushBack(const CCharString& symbol);               // 0x0064A3A1
+    long GetScriptSpriteBySymbol(const CCharString& symbol) const;     // 0x0064A37B
+#endif
 #ifdef FABLE_RETAIL_CDRAWQUESTINFO_UPDATEMINIGAME
     // Retail opt-in (chunk Q22, row 0x00649E8B CDrawFishingGame::Draw): Ego_r.pdb / FableWin.pdb
     // ?UpdateMiniGame@CDrawQuestInfo@NPlayerGui@@QAEXMJJ@Z (retail 0x00644EFD, landed) and ?UpdateMiniGame@..QAEXABVCRGBColour@@@Z

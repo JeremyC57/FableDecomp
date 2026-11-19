@@ -1255,9 +1255,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bd4ce'
-        Module = '_global'
-        Source = '00/5b/CTCWeapon_IsAnalogueLoading_005bd4ce.cpp'
-        TestSource = '00/5b/CTCWeapon_IsAnalogueLoading_005bd4ce_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_IsTrackingSelectedItems_005bd4ce.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_IsTrackingSelectedItems_005bd4ce_test.cpp'
         PassPattern = 'CTCWeapon_005bd4ce_TEST PASS'
     }
     [pscustomobject]@{
@@ -1290,9 +1290,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005d9270'
-        Module = 'CTCWeapon'
-        Source = '00/5d/CTCWeapon_IsAnalogueLoading_005d9270.cpp'
-        TestSource = '00/5d/CTCWeapon_IsAnalogueLoading_005d9270_test.cpp'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_IsToNotPersistUntilQuestCompleted_005d9270.cpp'
+        TestSource = '00/5d/CTCInventoryItem_IsToNotPersistUntilQuestCompleted_005d9270_test.cpp'
         PassPattern = 'CTCWeapon_005d9270_TEST PASS'
     }
     [pscustomobject]@{
@@ -17634,9 +17634,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004db88a'
-        Module = '_global'
-        Source = '00/4d/CTCCarryable_OnKill_004db88a.cpp'
-        TestSource = '00/4d/CTCCarryable_OnKill_004db88a_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CDefString>, std::_Select1st<std::pair<long const, CDefString> >, std::less<long >, std::allocator<std::pair<long const, CDefString> > >'
+        Source = '00/4d/stdRbtree_clear_004db88a.cpp'
+        TestSource = '00/4d/stdRbtree_clear_004db88a_test.cpp'
         PassPattern = 'AUTO_TINY_004db88a_TEST PASS'
     }
     [pscustomobject]@{
@@ -38334,8 +38334,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005c08d3'
         Module = 'std'
-        Source = '00/5c/std_Umove_005c08d3.cpp'
-        TestSource = '00/5c/std_Umove_005c08d3_test.cpp'
+        Source = '00/5c/std_findif_005c08d3.cpp'
+        TestSource = '00/5c/std_findif_005c08d3_test.cpp'
         PassPattern = 'UMOVE_005c08d3_OK'
     }
     [pscustomobject]@{
@@ -123258,9 +123258,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042b687'
-        Module = 'std::list<long>'
-        Source = '00/42/stdlistlong_pushback_0042b687.cpp'
-        TestSource = '00/42/stdlistlong_pushback_0042b687_test.cpp'
+        Module = 'std::list<long, std::allocator<long>>'
+        Source = '00/42/stdlist_pushback_0042b687.cpp'
+        TestSource = '00/42/stdlist_pushback_0042b687_test.cpp'
         PassPattern = '0042b687_TEST PASS'
     }
     [pscustomobject]@{
@@ -214479,16 +214479,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bdcdc'
-        Module = 'CTCInventoryBase'
-        Source = '00/5b/CTCInventoryBase_HighlightPreviousItem_005bdcdc.cpp'
-        TestSource = '00/5b/CTCInventoryBase_HighlightPreviousItem_005bdcdc_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_HighlightPreviousItem_005bdcdc.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_HighlightPreviousItem_005bdcdc_test.cpp'
         PassPattern = '005bdcdc_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005bdd04'
-        Module = 'CTCInventoryBase'
-        Source = '00/5b/CTCInventoryBase_SelectHighlightedItem_005bdd04.cpp'
-        TestSource = '00/5b/CTCInventoryBase_SelectHighlightedItem_005bdd04_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_SelectHighlightedItem_005bdd04.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_SelectHighlightedItem_005bdd04_test.cpp'
         PassPattern = '005bdd04_TEST PASS'
     }
     [pscustomobject]@{
@@ -214521,9 +214521,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bf3c6'
-        Module = 'CTCInventoryBase'
-        Source = '00/5b/CTCInventoryBase_RemoveItemFromInventory_005bf3c6.cpp'
-        TestSource = '00/5b/CTCInventoryBase_RemoveItemFromInventory_005bf3c6_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_RemoveItemFromInventory_005bf3c6.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_RemoveItemFromInventory_005bf3c6_test.cpp'
         PassPattern = '005bf3c6_TEST PASS'
     }
     [pscustomobject]@{
@@ -214542,9 +214542,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bf8cb'
-        Module = 'CTCInventoryBase'
-        Source = '00/5b/CTCInventoryBase_InitialiseInventoryWithItems_005bf8cb.cpp'
-        TestSource = '00/5b/CTCInventoryBase_InitialiseInventoryWithItems_005bf8cb_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_InitialiseInventoryWithItems_005bf8cb.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_InitialiseInventoryWithItems_005bf8cb_test.cpp'
         PassPattern = '005bf8cb_TEST PASS'
     }
     [pscustomobject]@{
@@ -250195,9 +250195,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bdfb1'
-        Module = 'CTCInventoryBase'
-        Source = '00/5b/CTCInventoryBase_SelectItemWithDefIndex_005bdfb1.cpp'
-        TestSource = '00/5b/CTCInventoryBase_SelectItemWithDefIndex_005bdfb1_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_SelectItemWithDefIndex_005bdfb1.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_SelectItemWithDefIndex_005bdfb1_test.cpp'
         PassPattern = '005bdfb1_TEST PASS'
     }
     [pscustomobject]@{

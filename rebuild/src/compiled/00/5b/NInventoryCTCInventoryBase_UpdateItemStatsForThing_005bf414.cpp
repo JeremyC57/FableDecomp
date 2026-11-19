@@ -2,6 +2,9 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed; map pointer made const (the row grades the const LowerBound).
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- HasTC + the ternary GetTC model into a zero-initialised local: both arms load the component straight into ecx
+// Names (NF95, 2026-11-19, queue q11241): the 0x005D91F0 callee respelled from the made-up GetCategoryIdentifier to the PDB
+//   ?GetInventoryCategory@CTCInventoryItem@@QBEJXZ (the landed self row's leaf). A header port (work/005bf414_headerport_differ103v110.cpp)
+//   gets every relocation right but differs in register choice (this spilled to [ebp-4] in retail); the row keeps its local models.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF414, length 110 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Ego_r.pdb: ?UpdateItemStatsForThing@CTCInventoryBase@NInventory@@IAEXABVCThing@@@Z (catalog label "CTCInventoryStats::
 // BuildRenownString" is propagated; the body reads CTCInventoryBase's Categories at +0x20).
@@ -35,7 +38,7 @@ class CThing { public:
     unsigned long HasTC(long wanted) { return m_present.test(wanted); }
 };
 class CTCInventoryItem { public:                             // interface type 0x1A
-    long GetCategoryIdentifier() const;              // 0x005D91F0
+    long GetInventoryCategory() const;               // 0x005D91F0 (Ego_r.pdb 0x0055A140 / FableWin.pdb 0x01E010E0)
 };
 namespace NInventory {
 class CCategory { public:
@@ -58,6 +61,6 @@ void CTCInventoryBase_Retail::UpdateItemStatsForThing(const CThing& thing)
     CTCInventoryItem* item = 0;
     if (const_cast<CThing&>(thing).HasTC(0x1A))
         item = const_cast<CThing&>(thing).GetTC<CTCInventoryItem>(0x1A);
-    long ident = item->GetCategoryIdentifier();
+    long ident = item->GetInventoryCategory();
     FindCategory(CategoriesFirst, CategoriesLast, ident)->UpdateItemStatsForThing(thing);
 }

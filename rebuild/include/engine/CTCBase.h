@@ -74,6 +74,15 @@ public:
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?UpdateGlobalTCs@CTCBase@@SIX_N@Z (public static
     // __fastcall), retail 0x00686DC0 (landed): walks the static GlobalUpdateTCs list with `paused` in cl.
     static void __fastcall UpdateGlobalTCs(bool paused);                 // 0x00686DC0
+#ifdef FABLE_RETAIL_CTCBASE_GLOBALUPDATETCS
+    // NF95 opt-in (q11245, row 0x00686DF0 RemoveFromGlobalTCs): Ego_d.pdb PUB32
+    // ?GlobalUpdateTCs@CTCBase@@1V?$list@PAVCTCBase@@V?$allocator@PAVCTCBase@@@std@@@std@@A (protected static; Ego_r.pdb / FableWin.pdb name
+    // its `dynamic initializer` / `atexit destructor` for 'CTCBase::GlobalUpdateTCs'), retail 0x013BA8AC: RemoveFromGlobalTCs calls its
+    // list<CTCBase*>::remove 0x004CC150 with ecx = 0x013BA8AC. Needs stlport/fable_containers.h. Declaration only: no layout change.
+protected:
+    static std::list<CTCBase*> GlobalUpdateTCs;                          // 0x013BA8AC
+public:
+#endif
     virtual ~CTCBase();                                                  // slot 0  0x00687050 (scalar deleting); 0x00686830
 protected:
     virtual void OnSerialise(CPersistContext&, bool);                    //  1 0x00686960

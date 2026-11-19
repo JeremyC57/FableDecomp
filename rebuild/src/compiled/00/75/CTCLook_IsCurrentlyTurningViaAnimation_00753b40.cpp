@@ -1,4 +1,7 @@
 // CTCLook::IsCurrentlyTurningViaAnimation() -- true when the owner's interface-90 component reports a state of kind 7 whose list is non-empty and whose +0x51 bit 1 is clear
+// Leaf: ?IsCurrentlyTurningViaAnimation@CTCLook@@QBE_NXZ
+// NF93 (q11256): CTCLook::IsCurrentlyTurningViaAnimation is const (Ego_r.pdb / FableWin.pdb ?IsCurrentlyTurningViaAnimation@CTCLook@@QBE_NXZ,
+//   engine/CTCLook.h); the local declaration respelled const.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753B40, length 95 bytes.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (the interface-map search), the component's
@@ -57,10 +60,10 @@ class CTCLook
 { public:
     void*   __vftable;                              // +0x00 (CTCBase)
     CThing* m_pThing;                               // +0x04 (CTCBase owner)
-    bool IsCurrentlyTurningViaAnimation();
+    bool IsCurrentlyTurningViaAnimation() const;
 };
 
-bool CTCLook::IsCurrentlyTurningViaAnimation()
+bool CTCLook::IsCurrentlyTurningViaAnimation() const
 {
     CTCTurnSource* source;
     m_pThing->GetInterface(TC_INTERFACE_90, &source);

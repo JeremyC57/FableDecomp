@@ -1,0 +1,76 @@
+entry	address	status	binders_respelled	note
+q11225	0x0042B687	done	1	self row respelled (RENAMES s1) + binder 0x0064A3A1; 0x005A30A1 already right
+q11227	0x005BD33C	done	3	self row ABE (RENAMES s1) + binders 0x005BDB94 / 0x005BDC08 / 0x005BDCDC; 0x005BDCB4 already right
+q11228	0x005BDCDC	done	0	self row respelled onto the header (RENAMES s1); binder 0x005BDD8C already right; callee 0x005BD0F7 self row still CCategory_Retail (NAME_FIXES)
+q11229	0x00774D20	deferred: held by acctB	0	HELD.txt
+q11231	0x005D9270	done	0	self row re-authored (RENAMES s1); sole binder 0x005BEDCB already right
+q11233	0x013BAE80	done	1	data symbol: binder 0x008959B0 respelled; 0x005BEDCB already right (3 abs refs: 0x005BEF4B / 0x005BEF60 in 0x005BEDCB, 0x00895A03 in 0x008959B0)
+q11234	0x005BD9B2	done	1	binder 0x005BDD04 respelled (and its own stand-in name fixed, RENAMES s1); its callers 0x00581A6D / 0x005B34D5 / 0x005C2E2A followed (two of them self renames)
+q11235	0x005BD4CE	done	0	self row re-authored (RENAMES s1); sole binder 0x005BD9B2 already right
+q11236	0x005BC479	blocked: port	0	self row 0x005BC479 already right; binders 0x005BD9B2 / 0x005BF060 / 0x005BF5A4 right; the one wrong binder 0x005BDEC1 needs a port (STATUS)
+q11237	0x005BDE50	blocked: port	0	self row right; the one wrong binder 0x005C150B needs the 0x005BC450 one-definition scaffolding first (STATUS)
+q11240	0x005BF4A3	done	3	self row right; binders 0x005BF8CB (also self-renamed, RENAMES s1), 0x005BFB96 and 0x005BF91A (found by probe) respelled
+q11241	0x005D91F0	done	1	self row right; binder 0x005BF414 respelled; its own stand-in name and the FindCategory stand-in for 0x005C08D3 go to NAME_FIXES
+q11245	0x004CC150	done	1	self symbol already right; binder 0x00686DF0 respelled (0x004C8050 / 0x004C9D60 already right); the container global 0x013BA8AC spelling to NAME_FIXES for its other binders
+q11253	0x006924B0	open	0	
+q11254	0x01436EA0	open	0	
+q11255	0x00754E70	open	0	
+q11258	0x005BE8D3	open	0	
+q11259	0x005BE8B1	open	0	
+q11263	0x00669580	open	0	
+q11267	0x004379D0	open	0	
+q11268	0x009899B0	open	0	
+q11273	0x009D1260	open	0	
+q11276	0x004A9730	open	0	
+q11278	0x004A9730	open	0	
+q11279	0x00878430	open	0	
+q11285	0x006E3B30	open	0	
+q11292	0x00643BE2	open	0	
+q11294	0x007E8A20	open	0	
+q11299	0x00442D50	open	0	
+q11300	0x004430F0	open	0	
+q11304	0x009D8650	open	0	
+q11306	0x00BBA1E0	open	0	
+q11308	0x00498410	open	0	
+q11310	0x009BCE70	open	0	
+q11313	0x013CA7F0	open	0	
+q11320	0x009F18F0	open	0	
+q11325	0x008645E0	open	0	
+q11330	0x00589402	open	0	
+q11331	0x00643BE2	open	0	
+q11335	0x007554C0	open	0	
+q11340	0x00906AC0	open	0	
+q11341	0x00906B00	open	0	
+q11344	0x009E9B20	open	0	
+q11345	0x009F18F0	open	0	
+q11347	0x00C52C40	open	0	
+q11353	0x005E1CB0	open	0	
+q11354	0x00A82BE0	open	0	
+q11357	0x00680050	open	0	
+q11359	0x005E1CB0	open	0	
+q11360	0x00A82BE0	open	0	
+q11365	0x006C06D0	open	0	
+q11372	0x00738A80	open	0	
+q11373	0x00C1C3F0	open	0	
+q11374	0x00C1C330	open	0	
+q11376	0x00437870	open	0	
+q11377	0x0066DC50	open	0	
+q11381	0x01436EB0	open	0	
+q11383	0x00C402E0	open	0	
+q11384	0x00C40370	open	0	
+q11386	0x00C1C330	open	0	
+q11387	0x00C1C3F0	open	0	
+q11388	0x00C1C330	open	0	
+q11389	0x00733B70	open	0	
+q11394	0x009F49A0	open	0	
+q11400	0x0063FD40	open	0	
+q11402	0x00518340	open	0	
+q11405	0x00C5A500	open	0	
+q11406	0x00C5CE40	open	0	
+q11409	0x00C6BE60	open	0	
+q11414	0x00C77800	deferred: held by acctB	0	HELD.txt
+q11419	0x0085B2A0	open	0	
+q11429	0x005148D0	open	0	
+q11434	0x005384DD	open	0	
+q11436	0x005698A0	open	0	
+q11442	0x0129CBA4	open	0	

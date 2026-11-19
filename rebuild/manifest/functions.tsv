@@ -6785,7 +6785,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004db806	RbTree_Clear_004db806	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db806.cpp
 004db82f	Alloc_24ByteStruct_3	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc24ByteStruct3_004db82f.cpp
 004db853	clear	std::_Rb_tree<EHeroExperienceStatCategory, std::pair<EHeroExperienceStatCategory const, float>, std::_Select1st<std::pair<EHeroExperienceStatCategory const, float> >, std::less<EHeroExperienceStatCategory >, std::allocator<std::pair<EHeroExperienceStatCategory const, float> > >	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db853.cpp
-004db88a	RbTree_Clear_004db88a	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db88a.cpp
+004db88a	clear	std::_Rb_tree<long, std::pair<long const, CDefString>, std::_Select1st<std::pair<long const, CDefString> >, std::less<long >, std::allocator<std::pair<long const, CDefString> > >	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db88a.cpp
 004db8b3	Alloc_24ByteStruct_4	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc24ByteStruct4_004db8b3.cpp
 004db8d7	Alloc_40ByteStruct	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc40ByteStruct_004db8d7.cpp
 004db8fb	Alloc_32ByteStruct	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc32ByteStruct_004db8fb.cpp
@@ -11773,7 +11773,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bd427	GetContinuedCategoryRepeatDelay	NInventory::CTCInventoryBase	__thiscall	float	1	CTCWeapon *	1	yes	accepted									
 005bd44a	GetInitialItemRepeatDelay	NInventory::CTCInventoryBase	__thiscall	float	1	CTCWeapon *	1	yes	accepted									
 005bd46d	GetContinuedItemRepeatDelay	NInventory::CTCInventoryBase	__thiscall	float	1	CTCWeapon *	1	yes	accepted									
-005bd4ce	CIVCountedPointer_Assign_005bd4ce	_global	__thiscall	bool	1	CTCWeapon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCWeapon_IsAnalogueLoading_005bd4ce.cpp
+005bd4ce	IsTrackingSelectedItems	NInventory::CTCInventoryBase	__thiscall	bool	1	CTCWeapon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCWeapon_IsAnalogueLoading_005bd4ce.cpp
 005bd4ea	OpenInventory	NInventory::CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
 005bd597	CloseInventory	NInventory::CTCInventoryBase	__thiscall	void	2	CCategory *,bool	1	yes	accepted									
 005bd5db	GetCategoryWithAssociationThing	CTCInventoryBase	__thiscall	CCategory *	2	CTCInventoryBase *,CThing *	1	yes	accepted									
@@ -11793,8 +11793,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bdc08	SelectPreviousCategory	CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
 005bdc77	GetInventoryGuildValidity	CTCInventoryBase	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted									
 005bdcb4	HighlightNextItem	NInventory::CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
-005bdcdc	HighlightPreviousItem	CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
-005bdd04	SelectHighlightedItem	CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,bool *	1	yes	accepted									
+005bdcdc	HighlightPreviousItem	NInventory::CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
+005bdd04	SelectHighlightedItem	NInventory::CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,bool *	1	yes	accepted									
 005bdd39	GlobalUpdate	NInventory::CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,bool	1	yes	accepted									
 005bdd8c	ProcessInventoryInputUp	NInventory::CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
 005bddb8	ProcessInventoryInputDown	NInventory::CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
@@ -11803,7 +11803,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bde96	GetNumberOfItemsOfTypeInCategory	NInventory::CCategory	__thiscall	long	2	CCategory *,long	1	yes	accepted									
 005bdec1	SelectItemOfType	CCategory	__thiscall	void	2	CCategory *,long	1	yes	accepted									
 005bdf08	GetNumberOfItemsOfTypeInInventory	CTCInventoryBase	__thiscall	long	2	CTCInventoryBase *,long	1	yes	accepted									
-005bdfb1	SelectItemWithDefIndex	CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,long	1	yes	accepted									
+005bdfb1	SelectItemWithDefIndex	NInventory::CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,long	1	yes	accepted									
 005be028	OnItemAdded	NInventory::CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,long,bool,bool	1	yes	accepted									
 005be119	GetInventoryShoppingValidity	CTCInventoryBase	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted									
 005be284	SetNumberOfSelectedItemOwned	CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,long	1	yes	accepted									
@@ -11833,7 +11833,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bf2ed	IsSpaceInInventoryForItem	NInventory::CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCInventoryBase_GetItemDescription_005bf2ed.cpp
 005bf30d	GetAmountOfItemsContainable	NInventory::CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CTCInventoryBase_GetItemDescription_005bf30d.cpp
 005bf32d	AddItemToInventory	NInventory::CTCInventoryBase	__thiscall	bool	7	CTCInventoryBase *,long,long,bool,bool,long,bool	1	yes	accepted									
-005bf3c6	RemoveItemFromInventory	CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
+005bf3c6	RemoveItemFromInventory	NInventory::CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
 005bf3f1	GetItemOfTypeInInventory	NInventory::CTCInventoryBase	__thiscall	CThing *	2	CTCInventoryBase *,long	1	yes	accepted									
 005bf414	UpdateItemStatsForThing	NInventory::CTCInventoryBase	__thiscall	CWideString	1	CTCInventoryStats *	1	yes	accepted									
 005bf482	GetAllItems	NInventory::CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *	1	yes	accepted									
@@ -11843,7 +11843,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bf5a4	AddItem	NInventory::CCategory	__thiscall	bool	4	CCategory *,CThing *,bool,long	1	yes	accepted									
 005bf654	AddItemToInventory	NInventory::CTCInventoryBase	__thiscall	bool	6	CTCInventoryBase *,CThing *,bool,bool,long,bool	1	yes	accepted									
 005bf77d	GetResurrectionItemInInventory	CTCInventoryBase	__thiscall	CThing *	1	CTCInventoryBase *	1	yes	accepted									
-005bf8cb	InitialiseInventoryWithItems	CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,vector<NInventory::CItem,std::allocator<NInventory::CItem>_> *	1	yes	accepted									
+005bf8cb	InitialiseInventoryWithItems	NInventory::CTCInventoryBase	__thiscall	void	2	CTCInventoryBase *,vector<NInventory::CItem,std::allocator<NInventory::CItem>_> *	1	yes	accepted									
 005bf91a	ReturnAllConfiscatedItems	NInventory::CTCInventoryBase	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
 005bf969	RemoveAllConfiscatedItems	NInventory::CTCInventoryBase	unknown	undefined	0		0	yes	accepted									
 005bf97d	GetAllNonEmptyInventoryItemsInCategory	CCategory	__thiscall	void	3	CCategory *,vector<NInventory::CItem,std::allocator<NInventory::CItem>_> *,bool	1	yes	accepted									
@@ -11882,7 +11882,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005c0800	operator=	CCountedPointer<std::vector<CCharString, std::allocator<CCharString> >>	__thiscall	CCountedPointer<class_CTexture> *	2	CCountedPointer<CTexture> *,CCountedPointer<class_CTexture> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CCountedPointerCTexture_operator_005c0800.cpp
 005c0822	RbTreeIterator_PreIncrement_005c0822	_global	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CRegion_SetMiniMapRegionExitTextOffsetX_005c0822.cpp
 005c08c0	find_if	std	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\std_Umove_005c08c0.cpp
-005c08d3	_Umove<EWeaponClass*>	std::vector<EWeaponClass,std::allocator<EWeaponClass>_>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\std_Umove_005c08d3.cpp
+005c08d3	find_if	std	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\std_Umove_005c08d3.cpp
 005c08e6	CItem	NInventory::CItem	__thiscall	CEnginePrimitive2DText *	2	CEnginePrimitive2DText *,CEnginePrimitive2DText *	1	yes	accepted									
 005c0923	vfunc_0	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005c0932	_Vector_base	std::_Vector_base<NInventory::CItem, std::allocator<NInventory::CItem> >	unknown	undefined	0		0	yes	accepted									
@@ -11917,7 +11917,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005c144a	_M_allocate_and_copy<NInventory::CItem const *>	std::vector<NInventory::CItem, std::allocator<NInventory::CItem>>	__fastcall	void	3	ulong *,long,int *	1	yes	accepted									
 005c1474	Forward_CForwarder_005c1474	_unattributed	__thiscall	undefined	2	CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *	0	yes	accepted									
 005c1489	Forward_CForwarder_005c1489	_unattributed	__thiscall	undefined	2	CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *	0	yes	accepted									
-005c14a6	CNavigationLayer	CNavQuadTree::CNavigationLayer	__thiscall	undefined	1	CNavigationLayer *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CNavigationLayer_CNavigationLayer_005c14a6.cpp
+005c14a6	CPerItemData	NInventory::CPerItemData	__thiscall	undefined	1	CNavigationLayer *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CNavigationLayer_CNavigationLayer_005c14a6.cpp
 005c14c4	CPerItemData	CPerItemData	__thiscall	undefined	2	CPerItemData *,CPerItemData *	0	yes	accepted									
 005c150b	operator()	CIsSameItemType	__thiscall	bool	2	CIsSameItemType *,CItem *	1	yes	accepted									
 005c1537	`scalar deleting destructor'	NInventory::CPerItemData	__thiscall	void *	2	CLandscapeBackgroundLoadTask *,uint	1	yes	accepted									
@@ -12157,7 +12157,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005d9050	GetCategoryIdentifier	NInventory::CCategory	__thiscall	EInventoryCategoryIdentifier	1	CCategory *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CCategory_GetCategoryIdentifier_005d9050.cpp
 005d9070	GetDescription	CTCInventoryItem	__thiscall	CWideString	1	CTCInventoryItem *	1	yes	accepted									
 005d91f0	GetInventoryCategory	CTCInventoryItem	__thiscall	EInventoryCategoryIdentifier	1	CCategory *	1	yes	accepted									
-005d9270	IsAnalogueLoading	CTCWeapon	__thiscall	bool	1	CTCWeapon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CTCWeapon_IsAnalogueLoading_005d9270.cpp
+005d9270	IsToNotPersistUntilQuestCompleted	CTCInventoryItem	__thiscall	bool	1	CTCWeapon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CTCWeapon_IsAnalogueLoading_005d9270.cpp
 005d92b0	GetTutorialCategory	CTCInventoryItem	__thiscall	EInventoryCategoryIdentifier	1	CCategory *	1	yes	accepted									
 005d92d0	GetEngineGraphic	CTCInventoryItem	__thiscall	CEngineGraphic *	1	CTCInventoryItem *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CTCInventoryItem_GetEngineGraphic_005d92d0.cpp
 005d92f0	GetStartingRightHandedSet	CTCInventoryItem	__thiscall	CRightHandedSet	1	CTCInventoryItem *	1	yes	accepted									

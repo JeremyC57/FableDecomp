@@ -1,0 +1,114 @@
+address	change	grade	test	grades_used	entries	note
+0x0042B687	ported: self rename (allocator V); row-local STLport model -> fable_containers.h explicit instantiation	RELOCATION_MATCH	PASS	2	q11225	test unchanged (self-contained); grade 2 = old-row relocation dump
+0x0064A3A1	ported: binder respelled: push_back 0x0042B687 + GetScriptSpriteBySymbol QBE 0x0064A37B; moved onto engine/NPlayerGui_CDrawQuestInfo.h	RELOCATION_MATCH	PASS	3	q11225	overlay opt-in FABLE_RETAIL_CDRAWQUESTINFO_ORACLESYMBOLPUSHBACK; 2 SRC_FAIL grades (missing prerequisite defines)
+0x005BD33C	ported: self rename QBE -> ABE (access only; private: on the existing local declaration)	RELOCATION_MATCH	PASS	1	q11227	header port not attempted: row models CInventoryDef / CTCInventoryBase locally (pre-existing)
+0x005BDB94	ported: binder respelled PlayCategoryChangeSound -> ?PlayInventoryMovementSound@CTCInventoryBase@NInventory@@ABEXXZ (0x005BD33C)	RELOCATION_MATCH	PASS	2	q11227	header port SRC_FAIL: CCategory::Selected private in the retail header; retail inlines SetAsSelected(false) (work/005bdb94_headerport_srcfail.cpp); kept the existing local model
+0x005BDC08	ported: binder respelled PlayCategoryChangeSound -> ?PlayInventoryMovementSound@CTCInventoryBase@NInventory@@ABEXXZ (0x005BD33C)	RELOCATION_MATCH	PASS	1	q11227	claimed (not in rows.txt); same local-model note as 0x005BDB94
+0x005BDCDC	ported: self rename CTCInventoryBase_Retail -> NInventory::CTCInventoryBase; moved onto engine/NInventory_CTCInventoryBase.h; binds PlayInventoryMovementSound ABE + CCategory::HighlightPreviousItem	RELOCATION_MATCH	PASS	1	q11227,q11228	overlay opt-in FABLE_RETAIL_CCATEGORY_HIGHLIGHTPREVIOUSITEM
+0x005BDD8C	not-a-binder: already binds ?HighlightPreviousItem@CTCInventoryBase@NInventory@@QAEXXZ and ?SelectPreviousCategory@CTCInventoryBase@NInventory@@QAEXXZ (probe compile; reloc_bindings stale)	RELOCATION_MATCH	-	1	q11228	
+0x005D9270	ported: self rename CTCWeapon_IsAnalogueLoading (free stand-in) -> CTCInventoryItem::IsToNotPersistUntilQuestCompleted const, re-authored on engine/CTCInventoryItem.h + CInventoryItemDef.h	MATCH	PASS	2	q11231	FABLE_RETAIL_CDEFPOINTER_RELEASE_POINTEE orders the byte load before the decrement (NF89 lesson); test self-contained, unchanged; file slug moves
+0x008959B0	ported: binder respelled ?g_lastFishWeight_013bae80@@3JA -> ?MostRecentFishWeight@CTCFish@@2MA (0x013BAE80); CTCFish_Retail + local enum ETCInterfaceType empty replaced by engine/CTCFish.h / ETCInterfaceType.h	RELOCATION_MATCH	PASS	2	q11233	leaf line added (UBE virtual); test self-contained, unchanged
+0x005BDD04	ported: self rename CTCInventoryBase_Retail -> NInventory::CTCInventoryBase; moved onto engine/NInventory_CTCInventoryBase.h; call binds ?SelectHighlightedItem@CCategory@NInventory@@QAEXAA_N@Z (0x005BD9B2)	RELOCATION_MATCH	PASS	1	q11234	
+0x00581A6D	ported: binder respelled ?SelectHighlightedItem@CTCInventoryBase@@QAEXAA_N@Z -> NInventory spelling (0x005BDD04); moved onto engine/CTCInventory.h PASS22	RELOCATION_MATCH	PASS	2	q11234	claimed (not in rows.txt); 1 SRC_FAIL (missing ETCInterfaceType include)
+0x005B34D5	ported: self rename CTCInventoryClothing_Retail -> CTCInventoryClothing (UAE); binds SelectHighlightedItem 0x005BDD04 + base ProcessButtonAReleased 0x005BC65C on the headers	RELOCATION_MATCH	PASS	1	q11234	claimed; overlay opt-in FABLE_RETAIL_CTCINVENTORYCLOTHING_PROCESSBUTTONARELEASED; vtable-only reference (0x01243654)
+0x005C2E2A	ported: self rename CTCInventoryWeapons_Retail -> CTCInventoryWeapons (UAE; catalog module was CTCInventoryClothing); binds 0x005BDD04 + 0x005BC65C on the headers	RELOCATION_MATCH	PASS	1	q11234	claimed; overlay opt-in FABLE_RETAIL_CTCINVENTORYWEAPONS_PROCESSBUTTONARELEASED; vtable-only reference (0x012540DC)
+0x005BD4CE	ported: self rename free CTCWeapon_IsAnalogueLoading -> NInventory::CTCInventoryBase::IsTrackingSelectedItems const, re-authored on engine/NInventory_CTCInventoryBase.h + CInventoryDef.h	MATCH	PASS	2	q11235	overlay nested opt-in FABLE_RETAIL_CTCINVENTORYBASE_GETPDEF_INLINE (PASS22 + PDEF); 1 SRC_FAIL (GetPDef declared twice); file slug moves
+0x005BDEC1	blocked: port (CCategory::SelectItemOfType still binds ?SetSelectedItemIndex@CCategory_Retail@@QAEXJ@Z for 0x005BC479)	DIFFER-not-graded	-	0	q11236	claimed; models CItem_Methods / CItemVector / SItemMemFun / SItemTypeBinder / CTCInventoryBase_Calls / CCategory_Retail locally and calls the find_if stand-in FindItemOfType (0x005C13E3, itself a row-local STLport model); moving it needs std::binder2nd / const_mem_fun1_ref_t in stlport/fable_algorithm.h and the 0x005C13E3 self row on the shared spelling first; slot 33 is OnItemSelected(long, bool&) (the uninitialised bool, not an empty tag)
+0x005C150B	blocked: port (CIsSameItemType::operator() binds ?IsSlotFull@CItem_Methods@@QAE_NXZ for 0x005BDE50; own leaf ??RCIsSameItemType@@QBE_NPAVCItem@@@Z vs PDB ??RCIsSameItemType@@QBE_NABVCItem@NInventory@@@Z)	not-graded	-	0	q11237	claimed; retail keeps ecx across IsSameItemTypeAsDefIndex 0x005BC450, which the row gets from a same-TU noinline body under the stand-in CItem_Methods; on the header (CCategory.h ITEMQUERIES CIsSameItemType + NInventory::CItem) that body must be a header noinline inline, which clashes with the strong 0x005BC450 self row unless 0x005BC450 takes the nf86/nf88 pick-any scaffolding first (one-definition link proof needed)
+0x005BDE50	not-a-binder: self row already ?IsSlotFull@CItem@NInventory@@QBE_NXZ (callers.py self leaf; binders 0x005BF060 / 0x005BF103 / 0x005BF19C / 0x005BF5A4 on the header)	-	-	0	q11237	only wrong binder is 0x005C150B (blocked)
+0x005BF8CB	ported: self rename CTCInventoryBase_Retail -> NInventory::CTCInventoryBase::InitialiseInventoryWithItems (AAE); moved onto the header; callee AddItem stand-in -> ?AddInventoryItem@CTCInventoryBase@NInventory@@AAE_NABVCItem@2@@Z	RELOCATION_MATCH	PASS	2	q11240	1 SRC_FAIL (needs CONFISCATED for the complete CItem); caller 0x005BF9E3 already binds the PDB spelling
+0x005BFB96	ported: binder respelled ?AddItem@CTCInventoryBase@NInventory@@QAEXABVCItem@2@@Z -> ?AddInventoryItem@CTCInventoryBase@NInventory@@AAE_NABVCItem@2@@Z (0x005BF4A3)	RELOCATION_MATCH	PASS	1	q11240	declaration respelled in the pre-existing local model (private, bool); the row binds other stand-ins (CItemVector, CSerialisedItemsPointer, GetAllNonEmptyInventoryItems with UCItemVector) not in this entry
+0x005BF91A	ported: binder respelled ?AddItem@CTCInventoryBase@NInventory@@QAEXABUCItem_Retail@@@Z -> ?AddInventoryItem@..AAE_NABVCItem@2@@Z (0x005BF4A3) and ?erase@CItemVector@@.. -> STLport vector<NInventory::CItem>::erase (0x005C1ECC); moved onto the header	RELOCATION_MATCH	PASS	2	q11240	claimed (not in rows.txt, not in WORKLIST: found by probe; grade 1 = probe of the landed row)
+0x005BF414	ported: binder respelled ?GetCategoryIdentifier@CTCInventoryItem@@QBEJXZ -> ?GetInventoryCategory@CTCInventoryItem@@QBEJXZ (0x005D91F0), declaration in the pre-existing local model	RELOCATION_MATCH	PASS	3	q11241	header port (work/005bf414_headerport_differ103v110.cpp) binds every symbol right but DIFFER 103v110 (register choice; 2 grades, 1 of them SRC_FAIL); own name still the stand-in CTCInventoryBase_Retail (NAME_FIXES)
+0x00686DF0	ported: binder respelled ?Remove@GContainer@@QAEXPAPAVCTCBase@@@Z -> STLport list<CTCBase*>::remove (0x004CC150) and the container ?g_container@@3UGContainer@@A -> ?GlobalUpdateTCs@CTCBase@@1V?$list@PAVCTCBase@@V?$allocator@PAVCTCBase@@@std@@@std@@A (0x013BA8AC)	RELOCATION_MATCH	PASS	1	q11245	overlay opt-in FABLE_RETAIL_CTCBASE_GLOBALUPDATETCS (Ego_d PUB32, protected static); GContainer stand-in gone
+0x004CC150	not-a-binder: self row already defines ?remove@?$list@PAVCTCBase@@V?$allocator@PAVCTCBase@@@std@@@std@@QAEXABQAVCTCBase@@@Z (probe compile)	RELOCATION_MATCH	-	1	q11245	row-local STLport model kept (descriptive-by-library; not changed)
+0x004165E8	open: entry not reached (long-slice pause)	-	-	0		
+0x00437870	open: entry not reached (long-slice pause)	-	-	0		
+0x004379D0	open: entry not reached (long-slice pause)	-	-	0		
+0x00442D50	open: entry not reached (long-slice pause)	-	-	0		
+0x004430F0	open: entry not reached (long-slice pause)	-	-	0		
+0x00498410	open: entry not reached (long-slice pause)	-	-	0		
+0x004A9730	open: entry not reached (long-slice pause)	-	-	0		
+0x005148D0	open: entry not reached (long-slice pause)	-	-	0		
+0x00518340	open: entry not reached (long-slice pause)	-	-	0		
+0x005384DD	open: entry not reached (long-slice pause)	-	-	0		
+0x0055FC90	open: entry not reached (long-slice pause)	-	-	0		
+0x005698A0	open: entry not reached (long-slice pause)	-	-	0		
+0x0058A729	open: entry not reached (long-slice pause)	-	-	0		
+0x005BC479	open: entry not reached (long-slice pause)	-	-	0		
+0x005BD9B2	open: entry not reached (long-slice pause)	-	-	0		
+0x005BE8B1	open: entry not reached (long-slice pause)	-	-	0		
+0x005BE8D3	open: entry not reached (long-slice pause)	-	-	0		
+0x005BF4A3	open: entry not reached (long-slice pause)	-	-	0		
+0x005C2086	open: entry not reached (long-slice pause)	-	-	0		
+0x005D91F0	open: entry not reached (long-slice pause)	-	-	0		
+0x005E1CB0	open: entry not reached (long-slice pause)	-	-	0		
+0x005E21F0	open: entry not reached (long-slice pause)	-	-	0		
+0x005E2320	open: entry not reached (long-slice pause)	-	-	0		
+0x00628E80	open: entry not reached (long-slice pause)	-	-	0		
+0x00629390	open: entry not reached (long-slice pause)	-	-	0		
+0x006294A0	open: entry not reached (long-slice pause)	-	-	0		
+0x0062D890	open: entry not reached (long-slice pause)	-	-	0		
+0x0062DAD0	open: entry not reached (long-slice pause)	-	-	0		
+0x0063E950	open: entry not reached (long-slice pause)	-	-	0		
+0x0063FD40	open: entry not reached (long-slice pause)	-	-	0		
+0x00643BE2	open: entry not reached (long-slice pause)	-	-	0		
+0x00654438	open: entry not reached (long-slice pause)	-	-	0		
+0x006562E7	open: entry not reached (long-slice pause)	-	-	0		
+0x0065F0FA	open: entry not reached (long-slice pause)	-	-	0		
+0x00669580	open: entry not reached (long-slice pause)	-	-	0		
+0x0066DC50	open: entry not reached (long-slice pause)	-	-	0		
+0x00680050	open: entry not reached (long-slice pause)	-	-	0		
+0x006924B0	open: entry not reached (long-slice pause)	-	-	0		
+0x0069F0F0	open: entry not reached (long-slice pause)	-	-	0		
+0x006A7610	open: entry not reached (long-slice pause)	-	-	0		
+0x006C06D0	open: entry not reached (long-slice pause)	-	-	0		
+0x006C0C90	open: entry not reached (long-slice pause)	-	-	0		
+0x006E3B30	open: entry not reached (long-slice pause)	-	-	0		
+0x00718650	open: entry not reached (long-slice pause)	-	-	0		
+0x00733B70	open: entry not reached (long-slice pause)	-	-	0		
+0x00738A80	open: entry not reached (long-slice pause)	-	-	0		
+0x00751C70	open: entry not reached (long-slice pause)	-	-	0		
+0x00754E70	open: entry not reached (long-slice pause)	-	-	0		
+0x007554C0	open: entry not reached (long-slice pause)	-	-	0		
+0x00788D68	open: entry not reached (long-slice pause)	-	-	0		
+0x007C9180	open: entry not reached (long-slice pause)	-	-	0		
+0x007E7FD0	open: entry not reached (long-slice pause)	-	-	0		
+0x007E8A20	open: entry not reached (long-slice pause)	-	-	0		
+0x007ED450	open: entry not reached (long-slice pause)	-	-	0		
+0x00829D90	open: entry not reached (long-slice pause)	-	-	0		
+0x00842A20	open: entry not reached (long-slice pause)	-	-	0		
+0x0085B2A0	open: entry not reached (long-slice pause)	-	-	0		
+0x008645E0	open: entry not reached (long-slice pause)	-	-	0		
+0x00878430	open: entry not reached (long-slice pause)	-	-	0		
+0x00906AC0	open: entry not reached (long-slice pause)	-	-	0		
+0x00906B00	open: entry not reached (long-slice pause)	-	-	0		
+0x00913F30	open: entry not reached (long-slice pause)	-	-	0		
+0x009143E0	open: entry not reached (long-slice pause)	-	-	0		
+0x0095B020	open: entry not reached (long-slice pause)	-	-	0		
+0x0097FEA0	open: entry not reached (long-slice pause)	-	-	0		
+0x009899B0	open: entry not reached (long-slice pause)	-	-	0		
+0x009BCE70	open: entry not reached (long-slice pause)	-	-	0		
+0x009D1260	open: entry not reached (long-slice pause)	-	-	0		
+0x009D1320	open: entry not reached (long-slice pause)	-	-	0		
+0x009D8650	open: entry not reached (long-slice pause)	-	-	0		
+0x009E9B20	open: entry not reached (long-slice pause)	-	-	0		
+0x009F49A0	open: entry not reached (long-slice pause)	-	-	0		
+0x00A82BE0	open: entry not reached (long-slice pause)	-	-	0		
+0x00A83570	open: entry not reached (long-slice pause)	-	-	0		
+0x00B24690	open: entry not reached (long-slice pause)	-	-	0		
+0x00B25D80	open: entry not reached (long-slice pause)	-	-	0		
+0x00B32660	open: entry not reached (long-slice pause)	-	-	0		
+0x00B328C0	open: entry not reached (long-slice pause)	-	-	0		
+0x00B33010	open: entry not reached (long-slice pause)	-	-	0		
+0x00B47310	open: entry not reached (long-slice pause)	-	-	0		
+0x00BBC130	open: entry not reached (long-slice pause)	-	-	0		
+0x00C1C330	open: entry not reached (long-slice pause)	-	-	0		
+0x00C1C3F0	open: entry not reached (long-slice pause)	-	-	0		
+0x00C402E0	open: entry not reached (long-slice pause)	-	-	0		
+0x00C40370	open: entry not reached (long-slice pause)	-	-	0		
+0x00C418F0	open: entry not reached (long-slice pause)	-	-	0		
+0x00C5A500	open: entry not reached (long-slice pause)	-	-	0		
+0x00C5B300	open: entry not reached (long-slice pause)	-	-	0		
+0x00C5CE40	open: entry not reached (long-slice pause)	-	-	0		
+0x0122A6C0	open: entry not reached (long-slice pause)	-	-	0		

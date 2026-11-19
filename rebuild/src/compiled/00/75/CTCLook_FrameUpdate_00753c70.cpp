@@ -15,6 +15,8 @@
 // Shape: the stop-looking reset and the interface-8 head state are written out inline (retail inlines those two state
 //   setters and the first look-timer update; the later ones are calls).
 // Name fix (agentNF6 2026-11-10): CTCLook::SetBodyMoving 0x00752E00 is private (?SetBodyMoving@CTCLook@@AAEXXZ, Ego_r.pdb / FableWin.pdb).
+// NF93 (q11256): CTCLook::IsCurrentlyTurningViaAnimation is const (Ego_r.pdb / FableWin.pdb ?IsCurrentlyTurningViaAnimation@CTCLook@@QBE_NXZ,
+//   engine/CTCLook.h); the local declaration respelled const.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 struct CTCBaseComponent;
@@ -85,7 +87,7 @@ class CTCLook : public CTCBase { public:
     void FrameUpdateOverriddenByParent();                  // 0x00753080
     void ImplementHeadSettings();                          // 0x00753BA0
     bool IsAbleToTurnDaBody();                             // 0x00751DA0
-    bool IsCurrentlyTurningViaAnimation();                 // 0x00753B40
+    bool IsCurrentlyTurningViaAnimation() const;                 // 0x00753B40
     void SetBodyMovingViaAnimation();                      // 0x00753930
     void UpdateLookTimer();                                // 0x00751AD0
 private:

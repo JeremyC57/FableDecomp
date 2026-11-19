@@ -1,0 +1,51 @@
+addr       parity           behav  name
+004db88a   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCDefString@@@std@@@2@@Z -> 004da27f labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+004db88a   RELOCATION_MATCH PASS   _global::RbTree_Clear_004db88a
+005bdfb1   WARN RELOC_NAME: ??$find_if@PAVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@YIPAVCCategory@NInventory@@PAV12@0VCIsInventoryCategory@2@@Z -> 005c08d3 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+005bdfb1   RELOCATION_MATCH PASS   CTCInventoryBase::SelectItemWithDefIndex
+005bec92   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005bec92   WARN RELOC_NAME: ?IsAugmentation@@YI_NJ@Z -> 005d97f0 labelled 'CTCInventoryItem::IsWeapon'
+005bec92   WARN RELOC_NAME: ??0CPerItemData@NInventory@@QAE@XZ -> 005c14a6 labelled 'CNavQuadTree::CNavigationLayer::CNavigationLayer'
+005bec92   RELOCATION_MATCH PASS   NInventory::CItem::AddItem
+005bf3c6   WARN RELOC_NAME: ??$find_if@PAVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@YIPAVCCategory@NInventory@@PAV12@0VCIsInventoryCategory@2@@Z -> 005c08d3 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+005bf3c6   RELOCATION_MATCH PASS   CTCInventoryBase::RemoveItemFromInventory
+005c06c3   MATCH            PASS   std::__find_if
+005c08d3   WARN STANDIN_LEAF ??$find_if@PAVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@YIPAVCCategory@NInventory@@PAV12@0VCIsInventoryCategory@2@@Z (catalog std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>; names another function)
+005c08d3   RELOCATION_MATCH PASS   std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>
+005c14a6   WARN STANDIN_LEAF ??0CPerItemData@NInventory@@QAE@XZ (catalog CNavQuadTree::CNavigationLayer::CNavigationLayer; names another function)
+005c14a6   MATCH            PASS   CNavQuadTree::CNavigationLayer::CNavigationLayer
+006655a0   WARN SHARED_HEADER_AVAILABLE CBulletTimeManager
+006655a0   WARN SHARED_HEADER_AVAILABLE CWorld
+006655a0   WARN SHARED_HEADER_AVAILABLE CThing
+006655a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006655a0   WARN SHARED_HEADER_AVAILABLE CTCHaste
+006655a0   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+006655a0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+006655a0   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+006655a0   WARN RELOC_NAME: ?GetTurnAnimationSpeed@CTCLook@@QAEMXZ -> 00751b70 labelled '_unattributed::GetFloatThrough_0x14_0x44_00751b70'
+006655a0   WARN RELOC_NAME: ?GetMinStrikeSpeed@CTCHeroExperience@@QAEMXZ -> 006d6530 labelled '_unattributed::GetFloatThrough_0x58_0xf4_006d6530'
+006655a0   WARN RELOC_NAME: ?GetMaxStrikeSpeed@CTCHeroExperience@@QAEMXZ -> 006d6540 labelled '_unattributed::GetFloatThrough_0x58_0xf0_006d6540'
+006655a0   WARN RELOC_NAME: ?GetWorld@CThing@@QAEPAVCWorld@@XZ -> 004c7ab0 labelled 'CThing::PeekWorld'
+006655a0   RELOCATION_MATCH PASS   CThingCreatureBase::GetAnimationSpeedMultiplier
+00753b40   WARN SHARED_HEADER_AVAILABLE CThing
+00753b40   RELOCATION_MATCH PASS   CTCLook::IsCurrentlyTurningViaAnimation
+00753c70   WARN SHARED_HEADER_AVAILABLE CThing
+00753c70   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00753c70   WARN SHARED_HEADER_AVAILABLE CTCBase
+00753c70   RELOCATION_MATCH PASS   CTCLook::FrameUpdate
+0086bf70   RELOCATION_MATCH PASS   CRandomAppearanceMorph::GetRandomMorphSet
+008c2980   RELOCATION_MATCH PASS   CCombatAction_WillForcePushInto::FinishAction
+
+WINS: 12
+  004db88a RELOCATION_MATCH _global::?clear@?$_Rb_tree@JU?$pair@$$CBJVCDefString@@@std@@U?$_Select1st@U?$pair@$$CBJVCDefString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@2@@std@@QAEXXZ
+  005bdfb1 RELOCATION_MATCH CTCInventoryBase::?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z
+  005bec92 RELOCATION_MATCH NInventory::CItem::?AddItem@CItem@NInventory@@QAEXJJJ@Z
+  005bf3c6 RELOCATION_MATCH CTCInventoryBase::?RemoveItemFromInventory@CTCInventoryBase@NInventory@@UAEXJJ@Z
+  005c06c3 MATCH std::??$__find_if@PAVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@YIPAVCCategory@NInventory@@PAV12@0VCIsInventoryCategory@2@ABUrandom_access_iterator_tag@0@@Z
+  005c08d3 RELOCATION_MATCH std::??$find_if@PAVCCategory@NInventory@@VCIsInventoryCategory@2@@std@@YIPAVCCategory@NInventory@@PAV12@0VCIsInventoryCategory@2@@Z
+  005c14a6 MATCH NInventory::CPerItemData::??0CPerItemData@NInventory@@QAE@XZ
+  006655a0 RELOCATION_MATCH CThingCreatureBase::?GetAnimationSpeedMultiplier@CThingCreatureBase
+  00753b40 RELOCATION_MATCH CTCLook::?IsCurrentlyTurningViaAnimation@CTCLook@@QBE_NXZ
+  00753c70 RELOCATION_MATCH CTCLook::FrameUpdate
+  0086bf70 RELOCATION_MATCH CRandomAppearanceMorph::?GetRandomMorphSet@CRandomAppearanceMorph@@QBEXAAKAAVCMorphSet@1@_N@Z
+  008c2980 RELOCATION_MATCH CCombatAction_WillForcePushInto::?FinishAction@CCombatAction_WillForcePushInto@@UAEXXZ

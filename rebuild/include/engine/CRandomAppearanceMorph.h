@@ -54,6 +54,12 @@ public:
  // Opt-in (chunk Q7, row 0x0086BFB0): Ego_r.pdb ?TransferBinaryIn@CRandomAppearanceMorph@@QAEXAAVCMemoryDataInputStream@@@Z.
  void TransferBinaryIn(CMemoryDataInputStream& stream);
 #endif
+#ifdef FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_GETRANDOMMORPHSET
+ // NF93 opt-in (round 8, q11250 / q11251 row 0x0086BF70): Ego_r.pdb (0x00857780) + FableWin.pdb
+ // ?GetRandomMorphSet@CRandomAppearanceMorph@@QBEXAAKAAVCMorphSet@1@_N@Z (public const), out of line in retail at 0x0086BF70.
+ // Declaration only: no layout change.
+ void GetRandomMorphSet(unsigned long& seed,CMorphSet& morph_set,bool flag) const;            // 0x0086BF70
+#endif
 protected:
  CArray<CArray<CBodyPartMesh> > BodyParts;
  CArray<TTextureMorphMap> BodyPartTextureMorphs;

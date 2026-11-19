@@ -14,6 +14,8 @@
 // Layout: retail CThing interface bitset +0x20 / map +0x44, dead flag +0x91 bit 0; retail CThingCreatureBase current
 //   action +0x100 (PDB view 0x10 larger). Action: +0x20 / +0x24 longs, +0x61 finished byte. World +0x68 bullet time
 //   (+0x4 dword, +0xc byte).
+// NF93 (q11256): CTCLook::IsCurrentlyTurningViaAnimation is const (Ego_r.pdb / FableWin.pdb ?IsCurrentlyTurningViaAnimation@CTCLook@@QBE_NXZ,
+//   engine/CTCLook.h); the local declaration respelled const.
 #include "fable_compiler.h"
 #include <math.h>
 class CTCBase;
@@ -71,7 +73,7 @@ class CCreatureActionBase { public:
     bool          Finished;                     // +0x61
 };
 class CTCLook { public:
-    bool IsCurrentlyTurningViaAnimation();      // 0x00753B40
+    bool IsCurrentlyTurningViaAnimation() const;      // 0x00753B40
     float GetTurnAnimationSpeed();              // 0x00751B70
 };
 class CTCHaste { public: float GetActionSpeedMultiplier(); };          // 0x007FFFB0

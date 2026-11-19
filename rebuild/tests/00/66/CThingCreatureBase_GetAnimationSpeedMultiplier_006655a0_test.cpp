@@ -83,7 +83,7 @@ class CCreatureActionBase { public:
     bool          Finished;                     // +0x61
 };
 class CTCLook { public:
-    bool IsCurrentlyTurningViaAnimation();      // 0x00753B40
+    bool IsCurrentlyTurningViaAnimation() const;      // 0x00753B40
     float GetTurnAnimationSpeed();              // 0x00751B70
 };
 class CTCHaste { public: float GetActionSpeedMultiplier(); };          // 0x007FFFB0
@@ -179,7 +179,7 @@ static int g_attack = 0, g_useAction = 0, g_useStrike = 0, g_turning = 0;
 bool CCreatureActionBase::IsAttack() { return g_attack != 0; }
 bool CCreatureActionBase::UsesActionSpeed() { return g_useAction != 0; }
 bool CCreatureActionBase::UsesStrikeSpeed() { return g_useStrike != 0; }
-bool CTCLook::IsCurrentlyTurningViaAnimation() { return g_turning != 0; }
+bool CTCLook::IsCurrentlyTurningViaAnimation() const { return g_turning != 0; }
 float CTCLook::GetTurnAnimationSpeed() { return 4.0f; }
 float CTCHaste::GetActionSpeedMultiplier() { return 3.0f; }
 float CTCHeroExperience::GetMeleeStrikeAnimationSpeedMultiplier() { return 1.5f; }

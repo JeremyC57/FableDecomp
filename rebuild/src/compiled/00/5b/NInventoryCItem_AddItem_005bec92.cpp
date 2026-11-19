@@ -1,5 +1,8 @@
 // NInventory::CItem::AddItem(long, long, long) -- add items of a type
 // Leaf: ?AddItem@CItem@NInventory@@QAEXJJJ@Z
+// NF93 (q11232): the local CPerItemData / CCountedPointer_PerItemData / CItem stand-ins replaced by engine/NInventory_CTCInventoryBase.h
+//   (CItem, CPerItemData with its inline ctor, CCountedPointer<CPerItemData>): the ctor call 0x005C14A6 now binds
+//   ??0CPerItemData@NInventory@@QAE@XZ (FableWin.pdb) and Reset 0x005C1946 the CCountedPointer<NInventory::CPerItemData> member.
 // Callees (NF14): CDefinitionManager::GetDef<CThingBaseDef> const 0x0042AF3C, CDefClassBase::GetSubDef<CObjectAugmentationsDef> const
 //   0x0042AF9E (its StatGetTypeName literal 0x0122FF9C is "CObjectAugmentationsDef"; was spelt GetSubDef<CAugmentationDef>).
 #include "fable_compiler.h"
@@ -13,11 +16,17 @@ bool __fastcall IsAugmentation(long itemType);     // 0x005D97F0
 // NF64 (round 7, q10639): the local vector<T> stand-in replaced by stlport/fable_containers.h; both members are vector<long> in Ego_r.pdb
 //   (CObjectAugmentationsDef::InitialAugmentations, CPerItemData::Augmentations). resize kept out of line (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE),
 //   binding ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0.
+#define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTCINVENTORYITEM
 #define FABLE_RETAIL_CTCINVENTORYITEM_GETMAXNUMBEROFITEMS
 #include "engine/CTCInventoryItem.h"
 #define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
 #include "stlport/fable_containers.h"
+#define FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
+#define FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA
+#define FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA_CTOR
+#define FABLE_RETAIL_NINVENTORY_CITEM_ADDITEM
+#include "engine/NInventory_CTCInventoryBase.h"
 struct CDefBase {
     virtual void v00();
     virtual void Destroy();                        // slot 1
@@ -88,27 +97,7 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0,
     return true;
 }
 #pragma auto_inline(on)
-struct CPerItemData {                              // 0x24 bytes
-    std::vector<long> SlotValues;                  // +0x00 (Ego_r.pdb CPerItemData::Augmentations, vector<long>)
-    unsigned char _body[0x24 - 0x0c];
-    CPerItemData();                                // 0x005C14A6
-};
-struct CCountedPointer_PerItemData {
-    CPerItemData* m_pObject;
-    void*         m_pCount;
-    void Reset(CPerItemData* object);              // 0x005C1946
-};
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
-namespace NInventory {
-class CItem { public:                              // NInventory::CItem (Ego_r.pdb / FableWin.pdb; the engine/CItem.h layout, PPerItemData as its counted pointer)
-    long                        ItemType;          // +0x00
-    long                        NumberOfItems;     // +0x04
-    CCountedPointer_PerItemData PPerItemData;      // +0x08
-    long                        AverageBoughtPrice;   // +0x10
-    void AddItem(long itemType, long number, long price);   // Ego_r.pdb ?AddItem@CItem@NInventory@@QAEXJJJ@Z
-};
-}
-
 void NInventory::CItem::AddItem(long itemType, long number, long price)
 {
     if (NumberOfItems == 0) {
@@ -126,9 +115,9 @@ void NInventory::CItem::AddItem(long itemType, long number, long price)
             }
             CDefHolder<CObjectAugmentationsDef> augmentation(raw);
             if (found) {
-                PPerItemData.m_pObject->SlotValues.resize(augmentation->NumberOfSlots, 0);
-                for (unsigned long i = 0; i < augmentation->InitialAugmentations.size() && i < PPerItemData.m_pObject->SlotValues.size(); ++i)
-                    PPerItemData.m_pObject->SlotValues[i] = augmentation->InitialAugmentations[i];
+                PPerItemData->Augmentations.resize(augmentation->NumberOfSlots, 0);
+                for (unsigned long i = 0; i < augmentation->InitialAugmentations.size() && i < PPerItemData->Augmentations.size(); ++i)
+                    PPerItemData->Augmentations[i] = augmentation->InitialAugmentations[i];
             }
         }
     }

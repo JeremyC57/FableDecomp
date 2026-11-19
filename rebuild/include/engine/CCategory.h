@@ -92,6 +92,11 @@ public:
  long GetUniqueItemCountInCategory() const;                                                    // 0x005BC8AC
  void HighlightNextItem();                                                                     // 0x005BD054
 #endif
+#ifdef FABLE_RETAIL_CCATEGORY_HIGHLIGHTPREVIOUSITEM
+ // NF95 opt-in (q11228, row 0x005BDCDC CTCInventoryBase::HighlightPreviousItem): Ego_r.pdb (0x00620025) + FableWin.pdb (0x02362ABB)
+ // ?HighlightPreviousItem@CCategory@NInventory@@QAEXXZ (public), out of line at 0x005BD0F7 (the tail jump at 0x005BDCFF). Declaration only.
+ void HighlightPreviousItem();                                                                 // 0x005BD0F7
+#endif
 #ifdef FABLE_RETAIL_CCATEGORY_NUMBEROFSLOTS
  // NF89 opt-in (row 0x005BD328): Ego_r.pdb (0x00620102) + FableWin.pdb ?GetNumberOfSlots@CCategory@NInventory@@QBEJXZ (const), out of line at
  // 0x005BD1CF (the def's NumberOfSlots). Declaration only.
@@ -106,6 +111,16 @@ public:
  // NF89 opt-in (row 0x0059C6B0): Ego_r.pdb + FableWin.pdb ?AddItem@CCategory@NInventory@@QAE_NJ_NJJ@Z (0x005BF060; the (long, bool, long, long)
  // overload, public). Declaration only.
  bool AddItem(long itemDefIndex, bool silent, long price, long count);                         // 0x005BF060
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_REMOVEITEM
+ // NF94 opt-in (round 8, q11226 row 0x0059C747): Ego_r.pdb + FableWin.pdb ?RemoveItem@CCategory@NInventory@@QAEXJJ@Z (0x005BF221, public).
+ // Declaration only.
+ void RemoveItem(long itemDefIndex, long count);                                               // 0x005BF221
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_SELECTITEMOFTYPE
+ // NF93 opt-in (round 8, q11239 row 0x005BDFB1 CTCInventoryBase::SelectItemWithDefIndex): Ego_r.pdb (0x00620BE3) + FableWin.pdb
+ // ?SelectItemOfType@CCategory@NInventory@@QAEXJ@Z (public), out of line in retail at 0x005BDEC1. Declaration only.
+ void SelectItemOfType(long itemDefIndex);                                                      // 0x005BDEC1
 #endif
 #ifdef FABLE_RETAIL_CCATEGORY_GETPDEF
  // NF90 opt-in (round 7, q11182 row 0x005BE85B GetSlotWithItemsOfType): FableWin.pdb

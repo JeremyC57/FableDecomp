@@ -13,6 +13,9 @@
 // +0x6C, SelectedCategoryIndex +0x70, SerialisedItems +0x78, SerialisedSelectedItems +0x80, MenuDisplayListItem +0x94,
 // MenuDisplayListCategory +0xA0, ConfiscatedItems +0xAC; NInventory::CItem 20 bytes, count at +0.
 // Leaf: ?Copy@CTCInventoryBase
+// Names (NF95, 2026-11-19, queue q11240): the helper 0x005BF4A3 respelled from the made-up AddItem to Ego_r.pdb 0x00622247 / FableWin.pdb
+//   0x0236BE37 ?AddInventoryItem@CTCInventoryBase@NInventory@@AAE_NABVCItem@2@@Z (private, bool; the landed self row's leaf). The row keeps
+//   its pre-existing local models (a header port was not attempted).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -95,7 +98,9 @@ class CTCInventoryBase : public CTCBase { public:
     CLongVector MenuDisplayListCategory;               // +0xa0
     CItemVector ConfiscatedItems;                      // +0xac
     void GetAllNonEmptyInventoryItems(CItemVector& items, bool b) const;   // 0x005BFA44
-    void AddItem(const CItem& item);                   // 0x005BF4A3
+private:
+    bool AddInventoryItem(const CItem& item);          // 0x005BF4A3 (Ego_r.pdb / FableWin.pdb: private, returns bool)
+public:
     virtual void Copy(const CTCInventoryBase* other);
 };
 
@@ -117,7 +122,7 @@ void CTCInventoryBase::Copy(const CTCInventoryBase* other)
     CItem* item = items._M_start;
     for (unsigned long i = 0; i < count; ++i, ++item)
         if (item->Count > 0)
-            AddItem(*item);
+            AddInventoryItem(*item);
     CTCBase::Copy(*other);
 }
 }

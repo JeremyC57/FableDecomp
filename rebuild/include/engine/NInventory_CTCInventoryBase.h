@@ -326,7 +326,11 @@ protected:
  void SetQuestPersistentFlagForItems(bool);
  void UpdateNonQuestPersistentRefCountForItems(bool);
  CThing * CreateInventoryObject(long);
+#ifndef FABLE_RETAIL_CTCINVENTORYBASE_GETPDEF_INLINE
+ // NF95 nested opt-in (q11235, row 0x005BD4CE IsTrackingSelectedItems): with FABLE_RETAIL_CTCINVENTORYBASE_PDEF, whose inline GetPDef (retail
+ // inlines it: the CDefPointer copy) replaces this out-of-line declaration in a PASS22 TU. Default path unchanged.
  CDefPointer<CInventoryDef const > GetPDef() const;
+#endif
  void SetPDef(long);
  void SelectItemWithDefIndex(long);
  void DeselectAll();

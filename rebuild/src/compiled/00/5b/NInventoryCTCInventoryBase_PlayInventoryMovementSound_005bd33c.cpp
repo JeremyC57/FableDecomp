@@ -1,5 +1,5 @@
 // NInventory::CTCInventoryBase::PlayInventoryMovementSound() const -- when the game state exists, play the inventory def's movement sample non-positionally from the parent thing's sample bank (a CSoundInit with flag 0x20)
-// Leaf: ?PlayInventoryMovementSound@
+// Leaf: ?PlayInventoryMovementSound@CTCInventoryBase@NInventory@@ABEXXZ
 // Retail: Fable.exe @ 0x005BD33C, 100 bytes, `ret` (thiscall, no arguments). Ego_r.pdb
 // Sound manager (agentSND2, 2026-11-10): engine/CASoundManager.h PSoundManager, slot 9 Get2DEmitter (the manager's 2-D
 //   CASoundEmitter, slot 3 PlaySample) and engine/CSoundInit.h (GainFaderBits +0x14); was a local CGameState / CSoundPlayer /
@@ -15,6 +15,9 @@
 // Shape: frame-pointer size TU; the sound player is fetched into a local BEFORE the def pointer is copied (add-ref after the
 // virtual call), the copy's add-ref is null-tested but its release is not (`dec [esi+4] ; jne ; call [vt+4]`: the local copy
 // is released by hand on the already-dereferenced pointer).
+// Names (NF95, 2026-11-19, queue q11227): access-only self rename QBE -> ABE (private const), as Ego_r.pdb 0x0061F35E / FableWin.pdb
+//   0x02368DC8 and the PASS22 complete-methods block of engine/NInventory_CTCInventoryBase.h declare it; the landed callers 0x005BDB94 /
+//   0x005BDC08 / 0x005BDCB4 / 0x005BDCDC bind ABE.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CASoundBank;
@@ -38,7 +41,8 @@ public:
     CThing*        ParentThing;                         // +0x04 (CTCBase)
     unsigned char  _pad08[0x68 - 0x08];
     CInventoryDef* PDef;                                // +0x68 CDefPointer<const CInventoryDef>::Object
-    void PlayInventoryMovementSound() const;
+private:
+    void PlayInventoryMovementSound() const;           // Ego_r.pdb / FableWin.pdb: private const (ABE)
 };
 void CTCInventoryBase::PlayInventoryMovementSound() const
 {

@@ -27,6 +27,11 @@ public:
 };
 class CTCInventoryWeapons : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_PROCESSBUTTONARELEASED
+    // NF95 opt-in (q11234, row 0x005C2E2A): Ego_r.pdb (0x00624FB7) + FableWin.pdb (0x0238044C) ?ProcessButtonAReleased@CTCInventoryWeapons@@UAEXXZ,
+    // an override of the base virtual. Declaration only: no layout change.
+    virtual void ProcessButtonAReleased();                                               // 0x005C2E2A
+#endif
     virtual NUISystem::CComponent* ConstructScreen(NUISystem::CComponent* parent);       // slot 77 0x005C8459
     virtual NUISystem::CComponent* ConstructScreenPC(NUISystem::CComponent* parent);     // slot 87 0x005C9A95
     CCountedPointer<NUISystem::CComponent> ConstructAugEntry(bool, std::vector<std::pair<long, long> >&, NUISystem::CViewport*);   // 0x005C574E
@@ -147,10 +152,10 @@ public:
     virtual NHeroInformationScreens::EScreenType GetScreenType() const;
 #endif // FABLE_RETAIL_CTCINVENTORYWEAPONS_HISCREEN
 };
-FABLE_STATIC_ASSERT(sizeof(CTCInventoryWeapons) == 0x1A0);   // 0x19C of members, rounded to the base's 8-byte alignment (double LastRenderTime)
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryWeapons, PActiveMeleeWeapon) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryWeapons, ActiveWeaponPrimitiveHandles) == 0x154);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryWeapons, WeaponMenuItemMap) == 0x170);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryWeapons, WeaponsList) == 0x17C);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryWeapons, AvailableWeaponsEntries) == 0x198);
+FABLE_STATIC_ASSERT_AT(150, sizeof(CTCInventoryWeapons) == 0x1A0);   // 0x19C of members, rounded to the base's 8-byte alignment (double LastRenderTime)
+FABLE_STATIC_ASSERT_AT(151, offsetof(CTCInventoryWeapons, PActiveMeleeWeapon) == 0x134);
+FABLE_STATIC_ASSERT_AT(152, offsetof(CTCInventoryWeapons, ActiveWeaponPrimitiveHandles) == 0x154);
+FABLE_STATIC_ASSERT_AT(153, offsetof(CTCInventoryWeapons, WeaponMenuItemMap) == 0x170);
+FABLE_STATIC_ASSERT_AT(154, offsetof(CTCInventoryWeapons, WeaponsList) == 0x17C);
+FABLE_STATIC_ASSERT_AT(155, offsetof(CTCInventoryWeapons, AvailableWeaponsEntries) == 0x198);
 #endif // FABLE_ENGINE_CTCINVENTORYWEAPONS_H

@@ -62,6 +62,11 @@ class CTCInventoryClothing
 #endif
 {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_PROCESSBUTTONARELEASED
+    // NF95 opt-in (q11234, row 0x005B34D5): Ego_r.pdb (0x0055ED72) + FableWin.pdb (0x01E27000) ?ProcessButtonAReleased@CTCInventoryClothing@@UAEXXZ,
+    // the override in vtable slot 58 (0x0124356C). Requires FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE (the base). Declaration only: no layout change.
+    virtual void ProcessButtonAReleased();                                                  // 0x005B34D5
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN
     NUISystem::CComponent* ConstructScreenPC(NUISystem::CComponent* parent);                // 0x005B8743 (Ego_r 0x005641A2, QAE)
     void ConstructTitleString(CWideString& title);                                          // 0x005B6881 (Ego_r 0x00560917)
@@ -262,19 +267,19 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCInventoryClothing) == 0x170);
+FABLE_STATIC_ASSERT_AT(265, sizeof(CTCInventoryClothing) == 0x170);
 #ifndef FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE
 #ifndef FABLE_RETAIL_CTCINVENTORYCLOTHING_VSLOTS
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(268, offsetof(CTCInventoryClothing, __vftable) == 0x0);
 #endif
 #endif
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, ClothingMenuEntries) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, CurrentClothingSelected) == 0x140);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, MorphPrimitiveHandles) == 0x14c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, PMannequin) == 0x158);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, UseMannequin) == 0x15c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, LoadedFromSaveGame) == 0x15d);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, ClothingItemMap) == 0x160);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, ClothingList) == 0x16c);
+FABLE_STATIC_ASSERT_AT(271, offsetof(CTCInventoryClothing, ClothingMenuEntries) == 0x134);
+FABLE_STATIC_ASSERT_AT(272, offsetof(CTCInventoryClothing, CurrentClothingSelected) == 0x140);
+FABLE_STATIC_ASSERT_AT(273, offsetof(CTCInventoryClothing, MorphPrimitiveHandles) == 0x14c);
+FABLE_STATIC_ASSERT_AT(274, offsetof(CTCInventoryClothing, PMannequin) == 0x158);
+FABLE_STATIC_ASSERT_AT(275, offsetof(CTCInventoryClothing, UseMannequin) == 0x15c);
+FABLE_STATIC_ASSERT_AT(276, offsetof(CTCInventoryClothing, LoadedFromSaveGame) == 0x15d);
+FABLE_STATIC_ASSERT_AT(277, offsetof(CTCInventoryClothing, ClothingItemMap) == 0x160);
+FABLE_STATIC_ASSERT_AT(278, offsetof(CTCInventoryClothing, ClothingList) == 0x16c);
 
 #endif // FABLE_ENGINE_CTCINVENTORYCLOTHING_H

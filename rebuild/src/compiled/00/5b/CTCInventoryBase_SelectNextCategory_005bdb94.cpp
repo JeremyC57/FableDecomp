@@ -14,6 +14,10 @@
 #define CCategory CCategoryDonor
 #include "engine/CCategory.h"
 #undef CCategory
+// Names (NF95, 2026-11-19, queue q11227): the sound helper 0x005BD33C respelled from the made-up PlayCategoryChangeSound to the PDB
+//   ?PlayInventoryMovementSound@CTCInventoryBase@NInventory@@ABEXXZ (private const). The header port (engine/NInventory_CTCInventoryBase.h)
+//   is not done: retail inlines CCategory::SetAsSelected(false) (`cmp byte [eax+28h],0 ; je ; mov byte [eax+28h],0`, the 0x005BC934
+//   body with a constant false) and the header's CCategory::Selected is private with SetAsSelected out of line.
 #pragma optimize("s", on)
 
 namespace NInventory {
@@ -83,7 +87,9 @@ class CTCInventoryBase { public:
     float         CategoryMovement;                  // +0x8C
     float         CategoryMovementDirection;         // +0x90
 
-    void PlayCategoryChangeSound();                  // 0x005BD33C
+private:
+    void PlayInventoryMovementSound() const;         // 0x005BD33C (Ego_r.pdb 0x0061F35E / FableWin.pdb 0x02368DC8: private const)
+public:
     void SelectNextCategory();
     void SelectPreviousCategory();
 };
@@ -91,7 +97,7 @@ class CTCInventoryBase { public:
 void CTCInventoryBase::SelectNextCategory()
 {
     if (Categories.size() > 1 && InventorySelectionState == 0) {
-        PlayCategoryChangeSound();
+        PlayInventoryMovementSound();
         CCategory& category = Categories[SelectedCategoryIndex];
         if (category.Selected)
             category.Selected = false;

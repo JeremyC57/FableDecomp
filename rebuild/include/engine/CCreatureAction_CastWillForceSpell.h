@@ -9,6 +9,22 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTWILLFORCESPELL_CLASS
+// NF93 opt-in (round 8, q11261 / q11262 row 0x008C2980 CCombatAction_WillForcePushInto::FinishAction): the polymorphic retail class on
+// CCombatActionBase (0x114; ghidra_out/rtti_bases.tsv .?AVCCreatureAction_CastWillForceSpell@@ : CCombatActionBase) with its own members
+// ImmediateCast +0x114, OneAnimCast +0x115, LevelToCast +0x118 (sizeof 0x11c, as below). The (creature, level, bool, animation) ctor is
+// Ego_r.pdb ??0CCreatureAction_CastWillForceSpell@@QAE@AAVCThingCreatureBase@@J_NABVCCharString@@@Z, out of line in retail at 0x008BB200;
+// the implicit destructor reaches ~CCombatActionBase 0x0062E900. Needs engine/CCombatActionBase.h (retail) and fable_string.h first.
+class CCreatureAction_CastWillForceSpell : public CCombatActionBase {
+public:
+    CCreatureAction_CastWillForceSpell(CThingCreatureBase& creature, long level_to_cast, bool one_anim_cast, const CCharString& anim_name);   // 0x008BB200
+protected:
+    bool ImmediateCast;                                                  // +0x114
+    bool OneAnimCast;                                                    // +0x115
+    long LevelToCast;                                                    // +0x118
+};
+#else
+
 #pragma pack(push, 1)
 class CCreatureAction_CastWillForceSpell {
 public:
@@ -80,10 +96,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastWillForceSpell) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillForceSpell, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillForceSpell, ImmediateCast) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillForceSpell, OneAnimCast) == 0x115);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillForceSpell, LevelToCast) == 0x118);
+FABLE_STATIC_ASSERT_AT(83, sizeof(CCreatureAction_CastWillForceSpell) == 0x11c);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_CastWillForceSpell, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_CastWillForceSpell, ImmediateCast) == 0x114);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_CastWillForceSpell, OneAnimCast) == 0x115);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CCreatureAction_CastWillForceSpell, LevelToCast) == 0x118);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_CASTWILLFORCESPELL_CLASS
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTWILLFORCESPELL_H

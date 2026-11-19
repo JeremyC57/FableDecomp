@@ -1,0 +1,51 @@
+addr       parity           behav  name
+0042b687   RELOCATION_MATCH PASS   std::list<long, std::allocator<long>>::push_back
+00581a6d   RELOCATION_MATCH PASS   CTCInventory::ProcessButtonAReleased
+005b34d5   RELOCATION_MATCH PASS   CTCInventoryClothing::ProcessButtonAReleased
+005bd33c   WARN SHARED_HEADER_AVAILABLE CInventoryDef
+005bd33c   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005bd33c   RELOCATION_MATCH PASS   NInventory::CTCInventoryBase::PlayInventoryMovementSound
+005bd4ce   MATCH            PASS   _global::CIVCountedPointer_Assign_005bd4ce
+005bdb94   RELOCATION_MATCH PASS   CTCInventoryBase::SelectNextCategory
+005bdc08   RELOCATION_MATCH PASS   CTCInventoryBase::SelectPreviousCategory
+005bdcdc   RELOCATION_MATCH PASS   CTCInventoryBase::HighlightPreviousItem
+005bdd04   RELOCATION_MATCH PASS   CTCInventoryBase::SelectHighlightedItem
+005bf414   WARN SHARED_HEADER_AVAILABLE CThing
+005bf414   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+005bf414   WARN SHARED_HEADER_AVAILABLE CCategory
+005bf414   WARN RELOC_NAME: ?FindCategory@@YIPAVCCategory@NInventory@@PAV12@0J@Z -> 005c08d3 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+005bf414   RELOCATION_MATCH PASS   NInventory::CTCInventoryBase::UpdateItemStatsForThing
+005bf8cb   RELOCATION_MATCH PASS   CTCInventoryBase::InitialiseInventoryWithItems
+005bf91a   RELOCATION_MATCH PASS   NInventory::CTCInventoryBase::ReturnAllConfiscatedItems
+005bfb96   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005bfb96   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005bfb96   WARN SHARED_HEADER_AVAILABLE CItem
+005bfb96   WARN SHARED_HEADER_AVAILABLE CTCBase
+005bfb96   WARN RELOC_NAME: ??1CItemVector@@QAE@XZ -> 005c1e30 labelled '_global::StdList_Dtor_005c1e30'
+005bfb96   RELOCATION_MATCH PASS   NInventory::CTCInventoryBase::Copy
+005c2e2a   RELOCATION_MATCH PASS   CTCInventoryWeapons::ProcessButtonAReleased
+005d9270   WARN STANDIN_LEAF ?IsToNotPersistUntilQuestCompleted@CTCInventoryItem@@QBE_NXZ (catalog CTCWeapon::IsAnalogueLoading; names another function)
+005d9270   MATCH            PASS   CTCWeapon::IsAnalogueLoading
+0064a3a1   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuestInfo::OracleSymbolPushBack
+00686df0   RELOCATION_MATCH PASS   CTCBase::RemoveFromGlobalTCs
+008959b0   RELOCATION_MATCH PASS   CGameScriptInterface::UpdateFishWeight
+
+WINS: 18
+  0042b687 RELOCATION_MATCH std::list<long>::?push_back@?$list@JV?$allocator@J@std@@@std@@QAEXABJ@Z
+  00581a6d RELOCATION_MATCH CTCInventory::?ProcessButtonAReleased@CTCInventory@@UAEXXZ
+  005b34d5 RELOCATION_MATCH CTCInventoryClothing::?ProcessButtonAReleased@CTCInventoryClothing@@UAEXXZ
+  005bd33c RELOCATION_MATCH NInventory::CTCInventoryBase::?PlayInventoryMovementSound@CTCInventoryBase@NInventory@@ABEXXZ
+  005bd4ce MATCH _global::?IsTrackingSelectedItems@CTCInventoryBase@NInventory@@QBE_NXZ
+  005bdb94 RELOCATION_MATCH CTCInventoryBase::SelectNextCategory
+  005bdc08 RELOCATION_MATCH CTCInventoryBase::SelectPreviousCategory
+  005bdcdc RELOCATION_MATCH CTCInventoryBase::?HighlightPreviousItem@CTCInventoryBase@NInventory@@QAEXXZ
+  005bdd04 RELOCATION_MATCH CTCInventoryBase::?SelectHighlightedItem@CTCInventoryBase@NInventory@@QAEXAA_N@Z
+  005bf414 RELOCATION_MATCH NInventory::CTCInventoryBase::UpdateItemStatsForThing
+  005bf8cb RELOCATION_MATCH CTCInventoryBase::?InitialiseInventoryWithItems@CTCInventoryBase@NInventory@@AAEXABV?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@Z
+  005bf91a RELOCATION_MATCH NInventory::CTCInventoryBase::?ReturnAllConfiscatedItems@CTCInventoryBase@NInventory@@UAEXXZ
+  005bfb96 RELOCATION_MATCH NInventory::CTCInventoryBase::?Copy@CTCInventoryBase
+  005c2e2a RELOCATION_MATCH CTCInventoryWeapons::?ProcessButtonAReleased@CTCInventoryWeapons@@UAEXXZ
+  005d9270 MATCH CTCWeapon::?IsToNotPersistUntilQuestCompleted@CTCInventoryItem@@QBE_NXZ
+  0064a3a1 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::?OracleSymbolPushBack@CDrawQuestInfo@NPlayerGui@@QAEXABVCCharString@@@Z
+  00686df0 RELOCATION_MATCH CTCBase::?RemoveFromGlobalTCs@CTCBase@@QAEXXZ
+  008959b0 RELOCATION_MATCH CGameScriptInterface::?UpdateFishWeight@CGameScriptInterface@@UBEXABVCScriptThing@@@Z

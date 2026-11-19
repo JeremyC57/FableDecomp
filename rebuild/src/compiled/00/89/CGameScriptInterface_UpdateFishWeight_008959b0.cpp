@@ -1,7 +1,10 @@
 // CGameScriptInterface::UpdateFishWeight(const CScriptThing& thing) const -- copy the weight (+0x14) of the valid script thing's fish component (interface type 0xdc) into the global last-fish weight @ 0x013BAE80
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008959B0, length 89 bytes.
 // Callees: the script thing validated through its virtual slot 75 (+0x12c), the thing fetched through slot 11 (+0x2c), the inlined CThing::GetInterface (the presence bitset at +0x20, CVectorMap::LowerBound @ 0x004365B0 on the map at +0x44, end or a larger key -> the end entry). Shape: the script thing in esi then the map, the weight copied through ecx, `ret 4`.
-// Leaf: UpdateFishWeight
+// Leaf: ?UpdateFishWeight@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+// Names (NF95, 2026-11-19, queue q11233): the global 0x013BAE80 is Ego_d.pdb PUB32 ?MostRecentFishWeight@CTCFish@@2MA (public static float;
+//   engine/CTCFish.h FABLE_RETAIL_CTCFISH_MOSTRECENTFISHWEIGHT, as the landed 0x005BEDCB binds it); the fish is the shared CTCFish (TCI_FISH
+//   220 = 0xDC) read through its inline GetWeight(); the local `enum ETCInterfaceType { }` empty and CTCFish_Retail stand-in are gone.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 #include "fable_compiler.h"
@@ -15,7 +18,10 @@ class CScriptThing;
 struct CDefPointer_Retail;
 struct CTCBase_Retail;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCFISH_MOSTRECENTFISHWEIGHT
+#include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 struct CThingPhysics_Retail;
@@ -66,11 +72,7 @@ struct CThing_Retail {
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-struct CTCFish_Retail {                        // interface type 0xdc
-    unsigned char _pad[0x14];
-    long          m_weight;                      // +0x14
-};
-extern long g_lastFishWeight_013bae80;           // 0x013BAE80
+#include "engine/CTCFish.h"                       // CTCFish::MostRecentFishWeight 0x013BAE80, GetWeight() (+0x14)
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -79,8 +81,8 @@ extern long g_lastFishWeight_013bae80;           // 0x013BAE80
 void CGameScriptInterface::UpdateFishWeight(const CScriptThing& thing) const
 {
     if (thing.IsAlive()) {
-        CTCFish_Retail* fish;
-        if (((CThing_Retail*)thing.GetPThing())->GetInterface(&fish, 0xdc))
-            g_lastFishWeight_013bae80 = fish->m_weight;
+        CTCFish* fish;
+        if (((CThing_Retail*)thing.GetPThing())->GetInterface(&fish, TCI_FISH))
+            CTCFish::MostRecentFishWeight = fish->GetWeight();
     }
 }
