@@ -1,0 +1,5 @@
+address	name	evidence
+00b6df90	CEngineWaterRenderer::GetIceForegroundShadowedVertexShader	reloc_bindings + Ego_r.pdb + FableWin.pdb object order
+00b6dfd0	CEngineWaterRenderer::GetIceForegroundColbuffShadowedVertexShader	reloc_bindings + Ego_r.pdb + FableWin.pdb object order
+005384dd	NUISystem::CList::AddActionOnSelected	Ego_r.pdb + FableWin.pdb object order + member offset
+00535140	std::_List_base<CCountedPointer<NUISystem::CAction>,std::allocator<CCountedPointer<NUISystem::CAction> > >::_List_base	body shape + caller use + shared-body RELOCATION_MATCH

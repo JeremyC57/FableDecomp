@@ -1,0 +1,3 @@
+00554030 std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >::operator[] RELOCATION_MATCH flags= []
+00554030 std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >::operator[] RELOCATION_MATCH flags= []
+

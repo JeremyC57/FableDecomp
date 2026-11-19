@@ -1,0 +1,1 @@
+Ego_r: release\animation_set.obj index 65 size 104

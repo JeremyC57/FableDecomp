@@ -1,0 +1,1 @@
+00b6df90 CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader MATCH flags= []

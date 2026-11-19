@@ -1,0 +1,11 @@
+address	module	name	length
+004c5b90	map<void*	operator[]	161
+0053848f	CList	AddActionOnInactive	78
+005384dd	CList	AddActionOnInactive	78
+00554030	std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >	operator[]	150
+005698a0	_global	RBTree_SearchOrCreate	150
+005dc340	CAnimationSet	GetAnim	66
+006ca8c0	CEngineTextureMorphSet	AddEngineMorph	138
+00a0ca90	CWParsedItem	InitAsFloat	187
+00b6df90	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	54
+00b6dfd0	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	54

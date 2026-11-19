@@ -1,0 +1,8 @@
+address	name	evidence
+00b6df90	CEngineWaterRenderer::GetIceForegroundShadowedVertexShader	reloc_bindings + Ego_r.pdb + FableWin.pdb object order
+00b6dfd0	CEngineWaterRenderer::GetIceForegroundColbuffShadowedVertexShader	reloc_bindings + Ego_r.pdb + FableWin.pdb object order
+005384dd	NUISystem::CList::AddActionOnSelected	Ego_r.pdb + FableWin.pdb object order + member offset
+00535140	std::_List_base<CCountedPointer<NUISystem::CAction>,std::allocator<CCountedPointer<NUISystem::CAction> > >::_List_base	body shape + caller use + shared-body RELOCATION_MATCH
+005698a0	std::map<long,CCountedPointer<CTexture> >::operator[]	caller + FableWin.pdb
+004c5b90	std::map<void*,NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>::operator[]	caller + FableWin.pdb
+00554030	std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >::operator[]	caller CTable::GetDataFromDef + header member type

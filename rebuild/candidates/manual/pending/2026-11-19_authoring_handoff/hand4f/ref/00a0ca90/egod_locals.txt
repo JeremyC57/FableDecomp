@@ -1,0 +1,12 @@
+== CWParsedItem::InitAsFloat (debug length 280)
+  bprel -32 type 0x5929a this   [CWParsedItem*]
+  bprel +8 type 0x1311 string   [const wchar_t*]
+  bprel +12 type 0x22 size   [unsigned long]
+  bprel -28 type 0x71 ch   [wchar_t]
+  bprel -24 type 0x40 top   [float]
+  bprel -17 type 0x30 doing_top   [bool]
+  bprel -16 type 0x40 bottom_divide   [float]
+  bprel -12 type 0x22 c1   [unsigned long]
+  bprel -5 type 0x30 is_negative   [bool]
+  bprel -4 type 0x40 bottom   [float]
+== CWParsedItem::InitAsFloat: no complete record

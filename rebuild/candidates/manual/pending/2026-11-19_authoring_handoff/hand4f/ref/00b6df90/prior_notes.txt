@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/STATUS.tsv: 00b6df90	PARKED	54	yes	CEngineWaterRenderer::GetIceForegroundShadowedVertexShader: Selected original-model receipt park_receipt_N077_N187_v1; lifetimegrades3, selected3 DIFFER(43v54), bothcompilerPASS and independentmainstrictPASS. See 00b6df90_SELECTED.json; previous source/test failures preserved.

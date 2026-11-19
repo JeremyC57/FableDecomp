@@ -1,0 +1,3 @@
+00554030	std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >	operator[]
+005698a0	std::map<long,CCountedPointer<CTexture> >	operator[]
+004c5b90	std::map<void*,NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>	operator[]

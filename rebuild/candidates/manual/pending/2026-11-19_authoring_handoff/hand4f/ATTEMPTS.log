@@ -1,0 +1,40 @@
+17:19	00b6df90	00b6df90.cpp	 MATCH		port to shared header, FableWin ternary
+17:19	00b6dfd0	00b6dfd0.cpp	 MATCH		twin port
+17:19	00b6df90	00b6df90.cpp	 MATCH		leaf regrade
+17:22	005dc340	5dc340_a.cpp	SRC_FAIL		A: infinite for, FableWin names
+17:22	005dc340	5dc340_a.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	A: infinite for, FableWin names
+17:22	005dc340	5dc340_d.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	d dead assert
+17:22	005dc340	5dc340_b.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	b dead assert
+17:22	005dc340	5dc340_c.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	c dead assert
+17:22	005dc340	5dc340_e.cpp	DIFFER(93v66)	ndiff 29 lens 30 44	E: FableWin loop cond, fall off end (no return)
+17:22	005dc340	5dc340_i.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	i probe dead this use
+17:22	005dc340	5dc340_j.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	j probe dead this use
+17:22	005dc340	5dc340_k.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	k probe dead this use
+17:24	005dc340	5dc340_l.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	l probe cond-folding
+17:24	005dc340	5dc340_m.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	m probe cond-folding
+17:24	005dc340	5dc340_n.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	n probe cond-folding
+17:24	005dc340	5dc340_a.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	A regrade full view
+17:25	005dc340	5dc340_o.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	o probe empty-if
+17:25	005dc340	5dc340_p.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	p probe empty-if
+17:25	005dc340	5dc340_q.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	q probe empty-if
+17:29	005dc340	5dc340_r.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	r probe trailing return
+17:29	005dc340	5dc340_s.cpp	DIFFER(88v66)	ndiff 16 lens 30 41	s probe trailing return
+17:30	005dc340	5dc340_t.cpp	DIFFER(86v66)	ndiff 21 lens 30 37	t same-TU bodies (FindFirst after / before)
+17:30	005dc340	5dc340_u.cpp	DIFFER(86v66)	ndiff 21 lens 30 37	u same-TU bodies (FindFirst after / before)
+17:30	005dc340	5dc340_v.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	v DIAGNOSTIC __assume (not landable)
+17:30	005dc340	5dc340_w.cpp	DIFFER(56v66)	ndiff 10 lens 30 26	w DIAGNOSTIC __assume (not landable)
+17:30	005dc340	5dc340_x.cpp	RELOCATION_MATCH		x DIAGNOSTIC __assume (not landable)
+17:31	005dc340	005dc340.cpp	RELOCATION_MATCH		src: FableWin loop + __assume(0) unreachable end
+17:34	0053848f	53848f_a.cpp	DIFFER(72v78)	ndiff 8 lens 30 26	a: port shared NUISystem_CList.h, noinline ctor+push_back
+17:34	0053848f	53848f_a.cpp	DIFFER(72v78)	ndiff 8 lens 30 26	a + /EHsc
+17:35	0053848f	53848f_b.cpp	RELOCATION_MATCH		b: inline list ctor, _List_base out of line
+17:35	0053848f	53848f_c.cpp	DIFFER(79v78)	ndiff 3 lens 30 31	c: inline list ctor, _List_base out of line
+17:36	0053848f	0053848f.cpp	RELOCATION_MATCH		src
+17:36	005384dd	005384dd.cpp	RELOCATION_MATCH		src twin
+17:37	00554030	554030_a.cpp	RELOCATION_MATCH		a: fable_map.h explicit instantiation like 0x553e60
+17:37	00554030	00554030.cpp	RELOCATION_MATCH		src: caller include set + map opt-ins
+17:38	005698a0	005698a0.cpp	RELOCATION_MATCH		src: shared map + scoreboard header
+17:39	004c5b90	4c5b90_a.cpp	SRC_FAIL		a: shared header + entry ctor body
+17:39	004c5b90	4c5b90_b.cpp	SRC_FAIL		b: derived typedef for protected entry
+17:40	004c5b90	4c5b90_b.cpp	RELOCATION_MATCH		b + DEF_CLASS_BASE
+17:41	004c5b90	004c5b90.cpp	RELOCATION_MATCH		src final

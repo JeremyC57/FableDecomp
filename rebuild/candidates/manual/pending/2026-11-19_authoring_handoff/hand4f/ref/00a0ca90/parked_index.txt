@@ -1,0 +1,17 @@
+addr: 00a0ca90
+status: parked
+batches: 2026-10-20_linux_hand216
+attempts: 1
+last_lens: 176v187
+bounds_class: OK
+bounds_detail: row=187 ext=187 corr=00a0ca90:187
+retries: 
+git_commits: 6d779c4f6
+skipped: 
+rebound: 
+in_findings: 
+residue_class: x87-order
+residue: DIFFER(176v187) -- x87 allocation: retail keeps only the integer part and fraction on the FPU stack and the divisor in the push-ecx frame word (fld/fmul/fstp per digit), ours keeps all three on the stack; the two bool flags swap bl/cl CWParsedItem::InitAsFloat(const wchar_t* text, unsigned long length) -- parses a decimal number (optional '-', digits, optional '.' and fraction digits) from a wide-character span into the item's float value and marks the item as a float (type 4)
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-20_linux_hand216/differ/00a0ca90.cpp
+diagnosis: x87 operand/evaluation order: VC7.1 canonicalises commutative operands and reassociates sums by operand memory class; known fixes: double locals for stack-resident components, `(float)g` per use, `x /= l` pairs, __forceinline float helpers; otherwise unfixable by source form
+work_status: classified

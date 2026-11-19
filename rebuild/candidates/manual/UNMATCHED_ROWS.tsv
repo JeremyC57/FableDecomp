@@ -173,7 +173,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006c6990	CTCHeroOpinionDeedLog	PostDeed	1168	parked	DIFFER(1183v1168)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006c6990.alt.cpp	original
 006c6e80	CTCHeroOpinionDeedLog	FrameUpdate	1264	parked	DIFFER(1220v1251)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006c6e80.cpp	original
 006c9350	CPersistTraits<CAtmosBankEntry>	TransferIn	320	parked	matched in a lane, not landed	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1018/differ/006c9350.cpp	original
-006ca8c0	CEngineTextureMorphSet	AddEngineMorph	144	reserved (hand4f, in-house)	DIFFER(128v138)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand387/differ/006ca8c0.cpp	original
+006ca8c0	CEngineTextureMorphSet	AddEngineMorph	144	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand4f; untouched)	DIFFER(128v138)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand387/differ/006ca8c0.cpp	original
 006cbac0	CTCCreatureNavigation	GetNextNavPosOnRoute	880	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_hand1024/differ/006cbac0.cpp	original
 006cbe80	CTCCreatureNavigation	GetNearestFleePositionBehindCover	752	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_hand1024/differ/006cbe80.cpp	original
 006cc270	CTCCreatureNavigation	DrawPreparePrimitivesForRendering	1088	parked	DIFFER(1035v1085)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006cc270.alt.cpp	gapscan/boundary
@@ -609,7 +609,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a04200	_global	Math_NormalizeVector2D	384	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a04200.cpp	original
 00a0be30	CCamera	SetView	80	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand518/differ/00a0be30.cpp	original
 00a0c6f0	CCamera	SetAngleYZ	320	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a0c6f0.cpp	original
-00a0ca90	CWParsedItem	InitAsFloat	240	reserved (hand4f, in-house)	DIFFER(176v187)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a0ca90.cpp	original
+00a0ca90	CWParsedItem	InitAsFloat	240	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand4f; untouched)	DIFFER(176v187)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a0ca90.cpp	original
 00a10390	_global	WordWrap_FindNextLineW	464	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a10390.cpp	original
 00a10560	_global	WordWrap_FindNextLineA	448	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand644/differ/00a10560.cpp	original
 00a10b80	WordWrap_String	TokenizeA	576	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00a10b80.cpp	original

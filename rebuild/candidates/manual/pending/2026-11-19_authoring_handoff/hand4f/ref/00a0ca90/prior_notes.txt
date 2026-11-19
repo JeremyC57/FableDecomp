@@ -1,0 +1,2 @@
+rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/NOTES.md: - **0x00A0CA90 CWParsedItem::InitAsFloat** -- 172v187 (leaf `?InitAsFloat@CWParsedItem@@QAEXPBGK@Z`): divisor homing.
+rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/STATUS.tsv: 0x00A0CA90	CWParsedItem::InitAsFloat	DIFFER(172v187)	4	172v187 on engine/CWParsedItem.h: retail keeps only the integer part and fraction on the x87 stack and homes the divisor in the push-ecx frame word (immediate 1.0f store, fld/fmul/fstp per digit, fdiv from memory) and converts the

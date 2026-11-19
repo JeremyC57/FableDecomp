@@ -1,0 +1,4 @@
+== CEngineTextureMorphSet::AddEngineMorph (debug length 111)
+  bprel -44 type 0x270e8 this   [CEngineTextureMorphSet*]
+  bprel +8 type 0x12 original_texture   [long]
+== CEngineTextureMorphSet::AddEngineMorph: no complete record

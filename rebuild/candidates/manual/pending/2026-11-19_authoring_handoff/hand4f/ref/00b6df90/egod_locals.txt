@@ -1,0 +1,4 @@
+== CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader (debug length 83)
+  bprel -4 type 0x69c29 this   [CEngineLandscapeRenderer*]
+  bprel +8 type 0x12 point_light_count   [long]
+== CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader: no complete record

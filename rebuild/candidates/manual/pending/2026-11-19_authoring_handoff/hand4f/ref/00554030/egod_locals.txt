@@ -1,0 +1,1 @@
+== std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >::operator[]: no complete record

@@ -1,0 +1,11 @@
+address	grade	bytes	test	grades_used	notes
+00b6df90	MATCH	54	PASS	2	identity CEngineWaterRenderer::GetIceForegroundShadowedVertexShader; FableWin ternary on shared header, opt-in FOREGROUNDHELPERS
+00b6dfd0	MATCH	54	PASS	1	identity CEngineWaterRenderer::GetIceForegroundColbuffShadowedVertexShader; twin text
+005dc340	RELOCATION_MATCH	66	PASS	24	FableWin loop (end + key test) + __assume(0) after the loop (unreachable end); coordinator decision on __assume
+0053848f	RELOCATION_MATCH	78	PASS	5	shared NUISystem_CList.h; inline list ctor + out-of-line _List_base (LIST_BASE_VISIBLE_NOINLINE) + PUSHBACK_NOINLINE; TU pragmas
+005384dd	RELOCATION_MATCH	78	PASS	1	shared NUISystem_CList.h; inline list ctor + out-of-line _List_base (LIST_BASE_VISIBLE_NOINLINE) + PUSHBACK_NOINLINE; TU pragmas
+00554030	RELOCATION_MATCH	150	PASS	2	shared stlport/fable_map.h operator[] + TREE_INSERT_UNIQUE_HINT_BODY + MAP_ORIGINAL_INSERT_BODY (as landed 0x00553E60)
+005698a0	RELOCATION_MATCH	150	PASS	1	shared stlport/fable_map.h operator[] + TREE_INSERT_UNIQUE_HINT_BODY + MAP_ORIGINAL_INSERT_BODY (as landed 0x00553E60)
+004c5b90	RELOCATION_MATCH	161	PASS	4	shared stlport/fable_map.h operator[] + TREE_INSERT_UNIQUE_HINT_BODY + MAP_ORIGINAL_INSERT_BODY (as landed 0x00553E60)
+006ca8c0	UNTOUCHED	138	-	0	owner wrap-up; prior DIFFER(128v138), see NOTES/HANDOFF
+00a0ca90	UNTOUCHED	187	-	0	owner wrap-up; prior DIFFER(176v187), model = landed twin 0x009B9770

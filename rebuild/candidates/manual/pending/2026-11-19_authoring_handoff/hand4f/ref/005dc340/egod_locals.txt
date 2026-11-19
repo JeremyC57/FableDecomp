@@ -1,0 +1,9 @@
+== CAnimationSet::GetAnim (debug length 557)
+  bprel -92 type 0x1990c this   [const CAnimationSet*]
+  bprel +8 type 0x2318 name   [const CCharString&]
+  bprel +12 type 0x12 entry_num   [long]
+  bprel +16 type 0x1988d filter   [const CAnimFilterBase&]
+  bprel -24 type 0x19976 start_it   [std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned long,CAnimationEntry>,std::allocator<std::pair<unsigned long,CAnimationEntry> > > >]
+  {
+    bprel -36 type 0x19976 it   [std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned long,CAnimationEntry>,std::allocator<std::pair<unsigned long,CAnimationEntry> > > >]
+== CAnimationSet::GetAnim: no complete record

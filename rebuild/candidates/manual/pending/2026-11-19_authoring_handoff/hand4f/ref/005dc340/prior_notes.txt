@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-27_linux_hand680/STATUS.tsv: 005dc340	DIFFER(56v66)	66	-	differ/005dc340.cpp
