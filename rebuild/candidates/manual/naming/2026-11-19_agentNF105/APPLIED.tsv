@@ -1,0 +1,30 @@
+entry	address	status	binders_respelled	note
+q11492	0x00C75CE0	done	1 (0x00C6A180)	self row ported onto engine/CFloatShortReverb.h (NF99 held draft); its only binder 0x00C6A180 ported in the same hand-back; binds 0x00C88E60 as B's ?ApplyFilterOrder2_quad@CReverbFnsSSE@@... (heals that existing split)
+q11493	0x00C6A180	done	1 (0x00C6A5D0)	self ported (NF99 held draft); binder ProcessReverb 0x00C6A5D0 ported (its own leaf -> ?ProcessReverb@CFloatReverbDspEngine@@MAE_NPAX_NPAPAXI@Z)
+q11512	0x00C89B40	done	1 (0x00C75CE0)	self ported (was the free stand-in CTCActivationReceptorBase_AddTrigger); heals the existing split
+q11513	0x00C89B60	done	1 (0x00C75CE0)	self + binder ported
+q11514	0x00C89750	done	2 (0x00C75CE0, 0x00C75E90)	self + both binders ported
+q11515	0x00C89AA0	done	2 (0x00C75CE0, 0x00C75E90)	self + both binders ported
+q11517	0x0143CCDC	blocked	12 family rows now bind ?m_pDSP@CReverbDspProcessor@@1PAVCReverbFns@@A	blocked: closure. Existing split left: 0x00C6A8B0 (?Backend_0143ccdc@@3PAUBackend@@A), 0x00C74360 (?s_pOps@CDspObject@@2PAVCDspOps@@A), 0x00C74420 / 0x00C74450 (?s_pSharedTable@CVtable_012bf050@@2PAXA), 0x00C74480 (?s_pSharedTable@CVtable_012BF050@@2PAXA) still bind stand-ins; they define the CReverbDspProcessor ctor / dtor / CreateProcessor through stand-in classes and must move together (class port, not a respell). No new split (gatecheck).
+q11518	0x00C75E90	done	1 (0x00C6A180)	self + binder ported; heals the existing split (binder spelled Blend@CReverbStage94)
+q11519	0x00C69C60	done	1 (0x00C6A5D0)	self + binder ported
+q11520	0x00C69FB0	done	1 (0x00C6A5D0)	self + binder ported
+q11521	0x00C6A080	done	1 (0x00C6A5D0)	self + binder ported; heals the existing split (self ProcessBlock@BufferState v ProcessMix@CReverbProcessor)
+q11522	0x00C6A200	done	1 (0x00C6A5D0)	self + binder ported
+q11543	0x00C744E0	done	7 (0x00C69B60, 0x00C69C60, 0x00C6A460, 0x00C75670, 0x00C75CA0, 0x00C89110, 0x00C896C0)	self (NF102 draft) + all 7 exe-scan binders ported
+q11544	0x00C75670	done	1 (0x00C69B60)	self + binder ported
+q11545	0x00C69B60	done	0	self ported (virtual: only the engine vtable 0x012B9594 slot 3 holds it, data, no code binder)
+q11546	0x00C6A460	done	0	self ported; its only binder 0x00C6A8B0 already bound ?Build@BufferState@@QAEXPBUConfiguration@@PAXPAK@Z (split before NF105: self was Allocate@CReverbProcessor), left as an existing split (no new split); 0x00C6A8B0 SDK name in NAME_FIXES
+q11547	0x00C75CA0	done	1 (0x00C69B60)	self + binder ported
+q11548	0x00C89110	done	0	self ported; no landed binder (caller 0x00C755B0 CFloatLongReverb::Create is not landed; NAME_FIXES)
+q11549	0x00C896C0	done	1 (0x00C75C30)	self ported; binder 0x00C75C30 ported with its own SDK self rename (CFloatShortReverb::Create)
+q11550	0x00C75FF0	done	1 (0x00C69FB0)	self (NF102 draft, parameter names corrected by use) + binder ported
+q11551	0x00C75140	done	1 (0x00C6A080)	self (NF102 draft) + binder ported
+q11552	0x00C76680	done	2 (0x00C75FF0, 0x00C891A0)	self (NF102 draft) + both binders ported
+q11553	0x00C764E0	done	2 (0x00C75FF0, 0x00C76B60)	self (NF102 draft) + both binders ported
+q11554	0x00C76760	done	2 (0x00C89750, 0x00C89B60)	self (NF102 draft) + both binders ported
+q11555	0x00C763E0	done	2 (0x00C891A0, 0x00C89B40)	self (NF102 draft) + both binders ported; heals the existing split
+q11556	0x00C76460	done	5 (0x00C6A080, 0x00C75820, 0x00C75FF0, 0x00C76B60, 0x00C76C20)	self (NF102 draft) + all 5 binders ported; heals the existing split
+q11557	0x00C76B60	done	1 (0x00C6A080)	self ported; binder ported; heals the existing split. Pulled in 0x00C766F0 / 0x00C76C20 / 0x00C76560 / 0x00C767E0 / 0x00C75820 / 0x00C89350 (see NOTES "Closure")
+q11558	0x00C891A0	done	0 of 2	self (NF102 draft) ported; binders 0x00C75A20 / 0x00C75AB0 already bound ?Process@CReverbDiffuserStage@@QAEXPBUSDiffuserStageParams@@PBUSDiffuserParams@@PAMPBMI@Z (split before NF105) and are left: existing split, no new split
+q11559	0x012B89C4	open	0	not started (budget; separate family: the CReverbConstants / CFloatReverbConstants dtors 0x00C53AD0 / 0x00C53AE0 / 0x00C69870 and the engine dtor 0x00C6A780 + 0x00C6AE90; see NOTES)

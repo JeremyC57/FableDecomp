@@ -1,0 +1,7 @@
+existing 00c6a460 new= ['?CreateComponents@CFloatReverbDspEngine@@AAEXPAVCFloatReverbConstants@@PAXPAH@Z'] | others: {'?Build@BufferState@@QAEXPBUConfiguration@@PAXPAK@Z': ['00c6a8b0']}
+existing 00c74ce0 new= ['?Process@CFloatFilter@@QAEXPBVCFloatFilterParams@@PBMPAM_NI@Z'] | others: {'?Apply@CDspGain@@QAEXPBUSGainParams@@PBMPAMHI@Z': ['00c756c0']}
+existing 00c75820 new= ['?ProcessInputFilter@CFloatLongReverb@@AAEXIPAUCFloatLongReverbParams@@PBU2@PAVCFloatCyclicBuffer@@II@Z'] | others: {'?UpdateGainRamped@CReverbDiffuser@@QAEXIPBUSDiffuserParams@@00II@Z': ['00c75ab0']}
+existing 00c891a0 new= ['?Process@CFloatLongReverbModule@@QAEXPBUCFloatLongReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z'] | others: {'?Process@CReverbDiffuserStage@@QAEXPBUSDiffuserStageParams@@PBUSDiffus': ['00c75a20', '00c75ab0']}
+existing 00c89350 new= ['?Process@CFloatLongReverbModule@@QAEXPAUCFloatLongReverbModuleParams@@PBU2@PBVCFloatCyclicBuffer@@PAM3II@Z'] | others: {'?ProcessRamped@CReverbDiffuserStage@@QAEXPBUSDiffuserStageParams@@0PBU': ['00c75ab0']}
+existing 0143ccdc new= ['?m_pDSP@CReverbDspProcessor@@1PAVCReverbFns@@A'] | others: {'?Backend_0143ccdc@@3PAUBackend@@A': ['00c6a8b0'], '?s_pOps@CDspObject@@2PAVCDspOps@@A': ['00c74360'], '?s_pSharedTable@CVtable_012bf050@@2PAXA': ['00c74420', '00c74450'], '?s_pSharedTable@CVtable_012BF050@@2PAXA': ['00c74480'], '?s_pOps@CDspObject@@2PAUCDspOps@@A': ['00c74ce0', '00c74d30']}
+gate: 0 created split(s)

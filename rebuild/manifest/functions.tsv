@@ -47455,19 +47455,19 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c699f0	`scalar deleting destructor'	CVtable_012b9588	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c699f0.cpp
 00c69a10	`scalar deleting destructor'	CVtable_012b958c	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c69a10.cpp
 00c69a70	NScript::CQ_GuildTrainingSkillScript::AllocateMemory	NScript::CQ_GuildTrainingSkillScript	unknown	undefined	0		0	yes	accepted									
-00c69b60	Reset	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
-00c69c60	ProcessInput	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
-00c69fb0	ProcessCombs	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
-00c6a080	TransformGeometry	NScript::CQ_GuildTrainingSkillScript	unknown	undefined	0		0	yes	accepted									
-00c6a180	ProcessStage94	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
-00c6a200	ProcessStage144	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
+00c69b60	Clear	CFloatReverbDspEngine	unknown	undefined	0		0	yes	accepted									
+00c69c60	ProcessReflectionsInputBuffer	CFloatReverbDspEngine	unknown	undefined	0		0	yes	accepted									
+00c69fb0	ProcessReflections	CFloatReverbDspEngine	unknown	undefined	0		0	yes	accepted									
+00c6a080	ProcessShortReverbInputBuffer	CFloatReverbDspEngine	unknown	undefined	0		0	yes	accepted									
+00c6a180	ProcessShortReverb	CFloatReverbDspEngine	unknown	undefined	0		0	yes	accepted									
+00c6a200	ProcessLongReverb	CFloatReverbDspEngine	unknown	undefined	0		0	yes	accepted									
 00c6a280	CReverbTapBank	CReverbTapBank	__thiscall	void	1	CArenaRoundDef *	1	yes	accepted									
 00c6a2e0	~CReverbTapBank	CReverbTapBank	__fastcall	void	2	allocator<std::pair<CCharString,CScriptInfo>_> *,pair<CCharString,CScriptInfo> *	1	yes	accepted									
 00c6a340	~CReverbDiffuser	CReverbDiffuser	__thiscall	void	1	WaypointData *	1	yes	accepted									
 00c6a3b0	`scalar deleting destructor'	CVtable_012b9590	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c6a3b0.cpp
 00c6a3d0	Shutdown	CReverbProcessor	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									
-00c6a460	Allocate	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
-00c6a5d0	Process	CReverbProcessor	__thiscall	C2DBoxF *	1	CEditControlCentre *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CEditControlCentre_GetCurrentMask_00c6a5d0.cpp
+00c6a460	CreateComponents	CFloatReverbDspEngine	unknown	undefined	0		0	yes	accepted									
+00c6a5d0	ProcessReverb	CFloatReverbDspEngine	__thiscall	C2DBoxF *	1	CEditControlCentre *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CEditControlCentre_GetCurrentMask_00c6a5d0.cpp
 00c6a650	CReverbProcessor	CReverbProcessor	__thiscall	undefined	2	CTCKraken *,CThing *	0	yes	accepted									
 00c6a780	~CReverbProcessor	CReverbProcessor	__thiscall	void	1	CTCInventoryClothing *	1	yes	accepted									
 00c6a8b0	BeginScript	NScript::CQ_GuildTrainingSkillScript	unknown	undefined	0		0	yes	accepted									
@@ -47681,7 +47681,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c74420	CVtable_012bf050	CVtable_012bf050	unknown	undefined	0		0	yes	accepted									
 00c74450	~CVtable_012bf050	CVtable_012bf050	unknown	undefined	0		0	yes	accepted									
 00c74480	`scalar deleting destructor'	CVtable_012BF050	unknown	undefined	0		0	yes	accepted									
-00c744e0	Reset	CDspGain	__thiscall	void	1	CQ_GuildTrainingSkillScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\Init_Init_00c744e0.cpp
+00c744e0	Clear	CFloatFilter	__thiscall	void	1	CQ_GuildTrainingSkillScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\Init_Init_00c744e0.cpp
 00c74510	ApplyRamps	CDspGain	unknown	undefined	0		0	yes	accepted									
 00c74850	CFilter_Setup	_global	unknown	undefined	0		0	yes	accepted									
 00c74ab0	Set_LpButterworth2	CFloatFilterParams	unknown	undefined	0		0	yes	accepted									
@@ -47691,9 +47691,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c74ee0	Math_IsPrimeNumber	_global	unknown	undefined	0		0	yes	accepted									
 00c74f60	CDelayLine	CDelayLine	unknown	undefined	0		0	unmeasured	review-low									
 00c75000	Detach	CStereoDelayLine	__thiscall	void	1	CQ_GuildTrainingSkillScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CQGuildTrainingSkillScript_Init_00c75000.cpp
-00c75010	Clear	CStereoDelayLine	unknown	undefined	0		0	yes	accepted									
+00c75010	Clear	CFloatDiffuser	unknown	undefined	0		0	yes	accepted									
 00c75050	CQ_GuildTrainingSkillScript_InitializePrimeHashTables	_global	unknown	undefined	0		0	yes	accepted									
-00c75140	Process	CStereoDelayLine	unknown	undefined	0		0	yes	accepted									
+00c75140	Process	CFloatDiffuser	unknown	undefined	0		0	yes	accepted									
 00c75400	~CDelayLine	CDelayLine	unknown	undefined	0		0	unmeasured	review-low									
 00c75410	CStereoDelayLine	CStereoDelayLine	unknown	undefined	0		0	yes	accepted									
 00c75440	~CStereoDelayLine	CStereoDelayLine	__thiscall	CItem	2	CPersistTraits<NInventory::CItem> *,CMemoryDataInputStream *	1	yes	accepted									
@@ -47702,34 +47702,34 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c75530	CReverbDiffuserStage	CReverbDiffuserStage	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00c75590	`scalar deleting destructor'	CVtable_012bf07c	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_vectordeletingdestructor_00c75590.cpp
 00c755b0	CQ_GuildTrainingSkillScript_InitializeSkillSlots	_global	unknown	undefined	0		0	yes	accepted									
-00c75670	Reset	CReverbDiffuser	unknown	undefined	0		0	yes	accepted									
+00c75670	Clear	CFloatLongReverb	unknown	undefined	0		0	yes	accepted									
 00c756c0	UpdateGain	CReverbDiffuser	unknown	undefined	0		0	yes	accepted									
-00c75820	UpdateGainRamped	CReverbDiffuser	unknown	undefined	0		0	yes	accepted									
+00c75820	ProcessInputFilter	CFloatLongReverb	unknown	undefined	0		0	yes	accepted									
 00c75980	CReverbDiffuser	CReverbDiffuser	__thiscall	undefined	1	WaypointData *	0	yes	accepted									
 00c75a00	`scalar deleting destructor'	CReverbDiffuser	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_vectordeletingdestructor_00c75a00.cpp
 00c75a20	Process	CReverbDiffuser	unknown	undefined	0		0	yes	accepted									
 00c75ab0	ProcessRamped	CReverbDiffuser	unknown	undefined	0		0	yes	accepted									
-00c75c30	Allocate	CReverbTapBank	unknown	undefined	0		0	yes	accepted									
-00c75ca0	Reset	CReverbTapBank	unknown	undefined	0		0	yes	accepted									
-00c75ce0	Process	CReverbStage94	unknown	undefined	0		0	yes	accepted									
-00c75e90	Process	CReverbTapBank	unknown	undefined	0		0	yes	accepted									
-00c75f80	Allocate	CCombFilter	unknown	undefined	0		0	yes	accepted									
-00c75ff0	Process	CCombFilter	unknown	undefined	0		0	yes	accepted									
+00c75c30	Create	CFloatShortReverb	unknown	undefined	0		0	yes	accepted									
+00c75ca0	Clear	CFloatShortReverb	unknown	undefined	0		0	yes	accepted									
+00c75ce0	Process	CFloatShortReverb	unknown	undefined	0		0	yes	accepted									
+00c75e90	Process	CFloatShortReverb	unknown	undefined	0		0	yes	accepted									
+00c75f80	Create	CFloatReflection	unknown	undefined	0		0	yes	accepted									
+00c75ff0	Process	CFloatReflection	unknown	undefined	0		0	yes	accepted									
 00c76120	Blend	CCombFilter	unknown	undefined	0		0	yes	accepted									
 00c763c0	TailJmp_operator_new_00c763c0	_global	__thiscall	void	2	CTCHeroStats *,CBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CTCHeroStats_InformOfEvent_00c763c0.cpp
 00c763d0	TailJmp_InformOfEvent_00c763d0	_global	__thiscall	void	2	CTCHeroStats *,CBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CTCHeroStats_InformOfEvent_00c763d0.cpp
-00c763e0	ReadRing	CDspOps	unknown	undefined	0		0	yes	accepted									
-00c76460	WriteRing	CDspOps	unknown	undefined	0		0	yes	accepted									
-00c764e0	ReadRingScaled	CDspOps	unknown	undefined	0		0	yes	accepted									
-00c76560	ReadRingScaledRamp	CDspOps	unknown	undefined	0		0	yes	accepted									
-00c76680	AddFromRing	CDspOps	unknown	undefined	0		0	yes	accepted									
-00c766f0	AddToRing	CDspOps	unknown	undefined	0		0	yes	accepted									
-00c76760	MixFromRing	CDspOps	unknown	undefined	0		0	yes	accepted									
-00c767e0	MixRampFromRing	CDspOps	unknown	undefined	0		0	yes	accepted									
+00c763e0	CopySamples	CReverbFns	unknown	undefined	0		0	yes	accepted									
+00c76460	CopySamples	CReverbFns	unknown	undefined	0		0	yes	accepted									
+00c764e0	ScaleSamples	CReverbFns	unknown	undefined	0		0	yes	accepted									
+00c76560	ScaleSamples	CReverbFns	unknown	undefined	0		0	yes	accepted									
+00c76680	AddSamples	CReverbFns	unknown	undefined	0		0	yes	accepted									
+00c766f0	AddSamples	CReverbFns	unknown	undefined	0		0	yes	accepted									
+00c76760	ScaleAddSamples	CReverbFns	unknown	undefined	0		0	yes	accepted									
+00c767e0	ScaleAddSamples	CReverbFns	unknown	undefined	0		0	yes	accepted									
 00c76880	DSP_TransformWithFilterCoefficients	_global	unknown	undefined	0		0	yes	accepted									
 00c76ab0	CQ_GuildTrainingSkillScript_ActivateSkillByIndex	_global	unknown	undefined	0		0	yes	accepted									
-00c76b60	Process	CReverbDelay	unknown	undefined	0		0	yes	accepted									
-00c76c20	Blend	CReverbDelay	unknown	undefined	0		0	yes	accepted									
+00c76b60	Process	CFloatEcho	unknown	undefined	0		0	yes	accepted									
+00c76c20	Process	CFloatEcho	unknown	undefined	0		0	yes	accepted									
 00c76dd0	CQ_GuildTrainingSkillScript_DeactivateSkillByIndex	_global	unknown	undefined	0		0	yes	accepted									
 00c76e90	FFT_ComputeRealTransform	_global	unknown	undefined	0		0	yes	accepted									
 00c770b0	FFT_ComputeComplexTransform	_global	unknown	undefined	0		0	yes	accepted									
@@ -47833,15 +47833,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c88d10	Mix	CMixKernelsSSE	unknown	undefined	0		0	yes	accepted									
 00c88d80	MixRamped	CMixKernelsSSE	unknown	undefined	0		0	yes	accepted									
 00c88e60	FilterGain4	CDspOps	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c8\0x00C88E60_global_Audio_ProcessFilter4Channel.cpp				
-00c89110	Allocate	CReverbDiffuserStage	unknown	undefined	0		0	yes	accepted									
-00c891a0	Process	CReverbDiffuserStage	unknown	undefined	0		0	yes	accepted									
-00c89350	ProcessRamped	CReverbDiffuserStage	unknown	undefined	0		0	yes	accepted									
-00c896c0	Allocate	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
-00c89750	Process	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
+00c89110	Create	CFloatLongReverbModule	unknown	undefined	0		0	yes	accepted									
+00c891a0	Process	CFloatLongReverbModule	unknown	undefined	0		0	yes	accepted									
+00c89350	Process	CFloatLongReverbModule	unknown	undefined	0		0	yes	accepted									
+00c896c0	Create	CFloatShortReverbModule	unknown	undefined	0		0	yes	accepted									
+00c89750	ProcessInput	CFloatShortReverbModule	unknown	undefined	0		0	yes	accepted									
 00c89850	ProcessRamp	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
-00c89aa0	Feedback	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
-00c89b40	AddTrigger	CTCActivationReceptorBase	__thiscall	void	2	CTCActivationReceptorBase *,CTCActivationTrigger *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\CTCActivationReceptorBase_AddTrigger_00c89b40.cpp
-00c89b60	MixHistory	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
+00c89aa0	ProcessCrossfeed	CFloatShortReverbModule	unknown	undefined	0		0	yes	accepted									
+00c89b40	ProcessInput_GetFeedbackData_SseOptimisation	CFloatShortReverbModule	__thiscall	void	2	CTCActivationReceptorBase *,CTCActivationTrigger *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\CTCActivationReceptorBase_AddTrigger_00c89b40.cpp
+00c89b60	ProcessInput_MixInputs_SseOptimisation	CFloatShortReverbModule	unknown	undefined	0		0	yes	accepted									
 00c89be0	FtoL	_global	__cdecl	long	1	float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\global_FtoL_00c89be0.cpp
 00c89c10	_get_data	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c89c80	_seek_helper	libvorbis	__fastcall	void	1	CCountedPointer<CBankFileAsyncData> *	1	yes	accepted									

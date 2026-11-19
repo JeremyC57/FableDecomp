@@ -1703,9 +1703,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6a5d0'
-        Module = 'CReverbProcessor'
-        Source = '00/c6/CReverbProcessor_Process_00c6a5d0.cpp'
-        TestSource = '00/c6/CReverbProcessor_Process_00c6a5d0_test.cpp'
+        Module = 'CFloatReverbDspEngine'
+        Source = '00/c6/CFloatReverbDspEngine_ProcessReverb_00c6a5d0.cpp'
+        TestSource = '00/c6/CFloatReverbDspEngine_ProcessReverb_00c6a5d0_test.cpp'
         PassPattern = '00c6a5d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -64058,9 +64058,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c89b40'
-        Module = 'CTCActivationReceptorBase'
-        Source = '00/c8/CTCActivationReceptorBase_AddTrigger_00c89b40.cpp'
-        TestSource = '00/c8/CTCActivationReceptorBase_AddTrigger_00c89b40_test.cpp'
+        Module = 'CFloatShortReverbModule'
+        Source = '00/c8/CFloatShortReverbModule_ProcessInputGetFeedbackDataSseOptimisation_00c89b40.cpp'
+        TestSource = '00/c8/CFloatShortReverbModule_ProcessInputGetFeedbackDataSseOptimisation_00c89b40_test.cpp'
         PassPattern = 'BEHAVIOUR_OK'
     }
     [pscustomobject]@{
@@ -69337,9 +69337,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c744e0'
-        Module = 'CDspGain'
-        Source = '00/c7/CDspGain_Reset_00c744e0.cpp'
-        TestSource = '00/c7/CDspGain_Reset_00c744e0_test.cpp'
+        Module = 'CFloatFilter'
+        Source = '00/c7/CFloatFilter_Clear_00c744e0.cpp'
+        TestSource = '00/c7/CFloatFilter_Clear_00c744e0_test.cpp'
         PassPattern = '00c744e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -273700,9 +273700,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6a080'
-        Module = 'NScript::CQ_GuildTrainingSkillScript'
-        Source = '00/c6/NScriptCQGuildTrainingSkillScript_TransformGeometry_00c6a080.cpp'
-        TestSource = '00/c6/NScriptCQGuildTrainingSkillScript_TransformGeometry_00c6a080_test.cpp'
+        Module = 'CFloatReverbDspEngine'
+        Source = '00/c6/CFloatReverbDspEngine_ProcessShortReverbInputBuffer_00c6a080.cpp'
+        TestSource = '00/c6/CFloatReverbDspEngine_ProcessShortReverbInputBuffer_00c6a080_test.cpp'
         PassPattern = '00c6a080_TEST PASS'
     }
     [pscustomobject]@{
@@ -281308,9 +281308,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c69fb0'
-        Module = 'CReverbProcessor'
-        Source = '00/c6/CReverbProcessor_ProcessCombs_00c69fb0.cpp'
-        TestSource = '00/c6/CReverbProcessor_ProcessCombs_00c69fb0_test.cpp'
+        Module = 'CFloatReverbDspEngine'
+        Source = '00/c6/CFloatReverbDspEngine_ProcessReflections_00c69fb0.cpp'
+        TestSource = '00/c6/CFloatReverbDspEngine_ProcessReflections_00c69fb0_test.cpp'
         PassPattern = '00c69fb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -307375,16 +307375,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6a180'
-        Module = 'CReverbProcessor'
-        Source = '00/c6/CReverbProcessor_ProcessStage94_00c6a180.cpp'
-        TestSource = '00/c6/CReverbProcessor_ProcessStage94_00c6a180_test.cpp'
+        Module = 'CFloatReverbDspEngine'
+        Source = '00/c6/CFloatReverbDspEngine_ProcessShortReverb_00c6a180.cpp'
+        TestSource = '00/c6/CFloatReverbDspEngine_ProcessShortReverb_00c6a180_test.cpp'
         PassPattern = '00c6a180_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c6a200'
-        Module = 'CReverbProcessor'
-        Source = '00/c6/CReverbProcessor_ProcessStage144_00c6a200.cpp'
-        TestSource = '00/c6/CReverbProcessor_ProcessStage144_00c6a200_test.cpp'
+        Module = 'CFloatReverbDspEngine'
+        Source = '00/c6/CFloatReverbDspEngine_ProcessLongReverb_00c6a200.cpp'
+        TestSource = '00/c6/CFloatReverbDspEngine_ProcessLongReverb_00c6a200_test.cpp'
         PassPattern = '00c6a200_TEST PASS'
     }
     [pscustomobject]@{
@@ -308139,9 +308139,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c75010'
-        Module = 'CStereoDelayLine'
-        Source = '00/c7/CStereoDelayLine_Clear_00c75010.cpp'
-        TestSource = '00/c7/CStereoDelayLine_Clear_00c75010_test.cpp'
+        Module = 'CFloatDiffuser'
+        Source = '00/c7/CFloatDiffuser_Clear_00c75010.cpp'
+        TestSource = '00/c7/CFloatDiffuser_Clear_00c75010_test.cpp'
         PassPattern = '00c75010_TEST PASS'
     }
     [pscustomobject]@{
@@ -308154,9 +308154,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c75670'
-        Module = 'CReverbDiffuser'
-        Source = '00/c7/CReverbDiffuser_Reset_00c75670.cpp'
-        TestSource = '00/c7/CReverbDiffuser_Reset_00c75670_test.cpp'
+        Module = 'CFloatLongReverb'
+        Source = '00/c7/CFloatLongReverb_Clear_00c75670.cpp'
+        TestSource = '00/c7/CFloatLongReverb_Clear_00c75670_test.cpp'
         PassPattern = '00c75670_TEST PASS'
     }
     [pscustomobject]@{
@@ -308168,86 +308168,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c75c30'
-        Module = 'CReverbTapBank'
-        Source = '00/c7/CReverbTapBank_Allocate_00c75c30.cpp'
-        TestSource = '00/c7/CReverbTapBank_Allocate_00c75c30_test.cpp'
+        Module = 'CFloatShortReverb'
+        Source = '00/c7/CFloatShortReverb_Create_00c75c30.cpp'
+        TestSource = '00/c7/CFloatShortReverb_Create_00c75c30_test.cpp'
         PassPattern = '00c75c30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c75ca0'
-        Module = 'CReverbTapBank'
-        Source = '00/c7/CReverbTapBank_Reset_00c75ca0.cpp'
-        TestSource = '00/c7/CReverbTapBank_Reset_00c75ca0_test.cpp'
+        Module = 'CFloatShortReverb'
+        Source = '00/c7/CFloatShortReverb_Clear_00c75ca0.cpp'
+        TestSource = '00/c7/CFloatShortReverb_Clear_00c75ca0_test.cpp'
         PassPattern = '00c75ca0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c75e90'
-        Module = 'CReverbTapBank'
-        Source = '00/c7/CReverbTapBank_Process_00c75e90.cpp'
-        TestSource = '00/c7/CReverbTapBank_Process_00c75e90_test.cpp'
+        Module = 'CFloatShortReverb'
+        Source = '00/c7/CFloatShortReverb_Process_00c75e90.cpp'
+        TestSource = '00/c7/CFloatShortReverb_Process_00c75e90_test.cpp'
         PassPattern = '00c75e90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c763e0'
-        Module = 'CDspOps'
-        Source = '00/c7/CDspOps_ReadRing_00c763e0.cpp'
-        TestSource = '00/c7/CDspOps_ReadRing_00c763e0_test.cpp'
+        Module = 'CReverbFns'
+        Source = '00/c7/CReverbFns_CopySamples_00c763e0.cpp'
+        TestSource = '00/c7/CReverbFns_CopySamples_00c763e0_test.cpp'
         PassPattern = '00c763e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c76460'
-        Module = 'CDspOps'
-        Source = '00/c7/CDspOps_WriteRing_00c76460.cpp'
-        TestSource = '00/c7/CDspOps_WriteRing_00c76460_test.cpp'
+        Module = 'CReverbFns'
+        Source = '00/c7/CReverbFns_CopySamples_00c76460.cpp'
+        TestSource = '00/c7/CReverbFns_CopySamples_00c76460_test.cpp'
         PassPattern = '00c76460_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c764e0'
-        Module = 'CDspOps'
-        Source = '00/c7/CDspOps_ReadRingScaled_00c764e0.cpp'
-        TestSource = '00/c7/CDspOps_ReadRingScaled_00c764e0_test.cpp'
+        Module = 'CReverbFns'
+        Source = '00/c7/CReverbFns_ScaleSamples_00c764e0.cpp'
+        TestSource = '00/c7/CReverbFns_ScaleSamples_00c764e0_test.cpp'
         PassPattern = '00c764e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c76560'
-        Module = 'CDspOps'
-        Source = '00/c7/CDspOps_ReadRingScaledRamp_00c76560.cpp'
-        TestSource = '00/c7/CDspOps_ReadRingScaledRamp_00c76560_test.cpp'
+        Module = 'CReverbFns'
+        Source = '00/c7/CReverbFns_ScaleSamples_00c76560.cpp'
+        TestSource = '00/c7/CReverbFns_ScaleSamples_00c76560_test.cpp'
         PassPattern = '00c76560_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c76680'
-        Module = 'CDspOps'
-        Source = '00/c7/CDspOps_AddFromRing_00c76680.cpp'
-        TestSource = '00/c7/CDspOps_AddFromRing_00c76680_test.cpp'
+        Module = 'CReverbFns'
+        Source = '00/c7/CReverbFns_AddSamples_00c76680.cpp'
+        TestSource = '00/c7/CReverbFns_AddSamples_00c76680_test.cpp'
         PassPattern = '00c76680_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c766f0'
-        Module = 'CDspOps'
-        Source = '00/c7/CDspOps_AddToRing_00c766f0.cpp'
-        TestSource = '00/c7/CDspOps_AddToRing_00c766f0_test.cpp'
+        Module = 'CReverbFns'
+        Source = '00/c7/CReverbFns_AddSamples_00c766f0.cpp'
+        TestSource = '00/c7/CReverbFns_AddSamples_00c766f0_test.cpp'
         PassPattern = '00c766f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c76760'
-        Module = 'CDspOps'
-        Source = '00/c7/CDspOps_MixFromRing_00c76760.cpp'
-        TestSource = '00/c7/CDspOps_MixFromRing_00c76760_test.cpp'
+        Module = 'CReverbFns'
+        Source = '00/c7/CReverbFns_ScaleAddSamples_00c76760.cpp'
+        TestSource = '00/c7/CReverbFns_ScaleAddSamples_00c76760_test.cpp'
         PassPattern = '00c76760_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c767e0'
-        Module = 'CDspOps'
-        Source = '00/c7/CDspOps_MixRampFromRing_00c767e0.cpp'
-        TestSource = '00/c7/CDspOps_MixRampFromRing_00c767e0_test.cpp'
+        Module = 'CReverbFns'
+        Source = '00/c7/CReverbFns_ScaleAddSamples_00c767e0.cpp'
+        TestSource = '00/c7/CReverbFns_ScaleAddSamples_00c767e0_test.cpp'
         PassPattern = '00c767e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c76b60'
-        Module = 'CReverbDelay'
-        Source = '00/c7/CReverbDelay_Process_00c76b60.cpp'
-        TestSource = '00/c7/CReverbDelay_Process_00c76b60_test.cpp'
+        Module = 'CFloatEcho'
+        Source = '00/c7/CFloatEcho_Process_00c76b60.cpp'
+        TestSource = '00/c7/CFloatEcho_Process_00c76b60_test.cpp'
         PassPattern = '00c76b60_TEST PASS'
     }
     [pscustomobject]@{
@@ -308448,30 +308448,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c89110'
-        Module = 'CReverbDiffuserStage'
-        Source = '00/c8/CReverbDiffuserStage_Allocate_00c89110.cpp'
-        TestSource = '00/c8/CReverbDiffuserStage_Allocate_00c89110_test.cpp'
+        Module = 'CFloatLongReverbModule'
+        Source = '00/c8/CFloatLongReverbModule_Create_00c89110.cpp'
+        TestSource = '00/c8/CFloatLongReverbModule_Create_00c89110_test.cpp'
         PassPattern = '00c89110_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c896c0'
-        Module = 'CReverbFilterTap'
-        Source = '00/c8/CReverbFilterTap_Allocate_00c896c0.cpp'
-        TestSource = '00/c8/CReverbFilterTap_Allocate_00c896c0_test.cpp'
+        Module = 'CFloatShortReverbModule'
+        Source = '00/c8/CFloatShortReverbModule_Create_00c896c0.cpp'
+        TestSource = '00/c8/CFloatShortReverbModule_Create_00c896c0_test.cpp'
         PassPattern = '00c896c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c89aa0'
-        Module = 'CReverbFilterTap'
-        Source = '00/c8/CReverbFilterTap_Feedback_00c89aa0.cpp'
-        TestSource = '00/c8/CReverbFilterTap_Feedback_00c89aa0_test.cpp'
+        Module = 'CFloatShortReverbModule'
+        Source = '00/c8/CFloatShortReverbModule_ProcessCrossfeed_00c89aa0.cpp'
+        TestSource = '00/c8/CFloatShortReverbModule_ProcessCrossfeed_00c89aa0_test.cpp'
         PassPattern = '00c89aa0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c89b60'
-        Module = 'CReverbFilterTap'
-        Source = '00/c8/CReverbFilterTap_MixHistory_00c89b60.cpp'
-        TestSource = '00/c8/CReverbFilterTap_MixHistory_00c89b60_test.cpp'
+        Module = 'CFloatShortReverbModule'
+        Source = '00/c8/CFloatShortReverbModule_ProcessInputMixInputsSseOptimisation_00c89b60.cpp'
+        TestSource = '00/c8/CFloatShortReverbModule_ProcessInputMixInputsSseOptimisation_00c89b60_test.cpp'
         PassPattern = '00c89b60_TEST PASS'
     }
     [pscustomobject]@{
@@ -314784,9 +314784,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c69c60'
-        Module = 'CReverbProcessor'
-        Source = '00/c6/CReverbProcessor_ProcessInput_00c69c60.cpp'
-        TestSource = '00/c6/CReverbProcessor_ProcessInput_00c69c60_test.cpp'
+        Module = 'CFloatReverbDspEngine'
+        Source = '00/c6/CFloatReverbDspEngine_ProcessReflectionsInputBuffer_00c69c60.cpp'
+        TestSource = '00/c6/CFloatReverbDspEngine_ProcessReflectionsInputBuffer_00c69c60_test.cpp'
         PassPattern = '00c69c60_TEST PASS'
     }
     [pscustomobject]@{
@@ -351326,9 +351326,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c69b60'
-        Module = 'CReverbProcessor'
-        Source = '00/c6/CReverbProcessor_Reset_00c69b60.cpp'
-        TestSource = '00/c6/CReverbProcessor_Reset_00c69b60_test.cpp'
+        Module = 'CFloatReverbDspEngine'
+        Source = '00/c6/CFloatReverbDspEngine_Clear_00c69b60.cpp'
+        TestSource = '00/c6/CFloatReverbDspEngine_Clear_00c69b60_test.cpp'
         PassPattern = '00c69b60_TEST PASS'
     }
     [pscustomobject]@{
@@ -351368,9 +351368,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c89750'
-        Module = 'CReverbFilterTap'
-        Source = '00/c8/CReverbFilterTap_Process_00c89750.cpp'
-        TestSource = '00/c8/CReverbFilterTap_Process_00c89750_test.cpp'
+        Module = 'CFloatShortReverbModule'
+        Source = '00/c8/CFloatShortReverbModule_ProcessInput_00c89750.cpp'
+        TestSource = '00/c8/CFloatShortReverbModule_ProcessInput_00c89750_test.cpp'
         PassPattern = '00c89750_TEST PASS'
     }
     [pscustomobject]@{
@@ -364784,9 +364784,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c75ff0'
-        Module = 'CCombFilter'
-        Source = '00/c7/CCombFilter_Process_00c75ff0.cpp'
-        TestSource = '00/c7/CCombFilter_Process_00c75ff0_test.cpp'
+        Module = 'CFloatReflection'
+        Source = '00/c7/CFloatReflection_Process_00c75ff0.cpp'
+        TestSource = '00/c7/CFloatReflection_Process_00c75ff0_test.cpp'
         PassPattern = '00c75ff0_TEST PASS'
     }
     [pscustomobject]@{
@@ -367669,9 +367669,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c75820'
-        Module = 'CReverbDiffuser'
-        Source = '00/c7/CReverbDiffuser_UpdateGainRamped_00c75820.cpp'
-        TestSource = '00/c7/CReverbDiffuser_UpdateGainRamped_00c75820_test.cpp'
+        Module = 'CFloatLongReverb'
+        Source = '00/c7/CFloatLongReverb_ProcessInputFilter_00c75820.cpp'
+        TestSource = '00/c7/CFloatLongReverb_ProcessInputFilter_00c75820_test.cpp'
         PassPattern = '00c75820_TEST PASS'
     }
     [pscustomobject]@{
@@ -367809,9 +367809,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6a460'
-        Module = 'CReverbProcessor'
-        Source = '00/c6/CReverbProcessor_Allocate_00c6a460.cpp'
-        TestSource = '00/c6/CReverbProcessor_Allocate_00c6a460_test.cpp'
+        Module = 'CFloatReverbDspEngine'
+        Source = '00/c6/CFloatReverbDspEngine_CreateComponents_00c6a460.cpp'
+        TestSource = '00/c6/CFloatReverbDspEngine_CreateComponents_00c6a460_test.cpp'
         PassPattern = '00c6a460_TEST PASS'
     }
     [pscustomobject]@{
@@ -367874,9 +367874,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c76c20'
-        Module = 'CReverbDelay'
-        Source = '00/c7/CReverbDelay_Blend_00c76c20.cpp'
-        TestSource = '00/c7/CReverbDelay_Blend_00c76c20_test.cpp'
+        Module = 'CFloatEcho'
+        Source = '00/c7/CFloatEcho_Process_00c76c20.cpp'
+        TestSource = '00/c7/CFloatEcho_Process_00c76c20_test.cpp'
         PassPattern = '00c76c20_TEST PASS'
     }
     [pscustomobject]@{
@@ -369941,9 +369941,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c891a0'
-        Module = 'CReverbDiffuserStage'
-        Source = '00/c8/CReverbDiffuserStage_Process_00c891a0.cpp'
-        TestSource = '00/c8/CReverbDiffuserStage_Process_00c891a0_test.cpp'
+        Module = 'CFloatLongReverbModule'
+        Source = '00/c8/CFloatLongReverbModule_Process_00c891a0.cpp'
+        TestSource = '00/c8/CFloatLongReverbModule_Process_00c891a0_test.cpp'
         PassPattern = '00c891a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -370300,9 +370300,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c75ce0'
-        Module = 'CReverbStage94'
-        Source = '00/c7/CReverbStage94_Process_00c75ce0.cpp'
-        TestSource = '00/c7/CReverbStage94_Process_00c75ce0_test.cpp'
+        Module = 'CFloatShortReverb'
+        Source = '00/c7/CFloatShortReverb_Process_00c75ce0.cpp'
+        TestSource = '00/c7/CFloatShortReverb_Process_00c75ce0_test.cpp'
         PassPattern = '00c75ce0_TEST PASS'
     }
     [pscustomobject]@{
@@ -373855,9 +373855,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c75140'
-        Module = 'CStereoDelayLine'
-        Source = '00/c7/CStereoDelayLine_Process_00c75140.cpp'
-        TestSource = '00/c7/CStereoDelayLine_Process_00c75140_test.cpp'
+        Module = 'CFloatDiffuser'
+        Source = '00/c7/CFloatDiffuser_Process_00c75140.cpp'
+        TestSource = '00/c7/CFloatDiffuser_Process_00c75140_test.cpp'
         PassPattern = '00c75140_TEST PASS'
     }
     [pscustomobject]@{
@@ -384456,9 +384456,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c89350'
-        Module = 'CReverbDiffuserStage'
-        Source = '00/c8/CReverbDiffuserStage_ProcessRamped_00c89350.cpp'
-        TestSource = '00/c8/CReverbDiffuserStage_ProcessRamped_00c89350_test.cpp'
+        Module = 'CFloatLongReverbModule'
+        Source = '00/c8/CFloatLongReverbModule_Process_00c89350.cpp'
+        TestSource = '00/c8/CFloatLongReverbModule_Process_00c89350_test.cpp'
         PassPattern = '00c89350_TEST PASS'
     }
     [pscustomobject]@{
@@ -385810,9 +385810,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c75f80'
-        Module = 'CCombFilter'
-        Source = '00/c7/CCombFilter_Allocate_00c75f80.cpp'
-        TestSource = '00/c7/CCombFilter_Allocate_00c75f80_test.cpp'
+        Module = 'CFloatReflection'
+        Source = '00/c7/CFloatReflection_Create_00c75f80.cpp'
+        TestSource = '00/c7/CFloatReflection_Create_00c75f80_test.cpp'
         PassPattern = '00c75f80_TEST PASS'
     }
     [pscustomobject]@{

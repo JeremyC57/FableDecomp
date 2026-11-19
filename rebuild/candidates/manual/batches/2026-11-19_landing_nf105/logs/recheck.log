@@ -1,0 +1,91 @@
+addr       parity           behav  name
+00c69b60   RELOCATION_MATCH PASS   CFloatReverbDspEngine::Clear
+00c69c60   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPAVCFloatFilterParams@@PBV2@PBMPAM_NII@Z -> 00c74d30 labelled 'CDspGain::Crossfade'
+00c69c60   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPBVCFloatFilterParams@@PBMPAM_NI@Z -> 00c74ce0 labelled 'CDspGain::Apply'
+00c69c60   RELOCATION_MATCH PASS   CFloatReverbDspEngine::ProcessReflectionsInputBuffer
+00c69fb0   WARN RELOC_NAME: ?Process@CFloatReflection@@QAEXPAUCFloatReflectionParams@@PBU2@PAVCFloatCyclicBuffer@@PAM3II@Z -> 00c76120 labelled 'CCombFilter::Blend'
+00c69fb0   RELOCATION_MATCH PASS   CFloatReverbDspEngine::ProcessReflections
+00c6a080   WARN RELOC_NAME: ?Process@CFloatPitch@@QAEXPAUCFloatPitchShiftParams@@PBU2@PBMPAMII@Z -> 00c770b0 labelled 'CReverbPreDelay::Blend'
+00c6a080   RELOCATION_MATCH PASS   CFloatReverbDspEngine::ProcessShortReverbInputBuffer
+00c6a180   RELOCATION_MATCH PASS   CFloatReverbDspEngine::ProcessShortReverb
+00c6a200   RELOCATION_MATCH PASS   CFloatReverbDspEngine::ProcessLongReverb
+00c6a460   WARN RELOC_NAME: ?CreateReverbBuffers@CFloatReverbDspEngine@@AAEXPAVCFloatReverbConstants@@AAPAXPAH@Z -> 00c69a70 labelled 'NScript::CQ_GuildTrainingSkillScript::AllocateMemory'
+00c6a460   WARN RELOC_NAME: ?Create@CFloatLongReverb@@QAEXPAVCReverbConstants@@AAPAXPAHAAH@Z -> 00c755b0 labelled 'CQ_GuildTrainingSkillScript_InitializeSkillSlots'
+00c6a460   WARN RELOC_NAME: ?Create@CFloatEcho@@QAEXIAAPAXPAHH@Z -> 00c76ab0 labelled 'CQ_GuildTrainingSkillScript_ActivateSkillByIndex'
+00c6a460   WARN RELOC_NAME: ?Create@CFloatPitch@@QAEXIAAPAXPAHH@Z -> 00c76dd0 labelled 'CQ_GuildTrainingSkillScript_DeactivateSkillByIndex'
+00c6a460   WARN RELOC_NAME: ?Create@CFloatDiffuser@@QAEXIAAPAXPAH@Z -> 00c75050 labelled 'CQ_GuildTrainingSkillScript_InitializePrimeHashTables'
+00c6a460   RELOCATION_MATCH PASS   CFloatReverbDspEngine::CreateComponents
+00c6a5d0   RELOCATION_MATCH PASS   CFloatReverbDspEngine::ProcessReverb
+00c744e0   MATCH            PASS   CFloatFilter::Clear
+00c75010   MATCH            PASS   CFloatDiffuser::Clear
+00c75140   RELOCATION_MATCH PASS   CFloatDiffuser::Process
+00c75670   RELOCATION_MATCH PASS   CFloatLongReverb::Clear
+00c75820   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPAVCFloatFilterParams@@PBV2@PBMPAM_NII@Z -> 00c74d30 labelled 'CDspGain::Crossfade'
+00c75820   RELOCATION_MATCH PASS   CFloatLongReverb::ProcessInputFilter
+00c75c30   RELOCATION_MATCH PASS   CFloatShortReverb::Create
+00c75ca0   RELOCATION_MATCH PASS   CFloatShortReverb::Clear
+00c75ce0   RELOCATION_MATCH PASS   CFloatShortReverb::Process
+00c75e90   WARN RELOC_NAME: ?ProcessInput@CFloatShortReverbModule@@QAEXPAUCFloatShortReverbModuleParams@@PBU2@PBVCFloatCyclicBuffer@@PAM3II@Z -> 00c89850 labelled 'Animation_InterpolateProcess'
+00c75e90   RELOCATION_MATCH PASS   CFloatShortReverb::Process
+00c75f80   MATCH            PASS   CFloatReflection::Create
+00c75ff0   RELOCATION_MATCH PASS   CFloatReflection::Process
+00c763e0   MATCH            PASS   CReverbFns::CopySamples
+00c76460   MATCH            PASS   CReverbFns::CopySamples
+00c764e0   MATCH            PASS   CReverbFns::ScaleSamples
+00c76560   MATCH            PASS   CReverbFns::ScaleSamples
+00c76680   MATCH            PASS   CReverbFns::AddSamples
+00c766f0   MATCH            PASS   CReverbFns::AddSamples
+00c76760   MATCH            PASS   CReverbFns::ScaleAddSamples
+00c767e0   MATCH            PASS   CReverbFns::ScaleAddSamples
+00c76b60   RELOCATION_MATCH PASS   CFloatEcho::Process
+00c76c20   RELOCATION_MATCH PASS   CFloatEcho::Process
+00c89110   RELOCATION_MATCH PASS   CFloatLongReverbModule::Create
+00c891a0   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPBVCFloatFilterParams@@PBMPAM_NI@Z -> 00c74ce0 labelled 'CDspGain::Apply'
+00c891a0   RELOCATION_MATCH PASS   CFloatLongReverbModule::Process
+00c89350   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPAVCFloatFilterParams@@PBV2@PBMPAM_NII@Z -> 00c74d30 labelled 'CDspGain::Crossfade'
+00c89350   RELOCATION_MATCH PASS   CFloatLongReverbModule::Process
+00c896c0   RELOCATION_MATCH PASS   CFloatShortReverbModule::Create
+00c89750   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPBVCFloatFilterParams@@PBMPAM_NI@Z -> 00c74ce0 labelled 'CDspGain::Apply'
+00c89750   RELOCATION_MATCH PASS   CFloatShortReverbModule::ProcessInput
+00c89aa0   MATCH            PASS   CFloatShortReverbModule::ProcessCrossfeed
+00c89b40   RELOCATION_MATCH PASS   CFloatShortReverbModule::ProcessInput_GetFeedbackData_SseOptimisation
+00c89b60   RELOCATION_MATCH PASS   CFloatShortReverbModule::ProcessInput_MixInputs_SseOptimisation
+
+WINS: 37
+  00c69b60 RELOCATION_MATCH CFloatReverbDspEngine::?Clear@CFloatReverbDspEngine@@UAEXXZ
+  00c69c60 RELOCATION_MATCH CFloatReverbDspEngine::?ProcessReflectionsInputBuffer@CFloatReverbDspEngine@@AAEXPAM_NI@Z
+  00c69fb0 RELOCATION_MATCH CFloatReverbDspEngine::?ProcessReflections@CFloatReverbDspEngine@@AAEXPAPAMIPAM@Z
+  00c6a080 RELOCATION_MATCH CFloatReverbDspEngine::?ProcessShortReverbInputBuffer@CFloatReverbDspEngine@@AAEXIPAM@Z
+  00c6a180 RELOCATION_MATCH CFloatReverbDspEngine::?ProcessShortReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z
+  00c6a200 RELOCATION_MATCH CFloatReverbDspEngine::?ProcessLongReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z
+  00c6a460 RELOCATION_MATCH CFloatReverbDspEngine::?CreateComponents@CFloatReverbDspEngine@@AAEXPAVCFloatReverbConstants@@PAXPAH@Z
+  00c6a5d0 RELOCATION_MATCH CFloatReverbDspEngine::?ProcessReverb@CFloatReverbDspEngine@@MAE_NPAX_NPAPAXI@Z
+  00c744e0 MATCH CFloatFilter::?Clear@CFloatFilter@@QAEXXZ
+  00c75010 MATCH CFloatDiffuser::?Clear@CFloatDiffuser@@QAEXXZ
+  00c75140 RELOCATION_MATCH CFloatDiffuser::?Process@CFloatDiffuser@@QAEXPAMI@Z
+  00c75670 RELOCATION_MATCH CFloatLongReverb::?Clear@CFloatLongReverb@@QAEXXZ
+  00c75820 RELOCATION_MATCH CFloatLongReverb::?ProcessInputFilter@CFloatLongReverb@@AAEXIPAUCFloatLongReverbParams@@PBU2@PAVCFloatCyclicBuffer@@II@Z
+  00c75c30 RELOCATION_MATCH CFloatShortReverb::?Create@CFloatShortReverb@@QAEXIPBUCFloatShortReverbConstants@@AAPAXPAHAAH@Z
+  00c75ca0 RELOCATION_MATCH CFloatShortReverb::?Clear@CFloatShortReverb@@QAEXXZ
+  00c75ce0 RELOCATION_MATCH CFloatShortReverb::?Process@CFloatShortReverb@@QAEXPAUCFloatShortReverbParams@@PBVCFloatCyclicBuffer@@PAMPAPAMI@Z
+  00c75e90 RELOCATION_MATCH CFloatShortReverb::?Process@CFloatShortReverb@@QAEXPAUCFloatShortReverbParams@@PBU2@PBVCFloatCyclicBuffer@@PAMPAPAMHII@Z
+  00c75f80 MATCH CFloatReflection::?Create@CFloatReflection@@QAEXIAAPAXPAHH@Z
+  00c75ff0 RELOCATION_MATCH CFloatReflection::?Process@CFloatReflection@@QAEXPBUCFloatReflectionParams@@PAVCFloatCyclicBuffer@@PAM2I@Z
+  00c763e0 MATCH CReverbFns::?CopySamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@II@Z
+  00c76460 MATCH CReverbFns::?CopySamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z
+  00c764e0 MATCH CReverbFns::?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMI@Z
+  00c76560 MATCH CReverbFns::?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z
+  00c76680 MATCH CReverbFns::?AddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@II@Z
+  00c766f0 MATCH CReverbFns::?AddSamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z
+  00c76760 MATCH CReverbFns::?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMI@Z
+  00c767e0 MATCH CReverbFns::?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z
+  00c76b60 RELOCATION_MATCH CFloatEcho::?Process@CFloatEcho@@QAEXPBUCFloatEchoParams@@PBMPAMI@Z
+  00c76c20 RELOCATION_MATCH CFloatEcho::?Process@CFloatEcho@@QAEXPAUCFloatEchoParams@@PBU2@PBMPAMII@Z
+  00c89110 RELOCATION_MATCH CFloatLongReverbModule::?Create@CFloatLongReverbModule@@QAEXIAAPAXPAHH@Z
+  00c891a0 RELOCATION_MATCH CFloatLongReverbModule::?Process@CFloatLongReverbModule@@QAEXPBUCFloatLongReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z
+  00c89350 RELOCATION_MATCH CFloatLongReverbModule::?Process@CFloatLongReverbModule@@QAEXPAUCFloatLongReverbModuleParams@@PBU2@PBVCFloatCyclicBuffer@@PAM3II@Z
+  00c896c0 RELOCATION_MATCH CFloatShortReverbModule::?Create@CFloatShortReverbModule@@QAEXIAAPAXPAHH@Z
+  00c89750 RELOCATION_MATCH CFloatShortReverbModule::?ProcessInput@CFloatShortReverbModule@@QAEXPBUCFloatShortReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z
+  00c89aa0 MATCH CFloatShortReverbModule::?ProcessCrossfeed@CFloatShortReverbModule@@QAEXPBM00I@Z
+  00c89b40 RELOCATION_MATCH CFloatShortReverbModule::?ProcessInput_GetFeedbackData_SseOptimisation@CFloatShortReverbModule@@QAEXPAMI@Z
+  00c89b60 RELOCATION_MATCH CFloatShortReverbModule::?ProcessInput_MixInputs_SseOptimisation@CFloatShortReverbModule@@QAEXPBUCFloatShortReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z

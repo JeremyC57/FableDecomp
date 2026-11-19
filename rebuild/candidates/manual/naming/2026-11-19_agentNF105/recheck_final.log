@@ -1,0 +1,171 @@
+addr       parity           behav  name
+00c76680   WARN STANDIN_LEAF ?AddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@II@Z (catalog CDspOps::AddFromRing; names another function)
+00c76680   MATCH            PASS   CDspOps::AddFromRing
+00c764e0   WARN STANDIN_LEAF ?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMI@Z (catalog CDspOps::ReadRingScaled; names another function)
+00c764e0   MATCH            PASS   CDspOps::ReadRingScaled
+00c76760   WARN STANDIN_LEAF ?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMI@Z (catalog CDspOps::MixFromRing; names another function)
+00c76760   MATCH            PASS   CDspOps::MixFromRing
+00c763e0   WARN STANDIN_LEAF ?CopySamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@II@Z (catalog CDspOps::ReadRing; names another function)
+00c763e0   MATCH            PASS   CDspOps::ReadRing
+00c76460   WARN STANDIN_LEAF ?CopySamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z (catalog CDspOps::WriteRing; names another function)
+00c76460   MATCH            PASS   CDspOps::WriteRing
+00c766f0   WARN STANDIN_LEAF ?AddSamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z (catalog CDspOps::AddToRing; names another function)
+00c766f0   MATCH            PASS   CDspOps::AddToRing
+00c76560   WARN STANDIN_LEAF ?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z (catalog CDspOps::ReadRingScaledRamp; names another function)
+00c76560   MATCH            PASS   CDspOps::ReadRingScaledRamp
+00c767e0   WARN STANDIN_LEAF ?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z (catalog CDspOps::MixRampFromRing; names another function)
+00c767e0   MATCH            PASS   CDspOps::MixRampFromRing
+00c744e0   WARN STANDIN_LEAF ?Clear@CFloatFilter@@QAEXXZ (catalog CDspGain::Reset; names another function)
+00c744e0   MATCH            PASS   CDspGain::Reset
+00c75ff0   WARN RELOC_NAME: ?AddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@II@Z -> 00c76680 labelled 'CDspOps::AddFromRing'
+00c75ff0   WARN RELOC_NAME: ?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMI@Z -> 00c764e0 labelled 'CDspOps::ReadRingScaled'
+00c75ff0   WARN RELOC_NAME: ?CopySamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z -> 00c76460 labelled 'CDspOps::WriteRing'
+00c75ff0   WARN STANDIN_LEAF ?Process@CFloatReflection@@QAEXPBUCFloatReflectionParams@@PAVCFloatCyclicBuffer@@PAM2I@Z (catalog CCombFilter::Process; names another function)
+00c75ff0   RELOCATION_MATCH PASS   CCombFilter::Process
+00c75140   WARN STANDIN_LEAF ?Process@CFloatDiffuser@@QAEXPAMI@Z (catalog CStereoDelayLine::Process; names another function)
+00c75140   RELOCATION_MATCH PASS   CStereoDelayLine::Process
+00c891a0   WARN RELOC_NAME: ?CopySamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@II@Z -> 00c763e0 labelled 'CDspOps::ReadRing'
+00c891a0   WARN RELOC_NAME: ?AddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@II@Z -> 00c76680 labelled 'CDspOps::AddFromRing'
+00c891a0   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPBVCFloatFilterParams@@PBMPAM_NI@Z -> 00c74ce0 labelled 'CDspGain::Apply'
+00c891a0   WARN STANDIN_LEAF ?Process@CFloatLongReverbModule@@QAEXPBUCFloatLongReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z (catalog CReverbDiffuserStage::Process; names another function)
+00c891a0   RELOCATION_MATCH PASS   CReverbDiffuserStage::Process
+00c76b60   WARN RELOC_NAME: ?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMI@Z -> 00c764e0 labelled 'CDspOps::ReadRingScaled'
+00c76b60   WARN RELOC_NAME: ?CopySamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z -> 00c76460 labelled 'CDspOps::WriteRing'
+00c76b60   WARN RELOC_NAME: ?AddSamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z -> 00c766f0 labelled 'CDspOps::AddToRing'
+00c76b60   WARN STANDIN_LEAF ?Process@CFloatEcho@@QAEXPBUCFloatEchoParams@@PBMPAMI@Z (catalog CReverbDelay::Process; names another function)
+00c76b60   RELOCATION_MATCH PASS   CReverbDelay::Process
+00c76c20   WARN RELOC_NAME: ?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z -> 00c76560 labelled 'CDspOps::ReadRingScaledRamp'
+00c76c20   WARN RELOC_NAME: ?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z -> 00c767e0 labelled 'CDspOps::MixRampFromRing'
+00c76c20   WARN RELOC_NAME: ?CopySamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z -> 00c76460 labelled 'CDspOps::WriteRing'
+00c76c20   WARN RELOC_NAME: ?AddSamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z -> 00c766f0 labelled 'CDspOps::AddToRing'
+00c76c20   WARN STANDIN_LEAF ?Process@CFloatEcho@@QAEXPAUCFloatEchoParams@@PBU2@PBMPAMII@Z (catalog CReverbDelay::Blend; names another function)
+00c76c20   RELOCATION_MATCH PASS   CReverbDelay::Blend
+00c89350   WARN RELOC_NAME: ?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z -> 00c76560 labelled 'CDspOps::ReadRingScaledRamp'
+00c89350   WARN RELOC_NAME: ?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z -> 00c767e0 labelled 'CDspOps::MixRampFromRing'
+00c89350   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPAVCFloatFilterParams@@PBV2@PBMPAM_NII@Z -> 00c74d30 labelled 'CDspGain::Crossfade'
+00c89350   WARN STANDIN_LEAF ?Process@CFloatLongReverbModule@@QAEXPAUCFloatLongReverbModuleParams@@PBU2@PBVCFloatCyclicBuffer@@PAM3II@Z (catalog CReverbDiffuserStage::ProcessRamped; names another function)
+00c89350   RELOCATION_MATCH PASS   CReverbDiffuserStage::ProcessRamped
+00c75820   WARN RELOC_NAME: ?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z -> 00c76560 labelled 'CDspOps::ReadRingScaledRamp'
+00c75820   WARN RELOC_NAME: ?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z -> 00c767e0 labelled 'CDspOps::MixRampFromRing'
+00c75820   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPAVCFloatFilterParams@@PBV2@PBMPAM_NII@Z -> 00c74d30 labelled 'CDspGain::Crossfade'
+00c75820   WARN RELOC_NAME: ?CopySamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z -> 00c76460 labelled 'CDspOps::WriteRing'
+00c75820   WARN STANDIN_LEAF ?ProcessInputFilter@CFloatLongReverb@@AAEXIPAUCFloatLongReverbParams@@PBU2@PAVCFloatCyclicBuffer@@II@Z (catalog CReverbDiffuser::UpdateGainRamped; names another function)
+00c75820   RELOCATION_MATCH PASS   CReverbDiffuser::UpdateGainRamped
+00c89750   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPBVCFloatFilterParams@@PBMPAM_NI@Z -> 00c74ce0 labelled 'CDspGain::Apply'
+00c89750   WARN RELOC_NAME: ?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMI@Z -> 00c76760 labelled 'CDspOps::MixFromRing'
+00c89750   WARN STANDIN_LEAF ?ProcessInput@CFloatShortReverbModule@@QAEXPBUCFloatShortReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z (catalog CReverbFilterTap::Process; names another function)
+00c89750   RELOCATION_MATCH PASS   CReverbFilterTap::Process
+00c89b60   WARN RELOC_NAME: ?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMI@Z -> 00c76760 labelled 'CDspOps::MixFromRing'
+00c89b60   WARN STANDIN_LEAF ?ProcessInput_MixInputs_SseOptimisation@CFloatShortReverbModule@@QAEXPBUCFloatShortReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z (catalog CReverbFilterTap::MixHistory; names another function)
+00c89b60   RELOCATION_MATCH PASS   CReverbFilterTap::MixHistory
+00c89b40   WARN RELOC_NAME: ?CopySamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@II@Z -> 00c763e0 labelled 'CDspOps::ReadRing'
+00c89b40   WARN STANDIN_LEAF ?ProcessInput_GetFeedbackData_SseOptimisation@CFloatShortReverbModule@@QAEXPAMI@Z (catalog CTCActivationReceptorBase::AddTrigger; names another function)
+00c89b40   RELOCATION_MATCH PASS   CTCActivationReceptorBase::AddTrigger
+00c89aa0   WARN STANDIN_LEAF ?ProcessCrossfeed@CFloatShortReverbModule@@QAEXPBM00I@Z (catalog CReverbFilterTap::Feedback; names another function)
+00c89aa0   MATCH            PASS   CReverbFilterTap::Feedback
+00c75e90   WARN RELOC_NAME: ?ProcessInput@CFloatShortReverbModule@@QAEXPAUCFloatShortReverbModuleParams@@PBU2@PBVCFloatCyclicBuffer@@PAM3II@Z -> 00c89850 labelled 'Animation_InterpolateProcess'
+00c75e90   WARN RELOC_NAME: ?ProcessCrossfeed@CFloatShortReverbModule@@QAEXPBM00I@Z -> 00c89aa0 labelled 'CReverbFilterTap::Feedback'
+00c75e90   WARN STANDIN_LEAF ?Process@CFloatShortReverb@@QAEXPAUCFloatShortReverbParams@@PBU2@PBVCFloatCyclicBuffer@@PAMPAPAMHII@Z (catalog CReverbTapBank::Process; names another function)
+00c75e90   RELOCATION_MATCH PASS   CReverbTapBank::Process
+00c75ce0   WARN RELOC_NAME: ?ProcessInput_GetFeedbackData_SseOptimisation@CFloatShortReverbModule@@QAEXPAMI@Z -> 00c89b40 labelled 'CTCActivationReceptorBase::AddTrigger'
+00c75ce0   WARN RELOC_NAME: ?ProcessInput_MixInputs_SseOptimisation@CFloatShortReverbModule@@QAEXPBUCFloatShortReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z -> 00c89b60 labelled 'CReverbFilterTap::MixHistory'
+00c75ce0   WARN RELOC_NAME: ?ProcessCrossfeed@CFloatShortReverbModule@@QAEXPBM00I@Z -> 00c89aa0 labelled 'CReverbFilterTap::Feedback'
+00c75ce0   WARN STANDIN_LEAF ?Process@CFloatShortReverb@@QAEXPAUCFloatShortReverbParams@@PBVCFloatCyclicBuffer@@PAMPAPAMI@Z (catalog CReverbStage94::Process; names another function)
+00c75ce0   RELOCATION_MATCH PASS   CReverbStage94::Process
+00c75670   WARN RELOC_NAME: ?Clear@CFloatFilter@@QAEXXZ -> 00c744e0 labelled 'CDspGain::Reset'
+00c75670   WARN STANDIN_LEAF ?Clear@CFloatLongReverb@@QAEXXZ (catalog CReverbDiffuser::Reset; names another function)
+00c75670   RELOCATION_MATCH PASS   CReverbDiffuser::Reset
+00c75ca0   WARN RELOC_NAME: ?Clear@CFloatFilter@@QAEXXZ -> 00c744e0 labelled 'CDspGain::Reset'
+00c75ca0   WARN STANDIN_LEAF ?Clear@CFloatShortReverb@@QAEXXZ (catalog CReverbTapBank::Reset; names another function)
+00c75ca0   RELOCATION_MATCH PASS   CReverbTapBank::Reset
+00c89110   WARN RELOC_NAME: ?Clear@CFloatFilter@@QAEXXZ -> 00c744e0 labelled 'CDspGain::Reset'
+00c89110   WARN STANDIN_LEAF ?Create@CFloatLongReverbModule@@QAEXIAAPAXPAHH@Z (catalog CReverbDiffuserStage::Allocate; names another function)
+00c89110   RELOCATION_MATCH PASS   CReverbDiffuserStage::Allocate
+00c896c0   WARN RELOC_NAME: ?Clear@CFloatFilter@@QAEXXZ -> 00c744e0 labelled 'CDspGain::Reset'
+00c896c0   WARN STANDIN_LEAF ?Create@CFloatShortReverbModule@@QAEXIAAPAXPAHH@Z (catalog CReverbFilterTap::Allocate; names another function)
+00c896c0   RELOCATION_MATCH PASS   CReverbFilterTap::Allocate
+00c75c30   WARN RELOC_NAME: ?Create@CFloatShortReverbModule@@QAEXIAAPAXPAHH@Z -> 00c896c0 labelled 'CReverbFilterTap::Allocate'
+00c75c30   WARN STANDIN_LEAF ?Create@CFloatShortReverb@@QAEXIPBUCFloatShortReverbConstants@@AAPAXPAHAAH@Z (catalog CReverbTapBank::Allocate; names another function)
+00c75c30   RELOCATION_MATCH PASS   CReverbTapBank::Allocate
+00c75f80   WARN STANDIN_LEAF ?Create@CFloatReflection@@QAEXIAAPAXPAHH@Z (catalog CCombFilter::Allocate; names another function)
+00c75f80   MATCH            PASS   CCombFilter::Allocate
+00c75010   WARN STANDIN_LEAF ?Clear@CFloatDiffuser@@QAEXXZ (catalog CStereoDelayLine::Clear; names another function)
+00c75010   MATCH            PASS   CStereoDelayLine::Clear
+00c69c60   WARN RELOC_NAME: ?Clear@CFloatFilter@@QAEXXZ -> 00c744e0 labelled 'CDspGain::Reset'
+00c69c60   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPAVCFloatFilterParams@@PBV2@PBMPAM_NII@Z -> 00c74d30 labelled 'CDspGain::Crossfade'
+00c69c60   WARN RELOC_NAME: ?Process@CFloatFilter@@QAEXPBVCFloatFilterParams@@PBMPAM_NI@Z -> 00c74ce0 labelled 'CDspGain::Apply'
+00c69c60   WARN STANDIN_LEAF ?ProcessReflectionsInputBuffer@CFloatReverbDspEngine@@AAEXPAM_NI@Z (catalog CReverbProcessor::ProcessInput; names another function)
+00c69c60   RELOCATION_MATCH PASS   CReverbProcessor::ProcessInput
+00c69fb0   WARN RELOC_NAME: ?Process@CFloatReflection@@QAEXPAUCFloatReflectionParams@@PBU2@PAVCFloatCyclicBuffer@@PAM3II@Z -> 00c76120 labelled 'CCombFilter::Blend'
+00c69fb0   WARN STANDIN_LEAF ?ProcessReflections@CFloatReverbDspEngine@@AAEXPAPAMIPAM@Z (catalog CReverbProcessor::ProcessCombs; names another function)
+00c69fb0   RELOCATION_MATCH PASS   CReverbProcessor::ProcessCombs
+00c6a080   WARN RELOC_NAME: ?Process@CFloatPitch@@QAEXPAUCFloatPitchShiftParams@@PBU2@PBMPAMII@Z -> 00c770b0 labelled 'CReverbPreDelay::Blend'
+00c6a080   WARN RELOC_NAME: ?Process@CFloatEcho@@QAEXPAUCFloatEchoParams@@PBU2@PBMPAMII@Z -> 00c76c20 labelled 'CReverbDelay::Blend'
+00c6a080   WARN RELOC_NAME: ?CopySamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z -> 00c76460 labelled 'CDspOps::WriteRing'
+00c6a080   WARN STANDIN_LEAF ?ProcessShortReverbInputBuffer@CFloatReverbDspEngine@@AAEXIPAM@Z (catalog NScript::CQ_GuildTrainingSkillScript::TransformGeometry; names another function)
+00c6a080   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingSkillScript::TransformGeometry
+00c6a180   WARN STANDIN_LEAF ?ProcessShortReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z (catalog CReverbProcessor::ProcessStage94; names another function)
+00c6a180   RELOCATION_MATCH PASS   CReverbProcessor::ProcessStage94
+00c6a200   WARN STANDIN_LEAF ?ProcessLongReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z (catalog CReverbProcessor::ProcessStage144; names another function)
+00c6a200   RELOCATION_MATCH PASS   CReverbProcessor::ProcessStage144
+00c6a5d0   WARN RELOC_NAME: ?ProcessReflectionsInputBuffer@CFloatReverbDspEngine@@AAEXPAM_NI@Z -> 00c69c60 labelled 'CReverbProcessor::ProcessInput'
+00c6a5d0   WARN RELOC_NAME: ?ProcessReflections@CFloatReverbDspEngine@@AAEXPAPAMIPAM@Z -> 00c69fb0 labelled 'CReverbProcessor::ProcessCombs'
+00c6a5d0   WARN RELOC_NAME: ?ProcessShortReverbInputBuffer@CFloatReverbDspEngine@@AAEXIPAM@Z -> 00c6a080 labelled 'NScript::CQ_GuildTrainingSkillScript::TransformGeometry'
+00c6a5d0   WARN RELOC_NAME: ?ProcessShortReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z -> 00c6a180 labelled 'CReverbProcessor::ProcessStage94'
+00c6a5d0   WARN RELOC_NAME: ?ProcessLongReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z -> 00c6a200 labelled 'CReverbProcessor::ProcessStage144'
+00c6a5d0   WARN STANDIN_LEAF ?ProcessReverb@CFloatReverbDspEngine@@MAE_NPAX_NPAPAXI@Z (catalog CReverbProcessor::Process; names another function)
+00c6a5d0   RELOCATION_MATCH PASS   CReverbProcessor::Process
+00c69b60   WARN RELOC_NAME: ?Clear@CFloatFilter@@QAEXXZ -> 00c744e0 labelled 'CDspGain::Reset'
+00c69b60   WARN RELOC_NAME: ?Clear@CFloatShortReverb@@QAEXXZ -> 00c75ca0 labelled 'CReverbTapBank::Reset'
+00c69b60   WARN RELOC_NAME: ?Clear@CFloatLongReverb@@QAEXXZ -> 00c75670 labelled 'CReverbDiffuser::Reset'
+00c69b60   WARN STANDIN_LEAF ?Clear@CFloatReverbDspEngine@@UAEXXZ (catalog CReverbProcessor::Reset; names another function)
+00c69b60   RELOCATION_MATCH PASS   CReverbProcessor::Reset
+00c6a460   WARN RELOC_NAME: ?CreateReverbBuffers@CFloatReverbDspEngine@@AAEXPAVCFloatReverbConstants@@AAPAXPAH@Z -> 00c69a70 labelled 'NScript::CQ_GuildTrainingSkillScript::AllocateMemory'
+00c6a460   WARN RELOC_NAME: ?Clear@CFloatFilter@@QAEXXZ -> 00c744e0 labelled 'CDspGain::Reset'
+00c6a460   WARN RELOC_NAME: ?Create@CFloatReflection@@QAEXIAAPAXPAHH@Z -> 00c75f80 labelled 'CCombFilter::Allocate'
+00c6a460   WARN RELOC_NAME: ?Create@CFloatShortReverb@@QAEXIPBUCFloatShortReverbConstants@@AAPAXPAHAAH@Z -> 00c75c30 labelled 'CReverbTapBank::Allocate'
+00c6a460   WARN RELOC_NAME: ?Create@CFloatLongReverb@@QAEXPAVCReverbConstants@@AAPAXPAHAAH@Z -> 00c755b0 labelled 'CQ_GuildTrainingSkillScript_InitializeSkillSlots'
+00c6a460   WARN RELOC_NAME: ?Create@CFloatEcho@@QAEXIAAPAXPAHH@Z -> 00c76ab0 labelled 'CQ_GuildTrainingSkillScript_ActivateSkillByIndex'
+00c6a460   WARN RELOC_NAME: ?Create@CFloatPitch@@QAEXIAAPAXPAHH@Z -> 00c76dd0 labelled 'CQ_GuildTrainingSkillScript_DeactivateSkillByIndex'
+00c6a460   WARN RELOC_NAME: ?Create@CFloatDiffuser@@QAEXIAAPAXPAH@Z -> 00c75050 labelled 'CQ_GuildTrainingSkillScript_InitializePrimeHashTables'
+00c6a460   WARN STANDIN_LEAF ?CreateComponents@CFloatReverbDspEngine@@AAEXPAVCFloatReverbConstants@@PAXPAH@Z (catalog CReverbProcessor::Allocate; names another function)
+00c6a460   RELOCATION_MATCH PASS   CReverbProcessor::Allocate
+
+WINS: 37
+  00c76680 MATCH CDspOps::?AddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@II@Z
+  00c764e0 MATCH CDspOps::?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMI@Z
+  00c76760 MATCH CDspOps::?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMI@Z
+  00c763e0 MATCH CDspOps::?CopySamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@II@Z
+  00c76460 MATCH CDspOps::?CopySamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z
+  00c766f0 MATCH CDspOps::?AddSamples@CReverbFns@@QAEXPAVCFloatCyclicBuffer@@IPBMI@Z
+  00c76560 MATCH CDspOps::?ScaleSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z
+  00c767e0 MATCH CDspOps::?ScaleAddSamples@CReverbFns@@QAEXPAMPBVCFloatCyclicBuffer@@IMMI@Z
+  00c744e0 MATCH CDspGain::?Clear@CFloatFilter@@QAEXXZ
+  00c75ff0 RELOCATION_MATCH CCombFilter::?Process@CFloatReflection@@QAEXPBUCFloatReflectionParams@@PAVCFloatCyclicBuffer@@PAM2I@Z
+  00c75140 RELOCATION_MATCH CStereoDelayLine::?Process@CFloatDiffuser@@QAEXPAMI@Z
+  00c891a0 RELOCATION_MATCH CReverbDiffuserStage::?Process@CFloatLongReverbModule@@QAEXPBUCFloatLongReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z
+  00c76b60 RELOCATION_MATCH CReverbDelay::?Process@CFloatEcho@@QAEXPBUCFloatEchoParams@@PBMPAMI@Z
+  00c76c20 RELOCATION_MATCH CReverbDelay::?Process@CFloatEcho@@QAEXPAUCFloatEchoParams@@PBU2@PBMPAMII@Z
+  00c89350 RELOCATION_MATCH CReverbDiffuserStage::?Process@CFloatLongReverbModule@@QAEXPAUCFloatLongReverbModuleParams@@PBU2@PBVCFloatCyclicBuffer@@PAM3II@Z
+  00c75820 RELOCATION_MATCH CReverbDiffuser::?ProcessInputFilter@CFloatLongReverb@@AAEXIPAUCFloatLongReverbParams@@PBU2@PAVCFloatCyclicBuffer@@II@Z
+  00c89750 RELOCATION_MATCH CReverbFilterTap::?ProcessInput@CFloatShortReverbModule@@QAEXPBUCFloatShortReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z
+  00c89b60 RELOCATION_MATCH CReverbFilterTap::?ProcessInput_MixInputs_SseOptimisation@CFloatShortReverbModule@@QAEXPBUCFloatShortReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z
+  00c89b40 RELOCATION_MATCH CTCActivationReceptorBase::?ProcessInput_GetFeedbackData_SseOptimisation@CFloatShortReverbModule@@QAEXPAMI@Z
+  00c89aa0 MATCH CReverbFilterTap::?ProcessCrossfeed@CFloatShortReverbModule@@QAEXPBM00I@Z
+  00c75e90 RELOCATION_MATCH CReverbTapBank::?Process@CFloatShortReverb@@QAEXPAUCFloatShortReverbParams@@PBU2@PBVCFloatCyclicBuffer@@PAMPAPAMHII@Z
+  00c75ce0 RELOCATION_MATCH CReverbStage94::?Process@CFloatShortReverb@@QAEXPAUCFloatShortReverbParams@@PBVCFloatCyclicBuffer@@PAMPAPAMI@Z
+  00c75670 RELOCATION_MATCH CReverbDiffuser::?Clear@CFloatLongReverb@@QAEXXZ
+  00c75ca0 RELOCATION_MATCH CReverbTapBank::?Clear@CFloatShortReverb@@QAEXXZ
+  00c89110 RELOCATION_MATCH CReverbDiffuserStage::?Create@CFloatLongReverbModule@@QAEXIAAPAXPAHH@Z
+  00c896c0 RELOCATION_MATCH CReverbFilterTap::?Create@CFloatShortReverbModule@@QAEXIAAPAXPAHH@Z
+  00c75c30 RELOCATION_MATCH CReverbTapBank::?Create@CFloatShortReverb@@QAEXIPBUCFloatShortReverbConstants@@AAPAXPAHAAH@Z
+  00c75f80 MATCH CCombFilter::?Create@CFloatReflection@@QAEXIAAPAXPAHH@Z
+  00c75010 MATCH CStereoDelayLine::?Clear@CFloatDiffuser@@QAEXXZ
+  00c69c60 RELOCATION_MATCH CReverbProcessor::?ProcessReflectionsInputBuffer@CFloatReverbDspEngine@@AAEXPAM_NI@Z
+  00c69fb0 RELOCATION_MATCH CReverbProcessor::?ProcessReflections@CFloatReverbDspEngine@@AAEXPAPAMIPAM@Z
+  00c6a080 RELOCATION_MATCH NScript::CQ_GuildTrainingSkillScript::?ProcessShortReverbInputBuffer@CFloatReverbDspEngine@@AAEXIPAM@Z
+  00c6a180 RELOCATION_MATCH CReverbProcessor::?ProcessShortReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z
+  00c6a200 RELOCATION_MATCH CReverbProcessor::?ProcessLongReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z
+  00c6a5d0 RELOCATION_MATCH CReverbProcessor::?ProcessReverb@CFloatReverbDspEngine@@MAE_NPAX_NPAPAXI@Z
+  00c69b60 RELOCATION_MATCH CReverbProcessor::?Clear@CFloatReverbDspEngine@@UAEXXZ
+  00c6a460 RELOCATION_MATCH CReverbProcessor::?CreateComponents@CFloatReverbDspEngine@@AAEXPAVCFloatReverbConstants@@PAXPAH@Z

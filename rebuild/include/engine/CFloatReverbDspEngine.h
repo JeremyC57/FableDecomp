@@ -20,6 +20,21 @@ public:
 protected:
  virtual bool ProcessReverb(void *,bool,void * *,unsigned int);
 private:
+#ifdef FABLE_RETAIL_CFLOATREVERBDSPENGINE_PROCESSREVERB
+ // Retail opt-in (NF99, q11493): SDK 2.10 CodeView private members the release ProcessReverb 0x00C6A5D0 calls (CODAApi.lib
+ // FloatReverbDspEngine.obj REL32 +0x35 / +0x46 / +0x53 / +0x5c / +0x65; native 0x00C69C60, 0x00C69FB0, 0x00C6A080, 0x00C6A180, 0x00C6A200).
+ void ProcessReflectionsInputBuffer(float*,bool,unsigned int);
+ void ProcessReflections(float**,unsigned int,float*);
+ void ProcessShortReverbInputBuffer(unsigned int,float*);
+ void ProcessShortReverb(float**,unsigned int);
+ void ProcessLongReverb(float**,unsigned int);
+#endif
+#ifdef FABLE_RETAIL_CFLOATREVERBDSPENGINE_CREATECOMPONENTS
+ // Retail opt-in (NF105, q11546): SDK 2.10 CodeView privates of the release CFloatReverbDspEngine::CreateComponents 0x00C6A460 (the
+ // release Create 0x00C6A8B0 calls it at REL32 +0xdb / +0x116; it calls CreateReverbBuffers 0x00C69A70 at +0x2c).
+ void CreateComponents(CFloatReverbConstants*,void*,int*);
+ void CreateReverbBuffers(CFloatReverbConstants*,void*&,int*);
+#endif
  CFloatReverbConstants m_ReverbConstants; // +0x28
  CFloatCyclicBuffer m_reflectionsInputBuffer; // +0x54
  CFloatCyclicBuffer m_reverbBuffer; // +0x60

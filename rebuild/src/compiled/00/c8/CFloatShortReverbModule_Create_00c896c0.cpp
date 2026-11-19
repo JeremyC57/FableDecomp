@@ -1,0 +1,30 @@
+// CFloatShortReverbModule::Create(unsigned int uiLength, void*& pvMemory, int* piBytes, int iToken) -- two-pass layout of one short-reverb module: round its length up (plus one block, multiple of 4) and, when memory is supplied, carve and zero the cyclic buffer, advance the memory cursor, take the fader token and clear the filter; always add the buffer's bytes to the running total
+// Leaf: ?Create@CFloatShortReverbModule@@QAEXIAAPAXPAHH@Z
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C896C0, 140 bytes, thiscall `ret 10h`; CFloatFilter::Clear 0x00C744E0 called at +0x59.
+// Name (NF105, q11549; was the descriptive CReverbFilterTap::Allocate over a local model): GameCODA 2.10 CodeView public
+//   ?Create@CFloatShortReverbModule@@QAEXIAAPAXPAHH@Z. Two sources: (1) this body is byte-identical (140 bytes, relocations masked) to
+//   that CODAApi.lib member (REL32 +0x5a ?Clear@CFloatFilter@@QAEXXZ = 0x00C744E0); (2) the byte-identical SDK CFloatShortReverb::Create
+//   0x00C75C30 calls it at REL32 +0x44, the retail call site. Layout: the CodeView CFloatShortReverbModule (m_Filter +4, m_Buffer +0x18,
+//   m_iMyFaderToken +0x24).
+// Shape: the Dbg build calls the header inline CFloatFilter::Create (release COMDAT `jmp Clear`); the release relocation at this call
+//   names ?Clear@CFloatFilter@@QAEXXZ, so the row calls Clear. CFloatCyclicBuffer::Create / Clear are the SDK header inlines.
+#define FABLE_RETAIL_PASS22_FLOATREVERB_CREATE
+#define FABLE_RETAIL_CFLOATFILTER_APPLY_PASS23
+#define FABLE_RETAIL_CFLOATCYCLICBUFFER_CLEAR
+#define FABLE_RETAIL_CFLOATCYCLICBUFFER_CREATE
+#define FABLE_RETAIL_CFLOATSHORTREVERBMODULE_CREATE
+#include "engine/CFloatShortReverbModule.h"
+
+void CFloatShortReverbModule::Create(unsigned int uiLength, void*& pvMemory, int* piBytes, int iToken)
+{
+    unsigned int uiSize = (uiLength + 131) & ~3u;
+    if (pvMemory) {
+        m_Buffer.Create(static_cast<float*>(pvMemory), uiSize);
+        m_Buffer.Clear();
+        pvMemory = static_cast<float*>(pvMemory) + uiSize;
+        m_iMyFaderToken = iToken;
+        m_Filter.Clear();
+    }
+    *piBytes += uiSize * sizeof(float);
+}
