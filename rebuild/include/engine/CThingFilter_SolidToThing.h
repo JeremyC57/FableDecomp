@@ -15,4 +15,15 @@ private:
     const CThing* SourceThing;                                        // +0x00
     CTCSolidToThing* PTCSolidToThing;                                 // +0x04
 };
+#ifdef FABLE_RETAIL_CTHINGFILTER_SOLIDTOTHING_BODY
+// Opt-in (hand4c 2026-11-19, row 0x0066A1E0): the operator() body, visible to the includer (FableWin.pdb ??RCThingFilter_SolidToThing@@QBE_NABVCThing@@@Z,
+// debug 0x01DAEBB0, 29 bytes: `cmp ecx,[eax] ; jne` -> false on the source thing, true otherwise; Ego_d parameter test_thing). Retail
+// expands it in the ForEachInRoughArea instance 0x0066A1E0 (0x0066A34C `cmp edi,[ecx] ; je`) and in the out-of-line Bind3 copy 0x00669040.
+inline bool CThingFilter_SolidToThing::operator()(const CThing& test_thing) const
+{
+    if (&test_thing == SourceThing)
+        return false;
+    return true;
+}
+#endif
 #endif

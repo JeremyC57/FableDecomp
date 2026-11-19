@@ -8,6 +8,9 @@
 // CTCTavernGame::FrameUpdate tests its game master through CIntelligentPointer<CThingAICreature> (IS_THING_ALIVE: GetPItem 0x00A01B50,
 // then CThing::Dead, bit 0 of +0x91).
 #include "engine/CThingCreatureBase.h"
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_SUSPENDERS
+#include "stlport/fable_map.h"                                     // Suspenders (opt-in below)
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_HOMEBUILDING
 #include "engine/CIntelligentPointer.h"
 class CThingBuilding;
@@ -278,7 +281,27 @@ private:
         WaveWithInformation:1, ContinueAIWithInformation:1, ImmuneToAttack:1, EnableCreatureAutoPlacing:1;   // +0x1C8 (Ego_r 0x1F8)
     bool AllowedToFollowHero:1, RegionFollowingOverriddenFromScript:1, RespondingToFollowAndWait:1,
         CanBeCourted:1, CanBeMarried:1;                                  // +0x1C9 (Ego_r 0x1F9; CanBeCourted bit 3 / CanBeMarried bit 4 landed)
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_SUSPENDERS
+    // Opt-in (hand4b w24, row 0x00834530 CombatStressTestDebug): Ego_r.pdb CThingAICreature::Suspenders, STLport set<void*> at retail
+    // +0x1CC (header +0x1CC, _M_node_count +0x1D0, as the landed SuspendAI 0x00833A10 / OnCreate 0x00833A70 read it), and Ego_r.pdb
+    // ?SuspendAI@CThingAICreature@@QAEX_NPAX@Z with its body visible: retail expands it in that row (0x00834539..0x00834570: the
+    // set's insert_unique 0x00835560, then AISuspended = size != 0 in the +0x1C8 bitfield byte); its out-of-line copy is the landed
+    // 0x00833A10 (insert_unique 0x00835560 / erase 0x00835960, then the same flag store). Same size as the opaque pad it replaces.
+    unsigned char _pad_0x1ca[0x2];                                       // +0x1CA
+public:
+    std::set<void*> Suspenders;                                          // +0x1CC
+    void SuspendAI(bool suspend, void* suspender)
+    {
+        if (suspend)
+            Suspenders.insert(suspender);
+        else
+            Suspenders.erase(suspender);
+        AISuspended = !Suspenders.empty();
+    }
+private:
+#else
     unsigned char _pad_0x1ca[0xe];                                       // +0x1CA Suspenders (opaque)
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
     // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;

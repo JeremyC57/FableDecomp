@@ -148,7 +148,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00666310	CThingCreatureBase	OnCreate	912	parked	DIFFER(915v908)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00666310.cpp	original
 006668a0	CThingCreatureBase	GetPossibleCombatAnimations	688	reserved (hand4c, in-house)	DIFFER(673v673)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1020/differ/006668a0.cpp	original
 00666d40	CThingCreatureBase	GetHeightZBelowAt	352	parked	DIFFER(346v348)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00666d40.cpp	original
-0066a1e0	ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_SolidToThing,CThingFilter_PhysicsFlagsSolidToThing,CThingFilter_OverlappingCircle>,_anon_EFF05290	ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_SolidToThing,CThingFilter_Phy	768	reserved (hand4c, in-house)	DIFFER(725v725)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/0066a1e0.cpp	original
 0066b370	CTCSoundPlayer	PlayAllSoundEvents	1808	parked	DIFFER(1805v1808)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0066b370.cpp	gapscan/boundary
 0066c900	CRegionMinimap	IlluminateRegionMinimapTheme	384	parked	DIFFER(348v354)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0066c900.cpp	original
 0066cd50	CRegionMinimap	BuildRegionMinimapTGA	432	reserved (hand3c, not plain C++)	DIFFER(430v423)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/0066cd50.cpp	original
@@ -230,7 +229,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00726ce0	CTCPhysicsNavigator	Move	1024	parked	DIFFER(1002v1011)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand304/differ/00726ce0.cpp	original
 00727220	CApplyAdditionalImpulseIfInCombatAndTooClose	operator()	736	parked	DIFFER(732v732)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00727220.cpp	original
 007280c0	CTCRandomAppearanceMorph	UpdateMorphSet	816	parked	DIFFER(807v802)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/007280c0.cpp	original
-0072c430	CTCSpecialAbilities	CTCSpecialAbilities::GetAbilityAvailability	592	reserved (hand4b, in-house)	DIFFER(584v584)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand617/differ/0072c430.cpp	original
 0072f380	CTCDummyVillager	OnSerialise	976	parked	DIFFER(979v968)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand301/differ/0072f380.cpp	original
 0072f750	CTCDummyVillager	CreateVillager	656	parked	DIFFER(648v643)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0072f750.cpp	original
 0072fb70	CTCDummyVillager	FrameUpdate	1280	parked	codex pass24 PARKED: The shared village and spawn APIs retain the native second marker pass, including frustum and line-of-sight gating. Definition cleanup, vector allocation and marker traversal scheduling still differ.	22	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/0072fb70/0072fb70.cpp	original
@@ -377,7 +375,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00832260	CThingAICreature	InitialActivate	1088	parked	DIFFER(1052v1076)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand327/differ/00832260.cpp	original
 008329b0	CThingAICreature	OnHit	1200	parked	DIFFER(1208v1187)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/008329b0.cpp	original
 00833c00	CThingAICreature	DrawPreparePrimitivesForRendering	2352	parked	DIFFER(2296v2300)	16	rebuild/candidates/manual/pending/2026-11-07_linux_hand827/differ/00833c00.test.cpp	gapscan/boundary
-00834530	CThingAICreature	CombatStressTestDebug	560	reserved (hand4b, in-house)	DIFFER(558v558)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/00834530.cpp	original
 00837220	CThingTrackNode	UpdateFacingDirection	720	parked	codex pass24 PARKED: The third normalization setup and cross-product Z operand order differ at 0x008373EC and 0x00837419.	21	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00837220/00837220.cpp	original
 00837570	CThingTrackNode	Save	704	parked	codex pass24 PARKED: The entry cleanup-state store and last ScriptName temporary use different scheduling and stack placement.	16	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00837570/00837570.cpp	original
 00837b30	CThingStaticMeshPrimitive_837b30	DrawPreparePrimitivesForRendering	320	parked	DIFFER(313v314)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00837b30.cpp	gapscan/boundary

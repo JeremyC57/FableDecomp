@@ -86,6 +86,29 @@ public:
     // 0x005ED860 <CThing, vector<CThing*>, CThingFilter_HasScriptName>, landed: PeekClassList 0x0049C770, the scan test, the filter on
     // the thing, push_back; the CThing type-mask test folds), a same-TU noinline body like GetAllLeafThings above: the caller then knows
     // the result vector is not captured and frees its storage without a second null test.
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY_EGOD
+    // Nested opt-in (hand4b w24, row 0x00834530 CombatStressTestDebug and its same-TU instance 0x0052B270
+    // GetAllThings<CThingAICreature, vector<CThingAICreature*>, CThingFilter_None>): the original text. Ego_d.pdb's record of that
+    // instance (debug 277): filter_func, things; flags, class_list; { it; { temp_thing; { tthing; { jonathans_lovely_safe_variable } } } },
+    // and FableWin.pdb's /Od body (0x01D55090) for the statements: flags = T::StatGetTypeFlags() first, then class_list = PeekClassList();
+    // temp_thing = *it for the scan and type-flag tests; tthing = static_cast<T*>(*it) (FableWin dereferences the iterator again) for the
+    // filter; the pushed copy in its own local. Retail then stores the pushed pointer to its frame word only on the push path (0x0052B2BE).
+    // Default path unchanged.
+    template<class T,class Container,class Filter> __declspec(noinline) void GetAllThings(const Filter& filter_func,Container& things) const {
+        unsigned long flags=T::StatGetTypeFlags();
+        const std::list<CClass*>& class_list=PeekClassList();
+        for(std::list<CClass*>::const_iterator it=class_list.begin();it!=class_list.end();++it) {
+            CThing* temp_thing=static_cast<CThing*>(*it);
+            if(temp_thing->IsIncludedInThingScans() && (temp_thing->GetTypeFlags()&flags)==flags) {
+                T* tthing=static_cast<T*>(*it);
+                if(filter_func(*tthing)) {
+                    T* jonathans_lovely_safe_variable=tthing;
+                    things.push_back(jonathans_lovely_safe_variable);
+                }
+            }
+        }
+    }
+#else
     template<class T,class Container,class Filter> __declspec(noinline) void GetAllThings(const Filter& filter,Container& result) const {
         const std::list<CClass*>& things=PeekClassList();
         for(std::list<CClass*>::const_iterator it=things.begin();it!=things.end();++it) {
@@ -103,6 +126,7 @@ public:
                 result.push_back(thing);
         }
     }
+#endif
 protected:
     const std::list<CClass*>& PeekClassList() const;    // 0x0049C770 ?PeekClassList@CThingSearchTools@@IBEABV?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@XZ
 public:
@@ -697,6 +721,54 @@ void CThingSearchTools::GetAllTCsInRoughArea(const C2DBoxI& area,const Filter& f
         }
     }
     const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps).clear();
+}
+#endif
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA_EGOD) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA_CONSTPROC) && !defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA_BODY) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_EGOD)
+// egod opt-in (hand4c 2026-11-19, row 0x0066A1E0, the <CThingPhysical, CFilter_Bind3<CThingFilter_SolidToThing,
+// CThingFilter_PhysicsFlagsSolidToThing, CThingFilter_OverlappingCircle>, `anonymous namespace'::CThingFindHeightZBelowAt> instance): the
+// ForEachInRoughArea<T,Filter,Proc> body defined out of class (in-class declaration: FOREACHINROUGHAREA + FOREACHINROUGHAREA_CONSTPROC;
+// appended after the retail / non-retail branches so no assert line moves) with Ego_d.pdb's parameter names, locals and scopes
+// (thing_creature_base.obj record: filter_func, op_func, got_one, flags, it, map (a const reference), local_area, c1, clipped_area, cy,
+// pcell, cx, ploop_node, pmapwho, loop_thing, tthing) in FableWin.pdb's statement order (debug 0x01DAAC80, 1606 bytes: got_one = false
+// and flags before GetAllThingMapsInArea, the ROUGHAREA_EGOD walk with the empty test on the edges (FableWin 0x01DAB083 `cmp TLX,BRX ; je`,
+// `cmp BRY,TLY ; je`, no GetWidth / GetHeight calls, unlike the GetAllThingsInRoughArea / GetAllTCsInRoughArea copies), then `filter_func(*tthing) && op_func(*tthing)` sets got_one).
+// Needs ROUGHAREA_EGOD (statics, GetMapwhoArea) and T::StatGetTypeFlags at the point of instantiation.
+template<class T,class Filter,class Proc>
+bool CThingSearchTools::ForEachInRoughArea(const C2DBoxI& area,const Filter& filter_func,const Proc& op_func) const {
+    bool got_one=false;
+    unsigned long flags=T::StatGetTypeFlags();
+    GetAllThingMapsInArea(area,const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps));
+    ++NoLookups;
+    NoThingsScanned=0;
+    ++SearchID;
+    for(std::vector<NThingMap::CThingMap*>::const_iterator it=AreaMaps.begin();it!=AreaMaps.end();++it) {
+        const NThingMap::CThingMap& map=**it;
+        C2DBoxI local_area=ClipAndConvertWorldMapAreaToLocalArea(map,area);
+        for(long c1=0;c1<NThingMap::MaxLayers;++c1) {
+            C2DBoxI clipped_area=GetMapwhoArea(map,c1,local_area);
+            if(clipped_area.TLX==clipped_area.BRX || clipped_area.BRY==clipped_area.TLY)
+                continue;
+            for(long cy=clipped_area.TLY;cy<clipped_area.BRY;++cy) {
+                const NThingMap::CThingMapCell* pcell=&map.PeekCell((unsigned char)c1,clipped_area.TLX,cy);
+                for(long cx=clipped_area.TLX;cx<clipped_area.BRX;++cx,++pcell) {
+                    for(const NThingMap::CMapwhoNode* ploop_node=pcell->PFirstNode;ploop_node;ploop_node=ploop_node->PNext) {
+                        CTCMapwho* pmapwho=ploop_node->PMapwho;
+                        if(pmapwho->GetSearchID()<SearchID) {
+                            pmapwho->SetSearchID(SearchID);
+                            CThing* loop_thing=&pmapwho->GetParentThing();
+                            if((loop_thing->GetTypeFlags()&flags)==flags) {
+                                T* tthing=static_cast<T*>(loop_thing);
+                                if(filter_func(*tthing) && op_func(*tthing))
+                                    got_one=true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps).clear();
+    return got_one;
 }
 #endif
 #endif // FABLE_ENGINE_CTHINGSEARCHTOOLS_H

@@ -400205,6 +400205,27 @@ $catalog = @(
         TestSource = '00/6e/NSpeechGainManager_OnDialogueStart_006e31e0_test.cpp'
         PassPattern = '006e31e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0066a1e0'
+        Module = 'CThingSearchTools'
+        Source = '00/66/CThingSearchTools_ForEachInRoughArea_0066a1e0.cpp'
+        TestSource = '00/66/CThingSearchTools_ForEachInRoughArea_0066a1e0_test.cpp'
+        PassPattern = '0066a1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072c430'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_IsAbilityAvailable_0072c430.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_IsAbilityAvailable_0072c430_test.cpp'
+        PassPattern = '0072c430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00834530'
+        Module = '(anonymous namespace)'
+        Source = '00/83/anonymousnamespace_CombatStressTestDebug_00834530.cpp'
+        TestSource = '00/83/anonymousnamespace_CombatStressTestDebug_00834530_test.cpp'
+        PassPattern = '00834530_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

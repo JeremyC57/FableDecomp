@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0072c430   WARN STANDIN_LEAF ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z (catalog CTCSpecialAbilities::CTCSpecialAbilities::GetAbilityAvailability; names another function)
+0072c430   RELOCATION_MATCH PASS   IsAbilityAvailable
+
+WINS: 1
+  0072c430 RELOCATION_MATCH CTCSpecialAbilities::?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCSpecialAbilities_IsAbilityAvailable_0072c430

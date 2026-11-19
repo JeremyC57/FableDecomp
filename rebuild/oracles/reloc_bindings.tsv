@@ -40299,3 +40299,7 @@ __imp__SetFileTime@16	0143fd64	009c38c0
 ?_M_insert_overflow@?$vector@PBVCTCCreatureGenerator@@V?$allocator@PBVCTCCreatureGenerator@@@std@@@std@@IAEXPAPBVCTCCreatureGenerator@@ABQBV3@ABU__true_type@2@I_N@Z	00514f40	00518340
 ?GetTargetGain@NSpeechGainManager@@YIMABVCActiveDialogueInfo@1@ABV?$vector@VCDialogueLayerDef@NSpeechGainManager@@V?$allocator@VCDialogueLayerDef@NSpeechGainManager@@@std@@@std@@@Z	006e2b70	006e31e0
 ?_M_create_node@?$list@VCActiveDialogueInfo@NSpeechGainManager@@V?$allocator@VCActiveDialogueInfo@NSpeechGainManager@@@std@@@std@@IAEPAU?$_List_node@VCActiveDialogueInfo@NSpeechGainManager@@@2@ABVCActiveDialogueInfo@NSpeechGainManager@@@Z	006e4cb0	006e31e0
+??RCThingFindHeightZBelowAt@?A0xdb4478ac@@QBE_NABVCThing@@@Z	00668ab0	0066a1e0
+?IsAbleToUseAnyAbility@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z	0072af30	0072c430
+??$GetAllThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVCThingFilter_None@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z	0052b270	00834530
+?insert_unique@?$_Rb_tree@PAXPAXU?$_Identity@PAX@std@@U?$less@PAX@2@V?$allocator@PAX@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@PAXU?$_Nonconst_traits@PAX@std@@@std@@_N@2@ABQAX@Z	00835560	00834530

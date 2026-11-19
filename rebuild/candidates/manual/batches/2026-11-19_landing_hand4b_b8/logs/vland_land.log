@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00834530   WARN STANDIN_LEAF ?CombatStressTestDebug@?A0xfd8d757e@@YIXAAVCThingAICreature@@ABVCThingSearchTools@@PAK@Z (catalog CThingAICreature::CombatStressTestDebug; names another function)
+00834530   RELOCATION_MATCH PASS   CombatStressTestDebug
+
+WINS: 1
+  00834530 RELOCATION_MATCH (anonymous namespace)::?CombatStressTestDebug@?A0x
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  anonymousnamespace_CombatStressTestDebug_00834530
