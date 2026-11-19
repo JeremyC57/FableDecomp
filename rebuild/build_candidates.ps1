@@ -399879,6 +399879,13 @@ $catalog = @(
         TestSource = '00/be/CEngineLandscapeMeshBuilder_GetMappingDirectionBlend_00be2b70_test.cpp'
         PassPattern = '00be2b70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c1c330'
+        Module = '_global'
+        Source = '00/c1/global_AIMatrixPointHelper00c1c330_00c1c330.cpp'
+        TestSource = '00/c1/global_AIMatrixPointHelper00c1c330_00c1c330_test.cpp'
+        PassPattern = '00c1c330_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

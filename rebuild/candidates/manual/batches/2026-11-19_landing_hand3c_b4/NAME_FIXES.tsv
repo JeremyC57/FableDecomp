@@ -1,0 +1,3 @@
+address	landed_name	issue	action
+00c1c330	AIMatrixPointHelper_00c1c330 (catalog / file slug)	the row Leaf is ?TransformPointThroughMirroredFrame@@YA?AVC3DVector@@ABUC3DMatrix@@ABV1@0@Z (descriptive; no PDB / FableWin copy of this audio-wrapper TU); the catalog label is a propagated manifest label with an address suffix	naming agent: respell catalog + file slug to TransformPointThroughMirroredFrame
+00c1c3f0	TransformHelperPoint_00c1c3f0	address-suffixed descriptive name; landed sibling file still models C3DVector as a local class (strict mode now rejects it: SHARED_HEADER_AVAILABLE)	re-land on engine/C3DVector.h (as in this row TU) and give it a suffix-free descriptive name
