@@ -399959,6 +399959,20 @@ $catalog = @(
         TestSource = '00/47/CTCInGameMenu_PCSetToLoad_0047dd9d_test.cpp'
         PassPattern = '0047dd9d_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006a3a70'
+        Module = 'std'
+        Source = '00/6a/std_Minsertoverflow_006a3a70.cpp'
+        TestSource = '00/6a/std_Minsertoverflow_006a3a70_test.cpp'
+        PassPattern = '006a3a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00723110'
+        Module = 'std'
+        Source = '00/72/std_Minsertoverflow_00723110.cpp'
+        TestSource = '00/72/std_Minsertoverflow_00723110_test.cpp'
+        PassPattern = '00723110_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

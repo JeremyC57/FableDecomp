@@ -1,0 +1,15 @@
+addr       parity           behav  name
+006a3a70   WARN STANDIN_LEAF ?_M_insert_overflow@?$vector@U?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@V?$allocator@U?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@@2@@std@@IAEXPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@2@ABU32@ABU__false_type@2@I_N@Z (catalog _global::Vector_ReserveAndFill; names another function)
+006a3a70   RELOCATION_MATCH PASS   vector<pair<long,CIntelligentPointer<CThing> > >::_M_insert_overflow
+00723110   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCGenerationPos@CTCSmokeGenerator@@PAV12@@std@@YIPAVCGenerationPos@CTCSmokeGenerator@@PAV12@00ABU__false_type@0@@Z -> 00722b70 labelled 'std::__uninitialized_copy<CTCSmokeGenerator::CGenerationPos *, CTCSmokeGenerator::CGenerationPos *>'
+00723110   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCGenerationPos@CTCSmokeGenerator@@IV12@@std@@YIPAVCGenerationPos@CTCSmokeGenerator@@PAV12@IABV12@ABU__false_type@0@@Z -> 00722bd0 labelled 'std::__uninitialized_fill_n<CTCSmokeGenerator::CGenerationPos *, unsigned int, CTCSmokeGenerator::CGenerationPos>'
+00723110   WARN STANDIN_LEAF ?_M_insert_overflow@?$vector@VCGenerationPos@CTCSmokeGenerator@@V?$allocator@VCGenerationPos@CTCSmokeGenerator@@@std@@@std@@IAEXPAVCGenerationPos@CTCSmokeGenerator@@ABV34@ABU__false_type@2@I_N@Z (catalog std::std::vector_ReserveAndCopy; names another function)
+00723110   RELOCATION_MATCH PASS   vector<CTCSmokeGenerator::CGenerationPos>::_M_insert_overflow
+
+WINS: 2
+  006a3a70 RELOCATION_MATCH std::_M_insert_overflow
+  00723110 RELOCATION_MATCH std::_M_insert_overflow
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  std_Minsertoverflow_006a3a70
+  std_Minsertoverflow_00723110

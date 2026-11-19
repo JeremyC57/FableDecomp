@@ -179,7 +179,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0069a2a0	_global	CGameCameraManager_UpdateMode	1456	parked	DIFFER(1267v1452)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0069a2a0.cpp	original
 006a03a0	CCreatureAction_UseObject	CCreatureAction_UseObject::Initialise	832	parked	codex pass24 PARKED: The shared action and graphic classes use the original dummy lookup and bounding query. The animation scan, registry calls, and x87 evaluation order still differ.	23	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/006a03a0/006a03a0.cpp	original
 006a1f80	CTCCarrying	PutThingInCarrySlot	672	parked	DIFFER(664v660)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/006a1f80.cpp	original
-006a3a70	_global	Vector_ReserveAndFill	288	reserved (hand2b, in-house)	DIFFER(285v285)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand636/differ/006a3a70.cpp	original
 006a40d0	CInputProcessJumpingAndRolling	ProcessRolling	1584	parked	DIFFER(25v1579)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006a40d0.cpp	original
 006a64d0	CThingPhysical	DrawPreparePrimitivesForRendering	944	parked	codex pass24 PARKED: The full-expression render text lifetime restores the 865-byte extent. The frame size, renderer call dispatch temporary, and choice of registers in component lookup and string concatenation still differ.	29	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/006a64d0/006a64d0.cpp	original
 006aa720	CThingPlayerCreature	SetPlayerCreatureActionForMelee	1216	parked	DIFFER(1218v1212)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand732/work/006aa720_p8.cpp	original
@@ -240,7 +239,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0070e8b0	CAnimateThing	CAnimateThing::UpdateFrameLogic	896	parked	DIFFER(882v881)	1	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/0070e8b0.cpp	original
 00714370	CActionMoveTo	OnActivate	960	parked	DIFFER(950v948)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00714370.cpp	original
 0071d020	CTCHeroMorph	OnSerialise	912	parked	DIFFER(942v911)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/hdr/0071d020.verify.cpp	original
-00723110	std	std::vector_ReserveAndCopy	304	reserved (hand2b, in-house)	DIFFER(300v300)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand523/differ/00723110.cpp	original
 00723e50	_global	CCharacter_UpdateOrientation	320	parked	DIFFER(306v310)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand523/differ/00723e50.cpp	original
 00725f10	CThingSearchTools	GetAllThingsInRoughArea	592	parked	DIFFER(733v590)	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/00725f10.cpp	original
 00726980	CTCPhysicsNavigator	PerformForcedMovement	608	parked	DIFFER(609v595)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/00726980.cpp	original
