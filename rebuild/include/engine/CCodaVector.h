@@ -10,8 +10,36 @@ class CCodaVector:public _CVECTOR {public:
  CCodaVector& operator=(const CCodaVector& v){x=v.x;y=v.y;z=v.z;return *this;}
  void Set(float a,float b,float c){x=a;y=b;z=c;}
  void Zero(){x=y=z=0.0f;}
+#ifdef FABLE_RETAIL_CCODAVECTOR_ORTHOGONALRIGHT
+ // GameCODA 2.10 CodaListener.obj (CODAApi.lib / CODAApiDbg.lib): Normalize 0x00C402E0 out of line (returns the old magnitude);
+ // Dot and OrthogonalRight (0x00C40370, the COMDAT copy) are header inlines, bodies as the SDK's Toolkit CCtkVector (CtkVector.h).
+ float Normalize();
+ float Dot(const CCodaVector& v)const
+  { return x * v.x + y * v.y + z * v.z; }
+ void OrthogonalRight(const CCodaVector& vFront, const CCodaVector& vTop)
+ {
+  x = vTop.y * vFront.z - vFront.y * vTop.z;
+  y = vTop.z * vFront.x - vFront.z * vTop.x;
+  z = vTop.x * vFront.y - vFront.x * vTop.y;
+ }
+#endif
 };
 #else
-class CCodaVector:public _CVECTOR {};
+class CCodaVector:public _CVECTOR {
+#ifdef FABLE_RETAIL_CCODAVECTOR_ORTHOGONALRIGHT
+public:
+ // GameCODA 2.10 CodaListener.obj (CODAApi.lib / CODAApiDbg.lib): Normalize 0x00C402E0 out of line (returns the old magnitude);
+ // Dot and OrthogonalRight (0x00C40370, the COMDAT copy) are header inlines, bodies as the SDK's Toolkit CCtkVector (CtkVector.h).
+ float Normalize();
+ float Dot(const CCodaVector& v)const
+  { return x * v.x + y * v.y + z * v.z; }
+ void OrthogonalRight(const CCodaVector& vFront, const CCodaVector& vTop)
+ {
+  x = vTop.y * vFront.z - vFront.y * vTop.z;
+  y = vTop.z * vFront.x - vFront.z * vTop.x;
+  z = vTop.x * vFront.y - vFront.x * vTop.y;
+ }
+#endif
+};
 #endif
 #endif

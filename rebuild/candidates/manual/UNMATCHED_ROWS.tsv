@@ -846,7 +846,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c371c0	_global	CTCTavernGame_OnStateUpdate	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand505/differ/00c371c0.cpp	original
 00c3a7d0	CRampedParam_00c3a8f0	Advance	288	parked	DIFFER(272v273)	6	rebuild/candidates/manual/pending/2026-11-04_linux_hand768/differ/00c3a7d0.cpp	original
 00c3da60	CCombatActionManager	CreateEnvironmentCombatAction	288	parked	DIFFER(261v282)	3	rebuild/candidates/manual/pending/2026-10-20_linux_hand231/differ/00c3da60.cpp	original
-00c40590	_global	AudioLib_NormalizeOrientationFrame_00c40590	192	reserved (hand3c, not plain C++)	DIFFER(192v192)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/differ/00c40590.cpp	original
 00c40d10	CEffectOwner_00c40750	CommitProperties	272	parked	DIFFER(252v272)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand774/differ/00c40d10.test.cpp	original
 00c41fb0	CCombatant	CCombatant::ComputeDerivedCombatStats	1584	reserved (hand3c, not plain C++)	DIFFER(1531v1570)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00c41fb0.cpp	original
 00c425e0	_global	Hero_ProcessExperienceBlockParry	224	parked	Codex pass 23 (whole parent in the 0x012152D0 draft): 221 v 217, extra receiver lea and scratch order	1	rebuild/candidates/manual/pending/2026-11-16_codex_pass23_open/012152d0/012152d0.cpp	original

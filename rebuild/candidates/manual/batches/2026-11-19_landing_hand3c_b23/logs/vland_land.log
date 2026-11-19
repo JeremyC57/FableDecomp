@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00c40590   WARN RELOC_NAME: ?Normalize@CCodaVector@@QAEMXZ -> 00c402e0 labelled 'CPKVector3_00c402e0::Normalise'
+00c40590   WARN RELOC_NAME: ?OrthogonalRight@CCodaVector@@QAEXABV1@0@Z -> 00c40370 labelled 'C3DVector::SetCrossProduct'
+00c40590   RELOCATION_MATCH PASS   Commit
+
+WINS: 1
+  00c40590 RELOCATION_MATCH CCodaListener::?Commit@CCodaListener@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCodaListener_Commit_00c40590

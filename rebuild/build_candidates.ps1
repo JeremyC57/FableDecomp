@@ -400939,6 +400939,13 @@ $catalog = @(
         TestSource = '00/4c/stdmapvoidNGraphicAppearanceCTCGraphicAppearanceCMeshEffectPriorityEntry_operator_004c5b90_test.cpp'
         PassPattern = '004c5b90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c40590'
+        Module = 'CCodaListener'
+        Source = '00/c4/CCodaListener_Commit_00c40590.cpp'
+        TestSource = '00/c4/CCodaListener_Commit_00c40590_test.cpp'
+        PassPattern = '00c40590_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
