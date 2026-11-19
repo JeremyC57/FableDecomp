@@ -1,0 +1,3 @@
+address	issue	action
+008780d0	slug CThingSearchTools_listconstCThingBuilding..._008780d0; catalog label GetPBestThingInRoughArea (propagated)	naming agent: respell to GetAllThingsInRoughArea<CThingBuilding,..> (row Leaf right)
+006fe7c0	slug CThingSearchTools_listCThingGameObject..._006fe7c0	naming agent: respell to GetAllThingsInRoughArea<CThingGameObject,..>

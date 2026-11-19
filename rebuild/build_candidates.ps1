@@ -400142,6 +400142,20 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 none'
         PassPattern = '007bd845_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008780d0'
+        Module = 'CThingSearchTools'
+        Source = '00/87/CThingSearchTools_listconstCThingBuildingCFilterBind2CThingFilterI_008780d0.cpp'
+        TestSource = '00/87/CThingSearchTools_listconstCThingBuildingCFilterBind2CThingFilterI_008780d0_test.cpp'
+        PassPattern = '008780d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fe7c0'
+        Module = 'CThingSearchTools'
+        Source = '00/6f/CThingSearchTools_listCThingGameObjectCFilterBind2CThingFilterMinA_006fe7c0.cpp'
+        TestSource = '00/6f/CThingSearchTools_listCThingGameObjectCFilterBind2CThingFilterMinA_006fe7c0_test.cpp'
+        PassPattern = '006fe7c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

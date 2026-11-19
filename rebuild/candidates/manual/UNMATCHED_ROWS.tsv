@@ -217,7 +217,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006f2de0	CGetBestAttackerForProng	operator()	384	parked	DIFFER(376v375)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/006f2de0.cpp	original
 006fa4e0	CManager	Load	1456	parked	DIFFER(1419v1444)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/006fa4e0.cpp	original
 006fda20	_global	CGameCameraBase_TracePhysics	832	parked	DIFFER(810v819)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006fda20.cpp	original
-006fe7c0	CThingSearchTools	GetAllThingsInRoughArea<CThingGameObject,std::list<CThingGameObject*>,CFilter_Bind2<CThing	800	reserved (hand4c, in-house)	DIFFER(680v680)	5	rebuild/candidates/manual/pending/2026-11-12_linux_handQ19/differ/006fe7c0.cpp	original
 00700ae0	COpinionReactionManager	GetOpinions	1328	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00700ae0.cpp	original
 00701010	COpinionReactionManager	GetAttitudeOrReactionType	1408	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00701010.cpp	original
 00701590	COpinionReactionManager	GetReactionMatchStrength	448	parked	DIFFER(435v439)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00701590.cpp	original
@@ -436,7 +435,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00874790	CPCMouseLook	OnInit	1088	parked	DIFFER(749v752)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00874790.cpp	original
 00875fb0	NCameraModes	DrawSquare	1328	parked	codex pass24 PARKED: The loop initializer is scheduled after two float stores where retail places it between them at 0x008760C0.	26	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00875fb0/00875fb0.cpp	original
 008764e0	NCameraModes	DrawPyramid	1984	parked	DIFFER(1329v1340)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand724/round2/differ/008764e0.cpp	original
-008780d0	CThingSearchTools	GetPBestThingInRoughArea<CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature>,	704	reserved (hand4c, in-house)	DIFFER(680v680)	4	rebuild/candidates/manual/pending/2026-11-12_linux_handQ19/differ/008780d0.cpp	original
 00879070	NCameraModes::CProjectileWeapon	GetHeightParamForPostionWithPhi	1264	parked	codex pass24 PARKED: The later two-vector cross products now agree. At 0x008792C1 the retail body keeps the quadratic factor live through a second x87 pop.	54	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00879070/00879070.cpp	original
 00879680	_global	ProjectileWeapon_CalcPhiAngle	576	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand481/differ/00879680.cpp	original
 00879900	NCameraModes::CProjectileWeapon	Update	3776	parked	acctC round six: round 6 final (2026-11-16): DIFFER(3370v3415); latest draft 00879900.cpp + NOTES.md in the folder (grep the ad	2	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE9/00879900.cpp	gapscan/boundary
