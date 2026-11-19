@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0063f4b0   WARN STANDIN_LEAF ??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@ABVCThingFindNavigationLayerAt@@@Z (catalog CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThi; names another function)
+0063f4b0   RELOCATION_MATCH PASS   ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThi
+008a8260   RELOCATION_MATCH PASS   GetHeroSummonedCreaturesList
+00b51ad0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b51ad0   RELOCATION_MATCH PASS   BuildBoxPositionMatrix
+00b53f60   RELOCATION_MATCH PASS   FrameStart
+
+WINS: 4
+  0063f4b0 RELOCATION_MATCH CThingSearchTools::??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@ABVCThingFindNavigationLayerAt@@@Z
+  008a8260 RELOCATION_MATCH CGameScriptInterface::?GetHeroSummonedCreaturesList@CGameScriptInterface@@UBE_NAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+  00b51ad0 RELOCATION_MATCH CEngineWeatherRenderer::?BuildBoxPositionMatrix@CEngineWeatherRenderer@@AAEXXZ
+  00b53f60 RELOCATION_MATCH CEngineWeatherRenderer::?FrameStart@CEngineWeatherRenderer@@UAEXABVCEngineComponentParams@@@Z

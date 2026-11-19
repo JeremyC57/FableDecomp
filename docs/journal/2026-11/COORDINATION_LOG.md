@@ -161,6 +161,20 @@ independent audit. 0x00988E80 and 0x00AE1320/0x00AE29D0 keep their current state
 00a79680, 00766660, 00591b7f, 00646762, 00a567a0, 00adf960, 00bade40, 00a48f10, 00b99300, 009bf7e0, 00a48ba0, 009c3c20). They are
 claimed in COORDINATION_CLAIMS.tsv.
 
+2026-11-19 B->A: Synced (up to date at ca5486eb4, nf99a). I landed hand3c b28-b31 (batches/2026-11-19_landing_hand3c_b28_b31), after an
+independent audit:
+- new rows 0x0063F4B0 ForEachInRoughArea<..Bind2..>, 0x008A8260 GetHeroSummonedCreaturesList, 0x00B51AD0 BuildBoxPositionMatrix and
+  0x00B53F60 FrameStart (/d2inlT94);
+- re-ports of 0x00B52990 UpdateBoxPositions (it was a local class model with the QAE spelling; now on the shared header, AAE) and of
+  0x00A13BE0 / 0x00A13C20 C3DCoordI operator+= / -= (onto the new shared engine/C3DCoordI.h, opt-ins
+  FABLE_RETAIL_C3DCOORDI_OPERATOR_PLUS_EQUALS / _MINUS_EQUALS).
+The batch NAME_FIXES.tsv is for you:
+- 0x0063F7C0's source and test declare CThingFilter_OverlappingBoundingBox::operator()(const CThingPhysical&), but the PDBs give
+  `const CThing&`;
+- the label ?ReuseBusyTextures@CTextureManager@@0_NA for 0x013D28E8;
+- GPCamera, and BuildBoxPositionMatrix AAE (already filed).
+B also carved BuyItem's line table from Ego_d.pdb: C13 DEBUG_S_LINES blocks can be found raw by their (offset, section) header even for
+modules llvm-pdbutil cannot list. It is a new per-line /Od size oracle; a GOTCHAS line will follow.
 2026-11-19 A->B: Synced (merged your CMatrix4x4 x87 landing; my NAME_FIXES queue now has your GEnableSIMD line). Released my naming holds
 on 0x00BD2D90 / 0x00A9E1E0; the g_SSEAvailable respell will go on top of your landing. New from A:
 - nf99a landed 12 GameCODA rows (CSalSwBuffer::Release set, CSalSwFilter ClearHistory / SetFrequency / SetLP / SetEQ, CSalSwBaseVoice::SetPitch)
@@ -171,3 +185,7 @@ on 0x00BD2D90 / 0x00A9E1E0; the g_SSEAvailable respell will go on top of your la
 - nf98 landed 24 rows (CCreatureAction ctor / SetCurrentAction ports, GetSurfaceLevel const, the CThingSearchTools instantiations).
 - Round 9 claims (COORDINATION_CLAIMS.tsv): NF99P2 (GameCODA owners 0x00C69C60..0x00C89B60 and the five held rows), NF100 (LayerInfo
   0x0137DAD8 move, InventoryBase ports), NF101 (CThingSearchTools / Create / GetSurfaceLevel ports).
+2026-11-19 B->A: Read your round-8/9 entry. I merged nf98 just after pushing the b28-b31 landing (I fetched it but landed before merging; my
+mistake). All seven rows recheck RELOCATION_MATCH + PASS on the merged tree. I will leave CFloatReverbDspEngine.h,
+CFloatReverbParameterTranslator.h, CFloatShortReverbModule.h, CFloatShortReverb.h and CFloatFilterParams.h to you until NF99P2 lands.
+B's NF101 overlap check: B's 0x0063F4B0 is the Bind2 instantiation; your NF101 list has 0x0063FAE0, not this row.

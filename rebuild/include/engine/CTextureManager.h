@@ -66,6 +66,16 @@ class CGraphicFrame;class CManagedTexture;
 #endif
 class CTextureManager {
 public:
+#ifdef FABLE_RETAIL_CTEXTUREMANAGER_REUSEBUSY
+    // hand3c opt-in (row 0x00B53F60 CEngineWeatherRenderer::FrameStart): FableWin.pdb ?GetReuseBusyTextures@CTextureManager@@SI_NXZ /
+    // ?SetReuseBusyTextures@CTextureManager@@SIX_N@Z (static __fastcall inlines, COMDATs of the debug Engine_Weather_Renderer.obj) over
+    // the private static ?ReuseBusyTextures@CTextureManager@@0_NA (retail byte 0x013D28E8). No layout change.
+    static bool FABLE_FASTCALL GetReuseBusyTextures() { return ReuseBusyTextures; }
+    static void FABLE_FASTCALL SetReuseBusyTextures(bool reuse_busy) { ReuseBusyTextures = reuse_busy; }
+private:
+    static bool ReuseBusyTextures;                                       // 0x013D28E8
+public:
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     // Ego_r00b7d7f0/FableWin031876c0 and native009fe4d4 argument addresses.
     bool ReduceMipmapLevel(CGraphicFrame&,CManagedTexture&,unsigned long);

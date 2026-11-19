@@ -11,14 +11,12 @@
 //   the row has no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family MAXPS_STRAY.
 //   emits an SSE instruction on registers the function never loads (an _mm_max_ps intrinsic needs __m128 operands it would
 //   load). The sequence is unique in Fable.exe, so it may be a post-build patch rather than source: see NOTES.md.
+// Re-port (2026-11-19, hand3c landing): the local `class C3DCoordI {long X, Y, Z;}` model replaced by the new shared
+//   engine/C3DCoordI.h (Ego_r layout: C2DCoordI base X / Y, long Z) under FABLE_RETAIL_C3DCOORDI_OPERATOR_MINUS_EQUALS. Same text, same bytes.
+#define FABLE_RETAIL_C3DCOORDI_OPERATOR_MINUS_EQUALS
 #include "engine/C3DVector.h"
-
+#include "engine/C3DCoordI.h"
 #include "engine/C3DCoordIStrayMaxps.h"
-class C3DCoordI {
-public:
-    long X, Y, Z;
-    const C3DCoordI& operator-=(const C3DVector& v);
-};
 
 const C3DCoordI& C3DCoordI::operator-=(const C3DVector& v)
 {

@@ -40083,6 +40083,13 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ?SetExclusiveMode@CMainGameComponent@@QAEX_N@Z	004163b7	0085ca80
 ?SetDisplayMode@CMainGameComponent@@QAEXKKE@Z	0041641f	0085caf0
 ?IsAwareOfThingImplementation@?A0x9c087913@@YI_NPBVCThingAICreature@@PBVCThing@@_NP8CTCPerceiveThing@@BE_NXZ@Z	00864250	008645e0
+?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MPBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z	00aa0090	00bd2d90
+?GNoBoneTransformationsCalculated@@3KA	0143b95c	00bd2d90
+?CalcMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@PBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z	00a9f540	00ae1320
+?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KPBMKK@Z	00a5bef0	00ae1320
+?GetMatrixBuffer@CParticleProgram@@CIPAVCMatrix4x4@@K@Z	00ae04e0	00ae1320
+?ApplyConstraints@CParticleProgram@@ABEXAAVCParticleSimulation@@JM@Z	00ae2510	00ae29d0
+?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z	00adf610	00ae29d0
 ?g_TradeTypeCategories@@3PAUCTradeTypeCategory@@A	0137ccdc	0059b6f4
 ?AddItem@CCategory@NInventory@@QAE_NJ_NJJ@Z	005bf060	0059c6b0
 ?GetCategoryIndexForTradeType@CTCInventoryTrade@@QAEJXZ	0059b6f4	0059c6b0
@@ -40144,6 +40151,8 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ?GetCurrentEntry@CircularQueue@@QBEPAVCSoundBuffer@@XZ	00c35d10	00c5b300
 ?SetParameters@CSoftwareVoice@@UAEKPAVCCodaBuffer@@PBUSVoiceDesc@@@Z	00c5bd00	00c5c2d0
 ?SetFrequency@CSalSwFilter@@AAEXIM@Z	00c6bbd0	00c6bc80
+?ReuseBusyTextures@CTextureManager@@0_NA	013d28e8	00b53f60
+?UpdateBoxPositions@CEngineWeatherRenderer@@AAEXXZ	00b52990	00b53f60
 ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@PBV1@0K@Z	009f37e0	0066cb00
 ?Initialise@CTexture@@QAE_NPBVC2DExtentsI@@JPBVCPixelFormat@@KJ_N2@Z	009fa280	0066cb00
 ??RCThingFilter_HasScriptSupervision@@QBE_NABVCThing@@@Z	006a7530	006dfa50

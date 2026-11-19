@@ -1,0 +1,27 @@
+addr       parity           behav  name
+0063f4b0   WARN STANDIN_LEAF ??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@ABVCThingFindNavigationLayerAt@@@Z (catalog CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThi; names another function)
+0063f4b0   RELOCATION_MATCH PASS   ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThi
+008a8260   RELOCATION_MATCH PASS   GetHeroSummonedCreaturesList
+00b51ad0   RELOCATION_MATCH PASS   BuildBoxPositionMatrix
+00b53f60   RELOCATION_MATCH PASS   FrameStart
+00b52990   RELOCATION_MATCH PASS   UpdateBoxPositions
+00a13be0   RELOCATION_MATCH PASS   operator+=
+00a13c20   RELOCATION_MATCH PASS   operator-=
+
+WINS: 7
+  0063f4b0 RELOCATION_MATCH CThingSearchTools::??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@ABVCThingFindNavigationLayerAt@@@Z
+  008a8260 RELOCATION_MATCH CGameScriptInterface::?GetHeroSummonedCreaturesList@CGameScriptInterface@@UBE_NAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+  00b51ad0 RELOCATION_MATCH CEngineWeatherRenderer::?BuildBoxPositionMatrix@CEngineWeatherRenderer@@AAEXXZ
+  00b53f60 RELOCATION_MATCH CEngineWeatherRenderer::?FrameStart@CEngineWeatherRenderer@@UAEXABVCEngineComponentParams@@@Z
+  00b52990 RELOCATION_MATCH CEngineWeatherRenderer::?UpdateBoxPositions@CEngineWeatherRenderer@@AAEXXZ
+  00a13be0 RELOCATION_MATCH C3DCoordI::??YC3DCoordI@@QAEABV0@ABVC3DVector@@@Z
+  00a13c20 RELOCATION_MATCH C3DCoordI::??ZC3DCoordI@@QAEABV0@ABVC3DVector@@@Z
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CThingSearchTools_ForEachInRoughAreaCThingPhysicalCFilterBind2CThi_0063f4b0
+  CGameScriptInterface_GetHeroSummonedCreaturesList_008a8260
+  CEngineWeatherRenderer_BuildBoxPositionMatrix_00b51ad0
+  CEngineWeatherRenderer_FrameStart_00b53f60
+  CEngineWeatherRenderer_UpdateBoxPositions_00b52990
+  C3DCoordI_operator_00a13be0
+  C3DCoordI_operator_00a13c20

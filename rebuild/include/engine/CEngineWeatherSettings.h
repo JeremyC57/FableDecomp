@@ -9,6 +9,9 @@
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/C2DVector.h"
 #include "engine/C3DVector.h"
+#ifdef FABLE_RETAIL_CENGINEWEATHERSETTINGS_BOXCENTER
+#include "engine/C3DCoordI.h"
+#endif
 class CEngineWeatherSettings : public CBaseClassNonCopyable {
 public:
     CEngineWeatherSettings();                            // ??0CEngineWeatherSettings@@QAE@XZ
@@ -57,7 +60,13 @@ public:
     float WeatherWindMinSpeed;                           // +0xd0
     float WeatherWindSpeedMultiplier;                    // +0xd4
     unsigned long RandomNumberGeneratorSeed;             // +0xd8
+#ifdef FABLE_RETAIL_CENGINEWEATHERSETTINGS_BOXCENTER
+    // hand3c opt-in (row 0x00B51AD0 CEngineWeatherRenderer::BuildBoxPositionMatrix): Ego_r.pdb C3DCoordI ParticleBoxCenter typed (the
+    // snapped box centre the row writes at renderer +0x1F0 / +0x1F4 / +0x1F8 = Settings +0xDC / +0xE0 / +0xE4). Same layout.
+    C3DCoordI ParticleBoxCenter;                         // +0xdc
+#else
     unsigned char ParticleBoxCenter[0xc];                // +0xdc C3DCoordI
+#endif
 #ifdef FABLE_RETAIL_CENGINEWEATHERSETTINGS_TAIL
     // Nested opt-in (chunk 2008, row 0x00B54890 CEngineWeatherRenderer::RenderRain): the Ego_r.pdb tail typed (no containers: retail =
     // Ego_r). RenderRain reads ParticleBoxPos (+0xE8), CurrentRainStrength (+0x4B4), RainTimePassed (+0x4C0), WindVector (+0x4E4),
@@ -84,6 +93,6 @@ public:
     unsigned char _rest_0xe8[0x558 - 0xe8];              // +0xe8 ParticleBoxPos[81] .. SnowSpeedFactors[5] (not modelled)
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineWeatherSettings) == 0x558);
-FABLE_STATIC_ASSERT(offsetof(CEngineWeatherSettings, RandomNumberGeneratorSeed) == 0xd8);
+FABLE_STATIC_ASSERT_AT(87, sizeof(CEngineWeatherSettings) == 0x558);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CEngineWeatherSettings, RandomNumberGeneratorSeed) == 0xd8);
 #endif
