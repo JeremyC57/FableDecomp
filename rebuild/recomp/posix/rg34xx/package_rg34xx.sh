@@ -20,6 +20,12 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # of its own name)
 rm -rf "$OUT"; mkdir -p "$OUT/Fable/lib" "$OUT/Fable/game" "$OUT/Fable/save"
 cp "$HERE/Fable.sh" "$OUT/Fable.sh"; cp "$HERE/Fable-diag.sh" "$OUT/Fable-diag.sh"; chmod +x "$OUT/Fable.sh" "$OUT/Fable-diag.sh"
+# A/B launchers for the native-decomp code (rebuild/recomp/native): both time every wrapped call
+for v in native:1 lifted:0; do
+  printf '#!/bin/sh\n# Native-decomp A/B run: the FullDecomp code %s; every wrapped call timed ("native decomp time:" lines in log.txt)\nexport FABLE_NATIVE_DECOMP=%s FABLE_ND_TIME=1\nexec "$(dirname "$0")/Fable.sh" "$@"\n' \
+    "$([ "${v#*:}" = 1 ] && echo on || echo off)" "${v#*:}" > "$OUT/Fable-${v%%:*}-timed.sh"
+  chmod +x "$OUT/Fable-${v%%:*}-timed.sh"
+done
 OUT="$OUT/Fable"
 cp "$BUILD/FableRecomp" "$OUT/FableRecomp"
 cp "$DXVK/src/d3d9/libdxvk_d3d9.so" "$OUT/lib/libdxvk_d3d9.so.0"
