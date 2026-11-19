@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5C2D0, length 140 bytes (+ int3 padding); `ret 8`. Virtual slot
 // 22 of vtable 0x012B5D70 (0x012B5DC8).
 // Callees: buffer virtual slot 1 (IsStream), CSoftwareVoice::SetParameters 0x00C5BD00 (qualified, direct),
-// SBodyRecord_00c55030::Reset 0x00C6B720 (x2, +0xDC / +0x100).
+// CSalSwFilter::ClearHistory 0x00C6B720 (NF99; was SBodyRecord_00c55030::Reset) (x2, +0xDC / +0x100).
 // Label: the manifest's "CTCTavernGameCoinGolf_Update" is propagated; descriptive names (GameCODA, no PDB).
 // Shape: `neg al ; sbb eax,eax ; not eax ; and eax,esi ; add eax,0FCh` is `&(IsStream() ? 0 : sample)->m_info`,
 // homed in the dead `buffer` slot; the buffer flag is a byte test (`test byte ptr [esi+12h],1`; a dword
@@ -79,15 +79,11 @@ public:
     unsigned char* ReadPointer() const { return m_pData + m_readPos * m_frameBytes; }
 };
 extern CAudioRingBuffer g_mixRing;                      // 0x0143BF68 (the planar 16-bit mix ring)
-class SBodyRecord_00c55030 {                                    // 0x24 bytes (ctor 0x00C6B9A0)
-public:
-    float m_coef[3];                                    // +0x00 current coefficients
-    float m_target[3];                                  // +0x0c target coefficients
-    long  m_history[3];                                 // +0x18
-    void Reset();                                       // 0x00C6B720
-    void Process(short* samples, unsigned long frames);         // 0x00C6B9D0
-    void ProcessRamped(short* samples, unsigned long frames);   // 0x00C6BAE0
-};
+// Filters (NF99, q11412): the two 0x24-byte records at +0xdc / +0x100 are GameCODA's CSalSwFilter (engine/CSalSwFilter.h, the SDK
+//   CodeView layout PARAMS m_Params / m_NewParams, m_fZ0, m_fZ1, m_nFadeSamples; was the local SBodyRecord_00c55030 model); the call
+//   0x00C6B720 is ?ClearHistory@CSalSwFilter@@QAEXXZ (CODAApi.lib SalSwFilter.obj, byte-identical; landed 0x00C54C10 binds it so).
+#define FABLE_RETAIL_CSALSW3D_CALCPARAMS
+#include "engine/CSalSwFilter.h"
 class CCodaVoice {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -153,7 +149,7 @@ public:
     virtual unsigned long SetParameters(CCodaBuffer* buffer, const SVoiceDesc* desc);   // slot 22, 0x00C5BD00
     CAudioRingBuffer m_ring;                            // +0xb4 (the voice's ring object spans 0x28 bytes)
     unsigned char _padd4[8];
-    SBodyRecord_00c55030 m_filters[2];                          // +0xdc
+    CSalSwFilter m_filters[2];                          // +0xdc
     unsigned char _pad124[0xc4];
     unsigned long m_step;                               // +0x1e8 resampling step, 20.12 fixed point
     unsigned long m_phase;                              // +0x1ec resampling phase (fraction)
@@ -179,7 +175,7 @@ unsigned long CSoftwareStreamVoice::SetParameters(CCodaBuffer* buffer, const SVo
         caps |= 0x80;
     if (desc->m_filter1 || info->m_filter1)
         caps |= 0x100;
-    m_filters[0].Reset();
-    m_filters[1].Reset();
+    m_filters[0].ClearHistory();
+    m_filters[1].ClearHistory();
     return caps;
 }

@@ -7568,7 +7568,6 @@ __imp__GetProcAddress@8	0143fe44	00c4d740
 ??1CAIStateGroupRoot_00c54110@@QAE@XZ	00c6ac50	00c54110
 ??_7CScriptDefinitionManager_00c54110@@6B@	012b89c8	00c54110
 @FableSub_c54170@4	00c6a3d0	00c54170
-?Reset@SBodyRecord_00c55030@@QAEXXZ	00c6b720	00c55030
 ??0CEnvironmentSpellEffectInterface@@QAE@XZ	00c6ca20	00c55070
 ??0CBase_00c6e760@@QAE@XZ	00c6e760	00c550b0
 ??1CTreeNodeBase_00c55130@@QAE@XZ	00c3f490	00c55130
@@ -13662,8 +13661,6 @@ __imp__CoInitializeEx@8	0144063c	00c53260
 ?Write@CSampleSink@@QAEXPAM@Z	00c58520	00c546e0
 ?Ramp@CVolumeScaler@@QAEXPAXGJ@Z	00c6ac90	00c54ea0
 ?Scale@CVolumeScaler@@QAEXPAXG@Z	00c6ac60	00c54ea0
-?Configure@CAudioSource@@QAEKPAUCSoundDesc@@PAUCPlayParams@@@Z	00c5bd00	00c551d0
-?Reset@SRampedVector@@QAEXXZ	00c6b720	00c551d0
 ?CreateStream@CAudioSource@@QAEPAUCStreamHandle@@PAX@Z	00c55270	00c55680
 ?Prime@CStreamHandle@@QAEXXZ	00c6e660	00c55680
 _StringCopyWorkerA@12	00c55750	00c56090
@@ -13680,7 +13677,6 @@ _StringCopyWorkerA@12	00c55750	00c56090
 ?Process@CReverbStage94@@QAEXPBUSStageSettings94@@PAUCDelayLine@@PAMPBQBMK@Z	00c75ce0	00c6a180
 ?Blend@CReverbStage144@@QAEXPBUSStageSettings144@@0PAUCDelayLine@@PAMPBQBMJKK@Z	00c75ab0	00c6a200
 ?Process@CReverbStage144@@QAEXPBUSStageSettings144@@PAUCDelayLine@@PAMPBQBMK@Z	00c75a20	00c6a200
-?SetCutoff@CStateVariableFilter@@QAEXKM@Z	00c6bbd0	00c6bc80
 ??_7CVtable_012bedb8@@6B@	012bedb8	00c6e760
 ?ResampleMonoRampMMX@@YAXPBFKKKPAJJJ@Z	00c79440	00c70240
 ?ResampleStereoRampMMX@@YAXPBFKKKPAJ1GJJ@Z	00c7ab20	00c70240
@@ -13700,8 +13696,6 @@ _StringCopyWorkerA@12	00c55750	00c56090
 ?SetModulation@CCodaVoice@@QAEXPBUSModulationParams@@@Z	00c5a9d0	00c5bd00
 ?StartEnvelope@CCodaVoice@@QAEXPBUSEnvelopeParams@@@Z	00c59c20	00c5bd00
 ?StartVibrato@CCodaVoice@@QAEXPBUSVibratoParams@@@Z	00c59fc0	00c5bd00
-?Reset@CVoiceFilter@@QAEXXZ	00c6b720	00c5c2d0
-?SetParameters@CSoftwareVoice@@UAEKPAVCCodaBuffer@@PBUSVoiceDesc@@@Z	00c5bd00	00c5c2d0
 ?MixMono@CSoftwareMixer@@QAEXPBFG@Z	00c6ac60	00c5c800
 ?MixMonoRamped@CSoftwareMixer@@QAEXPBFGF@Z	00c6ac90	00c5c800
 ?g_pCodaSystem@@3PAUCCodaSystem@@A	0143bc2c	00c5c800
@@ -13867,7 +13861,6 @@ _ImmAssociateContext@8	00cb5564	00cb5130
 ?g_LastRecalibrateCycleCount@@3_KA	013caa18	009e24b0
 ?g_LastRecalibrateTime@@3NA	013caa20	009e24b0
 ?g_ArcCosTable@@3PAMA	013cb530	00a22530
-?g_outputRate@@3KA	0139c9e8	00c5a500
 ?Configure@CEffectPart260@@QAEXPAUCVoiceEffect@@PBUSVoiceEffectParameters@@@Z	00c783f0	00c6aef0
 ?g_mixBlockLength@@3KA	0139c9f0	00c6b8c0
 ?FilterRamped@CStateVariableFilter@@QAEXPAFK@Z	00c6b8c0	00c6bae0
@@ -23585,9 +23578,6 @@ _FtoL	00c6b240	00c6b490
 ??$fill@PAV?$CArray@VC3DVector@@@@V1@@std@@YIXPAV?$CArray@VC3DVector@@@@0ABV1@@Z	00bcd8f0	00bcdca0
 ??$uninitialized_fill_n@PAV?$CArray@VC3DVector@@@@IV1@@std@@YIPAV?$CArray@VC3DVector@@@@PAV1@IABV1@@Z	00bcd920	00bcdca0
 ?_M_insert_overflow@?$vector@V?$CArray@VC3DVector@@@@V?$allocator@V?$CArray@VC3DVector@@@@@std@@@std@@IAEXPAV?$CArray@VC3DVector@@@@ABV3@ABU__false_type@2@I_N@Z	00bcdb70	00bcdca0
-?Clear@CAudioRingBuffer@@QAEXXZ	00c5ce40	00c5b300
-?DequeueNext@CircularQueue@@QAEKXZ	00c44320	00c5b300
-?GetCurrentEntry@CircularQueue@@QBEPAVCSoundBuffer@@XZ	00c35d10	00c5b300
 ??0CConsoleCommandParameters@@QAE@W4EGenericVarType@@@Z	009ebb30	00413c50
 ?GConsoleEnableCodeSectionLoading@@YIXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z	00413880	00413c50
 ?GConsoleSetLevel@@YIXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z	00413800	00413c50
@@ -26239,7 +26229,6 @@ _GVertexShaderConstantLayoutEmpty	013ca8a8	009da9f0
 ?ReadZlibCompressed@CDataInputStream@@UAEXPAXJ@Z	00996230	0047f58b
 ?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z	004861df	0047f58b
 ?VerifySignatureCached@CFrontEndManager@NUISystem@@QAE_NABVCWideString@@@Z	005957d9	00597228
-?Stop@CCodaVoice@@UAEXXZ	00c59710	00c5a1f0
 ?Flush@CAudioRingBuffer@@QAEXXZ	00c5cea0	00c5a2a0
 ?Reset@CCodaVoice@@UAEXXZ	00c59860	00c5a2a0
 ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@@Z	00a76f30	00a78e20
@@ -40221,3 +40210,16 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ??1CCreatureAction_SummonerLightningOrbInto@@UAE@XZ	00719c30	0096fcd0
 ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCreatureActionBase@@_N@Z	0097da40	0096fcd0
 ?IS_THING_ALIVE@@YI_NABUCIntelligentPointerThing@@@Z	004cc340	0096fcd0
+?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MPBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z	00aa0090	00bd2d90
+?GNoBoneTransformationsCalculated@@3KA	0143b95c	00bd2d90
+?CalcMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@PBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z	00a9f540	00ae1320
+?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KPBMKK@Z	00a5bef0	00ae1320
+?GetMatrixBuffer@CParticleProgram@@CIPAVCMatrix4x4@@K@Z	00ae04e0	00ae1320
+?ApplyConstraints@CParticleProgram@@ABEXAAVCParticleSimulation@@JM@Z	00ae2510	00ae29d0
+?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z	00adf610	00ae29d0
+?Configure@CAudioSource@@QAEKPAUCSoundDesc@@PAUCPlayParams@@@Z	00c5bd00	00c551d0
+?Stop@CCodaVoice@@UAEXXZ	00c59710	00c5a1f0
+?DequeueNext@CircularQueue@@QAEKXZ	00c44320	00c5b300
+?GetCurrentEntry@CircularQueue@@QBEPAVCSoundBuffer@@XZ	00c35d10	00c5b300
+?SetParameters@CSoftwareVoice@@UAEKPAVCCodaBuffer@@PBUSVoiceDesc@@@Z	00c5bd00	00c5c2d0
+?SetFrequency@CSalSwFilter@@AAEXIM@Z	00c6bbd0	00c6bc80

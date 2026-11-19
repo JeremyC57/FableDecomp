@@ -1,0 +1,31 @@
+addr       parity           behav  name
+00c54bd0   WARN STANDIN_LEAF ?Reset@CVoice_00c54bd0@@QAEXXZ (catalog CAssistanceOwner_00c54bd0::Reset; address-only name)
+00c54bd0   RELOCATION_MATCH PASS   CAssistanceOwner_00c54bd0::Reset
+00c55030   RELOCATION_MATCH PASS   CAudioSource::Reset
+00c551d0   WARN RELOC_NAME: ?Configure@CAudioSource@@QAEKPAUCSoundDesc@@PAUCPlayParams@@@Z -> 00c5bd00 labelled 'CSoftwareVoice::SetParameters'
+00c551d0   RELOCATION_MATCH PASS   CAudioSource::Start
+00c5a1f0   RELOCATION_MATCH PASS   CSoftwareVoice::Stop
+00c5a500   RELOCATION_MATCH PASS   CSalSwBaseVoice::SetPitch
+00c5b300   WARN RELOC_NAME: ?GetDesc@CSoundBuffer@@QBEPBUSBufferDesc@@XZ -> 00c3c4a0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c5b300   WARN RELOC_NAME: ?ReportQueueInfo@CAudioObject@@QAEXXZ -> 00c432f0 labelled 'CMarkedBufferOwner_00c43810::ReportMark'
+00c5b300   RELOCATION_MATCH PASS   CSoftwareVoice::AdvanceBuffer
+00c5c2d0   RELOCATION_MATCH PASS   CSoftwareStreamVoice::SetParameters
+00c5ce40   MATCH            PASS   CSalSwBuffer::Release
+00c6b720   MATCH            PASS   CSalSwFilter::ClearHistory
+00c6bbd0   RELOCATION_MATCH PASS   CSalSwFilter::SetFrequency
+00c6bc80   RELOCATION_MATCH PASS   CSalSwFilter::SetLP
+00c6bd00   RELOCATION_MATCH PASS   CSalSwFilter::SetEQ
+
+WINS: 12
+  00c54bd0 RELOCATION_MATCH CAssistanceOwner_00c54bd0::Reset
+  00c55030 RELOCATION_MATCH CAudioSource::?Reset@CAudioSource@@QAEXXZ
+  00c551d0 RELOCATION_MATCH CAudioSource::?Start@CAudioSource@@
+  00c5a1f0 RELOCATION_MATCH CSoftwareVoice::?Stop@CSoftwareVoice@@UAEXXZ
+  00c5a500 RELOCATION_MATCH CSalSwBaseVoice::?SetPitch@CSalSwBaseVoice@@IAEXMABUCODASOURCE@@@Z
+  00c5b300 RELOCATION_MATCH CSoftwareVoice::?AdvanceBuffer@CSoftwareVoice@@QAEXPAVCAudioObject@@@Z
+  00c5c2d0 RELOCATION_MATCH CSoftwareStreamVoice::?SetParameters@CSoftwareStreamVoice@@
+  00c5ce40 MATCH CSalSwBuffer::?Release@CSalSwBuffer@@QAEXXZ
+  00c6b720 MATCH CSalSwFilter::?ClearHistory@CSalSwFilter@@QAEXXZ
+  00c6bbd0 RELOCATION_MATCH CSalSwFilter::?SetFrequency@CSalSwFilter@@AAEXIM@Z
+  00c6bc80 RELOCATION_MATCH CSalSwFilter::?SetLP@CSalSwFilter@@QAEXPBU_CLPFILTER@@M@Z
+  00c6bd00 RELOCATION_MATCH CSalSwFilter::?SetEQ@CSalSwFilter@@QAEXPBU_CEQFILTER@@M@Z

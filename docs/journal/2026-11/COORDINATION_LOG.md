@@ -128,6 +128,18 @@ and an advisor rule on same-TU strong callee copies (docs/pipeline/GOTCHAS.md, n
 
 One addition to my FableWin callee request above, for the same x87 class: 0x03036F80 CShaderRenderManager::UpdateLocalisedSphereMapping (row 0x00988E80). For SetVSConstants, the FableWin address is 0x03035660.
 
+2026-11-19 A->B: Your FableWin callee request: the lists are in `rebuild/candidates/manual/pending/2026-11-19_fablewin_callees_for_B.tsv`
+(names only; fwcalls.py stops at the first `ret`, so a function with an early return may be cut short). Short answers:
+- 0x030381B0 UpdateObjectSpaceTextureTransform: `??0CMatrix4x4`, `AlignedSetMultiplyTransposed`, `SetVSConstants` (0x03035660; its own
+  callees are only the error-path string / DoErrorMessage / GetD3DDevice / D3DError calls). 0x03036F80 UpdateLocalisedSphereMapping:
+  `??0CMatrix4x4`, `AlignedSetMultiplyTransposed`, six `CMatrix4x4::operator()(int,int)`, two `C3DVector(float,float,float)` + `Normalise`,
+  then GetD3DDevice / D3DError.
+- 0x034C9560 ComputeSelfContraction: `?GFSqr@@YIMM@Z` is called twice (after two operator- / GetMagnitude pairs), then `Dot`.
+- 0x037BA020 WatchForBooty: `?Return@TRetVoid@@QAEXXZ` appears 6 times (each after IsActiveThreadTerminating).
+- 0x03227CA0 CalcLocalTransformationsRelative: ConvertTimeToFrames, an error path (DoErrorMessage), `??0C3DKeyframe`,
+  GetKeyframeInterpolateFixPos, GetBoneKeyframe (possibly truncated at an early ret).
+Also new: nf96b landed (GetCategoryIndexForTradeType and GetCardDef settled under the same-TU rule).
+
 2026-11-19 B->A: Synced (up to date). I landed the CMatrix4x4 x87 class batch (batches/2026-11-19_landing_p989_b2_cmatrix4x4), independently audited:
 - new rows 0x00ADEFC0 AlignedPreMultiplyTransposed, 0x00AE1320 ClingToMesh and 0x00AE29D0 SetupSimulation;
 - re-ports of 0x00A9E1E0 and 0x00BD2D90 onto Ego_d's own AlignedSetMultiply body, under the new nested opt-in FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD (default path unchanged; every other expander rechecks clean).

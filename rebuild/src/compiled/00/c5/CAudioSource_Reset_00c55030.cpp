@@ -9,12 +9,11 @@
 // Label correction: the landed row was CBodyOwner_00c55030::Reset over "rigid-body records" (the chunk label
 //   "CGameScriptInterface::Validate" is propagated); the same callees, typed as the audio source's.
 // Shape: one zero register for the two clears, `this` in esi.
-struct SBodyRecord_00c55030 {                             // 0x24 bytes: current, rest, rate
-    float m_current[3];
-    float m_rest[3];
-    float m_rate[3];
-    void Reset();                                  // 0x00C6B720
-};
+// Filters (NF99, q11412): the two 0x24-byte records at +0xdc / +0x100 are GameCODA's CSalSwFilter (engine/CSalSwFilter.h, the SDK
+//   CodeView layout PARAMS m_Params / m_NewParams, m_fZ0, m_fZ1, m_nFadeSamples; was the local SBodyRecord_00c55030 model); the call
+//   0x00C6B720 is ?ClearHistory@CSalSwFilter@@QAEXXZ (CODAApi.lib SalSwFilter.obj, byte-identical; landed 0x00C54C10 binds it so).
+#define FABLE_RETAIL_CSALSW3D_CALCPARAMS
+#include "engine/CSalSwFilter.h"
 
 struct CDecodedStream {
     virtual void v00();
@@ -24,8 +23,8 @@ struct CDecodedStream {
 struct CAudioSource {                              // the libpk software mixer voice
     void*           __vftable;                     // +0x00
     unsigned char   _pad4[0xd8];
-    SBodyRecord_00c55030   m_rampA;                       // +0xdc
-    SBodyRecord_00c55030   m_rampB;                       // +0x100
+    CSalSwFilter   m_rampA;                       // +0xdc
+    CSalSwFilter   m_rampB;                       // +0x100
     unsigned char   _pad124[0xfc];
     CDecodedStream* m_pStream;                     // +0x220
     unsigned char   _pad224[8];
@@ -38,8 +37,8 @@ struct CAudioSource {                              // the libpk software mixer v
 void CAudioSource::Reset()
 {
     m_pStream->Rewind();
-    m_rampA.Reset();
-    m_rampB.Reset();
+    m_rampA.ClearHistory();
+    m_rampB.ClearHistory();
     m_22c = 0;
     m_238 = 0;
 }

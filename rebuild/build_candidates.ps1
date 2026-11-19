@@ -44119,9 +44119,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c5ce40'
-        Module = 'CAudioRingBuffer'
-        Source = '00/c5/CGameflowAssistanceScript_Init_00c5ce40.cpp'
-        TestSource = '00/c5/CGameflowAssistanceScript_Init_00c5ce40_test.cpp'
+        Module = 'CSalSwBuffer'
+        Source = '00/c5/CSalSwBuffer_Release_00c5ce40.cpp'
+        TestSource = '00/c5/CSalSwBuffer_Release_00c5ce40_test.cpp'
         PassPattern = '00c5ce40_TEST PASS'
     }
     [pscustomobject]@{
@@ -255115,9 +255115,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6b720'
-        Module = 'SBodyRecord_00c55030'
-        Source = '00/c6/SBodyRecord00c55030_Reset_00c6b720.cpp'
-        TestSource = '00/c6/SBodyRecord00c55030_Reset_00c6b720_test.cpp'
+        Module = 'CSalSwFilter'
+        Source = '00/c6/CSalSwFilter_ClearHistory_00c6b720.cpp'
+        TestSource = '00/c6/CSalSwFilter_ClearHistory_00c6b720_test.cpp'
         PassPattern = '00c6b720_TEST PASS'
     }
     [pscustomobject]@{
@@ -307419,23 +307419,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6bbd0'
-        Module = 'CStateVariableFilter'
-        Source = '00/c6/CStateVariableFilter_SetCutoff_00c6bbd0.cpp'
-        TestSource = '00/c6/CStateVariableFilter_SetCutoff_00c6bbd0_test.cpp'
+        Module = 'CSalSwFilter'
+        Source = '00/c6/CSalSwFilter_SetFrequency_00c6bbd0.cpp'
+        TestSource = '00/c6/CSalSwFilter_SetFrequency_00c6bbd0_test.cpp'
         PassPattern = '00c6bbd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c6bc80'
-        Module = 'CStateVariableFilter'
-        Source = '00/c6/CStateVariableFilter_SetParameters_00c6bc80.cpp'
-        TestSource = '00/c6/CStateVariableFilter_SetParameters_00c6bc80_test.cpp'
+        Module = 'CSalSwFilter'
+        Source = '00/c6/CSalSwFilter_SetLP_00c6bc80.cpp'
+        TestSource = '00/c6/CSalSwFilter_SetLP_00c6bc80_test.cpp'
         PassPattern = '00c6bc80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c6bd00'
-        Module = 'CStateVariableFilter'
-        Source = '00/c6/CStateVariableFilter_SetParametersWithGain_00c6bd00.cpp'
-        TestSource = '00/c6/CStateVariableFilter_SetParametersWithGain_00c6bd00_test.cpp'
+        Module = 'CSalSwFilter'
+        Source = '00/c6/CSalSwFilter_SetEQ_00c6bd00.cpp'
+        TestSource = '00/c6/CSalSwFilter_SetEQ_00c6bd00_test.cpp'
         PassPattern = '00c6bd00_TEST PASS'
     }
     [pscustomobject]@{
@@ -309405,9 +309405,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c5a500'
-        Module = 'CSoftwareVoice'
-        Source = '00/c5/CSoftwareVoice_UpdateStep_00c5a500.cpp'
-        TestSource = '00/c5/CSoftwareVoice_UpdateStep_00c5a500_test.cpp'
+        Module = 'CSalSwBaseVoice'
+        Source = '00/c5/CSalSwBaseVoice_SetPitch_00c5a500.cpp'
+        TestSource = '00/c5/CSalSwBaseVoice_SetPitch_00c5a500_test.cpp'
         PassPattern = '00c5a500_TEST PASS'
     }
     [pscustomobject]@{

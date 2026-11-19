@@ -47152,7 +47152,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c5a2e0	SetBuffer	CSoftwareVoice	unknown	undefined	0		0			discovered	gapscan							
 00c5a3c0	SizeRing	CSoftwareVoice	unknown	undefined	0		0	yes	accepted									
 00c5a480	UpdateEnvelope	CCodaVoice	unknown	undefined	0		0	yes	accepted									
-00c5a500	UpdateStep	CSoftwareVoice	unknown	undefined	0		0	yes	accepted									
+00c5a500	SetPitch	CSalSwBaseVoice	unknown	undefined	0		0	yes	accepted									
 00c5a5b0	ReadChannel	CSoftwareVoice	unknown	undefined	0		0			discovered	gapscan							
 00c5a6b0	StoreConstant_00c5a6b0	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00c5a700	CAudioSource_UpdateScaleTransform	_global	unknown	undefined	0		0	yes	accepted									
@@ -47186,7 +47186,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c5ca60	CTCHeroStats_UpdateSoundAndVisuals	_global	unknown	undefined	0		0	yes	accepted									
 00c5cdc0	MixBlock	CSoftwareStreamVoice	unknown	undefined	0		0			discovered	gapscan							
 00c5ce00	Init	CAudioRingBuffer	__thiscall	undefined	9	CReactionMatch_SecondaryAxisCentredMRShifted *,EOpinionReactionType,EOpinion,float,float,float,float,float,float	0	yes	accepted									
-00c5ce40	Clear	CAudioRingBuffer	__thiscall	void	1	CGameflowAssistanceScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\CGameflowAssistanceScript_Init_00c5ce40.cpp
+00c5ce40	Release	CSalSwBuffer	__thiscall	void	1	CGameflowAssistanceScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\CGameflowAssistanceScript_Init_00c5ce40.cpp
 00c5ce60	SetCapacity	CAudioRingBuffer	unknown	undefined	0		0	yes	accepted									
 00c5cea0	Flush	CAudioRingBuffer	__thiscall	void	1	CV_MurderTwistScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\CVMurderTwistScript_CVMurderTwistScriptInitb_00c5cea0.cpp
 00c5ceb0	Reset	CAudioRingBuffer	__thiscall	undefined	3	CThingSearchTools *,CThingManager *,CWorldMap *	0	yes	accepted									
@@ -47497,15 +47497,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6b3a0	ConvertInt128BlockToFloat	_global	unknown	undefined	0		0	yes	accepted									
 00c6b490	ConvertFloat128BlockToIntInPlace	_global	unknown	undefined	0		0	yes	accepted									
 00c6b5d0	ConvertInt128BlockToFloatInPlace_00c6b5d0	_global	unknown	undefined	0		0	yes	accepted									
-00c6b720	Reset	CStateVariableFilter	__thiscall	C3DVector	1	CTCPhysicsRigidBody *	1	yes	accepted									
+00c6b720	ClearHistory	CSalSwFilter	__thiscall	C3DVector	1	CTCPhysicsRigidBody *	1	yes	accepted									
 00c6b7c0	FilterRampedWithGain	CStateVariableFilter	unknown	undefined	0		0	yes	accepted									
 00c6b8c0	FilterRamped	CStateVariableFilter	unknown	undefined	0		0	yes	accepted									
 00c6b9a0	CStateVariableFilter	CStateVariableFilter	__thiscall	undefined	1	pair<EHeroMorphType,CParticleMorphs::CEntry> *	0	yes	accepted									
 00c6b9d0	FilterWithGain	CStateVariableFilter	unknown	undefined	0		0	yes	accepted									
 00c6bae0	Filter	CStateVariableFilter	unknown	undefined	0		0	yes	accepted									
-00c6bbd0	SetCutoff	CStateVariableFilter	unknown	undefined	0		0	yes	accepted									
-00c6bc80	SetParameters	CStateVariableFilter	unknown	undefined	0		0	yes	accepted									
-00c6bd00	SetParametersWithGain	CStateVariableFilter	unknown	undefined	0		0	yes	accepted									
+00c6bbd0	SetFrequency	CSalSwFilter	unknown	undefined	0		0	yes	accepted									
+00c6bc80	SetLP	CSalSwFilter	unknown	undefined	0		0	yes	accepted									
+00c6bd00	SetEQ	CSalSwFilter	unknown	undefined	0		0	yes	accepted									
 00c6bdc0	GetFrequencyTableEntry	_global	unknown	undefined	0		0	yes	accepted									
 00c6be60	Audio_ComputeFrequencyResponse	_global	unknown	undefined	0		0	yes	accepted									
 00c6bf60	Pow10_00c6bf60	_global	unknown	undefined	0		0	yes	accepted									
