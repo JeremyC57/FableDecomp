@@ -1,0 +1,1 @@
+== NMaths::GetRootsNumerically<CVeryRandomFunctionToFindThePointOnAnElipseThatIsClosestToAPoint>: no complete record

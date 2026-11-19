@@ -1,0 +1,17 @@
+addr: 00540320
+status: parked
+batches: 2026-10-22_linux_hand284
+attempts: 1
+last_lens: 755v755
+bounds_class: OK
+bounds_detail: row=768 ext=755 corr=00540320:755
+retries: 
+git_commits: 91e73d22b
+skipped: 
+rebound: 
+in_findings: y
+residue_class: register-tie
+residue: DIFFER(755v755) -- 14 lines, all register/encoding: the three vtable loads take eax where retail takes edx (and back), and the home-key scroll `i - len - 5` is `sub edi,5` where retail has `add edi,-5` (unsigned/signed, `+ -5`, `-= 5`, `- 5u`, parenthesised forms all give sub); control flow exact (shared refresh tail through a label)
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand284/differ/00540320.cpp
+diagnosis: callee-saved / scratch register choice: a use-weight tie (esi > edi > ebx > ebp preference); moves one use between expressions, named locals, same-TU noinline stand-ins for address-taking callees (de-bake B2) and the real STLport iterator forms are the only known levers
+work_status: classified

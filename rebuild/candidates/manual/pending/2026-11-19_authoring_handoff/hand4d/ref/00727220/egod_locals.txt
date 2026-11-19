@@ -1,0 +1,25 @@
+== CApplyAdditionalImpulseIfInCombatAndTooClose::operator() (debug length 991)
+  bprel -124 type 0x390b0 this   [const CApplyAdditionalImpulseIfInCombatAndTooClose*]
+  bprel +8 type 0x9a77 nearby_creature   [CThing*]
+  bprel -17 type 0x30 solid_to_thing   [bool]
+  bprel -16 type 0x391e1 tc_solid_to_thing   [CTCSolidToThing*]
+  {
+    bprel -40 type 0x2460 between   [C3DVector]
+    bprel -28 type 0x40 vertical_distance_between   [float]
+    bprel -24 type 0x40 min_radius   [float]
+    {
+      bprel -52 type 0x40 between_sq_mag   [float]
+      bprel -48 type 0x40 radius_sq_mag   [float]
+      bprel -44 type 0x40 tolerance_band   [float]
+      {
+        bprel -60 type 0x40 scale   [float]
+        bprel -56 type 0x40 between_mag   [float]
+        {
+          bprel -64 type 0x40 dist   [float]
+        {
+          bprel -92 type 0x2460 push_vector   [C3DVector]
+          bprel -80 type 0xb7c1 world   [const CWorld&]
+          bprel -76 type 0x40 push_angle   [float]
+          bprel -72 type 0x40 plus_minus   [float]
+          bprel -68 type 0x40 push_rotation_degrees   [float]
+== CApplyAdditionalImpulseIfInCombatAndTooClose::operator(): no complete record

@@ -1,0 +1,1 @@
+== CParticleEmitter::SetOrientation: no complete record

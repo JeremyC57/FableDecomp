@@ -1,0 +1,5 @@
+rebuild/candidates/manual/pending/2026-11-12_linux_handQ21/NOTES.md: - 0x00540320 NUISystem::CEditBox::KeyPressed -- ported onto engine/NUISystem_CEditBox.h (the local 150-virtual CComponent list is gone).
+rebuild/candidates/manual/pending/2026-11-12_linux_handQ21/NOTES.md: - The other rows' names were checked present in both Ego_r.pdb and FableWin.pdb, with retail placement: 00540320 CEditBox vtable slot 146;
+rebuild/candidates/manual/pending/2026-11-12_linux_handQ21/README.md: 2 are ported but still DIFFER: 0x00540320 CEditBox::KeyPressed (three vptr loads with eax/edx swapped; `sub edi,5` vs `add edi,-5`) and
+rebuild/candidates/manual/pending/2026-11-12_linux_handQ21/LESSONS.md: - (chunk Q21, 2026-11-12) `add reg,-5` v `sub reg,5`: VC7.1 emits the add form only as a 3-address `lea r,[x-5]`; every in-place spelling of `i - len - 5` canonicalises to `sub` (0x00540320, unresolved).
+rebuild/candidates/manual/pending/2026-11-12_linux_handQ21/STATUS.tsv: 00540320	NUISystem::CEditBox::KeyPressed	DIFFER(755v755)	7	ported onto NUISystem_CEditBox.h (+CText window-slot fix); residue: 3 vptr scratch regs eax/edx swapped, sub edi,5 vs add edi,-5

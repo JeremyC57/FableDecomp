@@ -1,0 +1,17 @@
+addr: 0063f7c0
+status: parked
+batches: 2026-10-23_linux_hand308
+attempts: 1
+last_lens: 785v785
+bounds_class: OK
+bounds_detail: row=800 ext=785 corr=0063f7c0:785
+retries: 
+git_commits: 7e21488e4
+skipped: 
+rebound: 
+in_findings: 
+residue_class: register-tie
+residue: DIFFER(785v785) -- residue: node-loop exit reload order only (retail reloads edx first); ForEachInRoughArea with CFilter_Bind3 reference members and the inline OverlappingBoundingBox CAABox Grade: DIFFER(769v769) -- one swapped load pair: at the end of the map loop the spill reloads come out edi (maps) before esi, where retail reloads esi first; everything else (the 0x00518130 search body, the inline HasNavigationInformation/OverlappingBoundingBox filters and the inline 0x0063EFB0 finder) matches CThingSearchTools::ForEachInRoughArea<CThingPhysical, CFilter_Bind2<CThingFilter_HasNavigationInfo
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand308/differ/0063f7c0.cpp
+diagnosis: callee-saved / scratch register choice: a use-weight tie (esi > edi > ebx > ebp preference); moves one use between expressions, named locals, same-TU noinline stand-ins for address-taking callees (de-bake B2) and the real STLport iterator forms are the only known levers
+work_status: classified

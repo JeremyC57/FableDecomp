@@ -1,0 +1,17 @@
+addr: 00aede60
+status: parked
+batches: 2026-10-22_linux_hand293
+attempts: 1
+last_lens: 796v796
+bounds_class: OK
+bounds_detail: row=800 ext=796 corr=00aede60:796
+retries: 
+git_commits: 62c587cef
+skipped: 
+rebound: 
+in_findings: y
+residue_class: x87-order
+residue: DIFFER(796v796) -- x87 commutative operand order only: VC7.1 canonicalises every fmul pair in the inlined SetInverseNoTranslate (and the Right.Z cross term) to the mirror of retail regardless of source order, so the det terms and cofactor products load the other operand first; size, frame, stores and callees match NParticleEngine::CParticleEmitter::SetOrientation(const C3DOrientationInterpolator& orientation) -- take a new start/end orientation: copy the interpolator, make both right-handed sets perpendicular, rebuild Transform from the start orientation (keeping its translation), InverseTrans
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00aede60.cpp
+diagnosis: x87 operand/evaluation order: VC7.1 canonicalises commutative operands and reassociates sums by operand memory class; known fixes: double locals for stack-resident components, `(float)g` per use, `x /= l` pairs, __forceinline float helpers; otherwise unfixable by source form
+work_status: classified

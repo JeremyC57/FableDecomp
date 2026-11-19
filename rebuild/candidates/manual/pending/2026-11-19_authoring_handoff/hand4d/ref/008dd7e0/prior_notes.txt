@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/NOTES.md: - 0x008DD7E0: a stub GetAllThingsInRoughArea body moved the box stores, so the area's escape drives the residue; the
+rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/README.md: The 36 other rows are same-length DIFFERs. Several are down to one reload, one store or the stack-slot layout (0x0087A7C0, 0x008DD7E0, 0x00911300, 0x00E95770).
+rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/STATUS.tsv: 008dd7e0	CModeThunderLightningStorm::UpdateDamage	DIFFER(744v744)	5	one store slot: the box MinX store lands after add ebp,eax (retail right after mov edx,esi). A stub same-TU GetAllThingsInRoughArea body moved the box stores (the box's escape is what matters), but a

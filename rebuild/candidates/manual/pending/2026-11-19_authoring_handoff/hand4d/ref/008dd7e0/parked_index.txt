@@ -1,0 +1,17 @@
+addr: 008dd7e0
+status: parked
+batches: 2026-10-22_linux_hand291
+attempts: 1
+last_lens: 744v744
+bounds_class: OK
+bounds_detail: row=752 ext=744 corr=008dd7e0:744
+retries: 
+git_commits: ef9d5c8ac
+skipped: 
+rebound: 
+in_findings: 
+residue_class: stack-slot/frame
+residue: DIFFER(744v744) -- one store slot: the box MinX store (mov [esp+34h],ecx) lands after add ebp,eax; retail has it right after mov edx,esi. Corner objects + inline GetParentThing (advisor C1) closed the rest NCreatureMode::CModeThunderLightningStorm::UpdateDamage() -- probe
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand291/differ/008dd7e0.cpp
+diagnosis: frame-slot assignment: dead-argument-slot homing and slot sharing follow the callee's visibility -- give the address-taking callee a same-TU __declspec(noinline) body (a REAL body for empty tag/traits objects, GOTCHAS 24l) and declare locals in retail's lifetime order
+work_status: classified

@@ -1,0 +1,9 @@
+address	name	evidence
+0137574a	NGlobalConsole::AllowCreatureActionRepulsion	see NAME_FIXES.tsv
+01381198	`CApplyAdditionalImpulseIfInCombatAndTooClose::GetToleranceBand'::`2'::tolerance_band	see NAME_FIXES.tsv
+0085b2a0	CThingSearchTools::GetAllThingsInRoughArea<CThingGameObject,std::list<CThingGameObject*>,CFilter_Bind4<CThingFilter_IsNot,CThingFilter_CombatIsStrikeToStrike,CThingFilter_CombatOverlappingSphere,CThingFilter_CombatCanCollideOrInteractWithThing> >	see NAME_FIXES.tsv
+0049c6f0	CThingSearchTools::GetAllThingMapsInArea	see NAME_FIXES.tsv
+008e3c50	CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase,std::vector<CThingCreatureBase*>,CFilter_Bind2<CThingFilter_IsNot,CThingFilter_In2DRange> >	see NAME_FIXES.tsv
+00a58130	NBBBMaths::CLinearSpline::ProcessPoints	see NAME_FIXES.tsv
+00a8f1b0	C3DPrimitive2::ConvertToVBFormatStaticBump	see NAME_FIXES.tsv
+00a8efa0	C3DPrimitive2::ConvertToVBFormatStaticNonBump	see NAME_FIXES.tsv (landed caller 0x00A92740 local spelling)

@@ -1,0 +1,1 @@
+== CThingSearchTools::GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnc: no complete record

@@ -1,0 +1,17 @@
+addr: 0085b2a0
+status: parked
+batches: 2026-10-23_linux_hand308
+attempts: 1
+last_lens: 775v775
+bounds_class: OK
+bounds_detail: row=784 ext=775 corr=0085b2a0:775
+retries: 
+git_commits: 7e21488e4
+skipped: 
+rebound: 
+in_findings: 
+residue_class: stack-slot/frame
+residue: DIFFER(775v775) -- residue: node-loop exit reload order -- retail reloads the map iterator after `this` (or the spill VC reloads first differs); the SIB order is fixed by the 007FCEF0 recipe; also the GetInterface map lookup SIB `[ebx+ecx]` (ours `[ecx+ebx]`) inside the inline hit-locations filter
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand308/differ/0085b2a0.cpp
+diagnosis: SIB base/index operand order: no source form found (009bb0d0, 009e5c90 family) | frame-slot assignment: dead-argument-slot homing and slot sharing follow the callee's visibility -- give the address-taking callee a same-TU __declspec(noinline) body (a REAL body for empty tag/traits objects, GOTCHAS 24l) and declare locals in retail's lifetime order
+work_status: classified

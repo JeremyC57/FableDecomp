@@ -1,0 +1,17 @@
+addr: 00727220
+status: parked
+batches: 2026-10-22_linux_hand280
+attempts: 1
+last_lens: 732v732
+bounds_class: OK
+bounds_detail: row=736 ext=732 corr=00727220:732
+retries: 
+git_commits: 50de42f27
+skipped: 
+rebound: 
+in_findings: 
+residue_class: x87-order
+residue: DIFFER(732v732) -- structure and frame right; left: x87 operand order on the XY offset's Y (VC7.1 keeps the dy CSE copy at +0x10 and reads it first in the length and the two scalings) and the owner-creature load through ecx v eax
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00727220.cpp
+diagnosis: x87 operand/evaluation order: VC7.1 canonicalises commutative operands and reassociates sums by operand memory class; known fixes: double locals for stack-resident components, `(float)g` per use, `x /= l` pairs, __forceinline float helpers; otherwise unfixable by source form
+work_status: classified
