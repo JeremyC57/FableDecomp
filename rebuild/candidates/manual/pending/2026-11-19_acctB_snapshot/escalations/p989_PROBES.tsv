@@ -44,3 +44,18 @@ probes/b07_bulky_prefix.cpp	008185B0	unrelated float-math function using GFSin/G
 probes/b08_trig_defs_after_functor.cpp	008185B0	GFSin/GFCos declared before, defined after the functor	S S S S S ndiff 10	-
 probes/b09_stl_include_after_trig.cpp	008185B0	stlport include moved below the trig declarations	S S S S S ndiff 10	-
 probes/b10_combined_realistic.cpp	008185B0	template first + Ego_d member order + IsValid body + caller with implicit instantiation	S S S S S ndiff 10	-
+probes/bsweep/top0..6, end1..8	00989230	DIAG: n live `if (UpdateFlags&K) UpdateFlags|=M;` before / after the loop	period 4; top4 = EXACT retail all 4 columns (x87 bytes identical to retail); end1..8 cycle 4 other orders	-
+probes/bsweep/u_*.cpp	00989230	DIAG unit table (after top1): bare store +2, if+store +1, if-else/call/loop/&& +0 (mod 4)	see NOTES	-
+probes/dl/ld1..6, lr1..6	00989230	dead non-constant locals (top / before call)	column 0 only	-
+probes/asw/*	00989230	1..4 fable_assert dead arms in SetVSConstants / row top / before call	no change	-
+probes/a35..a37, var/v1	00989230	flags as one statement (any bracketing)	non-x87 bytes identical, phase +3 (P); two-statement forms phase 0	-
+probes/var/v4, v6	00989230	16 neutral equivalent spellings (rows forms, this->, casts, SetVSConstants forms, ctor, &transform(0,0))	all phase 0	-
+probes/var/v2 (A1..A7)	00989230	x87 arm spellings: m reference (Ego_d `CMatrix4x4& m = *this`, long/int c1 c2) = +1; others neutral	-	-
+probes/tw/{e80,1320,29d0}_0..7	twins	ACCESSORS opt-ins + n live ifs	1320 exact at +2; 29d0 cols 1..3 exact at +2; e80 draft never (structurally off, 889v917)	-
+probes/inl/*_0..3	row,1320,29d0,bd2d,a9e1	n live ifs INSIDE the inlinee x87 arm	+2: row exact, 1320 exact, 29d0 cols 1..3; landed bd2d/a9e1 move off	-
+probes/multi/* (tools/msweep.py)	5 rows	TOP/SSE/ARM natural inlinee combos (Ego_d names, m at top, dest=&m, decl orders)	tm_sE_aM: row exact only; t0_s0_aM (Ego_d m-form): (+1,+1,+1,+2) on (row,1320,29d0,a9e1)	bd2d / a9e1 off in every non-base combo
+probes/multi/m_plus_r, r_ptr, r_first	5 rows	DIAG inlinee: m-form + a named copy of rhs (`const CMatrix4x4& r = b;` or `const CMatrix4x4* pr = &b;`)	0x00989230 RELOCATION_MATCH, 0x00AE1320 RELOCATION_MATCH (prior draft), 0x00AE29D0 ndiff 6 (col 0), a9e1 col 0 off, bd2d off	r is not an Ego_d local: not landable as is
+probes/multi/m_plus_l, m_m2, r_cast, m_ptr, thisarrow, top_ptrs_*	5 rows	other copy spellings (lhs copy, double m, casts, pointer m, function-scope SSE pointers)	none reproduce m_plus_r	-
+probes/a9e1_egod*.cpp	00A9E1E0	Ego_d-shaped ApplyParentTransformations (no_bones, local_matrix at function scope, c_bone, parent_index) under ACCESSORS / m_plus_r	DIFFER(2473v2472) ndiff 38 / 44	-
+probes/b4/{s4,i4,i0}_0..7	008185B0	live store / if-store rulers before site 4 and at top	always S S S S S (ndiff grows with inserted code); factoring not count-sensitive	-
+probes/g2/{cs,sc}_e0..9	008185B0	DIAG GetValue2 at site 4 only, 10 tree forms x 2 decl orders	every C form = sin evaluated first (ndiff 9); retail C tree evaluates cos first; no text form gives it	-
