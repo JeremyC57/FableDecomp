@@ -703,7 +703,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a73e50	CPhysicsMesh	GenerateLineListFromBaseline	816	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand689/differ/00a73e50.cpp	original
 00a74180	_global	NavMesh_ProcessLine_Indices	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand512/differ/00a74180.cpp	original
 00a76770	CNavQuadTreeNode	GetLeafNodeAt	336	parked	DIFFER(318v321)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00a76770.test.cpp	original
-00a770b0	CNavQuadTree	GetNodeAt	544	reserved (hand3c, not plain C++)	DIFFER(408v533)	2	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00a770b0.cpp	original
 00a77780	_global	NavigationGraph_BreadthFirstSearch	304	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand512/differ/00a77780.cpp	original
 00a781a0	CNavQuadTree	UpdateLines	1248	reserved (hand3c, not plain C++)		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00a781a0.cpp	original
 00a793d0	CMap	ConnectHorizantalMapEdge	688	reserved (hand3c, not plain C++)	DIFFER(593v678)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a793d0.cpp	original

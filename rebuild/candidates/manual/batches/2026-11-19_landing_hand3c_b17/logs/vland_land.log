@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a770b0   RELOCATION_MATCH PASS   GetNodeAt
+
+WINS: 1
+  00a770b0 RELOCATION_MATCH CNavQuadTree::?GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CNavQuadTree_GetNodeAt_00a770b0

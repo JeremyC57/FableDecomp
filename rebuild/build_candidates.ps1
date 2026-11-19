@@ -400743,6 +400743,13 @@ $catalog = @(
         TestSource = '00/8d/NCreatureModeCModeThunderLightningStorm_UpdateDamage_008dd7e0_test.cpp'
         PassPattern = '008dd7e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a770b0'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_GetNodeAt_00a770b0.cpp'
+        TestSource = '00/a7/CNavQuadTree_GetNodeAt_00a770b0_test.cpp'
+        PassPattern = '00a770b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

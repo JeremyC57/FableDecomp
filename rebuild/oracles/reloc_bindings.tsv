@@ -40334,3 +40334,6 @@ __imp__SetFileTime@16	0143fd64	009c38c0
 ??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@@Z	008e3c50	008dd7e0
 ??$GetSubDef@VCThunderBattleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThunderBattleDef@@@@@Z	008e3240	008dd7e0
 ??$__find@PAV?$CIntelligentPointer@VCThing@@@@V1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@0ABV1@ABUrandom_access_iterator_tag@0@@Z	006c4060	008dd7e0
+?$S1@?1??GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z@4IA	013d2d40	00a770b0
+?ONE_OVER_MAX_NODE_SIZE@?1??GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z@4MB	013d2d3c	00a770b0
+_MAX_NODE_SIZE	01230894	00a770b0
