@@ -73,6 +73,11 @@ public:
     // ?AddItem@CItem@NInventory@@QAEXAAVCThing@@J@Z (public; the landed self row 0x005BF556 defines this spelling). Declaration only.
     void AddItem(::CThing& thing, long price);          // 0x005BF556
 #endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_REMOVEITEM
+    // NF96 opt-in (part 2, q11458 self row 0x005BF221 CCategory::RemoveItem): Ego_r.pdb (0x00621E13) + FableWin.pdb (0x0235FC6A)
+    // ?RemoveItem@CItem@NInventory@@QAEXJ@Z (public; the landed self row 0x005BF00B defines this spelling). Declaration only.
+    void RemoveItem(long number);                       // 0x005BF00B
+#endif
     long ItemType;                                      // +0x00
     long NumberOfItems;                                 // +0x04
     CCountedPointer<CPerItemData> PPerItemData;         // +0x08

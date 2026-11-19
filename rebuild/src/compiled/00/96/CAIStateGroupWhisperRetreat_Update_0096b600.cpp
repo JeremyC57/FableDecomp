@@ -1,4 +1,7 @@
 // CAIStateGroup_WhisperRetreat::Update() -- unsheathe when unarmed; while the target lives: flag its stealth component as in danger from the creature, jump to safety when the target is within 3 units, then advance from boss phase 0 when ready or, in phase 2, use will and terminate; terminate
+// Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* source, long status) and bound a stand-in spelling of 0x00747B80;
+//   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
+//   the reference and the enum push the same words).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096B600, length 355 bytes (plain `ret`, virtual).
@@ -82,8 +85,11 @@ class CTCBoss { public:                                // interface 173
     bool IsReadyForPhaseChange() const;               // 0x007AEE90
     void SetNextBossPhase(long phase, bool immediate);   // 0x007AEDA0
 };
+namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
 class CTCStealth { public:                             // interface 54
-    void SetAsInDanger(CThing* source, long status);     // 0x00747B80
+    void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);     // 0x00747B80
 };
 
 class CAIBrain { public:
@@ -123,7 +129,7 @@ void CAIStateGroup_WhisperRetreat::Update()
     if (IS_THING_ALIVE(PTarget)) {
         CTCStealth* stealth;
         if (PTarget.GetPItem()->GetInterface(&stealth, 54))
-            stealth->SetAsInDanger(PBrain->PCreature, 3);
+            stealth->SetAsInDanger(*PBrain->PCreature, NStealth::DANGER_STATUS_COMBAT);
         CThing* creature = PBrain->PCreature;
         CThing* target = PTarget.GetPItem();
         const C3DVector* pos = &creature->GetPos();

@@ -39,6 +39,7 @@ struct CTradeTypeCategory {
     long CategoryIndex;  // trade category index
 };
 extern CTradeTypeCategory g_TradeTypeCategories[2];    // 0x0137CCDC: {11,0}, {12,1}
+// Fidelity: same-TU strong definition of 0x0059B6F4 (retail TU-mate)
 #pragma auto_inline(off)
 long CTCInventoryTrade::GetCategoryIndexForTradeType()
 {

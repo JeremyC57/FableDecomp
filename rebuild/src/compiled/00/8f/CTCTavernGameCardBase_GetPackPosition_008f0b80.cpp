@@ -50,12 +50,13 @@
 #include "engine/CTavernGameCardBaseDef.h"
 #include "engine/card_sorting_types.h"
 #include "engine/CDefClassBase_GetSubDef.h"
-// 0x008F0B20 (landed row; real body, same TU in retail; strong here as in 0x008F0BD0 / 0x008F0EB0 / 0x008F10B0: one-definition item, NOTES)
+// 0x008F0B20 (landed row; its body verbatim, same TU in retail)
+// Fidelity: same-TU strong definition of 0x008F0B20 (retail TU-mate)
 void CTCTavernGameCardBase::GetCardDef(CDefPointer<const CTavernGameCardBaseDef>* pdef)
 {
-    CDefPointer<const CTavernGameCardBaseDef> def;
-    ParentThing->PeekBaseDef().GetSubDef(&def);
-    *pdef = def;
+    CDefPointer<const CTavernGameCardBaseDef> new_pdef;
+    GetParentThing().PeekBaseDef().GetSubDef(&new_pdef);
+    *pdef = new_pdef;
 }
 
 C3DVector CTCTavernGameCardBase::GetPackPosition()

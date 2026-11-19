@@ -1,34 +1,39 @@
-#pragma optimize("s",on)
-// CTCInventoryTrade::GetCategoryIndexForTradeType()
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0059B6F4, oracle length 35 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
-//
-// Retail bytes:  mov ecx,[ecx+170h] ; xor eax,eax ; L: cmp [eax*8+0137CCDCh],ecx ; je F ; inc eax ; cmp eax,2 ; jl L ; or eax,-1 ; ret ; F: mov eax,[eax*8+0137CCE0h] ; ret
-// Looks the inventory screen's CategoryIdent up in a two-row {ident, index} table in .data at
-// 0x0137CCDC: {11 -> 0, 12 -> 1}; anything else yields -1. Retail keeps CategoryIdent at +0x170
-// where engine/CTCInventoryTrade.h (Ego_r.pdb) has it at +0x19C: eleven std containers precede
-// it and each is 4 bytes smaller in the shipped build, so a retail-offset view is declared here.
-
-struct CTradeTypeCategory {
-    long Ident;          // EInventoryCategoryIdentifier value
-    long CategoryIndex;  // trade category index
-};
-
-extern CTradeTypeCategory g_TradeTypeCategories[2];    // 0x0137CCDC: {11,0}, {12,1}
-
-struct CTCInventoryTrade_Retail {
-    unsigned char _pad_0x000[0x170];
-    long          CategoryIdent;      // +0x170 (PDB +0x19C)
-    long GetCategoryIndexForTradeType();
-};
-
-long CTCInventoryTrade_Retail::GetCategoryIndexForTradeType()
+// CTCInventoryTrade::GetCategoryIndexForTradeType() -- the trade category index of the screen's CategoryIdent ({11 -> 0, 12 -> 1} from the two-row table at 0x0137CCDC), else -1
+// Leaf: ?GetCategoryIndexForTradeType@CTCInventoryTrade@@QAEJXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0059B6F4, 35 bytes; size TU.
+//   mov ecx,[ecx+170h] ; xor eax,eax ; L: cmp [eax*8+0137CCDCh],ecx ; je F ; inc eax ; cmp eax,2 ; jl L ; or eax,-1 ; ret ; F: mov eax,[eax*8+0137CCE0h] ; ret
+// Callers (E8): its TU-mates AddItemOfTypeToInventory 0x0059C6B0, AddItemToInventory 0x0059C6DD, 0x0059C710, RemoveItemFromInventory 0x0059C747,
+//   RemoveAllItemsFromCategory 0x0059CF49.
+// Name fix (agentNF91, q11201): Ego_r.pdb + FableWin.pdb ?GetCategoryIndexForTradeType@CTCInventoryTrade@@QAEJXZ (public; engine/CTCInventoryTrade.h
+//   TRADECATEGORY declares it); the old row defined ?GetCategoryIndexForTradeType@CTCInventoryTrade_Retail@@QAEJXZ on a local
+//   CTCInventoryTrade_Retail view. The body now lives in engine/CTCInventoryTrade.h (NF91 overlay opt-in
+//   FABLE_RETAIL_CTCINVENTORYTRADE_TRADECATEGORY_BODY, inline + noinline); this row only takes its address so VC7.1 emits it here as a
+//   pick-any COMDAT (selection 2; the nf86 / nf88 scaffolding). The TU-mates 0x0059C6B0 / 0x0059C6DD / 0x0059C710 / 0x0059C747 keep
+//   same-TU strong copies of this body (PDB spelling, body verbatim, `// Fidelity: same-TU strong definition of 0x0059B6F4`), which retail's
+//   edx-preserving call needs (advisor decision, landing nf96a; NF96 part 2 closes q11204 / q11230 with them). The table keeps the landed
+//   descriptive spelling g_TradeTypeCategories (no PDB, label or FSE name).
+#pragma optimize("s", on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
+#define FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+#define FABLE_RETAIL_CCATEGORY_CATEGORYIDENTIFIER
+#define FABLE_RETAIL_CTCINVENTORYTRADE
+#define FABLE_RETAIL_CTCINVENTORYTRADE_TRADECATEGORY
+#define FABLE_RETAIL_CTCINVENTORYTRADE_TRADECATEGORY_BODY
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCInventoryTrade.h"
+namespace {
+// Fidelity: scaffolding, not retail -- takes the address of the header's inline GetCategoryIndexForTradeType so VC7.1 emits its COMDAT here.
+long (CTCInventoryTrade::*EmitGetCategoryIndexForTradeType())()
 {
-    long ident = this->CategoryIdent;
-    for (long i = 0; i < 2; ++i) {
-        if (g_TradeTypeCategories[i].Ident == ident)
-            return g_TradeTypeCategories[i].CategoryIndex;
-    }
-    return -1;
+    return &CTCInventoryTrade::GetCategoryIndexForTradeType;
+}
 }

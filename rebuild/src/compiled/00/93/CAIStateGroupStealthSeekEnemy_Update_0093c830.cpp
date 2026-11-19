@@ -3,6 +3,9 @@
 // position, put the enemy's stealth component in danger and play the what's-that reactions; then terminate.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093C830, length 318 bytes.
 // Leaf: ?Update@CAIStateGroup_StealthSeekEnemy@@UAEXXZ
+// Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* source, long status) and bound a stand-in spelling of 0x00747B80;
+//   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
+//   the reference and the enum push the same words).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface 0x34 = CTCPerceiveThing, bit 20 of +0x24,
 // result pre-zeroed) and non-const @ 0x0040F020 (0x36 = CTCStealth on the enemy, bit 22 of +0x24), CBaseIntelligentPointer
@@ -230,8 +233,11 @@ class CTCPerceiveThing { public:                       // interface 0x34
     unsigned char _pad2c[2];
     bool m_heardSound;                          // +0x2e
 };
+namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
 class CTCStealth { public:                             // interface 0x36
-    void SetAsInDanger(CThing* source, long status);   // 0x00747B80
+    void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
 };
 class CThingCreatureBase : public CThing { public:
     bool IsFreeToFinishAction() const;                // 0x006621C0
@@ -261,7 +267,7 @@ void CAIStateGroup_StealthSeekEnemy::Update()
             DetectedPos = perceive->m_perceivedPos;
             CTCStealth* stealth;
             if (((CThing*)PEnemy.GetPItem())->GetInterfaceX(&stealth, 0x36))
-                stealth->SetAsInDanger(PBrain->PCreature, 1);
+                stealth->SetAsInDanger(*PBrain->PCreature, NStealth::DANGER_STATUS_INVESTIGATING);
             SetWhatsThatSound();
             MoveTowardsEnemy(perceive);
             SetWhatsThatAnimation(perceive);

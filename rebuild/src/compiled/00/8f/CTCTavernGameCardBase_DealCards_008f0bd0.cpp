@@ -112,6 +112,7 @@ void CTCTavernGameCardBase::DealCards()
     }
 }
 
+// Fidelity: same-TU strong definition of 0x008F0B20 (retail TU-mate)
 void CTCTavernGameCardBase::GetCardDef(CDefPointer<const CTavernGameCardBaseDef>* pdef)
 {
     CDefPointer<const CTavernGameCardBaseDef> new_pdef;

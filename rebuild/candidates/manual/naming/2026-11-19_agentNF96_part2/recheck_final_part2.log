@@ -1,0 +1,136 @@
+addr       parity           behav  name
+0059b6f4   RELOCATION_MATCH PASS   CTCInventoryTrade::GetCategoryIndexForTradeType
+0059c6b0   RELOCATION_MATCH PASS   CTCInventoryTrade::AddItemOfTypeToInventory
+0059c6dd   RELOCATION_MATCH PASS   CTCInventoryTrade::AddItemToInventory
+0059c710   RELOCATION_MATCH PASS   CTCInventoryTrade::AddItemToInventory
+0059c747   RELOCATION_MATCH PASS   CTCInventoryTrade::RemoveItemFromInventory
+008f0b20   RELOCATION_MATCH PASS   CTCTavernGameCardBase::GetCardDef
+008f0b80   RELOCATION_MATCH PASS   CTCTavernGameCardBase::GetPackPosition
+008f0bd0   WARN RELOC_CONFLICT: _mult_to_stay_off_table -> 0138927c here, 01383c98 in landed 007daef0
+008f0bd0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+008f0bd0   RELOCATION_MATCH PASS   CTCTavernGameCardBase::DealCards
+008f0eb0   RELOCATION_MATCH PASS   CTCTavernGameCardBase::CardsTurning
+008f10b0   WARN RELOC_NAME: ??$random_shuffle@PAPAVCCard@@@std@@YIXPAPAVCCard@@0@Z -> 007d7860 labelled '_global::Algorithm_FisherYatesShuffle'
+008f10b0   RELOCATION_MATCH PASS   CTCTavernGameCardBase::ShuffleCards
+008f2280   RELOCATION_MATCH PASS   CTCTavernGameCardBase::CardsMoving
+006cb390   RELOCATION_MATCH PASS   std::vector<CEngineTextureMorph>::_M_insert_overflow
+006cb340   RELOCATION_MATCH PASS   std::vector<CEngineTextureMorph>::_M_clear
+006cb470   RELOCATION_MATCH PASS   std::vector<CEngineTextureMorph, std::allocator<CEngineTextureMorph>>::push_back
+005bf221   WARN RELOC_NAME: ??$find_if@PAVCItem@NInventory@@VCIsSameItemType@@@std@@YIPAVCItem@NInventory@@PAV12@0VCIsSameItemType@@@Z -> 005c190b labelled 'std::vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_>::_Ucopy<std::pair<long,CCountedPointer<CContainmentVolume>_>*>'
+005bf221   RELOCATION_MATCH PASS   CCategory::RemoveItem
+00747b80   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00747b80   WARN SHARED_HEADER_AVAILABLE CPlayer
+00747b80   WARN SHARED_HEADER_AVAILABLE CMusicManager
+00747b80   WARN SHARED_HEADER_AVAILABLE CEnvironment
+00747b80   WARN SHARED_HEADER_AVAILABLE CWorld
+00747b80   WARN SHARED_HEADER_AVAILABLE CStealthDef
+00747b80   WARN SHARED_HEADER_AVAILABLE CTCBase
+00747b80   RELOCATION_MATCH PASS   CTCStealth::SetAsInDanger
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefString
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006ed510   WARN SHARED_HEADER_AVAILABLE CThing
+006ed510   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+006ed510   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+006ed510   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefendingCombatantInfo
+006ed510   WARN SHARED_HEADER_AVAILABLE CCombatantInfo
+006ed510   WARN SHARED_HEADER_AVAILABLE CCombatManager
+006ed510   WARN RELOC_NAME: ?__copy@@YIPAUCSequencePointer@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z -> 006f1410 labelled '_global::Move_CountedPointer_006f1410'
+006ed510   WARN RELOC_NAME: ?_Destroy_range@@YIXPAUCSequencePointer@@0ABUCRetailAllocator@@@Z -> 006f2300 labelled 'std::__destroy_aux<CCountedPointer<CCombatSequenceBase>*>'
+006ed510   WARN RELOC_NAME: ?IsCombatant@CThingCreatureBase@@QAE_NXZ -> 00662430 labelled 'CThingCreatureBase::IsInMeleeAsAttacked'
+006ed510   RELOCATION_MATCH PASS   CCombatManager::DeregisterAttackingCombatant
+006ed9e0   WARN SHARED_HEADER_AVAILABLE CCombatManager
+006ed9e0   WARN RELOC_NAME: ?FindNode@CCombatantMap@@QAEPAUSCombatantNode@@AB_K@Z -> 006f0250 labelled 'std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CCombatantInfo>, std::_Select1st<std::pair<unsigned __int64 const, CCombatantInfo>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CCombatantInfo>>>::_M_find<unsigned __int64>'
+006ed9e0   WARN RELOC_NAME: ?IsCombatant@CThingCreatureBase@@QAE_NXZ -> 00662430 labelled 'CThingCreatureBase::IsInMeleeAsAttacked'
+006ed9e0   RELOCATION_MATCH PASS   CCombatManager::DeregisterDestroyedCombatant
+0093bdf0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093bdf0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093bdf0   RELOCATION_MATCH PASS   CAIStateGroup_SeekEnemy::Cleanup
+0093c230   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093c230   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093c230   RELOCATION_MATCH PASS   CAIStateGroup_SeekScriptTarget::Cleanup
+0093c420   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093c420   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093c420   WARN RELOC_NAME: ?SetState@CTCStealthState@@QAEXJJJMJ@Z -> 0071aab0 labelled 'CTCEmoteIcon::SetEmoteIcon'
+0093c420   RELOCATION_MATCH PASS   CAIStateGroup_StealthSeekEnemy::Cleanup
+0093c830   WARN SHARED_HEADER_AVAILABLE CThing
+0093c830   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093c830   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093c830   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0093c830   RELOCATION_MATCH PASS   CAIStateGroup_StealthSeekEnemy::Update
+009621f0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+009621f0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+009621f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009621f0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009621f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009621f0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+009621f0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+009621f0   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollIcicleAttack::Update
+009624d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+009624d0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+009624d0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+009624d0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009624d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009624d0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009624d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009624d0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+009624d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+009624d0   WARN RELOC_NAME: ??0CCombatAction_StabThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 0094e5f0 labelled 'CCreatureAction_TrollGroundPound::CCreatureAction_TrollGroundPound'
+009624d0   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollPoundGroundAttack::Update
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096ddb0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096ddb0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+0096ddb0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0096ddb0   RELOCATION_MATCH PASS   CAIStateGroup_ScreamerPursueTarget::OnReplace
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CThing
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CWorld
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CSummonerDef
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096fcd0   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@@QAE@ABUCIntelligentPointerThing@@@Z -> 007c2930 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0096fcd0   WARN RELOC_NAME: ??1CCreatureAction_SummonerLightningOrbInto@@UAE@XZ -> 00719c30 labelled '_global::Dtor_CCombatActionBaseBase_00719c30'
+0096fcd0   WARN RELOC_NAME: ??0CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@QAE@PAVCThingCreatureBase@@@Z -> 00970240 labelled 'CCreatureAction_SummonerLightningIdle::CCreatureAction_SummonerLightningIdle'
+0096fcd0   RELOCATION_MATCH PASS   CAIStateGroup_SummonerLightningAttack::Update
+0096b600   WARN SHARED_HEADER_AVAILABLE CThing
+0096b600   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0096b600   WARN SHARED_HEADER_AVAILABLE CTCBoss
+0096b600   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096b600   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096b600   RELOCATION_MATCH PASS   CAIStateGroup_WhisperRetreat::Update
+
+WINS: 27
+  0059b6f4 RELOCATION_MATCH CTCInventoryTrade::?GetCategoryIndexForTradeType@CTCInventoryTrade@@QAEJXZ
+  0059c6b0 RELOCATION_MATCH CTCInventoryTrade::?AddItemOfTypeToInventory@CTCInventoryTrade@@AAE_NJJ@Z
+  0059c6dd RELOCATION_MATCH CTCInventoryTrade::?AddItemToInventory@CTCInventoryTrade@@UAE_NAAVCThing@@_N1J1@Z
+  0059c710 RELOCATION_MATCH CTCInventoryTrade::?AddItemToInventory@CTCInventoryTrade@@UAE_NJJ_N0J0@Z
+  0059c747 RELOCATION_MATCH CTCInventoryTrade::?RemoveItemFromInventory@CTCInventoryTrade@@UAEXJJ@Z
+  008f0b20 RELOCATION_MATCH CTCTavernGameCardBase::?GetCardDef@CTCTavernGameCardBase@@QAEXPAV?$CDefPointer@$$CBVCTavernGameCardBaseDef@@@@@Z
+  008f0b80 RELOCATION_MATCH CTCTavernGameCardBase::?GetPackPosition@CTCTavernGameCardBase@@QAE?AVC3DVector@@XZ
+  008f0bd0 RELOCATION_MATCH CTCTavernGameCardBase::?DealCards@CTCTavernGameCardBase@@UAEXXZ
+  008f0eb0 RELOCATION_MATCH CTCTavernGameCardBase::?CardsTurning@CTCTavernGameCardBase@@UAEXXZ
+  008f10b0 RELOCATION_MATCH CTCTavernGameCardBase::?ShuffleCards@CTCTavernGameCardBase@@UAEXXZ
+  008f2280 RELOCATION_MATCH CTCTavernGameCardBase::?CardsMoving@CTCTavernGameCardBase@@UAEXXZ
+  006cb390 RELOCATION_MATCH std::vector<CEngineTextureMorph>::?_M_insert_overflow@?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@IAEXPAVCEngineTextureMorph@@ABV3@ABU__false_type@2@I_N@Z
+  006cb340 RELOCATION_MATCH std::vector<CEngineTextureMorph>::?_M_clear@?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@IAEXXZ
+  006cb470 RELOCATION_MATCH std::vector::?push_back@?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAEXABVCEngineTextureMorph@@@Z
+  005bf221 RELOCATION_MATCH CCategory::?RemoveItem@CCategory@NInventory@@QAEXJJ@Z
+  00747b80 RELOCATION_MATCH CTCStealth::?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z
+  006ed510 RELOCATION_MATCH CCombatManager::?DeregisterAttackingCombatant@CCombatManager
+  006ed9e0 RELOCATION_MATCH CCombatManager::?DeregisterDestroyedCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z
+  0093bdf0 RELOCATION_MATCH CAIStateGroup_SeekEnemy::?Cleanup@CAIStateGroup_SeekEnemy@@UAEXXZ
+  0093c230 RELOCATION_MATCH CAIStateGroup_SeekScriptTarget::?Cleanup@CAIStateGroup_SeekScriptTarget@@UAEXXZ
+  0093c420 RELOCATION_MATCH CAIStateGroup_StealthSeekEnemy::?Cleanup@CAIStateGroup_StealthSeekEnemy@@UAEXXZ
+  0093c830 RELOCATION_MATCH CAIStateGroup_StealthSeekEnemy::?Update@CAIStateGroup_StealthSeekEnemy@@UAEXXZ
+  009621f0 RELOCATION_MATCH CAIStateGroup_IceTrollIcicleAttack::?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ
+  009624d0 RELOCATION_MATCH CAIStateGroup_IceTrollPoundGroundAttack::?Update@CAIStateGroup_IceTrollPoundGroundAttack@@QAEXXZ
+  0096ddb0 RELOCATION_MATCH CAIStateGroup_ScreamerPursueTarget::OnReplace
+  0096fcd0 RELOCATION_MATCH CAIStateGroup_SummonerLightningAttack::?Update@CAIStateGroup_SummonerLightningAttack@@UAEXXZ
+  0096b600 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::Update
+EXIT 0

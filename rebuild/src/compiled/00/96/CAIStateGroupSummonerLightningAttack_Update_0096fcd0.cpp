@@ -1,5 +1,8 @@
 // CAIStateGroup_SummonerLightningAttack::Update() -- with a live target and the summoner free to act: mark the target's stealth as in danger, sheathe any live weapon in the primary slot, turn to face the target, play the lightning-orb-into action, wait out any running action, play the ground-smash out-of action and schedule the next preemptive use from the def's delay; always terminates
 // Leaf: ?Update@CAIStateGroup_SummonerLightningAttack@@UAEXXZ
+// Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* source, long status) and bound a stand-in spelling of 0x00747B80;
+//   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
+//   the reference and the enum push the same words).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -78,8 +81,11 @@ inline bool IsTargetAlive(const CIntelligentPointerThing& p)
     }
     return false;
 }
+namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
 class CTCStealth { public:                             // interface 0x36
-    void SetAsInDanger(CThing* source, long status);   // 0x00747B80
+    void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
 };
 class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
@@ -152,7 +158,7 @@ void CAIStateGroup_SummonerLightningAttack::Update()
     if (IsTargetAlive(PTarget) && !(GetCreature()->CreatureFlags1c8 & 2)) {
         CTCStealth* stealth;
         if (((CThing*)PTarget.GetPItem())->GetInterfaceX(&stealth, 0x36))
-            stealth->SetAsInDanger(GetCreature(), 4);
+            stealth->SetAsInDanger(*GetCreature(), NStealth::DANGER_STATUS_RANGED_COMBAT);
         CTCCarrying* carrying;
         if (((const CThing*)GetCreature())->GetInterfaceC(&carrying, 0x46)) {
             for (;;) {

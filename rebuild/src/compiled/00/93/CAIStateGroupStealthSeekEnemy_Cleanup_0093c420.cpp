@@ -1,11 +1,14 @@
 // CAIStateGroup_StealthSeekEnemy::Cleanup() -- reset the creature's interface-0x45 state (mode 8, full weight, 0xFF),
 // Leaf: ?Cleanup@CAIStateGroup_StealthSeekEnemy@@UAEXXZ
+// Name fix (NF96 part 2, q11460): the call to 0x00747B80 went through a made-up stand-in class CTCSeekTarget::RemoveSeeker(CThing*, long);
+//   0x00747B80 is Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (status 0 =
+//   DANGER_STATUS_NULL, Ego_d LF_ENUM), declared by engine/CTCStealth.h, which the row now includes for that class.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // and if the enemy is still alive with interface 0x36, tell that component the creature stopped seeking it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093C420, length 180 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (two inlined lookups: type 0x45, bit 5 of the dword at +0x28; type 0x36,
 // bit 22 of +0x24), the 0x45 component's setter @ 0x0071AAB0 (8, 0, 0, 1.0f, 0xFF), CBaseIntelligentPointer::GetPItem
-// @ 0x00A01B50 (IS_THING_ALIVE, then the thing), the 0x36 component's RemoveSeeker @ 0x00747B80.
+// @ 0x00A01B50 (IS_THING_ALIVE, then the thing), the 0x36 component's CTCStealth::SetAsInDanger @ 0x00747B80.
 // Shape: both lookups are the out-parameter GetInterface whose entry pick is one end/hit ternary (the 0x45 component
 // lands in eax, `mov ecx,eax` after the pushes; the 0x36 component loads straight into ecx between the two brain
 // loads); IS_THING_ALIVE inlined. The engine header flattens the base, so the class is modelled locally; PEnemy is +0x14.
@@ -16,6 +19,7 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
+#define FABLE_RETAIL_CTCBASE                     // the CTCBase layout engine/CTCStealth.h needs (sizeof CTCStealth 76)
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
@@ -66,9 +70,8 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 struct CTCStealthState {                        // the interface-0x45 component
     void SetState(long mode, long a, long b, float weight, long alpha);   // 0x0071AAB0
 };
-struct CTCSeekTarget {                          // the interface-0x36 component
-    void RemoveSeeker(CThing* seeker, long flags);  // 0x00747B80
-};
+#define FABLE_RETAIL_NSTEALTH_EDANGERSTATUS
+#include "engine/CTCStealth.h"                   // the interface-0x36 component: CTCStealth::SetAsInDanger 0x00747B80
 
 struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
     CIntelligentPointer<CThing> PEnemy;            // +0x14
@@ -82,8 +85,8 @@ void CAIStateGroup_StealthSeekEnemy::Cleanup()
         stealth->SetState(8, 0, 0, 1.0f, 0xff);
     if (IS_THING_ALIVE(PEnemy)) {
         CThing* enemy = PEnemy.Get();
-        CTCSeekTarget* seek;
-        if (enemy->GetTC(TCI_STEALTH, &seek))
-            seek->RemoveSeeker(PBrain->PCreature, 0);
+        CTCStealth* stealth;
+        if (enemy->GetTC(TCI_STEALTH, &stealth))
+            stealth->SetAsInDanger(*PBrain->PCreature, NStealth::DANGER_STATUS_NULL);
     }
 }

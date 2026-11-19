@@ -1,5 +1,8 @@
 // CAIStateGroup_IceTrollPoundGroundAttack::Update() -- with a live target: mark the target's stealth component in danger, rise up if knocked down, then with the target still alive play LOOK_BACKWARD when it is more than 60 degrees off the creature's XY facing (LOOK_FORWARD otherwise) and, still runnable, perform the pound attack; terminate at the end or on any failure
 // Leaf: ?Update@CAIStateGroup_IceTrollPoundGroundAttack@@QAEXXZ
+// Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* source, long status) and bound a stand-in spelling of 0x00747B80;
+//   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
+//   the reference and the enum push the same words).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local MagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
@@ -41,8 +44,11 @@ class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
     bool IsPerformingAnyAction();               // 0x006622A0
 };
+namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
 class CTCStealth { public:                             // interface 0x36
-    void SetAsInDanger(CThing* source, long status);   // 0x00747B80
+    void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
 };
 class CTCCreatureModeManager { public:                 // interface 0x31
     bool HasMode(long mode);                    // 0x0073A8A0
@@ -169,7 +175,7 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
     if (IS_THING_ALIVE(PTarget)) {
         CTCStealth* stealth;
         if (((CThing*)PTarget.GetPItem())->GetTC(TCI_STEALTH, &stealth))
-            stealth->SetAsInDanger(GetCreature(), 3);
+            stealth->SetAsInDanger(*GetCreature(), NStealth::DANGER_STATUS_COMBAT);
         CTCCreatureModeManager* modes;
         if (GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes) && modes->HasMode(0x1e)) {
             long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_RiseUp(GetCreature()), true);

@@ -1,5 +1,8 @@
 // CCombatManager::DeregisterDestroyedCombatant(CThingCreatureBase* creature) -- take a destroyed creature out of combat: as an attacker (telling its target's stealth component that the danger is over) and as an attacked combatant
 // Leaf: ?DeregisterDestroyedCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z
+// Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* source, EDangerStatus status) and bound a stand-in spelling of 0x00747B80;
+//   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
+//   the reference and the enum push the same words).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006ED9E0, 148 bytes (160 with padding).
 // Callees: the creature's attacking test 0x00662410 and combatant test 0x00662430 (manifest labels
@@ -27,10 +30,12 @@ class CThingCreatureBase : public CThing { public:
     bool IsCombatant();                         // 0x00662430
 };
 
-enum EDangerStatus { DANGER_NONE = 0 };
+namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
 
 class CTCStealth { public:                             // interface type 0x36
-    void SetAsInDanger(CThing* source, EDangerStatus status);   // 0x00747B80
+    void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
 };
 
 struct CCombatantInfo_Retail {
@@ -65,7 +70,7 @@ void CCombatManager::DeregisterDestroyedCombatant(CThingCreatureBase* creature)
         DeregisterAttackingCombatant(creature);
         CTCStealth* stealth;
         if (attacked->GetTC(TCI_STEALTH, &stealth))
-            stealth->SetAsInDanger(creature, DANGER_NONE);
+            stealth->SetAsInDanger(*creature, NStealth::DANGER_STATUS_NULL);
     }
     if (creature->IsCombatant())
         DeregisterAttackedCombatant(creature);

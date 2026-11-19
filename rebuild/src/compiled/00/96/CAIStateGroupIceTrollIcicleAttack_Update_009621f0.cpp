@@ -3,6 +3,9 @@
 //   only: FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL), so the call at 0x00668D90 binds the explicit instantiation NF83 landed there,
 //   ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z (was ?Reset@CCountedPointer@@QAEXPAX@Z); the local Clone() returns CCreatureActionBase* (its PDB type).
 // Leaf: ?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ
+// Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* source, long status) and bound a stand-in spelling of 0x00747B80;
+//   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
+//   the reference and the enum push the same words).
 // NF84 (round 7, q11050 binder): the local CThingCreatureBase model's IsFreeToPerformAction respelt in place to the Ego_r.pdb /
 //   FableWin.pdb form ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z (const, by const reference; the
 //   landed self row 0x00662210 defines it), as NF83 did in 0x00662210 itself; the call passes the action by reference.
@@ -37,8 +40,11 @@ class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210
     bool IsPerformingAnyAction() const;               // 0x006622A0
 };
+namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
 class CTCStealth { public:                             // interface 0x36
-    void SetAsInDanger(CThing* source, long status);   // 0x00747B80
+    void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
 };
 class CTCCreatureModeManager { public:                 // interface 0x31
     bool HasMode(long mode);                    // 0x0073A8A0
@@ -138,7 +144,7 @@ void CAIStateGroup_IceTrollIcicleAttack::Update()
         bool has = target->HasTC(TCI_STEALTH);
         if (has) {
             CTCStealth* stealth = ((CTCStealth*)&target->GetTC(TCI_STEALTH));
-            stealth->SetAsInDanger(GetCreature(), 3);
+            stealth->SetAsInDanger(*GetCreature(), NStealth::DANGER_STATUS_COMBAT);
         }
         CTCCreatureModeManager* modes;
         if (GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes) && modes->HasMode(0x1e)) {

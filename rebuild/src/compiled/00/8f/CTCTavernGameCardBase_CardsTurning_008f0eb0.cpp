@@ -46,12 +46,13 @@
 #include "engine/card_sorting_types.h"
 #include "engine/CDefClassBase_GetSubDef.h"
 
-// 0x008F0B20 (landed row; real body, same TU in retail)
+// 0x008F0B20 (landed row; its body verbatim, same TU in retail)
+// Fidelity: same-TU strong definition of 0x008F0B20 (retail TU-mate)
 void CTCTavernGameCardBase::GetCardDef(CDefPointer<const CTavernGameCardBaseDef>* pdef)
 {
-    CDefPointer<const CTavernGameCardBaseDef> def;
-    ParentThing->PeekBaseDef().GetSubDef(&def);
-    *pdef = def;
+    CDefPointer<const CTavernGameCardBaseDef> new_pdef;
+    GetParentThing().PeekBaseDef().GetSubDef(&new_pdef);
+    *pdef = new_pdef;
 }
 
 // 0x008F0660 (landed row; real body, same TU in retail)

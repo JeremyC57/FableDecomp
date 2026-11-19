@@ -1,0 +1,59 @@
+# q11204 condition 2 (2026-11-19, NF96 part 2): the same-TU copies in 0x0059C6B0 / 0x0059C6DD / 0x0059C710 / 0x0059C747 against the owner body (engine/CTCInventoryTrade.h TRADECATEGORY_BODY, the body the owner row 0x0059B6F4 emits). diff after the signature line: empty for all four. Signature line differs only by 'inline' (+ the header's __declspec(noinline) on the line above).
+## owner body (header lines 338-346)
+inline long CTCInventoryTrade::GetCategoryIndexForTradeType()
+{
+    long ident = CategoryIdent;
+    for (long i = 0; i < 2; ++i) {
+        if (g_TradeTypeCategories[i].Ident == ident)
+            return g_TradeTypeCategories[i].CategoryIndex;
+    }
+    return -1;
+}
+## 0059c6b0 copy
+long CTCInventoryTrade::GetCategoryIndexForTradeType()
+{
+    long ident = CategoryIdent;
+    for (long i = 0; i < 2; ++i) {
+        if (g_TradeTypeCategories[i].Ident == ident)
+            return g_TradeTypeCategories[i].CategoryIndex;
+    }
+    return -1;
+}
+## diff (sed 1d) vs owner:
+(empty)
+## 0059c6dd copy
+long CTCInventoryTrade::GetCategoryIndexForTradeType()
+{
+    long ident = CategoryIdent;
+    for (long i = 0; i < 2; ++i) {
+        if (g_TradeTypeCategories[i].Ident == ident)
+            return g_TradeTypeCategories[i].CategoryIndex;
+    }
+    return -1;
+}
+## diff (sed 1d) vs owner:
+(empty)
+## 0059c710 copy
+long CTCInventoryTrade::GetCategoryIndexForTradeType()
+{
+    long ident = CategoryIdent;
+    for (long i = 0; i < 2; ++i) {
+        if (g_TradeTypeCategories[i].Ident == ident)
+            return g_TradeTypeCategories[i].CategoryIndex;
+    }
+    return -1;
+}
+## diff (sed 1d) vs owner:
+(empty)
+## 0059c747 copy
+long CTCInventoryTrade::GetCategoryIndexForTradeType()
+{
+    long ident = CategoryIdent;
+    for (long i = 0; i < 2; ++i) {
+        if (g_TradeTypeCategories[i].Ident == ident)
+            return g_TradeTypeCategories[i].CategoryIndex;
+    }
+    return -1;
+}
+## diff (sed 1d) vs owner:
+(empty)
