@@ -121,7 +121,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00637fc0	CThingMapManager	PlaceThing	256	parked	DIFFER(251v243)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/00637fc0.cpp	original
 00639e40	CTCRegionDisplay	GlobalDraw	944	parked	DIFFER(958v930)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00639e40.cpp	original
 0063f4b0	CThingSearchTools	ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThi	784	reserved (hand3c, not plain C++)	DIFFER(769v769)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand307/differ/0063f4b0.cpp	original
-0063f7c0	CThingSearchTools	ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigat	800	reserved (hand4d, in-house)	DIFFER(769v769)	6	rebuild/candidates/manual/pending/2026-11-12_linux_handQ23/differ/0063f7c0.cpp	original
 00642aa0	CMinimapData	PopulateMinimapThemeList	3376	parked	DIFFER(1308v1340)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00642aa0.cpp	gapscan/boundary
 00644677	CDrawLetterBoxBlackBars	Draw	454	parked	DIFFER(439v454)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/00644677.cpp	original
 00645853	NPlayerGui::CStatBar	DrawStatBox	1174	parked	DIFFER(1160v1174)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00645853.cpp	original
@@ -175,7 +174,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006af2d0	CMessageEventFilter_IsOriginatorAlive	operator()	288	parked	DIFFER(58v66)	1	rebuild/candidates/manual/pending/2026-10-14_linux_hand58/differ/006af2d0.cpp	original
 006af4e0	CMessageEvent	GetPOriginator<CThing>	64	parked	DIFFER(39v52)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand514/differ/006af4e0.cpp	original
 006af7d0	CTCPhysicsBase	ImpulseRespondToCollision	624	parked	codex pass24 PARKED: The original scoped axis locals on the shared physics headers improve the shape, but the response-basis computations and x87 operands differ.	20	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/006af7d0/006af7d0.cpp	original
-006b75a0	CGameMap	Resize	448	reserved (hand3c, not plain C++)	DIFFER(414v434)	4	rebuild/candidates/manual/pending/2026-10-21_linux_hand264/differ/006b75a0.cpp	original
 006b97e0	_global	CWorld_InitFactions	1456	parked	DIFFER(1450v1438)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/006b97e0.cpp	original
 006bb390	`anonymousnamespace'	Game_IsTimeOfDayInRange	544	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2/differ/006bb390.cpp	original
 006bb860	_gapscan	sub_006bb860	224	parked	DIFFER(173v181)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand503/differ/006bb860.cpp	gapscan/boundary
@@ -257,7 +255,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0076a590	_Pop_heap_0<std::pair<long,EHeroAbility>*,std	_Pop_heap_0<std::pair<long,EHeroAbility>*,std::pair<long,enum_EHeroAbility>,CKeyPairCompar	144	parked	DIFFER(89v97)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand359/differ/0076a590.cpp	original
 0076cce0	CTCEnemy	IsEnemyOf	768	parked	egod3a: DIFFER 751v754 -- old local-model draft (97 masked); CTCEnemy.h exists, landed TU siblings 0x0076D1B0/0x0076D270/0x0076D2F0; port not started	5	rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/0076cce0.cpp	original
 0076e6a0	CTCWeaponTrail	DrawAddWeaponTrails	960	parked	DIFFER(911v951)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand306/differ/0076e6a0.cpp	original
-007727e0	CTCShop	GetCurrentBasicPrice	448	reserved (hand3c, not plain C++)	DIFFER(497v433)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/007727e0.cpp	original
 00774d20	_global	CTCShop_SellHighlightedItem	1152	reserved (hand4d, in-house)	DIFFER(1149v1149)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00774d20.cpp	original
 00775350	CTCShop	UpdateStock	2000	parked	DIFFER(1971v1988)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00775350.cpp	original
 0077a430	CTCDExperienceOrb	FrameUpdate	1120	reserved (hand3c, not plain C++)	DIFFER(1140v1115)	5	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077a430.cpp	original
@@ -330,7 +327,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 007dac10	CTCTavernGameCardBlackjack	DealCards	736	parked	DIFFER(729v732)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/007dac10.cpp	original
 007db5c0	CTCTavernGameCardBlackjack	Split	224	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand396/differ/007db5c0.cpp	original
 007dd540	CTCCreatureFlyInCircles	UpdateSwoop	1104	parked	DIFFER(1074v1099)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/007dd540.cpp	original
-007df770	CTCWallMountEffects	CTCWallMountEffects::vfunc_9	480	reserved (hand3c, not plain C++)	DIFFER(436v437)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/hdr/007df770.cpp	gapscan/boundary
 007e0f20	CTCAICreatureWillPowerIndicator	FrameUpdate	544	parked	codex pass24 PARKED: The presence field and fx_index receive distinct frame allocation near 0x007E0F2A.	15	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/007e0f20/007e0f20.cpp	original
 007e9460	CTCAvoidRegionExit	CTCAvoidRegionExit::vfunc_9	1280	parked	DIFFER(1232v1277)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/007e9460.cpp	gapscan/boundary
 007ebea0	CTCActionUseBed	OnActionUse	2160	parked	DIFFER(2124v2145)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand784/differ/007ebea0.test.cpp	original

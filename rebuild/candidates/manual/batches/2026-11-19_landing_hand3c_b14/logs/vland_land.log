@@ -1,0 +1,16 @@
+addr       parity           behav  name
+007727e0   RELOCATION_MATCH PASS   GetCurrentBasicPrice
+006b75a0   WARN RELOC_NAME: ??$for_each@PAVCGameMapCell@@V?$mem_fun_ref_t@XVCGameMapCell@@@std@@@std@@YI?AV?$mem_fun_ref_t@XVCGameMapCell@@@0@PAVCGameMapCell@@0V10@@Z -> 006b7af0 labelled 'std::for_each<CGameMapCell *, std::mem_fun_ref_t<void, CGameMapCell>>'
+006b75a0   RELOCATION_MATCH PASS   Resize
+007df770   WARN RELOC_NAME: ??1CCreatureAction_UseWallMount@@UAE@XZ -> 007df380 labelled '_global::Dtor_CCreatureActionBaseBase_007df380'
+007df770   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 3
+  007727e0 RELOCATION_MATCH CTCShop::?GetCurrentBasicPrice@CTCShop@@QBEMJJ@Z
+  006b75a0 RELOCATION_MATCH CGameMap::?Resize@CGameMap@@QAEXJJJJ@Z
+  007df770 RELOCATION_MATCH CTCWallMountEffects::?FrameUpdate@CTCWallMountEffects@@UAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CTCShop_GetCurrentBasicPrice_007727e0
+  CGameMap_Resize_006b75a0
+  CTCWallMountEffects_FrameUpdate_007df770

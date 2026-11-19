@@ -30,6 +30,14 @@ public:
     unsigned char GetAtmosTheme(long index) const { return AtmosThemes[index]; }
     unsigned char GetAtmosBlend(long index) const;                                 // 0x006B74E0
 #endif
+#ifdef FABLE_RETAIL_CGAMEMAP_RESIZE
+    // Opt-in (hand3c, row 0x006B75A0 CGameMap::Resize): Ego_r.pdb / FableWin.pdb ?Clear@CGameMapCell@@QAEXXZ (FableWin 0x024A0100, the
+    // mem_fun_ref target of Resize's for_each; retail 0x006B7490, out of line, only its address is taken). Declaration only.
+    void Clear();                                                                  // 0x006B7490
+    // FableWin.pdb LF_FIELDLIST 0x533C9 marks the four data members private. With them private the class is no aggregate, so
+    // STLport's `_Tp()` fill value in vector(size_type) (0x006B7D60) is left unwritten, as retail (`lea edx,[esp+9]`, no stores).
+private:
+#endif
     unsigned char AtmosThemes[3];                                                  // +0x00
     unsigned char AtmosBlends[2];                                                  // +0x03
     signed char   SoundTheme;                                                      // +0x05
@@ -45,6 +53,10 @@ public:
     // FableWin.pdb ?GetCell@CGameMap@@QAEAAVCGameMapCell@@ABVC2DCoordI@@@Z (92i debug = asserts; size proves nothing). Release index from
     // retail 0x008220DC..0x008220F5: `(SizeY - pos.Y - 1) * SizeX + pos.X`, *7 into Cells (+0x04). Text otherwise UNVERIFIED.
     CGameMapCell& GetCell(const C2DCoordI& pos) { return Cells[(SizeY - pos.Y - 1) * SizeX + pos.X]; }
+#ifdef FABLE_RETAIL_CGAMEMAP_RESIZE
+    // Opt-in (hand3c): FableWin.pdb ?Resize@CGameMap@@QAEXJJJJ@Z (public; Ego_d.pdb parameters width, height, x_offset, y_offset).
+    void Resize(long width, long height, long x_offset, long y_offset);           // 0x006B75A0
+#endif
 private:
     std::vector<CGameMapCell> Cells;                                               // +0x04
     CMap*                     Map;                                                 // +0x10

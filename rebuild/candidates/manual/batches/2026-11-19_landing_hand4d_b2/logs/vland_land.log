@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0063f7c0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0063f7c0   RELOCATION_MATCH PASS   ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>,CThingFindNavigationLayerAt>
+
+WINS: 1
+  0063f7c0 RELOCATION_MATCH CThingSearchTools::??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind3@VCThingFilter_IsNot@@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_IsNot@@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@ABVCThingFindNavigationLayerAt@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingSearchTools_ForEachInRoughAreaCThingPhysicalCFilterBind3CThi_0063f7c0

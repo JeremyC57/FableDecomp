@@ -40315,3 +40315,10 @@ __imp__SetFileTime@16	0143fd64	009c38c0
 ??4CWideString@@QAEABV0@PB_W@Z	0099b800	00540320
 ??BCWideString@@QBEPB_WXZ	0099af00	00540320
 ?GetCharWidthW@CText@NUISystem@@SII_W@Z	0054f4b0	00540320
+?find@?$_Rb_tree@JU?$pair@$$CBJVCShopItem@@@std@@U?$_Select1st@U?$pair@$$CBJVCShopItem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCShopItem@@@std@@U?$_Const_traits@U?$pair@$$CBJVCShopItem@@@std@@@2@@2@ABJ@Z	00777170	007727e0
+??$for_each@PAVCGameMapCell@@V?$mem_fun_ref_t@XVCGameMapCell@@@std@@@std@@YI?AV?$mem_fun_ref_t@XVCGameMapCell@@@0@PAVCGameMapCell@@0V10@@Z	006b7af0	006b75a0
+??0?$vector@VCGameMapCell@@V?$allocator@VCGameMapCell@@@std@@@std@@QAE@I@Z	006b7d60	006b75a0
+??4?$vector@VCGameMapCell@@V?$allocator@VCGameMapCell@@@std@@@std@@QAEAAV01@ABV01@@Z	006b7e20	006b75a0
+?Clear@CGameMapCell@@QAEXXZ	006b7490	006b75a0
+??1CCreatureAction_UseWallMount@@UAE@XZ	007df380	007df770
+?DoEffect@CTCWallMountEffects@@AAEXXZ	007df6a0	007df770

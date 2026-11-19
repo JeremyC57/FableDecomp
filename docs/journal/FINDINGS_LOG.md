@@ -1265,3 +1265,15 @@ Rechecking landed rows found two silent catalog defects. (1) 27 PassPatterns no 
 reported MATCH + FAIL for them. (2) 387 entries lacked the CompilerFlags their source's `// Flags:` line declares (mostly /Gr, /d2inlS20), so the real build
 compiled them without the flag and they did not match retail. Both repaired and rechecked (batches/2026-11-19_fix_stale_passpatterns/,
 batches/2026-11-19_fix_catalog_compilerflags/). Coverage numbers counted these rows as matched while the build disagreed; after the repair they are.
+
+## 2026-11-19 0x007E2A60 CTCFineDialogue::GlobalUpdate differs at HEAD (assert-name drift since 2026-11-13)
+The 1,561-row header-user recheck of the 11-19 landings found one DIFFER(707v707): two stack slots swapped (retail [esp+20h]/[esp+24h]/[esp+28h]).
+It does not come from 11-19 changes. A header bisect with FABLE_HDR_OVERLAY found:
+- the row matched through 33b04e17bc;
+- it broke at c69a4d72ec (wf22, 2026-11-13), whose CBankFile.h / CSubtitleRenderer.h opt-in blocks moved FABLE_STATIC_ASSERTs (GOTCHAS landing fz: this row is the known assert-name-sensitive one);
+- the 2026-11-17 pin pass (606d91b647) pinned asserts at their p23 positions, i.e. after the break.
+Re-pinning just those two headers to the 33b04e17bc numbers does not restore it, because later header changes moved more of its include set's asserts.
+Fix options:
+- (a) re-pin the row's whole include closure to the 33b04e17bc names, then regrade every user of each re-pinned header;
+- (b) find a row-side spelling that is robust to the names.
+Neither was attempted; it is queued.

@@ -8,6 +8,26 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CCREATUREACTION_USEWALLMOUNT_CLASS
+// Opt-in (hand3c, row 0x007DF770 CTCWallMountEffects::FrameUpdate): the polymorphic class over the retail CCreatureActionBase (RTTI
+// vtable 0x0127498C), as the landed ctor 0x00843610 models it: Ego_r.pdb / FableWin.pdb
+// ??0CCreatureAction_UseWallMount@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z (0x00843610) and the virtual destructor
+// ??1CCreatureAction_UseWallMount@@UAE@XZ (retail calls the COMDAT body at 0x007DF380); PObjectToUse CIntelligentPointer<CThing> +0xA8.
+// Needs FABLE_RETAIL_CCREATUREACTIONBASE and FABLE_RETAIL_CINTELLIGENTPOINTER. Replaces the generated pad class below.
+#include "engine/CCreatureActionBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThing; class CThingCreatureBase;
+class CCreatureAction_UseWallMount : public CCreatureActionBase {
+public:
+    CCreatureAction_UseWallMount(CThingCreatureBase& creature, CThing& object_to_use);    // 0x00843610
+    virtual ~CCreatureAction_UseWallMount();                                               // 0x007DF380
+    virtual void Initialise();                                                             // ?Initialise@..@@UAEXXZ 0x00842140
+    virtual void PerformAction();                                                          // ?PerformAction@..@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                                            // ?Clone@..@@UBEPAVCCreatureActionBase@@XZ 0x0084C0C0
+    CIntelligentPointer<CThing> PObjectToUse;                                              // +0xA8
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UseWallMount) == 0xb0);
+#else
 
 #pragma pack(push, 1)
 class CCreatureAction_UseWallMount {
@@ -50,8 +70,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UseWallMount) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseWallMount, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseWallMount, PObjectToUse) == 0xa8);
+FABLE_STATIC_ASSERT_AT(53, sizeof(CCreatureAction_UseWallMount) == 0xb0);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CCreatureAction_UseWallMount, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CCreatureAction_UseWallMount, PObjectToUse) == 0xa8);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_USEWALLMOUNT_CLASS
 #endif // FABLE_ENGINE_CCREATUREACTION_USEWALLMOUNT_H

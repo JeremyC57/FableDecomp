@@ -400664,6 +400664,35 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
         PassPattern = '00540320_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0063f7c0'
+        Module = 'CThingSearchTools'
+        Source = '00/63/CThingSearchTools_ForEachInRoughAreaCThingPhysicalCFilterBind3CThi_0063f7c0.cpp'
+        TestSource = '00/63/CThingSearchTools_ForEachInRoughAreaCThingPhysicalCFilterBind3CThi_0063f7c0_test.cpp'
+        PassPattern = '0063f7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007727e0'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_GetCurrentBasicPrice_007727e0.cpp'
+        TestSource = '00/77/CTCShop_GetCurrentBasicPrice_007727e0_test.cpp'
+        PassPattern = '007727e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b75a0'
+        Module = 'CGameMap'
+        Source = '00/6b/CGameMap_Resize_006b75a0.cpp'
+        TestSource = '00/6b/CGameMap_Resize_006b75a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '006b75a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007df770'
+        Module = 'CTCWallMountEffects'
+        Source = '00/7d/CTCWallMountEffects_FrameUpdate_007df770.cpp'
+        TestSource = '00/7d/CTCWallMountEffects_FrameUpdate_007df770_test.cpp'
+        PassPattern = '007df770_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

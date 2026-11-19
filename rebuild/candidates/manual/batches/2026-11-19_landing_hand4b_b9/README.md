@@ -18,3 +18,5 @@ New nested opt-ins, default-off (`hdr_README.md`):
 
 NAME_FIXES: 0x0084F850's catalog label (GetPBestThingInRoughArea<CFilter_Bind3..>) is a byte-twin propagation. The real name is CThingSearchTools::GetAllThingsInRoughArea<const
 CThingCreatureBase, vector, CFilter_Bind2<IsCreatureThreatTo,IsAwareOfThing>> (Ego_r 0x008469C0, FableWin 0x02889060). This label causes the vland WARN RELOC_NAME.
+
+Header-user recheck of every header merged in hand4c b4 / b5, hand4b b7-b9 and hand3c b12 (12 headers, 1,561 landed rows; logs/recheck_header_users*.tsv / .txt): 1,560 good. The one exception, 0x007E2A60, has differed since 2026-11-13 (assert-name drift, bisected to c69a4d72ec; FINDINGS_LOG) and is not caused by these merges.
