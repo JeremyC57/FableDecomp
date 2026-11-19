@@ -16,7 +16,7 @@ class CTCShotDefinitionProjectilePredictive : public CTCShotDefinitionProjectile
 protected:
     virtual void InitMovement(); // vtable01240ef4 slot33; Ego_r MAEXXZ
 };
-FABLE_STATIC_ASSERT(sizeof(CTCShotDefinitionProjectile)==0xa4);
-FABLE_STATIC_ASSERT(sizeof(CTCShotDefinitionProjectilePredictive)==0xa4);
+FABLE_STATIC_ASSERT_AT(14, sizeof(CTCShotDefinitionProjectile)==0xa4);
+FABLE_STATIC_ASSERT_AT(15, sizeof(CTCShotDefinitionProjectilePredictive)==0xa4);
 }
 #endif

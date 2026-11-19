@@ -40322,3 +40322,5 @@ __imp__SetFileTime@16	0143fd64	009c38c0
 ?Clear@CGameMapCell@@QAEXXZ	006b7490	006b75a0
 ??1CCreatureAction_UseWallMount@@UAE@XZ	007df380	007df770
 ?DoEffect@CTCWallMountEffects@@AAEXXZ	007df6a0	007df770
+?AllowCreatureActionRepulsion@NGlobalConsole@@3_NA	0137574a	00727220
+?tolerance_band@?1??GetToleranceBand@CApplyAdditionalImpulseIfInCombatAndTooClose@@SIMXZ@4MA	01381198	00727220

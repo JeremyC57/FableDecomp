@@ -32,5 +32,5 @@ public:
 private:unsigned long IndexTable[256];C3DVector VectorTable[256];
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NFractal::CPerlinNoise)==4096);
+FABLE_STATIC_ASSERT_AT(13, sizeof(NFractal::CPerlinNoise)==4096);
 #endif

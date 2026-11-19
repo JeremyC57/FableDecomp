@@ -66,5 +66,5 @@ public:
     virtual void DatabaseCopy(const CPSCBase& other);
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CPSCDecalRenderer)==0x64);
+FABLE_STATIC_ASSERT_AT(64, sizeof(NParticleEngine::CPSCDecalRenderer)==0x64);
 #endif

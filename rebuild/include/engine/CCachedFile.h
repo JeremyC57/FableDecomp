@@ -46,5 +46,5 @@ private:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CCachedFile) == 0x28);
+FABLE_STATIC_ASSERT_AT(42, sizeof(CCachedFile) == 0x28);
 #endif // FABLE_ENGINE_CCACHEDFILE_H

@@ -1273,7 +1273,6 @@ It does not come from 11-19 changes. A header bisect with FABLE_HDR_OVERLAY foun
 - it broke at c69a4d72ec (wf22, 2026-11-13), whose CBankFile.h / CSubtitleRenderer.h opt-in blocks moved FABLE_STATIC_ASSERTs (GOTCHAS landing fz: this row is the known assert-name-sensitive one);
 - the 2026-11-17 pin pass (606d91b647) pinned asserts at their p23 positions, i.e. after the break.
 Re-pinning just those two headers to the 33b04e17bc numbers does not restore it, because later header changes moved more of its include set's asserts.
-Fix options:
-- (a) re-pin the row's whole include closure to the 33b04e17bc names, then regrade every user of each re-pinned header;
-- (b) find a row-side spelling that is robust to the names.
-Neither was attempted; it is queued.
+Already known: ROADMAP (c) 2026-11-13 item, ON HOLD by the owner (line-independent assert names; the row stays counted as landed while it differs
+at HEAD). Not worked further. Separately, the 11-19 merges had moved 56 asserts unpinned; they were pinned back to the 11-18 names the same day
+(batches/2026-11-19_fix_assert_pins/).

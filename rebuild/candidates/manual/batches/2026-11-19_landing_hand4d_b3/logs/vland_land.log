@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00727220   RELOCATION_MATCH PASS   operator()
+
+WINS: 1
+  00727220 RELOCATION_MATCH CApplyAdditionalImpulseIfInCombatAndTooClose::??RCApplyAdditionalImpulseIfInCombatAndTooClose@@QBEXPAVCThing@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CApplyAdditionalImpulseIfInCombatAndTooClose_operator_00727220

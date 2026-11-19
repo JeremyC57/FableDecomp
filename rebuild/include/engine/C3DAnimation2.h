@@ -104,7 +104,7 @@ private:CCountedPointer<CSimpleMemoryPool> Allocator;CMovableResourceMemoryPool*
  C3DVector* RigidBonePositions;bool LockedFromMemMemoryRelocation;unsigned char _pad_75[3];unsigned char InstanceList[4];
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DAnimation2)==0x7c);
+FABLE_STATIC_ASSERT_AT(101, sizeof(C3DAnimation2)==0x7c);
 #endif
 #else
 #ifndef FABLE_ENGINE_C3DANIMATION2_H
@@ -161,27 +161,27 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DAnimation2) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, Allocator_Data) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, Allocator_Info) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MemoryPool) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MemoryHandle) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MovementTrack_Data) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MovementTrack_Info) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MovementTrackData_Data) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MovementTrackData_Info) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, SamplesPerSecond) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, FrameCount) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, SequenceCount) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, Sequences) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, SequenceDataBufferSize) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, SequenceDataBuffer) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, BoneMask) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, RigidBoneMask) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, RigidBonePositions) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, LockedFromMemMemoryRelocation) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, InstanceList) == 0x78);
+FABLE_STATIC_ASSERT_AT(158, sizeof(C3DAnimation2) == 0x7c);
+FABLE_STATIC_ASSERT_AT(159, offsetof(C3DAnimation2, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(160, offsetof(C3DAnimation2, Allocator_Data) == 0x30);
+FABLE_STATIC_ASSERT_AT(161, offsetof(C3DAnimation2, Allocator_Info) == 0x34);
+FABLE_STATIC_ASSERT_AT(162, offsetof(C3DAnimation2, MemoryPool) == 0x38);
+FABLE_STATIC_ASSERT_AT(163, offsetof(C3DAnimation2, MemoryHandle) == 0x3c);
+FABLE_STATIC_ASSERT_AT(164, offsetof(C3DAnimation2, MovementTrack_Data) == 0x40);
+FABLE_STATIC_ASSERT_AT(165, offsetof(C3DAnimation2, MovementTrack_Info) == 0x44);
+FABLE_STATIC_ASSERT_AT(166, offsetof(C3DAnimation2, MovementTrackData_Data) == 0x48);
+FABLE_STATIC_ASSERT_AT(167, offsetof(C3DAnimation2, MovementTrackData_Info) == 0x4c);
+FABLE_STATIC_ASSERT_AT(168, offsetof(C3DAnimation2, SamplesPerSecond) == 0x50);
+FABLE_STATIC_ASSERT_AT(169, offsetof(C3DAnimation2, FrameCount) == 0x54);
+FABLE_STATIC_ASSERT_AT(170, offsetof(C3DAnimation2, SequenceCount) == 0x58);
+FABLE_STATIC_ASSERT_AT(171, offsetof(C3DAnimation2, Sequences) == 0x5c);
+FABLE_STATIC_ASSERT_AT(172, offsetof(C3DAnimation2, SequenceDataBufferSize) == 0x60);
+FABLE_STATIC_ASSERT_AT(173, offsetof(C3DAnimation2, SequenceDataBuffer) == 0x64);
+FABLE_STATIC_ASSERT_AT(174, offsetof(C3DAnimation2, BoneMask) == 0x68);
+FABLE_STATIC_ASSERT_AT(175, offsetof(C3DAnimation2, RigidBoneMask) == 0x6c);
+FABLE_STATIC_ASSERT_AT(176, offsetof(C3DAnimation2, RigidBonePositions) == 0x70);
+FABLE_STATIC_ASSERT_AT(177, offsetof(C3DAnimation2, LockedFromMemMemoryRelocation) == 0x74);
+FABLE_STATIC_ASSERT_AT(178, offsetof(C3DAnimation2, InstanceList) == 0x78);
 
 #endif // FABLE_ENGINE_C3DANIMATION2_H
 

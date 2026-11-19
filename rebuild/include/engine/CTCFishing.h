@@ -44,8 +44,8 @@ public:
  const class CFishingRodDef* GetPFishingRodDef()const;                       // 0x007B0880
 #endif
 };
-FABLE_STATIC_ASSERT(offsetof(CTCFishing,PDef)==0x60);
-FABLE_STATIC_ASSERT(sizeof(CTCFishing)==100);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CTCFishing,PDef)==0x60);
+FABLE_STATIC_ASSERT_AT(37, sizeof(CTCFishing)==100);
 #endif
 #endif
 // Retail opt-in (Codex pass22): complete original both-PDB100-byte component; original counted getter body.

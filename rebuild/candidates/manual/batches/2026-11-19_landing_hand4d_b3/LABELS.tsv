@@ -1,0 +1,3 @@
+address	name	evidence
+0137574a	NGlobalConsole::AllowCreatureActionRepulsion	see NAME_FIXES.tsv
+01381198	`CApplyAdditionalImpulseIfInCombatAndTooClose::GetToleranceBand'::`2'::tolerance_band	see NAME_FIXES.tsv

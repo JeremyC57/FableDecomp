@@ -62,5 +62,5 @@ private:EAnimationType AnimType;float Duration;bool LoopFlag,MovementFlag;C3DVec
 #else
 private:EAnimationType AnimType;float Duration;bool LoopFlag,MovementFlag;unsigned char MovementVector[12];unsigned char _pad_1e[2];unsigned char TimingEvents[12];};
 #endif
-FABLE_STATIC_ASSERT(sizeof(C3DAnimationStats)==0x2c);
+FABLE_STATIC_ASSERT_AT(50, sizeof(C3DAnimationStats)==0x2c);
 #endif

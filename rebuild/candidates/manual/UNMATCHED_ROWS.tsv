@@ -221,7 +221,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00725f10	CThingSearchTools	GetAllThingsInRoughArea	592	parked	DIFFER(733v590)	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/00725f10.cpp	original
 00726980	CTCPhysicsNavigator	PerformForcedMovement	608	parked	DIFFER(609v595)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/00726980.cpp	original
 00726ce0	CTCPhysicsNavigator	Move	1024	parked	DIFFER(1002v1011)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand304/differ/00726ce0.cpp	original
-00727220	CApplyAdditionalImpulseIfInCombatAndTooClose	operator()	736	reserved (hand4d, in-house)	DIFFER(732v732)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00727220.cpp	original
 007280c0	CTCRandomAppearanceMorph	UpdateMorphSet	816	parked	DIFFER(807v802)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/007280c0.cpp	original
 0072f380	CTCDummyVillager	OnSerialise	976	parked	DIFFER(979v968)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand301/differ/0072f380.cpp	original
 0072f750	CTCDummyVillager	CreateVillager	656	parked	DIFFER(648v643)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0072f750.cpp	original

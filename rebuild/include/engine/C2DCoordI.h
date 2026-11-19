@@ -33,5 +33,5 @@ class C2DCoordI { public: long X,Y;C2DCoordI(){}C2DCoordI(long x,long y):X(x),Y(
 #else
 class C2DCoordI { public: long X,Y;C2DCoordI(){}C2DCoordI(long x,long y):X(x),Y(y){} };
 #endif
-FABLE_STATIC_ASSERT(sizeof(C2DCoordI)==8);
+FABLE_STATIC_ASSERT_AT(31, sizeof(C2DCoordI)==8);
 #endif

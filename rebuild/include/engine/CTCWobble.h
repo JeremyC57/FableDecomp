@@ -18,6 +18,6 @@ private:
     float DirectionLastRotated;
     float AngleOfWobble;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCWobble)==0x30);
+FABLE_STATIC_ASSERT_AT(16, sizeof(CTCWobble)==0x30);
 #endif
 #endif

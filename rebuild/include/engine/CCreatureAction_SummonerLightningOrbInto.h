@@ -92,9 +92,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SummonerLightningOrbInto) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SummonerLightningOrbInto, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SummonerLightningOrbInto, POrb) == 0x114);
+FABLE_STATIC_ASSERT_AT(80, sizeof(CCreatureAction_SummonerLightningOrbInto) == 0x11c);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CCreatureAction_SummonerLightningOrbInto, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_SummonerLightningOrbInto, POrb) == 0x114);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_SUMMONERLIGHTNINGORBINTO_CLASS
 #endif // FABLE_ENGINE_CCREATUREACTION_SUMMONERLIGHTNINGORBINTO_H

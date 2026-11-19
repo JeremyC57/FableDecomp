@@ -139,6 +139,15 @@ namespace NCreatureMode {
 bool __fastcall IsTransmogrified(const CThing& thing);                  // 0x0085EE10
 }
 #endif
+#ifdef FABLE_RETAIL_NCREATUREMODE_PUSHABLEBYSELFAVOIDANCE
+// Opt-in (hand4d 2026-11-19, row 0x00727220 CApplyAdditionalImpulseIfInCombatAndTooClose::operator()): Ego_r.pdb / FableWin.pdb
+// ?IsPhysicsPushableBySelfAvoidance@NCreatureMode@@YI_NABVCThing@@@Z (FableWin 0x02832390), the static `__fastcall` thing query out of
+// line at 0x0085FE60 (reloc_bindings; `mov ecx,<thing> ; call`, 0x007272ED). Declaration only.
+class CThing;
+namespace NCreatureMode {
+bool __fastcall IsPhysicsPushableBySelfAvoidance(const CThing& thing);  // 0x0085FE60
+}
+#endif
 #ifdef FABLE_RETAIL_FIRE_RANGED_WEAPON
 class CThing;
 namespace NCreatureMode{bool FABLE_FASTCALL IsValidRangedWeaponTargetForShooter(const CThing&,const CThing&,float);}

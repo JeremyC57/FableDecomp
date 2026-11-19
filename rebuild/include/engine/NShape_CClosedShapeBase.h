@@ -59,6 +59,6 @@ public:
 };
 void FABLE_FASTCALL DrawPrimitiveLineOverLandscape(const CEnginePrimitivePrepareInfo&,const CWorldMap&,const C3DVector&,const C3DVector&,const C3DVector&,const CRGBColour&);
 }
-FABLE_STATIC_ASSERT(sizeof(NShape::CShape)==32);
-FABLE_STATIC_ASSERT(sizeof(NShape::CClosedShapeBase)==32);
+FABLE_STATIC_ASSERT_AT(57, sizeof(NShape::CShape)==32);
+FABLE_STATIC_ASSERT_AT(58, sizeof(NShape::CClosedShapeBase)==32);
 #endif

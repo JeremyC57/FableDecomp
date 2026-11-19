@@ -49,7 +49,7 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CThingPhysicalSwitch)==0xd8);
+FABLE_STATIC_ASSERT_AT(45, sizeof(CThingPhysicalSwitch)==0xd8);
 #ifdef FABLE_RETAIL_CTHINGPHYSICALSWITCH_PEEKDEFINITION_SAMETU
 // Nested opt-in (agentNF12, 2026-11-11, rows 0x0083DDC0 TriggerMe / 0x0083DF20 UntriggerMe): the body of PeekDefinition (the landed
 // 0x0083D900, same retail TU: Ego_r donor order PeekDefinition / TriggerMe / UntriggerMe) visible to its callers, as in retail, where

@@ -400693,6 +400693,13 @@ $catalog = @(
         TestSource = '00/7d/CTCWallMountEffects_FrameUpdate_007df770_test.cpp'
         PassPattern = '007df770_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00727220'
+        Module = 'CApplyAdditionalImpulseIfInCombatAndTooClose'
+        Source = '00/72/CApplyAdditionalImpulseIfInCombatAndTooClose_operator_00727220.cpp'
+        TestSource = '00/72/CApplyAdditionalImpulseIfInCombatAndTooClose_operator_00727220_test.cpp'
+        PassPattern = '00727220_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

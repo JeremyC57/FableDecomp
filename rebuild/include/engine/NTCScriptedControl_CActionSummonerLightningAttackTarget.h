@@ -29,5 +29,5 @@ private:
     CActionTurnToFacePosition TurnToFaceAction;                          // +0x1c
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NTCScriptedControl::CActionSummonerLightningAttackTarget) == 0x38);
+FABLE_STATIC_ASSERT_AT(26, sizeof(NTCScriptedControl::CActionSummonerLightningAttackTarget) == 0x38);
 #endif

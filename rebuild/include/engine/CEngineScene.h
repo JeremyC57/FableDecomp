@@ -44,5 +44,5 @@ private:
     float MaxPrimitiveCellSizeRatio, MaxAveragePrimitivesPerCell; // +50,+54
     unsigned long PreloadFramesMoving; // +58
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineScene)==0x5c);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CEngineScene)==0x5c);
 #endif

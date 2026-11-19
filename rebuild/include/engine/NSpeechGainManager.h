@@ -48,8 +48,8 @@ public:
     CDialogueLayerDef& operator=(const CDialogueLayerDef&);              // 0x004663AE
 #endif // FABLE_RETAIL_NSPEECHGAINMANAGER_CDIALOGUELAYERDEF_COPY
 };
-FABLE_STATIC_ASSERT(sizeof(CDialogueLayerDef) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CDialogueLayerDef, ResponseTimeSecsAttack) == 0x28);
+FABLE_STATIC_ASSERT_AT(48, sizeof(CDialogueLayerDef) == 0x40);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CDialogueLayerDef, ResponseTimeSecsAttack) == 0x28);
 
 class CResponseTimes {
 public:

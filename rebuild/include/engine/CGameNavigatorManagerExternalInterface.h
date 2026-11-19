@@ -38,5 +38,5 @@ public:
 private:
     CWorld* World;                                                             // +0x04
 };
-FABLE_STATIC_ASSERT(sizeof(CGameNavigatorManagerExternalInterface) == 8);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CGameNavigatorManagerExternalInterface) == 8);
 #endif
