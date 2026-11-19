@@ -39,7 +39,7 @@ done < "$LIST"
 
 # 2. 32-bit MSVC-ABI IR (VC7.1 dialect), every definition weak so duplicate helpers link
 CF="--target=i686-pc-windows-msvc -fms-compatibility -fms-compatibility-version=13.10 -fms-extensions -fdelayed-template-parsing
-    -fno-exceptions -w -std=c++98 -O2 -isystem $HERE/shim -I $FD/rebuild/include"
+    -fno-exceptions -w -std=c++98 -O2 -fno-strict-aliasing -fwrapv -fno-delete-null-pointer-checks -isystem $HERE/shim -I $FD/rebuild/include"
 compile() { local a=$1 f=$2
   if clang++ $CF -S -emit-llvm -o "$OUT/ir/$a.ll.tmp" "$FD/rebuild/src/compiled/$f" 2> "$OUT/ir/$a.err"; then
     sed -E 's/^define dso_local /define weak_odr dso_local /; s/^define (x86_|noundef|zeroext|signext|void|i[0-9]|float|double|ptr)/define weak_odr \1/' \

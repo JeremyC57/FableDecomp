@@ -46,6 +46,10 @@ cmake ... -DFABLE_NATIVE_OBJS=$PWD/out/native/nd_a64.o && ninja
 
 ## Differences from retail
 
+The front end runs with `-fno-strict-aliasing -fwrapv -fno-delete-null-pointer-checks`, and `fable_lower` drops
+every alignment, dereferenceable and nonnull assumption: VC7.1 exploited none of them and the game
+relies on that (an object of this kind sits at an odd address in retail).
+
 Float arithmetic is clang's, in source order, at IEEE single and double precision. The game runs
 the x87 at 24-bit precision, and VC7.1 reordered some sums, so results can differ from retail in
 the last bits; double-precision code differs more. Math library calls (`sqrt`, `sin`, ...) use the

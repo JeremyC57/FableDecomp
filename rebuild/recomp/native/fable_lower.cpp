@@ -25,6 +25,7 @@
 #include "llvm/ADT/SetVector.h"
 #include "llvm/ADT/StringMap.h"
 #include "llvm/Bitcode/BitcodeWriter.h"
+#include "llvm/IR/AttributeMask.h"
 #include "llvm/IR/Constants.h"
 #include "llvm/IR/DataLayout.h"
 #include "llvm/IR/IRBuilder.h"
@@ -656,6 +657,30 @@ int main(int argc, char** argv) {
         }
     }
     for (EntryInfo& e : entries) makeEntry(e.f, e.a, e.cc, e.al);
+
+    // No alignment or dereferenceability assumptions: the front end derives them from the C++ types,
+    // but retail objects can sit at any address (packed members, odd allocations) and VC7.1's code never
+    // relied on them. Over 32-bit words LLVM would turn an `align 4` into cleared low address bits.
+    for (Function& f : *M) {
+        AttributeMask m;
+        m.addAttribute(Attribute::Alignment).addAttribute(Attribute::Dereferenceable).addAttribute(Attribute::DereferenceableOrNull);
+        m.addAttribute(Attribute::NonNull);  // retail code calls methods through null pointers that check `this`
+        f.removeRetAttrs(m);
+        for (unsigned k = 0; k < f.arg_size(); ++k) f.removeParamAttrs(k, m);
+        for (BasicBlock& bb : f)
+            for (Instruction& i : make_early_inc_range(bb)) {
+                if (auto* l = dyn_cast<LoadInst>(&i)) l->setAlignment(Align(1));
+                else if (auto* st = dyn_cast<StoreInst>(&i)) st->setAlignment(Align(1));
+                else if (auto* cb = dyn_cast<CallBase>(&i)) {
+                    if (auto* ii = dyn_cast<IntrinsicInst>(cb); ii && ii->getIntrinsicID() == Intrinsic::assume) {
+                        ii->eraseFromParent();
+                        continue;
+                    }
+                    cb->removeRetAttrs(m);
+                    for (unsigned k = 0; k < cb->arg_size(); ++k) cb->removeParamAttrs(k, m);
+                }
+            }
+    }
 
     // x86 conventions and attributes off; everything but the wraps internal; the 64-bit layout on.
     for (Function& f : *M) {
