@@ -400960,6 +400960,13 @@ $catalog = @(
         TestSource = '00/6c/CEngineTextureMorphSet_AddEngineMorph_006ca8c0_test.cpp'
         PassPattern = '006ca8c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c77800'
+        Module = 'CFloatReverbParameterTranslator'
+        Source = '00/c7/CFloatReverbParameterTranslator_UpdateDecayTimes_00c77800.cpp'
+        TestSource = '00/c7/CFloatReverbParameterTranslator_UpdateDecayTimes_00c77800_test.cpp'
+        PassPattern = '00c77800_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

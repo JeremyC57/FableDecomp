@@ -4,6 +4,9 @@
 // Original GameCODA2.10 debug CodeView: complete data layout and used original API.
 #include "engine/_RVB_VECTOR.h"
 class CHLRvbParams {
+#ifdef FABLE_RETAIL_CFLOATREVERBPARAMETERTRANSLATOR_UPDATEDECAYTIMES
+ friend class CFloatReverbParameterTranslator;
+#endif
 public:
  CHLRvbParams();
 private:

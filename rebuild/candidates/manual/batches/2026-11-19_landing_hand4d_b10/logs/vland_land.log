@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00c77800   RELOCATION_MATCH PASS   UpdateDecayTimes
+
+WINS: 1
+  00c77800 RELOCATION_MATCH CFloatReverbParameterTranslator::?UpdateDecayTimes@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CFloatReverbParameterTranslator_UpdateDecayTimes_00c77800

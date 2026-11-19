@@ -3,6 +3,11 @@
 #ifdef FABLE_RETAIL_PASS22_FLOATREVERB_CREATE
 // Original GameCODA2.10 debug CodeView: complete data layout and used original API.
 class CFloatFilterParams {
+#ifdef FABLE_RETAIL_CFLOATREVERBPARAMETERTRANSLATOR_UPDATEDECAYTIMES
+public:
+ void Set_ShelfLfHf(float fLFRatio,float fFreqLF,float fHFRatio,float fFreqHF,unsigned int uiSamplesPerSecond);
+ void SetGain(float fGain){m_fGain=fGain;}
+#endif
 private:
  float m_fGain; // +0x0
  float m_fA[3]; // +0x4

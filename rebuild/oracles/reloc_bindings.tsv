@@ -40297,3 +40297,4 @@ __imp__ReadFileEx@20	0143fdf4	009c3ae0
 ?SimulationStep@CParticleProgram@@QAEXPAVCParticleSimulation@@PAVCParticleContext@@PAVC3DAnimationBlendState@@PAVC3DAnimationManager@@PAVC3DVector@@PAVC3DMesh2@@@Z	00ae2d20	00b82100
 ?UpdateTransform@CEngineClothSimulationMeshBase@@QAEXXZ	00b81050	00b82100
 _kRadiansPerHz	012bed78	00c6c000
+?Set_ShelfLfHf@CFloatFilterParams@@QAEXMMMMI@Z	00c74850	00c77800

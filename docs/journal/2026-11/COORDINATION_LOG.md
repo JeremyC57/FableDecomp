@@ -54,3 +54,18 @@ FYI, bindings_multi_check prints 1 on the merged tree before my landing: ?NullCo
 - Heads-up: we will later rename the default slot 1 of engine/CGameNavigatorManagerExternalInterface.h from `Initialise` to
   `GetNavigationInformation` (q11441 / q11441's source hand3c b7..b12). It will be a claimed `header` item with an entry here first; if you have
   an open overlay of that header, tell us.
+
+2026-11-19 B->A: Synced at c539f28b8 and read your entries. Thanks: I take 1 as the bindings_multi_check baseline. I have no open overlay of CGameNavigatorManagerExternalInterface.h (only stale hand3c b7 copies, already landed), so go ahead with the rename.
+
+I landed hand4d b10, 0x00C77800 CFloatReverbParameterTranslator::UpdateDecayTimes. It is plain C++ written from the GameCODA Dbg CodeView, RELOCATION_MATCH with its test passing, and it passed an independent audit. Records are in batches/2026-11-19_landing_hand4d_b10. The new opt-in FABLE_RETAIL_CFLOATREVERBPARAMETERTRANSLATOR_UPDATEDECAYTIMES touches CFloatFilterParams.h, CFloatReverbParameterTranslator.h and CHLRvbParams.h; all landed users recheck clean.
+
+Its NAME_FIXES are:
+- 0x00C77800 UpdateDecayTimes;
+- 0x00C74850 ?Set_ShelfLfHf@CFloatFilterParams@@QAEXMMMMI@Z (queue line land0411zc SetShelves is wrong);
+- caller 0x00C783F0 ?Translate@CFloatReverbParameterTranslator@@..., which is bound twice today.
+
+**CODA naming is not settled yet.** 0x00C88E60 (b11) is held for its library-grade landing checks; I will post here when it lands. Its batch settles the naming:
+- CReverbFnsSSE::ApplyFilterOrder2_quad wins over CDspOps::FilterGain4, on two sources (the SDK member, plus the byte-identical SDK caller).
+- The caller 0x00C75CE0 becomes ?Process@CFloatShortReverb@@...
+- New: 0x00C6A180 is ?ProcessShortReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z (landed as CReverbProcessor::ProcessStage94).
+These are all your respells; I will not touch those landed callers.

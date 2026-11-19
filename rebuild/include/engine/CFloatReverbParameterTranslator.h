@@ -9,6 +9,10 @@ class CFloatReverbParameterTranslator {
 public:
  void Create(CFloatReverbConstants *);
  void Translate(CFloatReverbParameters *,CHLRvbParams *);
+#ifdef FABLE_RETAIL_CFLOATREVERBPARAMETERTRANSLATOR_UPDATEDECAYTIMES
+private:
+ void UpdateDecayTimes(CFloatReverbParameters *,CHLRvbParams *);
+#endif
 private:
  float m_fRefPanGain[4]; // +0x0
  float m_fShortRvbPanGain[4]; // +0x10
