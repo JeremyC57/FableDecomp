@@ -1,0 +1,8 @@
+004ba180	004ba180   DIFFER(279v282)  PASS   std::__adjust_heap
+0077e8f0	0077e8f0   DIFFER(111v110)  PASS   std::__unguarded_partition
+0077f370	0077f370   DIFFER(189v202)  PASS   std::__introsort_loop
+00902f71	00902f71   RELOCATION_MATCH["s"] PASS   CAIStateGroup_CreatureUseCoverBase::~CAIStateGroup_CreatureUseCoverBase
+00a708e0	00a708e0   DIFFER(287v292)  PASS   std::__push_heap
+00a71370	00a71370   DIFFER(373v377)  PASS   std::__adjust_heap
+00af3290	00af3290   DIFFER(277v280)  PASS   std::__adjust_heap
+00eda8c0	00eda8c0   DIFFER(238v236)  PASS   NScript::CV_TalentlessBardScript::ProcessSongsAge

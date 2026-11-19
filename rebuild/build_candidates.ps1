@@ -670,7 +670,7 @@ $catalog = @(
         Module = 'CTCHeroStats'
         Source = '00/57/CTCHeroStats_GetMoralityMax_0057a67e.cpp'
         TestSource = '00/57/CTCHeroStats_GetMoralityMax_0057a67e_test.cpp'
-        PassPattern = 'CTCHEROSTATS_0057a67e_TEST PASS'
+        PassPattern = '0057a67e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004bc180'
@@ -1132,7 +1132,7 @@ $catalog = @(
         Module = 'CTCHeroStats'
         Source = '00/57/CTCHeroStats_GetMaxDrunkenness_0057a89d.cpp'
         TestSource = '00/57/CTCHeroStats_GetMaxDrunkenness_0057a89d_test.cpp'
-        PassPattern = 'CTCHeroStats_0057a89d_TEST PASS'
+        PassPattern = '0057a89d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006ceae0'
@@ -1384,7 +1384,7 @@ $catalog = @(
         Module = 'CTCHeroStats'
         Source = '00/57/CTCHeroStats_IsDrunk_0057a874.cpp'
         TestSource = '00/57/CTCHeroStats_IsDrunk_0057a874_test.cpp'
-        PassPattern = 'CTCHeroStats_0057a874_TEST PASS'
+        PassPattern = '0057a874_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00726750'
@@ -28105,7 +28105,7 @@ $catalog = @(
         Module = 'CSpawnedFunc<NScript::CQ_WaspBossScript>'
         Source = '00/e0/CSpawnedFunc_SuspendableProcess_00e0e970.cpp'
         TestSource = '00/e0/CSpawnedFunc_SuspendableProcess_00e0e970_test.cpp'
-        PassPattern = 'AUTO_TINY_00e0e970_TEST PASS'
+        PassPattern = '00e0e970_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e13eb0'
@@ -28427,7 +28427,7 @@ $catalog = @(
         Module = 'CSpawnedFunc<NScript::CCS_OakValeRevisitedScript>'
         Source = '00/ee/CSpawnedFunc_SuspendableProcess_00ee82a0.cpp'
         TestSource = '00/ee/CSpawnedFunc_SuspendableProcess_00ee82a0_test.cpp'
-        PassPattern = 'AUTO_TINY_00ee82a0_TEST PASS'
+        PassPattern = '00ee82a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ee8f40'
@@ -29436,7 +29436,7 @@ $catalog = @(
         Module = 'CActiveEntityScriptBase'
         Source = '00/ce/CActiveEntityScriptBase_scalardeletingdestructor_00ce1200.cpp'
         TestSource = '00/ce/CActiveEntityScriptBase_scalardeletingdestructor_00ce1200_test.cpp'
-        PassPattern = 'AUTO_TINY_00ce1200_TEST PASS'
+        PassPattern = '00ce1200_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ce1250'
@@ -29597,7 +29597,7 @@ $catalog = @(
         Module = 'NScript::CQ_HeroSoulsArenaScript'
         Source = '00/d8/NScriptCQHeroSoulsArenaScript_scalardeletingdestructor_00d80c00.cpp'
         TestSource = '00/d8/NScriptCQHeroSoulsArenaScript_scalardeletingdestructor_00d80c00_test.cpp'
-        PassPattern = 'AUTO_TINY_00d80c00_TEST PASS'
+        PassPattern = '00d80c00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d82370'
@@ -30191,7 +30191,7 @@ $catalog = @(
         Address = '00494380'; Module = 'CFrontendGameComponent'
         Source = '00/49/CFrontendGameComponent_ChangeSelection_00494380.cpp'
         TestSource = '00/49/CFrontendGameComponent_ChangeSelection_00494380_test.cpp'
-        PassPattern = 'CFrontendGameComponent_ChangeSelection_00494380_test PASS'
+        PassPattern = '00494380_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00494490'; Module = 'CFrontendGameComponent'
@@ -31584,7 +31584,7 @@ $catalog = @(
         Module = 'CNewFrontendGameComponent'
         Source = '00/42/CNewFrontendGameComponent_UpdateInterpolation_0042dbfa.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_UpdateInterpolation_0042dbfa_test.cpp'
-        PassPattern = 'OK_0x0042dbfa'
+        PassPattern = '0042dbfa_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004354c0'
@@ -42912,7 +42912,7 @@ $catalog = @(
         Module = 'CThingFilter_HasScriptSupervision'
         Source = '00/6a/CThingFilterHasScriptSupervision_operator_006a7530.cpp'
         TestSource = '00/6a/CThingFilterHasScriptSupervision_operator_006a7530_test.cpp'
-        PassPattern = 'OK_006a7530'
+        PassPattern = '006a7530_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005b21f4'
@@ -56117,7 +56117,7 @@ $catalog = @(
         Module = 'CScriptDataBase'
         Source = '00/cd/CScriptDataBase_scalardeletingdestructor_00cd4530.cpp'
         TestSource = '00/cd/CScriptDataBase_scalardeletingdestructor_00cd4530_test.cpp'
-        PassPattern = 'CLandscapeBackgroundPatch_00cd4530_TEST PASS'
+        PassPattern = '00cd4530_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cdbd00'
@@ -56166,14 +56166,14 @@ $catalog = @(
         Module = 'CLevelScriptNoMasterBase'
         Source = '00/cd/CLevelScriptNoMasterBase_scalardeletingdestructor_00cdd310.cpp'
         TestSource = '00/cd/CLevelScriptNoMasterBase_scalardeletingdestructor_00cdd310_test.cpp'
-        PassPattern = 'CLandscapeBackgroundPatch_00cdd310_TEST PASS'
+        PassPattern = '00cdd310_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cdd4a0'
         Module = 'CSpawnedFuncBase'
         Source = '00/cd/CSpawnedFuncBase_scalardeletingdestructor_00cdd4a0.cpp'
         TestSource = '00/cd/CSpawnedFuncBase_scalardeletingdestructor_00cdd4a0_test.cpp'
-        PassPattern = 'CLandscapeBackgroundPatch_00cdd4a0_TEST PASS'
+        PassPattern = '00cdd4a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cdd530'
@@ -56852,7 +56852,7 @@ $catalog = @(
         Module = 'CFireHeartPatternDef'
         Source = '00/d3/CFireHeartPatternDef_scalardeletingdestructor_00d34f60.cpp'
         TestSource = '00/d3/CFireHeartPatternDef_scalardeletingdestructor_00d34f60_test.cpp'
-        PassPattern = 'CLandscapeBackgroundPatch_00d34f60_TEST PASS'
+        PassPattern = '00d34f60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d36380'
@@ -59191,7 +59191,7 @@ $catalog = @(
         Module = 'CConversation'
         Source = '00/e5/CConversation_scalardeletingdestructor_00e54d60.cpp'
         TestSource = '00/e5/CConversation_scalardeletingdestructor_00e54d60_test.cpp'
-        PassPattern = 'CLandscapeBackgroundPatch_00e54d60_TEST PASS'
+        PassPattern = '00e54d60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e57000'
@@ -60647,7 +60647,7 @@ $catalog = @(
         Module = 'NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
         Source = '00/ef/NScriptCPredicateAnd_scalardeletingdestructor_00ef6ea0.cpp'
         TestSource = '00/ef/NScriptCPredicateAnd_scalardeletingdestructor_00ef6ea0_test.cpp'
-        PassPattern = 'CLandscapeBackgroundPatch_00ef6ea0_TEST PASS'
+        PassPattern = '00ef6ea0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ef9170'
@@ -68295,14 +68295,14 @@ $catalog = @(
         Module = 'CJoystickDX'
         Source = '00/ab/CJoystickDX_GetXAxis_00ab6ad0.cpp'
         TestSource = '00/ab/CJoystickDX_GetXAxis_00ab6ad0_test.cpp'
-        PassPattern = 'OK_00ab6ad0'
+        PassPattern = '00ab6ad0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ab6ae0'
         Module = 'CJoystickDX'
         Source = '00/ab/CJoystickDX_GetYAxis_00ab6ae0.cpp'
         TestSource = '00/ab/CJoystickDX_GetYAxis_00ab6ae0_test.cpp'
-        PassPattern = 'OK_00ab6ae0'
+        PassPattern = '00ab6ae0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ab6af0'
@@ -76646,7 +76646,7 @@ $catalog = @(
         Module = 'CTCDiceGame'
         Source = '00/4d/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004d607c.cpp'
         TestSource = '00/4d/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004d607c_test.cpp'
-        PassPattern = 'PASS_004d607c'
+        PassPattern = '004d607c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00628f30'
@@ -77409,7 +77409,7 @@ $catalog = @(
         Module = 'CCreatureAction_DeclarePlayerACriminal'
         Source = '00/91/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00910b20.cpp'
         TestSource = '00/91/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00910b20_test.cpp'
-        PassPattern = 'PASS_00910b20'
+        PassPattern = '00910b20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00922eb0'
@@ -82506,28 +82506,28 @@ $catalog = @(
         Module = 'NScript::CalextestData'
         Source = '00/cd/NScriptCalextestData_scalardeletingdestructor_00cd4a90.cpp'
         TestSource = '00/cd/NScriptCalextestData_scalardeletingdestructor_00cd4a90_test.cpp'
-        PassPattern = 'PASS_00cd4a90'
+        PassPattern = '00cd4a90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cd4af0'
         Module = 'NScript::CEmptyData'
         Source = '00/cd/NScriptCEmptyData_scalardeletingdestructor_00cd4af0.cpp'
         TestSource = '00/cd/NScriptCEmptyData_scalardeletingdestructor_00cd4af0_test.cpp'
-        PassPattern = 'PASS_00cd4af0'
+        PassPattern = '00cd4af0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cd4b50'
         Module = 'NScript::Cjoss_test_scriptsData'
         Source = '00/cd/NScriptCjosstestscriptsData_scalardeletingdestructor_00cd4b50.cpp'
         TestSource = '00/cd/NScriptCjosstestscriptsData_scalardeletingdestructor_00cd4b50_test.cpp'
-        PassPattern = 'PASS_00cd4b50'
+        PassPattern = '00cd4b50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cd4bb0'
         Module = 'NScript::CDanyalTestScriptsData'
         Source = '00/cd/NScriptCDanyalTestScriptsData_scalardeletingdestructor_00cd4bb0.cpp'
         TestSource = '00/cd/NScriptCDanyalTestScriptsData_scalardeletingdestructor_00cd4bb0_test.cpp'
-        PassPattern = 'PASS_00cd4bb0'
+        PassPattern = '00cd4bb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cdebf0'
@@ -94569,7 +94569,7 @@ $catalog = @(
         Module = 'CScriptDefinitionManager'
         Source = '00/cd/CScriptDefinitionManager_CScriptDefinitionManager_00cd3ec0.cpp'
         TestSource = '00/cd/CScriptDefinitionManager_CScriptDefinitionManager_00cd3ec0_test.cpp'
-        PassPattern = 'PASS_00cd3ec0'
+        PassPattern = '00cd3ec0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004852fb'
@@ -126637,7 +126637,7 @@ $catalog = @(
         Module = 'CMainGameComponent'
         Source = '00/41/CMainGameComponent_GetCurrentGameTime_00416231.cpp'
         TestSource = '00/41/CMainGameComponent_GetCurrentGameTime_00416231_test.cpp'
-        PassPattern = 'CURRENT_GAME_TIME PASS'
+        PassPattern = '00416231_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006bf7b0'
