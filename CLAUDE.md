@@ -3,6 +3,7 @@
 Reverse-engineering + byte-exact reconstruction of the **native PC** `Fable.exe`
 (Fable: The Lost Chapters, Steam, VC7.1). Public repo: `JeremyC57/FableDecomp` (this tree).
 
+**Two accounts work this repo (2026-11-19):** read `docs/COORDINATION.md` first (branches, claims, sync, message log).
 **Start here, in this order:** `docs/HANDOFF.md` (one page: state + resume commands) →
 `docs/ROADMAP.md` (the only task list) → `docs/ARCHITECTURE.md` → `docs/BUILDING.md` →
 `CONTRIBUTING.md`. Everything else is indexed in `docs/INDEX.md`. Solved problems go in
