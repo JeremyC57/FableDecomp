@@ -34,13 +34,14 @@
 #include "engine/CTCInventoryTrade.h"
 // Same-TU body of GetCategoryIndexForTradeType 0x0059B6F4 (landed; kept out of line), as in the landed 0x0059C6B0 (NF89) text unchanged: VC7.1
 //   then knows it touches only eax/ecx, so `this` survives the call in edx as retail does. The shared-header inline body (NF91 opt-in
-//   TRADECATEGORY_BODY) gives DIFFER 47v45 on 0x0059C6B0 and 57v55 here (NF91 / NF92); this strong copy joins the open one-definition entry
-//   q11204 with 0x0059C6B0. The table keeps the landed 0x0059B6F4 row's descriptive spelling.
+//   TRADECATEGORY_BODY) gives DIFFER 47v45 on 0x0059C6B0 and 57v55 here (NF91 / NF92); this strong copy is accepted as a
+//   retail TU-mate (advisor decision, landing nf96a; q11204 closed by NF96 part 2). The table keeps the landed 0x0059B6F4 row's descriptive spelling.
 struct CTradeTypeCategory {
     long Ident;          // EInventoryCategoryIdentifier value
     long CategoryIndex;  // trade category index
 };
 extern CTradeTypeCategory g_TradeTypeCategories[2];    // 0x0137CCDC: {11,0}, {12,1}
+// Fidelity: same-TU strong definition of 0x0059B6F4 (retail TU-mate)
 #pragma auto_inline(off)
 long CTCInventoryTrade::GetCategoryIndexForTradeType()
 {

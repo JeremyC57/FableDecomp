@@ -1,0 +1,22 @@
+# GetCardDef / GetPackPosition one definition, condition 2 (NF96 part 2): each same-TU copy against the owner row body
+## GetCardDef owner rows/008f0b20.cpp:
+void CTCTavernGameCardBase::GetCardDef(CDefPointer<const CTavernGameCardBaseDef>* pdef)
+{
+    CDefPointer<const CTavernGameCardBaseDef> new_pdef;
+    GetParentThing().PeekBaseDef().GetSubDef(&new_pdef);
+    *pdef = new_pdef;
+}
+## 008f0b80: IDENTICAL
+## 008f0bd0: IDENTICAL
+## 008f0eb0: IDENTICAL
+## 008f10b0: IDENTICAL
+## 008f2280: IDENTICAL
+## GetPackPosition owner rows/008f0b80.cpp:
+C3DVector CTCTavernGameCardBase::GetPackPosition()
+{
+    CDefPointer<const CTavernGameCardBaseDef> def;
+    GetCardDef(&def);
+    return C3DVector(def->CardWidth * def->PackOffset_X, def->CardHeight * def->PackOffset_Y, 0.0f);
+}
+## 008f10b0: IDENTICAL
+## 008f2280: IDENTICAL

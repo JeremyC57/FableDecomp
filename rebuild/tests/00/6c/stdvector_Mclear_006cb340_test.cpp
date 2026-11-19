@@ -12,15 +12,18 @@ class CCompositeBlendDesc {
 public:
     unsigned long TextureIndex; long BlendType; CRGBColour DiffuseColour; CRGBColour SpecularColour;
 };
+int main();
 namespace std {
 template <class _Tp> class allocator { };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
 class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
-template <class _Tp> class vector {
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
     _Tp* _M_start; _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, allocator<_Tp> > _M_end_of_storage;
-    void _M_clear();
+    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
+protected:
+    void _M_clear();                    // the row's protected STLport member ?_M_clear@...V?$allocator@...@IAEXXZ (NF96 q11455)
+    friend int ::main();
 };
 }
 class CEngineTextureMorph {

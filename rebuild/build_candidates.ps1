@@ -179768,8 +179768,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006cb340'
         Module = 'std::vector<CEngineTextureMorph>'
-        Source = '00/6c/stdvectorCEngineTextureMorph_Mclear_006cb340.cpp'
-        TestSource = '00/6c/stdvectorCEngineTextureMorph_Mclear_006cb340_test.cpp'
+        Source = '00/6c/stdvector_Mclear_006cb340.cpp'
+        TestSource = '00/6c/stdvector_Mclear_006cb340_test.cpp'
         PassPattern = '006cb340_TEST PASS'
     }
     [pscustomobject]@{
@@ -293118,8 +293118,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006cb390'
         Module = 'std::vector<CEngineTextureMorph>'
-        Source = '00/6c/stdvectorCEngineTextureMorph_Minsertoverflow_006cb390.cpp'
-        TestSource = '00/6c/stdvectorCEngineTextureMorph_Minsertoverflow_006cb390_test.cpp'
+        Source = '00/6c/stdvector_Minsertoverflow_006cb390.cpp'
+        TestSource = '00/6c/stdvector_Minsertoverflow_006cb390_test.cpp'
         PassPattern = '006cb390_TEST PASS'
     }
     [pscustomobject]@{

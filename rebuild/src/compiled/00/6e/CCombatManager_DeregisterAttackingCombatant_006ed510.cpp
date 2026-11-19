@@ -1,5 +1,8 @@
 // CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker) -- take an attacker out of its fight: clear the defender's last-attacker pointer when it is this attacker (and advance the defender's attack pattern if the attacker's current sequence is melee or ranged), trace the deregistration, drop the attacker from the defender's attacker map (deregister the defender when none are left, else refresh its attacker list), clear the attacker's sequences and target, and for an attacker that is no longer a combatant erase its entry, reset a projectile weapon held in its primary slot and unsheathe when its def asks; finally clear the defender's stealth danger
 // Leaf: ?DeregisterAttackingCombatant@CCombatManager
+// Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* source, EDangerStatus status) and bound a stand-in spelling of 0x00747B80;
+//   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
+//   the reference and the enum push the same words).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006ED510, 941 bytes, `ret 4`, frame 0x30.
 // Callees: the combatant map's find 0x006F0250 and erase(key) 0x006F50B0, the defender's attacker-map erase(key) 0x006F3200
@@ -129,9 +132,11 @@ class CTCWeapon { public:                                 // interface 0x48
     bool IsProjectileWeapon() const;                     // 0x005DAA40
     void ResetAiming();                            // 0x005DA4E0 (AimingTime +0x14 = -1, AimingTimeOverride +0x18 = false)
 };
-enum EDangerStatus { DANGER_NONE = 0 };
+namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
 class CTCStealth { public:                                // interface 0x36
-    void SetAsInDanger(CThing* source, EDangerStatus status);   // 0x00747B80
+    void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
 };
 
 class CBaseObject;
@@ -318,5 +323,5 @@ void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker)
             CreatureUnsheathWeapon(attacker, 3);
     }
     if (attacked->HasTC(0x36))
-        attacked->GetTC<CTCStealth>(0x36)->SetAsInDanger(attacker, DANGER_NONE);
+        attacked->GetTC<CTCStealth>(0x36)->SetAsInDanger(*attacker, NStealth::DANGER_STATUS_NULL);
 }

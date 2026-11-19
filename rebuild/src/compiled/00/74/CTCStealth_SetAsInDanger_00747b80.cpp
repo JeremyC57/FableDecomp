@@ -1,5 +1,9 @@
-// CTCStealth::SetAsInDanger(const CThing* thing, long status) -- record (or refresh) the danger status of a thing; for the main player's creature entering danger start the danger music and stop the rain; restart the in-danger cool-off timer
-// Leaf: SetAsInDanger
+// CTCStealth::SetAsInDanger(const CThing& thing, NStealth::EDangerStatus status) -- record (or refresh) the danger status of a thing; for the main player's creature entering danger start the danger music and stop the rain; restart the in-danger cool-off timer
+// Leaf: ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z
+// Name fix (NF96 part 2, q11460): Ego_r.pdb 0x0075A860 + FableWin.pdb 0x02592690 ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z
+//   (engine/CTCStealth.h declares it; the landed 0x00956C00 binds it so). The old row declared (const CThing*, long) and defined
+//   ?SetAsInDanger@CTCStealth@@QAEXPBVCThing@@J@Z; the reference and the enum are the same bytes. The enumerators are Ego_d.pdb's
+//   (LF_ENUM NStealth::EDangerStatus, as engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS); the class itself stays the row's local model.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00747B80, 238 bytes (`ret 8`).
@@ -18,6 +22,9 @@
 //        puts it in the `thing` slot instead.
 class CThing;
 class CBaseObject;
+namespace NStealth {
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -143,14 +150,14 @@ class CTCStealth : public CTCBase { public:
     long          RunningAwayFromCombatTimer;           // +0x30
     long          InDangerCoolOffTimer;                 // +0x34
     CDangerThingVector DangerThings;                    // +0x38
-    void SetAsInDanger(const CThing* thing, long status);
+    void SetAsInDanger(const CThing& thing, NStealth::EDangerStatus status);
 };
 
-void CTCStealth::SetAsInDanger(const CThing* thing, long status)
+void CTCStealth::SetAsInDanger(const CThing& thing, NStealth::EDangerStatus status)
 {
-    CDangerThing* entry = find_if(DangerThings.begin(), DangerThings.end(), CDangerThingIs(thing));
+    CDangerThing* entry = find_if(DangerThings.begin(), DangerThings.end(), CDangerThingIs(&thing));
     if (entry == DangerThings.end())
-        DangerThings.push_back(CDangerThing(thing, CDangerStatus(status)));
+        DangerThings.push_back(CDangerThing(&thing, CDangerStatus(status)));
     else {
         entry->second = CDangerStatus(status);
     }

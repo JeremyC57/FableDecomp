@@ -1,5 +1,5 @@
 // CTCTavernGameCardBase::CardsMoving() -- card-phase step while cards move: wait for the pack to settle, then advance the state (20 -> 21, 27 -> 6, anything else -> 0), or in state 26 gather the dealt cards back onto the pack position (stacked above the remaining pack), drop that many cards from the front of the pack, restack the pack and put the gathered cards on its end, then go to 27
-// Leaf: ?CardsMoving@CTCTavernGameCardBase
+// Leaf: ?CardsMoving@CTCTavernGameCardBase@@UAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F2280, length 766 bytes (ret). Name: Ego_r.pdb; vtable slot 52 of
 // CTCTavernGameCardBase (Blackjack's 0x007DA070 jumps here; the landed CTCTavernGameCardBase::FrameUpdate @ 0x008F1D40 calls
@@ -15,85 +15,63 @@
 //         CardSeparation +0x5c, TableSeparation +0x60, PackOffset +0x64.
 // Shape: the settle test is `Moving == true` (cmp byte, dl=1). Every state branch ends in its own `return`, which gives
 //        retail's duplicated release + epilogue per branch (an if/else chain cross-jumps the SetState calls). GetPackPosition
-//        and Move are same-TU inlines; GetCardDef is a same-TU noinline stand-in (as the landed GetPackPosition), which is
-//        what drops the null test from the inner def's release and turns it into load/dec/store, while the outer def keeps
-//        its null test. The restack height is `53 - i` over a second counter that VC strength-reduces into the decrementing
+//        and Move are same-TU inlines; GetCardDef is the real same-TU body, kept a call, with the GetSubDef body visible
+//        (engine/CDefClassBase_GetSubDef.h, as CardsTurning 0x008F0EB0): the inner def's release has no null test
+//        (load/dec/store), the outer def keeps its null test. The restack height is `53 - i` over a second counter that VC strength-reduces into the decrementing
 //        memory counter fild reads; its 53 is stored after the hoisted pack-position copies (a plain `height = 53; --height`
 //        counter is stored before the loop guard). The erase loop is STLport `erase(begin())` (memmove of the tail in bytes,
 //        then `_M_finish -= 1` with the -4 hoisted into ebx); the insert passes a random_access_iterator_tag temporary.
-#include "fable_compiler.h"
-extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
+// Port (NF96 part 2, q11339 / the GetCardDef one-definition item): the row defined the PDB GetCardDef symbol with a stand-in body
+//   (made-up callee FindCardDef) over local std::vector / CCard / CDefClassBase / CTavernGameCardBaseDef / CDefPointer / CTCTavernGame /
+//   CTCTavernGameCardBase models, and itself as non-virtual ?CardsMoving@CTCTavernGameCardBase@@QAEXXZ. It now sits on the shared
+//   headers with the define / include set of its landed TU-mate CardsTurning 0x008F0EB0 (engine/card_sorting_types.h, the Ego_r.pdb
+//   class: CardsMoving is virtual slot 52, ?CardsMoving@CTCTavernGameCardBase@@UAEXXZ in Ego_r.pdb + FableWin.pdb), with the real
+//   same-TU bodies of GetCardDef 0x008F0B20, CCard::Move 0x008F0660 and GetPackPosition 0x008F0B80, and STLport's vector insert
+//   through FABLE_RETAIL_STLP_VECTOR_RANGE_INSERT (the out-of-line _M_range_insert 0x008F28A0, now bound with its allocator argument).
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_POINTEE          // count-store schedule of the expanded GetPackPosition (0x008F116B)
+#define FABLE_RETAIL_CTCTAVERNGAME
+#define FABLE_RETAIL_CTCTAVERNGAME_GETDEF_OUTOFLINE
+#define FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH
+#define FABLE_RETAIL_CTCTAVERNGAME_HIDEMESH
+#define FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
+#define FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_CARDPACK
+#define FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_TYPENAME
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CCARD_POSITIONS
+#define FABLE_RETAIL_CTCTAVERNGAMECARDBASE_RHSET
+#define FABLE_RETAIL_STLP_VECTOR_RANGE_INSERT
+#include "stlport/fable_containers.h"                
+#include "fable_game.h"
+#include "engine/CThingObject.h"
+#include "engine/CRightHandedSet.h"
+#include "engine/CCardDef.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameCardBaseDef.h"
+#include "engine/card_sorting_types.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 
-namespace std {
-struct input_iterator_tag { };
-struct forward_iterator_tag : public input_iterator_tag { };
-struct bidirectional_iterator_tag : public forward_iterator_tag { };
-struct random_access_iterator_tag : public bidirectional_iterator_tag { };
-
-inline void* __copy_trivial(const void* __first, const void* __last, void* __result)
+// 0x008F0B20 (landed row; its body verbatim, same TU in retail)
+// Fidelity: same-TU strong definition of 0x008F0B20 (retail TU-mate)
+void CTCTavernGameCardBase::GetCardDef(CDefPointer<const CTavernGameCardBaseDef>* pdef)
 {
-    return (__last == __first) ? __result
-                               : ((char*)memmove(__result, __first, ((const char*)__last - (const char*)__first)))
-                                     + ((const char*)__last - (const char*)__first);
+    CDefPointer<const CTavernGameCardBaseDef> new_pdef;
+    GetParentThing().PeekBaseDef().GetSubDef(&new_pdef);
+    *pdef = new_pdef;
 }
 
-template <class _Tp> class vector {
-public:
-    typedef _Tp* iterator;
-    typedef unsigned int size_type;
-    _Tp* _M_start;                                  // +0x00
-    _Tp* _M_finish;                                 // +0x04
-    _Tp* _M_end_of_storage;                         // +0x08
-    iterator begin() { return _M_start; }
-    iterator end() { return _M_finish; }
-    size_type size() const { return size_type(_M_finish - _M_start); }
-    _Tp& operator[](size_type __n) { return *(_M_start + __n); }
-    iterator erase(iterator __position)
-    {
-        if (__position + 1 != end())
-            __copy_trivial(__position + 1, _M_finish, __position);
-        --_M_finish;
-        return __position;
-    }
-    template <class _InputIterator>
-    void insert(iterator __pos, _InputIterator __first, _InputIterator __last)
-    {
-        _M_range_insert(__pos, __first, __last, random_access_iterator_tag());
-    }
-    template <class _ForwardIterator>
-    void _M_range_insert(iterator __position, _ForwardIterator __first, _ForwardIterator __last,
-                         const forward_iterator_tag&);   // 0x008F28A0
-};
-} // namespace std
-
-class C2DVector { public: float X, Y; };
-#pragma pack(push, 1)
-#include "engine/C3DVector.h"
-class CCard {
-public:
-    void*     Thing;                          // +0x00 CThingObject*
-    long      Name;                           // +0x04
-    long      Value;                          // +0x08
-    float     InitialRotation;                // +0x0c
-    float     FinalRotation;                  // +0x10
-    float     TurnSpeed;                      // +0x14
-    float     TurnFraction;                   // +0x18
-    float     MoveSpeed;                      // +0x1c
-    float     MoveFraction;                   // +0x20
-    bool      Turning;                        // +0x24
-    bool      FaceDown;                       // +0x25
-    bool      Moving;                         // +0x26
-    C3DVector LocalPos;                       // +0x27
-    C3DVector NewLocalPos;                    // +0x33
-    C3DVector CurrentPos;                     // +0x3f
-    unsigned char _pad4b;                     // +0x4b
-    float     Width;                          // +0x4c
-    float     Height;                         // +0x50
-    long      Index;                          // +0x54
-    void Move(const C3DVector& position, bool immediately);   // 0x008F0660
-};
-#pragma pack(pop)
-
+// 0x008F0660 (landed row; real body, same TU in retail)
 void CCard::Move(const C3DVector& position, bool immediately)
 {
     if (immediately) {
@@ -111,73 +89,13 @@ void CCard::Move(const C3DVector& position, bool immediately)
     MoveFraction = 0.0f;
 }
 
-class CDefClassBase {
-public:
-    virtual void v00();
-    virtual void Destroy() const;             // slot 1
-    mutable long RefCount;                    // +0x04
-};
-static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
-class CTavernGameCardBaseDef : public CDefClassBase {
-public:
-    unsigned char _pad_0x08[0x24];
-    float     CardWidth;                      // +0x2c
-    float     CardHeight;                     // +0x30
-    unsigned char _pad_0x34[0x28];
-    float     CardSeparation;                 // +0x5c
-    float     TableSeparation;                // +0x60
-    C2DVector PackOffset;                     // +0x64
-};
-template <class T> class CDefPointer {
-public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object) {
-            if (DecRefToZero(Object->RefCount))
-                Object->Destroy();
-        }
-    }
-    T* operator->() const { return Object; }
-};
-
-class CTCTavernGame {
-public:
-    virtual void v00();
-    unsigned char _pad_0x04[0xbc];
-    long          TavernGameState;            // +0xc0 ETavernGameStates
-    unsigned char _pad_0xc4[0x2c];
-    void SetState(long state);                // 0x005E9B20
-};
-class CTCTavernGameCardBase : public CTCTavernGame {
-public:
-    unsigned char _pad_0xf0[0x38];            // +0xf0 GamePositionRHSet, GamePositionPos, ...
-    std::vector<CCard*> Cards;                // +0x128
-    std::vector<CCard*> Pack;                 // +0x134
-    void GetCardDef(CDefPointer<const CTavernGameCardBaseDef>* out);   // 0x008F0B20
-    C3DVector GetPackPosition();              // 0x008F0B80
-    void CardsMoving();
-};
-
-void* FindCardDef();
-// Stand-in body (the real GetCardDef is out of line in retail): it only writes the def through the out pointer, so VC7.1
-// knows the caller's address-taken local does not escape the call.
-#pragma auto_inline(off)
-__declspec(noinline) void CTCTavernGameCardBase::GetCardDef(CDefPointer<const CTavernGameCardBaseDef>* out)
-{
-    void* p = FindCardDef();
-    if (!p)
-        return;
-    *(void**)out = p;
-}
-#pragma auto_inline(on)
-
+// 0x008F0B80 (landed row; its body verbatim, same TU in retail)
+// Fidelity: same-TU strong definition of 0x008F0B80 (retail TU-mate)
 C3DVector CTCTavernGameCardBase::GetPackPosition()
 {
     CDefPointer<const CTavernGameCardBaseDef> def;
     GetCardDef(&def);
-    return C3DVector(def->CardWidth * def->PackOffset.X, def->CardHeight * def->PackOffset.Y, 0.0f);
+    return C3DVector(def->CardWidth * def->PackOffset_X, def->CardHeight * def->PackOffset_Y, 0.0f);
 }
 
 void CTCTavernGameCardBase::CardsMoving()
@@ -188,7 +106,7 @@ void CTCTavernGameCardBase::CardsMoving()
         if ((*it)->Moving == true)
             return;
     if (TavernGameState == 20) {
-        SetState(21);
+        SetState((ETavernGameStates)21);
         return;
     }
     if (TavernGameState == 26) {
@@ -201,12 +119,12 @@ void CTCTavernGameCardBase::CardsMoving()
         for (std::vector<CCard*>::iterator card = Pack.begin(); card != Pack.end(); ++card, ++i)
             (*card)->Move(C3DVector(pack_pos.X, pack_pos.Y, (53 - i) * def->CardSeparation + def->TableSeparation), false);
         Pack.insert(Pack.end(), Cards.begin(), Cards.end());
-        SetState(27);
+        SetState((ETavernGameStates)27);
         return;
     }
     if (TavernGameState == 27) {
-        SetState(6);
+        SetState((ETavernGameStates)6);
         return;
     }
-    SetState(0);
+    SetState((ETavernGameStates)0);
 }

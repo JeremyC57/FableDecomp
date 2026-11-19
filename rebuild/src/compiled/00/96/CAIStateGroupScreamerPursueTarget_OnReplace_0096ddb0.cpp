@@ -5,6 +5,9 @@
 // SetAsInDanger(creature, 0)); then, if the target is still alive and the creature is not in mode 0x44, perform a
 // CCreatureAction_ScreamerIntoAggressive on it through a CBrainOutput (flag 8)
 // Leaf: OnReplace
+// Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* thing, long status) and bound a stand-in spelling of 0x00747B80;
+//   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
+//   the reference and the enum push the same words).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096DDB0, length 401 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10, CVectorMap::LowerBound @ 0x0040F020
@@ -56,8 +59,11 @@ struct CTCOccupiable {                          // interface 0xac
 class CTCCreatureModeManager { public:                 // interface 0x31
     bool HasMode(long mode);                    // 0x0073A8A0
 };
+namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
 class CTCStealth { public:                             // interface 0x36
-    void SetAsInDanger(CThing* thing, long status);     // 0x00747B80
+    void SetAsInDanger(const CThing& thing, NStealth::EDangerStatus status);     // 0x00747B80
 };
 
 class CSoundPair { public:
@@ -124,7 +130,7 @@ void CAIStateGroup_ScreamerPursueTarget::OnReplace()
     if (PTarget.GetPItem() && !PTarget.GetPItem()->IsDead()) {
         CTCStealth* stealth;
         if (PTarget.GetPItem()->GetTC(TCI_STEALTH, &stealth))
-            stealth->SetAsInDanger(PBrain->PCreature, 0);
+            stealth->SetAsInDanger(*PBrain->PCreature, NStealth::DANGER_STATUS_NULL);
     }
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
