@@ -49136,7 +49136,7 @@
 020688a0	??$ReadVar@H@CAFile@@QAEXAAHPAVCASuspendableProcess@@@Z
 020689b0	??$ReadVar@VC3DVector@@@CAFile@@QAEXAAVC3DVector@@PAVCASuspendableProcess@@@Z
 02068ac0	??$ReadVar@M@CAFile@@QAEXAAMPAVCASuspendableProcess@@@Z
-02068bd0	<unnamed_298b>
+02068bd0	??$GFLimit@MMW4<unnamed-tag>@@@@YIXAAMABMABW4<unnamed-tag>@@@Z
 02068c40	??$_Uninitialized_default_fill_n@PAVCMapCellInfo@CEditMapBrush@@IV12@V?$allocator@VCMapCellInfo@CEditMapBrush@@@std@@@std@@YIXPAVCMapCellInfo@CEditMapBrush@@IPBV12@AAV?$allocator@VCMapCellInfo@CEditMapBrush@@@0@@Z
 02068ca0	??$checked_delete@VCEditInputProcessMain@@@boost@@YIXPAVCEditInputProcessMain@@@Z
 02068cf0	??$checked_delete@VCEditInputProcessView3D@@@boost@@YIXPAVCEditInputProcessView3D@@@Z
