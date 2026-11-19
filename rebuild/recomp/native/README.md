@@ -39,6 +39,13 @@ fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ <HANDOFF.md hooks
 cmake ... -DFABLE_NATIVE_OBJS=$PWD/out/native/nd_a64.o && ninja
 ```
 
+## Growing the set
+
+`pick_functions.py` takes the current address list, `report.tsv`, the matched addresses and the lifted code,
+plus any number of run logs (device or PC). It adds every function the profiler names that FullDecomp has
+matched, and the direct callees of the native set (a call that stays native skips the guest-stack bridge).
+It skips addresses already native or left lifted for a reason. Each test run feeds the next build.
+
 ## Switches
 
 - `FABLE_NATIVE_DECOMP=0`: every lowered function off (the lifted bodies run).
