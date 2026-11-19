@@ -4,10 +4,10 @@
 // Leaf: ?TransformPointThroughMirroredFrame@@YA?AVC3DVector@@ABUC3DMatrix@@ABV1@0@Z
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C1C330, 192 bytes, private register convention (a in eax, point in ecx, b in edx, result
-//   pointer in esi), plain `ret`. It sits in the audio wrapper TU next to the landed TransformHelperPoint_00c1c3f0 (0x00C1C3F0), and
+//   pointer in esi), plain `ret`. It sits in the audio wrapper TU next to the landed TransformHelperPoint (0x00C1C3F0), and
 //   its only caller is 0x00C1C590 in the unnamed 0x00C1C460, which also calls 0x00C1C3F0 at 0x00C1C573.
-// Name: descriptive (no PDB covers this TU: Ego_r / FableWin / Ego_d hold neither the audio wrapper nor these statics). The sibling keeps its landed address-suffixed name; this one
-//   says what it does. The manifest label "AIMatrixPointHelper" is propagated.
+// Name: descriptive (no PDB covers this TU: Ego_r / FableWin / Ego_d hold neither the audio wrapper nor these statics). Both statics carry suffix-free descriptive names
+//   (the sibling 0x00C1C3F0 respelt from TransformHelperPoint_00c1c3f0 in hand3c batch 5). The manifest label "AIMatrixPointHelper" is propagated.
 // Shape:
 //   - As in the sibling's TU, both statics with a same-TU caller let VC7.1 /O2 choose retail's private convention (chunk 585/586/593
 //     lever; not LTCG).
@@ -27,7 +27,7 @@ struct C3DMatrix {
     C3DVector Row[3];                              // +0x00, +0x0c, +0x18
     C3DVector Translation;                         // +0x24
 };
-static __declspec(noinline) C3DVector TransformHelperPoint_00c1c3f0(const C3DMatrix& matrix, const C3DVector& point)
+static __declspec(noinline) C3DVector TransformHelperPoint(const C3DMatrix& matrix, const C3DVector& point)
 {
     C3DVector result;
     result.X = matrix.Row[2].X * point.Z + matrix.Row[1].X * point.Y + matrix.Row[0].X * point.X + matrix.Translation.X;
@@ -51,10 +51,10 @@ static __declspec(noinline) C3DVector TransformPointThroughMirroredFrame(const C
     return result;
 }
 // Same-TU caller (0x00C1C573 / 0x00C1C590 in 0x00C1C460), present so the statics get retail's private conventions. Not graded.
-void TransformHelperPoint_00c1c3f0_caller(C3DVector* out, const C3DMatrix& m, const C3DVector& p, const C3DMatrix& b, bool mirrored)
+void CallTransformHelperPoint(C3DVector* out, const C3DMatrix& m, const C3DVector& p, const C3DMatrix& b, bool mirrored)
 {
     if (mirrored)
         *out = TransformPointThroughMirroredFrame(m, p, b);
     else
-        *out = TransformHelperPoint_00c1c3f0(m, p);
+        *out = TransformHelperPoint(m, p);
 }

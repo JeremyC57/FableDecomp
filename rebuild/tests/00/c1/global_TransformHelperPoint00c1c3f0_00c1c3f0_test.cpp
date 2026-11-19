@@ -1,4 +1,4 @@
-// Behaviour test for TransformHelperPoint_00c1c3f0 (0x00C1C3F0): point * 4x3 matrix rows + translation.
+// Behaviour test for TransformHelperPoint (0x00C1C3F0): point * 4x3 matrix rows + translation.
 #include <cstdio>
 class C3DVector { public: float x, y, z; };
 struct C3DMatrix { C3DVector Row[3]; C3DVector Translation; };
