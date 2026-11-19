@@ -155,6 +155,31 @@ export FABLE_WINDDK_INC=$S/wine/winddk/3790.1830/inc/wnet   # windows.h set for 
 ```
 Objects are cached under `$FABLE_THIRDPARTY/obj` (`FABLE_VENDOR_OBJ`). Never commit a tree, an installer or an object.
 
+### GameCODA 2.10 audio SDK (Sensaura, 2004)
+Fable's sound layer (CSal* / CCoda* / reverb / filter code around 0x00C3xxxx..0x00C8xxxx) is Sensaura **GameCODA 2.10**. Codex pass 23 used it without
+recording where it came from. It was found again on 2026-11-19 on the Internet Archive, item
+**[`game-coda-2.10-pc`](https://archive.org/details/game-coda-2.10-pc)** ("GameCODA 2.10 PC", Sensaura Ltd, 2004, uploaded 2026-08-10; it does not show
+up in ordinary web search, only in archive.org's own search). That item holds an installer zip and an unpacked 7z:
+
+```
+mkdir -p $S/sdk/gamecoda/dl && cd $S/sdk/gamecoda/dl
+curl -L -o gc210.7z "https://archive.org/download/game-coda-2.10-pc/GameCODA%202.10%20PC.7z"
+#   44,321,413 bytes  md5 42cd21b0cb8c2cc2a0a53f02f39b4c32
+#   sha256 f5014ed0becfc4efc01866adc989c1837583fbd210ab3aed28999463c3e6c2d9
+mkdir -p ../tree && cd ../tree && 7z x ../dl/gc210.7z -xr'!Media'      # -> $S/sdk/gamecoda/tree/CODA (~74 MB)
+```
+
+**Contents (CODA/):**
+- `lib/Win32/CODAApi.lib` (release) and `CODAApiDbg.lib` (debug, with CodeView names, locals and scopes). These carry the objects pass 23 cited:
+  ReverbFns_SSE.obj, ReverbDspModule.obj, FloatFilter.obj, SalPlatform.obj, ...
+- CAGE and Toolkit libraries, plus their C++ source (`CAGE/src`, `Toolkit/src`).
+- OpenAL32 / ALut / Network libraries; `include/`, `doc/`, `License.pdf`.
+
+**Handling:**
+- Read-only reference, kept outside the repo. Never commit its files: the license has not been reviewed for redistribution.
+- How rows use it, and when a row byte-identical to it may take the library grade: EXTRA_RULES 2026-11-19 and `docs/pipeline/LIBRARY_SIGNATURES.md`
+  "GameCODA 2.10".
+
 ## Era SDKs (fetched, not yet the lane default)
 
 `docs/pipeline/SDK_NEEDS.md` identifies the SDKs retail was built against. `fetch_sdks.py` fetches Microsoft's own
