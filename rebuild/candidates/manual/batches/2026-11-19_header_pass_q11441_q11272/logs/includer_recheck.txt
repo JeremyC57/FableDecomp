@@ -1,0 +1,4 @@
+# includer recheck after the header pass: 686 rows (direct + transitive includers of both headers)
+good 685, bad 1
+# 0x007E2A60 is the known ON-HOLD row (ROADMAP (c)), DIFFER before round 8 too
+007e2a60	007e2a60   DIFFER(707v707)  PASS   CTCFineDialogue::GlobalUpdate

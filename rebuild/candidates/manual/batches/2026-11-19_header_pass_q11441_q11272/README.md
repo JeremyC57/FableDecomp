@@ -18,5 +18,6 @@ Advisor decision (owner delegated): the round-8 header items are the coordinator
 - The ten rows the edits touch directly (0x009FB750, 0x009F9E80, 0x00B2BD80, 0x009FD830, 0x006B2960, 0x004A6E30, 0x004AB210,
   0x004A9260, 0x0049CDD0, 0x00A175A0): RELOCATION_MATCH, every test PASS (`logs/direct_rows.log`).
 - `lane_merge/assert_names_check.py`: 0 mismatches. `naming/rebind.py` on those rows; `bindings_multi_check.py` at baseline.
-- Includer recheck, direct and transitive (default branch changed, so the token-identity shortcut does not apply): 686 rows,
+- Includer recheck, direct and transitive (default branch changed, so the token-identity shortcut does not apply): 686 rows, 685 good;
+  0x007E2A60 is the known on-hold row.
   `logs/includer_recheck.txt`.
