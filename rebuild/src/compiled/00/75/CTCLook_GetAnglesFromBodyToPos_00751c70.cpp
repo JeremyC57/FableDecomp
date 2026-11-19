@@ -48,7 +48,9 @@ template<class T> inline bool IS_THING_ALIVE(T* const& p)
 }
 
 float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& to);     // 0x00661540
-float __fastcall AngleYZBetweenPositions(const C3DVector& from, const C3DVector& to);   // 0x00754E70
+// NF95 (2026-11-19, q11255): Ego_r.pdb 0x00767040 / FableWin.pdb 0x025B0370 ?GFGetAngleYZTo@@YIMABVC3DVector@@0@Z (its landed self row
+//   and caller 0x00753E90 use it); was the stand-in AngleYZBetweenPositions.
+float __fastcall GFGetAngleYZTo(const C3DVector& from, const C3DVector& to);   // 0x00754E70
 float __stdcall AngleDifference(float a, float b);                                      // 0x00A441E0
 extern bool g_bQueryCreatureHeadPos;                                                    // 0x013BAE1B
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
@@ -84,7 +86,7 @@ void CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& a
         if ((float)fabs(pos.X - headPos.X) > DELTA_NOTIONAL_ZERO || (float)fabs(pos.Y - headPos.Y) > DELTA_NOTIONAL_ZERO ||
             (float)fabs(pos.Z - headPos.Z) > DELTA_NOTIONAL_ZERO) {
             float xy = AngleBetweenPositions(headPos, pos);
-            float yz = AngleYZBetweenPositions(headPos, pos);
+            float yz = GFGetAngleYZTo(headPos, pos);
             angleXY = AngleDifference(bodyXY, xy);
             angleYZ = AngleDifference(bodyYZ, yz);
             return;

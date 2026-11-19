@@ -14,6 +14,11 @@
 // Shape: the intelligent-pointer conversions are plain inline members; VC7.1 inlines the later call sites and calls the
 //        out-of-line copies for the first ones, as retail. The validity call goes through an inline helper that names the
 //        def first, which is what loads PDef into ebx before the target's GetPItem call.
+// NF95 2026-11-19 (q11276): 0x004A9730 is CIntelligentPointer<CThing>'s out-of-line copy constructor ??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z
+//   (it stores CIntelligentPointer<CThing>'s vtable 0x01238C6C); the by-value setter 0x0072D360 takes a CIntelligentPointer<CThing>
+//   (Ego_r.pdb 0x00525E80 / FableWin.pdb 0x01DD0230 ?SetPItemRemoved@CCreatureActionBase@@QAEXV?$CIntelligentPointer@VCThing@@@@@Z), so the
+//   argument is a plain copy of PItemRemoved. Was a converting template constructor to CIntelligentPointer<const CThing>. The setter's
+//   name and class and the base-class stand-ins are left as they were (NAME_FIXES).
 #include "fable_compiler.h"
 #pragma pack(push, 2)
 class CBaseObject;
@@ -30,7 +35,8 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     inline CIntelligentPointer() {}
     inline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-    template<class U> inline CIntelligentPointer(CIntelligentPointer<U>& other) { SetPItem(other.GetPItem()); }   // 0x004A9730 out of line
+    template<class U> inline CIntelligentPointer(CIntelligentPointer<U>& other) { SetPItem(other.GetPItem()); }
+    CIntelligentPointer(const CIntelligentPointer& other);   // 0x004A9730 for <CThing> (out of line)
     inline CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
         SetPItem(other.GetPItem());
@@ -92,7 +98,7 @@ class CCreatureAction_FinishFireballSpell : public CCreatureActionBase {
 public:
     CCreatureAction_FinishFireballSpell(class CThingCreatureBase& creature, CThing& target);   // 0x008BCE50
     CCreatureAction_FinishFireballSpell(class CThingCreatureBase& creature);                   // 0x008BCE10
-    void SetLookAtThing(CIntelligentPointer<const CThing> thing);                              // 0x0072D360
+    void SetLookAtThing(CIntelligentPointer<CThing> thing);                                    // 0x0072D360
 };
 class CThingCreatureBase : public CThing {
 public:
@@ -170,7 +176,7 @@ void CTCFireballSpell::FrameUpdate()
         if (PTarget.GetPItem() && !(PTarget.Get()->Flags91 & 1) && IsValidTarget(thing)) {
             CCreatureAction_FinishFireballSpell action(*thing, *(CThing*)PTarget.Get());
             if (PItemRemoved.GetPItem() && !(PItemRemoved.Get()->Flags91 & 1))
-                action.SetLookAtThing(CIntelligentPointer<const CThing>(PItemRemoved));
+                action.SetLookAtThing(PItemRemoved);
             started = thing->SetCurrentAction(action);
         } else {
             CCreatureAction_FinishFireballSpell action(*thing);

@@ -97,7 +97,7 @@ namespace NAnimationEvents {
 void InitialiseManagers(const CMeshDataBank& mesh_bank);                                // 0x006FAA90 ?InitialiseManagers@NAnimationEvents@@YIXABVCMeshDataBank@@@Z
 void LoadAnimationEvents(bool b);                                                       // 0x006FABF0 ?LoadAnimationEvents@NAnimationEvents@@YIX_N@Z
 }
-extern long g_NavigatorTypeDefault;                                                     // 0x0129CBA4 (A* navigator class type, 3)
+extern const unsigned long NAVIGATOR_TYPE_A_STAR;                                        // 0x0129CBA4 (A* navigator class type, 3; NF95 q11442: FableWin ?NAVIGATOR_TYPE_A_STAR@@3KB, was g_NavigatorTypeDefault)
 extern long g_NavigatorTypeHover;                                                       // 0x0129CB44 (flyer navigator class type, 4)
 
 void CWorld::Init()
@@ -114,7 +114,7 @@ void CWorld::Init()
     NProfileTimer::StartProfile("Init Navigation Manager", 0);
     NProgressDisplay::DisplayProgress("Init Navigation Manager", -1.0f, false, false);
     PNavigationManager.reset(new CNavigatorManager(4, Component->GetWorldSeed(), CGameNavigatorManagerExternalInterface(*this)));
-    PNavigationManager->AddNewClassType(CClassTypeInit(g_NavigatorTypeDefault, 0, false, "Navigator A Star"));
+    PNavigationManager->AddNewClassType(CClassTypeInit(NAVIGATOR_TYPE_A_STAR, 0, false, "Navigator A Star"));
     PNavigationManager->AddNewClassType(CClassTypeInit(g_NavigatorTypeHover, 0, false, "Navigator flyer"));
 
     PFactionManager.reset(new CFactionManager(*this));

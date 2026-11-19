@@ -1374,7 +1374,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004379a0	Forward_OnEventAttack_via0x1e8_004379a0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379a0.cpp
 004379b0	OnEventAttack	CPlayerGui	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379b0.cpp
 004379c0	Forward_MoveCursor_via0x240_004379c0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379c0.cpp
-004379d0	Forward__Cons_val_std__allocator_std__pair_EHero_via0x248_004379d0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379d0.cpp
+004379d0	SetNPCNameDisplay	CPlayerGui	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379d0.cpp
 004379e0	ShowScreenshotMessage	CPlayerGui	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379e0.cpp
 004379f0	HideScreenshotMessage	CPlayerGui	__thiscall	void	1	CPlayerGui *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CPlayerGui_HideScreenshotMessage_004379f0.cpp
 00437a00	Forward_IsShowingScreenshotMessage_via0x248_00437a00	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a00.cpp
@@ -12447,7 +12447,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005e1fc0	_M_insert	std::_Rb_tree<CCharString, std::pair<CCharString const, CIVCountedPointer<CAnimComponentBase>>, std::_Select1st<std::pair<CCharString const, CIVCountedPointer<CAnimComponentBase>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CIVCountedPointer<CAnimComponentBase>>>>	unknown	undefined	0		0	yes	accepted									
 005e20c0	__insertion_sort	std	unknown	undefined	0		0	yes	accepted									
 005e2100	__unguarded_partition	std	unknown	undefined	0		0	yes	accepted									
-005e21f0	__pop_heap	_global	__thiscall	void	1	CParticleEffect *	1	yes	accepted									
+005e21f0	__pop_heap	std	__thiscall	void	1	CParticleEffect *	1	yes	accepted									
 005e2320	__make_heap	std	unknown	undefined	0		0	yes	accepted									
 005e2460	clear	std::_Rb_tree<CCharString,std::pair<const CCharString,CIVCountedPointer<CAnimComponentBase> >,std::_Select1st<std::pair<const CCharString,CIVCountedPointer<CAnimComponentBase> > >,std::less<CCharString>,std::allocator<std::pair<const CCharString,CIVCountedPointer<CAnimComponentBase> > > >	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\CTCCarryable_OnKill_005e2460.cpp
 005e24d0	reserve	std::vector<std::pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase>>, std::allocator<std::pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase>>>>	unknown	undefined	0		0	yes	accepted									
@@ -14845,7 +14845,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0066cd50	BuildRegionMinimapTGA	CRegionMinimap	__thiscall	void	2	CRegionMinimap *,CWideString *	1	yes	accepted									
 0066cf00	PopulateRegionMinimap	CRegionMinimap	__thiscall	void	2	CRegionMinimap *,CWorldMap *	1	yes	accepted									
 0066dbb0	Initialise	CRegionMinimap	__thiscall	void	1	CRegionMinimap *	1	yes	accepted									
-0066dc50	CreateRegionMinimap	CRegionMinimap	__thiscall	void	1	CParticleSimulation *	1	yes	accepted									
+0066dc50	CreateRegionMinimapTGAFile	CRegionMinimap	__thiscall	void	1	CParticleSimulation *	1	yes	accepted									
 0066ddf0	__uninitialized_copy<C3DVector*,C3DVector*>	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 0066deb0	fill<CRegionMinimap::RegionMinimapCellData*,CRegionMinimap::RegionMinimapCellData>	std	__fastcall	void	3	CObjectFamilyEntry *,CObjectFamilyEntry *,CObjectFamilyEntry *	1	yes	accepted									
 0066e0d0	__uninitialized_copy<CRegionMinimap::RegionMinimapCellData*,CRegionMinimap::RegionMinimapCellData*>	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -21440,7 +21440,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00788b96	allocate	CRetailAllocator_12	unknown	undefined	0		0	yes	accepted									
 00788c87	FillN_dword_00788c87	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\global_Fillnunsignedlongunsignedintunsignedlong_00788c87.cpp
 00788cba	CIVCountedPointer_Release_00788cba	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00788cba.cpp
-00788d68	pair	pair<CIntelligentPointer<const CThing>,long>	__thiscall	undefined	2	CTCMoneyReceiver *,CThing *	0	yes	accepted									
+00788d68	pair	std::pair<CIntelligentPointer<CThing>, long>	__thiscall	undefined	2	CTCMoneyReceiver *,CThing *	0	yes	accepted									
 00788d88	pair	std::pair<CIntelligentPointer<CThing>, long>	__thiscall	undefined	2	CComboMultiplierData *,CComboMultiplierData *	0	yes	accepted									
 00788da3	pair	std::pair<CIntelligentPointer<CThing>, long>	unknown	undefined	0		0			discovered	gapscan							
 00788dbe	CIVCountedPointer_Attach_00788dbe	_global	__thiscall	bool	2	CEngineInternalPrimitiveMeshBase *,CIVCountedPointer<CEngineMeshEffect> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\CEngineInternalPrimitiveMeshBase_GetMeshEffect_00788dbe.cpp
@@ -23263,7 +23263,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007e8870	Construct	CTCDCameraPoint	__thiscall	void	2	CTCDCameraPoint *,C3DVector *	1	yes	accepted									
 007e88f0	Persist	CTCDCameraPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007e8a00	OnInitialActivate	CTCFlourishTarget	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007e8a20	FinalCleanup	CTCFlourishTarget	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007e8a20	OnRemove	CTCFlourishTarget	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007e8a40	ProcessActionMovementDelta	CTCFlourishTarget	__thiscall	void	2	CTCFlourishTarget *,C3DVector *	1	yes	accepted									
 007e8ea0	Increment	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 007e8fe0	_M_erase	std::_Rb_tree<CThing*,std::pair<CThing* const,float>,std::_Select1st<std::pair<CThing* const,float>>,std::less<CThing*>,std::allocator<std::pair<CThing* const,float>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
@@ -35274,7 +35274,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009f4910	Initialise	CScratchBuffer	__thiscall	bool	2	CScratchBuffer *,long	1	yes	accepted									
 009f4950	Uninitialise	CScratchBuffer	__thiscall	void	1	CScratchBuffer *	1	yes	accepted									
 009f4980	Lock	CScratchBuffer	__thiscall	CNavRegion *	1	CNavSwitchableLeafNode *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CNavSwitchableLeafNode_GetRegion_009f4980.cpp
-009f49a0	SetMemberConst_009f49a0	_global	__thiscall	undefined	1	CXMVPlaybackInfo *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CXMVPlaybackInfo_CXMVPlaybackInfo_009f49a0.cpp
+009f49a0	Unlock	CScratchBuffer	__thiscall	undefined	1	CXMVPlaybackInfo *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CXMVPlaybackInfo_CXMVPlaybackInfo_009f49a0.cpp
 009f49b0	CInkeyBuffer	CInkeyBuffer	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 009f49e0	`scalar_deleting_destructor'	CInkeyBuffer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CLandscapeBackgroundPatch_vectordeletingdestructor_009f49e0.cpp
 009f4a00	CScratchBuffer	CScratchBuffer	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
@@ -46371,8 +46371,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c3ff70	RoundHalfDownToLong	_global	__fastcall	long	1	float	1	yes	accepted									
 00c3ff90	LookupAzimuthElevation	_global	unknown	undefined	0		0	yes	accepted									
 00c400d0	LookupDirectionFilterPair	_global	__cdecl	void	0		0	yes	accepted									
-00c402e0	Normalise	CPKVector3_00c402e0	unknown	undefined	0		0	yes	accepted									
-00c40370	SetCrossProduct	C3DVector	__thiscall	C3DVector	1	CRightHandedSet *	1	yes	accepted									
+00c402e0	Normalize	CCodaVector	unknown	undefined	0		0	yes	accepted									
+00c40370	OrthogonalRight	CCodaVector	__thiscall	C3DVector	1	CRightHandedSet *	1	yes	accepted									
 00c40410	Init	CVtable_012B5A80	__thiscall	void	1	CTCWife *	1	yes	accepted									
 00c40450	SetPosition	CTrackedTransform_00c40450	__thiscall	void	2	CShaderRenderManager *,C3DVector *	1	yes	accepted									
 00c404a0	SetDirection	CTrackedTransform_00c404a0	__thiscall	void	2	CShaderRenderManager *,C3DVector *	1	yes	accepted									
@@ -57776,7 +57776,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0122a690	AtexitDtor_CCharString_at_013ca7d4_0122a690	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a690_0122a690.cpp
 0122a6a0	AtexitDtor_CBankFileManager_at_013ca79c_0122a6a0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a6a0_0122a6a0.cpp
 0122a6b0	AtexitDtor_CCharString_at_013ca7dc_0122a6b0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a6b0_0122a6b0.cpp
-0122a6c0	Release_013ca7f0	_global	__fastcall	void	0		1	yes	accepted									
+0122a6c0	`dynamic atexit destructor for 'PlayerFont''	CXMVPlayer	__fastcall	void	0		1	yes	accepted									
 0122a700	Release_013ca7f8	_global	__fastcall	void	0		1	yes	accepted									
 0122a740	Release_013ca818	_global	__fastcall	void	0		1	yes	accepted									
 0122a780	Static_LTextTreeWalkThrough_Destructor_on_013ca828_0122a780	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a780_0122a780.cpp

@@ -1,5 +1,8 @@
 // CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPrimitiveBase& primitive, ERenderPassType pass, const CMatrix3x4& transform) -- render a particle group's member primitive by type: nested groups recurse over their children, sprites and sprite trails go straight to their managers (the trail restoring the vertex-shader constant layout), everything else through its manager's virtual sub-primitive render
 // Leaf: ?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z
+// NF95 (part 2, q11381): 0x01436EB0 is NEngineInternal::GPVideoOptions (FableWin.pdb public ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B,
+//   FableWin 0x04AC8094; Ego_r.pdb data order GPLightingManager / GPEngine / GPVideoOptions; CEngine::SetVideoOptions 0x00B24690 stores
+//   &VideoOptions there), a pointer to const CEngineVideoOptions (Ego_r.pdb layout, 0x34 bytes).
 // Naming wave 35c: FableWin.pdb + Ego_r.pdb protected (IAE); queue land0411f.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBC130, length 480 bytes (switch tables inline), `ret 0Ch`.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0 / CBaseClassNonCopyable::~CBaseClassNonCopyable 0x0099A300 (the CEngineSubPrimitiveBase local, vtable 0x012A3E7C;
@@ -7,8 +10,8 @@
 //   0x00BC04F0, CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderSingleSpriteTrail 0x00BBE090,
 //   CShaderRenderManager::SetVertexShaderConstantLayout 0x0098B5E0 (singleton 0x013BC470, current layout +8),
 //   virtual slot 5 of the type's primitive manager.
-// Globals: the primitive manager table @ 0x01436E84 (managers by type at +0x10), the object @ 0x01436EB0 (+0x2c >= 2
-//   gates type 30).
+// Globals: the primitive manager table @ 0x01436E84 (managers by type at +0x10), NEngineInternal::GPVideoOptions @ 0x01436EB0
+//   (EffectsQuality +0x2c >= HIGH gates type 30).
 // Layout: the primitive's type at +8, a group's member list (STLport list, element primitive at node +0xc) at +0x48.
 // Shape: switch over the type (7 sprite, 20 trail, 24 group, 30 gated, default); the sub-primitive is a stack
 //   CEngineSubPrimitiveBase(primitive) with the implicit destructor (no vtable re-store, just ~CBase) at the end of each
@@ -51,11 +54,24 @@ public:
 };
 
 
-struct CEngineCapabilities_01436eb0 {
-    unsigned char _pad00[0x2c];
-    long          Level;                            // +0x2c
+#include "engine/C2DExtentsI.h"
+#include "engine/C2DExtentsF.h"
+#include "engine/EEngineVideoOptionQuality.h"
+#include "engine/ESurfaceMultisampleType.h"
+class CEngineVideoOptions { public:                  // Ego_r.pdb, 0x34 bytes
+    C2DExtentsI               ScreenResolution;   // +0x00
+    C2DExtentsF               ScreenAspectRatio;  // +0x08
+    long                      BitsPerPixel;       // +0x10
+    long                      RefreshRate;        // +0x14
+    bool                      VerticalSync;       // +0x18
+    EEngineVideoOptionQuality LandscapeDetail;    // +0x1c
+    EEngineVideoOptionQuality MeshDetail;         // +0x20
+    EEngineVideoOptionQuality TextureDetail;      // +0x24
+    EEngineVideoOptionQuality ShadowQuality;      // +0x28
+    EEngineVideoOptionQuality EffectsQuality;     // +0x2c
+    ESurfaceMultisampleType   Antialiasing;       // +0x30
 };
-extern CEngineCapabilities_01436eb0* g_pEngineCapabilities_01436eb0;   // 0x01436EB0
+namespace NEngineInternal { extern const CEngineVideoOptions* GPVideoOptions; }   // 0x01436EB0 (NF95 q11381: FableWin.pdb ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B)
 
 class CShaderRenderManager {
 public:
@@ -113,7 +129,7 @@ void CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPr
         break;
     }
     case 30: {
-        if (g_pEngineCapabilities_01436eb0 && g_pEngineCapabilities_01436eb0->Level >= 2) {
+        if (NEngineInternal::GPVideoOptions && NEngineInternal::GPVideoOptions->EffectsQuality >= ENGINE_VIDEO_OPTION_QUALITY_HIGH) {
             CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(primitive.Type);
             CEngineSubPrimitiveBase subPrimitive(primitive);
             manager->RenderSubPrimitive(subPrimitive, pass);

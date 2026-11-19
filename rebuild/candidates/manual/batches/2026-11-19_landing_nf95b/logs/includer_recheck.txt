@@ -1,0 +1,17 @@
+# includer recheck after landing nf95b: 26 rows that include CCodaVector.h or the CODA headers
+good 14, bad 12
+# all 12 bad rows are EH funclets (Unwind*) graded standalone by recheck_rows (full parent object vs funclet bytes, e.g. 54v11);
+# 0x01215080 and 0x01215280 give the same DIFFER with the pre-nf95b include tree, and 0x01214FE0 was already DIFFER(282v21) before today.
+# funclet_includes_check: 1,355 checked, 0 broken. Not a regression.
+01214fe0	01214fe0   DIFFER(282v21)   PASS   _global::Unwind01214fe0
+01215080	01215080   DIFFER(54v11)    PASS   _global::Unwind01215080
+0121508b	0121508b   DIFFER(642v11)   PASS   _global::Unwind0121508b
+01215096	01215096   DIFFER(642v11)   PASS   _global::Unwind01215096
+012150a1	012150a1   DIFFER(642v21)   PASS   _global::Unwind012150a1
+01215240	01215240   DIFFER(356v11)   PASS   _global::Unwind01215240
+0121524b	0121524b   DIFFER(356v21)   PASS   _global::Unwind0121524b
+01215280	01215280   DIFFER(848v14)   PASS   _global::Unwind01215280
+0121528e	0121528e   DIFFER(848v14)   PASS   _global::Unwind0121528e
+0121529c	0121529c   DIFFER(848v14)   PASS   _global::Unwind0121529c
+012152aa	012152aa   DIFFER(848v14)   PASS   _global::Unwind012152aa
+012152b8	012152b8   DIFFER(848v24)   PASS   _global::Unwind012152b8

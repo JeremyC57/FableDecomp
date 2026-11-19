@@ -1,7 +1,10 @@
 // CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_UnsheatheItemFromInventory -- configure unsheathe animation, item and owned follow-up action
 // Retail 0069F0F0,252 bytes. PDB signature confirms creature&, string&, item&, long,long, action*.
 // Base nativeA8 with genuine70-slot API; animation entry native16 follows PDB fields. No leaf generated header exists.
-// Leaf: ??0CCreatureAction_UnsheatheItemFromInventory@@
+// Leaf: ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z
+// NF95 (2026-11-19, q11253): the lookup is the PDB protected static CCreatureActionBase::GetRandomAnimFromName 0x006924B0 (Ego_r.pdb
+//   0x00518E00 / FableWin.pdb 0x01DB7950; was the free stand-in FindAnimation); the base constructor 0x00693B30 takes the PDB
+//   creature reference (??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 #include <new>
 #define CCreatureActionBase CCreatureActionBasePdb
@@ -89,7 +92,11 @@ class CCreatureActionBase { public:
     virtual void OnAnimationLoaded();
     virtual bool WaitForMeshToLoad() const;
     unsigned char nativeFields[0xa4]; // actual native state after its vptr; native size 0xA8
-    CCreatureActionBase(CThingCreatureBase*,float,float,const CAnimationEntry&,const CSoundPair&,long,long); // 00693B30
+    CCreatureActionBase(CThingCreatureBase&,float,float,const CAnimationEntry&,const CSoundPair&,long,long); // 00693B30
+protected:
+    // Ego_r.pdb 0x00518E00 / FableWin.pdb 0x01DB7950 protected static __fastcall (engine/CCreatureActionBase.h ANIMCTOR).
+    static const CAnimationEntry& __fastcall GetRandomAnimFromName(const CThingCreatureBase& creature, const CCharString& name);   // 0x006924B0
+public:
     CCreatureActionBase(const CCreatureActionBase& other); // native copy ctor @0x0062EBC0
     CCreatureActionBase(CThingCreatureBase* creature, const CSoundPair& sounds, long first, long second); // native @0x00693C70
 };
@@ -127,7 +134,6 @@ class CAnimationEntry { public:
     CAnimationEntry(const CAnimationEntry&,long transitionInTime); //005DEC70
     ~CAnimationEntry() { if(Components) Components->Release(); }
 };
-const CAnimationEntry& __fastcall FindAnimation(CThingCreatureBase*,const CCharString&); //006924B0
 // NF55 (2026-11-17): the follow-up action is the shared CCountedPointer<CCreatureActionBase> (engine/CCountedPointer.h, retail ctor:
 //   `if (Data) Info = new CCPPointerInfo(1, DeleteData, Data)`); its deleter is the PDB ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z
 //   (FableWin.pdb 0x01D7A6C0, retail 0x00668610). It was the ActionPointer / ActionPointerInfo stand-in with a made-up DeleteAction.
@@ -144,4 +150,4 @@ class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { 
     CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase&,const CCharString&,CThing&,long,long,CCreatureActionBase*);
 };
 CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& creature,const CCharString& animation,CThing& item,long first,long second,CCreatureActionBase* followUp)
- : CCreatureActionBase(&creature,-1.0f,0.0f,CAnimationEntry(FindAnimation(&creature,animation),0),CSoundPair(),first,second), Item(&item), FollowUp(followUp) {}
+ : CCreatureActionBase(creature,-1.0f,0.0f,CAnimationEntry(GetRandomAnimFromName(creature,animation),0),CSoundPair(),first,second), Item(&item), FollowUp(followUp) {}

@@ -17,7 +17,7 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-extern long g_flyingMode;                       // 0x0129CBA4 (the mode compared by BirdGroundWander too)
+extern const unsigned long NAVIGATOR_TYPE_A_STAR;   // 0x0129CBA4 (NF95 q11442: FableWin public ?NAVIGATOR_TYPE_A_STAR@@3KB, value 3; was g_flyingMode)
 
 class CWorld { public:
     static long GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
@@ -130,7 +130,7 @@ bool CAIStateGroup_BirdFlyToFood::IsRunnable()
 {
     CTCCreatureNavigation* navigation;
     PBrain->Creature->GetTC(TCI_NAVIGATION, &navigation);
-    if (navigation->GetNavigatorType() == g_flyingMode) {
+    if (navigation->GetNavigatorType() == NAVIGATOR_TYPE_A_STAR) {
         long framesPerSecond;
         if ((FrameLastAte == 0
              || (framesPerSecond = PeekWorld().GetFramesPerSecond(),

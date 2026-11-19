@@ -150,7 +150,7 @@ extern CShaderRenderManager* GPShaderRenderManager;         // 0x01436E14
 extern CDisplayManager*      GPDisplayManager;              // 0x01436E1C
 extern CEngine*              GPEngine;                      // 0x01436EA4
 }
-extern CEngineVideoOptions* g_pVideoOptions;                // 0x01436EB0 (no PDB name found; landed binding)
+namespace NEngineInternal { extern const CEngineVideoOptions* GPVideoOptions; }   // 0x01436EB0 (NF95 q11381: FableWin.pdb ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B, FableWin 0x04AC8094)
 
 // Vertex declarations (no PDB names found: descriptive, named after the first shader bank that uses each).
 extern const _D3DVERTEXELEMENT9 g_DeclarationStatic[];                 // 0x0129D6B0
@@ -253,8 +253,8 @@ CEngineResourceManager::CEngineResourceManager(const CEngineInit& init, const CE
     CPixelFormat dxt3_format((_D3DFORMAT)0x33545844);
     long texture_size = CTextureManager::CalculateTextureSize(0x200, 0x200, true, dxt1_format);
     long hires_texture_memory = memory_init.HiresTextureMemory;
-    if (g_pVideoOptions)
-        hires_texture_memory = NEngineInternal::GPEngine->PeekVideoOptionsDef(g_pVideoOptions->TextureDetail).HiresTextureMemory;
+    if (NEngineInternal::GPVideoOptions)
+        hires_texture_memory = NEngineInternal::GPEngine->PeekVideoOptionsDef(NEngineInternal::GPVideoOptions->TextureDetail).HiresTextureMemory;
     long texture_count = (hires_texture_memory << 10) / texture_size;
     long scratch_texture_count = texture_count / 16;
     CArray<CTextureManagerPoolInfo> pools(10);

@@ -68000,9 +68000,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009f49a0'
-        Module = '_global'
-        Source = '00/9f/CXMVPlaybackInfo_CXMVPlaybackInfo_009f49a0.cpp'
-        TestSource = '00/9f/CXMVPlaybackInfo_CXMVPlaybackInfo_009f49a0_test.cpp'
+        Module = 'CScratchBuffer'
+        Source = '00/9f/CScratchBuffer_Unlock_009f49a0.cpp'
+        TestSource = '00/9f/CScratchBuffer_Unlock_009f49a0_test.cpp'
         PassPattern = 'OK_009f49a0'
     }
     [pscustomobject]@{
@@ -74832,9 +74832,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004379d0'
-        Module = '_global'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379d0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379d0_test.cpp'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_SetNPCNameDisplay_004379d0.cpp'
+        TestSource = '00/43/CPlayerGui_SetNPCNameDisplay_004379d0_test.cpp'
         PassPattern = 'PASS_004379d0'
     }
     [pscustomobject]@{
@@ -154068,9 +154068,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0122a6c0'
-        Module = '_global'
-        Source = '01/22/global_Release013ca7f0_0122a6c0.cpp'
-        TestSource = '01/22/global_Release013ca7f0_0122a6c0_test.cpp'
+        Module = 'CXMVPlayer'
+        Source = '01/22/CXMVPlayer_dynamicatexitdestructorforPlayerFont_0122a6c0.cpp'
+        TestSource = '01/22/CXMVPlayer_dynamicatexitdestructorforPlayerFont_0122a6c0_test.cpp'
         PassPattern = '0122a6c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -209416,9 +209416,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c40370'
-        Module = 'C3DVector'
-        Source = '00/c4/C3DVector_SetCrossProduct_00c40370.cpp'
-        TestSource = '00/c4/C3DVector_SetCrossProduct_00c40370_test.cpp'
+        Module = 'CCodaVector'
+        Source = '00/c4/CCodaVector_OrthogonalRight_00c40370.cpp'
+        TestSource = '00/c4/CCodaVector_OrthogonalRight_00c40370_test.cpp'
         PassPattern = '00c40370_TEST PASS'
     }
     [pscustomobject]@{
@@ -212897,8 +212897,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007e8a20'
         Module = 'CTCFlourishTarget'
-        Source = '00/7e/CTCFlourishTarget_FinalCleanup_007e8a20.cpp'
-        TestSource = '00/7e/CTCFlourishTarget_FinalCleanup_007e8a20_test.cpp'
+        Source = '00/7e/CTCFlourishTarget_OnRemove_007e8a20.cpp'
+        TestSource = '00/7e/CTCFlourishTarget_OnRemove_007e8a20_test.cpp'
         PassPattern = '007e8a20_TEST PASS'
     }
     [pscustomobject]@{
@@ -215313,9 +215313,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00788d68'
-        Module = 'pair<CIntelligentPointer<const CThing>,long>'
-        Source = '00/78/pairCIntelligentPointerconstCThinglong_pair_00788d68.cpp'
-        TestSource = '00/78/pairCIntelligentPointerconstCThinglong_pair_00788d68_test.cpp'
+        Module = 'std::pair<CIntelligentPointer<CThing>, long>'
+        Source = '00/78/stdpair_pair_00788d68.cpp'
+        TestSource = '00/78/stdpair_pair_00788d68_test.cpp'
         PassPattern = '00788d68_TEST PASS'
     }
     [pscustomobject]@{
@@ -228902,16 +228902,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005e21f0'
-        Module = '_global'
-        Source = '00/5e/global_popheap_005e21f0.cpp'
-        TestSource = '00/5e/global_popheap_005e21f0_test.cpp'
+        Module = 'std'
+        Source = '00/5e/std_popheap_005e21f0.cpp'
+        TestSource = '00/5e/std_popheap_005e21f0_test.cpp'
         PassPattern = '005e21f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066dc50'
         Module = 'CRegionMinimap'
-        Source = '00/66/CRegionMinimap_CreateRegionMinimap_0066dc50.cpp'
-        TestSource = '00/66/CRegionMinimap_CreateRegionMinimap_0066dc50_test.cpp'
+        Source = '00/66/CRegionMinimap_CreateRegionMinimapTGAFile_0066dc50.cpp'
+        TestSource = '00/66/CRegionMinimap_CreateRegionMinimapTGAFile_0066dc50_test.cpp'
         PassPattern = '0066dc50_TEST PASS'
     }
     [pscustomobject]@{
@@ -291142,8 +291142,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005e2320'
         Module = 'std'
-        Source = '00/5e/STL_makeheap_005e2320.cpp'
-        TestSource = '00/5e/STL_makeheap_005e2320_test.cpp'
+        Source = '00/5e/std_makeheap_005e2320.cpp'
+        TestSource = '00/5e/std_makeheap_005e2320_test.cpp'
         PassPattern = '005e2320_TEST PASS'
     }
     [pscustomobject]@{
@@ -291184,8 +291184,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005e3550'
         Module = 'std'
-        Source = '00/5e/STL_partialsort_005e3550.cpp'
-        TestSource = '00/5e/STL_partialsort_005e3550_test.cpp'
+        Source = '00/5e/std_partialsort_005e3550.cpp'
+        TestSource = '00/5e/std_partialsort_005e3550_test.cpp'
         PassPattern = '005e3550_TEST PASS'
     }
     [pscustomobject]@{
@@ -302369,15 +302369,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a83570'
         Module = 'std'
-        Source = '00/a8/STL_popheap_00a83570.cpp'
-        TestSource = '00/a8/STL_popheap_00a83570_test.cpp'
+        Source = '00/a8/std_popheap_00a83570.cpp'
+        TestSource = '00/a8/std_popheap_00a83570_test.cpp'
         PassPattern = '00a83570_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a83680'
         Module = 'std'
-        Source = '00/a8/STL_makeheap_00a83680.cpp'
-        TestSource = '00/a8/STL_makeheap_00a83680_test.cpp'
+        Source = '00/a8/std_makeheap_00a83680.cpp'
+        TestSource = '00/a8/std_makeheap_00a83680_test.cpp'
         PassPattern = '00a83680_TEST PASS'
     }
     [pscustomobject]@{
@@ -302425,8 +302425,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a84a60'
         Module = 'std'
-        Source = '00/a8/STL_partialsort_00a84a60.cpp'
-        TestSource = '00/a8/STL_partialsort_00a84a60_test.cpp'
+        Source = '00/a8/std_partialsort_00a84a60.cpp'
+        TestSource = '00/a8/std_partialsort_00a84a60_test.cpp'
         PassPattern = '00a84a60_TEST PASS'
     }
     [pscustomobject]@{
@@ -306281,9 +306281,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c402e0'
-        Module = 'CPKVector3_00c402e0'
-        Source = '00/c4/CPKVector300c402e0_Normalise_00c402e0.cpp'
-        TestSource = '00/c4/CPKVector300c402e0_Normalise_00c402e0_test.cpp'
+        Module = 'CCodaVector'
+        Source = '00/c4/CCodaVector_Normalize_00c402e0.cpp'
+        TestSource = '00/c4/CCodaVector_Normalize_00c402e0_test.cpp'
         PassPattern = '00c402e0_TEST PASS'
     }
     [pscustomobject]@{

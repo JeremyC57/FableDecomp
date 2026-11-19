@@ -1,7 +1,8 @@
 #pragma optimize("s", on)
 // CCategory::CCategory(const CCategory&) -- copy constructor: intelligent pointer copy, item vector copy, def pointer copy (AddRef), then the plain members
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C2086, length 82 bytes; size-optimised TU (`push 14h ; pop ecx` divisor, pass-through pushes).
-// Callees: CIntelligentPointer<const CThing>::CIntelligentPointer(const CIntelligentPointer&) @ 0x004A9730, vector<CItem>::vector(const vector&) @ 0x005C140E (manifest "CExpressionSet::Add", propagated).
+// Callees: CIntelligentPointer<CThing>::CIntelligentPointer(const CIntelligentPointer&) @ 0x004A9730 (NF95 q11276: the vtable 0x01238C6C it
+//   stores is CIntelligentPointer<CThing>'s, and Ego_r.pdb types PAssociatedThing CIntelligentPointer<CThing>; was a non-template stand-in), vector<CItem>::vector(const vector&) @ 0x005C140E (manifest "CExpressionSet::Add", propagated).
 // Retail CCategory (sizeof 0x2C): engine/CCategory.h is the Ego_r.pdb layout with a 16-byte
 // vector<CItem>; the shipped vector is {first, last, end} (12 bytes), so every member after
 // ItemsInCategory sits 4 bytes lower than the header says: +0x14 PDef (CDefPointer<const
@@ -11,7 +12,7 @@
 // The CDefPointer copy is inline: store the object pointer, then AddRef it when non-null (retail stores before the null test).
 class CThing;
 
-struct CIntelligentPointer {                     // CIntelligentPointer<const CThing>, 8 bytes
+template <class T> class CIntelligentPointer { public:   // CIntelligentPointer<CThing>, 8 bytes
     void* m_pObject;
     void* m_pInfo;
     CIntelligentPointer(const CIntelligentPointer& other);   // 0x004A9730
@@ -39,7 +40,7 @@ struct CDefPointer {                             // CDefPointer<const CInventory
 struct CTCInventoryBase;
 
 struct CCategory {
-    CIntelligentPointer PAssociatedThing;        // +0x00
+    CIntelligentPointer<CThing> PAssociatedThing;   // +0x00
     CItemVector         ItemsInCategory;         // +0x08
     CDefPointer         PDef;                    // +0x14
     CTCInventoryBase*   PInventory;              // +0x18

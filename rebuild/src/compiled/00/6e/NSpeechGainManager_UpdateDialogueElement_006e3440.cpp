@@ -17,6 +17,9 @@
 //   target gain and the named difference stay on the x87 stack; the new gain is ONE ternary stored into OutputGain and
 //   passed from it (a named newGain local, or an unnamed difference, spills them to frame slots); step = elapsedFrames *
 //   the attack/release delta picked by the sign of the difference.
+// NF95 2026-11-19 (q11285): the NSpeechGainManager::EDialogueLayer enumerators are the PDB names (engine/NSpeechGainManager.h;
+//   Ego_d.pdb LF_FIELDLIST 0x14C96, installed-game header_enums.csv): DIALOGUE_LAYER_FOREGROUND 0, _MIDGROUND 1, _BACKGROUND 2, _LAST 3;
+//   were the stand-ins DIALOGUE_LAYER_0 / _1 / _2 / _NONE / _COUNT or a bare cast.
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -101,7 +104,7 @@ enum { TC_SOUND_PLAYER = 0x10 };
 
 namespace NSpeechGainManager {
 
-enum EDialogueLayer { DIALOGUE_LAYER_0 = 0, DIALOGUE_LAYER_1 = 1, DIALOGUE_LAYER_2 = 2, DIALOGUE_LAYER_NONE = 3 };
+enum EDialogueLayer { DIALOGUE_LAYER_FOREGROUND = 0, DIALOGUE_LAYER_MIDGROUND = 1, DIALOGUE_LAYER_BACKGROUND = 2, DIALOGUE_LAYER_LAST = 3 };
 
 class CActiveDialogueInfo {                                 // 0x18 bytes
 public:

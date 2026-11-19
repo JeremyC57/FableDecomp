@@ -1,5 +1,8 @@
 // CEngine::Uninitialise() -- unregister the device-reset callback, clear the D3D stream/index/texture bindings, delete every engine component (popping from the back), the scratch Z buffers and the render layers, then chain to CInitBaseClass::Uninitialise and clear IsInitialised
 // Leaf: Uninitialise
+// NF95 (part 2, q11381): 0x01436EB0 is NEngineInternal::GPVideoOptions (FableWin.pdb public ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B,
+//   FableWin 0x04AC8094; Ego_r.pdb data order GPLightingManager / GPEngine / GPVideoOptions; CEngine::SetVideoOptions 0x00B24690 stores
+//   &VideoOptions there), a pointer to const CEngineVideoOptions (Ego_r.pdb layout, 0x34 bytes).
 #include <string.h>
 
 // NF45 (round 7): the render core 0x01436E18 is NEngineInternal::GPRenderManager (Ego_r.pdb / FableWin.pdb
@@ -23,7 +26,8 @@ class CDisplayManager { public:
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 class CEnginePrimitiveRendererSharedData;
 namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
-extern void* g_pEngineGlobal_01436eb0;              // 0x01436EB0
+class CEngineVideoOptions;
+namespace NEngineInternal { extern const CEngineVideoOptions* GPVideoOptions; }   // 0x01436EB0 (NF95 q11381: FableWin.pdb ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B)
 
 template <class T> class CArray { public:                  // STLport vector<T*> (12 bytes)
     T* _M_start;
@@ -106,7 +110,7 @@ void CEngine::Uninitialise()
         *it = 0;
     }
     RenderLayers.clear();
-    g_pEngineGlobal_01436eb0 = 0;
+    NEngineInternal::GPVideoOptions = 0;
     CInitBaseClass::Uninitialise();
     IsInitialised = false;
 }

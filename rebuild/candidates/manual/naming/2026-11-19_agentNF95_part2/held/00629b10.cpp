@@ -1,0 +1,95 @@
+// CWorld::EAChargeQuickAccessItem(const CGameEvent*) -- game-event action: start or stop charging a quick-access item for the event player's hero and switch the player's charging mode with it
+// Leaf: EAChargeQuickAccessItem
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Flags: /GS
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00629B10, 298 bytes (304 with padding), `ret 4`, /GS (cookie 0x0139C8A8).
+//   PDB ?EAChargeQuickAccessItem@CWorld@@QAEXPBVCGameEvent@@@Z.
+// Callees: CWorld::GetPlayer(long) 0x0049D850 (x2), CPlayer::HasMode 0x00634160, CPlayer::GetPControlledCreature 0x00487DC0,
+//   CThingCreatureBase::IsPerformingAnyAction 0x006622A0, CGameEvent::GetData 0x009F17A0, CMemoryBuffer::Read 0x009F18F0,
+//   CPlayerGui::ToggleQuickAccessCharge(long, bool) 0x00437A10 and IsOpen() const 0x004374F0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790,
+//   CPlayer::GetCurrentMode 0x00633BE0, AddMode(EPlayerMode, bool) 0x006345C0, RemoveMode 0x00634190,
+//   __security_check_cookie 0x00BFE9F9.
+// Shape: the first player is a named local (GetPlayer before the 0x2F push); the hero gate is one `||` early return
+//   (CThing dead bit +0x91 bit 0); the payload is the 44-byte CMemoryBuffer idiom; the charge flag comes from an inline
+//   by-value ReadChar() so its byte and the normalised bool (`!= 0`) share the dead `event` argument slot, the bool
+//   stays in bl (ebx pushed only on that path) for the mode switch.
+// NF95 2026-11-19 (q11320): the unpacking buffer is Ego_r.pdb CGameEventDataPackage (engine/CGameEventDataPackage.h layout, 0x2C bytes)
+//   read through ?GetData@CGameEventDataPackage@@QAEXJPAX@Z 0x009F18F0 (Ego_r.pdb 0x00B454F0 / FableWin.pdb 0x030A2200) and filled by
+//   ?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z 0x009F17A0 (Ego_r.pdb 0x00B453F0); were the stand-ins
+//   CMemoryBuffer::Read(unsigned long, void*) and CGameEvent::GetData(CMemoryBuffer&).
+#include "fable_compiler.h"
+class CGameEventDataPackage { public:
+    unsigned char Data[0x20];                      // +0x00
+    long          Length;                          // +0x20
+    long          ReadPos;                         // +0x24
+    long          WritePos;                        // +0x28
+    CGameEventDataPackage() : Length(0), ReadPos(0), WritePos(0) { }
+    void GetData(long size, void* data);           // 0x009F18F0
+    FABLE_FORCEINLINE char ReadChar() { char value; GetData(1, &value); return value; }
+};
+class CGameEvent { public:
+    long          Type;                            // +0x00
+    signed char   Player;                          // +0x04
+    unsigned char Data[32];                        // +0x05
+    unsigned char EndPos;                          // +0x25
+    bool          Valid;                           // +0x26
+    bool          Replacement;                     // +0x27
+    void GetDataPackage(CGameEventDataPackage* package) const;     // 0x009F17A0
+};
+class CThingCreatureBase { public:
+    unsigned char _pad[0x91];
+    unsigned char Dead : 1;                        // +0x91 bit 0
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
+};
+class CThingPlayerCreature : public CThingCreatureBase { };
+enum EPlayerMode { PLAYER_MODE_CHARGING_QUICK_ACCESS = 0x1c, PLAYER_MODE_0x2F = 0x2f };
+class CPlayer { public:
+    bool HasMode(EPlayerMode mode) const;                // 0x00634160
+    CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
+    EPlayerMode GetCurrentMode() const;            // 0x00633BE0
+    void AddMode(EPlayerMode mode, bool b);        // 0x006345C0
+    void RemoveMode(EPlayerMode mode);             // 0x00634190
+};
+#include "engine/CCountedPointer.h"
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:
+    void ToggleQuickAccessCharge(long item, bool charge);   // 0x00437A10
+    bool IsOpen() const;                           // 0x004374F0
+};
+class CWorld { public:
+protected:
+    CPlayer* GetPlayer(unsigned long number);               // 0x0049D850 ?GetPlayer@CWorld@@IAEPAVCPlayer@@K@Z (Ego_r/FableWin, protected)
+public:
+    void EAChargeQuickAccessItem(const CGameEvent* event);
+};
+void CWorld::EAChargeQuickAccessItem(const CGameEvent* event)
+{
+    CPlayer* eventPlayer = GetPlayer(event->Player);
+    if (eventPlayer->HasMode(PLAYER_MODE_0x2F))
+        return;
+    CPlayer* player = GetPlayer(event->Player);
+    CThingCreatureBase* hero = player->GetPControlledCreature();
+    if (!hero || hero->Dead || hero->IsPerformingAnyAction())
+        return;
+    CGameEventDataPackage buffer;
+    event->GetDataPackage(&buffer);
+    long item;
+    buffer.GetData(4, &item);
+    bool charge = buffer.ReadChar() != 0;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ToggleQuickAccessCharge(item, charge);
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().IsOpen()) {
+        EPlayerMode mode = player->GetCurrentMode();
+        if (charge) {
+            if (mode != PLAYER_MODE_CHARGING_QUICK_ACCESS)
+                player->AddMode(PLAYER_MODE_CHARGING_QUICK_ACCESS, false);
+        } else if (mode == PLAYER_MODE_CHARGING_QUICK_ACCESS)
+            player->RemoveMode(mode);
+    }
+}

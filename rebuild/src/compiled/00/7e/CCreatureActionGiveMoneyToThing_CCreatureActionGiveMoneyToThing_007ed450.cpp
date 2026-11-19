@@ -1,4 +1,8 @@
 // CCreatureAction_GiveMoneyToThing::CCreatureAction_GiveMoneyToThing(CThingCreatureBase*, CThing*, long) -- creature action playing a random loaded "GIVE_MONEY" animation (speeds -1.0/0.75, silent sound pair) that hands an amount of money to a receiver
+// Leaf: ??0CCreatureAction_GiveMoneyToThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@J@Z
+// NF95 (2026-11-19, q11253): the lookup is the PDB protected static CCreatureActionBase::GetRandomAnimFromName 0x006924B0 (Ego_r.pdb
+//   0x00518E00 / FableWin.pdb 0x01DB7950; was the free stand-in GetRandomLoadedAnim); the base constructor takes the PDB references
+//   (??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007ED450, length 140 bytes, `ret 0Ch`. Vtable 0x0127139C.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetRandomLoadedAnim (__fastcall: owner in ecx,
 //          name in edx) @ 0x006924B0, CCreatureActionBase::CCreatureActionBase(owner, float, float, CAnimationEntry*,
@@ -27,7 +31,6 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-CAnimationEntry* __fastcall GetRandomLoadedAnim(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
 struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -45,8 +48,12 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntel
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation,
+    CCreatureActionBase(CThingCreatureBase& owner, float a, float b, const CAnimationEntry& animation,
                         const CSoundPair& sound, long c, long d);                 // 0x00693B30
+protected:
+    // Ego_r.pdb 0x00518E00 / FableWin.pdb 0x01DB7950 protected static __fastcall (engine/CCreatureActionBase.h ANIMCTOR).
+    static const CAnimationEntry& __fastcall GetRandomAnimFromName(const CThingCreatureBase& creature, const CCharString& name);   // 0x006924B0
+public:
 };
 
 class CCreatureAction_GiveMoneyToThing : public CCreatureActionBase { public:   // vtable 0x0127139C
@@ -57,7 +64,7 @@ class CCreatureAction_GiveMoneyToThing : public CCreatureActionBase { public:   
 };
 
 CCreatureAction_GiveMoneyToThing::CCreatureAction_GiveMoneyToThing(CThingCreatureBase* owner, CThing* receiver, long amount)
-    : CCreatureActionBase(owner, -1.0f, 0.75f, GetRandomLoadedAnim(owner, "GIVE_MONEY"), CSoundPair(), 0, 0)
+    : CCreatureActionBase(*owner, -1.0f, 0.75f, GetRandomAnimFromName(*owner, "GIVE_MONEY"), CSoundPair(), 0, 0)
     , PReceivingThing(receiver)
     , Amount(amount)
 {

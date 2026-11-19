@@ -17,6 +17,9 @@
 //   with the vector start re-read); the release delta is `frame * (-1 / release)` (retail `fld -1.0; fdiv st(1); fmul frame`;
 //   `-1 / release * frame` is reassociated to `frame / release * -1`).
 // Headers: FABLE_HDR_OVERLAY=$A/hdr (CGameDefinitionManager.h, _quarantine/CGlobalDef.h opt-ins, new engine/NSpeechGainManager.h).
+// NF95 2026-11-19 (q11285): the NSpeechGainManager::EDialogueLayer enumerators are the PDB names (engine/NSpeechGainManager.h;
+//   Ego_d.pdb LF_FIELDLIST 0x14C96, installed-game header_enums.csv): DIALOGUE_LAYER_FOREGROUND 0, _MIDGROUND 1, _BACKGROUND 2, _LAST 3;
+//   were the stand-ins DIALOGUE_LAYER_0 / _1 / _2 / _NONE / _COUNT or a bare cast.
 #define FABLE_RETAIL_CWORLD
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -35,14 +38,14 @@
 
 namespace NSpeechGainManager {
 
-enum { DIALOGUE_LAYER_COUNT = 3 };
+enum EDialogueLayer { DIALOGUE_LAYER_LAST = 3 };
 
 void __fastcall Initialise(const CWorld& world)
 {
     g_LastUpdateFrame = 0;
-    g_LayerSpeakerCounts.resize(DIALOGUE_LAYER_COUNT, 0);
+    g_LayerSpeakerCounts.resize(DIALOGUE_LAYER_LAST, 0);
     g_ActiveDialogue.clear();
-    g_ResponseTimes.resize(DIALOGUE_LAYER_COUNT);
+    g_ResponseTimes.resize(DIALOGUE_LAYER_LAST);
     const std::vector<CDialogueLayerDef>& layers = world.PeekDefinitionManager().PeekGlobalDef().DialogueLayers;
     g_ResponseTimes[0] = CResponseTimes(layers[0].ResponseTimeSecsAttack, layers[0].ResponseTimeSecsRelease);
     g_ResponseTimes[1] = CResponseTimes(layers[1].ResponseTimeSecsAttack, layers[1].ResponseTimeSecsRelease);

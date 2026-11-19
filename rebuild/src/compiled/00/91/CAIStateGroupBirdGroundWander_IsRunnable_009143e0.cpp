@@ -47,13 +47,13 @@
 #include "engine/CWorld.h"
 #include "engine/CMainGameComponent.h"
 #include "engine/CAIStateGroup_BirdGroundWander.h"
-extern long g_groundWanderMode;                 // 0x0129CBA4
+extern const unsigned long NAVIGATOR_TYPE_A_STAR;   // 0x0129CBA4 (NF95 q11442: FableWin public ?NAVIGATOR_TYPE_A_STAR@@3KB, value 3; was g_groundWanderMode)
 
 bool CAIStateGroup_BirdGroundWander::IsRunnable()
 {
     CTCCreatureNavigation* navigation;
     GetCreature().GetTC(TCI_NAVIGATION, &navigation);
-    if (navigation->GetNavigatorType() == g_groundWanderMode) {
+    if (navigation->GetNavigatorType() == NAVIGATOR_TYPE_A_STAR) {
         if (FrameLastFinishedWalking == 0)
             return true;
         if (PeekWorld().GetFrame() - FrameLastFinishedWalking > (unsigned long)(CMainGameComponent::GetConstantFPS() * 2))

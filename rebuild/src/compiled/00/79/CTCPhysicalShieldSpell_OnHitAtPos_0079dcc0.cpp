@@ -10,6 +10,10 @@
 //   effect type follow the landed 0x008EC320. Tried: `&&` condition, nested if, the call through the slot member, a holder
 //   whose destructor releases. Next: lane gap: register choice for the out-slot def copy (chunk 161 0x69A8B0 family).
 // Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
+// Leaf: ?OnHitAtPos@CTCPhysicalShieldSpell@@UAEXABVC3DVector@@@Z
+// NF95 (2026-11-19, q11263): GetSubDef 0x00669580 is the PDB member template
+//   ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z (Ego_r.pdb 0x00526490 / FableWin.pdb
+//   0x01DA97D0; engine/CDefClassBase_GetSubDef.h): const, the out slot a CDefPointer<const T>*; was a non-const reference form.
 #include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 #include "engine/C3DVector.h"
@@ -38,28 +42,29 @@ template <class T> class CDefPointer { public:                 // the out-slot G
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(const T* constDef)
 {
+    T* def = const_cast<T*>(constDef);
     if (def && --def->m_refCount == 0)
         def->Destroy();
 }
 class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* FindDef_s7r_0();
 #pragma auto_inline(off)
 // Same-TU body of GetSubDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out)
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = FindDef_s7r_0();
     if (!def)
         return false;
-    void* old = *(void**)&out;
+    void* old = *(void**)out;
     if (old != def) {
         if (old)
             ReleaseDef_s7(old);
-        *(void**)&out = def;
+        *(void**)out = def;
     }
     return true;
 }
@@ -89,10 +94,10 @@ void CTCPhysicalShieldSpell::OnHitAtPos(const C3DVector& position)
         effectName = "PHYSICAL_HIT1";
     else
         effectName = "PHYSICAL_HIT2";
-    CDefPointer<CSpecialEffectsDef> effectsSlot;
+    CDefPointer<const CSpecialEffectsDef> effectsSlot;
     long effectType = 0;
-    bool found = PDef->GetSubDef(effectsSlot);
-    CSpecialEffectsDef* effects = effectsSlot.m_p;
+    bool found = PDef->GetSubDef(&effectsSlot);
+    const CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (found) {
         if (effects->GetEffectFromString(effectName, effectType))
             CTCSpecialAbilities::CreateParticleEffect(effectType, position);

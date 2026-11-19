@@ -15,6 +15,9 @@
 //   (`sub eax,0 ; je ; dec ; je ; dec ; jne`); vector elements through STLport `*(begin() + n)`; the layer-2 fallback
 //   test `!(gain > 0.0f) || counts[1] != 0` keeps the value on the stack (`fcom ; test ah,41h ; jne`; `gain <= 0.0f`
 //   gives `jnp`).
+// NF95 2026-11-19 (q11285): the NSpeechGainManager::EDialogueLayer enumerators are the PDB names (engine/NSpeechGainManager.h;
+//   Ego_d.pdb LF_FIELDLIST 0x14C96, installed-game header_enums.csv): DIALOGUE_LAYER_FOREGROUND 0, _MIDGROUND 1, _BACKGROUND 2, _LAST 3;
+//   were the stand-ins DIALOGUE_LAYER_0 / _1 / _2 / _NONE / _COUNT or a bare cast.
 namespace std {
 template <class T> class vector {
 public:
@@ -31,7 +34,7 @@ public:
 
 namespace NSpeechGainManager {
 
-enum EDialogueLayer { DIALOGUE_LAYER_0 = 0, DIALOGUE_LAYER_1 = 1, DIALOGUE_LAYER_2 = 2, DIALOGUE_LAYER_NONE = 3 };
+enum EDialogueLayer { DIALOGUE_LAYER_FOREGROUND = 0, DIALOGUE_LAYER_MIDGROUND = 1, DIALOGUE_LAYER_BACKGROUND = 2, DIALOGUE_LAYER_LAST = 3 };
 
 class CActiveDialogueInfo {                                 // 0x18 bytes
 public:
@@ -62,16 +65,16 @@ float __fastcall GetTargetGain(const CActiveDialogueInfo& info, const std::vecto
         return 1.0f;
     float gain = 0.0f;
     switch (info.Layer) {
-    case DIALOGUE_LAYER_0:
+    case DIALOGUE_LAYER_FOREGROUND:
         gain = layerDefs[0].GainLevelHigh;
         break;
-    case DIALOGUE_LAYER_1:
+    case DIALOGUE_LAYER_MIDGROUND:
         if (g_LayerSpeakerCounts[0] == 0 && info.IsLayerHead)
             gain = layerDefs[1].GainLevelHigh;
         else
             gain = layerDefs[1].GainLevelLow;
         break;
-    case DIALOGUE_LAYER_2:
+    case DIALOGUE_LAYER_BACKGROUND:
         if (g_LayerSpeakerCounts[0] == 0)
             gain = layerDefs[2].GainLevelHigh;
         else

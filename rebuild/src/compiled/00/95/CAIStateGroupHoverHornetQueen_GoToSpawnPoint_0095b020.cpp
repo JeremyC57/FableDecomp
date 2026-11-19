@@ -46,7 +46,7 @@ class CTCCreatureNavigation { public:
     void SetNavigatorToType(long type);         // 0x006CBA80
 };
 extern long g_NavigatorTypeHover;               // 0x0129CB44
-extern long g_NavigatorTypeDefault;             // 0x0129CBA4
+extern const unsigned long NAVIGATOR_TYPE_A_STAR;   // 0x0129CBA4 (NF95 q11442: FableWin public ?NAVIGATOR_TYPE_A_STAR@@3KB, value 3; was g_NavigatorTypeDefault)
 class CWorld {
 public:
     unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
@@ -173,7 +173,7 @@ void CAIStateGroup_HoverHornetQueen::GoToSpawnPoint()
                     return;
                 }
             } while (result == AI_ACTION_RUNNING);
-            nav->SetNavigatorToType(g_NavigatorTypeDefault);
+            nav->SetNavigatorToType(NAVIGATOR_TYPE_A_STAR);
             return;
         }
     }

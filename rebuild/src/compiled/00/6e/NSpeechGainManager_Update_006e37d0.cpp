@@ -20,6 +20,9 @@
 //   `erase(it)` (unlink, destroy, free) when the element update reports the line finished; the head flag compares the
 //   node with a re-read begin(); the layer-def vector reference is spilled to the `push ecx` frame word; the count
 //   decrement goes through STLport `*(begin() + n)`.
+// NF95 2026-11-19 (q11285): the NSpeechGainManager::EDialogueLayer enumerators are the PDB names (engine/NSpeechGainManager.h;
+//   Ego_d.pdb LF_FIELDLIST 0x14C96, installed-game header_enums.csv): DIALOGUE_LAYER_FOREGROUND 0, _MIDGROUND 1, _BACKGROUND 2, _LAST 3;
+//   were the stand-ins DIALOGUE_LAYER_0 / _1 / _2 / _NONE / _COUNT or a bare cast.
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 namespace std {
@@ -87,7 +90,7 @@ public:
 
 namespace NSpeechGainManager {
 
-enum EDialogueLayer { DIALOGUE_LAYER_0 = 0, DIALOGUE_LAYER_1 = 1, DIALOGUE_LAYER_2 = 2, DIALOGUE_LAYER_NONE = 3 };
+enum EDialogueLayer { DIALOGUE_LAYER_FOREGROUND = 0, DIALOGUE_LAYER_MIDGROUND = 1, DIALOGUE_LAYER_BACKGROUND = 2, DIALOGUE_LAYER_LAST = 3 };
 
 class CActiveDialogueInfo {                                 // 0x18 bytes
 public:

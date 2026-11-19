@@ -22,7 +22,7 @@ The CCombatAction_* / CCreatureAction_* `_CLASS` / `_FINISHACTION` / `_CTOR(S)` 
 BriarRoseShotFarInto / FarOutof, GoUnderground, ScorpionRecover, CastStrengthMultiStrike, ScreamerDrainAttack, ScreamerDrainOutOf and BeDazed,
 and CThingCreatureBase.h `_GETDAZEDHEALTHTHRESHOLD`. Asserts pinned (BriarRoseShotFarInto, WillShieldInto, ScreamerDrainAttack);
 `lane_merge/assert_names_check.py`: 0 mismatches. The existing `_SCREAMERDRAINATTACK_PROTOTYPE` user (0x006F5C10) is in the includer recheck.
-Direct-includer recheck: `logs/includer_recheck.txt`.
+Direct-includer recheck (501 rows, incl. 0x006F5C10): all good. `logs/includer_recheck.txt`.
 
 ## Checks
 Synced with FullDecomp-B first (B's hand4f_b5 landing, 2 rows; no overlap). `naming/rebind.py`: removed 57 binding lines, added 27;

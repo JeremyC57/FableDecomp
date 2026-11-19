@@ -32,6 +32,9 @@
 // Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
 // Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
+// NF95 (2026-11-19, q11263): GetSubDef 0x00669580 is the PDB member template
+//   ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z (Ego_r.pdb 0x00526490 / FableWin.pdb
+//   0x01DA97D0; engine/CDefClassBase_GetSubDef.h): const, the out slot a CDefPointer<const T>*; was a non-const reference form.
 #include "fable_compiler.h"
 #define VF(n) virtual void v##n();
 #include "engine/C3DVector.h"
@@ -61,7 +64,7 @@ template <class T> class CDefPointer { public:
     CDefPointer() : m_p(0) { }
 };
 class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00669580 (T = CSpecialEffectsDef)
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -240,10 +243,10 @@ void CThingCreatureBase::OnDie()
 {
     CThingPhysical::OnDie();
     {
-        CDefPointer<CSpecialEffectsDef> effectsSlot;
+        CDefPointer<const CSpecialEffectsDef> effectsSlot;
         long effectType = 0;
-        bool found = PBaseDef->GetSubDef(effectsSlot);
-        CSpecialEffectsDef* effects = effectsSlot.m_p;
+        bool found = PBaseDef->GetSubDef(&effectsSlot);
+        CSpecialEffectsDef* effects = const_cast<CSpecialEffectsDef*>(effectsSlot.m_p);
         if (found && effects->GetEffectFromString("EXPLODE_ON_KILLING_BLOW", effectType))
             CTCDParticleEmitter::Create(effectType, *(&GetPos()), false);
         if (effects && --effects->m_refCount == 0)

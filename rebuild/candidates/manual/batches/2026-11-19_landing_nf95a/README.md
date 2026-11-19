@@ -20,7 +20,7 @@ one 103 v 110 bytes); no new local model. No test or `// Flags:` line changed.
 CCategory.h `_HIGHLIGHTPREVIOUSITEM`; CTCBase.h `_GLOBALUPDATETCS` (protected static, Ego_d PUB32 spelling); CTCInventoryClothing.h and
 CTCInventoryWeapons.h `_PROCESSBUTTONARELEASED` (15 asserts pinned with FABLE_STATIC_ASSERT_AT, one by hand); NInventory_CTCInventoryBase.h
 `_GETPDEF_INLINE`; NPlayerGui_CDrawQuestInfo.h `_ORACLESYMBOLPUSHBACK`. Default path token-identical (hdrcheck2);
-`lane_merge/assert_names_check.py` against the pre-round tree: 0 mismatches. Direct-includer recheck (1,191 rows): 1,189 good; 0x007E2A60 (known, on hold) and 0x0072A680 (pre-existing: the same with the 11-18 headers) DIFFER. `logs/includer_recheck.txt`.
+`lane_merge/assert_names_check.py` against the pre-round tree: 0 mismatches. Direct-includer recheck (1,191 rows, plus the 197 skipped ones in a second pass: all good): 1,189 good; 0x007E2A60 (known, on hold) and 0x0072A680 (pre-existing: the same with the 11-18 headers) DIFFER. `logs/includer_recheck.txt`.
 
 ## Checks
 `naming/rebind.py`: removed 20 binding lines, added 11; `bindings_multi_check.py` at baseline (`NullCoord`); funclets 1,355 checked, 0 broken.

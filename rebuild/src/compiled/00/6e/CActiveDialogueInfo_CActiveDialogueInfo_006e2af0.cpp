@@ -7,6 +7,9 @@
 // (0x01238C6C) is CIntelligentPointer's own: the pointer is a member and the class is not
 // polymorphic. CIntelligentPointer() is the family shape: base ctor, vtable, SetPItem(0). The
 // float literal 0 is folded to an integer immediate store.
+// NF95 2026-11-19 (q11285): the NSpeechGainManager::EDialogueLayer enumerators are the PDB names (engine/NSpeechGainManager.h;
+//   Ego_d.pdb LF_FIELDLIST 0x14C96, installed-game header_enums.csv): DIALOGUE_LAYER_FOREGROUND 0, _MIDGROUND 1, _BACKGROUND 2, _LAST 3;
+//   were the stand-ins DIALOGUE_LAYER_0 / _1 / _2 / _NONE / _COUNT or a bare cast.
 class CBaseObject;
 
 class CBaseObjectPointer;
@@ -28,7 +31,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-enum EDialogueLayer { DIALOGUE_LAYER_NONE = 3 };
+enum EDialogueLayer { DIALOGUE_LAYER_LAST = 3 };
 
 struct CActiveDialogueInfo {
     CIntelligentPointer<CThing> ThingSpeaking;                           // +0x00 CIntelligentPointer<CThing>
@@ -42,7 +45,7 @@ struct CActiveDialogueInfo {
 CActiveDialogueInfo::CActiveDialogueInfo()
     : ThingSpeaking()
     , SoundID(0)
-    , Layer(DIALOGUE_LAYER_NONE)
+    , Layer(DIALOGUE_LAYER_LAST)
     , IsLayerHead(false)
     , OutputGain(0.0f)
 {

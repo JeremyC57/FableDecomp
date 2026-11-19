@@ -16,6 +16,9 @@
 //   same-TU noinline stand-ins of the landed CCreatureActionJackFloatUp::PerformAction 0x008C0FB0 (the effect type shares the
 //   frame word left by the first push); the sub-def is released by hand after SetVisible(true).
 // Strings: "RISE" @ 0x01266F98, "RISE_UP_EFFECT" @ 0x01266F88.
+// NF95 (2026-11-19, q11263): GetSubDef 0x00669580 is the PDB member template
+//   ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z (Ego_r.pdb 0x00526490 / FableWin.pdb
+//   0x01DA97D0; engine/CDefClassBase_GetSubDef.h): const, the out slot a CDefPointer<const T>*; was a non-const reference form.
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -53,16 +56,16 @@ template <class T> class CDefPointer { public:
     CDefPointer() : m_p(0) { }
 };
 class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
 #pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out)
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = Find_CDefClassBase_GetSubDef(this);
     if (!def)
         return false;
-    out.m_p = (T*)def;
+    out->m_p = (const T*)def;
     return true;
 }
 #pragma auto_inline(on)
@@ -166,10 +169,10 @@ void CTCJackPillar::Enable(bool enable)
     if (enable) {
         CTCAnimatingObject* animating = ParentThing->GetTC<CTCAnimatingObject>(0x83);
         animating->PlayAnimation("RISE", 0, false);
-        CDefPointer<CSpecialEffectsDef> effectsSlot;
+        CDefPointer<const CSpecialEffectsDef> effectsSlot;
         long effectType = 0;
-        CDefClassReference(ParentThing->m_pDef)->GetSubDef(effectsSlot);
-        CSpecialEffectsDef* effects = effectsSlot.m_p;
+        CDefClassReference(ParentThing->m_pDef)->GetSubDef(&effectsSlot);
+        CSpecialEffectsDef* effects = const_cast<CSpecialEffectsDef*>(effectsSlot.m_p);
         if (effects) {
             effects->GetEffectFromString("RISE_UP_EFFECT", effectType);
             if (effectType)

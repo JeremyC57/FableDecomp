@@ -56,8 +56,12 @@ namespace NEngineInternal { extern CEngineScreenEffectOutlineGlow* GPScreenEffec
 //   ?GPScreenEffectDisplacementRenderer@NEngineInternal@@3PAVCEngineScreenEffectDisplacementRenderer@@A, engine header) and the four
 //   calls are its pass brackets Begin/FinishDisplacementRendering and Begin/FinishDisplacementStencilRendering (overlay opt-in
 //   DISPLACEMENTPASSES); was a local CEngineShadowRenderer (BeginShadows / EndShadows / BeginShadowCasters / EndShadowCasters) on
-//   g_pShadowRenderer. Not changed here: the 0x01436E60 (GPShadowRenderer) and 0x01436EA0 (GPCamera) reads, which still go through
-//   the CEngineOcclusionRenderer / CEngineLightingManager stand-ins.
+//   g_pShadowRenderer. Not changed here: the 0x01436E60 (GPShadowRenderer) read, which still goes through the CEngineOcclusionRenderer
+//   stand-in.
+// NF95 (2026-11-19, q11254): 0x01436EA0 is NEngineInternal::GPCamera (Ego_d.pdb PUB32 ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A;
+//   the landed 0x00BCA6B0 / 0x00BB6450 bind it so); it was g_pLightingManager_01436ea0. The two scene calls it feeds are the PDB
+//   CEngineScene::RenderSceneAndCheckVisibility 0x00B942A0 and RenderScene 0x00B93F40 (Ego_r.pdb 0x00A47270 / 0x00A46EA0, FableWin.pdb
+//   0x02E1E7E0 / 0x02E1DB90; their landed self rows carry those leaves): layer, the camera by reference, the occlusion layer, a bool.
 #define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_DISPLACEMENTPASSES
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 namespace NEngineInternal { extern CEngineScreenEffectDisplacementRenderer* GPScreenEffectDisplacementRenderer; }   // 0x01436E38
@@ -67,13 +71,15 @@ class CEngineSubPrimitiveRenderer { public:
     void ClearList(long list);                     // 0x00B847B0
 };
 extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;   // 0x01436E74
-class CEngineLightingManager;
-extern CEngineLightingManager* g_pLightingManager_01436ea0;   // 0x01436EA0
+class CEngineCamera;
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }   // 0x01436EA0
+enum EEngineRenderLayer;
+enum EEngineOcclusionLayer;
 
 class CEngineScene { public:
     void RenderOcclusion(long layer, const unsigned char (&settings)[0x130]);   // 0x00B94060
-    void RenderLit(long layer, CEngineLightingManager* lighting, long mode, bool flag);   // 0x00B942A0
-    void Render(long layer, CEngineLightingManager* lighting);   // 0x00B93F40
+    void RenderSceneAndCheckVisibility(EEngineRenderLayer layer, const CEngineCamera& camera, EEngineOcclusionLayer occlusion, bool flag);   // 0x00B942A0
+    void RenderScene(EEngineRenderLayer layer, const CEngineCamera& camera);   // 0x00B93F40
 };
 #include "engine/CArray.h"
 
@@ -180,9 +186,9 @@ void CEnginePrimitiveRenderer::Render(const CEngineComponentRenderParams& params
         for (CEngineScene** it = Scenes.begin(); it != Scenes.end(); ++it) {
             CEngineScene* scene = *it;
             if ((params.Flags & 1) && ShadowsActive)
-                scene->RenderLit(params.Layer, g_pLightingManager_01436ea0, LightIndexMode, !SelfShadowing);
+                scene->RenderSceneAndCheckVisibility((EEngineRenderLayer)params.Layer, *NEngineInternal::GPCamera, (EEngineOcclusionLayer)LightIndexMode, !SelfShadowing);
             else
-                scene->Render(params.Layer, g_pLightingManager_01436ea0);
+                scene->RenderScene((EEngineRenderLayer)params.Layer, *NEngineInternal::GPCamera);
         }
         break;
     }

@@ -8,7 +8,8 @@
 //   shape, differing in the animation-name literal and the vtable); the manifest label "CCreatureAction_AddRealObjectToInventory" is propagated.
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 and ~CCharString 0x0099EAE0 (the implicit conversion
 //   temporary of the literal, built before any argument is pushed and destroyed after the base call), the
-//   owner's animation lookup 0x006924B0 (`__fastcall`: ecx owner, edx name; descriptive name), CCreatureActionBase::
+//   owner's animation lookup CCreatureActionBase::GetRandomAnimFromName(const CThingCreatureBase&, const CCharString&) 0x006924B0
+//   (protected static `__fastcall`: ecx owner, edx name; Ego_r.pdb / FableWin.pdb), CCreatureActionBase::
 //   CCreatureActionBase(CThingCreatureBase&, float, float, const CAnimationEntry&, const CSoundPair&, long, long) 0x00693B30
 //   (PDB), CBaseIntelligentPointer::CBaseIntelligentPointer() 0x00A01B10, CBaseIntelligentPointer::SetPItem(CBaseObject*)
 //   0x00A01B90; string literal 0x012593EC ("STANDARD_WAVE"); CIntelligentPointer<CThing> vtable 0x01238C6C.
@@ -29,14 +30,16 @@ public:
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-const CAnimationEntry& __fastcall GetAnimationFromName(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
-
 class CCreatureActionBase {                                 // retail sizeof 0xa8
 public:
     virtual ~CCreatureActionBase();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase& owner, float a, float b, const CAnimationEntry& animation,
                         const CSoundPair& sound, long c, long d);                             // 0x00693B30
+protected:
+    // Ego_r.pdb 0x00518E00 / FableWin.pdb 0x01DB7950 protected static __fastcall (engine/CCreatureActionBase.h ANIMCTOR).
+    static const CAnimationEntry& __fastcall GetRandomAnimFromName(const CThingCreatureBase& creature, const CCharString& name);   // 0x006924B0
+public:
 };
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -50,7 +53,7 @@ public:
 };
 
 CCreatureAction_PlayerInteractionGreet::CCreatureAction_PlayerInteractionGreet(CThingCreatureBase& owner, CThing* target)
-    : CCreatureActionBase(owner, -1.0f, 0.0f, GetAnimationFromName(&owner, "STANDARD_WAVE"), CSoundPair(), 0, 0)
+    : CCreatureActionBase(owner, -1.0f, 0.0f, GetRandomAnimFromName(owner, "STANDARD_WAVE"), CSoundPair(), 0, 0)
     , PTarget(target)
 {
 }
