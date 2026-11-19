@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a9d750   RELOCATION_MATCH PASS   ApplyBoneMorphScaling
+
+WINS: 1
+  00a9d750 RELOCATION_MATCH C3DAnimationManager::?ApplyBoneMorphScaling@C3DAnimationManager@@ABEXPBVC3DVector@@PAVCMatrix4x4@@K_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DAnimationManager_ApplyBoneMorphScaling_00a9d750

@@ -399865,6 +399865,13 @@ $catalog = @(
         TestSource = '00/73/CTCEntityEvents_CIsHitEventHitBy_00738a80_test.cpp'
         PassPattern = '00738a80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a9d750'
+        Module = 'C3DAnimationManager'
+        Source = '00/a9/C3DAnimationManager_ApplyBoneMorphScaling_00a9d750.cpp'
+        TestSource = '00/a9/C3DAnimationManager_ApplyBoneMorphScaling_00a9d750_test.cpp'
+        PassPattern = '00a9d750_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

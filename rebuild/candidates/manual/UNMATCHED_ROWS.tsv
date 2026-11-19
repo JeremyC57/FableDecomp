@@ -778,7 +778,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a90ae0	CAnimatedBlock	InitialiseFromMeshFileData	640	parked	DIFFER(620v629)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00a90ae0.cpp	original
 00a90d60	N3DPrimitive::CDeviceIndependent	RemapBoneIndices	416	parked	DIFFER(445v413)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand529/differ/00a90d60.cpp	original
 00a92900	C3DPrimitive2	LoadBinary	2288	parked	DIFFER(2283v2274)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand784/differ/00a92900.test.cpp	original
-00a9d750	C3DAnimationManager	ApplyBoneMorphScaling	1232	reserved (hand3c, not plain C++)	DIFFER(551v551)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00a9d750.test.cpp	original
 00a9dc20	_global	ApplyPartialAnimationAlpha	720	parked	DIFFER(709v706)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand727/src/00a9dc20.cpp	original
 00aa8830	CChunkedFileSuperChunk	ReadFromFile	1248	parked	DIFFER(918v889)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00aa8830.cpp	original
 00aabf60	CSoundEmitterLH	CSoundEmitterLH::vfunc_3	624	reserved (hand3c, not plain C++)	DIFFER(625v620)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00aabf60.cpp	gapscan/boundary

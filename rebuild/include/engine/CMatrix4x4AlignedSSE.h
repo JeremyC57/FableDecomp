@@ -223,3 +223,59 @@ FABLE_FORCEINLINE void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& a, const
     }
 }
 #endif
+
+// Retail opt-in FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_BODIES (hand3c, row 0x00A9D750 C3DAnimationManager::ApplyBoneMorphScaling):
+// the shared bodies of ?AlignedPreScale@CMatrix4x4@@QAEXABVC3DVector@@@Z (out of line at 0x00A9D480) and
+// ?AlignedPreScaleTransposed@CMatrix4x4@@QAEXABVC3DVector@@@Z (0x00A9D580), which ApplyBoneMorphScaling (their FableWin and retail
+// neighbour) expands in place. Text from Ego_d.pdb locals (scale; SSE block vect / right / dest; x87 block `CMatrix4x4& m`) and the
+// FableWin bodies 0x03382F80 / 0x033831E0, which go through the element accessors m(r, c) (needs FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS).
+// The nested FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_FORCEINLINE marks them __forceinline for the TU that expands them (plain inline
+// leaves them called in 0x00A9D750). Outside the include guard, like AlignedSetMultiply: engine/CMatrix4x4.h includes this header again
+// once the class is complete.
+#if defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_BODIES) && defined(FABLE_ENGINE_CMATRIX4X4_H) && !defined(FABLE_CMATRIX4X4_ALIGNEDPRESCALE_DEFINED)
+#define FABLE_CMATRIX4X4_ALIGNEDPRESCALE_DEFINED
+#ifdef FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG
+extern bool GEnableSIMD;
+#define FABLE_CMATRIX4X4_PRESCALE_SIMD GEnableSIMD
+#else
+extern bool g_SSEAvailable;                                              // 0x013D2880 ?g_SSEAvailable@@3_NA
+#define FABLE_CMATRIX4X4_PRESCALE_SIMD g_SSEAvailable
+#endif
+#ifdef FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_FORCEINLINE
+#define FABLE_CMATRIX4X4_PRESCALE_INLINE FABLE_FORCEINLINE
+#else
+#define FABLE_CMATRIX4X4_PRESCALE_INLINE
+#endif
+FABLE_CMATRIX4X4_PRESCALE_INLINE void CMatrix4x4::AlignedPreScale(const C3DVector& scale)
+{
+    if (FABLE_CMATRIX4X4_PRESCALE_SIMD) {
+        __declspec(align(16)) C4DVector vect(scale, 0.0f);
+        float* dest = &E11;
+        C3DVector right(E14, E24, E34);
+        GF_SSE_MATRIX_PRESCALE(dest, vect);
+        E14 = right.X; E24 = right.Y; E34 = right.Z;
+        return;
+    }
+    CMatrix4x4& m = *this;
+    m(0, 0) *= scale.X; m(0, 1) *= scale.X; m(0, 2) *= scale.X;
+    m(1, 0) *= scale.Y; m(1, 1) *= scale.Y; m(1, 2) *= scale.Y;
+    m(2, 0) *= scale.Z; m(2, 1) *= scale.Z; m(2, 2) *= scale.Z;
+}
+FABLE_CMATRIX4X4_PRESCALE_INLINE void CMatrix4x4::AlignedPreScaleTransposed(const C3DVector& scale)
+{
+    if (FABLE_CMATRIX4X4_PRESCALE_SIMD) {
+        __declspec(align(16)) C4DVector vect(scale, 0.0f);
+        float* dest = &E11;
+        C3DVector right(E14, E24, E34);
+        GF_SSE_MATRIX_PRESCALE_TRANSPOSED(dest, vect);
+        E14 = right.X; E24 = right.Y; E34 = right.Z;
+        return;
+    }
+    CMatrix4x4& m = *this;
+    m(0, 0) *= scale.X; m(0, 1) *= scale.Y; m(0, 2) *= scale.Z;
+    m(1, 0) *= scale.X; m(1, 1) *= scale.Y; m(1, 2) *= scale.Z;
+    m(2, 0) *= scale.X; m(2, 1) *= scale.Y; m(2, 2) *= scale.Z;
+}
+#undef FABLE_CMATRIX4X4_PRESCALE_INLINE
+#undef FABLE_CMATRIX4X4_PRESCALE_SIMD
+#endif
