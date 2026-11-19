@@ -51,26 +51,48 @@ export -f compile; export OUT CF FD
 xargs -P "$(nproc)" -n 2 bash -c 'compile "$0" "$1"' < "$OUT/files.txt"
 echo "compiled $(ls "$OUT"/ir/*.ll 2>/dev/null | wc -l) of $(wc -l < "$OUT/files.txt") files"
 
-# 3. the landed function of each one-definition file (others are found through the bindings)
-python3 - "$OUT" <<'PY'
+# 3. the landed function of each file: the definition the file's "// Leaf: <symbol>" line names (a
+# same-TU wrapper standing in for a private convention is not it); without a Leaf line, a file's one
+# definition. Others are found through the bindings.
+python3 - "$OUT" "$FD/rebuild/src/compiled" "$OUT/files.txt" <<'PY'
 import re, glob, os, sys
-out = sys.argv[1]
+out, src, files = sys.argv[1], sys.argv[2], sys.argv[3]
+path = dict(l.split(None, 1) for l in open(files).read().splitlines() if l.strip())
+def core(sym):  # COFF / IR spelling -> a comparable name: no \01, leading _ or @, trailing @N
+    sym = sym.replace('\\01', '').lstrip('_@') if not sym.startswith('?') else sym
+    return re.sub(r'@\d+$', '', sym)
 with open(os.path.join(out, 'natives.tsv'), 'w') as w:
     for ll in sorted(glob.glob(os.path.join(out, 'ir', '*.ll'))):
+        addr = os.path.basename(ll)[:-3]
         names = []
         for line in open(ll):
             if line.startswith('define weak_odr'):
                 m = re.search(r'@("(?:[^"\\]|\\.)*"|[\w.$]+)\(', line)
                 if m: names.append(m.group(1).strip('"'))
-        if len(names) == 1: w.write(os.path.basename(ll)[:-3] + '\t' + names[0] + '\n')
+        leaf = None
+        for line in open(os.path.join(src, path.get(addr, '').strip()), errors='replace').readlines()[:20]:
+            m = re.match(r'//\s*Leaf:\s*(\S+)', line)
+            if m: leaf = m.group(1); break
+        if leaf and leaf.startswith('?') and not leaf.endswith('Z') and '@@' not in leaf[1:]:
+            leaf = None  # a bare label ("?Update@CQuadTreeElement"), not a symbol
+        if leaf:
+            hit = [n for n in names if core(n) == core(leaf)]
+            if len(hit) == 1: w.write(addr + '\t' + hit[0] + '\n')
+        elif len(names) == 1:
+            w.write(addr + '\t' + names[0] + '\n')
 PY
+
+# private (LTCG) register conventions, from the matched files' header notes ("x arriving in eax",
+# "vf in eax", "private convention"): never lowered, never called through a bridge
+( cd "$FD/rebuild/src/compiled" && find . -name "*.cpp" -print0 | xargs -0 awk 'FNR<=14 && /\/\// && tolower($0) ~ /(arriv(es|ing)|passed|comes) in (eax|ebx|esi|edi)|in eax[ ,;)]|private (ltcg )?convention|custom convention|ltcg-private/ {print FILENAME; nextfile}' ) \
+  | grep -oiE "_[0-9a-f]{8}\.cpp$" | tr -d '_' | sed 's/\.cpp//' | tr a-f A-F | sort -u > "$OUT/private_cc.txt"
 
 # 4. link, lower per host, compile
 llvm-link-18 -S "$OUT"/ir/*.ll -o "$OUT/linked.ll"
 for T in x64:x86_64-linux-gnu a64:aarch64-linux-gnu win:x86_64-w64-windows-gnu; do
   n=${T%%:*}; t=${T#*:}
   "$OUT/fable_lower" "$OUT/linked.ll" "$OUT/low_$n.bc" --bindings "$FD/rebuild/oracles/reloc_bindings.tsv" --natives "$OUT/natives.tsv" \
-    --exclude "$EXCL" --triple "$t" --report "$OUT/report.tsv"
+    --exclude "$EXCL" --private-cc "$OUT/private_cc.txt" --triple "$t" --report "$OUT/report.tsv"
   pic=-fPIC; [ "$n" = win ] && pic=
   clang --target="$t" -O2 $pic -Wno-override-module -c "$OUT/low_$n.bc" -o "$OUT/nd_$n.o"
 done

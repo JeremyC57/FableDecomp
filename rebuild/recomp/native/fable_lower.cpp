@@ -56,13 +56,16 @@ using namespace llvm;
 namespace {
 
 struct Options {
-    std::string in, out, bindings, natives, triple, report, exclude;
+    std::string in, out, bindings, natives, triple, report, exclude, privateCc;
 };
 
 // ---------------------------------------------------------------- symbol names / bindings
 std::map<std::string, uint32_t> g_bind;      // COFF symbol -> retail address
 std::map<uint32_t, std::string> g_natives;  // address -> IR name (landed functions)
 const DataLayout* g_dl32 = nullptr;          // the i686 layout, for every size and offset
+// Retail functions with a private (LTCG) register convention, e.g. an argument in eax: the IR's
+// signature cannot say so, so they are never lowered and never called through a bridge.
+std::set<uint32_t> g_privateCc;
 
 uint32_t stackBytes(const DataLayout& dl, Type* t) { return (static_cast<uint32_t>(dl.getTypeAllocSize(t)) + 3u) & ~3u; }
 
@@ -169,6 +172,7 @@ Verdict check(Function& F, const std::set<Function*>& keep) {
                 if (callee) {
                     uint32_t a;
                     if (!bound(*callee, a) && !hostSafe(callee->getName())) v.no("unbound callee " + callee->getName().str());
+                    else if (g_privateCc.count(a)) v.no("calls a private-convention function " + callee->getName().str());
                 }
             }
             for (Use& u : i.operands()) {
@@ -200,7 +204,7 @@ Verdict check(Function& F, const std::set<Function*>& keep) {
 Module* M;
 LLVMContext* C;
 Type *I8, *I32, *I64, *F64, *PtrTy;
-FunctionCallee ndFrameEnter, ndFrameLeave, ndCall, ndEntryBegin, ndEntryEnd, ndGetReg, ndEnabled, ndClock, ndTimeAdd;
+FunctionCallee ndFrameEnter, ndFrameLeave, ndCall, ndEntryBegin, ndEntryEnd, ndGetReg, ndEnabled, ndClock, ndTimeAdd, ndVerify;
 
 Value* toHost(IRBuilder<>& b, Value* w32) { return b.CreateIntToPtr(b.CreateZExt(w32, I64), PtrTy); }
 Value* toWord(IRBuilder<>& b, Value* p) { return b.CreateTrunc(b.CreatePtrToInt(p, I64), I32); }
@@ -497,8 +501,18 @@ void makeEntry(Function* F, uint32_t A, CallingConv::ID cc, const AttributeList&
     IRBuilder<> wb(BasicBlock::Create(*C, "", W));
     BasicBlock* yes = BasicBlock::Create(*C, "native", W);
     BasicBlock* no = BasicBlock::Create(*C, "lifted", W);
-    // nd_enabled: bit 0 the native body, bit 1 time the call (FABLE_ND_TIME), native or lifted
+    // nd_enabled: bit 0 the native body, bit 1 time the call (FABLE_ND_TIME), native or lifted,
+    // bit 2 verify the call (FABLE_ND_VERIFY: nd_verify runs both bodies on the same input)
     Value* flags = wb.CreateCall(ndEnabled, {ConstantInt::get(I32, A), W->getArg(0)});
+    {
+        BasicBlock* verify = BasicBlock::Create(*C, "verify", W);
+        BasicBlock* cont = BasicBlock::Create(*C, "cont", W);
+        wb.CreateCondBr(wb.CreateICmpNE(wb.CreateAnd(flags, ConstantInt::get(I32, 4)), ConstantInt::get(I32, 0)), verify, cont);
+        IRBuilder<> vb(verify);
+        vb.CreateCall(ndVerify, {ConstantInt::get(I32, A), W->getArg(0), E, orig});
+        vb.CreateRetVoid();
+        wb.SetInsertPoint(cont);
+    }
     Value* timed = wb.CreateICmpNE(wb.CreateAnd(flags, ConstantInt::get(I32, 2)), ConstantInt::get(I32, 0));
     BasicBlock* start = BasicBlock::Create(*C, "start", W);
     BasicBlock* pick = BasicBlock::Create(*C, "pick", W);
@@ -538,6 +552,7 @@ int main(int argc, char** argv) {
         else if (a == "--triple") o.triple = next();
         else if (a == "--report") o.report = next();
         else if (a == "--exclude") o.exclude = next();
+        else if (a == "--private-cc") o.privateCc = next();
         else if (o.in.empty()) o.in = a;
         else o.out = a;
     }
@@ -580,6 +595,12 @@ int main(int argc, char** argv) {
 
     // The landed functions; then which of them (and the module-local helpers they call) can be lowered.
     std::map<Function*, uint32_t> addrOf;
+    if (!o.privateCc.empty()) {
+        std::ifstream f(o.privateCc);
+        std::string line;
+        while (std::getline(f, line))
+            if (!line.empty()) g_privateCc.insert(static_cast<uint32_t>(std::stoul(line, nullptr, 16)));
+    }
     std::set<uint32_t> taken;  // an excluded address (hooked or wrapped by host code already) is never native
     if (!o.exclude.empty()) {
         std::ifstream f(o.exclude);
@@ -587,8 +608,15 @@ int main(int argc, char** argv) {
         while (std::getline(f, line))
             if (!line.empty()) taken.insert(static_cast<uint32_t>(std::stoul(line, nullptr, 16)));
     }
-    for (auto& [a, n] : g_natives)
-        if (Function* f = M->getFunction(n); f && !f->isDeclaration() && taken.insert(a).second) addrOf[f] = a;
+    for (auto& [a, n] : g_natives) {
+        Function* f = M->getFunction(n);
+        if (!f || f->isDeclaration()) continue;
+        // a definition whose own symbol is bound to another address is not this landed function
+        // (build_native.sh already picks it by the file's Leaf: line)
+        uint32_t b = 0;
+        if (bound(*f, b) && b != a) continue;
+        if (taken.insert(a).second) addrOf[f] = a;
+    }
     for (Function& f : *M) {  // every other definition with a retail address is a landed function too
         uint32_t a;
         if (!f.isDeclaration() && !addrOf.count(&f) && bound(f, a) && taken.insert(a).second) addrOf[&f] = a;
@@ -598,6 +626,8 @@ int main(int argc, char** argv) {
     for (Function& f : *M)  // helpers: definitions that are not landed functions (inline / template copies)
         if (!f.isDeclaration() && !addrOf.count(&f) && (f.hasLocalLinkage() || f.hasLinkOnceLinkage() || f.hasWeakLinkage())) keep.insert(&f);
     std::map<Function*, std::string> rejected;
+    for (auto& [f, a] : addrOf)
+        if (g_privateCc.count(a)) rejected[f] = "private calling convention", keep.erase(f);
     for (bool changed = true; changed;) {
         changed = false;
         for (Function* f : std::vector<Function*>(keep.begin(), keep.end())) {
@@ -628,6 +658,7 @@ int main(int argc, char** argv) {
     ndGetReg = M->getOrInsertFunction("nd_get_reg", FunctionType::get(I32, {PtrTy, I32}, false));
     ndEnabled = M->getOrInsertFunction("nd_enabled", FunctionType::get(I32, {I32, PtrTy}, false));
     ndClock = M->getOrInsertFunction("nd_clock", FunctionType::get(I64, {}, false));
+    ndVerify = M->getOrInsertFunction("nd_verify", FunctionType::get(Type::getVoidTy(ctx), {I32, PtrTy, PtrTy, PtrTy}, false));
     ndTimeAdd = M->getOrInsertFunction("nd_time_add", FunctionType::get(Type::getVoidTy(ctx), {I32, I64, I32}, false));
 
     std::vector<std::string> reportRows;
