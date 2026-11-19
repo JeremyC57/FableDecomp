@@ -400050,6 +400050,27 @@ $catalog = @(
         TestSource = '00/73/CTCCombat_PlayCombatStrikeSounds_00733b70_test.cpp'
         PassPattern = '00733b70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00537776'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_CanMove_00537776.cpp'
+        TestSource = '00/53/NUISystemCList_CanMove_00537776_test.cpp'
+        PassPattern = '00537776_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087a7c0'
+        Module = 'CThingSearchTools'
+        Source = '00/87/CThingSearchTools_vectorconstCThingCThingFilterIsNot_0087a7c0.cpp'
+        TestSource = '00/87/CThingSearchTools_vectorconstCThingCThingFilterIsNot_0087a7c0_test.cpp'
+        PassPattern = '0087a7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009871c0'
+        Module = 'CThingSearchTools'
+        Source = '00/98/CThingSearchTools_GetPFirstThingInRoughAreaCFilterBind4CThingFilte_009871c0.cpp'
+        TestSource = '00/98/CThingSearchTools_GetPFirstThingInRoughAreaCFilterBind4CThingFilte_009871c0_test.cpp'
+        PassPattern = '009871c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,15 @@
+addr       parity           behav  name
+0087a7c0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0087a7c0   WARN STANDIN_LEAF ??$GetAllThingsInRoughArea@$$CBVCThingCreatureBase@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_IsNot@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_IsNot@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z (catalog CThingSearchTools::GetPBestThingInRoughArea<CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature>,; names another function)
+0087a7c0   RELOCATION_MATCH PASS   GetAllThingsInRoughArea<const CThingCreatureBase,std::vector<const CThing*>,CThingFilter_IsNot>
+009871c0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+009871c0   WARN STANDIN_LEAF ??$GetPFirstThingInRoughArea@V?$CFilter_Bind4@VCThingFilter_IsNot@@VCThingFilter_IsCreatureType@@VCThingFilter_In2DRange@@V3@@@$$CBVCThingAICreature@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_IsNot@@VCThingFilter_IsCreatureType@@VCThingFilter_In2DRange@@V3@@@PAPBVCThingAICreature@@@Z (catalog CThingSearchTools::GetPFirstThingInRoughArea<CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsCreatureType,CTh; names another function)
+009871c0   RELOCATION_MATCH PASS   GetPFirstThingInRoughArea<CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsCreatureType,CThingFilter_In2DRange,CThingFilter_In2DRange>,const CThingAICreature>
+
+WINS: 2
+  0087a7c0 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@
+  009871c0 RELOCATION_MATCH CThingSearchTools::??$GetPFirstThingInRoughArea@
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CThingSearchTools_vectorconstCThingCThingFilterIsNot_0087a7c0
+  CThingSearchTools_GetPFirstThingInRoughAreaCFilterBind4CThingFilte_009871c0

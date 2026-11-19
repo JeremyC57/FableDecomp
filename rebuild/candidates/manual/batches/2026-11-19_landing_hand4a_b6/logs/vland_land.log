@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00537776   RELOCATION_MATCH PASS   CanMove
+
+WINS: 1
+  00537776 RELOCATION_MATCH NUISystem::CList::?CanMove@CList@NUISystem@@UAE?AVC2DVector@@ABV3@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NUISystemCList_CanMove_00537776

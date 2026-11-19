@@ -45,6 +45,12 @@ long GetHeight()const{return BRY-TLY;}
 // the x-loop count). Body only: no layout change.
 long GetWidth()const{return BRX-TLX;}
 #endif
+#ifdef FABLE_RETAIL_C2DBOXI_SETBR
+// Opt-in (hand4a, row 0x00537776 NUISystem::CList::CanMove): FableWin.pdb ?SetBRX@C2DBoxI@@QAEXJ@Z / ?SetBRY@C2DBoxI@@QAEXJ@Z (debug
+// 0x02185DB0 / 0x02185DD0), inline in retail (the row's local view-area box; its dead BRX store is dropped). Bodies only, no layout change.
+void SetBRX(long brx){BRX=brx;}
+void SetBRY(long bry){BRY=bry;}
+#endif
 #ifdef FABLE_RETAIL_C2DBOXI_ACCESSORS
 // Retail opt-in (agentC43, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): FableWin.pdb ?GetTLX@C2DBoxI@@QBEJXZ, ?GetTLY@C2DBoxI@@QBEJXZ,
 // ?GetBRX@C2DBoxI@@QBEJXZ, ?GetBRY@C2DBoxI@@QBEJXZ (inline in retail: `fild [def+14Ch]` .. `fiadd [def+158h]`, 0x00537B6A..0x00537BD5).
@@ -76,6 +82,11 @@ void ClipTo(const C2DBoxI& bounds);
 // Chunk 756 (row 0x0049C700, parked): the memberwise user copy ctor of the landed CWorldMap twin 0x004FC4D0 (unconfirmed in the TPI).
 #ifdef FABLE_RETAIL_C2DBOXI_COPY
 C2DBoxI(const C2DBoxI& o):TLX(o.TLX),TLY(o.TLY),BRX(o.BRX),BRY(o.BRY){}
+#elif defined(FABLE_RETAIL_C2DBOXI_COPY_FORCEINLINE)
+// Opt-in (hand4a, row 0x00537776 NUISystem::CList::CanMove): FableWin.pdb ??0C2DBoxI@@QAE@ABV0@@Z (debug 0x018B1BF0) is a user copy
+// constructor (VC never emits a trivial one out of line); retail expands it member by member in that size TU (only the live TLY / BRY
+// words are copied, 0x005377B8 / 0x005377BE), where c2 declines the plain inline. Same body as C2DBOXI_COPY, forced.
+FABLE_FORCEINLINE C2DBoxI(const C2DBoxI& o):TLX(o.TLX),TLY(o.TLY),BRX(o.BRX),BRY(o.BRY){}
 #endif
 #endif
 #if defined(FABLE_RETAIL_C2DBOXI_OVERLAPPING_BODY) && defined(_MSC_VER)

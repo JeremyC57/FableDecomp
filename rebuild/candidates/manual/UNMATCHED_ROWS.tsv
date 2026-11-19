@@ -51,7 +51,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00524ec0	NThingManager::CEntityRuntimePersistence	LoadFromGameStateBinary	1008	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00524ec0.cpp	original
 00531090	CComponent	GetBoundingBox	1232	parked	DIFFER(1216v1227)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00531090.cpp	original
 00533d30	CComponent	GetSize	1792	parked	DIFFER(1764v1750)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00533d30.cpp	original
-00537776	CList	CanMove	480	reserved (hand4a, in-house)	DIFFER(480v480)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00537776.cpp	original
 0053848f	CList	AddActionOnInactive	78	parked	DIFFER(67v78)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/differ/0053848f.cpp	original
 005384dd	CList	AddActionOnInactive	78	parked	DIFFER(67v78)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/differ/005384dd.cpp	original
 0053b91e	CList	Initialise	1422	parked	DIFFER(1416v1422)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/0053b91e.cpp	original
@@ -447,7 +446,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00879070	NCameraModes::CProjectileWeapon	GetHeightParamForPostionWithPhi	1264	parked	codex pass24 PARKED: The later two-vector cross products now agree. At 0x008792C1 the retail body keeps the quadratic factor live through a second x87 pop.	54	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00879070/00879070.cpp	original
 00879680	_global	ProjectileWeapon_CalcPhiAngle	576	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand481/differ/00879680.cpp	original
 00879900	NCameraModes::CProjectileWeapon	Update	3776	parked	acctC round six: round 6 final (2026-11-16): DIFFER(3370v3415); latest draft 00879900.cpp + NOTES.md in the folder (grep the ad	2	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE9/00879900.cpp	gapscan/boundary
-0087a7c0	CThingSearchTools	GetPBestThingInRoughArea<CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature>,	592	reserved (hand4b, in-house)	DIFFER(590v590)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/0087a7c0.cpp	original
 0087cfe0	CCreatureAction_InterruptableMidAttackAutoTurn	SetupTurningAnimation	1456	reserved (hand3c, not plain C++)	DIFFER(3v1447)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0087cfe0.cpp	original
 0087d590	CCreatureAction_InterruptableMidAttackAutoTurn	CCreatureAction_InterruptableMidAttackAutoTurn::Initialise	1280	parked	DIFFER(1v1215)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0087d590.cpp	original
 0087ee70	CCombatAction_StabThing	CCombatAction_StabThing::PerformAction	1232	parked	DIFFER(1168v1219)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0087ee70.cpp	original
@@ -600,7 +598,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00984f60	CAIStateGroup_OpinionReactionRoot	FleeUpdate	864	parked	DIFFER(856v863)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand653/differ/00984f60.cpp	original
 00986210	CAIStateGroup_OpinionReactionRoot	CallingChildrenIsRunnable	464	reserved (hand3c, not plain C++)	DIFFER(450v461)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/00986210.cpp	original
 00987040	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	operator()	384	parked	DIFFER(370v374)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00987040.cpp	original
-009871c0	CThingSearchTools	GetPFirstThingInRoughArea<CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsCreatureType,CTh	624	reserved (hand4b, in-house)	DIFFER(614v614)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ17/differ/009871c0.cpp	original
 00988e80	CShaderRenderManager	UpdateLocalisedSphereMapping	944	reserved (hand3c, not plain C++)	DIFFER(889v917)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00988e80.test.cpp	original
 00989230	CShaderRenderManager	UpdateObjectSpaceTextureTransform	640	open-escalated (hand3c; AlignedSetMultiply x87 term-order class with 00988e80 00ae1320 00ae29d0)	DIFFER(636v636)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00989230.test.cpp	original
 0098e7d0	_global	CThreadedFileManager_ProcessPendingRequests	848	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/0098e7d0.cpp	original
