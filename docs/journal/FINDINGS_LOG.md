@@ -1276,3 +1276,24 @@ Re-pinning just those two headers to the 33b04e17bc numbers does not restore it,
 Already known: ROADMAP (c) 2026-11-13 item, ON HOLD by the owner (line-independent assert names; the row stays counted as landed while it differs
 at HEAD). Not worked further. Separately, the 11-19 merges had moved 56 asserts unpinned; they were pinned back to the 11-18 names the same day
 (batches/2026-11-19_fix_assert_pins/).
+
+## 2026-11-19 GameCODA 2.10 PC SDK found (the audio SDK Codex pass 23 used)
+Fable's sound layer links Sensaura GameCODA. Codex pass 23 named the CSal* / CReverbFns / CFloatFilter rows from "original SDK release and debug" objects
+(CODAApi.lib / CODAApiDbg.lib: ReverbFns_SSE.obj, ReverbDspModule.obj, FloatFilter.obj, SalPlatform.obj) but left the binaries out of its hand-back.
+
+**Source:** archive.org item `game-coda-2.10-pc` ("GameCODA 2.10 PC", Sensaura Ltd, 2004).
+- Files: `GameCODA 2.10 PC.7z`, 44,321,413 bytes, md5 42cd21b0cb8c2cc2a0a53f02f39b4c32,
+  sha256 f5014ed0becfc4efc01866adc989c1837583fbd210ab3aed28999463c3e6c2d9; plus an installer zip.
+- Re-fetch: `curl -L -o gc210.7z "https://archive.org/download/game-coda-2.10-pc/GameCODA%202.10%20PC.7z"`, then `7z x gc210.7z -xr'!Media'`.
+
+**Contents** (CODA/):
+- lib/Win32 holds CODAApi(.Dbg).lib with exactly the objects pass 23 cited, plus CAGE, Toolkit, OpenAL32, ALut and Network libs;
+- CAGE/ and Toolkit/ ship C++ source;
+- include/, doc/, License.pdf.
+
+**Handling:** kept outside the repo (`$S/sdk/gamecoda/tree/CODA`), like the other vendor trees. License.pdf has not been reviewed for redistribution. Never commit
+its files.
+
+**Open policy question (owner):** pass 23 found retail functions byte-identical to named CODAApi.lib objects. If retail links these prebuilt
+objects unchanged, those rows are linker-copied library bytes, like the CRT objects. Should they then grade `toolchain_library` with a lib_verify proof
+against CODAApi.lib, or stay compiled C++?
