@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0049ed80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0049ed80   RELOCATION_MATCH PASS   ConsoleSetFreeCameraLookVector
+
+WINS: 1
+  0049ed80 RELOCATION_MATCH CWorld::ConsoleSetFreeCameraLookVector
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CWorld_ConsoleSetFreeCameraLookVector_0049ed80

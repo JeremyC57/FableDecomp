@@ -123,6 +123,14 @@ public:
     CWorld(const class CWorldInit&);
 #endif
     virtual ~CWorld();                                       // slot 0 (??1CWorld@@UAE@XZ 0x004A6AB0)
+#ifdef FABLE_RETAIL_CWORLD_CONSOLESETFREECAMERALOOKVECTOR
+    // Opt-in (hand2b_more, row 0x0049ED80): Ego_r.pdb / FableWin.pdb
+    // ?ConsoleSetFreeCameraLookVector@CWorld@@KIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z (protected static
+    // __fastcall console command; FableWin parameters owner / params). Needs std::vector (stlport/fable_containers.h) first. Declaration only.
+protected:
+    static void __fastcall ConsoleSetFreeCameraLookVector(CWorld& owner, const std::vector<class CGenericVar>& params);   // 0x0049ED80
+public:
+#endif
 protected:
     virtual void PostLoadInit();                             // slot 1  0x0049D970
 public:

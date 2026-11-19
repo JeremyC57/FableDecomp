@@ -27,7 +27,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00493281	CSubtitleRenderer	ClickPast	357	parked	DIFFER(370v357)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00493281.cpp	original
 00497b60	CProgressDisplay	CalculateNextTextTag	1056	parked	DIFFER(1060v1052)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand321/differ/00497b60.cpp	original
 0049c490	CThingSearchTools	GetAllThingsInRoughArea<CThing const,std::vector<CThing const *,std::allocator<CThing cons	608	parked	DIFFER(573v583)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0049c490.cpp	original
-0049ed80	_global	ConsoleSetFreeCameraLookVector	464	reserved (hand2b, in-house)	DIFFER(310v310)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand536/differ/0049ed80.cpp	original
 004a1c8e	CTCTrophy	OnShowTrophyInitialise	34	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ1/differ/004a1c8e.cpp	original
 004a1cb0	CWorld	CWorld::PreparePrimitivesForEngine	1344	parked	codex pass24 PARKED: The remaining differences are the cross-product loads, inverse translation term order and bounding-box copy scheduling.	13	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/004a1cb0/004a1cb0.cpp	original
 004b1d30	CQuestManager	SetQuestAsCompleted	1360	parked	DIFFER(1347v1352)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/004b1d30.cpp	original

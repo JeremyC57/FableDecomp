@@ -135,6 +135,11 @@ public:
     // (public, out of line at 0x0087C580). Declaration only: no layout change.
     void GlobalEventCreatureDied(class CThingCreatureBase* creature);   // 0x0087C580
 #endif
+#if defined(FABLE_RETAIL_CPLAYER_GETCURRENTFREECAMERA) && defined(FABLE_RETAIL_PLAYER) && defined(FABLE_RETAIL_CCAMERA)
+    // Opt-in (hand2b_more, row 0x0049ED80 CWorld::ConsoleSetFreeCameraLookVector): FableWin.pdb ?GetCurrentFreeCamera@CPlayer@@QAEAAVCCamera@@XZ
+    // (called by the donor at 0x01B52809), inline in retail (`add ecx,40h` on GetMainPlayer's result, 0x0049EDA9). Body only: no layout change.
+    CCamera& GetCurrentFreeCamera() { return CurrentFreeCamera; }
+#endif
 #ifdef FABLE_RETAIL_CPLAYER_RESPAWNDELAY
     // Opt-in (chunk 2056 scout, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics): FableWin.pdb ?GetPlayerRespawnDelay@CPlayer@@QBEJXZ
     // (0x01A671D5, 15 bytes / 8 instructions at /Od = a plain member read), inline in retail (0x0048EE9C..0x0048EEA1: GetMainPlayer

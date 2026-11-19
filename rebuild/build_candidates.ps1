@@ -399938,6 +399938,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a82be0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0049ed80'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_ConsoleSetFreeCameraLookVector_0049ed80.cpp'
+        TestSource = '00/49/CWorld_ConsoleSetFreeCameraLookVector_0049ed80_test.cpp'
+        PassPattern = '0049ed80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
