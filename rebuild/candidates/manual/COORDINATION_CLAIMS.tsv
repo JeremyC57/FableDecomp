@@ -3,3 +3,4 @@ date	account	item	kind	status	note
 2026-11-19	B	56 rows with UNMATCHED status "handed off (2026-11-19, ...)"	author	claimed	pending/2026-11-19_authoring_handoff/README.md
 2026-11-19	A	naming round 8: queue q11225..q11436 (NF93/NF94/NF95; slices in $S/w22/agentNF9x, locks in $S/w22/nflocks)	naming	claimed	three naming agents; q11228 0x00774D20, q11413 0x00C77800, q11414 0x00C88E60 deferred: rows held by B
 2026-11-19	A	naming round 8: queue q11225..q11442 (NF93/NF94/NF95)	naming	claimed	corrects the line above (its q ids were one low): range q11225..q11442 incl. 5 lines appended at q11438..q11442; deferred, rows held by B: q11229 0x00774D20, q11414 0x00C77800, q11415 0x00C88E60
+2026-11-19	A	naming round 8: NF96 (NF94 blocked families q11339 / q11369 / q11427, q11204 / q11230, follow-ups q11443..q11467)	naming	claimed	advisor decision (owner delegated); q11410..q11412 CSalSwFilter held for B's GameCODA names; q11441 header item later
