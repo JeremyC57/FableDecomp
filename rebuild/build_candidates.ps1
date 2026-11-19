@@ -400918,6 +400918,27 @@ $catalog = @(
         TestSource = '00/53/NUISystemCList_AddActionOnSelected_005384dd_test.cpp'
         PassPattern = '005384dd_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00554030'
+        Module = 'std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >'
+        Source = '00/55/stdmapNUISystemETableSpritesCCountedPointerNUISystemCComponent_operator_00554030.cpp'
+        TestSource = '00/55/stdmapNUISystemETableSpritesCCountedPointerNUISystemCComponent_operator_00554030_test.cpp'
+        PassPattern = '00554030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005698a0'
+        Module = 'std::map<long,CCountedPointer<CTexture> >'
+        Source = '00/56/stdmaplongCCountedPointerCTexture_operator_005698a0.cpp'
+        TestSource = '00/56/stdmaplongCCountedPointerCTexture_operator_005698a0_test.cpp'
+        PassPattern = '005698a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c5b90'
+        Module = 'std::map<void*,NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>'
+        Source = '00/4c/stdmapvoidNGraphicAppearanceCTCGraphicAppearanceCMeshEffectPriorityEntry_operator_004c5b90.cpp'
+        TestSource = '00/4c/stdmapvoidNGraphicAppearanceCTCGraphicAppearanceCMeshEffectPriorityEntry_operator_004c5b90_test.cpp'
+        PassPattern = '004c5b90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

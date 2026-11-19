@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00554030   RELOCATION_MATCH PASS   operator[]
+005698a0   WARN STANDIN_LEAF ??A?$map@JV?$CCountedPointer@VCTexture@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@@3@@std@@QAEAAV?$CCountedPointer@VCTexture@@@@ABJ@Z (catalog _global::RBTree_SearchOrCreate; names another function)
+005698a0   RELOCATION_MATCH PASS   operator[]
+004c5b90   WARN STANDIN_LEAF ??A?$map@PAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@U?$less@PAX@std@@V?$allocator@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@5@@std@@QAEAAUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@ABQAX@Z (catalog map<void*::operator[]; names another function)
+004c5b90   RELOCATION_MATCH PASS   operator[]
+
+WINS: 3
+  00554030 RELOCATION_MATCH std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >::??A?$map@W4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@U?$less@W4ETableSprites@NUISystem@@@std@@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@5@@std@@QAEAAV?$CCountedPointer@VCComponent@NUISystem@@@@ABW4ETableSprites@NUISystem@@@Z
+  005698a0 RELOCATION_MATCH std::map<long,CCountedPointer<CTexture> >::??A?$map@JV?$CCountedPointer@VCTexture@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@@3@@std@@QAEAAV?$CCountedPointer@VCTexture@@@@ABJ@Z
+  004c5b90 RELOCATION_MATCH std::map<void*,NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>::??A?$map@PAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@U?$less@PAX@std@@V?$allocator@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@5@@std@@QAEAAUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@ABQAX@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  stdmapNUISystemETableSpritesCCountedPointerNUISystemCComponent_operator_00554030
+  stdmaplongCCountedPointerCTexture_operator_005698a0
+  stdmapvoidNGraphicAppearanceCTCGraphicAppearanceCMeshEffectPriorityEntry_operator_004c5b90

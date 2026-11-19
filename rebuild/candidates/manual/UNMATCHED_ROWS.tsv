@@ -31,7 +31,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 004bc1a0	_gapscan	sub_004bc1a0	416	parked	DIFFER(397v406)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand509/differ/004bc1a0.cpp	gapscan/boundary
 004c08c0	NGraphicAppearance::CTCGraphicAppearance	GetDummyObject	960	parked	DIFFER(898v953)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/004c08c0.cpp	original
 004c0c80	CTCGraphicAppearance	GetDummyObjectAssumingObjectAt	992	parked	DIFFER(923v982)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/004c0c80.cpp	original
-004c5b90	map<void*	operator[]	176	reserved (hand4f, in-house)	DIFFER(173v161)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand455/differ/004c5b90.cpp	original
 004ca019	CThing	ConstructFromParams	439	parked		0	rebuild/candidates/manual/pending/2026-11-10_linux_hand1022/differ/004ca019.cpp	original
 004cdc40	CSubtitledMessage	AddCameraTagFromText	1392	parked	DIFFER(1349v1379)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/004cdc40.cpp	original
 004ce550	CSubtitledMessage	CSubtitledMessage	1296	parked	DIFFER(1128v1281)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/004ce550.cpp	original
@@ -58,7 +57,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0054e6f0	NUISystem::CScrollingViewport	NUISystem::CScrollingViewport::vfunc_2	656	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/hdr/0054e6f0.cpp	gapscan/boundary
 0054eac0	NUISystem::CViewport	~CViewport	400	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0054eac0.cpp	original
 005502e0	NUISystem::CMesh	Draw	1312	parked	DIFFER(1321v1288)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand749/differ/005502e0.cpp	gapscan/boundary
-00554030	std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >	operator[]	160	reserved (hand4f, in-house)	DIFFER(161v150)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand956/differ/00554030.test.cpp	original
 00554740	NUISystem::CMorphingSprite	Draw	1968	parked	DIFFER(1524v1572)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand752/differ/00554740.test.cpp	gapscan/boundary
 00556a40	CRedefinerList	CRedefinerList::RefreshScriptThings	1472	parked	DIFFER(1441v1457)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/hdr/00556a40.cpp	original
 00559a90	NUISystem::CScrollBar	ProcessEvent	2208	parked	DIFFER(2144v2163)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand752/differ/00559a90.cpp	gapscan/boundary
@@ -69,7 +67,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0055f710	CTCHeroOnlineScoreboard	ResetAndOpenHTTPAndPrepareRequest	1136	parked	DIFFER(1121v1122)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0055f710.cpp	original
 00560bb0	CTCHeroOnlineScoreboard	GetDecryptedDocument	336	parked	DIFFER(320v321)	2	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00560bb0.cpp	original
 00560d00	CTCHeroOnlineScoreboard	CTCHeroOnlineScoreboard::ProcessLogin	1872	parked	DIFFER(1844v1860)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/00560d00.cpp	original
-005698a0	_global	RBTree_SearchOrCreate	160	reserved (hand4f, in-house)	DIFFER(161v150)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand956/differ/005698a0.test.cpp	original
 0057b43f	CTCHeroStats	RenderHeroDrunkenness	836	parked	DIFFER(830v836)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0057b43f.cpp	original
 0057c4f1	CTCHeroStats	ApplyBonusItemEffects	1192	reserved (hand3c, not plain C++)	DIFFER(1183v1192)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0057c4f1.cpp	original
 0057d23b	_global	FrameUpdate_ApplyMorphEffect	869	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/0057d23b.cpp	original
