@@ -40324,3 +40324,5 @@ __imp__SetFileTime@16	0143fd64	009c38c0
 ?DoEffect@CTCWallMountEffects@@AAEXXZ	007df6a0	007df770
 ?AllowCreatureActionRepulsion@NGlobalConsole@@3_NA	0137574a	00727220
 ?tolerance_band@?1??GetToleranceBand@CApplyAdditionalImpulseIfInCombatAndTooClose@@SIMXZ@4MA	01381198	00727220
+?SetAsBurning@CFirePoint@NFire@@QAEXXZ	00780540	00780d80
+?AddChangeText@CStatBar@NPlayerGui@@QAEXABVCRGBColour@@ABVCWideString@@J_N@Z	0064dae0	00439bb0

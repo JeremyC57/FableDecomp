@@ -1,0 +1,29 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CPlayerGui.h	2026-11-19 10:07:49.557259233 +0000
++++ hdr/engine/CPlayerGui.h	2026-11-19 16:01:52.270291225 +0000
+@@ -53,6 +53,9 @@
+ enum EPlayerGuiMode { };                                             // W4EPlayerGuiMode@@ (enumerators not needed here)
+ #endif
+ class CThing;class C3DVector;
++#ifdef FABLE_RETAIL_CPLAYERGUI_UPDATEMONEY
++namespace NPlayerGui { class CStatBase; }                            // UpdateStat's parameter type (hand3c, row 0x00439BB0)
++#endif
+ #ifdef FABLE_RETAIL_CPLAYERGUI_KICKREGION_PASS23
+ class CRegion;
+ #endif
+@@ -311,6 +314,16 @@
+     // (public static __fastcall), out of line in retail at 0x00438570 (no this set up at its callers). Declaration only.
+     static const class CPlayerGuiDef& __fastcall PeekGuiDef();          // 0x00438570
+ #endif
++#ifdef FABLE_RETAIL_CPLAYERGUI_UPDATEMONEY
++    // hand3c opt-in (row 0x00439BB0 CPlayerGui::UpdateMoney): Ego_r.pdb / FableWin.pdb ?UpdateMoney@CPlayerGui@@AAEXXZ (private; FableWin
++    // 0x01A814F0) and ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z (private const, out of line in retail at 0x00437AE0:
++    // `push PMoney ; ... mov ecx,esi ; call 0x00437AE0`, 0x00439DAB). Declarations only: no layout change.
++private:
++    void UpdateMoney();                                                  // 0x00439BB0
++    void UpdateStat(float current_value, float amount_change_needed_to_update, float stat_change_speed,
++                    float seconds_for_back_bar_to_stay, float seconds_to_stay, NPlayerGui::CStatBase& stat_base) const;   // 0x00437AE0
++public:
++#endif
+ #ifdef FABLE_RETAIL_CPLAYERGUI_GETMINIMAP
+     // Retail opt-in (agentC14, row 0x00603000 CreateMiniMapMarkers; first found by chunk 729): Ego_r.pdb / FableWin.pdb
+     // ?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ, out of line at 0x00437CE0 (`mov eax,[ecx+160h]; add eax,28h`). Declaration only.

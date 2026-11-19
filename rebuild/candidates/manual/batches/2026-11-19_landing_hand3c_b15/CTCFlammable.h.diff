@@ -1,0 +1,40 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CTCFlammable.h	2026-11-12 02:04:41.487404168 +0000
++++ hdr/engine/CTCFlammable.h	2026-11-19 15:53:13.882380628 +0000
+@@ -9,13 +9,37 @@
+ #include "stlport/fable_containers.h"
+ namespace NFire { class CFirePoint; }
+ #endif
++#ifdef FABLE_RETAIL_CTCFLAMMABLE_FRAMEUPDATE
++#include "engine/CDefPointer.h"
++class CFlammableDef;
++#endif
+ // Declared callable interface only; no instance is constructed or sized by this row.
+ class CTCFlammable:public CTCBase {public:
+  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_FLAMMABLE;}
++#ifdef FABLE_RETAIL_CTCFLAMMABLE_FRAMEUPDATE
++ // Opt-in (hand3c, row 0x00780D80 CTCFlammable::FrameUpdate; needs FABLE_RETAIL_CTCFLAMMABLE_FIREPOINTS): the rest of the Ego_r.pdb members
++ // (retail offsets, the STLport vector 4 bytes shorter than Ego_r's: Burning +0x1C, FireDamageAfterFrame +0x20, FireResistance +0x24,
++ // FireStrength +0x28, DamageCaused +0x2C, DamagePerPoint +0x30, HasFirePoint +0x31; the landed IsOnFire 0x00780400 reads +0x24), PDef
++ // typed (CDefPointer<const CFlammableDef>, one word), IsOnFire with its body (FableWin.pdb; inline in FrameUpdate, out of line at
++ // 0x00780400), the slot-9 FrameUpdate override and ExtinguishFire 0x00780C80. No layout change.
++ bool IsOnFire()const { return FireResistance <= 0; } void SetOnFire();
++ virtual void FrameUpdate();                        // slot 9, 0x00780D80
++ void ExtinguishFire();                             // 0x00780C80
++ CDefPointer<const CFlammableDef> PDef;             // +0x0c
++ std::vector<NFire::CFirePoint> FirePoints;         // +0x10
++ bool  Burning;                                     // +0x1c
++ long  FireDamageAfterFrame;                        // +0x20
++ long  FireResistance;                              // +0x24
++ long  FireStrength;                                // +0x28
++ float DamageCaused;                                // +0x2c
++ bool  DamagePerPoint;                              // +0x30
++ bool  HasFirePoint;                                // +0x31
++#else
+  bool IsOnFire()const; void SetOnFire();
+ #ifdef FABLE_RETAIL_CTCFLAMMABLE_FIREPOINTS
+  const void* PDef;                                  // +0x0c CDefPointer<const CFlammableDef>
+  std::vector<NFire::CFirePoint> FirePoints;         // +0x10
+ #endif
++#endif
+ };
+ #endif

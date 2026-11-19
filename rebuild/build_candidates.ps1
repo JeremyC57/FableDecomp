@@ -400700,6 +400700,21 @@ $catalog = @(
         TestSource = '00/72/CApplyAdditionalImpulseIfInCombatAndTooClose_operator_00727220_test.cpp'
         PassPattern = '00727220_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00780d80'
+        Module = 'CTCFlammable'
+        Source = '00/78/CTCFlammable_FrameUpdate_00780d80.cpp'
+        TestSource = '00/78/CTCFlammable_FrameUpdate_00780d80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT59'
+        PassPattern = '00780d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00439bb0'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_UpdateMoney_00439bb0.cpp'
+        TestSource = '00/43/CPlayerGui_UpdateMoney_00439bb0_test.cpp'
+        PassPattern = '00439bb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

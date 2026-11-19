@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00780d80   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+00780d80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00780d80   RELOCATION_MATCH PASS   FrameUpdate
+00439bb0   RELOCATION_MATCH PASS   UpdateMoney
+
+WINS: 2
+  00780d80 RELOCATION_MATCH CTCFlammable::?FrameUpdate@CTCFlammable@@UAEXXZ
+  00439bb0 RELOCATION_MATCH CPlayerGui::?UpdateMoney@CPlayerGui@@AAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCFlammable_FrameUpdate_00780d80
+  CPlayerGui_UpdateMoney_00439bb0

@@ -53,6 +53,9 @@ enum EPlayerGuiMode { };                                             // W4EPlaye
 enum EPlayerGuiMode { };                                             // W4EPlayerGuiMode@@ (enumerators not needed here)
 #endif
 class CThing;class C3DVector;
+#ifdef FABLE_RETAIL_CPLAYERGUI_UPDATEMONEY
+namespace NPlayerGui { class CStatBase; }                            // UpdateStat's parameter type (hand3c, row 0x00439BB0)
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_KICKREGION_PASS23
 class CRegion;
 #endif
@@ -310,6 +313,16 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // Retail opt-in (chunk 855, row 0x00490BE0): Ego_r.pdb 0x0044B230 / FableWin.pdb 0x01A80EA0 ?PeekGuiDef@CPlayerGui@@SIABVCPlayerGuiDef@@XZ
     // (public static __fastcall), out of line in retail at 0x00438570 (no this set up at its callers). Declaration only.
     static const class CPlayerGuiDef& __fastcall PeekGuiDef();          // 0x00438570
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_UPDATEMONEY
+    // hand3c opt-in (row 0x00439BB0 CPlayerGui::UpdateMoney): Ego_r.pdb / FableWin.pdb ?UpdateMoney@CPlayerGui@@AAEXXZ (private; FableWin
+    // 0x01A814F0) and ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z (private const, out of line in retail at 0x00437AE0:
+    // `push PMoney ; ... mov ecx,esi ; call 0x00437AE0`, 0x00439DAB). Declarations only: no layout change.
+private:
+    void UpdateMoney();                                                  // 0x00439BB0
+    void UpdateStat(float current_value, float amount_change_needed_to_update, float stat_change_speed,
+                    float seconds_for_back_bar_to_stay, float seconds_to_stay, NPlayerGui::CStatBase& stat_base) const;   // 0x00437AE0
+public:
 #endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_GETMINIMAP
     // Retail opt-in (agentC14, row 0x00603000 CreateMiniMapMarkers; first found by chunk 729): Ego_r.pdb / FableWin.pdb

@@ -17,6 +17,13 @@ public:
  CStatBar(const CPlayerGuiDef&); CStatBar(const CStatBar&); ~CStatBar();
  virtual void DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,const C2DVector&,const CRGBColour&,unsigned char,bool);
  virtual void ClearPrimitiveHandles();
+#ifdef FABLE_RETAIL_NPLAYERGUI_CSTATBAR_CHANGETEXTS
+ // hand3c opt-in (row 0x00439BB0 CPlayerGui::UpdateMoney): Ego_r.pdb / FableWin.pdb ?UpdateChangeTexts@CStatBar@NPlayerGui@@QAEXXZ
+ // (out of line in retail at 0x00646B12) and ?AddChangeText@CStatBar@NPlayerGui@@QAEXABVCRGBColour@@ABVCWideString@@J_N@Z (0x0064DAE0).
+ // Declarations only: no layout change.
+ void UpdateChangeTexts();                                            // 0x00646B12
+ void AddChangeText(const CRGBColour& colour,const CWideString& text,long value,bool start_to_end);   // 0x0064DAE0
+#endif
 protected:
  virtual void DrawStatBox(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,long,long,long,const CWideString&,unsigned char,bool,bool);
 #ifdef FABLE_RETAIL_NPLAYERGUI_CSTATBAR_CHANGE_TEXT_PASS23
