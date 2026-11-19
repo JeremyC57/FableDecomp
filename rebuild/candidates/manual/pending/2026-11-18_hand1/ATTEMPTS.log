@@ -1,0 +1,58 @@
+00918a40	draft (today's headers)	DIFFER(114v116) mov eax,[eax+4]/pop esi/mov ecx,eax v ours mov ecx,[eax+4]..pop esi after call
+00918a40	a: ptc_shop declared with ptc_shopkeeper (Ego_d same block)	same
+00918a40	b: else-return-early arm	same
+00918a40	c: GetTC(TCI_SHOP_KEEPER,&p)	same
+00918a40	d-g: non-EXPANDED GetTC bodies (FORCEINLINE_FIND / ORIGINAL_CHAIN / ORIGINAL_FIND)	same
+00918a40	h,i: =0 initialisers	same
+00918a40	j: && chain with assignment; k: positive arms; l: !GetOwner early return + block	same
+006e89b0	draft	DIFFER(344v344) epilogue pop esi before fmul (sched). DAG: fmul early 3 = fadd(cyc0)+lat3; retail needs fmul at cyc2 or epop13 delayed
+006e89b0	v1 return (sep+dist) paren	same (0x269 lat 3 after fadd, ready cyc3)
+006e89b0	v2 prong*(pref_dist); v3 paren fallback	same
+006e89b0	v4/v5/v6 helper returns in both arms	same (c2 sinks the common fadd into the join)
+006e89b0	v7 prong *= pref_dist; return prong	DIFFER(354)
+00f3abf0	draft	DIFFER 2 hunks (mov ebx,edi before guard: named 'left')
+00f3abf0	a: no 'left' (Ego_d has none): block_size - n > 4 ? 4 : block_size - n	DIFFER 19 hunks: placement right, ebx/ebp swapped (c2prio: this 58 key7 v SR temp 56 key24)
+00f3abf0	b-e: ternary spellings	same 19
+00f3abf0	f: if/else fill loop (this 60); g: switch fill loop	worse/same
+0066a9e0	draft (const CCharString& name = ...GetString())	DIFFER 1 hunk: CDefString temp slot base+0xC v retail base+8 (0x0066ABFE)
+0066a9e0	a: one expression ...GetString()	DIFFER(622) GetString temp built after the false,false pushes
+0066a9e0	b: implicit conversion + FORCEINLINE_FORWARDER	DIFFER(632) GetString expanded at site E (nested f=1.0)
+0066a9e0	c: implicit conversion at site E (plain headers)	RELOCATION_MATCH masked, but calls ??BCDefString@@QBE (0x00415D70 by binding) where retail calls 0x00415DD0 (bound GetString)
+0066a9e0	d/e: FableWin shape (early both-null return + ASSERT(pmaterialN.Get()) dead arms)	same as c (masked match, ??B binding)
+0066a9e0	inline trace: ??B c1 17; scores A27 B40 C40 D66 E118 (f 0.0234) refused; nested GetString always f=1.0 sc 17
+00680050	draft	DIFFER 2 hunks reload order at 0x00680196 (edi=pappearance_def piece, eax=flags piece); DAG: two equal-prio movs, IL order
+00680050	a/b/c: if-statement / nested if / single && chain shapes	same / worse / same
+00680050	d/e: pappearance_def declared earlier	worse (432)
+00680050	c2prio: flags prio -1 (coloured #16, split eax) v pappearance_def prio -9 (#17, split edi)
+00b0d360	draft	DIFFER(2242v2240) invented defaultScale local; outside-bool-block float transfer gives slot right but mov dl,[esp+28h];xor cl,dl (fold blocked by following store into shared slot)
+00b0d360	2-arg Transfer + GetDefaultVal specialisations (0x00B13530 idiom)	same
+00ae3c30	draft (named data ptr; not in Ego_d)	DIFFER
+00ae3c30	d: is.Read(IndexedTextureCoords.GetAsCArray(), size()*sizeof) + CARRAY_GETASCARRAY_START	2278v2310 GetAsCArray code exact; const 0 loses ebx (this gets ebx piece #46)
+00ae3c30	GetByteSize / PeekIndexedTextureCoords variants	same 2278
+00b6dc40	draft (/d2inlT200)	DIFFER; Ego_d has no empty_request local
+00b6dc40	b: plain member ReleaseSeaBuffers + IsEmpty early block	775v771: HaveBackgroundSea-false je goes to shared final epilogue
+008eec70	draft	DIFFER 2 hunks mov eax,esp moved across x87 at 0x008EEF2E (81-tuple region cut); GetVel/ApplyImpulse bodies MATCH at 0x008EEA30/0x008EEA80
+008eec70	g1/g2/g4/g5 paren / named r in Right / GetVel	same 2 hunks
+00b0d360	Fable advisor c2_full_2arg.cpp (TRANSFER_BODY preamble + 2-arg Transfer)	RELOCATION_MATCH; vland strict RELOCATION_MATCH PASS
+00918a40	m: GetTC if-form opt-in (hdr)	same
+00918a40	n: HasTC(TCI_SHOP_KEEPER) block + GetTC statement	129: boundary+pop esi right but redundant HasTC test kept
+00918a40	o/p/q: GetTC(id) reference + cast spellings in HasTC block	same 114
+008eec70	pA-pE: parens around Dot result / Dot arg / ApplyImpulse arg / GetVel body	same 2 hunks
+008eec70	r1 Right(const&) worse 1125; r2 no fastcall, r3 non-inline, r4 named r	same
+00f3abf0	h/j: count2 declared at top (Ego_d bprel order count,count2,block_buffer,count1,sub_script,script_entry)	same 19 hunks
+00f3abf0	i: full Ego_d declaration order (sub_script before script_entry)	worse 618
+00f3abf0	m1/m2: std::min(block_size - n, 4L) / (4L, ...)	worse 634
+00ae3c30	c2prio: draft data temp spans resize..Read (153 prio 56); ae_d splits it, this gets ebx piece #46 -> const 0 loses ebx
+00918a40	r: dead FABLE_RETAIL_ASSERT arm after GetTC	same 114 -> ESCALATED
+005ac10e	a/b/c/d: Ego_d scopes (goods lists at function scope, pupper_menu_entry for PC_TEXT blocks, pparent, pgold)	same 2 hunks
+005ac10e	e/f/g: declaration reorders	same / worse
+008eec70	C2DVector opt-ins NAMED_RESULT_SUB/MUL, ADD_COPY_RHS_X, FORCEINLINE_CTOR	worse/same -> ESCALATED
+00f3abf0	ia: CARRAY_INDEX_ASSERT dead arm	same (this 58)
+00f3abf0	v1 else-if, v2 count in ==3 path, v3 braces	same/worse
+00680050	h/i/j: validation checks as if(!cond) with dead FABLE_RETAIL_ASSERT(_ARM) bodies	same 2 hunks / worse
+006e89b0	w1-w3 / fastcall helper / C3DVector scale opt-ins	same 2 hunks (named/initialise worse 334) -> ESCALATED
+00b6dc40	x1-x3 return shapes, y1 if/else whole body, same-TU CloseStaticMap + LoadSea bodies (both match their own addresses)	same 775 -> ESCALATED
+00ae3c30	-	ESCALATED (constraint in tmp/ESCALATE_00ae3c30.md)
+005ac10e	-	ESCALATED
+00680050	-	ESCALATED
+00f3abf0	-	ESCALATED
