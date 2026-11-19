@@ -79,7 +79,17 @@ public:
     unsigned char    CreatureFamilies[0xc];                  // +0x0c CArray<CDefIndex>
     unsigned char    CreatedCreatures[0x4];                  // +0x18 list<CIntelligentPointer<CThing> >
 #endif
+#ifdef FABLE_RETAIL_CTCCREATUREGENERATOR_TRIGGERERS
+    // NF98 opt-in (round 8, q11261 / q11262, row 0x0074ACE0 UpdateUndead): CreatureTriggerers typed as Ego_r.pdb names it (the same 0xC
+    // bytes; needs FABLE_RETAIL_CTCCREATUREGENERATOR_UNDEAD before it for the typed CreatedCreatures) and Ego_r.pdb 0x0075DA90 /
+    // FableWin.pdb 0x025194C0 ?UpdateUndead@CTCCreatureGenerator@@IAEXXZ (protected; retail 0x0074ACE0). No layout change.
+    std::vector<CIntelligentPointer<CThingCreatureBase> > CreatureTriggerers;   // +0x1c
+protected:
+    void UpdateUndead();                                     // 0x0074ACE0
+public:
+#else
     unsigned char    CreatureTriggerers[0xc];                // +0x1c vector<CIntelligentPointer<CThingCreatureBase> >
+#endif
     TGenerationParameters GenParams;                         // +0x28
     bool             Active;                                 // +0x4c
     bool             Initialised;                            // +0x4d

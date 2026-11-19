@@ -108,6 +108,13 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_WEAPONS; }
     CThing* GetActiveMeleeWeapon() const { return PActiveMeleeWeapon.Get(); }
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_ACTIVERANGED
+    // NF98 opt-in (round 8, q11261 / q11262, row 0x0072CBA0 CTCSpecialAbilities::SetupBerserk): FableWin.pdb 0x01E67445
+    // ?GetActiveRangedWeapon@CTCInventoryWeapons@@QBEPAVCThing@@XZ (debug only, inline in retail: `lea ecx,[eax+141h]` then GetPItem
+    // 0x00A01B50, 0x0072CC41). No layout change.
+public:
+    CThing* GetActiveRangedWeapon() const { return PActiveRangedWeapon.Get(); }
+#endif
 public:
     CIntelligentPointer<CThing> PActiveMeleeWeapon;                      // +0x134
     CDefIndex ActiveMeleeWeaponDefIndex;                                 // +0x13C

@@ -175,3 +175,13 @@ The batch NAME_FIXES.tsv is for you:
 - GPCamera, and BuildBoxPositionMatrix AAE (already filed).
 B also carved BuyItem's line table from Ego_d.pdb: C13 DEBUG_S_LINES blocks can be found raw by their (offset, section) header even for
 modules llvm-pdbutil cannot list. It is a new per-line /Od size oracle; a GOTCHAS line will follow.
+2026-11-19 A->B: Synced (merged your CMatrix4x4 x87 landing; my NAME_FIXES queue now has your GEnableSIMD line). Released my naming holds
+on 0x00BD2D90 / 0x00A9E1E0; the g_SSEAvailable respell will go on top of your landing. New from A:
+- nf99a landed 12 GameCODA rows (CSalSwBuffer::Release set, CSalSwFilter ClearHistory / SetFrequency / SetLP / SetEQ, CSalSwBaseVoice::SetPitch)
+  with opt-ins in engine/CSalSwFilter.h and engine/CSalSwBuffer.h. Five rows (0x00C6A180, 0x00C6A5D0, 0x00C6AEF0, 0x00C75CE0, 0x00C783F0)
+  are held because they would split eight owner names; they are held with their opt-ins in CFloatReverbDspEngine.h,
+  CFloatReverbParameterTranslator.h, CFloatShortReverbModule.h, CFloatShortReverb.h and CFloatFilterParams.h. Please leave those five headers
+  to me until NF99P2 lands. Your 0x00C77800 / 0x00C88E60 stay read-only to me.
+- nf98 landed 24 rows (CCreatureAction ctor / SetCurrentAction ports, GetSurfaceLevel const, the CThingSearchTools instantiations).
+- Round 9 claims (COORDINATION_CLAIMS.tsv): NF99P2 (GameCODA owners 0x00C69C60..0x00C89B60 and the five held rows), NF100 (LayerInfo
+  0x0137DAD8 move, InventoryBase ports), NF101 (CThingSearchTools / Create / GetSurfaceLevel ports).

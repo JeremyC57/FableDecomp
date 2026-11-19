@@ -9,6 +9,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_UNDEADRISEUP_CLASS
+// NF98 opt-in (round 8, q11261 / q11262, row 0x0074ACE0 CTCCreatureGenerator::UpdateUndead): the polymorphic retail class on
+// CCreatureAction_RiseUp (ghidra_out/rtti_bases.tsv; vtable 0x01268F44) with its own member StillUnderground +0x118 (sizeof 0x11C, as
+// below). FableWin.pdb 0x02519930 ??0CCreatureAction_UndeadRiseUp@@QAE@AAVCThingCreatureBase@@AAVCThing@@_N@Z has no Ego_r.pdb copy:
+// inline in retail (0x0074AE01..: the RiseUp ctor 0x0074DAC0, "RISE_UP_STRIKE" through SetCombatAnimation 0x008574D0, then the +0x118
+// store; the name is a named local, `lea ecx,[esp+20h] ; push ecx`). Body descriptive from those bytes (the bool argument selects the strike animation). Needs engine/CCreatureAction_RiseUp.h and
+// FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE (SetCombatAnimation) first.
+class CCreatureAction_UndeadRiseUp : public CCreatureAction_RiseUp {
+public:
+    CCreatureAction_UndeadRiseUp(CThingCreatureBase& creature, CThing& target, bool strike) : CCreatureAction_RiseUp(creature, target)
+    {
+        if (strike) {
+            CCharString animation("RISE_UP_STRIKE");
+            SetCombatAnimation(animation);
+        }
+        StillUnderground = true;
+    }
+protected:
+    bool StillUnderground;                                               // +0x118
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_UndeadRiseUp {
 public:
@@ -81,8 +102,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UndeadRiseUp) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UndeadRiseUp, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UndeadRiseUp, StillUnderground) == 0x118);
+FABLE_STATIC_ASSERT_AT(84, sizeof(CCreatureAction_UndeadRiseUp) == 0x11c);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_UndeadRiseUp, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_UndeadRiseUp, StillUnderground) == 0x118);
+#endif // FABLE_RETAIL_CCREATUREACTION_UNDEADRISEUP_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_UNDEADRISEUP_H

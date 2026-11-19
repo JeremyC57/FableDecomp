@@ -17402,7 +17402,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006dfa10	GetInterfaceType	CTCTrophy	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006dfa20	GetClassTypeName	CTCTrophy	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 006dfa40	HasFrameUpdate	CTCTrophy	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006dfa50	GetAllThings	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind5<CThingFilter_HasTC,CThingFilter_HasTC,CThingFilter_HasScriptSupervision,CFilter_Not<CThingFilter_AICreatureHasProperty>,CFilter_Not<CThingFilter_IsLyingDown>_> *,list<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_> *	1	yes	accepted									
+006dfa50	GetAllThings<CThingAICreature,std::list<CIntelligentPointer<CThingAICreature> >,CFilter_Bind5<..> >	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind5<CThingFilter_HasTC,CThingFilter_HasTC,CThingFilter_HasScriptSupervision,CFilter_Not<CThingFilter_AICreatureHasProperty>,CFilter_Not<CThingFilter_IsLyingDown>_> *,list<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_> *	1	yes	accepted									
 006dfb40	`scalar deleting destructor'	CTCTrophy	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\CLandscapeBackgroundPatch_vectordeletingdestructor_006dfb40.cpp
 006dfb60	Clone	CCreatureAction_ShowTrophy	__thiscall	CCreatureActionBase *	1	CCreatureAction_ShowTrophy *	1	yes	accepted									
 006dfb90	CCreatureAction_ShowTrophy	CCreatureAction_ShowTrophy	__thiscall	undefined	2	CCreatureAction_ShowTrophy *,CCreatureAction_ShowTrophy *	0	yes	accepted									
@@ -25313,7 +25313,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0084f570	erase	std::vector	__thiscall	void	1	CScriptBase *	1	yes	accepted									
 0084f5e0	_M_insert_overflow	std::vector<std::pair<C3DVector, float>, std::allocator<std::pair<C3DVector, float>>>	unknown	undefined	0		0	yes	accepted									
 0084f740	operator=	std::vector<CCountedPointer<NCameraModes::CSubComponentBase>, std::allocator<CCountedPointer<NCameraModes::CSubComponentBase>>>	unknown	undefined	0		0			discovered	gapscan							
-0084f850	GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>	_global	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_> *,CThingCompare_Nearest *,CThingAICreature * *	1	yes	accepted									
+0084f850	GetAllThingsInRoughArea<const CThingCreatureBase,std::vector<const CThingCreatureBase*>,CFilter_Bind2<CThingFilter_IsCreatureThreatTo,CThingFilter_IsAwareOfThing> >	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_> *,CThingCompare_Nearest *,CThingAICreature * *	1	yes	accepted									
 0084fab0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 0084fbf0	vfunc_1	NCameraModes::CSubComponentBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0084fc20	ScalarDeletingDestructor	CSubComponentBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -29402,7 +29402,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008e3a20	Catch@0047e8cc	_global	unknown	undefined	0		0	yes	accepted									
 008e3aa0	_M_insert_overflow	std::vector<CIcicleData>	unknown	undefined	0		0	yes	accepted									
 008e3bb0	GetAllThings	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_BoundingBoxOverlapsMap,CThingFilter_HasNavigationInformation> *,vector<CThingPhysical_const*,std::allocator<CThingPhysical_const*>_> *	1	yes	accepted									
-008e3c50	GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>	_global	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_> *,CThingCompare_Nearest *,CThingAICreature * *	1	yes	accepted									
+008e3c50	GetAllThingsInRoughArea<CThingCreatureBase,std::vector<CThingCreatureBase*>,CFilter_Bind2<CThingFilter_IsNot,CThingFilter_In2DRange> >	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_> *,CThingCompare_Nearest *,CThingAICreature * *	1	yes	accepted									
 008e3eb0	GetAllThingsInRoughArea<CThingAICreature, std::vector<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_HasDefGlobalIndex>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature> *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
 008e4100	GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>	_global	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_> *,CThingCompare_Nearest *,CThingAICreature * *	1	yes	accepted									
 008e4360	PushBack_CElement36_008e2fc0_008e4360	_global	unknown	undefined	0		0	yes	accepted									
@@ -31464,7 +31464,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00924670	FinishAction	CCreatureAction_KrakenLowAttackInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00924720	FinishAction	CCreatureAction_KrakenLowChargeLoop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00924880	FinishAction	CCreatureAction_KrakenLowPoseInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00924930	FinishAction	CCreatureAction_KrakenHighAttackLoop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00924930	FinishAction	`anonymous namespace'::CCreatureAction_KrakenHighAttackLoop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00924a90	FinishAction	CCreatureAction_KrakenHighAttackInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00924b40	FinishAction	CCreatureAction_KrakenRoarInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00924b90	FinishAction	`anonymous namespace'::CCreatureAction_KrakenRoarLoop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -31952,7 +31952,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00941e00	Update	CAIStateGroup_KidReactToBlockage	__thiscall	void	1	CAIStateGroup_KidReactToBlockage *	1	yes	accepted									
 00941fc0	CAIStateGroup_KidReactToBlockage::IsRunnable	CAIStateGroup_KidReactToBlockage	__thiscall	bool	1	CAIStateGroup_KidReactToBlockage *	1	yes	accepted									
 00942230	GetActiveCameraPosition	CTCCameraPointDefinitionBase	__thiscall	C3DVector	1	CTCCameraPointDefinitionBase *	1	yes	accepted									
-00942270	operator	CIsVeryCloseMotionlessCreature	__thiscall	bool	2	CIsVeryCloseMotionlessCreature *,CThingCreatureBase *	1	yes	accepted									
+00942270	operator()	CIsVeryCloseMotionlessCreature	__thiscall	bool	2	CIsVeryCloseMotionlessCreature *,CThingCreatureBase *	1	yes	accepted									
 00942390	GetPBestThingInRoughArea	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature> *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
 009425e0	InitStateGroup	CAIStateGroup_WorkAtSchool	__thiscall	void	3	CAIStateGroup_WorkAtSchool *,CWorld const &,CThingAICreature &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\CAIStateGroupWorkAtSchool_InitStateGroup_009425e0.cpp
 009425f0	MoveAndFace	CAIStateGroup_WorkAtSchool	__thiscall	bool	4	CAIStateGroup_WorkAtSchool *,C3DVector,float,C3DVector	1	yes	accepted									
@@ -34242,12 +34242,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009bf160	SetRenderTarget	CDisplayManager	__thiscall	bool	2	CDisplayManager *,CRenderTarget *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9b\CDisplayManager_SetRenderTarget_009bf160.cpp
 009bf220	SetRenderTargetAsBackScreen	CDisplayManager	__thiscall	bool	1	CDisplayManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9b\CDisplayManager_SetRenderTargetAsBackScreen_009bf220.cpp
 009bf2d0	FlipToGDISurface	CDisplayManager	__thiscall	void	1	CDisplayManager *	1	yes	accepted									
-009bf350	BlitRenderTargetSurfaceToTexture	_global	__thiscall	void	3	CDisplayManager *,CTexture *,CSurface *	1	yes	accepted									
+009bf350	BlitRenderTargetSurfaceToTexture	CDisplayManager	__thiscall	void	3	CDisplayManager *,CTexture *,CSurface *	1	yes	accepted									
 009bf490	SetViewport	CDisplayManager	__thiscall	void	2	CDisplayManager *,C2DBoxF *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9b\CDisplayManager_SetViewport_009bf490.cpp
 009bf500	PreDeviceReset	CDisplayManager	__thiscall	void	1	CDisplayManager *	1	yes	accepted									
 009bf550	PostDeviceReset	CDisplayManager	__thiscall	bool	1	CDisplayManager *	1	yes	accepted									
 009bf5a0	RemoveDeviceResetCallback	CDisplayManager	__thiscall	void	2	LSocketServer *,LSocket *	1	yes	accepted									
-009bf5e0	CopyBackBufferToTexture	_global	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted									
+009bf5e0	CopyBackBufferToTexture	CDisplayManager	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted									
 009bf600	GetClosestMode	CDisplayManager	__thiscall	_D3DDISPLAYMODE	4	CDisplayManager *,C2DExtentsI *,long,bool	1	yes	accepted									
 009bf7e0	CreateDevice	CDisplayManager	__thiscall	ECreateDeviceSuccess	2	CDisplayManager *,CCreateDeviceParameters *	1	yes	accepted									
 009bfb30	ResetDevice	CDisplayManager	__thiscall	ECreateDeviceSuccess	2	CDisplayManager *,CCreateDeviceParameters *	1	yes	accepted									

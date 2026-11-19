@@ -8,37 +8,26 @@
 // (CTexture: PD3DTexture, then the bit fields).
 // Shape: the extents are copied into a local, the pixel format is a by-value result, the copy box (0, 0, X, Y) is built from the local
 // extents after the Initialise call, and the level-0 surface is a temporary used as `this` of the copy.
-struct IDirect3DTexture9;
-struct IDirect3DSurface9;
-class C2DExtentsI { public:
-    long X, Y;
-};
-class C2DBoxI { public:
-    long X0, Y0, X1, Y1;
-    C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) { }
-};
-class CPixelFormat { public:
-    long FormatIndex;
-    CPixelFormat() { }
-};
-class CSurface { public:                               // vtable 0x0122F84C
-    IDirect3DSurface9* PD3DSurface;             // +0x04
-    unsigned long      AllocationSource;        // +0x08
-    void*              PAllocatedMemory;        // +0x0c
-    virtual void v00();
-    ~CSurface() { Uninitialise(); }
-    void Uninitialise();                        // 0x009F2E20
-    CPixelFormat GetPixelFormat() const;        // 0x009F2F60
-    void CopyFromSurface(const C2DBoxI* destBox, const CSurface* source, const C2DBoxI* sourceBox, unsigned long flags);   // 0x009F37E0
-};
-class CTexture { public:
-    IDirect3DTexture9* PD3DTexture;             // +0x00
-    unsigned long      Bits;                    // +0x04 ByteLength:28, AllocationSource:4
-    bool IsInitialised() const { return PD3DTexture != 0; }
-    void Uninitialise();                        // 0x009F9F70
-    bool Initialise(const C2DExtentsI* size, long levels, const CPixelFormat* format, unsigned long usage, long pool, bool a, bool b);   // 0x009FA280
-    CSurface GetSurface(long level);            // 0x009F9E00
-};
+// Port (NF98, round 8, q11274): the local CTexture / CSurface / C2DExtentsI / C2DBoxI / CPixelFormat stand-ins replaced by the shared
+//   headers (Ego_r.pdb / FableWin.pdb spellings): ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z (0x009F9E00, FABLE_RETAIL_CTEXTURE_SIZED),
+//   ?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z, ?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ
+//   (FABLE_RETAIL_CSURFACE_PIXELFORMAT), ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z; the texture test is FableWin.pdb's inline
+//   ?IsValid@CTexture@@QBE_NXZ. CMinimapData has no shared header (Ego_r.pdb layout below).
+// Leaf: ?InitialiseMinimapTexture@CMinimapData@@QAEXXZ
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CTEXTURE_SIZED
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CSURFACE_COPYFROMMEMORY
+#define FABLE_RETAIL_CSURFACE_COPYFROMSURFACE
+#define FABLE_RETAIL_CSURFACE_PIXELFORMAT
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_C2DBOXI_CTORS
+#include "engine/Direct3D9Types.h"
+#include "engine/C2DExtentsI.h"
+#include "engine/C2DBoxI.h"
+#include "engine/CPixelFormat.h"
+#include "engine/CTexture.h"
+#include "engine/CSurface.h"
 template<class T> struct CRetailVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 class CMinimapData { public:
     C2DExtentsI         MinimapExtents;         // +0x00
@@ -52,11 +41,11 @@ class CMinimapData { public:
 
 void CMinimapData::InitialiseMinimapTexture()
 {
-    if (MinimapTexture.IsInitialised())
+    if (MinimapTexture.IsValid())
         MinimapTexture.Uninitialise();
     C2DExtentsI size = MinimapExtents;
     CPixelFormat format = MinimapSurface.GetPixelFormat();
-    MinimapTexture.Initialise(&size, 1, &format, 0, 1, false, false);
+    MinimapTexture.Initialise(size, 1, format, 0, SURFACE_POOL_MANAGED, false, false);
     C2DBoxI box(0, 0, size.X, size.Y);
-    MinimapTexture.GetSurface(0).CopyFromSurface(&box, &MinimapSurface, &box, 0);
+    MinimapTexture.GetSurfaceLevel(0).CopyFromSurface(&box, MinimapSurface, &box, 0);
 }

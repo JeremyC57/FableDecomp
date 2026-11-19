@@ -89,6 +89,11 @@ public:
  void SetGamma(float gamma, bool flag);                                 // 0x009BEAA0
 #endif
  bool SwapScreens();                                                    // 0x009BEEB0 ?SwapScreens@CDisplayManager@@QAE_NXZ
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_BLITRENDERTARGETSURFACETOTEXTURE
+ // NF98 opt-in (round 8, q11274, row 0x009BF350 itself): Ego_r.pdb 0x00B24330 / FableWin.pdb 0x0301CED0
+ // ?BlitRenderTargetSurfaceToTexture@CDisplayManager@@QAEXAAVCTexture@@ABVCSurface@@@Z (public; `ret 8`). Declaration only.
+ void BlitRenderTargetSurfaceToTexture(CTexture& texture, const CSurface& source);   // 0x009BF350
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER_RENDERTARGET
  // Retail opt-in (wf20 row 0x00F39730 CSurfaceCompositor::StartComposition): Ego_r.pdb / FableWin.pdb
  // ?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z (landed 0x009BF160) and FableWin-only ?IsRendering@CDisplayManager@@QBE_NXZ

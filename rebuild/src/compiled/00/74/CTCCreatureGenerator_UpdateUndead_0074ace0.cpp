@@ -1,7 +1,6 @@
 // CTCCreatureGenerator::UpdateUndead() -- for every triggerer and every created undead: outside the trigger radius a
 // surfaced undead returns to the earth and a buried one (when free to act) is moved to a fresh generation point near the
 // triggerer and rises with a strike; inside the radius a buried undead rises with a strike
-// Leaf: UpdateUndead
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x0074ACE0, 624 bytes, plain `ret` (0x498-byte frame: four 0x114-byte action temporaries).
@@ -13,107 +12,94 @@
 // @ 0x008EC6A0. RiseUpStrike vtable 0x01268F44, name "RISE_UP_STRIKE" @ 0x01268F30.
 // Layout (retail, not the PDB header's): CreatedCreatures list head +0x18, CreatureTriggerers start/finish +0x1c/+0x20,
 // trigger radius +0x2c, UndeadTriggered +0x88.
-class CThing;
-class CThingCreatureBase;
-#include "engine/C3DVector.h"
-class C2DVector { public: float X, Y; };
+// Port (NF98, round 8, q11261 / q11262): the namespace-N_0062e900 CCreatureActionBase stand-in and the local CThing / CThingCreatureBase /
+//   C2DVector / CCombatActionBase / CCreatureAction_RiseUp / RiseUpStrike / CCreatureAction_UndeadReturnToEarth / CTCPhysicsBase / list-node /
+//   CTCCreatureGenerator models replaced by the shared headers (the CreateCreaturesUndead 0x0074AF50 recipe): SetCurrentAction 0x006644F0
+//   and ~CCombatActionBase 0x0062E900 bind the PDB spellings. The strike temporary is CCreatureAction_UndeadRiseUp (vtable 0x01268F44 RTTI;
+//   FableWin.pdb inline ctor (creature, target, bool), NF98 _CLASS opt-in), was a CCreatureAction_RiseUpStrike stand-in; the RiseUp ctor
+//   0x0074DAC0 is ??0CCreatureAction_RiseUp@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z; UndeadReturnToEarth takes the Ego_r.pdb
+//   (CThingCreatureBase&) ctor (NF98 _CLASS opt-in); IsUnderground is ?IsUnderground@NCreatureMode@@YI_NABVCThing@@@Z; GetUndeadGenerationPoint
+//   takes (const CThingCreatureBase&, C3DVector&); own leaf the protected Ego_r.pdb / FableWin.pdb ?UpdateUndead@CTCCreatureGenerator@@IAEXXZ
+//   (NF98 opt-in FABLE_RETAIL_CTCCREATUREGENERATOR_TRIGGERERS, which also types CreatureTriggerers +0x1C). The physics call at +0x7C is
+//   slot 31 ResetPosition (the shared CTCPhysicsBase order; slot 30 +0x78 is SetPosition), was a local slot-31 "SetPosition".
+// Leaf: ?UpdateUndead@CTCCreatureGenerator@@IAEXXZ
+#define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCHARSTRING
-#include "engine/CThing.h"
-namespace N_0062e900 { struct CCreatureActionBase {
-    virtual void v00();
-    unsigned char _body[0x110];
-    ~CCreatureActionBase();                                  // 0x0062E900
-}; } using N_0062e900::CCreatureActionBase;
-class CCombatActionBase : public CCreatureActionBase { public:
-    void SetCombatAnimation(const CCharString& name);          // 0x008574D0
-};
-class CCreatureAction_RiseUp : public CCombatActionBase { public:          // vtable 0x01268C9C
-    bool m_hasTarget;                                        // +0x114
-    CCreatureAction_RiseUp(CThingCreatureBase* owner, CThing* thing);   // 0x0074DAC0
-};
-struct CCreatureAction_RiseUpStrike : CCreatureAction_RiseUp {   // vtable 0x01268F44
-    bool m_strike;                                           // +0x118
-    virtual void v00();
-    CCreatureAction_RiseUpStrike(CThingCreatureBase* owner, CThing* thing) : CCreatureAction_RiseUp(owner, thing)
-    {
-        {
-            CCharString name("RISE_UP_STRIKE");
-            SetCombatAnimation(name);
-        }
-        m_strike = true;
-    }
-};
-class CCreatureAction_UndeadReturnToEarth : public CCreatureActionBase { public:
-    CCreatureAction_UndeadReturnToEarth(CThingCreatureBase* creature);   // 0x008EC6A0
-};
-#define VF(n) virtual void v##n();
-class CTCPhysicsBase { public:
-    VF(0) VF(1) VF(2) VF(3) VF(4) VF(5) VF(6) VF(7) VF(8) VF(9) VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16) VF(17) VF(18)
-    VF(19) VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27) VF(28) VF(29) VF(30)
-    virtual void SetPosition(const C3DVector& pos);          // slot 31 (+0x7c)
-};
-#undef VF
-
-class CThingCreatureBase : public CThing { public:
-    bool IsFreeToPerformAction(const CCreatureActionBase& action);   // 0x00662210
-    void SetCurrentAction(const CCreatureActionBase& action);        // 0x006644F0
-};
-namespace NCreatureMode { bool __fastcall IsUnderground(const CThingCreatureBase& creature); }   // 0x0085F120
-class CBaseObject;
-class CBaseObjectPointer;
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_NCREATUREMODE_QUERIES
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCREATUREACTION_UNDEADRISEUP_CLASS
+#define FABLE_RETAIL_CCREATUREACTION_UNDEADRETURNTOEARTH_CLASS
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCCREATUREGENERATOR
+#define FABLE_RETAIL_CTCCREATUREGENERATOR_UNDEAD
+#define FABLE_RETAIL_CTCCREATUREGENERATOR_TRIGGERERS
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
-
-struct SListNode {
-    SListNode* next;
-    SListNode* prev;
-    CIntelligentPointer<CThingCreatureBase> data;            // +0x08
-};
-class CTCCreatureGenerator { public:
-    virtual void v00();
-    CThing*        ParentThing;                              // +0x04
-    unsigned char  _pad08[0x18 - 0x08];
-    SListNode*     CreatedCreatures;                         // +0x18 list head node
-    struct TVec { CIntelligentPointer<CThingCreatureBase>* _M_start; CIntelligentPointer<CThingCreatureBase>* _M_finish; bool empty() const { return _M_start == _M_finish; } } Triggerers;   // +0x1c
-    unsigned char  _pad24[0x2c - 0x24];
-    float          TriggerRadius;                            // +0x2c
-    unsigned char  _pad30[0x88 - 0x30];
-    bool           UndeadTriggered;                          // +0x88
-    bool GetUndeadGenerationPoint(CThing* creature, C3DVector* out);   // 0x0074A260
-    void UpdateUndead();
-};
+#include "engine/CCountedPointer.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/NCreatureMode.h"
+#include "engine/CArray.h"
+#include "engine/CDefIndex.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_RiseUp.h"
+#include "engine/CCreatureAction_UndeadRiseUp.h"
+#include "engine/CCreatureAction_UndeadReturnToEarth.h"
+#include "engine/CTCCreatureGenerator.h"
 
 void CTCCreatureGenerator::UpdateUndead()
 {
-    if (Triggerers.empty())
+    if (CreatureTriggerers.empty())
         UndeadTriggered = false;
-    for (CIntelligentPointer<CThingCreatureBase>* it = Triggerers._M_start; it != Triggerers._M_finish; ++it) {
+    for (std::vector<CIntelligentPointer<CThingCreatureBase> >::iterator it = CreatureTriggerers.begin(); it != CreatureTriggerers.end(); ++it) {
         CThingCreatureBase* triggerer = it->Get();
-        for (SListNode* node = CreatedCreatures->next; node != CreatedCreatures; node = node->next) {
-            CThingCreatureBase* creature = node->data.Get();
+        for (std::list<CIntelligentPointer<CThing> >::iterator node = CreatedCreatures.begin(); node != CreatedCreatures.end(); ++node) {
+            CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(node->Get());
             const C3DVector& creaturePos = creature->GetPos();
             const C3DVector& triggererPos = triggerer->GetPos();
             C3DVector delta;
             delta.X = triggererPos.X - creaturePos.X;
             delta.Y = triggererPos.Y - creaturePos.Y;
             bool underground = NCreatureMode::IsUnderground(*creature);
-            if (delta.Y * delta.Y + delta.X * delta.X > TriggerRadius * TriggerRadius) {
+            if (delta.Y * delta.Y + delta.X * delta.X > GenParams.SelfTriggerRadius * GenParams.SelfTriggerRadius) {
                 if (underground) {
                     bool free;
                     {
-                        CCreatureAction_RiseUpStrike action(creature, triggerer);
+                        CCreatureAction_UndeadRiseUp action(*creature, *triggerer, true);
                         free = creature->IsFreeToPerformAction(action);
                     }
                     C3DVector pos;
-                    if (free && GetUndeadGenerationPoint(triggerer, &pos)) {
-                        creature->GetPhysicsTC()->SetPosition(pos);
-                        creature->SetCurrentAction(CCreatureAction_RiseUpStrike(creature, triggerer));
+                    if (free && GetUndeadGenerationPoint(*triggerer, pos)) {
+                        creature->GetPhysicsTC()->ResetPosition(pos);
+                        creature->SetCurrentAction(CCreatureAction_UndeadRiseUp(*creature, *triggerer, true));
                     }
                 } else {
-                    creature->SetCurrentAction(CCreatureAction_UndeadReturnToEarth(creature));
+                    creature->SetCurrentAction(CCreatureAction_UndeadReturnToEarth(*creature));
                 }
             } else if (underground) {
-                creature->SetCurrentAction(CCreatureAction_RiseUpStrike(creature, triggerer));
+                creature->SetCurrentAction(CCreatureAction_UndeadRiseUp(*creature, *triggerer, true));
             }
         }
     }

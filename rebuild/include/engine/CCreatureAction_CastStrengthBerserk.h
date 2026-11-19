@@ -9,6 +9,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHBERSERK_CLASS
+// NF98 opt-in (round 8, q11261 / q11262, row 0x0072CBA0 CTCSpecialAbilities::SetupBerserk): the polymorphic retail class on
+// CCombatActionBase (ghidra_out/rtti_bases.tsv .?AVCCreatureAction_CastStrengthBerserk@@ : CCombatActionBase; vtable 0x01287384) with no
+// own members (sizeof 0x114, as below). The ctor is Ego_r.pdb 0x0090E6F0 / FableWin.pdb 0x02AE31B0
+// ??0CCreatureAction_CastStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z, out of line in retail at 0x008E6880; the implicit destructor
+// reaches ~CCombatActionBase 0x0062E900. Needs engine/CCombatActionBase.h (retail) first.
+class CCreatureAction_CastStrengthBerserk : public CCombatActionBase {
+public:
+    CCreatureAction_CastStrengthBerserk(CThingCreatureBase& creature);   // 0x008E6880
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_CastStrengthBerserk {
 public:
@@ -27,7 +38,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastStrengthBerserk) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastStrengthBerserk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_CastStrengthBerserk) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_CastStrengthBerserk, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHBERSERK_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTSTRENGTHBERSERK_H

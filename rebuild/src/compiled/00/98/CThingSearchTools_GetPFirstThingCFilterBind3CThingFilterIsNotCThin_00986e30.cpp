@@ -6,6 +6,10 @@
 // getter); CThing is a local retail-layout model (see below; retail sits 0x10 below Ego_r.pdb from
 // ThingTypeFlags on). The thing type is selected by its THING_TYPE mask (TThing::ThingTypeMask).
 // CThingFilter_IsCreatureType is inline: the creature category getter 0x00662000 compared with its Type.
+// Name fix (NF98, round 8, q11293): 0x00662000 is CThingCreatureBase::GetCreatureType() const returning ECreatureType (Ego_r.pdb 0x0053CE50 /
+//   FableWin.pdb 0x01D9A450 ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ; engine/CThingCreatureBase.h CREATURETYPE), was a made-up long GetCreatureCategory:
+//   the in-place declaration respell of the landed sibling 0x00914AA0 (NF93), with engine/ECreatureType.h.
+#include "engine/ECreatureType.h"
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -59,7 +63,7 @@ class CThingGameObject : public CThing { public:
 };
 class CThingCreatureBase : public CThingGameObject { public:
     enum { ThingTypeMask = 0xf };
-    long GetCreatureCategory() const;               // 0x00662000: def (+0xe0)->+0xc4
+    ECreatureType GetCreatureType() const;          // 0x00662000: def (+0xe0)->+0xc4
 };
 class CThingAICreature : public CThingCreatureBase { public:
     enum { ThingTypeMask = 0x1f };
@@ -71,7 +75,7 @@ class CThingFilter_IsNot { public:
 };
 class CThingFilter_IsCreatureType { public:                // inline: the creature's category getter == Type
     long Type;
-    bool operator()(const CThingCreatureBase& creature) const { return creature.GetCreatureCategory() == Type; }   // Ego_r ??RCThingFilter_IsCreatureType@@QBE_NABVCThingCreatureBase@@@Z
+    bool operator()(const CThingCreatureBase& creature) const { return creature.GetCreatureType() == Type; }   // Ego_r ??RCThingFilter_IsCreatureType@@QBE_NABVCThingCreatureBase@@@Z
 };
 class CThingFilter_In2DRange { public:
     float X, Y, RangeSq;
