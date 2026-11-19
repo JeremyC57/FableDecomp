@@ -151,7 +151,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00651273	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_0	1681	parked	DIFFER(1677v1681)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00651273.cpp	gapscan/boundary
 00659625	CTCVillage	UpdateTorchTasks	475	parked	DIFFER(466v475)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/00659625.cpp	original
 0065ad37	CTCVillage	UpdateCurfew	893	parked	DIFFER(873v893)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand306/differ/0065ad37.cpp	original
-00664ba0	CThingCreatureBase	GetCurrentMeshRadius	192	reserved (hand3c, not plain C++)	DIFFER(174v184)	4	rebuild/candidates/manual/pending/2026-10-20_linux_hand214/differ/00664ba0.cpp	original
 00666310	CThingCreatureBase	OnCreate	912	parked	DIFFER(915v908)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00666310.cpp	original
 006668a0	CThingCreatureBase	GetPossibleCombatAnimations	688	parked	DIFFER(673v673)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1020/differ/006668a0.cpp	original
 00666d40	CThingCreatureBase	GetHeightZBelowAt	352	parked	DIFFER(346v348)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00666d40.cpp	original
@@ -897,7 +896,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00beb6c0	_global	Interpolate_Quaternion_Scale_Matrix	992	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand569/differ/00beb6c0.cpp	original
 00bebca0	CEnginePrimitiveManagerMeshBase	PreloadReflectionTexture	496	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand675/differ/00bebca0.cpp	original
 00becde0	CRandomAppearanceMorph	CRandomAppearanceMorph::UpdateMorphArray	560	parked	DIFFER(340v346)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00becde0.cpp	original
-00bee070	_global	__pop_heap<pair<long,CCompositeSurfaceInfo> >	208	reserved (hand3c, not plain C++)	DIFFER(206v206)	1	rebuild/candidates/manual/pending/2026-10-19_linux_hand194/differ/00bee070.cpp	original
 00bf1ee0	CEnginePrimitiveRenderUtil	SetupOverlayAlphaBlendingStates	864	parked	DIFFER(837v855)	1	rebuild/candidates/manual/pending/2026-10-22_linux_hand286/differ/00bf1ee0.cpp	original
 00bf2240	CEnginePrimitiveRenderUtil	SetupOutlineSmoothFillStates	1600	parked	DIFFER(1595v1589)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand317/differ/00bf2240.cpp	original
 00bf2b50	CEngineTreeFilerBase	ConvertListToTree	688	parked	DIFFER(732v682)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00bf2b50.cpp	original

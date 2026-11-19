@@ -399973,6 +399973,20 @@ $catalog = @(
         TestSource = '00/72/std_Minsertoverflow_00723110_test.cpp'
         PassPattern = '00723110_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00bee070'
+        Module = 'std'
+        Source = '00/be/std_popheap_00bee070.cpp'
+        TestSource = '00/be/std_popheap_00bee070_test.cpp'
+        PassPattern = '00bee070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00664ba0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetCurrentMeshRadius_00664ba0.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetCurrentMeshRadius_00664ba0_test.cpp'
+        PassPattern = '00664ba0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

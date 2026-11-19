@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00bee070   WARN RELOC_NAME: ??$__adjust_heap@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@HU12@V?$CKeyPairCompareLess@JVCCompositeSurfaceInfo@@@@@std@@YIXPAU?$pair@JVCCompositeSurfaceInfo@@@0@HHU10@V?$CKeyPairCompareLess@JVCCompositeSurfaceInfo@@@@@Z -> 00bedd70 labelled 'std::__adjust_heap<std::pair<long, CCompositeSurfaceInfo> *, int, std::pair<long, CCompositeSurfaceInfo>, CKeyPairCompareLess<long, CCompositeSurfaceInfo>>'
+00bee070   RELOCATION_MATCH PASS   __pop_heap
+00664ba0   RELOCATION_MATCH PASS   GetCurrentMeshRadius
+
+WINS: 2
+  00bee070 RELOCATION_MATCH std::??$__pop_heap@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@U12@V?$CKeyPairCompareLess@JVCCompositeSurfaceInfo@@@@H@std@@YIXPAU?$pair@JVCCompositeSurfaceInfo@@@0@00U10@V?$CKeyPairCompareLess@JVCCompositeSurfaceInfo@@@@PAH@Z
+  00664ba0 RELOCATION_MATCH CThingCreatureBase::?GetCurrentMeshRadius@CThingCreatureBase@@QBEMXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  std_popheap_00bee070
+  CThingCreatureBase_GetCurrentMeshRadius_00664ba0
