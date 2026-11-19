@@ -23,7 +23,7 @@ the name is in no repo header or source), the same class as the documented `_$E2
 landings (0x0059C747: the Fidelity line only; 0x008F0B80: the owner body verbatim); both diffs checked against the repo files.
 
 ## Headers: NInventory_CTCInventoryBase.h `FABLE_RETAIL_NINVENTORY_CITEM_REMOVEITEM` (token-identical without it; 0 asserts moved).
-Includer recheck (84 rows: its includers + catalog-only renames): `logs/includer_recheck.txt`.
+Includer recheck (84 rows: its includers + catalog-only renames): 84 of 84 good. `logs/includer_recheck.txt`.
 
 ## Checks
 Synced with FullDecomp-B first (B's hand3c WatchForBooty landing, its CMatrix4x4 batch snapshot). `naming/rebind.py`: removed 54, added 48;
