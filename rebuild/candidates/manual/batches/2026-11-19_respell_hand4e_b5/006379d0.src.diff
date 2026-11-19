@@ -1,0 +1,17 @@
+2c2
+< // Leaf: ?InitLayerInfo@NThingMap@@YAXXZ
+---
+> // Leaf: ?InitLayerInfo@NThingMap@@YIXXZ
+4c4
+< // Identity: Ego_r.pdb / FableWin.pdb ?InitLayerInfo@NThingMap@@YIXXZ (thing_map_manager.obj #3, Ego_r 53 bytes like retail); the only
+---
+> // Identity: Ego_r.pdb / FableWin.pdb ?InitLayerInfo@NThingMap@@YIXXZ (__fastcall, as the PDBs spell it; thing_map_manager.obj #3, Ego_r 53 bytes like retail); the only
+14c14
+< void NThingMap::InitLayerInfo()
+---
+> void FABLE_FASTCALL NThingMap::InitLayerInfo()
+20c20
+< }
+\ No newline at end of file
+---
+> }

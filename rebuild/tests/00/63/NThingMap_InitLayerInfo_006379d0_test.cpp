@@ -8,7 +8,7 @@
 #define FABLE_RETAIL_CTHINGMAP_INITLAYERINFO
 #include "engine/NThingMap_CThingMap.h"
 
-void NThingMap::InitLayerInfo()
+void FABLE_FASTCALL NThingMap::InitLayerInfo()
 {
     MaxLayers = 6;
     MaxLayerCellSize = 0;

@@ -1,0 +1,9 @@
+11c11
+< void NThingMap::InitLayerInfo()
+---
+> void FABLE_FASTCALL NThingMap::InitLayerInfo()
+38c38
+< }
+\ No newline at end of file
+---
+> }

@@ -195,6 +195,6 @@ extern unsigned long SearchID_013b89b0;                      // 0x013B89B0 the s
 // (NThingMap::LayerInfo 0x0137DAD8).
 namespace NThingMap {
 extern long MaxLayerCellSize;
-void InitLayerInfo();
+void FABLE_FASTCALL InitLayerInfo();
 }
 #endif

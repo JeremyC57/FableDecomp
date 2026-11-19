@@ -1,0 +1,32 @@
+12a13
+> #include "engine/CSoundManagerLH.h"
+21,22d21
+< class CSoundEventManager;
+< class CSoundSystem;
+25,29d23
+< class CSoundManagerLH : public CASoundManager {           // vtable 0x0129D2C4
+< public:
+<     CSoundSystem* m_pSoundSystem;                         // +0x40 (the landed CSoundManagerLH rows' spelling)
+< };
+< 
+58c52
+<     if (PManager->m_pSoundSystem) {
+---
+>     if (PManager->SoundSystem) {
+94c88
+<     m->m_pSoundSystem = reinterpret_cast<CSoundSystem*>(&g_manager[3]);
+---
+>     m->SoundSystem = reinterpret_cast<CSoundSystem*>(&g_manager[3]);
+108c102
+<     m->m_pSoundSystem = 0;
+---
+>     m->SoundSystem = 0;
+111c105
+<     m->m_pSoundSystem = reinterpret_cast<CSoundSystem*>(&g_manager[3]);
+---
+>     m->SoundSystem = reinterpret_cast<CSoundSystem*>(&g_manager[3]);
+124c118
+< }
+\ No newline at end of file
+---
+> }

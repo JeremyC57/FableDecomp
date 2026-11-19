@@ -1,0 +1,27 @@
+8c8
+< //   members, one spelling in every row). The record comes from the shared engine/CActiveSoundInfo.h with the new opt-in
+---
+> //   members, one spelling in every row) on the shared engine/CSoundManagerLH.h (SoundSystem +0x40). The record comes from the shared engine/CActiveSoundInfo.h with the new opt-in
+12a13,14
+> // Inline-budget: FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE (declaration only) -- retail calls push_back 0x00AACEF0 (0x00AAC645); with the
+> //   STLport body visible VC7.1 expands it here: DIFFER(267v136) (measured 2026-11-19, ATTEMPTS.log).
+18a21
+> #include "engine/CSoundManagerLH.h"
+27,28d29
+< class CSoundEventManager;
+< class CSoundSystem;
+31,35d31
+< class CSoundManagerLH : public CASoundManager {           // vtable 0x0129D2C4
+< public:
+<     CSoundSystem* m_pSoundSystem;                         // +0x40 (the landed CSoundManagerLH rows' spelling)
+< };
+< 
+64c60
+<     if (PManager->m_pSoundSystem) {
+---
+>     if (PManager->SoundSystem) {
+71c67
+< }
+\ No newline at end of file
+---
+> }

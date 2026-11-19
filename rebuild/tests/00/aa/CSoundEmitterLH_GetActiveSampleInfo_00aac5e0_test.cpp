@@ -10,6 +10,7 @@
 #define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
 #include "engine/C3DVector.h"
 #include "engine/CASoundManager.h"
+#include "engine/CSoundManagerLH.h"
 #include "engine/CASoundEmitter.h"
 #include "engine/CASoundBank.h"
 #include "engine/CActiveSoundInfo.h"
@@ -18,14 +19,7 @@
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
 
-class CSoundEventManager;
-class CSoundSystem;
 class CSoundBankLH;
-
-class CSoundManagerLH : public CASoundManager {           // vtable 0x0129D2C4
-public:
-    CSoundSystem* m_pSoundSystem;                         // +0x40 (the landed CSoundManagerLH rows' spelling)
-};
 
 class CSoundEmitterLH : public CASoundEmitter {           // vtable 0x0129E6EC
 public:
@@ -55,7 +49,7 @@ public:
 void CSoundEmitterLH::GetActiveSampleInfo(const CASoundBank& bank, long sample,
                                           std::vector<CActiveSoundInfo, std::allocator<CActiveSoundInfo> >& infos) const
 {
-    if (PManager->m_pSoundSystem) {
+    if (PManager->SoundSystem) {
         for (std::list<CCountedPointer<CActiveSound> >::const_iterator it = ActiveSounds.begin(); it != ActiveSounds.end(); ++it) {
             CActiveSound* sound = it->Data;
             if (sound->PBank == &bank && sound->Sample == sample)
@@ -91,7 +85,7 @@ int main()
     CASoundBank* bankB = reinterpret_cast<CASoundBank*>(&g_manager[1]);
     std::vector<CActiveSoundInfo, std::allocator<CActiveSoundInfo> >& infos = *reinterpret_cast<std::vector<CActiveSoundInfo, std::allocator<CActiveSoundInfo> >*>(&g_manager[2]);
     // empty list, system up: nothing
-    m->m_pSoundSystem = reinterpret_cast<CSoundSystem*>(&g_manager[3]);
+    m->SoundSystem = reinterpret_cast<CSoundSystem*>(&g_manager[3]);
     e->CSoundEmitterLH::GetActiveSampleInfo(*bankA, 7, infos);
     check(g_n == 0, "empty list");
     TSound* s[5];
@@ -105,10 +99,10 @@ int main()
         p.Data = 0;
     }
     // no sound system: nothing
-    m->m_pSoundSystem = 0;
+    m->SoundSystem = 0;
     e->CSoundEmitterLH::GetActiveSampleInfo(*bankA, 7, infos);
     check(g_n == 0, "no sound system");
-    m->m_pSoundSystem = reinterpret_cast<CSoundSystem*>(&g_manager[3]);
+    m->SoundSystem = reinterpret_cast<CSoundSystem*>(&g_manager[3]);
     e->CSoundEmitterLH::GetActiveSampleInfo(*bankA, 7, infos);
     check(g_n == 2, "two matches (bank and sample)");
     check(g_store[0].SampleIndex == 7 && g_store[0].PBank == bankA && g_store[0].StartTime == 1.5f, "first match: sample, bank, start time");
