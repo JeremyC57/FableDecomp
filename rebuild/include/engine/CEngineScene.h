@@ -10,6 +10,11 @@ class CEngineScene : public CBaseClassNonCopyable {
 public:
     void RenderEntireScene(EEngineRenderLayer layer);
     void InvalidateBoundingBoxesAndDrawDistances(); // Ego_r00A46C40/FableWin02E21B80; native00B93500
+#ifdef FABLE_RETAIL_CENGINESCENE_GETMAXAVERAGEPRIMITIVESPERCELL
+    // hand2c opt-in (row 0x00B947E0 CEngineSceneMap::Update): FableWin.pdb ?GetMaxAveragePrimitivesPerCell@CEngineScene@@QBEMXZ
+    // (0x02E1C840; Ego_d.pdb CEngineScene field list: public, const, float), inline in retail (0x00B9480A `fdiv [ecx+54h]`).
+    float GetMaxAveragePrimitivesPerCell() const { return MaxAveragePrimitivesPerCell; }
+#endif
 private:
     unsigned char MapList[12]; // +04 nested map<long,map<long,CCountedPointer<CEngineSceneMap> > >
     float MapSize, OneOverMapSize; // +10,+14

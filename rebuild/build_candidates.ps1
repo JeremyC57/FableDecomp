@@ -399678,6 +399678,48 @@ $catalog = @(
         TestSource = '00/ae/CParticleProgram_ReadFromFile_00ae3c30_test.cpp'
         PassPattern = '00ae3c30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006c06d0'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_GetRentMoneyPos_006c06d0.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_GetRentMoneyPos_006c06d0_test.cpp'
+        PassPattern = '006c06d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e2df0'
+        Module = 'CTCWobble'
+        Source = '00/7e/CTCWobble_OnInitialActivate_007e2df0.cpp'
+        TestSource = '00/7e/CTCWobble_OnInitialActivate_007e2df0_test.cpp'
+        PassPattern = '007e2df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a62ae0'
+        Module = 'CPackedUIntArray'
+        Source = '00/a6/CPackedUIntArray_CalculateBias_00a62ae0.cpp'
+        TestSource = '00/a6/CPackedUIntArray_CalculateBias_00a62ae0_test.cpp'
+        PassPattern = '00a62ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b947e0'
+        Module = 'CEngineSceneMap'
+        Source = '00/b9/CEngineSceneMap_Update_00b947e0.cpp'
+        TestSource = '00/b9/CEngineSceneMap_Update_00b947e0_test.cpp'
+        PassPattern = '00b947e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f36010'
+        Module = 'NFractal::CPerlinNoise'
+        Source = '00/f3/NFractalCPerlinNoise_Get2DNoise_00f36010.cpp'
+        TestSource = '00/f3/NFractalCPerlinNoise_Get2DNoise_00f36010_test.cpp'
+        PassPattern = '00f36010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f36540'
+        Module = 'NFractal::CPerlinNoise'
+        Source = '00/f3/NFractalCPerlinNoise_GetGaussian2DNoise_00f36540.cpp'
+        TestSource = '00/f3/NFractalCPerlinNoise_GetGaussian2DNoise_00f36540_test.cpp'
+        PassPattern = '00f36540_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

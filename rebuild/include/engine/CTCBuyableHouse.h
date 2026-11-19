@@ -111,6 +111,11 @@ private:
     CThing* CreateSignPost(const CCharString& sign_post_def, bool main);
 #endif
     bool GetSignPostPos(bool main, class C3DVector& pos, class CRightHandedSet* orientation);   // 0x006BFCD0
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_GETRENTMONEYPOS
+    // hand2c opt-in (row 0x006C06D0): Ego_r.pdb 0x006F8940 / FableWin.pdb 0x024B2D50 ?GetRentMoneyPos@CTCBuyableHouse@@AAE_NAAVC3DVector@@JJ@Z
+    // (private, by reference). Declaration only.
+    bool GetRentMoneyPos(class C3DVector& ret, long bag, long bags);   // 0x006C06D0
+#endif
 public:
 #endif
 #ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_VSLOTS

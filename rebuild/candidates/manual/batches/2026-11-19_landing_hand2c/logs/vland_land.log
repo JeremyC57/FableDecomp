@@ -1,0 +1,24 @@
+addr       parity           behav  name
+006c06d0   RELOCATION_MATCH PASS   CTCBuyableHouse::GetRentMoneyPos
+007e2df0   RELOCATION_MATCH PASS   CTCWobble::OnInitialActivate
+00a62ae0   RELOCATION_MATCH PASS   CPackedUIntArray::CalculateBias
+00b947e0   WARN RELOC_NAME: ?ResizeLevels@CEngineSceneMap@@AAEXJ@Z -> 00b94540 labelled 'CEngineSceneMap::ResizeGrid'
+00b947e0   RELOCATION_MATCH PASS   CEngineSceneMap::Update
+00f36010   RELOCATION_MATCH PASS   NFractal::CPerlinNoise::Get2DNoise
+00f36540   RELOCATION_MATCH PASS   NFractal::CPerlinNoise::GetGaussian2DNoise
+
+WINS: 6
+  006c06d0 RELOCATION_MATCH CTCBuyableHouse::?GetRentMoneyPos@CTCBuyableHouse@@AAE_NAAVC3DVector@@JJ@Z
+  007e2df0 RELOCATION_MATCH CTCWobble::?OnInitialActivate@CTCWobble@@UAEXXZ
+  00a62ae0 RELOCATION_MATCH CPackedUIntArray::?CalculateBias@CPackedUIntArray@@ABEKPBXKJK@Z
+  00b947e0 RELOCATION_MATCH CEngineSceneMap::?Update@CEngineSceneMap@@QAEXXZ
+  00f36010 RELOCATION_MATCH NFractal::CPerlinNoise::?Get2DNoise@CPerlinNoise@NFractal@@QBEMABVC2DVector@@@Z
+  00f36540 RELOCATION_MATCH NFractal::CPerlinNoise::?GetGaussian2DNoise@CPerlinNoise@NFractal@@QBEMABVC2DVector@@@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CTCBuyableHouse_GetRentMoneyPos_006c06d0
+  CTCWobble_OnInitialActivate_007e2df0
+  CPackedUIntArray_CalculateBias_00a62ae0
+  CEngineSceneMap_Update_00b947e0
+  NFractalCPerlinNoise_Get2DNoise_00f36010
+  NFractalCPerlinNoise_GetGaussian2DNoise_00f36540

@@ -40231,3 +40231,6 @@ __wcsicmp	00f3fb84	00599e3f
 ?resize@?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@QAEXI@Z	00ae7b10	00ae3c30
 ?resize@?$vector@VC3DClothRenderVertex@@V?$allocator@VC3DClothRenderVertex@@@std@@@std@@QAEXIABVC3DClothRenderVertex@@@Z	00ae7830	00ae3c30
 ?resize@?$vector@VC3DQuad2@@V?$allocator@VC3DQuad2@@@std@@@std@@QAEXI@Z	00ae7aa0	00ae3c30
+?BitMasks@CPackedUIntArray@@0PAKA	013979e8	00a62ae0
+?GetCellTotalPrimitiveCount@CEngineSceneGrid@@AAEKKK@Z	00b91d20	00b947e0
+?ResizeLevels@CEngineSceneMap@@AAEXJ@Z	00b94540	00b947e0
