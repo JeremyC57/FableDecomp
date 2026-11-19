@@ -135,7 +135,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00648820	CDrawMiniMap	Draw	3464	parked	acctC round six: round 6 final (2026-11-16): DIFFER(3464v3464); latest draft 00648820.cpp + NOTES.md in the folder (grep the ad	54	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE9/00648820.cpp	original
 006495a8	CDrawScreenFade	Draw	938	parked	DIFFER(937v938)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/006495a8.cpp	original
 00649952	CDrawBettingHUD	Draw	1337	parked	DIFFER(11v1337)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00649952.cpp	original
-00649e8b	CDrawFishingGame	Draw	469	reserved (hand4a, in-house)	DIFFER(469v469)	8	rebuild/candidates/manual/pending/2026-11-12_linux_handQ22/differ/00649e8b.cpp	original
 0064a9c8	CDrawGuildSeal	DisplayNextMessage	1182	parked	DIFFER(9v1182)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064a9c8.cpp	original
 0064b1ac	CDrawAbilityButtons	UpdateWeaponAbilities	1045	parked	DIFFER(1058v1045)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064b1ac.cpp	original
 0064b8b3	CDrawTargetInfo	Draw	1426	parked	DIFFER(11v1426)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064b8b3.cpp	original

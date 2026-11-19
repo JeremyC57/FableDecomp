@@ -32,6 +32,17 @@ public:
  CDefPointer<const CFishingDef> PDef;
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_FISHING;}
  CDefPointer<const CFishingDef> GetPDef()const{return PDef;}
+#ifdef FABLE_RETAIL_CTCFISHING_DRAW_GETTERS
+ // Nested opt-in (hand4a, row 0x00649E8B NPlayerGui::CDrawFishingGame::Draw): FableWin.pdb's inline const getters
+ // ?GetStage@CTCFishing@@QBE?AW4EFishingStage@@XZ, ?IsStageInitialised@CTCFishing@@QBE_NXZ, ?GetDistance@CTCFishing@@QBEMXZ and
+ // ?GetStrain@CTCFishing@@QBEMXZ (retail reads +0x14 / +0x18 / +0x2C / +0x34 in place), and Ego_r.pdb + FableWin.pdb
+ // ?GetPFishingRodDef@CTCFishing@@QBEPBVCFishingRodDef@@XZ (out of line in retail at 0x007B0880). No layout change.
+ EFishingStage GetStage()const{return Stage;}
+ bool IsStageInitialised()const{return StageInitialised;}
+ float GetDistance()const{return Distance;}
+ float GetStrain()const{return Strain;}
+ const class CFishingRodDef* GetPFishingRodDef()const;                       // 0x007B0880
+#endif
 };
 FABLE_STATIC_ASSERT(offsetof(CTCFishing,PDef)==0x60);
 FABLE_STATIC_ASSERT(sizeof(CTCFishing)==100);

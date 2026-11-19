@@ -400113,6 +400113,13 @@ $catalog = @(
         TestSource = '00/a5/C3DAnimation2_InitialiseAnimationInstance_00a50c20_test.cpp'
         PassPattern = '00a50c20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00649e8b'
+        Module = 'NPlayerGui::CDrawFishingGame'
+        Source = '00/64/NPlayerGuiCDrawFishingGame_Draw_00649e8b.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawFishingGame_Draw_00649e8b_test.cpp'
+        PassPattern = '00649e8b_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

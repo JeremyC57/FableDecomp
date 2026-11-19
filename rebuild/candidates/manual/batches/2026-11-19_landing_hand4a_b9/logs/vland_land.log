@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00649e8b   RELOCATION_MATCH PASS   Draw
+
+WINS: 1
+  00649e8b RELOCATION_MATCH NPlayerGui::CDrawFishingGame::?Draw@CDrawFishingGame@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NPlayerGuiCDrawFishingGame_Draw_00649e8b
