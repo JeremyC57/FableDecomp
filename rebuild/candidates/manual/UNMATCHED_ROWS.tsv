@@ -786,7 +786,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a90ae0	CAnimatedBlock	InitialiseFromMeshFileData	640	parked	DIFFER(620v629)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00a90ae0.cpp	original
 00a90d60	N3DPrimitive::CDeviceIndependent	RemapBoneIndices	416	parked	DIFFER(445v413)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand529/differ/00a90d60.cpp	original
 00a92900	C3DPrimitive2	LoadBinary	2288	parked	DIFFER(2283v2274)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand784/differ/00a92900.test.cpp	original
-00a9d480	CMatrix4x4	AlignedPreScale	256	reserved (hand3c, not plain C++)	DIFFER(243v243)	2	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00a9d480.cpp	original
 00a9d750	C3DAnimationManager	ApplyBoneMorphScaling	1232	reserved (hand3c, not plain C++)	DIFFER(551v551)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00a9d750.test.cpp	original
 00a9dc20	_global	ApplyPartialAnimationAlpha	720	parked	DIFFER(709v706)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand727/src/00a9dc20.cpp	original
 00aa8830	CChunkedFileSuperChunk	ReadFromFile	1248	parked	DIFFER(918v889)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00aa8830.cpp	original
@@ -970,7 +969,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c62370	_global	Quaternion_FromAxisAngle	128	parked	egod e16 (descriptive name GetRandomPointInSphere, libpk, no PDB): RELOCATION_MATCH + test PASS but strict headers reject its local C3DVector model (SHARED_HEADER_AVAILABLE): libpk calls operator+ 0x0	0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c62370.cpp	original
 00c64420	CEaxContext	SetPrimaryFXSlotID	432	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand601/differ/00c64420.cpp	original
 00c69a70	NScript::CQ_GuildTrainingSkillScript	NScript::CQ_GuildTrainingSkillScript::AllocateMemory	240	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand342/differ/00c69a70.cpp	original
-00c6ac90	CSoundMixer	MixBlockRamped	48	reserved (hand3c, not plain C++)	DIFFER(39v38)	2	rebuild/candidates/manual/pending/2026-10-15_linux_hand84/differ/00c6ac90.cpp	original
 00c6ad10	_global	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	96	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand443/differ/00c6ad10.cpp	original
 00c6b260	_global	FloatToLongConvert_Vectorized	320	parked	DIFFER(391v315)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand680/differ/00c6b260.cpp	original
 00c6be60	_global	Audio_ComputeFrequencyResponse	256	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c6be60.cpp	original

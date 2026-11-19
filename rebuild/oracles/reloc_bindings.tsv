@@ -40240,3 +40240,5 @@ __wcsicmp	00f3fb84	00599e3f
 ??_7CPSCEmitterGeneric@NParticleEngine@@6B@	012a002c	00b103f0
 ??_7CPSCDecalRenderer@NParticleEngine@@6B@	012a09bc	00b1dfd0
 ?GetComponentCost@CPSCSplineBase@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z	00b202c0	00b05c60
+?CUnprovenMixKernel_00c6aae0@@YAXPBFKPAJFF@Z	00c6aae0	00c6ac90
+?g_SSEAvailable@@3_NA	013d2880	00a9d480

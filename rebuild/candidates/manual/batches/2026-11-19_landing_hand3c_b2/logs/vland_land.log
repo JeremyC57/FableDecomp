@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00c6ac90   RELOCATION_MATCH PASS   MixBlockRamped
+00a9d480   RELOCATION_MATCH PASS   AlignedPreScale
+
+WINS: 2
+  00c6ac90 RELOCATION_MATCH CSoundMixer::?MixBlockRamped@CSoundMixer@@QAEXPBFFF@Z
+  00a9d480 RELOCATION_MATCH CMatrix4x4::?AlignedPreScale@CMatrix4x4@@QAEXABVC3DVector@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CSoundMixer_MixBlockRamped_00c6ac90
+  CMatrix4x4_AlignedPreScale_00a9d480

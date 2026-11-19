@@ -1,0 +1,2 @@
+address	landed_name	issue	action
+00c6aae0	CUnprovenMixKernel_00c6aae0	"Unproven" placeholder name (banned in landed code since 2026-11-10); same-TU static libpk MMX ramped scale-accumulate kernel, called by CSoundMixer::MixBlockRamped 0x00C6AC90	naming agent: find the libpk / FableWin name (FableWin.pdb, libpk symbols) or give a descriptive one; respell in both landed rows

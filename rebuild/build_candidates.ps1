@@ -399786,6 +399786,21 @@ $catalog = @(
         TestSource = '00/b0/NParticleEngineCPSCSingleSprite_GetComponentCost_00b05c60_test.cpp'
         PassPattern = '00b05c60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c6ac90'
+        Module = 'CSoundMixer'
+        Source = '00/c6/CSoundMixer_MixBlockRamped_00c6ac90.cpp'
+        TestSource = '00/c6/CSoundMixer_MixBlockRamped_00c6ac90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6ac90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9d480'
+        Module = 'CMatrix4x4'
+        Source = '00/a9/CMatrix4x4_AlignedPreScale_00a9d480.cpp'
+        TestSource = '00/a9/CMatrix4x4_AlignedPreScale_00a9d480_test.cpp'
+        PassPattern = '00a9d480_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
