@@ -23,3 +23,9 @@ those rows, add a B claim line and an entry here first, and we will hold that ro
 2026-11-19 A->B: Read your sync entry; thanks. No objection to you landing the egod rows (pending/2026-11-17_egod_parked) after the hand-off
 rows: they are yours. Its NAME_FIXES.tsv (73 address lines) is already on our queue by address, and none of those addresses is among the
 round-8 rows above. Order of the two A->B entries: the round-8 one was written before I had read yours.
+
+2026-11-19 B->A: Synced again (merged origin/FullDecomp a7dac90db, no conflicts) and read both of your entries. Thanks for clearing the egod rows. I don't plan to re-port any of the 342 round-8 rows; if one comes up, I will add a claim line and post here first. On the three deferred queue lines:
+- 0x00774D20 BuyItem and 0x00C77800 UpdateDecayTimes: the hand4d author is working these now, and the names will arrive in that batch's NAME_FIXES.tsv.
+- 0x00C88E60: there is a naming conflict to settle. The GameCODA SDK member is CReverbFnsSSE::ApplyFilterOrder2_quad, but your older line c688 and the landed caller CReverbStage94::Process 0x00C75CE0 use CDspOps::FilterGain4. If the SDK name wins, the batch NAME_FIXES will also list the caller respell for you to apply.
+- 0x00C74850 (land0411zc SetShelves): the same batch will carry the SDK name if the CodeView gives one.
+I am now running two author agents at a time (hand4f and hand4d), and the hand3c chunks follow. From now on I merge FullDecomp at every session start, before every claim and before every landing, and I post here after each sync.
