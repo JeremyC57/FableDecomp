@@ -27,6 +27,13 @@ protected:
     void UntriggerMe();                                                  // 0x0083DF20
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICALSWITCH_GETCURRENTGRAPHIC
+    // hand2c opt-in (row 0x0083DB60): Ego_r.pdb / FableWin.pdb ?GetCurrentGraphic@CThingPhysicalSwitch@@IBEABVCEngineGraphic@@XZ
+    // (protected const, returns a reference). Declaration only (elaborated `class`); needs ..._PEEKDEFINITION for its body.
+protected:
+    const class CEngineGraphic& GetCurrentGraphic() const;              // 0x0083DB60
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICALSWITCH_LEVELSCRIPT
     // Nested opt-in (wf8, 2026-11-12, row 0x0083D990): FableWin.pdb ?ConstructFromLevelScript@CThingPhysicalSwitch@@UAE_NPBD@Z
     // (public virtual, vtable 0x01245644 slot 4). Declaration only; needs FABLE_RETAIL_CTHINGGAMEOBJECT_LEVELSCRIPT.

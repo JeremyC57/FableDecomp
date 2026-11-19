@@ -423,7 +423,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0083b6b0	CThingStaticMeshPrimitive_83b6b0	DrawPreparePrimitivesForRendering	320	parked	DIFFER(308v309)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0083b6b0.cpp	gapscan/boundary
 0083c2d0	CThingSwitch	ConstructFromLevelScript	768	parked	DIFFER(760v756)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0083c2d0.cpp	original
 0083d2e0	CThingMarker	DrawPreparePrimitivesForRendering	384	parked	DIFFER(356v372)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/0083d2e0.cpp	gapscan/boundary
-0083db60	CThingPhysicalSwitch	GetCurrentGraphic	128	reserved (hand2c, not plain C++)	DIFFER(162v125)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0083db60.cpp	original
 0083dc80	CThingStaticMeshPrimitive_83dc80	DrawPreparePrimitivesForRendering	320	parked	DIFFER(308v309)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0083dc80.cpp	gapscan/boundary
 0083e1f0	CThingScriptUIDReplacer	CThingScriptUIDReplacer	2080	parked	DIFFER(1984v1973)	10	rebuild/candidates/manual/pending/2026-11-07_linux_hand830/differ/0083e1f0.cpp	original
 008411d0	_global	LHHttp2_HandleResponse	512	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand480/differ/008411d0.cpp	original
@@ -754,7 +753,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a58790	CSphere	GetFirstIntersectionWithFiniteLine	720	parked	DIFFER(699v707)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a58790.cpp	original
 00a58b50	NBBBMaths::CSphere	GetFirstIntersectionWithTriangle	2208	parked	DIFFER(2211v2207)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/00a58b50.cpp	original
 00a5a9d0	std	transform<const C3DVector*, std::back_insert_iterator<std::vector<C2DVector> >, (anonymous	208	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00a5a9d0.cpp	original
-00a5b650	CCachedFile	Copy	192	reserved (hand2c, not plain C++)	DIFFER(179v184)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00a5b650.cpp	original
 00a5c360	_global	GFNormalise3DVectors	432	parked	DIFFER(386v421)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00a5c360.cpp	original
 00a60410	_global	GFRemoveComments	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand504/differ/00a60410.cpp	original
 00a614b0	std::_Rb_tree<CWideString,std::pair<CWideString const,CChecksumCacheFile::CEntry>,std::_Select1st<std::pair<CWideString const,CChecksumCacheFile::CEntry> >,std::less<CWideString>,std::allocator<std::pair<CWideString const,CChecksumCacheFile::CEntry> > >	insert_unique	640	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand534/differ/00a614b0.cpp	original
@@ -915,7 +913,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00bd3070	CEnginePrimitiveManagerAnimatedMeshesBase	RenderMeshPrimitive	11296	parked	acctC round six: round 6 final (2026-11-16): DIFFER(11288v11288); latest draft 00bd3070.cpp + NOTES.md in the folder (grep the 	1	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE7/00bd3070.cpp	original
 00bd6810	CEnginePrimitiveManagerAnimatedMeshesBase	RenderDebugBoneHierarchy	896	parked	DIFFER(868v894)	3	rebuild/candidates/manual/pending/2026-10-22_linux_hand285/differ/00bd6810.cpp	original
 00bd71b0	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitive	28	reserved (hand2c, not plain C++)	DIFFER(2121v2116)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/differ/00bd71b0.cpp	original
-00be2120	CEngineInternalPrimitive2DViewport	CEngineInternalPrimitive2DViewport::ClearChildPrimitive	112	reserved (hand2c, not plain C++)	DIFFER(97v97)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00be2120.cpp	original
 00be2b70	_global	BuildBlendingTables_ComputeBlendFactor	352	parked	DIFFER(343v343)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand531/differ/00be2b70.cpp	original
 00be37e0	CLandscapeTesselatorBase	TesselateEdgeGeneric	304	parked		0	rebuild/candidates/manual/pending/2026-10-20_linux_hand224/differ/00be37e0.cpp	original
 00be3970	CLandscapePatchTesselator	?TesselateEdge@CLandscapePatchTesselator@@EAEXPAVCPatchTesselationEdgeStrip@@JJ_N1W4LANDSC	2400	parked		0	rebuild/candidates/manual/pending/2026-11-08_linux_hand873/differ/00be3970.cpp	original

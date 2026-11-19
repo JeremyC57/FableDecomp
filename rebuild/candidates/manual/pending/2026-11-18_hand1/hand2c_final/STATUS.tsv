@@ -1,0 +1,99 @@
+address	grade	bytes	test	grades_used	notes
+0041afa0	OPEN	1455	-	1	baseline draft DIFFER(1014v1455) hunks=11 difflines=704
+00439bb0	OPEN	592	-	1	baseline draft DIFFER(592v592) hunks=10 difflines=36
+0052ee00	OPEN	192	-	1	baseline draft DIFFER(185v192) hunks=17 difflines=81
+0057c4f1	OPEN	1192	-	1	baseline draft DIFFER(1192v1192) hunks=82 difflines=238
+00591b7f	OPEN	735	-	1	baseline draft DIFFER(729v735) hunks=35 difflines=112
+00621a20	OPEN	600	-	1	baseline draft DIFFER(600v600) hunks=18 difflines=36
+0063f4b0	DIFFER	769	-	30	PORTED to shared headers (Q23 Bind3 source -> Bind2, FOREACHINROUGHAREA_BODY): residue = loop-exit reload order (TLX/BRX/BRY/map; Q19/Q23 family gap); include + class-order permutations and a guarded/byte-offset y loop opt-in: no change (port shows the reload swap at two sites, 0x0063F6F4 and 0x0063F755; the local-model draft had one)
+00646762	OPEN	740	-	1	baseline draft DIFFER(735v740) hunks=29 difflines=66
+0064d404	OPEN	399	-	1	baseline draft DIFFER(393v399) hunks=26 difflines=51
+0064dd9a	OPEN	580	-	1	baseline draft DIFFER(533v580) hunks=14 difflines=286
+00664ba0	OPEN	184	-	1	baseline draft DIFFER(207v184) hunks=17 difflines=69
+0066cd50	OPEN	423	-	1	baseline draft DIFFER(382v423) hunks=22 difflines=153
+00699e60	OPEN	431	-	1	baseline draft DIFFER(459v431) hunks=32 difflines=88
+006b2960	OPEN	250	-	1	baseline draft DIFFER(250v250) hunks=16 difflines=96
+006b75a0	OPEN	434	-	1	baseline draft DIFFER(414v434) hunks=26 difflines=67
+006c06d0	RELOCATION_MATCH	312	PASS(vland)	5	shared headers + C3DVector NORMALISE_SQUARED_ZXY; hdr opt-in FABLE_RETAIL_CTCBUYABLEHOUSE_GETRENTMONEYPOS [LANDED 039a0c8c02]
+006cc800	OPEN	399	-	1	baseline draft DIFFER(373v399) hunks=28 difflines=108
+006e5a00	OPEN	1772	-	1	baseline draft DIFFER(163v1772) hunks=9 difflines=647
+00766660	OPEN	696	-	1	baseline draft DIFFER(700v696) hunks=39 difflines=100
+007727e0	OPEN	433	-	1	baseline draft DIFFER(467v433) hunks=20 difflines=250
+0077a430	OPEN	1115	-	1	baseline draft DIFFER(1054v1115) hunks=55 difflines=389
+0077d5b0	OPEN	1491	-	1	baseline draft DIFFER(192v1491) hunks=13 difflines=462
+00780d80	OPEN	539	-	1	baseline draft DIFFER(539v539) hunks=4 difflines=8
+0078a690	OPEN	1097	-	1	baseline draft DIFFER(1097v1097) hunks=42 difflines=109
+0078d250	OPEN	1729	-	1	baseline draft DIFFER(1614v1729) hunks=64 difflines=738
+0079d360	OPEN	1115	-	1	baseline draft DIFFER(1051v1115) hunks=66 difflines=281
+007df770	OPEN	437	-	1	baseline draft DIFFER(436v437) hunks=30 difflines=91
+007e2df0	RELOCATION_MATCH	257	PASS(vland; g++ portable twin PASS)	4	CTCWobble PASS22 + overlay opt-in FABLE_RETAIL_CTCWOBBLE_ONINITIALACTIVATE; callee slot 75 = SetRHSet; GFFloatToLongCeil helper [LANDED 039a0c8c02]
+007f8c20	OPEN	221	-	1	baseline draft DIFFER(221v221) hunks=15 difflines=68
+0082a020	OPEN	343	-	1	baseline draft DIFFER(332v343) hunks=20 difflines=130
+0083db60	RELOCATION_MATCH	125	PASS(vland)	1	returns const CEngineGraphic& via PeekDefinition (PEEKDEFINITION_SAMETU, landed 0x0083D900 body); new opt-in CTHINGPHYSICALSWITCH_GETCURRENTGRAPHIC
+0087cfe0	OPEN	1447	-	1	baseline draft DIFFER(1468v1447) hunks=94 difflines=468
+008a8260	DIFFER	466	-	3	456v466: retail private early-exit epilogue 0x008A8428 (ours merged); Ego_d locals applied (phero CThingPlayerCreature*, ptcs at hero-block scope) - no change
+008d5aa0	OPEN	1126	-	1	baseline draft DIFFER(1115v1126) hunks=49 difflines=167
+00914650	OPEN	340	-	1	baseline draft '?IsRunnable@CAIStateGroup_BirdStartled@@UAE_NXZ' hunks=20 difflines=72
+00986210	OPEN	461	-	1	baseline draft DIFFER(454v461) hunks=31 difflines=170
+00988e80	OPEN	917	-	1	baseline draft DIFFER(889v917) hunks=32 difflines=111
+00989230	OPEN	636	-	1	baseline draft DIFFER(636v636) hunks=9 difflines=46
+009acee0	OPEN	1017	-	1	baseline draft DIFFER(1030v1017) hunks=45 difflines=222
+009bf7e0	OPEN	846	-	1	baseline draft DIFFER(824v846) hunks=46 difflines=172
+009c38c0	OPEN	409	-	1	baseline draft DIFFER(409v409) hunks=11 difflines=52
+009c3c20	OPEN	909	-	1	baseline draft DIFFER(877v909) hunks=31 difflines=320
+00a38c20	OPEN	551	-	1	baseline draft DIFFER(564v551) hunks=43 difflines=162
+00a475c0	OPEN	1857	-	1	baseline draft OBJDUMP_ERR hunks=1 difflines=613
+00a48ba0	OPEN	875	-	1	baseline draft DIFFER(881v875) hunks=48 difflines=396
+00a48f10	OPEN	811	-	1	baseline draft DIFFER(815v811) hunks=59 difflines=243
+00a4c1f0	OPEN	1006	-	1	baseline draft DIFFER(968v1006) hunks=68 difflines=325
+00a4d770	OPEN	420	-	1	baseline draft DIFFER(434v420) hunks=27 difflines=152
+00a52760	OPEN	1004	-	1	baseline draft DIFFER(968v1004) hunks=68 difflines=332
+00a53860	OPEN	1005	-	1	baseline draft DIFFER(966v1005) hunks=64 difflines=282
+00a567a0	OPEN	766	-	1	baseline draft '?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z' hunks=47 difflines=341
+00a5b650	RELOCATION_MATCH	184	PASS(vland)	2	shared headers (CCachedFile COPY opt-in, CCountedPointer Reset/ReleaseData, STLport back_inserter + out-of-line random-access __copy opt-ins)
+00a62ae0	RELOCATION_MATCH	130	PASS	30	Ego_d locals, decl order P,B,M,V,K; CPackedUIntArray CALCULATEBIAS opt-in [LANDED 039a0c8c02]
+00a770b0	OPEN	533	-	1	baseline draft DIFFER(527v533) hunks=23 difflines=58
+00a781a0	OPEN	1244	-	1	baseline draft '?UpdateLines@CNavQuadTree@@ABEXAAV?$vector@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@ABV?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@3@ABVC2DBoxI@@@Z' hunks=77 difflines=250
+00a793d0	OPEN	678	-	1	baseline draft DIFFER(593v678) hunks=37 difflines=283
+00a79680	OPEN	678	-	1	baseline draft DIFFER(593v678) hunks=37 difflines=283
+00a9d480	OPEN	243	-	1	baseline draft DIFFER(243v243) hunks=4 difflines=16
+00a9d750	OPEN	551	-	1	baseline draft DIFFER(551v551) hunks=13 difflines=40
+00aabf60	OPEN	620	-	1	baseline draft DIFFER(625v620) hunks=50 difflines=224
+00aad340	OPEN	584	-	1	baseline draft DIFFER(606v584) hunks=39 difflines=213
+00ac7eb0	DIFFER	215	-	66	2 lines n*n*w operand order; FableWin shows cost=0 + GFSqr(t)*W + GFSqr(n)*W (GFWorldDistance GFSqr) -- 6 more spellings + 15 include orders: no change
+00adf960	OPEN	766	-	1	baseline draft DIFFER(764v766) hunks=13 difflines=26
+00ae1320	OPEN	681	-	1	baseline draft DIFFER(681v681) hunks=12 difflines=70
+00ae29d0	OPEN	726	-	1	baseline draft DIFFER(726v726) hunks=15 difflines=62
+00b012e0	OPEN	1296	-	1	baseline draft DIFFER(1296v1296) hunks=5 difflines=14
+00b05c60	OPEN	429	-	1	baseline draft DIFFER(428v429) hunks=4 difflines=11
+00b075d0	OPEN	977	-	1	baseline draft DIFFER(962v977) hunks=64 difflines=360
+00b079b0	OPEN	2032	-	1	baseline draft DIFFER(2034v2032) hunks=44 difflines=87
+00b103f0	OPEN	1463	-	1	baseline draft DIFFER(1464v1463) hunks=5 difflines=14
+00b16410	OPEN	1671	-	1	baseline draft DIFFER(1674v1671) hunks=52 difflines=176
+00b1d550	OPEN	576	-	1	baseline draft DIFFER(546v576) hunks=42 difflines=165
+00b1d790	OPEN	876	-	1	baseline draft OBJDUMP_ERR hunks=1 difflines=278
+00b1dc70	OPEN	860	-	1	baseline draft OBJDUMP_ERR hunks=1 difflines=276
+00b1dfd0	OPEN	931	-	1	baseline draft OBJDUMP_ERR hunks=1 difflines=237
+00b328c0	OPEN	517	-	1	baseline draft DIFFER(501v517) hunks=21 difflines=193
+00b41a80	OPEN	424	-	1	baseline draft DIFFER(427v424) hunks=25 difflines=53
+00b51ad0	OPEN	969	-	1	baseline draft DIFFER(955v969) hunks=14 difflines=70
+00b53f60	OPEN	411	-	1	baseline draft DIFFER(418v411) hunks=23 difflines=135
+00b905a0	OPEN	280	-	1	baseline draft DIFFER(272v280) hunks=12 difflines=68
+00b93b30	OPEN	395	-	1	baseline draft DIFFER(377v395) hunks=23 difflines=128
+00b947e0	RELOCATION_MATCH	246	PASS(vland; g++ portable twin PASS)	12	NEW header engine/CEngineSceneMap.h + CEngineScene opt-in GETMAXAVERAGEPRIMITIVESPERCELL; GFFloatToLongNear; GFGETTOPBIT_FORCEINLINE; ternary clamp [LANDED 039a0c8c02]
+00b94bf0	OPEN	311	-	1	baseline draft DIFFER(297v311) hunks=19 difflines=75
+00b99300	OPEN	871	-	1	baseline draft DIFFER(871v871) hunks=16 difflines=36
+00ba1140	OPEN	2344	-	1	baseline draft DIFFER(2345v2344) hunks=117 difflines=366
+00bade40	OPEN	793	-	1	baseline draft DIFFER(743v793) hunks=24 difflines=168
+00bd71b0	OPEN	2116	-	1	baseline draft DIFFER(2116v2116) hunks=153 difflines=575
+00be2120	RELOCATION_MATCH	106	PASS(vland)	3	landed group twin 0x00BC62D0 body + new opt-in CENGINEINTERNALPRIMITIVE2DVIEWPORT_CLEARCHILD; oracle row was cut to 97 bytes (override = 106 from Fable.exe)
+00bee070	OPEN	206	-	1	baseline draft > hunks=11 difflines=52
+00c1c330	OPEN	192	-	1	baseline draft DIFFER(192v192) hunks=9 difflines=20
+00c40590	OPEN	192	-	9	audio-lib (no PDB) cross-product operand order; pointer-local orders / inline member cross: worse
+00c41fb0	OPEN	1570	-	1	baseline draft DIFFER(1553v1570) hunks=74 difflines=372
+00c6ac90	OPEN	38	-	1	baseline draft 'MixBlockRamped' hunks=5 difflines=7
+00d6c830	OPEN	607	-	1	baseline draft DIFFER(607v607) hunks=15 difflines=78
+00d8a240	OPEN	610	-	1	baseline draft DIFFER(610v610) hunks=13 difflines=52
+00f36010	RELOCATION_MATCH	442	PASS(vland; g++ portable twin PASS)	70	IS Get2DNoise (name fix); CPerlinNoise overlay helpers + GFFloatToLongFloor; C2DVector::Dot [LANDED 039a0c8c02]
+00f361d0	RELOCATION_MATCH	873	PASS(vland)	330	outer-bracketed SCurve/Interp in CPerlinNoise.h (c2 region tuple counts, DAG-measured); siblings re-graded MATCH [LANDED; header applied in repo]
+00f36540	RELOCATION_MATCH	321	PASS(vland; g++ portable twin PASS)	60	engine/CPerlinNoise.h + overlay opt-in CPERLINNOISE_GETNOISE (PDB private helpers) + GFFloatToLongFloor helper [LANDED 039a0c8c02]

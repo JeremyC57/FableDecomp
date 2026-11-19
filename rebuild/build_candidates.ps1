@@ -399734,6 +399734,27 @@ $catalog = @(
         TestSource = '00/6e/CDefendingCombatantInfoCCombatWheel_GetAttackerPlacementVector_006e89b0_test.cpp'
         PassPattern = '006e89b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0083db60'
+        Module = 'CThingPhysicalSwitch'
+        Source = '00/83/CThingPhysicalSwitch_GetCurrentGraphic_0083db60.cpp'
+        TestSource = '00/83/CThingPhysicalSwitch_GetCurrentGraphic_0083db60_test.cpp'
+        PassPattern = '0083db60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5b650'
+        Module = 'CCachedFile'
+        Source = '00/a5/CCachedFile_Copy_00a5b650.cpp'
+        TestSource = '00/a5/CCachedFile_Copy_00a5b650_test.cpp'
+        PassPattern = '00a5b650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be2120'
+        Module = 'CEngineInternalPrimitive2DViewport'
+        Source = '00/be/CEngineInternalPrimitive2DViewport_ClearChildPrimitive_00be2120.cpp'
+        TestSource = '00/be/CEngineInternalPrimitive2DViewport_ClearChildPrimitive_00be2120_test.cpp'
+        PassPattern = '00be2120_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

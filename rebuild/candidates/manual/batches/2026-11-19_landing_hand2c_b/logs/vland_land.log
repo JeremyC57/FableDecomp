@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0083db60   RELOCATION_MATCH PASS   GetCurrentGraphic
+00a5b650   RELOCATION_MATCH PASS   Copy
+00be2120   RELOCATION_MATCH PASS   ClearChildPrimitive
+
+WINS: 3
+  0083db60 RELOCATION_MATCH CThingPhysicalSwitch::?GetCurrentGraphic@CThingPhysicalSwitch@@IBEABVCEngineGraphic@@XZ
+  00a5b650 RELOCATION_MATCH CCachedFile::?Copy@CCachedFile@@AAEXABV1@@Z
+  00be2120 RELOCATION_MATCH CEngineInternalPrimitive2DViewport::?ClearChildPrimitive@CEngineInternalPrimitive2DViewport@@UAEXK@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CThingPhysicalSwitch_GetCurrentGraphic_0083db60
+  CCachedFile_Copy_00a5b650
+  CEngineInternalPrimitive2DViewport_ClearChildPrimitive_00be2120

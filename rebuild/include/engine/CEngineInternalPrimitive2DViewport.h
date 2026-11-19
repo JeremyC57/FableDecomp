@@ -14,6 +14,9 @@
 #include "engine/CArray.h"
 class CEnginePrimitive;
 class CEnginePrimitiveHandle;
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DVIEWPORT_CLEARCHILD
+#include "engine/CEnginePrimitiveHandle.h"
+#endif
 enum EEngine2DLayer;
 class CEngineInternalPrimitive2DViewport : public CEngineInternalPrimitiveBase {
 public:
@@ -26,6 +29,14 @@ public:
     C2DAlphaMaskInfo               AlphaMaskInfo;                  // +0x64
     EEngine2DLayer                 Layer;                          // +0x90
     CArray<CEnginePrimitiveHandle> Primitives;                     // +0x94
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DVIEWPORT_CLEARCHILD
+    // hand2c opt-in (row 0x00BE2120): Ego_r.pdb / FableWin.pdb ?ClearChildPrimitive@CEngineInternalPrimitive2DViewport@@UAEXK@Z (virtual),
+    // FableWin.pdb ?HasChildPrimitive@...@@QBE_NK@Z (public const inline; body as CEngineInternalPrimitiveGroup's, whose landed twin
+    // 0x00BC62D0 is the same code with Primitives at +0x50) and ?UpdateRenderLayerMask@...@@QAEXXZ (0x00BE1D80). No layout change.
+    virtual void ClearChildPrimitive(unsigned long index);         // 0x00BE2120
+    bool HasChildPrimitive(unsigned long index)const {return index<Primitives.size() && !Primitives[index].IsNull();}
+    void UpdateRenderLayerMask();                                  // 0x00BE1D80
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitive2DViewport) == 0xa0);
 #else

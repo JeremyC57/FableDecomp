@@ -1,0 +1,5 @@
+address	grade	bytes	test	grades_used	notes
+00b6dc40	RELOCATION_MATCH	771	PASS	40	strict vland PASS, no flags: fable7 q4 shape + Reset(NULL) pointer drops (FableWin line sizes); earlier /d2inlT196 form superseded
+00f3abf0	DIFFER	605v605	-	71	OPEN: value-local match REJECTED by coordinator (steering declaration; kept as differ/00f3abf0_value_local_REJECTED.cpp); faithful differ/00f3abf0.cpp = ebx/ebp swap
+00ae3c30	RELOCATION_MATCH	2310	PASS	20	strict vland PASS; faithful r4 shape + existing opt-in FABLE_RETAIL_CDATAINPUTSTREAM_ORIGINAL_READ_SCOPE
+005ac10e	DIFFER	3532v3532	-	241	ESCALATED: 2 instr at 0x005ACB58; full FableWin/Ego_d reading applied (named iterators, GFDebugPDynamicCast, pupper_menu_entry, plist/pparent, function-scope ui_* locals, one-arg GetTC/PeekTC, verify model) + 46 include orders: no effect; best ref differ/005ac10e_fw.cpp

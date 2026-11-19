@@ -38,6 +38,13 @@ public:
     CCountedPointer<CAFile> PDiskFile;                  // +0x1C
     bool                    Opened;                     // +0x24
     bool                    BufferValid;                // +0x25
+#ifdef FABLE_RETAIL_CCACHEDFILE_COPY
+    // hand2c opt-in (row 0x00A5B650): Ego_r.pdb / FableWin.pdb ?Copy@CCachedFile@@AAEXABV1@@Z (private; called by the inline copy
+    // constructor in Clone 0x00A5B710). Declaration only, no layout change.
+private:
+    void Copy(const CCachedFile& rhs);                                                                // 0x00A5B650
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CCachedFile) == 0x28);
 #endif // FABLE_ENGINE_CCACHEDFILE_H
