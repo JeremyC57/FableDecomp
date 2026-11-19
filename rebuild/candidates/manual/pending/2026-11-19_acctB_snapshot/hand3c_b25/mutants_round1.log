@@ -1,0 +1,17 @@
+baseline SURVIVED
+KILLED | != HUMAN_CHILD) { -> == HUMAN_CHILD) {
+KILLED | != HUMAN_CHILD) { -> != HUMAN_ADULT) {
+KILLED | const CThingAICreature* ret_pcreature = NULL; -> const CThingAICreature* ret_pcreature;
+KILLED | C2DBoxI scan_area(GetCreature().GetPos().ToC2DCoordI() -> C2DBoxI scan_area(ThingReactingTo->GetPos().ToC2DC
+KILLED | GFFloatToLongCeil(ptc_perception->GetSightRadius())) -> (long)(ptc_perception->GetSightRadius()))
+KILLED | GFFloatToLongCeil(ptc_perception->GetSightRadius())) -> GFFloatToLongCeil(ptc_perception->GetSightRadius()
+CC_FAIL | CThingFilter_IsNot(GetCreature()) -> CThingFilter_IsNot(*ThingReactingTo)
+KILLED | CThingFilter_IsCreatureType(HUMAN_CHILD) -> CThingFilter_IsCreatureType(HUMAN_ADULT)
+KILLED | CThingFilter_In2DRange(GetCreature().GetPos(), (ptc_perception->GetSig -> CThingFilter_In2DRange(ThingReactingTo->GetPos(), 
+KILLED | (ptc_perception->GetSightRadius())), -> ((float)GFFloatToLongCeil(ptc_perception->GetSight
+KILLED | CThingFilter_In2DRange(ThingReactingTo->GetPos(), (GetCreature() -> CThingFilter_In2DRange(GetCreature().GetPos(), (Ge
+KILLED | (GetCreature().GetPos() - ThingReactingTo->GetPos()).GetMagnitude() -> (GetCreature().GetPos() - ThingReactingTo->GetPos(
+KILLED | (GetCreature().GetPos() - ThingReactingTo->GetPos()).GetMagnitude() -> (GetCreature().GetPos() - GetCreature().GetPos()).
+KILLED | return ret_pcreature != NULL; -> return ret_pcreature == NULL;
+KILLED | return false; -> return true;
+KILLED | CThingFilter_In2DRange(GetCreature().GetPos(), (ptc_perception->GetSig -> CThingFilter_In2DRange(ThingReactingTo->GetPos(), 

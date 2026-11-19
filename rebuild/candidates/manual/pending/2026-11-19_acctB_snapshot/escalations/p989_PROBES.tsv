@@ -1,0 +1,46 @@
+file	row	prefix	orders_or_SC	control
+probes/a00_row_only.cpp	00989230	none (t1 as is)	row 2b0a3a1a|3b1b2b0b|3b1b2b0a|2a0b3a1a (retail 3b1b2b0b|3b1b2b0b|0b3b1b2b|3b1b2b0b)	control 00BD2D90 landed: 3b1b0b2b|3b1b2b0b|1b3b0b2b|2b1b3b0b = retail
+probes/a01_twin_row.cpp	00989230	(b) twin UpdateLocalisedSphereMapping 0x00988E80 (prior draft body, AlignedSetMultiply(ViewMatrix,WorldMatrix), ACCESSORS ctx) + FastOneOverSqrt, immediately above the row = retail's immediate predecessor	row UNCHANGED 2b0a3a1a|3b1b2b0b|3b1b2b0a|2a0b3a1a; twin 0b2b3b1b|3b1b2b0b|3b1b2b0b|0b3b1b2b (retail 3b1b0b2b|3b1b2a0a|0b3b1b2a|2b3a1a0a)	n/a
+probes/a02_incl_above.cpp	00989230	(a) same-object real headers above CShaderRenderManager.h (fable_compiler, Direct3D9Types, CDisplayManager+PIXELSHADERVERSION, CVertexShaderConstantLayout, xmmintrin)	unchanged	c02 (same set above control's includes): control unchanged = retail
+probes/a03_incl_below.cpp	00989230	same set below the class header	unchanged	-
+probes/a04_cmatrix_first.cpp	00989230	engine/CMatrix4x4.h (with C4DVECTOR/CMATRIX3X4 opt-ins) included before CShaderRenderManager.h	unchanged	-
+probes/a05_setvs_after.cpp	00989230	inline SetVSConstants defined after the row (declared in class)	unchanged (still inlined, 636)	-
+probes/c00_ctl_srm_header.cpp	control 00BD2D90	CShaderRenderManager.h + row opt-ins added to control's includes	-	control unchanged = retail
+probes/c01_ctl_twinrow_prefix.cpp	control 00BD2D90 + row	control TU + twin + row bodies above the control, SetVSConstants inline def NOT carried	row 622 bytes 3b1b2b0b|3b1b2b0b|0b3b1b2b|3b1b2b0b = RETAIL ORDER, but SetVSConstants called (not expanded); twin 0b2b3b1b|3b1b2b0b|3b1b2b0b|0b3b1b2b (unchanged vs a01)	control unchanged = retail
+probes/c03_ctl_twinrow_prefix_setvs.cpp	control + row	c01 + the inline SetVSConstants definition	row back to 636 2b0a3a1a|3b1b2b0b|3b1b2b0a|2a0b3a1a: the c01 'hit' was the missing inline, not the context	control unchanged
+probes/a06_no_setvs_inline.cpp	00989230	t1 without the inline SetVSConstants body (declaration only -> call)	622 bytes, RETAIL ORDER 3b1b2b0b|3b1b2b0b|0b3b1b2b|3b1b2b0b (diagnostic: wrong bytes at the call)	-
+probes/a07_setvs_plain_before.cpp	00989230	SetVSConstants plain (non-inline) definition before row	636 old order (auto-inlined)	-
+probes/a08_setvs_plain_after.cpp	00989230	plain definition after row	636 old order (auto-inlined)	-
+probes/a09_setvs_hr.cpp	00989230	SetVSConstants with Ego_d names (index, local hr = call) inside the if	636 old order	-
+probes/a10_setvs_hr_outer.cpp	00989230	hr declared at function scope of SetVSConstants	636 old order	-
+probes/a11_diag_setvs_nobranch.cpp	00989230	DIAG: SetVSConstants inline without the count!=0 test	630 RETAIL ORDER (missing test/je)	-
+probes/a12_diag_direct_call.cpp	00989230	DIAG: no SetVSConstants layer; if(rows!=0) D3DDevice->SetVertexShaderConstantF written in the row	636 old order	-
+probes/a13_rows_before_mul.cpp	00989230	(body, diag) rows initialised before the multiply (Ego_d decl order transform, rows kept)	641 bytes, old order	-
+probes/a14_setvs_gt0.cpp	00989230	inline SetVSConstants test `count>0`	636 old order	-
+probes/a15_rows_gt4.cpp	00989230	(body) rows = Count > 4 ? 4 : Count	636 old order	-
+probes/a16_setvs_ifblock.cpp	00989230	inline SetVSConstants `if(count==0) return;` form	636 old order	-
+probes/a17_transposed_plain_inline.cpp	00989230	SETMULTIPLYTRANSPOSED without _FORCEINLINE (plain inline forwarder)	196 bytes: forwarder not expanded (call)	-
+probes/a18_setvs_forceinline.cpp	00989230	SetVSConstants __forceinline	636 old order	-
+probes/a19_direct_multiply.cpp	00989230	(body, diag) AlignedSetMultiply(TextureTransforms[i], WorldMatrix) without the Transposed layer	636 2b3a1a0a|3b1b2b0a|3b1b2b0a|2a0b3a1a	-
+probes/a20_setvs_assert1.cpp	00989230	SetVSConstants (Ego_d index/hr) + fable_assert.h FABLE_RETAIL_ASSERT dead arm after the call (FableWin SetVSConstants is 536 bytes at /Od: asserts likely)	636 old order	-
+probes/a21_setvs_assert_top.cpp	00989230	dead-arm ASSERT at the top of SetVSConstants	636 old order	-
+probes/a22_diag_count_direct.cpp	00989230	DIAG: SetVSConstants(.., range.Count) (no min)	623 2a3a1a0a|3a1a2b0b|3a1a2b0a|3a1a2a0b	-
+probes/a23_diag_rows4.cpp	00989230	DIAG: rows = 4	615 2a3a1a0a|3a1a2b0b|3a1a2b0a|3a1a2a0b	-
+probes/a24_diag_extra_branch_end.cpp	00989230	DIAG: extra `if (UpdateFlags&1) UpdateFlags|=2;` AFTER the loop	647 3b1b0b2b|2b0b3b1b|2b0b3b1b|0b3b1b2b (all columns move)	-
+probes/a25_diag_extra_branch_top.cpp	00989230	DIAG: the same branch BEFORE the loop	670 2a3a1a0a|3a1a2b0b|3a1a2b0a|3a1a2a0b	-
+probes/a26_ae1320_above_ae29d0.cpp	twins 00AE1320/00AE29D0 (same obj lib_particle_simulation)	ClingToMesh defined above SetupSimulation (prior drafts)	both identical to their solo compiles: 1320 0a1a2a3a|0a1b2a3a|0a1a2a3a|0a1a2a3a, 29d0 0b1a2b3b|0a1b2b3a|0b1b2b3a|0b1b2b3a (retail 3a2b1a0b|3b1b2b0b|3b1b0a2b|3b1b2a0b / 3a1a2a0a|2a0a3a1a|2a0a3a1a|2a0a3b1b)	-
+probes/a27_ae29d0_above_ae1320.cpp	twins	reverse order	identical again	-
+probes/le_a00_row_only.cpp	00989230 loose end	overlay hdrA (repo CMatrix4x4AlignedSSE.h + opt-in FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD_LOCALS: CMatrix4x4& m = *this; long c1/c2; m(c1,c2) = a(c1,k)*b(k,c2) sum)	DIFFER(635v636) 2a3a1a0a|3a1a2b0b|3a1a2b0a|3a1a2a0b (reproduces the escalation's 635)	-
+probes/le_ctl_00bd2d90.cpp	00BD2D90 loose end	landed source + EGOD_LOCALS opt-in	DIFFER(721v721) 3a2b1a0b|3b1b2b0b|3b0b1a2b|3b0b2a1b (retail 3b1b0b2b|3b1b2b0b|1b3b0b2b|2b1b3b0b)	same TU without the opt-in, overlay present: RELOCATION_MATCH
+probes/le_ctl_00a9e1e0.cpp	00A9E1E0 loose end	landed source + EGOD_LOCALS opt-in	DIFFER(2473v2472)	without the opt-in: RELOCATION_MATCH
+probes/b00_best.cpp	008185B0	none (hand4d best, /Gr); with and without hdr4d (no hdr4d header is in this TU)	S S S S S, ndiff 10 (retail S S S C S)	-
+probes/b01_template_first.cpp	008185B0	NMaths template definition ABOVE the functor (as from a shared header), explicit instantiation last	S S S S S ndiff 10	cb01: sibling 0087AA10 with the same reorder RELOCATION_MATCH
+probes/b02_tf_implicit_caller.cpp	008185B0	template first + implicit instantiation from a caller (ctor + call), no explicit instantiation	S S S S S ndiff 10	-
+probes/b03_getvalue_outofclass.cpp	008185B0	GetValue declared in class, defined out of class inline	S S S S S ndiff 10	-
+probes/b04_caller_isvalid_before_inst.cpp	008185B0	IsValid body (Ego_d/FableWin 13 bytes: return true) + caller (decl then def, ctor + IsValid + call) above the explicit instance	S S S S S ndiff 10	-
+probes/b05_egod_member_order.cpp	008185B0	Ego_d field-list order: public ctor, IsValid, GetValue; private Ca, Cb, Cc (separate declarations)	S S S S S ndiff 10	-
+probes/b06_egod_member_order_isvalid.cpp	008185B0	b05 + IsValid inline body	S S S S S ndiff 10	-
+probes/b07_bulky_prefix.cpp	008185B0	unrelated float-math function using GFSin/GFCos/fabs above the functor	S S S S S ndiff 10	-
+probes/b08_trig_defs_after_functor.cpp	008185B0	GFSin/GFCos declared before, defined after the functor	S S S S S ndiff 10	-
+probes/b09_stl_include_after_trig.cpp	008185B0	stlport include moved below the trig declarations	S S S S S ndiff 10	-
+probes/b10_combined_realistic.cpp	008185B0	template first + Ego_d member order + IsValid body + caller with implicit instantiation	S S S S S ndiff 10	-

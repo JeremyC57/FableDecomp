@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00c77800   WARN RELOC_NAME: ?Set_ShelfLfHf@CFloatFilterParams@@QAEXMMMMI@Z -> 00c74850 labelled 'CFilter_Setup'
+00c77800   RELOCATION_MATCH PASS   UpdateDecayTimes
+00c88e60   RELOCATION_MATCH PASS   ApplyFilterOrder2_quad
+
+WINS: 2
+  00c77800 RELOCATION_MATCH CFloatReverbParameterTranslator::?UpdateDecayTimes@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c88e60 RELOCATION_MATCH CReverbFnsSSE::?ApplyFilterOrder2_quad@CReverbFnsSSE@@QAEXPAMPBMPAPAMPAPAVCFloatFilterParams@@I@Z

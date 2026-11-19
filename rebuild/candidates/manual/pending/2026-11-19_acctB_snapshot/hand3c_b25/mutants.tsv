@@ -1,0 +1,17 @@
+src	1	!= HUMAN_CHILD) {	== HUMAN_CHILD) {
+src	1	!= HUMAN_CHILD) {	!= HUMAN_ADULT) {
+src	1	const CThingAICreature* ret_pcreature = NULL;	const CThingAICreature* ret_pcreature;
+src	1	C2DBoxI scan_area(GetCreature().GetPos().ToC2DCoordI()	C2DBoxI scan_area(ThingReactingTo->GetPos().ToC2DCoordI()
+src	1	GFFloatToLongCeil(ptc_perception->GetSightRadius()))	(long)(ptc_perception->GetSightRadius()))
+src	1	GFFloatToLongCeil(ptc_perception->GetSightRadius()))	GFFloatToLongCeil(ptc_perception->GetSightRadius()) + 1)
+src	1	CThingFilter_IsNot(GetCreature())	CThingFilter_IsNot(*ThingReactingTo)
+src	1	CThingFilter_IsCreatureType(HUMAN_CHILD)	CThingFilter_IsCreatureType(HUMAN_ADULT)
+src	1	CThingFilter_In2DRange(GetCreature().GetPos(), (ptc_perception->GetSightRadius()))	CThingFilter_In2DRange(ThingReactingTo->GetPos(), (ptc_perception->GetSightRadius()))
+src	1	(ptc_perception->GetSightRadius())),	((float)GFFloatToLongCeil(ptc_perception->GetSightRadius()))),
+src	1	CThingFilter_In2DRange(ThingReactingTo->GetPos(), (GetCreature()	CThingFilter_In2DRange(GetCreature().GetPos(), (GetCreature()
+src	1	(GetCreature().GetPos() - ThingReactingTo->GetPos()).GetMagnitude()	(GetCreature().GetPos() - ThingReactingTo->GetPos()).GetMagnitude() * 0.75f
+src	1	(GetCreature().GetPos() - ThingReactingTo->GetPos()).GetMagnitude()	(GetCreature().GetPos() - GetCreature().GetPos()).GetMagnitude()
+src	1	return ret_pcreature != NULL;	return ret_pcreature == NULL;
+src	2	return false;	return true;
+src	1	CThingFilter_In2DRange(GetCreature().GetPos(), (ptc_perception->GetSightRadius())),\n                           CThingFilter_In2DRange(ThingReactingTo->GetPos(), (GetCreature().GetPos() - ThingReactingTo->GetPos()).GetMagnitude())),	CThingFilter_In2DRange(ThingReactingTo->GetPos(), (GetCreature().GetPos() - ThingReactingTo->GetPos()).GetMagnitude()),\n                           CThingFilter_In2DRange(GetCreature().GetPos(), (ptc_perception->GetSightRadius()))),
+src	1	CThingFilter_IsNot(GetCreature())	CThingFilter_IsNot(*ThingReactingTo.operator->())

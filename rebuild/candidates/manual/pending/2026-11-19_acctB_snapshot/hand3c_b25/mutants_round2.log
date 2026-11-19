@@ -1,0 +1,2 @@
+baseline SURVIVED
+KILLED | CThingFilter_IsNot(GetCreature()) -> CThingFilter_IsNot(*ThingReactingTo.operator->())

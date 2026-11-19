@@ -1,0 +1,5 @@
+vc71-asm         PASS  test_ReverbFnsSSEFilterOrder2Quad asm: PASS
+vc71-dual        PASS  test_ReverbFnsSSEFilterOrder2Quad asm+portable: PASS
+vc71-portable    PASS  test_ReverbFnsSSEFilterOrder2Quad portable: PASS
+gxx-portable     PASS  test_ReverbFnsSSEFilterOrder2Quad portable: PASS 
+gxx-m32-compile  SKIPPED  no 32-bit glibc headers on this host

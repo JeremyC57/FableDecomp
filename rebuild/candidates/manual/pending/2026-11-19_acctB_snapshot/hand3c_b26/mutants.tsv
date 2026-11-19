@@ -1,0 +1,19 @@
+src	1	contraction.SubContractions[0]	contraction.SubContractions[1]
+src	1	Vertices[sub_contraction.Index1]	Vertices[sub_contraction.Index2]
+src	1	Vertices[sub_contraction.Index2]	Vertices[sub_contraction.Index1]
+src	1	(vertex2.TextureCoord - vertex1.TextureCoord)	(vertex2.TextureCoord - vertex1.Normal)
+src	1	    tex_diff *= tex_diff;\n	    ;\n
+src	1	(vertex2.Normal - vertex1.Normal)	(vertex2.Normal - vertex1.TextureCoord)
+src	1	    normal_diff *= normal_diff;\n	    ;\n
+src	1	float cost = tex_diff * Parameters.UnsplitTextureWeight;	float cost = tex_diff * Parameters.UnsplitNormalWeight;
+src	1	cost += normal_diff * Parameters.UnsplitNormalWeight;	cost += normal_diff * Parameters.UnsplitTextureWeight;
+src	1	cost += normal_diff * Parameters.UnsplitNormalWeight;	cost = normal_diff * Parameters.UnsplitNormalWeight;
+src	1	cost += normal_diff * Parameters.UnsplitNormalWeight;	cost -= normal_diff * Parameters.UnsplitNormalWeight;
+src	1	Dot(vertex2.Normal) < 0.0f)	Dot(vertex2.Normal) <= 0.0f)
+src	1	Dot(vertex2.Normal) < 0.0f)	Dot(vertex2.Normal) > 0.0f)
+src	1	cost += Parameters.HighPenalty;	cost += Parameters.UnsplitNormalWeight;
+src	1	cost += Parameters.HighPenalty;	cost = Parameters.HighPenalty;
+src	1	contraction.Cost = cost;	contraction.Cost = tex_diff;
+src	1	contraction.ResultingPosition = vertex1.Position;	contraction.ResultingPosition = vertex2.Position;
+src	1	contraction.Weight2 = 0.5f;	contraction.Weight2 = 1.0f;
+src	1	vertex1.Normal.Dot(vertex2.Normal)	vertex1.Normal.Dot(vertex1.Normal)
