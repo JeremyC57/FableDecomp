@@ -48,8 +48,9 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     void SaveToFile(CAFile& file) const;               // 0x0099E5F0
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& a, const char* b);          // 0x0099F600
 CCharString __fastcall operator+(const char* a, const CCharString& b);          // 0x0099F690
@@ -123,9 +124,9 @@ void CManager::Save(const CWideString& fileName)
             for (CEvent* e = it->Events.begin(); e != it->Events.end(); ++e) {
                 const CSymbolMap::CSymbolInfo* name = EventNames.FindFirstSymbolWithVal(e->Packed & 0x3fffffff);
                 if (e->Packed & 0x80000000)
-                    context.Transfer_009bab50(name->EntryName + " " + CCharString::FormatDouble(6, e->Time) + " STOP\r\n");
+                    context.Transfer_009bab50(name->EntryName + " " + GFFloatToCharString(e->Time, 6) + " STOP\r\n");
                 else
-                    context.Transfer_009bab50(name->EntryName + " " + CCharString::FormatDouble(6, e->Time) + " START\r\n");
+                    context.Transfer_009bab50(name->EntryName + " " + GFFloatToCharString(e->Time, 6) + " START\r\n");
             }
             {
                 CCharString line("END_EVENTS\r\n\r\n");

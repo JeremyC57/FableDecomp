@@ -76,4 +76,29 @@ FABLE_STATIC_ASSERT_AT(37, offsetof(CTCTavernGameCardBlackjack, DealersCards) ==
 FABLE_STATIC_ASSERT_AT(38, offsetof(CTCTavernGameCardBlackjack, CurrentPackCardIndex) == 0x35c);
 FABLE_STATIC_ASSERT_AT(39, offsetof(CTCTavernGameCardBlackjack, Doubled) == 0x374);
 FABLE_STATIC_ASSERT_AT(40, sizeof(CTCTavernGameCardBlackjack) == 0x378);
+#if defined(FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_GETHANDVALUE_INLINE) && (defined(FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_CARDSMAINGAME) || defined(FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_SCORETEXT))
+// NF94 opt-in (round 8, q11252 rows 0x007DA230 / 0x007DA900): the body of Ego_r.pdb + FableWin.pdb
+// ?GetHandValue@CTCTavernGameCardBlackjack@@QAEJPAV?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@_N@Z (out of line at 0x007DA230, 84 bytes),
+// inline: retail's HasPlayerWonHand 0x007DA900 expands the first call (the dealer's hand, includeFaceDown folded) and calls 0x007DA230 for the
+// second, which the landed 0x007DA900 reproduced with an in-class body. The owner row 0x007DA230 takes its address (nf86 / nf88 scaffolding) so
+// VC7.1 emits it there as a pick-any COMDAT; one definition. Needs the CARDSMAINGAME or SCORETEXT declaration.
+inline long CTCTavernGameCardBlackjack::GetHandValue(std::vector<CCard*>* cards, bool includeFaceDown)
+{
+    long total = 0;
+    long aces = 0;
+    for (std::vector<CCard*>::iterator it = cards->begin(); it != cards->end(); ++it) {
+        if (includeFaceDown || (*it)->Turning || !(*it)->FaceDown) {
+            long value = (*it)->Value;
+            if (value == 11)
+                ++aces;
+            total += value;
+        }
+    }
+    while (total > 21 && aces > 0) {
+        total -= 10;
+        --aces;
+    }
+    return total;
+}
+#endif
 #endif

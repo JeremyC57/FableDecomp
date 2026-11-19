@@ -2,8 +2,11 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00849250, length 84 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0x23 = bit 3 of
-// the bitset dword at +0x24), GFGetPVillageInterface @ 0x007EE540 (register argument, landed naming of 0x0093EDF0), CTCVillage::RecalculateSecuritySweep(long) @ 0x00659C32.
+// the bitset dword at +0x24), GFGetPVillageInterface @ 0x007EE540 (register argument, landed naming of 0x0093EDF0), CTCVillage::StartSecuritySweep(bool) @ 0x00659C32.
 // Shape: the lookup's result is not tested -- the villager pointer is read from the frame slot even when the interface is absent (retail reads an unset local there).
+// Name fix (NF93, round 8, q11284 / q11288): 0x00659C32 is CTCVillage::StartSecuritySweep(bool urgent) (Ego_r.pdb 0x0069D890 / FableWin.pdb
+//   0x02161B25 ?StartSecuritySweep@CTCVillage@@QAEX_N@Z; Ego_d tc_village.obj; the landed self row spells it so), not the made-up
+//   RecalculateSecuritySweep(long): the local CTCVillage declaration respelled in place (the call still pushes 0 = false).
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -45,7 +48,7 @@ public:
 };
 struct CTCVillager;
 class CTCVillage { public:
-    void RecalculateSecuritySweep(long flags);   // 0x00659C32
+    void StartSecuritySweep(bool urgent);       // 0x00659C32 Ego_r.pdb / FableWin.pdb ?StartSecuritySweep@CTCVillage@@QAEX_N@Z
 };
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
@@ -62,5 +65,5 @@ void CCreatureAction_OrderSecuritySweep::PerformAction()
     PCreature.GetPItem()->GetInterface(&pVillager, 0x23);
     CTCVillage* pVillage = ((CTCVillageMember*)pVillager)->GetPVillage();
     if (pVillage)
-        pVillage->RecalculateSecuritySweep(0);
+        pVillage->StartSecuritySweep(false);
 }

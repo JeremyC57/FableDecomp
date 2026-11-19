@@ -1,5 +1,8 @@
 // CGraphicInfoFrame::CFrameData::GetUnloadableMemory() -- with an async bank read pending (+0x30): its byte count (+0x10) once it has finished, else 0; otherwise the byte length of mip level 0 of the frame's texture (+0x1c -> texture at +8), or 0 when there is none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FD830, length 64 bytes.
+// Leaf: ?GetUnloadableMemory@CFrameData@@QAEJXZ
+// Name fix (NF93, round 8, q11272): the stand-in CTexture_009fd830 replaced by the shared engine/CTexture.h (FABLE_RETAIL_CTEXTURE_GETLEVELBYTELENGTH,
+//   Ego_r.pdb ?GetLevelByteLength@CTexture@@QBEJJ@Z, const), so the call binds the PDB spelling (as the landed 0x00B2BD80 does).
 // Callees: CBankFileAsyncData::IsFinished @ 0x009D54E0 (a bool in al), CTexture::GetLevelByteLength @ 0x009F9E80 (on the texture, level 0). Shape: three
 // `xor eax,eax` returns folded into one tail, the frame pointer walked through esi.
 class CBankFileAsyncData { public:
@@ -8,12 +11,12 @@ class CBankFileAsyncData { public:
 public:
     bool IsFinished() const;   // 0x009D54E0
 };
-struct CTexture_009fd830 {
-    long GetLevelByteLength(long level);           // 0x009F9E80
-};
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CTEXTURE_GETLEVELBYTELENGTH
+#include "engine/CTexture.h"                       // CTexture::GetLevelByteLength(long) const 0x009F9E80 (Ego_r.pdb QBEJJ)
 struct CGraphicFrameData_009fd830 {
     unsigned char       _pad[8];
-    CTexture_009fd830*  m_pTexture;                // +0x08
+    CTexture*           m_pTexture;                // +0x08
 };
 
 struct CFrameData {

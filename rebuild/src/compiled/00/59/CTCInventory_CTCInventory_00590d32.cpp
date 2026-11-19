@@ -17,6 +17,9 @@
 // (`lea eax,[ebp+0Bh]`) and the resize fill value in `owner`'s slot; the POD vectors are STLport vectors built through the
 // alloc-proxy third member (`_M_end_of_storage(a, 0)`) -- a plain three-zero initialiser list schedules the map's
 // `lea ecx` one store early.
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSBUTTONS
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE_CONTEXTSENSITIVEBUTTONS
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -83,14 +86,11 @@ struct CComponentByLongMap {                                  // map<long, NUISy
     ~CComponentByLongMap();                                   // 0x00593AC7
 };
 
-struct CGameProfile {
-    unsigned long GetNumQuickAccessSlots() const;             // 0x00445950
-    unsigned long GetNumContextSensitiveSlots() const;        // 0x00445960
-};
-class CPlayer { public:
-    unsigned char _pad00[0x0C];
-    CGameProfile* PProfile;                                   // +0x0C
-};
+// NF94 (q11291): the +0xC object is CPlayer::PlayerInterface (engine/CPlayer.h); 0x00445950 / 0x00445960 are Ego_r.pdb + FableWin.pdb
+//   ?GetNumberOfQuickAccessItemButtons@ / ?GetNumberOfContextSensitiveItemButtons@CGamePlayerInterface@@QBEJXZ (engine/CGamePlayerInterface.h
+//   QUICKACCESSBUTTONS / overlay CONTEXTSENSITIVEBUTTONS); the row-local CGameProfile / CPlayer models are replaced by the shared headers.
+#include "engine/CGamePlayerInterface.h"
+#include "engine/CPlayer.h"
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
@@ -144,11 +144,11 @@ CTCInventory::CTCInventory(CThing* owner)
       ContextSensitiveUpdate(false),
       AccumFadeTime(0.0f)
 {
-    unsigned long quickAccessSlots = PeekPlayerManager().GetMainPlayer().PProfile->GetNumQuickAccessSlots();
+    unsigned long quickAccessSlots = PeekPlayerManager().GetMainPlayer().PlayerInterface->GetNumberOfQuickAccessItemButtons();
     QuickAccessItems.resize(quickAccessSlots, 0);
     QuickAccessUnusableIconPrimitiveHandles.reserve(quickAccessSlots);
     QuickAccessPrimitiveHandles.reserve(quickAccessSlots * 2);
-    unsigned long contextSensitiveSlots = PeekPlayerManager().GetMainPlayer().PProfile->GetNumContextSensitiveSlots();
+    unsigned long contextSensitiveSlots = PeekPlayerManager().GetMainPlayer().PlayerInterface->GetNumberOfContextSensitiveItemButtons();
     ContextSensitiveItems.reserve(contextSensitiveSlots);
     ContextSensitiveFadeTimes.reserve(contextSensitiveSlots);
     NumberOfCSOpinionExpressions.resize(6, 0);

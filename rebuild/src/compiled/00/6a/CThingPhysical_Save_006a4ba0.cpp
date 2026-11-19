@@ -19,8 +19,9 @@ class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                                             // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);                          // 0x0099F0A0
-    static CCharString __fastcall FormatDouble(long digits, double value);      // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 CCharString __fastcall GFIntToCharString(long value);                           // 0x0099F830
@@ -41,9 +42,9 @@ class CThingPhysical : public CThing { public:
 void CThingPhysical::Save(CCharString& out)
 {
     CThing::Save(out);
-    out += "Health " + CCharString::FormatDouble(6, Health) + ";\r\n";
+    out += "Health " + GFFloatToCharString(Health, 6) + ";\r\n";
     if (fabs(Scale - 1.0f) > 1e-4f)
-        out += "ObjectScale " + CCharString::FormatDouble(6, Scale) + ";\r\n";
+        out += "ObjectScale " + GFFloatToCharString(Scale, 6) + ";\r\n";
     if (CanComeBetweenCameraAndObservedThing != -1)
         out += "CanComeBetweenCameraAndHero " + GFIntToCharString(CanComeBetweenCameraAndObservedThing) + ";\r\n";
 }

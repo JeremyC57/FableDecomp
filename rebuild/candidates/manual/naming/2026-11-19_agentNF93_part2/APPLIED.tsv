@@ -1,0 +1,64 @@
+entry	address	status	binders_respelled	note
+q11232	0x005C14A6	done	1	catalog name fixed (RENAMES s1, leaf unchanged); self row ported onto the header inline ctor (pick-any COMDAT, MATCH); binder 0x005BEC92 respelled (RELOCATION_MATCH); 0x005BEDCB already right. Evidence: FableWin.pdb (not Ego_r, which has only the copy ctor)
+q11239	0x005C08D3	blocked: port	2	self row 0x005C08D3 + its callee 0x005C06C3 renamed (RENAMES s1); binders 0x005BDFB1 / 0x005BF3C6 ported; 0x005BF4A3 / 0x005BF32D already right. Rows left: 0x005BF654 (blocked: port, register permutation, see q11247); 0x005BF414 deferred: held by NF95 (binding unread; NAME_FIXES)
+q11242	0x00527950	blocked: identity	0	self row 0x00527950 already right (NF92); 0x01228DF0 already right (NF92); rows left: 0x00528E90 / 0x00529EE0 (~_Rb_tree vs ~map twins) and 0x00528550 (_Rb_tree::clear vs map::clear): unreferenced in retail, own names unprovable from two sources, so the callee spelling cannot move (STATUS)
+q11244	0x004DB88A	done	0	self row 0x004DB88A re-authored as the STLport tree clear (RENAMES s1); its retail callers 0x004DD21C / 0x004F9207 already bind this spelling; callee 0x004DA27F spelling to NAME_FIXES
+q11247	0x005BF654	blocked: port	0	0x005BF654 re-drafted on the shared headers this pass (4 grades): DIFFER(297v297), a pure callee-saved register permutation (NF92 had the same over 7 grades); not changed
+q11250	0x0086BE40	done	1	binder 0x0086BF70 ported onto the header (binds IBE); self row 0x0086BE40 already right
+q11251	0x0086B810	blocked: one-definition	1	binder 0x0086BF70 ported (binds IBE); 0x0086BE40 already binds IBE (same-TU body). Row left: the self row 0x0086B810 defines the stand-in ?GetRandomTextureMorphs@CRandomAppearanceMorph@@QBEXAAKKABV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@@@AAV?$CArray@UCMorphSetTextureMorph@CMorphSet@@@@@Z (baseline grade + objdump); the PDB spelling is defined strongly by the 0x0086BE40 TU, so renaming it needs the one-definition fix in NOTES
+q11256	0x00753B40	done	2	self row 0x00753B40 respelled const (RENAMES s1); binders 0x00753C70 / 0x006655A0 respelled; 0x00753E90 already right. Rows keep their existing local CTCLook models (const-only respell)
+q11261	0x006644F0	blocked: port	11	part 1: 0x008C2980 ported. Part 2 ported 0x008C2A80, 0x008C29F0, 0x008C2C50, 0x008C5370, 0x008DF640 (+ its binder 0x008E10E0), 0x009208E0, 0x007ED060, 0x008A9320, 0x008B9010, 0x008663D0 (self rename QAE -> UAE; its binder 0x008C2810 deferred: held by NF94, NAME_FIXES) onto the shared headers: SetCurrentAction 0x006644F0 now bound as ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (0x008E6AE0 / 0x007ECE20 ported too, already that spelling). Rows left (blocked: port, dozen-class local models, classes named in STATUS): 0x0074ACE0, 0x008A9100
+q11262	0x0062E900	blocked: port	8	part 1: 0x008C2980 ported. Part 2 ported 0x008C2A80, 0x008C29F0, 0x008E6AE0, 0x008DF640, 0x007ECE20, 0x009208E0 and the self row 0x0072D990 (identity ~CCreatureAction_CastAssassinRush, renamed) so the action temporaries' implicit destructors bind ??1CCombatActionBase@@UAE@XZ (0x008C2C50 / 0x008C5370 / 0x008B9010 ported too, already that spelling). Rows left (blocked: port, dozen-class local models, classes named in STATUS): 0x009551A0, 0x00956380, 0x0074ACE0, 0x00924930, 0x008A9100, 0x0072C790, 0x0072CBA0
+q11264	0x0138366C	done-already	0	the landed 0x007B6810 FillStack (its only reference, cs.py) already defines the block-scope `static float f = 0.6f;` and binds ?f@?6??FillStack@CTCCrateStack@@QAEXJABVC3DVector@@0@Z@4MA (baseline grade RELOCATION_MATCH, reloc_bindings); no CRATE_HEIGHT spelling anywhere
+q11269	0x007865E0	done	0	the landed row 0x007865E0 already defines ??0CTCSkeletalMorph@@QAE@AAVCThing@@@Z (Ego_r.pdb 0x0078DC70 + FableWin.pdb 0x026623D0); its header comment spelled CThing*: respelled (comment only, RELOCATION_MATCH / PASS)
+q11270	0x0085EE10	done	1	self row 0x0085EE10 renamed IsCreatureButNotHero -> NCreatureMode::IsTransmogrified (RENAMES s1); binder 0x00803B20 respelled (IsControlledCreature -> IsTransmogrified); 0x00805600 already right
+q11272	0x009F9E80	blocked: header	1	self row 0x009F9E80 respelled QBEKK -> QBEJJ (RENAMES s1); binder 0x009FD830 respelled; 0x00B2BD80 already right. Left: engine/CTexture.h FABLE_RETAIL_CTEXTURE_LEVELBYTELENGTH declares `unsigned long GetLevelByteLength(unsigned long) const` (QBEKK) and 0x009FB750 defines that body: needs header claim (NOTES)
+q11274	0x009F9E00	blocked: port	1	self row 0x009F9E00 respelled (unsigned long) -> (long) (RENAMES s1); binder 0x009FDCB0 ported (GetMipmapSurface -> GetSurfaceLevel); 0x009FA100 already right. Rows left (blocked: port): 0x00642880, 0x009BF350 (STATUS)
+q11275	0x009110F0	blocked: port	0	self row 0x009110F0 already right; 0x00911300 already binds it. Row left: 0x009378F0 (blocked: port, STATUS)
+q11284	0x00659C32	done	2	binders 0x00849250 and 0x007B2FD0 respelled RecalculateSecuritySweep(long) -> StartSecuritySweep(bool) (sources and tests); self row 0x00659C32 already right
+q11287	0x0088AFF0	done	1	binder 0x006C5680 respelled pointer -> reference (Ego_r + FableWin AAV); self row 0x0088AFF0 and 0x006C14D0 already right
+q11288	0x00659C32	done	1	the q11284 respells cover 0x00849250 / 0x007B2FD0 (sources + tests); 0x007B2E20 (source and its shape comment) respelled here; self row already right
+q11293	0x00662000	blocked: port	4	binders 0x00982DB0 (ported), 0x0096C880 / 0x00799E30 / 0x00914AA0 (in-place declaration respells) now bind ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ. Row left: 0x00942270 (blocked: port, local CThing model)
+q11295	0x0129BA3C	done-already	0	verified: no landed source or header spells g_NormaliseEpsilon; rebuild/oracles/reloc_bindings.tsv binds 0x0129BA3C only as ?DELTA_NOTIONAL_ZERO@@3MB (Ego_r + FableWin publics; engine/C3DVector.h). The remaining wrong spelling is the label table ghidra_out/labels_landing_2026-11-11cl.tsv line 17 (?g_NormaliseEpsilon@@3MB), which feeds the vland RELOC_NAME warn on 0x007E8A40; labels_landing_2026-11-15ga.tsv line 796 gives the right name but I did not check which table vland prefers. NAME_FIXES line added. Open q11356 / q11439 are the same global
+q11296	0x0099AF00	open	0	
+q11297	0x00514E20	open	0	
+q11298	0x005136B0	open	0	
+q11305	0x0043FCF0	open	0	
+q11309	0x006D63F0	open	0	
+q11317	0x00C62370	open	0	
+q11326	0x00A6C640	open	0	
+q11327	0x004014A0	open	0	
+q11333	0x006DFA50	open	0	
+q11336	0x00755520	open	0	
+q11342	0x0092E630	open	0	
+q11348	0x0138D2D4	open	0	
+q11352	0x007175D0	open	0	
+q11356	0x0129BA3C	open	0	
+q11358	0x006E8810	open	0	
+q11367	0x013979E8	open	0	
+q11370	0x00789CE0	open	0	
+q11375	0x00B97C10	open	0	
+q11378	0x00697C60	open	0	
+q11379	0x006B7490	open	0	
+q11382	0x00C6AAE0	open	0	
+q11390	0x006ECEA0	open	0	
+q11391	0x0087A7C0	open	0	
+q11392	0x0087A7C0	open	0	
+q11396	0x00834530	open	0	
+q11397	0x0084F850	open	0	
+q11398	0x008780D0	open	0	
+q11399	0x006FE7C0	open	0	
+q11403	0x0066A1E0	open	0	
+q11407	0x00C599C0	open	0	
+q11413	0x0143BC2C	open	0	
+q11415	0x00C88E60	deferred: held by acctB	0	
+q11416	0x00727220	open	0	
+q11418	0x01381198	open	0	
+q11420	0x008E3C50	open	0	
+q11422	0x00A8F1B0	open	0	
+q11423	0x00A8EFA0	open	0	
+q11430	0x00512C70	open	0	
+q11435	0x00535140	open	0	
+q11437	0x004C5B90	open	0	
+q11439	0x0129BA3C	open	0	
+q11440	0x00810F80	open	0	

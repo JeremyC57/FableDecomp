@@ -2,7 +2,7 @@
 // Leaf: ValidateIndex
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005819F2, 27 bytes.
 // Callees: 0x00686D50 CTCBase::PeekPlayerManager (`return g_pGame->m_30;`, 0x013B8A1C), 0x00449960
-// CPlayerManager::GetMainPlayer() const (`return GetPlayer(m_1c);`), 0x00445950 GetCount (__fastcall:
+// CPlayerManager::GetMainPlayer() const (`return GetPlayer(m_1c);`), 0x00445950 CGamePlayerInterface::GetNumberOfQuickAccessItemButtons (
 // `(m_7c8 - m_7c4) >> 3`).
 //
 // The manifest label (a CPersistContextReadSection constructor) is propagated and wrong: the body
@@ -12,14 +12,13 @@
 // neighbours are CTCInventory methods. The chain player manager -> main player -> +0xC object -> GetCount()
 // is kept only because the callees are out of line: a range check whose comparison compiled away
 // (the result is dropped), so the source calls the chain as a statement.
-struct CItemList {
-    unsigned long GetCount();              // 0x00445950
-};
-
-class CPlayer { public:
-    unsigned char _pad[0x0C];
-    CItemList*    m_pItems;                // +0x0C
-};
+// NF94 (q11291): the +0xC object is CPlayer::PlayerInterface (engine/CPlayer.h) and 0x00445950 is Ego_r.pdb + FableWin.pdb
+//   ?GetNumberOfQuickAccessItemButtons@CGamePlayerInterface@@QBEJXZ (engine/CGamePlayerInterface.h QUICKACCESSBUTTONS); the row-local
+//   CItemList::GetCount / CPlayer models are replaced by the shared headers.
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSBUTTONS
+#include "engine/CGamePlayerInterface.h"
+#include "engine/CPlayer.h"
 
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -36,6 +35,6 @@ class CTCInventory : public CTCBase { public:
 
 long CTCInventory::ValidateIndex(long index)
 {
-    PeekPlayerManager().GetMainPlayer().m_pItems->GetCount();
+    PeekPlayerManager().GetMainPlayer().PlayerInterface->GetNumberOfQuickAccessItemButtons();
     return index;
 }

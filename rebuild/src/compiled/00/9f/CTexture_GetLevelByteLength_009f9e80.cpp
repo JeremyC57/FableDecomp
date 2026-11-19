@@ -1,5 +1,8 @@
-// CTexture::GetLevelByteLength(unsigned long level) -- size in bytes of one mip level: the level's surface description (IDirect3DTexture9::GetLevelDesc, COM slot 17) for Width/Height, the texture's pixel format (an inline GetPixelFormat on level 0) for the bits per pixel, then bits * Width * Height / 8
-// Leaf: ?GetLevelByteLength@CTexture@@QBEKK@Z
+// CTexture::GetLevelByteLength(long level) -- size in bytes of one mip level: the level's surface description (IDirect3DTexture9::GetLevelDesc, COM slot 17) for Width/Height, the texture's pixel format (an inline GetPixelFormat on level 0) for the bits per pixel, then bits * Width * Height / 8
+// Leaf: ?GetLevelByteLength@CTexture@@QBEJJ@Z
+// Name fix (NF93, round 8, q11272): Ego_r.pdb 0x00B6A2C0 / FableWin.pdb 0x030DBC20 ?GetLevelByteLength@CTexture@@QBEJJ@Z (long level, long
+//   result); the landed 0x00B2BD80 and 0x009FD830 bind that spelling. Was QBEKK (unsigned long), the spelling of engine/CTexture.h's
+//   FABLE_RETAIL_CTEXTURE_LEVELBYTELENGTH opt-in (0x009FB750), which needs a header claim. The product stays unsigned (`/ 8` = shr).
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe @ 0x009F9E80, 82 bytes (+ int3 padding).
@@ -64,10 +67,10 @@ public:
         PD3DTexture->GetLevelDesc(0, &desc);
         return CPixelFormat(desc.Format);
     }
-    unsigned long GetLevelByteLength(unsigned long level) const;
+    long GetLevelByteLength(long level) const;
 };
 
-unsigned long CTexture::GetLevelByteLength(unsigned long level) const
+long CTexture::GetLevelByteLength(long level) const
 {
     D3DSURFACE_DESC_Local desc;
     PD3DTexture->GetLevelDesc(level, &desc);

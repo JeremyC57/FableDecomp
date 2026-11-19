@@ -33,13 +33,13 @@ namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _Tp>
-_RandomAccessIter __fastcall find(_RandomAccessIter __first, _RandomAccessIter __last, const _Tp& __val,
-                                  const random_access_iterator_tag&);                          // 0x006C4060
+_RandomAccessIter __fastcall __find(_RandomAccessIter __first, _RandomAccessIter __last, const _Tp& __val,
+                                    const random_access_iterator_tag&);                        // 0x006C4060 (STLport _algobase.c __find)
 
 template <class _InputIter, class _Tp>
 inline _InputIter find(_InputIter __first, _InputIter __last, const _Tp& __val)
 {
-    return find(__first, __last, __val, random_access_iterator_tag());
+    return __find(__first, __last, __val, random_access_iterator_tag());
 }
 
 template <class _Tp> class allocator { };

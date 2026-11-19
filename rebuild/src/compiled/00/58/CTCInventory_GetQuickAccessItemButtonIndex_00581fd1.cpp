@@ -2,7 +2,7 @@
 // CTCInventory::GetQuickAccessItemButtonIndex(long item) -- slot index of the item among the quick-access items, -1 when absent
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00581FD1, length 86 bytes; size-optimised TU ("s").
 // Callees: CTCBase::PeekPlayerManager 0x00686D50 (`return g_pGame->m_30;`), CPlayerManager::GetMainPlayer() const 0x00449960,
-//          CItemList::GetCount 0x00445950 (`(m_7c8 - m_7c4) >> 3`) -- the same dropped range-check chain as
+//          CGamePlayerInterface::GetNumberOfQuickAccessItemButtons 0x00445950 (`(m_7c8 - m_7c4) >> 3`) -- the same dropped range-check chain as
 //          the landed CTCInventory::ValidateIndex (0x005819F2), whose model is reused here.
 // Ego_r PDB: ?GetQuickAccessItemButtonIndex@CTCInventory@@QBEJJ@Z (const).
 // Retail layout: engine/CTCInventory.h is the wider Ego_r.pdb layout (QuickAccessItems at PDB +0x168, 16-byte
@@ -10,14 +10,13 @@
 // so `this` is modelled locally.
 // Shape: the count chain is a statement whose result is dropped (the callees are out of line); then a counted
 // loop over `size()` strength-reduced to a walking element pointer, `or eax,-1` when not found.
-struct CItemList {
-    unsigned long GetCount();                        // 0x00445950
-};
-
-class CPlayer { public:
-    unsigned char _pad_0x00[0x0c];
-    CItemList*    m_pItems;                          // +0x0c
-};
+// NF94 (q11291): the +0xC object is CPlayer::PlayerInterface (engine/CPlayer.h) and 0x00445950 is Ego_r.pdb + FableWin.pdb
+//   ?GetNumberOfQuickAccessItemButtons@CGamePlayerInterface@@QBEJXZ (engine/CGamePlayerInterface.h QUICKACCESSBUTTONS); the row-local
+//   CItemList::GetCount / CPlayer models are replaced by the shared headers.
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSBUTTONS
+#include "engine/CGamePlayerInterface.h"
+#include "engine/CPlayer.h"
 
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -44,7 +43,7 @@ class CTCInventory : public CTCBase { public:
 
 long CTCInventory::GetQuickAccessItemButtonIndex(long item) const
 {
-    PeekPlayerManager().GetMainPlayer().m_pItems->GetCount();
+    PeekPlayerManager().GetMainPlayer().PlayerInterface->GetNumberOfQuickAccessItemButtons();
     for (unsigned long i = 0; i < QuickAccessItems.size(); ++i) {
         if (QuickAccessItems[i] == item)
             return i;

@@ -47,6 +47,12 @@ class CFontBank;
 class CWorld;
 namespace NGameText { class CDataBank; }
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PPLAYERINTERFACE
+// NF94 opt-in (round 8, q11265 row 0x00416359 GetPPlayerInterface; needs FABLE_RETAIL_SCOPED_PTR): PPlayerInterface carries its Ego_r.pdb type
+// boost::scoped_ptr<CGamePlayerInterface> (+0x20, 4 bytes; layout unchanged), so the out-of-line getter reads it through get().
+#include "boost/scoped_ptr.h"
+class CGamePlayerInterface;
+#endif
 class CMainGameComponentInit;
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ADDGAMEEVENT
 class CGameEvent;
@@ -100,7 +106,11 @@ protected:
     unsigned char PTextBank[8];                     // +0x14 CCountedPointer<NGameText::CDataBank>
 #endif
     unsigned char PPlayerManager[4];                // +0x1C boost::scoped_ptr<CPlayerManager>
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PPLAYERINTERFACE
+    boost::scoped_ptr<CGamePlayerInterface> PPlayerInterface; // +0x20 (NF94 opt-in)
+#else
     unsigned char PPlayerInterface[4];              // +0x20 boost::scoped_ptr<CGamePlayerInterface>
+#endif
 #if defined(FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES) || defined(FABLE_RETAIL_CMAINGAMECOMPONENT_SMART_POINTER_ACCESSORS)
     boost::scoped_ptr<CWorld> PWorld;
 #else

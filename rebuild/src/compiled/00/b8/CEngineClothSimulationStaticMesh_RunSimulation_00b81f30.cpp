@@ -8,7 +8,7 @@
 //   label is a propagated one), operator new 0x00BFEA1A, CParticleSimulation::CParticleSimulation 0x00AE0600,
 //   CCountedPointer<CParticleSimulation>::Reset 0x00B82A50, CParticleProgram::SetupSimulation(simulation, pool) 0x00AE0050,
 //   CParticleProgram::SaveStateToInterpolateFrom 0x00ADF5B0, CParticleProgram::SimulationStep(simulation, context) 0x00AE2CB0,
-//   operator delete 0x00BFE9BC. Global g_ParticleMemoryPool 0x013D2D70 (CMovableResourceMemoryPool*).
+//   operator delete 0x00BFE9BC. Global N3DMeshAllocators::ClothMemoryPool 0x013D2D70 (CMovableResourceMemoryPool*).
 // Inline (expanded): FableWin.pdb C3DMeshInfo::GetBestCurrentDetailLevel / HasLOD (0x00B81F67..0x00B81F8E, the unrotated LOD loop),
 //   the CCountedPointer<const C3DMesh2> constructor and destructor, STLport vector empty() / size(), CArray::operator[].
 // Layout: CParticleContext (vtable 0x012A38E0, six slots) is the polymorphic base at +0 of CEngineSimulationBase (rtti_bases.tsv), so
@@ -58,7 +58,7 @@ class C3DClothPrimitive { public:                          // Ego_r.pdb (landed 
     unsigned long                     PrimitiveIndex;      // +0x0c
     unsigned long                     MaterialIndex;       // +0x10
 };
-extern CMovableResourceMemoryPool* g_ParticleMemoryPool;   // 0x013D2D70
+namespace N3DMeshAllocators { extern CMovableResourceMemoryPool* ClothMemoryPool; }   // 0x013D2D70: Ego_d.pdb ?ClothMemoryPool@N3DMeshAllocators@@3PAVCMovableResourceMemoryPool@@A (NF94, q11257; was g_ParticleMemoryPool)
 class CParticleContext {                                   // vtable 0x012A38E0 (slots 0..5; FableWin.pdb names of the overriders)
 public:
     virtual ~CParticleContext();                                         // slot 0
@@ -116,7 +116,7 @@ void CEngineClothSimulationStaticMesh::RunSimulation()
             ParticleSims[i].Reset(new CParticleSimulation);
             CParticleSimulation* simulation = ParticleSims[i].Data;
             CParticleProgram* program = primitive.ClothPrimitives[i]->ParticleProgram.Data;
-            if (!program->SetupSimulation(*simulation, *g_ParticleMemoryPool)) {
+            if (!program->SetupSimulation(*simulation, *N3DMeshAllocators::ClothMemoryPool)) {
                 ClearParticleSims();
                 break;
             }

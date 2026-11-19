@@ -1,5 +1,6 @@
 // CAIStateGroup_CreatureIdleUnderground::OnActivate() -- unless the creature is already in the underground mode (type 0x1e), make it go underground
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
+// Leaf: ?OnActivate@CAIStateGroup_CreatureIdleUnderground@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009208E0, length 124 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, interface 0x31 =
 // CTCCreatureModeManager: bitset word 1 bit 17 -> `test dword ptr [eax+24h],20000h`), the mode manager's current-mode
@@ -14,81 +15,55 @@
 // 300-byte layout is wider).
 // Model: local (no engine header for this class).
 // Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
-#include "fable_compiler.h"
-class CTCBase;
-class CThingCreatureBase;
+// Port (NF93, q11261 / q11262): the local N_0062e900::CCreatureActionBase / CCreatureAction_GoUnderground / CThingAICreature (GetInterface) /
+//   CTCCreatureModeManager / CAIBrain / CAIStateGroupBase stand-ins replaced by the shared headers (the landed 0x009210A0 BeetleToggleHover
+//   recipe: GetCreature() + GetTC) with the NF93 opt-in CCREATUREACTION_GOUNDERGROUND_CLASS: SetCurrentAction 0x006644F0 (by reference),
+//   the ctor 0x008B8110 and ~CCombatActionBase 0x0062E900 now bind the PDB spellings; 0x1e is NCreatureMode::MODE_UNDERGROUND.
+//   CAIStateGroup_CreatureIdleUnderground has no shared header: it stays a row-local class on the shared CAIStateGroupBase (RTTI base).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCREATUREACTION_GOUNDERGROUND_CLASS
+#include "fable_string.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/NCreatureMode.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_GoUnderground.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-namespace N_0062e900 { struct CCreatureActionBase {
-    virtual void v00();
-    unsigned char _body[0x110];                 // +0x04..+0x113
-    ~CCreatureActionBase();                     // 0x0062E900
-}; } using N_0062e900::CCreatureActionBase;
-
-class CCreatureAction_GoUnderground : public CCreatureActionBase { public:
-    CCreatureAction_GoUnderground(CThingCreatureBase* creature);   // 0x008B8110
-};
-
-class CThingAICreature { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool SetCurrentAction(CCreatureActionBase* action);            // 0x006644F0 (CThingCreatureBase)
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
-
-
-class CTCCreatureModeManager { public:
-    class CModeBase { public:
-    virtual void v00();
-    virtual long GetType();                     // slot 1 (+0x04)
-};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                 // interface 0x31
-    CModeBase& GetCurrentMode() const;        // 0x0073A6E0
-};
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThingAICreature* Creature;                 // +0x18
-};
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-};
-
-struct CAIStateGroup_CreatureIdleUnderground : CAIStateGroupBase {
+class CAIStateGroup_CreatureIdleUnderground : public CAIStateGroupBase {   // RTTI : CAIStateGroupBase (no shared header)
+public:
     virtual void OnActivate();
 };
 
 void CAIStateGroup_CreatureIdleUnderground::OnActivate()
 {
-    CTCCreatureModeManager* modes;
-    if (PBrain->Creature->GetInterface(&modes, 0x31)) {
-        if (modes->GetCurrentMode().GetType() != 0x1e) {
-            CThingAICreature* creature = PBrain->Creature;
-            creature->SetCurrentAction(&CCreatureAction_GoUnderground((CThingCreatureBase*)creature));
+    CTCCreatureModeManager* pmodes;
+    if (GetCreature().GetTC(&pmodes)) {
+        if (pmodes->GetCurrentMode().GetType() != NCreatureMode::MODE_UNDERGROUND) {
+            CThingAICreature& creature = GetCreature();
+            creature.SetCurrentAction(CCreatureAction_GoUnderground(creature));
         }
     }
 }

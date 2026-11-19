@@ -35,7 +35,6 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);                           // 0x0099EBF0
     ~CCharString();                                                             // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);                          // 0x0099F0A0
-    static CCharString __fastcall FormatDouble(long digits, double value);      // 0x009A08B0
     FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
@@ -46,6 +45,8 @@ class CCharString { public:
         return PStringData->Data == text;
     }
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 CCharString __fastcall operator+(const char* left, const CCharString& right);       // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);       // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right); // 0x0099F570
@@ -67,8 +68,8 @@ class CThingSwitch : public CThingPhysical { public:
 void CThingSwitch::Save(CCharString& out)
 {
     CThingPhysical::Save(out);
-    out += "TriggerRadius " + CCharString::FormatDouble(6, TriggerRadius) + ";\r\n";
+    out += "TriggerRadius " + GFFloatToCharString(TriggerRadius, 6) + ";\r\n";
     out += CCharString("TriggeredByThing ") + (TriggerableObjectScriptName == "" ? CCharString("NULL") : TriggerableObjectScriptName) + ";\r\n";
     out += CCharString("EnvironmentDef ") + (EnvironmentDef == "" ? CCharString("NULL") : EnvironmentDef) + ";\r\n";
-    out += "TimeToChangeEnvironmentDef " + CCharString::FormatDouble(6, TimeToChangeEnvironmentDef) + ";\r\n";
+    out += "TimeToChangeEnvironmentDef " + GFFloatToCharString(TimeToChangeEnvironmentDef, 6) + ";\r\n";
 }

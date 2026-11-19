@@ -3,7 +3,9 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C5680, length 133 bytes (+11 int3 padding). Vtable slot 6 of CTCHeroOpinionDeedLog
 // (catalog "vfunc_6"; slot 6 is the CTCBase OnInitialActivate slot).
-// Callees: the `__fastcall` GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>*) @ 0x0088AFF0.
+// Callees: the `__fastcall` GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>&) @ 0x0088AFF0.
+// Name fix (NF93, round 8, q11287): the parameter is a reference in Ego_r.pdb 0x008CA220 and FableWin.pdb 0x0287E7A0
+//   (?GFRemapToThingAfterSerialisation@@YIXAAV?$CIntelligentPointer@VCThing@@@@@Z, the spelling the landed 0x006C14D0 binds); was a pointer.
 // Shape: the map walk is the inline STLport _Rb_tree iterator (begin = header->_M_left, the static
 // _Rb_global<bool>::_M_increment(node) returning the next node (computed in a copy, then stored back): right subtree's
 // leftmost, else climb while we are the parent's right child, then the `_M_right != y` check); the list walk follows _M_next.
@@ -14,7 +16,7 @@
 class CThing;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-void __fastcall GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>* pointer);   // 0x0088AFF0
+void __fastcall GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>& pointer);   // 0x0088AFF0 Ego_r.pdb / FableWin.pdb ?GFRemapToThingAfterSerialisation@@YIXAAV?$CIntelligentPointer@VCThing@@@@@Z
 
 class COpinionDeed { public:
     unsigned char _pad00[0x18];
@@ -90,11 +92,11 @@ public:
 
 void CTCHeroOpinionDeedLog::OnInitialActivate()
 {
-    GFRemapToThingAfterSerialisation(&VillageForCrimes);
+    GFRemapToThingAfterSerialisation(VillageForCrimes);
     CDeedMapIterator end = OpinionDeedMap.end();
     for (CDeedMapIterator it = OpinionDeedMap.begin(); it != end; ++it)
-        GFRemapToThingAfterSerialisation(&it->second->PThing);
+        GFRemapToThingAfterSerialisation(it->second->PThing);
     SWitnessNode* head = OpinionDeedsSearchingForWitnesses._M_node;
     for (SWitnessNode* n = head->_M_next; n != head; n = n->_M_next)
-        GFRemapToThingAfterSerialisation(&n->_M_data.PThing);
+        GFRemapToThingAfterSerialisation(n->_M_data.PThing);
 }

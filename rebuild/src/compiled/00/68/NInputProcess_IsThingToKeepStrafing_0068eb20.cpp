@@ -6,7 +6,7 @@
 //   bool in al. Ego_r.pdb `?IsThingToKeepStrafing@NInputProcess@@YI_NABVCThingPlayerCreature@@@Z`.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0 (x3: 0x46 CTCCarrying, 0x48 CTCWeapon, 0x81
 //   CTCHeroRangedAttacks), CTCCarrying::GetThingInPrimarySlot 0x006A1440, CTCWeapon::IsProjectileWeapon 0x005DAA40 /
-//   IsAnalogueLoading 0x005DA950 / IsProjectileWeaponLoaded 0x005DA980, CMainGameComponent::GetGamePlayerInterface 0x00416359
+//   IsAnalogueLoading 0x005DA950 / IsProjectileWeaponLoaded 0x005DA980, CMainGameComponent::GetPPlayerInterface 0x00416359
 //   (on CMainGameComponent::Get() 0x013B86A0), CThing::PeekPlayer 0x004C7A10 (twice), CPlayer::GetJoystickDeviceNumber 0x00487510,
 //   CGamePlayerInterface::IsGameActionEventInQueue 0x00446B10, CThingCreatureBase::IsPerformingAnyAction 0x006622A0.
 // Layout: retail CThing interface bits +0x20 (0x46 = word +0x28 bit 6, 0x48 = word +0x28 bit 8, 0x81 = word +0x30 bit 1), map
@@ -19,6 +19,7 @@
 //   before the PeekPlayer().GetJoystickDeviceNumber() argument chain. A same-TU noinline LowerBound body keeps the lookup keys uncaptured
 //   so they share the second frame word with the carrying pointer.
 // Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_GETPPLAYERINTERFACE
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/ETCInterfaceType.h"
@@ -39,15 +40,7 @@ class CGamePlayerInterface {
 public:
     bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber);   // 0x00446B10
 };
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private:
-public:
-    CGamePlayerInterface* GetGamePlayerInterface(); // 0x00416359
-};
+#include "engine/CMainGameComponent.h"   // NF94 q11265: the shared header (GETPPLAYERINTERFACE) in place of the row-local model
 inline CMainGameComponent* GetMainGameComponent() { return CMainGameComponent::Get(); }
 
 class CThing {
@@ -132,7 +125,7 @@ bool __fastcall IsThingToKeepStrafing(const CThingPlayerCreature& creature)
     bool loading = false;
     if (ranged->Loading)
         loading = true;
-    CGamePlayerInterface* gamePlayerInterface = GetMainGameComponent()->GetGamePlayerInterface();
+    CGamePlayerInterface* gamePlayerInterface = GetMainGameComponent()->GetPPlayerInterface();
     bool actionQueued = gamePlayerInterface->IsGameActionEventInQueue(0xa, 2, creature.PeekPlayer().GetJoystickDeviceNumber());
     const CPlayer* player = &creature.PeekPlayer();
     if (holdingProjectileWeapon && !player->InRangedWeaponMode) {

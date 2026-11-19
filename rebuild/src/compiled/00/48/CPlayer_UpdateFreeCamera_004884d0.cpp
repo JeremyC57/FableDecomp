@@ -6,7 +6,9 @@
 // Identity: Ego_r.pdb `?UpdateFreeCamera@CPlayer@@AAEXXZ`.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (twice on ControlledCreature), CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound 0x0040F020 (inline lookup of type 0x5B = CTCGraphicAppearance, bit 27 of +0x28),
-// CTCGraphicAppearance helper-point position 0x004C10E0 (returns a C3DVector through a hidden pointer),
+// NGraphicAppearance::CTCGraphicAppearance::GetStaticFocalPos() const 0x004C10E0 (Ego_r / FableWin
+// ?GetStaticFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@XZ, the shared header's PASS22_STATICFOCAL
+// declaration; a C3DVector through a hidden pointer),
 // CCamera::PointAt(const C3DVector&) 0x00A0C2B0, CCamera XY-angle setter 0x00A0C570 (takes the angle in turns),
 // the fmod intrinsic `_CIfmod` 0x00BFEB28; pool constants 1/(2*pi) 0x01237F08, 0.0f 0x0122DEDC, 1.0f 0x0122DED8,
 // 1.0 (double) 0x01237F00.
@@ -39,11 +41,9 @@ class CCamera { public:                                        // 0x38 bytes
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-namespace NGraphicAppearance {
-struct CTCGraphicAppearance {                           // interface 0x5B
-    C3DVector GetHelperPointPosition();                 // 0x004C10E0
-};
-}
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_PASS22_STATICFOCAL
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"   // GetStaticFocalPos() const 0x004C10E0
 using NGraphicAppearance::CTCGraphicAppearance;
 
 class CBaseIntelligentPointer {
@@ -82,10 +82,10 @@ void CPlayer_Methods::UpdateFreeCamera()
         if (creature->HasTC(TCI_GRAPHIC_APPEARANCE_NEW))
             appearance = ((CTCGraphicAppearance*)&creature->GetTC(TCI_GRAPHIC_APPEARANCE_NEW));
         if (Flags().FreeCameraTrackingPlayerYZ) {
-            C3DVector target = appearance->GetHelperPointPosition();
+            C3DVector target = appearance->GetStaticFocalPos();
             CurrentCamera().PointAt(target);
         } else if (Flags().FreeCameraTrackingPlayer) {
-            C3DVector target = appearance->GetHelperPointPosition();
+            C3DVector target = appearance->GetStaticFocalPos();
             const C3DVector& from = CurrentCamera().Position;
             float angle = (float)(atan2(target.X - from.X, target.Y - from.Y) * 0.15915494f);
             if (angle < 0.0f || angle >= 1.0f) {

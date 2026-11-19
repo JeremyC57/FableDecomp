@@ -9,6 +9,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFAROUTOF_CLASS
+// NF93 opt-in (round 8, q11261 / q11262 row 0x008C2C50 CCreatureAction_BriarRoseShotFarInto::FinishAction): the polymorphic retail class on
+// CCombatActionBase (0x114; ghidra_out/rtti_bases.tsv .?AVCCreatureAction_BriarRoseShotFarOutof@@ : CCombatActionBase) with its Ego_r.pdb
+// member PShot (CIntelligentPointer<CThing>, +0x114; sizeof 0x11c, as below). The (creature, target) ctor is Ego_r.pdb / FableWin.pdb
+// ??0CCreatureAction_BriarRoseShotFarOutof@@QAE@AAVCThingCreatureBase@@0@Z, out of line in retail at 0x008C39A0; the implicit destructor
+// runs ~CBaseIntelligentPointer 0x00A01C10 on PShot and ~CCombatActionBase 0x0062E900. Needs engine/CIntelligentPointer.h and the retail
+// engine/CCombatActionBase.h first.
+class CCreatureAction_BriarRoseShotFarOutof : public CCombatActionBase {
+public:
+    CCreatureAction_BriarRoseShotFarOutof(CThingCreatureBase& creature, CThingCreatureBase& target);   // 0x008C39A0
+protected:
+    CIntelligentPointer<CThing> PShot;                                   // +0x114
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BriarRoseShotFarOutof {
 public:
@@ -77,8 +91,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BriarRoseShotFarOutof) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseShotFarOutof, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseShotFarOutof, PShot) == 0x114);
+FABLE_STATIC_ASSERT_AT(80, sizeof(CCreatureAction_BriarRoseShotFarOutof) == 0x11c);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CCreatureAction_BriarRoseShotFarOutof, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_BriarRoseShotFarOutof, PShot) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFAROUTOF_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BRIARROSESHOTFAROUTOF_H

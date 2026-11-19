@@ -8,7 +8,7 @@
 //   CEngine::GetNonInterpolatedWorldTime (Ego_d: first used here), CEngineCamera::PeekNonHomogenousViewToViewScaleX,
 //   CEngineResourceManager::GetMeshBank (Ego_r), CMeshDataBank::GetClothMemoryPool; Ego_d EMeshBankNo MAIN_MESH_BANK_NO.
 //   Callees / globals: CEngineClothSimulationMeshBase::ClearStaticParticleSims 0x00B81450 (static __fastcall; engine/CEngineClothSimulationMeshBase.h), NEngineInternal::GPResourceManager 0x01436E98 / GPEngine 0x01436EA4 / GPCamera 0x01436EA0,
-//   TWO_PI 0x0124F2B8, g_ParticleMemoryPool 0x013D2D70 (bound spellings; the pool global's PDB name is not in the name sets).
+//   TWO_PI 0x0124F2B8, N3DMeshAllocators::ClothMemoryPool 0x013D2D70 (TWO_PI a bound spelling; the pool global is the Ego_d.pdb data symbol, NF94 q11257).
 // Same-TU body: CEnginePrimitiveSimulationInfo::RunSimulation (Ego_d locals itr / sim), defined before the row as in Ego_d's object
 //   order and expanded three times; it grades MATCH at its retail out-of-line copy 0x00B80B40.
 #include <math.h>
@@ -38,7 +38,7 @@
 #include "engine/CMeshDataBank.h"
 
 class CMovableResourceMemoryPool;
-extern CMovableResourceMemoryPool* g_ParticleMemoryPool;                // 0x013D2D70
+namespace N3DMeshAllocators { extern CMovableResourceMemoryPool* ClothMemoryPool; }   // 0x013D2D70: Ego_d.pdb ?ClothMemoryPool@N3DMeshAllocators@@3PAVCMovableResourceMemoryPool@@A (NF94, q11257; was g_ParticleMemoryPool)
 extern const double TWO_PI;                                             // 0x0124F2B8
 namespace NEngineInternal {
 extern CEngine* GPEngine;                                               // 0x01436EA4
@@ -63,8 +63,8 @@ void CEngineSimulationManager::FrameStart(const CEngineComponentParams& params)
     WindNoiseTime = WindNoiseSpeed * NEngineInternal::GPEngine->GetNonInterpolatedWorldTime();
     WindNoiseOffset = sin(WindNoiseTime * TWO_PI);
     Zoom = 1.0f > NEngineInternal::GPCamera->PeekNonHomogenousViewToViewScaleX() ? 1.0f : NEngineInternal::GPCamera->PeekNonHomogenousViewToViewScaleX();
-    CMovableResourceMemoryPool* old_cloth_pool = g_ParticleMemoryPool;
-    g_ParticleMemoryPool = NEngineInternal::GPResourceManager->GetMeshBank(MAIN_MESH_BANK_NO)->GetClothMemoryPool();
+    CMovableResourceMemoryPool* old_cloth_pool = N3DMeshAllocators::ClothMemoryPool;
+    N3DMeshAllocators::ClothMemoryPool = NEngineInternal::GPResourceManager->GetMeshBank(MAIN_MESH_BANK_NO)->GetClothMemoryPool();
     CEngineClothSimulationMeshBase::ClearStaticParticleSims();
     while (FullUpdateOnlyStepsPending) {
         for (std::list<CIVCountedPointer<CEnginePrimitiveSimulationInfo> >::iterator itr = FullUpdateOnlySimulationInfoList.begin(); itr != FullUpdateOnlySimulationInfoList.end(); ++itr) {
@@ -87,5 +87,5 @@ void CEngineSimulationManager::FrameStart(const CEngineComponentParams& params)
         }
         --PausedStepsPending;
     }
-    g_ParticleMemoryPool = old_cloth_pool;
+    N3DMeshAllocators::ClothMemoryPool = old_cloth_pool;
 }

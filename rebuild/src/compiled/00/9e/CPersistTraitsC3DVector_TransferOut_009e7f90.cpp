@@ -16,8 +16,9 @@ class CCharString { public:
     ~CCharString();                                              // 0x0099EAE0
     const CCharString& operator+=(const char* text);                   // 0x0099F100
     const CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 
 #include "engine/C3DVector.h"
 
@@ -30,10 +31,10 @@ template <>
 void CPersistTraits<C3DVector>::TransferOut(CPersistContext* context, CCharString* out, C3DVector* value)
 {
     *out += "C3DCoordF(";
-    *out += CCharString::FormatDouble(6, value->X);
+    *out += GFFloatToCharString(value->X, 6);
     *out += ",";
-    *out += CCharString::FormatDouble(6, value->Y);
+    *out += GFFloatToCharString(value->Y, 6);
     *out += ",";
-    *out += CCharString::FormatDouble(6, value->Z);
+    *out += GFFloatToCharString(value->Z, 6);
     *out += ")";
 }

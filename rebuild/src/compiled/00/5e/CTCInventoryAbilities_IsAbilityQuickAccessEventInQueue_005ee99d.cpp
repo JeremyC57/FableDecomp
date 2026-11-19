@@ -19,6 +19,7 @@
 // Layout: retail CHeroAbilityDef quick-access item +0x98; CTCInventory quick-access slots vector<long> +0x148.
 // Name fix (agentNF 2026-11-10): GetAbilityPDef returns CDefPointer<const CHeroAbilityDef> (Ego_r 0x0057CDE0 / FableWin name sets,
 //   ?GetAbilityPDef@CTCInventoryAbilities@@QBE?AV?$CDefPointer@$$CBVCHeroAbilityDef@@@@W4EHeroAbility@@@Z); was bound with a non-const T.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_GETPPLAYERINTERFACE
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -93,14 +94,7 @@ class CPlayerManager { public:
 // IsQuickAccessEventInQueue (QuickAccessItemButtons +0x7c4, Ego_r.pdb), not IsAssignableSpecialMoveButtonInQueue (0x00445E90, +0x7b8).
 #define FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSQUEUE
 #include "engine/CGamePlayerInterface.h"
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    CGamePlayerInterface* GetGamePlayerInterface(); // 0x00416359
-};
+#include "engine/CMainGameComponent.h"   // NF94 q11265: the shared header (GETPPLAYERINTERFACE) in place of the row-local model
 FABLE_FORCEINLINE CMainGameComponent* GetMainGameComponent() { return CMainGameComponent::Get(); }
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 
@@ -157,7 +151,7 @@ bool CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility abilit
                     if (i >= (unsigned long)(inventory->QuickAccessItems.last - data))
                         break;
                     if (data[i] == item &&
-                        GetMainGameComponent()->GetGamePlayerInterface()->IsQuickAccessEventInQueue(
+                        GetMainGameComponent()->GetPPlayerInterface()->IsQuickAccessEventInQueue(
                             i, (EInputButtonEventType)2, PeekPlayerManager().GetMainPlayer()->GetJoystickDeviceNumber()))
                         return true;
                 }

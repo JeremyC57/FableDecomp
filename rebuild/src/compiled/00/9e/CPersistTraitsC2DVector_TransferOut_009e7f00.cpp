@@ -15,8 +15,9 @@ class CCharString { public:
     ~CCharString();                                              // 0x0099EAE0
     const CCharString& operator+=(const char* text);                   // 0x0099F100
     const CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 
 class C2DVector {
 public:
@@ -33,8 +34,8 @@ template <>
 void CPersistTraits<C2DVector>::TransferOut(CPersistContext* context, CCharString* out, C2DVector* value)
 {
     *out += "C2DCoordF(";
-    *out += CCharString::FormatDouble(6, value->X);
+    *out += GFFloatToCharString(value->X, 6);
     *out += ",";
-    *out += CCharString::FormatDouble(6, value->Y);
+    *out += GFFloatToCharString(value->Y, 6);
     *out += ")";
 }

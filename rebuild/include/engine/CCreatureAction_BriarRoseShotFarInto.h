@@ -9,6 +9,16 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFARINTO_CLASS
+// NF93 opt-in (round 8, q11261 / q11262 row 0x008C2C50): the polymorphic retail class on CCombatActionBase (0x114; ghidra_out/rtti_bases.tsv
+// .?AVCCreatureAction_BriarRoseShotFarInto@@ : CCombatActionBase, no own members, sizeof 0x114 as below) with its slot-4 override
+// Ego_r.pdb 0x008FB0F0 / FableWin.pdb 0x02A12430 ?FinishAction@CCreatureAction_BriarRoseShotFarInto@@UAEXXZ (0x008C2C50). Needs the retail
+// engine/CCombatActionBase.h first.
+class CCreatureAction_BriarRoseShotFarInto : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                         // slot 4, 0x008C2C50
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BriarRoseShotFarInto {
 public:
@@ -27,7 +37,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BriarRoseShotFarInto) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseShotFarInto, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_BriarRoseShotFarInto) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_BriarRoseShotFarInto, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFARINTO_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BRIARROSESHOTFARINTO_H

@@ -19,8 +19,9 @@ class CCharString { public:
     struct SBlock* m_pBlock;
     ~CCharString();                                              // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 
 template <class T> struct CRetailVector {
     T* m_pFirst;
@@ -40,5 +41,5 @@ struct CPersistContext_TransferableVector {
 void CPersistContext_TransferableVector::TransferOut(CPersistContext* context, CCharString* out, long index)
 {
     float* first = TransVector->m_pFirst;
-    *out += CCharString::FormatDouble(6, first[index]);
+    *out += GFFloatToCharString(first[index], 6);
 }

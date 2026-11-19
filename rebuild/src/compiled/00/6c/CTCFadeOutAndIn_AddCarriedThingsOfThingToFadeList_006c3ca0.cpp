@@ -8,7 +8,7 @@
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*,..>::LowerBound(const ETCInterfaceType&) const @ 0x004365B0,
 //   CTCCarrying::GetAllCarriedThings(vector<CThing*>&) const @ 0x006A2220 (interface 0x46 = CTCCarrying: its
 //   GetInterfaceType 0x004E74C5 `push 46h`), CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10
-//   (CIntelligentPointer<CThing> vtable 0x01238C6C), STLport find(.., const random_access_iterator_tag&) @ 0x006C4060,
+//   (CIntelligentPointer<CThing> vtable 0x01238C6C), STLport __find(.., const random_access_iterator_tag&) @ 0x006C4060,
 //   vector<CIntelligentPointer<CThing>>::push_back @ 0x004AD520, free @ 0x00BFEA14.
 // Layout: Ego_r.pdb CTCFadeOutAndIn (FadingThings +0x18); retail CThing UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0.
 // Shape: the AddThingToFade test folded into one && condition with the live test, so the find temporary is
@@ -36,12 +36,12 @@ public:
 namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _RandomAccessIter, class _Tp>
-_RandomAccessIter __fastcall find(_RandomAccessIter __first, _RandomAccessIter __last, const _Tp& __val,
-                                  const random_access_iterator_tag&);                          // 0x006C4060
+_RandomAccessIter __fastcall __find(_RandomAccessIter __first, _RandomAccessIter __last, const _Tp& __val,
+                                    const random_access_iterator_tag&);                        // 0x006C4060 (STLport _algobase.c __find)
 template <class _InputIter, class _Tp>
 inline _InputIter find(_InputIter __first, _InputIter __last, const _Tp& __val)
 {
-    return find(__first, __last, __val, random_access_iterator_tag());
+    return __find(__first, __last, __val, random_access_iterator_tag());
 }
 template <class _T1, class _T2> struct pair {
     _T1 first;

@@ -13,6 +13,10 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
 // Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
+// Name fix (NF93, round 8, q11293): 0x00662000 is CThingCreatureBase::GetCreatureType() const returning ECreatureType (Ego_r.pdb 0x0053CE50 /
+//   FableWin.pdb 0x01D9A450 ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ; engine/CThingCreatureBase.h CREATURETYPE): the
+//   local declaration (GetMovementMode, non-const) respelled in place, the enum from the shared engine/ECreatureType.h.
+#include "engine/ECreatureType.h"
 enum EMovementType;                           // MS forward enum
 enum EAIActionRepeat;                         // MS forward enum
 enum EAIActionReturn;                         // MS forward enum
@@ -28,7 +32,7 @@ class CRightHandedSet { public:
 
 #include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public:
-    long GetMovementMode();                        // 0x00662000
+    ECreatureType GetCreatureType() const;         // 0x00662000
 };
 
 class CAIBrain { public:
@@ -55,7 +59,7 @@ struct CAIStateGroup_EatAtTable : CAIStateGroupBase {
 bool CAIStateGroup_EatAtTable::WalkTo(C3DVector pos, CRightHandedSet axes)
 {
     long movementType = 3;
-    if (PBrain->PCreature->GetMovementMode() == 1 && (pos - PBrain->PCreature->GetPos()).GetMagnitude() > 8.0f)
+    if (PBrain->PCreature->GetCreatureType() == 1 && (pos - PBrain->PCreature->GetPos()).GetMagnitude() > 8.0f)
         movementType = 5;
     bool reached;
     long result;

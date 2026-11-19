@@ -28,8 +28,9 @@ class CCharString { public:
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
     CWideString ToWideString() const;           // 0x0099E480
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 
 struct CRefCounted {
     long m_count;
@@ -85,7 +86,7 @@ CWideString CTCTavernGameCardSorting::GetBestScore()
     switch (GameType) {
     case 1:
         if (stats->BestTimeSorting != 0.0f)
-            text += CCharString::FormatDouble(1, stats->BestTimeSorting).ToWideString();
+            text += GFFloatToCharString(stats->BestTimeSorting, 1).ToWideString();
         return text;
     }
     return CCharString("", -1).ToWideString();

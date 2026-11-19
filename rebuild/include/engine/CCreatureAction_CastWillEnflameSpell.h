@@ -9,6 +9,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTWILLENFLAMESPELL_CLASS
+// NF93 opt-in (round 8, q11261 / q11262 row 0x008C2A80 CCombatAction_WillEnflameInto::FinishAction): the polymorphic retail class on
+// CCombatActionBase (0x114; ghidra_out/rtti_bases.tsv .?AVCCreatureAction_CastWillEnflameSpell@@ : CCombatActionBase) with its own members
+// Level +0x114, IsZTargetting +0x118 (sizeof 0x11c, as below). The (creature, level) ctor is Ego_r.pdb / FableWin.pdb
+// ??0CCreatureAction_CastWillEnflameSpell@@QAE@AAVCThingCreatureBase@@J@Z, out of line in retail at 0x008BB450; the implicit destructor
+// reaches ~CCombatActionBase 0x0062E900. Needs engine/CCombatActionBase.h (retail) first.
+class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase {
+public:
+    CCreatureAction_CastWillEnflameSpell(CThingCreatureBase& creature, long level);   // 0x008BB450
+protected:
+    long Level;                                                          // +0x114
+    bool IsZTargetting;                                                  // +0x118
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_CastWillEnflameSpell {
 public:
@@ -79,9 +93,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastWillEnflameSpell) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillEnflameSpell, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillEnflameSpell, Level) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillEnflameSpell, IsZTargetting) == 0x118);
+FABLE_STATIC_ASSERT_AT(82, sizeof(CCreatureAction_CastWillEnflameSpell) == 0x11c);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_CastWillEnflameSpell, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_CastWillEnflameSpell, Level) == 0x114);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_CastWillEnflameSpell, IsZTargetting) == 0x118);
+#endif // FABLE_RETAIL_CCREATUREACTION_CASTWILLENFLAMESPELL_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTWILLENFLAMESPELL_H

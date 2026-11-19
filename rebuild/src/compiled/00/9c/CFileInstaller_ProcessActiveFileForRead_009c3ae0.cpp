@@ -4,7 +4,8 @@
 // Callees: CFileInstaller::AllocateBuffer(bool) @ 0x009C3A60 and FreeBuffer(CBufferChunk*) @ 0x009C3330 (both landed),
 //   SetDirtyDiscError(bool) @ 0x009C3530 (static __fastcall, out of line here), operator new @ 0x00BFEA1A (0x28 bytes),
 //   operator delete (MSVCR71 import thunk @ 0x00BFE9BC), KERNEL32 ReadFileEx (IAT 0x0143FDF4) with the completion routine
-//   OnFileReadCompletion @ 0x009C37A0.
+//   OnFileReadCompletion @ 0x009C37A0 (protected static; its parameter is the Win32 struct _OVERLAPPED, the PDB spelling
+//   ?OnFileReadCompletion@CFileInstaller@@KGXKKPAU_OVERLAPPED@@@Z in Ego_r.pdb 0x00B11C60 and FableWin.pdb 0x03049FB0).
 // Layout: retail CFileInstaller (PDB minus 4 past the 12-byte BufferChunks vector, minus 0x20 past the containers):
 //   PReadBuffer +0x28, AvailableBuffers +0x30, AllocatedInputBuffers +0x34, NoActiveReads +0x58, WriteMode +0x60,
 //   BufferChunkSize +0x64, NoBufferChunks +0x68; CActiveFile (PDB): SrcFileHandle +0, CurrentSrcOffset +8, InputSize
@@ -19,15 +20,15 @@ extern "C" void* __cdecl memset(void* dst, int value, unsigned int count);
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC (MSVCR71)
 
-struct OVERLAPPED_Fable {
+struct _OVERLAPPED {
     unsigned long Internal;
     unsigned long InternalHigh;
     unsigned long Offset;
     unsigned long OffsetHigh;
     void*         hEvent;
 };
-typedef void (__stdcall *LPOVERLAPPED_COMPLETION_ROUTINE_Fable)(unsigned long error, unsigned long bytes, OVERLAPPED_Fable* overlapped);
-extern "C" __declspec(dllimport) int __stdcall ReadFileEx(void* file, void* buffer, unsigned long bytes, OVERLAPPED_Fable* overlapped,
+typedef void (__stdcall *LPOVERLAPPED_COMPLETION_ROUTINE_Fable)(unsigned long error, unsigned long bytes, _OVERLAPPED* overlapped);
+extern "C" __declspec(dllimport) int __stdcall ReadFileEx(void* file, void* buffer, unsigned long bytes, _OVERLAPPED* overlapped,
                                                         LPOVERLAPPED_COMPLETION_ROUTINE_Fable routine);   // IAT 0x0143FDF4
 
 struct CBufferChunk {
@@ -54,7 +55,7 @@ class CFileInstaller { public:
         long             FilePos;                       // +0x04
         long             TransferSize;                  // +0x08
         CBufferChunk*    PBufferChunk;                  // +0x0c
-        OVERLAPPED_Fable OverlappedInfo;                // +0x10
+        _OVERLAPPED OverlappedInfo;                // +0x10
         CFileInstaller*  PFileInstaller;                // +0x24
         CActiveRead(CFileInstaller* installer, CActiveFile& file, CBufferChunk* chunk, long pos)
             : PActiveFile(&file), FilePos(pos), PBufferChunk(chunk), PFileInstaller(installer) {}
@@ -76,7 +77,9 @@ class CFileInstaller { public:
     CBufferChunk* AllocateBuffer(bool pending);         // 0x009C3A60
     void FreeBuffer(CBufferChunk* chunk);               // 0x009C3330
     static void __fastcall SetDirtyDiscError(bool error);   // 0x009C3530
-    static void __stdcall OnFileReadCompletion(unsigned long error, unsigned long bytes, OVERLAPPED_Fable* overlapped);   // 0x009C37A0
+protected:
+    static void __stdcall OnFileReadCompletion(unsigned long error, unsigned long bytes, _OVERLAPPED* overlapped);   // 0x009C37A0
+public:
     void ProcessActiveFileForRead(CActiveFile& file);
 };
 

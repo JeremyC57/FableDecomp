@@ -9,6 +9,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BEDAZED_CLASS
+// NF93 opt-in (round 8, q11261 row 0x008663D0 CCombatAction_GenericStrikeResponseBase::FinishAction): the polymorphic retail class on
+// CCreatureActionBase (0xa8; ghidra_out/rtti_bases.tsv .?AVCCreatureAction_BeDazed@@ : CCreatureActionBase; no own members, sizeof 0xa8 as
+// below) with its Ego_r.pdb 0x0083DF40 / FableWin.pdb 0x0281A930 ctor ??0CCreatureAction_BeDazed@@QAE@AAVCThingCreatureBase@@@Z, out of
+// line in retail at 0x00865A00 (stores vtable 0x01276F54, RTTI CCreatureAction_BeDazed); the implicit destructor reaches
+// ~CCreatureActionBase 0x00693EF0. The two pure-virtual overrides are declared (PDB spellings). Needs the retail engine/CCreatureActionBase.h (FABLE_RETAIL_CCREATUREACTIONBASE) first.
+class CCreatureAction_BeDazed : public CCreatureActionBase {
+public:
+    CCreatureAction_BeDazed(CThingCreatureBase& creature);               // 0x00865A00
+    virtual void PerformAction();                                        // FableWin.pdb ?PerformAction@CCreatureAction_BeDazed@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                          // Ego_r.pdb / FableWin.pdb ?Clone@CCreatureAction_BeDazed@@UBEPAVCCreatureActionBase@@XZ
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BeDazed {
 public:
@@ -18,7 +31,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BeDazed) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BeDazed, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(21, sizeof(CCreatureAction_BeDazed) == 0xa8);
+FABLE_STATIC_ASSERT_AT(22, offsetof(CCreatureAction_BeDazed, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_BEDAZED_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BEDAZED_H

@@ -9,6 +9,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SCORPIONRECOVER_CLASS
+// NF93 opt-in (round 8, q11261 / q11262 row 0x008DF640 NCreatureMode::CModeScorpionKingExhausted::Recover): the polymorphic retail class on
+// CCombatActionBase (0x114; ghidra_out/rtti_bases.tsv .?AVCCreatureAction_ScorpionRecover@@ : CCombatActionBase; sizeof 0x114 as below) with
+// its Ego_r.pdb 0x00826980 / FableWin.pdb 0x02856D30 ctor ??0CCreatureAction_ScorpionRecover@@QAE@AAVCThingCreatureBase@@@Z, out of line in
+// retail at 0x008E4770 (stores vtable 0x01286724, RTTI CCreatureAction_ScorpionRecover); the implicit destructor reaches ~CCombatActionBase
+// 0x0062E900. The flat class's retail-only word +0x08 is CCombatActionBase's PCreature. Needs the retail engine/CCombatActionBase.h first.
+class CCreatureAction_ScorpionRecover : public CCombatActionBase {
+public:
+    CCreatureAction_ScorpionRecover(CThingCreatureBase& creature);       // 0x008E4770
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_ScorpionRecover {
 public:
@@ -29,8 +40,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionRecover) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionRecover, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionRecover, m8) == 0x8);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CCreatureAction_ScorpionRecover) == 0x114);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CCreatureAction_ScorpionRecover, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CCreatureAction_ScorpionRecover, m8) == 0x8);
+#endif // FABLE_RETAIL_CCREATUREACTION_SCORPIONRECOVER_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SCORPIONRECOVER_H

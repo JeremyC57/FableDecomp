@@ -57,7 +57,7 @@
 
 extern unsigned long g_NextMeshID;                         // 0x01397248
 extern CMovableResourceMemoryPool* g_MeshDataMemoryPool;   // 0x013D2D6C
-extern CMovableResourceMemoryPool* g_ParticleMemoryPool;   // 0x013D2D70
+namespace N3DMeshAllocators { extern CMovableResourceMemoryPool* ClothMemoryPool; }   // 0x013D2D70: Ego_d.pdb ?ClothMemoryPool@N3DMeshAllocators@@3PAVCMovableResourceMemoryPool@@A (NF94, q11257; was g_ParticleMemoryPool)
 
 bool C3DMeshLODInfo::BuildMesh(bool, bool flag)
 {
@@ -71,8 +71,8 @@ bool C3DMeshLODInfo::BuildMesh(bool, bool flag)
     unsigned long id = g_NextMeshID++;
     CMovableResourceMemoryPool* oldMeshPool = g_MeshDataMemoryPool;
     g_MeshDataMemoryPool = bank->MeshDataMemoryPool_Data;
-    CMovableResourceMemoryPool* oldClothPool = g_ParticleMemoryPool;
-    g_ParticleMemoryPool = bank->ClothMemoryPool_Data;
+    CMovableResourceMemoryPool* oldClothPool = N3DMeshAllocators::ClothMemoryPool;
+    N3DMeshAllocators::ClothMemoryPool = bank->ClothMemoryPool_Data;
     if (LOD == 4)
         MeshInfo->Bank->MeshStatsResourceBank.GetResourceList().MakeFreeSpace(stream.GetLength());
     const CGraphicDataBank* textureBank = bank->TextureBank;
@@ -109,7 +109,7 @@ bool C3DMeshLODInfo::BuildMesh(bool, bool flag)
         Mesh->UnlockPrimitive(i);
     }
     g_MeshDataMemoryPool = oldMeshPool;
-    g_ParticleMemoryPool = oldClothPool;
+    N3DMeshAllocators::ClothMemoryPool = oldClothPool;
     if (!ok) {
         Mesh.ReleaseData();
         return false;

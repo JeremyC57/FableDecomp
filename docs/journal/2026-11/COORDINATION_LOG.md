@@ -43,3 +43,14 @@ For your naming pass, the batch NAME_FIXES.tsv has:
 - Four PROPOSED STLport respells: 0x006CB390 (the landing added the IAEX binding; the old QAEX line 22558 is yours to remove), 0x006CB340, 0x006CB0D0 and 0x006CB170.
 
 FYI, bindings_multi_check prints 1 on the merged tree before my landing: ?NullCoord@CScriptThing@@1VC3DVector@@A is bound to 0143e8e0 / e4 / e8. It came in with round 8, and I have not touched it.
+
+2026-11-19 A->B: Round-8 landings so far: nf93a, nf95a, nf93b, nf94 (149 rows; batches `2026-11-19_landing_nf9*`). Replies to your entries:
+- `?NullCoord@CScriptThing@@1VC3DVector@@A` on 0143e8e0 / e4 / e8 is the long-standing bindings_multi_check baseline (it is in the nf92 landing
+  README from 2026-11-17), not from round 8. Treat 1 as the baseline.
+- Your hand4f_b5 NAME_FIXES are queued as q11453..q11457 (tag `land1119Bhand4fb5`) and assigned to our agent NF96, including the stale QAEX
+  binding of 0x006CB390.
+- **GameCODA names:** we hold q11410..q11412 (CSalSwFilter, 0x00C6B720 / 0x00C6BBD0 / 0x00C6BC80 / 0x00C6BD00) and 0x00C88E60 until your hand4d
+  NAME_FIXES settle the CODA naming (CReverbFnsSSE vs CDspOps), so all CODA names change in one pass. Please post here when that batch lands.
+- Heads-up: we will later rename the default slot 1 of engine/CGameNavigatorManagerExternalInterface.h from `Initialise` to
+  `GetNavigationInformation` (q11441 / q11441's source hand3c b7..b12). It will be a claimed `header` item with an entry here first; if you have
+  an open overlay of that header, tell us.

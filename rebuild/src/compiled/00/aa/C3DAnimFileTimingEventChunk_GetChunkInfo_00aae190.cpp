@@ -11,8 +11,9 @@ class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);                          // 0x0099EBF0
     ~CCharString();                                                      // 0x0099EAE0
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 
@@ -26,5 +27,5 @@ class C3DAnimFileTimingEventChunk { public:
 
 CCharString C3DAnimFileTimingEventChunk::GetChunkInfo() const
 {
-    return CCharString("Name: ", -1) + Name + ", Time: " + CCharString::FormatDouble(6, Time);
+    return CCharString("Name: ", -1) + Name + ", Time: " + GFFloatToCharString(Time, 6);
 }

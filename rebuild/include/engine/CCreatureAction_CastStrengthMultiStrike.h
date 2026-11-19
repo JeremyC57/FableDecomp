@@ -19,6 +19,12 @@ class CCreatureAction_CastStrengthMultiStrike : public CCombatActionBase {
 public:
     virtual void FinishAction();                                         // slot 4, 0x008E6AE0
     virtual void FrameUpdate();                                          // slot 56, 0x008E6390
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHMULTISTRIKE_CTOR
+    // NF93 opt-in (round 8, q11261 / q11262 row 0x008E6AE0 FinishAction): Ego_r.pdb 0x0090E7B0 / FableWin.pdb 0x02AE3A30
+    // ??0CCreatureAction_CastStrengthMultiStrike@@QAE@AAVCThingCreatureBase@@AAVCThing@@J@Z, out of line in retail at 0x008E6A70.
+    // Declaration only; the implicit destructor reaches ~CCombatActionBase 0x0062E900. No layout change.
+    CCreatureAction_CastStrengthMultiStrike(CThingCreatureBase& creature, CThing& target, long number_of_strikes);   // 0x008E6A70
+#endif
 protected:
     long NumberOfStrikes;                                                // +0x114
 };

@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q11424	0x006379D0	?InitLayerInfo@NThingMap@@YAXXZ	both PDBs (Ego_r 0x00678480, FableWin 0x0221F3A0) and the entry evidence say ?InitLayerInfo@NThingMap@@YIXXZ (__fastcall); the landed row already uses YI. Only the calling-convention letter of the queued spelling is rejected; the name is applied

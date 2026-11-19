@@ -80,7 +80,7 @@ class CHandleBasedMemoryPool { public:
 inline CScopedMemoryHandle::~CScopedMemoryHandle() { if (Pool) Pool->Free(Handle); }
 inline void* CScopedMemoryHandle::GetPointer() const { return Pool->GetPointerFromHandle(Handle); }
 class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:};
-extern CMovableResourceMemoryPool* g_ParticleMemoryPool;   // 0x013D2D70
+namespace N3DMeshAllocators { extern CMovableResourceMemoryPool* ClothMemoryPool; }   // 0x013D2D70: Ego_d.pdb ?ClothMemoryPool@N3DMeshAllocators@@3PAVCMovableResourceMemoryPool@@A (NF94, q11257; was g_ParticleMemoryPool)
 
 class CParticleProgram { public:
     CParticleProgram();                                            // 0x00AE3550
@@ -109,7 +109,7 @@ bool C3DClothPrimitive::LoadBinary(CMemoryDataInputStream& in, CMovableResourceM
     in.ReadData(data, size);
     CMemoryDataInputStream stream(data, size);
     ParticleProgram.Reset(new CParticleProgram);
-    if (!ParticleProgram->ReadFromFile(&stream, g_ParticleMemoryPool)) {
+    if (!ParticleProgram->ReadFromFile(&stream, N3DMeshAllocators::ClothMemoryPool)) {
         ParticleProgram.Release();
         return false;
     }

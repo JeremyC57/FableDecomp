@@ -75105,9 +75105,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0049c6f0'
-        Module = '_global'
-        Source = '00/49/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0049c6f0.cpp'
-        TestSource = '00/49/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0049c6f0_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/49/CThingSearchTools_GetAllThingMapsInArea_0049c6f0.cpp'
+        TestSource = '00/49/CThingSearchTools_GetAllThingMapsInArea_0049c6f0_test.cpp'
         PassPattern = 'PASS_0049c6f0'
     }
     [pscustomobject]@{
@@ -76933,8 +76933,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00416359'
         Module = 'CMainGameComponent'
-        Source = '00/41/CMainGameComponent_GetGamePlayerInterface_00416359.cpp'
-        TestSource = '00/41/CMainGameComponent_GetGamePlayerInterface_00416359_test.cpp'
+        Source = '00/41/CMainGameComponent_GetPPlayerInterface_00416359.cpp'
+        TestSource = '00/41/CMainGameComponent_GetPPlayerInterface_00416359_test.cpp'
         PassPattern = 'PASS_00416359'
     }
     [pscustomobject]@{
@@ -89701,9 +89701,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0050d1f0'
-        Module = '_global'
-        Source = '00/50/global_operatornew_0050d1f0.cpp'
-        TestSource = '00/50/global_operatornew_0050d1f0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader2>'
+        Source = '00/50/CCountedPointer_DeleteData_0050d1f0.cpp'
+        TestSource = '00/50/CCountedPointer_DeleteData_0050d1f0_test.cpp'
         PassPattern = 'PASS_0050d1f0'
     }
     [pscustomobject]@{
@@ -123432,9 +123432,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00440590'
-        Module = '_global'
-        Source = '00/44/global_BufferRelocate_00440590.cpp'
-        TestSource = '00/44/global_BufferRelocate_00440590_test.cpp'
+        Module = 'std::vector<long, std::allocator<long>>'
+        Source = '00/44/stdvector_erase_00440590.cpp'
+        TestSource = '00/44/stdvector_erase_00440590_test.cpp'
         PassPattern = 'BUFFER_RELOCATE_PASS'
     }
     [pscustomobject]@{
@@ -171395,9 +171395,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0072d990'
-        Module = '_unattributed'
-        Source = '00/72/unattributed_CBase0062e900Derived0072d990_0072d990.cpp'
-        TestSource = '00/72/unattributed_CBase0062e900Derived0072d990_0072d990_test.cpp'
+        Module = 'CCreatureAction_CastAssassinRush'
+        Source = '00/72/CCreatureActionCastAssassinRush_CCreatureActionCastAssassinRush_0072d990.cpp'
+        TestSource = '00/72/CCreatureActionCastAssassinRush_CCreatureActionCastAssassinRush_0072d990_test.cpp'
         PassPattern = '0072d990_TEST PASS'
     }
     [pscustomobject]@{
@@ -172439,9 +172439,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004cd330'
-        Module = '_global'
-        Source = '00/4c/global_InsertionSortSElement8004cd330_004cd330.cpp'
-        TestSource = '00/4c/global_InsertionSortSElement8004cd330_004cd330_test.cpp'
+        Module = 'std'
+        Source = '00/4c/std_insertionsort_004cd330.cpp'
+        TestSource = '00/4c/std_insertionsort_004cd330_test.cpp'
         PassPattern = '004cd330_TEST PASS'
     }
     [pscustomobject]@{
@@ -183453,9 +183453,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00485d1a'
-        Module = '_unattributed'
-        Source = '00/48/unattributed_ApplyPair00485d1a_00485d1a.cpp'
-        TestSource = '00/48/unattributed_ApplyPair00485d1a_00485d1a_test.cpp'
+        Module = 'std::vector<long, std::allocator<long>>'
+        Source = '00/48/stdvector_clear_00485d1a.cpp'
+        TestSource = '00/48/stdvector_clear_00485d1a_test.cpp'
         PassPattern = '00485d1a_TEST PASS'
     }
     [pscustomobject]@{
@@ -192085,9 +192085,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0051f010'
-        Module = '_unattributed'
-        Source = '00/51/unattributed_Contains_0051f010.cpp'
-        TestSource = '00/51/unattributed_Contains_0051f010_test.cpp'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_DoesNPCNameEntryExistForThing_0051f010.cpp'
+        TestSource = '00/51/CThingManager_DoesNPCNameEntryExistForThing_0051f010_test.cpp'
         PassPattern = '0051f010_TEST PASS'
     }
     [pscustomobject]@{
@@ -197819,9 +197819,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006e4cb0'
-        Module = 'CRetailList_CActiveDialogueInfo'
-        Source = '00/6e/CRetailListCActiveDialogueInfo_CreateNode_006e4cb0.cpp'
-        TestSource = '00/6e/CRetailListCActiveDialogueInfo_CreateNode_006e4cb0_test.cpp'
+        Module = 'std::list<NSpeechGainManager::CActiveDialogueInfo>'
+        Source = '00/6e/stdlist_Mcreatenode_006e4cb0.cpp'
+        TestSource = '00/6e/stdlist_Mcreatenode_006e4cb0_test.cpp'
         PassPattern = '006e4cb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -216944,9 +216944,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0085ee10'
-        Module = '_global'
-        Source = '00/85/global_IsCreatureButNotHero_0085ee10.cpp'
-        TestSource = '00/85/global_IsCreatureButNotHero_0085ee10_test.cpp'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsTransmogrified_0085ee10.cpp'
+        TestSource = '00/85/NCreatureMode_IsTransmogrified_0085ee10_test.cpp'
         PassPattern = '0085ee10_TEST PASS'
     }
     [pscustomobject]@{
@@ -245243,9 +245243,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00875120'
-        Module = 'CTools'
-        Source = '00/87/CTools_IsPosInViewingFrustrum_00875120.cpp'
-        TestSource = '00/87/CTools_IsPosInViewingFrustrum_00875120_test.cpp'
+        Module = 'NCameraModes::CTools'
+        Source = '00/87/NCameraModesCTools_IsPosInViewingFrustrum_00875120.cpp'
+        TestSource = '00/87/NCameraModesCTools_IsPosInViewingFrustrum_00875120_test.cpp'
         PassPattern = '00875120_TEST PASS'
     }
     [pscustomobject]@{
@@ -260309,8 +260309,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00445950'
         Module = 'CGamePlayerInterface'
-        Source = '00/44/CGamePlayerInterface_GetNumQuickAccessItemButtons_00445950.cpp'
-        TestSource = '00/44/CGamePlayerInterface_GetNumQuickAccessItemButtons_00445950_test.cpp'
+        Source = '00/44/CGamePlayerInterface_GetNumberOfQuickAccessItemButtons_00445950.cpp'
+        TestSource = '00/44/CGamePlayerInterface_GetNumberOfQuickAccessItemButtons_00445950_test.cpp'
         PassPattern = '00445950_TEST PASS'
     }
     [pscustomobject]@{
@@ -275880,8 +275880,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006c4060'
         Module = 'std'
-        Source = '00/6c/STL_findCBaseIntelligentPointerCBaseIntelligentPoint_006c4060.cpp'
-        TestSource = '00/6c/STL_findCBaseIntelligentPointerCBaseIntelligentPoint_006c4060_test.cpp'
+        Source = '00/6c/std_find_006c4060.cpp'
+        TestSource = '00/6c/std_find_006c4060_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006c4060_TEST PASS'
     }
@@ -334031,9 +334031,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6c000'
-        Module = 'COnePoleLowPass'
-        Source = '00/c6/COnePoleLowPass_SetLevel_00c6c000.cpp'
-        TestSource = '00/c6/COnePoleLowPass_SetLevel_00c6c000_test.cpp'
+        Module = 'CSalIIRFilter'
+        Source = '00/c6/CSalIIRFilter_SetLowPass_00c6c000.cpp'
+        TestSource = '00/c6/CSalIIRFilter_SetLowPass_00c6c000_test.cpp'
         PassPattern = '00c6c000_TEST PASS'
     }
     [pscustomobject]@{
@@ -335526,8 +335526,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00749280'
         Module = 'std::vector<std::pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus>>'
-        Source = '00/74/stdvectorstdpairCIntelligentPointerconstCThingNStealthCDangerStatus_erase_00749280.cpp'
-        TestSource = '00/74/stdvectorstdpairCIntelligentPointerconstCThingNStealthCDangerStatus_erase_00749280_test.cpp'
+        Source = '00/74/stdvector_erase_00749280.cpp'
+        TestSource = '00/74/stdvector_erase_00749280_test.cpp'
         PassPattern = '00749280_TEST PASS'
     }
     [pscustomobject]@{
@@ -342160,8 +342160,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c54ae0'
         Module = '_global'
-        Source = '00/c5/global_MillibelsToAmplitude00c54ae0_00c54ae0.cpp'
-        TestSource = '00/c5/global_MillibelsToAmplitude00c54ae0_00c54ae0_test.cpp'
+        Source = '00/c5/global_sallevelToGain_00c54ae0.cpp'
+        TestSource = '00/c5/global_sallevelToGain_00c54ae0_test.cpp'
         PassPattern = '00c54ae0_TEST PASS'
     }
     [pscustomobject]@{
@@ -400197,8 +400197,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005e1210'
         Module = 'std'
-        Source = '00/5e/std_adjustheappairEAnimComponentCIVCountedPointerCAn_005e1210.cpp'
-        TestSource = '00/5e/std_adjustheappairEAnimComponentCIVCountedPointerCAn_005e1210_test.cpp'
+        Source = '00/5e/std_adjustheap_005e1210.cpp'
+        TestSource = '00/5e/std_adjustheap_005e1210_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005e1210_TEST PASS'
     }
@@ -400296,8 +400296,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006b5890'
         Module = 'std'
-        Source = '00/6b/std_lowerboundpairlongfloatpairlongfloatlesspairlong_006b5890.cpp'
-        TestSource = '00/6b/std_lowerboundpairlongfloatpairlongfloatlesspairlong_006b5890_test.cpp'
+        Source = '00/6b/std_lowerbound_006b5890.cpp'
+        TestSource = '00/6b/std_lowerbound_006b5890_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006b5890_TEST PASS'
     }
@@ -400347,16 +400347,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006a3a70'
-        Module = 'std'
-        Source = '00/6a/std_Minsertoverflow_006a3a70.cpp'
-        TestSource = '00/6a/std_Minsertoverflow_006a3a70_test.cpp'
+        Module = 'std::vector<std::pair<long,CIntelligentPointer<CThing> > >'
+        Source = '00/6a/stdvector_Minsertoverflow_006a3a70.cpp'
+        TestSource = '00/6a/stdvector_Minsertoverflow_006a3a70_test.cpp'
         PassPattern = '006a3a70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00723110'
-        Module = 'std'
-        Source = '00/72/std_Minsertoverflow_00723110.cpp'
-        TestSource = '00/72/std_Minsertoverflow_00723110_test.cpp'
+        Module = 'std::vector<CTCSmokeGenerator::CGenerationPos>'
+        Source = '00/72/stdvector_Minsertoverflow_00723110.cpp'
+        TestSource = '00/72/stdvector_Minsertoverflow_00723110_test.cpp'
         PassPattern = '00723110_TEST PASS'
     }
     [pscustomobject]@{
@@ -400459,7 +400459,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006e8ee0'
-        Module = '(anonymous namespace)'
+        Module = '`anonymous namespace''
         Source = '00/6e/anonymousnamespace_GetClosestUnassignedProng_006e8ee0.cpp'
         TestSource = '00/6e/anonymousnamespace_GetClosestUnassignedProng_006e8ee0_test.cpp'
         PassPattern = '006e8ee0_TEST PASS'
