@@ -1,0 +1,70 @@
+addr       parity           behav  name
+00c54190   RELOCATION_MATCH PASS   CDecodedStream::SetProperties
+00c54510   RELOCATION_MATCH PASS   CDecodedStream::Initialise
+00c6aef0   RELOCATION_MATCH PASS   CFloatReverbEngine::Commit
+00c74ab0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c74ab0   RELOCATION_MATCH PASS   CFloatFilterParams::Set_LpButterworth2
+00c74bb0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c74bb0   RELOCATION_MATCH PASS   CFloatFilterParams::Set_HighPass
+00c75ce0   WARN RELOC_NAME: ?ReadRing@CReverbFilterTap@@QAEXPAMI@Z -> 00c89b40 labelled 'CTCActivationReceptorBase::AddTrigger'
+00c75ce0   WARN RELOC_NAME: ?FilterGain4@CDspOps@@QAEXPAY0IA@M0PBQAMPBQBUSGainParams@@I@Z -> 00c88e60 labelled 'CReverbFnsSSE::ApplyFilterOrder2_quad'
+00c75ce0   RELOCATION_MATCH PASS   CReverbStage94::Process
+00c75e90   WARN RELOC_NAME: ?ProcessRamp@CReverbFilterTap@@QAEXPBUSReverbTapParams@@0PBUCRingBuffer@@PAMPBMII@Z -> 00c89850 labelled 'Animation_InterpolateProcess'
+00c75e90   RELOCATION_MATCH PASS   CReverbTapBank::Process
+00c77700   RELOCATION_MATCH PASS   mBToLinear
+00c77ae0   RELOCATION_MATCH PASS   CFloatReverbParameterTranslator::UpdateReflectionsOutputGain
+00c77c00   RELOCATION_MATCH PASS   CFloatReverbParameterTranslator::UpdateReverbOutputGain
+00c77d90   RELOCATION_MATCH PASS   CFloatReverbParameterTranslator::PanToGains
+00c77fc0   RELOCATION_MATCH PASS   CFloatReverbParameterTranslator::UpdateEchoTime
+00c78040   RELOCATION_MATCH PASS   CFloatReverbParameterTranslator::UpdateModulationDepth
+00c78150   WARN RELOC_NAME: _sc_fDefaultLongReverbInputDelay -> 012bf138 labelled 'CReverbProcessor::s_tapTimes'
+00c78150   RELOCATION_MATCH PASS   CFloatReverbParameterTranslator::UpdateSize
+00c783b0   RELOCATION_MATCH PASS   CFloatReverbParameterTranslator::UpdateReverbPan
+00c783f0   WARN RELOC_NAME: ?UpdateDiffusion@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c780c0 labelled 'Audio_Channel_ComputeEnvelope_Amplitude'
+00c783f0   WARN RELOC_NAME: ?UpdateReverbDelay@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c77c80 labelled 'CReverbProcessor::UpdateLineAndTapLengths'
+00c783f0   WARN RELOC_NAME: ?UpdateReflectionsDelay@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c77b30 labelled 'CAudioChannel_ApplyDistortionEffect'
+00c783f0   RELOCATION_MATCH PASS   CFloatReverbParameterTranslator::Translate
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+  WARN leaf 'Unwind@01216140' matches no symbol in 01216140.obj; graded the largest function
+01216140   DIFFER(456v8)    PASS   _global::Unwind@01216140
+
+WINS: 16
+  00c54190 RELOCATION_MATCH CDecodedStream::?SetProperties@CDecodedStream@@UAEXPBUSSourceUpdate@@@Z
+  00c54510 RELOCATION_MATCH CDecodedStream::?Initialise@CDecodedStream@@QAE_NXZ
+  00c6aef0 RELOCATION_MATCH CFloatReverbEngine::?Commit@CFloatReverbEngine@@QAEXPAVCHLRvbParams@@_N@Z
+  00c74ab0 RELOCATION_MATCH CFloatFilterParams::?Set_LpButterworth2@CFloatFilterParams@@QAEXHMI@Z
+  00c74bb0 RELOCATION_MATCH CFloatFilterParams::?Set_HighPass@CFloatFilterParams@@QAEXHMI@Z
+  00c75ce0 RELOCATION_MATCH CReverbStage94::?Process@CReverbStage94@@QAEXPBUSStageSettings94@@PAUCDelayLine@@PAMPBQBMK@Z
+  00c75e90 RELOCATION_MATCH CReverbTapBank::?Process@CReverbTapBank
+  00c77700 RELOCATION_MATCH _global::?mBToLinear@@YAMJ@Z
+  00c77ae0 RELOCATION_MATCH CFloatReverbParameterTranslator::?UpdateReflectionsOutputGain@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c77c00 RELOCATION_MATCH CFloatReverbParameterTranslator::?UpdateReverbOutputGain@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c77d90 RELOCATION_MATCH CFloatReverbParameterTranslator::?PanToGains@CFloatReverbParameterTranslator@@CAXPBU_RVB_VECTOR@@PAMII@Z
+  00c77fc0 RELOCATION_MATCH CFloatReverbParameterTranslator::?UpdateEchoTime@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c78040 RELOCATION_MATCH CFloatReverbParameterTranslator::?UpdateModulationDepth@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c78150 RELOCATION_MATCH CFloatReverbParameterTranslator::?UpdateSize@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c783b0 RELOCATION_MATCH CFloatReverbParameterTranslator::?UpdateReverbPan@CFloatReverbParameterTranslator@@AAEXPAVCHLRvbParams@@@Z
+  00c783f0 RELOCATION_MATCH CFloatReverbParameterTranslator::?Translate@CFloatReverbParameterTranslator@@QAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z

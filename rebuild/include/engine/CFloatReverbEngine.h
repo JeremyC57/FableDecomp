@@ -10,6 +10,11 @@ class CReverbConstants;
 class CFloatReverbEngine {
 public:
  bool Create(CReverbConstants *);
+#ifdef FABLE_RETAIL_CFLOATREVERBENGINE_COMMIT
+ // Retail opt-in (NF99P2, q11498): SDK 2.10 CodeView public ?Commit@CFloatReverbEngine@@QAEXPAVCHLRvbParams@@_N@Z (native 0x00C6AEF0;
+ // CODAApi.lib FloatReverbEngine.obj member, 92 bytes, byte-identical with relocations masked).
+ void Commit(class CHLRvbParams *,bool);
+#endif
 private:
  CFloatReverbParameters m_RvbParams; // +0x0
  CFloatReverbConstants m_RvbConsts; // +0x234

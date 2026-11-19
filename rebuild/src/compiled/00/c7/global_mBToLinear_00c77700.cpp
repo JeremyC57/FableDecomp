@@ -1,5 +1,9 @@
-// MillibelsToAmplitude(long millibels) -- libpk: 0 at or below -10000 mB (silence), else 10^(mB / 2000) computed as 2^(mB * 0.0005 * log2 10) through the x87 base-2 instructions
-// Leaf: ?MillibelsToAmplitude@@
+// mBToLinear(long millibels) -- GameCODA: 0 at or below -10000 mB (silence), else 10^(mB / 2000) computed as 2^(mB * 0.0005 * log2 10) through the x87 base-2 instructions
+// Leaf: ?mBToLinear@@YAMJ@Z
+// Name (NF99P2, q11511; was the descriptive MillibelsToAmplitude): GameCODA 2.10 CodeView ?mBToLinear@@YAMJ@Z. Two sources: (1) this
+//   body is byte-identical (109 bytes, relocations masked: 0.0f, 0.0005f) to the CODAApi.lib member of that name; (2) the
+//   byte-identical SDK CFloatReverbParameterTranslator::Translate 0x00C783F0 calls it at REL32 +0x180 (retail 0x00C7856F, its
+//   inlined UpdateLevel on CHLRvbParams::m_iLevel). Its only landed binder (0x00C783F0) moves with it in this hand-back.
 // Retail-asm: 0x00C77735..0x00C77764 `fld [esp+4] ; fmul [esp] ; frndint ; fst [esp+8] ; wait ; fld1 ; fscale ; fxch st(1) ; fstp [esp+10h] ; fld [esp+4] ; fmul [esp] ; fsub [esp+8] ; f2xm1 ; fadd [esp+18h] ; fmulp st(1),st ; fstp [esp+0Ch] ; wait` -- libpk's inline-assembly 2^x block over named float locals (17 instructions, no branch: rasm1 family (e); the Pow10 helper 0x00C53B10 expanded in place, 1.0f homed in the dead `millibels` slot). frndint, fscale and f2xm1 have no VC7.1 intrinsic form and the `wait`s are asm-only (`#pragma intrinsic(exp)` gives fldl2e..fscale without fwait, `pow` becomes a `_CIpow` jump: rasm1 probe); the prologue test, the exponent and the two constants are C++.
 // Helper (2026-11-05 asm migration): the 17-instruction x87 2^x block is the shared libpk/Pow10.h (LIBPK_POW10_BLOCK; byte-matching
 //   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family POW10.
@@ -7,7 +11,7 @@
 // (the same helper in a second libpk TU). Called from 0x00C77798 and the reverb dispatcher 0x00C7856F. Constants: 0x01264AF0 = 0.0005f,
 // 0x0122DEDC = 0.0f, the immediate 0x40549A78 = log2(10). The catalog label "CAudioChannel_GetOutputGain" is descriptive.
 #include "libpk/Pow10.h"
-float __cdecl MillibelsToAmplitude(long millibels)
+float __cdecl mBToLinear(long millibels)
 {
     if (millibels <= -10000)
         return 0.0f;

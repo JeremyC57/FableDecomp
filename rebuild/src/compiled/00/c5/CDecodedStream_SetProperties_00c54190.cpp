@@ -14,11 +14,17 @@
 //   object: they write +0x224 / +0x230 and the pending pans +0x2DC / +0x2E8, so they are called on `this`), the sixteen
 //   clamped setters of the +0x290 block under their four landed class spellings (CAttribute_00c53xxx,
 //   CUnprovenReverbParameters, CUnprovenPendingParams_00c53740; NAME_FIXES.tsv carries the one-class proposal),
-//   MillibelsToAmplitude_00c53b60 0x00C53B60 and CVoiceEffect::Configure 0x00C6AEF0 (mode 0).
+//   MillibelsToAmplitude_00c53b60 0x00C53B60 and CFloatReverbEngine::Commit 0x00C6AEF0 (mode false; NF99P2 q11498: the GameCODA
+//   2.10 engine on engine/CFloatReverbEngine.h, was bound through the local stand-in as CVoiceEffect::Configure; the pending block,
+//   GameCODA's CHLRvbParams, stays the landed local model and reaches Commit through the same cast as its setters).
 // Shape: one inline compare-and-set helper per property taking the value BY VALUE (the float copies go through edx and
 //   the dead argument slot for the `fld ; fld ; fucompp`, the stores and the push reuse the register); `member != value`;
 //   the unsigned references convert with the 2^32 fix-up; the HF reference is pushed unconditionally.
 #include "engine/C3DVector.h"
+#define FABLE_RETAIL_PASS22_FLOATREVERB_CREATE
+#define FABLE_RETAIL_CFLOATREVERBENGINE_COMMIT
+#include "engine/CFloatReverbEngine.h"
+#include "engine/CHLRvbParams.h"
 struct C3DSoundSource {
     void SetPosition(const C3DVector& position);           // 0x00C53D50
     void SetVelocity(const C3DVector& velocity);           // 0x00C53E40
@@ -85,9 +91,6 @@ struct CAttribute_00c53800 { void SetClamped_CAttribute_00c53800(float value); }
 struct CAttribute_00c53860 { void SetClamped_CAttribute_00c53860(float value); };   // 0x00C53860 +0x40
 struct CAttribute_00c538c0 { void SetClamped_CAttribute_00c538c0(float value); };   // 0x00C538C0 +0x44
 struct CAttribute_00c53920 { void SetClamped_CAttribute_00c53920(float value); };   // 0x00C53920 +0x48
-struct CVoiceEffect {                                      // +0x2F8
-    void Configure(const SVoiceEffectParameters* parameters, long mode);   // 0x00C6AEF0
-};
 
 class CDecodedStream {                                     // vtable 0x012B89C4
 public:
@@ -97,7 +100,7 @@ public:
     SSourceProperties      m_properties;                   // +0x224
     SVoiceEffectParameters m_pending;                      // +0x290
     unsigned char          _pad2a0[0x2f8 - 0x2a0];
-    CVoiceEffect           m_effect;                       // +0x2f8
+    CFloatReverbEngine     m_effect;                       // +0x2f8 (GameCODA float reverb engine)
     void SetRoom(long v)
     {
         if (m_properties.Room != v) {
@@ -252,5 +255,5 @@ void CDecodedStream::SetProperties(const SSourceUpdate* update)
     SetModulationDepth(p.ModulationDepth);
     SetLFReference(p.LFReference);
     reinterpret_cast<CUnprovenPendingParams_00c53740&>(m_pending).SetField20((float)p.HFReference);
-    m_effect.Configure(&m_pending, 0);
+    m_effect.Commit(reinterpret_cast<CHLRvbParams*>(&m_pending), false);
 }

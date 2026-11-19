@@ -7,34 +7,29 @@
 // Identity: the landed caller CDecodedStream::Open 0x00C547A0 (slot 1 of the CDecodedStream vtable 0x012B89C8, whose ctor
 //   0x00C54090 / dtor 0x00C54110 store it) binds this address as `?Initialise@CDecodedStream@@QAE_NXZ` and returns
 //   `Initialise() ? 0 : -9`. libpk: no PDB/RTTI, all names descriptive.
-// Callees: CVoiceEffect::Initialise 0x00C6B050 (new descriptive name: thiscall on +0x2F8, takes the 7-dword format object,
-//   fills its zero size fields from the rate and copies it to effect+0x234), CVoiceEffect::Configure 0x00C6AEF0 (landed),
+// Callees: CFloatReverbEngine::Create 0x00C6B050 (thiscall on +0x2F8, takes the 7-dword CReverbConstants, fills its zero size
+//   fields from the rate and copies it to engine+0x234), CFloatReverbEngine::Commit 0x00C6AEF0 (NF99P2, q11498: the GameCODA 2.10
+//   engine on engine/CFloatReverbEngine.h; this row bound both through the local stand-in CVoiceEffect as Initialise / Configure),
 //   and sixteen clamped float setters on the +0x290 block, called with their landed spellings (the block carries seven
 //   descriptive class names across the landed rows; see NOTES.md): 0x00C53440 0x00C53500 0x00C534A0 0x00C53560
 //   0x00C535C0 0x00C53650 0x00C536B0 0x00C53A40 0x00C539E0 0x00C53980 0x00C53800 0x00C53860 0x00C538C0 0x00C53920
 //   0x00C53740 0x00C537A0.
 // Globals: the zero vector 0x012B89E8 and the 0x6C-byte default source properties 0x012B89F8 (.rdata, referenced only
-//   here), the format vtable 0x012B89C4 (one slot: the scalar deleting destructor 0x00C53AE0).
-// Shape: the format local is the 0x012B89C4 class with its inline defaults (rate and channel count overwritten, so only the
-//   vptr and the four zero words survive) and an inline empty virtual destructor (EH state 0, no call at the exits);
+//   here), the CReverbConstants vtable 0x012B89C4 (one slot: the scalar deleting destructor 0x00C53AE0).
+// Shape: the format local is GameCODA's CReverbConstants (engine/CReverbConstants.h; was the local CVtable_012b89c4 model) with
+//   its SDK header-inline defaults (opt-in FABLE_RETAIL_CREVERBCONSTANTS_INLINE_CTOR: rate and channel count overwritten, so only
+//   the vptr and the four zero words survive) and its header-inline virtual destructor (EH state 0, no call at the exits);
 //   `this + 0x2F8` is CSE'd and spilled; the pans are inline C3DVector assignments through `lea ecx`, the three level
 //   words inline `value ; DirtyFlags |=` setters, each reached through the inline accessor GetPendingParameters() (retail
 //   reloads the dirty word after every store: `or [esi],800h` / `or [esi],4000h` after the pan copies, then load / or / store
 //   per level word); the sixteen out-of-line setters use the `p` reference.
 #include "engine/C3DVector.h"
-
-struct CVtable_012b89c4 {                                  // vtable 0x012B89C4, 0x1C bytes: a sound format description
-    CVtable_012b89c4()
-    {
-        m_sampleRate = 48000;
-        m_channels = 2;
-        m_0c = 0; m_10 = 0; m_14 = 0; m_18 = 0;
-    }
-    virtual ~CVtable_012b89c4() { }
-    long m_channels;                                       // +0x04
-    long m_sampleRate;                                     // +0x08
-    long m_0c, m_10, m_14, m_18;                           // +0x0c..+0x18 derived sizes (filled by 0x00C6B050 when 0)
-};
+#define FABLE_RETAIL_PASS22_FLOATREVERB_CREATE
+#define FABLE_RETAIL_CREVERBCONSTANTS_INLINE_CTOR
+#define FABLE_RETAIL_CFLOATREVERBENGINE_COMMIT
+#include "engine/CReverbConstants.h"
+#include "engine/CFloatReverbEngine.h"
+#include "engine/CHLRvbParams.h"
 
 struct SSourceProperties {                                 // +0x224 current properties, 0x6C bytes
     C3DVector     Position;                                // +0x00
@@ -45,7 +40,9 @@ struct SSourceProperties {                                 // +0x224 current pro
 extern const C3DVector g_zeroVector_012b89e8;              // 0x012B89E8
 extern const SSourceProperties g_defaultSourceProperties_012b89f8;   // 0x012B89F8
 
-// The +0x290 pending-property block (dirty word at +0): Configure 0x00C6AEF0 takes it as SVoiceEffectParameters.
+// The +0x290 pending-property block (dirty word at +0): GameCODA's CHLRvbParams (0x68 bytes, m_uiUpdateFlags at +0), the block
+//   CFloatReverbEngine::Commit 0x00C6AEF0 takes. It stays the landed local model here because its sixteen clamped setters keep
+//   their landed spellings (their self rows are not renamed yet); Commit gets it through the same cast as those setters.
 struct SVoiceEffectParameters {
     unsigned long DirtyFlags;                              // +0x00
     long          m_room;                                  // +0x04 (dirty 0x20)
@@ -83,18 +80,13 @@ struct CAttribute_00c53860 { void SetClamped_CAttribute_00c53860(float value); }
 struct CAttribute_00c538c0 { void SetClamped_CAttribute_00c538c0(float value); };   // 0x00C538C0 +0x44 [0.04,5]
 struct CAttribute_00c53920 { void SetClamped_CAttribute_00c53920(float value); };   // 0x00C53920 +0x48 [0,1]
 
-struct CVoiceEffect {                                      // +0x2F8 (landed Configure model)
-    bool Initialise(CVtable_012b89c4* format);             // 0x00C6B050
-    void Configure(const SVoiceEffectParameters* parameters, long mode);   // 0x00C6AEF0
-};
-
 class CDecodedStream {                                     // vtable 0x012B89C8
 public:
     virtual ~CDecodedStream();
     unsigned char          _pad004[0x224 - 4];
     SSourceProperties      m_properties;                   // +0x224
     SVoiceEffectParameters m_pending;                      // +0x290
-    CVoiceEffect           m_effect;                       // +0x2f8
+    CFloatReverbEngine     m_effect;                       // +0x2f8 (GameCODA float reverb engine)
     // Inline accessor (descriptive name, no symbol): each call yields a fresh pointer temp, so VC7.1 reloads the dirty word
     // after every inline setter exactly like retail; through one reference it folds the five updates into one register RMW.
     SVoiceEffectParameters* GetPendingParameters() { return &m_pending; }
@@ -103,10 +95,10 @@ public:
 
 bool CDecodedStream::Initialise()
 {
-    CVtable_012b89c4 format;
-    format.m_sampleRate = 44100;
-    format.m_channels = 4;
-    if (!m_effect.Initialise(&format))
+    CReverbConstants format;
+    format.m_uiSamplesPerSecond = 44100;
+    format.m_uiNumOutputs = 4;
+    if (!m_effect.Create(&format))
         return false;
     m_properties = g_defaultSourceProperties_012b89f8;
     SVoiceEffectParameters& p = m_pending;
@@ -131,6 +123,6 @@ bool CDecodedStream::Initialise()
     reinterpret_cast<CAttribute_00c53920&>(p).SetClamped_CAttribute_00c53920(0.0f);
     reinterpret_cast<CUnprovenPendingParams_00c53740&>(p).SetField1C(200.0f);
     reinterpret_cast<CUnprovenPendingParams_00c53740&>(p).SetField20(5000.0f);
-    m_effect.Configure(&p, 1);
+    m_effect.Commit(reinterpret_cast<CHLRvbParams*>(&p), true);
     return true;
 }

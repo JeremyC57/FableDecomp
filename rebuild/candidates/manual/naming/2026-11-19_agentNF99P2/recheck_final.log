@@ -1,0 +1,68 @@
+addr       parity           behav  name
+00c54190   WARN RELOC_NAME: ?Commit@CFloatReverbEngine@@QAEXPAVCHLRvbParams@@_N@Z -> 00c6aef0 labelled 'CVoiceEffect::Configure'
+00c54190   RELOCATION_MATCH PASS   CDecodedStream::SetProperties
+00c54510   WARN RELOC_NAME: ?Commit@CFloatReverbEngine@@QAEXPAVCHLRvbParams@@_N@Z -> 00c6aef0 labelled 'CVoiceEffect::Configure'
+00c54510   RELOCATION_MATCH PASS   CDecodedStream::Initialise
+00c6aef0   WARN RELOC_NAME: ?Translate@CFloatReverbParameterTranslator@@QAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c783f0 labelled 'CEffectPart260::Configure'
+00c6aef0   WARN STANDIN_LEAF ?Commit@CFloatReverbEngine@@QAEXPAVCHLRvbParams@@_N@Z (catalog CVoiceEffect::Configure; names another function)
+00c6aef0   RELOCATION_MATCH PASS   CVoiceEffect::Configure
+00c74ab0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c74ab0   WARN STANDIN_LEAF ?Set_LpButterworth2@CFloatFilterParams@@QAEXHMI@Z (catalog CEffectFilter::SetLowPass; names another function)
+00c74ab0   RELOCATION_MATCH PASS   CEffectFilter::SetLowPass
+00c74bb0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c74bb0   WARN STANDIN_LEAF ?Set_HighPass@CFloatFilterParams@@QAEXHMI@Z (catalog CEffectFilter::SetHighPass; names another function)
+00c74bb0   RELOCATION_MATCH PASS   CEffectFilter::SetHighPass
+00c75ce0   WARN RELOC_NAME: ?ReadRing@CReverbFilterTap@@QAEXPAMI@Z -> 00c89b40 labelled 'CTCActivationReceptorBase::AddTrigger'
+00c75ce0   WARN RELOC_NAME: ?FilterGain4@CDspOps@@QAEXPAY0IA@M0PBQAMPBQBUSGainParams@@I@Z -> 00c88e60 labelled 'CReverbFnsSSE::ApplyFilterOrder2_quad'
+00c75ce0   RELOCATION_MATCH PASS   CReverbStage94::Process
+00c75e90   WARN RELOC_NAME: ?ProcessRamp@CReverbFilterTap@@QAEXPBUSReverbTapParams@@0PBUCRingBuffer@@PAMPBMII@Z -> 00c89850 labelled 'Animation_InterpolateProcess'
+00c75e90   RELOCATION_MATCH PASS   CReverbTapBank::Process
+00c77700   WARN STANDIN_LEAF ?mBToLinear@@YAMJ@Z (catalog _global::MillibelsToAmplitude; names another function)
+00c77700   RELOCATION_MATCH PASS   _global::MillibelsToAmplitude
+00c77ae0   WARN STANDIN_LEAF ?UpdateReflectionsOutputGain@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z (catalog CReverbProcessor::UpdateLineGains; names another function)
+00c77ae0   RELOCATION_MATCH PASS   CReverbProcessor::UpdateLineGains
+00c77c00   WARN STANDIN_LEAF ?UpdateReverbOutputGain@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z (catalog CReverbProcessor::UpdateTapLevels; names another function)
+00c77c00   RELOCATION_MATCH PASS   CReverbProcessor::UpdateTapLevels
+00c77d90   RELOCATION_MATCH PASS   MixChannels_00c77d90
+00c77fc0   WARN STANDIN_LEAF ?UpdateEchoTime@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z (catalog CReverbProcessor::UpdateChorusLength; names another function)
+00c77fc0   RELOCATION_MATCH PASS   CReverbProcessor::UpdateChorusLength
+00c78040   WARN STANDIN_LEAF ?UpdateModulationDepth@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z (catalog CReverbProcessor::UpdateDelayLength; names another function)
+00c78040   RELOCATION_MATCH PASS   CReverbProcessor::UpdateDelayLength
+00c78150   WARN RELOC_NAME: _sc_fDefaultLongReverbInputDelay -> 012bf138 labelled 'CReverbProcessor::s_tapTimes'
+00c78150   WARN STANDIN_LEAF ?UpdateSize@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z (catalog CReverbProcessor::UpdateTapDelays; names another function)
+00c78150   RELOCATION_MATCH PASS   CReverbProcessor::UpdateTapDelays
+00c783b0   WARN RELOC_NAME: ?PanToGains@CFloatReverbParameterTranslator@@CAXPBU_RVB_VECTOR@@PAMII@Z -> 00c77d90 labelled 'MixChannels_00c77d90'
+00c783b0   WARN STANDIN_LEAF ?UpdateReverbPan@CFloatReverbParameterTranslator@@AAEXPAVCHLRvbParams@@@Z (catalog CChannelMixer_00c783b0::Mix; names another function)
+00c783b0   RELOCATION_MATCH PASS   CChannelMixer_00c783b0::Mix
+00c783f0   WARN RELOC_NAME: ?UpdateSize@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c78150 labelled 'CReverbProcessor::UpdateTapDelays'
+00c783f0   WARN RELOC_NAME: ?UpdateDiffusion@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c780c0 labelled 'Audio_Channel_ComputeEnvelope_Amplitude'
+00c783f0   WARN RELOC_NAME: ?Set_LpButterworth2@CFloatFilterParams@@QAEXHMI@Z -> 00c74ab0 labelled 'CEffectFilter::SetLowPass'
+00c783f0   WARN RELOC_NAME: ?UpdateEchoTime@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c77fc0 labelled 'CReverbProcessor::UpdateChorusLength'
+00c783f0   WARN RELOC_NAME: ?UpdateModulationDepth@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c78040 labelled 'CReverbProcessor::UpdateDelayLength'
+00c783f0   WARN RELOC_NAME: ?UpdateReverbDelay@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c77c80 labelled 'CReverbProcessor::UpdateLineAndTapLengths'
+00c783f0   WARN RELOC_NAME: ?UpdateReflectionsDelay@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c77b30 labelled 'CAudioChannel_ApplyDistortionEffect'
+00c783f0   WARN RELOC_NAME: ?PanToGains@CFloatReverbParameterTranslator@@CAXPBU_RVB_VECTOR@@PAMII@Z -> 00c77d90 labelled 'MixChannels_00c77d90'
+00c783f0   WARN RELOC_NAME: ?UpdateReflectionsOutputGain@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c77ae0 labelled 'CReverbProcessor::UpdateLineGains'
+00c783f0   WARN RELOC_NAME: ?UpdateReverbPan@CFloatReverbParameterTranslator@@AAEXPAVCHLRvbParams@@@Z -> 00c783b0 labelled 'CChannelMixer_00c783b0::Mix'
+00c783f0   WARN RELOC_NAME: ?UpdateReverbOutputGain@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c77c00 labelled 'CReverbProcessor::UpdateTapLevels'
+00c783f0   WARN RELOC_NAME: ?mBToLinear@@YAMJ@Z -> 00c77700 labelled '_global::MillibelsToAmplitude'
+00c783f0   WARN STANDIN_LEAF ?Translate@CFloatReverbParameterTranslator@@QAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z (catalog CEffectPart260::Configure; names another function)
+00c783f0   RELOCATION_MATCH PASS   CEffectPart260::Configure
+
+WINS: 16
+  00c54190 RELOCATION_MATCH CDecodedStream::?SetProperties@CDecodedStream@@UAEXPBUSSourceUpdate@@@Z
+  00c54510 RELOCATION_MATCH CDecodedStream::?Initialise@CDecodedStream@@QAE_NXZ
+  00c6aef0 RELOCATION_MATCH CVoiceEffect::?Commit@CFloatReverbEngine@@QAEXPAVCHLRvbParams@@_N@Z
+  00c74ab0 RELOCATION_MATCH CEffectFilter::?Set_LpButterworth2@CFloatFilterParams@@QAEXHMI@Z
+  00c74bb0 RELOCATION_MATCH CEffectFilter::?Set_HighPass@CFloatFilterParams@@QAEXHMI@Z
+  00c75ce0 RELOCATION_MATCH CReverbStage94::?Process@CReverbStage94@@QAEXPBUSStageSettings94@@PAUCDelayLine@@PAMPBQBMK@Z
+  00c75e90 RELOCATION_MATCH CReverbTapBank::?Process@CReverbTapBank
+  00c77700 RELOCATION_MATCH _global::?mBToLinear@@YAMJ@Z
+  00c77ae0 RELOCATION_MATCH CReverbProcessor::?UpdateReflectionsOutputGain@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c77c00 RELOCATION_MATCH CReverbProcessor::?UpdateReverbOutputGain@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c77d90 RELOCATION_MATCH _global::?PanToGains@CFloatReverbParameterTranslator@@CAXPBU_RVB_VECTOR@@PAMII@Z
+  00c77fc0 RELOCATION_MATCH CReverbProcessor::?UpdateEchoTime@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c78040 RELOCATION_MATCH CReverbProcessor::?UpdateModulationDepth@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c78150 RELOCATION_MATCH CReverbProcessor::?UpdateSize@CFloatReverbParameterTranslator@@AAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z
+  00c783b0 RELOCATION_MATCH CChannelMixer_00c783b0::?UpdateReverbPan@CFloatReverbParameterTranslator@@AAEXPAVCHLRvbParams@@@Z
+  00c783f0 RELOCATION_MATCH CEffectPart260::?Translate@CFloatReverbParameterTranslator@@QAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z

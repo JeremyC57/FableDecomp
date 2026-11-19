@@ -41,7 +41,9 @@ struct CReverbFilterTap : CDspObject {     // vtable 0x012B958C
     void Feedback(float (*blocks)[128], float* feedback, const float* mixRow, unsigned int count);          // 0x00C89AA0
 };
 
-extern const float g_reverbMixMatrix[4][4];   // 0x012BF088
+// 0x012BF088: GameCODA 2.10 `_sc_fDefaultShortReverbCrossfeedGainMatrix` (NF99P2 q11516: was ?g_reverbMixMatrix@@3QAY03$$CBMA; the SDK
+//   FloatShortReverb.obj Process data relocation names it, and the 64 bytes at 0x012BF088 equal that SDK .rdata (hand4d b11)).
+extern "C" const float sc_fDefaultShortReverbCrossfeedGainMatrix[4][4];   // 0x012BF088
 
 struct CReverbTapBank : CDspObject {       // vtable 0x012B9590
     CReverbFilterTap m_taps[4];            // +0x04
@@ -64,5 +66,5 @@ void CReverbTapBank::Process(const SReverbTapParams* current, const SReverbTapPa
             m_taps[i].Process(&current[i], history, blocks[i], inputs[channel], count);
     }
     for (unsigned int j = 0; j < 4; ++j)
-        m_taps[j].Feedback(blocks, feedback, g_reverbMixMatrix[j], count);
+        m_taps[j].Feedback(blocks, feedback, sc_fDefaultShortReverbCrossfeedGainMatrix[j], count);
 }

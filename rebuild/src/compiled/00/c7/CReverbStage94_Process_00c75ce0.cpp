@@ -9,7 +9,7 @@
 //   descriptive name: forwards to CDspOps::ReadRing(block, &m_ring, m_ring.m_pos, count); landed under a propagated
 //   CTCActivationReceptorBase::AddTrigger label), CDspOps::FilterGain4 0x00C88E60 (new descriptive name: the SIMD table's
 //   four-wide CDspGain filter, thiscall on s_pOps), CReverbFilterTap::MixHistory 0x00C89B60, CReverbFilterTap::Process
-//   0x00C89750, CReverbFilterTap::Feedback 0x00C89AA0 (landed), the mix matrix g_reverbMixMatrix 0x012BF088.
+//   0x00C89750, CReverbFilterTap::Feedback 0x00C89AA0 (landed), the mix matrix sc_fDefaultShortReverbCrossfeedGainMatrix 0x012BF088.
 // Shape: the landed CReverbTapBank::Process 0x00C75E90 TU (four 128-float blocks in one 16-byte aligned local, `j % m_channels`
 //   named above each call); the SIMD path also fills two four-pointer arrays (filter parameters, tap gain states).
 struct CDspOps;
@@ -61,7 +61,9 @@ struct CReverbFilterTap : CDspObject {     // vtable 0x012B958C, 0x28 bytes
                  unsigned int count);                                                             // 0x00C89750
     void Feedback(float (*blocks)[128], float* feedback, const float* mixRow, unsigned int count);  // 0x00C89AA0
 };
-extern const float g_reverbMixMatrix[4][4];   // 0x012BF088
+// 0x012BF088: GameCODA 2.10 `_sc_fDefaultShortReverbCrossfeedGainMatrix` (NF99P2 q11516: was ?g_reverbMixMatrix@@3QAY03$$CBMA; the SDK
+//   FloatShortReverb.obj Process data relocation names it, and the 64 bytes at 0x012BF088 equal that SDK .rdata (hand4d b11)).
+extern "C" const float sc_fDefaultShortReverbCrossfeedGainMatrix[4][4];   // 0x012BF088
 
 struct CReverbStage94 : CDspObject {       // vtable 0x012B9590 (CReverbTapBank in its definers)
     CReverbFilterTap m_taps[4];            // +0x04
@@ -97,5 +99,5 @@ void CReverbStage94::Process(const SStageSettings94* current, CDelayLine* line, 
         }
     }
     for (unsigned int k = 0; k < 4; ++k)
-        m_taps[k].Feedback(blocks, output, g_reverbMixMatrix[k], count);
+        m_taps[k].Feedback(blocks, output, sc_fDefaultShortReverbCrossfeedGainMatrix[k], count);
 }

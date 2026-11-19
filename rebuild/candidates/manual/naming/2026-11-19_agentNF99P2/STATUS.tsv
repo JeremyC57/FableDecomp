@@ -1,0 +1,32 @@
+address	change	grade	test	grades_used	entries	note
+0x00C74BB0	self rename CEffectFilter::SetHighPass -> CFloatFilterParams::Set_HighPass (header port)	RELOCATION_MATCH	PASS	2	q11508	ported; work/b1.log
+0x00C74AB0	self rename CEffectFilter::SetLowPass -> CFloatFilterParams::Set_LpButterworth2 (header port)	RELOCATION_MATCH	PASS	2	q11509	ported; work/b1.log
+0x00C783F0	self rename CEffectPart260::Configure -> CFloatReverbParameterTranslator::Translate (NF99 held draft)	RELOCATION_MATCH	PASS	3	q11477,q11414,q11499..q11511	ported; re-graded in work/b2.log after the PanToGains / mBToLinear respells
+0x00C6AEF0	self rename CVoiceEffect::Configure -> CFloatReverbEngine::Commit (header port, no cast)	RELOCATION_MATCH	PASS	2	q11498,q11477	ported; work/b1.log
+0x00C54510	binder respell (Create/Commit on engine/CFloatReverbEngine.h, CReverbConstants format)	RELOCATION_MATCH	PASS	2	q11498	ported; work/b1.log
+0x00C77D90	self rename MixChannels_00c77d90 -> CFloatReverbParameterTranslator::PanToGains (header port)	RELOCATION_MATCH	PASS	2	q11510	ported; work/b2.log
+0x00C783B0	self rename CChannelMixer_00c783b0::Mix -> CFloatReverbParameterTranslator::UpdateReverbPan + binds PanToGains	RELOCATION_MATCH	PASS	2	q11507,q11510	ported; work/b2.log
+0x00C77700	self rename MillibelsToAmplitude -> mBToLinear	RELOCATION_MATCH	PASS	2	q11511	ported; work/b2.log
+0x00C54190	binder respell (Commit on engine/CFloatReverbEngine.h)	RELOCATION_MATCH	PASS	2	q11498	ported; work/b2.log
+0x00C77C00	self rename CReverbProcessor::UpdateTapLevels -> CFloatReverbParameterTranslator::UpdateReverbOutputGain (header port)	RELOCATION_MATCH	PASS	2	q11506	ported; work/b2.log
+0x00C77FC0	self rename CReverbProcessor::UpdateChorusLength -> CFloatReverbParameterTranslator::UpdateEchoTime (header port)	RELOCATION_MATCH	PASS	2	q11501	ported; work/b2.log
+0x00C78040	self rename CReverbProcessor::UpdateDelayLength -> CFloatReverbParameterTranslator::UpdateModulationDepth (header port)	RELOCATION_MATCH	PASS	2	q11502	ported; work/b2.log
+0x00C77AE0	self rename CReverbProcessor::UpdateLineGains -> CFloatReverbParameterTranslator::UpdateReflectionsOutputGain (header port)	RELOCATION_MATCH	PASS	2	q11505	ported; work/b2.log
+0x00C78150	self rename CReverbProcessor::UpdateTapDelays -> CFloatReverbParameterTranslator::UpdateSize (header port) + data respell 0x012BF138 -> _sc_fDefaultLongReverbInputDelay	RELOCATION_MATCH	PASS	2	q11499	ported; work/b2.log
+0x00C75CE0	binder respell (data only): 0x012BF088 g_reverbMixMatrix -> _sc_fDefaultShortReverbCrossfeedGainMatrix in the landed body (self rename q11492 stays with the blocked family)	RELOCATION_MATCH	PASS	2	q11516	ported; work/b3.log
+0x00C75E90	binder respell (data only): 0x012BF088 g_reverbMixMatrix -> _sc_fDefaultShortReverbCrossfeedGainMatrix in the landed body (self rename q11518 stays with the blocked family)	RELOCATION_MATCH	PASS	2	q11516	ported; work/b3.log
+0x00C69C60	none (self rename q11519 needs the whole family)	-	-	0	q11519	blocked: family (NOTES "Blocked family")
+0x00C69FB0	none (self rename q11520)	-	-	0	q11520	blocked: family
+0x00C6A080	none (self rename q11521)	-	-	0	q11521	blocked: family
+0x00C6A200	none (self rename q11522)	-	-	0	q11522	blocked: family
+0x00C6A180	none (held draft kept in work/held_drafts; self rename q11493)	-	-	0	q11493	blocked: family
+0x00C6A5D0	none (held draft kept in work/held_drafts; ProcessReverb)	-	-	0	q11493	blocked: family
+0x00C89750	none (self rename q11514)	-	-	0	q11514	blocked: family
+0x00C89AA0	none (self rename q11515)	-	-	0	q11515	blocked: family
+0x00C89B40	none (self rename q11512)	-	-	0	q11512	blocked: family
+0x00C89B60	none (self rename q11513)	-	-	0	q11513	blocked: family
+0x00C74420	none (binds 0x0143CCDC as s_pOps / s_pSharedTable; it is itself the CReverbDspProcessor ctor)	-	-	0	q11517	blocked: closure, not attempted, 0 grades (q11517 note in APPLIED)
+0x00C74450	none (binds 0x0143CCDC as s_pSharedTable; the CReverbDspProcessor dtor)	-	-	0	q11517	blocked: closure, not attempted, 0 grades (q11517 note in APPLIED)
+0x00C77800	none (Account B row, read-only per HELD.txt; already the SDK name)	-	-	0	q11414	not-a-binder: its own name is already right; its binder 0x00C783F0 was ported
+0x00C88E60	none (Account B row, read-only per HELD.txt; already the SDK name)	-	-	0	q11415	not-a-binder: its own name is already right; its binder 0x00C75CE0 is blocked with the family
+0x01216140	EH funclet of 0x00C54510 (includes the parent by path; not changed)	RELOCATION_MATCH	PASS	1	q11498	listed: regraded against the ported parent (work/fun1.log); the parent keeps its file path (no self rename)

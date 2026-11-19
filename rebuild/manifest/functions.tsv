@@ -47488,7 +47488,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6ad90	vfunc_0	CVtable_012b95c4	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c6ad90.cpp
 00c6adb0	SetDefaults	CReverbSettings00c6adb0	__thiscall	undefined	1	C3DDummyObject *	0	yes	accepted									
 00c6ae90	~CVsyncCallbackTimer_00c6ae90	_unattributed	__thiscall	undefined	1	CVsyncCallbackTimer *	0	yes	accepted									
-00c6aef0	Configure	CVoiceEffect	unknown	undefined	0		0	yes	accepted									
+00c6aef0	Commit	CFloatReverbEngine	unknown	undefined	0		0	yes	accepted									
 00c6af50	UpdateProgress	CStreamProgressMonitor	unknown	undefined	0		0	yes	accepted									
 00c6afc0	CSoundOutput00c6afc0	CSoundOutput00c6afc0	__thiscall	undefined	1	C3DMeshMaterial *	0	yes	accepted									
 00c6b050	CTCHeroStats::InitializeAudioEffects	CTCHeroStats	unknown	undefined	0		0	yes	accepted									
@@ -47684,8 +47684,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c744e0	Reset	CDspGain	__thiscall	void	1	CQ_GuildTrainingSkillScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\Init_Init_00c744e0.cpp
 00c74510	ApplyRamps	CDspGain	unknown	undefined	0		0	yes	accepted									
 00c74850	CFilter_Setup	_global	unknown	undefined	0		0	yes	accepted									
-00c74ab0	SetLowPass	CEffectFilter	unknown	undefined	0		0	yes	accepted									
-00c74bb0	SetHighPass	CEffectFilter	unknown	undefined	0		0	yes	accepted									
+00c74ab0	Set_LpButterworth2	CFloatFilterParams	unknown	undefined	0		0	yes	accepted									
+00c74bb0	Set_HighPass	CFloatFilterParams	unknown	undefined	0		0	yes	accepted									
 00c74ce0	Apply	CDspGain	__fastcall	void	4	CCharString *,float,bool,bool	1	yes	accepted									
 00c74d30	Crossfade	CDspGain	unknown	undefined	0		0	yes	accepted									
 00c74ee0	Math_IsPrimeNumber	_global	unknown	undefined	0		0	yes	accepted									
@@ -47744,21 +47744,21 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c775e0	AllocatePlanes	CMixerStream	unknown	undefined	0		0	yes	accepted									
 00c77650	`scalar deleting destructor'	CVtable_012bf0c8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_vectordeletingdestructor_00c77650.cpp
 00c77690	Pow10_00c77690	_global	unknown	undefined	0		0	yes	accepted									
-00c77700	MillibelsToAmplitude	_global	unknown	undefined	0		0	yes	accepted									
+00c77700	mBToLinear	_global	unknown	undefined	0		0	yes	accepted									
 00c77770	Clear	CGameEventPackage	__thiscall	void	1	CGameEventPackage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\Clear_Clear_00c77770.cpp
 00c77780	SetMember_dword0x28_00c77780	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\AddExclusiveObserver_AddExclusiveObserver_00c77780.cpp
 00c77800	CAudioChannel_SetupAudioFilter	_global	unknown	undefined	0		0	yes	accepted									
-00c77ae0	UpdateLineGains	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
+00c77ae0	UpdateReflectionsOutputGain	CFloatReverbParameterTranslator	unknown	undefined	0		0	yes	accepted									
 00c77b30	UpdateLineLengths	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
-00c77c00	UpdateTapLevels	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
+00c77c00	UpdateReverbOutputGain	CFloatReverbParameterTranslator	unknown	undefined	0		0	yes	accepted									
 00c77c80	UpdateLineAndTapLengths	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
-00c77d90	MixChannels_00c77d90	_global	unknown	undefined	0		0	yes	accepted									
-00c77fc0	UpdateChorusLength	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
-00c78040	UpdateDelayLength	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
+00c77d90	PanToGains	CFloatReverbParameterTranslator	unknown	undefined	0		0	yes	accepted									
+00c77fc0	UpdateEchoTime	CFloatReverbParameterTranslator	unknown	undefined	0		0	yes	accepted									
+00c78040	UpdateModulationDepth	CFloatReverbParameterTranslator	unknown	undefined	0		0	yes	accepted									
 00c780c0	Audio_Channel_ComputeEnvelope_Amplitude	_global	unknown	undefined	0		0	yes	accepted									
-00c78150	UpdateTapDelays	CReverbProcessor	unknown	undefined	0		0	yes	accepted									
-00c783b0	Mix	CChannelMixer_00c783b0	__thiscall	void	2	CKilledThing *,CTCHeroStats *	1	yes	accepted									
-00c783f0	Configure	CEffectPart260	unknown	undefined	0		0	yes	accepted									
+00c78150	UpdateSize	CFloatReverbParameterTranslator	unknown	undefined	0		0	yes	accepted									
+00c783b0	UpdateReverbPan	CFloatReverbParameterTranslator	__thiscall	void	2	CKilledThing *,CTCHeroStats *	1	yes	accepted									
+00c783f0	Translate	CFloatReverbParameterTranslator	unknown	undefined	0		0	yes	accepted									
 00c78590	M64	M64	unknown	undefined	0		0	yes	accepted									
 00c785d0	I32vec2	I32vec2	unknown	undefined	0		0	yes	accepted									
 00c78600	Is32vec2	Is32vec2	unknown	undefined	0		0	yes	accepted									
