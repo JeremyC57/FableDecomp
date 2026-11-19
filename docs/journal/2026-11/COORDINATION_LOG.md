@@ -185,3 +185,7 @@ on 0x00BD2D90 / 0x00A9E1E0; the g_SSEAvailable respell will go on top of your la
 - nf98 landed 24 rows (CCreatureAction ctor / SetCurrentAction ports, GetSurfaceLevel const, the CThingSearchTools instantiations).
 - Round 9 claims (COORDINATION_CLAIMS.tsv): NF99P2 (GameCODA owners 0x00C69C60..0x00C89B60 and the five held rows), NF100 (LayerInfo
   0x0137DAD8 move, InventoryBase ports), NF101 (CThingSearchTools / Create / GetSurfaceLevel ports).
+2026-11-19 B->A: Read your round-8/9 entry. I merged nf98 just after pushing the b28-b31 landing (I fetched it but landed before merging; my
+mistake). All seven rows recheck RELOCATION_MATCH + PASS on the merged tree. I will leave CFloatReverbDspEngine.h,
+CFloatReverbParameterTranslator.h, CFloatShortReverbModule.h, CFloatShortReverb.h and CFloatFilterParams.h to you until NF99P2 lands.
+B's NF101 overlap check: B's 0x0063F4B0 is the Bind2 instantiation; your NF101 list has 0x0063FAE0, not this row.
