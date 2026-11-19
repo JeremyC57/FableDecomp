@@ -4,7 +4,7 @@
 //   n, then finish = uninitialized_fill_n(_M_start) where the fill memsets and returns first + n
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00996610, 464 bytes (incl. int3 padding), thiscall `ret 8`. FableWin.pdb
 //   `?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z`. The catalog's "PersistData_CompressAndVerify" is descriptive.
-// Callees: std::vector<unsigned char>(size_type) 0x00514E20 (the compressed buffer; the constant-size work memory's
+// Callees: CArray<unsigned char>(unsigned int) 0x00514E20 (the compressed buffer; the constant-size work memory's
 //   constructor is inlined: malloc 0x00BFEA0E + a 0x1C000-dword rep stosd), lzo1x_999_compress 0x00C08130,
 //   lzo1x_decompress 0x00C06B90 (LZO 1.08, `__cdecl`), the stream's Write slot 4 (+0x10), free 0x00BFEA14.
 // Shape: the worst-case output size is size * 65 / 64 + 128 (signed divide); only size - 3 bytes are compressed and the
@@ -20,37 +20,11 @@ extern "C" int __cdecl lzo1x_decompress(const unsigned char* src, unsigned long 
                                         unsigned long* dstLength, void* workMemory);     // 0x00C06B90
 #define LZO1X_999_MEM_COMPRESS (14 * 16384 * 2)
 
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-// The POD fill the size constructor ends with: memset's result pointer plus the count (an inline call's return value,
-// so it is not shared with the end-of-storage sum computed before the fill).
-inline unsigned char* uninitialized_fill_n(unsigned char* __first, unsigned int __n, const unsigned char& __val)
-{
-    memset(__first, __val, __n);
-    return __first + __n;
-}
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector
-{
-public:
-    typedef unsigned int size_type;
-    _Tp* _M_start;                                      // +0x00
-    _Tp* _M_finish;                                     // +0x04
-    _Tp* _M_end_of_storage;                             // +0x08
-    explicit vector(size_type __n)                      // 0x00514E20 (unsigned char)
-        : _M_start(0), _M_finish(0), _M_end_of_storage(0)
-    {
-        _M_start = __n ? (_Tp*)malloc(__n) : 0;
-        _M_finish = _M_start;
-        _M_end_of_storage = _M_start + __n;
-        _M_finish = uninitialized_fill_n(_M_start, __n, _Tp());
-    }
-    ~vector() { if (_M_start != 0) free(_M_start); }
-    size_type size() const { return size_type(_M_finish - _M_start); }
-    _Tp& operator[](size_type __n) { return *(_M_start + __n); }
-};
-} // namespace std
-
-static inline unsigned char* GetData(std::vector<unsigned char>& v) { return v.size() ? &v[0] : (unsigned char*)&v; }
+// NF93 (q11297): the local STLport vector model replaced by engine/CArray.h: both buffers are CArray<unsigned char> (Ego_d types
+//   WriteCompressed's work_mem / compressed_data so; FableWin ??0?$CArray@E@@QAE@I@Z 0x00514E20, called for the compressed buffer, expanded
+//   in place for the constant-size work memory); GetAsCArray is the start, or the array's own address when empty.
+#define FABLE_RETAIL_CARRAY
+#include "engine/CArray.h"
 
 class CDataOutputStream
 {
@@ -69,11 +43,11 @@ void CDataOutputStream::WriteCompressed(const void* data, long size)
         return;
     if (size > 3) {
         unsigned long compressedSize = size * 65 / 64 + 128;
-        std::vector<unsigned char> compressed(compressedSize);
-        std::vector<unsigned char> workMemory(LZO1X_999_MEM_COMPRESS);
-        lzo1x_999_compress((const unsigned char*)data, size - 3, GetData(compressed), &compressedSize, GetData(workMemory));
+        CArray<unsigned char> compressed(compressedSize);
+        CArray<unsigned char> workMemory(LZO1X_999_MEM_COMPRESS);
+        lzo1x_999_compress((const unsigned char*)data, size - 3, compressed.GetAsCArray(), &compressedSize, workMemory.GetAsCArray());
         unsigned long checkSize = size;
-        lzo1x_decompress(GetData(compressed), compressedSize, (unsigned char*)data, &checkSize, 0);
+        lzo1x_decompress(compressed.GetAsCArray(), compressedSize, (unsigned char*)data, &checkSize, 0);
         if (compressedSize < (unsigned long)(size - 3)) {
             long header;
             if (compressedSize <= 0x7fff) {
@@ -85,7 +59,7 @@ void CDataOutputStream::WriteCompressed(const void* data, long size)
                 header = compressedSize;
                 WriteData(&header, 4);
             }
-            WriteData(GetData(compressed), compressedSize);
+            WriteData(compressed.GetAsCArray(), compressedSize);
             WriteData((const unsigned char*)data + size - 3, 3);
         } else {
             long header = 0;

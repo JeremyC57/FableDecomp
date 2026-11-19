@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00986210   RELOCATION_MATCH PASS   CallingChildrenIsRunnable
+00ac7eb0   RELOCATION_MATCH PASS   ComputeSelfContraction
+
+WINS: 2
+  00986210 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?CallingChildrenIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
+  00ac7eb0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::?ComputeSelfContraction@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXAAVCVertexPairContraction@2@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupOpinionReactionRoot_CallingChildrenIsRunnable_00986210
+  QuadricOptimiserInternalsCOptimisedPrimitive_ComputeSelfContraction_00ac7eb0

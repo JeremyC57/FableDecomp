@@ -17,6 +17,8 @@
 // Layout: local model -- retail CCombatActionBase is 0x114 bytes (PCreature +0x08), the attacker pointer +0x114; CTCBoss
 //   GenericCounter +0x10 / currentBossPhase +0x18 (Ego_r.pdb); CMazeBattleDef TutorialNumGetHits retail +0x50 (PDB +0x54,
 //   compared as a long).
+// Name fix (NF93 q11450, 2026-11-19): the base FinishAction 0x008663D0 is virtual (Ego_r.pdb / FableWin.pdb ?FinishAction@CCombatAction_GenericStrikeResponseBase@@UAEXXZ,
+//   slot-4 override; engine/CCombatAction_GenericStrikeResponseBase.h FINISHACTION opt-in); was the QAE spelling. Declaration only, in the landed local model.
 // Name fix (agentNF6 2026-11-10): CTCBoss::GetBossPhase 0x007AED10 is ?GetBossPhase@CTCBoss@@QBEJXZ (Ego_r.pdb / FableWin.pdb), was GetCurrentPhase / non-const.
 #include "fable_compiler.h"
 #include <math.h>
@@ -120,7 +122,7 @@ class CCombatAction_WillForcePushInto : public CCombatActionBase { public:   // 
     CCombatAction_WillForcePushInto(CThingCreatureBase* owner);   // 0x008C38B0
 };
 class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:
-    void FinishAction();                        // 0x008663D0
+    virtual void FinishAction();                // 0x008663D0 (Ego_r.pdb / FableWin.pdb ?FinishAction@CCombatAction_GenericStrikeResponseBase@@UAEXXZ)
 };
 class CCombatAction_StrikeResponseMazeDoForcePush : public CCombatAction_GenericStrikeResponseBase { public:
     CBaseIntelligentPointer PAttacker;          // +0x114

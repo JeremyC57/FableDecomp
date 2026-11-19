@@ -21,12 +21,11 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 extern "C" int __cdecl lzo1x_decompress_asm_fast(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
                                         unsigned int* dstLen, void* work);   // 0x00C069D0
 
-struct CByteArray {
-    unsigned char* m_begin; unsigned char* m_end; unsigned char* m_capacity;
-    CByteArray(unsigned long n);                             // 0x00514E20
-    ~CByteArray() { if (m_begin) free(m_begin); }
-    unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
-};
+// NF93 (q11297): the local CByteArray model replaced by engine/CArray.h: CArray<unsigned char> (FableWin ??0?$CArray@E@@QAE@I@Z 0x00514E20,
+//   out of line; Ego_d types these buffers CArray<unsigned char>), the null-tested release, GetAsCArray (the start, or its own address).
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE
+#include "engine/CArray.h"
 
 struct CDataInputStream_Methods : CDataInputStream {
     static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
@@ -58,10 +57,10 @@ void CDataInputStream_Methods::ReadCompressed(void* data, long size)
         if (compressedSize == -1)
             compressedSize = ReadLong();
         if (compressedSize > 0) {
-            CByteArray buffer(compressedSize);
-            Read(buffer.GetData(), compressedSize);
+            CArray<unsigned char> buffer(compressedSize);
+            Read(buffer.GetAsCArray(), compressedSize);
             unsigned int written = size;
-            lzo1x_decompress_asm_fast(buffer.GetData(), compressedSize, (unsigned char*)data, &written, 0);
+            lzo1x_decompress_asm_fast(buffer.GetAsCArray(), compressedSize, (unsigned char*)data, &written, 0);
             if (written != (unsigned int)(size - 3)) {
                 CAFile::DoErrorCallback();
             }

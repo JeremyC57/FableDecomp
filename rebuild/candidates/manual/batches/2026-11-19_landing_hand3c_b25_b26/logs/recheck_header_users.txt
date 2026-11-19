@@ -1,0 +1,14 @@
+009852c0   RELOCATION_MATCH PASS   FollowUpdate
+009863e0   RELOCATION_MATCH PASS   CommentAboutHeroIsRunnable
+00985440   RELOCATION_MATCH PASS   HeroImitationPlayUpdate
+00982f70   RELOCATION_MATCH PASS   WifeToHerselfUpdate
+00985f40   RELOCATION_MATCH PASS   WifeClothingUpdate
+00982f10   RELOCATION_MATCH PASS   WifeGeneralUpdate
+00985430   RELOCATION_MATCH PASS   FollowFarUpdate
+00986510   RELOCATION_MATCH PASS   MarriageCommentIsRunnable
+00982eb0   RELOCATION_MATCH PASS   WifeFeelingUpdate
+008fe36e   RELOCATION_MATCH PASS   GetName
+0095ee70   RELOCATION_MATCH PASS   SayToThingReactingTo
+0095ed80   RELOCATION_MATCH PASS   WaitForTextToLoadThenSpeak
+0121f86f   RELOCATION_MATCH PASS   `dynamic initializer for 'StateGroupInfo'' (object symbol _$E1 of its TU)
+01221d20   RELOCATION_MATCH PASS   `dynamic initializer for 'Behaviours'' (object symbol _$E1 of its TU)

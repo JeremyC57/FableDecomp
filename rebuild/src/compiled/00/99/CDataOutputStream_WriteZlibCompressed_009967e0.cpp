@@ -30,12 +30,11 @@ class CCompressorZlib : public CACompressor { public:                      // vt
 public:
     bool HasStreamInput() const;   // 0x00A3A7E0
 };
-struct CByteArray {                                          // retail vector<unsigned char>: begin/end/capacity
-    unsigned char* m_begin; unsigned char* m_end; unsigned char* m_capacity;
-    CByteArray(unsigned long n);                             // 0x00514E20
-    ~CByteArray() { if (m_begin) free(m_begin); }
-    unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
-};
+// NF93 (q11297): the local CByteArray model replaced by engine/CArray.h: CArray<unsigned char> (FableWin ??0?$CArray@E@@QAE@I@Z 0x00514E20,
+//   out of line; Ego_d types these buffers CArray<unsigned char>), the null-tested release, GetAsCArray (the start, or its own address).
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE
+#include "engine/CArray.h"
 
 class CDataOutputStream { public:
     virtual void v0();
@@ -56,18 +55,18 @@ void CDataOutputStream::WriteZlibCompressed(const void* data, long size, long bu
             bufferSize = 1024;
         else if (bufferSize > size + 1024)
             bufferSize = size + 1024;
-        CByteArray buffer(bufferSize);
+        CArray<unsigned char> buffer(bufferSize);
         CCompressorZlib compressor;
         compressor.SetStreamInput(data, size);
         long dataPosition = GetPosition();
         while (compressor.HasStreamInput()) {
-            long written = compressor.CompressStream(buffer.GetData(), bufferSize);
-            WriteData(buffer.GetData(), written);
+            long written = compressor.CompressStream(buffer.GetAsCArray(), bufferSize);
+            WriteData(buffer.GetAsCArray(), written);
         }
         bool finished = false;
         do {
-            long written = compressor.FinishCompressStream(buffer.GetData(), bufferSize, &finished);
-            WriteData(buffer.GetData(), written);
+            long written = compressor.FinishCompressStream(buffer.GetAsCArray(), bufferSize, &finished);
+            WriteData(buffer.GetAsCArray(), written);
         } while (!finished);
         long endPosition = GetPosition();
         SetPosition(sizePosition);

@@ -1,0 +1,204 @@
+addr       parity           behav  name
+0043fcf0   RELOCATION_MATCH PASS   _global::StdList_Clear_0043fcf0
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DExtentsF
+0048f50c   WARN SHARED_HEADER_AVAILABLE CFontBank
+0048f50c   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+0048f50c   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef
+0048f50c   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0048f50c   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0048f50c   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+0048f50c   RELOCATION_MATCH PASS   CSubtitleRenderer::FormatTextForVWindow
+004c0240   WARN SHARED_HEADER_AVAILABLE CThing
+004c0240   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+004c0240   WARN SHARED_HEADER_AVAILABLE CEngineMeshEffect
+004c0240   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+004c0240   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearance::SetPMeshEffect
+00512c70   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCOldFileFormatMapHeader1@@@@SIXPAX@Z -> 0050d230 labelled '_global::OperatorDelete_thunk_0050d230'
+00512c70   RELOCATION_MATCH PASS   _global::CreateCountedFlagRecord_00512c70
+00514e20   WARN STANDIN_LEAF ??0?$CArray@E@@QAE@I@Z (catalog std::vector<unsigned char, std::allocator<unsigned char>>::vector; names another function)
+00514e20   RELOCATION_MATCH PASS   std::vector<unsigned char, std::allocator<unsigned char>>::vector
+00516180   WARN RELOC_NAME: ??0?$CArray@E@@QAE@I@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+00516180   RELOCATION_MATCH PASS   CAFile::ReadVar<int>
+00516e10   WARN RELOC_NAME: ??0?$CArray@E@@QAE@I@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+00516e10   RELOCATION_MATCH PASS   CAFile::ReadVar<unsigned char>
+0051f480   WARN RELOC_NAME: ??0?$CArray@E@@QAE@I@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+0051f480   RELOCATION_MATCH PASS   NThingManager::CEntityRuntimePersistence::ClearPersistenceDataForSectionInEntityScript
+00535140   WARN STANDIN_LEAF ??0?$_List_base@V?$CCountedPointer@VCAction@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCAction@NUISystem@@@@@std@@@std@@QAE@ABV?$allocator@V?$CCountedPointer@VCAction@NUISystem@@@@@1@@Z (catalog std::list<T_0x8_00535140>::list; names another function)
+00535140   RELOCATION_MATCH PASS   std::list<T_0x8_00535140>::list
+005dcf70   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+005dcf70   WARN SHARED_HEADER_AVAILABLE CDefString
+005dcf70   RELOCATION_MATCH PASS   NErase005dcf70::Manager::RemoveMatching
+00697c60   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@QAEAAV0@ABV0@@Z -> 0069c380 labelled '_global::CCountedPointer_Set_0069c380'
+00697c60   WARN STANDIN_LEAF ?UpdateCleanupFlags@CGameCameraManager@@AAEXXZ (catalog CMapInfo_00697c60::Clear; names another function)
+00697c60   RELOCATION_MATCH PASS   CMapInfo_00697c60::Clear
+0069b790   WARN SHARED_HEADER_AVAILABLE CThing
+0069b790   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0069b790   WARN SHARED_HEADER_AVAILABLE CCamera
+0069b790   WARN RELOC_NAME: ?UpdateCleanupFlags@CGameCameraManager@@AAEXXZ -> 00697c60 labelled 'CMapInfo_00697c60::Clear'
+0069b790   WARN RELOC_NAME: ?UpdateEarthQuakes@CGameCameraManager@@QAEXXZ -> 00698540 labelled 'CGameCameraManager_UpdatePointLightAccumulation'
+0069b790   RELOCATION_MATCH PASS   CGameCameraManager::Update
+006b7af0   MATCH            PASS   std::for_each<CGameMapCell *, std::mem_fun_ref_t<void, CGameMapCell>>
+006e8810   WARN RELOC_NAME: ?GetProngVector@CProng@CDefendingCombatantInfo@@QBE?AVC3DVector@@M@Z -> 006e7fd0 labelled 'CProng::GetRotatedPosition'
+006e8810   WARN STANDIN_LEAF ?GetAttackerProngVector@CCombatRing@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z (catalog CCombatRing::GetAttackerProngPosition; names another function)
+006e8810   RELOCATION_MATCH PASS   CCombatRing::GetAttackerProngPosition
+00727500   RELOCATION_MATCH PASS   _global::for_each
+0072caa0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0072caa0   WARN SHARED_HEADER_AVAILABLE CThing
+0072caa0   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities
+0072caa0   RELOCATION_MATCH PASS   CTCSpecialAbilities::SetupAssassinRush
+00755520   WARN STANDIN_LEAF ??1CEnginePrimitiveMorphedStaticMesh@@QAE@XZ (catalog SAppearanceDrawRecord_00755520::~SAppearanceDrawRecord_00755520; names another function)
+00755520   RELOCATION_MATCH PASS   SAppearanceDrawRecord_00755520::~SAppearanceDrawRecord_00755520
+00789ff0   WARN SHARED_HEADER_AVAILABLE CThing
+00789ff0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+00789ff0   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+00789ff0   WARN SHARED_HEADER_AVAILABLE CTCAnimatingObject
+00789ff0   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer
+00789ff0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00789ff0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00789ff0   WARN SHARED_HEADER_AVAILABLE CTCHeroRangedAttacks
+00789ff0   WARN RELOC_NAME: ?GetAmmoCarrySlot@CTCWeapon@@QAEJXZ -> 005da920 labelled 'CTCWeapon::GetWeaponDefLongAt94'
+00789ff0   WARN RELOC_NAME: ?IsAnalogueLoading@CTCWeapon@@QAE_NXZ -> 005da950 labelled 'CTCWeapon::IsProjectileWeaponAutoLoading'
+00789ff0   RELOCATION_MATCH PASS   CTCHeroRangedAttacks::CancelAimingWeapon
+00810f80   WARN STANDIN_LEAF ??RCIsHitEventHitByMelee@NEntityEvents@@QBE_NPBVCEventHitBase@1@@Z (catalog std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>; names another function)
+00810f80   RELOCATION_MATCH PASS   std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+008c2810   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+008c2810   WARN SHARED_HEADER_AVAILABLE C3DVector
+008c2810   WARN SHARED_HEADER_AVAILABLE C2DVector
+008c2810   WARN SHARED_HEADER_AVAILABLE CThing
+008c2810   WARN SHARED_HEADER_AVAILABLE CTCBoss
+008c2810   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008c2810   RELOCATION_MATCH PASS   CCombatAction_StrikeResponseMazeDoForcePush::FinishAction
+008f7bd0   WARN SHARED_HEADER_AVAILABLE C3DVector
+008f7bd0   WARN SHARED_HEADER_AVAILABLE CBaseClass
+008f7bd0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+008f7bd0   WARN SHARED_HEADER_AVAILABLE CThing
+008f7bd0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008f7bd0   WARN RELOC_NAME: ?GetBones@NFoot008f7bd0@@YI_NPAUCThingCreatureBase@1@AAU?$vector@UCCharString@NFoot008f7bd0@@@1@@Z -> 008f78e0 labelled 'NCombatActionHelpers::GetDustCreationHelperNames'
+008f7bd0   RELOCATION_MATCH PASS   _global::CreateFootEffectForCreature
+0092d060   WARN SHARED_HEADER_AVAILABLE CThing
+0092d060   WARN SHARED_HEADER_AVAILABLE CTCVillageMember
+0092d060   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+0092d060   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+0092d060   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0092d060   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0092d060   RELOCATION_MATCH PASS   CAIStateGroup_GoToBed::IsUnreportedCrimeKnown
+0092e630   WARN SHARED_HEADER_AVAILABLE CPlayer
+0092e630   WARN SHARED_HEADER_AVAILABLE COpinionDeed
+0092e630   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+0092e630   WARN SHARED_HEADER_AVAILABLE CTCHeroOpinionDeedLog
+0092e630   WARN SHARED_HEADER_AVAILABLE CTCBase
+0092e630   RELOCATION_MATCH PASS   CTCCreatureOpinionOfHero::FindMostRecentDeed<CFilter_Bind2<COpinionDeedFilter_IsStillHappening,COpinionDeedFilter_TargetIs> >
+009580e0   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToTrespassing::IsStillRunnable
+00995fb0   WARN RELOC_NAME: ??0?$CArray@E@@QAE@I@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+00995fb0   RELOCATION_MATCH PASS   CDataInputStream::ReadCompressed
+00996230   WARN SHARED_HEADER_AVAILABLE CACompressor
+  WARN leaf '?ReadZlibCompressed@ (Ego_r.pdb ?ReadZlibCompressed@CDataInputStream@@UAEXPAXJ@Z, virtual; modelled through CDataInputStream_Methods)' matches no symbol in 00996230.obj; graded the largest function
+  WARN leaf '?ReadZlibCompressed@ (Ego_r.pdb ?ReadZlibCompressed@CDataInputStream@@UAEXPAXJ@Z, virtual; modelled through CDataInputStream_Methods)' matches no symbol in 00996230.obj; graded the largest function
+00996230   WARN RELOC_NAME: ??0?$CArray@E@@QAE@I@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+00996230   WARN RELOC_NAME: ?GetWorkspaceSize@CCompressorZlib@@SAJXZ -> 00a3a7d0 labelled 'CCompressorZlib::GetRequiredWorkspaceSize'
+00996230   RELOCATION_MATCH PASS   CDataInputStream::ReadZlibCompressed
+00996610   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00996610   WARN RELOC_NAME: ??0?$CArray@E@@QAE@I@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+00996610   RELOCATION_MATCH PASS   CDataOutputStream::WriteCompressed
+009967e0   WARN SHARED_HEADER_AVAILABLE CACompressor
+009967e0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+009967e0   WARN RELOC_NAME: ??0?$CArray@E@@QAE@I@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+009967e0   WARN RELOC_NAME: ?GetWorkspaceSize@CCompressorZlib@@SAJXZ -> 00a3a7d0 labelled 'CCompressorZlib::GetRequiredWorkspaceSize'
+009967e0   RELOCATION_MATCH PASS   CDataOutputStream::WriteZlibCompressed
+009994a0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+009994a0   WARN RELOC_ALIAS: __wsplitpath -> 00bfed4c is the import thunk 'MSVCR71.DLL::_wsplitpath'
+009994a0   WARN RELOC_ALIAS: __getdrive -> 00bfed70 is the import thunk 'MSVCR71.DLL::_getdrive'
+009994a0   WARN RELOC_ALIAS: __chdrive -> 00bfed6a is the import thunk 'MSVCR71.DLL::_chdrive'
+009994a0   WARN RELOC_ALIAS: __wchdir -> 00bfeafe is the import thunk 'MSVCR71.DLL::_wchdir'
+009994a0   WARN RELOC_ALIAS: __wmkdir -> 00bfed64 is the import thunk 'MSVCR71.DLL::_wmkdir'
+009994a0   RELOCATION_MATCH PASS   CAFile::CreateDirectoryW
+00999620   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+00999620   WARN RELOC_ALIAS: __wsplitpath -> 00bfed4c is the import thunk 'MSVCR71.DLL::_wsplitpath'
+00999620   RELOCATION_MATCH PASS   CAFile::CreateDirectoryForFile
+009fa340   WARN SHARED_HEADER_AVAILABLE CSystemManager
+009fa340   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+009fa340   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009fa340   WARN SHARED_HEADER_AVAILABLE CTextureFileInfo
+009fa340   WARN SHARED_HEADER_AVAILABLE CTexture
+009fa340   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+009fa340   WARN RELOC_ALIAS: _D3DXCreateTextureFromFileExW@56 -> 00bfefd4 is the import thunk 'D3DX9_25.DLL::D3DXCreateTextureFromFileExW'
+009fa340   RELOCATION_MATCH PASS   CTexture::LoadFromBitmapFile
+00a629f0   WARN SHARED_HEADER_AVAILABLE CPackedUIntArray
+00a629f0   RELOCATION_MATCH PASS   CPackedUIntArray::operator[]
+00a62b70   WARN SHARED_HEADER_AVAILABLE CPackedUIntArray
+00a62b70   RELOCATION_MATCH PASS   CountBits
+00a6da40   WARN SHARED_HEADER_AVAILABLE C3DTriangle2
+00a6da40   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00a6da40   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00a6da40   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00a6da40   WARN SHARED_HEADER_AVAILABLE CCircle
+00a6da40   WARN SHARED_HEADER_AVAILABLE CIPhysicsFacesSegmentBase
+00a6da40   RELOCATION_MATCH PASS   CPhysicsMesh::CPhysicsMesh
+00a91560   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams
+00a91560   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+00a91560   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00a91560   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2
+00a91560   WARN RELOC_NAME: ??0?$CArray@E@@QAE@I@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+00a91560   RELOCATION_MATCH PASS   C3DPrimitive2::LoadVertexBuffer
+00a92740   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams
+00a92740   WARN SHARED_HEADER_AVAILABLE CArray
+00a92740   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2
+00a92740   WARN RELOC_NAME: ?GetVertexSize@CVertexFormat@@QBEKXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a92740   WARN RELOC_NAME: ?ConvertToVBFormatStaticBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1Bump@@@Z -> 00a8f1b0 labelled '_global::TransformVertexBufferWithNormals_LoopUnrolled'
+00a92740   RELOCATION_MATCH PASS   C3DPrimitive2::ConvertToVBFormatStatic
+00b41fa0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncEntry
+00b41fa0   WARN RELOC_NAME: ??0?$CArray@E@@QAE@I@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+00b41fa0   RELOCATION_MATCH PASS   CEngineWorldMap::LoadWaterData
+00beae50   WARN RELOC_NAME: ??0?$CArray@E@@QAE@I@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+00beae50   RELOCATION_MATCH PASS   CWaterPatchMesh::Load
+00c599c0   WARN RELOC_NAME: ?GetOutputMode@CCodaSystem@@QAEJXZ -> 00c3ea60 labelled 'CGuiControlListBox::GetCurrentSelectedEntryData'
+00c599c0   WARN STANDIN_LEAF ?CalcAzimuthElevation@CSalBaseVoice@@KAXAAM0ABVCCodaVector@@@Z (catalog _global::ComputeAzimuthElevation; names another function)
+00c599c0   RELOCATION_MATCH PASS   _global::ComputeAzimuthElevation
+00c6aae0   RELOCATION_MATCH PASS   _global::CUnprovenMixKernel_00c6aae0
+00c6ac90   WARN RELOC_NAME: ?ScaleAccumulate16RampMMX@@YAXPBFKPAJFF@Z -> 00c6aae0 labelled '_global::CUnprovenMixKernel_00c6aae0'
+00c6ac90   RELOCATION_MATCH PASS   CSoundMixer::MixBlockRamped
+
+WINS: 41
+  0043fcf0 RELOCATION_MATCH _global::??1?$_List_base@VSDamageValue@CDrawDamage@NPlayerGui@@V?$allocator@VSDamageValue@CDrawDamage@NPlayerGui@@@std@@@std@@QAE@XZ
+  0048f50c RELOCATION_MATCH CSubtitleRenderer::FormatTextForVWindow
+  004c0240 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::SetPMeshEffect
+  00512c70 RELOCATION_MATCH _global::?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatMapHeader1@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader1@@@@PBX@Z
+  00514e20 RELOCATION_MATCH std::vector::??0?$CArray@E@@QAE@I@Z
+  00516180 RELOCATION_MATCH CAFile::??$ReadVar@H@CAFile@@QAEXAAHPAVCASuspendableProcess@@@Z
+  00516e10 RELOCATION_MATCH CAFile::??$ReadVar@E@CAFile@@QAEXAAEPAVCASuspendableProcess@@@Z
+  0051f480 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?ClearPersistenceDataForSectionInEntityScript@CEntityRuntimePersistence@NThingManager@@AAEXABVCCharString@@AAVCEntityScriptInfo@12@@Z
+  00535140 RELOCATION_MATCH std::list<T_0x8_00535140>::??0?$_List_base@V?$CCountedPointer@VCAction@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCAction@NUISystem@@@@@std@@@std@@QAE@ABV?$allocator@V?$CCountedPointer@VCAction@NUISystem@@@@@1@@Z
+  005dcf70 RELOCATION_MATCH _global::?RemoveMatching@Manager@NErase005dcf70@@QAEXABUCCharString@2@@Z
+  00697c60 RELOCATION_MATCH CMapInfo_00697c60::?UpdateCleanupFlags@CGameCameraManager@@AAEXXZ
+  0069b790 RELOCATION_MATCH CGameCameraManager::Update
+  006b7af0 MATCH std::??$for_each@PAVCGameMapCell@@V?$mem_fun_ref_t@XVCGameMapCell@@@std@@@std@@YI?AV?$mem_fun_ref_t@XVCGameMapCell@@@0@PAVCGameMapCell@@0V10@@Z
+  006e8810 RELOCATION_MATCH CCombatRing::?GetAttackerProngVector@CCombatRing@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z
+  00727500 RELOCATION_MATCH _global::for_each
+  0072caa0 RELOCATION_MATCH CTCSpecialAbilities::SetupAssassinRush
+  00755520 RELOCATION_MATCH SAppearanceDrawRecord_00755520::??1CEnginePrimitiveMorphedStaticMesh@@QAE@XZ
+  00789ff0 RELOCATION_MATCH CTCHeroRangedAttacks::CancelAimingWeapon
+  00810f80 RELOCATION_MATCH _global::??RCIsHitEventHitByMelee@NEntityEvents@@QBE_NPBVCEventHitBase@1@@Z
+  008c2810 RELOCATION_MATCH CCombatAction_StrikeResponseMazeDoForcePush::?FinishAction@CCombatAction_StrikeResponseMazeDoForcePush@@UAEXXZ
+  008f7bd0 RELOCATION_MATCH _global::CreateFootEffectForCreature
+  0092d060 RELOCATION_MATCH CAIStateGroup_GoToBed::IsUnreportedCrimeKnown
+  0092e630 RELOCATION_MATCH CTCCreatureOpinionOfHero::??$FindMostRecentDeed@V?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@PAJ_N@Z
+  009580e0 RELOCATION_MATCH CAIStateGroup_MinionReactToTrespassing::?IsStillRunnable@CAIStateGroup_MinionReactToTrespassing@@AAE_N_N@Z
+  00995fb0 RELOCATION_MATCH CDataInputStream::?ReadCompressed@
+  00996230 RELOCATION_MATCH CDataInputStream::?ReadZlibCompressed@ (Ego_r.pdb ?ReadZlibCompressed@CDataInputStream@@UAEXPAXJ@Z, virtual; modelled through CDataInputStream_Methods)
+  00996610 RELOCATION_MATCH CDataOutputStream::?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z
+  009967e0 RELOCATION_MATCH CDataOutputStream::WriteZlibCompressed
+  009994a0 RELOCATION_MATCH CAFile::?CreateDirectoryW@CAFile@@SIXABVCWideString@@@Z
+  00999620 RELOCATION_MATCH CAFile::?CreateDirectoryForFile@CAFile@@SIXABVCWideString@@@Z
+  009fa340 RELOCATION_MATCH CTexture::?LoadFromBitmapFile@CTexture
+  00a629f0 RELOCATION_MATCH CPackedUIntArray::??ACPackedUIntArray
+  00a62b70 RELOCATION_MATCH CPackedUIntArray::CountBits
+  00a6da40 RELOCATION_MATCH CPhysicsMesh::??0CPhysicsMesh
+  00a91560 RELOCATION_MATCH C3DPrimitive2::LoadVertexBuffer@C3DPrimitive2
+  00a92740 RELOCATION_MATCH C3DPrimitive2::ConvertToVBFormatStatic
+  00b41fa0 RELOCATION_MATCH CEngineWorldMap::?LoadWaterData@CEngineWorldMap@@AAEXXZ
+  00beae50 RELOCATION_MATCH CWaterPatchMesh::?Load@CWaterPatchMesh@@AAE_NAAVCDataInputStream@@@Z
+  00c599c0 RELOCATION_MATCH _global::?CalcAzimuthElevation@CSalBaseVoice@@KAXAAM0ABVCCodaVector@@@Z
+  00c6aae0 RELOCATION_MATCH _global::ScaleAccumulate16RampMMX
+  00c6ac90 RELOCATION_MATCH CSoundMixer::?MixBlockRamped@CSoundMixer@@QAEXPBFFF@Z

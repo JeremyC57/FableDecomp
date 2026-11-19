@@ -1,8 +1,8 @@
 // std::for_each(TYPE* first, TYPE* last, Function function) -- apply the member function to every element and return the functor.
 // Leaf: ??$for_each@PAVCGameMapCell@@V?$mem_fun_ref_t@XVCGameMapCell@@@std@@@std@@YI?AV?$mem_fun_ref_t@XVCGameMapCell@@@0@PAVCGameMapCell@@0V10@@Z
-// Identity: proven; CGameMap::Resize0x6B75A0 passes Reset0x6B7490; stride7; PDB _For_each<CGameMapCell*,mem_fun_ref_t<void,CGameMapCell>>. STLport name replaces Dinkumware _For_each.
+// Identity: proven; CGameMap::Resize0x6B75A0 passes CGameMapCell::Clear 0x6B7490 (Ego_r.pdb / FableWin.pdb ?Clear@CGameMapCell@@QAEXXZ; NF93 q11379: was spelled Reset); stride7; PDB _For_each<CGameMapCell*,mem_fun_ref_t<void,CGameMapCell>>. STLport name replaces Dinkumware _For_each.
 #pragma pack(push,1)
-class CGameMapCell { public: unsigned char AtmosThemes[3],AtmosBlends[2]; signed char SoundTheme; unsigned char Music; void Reset(); };
+class CGameMapCell { public: unsigned char AtmosThemes[3],AtmosBlends[2]; signed char SoundTheme; unsigned char Music; void Clear(); };
 #pragma pack(pop)
 namespace std {
 template<class R,class T> class mem_fun_ref_t {

@@ -4,6 +4,7 @@
 #include "fable_compiler.h"
 #include <new>
 #include <stdlib.h>
+#include "engine/CCRC.h"   // NF93 (q11327): CCRC::Calc 0x004014A0 (Ego_r.pdb / FableWin.pdb ?Calc@CCRC@@SIKKPBXK@Z), was a local NFoot008f7bd0::CCRC
 namespace NFoot008f7bd0 {
 struct C3DVector {float x,y,z;};extern bool Enabled;struct CThingCreatureBase;struct SVectorParam {unsigned hash;C3DVector v;};struct Tag{Tag(){}};
 #pragma pack(push,1)
@@ -30,7 +31,6 @@ struct CThing {char pad[40];unsigned flags;char gap[48];CTCDParticleEmitter* ext
 struct CThingCreatureBase {const C3DVector& GetPosition()const;};
 struct CThingVector {CThing **first,**last,**end;template<class U> __declspec(noinline) void _M_insert_overflow(CThing** pos,CThing*const& value,const U&,int count,int skipTail){unsigned n=first?last-first:0;unsigned cap=n+(n<(unsigned)count?(unsigned)count:n);CThing** fresh=(CThing**)malloc(cap*sizeof(CThing*));CThing** out=fresh;CThing** i;for(i=first;i!=pos;++i)*out++=*i;for(int k=0;k<count;++k)*out++=value;if(!skipTail)for(i=pos;i!=last;++i)*out++=*i;free(first);first=fresh;last=out;end=fresh+cap;}FABLE_FORCEINLINE void push_back(CThing*const& e){if(last!=end){if(last)new(last)CThing*(e);++last;}else _M_insert_overflow(last,e,Tag(),1,1);}};
 __declspec(noinline) bool __fastcall GetBones(CThingCreatureBase*,vector<CCharString>& names){names.push_back(LeftFoot);names.push_back(RightFoot);return true;}
-struct CCRC{static unsigned __fastcall Calc(unsigned,const char*,int);};
 // Layout: GetBones8f78e0 appends two owned Strings via99ec30; vector dtor414ea0 calls99eae0 then free.
 // Layout: CThing extra+5c, flags+28 bit800. Attach6e0be0 third arg is CCharString const& (assignment99efb0 at6e0c06).
 // Layout: Params36, genuine polymorphic Base4, values16, other16; OtherRecord16 includes CBaseClass member+4 per6e2510.

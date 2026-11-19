@@ -38,6 +38,11 @@ private:
     bool TurnToFace();                                                  // 0x0095EDF0
     bool HeroImitationPlayUpdate();                                     // 0x00985440
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_CALLINGCHILDREN
+    // hand3c nested opt-in (row 0x00986210; with _WIFEUPDATE): Ego_r.pdb / FableWin.pdb
+    // ?CallingChildrenIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ (private; FableWin 0x02C76EB0). Declaration only.
+    bool CallingChildrenIsRunnable();                                   // 0x00986210
+#endif
 public:
     CTCTalk*      PTCTalk;                                   // +0x14
     unsigned char CurrentReactionType[0x4];                  // +0x18 EOpinionReactionType

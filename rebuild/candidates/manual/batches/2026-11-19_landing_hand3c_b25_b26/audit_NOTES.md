@@ -1,0 +1,18 @@
+# audit notes h3c b25/b26 (verifier)
+- b25 row 0x00986210 q.py overlay=b25/hdr: RELOCATION_MATCH
+- b25 sibling template 0x009871C0 (row TU, leaf ??$GetPFirstThingInRoughArea@): RELOCATION_MATCH; body text identical to landed 009871c0 row
+- Ego_d: CallingChildrenIsRunnable locals {ptc_perception, ret_pcreature, scan_area} in inner block; template Bind4 instance same obj, AFTER row (21927104 v 21893344)
+- b26 0x00AC7EB0 q.py empty overlay: RELOCATION_MATCH. Ego_d locals normal_diff,cost,vertex1,vertex2,sub_contraction,tex_diff (+this,contraction); types const refs / float
+- identity: Ego_r 009a5d50 / FableWin 02c76eb0 mangling ?CallingChildrenIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ; Ego_r 00c607f0 / FableWin 034c9560 ?ComputeSelfContraction@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXAAVCVertexPairContraction@2@@Z
+- tests: b25 PASS (40+1500), b26 PASS (13+4000) linked to own-graded objects
+- b25 controls: no template body DIFFER (frame sub esp 0x68 v 0x5c); no bracket DIFFER exactly 0x00986374..7A; empty overlay SRC_FAIL
+- b25 hdr: diff vs today's repo = one decl-only opt-in block (private); hdrcheck2 default=same (all macros same); asserts FABLE_STATIC_ASSERT_AT
+- b25 includers (14 compiled + 1 test) regraded overlay on: 14/14 RELOCATION_MATCH; 009863e0 test PASS
+- b25 extra mutants (b25mut/): 7 KILLED, 3 SURVIVED: Bind4 IsNot/IsCreatureType swapped (pure filters, result-equivalent; test does not pin their order), distance operands swapped (equivalent), sibling template `<SearchID`->`<=` (sibling body; dedup only)
+- b26 variants (b26var/SUMMARY + logs): author probes both/vE/vD/sym/vB/vC/vF/vG/vI/vJ/fw2 all DIFFER as claimed (215v215; fw2 213v215); vH = src MATCH
+- b26 NEW: G4 FableWin literal form w/ GFSqr (n*n) grouped opt-in RELOCATION_MATCH; G2 two-stmt GFSqr grouped MATCH; P1/P2 bracket forms MATCH; N2 x = x*x MATCH; G1/G3/G5 (unbracketed GFSqr bodies) 213v215; N1 normal-only-in-place 215v215
+- /Od size check vs FableWin/Ego_d 284: author form 268/297(RTC1), GFSqr form 272/301, P2 266/295, P1 256/285: no calibration, inconclusive, dropped
+- fixed_b26: GFSqr FableWin form; MATCH, strict vland PASS, test PASS, 28/30 mutants killed + 2 equivalent
+- purity.classify: b25 retail_asm (via shared GFFloatToLongCeil.h, Retail-asm cites 0x0098628A fadd / 0x0098628D fistp, verified in retail); b26 genuine; fixed_b26 genuine
+- fixed_b26/alt_bracket (P2 with Bracket header): MATCH, test PASS
+- root NAME_FIXES.tsv: no entries for 00986210/009871c0/00ac7eb0; batch NAME_FIXES header-only

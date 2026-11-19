@@ -1575,7 +1575,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0043fc20	list	std::list<T_0x18_0043fc20>	unknown	undefined	0		0	yes	review-medium									
 0043fc40	list	std::list<T_0x10_0043fc40>	unknown	undefined	0		0	yes	review-medium									
 0043fcd0	StdList_Dtor_0043fcd0	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CActiveFile_OnReadFinished_0043fcd0.cpp
-0043fcf0	StdList_Clear_0043fcf0	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CGuiControlTreePane_SortTreeRecursively_0043fcf0.cpp
+0043fcf0	~_List_base	std::_List_base<NPlayerGui::CDrawDamage::SDamageValue>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CGuiControlTreePane_SortTreeRecursively_0043fcf0.cpp
 0043fd40	StdList_Clear_0043fd40	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CGuiControlTreePane_SortTreeRecursively_0043fd40.cpp
 0043fd80	StdList_Clear_0043fd80	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CGuiControlTreePane_SortTreeRecursively_0043fd80.cpp
 0043fdc0	FreeBuffer	CBankFileAsyncData	__thiscall	void	1	CBankFileAsyncData *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CBankFileAsyncData_FreeBuffer_0043fdc0.cpp
@@ -8527,7 +8527,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00512ae0	_Rb_tree_base	std::_Rb_tree_base<node0x14_00512ae0>	unknown	undefined	0		0	yes	accepted									
 00512b10	_Rb_tree_base	std::_Rb_tree_base<node0x18_00512b10>	unknown	undefined	0		0	yes	accepted									
 00512bc0	ConvertPreviousUnknownVersionUp	CBaseSerialise<COldFileFormatLevel1, 1>	__thiscall	ulong	2	CEngineWorldMap *,CCharString *	1	yes	accepted									
-00512c70	CreateCountedFlagRecord_00512c70	_global	__thiscall	ulong	2	CEngineWorldMap *,CCharString *	1	yes	accepted									
+00512c70	ConvertPreviousUnknownVersionUp	CBaseSerialise<COldFileFormatMapHeader1,1>	__thiscall	ulong	2	CEngineWorldMap *,CCharString *	1	yes	accepted									
 00512ce0	operator=	CRetailTree_005114f0	unknown	undefined	0		0	yes	accepted									
 00512da0	insert_unique	std::_Rb_tree<long,long,std::_Identity<long >,std::less<long >,std::allocator<long > >	unknown	undefined	0		0	yes	accepted									
 00512e60	GetDef_00512e60	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
@@ -8585,7 +8585,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00514b50	insert_unique	std::_Rb_tree<char,char,std::_Identity<char>,std::less<char>,std::allocator<char>>	unknown	undefined	0		0	yes	accepted									
 00514c10	insert_unique	std::_Rb_tree<unsigned long,unsigned long,std::_Identity<unsigned long>,std::less<unsigned long>,std::allocator<unsigned long> >	unknown	undefined	0		0	yes	accepted									
 00514db0	uninitialized_fill_n<CMapInfo*,unsigned int,CMapInfo>	std	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
-00514e20	vector	std::vector<unsigned char, std::allocator<unsigned char>>	unknown	undefined	0		0	yes	accepted									
+00514e20	CArray	CArray<unsigned char>	unknown	undefined	0		0	yes	accepted									
 00514eb0	vector	std::vector<C2DLineF>	unknown	undefined	0		0	yes	accepted									
 00514f40	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 00515020	AllocateAndInitMapInfoArray	_global	unknown	undefined	0		0	yes	accepted									
@@ -9283,7 +9283,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00534f80	__copy_backward<CCountedPointer<NUISystem::CComponent> *, CCountedPointer<NUISystem::CComponent> *, int>	std	__fastcall	CCountedPointer<C3DGroup2> *	4	CCountedPointer<class_C3DGroup2> *,CCountedPointer<class_C3DGroup2> *,CCountedPointer<class_C3DGroup2> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00535000	__copy<CCountedPointer<NUISystem::CComponent>*, CCountedPointer<NUISystem::CComponent>*, int>	std	__fastcall	CCountedPointer<CGuiVarTransferBase> *	4	CCountedPointer<class_CGuiVarTransferBase> *,CCountedPointer<class_CGuiVarTransferBase> *,CCountedPointer<class_CGuiVarTransferBase> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00535080	ScalarDeletingDtor_00535080	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00535080.cpp
-00535140	list	std::list<T_0x8_00535140>	unknown	undefined	0		0	yes	accepted									
+00535140	_List_base	std::_List_base<CCountedPointer<NUISystem::CAction> >	unknown	undefined	0		0	yes	accepted									
 00535160	Remove_00535160	_unattributed	unknown	undefined	0		0	yes	accepted									
 005351d0	RbTree_Clear_005351d0	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CTCCarryable_OnKill_005351d0.cpp
 00535210	_Rb_tree_base	std::_Rb_tree_base<node0x14_00535210>	unknown	undefined	0		0	yes	accepted									
@@ -15846,7 +15846,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00697b60	Forward_OnEngineSurveyLMBHeld_via0x98_00697b60	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00697b60.cpp
 00697b70	SetGameScriptedCameraMode	CGameCameraManager	__thiscall	void	3	CGameCameraManager *,CCountedPointer<NCameraModes::CScriptModuleBase>,bool	1	yes	accepted									
 00697c10	AssignTarget_00697c10	CGameCameraManager	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
-00697c60	Clear	CMapInfo_00697c60	__thiscall	void	1	CMapInfo *	1	yes	accepted									
+00697c60	UpdateCleanupFlags	CGameCameraManager	__thiscall	void	1	CMapInfo *	1	yes	accepted									
 00697cc0	UpdateRightStickLookAround	CGameCameraManager	__thiscall	void	1	CGameCameraManager *	1	yes	accepted									
 00697e20	SetCameraMode	_global	__thiscall	void	2	CGameCameraManager *,CCountedPointer<NCameraModes::CBase>	1	yes	accepted									
 00697f30	GetRenderCamera	CGameCameraManager	__thiscall	CCamera	2	CGameCameraManager *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\CGameCameraManager_GetRenderCameraCGameCameraManagerUBEAVCCameraMZ_00697f30.cpp
@@ -17631,7 +17631,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006e8730	PickBestSequenceFromIndexList	CCombatManager	__thiscall	long	2	CCombatManager *,vector<long,std::allocator<long>_> *	1	yes	accepted									
 006e8790	GetAttackerProng	CCombatRing	__thiscall	CProng *	2	CCombatRing *,CThingCreatureBase *	1	yes	accepted									
 006e87d0	GetAttackerProng	CCombatRing	__thiscall	CProng *	2	CCombatRing *,CThingCreatureBase *	1	yes	accepted									
-006e8810	GetAttackerProngPosition	CCombatRing	__thiscall	void	2	CGuiControlComboBox *,CWideString *	1	yes	accepted									
+006e8810	GetAttackerProngVector	CDefendingCombatantInfo::CCombatRing	__thiscall	void	2	CGuiControlComboBox *,CWideString *	1	yes	accepted									
 006e8850	GetRingRadius	CDefendingCombatantInfo::CCombatWheel	unknown	undefined	0		0	yes	accepted									
 006e89b0	GetAttackerPlacementVector	CDefendingCombatantInfo::CCombatWheel	unknown	undefined	0		0	yes	accepted									
 006e8b10	Reset	CDefendingCombatantInfo::CProng	__thiscall	void	1	CAIStateGroup_MinionPutOutFires *	1	yes	accepted									
@@ -20265,7 +20265,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00755350	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 00755460	`scalar_deleting_destructor'	CTCLook	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\CLandscapeBackgroundPatch_vectordeletingdestructor_00755460.cpp
 007554c0	CLookDrawRequest_007554c0	CLookDrawRequest_007554c0	__thiscall	undefined	2	CTCBoastingPodium *,CThing *	0	yes	accepted									
-00755520	~SAppearanceDrawRecord_00755520	SAppearanceDrawRecord_00755520	__thiscall	void	1	CHitLocation *	1	yes	accepted									
+00755520	~CEnginePrimitiveMorphedStaticMesh	CEnginePrimitiveMorphedStaticMesh	__thiscall	void	1	CHitLocation *	1	yes	accepted									
 007555d0	OnInitialActivate	CTCHeroRememberCrimes	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007555e0	FrameUpdate	CTCHeroRememberCrimes	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007555f0	CTCHeroRememberCrimes	CTCHeroRememberCrimes	unknown	undefined	0		0	yes	accepted									
@@ -23990,7 +23990,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00810f50	operator()	NEntityEvents::CIsHitEventBlocked	__thiscall	bool	2	CIsHitEventBlocked *,CEventHitBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\CIsHitEventBlocked_operator_00810f50.cpp
 00810f60	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	std	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\global_Consval_00810f60.cpp
 00810f70	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	std	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\global_Consval_00810f70.cpp
-00810f80	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	std	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\global_Consval_00810f80.cpp
+00810f80	operator()	NEntityEvents::CIsHitEventHitByMelee	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\global_Consval_00810f80.cpp
 00810f90	operator	CIsHitEventHasHitByThing	__thiscall	bool	2	CIsHitEventHasHitByThing *,CEventHitBase *	1	yes	accepted									
 00810fc0	GetPHitBy	NEntityEvents::CEventHitBase	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 00810fd0	GetPWeaponUsed	NEntityEvents::CEventHitBase	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
@@ -47133,7 +47133,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c59880	vfunc_18	CVtable_012b5c10	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted									
 00c59890	UpdateVibrato	CCodaVoice	unknown	undefined	0		0	yes	accepted									
 00c59960	ComputePanGains	_global	unknown	undefined	0		0	yes	accepted									
-00c599c0	ComputeAzimuthElevation	_global	unknown	undefined	0		0	yes	accepted									
+00c599c0	CalcAzimuthElevation	CSalBaseVoice	unknown	undefined	0		0	yes	accepted									
 00c59b00	SecondsToMixBlocks	_global	unknown	undefined	0		0	yes	accepted									
 00c59ba0	CCodaVoice	CCodaVoice	__thiscall	undefined	1	C3DAnimationBlendState *	0	yes	accepted									
 00c59bc0	BeginSound	CAudioSource	__thiscall	CBase *	1	CManager *	1	yes	accepted									
@@ -47473,7 +47473,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6a8b0	BeginScript	NScript::CQ_GuildTrainingSkillScript	unknown	undefined	0		0	yes	accepted									
 00c6a9f0	`scalar deleting destructor'	CReverbProcessor	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c6a9f0.cpp
 00c6aa10	MixSamplesMMX	_global	unknown	undefined	0		0	yes	accepted									
-00c6aae0	CUnprovenMixKernel_00c6aae0	_global	unknown	undefined	0		0	yes	accepted									
+00c6aae0	ScaleAccumulate16RampMMX	_global	unknown	undefined	0		0	yes	accepted									
 00c6abf0	SetFlagReturnZero_00c6abf0	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00c6ac00	sub_00c6ac00	_global	unknown	undefined	0		0			discovered	gapscan							
 00c6ac10	sub_00c6ac10	_global	unknown	undefined	0		0			discovered	gapscan							

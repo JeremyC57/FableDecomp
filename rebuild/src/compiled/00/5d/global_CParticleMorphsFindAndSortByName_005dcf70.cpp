@@ -5,6 +5,7 @@
 #include <string.h>
 void* __cdecl operator new[](unsigned int);
 void __cdecl operator delete[](void*);
+#include "engine/CCRC.h"   // NF93 (q11327): CCRC::Calc 0x004014A0 (Ego_r.pdb / FableWin.pdb ?Calc@CCRC@@SIKKPBXK@Z), was the local NErase005dcf70::Hash
 namespace NErase005dcf70 {
 #pragma pack(push,1)
 struct CCharStringData {char* text;int size;unsigned capacity;unsigned char flags;int refs;};
@@ -32,7 +33,6 @@ struct CDefString {
  __declspec(noinline) bool operator==(const CCharString& x)const{return strcmp(g_DefStringTable.Text(index),x.Text())==0;}
  FABLE_FORCEINLINE CCharString GetString()const{CCharString result=g_DefStringTable.GetString(index);return result;}
 };
-unsigned __fastcall Hash(unsigned,const char*,int);
 struct Resource {virtual void v0()=0;virtual void Delete()=0;int refs;};
 struct Entry {
  unsigned crc;int a,b;CDefString name;Resource* resource;
@@ -44,5 +44,5 @@ template<class T> __declspec(noinline) Entry* __fastcall __copy(Entry* first,Ent
 // Layout: target5dcfc0 key+28; Entry stride20, crc+0, interned index+12, resource+16.
 // 4b7993 passes index to9d49f0;5e18f1 copies it raw. CCharString CCharStringData refs+13 is packed17.
 struct Manager {Entry *first,*last,*end;char gap[16];CDefString key;FABLE_FORCEINLINE Entry* Begin()const{return first;}void RemoveMatching(const CCharString&);};
-void Manager::RemoveMatching(const CCharString& name){unsigned crc=Hash(0,name.Text(),name.Size());for(Entry* p=Begin();p!=last;){bool found=p->crc==crc&&p->name==key.GetString();if(found){Entry* next=p+1;Entry* dest=p;p=next;if(next!=last)__copy(next,last,dest,random_access_iterator_tag(),0);Entry* tail=--last;tail->Destroy();}else ++p;}}
+void Manager::RemoveMatching(const CCharString& name){unsigned crc=CCRC::Calc(0,name.Text(),name.Size());for(Entry* p=Begin();p!=last;){bool found=p->crc==crc&&p->name==key.GetString();if(found){Entry* next=p+1;Entry* dest=p;p=next;if(next!=last)__copy(next,last,dest,random_access_iterator_tag(),0);Entry* tail=--last;tail->Destroy();}else ++p;}}
 }

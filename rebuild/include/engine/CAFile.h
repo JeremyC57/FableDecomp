@@ -97,6 +97,14 @@ public:
     static CWideString __fastcall GetCurrentPath();                                                     // 0x00997F80
     static CWideString __fastcall ExpandPath(const CWideString& path,const CWideString& base);          // 0x00998C90
 #endif
+#ifdef FABLE_RETAIL_CAFILE_CREATEDIRECTORY
+    // NF93 opt-in (q11296, rows 0x009994A0 / 0x00999620): Ego_r.pdb / FableWin.pdb ?CreateDirectoryW@CAFile@@SIXABVCWideString@@@Z (0x009994A0;
+    // the source wrote CreateDirectory, <windows.h> made it CreateDirectoryW), ?CreateDirectoryForFile@CAFile@@SIXABVCWideString@@@Z (0x00999620)
+    // and ?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z (0x00997780; hidden result in ecx), static __fastcall. Declarations only.
+    static void __fastcall CreateDirectoryW(const CWideString& path);                                    // 0x009994A0
+    static void __fastcall CreateDirectoryForFile(const CWideString& path);                              // 0x00999620
+    static CWideString __fastcall MakePath(const CWideString& drive,const CWideString& dir,const CWideString& name,const CWideString& ext);   // 0x00997780
+#endif
 #ifdef FABLE_RETAIL_CAFILE_INSTALLERPATHS
     // Nested opt-in (chunk 2032, row 0x009C47A0 CFileInstaller::AddFile): Ego_r.pdb / FableWin.pdb static __fastcall members, each
     // also the self-symbol of a landed row (0x009990B0, 0x00999140, 0x00997930, 0x00999C50, 0x00999CB0). Wide text is unsigned short.

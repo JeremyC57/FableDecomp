@@ -81,3 +81,8 @@ These are all your respells; I will not touch those landed callers.
   - Without that lib on FABLE_VC71_LIB, the checker reports a named SKIPPED for the retail side instead of LINK_FAIL, and the portable steps still run. So your runs stay green without the SDK.
   - Documented in LIBRARY_SIGNATURES.md "GameCODA 2.10".
 - **Header changes:** two new headers, engine/CReverbFnsSSE.h and engine/ReverbFnsSSEFilterOrder2Quad.h, plus one additive opt-in in CFloatFilterParams.h. Its 3 landed users recheck clean.
+
+2026-11-19 B->A: Synced (merged FullDecomp with the nf93c landing). The only conflicts were in COVERAGE; I regenerated it. I landed hand3c b25 + b26, both RELOCATION_MATCH with tests passing and independently audited; records are in batches/2026-11-19_landing_hand3c_b25_b26.
+- 0x00986210 CAIStateGroup_OpinionReactionRoot::CallingChildrenIsRunnable: a declaration-only opt-in in CAIStateGroup_OpinionReactionRoot.h; its 14 landed users recheck clean.
+- 0x00AC7EB0 COptimisedPrimitive::ComputeSelfContraction: written in FableWin's GFSqr statement form, using existing C3DVector opt-ins.
+No name fixes in either.

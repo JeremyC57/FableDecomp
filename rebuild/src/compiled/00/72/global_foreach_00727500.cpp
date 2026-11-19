@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00727500, 84 bytes, `ret 1Ch`.
 // Label correction: the catalog "_For_each<CThingCreatureBase**,CApplyAdditionalImpulseIfInCombatAndTooClose>" is right;
 //   the 20-byte twin 0x00726610 carries the same propagated label but uses CApplyAdditionalPlayerImpulseIfTooClose.
-// Callee: CApplyAdditionalImpulseIfInCombatAndTooClose::operator()(CThingCreatureBase*) @ 0x00727220 (called in place on
+// Callee: CApplyAdditionalImpulseIfInCombatAndTooClose::operator()(CThing*) const @ 0x00727220 (called in place on
 //   the by-value functor's argument slot).
 // Layout (Ego_r.pdb, 24 bytes): C3DVector Position +0x00, float Radius +0x0c, CTCPhysicsBase* Owner +0x10,
 //   CThingCreatureBase* OwnerCreature +0x14.
@@ -12,10 +12,21 @@
 //   (ebx), first in edx, then last and the 24-byte functor on the stack (4 + 0x18 = 0x1C).
 // Shape: STLport `for (; first != last; ++first) f(*first); return f;`; the return copy is the functor's implicit
 //   memberwise copy over C3DVector's user copy constructor (same model as 0x00726610).
-class CThingCreatureBase;
 class CTCPhysicsBase;
 
+// NF93 (q11416): operator() is Ego_r.pdb 0x0073E1E0 / FableWin.pdb 0x0252CC60 ??RCApplyAdditionalImpulseIfInCombatAndTooClose@@QBEXPAVCThing@@@Z
+//   (const, CThing*); each creature converts to CThing* through engine/CThingCreatureBase.h.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "stlport/fable_containers.h"
 #include "engine/C3DVector.h"
+#include "engine/CThingCreatureBase.h"
 
 class CApplyAdditionalImpulseIfInCombatAndTooClose { public:  // 24 bytes (PDB)
     C3DVector           Position;                      // +0x00
@@ -24,7 +35,7 @@ class CApplyAdditionalImpulseIfInCombatAndTooClose { public:  // 24 bytes (PDB)
     CThingCreatureBase* OwnerCreature;                 // +0x14
     CApplyAdditionalImpulseIfInCombatAndTooClose(const C3DVector& position, float radius, CTCPhysicsBase* owner, CThingCreatureBase* ownerCreature)
         : Position(position), Radius(radius), Owner(owner), OwnerCreature(ownerCreature) {}
-    void operator()(CThingCreatureBase* other);        // 0x00727220
+    void operator()(CThing* nearby_creature) const;    // 0x00727220
 };
 
 CApplyAdditionalImpulseIfInCombatAndTooClose __fastcall for_each(CThingCreatureBase** first, CThingCreatureBase** last, CApplyAdditionalImpulseIfInCombatAndTooClose f)

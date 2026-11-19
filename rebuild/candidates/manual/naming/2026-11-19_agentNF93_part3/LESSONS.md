@@ -1,0 +1,16 @@
+# NF93 lessons (one line each)
+- A self row whose callers already use a header inline ctor (FABLE_..._CTOR) becomes MATCH as the nf86 pick-any scaffolding (`new T` in an anonymous-namespace helper under optimize("s")): check the COMDAT selection (2 = any) in objdump -t aux.
+- A non-const STLport twin (find_if / __find_if) of a ported const instantiation is the same explicit instantiation with the const dropped; each grades first time.
+- Moving a find_if predicate into a named object built before the end pointer fixed a key/end load swap again (0x005BDFB1, 119v119 -> RELOCATION_MATCH).
+- Generated flat action headers (engine/CCreatureAction_<X>.h) take a `_CLASS` opt-in with the generated body kept under `#else`; run pin_asserts.py after, it pins the moved asserts.
+- An action header whose inline ctor calls GetSoundPair needs FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR and engine/CSoundPair.h before engine/CCombatActionBase.h, or C3861.
+- Unreferenced STL COMDAT twins (no call, jmp or absolute ref anywhere) cannot be told apart (~_Rb_tree vs ~map, clear vs map::clear): block on identity rather than pick.
+- Read the ctor body's vtable store (RTTI of the immediate) before porting an action temporary: three part-2 rows named the wrong class (ScorpionRecover / BeDazed / ForcePushInto).
+- Check vland's RELOC_CONFLICT lines, not only the grade: GetTC binds the non-const LowerBound 0x0040F020; a retail call to the const twin 0x004365B0 means PeekTC<const T>.
+- An implicit destructor emits out of line from a qualified `x.T::~T()` call in an anonymous-namespace helper; #pragma inline_depth(0) also stops the member destructors inside it.
+- A float compare against an inline getter (`a() > p->GetHealth()`) loads the getter before the call; a named local for the call result keeps retail's fcomp [mem] order.
+- A temporary of a polymorphic class modelled as an opaque pad binds the QAE dtor; give it the vptr in place of the first 4 pad bytes (size kept from the header's static assert) and `virtual` gives UAE with the same bytes.
+- A base's member made virtual changes nothing in a derived body that calls it qualified (`Base::F()` stays a direct call), so a QAE -> UAE respell is declaration only.
+- engine/NEntityEvents_CEventHitBase.h needs engine/CThing.h first with FABLE_RETAIL_CINTELLIGENTPOINTER + FABLE_RETAIL_CTHING (CHitParameters' CIntelligentPointer<CThing>), and CDefPointer.h wants FABLE_RETAIL_DEF_CLASS_BASE.
+- vland in a fresh shell needs `source $S/wine/env.sh` (FABLE_ROOT etc.), or it dies on D:\Documents\FableTLC manifest paths.
+- When a part-3 slice ends, scan rows/ and tests for shared-header class models against the landed file before handback (localmodel.py, selfcheck.py).

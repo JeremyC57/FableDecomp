@@ -11,14 +11,14 @@
 //   SkipPastString 0x009B9BA0, SkipWhitespace 0x009B9C60, ReadAsStringUntilString 0x009BA330, ReadAsStringUntilPastString 0x009BA3E0,
 //   ~CBaseClass 0x0099A2E0 (the parser's implicit destructor is expanded: comment list nodes freed with free 0x00BFEA14);
 //   CCharString(const char*, long) 0x0099EBF0 / ~ 0x0099EAE0, Compare 0x00411570 (inline operator==), GetSubString 0x0099EC70,
-//   operator+(const CCharString&, const CCharString&) 0x0099F570, operator= 0x0099EFB0; vector<unsigned char>(n) 0x00514E20 (out of
+//   operator+(const CCharString&, const CCharString&) 0x0099F570, operator= 0x0099EFB0; CArray<unsigned char>(n) 0x00514E20 (out of
 //   line in this TU), CCompressorZlib: GetRequiredWorkspaceSize 0x00A3A7D0, CACompressor(long) 0x00A3AEA0, Initialise 0x00A3AA10,
 //   InternalDecompress 0x00A3AB00, InternalCompress(const void*, unsigned long, CArray<unsigned char>&) 0x00A3ADD0, ~ 0x00A3ACC0;
 //   CMemoryDataInputStream(const void*, unsigned long) 0x00994930, ReadWithSrcChunkOverflow 0x00993CA0 (inline ReadULONG / ReadSLONG),
 //   ReadNullTerminatedString 0x00995D30, GetPosition (vtable +8, inside the inline ReadConstData), SetPositionAssumeWithinSourceChunk
 //   0x00993C10, ~CDataStream 0x00993B10; memmove 0x00BFEAE6 (the inline vector::erase).
-// Shape (measured, chunk 2003): shared headers only; vector<unsigned char>(n) out of line (FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE, as
-//   retail calls 0x00514E20). The new entry count is a named local (`new_count = count - 1`): retail computes it into a fresh
+// Shape (measured, chunk 2003): shared headers only; CArray<unsigned char>(n) out of line (FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE, as
+//   retail calls 0x00514E20; NF93 q11297: was bound as the vector<unsigned char>(n) of 0x005136B0 through FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE). The new entry count is a named local (`new_count = count - 1`): retail computes it into a fresh
 //   register before the GetAsCArray select (0x0051F87E `lea ecx,[ebp-1]`); stored in one expression VC7.1 reuses count's register
 //   (`dec ebp`). The unused per-entry CMemoryDataInputStream over the entry's bytes is retail's (0x0051F80A..0x0051F810).
 #define FABLE_RETAIL_CCHARSTRING
@@ -31,6 +31,7 @@
 #define FABLE_RETAIL_CCOMPRESSORZLIB
 #define FABLE_RETAIL_CCOMPRESSORZLIB_COMPRESS_ARRAY
 #define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE      // NF93 (q11297): CArray<unsigned char>(n) 0x00514E20 (FableWin ??0?$CArray@E@@QAE@I@Z), out of line
 #define FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE
 #define FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_CLEARINSCRIPT
 #include "stlport/fable_containers.h"

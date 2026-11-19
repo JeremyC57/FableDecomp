@@ -1,58 +1,91 @@
-// CAIStateGroup_MinionReactToTrespassing::IsStillRunnable(bool) -- periodically check ongoing trespass deeds targeting the creature home
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Retail0x009580e0,295 bytes. Home retail+168 differs from donor+190, hence local creature overlay.
-#include "fable_compiler.h"
-#include "engine/CAIStateGroup_MinionReactToTrespassing.h"
-#include "engine/CAIBrain.h"
-#include "engine/CTCCreatureOpinionOfHero.h"
-class CThing;
-class CBaseObject;
+// CAIStateGroup_MinionReactToTrespassing::IsStillRunnable(bool ignore_frame_check) -- every FRAMES_BETWEEN_CHECKING_IS_STILL_VALID frames
+//   (unless told to skip the wait) check that the creature's home building is alive and that the creature's opinion of the hero still
+//   holds a trespass deed (first, second or third) that is happening and targets that building
+// Leaf: ?IsStillRunnable@CAIStateGroup_MinionReactToTrespassing@@AAE_N_N@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009580E0, 295 bytes, thiscall.
+// Identity (NF93 q11342 / q11348): Ego_r.pdb 0x0097CCD0 ?IsStillRunnable@CAIStateGroup_MinionReactToTrespassing@@AAE_N_N@Z (private); the
+//   same body the landed Update 0x009582D0 expands in place (this row is that TU's out-of-line copy: its prologue, defines and the
+//   IsStillRunnable body are copied from 0x009582D0 without `inline`). It calls the const member template
+//   ??$FindMostRecentDeed@V?$CFilter_Bind2@..@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@..@Z 0x0092E630 three
+//   times and reads the TU's anonymous-namespace FRAMES_BETWEEN_CHECKING_IS_STILL_VALID (0x0138D2D4, initialised 30; Ego_d static name).
+//   Was the CAIStateGroup_MinionReactToTrespassing_Adapter stand-in over local CThing / CVectorMap / CFilter_Bind2 models, binding a
+//   CTCCreatureOpinionOfHeroMethods stand-in and the made-up global g_TrespassCheckInterval.
+#define FABLE_RETAIL_MINION_TRESPASS_UPDATE_PASS24
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CTHINGBUILDING
+#define FABLE_RETAIL_CTHINGAICREATURE_HOMEBUILDING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND
+#define FABLE_RETAIL_CTCCREATUREOPINIONOFHERO
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_INLINE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_PLAYER_MANAGER
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CPlayer.h"
+#include "engine/CPlayerManager.h"
+#include "engine/ThingAlive.h"
 #include "engine/CIntelligentPointer.h"
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public: typedef std::pair<ETCInterfaceType, CTCBase*> Entry; Entry *first,*last; const Entry* LowerBound(const ETCInterfaceType& key) const; };
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
-    unsigned char middle[0x45]; unsigned char dead; unsigned char tail[0xd6]; CBaseIntelligentPointer Home; CThing* GetHome() { return ((CThing*)Home.GetPItem()); }
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long type) {
-        if(bits[type>>5]&(1UL<<(type&31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type); CInterfaceMap* map=&interfaces; const CInterfaceMap::Entry* it=map->LowerBound(key);
-            if(it==map->last || it->first>type) it=map->last;
-            *out=(T*)((void*)it->second); return true;
-        } return false;
+#include "engine/CMainGameComponent.h"
+#include "engine/CWorld.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+
+#include "engine/CThingBuilding.h"
+#include "engine/COpinionDeed.h"
+#include "engine/COpinionDeedFilters_Trespassing.h"
+#include "engine/CFilter_Bind2.h"
+#include "engine/CTCCreatureOpinionOfHero.h"
+#include "engine/CAIStateGroup_MinionReactToTrespassing.h"
+
+namespace { long FRAMES_BETWEEN_CHECKING_IS_STILL_VALID = 30; }
+class CTCTrespassable;
+
+inline CThingBuilding* CThingAICreature::GetHomeBuilding() const { return HomeBuilding.Get(); }
+
+bool CAIStateGroup_MinionReactToTrespassing::IsStillRunnable(bool ignore_frame_check)
+{
+    if (!ignore_frame_check && CWorld::GetFrame()-LastFrameCheckedIsStillValid < FRAMES_BETWEEN_CHECKING_IS_STILL_VALID)
+        return true;
+    LastFrameCheckedIsStillValid = CWorld::GetFrame();
+    CThingBuilding* home_building = GetCreature().GetHomeBuilding();
+    if (IS_THING_ALIVE(home_building)) {
+        const CTCCreatureOpinionOfHero* ptc_opinion;
+        if (GetCreature().PeekTC(TCI_CREATURE_OPINION_OF_HERO, &ptc_opinion)) {
+            if (ptc_opinion->FindMostRecentDeed(OPINION_DEED_TYPE_CRIME_TRESPASS_FIRST, GFFilter_Bind2(COpinionDeedFilter_IsStillHappening(), COpinionDeedFilter_TargetIs(*home_building)), 0, true)
+                || ptc_opinion->FindMostRecentDeed(OPINION_DEED_TYPE_CRIME_TRESPASS_SECOND, GFFilter_Bind2(COpinionDeedFilter_IsStillHappening(), COpinionDeedFilter_TargetIs(*home_building)), 0, true)
+                || ptc_opinion->FindMostRecentDeed(OPINION_DEED_TYPE_CRIME_TRESPASS_THIRD, GFFilter_Bind2(COpinionDeedFilter_IsStillHappening(), COpinionDeedFilter_TargetIs(*home_building)), 0, true))
+                return true;
+        }
     }
-};
-
-
-class CWorld { public: static long __fastcall GetFrame(); }; // 0x49D870
-extern long g_TrespassCheckInterval; // 0x138D2D4
-class COpinionDeedFilter_IsStillHappening { public: COpinionDeedFilter_IsStillHappening() {} };
-class COpinionDeedFilter_TargetIs { public: CThing* Target; COpinionDeedFilter_TargetIs(CThing* p):Target(p){} };
-struct CFilter_Bind2 {
- const COpinionDeedFilter_IsStillHappening* F1; const COpinionDeedFilter_TargetIs* F2;
- CFilter_Bind2(const COpinionDeedFilter_IsStillHappening& a,const COpinionDeedFilter_TargetIs& b):F1(&a),F2(&b){}
-};
-struct CTCCreatureOpinionOfHeroMethods : CTCCreatureOpinionOfHero { void* FindMostRecentDeed(long,const CFilter_Bind2&,long*,bool); }; // 0x92E630
-struct CAIStateGroup_MinionReactToTrespassing_Adapter : CAIStateGroup_MinionReactToTrespassing {
- CAIBrain* Brain() { return *(CAIBrain**)&_pad_0x04[0]; }
- bool IsStillRunnable(bool initialCheck);
-};
-bool CAIStateGroup_MinionReactToTrespassing_Adapter::IsStillRunnable(bool initialCheck) {
- if(!initialCheck && CWorld::GetFrame()-LastFrameCheckedIsStillValid < g_TrespassCheckInterval) return true;
- LastFrameCheckedIsStillValid=CWorld::GetFrame();
- CThing* home=((CThing*)Brain()->Creature)->GetHome();
- if(home && !(home->dead&1)) {
-  CTCCreatureOpinionOfHeroMethods* opinion;
-  if(((CThing*)Brain()->Creature)->GetInterface(&opinion,0x4f)) {
-   if(opinion->FindMostRecentDeed(10,CFilter_Bind2(COpinionDeedFilter_IsStillHappening(),COpinionDeedFilter_TargetIs(home)),0,true) ||
-      opinion->FindMostRecentDeed(11,CFilter_Bind2(COpinionDeedFilter_IsStillHappening(),COpinionDeedFilter_TargetIs(home)),0,true) ||
-      opinion->FindMostRecentDeed(2,CFilter_Bind2(COpinionDeedFilter_IsStillHappening(),COpinionDeedFilter_TargetIs(home)),0,true)) return true;
-  }
- }
- return false;
+    return false;
 }
