@@ -400834,6 +400834,13 @@ $catalog = @(
         TestSource = '00/a5/NBBBMathsCLinearSpline_ProcessPoints_00a58130_test.cpp'
         PassPattern = '00a58130_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a38c20'
+        Module = 'CCRCSymbolMap'
+        Source = '00/a3/CCRCSymbolMap_LoadBinary_00a38c20.cpp'
+        TestSource = '00/a3/CCRCSymbolMap_LoadBinary_00a38c20_test.cpp'
+        PassPattern = '00a38c20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a38c20   RELOCATION_MATCH PASS   LoadBinary
+
+WINS: 1
+  00a38c20 RELOCATION_MATCH CCRCSymbolMap::?LoadBinary@CCRCSymbolMap@@QAEXABVCWideString@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCRCSymbolMap_LoadBinary_00a38c20
