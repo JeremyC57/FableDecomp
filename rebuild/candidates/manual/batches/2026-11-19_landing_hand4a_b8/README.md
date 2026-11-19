@@ -1,4 +1,4 @@
-# Landing hand4a b8 (2026-11-19): CCombatManager::SetupDefenderPlacementWheel (0x006ECEA0, 383 bytes)
+# Landing hand4a b8 (2026-11-19): CCombatManager::SetupDefenderPlacementWheel (0x006ECEA0, 385 bytes)
 
 vland --land, strict headers: RELOCATION_MATCH + PASS (11 cases, 9/9 host mutants); 5 grades; plain C++, no Inferred / Inline-budget / Bracket.
 IDENTIFIED (catalog "CDefendingCombatantInfo::UpdateCombatState" was descriptive): ?SetupDefenderPlacementWheel@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z,

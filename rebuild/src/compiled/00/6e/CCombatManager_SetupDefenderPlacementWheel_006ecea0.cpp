@@ -1,6 +1,6 @@
 // CCombatManager::SetupDefenderPlacementWheel(CCombatantInfo& combat_info, bool force_wheel_update) -- when forced: stamp the world frame and the defender's position, collect the defender's attackers that use the combat wheel into a local creature -> attacker-info map and rebuild the wheel from it; always update the wheel
 // Leaf: ?SetupDefenderPlacementWheel@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x006ECEA0, 383 bytes, thiscall `ret 8`, 8-aligned ebp frame (the 64-bit key temporary).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006ECEA0, 385 bytes, thiscall `ret 8`, 8-aligned ebp frame (the 64-bit key temporary).
 // Name: Ego_r.pdb (0x007167A0, the same 8-aligned frame) + FableWin.pdb (0x0241AD40, combat_manager.obj); the catalog row
 //   "CDefendingCombatantInfo::UpdateCombatState" was descriptive.
 // Source: FableWin.pdb debug body 0x0241AD40 with Ego_d.pdb's locals (combat_info, force_wheel_update; defender_info; block:
