@@ -15,7 +15,16 @@
 
 using namespace host;
 
+#ifdef _WIN32
+namespace w32 {  // the Windows host: the primary display (posix/w32/user.cpp has the window / framebuffer size)
+static bool screenSize(int& w, int& h) {
+    w = GetSystemMetrics(SM_CXSCREEN), h = GetSystemMetrics(SM_CYSCREEN);
+    return w > 0 && h > 0;
+}
+}  // namespace w32
+#else
 namespace w32 { bool screenSize(int& w, int& h); }  // posix/w32/user.cpp: the window / framebuffer size
+#endif
 namespace host { void d3d9ApplyGamma(float exponent); }  // win/d3d9.cpp: SetGammaRamp on the native device (DXVK); GLES applies it in Present
 
 extern "C" void F_00B24690_orig(Ctx* c);
