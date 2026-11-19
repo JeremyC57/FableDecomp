@@ -83,7 +83,13 @@ public:
     const C2DVector operator/(float scalar) const { float inverse = 1.0f/scalar; return C2DVector(X*inverse,Y*inverse); }
     // Component-wise scale (row 0x00547050: RenderPosition *= ParentZoom, `fld [zoom.X] ; fmul [pos.X]`).
     const C2DVector& operator*=(const C2DVector& vector) { X*=vector.X; Y*=vector.Y; return *this; }
+#ifdef FABLE_RETAIL_C2DVECTOR_DOT_GROUP
+    // Grouped sum (row 0x008EEC70 Mass::Collide: the one PAREN tuple of this once-expanded Dot keeps `mov eax,esp` (0x008EEFA8)
+    // out of the 81-tuple scheduler region that holds `sub esp,8`; same bytes as the default in 0x008EEA80 / 0x008EEA30 / 0x008EEB40).
+    float Dot(const C2DVector& vector) const { return (X*vector.X+Y*vector.Y); }
+#else
     float Dot(const C2DVector& vector) const { return X*vector.X+Y*vector.Y; }
+#endif
     // FableWin ?GetSquaredMagnitude@C2DVector@@QBEMXZ (0x021ED350), inline in retail (0x00B3BE10 BuildAlphaStippleTexture
     // expands it; X*X+Y*Y, (X*X+Y*Y) and Y*Y+X*X give the same bytes there).
 #ifdef FABLE_RETAIL_C2DVECTOR_SQUAREDMAGNITUDE_YX

@@ -399636,6 +399636,27 @@ $catalog = @(
         TestSource = '00/66/CTCSoundPlayer_PlayCollisionSound_0066a9e0_test.cpp'
         PassPattern = '0066a9e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b0d360'
+        Module = 'NParticleEngine::CPSCUpdateNormal'
+        Source = '00/b0/NParticleEngineCPSCUpdateNormal_DatabaseSerialise_00b0d360.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCUpdateNormal_DatabaseSerialise_00b0d360_test.cpp'
+        PassPattern = '00b0d360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008eec70'
+        Module = 'Mass'
+        Source = '00/8e/Mass_Collide_008eec70.cpp'
+        TestSource = '00/8e/Mass_Collide_008eec70_test.cpp'
+        PassPattern = '008eec70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00918a40'
+        Module = 'CAIStateGroup_GazeAtWork'
+        Source = '00/91/CAIStateGroupGazeAtWork_IsRunnable_00918a40.cpp'
+        TestSource = '00/91/CAIStateGroupGazeAtWork_IsRunnable_00918a40_test.cpp'
+        PassPattern = '00918a40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

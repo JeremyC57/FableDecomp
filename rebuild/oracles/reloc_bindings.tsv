@@ -40218,3 +40218,5 @@ __wcsicmp	00f3fb84	00599e3f
 ?GetSignPostPos@CTCBuyableHouse@@AAE_N_NAAVC3DVector@@PAVCRightHandedSet@@@Z	006bfcd0	006c0970
 ?IsPosInViewingFrustrum@CTools@NCameraModes@@QBE_NABVC3DVector@@00M@Z	00875120	00697f80
 ?InternalPlaySoundEventAtPos@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVC3DVector@@ABVCCharString@@_N3@Z	0066a920	0066a9e0
+?ApplyImpulse@Mass@@QAEXVC2DVector@@0@Z	008eea80	008eec70
+?ForceToVel@Mass@@QAE?AVC2DVector@@V2@0@Z	008eeb40	008eec70

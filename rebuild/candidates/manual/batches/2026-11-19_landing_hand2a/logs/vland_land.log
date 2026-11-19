@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00b0d360   RELOCATION_MATCH PASS   DatabaseSerialise
+008eec70   RELOCATION_MATCH PASS   Collide
+00918a40   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 3
+  00b0d360 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::DatabaseSerialise
+  008eec70 RELOCATION_MATCH Mass::Collide
+  00918a40 RELOCATION_MATCH CAIStateGroup_GazeAtWork::IsRunnable
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCPSCUpdateNormal_DatabaseSerialise_00b0d360
+  Mass_Collide_008eec70
+  CAIStateGroupGazeAtWork_IsRunnable_00918a40
