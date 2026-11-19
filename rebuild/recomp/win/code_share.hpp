@@ -14,5 +14,9 @@ std::string line();         // the line to draw (rolled once a second)
 void profilerOwnsSigprof();  // the profiler's SIGPROF handler calls sample(); no second sampler
 #else
 void setGameThread(void* thread);  // the game's main thread, for the Windows sampler
+}  // namespace host::codeshare
+struct IDirect3DDevice9;
+namespace host::codeshare {
+void drawD3D9(IDirect3DDevice9* device);  // before Present: F9 toggles, then the line over the frame
 #endif
 }  // namespace host::codeshare

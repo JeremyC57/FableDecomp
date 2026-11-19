@@ -1097,7 +1097,11 @@ static bool saveFileTextShows(uint32_t text, uint32_t& row, uint32_t& list, uint
 }
 extern "C" void F_0054EF00_orig(Ctx* c);
 extern "C" void host_text_draw(Ctx* c) {
+#ifdef _WIN32
+    static const bool centre = [] { const char* e = std::getenv("FABLE_TEXT_CENTER"); return e && std::atoi(e) != 0; }();  // PC: off
+#else
     static const bool centre = [] { const char* e = std::getenv("FABLE_TEXT_CENTER"); return !e || std::atoi(e) != 0; }();
+#endif
     const uint32_t self = c->ecx;
     if (uiTrace() && self) {
         static std::set<uint32_t> seen;

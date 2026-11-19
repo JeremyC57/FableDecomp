@@ -5,6 +5,7 @@
 #include <dlfcn.h>
 #endif
 #include "host.hpp"
+#include "code_share.hpp"
 
 #include <bcrypt.h>
 #include <shobjidl.h>
@@ -371,6 +372,13 @@ void onTrace(Ctx* c, uint32_t fn) {
 DWORD WINAPI guestMain(void*) {
     bindThread(newGuestThread(0x100000));
     g_mainGuest = currentThread();
+#ifdef _WIN32
+    {   // the code-share sampler reads this thread's program counter
+        HANDLE self = nullptr;
+        DuplicateHandle(GetCurrentProcess(), GetCurrentThread(), GetCurrentProcess(), &self, THREAD_SUSPEND_RESUME | THREAD_GET_CONTEXT, FALSE, 0);
+        host::codeshare::setGameThread(self);
+    }
+#endif
     wchar_t buf[16];
     if (GetEnvironmentVariableW(L"FABLE_RECOMP_SAMPLE", buf, 16))
         CloseHandle(CreateThread(nullptr, 0, samplerMain, reinterpret_cast<void*>(static_cast<uintptr_t>(_wtoi(buf))), 0, nullptr));

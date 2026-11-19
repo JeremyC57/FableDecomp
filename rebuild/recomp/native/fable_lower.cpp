@@ -41,6 +41,7 @@
 #include "llvm/Support/TargetSelect.h"
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Target/TargetMachine.h"
+#include "llvm/Transforms/Utils/ModuleUtils.h"
 #include "llvm/TargetParser/Triple.h"
 
 #include <fstream>
@@ -681,6 +682,43 @@ int main(int argc, char** argv) {
     }
     for (EntryInfo& e : entries) makeEntry(e.f, e.a, e.cc, e.al);
 
+    // The code's address range for the code-share measurement (win/code_share.cpp): every lowered
+    // function in one named section, registered by a constructor with the number of lowered functions.
+    // ELF: section "fabledecomp", bracketed by the linker's __start_ / __stop_ symbols. COFF: ".text$fdm",
+    // between markers in ".text$fda" / ".text$fdz" (the linker sorts grouped sections by suffix).
+    {
+        const bool coff = Triple(o.triple).isOSBinFormatCOFF();
+        for (Function& f : *M)
+            if (!f.isDeclaration()) f.setSection(coff ? ".text$fdm" : "fabledecomp");
+        FunctionType* vt = FunctionType::get(Type::getVoidTy(ctx), false);
+        Value *lo, *hi;
+        if (coff) {
+            auto marker = [&](const char* name, const char* sec) {
+                Function* f = Function::Create(vt, GlobalValue::InternalLinkage, name, M);
+                f->addFnAttr(Attribute::NoInline);
+                f->addFnAttr(Attribute::OptimizeNone);
+                f->setSection(sec);
+                IRBuilder<>(BasicBlock::Create(ctx, "", f)).CreateRetVoid();
+                appendToUsed(*M, {f});
+                return f;
+            };
+            lo = marker("nd_text_begin", ".text$fda"), hi = marker("nd_text_end", ".text$fdz");
+        } else {
+            auto bound = [&](const char* name) {
+                auto* g = new GlobalVariable(*M, I8, true, GlobalValue::ExternalLinkage, nullptr, name);
+                g->setVisibility(GlobalValue::HiddenVisibility);
+                return g;
+            };
+            lo = bound("__start_fabledecomp"), hi = bound("__stop_fabledecomp");
+        }
+        Function* ctor = Function::Create(vt, GlobalValue::InternalLinkage, "nd_register", M);
+        FunctionCallee reg = M->getOrInsertFunction("nd_register_range", FunctionType::get(Type::getVoidTy(ctx), {PtrTy, PtrTy, I32}, false));
+        IRBuilder<> cb(BasicBlock::Create(ctx, "", ctor));
+        cb.CreateCall(reg, {lo, hi, ConstantInt::get(I32, entries.size())});
+        cb.CreateRetVoid();
+        appendToGlobalCtors(*M, ctor, 65535);
+    }
+
     // No alignment or dereferenceability assumptions: the front end derives them from the C++ types,
     // but retail objects can sit at any address (packed members, odd allocations) and VC7.1's code never
     // relied on them. Over 32-bit words LLVM would turn an `align 4` into cleared low address bits.
@@ -732,6 +770,7 @@ int main(int argc, char** argv) {
             if (g.use_empty()) g.eraseFromParent(), erased = true;
         }
         for (GlobalVariable& g : make_early_inc_range(M->globals())) {
+            if (g.getName().starts_with("llvm.")) continue;  // llvm.global_ctors / llvm.used have no users by design
             g.removeDeadConstantUsers();
             if (g.use_empty()) g.eraseFromParent(), erased = true;
         }

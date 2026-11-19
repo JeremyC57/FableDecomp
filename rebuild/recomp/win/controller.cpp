@@ -21,6 +21,14 @@
 #include "controller.hpp"
 #include "gfx_options.hpp"
 
+#ifdef _WIN32
+#define FABLE_HANDHELD_DEFAULT "0"
+constexpr bool kHandheld = false;
+#else
+#define FABLE_HANDHELD_DEFAULT "1"
+constexpr bool kHandheld = true;
+#endif
+
 #include <xinput.h>
 
 #include <cmath>
@@ -94,20 +102,20 @@ const char* const kDefaultConfig =
     ";\n"
     "; NATIVE_PAD = 1 uses the game's own Xbox controls: analog movement and camera and the\n"
     "; original Xbox button layout. Xbox 360/One pads: LB = White button, RB = Black button.\n"
-    "NATIVE_PAD = 1\n"
+    "NATIVE_PAD = " FABLE_HANDHELD_DEFAULT "\n"
     "SWAP_BUMPERS = 0       ; 1: LB = Black, RB = White\n"
     "; XBOX_MENUS = 1 uses the Xbox in-game menus: Back opens the inventory/hero screens,\n"
     "; Start the pause menu. 0: the PC in-game menu (Start).\n"
-    "XBOX_MENUS = 1\n"
+    "XBOX_MENUS = " FABLE_HANDHELD_DEFAULT "\n"
     "; RIGHT_STICK_CAMERA = 1 turns the camera freely with the right stick, as the mouse does\n"
     "; (CAMERA_SPEED and INVERT_Y below). 0: the Xbox camera (a flick turns it one step).\n"
     "RIGHT_STICK_CAMERA = 0     ; experimental, not working yet\n"
     "; XBOX_CAMERA = 1 uses the Xbox chase camera (right stick looks around, the camera follows\n"
     "; the hero's movement) instead of the PC mouse camera.\n"
-    "XBOX_CAMERA = 1\n"
+    "XBOX_CAMERA = " FABLE_HANDHELD_DEFAULT "\n"
     "; HOLD_TARGET = 1 makes the left trigger lock a target only while it is held (the game's own\n"
     "; setting is a toggle: press to lock, press again to unlock).\n"
-    "HOLD_TARGET = 1\n"
+    "HOLD_TARGET = " FABLE_HANDHELD_DEFAULT "\n"
     "LEFT_DEADZONE = 0.24\n"
     "RIGHT_DEADZONE = 0.24\n"
     ";\n"
@@ -148,7 +156,9 @@ struct Config {
     Target bind[InputCount];
     double cameraSpeed = 900, moveThreshold = 0.35;
     bool invertY = false;
-    bool native = true, swapBumpers = false, xboxMenus = true, stickCamera = false, xboxCamera = true, holdTarget = true;
+    // the handheld (Xbox-style) features default on for the RG34XX / Android builds, off for the
+    // Windows PC build (keyboard and mouse: the PC camera and menus)
+    bool native = kHandheld, swapBumpers = false, xboxMenus = kHandheld, stickCamera = false, xboxCamera = kHandheld, holdTarget = kHandheld;
     double leftDeadzone = 0.24, rightDeadzone = 0.24;
 };
 
@@ -209,7 +219,13 @@ void load() {
             g.getState = reinterpret_cast<GetStateFn>(GetProcAddress(h, "XInputGetState"));
             if (g.getState) break;
         }
+    // Windows: a file of its own, so an older FableRecomp_controller.ini written with the handheld
+    // defaults does not turn them back on
+#ifdef _WIN32
+    const wstring path = g_gameDir + L"FableRecomp_pad.ini";
+#else
     const wstring path = g_gameDir + L"FableRecomp_controller.ini";
+#endif
     std::string text;
     if (FILE* f = _wfopen(path.c_str(), L"rb")) {
         char buf[4096];

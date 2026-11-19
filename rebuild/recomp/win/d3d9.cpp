@@ -2,6 +2,7 @@
 // Hand-written methods: device creation/reset (D3DPRESENT_PARAMETERS has an HWND),
 // and every Lock (host pointers are copied through low guest staging buffers).
 #include "com.hpp"
+#include "code_share.hpp"
 
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -427,6 +428,9 @@ void ovr_IDirect3D9_CreateDevice(Ctx* c) {
 // Present(this, srcRect, dstRect, hwnd, dirtyRegion); also logs the frame rate every 5 s.
 void ovr_IDirect3DDevice9_Present(Ctx* c) {
     auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
+#ifdef _WIN32
+    host::codeshare::drawD3D9(self);  // the code-share line (F9)
+#endif
     const HRESULT hr = self->Present(arg(c, 1) ? gp<RECT>(arg(c, 1)) : nullptr, arg(c, 2) ? gp<RECT>(arg(c, 2)) : nullptr,
                                      nativeWindow(static_cast<HWND>(hh(arg(c, 3)))), arg(c, 4) ? gp<RGNDATA>(arg(c, 4)) : nullptr);
     static uint32_t frames = 0;

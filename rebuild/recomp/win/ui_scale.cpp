@@ -51,7 +51,11 @@ namespace host {
 void uiScaleInit() {
     DWORD pct = 0, size = sizeof pct;
     if (RegGetValueW(HKEY_CURRENT_USER, L"Software\\FableRecomp", L"UIScale", RRF_RT_REG_DWORD, nullptr, &pct, &size) != ERROR_SUCCESS)
+#ifdef _WIN32
+        pct = 100;  // the PC build: the game sees the real resolution (--ui-scale=0 for the handhelds' auto scale)
+#else
         pct = 0;
+#endif
     int n = 0;
     LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &n);
     for (int i = 1; i < n; ++i)
