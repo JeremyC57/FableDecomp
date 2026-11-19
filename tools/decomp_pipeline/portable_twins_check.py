@@ -17,6 +17,9 @@ helper -- see rebuild/candidates/manual/batches/2026-11-03_asm_twins/README.md):
                       (the matching path is graded by vland.py --recheck-landed)
   vc71-row-dual       every rebuild/tests/portable/rows/*_driver.cpp (it #includes its row) built as-is and with
                       /DFABLE_PORTABLE, run, and the two outputs compared line for line
+A test or row driver that links a binary-only vendor library for its retail side (the GameCODA 2.10 CODAApi.lib rows) declares
+it with `// Portable-check-requires-lib: <lib> -- <what>`. When no FABLE_VC71_LIB directory holds that file, the VC7.1 steps that
+link it report a named SKIPPED (never a silent single-path pass); the FABLE_PORTABLE steps still run.
 The VC7.1 steps run through the Linux lane (Wine; source the lane env first) or natively on Windows -- the same
 compiler / env setup as tools/decomp_pipeline/verify_and_land.py.
 
@@ -40,6 +43,23 @@ sys.path.insert(0, str(ROOT / "tools" / "decomp_pipeline"))
 
 VC_MODES = [("vc71-asm", []), ("vc71-dual", ["/DFABLE_DUAL_PATH_TEST"]), ("vc71-portable", ["/DFABLE_PORTABLE"])]
 GXX_FLAGS = ["-std=c++03", "-DFABLE_PORTABLE", "-Wall", "-Wextra", "-pedantic", "-O2"]
+
+
+REQ_LIB_TAG = "// Portable-check-requires-lib:"
+
+
+def missing_vendor_libs(src: Path):
+    """Libraries `src` declares with REQ_LIB_TAG that no FABLE_VC71_LIB directory holds, as (lib, what) pairs."""
+    dirs = [Path(x) for x in os.environ.get("FABLE_VC71_LIB", "").split(os.pathsep) if x]
+    out = []
+    for line in src.read_text(encoding="utf-8", errors="ignore").splitlines():
+        if line.startswith(REQ_LIB_TAG):
+            body = line[len(REQ_LIB_TAG):].strip()
+            lib, _, what = body.partition("--")
+            lib = lib.strip()
+            if lib and not any((d / lib).is_file() for d in dirs):
+                out.append((lib, what.strip()))
+    return out
 
 
 def helper_headers():
@@ -153,7 +173,11 @@ def main() -> int:
                     st, m = compile_run(tu, defs, work, link=False)
                     rec(h.relative_to(INC).as_posix(), step, st, m)
             for t in tests:
+                miss = missing_vendor_libs(t)
                 for step, defs in VC_MODES:
+                    if miss and "/DFABLE_PORTABLE" not in defs:
+                        rec(t.name, step, "SKIPPED", [f"{l} not on FABLE_VC71_LIB ({w or 'vendor library'}): retail side not checked" for l, w in miss])
+                        continue
                     st, m = compile_run(t, defs, work)
                     rec(t.name, step, st, m)
             if not a.no_rows:
@@ -162,6 +186,13 @@ def main() -> int:
                         st, m = compile_run(src, ["/DFABLE_PORTABLE"], work, link=False)
                         rec(src.name[-12:-4], "vc71-row-portable", st, m)
                 for drv in sorted((TESTS / "rows").glob("*_driver.cpp")):
+                    miss = missing_vendor_libs(drv)
+                    if miss:
+                        st, m = compile_run(drv, ["/DFABLE_PORTABLE"], work, full_output=True)
+                        ok = st == "RAN" and m and m[-1].strip() == "DONE"
+                        rec(drv.name, "vc71-row-portable-run", "OK" if ok else (st if st != "RAN" else "FAIL"), m[-1:])
+                        rec(drv.name, "vc71-row-dual", "SKIPPED", [f"{l} not on FABLE_VC71_LIB ({w or 'vendor library'}): retail side not checked" for l, w in miss])
+                        continue
                     outs = []
                     for defs in ([], ["/DFABLE_PORTABLE"]):
                         st, m = compile_run(drv, defs, work, full_output=True)

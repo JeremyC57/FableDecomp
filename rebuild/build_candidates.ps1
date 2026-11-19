@@ -369947,6 +369947,12 @@ $catalog = @(
         Grade = 'toolchain_library'
     }
     [pscustomobject]@{
+        Address = '00c88e60'
+        Module = 'CReverbFnsSSE'
+        Source = '00/c8/CReverbFnsSSE_ApplyFilterOrder2quad_00c88e60.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
         Address = '00ae18c0'
         Module = 'CParticleSimulation'
         Source = '00/ae/CParticleSimulation_WriteVectorArray_00ae18c0.cpp'

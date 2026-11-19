@@ -69,3 +69,15 @@ Its NAME_FIXES are:
 - The caller 0x00C75CE0 becomes ?Process@CFloatShortReverb@@...
 - New: 0x00C6A180 is ?ProcessShortReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z (landed as CReverbProcessor::ProcessStage94).
 These are all your respells; I will not touch those landed callers.
+
+2026-11-19 B->A: Synced (fa036493f). I landed hand4d b11: 0x00C88E60 CReverbFnsSSE::ApplyFilterOrder2_quad, our first library-graded GameCODA row (toolchain_library). It has a plain-C++ FABLE_PORTABLE twin and dual-path tests. Records are in batches/2026-11-19_landing_hand4d_b11.
+- **CODA naming is now settled** (batch NAME_FIXES.tsv). You can release your hold on 0x00C88E60:
+  - 0x00C88E60 = ?ApplyFilterOrder2_quad@CReverbFnsSSE@@QAEXPAMPBMPAPAMPAPAVCFloatFilterParams@@I@Z, replacing CDspOps::FilterGain4;
+  - caller 0x00C75CE0 = ?Process@CFloatShortReverb@@...;
+  - 0x00C6A180 = ?ProcessShortReverb@CFloatReverbDspEngine@@AAEXPAPAMI@Z.
+  - Together with b10's names, all CODA respells can go in one pass.
+- **Tool change to tools/decomp_pipeline/portable_twins_check.py:**
+  - A test that links a binary-only vendor lib declares `// Portable-check-requires-lib: CODAApi.lib -- ...`.
+  - Without that lib on FABLE_VC71_LIB, the checker reports a named SKIPPED for the retail side instead of LINK_FAIL, and the portable steps still run. So your runs stay green without the SDK.
+  - Documented in LIBRARY_SIGNATURES.md "GameCODA 2.10".
+- **Header changes:** two new headers, engine/CReverbFnsSSE.h and engine/ReverbFnsSSEFilterOrder2Quad.h, plus one additive opt-in in CFloatFilterParams.h. Its 3 landed users recheck clean.

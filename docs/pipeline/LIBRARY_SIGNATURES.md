@@ -365,3 +365,13 @@ Retail's audio layer matches Sensaura GameCODA 2.10 (`CODAApi.lib` / `CODAApiDbg
 rule and shape: EXTRA_RULES 2026-11-19, "rows byte-identical to the GameCODA SDK library".
 - These rows are not CRT. A library-graded GameCODA row needs a FABLE_PORTABLE C++ twin and a dual-path test, because the library is binary-only Win32 x86.
 - Prove them with lib_verify.py against the CODA libs, every resolvable relocation agreeing, and the `@comp.id` checked against the Rich header.
+- The first library-graded GameCODA row is 0x00C88E60, CReverbFnsSSE::ApplyFilterOrder2_quad (landing 2026-11-19_landing_hand4d_b11). Use it as the template:
+  - **Stub:** rebuild/src/compiled/00/c8/CReverbFnsSSE_ApplyFilterOrder2quad_00c88e60.cpp. It carries the `// Toolchain-library:` proof line, and under FABLE_PORTABLE it includes the twin.
+  - **Twin:** engine/ReverbFnsSSEFilterOrder2Quad.h, plain C++ only, with its portability statement.
+  - **Build entry:** Grade = 'toolchain_library'.
+  - **Proof:** `FABLE_LIBSIG_LIBDIRS=coda=<CODA/lib/Win32> lib_verify.py --source <stub>` gives MATCH.
+  - **Precondition:** plain C++ must still DIFFER. The twin compiled as the row gives DIFFER(562v681); an intrinsic transcription gives 893v681.
+- **Dual-path tests that link the SDK member** (rebuild/tests/portable/test_*.cpp and rows/*_driver.cpp):
+  - Each declares `// Portable-check-requires-lib: CODAApi.lib -- <what>`.
+  - portable_twins_check.py looks for that lib on FABLE_VC71_LIB. If it is there, the retail side runs. If not, the VC7.1 steps that link it report a named SKIPPED ("CODAApi.lib not on FABLE_VC71_LIB ... retail side not checked") and the FABLE_PORTABLE steps still run.
+  - To run the retail side, set `FABLE_VC71_LIB=<CODA/lib/Win32>`.
