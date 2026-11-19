@@ -83,7 +83,14 @@ public:
 #ifdef FABLE_RETAIL_CMATRIX4X4_ALIGNEDPREMULTIPLYTRANSPOSED_FORCEINLINE
     FABLE_FORCEINLINE
 #endif
+#ifdef FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD
+    // Nested opt-in (p989): the Ego_d.pdb spelling (debug length 70): param `matrix`, local `m` -- the text of the out-of-line copy
+    // 0x00ADEFC0. Same bytes as the #else text (0x00AE1320 / 0x00BD2D90 RELOCATION_MATCH either way): a naming change, kept under the
+    // opt-in so the landed users' preprocessed text is unchanged.
+    void AlignedPreMultiplyTransposed(const CMatrix4x4& matrix) { __declspec(align(16)) CMatrix4x4 m; m = *this; AlignedSetMultiplyTransposed(matrix, m); }
+#else
     void AlignedPreMultiplyTransposed(const CMatrix4x4& m) { __declspec(align(16)) CMatrix4x4 copy; copy = *this; AlignedSetMultiplyTransposed(m, copy); }
+#endif
 #endif
 #endif
 #endif

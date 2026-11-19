@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00a9e1e0   RELOCATION_MATCH PASS   ApplyParentTransformations
+00bd2d90   RELOCATION_MATCH PASS   GetBoneTransformations
+00adefc0   RELOCATION_MATCH PASS   AlignedPreMultiplyTransposed
+00ae1320   RELOCATION_MATCH PASS   ClingToMesh
+00ae29d0   RELOCATION_MATCH PASS   SetupSimulation
+
+WINS: 5
+  00a9e1e0 RELOCATION_MATCH C3DAnimationManager::?ApplyParentTransformations@C3DAnimationManager@@ABEXPBVC3DKeyframe@@PAVCMatrix4x4@@ABVC3DMesh2@@_N@Z
+  00bd2d90 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::?GetBoneTransformations@CEngineInternalPrimitiveAnimatedMesh@@QAEPBVCMatrix4x4@@XZ
+  00adefc0 RELOCATION_MATCH CMatrix4x4::?AlignedPreMultiplyTransposed@CMatrix4x4@@QAEXABV1@@Z
+  00ae1320 RELOCATION_MATCH CParticleProgram::?ClingToMesh@CParticleProgram@@ABEXAAVCParticleSimulation@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@@Z
+  00ae29d0 RELOCATION_MATCH CParticleProgram::?SetupSimulation@CParticleProgram@@QBE_NAAVCParticleSimulation@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@AAVCMovableResourceMemoryPool@@ABVCParticleContext@@@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  C3DAnimationManager_ApplyParentTransformations_00a9e1e0
+  CEngineInternalPrimitiveAnimatedMesh_GetBoneTransformations_00bd2d90
+  CMatrix4x4_AlignedPreMultiplyTransposed_00adefc0
+  CParticleProgram_ClingToMesh_00ae1320
+  CParticleProgram_SetupSimulation_00ae29d0
