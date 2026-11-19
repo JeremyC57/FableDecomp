@@ -40254,3 +40254,6 @@ __wcsicmp	00f3fb84	00599e3f
 ?push_back@?$vector@UCScriptEntry@CRangeCompressor@@V?$allocator@UCScriptEntry@CRangeCompressor@@@std@@@std@@QAEXABUCScriptEntry@CRangeCompressor@@@Z	00f3b420	00f3abf0
 ?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ	007befb0	007bbb3b
 ??0CCreatureAction_SummonerLightningOrbInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	008cbd90	007175d0
+??$__push_heap@PAU?$pair@KVCAnimationEntry@@@std@@HU12@V?$CKeyPairCompareLess@KVCAnimationEntry@@@@@std@@YIXPAU?$pair@KVCAnimationEntry@@@0@HHU10@V?$CKeyPairCompareLess@KVCAnimationEntry@@@@@Z	005e1310	005e1cb0
+??4?$pair@KVCAnimationEntry@@@std@@QAEAAU01@ABU01@@Z	005e0e20	005e1cb0
+??$__push_heap@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@Z	00a820e0	00a82be0

@@ -1,0 +1,18 @@
+addr       parity           behav  name
+  WARN leaf 'pair<unsigned long,CAnimationEntry>,CKeyPairCompareLess<unsigned long,CAnimationEntry> >' matches no symbol in 005e1cb0.obj; graded the largest function
+  WARN leaf 'pair<unsigned long,CAnimationEntry>,CKeyPairCompareLess<unsigned long,CAnimationEntry> >' matches no symbol in 005e1cb0.obj; graded the largest function
+005e1cb0   WARN STANDIN_LEAF ??$__adjust_heap@PAU?$pair@KVCAnimationEntry@@@std@@HU12@V?$CKeyPairCompareLess@KVCAnimationEntry@@@@@std@@YIXPAU?$pair@KVCAnimationEntry@@@0@HHU10@V?$CKeyPairCompareLess@KVCAnimationEntry@@@@@Z (catalog std::__adjust_heap<std::pair<unsigned long,CAnimationEntry> *,int,std::pair<unsigned long,CAnim; names another function)
+005e1cb0   RELOCATION_MATCH PASS   std::__adjust_heap<std::pair<unsigned long,CAnimationEntry>*,int,std::pair<unsigned long,CAnimationEntry>,CKeyPairCompareLess<unsigned long,CAnimationEntry> >
+  WARN leaf 'list<C2DLineF> > >' matches no symbol in 00a82be0.obj; graded the largest function
+  WARN leaf 'list<C2DLineF> > >' matches no symbol in 00a82be0.obj; graded the largest function
+00a82be0   WARN RELOC_NAME: ??$__push_heap@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@Z -> 00a820e0 labelled 'std::__push_heap<std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *, int, std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>, CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>>'
+00a82be0   WARN STANDIN_LEAF ??$__adjust_heap@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@Z (catalog _Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std::pair<long,long>,class_CEngineTextureDecal>,CKeyPairCompareLess<std::_Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std; names another function)
+00a82be0   RELOCATION_MATCH PASS   std::__adjust_heap<std::pair<unsigned __int64,std::list<C2DLineF> >*,int,std::pair<unsigned __int64,std::list<C2DLineF> >,CKeyPairCompareLess<unsigned __int64,std::list<C2DLineF> > >
+
+WINS: 2
+  005e1cb0 RELOCATION_MATCH std::pair<unsigned long,CAnimationEntry>,CKeyPairCompareLess<unsigned long,CAnimationEntry> >
+  00a82be0 RELOCATION_MATCH _Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std::pair<long,long>,class_CEngineTextureDecal>,CKeyPairCompareLess<std::list<C2DLineF> > >
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  std_pairunsignedlongCAnimationEntryCKeyPairCompareLe_005e1cb0
+  AdjustheapstdpairstdpairlonglongCEngineTextureDecalintstdpairstructstdpairlonglo_listC2DLineF_00a82be0

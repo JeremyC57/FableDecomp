@@ -1217,8 +1217,18 @@ template<class _T1,class _T2,int _Sz1,int _Sz2> inline pair<_T1 const*,_T2 const
 #endif
 #ifdef FABLE_RETAIL_STLP_DECAL_HEAP
 // Retail opt-in (Codex 2026-11-10): original STLport4.6 _pair.h comparison.
+#ifdef FABLE_RETAIL_STLP_PAIR_LESS_RIGHT_BYVALUE
+// FITTED nested opt-in (hand3a w24, row 0x006B5890 __lower_bound<pair<long,float>*, pair<long,float>, less<..>, int>): the same comparison
+// with the right operand taken BY VALUE. Retail loads val.second onto the x87 stack before the loop (0x006B58A0 `fld [eax+4]`, compared
+// with `fcom [middle+4]`, popped at 0x006B58D3): VC7.1 hoists the scalar-replaced copy's loads; with both operands by const reference
+// it keeps &val and reloads (`fld [middle+4] ; fcomp [ebx+4]`). No source evidence for the by-value spelling (STLport 4.6.2 _pair.h is
+// const&; no other retail float-pair comparison to cross-check). Same value for every input. Default path unchanged.
+template<class A,class B> inline bool operator<(const pair<A,B>& x,pair<A,B> y)
+{return x.first<y.first || (!(y.first<x.first) && x.second<y.second);}
+#else
 template<class A,class B> inline bool operator<(const pair<A,B>& x,const pair<A,B>& y)
 {return x.first<y.first || (!(y.first<x.first) && x.second<y.second);}
+#endif
 #endif
 // _list.h
 struct _List_node_base {

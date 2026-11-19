@@ -1,0 +1,12 @@
+addr       parity           behav  name
+006b5890   WARN STANDIN_LEAF ??$__lower_bound@PAU?$pair@JM@std@@U12@U?$less@U?$pair@JM@std@@@2@H@std@@YIPAU?$pair@JM@0@PAU10@0ABU10@U?$less@U?$pair@JM@std@@@0@PAH@Z (catalog _Lower_bound<std::pair<long,float>*,std::_Lower_bound<std::pair<long,float>*,std::pair<long,float>,int>; names another function)
+006b5890   MATCH            PASS   __lower_bound<pair<long,float>*,pair<long,float>,less<pair<long,float> >,int>
+0047ed76   RELOCATION_MATCH PASS   SetToSave
+
+WINS: 2
+  006b5890 MATCH std::??$__lower_bound@PAU?$pair@JM@std@@U12@U?$less@U?$pair@JM@std@@@2@H@std@@YIPAU?$pair@JM@0@PAU10@0ABU10@U?$less@U?$pair@JM@std@@@0@PAH@Z
+  0047ed76 RELOCATION_MATCH CTCInGameMenu::?SetToSave@CTCInGameMenu@@QAEXJ@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  std_lowerboundpairlongfloatpairlongfloatlesspairlong_006b5890
+  CTCInGameMenu_SetToSave_0047ed76

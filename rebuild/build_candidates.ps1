@@ -399907,6 +399907,37 @@ $catalog = @(
         TestSource = '00/71/NTCScriptedControlCActionSummonerLightningAttackTarget_Update_007175d0_test.cpp'
         PassPattern = '007175d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006b5890'
+        Module = 'std'
+        Source = '00/6b/std_lowerboundpairlongfloatpairlongfloatlesspairlong_006b5890.cpp'
+        TestSource = '00/6b/std_lowerboundpairlongfloatpairlongfloatlesspairlong_006b5890_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '006b5890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047ed76'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_SetToSave_0047ed76.cpp'
+        TestSource = '00/47/CTCInGameMenu_SetToSave_0047ed76_test.cpp'
+        PassPattern = '0047ed76_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e1cb0'
+        Module = 'std'
+        Source = '00/5e/std_pairunsignedlongCAnimationEntryCKeyPairCompareLe_005e1cb0.cpp'
+        TestSource = '00/5e/std_pairunsignedlongCAnimationEntryCKeyPairCompareLe_005e1cb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '005e1cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a82be0'
+        Module = '_Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std::pair<long,long>,class_CEngineTextureDecal>,CKeyPairCompareLess<std'
+        Source = '00/a8/AdjustheapstdpairstdpairlonglongCEngineTextureDecalintstdpairstructstdpairlonglo_listC2DLineF_00a82be0.cpp'
+        TestSource = '00/a8/AdjustheapstdpairstdpairlonglongCEngineTextureDecalintstdpairstructstdpairlonglo_listC2DLineF_00a82be0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a82be0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

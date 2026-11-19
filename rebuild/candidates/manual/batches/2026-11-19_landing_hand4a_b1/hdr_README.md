@@ -1,0 +1,6 @@
+# hand4a header overlay (one line per opt-in)
+- stlport/fable_containers.h FABLE_RETAIL_STLP_PAIR_LESS_RIGHT_BYVALUE (nested in DECAL_HEAP's pair operator<): right operand by value. FITTED/Inferred (hand3a w24, re-checked hand4a): only text giving 0x006B5890's hoisted x87 val.second (0x006B58A0/0x006B58B3/0x006B58D3); STLport 4.6.2 _pair.h is const&. Default path unchanged; no assert moved.
+- engine/C3DVector.h FABLE_RETAIL_C3DVECTOR_DIVASSIGN_RECIPROCAL_PAREN: operator/= with `float reciprocal = (1.0f / v);` (no-code PAREN tuple). INFERRED for 0x00853670 / 0x008539C0 (scheduling-region cut); FableWin ??_0C3DVector 0x01F58600 consistent; neutral on ~45 landed users. Copy of today's repo header + this block only; no asserts in the file.
+- engine/NCameraModes_CScriptModuleBase.h (NEW): CScriptModuleBase + CScriptModuleSelfTerminateBase from Ego_d LF_CLASS 0x3C015 / 0x3C07C (+ Ego_r 0x4c layout, landed GetModuleFOV slot map); inline GetOwner / GetDuration (FableWin.pdb protected accessors).
+- engine/NCameraModes_CScriptModuleOpenChest.h (NEW): Ego_d LF_CLASS 0x3C140, size 0xa0 (landed ctor 0x008530B0 offsets).
+- engine/NCameraModes_CScriptModuleUseLamp.h (NEW): Ego_d LF_CLASS 0x3C150, size 0xa0.
