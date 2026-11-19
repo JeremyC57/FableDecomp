@@ -6,7 +6,7 @@
 //   CSoftwareVoice::StartSound 0x00C5B250 / SetBuffer 0x00C5A2E0 model (+0x0C buffer, +0x10 64-bit clock, ring +0xB4 with
 //   data +0xB8 and queued frames +0xD0); the sound is the landed CAudioSound (flags +0x10 bit 8 loop, CircularQueue
 //   +0x54, single buffer +0x78) of CCodaVoice::Play 0x00C59720 / CAudioSource::BeginSound 0x00C59BC0.
-// Callees: CAudioRingBuffer::Clear 0x00C5CE40 (zeroes +4..+0x1C; landed under a wrong label), CSoundBuffer::GetDesc
+// Callees: CSalSwBuffer::Release 0x00C5CE40 (zeroes +4..+0x1C; NF99 q11406: was the stand-in CAudioRingBuffer::Clear), CSoundBuffer::GetDesc
 //   0x00C3C4A0, CircularQueue::DequeueNext 0x00C44320, CAudioObject::ReportQueueInfo 0x00C432F0, CircularQueue::
 //   GetCurrentEntry 0x00C35D10 (the second read only; the first is the inline capacity-checked read as in BeginSound),
 //   virtual slot 18 (+0x48) SetBuffer.
@@ -14,6 +14,13 @@
 //   accessor (`lea ecx,[esi+0B4h]` before its second data test); the queue's IsEmpty is the CAudioObject::Update inline.
 //   CAudioSound (the voice rows' parameter spelling) and CAudioObject (the object's own rows, 0x00C43xxx) are one libpk
 //   object; ReportQueueInfo keeps its bound CAudioObject spelling through a cast, as StartSound casts to CAudioSource.
+// Ring (NF99, q11406): the ring at +0xB4 is GameCODA's CSalSwBuffer (engine/CSalSwBuffer.h; was a local CAudioRingBuffer model):
+//   the two data tests are the SDK inlines IsCreated() (m_pvBuffer != 0) and IsEmpty() (IsCreated() && m_nValid == 0; CODAApiDbg
+//   SalSwBaseVoice.obj out-of-line copy), the clear is ?Release@CSalSwBuffer@@QAEXXZ (CodeView, public non-virtual).
+#define FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+#define FABLE_RETAIL_CSALSW3D_CALCPARAMS
+#define FABLE_RETAIL_CSALSWBUFFER_ISEMPTY
+#include "engine/CSalSwBuffer.h"
 class CSoundBuffer;
 struct SBufferDesc {
     unsigned long  m_state;                             // +0x00
@@ -54,20 +61,6 @@ public:
     void ReportQueueInfo();                             // 0x00C432F0
 };
 
-class CAudioRingBuffer {                                // vtable 0x012B8FC4
-public:
-    virtual ~CAudioRingBuffer();
-    unsigned char* m_pData;                             // +0x04
-    unsigned long  m_capacity;                          // +0x08
-    unsigned long  m_frameBytes;                        // +0x0c
-    unsigned long  m_channels;                          // +0x10
-    unsigned long  m_readPos;                           // +0x14
-    unsigned long  m_writePos;                          // +0x18
-    unsigned long  m_queued;                            // +0x1c
-    bool IsDrained() const { return m_pData != 0 && m_queued == 0; }
-    void Clear();                                       // 0x00C5CE40
-};
-
 #pragma pack(push, 4)                                   // the 64-bit clock sits at +0x10 (4-byte packing)
 class CSoftwareVoice {                                  // vtable 0x012B5C60
 public:
@@ -80,23 +73,23 @@ public:
     CSoundBuffer*    m_pBuffer;                         // +0x0c
     __int64          m_clock;                           // +0x10
     unsigned char    _pad18[0xb4 - 0x18];
-    CAudioRingBuffer m_ring;                            // +0xb4
+    CSalSwBuffer     m_ring;                            // +0xb4
     void AdvanceBuffer(CAudioObject* sound);
 };
 #pragma pack(pop)
 
 void CSoftwareVoice::AdvanceBuffer(CAudioObject* sound)
 {
-    if (m_ring.m_pData == 0)
+    if (!m_ring.IsCreated())
         return;
-    if (!m_ring.IsDrained())
+    if (!m_ring.IsEmpty())
         return;
     if (sound->m_pBuffer != 0) {
         if (sound->IsLooping()) {
             SetBuffer(sound->m_pBuffer, 1);
             return;
         }
-        m_ring.Clear();
+        m_ring.Release();
         m_pBuffer = 0;
         return;
     }
@@ -113,6 +106,6 @@ void CSoftwareVoice::AdvanceBuffer(CAudioObject* sound)
         SetBuffer(queue.GetCurrentEntry(), (sound->m_flags >> 8) & 1);
         return;
     }
-    m_ring.Clear();
+    m_ring.Release();
     m_pBuffer = 0;
 }
