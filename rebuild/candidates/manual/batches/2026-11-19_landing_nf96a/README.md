@@ -29,7 +29,7 @@ Recheck from the repo after landing (`logs/recheck.log`): MATCH / RELOCATION_MAT
 ## Headers (8 opt-ins in 6 headers; token-identical without them; asserts pinned, 0 name mismatches)
 CTCTavernGameCardBase.h `_ECARDGAMETYPE_VALUES` / `_ENTERGAME` / `_ENDROUND`; CTCTavernGameCardPairs.h `_ROUND_OVERRIDES`;
 CTavernGameCardBaseDef.h `_HIGHLIGHT_COLOUR_BAD`; CCategory.h `_GETPREVIOUSOCCUPIEDSLOT`; CTCBase.h `_ADDTOGLOBALTCS`;
-CGamePlayerInterface.h `_CONTEXTSENSITIVEITEMBUTTONS_TYPED`. Direct-includer recheck (1,323 rows): `logs/includer_recheck.txt`.
+CGamePlayerInterface.h `_CONTEXTSENSITIVEITEMBUTTONS_TYPED`. Direct-includer recheck (1,323 rows): 1,321 good; 0x0072A680 (pre-existing) and 0x007E2A60 (on hold) are the known failures. `logs/includer_recheck.txt`.
 
 ## Checks
 Synced with FullDecomp-B first (B's hand3c landings, its GameCODA b11 landing and its CMatrix4x4 claim). `naming/rebind.py`: removed 26,

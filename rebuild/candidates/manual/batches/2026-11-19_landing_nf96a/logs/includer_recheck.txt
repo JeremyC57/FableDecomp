@@ -1,0 +1,5 @@
+# direct-includer recheck after landing nf96a: 1,323 rows (direct includers of the 6 headers + catalog-only renames whose files moved)
+good 1321, bad 2
+# both bad rows are known: 0x0072A680 pre-existing (FINDINGS_LOG 2026-11-19, DIFFER with the 11-18 headers), 0x007E2A60 on hold (ROADMAP (c))
+0072a680	0072a680   DIFFER(75v54)    PASS   CTCActionUseBuyOrSteal::~CTCActionUseBuyOrSteal
+007e2a60	007e2a60   DIFFER(707v707)  PASS   CTCFineDialogue::GlobalUpdate
