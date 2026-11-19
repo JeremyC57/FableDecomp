@@ -9,7 +9,8 @@ whole hand-back; `held/` keeps the sources that did not land).
   stand-in to the real class name counts as a new local model). Mostly the CGameEventDataPackage family (22 rows: local `CMemoryBuffer`
   renamed to `CGameEventDataPackage`), plus CPlayerGui, C2DVector, CThing, CIsHornTaskWithThisHorn, CThingCreatureBase, CThingAICreature,
   CTCPerceiveThing, CEnginePrimitiveMorphedStaticMesh and CBankFile models (several in tests). They need a port onto the shared headers.
-  No landed rename depends on them (RENAMES section 2 checked both ways). Their two header opt-ins (CGameEventDataPackage.h `_GETUHUGE`,
+  No landed rename depends on them: RENAMES section 2 and `reloc_bindings.tsv` checked both ways (22 landed and 11 held self renames, 0 crossings;
+  the binding table keeps one caller per symbol, so a held row that is a second caller of a landed rename would not show there). Their two header opt-ins (CGameEventDataPackage.h `_GETUHUGE`,
   CIsHornTaskWithThisHorn.h `_CTOR_OUTOFLINE`) have no landed user and stay with them.
 - **3 rows, the CSalSwBuffer::Release set** (0x00C5CE40 and binders 0x00C5A1F0 / 0x00C54BD0): NF95 held them itself until the fourth binder
   0x00C5B300 is ported, so one address never carries two names.
@@ -25,7 +26,8 @@ Recheck from the repo after landing (`logs/recheck.log`): 59 MATCH / RELOCATION_
 
 ## Headers
 Only CCodaVector.h `FABLE_RETAIL_CCODAVECTOR_ORTHOGONALRIGHT_OUTOFLINE` (one landed user; default path token-identical; 0 asserts moved).
-Includer recheck over the 26 rows that include CCodaVector.h or the CODA headers: `logs/includer_recheck.txt`.
+Includer recheck over the 26 rows that include CCodaVector.h or the CODA headers: 14 good; the other 12 are EH funclets graded standalone
+(DIFFER with the pre-nf95b headers too: a recheck artifact, not a regression). `logs/includer_recheck.txt`.
 
 ## Checks
 Synced with FullDecomp-B first (B's hand4d_b10 landing of 0x00C77800 and its snapshot). `naming/rebind.py`: removed 226 binding lines, added
