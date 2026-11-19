@@ -1297,3 +1297,10 @@ its files.
 **Open policy question (owner):** pass 23 found retail functions byte-identical to named CODAApi.lib objects. If retail links these prebuilt
 objects unchanged, those rows are linker-copied library bytes, like the CRT objects. Should they then grade `toolchain_library` with a lib_verify proof
 against CODAApi.lib, or stay compiled C++?
+
+## 2026-11-19 — two landed rows grade DIFFER at HEAD with older headers too (found by the nf93a includer recheck)
+- 0x00589A30 CTCInventory::OpenPCMapMenu: DIFFER(549v549), test PASS. The same with the pre-round-8 include tree and with the 11-18 tree
+  (c1d39cbd18), so neither today's header merges nor round 8 caused it. PARKED_INDEX had it as a 549v549 register tie (hand302).
+- 0x0059C747 CTCInventoryTrade::RemoveItemFromInventory: DIFFER(35v29), test PASS, the same with both older trees. It is NF94's round-8 row
+  (queue q11226), so NF94's hand-back will show its baseline grade.
+- Next: bisect each with `git archive <commit> rebuild/include` + FABLE_HDR_OVERLAY back to the landing that broke it.

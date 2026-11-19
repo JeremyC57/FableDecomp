@@ -451,3 +451,4 @@
 - (hand4c b6, 2026-11-19) A VC7.1 /Od test compile can hang when a for loop precedes class-object declarations in main; declare the objects first (0x005542F0 test).
 - (2026-11-19) The Sensaura GameCODA 2.10 PC SDK (CODAApi.lib / CODAApiDbg.lib with CodeView, CAGE + Toolkit C++ source) is on archive.org as `game-coda-2.10-pc`; FINDINGS_LOG 2026-11-19 has the fetch line and hashes. Use it for every CSal* / CCoda* / reverb / filter row before byte-RE.
 - (hand3c b16, 2026-11-19) A missing `FABLE_RETAIL_CDEFSTRINGTABLE` makes CDefString.h hit its `#error`, and cl.exe can then spin for over 13 minutes under Wine instead of failing. Run a front-end-only compile with a ~150 s timeout before grading.
+- (landing nf93a, 2026-11-19) `tools/sync_catalog_names.py` needs `csv.field_size_limit` raised and still rewrites ~4,600 unrelated catalog names (backlog churn): naming landings skip it, since batch_rerow.py already updates the catalog and manifest.
