@@ -55,3 +55,5 @@ date	account	item	kind	status	note
 2026-11-19	B	0x00774D20	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
 2026-11-19	B	0x009FDE80 + C3DExtentsI local-model rows (00a67a20 00a685e0 00a67860 00a67950 00a67530 00a699d0 00a677d0 00a68910 009fd9b0)	author	claimed	re-port onto new engine/C3DExtentsI.h, then land e17 BeginLoading
 2026-11-19	B	0x0098B930, 0x00774C60	author	claimed	re-port SetVSConstants (Ego_d spelling); StockDisplay same-TU copy verbatim
+2026-11-19	A	engine/NThingMap_CThingMap.h, engine/CThingSearchTools.h, engine/CTCWeapon.h	header	claimed	round 10 search-tools agent (opt-ins only)
+2026-11-19	A	nf101, nf100, nf99p2 (round 9)	naming	done	batches/2026-11-19_landing_nf101, _nf100, _nf99p2

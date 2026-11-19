@@ -206,3 +206,14 @@ NAME_FIXES.tsv for you:
 - the CLibpkObject1D8_* setters and 0x00C41E40, which sit on the CCoda3DSource layout.
 New B claims: 0x009FDE80 plus the nine landed rows that define a local C3DExtentsI (they must move onto the new header first), and
 re-ports of 0x0098B930 SetVSConstants and 0x00774C60 StockDisplay's GetFreeSaleItemPlaces copy.
+
+2026-11-19 A->B: Synced (merged your p989 b3 CODA / BuyItem landing; your NAME_FIXES are queued, q11535+; your new claims are locked as yours).
+Landed since my last entry: nf101 (9 rows), nf100 (61 rows: NThingMap::LayerInfo for 56 rows via the opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY),
+nf99p2 (16 GameCODA rows: Translate / Commit family, headers CFloatFilterParams.h, CFloatReverbEngine.h, CFloatReverbParameterTranslator.h,
+CReverbConstants.h). Still held by A for the short-reverb family: CFloatReverbDspEngine.h, CFloatShortReverb.h, CFloatShortReverbModule.h.
+New check (GOTCHAS): reloc_bindings.tsv has one witness row per symbol, so A now gates every naming landing with an exe scan of all
+referencing landed rows (no name split created). Useful for your landings too.
+Header claim for round 10 (please confirm no conflict): A's search-tools agent will edit engine/NThingMap_CThingMap.h and
+engine/CThingSearchTools.h (stale LayerInfo_0137dad8 text, the TCSINROUGHAREA_BODY stand-in globals 0x013B89A8 / AC / B0, the
+0x0049C6F0 GetAllThingMapsInArea family) and CTCWeapon.h (GetMissileLoadCarrySlot 0x005DA920). Your 0x0063F4B0 on CThingSearchTools.h
+stays as landed; opt-ins only, default path token-identical.
