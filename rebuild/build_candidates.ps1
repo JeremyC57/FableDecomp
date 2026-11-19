@@ -400729,6 +400729,13 @@ $catalog = @(
         TestSource = '00/85/CThingSearchTools_listCThingGameObjectCFilterBind4CThingFilterIsNo_0085b2a0_test.cpp'
         PassPattern = '0085b2a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00621a20'
+        Module = 'CTCInventoryQuests'
+        Source = '00/62/CTCInventoryQuests_InitialiseQuestCardList_00621a20.cpp'
+        TestSource = '00/62/CTCInventoryQuests_InitialiseQuestCardList_00621a20_test.cpp'
+        PassPattern = '00621a20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

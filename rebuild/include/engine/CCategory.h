@@ -68,6 +68,11 @@ private:
  bool Selected,DisplayItems;
 public:
  void GetAllItemsInCategory(std::vector<std::pair<long,long> >&) const;
+#ifdef FABLE_RETAIL_CCATEGORY_SETASSELECTED
+ // hand3c opt-in (row 0x00621A20 CTCInventoryQuests::InitialiseQuestCardList): Ego_r.pdb / FableWin.pdb ?SetAsSelected@CCategory@NInventory@@QAEX_N@Z,
+ // out of line in retail at 0x005BC934 (`push 1 ; mov ecx,eax ; call`, 0x00621C3A). Declaration only.
+ void SetAsSelected(bool selected);                                                           // 0x005BC934
+#endif
 #ifdef FABLE_RETAIL_CCATEGORY_ITEMINSLOT
  // NF89 opt-in (row 0x005A3581 CTCInventoryTrade::BuyHighlightedItem): Ego_r.pdb + FableWin.pdb
  // ?GetItemInSlotWithIndex@CCategory@NInventory@@QBEJJ@Z (out of line at 0x005BC9B0) and FableWin.pdb

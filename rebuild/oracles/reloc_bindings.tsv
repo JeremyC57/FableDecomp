@@ -40328,3 +40328,6 @@ __imp__SetFileTime@16	0143fd64	009c38c0
 ?AddChangeText@CStatBar@NPlayerGui@@QAEXABVCRGBColour@@ABVCWideString@@J_N@Z	0064dae0	00439bb0
 ??RCThingFilter_CombatCanCollideOrInteractWithThing@?A0xfbaeb011@@QBE_NABVCThing@@@Z	00857250	0085b2a0
 ??RCThingFilter_CombatIsStrikeToStrike@?A0xfbaeb011@@QBE_NABVCThing@@@Z	008565e0	0085b2a0
+??$__copy@PAVCCategory@NInventory@@PAV12@H@std@@YIPAVCCategory@NInventory@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z	00625820	00621a20
+??$__destroy_aux@PAVCCategory@NInventory@@@std@@YIXPAVCCategory@NInventory@@0ABU__false_type@0@@Z	005c2a8e	00621a20
+?AddCategory@CTCInventoryBase@NInventory@@IAEXPAV12@JPAVCThing@@@Z	005c024a	00621a20

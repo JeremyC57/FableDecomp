@@ -445,6 +445,14 @@ public:
  // line in retail at 0x005BCE3C. Declaration only.
  NInventory::CCategory* GetCategoryWithIndex(long index);                                     // 0x005BCE3C
 #endif
+#if defined(FABLE_RETAIL_CTCINVENTORYBASE_ADDCATEGORY) && !defined(FABLE_RETAIL_CTCINVENTORYBASE_ORIGINAL_COMPLETE_METHODS_PASS22)
+ // hand3c opt-in (row 0x00621A20 CTCInventoryQuests::InitialiseQuestCardList): Ego_r.pdb / FableWin.pdb
+ // ?AddCategory@CTCInventoryBase@NInventory@@IAEXPAV12@JPAVCThing@@@Z (protected; out of line in retail at 0x005C024A, `push card ; push
+ // def_index ; push this ; mov ecx,this ; call`, 0x00621BFE) -- the PASS22 complete-methods block's line. Declaration only.
+protected:
+ void AddCategory(NInventory::CTCInventoryBase *,long,CThing *);                              // 0x005C024A
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_CATEGORYCOUNT
  // NF87 opt-in (row 0x0059D820 CTCInventoryTrade::InitialiseSellableItems): Ego_r.pdb + FableWin.pdb
  // ?GetCategoryCount@CTCInventoryBase@NInventory@@QBEJXZ, out of line in retail at 0x005BCE2F (the category vector's size). Declaration only.

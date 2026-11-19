@@ -105,7 +105,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 005fd5e0	CTCInventoryMap	ConstructRegionDescriptionQuests	992	parked	DIFFER(986v982)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/005fd5e0.cpp	original
 005fe840	CTCInventoryMap	ConstructRegionExitMarkers	2384	parked	DIFFER(2424v2379)	1	rebuild/candidates/manual/pending/2026-11-08_linux_hand851/differ/005fe840.cpp	original
 00605ce0	CTCInventoryMap	UpdateVisitedRegions	1232	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00605ce0.cpp	original
-00621a20	CTCInventoryQuests	InitialiseQuestCardList	608	reserved (hand3c, not plain C++)	DIFFER(620v600)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00621a20.cpp	original
 00621f70	CTCInventoryQuests	TakeQuest	1104	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00621f70.cpp	original
 006224c0	CTCInventoryQuests	OpenInventoryPC	1344	parked		0	rebuild/candidates/manual/pending/2026-11-11_acctB_c2002/rows/parked/006224c0.test.cpp	original
 00625160	CCompressedMemoryDataInputStream	`vector_deleting_destructor'	96	parked	DIFFER(30v70)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand514/differ/00625160.cpp	original
