@@ -400191,6 +400191,13 @@ $catalog = @(
         TestSource = '00/63/CThingSearchTools_GetAllThingsInRoughArea_0063fd40_test.cpp'
         PassPattern = '0063fd40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00518340'
+        Module = 'CThingSearchTools'
+        Source = '00/51/CThingSearchTools_GetAllTCsInRoughArea_00518340.cpp'
+        TestSource = '00/51/CThingSearchTools_GetAllTCsInRoughArea_00518340_test.cpp'
+        PassPattern = '00518340_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

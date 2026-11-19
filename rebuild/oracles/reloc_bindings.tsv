@@ -40296,3 +40296,4 @@ _MOVE_TO_PRONG_NAV_PROXIMITY	01261d68	006e94d0
 ?GetMarkerFileName@@YI?AVCWideString@@ABV1@@Z	009c33a0	009c38c0
 __imp__GetFileTime@16	0143fd60	009c38c0
 __imp__SetFileTime@16	0143fd64	009c38c0
+?_M_insert_overflow@?$vector@PBVCTCCreatureGenerator@@V?$allocator@PBVCTCCreatureGenerator@@@std@@@std@@IAEXPAPBVCTCCreatureGenerator@@ABQBV3@ABU__true_type@2@I_N@Z	00514f40	00518340

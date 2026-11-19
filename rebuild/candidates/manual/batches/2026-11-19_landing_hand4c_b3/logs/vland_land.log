@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00518340   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00518340   WARN STANDIN_LEAF ??$GetAllTCsInRoughArea@VCTCCreatureGenerator@@VCThingFilter_IsInQuestOrNullQuest@@V?$vector@PBVCTCCreatureGenerator@@V?$allocator@PBVCTCCreatureGenerator@@@std@@@std@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_IsInQuestOrNullQuest@@AAV?$vector@PBVCTCCreatureGenerator@@V?$allocator@PBVCTCCreatureGenerator@@@std@@@std@@@Z (catalog CThingSearchTools::GetAllTCsInRoughArea<CTCCreatureGenerator,CThingFilter_IsInQuestOrNullQuest,std::vector<CT; names another function)
+00518340   RELOCATION_MATCH PASS   GetAllTCsInRoughArea
+
+WINS: 1
+  00518340 RELOCATION_MATCH CThingSearchTools::??$GetAllTCsInRoughArea@VCTCCreatureGenerator@@VCThingFilter_IsInQuestOrNullQuest@@V?$vector@PBVCTCCreatureGenerator@@V?$allocator@PBVCTCCreatureGenerator@@@std@@@std@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_IsInQuestOrNullQuest@@AAV?$vector@PBVCTCCreatureGenerator@@V?$allocator@PBVCTCCreatureGenerator@@@std@@@std@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingSearchTools_GetAllTCsInRoughArea_00518340

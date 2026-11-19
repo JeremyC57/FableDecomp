@@ -656,4 +656,47 @@ FABLE_STATIC_ASSERT_AT(567, offsetof(CThingSearchTools, ThingManager) == 0x8);
 FABLE_STATIC_ASSERT_AT(568, offsetof(CThingSearchTools, AreaMaps) == 0xc);
 
 #endif // FABLE_RETAIL_CTHINGSEARCHTOOLS
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_EGOD) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA) && !defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_EGOD)
+// egod opt-in (hand4c 2026-11-19, row 0x00518340, the <CTCCreatureGenerator, CThingFilter_IsInQuestOrNullQuest, std::vector<const
+// CTCCreatureGenerator*> > instance): the GetAllTCsInRoughArea<T,Filter,Container> body defined out of class (the in-class declaration is
+// TCSINROUGHAREA's; appended after the retail / non-retail branches so no assert line moves) with Ego_d.pdb's parameter names, locals and scopes (world_map.obj record:
+// filter_func, tcs, it, thing_map, local_area, c1, clipped_area, cy, pcell, cx, ploop_node, pmapwho, loop_thing, tc, tc_type) in FableWin.pdb's
+// statement order (debug 0x01CCB630, 1382 bytes: the ROUGHAREA_EGOD cell walk -- GetMapwhoArea, GetWidth / GetHeight, PeekCell --
+// then GetParentThing, T::StatGetInterfaceType() into tc_type, `loop_thing && GetTC(tc_type, &tc) && filter_func(*loop_thing)` and
+// push_back(tc); retail keeps the loop_thing null test, 0x0051849A). Needs ROUGHAREA_EGOD (statics, GetMapwhoArea), the CThing
+// GetTC(id, ptc) member template and T::StatGetInterfaceType at the point of instantiation.
+template<class T,class Filter,class Container>
+void CThingSearchTools::GetAllTCsInRoughArea(const C2DBoxI& area,const Filter& filter_func,Container& tcs) const {
+    GetAllThingMapsInArea(area,const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps));
+    ++NoLookups;
+    NoThingsScanned=0;
+    ++SearchID;
+    for(std::vector<NThingMap::CThingMap*>::const_iterator it=AreaMaps.begin();it!=AreaMaps.end();++it) {
+        NThingMap::CThingMap& thing_map=**it;
+        C2DBoxI local_area=ClipAndConvertWorldMapAreaToLocalArea(thing_map,area);
+        for(long c1=0;c1<NThingMap::MaxLayers;++c1) {
+            C2DBoxI clipped_area=GetMapwhoArea(thing_map,c1,local_area);
+            if(clipped_area.GetWidth()==0 || clipped_area.GetHeight()==0)
+                continue;
+            for(long cy=clipped_area.TLY;cy<clipped_area.BRY;++cy) {
+                const NThingMap::CThingMapCell* pcell=&thing_map.PeekCell((unsigned char)c1,clipped_area.TLX,cy);
+                for(long cx=clipped_area.TLX;cx<clipped_area.BRX;++cx,++pcell) {
+                    for(const NThingMap::CMapwhoNode* ploop_node=pcell->PFirstNode;ploop_node;ploop_node=ploop_node->PNext) {
+                        CTCMapwho* pmapwho=ploop_node->PMapwho;
+                        if(pmapwho->GetSearchID()<SearchID) {
+                            pmapwho->SetSearchID(SearchID);
+                            CThing* loop_thing=&pmapwho->GetParentThing();
+                            T* tc;
+                            ETCInterfaceType tc_type=T::StatGetInterfaceType();
+                            if(loop_thing && loop_thing->GetTC(tc_type,&tc) && filter_func(*loop_thing))
+                                tcs.push_back(tc);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps).clear();
+}
+#endif
 #endif // FABLE_ENGINE_CTHINGSEARCHTOOLS_H
