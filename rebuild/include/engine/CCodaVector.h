@@ -16,12 +16,17 @@ class CCodaVector:public _CVECTOR {public:
  float Normalize();
  float Dot(const CCodaVector& v)const
   { return x * v.x + y * v.y + z * v.z; }
+#ifdef FABLE_RETAIL_CCODAVECTOR_ORTHOGONALRIGHT_OUTOFLINE
+ // NF95 opt-in (row 0x00C40370, the out-of-line COMDAT copy of OrthogonalRight): declaration only; the row defines the same body.
+ void OrthogonalRight(const CCodaVector& vFront, const CCodaVector& vTop);
+#else
  void OrthogonalRight(const CCodaVector& vFront, const CCodaVector& vTop)
  {
   x = vTop.y * vFront.z - vFront.y * vTop.z;
   y = vTop.z * vFront.x - vFront.z * vTop.x;
   z = vTop.x * vFront.y - vFront.x * vTop.y;
  }
+#endif
 #endif
 };
 #else
@@ -33,12 +38,17 @@ public:
  float Normalize();
  float Dot(const CCodaVector& v)const
   { return x * v.x + y * v.y + z * v.z; }
+#ifdef FABLE_RETAIL_CCODAVECTOR_ORTHOGONALRIGHT_OUTOFLINE
+ // NF95 opt-in (row 0x00C40370, the out-of-line COMDAT copy of OrthogonalRight): declaration only; the row defines the same body.
+ void OrthogonalRight(const CCodaVector& vFront, const CCodaVector& vTop);
+#else
  void OrthogonalRight(const CCodaVector& vFront, const CCodaVector& vTop)
  {
   x = vTop.y * vFront.z - vFront.y * vTop.z;
   y = vTop.z * vFront.x - vFront.z * vTop.x;
   z = vTop.x * vFront.y - vFront.x * vTop.y;
  }
+#endif
 #endif
 };
 #endif

@@ -9,7 +9,7 @@
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00829D90, 648 bytes (`ret 0Ch`).
 // Callees: CRegionMinimap 0x0066DBB0 Initialise / 0x0066CC40 InitialiseRegionMinimapSize / 0x0066CA80 LoadRegionMinimapTGAFile /
-//   0x0066DC50 generate-and-save (manifest "CParticleSimulation::Clear") / 0x0066C610 is-loaded (manifest
+//   0x0066DC50 CreateRegionMinimapTGAFile (manifest "CParticleSimulation::Clear"; NF95 q11377 respell) / 0x0066C610 is-loaded (manifest
 //   "C3DMeshInfo::HasPhysicsMesh") / 0x0066CB00 InitialiseTexture / 0x0066CAF0 texture getter (manifest "CModeBlock::GetAnimFilter")
 //   / 0x0066C7A0 free data (manifest "CRenderTarget::DetachTarget"); PathExists 0x00999230 and CreateDirectory 0x009994A0
 //   (__fastcall, const CWideString&); the world's slot 13 GetWorldMap via the main game component 0x013B86A0 (+0x24);
@@ -95,7 +95,7 @@ struct CRegionMinimap {
     void Initialise();                                                      // 0x0066DBB0
     void InitialiseRegionMinimapSize(CWorldMap* map, const CWorldRegion* region);   // 0x0066CC40
     void LoadRegionMinimapTGAFile(const CWideString& path);                 // 0x0066CA80
-    void GenerateAndSave(CWorldMap* map, const CWideString& path);          // 0x0066DC50
+    void CreateRegionMinimapTGAFile(const CWorldMap& worldMap, const CWideString& filename);   // 0x0066DC50 (Ego_r.pdb / FableWin.pdb)
     bool IsLoaded() const;                                                  // 0x0066C610
     void InitialiseTexture();                                               // 0x0066CB00
     CTexture* GetTexture() const;                                           // 0x0066CAF0
@@ -129,17 +129,17 @@ void CMiniMapDisplay::InitialiseMiniMapFileLoading_Region(const CWorldRegion* re
     if (CAFile::PathExists(dataPath)) {
         dataTime = CAFile::GetFileModifiedTime(dataPath);
         if (regenerate && wldTime > dataTime)
-            RegionMinimap.GenerateAndSave(worldMap, cachePath);
+            RegionMinimap.CreateRegionMinimapTGAFile(*worldMap, cachePath);
         else
             RegionMinimap.LoadRegionMinimapTGAFile(dataPath);
     } else if (CAFile::PathExists(cachePath)) {
         cacheTime = CAFile::GetFileModifiedTime(cachePath);
         if (regenerate && wldTime > cacheTime)
-            RegionMinimap.GenerateAndSave(worldMap, cachePath);
+            RegionMinimap.CreateRegionMinimapTGAFile(*worldMap, cachePath);
         else
             RegionMinimap.LoadRegionMinimapTGAFile(cachePath);
     } else if (regenerate)
-        RegionMinimap.GenerateAndSave(worldMap, cachePath);
+        RegionMinimap.CreateRegionMinimapTGAFile(*worldMap, cachePath);
     if (RegionMinimap.IsLoaded()) {
         RegionMinimap.InitialiseTexture();
         RegionTexture = RegionMinimap.GetTexture();

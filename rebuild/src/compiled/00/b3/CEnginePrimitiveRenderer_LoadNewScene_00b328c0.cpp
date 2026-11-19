@@ -1,5 +1,8 @@
 // CEnginePrimitiveRenderer::LoadNewScene(const CEngineComponentLoadNewSceneParams& params) -- per-step scene preload: the preload radius interpolated from the maximum to the minimum by the load progress around the camera, the preload mipmap tolerance floored from the progress, the mipmap size multiplier and FOV-adjusted LOD screen size refreshed, the LOD error tolerances re-read from the mesh-detail video options def, then every scene preloads by camera and by sphere, the lighting manager updates the shadow scene, and every scene preloads by the shadow caster clip volume; true while anything is still loading
 // Leaf: ?LoadNewScene@CEnginePrimitiveRenderer@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z
+// NF95 (part 2, q11381): 0x01436EB0 is NEngineInternal::GPVideoOptions (FableWin.pdb public ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B,
+//   FableWin 0x04AC8094; Ego_r.pdb data order GPLightingManager / GPEngine / GPVideoOptions; CEngine::SetVideoOptions 0x00B24690 stores
+//   &VideoOptions there), a pointer to const CEngineVideoOptions (Ego_r.pdb layout, 0x34 bytes).
 // Flags: none
 // Retail-asm: 0x00B32927 `fsub [ebp-10h]` + 0x00B3292A `fistp dword ptr [ebp+8]` -- the engine's inline-assembly floor helper
 //   GFFloatToLongFloor (engine/GFFloatToLongFloor.h; FableWin calls ?GFFloatToLongFloor@@YIJM@Z at 0x02DA9018). This row carries no asm
@@ -96,7 +99,7 @@ FABLE_STATIC_ASSERT(sizeof(CEngineComponentLoadNewSceneParams) == 0x8c);
 FABLE_STATIC_ASSERT(sizeof(CEngineVideoOptions) == 0x34);
 namespace NEngineInternal {
     extern CEngine* GPEngine;                                             // 0x01436EA4 ?GPEngine@NEngineInternal@@3PAVCEngine@@A
-    extern const CEngineVideoOptions* const GPVideoOptions;               // 0x01436EB0 ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B
+    extern const CEngineVideoOptions* GPVideoOptions;                     // 0x01436EB0 ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B
     extern CEngineLightingManager* GPLightingManager;                     // 0x01436E9C
     extern CEngineShadowRenderer* GPShadowRenderer;                       // 0x01436E60
 }

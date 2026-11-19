@@ -5,7 +5,7 @@
 // and free the bar point; on success clear the jug's holder component, forget the jug and the serving point.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00967A20, length 288 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CCreatureAction_PutDownThingAtTable
-// (creature, const CCharString&, mode) @ 0x00842A20, AIAction_PerformActionAndWait @ 0x0097DB70, ~CCreatureActionBase
+// (CThingCreatureBase&, const CCharString&, NCreatureMode::EMode) @ 0x00842A20 (Ego_r.pdb 0x0051CF60 / FableWin.pdb 0x01DE2520; NF95 q11253), AIAction_PerformActionAndWait @ 0x0097DB70, ~CCreatureActionBase
 // @ 0x00693EF0, CAIStateGroup_TavernKeeper::FreeBarPoint @ 0x00967110, CBaseIntelligentPointer GetPItem/ctor/SetPItem/
 // dtor (PJug; null temporary vtable 0x0125A858), CVectorMap::LowerBound @ 0x0040F020 (0xBB = bit 27 of +0x34).
 // Shape: CCreatureAction_PutDownJug (vtable 0x012964DC) is a derived action whose inline constructor builds the
@@ -91,6 +91,7 @@ class CAIStateGroupBase { public:
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class CThingCreatureBase;
+#include "engine/NCreatureMode.h"
 
 class CCreatureActionBase { public:
     virtual void v00();
@@ -98,13 +99,13 @@ class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();                         // 0x00693EF0
 };
 class CCreatureAction_PutDownThingAtTable : public CCreatureActionBase { public:
-    long m_thing;                                   // +0xa8
-    CCreatureAction_PutDownThingAtTable(CThingCreatureBase* owner, const CCharString& animation, long mode);   // 0x00842A20
+    NCreatureMode::EMode Mode;                      // +0xa8 (PDB +0xb4)
+    CCreatureAction_PutDownThingAtTable(CThingCreatureBase& owner, const CCharString& animation, NCreatureMode::EMode mode);   // 0x00842A20
 };
 class CCreatureAction_PutDownJug : public CCreatureAction_PutDownThingAtTable { public:   // vtable 0x012964DC
     virtual void v00();
     CCreatureAction_PutDownJug(CThingCreatureBase* owner)
-        : CCreatureAction_PutDownThingAtTable(owner, "PUT_EMPTY_JUG_ON_BAR", 0x29) { }
+        : CCreatureAction_PutDownThingAtTable(*owner, "PUT_EMPTY_JUG_ON_BAR", NCreatureMode::MODE_HOLD_JUG) { }
 };
 struct CTCJugHolder {                               // interface 0xBB on the jug
     unsigned char _pad[0x0c];

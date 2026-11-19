@@ -26,6 +26,9 @@
 //   0x02C7EC30) and calls the private speech members (AAE, both PDBs) and the protected base ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ
 //   through engine/CAIStateGroupBase.h; EAIActionReturn is engine/EAIAction.h. Were local CAIStateGroupBase /
 //   CAIStateGroup_OpinionReactionRoot models (public members) and a local EAIActionReturn.
+// NF95 2026-11-19 (q11285): the NSpeechGainManager::EDialogueLayer enumerators are the PDB names (engine/NSpeechGainManager.h;
+//   Ego_d.pdb LF_FIELDLIST 0x14C96, installed-game header_enums.csv): DIALOGUE_LAYER_FOREGROUND 0, _MIDGROUND 1, _BACKGROUND 2, _LAST 3;
+//   were the stand-ins DIALOGUE_LAYER_0 / _1 / _2 / _NONE / _COUNT or a bare cast.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWORLD
 #define FABLE_RETAIL_GREETING_PASS23
@@ -40,12 +43,12 @@
 #include "engine/CWorld.h"
 class CTCOpinionSource;
 #include "engine/COpinionReactionManager.h"
-namespace NSpeechGainManager { enum EDialogueLayer { DIALOGUE_LAYER_2 = 2 }; }
+namespace NSpeechGainManager { enum EDialogueLayer { DIALOGUE_LAYER_BACKGROUND = 2 }; }
 #include "engine/CAIStateGroup_OpinionReactionRoot.h"
 
 bool CAIStateGroup_OpinionReactionRoot::WifeToHerselfUpdate(EOpinionAttitudeType attitude)
 {
     CCharString text("TEXT_AI_WIFE_OPINION_ACT_TOHERSELF_", -1);
     text += GetWorld().GetOpinionReactionManager().GetAttitudeString(attitude);
-    return WaitForTextToLoadThenSpeak(text, NSpeechGainManager::DIALOGUE_LAYER_2) == AI_ACTION_FINISHED;
+    return WaitForTextToLoadThenSpeak(text, NSpeechGainManager::DIALOGUE_LAYER_BACKGROUND) == AI_ACTION_FINISHED;
 }

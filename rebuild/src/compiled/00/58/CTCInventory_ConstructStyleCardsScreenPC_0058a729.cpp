@@ -1,4 +1,9 @@
 // CTCInventory::ConstructStyleCardsScreenPC(long, long, long, CComponent*) -- PC style-cards screen: hands this inventory and its owning thing to the front-end manager, then builds the style-cards list component
+// Leaf: ?ConstructStyleCardsScreenPC@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z
+// NF95 2026-11-19 (q11330): both members are the PDB void ones taking NUISystem::CComponent* (Ego_r.pdb 0x005FE707 / FableWin.pdb
+//   0x02130C02 ConstructStyleCardsScreenPC, landed caller 0x0041E6D3 binds it; Ego_r.pdb 0x005FCF94 / FableWin.pdb 0x02124B99
+//   ?GetStyleCardsListUIComponent@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z, retail 0x00589402); were CComponent*-returning
+//   members on a global CComponent.
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0058A729, length 58 bytes.
 // Callees: NUISystem::CFrontEndManager::GetInstance @ 0x0041E5F2 (called twice, once per virtual call),
@@ -8,7 +13,7 @@
 // Layout: only the CTCBase owner pointer at +0x04 is read (engine/CTCInventory.h pads it; the
 // shipped class is narrower than the PDB layout, so a local view names the one member).
 class CThing;
-struct CComponent;
+namespace NUISystem { class CComponent; }
 class CTCInventory;
 
 // NUISystem::CFrontEndManager as this body sees it: two virtual setters (slots 21 and 26).
@@ -47,13 +52,13 @@ class CTCInventory { public:
     void*   __vftable;                            // +0x00
     CThing* PThing;                               // +0x04 CTCBase owner
 
-    CComponent* GetStyleCardsListUIComponent(long a, long b, long c, CComponent* parent);   // 0x00589402
-    CComponent* ConstructStyleCardsScreenPC(long a, long b, long c, CComponent* parent);
+    void GetStyleCardsListUIComponent(long a, long b, long c, NUISystem::CComponent* parent);   // 0x00589402
+    void ConstructStyleCardsScreenPC(long a, long b, long c, NUISystem::CComponent* parent);
 };
 
-CComponent* CTCInventory::ConstructStyleCardsScreenPC(long a, long b, long c, CComponent* parent)
+void CTCInventory::ConstructStyleCardsScreenPC(long a, long b, long c, NUISystem::CComponent* parent)
 {
     NUISystem::CManager::GetInstance()->SetActiveInventory(this);
     NUISystem::CManager::GetInstance()->SetActiveThing(PThing);
-    return GetStyleCardsListUIComponent(a, b, c, parent);
+    GetStyleCardsListUIComponent(a, b, c, parent);
 }

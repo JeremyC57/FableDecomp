@@ -1,0 +1,106 @@
+// CWorld::EACloseHeroCentreDoor(const CGameEvent*) -- game-event action: if the event player's hero is alive, look up the thing whose UID the event carries and tell its hero-centre component that the hero closed the door
+// Leaf: EACloseHeroCentreDoor
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
+// Flags: /GS
+// Retail: Fable.exe @ 0x0062C300, 216 bytes (/GS cookie 0x0139C8A8). PDB ?EACloseHeroCentreDoor@CWorld@@QAEXPBVCGameEvent@@@Z
+// Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"), CPlayer::GetPControlledCreature 0x00487DC0,
+// CGameEvent::GetData 0x009F17A0 (label "CEventPacket::CopyToBuffer"), CMemoryBuffer::Read(unsigned long, void*)
+// 0x009F18F0 (label "CircularBuffer_Read"), CWorld virtual slot 3 GetThingManager (vtable 0x012390F0 -> 0x0049E1B0),
+// CThingManager::GetPThingWithUID(__int64) 0x0051ED80 (label "CStopWatch::GetTicks"), CInterfaceMap::LowerBound
+// 0x0040F020, CTCHeroCentre::OnHeroCloseDoor 0x0077D3E0, __security_check_cookie 0x00BFE9F9.
+// Layout (retail CThing): interface bitset +0x20 (TC 0x6A = CTCHeroCentre, word +0x2C bit 10 -> `test ch,4`),
+// interface map +0x44, Dead +0x91 bit 0.
+// Shape: retail does not check HasTC before calling the component: the inline PeekTC returns an unset local when the
+// thing lacks the component (VC reads the dead UID frame word on that path); the lookup key uses the dead `event` slot.
+// NF95 2026-11-19 (q11320): the unpacking buffer is Ego_r.pdb CGameEventDataPackage (engine/CGameEventDataPackage.h layout, 0x2C bytes)
+//   read through ?GetData@CGameEventDataPackage@@QAEXJPAX@Z 0x009F18F0 (Ego_r.pdb 0x00B454F0 / FableWin.pdb 0x030A2200) and filled by
+//   ?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z 0x009F17A0 (Ego_r.pdb 0x00B453F0); were the stand-ins
+//   CMemoryBuffer::Read(unsigned long, void*) and CGameEvent::GetData(CMemoryBuffer&).
+#include "fable_compiler.h"
+class CGameEventDataPackage { public:
+    unsigned char Data[0x20];                      // +0x00
+    long          Length;                          // +0x20
+    long          ReadPos;                         // +0x24
+    long          WritePos;                        // +0x28
+    CGameEventDataPackage() : Length(0), ReadPos(0), WritePos(0) { }
+    void GetData(long size, void* data);           // 0x009F18F0
+};
+class CGameEvent { public:
+    long          Type;                            // +0x00
+    signed char   Player;                          // +0x04
+    unsigned char Data[32];                        // +0x05
+    unsigned char EndPos;                          // +0x25
+    bool          Valid;                           // +0x26
+    bool          Replacement;                     // +0x27
+    void GetDataPackage(CGameEventDataPackage* package) const;     // 0x009F17A0
+};
+
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+
+class CThing { public:
+    unsigned char _pad00[0x20];
+    unsigned long UsingComponents[9];              // +0x20 bitset<274>
+    CInterfaceMap Components;                      // +0x44
+    unsigned char _pad54[0x3d];
+    unsigned char Dead : 1;                        // +0x91 bit 0
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
+    {
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
+        return (T*)it->second;
+    }
+    template<class T> FABLE_FORCEINLINE T* PeekTC(long interfaceType)
+    {
+        T* component;
+        if (HasTC(interfaceType))
+            component = GetTC<T>(interfaceType);
+        return component;
+    }
+};
+class CThingPlayerCreature : public CThing { };
+
+class CTCHeroCentre { public:
+    void OnHeroCloseDoor();                        // 0x0077D3E0
+};
+class CThingManager { public:
+    CThing* GetPThingWithUID(unsigned __int64 uid);          // 0x0051ED80
+};
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
+
+class CWorld { public:
+    virtual void _slot0();
+    virtual void _slot1();
+    virtual void _slot2();
+    virtual CThingManager* GetThingManager();      // slot 3 (0x0049E1B0)
+protected:
+    CPlayer* GetPlayer(unsigned long number);               // 0x0049D850 ?GetPlayer@CWorld@@IAEPAVCPlayer@@K@Z (Ego_r/FableWin, protected)
+public:
+    void EACloseHeroCentreDoor(const CGameEvent* event);
+};
+
+void CWorld::EACloseHeroCentreDoor(const CGameEvent* event)
+{
+    CThing* hero = GetPlayer(event->Player)->GetPControlledCreature();
+    if (hero && !hero->Dead)
+    {
+        CGameEventDataPackage buffer;
+        event->GetDataPackage(&buffer);
+        __int64 uid;
+        buffer.GetData(8, &uid);
+        CThing* door = GetThingManager()->GetPThingWithUID(uid);
+        if (door)
+            door->PeekTC<CTCHeroCentre>(0x6A)->OnHeroCloseDoor();
+    }
+}

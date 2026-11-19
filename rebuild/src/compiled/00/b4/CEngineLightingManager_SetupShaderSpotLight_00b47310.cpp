@@ -2,8 +2,9 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B47310, length 116 bytes (128 with padding).
 // Callees: CShadowRendererSceneData::CShadowRendererSceneData(const CShadowRendererSceneData&) @ 0x00B38600 (out-of-line copy
-// constructor, `rep movsd` blocks), CShaderRenderManager::SetShadowSpotLightFalloffParameters(const CMatrix3x4*, float, float,
-// const CRGBFloatColour*) @ 0x009899B0 (on the shader render manager @ 0x01436E14). Globals: the shadow renderer @ 0x01436E60
+// constructor, `rep movsd` blocks), CShaderRenderManager::SetShadowSpotLightFallloffParameters(const CMatrix3x4&, float, float,
+// const CRGBFloatColour&) @ 0x009899B0 (Ego_r.pdb 0x00AE61A0 / FableWin.pdb 0x030341B0, the PDB's own `Fallloff` spelling; NF95 q11268,
+// was SetShadowSpotLightFalloffParameters taking pointers) (on the shader render manager @ 0x01436E14). Globals: the shadow renderer @ 0x01436E60
 // (SceneData at +0x0C), the 1.0f pool constant @ 0x0122DED8.
 // Shape: a 0x240-byte scene-data local copied from the renderer (`lea ecx,[esp+0Ch]` after pushing the source), then
 // ratio = SpotRadius / Radius and scale = 1 / (1 / ratio^2 - 1) -- a named float local homed in the frame word below the
@@ -37,8 +38,8 @@ class CEngineShadowRenderer { public:
 namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 
 class CShaderRenderManager { public:
-    void SetShadowSpotLightFalloffParameters(const CMatrix3x4* falloff, float scale, float offset,
-                                             const CRGBFloatColour* colour);   // 0x009899B0
+    void SetShadowSpotLightFallloffParameters(const CMatrix3x4& falloff, float scale, float offset,
+                                              const CRGBFloatColour& colour);   // 0x009899B0
 };
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
@@ -66,6 +67,6 @@ void CEngineLightingManager::SetupShaderSpotLight()
     CShadowRendererSceneData scene(NEngineInternal::GPShadowRenderer->SceneData);
     float ratio = SpotLightParams.SpotRadius / SpotLightParams.Radius;
     float scale = 1.0f / (1.0f / (ratio * ratio) - 1.0f);
-    NEngineInternal::GPShaderRenderManager->SetShadowSpotLightFalloffParameters(&scene.SpotLightFalloffMatrix, scale, -scale,
-                                                                         &SpotLightParams.Colour);
+    NEngineInternal::GPShaderRenderManager->SetShadowSpotLightFallloffParameters(scene.SpotLightFalloffMatrix, scale, -scale,
+                                                                          SpotLightParams.Colour);
 }

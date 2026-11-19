@@ -2,6 +2,9 @@
 // Retail: Fable.exe @ 0x006E4BD0, 63 bytes; __fastcall-shaped STLport helper (ecx = element slot, edx = source element).
 // Callees: CBaseIntelligentPointer ctor 0x00A01B10, GetPItem 0x00A01B50, SetPItem 0x00A01B90.
 // Leaf: _Construct
+// NF95 2026-11-19 (q11285): the NSpeechGainManager::EDialogueLayer enumerators are the PDB names (engine/NSpeechGainManager.h;
+//   Ego_d.pdb LF_FIELDLIST 0x14C96, installed-game header_enums.csv): DIALOGUE_LAYER_FOREGROUND 0, _MIDGROUND 1, _BACKGROUND 2, _LAST 3;
+//   were the stand-ins DIALOGUE_LAYER_0 / _1 / _2 / _NONE / _COUNT or a bare cast.
 #include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 namespace N006e4bd0 {
@@ -18,7 +21,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // i
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 struct CThing;
-enum EDialogueLayer { DIALOGUE_LAYER_NONE };
+enum EDialogueLayer { DIALOGUE_LAYER_FOREGROUND };
 struct CActiveDialogueInfo {                     // NSpeechGainManager::CActiveDialogueInfo (PDB, sizeof 0x18)
     CIntelligentPointer<CThing> ThingSpeaking;   // +0x00 (vtable 0x01238C6C)
     unsigned long               SoundID;         // +0x08

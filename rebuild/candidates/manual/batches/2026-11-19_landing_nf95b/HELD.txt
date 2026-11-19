@@ -1,0 +1,41 @@
+# rows NOT landed from NF95 part 2 (held; sources stay in NF95's workspace rows/ and are archived under naming/2026-11-19_agentNF95_part2/held/)
+# new local model of a shared-header class (prep NEWLOCAL):
+NEWLOCAL 004165e8 CGameEvent 
+NEWLOCAL 004165e8 CGameEventDataPackage 
+NEWLOCAL 004165e8 CGameEventPackage 
+NEWLOCAL 00437870 CPlayerGui (test)
+NEWLOCAL 0049eaf0 CGameEventDataPackage 
+NEWLOCAL 00628e80 CGameEventDataPackage (test)
+NEWLOCAL 006292d0 CGameEventDataPackage 
+NEWLOCAL 00629330 CGameEventDataPackage 
+NEWLOCAL 00629390 CGameEventDataPackage 
+NEWLOCAL 00629420 CGameEventDataPackage 
+NEWLOCAL 006294a0 CGameEvent 
+NEWLOCAL 006294a0 CGameEventDataPackage 
+NEWLOCAL 006295c0 CGameEventDataPackage 
+NEWLOCAL 00629b10 CGameEventDataPackage 
+NEWLOCAL 00629c40 CGameEventDataPackage 
+NEWLOCAL 00629de0 CGameEventDataPackage 
+NEWLOCAL 0062aba0 CGameEventDataPackage 
+NEWLOCAL 0062ad90 CGameEventDataPackage 
+NEWLOCAL 0062c0e0 CGameEventDataPackage 
+NEWLOCAL 0062c1c0 CGameEventDataPackage 
+NEWLOCAL 0062c300 CGameEventDataPackage 
+NEWLOCAL 0062c3e0 CGameEventDataPackage 
+NEWLOCAL 0062c4b0 CGameEventDataPackage 
+NEWLOCAL 0062ce60 CGameEventDataPackage 
+NEWLOCAL 00643be2 C2DVector (test)
+NEWLOCAL 0065f0fa CIsHornTaskWithThisHorn (test)
+NEWLOCAL 0065f0fa CThing (test)
+NEWLOCAL 006a7610 CThing (test)
+NEWLOCAL 006a7610 CThingAICreature (test)
+NEWLOCAL 006a7610 CThingCreatureBase (test)
+NEWLOCAL 007554c0 CEnginePrimitiveMorphedStaticMesh 
+NEWLOCAL 0085ca80 CGameEventDataPackage 
+NEWLOCAL 0085caf0 CGameEventDataPackage 
+NEWLOCAL 008645e0 CTCPerceiveThing 
+NEWLOCAL 008645e0 CTCPerceiveThing (test)
+NEWLOCAL 008645e0 CThing (test)
+NEWLOCAL 008645e0 CThingAICreature (test)
+NEWLOCAL 009d1320 CBankFile 
+# CSalSwBuffer::Release set (NF95: must not land until binder 0x00C5B300 is ported): 00c5ce40 00c5a1f0 00c54bd0

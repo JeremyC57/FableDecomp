@@ -1,13 +1,16 @@
 // CEnginePrimitiveRenderer::FrameStart(const CEngineComponentParams& params) -- per-frame renderer setup: pick the colour- or depth-buffer shadow pixel shaders, publish the frame's interpolation info and bump the engine frame number, FrameStart every primitive manager and the cloth renderer, refresh the LOD tolerances from the texture pool, then derive the mipmap size multiplier and the FOV-adjusted LOD screen size
 // Leaf: ?FrameStart@CEnginePrimitiveRenderer@@UAEXABVCEngineComponentParams@@@Z
+// NF95 (part 2, q11381): 0x01436EB0 is NEngineInternal::GPVideoOptions (FableWin.pdb public ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B,
+//   FableWin 0x04AC8094; Ego_r.pdb data order GPLightingManager / GPEngine / GPVideoOptions; CEngine::SetVideoOptions 0x00B24690 stores
+//   &VideoOptions there), a pointer to const CEngineVideoOptions (Ego_r.pdb layout, 0x34 bytes).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members PItem->Data, PRefCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B32660, length 448 bytes (body 0x1b2 + int3 padding), `ret 4`.
 // Callees: CTextureManager::GetPoolTextureSize @ 0x00B244F0 (on the global @ 0x01436EA4; its result is read as a record:
 //   +0x40/+0x44 are the LOD tolerances), CDisplayManager::GetRenderTargetDimensions() @ 0x009BEDC0 (C2DExtentsI by value, on the
 //   global @ 0x01436E1C), __ftol2 @ 0x00BFEA70; virtual slot 3 (+0xc) of each primitive manager, slot 1 (+4) of the cloth renderer.
 // Globals: the shadow renderer @ 0x01436E60 (mode +0x334, 2 = colour-buffer shadows), the frame interpolation info @ 0x0143B8E0
-//   (0x70 bytes, copied from params +4), the engine frame number @ 0x0143B8D8 (short), the texture-pool owner @ 0x01436EB0 (+0x20
-//   pool id), the camera @ 0x01436EA0 (zoom +0xd4).
+//   (0x70 bytes, copied from params +4), the engine frame number @ 0x0143B8D8 (short), NEngineInternal::GPVideoOptions @ 0x01436EB0 (+0x20
+//   MeshDetail), the camera @ 0x01436EA0 (zoom +0xd4).
 // Layout: as the landed FrameEnd 0x00B32820: the renderer derives from the 0x268-byte CEnginePrimitiveRendererSharedData and a
 //   secondary engine-component base at +0x268 (vtable 0x012A1348, FrameStart = slot 1), so `this` is the subobject and the
 //   shared-data members are reached at negative offsets: the shadow shader pointers +0x21c..+0x238 (-0x4c..-0x30), the depth/colour
@@ -49,10 +52,25 @@ public:
 #include "engine/CEngineVideoOptionsDef.h"
 namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 namespace NEngineInternal { extern CEngine* GPEngine; }                         // 0x01436EA4
-struct CTexturePoolOwner { unsigned char _pad[0x20]; unsigned long PoolID; };
-extern CTexturePoolOwner* g_pTexturePoolOwner_01436eb0;        // 0x01436EB0
 
 class C2DExtentsI { public: long Width; long Height; };
+#include "engine/C2DExtentsF.h"
+#include "engine/EEngineVideoOptionQuality.h"
+#include "engine/ESurfaceMultisampleType.h"
+class CEngineVideoOptions { public:                  // Ego_r.pdb, 0x34 bytes
+    C2DExtentsI               ScreenResolution;   // +0x00
+    C2DExtentsF               ScreenAspectRatio;  // +0x08
+    long                      BitsPerPixel;       // +0x10
+    long                      RefreshRate;        // +0x14
+    bool                      VerticalSync;       // +0x18
+    EEngineVideoOptionQuality LandscapeDetail;    // +0x1c
+    EEngineVideoOptionQuality MeshDetail;         // +0x20
+    EEngineVideoOptionQuality TextureDetail;      // +0x24
+    EEngineVideoOptionQuality ShadowQuality;      // +0x28
+    EEngineVideoOptionQuality EffectsQuality;     // +0x2c
+    ESurfaceMultisampleType   Antialiasing;       // +0x30
+};
+namespace NEngineInternal { extern const CEngineVideoOptions* GPVideoOptions; }   // 0x01436EB0 (NF95 q11381: FableWin.pdb ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B)
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
@@ -146,9 +164,9 @@ void CEnginePrimitiveRenderer::FrameStart(const CEngineComponentParams& params)
     for (unsigned long i = 0; i < PrimitiveManagers.GetCount(); ++i)
         PrimitiveManagers.m_pFirst[i].Data->FrameStart();
     ClothRenderer.Data->FrameStart();
-    if (g_pTexturePoolOwner_01436eb0) {
-        LODErrorTolerance = NEngineInternal::GPEngine->PeekVideoOptionsDef((EEngineVideoOptionQuality)g_pTexturePoolOwner_01436eb0->PoolID).LODErrorTolerance;
-        CharacterLODErrorTolerance = NEngineInternal::GPEngine->PeekVideoOptionsDef((EEngineVideoOptionQuality)g_pTexturePoolOwner_01436eb0->PoolID).CharacterLODErrorTolerance;
+    if (NEngineInternal::GPVideoOptions) {
+        LODErrorTolerance = NEngineInternal::GPEngine->PeekVideoOptionsDef(NEngineInternal::GPVideoOptions->MeshDetail).LODErrorTolerance;
+        CharacterLODErrorTolerance = NEngineInternal::GPEngine->PeekVideoOptionsDef(NEngineInternal::GPVideoOptions->MeshDetail).CharacterLODErrorTolerance;
     }
     C2DExtentsI dims = NEngineInternal::GPDisplayManager->GetRenderTargetDimensions();
     float width = (float)dims.Width;

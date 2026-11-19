@@ -31,6 +31,9 @@
 // Layout: shared headers plus the chunk 2015 overlay (hdr/README.md): new CThingFilter_HasScriptedControl / CMessageEventDef /
 //   NEntityEvents_CEventExpressionPerformedTo headers and opt-ins in CAIStateGroupBase / CTCVillage / CTCEntityEvents / CThingCreatureBase /
 //   CTCCreatureOpinionOfHero / CMessageEventManager.
+// NF95 2026-11-19 (q11285): the NSpeechGainManager::EDialogueLayer enumerators are the PDB names (engine/NSpeechGainManager.h;
+//   Ego_d.pdb LF_FIELDLIST 0x14C96, installed-game header_enums.csv): DIALOGUE_LAYER_FOREGROUND 0, _MIDGROUND 1, _BACKGROUND 2, _LAST 3;
+//   were the stand-ins DIALOGUE_LAYER_0 / _1 / _2 / _NONE / _COUNT or a bare cast.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -124,7 +127,7 @@ enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABO
 enum EAIActionRepeat { AI_ACTION_REPEAT_POLL = 2 };
 enum EMovementType { MOVEMENT_RUN = 5 };
 enum EOpinionPostDeedType { OPINION_POST_DEED_TYPE_1 = 1 };
-namespace NSpeechGainManager { enum EDialogueLayer { DIALOGUE_LAYER_1 = 1 }; }
+namespace NSpeechGainManager { enum EDialogueLayer { DIALOGUE_LAYER_MIDGROUND = 1 }; }
 // Ego_r.pdb / FableWin.pdb ?StopSpeaking@NCreatureAI@@YIXAAVCThingCreatureBase@@@Z (free __fastcall; the creature in ecx, 0x0098013D).
 namespace NCreatureAI { void __fastcall StopSpeaking(CThingCreatureBase& creature); }   // 0x00864580
 
@@ -161,7 +164,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_FindAGuardAndYellForHelp(C3DVector p
                 if (GetCreature().GetTC(&talk)) {
                     CTCTalk::ESpeechPlaybackResult speech;
                     do {
-                        speech = talk->PlayAISpeech("TEXT_AI_CRIME_RUN_TO_GUARDS", false, NSpeechGainManager::DIALOGUE_LAYER_1, false, true);
+                        speech = talk->PlayAISpeech("TEXT_AI_CRIME_RUN_TO_GUARDS", false, NSpeechGainManager::DIALOGUE_LAYER_MIDGROUND, false, true);
                         if (speech != CTCTalk::SPEECH_PLAYBACK_FAILED_RETRY)
                             break;
                         PBrain->SuspendSuspendableProcess();

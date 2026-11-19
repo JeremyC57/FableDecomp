@@ -4,6 +4,9 @@
 //   and mesh detail settings to their subsystems and restore component video memory; the post-device-reset flag is cleared for
 //   the duration and set again on every exit after the initialised check.
 // Leaf: SetVideoOptions
+// NF95 (part 2, q11381): 0x01436EB0 is NEngineInternal::GPVideoOptions (FableWin.pdb public ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B,
+//   FableWin 0x04AC8094; Ego_r.pdb data order GPLightingManager / GPEngine / GPVideoOptions; CEngine::SetVideoOptions 0x00B24690 stores
+//   &VideoOptions there), a pointer to const CEngineVideoOptions (Ego_r.pdb layout, 0x34 bytes).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B24690, 443 bytes (+int3), `ret 4`.
 // Callees: CDisplayManager::SetDisplayMode 0x009BFF40 (x3) and 0x009BFF10 (bool !vsync, 1, 1; the manifest's
 //   CTCInventoryAbilities::AddLearnedExpression label is propagated), CShaderBankStateBlock::Set 0x00B50C60,
@@ -81,7 +84,7 @@ namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer
 extern CEngineLocalDetailGenerator*     g_pLocalDetailGenerator;  // 0x01436E88
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }       // 0x01436E98
 namespace NEngineInternal { extern CEngine* GPEngine; }                // 0x01436EA4
-extern CEngineVideoOptions*             g_pVideoOptions;          // 0x01436EB0
+namespace NEngineInternal { extern const CEngineVideoOptions* GPVideoOptions; }   // 0x01436EB0 (NF95 q11381: FableWin.pdb ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B)
 
 bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
 {
@@ -89,7 +92,7 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
         return false;
     EnablePostDeviceReset = false;
     VideoOptions = options;
-    g_pVideoOptions = &VideoOptions;
+    NEngineInternal::GPVideoOptions = &VideoOptions;
     bool result = true;
     if (NEngineInternal::GPDisplayManager->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, options.Antialiasing, options.RefreshRate) != CREATE_DEVICE_OK) {
         result = false;

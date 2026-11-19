@@ -1,4 +1,4 @@
-// CCreatureAction_CombatIdle::CCreatureAction_CombatIdle(CThingCreatureBase*, CThing*) -- base CCombatActionBase(owner, thing, 50, zeroed CSoundPair)
+// CCreatureAction_CombatIdle::CCreatureAction_CombatIdle(CThingCreatureBase&, CThingCreatureBase&) -- base CCombatActionBase(owner, thing, 50, zeroed CSoundPair)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00906AC0, oracle length 55 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -8,6 +8,10 @@
 // the action code 50 (0x32) and a two-dword sound pair built zeroed on the stack by its inline
 // constructor; then this class's vtable (0x012632B4, rtti-vtables.tsv).
 // One of 13 bodies of this shape.
+// Leaf: ??0CCreatureAction_CombatIdle@@QAE@AAVCThingCreatureBase@@0@Z
+// NF95 2026-11-19 (q11340 / q11341): Ego_r.pdb 0x0092D680 ??0CCreatureAction_CombatIdle@@QAE@AAVCThingCreatureBase@@0@Z (both creatures by reference) and the base
+//   ctor 0x00857F30 = Ego_r.pdb 0x00838C40 ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@AAVCThing@@JABVCSoundPair@@@Z; were pointer
+//   forms. The second creature goes to the base as its CThing (single inheritance at offset 0: no adjustment).
 
 class CThingCreatureBase;
 class CThing;
@@ -20,15 +24,15 @@ class CSoundPair { public:
 
 class CCombatActionBase { public:
     virtual void v00();
-    CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
+    CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
 };
 
 class CCreatureAction_CombatIdle : public CCombatActionBase { public:
     virtual void v00();
-    CCreatureAction_CombatIdle(CThingCreatureBase* owner, CThing* thing);
+    CCreatureAction_CombatIdle(CThingCreatureBase& owner, CThingCreatureBase& thing);
 };
 
-CCreatureAction_CombatIdle::CCreatureAction_CombatIdle(CThingCreatureBase* owner, CThing* thing)
-    : CCombatActionBase(owner, thing, 50, CSoundPair())
+CCreatureAction_CombatIdle::CCreatureAction_CombatIdle(CThingCreatureBase& owner, CThingCreatureBase& thing)
+    : CCombatActionBase(owner, (CThing&)thing, 50, CSoundPair())
 {
 }

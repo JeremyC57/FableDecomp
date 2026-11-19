@@ -67,7 +67,9 @@ class CTCBuyableHouse : public CTCBase { public:
     long              VirtualMoneyBags;                 // +0x44
     long CountMoneyBags() const;                        // 0x006C04D0
     void DestroyMoneyBags(bool giveToHero);             // 0x006C0580
-    bool GetRentMoneyPos(C3DVector* pos, long index, long count);   // 0x006C06D0
+private:
+    bool GetRentMoneyPos(C3DVector& ret, long bag, long bags);   // 0x006C06D0 (Ego_r.pdb / FableWin.pdb: private, by reference)
+public:
     long GetValueOfTrophies() const;                    // 0x006BFFD0
     CBuyableHouseDef* GetDef() const { return PDef; }
     long GetNumberOfRentBagsDue() const
@@ -98,7 +100,7 @@ void CTCBuyableHouse::CreateRentMoney()
         return;
     for (long i = 0; i < VirtualMoneyBags; ++i) {
         C3DVector pos;
-        if (!GetRentMoneyPos(&pos, i, GetDef()->MaxRentBags))
+        if (!GetRentMoneyPos(pos, i, GetDef()->MaxRentBags))
             continue;
         long index;
         {
