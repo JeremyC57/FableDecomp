@@ -400799,6 +400799,41 @@ $catalog = @(
         TestSource = '00/9b/CStringParser_SkipPastNewline_009b9d70_test.cpp'
         PassPattern = '009b9d70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b328c0'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_LoadNewScene_00b328c0.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_LoadNewScene_00b328c0_test.cpp'
+        PassPattern = '00b328c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aac5e0'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_GetActiveSampleInfo_00aac5e0.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_GetActiveSampleInfo_00aac5e0_test.cpp'
+        PassPattern = '00aac5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0c1b0'
+        Module = 'CCamera'
+        Source = '00/a0/CCamera_MoveSideways_00a0c1b0.cpp'
+        TestSource = '00/a0/CCamera_MoveSideways_00a0c1b0_test.cpp'
+        PassPattern = '00a0c1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b9770'
+        Module = 'CParsedItem'
+        Source = '00/9b/CParsedItem_InitAsFloat_009b9770.cpp'
+        TestSource = '00/9b/CParsedItem_InitAsFloat_009b9770_test.cpp'
+        PassPattern = '009b9770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a58130'
+        Module = 'NBBBMaths::CLinearSpline'
+        Source = '00/a5/NBBBMathsCLinearSpline_ProcessPoints_00a58130.cpp'
+        TestSource = '00/a5/NBBBMathsCLinearSpline_ProcessPoints_00a58130_test.cpp'
+        PassPattern = '00a58130_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

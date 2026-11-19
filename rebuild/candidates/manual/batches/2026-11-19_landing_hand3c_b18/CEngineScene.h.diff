@@ -1,0 +1,16 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CEngineScene.h	2026-11-19 15:56:21.614016371 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w24/hand2c/hdr/engine/CEngineScene.h	2026-11-19 17:02:13.015673483 +0000
+@@ -20,6 +20,13 @@
+ public:
+     void RenderEntireScene(EEngineRenderLayer layer);
+     void InvalidateBoundingBoxesAndDrawDistances(); // Ego_r00A46C40/FableWin02E21B80; native00B93500
++#ifdef FABLE_RETAIL_CENGINESCENE_PRELOADPRIMITIVES
++    // hand3c opt-in (row 0x00B328C0 CEnginePrimitiveRenderer::LoadNewScene): Ego_r.pdb / FableWin.pdb ?PreloadPrimitives@CEngineScene@@QAE_N...K@Z
++    // overloads (camera / bounding sphere / shadow clip volume + position), out of line in retail. Declarations only: no layout change.
++    bool PreloadPrimitives(const class CEngineCamera& camera, unsigned long flags);                                         // 0x00B92F80
++    bool PreloadPrimitives(const class C3DBoundingSphere& sphere, unsigned long flags);                                     // 0x00B92E50
++    bool PreloadPrimitives(const class CShadowClipVolume& clip_volume, const class C3DVector& position, unsigned long flags); // 0x00B930A0
++#endif
+ #ifdef FABLE_RETAIL_CENGINESCENE_GETMAXAVERAGEPRIMITIVESPERCELL
+     // hand2c opt-in (row 0x00B947E0 CEngineSceneMap::Update): FableWin.pdb ?GetMaxAveragePrimitivesPerCell@CEngineScene@@QBEMXZ
+     // (0x02E1C840; Ego_d.pdb CEngineScene field list: public, const, float), inline in retail (0x00B9480A `fdiv [ecx+54h]`).

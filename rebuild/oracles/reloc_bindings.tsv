@@ -40348,3 +40348,9 @@ _MAX_NODE_SIZE	01230894	00a770b0
 ?sal_levelToGain@@YAMH@Z	00c54ae0	00c54c10
 ?MaxLayerCellSize@NThingMap@@3JA	013ba84c	006379d0
 ??$__adjust_heap@PAU?$pair@KVC3DVector@@@std@@HU12@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KVC3DVector@@@0@HHU10@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z	00769d50	0076a590
+?GPVideoOptions@NEngineInternal@@3QBVCEngineVideoOptions@@B	01436eb0	00b328c0
+?PreloadPrimitives@CEngineScene@@QAE_NABVC3DBoundingSphere@@K@Z	00b92e50	00b328c0
+?PreloadPrimitives@CEngineScene@@QAE_NABVCEngineCamera@@K@Z	00b92f80	00b328c0
+?PreloadPrimitives@CEngineScene@@QAE_NABVCShadowClipVolume@@ABVC3DVector@@K@Z	00b930a0	00b328c0
+?UpdateShadowScene@CEngineLightingManager@@QAEXABVCEngineCamera@@@Z	00b444f0	00b328c0
+?push_back@?$vector@VCActiveSoundInfo@@V?$allocator@VCActiveSoundInfo@@@std@@@std@@QAEXABVCActiveSoundInfo@@@Z	00aacef0	00aac5e0

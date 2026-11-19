@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00aac5e0   WARN STANDIN_LEAF ?GetActiveSampleInfo@CSoundEmitterLH@@UBEXABVCASoundBank@@JAAV?$vector@VCActiveSoundInfo@@V?$allocator@VCActiveSoundInfo@@@std@@@std@@@Z (catalog CSoundEmitterLH::GetActiveSoundInfo; names another function)
+00aac5e0   RELOCATION_MATCH PASS   GetActiveSampleInfo
+00a0c1b0   MATCH            PASS   MoveSideways
+009b9770   RELOCATION_MATCH PASS   InitAsFloat
+
+WINS: 3
+  00aac5e0 RELOCATION_MATCH CSoundEmitterLH::?GetActiveSampleInfo@CSoundEmitterLH@@UBEXABVCASoundBank@@JAAV?$vector@VCActiveSoundInfo@@
+  00a0c1b0 MATCH CCamera::?MoveSideways@CCamera@@QAEXM@Z
+  009b9770 RELOCATION_MATCH CParsedItem::?InitAsFloat@CParsedItem@@QAEXPBDK@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CSoundEmitterLH_GetActiveSampleInfo_00aac5e0
+  CCamera_MoveSideways_00a0c1b0
+  CParsedItem_InitAsFloat_009b9770

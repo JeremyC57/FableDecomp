@@ -74,6 +74,12 @@ class CEngineClothRenderer;
 #endif
 class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_LOADNEWSCENE
+    // hand3c opt-in (row 0x00B328C0): Ego_r.pdb / FableWin.pdb ?LoadNewScene@CEnginePrimitiveRenderer@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z
+    // (FableWin 0x02DA8F90), the CEngineComponent override (`this` is the +0x268 component, so the shared data reads at negative offsets).
+    // Declaration only: no layout change.
+    virtual bool LoadNewScene(const CEngineComponentLoadNewSceneParams& params);   // 0x00B328C0
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDSTATICMESH
     // Opt-in (wf1 row 0x00BFA920): Ego_r.pdb / FableWin.pdb
     // ?AddStaticMesh@CEnginePrimitiveRenderer@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z

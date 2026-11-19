@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00a58130   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00a58130   WARN STANDIN_LEAF ?ProcessPoints@CLinearSpline@NBBBMaths@@QAEXJ@Z (catalog _global::CPSCSplineBase_GenerateCurvePoints; names another function)
+00a58130   RELOCATION_MATCH PASS   ProcessPoints
+
+WINS: 1
+  00a58130 RELOCATION_MATCH NBBBMaths::CLinearSpline::?ProcessPoints@CLinearSpline@NBBBMaths@@QAEXJ@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NBBBMathsCLinearSpline_ProcessPoints_00a58130

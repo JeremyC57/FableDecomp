@@ -585,7 +585,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009ae7c0	CDefinitionManager	CompileDefinition	1456	parked	DIFFER(1405v1456)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/009ae7c0.cpp	original
 009aed70	CParentDefClassBase	?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z	496	parked	DIFFER(499v492)	2	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/009aed70.cpp	original
 009afb90	CDefinitionManager	LoadBinaryDefinitions	1344	parked	DIFFER(1326v1344)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/009afb90.cpp	original
-009b9770	CParsedItem	InitAsFloat	256	reserved (hand4e, in-house)	DIFFER(177v181)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/009b9770.cpp	original
 009bbcc0	CPersistContext	TransferSubComponentLoadText	1120	parked	DIFFER(1140v1106)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/009bbcc0.cpp	original
 009bd460	CMovieSubtitles	ParseSubtitles	1200	parked	DIFFER(1174v1193)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/009bd460.cpp	original
 009bf7e0	CDisplayManager	CreateDevice	848	reserved (hand3c, not plain C++)	DIFFER(824v846)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand284/differ/009bf7e0.cpp	original
@@ -617,7 +616,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009fe780	CGraphicInfo	InitialiseFramesAsSurfaceSections	352	parked	DIFFER(351v343)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/009fe780.cpp	original
 00a04200	_global	Math_NormalizeVector2D	384	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a04200.cpp	original
 00a0be30	CCamera	SetView	80	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand518/differ/00a0be30.cpp	original
-00a0c1b0	CCamera	MoveSideways	160	reserved (hand4e, in-house)	DIFFER(158v152)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a0c1b0.cpp	original
 00a0c6f0	CCamera	SetAngleYZ	320	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a0c6f0.cpp	original
 00a0ca90	CWParsedItem	InitAsFloat	240	parked	DIFFER(176v187)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a0ca90.cpp	original
 00a10390	_global	WordWrap_FindNextLineW	464	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a10390.cpp	original
@@ -679,7 +677,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a57030	C2DLineF	Intersects2D	272	parked		0	rebuild/candidates/manual/pending/2026-10-20_linux_hand218/differ/00a57030.cpp	original
 00a57140	C2DLineF	GetPointOnInfiniteLine	96	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00a57140.cpp	original
 00a571a0	C2DLineF	GetPointOnLine	656	parked	codex pass24 PARKED: From 00A57210 the optional output tests and temporary x87 values differ. The public const leaf and optional output pointee types agree with both donors.	15	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00a571a0/00a571a0.cpp	original
-00a58130	_global	CPSCSplineBase_GenerateCurvePoints	1440	reserved (hand4d, in-house)	DIFFER(1272v1272)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00a58130.cpp	original
 00a58790	CSphere	GetFirstIntersectionWithFiniteLine	720	parked	DIFFER(699v707)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a58790.cpp	original
 00a58b50	NBBBMaths::CSphere	GetFirstIntersectionWithTriangle	2208	parked	DIFFER(2211v2207)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/00a58b50.cpp	original
 00a5a9d0	std	transform<const C3DVector*, std::back_insert_iterator<std::vector<C2DVector> >, (anonymous	208	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00a5a9d0.cpp	original
@@ -717,7 +714,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a9dc20	_global	ApplyPartialAnimationAlpha	720	parked	DIFFER(709v706)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand727/src/00a9dc20.cpp	original
 00aa8830	CChunkedFileSuperChunk	ReadFromFile	1248	parked	DIFFER(918v889)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00aa8830.cpp	original
 00aabf60	CSoundEmitterLH	CSoundEmitterLH::vfunc_3	624	reserved (hand3c, not plain C++)	DIFFER(625v620)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00aabf60.cpp	gapscan/boundary
-00aac5e0	CSoundEmitterLH	GetActiveSoundInfo	384	reserved (hand4e, in-house)	DIFFER(130v136)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00aac5e0.cpp	original
 00aad340	CWaveFile	ConvertSamplingRate	656	reserved (hand3c, not plain C++)	DIFFER(606v584)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00aad340.test.cpp	original
 00aaf1e0	C3DKeyframe	InitialiseFromMatrix	944	parked	DIFFER(839v904)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00aaf1e0.cpp	original
 00ab1740	C3DAnimationBuilder	AssignAnimation	592	parked	DIFFER(605v592)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00ab1740.cpp	original
@@ -777,7 +773,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b30610	CEngineCamera	ClipBox	720	parked	codex pass24 PARKED: The shared matrix operator produces fewer repeated corner sums and shrinks the leaf by 32 bytes.	27	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00b30610/00b30610.cpp	original
 00b30b50	CEngineCamera	SetCameraState	1552	parked	DIFFER(3v1499)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00b30b50.cpp	original
 00b31160	CEngineCamera	ProcessDebugScript	896	parked	DIFFER(891v886)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand284/differ/00b31160.cpp	original
-00b328c0	CEnginePrimitiveRenderer	?LoadNewScene@CEnginePrimitiveRenderer@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z	528	reserved (hand3c, not plain C++)	DIFFER(529v517)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b328c0.cpp	original
 00b33390	CEnginePrimitiveRenderer	ProcessPrimitiveStats	400	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand600/differ/00b33390.cpp	original
 00b3bc90	CEngineResourceManager	SetupEditorAnimation	384	parked	DIFFER(384v371)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand529/differ/00b3bc90.cpp	original
 00b40670	CEngineMap	PeekWaterType	1376	parked	DIFFER(1072v1125)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand316/differ/00b40670.cpp	original
