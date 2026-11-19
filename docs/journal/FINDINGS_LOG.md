@@ -1306,3 +1306,11 @@ against CODAApi.lib, or stay compiled C++?
 - Next: bisect each with `git archive <commit> rebuild/include` + FABLE_HDR_OVERLAY back to the landing that broke it.
 - (same day, nf95a recheck) 0x0072A680 CTCActionUseBuyOrSteal::~CTCActionUseBuyOrSteal: DIFFER(75v54), test PASS, the same with the pre-nf95a and the
   11-18 include trees: pre-existing, also to bisect. (0x007E2A60 also DIFFER: the known on-hold row.)
+
+## 2026-11-19 (Account B): donor executables not available on the Linux lane
+- Three agents asked for donor disassembly (`ddis.py fw|ed|er`): hand4f, hand4d and hand3c. It needs FableWin.exe, Ego_r.exe and Ego_d.exe, and none of them is on this machine.
+- Two tries to find them, then stopped per loop prevention:
+  - the Drive folder "debug tlc" (where Ego_d.pdb came from) lists as empty through gdown;
+  - the other shared folder holds only unrelated Xbox 360 files.
+- Impact: statement shape has to come from Ego_d locals, scopes and object order, from the PDB type records (`/tmp/claude-0/egod_pdb/types.txt`, which does exist), and from retail bytes.
+- Owner action: if the donor executables are wanted on this lane, put them in the Drive folder. They are fetched outside the repo and never committed.
