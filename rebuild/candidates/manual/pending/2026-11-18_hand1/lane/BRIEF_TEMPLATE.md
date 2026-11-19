@@ -54,7 +54,7 @@ tree) adds source facts none of them had:
   Log every grade as one line in @@A@@/ATTEMPTS.log (addr, idea, grade). There is no fg.py / vt.py / addmatch.py / fwsize.py here.
 - Behaviour test + relocation check of a matched row (read-only; the lander's real check): add the row to @@A@@/payload.json
   (`{"result": {"authored": [{"address": "<addr8>", "module": "<Module>", "name": "<Name>", "source_cpp": <src text>, "test_cpp": <test text>,
-  "pass_pattern": "<addr8>_TEST PASS"}]}}`, plus `"compiler_flags": [...]` when the row has a Flags line), copy its line from
+  "pass_pattern": "<addr8>_TEST PASS"}]}}`, plus `"flags": [...]` when the row has a Flags line (the key verify_and_land reads; "compiler_flags" is silently ignored)), copy its line from
   $S/batch/@@NAME@@_oracle.tsv into @@A@@/oracle.tsv (true length in the length column), then
   `LANDVERIFY_WORK=@@A@@/lv LANDVERIFY_STRICT_HEADERS=1 timeout 3000 python3 -u tools/decomp_pipeline/linux_lane/lane_tools/vland.py @@A@@/payload.json @@A@@/oracle.tsv > @@A@@/tmp/vland.log 2>&1`
   (NEVER with --land / --recheck-landed). A row is matched only with `RELOCATION_MATCH PASS` (or MATCH PASS) there; fix every RELOC_IDENTITY; delete @@A@@/lv after.

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00b6dc40   RELOCATION_MATCH PASS   ProcessSeaLoading
+00ae3c30   RELOCATION_MATCH PASS   ReadFromFile
+
+WINS: 2
+  00b6dc40 RELOCATION_MATCH CEngineWaterRenderer::ProcessSeaLoading
+  00ae3c30 RELOCATION_MATCH CParticleProgram::ReadFromFile
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEngineWaterRenderer_ProcessSeaLoading_00b6dc40
+  CParticleProgram_ReadFromFile_00ae3c30

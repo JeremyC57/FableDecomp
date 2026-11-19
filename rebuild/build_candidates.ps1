@@ -399664,6 +399664,20 @@ $catalog = @(
         TestSource = '00/68/CThingObjectDef_Validate_00680050_test.cpp'
         PassPattern = '00680050_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b6dc40'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b6/CEngineWaterRenderer_ProcessSeaLoading_00b6dc40.cpp'
+        TestSource = '00/b6/CEngineWaterRenderer_ProcessSeaLoading_00b6dc40_test.cpp'
+        PassPattern = '00b6dc40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae3c30'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_ReadFromFile_00ae3c30.cpp'
+        TestSource = '00/ae/CParticleProgram_ReadFromFile_00ae3c30_test.cpp'
+        PassPattern = '00ae3c30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -40220,3 +40220,14 @@ __wcsicmp	00f3fb84	00599e3f
 ?InternalPlaySoundEventAtPos@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVC3DVector@@ABVCCharString@@_N3@Z	0066a920	0066a9e0
 ?ApplyImpulse@Mass@@QAEXVC2DVector@@0@Z	008eea80	008eec70
 ?ForceToVel@Mass@@QAE?AVC2DVector@@V2@0@Z	008eeb40	008eec70
+??1?$CCountedPointer@VCBankFileAsyncData@@@@QAE@XZ	009a4400	00b6dc40
+?LoadSea@CEngineWaterRenderer@@QAEXAAVCMemoryDataInputStream@@@Z	00b6d420	00b6dc40
+??$sort@PAU?$pair@VCCharString@@K@std@@V?$CKeyPairCompareLess@VCCharString@@K@@@std@@YIXPAU?$pair@VCCharString@@K@0@0V?$CKeyPairCompareLess@VCCharString@@K@@@Z	009b8ef0	00ae3c30
+?AllocateArrays@CParticleProgram@@AAE_NKAAVCMovableResourceMemoryPool@@@Z	00adf460	00ae3c30
+?CopyTo@CDataInputStream@@QAEXAAVCDataOutputStream@@K@Z	009964e0	00ae3c30
+?ReadFromFile@CParticleSimulation@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z	00ae1bc0	00ae3c30
+?ReadGroups@CParticleProgram@@CIXAAVCDataInputStream@@AAV?$CArray@VC3DGroup2@@@@@Z	00ae3a60	00ae3c30
+?resize@?$vector@U?$pair@VCCharString@@K@std@@V?$allocator@U?$pair@VCCharString@@K@std@@@2@@std@@QAEXI@Z	00ae7d10	00ae3c30
+?resize@?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@QAEXI@Z	00ae7b10	00ae3c30
+?resize@?$vector@VC3DClothRenderVertex@@V?$allocator@VC3DClothRenderVertex@@@std@@@std@@QAEXIABVC3DClothRenderVertex@@@Z	00ae7830	00ae3c30
+?resize@?$vector@VC3DQuad2@@V?$allocator@VC3DQuad2@@@std@@@std@@QAEXI@Z	00ae7aa0	00ae3c30

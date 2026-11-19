@@ -304,3 +304,10 @@ headers, never as asm in the row.
 ## Inferred statements (owner, 2026-11-12)
 - When the retail bytes prove a source construct existed but not its exact wording, an inferred statement may land if the row then behaves exactly as retail (the bytes match and the statement cannot change the result).
 - Mark it in the source header (`// Inferred:` + the retail bytes that require it + what was ruled out) and in the batch README. Prefer a wording a programmer could plausibly have written (e.g. a test whose arm was compiled out).
+
+## 2026-11-19 owner: include order is an accepted lever
+"header includes can be order sensitive, so if you find a row with an issue that seems similar, then try header order variants."
+c2 numbers candidate records partly by c1 symbol ordinal, so the order of a row's #includes can decide a register / reload /
+scheduling tie (0x00680050, landed 2026-11-19). On a tie that survives every statement-level variant, permute the row's includes
+(real shared headers only; adding an include the TU plausibly had is fine; no new declarations). A row matched this way carries an
+`// Include-order:` note: the order, the measured mechanism, and that it is fragile to shared-header changes (recheck after them).
