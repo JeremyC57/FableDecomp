@@ -68,6 +68,11 @@ public:
 #endif
   float GetRingRadius(long ring) const;                                          // 0x006E8850
 #endif
+#ifdef FABLE_RETAIL_CCOMBATWHEEL_UPDATE
+  // Opt-in (hand4a, row 0x006ECEA0): Ego_r.pdb + FableWin.pdb ?Update@CCombatWheel@CDefendingCombatantInfo@@QAEXXZ (FableWin
+  // 0x02411220), out of line in retail at 0x006E8560 (landed). Declaration only.
+  void Update();                                                                 // 0x006E8560
+#endif
   std::vector<CCombatRing> CombatRings;};
  std::map<unsigned __int64,CThingCreatureBase*> Attackers;CCombatWheel CombatWheel;
  C3DVector LastVictimWheelUpdatePos;long LastWheelUpdateWorldFrame;CIntelligentPointer<CThing> PLastAttacker;

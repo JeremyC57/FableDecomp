@@ -40272,3 +40272,5 @@ __wcsicmp	00f3fb84	00599e3f
 ?GetProngSeparationHalfAngle@CCombatRing@CDefendingCombatantInfo@@QBEMXZ	006e8460	006e94d0
 ?GetRing@CCombatWheel@CDefendingCombatantInfo@@QBEPBVCCombatRing@2@J@Z	006e8520	006e94d0
 _MOVE_TO_PRONG_NAV_PROXIMITY	01261d68	006e94d0
+?Init@CCombatWheel@CDefendingCombatantInfo@@QAEXAAVCCombatManager@@AAVCWorldMap@@ABV?$map@PAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@U?$less@PAVCThingCreatureBase@@@std@@V?$allocator@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@@4@@std@@ABVCThingCreatureBase@@@Z	006ec850	006ecea0
+?Update@CCombatWheel@CDefendingCombatantInfo@@QAEXXZ	006e8560	006ecea0

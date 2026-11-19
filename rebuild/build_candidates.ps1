@@ -400085,6 +400085,13 @@ $catalog = @(
         TestSource = '00/6e/CCombatManager_IsCreatureInAttackRingSector_006e94d0_test.cpp'
         PassPattern = '006e94d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006ecea0'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_SetupDefenderPlacementWheel_006ecea0.cpp'
+        TestSource = '00/6e/CCombatManager_SetupDefenderPlacementWheel_006ecea0_test.cpp'
+        PassPattern = '006ecea0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+006ecea0   WARN STANDIN_LEAF ?SetupDefenderPlacementWheel@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z (catalog CDefendingCombatantInfo::CDefendingCombatantInfo::UpdateCombatState; names another function)
+006ecea0   RELOCATION_MATCH PASS   SetupDefenderPlacementWheel
+
+WINS: 1
+  006ecea0 RELOCATION_MATCH CCombatManager::?SetupDefenderPlacementWheel@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCombatManager_SetupDefenderPlacementWheel_006ecea0

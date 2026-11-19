@@ -82,6 +82,18 @@ public:
 #else
  const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase&)const;
 #endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_SETUPPLACEMENTWHEEL
+ // Opt-in (hand4a, row 0x006ECEA0): Ego_r.pdb (0x007167A0) + FableWin.pdb (0x0241AD40) private
+ // ?SetupDefenderPlacementWheel@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z, with the two private inlines it expands: FableWin
+ // ?GetWorld@CCombatManager@@ABEAAVCWorld@@XZ (0x024128A0; retail reads World +0x20 in place) and the non-const
+ // ?GetCombatantInfo@CCombatManager@@AAEAAUCCombatantInfo@@ABVCThingCreatureBase@@@Z (Ego_r + FableWin 0x02415CC0; retail expands it:
+ // the UniqueID copied into a key temporary and looked up in Combatants, _M_find 0x006F0250, node + 0x18). No layout change.
+private:
+ CWorld& GetWorld() const { return World; }
+ CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUniqueID())->second; }
+ void SetupDefenderPlacementWheel(CCombatantInfo& combat_info, bool force_wheel_update);   // 0x006ECEA0
+public:
+#endif
 #ifdef FABLE_RETAIL_CCOMBATMANAGER
  // Chunk 732 (CThingPlayerCreature melee rows): Ego_r.pdb spellings, out of line in retail. (FableWin's inline
  // GetProximityForNavigation is left out: only the parked 0x006AA720 uses it, pending the owner's access-level decision.)
