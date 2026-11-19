@@ -5152,9 +5152,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00445960'
-        Module = 'CShaderPreParser'
-        Source = '00/44/CShaderPreParser_GetConstantCount_00445960.cpp'
-        TestSource = '00/44/CShaderPreParser_GetConstantCount_00445960_test.cpp'
+        Module = 'CGamePlayerInterface'
+        Source = '00/44/CGamePlayerInterface_GetNumberOfContextSensitiveItemButtons_00445960.cpp'
+        TestSource = '00/44/CGamePlayerInterface_GetNumberOfContextSensitiveItemButtons_00445960_test.cpp'
         PassPattern = 'CShaderPreParser_00445960_TEST PASS'
     }
     [pscustomobject]@{
@@ -15310,9 +15310,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '01229260'
-        Module = '_global'
-        Source = '01/22/global_GlobalMethodTailThunk01229260_01229260.cpp'
-        TestSource = '01/22/global_GlobalMethodTailThunk01229260_01229260_test.cpp'
+        Module = 'CTCBase'
+        Source = '01/22/CTCBase_dynamicatexitdestructorforGlobalUpdateTCs_01229260.cpp'
+        TestSource = '01/22/CTCBase_dynamicatexitdestructorforGlobalUpdateTCs_01229260_test.cpp'
         PassPattern = 'AUTO_TINY_01229260_TEST PASS'
     }
     [pscustomobject]@{
@@ -17816,9 +17816,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004da27f'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/4d/LTextTreeWalkThrough_BuildTreeArray_004da27f.cpp'
-        TestSource = '00/4d/LTextTreeWalkThrough_BuildTreeArray_004da27f_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CDefString>, std::_Select1st<std::pair<long const, CDefString> >, std::less<long>, std::allocator<std::pair<long const, CDefString> > >'
+        Source = '00/4d/stdRbtree_Merase_004da27f.cpp'
+        TestSource = '00/4d/stdRbtree_Merase_004da27f_test.cpp'
         PassPattern = 'AUTO_TINY_004da27f_TEST PASS'
     }
     [pscustomobject]@{
@@ -148258,9 +148258,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0121e010'
-        Module = '_static_init'
-        Source = '01/21/staticinit_glist013ba8ac_0121e010.cpp'
-        TestSource = '01/21/staticinit_glist013ba8ac_0121e010_test.cpp'
+        Module = 'CTCBase'
+        Source = '01/21/CTCBase_dynamicinitializerforGlobalUpdateTCs_0121e010.cpp'
+        TestSource = '01/21/CTCBase_dynamicinitializerforGlobalUpdateTCs_0121e010_test.cpp'
         PassPattern = '0121e010_TEST PASS'
     }
     [pscustomobject]@{
@@ -282264,9 +282264,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00769d50'
-        Module = '_global'
-        Source = '00/76/global_Adjustheap_00769d50.cpp'
-        TestSource = '00/76/global_Adjustheap_00769d50_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_adjustheap_00769d50.cpp'
+        TestSource = '00/76/std_adjustheap_00769d50_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00769d50_TEST PASS'
     }
@@ -285932,8 +285932,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0076af10'
         Module = 'std'
-        Source = '00/76/std_Sortheap_0076af10.cpp'
-        TestSource = '00/76/std_Sortheap_0076af10_test.cpp'
+        Source = '00/76/std_sortheap_0076af10.cpp'
+        TestSource = '00/76/std_sortheap_0076af10_test.cpp'
         PassPattern = '0076af10_TEST PASS'
     }
     [pscustomobject]@{
@@ -286527,8 +286527,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00769470'
         Module = 'std'
-        Source = '00/76/std_Pushheap_00769470.cpp'
-        TestSource = '00/76/std_Pushheap_00769470_test.cpp'
+        Source = '00/76/std_pushheap_00769470.cpp'
+        TestSource = '00/76/std_pushheap_00769470_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00769470_TEST PASS'
     }
@@ -291114,8 +291114,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005e1c30'
         Module = 'std'
-        Source = '00/5e/STL_makeheap_005e1c30.cpp'
-        TestSource = '00/5e/STL_makeheap_005e1c30_test.cpp'
+        Source = '00/5e/std_makeheap_005e1c30.cpp'
+        TestSource = '00/5e/std_makeheap_005e1c30_test.cpp'
         PassPattern = '005e1c30_TEST PASS'
     }
     [pscustomobject]@{
@@ -291170,8 +291170,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005e2f40'
         Module = 'std'
-        Source = '00/5e/STL_partialsort_005e2f40.cpp'
-        TestSource = '00/5e/STL_partialsort_005e2f40_test.cpp'
+        Source = '00/5e/std_partialsort_005e2f40.cpp'
+        TestSource = '00/5e/std_partialsort_005e2f40_test.cpp'
         PassPattern = '005e2f40_TEST PASS'
     }
     [pscustomobject]@{
@@ -291205,8 +291205,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005e37d0'
         Module = 'std'
-        Source = '00/5e/STL_introsortloop_005e37d0.cpp'
-        TestSource = '00/5e/STL_introsortloop_005e37d0_test.cpp'
+        Source = '00/5e/std_introsortloop_005e37d0.cpp'
+        TestSource = '00/5e/std_introsortloop_005e37d0_test.cpp'
         PassPattern = '005e37d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -294238,8 +294238,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0076a480'
         Module = 'std'
-        Source = '00/76/STL_makeheap_0076a480.cpp'
-        TestSource = '00/76/STL_makeheap_0076a480_test.cpp'
+        Source = '00/76/std_makeheap_0076a480.cpp'
+        TestSource = '00/76/std_makeheap_0076a480_test.cpp'
         PassPattern = '0076a480_TEST PASS'
     }
     [pscustomobject]@{
@@ -294266,8 +294266,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0076b530'
         Module = 'std'
-        Source = '00/76/STL_partialsort_0076b530.cpp'
-        TestSource = '00/76/STL_partialsort_0076b530_test.cpp'
+        Source = '00/76/std_partialsort_0076b530.cpp'
+        TestSource = '00/76/std_partialsort_0076b530_test.cpp'
         PassPattern = '0076b530_TEST PASS'
     }
     [pscustomobject]@{

@@ -9,6 +9,9 @@
 #ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_HIGHLIGHT_COLOUR_PUBLIC_PASS24
 #include "engine/CRGBColour.h"
 #endif
+#if defined(FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_HIGHLIGHT_COLOUR_BAD) && !defined(FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_HIGHLIGHT_COLOUR_PUBLIC_PASS24)
+#include "engine/CRGBColour.h"
+#endif
 #include <stddef.h>
 #include "rebuild_abi.h"
 #ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
@@ -52,7 +55,13 @@ public: CTavernGameCardBaseDef& operator=(const CTavernGameCardBaseDef&);
 #else
     unsigned char HighlightColourGood[0x4];                  // +0x54 CRGBColour
 #endif
+#ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_HIGHLIGHT_COLOUR_BAD
+    // NF96 opt-in (q11339, row 0x007D5890 CTCTavernGameCardSorting::SelectCard): the member with its Ego_r.pdb type (CRGBColour, 4 bytes;
+    // the row passes it by reference to CTCGraphicAppearance::SetAsHighlighted). Same offset and size as the opaque default.
+    CRGBColour    HighlightColourBad;                        // +0x58
+#else
     unsigned char HighlightColourBad[0x4];                   // +0x58 CRGBColour
+#endif
     float         CardSeparation;                            // +0x5c
     float         TableSeparation;                           // +0x60
     float         PackOffset_X;                              // +0x64 C2DVector::X

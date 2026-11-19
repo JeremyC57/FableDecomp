@@ -14,144 +14,49 @@
 // Shape: as the CardSorting body; the trailing stores follow the deal in source order (GameType first, the round count
 //        from CardOrders.size(), then the two zero stores from the re-zeroed loop register); the def is released through
 //        the def's inline `DecRef(); if (GetRefCount() == 0) Destroy();` with its null test.
-class CCard;
-class C2DVector { public: float X, Y; };
-
-struct __true_type { __true_type() { } };
-inline void* operator new(unsigned int, void* where) { return where; }
-template <class T> struct CRetailVector {       // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() const { return _M_start; }
-    T* end() const { return _M_finish; }
-    unsigned int size() const { return end() - begin(); }
-    T& operator[](unsigned int n) const { return *(begin() + n); }
-    void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned long fill_len, bool atend);   // 0x007D5D60
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) T(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
-    }
-};
-
-class CCardPositionsDef { public:
-    unsigned char _defbase[0x3c];               // CDefClassBase (retail 0x3c)
-    CRetailVector<C2DVector> Offset;            // +0x3c
-};
-struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
-    long GetRefCount() const { return m_count; }
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
-    unsigned char _pad_0x08[0x64];
-    CRetailVector<CCardPositionsDef> CardOrders;   // +0x6c
-    void ReleaseTemporary()
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
-struct CDefPointer {
-    CTavernGameCardBaseDef* Object;
-    CDefPointer() : Object(0) {}
-    ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
-    CTavernGameCardBaseDef* operator->() const { return Object; }
-};
-
-struct CTCTavernGameCardBase {
-    virtual void v00();
-    virtual void v01();
-    virtual void v02();
-    virtual void v03();
-    virtual void v04();
-    virtual void v05();
-    virtual void v06();
-    virtual void v07();
-    virtual void v08();
-    virtual void v09();
-    virtual void v10();
-    virtual void v11();
-    virtual void v12();
-    virtual void v13();
-    virtual void v14();
-    virtual void v15();
-    virtual void v16();
-    virtual void v17();
-    virtual void v18();
-    virtual void v19();
-    virtual void v20();
-    virtual void v21();
-    virtual void v22();
-    virtual void v23();
-    virtual void v24();
-    virtual void v25();
-    virtual void v26();
-    virtual void v27();
-    virtual void v28();
-    virtual void v29();
-    virtual void v30();
-    virtual void v31();
-    virtual void NewRound();                    // slot 32
-    virtual void v33();
-    virtual void v34();
-    virtual void v35();
-    virtual void v36();
-    virtual void v37();
-    virtual void v38();
-    virtual void v39();
-    virtual void v40();
-    virtual void v41();
-    virtual void v42();
-    virtual void v43();
-    virtual void v44();
-    virtual void v45();
-    virtual void v46();
-    virtual void v47();
-    virtual void v48();
-    virtual void v49();
-    virtual void v50();
-    virtual void v51();
-    virtual void v52();
-    virtual void v53();
-    virtual void v54();
-    virtual void v55();
-    virtual void v56();
-    virtual long GetCardOrder();                // slot 57
-    virtual void v58();
-    virtual void v59();
-    virtual void ShuffleCards();                // slot 60
-    unsigned char _pad_0x04[0x20];
-    long          NumRounds;                    // +0x24 (CTCTavernGame)
-    unsigned char _pad_0x28[0x100];
-    CRetailVector<CCard*> Cards;                // +0x128
-    CRetailVector<CCard*> Pack;                 // +0x134
-    unsigned char _pad_0x140[0x14];
-    float         Counter;                      // +0x154
-    unsigned char _pad_0x158[0x1a4];
-    long          NumCards;                     // +0x2fc
-    long          GameType;                     // +0x300
-    void GetCardDef(CDefPointer* out);          // 0x008F0B20
-};
-struct CTCTavernGameCardPairs : CTCTavernGameCardBase {
-    unsigned char _pad_0x304[0x14];
-    void*         AlternateSelectedCard;        // +0x318 (CCard*)
-    virtual void NewRound();
-};
-
+// Shared headers (NF96 q11339): engine/CTCTavernGameCardBase.h / CTCTavernGameCardPairs.h (the 0x007D6870 recipe; overlay opt-ins
+//   FABLE_RETAIL_CTCTAVERNGAMECARDBASE_NEWROUND (existing) / _ECARDGAMETYPE_VALUES and FABLE_RETAIL_CTCTAVERNGAMECARDPAIRS_ROUND_OVERRIDES),
+//   CTavernGameCardBaseDef.h (CardOrders), CCardPositionsDef.h (Offset) and the STLport vector<CCard*> (push_back inline,
+//   _M_insert_overflow 0x007D5D60 declared only), so GetCardDef 0x008F0B20 binds its PDB spelling (was a local CDefPointer struct and local
+//   CTCTavernGameCardBase / def / CRetailVector models).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CTCTAVERNGAME
+#define FABLE_RETAIL_CTCTAVERNGAME_GETDEF_OUTOFLINE
+#define FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#define FABLE_RETAIL_CTCTAVERNGAMECARDPAIRS_ROUND_OVERRIDES
+#define FABLE_RETAIL_CTCTAVERNGAMECARDBASE_NEWROUND
+#define FABLE_RETAIL_CTCTAVERNGAMECARDBASE_ECARDGAMETYPE_VALUES
+#define FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_CARDORDERS
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
+#include "stlport/fable_containers.h"
+#include "fable_game.h"
+#include "engine/CThingObject.h"
+#include "engine/C3DVector.h"
+#include "engine/CRightHandedSet.h"
+#include "engine/CCardPositionsDef.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameCardBaseDef.h"
+#include "engine/CTCTavernGame.h"
+#include "engine/CTCTavernGameCardBase.h"
+#include "engine/CTCTavernGameCardPairs.h"
 void CTCTavernGameCardPairs::NewRound()
 {
     CTCTavernGameCardBase::NewRound();
-    CDefPointer def;
+    CDefPointer<const CTavernGameCardBaseDef> def(NULL_DEF);
     GetCardDef(&def);
     long order = GetCardOrder();
     NumCards = def->CardOrders[order].Offset.size();
@@ -159,7 +64,7 @@ void CTCTavernGameCardPairs::NewRound()
         CCard* card = Pack[i];
         Cards.push_back(card);
     }
-    GameType = 1;
+    GameType = ECGT_ROUND_LIMIT;
     NumRounds = def->CardOrders.size();
     Counter = 0;
     AlternateSelectedCard = 0;

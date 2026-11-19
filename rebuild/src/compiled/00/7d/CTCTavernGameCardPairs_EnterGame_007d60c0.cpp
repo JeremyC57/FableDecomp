@@ -1,5 +1,5 @@
 // CTCTavernGameCardPairs::EnterGame() -- enter the card game, then create the pointer game piece from the card def and place it at the game position, raised by the def's pointer height
-// Leaf: vfunc_29
+// Leaf: ?EnterGame@CTCTavernGameCardPairs@@UAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D60C0, length 143 bytes (padded row 144); CTCTavernGameCardPairs vtable 0x0126F6FC slot 29
 // (an EnterGame override: it starts with CTCTavernGameCardBase::EnterGame).
@@ -14,66 +14,48 @@
 //   ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z -- a static __fastcall member taking
 //   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
 //   are classes (V in every PDB signature).
-class CThing;
-class CThing { };
-class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
+// Shared headers (NF96 q11339): engine/CTCTavernGameCardBase.h / CTCTavernGameCardPairs.h (the 0x007D6870 recipe; overlay opt-ins
+//   FABLE_RETAIL_CTCTAVERNGAMECARDBASE_ENTERGAME and FABLE_RETAIL_CTCTAVERNGAMECARDPAIRS_ROUND_OVERRIDES declare the PDB overrides),
+//   CTavernGameCardBaseDef.h (PointerModel / PointerHeightOffset, the PDB names of the old model's PointerDef / PointerHeight) and
+//   CDefPointer<const CTavernGameCardBaseDef>, so GetCardDef 0x008F0B20 binds its PDB spelling; the row's own name was the placeholder
+//   CTCTavernGameCardPairs::vfunc_29 (Ego_r.pdb 0x007D3410 / FableWin.pdb 0x0274A260 ?EnterGame@CTCTavernGameCardPairs@@UAEXXZ; vtable
+//   0x0126F6FC slot 29 = 0x007D60C0).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CTCTAVERNGAME
+#define FABLE_RETAIL_CTCTAVERNGAME_GETDEF_OUTOFLINE
+#define FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#define FABLE_RETAIL_CTCTAVERNGAMECARDPAIRS_ROUND_OVERRIDES
+#define FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH
+#define FABLE_RETAIL_CTCTAVERNGAMECARDBASE_ENTERGAME
+#include "stlport/fable_containers.h"
+#include "fable_game.h"
+#include "engine/CThingObject.h"
 #include "engine/C3DVector.h"
-class CRightHandedSet { public: float m[6]; };
-class CTCTavernGame {
-public:
-    static void __fastcall PositionMesh(CThing* thing, const C3DVector& position, const CRightHandedSet& orientation,
-                                        const C3DVector& offset, float tilt, float angle);   // 0x005EABC0
-};
-struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
-    long GetRefCount() const { return m_count; }
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
-    unsigned char _pad08[0x3c - 0x08];
-    long  PointerDef;                           // +0x3c
-    unsigned char _pad40[0x48 - 0x40];
-    float PointerHeight;                        // +0x48
-    void ReleaseTemporary()
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
-struct CDefPointer {
-    CTavernGameCardBaseDef* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
-    CTavernGameCardBaseDef* operator->() const { return Object; }
-};
-struct CTCTavernGameCardBase {
-    virtual void v00();
-    unsigned char _body04[0xf0 - 0x04];
-    CRightHandedSet GamePositionRHSet;          // +0xf0
-    C3DVector GamePositionPos;                  // +0x108
-    long  GamePositionActionPointIndex;         // +0x114
-    float MinX, MaxX, MinY, MaxY;               // +0x118
-    void* Cards[3];                             // +0x128
-    void* Pack[3];                              // +0x134
-    CThingObject* Pointer;                      // +0x140
-    void EnterGame();                           // 0x008F1E30
-    void GetCardDef(CDefPointer* out);          // 0x008F0B20
-    CThingObject* CreateGamePiece(long defIndex);   // 0x005EA9B0 (CTCTavernGame)
-};
-struct CTCTavernGameCardPairs : CTCTavernGameCardBase {
-    void vfunc_29();
-};
-
-void CTCTavernGameCardPairs::vfunc_29()
+#include "engine/CRightHandedSet.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameCardBaseDef.h"
+#include "engine/CTCTavernGame.h"
+#include "engine/CTCTavernGameCardBase.h"
+#include "engine/CTCTavernGameCardPairs.h"
+void CTCTavernGameCardPairs::EnterGame()
 {
     CTCTavernGameCardBase::EnterGame();
-    CDefPointer def;
+    CDefPointer<const CTavernGameCardBaseDef> def(NULL_DEF);
     GetCardDef(&def);
-    Pointer = CreateGamePiece(def->PointerDef);
-    CTCTavernGame::PositionMesh(Pointer, GamePositionPos, GamePositionRHSet, C3DVector(0.0f, 0.0f, def->PointerHeight), 0.0f, 0.0f);
+    Pointer = CreateGamePiece(def->PointerModel);
+    CTCTavernGame::PositionMesh(Pointer, GamePositionPos, GamePositionRHSet, C3DVector(0.0f, 0.0f, def->PointerHeightOffset), 0.0f, 0.0f);
 }
