@@ -1,0 +1,9 @@
+addr       parity           behav  name
+006e8ee0   WARN STANDIN_LEAF ?GetClosestUnassignedProng@?A0x6606df78@@YIJABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@ABVC3DVector@@JAAV?$vector@_NV?$allocator@_N@std@@@3@1@Z (catalog _global::FindNearestIndexToPoint; names another function)
+006e8ee0   RELOCATION_MATCH PASS   GetClosestUnassignedProng
+
+WINS: 1
+  006e8ee0 RELOCATION_MATCH (anonymous namespace)::?GetClosestUnassignedProng@
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  anonymousnamespace_GetClosestUnassignedProng_006e8ee0

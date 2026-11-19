@@ -400071,6 +400071,13 @@ $catalog = @(
         TestSource = '00/98/CThingSearchTools_GetPFirstThingInRoughAreaCFilterBind4CThingFilte_009871c0_test.cpp'
         PassPattern = '009871c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006e8ee0'
+        Module = '(anonymous namespace)'
+        Source = '00/6e/anonymousnamespace_GetClosestUnassignedProng_006e8ee0.cpp'
+        TestSource = '00/6e/anonymousnamespace_GetClosestUnassignedProng_006e8ee0_test.cpp'
+        PassPattern = '006e8ee0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
