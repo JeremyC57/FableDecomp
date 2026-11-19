@@ -11,6 +11,9 @@
 //   +0x10} at +0x2840. CSurface/CRenderTarget as the landed CRenderTarget::AttachTarget 0x00A10E60.
 // Shape: as BeginOutlineRendering (scoped saved target); the clear colour is CRGBColour(0xff, ClearY, ClearX, 0); the
 //   state switch is an inline core method (early-out on an equal value, capture push, dirty-list push).
+// Name fix (NF98, round 8, q11274): 0x009F9E00 is CTexture::GetSurfaceLevel(long) const (Ego_r.pdb / FableWin.pdb
+//   ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z; engine/CTexture.h), was a made-up non-const GetSurface: in-place respell of the
+//   local CTexture declaration and its call sites, as the landed self row 0x009F9E00 (NF93).
 #include "fable_compiler.h"
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 
@@ -55,7 +58,7 @@ class CDisplayManager { public:
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 class CTexture { public:
-    CSurface GetSurface(long level);               // 0x009F9E00
+    CSurface GetSurfaceLevel(long level) const;    // 0x009F9E00
 };
 
 // NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
@@ -133,7 +136,7 @@ bool CEngineScreenEffectDisplacementRenderer_Begin::BeginDisplacementRendering()
     }
     *(C2DBoxI*)&OldViewport_TLX = NEngineInternal::GPDisplayManager->Viewport;
     CRenderTarget target;
-    target.AttachTarget(DisplacementTexture->GetSurface(0));
+    target.AttachTarget(DisplacementTexture->GetSurfaceLevel(0));
     NEngineInternal::GPDisplayManager->SetRenderTarget(&target);
     if (!HasContent) {
         g_pRenderManagerCore->Clear(CRGBColour(0xff, (unsigned char)ClearY, (unsigned char)ClearX, 0), 4);

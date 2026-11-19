@@ -14,6 +14,11 @@
 // IsReadyToSleep +0x0c.
 // Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
 // Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
+// Leaf: ?Update@CAIStateGroup_GoToBed@@QAEXXZ
+// Name fix (NF98, round 8, q11293): 0x00662000 is CThingCreatureBase::GetCreatureType() const returning ECreatureType (Ego_r.pdb 0x0053CE50 /
+//   FableWin.pdb 0x01D9A450 ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ; engine/CThingCreatureBase.h CREATURETYPE), was a long-returning GetCreatureType:
+//   the in-place declaration respell of the landed sibling 0x00914AA0 (NF93), with engine/ECreatureType.h.
+#include "engine/ECreatureType.h"
 enum EMovementType;                           // MS forward enum
 enum EAIActionRepeat;                         // MS forward enum
 enum EAIActionReturn;                         // MS forward enum
@@ -76,7 +81,7 @@ class CThingPhysical : public CThing { public:
 };
 class CThingCreatureBase : public CThingPhysical { public:
     bool HasAnim(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x00662C70
-    long GetCreatureType() const;                      // 0x00662000
+    ECreatureType GetCreatureType() const;             // 0x00662000
 };
 
 class CCreatureActionBase { public:

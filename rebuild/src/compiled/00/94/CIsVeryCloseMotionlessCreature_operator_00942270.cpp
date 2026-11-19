@@ -1,5 +1,5 @@
-// CIsVeryCloseMotionlessCreature::operator()(CThing* thing) const -- a creature of category 2 whose kind-2 component shows no movement since the last frame (squared step <= 1e-4 squared) and whose ground distance from MyPos is under 1.4 times the sum of its physics radius and MyRadius
-// Leaf: ??RCIsVeryCloseMotionlessCreature
+// CIsVeryCloseMotionlessCreature::operator()(const CThingCreatureBase& creature) const -- a creature of category 2 whose kind-2 component shows no movement since the last frame (squared step <= 1e-4 squared) and whose ground distance from MyPos is under 1.4 times the sum of its physics radius and MyRadius
+// Leaf: ??RCIsVeryCloseMotionlessCreature@@QBE_NABVCThingCreatureBase@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00942270, 210 bytes, `ret 4`.
@@ -13,81 +13,43 @@
 //   the step is `(pos - lastPos).GetLengthSquared()` with the landed C3DVector inline operators; the distance is the
 //   square root of the 2D sum; the step test is `!(step > eps*eps)` (`test ah,5 ; jnp`, NaN passes); both tests are
 //   nested ifs sharing the `xor al,al` exit.
-#include "fable_compiler.h"
-#pragma intrinsic(sqrt)
-extern "C" double __cdecl sqrt(double x);
+// Port (NF98, round 8, q11293): the local CThing / CThingPhysical / CVectorMap / CTCMotion / CPhysicsBody / C2DVector stand-ins replaced by
+//   the shared headers: the functor is engine/CIsVeryCloseMotionlessCreature.h (Ego_r.pdb 0x009660C0 / FableWin.pdb 0x02BA0D70
+//   ??RCIsVeryCloseMotionlessCreature@@QBE_NABVCThingCreatureBase@@@Z: own leaf respelled from the CThing* stand-in), the category getter is
+//   ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ (0x00662000, FABLE_RETAIL_CTHINGCREATUREBASE_CREATURETYPE; 2 = HUMAN_ADULT),
+//   the kind-2 component is PeekTC<const CTCPhysicsBase> (TCI_PHYSICS; Position +0x0C, OldPosition +0x18 = GetLastPosition), the radius is
+//   GetPhysicsTC()->Radius (+0x60 -> +0x34), the position CThingPhysical::PeekPos 0x006A4D00.
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_CREATURETYPE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE_STATTYPE
+#define FABLE_RETAIL_CTCPHYSICSBASE_LASTPOSITION
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C2DVECTOR
+#include "fable_string.h"
 #include "engine/C3DVector.h"
-class C2DVector { public:
-    float X, Y;
-    C2DVector(float x, float y) : X(x), Y(y) {}
-    float GetLength() const { return (float)sqrt(X * X + Y * Y); }
-};
-extern const float DELTA_NOTIONAL_ZERO;             // 0x0129BA3C (0.0001f)
-struct CTCBase_Retail;
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // the thing's component map at +0x44
-    STCEntry_Retail* m_pFirst;
-    STCEntry_Retail* m_pLast;
-    STCEntry_Retail* m_pEnd;
-    const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
-    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
-    {
-        const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
-        if (it == m_pLast || kind < it->first)
-            it = m_pLast;
-        return ((CTCBase_Retail*)it->second);
-    }
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
-struct CTCMotion {                                 // component kind 2
-    unsigned char _base[0x0c];
-    C3DVector     Position;                        // +0x0c
-    C3DVector     LastPosition;                    // +0x18
-};
-struct CPhysicsBody {
-    unsigned char _pad00[0x34];
-    float         Radius;                          // +0x34
-};
-class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
-    const C3DVector& PeekPos() const;          // 0x006A4D00
-};
-class CThing : public CThingPhysical {
-public:
-    unsigned char  _pad00[0x20];
-    unsigned long  m_tcMask[8];                    // +0x20
-    unsigned char  _pad40[4];
-    CTCMap_Retail  m_tcs;                          // +0x44
-    unsigned char  _pad50[0x10];
-    CPhysicsBody*  m_pBody;                        // +0x60
-    long GetCreatureCategory() const;              // 0x00662000
-    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-};
-FABLE_FORCEINLINE CTCMotion* GetMotionIfPresent(const CThing* thing)
-{
-    CTCMotion* tc;                                 // deliberately unset when the component is absent
-    if (thing->HasTC(2))
-        tc = (CTCMotion*)thing->m_tcs.Find(2);
-    return tc;
-}
-class CIsVeryCloseMotionlessCreature {
-public:
-    C3DVector MyPos;                               // +0x00
-    float     MyRadius;                            // +0x0c
-    bool operator()(CThing* thing) const;
-};
+#include "engine/C2DVector.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CThingCreatureBase.h"
+class CThingAICreature;
+#include "engine/CIsVeryCloseMotionlessCreature.h"
 
-bool CIsVeryCloseMotionlessCreature::operator()(CThing* thing) const
+bool CIsVeryCloseMotionlessCreature::operator()(const CThingCreatureBase& creature) const
 {
-    if (thing->GetCreatureCategory() == 2) {
-        CTCMotion* motion = GetMotionIfPresent(thing);
-        if (!((motion->Position - motion->LastPosition).GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)) {
-            const C3DVector& pos = thing->PeekPos();
-            if (C2DVector(pos.X - MyPos.X, pos.Y - MyPos.Y).GetLength() < (thing->m_pBody->Radius + MyRadius) * 1.4f)
+    if (creature.GetCreatureType() == HUMAN_ADULT) {
+        const CTCPhysicsBase* physics;
+        creature.PeekTC(&physics);
+        if (!((physics->GetPosition() - physics->GetLastPosition()).GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)) {
+            const C3DVector& pos = creature.PeekPos();
+            if (C2DVector(pos.X - MyPos.X, pos.Y - MyPos.Y).GetMagnitude() < (creature.GetPhysicsTC()->GetRadius() + MyRadius) * 1.4f)
                 return true;
         }
     }

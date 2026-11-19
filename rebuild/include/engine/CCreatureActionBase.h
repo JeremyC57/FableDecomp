@@ -263,7 +263,15 @@ public:
     // ?SetPItemRemoved@CCreatureActionBase@@QAEXV?$CIntelligentPointer@VCThing@@@@@Z (public; stores the by-value pointer into
     // PItemRemoved +0x2C). Needs FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS (CIntelligentPointer). Declaration only.
 public:
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_SETPITEMREMOVED_BODY
+    // NF98 per-TU opt-in (round 8, row 0x0072C790 CTCSpecialAbilities::SetupEnflameSpell): the same member with its body visible, as
+    // retail expands it there (0x0072C887..0x0072C8B8: the by-value pointer built in place, GetPItem on it, SetPItem into PItemRemoved
+    // +0x2C, the temporary destroyed) while the same TU calls the out-of-line copy 0x0072D360 from SetupBerserk (0x0072CC81). The one
+    // definition: row 0x0072D360 includes this body too and emits it as a pick-any COMDAT (nf88 scaffolding), so no TU defines it strongly.
+    void SetPItemRemoved(CIntelligentPointer<CThing> item) { PItemRemoved.SetPItem(item.GetPItem()); }
+#else
     void SetPItemRemoved(CIntelligentPointer<CThing> item);           // 0x0072D360
+#endif
 #endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
 protected:

@@ -1,5 +1,5 @@
 // CGameScriptInterface::CreateCreature(const CCharString& defName, const C3DVector& position, const CCharString& scriptName, bool appear) const -- create an AI creature from the named def at the position (the def's player, a CThingAICreatureInit carrying the script name), return its script thing; optionally start the creature's appear action, then wait CreateCreatureDelayFrames script frames
-// Leaf: CreateCreature
+// Leaf: ?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A9100, length 532 bytes (virtual, `ret 14h`: hidden result + 4 args).
@@ -15,93 +15,63 @@
 //   CreateCreatureDelayFrames is at +0x4C (the header's +0x50); the loop reads [this+4Ch].
 // Shape: the init's two CCharString default arguments are `""` literals (converted temporaries built before the
 //   copies, passed by `lea`); `result` is declared before the def pointer; the delay loop counts down from the member.
-void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-#include "engine/C3DVector.h"
-
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-#include "engine/CCountedPointer.h"
-// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+// Port (NF98, round 8, q11261 / q11262): the local CCharString / CThingCreatureDef / CDefPointer / CDefinitionManager / CThingAICreatureInit /
+//   CThingAICreature / CCreatureActionAppear models and the same-TU GetDef stand-in replaced by the shared headers: the appear action is
+//   CCreatureAction_OnGenerate (ctor 0x0074DBB0 stores vtable 0x01268DEC, RTTI .?AVCCreatureAction_OnGenerate@@; Ego_r.pdb / FableWin.pdb
+//   ??0CCreatureAction_OnGenerate@@QAE@AAVCThingCreatureBase@@@Z), was a CCreatureActionAppear stand-in; SetCurrentAction 0x006644F0 and
+//   ~CCombatActionBase 0x0062E900 bind the PDB spellings; Create is ?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z
+//   (init by reference); the def's +0x11C is CThingCreatureDef::DefaultOwner; GetDef<CThingCreatureDef> is the header member template with
+//   its noinline body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY, retail 0x00513160).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGAICREATUREINIT_CTOR_BODY
+#define FABLE_RETAIL_CTHINGCREATUREDEF_MEMBERS
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCREATUREACTION_ONGENERATE
 #define FABLE_RETAIL_NSCRIPT
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
+#include "engine/CBaseClass.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingCreatureDef.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CThingAICreatureInit.h"
+#include "engine/CGameDefinitionManager.h"
 #include "engine/CScriptThing.h"
-// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+// Retail expands these at this row's sites (the landed row's choice, kept): defined inline after the header.
 inline CScriptThing::CScriptThing() {}
 inline CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-
-class CThingCreatureDef { public:
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long RefCount;                                      // +0x04
-    unsigned char _pad08[0x11c - 0x08];
-    long Player;                                        // +0x11C
-};
-template <class T> class CDefPointer;
-template <> class CDefPointer<const CThingCreatureDef> { public:   // Ego_r.pdb CDefPointer<const CThingCreatureDef> (was the row-local CDefPointerThingCreatureDef)
-    CThingCreatureDef* Object;
-    CDefPointer() : Object(0) {}
-    ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
-};
-class CDefinitionManager { public:   // the PDB base the accessor belongs to (empty here: offset 0)
-    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x00513160 GetDef<CThingCreatureDef> (Ego_r.pdb member template)
-    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb CDefinitionManager, const)
-};
-class CGameDefinitionManager : public CDefinitionManager { public:
-};
-void* FindDef_CGameDefinitionManager_GetDef_0();
-#pragma auto_inline(off)
-template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingCreatureDef>(long globalIndex, CDefPointer<const CThingCreatureDef>* out) const
-{
-    void* def = FindDef_CGameDefinitionManager_GetDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CThingPhysical;
-class CThingBuilding;
-class CThingAICreatureInit { public:                           // Ego_r.pdb, 28 bytes
-    CThingPhysical* OriginalThing;                      // +0x00
-    CThingPhysical* PreviousThing;                      // +0x04
-    CCharString ScriptName;                             // +0x08
-    CCharString OverridingBrainName;                    // +0x0C
-    bool PlayerCharacter;                               // +0x10
-    bool Drawable;                                      // +0x11
-    bool PlaceAtEndOfList;                              // +0x12
-    bool EnableCreatureAutoPlacing;                     // +0x13
-    CThingBuilding* HomeBuilding;                       // +0x14
-    CThingBuilding* WorkBuilding;                       // +0x18
-    CThingAICreatureInit(const CCharString& scriptName = "", const CCharString& brainName = "")
-        : OriginalThing(0), PreviousThing(0), ScriptName(scriptName), OverridingBrainName(brainName),
-          PlayerCharacter(false), Drawable(true), PlaceAtEndOfList(true), EnableCreatureAutoPlacing(false),
-          HomeBuilding(0), WorkBuilding(0) {}
-};
-class CCreatureActionBase;
-class CThingAICreature { public:
-    CScriptThing GetScriptThing();                      // 0x004C7E50 (CThing)
-    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0 (CThingCreatureBase)
-    static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& position, long player,
-                                               CThingAICreatureInit* init);   // 0x00833800
-};
-struct CCreatureActionAppear {                          // 0x114-byte creature action built on the new creature
-    unsigned char _data[0x114];
-    CCreatureActionAppear(CThingAICreature* creature);  // 0x0074DBB0
-    ~CCreatureActionAppear();                           // 0x0062E900
-    operator const CCreatureActionBase&() const { return *(const CCreatureActionBase*)this; }
-};
-
+#include "engine/CCreatureActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_OnGenerate.h"
 class CWorld; class CMainGameComponent; class CDisplayEngine;
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
-#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
 CScriptThing CGameScriptInterface::CreateCreature(const CCharString& defName, const C3DVector& position,
@@ -113,10 +83,10 @@ CScriptThing CGameScriptInterface::CreateCreature(const CCharString& defName, co
     if (DefinitionManager->GetDef(index, &def)) {
         CThingAICreatureInit init;
         init.ScriptName = scriptName;
-        CThingAICreature* creature = CThingAICreature::Create(index, position, def.Object->Player, &init);
+        CThingAICreature* creature = CThingAICreature::Create(index, position, def->DefaultOwner, init);
         result = creature->GetScriptThing();
         if (appear)
-            creature->SetCurrentAction(CCreatureActionAppear(creature));
+            creature->SetCurrentAction(CCreatureAction_OnGenerate(*creature));
         for (long i = CreateCreatureDelayFrames; i > 0; --i)
             const_cast<CGameScriptInterface*>(this)->NewScriptFrame();
     }

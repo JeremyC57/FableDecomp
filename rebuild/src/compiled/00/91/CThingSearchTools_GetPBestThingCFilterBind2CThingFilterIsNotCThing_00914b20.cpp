@@ -6,6 +6,10 @@
 // getter); CThing is a local retail-layout model (see below; retail sits 0x10 below Ego_r.pdb from
 // ThingTypeFlags on). The thing type is selected by its THING_TYPE mask (TThing::ThingTypeMask).
 // CThingFilter_IsChild is inline: the creature category getter 0x00662000 compared with 1.
+// Name fix (NF98, round 8, q11293): 0x00662000 is CThingCreatureBase::GetCreatureType() const returning ECreatureType (Ego_r.pdb 0x0053CE50 /
+//   FableWin.pdb 0x01D9A450 ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ; engine/CThingCreatureBase.h CREATURETYPE), was a made-up long GetCreatureCategory:
+//   the in-place declaration respell of the landed sibling 0x00914AA0 (NF93), with engine/ECreatureType.h.
+#include "engine/ECreatureType.h"
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -59,7 +63,7 @@ class CThingGameObject : public CThing { public:
 };
 class CThingCreatureBase : public CThingGameObject { public:
     enum { ThingTypeMask = 0xf };
-    long GetCreatureCategory() const;               // 0x00662000: def (+0xe0)->+0xc4
+    ECreatureType GetCreatureType() const;          // 0x00662000: def (+0xe0)->+0xc4
 };
 class CThingAICreature : public CThingCreatureBase { public:
     enum { ThingTypeMask = 0x1f };
@@ -70,7 +74,7 @@ class CThingFilter_IsNot { public:
     bool operator()(const CThing& thing) const;      // 0x006A76A0 Ego_r/FableWin ??RCThingFilter_IsNot@@QBE_NABVCThing@@@Z
 };
 class CThingFilter_IsChild { public:                         // inline: the creature's category getter == 1
-    bool operator()(const CThingCreatureBase& creature) const { return creature.GetCreatureCategory() == 1; }   // Ego_r/FableWin take a reference
+    bool operator()(const CThingCreatureBase& creature) const { return creature.GetCreatureType() == 1; }   // Ego_r/FableWin take a reference
 };
 template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;

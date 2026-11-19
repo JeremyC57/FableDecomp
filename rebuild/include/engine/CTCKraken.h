@@ -35,7 +35,14 @@ public:
  bool HasTargetBeenHitByKraken();
  void RaiseSunkenTentacles();
  void StartHeadAttackPhase();
+#ifdef FABLE_RETAIL_CTCKRAKEN_SETHEADTRACKING_INLINE
+ // NF98 opt-in (round 8, q11262, row 0x00924930 CCreatureAction_KrakenHighAttackLoop::FinishAction): FableWin.pdb 0x02C5B750
+ // ?SetHeadTracking@CTCKraken@@QAEX_N@Z is debug only (no Ego_r.pdb copy): inline in release, 0x009249FC stores the bool into
+ // HeadTrackTarget +0x51 in place (`mov byte ptr [ebx+51h],0`). Same declaration with its body; no layout change.
+ void SetHeadTracking(bool p0) { HeadTrackTarget = p0; }
+#else
  void SetHeadTracking(bool p0);
+#endif
  bool HeadReadyToStrike();
  void SetReturnHeadToWater(bool p0);
  bool ShouldReturnHeadToWater() const;
@@ -92,7 +99,7 @@ public:
  virtual ~CTCKraken();
  CTCKraken & operator=(const CTCKraken & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCKraken)==104);
+FABLE_STATIC_ASSERT_AT(95, sizeof(CTCKraken)==104);
 #ifdef FABLE_RETAIL_CTCKRAKEN_EMPTY_UPDATES
 // Per-TU opt-in (agentC32/C34, row 0x007FC9D0 CTCKraken::FrameUpdate): the three private per-phase updates are EMPTY functions
 // (Ego_r.pdb 16-byte bodies ?UpdateUnderwater 0x007F6220 / ?UpdateTentacles 0x007F6230 / ?UpdateTentaclesAndHead 0x007F64F0;

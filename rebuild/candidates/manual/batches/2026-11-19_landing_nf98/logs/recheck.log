@@ -1,0 +1,111 @@
+addr       parity           behav  name
+00642880   RELOCATION_MATCH PASS   CMinimapData::InitialiseMinimapTexture
+0066cb00   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0066cb00   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0066cb00   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+0066cb00   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+0066cb00   WARN SHARED_HEADER_AVAILABLE CSystemManager
+0066cb00   WARN SHARED_HEADER_AVAILABLE CSurface
+0066cb00   RELOCATION_MATCH PASS   CRegionMinimap::InitialiseTexture
+006dfa50   WARN RELOC_NAME: ??RCThingFilter_IsLyingDown@@QBE_NABVCThing@@@Z -> 006a7400 labelled '_global::CdeclCall_IsLyingDown_006a7400'
+006dfa50   RELOCATION_MATCH PASS   CThingSearchTools::GetAllThings<CThingAICreature,std::list<CIntelligentPointer<CThingAICreature> >,CFilter_Bind5<..> >
+0072c790   RELOCATION_MATCH PASS   CTCSpecialAbilities::SetupEnflameSpell
+0072cba0   RELOCATION_MATCH PASS   CTCSpecialAbilities::SetupBerserk
+0072d360   RELOCATION_MATCH PASS   CCreatureActionBase::SetPItemRemoved
+0074ace0   RELOCATION_MATCH PASS   CTCCreatureGenerator::UpdateUndead
+0084f850   RELOCATION_MATCH PASS   CThingSearchTools::GetAllThingsInRoughArea<const CThingCreatureBase,std::vector<const CThingCreatureBase*>,CFilter_Bind2<CThingFilter_IsCreatureThreatTo,CThingFilter_IsAwareOfThing> >
+0086b810   RELOCATION_MATCH PASS   CRandomAppearanceMorph::GetRandomTextureMorphs
+0086be40   RELOCATION_MATCH PASS   CRandomAppearanceMorph::GetRandomBodyParts
+008a9100   RELOCATION_MATCH PASS   CGameScriptInterface::CreateCreature
+008e3c50   RELOCATION_MATCH PASS   CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase,std::vector<CThingCreatureBase*>,CFilter_Bind2<CThingFilter_IsNot,CThingFilter_In2DRange> >
+00914b20   WARN SHARED_HEADER_AVAILABLE CThing
+00914b20   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+00914b20   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00914b20   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+00914b20   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest
+00914b20   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00914b20   WARN RELOC_NAME: ??$?RVCThingAICreature@@@CThingCompare_Nearest@@QBEPAVCThingAICreature@@PAV1@0@Z -> 0065da97 labelled 'CThingCompare_Nearest::operator'
+00914b20   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsChild >, CThingCompare_Nearest, CThingAICreature>
+  WARN leaf '?FinishAction@CCreatureAction_KrakenHighAttackLoop@?A0xe2035276@@UAEXXZ' matches no symbol in 00924930.obj; graded the largest function
+  WARN leaf '?FinishAction@CCreatureAction_KrakenHighAttackLoop@?A0xe2035276@@UAEXXZ' matches no symbol in 00924930.obj; graded the largest function
+00924930   RELOCATION_MATCH PASS   `anonymous namespace'::CCreatureAction_KrakenHighAttackLoop::FinishAction
+0092d7c0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0092d7c0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase
+0092d7c0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+0092d7c0   WARN SHARED_HEADER_AVAILABLE CTCSleep
+0092d7c0   WARN SHARED_HEADER_AVAILABLE CThing
+0092d7c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0092d7c0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0092d7c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0092d7c0   RELOCATION_MATCH PASS   CAIStateGroup_GoToBed::Update
+009378f0   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+009378f0   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToUnconsciousPerson::Update
+00942270   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00942270   RELOCATION_MATCH PASS   CIsVeryCloseMotionlessCreature::operator()
+00986e30   WARN SHARED_HEADER_AVAILABLE CThing
+00986e30   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+00986e30   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsCreatureType
+00986e30   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+00986e30   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00986e30   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+00986e30   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00986e30   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CFilter_Bind3<CThingFilter_IsNot, CThingFilter_IsCreatureType, CThingFilter_In2DRange >, const CThingAICreature>
+009bf350   RELOCATION_MATCH PASS   CDisplayManager::BlitRenderTargetSurfaceToTexture
+009bf5e0   RELOCATION_MATCH PASS   CDisplayManager::CopyBackBufferToTexture
+009fd4e0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+009fd4e0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009fd4e0   WARN SHARED_HEADER_AVAILABLE CSurface
+009fd4e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBankInit
+009fd4e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank
+009fd4e0   WARN RELOC_NAME: ?NotifyInitialised@CGraphicDataBank@@QAEX_N@Z -> 009d5230 labelled '_global::Nop_ret4_009d5230'
+009fd4e0   RELOCATION_MATCH PASS   CGraphicDataBank::Initialise
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CSurface
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager
+00b2c4e0   WARN RELOC_NAME: ?FindEntry@CGraphicDataBank@@QAEKABVCCharString@@@Z -> 009ccdc0 labelled 'CBankFile::FindIndexBySymbol'
+00b2c4e0   RELOCATION_MATCH PASS   CEngineSurfaceCompositionManager::AddCustomMorphTexture
+00b87680   WARN SHARED_HEADER_AVAILABLE CSurface
+00b87680   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00b87680   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00b87680   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b87680   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore
+00b87680   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b87680   RELOCATION_MATCH PASS   CEngineScreenEffectDisplacementRenderer::BeginDisplacementRendering
+00b89a20   WARN SHARED_HEADER_AVAILABLE CSurface
+00b89a20   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00b89a20   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00b89a20   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b89a20   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore
+00b89a20   WARN SHARED_HEADER_AVAILABLE CRenderStateManager
+00b89a20   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b89a20   RELOCATION_MATCH PASS   CEngineScreenEffectOutlineGlow::BeginOutlineRendering
+0086b9d0   RELOCATION_MATCH PASS   CRandomAppearanceMorph::GetRandomSkeletalMorph
+
+WINS: 25
+  00642880 RELOCATION_MATCH CMinimapData::?InitialiseMinimapTexture@CMinimapData@@QAEXXZ
+  0066cb00 RELOCATION_MATCH CRegionMinimap::InitialiseTexture
+  006dfa50 RELOCATION_MATCH CThingSearchTools::??$GetAllThings@VCThingAICreature@@V?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@V?$CFilter_Bind5@VCThingFilter_HasTC@@V1@VCThingFilter_HasScriptSupervision@@V?$CFilter_Not@VCThingFilter_AICreatureHasProperty@@@@V?$CFilter_Not@VCThingFilter_IsLyingDown@@@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind5@VCThingFilter_HasTC@@V1@VCThingFilter_HasScriptSupervision@@V?$CFilter_Not@VCThingFilter_AICreatureHasProperty@@@@V?$CFilter_Not@VCThingFilter_IsLyingDown@@@@@@AAV?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@@Z
+  0072c790 RELOCATION_MATCH CTCSpecialAbilities::?SetupEnflameSpell@CTCSpecialAbilities@@AAE_NXZ
+  0072cba0 RELOCATION_MATCH CTCSpecialAbilities::?SetupBerserk@CTCSpecialAbilities@@AAE_NXZ
+  0072d360 RELOCATION_MATCH CCreatureActionBase::?SetPItemRemoved@CCreatureActionBase@@QAEXV?$CIntelligentPointer@VCThing@@@@@Z
+  0074ace0 RELOCATION_MATCH CTCCreatureGenerator::?UpdateUndead@CTCCreatureGenerator@@IAEXXZ
+  0084f850 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@$$CBVCThingCreatureBase@@V?$vector@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsCreatureThreatTo@@VCThingFilter_IsAwareOfThing@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsCreatureThreatTo@@VCThingFilter_IsAwareOfThing@@@@AAV?$vector@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@@Z
+  0086b810 RELOCATION_MATCH CRandomAppearanceMorph::?GetRandomTextureMorphs@CRandomAppearanceMorph@@IBEXAAKKABV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@AAV?$CArray@VCMorphSetTextureMorph@CMorphSet@CRandomAppearanceMorph@@@@@Z
+  0086be40 RELOCATION_MATCH CRandomAppearanceMorph::?GetRandomBodyParts@CRandomAppearanceMorph@@IBEXAAKAAVCMorphSet@1@_N@Z
+  008a9100 RELOCATION_MATCH CGameScriptInterface::?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z
+  008e3c50 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@@Z
+  00914b20 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00924930 RELOCATION_MATCH `anonymous namespace::?FinishAction@CCreatureAction_KrakenHighAttackLoop@?A0xe2035276@@UAEXXZ
+  0092d7c0 RELOCATION_MATCH CAIStateGroup_GoToBed::?Update@CAIStateGroup_GoToBed@@QAEXXZ
+  009378f0 RELOCATION_MATCH CAIStateGroup_MinionReactToUnconsciousPerson::?Update@CAIStateGroup_MinionReactToUnconsciousPerson@@UAEXXZ
+  00942270 RELOCATION_MATCH CIsVeryCloseMotionlessCreature::??RCIsVeryCloseMotionlessCreature@@QBE_NABVCThingCreatureBase@@@Z
+  00986e30 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  009bf350 RELOCATION_MATCH CDisplayManager::?BlitRenderTargetSurfaceToTexture@CDisplayManager@@QAEXAAVCTexture@@ABVCSurface@@@Z
+  009bf5e0 RELOCATION_MATCH CDisplayManager::?CopyBackBufferToTexture@CDisplayManager@@QAEAAVCTexture@@XZ
+  009fd4e0 RELOCATION_MATCH CGraphicDataBank::Initialise
+  00b2c4e0 RELOCATION_MATCH CEngineSurfaceCompositionManager::AddCustomMorphTexture
+  00b87680 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::BeginDisplacementRendering
+  00b89a20 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::BeginOutlineRendering
+  0086b9d0 RELOCATION_MATCH CRandomAppearanceMorph::?GetRandomSkeletalMorph@CRandomAppearanceMorph@@IBEXAAKAAVCMorphSet@1@@Z

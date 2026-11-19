@@ -19,7 +19,6 @@
 // cl,bl`; the shifted-byte form narrows to a byte load and swaps this/&PPerson between ebp/edi), bound to a `const bool&`
 // (the byte spill at +0x0b); the message def is released by hand through a pointer local (landed 0x00849140 shape) and
 // passed by value through an add-ref copy; a named person local puts the flags push after GetPItem.
-#include "fable_compiler.h"
 // NF49 (round 7): the string, the def handle, the message-event def, the manager and the AI state-group base come from the shared
 // headers (were local CCharString / CMessageEventDef / CDefPointer / CDefinitionManager / CAIStateGroupBase / CIntelligentPointerConstThing models): the manager accessor 0x008FCFB0 is the protected const
 // ?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ (Ego_r.pdb / FableWin.pdb; engine/CAIStateGroupBase.h
@@ -35,92 +34,67 @@
 // ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z
 // (_CONVERT_MUTABLE_OUTOFLINE, FableWin.pdb) at the second. The overlay opt-in _CAIFILTERBASE_RESTORE_PROTECTED keeps the AI actions
 // protected (IAE, both PDBs) after the nested filter's `public:`.
-#define FABLE_RETAIL_CCHARSTRING
+// Leaf: ?Update@CAIStateGroup_MinionReactToUnconsciousPerson@@UAEXXZ
+// Port (NF98, round 8, q11275): the local CThing / CThingCreatureBase / CCreatureActionBase / CCreatureAction_AlertToPlayer / CAIBrain models and
+//   the local IS_THING_ALIVE replaced by the shared headers on the sibling 0x00911300 recipe: the action temporary is
+//   CCreatureAction_OrderSecuritySweep (ctor 0x009110F0 stores vtable 0x0128F74C, RTTI .?AVCCreatureAction_OrderSecuritySweep@@; Ego_r order),
+//   ??0CCreatureAction_OrderSecuritySweep@@QAE@AAVCThingCreatureBase@@@Z, was a CCreatureAction_AlertToPlayer(CThingCreatureBase*) stand-in;
+//   the creature is CAIStateGroupBase::GetCreature (FableWin inline, PBrain->GetCreature()); the life-state getter 0x00662010 is
+//   ?GetProperty@CThingCreatureBase@@QBEKXZ (FableWin.pdb; was a made-up GetLifeState); SetDiscovered is Ego_r / FableWin
+//   ?SetDiscovered@CTCDiscovery@@QAEX_NPBVCThing@@@Z (const CThing*); the discovery test is FableWin's inline ?IsDiscovered@CTCDiscovery@@QBE_NXZ.
+//   CTCDiscovery and this state group have no shared header (row-local, as landed).
+#define FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_INLINE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE_OUTOFLINE
+#define FABLE_RETAIL_IS_THING_ALIVE
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
-#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_INLINE
-#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE_OUTOFLINE
 #define FABLE_RETAIL_CAISTATEGROUPBASE
 #define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
 #define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
 #define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
 #define FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD
 #define FABLE_RETAIL_CAISTATEGROUPBASE_CAIFILTERBASE_RESTORE_PROTECTED
 #define FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER
 #define FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER_PROTECTED
-#include "engine/fable_ai_action_enums.h"
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
 #include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
 #include "engine/CDefClassBase.h"
 #include "engine/CDefPointer.h"
 #include "engine/CDefinitionManager.h"
 #include "engine/CGameDefinitionManager.h"
 #include "engine/CMessageEventDef.h"
-class CTCBase;
-#include "engine/C3DVector.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    bool HasTC(long interfaceType) const
-    {
-        unsigned long word = m_presentBits[interfaceType >> 5];
-        return ((word >> (interfaceType & 31)) & 1) != 0;
-    }
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        const bool& present = HasTC(interfaceType);
-        if (present) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-        }
-        return present != 0;
-    }
-};
-class CThingCreatureBase : public CThing { public:
-    long GetLifeState();                        // 0x00662010
-};
-class CTCDiscovery { public:                           // interface 0x40
+#include "engine/CThingAICreature.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CCreatureAction_OrderSecuritySweep.h"
+#include "engine/ThingAlive.h"
+class CTCDiscovery { public:                           // TCI 0x40 (no shared header)
     unsigned char _pad[0x0c];
     bool Discovered;                            // +0x0c
-    void SetDiscovered(bool discovered, CThing* by);    // 0x007509D0
+    bool IsDiscovered() const { return Discovered; }        // FableWin.pdb ?IsDiscovered@CTCDiscovery@@QBE_NXZ (inline)
+    void SetDiscovered(bool discovered, const CThing* by); // 0x007509D0
 };
-class CBaseObject;
-#define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
-{
-    if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
-            return true;
-    }
-    return false;
-}
-class CCreatureActionBase { public:                // retail sizeof 0xa8
-    virtual void v00();
-    unsigned char _body[0xa4];
-    virtual ~CCreatureActionBase();                 // 0x00693EF0
-};
-class CCreatureAction_AlertToPlayer : public CCreatureActionBase { public:
-    CCreatureAction_AlertToPlayer(CThingCreatureBase* creature);  // 0x009110F0
-};
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThingCreatureBase* PCreature;          // +0x18
-};
-#include "engine/CAIStateGroupBase.h"
 struct CAIStateGroup_MinionReactToUnconsciousPerson : CAIStateGroupBase {
-    CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }   // (the row's helper, moved here from its local base model)
     CIntelligentPointer<CThingCreatureBase> PPerson;    // +0x14
     virtual void Update();
 };
@@ -133,11 +107,11 @@ void CAIStateGroup_MinionReactToUnconsciousPerson::Update()
                 CIntelligentPointer<const CThing>(static_cast<const CIntelligentPointer<CThingCreatureBase>&>(PPerson)),
                 1.0f, reached, AI_MOVEMENT_RUNNING, true, false, true, true, 0.0f) == AI_ACTION_FINISHED && IS_THING_ALIVE(PPerson)) {
             CTCDiscovery* discovery;
-            if (IS_THING_ALIVE(PPerson) && ((CThing*)PPerson.GetPItem())->GetInterface(&discovery, 0x40) && !discovery->Discovered)
-                discovery->SetDiscovered(true, GetCreature());
-            if (GetCreature()->GetLifeState() == 3) {
+            if (IS_THING_ALIVE(PPerson) && PPerson->GetTC((ETCInterfaceType)0x40, &discovery) && !discovery->IsDiscovered())
+                discovery->SetDiscovered(true, &GetCreature());
+            if (GetCreature().GetProperty() == 3) {
                 if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, CIntelligentPointer<const CThing>(PPerson), 11, 0.0027777f) == AI_ACTION_FINISHED) {
-                    if (AIAction_PerformActionAndWait(CCreatureAction_AlertToPlayer(GetCreature()), false) != 2) {
+                    if (AIAction_PerformActionAndWait(CCreatureAction_OrderSecuritySweep(GetCreature()), false) != 2) {
                         Terminate();
                         return;
                     }
@@ -152,7 +126,7 @@ void CAIStateGroup_MinionReactToUnconsciousPerson::Update()
                     found = PeekDefinitionManager().GetDef(name, &def);
                 }
                 if (found) {
-                    CThing* person = ((CThing*)PPerson.GetPItem());
+                    CThingCreatureBase* person = PPerson.Get();
                     AIAction_FindAGuardAndGiveMessage(def, person->GetPos(), 0);
                 }
             }

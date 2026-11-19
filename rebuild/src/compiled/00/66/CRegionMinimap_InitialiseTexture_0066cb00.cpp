@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066CB00, length 179 bytes (`ret`).
 // Callees: CTexture::Uninitialise @ 0x009F9F70, GFGetSystemManager @ 0x009A4EC0, CDisplayManager::
 // GetBestCompressedAlphaTextureFormat(ulong, CPixelFormat*) @ 0x009BE870 (the result is ignored), CTexture::Initialise
-// (const C2DExtentsI*, long, const CPixelFormat*, ulong, ESurfacePool, bool, bool) @ 0x009FA280, CTexture::GetSurface(long)
+// (const C2DExtentsI*, long, const CPixelFormat*, ulong, ESurfacePool, bool, bool) @ 0x009FA280, CTexture::GetSurfaceLevel(long) const
 // @ 0x009F9E00 (CSurface by hidden pointer; manifest label GetNoLevels, landed as CTexture_GetSurfaceLevel), CSurface::
 // CopyFromSurface(const C2DBoxI*, const CSurface*, const C2DBoxI*, ulong) @ 0x009F37E0, CSurface::Uninitialise @ 0x009F2E20
 // (the surface temporary's inline destructor after its vtable store, 0x0122F84C = CSurface).
@@ -13,6 +13,9 @@
 // size member, the system manager taken into a local before the pushes, a CPixelFormat local whose inline constructor stores -1 and is then filled by the display manager, the
 // copy box (0, 0, X, Y) built after Initialise (its zero stores sink below the pushes) and the level-0 surface temporary
 // used as `this` of the copy with flags 1.
+// Name fix (NF98, round 8, q11274): 0x009F9E00 is CTexture::GetSurfaceLevel(long) const (Ego_r.pdb / FableWin.pdb
+//   ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z; engine/CTexture.h), was a made-up non-const GetSurface: in-place respell of the
+//   local CTexture declaration and its call sites, as the landed self row 0x009F9E00 (NF93).
 #include "engine/CRegionMinimap.h"
 
 struct IDirect3DSurface9;
@@ -51,7 +54,7 @@ class CTexture { public:
     bool IsInitialised() const { return PD3DTexture != 0; }
     void Uninitialise();                        // 0x009F9F70
     bool Initialise(const C2DExtentsI* size, long levels, const CPixelFormat* format, unsigned long usage, long pool, bool a, bool b);   // 0x009FA280
-    CSurface GetSurface(long level);            // 0x009F9E00
+    CSurface GetSurfaceLevel(long level) const; // 0x009F9E00
 };
 
 struct CRegionMinimap_Methods : CRegionMinimap {
@@ -73,5 +76,5 @@ void CRegionMinimap_Methods::InitialiseTexture()
     system->PDisplayManager->GetBestCompressedAlphaTextureFormat(0x10, format);
     texture.Initialise(&size, 1, &format, 0, 1, false, false);
     C2DBoxI box(0, 0, size.X, size.Y);
-    texture.GetSurface(0).CopyFromSurface(&box, &Surface(), &box, 1);
+    texture.GetSurfaceLevel(0).CopyFromSurface(&box, &Surface(), &box, 1);
 }

@@ -16,6 +16,9 @@
 //   GetRandomTextureMorphs grades RELOCATION_MATCH at its own address 0x0086B810 (window 40..60) and the TU's other row
 //   GetRandomSkeletalMorph 0x0086B9D0 stays RELOCATION_MATCH. Replaces e01's TU-wide FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE (held:
 //   it made the helper call push_back<CMorphSetTextureMorph>, DIFFER(191v230)).
+// NF98 (round 8, q11251, one definition): the same-TU GetRandomTextureMorphs body moved unchanged into engine/CRandomAppearanceMorph.h
+//   (FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_GETRANDOMTEXTUREMORPHS_BODY, inline __declspec(noinline): retail calls it out of line); this TU still
+//   sees the body, now emitted as a pick-any COMDAT like row 0x0086B810's (its owner), so the PDB spelling has one definition.
 #define FABLE_RETAIL_CARRAY
 #define FABLE_RETAIL_CARRAY_PUSHBACK
 #define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
@@ -24,6 +27,7 @@
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CVECTORMAP_UPPERBOUND
 #define FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_TEXTUREMORPH_CTOR
+#define FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_GETRANDOMTEXTUREMORPHS_BODY
 #include "engine/CRandomAppearanceMorph.h"
 #include "engine/GFRandom.h"
 void CRandomAppearanceMorph::GetRandomBodyParts(unsigned long& seed,CMorphSet& morph_set,bool ignore_head) const
@@ -42,34 +46,5 @@ void CRandomAppearanceMorph::GetRandomBodyParts(unsigned long& seed,CMorphSet& m
    if(!(ignore_head && cbody_part_type==0))
     morph_set.BodyParts.push_back(mesh_texture_set);
   }
- }
-}
-
-void CRandomAppearanceMorph::GetRandomTextureMorphs(unsigned long& seed,unsigned long texture_group_id,const TTextureMorphMap& texture_morphs,CArray<CMorphSet::CMorphSetTextureMorph>& morph_set) const
-{
- TTextureMorphMap::const_iterator upper_it;
- TTextureMorphMap::const_iterator lower_it=texture_morphs.begin();
- while(lower_it!=texture_morphs.end()) {
-  upper_it=texture_morphs.UpperBound(lower_it->first);
-  unsigned long no_valid_textures=0;
-  for(TTextureMorphMap::const_iterator it=lower_it;it!=upper_it;++it) {
-   if(it->second.GroupID==0||it->second.GroupID==texture_group_id)
-    ++no_valid_textures;
-  }
-  if(no_valid_textures) {
-   unsigned long wanted_n=GFRandom(no_valid_textures,&seed);
-   unsigned long current_n=0;
-   for(TTextureMorphMap::const_iterator it=lower_it;it!=upper_it;++it) {
-    if(it->second.GroupID==0||it->second.GroupID==texture_group_id) {
-     if(current_n==wanted_n) {
-      CMorphSet::CMorphSetTextureMorph entry(it->first,it->second.NewTexture);
-      morph_set.push_back(entry);
-      break;
-     }
-     ++current_n;
-    }
-   }
-  }
-  lower_it=upper_it;
  }
 }

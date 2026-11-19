@@ -42,6 +42,12 @@ public:
  // Retail opt-in (chunk 2004, row 0x009FED30): Ego_r.pdb ?IsEquivalent@CPixelFormat@@QBE_NABV1@@Z, out of line in retail (0x009E37F0, landed).
  bool IsEquivalent(const CPixelFormat& other) const;                 // 0x009E37F0
 #endif
+#if defined(FABLE_RETAIL_CPIXELFORMAT_OPERATOREQUAL) && defined(FABLE_RETAIL_CPIXELFORMAT_ISEQUIVALENT)
+ // NF98 opt-in (round 8, q11274, row 0x009BF350 CDisplayManager::BlitRenderTargetSurfaceToTexture): FableWin.pdb 0x03023F90
+ // ??8CPixelFormat@@QBE_NABV0@@Z (debug only, inline in release: 0x009BF3C5..0x009BF3E4 computes both GetPixelFormat temporaries, the
+ // right operand first, then calls IsEquivalent 0x009E37F0 on the left one). Needs FABLE_RETAIL_CPIXELFORMAT_ISEQUIVALENT.
+ bool operator==(const CPixelFormat& other) const { return IsEquivalent(other); }
+#endif
  unsigned long GetNoABits() const {return GD3DFormats[FormatIndex].AlphaBits;}
  unsigned long GetNoRBits() const {return GD3DFormats[FormatIndex].RBits;}
  unsigned long GetNoGBits() const {return GD3DFormats[FormatIndex].GBits;}

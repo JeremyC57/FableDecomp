@@ -273569,9 +273569,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0084f850'
-        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
-        Source = '00/84/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_0084f850.cpp'
-        TestSource = '00/84/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_0084f850_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/84/CThingSearchTools_GetAllThingsInRoughArea_0084f850.cpp'
+        TestSource = '00/84/CThingSearchTools_GetAllThingsInRoughArea_0084f850_test.cpp'
         PassPattern = '0084f850_TEST PASS'
     }
     [pscustomobject]@{
@@ -273611,9 +273611,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008e3c50'
-        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
-        Source = '00/8e/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_008e3c50.cpp'
-        TestSource = '00/8e/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_008e3c50_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/8e/CThingSearchTools_GetAllThingsInRoughArea_008e3c50.cpp'
+        TestSource = '00/8e/CThingSearchTools_GetAllThingsInRoughArea_008e3c50_test.cpp'
         PassPattern = '008e3c50_TEST PASS'
     }
     [pscustomobject]@{
@@ -369101,9 +369101,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00924930'
-        Module = 'CCreatureAction_KrakenHighAttackLoop'
-        Source = '00/92/CCreatureActionKrakenHighAttackLoop_FinishAction_00924930.cpp'
-        TestSource = '00/92/CCreatureActionKrakenHighAttackLoop_FinishAction_00924930_test.cpp'
+        Module = '`anonymous namespace'::CCreatureAction_KrakenHighAttackLoop'
+        Source = '00/92/anonymousnamespaceCCreatureActionKrakenHighAttackLoop_FinishAction_00924930.cpp'
+        TestSource = '00/92/anonymousnamespaceCCreatureActionKrakenHighAttackLoop_FinishAction_00924930_test.cpp'
         PassPattern = '00924930_TEST PASS'
     }
     [pscustomobject]@{

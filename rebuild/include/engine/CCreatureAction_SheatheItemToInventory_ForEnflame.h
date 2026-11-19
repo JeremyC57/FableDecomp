@@ -9,6 +9,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORENFLAME_CLASS
+// NF98 opt-in (round 8, q11261 / q11262, row 0x0072C790 CTCSpecialAbilities::SetupEnflameSpell): the polymorphic retail class on
+// CCreatureAction_SheatheItemToInventory (ghidra_out/rtti_bases.tsv; vtable 0x0125C95C) with no own members (sizeof 0xB0, as below and as
+// the landed 0x0072D390 models it). The ctor is Ego_r.pdb 0x006C3D00 / FableWin.pdb 0x02210AB0
+// ??0CCreatureAction_SheatheItemToInventory_ForEnflame@@QAE@AAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z, out of
+// line in retail at 0x0069F060; the destructor (FableWin.pdb, the COMDAT 0x0072D390 that the landed row emits) is declared so the caller
+// calls it out of line, as retail does (undeclared, VC7.1 expands it into a direct ~CCreatureAction_SheatheItemToInventory call).
+// Needs engine/CCreatureAction_SheatheItemToInventory.h.
+class CCreatureAction_SheatheItemToInventory_ForEnflame : public CCreatureAction_SheatheItemToInventory {
+public:
+    CCreatureAction_SheatheItemToInventory_ForEnflame(CThingCreatureBase& creature, const CCharString& animation,
+                                                      CCreatureActionBase* followUp, long priority);   // 0x0069F060
+    virtual ~CCreatureAction_SheatheItemToInventory_ForEnflame();   // 0x0072D390 (FableWin.pdb ??1..@@UAE@XZ; called out of line, 0x0072C8E5)
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_SheatheItemToInventory_ForEnflame {
 public:
@@ -19,7 +34,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SheatheItemToInventory_ForEnflame) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SheatheItemToInventory_ForEnflame, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CCreatureAction_SheatheItemToInventory_ForEnflame) == 0xb0);
+FABLE_STATIC_ASSERT_AT(23, offsetof(CCreatureAction_SheatheItemToInventory_ForEnflame, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORENFLAME_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORENFLAME_H

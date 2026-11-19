@@ -9,6 +9,9 @@
 // NF46 (round 7): the 0x01436E98 stand-in CEngineData_01436e98 / g_pEngine_01436e98 is NEngineInternal::GPResourceManager
 //   (?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on engine/CEngineResourceManager.h; +0x954 is GetGraphicBank (_GETGRAPHICBANK,
 //   as same-TU 0x00B2D9F0). The local CCharString / CWideString moved to fable_string.h (FABLE_RETAIL_CCHARSTRING; the ctor length is the PDB long).
+// Name fix (NF98, round 8, q11274): 0x009F9E00 is CTexture::GetSurfaceLevel(long) const (Ego_r.pdb / FableWin.pdb
+//   ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z; engine/CTexture.h), was a made-up non-const GetSurface: in-place respell of the
+//   local CTexture declaration and its call sites, as the landed self row 0x009F9E00 (NF93).
 #include "fable_compiler.h"
 #include <stddef.h>
 void* __cdecl operator new(size_t size);
@@ -72,7 +75,7 @@ class CTexture { public:
     ~CTexture() { Uninitialise(); }
     void Uninitialise();                                // 0x009F9F70
     bool Initialise(const C2DExtentsI* size, long levels, const CPixelFormat* format, unsigned long usage, long pool, bool a, bool b);   // 0x009FA280
-    CSurface GetSurface(long level);                    // 0x009F9E00
+    CSurface GetSurfaceLevel(long level) const;         // 0x009F9E00
     C2DExtentsI GetDimensions(unsigned long level) const;   // 0x009F9DB0
     CPixelFormat GetPixelFormat() const;                // 0x009F9D80
     void GenerateMipmaps(unsigned long filter, unsigned long flags);   // 0x009F9E60
@@ -175,7 +178,7 @@ unsigned long CEngineSurfaceCompositionManager::AddCustomMorphTexture(CTexture& 
     size.X = width;
     size.Y = height;
     composite.Initialise(&size, -1, &format, 0, 1, false, false);
-    composite.GetSurface(0).CopyFromSurface(0, &texture.GetSurface(0), 0, (unsigned long)-1);
+    composite.GetSurfaceLevel(0).CopyFromSurface(0, &texture.GetSurfaceLevel(0), 0, (unsigned long)-1);
     composite.GenerateMipmaps(5, 0);
     WriteTextureToBank(composite, CustomTextureBankFile, index, hasAlpha);
     CustomTextureBankFile.EndUpdateEntries();

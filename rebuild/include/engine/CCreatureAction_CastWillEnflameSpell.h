@@ -18,6 +18,12 @@
 class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase {
 public:
     CCreatureAction_CastWillEnflameSpell(CThingCreatureBase& creature, long level);   // 0x008BB450
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTWILLENFLAMESPELL_TARGETCTOR
+    // NF98 opt-in (round 8, q11261 / q11262, row 0x0072C790 CTCSpecialAbilities::SetupEnflameSpell): Ego_r.pdb 0x008F3A40 / FableWin.pdb
+    // 0x02A17110 ??0CCreatureAction_CastWillEnflameSpell@@QAE@AAVCThingCreatureBase@@PAVCThing@@_NJ@Z (creature, target, z-targeting,
+    // level), out of line in retail at 0x008BB500. Declaration only.
+    CCreatureAction_CastWillEnflameSpell(CThingCreatureBase& creature, CThing* target, bool zTargeting, long level);   // 0x008BB500
+#endif
 protected:
     long Level;                                                          // +0x114
     bool IsZTargetting;                                                  // +0x118

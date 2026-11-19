@@ -9,6 +9,16 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_UNDEADRETURNTOEARTH_CLASS
+// NF98 opt-in (round 8, q11261 / q11262, row 0x0074ACE0 CTCCreatureGenerator::UpdateUndead): the polymorphic retail class on
+// CCombatActionBase (ghidra_out/rtti_bases.tsv) with no own members (sizeof 0x114, as below). The ctor is Ego_r.pdb 0x009126B0 /
+// FableWin.pdb 0x02AE0AE0 ??0CCreatureAction_UndeadReturnToEarth@@QAE@AAVCThingCreatureBase@@@Z, out of line in retail at 0x008EC6A0; the
+// implicit destructor reaches ~CCombatActionBase 0x0062E900. Needs engine/CCombatActionBase.h (retail) first.
+class CCreatureAction_UndeadReturnToEarth : public CCombatActionBase {
+public:
+    CCreatureAction_UndeadReturnToEarth(CThingCreatureBase& creature);   // 0x008EC6A0
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_UndeadReturnToEarth {
 public:
@@ -27,7 +37,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UndeadReturnToEarth) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UndeadReturnToEarth, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_UndeadReturnToEarth) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_UndeadReturnToEarth, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_UNDEADRETURNTOEARTH_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_UNDEADRETURNTOEARTH_H

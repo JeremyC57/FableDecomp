@@ -75,4 +75,42 @@ protected:
 #endif
  void GetRandomTextureMorphs(unsigned long&,unsigned long,const TTextureMorphMap&,CArray<CMorphSet::CMorphSetTextureMorph>&) const;
 };
+#ifdef FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_GETRANDOMTEXTUREMORPHS_BODY
+// NF98 opt-in (round 8, q11251, one definition): Ego_r.pdb / FableWin.pdb
+// ?GetRandomTextureMorphs@CRandomAppearanceMorph@@IBEXAAKKABV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@AAV?$CArray@VCMorphSetTextureMorph@CMorphSet@CRandomAppearanceMorph@@@@@Z
+// (retail 0x0086B810), the e01 same-TU body of row 0x0086BE40 moved here unchanged. inline __declspec(noinline): retail calls it out of line
+// (0x0086BE40 twice, 0x0086BF70); row 0x0086BE40 includes this body and row 0x0086B810 emits it as a pick-any COMDAT (nf88 scaffolding), so
+// no TU defines it strongly. Needs FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_TEXTUREMORPH_CTOR, FABLE_RETAIL_CVECTORMAP_UPPERBOUND and
+// FABLE_RETAIL_CARRAY_PUSHBACK.
+#include "engine/GFRandom.h"
+inline __declspec(noinline)
+void CRandomAppearanceMorph::GetRandomTextureMorphs(unsigned long& seed,unsigned long texture_group_id,const TTextureMorphMap& texture_morphs,CArray<CMorphSet::CMorphSetTextureMorph>& morph_set) const
+{
+ TTextureMorphMap::const_iterator upper_it;
+ TTextureMorphMap::const_iterator lower_it=texture_morphs.begin();
+ while(lower_it!=texture_morphs.end()) {
+  upper_it=texture_morphs.UpperBound(lower_it->first);
+  unsigned long no_valid_textures=0;
+  for(TTextureMorphMap::const_iterator it=lower_it;it!=upper_it;++it) {
+   if(it->second.GroupID==0||it->second.GroupID==texture_group_id)
+    ++no_valid_textures;
+  }
+  if(no_valid_textures) {
+   unsigned long wanted_n=GFRandom(no_valid_textures,&seed);
+   unsigned long current_n=0;
+   for(TTextureMorphMap::const_iterator it=lower_it;it!=upper_it;++it) {
+    if(it->second.GroupID==0||it->second.GroupID==texture_group_id) {
+     if(current_n==wanted_n) {
+      CMorphSet::CMorphSetTextureMorph entry(it->first,it->second.NewTexture);
+      morph_set.push_back(entry);
+      break;
+     }
+     ++current_n;
+    }
+   }
+  }
+  lower_it=upper_it;
+ }
+}
+#endif
 #endif

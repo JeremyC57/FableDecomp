@@ -13,6 +13,9 @@
 //   stack of 8-byte entries at +8, its count +0x2808, capture mask +0x2814, the capture block +0x3a24 (retail body).
 // Shape: the saved target is a scoped named CRenderTarget (built from the display surfaces, assigned member-wise into
 //   OldRenderTarget, destroyed before the viewport copy); CSurface has a user virtual dtor, CRenderTarget an implicit one.
+// Name fix (NF98, round 8, q11274): 0x009F9E00 is CTexture::GetSurfaceLevel(long) const (Ego_r.pdb / FableWin.pdb
+//   ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z; engine/CTexture.h), was a made-up non-const GetSurface: in-place respell of the
+//   local CTexture declaration and its call sites, as the landed self row 0x009F9E00 (NF93).
 #include "engine/CEngineScreenEffectOutlineGlow.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -56,7 +59,7 @@ class CDisplayManager { public:
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 class CTexture { public:
-    CSurface GetSurface(long level);               // 0x009F9E00
+    CSurface GetSurfaceLevel(long level) const;    // 0x009F9E00
 };
 
 // NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
@@ -122,7 +125,7 @@ void CEngineScreenEffectOutlineGlow_Begin::BeginOutlineRendering()
         }
         *(C2DBoxI*)&OldViewport_TLX = NEngineInternal::GPDisplayManager->Viewport;
         CRenderTarget target;
-        target.AttachTarget(OutlineTexture->GetSurface(0));
+        target.AttachTarget(OutlineTexture->GetSurfaceLevel(0));
         NEngineInternal::GPDisplayManager->SetRenderTarget(&target);
         g_pRenderManagerCore->Clear(CRGBColour(0, 0, 0, 0), 4);
     }

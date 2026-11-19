@@ -1,147 +1,98 @@
-// CThingSearchTools::GetAllThings(const TFilter& filter, TContainer& result) [TThing = CThingAICreature, TContainer = std::list<CIntelligentPointer<CThingAICreature> >, TFilter = CFilter_Bind5<CThingFilter_HasTC, CThingFilter_HasTC, CThingFilter_HasScriptSupervision, CFilter_Not<CThingFilter_AICreatureHasProperty>, CFilter_Not<CThingFilter_IsLyingDown> >] -- append an intelligent pointer to every scan-visible AI creature passing all five filters to the result list
-// Leaf: GetAllThings
-// Retail: Fable.exe (TLC, VC7.1) @ 0x006DFA50, 233 bytes (+ int3 padding to 240) (`ret 8`).
-// Callees: PeekAllThings 0x0049C770, CThingFilter_HasTC::operator() 0x006A80A0 (twice), CThingFilter_HasScriptSupervision 0x006A7530,
-// CThingFilter_AICreatureHasProperty 0x006A75D0 and CThingFilter_IsLyingDown 0x006A7400 (each negated through CFilter_Not),
-// list<CIntelligentPointer<CThingAICreature> >::push_back 0x006604EB, CIntelligentPointer<CThingAICreature> vtable 0x0123E7E0.
-// Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
-// CThing, the thing lists, the result container and the filters are local retail-layout models.
-// Shape: scan test, then the type-mask test (mask copied into a local), then the filter on the thing reference.
-// A vector push takes a by-value ThingCast<T> temporary (homed in the dead argument slot and shared with the
-// __true_type tag: the same-TU noinline overflow stand-in shows VC7.1 the tag is never read); a list push
-// inserts before end() reading end()->prev once; an intelligent-pointer push builds a named temporary.
-#include "fable_compiler.h"
+// CThingSearchTools::GetAllThings<CThingAICreature, std::list<CIntelligentPointer<CThingAICreature> >, CFilter_Bind5<CThingFilter_HasTC, CThingFilter_HasTC, CThingFilter_HasScriptSupervision, CFilter_Not<CThingFilter_AICreatureHasProperty>, CFilter_Not<CThingFilter_IsLyingDown> > >(const CFilter_Bind5<..>&, std::list<..>&) const -- every scan-visible AI creature that passes the five filters, appended as intelligent pointers
+// Leaf: ??$GetAllThings@VCThingAICreature@@V?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@V?$CFilter_Bind5@VCThingFilter_HasTC@@V1@VCThingFilter_HasScriptSupervision@@V?$CFilter_Not@VCThingFilter_AICreatureHasProperty@@@@V?$CFilter_Not@VCThingFilter_IsLyingDown@@@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind5@VCThingFilter_HasTC@@V1@VCThingFilter_HasScriptSupervision@@V?$CFilter_Not@VCThingFilter_AICreatureHasProperty@@@@V?$CFilter_Not@VCThingFilter_IsLyingDown@@@@@@AAV?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006DFA50, 233 bytes, `ret 8`.
+// Identity: Ego_r.pdb 0x0070D2A0 + FableWin.pdb 0x0249F8D0 (entry q11333); the landed caller 0x006DDD30 binds this spelling.
+// NF98 (round 8, q11333): ported off its local model onto engine/CThingSearchTools.h (the ALLTHINGSBODY template, TYPEMASK) as an explicit
+//   instantiation, with the define set of its landed caller 0x006DDD30 (same retail TU) and that row's row-local filter classes, plus
+//   STLP_LIST_PUSHBACK_NOINLINE (push_back called at 0x006DFB14), CTHINGAICREATURE_STATTYPEFLAGS (`and edx,1Fh`, 0x006DFAA5) and
+//   CTHING_SCANINCLUSION_ISALIVE (`not cl ; test cl,1`, 0x006DFA8F).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_SETCURRENTACTION_COUNTED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_SHOWTROPHY_USE
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING
+#define FABLE_RETAIL_CTROPHYDEF
+#define FABLE_RETAIL_CPLAYERGUI
+#define FABLE_RETAIL_CPLAYERGUI_QUEST_DRAW
+#define FABLE_RETAIL_CPLAYERGUI_MEMBERS
+#define FABLE_RETAIL_CPLAYERMANAGER
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CDRAWQUESTINFO_MINIGAMETYPE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_LAYOUT
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGIONLOAD
+#define FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING_LONGS
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_LIST_SIZE_DECL
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY_TYPEMASK
+#define FABLE_RETAIL_CTHINGCREATUREBASE_STATTYPEFLAGS
+#define FABLE_RETAIL_CTHINGFILTER_HASTC_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE
+#define FABLE_RETAIL_CTHINGAICREATURE_STATTYPEFLAGS
+#define FABLE_RETAIL_CTHING_SCANINCLUSION_ISALIVE
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingAICreature.h"
 #include "engine/CThingSearchTools.h"
-#include <stdlib.h>
+#include "engine/CThingFilter_HasTC.h"
+#include "engine/CThingFilter_AICreatureHasProperty.h"
 
-inline void* operator new(unsigned int, void* where) { return where; }
-struct __true_type { __true_type() {} };
-
-// ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
-// Retail CThing sits 0x10 below the PDB from ThingTypeFlags on: UsingComponents +0x20 [PDB +0x20],
-// ThingTypeFlags +0x6c [PDB +0x7c], the state bit byte +0x91 [PDB +0xa1] = Dead 0x01,
-// IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-class CThing { public:
-    enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
-    unsigned char _pad_0x00[0x20];
-    unsigned char UsingComponents[0x24];              // +0x20 bitset<274> of present thing components
-    unsigned char _pad_0x44[0x6c - 0x44];
-    unsigned long ThingTypeFlags;                     // +0x6c THING_TYPE_* inheritance bits
-    unsigned char _pad_0x70[0x91 - 0x70];
-    unsigned char StateBits;                          // +0x91 Dead / IncludeInThingScans / Activated / InLimbo
-
-    // CThing::IsIncludedInThingScans (out of line at 0x0048BC40), inlined here.
-    bool IsIncludedInThingScans() const
-    {
-        unsigned char f = StateBits;
-        unsigned char nf = ~f;
-        if ((f & 0x04) && (f & 0x08) && (nf & 0x01) && !(f & 0x20))
-            return true;
-        return false;
-    }
+// No shared headers for these (as in the landed caller 0x006DDD30); the out-of-line call operators are landed rows.
+class CThingFilter_HasScriptSupervision : public std::unary_function<CThing, bool> {
+    bool CheckForActive;
+public:
+    explicit CThingFilter_HasScriptSupervision(bool active) : CheckForActive(active) {}
+    bool operator()(const CThing& thing) const;                          // 0x006A7530
 };
-
-// The type test: the mask is copied into a local first, so the CThing (mask 0) test folds late and
-// keeps retail's `xor dl,dl ; jne`, and a byte-sized mask compares through the low byte.
-template <class T> inline bool IsThingOfType(const CThing* thing)
-{
-    unsigned long mask = T::ThingTypeMask;
-    return (thing->ThingTypeFlags & mask) == mask;
-}
-
-// The thing as the searched type, returned by value (a fresh temporary for push_back's const T&).
-template <class T> inline T* ThingCast(CThing* thing) { return (T*)thing; }
-
-// The thing manager's lists: std::list<CThing*> (STLport: the node pointer at +0, node = next, prev, value).
-struct CThingList {
-    struct SNode { SNode* m_pNext; SNode* m_pPrev; CThing* m_value; };
-    SNode* m_pHead;
-    struct iterator {
-        SNode* m_pNode;
-        iterator(SNode* node) : m_pNode(node) {}
-        CThing* operator*() const { return m_pNode->m_value; }
-        iterator& operator++() { m_pNode = m_pNode->m_pNext; return *this; }
-        bool operator!=(const iterator& o) const { return m_pNode != o.m_pNode; }
-    };
-    iterator begin() { return iterator(m_pHead->m_pNext); }
-    iterator end() { return iterator(m_pHead); }
+class CThingFilter_IsLyingDown : public std::unary_function<CThing, bool> {
+public:
+    bool operator()(const CThing& thing) const;                          // 0x006A7400
 };
-
-// The result: STLport list<CIntelligentPointer<T> >, push_back out of line (0x006604EB); the pointer is built in a
-// named stack temporary: CBaseIntelligentPointer() 0x00A01B10, SetPItem 0x00A01B90, ~CBaseIntelligentPointer 0x00A01C10.
-class CBaseObject;
-struct CBaseObjectPointer { CBaseObject* Object; unsigned long RefCount; };
-struct CBaseIntelligentPointer {
-    CBaseObjectPointer* PData;
-    CBaseIntelligentPointer();                        // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();               // 0x00A01C10
-    void SetPItem(CBaseObject* item);                 // 0x00A01B90
+template<class F> class CFilter_Not {
+    const F& Filter;
+public:
+    explicit CFilter_Not(const F& filter) : Filter(filter) {}
+    template<class T> bool operator()(const T& thing) const { return !Filter(thing); }
 };
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7E0
-    CIntelligentPointer(T* p) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)p); }
-};
-template <class T> struct CResultList {
-    void push_back(const T& x);                       // 0x006604EB
-};
-
-class CThingAICreature : public CThing { public: enum { ThingTypeMask = 0x1f }; };
-class CThingFilter_HasTC { public:
-    long Type;                                       // ETCInterfaceType
-    bool operator()(const CThing& thing) const;       // 0x006A80A0
-};
-class CThingFilter_HasScriptSupervision { public:
-    long Data;
-    bool operator()(const CThing& thing) const;       // 0x006A7530
-};
-class CThingFilter_AICreatureHasProperty { public:
-    long Data;
-    bool operator()(const CThing& thing) const;       // 0x006A75D0
-};
-class CThingFilter_IsLyingDown { public:
-    long Data;
-    bool operator()(const CThing& thing) const;       // 0x006A7400
-};
-template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
-    const A& First;
-    const B& Second;
-    template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing); }
-};
-template <class A, class B, class C> class CFilter_Bind3 { public:
-    const A& First;
-    const B& Second;
-    const C& Third;
-    template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing) && Third(thing); }
-};
-template <class A, class B, class C, class D, class E> class CFilter_Bind5 { public:
+template<class A, class B, class C, class D, class E> class CFilter_Bind5 {
     const A& First;
     const B& Second;
     const C& Third;
     const D& Fourth;
     const E& Fifth;
-    template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const
+public:
+    CFilter_Bind5(const A& a, const B& b, const C& c, const D& d, const E& e)
+        : First(a), Second(b), Third(c), Fourth(d), Fifth(e) {}
+    // Inline-budget: retail expands the five filter calls in the scan loop (0x006DFAAD..0x006DFAEF) while it calls push_back out of line
+    // (0x006DFB14); with plain inline VC7.1 calls this operator out of line (the landed model of this row forced it the same way).
+    template<class T> FABLE_FORCEINLINE bool operator()(const T& thing) const
     { return First(thing) && Second(thing) && Third(thing) && Fourth(thing) && Fifth(thing); }
 };
-template <class A> class CFilter_Not { public:               // the negated filter, held by reference
-    const A& Filter;
-    template <class T> bool operator()(const T& thing) const { return !Filter(thing); }
-};
 
-struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)
-    template <class TThing, class TContainer, class TFilter> void GetAllThings(const TFilter& filter, TContainer& result);
-};
-
-// Every scan-visible thing of the whole thing list that is of type TThing and passes the filter.
-template <class TThing, class TContainer, class TFilter>
-void CThingSearchToolsMethods::GetAllThings(const TFilter& filter, TContainer& result)
-{
-    CThingList* things = PeekAllThings();
-    for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
-    {
-        CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && IsThingOfType<TThing>(thing) && filter(*(TThing*)thing))
-            { CIntelligentPointer<TThing> pointer((TThing*)thing); result.push_back(pointer); }
-    }
-}
-
-template void CThingSearchToolsMethods::GetAllThings<CThingAICreature, CResultList<CIntelligentPointer<CThingAICreature> >, CFilter_Bind5<CThingFilter_HasTC, CThingFilter_HasTC, CThingFilter_HasScriptSupervision, CFilter_Not<CThingFilter_AICreatureHasProperty>, CFilter_Not<CThingFilter_IsLyingDown> > >(const CFilter_Bind5<CThingFilter_HasTC, CThingFilter_HasTC, CThingFilter_HasScriptSupervision, CFilter_Not<CThingFilter_AICreatureHasProperty>, CFilter_Not<CThingFilter_IsLyingDown> >&, CResultList<CIntelligentPointer<CThingAICreature> >&);
+typedef CFilter_Bind5<CThingFilter_HasTC, CThingFilter_HasTC, CThingFilter_HasScriptSupervision,
+    CFilter_Not<CThingFilter_AICreatureHasProperty>, CFilter_Not<CThingFilter_IsLyingDown> > TWitnessFilter;
+template void CThingSearchTools::GetAllThings<CThingAICreature, std::list<CIntelligentPointer<CThingAICreature> >, TWitnessFilter>(
+    const TWitnessFilter&, std::list<CIntelligentPointer<CThingAICreature> >&) const;
