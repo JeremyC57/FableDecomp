@@ -1,0 +1,49 @@
+entry	address	status	binders_respelled	note
+q11415	0x00C88E60	deferred: held by acctB	0	0x00C88E60 is Account B's library-grade row (HELD.txt, read-only); its only landed binder 0x00C75CE0 is in the short-reverb family (open)
+q11492	0x00C75CE0	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11493	0x00C6A180	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11512	0x00C89B40	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11513	0x00C89B60	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11514	0x00C89750	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11515	0x00C89AA0	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11517	0x0143CCDC	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11518	0x00C75E90	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11519	0x00C69C60	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11520	0x00C69FB0	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11521	0x00C6A080	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11522	0x00C6A200	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11542	0x012BF138	done-already	0	0x012BF138 has no landed definer; its only landed binder 0x00C78150 (exe scan, REFS.tsv) already binds _sc_fDefaultLongReverbInputDelay (NF99P2 landing)
+q11543	0x00C744E0	open	0	family (hands back whole), in progress: 0x00C744E0 drafted (work/fam/00c744e0.cpp, q.py MATCH, 1 grade); its 7 binders not yet ported; nothing in rows/ until the whole closure grades (work/fam/FAMILY.tsv)
+q11544	0x00C75670	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11545	0x00C69B60	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11546	0x00C6A460	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11547	0x00C75CA0	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11548	0x00C89110	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11549	0x00C896C0	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11550	0x00C75FF0	open	0	family (hands back whole), in progress: 0x00C75FF0 drafted (work/fam/00c75ff0.cpp, q.py RELOCATION_MATCH, 1 grade); binder 0x00C69FB0 not yet ported; nothing in rows/ until the whole closure grades (work/fam/FAMILY.tsv)
+q11551	0x00C75140	open	0	family (hands back whole), in progress: 0x00C75140 drafted (work/fam/00c75140.cpp, q.py RELOCATION_MATCH, 1 grade); binder 0x00C6A080 not yet ported; nothing in rows/ until the whole closure grades (work/fam/FAMILY.tsv)
+q11552	0x00C76680	open	0	family (hands back whole), in progress: 0x00C76680 drafted (work/fam/00c76680.cpp, q.py MATCH, 1 grade); binders 0x00C75FF0 / 0x00C891A0 drafted; nothing in rows/ until the whole closure grades (work/fam/FAMILY.tsv)
+q11553	0x00C764E0	open	0	family (hands back whole), in progress: 0x00C764E0 drafted (work/fam/00c764e0.cpp, q.py MATCH, 1 grade); binder 0x00C76B60 not yet ported; nothing in rows/ until the whole closure grades (work/fam/FAMILY.tsv)
+q11554	0x00C76760	open	0	family (hands back whole), in progress: 0x00C76760 drafted (work/fam/00c76760.cpp, q.py MATCH, 1 grade); binders 0x00C89750 / 0x00C89B60 not yet ported; nothing in rows/ until the whole closure grades (work/fam/FAMILY.tsv)
+q11555	0x00C763E0	open	0	family (hands back whole), in progress: 0x00C763E0 drafted (work/fam/00c763e0.cpp, q.py MATCH, 1 grade); binder 0x00C891A0 drafted, 0x00C89B40 not yet; nothing in rows/ until the whole closure grades (work/fam/FAMILY.tsv)
+q11556	0x00C76460	open	0	family (hands back whole), in progress: 0x00C76460 drafted (work/fam/00c76460.cpp, q.py MATCH, 1 grade); binders 0x00C6A080 / 0x00C75820 / 0x00C76B60 / 0x00C76C20 not yet; nothing in rows/ until the whole closure grades (work/fam/FAMILY.tsv)
+q11557	0x00C76B60	open	0	family (hands back whole): not started; see work/fam/FAMILY.tsv
+q11558	0x00C891A0	open	0	family (hands back whole), in progress: 0x00C891A0 drafted (work/fam/00c891a0.cpp, q.py RELOCATION_MATCH, 1 grade); binders 0x00C75A20 / 0x00C75AB0 not yet; nothing in rows/ until the whole closure grades (work/fam/FAMILY.tsv)
+q11559	0x012B89C4	open	0	not started; separable from the family. 0x012B89C4 is a one-slot table (slot 0 = 0x00C53AE0) with seven code references (xref.py: 0x00C53AA6, 0x00C53AD2, 0x00C53AEA, 0x00C54532, 0x00C69872, 0x00C6A884, 0x00C6AED9), an existing split: 0x00C54510 binds ??_7CReverbConstants@@6B@ (NF99P2), the stand-ins in 0x00C53AD0 / 0x00C53AE0 / 0x00C69870 / 0x00C6A780 / 0x00C6AE90 do not; no binder changed here
+q11560	0x00C53440	done	2	self row 0x00C53440 ported to CHLRvbParams::SetDecayTime (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetDecayTime@CHLRvbParams@@QAEXM@Z (q11576)
+q11561	0x00C534A0	done	2	self row 0x00C534A0 ported to CHLRvbParams::SetDecayLFRatio (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetDecayLFRatio@CHLRvbParams@@QAEXM@Z (q11576)
+q11562	0x00C53500	done	2	self row 0x00C53500 ported to CHLRvbParams::SetDecayHFRatio (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetDecayHFRatio@CHLRvbParams@@QAEXM@Z (q11576)
+q11563	0x00C53560	done	2	self row 0x00C53560 ported to CHLRvbParams::SetReflectionsGain (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetReflectionsGain@CHLRvbParams@@QAEXM@Z (q11576)
+q11564	0x00C535C0	done	2	self row 0x00C535C0 ported to CHLRvbParams::SetReflectionsDelay (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetReflectionsDelay@CHLRvbParams@@QAEXM@Z (q11576)
+q11565	0x00C53650	done	2	self row 0x00C53650 ported to CHLRvbParams::SetReverbGain (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetReverbGain@CHLRvbParams@@QAEXM@Z (q11576)
+q11566	0x00C536B0	done	2	self row 0x00C536B0 ported to CHLRvbParams::SetReverbDelay (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetReverbDelay@CHLRvbParams@@QAEXM@Z (q11576)
+q11567	0x00C53740	done	2	self row 0x00C53740 ported to CHLRvbParams::SetLFReference (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetLFReference@CHLRvbParams@@QAEXM@Z (q11576)
+q11568	0x00C537A0	done	2	self row 0x00C537A0 ported to CHLRvbParams::SetHFReference (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetHFReference@CHLRvbParams@@QAEXM@Z (q11576)
+q11569	0x00C53800	done	2	self row 0x00C53800 ported to CHLRvbParams::SetEchoTime (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetEchoTime@CHLRvbParams@@QAEXM@Z (q11576)
+q11570	0x00C53860	done	2	self row 0x00C53860 ported to CHLRvbParams::SetEchoDepth (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetEchoDepth@CHLRvbParams@@QAEXM@Z (q11576)
+q11571	0x00C538C0	done	2	self row 0x00C538C0 ported to CHLRvbParams::SetModulationTime (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetModulationTime@CHLRvbParams@@QAEXM@Z (q11576)
+q11572	0x00C53920	done	2	self row 0x00C53920 ported to CHLRvbParams::SetModulationDepth (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetModulationDepth@CHLRvbParams@@QAEXM@Z (q11576)
+q11573	0x00C53980	done	2	self row 0x00C53980 ported to CHLRvbParams::SetDensity (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetDensity@CHLRvbParams@@QAEXM@Z (q11576)
+q11574	0x00C539E0	done	2	self row 0x00C539E0 ported to CHLRvbParams::SetDiffusion (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetDiffusion@CHLRvbParams@@QAEXM@Z (q11576)
+q11575	0x00C53A40	done	2	self row 0x00C53A40 ported to CHLRvbParams::SetSize (RELOCATION_MATCH PASS, work/b1.log); both landed binders 0x00C54190 / 0x00C54510 (exe scan, REFS.tsv) now bind ?SetSize@CHLRvbParams@@QAEXM@Z (q11576)
+q11576	0x00C54510	done	2	0x00C54190 / 0x00C54510 hold the +0x290 block as engine/CHLRvbParams.h CHLRvbParams: 0 reinterpret_cast on the block in either row (16 setter casts + the Commit cast removed); 2 reinterpret_cast<C3DSoundSource*>(this) remain in 0x00C54190, on this, pre-existing (callees 0x00C53D50 / 0x00C53E40 = SDK CSalSwReverb::SetReflectionsPan / SetReverbPan, NAME_FIXES); RELOCATION_MATCH PASS both; funclet 0x01216140 regraded

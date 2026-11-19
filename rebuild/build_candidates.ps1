@@ -181677,65 +181677,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c53440'
-        Module = '_unattributed'
-        Source = '00/c5/unattributed_SetClampedCAttribute00c53440_00c53440.cpp'
-        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53440_00c53440_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetDecayTime_00c53440.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetDecayTime_00c53440_test.cpp'
         PassPattern = '00c53440_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c534a0'
-        Module = '_unattributed'
-        Source = '00/c5/unattributed_SetClampedCAttribute00c534a0_00c534a0.cpp'
-        TestSource = '00/c5/unattributed_SetClampedCAttribute00c534a0_00c534a0_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetDecayLFRatio_00c534a0.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetDecayLFRatio_00c534a0_test.cpp'
         PassPattern = '00c534a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c53500'
-        Module = '_unattributed'
-        Source = '00/c5/unattributed_SetClampedCAttribute00c53500_00c53500.cpp'
-        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53500_00c53500_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetDecayHFRatio_00c53500.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetDecayHFRatio_00c53500_test.cpp'
         PassPattern = '00c53500_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c53560'
-        Module = '_unattributed'
-        Source = '00/c5/unattributed_SetClampedCAttribute00c53560_00c53560.cpp'
-        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53560_00c53560_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetReflectionsGain_00c53560.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetReflectionsGain_00c53560_test.cpp'
         PassPattern = '00c53560_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c53650'
-        Module = '_unattributed'
-        Source = '00/c5/unattributed_SetClampedCAttribute00c53650_00c53650.cpp'
-        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53650_00c53650_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetReverbGain_00c53650.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetReverbGain_00c53650_test.cpp'
         PassPattern = '00c53650_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c53800'
-        Module = '_unattributed'
-        Source = '00/c5/unattributed_SetClampedCAttribute00c53800_00c53800.cpp'
-        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53800_00c53800_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetEchoTime_00c53800.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetEchoTime_00c53800_test.cpp'
         PassPattern = '00c53800_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c53860'
-        Module = '_unattributed'
-        Source = '00/c5/unattributed_SetClampedCAttribute00c53860_00c53860.cpp'
-        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53860_00c53860_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetEchoDepth_00c53860.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetEchoDepth_00c53860_test.cpp'
         PassPattern = '00c53860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c538c0'
-        Module = '_unattributed'
-        Source = '00/c5/unattributed_SetClampedCAttribute00c538c0_00c538c0.cpp'
-        TestSource = '00/c5/unattributed_SetClampedCAttribute00c538c0_00c538c0_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetModulationTime_00c538c0.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetModulationTime_00c538c0_test.cpp'
         PassPattern = '00c538c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c53920'
-        Module = '_unattributed'
-        Source = '00/c5/unattributed_SetClampedCAttribute00c53920_00c53920.cpp'
-        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53920_00c53920_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetModulationDepth_00c53920.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetModulationDepth_00c53920_test.cpp'
         PassPattern = '00c53920_TEST PASS'
     }
     [pscustomobject]@{
@@ -341493,30 +341493,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c53740'
-        Module = 'CUnprovenPendingParams_00c53740'
-        Source = '00/c5/CUnprovenPendingParams00c53740_SetField1C_00c53740.cpp'
-        TestSource = '00/c5/CUnprovenPendingParams00c53740_SetField1C_00c53740_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetLFReference_00c53740.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetLFReference_00c53740_test.cpp'
         PassPattern = '00c53740_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c537a0'
-        Module = 'CUnprovenPendingParams_00c53740'
-        Source = '00/c5/CUnprovenPendingParams00c53740_SetField20_00c537a0.cpp'
-        TestSource = '00/c5/CUnprovenPendingParams00c53740_SetField20_00c537a0_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetHFReference_00c537a0.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetHFReference_00c537a0_test.cpp'
         PassPattern = '00c537a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c53980'
-        Module = 'CUnprovenPendingParams_00c53740'
-        Source = '00/c5/CUnprovenPendingParams00c53740_SetField38_00c53980.cpp'
-        TestSource = '00/c5/CUnprovenPendingParams00c53740_SetField38_00c53980_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetDensity_00c53980.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetDensity_00c53980_test.cpp'
         PassPattern = '00c53980_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c539e0'
-        Module = 'CUnprovenPendingParams_00c53740'
-        Source = '00/c5/CUnprovenPendingParams00c53740_SetField34_00c539e0.cpp'
-        TestSource = '00/c5/CUnprovenPendingParams00c53740_SetField34_00c539e0_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetDiffusion_00c539e0.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetDiffusion_00c539e0_test.cpp'
         PassPattern = '00c539e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -358034,23 +358034,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c535c0'
-        Module = 'CUnprovenReverbParameters'
-        Source = '00/c5/CUnprovenReverbParameters_SetClamped28_00c535c0.cpp'
-        TestSource = '00/c5/CUnprovenReverbParameters_SetClamped28_00c535c0_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetReflectionsDelay_00c535c0.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetReflectionsDelay_00c535c0_test.cpp'
         PassPattern = '00c535c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c536b0'
-        Module = 'CUnprovenReverbParameters'
-        Source = '00/c5/CUnprovenReverbParameters_SetClamped30_00c536b0.cpp'
-        TestSource = '00/c5/CUnprovenReverbParameters_SetClamped30_00c536b0_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetReverbDelay_00c536b0.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetReverbDelay_00c536b0_test.cpp'
         PassPattern = '00c536b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c53a40'
-        Module = 'CUnprovenReverbParameters'
-        Source = '00/c5/CUnprovenReverbParameters_SetClamped64_00c53a40.cpp'
-        TestSource = '00/c5/CUnprovenReverbParameters_SetClamped64_00c53a40_test.cpp'
+        Module = 'CHLRvbParams'
+        Source = '00/c5/CHLRvbParams_SetSize_00c53a40.cpp'
+        TestSource = '00/c5/CHLRvbParams_SetSize_00c53a40_test.cpp'
         PassPattern = '00c53a40_TEST PASS'
     }
     [pscustomobject]@{

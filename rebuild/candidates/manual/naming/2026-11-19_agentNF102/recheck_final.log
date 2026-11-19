@@ -1,0 +1,80 @@
+addr       parity           behav  name
+00c53440   RELOCATION_MATCH PASS   _unattributed::SetClamped_CAttribute_00c53440
+00c534a0   RELOCATION_MATCH PASS   _unattributed::SetClamped_CAttribute_00c534a0
+00c53500   RELOCATION_MATCH PASS   _unattributed::SetClamped_CAttribute_00c53500
+00c53560   RELOCATION_MATCH PASS   _unattributed::SetClamped_CAttribute_00c53560
+00c535c0   WARN STANDIN_LEAF ?SetReflectionsDelay@CHLRvbParams@@QAEXM@Z (catalog CUnprovenReverbParameters::SetClamped28; names another function)
+00c535c0   RELOCATION_MATCH PASS   CUnprovenReverbParameters::SetClamped28
+00c53650   RELOCATION_MATCH PASS   _unattributed::SetClamped_CAttribute_00c53650
+00c536b0   WARN STANDIN_LEAF ?SetReverbDelay@CHLRvbParams@@QAEXM@Z (catalog CUnprovenReverbParameters::SetClamped30; names another function)
+00c536b0   RELOCATION_MATCH PASS   CUnprovenReverbParameters::SetClamped30
+00c53740   WARN STANDIN_LEAF ?SetLFReference@CHLRvbParams@@QAEXM@Z (catalog CUnprovenPendingParams_00c53740::SetField1C; names another function)
+00c53740   RELOCATION_MATCH PASS   CUnprovenPendingParams_00c53740::SetField1C
+00c537a0   WARN STANDIN_LEAF ?SetHFReference@CHLRvbParams@@QAEXM@Z (catalog CUnprovenPendingParams_00c53740::SetField20; names another function)
+00c537a0   RELOCATION_MATCH PASS   CUnprovenPendingParams_00c53740::SetField20
+00c53800   RELOCATION_MATCH PASS   _unattributed::SetClamped_CAttribute_00c53800
+00c53860   RELOCATION_MATCH PASS   _unattributed::SetClamped_CAttribute_00c53860
+00c538c0   RELOCATION_MATCH PASS   _unattributed::SetClamped_CAttribute_00c538c0
+00c53920   RELOCATION_MATCH PASS   _unattributed::SetClamped_CAttribute_00c53920
+00c53980   WARN STANDIN_LEAF ?SetDensity@CHLRvbParams@@QAEXM@Z (catalog CUnprovenPendingParams_00c53740::SetField38; names another function)
+00c53980   RELOCATION_MATCH PASS   CUnprovenPendingParams_00c53740::SetField38
+00c539e0   WARN STANDIN_LEAF ?SetDiffusion@CHLRvbParams@@QAEXM@Z (catalog CUnprovenPendingParams_00c53740::SetField34; names another function)
+00c539e0   RELOCATION_MATCH PASS   CUnprovenPendingParams_00c53740::SetField34
+00c53a40   WARN STANDIN_LEAF ?SetSize@CHLRvbParams@@QAEXM@Z (catalog CUnprovenReverbParameters::SetClamped64; names another function)
+00c53a40   RELOCATION_MATCH PASS   CUnprovenReverbParameters::SetClamped64
+00c54190   WARN RELOC_NAME: ?SetDecayTime@CHLRvbParams@@QAEXM@Z -> 00c53440 labelled '_unattributed::SetClamped_CAttribute_00c53440'
+00c54190   WARN RELOC_NAME: ?SetDecayHFRatio@CHLRvbParams@@QAEXM@Z -> 00c53500 labelled '_unattributed::SetClamped_CAttribute_00c53500'
+00c54190   WARN RELOC_NAME: ?SetDecayLFRatio@CHLRvbParams@@QAEXM@Z -> 00c534a0 labelled '_unattributed::SetClamped_CAttribute_00c534a0'
+00c54190   WARN RELOC_NAME: ?SetReflectionsGain@CHLRvbParams@@QAEXM@Z -> 00c53560 labelled '_unattributed::SetClamped_CAttribute_00c53560'
+00c54190   WARN RELOC_NAME: ?SetReflectionsDelay@CHLRvbParams@@QAEXM@Z -> 00c535c0 labelled 'CUnprovenReverbParameters::SetClamped28'
+00c54190   WARN RELOC_NAME: ?SetReverbGain@CHLRvbParams@@QAEXM@Z -> 00c53650 labelled '_unattributed::SetClamped_CAttribute_00c53650'
+00c54190   WARN RELOC_NAME: ?SetReverbDelay@CHLRvbParams@@QAEXM@Z -> 00c536b0 labelled 'CUnprovenReverbParameters::SetClamped30'
+00c54190   WARN RELOC_NAME: ?SetSize@CHLRvbParams@@QAEXM@Z -> 00c53a40 labelled 'CUnprovenReverbParameters::SetClamped64'
+00c54190   WARN RELOC_NAME: ?SetDiffusion@CHLRvbParams@@QAEXM@Z -> 00c539e0 labelled 'CUnprovenPendingParams_00c53740::SetField34'
+00c54190   WARN RELOC_NAME: ?SetDensity@CHLRvbParams@@QAEXM@Z -> 00c53980 labelled 'CUnprovenPendingParams_00c53740::SetField38'
+00c54190   WARN RELOC_NAME: ?SetEchoTime@CHLRvbParams@@QAEXM@Z -> 00c53800 labelled '_unattributed::SetClamped_CAttribute_00c53800'
+00c54190   WARN RELOC_NAME: ?SetEchoDepth@CHLRvbParams@@QAEXM@Z -> 00c53860 labelled '_unattributed::SetClamped_CAttribute_00c53860'
+00c54190   WARN RELOC_NAME: ?SetModulationTime@CHLRvbParams@@QAEXM@Z -> 00c538c0 labelled '_unattributed::SetClamped_CAttribute_00c538c0'
+00c54190   WARN RELOC_NAME: ?SetModulationDepth@CHLRvbParams@@QAEXM@Z -> 00c53920 labelled '_unattributed::SetClamped_CAttribute_00c53920'
+00c54190   WARN RELOC_NAME: ?SetLFReference@CHLRvbParams@@QAEXM@Z -> 00c53740 labelled 'CUnprovenPendingParams_00c53740::SetField1C'
+00c54190   WARN RELOC_NAME: ?SetHFReference@CHLRvbParams@@QAEXM@Z -> 00c537a0 labelled 'CUnprovenPendingParams_00c53740::SetField20'
+00c54190   RELOCATION_MATCH PASS   CDecodedStream::SetProperties
+00c54510   WARN RELOC_NAME: ?SetDecayTime@CHLRvbParams@@QAEXM@Z -> 00c53440 labelled '_unattributed::SetClamped_CAttribute_00c53440'
+00c54510   WARN RELOC_NAME: ?SetDecayHFRatio@CHLRvbParams@@QAEXM@Z -> 00c53500 labelled '_unattributed::SetClamped_CAttribute_00c53500'
+00c54510   WARN RELOC_NAME: ?SetDecayLFRatio@CHLRvbParams@@QAEXM@Z -> 00c534a0 labelled '_unattributed::SetClamped_CAttribute_00c534a0'
+00c54510   WARN RELOC_NAME: ?SetReflectionsGain@CHLRvbParams@@QAEXM@Z -> 00c53560 labelled '_unattributed::SetClamped_CAttribute_00c53560'
+00c54510   WARN RELOC_NAME: ?SetReflectionsDelay@CHLRvbParams@@QAEXM@Z -> 00c535c0 labelled 'CUnprovenReverbParameters::SetClamped28'
+00c54510   WARN RELOC_NAME: ?SetReverbGain@CHLRvbParams@@QAEXM@Z -> 00c53650 labelled '_unattributed::SetClamped_CAttribute_00c53650'
+00c54510   WARN RELOC_NAME: ?SetReverbDelay@CHLRvbParams@@QAEXM@Z -> 00c536b0 labelled 'CUnprovenReverbParameters::SetClamped30'
+00c54510   WARN RELOC_NAME: ?SetSize@CHLRvbParams@@QAEXM@Z -> 00c53a40 labelled 'CUnprovenReverbParameters::SetClamped64'
+00c54510   WARN RELOC_NAME: ?SetDiffusion@CHLRvbParams@@QAEXM@Z -> 00c539e0 labelled 'CUnprovenPendingParams_00c53740::SetField34'
+00c54510   WARN RELOC_NAME: ?SetDensity@CHLRvbParams@@QAEXM@Z -> 00c53980 labelled 'CUnprovenPendingParams_00c53740::SetField38'
+00c54510   WARN RELOC_NAME: ?SetEchoTime@CHLRvbParams@@QAEXM@Z -> 00c53800 labelled '_unattributed::SetClamped_CAttribute_00c53800'
+00c54510   WARN RELOC_NAME: ?SetEchoDepth@CHLRvbParams@@QAEXM@Z -> 00c53860 labelled '_unattributed::SetClamped_CAttribute_00c53860'
+00c54510   WARN RELOC_NAME: ?SetModulationTime@CHLRvbParams@@QAEXM@Z -> 00c538c0 labelled '_unattributed::SetClamped_CAttribute_00c538c0'
+00c54510   WARN RELOC_NAME: ?SetModulationDepth@CHLRvbParams@@QAEXM@Z -> 00c53920 labelled '_unattributed::SetClamped_CAttribute_00c53920'
+00c54510   WARN RELOC_NAME: ?SetLFReference@CHLRvbParams@@QAEXM@Z -> 00c53740 labelled 'CUnprovenPendingParams_00c53740::SetField1C'
+00c54510   WARN RELOC_NAME: ?SetHFReference@CHLRvbParams@@QAEXM@Z -> 00c537a0 labelled 'CUnprovenPendingParams_00c53740::SetField20'
+00c54510   RELOCATION_MATCH PASS   CDecodedStream::Initialise
+01216140   RELOCATION_MATCH PASS   _global::Unwind@01216140
+
+WINS: 19
+  00c53440 RELOCATION_MATCH _unattributed::?SetDecayTime@CHLRvbParams@@QAEXM@Z
+  00c534a0 RELOCATION_MATCH _unattributed::?SetDecayLFRatio@CHLRvbParams@@QAEXM@Z
+  00c53500 RELOCATION_MATCH _unattributed::?SetDecayHFRatio@CHLRvbParams@@QAEXM@Z
+  00c53560 RELOCATION_MATCH _unattributed::?SetReflectionsGain@CHLRvbParams@@QAEXM@Z
+  00c535c0 RELOCATION_MATCH CUnprovenReverbParameters::?SetReflectionsDelay@CHLRvbParams@@QAEXM@Z
+  00c53650 RELOCATION_MATCH _unattributed::?SetReverbGain@CHLRvbParams@@QAEXM@Z
+  00c536b0 RELOCATION_MATCH CUnprovenReverbParameters::?SetReverbDelay@CHLRvbParams@@QAEXM@Z
+  00c53740 RELOCATION_MATCH CUnprovenPendingParams_00c53740::?SetLFReference@CHLRvbParams@@QAEXM@Z
+  00c537a0 RELOCATION_MATCH CUnprovenPendingParams_00c53740::?SetHFReference@CHLRvbParams@@QAEXM@Z
+  00c53800 RELOCATION_MATCH _unattributed::?SetEchoTime@CHLRvbParams@@QAEXM@Z
+  00c53860 RELOCATION_MATCH _unattributed::?SetEchoDepth@CHLRvbParams@@QAEXM@Z
+  00c538c0 RELOCATION_MATCH _unattributed::?SetModulationTime@CHLRvbParams@@QAEXM@Z
+  00c53920 RELOCATION_MATCH _unattributed::?SetModulationDepth@CHLRvbParams@@QAEXM@Z
+  00c53980 RELOCATION_MATCH CUnprovenPendingParams_00c53740::?SetDensity@CHLRvbParams@@QAEXM@Z
+  00c539e0 RELOCATION_MATCH CUnprovenPendingParams_00c53740::?SetDiffusion@CHLRvbParams@@QAEXM@Z
+  00c53a40 RELOCATION_MATCH CUnprovenReverbParameters::?SetSize@CHLRvbParams@@QAEXM@Z
+  00c54190 RELOCATION_MATCH CDecodedStream::?SetProperties@CDecodedStream@@UAEXPBUSSourceUpdate@@@Z
+  00c54510 RELOCATION_MATCH CDecodedStream::?Initialise@CDecodedStream@@QAE_NXZ
+  01216140 RELOCATION_MATCH _global::Unwind@01216140
