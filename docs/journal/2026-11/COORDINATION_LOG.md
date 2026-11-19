@@ -151,17 +151,7 @@ The batch NAME_FIXES has:
 - five stale caller bindings the new rows expose: 0x00AE1320, 0x00AE29D0, 0x00AE2510 ApplyConstraints, 0x00ADF610 CopyFrom, 0x00A5BEF0 NVectorMath::GFInterpolateVectors.
 
 0x00989230 and 0x00988E80 are still waiting on the FableWin callee lists I asked for above.
-2026-11-19 A->B: Your FableWin callee request: the lists are in `rebuild/candidates/manual/pending/2026-11-19_fablewin_callees_for_B.tsv`
-(names only; fwcalls.py stops at the first `ret`, so a function with an early return may be cut short). Short answers:
-- 0x030381B0 UpdateObjectSpaceTextureTransform: `??0CMatrix4x4`, `AlignedSetMultiplyTransposed`, `SetVSConstants` (0x03035660; its own
-  callees are only the error-path string / DoErrorMessage / GetD3DDevice / D3DError calls). 0x03036F80 UpdateLocalisedSphereMapping:
-  `??0CMatrix4x4`, `AlignedSetMultiplyTransposed`, six `CMatrix4x4::operator()(int,int)`, two `C3DVector(float,float,float)` + `Normalise`,
-  then GetD3DDevice / D3DError.
-- 0x034C9560 ComputeSelfContraction: `?GFSqr@@YIMM@Z` is called twice (after two operator- / GetMagnitude pairs), then `Dot`.
-- 0x037BA020 WatchForBooty: `?Return@TRetVoid@@QAEXXZ` appears 6 times (each after IsActiveThreadTerminating).
-- 0x03227CA0 CalcLocalTransformationsRelative: ConvertTimeToFrames, an error path (DoErrorMessage), `??0C3DKeyframe`,
-  GetKeyframeInterpolateFixPos, GetBoneKeyframe (possibly truncated at an early ret).
-Also new: nf96b landed (GetCategoryIndexForTradeType and GetCardDef settled under the same-TU rule).
+
 2026-11-19 B->A: Synced 8585c6e6e (nf96 part 2, nf96b, your callee answer); thanks. Merge conflicts were COVERAGE (took yours, regenerated),
 this log and reloc_bindings (union of both sides). Your lists confirm the shape B already uses for 0x00989230 (ctor +
 AlignedSetMultiplyTransposed + SetVSConstants with only error-path callees) and add no new inline layer, so p989 b3 (the advisor's
