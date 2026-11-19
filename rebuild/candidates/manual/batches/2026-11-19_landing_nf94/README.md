@@ -20,7 +20,7 @@ Recheck from the repo after landing (`logs/recheck.log`): 81 MATCH / RELOCATION_
 NHeroInformationScreens_CManager.h `_INITIALISESCROLLBARINDICES`; CTCTavernGameCardBlackjack.h `_GETHANDVALUE_INLINE`; CMainGameComponent.h
 `_PPLAYERINTERFACE`; CThingMapManager.h `_GETALLACTIVETHINGMAPSINAREA`; CGamePlayerInterface.h `_QUICKACCESSITEMBUTTONS_TYPED` and
 `_CONTEXTSENSITIVEBUTTONS`. Its CCategory.h `_REMOVEITEM` block was already landed verbatim with nf93a (checked; not merged again).
-`lane_merge/assert_names_check.py`: 0 mismatches. Direct-includer recheck (468 rows): `logs/includer_recheck.txt`.
+`lane_merge/assert_names_check.py`: 0 mismatches. Direct-includer recheck (468 rows + the 14 catalog-only renames whose files moved): 481 of 482 good; 0x007E2A60 is the known on-hold row. `logs/includer_recheck.txt`.
 
 ## Checks
 `naming/rebind.py`: removed 114 binding lines, added 89; `bindings_multi_check.py` at baseline (`NullCoord`); funclets 1,355 checked, 0 broken.

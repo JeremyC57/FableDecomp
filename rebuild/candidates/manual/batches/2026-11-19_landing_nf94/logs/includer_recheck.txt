@@ -1,0 +1,4 @@
+# direct-includer recheck after landing nf94: 468 includers + 14 catalog-only self renames whose files moved (482 rows)
+good 481, bad 1
+# 0x007E2A60 is the known ON-HOLD assert-drift row (ROADMAP (c)), DIFFER before round 8 too
+007e2a60	007e2a60   DIFFER(707v707)  PASS   CTCFineDialogue::GlobalUpdate
