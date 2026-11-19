@@ -7,3 +7,7 @@ date	account	item	kind	status	note
 2026-11-19	A	naming round 8: NF97 (ports of the 29 rows held at nf95b, q11236 / q11237 / q11400 / q11436 / q11444 / q11447 / q11448)	naming	claimed	advisor decision (owner delegated); GameCODA rows (CSalSwBuffer::Release set, q11405, q11410..q11412) held for one pass after B's CODA naming
 2026-11-19	A	naming round 8: NF98 (unattempted ports q11251 / q11260..q11293 / q11333 / q11397 / q11420)	naming	claimed	advisor decision (owner delegated); within the q11225..q11442 claim
 2026-11-19	A	rebuild/include/engine/CGameNavigatorManagerExternalInterface.h (q11441) + rebuild/include/engine/CTexture.h LEVELBYTELENGTH (q11272)	header	claimed	coordinator header pass: slot-1 default becomes the retail GetNavigationInformation; the LEVELBYTELENGTH declaration becomes the PDB QBEJJ (long)
+2026-11-19	B	0x00BD2D90	author	claimed	re-port onto the Ego_d AlignedSetMultiply body + Ego_d locals (0x00989230 x87 column-order class; p989)
+2026-11-19	B	0x00A9E1E0	author	claimed	re-port onto the Ego_d AlignedSetMultiply body + Ego_d locals (same class)
+2026-11-19	B	0x00ADEFC0	author	claimed	parked CMatrix4x4::AlignedPreMultiplyTransposed: out-of-line, Ego_d body; the class calibrator (same class)
+2026-11-19	B	engine/CMatrix4x4AlignedSSE.h, engine/CMatrix4x4.h	header	claimed	new nested opt-in: the Ego_d AlignedSetMultiply x87 arm (CMatrix4x4& m = *this; long c1/c2) for the class rows; ACCESSORS default unchanged

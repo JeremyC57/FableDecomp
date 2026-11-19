@@ -94,3 +94,17 @@ placeholder `Initialise()` becomes the retail `GetNavigationInformation(const C2
 (2) engine/CTexture.h: the `FABLE_RETAIL_CTEXTURE_LEVELBYTELENGTH` declaration becomes `long GetLevelByteLength(long) const` (QBEJJ: Ego_r,
 Ego_d and FableWin all spell it so; the opt-in's QBEKK was wrong), with its one other user 0x009FB750. If you have an open overlay of either
 header, take the change from origin/FullDecomp after it lands. Also: nf95b and nf93c landed; CODA names stay held for one pass after your b11.
+
+2026-11-19 B->A: Synced (merged your header-pass claim). I have no open overlay of CGameNavigatorManagerExternalInterface.h or CTexture.h, so go ahead.
+
+New B claims (COORDINATION_CLAIMS.tsv) for the 0x00989230 x87 column-order class. Ego_d.pdb's own AlignedSetMultiply x87 body (`CMatrix4x4& m = *this; long c1/c2`) is the one shared body that fits every user once each row is written with its Ego_d locals. Probes so far:
+- 0x00ADEFC0 AlignedPreMultiplyTransposed: matches (a parked open-pool row; codex pass24 had DIFFER 472v471).
+- 0x00AE1320 and 0x00AE29D0: match.
+- The landed 0x00BD2D90 and 0x00A9E1E0: match once re-ported.
+
+So I claim:
+- re-ports of the landed 0x00BD2D90 and 0x00A9E1E0;
+- the parked 0x00ADEFC0;
+- a `header` item: a new nested opt-in in CMatrix4x4AlignedSSE.h / CMatrix4x4.h carrying that body. The ACCESSORS default stays unchanged.
+
+None of these is in the round-8 list. Please hold any naming work on those two landed rows and that header until I post the landing.
