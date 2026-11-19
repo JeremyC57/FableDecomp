@@ -1304,3 +1304,5 @@ against CODAApi.lib, or stay compiled C++?
 - 0x0059C747 CTCInventoryTrade::RemoveItemFromInventory: DIFFER(35v29), test PASS, the same with both older trees. It is NF94's round-8 row
   (queue q11226), so NF94's hand-back will show its baseline grade.
 - Next: bisect each with `git archive <commit> rebuild/include` + FABLE_HDR_OVERLAY back to the landing that broke it.
+- (same day, nf95a recheck) 0x0072A680 CTCActionUseBuyOrSteal::~CTCActionUseBuyOrSteal: DIFFER(75v54), test PASS, the same with the pre-nf95a and the
+  11-18 include trees: pre-existing, also to bisect. (0x007E2A60 also DIFFER: the known on-hold row.)

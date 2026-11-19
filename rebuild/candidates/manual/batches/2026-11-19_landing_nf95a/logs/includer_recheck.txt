@@ -1,0 +1,5 @@
+# includer recheck after landing nf95a: 1191 direct includers of the 6 changed headers (minus rows the nf93a run already passed)
+good 1189, bad 2
+# bad: 0x007E2A60 is the known ON-HOLD assert-drift row (ROADMAP (c)); 0x0072A680 is DIFFER with the pre-nf95a and the 11-18 include trees too (pre-existing, FINDINGS_LOG)
+0072a680	0072a680   DIFFER(75v54)    PASS   CTCActionUseBuyOrSteal::~CTCActionUseBuyOrSteal
+007e2a60	007e2a60   DIFFER(707v707)  PASS   CTCFineDialogue::GlobalUpdate
