@@ -9,6 +9,11 @@
 // start time, `and [g],0`, `leave`); the start time is one double local reused for both measurements.
 // Binding (sweep 3): CSystemManager is class-keyed, so the callee binds Ego_r ?GFGetSystemManager@@YIPAVCSystemManager@@XZ
 //   (was ...PAUCSystemManager...). Same bytes.
+// Name fix (NF103, round 10): 0x013B89A8 is CThingSearchTools::NoLookups (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA; the rough-area
+//   searches bump it first, e.g. the landed 0x00959380 / 0x00518130), zeroed here once per regular update; declared by the shared header
+//   (opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_STATICS). It was the global stand-in ?g_frameCounter_013b89a8@@3JA.
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_STATICS
+#include "engine/CThingSearchTools.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CSystemManager {
@@ -33,7 +38,6 @@ struct CDisplayHolder {
     unsigned char  _pad00[0x2c];
     CDisplayOwner* m_pOwner;                       // +0x2c
 };
-extern long   g_frameCounter_013b89a8;             // 0x013B89A8
 extern double g_updateTime_013b8690;               // 0x013B8690
 extern double g_renderTime_013b8698;               // 0x013B8698
 class CMainGameComponent { public:
@@ -50,7 +54,7 @@ void CMainGameComponent::UpdateRegular()
 {
     if (GFGetSystemManager()->IsApplicationActive())
     {
-        g_frameCounter_013b89a8 = 0;
+        CThingSearchTools::NoLookups = 0;
         double start = GFGetTime();
         Update();
         g_updateTime_013b8690 = GFGetTime() - start;

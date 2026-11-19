@@ -190,6 +190,10 @@ public:
 protected:
     void GetAllThingMapsInArea(const C2DBoxI&,std::vector<NThingMap::CThingMap*>&)const;
 public:
+#elif defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY)
+    // NF103 (round 10, header claim): the ROUGHAREABODY / TCSINROUGHAREA_BODY copies below use the same PDB statics (they spelled
+    // SearchCount_013b89a8 / SearchWork_013b89ac / SearchID_013b89b0); GetAllThingMapsInArea is declared by those blocks.
+    static unsigned long NoLookups,NoThingsScanned,SearchID;
 #endif
     CThingSearchTools(CThingManager&,CWorldMap&);
 #ifndef FABLE_RETAIL_CTHINGSEARCHTOOLS_IMPLICIT_DTOR
@@ -338,14 +342,14 @@ public:
     template<class T,class Container,class Filter> __declspec(noinline) void GetAllThingsInRoughArea(const C2DBoxI& area,const Filter& filter,Container& result) const {
         std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
         GetAllThingMapsInArea(area,maps);
-        ++SearchCount_013b89a8;
-        SearchWork_013b89ac=0;
-        ++SearchID_013b89b0;
+        ++NoLookups;
+        NoThingsScanned=0;
+        ++SearchID;
         for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=maps.end();++it) {
             const NThingMap::CThingMap& map=**it;
             C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
-            for(long layer=0;layer<NThingMap::g_NoMapwhoLevels;++layer) {
-                long shift=LayerInfo_0137dad8[layer].ScaleShift;
+            for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
+                long shift=NThingMap::LayerInfo[layer].ScaleShift;
                 C2DBoxI cells;
                 cells.TLX=local.TLX>>shift;
                 cells.TLY=local.TLY>>shift;
@@ -362,8 +366,8 @@ public:
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
-                            if(who->GetSearchID()<SearchID_013b89b0) {
-                                who->SetSearchID(SearchID_013b89b0);
+                            if(who->GetSearchID()<SearchID) {
+                                who->SetSearchID(SearchID);
                                 CThing& thing=who->GetParentThing();
                                 unsigned long mask=T::StatGetTypeFlags();
                                 if((thing.GetTypeFlags()&mask)==mask && filter(static_cast<const T&>(thing)))
@@ -474,14 +478,14 @@ public:
     template<class T,class Filter,class Container> __declspec(noinline) void GetAllTCsInRoughArea(const C2DBoxI& area,const Filter& filter,Container& result) const {
         std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
         GetAllThingMapsInArea(area,maps);
-        ++SearchCount_013b89a8;
-        SearchWork_013b89ac=0;
-        ++SearchID_013b89b0;
+        ++NoLookups;
+        NoThingsScanned=0;
+        ++SearchID;
         for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=maps.end();++it) {
             const NThingMap::CThingMap& map=**it;
             C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
-            for(long layer=0;layer<NThingMap::g_NoMapwhoLevels;++layer) {
-                long shift=LayerInfo_0137dad8[layer].ScaleShift;
+            for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
+                long shift=NThingMap::LayerInfo[layer].ScaleShift;
                 C2DBoxI cells;
                 cells.TLX=local.TLX>>shift;
                 cells.TLY=local.TLY>>shift;
@@ -498,8 +502,8 @@ public:
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
-                            if(who->GetSearchID()<SearchID_013b89b0) {
-                                who->SetSearchID(SearchID_013b89b0);
+                            if(who->GetSearchID()<SearchID) {
+                                who->SetSearchID(SearchID);
                                 CThing& thing=who->GetParentThing();
                                 T* tc=0;
                                 if(thing.GetTC(&tc) && filter(thing))
@@ -515,14 +519,14 @@ public:
     template<class T,class Filter,class Container> __declspec(noinline) void GetAllTCDsInRoughArea(const C2DBoxI& area,const Filter& filter,Container& result) const {
         std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
         GetAllThingMapsInArea(area,maps);
-        ++SearchCount_013b89a8;
-        SearchWork_013b89ac=0;
-        ++SearchID_013b89b0;
+        ++NoLookups;
+        NoThingsScanned=0;
+        ++SearchID;
         for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=maps.end();++it) {
             const NThingMap::CThingMap& map=**it;
             C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
-            for(long layer=0;layer<NThingMap::g_NoMapwhoLevels;++layer) {
-                long shift=LayerInfo_0137dad8[layer].ScaleShift;
+            for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
+                long shift=NThingMap::LayerInfo[layer].ScaleShift;
                 C2DBoxI cells;
                 cells.TLX=local.TLX>>shift;
                 cells.TLY=local.TLY>>shift;
@@ -539,8 +543,8 @@ public:
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
-                            if(who->GetSearchID()<SearchID_013b89b0) {
-                                who->SetSearchID(SearchID_013b89b0);
+                            if(who->GetSearchID()<SearchID) {
+                                who->SetSearchID(SearchID);
                                 CThing& thing=who->GetParentThing();
                                 if(thing.HasTCDriver() && thing.GetTCDriver().IsDriverType(T::StatGetDriverType()) && filter(thing))
                                     result.push_back(&thing);
@@ -670,6 +674,11 @@ public:
     CThingMapManager* PThingMapManager;                      // +0x04
     CThingManager*    ThingManager;                          // +0x08
     unsigned char     AreaMaps[0xc];                         // +0x0c vector<NThingMap::CThingMap_*,std::allocator<NThingMap::CThingMap_*>_>
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_STATICS
+    // NF103 opt-in (round 10): the rough-area search statics, Ego_r.pdb / FableWin.pdb ?NoLookups@CThingSearchTools@@2KA (0x013B89A8),
+    // ?NoThingsScanned@CThingSearchTools@@2KA (0x013B89AC), ?SearchID@CThingSearchTools@@2KA (0x013B89B0), as the retail branch declares them.
+    static unsigned long NoLookups,NoThingsScanned,SearchID;
+#endif
 };
 #pragma pack(pop)
 

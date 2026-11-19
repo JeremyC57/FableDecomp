@@ -130,13 +130,17 @@ class CTCMapwho:public CTCBase{public:NThingMap::CMapwhoNode TLNode,TRNode,BLNod
 //   the table alone, beside this row's local NThingMap model). It was the global stand-in ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A.
 #define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
 #include "engine/NThingMap_CThingMap.h"
-namespace NThingMap { extern long MaxLayers; }struct SSearchStamps{unsigned long Searches,Found,Stamp;};extern SSearchStamps g_SearchStamps; // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
+namespace NThingMap { extern long MaxLayers; } // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 class CThingObject:public CThingGameObject{public:enum{TypeMask=0x807};};class CThingBuilding:public CThingGameObject{public:enum{TypeMask=0x47};};
 // CThingFilter_None (engine/CThingFilter_None.h: unary_function<CThing,bool> base, accepts every thing); modelled locally because that header pulls
 // stlport/fable_containers.h, whose std::vector would clash with this TU's local STLport model (header debt, as the landed siblings).
 class CThingFilter_None{public:bool operator()(const CThing&)const{return true;}};
 typedef std::vector<CThingMap*> CMapVector;
 class CThingSearchTools { public:
+    // Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
+    //   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0; the shared header's retail
+    //   branch declares them so), declared in place in this row's existing local model. They were the global stand-in ?g_SearchStamps@@3USSearchStamps@@A.
+    static unsigned long NoLookups, NoThingsScanned, SearchID;
     CWorldMap* WorldMap;                                   
     NThingMap::CThingMapManager* PThingMapManager;                           
     CThingManager* ThingManager;                               
@@ -153,9 +157,9 @@ void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilt
 {
     CMapVector* maps = &AreaMaps;
     GetAllThingMapsInArea(area,*maps);
-    ++g_SearchStamps.Searches;
-    g_SearchStamps.Found = 0;
-    ++g_SearchStamps.Stamp;
+    ++NoLookups;
+    NoThingsScanned = 0;
+    ++SearchID;
     for (CThingMap** it = maps->begin(); it != AreaMaps.end(); ++it) {
         CThingMap* map = *it;
         C2DBoxI extents = ClipAndConvertWorldMapAreaToLocalArea(*map,area);
@@ -175,8 +179,8 @@ void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilt
                     for (long x = box.TLX; x < box.BRX; ++x, ++cell) {
                         for (CMapwhoNode* node = cell->PFirstNode; node; node = node->PNext) {
                             CTCMapwho* entry = node->PMapwho;
-                            if (entry->SearchID < g_SearchStamps.Stamp) {
-                                entry->SearchID = g_SearchStamps.Stamp;
+                            if (entry->SearchID < SearchID) {
+                                entry->SearchID = SearchID;
                                 CThing* thing = entry->ParentThing;
                                 if (IsThingOfType<TThing>(thing)) {
                                 TThing* found=static_cast<TThing*>(thing);

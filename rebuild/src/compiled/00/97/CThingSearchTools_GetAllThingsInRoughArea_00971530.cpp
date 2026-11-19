@@ -121,9 +121,6 @@ extern long MaxLayers;                                      // 0x013BA848 // age
 //   the table alone, beside this row's local NThingMap model). It was the global stand-in ?LayerInfo_0137dad8@@3PAUCLayerInfo@@A.
 #define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
 #include "engine/NThingMap_CThingMap.h"
-extern long SearchCount_013b89a8;                                  // 0x013B89A8
-extern long SearchWork_013b89ac;                                   // 0x013B89AC
-extern unsigned long SearchID_013b89b0;                            // 0x013B89B0
 class CThingFilter_CanBeUsedAsCover { public:
     bool operator()(const CThing&) const;                          // 0x006A7AB0
 };
@@ -140,6 +137,10 @@ template <class TFilter1, class TFilter2> class CFilter_Bind2 { public:
 };
 class CThingSearchTools {
 public:
+    // Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
+    //   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0; the shared header's retail
+    //   branch declares them so), declared in place in this row's existing local model. They were the global stand-in ?SearchCount_013b89a8@@3JA / ?SearchWork_013b89ac@@3JA / ?SearchID_013b89b0@@3KA.
+    static unsigned long NoLookups, NoThingsScanned, SearchID;
     template <class T, class TContainer, class TFilter>
     void GetAllThingsInRoughArea(const C2DBoxI& area, const TFilter& filter, TContainer& result) const;
 protected:
@@ -163,7 +164,7 @@ template <class T, class TContainer, class TFilter>
 void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilter& filter, TContainer& result) const
 {
     GetAllThingMapsInArea(area, AreaMaps);
-    ++SearchCount_013b89a8; SearchWork_013b89ac = 0; ++SearchID_013b89b0;
+    ++NoLookups; NoThingsScanned = 0; ++SearchID;
     for (std::vector<NThingMap::CThingMap*>::iterator m = AreaMaps.begin(); m != AreaMaps.end(); ++m) {
         NThingMap::CThingMap* map = *m;
         C2DBoxI bounds = ClipAndConvertWorldMapAreaToLocalArea(*map, area);
@@ -181,8 +182,8 @@ void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilt
                         for (long x = scaled.TLX; x < scaled.BRX; ++x, ++cell) {
                             for (CMapwhoNode* node = cell->PFirstNode; node; node = node->PNext) {
                                 CTCMapwho* who = node->PMapwho;
-                                if (who->SearchID < SearchID_013b89b0) {
-                                    who->SearchID = SearchID_013b89b0;
+                                if (who->SearchID < SearchID) {
+                                    who->SearchID = SearchID;
                                     CThing* thing = ((CTCBase*)who)->ParentThing;
                                     if (IsThingOfType<CThing>(thing)) {
                                         CThing* typed = thing;

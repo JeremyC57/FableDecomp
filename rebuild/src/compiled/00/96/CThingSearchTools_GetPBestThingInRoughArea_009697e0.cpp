@@ -76,11 +76,12 @@ class CThingMap { public:
 };
 }
 using namespace NThingMap;
-struct SMapwhoLevel { long Level,Shift; long _pad[2]; };
-extern SMapwhoLevel g_MapwhoLevels[];                      
+// Name fix (NF103, round 10, q11463): the level table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
+//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes: Size +0, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
+//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A (NF100 t/li_b.py).
+#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#include "engine/NThingMap_CThingMap.h"
 namespace NThingMap { extern long MaxLayers; }                              // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
-struct SSearchStamps { unsigned long Searches; unsigned long Found; unsigned long Stamp; };
-extern SSearchStamps g_SearchStamps;                       
 
 namespace std {
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
@@ -166,6 +167,10 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 
 typedef std::vector<CThingMap*> CMapVector;
 class CThingSearchTools { public:
+    // Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
+    //   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0; the shared header's retail
+    //   branch declares them so), declared in place in this row's existing local model. They were the global stand-in ?g_SearchStamps@@3USSearchStamps@@A.
+    static unsigned long NoLookups, NoThingsScanned, SearchID;
     void*      WorldMap;                                   
     void*      PThingMapManager;                           
     void*      ThingManager;                               
@@ -181,14 +186,14 @@ template<class F,class C,class T> bool CThingSearchTools::GetPBestThingInRoughAr
     T* best=0;
     CMapVector* maps = &AreaMaps;
     GetAllThingMapsInArea(area,*maps);
-    ++g_SearchStamps.Searches;
-    g_SearchStamps.Found = 0;
-    ++g_SearchStamps.Stamp;
+    ++NoLookups;
+    NoThingsScanned = 0;
+    ++SearchID;
     for (CThingMap** it = maps->begin(); it != AreaMaps.end(); ++it) {
         CThingMap* map = *it;
         C2DBoxI extents = ClipAndConvertWorldMapAreaToLocalArea(*map,area);
         for (long level = 0; level < NThingMap::MaxLayers; ++level) {
-            long shift = g_MapwhoLevels[level].Shift;
+            long shift = NThingMap::LayerInfo[level].ScaleShift;
             C2DBoxI box(extents.X0 >> shift, extents.Y0 >> shift, ((extents.X1 - 1) >> shift) + 1,
                         ((extents.Y1 - 1) >> shift) + 1);
             long width = box.X1 - box.X0;
@@ -203,8 +208,8 @@ template<class F,class C,class T> bool CThingSearchTools::GetPBestThingInRoughAr
                     for (long x = box.X0; x < box.X1; ++x, ++cell) {
                         for (CMapwhoNode* node = *cell; node; node = node->Next) {
                             CTCMapwho* entry = node->Entry;
-                            if (entry->SearchID < g_SearchStamps.Stamp) {
-                                entry->SearchID = g_SearchStamps.Stamp;
+                            if (entry->SearchID < SearchID) {
+                                entry->SearchID = SearchID;
                                 CThing* thing = entry->Thing;
                                 if(IsThingOfType<T>(thing) && filter(*thing)) best=compare(best,static_cast<T*>(thing));
                             }

@@ -217,10 +217,10 @@ unsigned char g_RenderThrottleEnabled_013b860c, g_RenderThrottlePaused_013b8629;
 unsigned long g_RenderFrame_013b7d70;
 bool g_DrawStatsText, g_DrawBuildVersion, g_ScreenshotMode, g_InitialFadeActiveMirror;
 unsigned long CRenderStateManager::D3DTextureMipMapModeTable[3] = { 0, 1, 2 };
-long NThingMap::g_NoMapwhoLevels;
-CLayerInfo LayerInfo_0137dad8[1];
-long SearchCount_013b89a8, SearchWork_013b89ac;
-unsigned long SearchID_013b89b0;
+// NF103 (round 10): the header's stand-ins became the PDB names (NThingMap::MaxLayers, NThingMap::LayerInfo, CThingSearchTools statics).
+long NThingMap::MaxLayers;
+const NThingMap::CLayerInfo NThingMap::LayerInfo[1] = { { 0, 0 } };
+unsigned long CThingSearchTools::NoLookups, CThingSearchTools::NoThingsScanned, CThingSearchTools::SearchID;
 static CCountedPointer<CConsole> MakeCon() { CCountedPointer<CConsole> p; p.Data = reinterpret_cast<CConsole*>(g_con); return p; }
 static CCountedPointer<CEngineManager> MakeEm() { CCountedPointer<CEngineManager> p; p.Data = reinterpret_cast<CEngineManager*>(g_em); return p; }
 static CCountedPointer<CPlayerGui> MakeGui() { CCountedPointer<CPlayerGui> p; p.Data = reinterpret_cast<CPlayerGui*>(g_gui); return p; }

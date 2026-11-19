@@ -192460,8 +192460,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005da920'
         Module = 'CTCWeapon'
-        Source = '00/5d/CTCWeapon_GetWeaponDefLongAt94_005da920.cpp'
-        TestSource = '00/5d/CTCWeapon_GetWeaponDefLongAt94_005da920_test.cpp'
+        Source = '00/5d/CTCWeapon_GetMissileLoadCarrySlot_005da920.cpp'
+        TestSource = '00/5d/CTCWeapon_GetMissileLoadCarrySlot_005da920_test.cpp'
         PassPattern = '005da920_TEST PASS'
     }
     [pscustomobject]@{
@@ -273834,9 +273834,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00518900'
-        Module = 'CThingSearchTools_Calls'
-        Source = '00/51/CThingSearchToolsCalls_GetAllTCDsInRoughArea_00518900.cpp'
-        TestSource = '00/51/CThingSearchToolsCalls_GetAllTCDsInRoughArea_00518900_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/51/CThingSearchTools_GetAllTCDsInRoughArea_00518900.cpp'
+        TestSource = '00/51/CThingSearchTools_GetAllTCDsInRoughArea_00518900_test.cpp'
         PassPattern = '00518900_TEST PASS'
     }
     [pscustomobject]@{

@@ -4,6 +4,11 @@
 // donor member is accessed. CThing's retail type flags are +0x6c (PDB +0x7c).
 // Local helper/global names carrying addresses remain descriptive pending PDB proof.
 #include "fable_compiler.h"
+// Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
+//   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0), declared by the shared
+//   header (opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_STATICS). They were the globals ?CThingSearchTools::NoLookups@@3JA / ?CThingSearchTools::NoThingsScanned@@3JA /
+//   ?CThingSearchTools::SearchID@@3KA.
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_STATICS
 #include "engine/CThingSearchTools.h"
 #include "engine/CTCMapwho.h"
 #include "engine/CTCBase.h"
@@ -58,9 +63,6 @@ class CThingMap { public:
 //   the table alone, beside this row's local NThingMap model). It was the global stand-in ?LayerInfo_0137dad8@@3PAUCLayerInfo@@A.
 #define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
 #include "engine/NThingMap_CThingMap.h"
-extern long SearchCount_013b89a8;
-extern long SearchWork_013b89ac;
-extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long MaxLayers;} // 0x013ba848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 class CThingFilter_IsAvailableForCreatureInteraction { public:CThingAICreature* SourceThing;long Type;bool operator()(const CThingAICreature&)const;}; // 0x006a7430
 class CThingFilter_IsAICreatureAwareOf { public:CThingAICreature* PCreature;bool operator()(const CThingCreatureBase&)const;}; // 0x006a7610: NCreatureAI::IsAwareOfThing forwarding
@@ -89,7 +91,7 @@ struct CThingSearchTools_Calls {
 bool CThingSearchTools_Calls::GetPBestThingInRoughArea(const C2DBoxI& area,const Filters& filter,const CThingCompare_Nearest& compare,CThingAICreature** result)const {
  CThingAICreature* best=0;
  GetAllThingMapsInArea(area,AreaMaps);
- ++SearchCount_013b89a8;SearchWork_013b89ac=0;++SearchID_013b89b0;
+ ++CThingSearchTools::NoLookups;CThingSearchTools::NoThingsScanned=0;++CThingSearchTools::SearchID;
  for(RetailVector<NThingMap::CThingMap*>::iterator m=AreaMaps.begin();m!=AreaMaps.end();++m) {
   NThingMap::CThingMap* map=*m;C2DBoxI bounds=ClipAndConvertWorldMapAreaToLocalArea(*map,area);
   for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
@@ -100,8 +102,8 @@ bool CThingSearchTools_Calls::GetPBestThingInRoughArea(const C2DBoxI& area,const
      for(long x=scaled.TLX;x<scaled.BRX;++x,++cell) {
       for(CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
        CTCMapwho* who=node->PMapwho;
-       if(who->SearchID<SearchID_013b89b0) {
-        who->SearchID=SearchID_013b89b0;
+       if(who->SearchID<CThingSearchTools::SearchID) {
+        who->SearchID=CThingSearchTools::SearchID;
         CThingAICreature* thing=static_cast<CThingAICreature*>(((CTCBase*)who)->ParentThing);
         if(thing->IsAICreature() && filter(*thing))best=compare(best,thing);
        }

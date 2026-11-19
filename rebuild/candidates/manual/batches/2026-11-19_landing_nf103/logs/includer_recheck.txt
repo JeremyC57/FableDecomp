@@ -1,0 +1,2 @@
+# includer recheck after landing nf103: 275 rows (every landed includer of NThingMap_CThingMap.h / CThingSearchTools.h with a test, + exe-scan referencing rows)
+good 275 bad 0

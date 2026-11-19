@@ -63,7 +63,9 @@ public:
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CTCWeapon { public:                                   // interface type 0x48
-    long GetAmmoCarrySlot();                         // 0x005DA920 (catalog "CCategory::GetCategoryIdentifier")
+    // Name fix (NF103, round 10, q11533): 0x005DA920 is Ego_r.pdb / FableWin.pdb ?GetMissileLoadCarrySlot@CTCWeapon@@QBEJXZ (const;
+    //   respelled in place in this row's existing local model; was ?GetAmmoCarrySlot@CTCWeapon@@QAEJXZ).
+    long GetMissileLoadCarrySlot() const;            // 0x005DA920
     bool IsAnalogueLoading();                        // 0x005DA950
     void SetProjectileWeaponLoaded(bool loaded, CThing* ammo);   // 0x005DAC50
 public:
@@ -142,7 +144,7 @@ void CTCHeroRangedAttacks::CancelAimingWeapon()
         CThing* weapon = carrying->GetThingInPrimarySlot();
         if (IS_THING_ALIVE(weapon) && weapon->HasTC(0x48)) {
             CTCWeapon* tc = weapon->FindTC<CTCWeapon>(0x48);
-            long slot = tc->GetAmmoCarrySlot();
+            long slot = tc->GetMissileLoadCarrySlot();
             if (slot >= 0) {
                 CThing* ammo = carrying->RemoveThingInCarrySlot(slot, false);
                 if (IS_THING_ALIVE(ammo))

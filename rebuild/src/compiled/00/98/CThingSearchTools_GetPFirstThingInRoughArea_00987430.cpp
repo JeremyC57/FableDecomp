@@ -67,11 +67,12 @@ struct CThingMap {
         return &(*(const CCellVector*)((unsigned long)Cells + cellsOffset))._M_start[y * *(const long*)((unsigned long)offset + (unsigned long)LevelInfo + 4) + x];
     }
 };
-struct SMapwhoLevel { long Shift; long _pad[3]; };
-extern SMapwhoLevel g_MapwhoLevels[];                      // 0x0137DADC
+// Name fix (NF103, round 10, q11463): the level table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
+//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes: Size +0, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
+//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A (NF100 t/li_b.py).
+#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#include "engine/NThingMap_CThingMap.h"
 namespace NThingMap { extern long MaxLayers; }                             // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
-struct SSearchStamps { unsigned long Searches; unsigned long Found; unsigned long Stamp; };
-extern SSearchStamps g_SearchStamps;                       // 0x013B89A8
 // STLport vector<CThingMap*> (the search tools' scratch map list); clear() is erase(begin, end) over memmove.
 struct CMapVector {
     CThingMap** _M_start;
@@ -90,6 +91,10 @@ struct CMapVector {
 // CThingSearchTools: engine/CThingSearchTools.h names +0x0c "AreaMaps" (vector<NThingMap::CThingMap*>, 16 bytes in
 // the PDB); retail's STLport vector is 12 bytes and only the scratch-vector role matters here, so a local model.
 class CThingSearchTools { public:
+    // Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
+    //   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0; the shared header's retail
+    //   branch declares them so), declared in place in this row's existing local model. They were the global stand-in ?g_SearchStamps@@3USSearchStamps@@A.
+    static unsigned long NoLookups, NoThingsScanned, SearchID;
     void*      WorldMap;                                   // +0x00
     void*      PThingMapManager;                           // +0x04
     void*      ThingManager;                               // +0x08
@@ -101,14 +106,14 @@ class CThingSearchTools { public:
 template<class F, class T> bool CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out)
 {
     GetMapsInArea(area, &AreaMaps);
-    ++g_SearchStamps.Searches;
-    g_SearchStamps.Found = 0;
-    ++g_SearchStamps.Stamp;
+    ++NoLookups;
+    NoThingsScanned = 0;
+    ++SearchID;
     for (CThingMap** it = AreaMaps._M_start; it != AreaMaps._M_finish; ++it) {
         CThingMap* map = *it;
         C2DBoxI extents = GetCellExtents(map, area);
         for (long level = 0; level < NThingMap::MaxLayers; ++level) {
-            long shift = g_MapwhoLevels[level].Shift;
+            long shift = NThingMap::LayerInfo[level].ScaleShift;
             C2DBoxI box(extents.X0 >> shift, extents.Y0 >> shift, ((extents.X1 - 1) >> shift) + 1,
                         ((extents.Y1 - 1) >> shift) + 1);
             long width = box.X1 - box.X0;
@@ -123,8 +128,8 @@ template<class F, class T> bool CThingSearchTools::GetPFirstThingInRoughArea(con
                     for (long x = box.X0; x < box.X1; ++x, ++cell) {
                         for (CThingMapNode* node = *cell; node; node = node->Next) {
                             CThingMapEntry* entry = node->Entry;
-                            if (entry->SearchStamp < g_SearchStamps.Stamp) {
-                                entry->SearchStamp = g_SearchStamps.Stamp;
+                            if (entry->SearchStamp < SearchID) {
+                                entry->SearchStamp = SearchID;
                                 CThing* thing = entry->Thing;
                                 if (IsThingOfType<T>(thing) && filter(*static_cast<T*>(thing))) {
                                 *out = static_cast<T*>(thing);

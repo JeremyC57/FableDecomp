@@ -81,8 +81,6 @@ using namespace NThingMap;
 #define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
 #include "engine/NThingMap_CThingMap.h"
 namespace NThingMap { extern long MaxLayers; }                              // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
-struct SSearchStamps { unsigned long Searches; unsigned long Found; unsigned long Stamp; };
-extern SSearchStamps g_SearchStamps;                       
 
 namespace std {
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
@@ -168,6 +166,10 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 
 typedef std::vector<CThingMap*> CMapVector;
 class CThingSearchTools { public:
+    // Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
+    //   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0; the shared header's retail
+    //   branch declares them so), declared in place in this row's existing local model. They were the global stand-in ?g_SearchStamps@@3USSearchStamps@@A.
+    static unsigned long NoLookups, NoThingsScanned, SearchID;
     void*      WorldMap;                                   
     void*      PThingMapManager;                           
     void*      ThingManager;                               
@@ -183,9 +185,9 @@ template<class F,class C,class T> bool CThingSearchTools::GetPBestThingInRoughAr
     T* best=0;
     CMapVector* maps = &AreaMaps;
     GetAllThingMapsInArea(area,*maps);
-    ++g_SearchStamps.Searches;
-    g_SearchStamps.Found = 0;
-    ++g_SearchStamps.Stamp;
+    ++NoLookups;
+    NoThingsScanned = 0;
+    ++SearchID;
     for (CThingMap** it = maps->begin(); it != AreaMaps.end(); ++it) {
         CThingMap* map = *it;
         C2DBoxI extents = ClipAndConvertWorldMapAreaToLocalArea(*map,area);
@@ -205,8 +207,8 @@ template<class F,class C,class T> bool CThingSearchTools::GetPBestThingInRoughAr
                     for (long x = box.X0; x < box.X1; ++x, ++cell) {
                         for (CMapwhoNode* node = *cell; node; node = node->Next) {
                             CTCMapwho* entry = node->Entry;
-                            if (entry->SearchID < g_SearchStamps.Stamp) {
-                                entry->SearchID = g_SearchStamps.Stamp;
+                            if (entry->SearchID < SearchID) {
+                                entry->SearchID = SearchID;
                                 CThing* thing = entry->Thing;
                                 if(IsThingOfType<T>(thing) && filter(*thing)) best=compare(best,static_cast<T*>(thing));
                             }

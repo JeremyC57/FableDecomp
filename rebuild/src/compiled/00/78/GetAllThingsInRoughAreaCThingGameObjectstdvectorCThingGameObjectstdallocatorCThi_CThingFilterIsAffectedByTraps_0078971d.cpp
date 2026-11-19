@@ -4,6 +4,11 @@
 // donor member is accessed. CThing's retail type flags are +0x6c (PDB +0x7c).
 // Local helper/global names carrying addresses remain descriptive pending PDB proof.
 #include "fable_compiler.h"
+// Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
+//   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0), declared by the shared
+//   header (opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_STATICS). They were the globals ?CThingSearchTools::NoLookups@@3JA / ?CThingSearchTools::NoThingsScanned@@3JA /
+//   ?CThingSearchTools::SearchID@@3KA.
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_STATICS
 #include "engine/CThingSearchTools.h"
 #include "engine/CTCMapwho.h"
 #include "engine/CTCBase.h"
@@ -86,9 +91,6 @@ class CThingMap { public:
 };
 }
 struct CLayerInfo {long Size;long ScaleShift;unsigned long UsedColour,UnusedColour;};
-extern long SearchCount_013b89a8;
-extern long SearchWork_013b89ac;
-extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
 namespace NCreatureMode {bool __fastcall IsAbleToBeAttacked(const CThing&);} // 0x0085fb30
@@ -118,7 +120,7 @@ C2DBoxI CThingSearchTools_Calls::GetMapwhoArea(const NThingMap::CThingMap&,long 
 #pragma auto_inline(on)
 void CThingSearchTools_Calls::GetAllThingsInRoughArea(const C2DBoxI& area,const Filters& filter,ThingVector& result)const {
  GetAllThingMapsInArea(area,AreaMaps);
- ++SearchCount_013b89a8;SearchWork_013b89ac=0;++SearchID_013b89b0;
+ ++CThingSearchTools::NoLookups;CThingSearchTools::NoThingsScanned=0;++CThingSearchTools::SearchID;
  for(RetailVector<NThingMap::CThingMap*>::iterator m=AreaMaps.begin();m!=AreaMaps.end();++m) {
   NThingMap::CThingMap* map=*m;C2DBoxI bounds=ClipAndConvertWorldMapAreaToLocalArea(*map,area);
   for(long layer=0;layer<NThingMap::g_NoMapwhoLevels;++layer) {
@@ -130,8 +132,8 @@ void CThingSearchTools_Calls::GetAllThingsInRoughArea(const C2DBoxI& area,const 
      if(scaled.TLX<scaled.BRX){long remaining=width;do {
       for(CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
        CTCMapwho* who=node->PMapwho;
-       if(who->SearchID<SearchID_013b89b0) {
-        who->SearchID=SearchID_013b89b0;
+       if(who->SearchID<CThingSearchTools::SearchID) {
+        who->SearchID=CThingSearchTools::SearchID;
         CThing* thing=((CTCBase*)who)->ParentThing;
         if(IsThingOfType<CThingGameObject>(thing)){
          CThingGameObject* typed=static_cast<CThingGameObject*>(thing);if(filter(*typed))result.push_back(typed);

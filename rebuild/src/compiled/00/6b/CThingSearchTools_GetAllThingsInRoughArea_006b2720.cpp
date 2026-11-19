@@ -81,8 +81,6 @@ struct CThingMap {
 #define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
 #include "engine/NThingMap_CThingMap.h"
 namespace NThingMap { extern long MaxLayers; }                             // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
-struct SSearchStamps { unsigned long Searches; unsigned long Found; unsigned long Stamp; };
-extern SSearchStamps g_SearchStamps;                       // 0x013B89A8
 // STLport vector<CThingMap*> (the search tools' scratch map list); clear() is erase(begin, end) over memmove.
 struct CMapVector {
     CThingMap** _M_start;
@@ -183,6 +181,10 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 // CThingSearchTools: engine/CThingSearchTools.h names +0x0c "AreaMaps" (vector<NThingMap::CThingMap*>, 16 bytes in
 // the PDB); retail's STLport vector is 12 bytes and only the scratch-vector role matters here, so a local model.
 class CThingSearchTools { public:
+    // Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
+    //   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0; the shared header's retail
+    //   branch declares them so), declared in place in this row's existing local model. They were the global stand-in ?g_SearchStamps@@3USSearchStamps@@A.
+    static unsigned long NoLookups, NoThingsScanned, SearchID;
     void*      WorldMap;                                   // +0x00
     void*      PThingMapManager;                           // +0x04
     void*      ThingManager;                               // +0x08
@@ -197,9 +199,9 @@ void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilt
 {
     CMapVector* maps = &AreaMaps;
     GetMapsInArea(area, maps);
-    ++g_SearchStamps.Searches;
-    g_SearchStamps.Found = 0;
-    ++g_SearchStamps.Stamp;
+    ++NoLookups;
+    NoThingsScanned = 0;
+    ++SearchID;
     for (CThingMap** it = maps->_M_start; it != AreaMaps._M_finish; ++it) {
         CThingMap* map = *it;
         C2DBoxI extents = GetCellExtents(map, area);
@@ -219,8 +221,8 @@ void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilt
                     for (long x = box.X0; x < box.X1; ++x, ++cell) {
                         for (CThingMapNode* node = *cell; node; node = node->Next) {
                             CThingMapEntry* entry = node->Entry;
-                            if (entry->SearchStamp < g_SearchStamps.Stamp) {
-                                entry->SearchStamp = g_SearchStamps.Stamp;
+                            if (entry->SearchStamp < SearchID) {
+                                entry->SearchStamp = SearchID;
                                 CThing* thing = entry->Thing;
                                 if (IsThingOfType<TThing>(thing) && filter(*static_cast<TThing*>(thing))) {
                                 TThing* found = static_cast<TThing*>(thing);
