@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00f36010   RELOCATION_MATCH PASS   NFractal::CPerlinNoise::Get2DNoise
+00f36540   RELOCATION_MATCH PASS   NFractal::CPerlinNoise::GetGaussian2DNoise
+
+WINS: 2
+  00f36010 RELOCATION_MATCH NFractal::CPerlinNoise::?Get2DNoise@CPerlinNoise@NFractal@@QBEMABVC2DVector@@@Z
+  00f36540 RELOCATION_MATCH NFractal::CPerlinNoise::?GetGaussian2DNoise@CPerlinNoise@NFractal@@QBEMABVC2DVector@@@Z

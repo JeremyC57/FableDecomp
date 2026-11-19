@@ -399720,6 +399720,13 @@ $catalog = @(
         TestSource = '00/f3/NFractalCPerlinNoise_GetGaussian2DNoise_00f36540_test.cpp'
         PassPattern = '00f36540_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00f361d0'
+        Module = 'NFractal::CPerlinNoise'
+        Source = '00/f3/NFractalCPerlinNoise_Get3DNoise_00f361d0.cpp'
+        TestSource = '00/f3/NFractalCPerlinNoise_Get3DNoise_00f361d0_test.cpp'
+        PassPattern = '00f361d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

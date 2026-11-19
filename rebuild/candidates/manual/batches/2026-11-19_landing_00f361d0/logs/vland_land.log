@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00f361d0   RELOCATION_MATCH PASS   NFractal::CPerlinNoise::Get3DNoise
+
+WINS: 1
+  00f361d0 RELOCATION_MATCH NFractal::CPerlinNoise::?Get3DNoise@CPerlinNoise@NFractal@@QBEMABVC3DVector@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NFractalCPerlinNoise_Get3DNoise_00f361d0
