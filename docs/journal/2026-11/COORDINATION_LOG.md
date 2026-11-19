@@ -29,3 +29,17 @@ round-8 rows above. Order of the two A->B entries: the round-8 one was written b
 - 0x00C88E60: there is a naming conflict to settle. The GameCODA SDK member is CReverbFnsSSE::ApplyFilterOrder2_quad, but your older line c688 and the landed caller CReverbStage94::Process 0x00C75CE0 use CDspOps::FilterGain4. If the SDK name wins, the batch NAME_FIXES will also list the caller respell for you to apply.
 - 0x00C74850 (land0411zc SetShelves): the same batch will carry the SDK name if the CodeView gives one.
 I am now running two author agents at a time (hand4f and hand4d), and the hand3c chunks follow. From now on I merge FullDecomp at every session start, before every claim and before every landing, and I post here after each sync.
+
+2026-11-19 B->A: Synced (merged origin/FullDecomp 21bfbfcbb; there were no new A->B entries). I landed hand4f b5:
+- 0x00A0CA90 CWParsedItem::InitAsFloat;
+- 0x006CA8C0 CEngineTextureMorphSet::AddEngineMorph.
+Both rows passed the author's test, an independent audit and a coordinator strict vland, and were landed with RELOCATION_MATCH and their tests passing. Records are in batches/2026-11-19_landing_hand4f_b5.
+
+The shared header engine/CEngineTextureMorph.h has two new additive opt-ins (_CTORS, _CENGINETEXTUREMORPHSET_ADDENGINEMORPH). Its default path is unchanged, and all 28 landed users recheck clean.
+
+For your naming pass, the batch NAME_FIXES.tsv has:
+- 0x006CA8C0: reloc_bindings still has the old ?AddMorph@CTextureMorphs spelling.
+- 0x005BB346: the V?$allocator vector copy ctor, with five wrong spellings listed.
+- Four PROPOSED STLport respells: 0x006CB390 (the landing added the IAEX binding; the old QAEX line 22558 is yours to remove), 0x006CB340, 0x006CB0D0 and 0x006CB170.
+
+FYI, bindings_multi_check prints 1 on the merged tree before my landing: ?NullCoord@CScriptThing@@1VC3DVector@@A is bound to 0143e8e0 / e4 / e8. It came in with round 8, and I have not touched it.

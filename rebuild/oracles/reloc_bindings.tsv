@@ -40351,3 +40351,4 @@ _MAX_NODE_SIZE	01230894	00a770b0
 ??4CSerialisedSelectedItemsPointer@@QAEAAU0@ABU0@@Z	005c0800	005bfb96
 ?GetAllNonEmptyInventoryItems@CTCInventoryBase@NInventory@@QBEXAAUCItemVector@@_N@Z	005bfa44	005bfb96
 ?GlobalUpdateTCs@CTCBase@@1V?$list@PAVCTCBase@@V?$allocator@PAVCTCBase@@@std@@@std@@A	013ba8ac	00686df0
+?_M_insert_overflow@?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@IAEXPAVCEngineTextureMorph@@ABV3@ABU__false_type@2@I_N@Z	006cb390	006ca8c0

@@ -1,0 +1,3 @@
+address	name	evidence
+006ca8c0	CEngineTextureMorphSet::AddEngineMorph	Ego_r.pdb + FableWin.pdb object order + Ego_d record + landed caller
+005bb346	std::vector<CCompositeBlendDesc,std::allocator<CCompositeBlendDesc> >::vector(const vector&)	Ego_r.pdb + FableWin.pdb spelling + shared-header emission

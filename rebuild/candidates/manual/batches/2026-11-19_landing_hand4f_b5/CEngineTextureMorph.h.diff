@@ -1,0 +1,37 @@
+--- a/rebuild/include/engine/CEngineTextureMorph.h
++++ b/rebuild/include/engine/CEngineTextureMorph.h
+@@ -13,8 +13,16 @@
+     long                             OriginalTextureIndex;   // +0x00
+     long                             MorphID;                // +0x04
+     std::vector<CCompositeBlendDesc> Blends;                 // +0x08
++#ifdef FABLE_RETAIL_CENGINETEXTUREMORPH_CTORS
++    // hand4f opt-in (2026-11-19, row 0x006CA8C0 CEngineTextureMorphSet::AddEngineMorph): Ego_d.pdb CEngineTextureMorph (field list 0xB9D4)
++    // lists three constructors: the compiler-generated copy, the user (long, long) one -- FableWin.pdb ??0CEngineTextureMorph@@QAE@JJ@Z 0x01E5F690
++    // (tc_appearance_base.obj #4, 44 bytes /Od; Ego_d original_texture, morph_id; retail inlines it into AddEngineMorph; the init list is byte-required) --
++    // and the user default one, FableWin ??0CEngineTextureMorph@@QAE@XZ 0x02D87870 (engine_surface_composition_manager.obj #2, 44 bytes /Od; body unread: declaration only).
++    CEngineTextureMorph();
++    CEngineTextureMorph(long original_texture, long morph_id) : OriginalTextureIndex(original_texture), MorphID(morph_id) { }
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineTextureMorph) == 0x14);
++FABLE_STATIC_ASSERT_AT(17, sizeof(CEngineTextureMorph) == 0x14);
+ #ifdef FABLE_RETAIL_CENGINETEXTUREMORPHSET
+ // NF62 opt-in (2026-11-17, rows 0x00722270 / 0x007222B0, the CTCAppearanceMorphBase::CMeshMorphSet destructors): Ego_r.pdb CEngineTextureMorphSet
+ // (one member, CArray<CEngineTextureMorph> Morphs +0; retail 12 bytes) -- no header of its own. Its implicit destructor destroys Morphs, whose
+@@ -26,7 +34,15 @@
+ class CEngineTextureMorphSet {
+ public:
+     CArray<CEngineTextureMorph> Morphs;                       // +0x00
++#ifdef FABLE_RETAIL_CENGINETEXTUREMORPHSET_ADDENGINEMORPH
++    // hand4f opt-in (2026-11-19, row 0x006CA8C0): Ego_r.pdb / FableWin.pdb ?AddEngineMorph@CEngineTextureMorphSet@@IAEPAVCEngineTextureMorph@@J@Z
++    // (protected; Ego_d field list 0x270FB; out of line in retail at 0x006CA8C0, called by AddTextureMorph 0x006CA950). Needs
++    // FABLE_RETAIL_CENGINETEXTUREMORPH_CTORS for the body.
++protected:
++    CEngineTextureMorph* AddEngineMorph(long original_texture);
++public:
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineTextureMorphSet) == 0xC);
++FABLE_STATIC_ASSERT_AT(30, sizeof(CEngineTextureMorphSet) == 0xC);
+ #endif
+ #endif // FABLE_ENGINE_CENGINETEXTUREMORPH_H

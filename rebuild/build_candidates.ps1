@@ -400946,6 +400946,20 @@ $catalog = @(
         TestSource = '00/c4/CCodaListener_Commit_00c40590_test.cpp'
         PassPattern = '00c40590_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a0ca90'
+        Module = 'CWParsedItem'
+        Source = '00/a0/CWParsedItem_InitAsFloat_00a0ca90.cpp'
+        TestSource = '00/a0/CWParsedItem_InitAsFloat_00a0ca90_test.cpp'
+        PassPattern = '00a0ca90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ca8c0'
+        Module = 'CEngineTextureMorphSet'
+        Source = '00/6c/CEngineTextureMorphSet_AddEngineMorph_006ca8c0.cpp'
+        TestSource = '00/6c/CEngineTextureMorphSet_AddEngineMorph_006ca8c0_test.cpp'
+        PassPattern = '006ca8c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
