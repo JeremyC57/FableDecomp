@@ -1314,3 +1314,7 @@ against CODAApi.lib, or stay compiled C++?
   - the other shared folder holds only unrelated Xbox 360 files.
 - Impact: statement shape has to come from Ego_d locals, scopes and object order, from the PDB type records (`/tmp/claude-0/egod_pdb/types.txt`, which does exist), and from retail bytes.
 - Owner action: if the donor executables are wanted on this lane, put them in the Drive folder. They are fetched outside the repo and never committed.
+- (same day, Account B) Full-tree `portable_twins_check.py` run with FABLE_VC71_LIB unset, after the b11 landing: 475 steps, 1 failure.
+  - Our new GameCODA tests report their named SKIPs and pass the portable steps.
+  - The one failure is `rows/00b98e10_ClipSubSectionsSIMD_driver.cpp` vc71-row-dual, "output lengths differ". That driver and its row have not changed since landing gb (7392e2e66, 2026-11-15), and the tool change only affects files tagged `// Portable-check-requires-lib:`. So the failure is pre-existing and unrelated; it is for whoever owns that row.
+  - Log: batches/2026-11-19_landing_hand4d_b11/logs/portable_twins_full_tree_without_sdk.tsv.
