@@ -1107,7 +1107,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00f281e0	std::vector<CArenaWaveDef>	_M_fill_insert	496	parked	DIFFER(558v481)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand581/differ/00f281e0.cpp	original
 00f35c60	CNoise	PerlinNoise	320	parked	DIFFER(312v316)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00f35c60.cpp	original
 00f36d30	CGPUScratchBufferTextureManager	EndShutdown	432	parked	DIFFER(376v419)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00f36d30.cpp	original
-00f3abf0	CRangeCompressor	CalcCompressionScript	608	reserved (hand1, in-house)	codex pass24 PARKED: The EDI-to-EBX copy straddles the block-width guard at 00F3AC0C in the opposite order. The selected function otherwise has the full retail extent.	26	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00f3abf0/00f3abf0.cpp	original
 00f3ba70	CTriangleStripifier2	BuildCacheOptimizedVertexList	864	parked	DIFFER(834v853)	4	rebuild/candidates/manual/pending/2026-11-12_linux_handWF22/differ/00f3ba70.cpp	original
 00f3c990	_global	CTriangleStripifier2_GenerateStrips_Part1	1472	parked	DIFFER(1427v1463)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00f3c990.cpp	original
 00f3cf50	CTriangleStripifier2	CalcSectionPolyMask	688	parked	DIFFER(679v683)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand584/differ/00f3cf50.cpp	original

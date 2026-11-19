@@ -399886,6 +399886,13 @@ $catalog = @(
         TestSource = '00/c1/global_AIMatrixPointHelper00c1c330_00c1c330_test.cpp'
         PassPattern = '00c1c330_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00f3abf0'
+        Module = 'CRangeCompressor'
+        Source = '00/f3/CRangeCompressor_CalcCompressionScript_00f3abf0.cpp'
+        TestSource = '00/f3/CRangeCompressor_CalcCompressionScript_00f3abf0_test.cpp'
+        PassPattern = '00f3abf0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

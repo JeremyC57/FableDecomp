@@ -40249,3 +40249,6 @@ __wcsicmp	00f3fb84	00599e3f
 ?GetLineOutFromClosestPointOnFiniteLineToPoint@NPhysicsHelpers@@YI?AVC3DVector@@ABV2@00@Z	008f5b50	0080dc90
 ?IsTravellingAway@CThingFilter_IsEvadeExplosion@?A0xd48c9e3e@@QBE_NABVC3DVector@@0@Z	0080c140	0080dc90
 ?MappingDirNormals@CEngineLandscapeMeshBuilder@@0PAVC3DVector@@A	0139c338	00be2b70
+??0?$vector@KV?$allocator@K@std@@@std@@QAE@I@Z	00a96100	00f3abf0
+?CalcBestCompressionForBlock@CRangeCompressor@@AAEJABV?$CArray@K@@JAAUCScriptEntry@1@@Z	00f3a890	00f3abf0
+?push_back@?$vector@UCScriptEntry@CRangeCompressor@@V?$allocator@UCScriptEntry@CRangeCompressor@@@std@@@std@@QAEXABUCScriptEntry@CRangeCompressor@@@Z	00f3b420	00f3abf0
