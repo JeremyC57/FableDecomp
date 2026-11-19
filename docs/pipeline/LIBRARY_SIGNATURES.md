@@ -358,3 +358,9 @@ Applied 2026-11-08:
 | OpenAL | `/OpenAL32.dll`, `/wrap_oal.dll` strings | loaded at run time, no static code expected |
 | XMV video | `CXMVPlayer`, `.xmv` / `.wmv` files | player is Lionhead code; any decoder library is unidentified |
 | STL | 9 `std::` RTTI names, MSVCP71 imports | header templates compiled in Fable TUs, not a library |
+
+## GameCODA 2.10 (2026-11-19)
+Retail's audio layer matches Sensaura GameCODA 2.10 (`CODAApi.lib` / `CODAApiDbg.lib`; FINDINGS_LOG 2026-11-19 has the fetch and the hashes). Owner
+rule and shape: EXTRA_RULES 2026-11-19, "rows byte-identical to the GameCODA SDK library".
+- These rows are not CRT. A library-graded GameCODA row needs a FABLE_PORTABLE C++ twin and a dual-path test, because the library is binary-only Win32 x86.
+- Prove them with lib_verify.py against the CODA libs, every resolvable relocation agreeing, and the `@comp.id` checked against the Rich header.

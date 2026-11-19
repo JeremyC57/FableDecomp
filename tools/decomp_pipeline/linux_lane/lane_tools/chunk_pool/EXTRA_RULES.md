@@ -330,3 +330,20 @@ When retail's frame size, stack-slot sharing or code size fixes a construct's sc
 inner block where a temporary or a function-scope local gives the wrong frame) and only the wording is unsourced, the row carries its
 `// Inferred:` note (with the measurements) and lands without an owner-review flag. Fitted tie-breakers that the bytes do not otherwise require
 (an extra reference local, a by-value operand, a dead test) remain `// Inferred:` with the evidence and are reported in the batch README.
+
+## 2026-11-19 owner: rows byte-identical to the GameCODA SDK library may take the library grade, if portability is kept
+Owner, verbatim: "if it does not interfere with portability, it should be fine" (asked whether rows byte-identical to prebuilt GameCODA CODAApi.lib
+functions may be graded as library code like the CRT rows). Shape: advisor decision (owner delegated).
+- **Author first.** Write the row as plain C++ on the shared audio headers from the CODAApiDbg.lib CodeView, the recipe that closed 0x00C54C10. If it
+  matches, it lands as ordinary C++. Library grade is only for a row that still differs after a bounded effort, with no 100-grade chase.
+- **Library grade = proof + portable twin.** CRT stubs are portable because every target has a CRT; CODAApi.lib is binary-only Win32 x86, so a bare
+  body-less stub would break the portable build. A library-graded GameCODA row therefore needs all three of:
+  - a `// Toolchain-library:` proof that libsig `lib_verify.py` reproduces, with every resolvable relocation agreeing, not "relocations masked", and the
+    member's `@comp.id` checked against the Rich header;
+  - a plain-C++ twin under `FABLE_PORTABLE` with the same semantics;
+  - a dual-path test, as in ASM_RULES.
+  Until all three exist the row stays held.
+- **Wording:** "byte-identical to GameCODA 2.10 <lib> member <obj> <symbol>", never "linked from". Retail linked a different SDK build (member offsets
+  and channel counts differ in places).
+- **Scope:** CAGE / Toolkit ship source, so hits there follow the vendor_libs.tsv rule (compile the unmodified vendor source), not this one. Landed C++
+  hits stay C++.
