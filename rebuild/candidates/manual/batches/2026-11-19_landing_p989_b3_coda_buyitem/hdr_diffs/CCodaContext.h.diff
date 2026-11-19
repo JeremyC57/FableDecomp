@@ -1,0 +1,29 @@
+--- a/rebuild/include/engine/CCodaContext.h
++++ b/rebuild/include/engine/CCodaContext.h
+@@ -31,6 +31,11 @@
+ #ifdef FABLE_RETAIL_CCODACONTEXT_PROCESS
+     CCodaObject* GetObjects()const{return m_pObjects;}
+ #endif
++#if defined(FABLE_RETAIL_CCODA3DSOURCE_COMMIT) && !defined(FABLE_RETAIL_CCODACONTEXT_PROCESS)
++    // Retail opt-in (hand3c, row 0x00C41FB0): SDK 2.10 CodeView ?GetObjects@CCodaObjectList@@QBEPAVCCodaObject@@XZ (Dbg COMDAT:
++    // return m_pObjects); the same body as the PROCESS branch above.
++    CCodaObject* GetObjects()const{return m_pObjects;}
++#endif
+ #ifdef FABLE_RETAIL_CCODACONTEXT_CREATE3D
+     CCodaObject* GetFree() const;
+     void RemoveFree();
+@@ -77,6 +82,14 @@
+ #ifdef FABLE_RETAIL_PASS22_CCODA3D_CREATE
+     CSalPlatform& GetSal(){return *m_pSal;}
+     unsigned int GetHFReference()const{return m_uiHFReference;}
++#ifdef FABLE_RETAIL_CCODA3DSOURCE_COMMIT
++    // Retail opt-in (hand3c, row 0x00C41FB0): SDK 2.10 CodeView ?GetZAxis@CCodaContext@@QBEMXZ (Dbg COMDAT: return m_fZAxis;
++    // retail 0x00C4215E `fld [0x0143BBE4]` = CODA + 0x8C).
++    float GetZAxis()const{return m_fZAxis;}
++    // ?GetDopplerSpeed@ / ?GetRolloffFactor@CCodaContext@@QBEMXZ (Dbg COMDATs; retail 0x0143BBF0 / 0x0143BBF8 = CODA + 0x98 / + 0xA0).
++    float GetDopplerSpeed()const{return m_fDopplerSpeed;}
++    float GetRolloffFactor()const{return m_fRolloffFactor;}
++#endif
+ #endif
+     CRESOURCEDESC* GetResourceCounts(CRESOURCEDESC* pResourceDesc) const;   // descriptive name: absent from SDK 2.10
+ #ifdef FABLE_RETAIL_CSALSW3D_CALCPARAMS

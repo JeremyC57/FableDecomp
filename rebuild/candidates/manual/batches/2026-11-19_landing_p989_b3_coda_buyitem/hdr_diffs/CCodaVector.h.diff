@@ -1,0 +1,29 @@
+--- a/rebuild/include/engine/CCodaVector.h
++++ b/rebuild/include/engine/CCodaVector.h
+@@ -1,6 +1,9 @@
+ #ifndef FABLE_CCODAVECTOR_H
+ #define FABLE_CCODAVECTOR_H
+ #include "engine/CodaEnvironment.h"
++#ifdef FABLE_RETAIL_CCODA3DSOURCE_COMMIT
++#include <math.h>   // Magnitude: the C++ inline sqrtf (SDK release COMDAT _sqrtf)
++#endif
+ // Original SDK CodeView: complete vector is the public _CVECTOR base.
+ #ifdef FABLE_RETAIL_PASS22_CCODA3D_CREATE
+ class CCodaVector:public _CVECTOR {public:
+@@ -10,6 +13,16 @@
+  CCodaVector& operator=(const CCodaVector& v){x=v.x;y=v.y;z=v.z;return *this;}
+  void Set(float a,float b,float c){x=a;y=b;z=c;}
+  void Zero(){x=y=z=0.0f;}
++#ifdef FABLE_RETAIL_CCODA3DSOURCE_COMMIT
++ // Retail opt-in (hand3c, row 0x00C41FB0 CCoda3DSource::Commit): SDK 2.10 CodeView ?IsZero@ (QBE_NXZ), ?MagnitudeSquare@ /
++ // ?Magnitude@ (QBEMXZ), ??H / ??G (QBE?AV0@ABV0@@Z) of CCodaVector: Dbg COMDAT bodies (Magnitude calls sqrtf); the Toolkit twin
++ // CCtkVector (CtkVector.h) has the same IsZero / MagnitudeSquared / operator+ / operator-.
++ bool IsZero()const{return x == 0.0f && y == 0.0f && z == 0.0f;}
++ float MagnitudeSquare()const{return x * x + y * y + z * z;}
++ float Magnitude()const{return sqrtf(MagnitudeSquare());}
++ CCodaVector operator+(const CCodaVector& v)const{return CCodaVector(x + v.x, y + v.y, z + v.z);}
++ CCodaVector operator-(const CCodaVector& v)const{return CCodaVector(x - v.x, y - v.y, z - v.z);}
++#endif
+ #ifdef FABLE_RETAIL_CCODAVECTOR_ORTHOGONALRIGHT
+  // GameCODA 2.10 CodaListener.obj (CODAApi.lib / CODAApiDbg.lib): Normalize 0x00C402E0 out of line (returns the old magnitude);
+  // Dot and OrthogonalRight (0x00C40370, the COMDAT copy) are header inlines, bodies as the SDK's Toolkit CCtkVector (CtkVector.h).

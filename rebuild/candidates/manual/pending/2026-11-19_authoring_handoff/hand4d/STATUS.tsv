@@ -2,7 +2,7 @@ address	grade	bytes	test	grades_used	notes
 00540320	RELOCATION_MATCH	755	PASS	8	batch 1; FableWin /Od structure port
 0063f7c0	RELOCATION_MATCH	785	PASS	3	batch 2; FOREACHINROUGHAREA_EGOD port
 00727220	RELOCATION_MATCH	732	PASS	3	batch 3; PDB class + Ego_d locals + FW order
-00774d20	DIFFER(1149v1149)	1149	-	49	OPEN (handed off): register-role permutation from 0x00774D7B (zero esi/def edi/pshop_def ebp in retail; edi/esi/edi here); src/00774d20.cpp; see NOTES + HANDOFF.md
+00774d20	LANDED	1149	-	49	landed by Account B (batches/2026-11-19_landing_p989_b3_coda_buyitem); OPEN (handed off): register-role permutation from 0x00774D7B (zero esi/def edi/pshop_def ebp in retail; edi/esi/edi here); src/00774d20.cpp; see NOTES + HANDOFF.md
 0085b2a0	RELOCATION_MATCH	775	PASS	6	batch 4; IDENTIFY -> GetAllThingsInRoughArea<CThingGameObject,list,Bind4<..>>; ROUGHAREA_EGOD + Bind4 forceinline overlay
 008dd7e0	RELOCATION_MATCH	744	PASS	17	batch 5; FableWin order port; HasTC + implicit name + named position refs (Inferred); new CThunderBattleDef.h overlay
 00aede60	RELOCATION_MATCH	796	PASS	23	batch 6; shared headers, SET_RHSET_INLINE + new INVERSE_NO_TRANSLATE_FORCEINLINE overlay (Inline-budget: no /d2inlT gives retail's mix)

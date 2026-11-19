@@ -21,7 +21,7 @@ date	account	item	kind	status	note
 2026-11-19	A	q11236,q11237,q11282,q11400,q11444,q11447,q11448,q11463,q11464,q11466,q11467	naming	claimed	round 9 agent NF100: rows 005bc479 005bde50 005bf414 005bf4ed 005c08d3 005c30d3 00637da0 0063e950 0063fd40 0095a6c0 0095ad20
 2026-11-19	A	q11260,q11271,q11274,q11277,q11280,q11281,q11283,q11286	naming	claimed	round 9 agent NF101: rows 00436500 0049c6f0 00518130 005185f0 0055fc90 005da750 0063fae0 00670d50 00703210 0078954d 0078b070 00848500 008c64f0 009f9e00 00b9dc60 00beb660
 2026-11-19	A	nf99a, nf98 (round 8)	naming	done	batches/2026-11-19_landing_nf99a, _nf98
-2026-11-19	B	0x00989230	author	claimed	p989 b3 (advisor option (a), row-named nested opt-in); lands after an independent audit
+2026-11-19	B	0x00989230	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
 2026-11-19	B	0x00AAD340	author	claimed	hand3c chunk 2 (authoring_handoff)
 2026-11-19	B	0x0064DD9A	author	claimed	hand3c chunk 2 (authoring_handoff)
 2026-11-19	B	0x00D6C830	author	claimed	hand3c chunk 2 (authoring_handoff)
@@ -46,3 +46,12 @@ date	account	item	kind	status	note
 2026-11-19	B	0x00B52990	author	done	landed in batches/2026-11-19_landing_hand3c_b28_b31
 2026-11-19	B	0x00A13BE0	author	done	landed in batches/2026-11-19_landing_hand3c_b28_b31
 2026-11-19	B	0x00A13C20	author	done	landed in batches/2026-11-19_landing_hand3c_b28_b31
+2026-11-19	B	0x00C41FB0	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
+2026-11-19	B	0x00C418F0	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
+2026-11-19	B	0x00C41990	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
+2026-11-19	B	0x00C41A20	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
+2026-11-19	B	0x00C41A70	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
+2026-11-19	B	0x00C41BB0	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
+2026-11-19	B	0x00774D20	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
+2026-11-19	B	0x009FDE80 + C3DExtentsI local-model rows (00a67a20 00a685e0 00a67860 00a67950 00a67530 00a699d0 00a677d0 00a68910 009fd9b0)	author	claimed	re-port onto new engine/C3DExtentsI.h, then land e17 BeginLoading
+2026-11-19	B	0x0098B930, 0x00774C60	author	claimed	re-port SetVSConstants (Ego_d spelling); StockDisplay same-TU copy verbatim

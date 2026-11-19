@@ -1,0 +1,22 @@
+--- a/rebuild/include/engine/CCoda3DSource.h
++++ b/rebuild/include/engine/CCoda3DSource.h
+@@ -25,6 +25,19 @@
+  // ?Get3DParams@CCoda3DSource@@QBEABUCODA3DSOURCE@@XZ (the CODAApiDbg CalcParams calls it); the release reads m_3D in place.
+  const CODA3DSOURCE& Get3DParams()const{return m_3D;}
+ #endif
++#ifdef FABLE_RETAIL_CCODA3DSOURCE_COMMIT
++ // Retail opt-in (hand3c, row 0x00C41FB0 Commit): the SDK 2.10 private helpers Commit uses. IsHeadRelative / IsMaxDistanceMuted are the Dbg
++ // COMDAT ?IsHeadRelative@ / ?IsMaxDistanceMuted@CCoda3DSource@@ABE_NXZ bodies (status bits 0x40000 / 0x80000); the five Calc* are out of line (CODAApi.lib Commit
++ // relocations at the retail call sites): 0x00C418F0, 0x00C41990, 0x00C41A20, 0x00C41A70, 0x00C41BB0.
++private:
++ bool IsHeadRelative()const{return (m_ffStatus & 0x40000) != 0;}
++ bool IsMaxDistanceMuted()const{return (m_ffStatus & 0x80000) != 0;}
++ float CalcDirectionAndDistance(CCodaVector& vDirection, const CCodaVector& cvPosition);
++ float CalcDistanceGain()const;
++ float CalcDoppler()const;
++ float CalcConeGain()const;
++ float CalcEnvFxGain(float fRolloff)const;
++#endif
+ private:
+  CODA3DSOURCE m_3D;
+  CCodaVector m_vPosition;

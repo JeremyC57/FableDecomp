@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/CCodaObject.h
++++ b/rebuild/include/engine/CCodaObject.h
+@@ -20,6 +20,11 @@
+ #elif defined(FABLE_RETAIL_CCODACONTEXT_PROCESS)
+  CCodaObject* GetNext()const{return m_pNext;}
+ #endif
++#if defined(FABLE_RETAIL_CCODA3DSOURCE_COMMIT) && !defined(FABLE_RETAIL_CCODACONTEXT_PROCESS)
++ // Retail opt-in (hand3c, row 0x00C41FB0 CCoda3DSource::Commit): SDK 2.10 CodeView ?GetNext@CCodaObject@@QBEPAV1@XZ (Dbg COMDAT:
++ // return m_pNext); the same body as the PROCESS branch above.
++ CCodaObject* GetNext()const{return m_pNext;}
++#endif
+ private:CCodaObject* m_pPrev;CCodaObject* m_pNext;
+ };
+ #endif
