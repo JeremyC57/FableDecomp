@@ -933,9 +933,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00437870'
-        Module = '_global'
-        Source = '00/43/CTCShotDefinitionBase_CanBeHitByMeleeStrike_00437870.cpp'
-        TestSource = '00/43/CTCShotDefinitionBase_CanBeHitByMeleeStrike_00437870_test.cpp'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_IsMiniMapDrawing_00437870.cpp'
+        TestSource = '00/43/CPlayerGui_IsMiniMapDrawing_00437870_test.cpp'
         PassPattern = 'CTCShotDefinitionBase_00437870_TEST PASS'
     }
     [pscustomobject]@{
@@ -32936,9 +32936,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00643be2'
-        Module = 'CComponent'
-        Source = '00/64/CComponent_CanMove_00643be2.cpp'
-        TestSource = '00/64/CComponent_CanMove_00643be2_test.cpp'
+        Module = 'NPlayerGui'
+        Source = '00/64/NPlayerGui_GFToScreen_00643be2.cpp'
+        TestSource = '00/64/NPlayerGui_GFToScreen_00643be2_test.cpp'
         PassPattern = '00643be2_TEST PASS'
     }
     [pscustomobject]@{
@@ -36009,9 +36009,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008645e0'
-        Module = 'CMainGameComponent'
-        Source = '00/86/CMainGameComponent_BeginInputLoading_008645e0.cpp'
-        TestSource = '00/86/CMainGameComponent_BeginInputLoading_008645e0_test.cpp'
+        Module = 'NCreatureAI'
+        Source = '00/86/NCreatureAI_IsAwareOfThing_008645e0.cpp'
+        TestSource = '00/86/NCreatureAI_IsAwareOfThing_008645e0_test.cpp'
         PassPattern = '008645e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -48510,9 +48510,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065f0fa'
-        Module = 'CTCActionUseBuyHouse'
-        Source = '00/65/CTCActionUseBuyHouse_OnCreate_0065f0fa.cpp'
-        TestSource = '00/65/CTCActionUseBuyHouse_OnCreate_0065f0fa_test.cpp'
+        Module = 'CIsHornTaskWithThisHorn'
+        Source = '00/65/CIsHornTaskWithThisHorn_CIsHornTaskWithThisHorn_0065f0fa.cpp'
+        TestSource = '00/65/CIsHornTaskWithThisHorn_CIsHornTaskWithThisHorn_0065f0fa_test.cpp'
         PassPattern = 'ONCREATE_BUYHOUSE_OK'
     }
     [pscustomobject]@{
@@ -128035,9 +128035,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006a7610'
-        Module = '_unattributed'
-        Source = '00/6a/unattributed_ForwardToMember0008645e0_006a7610.cpp'
-        TestSource = '00/6a/unattributed_ForwardToMember0008645e0_006a7610_test.cpp'
+        Module = 'CThingFilter_IsAICreatureAwareOf'
+        Source = '00/6a/CThingFilterIsAICreatureAwareOf_operator_006a7610.cpp'
+        TestSource = '00/6a/CThingFilterIsAICreatureAwareOf_operator_006a7610_test.cpp'
         PassPattern = '006a7610_TEST PASS'
     }
     [pscustomobject]@{
@@ -202108,9 +202108,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00628e80'
-        Module = 'CGameEvent'
-        Source = '00/62/CGameEvent_ReadData8_00628e80.cpp'
-        TestSource = '00/62/CGameEvent_ReadData8_00628e80_test.cpp'
+        Module = 'CGameEventDataPackage'
+        Source = '00/62/CGameEventDataPackage_GetUHUGE_00628e80.cpp'
+        TestSource = '00/62/CGameEventDataPackage_GetUHUGE_00628e80_test.cpp'
         PassPattern = '00628e80_TEST PASS'
     }
     [pscustomobject]@{
@@ -211279,9 +211279,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007554c0'
-        Module = 'CLookDrawRequest_007554c0'
-        Source = '00/75/CLookDrawRequest007554c0_CLookDrawRequest007554c0_007554c0.cpp'
-        TestSource = '00/75/CLookDrawRequest007554c0_CLookDrawRequest007554c0_007554c0_test.cpp'
+        Module = 'CEnginePrimitiveMorphedStaticMesh'
+        Source = '00/75/CEnginePrimitiveMorphedStaticMesh_CEnginePrimitiveMorphedStaticMesh_007554c0.cpp'
+        TestSource = '00/75/CEnginePrimitiveMorphedStaticMesh_CEnginePrimitiveMorphedStaticMesh_007554c0_test.cpp'
         PassPattern = '007554c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -244181,9 +244181,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006294a0'
-        Module = 'CRenderManager2D'
-        Source = '00/62/CRenderManager2D_AddLineToDrawBuffer_006294a0.cpp'
-        TestSource = '00/62/CRenderManager2D_AddLineToDrawBuffer_006294a0_test.cpp'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EAPlayerRespawn_006294a0.cpp'
+        TestSource = '00/62/CWorld_EAPlayerRespawn_006294a0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '006294a0_TEST PASS'
     }

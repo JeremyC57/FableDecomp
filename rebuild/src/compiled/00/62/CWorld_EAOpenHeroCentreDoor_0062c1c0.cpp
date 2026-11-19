@@ -13,15 +13,15 @@
 // Shape: the landed sibling EACloseHeroCentreDoor (0x0062C300): the inline PeekTC with an unset component when the
 //   thing lacks the interface (VC reuses the door-type frame word on that path), both lookup keys in the dead `event`
 //   slot; the inventory test is a nested `if` (esi pushed only on that path); door type then UID read in payload order.
+// NF95 2026-11-19 (q11320): the unpacking buffer is Ego_r.pdb CGameEventDataPackage (engine/CGameEventDataPackage.h layout, 0x2C bytes)
+//   read through ?GetData@CGameEventDataPackage@@QAEXJPAX@Z 0x009F18F0 (Ego_r.pdb 0x00B454F0 / FableWin.pdb 0x030A2200) and filled by
+//   ?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z 0x009F17A0 (Ego_r.pdb 0x00B453F0); were the stand-ins
+//   CMemoryBuffer::Read(unsigned long, void*) and CGameEvent::GetData(CMemoryBuffer&).
+// NF97 2026-11-19 (port): the read buffer is the shared engine/CGameEventDataPackage.h class (FABLE_RETAIL_CGAMEEVENTDATAPACKAGE:
+//   inline ctor zeroing Length / StartPos / EndPos, GetData 0x009F18F0), no longer a local model.
+#define FABLE_RETAIL_CGAMEEVENTDATAPACKAGE
 #include "fable_compiler.h"
-struct CMemoryBuffer {
-    unsigned char Data[0x20];                      // +0x00
-    long          Length;                          // +0x20
-    long          ReadPos;                         // +0x24
-    long          WritePos;                        // +0x28
-    CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
-    void Read(unsigned long length, void* data);   // 0x009F18F0
-};
+#include "engine/CGameEventDataPackage.h"
 class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
@@ -29,7 +29,7 @@ class CGameEvent { public:
     unsigned char EndPos;                          // +0x25
     bool          Valid;                           // +0x26
     bool          Replacement;                     // +0x27
-    long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
+    void GetDataPackage(CGameEventDataPackage* package) const;     // 0x009F17A0
 };
 
 class CTCBase;
@@ -115,12 +115,12 @@ void CWorld::EAOpenHeroCentreDoor(const CGameEvent* event)
     {
         if (!hero->PeekTC<CTCInventoryBase>(0x11)->InventoryOpen)
         {
-            CMemoryBuffer buffer;
-            event->GetData(buffer);
+            CGameEventDataPackage buffer;
+            event->GetDataPackage(&buffer);
             EHeroCentreDoorType door;
-            buffer.Read(4, &door);
+            buffer.GetData(4, &door);
             __int64 uid;
-            buffer.Read(8, &uid);
+            buffer.GetData(8, &uid);
             CThing* thing = GetThingManager()->GetPThingWithUID(uid);
             if (thing)
                 thing->PeekTC<CTCHeroCentre>(0x6A)->OnHeroWalkedThroughDoor(door);

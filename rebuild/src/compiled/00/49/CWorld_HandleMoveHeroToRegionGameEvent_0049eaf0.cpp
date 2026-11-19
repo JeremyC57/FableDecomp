@@ -11,14 +11,14 @@
 //   words), the payload read field by field (X, Y, Z, angle, three flag bytes; the last byte lands in the dead `event`
 //   argument slot under the RTM compiler), the flags are char bytes normalised with `!= 0` (setne) for the bool
 //   parameters, the position is a named C3DVector built after the reads. Flag names follow SetAsLoadingRegion.
-struct CMemoryBuffer {
-    unsigned char Data[0x20];                      // +0x00
-    long          Length;                          // +0x20
-    long          ReadPos;                         // +0x24
-    long          WritePos;                        // +0x28
-    CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
-    void Read(unsigned long length, void* data);   // 0x009F18F0
-};
+// NF95 2026-11-19 (q11320): the unpacking buffer is Ego_r.pdb CGameEventDataPackage (engine/CGameEventDataPackage.h layout, 0x2C bytes)
+//   read through ?GetData@CGameEventDataPackage@@QAEXJPAX@Z 0x009F18F0 (Ego_r.pdb 0x00B454F0 / FableWin.pdb 0x030A2200) and filled by
+//   ?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z 0x009F17A0 (Ego_r.pdb 0x00B453F0); were the stand-ins
+//   CMemoryBuffer::Read(unsigned long, void*) and CGameEvent::GetData(CMemoryBuffer&).
+// NF97 2026-11-19 (port): the read buffer is the shared engine/CGameEventDataPackage.h class (FABLE_RETAIL_CGAMEEVENTDATAPACKAGE:
+//   inline ctor zeroing Length / StartPos / EndPos, GetData 0x009F18F0), no longer a local model.
+#define FABLE_RETAIL_CGAMEEVENTDATAPACKAGE
+#include "engine/CGameEventDataPackage.h"
 class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
@@ -26,7 +26,7 @@ class CGameEvent { public:
     unsigned char EndPos;                          // +0x25
     bool          Valid;                           // +0x26
     bool          Replacement;                     // +0x27
-    long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
+    void GetDataPackage(CGameEventDataPackage* package) const;     // 0x009F17A0
 };
 #include "engine/C3DVector.h"
 class CWorld { public:
@@ -35,22 +35,22 @@ class CWorld { public:
 };
 void CWorld::HandleMoveHeroToRegionGameEvent(const CGameEvent& event)
 {
-    CMemoryBuffer buffer;
-    event.GetData(buffer);
+    CGameEventDataPackage buffer;
+    event.GetDataPackage(&buffer);
     float x;
-    buffer.Read(4, &x);
+    buffer.GetData(4, &x);
     float y;
-    buffer.Read(4, &y);
+    buffer.GetData(4, &y);
     float z;
-    buffer.Read(4, &z);
+    buffer.GetData(4, &z);
     float angleXY;
-    buffer.Read(4, &angleXY);
+    buffer.GetData(4, &angleXY);
     char viaTeleporter;
-    buffer.Read(1, &viaTeleporter);
+    buffer.GetData(1, &viaTeleporter);
     char force;
-    buffer.Read(1, &force);
+    buffer.GetData(1, &force);
     char viaDoor;
-    buffer.Read(1, &viaDoor);
+    buffer.GetData(1, &viaDoor);
     C3DVector pos(x, y, z);
     SetAsLoadingRegion(pos, angleXY, viaTeleporter != 0, force != 0, viaDoor != 0);
 }

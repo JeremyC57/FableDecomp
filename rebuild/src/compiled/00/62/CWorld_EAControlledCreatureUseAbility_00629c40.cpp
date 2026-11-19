@@ -6,22 +6,23 @@
 // Flags: /GS
 // Shape: one CPlayer* local holds both GetPlayer results (the mode test, then the hero lookup), which gives retail's
 //   callee-saved assignment (event in ebp, creature in edi).
+// NF95 2026-11-19 (q11320): the unpacking buffer is Ego_r.pdb CGameEventDataPackage (engine/CGameEventDataPackage.h layout, 0x2C bytes)
+//   read through ?GetData@CGameEventDataPackage@@QAEXJPAX@Z 0x009F18F0 (Ego_r.pdb 0x00B454F0 / FableWin.pdb 0x030A2200) and filled by
+//   ?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z 0x009F17A0 (Ego_r.pdb 0x00B453F0); were the stand-ins
+//   CMemoryBuffer::Read(unsigned long, void*) and CGameEvent::GetData(CMemoryBuffer&).
+// NF97 2026-11-19 (port): the read buffer is the shared engine/CGameEventDataPackage.h class (FABLE_RETAIL_CGAMEEVENTDATAPACKAGE:
+//   inline ctor zeroing Length / StartPos / EndPos, GetData 0x009F18F0), no longer a local model.
+//   The local made-up reader helper is replaced by the FableWin.pdb typed reader (opt-in FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_TYPED_READERS:
+//   GetUBYTE / GetUWORD / GetFloat / GetSLONG, expanded in place); a direct GetData read into the local differs.
+#define FABLE_RETAIL_CGAMEEVENTDATAPACKAGE
+#define FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_TYPED_READERS
 #include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CMemoryBuffer {
-    unsigned char Data[0x20];                      // +0x00
-    long          Length;                          // +0x20
-    long          ReadPos;                         // +0x24
-    long          WritePos;                        // +0x28
-    CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
-    void Read(unsigned long length, void* data);   // 0x009F18F0
-    FABLE_FORCEINLINE unsigned short ReadUShort() { unsigned short value; Read(2, &value); return value; }
-    FABLE_FORCEINLINE float ReadFloat() { float value; Read(4, &value); return value; }
-};
+#include "engine/CGameEventDataPackage.h"
 class CGameEvent {
 public:
     long          Type;                            // +0x00
@@ -30,7 +31,7 @@ public:
     unsigned char EndPos;                          // +0x25
     bool          Valid;                           // +0x26
     bool          Replacement;                     // +0x27
-    long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
+    void GetDataPackage(CGameEventDataPackage* package) const;     // 0x009F17A0
 };
 class CThingCreatureBase { public:
     unsigned char _pad[0x91];
@@ -83,10 +84,10 @@ void CWorld::EAControlledCreatureUseAbility(const CGameEvent* event)
     signed char playerNumber = event->Player;
     if (playerNumber != PlayerManager->GetMainPlayerNumber())
         return;
-    CMemoryBuffer buffer;
-    event->GetData(buffer);
-    unsigned short ability = buffer.ReadUShort();
-    float charge = buffer.ReadFloat();
+    CGameEventDataPackage buffer;
+    event->GetDataPackage(&buffer);
+    unsigned short ability = buffer.GetUWORD();
+    float charge = buffer.GetFloat();
     creature->UseAbility(ability, 0.0f);
     unsigned short attack = (unsigned short)DefinitionManager->GetDefGlobalIndexFromName("CREATURE_ABILITY_ATTACK");
     if (attack != 0)

@@ -13,13 +13,30 @@ class CGameEventDataPackage {
 public:
     CGameEventDataPackage() : Length(0), StartPos(0), EndPos(0) { }
     void GetData(long size, void* data);                                 // 0x009F18F0
+#ifdef FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_GETUHUGE
+    // Opt-in (NF95 q11320, row 0x00628E80): FableWin.pdb 0x023D5E10 ?GetUHUGE@CGameEventDataPackage@@QAE_KXZ (the only 8-byte typed
+    // reader: GetData(8, &value), the 64-bit result in edx:eax), out of line in retail at 0x00628E80. Declaration only.
+    unsigned __int64 GetUHUGE();                                         // 0x00628E80
+#endif
+#ifdef FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_TYPED_READERS
+    // Opt-in (NF97, the CWorld EA handlers 0x00629420 / 0x00629B10 / 0x00629C40 / 0x00629DE0 / 0x0062ABA0 / 0x0062CE60): FableWin.pdb
+    // ?GetUBYTE@CGameEventDataPackage@@QAEEXZ / ?GetUWORD@..QAEGXZ / ?GetFloat@..QAEMXZ / ?GetSLONG@..QAEJXZ (out of line only in
+    // FableWin; no copy in Ego_r.pdb: expanded in place there). Those rows differ with a direct GetData read into the named
+    // local and match with the inline reader.
+    // Inferred: the bodies (one GetData of the value's size, as GetUHUGE 0x00628E80 does out of line); the rows' bytes need an inline
+    // reader wrapping the GetData call, the exact original wording is not in the PDBs.
+    unsigned char  GetUBYTE() { unsigned char value; GetData(sizeof(value), &value); return value; }
+    unsigned short GetUWORD() { unsigned short value; GetData(sizeof(value), &value); return value; }
+    float          GetFloat() { float value; GetData(sizeof(value), &value); return value; }
+    long           GetSLONG() { long value; GetData(sizeof(value), &value); return value; }
+#endif
 private:
     unsigned char Data[32];                                              // +0x00
     long          Length;                                                // +0x20
     long          StartPos;                                              // +0x24
     long          EndPos;                                                // +0x28
 };
-FABLE_STATIC_ASSERT(sizeof(CGameEventDataPackage) == 0x2c);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CGameEventDataPackage) == 0x2c);
 #else
 class CGameEventDataPackage;
 #endif

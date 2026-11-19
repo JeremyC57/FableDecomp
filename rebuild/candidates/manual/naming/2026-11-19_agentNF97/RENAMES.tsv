@@ -1,0 +1,61 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0065F0FA	CIsHornTaskWithThisHorn	CIsHornTaskWithThisHorn	??0CIsHornTaskWithThisHorn@@QAE@V?$CIntelligentPointer@VCThing@@@@@Z	CTCActionUseBuyHouse::OnCreate	CTCActionUseBuyHouse_OnCreate (extern "C" __fastcall: @CTCActionUseBuyHouse_OnCreate@12)	q11276 (binder of 0x004A9730): FableWin.pdb 0x02160C17; its only caller CTCVillage::UpdateHornTasks 0x0065BE6C (landed) binds this name at 0x0065BF03 (probe compile) and passes the CIsHornTaskWithThisHorn predicate to find_if 0x0065FFCA; re-authored on engine/CIsHornTaskWithThisHorn.h (overlay CTOR_OUTOFLINE) + CIntelligentPointer.h COPY_OUTOFLINE; RELOCATION_MATCH [NF97 2026-11-19: NF95 held this rename (new local model); ported onto the shared headers, vland RELOCATION_MATCH/MATCH + PASS]
+0x00643BE2	NPlayerGui	GFToScreen	?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	NUISystem::CComponent::CanMove	?CanMove@@YIPAUV2@@PAU1@0@Z	q11292 / q11331: Ego_r.pdb 0x00686AC7 + FableWin.pdb 0x020D908C; landed caller 0x00657580 binds it at 0x006576DF / 0x006577F9 / 0x006578DB; re-authored on engine/NPlayerGui_Graphics.h (GFTOSCREEN_CALLED), MATCH [NF97 2026-11-19: NF95 held this rename (new local model); ported onto the shared headers, vland RELOCATION_MATCH/MATCH + PASS]
+0x004165E8	CMainGameComponent	CheckSync	?CheckSync@CMainGameComponent@@IAEXPBVCGameEventPackage@@@Z	CMainGameComponent::CheckSync	?CheckSync@CMainGameComponent@@QAEXABUCEventPackage@@@Z	q11320 (binder of 0x009F18F0): Ego_r.pdb 0x004158BE + FableWin.pdb 0x018A8354 (protected, const CGameEventPackage*); callees on the PDB spellings (GetNoEvents / GetEvent / GetDataPackage / GetData); RELOCATION_MATCH (old leaf from the old source) [NF97 2026-11-19: NF95 held this rename (new local model); ported onto the shared headers, vland RELOCATION_MATCH/MATCH + PASS]
+0x006294A0	CWorld	EAPlayerRespawn	?EAPlayerRespawn@CWorld@@QAEXPBVCGameEvent@@@Z	CRenderManager2D::AddLineToDrawBuffer	?HandleLeaveWorldPacket@CWorld@@QAEXPAUCEventPacket@@@Z	q11320 (binder of 0x009F18F0): Ego_r.pdb 0x0066D810 + FableWin.pdb 0x023DA740; the landed event-table initialiser 0x0121B9B0 binds it (slot 8 GAME_EVENT_PLAYER_RESPAWN); was the descriptive HandleLeaveWorldPacket; RELOCATION_MATCH [NF97 2026-11-19: NF95 held this rename (new local model); ported onto the shared headers, vland RELOCATION_MATCH/MATCH + PASS]
+0x00628E80	CGameEventDataPackage	GetUHUGE	?GetUHUGE@CGameEventDataPackage@@QAE_KXZ	CGameEvent::ReadData8	?ReadData8@CGameEvent@@SI?AUSEventData8@@PAV1@@Z	q11320 (binder of 0x009F18F0): FableWin.pdb 0x023D5E10, the only 8-byte typed reader of the package (GetData(8) returning edx:eax); no landed caller; on engine/CGameEventDataPackage.h (overlay GETUHUGE); RELOCATION_MATCH (old leaf from the old source) [NF97 2026-11-19: NF95 held this rename (new local model); ported onto the shared headers, vland RELOCATION_MATCH/MATCH + PASS]
+0x008645E0	NCreatureAI	IsAwareOfThing	?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z	CMainGameComponent::BeginInputLoading	?fn_008645e0@@YIHPAXHH@Z	q11325: Ego_r.pdb 0x00834AF0 + FableWin.pdb 0x02817D10 (engine/NCreatureAI.h); 15 landed callers already bind it; body = the 0x00864250 TU wrapper (IsAwareOfThingImplementation with &CTCPerceiveThing::CanSeeOrSmellPerceivedThing 0x00661600); RELOCATION_MATCH (grade 1 also probe of the old row) [NF97 2026-11-19: NF95 held this rename (new local model); ported onto the shared headers, vland RELOCATION_MATCH/MATCH + PASS]
+0x006A7610	CThingFilter_IsAICreatureAwareOf	operator()	??RCThingFilter_IsAICreatureAwareOf@@QBE_NABVCThingCreatureBase@@@Z	_Dest_val_std::allocator_NCreatureHitNotification::CFlash_,NCreatureHitNotification::CFlash_	?ForwardToMember0_008645e0@CForwarder_Retail@@QAEJPAX@Z	q11325 (binder of 0x008645E0): Ego_r.pdb 0x005A2FC0 + FableWin.pdb 0x01F94560; Ego_r layout PCreature +0; the landed binder 0x007F7340 binds this name; RELOCATION_MATCH [NF97 2026-11-19: NF95 held this rename (new local model); ported onto the shared headers, vland RELOCATION_MATCH/MATCH + PASS]
+0x007554C0	CEnginePrimitiveMorphedStaticMesh	CEnginePrimitiveMorphedStaticMesh	??0CEnginePrimitiveMorphedStaticMesh@@QAE@XZ	CLookDrawRequest_007554c0::CLookDrawRequest_007554c0	??0CLookDrawRequest_007554c0@@QAE@XZ	q11335: Ego_r.pdb 0x007673A0 + FableWin.pdb 0x025B4810; engine/CEnginePrimitiveMorphedStaticMesh.h declares the ctor at 0x007554C0 (size 0x64, TextureMorphs +0x4C / HiddenMaterialNames +0x58 match the row); NF95 respelled the derived class in the old local model; NF97 moved the row onto the shared headers (engine/CEnginePrimitiveMorphedStaticMesh.h) [NF97 2026-11-19: NF95 held this rename (new local model); ported onto the shared headers, vland RELOCATION_MATCH/MATCH + PASS]
+0x00437870	CPlayerGui	IsMiniMapDrawing	?IsMiniMapDrawing@CPlayerGui@@QBE_NXZ	_global::GetMember_dword0x160_derefbyte0x18_00437870	?CTCShotDefinitionBase_CanBeHitByMeleeStrike@@YI_NPBUCTCShotDefinitionBase@@@Z (derived from the old row model)	q11376: Ego_r.pdb 0x0044A510 + FableWin.pdb 0x01A7F700; CPlayerGui.h opt-in landed by 0x00654438; vland c11.log MATCH PASS [NF97 2026-11-19: NF95 held this rename (new local model); ported onto the shared headers, vland RELOCATION_MATCH/MATCH + PASS]
+# Section 2
+0x0065F0FA	?copyctor_4a9730@CIntelligentPointer@@QAEXPAU1@@Z	??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z	0x004A9730
+0x0065F0FA	?dtor_a01c10@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	0x00A01C10
+0x0049EAF0	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0049EAF0	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x006295C0	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x006295C0	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x0085CAF0	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0085CAF0	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x0062C1C0	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0062C1C0	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x0062C0E0	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0062C0E0	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x00629C40	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x00629C40	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x00629B10	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x00629B10	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x0085CA80	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0085CA80	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x0062CE60	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0062CE60	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x0062C4B0	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0062C4B0	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x0062C3E0	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0062C3E0	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x0062C300	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0062C300	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x0062AD90	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0062AD90	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x0062ABA0	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x0062ABA0	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x00629DE0	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x00629DE0	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x00629420	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x00629420	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x006292D0	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x006292D0	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x00629390	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x00629390	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x00629330	?Read@CMemoryBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x00629330	?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x004165E8	?Read@CReadBuffer@@QAEXKPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x004165E8	?CopyToBuffer@CEventPacket@@QBEJPAUCReadBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x004165E8	?GetNoPackets@CEventPackage@@QBEKXZ	?GetNoEvents@CGameEventPackage@@QBEKXZ	0x009F16E0
+0x004165E8	?GetPacket@CEventPackage@@QBEPBUCEventPacket@@K@Z	?GetEvent@CGameEventPackage@@QBEPBVCGameEvent@@K@Z	0x009F16D0
+0x006294A0	?ReadBytes@SPacketBuffer@@QAEXJPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x006294A0	?CopyToBuffer@CEventPacket@@QAEJPAUSPacketBuffer@@@Z	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	0x009F17A0
+0x00628E80	?ReadBytes@CGameEvent@@QAEXJPAX@Z	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	0x009F18F0
+0x008645E0	?h_008645e0@@YGHHPAX@Z	?IsAwareOfThingImplementation@?A0x4b0ddf32@@YI_NPBVCThingAICreature@@PBVCThing@@_NP8CTCPerceiveThing@@BE_NXZ@Z (TU-local ?A0x hash in this row)	0x00864250
+0x006A7610	?Shim_008645e0@@YIJPAUCShimTarget_008645e0@@PAXJ@Z	?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z	0x008645E0
+0x0062ABA0	?GetNumContextSensitiveSlots@CGamePlayerInterface@@QBEKXZ	?GetNumberOfContextSensitiveItemButtons@CGamePlayerInterface@@QBEJXZ	0x00445960
