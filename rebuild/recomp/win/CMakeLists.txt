@@ -53,7 +53,10 @@ file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/guest_dlls.c
 target_sources(fable_gen PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/guest_dlls.c)
 
 file(GLOB HOST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
-add_executable(FableRecomp WIN32 ${HOST_SOURCES} $<TARGET_OBJECTS:fable_gen>)
+# FullDecomp's byte-matched C++ lowered to host code (../native/build_native.sh, built for
+# x86_64-w64-windows-gnu); the lift then needs the --wrap list the script writes.
+set(FABLE_NATIVE_OBJS "" CACHE STRING "native-decomp objects (rebuild/recomp/native), ;-separated")
+add_executable(FableRecomp WIN32 ${HOST_SOURCES} $<TARGET_OBJECTS:fable_gen> ${FABLE_NATIVE_OBJS})
 target_include_directories(FableRecomp PRIVATE ${RUNTIME_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 target_compile_features(FableRecomp PRIVATE cxx_std_20)
 target_compile_options(FableRecomp PRIVATE -ffp-contract=off -fno-strict-aliasing -Wall -Wno-unused-function)

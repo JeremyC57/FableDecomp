@@ -8,7 +8,7 @@
 # define them may carry more landed functions, which come along). Environment:
 #   FULLDECOMP  a checkout (or `git archive`) of the FullDecomp branch (default: extract origin/FullDecomp)
 #   EXCLUDE     addresses never made native (default: every --hook / --wrap in ../HANDOFF.md)
-# Writes <out>/nd_x64.o, <out>/nd_a64.o, <out>/report.tsv (native / lifted and why), and
+# Writes <out>/nd_x64.o (Linux x86-64), <out>/nd_a64.o (aarch64), <out>/nd_win.o (Windows x64), <out>/report.tsv (native / lifted and why), and
 # <out>/wraps.txt (the --wrap arguments the lift needs). Then: lift with wraps.txt appended,
 # configure with -DFABLE_NATIVE_OBJS=<out>/nd_<arch>.o, build.
 set -euo pipefail
@@ -67,11 +67,12 @@ PY
 
 # 4. link, lower per host, compile
 llvm-link-18 -S "$OUT"/ir/*.ll -o "$OUT/linked.ll"
-for T in x64:x86_64-linux-gnu a64:aarch64-linux-gnu; do
+for T in x64:x86_64-linux-gnu a64:aarch64-linux-gnu win:x86_64-w64-windows-gnu; do
   n=${T%%:*}; t=${T#*:}
   "$OUT/fable_lower" "$OUT/linked.ll" "$OUT/low_$n.bc" --bindings "$FD/rebuild/oracles/reloc_bindings.tsv" --natives "$OUT/natives.tsv" \
     --exclude "$EXCL" --triple "$t" --report "$OUT/report.tsv"
-  clang --target="$t" -O2 -fPIC -Wno-override-module -c "$OUT/low_$n.bc" -o "$OUT/nd_$n.o"
+  pic=-fPIC; [ "$n" = win ] && pic=
+  clang --target="$t" -O2 $pic -Wno-override-module -c "$OUT/low_$n.bc" -o "$OUT/nd_$n.o"
 done
 awk -F'\t' 'NR>1 && $3=="native"{printf "--wrap 0x%s=nd_wrap_%s ", $1, $1}' "$OUT/report.tsv" > "$OUT/wraps.txt"
 echo "native: $(awk -F'\t' 'NR>1 && $3=="native"' "$OUT/report.tsv" | wc -l), lifted: $(awk -F'\t' 'NR>1 && $3=="lifted"' "$OUT/report.tsv" | wc -l) (report.tsv)"
