@@ -54,11 +54,19 @@ public:
 #endif
     CMatrix3x4() { }
 #ifdef FABLE_RETAIL_CMATRIX3X4_INVERSE_NO_TRANSLATE_PASS23
+#ifdef FABLE_RETAIL_CMATRIX3X4_INVERSE_NO_TRANSLATE_FORCEINLINE
+ // Overlay opt-in (hand4d, row 0x00AEDE60 CParticleEmitter::SetOrientation): retail expands SetInverseNoTranslate and its
+ // GetDeterminant inline (0x00AEDE60 body) while calling the compiler-generated C3DOrientationInterpolator::operator= 0x006B0E00
+ // out of line; one /d2inlT threshold flips both together (221: neither, 222: both), so the expansion is forced here.
+#define FABLE_MATRIX_INVNT_INLINE FABLE_FORCEINLINE
+#else
+#define FABLE_MATRIX_INVNT_INLINE inline
+#endif
  // Original FableWin02d840e0: det/rec locals, column cofactor stores, then zero translation.
- inline float GetDeterminant()const {
+ FABLE_MATRIX_INVNT_INLINE float GetDeterminant()const {
   float det=(E22*E33-E32*E23)*E11+(E32*E13-E12*E33)*E21+(E12*E23-E22*E13)*E31;return det;
  }
- inline void SetInverseNoTranslate(const CMatrix3x4& matrix){
+ FABLE_MATRIX_INVNT_INLINE void SetInverseNoTranslate(const CMatrix3x4& matrix){
   float det=matrix.GetDeterminant();float rec=1.0f/det;
   E11=(matrix.E22*matrix.E33-matrix.E32*matrix.E23)*rec;
   E21=(matrix.E31*matrix.E23-matrix.E21*matrix.E33)*rec;
@@ -816,4 +824,5 @@ inline void CMatrix3x4::Set(const CRightHandedSet& rhset,const C3DVector& transl
 }
 #endif
 #undef FABLE_MATRIX_INLINE_PASS23
+#undef FABLE_MATRIX_INVNT_INLINE
 #endif

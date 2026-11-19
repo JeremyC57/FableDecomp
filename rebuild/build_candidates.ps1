@@ -400757,6 +400757,13 @@ $catalog = @(
         TestSource = '00/c5/CSalSw3DVoice_CalcParams_00c54c10_test.cpp'
         PassPattern = '00c54c10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00aede60'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/ae/NParticleEngineCParticleEmitter_SetOrientation_00aede60.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitter_SetOrientation_00aede60_test.cpp'
+        PassPattern = '00aede60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

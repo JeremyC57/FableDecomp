@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00aede60   RELOCATION_MATCH PASS   SetOrientation
+
+WINS: 1
+  00aede60 RELOCATION_MATCH NParticleEngine::CParticleEmitter::?SetOrientation@CParticleEmitter@NParticleEngine@@QAEXABVC3DOrientationInterpolator@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCParticleEmitter_SetOrientation_00aede60
