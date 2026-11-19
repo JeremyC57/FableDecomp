@@ -1,0 +1,11 @@
+addr       parity           behav  name
+006e94d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006e94d0   WARN RELOC_NAME: ?GetAttackerProngVector@CCombatRing@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z -> 006e8810 labelled 'CCombatRing::GetAttackerProngPosition'
+006e94d0   WARN STANDIN_LEAF ?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (catalog CCombatManager::Combat_CheckRingRangeToTarget; names another function)
+006e94d0   RELOCATION_MATCH PASS   IsCreatureInAttackRingSector
+
+WINS: 1
+  006e94d0 RELOCATION_MATCH CCombatManager::?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCombatManager_IsCreatureInAttackRingSector_006e94d0

@@ -40268,3 +40268,7 @@ __wcsicmp	00f3fb84	00599e3f
 ??$GetSubDef@VCAnimatingObjectDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAnimatingObjectDef@@@@@Z	007f9330	007f8c20
 ??RFrameUpdateThing@?A0x9ae3f8c6@@QBE_NABVCThing@@@Z	006ce730	006ce800
 ?GetOnHitSound@CTCHeroExperience@@QBE?AVCCharString@@XZ	006d8bf0	00733b70
+?GetAttackerProngVector@CCombatRing@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z	006e8810	006e94d0
+?GetProngSeparationHalfAngle@CCombatRing@CDefendingCombatantInfo@@QBEMXZ	006e8460	006e94d0
+?GetRing@CCombatWheel@CDefendingCombatantInfo@@QBEPBVCCombatRing@2@J@Z	006e8520	006e94d0
+_MOVE_TO_PRONG_NAV_PROXIMITY	01261d68	006e94d0
