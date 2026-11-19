@@ -41,7 +41,21 @@ public:CParticleSystem();virtual ~CParticleSystem();
  // (debug copy 0x02F384F0 in the CPSCSingleSprite TU; __forceinline: plain inline is called out of line in the 2.5 KB rows): with the system not StayWithEmitter (+0x50 bit 6 clear) the
  // position is moved through GetSystemTransform's matrix (CMatrix3x4::TransformPoint; the retail rows read it with FABLE_RETAIL_CMATRIX3X4) (both PreparePrimitives rows; 0x00B18AF0 AddToBoundingSphere).
  void GetSystemTransform(CMatrix3x4&) const;
+ #ifdef FABLE_RETAIL_CPARTICLESYSTEM_SCALEPARTICLEDIMENSIONS_FLOAT_INLINE
+ // Opt-in (hand3c, row 0x00B05C60 CPSCSingleSprite::GetComponentCost; needs FABLE_RETAIL_CPARTICLESYSTEM_SCALE): the body is a header
+ // inline -- Ego_r.pdb / FableWin.pdb place ?ScaleParticleDimensions@...@QBEXAAM@Z (and the C2DVector& / unsigned long& overloads) in
+ // the first psc_*.obj that uses each, never in particle_system.obj (COMDATs), and FableWin /Od 0x02F26DC0 evaluates the inner max
+ // twice (a max macro nested in a max macro), as the landed out-of-line copy 0x00AF8F80 spells it. VC7.1 declines to inline this
+ // body (retail calls 0x00AF8F80 from 0x00B05D69 / 0x00B05DE0), and seeing it gives retail's frame (the size homed in the dead
+ // `system` argument slot; declaration only: one extra frame word).
+ void ScaleParticleDimensions(float& size) const
+ {
+  if (ScaleParticles)
+   size *= ((Scale.X > Scale.Y ? Scale.X : Scale.Y) > Scale.Z ? (Scale.X > Scale.Y ? Scale.X : Scale.Y) : Scale.Z);
+ }
+ #else
  void ScaleParticleDimensions(float&) const;
+ #endif
  // CPSCSingleSprite::PreparePrimitives 0x00B087C0: ?ScaleParticleDimensions@...@QBEXAAVC2DVector@@@Z 0x00AF8F00 (the sprite size),
  // ?ScaleParticleDimensions@...@QBEXAAK@Z 0x00B05B80 (the trail length) and ?GetUnscaledWorldTransform@...@QBEXAAVCMatrix3x4@@@Z
  // 0x00B05840, out of line; ?GetNormalisedTime@...@QBEMXZ inline (the +0x50 bit 3 test, then the +0x5C read).

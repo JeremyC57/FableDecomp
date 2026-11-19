@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00b012e0   RELOCATION_MATCH PASS   CPSCRenderMesh
+00b103f0   RELOCATION_MATCH PASS   CPSCEmitterGeneric
+00b1dfd0   RELOCATION_MATCH PASS   CPSCDecalRenderer
+00b05c60   RELOCATION_MATCH PASS   GetComponentCost
+
+WINS: 4
+  00b012e0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::??0CPSCRenderMesh@NParticleEngine@@QAE@XZ
+  00b103f0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::??0CPSCEmitterGeneric@NParticleEngine@@QAE@XZ
+  00b1dfd0 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::??0CPSCDecalRenderer@NParticleEngine@@QAE@XZ
+  00b05c60 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?GetComponentCost@CPSCSingleSprite@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCPSCRenderMesh_CPSCRenderMesh_00b012e0
+  NParticleEngineCPSCEmitterGeneric_CPSCEmitterGeneric_00b103f0
+  NParticleEngineCPSCDecalRenderer_CPSCDecalRenderer_00b1dfd0
+  NParticleEngineCPSCSingleSprite_GetComponentCost_00b05c60

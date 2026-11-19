@@ -51,6 +51,11 @@ protected:
     CEnginePrimitiveHandle MeshDecalsPrimHandle;        // +0x58
     long          MeshDecalsChildPrimIndex;             // +0x60
 public:
+#ifdef FABLE_RETAIL_CPSCDECALRENDERER_CTOR
+    // Opt-in (hand3c, row 0x00B1DFD0): Ego_r.pdb 0x00ADE5E0 / FableWin.pdb 0x02F55400 ??0CPSCDecalRenderer@NParticleEngine@@QAE@XZ.
+    // Declaration only, no layout change.
+    CPSCDecalRenderer();
+#endif
     virtual void ClearAllPrimitives(CIEngine*,CEnginePrimitiveHandle&);
     virtual void PreparePrimitives(const float time, const CEnginePrimitivePrepareInfo& info, CParticleSystem& system,
                                    const CParticleUpdateParameters<unsigned long, unsigned long>& params, CEnginePrimitiveHandle& handle);

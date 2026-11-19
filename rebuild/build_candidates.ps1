@@ -399755,6 +399755,37 @@ $catalog = @(
         TestSource = '00/be/CEngineInternalPrimitive2DViewport_ClearChildPrimitive_00be2120_test.cpp'
         PassPattern = '00be2120_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b012e0'
+        Module = 'NParticleEngine::CPSCRenderMesh'
+        Source = '00/b0/NParticleEngineCPSCRenderMesh_CPSCRenderMesh_00b012e0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCRenderMesh_CPSCRenderMesh_00b012e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
+        PassPattern = '00b012e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b103f0'
+        Module = 'NParticleEngine::CPSCEmitterGeneric'
+        Source = '00/b1/NParticleEngineCPSCEmitterGeneric_CPSCEmitterGeneric_00b103f0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCEmitterGeneric_CPSCEmitterGeneric_00b103f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
+        PassPattern = '00b103f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1dfd0'
+        Module = 'NParticleEngine::CPSCDecalRenderer'
+        Source = '00/b1/NParticleEngineCPSCDecalRenderer_CPSCDecalRenderer_00b1dfd0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_CPSCDecalRenderer_00b1dfd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
+        PassPattern = '00b1dfd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b05c60'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_GetComponentCost_00b05c60.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_GetComponentCost_00b05c60_test.cpp'
+        PassPattern = '00b05c60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

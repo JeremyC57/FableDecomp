@@ -40237,3 +40237,6 @@ __wcsicmp	00f3fb84	00599e3f
 ?GetAttackerProng@CCombatRing@CDefendingCombatantInfo@@QBEPBVCProng@2@ABVCThingCreatureBase@@@Z	006e87d0	006e89b0
 ?GetProngVector@CProng@CDefendingCombatantInfo@@QBE?AVC3DVector@@M@Z	006e7fd0	006e89b0
 ?GetRingRadius@CCombatWheel@CDefendingCombatantInfo@@QBEMJ@Z	006e8850	006e89b0
+??_7CPSCEmitterGeneric@NParticleEngine@@6B@	012a002c	00b103f0
+??_7CPSCDecalRenderer@NParticleEngine@@6B@	012a09bc	00b1dfd0
+?GetComponentCost@CPSCSplineBase@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z	00b202c0	00b05c60

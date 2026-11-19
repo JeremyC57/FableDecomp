@@ -42,6 +42,12 @@ public:
  const long GetDefaultBlendMode()const{return 2;}
  const long GetDefaultBlendOp()const{return 0;}
 #endif
+#ifdef FABLE_RETAIL_CPARTICLEEMITTERMANAGER_DEFAULTALIGNMENT
+ // Opt-in (hand3c, row 0x00B1DFD0 CPSCDecalRenderer ctor): FableWin.pdb ?GetDefaultAlignmentMode@CParticleEmitterManager@NParticleEngine@@
+ // QBE?BJXZ (0x02F26960), inline in retail: the ctor's Flags default folds to 0 (0x00B1E34A `and dword ptr [esi+20h],0FFFF003Fh`,
+ // as the landed CPSCRenderSprite ctor 0x00AFB7C0 spells it). No layout change.
+ const long GetDefaultAlignmentMode()const{return 0;}
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEEMITTERMANAGER_CREATE2D
  // Opt-in (chunk Q28, row 0x00AEB790): Ego_r.pdb / FableWin.pdb ?Create2DEmitter@CParticleEmitterManager@NParticleEngine@@
  // QAEPAVCParticleEmitter@2@JABVC2DVector@@W4EEngine2DLayer@@_NABVCRightHandedSet@@@Z. Declaration only.

@@ -22,6 +22,12 @@ public:
 };
 template<class K,class V>class CParticleUpdateParamDesc:public CBaseClass {
 public: virtual ~CParticleUpdateParamDesc();
+#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMDESC_CTOR
+ // Opt-in (hand3c, row 0x00B103F0 CPSCEmitterGeneric ctor): FableWin.pdb ??0?$CParticleUpdateParamDesc@KK@NParticleEngine@@QAE@XZ
+ // 0x02F4E710 (/Od: CBaseClass(), vptr, Callback = 0; Index left alone), inline in retail (0x00B10407 call CBaseClass(),
+ // 0x00B10414 `mov [edi+4],eax` with eax = 0, 0x00B10417 vptr 0x0125FEE4). No layout change.
+ CParticleUpdateParamDesc():Callback(0){}
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMDESC_GETUPDATEPARAM
  // Opt-in (wfD6, row 0x00B087C0): FableWin.pdb / Ego_r.pdb ?GetUpdateParam@?$CParticleUpdateParamDesc@KK@NParticleEngine@@QBE_NAAVC3DVector@@M_NABV?$CParticleUpdateParameters@KK@2@K@Z
  // (inline in retail: CPSCSingleSprite::PreparePrimitives 0x00B08AxA `call [edx+4]` through Callback with Index pushed). No layout change.
@@ -36,6 +42,11 @@ private: CParticleUpdateParamCallback<K,V>* Callback;V Index;
 };
 class CPSCBase:public CParticleUpdateParamCallback<unsigned long,unsigned long>{
 public:
+#ifdef FABLE_RETAIL_CPSCBASE_CTOR
+ // Opt-in (hand3c, rows 0x00B012E0 CPSCRenderMesh / 0x00B103F0 CPSCEmitterGeneric ctors): Ego_r.pdb / FableWin.pdb
+ // ??0CPSCBase@NParticleEngine@@QAE@XZ, out of line at 0x00AF2620 (every CPSC* ctor calls it first). Declaration only.
+ CPSCBase();
+#endif
  virtual CPSCBase* DatabaseClone() const = 0;
  virtual CCharString GetClassTypeName() const = 0;
  virtual EPSCType GetComponentType() const = 0;

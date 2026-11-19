@@ -25,6 +25,12 @@ public:
  CCardinalSpline Spline;
  CCountedPointer<CSplineRandomOffsetData> SplineRandomOffsetData;
  CCountedPointer<CSplinePosParamData> SplinePosParamData;
+#ifdef FABLE_RETAIL_CPSCSPLINEBASE_GETCOMPONENTCOST
+ // Opt-in (hand3c, row 0x00B05C60 CPSCSingleSprite::GetComponentCost): Ego_r.pdb / FableWin.pdb 0x02F5EFB0
+ // ?GetComponentCost@CPSCSplineBase@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z, out of line at
+ // 0x00B202C0 (the sprite calls it qualified when UseSplinePoints). Declaration only, no layout change.
+ virtual void GetComponentCost(CParticleSystemCost&,const CParticleSystem&,const float,const float);
+#endif
 };
 }
 FABLE_STATIC_ASSERT_AT(30,sizeof(NParticleEngine::CPSCSplineBase)==52);
