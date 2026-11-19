@@ -706,7 +706,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a4d330	C3DAnimation2	CalcLocalBoneTransformation	1088	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00a4d330.cpp	original
 00a4d770	C3DAnimation2	CalcLocalTransformationsRelative	432	reserved (hand3c, not plain C++)	DIFFER(89v420)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00a4d770.cpp	original
 00a4efc0	C3DAnimationSequenceData	InitialiseFromFileData	3504	parked	DIFFER(3495v3491)	8	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00a4efc0.cpp	original
-00a50c20	C3DAnimation2	InitialiseAnimationInstance	1376	reserved (hand4b, in-house)	DIFFER(611v611)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00a50c20.cpp	original
 00a52760	C3DAnimationSequenceData	GetKeyframeInterpolate	1008	reserved (hand3c, not plain C++)	DIFFER(922v1004)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00a52760.cpp	original
 00a53860	C3DAnimation2	CalcLocalBoneTransformation	1008	reserved (hand3c, not plain C++)	DIFFER(922v1005)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00a53860.cpp	original
 00a53c50	C3DAnimation2	CalcLocalBoneTransformation	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00a53c50.cpp	original

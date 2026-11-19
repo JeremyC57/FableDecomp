@@ -400106,6 +400106,13 @@ $catalog = @(
         TestSource = '00/91/CAIStateGroupBirdStartled_IsRunnable_00914650_test.cpp'
         PassPattern = '00914650_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a50c20'
+        Module = 'C3DAnimation2'
+        Source = '00/a5/C3DAnimation2_InitialiseAnimationInstance_00a50c20.cpp'
+        TestSource = '00/a5/C3DAnimation2_InitialiseAnimationInstance_00a50c20_test.cpp'
+        PassPattern = '00a50c20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

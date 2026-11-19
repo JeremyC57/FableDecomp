@@ -96,7 +96,13 @@ private:CCountedPointer<CSimpleMemoryPool> Allocator;CMovableResourceMemoryPool*
  CCountedPointer<C3DAnimationSequence> MovementTrack;CCountedPointer<C3DAnimationSequenceData> MovementTrackData;
  float SamplesPerSecond;unsigned long FrameCount,SequenceCount;C3DAnimationSequence* Sequences;
  unsigned long SequenceDataBufferSize;C3DAnimationSequenceData* SequenceDataBuffer;bool* BoneMask;bool* RigidBoneMask;
+#ifdef FABLE_RETAIL_C3DANIMATION2_INSTANCELIST
+ // hand4b opt-in (row 0x00A50C20 InitialiseAnimationInstance): Ego_r.pdb InstanceList is a list<CIntelligentPointer<C3DAnimation2> >
+ // (retail STLport list, 4 bytes at +0x78; 0x00A50CB1 links a node built from `this`). Needs engine/CIntelligentPointer.h first.
+ C3DVector* RigidBonePositions;bool LockedFromMemMemoryRelocation;std::list<CIntelligentPointer<C3DAnimation2> > InstanceList;
+#else
  C3DVector* RigidBonePositions;bool LockedFromMemMemoryRelocation;unsigned char _pad_75[3];unsigned char InstanceList[4];
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(C3DAnimation2)==0x7c);
 #endif

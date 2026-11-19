@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00a50c20   WARN RELOC_NAME: ?Unlock@CScratchBuffer@@QAEXXZ -> 009f49a0 labelled '_global::SetMemberConst_009f49a0'
+00a50c20   RELOCATION_MATCH PASS   InitialiseAnimationInstance
+
+WINS: 1
+  00a50c20 RELOCATION_MATCH C3DAnimation2::?InitialiseAnimationInstance@
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DAnimation2_InitialiseAnimationInstance_00a50c20

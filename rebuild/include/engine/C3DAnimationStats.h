@@ -6,6 +6,10 @@
 #ifdef FABLE_RETAIL_C3DANIMATIONSTATS_MOVEMENTVECTOR
 #include "engine/C3DVector.h"
 #endif
+#ifdef FABLE_RETAIL_C3DANIMATIONSTATS_TIMINGEVENTS
+#include "fable_string.h"
+#include "stlport/fable_map.h"
+#endif
 class C3DVector;class CQuaternion;class CMatrix3x4;class C3DAnimFile;class CDataInputStream;class CDataOutputStream;class CChunkedFileLoader;class CChunkedFileSaver;class CChunkedFileSuperChunk;class CSimpleMemoryPool;class C3DAnimFileSequenceChunk;class C3DAnimFileObjectChunk;class C3DAnimFileRootChunk;class C3DAnimFileHelpersChunk;class C3DAnimFileMovementVectorChunk;class C3DAnimFileBoneMaskChunk;class C3DAnimationSequenceData;class C3DAnimationSequence;class CMovableResourceMemoryPool;class CMovableResource;
 // Layout: original raw PDB fields and bases; retail sizes reconciled by native accesses and 12-byte vectors.
 class C3DAnimationStats:public CBaseObject{public:
@@ -36,6 +40,16 @@ EAnimationType GetType() const { return AnimType; }
 // needs FABLE_RETAIL_C3DVECTOR_PACKED: retail C3DVector is 1-aligned, so the offset is unchanged; the size assert below catches a miss) and both PDBs' ?GetMovementVector@C3DAnimationStats@@QBE?AVC3DVector@@XZ
 // is inline in retail (no out-of-line copy; 0x00A4E866 / 0x00A4E872 / 0x00A4E87C read [this+12h] / [+16h] / [+1Ah] in place).
 C3DVector GetMovementVector() const { return MovementVector; }
+#ifdef FABLE_RETAIL_C3DANIMATIONSTATS_TIMINGEVENTS
+// hand4b nested opt-in (row 0x00A50C20 C3DAnimation2::InitialiseAnimationInstance): Ego_r.pdb / Ego_d.pdb TimingEvents is a
+// multimap<CCharString,float> (Ego_d nested typedef TTimingEventMap) at +0x20, all members private (Ego_d LF_FIELDLIST 0x29B8B) with a
+// compiler-generated operator= in Ego_d. Retail's C3DAnimation2::InitialiseAnimationInstance copies them one by one, in FableWin.pdb's
+// /Od statement order (0x032257F8.., no operator= call: LoopFlag, Duration, MovementFlag, MovementVector, TimingEvents through the
+// tree's operator= 0x00A54A90, AnimType last; retail 0x00A50C3C..0x00A50C74 in the same order with no CBaseObject::operator= call),
+// so in the retail revision the derived class reaches them: protected here (Inferred: access only). The two pad bytes before +0x20
+// are the multimap's alignment. Layout unchanged (size asserted below).
+protected:EAnimationType AnimType;float Duration;bool LoopFlag,MovementFlag;C3DVector MovementVector;std::multimap<CCharString,float> TimingEvents;};
+#else
 #ifdef FABLE_RETAIL_C3DANIMATIONSTATS_PROTECTED
 // Retail opt-in (chunk 2014): C3DAnimation2::GetDeltaMovement 0x00A4E866..0x00A4E87C multiplies [this+12h] / [16h] / [1Ah] in place
 // (`fld st(0) ; fmul [edi+12h]`), while the by-value getter always materialises its copy first (GetMovementAtTime 0x00A4E1A7
@@ -44,6 +58,7 @@ private:EAnimationType AnimType;float Duration;bool LoopFlag,MovementFlag;protec
 #else
 private:EAnimationType AnimType;float Duration;bool LoopFlag,MovementFlag;C3DVector MovementVector;unsigned char _pad_1e[2];unsigned char TimingEvents[12];};
 #endif
+#endif // FABLE_RETAIL_C3DANIMATIONSTATS_TIMINGEVENTS
 #else
 private:EAnimationType AnimType;float Duration;bool LoopFlag,MovementFlag;unsigned char MovementVector[12];unsigned char _pad_1e[2];unsigned char TimingEvents[12];};
 #endif

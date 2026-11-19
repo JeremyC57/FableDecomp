@@ -40279,3 +40279,6 @@ _MOVE_TO_PRONG_NAV_PROXIMITY	01261d68	006e94d0
 ?Reset@?$CCountedPointer@VCEngineSceneMap@@@@QAEXPAVCEngineSceneMap@@@Z	00b95aa0	00b94bf0
 ??$GetPBestThingInRoughArea@VCThingFilter_ScaresBirds@@VCThingCompare_Nearest@@VCThingCreatureBase@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_ScaresBirds@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z	009147e0	00914650
 ?NAVIGATOR_TYPE_A_STAR@@3KB	0129cba4	00914650
+??4?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@M@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@M@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z	00a54a90	00a50c20
+?CalculateMemoryAllocatedByClient@CSimpleMemoryPool@@QBEKXZ	00a5c850	00a50c20
+?InitialiseAnimationSequences@C3DAnimation2@@AAE_NAAV1@ABVC3DMesh2@@_NAAK@Z	00a50510	00a50c20

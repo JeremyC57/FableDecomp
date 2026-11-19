@@ -39,6 +39,12 @@ public:
     void* Allocate(unsigned long size);                                  // ?Allocate@CSimpleMemoryPool@@QAEPAXK@Z
     void SetCapacity(unsigned long capacity);                            // ?SetCapacity@CSimpleMemoryPool@@QAEXK@Z
     void SetMemoryPool(void* memory, unsigned long size);                // ?SetMemoryPool@CSimpleMemoryPool@@QAEXPAXK@Z
+#ifdef FABLE_RETAIL_CSIMPLEMEMORYPOOL_RESET
+    // hand4b opt-in (row 0x00A50C20): Ego_r.pdb ?Reset@CSimpleMemoryPool@@QAEXXZ (retail 0x00A5C790) and
+    // ?CalculateMemoryAllocatedByClient@CSimpleMemoryPool@@QBEKXZ (retail 0x00A5C850), out of line. Declarations only.
+    void Reset();
+    unsigned long CalculateMemoryAllocatedByClient() const;
+#endif
     // FableWin ??$AllocateType@_N@CSimpleMemoryPool@@QAEPA_NK@Z (0x03237A60; inline in retail): the 64-bit size check, then Allocate.
     template<class T> T* AllocateType(unsigned long count)
     {
