@@ -415,6 +415,12 @@ public:
 #elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_MEMBER_ALL_GROUP_PASS23)
     // Original Cross components grouped individually; no arithmetic reassociation.
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),(X*other.Y-Y*other.X));}
+#elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_MEMBER_XY_GROUP)
+    // Retail opt-in (hand2b_more, row 0x007BBB3B CTCShotDefinitionProjectile::InitMovement): the member Cross with its first two
+    // components parenthesised, Z bare -- the CROSS_XY_GROUP text of operator^ that the same-TU sibling 0x007BBE34 landed with. Same
+    // instructions as the default; the two no-code PAREN tuples move VC7.1's scheduling so `lea eax,[ebp-34h]` (ApplyAcceleration's
+    // argument) is issued before the Z product of `line_to_target * speed` (0x007BBC21..0x007BBC2C). Body only: no layout change.
+    FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),X*other.Y-Y*other.X);}
 #elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_MEMBER_X_GROUP)
     // Cross expression grouping retains native00697d79..b2 scheduling.
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),Z*other.X-X*other.Z,X*other.Y-Y*other.X);}

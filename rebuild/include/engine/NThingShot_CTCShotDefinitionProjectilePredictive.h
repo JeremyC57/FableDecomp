@@ -6,6 +6,11 @@ namespace NThingShot {
 class CTCShotDefinitionProjectile : public CTCShotDefinitionBase {
 protected:
     unsigned char Line1[8]; // native9c, CEnginePrimitiveHandle
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONPROJECTILE_INITMOVEMENT
+    // Retail opt-in (hand2b, row 0x007BBB3B): Ego_r.pdb ?InitMovement@CTCShotDefinitionProjectile@NThingShot@@MAEXXZ (vtable 0x01240CCC
+    // slot 33) (GetInitialVelocity: see NThingShot_CTCShotDefinitionBase.h).
+    virtual void InitMovement();
+#endif
 };
 class CTCShotDefinitionProjectilePredictive : public CTCShotDefinitionProjectile {
 protected:

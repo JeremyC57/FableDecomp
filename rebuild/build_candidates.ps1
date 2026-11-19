@@ -399893,6 +399893,13 @@ $catalog = @(
         TestSource = '00/f3/CRangeCompressor_CalcCompressionScript_00f3abf0_test.cpp'
         PassPattern = '00f3abf0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007bbb3b'
+        Module = 'CTCShotDefinitionProjectile'
+        Source = '00/7b/CTCShotDefinitionProjectile_InitMovement_007bbb3b.cpp'
+        TestSource = '00/7b/CTCShotDefinitionProjectile_InitMovement_007bbb3b_test.cpp'
+        PassPattern = '007bbb3b_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

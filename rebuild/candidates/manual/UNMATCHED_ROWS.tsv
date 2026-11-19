@@ -333,7 +333,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 007b8cc0	CTCTavernTable	GetServingPoint	976	parked	DIFFER(953v967)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand306/differ/007b8cc0.cpp	original
 007b9b40	_global	vector_Insert_Pair_SmartPtr	464	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007b9b40.cpp	original
 007bb1f0	CTCTrespasser	FrameUpdate	1040	parked	codex pass24 PARKED: The original typed field and helper declarations reach the expected virtual and callees, with ten scheduling and CPU operand hunks beginning at the opinion-source setup.	16	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/007bb1f0/007bb1f0.cpp	original
-007bbb3b	CTCShotDefinitionProjectile	InitMovement	268	reserved (hand2b, in-house)	DIFFER(268v268)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/007bbb3b.cpp	original
 007bbc9f	_global	CTCPhysicsRigidBody_ApplyForce	299	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007bbc9f.cpp	original
 007bc004	CTCShotDefinitionNymphFun	InitMovement	342	parked	DIFFER(343v342)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/007bc004.cpp	original
 007bc15a	CTCShotDefinitionMultiArrow	UpdateMovement	560	parked	DIFFER(556v560)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/007bc15a.cpp	original

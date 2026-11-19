@@ -1,0 +1,8 @@
+addr       parity           behav  name
+007bbb3b   RELOCATION_MATCH PASS   InitMovement
+
+WINS: 1
+  007bbb3b RELOCATION_MATCH CTCShotDefinitionProjectile::InitMovement
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCShotDefinitionProjectile_InitMovement_007bbb3b

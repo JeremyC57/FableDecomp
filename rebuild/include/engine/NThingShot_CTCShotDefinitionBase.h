@@ -126,6 +126,12 @@ protected:
     long GetShotAccuracyPercentage() const { return (long)AccuracyPercentage; }
     const CThingShotDef& GetShotDef() const { return *PShotDef; }
 #endif
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_GETINITIALVELOCITY
+    // Retail opt-in (hand2b, row 0x007BBB3B): Ego_r.pdb ?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ (protected const),
+    // out of line in retail at 0x007BEFB0 (landed). Declaration only.
+protected:
+    float GetInitialVelocity() const;                                    // 0x007BEFB0
+#endif
 protected:
     CIntelligentPointer<CThing> PEffect;                                // +0x0c
     std::vector<CIntelligentPointer<const CThing> > HitThingsList;      // +0x14
