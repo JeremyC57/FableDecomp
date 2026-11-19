@@ -40289,3 +40289,5 @@ _MOVE_TO_PRONG_NAV_PROXIMITY	01261d68	006e94d0
 ?GetRegionMapExtents@CRegionMinimap@@QBEXAAVC2DCoordI@@AAVC2DExtentsI@@@Z	0066c6a0	0082a020
 ?GetRelativeMapSize@CMiniMapDisplay@@QBEXAAVC2DVector@@@Z	00829c70	0082a020
 ??$GetSubDef@VCThingDrainLifeShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingDrainLifeShotDef@@@@@Z	007be92e	007bd845
+?CalculateLevel@CEngineSceneMap@@ABEKM@Z	00b91920	00b93b30
+?GetElementByIndex@CDrawQuestInfo@NPlayerGui@@QBEPAVCQuestInfoElement@12@J@Z	00644fc5	0064d404

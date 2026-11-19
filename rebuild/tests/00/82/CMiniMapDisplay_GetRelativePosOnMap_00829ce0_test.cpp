@@ -1,25 +1,19 @@
-#include <cstdio>
-#include <cmath>
-class C3DVector { public: float x, y, z; };
-class C2DVector { public: float x, y; };
-struct IPair { int a, b; };
-
-static IPair g_lo, g_hi;
-static void MapHelper(IPair* p1, IPair* p2){ *p1=g_lo; *p2=g_hi; }
-
-static void GetRel(C3DVector* a, C2DVector* out){
-    IPair lo, hi;
-    MapHelper(&lo,&hi);
-    out->x=(a->x-(float)lo.a)/(float)hi.a;
-    out->y=(a->y-(float)lo.b)/(float)hi.b;
+// Behaviour test for CMiniMapDisplay::GetRelativePosOnMap (0x00829CE0), a portable model of the row: a world position as a fraction of
+// the region map, (world - origin) / extents per axis; Z is ignored.
+#include <stdio.h>
+struct V2 { float X, Y; };
+struct V3 { float X, Y, Z; };
+static void GetRelativePosOnMap(long ox, long oy, long ex, long ey, const V3& w, V2& r)
+{
+    r.X = (w.X - ox) / ex;
+    r.Y = (w.Y - oy) / ey;
 }
-int main(){
-    g_lo.a=10; g_lo.b=20; g_hi.a=4; g_hi.b=5;
-    C3DVector a={30.0f,45.0f,0.0f};
-    C2DVector o;
-    GetRel(&a,&o);
-    // x=(30-10)/4=5 ; y=(45-20)/5=5
-    if(fabs(o.x-5.0f)<1e-4 && fabs(o.y-5.0f)<1e-4) printf("BEHAVIOR_PASS\n");
-    else printf("FAIL %f %f\n",o.x,o.y);
-    return 0;
+int main()
+{
+    int bad = 0; V2 r;
+    V3 a = { 30.0f, 45.0f, 99.0f }; GetRelativePosOnMap(10, 20, 40, 50, a, r); if (r.X != 0.5f || r.Y != 0.5f) ++bad;
+    V3 b = { -64.0f, 0.0f, 0.0f };  GetRelativePosOnMap(-128, -64, 256, 128, b, r); if (r.X != 0.25f || r.Y != 0.5f) ++bad;
+    V3 c = { 10.0f, 20.0f, 0.0f };  GetRelativePosOnMap(10, 20, 8, 8, c, r); if (r.X != 0.0f || r.Y != 0.0f) ++bad;
+    printf(bad ? "00829ce0_TEST FAIL\n" : "00829ce0_TEST PASS\n");
+    return bad ? 1 : 0;
 }

@@ -65263,7 +65263,7 @@ $catalog = @(
         Module = 'CMiniMapDisplay'
         Source = '00/82/CMiniMapDisplay_GetRelativePosOnMap_00829ce0.cpp'
         TestSource = '00/82/CMiniMapDisplay_GetRelativePosOnMap_00829ce0_test.cpp'
-        PassPattern = 'BEHAVIOR_PASS'
+        PassPattern = '00829ce0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066c750'
@@ -65312,7 +65312,7 @@ $catalog = @(
         Module = 'CMiniMapDisplay'
         Source = '00/82/CMiniMapDisplay_GetRelativeMapSize_00829c70.cpp'
         TestSource = '00/82/CMiniMapDisplay_GetRelativeMapSize_00829c70_test.cpp'
-        PassPattern = 'PARITY_OK'
+        PassPattern = '00829c70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066cc40'
@@ -400155,6 +400155,20 @@ $catalog = @(
         Source = '00/6f/CThingSearchTools_listCThingGameObjectCFilterBind2CThingFilterMinA_006fe7c0.cpp'
         TestSource = '00/6f/CThingSearchTools_listCThingGameObjectCFilterBind2CThingFilterMinA_006fe7c0_test.cpp'
         PassPattern = '006fe7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b93b30'
+        Module = 'CEngineSceneMap'
+        Source = '00/b9/CEngineSceneMap_AddPrimitive_00b93b30.cpp'
+        TestSource = '00/b9/CEngineSceneMap_AddPrimitive_00b93b30_test.cpp'
+        PassPattern = '00b93b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064d404'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/64/NPlayerGuiCDrawQuestInfo_DrawMiniGameInfo_0064d404.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfo_DrawMiniGameInfo_0064d404_test.cpp'
+        PassPattern = '0064d404_TEST PASS'
     }
 )
 

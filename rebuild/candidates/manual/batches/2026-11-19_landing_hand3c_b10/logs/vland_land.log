@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00b93b30   RELOCATION_MATCH PASS   AddPrimitive
+0064d404   WARN RELOC_NAME: ?IsMiniMapDrawing@CPlayerGui@@QBE_NXZ -> 00437870 labelled '_global::GetMember_dword0x160_derefbyte0x18_00437870'
+0064d404   RELOCATION_MATCH PASS   DrawMiniGameInfo
+
+WINS: 2
+  00b93b30 RELOCATION_MATCH CEngineSceneMap::?AddPrimitive@CEngineSceneMap@@AAEXAAVCEngineInternalPrimitiveBase@@ABVC2DVector@@M@Z
+  0064d404 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::DrawMiniGameInfo
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEngineSceneMap_AddPrimitive_00b93b30
+  NPlayerGuiCDrawQuestInfo_DrawMiniGameInfo_0064d404

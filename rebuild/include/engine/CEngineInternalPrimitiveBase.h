@@ -158,6 +158,12 @@ public:
     virtual void CollectStats(std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > >&,EEnginePrimitiveStatIndex,unsigned long)const;
     void SetGridCell(CEngineSceneGridCell* cell){GridCell=cell;}
     void AddToList(CEngineInternalPrimitiveBase** list);
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETGRIDPOS
+    // Nested opt-in (hand3c, row 0x00B93B30 CEngineSceneMap::AddPrimitive): FableWin.pdb
+    // ?SetGridPos@CEngineInternalPrimitiveBase@@QAEXABVCEngineSceneGridPos@@@Z (0x02E1CDC0: copies the three bytes to +0x24), inline in
+    // retail (0x00B93C25..0x00B93C35 `lea edx,[edi+24h] ; mov word ptr [edx],ax ; mov byte ptr [edx+2],al`). No layout change.
+    void SetGridPos(const CEngineSceneGridPos& pos){GridPos=pos;}
+#endif
 #endif
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATIONINFO
     // Nested opt-in (chunk 899, row 0x01224900): the static data member Ego_r.pdb / FableWin.pdb name through
