@@ -1,0 +1,2 @@
+# direct-includer recheck after landing nf93b: 501 rows (incl. 0x006F5C10, the existing _SCREAMERDRAINATTACK_PROTOTYPE user)
+good 501, bad 0
