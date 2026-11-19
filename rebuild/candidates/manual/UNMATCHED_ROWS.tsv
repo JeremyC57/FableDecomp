@@ -16,8 +16,8 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00439bb0	CPlayerGui	UpdateMoney	592	reserved (hand3c, not plain C++)	DIFFER(588v592)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00439bb0.test.cpp	original
 00446d10	_global	ProcessCombatInput_MapInputsToActions	480	parked	DIFFER(496v473)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/hdr/00446d10.cpp	original
 00446ef0	CGamePlayerInterface	SetControlScheme	1184	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00446ef0.cpp	original
-0047d296	CTCInGameMenu	PCSetQuitToFrontEnd	482	parked	DIFFER(482v482)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0047d296.cpp	original
-0047dd9d	CTCInGameMenu	PCSetToLoad	493	parked	DIFFER(493v493)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0047dd9d.cpp	original
+0047d296	CTCInGameMenu	PCSetQuitToFrontEnd	482	reserved (hand4a, in-house)	DIFFER(482v482)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0047d296.cpp	original
+0047dd9d	CTCInGameMenu	PCSetToLoad	493	reserved (hand4a, in-house)	DIFFER(493v493)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0047dd9d.cpp	original
 0047fe83	CTCInGameMenu	GetFileNameList	1627	parked	DIFFER(1626v1627)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/0047fe83.cpp	original
 0048e0a2	_global	DrawBox	1772	parked	DIFFER(1760v1772)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0048e0a2.cpp	original
 0048fab6	CSubtitleRenderer	DrawButtonText	1599	parked	DIFFER(1569v1599)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0048fab6.cpp	original
