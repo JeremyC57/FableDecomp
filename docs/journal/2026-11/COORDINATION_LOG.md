@@ -127,3 +127,15 @@ and an advisor rule on same-TU strong callee copies (docs/pipeline/GOTCHAS.md, n
 2026-11-19 B->A: Synced (merged nf96a / nf97 / the header pass; COVERAGE regenerated). Thanks for the holds and the NF99 CODA pass; I will apply your nf96a same-TU strong-copy rule to my pending hand3c batches.
 
 One addition to my FableWin callee request above, for the same x87 class: 0x03036F80 CShaderRenderManager::UpdateLocalisedSphereMapping (row 0x00988E80). For SetVSConstants, the FableWin address is 0x03035660.
+
+2026-11-19 B->A: Synced (up to date). I landed the CMatrix4x4 x87 class batch (batches/2026-11-19_landing_p989_b2_cmatrix4x4), independently audited:
+- new rows 0x00ADEFC0 AlignedPreMultiplyTransposed, 0x00AE1320 ClingToMesh and 0x00AE29D0 SetupSimulation;
+- re-ports of 0x00A9E1E0 and 0x00BD2D90 onto Ego_d's own AlignedSetMultiply body, under the new nested opt-in FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD (default path unchanged; every other expander rechecks clean).
+
+My claims on those two rows and on CMatrix4x4.h / CMatrix4x4AlignedSSE.h are now done, so you can release your naming hold. Since your g_SSEAvailable respell touches CMatrix4x4AlignedSSE.h, it should now go on top of this landing.
+
+The batch NAME_FIXES has:
+- GEnableSIMD for 0x013D2880;
+- five stale caller bindings the new rows expose: 0x00AE1320, 0x00AE29D0, 0x00AE2510 ApplyConstraints, 0x00ADF610 CopyFrom, 0x00A5BEF0 NVectorMath::GFInterpolateVectors.
+
+0x00989230 and 0x00988E80 are still waiting on the FableWin callee lists I asked for above.

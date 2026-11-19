@@ -34847,8 +34847,6 @@ _qsort	00bfedca	009d9c80
 ?size@?$vector@VCKeyCamera@CTCCameraPointScriptedSpline@@V?$allocator@VCKeyCamera@CTCCameraPointScriptedSpline@@@std@@@std@@QBEIXZ	0075ee70	0075d580
 ??1CEnginePrimitiveAnimatingMesh@@QAE@XZ	00708a30	0077b350
 ??4?$vector@VCEngineTextureDecal@@V?$allocator@VCEngineTextureDecal@@@std@@@std@@QAEAAV01@ABV01@@Z	0077b860	0077b350
-?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MPBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z	00aa0090	00bd2d90
-?GNoBoneTransformationsCalculated@@3KA	0143b95c	00bd2d90
 ?_M_insert_overflow@?$vector@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@V?$allocator@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@@2@@std@@IAEXPAV?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z	007dc9a0	007db2e0
 ?erase@?$vector@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@V?$allocator@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@@2@@std@@QAEPAV?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@2@PAV32@0@Z	007dc8d0	007db2e0
 ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA	01396dd8	00a059e0
@@ -40222,3 +40220,10 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ?SetExclusiveMode@CMainGameComponent@@QAEX_N@Z	004163b7	0085ca80
 ?SetDisplayMode@CMainGameComponent@@QAEXKKE@Z	0041641f	0085caf0
 ?IsAwareOfThingImplementation@?A0x9c087913@@YI_NPBVCThingAICreature@@PBVCThing@@_NP8CTCPerceiveThing@@BE_NXZ@Z	00864250	008645e0
+?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MPBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z	00aa0090	00bd2d90
+?GNoBoneTransformationsCalculated@@3KA	0143b95c	00bd2d90
+?CalcMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@PBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z	00a9f540	00ae1320
+?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KPBMKK@Z	00a5bef0	00ae1320
+?GetMatrixBuffer@CParticleProgram@@CIPAVCMatrix4x4@@K@Z	00ae04e0	00ae1320
+?ApplyConstraints@CParticleProgram@@ABEXAAVCParticleSimulation@@JM@Z	00ae2510	00ae29d0
+?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z	00adf610	00ae29d0

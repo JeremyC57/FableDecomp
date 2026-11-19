@@ -19,22 +19,37 @@ static void Blend(float blend, const float* sc, const Mesh& mesh, M4* out, unsig
     ++blends; seenBlend = blend; seenScalings = sc; seenFlag = flag; seenCount = n;
     for (unsigned long i = 0; i < n; ++i) for (int r = 0; r < 4; ++r) for (int c = 0; c < 4; ++c) out[i].d[r][c] = (float)(i * 16 + r * 4 + c + 1);
 }
+// p989 re-port model: the inline CMatrix4x4::AlignedPreMultiplyTransposed (aligned copy `m` of *this, then AlignedSetMultiplyTransposed(matrix, m)
+// = AlignedSetMultiply(m, matrix)) with the Ego_d x87 arm (`CMatrix4x4& m = *this`, long c1 / c2, one sum per element).
+static void AlignedSetMultiply(M4& self, const M4& lhs, const M4& rhs)
+{
+    M4& m = self;
+    for (long c1 = 0; c1 < 4; ++c1)
+        for (long c2 = 0; c2 < 4; ++c2)
+            m.d[c1][c2] = lhs.d[c1][0] * rhs.d[0][c2] + lhs.d[c1][1] * rhs.d[1][c2] + lhs.d[c1][2] * rhs.d[2][c2] + lhs.d[c1][3] * rhs.d[3][c2];
+}
+static void AlignedSetMultiplyTransposed(M4& self, const M4& lhs, const M4& rhs) { AlignedSetMultiply(self, rhs, lhs); }
+static void AlignedPreMultiplyTransposed(M4& self, const M4& matrix) { M4 m; m = self; AlignedSetMultiplyTransposed(self, matrix, m); }
+struct RenderInfo { const Mesh* mesh; M4* transforms; };
 struct Prim {
-    long set; const Mesh* mesh; M4* transforms;
+    long set; RenderInfo info;
+    RenderInfo* GetRenderInfo() { return &info; }
     const M4* Get() {
-        if (transforms == 0) {
-            const Mesh& m = *mesh; unsigned long n = m.boneCount;
-            transforms = Allocate(n);
+        RenderInfo* render_info = GetRenderInfo();
+        if (render_info->transforms == 0) {
+            const Mesh& mesh = *render_info->mesh;
+            unsigned long no_bones = mesh.boneCount;
+            render_info->transforms = Allocate(no_bones);
             float interpolate = sets[set];
-            Blend(interpolate, scalings, m, transforms, n, true);
-            for (unsigned long i = 0; i < n; ++i) {
-                M4 copy = transforms[i]; const M4& b = m.boneSpace[i];
-                for (int r = 0; r < 4; ++r) for (int c = 0; c < 4; ++c)
-                    transforms[i].d[r][c] = copy.d[r][0] * b.d[0][c] + copy.d[r][1] * b.d[1][c] + copy.d[r][2] * b.d[2][c] + copy.d[r][3] * b.d[3][c];
+            const float* bone_morphs = scalings;
+            Blend(interpolate, bone_morphs, mesh, render_info->transforms, no_bones, true);
+            for (unsigned long c_bone = 0; c_bone < no_bones; ++c_bone) {
+                M4& bone_transform = render_info->transforms[c_bone];
+                AlignedPreMultiplyTransposed(bone_transform, mesh.boneSpace[c_bone]);
             }
-            counter += n;
+            counter += no_bones;
         }
-        return transforms;
+        return render_info->transforms;
     }
 };
 int main() {
@@ -42,7 +57,7 @@ int main() {
     for (int k = 0; k < 4; ++k) space[0].d[k][k] = 2.0f;                 // bone 0: uniform scale by 2
     space[1].d[0][1] = 1.0f; space[1].d[1][0] = 1.0f; space[1].d[2][2] = 1.0f; space[1].d[3][3] = 1.0f;   // bone 1: swap columns 0 and 1
     Mesh mesh = { 2, space };
-    Prim p = { 1, &mesh, 0 };
+    Prim p = { 1, { &mesh, 0 } };
     const M4* t = p.Get();
     check(t == pool && allocs == 1 && blends == 1, "first request allocates and blends once");
     check(seenBlend == 0.5f && seenScalings == scalings && seenFlag && seenCount == 2, "blend uses the set's interpolate, the scalings, the count and true");
@@ -51,7 +66,7 @@ int main() {
     check(counter == 2, "bone count added to the frame counter");
     const M4* again = p.Get();
     check(again == t && allocs == 1 && blends == 1 && counter == 2 && t[0].d[0][0] == 2.0f, "second request returns the cache untouched");
-    Mesh empty = { 0, space }; Prim q = { 2, &empty, 0 };
+    Mesh empty = { 0, space }; Prim q = { 2, { &empty, 0 } };
     check(q.Get() == 0 && allocs == 2 && blends == 2 && seenBlend == 0.75f && seenCount == 0 && counter == 2, "no bones: null array, blend still asked, nothing counted");
     check(q.Get() == 0 && allocs == 3, "a null cache is rebuilt on every request");
     if (!fails) std::printf("00bd2d90_TEST PASS\n");

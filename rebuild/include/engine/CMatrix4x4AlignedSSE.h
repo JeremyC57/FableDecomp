@@ -190,6 +190,39 @@ extern bool GEnableSIMD;
 #else
 extern bool g_SSEAvailable;                                              // 0x013D2880 ?g_SSEAvailable@@3_NA
 #endif
+#if defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD) && !defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_ACCESSORS)
+#error FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD is nested in FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_ACCESSORS
+#endif
+#if defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD) && !defined(FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS)
+#error FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD needs FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS
+#endif
+#if defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_ACCESSORS) && defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD)
+// Retail opt-in (p989, nested in ..._ACCESSORS; rows 0x00ADEFC0 AlignedPreMultiplyTransposed, 0x00AE1320 ClingToMesh, 0x00AE29D0 SetupSimulation, re-ports of
+// 0x00A9E1E0 ApplyParentTransformations and 0x00BD2D90 GetBoneTransformations): the Ego_d.pdb text of AlignedSetMultiply. Ego_d record
+// (debug length 567): params `lhs`, `rhs`; SSE block `const float* src1`, `float* dest`, `const float* src2`; x87 block `CMatrix4x4& m`
+// with `long c1` / `long c2` loops. Needs FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS (m(c1, c2) and lhs(c1, k) are the element accessors).
+// The pointers are declared in retail's store order (0x00ADEFEE `mov [esp+1Ch],eax` = src1, [esp+18h] = src2, [esp+14h] = dest).
+// VC7.1 orders the four x87 products of each element by a count of the function's live symbols; this text gives retail's order in the
+// out-of-line 0x00ADEFC0 (no other code around it), so it is the shared body, not a per-row fit.
+FABLE_FORCEINLINE void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& lhs, const CMatrix4x4& rhs)
+{
+#ifdef FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG
+    if (GEnableSIMD) {
+#else
+    if (g_SSEAvailable) {
+#endif
+        const float* src1 = &lhs.E11;
+        const float* src2 = &rhs.E11;
+        float* dest = &E11;
+        GF_SSE_MATRIX_MULTIPLY(dest, src1, src2);
+    } else {
+        CMatrix4x4& m = *this;
+        for (long c1 = 0; c1 < 4; ++c1)
+            for (long c2 = 0; c2 < 4; ++c2)
+                m(c1, c2) = lhs(c1, 0) * rhs(0, c2) + lhs(c1, 1) * rhs(1, c2) + lhs(c1, 2) * rhs(2, c2) + lhs(c1, 3) * rhs(3, c2);
+    }
+}
+#else
 FABLE_FORCEINLINE void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& a, const CMatrix4x4& b)
 {
 #ifdef FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG
@@ -222,6 +255,7 @@ FABLE_FORCEINLINE void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& a, const
 #endif
     }
 }
+#endif  // FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD
 #endif
 
 // Retail opt-in FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_BODIES (hand3c, row 0x00A9D750 C3DAnimationManager::ApplyBoneMorphScaling):

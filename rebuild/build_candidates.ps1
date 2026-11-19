@@ -396099,13 +396099,7 @@ $catalog = @(
         TestSource = '00/a5/C3DAnimation2_InitialiseAnimationSequences_00a50510_test.cpp'
         PassPattern = '00a50510_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a9e1e0'
-        Module = 'C3DAnimationManager'
-        Source = '00/a9/C3DAnimationManager_ApplyParentTransformations_00a9e1e0.cpp'
-        TestSource = '00/a9/C3DAnimationManager_ApplyParentTransformations_00a9e1e0_test.cpp'
-        PassPattern = '00a9e1e0_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00a9f540'
         Module = 'C3DAnimationManager'
@@ -397207,13 +397201,7 @@ $catalog = @(
         TestSource = '00/77/NGraphicAppearanceCTCGraphicAppearanceAnimatedMesh_OnAppearanceDraw_0077b350_test.cpp'
         PassPattern = '0077b350_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00bd2d90'
-        Module = 'CEngineInternalPrimitiveAnimatedMesh'
-        Source = '00/bd/CEngineInternalPrimitiveAnimatedMesh_GetBoneTransformations_00bd2d90.cpp'
-        TestSource = '00/bd/CEngineInternalPrimitiveAnimatedMesh_GetBoneTransformations_00bd2d90_test.cpp'
-        PassPattern = '00bd2d90_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '007db2e0'
         Module = 'CTCTavernGameCardBlackjack'
@@ -400994,6 +400982,41 @@ $catalog = @(
         TestSource = '00/d8/NScriptCQHerosOldHouseScript_WatchForBooty_00d8a240_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /d2inlT57'
         PassPattern = '00d8a240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9e1e0'
+        Module = 'C3DAnimationManager'
+        Source = '00/a9/C3DAnimationManager_ApplyParentTransformations_00a9e1e0.cpp'
+        TestSource = '00/a9/C3DAnimationManager_ApplyParentTransformations_00a9e1e0_test.cpp'
+        PassPattern = '00a9e1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd2d90'
+        Module = 'CEngineInternalPrimitiveAnimatedMesh'
+        Source = '00/bd/CEngineInternalPrimitiveAnimatedMesh_GetBoneTransformations_00bd2d90.cpp'
+        TestSource = '00/bd/CEngineInternalPrimitiveAnimatedMesh_GetBoneTransformations_00bd2d90_test.cpp'
+        PassPattern = '00bd2d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adefc0'
+        Module = 'CMatrix4x4'
+        Source = '00/ad/CMatrix4x4_AlignedPreMultiplyTransposed_00adefc0.cpp'
+        TestSource = '00/ad/CMatrix4x4_AlignedPreMultiplyTransposed_00adefc0_test.cpp'
+        PassPattern = '00adefc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae1320'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_ClingToMesh_00ae1320.cpp'
+        TestSource = '00/ae/CParticleProgram_ClingToMesh_00ae1320_test.cpp'
+        PassPattern = '00ae1320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae29d0'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_SetupSimulation_00ae29d0.cpp'
+        TestSource = '00/ae/CParticleProgram_SetupSimulation_00ae29d0_test.cpp'
+        PassPattern = '00ae29d0_TEST PASS'
     }
 )
 

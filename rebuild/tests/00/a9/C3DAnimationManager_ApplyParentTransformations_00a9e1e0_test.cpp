@@ -1,5 +1,6 @@
 // Behaviour test for 0x00A9E1E0 C3DAnimationManager::ApplyParentTransformations(const C3DKeyframe*, CMatrix4x4*, const C3DMesh2&, bool) const
-// A plain C++ copy of the row's logic (the x87 arm of CMatrix4x4::AlignedSetMultiply and, as the SSE stand-in, the
+// A plain C++ copy of the row's logic (p989 re-port: Ego_d locals, the Ego_d x87 arm of CMatrix4x4::AlignedSetMultiply
+// (`CMatrix4x4& m = *this`, long c1 / c2), both branches through AlignedSetMultiplyTransposed; as the SSE stand-in, the
 // FABLE_PORTABLE twin's pairwise sums), checked against independent expectations: identity / axis rotations, translations,
 // parent chains, the transposed result equal to the transpose of the row-vector result, a scaled quaternion giving the same
 // matrix (2 / |q|^2), and the zero quaternion taking the s = 1 branch.
@@ -58,9 +59,10 @@ void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& a, const CMatrix4x4& b, bo
                 out[r][c] = (a(r,0) * b(0,c) + a(r,1) * b(1,c)) + (a(r,2) * b(2,c) + a(r,3) * b(3,c));
         for (int r = 0; r < 4; ++r) for (int c = 0; c < 4; ++c) Data[r][c] = out[r][c];
     } else {
-        for (int r = 0; r < 4; ++r)
-            for (int c = 0; c < 4; ++c)
-                (*this)(r, c) = a(r, 0) * b(0, c) + a(r, 1) * b(1, c) + a(r, 2) * b(2, c) + a(r, 3) * b(3, c);
+        CMatrix4x4& m = *this;
+        for (long c1 = 0; c1 < 4; ++c1)
+            for (long c2 = 0; c2 < 4; ++c2)
+                m(c1, c2) = a(c1, 0) * b(0, c2) + a(c1, 1) * b(1, c2) + a(c1, 2) * b(2, c2) + a(c1, 3) * b(3, c2);
     }
 }
 class C3DBone2 { public: unsigned long NameCRC; long Parent; long OriginalNoChildren; float LocalizationMatrix[12];
@@ -69,33 +71,29 @@ class C3DMesh2 { public: unsigned long BoneCount; C3DBone2* Bones;
                   unsigned long GetBoneCount() const { return BoneCount; }
                   const C3DBone2* GetBone(unsigned long i) const { return &Bones[i]; } };
 
-// the row's logic (g_SSEAvailable selects the kernel inside AlignedSetMultiply)
-static void ApplyParentTransformations(const C3DKeyframe* keyframes, CMatrix4x4* matrices, const C3DMesh2& mesh, bool transpose, bool sse)
+// the row's logic (GEnableSIMD selects the kernel inside AlignedSetMultiply)
+static void ApplyParentTransformations(const C3DKeyframe* src, CMatrix4x4* dest, const C3DMesh2& mesh, bool transpose, bool sse)
 {
-    unsigned long bone_count = mesh.GetBoneCount();
-    unsigned long i;
+    unsigned long no_bones = mesh.GetBoneCount();
+    CMatrix4x4 local_matrix;
     if (transpose) {
-        for (i = 0; i < bone_count; ++i) {
-            const C3DBone2* bone = mesh.GetBone(i);
-            long parent = bone->GetParent();
-            if (parent < 0)
-                keyframes[i].ToMatrixTransposed(matrices[i], false);
+        for (unsigned long c_bone = 0; c_bone < no_bones; ++c_bone) {
+            long parent_index = mesh.GetBone(c_bone)->GetParent();
+            if (parent_index < 0)
+                src[c_bone].ToMatrixTransposed(dest[c_bone], false);
             else {
-                CMatrix4x4 local;
-                keyframes[i].ToMatrixTransposed(local, false);
-                matrices[i].AlignedSetMultiplyTransposed(local, matrices[parent], sse);
+                src[c_bone].ToMatrixTransposed(local_matrix, false);
+                dest[c_bone].AlignedSetMultiplyTransposed(local_matrix, dest[parent_index], sse);
             }
         }
     } else {
-        for (i = 0; i < bone_count; ++i) {
-            const C3DBone2* bone = mesh.GetBone(i);
-            long parent = bone->GetParent();
-            if (parent < 0)
-                keyframes[i].ToMatrix(matrices[i], false);
+        for (unsigned long c_bone = 0; c_bone < no_bones; ++c_bone) {
+            long parent_index = mesh.GetBone(c_bone)->GetParent();
+            if (parent_index < 0)
+                src[c_bone].ToMatrix(dest[c_bone], false);
             else {
-                CMatrix4x4 local;
-                keyframes[i].ToMatrix(local, false);
-                matrices[i].AlignedSetMultiply(local, matrices[parent], sse);
+                src[c_bone].ToMatrix(local_matrix, false);
+                dest[c_bone].AlignedSetMultiplyTransposed(dest[parent_index], local_matrix, sse);
             }
         }
     }

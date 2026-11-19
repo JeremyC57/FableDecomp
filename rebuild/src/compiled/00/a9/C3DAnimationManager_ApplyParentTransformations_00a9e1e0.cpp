@@ -4,20 +4,29 @@
 //   (`this` unused: ecx is overwritten by the bool at 0x00A9E1EC), 16-byte realigned frame (`and esp,-16`).
 // Identity: Ego_r.pdb (0x00BE1D40) and FableWin.pdb (0x033825F0) ?ApplyParentTransformations@C3DAnimationManager@@ABEXPBVC3DKeyframe@@
 //   PAVCMatrix4x4@@ABVC3DMesh2@@_N@Z (private const); callers 0x00A9FE01 (CalcMeshTransformations 0x00A9F540, landed-pending row whose
-//   declaration this is) and 0x00AA09B7 (CalcBlendedMeshTransformations 0x00AA0090), four arguments = `ret 10h`. Parameter names are
-//   descriptive (the PDB name sets carry none); `transpose` follows the caller rows.
-// Callees: none (everything is expanded). Globals: g_SSEAvailable 0x013D2880 (?g_SSEAvailable@@3_NA, bound), 0.0f 0x0122DEDC,
+//   declaration this is) and 0x00AA09B7 (CalcBlendedMeshTransformations 0x00AA0090), four arguments = `ret 10h`. Parameter names from
+//   the Ego_d.pdb record (src, dest, mesh, transpose).
+// Callees: none (everything is expanded). Globals: GEnableSIMD 0x013D2880 (Ego_d.pdb ?GEnableSIMD@@3_NA, bound), 0.0f 0x0122DEDC,
 //   1.0f 0x0122DED8, 2.0f 0x0122DCDC.
 // Shape: FableWin.pdb lists ?ToMatrixTransposed@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z and ?ToMatrixTransposed@CQuaternion@@QBEXAAVCMatrix4x4@@
 //   ABVC3DVector@@@Z right after this function (their first user), and ?ToMatrix@C3DKeyframe / ?ToMatrix@CQuaternion (4x4) after
 //   CalcBoneTransformation in the same TU. Per bone: the parent index (C3DMesh2::GetBone(i)->GetParent(), Bones +0x9C, 0x3C stride,
 //   Parent +4); a root (parent < 0) converts its keyframe straight into matrices[i]; any other bone converts into a 16-byte-aligned
-//   local and concatenates it with its parent's matrix through CMatrix4x4::AlignedSetMultiply (the SSE kernel when g_SSEAvailable,
+//   local and concatenates it with its parent's matrix through CMatrix4x4::AlignedSetMultiply (the SSE kernel when GEnableSIMD,
 //   else the x87 row loop). The transposed loop uses ToMatrixTransposed + AlignedSetMultiplyTransposed(local, parent) = parent * local
-//   (SSE operands 0x00A9E515..0x00A9E530: eax = parent, edx = local), the row-vector loop ToMatrix + AlignedSetMultiply(local, parent)
-//   (0x00A9E9B9..0x00A9E9D4: eax = local, edx = parent). One loop counter `i` at function scope serves both loops and the bone pointer
-//   is a named local: with `for (unsigned long i ...)` per loop the row-vector x87 loop's induction pointer starts at element 1 and its
-//   column sums take another order (record-id keyed linearizer, see NOTES.md); both natural names give retail's exact orders.
+//   (SSE operands 0x00A9E515..0x00A9E530: eax = parent, edx = local), the row-vector loop ToMatrix + the product local * parent, written
+//   AlignedSetMultiplyTransposed(dest[parent_index], local_matrix) (= AlignedSetMultiply(local_matrix, dest[parent_index]); SSE operands
+//   0x00A9E9B9..0x00A9E9D4: eax = local, edx = parent) -- a fitted call spelling, see the Inferred line below.
+// Locals (p989 re-port): Ego_d.pdb record of this function (debug length 1077): params src, dest, mesh, transpose; `unsigned long no_bones`
+//   and `CMatrix4x4 local_matrix` at function scope; two scopes each `unsigned long c_bone` { `long parent_index` } -- exactly this text
+//   (no bone pointer local, no per-branch matrix). The x87 arm is the Ego_d AlignedSetMultiply (FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD),
+//   the body whose order the context-free out-of-line 0x00ADEFC0 pins.
+// Inferred: the row-vector branch is written dest[c_bone].AlignedSetMultiplyTransposed(dest[parent_index], local_matrix) -- the same
+//   product as AlignedSetMultiply(local_matrix, dest[parent_index]) and the same SSE operands (0x00A9E9B9..0x00A9E9D4: eax = local,
+//   edx = parent). A fitted tie-breaker (EXTRA_RULES 2026-11-19): the plain call gives DIFFER(2472v2472) (that loop's x87 column 0 takes
+//   another order; columns 1..3 match), both calls plain DIFFER(2472v2472); the swap t1n1 (transposed branch plain
+//   AlignedSetMultiply(dest[parent_index], local_matrix), this branch Transposed) also RELOCATION_MATCH. No source evidence picks the
+//   call spelling; this one routes both branches through the same forwarder.
 // Inline bodies proven against retail's unreferenced out-of-line copies (free q.py checks, probe/ool/): C3DKeyframe::ToMatrix (4x4)
 //   0x00AA39A0 and C3DKeyframe::ToMatrixTransposed 0x00AA3AF0 RELOCATION_MATCH with the overlay bodies (forced quaternion conversions,
 //   no flag); GetParent 0x00A4BD30 / GetBone 0x00A4BD70 (r3010 overlay). AlignedSetMultiplyTransposed = AlignedSetMultiply(b, a):
@@ -47,9 +56,11 @@
 #include "fable_compiler.h"
 #define FABLE_RETAIL_C3DANIMATIONMANAGER_MESHTRANSFORMS
 #define FABLE_RETAIL_CMATRIX4X4
+#define FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG
 #define FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS
 #define FABLE_RETAIL_CMATRIX4X4_SETMULTIPLYTRANSPOSED
 #define FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_ACCESSORS
+#define FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD
 #define FABLE_RETAIL_CQUATERNION_MATRIX4
 #define FABLE_RETAIL_CQUATERNION_MATRIX4_FORCEINLINE
 #define FABLE_RETAIL_CMATRIX4X4_SETMULTIPLYTRANSPOSED_FORCEINLINE
@@ -64,39 +75,35 @@
 #include "engine/C3DMesh2.h"
 #include "engine/C3DAnimationManager.h"
 
-void C3DAnimationManager::ApplyParentTransformations(const C3DKeyframe* keyframes, CMatrix4x4* matrices, const C3DMesh2& mesh, bool transpose) const
+void C3DAnimationManager::ApplyParentTransformations(const C3DKeyframe* src, CMatrix4x4* dest, const C3DMesh2& mesh, bool transpose) const
 {
-    unsigned long bone_count = mesh.GetBoneCount();
-    unsigned long i;
+    unsigned long no_bones = mesh.GetBoneCount();
+    __declspec(align(16)) CMatrix4x4 local_matrix;
     if (transpose)
     {
-        for (i = 0; i < bone_count; ++i)
+        for (unsigned long c_bone = 0; c_bone < no_bones; ++c_bone)
         {
-            const C3DBone2* bone = mesh.GetBone(i);
-            long parent = bone->GetParent();
-            if (parent < 0)
-                keyframes[i].ToMatrixTransposed(matrices[i], false);
+            long parent_index = mesh.GetBone(c_bone)->GetParent();
+            if (parent_index < 0)
+                src[c_bone].ToMatrixTransposed(dest[c_bone], false);
             else
             {
-                __declspec(align(16)) CMatrix4x4 local;
-                keyframes[i].ToMatrixTransposed(local, false);
-                matrices[i].AlignedSetMultiplyTransposed(local, matrices[parent]);
+                src[c_bone].ToMatrixTransposed(local_matrix, false);
+                dest[c_bone].AlignedSetMultiplyTransposed(local_matrix, dest[parent_index]);
             }
         }
     }
     else
     {
-        for (i = 0; i < bone_count; ++i)
+        for (unsigned long c_bone = 0; c_bone < no_bones; ++c_bone)
         {
-            const C3DBone2* bone = mesh.GetBone(i);
-            long parent = bone->GetParent();
-            if (parent < 0)
-                keyframes[i].ToMatrix(matrices[i], false);
+            long parent_index = mesh.GetBone(c_bone)->GetParent();
+            if (parent_index < 0)
+                src[c_bone].ToMatrix(dest[c_bone], false);
             else
             {
-                __declspec(align(16)) CMatrix4x4 local;
-                keyframes[i].ToMatrix(local, false);
-                matrices[i].AlignedSetMultiply(local, matrices[parent]);
+                src[c_bone].ToMatrix(local_matrix, false);
+                dest[c_bone].AlignedSetMultiplyTransposed(dest[parent_index], local_matrix);
             }
         }
     }

@@ -1,0 +1,9 @@
+00a5cb90   RELOCATION_MATCH PASS   AlignedTransformTransposedAssumeW
+00a9d480   RELOCATION_MATCH PASS   AlignedPreScale
+00a9d580   RELOCATION_MATCH PASS   AlignedPreScaleTransposed
+00a9d750   RELOCATION_MATCH PASS   ApplyBoneMorphScaling
+00aa0fa0   RELOCATION_MATCH PASS   CalcBoneTransformation
+00aa2110   RELOCATION_MATCH PASS   CalcBlendedBoneTransformation
+# re-ports, strict recheck before removal:
+00a9e1e0   RELOCATION_MATCH PASS   ApplyParentTransformations
+00bd2d90   RELOCATION_MATCH PASS   GetBoneTransformations
