@@ -1,0 +1,31 @@
+10:56	0063f4b0	DIFFER(769v769)	baseline draft	draft.cpp
+11:43	0063f4b0	DIFFER(769v769)	sweep landed_style	0063f4b0_landed_style.cpp
+11:43	0063f4b0	DIFFER(769v769)	sweep clear_direct	0063f4b0_clear_direct.cpp
+11:43	0063f4b0	DIFFER(766v769)	sweep filter_byval	0063f4b0_filter_byval.cpp
+11:43	0063f4b0	DIFFER(769v769)	sweep func_cast	0063f4b0_func_cast.cpp
+11:44	0063f4b0	DIFFER(769v769)	port of Q23 Bind3 shared-header source to Bind2	0063f4b0_port.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front1	0063f4b0_front1.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front2	0063f4b0_front2.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front3	0063f4b0_front3.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front4	0063f4b0_front4.cpp
+11:44	0063f4b0	SRC_FAIL	sweep front5	0063f4b0_front5.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front6	0063f4b0_front6.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front7	0063f4b0_front7.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front8	0063f4b0_front8.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front9	0063f4b0_front9.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep early_hof	0063f4b0_early_hof.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep cls_hfo	0063f4b0_cls_hfo.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep early_hfo	0063f4b0_early_hfo.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep cls_ohf	0063f4b0_cls_ohf.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep early_ohf	0063f4b0_early_ohf.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep cls_ofh	0063f4b0_cls_ofh.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep early_ofh	0063f4b0_early_ofh.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep cls_fho	0063f4b0_cls_fho.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep early_fho	0063f4b0_early_fho.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep cls_foh	0063f4b0_cls_foh.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep early_foh	0063f4b0_early_foh.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep guard_peek	0063f4b0_guard_peek.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep guard_byteoff	0063f4b0_guard_byteoff.cpp
+11:45	0063f4b0	DIFFER(769v769)	guard_byteoff view	0063f4b0_port.cpp
+20:05	0063f4b0	RELOCATION_MATCH	port onto the egod body (landed Bind3 twin 0x0063F7C0 text, Bind2)	0063f4b0.cpp
+20:05	0063f4b0	RELOCATION_MATCH	header comments only	0063f4b0.cpp

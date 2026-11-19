@@ -1,0 +1,3 @@
+address	landed_spelling	proven_spelling	evidence
+0x013D2880	?g_SSEAvailable@@3_NA (engine/CMatrix4x4AlignedSSE.h default; spelled in 3 landed sources, GEnableSIMD in 19)	?GEnableSIMD@@3_NA (FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG)	Ego_d.pdb datanames.txt carries ?GEnableSIMD@@3_NA; g_SSEAvailable is in no PDB name table (Ego_r / FableWin / Ego_d); codex pass24 already used GEnableSIMD for 0x00ADEFC0. One address, one name: respell the default.
+0x00AE29D0 callees	CParticleContext::GetStepCount / GetTimeDelta (draft local model, slots 4 / 5)	GetMaximumIterations / GetMaximumDistanceError	engine/CParticleContext.h (Ego_d LF_CLASS 0x658DF field list); draft-only names, nothing landed

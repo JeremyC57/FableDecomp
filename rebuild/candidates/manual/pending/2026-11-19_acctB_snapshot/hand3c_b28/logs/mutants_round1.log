@@ -1,0 +1,28 @@
+baseline SURVIVED
+KILLED | [engine/CThingSearchTools.h] bool got_one=false; -> bool got_one=true;
+KILLED | [engine/CThingSearchTools.h] got_one=true; -> got_one=false;
+KILLED | [engine/CThingSearchTools.h] if(filter_func(*tthing) && op_func(*tthing)) -> if(filter_func(*tthing) || op_func(*tthing))
+KILLED | [engine/CThingSearchTools.h] if(filter_func(*tthing) && op_func(*tthing)) -> if(op_func(*tthing))
+KILLED | [engine/CThingSearchTools.h] if((loop_thing->GetTypeFlags()&flags)==flags) { -> if((loop_thing->GetTypeFlags()&flags)!=0) {
+KILLED | [engine/CThingSearchTools.h] if(pmapwho->GetSearchID()<SearchID) { -> if(pmapwho->GetSearchID()<=SearchID) {
+KILLED | [engine/CThingSearchTools.h] pmapwho->SetSearchID(SearchID); -> 
+KILLED | [engine/CThingSearchTools.h] ++NoLookups; -> 
+KILLED | [engine/CThingSearchTools.h] NoThingsScanned=0; -> 
+KILLED | [engine/CThingSearchTools.h] ++SearchID; -> 
+SURVIVED | [engine/CThingSearchTools.h] if(clipped_area.TLX==clipped_area.BRX || clipped_area.BRY==c -> if(clipped_area.TLX==clipped_area.BRX)
+KILLED | [engine/CThingSearchTools.h] if(clipped_area.TLX==clipped_area.BRX || clipped_area.BRY==c -> if(clipped_area.BRY==clipped_area.TLY)
+KILLED | [engine/CThingSearchTools.h] for(long c1=0;c1<NThingMap::MaxLayers;++c1) { -> for(long c1=0;c1<1;++c1) {
+KILLED | [engine/CThingSearchTools.h] for(long cy=clipped_area.TLY;cy<clipped_area.BRY;++cy) { -> for(long cy=clipped_area.TLY;cy<=clipped_area.BRY-
+KILLED | [engine/CThingSearchTools.h] for(long cx=clipped_area.TLX;cx<clipped_area.BRX;++cx,++pcel -> for(long cx=clipped_area.TLX+1;cx<clipped_area.BRX
+KILLED | [engine/CThingSearchTools.h] const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps).cl -> return got_one;
+KILLED | [engine/CThingSearchTools.h] clipped_area.BRX=((area.BRX-1)>>layer_info.ScaleShift)+1; -> clipped_area.BRX=(area.BRX>>layer_info.ScaleShift)
+KILLED | [engine/CThingSearchTools.h] clipped_area.TLY=area.TLY>>layer_info.ScaleShift; -> clipped_area.TLY=area.TLY;
+KILLED |         if (tc_physics && tc_physics->HasNavigationLayers())           ->         if (tc_physics && tc_physics->HasNavigatio
+KILLED |         return test_thing.CanBlockNavigatingCreature();     } }; ->         return true;     } };
+KILLED | if (physics->GetPhysicsMeshInfo()) { -> if (!physics->GetPhysicsMeshInfo()) {
+KILLED | return mesh.IsPointContainedInBoundingBox(Pos); -> return true;
+KILLED |         return false;     } private: ->         return true;     } private:
+KILLED | if (physics && physics->HasNavigationLayers()) { -> if (physics) {
+KILLED | if (new_layer > Layer) -> if (new_layer < Layer)
+CC_FAIL |                 Layer = new_layer;  -> 
+KILLED |         return true;     }     float GetLayer ->         return false;     }     float GetLayer

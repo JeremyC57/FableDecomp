@@ -1,0 +1,30 @@
+hdr:engine/CThingSearchTools.h	1	bool got_one=false;	bool got_one=true;
+hdr:engine/CThingSearchTools.h	1	got_one=true;	got_one=false;
+hdr:engine/CThingSearchTools.h	1	if(filter_func(*tthing) && op_func(*tthing))	if(filter_func(*tthing) || op_func(*tthing))
+hdr:engine/CThingSearchTools.h	1	if(filter_func(*tthing) && op_func(*tthing))	if(op_func(*tthing))
+hdr:engine/CThingSearchTools.h	2	if((loop_thing->GetTypeFlags()&flags)==flags) {	if((loop_thing->GetTypeFlags()&flags)!=0) {
+hdr:engine/CThingSearchTools.h	3	if(pmapwho->GetSearchID()<SearchID) {	if(pmapwho->GetSearchID()<=SearchID) {
+hdr:engine/CThingSearchTools.h	3	pmapwho->SetSearchID(SearchID);	
+hdr:engine/CThingSearchTools.h	7	++NoLookups;	
+hdr:engine/CThingSearchTools.h	7	NoThingsScanned=0;	
+hdr:engine/CThingSearchTools.h	7	++SearchID;	
+hdr:engine/CThingSearchTools.h	1	if(clipped_area.TLX==clipped_area.BRX || clipped_area.BRY==clipped_area.TLY)	if(clipped_area.TLX==clipped_area.BRX)
+hdr:engine/CThingSearchTools.h	1	if(clipped_area.TLX==clipped_area.BRX || clipped_area.BRY==clipped_area.TLY)	if(clipped_area.BRY==clipped_area.TLY)
+hdr:engine/CThingSearchTools.h	3	for(long c1=0;c1<NThingMap::MaxLayers;++c1) {	for(long c1=0;c1<1;++c1) {
+hdr:engine/CThingSearchTools.h	3	for(long cy=clipped_area.TLY;cy<clipped_area.BRY;++cy) {	for(long cy=clipped_area.TLY;cy<=clipped_area.BRY-2;++cy) {
+hdr:engine/CThingSearchTools.h	3	for(long cx=clipped_area.TLX;cx<clipped_area.BRX;++cx,++pcell) {	for(long cx=clipped_area.TLX+1;cx<clipped_area.BRX;++cx,++pcell) {
+hdr:engine/CThingSearchTools.h	1	const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps).clear();\n    return got_one;	return got_one;
+hdr:engine/CThingSearchTools.h	1	clipped_area.BRX=((area.BRX-1)>>layer_info.ScaleShift)+1;	clipped_area.BRX=(area.BRX>>layer_info.ScaleShift)+1;
+hdr:engine/CThingSearchTools.h	1	clipped_area.TLY=area.TLY>>layer_info.ScaleShift;	clipped_area.TLY=area.TLY;
+src	1	        if (tc_physics && tc_physics->HasNavigationLayers())\n            return test_thing.CanBlockNavigatingCreature();	        if (tc_physics && tc_physics->HasNavigationLayers())\n            return true;
+src	1	        return test_thing.CanBlockNavigatingCreature();\n    }\n};	        return true;\n    }\n};
+src	1	if (physics->GetPhysicsMeshInfo()) {	if (!physics->GetPhysicsMeshInfo()) {
+src	1	return mesh.IsPointContainedInBoundingBox(Pos);	return true;
+src	1	        return false;\n    }\nprivate:	        return true;\n    }\nprivate:
+src	1	if (physics && physics->HasNavigationLayers()) {	if (physics) {
+src	1	if (new_layer > Layer)	if (new_layer < Layer)
+src	1	                Layer = new_layer;\n	
+src	1	        return true;\n    }\n    float GetLayer	        return false;\n    }\n    float GetLayer
+src	1	                Layer = new_layer;\n	                Layer = Layer;\n
+src	1	long new_layer = object.GetNavigationLevelAt(Pos);	long new_layer = object.GetNavigationLevelAt(Pos) + 1;
+src	1	return (float)Layer;	return (float)(Layer + 1);

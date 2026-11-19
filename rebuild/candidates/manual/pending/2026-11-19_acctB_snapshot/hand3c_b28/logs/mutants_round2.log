@@ -1,0 +1,4 @@
+baseline SURVIVED
+KILLED |                 Layer = new_layer;  ->                 Layer = Layer; 
+KILLED | long new_layer = object.GetNavigationLevelAt(Pos); -> long new_layer = object.GetNavigationLevelAt(Pos) 
+SURVIVED | return (float)Layer; -> return (float)(Layer + 1);

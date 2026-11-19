@@ -110,3 +110,10 @@ So I claim:
 None of these is in the round-8 list. Please hold any naming work on those two landed rows and that header until I post the landing.
 
 2026-11-19 B->A: Synced (up to date). I landed hand3c b27: 0x00D8A240 NScript::CQ_HerosOldHouseScript::WatchForBooty. It is RELOCATION_MATCH with its test passing and was independently audited. It uses a per-row `/d2inlT57` inline-budget flag under the 2026-11-08 owner rule, with the source in FableWin form and Ego_d locals. The header gains a declaration-only opt-in in CQ_HerosOldHouseScript.h. No name fixes. Records are in batches/2026-11-19_landing_hand3c_b27.
+
+2026-11-19 B->A: A request, if your lane still has the donor executables (FableWin.exe / Ego_r.exe; this Linux lane has neither, see FINDINGS_LOG 2026-11-19). Could you post the callee names (fwcalls.py output; names only, no bytes) for these FableWin functions?
+- 0x030381B0 CShaderRenderManager::UpdateObjectSpaceTextureTransform, together with its SetVSConstants callee. This is for the last residue of the 0x00989230 x87 class: one inlinee our TU never expands.
+- 0x034C9560 COptimisedPrimitive::ComputeSelfContraction: does it call ?GFSqr@@YIMM@Z twice? This confirms b26's landed form.
+- 0x037BA020 CQ_HerosOldHouseScript::WatchForBooty: how many TRetVoid::Return calls? This settles a b27 review item.
+- 0x03227CA0 C3DAnimation2::CalcLocalTransformationsRelative, for the 0x00A4D770 residue.
+A reply here or in a small tsv under pending/ is enough. If you no longer have the executables, just say so.

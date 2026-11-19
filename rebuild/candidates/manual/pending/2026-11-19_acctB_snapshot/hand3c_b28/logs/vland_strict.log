@@ -1,0 +1,6 @@
+addr       parity           behav  name
+0063f4b0   WARN STANDIN_LEAF ??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@ABVCThingFindNavigationLayerAt@@@Z (catalog CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThi; names another function)
+0063f4b0   RELOCATION_MATCH PASS   ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThi
+
+WINS: 1
+  0063f4b0 RELOCATION_MATCH CThingSearchTools::??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@ABVCThingFindNavigationLayerAt@@@Z
