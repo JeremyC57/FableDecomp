@@ -1,0 +1,1121 @@
+address	queue_ids	status	claimed_symbol	landed_self_leaf	wrong_binders_in_table	mentioned_in_APPLIED
+0x004014A0	q4973	open (self leaf differs)	?Calc@CCRC@@SIKKPBXK@Z	?Calc@CCRC@@		2026-11-19_agentNF93_part1,2026-11-19_agentNF93_part2,2026-11-19_agentNF93_part3
+0x00403750	q5222	self-done, binders-open	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	004175e5	
+0x00403EB0	q5065	likely-done (self leaf = claim, no wrong binder in table)	?TransferBinaryIn@?$CPersistTraits@_N@@QAEXAAVCMemoryDataInputStream@@AA_N@Z	?TransferBinaryIn@?$CPersistTraits@_N@@QAEXAAVCMemoryDataInputStream@@AA_N@Z		2026-11-17_agentNF64,2026-11-17_agentNF70
+0x004045C0	q5217,q6459	likely-done (self leaf = claim, no wrong binder in table)	??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z	??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z		2026-11-17_agentNF64
+0x004046B0	q4194,q6377	open (self leaf differs)	??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ	??1?$list@	00998a30	
+0x00404A80	q6170	self-done, binders-open	?Get@CIME@NUISystem@@SIAAV12@XZ	?Get@CIME@NUISystem@@SIAAV12@XZ	00851860	
+0x00405350	q4135	no-symbol (claim text only)				
+0x004057A0	q5223	self-done, binders-open	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	004168dc,004175e5,004190e2,0041947a,0042ddb3,0064560d	
+0x00409B70	q4446	open (binders)	?SetDefaultValuesForNewProfile@CUserProfileManager@@QAEXXZ		005958f5	
+0x0040D2A0	q4312	self-done, binders-open	?Get@CUserProfileManager@@SIAAV1@XZ	?Get@CUserProfileManager@@SIAAV1@XZ	0049d4b0,00555cf0,00581b33,005bc6ed,0071d3b0,0088e090	2026-11-12_agentNF27
+0x0040DCE0	q4522	self-done, binders-open	??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z	??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z	0047db73,006463ff,0065b2c4,00787e12,008d29c0	
+0x0040F7E0	q5205	open (self leaf differs)	?TransferIn@?$CPersistTraits@M@@QAEXAAVCPersistContext@@AAVCStringParser@@AAM@Z		005663c0,005dca60,00686240	
+0x00410890	q4429	open (self leaf differs)	??$GetDef@VCConfigOptionsDefaultsDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@@Z			2026-11-16_agentNF35
+0x004109A0	q4610	open (self leaf differs)	??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@ABV1@@Z	Transfer	00681ba0,007e36a0	
+0x00410BE0	q6543	open (self leaf differs)	?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z	Transfer	00d87c60	
+0x00411570	q4451,q6492	conflicting-claims	?Compare@?$CBasicString@D@@KIJPBD0@Z	?Compare@?$CBasicString@D@@KIJPBD0@Z	006d41f0,00e5f2b0	2026-11-11_agentNF22,2026-11-17_agentNF64
+0x004115A0	q4452	open (self leaf differs)	??8?$CBasicString@D@@QBE_NPBD@Z		004fe630,006d41f0	2026-11-16_agentNF35,2026-11-17_agentNF66,2026-11-17_agentNF71
+0x00415D70	q4671	open (self leaf differs)	??BCDefString@@QBE?AVCCharString@@XZ	?GetString@CDefString@@QBE?AVCCharString@@XZ	00e02e50	
+0x004167C8	q4991	open (self leaf differs)	?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ	_Forward		
+0x004190B6	q5224	self-done, binders-open	??1?$CCountedPointer@VCLUA@@@@QAE@XZ	??1?$CCountedPointer@VCLUA@@@@QAE@XZ	004175e5,00419428	
+0x00419108	q5225	self-done, binders-open	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	004175e5,004194d1,0041e641,0042a9b7,0042ddb3	
+0x0041A060	q4611	likely-done (self leaf = claim, no wrong binder in table)	?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ		
+0x0041B550	q4928	likely-done (self leaf = claim, no wrong binder in table)	?SetGraphicIndex@CSprite@NUISystem@@UAEXK@Z	?SetGraphicIndex@CSprite@NUISystem@@UAEXK@Z		2026-11-16_agentNF35,2026-11-16_agentNF39,2026-11-17_agentNF53,2026-11-17_agentNF62,2026-11-17_agentNF66,2026-11-17_agentNF71,2026-11-17_agentNF73,2026-11-17_agentNF76
+0x0041BEB0	q4944	open (self leaf differs)	??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@5@Z			
+0x0041C680	q4924	open (self leaf differs)	?SetAngle@CSprite@NUISystem@@UAEXM@Z			
+0x0041C690	q4925	open (self leaf differs)	?SetWidth@CSprite@NUISystem@@UAEXK@Z			
+0x0041C6A0	q4926	open (self leaf differs)	?SetHeight@CSprite@NUISystem@@UAEXK@Z			
+0x0041C6B0	q4927	open (self leaf differs)	?GetGraphicIndex@CSprite@NUISystem@@UAEKXZ			
+0x0041CC14	q4769	open (self leaf differs)	?GetBackBufferWidth@CUIScreenUnitConverter@NUISystem@@SIMXZ			2026-11-16_agentNF36,2026-11-16_agentNF38
+0x0041CF47	q4778,q4945	self-done, binders-open	?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ	?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ	0052ecc0	
+0x0041D1B4	q4912	open (self leaf differs)	?GetMeshBank@CManager@NUISystem@@QAE?AV?$CCountedPointer@VCMeshDataBank@@@@XZ			
+0x00428494	q4184	catalog-only (no landed self row, no wrong binder)	?CreateMenuEntryComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MMABVCCharString@@MV5@MV5@@Z			2026-11-17_agentNF82,2026-11-17_agentNF85
+0x00428905	q6141	self-done, binders-open	??0?$CCountedPointer@VCMeshDataBank@@@@QAE@ABV0@@Z	??0?$CCountedPointer@VCMeshDataBank@@@@QAE@ABV0@@Z	0041d1b4	
+0x00428928	q6142	self-done, binders-open	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@ABV0@@Z	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@ABV0@@Z	004854df	
+0x00429160	q4777	open (self leaf differs)	??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ	0041e6d3	2026-11-12_agentFAM13,2026-11-17_agentNF51
+0x0042918C	q5226	self-done, binders-open	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	0041e641	
+0x0042ABCA	q4776	self-done, binders-open	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0047d6f2,00531e90,00555390,005836d2,005f11a9	2026-11-12_agentFAM12,2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42
+0x0042AEDA	q4513	no-symbol (claim text only)				
+0x0042AF9E	q4483	likely-done (self leaf = claim, no wrong binder in table)	??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z	??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z		
+0x0042B312	q4252	likely-done (self leaf = claim, no wrong binder in table)	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z		
+0x0042B467	q4382	self-done, binders-open	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@1@ABVCCharString@@@Z	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@1@ABVCCharString@@@Z	00463334,004fe510,00515700,00666850,006e3780,007329e0,0082ba00,0082be60,0098b390,009d4f90	
+0x0042B646	q4770	open (self leaf differs)	?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z			
+0x0042B707	q4909	open (self leaf differs)	?size@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QBEIXZ		00555cf0	
+0x0042DBEE	q6164,q6188	open (self leaf differs)	?ResetAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ		0059a238	
+0x0042F974	q5227	self-done, binders-open	??1?$CCountedPointer@VCIEngine@@@@QAE@XZ	??1?$CCountedPointer@VCIEngine@@@@QAE@XZ	0042fd04	
+0x0042F9A0	q5228	self-done, binders-open	??1?$CCountedPointer@VCASoundBank@@@@QAE@XZ	??1?$CCountedPointer@VCASoundBank@@@@QAE@XZ	0042fd6f	
+0x00431493	q4182	open (self leaf differs)	??$TransferMap@JVCCharString@@@CPersistContext@@QAEXAAV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z	??$TransferMap@JVCCharString@@@CPersistContext@@QAEXAAV?$map@	004e448d	
+0x00431F60	q6235	open (self leaf differs)	??4CDefPointeeBase@@QAEAAV0@ABV0@@Z	??4CResource@@QAEAAV0@ABV0@@Z	004321f0	
+0x00432B38	q6236	open (self leaf differs)	??4?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z;		004321f0,0045c54e,004e4450,00675c00,00a2cf50	
+0x00433530	q6332,q6341	no-symbol (claim text only)		_M_insert_overflow		
+0x00434A10	q4523	self-done, binders-open	?PreChangeResolution@CDisplayEngine@@QAEXXZ	?PreChangeResolution@CDisplayEngine@@QAEXXZ	004163b7	
+0x00436380	q6447	no-symbol (claim text only)		?IS_THING_ALIVE@@YI_NPBUThingRef@@@Z		
+0x00436C80	q4258,q4478	open (self leaf differs)	?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z		005252b0,00918640	
+0x004371A0	q4918	open (self leaf differs)	??0C2DBoxF@@QAE@ABVC2DVector@@0@Z		0065595c	
+0x004378C0	q4761	open (self leaf differs)	?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z			
+0x00437CD0	q4768	likely-done (self leaf = claim, no wrong binder in table)	?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ	?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ		2026-11-17_agentNF79
+0x0043F360	q6212	open (self leaf differs)	?Temp_helper@@YIXPAUTemp@@HHH@Z	for_each	00542730,005cac8d,0061b3c0,00645f8d	
+0x00440730	q5132	self-done, binders-open	?clear@?$_List_base@VCMarkerInfo@CMiniMapDisplay@@V?$allocator@VCMarkerInfo@CMiniMapDisplay@@@std@@@std@@QAEXXZ	?clear@?$_List_base@VCMarkerInfo@CMiniMapDisplay@@V?$allocator@VCMarkerInfo@CMiniMapDisplay@@@std@@@std@@QAEXXZ	00440e40,00441670,0082a310	
+0x00442870	q6240	no-symbol (claim text only)		??1?$vector@		
+0x00443F90	q4755,q6213	conflicting-claims	?Resize@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	00590d32,0064e1be	2026-11-17_agentNF56
+0x00449700	q6156	open (self leaf differs)	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	?Get@T@@QAEHXZ	00487520	
+0x00449970	q4277,q4281	self-done, binders-open	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	008902b0,00899c90	
+0x0044FC00	q5080	open (self leaf differs)	?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z	TransferBinaryIn	0045228f,004671ca,0046abd6,005dbe30,006773f0,007e1e30	
+0x0046313E	q4915	self-done, binders-open	??4CSimVoice@@QAEAAV0@ABV0@@Z	??4CSimVoice@@QAEAAV0@ABV0@@Z	0046311f	
+0x004793F8	q6539	open (self leaf differs)	?TransferBinaryIn@COpinionTransientOffset@@QAEXPAVCMemoryDataInputStream@@@Z			
+0x0047A9F0	q4255	self-done, binders-open	?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z	?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z	00408a70,0088fe00	2026-11-12_agentNF32
+0x0048573D	q6330,q6338	no-symbol (claim text only)		?ClearPreviousSelected@CList@NUISystem@@SIXXZ		
+0x00485815	q5014	likely-done (self leaf = claim, no wrong binder in table)	??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z		
+0x00485D25	q6331,q6339	no-symbol (claim text only)				
+0x00485DBC	q6333,q6342	no-symbol (claim text only)		?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@		
+0x00485F3A	q4453	open (self leaf differs)	?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z	?_M_fill_insert@?$vector@E	00a92740	
+0x004861DF	q4767	open (self leaf differs)	?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z		009e95f0	
+0x00487510	q4753	self-done, binders-open	?GetJoystickDeviceNumber@CPlayer@@QBEJXZ	?GetJoystickDeviceNumber@CPlayer@@QBEJXZ	004c7ca0,00687c90	
+0x00487B70	q4408,q4837	likely-done (self leaf = claim, no wrong binder in table)	?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ	?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ		
+0x00487DC0	q4282,q5041	likely-done (self leaf = claim, no wrong binder in table)	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ		
+0x00487DD0	q5045,q5062	self-done, binders-open	?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	00935160,00957f20	
+0x0048C5C0	q4262,q5229	self-done, binders-open	??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ	??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ	00715110,008ced20	
+0x0048D400	q4645	open (self leaf differs)	??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	??$GetAllThings@VCThing@@V?$vector@PAVCThing@@	004887c0,008a7f60	
+0x0048DAA2	q6239	open (self leaf differs)	?SelectEntryFromName@CGuiControlListBox	?GetStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@_N@Z	00492381	2026-11-16_agentNF35,2026-11-16_agentNF39
+0x00492BAB	q6429	open (self leaf differs)	?ClearText@CSubtitleRenderer@@QAEX_N@Z	?Clear@CSubtitleRenderer@@QAEX_N@Z	00438230	
+0x004944C0	q6283	no-symbol (claim text only)				
+0x00494520	q6285	self-done, binders-open	?GetMaxVisibleProfileNumber@CFrontendGameComponent@@QBEJXZ	?GetMaxVisibleProfileNumber@CFrontendGameComponent@@QBEJXZ	004963a0	
+0x00494680	q6286	self-done, binders-open	?GetMaxVisibleWorldNumber@CFrontendGameComponent@@QBEJXZ	?GetMaxVisibleWorldNumber@CFrontendGameComponent@@QBEJXZ	004963a0	
+0x00494770	q6287	self-done, binders-open	?GetMaxVisibleSaveNumber@CFrontendGameComponent@@QBEJXZ	?GetMaxVisibleSaveNumber@CFrontendGameComponent@@QBEJXZ	004963a0	
+0x00495830	q6288	no-symbol (claim text only)		?Refresh@CFrontendProfileList@@QAEXXZ		2026-11-16_agentNF35,2026-11-17_agentNF54
+0x004959E0	q6289	no-symbol (claim text only)		?GetProfileNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z		
+0x00495FE0	q6290	no-symbol (claim text only)				
+0x00496EB0	q6284	no-symbol (claim text only)				
+0x00497890	q4413,q4996	open (self leaf differs)	?GFROR13@@YIJK@Z	GFROR13	0091b010	
+0x0049C700	q4983	self-done, binders-open	?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z	?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z	00518130,005185f0,0063fae0	
+0x0049D150	q5139	likely-done (self leaf = claim, no wrong binder in table)	?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z	?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z		
+0x0049D8C0	q3988	likely-done (self leaf = claim, no wrong binder in table)	?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z	?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-17_agentNF52
+0x0049D9D0	q4493,q4966	open (self leaf differs)	?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ		0095f9a0	2026-11-16_agentNF35
+0x004A6AB0	q5081	likely-done (self leaf = claim, no wrong binder in table)	??1CWorld@@UAE@XZ	??1CWorld@@UAE@XZ		2026-11-16_agentNF35,2026-11-17_agentNF54,2026-11-17_agentNF56
+0x004A96F0	q4524	open (self leaf differs)	??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z	??0?$CIntelligentPointer@	004db15e,004db2e7,006592e2,0095e790,00961e80	
+0x004AB130	q4612	open (self leaf differs)	?IsAlive@CScriptThing@@UBE_NXZ			
+0x004AB840	q4756	open (self leaf differs)	??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z			
+0x004ACB50	q4980	likely-done (self leaf = claim, no wrong binder in table)	??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z	??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z		2026-11-11_agentNF22
+0x004AF270	q4406	open (self leaf differs)	?PrepareQuestsWhenFinalQuestIsCompleted@CQuestManager@@QAEXXZ			
+0x004AF5B0	q5060	likely-done (self leaf = claim, no wrong binder in table)	?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z	?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z		2026-11-17_agentNF52,2026-11-17_agentNF56,2026-11-17_agentNF62,2026-11-17_agentNF66
+0x004AFC30	q5048	open (self leaf differs)	?OnRegionUnloaded@CQuestManager@@QAEXABVCCharString@@@Z		004feec0	
+0x004B2280	q5001	self-done, binders-open	?SetQuestAsFailed@CQuestManager@@QAE_NABVCCharString@@_NABVCWideString@@1@Z	?SetQuestAsFailed@CQuestManager@@QAE_NABVCCharString@@_NABVCWideString@@1@Z	00892fd0	
+0x004B2AD0	q5000	self-done, binders-open	?FailAllActiveQuests@CQuestManager@@QAEXXZ	?FailAllActiveQuests@CQuestManager@@QAEXXZ	00891520	
+0x004B8D70	q4738	open (self leaf differs)	??$Transfer@H@CPersistContext@@QAEXPBDAAHABH@Z	Transfer		
+0x004B9370	q4396	likely-done (self leaf = claim, no wrong binder in table)	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z		
+0x004B9DA0	q5002	open (self leaf differs)	?clear@?$_List_base@V?$CCountedPointer@VCActiveQuest@CQuestManager@@@@V?$allocator@V?$CCountedPointer@VCActiveQuest@CQuestManager@@@@@std@@@std@@QAEXXZ		004b4770,004ba720	
+0x004BA4E0	q4525	open (self leaf differs)	?push_back@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z	?push_back@?$list@V?$CIntelligentPointer@VCThing@@@@U?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z	004b1590,006592e2,0071c7c0,007ea040,007f61b0	
+0x004BDB40	q4448	open (self leaf differs)	?GetAllDummyObjectNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	GetAllDummyObjectNames	0072e290	
+0x004BE2C0	q6324	open (self leaf differs)	?HasDummyObject@CThingAppearance@@QAE_NABVCCharString@@@Z	HasDummyObject	0079acc0	
+0x004BE3E0	q4974	likely-done (self leaf = claim, no wrong binder in table)	?IsResourcesLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_N_N@Z	?IsResourcesLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_N_N@Z		
+0x004BFA50	q4526	open (self leaf differs)	?SetScale@CTCGraphicAppearance@NGraphicAppearance@@QAEXM@Z	SetScale	006a4b80	
+0x004BFB40	q6230	open (self leaf differs)	?SetLightingChannel@CTCGraphicAppearance@@QAEXPAVCEnginePrimitiveThemeChannelDesc@@_N1@Z	SetLightingChannel	004bfb40	
+0x004C08C0	q4449	open (binders)	?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z		008dc900,008f3100	
+0x004C1060	q4421	self-done, binders-open	?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z	?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z	008531e0	2026-11-19_agentNF94
+0x004C11D0	q5150	open (self leaf differs)	?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@M@Z	?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QAE_NPAVC3DVector@@M@Z		
+0x004C3090	q4701	open (self leaf differs)	??0CEnginePrimitiveLine@@QAE@_KABVC3DVector@@1ABVCRGBColour@@MW4EEnginePrimitiveBlendMode@@K_NW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z	??0CEnginePrimitiveLine	00761620	2026-11-11_agentNF22
+0x004C3120	q4702,q4743	open (self leaf differs)	??0CEnginePrimitiveText@@QAE@_KABVC3DVector@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@_NW4EEngineInterpolationSet@@@Z		0071ab20	
+0x004C46C0	q4975	open (self leaf differs)	?reserve@?$vector@VCMeshInfo@NGraphicAppearance@@V?$allocator@VCMeshInfo@NGraphicAppearance@@@std@@@std@@QAEXI@Z	reserve	004bd420,004bda30	
+0x004C5890	q4972	self-done, binders-open	??A?$map@PAXVCRGBColour@@U?$less@PAX@std@@V?$allocator@U?$pair@QAXVCRGBColour@@@std@@@3@@std@@QAEAAVCRGBColour@@ABQAX@Z	??A?$map@PAXVCRGBColour@@U?$less@PAX@std@@V?$allocator@U?$pair@QAXVCRGBColour@@@std@@@3@@std@@QAEAAVCRGBColour@@ABQAX@Z	004c00b0	
+0x004C5E90	q4759	open (self leaf differs)	?FrameUpdate@CBulletTimeManager@@QAEXXZ	?M@C004c5e90@@QAEXXZ		
+0x004C6060	q4760	open (self leaf differs)	?IsTimeForFullUpdate@CBulletTimeManager@@QBE_NXZ			
+0x004C6140	q5099	open (self leaf differs)	?RemoveBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXPAX@Z	RemoveRequest	0079d020,00890ab0	
+0x004C70F0	q4265	open (self leaf differs)	?IsActive@CTCScriptedControl@@QBE_NXZ		0065935e	
+0x004C73D0	q4046	self-done, binders-open	?GetPos@CThing@@QBEABVC3DVector@@XZ	?GetPos@CThing@@QBEABVC3DVector@@XZ	00744730,00871d30,008f7bd0,00927c80,00935160,00957f20,009863e0	2026-11-11_agentNF22
+0x004C7440	q5046	open (self leaf differs)	?SetPlayerNumber@CThing@@QAEXJ@Z	EnableNavigator		
+0x004C79D0	q5206	self-done, binders-open	?GetWorldMap@CThing@@IAEAAVCWorldMap@@XZ	?GetWorldMap@CThing@@IAEAAVCWorldMap@@XZ	006a4d60	
+0x004C7A10	q4987	self-done, binders-open	?PeekPlayer@CThing@@QBEABVCPlayer@@XZ	?PeekPlayer@CThing@@QBEABVCPlayer@@XZ	00692920	2026-11-11_agentNF22
+0x004C7A30	q4745	likely-done (self leaf = claim, no wrong binder in table)	?GetPlayer@CThing@@QAEAAVCPlayer@@XZ	?GetPlayer@CThing@@QAEAAVCPlayer@@XZ		2026-11-11_agentNF22
+0x004C7A50	q5082	self-done, binders-open	?GetThingSearchTools@CThing@@IAEAAVCThingSearchTools@@XZ	?GetThingSearchTools@CThing@@IAEAAVCThingSearchTools@@XZ	006ac140	
+0x004C7A60	q5083	self-done, binders-open	?PeekThingSearchTools@CThing@@IBEABVCThingSearchTools@@XZ	?PeekThingSearchTools@CThing@@IBEABVCThingSearchTools@@XZ	00692990,00834760	
+0x004C7A70	q4744	open (self leaf differs)	?PeekComponent@CThing@@QBEABVCMainGameComponent@@XZ	?CViewBase_GetDisplayEngine@@YIPAVCDisplayEngine@@PAUCViewBase@@@Z	0059dabb,00702c60,007132c0,00833010,00837040,0083b3b0,00849380,00849700	
+0x004C7AE0	q4259	self-done, binders-open	?GetPWorldSeed@CThing@@IBEPAKXZ	?GetPWorldSeed@CThing@@IBEPAKXZ	007038d0,008330d0	
+0x004C7E70	q4487	open (self leaf differs)	?HasScriptThing@CThing@@QBE_NXZ	?CThing_HasScriptThing@@YI_NPAVCThing@@@Z	0065c36e	
+0x004CC340	q4492	self-done, binders-open	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z	005c30d3,005c4769,0065c781,00787e12,007bd80a,007bdac7,007c7a00,0096fcd0	2026-11-11_agentNF22
+0x004DA2AC	q4185	open (self leaf differs)	?_M_erase@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJJ@std@@@2@@Z		006cf1d0,00774610	
+0x004FC600	q4527	likely-done (self leaf = claim, no wrong binder in table)	?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z	?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z		
+0x004FCE00	q4250	open (self leaf differs)	?GetMapUID@CWorldMap@@QBEKJ@Z		0051e100,0051e210	
+0x004FEEC0	q4647	self-done, binders-open	?UnloadRegion@CWorldMap@@IAEXJ_N@Z	?UnloadRegion@CWorldMap@@IAEXJ_N@Z	004ff560	2026-11-16_agentNF35
+0x00500540	q4648	open (binders)	?LoadRegion@CWorldMap@@QAEXJW4ELoadType@1@_N@Z		00487c20,00502500	
+0x005029A0	q4433	likely-done (self leaf = claim, no wrong binder in table)	?GetRelevantBuilding@@YIPAVCThingBuilding@@AAV?$map@PAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@W4ESimBuildingProperty@@_N2@Z	?GetRelevantBuilding@@YIPAVCThingBuilding@@AAV?$map@PAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@W4ESimBuildingProperty@@_N2@Z		
+0x00509A20	q4436	catalog-only (no landed self row, no wrong binder)	?GetMapNavigationAreaUpdateInfo@CWorldMap@@QBEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaUpdate@@@Z			
+0x0050F380	q4528	open (self leaf differs)	??0?$CIntelligentPointer@VCThingBuilding@@@@QAE@PAVCThingBuilding@@@Z	??0?$CIntelligentPointer@	00931010	
+0x00512FE0	q4435	likely-done (self leaf = claim, no wrong binder in table)	??$GetSubDef@VCVillagePeopleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCVillagePeopleDef@@@@@Z	??$GetSubDef@VCVillagePeopleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCVillagePeopleDef@@@@@Z		
+0x00514E20	q6210	open (self leaf differs)	??0CByteVector@@QAE@K@Z	??0?$CArray@E@@QAE@I@Z	00bfc880	2026-11-19_agentNF93_part1,2026-11-19_agentNF93_part2,2026-11-19_agentNF93_part3
+0x00516200	q4447	open (self leaf differs)	??$GetAllThings@VCThingPhysical@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_OverlappingArea@@VCThingFilter_HasNavigationInformation@@VCThingFilter_IsInQuestOrNullQuest@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind3@VCThingFilter_OverlappingArea@@VCThingFilter_HasNavigationInformation@@VCThingFilter_IsInQuestOrNullQuest@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z	GetAllThings		
+0x00517A10	q4434	open (self leaf differs)	?push_back@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEXABQAVCThingAICreature@@@Z			
+0x00519EF0	q4455	self-done, binders-open	??$__destroy_aux@PAVCSwitchableBlockage@CNavigationAreaUpdate@@@std@@YIXPAVCSwitchableBlockage@CNavigationAreaUpdate@@0ABU__false_type@0@@Z	??$__destroy_aux@PAVCSwitchableBlockage@CNavigationAreaUpdate@@@std@@YIXPAVCSwitchableBlockage@CNavigationAreaUpdate@@0ABU__false_type@0@@Z	0051bcd0,0051cd80	
+0x0051AC70	q4376	open (self leaf differs)	??$__destroy_aux@PAVCMapDesc@@@std@@YAXPAVCMapDesc@@0ABU__false_type@0@@Z	DestroyRange_Tree_0051ac70	0051c470	
+0x0051CD80	q4454	open (self leaf differs)	??$__destroy_aux@PAVCNavigationLayerUpdate@CNavigationAreaUpdate@@@std@@YIXPAVCNavigationLayerUpdate@CNavigationAreaUpdate@@0ABU__false_type@0@@Z	?__destroy_aux@std@@YIXPAUCNavigationLayerUpdate@FableDestroy_0051cd80@@0ABU__false_type@@@Z	0051d400,0051d530	
+0x0051DFE0	q4016	open (self leaf differs)	?RemoveFromPhysicalList@CThingManager@@QAEXAAVCThingPhysical@@@Z	?M@C0051dfe0@@QAEXH@Z		
+0x0051E2D0	q5072	open (self leaf differs)	?GetSerialiseVersion@CThingManager@@QBEJXZ	DrawGetEnvironment		
+0x0051E2E0	q5073	likely-done (self leaf = claim, no wrong binder in table)	?IsSerialisingGameState@CThingManager@@QBE_NXZ	?IsSerialisingGameState@CThingManager@@QBE_NXZ		2026-11-16_agentNF35
+0x0051E490	q5074	self-done, binders-open	?GetThingSearchTools@CThingManager@@QAEAAVCThingSearchTools@@XZ	?GetThingSearchTools@CThingManager@@QAEAAVCThingSearchTools@@XZ	0084a7e0	
+0x00520D00	q4314	self-done, binders-open	?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z	?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z	00521ae0	2026-11-17_agentNF80
+0x005239C0	q5165	self-done, binders-open	?RuntimeSaveEntities@CThingManager@@QAEXJABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@_N@Z	?RuntimeSaveEntities@CThingManager@@QAEXJABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@_N@Z	005252b0	
+0x00527E00	q4383	likely-done (self leaf = claim, no wrong binder in table)	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Select1st@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@1@AB_K@Z	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Select1st@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@1@AB_K@Z		
+0x005283C0	q4017	open (self leaf differs)	??1?$_List_base@VCHealthOverTimeHelper@CThingPhysical@@V?$allocator@VCHealthOverTimeHelper@CThingPhysical@@@std@@@std@@QAE@XZ	SortTreeRecursively		
+0x00528760	q4333	open (self leaf differs)	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z		007f1b70	
+0x00529940	q5075	open (self leaf differs)	?GetThingStandingOn@CThingGameObject@@UAEPAVCThing@@XZ			
+0x0052CC50	q4334	open (self leaf differs)	??0CChangingStateComponent@NUISystem@@QAE@J@Z		005407b0	
+0x0052D710	q5070	open (self leaf differs)	??_ECChangingStateComponent@NUISystem@@WBI@AEPAXI@Z			
+0x0052F100	q4922	open (self leaf differs)	?GetName@CComponent@NUISystem@@UAE?AVCCharString@@XZ	?CMemoryFile_GetPathname@@YIPAVCWideString@@PBVCMemoryFile@@PAXPAV1@@Z		
+0x0052F1A0	q5084	self-done, binders-open	?IsPositionIndependent@CComponent@NUISystem@@UBE_NXZ	?IsPositionIndependent@CComponent@NUISystem@@UBE_NXZ	0052c870	
+0x0053C7D9	q4910	open (self leaf differs)	?pop_front@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXXZ		00555cf0	
+0x0053FE30	q4931	open (self leaf differs)	?SetPasswordBox@CEditBox@NUISystem@@UAEX_N@Z			
+0x00540CF0	q4923	open (self leaf differs)	?GetText@CEditBox@NUISystem@@UAE?AVCWideString@@XZ			
+0x00540D10	q4929	open (self leaf differs)	?IsActive@CEditBox@NUISystem@@UAE_NXZ			
+0x00540D20	q4930	open (self leaf differs)	?SetMaxLength@CEditBox@NUISystem@@UAEXJ@Z			
+0x00543530	q4908	open (self leaf differs)	??4CEnginePrimitive2DText@@QAEAAV0@ABV0@@Z			
+0x00543910	q4907	self-done, binders-open	??0CEnginePrimitive2DText@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@W4EEngineInterpolationSet@@@Z	??0CEnginePrimitive2DText@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@W4EEngineInterpolationSet@@@Z	0064b6da	
+0x00543B40	q5155	open (self leaf differs)	??_ECIconText@NUISystem@@WBI@AEPAXI@Z			
+0x00543C70	q5154	open (self leaf differs)	??_ECIconText@NUISystem@@UAEPAXI@Z		00543b40	
+0x00544100	q6423,q6430	no-symbol (claim text only)		?SetSpellToAssign@CSpellContainerList@NUISystem@@UAEXJ@Z		
+0x00546060	q6424,q6431	no-symbol (claim text only)		?SetEmptySlotDef@CSpellContainer@NUISystem@@UAEXK@Z		
+0x00546070	q6425,q6432	no-symbol (claim text only)		?GetBaseSpells@CSpellContainer@NUISystem@@UAEAAV?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@XZ		
+0x0054B360	q4937	open (self leaf differs)	??1CSlider@NUISystem@@UAE@XZ	??1CSlider@NUISystem		
+0x0054C1B0	q4934	open (self leaf differs)	??_ECSlider@NUISystem@@UAEPAXI@Z			
+0x0054EAC0	q4683	open (binders)	??1CViewport@NUISystem@@UAE@XZ		0053fc30	
+0x0054FF10	q4903	open (self leaf differs)	?GetValue@CText@NUISystem@@UAEABVCWideString@@XZ			
+0x0054FF20	q4905	open (self leaf differs)	?GetFont@CText@NUISystem@@UAEAAV?$CCountedPointer@VCFontBank@@@@XZ			
+0x0054FFE0	q4906	open (self leaf differs)	?GetTextWindow@CText@NUISystem@@UAEAAVC2DBoxF@@XZ			
+0x00550A00	q4914	open (self leaf differs)	??1CEnginePrimitive2DAnimatingMesh@@QAE@XZ		005bc216	
+0x00553FE0	q5157	open (self leaf differs)	??_ECTable@NUISystem@@WBI@AEPAXI@Z			
+0x005540D0	q5156	open (self leaf differs)	??_ECTable@NUISystem@@UAEPAXI@Z		00553fe0	
+0x00555140	q4935	open (self leaf differs)	??_ECMorphingSprite@NUISystem@@UAEPAXI@Z			
+0x0055A3A0	q4936	open (self leaf differs)	??_ECScrollBar@NUISystem@@UAEPAXI@Z			
+0x0055B760	q4685	open (self leaf differs)	??1CClickable@NUISystem@@UAE@XZ	??1CClickable	0053e4e0,0054ded0	
+0x0055C200	q5071	open (self leaf differs)	??_ECHoverable@NUISystem@@WBI@AEPAXI@Z			
+0x0055F3B0	q4717	likely-done (self leaf = claim, no wrong binder in table)	?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z	?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z		2026-11-16_agentNF35
+0x0055F710	q6190	open (binders)	?ResetAndOpenHTTPAndPrepareRequest@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVCCharString@@_N@Z		00561450	
+0x00567400	q4186	open (self leaf differs)	??$append@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@PAD0ABUforward_iterator_tag@1@@Z	??$append@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PAD0ABUforward_iterator_tag@1@@Z	00567e80,00569140,0083fc00,0083fce0,00841b70	
+0x00567D00	q4189,q4192	open (self leaf differs)	??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_iterator_tag@1@@Z	??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXPAD0ABUforward_iterator_tag@1@@Z	00560920,00569330,0083f5c0	
+0x00567D60	q4187	open (self leaf differs)	??$append@PBD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@PBD0ABUforward_iterator_tag@1@@Z	??$append@PBD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD0ABUforward_iterator_tag@1@@Z	00841b70	
+0x00568440	q4191	self-done, binders-open	??0?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z	??0?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z	008f8cc0	
+0x00568850	q4514	no-symbol (claim text only)		?push_back@?$vector@MV?$allocator@M@std@@@std@@QAEXABM@Z		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40
+0x00569140	q4188	open (self leaf differs)	??$_M_assign_dispatch@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@PAD0ABU__false_type@1@@Z	??$_M_assign_dispatch@	00840b60,00841f60	
+0x00569F20	q4511	open (self leaf differs)	??$TransferVector@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@CPersistContext@@QAEXPBDAAV?$vector@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$allocator@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@std@@@std@@@Z	Transfer		
+0x00569FE0	q4512	open (self leaf differs)	??$TransferVector@M@CPersistContext@@QAEXPBDAAV?$vector@MV?$allocator@M@std@@@std@@@Z	Transfer		
+0x0056E545	q4771	open (self leaf differs)	??0CSliderAnimator@@QAE@PAVCComponent@NUISystem@@MMMM@Z			
+0x00578FCE	q4773	open (self leaf differs)	?clear@?$list@VCSliderAnimator@@V?$allocator@VCSliderAnimator@@@std@@@std@@QAEXXZ	?Clear@List@@QAEXXZ	00577216	
+0x0057955A	q4772	open (self leaf differs)	?push_back@?$list@VCSliderAnimator@@V?$allocator@VCSliderAnimator@@@std@@@std@@QAEXABVCSliderAnimator@@@Z			
+0x00579958	q4775	open (self leaf differs)	?insert_unique@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@...	?insert_unique@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@2@@Z	005729d8	
+0x00579EA3	q4774	no-symbol (claim text only)		OnKill		
+0x0057A67E	q6155	self-done, binders-open	?GetMoralityMax@CTCHeroStats@@QBEJXZ	?GetMoralityMax@CTCHeroStats@@QBEJXZ	0057a690,006d0180	
+0x0057A8DA	q4948	open (self leaf differs)	?AddHeroStatExperience@CTCHeroStats@@QAEXW4EHeroExperienceStatCategory@@J@Z		006d77c0	
+0x0057AC89	q4715	open (self leaf differs)	?PeekMarriageInfo@CTCHeroStats@@QBE_N_KAAVCHeroMarriageInfo@@@Z		00986510	
+0x0057BC6E	q4716,q4950	open (self leaf differs)	?SetMarriageState@CTCHeroStats@@AAEXPBVCThingAICreature@@W4EMarriageState@@@Z	SetMarriageState	006cff10,006d0020	
+0x0058148D	q5098	likely-done (self leaf = claim, no wrong binder in table)	?UnsetActionSpeedMultiplier@CTCHaste@@QAEXPAX@Z	?UnsetActionSpeedMultiplier@CTCHaste@@QAEXPAX@Z		2026-11-17_agentNF64,2026-11-17_agentNF70,2026-11-17_agentNF75
+0x00592F92	q4384	likely-done (self leaf = claim, no wrong binder in table)	??$_M_find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBJJ@std@@@1@ABJ@Z	??$_M_find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBJJ@std@@@1@ABJ@Z		
+0x0059350C	q4484	likely-done (self leaf = claim, no wrong binder in table)	??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z	??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z		
+0x005937E1	q4385	self-done, binders-open	??$find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Nonconst_traits@U?$pair@$$CBJJ@std@@@2@@1@ABJ@Z	??$find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Nonconst_traits@U?$pair@$$CBJJ@std@@@2@@1@ABJ@Z	006d0630,006e76e0	
+0x00594FA9	q6165,q6189	likely-done (self leaf = claim, no wrong binder in table)	?CloseVirtualKeyboard@CFrontEndManager@NUISystem@@QAEX_N@Z	?CloseVirtualKeyboard@CFrontEndManager@NUISystem@@QAEX_N@Z		2026-11-17_agentNF57,2026-11-17_agentNF62,2026-11-17_agentNF66,2026-11-17_agentNF71,2026-11-17_agentNF73,2026-11-17_agentNF76
+0x0059A994	q5230	open (self leaf differs)	??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCScrollableList@NUISystem@@@@QAEXXZ	0059aa86	2026-11-17_agentNF75
+0x0059B039	q6171	self-done, binders-open	?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	0059a238	2026-11-17_agentNF79,2026-11-17_agentNF83
+0x0059B5D7	q6172	open (self leaf differs)	??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z	??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z	00598463	2026-11-17_agentNF51,2026-11-17_agentNF62,2026-11-17_agentNF66,2026-11-17_agentNF71,2026-11-17_agentNF73
+0x005B336A	q4956	open (self leaf differs)	??0ArgPasser@CTCInventoryClothing@@QAE@XZ	??0ArgPasser	005b5cf8	
+0x005B33F4	q6392	open (self leaf differs)	??0CAnimInit@@QAE@JJJJ_NKJ@Z	??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z	00665860	2026-11-16_agentNF35,2026-11-17_agentNF54
+0x005B4EBA	q4957	self-done, binders-open	?CalculateArmorValues@CTCInventoryClothing@@ABEXAAUArgPasser@1@J@Z	?CalculateArmorValues@CTCInventoryClothing@@ABEXAAUArgPasser@1@J@Z	005b5cf8	
+0x005BDF08	q5104	open (self leaf differs)	?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z	?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z (Ego_r.pdb; unchanged)		2026-11-17_agentNF88
+0x005BE284	q5106	likely-done (self leaf = claim, no wrong binder in table)	?SetNumberOfSelectedItemOwned@CTCInventoryBase@NInventory@@IAEXJ@Z	?SetNumberOfSelectedItemOwned@CTCInventoryBase@NInventory@@IAEXJ@Z		2026-11-17_agentNF89
+0x005BE8B1	q4482	likely-done (self leaf = claim, no wrong binder in table)	?GetPerItemDataForItem@CCategory@NInventory@@QBEPBVCPerItemData@2@J@Z	?GetPerItemDataForItem@CCategory@NInventory@@QBEPBVCPerItemData@2@J@Z		2026-11-17_agentNF86,2026-11-17_agentNF88,2026-11-17_agentNF90,2026-11-19_agentNF95_part1,2026-11-19_agentNF95_part2
+0x005BE8D3	q4481	likely-done (self leaf = claim, no wrong binder in table)	?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z	?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z		2026-11-12_agentNF30,2026-11-16_agentNF35,2026-11-17_agentNF86,2026-11-17_agentNF88,2026-11-19_agentNF95_part1,2026-11-19_agentNF95_part2
+0x005BF969	q5158	self-done, binders-open	?RemoveAllConfiscatedItems@CTCInventoryBase@NInventory@@UAEXXZ	?RemoveAllConfiscatedItems@CTCInventoryBase@NInventory@@UAEXXZ	005c2e68	
+0x005BFD5E	q4254	catalog-only (no landed self row, no wrong binder)	?OnSerialise@CTCInventoryBase@NInventory@@MAEXAAVCPersistContext@@_N@Z			
+0x005C04BF	q5208	self-done, binders-open	??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ	??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ	005c0e41,005c1390,005c1946,005c2a5c	
+0x005C552C	q4467	self-done, binders-open	?RemoveWeaponsFromSheathes@CTCInventoryWeapons@@QAEXXZ	?RemoveWeaponsFromSheathes@CTCInventoryWeapons@@QAEXXZ	005c9962,0069f9e0	
+0x005CC300	q4510	no-symbol (claim text only)				
+0x005CC772	q4183	self-done, binders-open	?GetXString@CTCInventoryStats@@SI?AVCWideString@@XZ	?GetXString@CTCInventoryStats@@SI?AVCWideString@@XZ	0056ea4e	
+0x005D8167	q5201	open (self leaf differs)	?TransferIn@?$CPersistTraits@J@@QAEXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	?CPersistTraits_TransferIn@@YIXPAUCPersistTraits@@HPAVCPersistContext@@PAVCStringParser@@PAH@Z		
+0x005D83B3	q4386	self-done, binders-open	??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@1@ABK@Z	??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@1@ABK@Z	005d66ba	
+0x005D8E50	q4468	open (self leaf differs)	?ReturnToInventory@CTCInventoryItem@@QAEXXZ	ReturnToInventory@CTCInventoryItem	0069f9e0,007ed170,007eddf0,008116d0	2026-11-17_agentNF91
+0x005DA980	q6397	open (self leaf differs)	?IsProjectileWeaponLoaded@CTCWeapon@@QAE_NXZ,		00715110,0078a390	
+0x005DAAA0	q4479	likely-done (self leaf = claim, no wrong binder in table)	?GetDamage@CTCWeapon@@QBEMXZ	?GetDamage@CTCWeapon@@QBEMXZ		
+0x005DC1F0	q6390	open (self leaf differs)	?GetAnimationTransitionInTime@CAnimationEntry@@QBEJXZ	?GetDelayTime@CAnimationEntry@@QBEJXZ	00861a80,008d6da0	
+0x005E9B20	q4271	self-done, binders-open	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	007cf4a0,007cf520,007d2900,007d29f0,007d7b80,008f09a0,008f09e0	
+0x005E9E70	q4274	self-done, binders-open	?GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z	?GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z	005ea100,007d62d0	
+0x005EA000	q5079	self-done, binders-open	?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z	?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z	007cf530,007d5ad0,007d62d0	
+0x005EA950	q4273	self-done, binders-open	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	007d62d0,007d8290,008f09e0,008f17d0	
+0x005EABC0	q6533	open (binders)	?PositionMesh@@YIX...		008efa00	
+0x005EB080	q4272	open (self leaf differs)	?SetStateAfterOK@CTCTavernGame@@IAEXVCWideString@@0W4ETavernGameStates@1@@Z	SetStateAfterOK	007d62d0	
+0x005ED4A0	q4278	self-done, binders-open	??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z	??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z	005ea010,005ea100,005ea1a0,005ea310,005ea400	
+0x005EDE93	q6234	open (self leaf differs)	?GetAbilityLevel@CTCInventoryAbilities@@QBEJJ@Z;		005d64dd	2026-11-16_agentNF34,2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42
+0x005EE77C	q4763	self-done, binders-open	?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@J_N@Z	?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@J_N@Z	005721fa	
+0x006159A0	q5203	self-done, binders-open	?TransferIn@?$CPersistTraits@VCUIMiniMapMarker@CTCInventoryMap@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCUIMiniMapMarker@CTCInventoryMap@@@Z	?TransferIn@?$CPersistTraits@VCUIMiniMapMarker@CTCInventoryMap@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCUIMiniMapMarker@CTCInventoryMap@@@Z	00615920	
+0x0062E900	q4411,q6405,q6452,q6461	conflicting-claims	??1CBase_0062e900@@QAE@XZ	??1CCombatActionBase	006ebdd0,0072c790,0072cba0,0074ace0,007c9180,008a9100,00924930,009551a0,00956380	2026-11-19_agentNF93_part1,2026-11-19_agentNF93_part2,2026-11-19_agentNF93_part3
+0x00633830	q4615	open (self leaf differs)	?UninitModeParalysed@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	UninitModeParalysed		
+0x00633880	q4616	open (self leaf differs)	?UninitModeBoastUI@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	UninitModeBoastUI		
+0x00633A60	q4617	open (self leaf differs)	?UninitModeQuickAccessMenu@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	UninitModeQuickAccessMenu		
+0x00633BB0	q4618	open (self leaf differs)	?UninitModeOracleMinigame@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	UninitModeOracleMinigame		
+0x00633BE0	q4275	self-done, binders-open	?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ	?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ	004496b0	2026-11-11_agentNF22
+0x006345C0	q4276	self-done, binders-open	?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z	?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z	00487bd0	2026-11-12_agentNF27
+0x00637FC0	q5023	open (binders)	?PlaceThing@CThingMapManager@NThingMap@@QAEXAAVCTCMapwho@@ABVC3DVector@@@Z		0071a710,0071a750	
+0x0063ADF0	q6460	open (self leaf differs)	?GetStrongestEngineThemeAt@CWorldMap@@QAEJABVC3DVector@@PAJ@Z		0066cf00	2026-11-17_agentNF70,2026-11-17_agentNF75
+0x00643B3B	q4719	open (self leaf differs)	?IsAwareOfThing@CTCPerceiveThing@@QBE_NXZ		0091db50	
+0x0065533C	q5007	open (self leaf differs)	??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z	??4CIntelligentPointer@@QAEPAV0@PAV0@@Z	006556d3	
+0x006588CF	q6328,q6336	no-symbol (claim text only)		CountReferences		
+0x0065B854	q4530	self-done, binders-open	?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z	?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z	00730070,0089d3a0	
+0x0065D507	q4531,q5231	self-done, binders-open	??1?$CCountedPointer@VCVillageTaskPatrol@@@@QAE@XZ	??1?$CCountedPointer@VCVillageTaskPatrol@@@@QAE@XZ	0065e951,0065fe9a	
+0x0065D533	q4532,q5232	self-done, binders-open	??1?$CCountedPointer@VCVillageTaskPickCrops@@@@QAE@XZ	??1?$CCountedPointer@VCVillageTaskPickCrops@@@@QAE@XZ	0065e96d,0065fecb	
+0x0065D574	q5233	self-done, binders-open	??1?$CCountedPointer@VCVillageTaskTorch@@@@QAE@XZ	??1?$CCountedPointer@VCVillageTaskTorch@@@@QAE@XZ	0065e919,0065fe38	
+0x0065D5A0	q5234	self-done, binders-open	??1?$CCountedPointer@VCVillageTaskHorn@@@@QAE@XZ	??1?$CCountedPointer@VCVillageTaskHorn@@@@QAE@XZ	0065e935,0065fe69	
+0x0065D5CC	q5235	self-done, binders-open	??1?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAE@XZ	??1?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAE@XZ	0065e989,0065fefc	
+0x0065D5F8	q5236	self-done, binders-open	??1?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAE@XZ	??1?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAE@XZ	0065e9a5,0065ff2d	
+0x0065D89B	q6143	likely-done (self leaf = claim, no wrong binder in table)	??0?$CCountedPointer@VCVillageTaskHorn@@@@QAE@ABV0@@Z	??0?$CCountedPointer@VCVillageTaskHorn@@@@QAE@ABV0@@Z		
+0x0065F152	q4497	open (self leaf differs)	??RHasGuardProperty@@QBE_NV?$CIntelligentPointer@VCThingAICreature@@@@@Z	??RHasGuardProperty	0065f6a6	
+0x0065F744	q4495	open (self leaf differs)	??$GetPBestThing@VCThingFilter_HasTC@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABVCThingFilter_HasTC@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z	GetPBestThing	0090c1a0	
+0x0065F9E0	q4461	open (self leaf differs)	??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskTorch@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskTorch@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskTorch@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskTorch@@@@@std@@@0@U10@0VCIsTask@@@Z			
+0x0065FA0A	q4462	open (self leaf differs)	??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskHorn@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskHorn@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@0@U10@0VCIsTask@@@Z			
+0x0065FA34	q4463	open (self leaf differs)	??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskPatrol@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskPatrol@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskPatrol@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskPatrol@@@@@std@@@0@U10@0VCIsTask@@@Z			
+0x0065FA5E	q4464	open (self leaf differs)	??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskPickCrops@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskPickCrops@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskPickCrops@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskPickCrops@@@@@std@@@0@U10@0VCIsTask@@@Z			
+0x0065FA88	q4465	open (self leaf differs)	??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@std@@@0@U10@0VCIsTask@@@Z			
+0x0065FAB2	q4466	open (self leaf differs)	??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@0@U10@0VCIsTask@@@Z			
+0x0066000A	q4496	likely-done (self leaf = claim, no wrong binder in table)	??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@U10@0UHasGuardProperty@@@Z	??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@U10@0UHasGuardProperty@@@Z		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42
+0x006604EB	q4491	open (self leaf differs)	?push_back@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThingAICreature@@@@@Z		006d50c0,006dfa50	
+0x00661D20	q4742	open (self leaf differs)	?GetNavigationLevelAt@CThingCreatureBase@@QBEJABVC3DVector@@@Z	GetNavigationLevelAt@CThingCreatureBase	006cda00,006ea770,0093db10	
+0x00661EA0	q4509	no-symbol (claim text only)				
+0x00662000	q6438,q6441	no-symbol (claim text only)		?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ		2026-11-19_agentNF93_part1,2026-11-19_agentNF93_part2,2026-11-19_agentNF93_part3
+0x00662010	q4488	open (self leaf differs)	?GetProperty@CThingCreatureBase@@QBEKXZ	CountReferences	0065c781,008648a0,00936ba0,009378f0	
+0x00662110	q6158	open (self leaf differs)	?MakeNoise@CThingCreatureBase@@QAEXABVCCharString@@@Z		008b7b10	
+0x006627F0	q3885	open (self leaf differs)	?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z	GetAnimDuration	00692960,00693030,00856a20,008c0fb0	
+0x00662930	q6411	open (self leaf differs)	?ConstructFromLevelScript@CThingCreatureBase@@QAE_NPBD@Z	?ConstructFromLevelScript@CThingCreatureBase@@UAE_NPBD@Z	008315c0	
+0x00662A00	q6393	open (self leaf differs)	?GetAnimFromName@CThingPlayerCreature@@...,	?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z	006635d0,00733690,008618b0,008e9080,00914f00,00917130	
+0x00662D80	q6456	no-symbol (claim text only)		?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z		
+0x00663340	q6195	likely-done (self leaf = claim, no wrong binder in table)	?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ	?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ		
+0x00663600	q5085	self-done, binders-open	?ClearQueuedActions@CThingCreatureBase@@QAEXXZ	?ClearQueuedActions@CThingCreatureBase@@QAEXXZ	00903920	
+0x006644F0	q4412	self-done, binders-open	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z	0074ace0,007c9180,008a9100,008c2810	2026-11-17_agentNF84,2026-11-17_agentNF86,2026-11-19_agentNF93_part1,2026-11-19_agentNF93_part2,2026-11-19_agentNF93_part3
+0x00666EF0	q4723	self-done, binders-open	?AutoPlaceNearBuilding@CThingCreatureBase@@QAE_NPBVCThingBuilding@@M@Z	?AutoPlaceNearBuilding@CThingCreatureBase@@QAE_NPBVCThingBuilding@@M@Z	0090fc50,00917330,009473e0	
+0x00669580	q6232	open (self leaf differs)	?GetSubDef@CThing@@QAE_NAAUCDefPointer@@@Z;	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	008c9a40	2026-11-17_agentNF49,2026-11-17_agentNF67,2026-11-17_agentNF71,2026-11-17_agentNF74,2026-11-19_agentNF95_part1,2026-11-19_agentNF95_part2
+0x006696B0	q4268	self-done, binders-open	??$GetSubDef@VCCombatAbilityUseProjectileWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@@Z	??$GetSubDef@VCCombatAbilityUseProjectileWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@@Z	0097ef60	
+0x00669D30	q6231	open (self leaf differs)	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@PAJ@Z;	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	008b9e50	2026-11-12_agentNF28,2026-11-12_agentNF29,2026-11-12_agentNF30,2026-11-17_agentNF49
+0x0066A560	q4263	self-done, binders-open	??0CCombatAction_GenericResponseToDecapitation@@QAE@AAVCThingCreatureBase@@@Z	??0CCombatAction_GenericResponseToDecapitation@@QAE@AAVCThingCreatureBase@@@Z	008a8e40	
+0x0066A9D0	q5086	self-done, binders-open	?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z	?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z	00665f90	
+0x0066BD00	q4917	self-done, binders-open	?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z	?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z	0078ebf0	
+0x0066E370	q6407	open (self leaf differs)	?_M_insert_overflow@?$CArray@VC3DVector@@@@QAEXPAVC3DVector@@ABV2@ABU__true_type@@I_N@Z	?_M_insert_overflow@	0075bb00,00a887b0,00aa64e0	
+0x0066E630	q6371,q6406	open (self leaf differs)	?push_back@?$CVector@VC3DVector@@@@QAEXABVC3DVector@@@Z,	?push_back@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXABVC3DVector@@@Z	00788617,00858130,00951b20	
+0x00670090	q4101	likely-done (self leaf = claim, no wrong binder in table)	??1CTCCoopSpirit@@UAE@XZ	??1CTCCoopSpirit@@UAE@XZ		
+0x00671BE0	q5218	open (self leaf differs)	??$__unique_copy@PAW4ENavigatorType@@PAW41@U?$equal_to@W4ENavigatorType@@@std@@@std@@YIPAW4ENavigatorType@@PAW41@00U?$equal_to@W4ENavigatorType@@@0@@Z	__unique_copy		
+0x006724B0	q5219	open (self leaf differs)	??$TransferVector@W4ENavigatorType@@@CPersistContext@@QAEXAAV?$vector@W4ENavigatorType@@V?$allocator@W4ENavigatorType@@@std@@@std@@@Z	??$TransferVector@W4ENavigatorType@@@CPersistContext@@QAEXAAV?$vector@		
+0x00681BA0	q6451,q6458	no-symbol (claim text only)		Transfer		
+0x00683B00	q5043	self-done, binders-open	?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	00960070	
+0x00685F80	q6540	open (self leaf differs)	?Transfer@CPersistContext@@QAEXPBDAAVCOpinionTransientOffset@@ABV2@@Z	Transfer	00684610	
+0x00686D20	q4045	self-done, binders-open	?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ	?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ	007e00d0,007e27f0	2026-11-11_agentNF22
+0x00686D60	q4964	likely-done (self leaf = claim, no wrong binder in table)	?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ		
+0x00686D90	q5087	likely-done (self leaf = claim, no wrong binder in table)	?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ	?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ		2026-11-12_agentNF28,2026-11-12_agentNF32
+0x00686DA0	q4721,q5040	likely-done (self leaf = claim, no wrong binder in table)	?GetPWorldSeed@CTCBase@@IBEPAKXZ	?GetPWorldSeed@CTCBase@@IBEPAKXZ		
+0x00686ED0	q4722	self-done, binders-open	?AddToGlobalTCs@CTCBase@@QAEXXZ	?AddToGlobalTCs@CTCBase@@QAEXXZ	006cf920,007e27f0	2026-11-19_agentNF96_part1
+0x006925A0	q3864	open (self leaf differs)	?HasPerformedAction@CCreatureActionBase@@QBE_NXZ		0069f670,0069fc40,00842b60,00848ae0,00858130,008b69d0,008b93b0,008cabe0	
+0x00692910	q5101	self-done, binders-open	?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ	?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ	00849140,00865c20,008c64f0,008cb620,008cb780	
+0x00692940	q5102	self-done, binders-open	?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ	?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ	00842b60,00842f70,00846410,008579d0,008b93d0,008c0900,008c6430	2026-11-12_agentNF30
+0x0069C3D0	q4423	open (self leaf differs)	?Reset@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@QAEXPAVCScriptModuleBase@NCameraModes@@@Z			
+0x006A1060	q4469	open (self leaf differs)	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z		005c3a95,006647f0	
+0x006A1120	q4471	open (self leaf differs)	?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z		006648d0	
+0x006A11F0	q4473	open (self leaf differs)	?GetThingInCarrySlot@CTCCarrying@@QBEPAVCThing@@J@Z	GetThingInCarrySlot		
+0x006A1490	q4470	open (self leaf differs)	?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NABVCThing@@@Z		005c3a95	
+0x006A1540	q4984	open (self leaf differs)	?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z	IsThingCarryingWeapon		
+0x006A19B0	q4472	open (self leaf differs)	?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z			
+0x006A1E00	q4985	open (self leaf differs)	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z	RemoveThingFromPrimarySlot	00848d10,009236c0	2026-11-16_agentNF36
+0x006A1F80	q4474	open (binders)	?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z		007153b0,008c64f0,008fd0a0	
+0x006A2220	q5137	open (self leaf differs)	?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	GetAllCarriedThings (Ego_r.pdb `?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@...@Z`, followed there by	004bfb40,006a23e0,0079b9d0,007aa6b0,007e0bf0	
+0x006A5D50	q4021	self-done, binders-open	??1CThingPhysical@@UAE@XZ	??1CThingPhysical@@UAE@XZ	005297d0	
+0x006A80A0	q6929	open (self leaf differs)	??RCThingFilter_HasTC@@QBE_NABVCThing@@@Z	??RCThingFilter_HasTC	004a9ef0	
+0x006A8930	q5143	open (self leaf differs)	??RCThingFilter_IsMySleepPoint@@QBE_NABVCThing@@@Z	??RCThingFilter_IsMySleepPoint		
+0x006A8A30	q5144	open (self leaf differs)	??RCThingFilter_IsOccupiableOccupied@@QBE_NABVCThing@@@Z	??RCThingFilter_IsOccupiableOccupied	0092e540	
+0x006AEDC0	q6325	open (self leaf differs)	?AddFollower@CTCRegionFollowerMethods@@QAEXAAUCThingNative@@@Z	?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z	0048a070,0079acc0,009212c0	
+0x006AF220	q5078	open (self leaf differs)	??RCMessageEventFilter_CanBeSeenOrHeard@@QBE_NABVCMessageEvent@@@Z	??RCDistanceFilter_006af220@@QAEJPAVCThing@@@Z		
+0x006AF780	q3906,q5088	self-done, binders-open	?UpdateInterpolation@CTCPhysicsBase@@MAEXXZ	?UpdateInterpolation@CTCPhysicsBase@@MAEXXZ	00723730	
+0x006AFD40	q5019,q5069	likely-done (self leaf = claim, no wrong binder in table)	?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ	?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ		2026-11-16_agentNF34,2026-11-16_agentNF36
+0x006B05A0	q4976	self-done, binders-open	?CreatePPhysicsMeshInfo@CTCPhysicsBase@@IAEXABVCEngineGraphic@@@Z	?CreatePPhysicsMeshInfo@CTCPhysicsBase@@IAEXABVCEngineGraphic@@@Z	00724010,0075b2d0	
+0x006B32A0	q4757	open (self leaf differs)	?UpdateInterpolation@CEnvironment@@QAEXXZ	?Run@T@@QAEXXZ		
+0x006B3800	q6229	open (self leaf differs)	?TransitionToTheme_006b3800@CEnvironment@@QAEXHHJM@Z;		0088ff30,0088ffb0,008e7b90	
+0x006B82E0	q6437,q6442	no-symbol (claim text only)				
+0x006B83E0	q5089	self-done, binders-open	?ScreenFilterSetFlags@CEnvironmentSpellEffectInterpolator@@QAEXABV?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@PAX@Z	?ScreenFilterSetFlags@CEnvironmentSpellEffectInterpolator@@QAEXABV?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@PAX@Z	006a23e0,008a99f0	
+0x006B83F0	q6936	open (self leaf differs)	?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z		0079d020,00890200	
+0x006BB2C0	q4490	open (self leaf differs)	?IsDay@CGameTimeManager@@QBE_NXZ		0065c781,00893ec0,00911f80	
+0x006BB390	q4489	catalog-only (no landed self row, no wrong binder)	?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z			2026-11-16_agentNF39,2026-11-17_agentNF54
+0x006BBF70	q4619	open (self leaf differs)	?GetNameGraphicOffset@CRegion@@QBE?BVC2DVector@@XZ	GetNameGraphicOffset		
+0x006CB610	q5159	self-done, binders-open	?IsPosNavLineOfSightToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0@Z	?IsPosNavLineOfSightToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0@Z	006a7640	
+0x006CB6B0	q4260	self-done, binders-open	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	00665df0,00713740,00714730,0089b780,0089bdf0,008fd050	
+0x006CB6E0	q5010	open (self leaf differs)	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z	00665df0,00911710	
+0x006CB8E0	q4494	self-done, binders-open	?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z	?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z	0089b780	
+0x006CB9B0	q4533	self-done, binders-open	?CalculateRouteFromTo@CTCCreatureNavigation@@QBEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z	?CalculateRouteFromTo@CTCCreatureNavigation@@QBEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z	00800540	
+0x006CB9C0	q4534	self-done, binders-open	?InitialiseFromPreCalculatedRoute@CTCCreatureNavigation@@QAEXABVC3DVector@@ABV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@0@Z	?InitialiseFromPreCalculatedRoute@CTCCreatureNavigation@@QAEXABVC3DVector@@ABV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@0@Z	0097f5b0	
+0x006CEAE0	q6329,q6337	no-symbol (claim text only)		?ResetLastOpinionReactionFrame@CTCCreatureOpinionOfHero@@QAEXXZ		
+0x006D4C00	q4703	open (self leaf differs)	??$TransferVector@U?$pair@VCCharString@@J@std@@@CPersistContext@@QAEXPBDAAV?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@@Z	TransferVector		
+0x006D5AD0	q5047	open (self leaf differs)	?GetCurrentStateGroupScriptPriority@CThingAICreature@@QBE?AW4EScriptAIPriority@@XZ	?Run@T@@QAEXXZ		
+0x006D64A0	q4766	open (self leaf differs)	?GetExperienceSpentOnStat@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z		005724cd	
+0x006D6510	q4764	open (self leaf differs)	?GetStatExperience@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z		0056e93d,0056fad7,005724cd	
+0x006D6520	q4486,q4765	open (self leaf differs)	?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z		0057be71,0057c239,005ee887	
+0x006D67B0	q4762	open (self leaf differs)	?GetCostToUpgradeTrainableStat@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z	GetCostToUpgradeTrainableStat	005721fa,005724cd	
+0x006D8300	q4947	likely-done (self leaf = claim, no wrong binder in table)	?AddTrainableStatExperience@CTCHeroExperience@@QAEXW4EHeroExperienceStatCategory@@J@Z	?AddTrainableStatExperience@CTCHeroExperience@@QAEXW4EHeroExperienceStatCategory@@J@Z		
+0x006DAB90	q4387	likely-done (self leaf = claim, no wrong binder in table)	??$find@W4EDamageAttribute@@@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Const_traits@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@1@ABW4EDamageAttribute@@@Z	??$find@W4EDamageAttribute@@@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Const_traits@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@1@ABW4EDamageAttribute@@@Z		
+0x006E0590	q6228	open (self leaf differs)	?SetAlwaysUpdate@EmitterMethods@@QAEX_N@Z		00750540	
+0x006E0880	q4981	open (binders)	?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z		008f7bd0	2026-11-11_agentNF22,2026-11-12_agentNF30
+0x006E0BE0	q6227	open (self leaf differs)	?AttachToThing@EmitterMethods@@QAEXPAUCThingNative@@JABVCCharString@@JM@Z;	?AttachToThing@CTCDParticleEmitter@@QAEXAAVCThing@@JABVCCharString@@JM@Z	0071c7c0,0089f910,008f7bd0	
+0x006E11F0	q6226	open (self leaf differs)	?CreateScaledEffect@@YIPAVCThing@@JJMABVC3DVector@@_N@Z;	Create	0071c7c0,007a9fe0,0080d0b0	
+0x006E6990	q4388	self-done, binders-open	??$find@J@?$_Rb_tree@JU?$pair@$$CBJVCScriptConversation@@@std@@U?$_Select1st@U?$pair@$$CBJVCScriptConversation@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCScriptConversation@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCScriptConversation@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCScriptConversation@@@std@@@2@@1@ABJ@Z	??$find@J@?$_Rb_tree@JU?$pair@$$CBJVCScriptConversation@@@std@@U?$_Select1st@U?$pair@$$CBJVCScriptConversation@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCScriptConversation@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCScriptConversation@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCScriptConversation@@@std@@@2@@1@ABJ@Z	006e5800	
+0x006E7B60	q4620	self-done, binders-open	??0CScriptGameResourceObjectMovieBase@@QAE@XZ	??0CScriptGameResourceObjectMovieBase@@QAE@XZ	00ddd030	
+0x006E99B0	q4750	self-done, binders-open	?GetDefenderZone@CCombatManager@@QBE?AW4ECombatZone@@ABVCThingCreatureBase@@0J@Z	?GetDefenderZone@CCombatManager@@QBE?AW4ECombatZone@@ABVCThingCreatureBase@@0J@Z	006eac50,008b0610	
+0x006ED9C0	q4266	open (self leaf differs)	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z		00733580,007e5b40,00977770,0097b780	
+0x006F0250	q4389	self-done, binders-open	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatantInfo@@@std@@@1@AB_K@Z	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatantInfo@@@std@@@1@AB_K@Z	006e9270,006e9360,006e97f0,006e9960,006ea770,006eac50,006eb390,006eb600,006ed510	
+0x006F0F60	q4267	self-done, binders-open	??$GetSubDef@VCCombatAbilityStrafeDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@@Z	??$GetSubDef@VCCombatAbilityStrafeDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@@Z	006ea2c0	
+0x00700770	q5090	self-done, binders-open	?SetThingOpinionSource@COpinionReactionManager@@QAEXPAVCThing@@@Z	?SetThingOpinionSource@COpinionReactionManager@@QAEXPAVCThing@@@Z	00894e60	
+0x00701840	q4078	likely-done (self leaf = claim, no wrong binder in table)	?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z	?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z		2026-11-12_agentNF30
+0x00703210	q4477	self-done, binders-open	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	0078b070,00848500,008c64f0	2026-11-19_agentNF94
+0x00704580	q6278,q6417,q6471	open (self leaf differs)	??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z	@CCountedPtr_assign@12	00cfd6c0,00d36620,00d643a0	
+0x00705D00	q4475	self-done, binders-open	?GetCarrySlotPassive@CTCCarryable@@QBEJXZ	?GetCarrySlotPassive@CTCCarryable@@QBEJXZ	00968bc0	
+0x0070C050	q6391,q6462	conflicting-claims	?Set@CAnimInit@@QAEXJJJJ_NKJ@Z	?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z	008619c0,008d6780	2026-11-17_agentNF54
+0x0070D1A0	q5107,q5151	open (self leaf differs)	?Init@CAnimSet@@AAEXAAVCAnimateThing@@ABVCAnimInit@@M@Z			
+0x00718EC0	q4018	open (self leaf differs)	??1?$_List_base@U?$pair@JW4EConversationAttitude@@@std@@V?$allocator@U?$pair@JW4EConversationAttitude@@@std@@@2@@std@@QAE@XZ	SortTreeRecursively		
+0x00729BC0	q4961	open (self leaf differs)	?SetUpPEntranceConnectedToFromUID@CTCActionUseScriptedHook@@AAEXXZ	ResolveEntranceConnectedTo		
+0x0072A090	q4420	no-symbol (claim text only)		?GlobalUpdate@CTCActionUseScriptedHook@@UAEX_N@Z		
+0x0072A860	q6369,q6388	open (self leaf differs)	?CheckTermination@CTCHeroState@@QAE_NXZ,		0068f2a0,00690030	
+0x0072AB70	q6225	open (self leaf differs)	?CreateParticleEffect@@YIPAVCThing@@JPBVC3DVector@@@Z;	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	0079dcc0	2026-11-17_agentNF49
+0x0072B870	q6389	open (self leaf differs)	?GetName@CTCHeroState@@QBE?AVCCharString@@XZ	GetCurrentAbilityStrafeAnim		
+0x0072D390	q3989	self-done, binders-open	??1CCreatureAction_SheatheItemToInventory_ForEnflame@@UAE@XZ	??1CCreatureAction_SheatheItemToInventory_ForEnflame@@UAE@XZ	0072c790	
+0x0072D990	q5027	likely-done (self leaf = claim, no wrong binder in table)	??1CCreatureAction_CastAssassinRush@@UAE@XZ	??1CCreatureAction_CastAssassinRush@@UAE@XZ		2026-11-19_agentNF93_part1,2026-11-19_agentNF93_part2,2026-11-19_agentNF93_part3
+0x00733480	q4747	open (self leaf differs)	?GetPMeleeFlourishAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ		0064be45	
+0x0073A680	q6453,q6455	open (self leaf differs)	?GetWorld@CModeBase@@QBEAAVCWorld@@XZ	?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ	008d6580,008d7630,008dc900,008dcb60,008ddd70,008e7cf0,008e9850,008ea500,008eacb0	
+0x0073A690	q6370,q6396	likely-done (self leaf = claim, no wrong binder in table)	?GetTimeToBlendIn@CAnimEntryLite@@QBEJPAVCThing@@@Z	?GetTimeToBlendIn@CAnimEntryLite@@QBEJPAVCThing@@@Z		
+0x0073AAC0	q6454	open (self leaf differs)	?OnActivate@CModeBase@@UAEXXZ	OnActivate	008e7290,008e9a30,008eacb0	
+0x0073ACC0	q6408	open (self leaf differs)	?AddMode@CTCCreatureModeManager@@QAE_NUCCountedModePointer@@@Z,	?AddMode@CTCCreatureModeManager@@QAE_NUCModePointer@@@Z	00848fd0,008676a0,008a08a0,008a1a10,008c1900,008c1e80,00950c30	
+0x0073AE70	q3944	open (self leaf differs)	?RemoveAllModes@CTCCreatureModeManager@@QAEXXZ		00664370	
+0x0073E6A0	q3942	open (self leaf differs)	?clear@?$_List_base@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@V?$allocator@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@std@@@std@@QAEXXZ		0073ae70	
+0x0073E970	q4104	open (self leaf differs)	??_G			
+0x007446A0	q4718,q5091	self-done, binders-open	?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ	?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ	00849320,0089cd70,0089d0e0,008dcb60,0091db50,0093b8b0,0093c4e0,009577e0,0095f9a0	
+0x007464A0	q6448	no-symbol (claim text only)				
+0x007498D0	q5092	self-done, binders-open	?GetCreator@CTCNoise@@QBEPBVCThing@@XZ	?GetCreator@CTCNoise@@QBEPBVCThing@@XZ	006a81f0	
+0x0074B900	q4700	open (self leaf differs)	?OnSerialise@CTCCreatureGenerator@@UAEXAAVCPersistContext@@_N@Z	Persist		
+0x00751B30	q5147	open (self leaf differs)	?GetHeadPos@CTCLook@@ABE?AVC3DVector@@XZ			
+0x007525C0	q5061	open (self leaf differs)	?GetTurningAnglesAndCheckForTurningBody@CTCLook@@AAE_NAAM0@Z			
+0x007528A0	q5145	open (self leaf differs)	?CentreHead@CTCLook@@AAEXXZ		00753c70	
+0x007530D0	q5146	self-done, binders-open	?FrameUpdateHeadLookAtPos@CTCLook@@AAEXABVC3DVector@@_N@Z	?FrameUpdateHeadLookAtPos@CTCLook@@AAEXABVC3DVector@@_N@Z	00753c70	
+0x00753380	q5148	self-done, binders-open	?FrameUpdateHeadInterested@CTCLook@@AAEXXZ	?FrameUpdateHeadInterested@CTCLook@@AAEXXZ	00753c70	
+0x0075B8D0	q4802	open (self leaf differs)	??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z	??4?$vector@VC3DVector@@	00762e10,00764e90,00a6cb20,00b20b60	
+0x0075C160	q4414	open (self leaf differs)	?IsRelativeCoordTranslation@CTCCameraPointDefinitionBase@@QBE_NXZ			
+0x0075C170	q4415	open (self leaf differs)	?IsRelativeCoordOrientation@CTCCameraPointDefinitionBase@@QBE_NXZ			
+0x0075CCB0	q4416	open (self leaf differs)	?GetLookDirection@CTCCameraPointScripted@@QBE?AVC3DVector@@PBVCRightHandedSet@@@Z			2026-11-16_agentNF34,2026-11-16_agentNF36
+0x0075CCF0	q4417	open (self leaf differs)	?GetLookDirectionEnd@CTCCameraPointScripted@@QBE?AVC3DVector@@PBVCRightHandedSet@@@Z			2026-11-16_agentNF34,2026-11-16_agentNF36
+0x0075F830	q4804	self-done, binders-open	?DeleteData@?$CCountedPointer@VCCardinalSpline@@@@SIXPAX@Z	?DeleteData@?$CCountedPointer@VCCardinalSpline@@@@SIXPAX@Z	0075fa30	
+0x0075FA30	q4803	open (self leaf differs)	?Reset@?$CCountedPointer@VCCardinalSpline@@@@QAEXPAVCCardinalSpline@@@Z			
+0x00760DA0	q4952	open (self leaf differs)	?GetTrackPosNearest@CTrack@NShape@@QBEXABVC3DVector@@AAV3@AAM@Z	GetTrackPosNearest	0087b910	
+0x0076D270	q6326	open (self leaf differs)	?AddAlly@CTCAllies_Retail@@QAEXPAUCThing_Retail@@@Z	?AddAllyThing@CTCEnemy@@QAEXABVCThing@@@Z	0079acc0	
+0x0076D2F0	q4949,q4988	self-done, binders-open	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	006a7550,0072b160,007f9e70,00807b70	2026-11-11_agentNF22
+0x00772250	q4269	open (self leaf differs)	?FindDefaultStockItem@CTCShop@@QBEPBVCShopItem@@J@Z	FindDefaultStockItem		
+0x007723D0	q4480	likely-done (self leaf = claim, no wrong binder in table)	?IsValidStockItem@CTCShop@@QBE_NJ@Z	?IsValidStockItem@CTCShop@@QBE_NJ@Z		
+0x00775350	q4963	open (binders)	?UpdateStock@CTCShop@@QAEXXZ		00775b20	
+0x00778280	q4270	open (self leaf differs)	??A?$map@JVCShopItem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@3@@std@@QAEAAVCShopItem@@ABJ@Z	??A?$map@JVCShopItem@@	007744a0	
+0x00787740	q5093	self-done, binders-open	?SetForceVisible@CTCBob@@QAEXXZ	?SetForceVisible@CTCBob@@QAEXXZ	008a7f60	
+0x00789A50	q4691	open (self leaf differs)	?GetProjectileTargetingZoomParameter@CTCHeroRangedAttacks@@QBEMXZ	?M@C00789a50@@QAEMXZ		
+0x00789A70	q6194	open (self leaf differs)	?GetPullBackAmount@CTCHeroRangedAttacks@@QBEMXZ	?M@C00789a70@@QAEMXZ	008ea220	
+0x007940F0	q6222	open (self leaf differs)	?PlaySoundW@CTCDivineWrath@@QAEKKK@Z		007941d0	
+0x00798D30	q6327,q6335	no-symbol (claim text only)		?GetShopKeeperGiveHintTextTag_00798d30@_unattributed@@		
+0x00798D80	q5094	self-done, binders-open	?GetCustomer@CTCShopKeeper@@QBEPAVCThingCreatureBase@@XZ	?GetCustomer@CTCShopKeeper@@QBEPAVCThingCreatureBase@@XZ	0094bca0	
+0x0079AA90	q6317	no-symbol (claim text only)		?GetValidTeleportPos@CTCSummonSpell@@AAE?AVC3DVector@@PBVCThing@@@Z		
+0x0079BD80	q6315,q6319	no-symbol (claim text only)		??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCBrainDef@@@@@Z		
+0x0079F810	q5161	open (self leaf differs)	?SetLevel@CTCWillLightning@@AAEXJ@Z		007a09b0	
+0x0079F960	q5160	self-done, binders-open	?SetAICasting@CTCWillLightning@@QAEXJ@Z	?SetAICasting@CTCWillLightning@@QAEXJ@Z	008b9c90	
+0x007A66F0	q4047	likely-done (self leaf = claim, no wrong binder in table)	??1CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@UAE@XZ	??1CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@UAE@XZ		
+0x007A9300	q6443	no-symbol (claim text only)				2026-11-16_agentNF36,2026-11-16_agentNF38
+0x007A9580	q6444	no-symbol (claim text only)				2026-11-16_agentNF36,2026-11-16_agentNF38
+0x007ADAA0	q4050	likely-done (self leaf = claim, no wrong binder in table)	??1CTCAIScratchpad@@UAE@XZ	??1CTCAIScratchpad@@UAE@XZ		
+0x007B0950	q6450	open (self leaf differs)	?Method@CClass_007b0cc0@@QAEXJ@Z	?FinishFishing@CTCFishing@@QAEX_N@Z	007b0cd0	
+0x007BEFF0	q5162	self-done, binders-open	?GetPWeapon@CTCShotDefinitionBase@NThingShot@@QBEPAVCThing@@XZ	?GetPWeapon@CTCShotDefinitionBase@NThingShot@@QBEPAVCThing@@XZ	00811760	2026-11-11_agentNF22
+0x007C2AB0	q4801	likely-done (self leaf = claim, no wrong binder in table)	??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@I@Z	??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@I@Z		
+0x007CF0B0	q4048	likely-done (self leaf = claim, no wrong binder in table)	??1CTCCreatureTintEffect@@UAE@XZ	??1CTCCreatureTintEffect@@UAE@XZ		
+0x007DB5C0	q6445	no-symbol (claim text only)				2026-11-16_agentNF34
+0x007DE4E0	q5095	self-done, binders-open	?GetObjectAttached@CTCWallMount@@QAEPAVCThing@@XZ	?GetObjectAttached@CTCWallMount@@QAEPAVCThing@@XZ	007efe70	
+0x007DE4F0	q5096	self-done, binders-open	?PeekObjectAttached@CTCWallMount@@QBEPBVCThing@@XZ	?PeekObjectAttached@CTCWallMount@@QBEPBVCThing@@XZ	006bffd0	
+0x007DF3E0	q6322	no-symbol (claim text only)		?OnPutOnMount@CTCWallMountEffects@@QAEXXZ		
+0x007E1510	q4049	likely-done (self leaf = claim, no wrong binder in table)	??1CTCGraphicAppearanceMultipleStaticMeshes@NGraphicAppearance@@UAE@XZ	??1CTCGraphicAppearanceMultipleStaticMeshes@NGraphicAppearance@@UAE@XZ		
+0x007E3420	q3969	self-done, binders-open	??1CTCFlashOnHit@@UAE@XZ	??1CTCFlashOnHit@@UAE@XZ	004d62d1	
+0x007E72A0	q4621	self-done, binders-open	??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	00ddd030,00e0ad40	
+0x007E7360	q4622	open (self leaf differs)	?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	?CScriptGameResourceObjectScriptedThingBase_ClearCommands@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z	00e11dc0	
+0x007E7390	q4623	open (self leaf differs)	?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z		00d50c60	
+0x007E73D0	q4624	open (self leaf differs)	?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z		00dd6440	
+0x007E7410	q4625	open (self leaf differs)	?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	?CScriptGameResourceObjectScriptedThingBase_ClearAllActionsIncludingLoopingAnimations@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z		
+0x007EBE50	q6238	open (self leaf differs)	?vfunc_1@CTCActionUseBed@@UAEXPAVCPersistContext@@J@Z	?OnSerialise@CTCActionUseBed@@UAEXAAVCPersistContext@@_N@Z		
+0x007F6160	q5097	self-done, binders-open	?ClearAllThingsToNotAttack@CTCTargetingAI@@QAEXXZ	?ClearAllThingsToNotAttack@CTCTargetingAI@@QAEXXZ	00911a90	
+0x007F8860	q6321	no-symbol (claim text only)		?DetachParticles@CTCParticleAttacher@@QAEXXZ		
+0x007FD3D0	q6401	open (self leaf differs)	?SetLifetime@CTCDriverBase@@QAEXM@Z,		00788229,008c6b20,008f5060,008f5490	
+0x007FD3F0	q5136	open (self leaf differs)	?SetParams@CTCDPhysicalObstruction@@QAEXABVC3DVector@@0M@Z		008caf10	
+0x007FD4B0	q6402	open (self leaf differs)	?CreateObstruction@@YIPAVCThing@@ABVC3DVector@@0M@Z,	?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z	00788229,0078f4d0,008c44b0,008cbb90,008f5060	
+0x007FEDE0	q5033	open (self leaf differs)	?GetFreeActionPoint@CTCUserActionPointBase@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z	GetFreeActionPoint		2026-11-16_agentNF35
+0x00802390	q4690	open (self leaf differs)	?GetMaxTargetingDistance@CTCTargetingPlayer@@QBEMXZ	?M@C00802390@@QAEMXZ		2026-11-16_agentNF36
+0x008031E0	q4986	likely-done (self leaf = claim, no wrong binder in table)	?GetPBestThingForMeleeAttack@CTCTargetingPlayer@@UBEPAVCThing@@XZ	?GetPBestThingForMeleeAttack@CTCTargetingPlayer@@UBEPAVCThing@@XZ		
+0x00803540	q6192	catalog-only (no landed self row, no wrong binder)	?UpdateTargetedPositionRandomWalk@CTCTargetingPlayer@@IAEXXZ			2026-11-19_agentNF94,2026-11-19_agentNF96_part1
+0x008128F0	q4958	open (self leaf differs)	?GetNearestMember@CTCCreatureGroup@@QBEPBVCThingAICreature@@ABVC3DVector@@@Z		00934920	
+0x00816AA0	q4687	open (self leaf differs)	?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QBEPBVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z	@FableThunk_816aa0@4		
+0x0082A380	q5131	self-done, binders-open	?RemoveMarker@CMiniMapDisplay@@QAEXABVCThing@@@Z	?RemoveMarker@CMiniMapDisplay@@QAEXABVCThing@@@Z	00891ff0	
+0x0082E8F0	q4518	open (self leaf differs)	?SetThingToDelete@CScriptedMapBrush@@QAEX_K@Z			
+0x0082E9A0	q4519	open (self leaf differs)	?SetThingToAdd@CScriptedMapBrush@@QAEX_K@Z			
+0x0082EEB0	q4390	self-done, binders-open	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@1@AB_K@Z	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@1@AB_K@Z	0082e4e0	
+0x00830130	q4714	open (self leaf differs)	?IsBrainUpdateZoneActiveThisFrame@CThingAICreature@@QBE_NXZ	?Run@T@@QAEXXZ		
+0x00833010	q4720	open (self leaf differs)	?SetNewBrain@CThingAICreature@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z	SetNewBrain		2026-11-12_agentNF27
+0x00833230	q5076	self-done, binders-open	?IsMessageEventWithinSightRange@CThingAICreature@@QBE_NABVCMessageEvent@@@Z	?IsMessageEventWithinSightRange@CThingAICreature@@QBE_NABVCMessageEvent@@@Z	006af220	
+0x008332E0	q5077	self-done, binders-open	?IsMessageEventWithinHearingRange@CThingAICreature@@QBE_NABVCMessageEvent@@@Z	?IsMessageEventWithinHearingRange@CThingAICreature@@QBE_NABVCMessageEvent@@@Z	006af220	
+0x00833800	q4535	self-done, binders-open	?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z	?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z	00783380	
+0x00836BE0	q6446	no-symbol (claim text only)		?IsThingDead_00836be0@@YI_NAAV?$CIntelligentPointer@VCThing@@@@@Z		
+0x00838930	q5207,q6211	conflicting-claims	?ConstructFromLevelScript@CThingGameObject@@UAE_NPBD@Z			
+0x00839420	q6202	no-symbol (claim text only)				
+0x0083AE30	q6934	likely-done (self leaf = claim, no wrong binder in table)	??0CHitThing@NHeroStatModifierEvent@@QAE@ABVCCreatureStatsDef@@@Z	??0CHitThing@NHeroStatModifierEvent@@QAE@ABVCCreatureStatsDef@@@Z		
+0x00841FC0	q4193	open (self leaf differs)	?erase@?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEPAV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@2@PAV32@0@Z	?erase@	0083fbc0	
+0x0084DC10	q3987	open (binders)	?FrameUpdate@CBase@NCameraModes@@QAEXXZ		0069b790,0084e110	
+0x0084F1B0	q5037	self-done, binders-open	?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ	?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ	0075daa0,00871d30,00878db0,008faa80	
+0x008561A0	q6403	open (self leaf differs)	?GetSoundPair@@YI?AVCSoundPair@@PAVCThingCreatureBase@@ABVCCharString@@@Z		008c3930	
+0x00858030	q6404	open (self leaf differs)	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@JABVCSoundPair@@@Z	??0CCombatActionBase	0085ff10	
+0x0085ABB0	q5100	open (self leaf differs)	??$GetDef@VCMeleeCombatKnockdownEffects@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMeleeCombatKnockdownEffects@@@@@Z			
+0x0085CDE0	q5024	likely-done (self leaf = claim, no wrong binder in table)	?Validate@CThingMap@NThingMap@@QAEXXZ	?Validate@CThingMap@NThingMap@@QAEXXZ		
+0x00860130	q6426,q6428	open (self leaf differs)	?Sub_668d90@CSubObject@@QAEXH@Z	?SetAsPerformAction@CBrainOutput@@QAEXABVCCreatureActionBase@@@Z		2026-11-17_agentNF83,2026-11-17_agentNF84
+0x00864580	q5127	likely-done (self leaf = claim, no wrong binder in table)	?StopSpeaking@NCreatureAI@@YIXAAVCThingCreatureBase@@@Z	?StopSpeaking@NCreatureAI@@YIXAAVCThingCreatureBase@@@Z		
+0x008679C0	q4264	open (self leaf differs)	??0CCombatAction_GenericStrikeResponseKnockdown@@QAE@AAVCThingCreatureBase@@PBVCThing@@ABVC3DVector@@2@Z	??0CCombatAction_GenericStrikeResponseKnockdown	00667310	
+0x00868860	q6316,q6318	no-symbol (claim text only)		?IsMeleeStrike@CHitParameters@@QBE_NXZ		
+0x008688F0	q4261	self-done, binders-open	?IsExplosionStrike@CHitParameters@@QBE_NXZ	?IsExplosionStrike@CHitParameters@@QBE_NXZ	00810f60	
+0x0086B810	q5029	open (self leaf differs)	?GetRandomTextureMorphs@CRandomAppearanceMorph@@IBEXAAKKABV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@AAV?$CArray@VCMorphSetTextureMorph@CMorphSet@CRandomAppearanceMorph@@@@@Z	GetRandomTextureMorphs		2026-11-19_agentNF93_part1,2026-11-19_agentNF93_part2,2026-11-19_agentNF93_part3
+0x0086D570	q3970	open (self leaf differs)	??$uninitialized_fill_n@...	??$uninitialized_fill_n@PAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@	0086e4b0	
+0x00875FB0	q4536	catalog-only (no landed self row, no wrong binder)	?DrawSquare@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@1M@Z			2026-11-12_agentNF32
+0x008764E0	q4537	catalog-only (no landed self row, no wrong binder)	?DrawPyramid@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@M@Z			
+0x00878A80	q5035	likely-done (self leaf = claim, no wrong binder in table)	?GetCamPosOffsetXY@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@M@Z	?GetCamPosOffsetXY@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@M@Z		2026-11-12_agentNF28
+0x00878BE0	q4538,q5036	self-done, binders-open	?GetPosFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z	?GetPosFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z	00878db0	
+0x00879070	q4539	open (binders)	?GetHeightParamForPostionWithPhi@CProjectileWeapon@NCameraModes@@ABEMABVC3DVector@@M@Z		00879560	
+0x0087C390	q5134	likely-done (self leaf = claim, no wrong binder in table)	?SetOccupier@CTCSinglePersonOccupiable@@QAEXPAVCThingCreatureBase@@@Z	?SetOccupier@CTCSinglePersonOccupiable@@QAEXPAVCThingCreatureBase@@@Z		2026-11-17_agentNF79
+0x0087C3F0	q5135	likely-done (self leaf = claim, no wrong binder in table)	?IsOccupied@CTCSinglePersonOccupiable@@QBE_NXZ	?IsOccupied@CTCSinglePersonOccupiable@@QBE_NXZ		2026-11-17_agentNF79
+0x0087FD20	q4749	open (self leaf differs)	??0CCombatAction_KickThingOnGround@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	??0CCombatAction_KickThingOnGround		
+0x0088B7D0	q6435,q6439	open (self leaf differs)	?GetPOverride@CAIBrainX@@...		00922600	
+0x0088B7E0	q6436,q6440	no-symbol (claim text only)				
+0x008AB970	q5128	self-done, binders-open	?SetImplementation@CScriptGameResourceObjectMovieBase@@QAEXPAV1@@Z	?SetImplementation@CScriptGameResourceObjectMovieBase@@QAEXPAV1@@Z	0089b110	
+0x008ABD10	q4345	self-done, binders-open	??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z	??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z	00cd2afd	
+0x008AC120	q4397	open (self leaf differs)	??$_Construct@VCScriptThing@@V1@@std@@YIXPAVCScriptThing@@ABV1@@Z		00dfde30	
+0x008ADF10	q6257	no-symbol (claim text only)		??A?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@QAEAA_NABVCCharString@@@Z		2026-11-17_agentNF85,2026-11-17_agentNF87
+0x008AEF20	q4989	self-done, binders-open	?find@?$_Rb_tree@KU?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Select1st@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Const_traits@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@2@ABK@Z	?find@?$_Rb_tree@KU?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Select1st@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Const_traits@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@2@ABK@Z	008af1e0	
+0x008AF5F0	q4990	open (self leaf differs)	?IsSpeechAllowed@CombatDialogueManager@@QBE_NABVCThingCreatureBase@@@Z	IsSpeechAllowed		
+0x008B0A60	q3941	open (self leaf differs)	??1CCombatSequenceBase@@UAE@XZ	??1CCombatSequenceBase		
+0x008BCF20	q4410	open (self leaf differs)	??0CCreatureAction_TeleportOut@@QAE@AAVCThingCreatureBase@@AAVC3DVector@@_N@Z	??0CCreatureAction_TeleportOut@@QAE@PAVCThingCreatureBase@@ABVC3DVector@@_N@Z		
+0x008CE290	q5015	open (self leaf differs)	??0CCreatureAction_CastBattleCharge@@QAE@AAVCThingCreatureBase@@AAVCThing@@_NJ@Z		00909070	
+0x008CE2F0	q5016	open (self leaf differs)	??0CCreatureAction_CastBattleCharge@@QAE@AAVCThingCreatureBase@@J@Z			
+0x008D8580	q6398	open (self leaf differs)	??0CModeDragonHover@NCreatureMode@@QAE@PAVCThing@@0@Z	??0CModeDragonHover		
+0x008E31A0	q3943	self-done, binders-open	??1CModeDragonHover@NCreatureMode@@UAE@XZ	??1CModeDragonHover@NCreatureMode@@UAE@XZ	008e3860	
+0x008E8FF0	q6394	open (self leaf differs)	?GetStrafingAnimationName@@YI?AUNativeStringValue@@ABUThingNative@@W4EMovementType@@@Z	?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVCThing@@W4EMovementType@@@Z		
+0x008E9080	q6395	open (self leaf differs)	?GetAnimDistanceAndIndexFromAnimName@@YI_NABUThingNative@@ABVCCharString@@AAJAAM@Z	?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z		
+0x008EC1A0	q6457	no-symbol (claim text only)		push_back		
+0x008F99A0	q4190	self-done, binders-open	?Receive@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@@Z	?Receive@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@@Z	0083eee0	
+0x008FCFB0	q5129	likely-done (self leaf = claim, no wrong binder in table)	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ		2026-11-17_agentNF49
+0x008FCFD0	q5141	open (self leaf differs)	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ		00914f00,0091e4b0,009284b0,0092a0c0,00938f70,0093ad70,0094ef70,00957a20,0095b020,0096c9a0	
+0x008FD000	q4994,q5140	open (self leaf differs)	?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ		00913f30,00964360,00964ca0,00977b10,00978fd0,0097fea0,009863e0	
+0x0090A700	q5020	open (self leaf differs)	??0CCreatureAction_MidAttack360@@QAE@AAVCThingCreatureBase@@0@Z		00909da0	
+0x0090AA10	q3966	self-done, binders-open	?CloseSocket@LSocketServer@LHNetworkLib@@QAEXPAVLSocket@2@@Z	?CloseSocket@LSocketServer@LHNetworkLib@@QAEXPAVLSocket@2@@Z	008f8c70	
+0x0090B8E0	q3965	open (self leaf differs)	?remove@?$list@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAEXABQAVLSocket@LHNetworkLib@@@Z	?remove@?$list@PAVLSocket@@	0090ac50	
+0x0090F110	q5126	open (self leaf differs)	?FindAlertEvent@CAIStateGroup_MinionReactToAlert@@AAEPBVCMessageEvent@@XZ	?FindAlertEvent@CAIStateGroup_MinionReactToAlert@@QAEPAVCMessageEvent@@XZ	0090f1c0	
+0x009106E0	q4995	likely-done (self leaf = claim, no wrong binder in table)	?SetSeat@CAIStateGroup_UsesSeat@@IAEXPAVCThingObject@@@Z	?SetSeat@CAIStateGroup_UsesSeat@@IAEXPAVCThingObject@@@Z		
+0x009109B0	q4993	open (self leaf differs)	??RCIsSeatWithSpaceOwnedBy@@QBE_NABVCThingObject@@@Z	??RCIsSeatWithSpaceOwnedBy@@QBE_NPAVCThing@@@Z	00910a90	
+0x00910A90	q4992	open (self leaf differs)	??$GetAllLeafThings@VCThingObject@@V?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@VCIsSeatWithSpaceOwnedBy@@@CThingSearchTools@@QBEXABVCIsSeatWithSpaceOwnedBy@@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z	??$GetAllLeafThings@VCThingObject@@		
+0x0091A6F0	q4946	open (self leaf differs)	?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	?IsInWorkHours@CAIStateGroup_WorkBase@@QAE_NXZ	0091a390,0091b170,00944e80,009473e0	2026-11-12_agentNF25b
+0x0092C8A0	q5018	open (self leaf differs)	?FindFreeBanditBed@CAIStateGroup_GoToBed@@IAE_NXZ	?FindFreeBanditBed@CAIStateGroup_GoToBed@@QAE_NXZ	0092d600	2026-11-17_agentNF79
+0x0092D1F0	q5017	open (binders)	?FindFreeBed@CAIStateGroup_GoToBed@@IAE_N_N@Z		0092d600	
+0x0092F310	q6334	open (binders)	?OnCreate@CCombatSequenceWhisperLunge@@UAEXXZ		0092fab0	
+0x0093D800	q5030	open (self leaf differs)	?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MBE_N_N@Z		0093db10,0093dc10	2026-11-12_agentNF24
+0x00946380	q5032	open (self leaf differs)	?GetFreeCookingPot@CAIStateGroup_PrepareMeal@@ABEPAVCThing@@XZ	?GetPCookingPot@CAIStateGroup_SitForMeal@@ABEPAVCThing@@XZ		
+0x00950950	q6399	open (self leaf differs)	?WaitForAnimLoop@CAIStateGroup_JackDragon@@QAEX_N@Z	?WaitForAnimLoop@CAIStateGroup_JackDragon@@AAEXM@Z	00952890	
+0x00950BB0	q6400	open (self leaf differs)	?SetHeadTurning@CAIStateGroup_JackDragon@@QAEX_N@Z	?SetHeadTurning@CAIStateGroup_JackDragon@@AAEX_N@Z	00952890	
+0x00953470	q3990	self-done, binders-open	??1CCreatureAction_DragonTakeOffIntoFlying@@UAE@XZ	??1CCreatureAction_DragonTakeOffIntoFlying@@UAE@XZ	00951b20	
+0x00968460	q4953	likely-done (self leaf = claim, no wrong binder in table)	?GetPaymentFinishedMessage@CAIStateGroup_TavernKeeper@@QAE_NXZ	?GetPaymentFinishedMessage@CAIStateGroup_TavernKeeper@@QAE_NXZ		
+0x00969FB0	q5142	open (self leaf differs)	??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsMySleepPoint@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsMySleepPoint@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z			2026-11-16_agentNF38
+0x00976E80	q6933	likely-done (self leaf = claim, no wrong binder in table)	??0CCreatureAction_JackFlash@@QAE@AAVCThingCreatureBase@@0@Z	??0CCreatureAction_JackFlash@@QAE@AAVCThingCreatureBase@@0@Z		
+0x0097D6F0	q4968	self-done, binders-open	?AIAction_LookAtThing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@JM@Z	?AIAction_LookAtThing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@JM@Z	00911630,0092a8a0,0093a080,00956380,009804a0,00984a20	
+0x0097DB70	q5021	open (self leaf differs)	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	AIAction_PerformActionAndWait	00914f00,0091f0d0,0093a5c0,00951b20,009551a0,00956380,00956fe0,00957a20,00967a20,0096c9a0	2026-11-17_agentNF84,2026-11-17_agentNF86
+0x0097E380	q4967	open (binders)	?AIAction_MoveToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@MAA_NW4EMovementType@@_N444M@Z		00911630,00916910,0093a080,0094bb20,0094f000,00961790,009804a0	
+0x00987E50	q4601	open (self leaf differs)	??4CPixelShader@@QAEXABV0@@Z	?Assign@CPixelShader		
+0x00988020	q4540	open (self leaf differs)	?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z		00b54310,00b5e700	2026-11-16_agentNF35
+0x00988140	q4541	self-done, binders-open	?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z	?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z	00b54310,00b5e700	
+0x00988630	q4726	open (self leaf differs)	?SetTextureTransformCount@CShaderRenderManager@@QAEXJ@Z	AddExclusiveObserver		
+0x00988730	q4728	open (self leaf differs)	?SetUVCompressionVertexShaderConstant@CShaderRenderManager@@QAEXMMMM@Z	?M@C00988730@@QAEXHHHH@Z		
+0x00989700	q4543	likely-done (self leaf = claim, no wrong binder in table)	?UpdateCameraPos@CShaderRenderManager@@AAEXXZ	?UpdateCameraPos@CShaderRenderManager@@AAEXXZ		2026-11-16_agentNF39
+0x00989830	q4508	likely-done (self leaf = claim, no wrong binder in table)	?InitialiseLight@CShaderRenderManager@@QAEXKABVCShaderLight@@@Z	?InitialiseLight@CShaderRenderManager@@QAEXKABVCShaderLight@@@Z		
+0x00989A60	q4695	open (self leaf differs)	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC3DVector@@M@Z	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXJPBVC3DVector@@M@Z	00b52160	
+0x00989B00	q4696	likely-done (self leaf = claim, no wrong binder in table)	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z		2026-11-12_agentNF29
+0x00989CB0	q4649	self-done, binders-open	?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z	?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z	009e1280	
+0x0098A7F0	q4544	open (self leaf differs)	?SetBoneTransform@CShaderRenderManager@@QAEXKABVCMatrix3x4@@@Z	SetBoneTransform	00b75ca0	
+0x0098A8E0	q4545	open (self leaf differs)	?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ	UpdateBoneMatrices	009e1280	
+0x0098B5E0	q4650	open (self leaf differs)	?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z		00b5e700	2026-11-16_agentNF35
+0x0098B930	q4651	open (self leaf differs)	?SetVSConstants@CShaderRenderManager@@AAEXJPBXK@Z		00b99670	2026-11-16_agentNF35
+0x0098DB20	q4655	self-done, binders-open	?push_back@?$CIndexedArray@VCCharString@@@@QAEXABVCCharString@@@Z	?push_back@?$CIndexedArray@VCCharString@@@@QAEXABVCCharString@@@Z	0098b390	
+0x009915E0	q4308	open (self leaf differs)	?SetEnabled25_009915e0@CASoundManager@@QAEX_N@Z	EnableMusic	006286f0,009a5a50	
+0x00991600	q4310	open (self leaf differs)	?SetEnabled@CASoundManager@@QAEX_N@Z	EnableSound	0042e17c	
+0x00991620	q4309	open (self leaf differs)	?SetEnabled26_00991620@CASoundManager@@QAEX_N@Z	EnableAtmos	006286f0	
+0x00993B10	q4210,q4251	conflicting-claims	??1CDataInputStream@@UAE@XZ	??1CDataStream@@UAE@XZ	009ff590,00a4df10,00bdc180	
+0x00993E30	q5063	open (self leaf differs)	?WriteEBOOL@CDataOutputStream@@QAEX_N@Z		00b17f70	
+0x00993EB0	q5064	self-done, binders-open	?WriteSLONG@CDataOutputStream@@QAEXJ@Z	?WriteSLONG@CDataOutputStream@@QAEXJ@Z	00431020,004522f4,0046c2d2,0047931e,005db1e0,00614620,00b17f70	
+0x00994700	q6180	open (self leaf differs)	??0CFileDataInputStream@@QAE@AAVCAFile@@K@Z	??0CFileDataInputStream	009d0380,009d4c30	
+0x00994780	q6181	open (self leaf differs)	??1CFileDataInputStream@@UAE@XZ	??1CFileDataInputStream@	009d4c30	
+0x00994930	q6182	open (self leaf differs)	??0CMemoryDataInputStream@@QAE@PBXK@Z		009c8700,009ff590,00bdc180,00bde860,00bf8030	
+0x00994B50	q6185	open (self leaf differs)	?ReadLine@CDataInputStream@@QAE?AVCCharString@@XZ	ReadLine		
+0x00995D30	q4249	open (self leaf differs)	?ReadNullTerminatedString@CMemoryDataInputStream@@UAE?AVCCharString@@XZ		00a62120	
+0x00997620	q6184	self-done, binders-open	?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z	?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z	00997800	
+0x00997880	q5004	open (self leaf differs)	?GetItemFromPath@NFile@@YI_NPB_WKPA_W@Z	?GetItemFromPath@NFile@@YI_NPBGKPAG@Z	009994a0	
+0x00999110	q4283	open (self leaf differs)	?ConvertPathToFullPath@CAFile@@SI?AVCWideString@@ABV2@@Z		009f2dd0,00a0b710	
+0x00999230	q6183	self-done, binders-open	?PathExists@CAFile@@SI_NABVCWideString@@@Z	?PathExists@CAFile@@SI_NABVCWideString@@@Z	00401f30,0066ca80	2026-11-19_agentNF93_part3
+0x0099A2E0	q4460	self-done, binders-open	??1CBaseClass@@UAE@XZ	??1CBaseClass@@UAE@XZ	00529cc0,00a006e0,00a5e650,00a90fc0,00a91390,00af5900,00cf8a70	
+0x0099A310	q4055	open (self leaf differs)	??0CInitBaseClass@@QAE@XZ		00b260b0	
+0x0099A330	q4080	self-done, binders-open	?IsValid@CInitBaseClass@@QBE_NXZ	?IsValid@CInitBaseClass@@QBE_NXZ	0083c800	
+0x0099A360	q4019	open (self leaf differs)	?Uninitialise@CInitBaseClass@@IAEXXZ		00412f60,00487af0,00b25d80	
+0x0099A430	q5052	self-done, binders-open	??1CBaseObject@@MAE@XZ	??1CBaseObject@@MAE@XZ	00687210,00687730,00d246c0,00d2d060	
+0x0099AED0	q4546	self-done, binders-open	??0CWideString@@QAE@XZ	??0CWideString@@QAE@XZ	00406610,004aecf0,005926c0,005b15c2,005b1fbc,00999230,009bde70,009c7a60	
+0x0099B2C0	q6174	self-done, binders-open	?ToCharString@CWideString@@QBE?AVCCharString@@XZ	?ToCharString@CWideString@@QBE?AVCCharString@@XZ	009cbe10	2026-11-17_agentNF75,2026-11-17_agentNF80,2026-11-17_agentNF82
+0x0099B510	q4284	self-done, binders-open	??1CWideString@@QAE@XZ	??1CWideString@@QAE@XZ	00403510,00406610,00412020,004407b0,0047b880,004857e0,004a9140,006568bb,006bebf0,009c1ac0,009c2520,009c7a60	
+0x0099B6B0	q4285	open (self leaf differs)	??0CWideString@@QAE@PBG@Z		00406610,0041a060,009c7a60	
+0x0099B7D0	q4933	open (self leaf differs)	??4CWideString@@QAEABV0@ABV0@@Z		00594f36,006bebf0,009e5c90,00bc6810	
+0x0099BA70	q4286	self-done, binders-open	?Sprintf@CWideString@@QAAXPBGZZ	?Sprintf@CWideString@@QAAXPBGZZ	00406610,009c7a60	
+0x0099BE70	q4279	self-done, binders-open	??H@YI?AVCWideString@@ABV0@0@Z	??H@YI?AVCWideString@@ABV0@0@Z	00406610	
+0x0099C1E0	q4287	open (binders)	?Replace@CWideString@@QAEXABV1@0@Z		006be080,009c7a60	
+0x0099E4B0	q4456,q6309	conflicting-claims	??0CCharString@@QAE@XZ		00406070,006d41f0,009a9930,009aa240,009bde70,009cb910,00a16d50,00dc0300	2026-11-11_agentNF22
+0x0099E4C0	q6521	no-symbol (claim text only)		??BCCharString@@QBEPBDXZ		2026-11-11_agentNF22
+0x0099E5F0	q4626	open (self leaf differs)	?SaveToFile@CCharString@@QBEXAAVCAFile@@@Z		004fe030,00ae8810	
+0x0099E900	q4457	self-done, binders-open	??9CCharString@@QBE_NABV0@@Z	??9CCharString@@QBE_NABV0@@Z	008d9530	
+0x0099EB40	q3967	open (self leaf differs)	?MakeOwnCopyOfDataOrEmptyString@CCharString@@IAEXXZ		0099ef70,0099f3b0	
+0x0099EC30	q4458	open (self leaf differs)	??0CCharString@@QAE@ABV0@@Z		0047b590,0047b630,004b8130,004b8160,004b82f0,004d0f80,004faee0,00511f10,00518b60,00527bb0,0052b4e0,00565780,00566180,00566430,005dcf70,00613d20,00623700,00692c80,006c3170,006e6570,006e65a0,006e68a0,00	2026-11-11_agentNF22
+0x0099EFB0	q4459,q4932,q6507	conflicting-claims	??4CCharString@@QAEABV0@ABV0@@Z	??4CCharString@@QAEABV0@ABV0@@Z	004d0f80,008db030,009e6fa0	2026-11-11_agentNF22
+0x0099F100	q4627	open (self leaf differs)	??YCCharString@@QAEABV0@PBD@Z	??YCCharString	00404970,00d3ab00,00d3abe0	
+0x0099F1F0	q6512	open (self leaf differs)	?Format@CCharString@@QAAXPBDZZ,	?Sprintf@CCharString@@QAAXPBDZZ	0047a8e0,0099f930,00dc0300	
+0x0099F2E0	q4351	self-done, binders-open	?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z	?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z	00506d40	
+0x0099F570	q5215	open (binders)	??H@YI?AVCCharString@@ABV0@0@Z,		009ea3a0,00a381d0	
+0x0099F930	q4628	self-done, binders-open	?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z	?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z	0044b800	
+0x009A08B0	q4629,q4962,q6320	catalog-only (no landed self row, no wrong binder)	?GFFloatToCharString@@YI?AVCCharString@@NJ@Z			2026-11-19_agentNF94,2026-11-19_agentNF96_part1
+0x009A0CF0	q4547	open (self leaf differs)	?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z		00f37170	
+0x009A0EF0	q6241	open (self leaf differs)	?g_flag@@3_NA	?SetUseFixedFunction@CStreamingFontBank@@SIX_N@Z		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40
+0x009A1140	q6303	open (binders)	?GlyphLookup@CStreamingFontBankX@@QBEPAUCStreamingGlyphLookup@@G@Z		009a25d0	
+0x009A4EC0	q4288,q4442	self-done, binders-open	?GFGetSystemManager@@YIPAVCSystemManager@@XZ	?GFGetSystemManager@@YIPAVCSystemManager@@XZ	004022b0,00405650,0054ed90,00ab5390	
+0x009A4FB0	q6296	no-symbol (claim text only)		?IsApplicationInputFocus@CSystemManager@@QAE_NXZ		
+0x009A6460	q4289	open (self leaf differs)	?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ		004189c2,00499880	
+0x009A9B60	q6177	open (self leaf differs)	??0?$CCountedPointer@VCDiskFileWin32@@@@QAE@PAVCDiskFileWin32@@@Z			
+0x009A9BB0	q6175	open (self leaf differs)	??1?$CCountedPointer@VCDiskFileWin32@@@@QAE@XZ	@Dest_val_CCountedPointer@8		
+0x009A9BF0	q6176	open (self leaf differs)	??4?$CCountedPointer@VCDiskFileWin32@@@@QAEAAV0@ABV0@@Z	@CCountedPtr_assign@12		
+0x009A9C80	q6179	open (self leaf differs)	?Reset@?$CCountedPointer@VCThreadedFile@@@@QAEXPAVCThreadedFile@@@Z		009d5820	
+0x009A9D10	q6178	open (self leaf differs)	??0?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@PAVCRetailBank@NBankFileManager@@@Z	@CCountedPtr_ctor@12		
+0x009A9D60	q6927	self-done, binders-open	??1?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@XZ	??1?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@XZ	009d56c0	
+0x009AA7C0	q6186	open (self leaf differs)	?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@Z	?Erase@CRetailTree_erase009aa7c0@@QAEXPAUnode@1@@Z	009a7990,009ab700	
+0x009AB4F0	q4391	self-done, binders-open	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@1@ABVCCharString@@@Z	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@1@ABVCCharString@@@Z	009a80b0	
+0x009AB560	q4392	self-done, binders-open	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@1@ABVCCharString@@@Z	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@1@ABVCCharString@@@Z	009a7d40,009a7e20,009a80b0	
+0x009AB5D0	q4393	self-done, binders-open	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@1@ABVCCharString@@@Z	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@1@ABVCCharString@@@Z	009a7d40,009a7e20,009a80b0	2026-11-16_agentNF41
+0x009AC2D0	q6374,q6378	no-symbol (claim text only)		??0?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ		
+0x009AC310	q6375,q6379	open (self leaf differs)	?AutoTinyMemberDestructor_009ac310@@YIXPAX@Z,		00d7c6d0,00d84b20,00e55ce0	
+0x009AC5D0	q6187	likely-done (self leaf = claim, no wrong binder in table)	??A?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QAEAAVCBankInfo@CBankFileManager@@ABVCCharString@@@Z	??A?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QAEAAVCBankInfo@CBankFileManager@@ABVCCharString@@@Z		2026-11-17_agentNF75
+0x009AC700	q6506	open (self leaf differs)	??ACStringMap_009a8150@@QAEAAVCCharString@@ABV1@@Z,	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z	00ece460	2026-11-17_agentNF85,2026-11-17_agentNF87
+0x009AD410	q6233	open (self leaf differs)	?GetDefGlobalIndexFromName@DefinitionMethods@@QAEJABVCCharString@@@Z;	GetDefGlobalIndexFromName	00449d90,006e11f0,0082a9b0,0088fee0,0088ffb0,00890010,008902e0,00895a10,008981c0,00898b30,00898db0,0089fbb0,008fd0a0	2026-11-11_agentNF22
+0x009ADA40	q4732	likely-done (self leaf = claim, no wrong binder in table)	?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z	?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z		
+0x009ADE10	q4731	likely-done (self leaf = claim, no wrong binder in table)	?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z	?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z		2026-11-16_agentNF34,2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-16_agentNF44,2026-11-17_agentNF53
+0x009B9BA0	q4656	open (self leaf differs)	?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z			2026-11-16_agentNF35
+0x009BA080	q4657	open (self leaf differs)	?ReadNextItem@CStringParser@@QAE_NAAVCParsedItem@@@Z		009ba8c0,009ec430	
+0x009BA1D0	q6340	open (self leaf differs)	?ReadNextItemAsQuotedString@CStringParser@@QAEXAAVCCharString@@@Z)	ReadNextItemAsQuotedString	004b5500,005079c0	
+0x009BA330	q4658	self-done, binders-open	?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	0040e510	
+0x009BAB50	q4213	open (self leaf differs)	?WriteString@CPersistContext@@QAEXABVCCharString@@@Z	?Run@T@@QAEXXZ	004b64e0,004fde80	
+0x009BE060	q4100	open (self leaf differs)	?clear@?$_List_base@UCSubTitle@@V?$allocator@UCSubTitle@@@std@@@std@@QAEXXZ	?clear@?$_List_base@UCSubTitle@@	00a3bc20,00a3bde0	
+0x009BE420	q4290	open (self leaf differs)	?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z		00b4f510	
+0x009BE6C0	q4199	likely-done (self leaf = claim, no wrong binder in table)	?GetBestAlphaTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z	?GetBestAlphaTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z		2026-11-16_agentNF35
+0x009BE870	q6304	open (self leaf differs)	?GetBestCompressedAlphaTextureFormat@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z	?GetBestCompressedAlphaTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z	00ab8e10	
+0x009BEDC0	q4291	open (self leaf differs)	?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ		00405650,0040f0e0	
+0x009BEDE0	q4729	self-done, binders-open	?GetVertexShaderVersion@CDisplayManager@@QBEKXZ	?GetVertexShaderVersion@CDisplayManager@@QBEKXZ	00b3b030	2026-11-11_agentNF22
+0x009BEF20	q4292,q6168	open (self leaf differs)	?BeginRender@CDisplayManager@@QAE_NXZ		00499880,00499d90	
+0x009BFB30	q4056	open (self leaf differs)	?ResetDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z	ResetDevice	009bfe70	
+0x009C0190	q4444,q4733	self-done, binders-open	?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z	?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z	00418dca	
+0x009C9070	q4356	likely-done (self leaf = claim, no wrong binder in table)	?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z	?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z		2026-11-16_agentNF47
+0x009CC2A0	q6308	open (self leaf differs)	?Apply@Target@@QAEXPAXPAVC2DCoordI@@KK@Z		00a62120	
+0x009CE8D0	q5050	open (self leaf differs)	?BeginUpdateEntries@CBankFile@@QAEXXZ		00502170,00b2c4e0	
+0x009D2DD0	q4394	self-done, binders-open	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@std@@@1@ABVCCharString@@@Z	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@std@@@1@ABVCCharString@@@Z	009f03b0,009f0570,009f05a0	
+0x009D58A0	q3886	self-done, binders-open	?Close@CBankFileAsync@@UAEXXZ	?Close@CBankFileAsync@@UAEXXZ	00502170,00a26c50	
+0x009D8CF0	q6166	self-done, binders-open	?ClearRenderTarget@CRenderManager2D@@QAEXABVCRGBColour@@K@Z	?ClearRenderTarget@CRenderManager2D@@QAEXABVCRGBColour@@K@Z	00b87680	2026-11-16_agentNF44
+0x009DA9F0	q4293,q6169	self-done, binders-open	?Render2DDrawList@CRenderManager2D@@QAEX_N@Z	?Render2DDrawList@CRenderManager2D@@QAEX_N@Z	00499880,00499d90	
+0x009E1BC0	q4294	open (self leaf differs)	?GFGetTime@@YINXZ		00b26360	
+0x009E2590	q5199,q5220	open (self leaf differs)	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	TransferIn	004059f0,00463334,004aa3f0,0057f6e9,0057f93e,005d8167,005dc3c0,006ba480,006d41f0,007ad7b0,009e9080	
+0x009E3790	q4295	open (self leaf differs)	?Initialise@CPixelFormat@@QAEXJJJJ_N@Z		0066ca80	
+0x009E41D0	q6292,q6302	self-done, binders-open	?M@C009e41d0@@QAEXXZ	?M@C009e41d0@@QAEXXZ	00ab6e40	
+0x009E4710	q3887	open (self leaf differs)	?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ		009e42c0,009e4830,00a66860,00ab6450	
+0x009E4CB0	q5005	open (self leaf differs)	?GetItemFromPath@CDriveManager@@AAE_NPB_WKPA_W@Z	?GetItemFromPath@CDriveManager@@AAE_NPBGKPAG@Z	009e4da0	
+0x009E5090	q4797	self-done, binders-open	?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z	?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z	006e0730,006fc8e0	
+0x009E50C0	q4688	open (self leaf differs)	?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@ABVCCharString@@J@Z			
+0x009E84D0	q5202	open (binders)	?TransferIn@?$CPersistTraits@VC3DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVC3DVector@@@Z		0048531e	
+0x009E8C10	q5204	self-done, binders-open	?TransferIn@?$CPersistTraits@VCRGBColour@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCRGBColour@@@Z	?TransferIn@?$CPersistTraits@VCRGBColour@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCRGBColour@@@Z	006421c0	
+0x009E9080	q5200	open (self leaf differs)	?TransferIn@?$CPersistTraits@E@@QAEXAAVCPersistContext@@AAVCStringParser@@AAE@Z			
+0x009E9390	q4357	self-done, binders-open	?Close@CMemoryFile@@UAEXXZ	?Close@CMemoryFile@@UAEXXZ	00412020,004120c0	
+0x009F2000	q4197	open (self leaf differs)	?EnterSynchronisation@CMemoryAllocator@@KIXXZ		009a1660,009a4350	
+0x009F2010	q4198	open (self leaf differs)	?LeaveSynchronisation@CMemoryAllocator@@KIXXZ		009a1660,009a4350	
+0x009F2E20	q6305	open (self leaf differs)	??1CHolderBase_009f2e20@@QAE@XZ;		004979a0,00642a60,0066c7a0,009bf350,009c1050,00a10e10,00b4b830	
+0x009F5690	q5031	likely-done (self leaf = claim, no wrong binder in table)	??0CInputEventPackage@@QAE@AAVCAFile@@@Z	??0CInputEventPackage@@QAE@AAVCAFile@@@Z		
+0x009F9E00	q6306	open (self leaf differs)	?GetMipmapSurface@CTexture@@QBE?AVCSurface@@J@Z;	?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z	00642880,009bf350,009fa100	2026-11-19_agentNF93_part1,2026-11-19_agentNF93_part2,2026-11-19_agentNF93_part3
+0x009F9F70	q4296	open (self leaf differs)	?Uninitialise@CTexture@@QAEXXZ		009c1ac0,009c2520	
+0x009FA1C0	q4659	open (self leaf differs)	??4CTexture@@QAEABV0@ABV0@@Z		0082cd00	
+0x009FA280	q4297,q6307	conflicting-claims	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z	Initialise	0055fc90,00642880,00a3b5f0,00f37440	
+0x009FA4E0	q4298	self-done, binders-open	?CopyFromTexture@CTexture@@QAEXABV1@K@Z	?CopyFromTexture@CTexture@@QAEXABV1@K@Z	00547f60	
+0x009FBF90	q4943	open (self leaf differs)	?ListInsert@CResource@@AAEXPAV1@0@Z			2026-11-16_agentNF35,2026-11-16_agentNF39,2026-11-17_agentNF53,2026-11-17_agentNF62,2026-11-17_agentNF66,2026-11-17_agentNF71,2026-11-17_agentNF73,2026-11-17_agentNF76
+0x009FBFB0	q4942	open (self leaf differs)	?ListRemove@CResource@@AAEXXZ			2026-11-16_agentNF35,2026-11-16_agentNF39,2026-11-17_agentNF53,2026-11-17_agentNF62,2026-11-17_agentNF66,2026-11-17_agentNF71,2026-11-17_agentNF73,2026-11-17_agentNF76
+0x009FCBA0	q4941	open (self leaf differs)	?Uninitialise@CGraphicFrameData@@QAEXXZ			2026-11-17_agentNF53,2026-11-17_agentNF62,2026-11-17_agentNF66,2026-11-17_agentNF71,2026-11-17_agentNF73,2026-11-17_agentNF76
+0x009FDE80	q4940,q6312	conflicting-claims	?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z			
+0x009FE620	q4938	open (self leaf differs)	?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z	?BeginLoading@CGraphicInfoFrame@@		2026-11-16_agentNF35,2026-11-17_agentNF53,2026-11-17_agentNF62,2026-11-17_agentNF66,2026-11-17_agentNF71,2026-11-17_agentNF73,2026-11-17_agentNF76
+0x009FF6B0	q4939	open (self leaf differs)	?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z			2026-11-12_agentNF31
+0x00A01B50	q4978,q5012	self-done, binders-open	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	006473b9,00658ec3,0065c45a,0065ed7a,0065ee2d,0065eedd,0065ef72,0065f116,006929a0,00699090,006a23e0,006a2e20,006a3130,006a3180,006a31d0,006a3220,006a3300,006a7f70,006a7f90,006e4bd0,006e55b0,00737ad0,00	2026-11-11_agentNF22
+0x00A01B90	q5013	self-done, binders-open	?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z	?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z	006a23e0,006a2e20,006a3130,006a3180,006a31d0,006a3220,006a3300,006e1080,006e4bd0,00737ad0,00739550,00748d80,0074ce40,00807b70,00809d60,0080df90,0082c5e0,0089e540,008d74b0,00933c10	2026-11-11_agentNF22,2026-11-11_agentNF23
+0x00A02D20	q4730	open (self leaf differs)	??0CHandleBasedMemoryPool@@QAE@XZ	??0CHandleBasedMemoryPool		
+0x00A03B30	q4299	open (self leaf differs)	??1CInputEvent@@QAE@XZ	?M@C00a03b30@@QAEXXZ	009e45d0	2026-11-16_agentNF35,2026-11-16_agentNF36,2026-11-17_agentNF53
+0x00A03B40	q4300	self-done, binders-open	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	00687a90,00689130,0068c880,00690360	
+0x00A03B70	q4301	self-done, binders-open	?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ	?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ	0068c7f0	
+0x00A04030	q6295,q6300	no-symbol (claim text only)				
+0x00A04060	q6301	no-symbol (claim text only)				
+0x00A04090	q6293,q6298	open (self leaf differs)	?SetAsJoystickButton1@CInputEvent@@QAEX_NJABVC2DVector@@N@Z)		00ab6e40	
+0x00A04110	q6294,q6299	no-symbol (claim text only)				
+0x00A04410	q4302	self-done, binders-open	??0CInputEvent@@QAE@XZ	??0CInputEvent@@QAE@XZ	004473a0,009e45b0	
+0x00A058C0	q4660	open (self leaf differs)	?RealiseRenderState@CRenderStateManager@@QAEXXZ			
+0x00A0AA20	q4727	open (self leaf differs)	?EnableXBoxShaderConstants@CRenderManagerCore@@QAEX_N@Z	?M@C00a0aa20@@QAEXH@Z	00987fe0	
+0x00A0AA80	q4661	likely-done (self leaf = claim, no wrong binder in table)	?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z	?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z		2026-11-16_agentNF35,2026-11-17_agentNF56
+0x00A0AD40	q4548	open (self leaf differs)	?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXKKKK@Z			
+0x00A0AEA0	q6237	open (self leaf differs)	?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPAVCTexture@@KPBXJJ1J@Z;		00b5e0f0	2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42
+0x00A0AF40	q6297	open (self leaf differs)	?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPBXJJ0J@Z		00b5af80	2026-11-16_agentNF35
+0x00A0B560	q4303,q6167	self-done, binders-open	?SetVWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z	?SetVWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z	00b7ad20	
+0x00A14040	q6244	no-symbol (claim text only)		?RotateXY@C3DVector@@QAEXM@Z		
+0x00A14E20	q4758	open (self leaf differs)	?FrameUpdate@CNavigatorManager@@QAEXXZ	Clear		
+0x00A1A170	q5008	open (self leaf differs)	?IsEqual@CNavigatorAStar@@ABE_NPBVCANavQuadTreeNode@@0@Z	IsEqual		
+0x00A20970	q4498	open (self leaf differs)	?SetGoal@CSteeringAgent@@QAEXABVC2DVector@@0@Z		00a1e370	
+0x00A229E0	q5209	self-done, binders-open	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	00723760	
+0x00A23AD0	q4022	likely-done (self leaf = claim, no wrong binder in table)	?FrameEnd@CMeshDataBank@@QAEXXZ	?FrameEnd@CMeshDataBank@@QAEXXZ		
+0x00A24270	q4913	likely-done (self leaf = claim, no wrong binder in table)	?PeekMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z	?PeekMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z		
+0x00A3A840	q5003	open (self leaf differs)	?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z	?DecompressStream@CCompressorZlib_Retail@@QAEKPAXKPA_N@Z	009949f0	
+0x00A3B9D0	q4305	self-done, binders-open	?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z	?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z	00547c90	
+0x00A42100	q4959	open (self leaf differs)	?Sort@?$CVectorMap@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@@QAEXXZ	OnInitialActivate		
+0x00A442E0	q4916	likely-done (self leaf = claim, no wrong binder in table)	?GFGetShortestDistanceSquaredBetweenPointAndLine@@YIMABVC3DVector@@00AAM@Z	?GFGetShortestDistanceSquaredBetweenPointAndLine@@YIMABVC3DVector@@00AAM@Z		
+0x00A475C0	q5009	open (binders)	?FindNearestNavigableNode@CNavigatorBase@@IBEPBVCANavQuadTreeNode@@PBV2@0ABVC3DVector@@MPBVCNavigatorManager@@@Z		00a1bca0,00a1bee0	
+0x00A4C1F0	q4834	catalog-only (no landed self row, no wrong binder)	?GetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXAAVC3DKeyframe@@KM@Z			
+0x00A4CDD0	q4209	open (self leaf differs)	?ReadCompressedFromFile@C3DAnimationSequence@@QAEXAAVCDataInputStream@@KPAVC3DAnimationSequenceData@@AAVCSimpleMemoryPool@@@Z	ReadCompressedFromFile@C3DAnimationSequence	00a4df10	
+0x00A4EFC0	q4211	catalog-only (no landed self row, no wrong binder)	?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z			
+0x00A537F0	q4205	open (self leaf differs)	?GetRoot@C3DAnimFile@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileRootChunk@@@@XZ	?GetRoot@C3DAnimFile	00a4ebb0	
+0x00A55A30	q5138	open (self leaf differs)	?ToC2DBoxI@C2DBoxF@@QBE?AVC2DBoxI@@XZ	ToIntBox	00978fd0	
+0x00A567A0	q4835	open (binders)	?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z		007dcfd0,00b20fd0	
+0x00A58720	q6310	likely-done (self leaf = claim, no wrong binder in table)	??RCProjectOntoPlane@@	??RCProjectOntoPlane@@		2026-11-16_agentNF34,2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40
+0x00A5A9D0	q6311	no-symbol (claim text only)				
+0x00A5C570	q4054	open (self leaf differs)	??0CSimpleMemoryPool@@QAE@KK@Z	??0CSimpleMemoryPool	00b260b0	
+0x00A5D4D0	q4662	open (self leaf differs)	?Initialise@CShaderResource@@AAEXAAVCShaderRenderManager@@@Z	?M@C_00a5d4d0@@QAEXK@Z	0098b860	
+0x00A5D5F0	q4549	self-done, binders-open	?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z	?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z	00b90270,00bca770	
+0x00A5D720	q4550	open (self leaf differs)	?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@ABVCCharString@@@Z			
+0x00A628D0	q4051	likely-done (self leaf = claim, no wrong binder in table)	??1CShaderBankEntry@@UAE@XZ	??1CShaderBankEntry@@UAE@XZ		
+0x00A62FB0	q4551	likely-done (self leaf = claim, no wrong binder in table)	??0CVertexShader@@QAE@XZ	??0CVertexShader@@QAE@XZ		
+0x00A63150	q4552	open (self leaf differs)	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z		009e2830,009e2e30,00b61ff0,00b620a0,00b6d940,00baa6a0,00bbf380,00bf3380	
+0x00A76320	q4787	open (self leaf differs)	?GetSmallestNodeSize@CNavQuadTree@@SIMXZ	GetCombatMinDistance	00a16050,012242b0	
+0x00A76770	q5152	catalog-only (no landed self row, no wrong binder)	?GetLeafNodeAt@CNavQuadTreeNode@@MBEPBVCANavQuadTreeNode@@ABVC2DVector@@@Z			
+0x00A770B0	q4782	self-done, binders-open	?GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z	?GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z	00a77480	
+0x00A7AF60	q4785	self-done, binders-open	?LoadFromFile@CNavQuadTree@@QAE_NAAVCAFile@@JABVC2DBoxI@@AAVCASuspendableProcess@@@Z	?LoadFromFile@CNavQuadTree@@QAE_NAAVCAFile@@JABVC2DBoxI@@AAVCASuspendableProcess@@@Z	00a157c0	2026-11-16_agentNF41
+0x00A80A20	q4784	open (self leaf differs)	?clear@?$_List_base@V?$CCountedPointer@VCNavRegionConnection@@@@V?$allocator@V?$CCountedPointer@VCNavRegionConnection@@@@@std@@@std@@QAEXXZ			2026-11-16_agentNF35
+0x00A8E160	q6203	open (self leaf differs)	??0CVertexBufferWin32@@QAE@XZ	??0CVertexBufferWin32_Retail@@QAE@XZ		
+0x00A8EDA0	q6242	open (self leaf differs)	?SetupVertexBuffer@C3DPrimitive2@@QAE_NJKKK@Z		00a91640	
+0x00A8FF50	q5022	likely-done (self leaf = claim, no wrong binder in table)	?ConvertToVBFormatNonBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1@@AAVCDeviceIndependent@2@@Z	?ConvertToVBFormatNonBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1@@AAVCDeviceIndependent@2@@Z		2026-11-12_agentNF29
+0x00A93A60	q6243	open (self leaf differs)	?Destroy_00a93a60@@YIXPAX@Z		00a91640	2026-11-16_agentNF35
+0x00A98600	q6245	no-symbol (claim text only)				
+0x00A99110	q4207	self-done, binders-open	?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	00a99610	
+0x00A99390	q4206	self-done, binders-open	?GetHelpers@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileHelpersChunk@@@@XZ	?GetHelpers@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileHelpersChunk@@@@XZ	00a4ebb0	
+0x00A99FF0	q4553	open (self leaf differs)	?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z	DeleteData	00a9cf40	
+0x00A9D480	q4883	likely-done (self leaf = claim, no wrong binder in table)	?AlignedPreScale@CMatrix4x4@@QAEXABVC3DVector@@@Z	?AlignedPreScale@CMatrix4x4@@QAEXABVC3DVector@@@Z		
+0x00AA4170	q4052	likely-done (self leaf = claim, no wrong binder in table)	??1C3DAnimationManager@@UAE@XZ	??1C3DAnimationManager@@UAE@XZ		
+0x00AA8360	q4362	open (self leaf differs)	??0CChunkedFileSuperChunk@@IAE@PBD@Z	??0CChunkedFileSuperChunk	00ac0c00	
+0x00AAD150	q6209	no-symbol (claim text only)				
+0x00AADD80	q6206	self-done, binders-open	??0?$vector@G	??0?$vector@G	00aad5d0,00aad650	
+0x00AADE80	q6207	self-done, binders-open	??4?$vector@G	??4?$vector@G	00aad5d0,00aad650	
+0x00AADFF0	q6208	no-symbol (claim text only)				2026-11-16_agentNF36
+0x00AAE5B0	q4208	self-done, binders-open	?GetMovementVector@C3DAnimFileHelpersChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileMovementVectorChunk@@@@XZ	?GetMovementVector@C3DAnimFileHelpersChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileMovementVectorChunk@@@@XZ	00a4ebb0	
+0x00AB9F60	q6249	no-symbol (claim text only)		?GetBoneIndex@C3DMeshFileGroupChunk@@QBEJXZ		2026-11-16_agentNF36
+0x00ABA350	q6248	no-symbol (claim text only)		?GetCount@C3DMeshFileGroupChunk@@QBEKXZ		2026-11-16_agentNF36
+0x00ABA360	q6246	no-symbol (claim text only)		?GetCount@C3DMeshFileVerticesChunk@@QBEKXZ		2026-11-16_agentNF36
+0x00ABA370	q6247	open (self leaf differs)	?CWorldMap_DrawGetNoMaps@@YIJPAVCWorldMap@@@Z	?GetCount@C3DMeshFileTrianglesChunk@@QBEKXZ	00a90900	2026-11-12_agentNF30
+0x00AC1EC0	q4554	self-done, binders-open	??0CIndexBuffer@@QAE@XZ	??0CIndexBuffer@@QAE@XZ	00bf3290	
+0x00AC1F00	q4555	open (self leaf differs)	?Unlock@CIndexBuffer@@QAEXXZ		00b620a0,00baa6a0,00bbf380	
+0x00AC1F10	q4556	open (self leaf differs)	?GetSize@CIndexBuffer@@QBEJXZ	?CIndexBuffer_GetSize@@YIJPAVCIndexBuffer@@@Z	00b620a0,00bbf380	
+0x00AC1F70	q4557	open (self leaf differs)	?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z		00b620a0,00baa6a0,00bbf380,00bda360	
+0x00AC1FB0	q4558	open (self leaf differs)	?Lock@CIndexBuffer@@QAEPAEKKK@Z		00b620a0,00baa6a0	
+0x00AC20A0	q4559	open (self leaf differs)	?Lock@CVertexBufferBase@@QAEPAEKKK@Z		00a914b0,00b61ff0,00b620a0,00b6d940,00baa6a0,00bbf380	
+0x00AC20B0	q4560	open (self leaf differs)	?Unlock@CVertexBufferBase@@QAEXXZ		00a914b0,00b61ff0,00b620a0,00baa6a0,00bbf380	
+0x00AD3A10	q6197	open (self leaf differs)	??0?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@ABV01@@Z	??0?$set@	00ac8960,00ad62b0,00ad6ae0,00ad77f0,00ad7e80,00ae7880	
+0x00AD4A70	q6196	open (self leaf differs)	??1CUniqueVertex@QuadricOptimiserInternals@@QAE@XZ	??1CTwoLongSets	00ad7e80	
+0x00AD71B0	q6201	no-symbol (claim text only)		?Remove@COptimisedVertex@QuadricOptimiserInternals		
+0x00ADF610	q4885	self-done, binders-open	?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z	?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z	00ae0050	
+0x00AE0710	q4364	self-done, binders-open	?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z	?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z	00ae34d0	
+0x00AE29D0	q4889	open (binders)	?SetupSimulation@CParticleProgram@@QBE_NAAVCParticleSimulation@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@AAVCMovableResourceMemoryPool@@ABVCParticleContext@@@Z		00b82100	
+0x00AEAAA0	q4788	likely-done (self leaf = claim, no wrong binder in table)	?GetGraphicBank@NParticleEngine@@YIABVCGraphicDataBank@@XZ	?GetGraphicBank@NParticleEngine@@YIABVCGraphicDataBank@@XZ		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40
+0x00AEAAF0	q4754	self-done, binders-open	?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ	?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ	00543d30,006e11f0,006e13e0,0080d0b0,0088f4a0,00af5010	2026-11-12_agentNF29,2026-11-12_agentNF30
+0x00AEB600	q4954	self-done, binders-open	?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@PBV32@0MABVC3DVector@@ABVCRightHandedSet@@@Z	?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@PBV32@0MABVC3DVector@@ABVCRightHandedSet@@@Z	00aeb850	
+0x00AEB790	q4977	self-done, binders-open	?Create2DEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC2DVector@@W4EEngine2DLayer@@_NABVCRightHandedSet@@@Z	?Create2DEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC2DVector@@W4EEngine2DLayer@@_NABVCRightHandedSet@@@Z	00543d30,00645ce9	
+0x00AF0710	q4219	open (self leaf differs)	?DeleteData@?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@SIXPAX@Z	DeleteData	00aeef40	
+0x00AF0FA0	q4220	open (self leaf differs)	?_M_insert_overflow@?$vector@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@@std@@IAEXPAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@ABV3@ABU__false_type@2@I_N@Z	?_M_insert_overflow@?$vector@V?$CCountedPointer@	00aeef40	2026-11-11_agentNF20
+0x00AF1860	q4919	open (self leaf differs)	?Reset@?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAEXPAVCParticleEmitter@NParticleEngine@@@Z			2026-11-12_agentNF29
+0x00AFE910	q4796	likely-done (self leaf = claim, no wrong binder in table)	?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z	?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z		
+0x00AFEAD0	q4795	self-done, binders-open	??0CEnginePrimitiveParticleMeshGroup@@QAE@KABVCMatrix3x4@@W4EEnginePrimitiveBlendMode@@W4EEnginePrimitiveBlendOp@@@Z	??0CEnginePrimitiveParticleMeshGroup@@QAE@KABVCMatrix3x4@@W4EEnginePrimitiveBlendMode@@W4EEnginePrimitiveBlendOp@@@Z	00aff0a0	
+0x00B0F630	q4020	open (self leaf differs)	?clear@?$_List_base@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@...	?clear@?$_List_base@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXXZ	00b0ca90,00b0f990	
+0x00B2AD80	q5130	self-done, binders-open	?ChangeSceneForTextureBank@CEngineSurfaceCompositionManager@@QAEXXZ	?ChangeSceneForTextureBank@CEngineSurfaceCompositionManager@@QAEXXZ	00b3b4f0	
+0x00B2FC00	q4582	open (self leaf differs)	?SetGameWindow@CEngineCamera@@QAEXPBVC2DBoxF@@@Z	?M@C_00b2fc00@@QAEXK@Z		
+0x00B31E90	q4584	open (self leaf differs)	?SetPrimitiveAnimation@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z	SetPrimitiveAnimation		
+0x00B31EC0	q4585	open (self leaf differs)	?SetPrimitivePosition@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z	SetPrimitivePosition		
+0x00B31EF0	q4586	open (self leaf differs)	?AddChildPrimitive@CEnginePrimitiveRenderer@@QAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z	AddChildPrimitive		
+0x00B31F20	q4587	open (self leaf differs)	?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z	?SetChildPrimitive@CEnginePrimitiveRenderer_Methods@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z		
+0x00B31F50	q4588	open (self leaf differs)	?GetChildPrimitiveHandle@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0@Z	GetChildPrimitiveHandle		
+0x00B31F70	q4589	open (self leaf differs)	?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z	?SetChildPrimitive@CEnginePrimitiveRenderer_Methods@@QAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z		
+0x00B31FA0	q4590	open (self leaf differs)	?ClearChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K@Z	ClearChildPrimitive		
+0x00B32E90	q4583	open (self leaf differs)	?AddPrimitive@CEnginePrimitiveRenderer@@QAEXABVCEnginePrimitive@@@Z			
+0x00B3A760	q5164	self-done, binders-open	?clear@?$_List_base@VCEngineInternalAttachedPrimitiveInfo@@V?$allocator@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAEXXZ	?clear@?$_List_base@VCEngineInternalAttachedPrimitiveInfo@@V?$allocator@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAEXXZ	00b3adc0	
+0x00B3B030	q4561	open (self leaf differs)	?GetVertexBufferUsage@CEngineResourceManager@@QAEKXZ			
+0x00B3B060	q4562	open (self leaf differs)	?GetIndexBufferUsage@CEngineResourceManager@@QAEKXZ			
+0x00B3B0A0	q4563	open (self leaf differs)	?GetIndexBufferMemPool@CEngineResourceManager@@QAE?AW4EIndexBufferPool@@XZ	AddChildPrimitive	00be91e0	
+0x00B3B1F0	q4595	open (self leaf differs)	?AllocateExternalTextureFromResourcePools@CEngineResourceManager@@QAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z	?AllocateTexture@CEngineResourceManager		
+0x00B3B5B0	q4596	open (self leaf differs)	?FreeExternalTextureFromResourcePools@CEngineResourceManager@@QAEXPAVCTexture@@@Z	?FreeTexture@CEngineResourceManager		
+0x00B401E0	q4603	likely-done (self leaf = claim, no wrong binder in table)	?OnGameMapLoaded@CEngineWorldMap@@QAEXJ@Z	?OnGameMapLoaded@CEngineWorldMap@@QAEXJ@Z		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-17_agentNF56,2026-11-17_agentNF59
+0x00B40230	q4591	open (self leaf differs)	?OnGameMapUnloaded@CEngineWorldMap@@QAEXJ@Z			
+0x00B42390	q4592	open (self leaf differs)	?SetMapVisibility@CEngineWorldMap@@QAEXJ_N@Z			
+0x00B423B0	q4593	open (self leaf differs)	?SetMapVisibilityAllMaps@CEngineWorldMap@@QAEX_N@Z	SetMapVisibility		
+0x00B44CE0	q4500	open (self leaf differs)	?ResetAlreadyFoundFlags@CEngineLightingManager@@AAEXJJJJ@Z			
+0x00B44D50	q4564	open (self leaf differs)	?DisablePointLights@CEngineLightingManager@@QAEXXZ			2026-11-16_agentNF36
+0x00B44F20	q4565	open (self leaf differs)	?SetupShaderPointLights@CEngineLightingManager@@QAEXABVCEngineLocalLightArray@@@Z	SetupShaderPointLights	00bbc0b0	2026-11-11_agentNF20,2026-11-16_agentNF36
+0x00B44FE0	q4499	open (self leaf differs)	?ClipLightCountAndBuildLightArray@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@PAUCManagerLocalLight@1@JABVC3DVector@@JABVCEnginePrimitiveThemeChannelDesc@@@Z	ClipLightCountAndBuildLightArray		2026-11-16_agentNF36
+0x00B48F20	q4501	open (self leaf differs)	?CreateMoreBlocks@?$CDynamicObjectHeap@$0M@$0BA@@@AAEXXZ	CreateMoreBlocks	00b495c0	
+0x00B48F90	q4504	open (self leaf differs)	?CreateMoreBlocks@?$CDynamicObjectHeap@$0EI@$0BA@@@AAEXXZ	CreateMoreBlocks	00b47fd0	
+0x00B49DF0	q4506	open (self leaf differs)	?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXPAPAUCManagerLocalLight@CEngineLightingManager@@ABQAU34@ABU__true_type@2@I_N@Z	?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEX	00b47fd0	
+0x00B4A5F0	q4594	open (self leaf differs)	?SetLightingParameters@CEnginePrimitiveRenderer2D@@QAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z			
+0x00B4B890	q4597	open (self leaf differs)	?XBoxDeallocateShadowBuffer@CEngineShadowRenderer@@QAE_NXZ			
+0x00B4B8A0	q4598	open (self leaf differs)	?XBoxReallocateShadowBuffer@CEngineShadowRenderer@@QAEXXZ			
+0x00B4F390	q4507	likely-done (self leaf = claim, no wrong binder in table)	?UpdateShadowScene@CEngineShadowRenderer@@QAEXABVCEngineCamera@@_NABUCEngineLightingManagerSpotlightParams@@@Z	?UpdateShadowScene@CEngineShadowRenderer@@QAEXABVCEngineCamera@@_NABUCEngineLightingManagerSpotlightParams@@@Z		2026-11-16_agentNF35,2026-11-17_agentNF53,2026-11-17_agentNF57
+0x00B4FC10	q5011	open (self leaf differs)	?ChangeVideoOptionShadowQuality@CEngineShadowRenderer@@QAE_NJM@Z			
+0x00B50EE0	q4599	open (self leaf differs)	?OverrideRain@CEngineWeatherRenderer@@QAEXM@Z			
+0x00B50F40	q4600	open (self leaf differs)	?OverrideSnow@CEngineWeatherRenderer@@QAEXM@Z			
+0x00B51AD0	q4826	open (binders)	?BuildBoxPositionMatrix@CEngineWeatherRenderer@@AAEXXZ		00b51ea0	
+0x00B5A3F0	q6537	open (self leaf differs)	?CEngineScreenEffectColourFilter_DoRender@@YIXPAVCEngineScreenEffectColourFilter@@@Z	?ApplyColourFilter@CEngineScreenEffectColourFilter@@AAEXXZ		
+0x00B5AF60	q6538	likely-done (self leaf = claim, no wrong binder in table)	?CEngineScreenEffectColourFilter_Render@@YIXPAVCEngineScreenEffectColourFilter@@HABVCEngineComponentRenderParams@@@Z	?CEngineScreenEffectColourFilter_Render@@YIXPAVCEngineScreenEffectColourFilter@@HABVCEngineComponentRenderParams@@@Z		
+0x00B5ECE0	q6223	open (self leaf differs)	?InitialiseTextures@CGlowRendererMethods@@QAEHXZ	?InitialiseTextures@CEngineScreenEffectGlowRenderer@@AAE_NXZ	00b5f090	2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-16_agentNF44,2026-11-17_agentNF57
+0x00B6CBD0	q4566	self-done, binders-open	?resize@?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEXI@Z	?resize@?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEXI@Z	00bbeaf0	
+0x00B7C510	q4602	likely-done (self leaf = claim, no wrong binder in table)	?SetupSeaBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ	?SetupSeaBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-17_agentNF57,2026-11-17_agentNF68
+0x00B7EDF0	q4567	open (self leaf differs)	?resize@?$vector@UCPreTransposedBoneMatrix@@V?$allocator@UCPreTransposedBoneMatrix@@@std@@@std@@QAEXIABUCPreTransposedBoneMatrix@@@Z	?resize@?$vector@UCPreTransposedBoneMatrix@@	00b75ca0	2026-11-17_agentNF83
+0x00B84580	q4824	self-done, binders-open	?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXPAVCEngineSubPrimitiveBase@@MEKPAVCEnginePrimitiveManager@@AAVCEngineSubPrimitiveChain@@@Z	?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXPAVCEngineSubPrimitiveBase@@MEKPAVCEnginePrimitiveManager@@AAVCEngineSubPrimitiveChain@@@Z	00b846e0	
+0x00B94540	q4825	catalog-only (no landed self row, no wrong binder)	?ResizeLevels@CEngineSceneMap@@AAEXJ@Z			
+0x00BBE090	q4810	open (binders)	?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z		00bbc130	
+0x00BC04F0	q4811	self-done, binders-open	?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	00bad2e0	2026-11-16_agentNF36
+0x00BE08E0	q4395	self-done, binders-open	??$find@J@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@1@ABJ@Z	??$find@J@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@1@ABJ@Z	00be0400,00be06b0	
+0x00BE4660	q6252	no-symbol (claim text only)				
+0x00BE5C60	q3907	self-done, binders-open	?GetEdgeStrip@CLandscapeBackgroundPatch@@QAEPAVCPatchTesselationEdgeStrip@@W4LANDSCAPE_EDGE_STRIP_SIDE@@@Z	?GetEdgeStrip@CLandscapeBackgroundPatch@@QAEPAVCPatchTesselationEdgeStrip@@W4LANDSCAPE_EDGE_STRIP_SIDE@@@Z	00bf6930	
+0x00BEAE50	q6205	open (self leaf differs)	?Load@CWaterPatchMesh@@QAE_NPAVCDataInputStream@@@Z	?Load@CWaterPatchMesh@@AAE_NAAVCDataInputStream@@@Z		2026-11-19_agentNF93_part3
+0x00BEB490	q6204	open (self leaf differs)	??0CWaterPatchMesh_Methods@@QAE@PAVCEngineLandscapeMap@@PAVCDataInputStream@@PBVC2DCoordI@@@Z	??0CWaterPatchMesh@@QAE@PAVCEngineLandscapeMap@@PAVCDataInputStream@@PBVC2DCoordI@@@Z		
+0x00C10940	q4316	open (self leaf differs)	??1CCardPositionsDef@@UAE@XZ		00c10a10	2026-11-16_agentNF36,2026-11-16_agentNF38
+0x00C11F00	q5172	open (self leaf differs)	?AcquireEvent@CSoundEventManager@@QAEPAUCSoundEvent@@K@Z	?OnKey@CSoundEventManager@@QAEXK@Z		
+0x00C14A50	q4960	open (self leaf differs)	?DeleteData@PKCDeferredBank@@QAEXPAVCData_00c14a50@@@Z	DeleteData	00c2c750	
+0x00C162A0	q6932	open (self leaf differs)	??1CUnprovenHolder_00c162a0@@QAE@XZ			2026-11-16_agentNF36,2026-11-16_agentNF38
+0x00C16900	q5192	open (self leaf differs)	??0CIntelligentPointer_00c16900@@QAE@ABU0@@Z		00c48770	
+0x00C16C10	q5114	no-symbol (claim text only)		HasBankSegments		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-17_agentNF57
+0x00C16F00	q5109	open (self leaf differs)	?ReadDeferredBank@@YIXPAX0PAVCLoadLog@@PAVCScriptHost@@PBUSBankRequest@@@Z	?ReadDeferredBank@@YGXPAVCLoadLog@@PAXPAVCScriptHost@@PBUSBankRequest@@@Z	00c174a0	2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-17_agentNF65
+0x00C1A510	q5108	self-done, binders-open	?OpenFile@PKCDefaultFileManager@@QAE_NPBGPAK@Z	?OpenFile@PKCDefaultFileManager@@QAE_NPBGPAK@Z	00c1abb0	2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42
+0x00C1BAE0	q5174	open (self leaf differs)	?GetStreamed@CSoundPlayParameters@@QBE_NXZ			
+0x00C1BC90	q5175	open (self leaf differs)	?Initialise@CSoundPlayParameters@@QAEXXZ	Init	00c1bd10	
+0x00C1E970	q5194	open (self leaf differs)	?GetBlockOffset@CStreamBlockReader@@...		00c1e9c0	
+0x00C1E990	q5195	open (self leaf differs)	?GetBlockTail@CStreamBlockReader@@...	CombatSequence_AlignDuration	00c1e9f0	
+0x00C1EB10	q4568	open (self leaf differs)	??1CVtable_012b3404@@UAE@XZ	?Op@C@@QAEXXZ	00c1e180	
+0x00C206E0	q5053	self-done, binders-open	?GetPlaybackKind@CSoundEvent@@QAEJXZ	?GetPlaybackKind@CSoundEvent@@QAEJXZ	00c213b0	
+0x00C207F0	q4891	self-done, binders-open	??1CSoundEvent@@QAE@XZ	??1CSoundEvent@@QAE@XZ	00c239b0,00c23ba0	
+0x00C20950	q4896	open (self leaf differs)	?WaitForPhysicalPlayer@CSoundEvent@@QAEXPAUCSoundEventManager@@PAUCStreamBuffer@@@Z	WaitForPhysicalPlayer	00c216d0	
+0x00C20A20	q4895	open (self leaf differs)	?PlayPhysical@CSoundEvent@@QAEXPAUCSoundEventManager@@PAUCStreamBuffer@@PAUCPhysicalPlayer@@@Z	PlayPhysical	00c21750	
+0x00C21780	q4894	self-done, binders-open	?Play@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z	?Play@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z	00c219f0,00c21a20,00c21c20	
+0x00C21BA0	q4892	open (self leaf differs)	??0CSoundEvent@@QAE@XZ		00c239b0	2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-17_agentNF57
+0x00C21C20	q5179	open (self leaf differs)	?Initialise@CSoundEvent@@QAEXPAUCSoundEventManager@@JJJJPAUCDriver@@JJJPBUSPKPlaybackRequest@@PBUSEventKey@@PBUSVoiceLevels@@_N33_N@Z	Initialize	00c12940	2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-17_agentNF57,2026-11-17_agentNF63,2026-11-17_agentNF65
+0x00C222D0	q5057	self-done, binders-open	??0CSoundEventSet@@QAE@JJJ@Z	??0CSoundEventSet@@QAE@JJJ@Z	00c11d00	
+0x00C25C60	q4901	open (self leaf differs)	?GetSample@CSampleRef@@QAEPAUCSoundSample@@XZ	?Get@T@@QAEHXZ	00c20880,00c25ce0	
+0x00C25CA0	q4902	open (self leaf differs)	??1CSampleRef@@QAE@XZ	?M@C00c25ca0@@QAEXXZ		
+0x00C26090	q4899	self-done, binders-open	?FinishLoading@CStreamBuffer@@QAEJPAUCSoundEventManager@@J@Z	?FinishLoading@CStreamBuffer@@QAEJPAUCSoundEventManager@@J@Z	00c267e0,00c26de0	
+0x00C262E0	q4897	open (self leaf differs)	?Attach@CStreamBuffer@@QAEXPAUCSoundEventManager@@PAUCSoundSample@@JJ@Z	Attach	00c267e0	
+0x00C26390	q4898	open (self leaf differs)	?Release@CStreamBuffer@@QAEXPAUCSoundEventManager@@@Z	?Release@CStreamBuffer@@	00c12140,00c22080,00c267e0,00c26de0	
+0x00C26400	q4900	open (self leaf differs)	??1CStreamBuffer@@QAE@XZ	?M@C00c26400@@QAEXXZ	00c12140,00c26de0	
+0x00C266E0	q5193	open (self leaf differs)	??0CPooledResource@@QAE@XZ	??0CNavigationTask_012b3fdc		
+0x00C27B70	q5176	open (self leaf differs)	?GetTrackBit0@CPKVoiceParams@@QBE_NXZ			
+0x00C27B80	q5177	open (self leaf differs)	?GetTrackBit1@CPKVoiceParams@@QBE_NXZ			
+0x00C27B90	q5178	open (self leaf differs)	?GetTrackBit2@CPKVoiceParams@@QBE_NXZ			
+0x00C29CA0	q6931	open (self leaf differs)	??1CBuffer_00c29ca0@@QAE@XZ			
+0x00C2A890	q4569	self-done, binders-open	?SendStateAndReset@CNavigatorSwitch@@QAEXXZ	?SendStateAndReset@CNavigatorSwitch@@QAEXXZ	00c14dd0	
+0x00C2DA00	q5110	open (self leaf differs)	?Read@CSegmentFile@@QAEHPAXH@Z		00c16e10	2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42
+0x00C2DA10	q5111	open (self leaf differs)	?GetPosition@CSegmentFile@@QAEKXZ			
+0x00C2DA20	q5113	likely-done (self leaf = claim, no wrong binder in table)	??0CSegmentFile@@QAE@PAXK@Z	??0CSegmentFile@@QAE@PAXK@Z		2026-11-17_agentNF53
+0x00C2DBE0	q5112	likely-done (self leaf = claim, no wrong binder in table)	??1CSegmentFile@@QAE@XZ	??1CSegmentFile@@QAE@XZ		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-17_agentNF52,2026-11-17_agentNF53,2026-11-17_agentNF63
+0x00C30E90	q5115	no-symbol (claim text only)		?HasWaveBankSegments@@YAJPAVCSegmentFile@@@Z		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-17_agentNF57
+0x00C35EC0	q5055	no-symbol (claim text only)		AudioSystem_SetOutputFlags		
+0x00C388A0	q5186	open (self leaf differs)	?CheckFrameStreamer@CInstance@@QAEJXZ	CheckFrameStreamer		
+0x00C38A40	q5181	open (self leaf differs)	?Query@CInstance@@QAE_NPA_NPAUSStreamFormat@@@Z	?ReceiveStatus@CStreamPlayer_00c38a40@@	00c38b20	
+0x00C38AC0	q5182	open (self leaf differs)	?Current@CInstance@@QAEPAUSItem_00c38b20@@XZ	ReceiveMessage	00c38b20	
+0x00C38AF0	q5183	open (self leaf differs)	?Stop@CInstance@@QAEXXZ		00c38b20	
+0x00C38B10	q5184	open (self leaf differs)	?Final@CInstance@@QAEXXZ	?Final@CActivationReceptor_00c38b20@@QAEXXZ	00c38b20	
+0x00C38B20	q5185	open (self leaf differs)	??1CInstance@@QAE@XZ		00c2d2f0,00c2d3b0	
+0x00C3A7D0	q5153	open (binders)	?ApplyGainToFrame@CRampedParam@@QAEXAAUCCodaFrame@@K@Z		00c38d60	
+0x00C3A8F0	q5187	open (self leaf differs)	?IsSettledAtZero@CRampedParam_00c3a8f0@@QAE_NXZ	?IsSettledAtZero@CRampedParam_00c3a8f0@@		
+0x00C3BCB0	q5116	open (self leaf differs)	?LoadCriteria@AudioBankTableReader_00c3bb50@@QAEXPAVCLoadLog@@PAUCriteriaCallback@@@Z	?LoadCriteria@CAudioBankTableReader@@QAEXPAVCLoadLog@@PAUCriteriaCallback@@@Z	00c30f60	2026-11-17_agentNF57,2026-11-17_agentNF59
+0x00C3C360	q4398	no-symbol (claim text only)		_CodaMalloc		
+0x00C3C370	q4399	no-symbol (claim text only)		_CodaFree		
+0x00C426E0	q4570	open (self leaf differs)	?Close@CVtable_012b4f9c@@UAEXXZ	?M@C00c426e0@@QAEXXZ	00c34710,00c347b0	
+0x00C42B80	q5117	no-symbol (claim text only)		?RemoveAt@CUnprovenPtrList_00c42b50@@QAEXK@Z		
+0x00C44DC0	q5167	open (self leaf differs)	?UpdateVolume@CAmbientEmitter@@QAEXXZ			
+0x00C465D0	q4920	self-done, binders-open	?GetCount@CRegionMap@@QBEJXZ	?GetCount@CRegionMap@@QBEJXZ	00c36cf0	
+0x00C47EB0	q5191	no-symbol (claim text only)				
+0x00C483A0	q5188	open (self leaf differs)	?Attach@CRegistry_00c38b20@@QAEXJPAX@Z			2026-11-16_agentNF36,2026-11-16_agentNF38
+0x00C48860	q5190	open (self leaf differs)	?Take@CMailbox_00c48860@@QAE?AUSDecoderRequest@@XZ			
+0x00C49C30	q6938	open (self leaf differs)	?GetCount@CMailboxQueue@@QAEJXZ		00c49620	
+0x00C4B300	q6161	self-done, binders-open	??0PKCBufferedReader@@QAE@PAXABUSStreamSegment@@@Z	??0PKCBufferedReader@@QAE@PAXABUSStreamSegment@@@Z	00c3aac0,00c88780	
+0x00C4B890	q6162	self-done, binders-open	?ReadBlock@PKCBufferedReader@@QAE_NPAXK@Z	?ReadBlock@PKCBufferedReader@@QAE_NPAXK@Z	00c3a9e0	
+0x00C4BC20	q6163	open (self leaf differs)	??0?$PKCMailbox@USReadRequest@@@@QAE@PAV?$PKCQueue@USReadRequest@@@@J@Z			
+0x00C4CF40	q4571	open (self leaf differs)	??1CVtable_012B8778@@UAE@XZ	??1CVtable_012B8778	00c3cf40,00c3d7b0,00c3f3d0	
+0x00C4D240	q5054	open (self leaf differs)	?CreatePooledEvent@CRenderLayerWin32@@QAEJJPAUCNodePool@@PAJ1JPAPAUCPooledEvent@@@Z	?CreatePooledEvent@CRenderLayerWin32@@	00c4d440	
+0x00C4D740	q4404	open (self leaf differs)	?ALGetProcAddress@CSalOpenAL@@QAEPAXPAE@Z		00c558a0,00c71cf0	
+0x00C53440	q5118,q5196	open (self leaf differs)	??		00c54510	
+0x00C59710	q4780	self-done, binders-open	?Stop@CCodaVoice@@UAEXXZ	?Stop@CCodaVoice@@UAEXXZ	00c3f3d0	
+0x00C5A1F0	q4779	self-done, binders-open	?Stop@CSoftwareVoice@@UAEXXZ	?Stop@CSoftwareVoice@@UAEXXZ	00c3f490	2026-11-19_agentNF95_part2
+0x00C5A2A0	q4781	self-done, binders-open	?Reset@CSoftwareVoice@@UAEXXZ	?Reset@CSoftwareVoice@@UAEXXZ	00c5c290	
+0x00C5A700	q5120	self-done, binders-open	?UpdatePitchEnvelopeStages@CCodaVoice@@QAE_NPBUSPitchEnvelopeParams@@_N@Z	?UpdatePitchEnvelopeStages@CCodaVoice@@QAE_NPBUSPitchEnvelopeParams@@_N@Z	00c5acb0	2026-11-16_agentNF36
+0x00C5CA60	q5121	open (binders)	?ApplyParameters@CSoftwareVoice@@QAEXPBVCSampleBuffer@@K@Z		00c5acb0	
+0x00C5F150	q4181	open (self leaf differs)	?CalcDifference@CImaAdpcmCodec@@AAE_KPAE0IIK@Z	?CalculateError@CImaAdpcmCodec@@QAE_KPBE0III@Z		
+0x00C5FF60	q4402	self-done, binders-open	?RemoveSource@CEAXListener@@QAEJPAVCEAXBuffer@@@Z	?RemoveSource@CEAXListener@@QAEJPAVCEAXBuffer@@@Z	00c44170	
+0x00C62920	q5189	open (self leaf differs)	??0CPKDecompressedStream@@QAE@PAVIStreamOpener_00c62920@@PBDABUSStreamSegment@@@Z	??0CPKDecompressedStream@@QAE@PAVPKCFileManager@@PBGABUPKCBufferedReaderParams@@@Z	00c47f10	2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-17_agentNF57
+0x00C68F90	q4178,q4401	conflicting-claims	?SetEffectProperty_00c68f90@CEAXListener@@QAEJKKPBXKPAPAU_CHANGES@@@Z	?SetEffectProperty_00c68f90@CEAXListener@@QAEJKKPBXKPAPAU_CHANGES@@@Z	00c51eb0,00c52840	
+0x00C6B720	q5058	open (self leaf differs)	?Reset@CStateVariableFilter@@QAEXXZ	Reset	00c54c10,00c55030,00c551d0,00c5c2d0	2026-11-19_agentNF94
+0x00C6C0F0	q4179	self-done, binders-open	?Process@CSalIIRFilter@@QAEXPAF@Z	?Process@CSalIIRFilter@@QAEXPAF@Z	00c54f30	
+0x00C6C530	q4180	self-done, binders-open	?Process@CSalIIRFilter@@QAEXPAFPBF@Z	?Process@CSalIIRFilter@@QAEXPAFPBF@Z	00c54f30	
+0x00C720C0	q6928	self-done, binders-open	?StartExponentialFade@CAudioSource@@QAEX_JM@Z	?StartExponentialFade@CAudioSource@@QAEX_JM@Z	00c72e00	
+0x00C74850	q5119	open (binders)	?SetShelves@CEffectFilter@@QAEXMMMMK@Z		00c77800	
+0x00C78150	q5059	open (self leaf differs)	?UpdateTapDelays@CReverbProcessor@@QAEXPAUSReverbState@@PBUSReverbParams@@@Z	?UpdateTapDelays@CReverbProcessor@@	00c783f0	
+0x00C89350	q5170	self-done, binders-open	?ProcessRamped@CReverbDiffuserStage@@QAEXPAUSDiffuserStageParams@@PBU2@PBUCRingBuffer@@PAM3II@Z	?ProcessRamped@CReverbDiffuserStage@@QAEXPAUSDiffuserStageParams@@PBU2@PBUCRingBuffer@@PAM3II@Z	00c75ab0	
+0x00CACAF0	q5051	open (self leaf differs)	??1CBaseObject@@QAE@XZ	??1CMyBaseObject@@QAE@XZ	00ca7780,00ca7c80,00caa790,00caaac0	
+0x00CB1210	q6930	likely-done (self leaf = claim, no wrong binder in table)	??1CNodeCache@CBaseList@@QAE@XZ	??1CNodeCache@CBaseList@@QAE@XZ		
+0x00CB6E60	q4077	self-done, binders-open	?_M_clear@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@IAEXXZ	?_M_clear@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@IAEXXZ	00cb6fd0	
+0x00CB7310	q4221	self-done, binders-open	??$__introsort_loop@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@U12@HV?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@00HV?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z	??$__introsort_loop@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@U12@HV?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@00HV?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z	00cb7780	
+0x00CB7E50	q6380	open (self leaf differs)	?Add@CQ_AmbushTradersScript...,		00cdd380,00d167c0,00d169e0,00d16dc0,00d9d4f0,00da7d30,00e1f3e0,00e38f80,00e6aac0,00e9dac0,00ea8130,00f081e0,00f083a0,00f08a30	
+0x00CBC130	q5066	open (self leaf differs)	?_M_insert_overflow@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@2@@std@@IAEXPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@2@ABU32@ABU__false_type@2@I_N@Z	?_M_insert_overflow@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@	00cb8440	
+0x00CBE09A	q4630	open (self leaf differs)	??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z	??0CWideScreenMagicPauseEntities@@QAE@PAVCGameScriptInterfaceBase@@@Z		2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-17_agentNF53
+0x00CBE2FF	q6416	no-symbol (claim text only)		?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z		2026-11-11_agentNF22
+0x00CBE551	q6279	no-symbol (claim text only)		?GetDistanceBetweenThingAndPosition@@YIMABVCScriptThing@@ABVC3DVector@@@Z		
+0x00CBE716	q6466,q6518	conflicting-claims	?FadeOutAndKillEntity@@YIXABVCScriptThing@@_NM1@Z	?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z	00d2c530	2026-11-17_agentNF64
+0x00CDBC50	q6367	no-symbol (claim text only)		??1TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ		
+0x00CDBF70	q4367,q4520,q6510	conflicting-claims	??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ	??0_Rb_tree_T_node0x24_00cdbf70@std@@	00d246c0,00d29db0	
+0x00CDBFB0	q5216,q6368,q6376,q6410,q6413,q6420,q6422,q6465,q6467,q6493,q6504,q6509	conflicting-claims	??1CCutsceneCastMap@@QAE@XZ		00d246c0,00d45060,00e12330,00e2ab30	
+0x00CDCC20	q4631	open (self leaf differs)	??$Transfer@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@CPersistContext@@QAEXPBDAAW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@ABW4123@@Z	Transfer		
+0x00CDCDD0	q4632	open (self leaf differs)	??$Transfer@W4EPlaceInHeroSouls@@@CPersistContext@@QAEXPBDAAW4EPlaceInHeroSouls@@ABW41@@Z	Transfer		
+0x00CDEC10	q4858	no-symbol (claim text only)		?GetParentScript@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@UBEPAVCScriptBase@@XZ		
+0x00CDEC20	q4857	no-symbol (claim text only)		?Init@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ		
+0x00CDEC30	q4859	no-symbol (claim text only)		?OnPersist@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@EAEXAAVCPersistContext@@@Z		
+0x00CDEC40	q4856	no-symbol (claim text only)		?Main@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ		
+0x00CDED90	q4855	no-symbol (claim text only)		??_GCArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z		
+0x00CE1000	q5991	self-done, binders-open	??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ	??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ	00ce0ef0,00d30000,00d7c2e0,00d7fab0,00d82210,00d844a0,00d89580,00d8a960,00d915b0,00d9d930,00d9ffd0,00da8320,00db8520,00dc0170,00dc8700,00dcf790,00dd9300,00ddc7d0,00ddeee0,00dec5b0,00def220,00df3550,00	
+0x00CE1040	q5992	self-done, binders-open	?ShareData@?$CCountedPointer@VCEntityScriptBase@@@@QAEXPAVCEntityScriptBase@@PAVCCPPointerInfo@@@Z	?ShareData@?$CCountedPointer@VCEntityScriptBase@@@@QAEXPAVCEntityScriptBase@@PAVCCPPointerInfo@@@Z	00ce0ef0,00d7c2e0,00d7fab0,00d82210,00d844a0,00d89580,00d8a960,00d915b0,00d9d930,00d9ffd0,00da8320,00db8520,00dc0170,00dc8700,00dcf790,00dd9300,00ddc7d0,00ddeee0,00dec5b0,00def220,00df3550,00df4a50,00	
+0x00CF0C00	q6522	no-symbol (claim text only)				
+0x00CFEE30	q6277	no-symbol (claim text only)		RemoveCursedTablets		
+0x00D043A0	q6261	no-symbol (claim text only)		CheckForSecondAreaDoorHelp		
+0x00D04770	q6258	no-symbol (claim text only)		EndMission		
+0x00D0B3C0	q4862	no-symbol (claim text only)		?VecDel@T@@QAEPAXI@Z		
+0x00D0EE70	q6259	no-symbol (claim text only)				
+0x00D0F640	q6260	no-symbol (claim text only)		?CheckForSecondAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ		
+0x00D15140	q6346,q6366,q6517	open (self leaf differs)	??0CMainGameComponentInit@@QAE@XZ		00d17f20	
+0x00D1CAC0	q6505	no-symbol (claim text only)		WatchForAllLeaderChargeGruntsKilled		
+0x00D2D930	q6469	no-symbol (claim text only)		?Main@CEndGameJackOfBlades@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ		
+0x00D360E0	q6412	no-symbol (claim text only)				
+0x00D3CBD0	q6427	no-symbol (claim text only)				
+0x00D40890	q4863	no-symbol (claim text only)		?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z		
+0x00D408B0	q4864	no-symbol (claim text only)		?Main@CSpeedFriend@CQ_GuildTrainingScript@NScript@@EAEXXZ		
+0x00D6A560	q6220	no-symbol (claim text only)		?Main@CHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@EAEXXZ		
+0x00D8ABF0	q6468	no-symbol (claim text only)		?Main@CGhostFisherman@CQ_HerosOldHouseScript@NScript@@EAEXXZ		
+0x00D8E990	q6267	open (self leaf differs)	?WatchForTermination@CQ_HobbeCaveScript@@QAEXXZ	WatchForTermination	00d8dd10	
+0x00DA2610	q6500	open (self leaf differs)	?DoSpeech@CBriarRose@@QAEXABVCCharString@@@Z		00da0ef0	
+0x00DA3F40	q6262	no-symbol (claim text only)		?ProcessMission@CQ_MinionClifftopChaseScript@@		
+0x00DA8510	q6265	no-symbol (claim text only)		?ProcessMission@CQ_MinionClifftopChaseScript@@		
+0x00DAC2C0	q6360,q6475	open (self leaf differs)	?Alloc@CLiveFather@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_LiveFather@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DAC420	q6362,q6476	open (self leaf differs)	?Alloc@CTheresa@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_Theresa@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DAC580	q6359,q6477,q6502	conflicting-claims	?Alloc@CGuard@CQ_NewOakValeIntroScript@NScript@@SI...	?Alloc@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dabac0	
+0x00DADE50	q6364,q6478	open (self leaf differs)	?Alloc@CVillager@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_Villager@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DAEA70	q6348,q6463,q6474	conflicting-claims	?AddBadDeed@CQ_NewOakValeIntroScript@@QAEXJ@Z	?AddBadDeed@CQ_NewOakValeIntroScript@NScript@@	00db09e0	
+0x00DAEBF0	q6347	no-symbol (claim text only)				
+0x00DAEC60	q6356,q6479	open (self leaf differs)	?Alloc@CBully@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_Bully@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DAEDE0	q6363,q6480	open (self leaf differs)	?Alloc@CVictim@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_Victim@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DAEF50	q6361,q6481	open (self leaf differs)	?Alloc@CTeddyGirl@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_TeddyGirl@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DB0600	q6473	no-symbol (claim text only)		?GivenTeddy@CNOVI_TeddyGirl@CQ_NewOakValeIntroScript@NScript@@AAEXXZ		2026-11-11_agentNF22
+0x00DB0660	q6472	open (self leaf differs)	?AddGoodDeed@CQ_NewOakValeIntroScript@@QAEXXZ	?AddGoodDeed@CQ_NewOakValeIntroScript@NScript@@QAEXXZ	00db2b10	
+0x00DB0880	q6349,q6482	open (self leaf differs)	?Alloc@CAffairMan@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_AffairMan@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DB1DB0	q6351,q6483	open (self leaf differs)	?Alloc@CAffairWoman@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_AffairWoman@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DB29A0	q6350,q6484	open (self leaf differs)	?Alloc@CAffairWife@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_AffairWife@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DB3E30	q6355,q6485	open (self leaf differs)	?Alloc@CBookTrader@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_BookTrader@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DB51B0	q6353,q6486	open (self leaf differs)	?Alloc@CBarrelMan@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_BarrelMan@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DB6B40	q6354,q6487	open (self leaf differs)	?Alloc@CBarrelThug@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_BarrelThug@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DB7D00	q6352,q6488	open (self leaf differs)	?Alloc@CBarrel@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_Barrel@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DB7FF0	q6357,q6489	open (self leaf differs)	?Alloc@CCreatedBeetle@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CNOVI_CreatedBeetle@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DB81B0	q6358,q6490	open (self leaf differs)	?Alloc@CDeadFather@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@COVI_DeadFather@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z		
+0x00DBCD00	q6508	no-symbol (claim text only)		GivenTeddy		
+0x00DCDEC0	q4867	no-symbol (claim text only)		?GetParentScript@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@UBEPAVCScriptBase@@XZ		
+0x00DCDED0	q4868	no-symbol (claim text only)		?OnPredicateFail@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ		
+0x00DCDF60	q4866	no-symbol (claim text only)		?Init@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ		
+0x00DCEC70	q6254	open (self leaf differs)	?GoOnPatrol@CCrateTeamMember@@QAEXXZ		00dce230	
+0x00DCED10	q6255	open (self leaf differs)	?IsThingCarryingCrate@CCrateTeamMember@@QAE_NABVCScriptThing@@@Z	IsThingCarryingCrate	00dce230	
+0x00DCF6E0	q4134	open (self leaf differs)	??_GCTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z	?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z		
+0x00DCF760	q4865	no-symbol (claim text only)		??_GCCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z		
+0x00DD3B80	q6251	no-symbol (claim text only)		?PrisonLifeIntro@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ		
+0x00DD9900	q6256	no-symbol (claim text only)		EndMission		
+0x00DDDCE0	q4870	no-symbol (claim text only)		?Init@CQ_PrisonWardenGameScript@NScript@@UAEXXZ		
+0x00DE02F0	q4869	no-symbol (claim text only)		??_GCQ_PrisonWardenGameScript@NScript@@UAEPAXI@Z		
+0x00DE1770	q6263	no-symbol (claim text only)		EndMission		
+0x00DE4710	q6264	no-symbol (claim text only)				
+0x00DECAD0	q6214	no-symbol (claim text only)		?Main@CQ_SecretPassageScript@NScript@@UAEXXZ		
+0x00DED0A0	q6215	no-symbol (claim text only)				
+0x00DEF700	q4874	no-symbol (claim text only)				
+0x00DEF710	q4873	no-symbol (claim text only)		?Init@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ		
+0x00DEF720	q4875	no-symbol (claim text only)				
+0x00DEF730	q4871	no-symbol (claim text only)		?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z		
+0x00DEF760	q4872	no-symbol (claim text only)		?Main@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ		
+0x00DFC320	q6266	open (self leaf differs)	?UpdateTraders@CQ_TraderConflictGoodScript@NScript@@QAEXXZ	?UpdateLiveEnemies@CQ_TraderConflictGoodScript@NScript@@QAEXXZ	00dfa450	
+0x00DFDE30	q6224	open (self leaf differs)	??0CRetailVector_CScriptThing_Retail_00dfde30@@QAE@ABV0@@Z			
+0x00E01710	q4053	likely-done (self leaf = claim, no wrong binder in table)	??1CDarkwoodTrader@CQ_TraderEscortScript@NScript@@UAE@XZ	??1CDarkwoodTrader@CQ_TraderEscortScript@NScript@@UAE@XZ		
+0x00E0A510	q6529	no-symbol (claim text only)		?HandleTrader@CTraderScript@@		
+0x00E0C350	q6491	no-symbol (claim text only)		WatchForQuestFailureState		
+0x00E137B0	q5210	open (self leaf differs)	?Outro@CQ_WaspBossScript@NScript@@QAEXXZ)	?Outro@CQ_WaspBossScript@NScript@@QAEXXZ	00e13310	
+0x00E15500	q6419,q6421	no-symbol (claim text only)		HandleWhiteBalverineQuestObjective		
+0x00E1F7E0	q5212	catalog-only (no landed self row, no wrong binder)	?Init@CTraderToEscort@CQR_EscortTraderScript@NScript@@EAEXXZ)			
+0x00E1FEB0	q6531	open (self leaf differs)	?ResetRandomSpeechTime@CV_AmbushScamScript@@	?ResetTraderRandomSpeechTime@CQR_EscortTraderScript@NScript@@QAEXXZ	00e1fcf0	2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-17_agentNF53
+0x00E200B0	q5213	catalog-only (no landed self row, no wrong binder)	?WatchForTraderDead@CQR_EscortTraderScript@NScript@@QAEXVCScriptThing@@@Z)			
+0x00E20210	q5214	catalog-only (no landed self row, no wrong binder)	?WatchForTraderHit@CQR_EscortTraderScript@NScript@@QAEXVCScriptThing@@@Z)			
+0x00E29A70	q4861	no-symbol (claim text only)		?Init@CQS_ScytheInfoScript@NScript@@UAEXXZ		
+0x00E2AB30	q4860	no-symbol (claim text only)		?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z		
+0x00E2BAC0	q4751	open (self leaf differs)	?AssignMoralityEtcForGoodEnding@CV_AmbushScamScript@NScript@@QAEXXZ	?AssignMoralityEtcForEvilEnding@CV_AmbushScamScript@@		
+0x00E2BB10	q4752	open (self leaf differs)	?AssignMoralityEtcForEvilEnding@CV_AmbushScamScript@NScript@@QAEXXZ	?AssignMoralityEtcForEvilEnding@CV_AmbushScamScript@@		
+0x00E2E440	q6532	no-symbol (claim text only)				
+0x00E32350	q4102	open (self leaf differs)	??0CV_ArcheryCompetitionScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	??0CV_ArcheryCompetitionScript		
+0x00E337C0	q6526	open (self leaf differs)	?ResetRandomSpeechTime@CQ_AmbushTradersScript@@QAEXXZ	?ResetRandomSpeechTime@CV_ArcheryCompetitionScript@NScript@@QAEXXZ	00e33ea0	2026-11-17_agentNF53
+0x00E362B0	q6524	no-symbol (claim text only)				
+0x00E3E320	q4636	open (self leaf differs)	?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ	IsHeroDressedAsLady		
+0x00E4A280	q6291	no-symbol (claim text only)		?Main@CSafeTrader@CV_BanditTollScript@NScript@@EAEXXZ		
+0x00E4DF20	q6528	open (self leaf differs)	?Should_I_Flee@CTollBandit@@...	?Should_I_Flee@CTollBandit@	00e4b5b0	
+0x00E4E0E0	q6527	no-symbol (claim text only)		?SetUpBanditToll@CTollBandit@CV_BanditTollScript@NScript@@AAEXXZ		2026-11-16_agentNF34,2026-11-16_agentNF36,2026-11-16_agentNF38
+0x00E50100	q6216	no-symbol (claim text only)				
+0x00E50E40	q6200	no-symbol (claim text only)		GoTalkToBeardyBaldy		
+0x00E53670	q6525	no-symbol (claim text only)		?IsHeroWearingAnyBeard@CV_BeardyBaldyScript@NScript@@QAE_NXZ		2026-11-16_agentNF34
+0x00E53CB0	q6523	no-symbol (claim text only)				
+0x00E566F0	q6383	no-symbol (claim text only)		?BookReaction@CV_BookCollectingScript@NScript@@QAEXJ@Z		
+0x00E56D10	q6382	no-symbol (claim text only)		?AdjustHeroReputation@CBS_Teacher@CV_BookCollectingScript@NScript@@AAEXW4EOpinionDeedType@@@Z		
+0x00E57020	q6381	no-symbol (claim text only)		?GetBookSpecificArgs@CBS_Teacher@CV_BookCollectingScript@NScript@@AAEXJAAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@@Z		2026-11-17_agentNF87
+0x00E5B390	q4876	no-symbol (claim text only)		?VecDel@T@@QAEPAXI@Z		
+0x00E64DF0	q6281	no-symbol (claim text only)		?Main@CChickenSign@CV_ChickenKickingScript@NScript@@EAEXXZ		
+0x00E69F90	q6268	open (self leaf differs)	?WatchForQuestInfoDisplay@CV_ChapelOfEvilScript@NScript@@QAEXXZ	WatchForQuestInfoDisplay	00e693f0	
+0x00E6A0B0	q6270	open (self leaf differs)	?WatchForInsideChapel@CV_ChapelOfEvilScript@@QAEXXZ		00e693f0	
+0x00E6A340	q6271	open (self leaf differs)	?WatchForWeaponUnsheathed@CV_ChapelOfEvilScript@@QAEXXZ		00e693f0	
+0x00E6A7F0	q6272	open (self leaf differs)	?DoMission@CV_ChapelOfEvilScript@@QAEXXZ	DoMission	00e693f0	
+0x00E6A9E0	q6273	open (self leaf differs)	?EndMission@CV_ChapelOfEvilScript@@QAEXXZ			
+0x00E6AF20	q6274	open (self leaf differs)	?WatchForAcolyteHit@CV_ChapelOfEvilScript@@QAEXVCScriptThing@@@Z		00e6aac0	
+0x00E6FC40	q6217	no-symbol (claim text only)		?Main@CDF_Dragon@CV_DemonDoorsScript@NScript@@EAEXXZ		
+0x00E70370	q4877	no-symbol (claim text only)		?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z		
+0x00E7E020	q6494,q6519	open (self leaf differs)	??0CAndPredicate@@QAE@ABVCIsThingAlive@NScript@@ABUCIsFlagFalse@@@Z	??0?$CPredicate_And@VCIsThingAlive@NScript@@VCIsVariableFalse@2@@NScript@@QAE@ABVCIsThingAlive@1@ABVCIsVariableFalse@1@@Z	00e87030	
+0x00E7F7D0	q6159	open (self leaf differs)	?GetNextPrizeCategoryWeight@CV_FishingCompetitionScript@NScript@@QAEMXZ	?GetNextPrizeWeight@CV_FishingCompetitionScript@NScript@@QAEMXZ		
+0x00E7FD50	q6160,q6385	conflicting-claims	?GenerateSignText@CV_FishingCompetitionScript@NScript@@QAEXXZ		00e7f410	
+0x00E80D60	q6372,q6409	no-symbol (claim text only)		Run		
+0x00E81A60	q6373,q6384	no-symbol (claim text only)				
+0x00E83680	q6530	open (self leaf differs)	?CleanupAfterFight@CTyler@@QAEXXZ		00e87030	
+0x00E95380	q6498	no-symbol (claim text only)		?M@C00e95380@@QAEXXZ		
+0x00E95390	q6499	no-symbol (claim text only)		??0?$CEntityScriptBinding		
+0x00E953E0	q6497	no-symbol (claim text only)		CheckRegionLeaving		
+0x00E9CFD0	q6219	no-symbol (claim text only)		?Main@CTrophiesIntroWatcher@CV_IntroductionToTrophiesScript@NScript@@EAEXXZ		
+0x00EA3490	q6470	no-symbol (claim text only)				
+0x00EA7460	q6516	self-done, binders-open	?WatchForQuestFailureState@CV_LostTraderScript@@	?WatchForQuestFailureState@CV_LostTraderScript@@	00ea59e0	
+0x00ED17B0	q4878	no-symbol (claim text only)		?VecDel@T@@QAEPAXI@Z		
+0x00ED7320	q6464	no-symbol (claim text only)				
+0x00EDBD10	q6269	open (self leaf differs)	?WatchForQuestInfoDisplay@CV_TempleOfLightScript@NScript@@QAEXXZ	WatchForQuestInfoDisplay	00edb190	
+0x00EDC450	q6275	open (self leaf differs)	?DoMission@CV_ChapelOfEvilScript@@QAEXXZ	DoMission	00edb190	
+0x00EDC5A0	q6276	no-symbol (claim text only)				
+0x00EE0330	q4882	no-symbol (claim text only)		?GetParentScript@CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@UBEPAVCScriptBase@@XZ		
+0x00EE0340	q4881	no-symbol (claim text only)		?Init@CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@EAEXXZ		
+0x00EE1BE0	q4879	no-symbol (claim text only)		?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z		
+0x00EE36A0	q4880	no-symbol (claim text only)		?Main@CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@EAEXXZ		
+0x00EE8390	q5211	catalog-only (no landed self row, no wrong binder)	?OakVale@CCS_OakValeRevisitedScript@NScript@@QAEXXZ)			
+0x00EE9590	q6280	no-symbol (claim text only)				
+0x00EEA450	q4854	no-symbol (claim text only)		?Init@CExpression_WaitScript@NScript@@UAEXXZ		
+0x00EEA460	q4853	no-symbol (claim text only)		?Main@CExpression_WaitScript@NScript@@UAEXXZ		
+0x00EEA770	q4852	no-symbol (claim text only)		??_GCExpression_WaitScript@NScript@@UAEPAXI@Z		
+0x00EF7AB0	q4639	self-done, binders-open	??1CIsThingConscious@NScript@@UAE@XZ	??1CIsThingConscious@NScript@@UAE@XZ	00ef7800	2026-11-12_agentNF24,2026-11-12_agentNF25b
+0x00F05A10	q6501	open (binders)	?RefreshSpyAllegiences@CQ_AmbushTradersScript@@QAEXXZ		00f0f680	
+0x00F0CA30	q6415	no-symbol (claim text only)		?Swap@SThreeWordRecord		
+0x00F0D470	q6345,q6365,q6414	no-symbol (claim text only)		??0SScriptQuery_00f0d470		
+0x00F25CA0	q4840	no-symbol (claim text only)		?GetSizeofClass@CArenaWaveDef@@UAEKXZ		
+0x00F25CB0	q4838	no-symbol (claim text only)		??_GCUnprovenDef_00f25cb0@@UAEPAXI@Z		
+0x00F25F50	q4839	no-symbol (claim text only)		?Copy@CArenaWaveDef@@UAEXPBVCDefClassBase@@@Z		
+0x00F270A0	q4846	no-symbol (claim text only)		?GetSizeofClass@CHeroSoulsCreatureDef@@UAEKXZ		
+0x00F270B0	q4844	no-symbol (claim text only)		?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z		
+0x00F27180	q4845	no-symbol (claim text only)				
+0x00F29500	q4851	no-symbol (claim text only)		?GetSizeofClass@CScriptDef@@UAEKXZ		
+0x00F29510	q4849	no-symbol (claim text only)		?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z		
+0x00F29C50	q4848	no-symbol (claim text only)		?GetSizeofClass@CRegionScriptDef@@UAEKXZ		
+0x00F29CE0	q4847	no-symbol (claim text only)		?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z		
+0x00F2A1D0	q6935	likely-done (self leaf = claim, no wrong binder in table)	?Transfer@CCutsceneDef@@UAEXAAVCPersistContext@@@Z	?Transfer@CCutsceneDef@@UAEXAAVCPersistContext@@@Z		2026-11-16_agentNF36,2026-11-16_agentNF40
+0x00F2A240	q4850	no-symbol (claim text only)		?Copy@CScriptDef@@UAEXPBVCDefClassBase@@@Z		
+0x00F2D2F0	q4843	no-symbol (claim text only)		?GetSizeofClass@CFeatDef@@UAEKXZ		
+0x00F2D300	q4841	no-symbol (claim text only)		?VecDel@T@@QAEPAXI@Z		
+0x00F2D680	q4842	no-symbol (claim text only)		?Copy@CFeatDef@@UAEXPBVCDefClassBase@@@Z		
+0x00F36010	q4827	likely-done (self leaf = claim, no wrong binder in table)	?Get2DNoise@CPerlinNoise@NFractal@@QBEMABVC2DVector@@@Z	?Get2DNoise@CPerlinNoise@NFractal@@QBEMABVC2DVector@@@Z		
+0x00F36D30	q5133	open (binders)	?EndShutdown@CGPUScratchBufferTextureManager@@QAE_NXZ		00b3aff0	
+0x00F3EA50	q4572	open (binders)	?GenerateTriangleListAndStrip@CTriangleStripifier2@@QAEXAAV?$CArray@G@@00@Z		00f3f3a0,00f3f5a0	
+0x0121F7C0	q4155	no-symbol (claim text only)		_$E1		
+0x01228E44	q4154	no-symbol (claim text only)		?GlobalMethodTailThunk_01228e44@@YIXXZ		
+0x0122A200	q4133	no-symbol (claim text only)		?GlobalMethodTailThunk_0122a200@@YIXXZ		
+0x0122AAD0	q4783	no-symbol (claim text only)				
+0x0122DEDC	q6387	no-symbol (claim text only)				2026-11-11_agentNF22
+0x0124BA68	q4515	open (binders)	??_7C<Class>@NUISystem@@6B<Base>@1@@		0055a9c0,0055aa20,0055aba0	
+0x0129BA3C	q5122	catalog-only (no landed self row, no wrong binder)	?DELTA_NOTIONAL_ZERO@@3MB			2026-11-11_agentNF22,2026-11-19_agentNF93_part1,2026-11-19_agentNF93_part2,2026-11-19_agentNF93_part3,2026-11-19_agentNF96_part1
+0x0129BA4C	q4200	open (binders)	?GD3DFormats@@3QBVCD3DFormatInfo@@B		00b2c4e0	
+0x0129CD78	q4103	catalog-only (no landed self row, no wrong binder)	??_7CMeshData@CPhysicsMeshInfo@@6B@			
+0x012B3674	q4893	open (binders)	??_7CSoundEvent@@6B@		00c21ba0	2026-11-17_agentNF57
+0x012B5868	q4400	open (binders)	??_7CCodaObjectBase@@6B@		00c3c840,00c3caa0,00c3cb30,00c3e2a0,00c4cf40,00c4f220,00c55130,00c56370,00c57310,00c577b0,00c5d790,00c5eef0,00c60b90,00c6e630	
+0x012B8DC0	q4403	no-symbol (claim text only)				
+0x012EA430	q6495	open (binders)	??_7CAndPredicate@@6B@		00e7e020	
+0x012ECBA8	q6496	open (binders)	??_7?$CSpawnedFunc@VCV_ExposeMayorScript@NScript@@@@6B@		00e93da0	
+0x01375550	q6449	no-symbol (claim text only)				2026-11-11_agentNF22
+0x01375748	q6503,q6511	conflicting-claims	?g_PlayAnimationDefaultFlag@@3_NA		00d1eb80,00d7f460	2026-11-11_agentNF22
+0x0138306C	q6323	open (binders)	?CurrentCreatureGlobalDefNum@CTCSpecialAbilities@@2JA		0079acc0,0079b650	
+0x0138E060	q4243	open (binders)	?gApplicationLanguage@@3GA		0099d470,0099e260	
+0x01396DC8	q4667	open (binders)	?D3DTextureUVModeTable@CRenderStateManager@@0PAKA		00b76bc0	2026-11-16_agentNF36
+0x01396E70	q4736	catalog-only (no landed self row, no wrong binder)	?D3DTextureOperationModeTable@CRenderStateManager@@0PAKA			
+0x01396F9C	q4668	open (binders)	?D3DPolyShadeModeTable@CRenderStateManager@@0PAKA		00bb8090	
+0x013B8384	q4422	open (binders)	?PRenderManager@@3PAVCRenderManager@@A		004022b0,004179ee,005bcafe,0069e980	
+0x013B85E4	q4131	open (binders)	?GVersion@@3VCVersion@@A		00416268	
+0x013B8A98	q4911	open (binders)	?GPreviousSelected@CList@NUISystem@@2V?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@A		0041da2d,0053673b,00536a30,0053852b,0053d200,0053ddd0,0054ac90,0056be00,00587a41,0059c8ae,00625ed0	2026-11-11_agentNF23
+0x013B8AF0	q6198	open (binders)	?g_ScoreboardServer@@3VCCharString@@A		0121a750	2026-11-12_agentNF26
+0x013B8AF4	q6199	open (binders)	?g_ScoreboardPage@@3VCCharString@@A		0121a770	2026-11-12_agentNF26
+0x013B8C48	q5123	open (binders)	?no_text_entry@?1??GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z@4V3@A		005e9e70	
+0x013BA860	q4132	open (binders)	?VALUE_DISPLAY_DURATION@NPlayerGui@@3MA		006472b2	
+0x013BA8BC	q4516	open (binders)	?RegisteredActionEvents@CCreatureActionBase@@0V?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@4@@std@@A		006946c0,0121e030,01229280	
+0x013BAB30	q4223	open (binders)	?CourtingAdviceGroupNames@CTCWife@@0QBVCCharString@@B		006d0410	
+0x013BAC20	q6250	open (binders)	?1)		01229630	
+0x013BAC98	q4256	catalog-only (no landed self row, no wrong binder)	?BUILDING_BOUNDRY@@3VCCharString@@B			2026-11-12_agentNF26
+0x013BAE1D	q5044	no-symbol (claim text only)				
+0x013BAE68	q4153	no-symbol (claim text only)				
+0x013BAE70	q4151	open (binders)	?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@2MB		0093a8c0	
+0x013BAE84	q5124	open (binders)	?no_text_entry@?1??GetText@CTCBetting@@QAE?AVCWideString@@K@Z@4V3@A		007e4d70	
+0x013BAE94	q4224	open (binders)	?SymbolStrings@CTCOracleMinigame@@0QBVCCharString@@B		007e5f70	
+0x013BAEA4	q5125	open (binders)	?no_text_entry@?1??GetText@CTCFireheartMinigame@@QAE?AVCWideString@@K@Z@4V3@A		007e7580	
+0x013BAFE8	q4152	open (binders)	?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@2JB		0073a760	
+0x013BC470	q4669	open (binders)	?SingletonInstance@CShaderRenderManager@@0V1@A		00b5e700,00bbc130,01223d00	
+0x013BD6E8	q4245	open (binders)	?pConfig@@3PAVConfigDetection@@A		004017b0	
+0x013BD6EC	q4244	no-symbol (claim text only)				
+0x013BDA24	q4195	open (binders)	?textureCacheMem@?A0xd4716bce@@3PAEA		009a1660,009a3640	
+0x013BDA34	q4203	open (binders)	?glyphTextureCacheGlyphDataIndices@?A0xd4716bce@@3PAKA		009a1660,009a3640	
+0x013BDA38	q4202	open (binders)	?glyphTextureCacheGlyphData@?A0xd4716bce@@3PAXA		009a1660,009a3640	
+0x013BDA3C	q4201	open (binders)	?glyphTextureCacheGlyphDataCache@?A0xd4716bce@@3PAVCStreamingGlyphData@@A		009a1660,009a3640	
+0x013BDA40	q4204	open (binders)	?glyphTextureCacheGlyphAdjustment@?A0xd4716bce@@3PAVCStreamingGlyphAdjustment@@A		009a14e0,009a1660,009a25d0,009a3640	
+0x013CA2F8	q6313	no-symbol (claim text only)				
+0x013CA300	q6314	no-symbol (claim text only)				
+0x013CAA54	q3968	open (binders)	?desc@?4??GetSectionDesc@CCodeSectionManager@@AAEAAUCSectionDesc@2@K@Z@4U32@A		009f0240	
+0x013CAA90	q4196	open (binders)	?PMemoryAllocator@CMemoryAllocator@@1PAV1@A		00416047,004189c2,009a1660,009a4350,009d52d0,009f2870,00a65330,00a66260,00a663d0,0122a9a0	
+0x013CE558	q5049	open (binders)	?GFastOneOverSqrtTable@@3PAKA		0092b800	
+0x01436E3C	q4735	open (binders)	?g_pEngineScreenEffectOutlineGlow@@3PAVCEngineScreenEffectOutlineGlow@@A		00b26360	2026-11-12_agentFAM13,2026-11-12_agentNF28
+0x01436E44	q4573	open (binders)	?g_pEngineWeatherRenderer@@3PAVCEngineWeatherRenderer@@A		00b24690	
+0x01436E60	q4574	open (binders)	?g_pEngineShadowRenderer@@3PAVCEngineShadowRenderer@@A		00b33010,00bb3e80	2026-11-16_agentNF45
+0x01436E7C	q4575	open (binders)	?g_pEnginePrimitiveRenderer2D@@3PAVCEnginePrimitiveRenderer2D@@A		00bcf4f0	
+0x01436E80	q4579	open (binders)	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A		00ba1140	2026-11-16_agentNF38
+0x01436E8C	q4576	open (binders)	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A		00b484b0,00b77e20	2026-11-17_agentNF68
+0x01436E98	q4580	open (binders)	?g_pResourceManager@@3PAVCEngineResourceManager@@A		00badb40,00bcb800	
+0x01436E9C	q3971,q4581	conflicting-claims	??$AddEngineComponent@VCEngineLightingManager@@@CEngine@@AAEXPAVCEngineLightingManager@@AAPAV1@E@Z		00b23ea0	2026-11-11_agentNF22,2026-11-16_agentNF34,2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-16_agentNF44,2026-11-16_agentNF46,2026-11-17_agentNF79,2026-11-17_agentNF83,2026-11-17_agentNF84,2026-11-17_agentNF86,2026-11-17_agentNF88
+0x01436EA0	q4577	open (binders)	?g_pEngineCamera@@3PAVCEngineCamera@@A		00bca6b0	2026-11-16_agentNF34,2026-11-16_agentNF36,2026-11-16_agentNF38,2026-11-16_agentNF40,2026-11-16_agentNF42,2026-11-16_agentNF44,2026-11-16_agentNF46,2026-11-19_agentNF95_part1,2026-11-19_agentNF95_part2
+0x01436EAC	q4578	open (binders)	?g_pEngineSurfaceCompositionManager@@3PAVCEngineSurfaceCompositionManager@@A		00b3b4f0,00becba0	
+0x01436ED0	q4502	open (binders)	?LOCAL_HEAP_CEngineLightingManager__LightElementLink@@3V?$CDynamicObjectHeap@$0M@$0BA@@@A		00b47980,00b49aa0	
+0x01436FB0	q4505	open (binders)	?LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight@@3V?$CDynamicObjectHeap@$0EI@$0BA@@@A		00b47fd0,00b49a40,00b49fe0	
+0x0143BDB0	q4405	open (binders)	?g_OpenAL@@3VCSalOpenAL@@A		00c72af0	
+0x0143E684	q4175	catalog-only (no landed self row, no wrong binder)	?_GetReadingString@@3P6GIPAUHIMC__@@IPAGPAH2PAI@ZA			
+0x0143E8E0	q4222,q6221	conflicting-claims	?NullCoord@CScriptThing@@1VC3DVector@@A		004aa940	2026-11-11_agentNF22
+0x0143E8EC	q6513	open (binders)	?g_CCharString_0143e8ec@@3VCCharString@@A,		00e39140	2026-11-12_agentNF26
+0x0143E90C	q6386	open (binders)	?pGlobalScriptDef@@3PAVCScriptDef@@A,		00cbeeb0	2026-11-11_agentNF22,2026-11-17_agentNF57,2026-11-17_agentNF60,2026-11-17_agentNF63,2026-11-17_agentNF65,2026-11-17_agentNF68,2026-11-17_agentNF71
+0x0143E928	q4644	catalog-only (no landed self row, no wrong binder)	?NPCAttitudes@@3PAJA			2026-11-11_agentNF22
+0x0143FE0C	q4306	no-symbol (claim text only)				
+0x0143FE10	q4307	no-symbol (claim text only)				
