@@ -400841,6 +400841,34 @@ $catalog = @(
         TestSource = '00/a3/CCRCSymbolMap_LoadBinary_00a38c20_test.cpp'
         PassPattern = '00a38c20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a8f1b0'
+        Module = 'C3DPrimitive2'
+        Source = '00/a8/C3DPrimitive2_ConvertToVBFormatStaticBump_00a8f1b0.cpp'
+        TestSource = '00/a8/C3DPrimitive2_ConvertToVBFormatStaticBump_00a8f1b0_test.cpp'
+        PassPattern = '00a8f1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005148d0'
+        Module = 'CReplaceSerialise<COldFileFormatMapHeader2,COldFileFormatMapHeader1>'
+        Source = '00/51/CReplaceSerialiseCOldFileFormatMapHeader2COldFileFormatMapHeader1_ConvertPreviousUnknownVersionUp_005148d0.cpp'
+        TestSource = '00/51/CReplaceSerialiseCOldFileFormatMapHeader2COldFileFormatMapHeader1_ConvertPreviousUnknownVersionUp_005148d0_test.cpp'
+        PassPattern = '005148d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d6fa0'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetTrainableStatPossibleLevelUpAmount_006d6fa0.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetTrainableStatPossibleLevelUpAmount_006d6fa0_test.cpp'
+        PassPattern = '006d6fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1d550'
+        Module = 'NParticleEngine::CPSCDecalRenderer'
+        Source = '00/b1/NParticleEngineCPSCDecalRenderer_DecalCollides_00b1d550.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_DecalCollides_00b1d550_test.cpp'
+        PassPattern = '00b1d550_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

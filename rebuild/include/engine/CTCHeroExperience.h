@@ -116,7 +116,14 @@ public:
 #else
     EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType)const;
 #endif
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_GETSTATEXPERIENCE_BODY
+    // hand4e opt-in (row 0x006D6FA0 GetTrainableStatPossibleLevelUpAmount): the same-TU body of ?GetStatExperience@CTCHeroExperience@@QBEJ
+    // W4EHeroExperienceStatCategory@@@Z, out of line at 0x006D6510 (`mov eax,[ecx+18h] ; mov ecx,[esp+4] ; mov eax,[eax+ecx*4] ; ret 4`) and
+    // expanded by the row (0x006D6FC6..0x006D6FCE). Needs FABLE_RETAIL_CTCHEROEXPERIENCE_BLOCK_THRESHOLDS (the vector layout).
+    long GetStatExperience(EHeroExperienceStatCategory stat_category)const{return StatExperiencePoints[stat_category];}
+#else
     long GetStatExperience(EHeroExperienceStatCategory)const;
+#endif
     long GetTrainableStatPossibleLevelUpAmount(EHeroTrainableStatType,float&);
     // Chunk 735 (AddAbilityToList(PC)): ?GetAbilityPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroAbility@@AAM@Z 0x006D7B80.
     long GetAbilityPossibleLevelUpAmount(EHeroAbility,float&);

@@ -40355,3 +40355,5 @@ _MAX_NODE_SIZE	01230894	00a770b0
 ?UpdateShadowScene@CEngineLightingManager@@QAEXABVCEngineCamera@@@Z	00b444f0	00b328c0
 ?push_back@?$vector@VCActiveSoundInfo@@V?$allocator@VCActiveSoundInfo@@@std@@@std@@QAEXABVCActiveSoundInfo@@@Z	00aacef0	00aac5e0
 ?resize@?$vector@U?$pair@KJ@std@@V?$allocator@U?$pair@KJ@std@@@2@@std@@QAEXI@Z	00a39ae0	00a38c20
+?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatMapHeader1@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader1@@@@PBX@Z	00512c70	005148d0
+?DeleteData@?$CCountedPointer@VCOldFileFormatMapHeader2@@@@SIXPAX@Z	0050d1f0	005148d0

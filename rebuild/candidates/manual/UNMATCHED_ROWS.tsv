@@ -41,7 +41,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00502e90	CWorldMap	PopulateRegionWithVillagers	13632	parked	acctC round six: round 6 final (2026-11-16): DIFFER(13587v13622); latest draft 00502e90.cpp + NOTES.md in the folder (grep the 	1	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE10/00502e90.cpp	original
 00507070	CWorldMap	BuildStaticMapGenerationVisibilityInfo	1440	parked	DIFFER(1628v1432)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00507070.cpp	original
 00509a20	CWorldMap	GetMapNavigationAreaUpdateInfo	3120	parked	DIFFER(3188v3120)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00509a20.cpp	original
-005148d0	_global	CEngineWorldMap_MoveConstructor	224	reserved (hand4e, in-house)	DIFFER(214v209)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/hdr/005148d0.cpp	original
 0051eda0	CEntityRuntimePersistence	SaveToGameStateScript	544	parked	DIFFER(485v501)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0051eda0.cpp	original
 00521cf0	_global	CThingManager_LoadMorphFromScript	448	parked	DIFFER(448v446)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00521cf0.cpp	original
 005239cd	_global	CThingDeadCreature_SavePersistentState	371	parked	not a function start (Codex pass 22 EXTENT_WRONG; BOUNDS_FIX.tsv)	0	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/extent_wrong/005239cd/	original
@@ -186,7 +185,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006cc270	CTCCreatureNavigation	DrawPreparePrimitivesForRendering	1088	parked	DIFFER(1035v1085)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006cc270.alt.cpp	gapscan/boundary
 006cddf0	CGroundNavigatorExternalInterface	?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z	1056	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/006cddf0.cpp	original
 006d5d30	CThingAICreature	UpdateAI	912	parked	DIFFER(883v897)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand307/differ/006d5d30.cpp	original
-006d6fa0	CTCHeroExperience	GetTrainableStatPossibleLevelUpAmount	224	reserved (hand4e, in-house)	DIFFER(228v220)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/006d6fa0.cpp	original
 006de080	CTCTrophy	StartMinigame	512	parked	DIFFER(490v497)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/006de080.cpp	original
 006e0230	CTCDParticleEmitter	UpdateEmitterCameraAttachment	576	parked	DIFFER(537v576)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006e0230.cpp	original
 006e0880	CTCDParticleEmitter	Create	240	parked	DIFFER(218v228)	2	rebuild/candidates/manual/pending/2026-10-24_linux_hand388/differ/006e0880.cpp	original
@@ -705,7 +703,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a87960	CSBIAgents	CSBIAgents::Process	1824	parked	DIFFER(115v1824)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand322/differ/00a87960.cpp	original
 00a880c0	CSBCCorridor	?Process@CSBCCorridor@@UAE_NPBVCSteeringAgent@@@Z	1776	parked	DIFFER(1720v1768)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00a880c0.cpp	original
 00a898d0	C3DMesh2	C3DMesh2::GetHelperPointPositionAnimated	416	parked	DIFFER(393v402)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a898d0.cpp	original
-00a8f1b0	_global	TransformVertexBufferWithNormals_LoopUnrolled	1472	reserved (hand4d, in-house)	DIFFER(1469v1469)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00a8f1b0.cpp	original
 00a90260	C3DPrimitive2	CreateDegenerateTriangleIndexBuffer	496	parked	codex pass24 PARKED: The index-buffer bookkeeping retains a CPU operand permutation from 0x00A90271 and differs by two bytes.	28	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00a90260/00a90260.cpp	original
 00a90ae0	CAnimatedBlock	InitialiseFromMeshFileData	640	parked	DIFFER(620v629)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00a90ae0.cpp	original
 00a90d60	N3DPrimitive::CDeviceIndependent	RemapBoneIndices	416	parked	DIFFER(445v413)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand529/differ/00a90d60.cpp	original
@@ -755,7 +752,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b17bd0	NParticleEngine::CPSCAttractor	InterpolateTo	928	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b17bd0.cpp	gapscan/boundary
 00b19c60	NParticleEngine::CPSCLight	PreparePrimitives	2528	parked	DIFFER(2546v2516)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand737/differ/00b19c60.test.cpp	gapscan/boundary
 00b1bc80	NParticleEngine::CPSCDecalRenderer	GetComponentCost	288	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b1bc80.cpp	gapscan/boundary
-00b1d550	CPSCDecalRenderer	DecalCollides	576	reserved (hand3c, not plain C++)		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00b1d550.cpp	original
 00b1d790	CPSCDecalRenderer	PoolDecal	880	reserved (hand3c, not plain C++)		0	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00b1d790.cpp	original
 00b1dc70	CPSCDecalRenderer	AddToBoundingSphere	864	reserved (hand3c, not plain C++)		0	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00b1dc70.cpp	original
 00b20ba0	CSplinePosParamData	Update	400	parked	DIFFER(397v391)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b20ba0.cpp	original

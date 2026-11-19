@@ -28,6 +28,11 @@ template<class T,unsigned short Version>class CBaseSerialise {public:
 #ifdef FABLE_RETAIL_CFILEFORMAT_HEIGHTMAP_V5
  static unsigned short FABLE_FASTCALL GetClassVersionNumber(){return Version;}
 #endif
+#ifdef FABLE_RETAIL_CFILEFORMAT_OLDMAPHEADER12
+ // hand4e nested opt-in (row 0x005148D0): FableWin.pdb / Ego_r.pdb ?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatMapHeader1@@$00@@
+ // SI?AV?$CCountedPointer@VCOldFileFormatMapHeader1@@@@PBX@Z -- the first step of a version chain (out of line, retail 0x00512C70).
+ static CCountedPointer<T> FABLE_FASTCALL ConvertPreviousUnknownVersionUp(const void* old_void);
+#endif
  bool ReadFromFile(CAFile&file,CASuspendableProcess*psuspendable_process){
   unsigned long length;file.ReadVar(length,psuspendable_process);
   long old_pos=file.GetPosition();unsigned char version;
@@ -93,8 +98,8 @@ class COldFileFormatHeightMapCell5:public CReplaceSerialise<COldFileFormatHeight
   SoundLayer=MinimapZone=0;
  }
 };
-FABLE_STATIC_ASSERT(sizeof(COldFileFormatHeightMapCell5)==25);
-FABLE_STATIC_ASSERT(offsetof(COldFileFormatHeightMapCell5,SoundLayer)==17);
+FABLE_STATIC_ASSERT_AT(96, sizeof(COldFileFormatHeightMapCell5)==25);
+FABLE_STATIC_ASSERT_AT(97, offsetof(COldFileFormatHeightMapCell5,SoundLayer)==17);
 #endif
 #ifdef FABLE_RETAIL_CFILEFORMAT_MAPHEADER
 // Nested opt-in (chunk 2055 scout, row 0x00821A80 CMap::LoadFromFile): the three map-file records that row reads, in this header's
@@ -126,32 +131,47 @@ class CFileFormatGameMapCell:public CBaseSerialise<CFileFormatGameMapCell,1>{pub
 #endif
 #pragma pack(pop)
 #ifdef FABLE_RETAIL_CFILEFORMAT_MAPHEADER
-FABLE_STATIC_ASSERT(sizeof(CFileFormatMapHeader)==0x10822);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,ThingUIDCount)==5);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,UsingExtraMapCells)==0x15);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,LargeThemePalette)==0x16);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,VersionNumber)==0x8416);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,NoSoundThemeEntries)==0x841A);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,AtmosThemePalette)==0x841E);
-FABLE_STATIC_ASSERT(sizeof(CFileFormatHeightMapCell)==21);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatHeightMapCell,SoundLayerPaletteIndex)==17);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatHeightMapCell,NavPreferred)==20);
-FABLE_STATIC_ASSERT(sizeof(CFileFormatGameMapCell)==11);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatGameMapCell,SoundThemePaletteIndex)==10);
+FABLE_STATIC_ASSERT_AT(129, sizeof(CFileFormatMapHeader)==0x10822);
+FABLE_STATIC_ASSERT_AT(130, offsetof(CFileFormatMapHeader,ThingUIDCount)==5);
+FABLE_STATIC_ASSERT_AT(131, offsetof(CFileFormatMapHeader,UsingExtraMapCells)==0x15);
+FABLE_STATIC_ASSERT_AT(132, offsetof(CFileFormatMapHeader,LargeThemePalette)==0x16);
+FABLE_STATIC_ASSERT_AT(133, offsetof(CFileFormatMapHeader,VersionNumber)==0x8416);
+FABLE_STATIC_ASSERT_AT(134, offsetof(CFileFormatMapHeader,NoSoundThemeEntries)==0x841A);
+FABLE_STATIC_ASSERT_AT(135, offsetof(CFileFormatMapHeader,AtmosThemePalette)==0x841E);
+FABLE_STATIC_ASSERT_AT(136, sizeof(CFileFormatHeightMapCell)==21);
+FABLE_STATIC_ASSERT_AT(137, offsetof(CFileFormatHeightMapCell,SoundLayerPaletteIndex)==17);
+FABLE_STATIC_ASSERT_AT(138, offsetof(CFileFormatHeightMapCell,NavPreferred)==20);
+FABLE_STATIC_ASSERT_AT(139, sizeof(CFileFormatGameMapCell)==11);
+FABLE_STATIC_ASSERT_AT(140, offsetof(CFileFormatGameMapCell,SoundThemePaletteIndex)==10);
 #endif
-FABLE_STATIC_ASSERT(sizeof(CFileFormatLevel)==25);
-FABLE_STATIC_ASSERT(sizeof(CFileLargeThemePaletteEntry)==132);
-FABLE_STATIC_ASSERT(sizeof(CFileLargeThemePalette)==33792);
-FABLE_STATIC_ASSERT(sizeof(CFileFormatBrushHeader)==33801);
-FABLE_STATIC_ASSERT(sizeof(CFileFormatBrush)==73);
-FABLE_STATIC_ASSERT(sizeof(CFileFormatBrushCell)==14);
-FABLE_STATIC_ASSERT(sizeof(CFileFormatBrushThingToMove)==37);
-FABLE_STATIC_ASSERT(sizeof(CFileFormatBrushThingToDelete)==13);
-FABLE_STATIC_ASSERT(sizeof(CFileFormatBrushThingToAdd)==13);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatLevel,BrushDataOffset)==13);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatBrush,GameArea)==5);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatBrush,ScriptName)==21);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatBrushCell,Height)==5);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatBrushThingToMove,UniqueID)==5);
-FABLE_STATIC_ASSERT(offsetof(CFileFormatBrushThingToMove,Position)==13);
+FABLE_STATIC_ASSERT_AT(142, sizeof(CFileFormatLevel)==25);
+FABLE_STATIC_ASSERT_AT(143, sizeof(CFileLargeThemePaletteEntry)==132);
+FABLE_STATIC_ASSERT_AT(144, sizeof(CFileLargeThemePalette)==33792);
+FABLE_STATIC_ASSERT_AT(145, sizeof(CFileFormatBrushHeader)==33801);
+FABLE_STATIC_ASSERT_AT(146, sizeof(CFileFormatBrush)==73);
+FABLE_STATIC_ASSERT_AT(147, sizeof(CFileFormatBrushCell)==14);
+FABLE_STATIC_ASSERT_AT(148, sizeof(CFileFormatBrushThingToMove)==37);
+FABLE_STATIC_ASSERT_AT(149, sizeof(CFileFormatBrushThingToDelete)==13);
+FABLE_STATIC_ASSERT_AT(150, sizeof(CFileFormatBrushThingToAdd)==13);
+FABLE_STATIC_ASSERT_AT(151, offsetof(CFileFormatLevel,BrushDataOffset)==13);
+FABLE_STATIC_ASSERT_AT(152, offsetof(CFileFormatBrush,GameArea)==5);
+FABLE_STATIC_ASSERT_AT(153, offsetof(CFileFormatBrush,ScriptName)==21);
+FABLE_STATIC_ASSERT_AT(154, offsetof(CFileFormatBrushCell,Height)==5);
+FABLE_STATIC_ASSERT_AT(155, offsetof(CFileFormatBrushThingToMove,UniqueID)==5);
+FABLE_STATIC_ASSERT_AT(156, offsetof(CFileFormatBrushThingToMove,Position)==13);
+#endif
+#if defined(FABLE_RETAIL_CFILEFORMAT_OLDMAPHEADER12) && !defined(FABLE_RETAIL_CFILEFORMAT_OLDMAPHEADER12_DEFINED)
+#define FABLE_RETAIL_CFILEFORMAT_OLDMAPHEADER12_DEFINED
+// hand4e opt-in (row 0x005148D0, with FABLE_RETAIL_CFILEFORMAT_HEIGHTMAP_V5): the first two map-header versions, Ego_r.pdb / FableWin.pdb
+// COldFileFormatMapHeader1 : CBaseSerialise<COldFileFormatMapHeader1,1> and COldFileFormatMapHeader2 : CReplaceSerialise<..2, ..1>, no
+// members of their own (5 bytes each, byte-aligned like the other records). COldFileFormatMapHeader2::ConvertFromOld(const
+// COldFileFormatMapHeader1* old_header) (FableWin 0x01CC8670) holds only a debug ASSERT: empty in the release build.
+#pragma pack(push,1)
+class COldFileFormatMapHeader1:public CBaseSerialise<COldFileFormatMapHeader1,1>{};
+class COldFileFormatMapHeader2:public CReplaceSerialise<COldFileFormatMapHeader2,COldFileFormatMapHeader1>{public:
+ void ConvertFromOld(const COldFileFormatMapHeader1* old_header){}
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT_AT(1001, sizeof(COldFileFormatMapHeader1)==5);
+FABLE_STATIC_ASSERT_AT(1002, sizeof(COldFileFormatMapHeader2)==5);
 #endif

@@ -66,11 +66,22 @@ public:
     // ?SetPrimitiveInfo@..@QAEXJJABVCEnginePrimitiveHandle@@J@Z (the text of CParticle::SetPrimitiveInfo, FABLE_RETAIL_CPARTICLE_SPRITE).
     float GetInterpolatedLifetimer(float fraction) const { return Lifetimer + fraction; }
     long GetMaxLife() const { return MaxLife; }
+#ifdef FABLE_RETAIL_CDECAL_ISACTIVE_MAXLIFE
+    // hand3c nested opt-in (row 0x00B1D550 CPSCDecalRenderer::DecalCollides): the FableWin.pdb ?IsActive@CDecal@NParticleEngine@@QBE_NXZ
+    // body (FableWin 0x02F56430: `cmp [this+30h],-1 ; jle false`, then bit 0 of +0x58), expanded in retail (0x00B1D684..0x00B1D695).
+    bool IsActive() const { return MaxLife > -1 && Active; }
+#else
     bool IsActive() const { return Active; }
+#endif
     float GetMinLife() const { return MinLife; }
     void SetMinLife(float minLife) { MinLife = minLife; }
     float GetAlphaFactor(float t) const { return (AlphaFactor[0] - AlphaFactor[1]) * t + AlphaFactor[1]; }
     float GetSizeFactor(float t) const { return (SizeFactor[0] - SizeFactor[1]) * t + SizeFactor[1]; }
+#ifdef FABLE_RETAIL_CDECAL_GETSIZEFACTOR_NOARG
+    // hand3c nested opt-in (row 0x00B1D550): FableWin.pdb ?GetSizeFactor@CDecal@NParticleEngine@@QBEMXZ (FableWin 0x02F56D60: `fld [this+38h]`),
+    // the no-argument overload, inline in retail (0x00B1D705 `fmul [edx+38h]`). Body only: no layout change.
+    float GetSizeFactor() const { return SizeFactor[0]; }
+#endif
     unsigned char GetFlickerIndex() const { return FlickerIndex; }
     unsigned char GetFlickerTimeOffset() const { return FlickerTimeOffset; }
     long GetNearestGraphicFrame() const { return GFFastFloatToLong(GraphicFrame); }

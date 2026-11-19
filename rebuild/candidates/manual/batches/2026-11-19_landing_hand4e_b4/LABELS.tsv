@@ -1,0 +1,6 @@
+address	name	evidence
+006379d0	NThingMap::InitLayerInfo	Ego_r.pdb + FableWin.pdb
+013ba84c	NThingMap::MaxLayerCellSize	FableWin.pdb public
+005148d0	CReplaceSerialise<COldFileFormatMapHeader2,COldFileFormatMapHeader1>::ConvertPreviousUnknownVersionUp	Ego_r.pdb + FableWin.pdb
+00512c70	CBaseSerialise<COldFileFormatMapHeader1,1>::ConvertPreviousUnknownVersionUp	Ego_r.pdb + FableWin.pdb call graph
+00aac5e0	CSoundEmitterLH::GetActiveSampleInfo	descriptive (engine/CASoundEmitter.h slot 24)

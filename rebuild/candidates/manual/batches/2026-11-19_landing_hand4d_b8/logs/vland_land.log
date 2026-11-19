@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00a8f1b0   WARN STANDIN_LEAF ?ConvertToVBFormatStaticBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1Bump@@@Z (catalog _global::TransformVertexBufferWithNormals_LoopUnrolled; names another function)
+00a8f1b0   RELOCATION_MATCH PASS   ConvertToVBFormatStaticBump
+
+WINS: 1
+  00a8f1b0 RELOCATION_MATCH C3DPrimitive2::?ConvertToVBFormatStaticBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1Bump@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DPrimitive2_ConvertToVBFormatStaticBump_00a8f1b0

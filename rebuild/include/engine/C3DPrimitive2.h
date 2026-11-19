@@ -30,6 +30,11 @@ public:
     unsigned long GetTotalTriangleCount() const;                         // 0x00A8ECE0
     unsigned long GetTotalIndexCount() const;                            // 0x00A8ED30
     void AddTriangleList(const C3DMeshFileTrianglesChunk& chunk);        // 0x00A90900 (private in Ego_r)
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_CONVERTSTATICBUMP
+    // Overlay opt-in (hand4d, row 0x00A8F1B0 ConvertToVBFormatStaticBump): FableWin.pdb ?GetVertexCount@CDeviceIndependent@N3DPrimitive@@QBEKXZ
+    // (0x032F8CB0 debug; inline in retail: the row reads the Vertices words in place).
+    unsigned long GetVertexCount() const { return Vertices.size(); }
+#endif
     CArray<C3DVertex2> Vertices;                                         // +0x04
     CArray<CIVCountedPointer<CTriangleList> > TriangleLists;             // +0x10
     CArray<CCountedPointer<C3DGroup2> > Groups;                          // +0x1C
@@ -279,6 +284,13 @@ public:
     long GetRecordedFrame() const { return RecordedFrame; }
     const C3DTextureStages& PeekRecordedTextureStages() const { return RecordedTextureStages; }
     void SetRecordedTextureStages(const C3DTextureStages& stages) { RecordedTextureStages=stages; }
+#endif
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_CONVERTSTATICBUMP
+    // Overlay opt-in (hand4d): Ego_r.pdb / FableWin.pdb ?ConvertToVBFormatStaticBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1Bump@@@Z
+    // (private; FableWin 0x032F9EF0), out of line in retail at 0x00A8F1B0. Needs FABLE_RETAIL_C3DPRIMITIVE2_LOADER (the typed Data).
+private:
+    void ConvertToVBFormatStaticBump(class CTVertexNormTex1Bump* dest);  // 0x00A8F1B0
+public:
 #endif
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
     bool InitialiseFromMeshFileData(const C3DMeshFilePrimitiveChunk& chunk, bool b, unsigned long reps, unsigned long initFlags, CScopedMemoryHandle& memoryHandle);

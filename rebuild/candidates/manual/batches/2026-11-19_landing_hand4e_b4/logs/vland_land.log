@@ -1,0 +1,14 @@
+addr       parity           behav  name
+005148d0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCOldFileFormatMapHeader2@@@@SIXPAX@Z -> 0050d1f0 labelled '_global::OperatorDelete_thunk_0050d1f0'
+005148d0   WARN RELOC_NAME: ?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatMapHeader1@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader1@@@@PBX@Z -> 00512c70 labelled '_global::CreateCountedFlagRecord_00512c70'
+005148d0   WARN STANDIN_LEAF ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatMapHeader2@@VCOldFileFormatMapHeader1@@@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader2@@@@PAX@Z (catalog _global::CEngineWorldMap_MoveConstructor; names another function)
+005148d0   RELOCATION_MATCH PASS   ConvertPreviousUnknownVersionUp
+006d6fa0   MATCH            PASS   GetTrainableStatPossibleLevelUpAmount
+
+WINS: 2
+  005148d0 RELOCATION_MATCH CReplaceSerialise<COldFileFormatMapHeader2,COldFileFormatMapHeader1>::?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatMapHeader2@@VCOldFileFormatMapHeader1@@@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader2@@@@PAX@Z
+  006d6fa0 MATCH CTCHeroExperience::?GetTrainableStatPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroTrainableStatType@@AAM@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CReplaceSerialiseCOldFileFormatMapHeader2COldFileFormatMapHeader1_ConvertPreviousUnknownVersionUp_005148d0
+  CTCHeroExperience_GetTrainableStatPossibleLevelUpAmount_006d6fa0
