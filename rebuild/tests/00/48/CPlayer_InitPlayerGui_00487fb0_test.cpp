@@ -19,9 +19,7 @@ struct CMainGameComponentBank {
     CGraphicDataBank* GraphicDataBank;                      // +0x161C8
 };
 
-struct CPlayerManagerCalls {
-    long GetMainPlayerNumber();                             // 0x00449700
-};
+#include "engine/CPlayerManager.h"
 
 class CPlayerGui { public:
     unsigned char _body[0x338];
@@ -44,7 +42,7 @@ struct CPlayer_Methods : CPlayer {
 void CPlayer_Methods::InitPlayerGui()
 {
     long number = Number;
-    if (number == reinterpret_cast<CPlayerManagerCalls*>(PlayerManager)->GetMainPlayerNumber()) {
+    if (number == PlayerManager->GetMainPlayerNumber()) {
         CGamePlayerInterface* playerInterface;
         CGraphicDataBank* bank;
         g_PlayerGui.Reset(new CPlayerGui(Component, World, playerInterface = PlayerInterface, PlayerManager,
@@ -61,7 +59,7 @@ CPlayerGuiHolder g_PlayerGui;
 static long g_mainNumber = 0; static const void* g_numThis = 0;
 static CMainGameComponent* g_c; static CWorld* g_w; static CGamePlayerInterface* g_pi; static CPlayerManager* g_pm; static CGraphicDataBank* g_bank;
 static int g_ctors = 0, g_opens = 0, g_resets = 0; static CPlayerGui* g_reset = 0; static const CPlayerGui* g_opened = 0;
-long CPlayerManagerCalls::GetMainPlayerNumber() { g_numThis = this; return g_mainNumber; }
+long CPlayerManager::GetMainPlayerNumber() const { g_numThis = this; return g_mainNumber; }
 CPlayerGui::CPlayerGui(CMainGameComponent* component, CWorld* world, CGamePlayerInterface* playerInterface,
                        CPlayerManager* playerManager, CGraphicDataBank* bank)
 { ++g_ctors; g_c = component; g_w = world; g_pi = playerInterface; g_pm = playerManager; g_bank = bank; }

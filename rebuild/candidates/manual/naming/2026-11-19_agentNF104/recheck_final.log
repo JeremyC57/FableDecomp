@@ -1,0 +1,191 @@
+addr       parity           behav  name
+00410890   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00410890   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00410890   RELOCATION_MATCH PASS   CDefinitionManager::GetDef<CConfigOptionsDefaultsDef>
+00411010   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00411010   RELOCATION_MATCH PASS   CPersistContext::Transfer
+004167c8   RELOCATION_MATCH PASS   CMainGameComponent::GetCurrentWorldFrame
+0041beb0   WARN STANDIN_LEAF ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@5@Z (catalog CEnginePrimitive2DSprite; names another function)
+0041beb0   MATCH            PASS   CEnginePrimitive2DSprite
+0041c680   MATCH            PASS   NUISystem::CSprite::SetAngle
+0041c690   MATCH            PASS   NUISystem::CSprite::SetWidth
+0041c6a0   MATCH            PASS   NUISystem::CSprite::SetHeight
+0041c6b0   MATCH            PASS   NUISystem::CSprite::GetGraphicIndex
+0041d1b4   WARN STANDIN_LEAF ?GetMeshBank@CManager@NUISystem@@QAE?AV?$CCountedPointer@VCMeshDataBank@@@@XZ (catalog CBankFile::GetBankHandle; names another function)
+0041d1b4   RELOCATION_MATCH PASS   CBankFile::GetBankHandle
+0042b646   RELOCATION_MATCH PASS   std::list<NUISystem::CActionParam*>::push_back
+0042b707   WARN STANDIN_LEAF ?size@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QBEIXZ (catalog CBasicString<char>::CalcStringLength; names another function)
+0042b707   MATCH            PASS   CBasicString<char>::CalcStringLength
+00431f10   RELOCATION_MATCH PASS   CDefClassBase::operator=
+00432c70   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00432c70   WARN SHARED_HEADER_AVAILABLE CDefString
+00432c70   RELOCATION_MATCH PASS   NUISystem::CUIIconsDef::operator=
+00432e60   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00432e60   WARN SHARED_HEADER_AVAILABLE CDefString
+00432e60   RELOCATION_MATCH PASS   CFrontEndDef::operator=
+00434450   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00434450   WARN SHARED_HEADER_AVAILABLE CDefString
+  WARN leaf 'operator=' matches no symbol in 00434450.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00434450.obj; graded the largest function
+00434450   RELOCATION_MATCH PASS   CEngineVideoOptionsDef::operator=
+004345a0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+004345a0   WARN SHARED_HEADER_AVAILABLE CDefString
+004345a0   RELOCATION_MATCH PASS   CConfigOptionsDefaultsDef::operator=
+004371a0   MATCH            PASS   C2DBoxF::C2DBoxF
+004378c0   WARN RELOC_NAME: ?UpdateMarkers@CDrawMiniMap@NPlayerGui@@QAEX_N@Z -> 00643e9a labelled '_unattributed::GetTarget_00643e9a'
+004378c0   RELOCATION_MATCH PASS   CPlayerGui::UpdateMiniMapMarkers
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+0043b050   WARN SHARED_HEADER_AVAILABLE C2DVector
+0043b050   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DSprite
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo
+0043b050   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0043b050   RELOCATION_MATCH PASS   CPlayerGui::DrawDebugSafeAreas
+00449700   MATCH            PASS   CPlayerManager::GetMainPlayerNumber
+00479369   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00479369   WARN SHARED_HEADER_AVAILABLE CPersistTraits
+00479369   WARN RELOC_NAME: ??0COpinionTransientOffset@@QAE@XZ -> 006815f0 labelled 'SRecord_006815f0::SRecord_006815f0'
+00479369   RELOCATION_MATCH PASS   CPersistTraits<std::list<COpinionTransientOffset> >::TransferBinaryIn
+004793f8   RELOCATION_MATCH PASS   COpinionTransientOffset::TransferBinaryIn
+004861df   RELOCATION_MATCH PASS   std::vector<unsigned char>::resize
+00487fb0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00487fb0   RELOCATION_MATCH PASS   CPlayer::InitPlayerGui
+0049d9d0   RELOCATION_MATCH PASS   CWorld::PeekMyPlayer
+004ab840   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004ab840   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004ab840   RELOCATION_MATCH PASS   CDefinitionManager::GetDef<CThingBuildingDef>
+004e448d   WARN SHARED_HEADER_AVAILABLE CResource
+004e448d   WARN SHARED_HEADER_AVAILABLE CPersistContext
+004e448d   RELOCATION_MATCH PASS   CClockDef::Transfer
+004e5d08   WARN SHARED_HEADER_AVAILABLE CDefString
+004e5d08   WARN SHARED_HEADER_AVAILABLE CResource
+004e5d08   WARN SHARED_HEADER_AVAILABLE CPersistContext
+004e5d08   RELOCATION_MATCH PASS   CTrapDef::Transfer
+00555cf0   WARN SHARED_HEADER_AVAILABLE CManager
+00555cf0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00555cf0   WARN RELOC_NAME: ?size@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QBEIXZ -> 0042b707 labelled 'CBasicString<char>::CalcStringLength'
+00555cf0   RELOCATION_MATCH PASS   NUISystem::CScrollableList::vfunc_1
+005958f5   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+005958f5   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+005958f5   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+005958f5   WARN RELOC_NAME: ?SetDefinitionManager@CManager@NUISystem@@QAEXPAVCDefinitionManager@@@Z -> 0041cd89 labelled '_global::SetMember_dword0x64_0041cd89'
+005958f5   WARN RELOC_NAME: ?DeleteTempSavesForProfile@CUserProfileManager@@QAEXABVCWideString@@@Z -> 00406770 labelled '_global::Nop_ret4_00406770'
+005958f5   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::Init
+0059a238   WARN SHARED_HEADER_AVAILABLE CFileInstaller
+0059a238   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0059a238   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent
+0059a238   WARN SHARED_HEADER_AVAILABLE CVirtualKeyboard
+0059a238   WARN RELOC_NAME: ?top@CScreenStack@NUISystem@@QAEAAPAVCComponent@2@XZ -> 0059b039 labelled 'std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::back'
+0059a238   WARN RELOC_NAME: ?Compare_Unsigned16Array@CWideString@@SA_NPBX0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0059a238   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::Action
+005cd074   WARN SHARED_HEADER_AVAILABLE CManager
+005cd074   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats
+005cd074   RELOCATION_MATCH PASS   NInventory::CTCInventoryStats::ConstructScreen
+0065595c   WARN SHARED_HEADER_AVAILABLE C2DVector
+0065595c   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0065595c   WARN SHARED_HEADER_AVAILABLE CRGBColour
+0065595c   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+0065595c   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive
+0065595c   WARN STANDIN_LEAF ??0CEnginePrimitive2DClockSprite@@QAE@_KPBVC2DVector@@KKKPBVCRGBColour@@KK2KMM11KK@Z (catalog CEnginePrimitive2DClockSprite; names another function)
+0065595c   RELOCATION_MATCH PASS   CEnginePrimitive2DClockSprite
+00681ba0   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00681ba0   WARN SHARED_HEADER_AVAILABLE CPersistTraits
+00681ba0   WARN RELOC_NAME: ?AppendCharacter@CCharString@@QAEXD@Z -> 0099f180 labelled 'CCharString::operator+='
+00681ba0   WARN STANDIN_LEAF ?Transfer@CPersistTraits@@QAEXPAVCPersistContext@@PAVCCharString@@PAU?$vector@_N@std@@@Z (catalog _global::CParticleMorphs_TransferEntry; names another function)
+00681ba0   RELOCATION_MATCH PASS   _global::CParticleMorphs_TransferEntry
+00685f80   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00685f80   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00685f80   RELOCATION_MATCH PASS   CPersistContext::Transfer<COpinionTransientOffset>
+007132c0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007132c0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+007132c0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007132c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007132c0   WARN SHARED_HEADER_AVAILABLE CThing
+007132c0   RELOCATION_MATCH PASS   NTCScriptedControl::CActionTalkToThing::DisplayText
+00714e00   WARN SHARED_HEADER_AVAILABLE CTCLook
+00714e00   WARN SHARED_HEADER_AVAILABLE CTCTalk
+00714e00   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00714e00   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+00714e00   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00714e00   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00714e00   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl
+00714e00   RELOCATION_MATCH PASS   NTCScriptedControl::CActionTalkBase::OnCleanup
+007e36a0   WARN SHARED_HEADER_AVAILABLE CDefString
+007e36a0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e36a0   WARN SHARED_HEADER_AVAILABLE CPersistContext
+007e36a0   WARN RELOC_NAME: ?Transfer_007e39d0@CPersistContext@@QAEXPBDAAJABJ@Z -> 007e39d0 labelled 'CPersistContext::Transfer<CDefString>'
+007e36a0   RELOCATION_MATCH PASS   CTCAtmosPlayer::OnSerialise
+007ef070   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+007ef070   WARN SHARED_HEADER_AVAILABLE CDefString
+007ef070   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007ef070   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007ef070   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007ef070   WARN SHARED_HEADER_AVAILABLE CPersistContext
+007ef070   WARN SHARED_HEADER_AVAILABLE CTCBase
+007ef070   RELOCATION_MATCH PASS   CTCExpression::OnSerialise
+0082be60   WARN SHARED_HEADER_AVAILABLE C2DVector
+0082be60   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0082be60   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DSprite
+0082be60   WARN SHARED_HEADER_AVAILABLE CIEngine
+0082be60   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo
+0082be60   WARN SHARED_HEADER_AVAILABLE CThing
+0082be60   WARN SHARED_HEADER_AVAILABLE CPlayer
+0082be60   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0082be60   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef
+0082be60   WARN RELOC_NAME: ?ToScreenBox@@YI?AVC2DBoxF@@ABV1@@Z -> 00643bef labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+0082be60   RELOCATION_MATCH PASS   CMiniMapDisplay::DrawMap
+009ad410   WARN SHARED_HEADER_AVAILABLE CSymbolMap
+009ad410   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009ad410   WARN RELOC_NAME: ?Lookup@CSymbolMap@@QBE_NABVCCharString@@PAJ@Z -> 009e5170 labelled 'CSymbolMap::FindSymbol'
+009ad410   RELOCATION_MATCH PASS   CDefinitionManager::GetDefGlobalIndexFromName
+009e95f0   WARN SHARED_HEADER_AVAILABLE CExceptionBase
+009e95f0   WARN SHARED_HEADER_AVAILABLE CMemoryFile
+009e95f0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+009e95f0   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009e95f0   WARN RELOC_NAME: ??0CBBBFileException@@QAE@VCCharString@@W4EFileExceptionType@0@@Z -> 0099ae50 labelled '_unattributed::CNamedHandle_0099ae50'
+009e95f0   RELOCATION_MATCH PASS   CMemoryFile::Write
+
+WINS: 42
+  00410890 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCConfigOptionsDefaultsDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@@Z
+  00411010 RELOCATION_MATCH CPersistContext::Transfer
+  004167c8 RELOCATION_MATCH CWorld::?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ
+  0041beb0 MATCH CEnginePrimitive2DSprite::??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@5@Z
+  0041c680 MATCH _gapscan::?SetAngle@CSprite@NUISystem@@UAEXM@Z
+  0041c690 MATCH _gapscan::?SetWidth@CSprite@NUISystem@@UAEXK@Z
+  0041c6a0 MATCH _gapscan::?SetHeight@CSprite@NUISystem@@UAEXK@Z
+  0041c6b0 MATCH _gapscan::?GetGraphicIndex@CSprite@NUISystem@@UAEKXZ
+  0041d1b4 RELOCATION_MATCH CBankFile::?GetMeshBank@CManager@NUISystem@@QAE?AV?$CCountedPointer@VCMeshDataBank@@@@XZ
+  0042b646 RELOCATION_MATCH _global::?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z
+  0042b707 MATCH _global::?size@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QBEIXZ
+  00431f10 RELOCATION_MATCH CDefClassBase::??4CDefClassBase@@QAEAAV0@ABV0@@Z
+  00432c70 RELOCATION_MATCH NUISystem::CUIIconsDef::??4CUIIconsDef
+  00432e60 RELOCATION_MATCH CFrontEndDef::??4CFrontEndDef
+  00434450 RELOCATION_MATCH CEngineVideoOptionsDef::operator=
+  004345a0 RELOCATION_MATCH CConfigOptionsDefaultsDef::??4CConfigOptionsDefaultsDef
+  004371a0 MATCH CRightHandedSet::??0C2DBoxF@@QAE@ABVC2DVector@@0@Z
+  004378c0 RELOCATION_MATCH CPlayerGui::?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z
+  0043b050 RELOCATION_MATCH CPlayerGui::DrawDebugSafeAreas
+  00449700 MATCH _global::?GetMainPlayerNumber@CPlayerManager@@QBEJXZ
+  00479369 RELOCATION_MATCH CPersistTraits<std::list<COpinionTransientOffset> >::TransferBinaryIn
+  004793f8 RELOCATION_MATCH COpinionTransientOffset::?TransferBinaryIn@COpinionTransientOffset@@QAEXAAVCMemoryDataInputStream@@@Z
+  004861df RELOCATION_MATCH vector<EWeaponClass::?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z
+  00487fb0 RELOCATION_MATCH CPlayer::InitPlayerGui
+  0049d9d0 RELOCATION_MATCH CWorld::?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ
+  004ab840 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z
+  004e448d RELOCATION_MATCH CClockDef::?Transfer@CClockDef@@UAEXAAVCPersistContext@@@Z
+  004e5d08 RELOCATION_MATCH CTrapDef::?Transfer@CTrapDef@@UAEXAAVCPersistContext@@@Z
+  00555cf0 RELOCATION_MATCH NUISystem::CScrollableList::?ProcessEvent@CScrollableList@NUISystem@@UAEXH@Z
+  005958f5 RELOCATION_MATCH NUISystem::CFrontEndManager::?Init@CFrontEndManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@V?$CCountedPointer@VCMeshDataBank@@@@PAVCInputManager@@PAVCDefinitionManager@@@Z
+  0059a238 RELOCATION_MATCH NUISystem::CFrontEndManager::?Action@CFrontEndManager@NUISystem
+  005cd074 RELOCATION_MATCH NInventory::CTCInventoryStats::ConstructScreen
+  0065595c RELOCATION_MATCH CEnginePrimitive2DClockSprite::CEnginePrimitive2DClockSprite
+  00681ba0 RELOCATION_MATCH _global::Transfer
+  00685f80 RELOCATION_MATCH CPersistContext::Transfer
+  007132c0 RELOCATION_MATCH NTCScriptedControl::CActionTalkToThing::?DisplayText@CActionTalkToThing
+  00714e00 RELOCATION_MATCH NTCScriptedControl::CActionTalkBase::?OnCleanup@CActionTalkBase@NTCScriptedControl@@UAEXXZ
+  007e36a0 RELOCATION_MATCH CTCAtmosPlayer::OnSerialise
+  007ef070 RELOCATION_MATCH CTCExpression::OnSerialise
+  0082be60 RELOCATION_MATCH CMiniMapDisplay::DrawMap
+  009ad410 RELOCATION_MATCH CDefinitionManager::GetDefGlobalIndexFromName
+  009e95f0 RELOCATION_MATCH CMemoryFile::Write

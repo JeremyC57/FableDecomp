@@ -56,7 +56,7 @@ public:
 };
 class CFontBank;
 class CSubtitleRenderer { public:
-    void ClearText(bool immediately);           // 0x00492BAB
+    void Clear(bool immediately);           // 0x00492BAB (NF104 q6429: Ego_r.pdb + FableWin.pdb ?Clear@CSubtitleRenderer@@QAEX_N@Z; no ClearText in either PDB)
     void SetText(CFontBank* font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
         const CWideString& button2Text, const CWideString& button3Text, unsigned long flags, float time, bool clickPast, bool pauseGame);   // 0x00492973
     void SetText(CFontBank* font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
@@ -108,7 +108,7 @@ public:
 
 void CActionTalkToThing::DisplayText()
 {
-    g_pPlayerGui->SubtitleRenderer.ClearText(false);
+    g_pPlayerGui->SubtitleRenderer.Clear(false);
     if (AskingHeroQuestion) {
         if (QuestionButton3 == "") {
             CWideString name(L"");
@@ -148,7 +148,7 @@ CWideString::CWideString(const wchar_t* text) { PStringData = (void*)text; ++g_l
 CWideString::CWideString(const CWideStringText& other) { PStringData = other.PStringData; ++g_live; }
 CWideString::~CWideString() { --g_live; if (g_setCalls) ++g_dtorAfterSet; }
 CWideString CCharString::ToWideString() const { return CWideString((const wchar_t*)PStringData); }
-void CSubtitleRenderer::ClearText(bool immediately) { ++g_clearCalls; CHECK(!immediately); CHECK(this == &g_gui.SubtitleRenderer); }
+void CSubtitleRenderer::Clear(bool immediately) { ++g_clearCalls; CHECK(!immediately); CHECK(this == &g_gui.SubtitleRenderer); }
 CMainGameComponentFontView* CThing::PeekComponent() { ++g_peekCalls; return &g_view; }
 static void record(CSubtitleRenderer* r, int kind, CFontBank* font, const CWideString& text, unsigned long flags, float time, bool click, bool pause) {
     ++g_setCalls; g_lastKind = kind; g_lastFont = font; g_lastText = text.PStringData; g_lastFlags = flags; g_lastTime = time; g_lastClick = click; g_lastPause = pause;

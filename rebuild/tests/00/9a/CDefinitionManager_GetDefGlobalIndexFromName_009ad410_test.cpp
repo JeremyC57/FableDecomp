@@ -32,16 +32,19 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
-extern const unsigned long g_crcTable_0129a168[256];   // 0x0129A168: CRC-32 table
-// Stand-in for Calc @ 0x004014A0 (the retail body; same TU so the caller sees that it writes no memory).
+#include "engine/CCRC.h"
+extern unsigned long g_CRCTable[256];                 // 0x0129A168: CRC-32 table
+// CCRC::Calc @ 0x004014A0 (the retail body; same TU so the caller sees that it writes no memory).
 #pragma auto_inline(off)
-__declspec(noinline) unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length)
+unsigned long FABLE_FASTCALL CCRC::Calc(unsigned long seed, const void* data, unsigned long byteCount)
 {
-    unsigned long crc = seed;
-    if (length != 0)
-        for (unsigned long i = 0; i < length; ++i)
-            crc = (crc >> 8) ^ g_crcTable_0129a168[(unsigned char)data[i] ^ (crc & 0xff)];
-    return crc;
+    if (byteCount != 0)
+    {
+        const unsigned char* bytes = static_cast<const unsigned char*>(data);
+        for (unsigned long index = 0; index < byteCount; ++index)
+            seed = g_CRCTable[bytes[index] ^ (seed & 0xFF)] ^ (seed >> 8);
+    }
+    return seed;
 }
 #pragma auto_inline(on)
 
@@ -103,7 +106,7 @@ long CDefinitionManager::GetDefGlobalIndexFromName(const CCharString& name) cons
     if (name.GetLength() == 0)
         return 0;
     if (!NameCRCToIndexMap.empty()) {
-        long key = Calc_004014a0(0, name.GetChars(), name.GetLength());
+        long key = CCRC::Calc(0, name.GetChars(), name.GetLength());
         SNameIndex* it = NameCRCToIndexMap.find(key);
         if (it != NameCRCToIndexMap.end())
             return it->second;
@@ -117,7 +120,7 @@ long CDefinitionManager::GetDefGlobalIndexFromName(const CCharString& name) cons
 
 // ---- stubs and driver ----
 const char g_emptyLiteral_0129aaf4[] = "";
-extern const unsigned long g_crcTable_0129a168[256] = {
+unsigned long g_CRCTable[256] = {
     0x00000000UL, 0x77073096UL, 0xEE0E612CUL, 0x990951BAUL, 0x076DC419UL, 0x706AF48FUL, 0xE963A535UL, 0x9E6495A3UL,
     0x0EDB8832UL, 0x79DCB8A4UL, 0xE0D5E91EUL, 0x97D2D988UL, 0x09B64C2BUL, 0x7EB17CBDUL, 0xE7B82D07UL, 0x90BF1D91UL,
     0x1DB71064UL, 0x6AB020F2UL, 0xF3B97148UL, 0x84BE41DEUL, 0x1ADAD47DUL, 0x6DDDE4EBUL, 0xF4D4B551UL, 0x83D385C7UL,
@@ -159,7 +162,7 @@ bool CSymbolMap::Lookup(const CCharString& name, long* value) const
     if (g_lookupHit) *value = g_lookupValue;
     return g_lookupHit;
 }
-static unsigned long crc(const char* s) { unsigned long c = 0; for (; *s; ++s) c = (c >> 8) ^ g_crcTable_0129a168[(unsigned char)*s ^ (c & 0xff)]; return c; }
+static unsigned long crc(const char* s) { unsigned long c = 0; for (; *s; ++s) c = (c >> 8) ^ g_CRCTable[(unsigned char)*s ^ (c & 0xff)]; return c; }
 int main()
 {
     static unsigned char raw[sizeof(CDefinitionManager)];

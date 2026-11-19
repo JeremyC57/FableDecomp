@@ -1,43 +1,38 @@
-// Names are from Ego_r.pdb CEnginePrimitive2DSprite and CEnginePrimitiveThemeChannelDesc,
-// corroborated by landed006558CE. TextureFrame groups the adjacent BankIndex/Frame words;
-// texture overloads clear them. The position overload represents ClipBox as two equal points.
-// CEnginePrimitive2DSprite::CEnginePrimitive2DSprite -- initializes sprite wrapper metadata, box, blend parameters, and UV vectors; retail 0x0041beb0 length 0xab. The shared internal sprite header is a distinct renderer object (0x8c); local wrapper fields follow constructor stores.
-class C2DBoxF { public: float left, top, right, bottom; };
-class C2DVector { public: float x, y; };
-class CEnginePrimitiveThemeChannelDesc { public: unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad; CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) {} };
-struct CSpriteTextureFrame { unsigned long BankIndex, Frame; void Reset() { BankIndex=0; Frame=0; } };
-struct CEnginePrimitive2DSprite {
-    unsigned long Type;
-    unsigned long InterpolationSet;
-    CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;
-    C2DBoxF ClipBox;
-    unsigned long Layer;
-    unsigned long BankIndex, Frame;
-    float StartAngle, EndAngle;
-    unsigned long BlendMode;
-    unsigned char Colour[4];
-    unsigned char ClipBoxIsPos;
-    unsigned long Flags;
-    void* Texture;
-    C2DVector UVOffsetsStart, UVOffsetsEnd;
-    CEnginePrimitive2DSprite(unsigned __int64 unused, const C2DBoxF* box, unsigned long layer,
-        unsigned long bank, unsigned long frame, unsigned long blend, unsigned long interpolation,
-        float angleStart, float angleEnd, unsigned char c0, unsigned char c1,
-        unsigned char c2, unsigned char c3, unsigned long param,
-        const C2DVector* uvStart, const C2DVector* uvEnd);
-};
-CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64 unused, const C2DBoxF* box, unsigned long layer,
-        unsigned long bank, unsigned long frame, unsigned long blend, unsigned long interpolation,
-        float angleStart, float angleEnd, unsigned char c0, unsigned char c1,
-        unsigned char c2, unsigned char c3, unsigned long param,
-        const C2DVector* uvStart, const C2DVector* uvEnd) : Type(0x22), InterpolationSet(interpolation) {
-    (void)unused;
+// CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64, const C2DBoxF&, EEngine2DLayer, unsigned long, unsigned long, EEnginePrimitiveBlendMode, EEngineInterpolationSet, float, float, unsigned char x4, unsigned long, const C2DVector&, const C2DVector&) -- the box overload of the 2D sprite primitive: type 0x22, clip box, layer, bank / frame, angles, blend, colour, flags, no texture, UV offsets
+// Leaf: ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@5@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0041BEB0, 0xAB bytes, thiscall `ret 3Ch`.
+// NF104 (q4944, 2026-11-19): moved off its local pointer-parameter model (??0CEnginePrimitive2DSprite@@QAE@_KPBVC2DBoxF@@KKKKKMMEEEEKPBVC2DVector@@2@Z,
+//   local C2DBoxF / C2DVector / CEnginePrimitiveThemeChannelDesc / CEnginePrimitive2DSprite models) onto the shared engine/CEnginePrimitive2DSprite.h
+//   box ctor body (FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS + _BOX_CTOR_BODY, the header text that grades MATCH against this address
+//   on its own; the defines of the landed caller 0x0048E78E). Name: Ego_r.pdb 0x0042D110 ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@5@Z
+//   (16 arguments incl. the 64-bit id; FableWin.pdb 0x01A662C6 in the CSubtitleRenderer TU); CMorphingSprite::Draw 0x00554CF5 and 7 other landed
+//   rows bind it.
+#include "fable_compiler.h"
+#define FABLE_RETAIL_CRGBCOLOUR
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_C2DBOXF_COPY
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS
+#define FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_BOX_CTOR_BODY
+#define FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR
+#include <new>
+#include "engine/C2DVector.h"
+#include "engine/C2DBoxF.h"
+#include "engine/CRGBColour.h"
+#include "engine/CEnginePrimitive2DSprite.h"
 
-    ClipBox.left=box->left; ClipBox.top=box->top; ClipBox.right=box->right; ClipBox.bottom=box->bottom;
-    Layer=layer; BankIndex=bank; Frame=frame;
-    StartAngle=angleStart; EndAngle=angleEnd; BlendMode=blend;
-
-    Colour[2]=c1; Colour[1]=c2; Colour[0]=c3; Colour[3]=c0;
-    ClipBoxIsPos=0; Flags=param; Texture=0;
-    UVOffsetsStart=*uvStart; UVOffsetsEnd=*uvEnd;
+namespace {
+// Fidelity: scaffolding, not retail: a placement construction through the header's inline box ctor with inline expansion switched off for this
+// one function, so this object emits the body out of line as a pick-any COMDAT (retail's 0x0041BEB0). Internal to this TU; never called.
+#pragma inline_depth(0)
+void ReferenceBoxCtor(void* where, unsigned __int64 id, const C2DBoxF& box, EEngine2DLayer layer, unsigned long bank, unsigned long frame,
+                      EEnginePrimitiveBlendMode blend, EEngineInterpolationSet interpolation, float start_angle, float end_angle,
+                      unsigned char alpha, unsigned char r, unsigned char g, unsigned char b, unsigned long flags,
+                      const C2DVector& uv_start, const C2DVector& uv_end)
+{
+    new (where) CEnginePrimitive2DSprite(id, box, layer, bank, frame, blend, interpolation, start_angle, end_angle, alpha, r, g, b, flags,
+                                         uv_start, uv_end);
+}
+#pragma inline_depth()
 }

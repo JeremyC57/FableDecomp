@@ -54,7 +54,7 @@ class COpinionTransientOffset {
 public:
     unsigned char m_data[0x18];
     COpinionTransientOffset() { ++g_ctors; std::memset(m_data, 0, sizeof(m_data)); }
-    void TransferBinaryIn(CMemoryDataInputStream* stream) { stream->Read(m_data, sizeof(m_data)); }
+    void TransferBinaryIn(CMemoryDataInputStream& stream) { stream.Read(m_data, sizeof(m_data)); }   // NF104 q6539: by reference (Ego_r.pdb)
 };
 struct COffsetList {
     int clears; int count; unsigned char first[8];
@@ -77,7 +77,7 @@ void TransferBinaryIn(CMemoryDataInputStream* stream, COffsetList* out)
     CPersistTraits<LONG32>().TransferBinaryIn(stream, &count);
     for (LONG32 i = count; i > 0; --i) {
         COpinionTransientOffset value;
-        value.TransferBinaryIn(stream);
+        value.TransferBinaryIn(*stream);
         out->push_back(value);
     }
 }

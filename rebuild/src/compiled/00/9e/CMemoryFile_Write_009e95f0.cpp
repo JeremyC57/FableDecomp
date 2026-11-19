@@ -1,8 +1,13 @@
 // CMemoryFile::Write(const void*, long, CASuspendableProcess*) -- copy bytes into the memory file at the current position, growing it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E95F0, 316 bytes, `ret 0Ch`.
 // Shape: the new end is written as `Position + size` at each use (the __int64 range check, the Length compare/store) with
-// SetSize(Length): VC CSEs one sum as `mov edx,[esi+8] ; lea ecx,[edx+ebx]`, which also fixes the register rotation in the
+// resize(Length) (was SetSize): VC CSEs one sum as `mov edx,[esi+8] ; lea ecx,[edx+ebx]`, which also fixes the register rotation in the
 // not-writable throw; a named `long end` local gives `mov ecx,[esi+8] ; add ecx,ebx`.
+// NF104 (q4767, 2026-11-19): DataBuffer is the shared engine/CArray.h CArray<unsigned char> (an STLport vector<unsigned char>, Ego_r.pdb);
+//   the grow call is the one-argument std::vector<unsigned char>::resize 0x004861DF (Ego_r.pdb ?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z,
+//   bound so by 0x0047F58B / 0x00597228), out of line (FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL); was a local CArray model with SetSize.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "engine/CArray.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
@@ -22,14 +27,6 @@ public:
     CBBBFileException(CCharString text, EFileExceptionType type) : CExceptionBase(static_cast<const char*>(text)), Type(type) { }
 };
 class CASuspendableProcess;
-template <class T> class CArray { public:                     // CArray<T>: the element block first
-    T*   Data;
-    long Count;
-    long Capacity;
-    long Grow;
-    void SetSize(long size);                           // 0x004897F0
-    T& operator[](long index) { return Data[index]; }
-};
 class CMemoryFile { public:
     // vptr at +0x00
     long                   AccessType;                  // +0x04 FileAccessType (1: read only)
@@ -56,7 +53,7 @@ void CMemoryFile::Write(const void* buffer, long size, CASuspendableProcess* pro
         }
         if (Position + size > Length) {
             Length = Position + size;
-            DataBuffer.SetSize(Length);
+            DataBuffer.resize(Length);
         }
         for (; size > 0; --size) {
             DataBuffer[Position++] = *(const unsigned char*)buffer;

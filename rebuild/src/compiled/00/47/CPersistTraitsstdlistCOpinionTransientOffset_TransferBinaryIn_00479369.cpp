@@ -4,7 +4,7 @@
 //   ebp frame of a size TU (`#pragma optimize("y", off)` + `("s", on)`: the 4-byte memcpy is a `movsd`, `leave`).
 // Callees: list::clear @ 0x00450855 (frees the nodes; propagated label "CGuiControlTreePane::SortTreeRecursively"),
 //   CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0, COpinionTransientOffset() @ 0x006815F0 (out of line;
-//   propagated label "CVsyncCallbackTimerInfo"), COpinionTransientOffset::TransferBinaryIn(CMemoryDataInputStream*) @ 0x004793F8
+//   propagated label "CVsyncCallbackTimerInfo"), COpinionTransientOffset::TransferBinaryIn(CMemoryDataInputStream&) @ 0x004793F8 (NF104 q6539: Ego_r/FableWin take the stream by reference)
 //   (reads the 0x18-byte element), list::push_back(const T&) @ 0x00479449. Sibling TransferBinaryOut is landed at 0x0047931E.
 // Shape: the count is read through an inlined CPersistTraits<long>::TransferBinaryIn (its own `value` local, then
 //   `*out = value`): only then does VC7.1 home it in the stream-argument slot ([ebp+8]) although the stream stays live in
@@ -45,7 +45,7 @@ class COpinionTransientOffset {                                      // 0x18 byt
 public:
     unsigned char m_data[0x18];
     COpinionTransientOffset();                                       // 0x006815F0
-    void TransferBinaryIn(CMemoryDataInputStream* stream);           // 0x004793F8
+    void TransferBinaryIn(CMemoryDataInputStream& stream);           // 0x004793F8
 };
 
 namespace std {
@@ -76,7 +76,7 @@ template <> void CPersistTraits<std::list<COpinionTransientOffset> >::TransferBi
     CPersistTraits<long>().TransferBinaryIn(stream, &count);
     for (long i = count; i > 0; --i) {
         COpinionTransientOffset value;
-        value.TransferBinaryIn(stream);
+        value.TransferBinaryIn(*stream);
         out->push_back(value);
     }
 }

@@ -30528,9 +30528,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004371a0'
-        Module = 'CRightHandedSet'
-        Source = '00/43/CRightHandedSet_CRightHandedSet_004371a0.cpp'
-        TestSource = '00/43/CRightHandedSet_CRightHandedSet_004371a0_test.cpp'
+        Module = 'C2DBoxF'
+        Source = '00/43/C2DBoxF_C2DBoxF_004371a0.cpp'
+        TestSource = '00/43/C2DBoxF_C2DBoxF_004371a0_test.cpp'
         PassPattern = 'OK_0x004371a0'
     }
     [pscustomobject]@{
@@ -43839,9 +43839,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004861df'
-        Module = 'vector<EWeaponClass'
-        Source = '00/48/vectorEWeaponClass_UmoveEWeaponClass_004861df.cpp'
-        TestSource = '00/48/vectorEWeaponClass_UmoveEWeaponClass_004861df_test.cpp'
+        Module = 'std::vector<unsigned char>'
+        Source = '00/48/stdvector_resize_004861df.cpp'
+        TestSource = '00/48/stdvector_resize_004861df_test.cpp'
         PassPattern = '004861df_TEST PASS'
     }
     [pscustomobject]@{
@@ -74671,9 +74671,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004167c8'
-        Module = 'CWorld'
-        Source = '00/41/global_GFGetPreMainMemoryUsed_004167c8.cpp'
-        TestSource = '00/41/global_GFGetPreMainMemoryUsed_004167c8_test.cpp'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_GetCurrentWorldFrame_004167c8.cpp'
+        TestSource = '00/41/CMainGameComponent_GetCurrentWorldFrame_004167c8_test.cpp'
         PassPattern = 'PASS_004167c8'
     }
     [pscustomobject]@{
@@ -74749,8 +74749,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004378c0'
         Module = 'CPlayerGui'
-        Source = '00/43/CPlayerGui_Refresh_004378c0.cpp'
-        TestSource = '00/43/CPlayerGui_Refresh_004378c0_test.cpp'
+        Source = '00/43/CPlayerGui_UpdateMiniMapMarkers_004378c0.cpp'
+        TestSource = '00/43/CPlayerGui_UpdateMiniMapMarkers_004378c0_test.cpp'
         PassPattern = 'PASS_004378c0'
     }
     [pscustomobject]@{
@@ -76883,9 +76883,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041d1b4'
-        Module = 'CBankFile'
-        Source = '00/41/CBankFile_GetBankHandle_0041d1b4.cpp'
-        TestSource = '00/41/CBankFile_GetBankHandle_0041d1b4_test.cpp'
+        Module = 'NUISystem::CManager'
+        Source = '00/41/NUISystemCManager_GetMeshBank_0041d1b4.cpp'
+        TestSource = '00/41/NUISystemCManager_GetMeshBank_0041d1b4_test.cpp'
         PassPattern = 'PASS_0041d1b4'
     }
     [pscustomobject]@{
@@ -77079,9 +77079,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00449700'
-        Module = '_global'
-        Source = '00/44/CWorld_DrawGetEnvironment_00449700.cpp'
-        TestSource = '00/44/CWorld_DrawGetEnvironment_00449700_test.cpp'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_GetMainPlayerNumber_00449700.cpp'
+        TestSource = '00/44/CPlayerManager_GetMainPlayerNumber_00449700_test.cpp'
         PassPattern = 'PASS_00449700'
     }
     [pscustomobject]@{
@@ -93023,9 +93023,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042b707'
-        Module = '_global'
-        Source = '00/42/global_CalcStringLength_0042b707.cpp'
-        TestSource = '00/42/global_CalcStringLength_0042b707_test.cpp'
+        Module = 'std::list<NUISystem::CList*,std::allocator<NUISystem::CList*>_>'
+        Source = '00/42/stdlist_size_0042b707.cpp'
+        TestSource = '00/42/stdlist_size_0042b707_test.cpp'
         PassPattern = 'PASS_0042b707'
     }
     [pscustomobject]@{
@@ -94992,30 +94992,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041c680'
-        Module = '_gapscan'
-        Source = '00/41/gapscan_sub0041c680_0041c680.cpp'
-        TestSource = '00/41/gapscan_sub0041c680_0041c680_test.cpp'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_SetAngle_0041c680.cpp'
+        TestSource = '00/41/NUISystemCSprite_SetAngle_0041c680_test.cpp'
         PassPattern = 'PASS_0041c680'
     }
     [pscustomobject]@{
         Address = '0041c690'
-        Module = '_gapscan'
-        Source = '00/41/gapscan_sub0041c690_0041c690.cpp'
-        TestSource = '00/41/gapscan_sub0041c690_0041c690_test.cpp'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_SetWidth_0041c690.cpp'
+        TestSource = '00/41/NUISystemCSprite_SetWidth_0041c690_test.cpp'
         PassPattern = 'PASS_0041c690'
     }
     [pscustomobject]@{
         Address = '0041c6a0'
-        Module = '_gapscan'
-        Source = '00/41/gapscan_sub0041c6a0_0041c6a0.cpp'
-        TestSource = '00/41/gapscan_sub0041c6a0_0041c6a0_test.cpp'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_SetHeight_0041c6a0.cpp'
+        TestSource = '00/41/NUISystemCSprite_SetHeight_0041c6a0_test.cpp'
         PassPattern = 'PASS_0041c6a0'
     }
     [pscustomobject]@{
         Address = '0041c6b0'
-        Module = '_gapscan'
-        Source = '00/41/gapscan_sub0041c6b0_0041c6b0.cpp'
-        TestSource = '00/41/gapscan_sub0041c6b0_0041c6b0_test.cpp'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_GetGraphicIndex_0041c6b0.cpp'
+        TestSource = '00/41/NUISystemCSprite_GetGraphicIndex_0041c6b0_test.cpp'
         PassPattern = 'PASS_0041c6b0'
     }
     [pscustomobject]@{
@@ -125409,9 +125409,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042b646'
-        Module = '_global'
-        Source = '00/42/global_ListPushFrontWrapper0042b646_0042b646.cpp'
-        TestSource = '00/42/global_ListPushFrontWrapper0042b646_0042b646_test.cpp'
+        Module = 'std::list<NUISystem::CActionParam*>'
+        Source = '00/42/stdlist_pushback_0042b646.cpp'
+        TestSource = '00/42/stdlist_pushback_0042b646_test.cpp'
         PassPattern = 'LISTPUSH_0042b646_PASS'
     }
     [pscustomobject]@{
@@ -177163,8 +177163,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00410890'
         Module = 'CDefinitionManager'
-        Source = '00/41/CDefinitionManager_GetDef00410890_00410890.cpp'
-        TestSource = '00/41/CDefinitionManager_GetDef00410890_00410890_test.cpp'
+        Source = '00/41/CDefinitionManager_GetDef_00410890.cpp'
+        TestSource = '00/41/CDefinitionManager_GetDef_00410890_test.cpp'
         PassPattern = '00410890_TEST PASS'
     }
     [pscustomobject]@{
@@ -177359,8 +177359,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004ab840'
         Module = 'CDefinitionManager'
-        Source = '00/4a/CDefinitionManager_GetDef004ab840_004ab840.cpp'
-        TestSource = '00/4a/CDefinitionManager_GetDef004ab840_004ab840_test.cpp'
+        Source = '00/4a/CDefinitionManager_GetDef_004ab840.cpp'
+        TestSource = '00/4a/CDefinitionManager_GetDef_004ab840_test.cpp'
         PassPattern = '004ab840_TEST PASS'
     }
     [pscustomobject]@{

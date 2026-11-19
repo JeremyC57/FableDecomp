@@ -4,7 +4,7 @@
 // Identity (proven): CTrapDef::Transfer(CPersistContext&); evidence: slot 18 (the def Transfer slot, as the landed CHeroCombatDef 0x004665B6) of
 //   vtable 0x01243054, whose RTTI type descriptor is .?AVCTrapDef@@ (bases CSubDefClassBase <- CDefClassBase); the Ego_r/FableWin.pdb name sets hold ?Transfer@CTrapDef@@UAEXAAVCPersistContext@@@Z.
 // Label: the manifest's "?Transfer@CTrapDef@@UAEXAAVCPersistContext@@@Z" agrees with the RTTI (family J058: one-transfer-per-member def bodies, each its own class).
-// Callees (CPersistContext's typed transfers): Transfer(std::map<CCharString, long >&) 0x00431493, Transfer<ETrapTriggerType>(ETrapTriggerType&) 0x004E5DA4, Transfer<ETrapType>(ETrapType&) 0x004E5E48, Transfer(float&) 0x00431061, Transfer(long&) 0x00431102, Transfer(CDefString&) 0x0045228F.
+// Callees (CPersistContext's typed transfers): TransferMap<long, CCharString>(std::map<CCharString, long >&) 0x00431493, Transfer<ETrapTriggerType>(ETrapTriggerType&) 0x004E5DA4, Transfer<ETrapType>(ETrapType&) 0x004E5E48, Transfer(float&) 0x00431061, Transfer(long&) 0x00431102, Transfer(CDefString&) 0x0045228F.
 // Layout: Ego_r.pdb CTrapDef members rebased to retail (def base at its PDB size, each STLport container / CArray 12 bytes, 16 in the PDB); every transferred offset hits the PDB member of the asserted type (the def transfers out of declaration order).
 // Shape: context in edi, this in esi, one `lea eax,[esi+N] ; push eax ; mov ecx,edi ; call` per member, the last address formed in place (`add esi,N`).
 #pragma optimize("s", on)
@@ -72,7 +72,7 @@ class CSubDefClassBase : public CDefClassBase {         // vtable 0x01231D54, Eg
 #pragma pack(pop)
 class CPersistContext {
 public:
-    void Transfer(std::map<CCharString, long >& value);          // 0x00431493
+    template <class V, class K> void TransferMap(std::map<K, V, std::less<K>, std::allocator<std::pair<const K, V> > >& map);   // 0x00431493 <long, CCharString> (NF104 q4182: the landed self row's spelling)
     void Transfer(CDefString& value);                            // 0x0045228F
     template <class T> void Transfer(T& value);              // enum instances: ETrapTriggerType 0x004E5DA4, ETrapType 0x004E5E48
 };
@@ -96,7 +96,7 @@ public:
 
 void CTrapDef::Transfer(CPersistContext& context)
 {
-    context.Transfer(Sound);
+    context.TransferMap(Sound);
     context.Transfer(TriggerType);
     context.Transfer(TrapType);
     context.Transfer(TriggerRadius);

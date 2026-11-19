@@ -38,7 +38,7 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;                  // +0x24
     CDataOutputStream*      PSaveStream;                  // +0x28
 
-    void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);   // 0x004109A0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004109A0 Transfer<CCharString> (NF104 q4610: FableWin.pdb/Ego_r.pdb ??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@ABV1@@Z, a member template)
     void Transfer(const char* name, CCharString& value);
     static CCharString DefaultValue()
     {

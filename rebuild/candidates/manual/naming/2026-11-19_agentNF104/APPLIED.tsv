@@ -1,0 +1,41 @@
+entry	address	status	binders_respelled	note
+q4182	0x00431493	done	2	self row already emits the claim (MATCH); binders 004e448d 004e5d08 respelled (Transfer(map&) -> TransferMap<long,CCharString>); 00430900 already right (not-a-binder); all 3 REFS rows now bind the claim
+q4194	0x004046B0	blocked: family (63 rows)	0	not settled, nothing changed: the 63 landed REFS rows split 47 binding ??1?$list@VCStringParserCommentBoundaries@@...QAE@XZ (004047a0 004047d0 004138d0 004b3760 004b6380 004c88e0 004c8a30 004c9120 004ca230 004caa00 00501d30 00520570 00521ae0 005dc3c0 005dc450 005dc4d0 005dc550 005dc650 005dc730 005dc7b0 005dc8b0 005dc9b0 005dca60 00686e10 006ba8b0 006bbba0 00756d00 007ae3d0 00814260 00816000 00816150 00998a30 009ade90 009ae150 009af1e0 009bba40 009e5ad0 009eb2c0 009eb430 009ec430 009ec710 009ec890 00a38e50 00cb7cb0 00cb7da0 00cb8440 00cb8690) vs 16 binding the claim ??1?$_List_base@... (004a0d90 004a21f0 004b5080 004ce1b0 004fe2a0 00520d00 00684610 006a5d90 008315c0 00837e40 0083d990 00998570 009bb110 009bbbf0 009bc120 00ae8d50); the self row 0x004046B0 emits ??1?$list. Retail folds ~90 byte-identical list destructors, and the PDBs are Dinkumware (no STLport _List_base/list dtor split to settle which one this COMDAT is). Either direction needs a coordinated rename: claim direction respells the 47 list binders + the self row; reverse direction respells the 16 _List_base binders. Waits for an owner/coordinator decision
+q4258	0x00436C80	open	0	not started
+q4413	0x00497890	blocked	0	blocked: 1 row left (008ed590, July candidates-header row: its GFROR13 declaration is in rebuild/include/candidates/object_family_compiled.h line 21 (YIKK) and the row grades DIFFER(141v166) unchanged in this lane; needs header claim + a lane-gradable re-author). Self row already emits ?GFROR13@@YIJK@Z (Ego_r 0x004183B0 + FableWin 0x018BAD60); 179 of the 180 REFS rows bind it (incl. 0091b010, already respelled)
+q4429	0x00410890	done	0	self row respelled in place to the FableWin template spelling (s1); the only REFS binder 004083e0 already binds it
+q4446	0x00409B70	done	1	claim holds (Ego_r + FableWin SetDefaultValuesForNewProfile; sibling SetDefaultValues is 0x0040C790); self row not landed (parked draft); binder 005958f5 respelled; 0059a238 already right; both REFS rows bind the claim
+q4452	0x004115A0	open	0	not started
+q4453	0x00485F3A	open	0	not started
+q4493	0x0049D9D0	done	0	self row re-authored (s1); 62 REFS rows already bind the claim; 0065a5bb declares it right (not-a-binder; lane DIFFER unrelated)
+q4524	0x004A96F0	open	0	not started
+q4610	0x004109A0	done	4	self already emits the claim (verified ??$Transfer@VCCharString@@@...ABV1@@Z, 22 PDB hits); binders 00411010 007e36a0 007ef070 (ABV2 non-template) and 00681ba0 (Write) respelled to the member template (RM PASS); all 42 REFS rows now bind the claim
+q4645	0x0048D400	open	0	not started
+q4671	0x00415D70	rejected	0	rejected (REJECTED.tsv): superseded by the 2026-11-19 re-pointing in engine/CDefString.h (GetString 0x00415D70, operator CCharString 0x00415DD0, OUTOFLINE_GETSTRING / OUTOFLINE_CONVERSION); catalog agrees; all 24 REFS rows bind GetString
+q4756	0x004AB840	done	0	self row respelled (s1); all 8 REFS rows (incl. 0x0082D2D0, already re-landed) bind the claim
+q4761	0x004378C0	done	0	self row re-authored (s1; overlay opt-in FABLE_RETAIL_NPLAYERGUI_CDRAWMINIMAP_UPDATEMARKERS); all 31 REFS rows already bind the claim; callee 0x00643E9A NAME_FIXES
+q4767	0x004861DF	done	1	self re-authored as std::vector<unsigned char>::resize(size_type) (RM PASS, s1); binder 009e95f0 moved onto engine/CArray.h (RM PASS); 0047f58b 00597228 already bound the claim; all 3 REFS rows now bind it
+q4769	0x0041CC14	open	0	not started
+q4770	0x0042B646	done	1	self re-authored as std::list<CActionParam*>::push_back explicit instantiation (RM PASS, s1); binder 005cd074 ported to std::list (RM PASS); 50 other REFS rows already bound the claim; all 51 now bind it; callee 0x0042AADC insert in NAME_FIXES
+q4777	0x00429160	rejected	0	rejected (REJECTED.tsv): 0x00429160 is CCountedPointer<NUISystem::CAction>::ReleaseData, the destructor is the 5-byte jmp COMDAT 0x00429B72 (engine/CCountedPointer.h RELEASEDATA note: Ego_r ??1 is 5 bytes; retail jmp at 0x00429B72 -> 0x00429160; the 44-byte release is called on live pointers); 62 of 64 REFS rows and the self row bind ReleaseData
+q4909	0x0042B707	done	1	self 0x0042B707 re-authored as std::list<NUISystem::CList*>::size() const (MATCH PASS, s1); binder 00555cf0 ported to CList::GPreviousSelected (RM; also respells pop_front 0x0053C7D9 and the global 0x013B8A98 onto their header spellings); 00549440 0041e6d3 already bound the claim; all REFS rows now bind it
+q4912	0x0041D1B4	done	0	claim holds (Ego_r 0x0042D9E8 + FableWin 0x01AE4B91; body = PMeshBank copy-out; CMesh::Draw 0x005502E0 calls it); self row re-authored with catalog rename (s1); no landed row references it
+q4918	0x004371A0	done	1	self row re-authored as the engine/C2DBoxF.h inline corners ctor (FABLE_RETAIL_C2DBOXF + _CORNERS) emitted by inline_depth(0) scaffolding, MATCH PASS (s1); binder 0065595c respelled pointer pair -> reference pair; 00493ac2 already right
+q4924	0x0041C680	done	0	self row re-authored (s1); no landed row references it (virtual slot only)
+q4925	0x0041C690	done	0	self row re-authored (s1); no landed row references it (virtual slot only)
+q4926	0x0041C6A0	done	0	self row re-authored (s1); no landed row references it (virtual slot only)
+q4927	0x0041C6B0	done	0	self row re-authored (s1); no landed row references it (virtual slot only)
+q4944	0x0041BEB0	done	2	claim holds (Ego_r 0x0042D110 enum box overload; FableWin 0x01A662C6; CMorphingSprite::Draw pushes the 16 args); self row re-authored on the shared header (s1); binders 0043b050 0082be60 respelled; the other 8 REFS rows already bind the claim
+q4973	0x004014A0	done	1	self row already emits ?Calc@CCRC@@SIKKPBXK@Z (Leaf prefix); 192 REFS rows already bind it; 009ad410 respelled (same-TU strong copy, nf96a form); 00599e3f not-a-binder (rel32 byte coincidence)
+q4991	0x004167C8	done	0	self row re-authored (s1); all 18 REFS rows already bind the claim
+q5080	0x0044FC00	open	0	not started
+q5205	0x0040F7E0	open	0	not started
+q6156	0x00449700	done	1	self row re-authored (s1); binder 00487fb0 respelled (CPlayerManagerCalls stand-in); the other 42 REFS rows already bind the claim
+q6164	0x0042DBEE	done	1	claim holds (Ego_r 0x0043B042 + FableWin ResetAttractModeTimer); self row already right; binder 0059a238 respelled; 00597bf2 already right
+q6212	0x0043F360	open	0	not started
+q6235	0x00431F60	done	5	claim (evidence column) CResource::operator=: FableWin ??4CResource@@QAEAAV0@ABV0@@Z + engine/CResource.h FABLE_RETAIL_CRESOURCE_ASSIGN + the body copies only CResource's words +0x04..+0x18; self row already emits it; binders 00431f10 00432c70 00432e60 00434450 004345a0 respelled from ??4CDefPointeeBase; 004321f0 00f2a000 00f2a250 already right
+q6236	0x00432B38	open	0	not started
+q6239	0x0048DAA2	done-already	0	claim (evidence column) ?GetStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@_N@Z (FableWin): the self row emits it (Leaf) and the only REFS row 00492381 binds it; the SelectEntryFromName stand-in is gone
+q6429	0x00492BAB	done	2	claim (evidence column): Clear is the PDB name (Ego_r + FableWin, no ClearText); self row already emits Clear; binders 007132c0 00714e00 respelled; the other 14 REFS rows already bind Clear
+q6539	0x004793F8	done	2	claim proven (Ego_r/FableWin only the reference spelling); self re-authored on engine/CMemoryDataInputStream.h (RM PASS, s1); binders 00479369 00685f80 respelled pointer -> reference (RM PASS); all REFS rows now bind the claim
+q6543	0x00410BE0	done-already	0	claim (evidence column) ??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z (Ego_r + FableWin member template): the self row emits it and all 124 REFS rows bind it (probe); the wrong spellings in the queue line are gone

@@ -10,11 +10,14 @@
 // Shape: same TU as the CDefClassBase out-of-line copy, so the implicit CDefClassBase/CParentDefClassBase/CVectorMap
 //   assignments are inlined (`__forceinline` user copies) and the 32 dwords copied member by member.
 #include "fable_compiler.h"
+// NF104 (q6235): the root's member copy 0x00431F60 is CResource::operator= (FableWin.pdb ??4CResource@@QAEAAV0@ABV0@@Z; engine/CResource.h
+//   FABLE_RETAIL_CRESOURCE_ASSIGN, the landed self row's leaf); the row's CDefPointeeBase model now derives from the shared CResource
+//   (0x1C: CIVCountedPointeeBase vptr + IVRefCount, then the five resource words) instead of carrying the copy itself.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CRESOURCE_ASSIGN
+#include "engine/CResource.h"
 #pragma pack(push, 1)
-class CDefPointeeBase { public:                                   // 28-byte polymorphic root of CDefClassBase
-    virtual void v00();
-    unsigned long m_words[6];                           // +0x04..+0x18
-    CDefPointeeBase& operator=(const CDefPointeeBase& other); // 0x00431F60
+class CDefPointeeBase : public CResource { public:              // 28-byte polymorphic root of CDefClassBase
 };
 
 class CDefinitionManager;

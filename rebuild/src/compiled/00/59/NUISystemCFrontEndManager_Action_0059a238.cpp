@@ -8,7 +8,7 @@
 // parameter, CWideString::operator= 0x0099B7D0); saved games (0x42: 0x00598463 / NumberSaveGames, else start a new game
 // and save the profile 0x0040A740); back (0x56, GotoPreviousScreen 0x00597BF2); delete the chosen profile (0xD6:
 // CUserProfileManager 0x0040D2A0 DeleteProfile 0x00407040, RefreshAvailableProfiles 0x00596CCE, then
-// GotoSpecificPreviousScreen 0x0059686D or the title screen + RestartAttractModeTimer 0x0042DBEE); the delete
+// GotoSpecificPreviousScreen 0x0059686D or the title screen + ResetAttractModeTimer 0x0042DBEE); the delete
 // confirmation title "TEXT_GUI_MENU_DELETE_PROFILE" + " " + name (0xD7; GetTextBySymbol 0x009C95E0, operator+
 // 0x0099BF30 / 0x0099BE70, slot 144); the invalid-save message (0xDC, ConstructString 0x009C7980); press start (0xE5,
 // 0x00599D5C); new profile vs delete list (0xFA, 0x00597006); load the chosen profile (0x124, 0x0059899A); a fresh profile
@@ -135,7 +135,7 @@ public:
     bool                  m_bCreateGame;                  // +0x29
     unsigned char         _pad2a[0x60 - 0x2a];
     NGameText::CDataBank* m_pTextBank;                    // +0x60 (CCountedPointer Data)
-    void RestartAttractModeTimer();                       // 0x0042DBEE (m_attractModeTimer at +0x100)
+    void ResetAttractModeTimer();                         // 0x0042DBEE (m_attractModeTimer at +0x100; NF104 q6164: Ego_r.pdb 0x0043B042 + FableWin.pdb ?ResetAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ, was RestartAttractModeTimer)
 };
 extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
 
@@ -348,7 +348,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
         else
         {
             GotoNextScreen(m_mapScreens[(FRONTEND_SCREEN)0x14], true);
-            g_pNewFrontendGameComponent->RestartAttractModeTimer();
+            g_pNewFrontendGameComponent->ResetAttractModeTimer();
             if (count > 0)
             {
                 CComponent* screenToDeactivate = PScreenToDeactivate;

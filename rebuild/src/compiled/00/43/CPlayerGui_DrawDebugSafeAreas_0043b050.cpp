@@ -32,12 +32,15 @@ class C2DBoxF { public:
     C2DVector TopLeft, BottomRight;
     C2DBoxF(float left, float top, float right, float bottom) : TopLeft(left, top), BottomRight(right, bottom) {}
 };
+enum EEngine2DLayer;                                  // NF104 q4944: the ctor's enum parameters (Ego_r.pdb / FableWin.pdb spelling of 0x0041BEB0); the
+enum EEnginePrimitiveBlendMode;                       //   forward declarations as engine/CEngineInternalPrimitive2DAnimatedMesh.h writes them
+enum EEngineInterpolationSet;
 class CEnginePrimitive2DSprite {
 public:
     unsigned __int64 _id;                           // 8-aligned: the frame is realigned (`and esp,-8`)
     unsigned char _body[0x50];
-    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DBoxF& box, long layer, unsigned long a, unsigned long b, long blend,
-                             long interpolation, float c, float d, unsigned char red, unsigned char green, unsigned char blue,
+    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DBoxF& box, EEngine2DLayer layer, unsigned long a, unsigned long b, EEnginePrimitiveBlendMode blend,
+                             EEngineInterpolationSet interpolation, float c, float d, unsigned char red, unsigned char green, unsigned char blue,
                              unsigned char alpha, unsigned long e, const C2DVector& uv0, const C2DVector& uv1);   // 0x0041BEB0
 };
 class CEnginePrimitiveRenderer {
@@ -65,14 +68,14 @@ void CPlayerGui::DrawDebugSafeAreas(const CEnginePrimitivePrepareInfo& info)
 {
     SafeAreaHandles.resize(8);
     if (ShowDebugSafeAreas) {
-        CEnginePrimitive2DSprite top(0, C2DBoxF(32.0f, 24.0f, 608.0f, 25.0f), 0x43, 0, 0, 3, 0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
-        CEnginePrimitive2DSprite left(0, C2DBoxF(32.0f, 24.0f, 33.0f, 456.0f), 0x43, 0, 0, 3, 0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
-        CEnginePrimitive2DSprite right(0, C2DBoxF(608.0f, 24.0f, 609.0f, 456.0f), 0x43, 0, 0, 3, 0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
-        CEnginePrimitive2DSprite bottom(0, C2DBoxF(32.0f, 456.0f, 609.0f, 457.0f), 0x43, 0, 0, 3, 0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
-        CEnginePrimitive2DSprite innerTop(0, C2DBoxF(48.0f, 36.0f, 592.0f, 37.0f), 0x43, 0, 0, 3, 0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
-        CEnginePrimitive2DSprite innerLeft(0, C2DBoxF(48.0f, 36.0f, 49.0f, 444.0f), 0x43, 0, 0, 3, 0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
-        CEnginePrimitive2DSprite innerRight(0, C2DBoxF(592.0f, 36.0f, 593.0f, 444.0f), 0x43, 0, 0, 3, 0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
-        CEnginePrimitive2DSprite innerBottom(0, C2DBoxF(48.0f, 444.0f, 593.0f, 445.0f), 0x43, 0, 0, 3, 0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        CEnginePrimitive2DSprite top(0, C2DBoxF(32.0f, 24.0f, 608.0f, 25.0f), (EEngine2DLayer)0x43, 0, 0, (EEnginePrimitiveBlendMode)3, (EEngineInterpolationSet)0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        CEnginePrimitive2DSprite left(0, C2DBoxF(32.0f, 24.0f, 33.0f, 456.0f), (EEngine2DLayer)0x43, 0, 0, (EEnginePrimitiveBlendMode)3, (EEngineInterpolationSet)0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        CEnginePrimitive2DSprite right(0, C2DBoxF(608.0f, 24.0f, 609.0f, 456.0f), (EEngine2DLayer)0x43, 0, 0, (EEnginePrimitiveBlendMode)3, (EEngineInterpolationSet)0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        CEnginePrimitive2DSprite bottom(0, C2DBoxF(32.0f, 456.0f, 609.0f, 457.0f), (EEngine2DLayer)0x43, 0, 0, (EEnginePrimitiveBlendMode)3, (EEngineInterpolationSet)0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        CEnginePrimitive2DSprite innerTop(0, C2DBoxF(48.0f, 36.0f, 592.0f, 37.0f), (EEngine2DLayer)0x43, 0, 0, (EEnginePrimitiveBlendMode)3, (EEngineInterpolationSet)0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        CEnginePrimitive2DSprite innerLeft(0, C2DBoxF(48.0f, 36.0f, 49.0f, 444.0f), (EEngine2DLayer)0x43, 0, 0, (EEnginePrimitiveBlendMode)3, (EEngineInterpolationSet)0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        CEnginePrimitive2DSprite innerRight(0, C2DBoxF(592.0f, 36.0f, 593.0f, 444.0f), (EEngine2DLayer)0x43, 0, 0, (EEnginePrimitiveBlendMode)3, (EEngineInterpolationSet)0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        CEnginePrimitive2DSprite innerBottom(0, C2DBoxF(48.0f, 444.0f, 593.0f, 445.0f), (EEngine2DLayer)0x43, 0, 0, (EEnginePrimitiveBlendMode)3, (EEngineInterpolationSet)0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Renderer->AddPrimitive(SafeAreaHandles.begin(), top, 0x40);
         info.Renderer->AddPrimitive(&SafeAreaHandles[1], left, 0x40);
         info.Renderer->AddPrimitive(&SafeAreaHandles[2], right, 0x40);

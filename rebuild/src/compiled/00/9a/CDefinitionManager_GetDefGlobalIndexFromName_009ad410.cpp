@@ -25,16 +25,22 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
-extern const unsigned long g_crcTable_0129a168[256];   // 0x0129A168: CRC-32 table
-// Stand-in for Calc @ 0x004014A0 (the retail body; same TU so the caller sees that it writes no memory).
+// NF104 (q4973): Calc 0x004014A0 is CCRC::Calc (Ego_r.pdb ?Calc@CCRC@@SIKKPBXK@Z; engine/CCRC.h, the landed self row's spelling, bound by
+//   192 landed rows); the table 0x0129A168 is the self row's g_CRCTable. Was the free stand-in Calc_004014a0(unsigned long, const char*,
+//   unsigned long) over g_crcTable_0129a168.
+#include "engine/CCRC.h"
+extern unsigned long g_CRCTable[256];                 // 0x0129A168: CRC-32 table (the 0x004014A0 self row's spelling)
+// Fidelity: same-TU strong definition of 0x004014A0 (retail TU-mate)
 #pragma auto_inline(off)
-__declspec(noinline) unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length)
+unsigned long FABLE_FASTCALL CCRC::Calc(unsigned long seed, const void* data, unsigned long byteCount)
 {
-    unsigned long crc = seed;
-    if (length != 0)
-        for (unsigned long i = 0; i < length; ++i)
-            crc = (crc >> 8) ^ g_crcTable_0129a168[(unsigned char)data[i] ^ (crc & 0xff)];
-    return crc;
+    if (byteCount != 0)
+    {
+        const unsigned char* bytes = static_cast<const unsigned char*>(data);
+        for (unsigned long index = 0; index < byteCount; ++index)
+            seed = g_CRCTable[bytes[index] ^ (seed & 0xFF)] ^ (seed >> 8);
+    }
+    return seed;
 }
 #pragma auto_inline(on)
 
@@ -96,7 +102,7 @@ long CDefinitionManager::GetDefGlobalIndexFromName(const CCharString& name) cons
     if (name.GetLength() == 0)
         return 0;
     if (!NameCRCToIndexMap.empty()) {
-        long key = Calc_004014a0(0, name.GetChars(), name.GetLength());
+        long key = CCRC::Calc(0, name.GetChars(), name.GetLength());
         SNameIndex* it = NameCRCToIndexMap.find(key);
         if (it != NameCRCToIndexMap.end())
             return it->second;

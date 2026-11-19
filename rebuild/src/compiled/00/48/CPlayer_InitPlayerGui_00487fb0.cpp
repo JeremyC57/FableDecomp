@@ -19,9 +19,9 @@ struct CMainGameComponentBank {
     CGraphicDataBank* GraphicDataBank;                      // +0x161C8
 };
 
-struct CPlayerManagerCalls {
-    long GetMainPlayerNumber();                             // 0x00449700
-};
+// NF104 (q6156): GetMainPlayerNumber 0x00449700 is the shared engine/CPlayerManager.h member, Ego_r.pdb / FableWin.pdb
+//   ?GetMainPlayerNumber@CPlayerManager@@QBEJXZ (const); was the CPlayerManagerCalls stand-in (QAE).
+#include "engine/CPlayerManager.h"
 
 class CPlayerGui { public:
     unsigned char _body[0x338];
@@ -49,7 +49,7 @@ struct CPlayer_Methods : CPlayer {
 void CPlayer_Methods::InitPlayerGui()
 {
     long number = Number;
-    if (number == reinterpret_cast<CPlayerManagerCalls*>(PlayerManager)->GetMainPlayerNumber()) {
+    if (number == PlayerManager->GetMainPlayerNumber()) {
         CGamePlayerInterface* playerInterface;
         CGraphicDataBank* bank;
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set(new CPlayerGui(Component, World, playerInterface = PlayerInterface, PlayerManager,

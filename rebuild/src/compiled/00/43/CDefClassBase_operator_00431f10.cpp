@@ -20,11 +20,11 @@ public:
     unsigned long  ResourceSize;                         // +0x14
     unsigned long  LastUsedFrame;                        // +0x18
     virtual ~CResource();                                // 0x009FC550
+    CResource& operator=(const CResource& other);        // 0x00431F60 (the member copy, out of line; NF104 q6235: FableWin.pdb ??4CResource@@QAEAAV0@ABV0@@Z, engine/CResource.h FABLE_RETAIL_CRESOURCE_ASSIGN; was declared on CDefPointeeBase)
 };
 class CDefPointeeBase : public CResource {
 public:
     virtual ~CDefPointeeBase() {}
-    CDefPointeeBase& operator=(const CDefPointeeBase& other);   // 0x00431F60 (the CResource member copy, out of line)
 };
 class CDefinitionManager;
 #pragma pack(push, 1)

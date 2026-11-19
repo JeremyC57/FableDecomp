@@ -10,6 +10,11 @@ struct DefPointer {Def* Object;FABLE_FORCEINLINE ~DefPointer(){if(Object){Object
 // NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
 //   CMainGameComponent::Get(), engine/CMainGameComponent.h) (the null test only); was the stand-in NUISystem::Game_013b86a0 (void*).
 #include "engine/CMainGameComponent.h"
+// NF104 (q4909, 2026-11-19): 0x013B8A98 is ?GPreviousSelected@CList@NUISystem@@... (std::list<NUISystem::CList*>, Ego_r.pdb; engine/NUISystem_CList.h),
+//   its size() the out-of-line STLport 0x0042B707 and pop_front() 0x0053C7D9; was the local Stack stand-in CList::GPreviousSelected.
+#define FABLE_RETAIL_CLIST
+#define FABLE_RETAIL_STLP_LIST
+#include "engine/NUISystem_CList.h"
 namespace NUISystem {
 struct Component {virtual void Slot000()=0;
 virtual void Slot001()=0;
@@ -63,7 +68,6 @@ virtual void ChangeState(unsigned long)=0;
 };
 struct Observer {virtual void Observer0()=0;virtual void ProcessEvent(int);unsigned char Events[0xc];bool Prevent;unsigned char Pad[3];};
 struct Pointer {Component* Object;void* Info;};struct Vector {Pointer* First;Pointer* Last;Pointer* Limit;unsigned int size()const{return Last-First;}};
-struct Stack {struct Node {Node* Next;Node* Prev;Component* Object;};Node* Head;unsigned long size()const;void pop_front();Component* front()const{return Head->Next->Object;}};extern Stack MenuStack_013b8a98;
 class CManager { public:virtual void ManagerSlot00()=0;
 virtual void ManagerSlot01()=0;
 virtual void ManagerSlot02()=0;
@@ -110,5 +114,5 @@ virtual DefPointer GetMiscThingsDef()=0;
 static CManager* __fastcall GetInstance();};
 class CScrollableList:public Component,public Observer { public:unsigned char BeforeChildren[0xb0-0x18];Vector Children;unsigned char BeforeTop[0x15c-0xbc];unsigned long Top,Visible;void ProcessEvent(int);protected:void UpdateVisibleList(float,float);};
 class CRedefinerList { public:static bool __fastcall CanAcceptChanges();};struct CUserProfileManager {void Save();};CUserProfileManager* __fastcall GetUserProfileManager();
-void CScrollableList::ProcessEvent(int event){Observer::ProcessEvent(event);switch(event){case 16:case 36:if(Top>0){--Top;UpdateVisibleList(.2f,.2f);}break;case 17:case 37:if(Children.size()>Visible&&Top<Children.size()-Visible){++Top;UpdateVisibleList(.2f,.2f);}break;case 4:if(CMainGameComponent::Get()&&CRedefinerList::CanAcceptChanges()){if(MenuStack_013b8a98.size()>1){MenuStack_013b8a98.front()->ChangeState(6);MenuStack_013b8a98.pop_front();MenuStack_013b8a98.front()->ChangeState(3);CManager::GetInstance()->RemoveObserver(this);}CManager::GetInstance()->PlaySoundW(CManager::GetInstance()->GetMiscThingsDef()->SoundForward,1);CManager::GetInstance()->SetChange(0);GetUserProfileManager()->Save();}break;}}
+void CScrollableList::ProcessEvent(int event){Observer::ProcessEvent(event);switch(event){case 16:case 36:if(Top>0){--Top;UpdateVisibleList(.2f,.2f);}break;case 17:case 37:if(Children.size()>Visible&&Top<Children.size()-Visible){++Top;UpdateVisibleList(.2f,.2f);}break;case 4:if(CMainGameComponent::Get()&&CRedefinerList::CanAcceptChanges()){if(CList::GPreviousSelected.size()>1){CList::GPreviousSelected.front()->ChangeState(6);CList::GPreviousSelected.pop_front();CList::GPreviousSelected.front()->ChangeState(3);CManager::GetInstance()->RemoveObserver(this);}CManager::GetInstance()->PlaySoundW(CManager::GetInstance()->GetMiscThingsDef()->SoundForward,1);CManager::GetInstance()->SetChange(0);GetUserProfileManager()->Save();}break;}}
 }

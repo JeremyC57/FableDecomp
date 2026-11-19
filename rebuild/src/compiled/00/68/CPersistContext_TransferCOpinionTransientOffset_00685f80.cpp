@@ -19,7 +19,7 @@ class CDataOutputStream { public:
 class CMemoryDataInputStream;
 class COpinionTransientOffset { public:
     long m_data[6];                               // 0x18 bytes, copied as six dwords
-    void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x004793F8
+    void TransferBinaryIn(CMemoryDataInputStream& stream);   // 0x004793F8 (NF104 q6539: Ego_r/FableWin ?TransferBinaryIn@COpinionTransientOffset@@QAEXAAVCMemoryDataInputStream@@@Z, by reference)
 };
 
 class CPersistContext_TransferableComponentGenericType { public:
@@ -57,7 +57,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         PSaveStream->Write(&value, sizeof(T));
         break;
     case 2: {
-        value.TransferBinaryIn(PLoadStream);
+        value.TransferBinaryIn(*PLoadStream);
         break;
     }
     case 1: {

@@ -1,5 +1,11 @@
-// CDefinitionManager::GetDef<T>(long, CDefPointer&) -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00410890, oracle length 108 bytes.
+// CDefinitionManager::GetDef<CThingBuildingDef>(long, CDefPointer<const CThingBuildingDef>*) const -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
+// Leaf: ??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z
+// Naming (NF104 q4756, 2026-11-19): was CDefinitionManager::GetDef_004ab840(long, CDefPointer<const CDefClassBase>&) (no Leaf line).
+//   FableWin.pdb ??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z (const member
+//   template, global index, out handle by pointer; Ego_r.pdb has the same template family); all 8 landed callers (0x0082D2D0 ..
+//   0x0082D8C0, the CThingBuilding TU) bind this symbol. Re-spelled in place as the 0x00410820 (NF31) / 0x00410890 siblings: the
+//   pre-existing local CDefPointer model with the converting assignment the template body needs (same inline body).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004AB840, oracle length 108 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
@@ -14,7 +20,7 @@
 // ref-count base's two inline accessors (decrement, then test the count): the adjusted base
 // pointer is materialised once for both (`add eax,4`), the stored value is forwarded to the
 // test and the def is kept in ecx for the virtual call. The manifest
-// label names one instantiation; the def type is opaque. One of 14 bodies of this shape.
+// label names one instantiation; the def type is opaque. One of 46 bodies of this shape.
 struct CRefCounted {                       // second base: the count sits at +4 behind the vptr
     long m_count;
     void DecRef() { --m_count; }
@@ -62,21 +68,37 @@ template <class T> class CDefPointer { public:
         }
         return *this;
     }
+    template <class U> CDefPointer& operator=(const CDefPointer<U>& other)   // converting form of the same inline body
+    {
+        if (m_p != other.m_p) {
+            if (m_p) {
+                m_p->Release();
+                m_p = 0;
+            }
+            m_p = other.m_p;
+            if (m_p)
+                ++m_p->m_count;
+        }
+        return *this;
+    }
 };
 
 class CDefinitionManager { public:
     CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (hidden result pointer)
-    bool GetDef_00410890(long index, CDefPointer<const CDefClassBase>& out);
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;
 };
 
-bool CDefinitionManager::GetDef_00410890(long index, CDefPointer<const CDefClassBase>& out)
+template <class T> bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     if (index <= 0)
         return false;
     CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
     if (def.m_p) {
-        out = def;
+        *out = def;
         return true;
     }
     return false;
 }
+
+class CThingBuildingDef;
+template bool CDefinitionManager::GetDef<CThingBuildingDef>(long index, CDefPointer<const CThingBuildingDef>* out) const;

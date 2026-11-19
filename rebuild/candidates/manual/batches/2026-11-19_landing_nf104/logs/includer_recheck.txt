@@ -1,0 +1,2 @@
+# recheck after landing nf104: 1267 rows (includers of CDrawMiniMap.h + every landed row the exe scan finds referencing a respelled target)
+good 1267 bad 0 (recheck_rows counted 1265: 0x00658604 and 0x0065A5BB print RELOCATION_MATCH[flags] PASS, which its regex misses)

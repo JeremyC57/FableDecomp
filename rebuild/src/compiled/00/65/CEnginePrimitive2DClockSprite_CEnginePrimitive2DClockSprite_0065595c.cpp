@@ -3,7 +3,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class C2DVector { public: float X,Y; };
-class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF(const C2DVector*,const C2DVector*); }; // 0x004371a0
+class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF(const C2DVector&,const C2DVector&); }; // 0x004371a0 (NF104 q4918: Ego_r/FableWin ??0C2DBoxF@@QAE@ABVC2DVector@@0@Z, the reference pair; was a pointer pair no PDB has)
 class CRGBColour { public:
  unsigned char B,G,R,A;
  CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Set(r,g,b,a); }
@@ -29,7 +29,7 @@ struct CEnginePrimitive2DClockSprite : CEnginePrimitive {
  CEnginePrimitive2DClockSprite(unsigned __int64 unused,const C2DVector* basis,unsigned long layer,unsigned long bank,unsigned long frame,const CRGBColour* colour,unsigned long bank2,unsigned long frame2,const CRGBColour* colour2,unsigned long blend,float start,float end,const C2DVector* uvStart,const C2DVector* uvEnd,unsigned long enabled,unsigned long interpolation);
 };
 CEnginePrimitive2DClockSprite::CEnginePrimitive2DClockSprite(unsigned __int64 unused,const C2DVector* basis,unsigned long layer,unsigned long bank,unsigned long frame,const CRGBColour* colour,unsigned long bank2,unsigned long frame2,const CRGBColour* colour2,unsigned long blend,float start,float end,const C2DVector* uvStart,const C2DVector* uvEnd,unsigned long enabled,unsigned long interpolation)
- : CEnginePrimitive(0x23,interpolation),ClipBox(basis,basis),Layer(layer),BankIndex(bank),Frame(frame),BankIndex2(bank2),Frame2(frame2),AngleStart(start),AngleEnd(end),BlendMode(blend),Colour(*colour),Colour2(*colour2),ClipBoxIsPos(1),Flags(enabled),Filter(0)
+ : CEnginePrimitive(0x23,interpolation),ClipBox(*basis,*basis),Layer(layer),BankIndex(bank),Frame(frame),BankIndex2(bank2),Frame2(frame2),AngleStart(start),AngleEnd(end),BlendMode(blend),Colour(*colour),Colour2(*colour2),ClipBoxIsPos(1),Flags(enabled),Filter(0)
 {
  (void)unused;
  *reinterpret_cast<C2DVector*>(UVOffsetsStart)=*uvStart;

@@ -54,7 +54,7 @@ public:
 };
 class CFontBank;
 class CSubtitleRenderer { public:
-    void ClearText(bool immediately);           // 0x00492BAB
+    void Clear(bool immediately);           // 0x00492BAB (NF104 q6429: Ego_r.pdb + FableWin.pdb ?Clear@CSubtitleRenderer@@QAEX_N@Z; no ClearText in either PDB)
     void SetText(CFontBank* font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
         const CWideString& button2Text, const CWideString& button3Text, unsigned long flags, float time, bool clickPast, bool pauseGame);   // 0x00492973
     void SetText(CFontBank* font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
@@ -116,7 +116,7 @@ public:
 
 void CActionTalkToThing::DisplayText()
 {
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.ClearText(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.Clear(false);
     if (AskingHeroQuestion) {
         if (QuestionButton3 == "") {
             CWideString name(L"");

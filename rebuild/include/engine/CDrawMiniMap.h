@@ -73,6 +73,12 @@ class CDrawMiniMap : public CDrawBase {
 public:
     void Update(const CEnginePrimitivePrepareInfo& info);                // 0x0064401C
     void Draw(const CEnginePrimitivePrepareInfo& info, bool drawHud);    // 0x00648820
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWMINIMAP_UPDATEMARKERS
+    // Nested opt-in (NF104 q4761, row 0x004378C0 CPlayerGui::UpdateMiniMapMarkers): Ego_r.pdb ?UpdateMarkers@CDrawMiniMap@NPlayerGui@@QAEX_N@Z,
+    // out of line in retail at 0x00643E9A (`add ecx,28h ; jmp`: the forward to the CMiniMapDisplay member +0x28), the target of
+    // UpdateMiniMapMarkers' tail jump through PDrawMiniMap (+0x160). Declaration only; no layout change.
+    void UpdateMarkers(bool);                                            // 0x00643E9A
+#endif
 protected:
     unsigned char MiniMap[0xc0];                                         // +0x28 CMiniMapDisplay
     bool          Enabled;                                               // +0xe8
@@ -90,7 +96,7 @@ protected:
     unsigned char RegionExits[0xc];                                      // +0x154 vector<pair<C3DVector,CCharString> >
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NPlayerGui::CDrawMiniMap) == 0x160);
+FABLE_STATIC_ASSERT_AT(93, sizeof(NPlayerGui::CDrawMiniMap) == 0x160);
 #endif
 
 #endif // FABLE_ENGINE_CDRAWMINIMAP_H

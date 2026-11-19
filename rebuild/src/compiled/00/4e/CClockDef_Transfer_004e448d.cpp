@@ -4,7 +4,7 @@
 // Identity (proven): CClockDef::Transfer(CPersistContext&); evidence: slot 18 (the def Transfer slot, as the landed CHeroCombatDef 0x004665B6) of
 //   vtable 0x01242C34, whose RTTI type descriptor is .?AVCClockDef@@ (bases CSubDefClassBase <- CDefClassBase); the Ego_r/FableWin.pdb name sets hold ?Transfer@CClockDef@@UAEXAAVCPersistContext@@@Z.
 // Label: the manifest's "?Transfer@CClockDef@@UAEXAAVCPersistContext@@@Z" agrees with the RTTI (family J080: one-transfer-per-member def bodies, each its own class).
-// Callees (CPersistContext's typed transfers): Transfer(std::map<CCharString, long >&) 0x00431493, Transfer<EClockHandType>(EClockHandType&) 0x004E44AE.
+// Callees (CPersistContext's typed transfers): TransferMap<long, CCharString>(std::map<CCharString, long >&) 0x00431493, Transfer<EClockHandType>(EClockHandType&) 0x004E44AE.
 // Layout: Ego_r.pdb CClockDef members rebased to retail (def base at its PDB size, each STLport container / CArray 12 bytes, 16 in the PDB); every transferred offset hits the PDB member of the asserted type.
 // Shape: two members, so no edi: this in esi, the context re-read from its stack slot (`mov ecx,[esp+8]`) before each call,
 //   the first address through eax, the last formed in place (`add esi,N`).
@@ -68,7 +68,7 @@ class CSubDefClassBase : public CDefClassBase {         // vtable 0x01231D54, Eg
 #pragma pack(pop)
 class CPersistContext {
 public:
-    void Transfer(std::map<CCharString, long >& value);          // 0x00431493
+    template <class V, class K> void TransferMap(std::map<K, V, std::less<K>, std::allocator<std::pair<const K, V> > >& map);   // 0x00431493 <long, CCharString> (NF104 q4182: the landed self row's spelling)
     template <class T> void Transfer(T& value);              // enum instances: EClockHandType 0x004E44AE
 };
 class CClockDef : public CSubDefClassBase {    // vtable 0x01242C34
@@ -80,6 +80,6 @@ public:
 
 void CClockDef::Transfer(CPersistContext& context)
 {
-    context.Transfer(Sound);
+    context.TransferMap(Sound);
     context.Transfer(HandType);
 }

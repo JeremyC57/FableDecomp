@@ -7,13 +7,13 @@
 static char g_log[512];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 class CMemoryDataInputStream;
-class COpinionTransientOffset { public: long Data[6]; void TransferBinaryIn(CMemoryDataInputStream* stream); };
+class COpinionTransientOffset { public: long Data[6]; void TransferBinaryIn(CMemoryDataInputStream& stream); };   // NF104 q6539: by reference (Ego_r.pdb)
 typedef COpinionTransientOffset T;
 static T MK(long n) { T t; for (int i = 0; i < 6; ++i) t.Data[i] = n * 10 + i; t.Data[0] = n; return t; }
 static long VAL(const T& v) { return v.Data[0]; }
 class CMemoryDataInputStream { public: int id;  };
 class CDataOutputStream { public: int id; long written; virtual void Write(const void* data, long size) { LOG(size == (long)sizeof(COpinionTransientOffset) ? "write" : "write?"); written = static_cast<const COpinionTransientOffset*>(data)->Data[0]; } virtual ~CDataOutputStream() {} };
-void COpinionTransientOffset::TransferBinaryIn(CMemoryDataInputStream* s) { LOG(s->id == 1 ? "binin" : "binin?"); *this = MK(7); }
+void COpinionTransientOffset::TransferBinaryIn(CMemoryDataInputStream& s) { LOG(s.id == 1 ? "binin" : "binin?"); *this = MK(7); }
 class CPersistContext_TransferableComponentGenericType { public: virtual long Peek() { return -1; } virtual ~CPersistContext_TransferableComponentGenericType() {} };
 template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {
     T* Value;
@@ -38,7 +38,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
     switch (Mode) {
     case 4: value = defaultValue; break;
     case 3: PSaveStream->Write(&value, sizeof(T)); break;
-    case 2: { value.TransferBinaryIn(PLoadStream); break; }
+    case 2: { value.TransferBinaryIn(*PLoadStream); break; }
     case 1: { CPersistContext_TransferableComponent<T> item(value); TransferObjectSaveText(name, item); break; }
     case 0: { if (UseDefaults) value = defaultValue; CPersistContext_TransferableComponent<T> item(value); TransferObjectLoadText(name, item); break; }
     default: __assume(0);

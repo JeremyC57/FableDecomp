@@ -33,10 +33,13 @@ class C2DBoxF { public:
     C2DBoxF(const C2DBoxF& other) : TopLeft(other.TopLeft), BottomRight(other.BottomRight) { }
 };
 C2DBoxF __fastcall ToScreenBox(const C2DBoxF& box);   // 0x00643BEF
+enum EEngine2DLayer;                                  // NF104 q4944: the ctor's enum parameters (Ego_r.pdb / FableWin.pdb spelling of 0x0041BEB0); the
+enum EEnginePrimitiveBlendMode;                       //   forward declarations as engine/CEngineInternalPrimitive2DAnimatedMesh.h writes them
+enum EEngineInterpolationSet;
 struct CEnginePrimitive2DSprite {                  // 0x54 bytes
     unsigned char _data[0x54];
-    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DBoxF& box, long layer, unsigned long graphic,
-        unsigned long frame, long blend, long interpolation, float a, float b, unsigned char alpha,
+    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DBoxF& box, EEngine2DLayer layer, unsigned long graphic,
+        unsigned long frame, EEnginePrimitiveBlendMode blend, EEngineInterpolationSet interpolation, float a, float b, unsigned char alpha,
         unsigned char red, unsigned char green, unsigned char blue, unsigned long flags,
         const C2DVector& uv0 = C2DVector(0.0f, 0.0f), const C2DVector& uv1 = C2DVector(0.0f, 0.0f));   // 0x0041BEB0
 };
@@ -135,7 +138,7 @@ void CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& 
         MiniMapIsHeadsmansHillNorth = true;
         MiniMapIsHeadsmansHillSouth = false;
     }
-    CEnginePrimitive2DSprite sprite(0, ToScreenBox(box), layer, MiniMapGraphic, 0, 2, 0, 0.0f, 0.0f, alpha,
+    CEnginePrimitive2DSprite sprite(0, ToScreenBox(box), (EEngine2DLayer)layer, MiniMapGraphic, 0, (EEnginePrimitiveBlendMode)2, (EEngineInterpolationSet)0, 0.0f, 0.0f, alpha,
         0x80, 0x80, 0x80, 2);
     info.Engine->SetPersistentPrimitive(*MapPrimitiveHandles[0], sprite, 0xc0);
     DrawMarkers(info, box, alpha, front);

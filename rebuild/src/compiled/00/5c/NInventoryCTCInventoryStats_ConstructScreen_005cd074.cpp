@@ -10,12 +10,19 @@
 // (CAction*) @ 0x0042AA29 and its dtor @ 0x00429160, the param list push_back(const T&) @ 0x0042B646, the inline
 // CActionParamState(long) ctor (vtable 0x012366EC, type 2), the component's slots 66 (+0x108) and 68 (+0x110).
 // Shape: a component converts to its CActionParam subobject at +0x18 with the null-checked `neg ; sbb ; and` adjust. The
-// push_back gets a same-TU noinline stand-in (it only reads the value), which lets VC7.1 put both param temporaries in the
+// push_back is the header's visible-but-noinline STLport body (it only reads the value), which lets VC7.1 put both param temporaries in the
 // dead topLevel argument slot ([ebp+8]) as retail does; with a declaration only they take the frame word at [ebp-8].
 // The first `if` arm calls AddSelectedAction on the experience entry, not on the personality entry (retail behaviour).
 // Layout: CAction is the landed 0x10-byte model (AddSoundAction 0x0056F615); slot names 66/68 are descriptive.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+// NF104 (q4770, 2026-11-19): the param list is STLport std::list<NUISystem::CActionParam*> (stlport/fable_containers.h), its push_back
+//   0x0042B646 FableWin.pdb ?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z
+//   (bound so by 50 landed callers); was the local CActionParamList stand-in with a same-TU noinline push_back. The header's
+//   PUSHBACK_NOINLINE + INSERT_OUTOFLINE opt-ins keep the STLport bodies visible but out of line (the effect the stand-in modelled).
+#define FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE
+#include "stlport/fable_containers.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -32,25 +39,14 @@ struct CActionParamState : CActionParam {               // vtable 0x012366EC
     long State;                                         // +0x08
     CActionParamState(long state) : CActionParam(2), State(state) {}
 };
-struct CActionParamList {                               // STLport list<CActionParam*>
-    void* _M_node;
-    void push_back(CActionParam* const& value);         // 0x0042B646
-};
 class CAction { public:                                        // retail 0x10 bytes
     long             ActionType;                        // +0x00
-    CActionParamList UIActionParams;                    // +0x04
+    std::list<CActionParam*> UIActionParams;            // +0x04 (push_back 0x0042B646)
     void*            ThingActionParams;                 // +0x08
     bool             Valid;                             // +0x0C
     CAction();                                          // 0x0042BE50
 };
 }
-void InsertParamNode(void* node, NUISystem::CActionParam* value);   // stand-in callee of the push_back body below
-#pragma auto_inline(off)
-__declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CActionParam* const& value)
-{
-    InsertParamNode(_M_node, value);
-}
-#pragma auto_inline(on)
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 namespace NUISystem {

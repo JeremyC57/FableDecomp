@@ -11,7 +11,7 @@
 //   CTCCreatureModeManager = bit 17 of +0x24), CTCLook::StopLooking(long) @ 0x00751B80 (landed),
 //   CTCCreatureModeManager::GetCurrentMode @ 0x0073A6E0 / RemoveMode @ 0x0073ABA0 and the mode's virtual GetType (slot 1),
 //   __ftol2 @ 0x00BFEA70, CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0 (__fastcall),
-//   CSubtitleRenderer::ClearText(bool) @ 0x00492BAB. Globals CMainGameComponent::GetConstantFPS() @ 0x01375550 and g_pPlayerGui @ 0x013B8790
+//   CSubtitleRenderer::Clear(bool) @ 0x00492BAB. Globals CMainGameComponent::GetConstantFPS() @ 0x01375550 and g_pPlayerGui @ 0x013B8790
 //   (as the landed CActionTalkToThing::DisplayText 0x007132C0); 3.0f @ 0x0122DED4.
 // Layout: retail CActionTalkBase = Ego_r.pdb less 4 after the Messages CArray (PreviousConversationAttitude +0x68,
 //   AddedConversationMode +0x6C); CTCTalk's attitude +0x18 and the mode's linger counter +0x14 (descriptive); the user
@@ -66,7 +66,7 @@ public:
 };
 
 class CSubtitleRenderer { public:
-    void ClearText(bool immediately);               // 0x00492BAB
+    void Clear(bool immediately);               // 0x00492BAB (NF104 q6429: Ego_r.pdb + FableWin.pdb ?Clear@CSubtitleRenderer@@QAEX_N@Z; no ClearText in either PDB)
 };
 class CPlayerGui { public:
     unsigned char     _pad00[0x18];
@@ -140,6 +140,6 @@ void CActionTalkBase::OnCleanup()
     }
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ShowSubtitleBackground = true;
     if (!CUserProfileManager::Get().AreSubtitlesOn())
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.ClearText(false);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.Clear(false);
 }
 }

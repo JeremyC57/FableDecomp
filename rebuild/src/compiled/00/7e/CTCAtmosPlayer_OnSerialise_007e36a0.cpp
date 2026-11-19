@@ -30,7 +30,7 @@ class CPersistContext { public:
     long Mode;                                          // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     void Transfer_007e39d0(const char* name, long& value, const long& defaultValue);                  // 0x007E39D0
-    void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);    // 0x004109A0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);    // 0x004109A0 Transfer<CCharString> (NF104 q4610: FableWin.pdb/Ego_r.pdb ??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@ABV1@@Z, a member template)
 };
 class CTCAtmosPlayer {
 public:

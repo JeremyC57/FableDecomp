@@ -5,12 +5,14 @@
 // Body: Signatures.clear() (map<CWideString,bool> clear 0x00485AEF); CManager::GetInstance() (0x0041E5F2)
 // ->SetMeshBank(meshes) (0x0041D198, by-value CCountedPointer built in the argument area by the copy ctor 0x00428905);
 // GetInstance()->PInputManager (+0x20) = input; GetInstance()->SetDefinitionManager(definitions) (0x0041CD89, stores +0x64);
-// PScreenToActivate = PScreenToDeactivate = 0; CTBaseSingleton<CUserProfileManager>::Get() (0x0040D2A0)->SetDefaultValues()
+// PScreenToActivate = PScreenToDeactivate = 0; CTBaseSingleton<CUserProfileManager>::Get() (0x0040D2A0)->SetDefaultValuesForNewProfile()
 // (0x00409B70); vector<CWideString> names; GetProfileNames(names) (0x005955AB); for each name Get().DeleteTempSavesForProfile
 // (name) (0x00406770, an empty body on PC); ~vector 0x00412130; then the by-value parameters die: ~CCountedPointer
 // <CGraphicDataBank> 0x00419108 (graphics is otherwise unused) and ~CCountedPointer<CMeshDataBank> 0x0042918C.
-// Names: CManager / CFrontEndManager names are Ego_r.pdb symbols; SetDefaultValues and DeleteTempSavesForProfile are
-// chosen among Ego_r.pdb CUserProfileManager QAEXXZ / QAEXABVCWideString members (bodies: default-value stores / empty).
+// Names: CManager / CFrontEndManager names are Ego_r.pdb symbols; DeleteTempSavesForProfile is chosen among Ego_r.pdb
+// CUserProfileManager QAEXABVCWideString members (body: empty). SetDefaultValuesForNewProfile 0x00409B70 (NF104 q4446): Ego_r.pdb +
+// FableWin.pdb ?SetDefaultValuesForNewProfile@CUserProfileManager@@QAEXXZ; the body fills the NewProfile option copies (parked
+// 0x00409B70 draft), its sibling SetDefaultValues is 0x0040C790; landed 0x0059A238 binds the same spelling.
 // Layout: retail CFrontEndManager PScreenToDeactivate +0x98, PScreenToActivate +0x9c, Signatures +0xc4 (Ego_r.pdb +0xd8,
 // the same -0x14 shift); CManager input pointer +0x20 (stored inline).
 // Opt: size TU (unaligned entry) with a frame pointer (`leave`). Shape: the count and the element pointer are read once
@@ -38,7 +40,7 @@ class CDefinitionManager;
 #include "engine/CCountedPointer.h"
 class CUserProfileManager {
 public:
-    void SetDefaultValues_00409b70();                             // 0x00409B70
+    void SetDefaultValuesForNewProfile();                             // 0x00409B70
     void DeleteTempSavesForProfile(const CWideString& name);   // 0x00406770
 public:
     static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
@@ -77,7 +79,7 @@ void CFrontEndManager::Init(CCountedPointer<CGraphicDataBank> graphics, CCounted
     CManager::GetInstance()->SetDefinitionManager(definitions);
     PScreenToActivate = 0;
     PScreenToDeactivate = 0;
-    CUserProfileManager::Get().SetDefaultValues_00409b70();
+    CUserProfileManager::Get().SetDefaultValuesForNewProfile();
     std::vector<CWideString> names;
     GetProfileNames(names);
     const unsigned int count = names.size();
