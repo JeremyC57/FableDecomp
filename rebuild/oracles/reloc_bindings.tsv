@@ -40264,3 +40264,4 @@ __wcsicmp	00f3fb84	00599e3f
 ??$__uninitialized_fill_n@PAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@IU12@@std@@YIPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@0@PAU10@IABU10@ABU__false_type@0@@Z	006a3220	006a3a70
 ??$__uninitialized_copy@PAVCGenerationPos@CTCSmokeGenerator@@PAV12@@std@@YIPAVCGenerationPos@CTCSmokeGenerator@@PAV12@00ABU__false_type@0@@Z	00722b70	00723110
 ??$__uninitialized_fill_n@PAVCGenerationPos@CTCSmokeGenerator@@IV12@@std@@YIPAVCGenerationPos@CTCSmokeGenerator@@PAV12@IABV12@ABU__false_type@0@@Z	00722bd0	00723110
+?GetPWorldSeed@CBase@NCameraModes@@QBEPAKXZ	0084d2b0	00853670

@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+006b5890	??$__lower_bound@PAU?$pair@JM@std@@U12@U?$less@U?$pair@JM@std@@@2@H@std@@YIPAU?$pair@JM@0@PAU10@0ABU10@U?$less@U?$pair@JM@std@@@0@PAH@Z	reloc_bindings.tsv (landed caller 0x006B5A50) + STLport 4.6.2 _algobase.c; donors' Dinkumware twin ??$_Lower_bound@PAU?$pair@JM@std@@U12@H@std@@ (Ego_r 0x006F1B30, environment.obj)	_Lower_bound<std::pair<long,float>*,std::pair<long,float>,int> (catalog)

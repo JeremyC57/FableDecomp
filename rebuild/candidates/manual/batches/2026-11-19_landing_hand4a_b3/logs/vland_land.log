@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00853670   RELOCATION_MATCH PASS   OnInitLeaf
+008539c0   RELOCATION_MATCH PASS   OnInitLeaf
+
+WINS: 2
+  00853670 RELOCATION_MATCH NCameraModes::CScriptModuleOpenChest::?OnInitLeaf@CScriptModuleOpenChest@NCameraModes@@MAEXXZ
+  008539c0 RELOCATION_MATCH NCameraModes::CScriptModuleUseLamp::?OnInitLeaf@CScriptModuleUseLamp@NCameraModes@@MAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCScriptModuleOpenChest_OnInitLeaf_00853670
+  NCameraModesCScriptModuleUseLamp_OnInitLeaf_008539c0

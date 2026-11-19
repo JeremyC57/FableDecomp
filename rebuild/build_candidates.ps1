@@ -399987,6 +399987,20 @@ $catalog = @(
         TestSource = '00/66/CThingCreatureBase_GetCurrentMeshRadius_00664ba0_test.cpp'
         PassPattern = '00664ba0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00853670'
+        Module = 'NCameraModes::CScriptModuleOpenChest'
+        Source = '00/85/NCameraModesCScriptModuleOpenChest_OnInitLeaf_00853670.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleOpenChest_OnInitLeaf_00853670_test.cpp'
+        PassPattern = '00853670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008539c0'
+        Module = 'NCameraModes::CScriptModuleUseLamp'
+        Source = '00/85/NCameraModesCScriptModuleUseLamp_OnInitLeaf_008539c0.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleUseLamp_OnInitLeaf_008539c0_test.cpp'
+        PassPattern = '008539c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

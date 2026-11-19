@@ -420,8 +420,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0084e810	NCameraModes::CBase	AddSubComponent	240	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/hdr/0084e810.cpp	original
 00850a80	CContextSensitiveItemDef	IsValidOverride	2576	parked	DIFFER(2652v2576)	13	rebuild/candidates/manual/pending/2026-11-07_linux_hand826/differ/00850a80.test.cpp	original
 00852e10	CScriptModuleFOVZoomStayRelative	CScriptModuleFOVZoomStayRelative	448	parked	DIFFER(447v445)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00852e10.cpp	original
-00853670	CScriptModuleOpenChest	OnInitLeaf	448	reserved (hand4a, in-house)	DIFFER(445v445)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00853670.cpp	original
-008539c0	CScriptModuleUseLamp	OnInitLeaf	480	reserved (hand4a, in-house)	DIFFER(475v475)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/008539c0.cpp	original
 00853d30	CScriptModuleOpenGate	OnInitLeaf	640	parked	DIFFER(627v625)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00853d30.cpp	original
 00854180	NCameraModes::CScriptModuleSpline	NCameraModes::CScriptModuleSpline::vfunc_1	400	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/00854180.cpp	gapscan/boundary
 00856310	_global	ProcessWeaponTrailPointsToIncludeCylinderCloseToCreatureAxis	608	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand480/differ/00856310.cpp	original

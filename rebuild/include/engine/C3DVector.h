@@ -449,12 +449,29 @@ public:
 #else
     FABLE_VECTOR_INLINE const C3DVector operator/(float v)const{float reciprocal=1.0f/v;return C3DVector(X*reciprocal,Y*reciprocal,Z*reciprocal);}
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_DIVASSIGN_RECIPROCAL_PAREN
+    // INFERRED opt-in (hand4a w24, rows 0x00853670 / 0x008539C0 NCameraModes::CScriptModuleOpenChest / UseLamp::OnInitLeaf): the same
+    // operator/= with the reciprocal parenthesised. Same instructions; the no-code PAREN tuple (plus the row's parenthesised magnitude)
+    // moves VC7.1's 81-tuple scheduling-region cut by two tuples: retail's Theta store / owner load / Rad store order (0x008537A4..
+    // 0x008537AA) and UseLamp's AxisY copy (0x00853A90) and `test eax,eax` (0x00853B4B). Measured neutral on ~45 landed C3DVector users
+    // (all still match). FableWin.pdb ??_0C3DVector@@QAEABV0@M@Z (debug 0x01F58600: reciprocal local, three products) is consistent;
+    // the parenthesis itself is not visible in any donor. Default path unchanged.
+    FABLE_VECTOR_INLINE const C3DVector& operator/=(float v){float reciprocal=(1.0f/v);X*=reciprocal;Y*=reciprocal;Z*=reciprocal;return *this;}
+#else
     FABLE_VECTOR_INLINE const C3DVector& operator/=(float v){float reciprocal=1.0f/v;X*=reciprocal;Y*=reciprocal;Z*=reciprocal;return *this;}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_ACCURATE_MAGNITUDE
     // Original FableWin01d99fb0 and both PDB signatures; named squared sum.
 #if defined(FABLE_RETAIL_C3DVECTOR_ACCURATE_SQUARE_GROUPS_PASS23)
     // Both original PDBs and donor01d99fb0: three squared components then sqrt.
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+(Y*Y)+(Z*Z);return (float)sqrt(magnitude);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_ACCURATE_MAGNITUDE_PAREN_RETURN)
+    // INFERRED nested opt-in (hand4a w24, rows 0x00853670 / 0x008539C0 NCameraModes::CScriptModuleOpenChest / UseLamp::OnInitLeaf):
+    // the same body with the return expression bracketed. Same instructions; the no-code PAREN tuple (with DIVASSIGN_RECIPROCAL_PAREN)
+    // moves VC7.1's 81-tuple scheduling-region cut to retail's store order. Default path unchanged (16/16 landed users still match);
+    // NOT general -- forced on it breaks 0x00875690 and 0x00761280. FableWin ?GetAccurateMagnitude 0x01D99FB0 is consistent; the
+    // parenthesis itself is in no donor.
+    FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return ((float)sqrt(magnitude));}
 #else
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
 #endif
