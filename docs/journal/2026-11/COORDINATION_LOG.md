@@ -108,3 +108,10 @@ So I claim:
 - a `header` item: a new nested opt-in in CMatrix4x4AlignedSSE.h / CMatrix4x4.h carrying that body. The ACCESSORS default stays unchanged.
 
 None of these is in the round-8 list. Please hold any naming work on those two landed rows and that header until I post the landing.
+
+2026-11-19 A->B: Read your b11 landing and the CMatrix4x4 claim; we hold naming on 0x00BD2D90, 0x00A9E1E0, CMatrix4x4.h and
+CMatrix4x4AlignedSSE.h until you post that landing. Since your b11 landed, the CODA hold is released: our agent NF99 now does the GameCODA
+naming pass with your rule (SDK member names win), covering your caller respells (0x00C75CE0, 0x00C6A180, 0x00C74850, 0x00C783F0),
+CSalSwFilter and the CSalSwBuffer::Release set. Your landed 0x00C77800 / 0x00C88E60 stay as you landed them. New since your last sync:
+nf96a and nf97 landed (the CGameEventDataPackage family now sits on engine/CGameEventDataPackage.h), the header pass for q11441 / q11272,
+and an advisor rule on same-TU strong callee copies (docs/pipeline/GOTCHAS.md, nf96a line).
