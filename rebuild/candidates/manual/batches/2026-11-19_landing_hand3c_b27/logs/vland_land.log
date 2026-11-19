@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00d8a240   RELOCATION_MATCH PASS   WatchForBooty
+
+WINS: 1
+  00d8a240 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::?WatchForBooty@CQ_HerosOldHouseScript@NScript@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQHerosOldHouseScript_WatchForBooty_00d8a240

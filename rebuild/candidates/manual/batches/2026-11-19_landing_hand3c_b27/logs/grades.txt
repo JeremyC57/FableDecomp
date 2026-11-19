@@ -1,0 +1,61 @@
+00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty RELOCATION_MATCH flags= ['/d2inlT57']
+00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(561v610) flags= ['/d2inlT56']
+--- retail (610 bytes)
+00d8a240  83ec1c                 sub esp, 0x1c
+--- built (561 bytes)
+00d8a240  83ec1c                 sub esp, 0x1c
+00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(655v610) flags= ['/d2inlT64']
+--- retail (610 bytes)
+00d8a240  83ec1c                 sub esp, 0x1c
+--- built (655 bytes)
+00d8a240  83ec1c                 sub esp, 0x1c
+00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty RELOCATION_MATCH flags= ['/d2inlT63']
+00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(662v610) flags= []
+--- retail (610 bytes)
+00d8a240  83ec1c                 sub esp, 0x1c
+--- built (662 bytes)
+00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(662v610) flags= []
+v1 --- retail (610 bytes)
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 --- built (662 bytes)
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty RELOCATION_MATCH flags= ['/d2inlT57']
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(561v610) flags= ['/d2inlT56']
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty RELOCATION_MATCH flags= ['/d2inlT63']
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(655v610) flags= ['/d2inlT64']
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v2 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty RELOCATION_MATCH flags= ['/d2inlT57']
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(644v610) flags= ['/d2inlT49']
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(561v610) flags= ['/d2inlT51']
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(561v610) flags= ['/d2inlT52']
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(561v610) flags= ['/d2inlT53']
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(561v610) flags= ['/d2inlT54']
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty DIFFER(561v610) flags= ['/d2inlT55']
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+v1 00d8a240  83ec1c                 sub esp, 0x1c
+fixed 00d8a240 NScript::CQ_HerosOldHouseScript::WatchForBooty RELOCATION_MATCH flags= ['/d2inlT57']
+v3_dowhile [] DIFFER(639v610)
+sub
+sub
+v3_dowhile [/d2inlT57] DIFFER(651v610)
+sub
+sub
+v4_ifelse [] DIFFER(662v610)
+sub
+sub
+v4_ifelse [/d2inlT57] RELOCATION_MATCH
+fixed, empty overlay: SRC_FAIL

@@ -400987,6 +400987,14 @@ $catalog = @(
         TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_ComputeSelfContraction_00ac7eb0_test.cpp'
         PassPattern = '00ac7eb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d8a240'
+        Module = 'NScript::CQ_HerosOldHouseScript'
+        Source = '00/d8/NScriptCQHerosOldHouseScript_WatchForBooty_00d8a240.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScript_WatchForBooty_00d8a240_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT57'
+        PassPattern = '00d8a240_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

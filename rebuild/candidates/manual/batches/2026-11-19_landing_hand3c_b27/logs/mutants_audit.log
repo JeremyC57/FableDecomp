@@ -1,0 +1,36 @@
+baseline SURVIVED
+KILLED(timeout) | if (IsActiveThreadTerminating()) -> if (!IsActiveThreadTerminating())
+KILLED | if (IsActiveThreadTerminating()) -> if (!IsActiveThreadTerminating())
+KILLED | if (IsActiveThreadTerminating()) -> if (!IsActiveThreadTerminating())
+KILLED | if (IsActiveThreadTerminating()) -> if (!IsActiveThreadTerminating())
+KILLED | if (IsActiveThreadTerminating()) -> if (!IsActiveThreadTerminating())
+KILLED(timeout) | if (IsActiveThreadTerminating()) return _Fail_Val.Return(); -> if (false) return _Fail_Val.Return();
+KILLED | if (IsActiveThreadTerminating()) return _Fail_Val.Return(); -> if (false) return _Fail_Val.Return();
+KILLED | if (IsActiveThreadTerminating()) return _Fail_Val.Return(); -> if (false) return _Fail_Val.Return();
+KILLED | if (IsActiveThreadTerminating()) return _Fail_Val.Return(); -> if (false) return _Fail_Val.Return();
+KILLED | if (IsActiveThreadTerminating()) return _Fail_Val.Return(); -> if (false) return _Fail_Val.Return();
+KILLED | if (IsActiveThreadTerminating()) return _Fail_Val.Return(); -> if (IsActiveThreadTerminating()) break;
+KILLED | if (!Game->IsRegionLoaded("OakBay")) { -> if (Game->IsRegionLoaded("OakBay")) {
+KILLED | if (!Game->IsRegionLoaded("OakBay")) { -> if (true) {
+KILLED | while (!Game->IsRegionLoaded -> while (Game->IsRegionLoaded
+KILLED | while (!Game->IsRegionLoaded("OakBay")) -> if (!Game->IsRegionLoaded("OakBay"))
+KILLED | if (!Game->IsDiggingSpotEnabled -> if (Game->IsDiggingSpotEnabled
+KILLED | if (!Game->IsDiggingSpotEnabled(HiddenBooty)) { -> if (true) {
+KILLED |                 Game->NewScriptFrame();  -> 
+KILLED | for (;; Game->NewScriptFrame()) -> for (;;)
+KILLED |                 Game->NewScriptFrame();                 if (IsActiveTh ->                 if (IsActiveThreadTerminating()) r
+KILLED |             if (IsActiveThreadTerminating()) return _Fail_Val.Return() ->             Game->SetQuestCardObjective(Game->GetA
+KILLED | "TEXT_QUEST_HEROS_OLD_HOUSE_OBJECTIVE_02", "", "OakBay") -> "TEXT_QUEST_HEROS_OLD_HOUSE_OBJECTIVE_02", "OakBay
+KILLED | Game->GetActiveQuestName(), "TEXT_QUEST_HEROS_OLD_HOUSE_OBJECTIVE_02" -> "TEXT_QUEST_HEROS_OLD_HOUSE_OBJECTIVE_02", Game->G
+KILLED | Game->GetActiveQuestName(), "TEXT -> "", "TEXT
+KILLED | IsDiggingSpotEnabled(HiddenBooty) -> IsDiggingSpotEnabled(Game->GetThingWithScriptName(
+KILLED | "HiddenBooty" -> "HiddenBootx"
+KILLED | "OakBay" -> "OakBax"
+KILLED | "OakBay" -> "OakBax"
+KILLED | "OakBay" -> "OakBax"
+KILLED | "TEXT_QUEST_HEROS_OLD_HOUSE_OBJECTIVE_02" -> "TEXT_QUEST_HEROS_OLD_HOUSE_OBJECTIVE_01"
+KILLED | "OakBay");             return; -> "OakBay");
+KILLED | "OakBay");             return; -> "OakBay");             continue;
+SURVIVED | "OakBay");             return; -> "OakBay");             return _Fail_Val.Return();
+KILLED |             Game->SetQuestCardObjective(Game->GetActiveQuestName(), "T -> 
+LINK_FAIL | CScriptThing HiddenBooty = Game->GetThingWithScriptName("HiddenBooty") -> CScriptThing HiddenBooty = Game->GetThingWithScrip

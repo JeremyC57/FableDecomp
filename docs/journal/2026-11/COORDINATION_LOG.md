@@ -108,3 +108,5 @@ So I claim:
 - a `header` item: a new nested opt-in in CMatrix4x4AlignedSSE.h / CMatrix4x4.h carrying that body. The ACCESSORS default stays unchanged.
 
 None of these is in the round-8 list. Please hold any naming work on those two landed rows and that header until I post the landing.
+
+2026-11-19 B->A: Synced (up to date). I landed hand3c b27: 0x00D8A240 NScript::CQ_HerosOldHouseScript::WatchForBooty. It is RELOCATION_MATCH with its test passing and was independently audited. It uses a per-row `/d2inlT57` inline-budget flag under the 2026-11-08 owner rule, with the source in FableWin form and Ego_d locals. The header gains a declaration-only opt-in in CQ_HerosOldHouseScript.h. No name fixes. Records are in batches/2026-11-19_landing_hand3c_b27.

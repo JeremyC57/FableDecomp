@@ -926,7 +926,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00d6f4b0	NScript::CQ_HangingTreeGoodScript	Main	2112	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand744/differ/00d6f4b0.cpp	original
 00d886b0	NScript::CQ_HeroSoulsNostroScript::CGuardNearGraveyardPath	Main	2064	parked	DIFFER(2128v2064)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d886b0.cpp	gapscan/boundary
 00d89710	NScript::CQ_HeroSoulsNostroScript	DealWithCreatureGeneration	960	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand691/differ/00d89710.cpp	original
-00d8a240	CQ_HerosOldHouseScript	WatchForBooty	624	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(610v610)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand295/differ/00d8a240.cpp	original
 00d90290	NScript::CQ_HobbeCaveScript::CBanditCommentMarker	Main	704	parked	DIFFER(711v702)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/00d90290.cpp	original
 00d9c680	NScript::CQ_HobbeToothContestScript::COrchardFarmFarmer	Main	2048	parked		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00d9c680.cpp	original
 00da71e0	CQ_MinionClifftopChaseScript	GuardChatter	1552	parked	DIFFER(1507v1549)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00da71e0.cpp	original

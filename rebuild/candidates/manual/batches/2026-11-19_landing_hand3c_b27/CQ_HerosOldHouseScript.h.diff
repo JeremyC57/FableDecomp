@@ -1,0 +1,28 @@
+--- a/rebuild/include/engine/CQ_HerosOldHouseScript.h
++++ b/rebuild/include/engine/CQ_HerosOldHouseScript.h
+@@ -24,6 +24,11 @@
+     virtual void RegisterMain();                                         // (slot 1)
+     virtual void Main();                                                 // 0x00D89E60 (slot 2)
+     virtual void Init();                                                 // 0x00D89DA0 (slot 3)
++#ifdef FABLE_RETAIL_CQ_HEROSOLDHOUSESCRIPT_WATCHFORBOOTY
++    // hand3c opt-in (row 0x00D8A240): Ego_r.pdb / FableWin.pdb ?WatchForBooty@CQ_HerosOldHouseScript@NScript@@QAEXXZ (public; FableWin
++    // 0x037BA020), the spawned function Main 0x00D89E60 registers by name ("WatchForBooty"). Declaration only: no layout change.
++    void WatchForBooty();                                                // 0x00D8A240
++#endif
+     bool Helping;                                                        // +0x48
+     bool Helped;                                                         // +0x49
+     bool MissionAborted;                                                 // +0x4a
+@@ -71,10 +76,10 @@
+ };
+ #endif
+ }
+-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HerosOldHouseScript) == 0x50);
+-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HerosOldHouseScript::CGhostFisherman) == 0x20);
++FABLE_STATIC_ASSERT_AT(74, sizeof(NScript::CQ_HerosOldHouseScript) == 0x50);
++FABLE_STATIC_ASSERT_AT(75, sizeof(NScript::CQ_HerosOldHouseScript::CGhostFisherman) == 0x20);
+ #ifdef FABLE_RETAIL_CQ_HEROSOLDHOUSESCRIPT_CFISHERMANSWIFE
+-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HerosOldHouseScript::CFishermansWife) == 0x24);
++FABLE_STATIC_ASSERT_AT(77, sizeof(NScript::CQ_HerosOldHouseScript::CFishermansWife) == 0x24);
+ #endif
+ 
+ #endif // FABLE_RETAIL_NSCRIPT
