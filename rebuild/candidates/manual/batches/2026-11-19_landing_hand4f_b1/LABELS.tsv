@@ -1,0 +1,3 @@
+address	name	evidence
+00b6df90	CEngineWaterRenderer::GetIceForegroundShadowedVertexShader	reloc_bindings + Ego_r.pdb + FableWin.pdb object order
+00b6dfd0	CEngineWaterRenderer::GetIceForegroundColbuffShadowedVertexShader	reloc_bindings + Ego_r.pdb + FableWin.pdb object order

@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00b6df90   WARN STANDIN_LEAF ?GetIceForegroundShadowedVertexShader@CEngineWaterRenderer@@AAEAAVCVertexShader@@J@Z (catalog CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader; names another function)
+00b6df90   MATCH            PASS   GetIceForegroundShadowedVertexShader
+00b6dfd0   WARN STANDIN_LEAF ?GetIceForegroundColbuffShadowedVertexShader@CEngineWaterRenderer@@AAEAAVCVertexShader@@J@Z (catalog CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader; names another function)
+00b6dfd0   MATCH            PASS   GetIceForegroundColbuffShadowedVertexShader
+
+WINS: 2
+  00b6df90 MATCH CEngineWaterRenderer::?GetIceForegroundShadowedVertexShader@CEngineWaterRenderer@@AAEAAVCVertexShader@@J@Z
+  00b6dfd0 MATCH CEngineWaterRenderer::?GetIceForegroundColbuffShadowedVertexShader@CEngineWaterRenderer@@AAEAAVCVertexShader@@J@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEngineWaterRenderer_GetIceForegroundShadowedVertexShader_00b6df90
+  CEngineWaterRenderer_GetIceForegroundColbuffShadowedVertexShader_00b6dfd0

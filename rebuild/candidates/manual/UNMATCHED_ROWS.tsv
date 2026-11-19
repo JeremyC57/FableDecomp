@@ -791,8 +791,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b640e0	CEngineSkyRenderer	RenderMoon	1136	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b640e0.cpp	original
 00b68070	CEngineLandscapeRenderer	LoadForegroundTextures	1152	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b68070.cpp	original
 00b6df50	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00b6df50.test.cpp	original
-00b6df90	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64	reserved (hand4f, in-house)	DIFFER(43v54)	1	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00b6df90.test.cpp	original
-00b6dfd0	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64	reserved (hand4f, in-house)	DIFFER(43v54)	1	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00b6dfd0.cpp	original
 00b84b20	_global	RadixSort_CountingPass_b84b20	480	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand428/differ/00b84b20.cpp	original
 00b8c830	CEngineEnvironment	CEngineEnvironment::FrameStart	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b8c830.cpp	original
 00b8ccf0	CEngineEnvironment	CEngineEnvironment::WorldFrameUpdate	496	parked	DIFFER(491v487)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b8ccf0.cpp	original
