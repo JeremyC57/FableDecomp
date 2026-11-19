@@ -1,0 +1,8 @@
+#pragma once
+typedef unsigned int size_t;
+inline void* operator new(size_t, void* p) throw() { return p; }
+inline void operator delete(void*, void*) throw() {}
+void* operator new(size_t);
+void operator delete(void*);
+void* operator new[](size_t);
+void operator delete[](void*);
