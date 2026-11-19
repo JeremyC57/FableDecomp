@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00be2b70   WARN RELOC_ALIAS: __CIasin -> 00bfedc4 is the import thunk 'MSVCR71.DLL::_CIasin'
+00be2b70   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00be2b70   WARN STANDIN_LEAF ?GetMappingDirectionBlend@CEngineLandscapeMeshBuilder@@QAEMW4LANDSCAPE_TEXTURE_MAPPING_DIRECTION@@ABVC3DVector@@@Z (catalog _global::BuildBlendingTables_ComputeBlendFactor; names another function)
+00be2b70   RELOCATION_MATCH PASS   GetMappingDirectionBlend
+
+WINS: 1
+  00be2b70 RELOCATION_MATCH CEngineLandscapeMeshBuilder::GetMappingDirectionBlend
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineLandscapeMeshBuilder_GetMappingDirectionBlend_00be2b70

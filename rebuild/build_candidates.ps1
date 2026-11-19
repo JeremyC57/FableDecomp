@@ -399872,6 +399872,13 @@ $catalog = @(
         TestSource = '00/a9/C3DAnimationManager_ApplyBoneMorphScaling_00a9d750_test.cpp'
         PassPattern = '00a9d750_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00be2b70'
+        Module = 'CEngineLandscapeMeshBuilder'
+        Source = '00/be/CEngineLandscapeMeshBuilder_GetMappingDirectionBlend_00be2b70.cpp'
+        TestSource = '00/be/CEngineLandscapeMeshBuilder_GetMappingDirectionBlend_00be2b70_test.cpp'
+        PassPattern = '00be2b70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

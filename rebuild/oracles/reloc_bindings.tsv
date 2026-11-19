@@ -40248,3 +40248,4 @@ __wcsicmp	00f3fb84	00599e3f
 ?_M_insert_overflow@?$vector@PAVC3DVector@@V?$allocator@PAVC3DVector@@@std@@@std@@IAEXPAPAVC3DVector@@ABQAV3@ABU__true_type@2@I_N@Z	00765130	007621c0
 ?GetLineOutFromClosestPointOnFiniteLineToPoint@NPhysicsHelpers@@YI?AVC3DVector@@ABV2@00@Z	008f5b50	0080dc90
 ?IsTravellingAway@CThingFilter_IsEvadeExplosion@?A0xd48c9e3e@@QBE_NABVC3DVector@@0@Z	0080c140	0080dc90
+?MappingDirNormals@CEngineLandscapeMeshBuilder@@0PAVC3DVector@@A	0139c338	00be2b70
