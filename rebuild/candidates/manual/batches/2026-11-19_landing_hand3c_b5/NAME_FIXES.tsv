@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+013d2880	?GEnableSIMD@@3_NA	Ego_r.pdb and FableWin.pdb publics (both); already the landed spelling under FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG (20 files)	?g_SSEAvailable@@3_NA (made-up; default path of engine/CMatrix4x4AlignedSSE.h and 10 landed files incl. 0x00A9D480, 0x00A9D750) -- naming agent: respell to GEnableSIMD everywhere (one address, one name)

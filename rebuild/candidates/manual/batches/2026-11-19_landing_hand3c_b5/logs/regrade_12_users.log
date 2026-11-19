@@ -1,0 +1,32 @@
+addr       parity           behav  name
+00a5cb90   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00a5cb90   RELOCATION_MATCH PASS   AlignedTransformTransposedAssumeW
+00a9d750   RELOCATION_MATCH PASS   ApplyBoneMorphScaling
+00a9e1e0   RELOCATION_MATCH PASS   ApplyParentTransformations
+00a9d580   RELOCATION_MATCH PASS   AlignedPreScaleTransposed
+00a9d480   RELOCATION_MATCH PASS   AlignedPreScale
+00aa2110   RELOCATION_MATCH PASS   CalcBlendedBoneTransformation
+00aa0fa0   RELOCATION_MATCH PASS   CalcBoneTransformation
+00aa39a0   RELOCATION_MATCH PASS   ToMatrix
+00b4bcc0   WARN RELOC_NAME: ?SetInverse@CMatrix4x4@@QAEXABV1@@Z -> 00a5cb00 labelled 'CLayer::SetAllPolys'
+00b4bcc0   RELOCATION_MATCH PASS   CalcClipVolume
+00b4c550   WARN RELOC_NAME: ?SetInverse@CMatrix4x4@@QAEXABV1@@Z -> 00a5cb00 labelled 'CLayer::SetAllPolys'
+00b4c550   RELOCATION_MATCH PASS   CalcSpotLightClipVolume
+00b4fc40   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b4fc40   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b4fc40   RELOCATION_MATCH PASS   SetupShadowFuncRenderStates
+00bd2d90   RELOCATION_MATCH PASS   GetBoneTransformations
+
+WINS: 12
+  00a5cb90 RELOCATION_MATCH CMatrix4x4::?AlignedTransformTransposedAssumeW@CMatrix4x4@@QBEXPBVC4DVector@@PAV2@KM@Z
+  00a9d750 RELOCATION_MATCH C3DAnimationManager::?ApplyBoneMorphScaling@C3DAnimationManager@@ABEXPBVC3DVector@@PAVCMatrix4x4@@K_N@Z
+  00a9e1e0 RELOCATION_MATCH C3DAnimationManager::?ApplyParentTransformations@C3DAnimationManager@@ABEXPBVC3DKeyframe@@PAVCMatrix4x4@@ABVC3DMesh2@@_N@Z
+  00a9d580 RELOCATION_MATCH CMatrix4x4::?AlignedPreScaleTransposed@CMatrix4x4@@QAEXABVC3DVector@@@Z
+  00a9d480 RELOCATION_MATCH CMatrix4x4::?AlignedPreScale@CMatrix4x4@@QAEXABVC3DVector@@@Z
+  00aa2110 RELOCATION_MATCH C3DAnimationManager::?CalcBlendedBoneTransformation@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MABVC3DMesh2@@KAAVCMatrix3x4@@AAVC3DVector@@@Z
+  00aa0fa0 RELOCATION_MATCH C3DAnimationManager::?CalcBoneTransformation@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@ABVC3DMesh2@@KAAVCMatrix3x4@@AAVC3DVector@@@Z
+  00aa39a0 RELOCATION_MATCH C3DKeyframe::?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z
+  00b4bcc0 RELOCATION_MATCH CEngineShadowRenderer::?CalcClipVolume@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z
+  00b4c550 RELOCATION_MATCH CEngineShadowRenderer::?CalcSpotLightClipVolume@CEngineShadowRenderer@@AAEXABUCEngineLightingManagerSpotlightParams@@@Z
+  00b4fc40 RELOCATION_MATCH CEngineShadowRenderer::?SetupShadowFuncRenderStates@CEngineShadowRenderer@@QAEXJABVCMatrix3x4@@ABUCColorBufferDepthPackParameters@1@@Z
+  00bd2d90 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::?GetBoneTransformations@CEngineInternalPrimitiveAnimatedMesh@@QAEPBVCMatrix4x4@@XZ

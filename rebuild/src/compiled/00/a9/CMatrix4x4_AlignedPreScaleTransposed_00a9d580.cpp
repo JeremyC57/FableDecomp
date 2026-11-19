@@ -10,27 +10,15 @@
 // SSE: the isolated kernel GF_SSE_MATRIX_PRESCALE_TRANSPOSED (engine/CMatrix4x4AlignedSSE.h, grade retail_asm): retail homes
 //   `this` in a frame word and re-reads it into edx inside the block (`mov [esp],ecx ; ... ; mov edx,[esp]`), the fourth
 //   column goes through dword frame slots. Intrinsic spellings (chunk 748 NOTES table, 12 graded) never re-read the pointer.
-// x87: VC7.1 picks the fld operand of each `E *= s` from the whole function's load-node order; the third row written as a
-//   column loop gives retail's operand order in every product (125 row-form combinations searched; UUL family).
+// Text (hand3c batch 5): the shared body in engine/CMatrix4x4AlignedSSE.h under the per-member out-of-line opt-in
+//   FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALETRANSPOSED_OUTOFLINE. That is the Ego_d / FableWin 0x033831E0 form: SSE block vect / dest / right,
+//   and the x87 block through `CMatrix4x4& m = *this` and the element accessors, which give retail's operand order with no row rewritten as a
+//   loop. ApplyBoneMorphScaling 0x00A9D750 expands the same text. The global keeps this row's landed spelling GEnableSIMD through
+//   FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG.
 // Global: GEnableSIMD 0x013D2880.
 #define FABLE_RETAIL_CMATRIX4X4
+#define FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS
+#define FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG
+#define FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALETRANSPOSED_OUTOFLINE
 #include "engine/CMatrix4x4.h"
 #include "engine/CMatrix4x4AlignedSSE.h"
-extern bool GEnableSIMD;                          // 0x013D2880
-
-void CMatrix4x4::AlignedPreScaleTransposed(const C3DVector& scale)
-{
-    if (GEnableSIMD) {
-        __declspec(align(16)) C4DVector s;
-        s.X = scale.X; s.Y = scale.Y; s.Z = scale.Z;
-        s.W = 0.0f;
-        CMatrix4x4* self = this;
-        float t0 = E14, t1 = E24, t2 = E34;
-        GF_SSE_MATRIX_PRESCALE_TRANSPOSED(self, s);
-        E14 = t0; E24 = t1; E34 = t2;
-        return;
-    }
-    E11 *= scale.X; E12 *= scale.Y; E13 *= scale.Z;
-    E21 *= scale.X; E22 *= scale.Y; E23 *= scale.Z;
-    for (int c = 0; c < 3; ++c) Data[2][c] *= (&scale.X)[c];
-}

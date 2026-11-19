@@ -232,7 +232,12 @@ FABLE_FORCEINLINE void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& a, const
 // The nested FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_FORCEINLINE marks them __forceinline for the TU that expands them (plain inline
 // leaves them called in 0x00A9D750). Outside the include guard, like AlignedSetMultiply: engine/CMatrix4x4.h includes this header again
 // once the class is complete.
-#if defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_BODIES) && defined(FABLE_ENGINE_CMATRIX4X4_H) && !defined(FABLE_CMATRIX4X4_ALIGNEDPRESCALE_DEFINED)
+// Per-member out-of-line opt-ins (hand3c batch 5, the landed rows 0x00A9D480 / 0x00A9D580): FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_OUTOFLINE
+// defines only AlignedPreScale and FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALETRANSPOSED_OUTOFLINE only AlignedPreScaleTransposed, both
+// plain (not inline), so that each row's TU holds the one out-of-line copy its address names and the two TUs never both define both members.
+#if (defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_BODIES) || defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_OUTOFLINE) || \
+     defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALETRANSPOSED_OUTOFLINE)) && defined(FABLE_ENGINE_CMATRIX4X4_H) && \
+    !defined(FABLE_CMATRIX4X4_ALIGNEDPRESCALE_DEFINED)
 #define FABLE_CMATRIX4X4_ALIGNEDPRESCALE_DEFINED
 #ifdef FABLE_RETAIL_CMATRIX4X4_SIMD_ORIGINAL_FLAG
 extern bool GEnableSIMD;
@@ -246,6 +251,7 @@ extern bool g_SSEAvailable;                                              // 0x01
 #else
 #define FABLE_CMATRIX4X4_PRESCALE_INLINE
 #endif
+#if defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_BODIES) || defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_OUTOFLINE)
 FABLE_CMATRIX4X4_PRESCALE_INLINE void CMatrix4x4::AlignedPreScale(const C3DVector& scale)
 {
     if (FABLE_CMATRIX4X4_PRESCALE_SIMD) {
@@ -261,6 +267,8 @@ FABLE_CMATRIX4X4_PRESCALE_INLINE void CMatrix4x4::AlignedPreScale(const C3DVecto
     m(1, 0) *= scale.Y; m(1, 1) *= scale.Y; m(1, 2) *= scale.Y;
     m(2, 0) *= scale.Z; m(2, 1) *= scale.Z; m(2, 2) *= scale.Z;
 }
+#endif
+#if defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALE_BODIES) || defined(FABLE_RETAIL_CMATRIX4X4_ALIGNEDPRESCALETRANSPOSED_OUTOFLINE)
 FABLE_CMATRIX4X4_PRESCALE_INLINE void CMatrix4x4::AlignedPreScaleTransposed(const C3DVector& scale)
 {
     if (FABLE_CMATRIX4X4_PRESCALE_SIMD) {
@@ -276,6 +284,7 @@ FABLE_CMATRIX4X4_PRESCALE_INLINE void CMatrix4x4::AlignedPreScaleTransposed(cons
     m(1, 0) *= scale.X; m(1, 1) *= scale.Y; m(1, 2) *= scale.Z;
     m(2, 0) *= scale.X; m(2, 1) *= scale.Y; m(2, 2) *= scale.Z;
 }
+#endif
 #undef FABLE_CMATRIX4X4_PRESCALE_INLINE
 #undef FABLE_CMATRIX4X4_PRESCALE_SIMD
 #endif
