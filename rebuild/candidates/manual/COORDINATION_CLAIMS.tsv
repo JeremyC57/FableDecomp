@@ -22,16 +22,16 @@ date	account	item	kind	status	note
 2026-11-19	A	q11260,q11271,q11274,q11277,q11280,q11281,q11283,q11286	naming	claimed	round 9 agent NF101: rows 00436500 0049c6f0 00518130 005185f0 0055fc90 005da750 0063fae0 00670d50 00703210 0078954d 0078b070 00848500 008c64f0 009f9e00 00b9dc60 00beb660
 2026-11-19	A	nf99a, nf98 (round 8)	naming	done	batches/2026-11-19_landing_nf99a, _nf98
 2026-11-19	B	0x00989230	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
-2026-11-19	B	0x00AAD340	author	claimed	hand3c chunk 2 (authoring_handoff)
+2026-11-19	B	0x00AAD340	author	done	landed in batches/2026-11-19_landing_hand3c2_b1_b7
 2026-11-19	B	0x0064DD9A	author	claimed	hand3c chunk 2 (authoring_handoff)
-2026-11-19	B	0x00D6C830	author	claimed	hand3c chunk 2 (authoring_handoff)
-2026-11-19	B	0x00AABF60	author	claimed	hand3c chunk 2 (authoring_handoff)
+2026-11-19	B	0x00D6C830	author	done	landed in batches/2026-11-19_landing_hand3c2_b1_b7
+2026-11-19	B	0x00AABF60	author	done	landed in batches/2026-11-19_landing_hand3c2_b1_b7
 2026-11-19	B	0x00A793D0	author	claimed	hand3c chunk 2 (authoring_handoff)
 2026-11-19	B	0x00A79680	author	claimed	hand3c chunk 2 (authoring_handoff)
-2026-11-19	B	0x00766660	author	claimed	hand3c chunk 2 (authoring_handoff)
+2026-11-19	B	0x00766660	author	done	landed in batches/2026-11-19_landing_hand3c2_b1_b7
 2026-11-19	B	0x00591B7F	author	claimed	hand3c chunk 2 (authoring_handoff)
 2026-11-19	B	0x00646762	author	claimed	hand3c chunk 2 (authoring_handoff)
-2026-11-19	B	0x00A567A0	author	claimed	hand3c chunk 2 (authoring_handoff)
+2026-11-19	B	0x00A567A0	author	done	landed in batches/2026-11-19_landing_hand3c2_b1_b7
 2026-11-19	B	0x00ADF960	author	claimed	hand3c chunk 2 (authoring_handoff)
 2026-11-19	B	0x00BADE40	author	claimed	hand3c chunk 2 (authoring_handoff)
 2026-11-19	B	0x00A48F10	author	claimed	hand3c chunk 2 (authoring_handoff)

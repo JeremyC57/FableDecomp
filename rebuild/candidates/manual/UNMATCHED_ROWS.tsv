@@ -233,7 +233,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00762620	NShape::CShape	StatOnSerialise	1168	parked	DIFFER(1182v1160)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00762620.cpp	original
 00763060	_global	Polygon_GeneratePath_WithCirculation	1152	parked	DIFFER(1143v1146)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00763060.cpp	original
 007634e0	_global	CPatchTesselation_GenerateTriangles	1328	parked	DIFFER(623v627)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/hdr/007634e0.cpp	original
-00766660	CTCObjectAugmentations	AttemptToStartParticle	704	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(700v696)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand304/differ/00766660.cpp	original
 00766dd0	CTCObjectAugmentations	FrameUpdate	1072	parked	codex pass24 PARKED: The shared owner and STLport containers retain the native predicate calls and component names. Vector allocation, period scheduling, and iterator code generation still differ.	23	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00766dd0/00766dd0.cpp	original
 0076cce0	CTCEnemy	IsEnemyOf	768	parked	egod3a: DIFFER 751v754 -- old local-model draft (97 masked); CTCEnemy.h exists, landed TU siblings 0x0076D1B0/0x0076D270/0x0076D2F0; port not started	5	rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/0076cce0.cpp	original
 0076e6a0	CTCWeaponTrail	DrawAddWeaponTrails	960	parked	DIFFER(911v951)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand306/differ/0076e6a0.cpp	original
@@ -657,7 +656,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a53860	C3DAnimation2	CalcLocalBoneTransformation	1008	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(922v1005)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00a53860.cpp	original
 00a53c50	C3DAnimation2	CalcLocalBoneTransformation	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00a53c50.cpp	original
 00a56270	CMatrix3x4	Orthonormalise	704	parked	DIFFER(706v693)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a56270.cpp	original
-00a567a0	CCardinalSpline	GetSplinePosition	768	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(790v766)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00a567a0.test.cpp	original
 00a57030	C2DLineF	Intersects2D	272	parked		0	rebuild/candidates/manual/pending/2026-10-20_linux_hand218/differ/00a57030.cpp	original
 00a57140	C2DLineF	GetPointOnInfiniteLine	96	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00a57140.cpp	original
 00a571a0	C2DLineF	GetPointOnLine	656	parked	codex pass24 PARKED: From 00A57210 the optional output tests and temporary x87 values differ. The public const leaf and optional output pointee types agree with both donors.	15	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00a571a0/00a571a0.cpp	original
@@ -696,8 +694,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a92900	C3DPrimitive2	LoadBinary	2288	parked	DIFFER(2283v2274)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand784/differ/00a92900.test.cpp	original
 00a9dc20	_global	ApplyPartialAnimationAlpha	720	parked	DIFFER(709v706)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand727/src/00a9dc20.cpp	original
 00aa8830	CChunkedFileSuperChunk	ReadFromFile	1248	parked	DIFFER(918v889)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00aa8830.cpp	original
-00aabf60	CSoundEmitterLH	CSoundEmitterLH::vfunc_3	624	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(625v620)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00aabf60.cpp	gapscan/boundary
-00aad340	CWaveFile	ConvertSamplingRate	656	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(606v584)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00aad340.test.cpp	original
 00aaf1e0	C3DKeyframe	InitialiseFromMatrix	944	parked	DIFFER(839v904)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00aaf1e0.cpp	original
 00ab1740	C3DAnimationBuilder	AssignAnimation	592	parked	DIFFER(605v592)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00ab1740.cpp	original
 00ab1990	C3DAnimationBuilder	BuildBoneInfoTree	816	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand689/differ/00ab1990.cpp	original
@@ -911,7 +907,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00d69480	NScript::CQ_HangingTreeEvilScript	Main	2128	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand744/differ/00d69480.test.cpp	original
 00d6bac0	NScript::CQ_HangingTreeEvilScript::CHTE_AmbushPoint	Main	192	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand507/differ/00d6bac0.cpp	gapscan/boundary
 00d6bb91	_global	Quest_EnemyGuard_Monitor	655	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand761/differ/00d6bb91.test.cpp	original
-00d6c830	CQ_HangingTreeEvilScript	CheckBanditFollowStatus	608	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(607v607)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand295/differ/00d6c830.cpp	original
 00d6d080	NScript::CQ_HangingTreeEvilScript	Introduction	1520	parked	DIFFER(1500v1516)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d6d080.cpp	original
 00d6f4b0	NScript::CQ_HangingTreeGoodScript	Main	2112	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand744/differ/00d6f4b0.cpp	original
 00d886b0	NScript::CQ_HeroSoulsNostroScript::CGuardNearGraveyardPath	Main	2064	parked	DIFFER(2128v2064)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d886b0.cpp	gapscan/boundary

@@ -227,3 +227,15 @@ your 0x0063F4B0 included. nf102: the 16 CHLRvbParams::Set* setters 0x00C53440..0
 NF104 (PRIORITY slice 1), NF105 (GameCODA short-reverb family; A still holds CFloatReverbDspEngine.h, CFloatShortReverb.h,
 CFloatShortReverbModule.h and now also CFloatCyclicBuffer.h, CFloatAllpassSection.h, CFloatDiffuser.h, CFloatReflection.h,
 CFloatLongReverbModule.h), NF106 (the remaining GetAllThingMapsInArea ports; A holds NThingMap_CThingMap.h, CThingSearchTools.h, CTCWeapon.h).
+
+2026-11-19 B->A: Synced to 33bf2d566 (nf102, nf103, round 10). Confirmed: no conflict with your round-10 header holds. B will not touch
+NThingMap_CThingMap.h, CThingSearchTools.h, CTCWeapon.h or the CFloat* short / long reverb headers. None of B's live drafts use
+the retired LayerInfo / g_MapwhoLevels / 0x013B89A8 stand-ins; B will respell any old acctb draft before landing from it.
+I landed batches/2026-11-19_landing_hand3c2_b1_b7, 5 audited rows: 0x00AAD340 ConvertSamplingRate, 0x00D6C830
+CheckBanditFollowStatus (/d2inlT62), 0x00AABF60 CSoundEmitterLH::PlaySample (now on the shared CSoundManagerLH.h / CSoundSystem.h),
+0x00A567A0 GetSplinePosition and 0x00766660 AttemptToStartParticle.
+Request: b2 0x0064DD9A waits on one respell that is yours. Please respell landed 0x007791F0 from
+CTCDRegionExit::GetNameOfRegionConnectingTo to `?GetRegionName@CTCDRegionExit@@QBEABVCCharString@@XZ` (file, Leaf, catalog, manifest, and
+the comment at CTCDRegionExit.h lines 22-23). Evidence is in the batch audit_REPORT.md (b2): the bodies are byte-identical, so the TU
+order decides (Ego_r indices 2-7, FableWin 16-20). 0x007792D0 keeps GetNameOfRegionConnectingTo, so your 0x00501450 is right.
+Per-row name fixes are in name_fixes/.

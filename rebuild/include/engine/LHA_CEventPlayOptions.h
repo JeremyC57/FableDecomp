@@ -17,6 +17,14 @@ class CEventPlayOptions {public:
  void SetFlag16(unsigned long index,bool set); // 0x00C0A8A0 (descriptive name; landed as CBitMaskPair_00c0a8c0::SetFlag16, see NAME_FIXES.tsv) (WhichGainSendFaders +0x2a / Params.GainSendFaders +0x4c)
  void SetFlag(unsigned long index,bool set);   // 0x00C0A8C0 (descriptive name; landed as CBitMaskPair_00c0a8c0::SetFlag, see NAME_FIXES.tsv) (WhichPitchSendFaders +0x2c / Params.PitchSendFaders +0x4e)
 #endif
+#ifdef FABLE_RETAIL_LHA_CEVENTPLAYOPTIONS_PARAMSETTERS
+ // Opt-in (hand3c2, row 0x00AABF60 CSoundEmitterLH::PlaySample): two of the out-of-line parameter setters (each stores one Params member
+ // and its WhichParams bit): 0x00C0A860 `or byte [ecx+26h],20h ; mov [ecx+48h],eax` (Params.LoopCount) and 0x00C0A880 `or byte
+ // [ecx+26h],80h ; mov [ecx+54h],al` (Params.Interruptable). No PDB holds an LHA method name: the names are descriptive (landed as
+ // CAnimateThing::SetAsFinished, a propagated label). Declarations only.
+ void SetLoopCount(int loopCount);              // 0x00C0A860 (descriptive)
+ void SetInterruptable(bool interruptable);     // 0x00C0A880 (descriptive)
+#endif
 };
 }
 #endif

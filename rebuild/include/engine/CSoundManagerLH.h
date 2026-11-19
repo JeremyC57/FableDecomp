@@ -12,11 +12,20 @@
 #include "rebuild_abi.h"
 #include "engine/CASoundManager.h"
 #include "libpk/CSoundSystem.h"
+#ifdef FABLE_RETAIL_CSOUNDMANAGERLH_HEADPOSITION
+#include "engine/C3DVector.h"
+#endif
 class CSoundManagerLH : public CASoundManager {
 public:
     virtual void StopMusic(unsigned long fadeOutMS);                                      // slot 18 0x00A3E520
     virtual void SetMonitorAllowedPostStopTailDurationMS(unsigned long duration);         // slot 35 0x00A3E830
     CSoundSystem* SoundSystem;                                           // +0x40 (descriptive)
+#ifdef FABLE_RETAIL_CSOUNDMANAGERLH_HEADPOSITION
+    // Nested opt-in (audit of hand3c2 row 0x00AABF60 CSoundEmitterLH::PlaySample): the listener (head) position the head-relative emitters
+    // play at (0x00AAC072 `mov ecx,[eax+74h]`, then +4 / +8); +0x44..+0x73 not modelled. Descriptive name.
+    unsigned char UnmodelledMembers44[0x74 - 0x44];                      // +0x44
+    C3DVector     HeadPosition;                                          // +0x74 (descriptive)
+#endif
 };
-FABLE_STATIC_ASSERT(offsetof(CSoundManagerLH, SoundSystem) == 0x40);
+FABLE_STATIC_ASSERT_AT(21, offsetof(CSoundManagerLH, SoundSystem) == 0x40);
 #endif

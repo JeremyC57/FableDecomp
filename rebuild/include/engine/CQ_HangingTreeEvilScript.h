@@ -30,6 +30,10 @@ public:
     void BanditYells();                                                  // 0x00D69CD0
     void CleanUp();                                                      // 0x00D6B720
     void DoMission();                                                    // 0x00D6BFA0
+#ifdef FABLE_RETAIL_CQ_HANGINGTREEEVIL_CHECKBANDITFOLLOWSTATUS
+    // Row 0x00D6C830 (hand3c2; Ego_r.pdb + FableWin.pdb ?CheckBanditFollowStatus@CQ_HangingTreeEvilScript@NScript@@QAEXXZ). Declaration only.
+    void CheckBanditFollowStatus();                                      // 0x00D6C830
+#endif
 #ifdef FABLE_RETAIL_CQ_HANGINGTREEEVIL_CONCLUSION
     // Row 0x00D6D670 (Ego_r.pdb + FableWin.pdb ?Conclusion@CQ_HangingTreeEvilScript@NScript@@QAEXXZ).
     void Conclusion();                                                   // 0x00D6D670
@@ -91,6 +95,6 @@ public:
     class CGUARD2 : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeEvilScript&,CScriptDataBase*,const CScriptThing&); };   // Alloc 0x00D6A290
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HangingTreeEvilScript)==0xd0);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter)==0x20);
+FABLE_STATIC_ASSERT_AT(94, sizeof(NScript::CQ_HangingTreeEvilScript)==0xd0);
+FABLE_STATIC_ASSERT_AT(95, sizeof(NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter)==0x20);
 #endif

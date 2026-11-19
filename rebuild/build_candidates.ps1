@@ -401076,6 +401076,42 @@ $catalog = @(
         TestSource = '00/77/CTCShop_BuyItem_00774d20_test.cpp'
         PassPattern = '00774d20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00aad340'
+        Module = 'CWaveFile'
+        Source = '00/aa/CWaveFile_ConvertSamplingRate_00aad340.cpp'
+        TestSource = '00/aa/CWaveFile_ConvertSamplingRate_00aad340_test.cpp'
+        PassPattern = '00aad340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6c830'
+        Module = 'NScript::CQ_HangingTreeEvilScript'
+        Source = '00/d6/NScriptCQHangingTreeEvilScript_CheckBanditFollowStatus_00d6c830.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScript_CheckBanditFollowStatus_00d6c830_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT62'
+        PassPattern = '00d6c830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aabf60'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_PlaySample_00aabf60.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_PlaySample_00aabf60_test.cpp'
+        PassPattern = '00aabf60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a567a0'
+        Module = 'CCardinalSpline'
+        Source = '00/a5/CCardinalSpline_GetSplinePosition_00a567a0.cpp'
+        TestSource = '00/a5/CCardinalSpline_GetSplinePosition_00a567a0_test.cpp'
+        PassPattern = '00a567a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00766660'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_AttemptToStartParticle_00766660.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_AttemptToStartParticle_00766660_test.cpp'
+        PassPattern = '00766660_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

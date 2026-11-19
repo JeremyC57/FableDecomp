@@ -17,7 +17,7 @@ address	grade	bytes	test	grades_used	notes
 006c06d0	RELOCATION_MATCH	312	PASS(vland)	5	shared headers + C3DVector NORMALISE_SQUARED_ZXY; hdr opt-in FABLE_RETAIL_CTCBUYABLEHOUSE_GETRENTMONEYPOS [LANDED 039a0c8c02]
 006cc800	RELOCATION_MATCH	399	PASS(vland; g++ PASS)	3 (hand3c)	hand3c: FableWin 0x02479E80 shape on shared headers, GFFloatToLongCeil, signed (__int64) uid stagger (Inferred), CTCCREATURENAVIGATION_FRAMEUPDATE + CTHINGCREATUREBASE_GETCURRENTSPEED opt-ins [b11]
 006e5a00	OPEN	1772	-	1	baseline draft DIFFER(163v1772) hunks=9 difflines=647
-00766660	OPEN	696	-	1	baseline draft DIFFER(700v696) hunks=39 difflines=100
+00766660	LANDED	696	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft DIFFER(700v696) hunks=39 difflines=100
 007727e0	RELOCATION_MATCH	433	PASS(vland strict)	26	hand3c: FableWin 0x0261FE90 shape; STLP_TREE_CONSTFIND_NOINLINE (find body seen, out of line) + GETDEF_GLOBAL_BODY + GETSUBDEF_BODY; no header change
 0077a430	OPEN	1115	-	1	baseline draft DIFFER(1054v1115) hunks=55 difflines=389
 0077d5b0	OPEN	1491	-	1	baseline draft DIFFER(192v1491) hunks=13 difflines=462
@@ -49,7 +49,7 @@ address	grade	bytes	test	grades_used	notes
 00a4d770	OPEN	420	-	42	DIFFER(420v420) one lea operand order at 0x00A4D8F1; see NOTES | best src/00a4d770.cpp; next: bracket on dest index, for-scope if(0) idiom
 00a52760	OPEN	1004	-	1	baseline draft DIFFER(968v1004) hunks=68 difflines=332
 00a53860	OPEN	1005	-	1	baseline draft DIFFER(966v1005) hunks=64 difflines=282
-00a567a0	OPEN	766	-	1	baseline draft '?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z' hunks=47 difflines=341
+00a567a0	LANDED	766	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft '?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z' hunks=47 difflines=341
 00a5b650	RELOCATION_MATCH	184	PASS(vland)	2	shared headers (CCachedFile COPY opt-in, CCountedPointer Reset/ReleaseData, STLport back_inserter + out-of-line random-access __copy opt-ins)
 00a62ae0	RELOCATION_MATCH	130	PASS	30	Ego_d locals, decl order P,B,M,V,K; CPackedUIntArray CALCULATEBIAS opt-in [LANDED 039a0c8c02]
 00a770b0	RELOCATION_MATCH	533	PASS(vland strict)	4	hand3c: FableWin 0x03293760 shape (C2DBoxF(MapPos, C2DExtentsF) + inline ContainsPoint, function-static ONE_OVER_MAX_NODE_SIZE, GetBlockedNode, Position.Initialise, half size 0.5f); new opt-in CNAVQUADTREE_GETBLOCKEDNODE
@@ -58,8 +58,8 @@ address	grade	bytes	test	grades_used	notes
 00a79680	OPEN	678	-	1	baseline draft DIFFER(593v678) hunks=37 difflines=283
 00a9d480	RELOCATION_MATCH	243	PASS(vland; g++ portable PASS)	8 (hand3c)	hand3c: FableWin operator()(r,c) via CMatrix4x4& m (ELEMENT_ACCESS opt-in) fixes x87 operand order; Ego_d vect/dest/right, dest before right [LANDED e71b9a61b5]
 00a9d750	RELOCATION_MATCH	551	PASS(vland; g++ portable PASS)	~45 (hand3c)	hand3c: for-scope `if (false) {} else for` (FableWin xor/je) + shared AlignedPreScale bodies opt-in (hdr overlay) [LANDED b8a046277f]
-00aabf60	OPEN	620	-	1	baseline draft DIFFER(625v620) hunks=50 difflines=224
-00aad340	OPEN	584	-	1	baseline draft DIFFER(606v584) hunks=39 difflines=213
+00aabf60	LANDED	620	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft DIFFER(625v620) hunks=50 difflines=224
+00aad340	LANDED	584	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft DIFFER(606v584) hunks=39 difflines=213
 00ac7eb0	LANDED	215	-	66	landed by Account B (batches/2026-11-19_landing_hand3c_b25_b26); 2 lines n*n*w operand order; FableWin shows cost=0 + GFSqr(t)*W + GFSqr(n)*W (GFWorldDistance GFSqr) -- 6 more spellings + 15 include orders: no change | best differ/00ac7eb0.cpp; next: bracket, for-scope idiom
 00adf960	OPEN	766	-	1	baseline draft DIFFER(764v766) hunks=13 difflines=26
 00ae1320	OPEN	681	-	1	baseline draft DIFFER(681v681) hunks=12 difflines=70
@@ -92,7 +92,7 @@ address	grade	bytes	test	grades_used	notes
 00c40590	RELOCATION_MATCH	192	PASS(vland strict)	87	hand3c b23 READY: CCodaListener::Commit, byte-identical to GameCODA 2.10 CODAApi.lib CodaListener.obj; authored on shared CCodaListener.h + new opt-in CCODAVECTOR_ORTHOGONALRIGHT (SDK Toolkit CCtkVector bodies). 80 earlier grades on a made-up model never closed the x87 operand order; the SDK spelling closed it in 1. NAME_FIXES x4
 00c41fb0	LANDED	1570	-	1	landed by Account B (batches/2026-11-19_landing_p989_b3_coda_buyitem); baseline draft DIFFER(1553v1570) hunks=74 difflines=372
 00c6ac90	RELOCATION_MATCH	38	PASS(vland)	1 (hand3c)	hand3c: same-TU static kernel (landed 0x00C6AAE0 text) -> VC7.1 private ecx convention; not LTCG [LANDED e71b9a61b5]
-00d6c830	OPEN	607	-	1	baseline draft DIFFER(607v607) hunks=15 difflines=78
+00d6c830	LANDED	607	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft DIFFER(607v607) hunks=15 difflines=78
 00d8a240	LANDED	610	-	29	landed by Account B (batches/2026-11-19_landing_hand3c_b27); hand3c: shared-header rewrite (CQ_HEROSOLDHOUSESCRIPT_WATCHFORBOOTY opt-in, asserts pinned); FableWin form 662v610; site-map residue: retail expands ~CScriptThing at the loop-top and !loaded returns and calls 0x004AA840 at the inner-wait/after-wait/dig returns; every form tried expands the inner-wait return (loop depth wins) -- see NOTES | best src/00d8a240.cpp (variants keep/variants_00d8a240); next: inner wait as own scope/helper
 00f36010	RELOCATION_MATCH	442	PASS(vland; g++ portable twin PASS)	70	IS Get2DNoise (name fix); CPerlinNoise overlay helpers + GFFloatToLongFloor; C2DVector::Dot [LANDED 039a0c8c02]
 00f361d0	RELOCATION_MATCH	873	PASS(vland)	330	outer-bracketed SCurve/Interp in CPerlinNoise.h (c2 region tuple counts, DAG-measured); siblings re-graded MATCH [LANDED; header applied in repo]

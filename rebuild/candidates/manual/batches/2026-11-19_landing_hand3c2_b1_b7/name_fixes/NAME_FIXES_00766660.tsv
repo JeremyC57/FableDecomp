@@ -1,0 +1,2 @@
+address	old_name	new_name	evidence
+0x0129BA3C	?g_NormaliseEpsilon@@3MB (a labels table, chunk Q7 landing)	?DELTA_NOTIONAL_ZERO@@3MB	Ego_d carved names hold ?DELTA_NOTIONAL_ZERO@@3MB and the asserts "mag>DELTA_NOTIONAL_ZERO" / "dist_to_move>DELTA_NOTIONAL_ZERO"; engine/C2DVector.h and acctC wfB5 labels already bind it; the row floors the spline-length difference with it (0x007668B6; vland RELOC_NAME)

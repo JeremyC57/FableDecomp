@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00aad340   RELOCATION_MATCH PASS   ConvertSamplingRate
+00d6c830   RELOCATION_MATCH PASS   CheckBanditFollowStatus
+00aabf60   RELOCATION_MATCH PASS   PlaySample
+00a567a0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00a567a0   RELOCATION_MATCH PASS   GetSplinePosition
+00766660   RELOCATION_MATCH PASS   AttemptToStartParticle
+
+WINS: 5
+  00aad340 RELOCATION_MATCH CWaveFile::?ConvertSamplingRate@CWaveFile@@QAEXK@Z
+  00d6c830 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::?CheckBanditFollowStatus@CQ_HangingTreeEvilScript@NScript@@QAEXXZ
+  00aabf60 RELOCATION_MATCH CSoundEmitterLH::?PlaySample@CSoundEmitterLH@@UAEKAAVCASoundBank@@J_NABVCSoundInit@@1@Z
+  00a567a0 RELOCATION_MATCH CCardinalSpline::?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z
+  00766660 RELOCATION_MATCH CTCObjectAugmentations::?AttemptToStartParticle@CTCObjectAugmentations@@AAEXAAV?$CIntelligentPointer@VCThing@@@@JJABVCCharString@@1@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CWaveFile_ConvertSamplingRate_00aad340
+  NScriptCQHangingTreeEvilScript_CheckBanditFollowStatus_00d6c830
+  CSoundEmitterLH_PlaySample_00aabf60
+  CCardinalSpline_GetSplinePosition_00a567a0
+  CTCObjectAugmentations_AttemptToStartParticle_00766660

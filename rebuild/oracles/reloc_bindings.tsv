@@ -40181,3 +40181,7 @@ _sc_fDefaultLongReverbInputDelay	012bf138	00c78150
 ?Create@CFloatReverbEngine@@QAE_NPAVCReverbConstants@@@Z	00c6b050	00c54510
 ?g_defaultSourceProperties_012b89f8@@3USSourceProperties@@B	012b89f8	00c54510
 ?g_zeroVector_012b89e8@@3U_RVB_VECTOR@@B	012b89e8	00c54510
+??0CActiveSound@CSoundEmitterLH@@QAE@JAAVCASoundBank@@JM_N1@Z	00aab850	00aabf60
+?SetInterruptable@CEventPlayOptions@LHA@@QAEX_N@Z	00c0a880	00aabf60
+?SetLoopCount@CEventPlayOptions@LHA@@QAEXH@Z	00c0a860	00aabf60
+?GFGetHermiteSplinePosition@@YIXAAVC3DVector@@ABV1@111M@Z	00a56670	00a567a0

@@ -12,10 +12,25 @@ public:
     virtual void v01();                                                  // slot 1 (+0x04) play a music file (0x00A3E4B0)
     virtual void Stop(unsigned long fadeOutMS);                          // slot 2 (+0x08)
 };
+#ifdef FABLE_RETAIL_LIBPK_CSOUNDEVENTMANAGER_PLAYSLOTS
+// Nested opt-in (audit of hand3c2 row 0x00AABF60 CSoundEmitterLH::PlaySample): the event manager's play entries, slot 14 (+0x38) bank sample
+// (0x00AAC14F `call [edx+38h]`) and slot 16 (+0x40) sample query (0x00AAC112 `call [ebx+40h]`), spelled as the landed CSoundEmitterLH rows
+// spell them (descriptive). The engine bank and the sample query stay the callers' classes.
+class CEngineBankLH;
+class CSampleQueryLH;
+namespace LHA { class CEventPlayOptions; }
+#endif
 class CSoundEventManager {
 public:
     virtual void v00();
     virtual void SetMonitorAllowedPostStopTailDurationMS(unsigned long duration);   // slot 1 (+0x04)
+#ifdef FABLE_RETAIL_LIBPK_CSOUNDEVENTMANAGER_PLAYSLOTS
+    virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
+    virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
+    virtual long PlayBankSample(CEngineBankLH* bank, long group, long index, const LHA::CEventPlayOptions& options);   // slot 14 (+0x38)
+    virtual void v15();
+    virtual long PlayEvent(const CSampleQueryLH& query, const LHA::CEventPlayOptions& options);                         // slot 16 (+0x40)
+#endif
 };
 class CSoundSystem {
 public:
