@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0053848f   WARN RELOC_NAME: ??0?$_List_base@V?$CCountedPointer@VCAction@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCAction@NUISystem@@@@@std@@@std@@QAE@ABV?$allocator@V?$CCountedPointer@VCAction@NUISystem@@@@@1@@Z -> 00535140 labelled 'std::list<T_0x8_00535140>::list'
+0053848f   RELOCATION_MATCH PASS   AddActionOnInactive
+005384dd   WARN RELOC_NAME: ??0?$_List_base@V?$CCountedPointer@VCAction@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCAction@NUISystem@@@@@std@@@std@@QAE@ABV?$allocator@V?$CCountedPointer@VCAction@NUISystem@@@@@1@@Z -> 00535140 labelled 'std::list<T_0x8_00535140>::list'
+005384dd   WARN STANDIN_LEAF ?AddActionOnSelected@CList@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z (catalog CList::AddActionOnInactive; names another function)
+005384dd   RELOCATION_MATCH PASS   AddActionOnSelected
+
+WINS: 2
+  0053848f RELOCATION_MATCH NUISystem::CList::?AddActionOnInactive@CList@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  005384dd RELOCATION_MATCH NUISystem::CList::?AddActionOnSelected@CList@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NUISystemCList_AddActionOnInactive_0053848f
+  NUISystemCList_AddActionOnSelected_005384dd

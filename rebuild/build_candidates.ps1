@@ -400904,6 +400904,20 @@ $catalog = @(
         TestSource = '00/5d/CAnimationSet_GetAnim_005dc340_test.cpp'
         PassPattern = '005dc340_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0053848f'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_AddActionOnInactive_0053848f.cpp'
+        TestSource = '00/53/NUISystemCList_AddActionOnInactive_0053848f_test.cpp'
+        PassPattern = '0053848f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005384dd'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_AddActionOnSelected_005384dd.cpp'
+        TestSource = '00/53/NUISystemCList_AddActionOnSelected_005384dd_test.cpp'
+        PassPattern = '005384dd_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

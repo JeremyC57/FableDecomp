@@ -48,8 +48,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00524ec0	NThingManager::CEntityRuntimePersistence	LoadFromGameStateBinary	1008	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00524ec0.cpp	original
 00531090	CComponent	GetBoundingBox	1232	parked	DIFFER(1216v1227)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00531090.cpp	original
 00533d30	CComponent	GetSize	1792	parked	DIFFER(1764v1750)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00533d30.cpp	original
-0053848f	CList	AddActionOnInactive	78	reserved (hand4f, in-house)	DIFFER(67v78)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/differ/0053848f.cpp	original
-005384dd	CList	AddActionOnInactive	78	reserved (hand4f, in-house)	DIFFER(67v78)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/differ/005384dd.cpp	original
 0053b91e	CList	Initialise	1422	parked	DIFFER(1416v1422)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/0053b91e.cpp	original
 0053e9a0	NUISystem::CScrollingViewport	NUISystem::CScrollingViewport::vfunc_1	592	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand471/differ/0053e9a0.cpp	gapscan/boundary
 00541a00	CIconText	FitInWindow	1120	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00541a00.cpp	original
