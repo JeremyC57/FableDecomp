@@ -11,14 +11,14 @@
 // length +0x20 and two cursor words +0x24/+0x28 that the inline constructor zeroes; CGameEvent::GetData(CMemoryBuffer&)
 // 0x009F17A0 (label "CEventPacket::CopyToBuffer") fills it and CMemoryBuffer::Read(unsigned long, void*) 0x009F18F0
 // (label "CircularBuffer_Read") consumes it.
-struct CMemoryBuffer {
-    unsigned char Data[0x20];                      // +0x00
-    long          Length;                          // +0x20
-    long          ReadPos;                         // +0x24
-    long          WritePos;                        // +0x28
-    CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
-    void Read(unsigned long length, void* data);   // 0x009F18F0
-};
+// NF95 2026-11-19 (q11320): the unpacking buffer is Ego_r.pdb CGameEventDataPackage (engine/CGameEventDataPackage.h layout, 0x2C bytes)
+//   read through ?GetData@CGameEventDataPackage@@QAEXJPAX@Z 0x009F18F0 (Ego_r.pdb 0x00B454F0 / FableWin.pdb 0x030A2200) and filled by
+//   ?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z 0x009F17A0 (Ego_r.pdb 0x00B453F0); were the stand-ins
+//   CMemoryBuffer::Read(unsigned long, void*) and CGameEvent::GetData(CMemoryBuffer&).
+// NF97 2026-11-19 (port): the read buffer is the shared engine/CGameEventDataPackage.h class (FABLE_RETAIL_CGAMEEVENTDATAPACKAGE:
+//   inline ctor zeroing Length / StartPos / EndPos, GetData 0x009F18F0), no longer a local model.
+#define FABLE_RETAIL_CGAMEEVENTDATAPACKAGE
+#include "engine/CGameEventDataPackage.h"
 class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
@@ -26,7 +26,7 @@ class CGameEvent { public:
     unsigned char EndPos;                          // +0x25
     bool          Valid;                           // +0x26
     bool          Replacement;                     // +0x27
-    long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
+    void GetDataPackage(CGameEventDataPackage* package) const;     // 0x009F17A0
 };
 
 class CMainGameComponent { public: void SetExclusiveMode(bool exclusive); };   // 0x004163B7
@@ -40,9 +40,9 @@ class CWorld { public:
 
 void CWorld::LEASetExclusiveMode(const CGameEvent* event)
 {
-    CMemoryBuffer buffer;
-    event->GetData(buffer);
+    CGameEventDataPackage buffer;
+    event->GetDataPackage(&buffer);
     unsigned char exclusive;
-    buffer.Read(1, &exclusive);
+    buffer.GetData(1, &exclusive);
     Component->SetExclusiveMode(exclusive != 0);
 }

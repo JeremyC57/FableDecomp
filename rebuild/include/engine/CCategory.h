@@ -135,6 +135,14 @@ private:
  long GetNextOccupiedSlot(long index) const;                                                   // 0x005BCF61
 public:
 #endif
+#ifdef FABLE_RETAIL_CCATEGORY_GETPREVIOUSOCCUPIEDSLOT
+ // NF96 opt-in (q11446, rows 0x005BCFE2 / 0x005BD0F7): Ego_r.pdb (0x0061FF10) + FableWin.pdb (0x02361C5F)
+ // ?GetPreviousOccupiedSlot@CCategory@NInventory@@ABEJJ@Z (private const), out of line at 0x005BCFE2, the twin of GetNextOccupiedSlot.
+ // Declaration only: no layout change.
+private:
+ long GetPreviousOccupiedSlot(long index) const;                                               // 0x005BCFE2
+public:
+#endif
 #ifdef FABLE_RETAIL_CCATEGORY_SETSELECTEDITEMINDEX
  // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF060 CCategory::AddItem): Ego_r.pdb (0x0061F2FF) + FableWin.pdb
  // ?SetSelectedItemIndex@CCategory@NInventory@@QAEXJ@Z (public), out of line at 0x005BC479. Declaration only: no layout change.

@@ -12,15 +12,15 @@
 // interface map +0x44, Dead +0x91 bit 0.
 // Shape: retail does not check HasTC before calling the component: the inline PeekTC returns an unset local when the
 // thing lacks the component (VC reads the dead UID frame word on that path); the lookup key uses the dead `event` slot.
+// NF95 2026-11-19 (q11320): the unpacking buffer is Ego_r.pdb CGameEventDataPackage (engine/CGameEventDataPackage.h layout, 0x2C bytes)
+//   read through ?GetData@CGameEventDataPackage@@QAEXJPAX@Z 0x009F18F0 (Ego_r.pdb 0x00B454F0 / FableWin.pdb 0x030A2200) and filled by
+//   ?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z 0x009F17A0 (Ego_r.pdb 0x00B453F0); were the stand-ins
+//   CMemoryBuffer::Read(unsigned long, void*) and CGameEvent::GetData(CMemoryBuffer&).
+// NF97 2026-11-19 (port): the read buffer is the shared engine/CGameEventDataPackage.h class (FABLE_RETAIL_CGAMEEVENTDATAPACKAGE:
+//   inline ctor zeroing Length / StartPos / EndPos, GetData 0x009F18F0), no longer a local model.
+#define FABLE_RETAIL_CGAMEEVENTDATAPACKAGE
 #include "fable_compiler.h"
-struct CMemoryBuffer {
-    unsigned char Data[0x20];                      // +0x00
-    long          Length;                          // +0x20
-    long          ReadPos;                         // +0x24
-    long          WritePos;                        // +0x28
-    CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
-    void Read(unsigned long length, void* data);   // 0x009F18F0
-};
+#include "engine/CGameEventDataPackage.h"
 class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
@@ -28,7 +28,7 @@ class CGameEvent { public:
     unsigned char EndPos;                          // +0x25
     bool          Valid;                           // +0x26
     bool          Replacement;                     // +0x27
-    long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
+    void GetDataPackage(CGameEventDataPackage* package) const;     // 0x009F17A0
 };
 
 class CTCBase;
@@ -91,10 +91,10 @@ void CWorld::EACloseHeroCentreDoor(const CGameEvent* event)
     CThing* hero = GetPlayer(event->Player)->GetPControlledCreature();
     if (hero && !hero->Dead)
     {
-        CMemoryBuffer buffer;
-        event->GetData(buffer);
+        CGameEventDataPackage buffer;
+        event->GetDataPackage(&buffer);
         __int64 uid;
-        buffer.Read(8, &uid);
+        buffer.GetData(8, &uid);
         CThing* door = GetThingManager()->GetPThingWithUID(uid);
         if (door)
             door->PeekTC<CTCHeroCentre>(0x6A)->OnHeroCloseDoor();

@@ -8,28 +8,30 @@
 //   (interface 0xA7) and 0x0040F020 (interface 0x11 = CTCInventory) -- distinct retail copies, CGameEvent::GetData
 //   0x009F17A0, CMemoryBuffer::Read 0x009F18F0, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0
 //   ("OBJECT_GUILD_SEAL_1" 0x01251B4C), CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410,
-//   CGamePlayerInterface::GetNumContextSensitiveSlots 0x00445960 (x2), CTCInventory::OnItemSelected (vtable slot 33,
+//   CGamePlayerInterface::GetNumberOfContextSensitiveItemButtons 0x00445960 (x2), CTCInventory::OnItemSelected (vtable slot 33,
 //   +0x84), UseContextSensitiveItem 0x00583A92, UseQuickAccessItem 0x005840A6, the current action's slot 39 (+0x9C),
 //   __security_check_cookie 0x00BFE9F9.
 // Layout: local models at retail offsets, as the landed siblings EAUseQuickAccessItemInCutscene 0x0062AD90 and
 //   EAChargeQuickAccessItem 0x00629B10 (engine/ headers carry the PDB's 16-byte containers): CThing interface bitset
 //   +0x20, interface map +0x44, Dead +0x91 bit 0, CThingCreatureBase PCurrentAction +0x100 (PDB +0x11C); CPlayer
 //   PlayerInterface +0xC; CWorld DefinitionManager +0x10.
+// NF95 2026-11-19 (q11320): the unpacking buffer is Ego_r.pdb CGameEventDataPackage (engine/CGameEventDataPackage.h layout, 0x2C bytes)
+//   read through ?GetData@CGameEventDataPackage@@QAEXJPAX@Z 0x009F18F0 (Ego_r.pdb 0x00B454F0 / FableWin.pdb 0x030A2200) and filled by
+//   ?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z 0x009F17A0 (Ego_r.pdb 0x00B453F0); were the stand-ins
+//   CMemoryBuffer::Read(unsigned long, void*) and CGameEvent::GetData(CMemoryBuffer&).
+// NF97 2026-11-19 (port): the read buffer is the shared engine/CGameEventDataPackage.h class (FABLE_RETAIL_CGAMEEVENTDATAPACKAGE:
+//   inline ctor zeroing Length / StartPos / EndPos, GetData 0x009F18F0), no longer a local model.
+//   The local made-up reader helper is replaced by the FableWin.pdb typed reader (opt-in FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_TYPED_READERS:
+//   GetUBYTE / GetUWORD / GetFloat / GetSLONG, expanded in place); a direct GetData read into the local differs.
+#define FABLE_RETAIL_CGAMEEVENTDATAPACKAGE
+#define FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_TYPED_READERS
 #include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CMemoryBuffer {
-    unsigned char Data[0x20];                      // +0x00
-    long          Length;                          // +0x20
-    long          ReadPos;                         // +0x24
-    long          WritePos;                        // +0x28
-    CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
-    void Read(unsigned long length, void* data);   // 0x009F18F0
-    FABLE_FORCEINLINE long ReadLong() { long value; Read(4, &value); return value; }
-};
+#include "engine/CGameEventDataPackage.h"
 class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
@@ -37,7 +39,7 @@ class CGameEvent { public:
     unsigned char EndPos;                          // +0x25
     bool          Valid;                           // +0x26
     bool          Replacement;                     // +0x27
-    long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
+    void GetDataPackage(CGameEventDataPackage* package) const;     // 0x009F17A0
 };
 
 class CTCBase;
@@ -139,7 +141,7 @@ class CThingCreatureBase { public:
 class CThingPlayerCreature : public CThingCreatureBase { };
 
 class CGamePlayerInterface { public:
-    unsigned long GetNumContextSensitiveSlots() const;   // 0x00445960
+    long GetNumberOfContextSensitiveItemButtons() const;   // 0x00445960 (NF95 q11465: Ego_r.pdb 0x004431A0 + FableWin.pdb 0x01A9BAB0)
 };
 enum EPlayerMode { PLAYER_MODE_0x2F = 0x2f };
 class CPlayer { public:
@@ -181,14 +183,14 @@ void CWorld::EAUseQuickAccessItem(const CGameEvent* event)
         return;
     if (hero->PCurrentAction && hero->PCurrentAction->BlocksQuickAccess())
         return;
-    CMemoryBuffer buffer;
-    event->GetData(buffer);
+    CGameEventDataPackage buffer;
+    event->GetDataPackage(&buffer);
     if (!hero->HasTC(0x11))
         return;
     CTCInventory* inventory = hero->GetTC<CTCInventory>(0x11);
     if (!inventory)
         return;
-    long slot = buffer.ReadLong();
+    long slot = buffer.GetSLONG();
     if (slot == -2) {
         long defIndex = DefinitionManager->GetDefGlobalIndexFromName("OBJECT_GUILD_SEAL_1");
         bool handled;
@@ -196,9 +198,9 @@ void CWorld::EAUseQuickAccessItem(const CGameEvent* event)
         return;
     }
     if (slot > -1) {
-        if (slot < (long)player->PlayerInterface->GetNumContextSensitiveSlots())
+        if (slot < player->PlayerInterface->GetNumberOfContextSensitiveItemButtons())
             inventory->UseContextSensitiveItem(slot);
         else
-            inventory->UseQuickAccessItem(slot - player->PlayerInterface->GetNumContextSensitiveSlots());
+            inventory->UseQuickAccessItem(slot - player->PlayerInterface->GetNumberOfContextSensitiveItemButtons());
     }
 }

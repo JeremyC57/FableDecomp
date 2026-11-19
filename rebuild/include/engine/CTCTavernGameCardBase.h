@@ -28,6 +28,11 @@
 class CThingObject;
 class CTavernGameCardBaseDef;
 enum ECardGameType;                                                      // MS forward enum (Ego_r.pdb member type; values not needed here)
+#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBASE_ECARDGAMETYPE_VALUES
+// NF96 opt-in (q11339, rows 0x007D6150 / 0x007D70E0 CTCTavernGameCardPairs::EndRound / NewRound): the enumerators, as engine/card_sorting_types.h
+// spells them (Ego_r.pdb CTCTavernGameCardBase::ECardGameType); the rows store / switch on ECGT_ROUND_LIMIT (1). No layout change.
+enum ECardGameType { ECGT_TIME_LIMIT=0, ECGT_ROUND_LIMIT=1 };
+#endif
 class CTCTavernGameCardBase : public CTCTavernGame {
 public:
 #ifdef FABLE_RETAIL_BLACKJACK_DEAL_PASS23
@@ -36,10 +41,20 @@ public:
     CTCTavernGameCardBase(CThing&);
 #endif
     virtual void ProcessInput(const CInputEvent&, CProcessedInput&, CInputProcessTavernGame*);   // 28 0x008F12D0
+#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBASE_ENTERGAME
+    // NF96 opt-in (q11339, row 0x007D60C0 CTCTavernGameCardPairs::EnterGame): Ego_r.pdb 0x00916F90 / FableWin.pdb 0x02AF0300
+    // ?EnterGame@CTCTavernGameCardBase@@UAEXXZ (0x008F1E30), the override of CTCTavernGame slot 29 (no new slot, no layout change).
+    virtual void EnterGame();                                            // 29 0x008F1E30
+#endif
 #ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBASE_NEWROUND
     // Retail opt-in (agentC40, row 0x007DB2E0 CTCTavernGameCardBlackjack::NewRound): Ego_r.pdb ?NewRound@CTCTavernGameCardBase@@UAEXXZ
     // (0x008F0960), the override of CTCTavernGame slot 32 (no new slot, no layout change). Declaration only.
     virtual void NewRound();                                             // 32 0x008F0960
+#endif
+#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBASE_ENDROUND
+    // NF96 opt-in (q11339, row 0x007D6150 CTCTavernGameCardPairs::EndRound): Ego_r.pdb 0x00917300 / FableWin.pdb 0x02AF0AD0
+    // ?EndRound@CTCTavernGameCardBase@@UAEXXZ (0x008F1720), the override of CTCTavernGame slot 33 (no new slot, no layout change).
+    virtual void EndRound();                                             // 33 0x008F1720
 #endif
     virtual void DealCards();                                            // 51 0x008F0BD0
     virtual void CardsMoving();                                          // 52 0x008F2280

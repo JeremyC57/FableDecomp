@@ -117,3 +117,13 @@ None of these is in the round-8 list. Please hold any naming work on those two l
 - 0x037BA020 CQ_HerosOldHouseScript::WatchForBooty: how many TRetVoid::Return calls? This settles a b27 review item.
 - 0x03227CA0 C3DAnimation2::CalcLocalTransformationsRelative, for the 0x00A4D770 residue.
 A reply here or in a small tsv under pending/ is enough. If you no longer have the executables, just say so.
+2026-11-19 A->B: Read your b11 landing and the CMatrix4x4 claim; we hold naming on 0x00BD2D90, 0x00A9E1E0, CMatrix4x4.h and
+CMatrix4x4AlignedSSE.h until you post that landing. Since your b11 landed, the CODA hold is released: our agent NF99 now does the GameCODA
+naming pass with your rule (SDK member names win), covering your caller respells (0x00C75CE0, 0x00C6A180, 0x00C74850, 0x00C783F0),
+CSalSwFilter and the CSalSwBuffer::Release set. Your landed 0x00C77800 / 0x00C88E60 stay as you landed them. New since your last sync:
+nf96a and nf97 landed (the CGameEventDataPackage family now sits on engine/CGameEventDataPackage.h), the header pass for q11441 / q11272,
+and an advisor rule on same-TU strong callee copies (docs/pipeline/GOTCHAS.md, nf96a line).
+
+2026-11-19 B->A: Synced (merged nf96a / nf97 / the header pass; COVERAGE regenerated). Thanks for the holds and the NF99 CODA pass; I will apply your nf96a same-TU strong-copy rule to my pending hand3c batches.
+
+One addition to my FableWin callee request above, for the same x87 class: 0x03036F80 CShaderRenderManager::UpdateLocalisedSphereMapping (row 0x00988E80). For SetVSConstants, the FableWin address is 0x03035660.

@@ -1,5 +1,5 @@
 // CTCTavernGameCardSorting::SelectCard() -- after the card-base selection, highlight every face-up card lower than the selected one (a sorting mistake: the round ends, a timed game is lost); with no mistake, a face-up highlighted card plays the "correct" sound
-// Leaf: ?SelectCard@CTCTavernGameCardSorting
+// Leaf: ?SelectCard@CTCTavernGameCardSorting@@UAE_NXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D5890, 366 bytes (plain `ret`); CTCTavernGameCardSorting vtable 0x0126F5B4
 // slot 59 (SelectCard, as CardPairs 0x007D5FB0, landed).
@@ -15,112 +15,65 @@
 // Shape: the appearance pointer is declared (unset) outside the loop, so VC keeps it in edi across iterations and the
 //        absent-interface arm reuses it (its home is the lookup key's frame word); the game-type test is a one-case
 //        `switch` (`dec eax ; jne`).
-class CTCBase;
+// Shared headers (NF96 q11339): engine/card_sorting_types.h (the Ego_r.pdb CTCTavernGameCardBase / CTCTavernGameCardSorting / CCard, recipe of
+//   the landed CardsMainGame 0x007D5070), CTavernGameCardBaseDef.h (HighlightWidth +0x50 and HighlightColourBad +0x58, the PDB names of the old
+//   model's HighlightTime / HighlightColour; overlay opt-in FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_HIGHLIGHT_COLOUR_BAD types the colour),
+//   NGraphicAppearance_CTCGraphicAppearance.h (SetAsHighlighted, FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT + _EFFECT_ENTRY_PASS23 for the enumerators; priority 3 =
+//   MESH_EFFECT_PRIORITY_TARGETING) and CThing.h GetTC (GETTC_EXPANDED, as before), with CDefPointer<const CTavernGameCardBaseDef>, so
+//   GetCardDef 0x008F0B20 binds its PDB spelling (was a local CCardDefPointer struct and local CRGBColour / CTCGraphicAppearance / CCard /
+//   vector / def / CTCTavernGameCardBase models).
 #define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCTAVERNGAME
+#define FABLE_RETAIL_CTCTAVERNGAME_GETDEF_OUTOFLINE
+#define FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
+#define FABLE_RETAIL_CTCTAVERNGAMECARDBASE_RHSET
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_HIGHLIGHT_COLOUR_BAD
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_EFFECT_ENTRY_PASS23
+#include "stlport/fable_containers.h"
+#include "fable_game.h"
+#include "engine/CThingObject.h"
+#include "engine/CRightHandedSet.h"
 #include "engine/CThing.h"
-
-class CRGBColour { public:
-    unsigned char B, G, R, A;
-};
-
-namespace NGraphicAppearance {
-enum EAppearanceMeshEffectPriority { APPEARANCE_MESH_EFFECT_PRIORITY_3 = 3 };
-class CTCGraphicAppearance { public:
-    void SetAsHighlighted(float a, float b, const CRGBColour& colour, bool c, bool d, EAppearanceMeshEffectPriority priority,
-                          void* owner);       // 0x004C04C0
-};
-}
-
 #include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CCard { public:
-    CThing*       Thing;                        // +0x00 CThingObject*
-    long          Name;                         // +0x04
-    long          Value;                        // +0x08
-    unsigned char _pad_0x0c[0x18];
-    bool          Turning;                      // +0x24
-    bool          FaceDown;                     // +0x25
-};
-struct CCardVector {                            // STLport vector<CCard*> (12 bytes)
-    CCard** _M_start;
-    CCard** _M_finish;
-    CCard** _M_end_of_storage;
-};
-
-struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
-    long GetRefCount() const { return m_count; }
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
-    unsigned char _pad_0x08[0x48];
-    float         HighlightTime;                // +0x50
-    unsigned char _pad_0x54[4];
-    CRGBColour    HighlightColour;              // +0x58
-    void ReleaseTemporary()
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
-struct CCardDefPointer {                        // CDefPointer<const CTavernGameCardBaseDef>
-    CTavernGameCardBaseDef* Object;
-    CCardDefPointer() : Object(0) {}
-    ~CCardDefPointer() { if (Object) Object->ReleaseTemporary(); }
-    CTavernGameCardBaseDef* operator->() const { return Object; }
-};
-
-struct CTCTavernGameCardBase {
-    virtual void v00();
-    unsigned char _pad_0x04[0x1d];
-    bool          GameWon;                      // +0x21
-    unsigned char _pad_0x22[6];
-    bool          GameFinished;                 // +0x28
-    unsigned char _pad_0x29[0xff];
-    CCardVector   Cards;                        // +0x128
-    unsigned char _pad_0x134[0x24];
-    bool          RoundFinished;                // +0x158
-    unsigned char _pad_0x159[0x1a7];
-    long          GameType;                     // +0x300
-    unsigned char _pad_0x304[4];
-    CCard*        SelectedCard;                 // +0x308
-    CCard*        HighlightedCard;              // +0x30c
-    bool SelectCard();                          // 0x008F09C0 (virtual slot 59, called non-virtually)
-    void GetCardDef(CCardDefPointer* out);      // 0x008F0B20
-    unsigned long PlaySound(const CCharString& name);   // 0x005EA950 (CTCTavernGame)
-};
-struct CTCTavernGameCardSorting : CTCTavernGameCardBase {
-    bool SelectCard();
-};
-
+#include "engine/CRGBColour.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CTavernGameCardBaseDef.h"
+#include "engine/card_sorting_types.h"
 bool CTCTavernGameCardSorting::SelectCard()
 {
     CTCTavernGameCardBase::SelectCard();
     if (!SelectedCard)
         return true;
     bool mistake = false;
-    CCardDefPointer def;
+    CDefPointer<const CTavernGameCardBaseDef> def(NULL_DEF);
     GetCardDef(&def);
     NGraphicAppearance::CTCGraphicAppearance* appearance;
-    for (CCard** it = Cards._M_start; it != Cards._M_finish; ++it) {
+    for (std::vector<CCard*>::iterator it = Cards.begin(); it != Cards.end(); ++it) {
         CCard* card = *it;
         if (!card->FaceDown && card->Value < SelectedCard->Value) {
             card->Thing->GetTC(TCI_GRAPHIC_APPEARANCE_NEW, &appearance);
-            appearance->SetAsHighlighted(def->HighlightTime, 0.0f, def->HighlightColour, false, false,
-                                         NGraphicAppearance::APPEARANCE_MESH_EFFECT_PRIORITY_3, this);
+            appearance->SetAsHighlighted(def->HighlightWidth, 0.0f, def->HighlightColourBad, false, false,
+                                         NGraphicAppearance::MESH_EFFECT_PRIORITY_TARGETING, this);
             mistake = true;
         }
     }
     if (mistake) {
         switch (GameType) {
-        case 1:
+        case ECGT_ROUND_LIMIT:
             GameWon = false;
             break;
         }
@@ -130,7 +83,7 @@ bool CTCTavernGameCardSorting::SelectCard()
     }
     if (HighlightedCard && !HighlightedCard->FaceDown && !HighlightedCard->Turning) {
         CCharString sound("TAVERN_GAME_CORRECT", -1);
-        PlaySound(sound);
+        PlaySoundW(sound);
     }
     return true;
 }

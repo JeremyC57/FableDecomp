@@ -26,6 +26,16 @@
 // Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
 // Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+// NF95 2026-11-19 (q11320): the unpacking buffer is Ego_r.pdb CGameEventDataPackage (engine/CGameEventDataPackage.h layout, 0x2C bytes)
+//   read through ?GetData@CGameEventDataPackage@@QAEXJPAX@Z 0x009F18F0 (Ego_r.pdb 0x00B454F0 / FableWin.pdb 0x030A2200) and filled by
+//   ?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z 0x009F17A0 (Ego_r.pdb 0x00B453F0); were the stand-ins
+//   CMemoryBuffer::Read(unsigned long, void*) and CGameEvent::GetData(CMemoryBuffer&).
+// NF97 2026-11-19 (port): the read buffer is the shared engine/CGameEventDataPackage.h class (FABLE_RETAIL_CGAMEEVENTDATAPACKAGE:
+//   inline ctor zeroing Length / StartPos / EndPos, GetData 0x009F18F0), no longer a local model.
+//   The local made-up reader helper is replaced by the FableWin.pdb typed reader (opt-in FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_TYPED_READERS:
+//   GetUBYTE / GetUWORD / GetFloat / GetSLONG, expanded in place); a direct GetData read into the local differs.
+#define FABLE_RETAIL_CGAMEEVENTDATAPACKAGE
+#define FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_TYPED_READERS
 enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 class CMessageEvent;
 #include "fable_compiler.h"
@@ -65,16 +75,7 @@ class CMessageEventManager {
 public:
     CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
-class CMemoryBuffer {
-public:
-    unsigned char Data[0x20];                          // +0x00
-    long          Length;                              // +0x20
-    long          ReadPos;                             // +0x24
-    long          WritePos;                            // +0x28
-    CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
-    void Read(unsigned long length, void* data);       // 0x009F18F0
-    FABLE_FORCEINLINE long ReadLong() { long value; Read(4, &value); return value; }
-};
+#include "engine/CGameEventDataPackage.h"
 class CGameEvent {
 public:
     long          Type;                                // +0x00
@@ -83,7 +84,7 @@ public:
     unsigned char EndPos;                              // +0x25
     bool          Valid;                               // +0x26
     bool          Replacement;                         // +0x27
-    long GetData(CMemoryBuffer& buffer) const;         // 0x009F17A0
+    void GetDataPackage(CGameEventDataPackage* package) const;         // 0x009F17A0
 };
 class CWorld {
 public:
@@ -95,9 +96,9 @@ public:
 
 void CWorld::EAAnswerQuestion(const CGameEvent* event)
 {
-    CMemoryBuffer buffer;
-    event->GetData(buffer);
-    long answer = buffer.ReadLong();
+    CGameEventDataPackage buffer;
+    event->GetDataPackage(&buffer);
+    long answer = buffer.GetSLONG();
     PMessageEventManager->AddMessage((EMessageEventType)(0x10), 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, answer);
     CSubtitleRenderer& subtitles = CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer;
     if (subtitles.DisplayingText) {

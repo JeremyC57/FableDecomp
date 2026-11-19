@@ -106,7 +106,9 @@ FABLE_STATIC_ASSERT(sizeof(CGamePlayerInterface)==2200);
 class CDefPointeeBase;
 class CMainGameComponent;
 class CPlayerManager;
-#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSITEMBUTTONS_TYPED
+#if defined(FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSITEMBUTTONS_TYPED) || defined(FABLE_RETAIL_CGAMEPLAYERINTERFACE_CONTEXTSENSITIVEITEMBUTTONS_TYPED)
+// NF96 opt-in CONTEXTSENSITIVEITEMBUTTONS_TYPED (q11465 row 0x00445960 GetNumberOfContextSensitiveItemButtons): the same for
+// ContextSensitiveItemButtons (+0x7d0, Ego_r.pdb std::vector<CCountedPointer<const CInputTypeBase> >).
 // NF94 opt-in (round 8, q11291 row 0x00445950 GetNumberOfQuickAccessItemButtons): QuickAccessItemButtons carries its Ego_r.pdb type
 // std::vector<CCountedPointer<const CInputTypeBase> > (+0x7c4, the 12-byte STLport vector; layout unchanged).
 #include "stlport/fable_containers.h"
@@ -660,7 +662,11 @@ public:
 #else
     unsigned char       QuickAccessItemButtons[0xc];         // +0x7c4 vector<CCountedPointer<CInputTypeBase_const_>,std::allocator<CCountedPointer<CInputTypeBase_const_>_>_>
 #endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_CONTEXTSENSITIVEITEMBUTTONS_TYPED
+    std::vector<CCountedPointer<const CInputTypeBase> > ContextSensitiveItemButtons;   // +0x7d0 (NF96 opt-in)
+#else
     unsigned char       ContextSensitiveItemButtons[0xc];    // +0x7d0 vector<CCountedPointer<CInputTypeBase_const_>,std::allocator<CCountedPointer<CInputTypeBase_const_>_>_>
+#endif
     long                CurrentQueuedProcessedInputNo;       // +0x7dc
     unsigned char       CurrentProcessedInput[0xb0];         // +0x7e0 CProcessedInput
     long                CurrentEventInProcessedInput;        // +0x890
