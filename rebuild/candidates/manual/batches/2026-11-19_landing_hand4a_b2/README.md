@@ -9,3 +9,5 @@ halves byte-required here (without X: ndiff 4; without Y: ndiff 2). The bracket 
 two, the X half in landed 0x0047E651 / 0x0047E9AE / 0x0047F30F); it is still unsourced (FableWin divides by a double 2.0). Both rows carry an
 `// Inferred:` note; the landed SetToSave note is upgraded to "cross-checked" (comment only, re-verified RELOCATION_MATCH + PASS). Owner review
 together with SetToSave.
+
+**Owner 2026-11-19:** grouping brackets are an accepted lever ("a lot of stuff needs brackets so we should allow them"; EXTRA_RULES). The bracket-only rows here need no further review.

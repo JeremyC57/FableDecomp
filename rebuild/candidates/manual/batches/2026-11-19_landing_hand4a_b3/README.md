@@ -14,3 +14,5 @@ FableWin 0x01D99FB0, breaks 0x00875690). OWNER REVIEW: revert this one commit if
 
 Queued: 82 landed rows still model the NCameraModes script-module classes locally (`QUEUE_NCAMERAMODES_REPORTS.tsv`); strict mode rejects them
 on their next re-land.
+
+**Owner 2026-11-19:** grouping brackets are an accepted lever ("a lot of stuff needs brackets so we should allow them"; EXTRA_RULES). The bracket-only rows here need no further review.

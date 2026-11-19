@@ -16,3 +16,6 @@ OWNER REVIEW: revert this one commit if either is not accepted.
 
 Held from this hand4a batch: the twins 0x00853670 / 0x008539C0 (row-side `(AxisY.GetAccurateMagnitude())` wrap; one bounded test of moving the
 bracket into shared helper text first). Their three new NCameraModes headers are not merged yet.
+
+**Owner 2026-11-19:** grouping brackets are an accepted lever ("a lot of stuff needs brackets so we should allow them"; EXTRA_RULES). The bracket-only rows here need no further review.
+0x006B5890 in this batch is NOT a bracket (a by-value operand): it stays for owner review.

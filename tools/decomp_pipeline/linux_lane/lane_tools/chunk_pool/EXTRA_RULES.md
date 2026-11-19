@@ -311,3 +311,16 @@ c2 numbers candidate records partly by c1 symbol ordinal, so the order of a row'
 scheduling tie (0x00680050, landed 2026-11-19). On a tie that survives every statement-level variant, permute the row's includes
 (real shared headers only; adding an include the TU plausibly had is fine; no new declarations). A row matched this way carries an
 `// Include-order:` note: the order, the measured mechanism, and that it is fragile to shared-header changes (recheck after them).
+
+## 2026-11-19 owner: grouping brackets are an accepted lever
+"it seems like a lot of stuff needs brackets so we should allow them."
+Brackets that emit no code (c1 PAREN tuples, opcode 0x269) move VC7.1's 81-tuple scheduling-region cuts and list-scheduler order; today
+they closed 0x00F361D0, 0x0047ED76, 0x0047D296, 0x0047DD9D, 0x00853670, 0x008539C0 and 0x007BBB3B, and they are reproduced across six
+same-TU CTCInGameMenu rows. They change neither behaviour nor portability, so a bracket is now an accepted spelling, like include order:
+- Allowed in the row source and in shared helper text (a helper bracket goes under a NEW nested opt-in; regrade every landed user of
+  that helper). Prefer the placement a programmer would write -- grouping a sub-expression (`(w * 0.5f) - x`, `(a + b) + c`), a
+  bracketed return or argument -- over pure redundant wraps (`((f()))`); when several placements match, take the most natural one or the
+  one with a same-TU precedent. A redundant wrap is acceptable only when no natural placement matches.
+- Mark it with one `// Bracket:` line: which bracket is byte-required, the retail address it fixes, and (if measured) which other
+  placements match or fail. No `// Inferred:` note and no owner review is needed for a bracket alone.
+- It does NOT cover other unsourced constructs (extra locals, references, by-value parameters, dead code): those stay `// Inferred:`.
