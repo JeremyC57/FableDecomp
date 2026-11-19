@@ -40274,3 +40274,8 @@ __wcsicmp	00f3fb84	00599e3f
 _MOVE_TO_PRONG_NAV_PROXIMITY	01261d68	006e94d0
 ?Init@CCombatWheel@CDefendingCombatantInfo@@QAEXAAVCCombatManager@@AAVCWorldMap@@ABV?$map@PAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@U?$less@PAVCThingCreatureBase@@@std@@V?$allocator@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@@4@@std@@ABVCThingCreatureBase@@@Z	006ec850	006ecea0
 ?Update@CCombatWheel@CDefendingCombatantInfo@@QAEXXZ	006e8560	006ecea0
+??A?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@QAEAAV?$CCountedPointer@VCEngineSceneMap@@@@ABJ@Z	00b97c10	00b94bf0
+??A?$map@JV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@U?$less@J@2@V?$allocator@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@@std@@QAEAAV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@1@ABJ@Z	00b988e0	00b94bf0
+?Reset@?$CCountedPointer@VCEngineSceneMap@@@@QAEXPAVCEngineSceneMap@@@Z	00b95aa0	00b94bf0
+??$GetPBestThingInRoughArea@VCThingFilter_ScaresBirds@@VCThingCompare_Nearest@@VCThingCreatureBase@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_ScaresBirds@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z	009147e0	00914650
+?NAVIGATOR_TYPE_A_STAR@@3KB	0129cba4	00914650

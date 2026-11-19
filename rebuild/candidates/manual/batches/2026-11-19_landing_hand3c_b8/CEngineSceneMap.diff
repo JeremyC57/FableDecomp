@@ -1,0 +1,17 @@
+11a12,18
+> #ifdef FABLE_RETAIL_CENGINESCENEMAP_CTOR
+> // Opt-in (hand3c, row 0x00B94BF0 CEngineScene::GetMapAt, which expands the constructor): RTTI .?AVCEngineSceneMap@@ : CBaseClassNonCopyable
+> // (ghidra_out/rtti_bases.tsv; vtable 0x012A3E60). Ego_r.pdb / FableWin.pdb ??0CEngineSceneMap@@QAE@PAVCEngineScene@@KABVC2DBoxF@@@Z
+> // (out of line at 0x00B94A40, landed: CBaseClassNonCopyable() 0x0099A2F0, own vtable, empty GridLevels, Initialise) and
+> // ?Initialise@CEngineSceneMap@@QAEXPAVCEngineScene@@KABVC2DBoxF@@@Z (0x00B949A0, landed). Same layout (the base has no data).
+> #include "engine/CBaseClassNonCopyable.h"
+> #endif
+17a25,30
+> #ifdef FABLE_RETAIL_CENGINESCENEMAP_CTOR
+> class CEngineSceneMap : public CBaseClassNonCopyable {
+> public:
+>     CEngineSceneMap(CEngineScene* scene, unsigned long max_levels, const C2DBoxF& area) { Initialise(scene, max_levels, area); }
+>     void Initialise(CEngineScene* scene, unsigned long max_levels, const C2DBoxF& area);   // 0x00B949A0
+> #else
+19a33
+> #endif

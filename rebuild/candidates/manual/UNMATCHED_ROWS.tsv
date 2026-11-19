@@ -500,7 +500,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0090ebe0	_global	FindMessage	352	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0090ebe0.cpp	original
 009101c0	CAIStateGroup_MinionListenToStory	?Update@CAIStateGroup_MinionListenToStory@@MAEXXZ	736	parked	DIFFER(751v735)	2	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/009101c0.cpp	original
 009130d0	CAIStateGroup_FlyingThingBase	AIAction_RandomFlyToPos	960	parked	DIFFER(976v954)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand277/differ/009130d0.cpp	original
-00914650	CAIStateGroup_BirdStartled	?IsRunnable@CAIStateGroup_BirdStartled@@UAE_NXZ	400	reserved (hand3c, not plain C++)	DIFFER(334v340)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00914650.cpp	original
 00914d80	CAIStateGroup_KidWanderNearKids	?Update@CAIStateGroup_KidWanderNearKids@@UAEXXZ	368	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand993_fable_test/differ/00914d80.cpp	original
 00919240	CAIStateGroup_LookAtInterestingThings	FindInterestingThing	512	parked	codex pass24 PARKED: The filter initialization at entry schedules in a different order at 0x0091924A through 0x0091925D.	14	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00919240/00919240.cpp	original
 00919ae0	CAIStateGroup_BuyFromSeller	?Update@CAIStateGroup_BuyFromSeller@@UAEXXZ	2224	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/00919ae0.cpp	original
@@ -851,7 +850,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b92950	CEngineSceneGrid	RenderCellClippedAndCheckVisibility	720	parked	DIFFER(719v707)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00b92950.cpp	original
 00b93b30	CEngineSceneMap	AddPrimitive	400	reserved (hand3c, not plain C++)	DIFFER(282v395)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00b93b30.cpp	original
 00b94540	CEngineSceneMap	ResizeGrid	672	parked	DIFFER(665v664)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00b94540.cpp	original
-00b94bf0	CEngineScene	GetMapAt	320	reserved (hand3c, not plain C++)	DIFFER(295v311)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b94bf0.cpp	original
 00b97c10	_global	std_map_find_or_insert	160	parked	DIFFER(161v150)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand956/differ/00b97c10.cpp	original
 00b99300	CEnginePrimitiveManagerRepeatedStaticMeshes	ProcessLightingSW	880	reserved (hand3c, not plain C++)	DIFFER(871v871)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00b99300.cpp	original
 00b9d220	CEngineInternalPrimitive2DStaticMesh	CEngineInternalPrimitive2DStaticMesh::CalcInterpolatedObjectTransform	1072	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b9d220.cpp	original

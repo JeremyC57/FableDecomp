@@ -400092,6 +400092,20 @@ $catalog = @(
         TestSource = '00/6e/CCombatManager_SetupDefenderPlacementWheel_006ecea0_test.cpp'
         PassPattern = '006ecea0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b94bf0'
+        Module = 'CEngineScene'
+        Source = '00/b9/CEngineScene_GetMapAt_00b94bf0.cpp'
+        TestSource = '00/b9/CEngineScene_GetMapAt_00b94bf0_test.cpp'
+        PassPattern = '00b94bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00914650'
+        Module = 'CAIStateGroup_BirdStartled'
+        Source = '00/91/CAIStateGroupBirdStartled_IsRunnable_00914650.cpp'
+        TestSource = '00/91/CAIStateGroupBirdStartled_IsRunnable_00914650_test.cpp'
+        PassPattern = '00914650_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
