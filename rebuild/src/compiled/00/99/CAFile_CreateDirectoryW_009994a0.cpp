@@ -1,31 +1,68 @@
-// 009994a0 CAFile::CreateDirectoryW
+// 009994a0 CAFile::CreateDirectoryW(const CWideString& path) -- expand the path against the current directory, switch to its
+//   drive and walk its components, changing into each one and creating it when the change fails; restore the drive after
 // Flags: /O2 /Oy /W3 /Gr /GS
-// Leaf: CreateDirectoryW
-#include "fable_compiler.h"
-#include <stdlib.h>
-namespace AFileSupport {
-struct CWideStringData {unsigned short* text,*last,*limit;int refs;};
-// Layout: wide string one dword; drive[3],dir/name/ext[256],component[262] (retail frame: path+0, drive+4, cwd temp/d+8, component+0x10, ext+0x21c, dir+0x41c, name+0x61c); retail target frame0x820.
-struct CWideString {CWideStringData* data;CWideStringData* AllocStringData(const unsigned short*,int);__declspec(noinline) CWideString();__declspec(noinline) CWideString(const unsigned short*);__declspec(noinline) CWideString(const CWideString&);__declspec(noinline) ~CWideString();__declspec(noinline) CWideString& operator=(const unsigned short*); operator const unsigned short*();__declspec(noinline) operator const unsigned short*()const{static const unsigned short empty[]={0};return data?data->text:empty;}protected:
-    static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
-};
-__declspec(noinline) CWideString::CWideString():data(0){++NoStrings;}
-__declspec(noinline) CWideString::CWideString(const CWideString&x):data(0){++NoStrings;if(this!=&x&&x.data){data=x.data;++data->refs;}}
-__declspec(noinline) CWideString::CWideString(const unsigned short*p):data(0){++NoStrings;if(p&&*p)data=AllocStringData(p,-1);}
-__declspec(noinline) CWideString::~CWideString(){if(data){if(--data->refs<=0){if(data->text)free(data->text);delete data;}data=0;}--NoStrings;}
-__declspec(noinline) CWideString& CWideString::operator=(const unsigned short*p){if(data){if(--data->refs<=0){if(data->text)free(data->text);delete data;}data=0;}if(p&&*p)data=AllocStringData(p,-1);return *this;}
-extern "C" void __cdecl _wsplitpath(const unsigned short* path,unsigned short* drive,unsigned short* dir,unsigned short* name,unsigned short* ext); // 0x00BFED4C MSVCR71 _wsplitpath (import thunk)
-CWideString __fastcall GetCurrentWorkingDirectory();CWideString __fastcall ExpandPath(const CWideString&,const CWideString&);
-extern "C" int __cdecl _getdrive();extern "C" int __cdecl _chdrive(int);extern "C" int __cdecl _wchdir(const unsigned short*);extern "C" int __cdecl _wmkdir(const unsigned short*);
-namespace NFile{__declspec(noinline) bool __fastcall GetItemFromPath(const unsigned short* text,unsigned long index,unsigned short* out){out[0]=0;int count=0,at=0;for(;text[at];++at)if(text[at]==92&&++count>index)break;if(!text[at])return 0;if(at==0||text[at-1]==58){out[0]=92;out[1]=0;return 1;}int first=at-1;for(;first!=-1;--first)if(text[first]==92||text[first]==58||first==0){++first;break;}if(first<0)first=0;int i=0;for(;first+i<at;++i)out[i]=text[first+i];out[i]=0;return 1;}}
-// Layout: CWideString CWideStringData has first/end/capacity pointers and refs+12;99b220 computes length from span.
-// Shape: drive is a function-scope local after path (its slot +4 precedes the inner-block arrays); the non-const
-//   operator const unsigned short*() is only declared (retail 0x0099AF00 is out of TU; an in-TU body changes the frame).
-// Nonconst/const wide-character conversions preserve99af00(path) and99af10(drive) identities.
-// Three256-word split buffers, MAX_PATH260 component and _MAX_DRIVE3;997880 emits only backslash-terminated components.
-namespace NFile{FABLE_FORCEINLINE long __fastcall ConvertDriveLetterToNumber(wchar_t c){if(c>='a'&&c<='z')return c-96;if(c>='A'&&c<='Z')return c-64;return 0;}}
-FABLE_FORCEINLINE CWideString ResolveExpandPath(const CWideString& input){return ExpandPath(input,GetCurrentWorkingDirectory());}
+// Leaf: ?CreateDirectoryW@CAFile@@SIXABVCWideString@@@Z
+// Identity: Ego_r.pdb 0x00B010E0 / FableWin.pdb 0x02FF3630 ?CreateDirectoryW@CAFile@@SIXABVCWideString@@@Z (static __fastcall; the source
+//   wrote CreateDirectory and <windows.h> made it CreateDirectoryW). NF93 (q11296): ported from the AFileSupport stand-in namespace
+//   (local CWideString model with in-TU member bodies) onto fable_string.h CWideString and engine/CAFile.h.
+// Callees: CAFile::GetCurrentPath 0x00997F80 / CAFile::ExpandPath 0x00998C90 (engine/CAFile.h EXPANDPATH), ~CWideString 0x0099B510,
+//   CWideString() 0x0099AED0, operator const wchar_t* 0x0099AF00 (the path), operator=(const wchar_t*) 0x0099B800,
+//   GetAsCharArray 0x0099AF10 (the drive's first character), NFile::GetItemFromPath 0x00997880 (Ego_r.pdb / FableWin.pdb
+//   ?GetItemFromPath@NFile@@YI_NPB_WKPA_W@Z; wide text is unsigned short here), MSVCR71 _wsplitpath / _getdrive / _chdrive /
+//   _wchdir / _wmkdir import thunks. NFile::ConvertDriveLetterToNumber (Ego_r.pdb / FableWin.pdb ?ConvertDriveLetterToNumber@NFile@@YIJ_W@Z)
+//   is expanded in place (no out-of-line copy in Fable.exe).
+// Layout: retail frame 0x820: path +0, drive +4, temp/d +8, component +0x10, ext +0x21c, dir +0x41c, name +0x61c.
+#define FABLE_RETAIL_CAFILE
+#define FABLE_RETAIL_CAFILE_EXPANDPATH
+#define FABLE_RETAIL_CAFILE_CREATEDIRECTORY
+#include "engine/CAFile.h"                  // fable_string.h CWideString; CAFile::GetCurrentPath / ExpandPath
+
+extern "C" void __cdecl _wsplitpath(const unsigned short* path, unsigned short* drive, unsigned short* dir, unsigned short* name,
+                                    unsigned short* ext);   // 0x00BFED4C MSVCR71 import thunk
+extern "C" int __cdecl _getdrive();                         // 0x00BFED70
+extern "C" int __cdecl _chdrive(int drive);                 // 0x00BFED6A
+extern "C" int __cdecl _wchdir(const unsigned short* dir);  // 0x00BFEAFE
+extern "C" int __cdecl _wmkdir(const unsigned short* dir);  // 0x00BFED64
+
+namespace NFile {
+bool __fastcall GetItemFromPath(const wchar_t* pathname, unsigned long directory_number, wchar_t* directory_name);   // 0x00997880
+inline long __fastcall ConvertDriveLetterToNumber(wchar_t c)
+{
+    if (c >= 'a' && c <= 'z')
+        return c - 96;
+    if (c >= 'A' && c <= 'Z')
+        return c - 64;
+    return 0;
 }
-// CAFile is global in retail; AFileSupport only isolates the in-TU string, split and CRT-shaped helper models.
-class CAFile{ public:static void __fastcall CreateDirectoryW(const AFileSupport::CWideString&);};
-void __fastcall CAFile::CreateDirectoryW(const AFileSupport::CWideString& input){AFileSupport::CWideString path=AFileSupport::ResolveExpandPath(input);AFileSupport::CWideString drive;{unsigned short d[3],dir[256],ext[256],name[256],part[262];AFileSupport::_wsplitpath(static_cast<const unsigned short*>(path),d,dir,name,ext);drive=d;const unsigned short& c=static_cast<const unsigned short*>(static_cast<const AFileSupport::CWideString&>(drive))[0];if(c){unsigned short n=(unsigned short)AFileSupport::NFile::ConvertDriveLetterToNumber((wchar_t)c);int previous=AFileSupport::_getdrive();AFileSupport::_chdrive(n);if(n){int index=0;while(AFileSupport::NFile::GetItemFromPath(static_cast<const unsigned short*>(path),index,part)==1){if(AFileSupport::_wchdir(part)){if(AFileSupport::_wmkdir(part)==-1)break;if(AFileSupport::_wchdir(part))break;}++index;}}if(previous!=-1)AFileSupport::_chdrive(previous);}}}
+}
+
+void __fastcall CAFile::CreateDirectoryW(const CWideString& input)
+{
+    CWideString path = ExpandPath(input, GetCurrentPath());
+    CWideString drive;
+    {
+        unsigned short d[3], dir[256], ext[256], name[256], part[262];
+        _wsplitpath(path, d, dir, name, ext);
+        drive = d;
+        const unsigned short& c = drive.GetAsCharArray()[0];
+        if (c) {
+            unsigned short n = (unsigned short)NFile::ConvertDriveLetterToNumber(c);
+            int previous = _getdrive();
+            _chdrive(n);
+            if (n) {
+                int index = 0;
+                while (NFile::GetItemFromPath(path, index, part) == 1) {
+                    if (_wchdir(part)) {
+                        if (_wmkdir(part) == -1)
+                            break;
+                        if (_wchdir(part))
+                            break;
+                    }
+                    ++index;
+                }
+            }
+            if (previous != -1)
+                _chdrive(previous);
+        }
+    }
+}

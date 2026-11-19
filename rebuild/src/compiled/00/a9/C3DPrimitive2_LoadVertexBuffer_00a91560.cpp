@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A91560, length 224 bytes (`ret 14h`).
 // GRAPHICS LAYER (replacement work later): Ego_r.pdb ?LoadVertexBuffer@C3DPrimitive2@@AAEXAAVCMemoryDataInputStream@@KKKAAVCVertexCompressionParams@@@Z.
 // Callees: CVertexBufferWin32::Lock(0,0,0) @ 0x00AC20A0 / Unlock @ 0x00AC20B0, the stream's virtual Read (slot 4, +0x10),
-// vector<unsigned char>(n) @ 0x00514E20 (catalog "std::vector::_Init"), free @ 0x00BFEA14, the __fastcall stream converters
+// CArray<unsigned char>(n) @ 0x00514E20 (FableWin ??0?$CArray@E@@QAE@I@Z; Ego_d types src_buffer CArray<unsigned char>), free @ 0x00BFEA14, the __fastcall stream converters
 // @ 0x00A90FC0 (animated; catalog "ConvertVertexStream_AnimatedToFormat") and @ 0x00A91390 (static).
 // Retail offsets (PDB - 4): RepeatingMeshReps +8, VertexBuffer +0x30 (CVertexBufferWin32 compression params +0x14, 32 bytes),
 // AnimatedBlockCount +0x48, VertexCount +0x58, InitFlags +0x68 (the format the buffer holds).
@@ -16,12 +16,11 @@ class CMemoryDataInputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void Read(void* buffer, long size);     // slot 4 (+0x10)
 };
-struct CByteArray {                                 // retail CArray<unsigned char>: begin/end/capacity
-    unsigned char* m_begin; unsigned char* m_end; unsigned char* m_capacity;
-    CByteArray(unsigned long n);                    // 0x00514E20
-    ~CByteArray() { if (m_begin) free(m_begin); }
-    unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
-};
+// NF93 (q11297): the local CByteArray model replaced by engine/CArray.h (the size constructor out of line, the null-tested release,
+//   GetAsCArray: the start when not empty, else the array's own address).
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE
+#include "engine/CArray.h"
 void __fastcall ConvertAnimatedVertices(const void* source, unsigned long sourceFormat, void* dest, unsigned long destFormat,
                                         unsigned long vertexCount, CVertexCompressionParams& params);   // 0x00A90FC0
 void __fastcall ConvertStaticVertices(const void* source, unsigned long sourceFormat, void* dest, unsigned long destFormat,
@@ -56,8 +55,8 @@ void C3DPrimitive2::LoadVertexBuffer(CMemoryDataInputStream& in, unsigned long v
     unsigned long bytes = vertices * vertexSize;
     void* dest = VertexBuffer->Lock(0, 0, 0);
     if (fileFormat != InitFlags && RepeatingMeshReps <= 0) {
-        CByteArray buffer(bytes);
-        unsigned char* source = buffer.GetData();
+        CArray<unsigned char> buffer(bytes);
+        unsigned char* source = buffer.GetAsCArray();
         in.Read(source, bytes);
         if (AnimatedBlockCount > 0)
             ConvertAnimatedVertices(source, fileFormat, dest, InitFlags, vertices, params);

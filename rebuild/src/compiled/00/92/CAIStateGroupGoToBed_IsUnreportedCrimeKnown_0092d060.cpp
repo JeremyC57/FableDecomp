@@ -66,10 +66,14 @@ template<class A, class B> class CFilter_Bind2 { public:
 };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 
+#include "engine/EOpinionDeedType.h"
+// NF93 (q11342): both lookups are the const member templates of Ego_r.pdb / FableWin.pdb
+//   ??$FindMostRecentDeed@VCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@ABV..@PAJ_N@Z (0x006610C7)
+//   and ??$FindMostRecentDeed@V?$CFilter_Bind2@..@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV..@PAJ_N@Z (0x0092E630).
 class CTCCreatureOpinionOfHero { public:               // interface 0x4f
-    COpinionDeed* FindMostRecentDeed(const COpinionDeedFilter_IsCrimeToRunAndFindAGuard& filter, long* index, bool includeReported);   // 0x006610C7
-    COpinionDeed* FindMostRecentDeed(long deedType, const CFilter_Bind2<COpinionDeedFilter_IsStillHappening, COpinionDeedFilter_TargetIs>& filter,
-                                     long* index, bool includeReported);   // 0x0092E630
+    template<class Filter> const COpinionDeed* FindMostRecentDeed(const Filter& filter, long* index, bool includeReported) const;   // 0x006610C7
+    template<class Filter> const COpinionDeed* FindMostRecentDeed(EOpinionDeedType deedType, const Filter& filter, long* index,
+                                                                bool includeReported) const;   // 0x0092E630
 };
 
 class CAIBrain { public:
@@ -105,9 +109,9 @@ bool CAIStateGroup_GoToBed::IsUnreportedCrimeKnown()
             return true;
         CThing* home = ((CThing*)PBrain->GetPCreature()->Home.GetPItem());
         if (home && !(home->m_flags91 & 1)) {
-            if (opinion->FindMostRecentDeed(10, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(((CThing*)PBrain->GetPCreature()->Home.GetPItem())), 0, true)
-                || opinion->FindMostRecentDeed(11, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(((CThing*)PBrain->GetPCreature()->Home.GetPItem())), 0, true)
-                || opinion->FindMostRecentDeed(2, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(((CThing*)PBrain->GetPCreature()->Home.GetPItem())), 0, true))
+            if (opinion->FindMostRecentDeed((EOpinionDeedType)10, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(((CThing*)PBrain->GetPCreature()->Home.GetPItem())), 0, true)
+                || opinion->FindMostRecentDeed((EOpinionDeedType)11, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(((CThing*)PBrain->GetPCreature()->Home.GetPItem())), 0, true)
+                || opinion->FindMostRecentDeed((EOpinionDeedType)2, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(((CThing*)PBrain->GetPCreature()->Home.GetPItem())), 0, true))
                 return true;
         }
     }

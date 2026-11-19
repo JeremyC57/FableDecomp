@@ -12,7 +12,7 @@ public:
     void* PStringData;
     ~CWideString();                                          // 0x0099B510
     const CWideString& operator=(const CWideString& other);        // 0x0099B7D0
-    wchar* GetBuffer() const;                                // 0x0099AF00
+    operator const wchar*() const;                           // 0x0099AF00 ??BCWideString@@QBEPBGXZ (Ego_r / FableWin ??BCWideString@@QBEPB_WXZ; NF93 q11296, was GetBuffer)
     bool operator!=(const wchar* text) const;                // 0x0099B150
 };
 
@@ -96,8 +96,8 @@ void CSubtitleRenderer::FormatTextForVWindow(const C2DBoxF& box, const CFontBank
     outText = WordWrapText(box, font, text);
     float maxWidth = 0.0f;
     long lines = 0;
-    CWStringParser parser(text.GetBuffer());
-    parser.Init(outText.GetBuffer());
+    CWStringParser parser(text);
+    parser.Init(outText);
     CWideString line = parser.ReadAsStringUntilCharacter(L'\n');
     while (line != L"") {
         float width = font.GetVStringExtents(line).Width;

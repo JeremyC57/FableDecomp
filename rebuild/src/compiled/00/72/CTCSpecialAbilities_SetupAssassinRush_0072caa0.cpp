@@ -2,6 +2,9 @@
 // Leaf: SetupAssassinRush
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+// Name fix (NF93 q11451, 2026-11-19): ~CCreatureAction_CastAssassinRush 0x0072D990 is virtual (??1CCreatureAction_CastAssassinRush@@UAE@XZ: the class is
+//   polymorphic, vtable 0x01284254, engine/CCreatureAction_CastAssassinRush.h on CCombatActionBase; 0x0096AE50 binds UAE); the landed local model
+//   gains its vptr in place of the first 4 pad bytes (size unchanged, 0x138). Was the QAE spelling.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072CAA0, 252 bytes (plain `ret`).
 // Callees: the const interface LowerBound @ 0x004365B0 (interface 8), the targeting component's slot 33 (+0x84, target thing),
 //   CThing::GetPlayer() @ 0x004C7A10, CCreatureAction_CastAssassinRush(CThingCreatureBase&, CThing&, bool, long,
@@ -63,13 +66,13 @@ class CThingCreatureBase : public CThing {
 public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-class CCreatureAction_CastAssassinRush {                // vtable 0x01284254
+class CCreatureAction_CastAssassinRush {                // vtable 0x01284254 (vptr +0x00; 0x138 bytes in all)
 public:
-    unsigned char _body[0x138];
+    unsigned char _body[0x134];                         // +0x04
     CCreatureAction_CastAssassinRush(CThingCreatureBase& creature, CThing& target, bool flag, long priority,
                                      CCountedPointer<CCreatureActionBase> next);   // 0x008CE040
     CCreatureAction_CastAssassinRush(CThingCreatureBase& creature, long priority, CCountedPointer<CCreatureActionBase> next);   // 0x008CE100
-    ~CCreatureAction_CastAssassinRush();                // 0x0072D990
+    virtual ~CCreatureAction_CastAssassinRush();        // 0x0072D990 ??1CCreatureAction_CastAssassinRush@@UAE@XZ (implicit virtual dtor of the polymorphic action; 0x0096AE50 binds UAE)
     operator const CCreatureActionBase&() const { return *(const CCreatureActionBase*)this; }
 };
 class CTCSpecialAbilities {

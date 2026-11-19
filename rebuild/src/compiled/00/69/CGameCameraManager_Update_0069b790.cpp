@@ -25,7 +25,9 @@ class CGameCameraManager { public:
  void* AvailableCamPoints[1];bool SingleCut;unsigned char ControlsAndScripts[0x4f];CObservedThingPointer PObservedThing;
  void UpdatePrepareFlags(); //0069B6F0
  void UpdateMode(); //0069A2A0
- void PromotePendingScriptAndResetPreloadFlags(); //00697C60
+private:
+ void UpdateCleanupFlags(); //00697C60 ?UpdateCleanupFlags@CGameCameraManager@@AAEXXZ (Ego_r / FableWin, private; NF93 q11378)
+public:
  void UpdateHeightLimits(); //00699670
  void UpdateCreatureControlAngleXY(); //00697760
 private:
@@ -37,7 +39,7 @@ public:
 };
 void CGameCameraManager::Update(){
  if(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem())&&!(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem())->LifetimeFlags&1)) {
-  UpdatePrepareFlags();UpdateMode();PromotePendingScriptAndResetPreloadFlags();OldCamera=Camera;
+  UpdatePrepareFlags();UpdateMode();UpdateCleanupFlags();OldCamera=Camera;
   UpdateHeightLimits();CamTools.FrameUpdate();CurrentMode->FrameUpdate();
   UpdateCreatureControlAngleXY();UpdateRightStickLookAround();UpdateEarthQuakes();CameraValidationCheck();
   if(SingleCut){OldCamera=Camera;SingleCut=false;}

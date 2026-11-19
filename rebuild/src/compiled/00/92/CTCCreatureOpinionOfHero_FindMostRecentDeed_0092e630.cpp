@@ -1,5 +1,5 @@
 // CTCCreatureOpinionOfHero::FindMostRecentDeed<CFilter_Bind2<COpinionDeedFilter_IsStillHappening,COpinionDeedFilter_TargetIs> >(EOpinionDeedType, const filter&, long* outHandle, bool includePending) const -- the first of the hero's deeds of the type that is still happening and targets the filter's thing (pending deeds first when asked, then the known deeds of that type); its handle is written out
-// Leaf: FindMostRecentDeed
+// Leaf: ??$FindMostRecentDeed@V?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@PAJ_N@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092E630, 283 bytes (+ padding), `ret 10h`.
 // Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
@@ -76,17 +76,18 @@ protected:
     const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
 };
 
+#include "engine/EOpinionDeedType.h"   // NF93 (q11342): the deed type is EOpinionDeedType (Ego_r / FableWin W4EOpinionDeedType@@)
 class CTCCreatureOpinionOfHero : public CTCBase { public:
     unsigned char _pad04[0x54 - 0x04];
     CHandleList PendingDeeds;                           // +0x54 (PDB +0x70)
     long        LastFrameAppliedDeedEffect[92];         // +0x58
     CHandleList KnownDeeds[92];                         // +0x1c8 (PDB +0x1ec)
     template <class TFilter>
-    const COpinionDeed* FindMostRecentDeed(long deedType, const TFilter& filter, long* outHandle, bool includePending) const;
+    const COpinionDeed* FindMostRecentDeed(EOpinionDeedType deedType, const TFilter& filter, long* outHandle, bool includePending) const;
 };
 
 template <class TFilter>
-const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(long deedType, const TFilter& filter, long* outHandle, bool includePending) const
+const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(EOpinionDeedType deedType, const TFilter& filter, long* outHandle, bool includePending) const
 {
     const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (hero) {
@@ -118,4 +119,4 @@ const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(long deedType, 
 
 typedef CFilter_Bind2<COpinionDeedFilter_IsStillHappening, COpinionDeedFilter_TargetIs> CStillHappeningTargetFilter;
 template const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed<CStillHappeningTargetFilter>(
-    long, const CStillHappeningTargetFilter&, long*, bool) const;
+    EOpinionDeedType, const CStillHappeningTargetFilter&, long*, bool) const;

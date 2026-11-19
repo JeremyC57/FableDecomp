@@ -1,9 +1,9 @@
 // CDataInputStream::ReadZlibCompressed(void* data, long size) -- read a block written by WriteZlibCompressed: the compressed byte count, the compressed bytes into a scratch buffer, then zlib-inflate them into data (the assertion hook fires if fewer than size bytes come out)
 // Leaf: ?ReadZlibCompressed@ (Ego_r.pdb ?ReadZlibCompressed@CDataInputStream@@UAEXPAXJ@Z, virtual; modelled through CDataInputStream_Methods)
 // Retail: Fable.exe @ 0x00996230, 341 bytes, `ret 8`.
-// Body: size <= 0 -> nothing. Read(&compressedSize, 4); CByteArray buffer(compressedSize) (vector<unsigned char>(n)
-// 0x00514E20); Read(buffer.GetData(), compressedSize); CCompressorZlib (CACompressor(GetWorkspaceSize()) 0x00A3AEA0 /
-// 0x00A3A7D0, vtable 0x01245974, Init 0x00A3AA10); InternalDecompress(buffer.GetData(), compressedSize, data, size)
+// Body: size <= 0 -> nothing. Read(&compressedSize, 4); CArray<unsigned char> buffer(compressedSize) (vector<unsigned char>(n)
+// 0x00514E20); Read(buffer.GetAsCArray(), compressedSize); CCompressorZlib (CACompressor(GetWorkspaceSize()) 0x00A3AEA0 /
+// 0x00A3A7D0, vtable 0x01245974, Init 0x00A3AA10); InternalDecompress(buffer.GetAsCArray(), compressedSize, data, size)
 // (0x00A3AB00) != size -> g_pfnAssertionFailed (0x013BC9FC) if installed; ~CCompressorZlib 0x00A3ACC0; free 0x00BFEA14.
 // The inline stream Read is the landed CMemoryDataInputStream::Read (64-bit position range check, chunk memcpy fast
 // path, ReadWithSrcChunkOverflow 0x00993CA0).
@@ -36,12 +36,11 @@ class CCompressorZlib : public CACompressor { public:                      // vt
     virtual ~CCompressorZlib();                              // 0x00A3ACC0
     CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Init(); }
 };
-struct CByteArray {                                          // retail vector<unsigned char>: begin/end/capacity
-    unsigned char* m_begin; unsigned char* m_end; unsigned char* m_capacity;
-    CByteArray(unsigned long n);                             // 0x00514E20
-    ~CByteArray() { if (m_begin) free(m_begin); }
-    unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
-};
+// NF93 (q11297): the local CByteArray model replaced by engine/CArray.h: CArray<unsigned char> (FableWin ??0?$CArray@E@@QAE@I@Z 0x00514E20,
+//   out of line; Ego_d types these buffers CArray<unsigned char>), the null-tested release, GetAsCArray (the start, or its own address).
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE
+#include "engine/CArray.h"
 
 struct CDataInputStream_Methods : CDataInputStream {
     static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
@@ -69,10 +68,10 @@ void CDataInputStream_Methods::ReadZlibCompressed(void* data, long size)
 {
     if (size > 0) {
         long compressedSize = ReadLong();
-        CByteArray buffer(compressedSize);
-        Read(buffer.GetData(), compressedSize);
+        CArray<unsigned char> buffer(compressedSize);
+        Read(buffer.GetAsCArray(), compressedSize);
         CCompressorZlib compressor;
-        unsigned long written = compressor.InternalDecompress(buffer.GetData(), compressedSize, data, size);
+        unsigned long written = compressor.InternalDecompress(buffer.GetAsCArray(), compressedSize, data, size);
         if (written != (unsigned long)size) {
             CAFile::DoErrorCallback();
         }

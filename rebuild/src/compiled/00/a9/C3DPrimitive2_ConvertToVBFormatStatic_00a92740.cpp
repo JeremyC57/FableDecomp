@@ -56,6 +56,8 @@ struct CByteVector {
 struct CStaticVertex { unsigned char bytes[32]; };
 struct CArrayStaticVertex { CStaticVertex* first; CStaticVertex* last; CStaticVertex* end; };
 struct CDeviceIndependent { long pad; CArrayStaticVertex Vertices; };
+class CTVertexNormTex1;
+class CTVertexNormTex1Bump;
 class C3DPrimitive2 { public:
     unsigned char pad0[8];
     long RepeatingMeshReps;
@@ -64,8 +66,13 @@ class C3DPrimitive2 { public:
     unsigned char pad30[0x28];
     unsigned long VertexCount;
     void ConvertToVBFormatRepeatingMesh(void*); // 0x00A8F770
-    void TransformVertexBufferWithNormals(void*); // 0x00A8F1B0
-    void TransformVertexBuffer(void*);            // 0x00A8EFA0
+private:
+    // NF93 (q11422 / q11423): Ego_r.pdb / FableWin.pdb private ?ConvertToVBFormatStaticBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1Bump@@@Z
+    //   (0x00A8F1B0) and ?ConvertToVBFormatStaticNonBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1@@@Z (0x00A8EFA0); were the made-up
+    //   TransformVertexBufferWithNormals / TransformVertexBuffer(void*).
+    void ConvertToVBFormatStaticBump(CTVertexNormTex1Bump* dest);   // 0x00A8F1B0
+    void ConvertToVBFormatStaticNonBump(CTVertexNormTex1* dest);    // 0x00A8EFA0
+public:
     void ConvertToVBFormatStatic(void*, unsigned long, unsigned long, CVertexCompressionParams*);
 };
 
@@ -99,9 +106,9 @@ void C3DPrimitive2::ConvertToVBFormatStatic(void* destination, unsigned long sou
     }
     {
         if (flags & 2)
-            TransformVertexBufferWithNormals(transformed);
+            ConvertToVBFormatStaticBump(static_cast<CTVertexNormTex1Bump*>(transformed));
         else
-            TransformVertexBuffer(transformed);
+            ConvertToVBFormatStaticNonBump(static_cast<CTVertexNormTex1*>(transformed));
         if (flags != convertedFormat)
             ConvertStaticVertices(transformed, convertedFormat, destination, flags, VertexCount, *params);
     }

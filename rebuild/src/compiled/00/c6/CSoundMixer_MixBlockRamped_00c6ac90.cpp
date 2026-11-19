@@ -15,7 +15,7 @@
 #ifndef _MSC_VER
 #define __cdecl
 #endif
-static __declspec(noinline) void __cdecl CUnprovenMixKernel_00c6aae0(const short* src,unsigned long count,long* dst,short initial,short step){
+static __declspec(noinline) void __cdecl ScaleAccumulate16RampMMX(const short* src,unsigned long count,long* dst,short initial,short step){
 #ifdef _MSC_VER
 __declspec(align(16)) short gains[4];__declspec(align(16)) short increments[4];
 gains[0]=(short)(initial+0*step);
@@ -46,5 +46,5 @@ private:
 void CSoundMixer::MixBlockRamped(const short* source, short initial, short step)
 {
     m_bMixed = 1;
-    CUnprovenMixKernel_00c6aae0(source, 0x10, m_pAccumulator, initial, step);
+    ScaleAccumulate16RampMMX(source, 0x10, m_pAccumulator, initial, step);
 }

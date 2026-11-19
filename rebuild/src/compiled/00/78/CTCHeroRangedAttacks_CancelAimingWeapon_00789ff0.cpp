@@ -88,8 +88,13 @@ template<class T> class CDefPointer { public:
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
     ~CDefPointer();
 };
-float __fastcall GetDamageMultiplierFromThingAtBuildUpTime(CThing* thing, CDefPointer<const CHeroCombatDef> def, float buildUpTime);    // 0x00789CE0
-float __fastcall GetAccuracyPercentageFromThingAtBuildUpTime(CThing* thing, CDefPointer<const CHeroCombatDef> def, float buildUpTime);  // 0x00789D90
+// NF93 (q11370): both helpers are tc_hero_ranged_attacks.cpp anonymous-namespace functions taking the thing by const reference (Ego_r.pdb /
+//   FableWin.pdb ?GetDamageMultiplierFromThingAtBuildUpTime@?A0x0524c104@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z and
+//   ?GetAccuracyPercentageFromThingAtBuildUpTime@?A0x0524c104@@..; the hash follows the file path); declarations only.
+namespace {
+float __fastcall GetDamageMultiplierFromThingAtBuildUpTime(const CThing& thing, CDefPointer<const CHeroCombatDef> pdef, float buildup_time);    // 0x00789CE0
+float __fastcall GetAccuracyPercentageFromThingAtBuildUpTime(const CThing& thing, CDefPointer<const CHeroCombatDef> pdef, float buildup_time);  // 0x00789D90
+}
 
 class CThingCreatureBase;
 class CTCHeroRangedAttacks { public:
@@ -130,8 +135,8 @@ void CTCHeroRangedAttacks::CancelAimingWeapon()
     Loading = false;
     ButtonReleaseCancelTimer = 0;
     PullBackAmount = 0.0f;
-    DamageMultiplier = GetDamageMultiplierFromThingAtBuildUpTime(ParentThing, PHeroCombatDef, 0.0f);
-    Accuracy = GetAccuracyPercentageFromThingAtBuildUpTime(ParentThing, PHeroCombatDef, 0.0f);
+    DamageMultiplier = GetDamageMultiplierFromThingAtBuildUpTime(*ParentThing, PHeroCombatDef, 0.0f);
+    Accuracy = GetAccuracyPercentageFromThingAtBuildUpTime(*ParentThing, PHeroCombatDef, 0.0f);
     CTCCarrying* carrying;
     if (ParentThing->GetInterface(&carrying, 0x46)) {
         CThing* weapon = carrying->GetThingInPrimarySlot();

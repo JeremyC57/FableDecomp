@@ -18,6 +18,7 @@
 //          load above the branch); the entry is assigned from a temporary whose counted pointer is body-assigned
 //          (`xor edi,edi ; test ebp,ebp` + load/inc/store), rides in edi and is released after the memberwise copy.
 #include "fable_compiler.h"
+#include "stlport/fable_map.h"
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 
 class CTCBase;
@@ -119,17 +120,14 @@ class CTCGraphicAppearance { public:
             : Priority(priority), EffectsCarriedItems(effectsCarriedItems),
               EffectsWeapons(effectsWeapons), InheritedFromCarrier(inheritedFromCarrier) { PEffect = effect; }
     };
-    struct CMeshEffectMap {                                 // STLport map<void*, entry>: header-node pointer, count, comparator
-        void*         _M_header;
-        unsigned long _M_node_count;
-        unsigned long _M_compare;
-        CMeshEffectPriorityEntry& operator[](void* const& key);   // 0x004C5B90
-    };
 
     void*          __vftable;                               // +0x00 (CTCBase)
     CThing*        ParentThing;                             // +0x04
     unsigned char  _pad08[0x0c - 0x08];
-    CMeshEffectMap MeshEffects;                             // +0x0c
+    // NF93 (q11437): the STLport map of stlport/fable_map.h (12 bytes: header node, count, comparator); its operator[] is the out-of-line
+    //   ??A?$map@PAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@..@std@@QAEAAU..@ABQAX@Z 0x004C5B90 (FableWin.pdb
+    //   0x01D131C0), declared only by the default fable_map.h branch. Was the local CMeshEffectMap stand-in.
+    std::map<void*, CMeshEffectPriorityEntry> MeshEffects;  // +0x0c
     unsigned char  _pad18[0x58 - 0x18];
     unsigned char  UpdatePrimitiveReasons;                  // +0x58
     void ClearMeshEffect(void* owner);                      // 0x004BFE20

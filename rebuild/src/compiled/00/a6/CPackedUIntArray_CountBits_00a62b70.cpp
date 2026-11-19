@@ -2,17 +2,19 @@
 // Retail 00a62b70 length 285. PDB CPackedUIntArray size16 fields0/4/8/12;
 // no generated header exists (including quarantine). Mask table013979e8.
 #include <string.h>
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 typedef unsigned long UInt; typedef long SInt;
-#define INLINE __forceinline
+#define INLINE FABLE_FORCEINLINE
 #else
 typedef unsigned int UInt; typedef int SInt;
 #define INLINE inline
 #endif
-extern UInt PackedBitMasks[33]; // 0x013979e8, mask for each bit count
 struct CPackedUIntArray {
     UInt* PackedInts; UInt Size; unsigned char Bits; UInt Bias;
     UInt CountBits(const void* data, UInt bits, SInt stride, UInt count) const;
+private:
+    static UInt BitMasks[];   // 0x013979E8 ?BitMasks@CPackedUIntArray@@0PAKA (Ego_r.pdb private static; NF93 q11367: was the made-up PackedBitMasks)
 };
 static INLINE UInt RequiredBits(UInt value) {
     UInt bit;
@@ -32,7 +34,7 @@ UInt CPackedUIntArray::CountBits(const void* data, UInt bits, SInt stride, UInt 
     UInt value=0;
     UInt bytes=(bits+7)>>3;
     UInt aggregate=0;
-    UInt mask=PackedBitMasks[bits];
+    UInt mask=BitMasks[bits];
     for(UInt i=0;i<count;++i) {
         if(bytes==4) value=*(const UInt*)p;
         else if(bytes>0) memcpy(&value,p,bytes);

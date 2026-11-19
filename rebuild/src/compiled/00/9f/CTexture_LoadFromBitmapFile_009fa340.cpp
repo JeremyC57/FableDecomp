@@ -16,12 +16,11 @@
 //   `return false` statements (`jl ; je`), each destroying the path; the reported size is a C2DExtentsI temporary copy.
 #include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local SPixelFormatInfo table g_pixelFormatInfo)
 // (name-fix NF29: the local _D3DFORMAT enum is now engine/Direct3D9Types.h, pulled in by engine/CD3DFormatInfo.h)
-namespace N_0099af00 { struct CWideString {
-    void* PData;
-    ~CWideString();                                         // 0x0099B510
-    operator const unsigned short*() const;                 // 0x0099AF00
-}; } using N_0099af00::CWideString;
-CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
+// NF93 (q11296): the local N_0099af00::CWideString stand-in replaced by fable_string.h (??BCWideString@@QBEPBGXZ 0x0099AF00, ~CWideString
+//   0x0099B510) and the free ConvertPathToFullPath by the Ego_r.pdb / FableWin.pdb static ?ConvertPathToFullPath@CAFile@@SI?AVCWideString@@ABV2@@Z
+//   (engine/CAFile.h FABLE_RETAIL_CAFILE; hidden result in ecx, path in edx).
+#define FABLE_RETAIL_CAFILE
+#include "engine/CAFile.h"                  // fable_string.h CWideString; CAFile::ConvertPathToFullPath 0x00999110
 struct IDirect3DDevice9;
 struct CRenderSystem {
     unsigned char      _pad00[0x58];
@@ -87,7 +86,7 @@ bool CTexture::LoadFromBitmapFile(const CWideString& filename, const C2DExtentsI
                                   unsigned long mipLevels, unsigned long usage, long pool, unsigned long filter,
                                   unsigned long mipFilter, CTextureFileInfo* info, long)
 {
-    CWideString path = ConvertPathToFullPath(filename);
+    CWideString path = CAFile::ConvertPathToFullPath(filename);
     Uninitialise();
     unsigned long width = (unsigned long)-1;
     unsigned long height = (unsigned long)-1;

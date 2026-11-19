@@ -42,6 +42,9 @@
 #include "stlport/fable_map.h"
 #include "fable_string.h"
 #include "engine/CArray.h"
+// NF93 (q11297): retail calls the CArray<unsigned char> size constructor out of line (0x00514E20, FableWin ??0?$CArray@E@@QAE@I@Z);
+//   the char buffer keeps the vector<char>(n) call of FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE (0x00411910).
+template<> CArray<unsigned char>::CArray(unsigned int n);
 #include "engine/CPackedUIntArray.h"
 #include "engine/CCountedPointer.h"
 #include "engine/CMemoryDataInputStream.h"
