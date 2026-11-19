@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/STATUS.tsv: 007f8c20	IMPROVED	3	TU_SIBLING STLport list model (224->221v221); header-shaped CDefPointer release tried (225v221)	same length, 62 difflines register colouring

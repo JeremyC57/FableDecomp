@@ -1,0 +1,17 @@
+addr: 0078a690
+status: parked
+batches: 2026-10-23_linux_hand324
+attempts: 1
+last_lens: 1094v1097
+bounds_class: OK
+bounds_detail: row=1097 ext=1097 corr=0078a690:1097
+retries: 
+git_commits: 13c093bd4
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(1094v1097) -- frame 0x1c v 0x14: retail shares one key word for every lookup and keeps the root-vector start in ebp across the tail (free(ebp)); byte-aligned bitset narrowing (mov cl,[+0x22] v shr 0x10) is a lane gap
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/0078a690.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

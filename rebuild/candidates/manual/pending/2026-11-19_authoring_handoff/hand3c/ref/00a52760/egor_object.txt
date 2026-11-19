@@ -1,0 +1,2 @@
+Ego_r: .\Release\lib_3d_animation_2.obj index 20 size 1179
+Ego_r: .\Release\lib_3d_animation_2.obj index 32 size 114

@@ -1,0 +1,15 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CEnginePrimitiveRenderer.h	2026-11-19 10:07:49.513259230 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w24/hand2c/hdr/engine/CEnginePrimitiveRenderer.h	2026-11-19 17:02:13.015532219 +0000
+@@ -74,6 +74,12 @@
+ #endif
+ class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent {
+ public:
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_LOADNEWSCENE
++    // hand3c opt-in (row 0x00B328C0): Ego_r.pdb / FableWin.pdb ?LoadNewScene@CEnginePrimitiveRenderer@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z
++    // (FableWin 0x02DA8F90), the CEngineComponent override (`this` is the +0x268 component, so the shared data reads at negative offsets).
++    // Declaration only: no layout change.
++    virtual bool LoadNewScene(const CEngineComponentLoadNewSceneParams& params);   // 0x00B328C0
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDSTATICMESH
+     // Opt-in (wf1 row 0x00BFA920): Ego_r.pdb / FableWin.pdb
+     // ?AddStaticMesh@CEnginePrimitiveRenderer@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z

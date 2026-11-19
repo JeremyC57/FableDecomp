@@ -1,0 +1,10 @@
+== QuadricOptimiserInternals::COptimisedPrimitive::ComputeSelfContraction (debug length 284)
+  bprel -52 type 0x72896 this   [QuadricOptimiserInternals::COptimisedPrimitive*]
+  bprel +8 type 0x728c5 contraction   [QuadricOptimiserInternals::CVertexPairContraction&]
+  bprel -24 type 0x40 normal_diff   [float]
+  bprel -20 type 0x40 cost   [float]
+  bprel -16 type 0x7287c vertex1   [const QuadricOptimiserInternals::COptimisedVertex&]
+  bprel -12 type 0x7287c vertex2   [const QuadricOptimiserInternals::COptimisedVertex&]
+  bprel -8 type 0x728ca sub_contraction   [const QuadricOptimiserInternals::CSubContraction&]
+  bprel -4 type 0x40 tex_diff   [float]
+== QuadricOptimiserInternals::COptimisedPrimitive::ComputeSelfContraction: no complete record

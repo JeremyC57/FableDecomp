@@ -1,0 +1,17 @@
+addr: 006cc800
+status: parked
+batches: 2026-10-21_linux_hand251
+attempts: 1
+last_lens: 358v399
+bounds_class: OK
+bounds_detail: row=399 ext=399 corr=006cc800:399
+retries: 
+git_commits: c38f46fa4
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(358v399) -- retail rounds the scan half-size with an inline-asm fistp helper (0.5 / 1.0 in ebp-frame locals, bare fistp, ebp frame); pure C++ cannot emit it (asm_bake family) CTCCreatureNavigation::FrameUpdate() -- every fifth frame (staggered by the thing's unique id) feeds the navigator the creature's position; when the nearby-thing scan is due (once a second, staggered) or the creature's scan radius grew, it re-reads the radius, schedules the next scan a second ahead, clears the nearby list and refills it with the things in a square of half-side max(2, round(radius * fps * k)) around
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand251/differ/006cc800.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

@@ -1,0 +1,14 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CSurface.h	2026-11-19 10:07:49.561259233 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w24/hand2c/hdr/engine/CSurface.h	2026-11-19 15:10:08.109257330 +0000
+@@ -53,6 +53,11 @@
+  void CopyFromSurface(const class C2DBoxI* destRect, const CSurface& source, const class C2DBoxI* sourceRect,
+                       unsigned long filter);              // 0x009F37E0
+ #endif
++#ifdef FABLE_RETAIL_CSURFACE_SETPIXEL_COLOUR
++ // hand3c opt-in (row 0x0066CD50 CRegionMinimap::BuildRegionMinimapTGA): Ego_r.pdb 0x00B47DF0 / FableWin.pdb 0x030C9F20
++ // ?SetPixel@CSurface@@QAEXJJABVCRGBColour@@@Z, out of line in retail at 0x009F4120 (call at 0x0066CE8F). Declaration only.
++ void SetPixel(long x, long y, const class CRGBColour& colour);   // 0x009F4120
++#endif
+ #ifdef FABLE_RETAIL_CSURFACE_SAVEASTGA
+  // Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): Ego_r.pdb ?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z, out of
+  // line in retail at 0x009F4590 (DoRender 0x00435E24 / 0x00435EF1, ecx = GPDisplayManager + 0x2C). Parameter names descriptive. Declaration only.

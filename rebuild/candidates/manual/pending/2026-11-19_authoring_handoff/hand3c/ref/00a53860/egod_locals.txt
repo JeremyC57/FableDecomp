@@ -1,0 +1,8 @@
+== C3DAnimation2::CalcLocalBoneTransformation (debug length 65)
+  bprel -12 type 0x298ef this   [const C3DAnimation2*]
+  bprel +8 type 0x298f4 dest   [C3DKeyframe&]
+  bprel +12 type 0x22 bone_index   [unsigned long]
+  bprel +16 type 0x40 t   [float]
+  bprel -8 type 0x12 frame   [long]
+  bprel -4 type 0x40 fraction   [float]
+== C3DAnimation2::CalcLocalBoneTransformation: no complete record

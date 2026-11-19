@@ -1,0 +1,17 @@
+addr: 00be2120
+status: parked
+batches: 2026-10-15_linux_hand134
+attempts: 1
+last_lens: 107v106
+bounds_class: OK
+bounds_detail: row=112 ext=106 corr=00be2120:106
+retries: 
+git_commits: ce02c6ea4
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(107v106) -- retail forms the slot address first (`push esi ; lea esi,[edx+eax*8] ; mov eax,[esi+4]`) and runs both null tests on eax; the lane folds the first load (`mov ecx,[edx+eax*8+4]`) before `push esi` and copies it to eax (lane gap: vector slot address materialisation, GOTCHAS wave 24l)
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-15_linux_hand134/differ/00be2120.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

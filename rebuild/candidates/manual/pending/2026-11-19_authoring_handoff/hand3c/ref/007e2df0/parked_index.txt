@@ -1,0 +1,17 @@
+addr: 007e2df0
+status: parked
+batches: 2026-10-20_linux_hand236
+attempts: 1
+last_lens: 260v257
+bounds_class: OK
+bounds_detail: row=272 ext=257 corr=007e2df0:257
+retries: 
+git_commits: a1aee6bd3
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(260v257) -- lane gap: inline-asm rounding. Retail builds an ebp frame and runs the x87 fistp idiom (fld f ; fadd 0.5 ; fistp i ; fild i ; fsub 1.0 ; fstp t ; if (f == t) --i) with its 0.5 / 1.0 constants and the integer stored in frame slots -- the shape of an `__asm` rounding helper, which byte purity rules out; the C++ spelling below emits an esp frame and a compiler fistp/ftol sequence instead (and copies ParentRHSet straight into the member rather than through a pointer register).
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-20_linux_hand236/differ/007e2df0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

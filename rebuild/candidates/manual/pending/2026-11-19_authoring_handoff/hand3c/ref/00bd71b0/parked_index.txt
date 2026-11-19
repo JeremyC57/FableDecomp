@@ -1,0 +1,17 @@
+addr: 00bd71b0
+status: parked
+batches: 2026-10-15_linux_hand902
+attempts: 1
+last_lens: 2121v2116
+bounds_class: OK
+bounds_detail: row=2116 ext=2116 corr=00bd71b0:2116
+retries: 
+git_commits: 7b51164bd
+skipped: prefix/in-chunk:902: bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(2121v2116) -- inline-asm FtoL (`fstp ; fld ; fistp dword [edx]`) unreproducible (__ftol2 stand-in), radius `fld [eax+34h]` hoisted first in retail, frame 0x290 v 0x294 + slot/callee-saved register drift
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-15_linux_hand902/differ/00bd71b0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

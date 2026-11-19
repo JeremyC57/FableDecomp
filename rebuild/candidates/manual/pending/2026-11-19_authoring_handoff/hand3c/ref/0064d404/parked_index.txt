@@ -1,0 +1,17 @@
+addr: 0064d404
+status: parked
+batches: 2026-10-21_linux_hand243
+attempts: 1
+last_lens: 129v399
+bounds_class: OK
+bounds_detail: row=399 ext=399 corr=0064d404:399
+retries: 
+git_commits: 3fe160ab3
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(129v399) -- parked at once: fistp/fild rounding (lane gap); only the element walk is reconstructed, the sprite tail is behind a stand-in helper
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand243/differ/0064d404.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

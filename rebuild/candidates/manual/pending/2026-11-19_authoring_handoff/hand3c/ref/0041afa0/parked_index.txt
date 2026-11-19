@@ -1,0 +1,17 @@
+addr: 0041afa0
+status: parked
+batches: 2026-10-23_linux_hand323
+attempts: 1
+last_lens: 1041v1455
+bounds_class: OK
+bounds_detail: row=1456 ext=1455 corr=0041afa0:1455
+retries: 
+git_commits: 7ddfaa155
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(1041v1455) -- lane gap: the four corner snaps are bare `fistp ; fild` (inline-asm ROUND); first draft of the visibility / cached-batch / rectangle / layer / quad flow; the inlined sprite-bank texture refresh (state refcount, lock and upload, about 400 bytes in retail) is modelled as two out-of-line calls
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/0041afa0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

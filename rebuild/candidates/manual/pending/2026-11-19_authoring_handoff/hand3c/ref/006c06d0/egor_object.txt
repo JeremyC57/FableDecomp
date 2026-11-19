@@ -1,0 +1,1 @@
+Ego_r: release\tc_buyable_house.obj index 27 size 354

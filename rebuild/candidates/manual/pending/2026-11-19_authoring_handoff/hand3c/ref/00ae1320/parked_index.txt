@@ -1,0 +1,17 @@
+addr: 00ae1320
+status: parked
+batches: 2026-10-22_linux_hand293
+attempts: 1
+last_lens: 376v681
+bounds_class: OK
+bounds_detail: row=688 ext=681 corr=00ae1320:681
+retries: 
+git_commits: 62c587cef
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(376v681) -- lane gap: inline __asm SSE (the 0x013D2880 branch multiplies each bone matrix by the inverse rest matrix in a hand-written movaps/shufps/mulps/addps block reading pointers the C code stored to frame slots, on a 16-byte aligned ebp frame); the source covers the x87 branch's maths only NParticleEngine::CParticleProgram::ClingToMesh(CParticleSimulation* simulation, C3DAnimationBlendState* blendState, C3DAnimationManager* animation, const C3DVector* position, C3DMesh2* mesh) -- pull the simulated particles back onto the animated mesh: compute the mesh's bone matrices for this fr
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00ae1320.cpp
+diagnosis: SSE block = retail inline asm: retail_asm candidate (owner-gated) | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

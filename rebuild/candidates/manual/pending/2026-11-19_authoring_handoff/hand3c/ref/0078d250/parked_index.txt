@@ -1,0 +1,17 @@
+addr: 0078d250
+status: parked
+batches: 2026-10-23_linux_hand323
+attempts: 1
+last_lens: 1592v1729
+bounds_class: OK
+bounds_detail: row=1729 ext=1729 corr=0078d250:1729
+retries: 
+git_commits: 7ddfaa155
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(1592v1729) -- lane gap: the tint level is a bare `fistp` (inline-asm ROUND); first full draft of the release/knock-back/ramp/countdown flow, with the knock-back sphere filter, the inverse-sqrt table form (0x013CE558 lookup) and the twice-expanded ramp block not yet in retail's shape
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/0078d250.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

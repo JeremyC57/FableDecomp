@@ -1,0 +1,1 @@
+Ego_r: Release\psc_render_mesh.obj index 8 size 1530

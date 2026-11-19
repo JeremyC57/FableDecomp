@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/STATUS.tsv: 00b103f0	IMPROVED	2 graded + 6 variants	full first reconstruction (1450v1463/80); EmitterLifeSecs default 10 s (1464v1463/78)	4-instruction register swap at the NonUniformScalingY top-field store (retail old-first OR); init-list vs body, signed pack, assignment-order, QFE-compiler levers inert

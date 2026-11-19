@@ -1,0 +1,17 @@
+addr: 006e5a00
+status: parked
+batches: 2026-10-23_linux_hand322
+attempts: 1
+last_lens: 120v1772
+bounds_class: OK
+bounds_detail: row=1776 ext=1772 corr=006e5a00:1772
+retries: 
+git_commits: 3d7b905e0
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(120v1772) -- skeleton draft, parked on sight (lane gap): the ebp frame and the fld/fadd 0.5/fistp/ fild/fsub 1.0 round-down sequence (twice) come from an inline-asm rounding helper, which pure C++ cannot emit.
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand322/differ/006e5a00.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

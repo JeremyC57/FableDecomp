@@ -1,0 +1,25 @@
+== CTCObjectAugmentations::AttemptToStartParticle (debug length 1943)
+  bprel -240 type 0x1dfca this   [CTCObjectAugmentations*]
+  bprel +8 type 0x9a87 pfx   [CIntelligentPointer<CThing>&]
+  bprel +12 type 0x12 effectid   [long]
+  bprel +16 type 0x12 effectidtoblendto   [long]
+  bprel +20 type 0x2318 startpoint   [const CCharString&]
+  bprel +24 type 0x2318 endpoint   [const CCharString&]
+  bprel -60 type 0x2460 end_pos   [C3DVector]
+  bprel -48 type 0x2460 start_pos   [C3DVector]
+  bprel -36 type 0x9b55 orientation   [CRightHandedSet]
+  {
+    bprel -64 type 0x9a77 blend_to   [CThing*]
+    {
+      bprel -116 type 0x3a328 ptc_emitter1   [CTCDParticleEmitter*]
+      bprel -112 type 0x233e2 pem2   [NParticleEngine::CParticleEmitter*]
+      bprel -108 type 0x3a328 ptc_emitter2   [CTCDParticleEmitter*]
+      bprel -104 type 0x2460 dist_between_attachment_points_vector   [C3DVector]
+      bprel -92 type 0x40 interp   [float]
+      bprel -88 type 0x40 distance_between_particle_points   [float]
+      bprel -84 type 0x2447 MAGIC_FACTOR   [const float]
+      bprel -80 type 0x40 short_spline_len   [float]
+      bprel -76 type 0x40 long_spline_len   [float]
+      bprel -72 type 0x233e2 pem1   [NParticleEngine::CParticleEmitter*]
+      bprel -68 type 0x40 dist_between_attachment_points   [float]
+== CTCObjectAugmentations::AttemptToStartParticle: no complete record

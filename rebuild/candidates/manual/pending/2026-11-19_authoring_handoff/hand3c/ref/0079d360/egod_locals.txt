@@ -1,0 +1,14 @@
+== CTCBulletTime::CTCBulletTime (debug length 2693)
+  bprel -300 type 0x31f7a this   [CTCBulletTime*]
+  bprel +8 type 0x9a89 thing   [CThing&]
+  bprel -60 type 0x447af ptc_inventory_abilities   [const CTCInventoryAbilities*]
+  bprel -56 type 0xabc5 pcreature   [CThingCreatureBase*]
+  bprel -52 type 0x12 effect   [long]
+  bprel -48 type 0x3922a interp   [CEnvironmentSpellEffectInterpolator&]
+  bprel -44 type 0x45c17 flags   [std::vector<NScreenEffect::CScreenEffectPriorityStack::CThingGraphicArgPasser,std::allocator<NScreenEffect::CScreenEffectPriorityStack::CThingGraphicArgPasser> >]
+  bprel -24 type 0x3002d ptc_carrying   [CTCCarrying*]
+  bprel -20 type 0x12 def_index   [long]
+  bprel -16 type 0x3eacd pspecial_effects   [CDefPointer<CSpecialEffectsDef const >]
+  {
+    bprel -64 type 0x233e2 pemitter   [NParticleEngine::CParticleEmitter*]
+== CTCBulletTime::CTCBulletTime: no complete record

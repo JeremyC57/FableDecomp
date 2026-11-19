@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/NOTES.md: - 0x00590235, 0x00590F0B, 0x00591B7F: priors kept, not regraded (see differ/ Grade lines and NOTES_chunk1007.md).
+rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/ROWS.tsv: 00591b7f	735	CTCInventory::UpdateContextSensitiveItems	parked	ltcg/crt/asm-impossible	rebuild/candidates/manual/pending/2026-10-23_linux_hand302/differ/00591b7f.cpp	00850a80	00590d32 00591a66 00591e5e 00591e8c 00591f62
+rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/STATUS.tsv: 00591b7f	CTCInventory::UpdateContextSensitiveItems	DIFFER(729v735)	0	differ/00591b7f.cpp = hand302 prior (14 grades), not regraded; escape-analysis residue

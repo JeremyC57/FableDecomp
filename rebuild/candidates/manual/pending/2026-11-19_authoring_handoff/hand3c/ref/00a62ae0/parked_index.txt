@@ -1,0 +1,17 @@
+addr: 00a62ae0
+status: parked
+batches: 2026-10-15_linux_hand150
+attempts: 1
+last_lens: 132v130
+bounds_class: OK
+bounds_detail: row=144 ext=130 corr=00a62ae0:130
+retries: 
+git_commits: 784b5d62b
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(132v130) -- lane gap (dead-argument-slot homing): retail has no frame and keeps the loop counter in the dead `bits` slot and the mask in the dead `count` slot with `data` loaded into ebx at entry; our build opens a `push ecx` frame word for the mask (or the counter) and loads ebx after the empty test; tried the plain form and reusing `bits` for the mask
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-15_linux_hand150/differ/00a62ae0.cpp
+diagnosis: dead-argument-slot homing: try the same-TU noinline stand-in for the address-taking callee (de-bake B2 / 24l real body) | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

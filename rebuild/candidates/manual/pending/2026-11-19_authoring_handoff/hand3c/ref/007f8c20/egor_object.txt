@@ -1,0 +1,1 @@
+Ego_r: release\tc_animating_object.obj index 3 size 239

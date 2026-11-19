@@ -1,0 +1,17 @@
+addr: 00766660
+status: parked
+batches: 2026-10-23_linux_hand304
+attempts: 1
+last_lens: 700v696
+bounds_class: OK
+bounds_detail: row=704 ext=696 corr=00766660:696
+retries: 
+git_commits: 60bef5020
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(700v696) -- 160 difflines: this/effect in edi/esi (retail esi/edi) and the end particle kept in ebx (retail spills it to the dead particleType slot and keeps the start emitter in ebx); `or byte ptr [ebp+0x41],2` read-modify-write where ours loads/ors/stores (the GOTCHAS 0x713740 lane gap; plain byte, bool and dword bitfields, a member reference and #pragma optimize("s") all tried). The x87 distance/ratio, the extern 1e-4 constant through a max() reference and both GetInterface lookups already match. CTCObjectAugmentations::AttemptToStartParticle(CIntelligentPointer<CThing>& effect, long
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand304/differ/00766660.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

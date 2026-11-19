@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/STATUS.tsv: 0077a430	IMPROVED	1067v1115/301 -> a CeilToLong asm helper 1054/277, b helper call block-scoped 1054/277	inline-asm ceiling helper (retail_asm precedent; parked 'lane gap' retested)	frame 0x60 v 0x48: helper slots not reused for later locals; rest is a first draft

@@ -1,0 +1,22 @@
+== CTCFlammable::FrameUpdate (debug length 1696)
+  bprel -372 type 0x2b689 this   [CTCFlammable*]
+  {
+    bprel -24 type 0x4d301 it   [std::_Vector_iterator<std::_Vector_val<NFire::CFirePoint,std::allocator<NFire::CFirePoint> > >]
+    {
+      bprel -28 type 0x2b67c fpoint   [NFire::CFirePoint&]
+  {
+    bprel -36 type 0x3cfe4 psound_def   [CDefPointer<CEntitySoundDef const >]
+    bprel -32 type 0x253a4 ptc_sound_player   [CTCSoundPlayer*]
+    {
+      bprel -40 type 0x4f30 pcriteria   [const CDefString*]
+  {
+    bprel -44 type 0x12 this_frame   [long]
+    {
+      bprel -48 type 0x9a77 pthing   [CThing*]
+      {
+        bprel -60 type 0x40 damage_this_cycle   [float]
+        bprel -53 type 0x30 extinguished   [bool]
+        bprel -52 type 0x24a4b p_game_object   [CThingGameObject*]
+        {
+          bprel -64 type 0xabc5 p_creature   [CThingCreatureBase*]
+== CTCFlammable::FrameUpdate: no complete record

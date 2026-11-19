@@ -1,0 +1,17 @@
+addr: 00a48f10
+status: parked
+batches: 2026-10-22_linux_hand289
+attempts: 1
+last_lens: 845v811
+bounds_class: OK
+bounds_detail: row=816 ext=811 corr=00a48f10:811
+retries: 
+git_commits: 307b907cc
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(845v811) -- known lane gap: retail inlines an inline-asm fistp floor helper (fld/fsub 0.5/fistp/fild/fadd 1.0 with frame constants, ebp frame); the rest of the blend is modelled CLipSyncSampleData::GetFrameInterpolate(CArray<CLipSyncPhoneme>&, float) -- blend the phoneme weights of the two frames around a time
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand289/differ/00a48f10.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

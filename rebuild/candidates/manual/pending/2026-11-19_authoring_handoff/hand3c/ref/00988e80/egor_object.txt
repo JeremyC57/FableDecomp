@@ -1,0 +1,1 @@
+Ego_r: .\Release\lib_shader_render_manager.obj index 47 size 1000

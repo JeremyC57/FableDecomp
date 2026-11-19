@@ -1,0 +1,17 @@
+addr: 00b99300
+status: parked
+batches: 2026-10-22_linux_hand285
+attempts: 1
+last_lens: 855v871
+bounds_class: OK
+bounds_detail: row=880 ext=871 corr=00b99300:871
+retries: 
+git_commits: 225f3572f
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(855v871) -- register/schedule only: retail loads the bool and count args at entry (dl/ebp), keeps the two SetVSConstants tails apart (ours cross-jumps them, -16 bytes) and orders the position/normal temporaries the other way in the frame CEnginePrimitiveManagerRepeatedStaticMeshes::ProcessLightingSW(prim, x, y, z, normals, count, separateMainLight) -- software-light a batch of repeated-mesh instances into the SIMD variable block: the SSE vector lighting path when enabled (count rounded up to 4), else one CalcSWLighting* call per instance; with a separate main light the main-light colour
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand285/differ/00b99300.cpp
+diagnosis: SSE block = retail inline asm: retail_asm candidate (owner-gated) | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

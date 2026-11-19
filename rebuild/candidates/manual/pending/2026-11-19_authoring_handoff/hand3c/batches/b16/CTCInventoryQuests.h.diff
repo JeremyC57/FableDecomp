@@ -1,0 +1,15 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CTCInventoryQuests.h	2026-11-19 10:07:49.569259234 +0000
++++ hdr/engine/CTCInventoryQuests.h	2026-11-19 16:07:22.450187772 +0000
+@@ -43,6 +43,12 @@
+ class CTCInventoryQuests : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
+ public:
+     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_INVENTORY_QUESTS; }
++#if defined(FABLE_RETAIL_CTCINVENTORYQUESTS_RESETCATEGORYLIST) && defined(FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22)
++    // hand3c opt-in (row 0x00621A20 InitialiseQuestCardList): Ego_r.pdb / FableWin.pdb ?ResetCategoryList@CTCInventoryQuests@@QAEXXZ (Ego_r
++    // tc_inventory_quests.obj, 56 bytes; FableWin 0x01F7DC40 = one call to vector<NInventory::CCategory>::clear) with that body; expanded in
++    // retail (0x00621A2F..0x00621A5C: __copy 0x00625820, _Destroy 0x005C2A8E, _M_finish store). Needs the typed Categories (PASS22 chain).
++    void ResetCategoryList() { Categories.clear(); }
++#endif
+ #ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_GETSELECTEDCATEGORYASSOCIATION
+     // NF89 opt-in (q11165..q11167, row 0x0061A040): Ego_r.pdb + FableWin.pdb ?GetSelectedCategoryAssociation@CTCInventoryQuests@@QAEPAVCThing@@XZ
+     // (public, non-virtual; outside the MEMBERS block, no layout change), out of line at 0x0061A040 in the CTCInventoryQuests TU. Declaration only.

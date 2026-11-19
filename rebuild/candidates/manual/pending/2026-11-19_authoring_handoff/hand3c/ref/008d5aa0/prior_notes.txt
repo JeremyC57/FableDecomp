@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/STATUS.tsv: 008d5aa0	IMPROVED	119 -> 68 -> 66 (DIFFER 1115v1126)	GetInterfaceT (bitset::test form) + IS_THING_ALIVE nested-if; LowerBound key as a temporary	frame 0x44 vs 0x40 (multi-arrow key temp keeps its own slot), ReleaseMissile out-slot order, ebx/edi swap, not-solid loop copy

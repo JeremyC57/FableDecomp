@@ -1,0 +1,1 @@
+Ego_r: release\script_conversation_manager.obj index 13 size 2019

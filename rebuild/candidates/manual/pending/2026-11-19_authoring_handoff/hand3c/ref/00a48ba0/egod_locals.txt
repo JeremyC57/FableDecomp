@@ -1,0 +1,26 @@
+== CLipSyncSampleData::WriteToFile (debug length 1651)
+  bprel -216 type 0x4146b this   [const CLipSyncSampleData*]
+  bprel +8 type 0x2884 os   [CDataOutputStream&]
+  bprel -44 type 0x163d5 phoneme_map   [std::map<unsigned long,CCharString,std::less<unsigned long>,std::allocator<std::pair<unsigned long const ,CCharString> > >]
+  bprel -24 type 0x166e9 itr   [std::_Tree_iterator<std::_Tree_val<std::_Tmap_traits<unsigned long,CCharString,std::less<unsigned long>,std::allocator<std::pair<unsigned long const ,CCharString> >,0> > >]
+  {
+    bprel -48 type 0x22 c_frame   [unsigned long]
+    {
+      bprel -52 type 0x41343 frame   [const CLipSyncFrameData&]
+      {
+        bprel -56 type 0x22 c_phoneme   [unsigned long]
+        {
+          bprel -72 type 0x41386 phoneme   [CLipSyncPhoneme]
+  {
+    bprel -76 type 0x22 phoneme_id   [unsigned long]
+  {
+    bprel -80 type 0x22 c_frame   [unsigned long]
+    {
+      bprel -88 type 0x41343 frame   [const CLipSyncFrameData&]
+      bprel -84 type 0x22 phoneme_count   [unsigned long]
+      {
+        bprel -92 type 0x22 c_phoneme   [unsigned long]
+        {
+          bprel -112 type 0x41386 phoneme   [CLipSyncPhoneme]
+          bprel -96 type 0x12 byte_weight   [long]
+== CLipSyncSampleData::WriteToFile: no complete record

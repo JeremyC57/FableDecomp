@@ -1,0 +1,1 @@
+Ego_r: release\player_gui.obj index 89 size 674

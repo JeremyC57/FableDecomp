@@ -1,0 +1,11 @@
+== CTCBuyableHouse::GetRentMoneyPos (debug length 245)
+  bprel -80 type 0x2f1ed this   [CTCBuyableHouse*]
+  bprel +8 type 0x2454 ret   [C3DVector&]
+  bprel +12 type 0x12 bag   [long]
+  bprel +16 type 0x12 bags   [long]
+  bprel -36 type 0x2460 pos   [C3DVector]
+  bprel -24 type 0x9b55 rhs   [CRightHandedSet]
+  {
+    bprel -56 type 0x2460 forward   [C3DVector]
+    bprel -44 type 0x9b09 offset   [C2DVector]
+== CTCBuyableHouse::GetRentMoneyPos: no complete record

@@ -1,0 +1,4 @@
+rebuild/candidates/manual/pending/2026-10-23_linux_hand304/NOTES.md: - 00766660 CTCObjectAugmentations::AttemptToStartParticle DIFFER(700v696): esi/edi swap + `or byte ptr` RMW lane gap (160) | tried: byte/bool/dword bitfields, member ref, optimize("s")
+rebuild/candidates/manual/pending/2026-10-23_linux_hand304/LESSONS.md: - A 1e-4 floor through `Max(range, g_MinSplineRange)` with an extern const global gives retail's `mov eax,&const` pick (00766660).
+rebuild/candidates/manual/pending/2026-10-23_linux_hand304/rows.tsv: 00766660	CTCObjectAugmentations	AttemptToStartParticle	704
+rebuild/candidates/manual/pending/2026-10-23_linux_hand304/STATUS.tsv: 00766660	DIFFER	700v696	-	this/effect esi/edi swap + end-particle spill + or-byte RMW lane gap (160 difflines)

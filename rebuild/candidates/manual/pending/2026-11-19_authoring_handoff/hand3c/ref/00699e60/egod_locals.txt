@@ -1,0 +1,4 @@
+== CGameCameraManager::SetScriptedCameraMode (debug length 800)
+  bprel -88 type 0x3c016 this   [CGameCameraManager*]
+  bprel +8 type 0x3c282 pscript_module   [CCountedPointer<NCameraModes::CScriptModuleBase>]
+== CGameCameraManager::SetScriptedCameraMode: no complete record

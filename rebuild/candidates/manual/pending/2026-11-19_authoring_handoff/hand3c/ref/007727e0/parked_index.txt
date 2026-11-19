@@ -1,0 +1,17 @@
+addr: 007727e0
+status: parked
+batches: 2026-10-21_linux_hand272
+attempts: 1
+last_lens: 497v433
+bounds_class: OK
+bounds_detail: row=448 ext=433 corr=007727e0:433
+retries: 
+git_commits: 15193053d
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(497v433) -- minimal attempt; retail rounds the stock level with an inline-assembly fistp sequence (fadd 0.5 ; fistp ; fild ; fsub 1.0 ; compare ; dec) that compiled C++ never produces, so this row needs an oracle-lane decision before more work; the rest (defs, stock map find, discount cap, default-stock multiplier) is modelled
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand272/differ/007727e0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

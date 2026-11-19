@@ -1,0 +1,17 @@
+addr: 007df770
+status: parked
+batches: 2026-10-22_linux_hand273
+attempts: 1
+last_lens: 436v437
+bounds_class: OK
+bounds_detail: row=437 ext=437 corr=007df770:437
+retries: 
+git_commits: 045df06e2
+skipped: 
+rebound: 
+in_findings: y
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(436v437) -- lane gap (register-cached frame local): an argument is pushed before `mov ecx,<callee-saved>` for a pointer local that retail spills at its definition and reloads after the region; event/constant register swap. Fable 5.1 advisor: 27 grades, every control-flow-preserving spelling gives identical bytes
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand273/differ/007df770.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

@@ -1,0 +1,1 @@
+Ego_r: .\Release\lib_3d_animation_manager.obj index 11 size 533

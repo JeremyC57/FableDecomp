@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-10-22_linux_hand283/NOTES.md: - 009acee0 DIFFER 1030v1017: the separator is cached in edi across the call (lane gap), and the name/separator frame words are swapped.
+rebuild/candidates/manual/pending/2026-10-22_linux_hand283/rows.tsv: 009acee0	CDefinitionManager	ParseEnumForSymbols	1024
+rebuild/candidates/manual/pending/2026-10-22_linux_hand283/STATUS.tsv: 009acee0	DIFFER	1030v1017	-	retail caches separator.PStringData in edi across the out-of-line operator== call (lane gap: register caching across calls); name/separator frame words swapped

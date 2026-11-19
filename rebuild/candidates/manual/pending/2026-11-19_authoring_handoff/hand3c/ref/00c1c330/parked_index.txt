@@ -1,0 +1,17 @@
+addr: 00c1c330
+status: parked
+batches: 2026-10-19_linux_hand200
+attempts: 1
+last_lens: 
+bounds_class: OK
+bounds_detail: row=192 ext=192 corr=00c1c330:192
+retries: 
+git_commits: 5804590de
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(ours v retail) -- lane gap: LTCG custom register convention (matrix A in eax, point in ecx, matrix B in edx, result pointer in esi, plain `ret`); a standard-convention body cannot reproduce the argument registers TransformPointThroughMirroredFrame_00c1c330(const CMatrix3x4& a, const C3DVector& point, const CMatrix3x4& b) -- transform `point` by a, mirror a negative z to positive, then transform the result by b
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-19_linux_hand200/differ/00c1c330.cpp
+diagnosis: LTCG custom convention: permanently asm | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

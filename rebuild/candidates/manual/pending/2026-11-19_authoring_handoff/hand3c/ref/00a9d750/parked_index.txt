@@ -1,0 +1,17 @@
+addr: 00a9d750
+status: parked
+batches: 2026-10-22_linux_hand276
+attempts: 1
+last_lens: 492v551
+bounds_class: OK
+bounds_detail: row=551 ext=551 corr=00a9d750:551
+retries: 
+git_commits: 07878f8f5
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(492v551) -- lane gap (original inline-assembly SSE block): retail stores the row pointer to a frame local and re-reads it into edx, loads the scale from the frame into a fixed xmm3 and rows into xmm0-2 (names re-read, fixed registers, the GOTCHAS chunk-268 signature); intrinsics schedule it differently. The x87 fallback rows also differ in commutative operand order.
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a9d750.cpp
+diagnosis: SSE block = retail inline asm: retail_asm candidate (owner-gated) | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

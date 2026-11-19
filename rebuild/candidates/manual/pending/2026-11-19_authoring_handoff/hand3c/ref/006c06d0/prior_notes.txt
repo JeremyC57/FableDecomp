@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-27_linux_hand638/STATUS.tsv: 006c06d0	DIFFER	312v312	-	x87 canonical operand order: retail `fld [Forward.Y] ; fmul st(2)`, ours `fld st(1) ; fmul [Forward.Y]` (GetSignPostPos/Rotate respelled to the PDB)

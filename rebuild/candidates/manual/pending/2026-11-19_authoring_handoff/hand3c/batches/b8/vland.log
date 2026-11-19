@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00b94bf0   WARN RELOC_NAME: ??A?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@QAEAAV?$CCountedPointer@VCEngineSceneMap@@@@ABJ@Z -> 00b97c10 labelled 'std_map_find_or_insert'
+00b94bf0   RELOCATION_MATCH PASS   GetMapAt
+00914650   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 2
+  00b94bf0 RELOCATION_MATCH CEngineScene::?GetMapAt@CEngineScene@@QAEAAVCEngineSceneMap@@ABVC2DVector@@@Z
+  00914650 RELOCATION_MATCH CAIStateGroup_BirdStartled::?IsRunnable@CAIStateGroup_BirdStartled@@UAE_NXZ

@@ -1,0 +1,1 @@
+Ego_r: release\tc_flammable.obj index 15 size 577

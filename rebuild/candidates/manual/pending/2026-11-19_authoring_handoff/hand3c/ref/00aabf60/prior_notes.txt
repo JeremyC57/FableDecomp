@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-10-22_linux_hand298/NOTES.md: - 00aabf60 CSoundEmitterLH::vfunc_3 DIFFER(625v620): retail is LTCG; the pure FindFirstSetBit 0x00A3F860 call is hoisted out of the second mask loop with a register convention | tried: inline/out-of-line helper, loop forms | next: lane gap: LTCG
+rebuild/candidates/manual/pending/2026-10-22_linux_hand298/rows.tsv: 00aabf60	CSoundEmitterLH	CSoundEmitterLH::vfunc_3	624
+rebuild/candidates/manual/pending/2026-10-22_linux_hand298/STATUS.tsv: 00aabf60	DIFFER	625v620	-	LTCG: pure FindFirstSetBit call hoisted with register args

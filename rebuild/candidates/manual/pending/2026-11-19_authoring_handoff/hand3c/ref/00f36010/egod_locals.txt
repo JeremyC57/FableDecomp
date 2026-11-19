@@ -1,0 +1,1 @@
+== CPerlinNoise::GetGaussian2DNoise: no complete record

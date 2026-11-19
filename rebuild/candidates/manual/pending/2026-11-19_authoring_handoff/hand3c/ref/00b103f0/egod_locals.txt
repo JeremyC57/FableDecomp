@@ -1,0 +1,3 @@
+== NParticleEngine::CPSCEmitterGeneric::CPSCEmitterGeneric (debug length 1486)
+  bprel -16 type 0x6eb28 this   [NParticleEngine::CPSCEmitterGeneric*]
+== NParticleEngine::CPSCEmitterGeneric::CPSCEmitterGeneric: no complete record

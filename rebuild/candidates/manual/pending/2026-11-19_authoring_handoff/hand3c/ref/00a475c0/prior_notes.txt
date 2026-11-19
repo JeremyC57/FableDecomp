@@ -1,0 +1,4 @@
+rebuild/candidates/manual/pending/2026-10-23_linux_hand320/NOTES.md: - 00a475c0 CNavigatorBase::FindNearestNavigableNode DIFFER(-v1857): `and esp,-8` frame plus 222 x87 ops | tried: triage only | next: find the 8-byte loop local (GOTCHAS chunk 232/252 levers)
+rebuild/candidates/manual/pending/2026-10-23_linux_hand320/LESSONS.md: - 15 rows are triage-only stubs (decoded, no source drafted): 0x008DD0F0, 0x00AB4BB0, 0x009BD460, 0x00A7A8D0, 0x00A79B30, 0x00A1A260, 0x00A1B5A0, 0x00A1D6E0, 0x00A475C0, 0x00700AE0, 0x00701010, 0x00ACE600, 0x00ACC490, 0x00D9C680, 0x00B079B0. They are large x87, aligned-frame or many-callee bodies.
+rebuild/candidates/manual/pending/2026-10-23_linux_hand320/rows.tsv: 00a475c0	CNavigatorBase	FindNearestNavigableNode	1872
+rebuild/candidates/manual/pending/2026-10-23_linux_hand320/STATUS.tsv: 00a475c0	DIFFER	-v1857	-	triage only: `and esp,-8` aligned frame (8-byte local in the search loop) plus 222 x87 ops

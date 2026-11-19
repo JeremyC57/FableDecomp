@@ -1,0 +1,14 @@
+== CDefinitionManager::ParseEnumForSymbols (debug length 1498)
+  bprel -200 type 0x9bb9 this   [CDefinitionManager*]
+  bprel +8 type 0x28ec parser   [CStringParser&]
+  bprel -40 type 0x23d0 symbol_type_name   [CCharString]
+  bprel -32 type 0xc4a2 parsed_item   [CParsedItem]
+  bprel -16 type 0x12 current_val   [long]
+  {
+    bprel -60 type 0x12 val   [long]
+    bprel -56 type 0x23d0 symbol_name   [CCharString]
+    bprel -48 type 0x23d0 comma_or_equals   [CCharString]
+    {
+      bprel -108 type 0xc646 persist_context   [CPersistContext]
+      bprel -64 type 0xbe77 val_traits   [CPersistTraits<long>]
+== CDefinitionManager::ParseEnumForSymbols: no complete record

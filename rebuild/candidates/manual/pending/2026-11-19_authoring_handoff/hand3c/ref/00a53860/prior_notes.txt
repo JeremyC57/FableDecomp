@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/STATUS.tsv: 00a53860	IMPROVED	1	landed FloatToLong retail_asm helper in FastAcos/FastSin (200 from 339)	966v1005 slerp x87 scheduling / frame

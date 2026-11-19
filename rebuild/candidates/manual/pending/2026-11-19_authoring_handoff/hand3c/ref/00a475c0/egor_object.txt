@@ -1,0 +1,1 @@
+Ego_r: .\Release\lib_navigator_base.obj index 6 size 2246

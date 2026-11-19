@@ -1,0 +1,24 @@
+== CWaveFile::ConvertSamplingRate (debug length 1429)
+  bprel -156 type 0x7089d this   [CWaveFile*]
+  bprel +8 type 0x22 rate   [unsigned long]
+  bprel -64 type 0x708cd new_data   [CArray<short>]
+  bprel -44 type 0x22 pos_int   [unsigned long]
+  bprel -40 type 0x411 data_dest   [short*]
+  bprel -36 type 0x22 step_int   [unsigned long]
+  bprel -32 type 0x22 pos_frac   [unsigned long]
+  bprel -28 type 0x1809 FRACTION_BITS   [const unsigned long]
+  bprel -24 type 0x40 step   [float]
+  bprel -20 type 0x22 new_sample_length   [unsigned long]
+  bprel -16 type 0x22 step_frac   [unsigned long]
+  {
+    bprel -68 type 0x22 c_sample   [unsigned long]
+    {
+      bprel -80 type 0x22 pos_int_plus_1   [unsigned long]
+      bprel -76 type 0x12 weight1   [long]
+      bprel -72 type 0x12 weight2   [long]
+      {
+        bprel -84 type 0x22 c_chan   [unsigned long]
+        {
+          bprel -92 type 0x12 sample1   [long]
+          bprel -88 type 0x12 sample2   [long]
+== CWaveFile::ConvertSamplingRate: no complete record

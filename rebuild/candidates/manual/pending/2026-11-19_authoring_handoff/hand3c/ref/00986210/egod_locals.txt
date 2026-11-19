@@ -1,0 +1,7 @@
+== CAIStateGroup_OpinionReactionRoot::CallingChildrenIsRunnable (debug length 825)
+  bprel -156 type 0x5f7b0 this   [CAIStateGroup_OpinionReactionRoot*]
+  {
+    bprel -36 type 0x2ba6b ptc_perception   [const CTCPerceiveThing*]
+    bprel -32 type 0x19419 ret_pcreature   [const CThingAICreature*]
+    bprel -28 type 0xae56 scan_area   [C2DBoxI]
+== CAIStateGroup_OpinionReactionRoot::CallingChildrenIsRunnable: no complete record

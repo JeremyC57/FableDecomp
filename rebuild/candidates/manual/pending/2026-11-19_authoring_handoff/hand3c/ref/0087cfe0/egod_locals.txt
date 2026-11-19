@@ -1,0 +1,39 @@
+== CCreatureAction_InterruptableMidAttackAutoTurn::SetupTurningAnimation (debug length 3878)
+  bprel -548 type 0x4dc1b this   [CCreatureAction_InterruptableMidAttackAutoTurn*]
+  bprel +8 type 0x40 rotation_angle   [float]
+  bprel -77 type 0x30 bandit_slayer   [bool]
+  bprel -76 type 0x3acc6 valid_ko_anims   [std::vector<CAnimationEntry const *,std::allocator<CAnimationEntry const *> >]
+  bprel -56 type 0x3acc6 valid_ko_flourish_anims   [std::vector<CAnimationEntry const *,std::allocator<CAnimationEntry const *> >]
+  bprel -36 type 0xabc5 ptarget_creature   [CThingCreatureBase*]
+  bprel -32 type 0x3acc6 valid_regular_anims   [std::vector<CAnimationEntry const *,std::allocator<CAnimationEntry const *> >]
+  {
+    bprel -84 type 0x27f16 pmelee_ability   [CDefPointer<CMeleeCombatAbilityDef const >]
+    {
+      bprel -112 type 0x19913 pcombt_anim   [const CAnimationEntry*]
+      bprel -108 type 0x3acc6 combat_anims   [std::vector<CAnimationEntry const *,std::allocator<CAnimationEntry const *> >]
+      bprel -88 type 0x2ba7f ptc_cmm   [const CTCCreatureModeManager*]
+  {
+    bprel -116 type 0x4f132 ptc_hit_locations   [const CTCHitLocations*]
+    {
+      bprel -120 type 0x277de ploc   [const NHitLocations::CHitLocation*]
+      {
+        bprel -124 type 0x276b5 parmour_def   [CDefPointer<CArmourDef const >]
+        {
+          bprel -128 type 0x26aff ptc_carrying   [const CTCCarrying*]
+          {
+            bprel -132 type 0x9a77 pweapon   [CThing*]
+            {
+              bprel -136 type 0x44feb ptc_aug   [const CTCObjectAugmentations*]
+  {
+    bprel -148 type 0x3ae91 it   [std::_Vector_const_iterator<std::_Vector_val<CAnimationEntry const *,std::allocator<CAnimationEntry const *> > >]
+    {
+      bprel -162 type 0x30 anim_allowed   [bool]
+      bprel -161 type 0x30 anim_ko   [bool]
+      bprel -160 type 0x447b3 pcombat   [const CAnimComponentCombatMisc*]
+      bprel -153 type 0x30 anim_flourish   [bool]
+      bprel -152 type 0x19676 cmbt_anim   [const CAnimationEntry&]
+  {
+    bprel -168 type 0x22312 phero_combat_def   [CDefPointer<CHeroCombatDef const >]
+  {
+    bprel -188 type 0x3acc6 list_to_use   [std::vector<CAnimationEntry const *,std::allocator<CAnimationEntry const *> >]
+== CCreatureAction_InterruptableMidAttackAutoTurn::SetupTurningAnimation: no complete record

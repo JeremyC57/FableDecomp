@@ -1,0 +1,17 @@
+addr: 00bee070
+status: parked
+batches: 2026-10-19_linux_hand194
+attempts: 1
+last_lens: 206v206
+bounds_class: OK
+bounds_detail: row=208 ext=206 corr=00bee070:206
+retries: 
+git_commits: 282ba05d9
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(ours v retail) -- 206v206: a pure callee-saved register swap (retail esi = result, edi = first; ours the reverse) plus the eax/ecx/edx rotation that follows from it; same instructions otherwise (known lane gap shape). Tried: implicit pair assignment, explicit inline pair operator=. _global::__pop_heap(SSurfacePair* first, SSurfacePair* last, SSurfacePair* result, SSurfacePair value, CKeyPairCompareLess comp, long*) -- SGI pop_heap core for a heap of (long, CCompositeSurfaceInfo) pairs: *result = *first, then sift `value` down from the root
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-19_linux_hand194/differ/00bee070.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

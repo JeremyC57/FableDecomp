@@ -1,0 +1,17 @@
+addr: 0052ee00
+status: parked
+batches: 2026-10-15_linux_hand187
+attempts: 1
+last_lens: 185v192
+bounds_class: OK
+bounds_detail: row=192 ext=192 corr=0052ee00:192
+retries: 
+git_commits: 778f7d08a
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(185v192) -- structure/registers: retail keeps the target position in the frame (eax/ecx copy) and tests !parent and IsPositionAbsolute before re-testing it, ours holds the position in ebx/ebp and orders the returns differently; x87 result build differs | tried: inline ToParentSpace helper (not inlined), __forceinline helper, explicit three-return body | next: lane gap: x87 temporaries / return-path layout NUISystem::CComponent::GetTargetRenderPosition() -- the target position, scaled by the zoom and offset by the parent's render position when the component has a parent and is not absolu
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-15_linux_hand187/differ/0052ee00.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

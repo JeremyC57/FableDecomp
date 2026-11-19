@@ -1,0 +1,11 @@
+== C3DAnimationManager::ApplyBoneMorphScaling (debug length 141)
+  bprel -12 type 0x4675f this   [const C3DAnimationManager*]
+  bprel +8 type 0x4276 bone_morphs   [const C3DVector*]
+  bprel +12 type 0xc107 dest   [CMatrix4x4*]
+  bprel +16 type 0x22 no_bones   [unsigned long]
+  bprel +20 type 0x30 transpose   [bool]
+  {
+    bprel -4 type 0x22 c_bone   [unsigned long]
+  {
+    bprel -8 type 0x22 c_bone   [unsigned long]
+== C3DAnimationManager::ApplyBoneMorphScaling: no complete record

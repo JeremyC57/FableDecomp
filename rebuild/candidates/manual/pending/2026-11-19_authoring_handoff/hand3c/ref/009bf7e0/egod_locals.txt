@@ -1,0 +1,8 @@
+== CDisplayManager::CreateDevice (debug length 1688)
+  bprel -128 type 0xb3c0 this   [CDisplayManager*]
+  bprel +8 type 0xb41c parameters   [const CDisplayManager::CCreateDeviceParameters&]
+  bprel -28 type 0x22 create_flags   [unsigned long]
+  bprel -24 type 0x8 hr   [prim8]
+  bprel -20 type 0xa573 pdepthbuffer_surface   [IDirect3DSurface9*]
+  bprel -16 type 0xa573 pbackbuffer_surface   [IDirect3DSurface9*]
+== CDisplayManager::CreateDevice: no complete record

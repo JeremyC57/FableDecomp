@@ -1,0 +1,17 @@
+addr: 00a5b650
+status: parked
+batches: 2026-10-15_linux_hand186
+attempts: 1
+last_lens: 179v184
+bounds_class: OK
+bounds_detail: row=192 ext=184 corr=00a5b650:184
+retries: 
+git_commits: 3d2b50018
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(179v184) -- erase/copy-trivial now matches in shape but ebx is pushed in the prologue (retail scopes push ebx to the memmove arm) and the 0x009E9900 range append uses an LTCG custom convention with both temporaries in the dead other-slot | tried: direct erase compare, begin()/end() accessors, CopyTrivial helper (first==last) | next: lane gap: LTCG custom convention + dead-argument-slot temporaries CCachedFile::Copy(const CCachedFile& other) -- assignment body shared by the copy ctor and Clone: position, flags, pathname, a fresh shared reference to the disk file (or release it), then the
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-15_linux_hand186/differ/00a5b650.cpp
+diagnosis: LTCG custom convention: permanently asm | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

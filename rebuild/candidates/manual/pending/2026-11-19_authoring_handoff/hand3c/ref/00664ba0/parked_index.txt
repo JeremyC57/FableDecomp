@@ -1,0 +1,17 @@
+addr: 00664ba0
+status: parked
+batches: 2026-10-20_linux_hand214
+attempts: 1
+last_lens: 207v184
+bounds_class: OK
+bounds_detail: row=192 ext=184 corr=00664ba0:184
+retries: 
+git_commits: d2c38b3fc
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(207v184) -- the failure-path null-tested release becomes the long `mov ecx,eax ; add eax,4 ; dec ; test ; mov [eax],..` form (retail `dec [ecx+4] ; jne`, the retry-8 lane gap), the key and out pointer get separate frame words (retail shares one), and the no-TC exit is laid out inline
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-20_linux_hand214/differ/00664ba0.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

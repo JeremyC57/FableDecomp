@@ -1,0 +1,15 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CNavQuadTree.h	2026-11-19 10:07:49.545259232 +0000
++++ hdr/engine/CNavQuadTree.h	2026-11-19 16:40:19.656093742 +0000
+@@ -67,6 +67,12 @@
+     std::list<CNavRegion> Regions;                                       // +0x74
+     CVectorMap<long, CCountedPointer<CNavConnectorNode> > ConnectorNodes;   // +0x78
+     static CNavBlockedQuadTreeNode BlockedNode;                          // 0x013D2D2C
++#ifdef FABLE_RETAIL_CNAVQUADTREE_GETBLOCKEDNODE
++    // hand3c opt-in (row 0x00A770B0 GetNodeAt): FableWin.pdb ?GetBlockedNode@CNavQuadTree@@SIPAVCNavBlockedQuadTreeNode@@XZ (static
++    // __fastcall; FableWin GetNodeAt calls it at 0x03293E91), inline in retail (the row compares the cell node with 0x013D2D2C and
++    // stores into BlockedNode in place, 0x00A77241..0x00A772A1). No layout change.
++    static CNavBlockedQuadTreeNode* __fastcall GetBlockedNode() { return &BlockedNode; }
++#endif
+ #ifdef FABLE_RETAIL_CNAVQUADTREE_SMALLESTNODESIZE
+     // Nested opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): Ego_r.pdb ?GetSmallestNodeSize@CNavQuadTree@@SIMXZ,
+     // retail 0x00A76320 (static __fastcall, `fld 0.5 ; ret`; landed siblings 0x00A15140 / 0x00A472F0 bind the same spelling; called

@@ -1,0 +1,17 @@
+addr: 00b41a80
+status: parked
+batches: 2026-10-21_linux_hand262
+attempts: 1
+last_lens: 329v424
+bounds_class: OK
+bounds_detail: row=432 ext=424 corr=00b41a80:424
+retries: 
+git_commits: 6eda038ae
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(329v424) -- lane gap: retail quantises the game-map height with an inline-asm rounding helper (`fstp [arg] ; fld [arg] ; fistp dword ; fild`, GOTCHAS wave 25 fistp family); this body (one structural attempt) also still differs in frame size (the clamped coordinates / width live in a 0x10 frame), the neighbour-map lookup (not inlined the same way) and the early-out layout CEngineMap::PeekWaterHeight(long x, long y) -- the water surface height at map cell (x, y): 0 where the water depth is <= 0.001; otherwise the land height under the water plus the depth -- taken from the neighbouring ma
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand262/differ/00b41a80.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

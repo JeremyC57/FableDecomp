@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/STATUS.tsv: 0078d250	IMPROVED	1	RETAIL_ASM ROUND helper (1592->1614v1729; difflines 568->580)	first-draft ramp/knock-back shape

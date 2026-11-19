@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/STATUS.tsv: 00bd71b0	IMPROVED	a:2116v2116(295->288) b:same	retail_asm FtoL (fld/mov edx/fistp) replacing volatile stand-in; radius operand order	frame 0x290 v 0x294, radius load hoist, register drift

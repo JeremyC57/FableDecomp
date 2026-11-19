@@ -1,0 +1,17 @@
+addr: 0077d5b0
+status: parked
+batches: 2026-10-23_linux_hand324
+attempts: 1
+last_lens: 
+bounds_class: OK
+bounds_detail: row=1504 ext=1491 corr=0077d5b0:1491
+retries: 
+git_commits: 13c093bd4
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(-v1504) -- not drafted: lane gap /GS per-return epilogue (the early game-event return at 0x0077D683 checks the cookie before the register pops, as 007EC710; not reproduced under RTM or QFE-4035); ebp-aligned frame (and esp,-8), 1504 bytes
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/0077d5b0.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

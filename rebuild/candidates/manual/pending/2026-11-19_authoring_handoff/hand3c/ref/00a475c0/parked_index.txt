@@ -1,0 +1,17 @@
+addr: 00a475c0
+status: parked
+batches: 2026-10-23_linux_hand320
+attempts: 1
+last_lens: 
+bounds_class: OK
+bounds_detail: row=1872 ext=1857 corr=00a475c0:1857
+retries: 
+git_commits: c066edfa9
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(-v1857) -- triage only, no source drafted: `and esp,-8` aligned frame (8-byte local in the search loop) plus 222 x87 ops; lane gap per GOTCHAS chunk 232 when the 8-byte struct address is taken in a loop
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a475c0.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

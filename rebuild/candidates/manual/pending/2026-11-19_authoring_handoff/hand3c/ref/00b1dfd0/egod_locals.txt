@@ -1,0 +1,3 @@
+== NParticleEngine::CPSCDecalRenderer::CPSCDecalRenderer (debug length 1162)
+  bprel -16 type 0x6ebf8 this   [NParticleEngine::CPSCDecalRenderer*]
+== NParticleEngine::CPSCDecalRenderer::CPSCDecalRenderer: no complete record

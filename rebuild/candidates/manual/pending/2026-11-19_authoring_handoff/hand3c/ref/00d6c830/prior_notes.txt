@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-10-22_linux_hand295/NOTES.md: - 00d6c830 CQ_HangingTreeEvilScript::CheckBanditFollowStatus DIFFER(607v607): the instructions are the same, but retail shares one terminating-return block between the inner and outer waits (only branch targets differ) | tried: original form, the advisor's top-tested form (worse) | next: lane gap: tail-merge
+rebuild/candidates/manual/pending/2026-10-22_linux_hand295/rows.tsv: 00d6c830	CQ_HangingTreeEvilScript	CheckBanditFollowStatus	608
+rebuild/candidates/manual/pending/2026-10-22_linux_hand295/STATUS.tsv: 00d6c830	DIFFER	607v607	-	tail-merge lane gap (same instructions, other branch targets)

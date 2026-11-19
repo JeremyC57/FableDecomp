@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-10-22_linux_hand284/NOTES.md: - 009bf7e0 CDisplayManager::CreateDevice DIFFER(824v846): retail builds CPixelFormat temporaries in the dead params argument slot (0x18 v 0x28 frame) | tried: one full reconstruction | next: lane gap: locals in dead argument slots
+rebuild/candidates/manual/pending/2026-10-22_linux_hand284/rows.tsv: 009bf7e0	CDisplayManager	CreateDevice	848
+rebuild/candidates/manual/pending/2026-10-22_linux_hand284/STATUS.tsv: 009bf7e0	DIFFER	824v846	-	retail builds temporaries in the dead params argument slot (known lane gap); 0x18 v 0x28 frame

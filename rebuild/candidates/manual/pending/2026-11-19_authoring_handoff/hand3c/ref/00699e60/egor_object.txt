@@ -1,0 +1,1 @@
+Ego_r: release\game_camera_manager.obj index 64 size 519

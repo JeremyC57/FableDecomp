@@ -1,0 +1,17 @@
+addr: 0082a020
+status: parked
+batches: 2026-10-21_linux_hand247
+attempts: 1
+last_lens: 
+bounds_class: OK
+bounds_detail: row=352 ext=343 corr=0082a020:343
+retries: 
+git_commits: 0990d897a
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER -- lane gap: retail rounds both coordinates with a bare dword fistp through dead argument slots (the inline-asm rounding helper of GOTCHAS chunk 145); this draft's arithmetic is approximate and was graded once CMiniMapDisplay::GetDrawPosition(const C3DVector& pos, const C2DBoxF& box) const -- map a world position to its pixel on the minimap: relative position inside the region map, scaled into the screen box, snapped to whole (rounded, then nudged off exact .5) pixels, offset by the minimap's screen origin
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand247/differ/0082a020.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

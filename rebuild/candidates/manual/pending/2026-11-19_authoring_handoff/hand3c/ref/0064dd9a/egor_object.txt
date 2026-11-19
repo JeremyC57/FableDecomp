@@ -1,0 +1,1 @@
+Ego_r: release\player_gui_draw_modules.obj index 206 size 647

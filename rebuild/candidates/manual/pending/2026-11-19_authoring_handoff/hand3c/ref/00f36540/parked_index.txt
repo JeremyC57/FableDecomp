@@ -1,0 +1,17 @@
+addr: 00f36540
+status: parked
+batches: 2026-10-21_linux_hand248
+attempts: 1
+last_lens: 319v321
+bounds_class: OK
+bounds_detail: row=321 ext=321 corr=00f36540:321
+retries: 
+git_commits: 215d51be5
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(319v321) -- lane gap: retail floors each coordinate with the inline-asm FloatToInt helper (`fld ; fsub 0.5 ; fistp` into the frame, frame-pointer function, the 0.5/1.0 constants stored as locals); plain C++ gives `_ftol` and no frame pointer CPerlinNoise::GetGaussian2DNoise(const C2DVector& pos) const -- 2D gradient noise: floor the coordinates (round(x - 0.5), corrected when x is an exact integer), hash the four lattice corners through the 256-entry permutation table, blend the corner gradients' dot products with the 3t^2 - 2t^3 weight
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand248/differ/00f36540.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

@@ -1,0 +1,17 @@
+addr: 00b53f60
+status: parked
+batches: 2026-10-21_linux_hand263
+attempts: 1
+last_lens: 418v411
+bounds_class: OK
+bounds_detail: row=416 ext=411 corr=00b53f60:411
+retries: 
+git_commits: 0cd9e5620
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(418v411) -- retail keeps `this` in ecx across the call to UpdateBoxPositions (0x00B52990, same TU, inline-asm body that never touches ecx: VC7.1 uses the known callee register set). Lane gap: the compiler-emitted callee clobbers ecx (__ftol2), so ours homes `this` in esi; with a stand-in ecx-preserving callee the rest is 415v411 (savedMode spilled, entry base CSE'd) CEngineWeatherRenderer::FrameStart(const CEngineComponentParams&) -- move the particle boxes while it rains or snows, interpolate the rain/snow/mist time and the wind vector between their history samples by the frame blend, 
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand263/differ/00b53f60.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

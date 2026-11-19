@@ -1,0 +1,28 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CPSCDecalRenderer.h	2026-11-19 15:56:21.623563747 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w24/hand2c/hdr/engine/CPSCDecalRenderer.h	2026-11-19 17:11:32.196246620 +0000
+@@ -7,6 +7,10 @@
+ // (InterpolateTo 0x00B1BDA0, DatabaseCopy 0x00B1B810, WriteBinary 0x00B1BA10) and ReadBinary 0x00B1C880 / DatabaseSerialise 0x00B1E380.
+ // Virtuals: the overrides of the retail vtable 0x012A09BC (slot 13 PreparePrimitives 0x00B1F200, 14 InterpolateTo, 15 ReadBinary,
+ // 16 WriteBinary, 17 DatabaseSerialise, 18 DatabaseCopy) named as in FableWin.pdb.
++#ifdef FABLE_RETAIL_CPSCDECALRENDERER_DECALCOLLIDES
++#include "stlport/fable_containers.h"
++namespace NParticleEngine { class CDecal; }
++#endif
+ namespace NParticleEngine {
+ class CPSCDecalRenderer : public CPSCBase {
+ protected:
+@@ -64,6 +68,14 @@
+     virtual void WriteBinary(CDataOutputStream& out) const;
+     virtual void DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo& info);
+     virtual void DatabaseCopy(const CPSCBase& other);
++#ifdef FABLE_RETAIL_CPSCDECALRENDERER_DECALCOLLIDES
++protected:
++    // hand3c opt-in (row 0x00B1D550): Ego_r.pdb / FableWin.pdb ?DecalCollides@CPSCDecalRenderer@NParticleEngine@@IAE_NAAVCParticleSystem@2@
++    // ABV?$_List_iterator@..PAVCDecal@NParticleEngine@@..@std@@MAAV45@AAM@Z (protected; FableWin 0x02F567F0; Ego_d.pdb parameter names).
++    // Declaration only: no layout change.
++    bool DecalCollides(CParticleSystem& system, const std::list<CDecal*>::iterator& it_decal, float decal_size,
++                       std::list<CDecal*>::iterator& it_collison_decal, float& collison_decal_size);   // 0x00B1D550
++#endif
+ };
+ }
+ FABLE_STATIC_ASSERT_AT(64, sizeof(NParticleEngine::CPSCDecalRenderer)==0x64);

@@ -1,0 +1,17 @@
+addr: 00adf960
+status: parked
+batches: 2026-10-22_linux_hand293
+attempts: 1
+last_lens: 466v766
+bounds_class: OK
+bounds_detail: row=768 ext=766 corr=00adf960:766
+retries: 
+git_commits: 62c587cef
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(466v766) -- lane gap: inline __asm SSE (the g_bParticleUseSSE branch is a hand-written movaps/shufps/sqrtps/maxss block with push esi/pop esi on a 16-byte aligned ebx/ebp frame); the source covers the x87 branch's maths only, so the SSE branch, the frame and the flag test are missing NParticleEngine::CParticleSimulation::SatisfyDistanceConstraints(const CParticleDistanceConstraint* constraints, unsigned long count) -- one relaxation pass over distance constraints: for each pair move both particles along their separation, weighted by inverse mass, by stiffness * (length - rest) / ((wA + 
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00adf960.cpp
+diagnosis: SSE block = retail inline asm: retail_asm candidate (owner-gated) | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

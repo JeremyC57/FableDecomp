@@ -1,0 +1,11 @@
+== CEnginePrimitiveManagerSprites::RenderSprite (debug length 865)
+  bprel -84 type 0x673a9 this   [CEnginePrimitiveManagerSprites*]
+  bprel +8 type 0x673b7 primitive   [CEngineInternalPrimitiveSprite&]
+  bprel -40 type 0x2425 world_pos   [const C3DVector&]
+  bprel -36 type 0x2447 size_y   [const float]
+  bprel -32 type 0x40 distance   [float]
+  bprel -28 type 0x2447 size_x   [const float]
+  bprel -24 type 0x22 alpha   [unsigned long]
+  bprel -17 type 0xd300 capture_block   [CRenderStateScopedCaptureBlock]
+  bprel -16 type 0x68c1d subprim   [CEngineSubPrimitiveSprite*]
+== CEnginePrimitiveManagerSprites::RenderSprite: no complete record

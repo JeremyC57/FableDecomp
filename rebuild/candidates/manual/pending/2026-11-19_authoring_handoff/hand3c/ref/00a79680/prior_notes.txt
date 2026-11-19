@@ -1,0 +1,7 @@
+rebuild/candidates/manual/pending/2026-10-22_linux_hand292/NOTES.md: - 0x00A79680 CNavQuadTree::ConnectVerticalMapEdge DIFFER(593v678): same aligned frame as its horizontal twin | tried: the twin's best form with the y walk | next: lane gap: aligned frame (as 0x00A793D0)
+rebuild/candidates/manual/pending/2026-10-22_linux_hand292/NOTES.md: - 0x00A793D0 is CNavQuadTree::ConnectHorizantalMapEdge, not ConnectVerticalMapEdge. 0x00A79680 is ConnectVerticalMapEdge.
+rebuild/candidates/manual/pending/2026-10-22_linux_hand292/LESSONS.md: - **Aligned frame (0x00A793D0 / 0x00A79680).** A C2DVector temporary passed by reference to an out-of-line GetNodeAt inside nested loops forces `and esp,-8`. Same-TU stand-ins for the callee do not remove it, so this confirms the chunk 232 lane gap.
+rebuild/candidates/manual/pending/2026-10-22_linux_hand292/LESSONS.md: - **0x00A793D0:** the catalog name ConnectVerticalMapEdge is wrong; it is ConnectHorizantalMapEdge. 0x00A79680 is the real ConnectVerticalMapEdge.
+rebuild/candidates/manual/pending/2026-10-22_linux_hand292/LESSONS.md:   - CNavQuadTree in 0x00A793D0 / 0x00A79680 (rebuild/include/engine/CNavQuadTree.h exists, but the retail map is pack(1) with MapPos at +7);
+rebuild/candidates/manual/pending/2026-10-22_linux_hand292/rows.tsv: 00a79680	CNavQuadTree	ConnectVerticalMapEdge	688
+rebuild/candidates/manual/pending/2026-10-22_linux_hand292/STATUS.tsv: 00a79680	DIFFER	593v678	-	vertical twin of 0x00A793D0: same and esp,-8 aligned-frame lane gap

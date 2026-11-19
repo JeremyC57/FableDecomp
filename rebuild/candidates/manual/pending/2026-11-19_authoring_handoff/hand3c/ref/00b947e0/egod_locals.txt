@@ -1,0 +1,6 @@
+== CEngineSceneMap::Update (debug length 192)
+  bprel -16 type 0x648a4 this   [CEngineSceneMap*]
+  bprel -12 type 0x22 new_levels   [unsigned long]
+  bprel -8 type 0x12 new_size   [long]
+  bprel -4 type 0x22 total_count   [unsigned long]
+== CEngineSceneMap::Update: no complete record

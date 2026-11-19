@@ -1,0 +1,6 @@
+== CEngineMap::PeekWaterHeight (debug length 90)
+  bprel -8 type 0x67980 this   [const CEngineMap*]
+  bprel +8 type 0x23dd mapx   [const long]
+  bprel +12 type 0x23dd mapy   [const long]
+  bprel -4 type 0x2447 water_depth   [const float]
+== CEngineMap::PeekWaterHeight: no complete record

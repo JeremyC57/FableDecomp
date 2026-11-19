@@ -1,0 +1,4 @@
+rebuild/candidates/manual/pending/2026-10-20_linux_hand222/NOTES.md: - 00b905a0 CEnginePrimitiveManagerOcclusionBase::PrepareOcclusionTest DIFFER(272v280): `push ebx` in the prologue v after the early-outs (shrink-wrapped) | tried: the current form only (the allocation helper matches) | next: lane gap: callee-saved pushes after early-outs
+rebuild/candidates/manual/pending/2026-10-20_linux_hand222/LESSONS.md:   - shrink-wrapped prologue: 00b905a0.
+rebuild/candidates/manual/pending/2026-10-20_linux_hand222/rows.tsv: 00b905a0	CEnginePrimitiveManagerOcclusionBase	PrepareOcclusionTest	288
+rebuild/candidates/manual/pending/2026-10-20_linux_hand222/STATUS.tsv: 00b905a0	DIFFER	272v280	-	lane gap: callee-saved pushes after the early-outs (shrink-wrapped prologue)

@@ -1,0 +1,17 @@
+addr: 00b94bf0
+status: parked
+batches: 2026-10-20_linux_hand222
+attempts: 1
+last_lens: 295v311
+bounds_class: OK
+bounds_detail: row=320 ext=311 corr=00b94bf0:311
+retries: 
+git_commits: 20c005317
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(295v311) -- asm_bake family: both cell coordinates are rounded with a bare `fld ; fsub 0.5 ; fistp` + `fild ; fadd 1.0` floor correction (an inline-asm float-to-long helper in the original, as the landed FtoL bodies 0x00CA3B10/0x00C6B240); a C cast gives `__ftol2`, the frame and the map-iterator slot reuse follow from it. One grade only. CEngineScene::GetMapAt(const C2DVector& position) -- the scene map covering a world XY position: the cell (floor of position * cell scale) is looked up in the scene's map table and a new CEngineSceneMap covering that cell is created and stored when the 
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-20_linux_hand222/differ/00b94bf0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

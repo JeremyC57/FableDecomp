@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/STATUS.tsv: 00986210	IMPROVED	r495,r2 451,s496,t454/166,u451	retail_asm,/Oy-,fail-label	frame slot packing 0x5c vs 0x70; radius in memory vs edi

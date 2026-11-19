@@ -1,0 +1,1 @@
+Ego_r: release\tc_hero_ranged_attacks.obj index 29 size 1285

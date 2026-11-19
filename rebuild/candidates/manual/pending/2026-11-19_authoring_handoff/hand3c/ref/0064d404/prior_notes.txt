@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/STATUS.tsv: 0064d404	IMPROVED	129v399/144 (stub) -> a full tail 395/70, b list header re-read 393/34, c thiscall registration model 394/56	full reconstruction of the parked stub tail (lane-gap label retested: no fistp in retail)	Deregister 0x00440D70 thiscall shape; height on the x87 stack across calls

@@ -1,0 +1,27 @@
+== CTCHeroStats::ApplyBonusItemEffects (debug length 2358)
+  bprel -164 type 0x23788 this   [CTCHeroStats*]
+  bprel +8 type 0x1d999 bonus_item_def   [const CBonusItemDef&]
+  bprel -16 type 0x1a034 parent_physical   [CThingPhysical&]
+  {
+    bprel -20 type 0x40 extra_health_points   [float]
+  {
+    bprel -24 type 0x2d1b6 ptc_hero_experience   [CTCHeroExperience*]
+  {
+    bprel -32 type 0x40 max_extra_max_health   [float]
+    bprel -28 type 0x40 capped_max_health_increase   [float]
+  {
+    bprel -40 type 0x12 capped_max_stamina_increase   [long]
+    bprel -36 type 0x12 max_extra_max_stamina   [long]
+  {
+    bprel -48 type 0x18fcf time_manager   [CGameTimeManager&]
+    bprel -44 type 0x253a4 ptc_sound_player   [CTCSoundPlayer*]
+  {
+    bprel -56 type 0x18fcf time_manager   [CGameTimeManager&]
+    bprel -52 type 0x253a4 ptc_sound_player   [CTCSoundPlayer*]
+  {
+    bprel -60 type 0x4c765 ptc_haste   [CTCHaste*]
+  {
+    bprel -64 type 0x9a77 pparticle   [CThing*]
+    {
+      bprel -68 type 0x3a328 ptcd_particle_emitter   [CTCDParticleEmitter*]
+== CTCHeroStats::ApplyBonusItemEffects: no complete record

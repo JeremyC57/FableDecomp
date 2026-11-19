@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/STATUS.tsv: 0083db60	IMPROVED	3	SHARED_HEADER CDefPointer verify copy + PDB callee name (162->145v125); per-arm scopes (159); named def local (145)	result address formed before the release: load/dec/store release vs retail dec [esi+4]

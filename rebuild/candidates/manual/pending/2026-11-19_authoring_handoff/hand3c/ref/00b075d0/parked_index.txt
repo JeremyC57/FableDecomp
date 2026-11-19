@@ -1,0 +1,17 @@
+addr: 00b075d0
+status: parked
+batches: 2026-10-22_linux_hand292
+attempts: 1
+last_lens: 
+bounds_class: OK
+bounds_detail: row=992 ext=977 corr=00b075d0:977
+retries: 
+git_commits: a8ed6ea83
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(-v977) -- not authored: retail rounds with 1 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly float-to-int helper -- known lane gap (GOTCHAS wave 25 chunks 145/150/164); byte purity forbids reproducing it CPSCSingleSprite::AddToBoundingSphere(CBoundingSphere& sphere) const -- grow the bounding sphere by the single sprite
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00b075d0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

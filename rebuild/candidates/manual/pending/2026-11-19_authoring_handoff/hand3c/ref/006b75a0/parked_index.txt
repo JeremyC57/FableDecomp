@@ -1,0 +1,17 @@
+addr: 006b75a0
+status: parked
+batches: 2026-10-21_linux_hand264
+attempts: 1
+last_lens: 414v434
+bounds_class: OK
+bounds_detail: row=448 ext=434 corr=006b75a0:434
+retries: 
+git_commits: 1ce9870b6
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(414v434) -- first draft: the min/max-by-reference bounds, loop counters homed in the dead offset argument slots and the destination index arithmetic (rows stored bottom-up, 7-byte cells) are not yet reproduced; the reset for_each uses an LTCG register convention
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand264/differ/006b75a0.cpp
+diagnosis: LTCG custom convention: permanently asm | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

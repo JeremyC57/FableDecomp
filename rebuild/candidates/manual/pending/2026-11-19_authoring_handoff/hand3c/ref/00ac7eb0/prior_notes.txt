@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-27_linux_hand632/STATUS.tsv: 00ac7eb0	DIFFER	215v215	-	COptimisedPrimitive::ComputeSelfContraction: x87 operand order (n*n*w emitted n*w*n; Dot x term)

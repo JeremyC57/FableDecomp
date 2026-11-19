@@ -1,0 +1,17 @@
+addr: 00aabf60
+status: parked
+batches: 2026-10-22_linux_hand298
+attempts: 1
+last_lens: 625v620
+bounds_class: OK
+bounds_detail: row=624 ext=620 corr=00aabf60:620
+retries: 
+git_commits: 63970883c
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(625v620) -- retail is link-time-code-generated: the second mask loop calls FindFirstSetBit 0x00A3F860 once, hoisted out of the loop with a register (ecx/edx) convention and its 1<<bit hoisted too (the call is known pure only under LTCG); also this kept in ebp and the play params placed above the other locals CSoundEmitterLH::vfunc_3(CSoundUser* user, unsigned int id, bool notPositional, const CSoundRequest* request, bool atListener) -- start (or re-trigger) sound id for an emitter: build the play parameters from the request, find or create the voice, record a new instance and mark the e
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00aabf60.cpp
+diagnosis: LTCG custom convention: permanently asm | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

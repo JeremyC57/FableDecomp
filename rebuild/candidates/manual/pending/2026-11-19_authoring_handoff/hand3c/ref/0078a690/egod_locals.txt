@@ -1,0 +1,27 @@
+== CTCHeroRangedAttacks::FrameUpdate (debug length 4028)
+  bprel -360 type 0x315ee this   [CTCHeroRangedAttacks*]
+  {
+    bprel -36 type 0x5548 roots   [std::vector<float,std::allocator<float> >]
+    bprel -16 type 0x26aff ptc_carrying   [const CTCCarrying*]
+    {
+      bprel -40 type 0x253a4 ptc_sound_player   [CTCSoundPlayer*]
+    {
+      bprel -48 type 0x2447 THRESHOLD_BUTTON_PRESSURE   [const float]
+      bprel -44 type 0x40 weight   [float]
+    {
+      bprel -52 type 0x40 max_aiming_timer   [float]
+    {
+      bprel -60 type 0x9a77 pcarried_thing   [CThing*]
+      bprel -56 type 0x28c9d ptc_weapon   [const CTCWeapon*]
+  {
+    bprel -72 type 0x9a77 pcarried_thing   [CThing*]
+    bprel -68 type 0x43463 ptc_weapon   [CTCWeapon*]
+    bprel -64 type 0x3002d ptc_carry   [CTCCarrying*]
+  {
+    bprel -80 type 0x9a77 pcarried_thing   [CThing*]
+    bprel -76 type 0x3002d ptc_carry   [CTCCarrying*]
+    {
+      bprel -84 type 0x43463 ptc_weapon   [CTCWeapon*]
+      {
+        bprel -88 type 0xb810 player   [CPlayer&]
+== CTCHeroRangedAttacks::FrameUpdate: no complete record

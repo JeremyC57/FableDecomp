@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/STATUS.tsv: 00f361d0	IMPROVED	base:740v873(338);a(GFFloatToLongFloor asm helper + ebp frame):744v873(243);b(by-value gradient):882v873(271);c(Perlin reused q):881v873(268)	retail_asm floor helper	noise body: retail copies some gradient vectors to frame (frame 0x44), hash-chain scheduling

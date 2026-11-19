@@ -1,0 +1,25 @@
+== NPlayerGui::CStatBar::DrawStatBarOnLeft (debug length 1541)
+  bprel -172 type 0x3df5a this   [NPlayerGui::CStatBar*]
+  bprel +8 type 0xb83b info   [const CEnginePrimitivePrepareInfo&]
+  bprel +12 type 0x986b graphic_bank   [const CGraphicDataBank&]
+  bprel +16 type 0x2436 bar_pos   [const C2DVector&]
+  bprel +20 type 0x2436 text_offset   [const C2DVector&]
+  bprel +24 type 0x27b8 colour   [const CRGBColour&]
+  bprel +28 type 0x20 alpha   [unsigned char]
+  bprel +32 type 0x30 mirror   [bool]
+  bprel -48 type 0x12 effect_index   [long]
+  bprel -44 type 0x9b09 vtext_pos   [C2DVector]
+  bprel -36 type 0x233e value_text   [CWideString]
+  bprel -28 type 0x9b09 tl_pos   [C2DVector]
+  bprel -20 type 0x9b09 text_pos   [C2DVector]
+  {
+    bprel -52 type 0x3df83 change_text   [const NPlayerGui::CStatBar::CChangeText&]
+  {
+    bprel -56 type 0x40 interpolate   [float]
+    {
+      bprel -68 type 0x61273 it   [std::_List_const_iterator<std::_List_val<NPlayerGui::CStatBar::CChangeText,std::allocator<NPlayerGui::CStatBar::CChangeText> > >]
+      {
+        bprel -88 type 0x9b09 change_text_offset   [C2DVector]
+        bprel -80 type 0x9b09 v_text_pos   [C2DVector]
+        bprel -72 type 0x3df83 change_text   [const NPlayerGui::CStatBar::CChangeText&]
+== NPlayerGui::CStatBar::DrawStatBarOnLeft: no complete record

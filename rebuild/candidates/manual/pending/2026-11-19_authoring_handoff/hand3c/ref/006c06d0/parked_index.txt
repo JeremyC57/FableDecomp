@@ -1,0 +1,17 @@
+addr: 006c06d0
+status: parked
+batches: 2026-10-20_linux_hand229
+attempts: 1
+last_lens: 312v312
+bounds_class: OK
+bounds_detail: row=320 ext=312 corr=006c06d0:312
+retries: 
+git_commits: 6b9fe894a
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(312v312) -- one x87 operand order: retail forms the normalised Y as `fld [Forward.Y] ; fmul st(2)`, ours as `fld st(1) ; fmul [Forward.Y]` (X and Z match); the single-term commutation lane gap of retry 10
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-20_linux_hand229/differ/006c06d0.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

@@ -1,0 +1,1 @@
+Ego_r: release\tc_bullet_time.obj index 21 size 1336

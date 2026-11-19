@@ -1,0 +1,49 @@
+== CNavigatorBase::FindNearestNavigableNode (debug length 2243)
+  bprel -284 type 0x2c4cc this   [const CNavigatorBase*]
+  bprel +8 type 0x2c4d7 start_node   [const CANavQuadTreeNode*]
+  bprel +12 type 0x2c4d7 blocked_node   [const CANavQuadTreeNode*]
+  bprel +16 type 0x2425 dest_pos   [const C3DVector&]
+  bprel +20 type 0x40 proximity   [float]
+  bprel +24 type 0x2c4d8 nav_manager   [const CNavigatorManager*]
+  bprel -56 type 0x9b09 blocked_pos   [C2DVector]
+  bprel -48 type 0x9b09 poss_pos_at_start   [C2DVector]
+  bprel -37 type 0x30 test_region   [bool]
+  bprel -36 type 0x9b09 start_pos   [C2DVector]
+  bprel -28 type 0x2447 half_blocked_node_size   [const float]
+  bprel -24 type 0x9b09 vec_from_dest_to_start   [C2DVector]
+  bprel -16 type 0x2c4d7 best_node   [const CANavQuadTreeNode*]
+  bprel -12 type 0x12 blocked_nav_layer   [long]
+  bprel -8 type 0x2447 smallest_node_size   [const float]
+  bprel -4 type 0x40 edge_distance   [float]
+  {
+    bprel -60 type 0x40 x   [float]
+    {
+      bprel -64 type 0x12 c1   [long]
+      {
+        bprel -72 type 0x9b09 attempted_pos   [C2DVector]
+        {
+          bprel -76 type 0x2c4d7 node   [const CANavQuadTreeNode*]
+  {
+    bprel -80 type 0x40 y   [float]
+    {
+      bprel -84 type 0x12 c1   [long]
+      {
+        bprel -92 type 0x9b09 attempted_pos   [C2DVector]
+        {
+          bprel -96 type 0x2c4d7 node   [const CANavQuadTreeNode*]
+  {
+    bprel -104 type 0x2c4d7 possible_node   [const CANavQuadTreeNode*]
+    bprel -100 type 0x40 sample_step   [float]
+    {
+      bprel -108 type 0x40 sample_offset   [float]
+      {
+        bprel -112 type 0x2c4d7 possible_node   [const CANavQuadTreeNode*]
+  {
+    bprel -116 type 0x12 c1   [long]
+    {
+      bprel -124 type 0x9b09 attempted_pos   [C2DVector]
+      {
+        bprel -128 type 0x2c4d7 node   [const CANavQuadTreeNode*]
+      {
+        bprel -132 type 0x2c4d7 node   [const CANavQuadTreeNode*]
+== CNavigatorBase::FindNearestNavigableNode: no complete record

@@ -1,0 +1,19 @@
+== NParticleEngine::CPSCSingleSprite::GetComponentCost (debug length 520)
+  bprel -44 type 0x6ea37 this   [NParticleEngine::CPSCSingleSprite*]
+  bprel +8 type 0x234d3 component_cost   [NParticleEngine::CParticleSystemCost&]
+  bprel +12 type 0x6e0b7 system   [const NParticleEngine::CParticleSystem&]
+  bprel +16 type 0x2447 max_particle_count   [const float]
+  bprel +20 type 0x2447 max_decal_count   [const float]
+  {
+    bprel -24 type 0x40 poly_cost   [float]
+    bprel -20 type 0x40 end_render_size   [float]
+    bprel -16 type 0x40 pixel_count   [float]
+    bprel -12 type 0x40 render_size   [float]
+    bprel -8 type 0x40 start_render_size   [float]
+    bprel -4 type 0x40 poly_count   [float]
+  {
+    bprel -40 type 0x40 poly_cost   [float]
+    bprel -36 type 0x40 trail_width   [float]
+    bprel -32 type 0x40 pixel_count   [float]
+    bprel -28 type 0x40 poly_count   [float]
+== NParticleEngine::CPSCSingleSprite::GetComponentCost: no complete record

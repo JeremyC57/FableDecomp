@@ -1,0 +1,10 @@
+== CShaderRenderManager::UpdateObjectSpaceTextureTransform (debug length 262)
+  regrel r22-4 type 0x4696d this   [CShaderRenderManager*]
+  {
+    regrel r22-8 type 0x22 c_transform   [unsigned long]
+    {
+      regrel r22-12 type 0x46824 range   [const CShaderConstantRange&]
+      {
+        regrel r22-80 type 0x9e8b transform   [CMatrix4x4]
+        regrel r22-88 type 0x22 rows   [unsigned long]
+== CShaderRenderManager::UpdateObjectSpaceTextureTransform: no complete record

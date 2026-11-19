@@ -1,0 +1,1 @@
+Ego_r: release\tc_inventory_quests.obj index 43 size 582

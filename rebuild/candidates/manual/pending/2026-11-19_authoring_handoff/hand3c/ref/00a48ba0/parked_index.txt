@@ -1,0 +1,17 @@
+addr: 00a48ba0
+status: parked
+batches: 2026-10-22_linux_hand289
+attempts: 1
+last_lens: 873v875
+bounds_class: OK
+bounds_detail: row=880 ext=875 corr=00a48ba0:875
+retries: 
+git_commits: 307b907cc
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(873v875) -- known lane gap: the weight byte uses an inline-asm fistp (fld/fmul 255/fstp/fld/fistp); also the lane's <map> is not retail's STLport map (header malloc 0x18 at 0x00BFEA0E, inline _M_erase 0x00630D90 + free 0x00BFEA14) CLipSyncSampleData::WriteToFile(CDataOutputStream&) const -- write the phoneme symbol table, frame rate and per-frame phoneme weights
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand289/differ/00a48ba0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

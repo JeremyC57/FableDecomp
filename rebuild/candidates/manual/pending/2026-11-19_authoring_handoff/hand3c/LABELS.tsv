@@ -1,0 +1,6 @@
+address	name	evidence
+00f36010	?Get2DNoise@CPerlinNoise@NFractal@@QBEMABVC2DVector@@@Z	Ego_r.pdb donor order + Ego_d.pdb locals (see NAME_FIXES.tsv)
+00c40590	?Commit@CCodaListener@@QAEXXZ	GameCODA 2.10 CODAApi.lib CodaListener.obj (see NAME_FIXES.tsv)
+00c402e0	?Normalize@CCodaVector@@QAEMXZ	GameCODA 2.10 CodaListener.obj reloc
+00c40370	?OrthogonalRight@CCodaVector@@QAEXABV1@0@Z	GameCODA 2.10 CodaListener.obj reloc
+0143bc24	?m_ffCommit@CCodaListener@@0IA	GameCODA 2.10 CodaListener.obj reloc

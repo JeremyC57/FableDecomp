@@ -1,0 +1,17 @@
+addr: 009c38c0
+status: parked
+batches: 2026-10-21_linux_hand260
+attempts: 1
+last_lens: 414v409
+bounds_class: OK
+bounds_detail: row=416 ext=409 corr=009c38c0:409
+retries: 
+git_commits: 460e3c9c9
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(414v409) -- MakeBackupName 0x009C33A0 is an LTCG esi-result callee (lane gap); also GetFileTime/SetFileTime argument scheduling CActiveFile::OnWriteFinished() -- close the temp file, trim it to the written size, copy the original's write time, and verify a backup can be created
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand260/differ/009c38c0.cpp
+diagnosis: LTCG custom convention: permanently asm | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

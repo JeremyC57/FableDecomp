@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/STATUS.tsv: 009c3c20	HELD	3	landed names + in-class SetDirtyDiscError not forced (222 but calls it; retail inlines); ||-form (222); forceinline landed body (231, names-only park)	877v909 finished flag and read size in the dead arg slot, rotated decompress loop; parked with landed names

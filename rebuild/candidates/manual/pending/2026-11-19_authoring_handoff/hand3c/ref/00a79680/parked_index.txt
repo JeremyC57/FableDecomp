@@ -1,0 +1,17 @@
+addr: 00a79680
+status: parked
+batches: 2026-10-22_linux_hand292
+attempts: 1
+last_lens: 593v678
+bounds_class: OK
+bounds_detail: row=688 ext=678 corr=00a79680:678
+retries: 
+git_commits: a8ed6ea83
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(593v678) -- vertical twin of 0x00A793D0 (byte-identical shape, y walk); same aligned and esp,-8 frame from the C2DVector GetNodeAt temporaries inside the nested loops (GOTCHAS chunk 232 lane gap under 3077). CNavQuadTree::ConnectVerticalMapEdge(float x, float neighbourX, const CNavigatorManager& manager) -- walk this map's vertical edge in every navigation layer and, where a free node of this map faces a free node of the neighbouring map, record a connector between them; the walk steps by the larger/smaller node size (blocked/free) or half a unit where the neighbour has no node
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a79680.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

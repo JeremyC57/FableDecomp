@@ -1,0 +1,10 @@
+== CMatrix4x4::AlignedPreScale (debug length 484)
+  regrel r22-4 type 0x9e4f this   [CMatrix4x4*]
+  regrel r20+8 type 0x2425 scale   [const C3DVector&]
+  {
+    regrel r22-32 type 0xc0ab vect   [C4DVector]
+    regrel r22-48 type 0x2460 right   [C3DVector]
+    regrel r22-36 type 0x440 dest   [float*]
+  {
+    regrel r22-52 type 0xa3a6 m   [CMatrix4x4&]
+== CMatrix4x4::AlignedPreScale: no complete record

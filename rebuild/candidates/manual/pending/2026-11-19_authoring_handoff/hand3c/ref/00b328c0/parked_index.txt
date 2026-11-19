@@ -1,0 +1,17 @@
+addr: 00b328c0
+status: parked
+batches: 2026-10-22_linux_hand286
+attempts: 1
+last_lens: 501v517
+bounds_class: OK
+bounds_detail: row=528 ext=517 corr=00b328c0:517
+retries: 
+git_commits: cc6d388ab
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(501v517) -- retail rounds with an inline-asm ceil helper (0.5f/1.0f stored in ebp locals, fsub [local], fistp into the dead params slot, fild/fadd/compare/inc) which forces the ebp frame; C++ uses the constant pool + _ftol and an esp frame. Lane gap: inline-asm rounding. CEnginePrimitiveRenderer::LoadNewScene(const CEngineComponentLoadNewSceneParams& params) -- per-scene setup: lerp the draw distance by the load progress, round the cell count up, update every scene grid (two passes OR-ing "still loading"), then the lighting manager, then build each grid's render data from the shadow ren
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand286/differ/00b328c0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

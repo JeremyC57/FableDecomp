@@ -1,0 +1,32 @@
+== NPlayerGui::CDrawMiniMap::UpdateRegionExitNames (debug length 2080)
+  bprel -336 type 0x3db0d this   [NPlayerGui::CDrawMiniMap*]
+  bprel +8 type 0xbbe2 region   [const CRegion&]
+  bprel -52 type 0x12 region_number   [long]
+  bprel -48 type 0x3fa27 exit_list   [std::list<CThing const *,std::allocator<CThing const *> >]
+  bprel -32 type 0xb7cd world_map   [const CWorldMap&]
+  bprel -28 type 0x3fa27 objects_list   [std::list<CThing const *,std::allocator<CThing const *> >]
+  {
+    bprel -64 type 0x4a234 it   [std::_List_const_iterator<std::_List_val<CThing const *,std::allocator<CThing const *> > >]
+    {
+      bprel -68 type 0x2c02 pthing   [const CThing*]
+      {
+        bprel -72 type 0x4a52c ptcd_region_exit   [const CTCDRegionExit*]
+        {
+          bprel -100 type 0x2460 exit_pos   [C3DVector]
+          bprel -88 type 0x2318 exit_name   [const CCharString&]
+          bprel -84 type 0x9b09 text_offset   [C2DVector]
+          bprel -76 type 0x2318 display_name   [const CCharString&]
+  {
+    bprel -112 type 0x4a234 it   [std::_List_const_iterator<std::_List_val<CThing const *,std::allocator<CThing const *> > >]
+    {
+      bprel -116 type 0x2c02 pthing   [const CThing*]
+      {
+        bprel -120 type 0x4205e ptc_scripted_hook   [const CTCActionUseScriptedHook*]
+        {
+          bprel -124 type 0x9a77 pentrance   [CThing*]
+          {
+            bprel -152 type 0x2460 exit_pos   [C3DVector]
+            bprel -140 type 0x2318 exit_name   [const CCharString&]
+            bprel -136 type 0x9b09 text_offset   [C2DVector]
+            bprel -128 type 0x2318 display_name   [const CCharString&]
+== NPlayerGui::CDrawMiniMap::UpdateRegionExitNames: no complete record

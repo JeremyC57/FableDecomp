@@ -1,0 +1,12 @@
+== CMiniMapDisplay::GetDrawPosition (debug length 455)
+  bprel -80 type 0x3d7e4 this   [const CMiniMapDisplay*]
+  bprel +12 type 0x2425 position   [const C3DVector&]
+  bprel +16 type 0x27bc renderBox   [const C2DBoxF&]
+  bprel -52 type 0x9b09 renderPos   [C2DVector]
+  bprel -44 type 0xbc2c player_gui_def   [const CPlayerGuiDef&]
+  bprel -40 type 0xb239 local_render_box   [C2DBoxF]
+  bprel -24 type 0xb7cd world_map   [const CWorldMap&]
+  bprel -20 type 0xbbe2 region   [const CRegion&]
+  bprel -16 type 0x9b09 mapSize   [C2DVector]
+  bprel -8 type 0x9b09 thingPos   [C2DVector]
+== CMiniMapDisplay::GetDrawPosition: no complete record

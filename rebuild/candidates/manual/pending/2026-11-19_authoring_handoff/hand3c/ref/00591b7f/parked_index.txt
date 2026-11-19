@@ -1,0 +1,17 @@
+addr: 00591b7f
+status: parked
+batches: 2026-10-23_linux_hand302
+attempts: 1
+last_lens: 729v735
+bounds_class: OK
+bounds_detail: row=735 ext=735 corr=00591b7f:735
+retries: 
+git_commits: 6ded57995
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(729v735) -- logic modelled (frame-8 gate, exhausted-candidate erase, item scan for context-sensitive subdefs and opinion-expression counts, global candidates, sort, fade-in per button slot, clear unclaimed slots); residue is the escape-analysis lane gap: retail treats the candidate vector as non-escaping (its end cached in edi across the sort, counted pointer loop) yet reloads the item vector's start every pass and orders items below candidates in the frame -- any one stand-in set reproduces only half (items-escaping flips the frame order, items-non-escaping strength-reduces loop 1); al
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand302/differ/00591b7f.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

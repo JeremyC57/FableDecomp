@@ -1,0 +1,21 @@
+== CLipSyncSampleData::GetFrameInterpolate (debug length 1691)
+  bprel -184 type 0x4146b this   [const CLipSyncSampleData*]
+  bprel +8 type 0x253aa dest   [CLipSyncFrameData&]
+  bprel +12 type 0x40 t   [float]
+  bprel -36 type 0x40 pos   [float]
+  bprel -32 type 0x41343 frame2   [const CLipSyncFrameData&]
+  bprel -28 type 0x40 weight2   [float]
+  bprel -24 type 0x12 index2   [long]
+  bprel -20 type 0x41343 frame1   [const CLipSyncFrameData&]
+  bprel -16 type 0x12 index1   [long]
+  {
+    bprel -40 type 0x22 c1   [unsigned long]
+    {
+      bprel -56 type 0x41386 phoneme1   [CLipSyncPhoneme]
+      {
+        bprel -72 type 0x41386 phoneme2   [CLipSyncPhoneme]
+  {
+    bprel -76 type 0x22 c2   [unsigned long]
+    {
+      bprel -92 type 0x41386 phoneme2   [CLipSyncPhoneme]
+== CLipSyncSampleData::GetFrameInterpolate: no complete record

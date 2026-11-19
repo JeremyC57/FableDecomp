@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/STATUS.tsv: 00c40590	IMPROVED	5	SetCross operand order; right pointer local; members direct (no pointer locals); flipped products	3 cross-product multiplies load the this-relative right vector first (retail front first)

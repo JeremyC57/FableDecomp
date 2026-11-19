@@ -1,0 +1,17 @@
+addr: 00439bb0
+status: parked
+batches: 2026-10-22_linux_hand294
+attempts: 1
+last_lens: 583v592
+bounds_class: OK
+bounds_detail: row=592 ext=592 corr=00439bb0:592
+retries: 
+git_commits: 211e72d93
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(583v592) -- the bar's current value is rounded by an inline fistp helper (float copied to a frame word, fld, fistp; asm_bake family, lane gap); the rest is frame-slot assignment CPlayerGui::UpdateMoney() -- refresh the money stat bar from the hero's gold: when the gold differs from the bar's current value, queue a "+N"/"-N" change text (the drop also plays the GOLD_PAYMENT sound), then animate an initialised bar towards the gold or snap an uninitialised one to it
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand294/differ/00439bb0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

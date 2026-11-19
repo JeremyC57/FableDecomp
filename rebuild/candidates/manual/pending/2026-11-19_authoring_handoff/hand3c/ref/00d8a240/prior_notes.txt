@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-10-22_linux_hand295/NOTES.md: - 00d8a240 CQ_HerosOldHouseScript::WatchForBooty DIFFER(610v610): same instructions; retail shares the terminating-return block between the Oak Bay waits | tried: original form, the advisor's b2 top-tested form (kept) | next: lane gap: tail-merge
+rebuild/candidates/manual/pending/2026-10-22_linux_hand295/rows.tsv: 00d8a240	CQ_HerosOldHouseScript	WatchForBooty	624
+rebuild/candidates/manual/pending/2026-10-22_linux_hand295/STATUS.tsv: 00d8a240	DIFFER	610v610	-	tail-merge lane gap (advisor b2 top-tested form)

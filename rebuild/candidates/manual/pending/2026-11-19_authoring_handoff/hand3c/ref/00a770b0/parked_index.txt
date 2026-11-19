@@ -1,0 +1,17 @@
+addr: 00a770b0
+status: parked
+batches: 2026-10-22_linux_hand291
+attempts: 1
+last_lens: 408v533
+bounds_class: OK
+bounds_detail: row=544 ext=533 corr=00a770b0:533
+retries: 
+git_commits: ef9d5c8ac
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(408v533) -- lane gap (inline-asm fistp rounding helper): retail rounds each cell coordinate with an inlined `fistp (f - 0.5)` plus a float-bit `== i + 1` bump, which compiler-emitted C++ can only reach through _ftol; the body here is the behavioural reconstruction (bounds check, cell index, blocked-node fill-in, node slot 11 recursion) with a C++ floor helper CNavQuadTree::GetNodeAt(const C2DVector& pos, unsigned long layer) const
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand291/differ/00a770b0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

@@ -1,0 +1,13 @@
+== CNavQuadTree::GetNodeAt (debug length 2070)
+  bprel -184 type 0x35883 this   [const CNavQuadTree*]
+  bprel +8 type 0x2436 pos   [const C2DVector&]
+  bprel +12 type 0x12 nav_layer   [long]
+  {
+    bprel -56 type 0x2c4d7 node   [const CANavQuadTreeNode*]
+    bprel -52 type 0xb239 quad_tree_area   [C2DBoxF]
+    bprel -36 type 0x22 index   [unsigned long]
+    bprel -32 type 0x9b09 map_space_pos   [C2DVector]
+    bprel -24 type 0x22 x   [unsigned long]
+    bprel -20 type 0x22 y   [unsigned long]
+    bprel -16 type 0x35896 blocked_node   [CNavBlockedQuadTreeNode*]
+== CNavQuadTree::GetNodeAt: no complete record

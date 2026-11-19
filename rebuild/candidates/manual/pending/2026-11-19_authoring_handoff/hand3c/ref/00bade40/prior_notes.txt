@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/STATUS.tsv: 00bade40	IMPROVED	726v793(173);a(retail_asm FloatToInt helper):743v793(141);b(inline expr):743v793(141);c(a + plane offsets fixed):743v793(121)	retail_asm FloatToInt helper; camera plane layout fix	frame/this homing, bank lookup select, pool path (first-pass body)

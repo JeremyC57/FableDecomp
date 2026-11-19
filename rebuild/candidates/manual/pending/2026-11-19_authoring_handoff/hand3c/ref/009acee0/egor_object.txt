@@ -1,0 +1,1 @@
+Ego_r: .\Release\lib_definition_manager.obj index 15 size 1222

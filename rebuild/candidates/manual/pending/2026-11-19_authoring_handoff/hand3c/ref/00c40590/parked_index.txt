@@ -1,0 +1,17 @@
+addr: 00c40590
+status: parked
+batches: 2026-10-20_linux_hand203
+attempts: 1
+last_lens: 192v192
+bounds_class: OK
+bounds_detail: row=192 ext=192 corr=00c40590:192
+retries: 
+git_commits: 7cec4ca52,a55eed46f
+skipped: 
+rebound: 
+in_findings: y
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(192v192) (retry 9, differ/) -- the dot product now matches as the chain `s = Z*v.Z; s += Y*v.Y; s += X*v.X` inside the inline Dot; left: four of the six inline cross-product multiplies load the `this`-relative right vector first where retail loads the front pointer local first (retail keeps the source order per product, f,f | r,f | f,r; the lane ranks `this` members above pointer locals whatever the spelling, and ranks by spelling only when both operands are `this` members -- the operand-order lane gap).
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-20_linux_hand203/differ/00c40590.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

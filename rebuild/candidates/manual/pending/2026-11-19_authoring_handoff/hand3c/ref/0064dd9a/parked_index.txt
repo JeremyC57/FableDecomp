@@ -1,0 +1,17 @@
+addr: 0064dd9a
+status: parked
+batches: 2026-10-22_linux_hand911
+attempts: 1
+last_lens: 521v580
+bounds_class: OK
+bounds_detail: row=580 ext=580 corr=0064dd9a:580
+retries: 
+git_commits: 59274dfaf
+skipped: prefix/open: catalog row truncates the function (jmp 0x64dfbe past the row end)
+rebound: 
+in_findings: y
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(521v580) -- empty CAllocatorTag/filter temporaries homed at [ebp-1]/[ebp-2] where retail overlays them on [ebp+0Bh] (top byte of the LIVE region parameter slot; GOTCHAS lane gap), frame 0x44 v 0x4c (retail gives loop-2 locals their own words), RegionExits in edi v ebx, loop-2 node kept in memory with rotated entry
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand911/differ/0064dd9a.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

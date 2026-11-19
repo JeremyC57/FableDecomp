@@ -1,0 +1,17 @@
+addr: 00bade40
+status: parked
+batches: 2026-10-22_linux_hand286
+attempts: 1
+last_lens: 726v793
+bounds_class: OK
+bounds_detail: row=800 ext=793 corr=00bade40:793
+retries: 
+git_commits: cc6d388ab
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(726v793) -- lane gap: retail converts the faded alpha with an inline-asm FloatToInt (fstp [esp+0x10]; fld [esp+0x10]; fistp [esp+0x14]; mov ebp,[esp+0x14]) that byte-pure C++ cannot emit (same as 00b3b240); rest of the body is first-pass CEnginePrimitiveManagerSprites::RenderSprite(CEngineInternalPrimitiveSprite* sprite) -- queue one 3D sprite: inside a render-state capture block, skip it beyond its fade-out distance, fade its alpha between the fade distances, compute its bounding radius, cull it against the camera's near/far distances and four side planes, then start its graphic frame 
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand286/differ/00bade40.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

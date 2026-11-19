@@ -1,0 +1,17 @@
+addr: 00a793d0
+status: parked
+batches: 2026-10-22_linux_hand292
+attempts: 1
+last_lens: 593v678
+bounds_class: OK
+bounds_detail: row=688 ext=678 corr=00a793d0:678
+retries: 
+git_commits: a8ed6ea83
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(593v678) -- push ebp/mov ebp,esp/and esp,-8 aligned frame (retail: plain sub esp,0x44) forced by the 8-byte C2DVector GetNodeAt argument temporaries whose address is taken inside the nested layer/x loops (GOTCHAS chunk 232 lane gap under 3077); the rest follows once the frame differs. Tried: early-continue vs if/else, named C2DVector locals outside the loop, visible noinline GetNodeAt/_M_insert_overflow stand-ins (588v678, frame unchanged). CNavQuadTree::ConnectHorizantalMapEdge(float y, float neighbourY, const CNavigatorManager& manager) -- walk this map's horizontal edge in every navi
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a793d0.cpp
+diagnosis: SIB base/index operand order: no source form found (009bb0d0, 009e5c90 family) | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

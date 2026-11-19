@@ -1,0 +1,17 @@
+addr: 009acee0
+status: parked
+batches: 2026-10-22_linux_hand283
+attempts: 1
+last_lens: 1030v1017
+bounds_class: OK
+bounds_detail: row=1024 ext=1017 corr=009acee0:1017
+retries: 
+git_commits: c2b3728ba
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(ours v retail) -- 1030v1017: retail caches separator.PStringData in edi across the out-of-line operator== call so the "=" test needs no reload/null retest (lane gap: register caching across calls); also name/separator frame words swapped (F+8/F+0xc) string prefix (else "NULL"), then for each entry name the separator decides its value ("," keeps the running index, "=" reads the value through a persist context, "}" ends the enum and must be followed by ";"); each named entry is added to the symbol map as prefix/name/value and the index advances past it
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand283/differ/009acee0.cpp
+diagnosis: cross-call register caching: the original had the callee in the TU (IPA); same-TU noinline stand-ins with the callee's real shape are the lever | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

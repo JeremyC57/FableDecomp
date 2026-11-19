@@ -1,0 +1,17 @@
+addr: 007f8c20
+status: parked
+batches: 2026-10-20_linux_hand205
+attempts: 1
+last_lens: 
+bounds_class: OK
+bounds_detail: row=224 ext=221 corr=007f8c20:221
+retries: 
+git_commits: 119d9583e
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(ours v retail) -- the CDefPointer release re-reads the escaped out slot after the dec (0x006631C0 lane gap); the list insert reads pos->_M_prev twice (needs a prev local); retail pushes ebx/esi/edi up front and keeps the second filter's base-vtable dtor store
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-20_linux_hand205/differ/007f8c20.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

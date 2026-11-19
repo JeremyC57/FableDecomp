@@ -1,0 +1,11 @@
+== CEngineSceneMap::AddPrimitive (debug length 1070)
+  bprel -108 type 0x648a4 this   [CEngineSceneMap*]
+  bprel +8 type 0x6407d prim   [CEngineInternalPrimitiveBase&]
+  bprel +12 type 0x2436 world_pos   [const C2DVector&]
+  bprel +16 type 0x40 size   [float]
+  bprel -36 type 0x22 level_size   [unsigned long]
+  bprel -32 type 0x9b09 map_pos   [C2DVector]
+  bprel -24 type 0x64036 grid_pos   [CEngineSceneGridPos]
+  bprel -20 type 0x640e6 grid   [CEngineSceneGrid*]
+  bprel -16 type 0x22 level   [unsigned long]
+== CEngineSceneMap::AddPrimitive: no complete record

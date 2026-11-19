@@ -1,0 +1,1 @@
+Ego_r: release\thing_creature_base.obj index 113 size 202

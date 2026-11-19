@@ -1,0 +1,17 @@
+addr: 00c6ac90
+status: parked
+batches: 2026-10-15_linux_hand84
+attempts: 1
+last_lens: 39v38
+bounds_class: OK
+bounds_detail: row=48 ext=38 corr=00c6ac90:38
+retries: 
+git_commits: 980863413
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(39v38) -- lane gap (LTCG custom calling convention): retail loads the gain into ecx (`mov ecx,[esp+10h]`) for a callee that also takes four caller-cleaned stack arguments (`add esp,10h`): 0x00C6AAE0 reads ecx as a parameter (`mov word ptr [ebp-30h],cx`) and returns with a plain `ret`, a /GL whole-program convention no source-level declaration reproduces (__cdecl pushes the gain, __fastcall makes the callee pop). Tried: __cdecl callee (one grade).
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-15_linux_hand84/differ/00c6ac90.cpp
+diagnosis: LTCG custom convention: permanently asm | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

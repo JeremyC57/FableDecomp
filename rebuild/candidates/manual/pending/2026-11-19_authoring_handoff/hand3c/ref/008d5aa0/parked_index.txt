@@ -1,0 +1,17 @@
+addr: 008d5aa0
+status: parked
+batches: 2026-10-23_linux_hand315
+attempts: 1
+last_lens: 1v1126
+bounds_class: OK
+bounds_detail: row=1126 ext=1126 corr=008d5aa0:1126
+retries: 
+git_commits: 21dfd62f2
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(1v1126) -- parked unreached (skeleton only): large multi-feature row: frame-counter gate, carried-thing check (0x46), SIMPLE_NOISE sound, multi-arrow shot-definition component (CTCShotDefinitionMultiArrow via AddTC) with by-value counted pointers, a local target vector loop and CRT free release; not reached beyond decode. CCreatureAction_FireMissileWeapon::PerformAction() -- PARK SKELETON (decoded only)
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand315/differ/008d5aa0.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

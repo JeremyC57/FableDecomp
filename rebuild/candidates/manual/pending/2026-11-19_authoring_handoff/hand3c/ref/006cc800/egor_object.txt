@@ -1,0 +1,1 @@
+Ego_r: release\tc_creature_navigation.obj index 33 size 412

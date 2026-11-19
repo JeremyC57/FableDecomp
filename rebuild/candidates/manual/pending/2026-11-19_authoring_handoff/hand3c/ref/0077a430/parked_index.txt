@@ -1,0 +1,17 @@
+addr: 0077a430
+status: parked
+batches: 2026-10-23_linux_hand324
+attempts: 1
+last_lens: 1067v1115
+bounds_class: OK
+bounds_detail: row=1120 ext=1115 corr=0077a430:1115
+retries: 
+git_commits: 13c093bd4
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(1067v1115) -- lane gap: the opening round-to-int is an inlined __asm helper (fistp/fild/fsub in ebp slots) that C++ cannot reproduce; the rest is a semantic first draft
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/0077a430.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

@@ -1,0 +1,17 @@
+addr: 00ac7eb0
+status: parked
+batches: 2026-10-19_linux_hand197
+attempts: 1
+last_lens: 215v215
+bounds_class: OK
+bounds_detail: row=215 ext=215 corr=00ac7eb0:215
+retries: 
+git_commits: 26ddb07e1,666bf6dc8
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(215v215) -- a `s = Z*o.Z; s += Y*o.Y; s += X*o.X` Dot called as v1.Normal.Dot(v2.Normal) fixes the z/y term order; left: the x term loads the first vertex (retail the second) and n*n*w is scaled before squaring (x87 operand-order lane gap; swapped operands, parentheses fold back)
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-19_linux_hand197/differ/00ac7eb0.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

@@ -1,0 +1,1375 @@
+10:54	007e2df0	DIFFER(252v257)	draft baseline	007e2df0.cpp
+10:56	0041afa0	DIFFER(1014v1455)	baseline draft	draft.cpp
+10:56	00439bb0	DIFFER(592v592)	baseline draft	prior_00439bb0.cpp
+10:56	0052ee00	DIFFER(185v192)	baseline draft	draft.cpp
+10:56	0057c4f1	DIFFER(1192v1192)	baseline draft	draft.cpp
+10:56	00591b7f	DIFFER(729v735)	baseline draft	draft.cpp
+10:56	00621a20	DIFFER(600v600)	baseline draft	draft.cpp
+10:56	0063f4b0	DIFFER(769v769)	baseline draft	draft.cpp
+10:56	00646762	DIFFER(735v740)	baseline draft	draft.cpp
+10:56	0064d404	DIFFER(393v399)	baseline draft	draft.cpp
+10:56	0064dd9a	DIFFER(533v580)	baseline draft	draft.cpp
+10:56	00664ba0	DIFFER(207v184)	baseline draft	draft.cpp
+10:56	0066cd50	DIFFER(382v423)	baseline draft	draft.cpp
+10:56	00699e60	DIFFER(459v431)	baseline draft	draft.cpp
+10:56	006b2960	DIFFER(250v250)	baseline draft	draft.cpp
+10:56	006b75a0	DIFFER(414v434)	baseline draft	draft.cpp
+10:56	006c06d0	DIFFER(312v312)	baseline draft	draft.cpp
+10:56	006cc800	DIFFER(373v399)	baseline draft	draft.cpp
+10:56	006e5a00	DIFFER(163v1772)	baseline draft	draft.cpp
+10:56	00766660	DIFFER(700v696)	baseline draft	draft.cpp
+10:56	007727e0	DIFFER(467v433)	baseline draft	draft.cpp
+10:56	0077a430	DIFFER(1054v1115)	baseline draft	draft.cpp
+10:56	0077d5b0	DIFFER(192v1491)	baseline draft	draft.cpp
+10:56	00780d80	DIFFER(539v539)	baseline draft	draft.cpp
+10:56	0078a690	DIFFER(1097v1097)	baseline draft	draft.cpp
+10:56	0078d250	DIFFER(1614v1729)	baseline draft	draft.cpp
+10:56	0079d360	DIFFER(1051v1115)	baseline draft	draft.cpp
+10:56	007df770	DIFFER(436v437)	baseline draft	draft.cpp
+10:56	007e2df0	DIFFER(252v257)	baseline draft	draft.cpp
+10:56	007f8c20	DIFFER(221v221)	baseline draft	draft.cpp
+10:56	0082a020	DIFFER(332v343)	baseline draft	prior_0082a020.cpp
+10:56	0083db60	DIFFER(145v125)	baseline draft	draft.cpp
+10:56	0087cfe0	DIFFER(1468v1447)	baseline draft	draft.cpp
+10:56	008a8260	DIFFER(456v466)	baseline draft	draft.cpp
+10:56	008d5aa0	DIFFER(1115v1126)	baseline draft	draft.cpp
+10:56	00914650	DIFFER(341v340)	baseline draft	draft.cpp
+10:56	00986210	DIFFER(454v461)	baseline draft	draft.cpp
+10:56	00988e80	DIFFER(889v917)	baseline draft	prior_00988e80.cpp
+10:56	00989230	DIFFER(636v636)	baseline draft	prior_00989230.cpp
+10:56	009acee0	DIFFER(1030v1017)	baseline draft	draft.cpp
+10:56	009bf7e0	DIFFER(824v846)	baseline draft	draft.cpp
+10:56	009c38c0	DIFFER(409v409)	baseline draft	draft.cpp
+10:56	009c3c20	DIFFER(877v909)	baseline draft	draft.cpp
+10:56	00a38c20	DIFFER(564v551)	baseline draft	draft.cpp
+10:56	00a475c0	OBJDUMP_ERR	baseline draft	draft.cpp
+10:56	00a48ba0	DIFFER(881v875)	baseline draft	draft.cpp
+10:56	00a48f10	DIFFER(815v811)	baseline draft	draft.cpp
+10:56	00a4c1f0	DIFFER(968v1006)	baseline draft	prior_00a4c1f0.cpp
+10:56	00a4d770	DIFFER(434v420)	baseline draft	draft.cpp
+10:56	00a52760	DIFFER(968v1004)	baseline draft	draft.cpp
+10:56	00a53860	DIFFER(966v1005)	baseline draft	draft.cpp
+10:56	00a567a0	DIFFER(683v766)	baseline draft	prior_00a567a0.cpp
+10:56	00a5b650	DIFFER(186v184)	baseline draft	draft.cpp
+10:56	00a62ae0	DIFFER(132v130)	baseline draft	draft.cpp
+10:56	00a770b0	DIFFER(527v533)	baseline draft	draft.cpp
+10:56	00a781a0	DIFFER(1244v1244)	baseline draft	draft.cpp
+10:56	00a793d0	DIFFER(593v678)	baseline draft	draft.cpp
+10:56	00a79680	DIFFER(593v678)	baseline draft	draft.cpp
+10:56	00a9d480	DIFFER(243v243)	baseline draft	draft.cpp
+10:56	00a9d750	DIFFER(551v551)	baseline draft	prior_00a9d750.cpp
+10:56	00aabf60	DIFFER(625v620)	baseline draft	draft.cpp
+10:56	00aad340	DIFFER(606v584)	baseline draft	prior_00aad340.cpp
+10:56	00ac7eb0	DIFFER(215v215)	baseline draft	draft.cpp
+10:56	00adf960	DIFFER(764v766)	baseline draft	prior_00adf960.cpp
+10:56	00ae1320	DIFFER(681v681)	baseline draft	prior_00ae1320.cpp
+10:56	00ae29d0	DIFFER(726v726)	baseline draft	prior_00ae29d0.cpp
+10:56	00b012e0	DIFFER(1296v1296)	baseline draft	draft.cpp
+10:56	00b05c60	DIFFER(428v429)	baseline draft	prior_00b05c60.cpp
+10:56	00b075d0	DIFFER(962v977)	baseline draft	draft.cpp
+10:56	00b079b0	DIFFER(2034v2032)	baseline draft	draft.cpp
+10:56	00b103f0	DIFFER(1464v1463)	baseline draft	draft.cpp
+10:56	00b16410	DIFFER(1674v1671)	baseline draft	draft.cpp
+10:56	00b1d550	DIFFER(546v576)	baseline draft	draft.cpp
+10:56	00b1d790	OBJDUMP_ERR	baseline draft	draft.cpp
+10:56	00b1dc70	OBJDUMP_ERR	baseline draft	draft.cpp
+10:56	00b1dfd0	OBJDUMP_ERR	baseline draft	draft.cpp
+10:56	00b328c0	DIFFER(501v517)	baseline draft	draft.cpp
+10:56	00b41a80	DIFFER(427v424)	baseline draft	prior_00b41a80.cpp
+10:56	00b51ad0	DIFFER(955v969)	baseline draft	draft.cpp
+10:56	00b53f60	DIFFER(418v411)	baseline draft	draft.cpp
+10:56	00b905a0	DIFFER(272v280)	baseline draft	draft.cpp
+10:56	00b93b30	DIFFER(377v395)	baseline draft	draft.cpp
+10:56	00b947e0	DIFFER(251v246)	baseline draft	prior_00b947e0.cpp
+10:56	00b94bf0	DIFFER(297v311)	baseline draft	draft.cpp
+10:56	00b99300	DIFFER(871v871)	baseline draft	draft.cpp
+10:56	00ba1140	DIFFER(2345v2344)	baseline draft	draft.cpp
+10:56	00bade40	DIFFER(743v793)	baseline draft	draft.cpp
+10:56	00bd71b0	DIFFER(2116v2116)	baseline draft	draft.cpp
+10:56	00be2120	DIFFER(106v97)	baseline draft	draft.cpp
+10:56	00bee070	DIFFER(206v206)	baseline draft	draft.cpp
+10:56	00c1c330	DIFFER(192v192)	baseline draft	draft.cpp
+10:56	00c40590	DIFFER(192v192)	baseline draft	draft.cpp
+10:56	00c41fb0	DIFFER(1553v1570)	baseline draft	draft.cpp
+10:56	00c6ac90	DIFFER(39v38)	baseline draft	draft.cpp
+10:56	00d6c830	DIFFER(607v607)	baseline draft	draft.cpp
+10:56	00d8a240	DIFFER(610v610)	baseline draft	draft.cpp
+10:56	00f36010	DIFFER(473v442)	baseline draft	draft.cpp
+10:56	00f361d0	DIFFER(744v873)	baseline draft	draft.cpp
+10:56	00f36540	DIFFER(321v321)	baseline draft	draft.cpp
+10:58	006c06d0	SRC_FAIL	port to headers, Normalise default	006c06d0.cpp
+10:58	006c06d0	DIFFER(312v312)	port to headers, Normalise default	006c06d0.cpp
+10:58	006c06d0	RELOCATION_MATCH	Normalise opt-in NORMALISE_SQUARED_ZXY	006c06d0_NORMALISE_SQUARED_ZXY.cpp
+10:58	006c06d0	DIFFER(312v312)	Normalise opt-in NORMALISE_ZXY	006c06d0_NORMALISE_ZXY.cpp
+10:58	006c06d0	RELOCATION_MATCH	Normalise opt-in NORMALISE_LOCALS	006c06d0_NORMALISE_LOCALS.cpp
+10:58	006c06d0	RELOCATION_MATCH	final src	006c06d0.cpp
+11:00	00f36540	DIFFER(321v321)	headers + egod locals + GFGetInterpolatedValue, no pragma	00f36540.cpp
+11:00	00f36540	DIFFER(321v321)	NAMED interp	a.cpp
+11:00	00f36540	DIFFER(321v321)	dead v1_x v1_y	b.cpp
+11:00	00f36540	DIFFER(321v321)	named v0 v1 lerps	c.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F1_n0_s0_d0	00f36540_F1_n0_s0_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F1_n0_s1_d0	00f36540_F1_n0_s1_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F1_n1_s0_d0	00f36540_F1_n1_s0_d0.cpp
+11:01	00f36540	RELOCATION_MATCH	sweep F1_n1_s1_d0	00f36540_F1_n1_s1_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F2_n0_s0_d0	00f36540_F2_n0_s0_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F2_n0_s1_d0	00f36540_F2_n0_s1_d0.cpp
+11:01	00f36540	RELOCATION_MATCH	sweep F2_n1_s0_d0	00f36540_F2_n1_s0_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F2_n1_s1_d0	00f36540_F2_n1_s1_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F3_n0_s0_d0	00f36540_F3_n0_s0_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F3_n0_s1_d0	00f36540_F3_n0_s1_d0.cpp
+11:01	00f36540	RELOCATION_MATCH	sweep F3_n1_s0_d0	00f36540_F3_n1_s0_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F3_n1_s1_d0	00f36540_F3_n1_s1_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F4_n0_s0_d0	00f36540_F4_n0_s0_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F4_n0_s1_d0	00f36540_F4_n0_s1_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F4_n1_s0_d0	00f36540_F4_n1_s0_d0.cpp
+11:01	00f36540	RELOCATION_MATCH	sweep F4_n1_s1_d0	00f36540_F4_n1_s1_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F5_n0_s0_d0	00f36540_F5_n0_s0_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F5_n0_s1_d0	00f36540_F5_n0_s1_d0.cpp
+11:01	00f36540	RELOCATION_MATCH	sweep F5_n1_s0_d0	00f36540_F5_n1_s0_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F5_n1_s1_d0	00f36540_F5_n1_s1_d0.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F1_n0_s0_d1	00f36540_F1_n0_s0_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F1_n0_s1_d1	00f36540_F1_n0_s1_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F1_n1_s0_d1	00f36540_F1_n1_s0_d1.cpp
+11:01	00f36540	RELOCATION_MATCH	sweep F1_n1_s1_d1	00f36540_F1_n1_s1_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F2_n0_s0_d1	00f36540_F2_n0_s0_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F2_n0_s1_d1	00f36540_F2_n0_s1_d1.cpp
+11:01	00f36540	RELOCATION_MATCH	sweep F2_n1_s0_d1	00f36540_F2_n1_s0_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F2_n1_s1_d1	00f36540_F2_n1_s1_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F3_n0_s0_d1	00f36540_F3_n0_s0_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F3_n0_s1_d1	00f36540_F3_n0_s1_d1.cpp
+11:01	00f36540	RELOCATION_MATCH	sweep F3_n1_s0_d1	00f36540_F3_n1_s0_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F3_n1_s1_d1	00f36540_F3_n1_s1_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F4_n0_s0_d1	00f36540_F4_n0_s0_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F4_n0_s1_d1	00f36540_F4_n0_s1_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F4_n1_s0_d1	00f36540_F4_n1_s0_d1.cpp
+11:01	00f36540	RELOCATION_MATCH	sweep F4_n1_s1_d1	00f36540_F4_n1_s1_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F5_n0_s0_d1	00f36540_F5_n0_s0_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F5_n0_s1_d1	00f36540_F5_n0_s1_d1.cpp
+11:01	00f36540	RELOCATION_MATCH	sweep F5_n1_s0_d1	00f36540_F5_n1_s0_d1.cpp
+11:01	00f36540	DIFFER(321v321)	sweep F5_n1_s1_d1	00f36540_F5_n1_s1_d1.cpp
+11:02	00f36540	RELOCATION_MATCH	final	00f36540.cpp
+11:03	00f36010	DIFFER(441v442)	first port, egod locals	00f36010.cpp
+11:03	00f36010	DIFFER(441v442)	sweep b00011011_g00011011_v00011011	00f36010_b00011011_g00011011_v00011011.cpp
+11:03	00f36010	DIFFER(441v442)	sweep b00011011_g00011011_v00100111	00f36010_b00011011_g00011011_v00100111.cpp
+11:03	00f36010	DIFFER(442v442)	sweep b00011011_g00100111_v00011011	00f36010_b00011011_g00100111_v00011011.cpp
+11:03	00f36010	DIFFER(442v442)	sweep b00011011_g00100111_v00100111	00f36010_b00011011_g00100111_v00100111.cpp
+11:03	00f36010	DIFFER(441v442)	sweep b00100111_g00011011_v00011011	00f36010_b00100111_g00011011_v00011011.cpp
+11:03	00f36010	DIFFER(441v442)	sweep b00100111_g00011011_v00100111	00f36010_b00100111_g00011011_v00100111.cpp
+11:03	00f36010	DIFFER(442v442)	sweep b00100111_g00100111_v00011011	00f36010_b00100111_g00100111_v00011011.cpp
+11:03	00f36010	DIFFER(442v442)	sweep b00100111_g00100111_v00100111	00f36010_b00100111_g00100111_v00100111.cpp
+11:03	00f36010	DIFFER(442v442)	order 00 10 01 11	00f36010.cpp
+11:04	00f36010	DIFFER(444v442)	PDB private helpers SCurve/Interp/Lookup*	00f36010.cpp
+11:04	00f36010	DIFFER(444v442)	sweep XY	00f36010_XY.cpp
+11:04	00f36010	DIFFER(444v442)	sweep YX	00f36010_YX.cpp
+11:04	00f36010	DIFFER(442v442)	sweep D	00f36010_D.cpp
+11:04	00f36010	DIFFER(444v442)	sweep aX	00f36010_aX.cpp
+11:05	00f36010	DIFFER(442v442)	Dot form	00f36010_D.cpp
+11:05	00f36010	DIFFER(442v442)	sweep sc0_ip0	00f36010_sc0_ip0.cpp
+11:05	00f36010	DIFFER(442v442)	sweep sc0_ip1	00f36010_sc0_ip1.cpp
+11:05	00f36010	DIFFER(442v442)	sweep sc0_ip2	00f36010_sc0_ip2.cpp
+11:05	00f36010	DIFFER(442v442)	sweep sc0_ip3	00f36010_sc0_ip3.cpp
+11:05	00f36010	DIFFER(446v442)	sweep sc1_ip0	00f36010_sc1_ip0.cpp
+11:05	00f36010	DIFFER(446v442)	sweep sc1_ip1	00f36010_sc1_ip1.cpp
+11:05	00f36010	DIFFER(446v442)	sweep sc1_ip2	00f36010_sc1_ip2.cpp
+11:05	00f36010	DIFFER(446v442)	sweep sc1_ip3	00f36010_sc1_ip3.cpp
+11:05	00f36010	RELOCATION_MATCH	sweep sc2_ip0	00f36010_sc2_ip0.cpp
+11:05	00f36010	RELOCATION_MATCH	sweep sc2_ip1	00f36010_sc2_ip1.cpp
+11:05	00f36010	RELOCATION_MATCH	sweep sc2_ip2	00f36010_sc2_ip2.cpp
+11:05	00f36010	RELOCATION_MATCH	sweep sc2_ip3	00f36010_sc2_ip3.cpp
+11:05	00f36010	DIFFER(446v442)	sweep sc3_ip0	00f36010_sc3_ip0.cpp
+11:05	00f36010	DIFFER(446v442)	sweep sc3_ip1	00f36010_sc3_ip1.cpp
+11:05	00f36010	DIFFER(446v442)	sweep sc3_ip2	00f36010_sc3_ip2.cpp
+11:05	00f36010	DIFFER(446v442)	sweep sc3_ip3	00f36010_sc3_ip3.cpp
+11:05	00f36010	RELOCATION_MATCH	sweep sc4_ip0	00f36010_sc4_ip0.cpp
+11:05	00f36010	RELOCATION_MATCH	sweep sc4_ip1	00f36010_sc4_ip1.cpp
+11:05	00f36010	RELOCATION_MATCH	sweep sc4_ip2	00f36010_sc4_ip2.cpp
+11:05	00f36010	RELOCATION_MATCH	sweep sc4_ip3	00f36010_sc4_ip3.cpp
+11:05	00f36540	DIFFER(321v321)	PDB private helpers	00f36540.cpp
+11:05	00f36010	RELOCATION_MATCH	sc2 header final	00f36010.cpp
+11:05	00f36540	DIFFER(321v321)	sweep sc0_ip0_ls0	00f36540_sc0_ip0_ls0.cpp
+11:05	00f36540	RELOCATION_MATCH	sweep sc0_ip1_ls0	00f36540_sc0_ip1_ls0.cpp
+11:05	00f36540	DIFFER(321v321)	sweep sc0_ip2_ls0	00f36540_sc0_ip2_ls0.cpp
+11:05	00f36540	RELOCATION_MATCH	sweep sc0_ip3_ls0	00f36540_sc0_ip3_ls0.cpp
+11:05	00f36540	DIFFER(321v321)	sweep sc0_ip4_ls0	00f36540_sc0_ip4_ls0.cpp
+11:05	00f36540	RELOCATION_MATCH	sweep sc0_ip5_ls0	00f36540_sc0_ip5_ls0.cpp
+11:05	00f36540	DIFFER(321v321)	sweep sc1_ip0_ls0	00f36540_sc1_ip0_ls0.cpp
+11:05	00f36540	RELOCATION_MATCH	sweep sc1_ip1_ls0	00f36540_sc1_ip1_ls0.cpp
+11:05	00f36540	DIFFER(321v321)	sweep sc1_ip2_ls0	00f36540_sc1_ip2_ls0.cpp
+11:05	00f36540	RELOCATION_MATCH	sweep sc1_ip3_ls0	00f36540_sc1_ip3_ls0.cpp
+11:05	00f36540	DIFFER(321v321)	sweep sc1_ip4_ls0	00f36540_sc1_ip4_ls0.cpp
+11:05	00f36540	RELOCATION_MATCH	sweep sc1_ip5_ls0	00f36540_sc1_ip5_ls0.cpp
+11:05	00f36540	RELOCATION_MATCH	sweep sc2_ip0_ls0	00f36540_sc2_ip0_ls0.cpp
+11:05	00f36540	DIFFER(321v321)	sweep sc2_ip1_ls0	00f36540_sc2_ip1_ls0.cpp
+11:05	00f36540	RELOCATION_MATCH	sweep sc2_ip2_ls0	00f36540_sc2_ip2_ls0.cpp
+11:05	00f36540	DIFFER(321v321)	sweep sc2_ip3_ls0	00f36540_sc2_ip3_ls0.cpp
+11:05	00f36540	RELOCATION_MATCH	sweep sc2_ip4_ls0	00f36540_sc2_ip4_ls0.cpp
+11:05	00f36540	DIFFER(321v321)	sweep sc2_ip5_ls0	00f36540_sc2_ip5_ls0.cpp
+11:05	00f36540	RELOCATION_MATCH	helpers sc0 ip1	00f36540.cpp
+11:05	00f36010	RELOCATION_MATCH	helpers sc0 ip1	00f36010.cpp
+11:06	00f361d0	DIFFER(871v873)	first port	00f361d0.cpp
+11:06	00f361d0	DIFFER(871v873)	first port (view)	00f361d0.cpp
+11:06	00f361d0	DIFFER(871v873)	first port (view)	00f361d0.cpp
+11:06	00f361d0	DIFFER(871v873)	first port (view)	00f361d0.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep default_r0	00f361d0_default_r0.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep default_r1	00f361d0_default_r1.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep DOT_ORIGINAL_SCOPE_PASS23_r0	00f361d0_DOT_ORIGINAL_SCOPE_PASS23_r0.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep DOT_ORIGINAL_SCOPE_PASS23_r1	00f361d0_DOT_ORIGINAL_SCOPE_PASS23_r1.cpp
+11:07	00f361d0	DIFFER(871v873)	sweep DOT_XY_THEN_Z_r0	00f361d0_DOT_XY_THEN_Z_r0.cpp
+11:07	00f361d0	DIFFER(871v873)	sweep DOT_XY_THEN_Z_r1	00f361d0_DOT_XY_THEN_Z_r1.cpp
+11:07	00f361d0	DIFFER(875v873)	sweep DOT_GROUPED_r0	00f361d0_DOT_GROUPED_r0.cpp
+11:07	00f361d0	DIFFER(875v873)	sweep DOT_GROUPED_r1	00f361d0_DOT_GROUPED_r1.cpp
+11:07	00f361d0	DIFFER(871v873)	sweep DOT_ORDERED_YXZ_r0	00f361d0_DOT_ORDERED_YXZ_r0.cpp
+11:07	00f361d0	DIFFER(871v873)	sweep DOT_ORDERED_YXZ_r1	00f361d0_DOT_ORDERED_YXZ_r1.cpp
+11:07	00f361d0	DIFFER(871v873)	sweep DOT_ORDERED_ZYX_r0	00f361d0_DOT_ORDERED_ZYX_r0.cpp
+11:07	00f361d0	DIFFER(871v873)	sweep DOT_ORDERED_ZYX_r1	00f361d0_DOT_ORDERED_ZYX_r1.cpp
+11:07	00f361d0	DIFFER(875v873)	sweep DOT_ORDERED_XYZ_r0	00f361d0_DOT_ORDERED_XYZ_r0.cpp
+11:07	00f361d0	DIFFER(875v873)	sweep DOT_ORDERED_XYZ_r1	00f361d0_DOT_ORDERED_XYZ_r1.cpp
+11:07	00f361d0	DIFFER(873v873)	Dot default	00f361d0.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep ABCD	00f361d0_ABCD.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep ABDC	00f361d0_ABDC.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep ACBD	00f361d0_ACBD.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep ACDB	00f361d0_ACDB.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep ADBC	00f361d0_ADBC.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep ADCB	00f361d0_ADCB.cpp
+11:07	00f361d0	DIFFER(872v873)	sweep DABC	00f361d0_DABC.cpp
+11:07	00f361d0	DIFFER(872v873)	sweep DACB	00f361d0_DACB.cpp
+11:07	00f361d0	DIFFER(873v873)	order v0 v1 b t	00f361d0.cpp
+11:07	00f361d0	DIFFER(878v873)	sweep frac_paren	00f361d0_frac_paren.cpp
+11:07	00f361d0	DIFFER(878v873)	sweep v1_paren	00f361d0_v1_paren.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep b_paren	00f361d0_b_paren.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep g_paren	00f361d0_g_paren.cpp
+11:07	00f361d0	DIFFER(882v873)	sweep g1_early	00f361d0_g1_early.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep z0_split	00f361d0_z0_split.cpp
+11:07	00f361d0	DIFFER(878v873)	sweep frac_paren+v1_paren	00f361d0_frac_paren+v1_paren.cpp
+11:07	00f361d0	DIFFER(878v873)	sweep frac_paren+b_paren	00f361d0_frac_paren+b_paren.cpp
+11:07	00f361d0	DIFFER(878v873)	sweep frac_paren+g_paren	00f361d0_frac_paren+g_paren.cpp
+11:07	00f361d0	DIFFER(878v873)	sweep v1_paren+b_paren	00f361d0_v1_paren+b_paren.cpp
+11:07	00f361d0	DIFFER(878v873)	sweep v1_paren+g_paren	00f361d0_v1_paren+g_paren.cpp
+11:07	00f361d0	DIFFER(873v873)	sweep b_paren+g_paren	00f361d0_b_paren+g_paren.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc0_ip0	00f361d0_sc0_ip0.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc0_ip1	00f361d0_sc0_ip1.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc0_ip2	00f361d0_sc0_ip2.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc0_ip3	00f361d0_sc0_ip3.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc0_ip4	00f361d0_sc0_ip4.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc0_ip5	00f361d0_sc0_ip5.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc1_ip0	00f361d0_sc1_ip0.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc1_ip1	00f361d0_sc1_ip1.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc1_ip2	00f361d0_sc1_ip2.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc1_ip3	00f361d0_sc1_ip3.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc1_ip4	00f361d0_sc1_ip4.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc1_ip5	00f361d0_sc1_ip5.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc2_ip0	00f361d0_sc2_ip0.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc2_ip1	00f361d0_sc2_ip1.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc2_ip2	00f361d0_sc2_ip2.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc2_ip3	00f361d0_sc2_ip3.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc2_ip4	00f361d0_sc2_ip4.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc2_ip5	00f361d0_sc2_ip5.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc3_ip0	00f361d0_sc3_ip0.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc3_ip1	00f361d0_sc3_ip1.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc3_ip2	00f361d0_sc3_ip2.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc3_ip3	00f361d0_sc3_ip3.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc3_ip4	00f361d0_sc3_ip4.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc3_ip5	00f361d0_sc3_ip5.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc4_ip0	00f361d0_sc4_ip0.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc4_ip1	00f361d0_sc4_ip1.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc4_ip2	00f361d0_sc4_ip2.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc4_ip3	00f361d0_sc4_ip3.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc4_ip4	00f361d0_sc4_ip4.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep sc4_ip5	00f361d0_sc4_ip5.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc5_ip0	00f361d0_sc5_ip0.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc5_ip1	00f361d0_sc5_ip1.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc5_ip2	00f361d0_sc5_ip2.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc5_ip3	00f361d0_sc5_ip3.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc5_ip4	00f361d0_sc5_ip4.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc5_ip5	00f361d0_sc5_ip5.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc6_ip0	00f361d0_sc6_ip0.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc6_ip1	00f361d0_sc6_ip1.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc6_ip2	00f361d0_sc6_ip2.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc6_ip3	00f361d0_sc6_ip3.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc6_ip4	00f361d0_sc6_ip4.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc6_ip5	00f361d0_sc6_ip5.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc7_ip0	00f361d0_sc7_ip0.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc7_ip1	00f361d0_sc7_ip1.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc7_ip2	00f361d0_sc7_ip2.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc7_ip3	00f361d0_sc7_ip3.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc7_ip4	00f361d0_sc7_ip4.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep sc7_ip5	00f361d0_sc7_ip5.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc8_ip0	00f361d0_sc8_ip0.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc8_ip1	00f361d0_sc8_ip1.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc8_ip2	00f361d0_sc8_ip2.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc8_ip3	00f361d0_sc8_ip3.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc8_ip4	00f361d0_sc8_ip4.cpp
+11:08	00f361d0	DIFFER(884v873)	sweep sc8_ip5	00f361d0_sc8_ip5.cpp
+11:08	00f361d0	DIFFER(873v873)	SCurve t*(t*(3-2t))	00f361d0.cpp
+11:08	00f36010	RELOCATION_MATCH	recheck SCurve t*(t*(3-2t))	00f36010.cpp
+11:08	00f36540	RELOCATION_MATCH	recheck SCurve t*(t*(3-2t))	00f36540.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep frac_paren	00f361d0_frac_paren.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep v1_paren	00f361d0_v1_paren.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep b_paren	00f361d0_b_paren.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep g_paren	00f361d0_g_paren.cpp
+11:08	00f361d0	DIFFER(882v873)	sweep g1_early	00f361d0_g1_early.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep z0_split	00f361d0_z0_split.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep frac_paren+v1_paren	00f361d0_frac_paren+v1_paren.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep frac_paren+b_paren	00f361d0_frac_paren+b_paren.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep frac_paren+g_paren	00f361d0_frac_paren+g_paren.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep v1_paren+b_paren	00f361d0_v1_paren+b_paren.cpp
+11:08	00f361d0	DIFFER(878v873)	sweep v1_paren+g_paren	00f361d0_v1_paren+g_paren.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep b_paren+g_paren	00f361d0_b_paren+g_paren.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep ABCD	00f361d0_ABCD.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep ABDC	00f361d0_ABDC.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep ACBD	00f361d0_ACBD.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep ACDB	00f361d0_ACDB.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep ADBC	00f361d0_ADBC.cpp
+11:08	00f361d0	DIFFER(873v873)	sweep ADCB	00f361d0_ADCB.cpp
+11:08	00f361d0	DIFFER(872v873)	sweep DABC	00f361d0_DABC.cpp
+11:08	00f361d0	DIFFER(872v873)	sweep DACB	00f361d0_DACB.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep gabcd_vabcd_i0_w0	00f361d0_gabcd_vabcd_i0_w0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep gabcd_vabcd_i0_w1	00f361d0_gabcd_vabcd_i0_w1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep gabcd_vabcd_i0_w2	00f361d0_gabcd_vabcd_i0_w2.cpp
+11:09	00f361d0	DIFFER(863v873)	sweep gabcd_vabcd_i1_w0	00f361d0_gabcd_vabcd_i1_w0.cpp
+11:09	00f361d0	DIFFER(864v873)	sweep gabcd_vabcd_i1_w1	00f361d0_gabcd_vabcd_i1_w1.cpp
+11:09	00f361d0	DIFFER(854v873)	sweep gabcd_vabcd_i1_w2	00f361d0_gabcd_vabcd_i1_w2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep gabcd_vacbd_i0_w0	00f361d0_gabcd_vacbd_i0_w0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep gabcd_vacbd_i0_w1	00f361d0_gabcd_vacbd_i0_w1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep gabcd_vacbd_i0_w2	00f361d0_gabcd_vacbd_i0_w2.cpp
+11:09	00f361d0	DIFFER(878v873)	sweep gacbd_vabcd_i0_w0	00f361d0_gacbd_vabcd_i0_w0.cpp
+11:09	00f361d0	DIFFER(878v873)	sweep gacbd_vabcd_i0_w1	00f361d0_gacbd_vabcd_i0_w1.cpp
+11:09	00f361d0	DIFFER(883v873)	sweep gacbd_vabcd_i0_w2	00f361d0_gacbd_vabcd_i0_w2.cpp
+11:09	00f361d0	DIFFER(878v873)	sweep gacbd_vacbd_i0_w0	00f361d0_gacbd_vacbd_i0_w0.cpp
+11:09	00f361d0	DIFFER(878v873)	sweep gacbd_vacbd_i0_w1	00f361d0_gacbd_vacbd_i0_w1.cpp
+11:09	00f361d0	DIFFER(883v873)	sweep gacbd_vacbd_i0_w2	00f361d0_gacbd_vacbd_i0_w2.cpp
+11:09	00f361d0	DIFFER(841v873)	sweep gacbd_vacbd_i1_w0	00f361d0_gacbd_vacbd_i1_w0.cpp
+11:09	00f361d0	DIFFER(845v873)	sweep gacbd_vacbd_i1_w1	00f361d0_gacbd_vacbd_i1_w1.cpp
+11:09	00f361d0	DIFFER(817v873)	sweep gacbd_vacbd_i1_w2	00f361d0_gacbd_vacbd_i1_w2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep DOT_ORIGINAL_SCOPE_PASS23	00f361d0_DOT_ORIGINAL_SCOPE_PASS23.cpp
+11:09	00f361d0	DIFFER(871v873)	sweep DOT_XY_THEN_Z	00f361d0_DOT_XY_THEN_Z.cpp
+11:09	00f361d0	DIFFER(875v873)	sweep DOT_GROUPED	00f361d0_DOT_GROUPED.cpp
+11:09	00f361d0	DIFFER(871v873)	sweep DOT_ORDERED_YXZ	00f361d0_DOT_ORDERED_YXZ.cpp
+11:09	00f361d0	DIFFER(871v873)	sweep DOT_ORDERED_ZYX	00f361d0_DOT_ORDERED_ZYX.cpp
+11:09	00f361d0	DIFFER(875v873)	sweep DOT_ORDERED_XYZ	00f361d0_DOT_ORDERED_XYZ.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep CTCSHOTDEFINITIONBASE_COLLISION_X	00f361d0_CTCSHOTDEFINITIONBASE_COLLISION_X.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg0_ip0	00f361d0_li0_lg0_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg0_ip1	00f361d0_li0_lg0_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg0_ip2	00f361d0_li0_lg0_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg0_ip3	00f361d0_li0_lg0_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg0_ip4	00f361d0_li0_lg0_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg1_ip0	00f361d0_li0_lg1_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg1_ip1	00f361d0_li0_lg1_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg1_ip2	00f361d0_li0_lg1_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg1_ip3	00f361d0_li0_lg1_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg1_ip4	00f361d0_li0_lg1_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg2_ip0	00f361d0_li0_lg2_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg2_ip1	00f361d0_li0_lg2_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg2_ip2	00f361d0_li0_lg2_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg2_ip3	00f361d0_li0_lg2_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg2_ip4	00f361d0_li0_lg2_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg3_ip0	00f361d0_li0_lg3_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg3_ip1	00f361d0_li0_lg3_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg3_ip2	00f361d0_li0_lg3_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg3_ip3	00f361d0_li0_lg3_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li0_lg3_ip4	00f361d0_li0_lg3_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg0_ip0	00f361d0_li1_lg0_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg0_ip1	00f361d0_li1_lg0_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg0_ip2	00f361d0_li1_lg0_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg0_ip3	00f361d0_li1_lg0_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg0_ip4	00f361d0_li1_lg0_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg1_ip0	00f361d0_li1_lg1_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg1_ip1	00f361d0_li1_lg1_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg1_ip2	00f361d0_li1_lg1_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg1_ip3	00f361d0_li1_lg1_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg1_ip4	00f361d0_li1_lg1_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg2_ip0	00f361d0_li1_lg2_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg2_ip1	00f361d0_li1_lg2_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg2_ip2	00f361d0_li1_lg2_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg2_ip3	00f361d0_li1_lg2_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg2_ip4	00f361d0_li1_lg2_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg3_ip0	00f361d0_li1_lg3_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg3_ip1	00f361d0_li1_lg3_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg3_ip2	00f361d0_li1_lg3_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg3_ip3	00f361d0_li1_lg3_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li1_lg3_ip4	00f361d0_li1_lg3_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg0_ip0	00f361d0_li2_lg0_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg0_ip1	00f361d0_li2_lg0_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg0_ip2	00f361d0_li2_lg0_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg0_ip3	00f361d0_li2_lg0_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg0_ip4	00f361d0_li2_lg0_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg1_ip0	00f361d0_li2_lg1_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg1_ip1	00f361d0_li2_lg1_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg1_ip2	00f361d0_li2_lg1_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg1_ip3	00f361d0_li2_lg1_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg1_ip4	00f361d0_li2_lg1_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg2_ip0	00f361d0_li2_lg2_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg2_ip1	00f361d0_li2_lg2_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg2_ip2	00f361d0_li2_lg2_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg2_ip3	00f361d0_li2_lg2_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg2_ip4	00f361d0_li2_lg2_ip4.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg3_ip0	00f361d0_li2_lg3_ip0.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg3_ip1	00f361d0_li2_lg3_ip1.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg3_ip2	00f361d0_li2_lg3_ip2.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg3_ip3	00f361d0_li2_lg3_ip3.cpp
+11:09	00f361d0	DIFFER(873v873)	sweep li2_lg3_ip4	00f361d0_li2_lg3_ip4.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep value000	00f361d0_value000.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep value100	00f361d0_value100.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep value010	00f361d0_value010.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep value110	00f361d0_value110.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep result_z0	00f361d0_result_z0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep value001	00f361d0_value001.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep result_z1	00f361d0_result_z1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 	00f361d0_.cpp
+11:10	00f361d0	DIFFER(878v873)	sweep tx	00f361d0_tx.cpp
+11:10	00f361d0	DIFFER(878v873)	sweep ty	00f361d0_ty.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep tz	00f361d0_tz.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep b00	00f361d0_b00.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep b11	00f361d0_b11.cpp
+11:10	00f361d0	DIFFER(878v873)	sweep v0_x	00f361d0_v0_x.cpp
+11:10	00f361d0	DIFFER(878v873)	sweep v1_x	00f361d0_v1_x.cpp
+11:10	00f361d0	DIFFER(878v873)	sweep v1_z	00f361d0_v1_z.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep inner	00f361d0_inner.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep inner2	00f361d0_inner2.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep inner3	00f361d0_inner3.cpp
+11:10	00f361d0	DIFFER(873v873)	view value000 paren	00f361d0_value000.cpp
+11:10	00f361d0	DIFFER(873v873)	view inner	00f361d0_inner.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_in0	00f361d0_000_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_in1	00f361d0_000_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 100_in0	00f361d0_100_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 100_in1	00f361d0_100_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 010_in0	00f361d0_010_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 010_in1	00f361d0_010_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 110_in0	00f361d0_110_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 110_in1	00f361d0_110_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_100_in0	00f361d0_000_100_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_100_in1	00f361d0_000_100_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_010_in0	00f361d0_000_010_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_010_in1	00f361d0_000_010_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_110_in0	00f361d0_000_110_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_110_in1	00f361d0_000_110_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 100_010_in0	00f361d0_100_010_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 100_010_in1	00f361d0_100_010_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 100_110_in0	00f361d0_100_110_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 100_110_in1	00f361d0_100_110_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 010_110_in0	00f361d0_010_110_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 010_110_in1	00f361d0_010_110_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_100_010_in0	00f361d0_000_100_010_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_100_010_in1	00f361d0_000_100_010_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_100_110_in0	00f361d0_000_100_110_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_100_110_in1	00f361d0_000_100_110_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_010_110_in0	00f361d0_000_010_110_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_010_110_in1	00f361d0_000_010_110_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 100_010_110_in0	00f361d0_100_010_110_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 100_010_110_in1	00f361d0_100_010_110_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_100_010_110_in0	00f361d0_000_100_010_110_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep 000_100_010_110_in1	00f361d0_000_100_010_110_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep result_z0_in0	00f361d0_result_z0_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep result_z0_in1	00f361d0_result_z0_in1.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep result_z0+value000_in0	00f361d0_result_z0+value000_in0.cpp
+11:10	00f361d0	DIFFER(873v873)	sweep result_z0+value000_in1	00f361d0_result_z0+value000_in1.cpp
+11:10	00f361d0	DIFFER(885v873)	sweep S1	00f361d0_S1.cpp
+11:10	00f361d0	DIFFER(877v873)	sweep S2	00f361d0_S2.cpp
+11:10	00f361d0	DIFFER(882v873)	sweep S4	00f361d0_S4.cpp
+11:10	00f361d0	DIFFER(882v873)	sweep S5	00f361d0_S5.cpp
+11:11	00f361d0	DIFFER(873v873)	sweep sc0_ip0	00f361d0_sc0_ip0.cpp
+11:11	00f361d0	DIFFER(873v873)	sweep sc0_ip1	00f361d0_sc0_ip1.cpp
+11:11	00f361d0	DIFFER(884v873)	sweep sc1_ip0	00f361d0_sc1_ip0.cpp
+11:11	00f361d0	DIFFER(884v873)	sweep sc1_ip1	00f361d0_sc1_ip1.cpp
+11:11	00f361d0	DIFFER(878v873)	sweep sc2_ip0	00f361d0_sc2_ip0.cpp
+11:11	00f361d0	DIFFER(878v873)	sweep sc2_ip1	00f361d0_sc2_ip1.cpp
+11:11	00f361d0	DIFFER(878v873)	sweep sc3_ip0	00f361d0_sc3_ip0.cpp
+11:11	00f361d0	DIFFER(878v873)	sweep sc3_ip1	00f361d0_sc3_ip1.cpp
+11:11	00f361d0	DIFFER(884v873)	sweep sc4_ip0	00f361d0_sc4_ip0.cpp
+11:11	00f361d0	DIFFER(884v873)	sweep sc4_ip1	00f361d0_sc4_ip1.cpp
+11:11	00f361d0	DIFFER(873v873)	sweep sc5_ip0	00f361d0_sc5_ip0.cpp
+11:11	00f361d0	DIFFER(873v873)	sweep sc5_ip1	00f361d0_sc5_ip1.cpp
+11:11	00f361d0	DIFFER(884v873)	sweep sc6_ip0	00f361d0_sc6_ip0.cpp
+11:11	00f361d0	DIFFER(884v873)	sweep sc6_ip1	00f361d0_sc6_ip1.cpp
+11:11	00f361d0	DIFFER(884v873)	sweep sc7_ip0	00f361d0_sc7_ip0.cpp
+11:11	00f361d0	DIFFER(884v873)	sweep sc7_ip1	00f361d0_sc7_ip1.cpp
+11:11	00f361d0	DIFFER(884v873)	sweep sc8_ip0	00f361d0_sc8_ip0.cpp
+11:11	00f361d0	DIFFER(884v873)	sweep sc8_ip1	00f361d0_sc8_ip1.cpp
+11:11	00f36010	RELOCATION_MATCH	sweep sc0_ip0	00f36010_sc0_ip0.cpp
+11:11	00f36010	RELOCATION_MATCH	sweep sc0_ip1	00f36010_sc0_ip1.cpp
+11:11	00f36010	DIFFER(446v442)	sweep sc1_ip0	00f36010_sc1_ip0.cpp
+11:11	00f36010	DIFFER(446v442)	sweep sc1_ip1	00f36010_sc1_ip1.cpp
+11:11	00f36010	DIFFER(442v442)	sweep sc2_ip0	00f36010_sc2_ip0.cpp
+11:11	00f36010	DIFFER(442v442)	sweep sc2_ip1	00f36010_sc2_ip1.cpp
+11:11	00f36010	DIFFER(442v442)	sweep sc3_ip0	00f36010_sc3_ip0.cpp
+11:11	00f36010	DIFFER(442v442)	sweep sc3_ip1	00f36010_sc3_ip1.cpp
+11:11	00f36010	DIFFER(446v442)	sweep sc4_ip0	00f36010_sc4_ip0.cpp
+11:11	00f36010	DIFFER(446v442)	sweep sc4_ip1	00f36010_sc4_ip1.cpp
+11:11	00f36010	DIFFER(442v442)	sweep sc5_ip0	00f36010_sc5_ip0.cpp
+11:11	00f36010	DIFFER(442v442)	sweep sc5_ip1	00f36010_sc5_ip1.cpp
+11:11	00f36010	DIFFER(446v442)	sweep sc6_ip0	00f36010_sc6_ip0.cpp
+11:11	00f36010	DIFFER(446v442)	sweep sc6_ip1	00f36010_sc6_ip1.cpp
+11:11	00f36010	DIFFER(446v442)	sweep sc7_ip0	00f36010_sc7_ip0.cpp
+11:11	00f36010	DIFFER(446v442)	sweep sc7_ip1	00f36010_sc7_ip1.cpp
+11:11	00f36010	DIFFER(446v442)	sweep sc8_ip0	00f36010_sc8_ip0.cpp
+11:11	00f36010	DIFFER(446v442)	sweep sc8_ip1	00f36010_sc8_ip1.cpp
+11:11	00f36540	RELOCATION_MATCH	sweep sc0_ip0	00f36540_sc0_ip0.cpp
+11:11	00f36540	DIFFER(321v321)	sweep sc0_ip1	00f36540_sc0_ip1.cpp
+11:11	00f36540	DIFFER(327v321)	sweep sc1_ip0	00f36540_sc1_ip0.cpp
+11:11	00f36540	DIFFER(327v321)	sweep sc1_ip1	00f36540_sc1_ip1.cpp
+11:11	00f36540	DIFFER(321v321)	sweep sc2_ip0	00f36540_sc2_ip0.cpp
+11:11	00f36540	RELOCATION_MATCH	sweep sc2_ip1	00f36540_sc2_ip1.cpp
+11:11	00f36540	DIFFER(321v321)	sweep sc3_ip0	00f36540_sc3_ip0.cpp
+11:11	00f36540	RELOCATION_MATCH	sweep sc3_ip1	00f36540_sc3_ip1.cpp
+11:11	00f36540	DIFFER(327v321)	sweep sc4_ip0	00f36540_sc4_ip0.cpp
+11:11	00f36540	DIFFER(327v321)	sweep sc4_ip1	00f36540_sc4_ip1.cpp
+11:11	00f36540	DIFFER(321v321)	sweep sc5_ip0	00f36540_sc5_ip0.cpp
+11:11	00f36540	DIFFER(321v321)	sweep sc5_ip1	00f36540_sc5_ip1.cpp
+11:11	00f36540	DIFFER(327v321)	sweep sc6_ip0	00f36540_sc6_ip0.cpp
+11:11	00f36540	DIFFER(327v321)	sweep sc6_ip1	00f36540_sc6_ip1.cpp
+11:11	00f36540	DIFFER(327v321)	sweep sc7_ip0	00f36540_sc7_ip0.cpp
+11:11	00f36540	DIFFER(327v321)	sweep sc7_ip1	00f36540_sc7_ip1.cpp
+11:11	00f36540	DIFFER(327v321)	sweep sc8_ip0	00f36540_sc8_ip0.cpp
+11:11	00f36540	DIFFER(327v321)	sweep sc8_ip1	00f36540_sc8_ip1.cpp
+11:11	00f36010	RELOCATION_MATCH	final header sc0 ip0	00f36010.cpp
+11:11	00f36540	RELOCATION_MATCH	final header sc0 ip0	00f36540.cpp
+11:11	00f361d0	DIFFER(873v873)	final header sc0	00f361d0.cpp
+11:13	00ac7eb0	DIFFER(215v215)	port headers	00ac7eb0.cpp
+11:13	00ac7eb0	DIFFER(215v215)	sweep sq_after_t	00ac7eb0_sq_after_t.cpp
+11:13	00ac7eb0	DIFFER(215v215)	sweep sq_after_n	00ac7eb0_sq_after_n.cpp
+11:13	00ac7eb0	DIFFER(215v215)	sweep both_sq	00ac7eb0_both_sq.cpp
+11:13	00ac7eb0	DIFFER(213v215)	sweep cost_split	00ac7eb0_cost_split.cpp
+11:13	00ac7eb0	DIFFER(215v215)	sweep paren	00ac7eb0_paren.cpp
+11:13	00ac7eb0	DIFFER(215v215)	sweep sq_n_cost_split	00ac7eb0_sq_n_cost_split.cpp
+11:13	00ac7eb0	DIFFER(215v215)	view sq_after_t	00ac7eb0_sq_after_t.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep nn_paren	00ac7eb0_nn_paren.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep wnn	00ac7eb0_wnn.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep w_nn	00ac7eb0_w_nn.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep wt	00ac7eb0_wt.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep wt_wnn	00ac7eb0_wt_wnn.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep wt_nnp	00ac7eb0_wt_nnp.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep rev	00ac7eb0_rev.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep paren_t	00ac7eb0_paren_t.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep paren_t2	00ac7eb0_paren_t2.cpp
+11:14	00ac7eb0	DIFFER(215v215)	view nn_paren	00ac7eb0_nn_paren.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep sqr_both	00ac7eb0_sqr_both.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep sqr_n	00ac7eb0_sqr_n.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep sqr_assign_t	00ac7eb0_sqr_assign_t.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep tex_sq_n_sq_sep	00ac7eb0_tex_sq_n_sq_sep.cpp
+11:14	00ac7eb0	DIFFER(213v215)	sweep t_sq_inline_both	00ac7eb0_t_sq_inline_both.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_SQRTF_tsq	00ac7eb0_MAGNITUDE_SQRTF_tsq.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_SQRTF_orig	00ac7eb0_MAGNITUDE_SQRTF_orig.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_SQRTF_tsq_late	00ac7eb0_MAGNITUDE_SQRTF_tsq_late.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_SQUARED_LOCAL_tsq	00ac7eb0_MAGNITUDE_SQUARED_LOCAL_tsq.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_SQUARED_LOCAL_orig	00ac7eb0_MAGNITUDE_SQUARED_LOCAL_orig.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_SQUARED_LOCAL_tsq_late	00ac7eb0_MAGNITUDE_SQUARED_LOCAL_tsq_late.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_NAMED_SQUARED_tsq	00ac7eb0_MAGNITUDE_NAMED_SQUARED_tsq.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_NAMED_SQUARED_orig	00ac7eb0_MAGNITUDE_NAMED_SQUARED_orig.cpp
+11:14	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_NAMED_SQUARED_tsq_late	00ac7eb0_MAGNITUDE_NAMED_SQUARED_tsq_late.cpp
+11:15	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_XY_THEN_Z_tsq	00ac7eb0_MAGNITUDE_XY_THEN_Z_tsq.cpp
+11:15	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_XY_THEN_Z_orig	00ac7eb0_MAGNITUDE_XY_THEN_Z_orig.cpp
+11:15	00ac7eb0	DIFFER(215v215)	sweep MAGNITUDE_XY_THEN_Z_tsq_late	00ac7eb0_MAGNITUDE_XY_THEN_Z_tsq_late.cpp
+11:15	00ac7eb0	DIFFER(215v215)	sweep dflt_tsq	00ac7eb0_dflt_tsq.cpp
+11:15	00ac7eb0	DIFFER(215v215)	sweep dflt_orig	00ac7eb0_dflt_orig.cpp
+11:15	00ac7eb0	DIFFER(215v215)	sweep dflt_tsq_late	00ac7eb0_dflt_tsq_late.cpp
+11:15	00ac7eb0	DIFFER(215v215)	view wnn	00ac7eb0_wnn.cpp
+11:15	00ac7eb0	DIFFER(215v215)	view rev	00ac7eb0_rev.cpp
+11:15	00ac7eb0	DIFFER(215v215)	view sqr_n	00ac7eb0_sqr_n.cpp
+11:16	008a8260	DIFFER(456v466)	egod locals, phero CThingPlayerCreature*, ptcs in block	008a8260.cpp
+11:17	007e2df0	DIFFER(257v257)	port headers	007e2df0.cpp
+11:17	007e2df0	RELOCATION_MATCH	SetRHSet slot 75	007e2df0.cpp
+11:17	00f361d0	DIFFER(883v873)	double literals SCurve + v1	00f361d0_d.cpp
+11:17	00f36010	DIFFER(455v442)	double literals	00f36010.cpp
+11:17	00f36540	DIFFER(331v321)	double literals	00f36540.cpp
+11:18	00f361d0	DIFFER(888v873)	SCurve (float)(double expr)	00f361d0.cpp
+11:18	00f36010	RELOCATION_MATCH	restored float literals	00f36010.cpp
+11:18	00f36540	RELOCATION_MATCH	restored float literals	00f36540.cpp
+11:20	00b947e0	DIFFER(129v246)	new headers, GFGetTopBit, GFLimit	00b947e0.cpp
+11:20	00b947e0	DIFFER(251v246)	TopBit forceinline, <=1	00b947e0.cpp
+11:21	00b947e0	RELOCATION_MATCH	sweep ternary	00b947e0_ternary.cpp
+11:21	00b947e0	DIFFER(251v246)	sweep limit	00b947e0_limit.cpp
+11:21	00b947e0	DIFFER(251v246)	sweep uns	00b947e0_uns.cpp
+11:21	00b947e0	DIFFER(245v246)	sweep sep	00b947e0_sep.cpp
+11:21	00b947e0	DIFFER(251v246)	sweep lt1_else	00b947e0_lt1_else.cpp
+11:21	00b947e0	DIFFER(251v246)	sweep pre	00b947e0_pre.cpp
+11:21	00b947e0	DIFFER(251v246)	sweep two	00b947e0_two.cpp
+11:21	00b947e0	DIFFER(251v246)	sweep sqrtf	00b947e0_sqrtf.cpp
+11:23	00a62ae0	DIFFER(132v130)	egod locals + ReadNBytes static	00a62ae0.cpp
+11:24	00f36010	DIFFER(442v442)	coord r2: SCurve t*(t*(3.0f-(2.0f*t)))	00f36010.cpp
+11:24	00f36540	DIFFER(321v321)	coord r2: SCurve t*(t*(3.0f-(2.0f*t)))	00f36540.cpp
+11:24	00f361d0	DIFFER(878v873)	coord r2: SCurve t*(t*(3.0f-(2.0f*t)))	00f361d0.cpp
+11:24	00f36010	RELOCATION_MATCH	coord r2: SCurve (3.0f-(2.0f*t))*t*t	00f36010.cpp
+11:24	00f36540	RELOCATION_MATCH	coord r2: SCurve (3.0f-(2.0f*t))*t*t	00f36540.cpp
+11:24	00f361d0	DIFFER(873v873)	coord r2: SCurve (3.0f-(2.0f*t))*t*t	00f361d0.cpp
+11:24	00f36010	DIFFER(442v442)	coord r2: SCurve t*((3.0f-(2.0f*t))*t)	00f36010.cpp
+11:24	00f36540	DIFFER(321v321)	coord r2: SCurve t*((3.0f-(2.0f*t))*t)	00f36540.cpp
+11:24	00f361d0	DIFFER(878v873)	coord r2: SCurve t*((3.0f-(2.0f*t))*t)	00f361d0.cpp
+11:24	00f361d0	DIFFER(873v873)	baseline recheck (left-assoc float)	00f361d0.cpp
+11:24	00f361d0	DIFFER(873v873)	coord r2: SCurve (3-2t)*t*t full	00f361d0.cpp
+11:29	00f361d0	DIFFER(873v873)	coord r2 sched: SCurve t*t*(3.0f-2.0f*t) (no inner PAREN)	00f361d0.cpp
+11:29	00f36010	DIFFER(442v442)	coord r2 sched: SCurve no inner PAREN	00f36010.cpp
+11:29	00f36540	DIFFER(321v321)	coord r2 sched: SCurve no inner PAREN	00f36540.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep inc_P_F	00f361d0_inc_P_F.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep inc_3_2_F_P	00f361d0_inc_3_2_F_P.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep inc_2_3_F_P	00f361d0_inc_2_3_F_P.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep inc_3_F_P	00f361d0_inc_3_F_P.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep inc_2_F_P	00f361d0_inc_2_F_P.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep inc_P_F_3_2	00f361d0_inc_P_F_3_2.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep tx_before_v0y	00f361d0_tx_before_v0y.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep txyz_before_v1	00f361d0_txyz_before_v1.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep txyz_before_b00	00f361d0_txyz_before_b00.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep txy_before_b00	00f361d0_txy_before_b00.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep tx_before_b00	00f361d0_tx_before_b00.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep tz_before_tx	00f361d0_tz_before_tx.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep tz_after_g000	00f361d0_tz_after_g000.cpp
+11:31	00f361d0	DIFFER(873v873)	sweep ty_before_tx	00f361d0_ty_before_tx.cpp
+11:32	00f361d0	DIFFER(873v873)	sweep np_castx	00f361d0_np_castx.cpp
+11:32	00f361d0	DIFFER(873v873)	sweep np_parx	00f361d0_np_parx.cpp
+11:32	00f361d0	DIFFER(873v873)	sweep np_parcastx	00f361d0_np_parcastx.cpp
+11:32	00f361d0	DIFFER(873v873)	sweep np_parv0x	00f361d0_np_parv0x.cpp
+11:32	00f361d0	DIFFER(873v873)	sweep np_pary	00f361d0_np_pary.cpp
+11:32	00f361d0	DIFFER(873v873)	sweep np_parcasty	00f361d0_np_parcasty.cpp
+11:32	00f361d0	DIFFER(873v873)	sweep np_parv0y	00f361d0_np_parv0y.cpp
+11:32	00f361d0	DIFFER(878v873)	sweep p_parcastx	00f361d0_p_parcastx.cpp
+11:32	00f361d0	DIFFER(878v873)	sweep p_parv0x	00f361d0_p_parv0x.cpp
+11:32	00f361d0	DIFFER(873v873)	np_parcastx full diff	00f361d0_np_parcastx.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep egod_order	00a62ae0_egod_order.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep egod_order_div	00a62ae0_egod_order_div.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep P_K_B_M_V	00a62ae0_P_K_B_M_V.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep P_B_K_M_V	00a62ae0_P_B_K_M_V.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep P_M_V_K_B	00a62ae0_P_M_V_K_B.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep egod_while	00a62ae0_egod_while.cpp
+11:34	00a62ae0	DIFFER(130v130)	egod decl order	00a62ae0.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PMVBK	00a62ae0_PMVBK.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PMVKB	00a62ae0_PMVKB.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PMBVK	00a62ae0_PMBVK.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PMBKV	00a62ae0_PMBKV.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PMKVB	00a62ae0_PMKVB.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PMKBV	00a62ae0_PMKBV.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PVMBK	00a62ae0_PVMBK.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PVMKB	00a62ae0_PVMKB.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PVBMK	00a62ae0_PVBMK.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PVBKM	00a62ae0_PVBKM.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PVKMB	00a62ae0_PVKMB.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PVKBM	00a62ae0_PVKBM.cpp
+11:34	00a62ae0	RELOCATION_MATCH	sweep PBMVK	00a62ae0_PBMVK.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PBMKV	00a62ae0_PBMKV.cpp
+11:34	00a62ae0	DIFFER(130v130)	sweep PBVMK	00a62ae0_PBVMK.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PBVKM	00a62ae0_PBVKM.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PBKMV	00a62ae0_PBKMV.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PBKVM	00a62ae0_PBKVM.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PKMVB	00a62ae0_PKMVB.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PKMBV	00a62ae0_PKMBV.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PKVMB	00a62ae0_PKVMB.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PKVBM	00a62ae0_PKVBM.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PKBMV	00a62ae0_PKBMV.cpp
+11:34	00a62ae0	DIFFER(132v130)	sweep PKBVM	00a62ae0_PKBVM.cpp
+11:34	00a62ae0	RELOCATION_MATCH	final: P B M V K, no pragma, no __fastcall	00a62ae0.cpp
+11:35	00ac7eb0	DIFFER(215v215)	sweep front1	00ac7eb0_front1.cpp
+11:35	00ac7eb0	DIFFER(215v215)	sweep front2	00ac7eb0_front2.cpp
+11:35	00ac7eb0	DIFFER(215v215)	sweep front3	00ac7eb0_front3.cpp
+11:35	00ac7eb0	DIFFER(215v215)	sweep front4	00ac7eb0_front4.cpp
+11:35	00ac7eb0	DIFFER(215v215)	sweep front5	00ac7eb0_front5.cpp
+11:35	00ac7eb0	SRC_FAIL	sweep front6	00ac7eb0_front6.cpp
+11:35	00ac7eb0	DIFFER(215v215)	sweep back0	00ac7eb0_back0.cpp
+11:35	00ac7eb0	DIFFER(215v215)	sweep back1	00ac7eb0_back1.cpp
+11:35	00ac7eb0	DIFFER(215v215)	sweep back2	00ac7eb0_back2.cpp
+11:35	00ac7eb0	DIFFER(215v215)	sweep back3	00ac7eb0_back3.cpp
+11:35	00ac7eb0	DIFFER(215v215)	sweep back4	00ac7eb0_back4.cpp
+11:35	00ac7eb0	SRC_FAIL	sweep back5	00ac7eb0_back5.cpp
+11:35	00ac7eb0	SRC_FAIL	sweep reverse	00ac7eb0_reverse.cpp
+11:35	00ac7eb0	DIFFER(215v215)	recheck	00ac7eb0.cpp
+11:37	00ac7eb0	DIFFER(213v215)	sweep fw_cost0_pluseq	00ac7eb0_fw_cost0_pluseq.cpp
+11:37	00ac7eb0	DIFFER(213v215)	sweep cost_eq_pluseq	00ac7eb0_cost_eq_pluseq.cpp
+11:37	00ac7eb0	DIFFER(215v215)	sweep sum_gfsqr	00ac7eb0_sum_gfsqr.cpp
+11:37	00ac7eb0	DIFFER(215v215)	sweep w_first	00ac7eb0_w_first.cpp
+11:37	00ac7eb0	DIFFER(213v215)	sweep cost0_w_first	00ac7eb0_cost0_w_first.cpp
+11:37	00ac7eb0	DIFFER(215v215)	sweep t_sq_nsq_gf	00ac7eb0_t_sq_nsq_gf.cpp
+11:39	00f361d0	DIFFER(873v873)	sweep b_lpar	00f361d0_b_lpar.cpp
+11:39	00f361d0	DIFFER(873v873)	sweep d_rassoc	00f361d0_d_rassoc.cpp
+11:39	00f361d0	DIFFER(873v873)	sweep f_mid	00f361d0_f_mid.cpp
+11:39	00f361d0	DIFFER(873v873)	sweep g_outer	00f361d0_g_outer.cpp
+11:39	00f361d0	DIFFER(873v873)	sweep g2_outer	00f361d0_g2_outer.cpp
+11:39	00f361d0	DIFFER(884v873)	sweep h_ttpar	00f361d0_h_ttpar.cpp
+11:39	00f36010	RELOCATION_MATCH	sweep b_lpar	00f36010_b_lpar.cpp
+11:39	00f36010	RELOCATION_MATCH	sweep d_rassoc	00f36010_d_rassoc.cpp
+11:39	00f36010	RELOCATION_MATCH	sweep f_mid	00f36010_f_mid.cpp
+11:39	00f36010	RELOCATION_MATCH	sweep g_outer	00f36010_g_outer.cpp
+11:39	00f36010	RELOCATION_MATCH	sweep g2_outer	00f36010_g2_outer.cpp
+11:39	00f36010	DIFFER(446v442)	sweep h_ttpar	00f36010_h_ttpar.cpp
+11:39	00f36540	RELOCATION_MATCH	sweep b_lpar	00f36540_b_lpar.cpp
+11:39	00f36540	RELOCATION_MATCH	sweep d_rassoc	00f36540_d_rassoc.cpp
+11:39	00f36540	RELOCATION_MATCH	sweep f_mid	00f36540_f_mid.cpp
+11:39	00f36540	RELOCATION_MATCH	sweep g_outer	00f36540_g_outer.cpp
+11:39	00f36540	RELOCATION_MATCH	sweep g2_outer	00f36540_g2_outer.cpp
+11:39	00f36540	DIFFER(327v321)	sweep h_ttpar	00f36540_h_ttpar.cpp
+11:39	00f361d0	DIFFER(873v873)	r4 view ((3.0f-2.0f*t)*t)*t	00f361d0.cpp
+11:39	00f361d0	DIFFER(873v873)	r4 view (t*t*(3.0f-2.0f*t))	00f361d0.cpp
+11:39	00f361d0	DIFFER(873v873)	sweep g_i_noparen	00f361d0_g_i_noparen.cpp
+11:39	00f361d0	RELOCATION_MATCH	sweep g_i_outer	00f361d0_g_i_outer.cpp
+11:39	00f361d0	DIFFER(873v873)	sweep g_i_outer2	00f361d0_g_i_outer2.cpp
+11:39	00f361d0	DIFFER(873v873)	sweep g_i_rev	00f361d0_g_i_rev.cpp
+11:39	00f361d0	DIFFER(873v873)	sweep g_i_rev2	00f361d0_g_i_rev2.cpp
+11:39	00f36010	RELOCATION_MATCH	sweep g_i_noparen	00f36010_g_i_noparen.cpp
+11:39	00f36010	RELOCATION_MATCH	sweep g_i_outer	00f36010_g_i_outer.cpp
+11:39	00f36010	RELOCATION_MATCH	sweep g_i_outer2	00f36010_g_i_outer2.cpp
+11:39	00f36010	RELOCATION_MATCH	sweep g_i_rev	00f36010_g_i_rev.cpp
+11:39	00f36010	RELOCATION_MATCH	sweep g_i_rev2	00f36010_g_i_rev2.cpp
+11:39	00f36540	DIFFER(321v321)	sweep g_i_noparen	00f36540_g_i_noparen.cpp
+11:39	00f36540	RELOCATION_MATCH	sweep g_i_outer	00f36540_g_i_outer.cpp
+11:39	00f36540	DIFFER(321v321)	sweep g_i_outer2	00f36540_g_i_outer2.cpp
+11:39	00f36540	RELOCATION_MATCH	sweep g_i_rev	00f36540_g_i_rev.cpp
+11:39	00f36540	DIFFER(321v321)	sweep g_i_rev2	00f36540_g_i_rev2.cpp
+11:40	00f361d0	RELOCATION_MATCH	final header: outer-bracketed SCurve/Interp	00f361d0.cpp
+11:40	00f36010	RELOCATION_MATCH	final header: outer-bracketed SCurve/Interp	00f36010.cpp
+11:40	00f36540	RELOCATION_MATCH	final header: outer-bracketed SCurve/Interp	00f36540.cpp
+11:42	00c40590	DIFFER(195v192)	sweep p_ftr	00c40590_p_ftr.cpp
+11:42	00c40590	DIFFER(195v192)	sweep p_rft	00c40590_p_rft.cpp
+11:42	00c40590	DIFFER(195v192)	sweep p_frt	00c40590_p_frt.cpp
+11:42	00c40590	DIFFER(195v192)	sweep p_trf	00c40590_p_trf.cpp
+11:42	00c40590	SRC_FAIL	sweep p_ft	00c40590_p_ft.cpp
+11:42	00c40590	SRC_FAIL	sweep p_rf	00c40590_p_rf.cpp
+11:42	00c40590	DIFFER(195v192)	sweep p_ftr_inl	00c40590_p_ftr_inl.cpp
+11:42	00c40590	DIFFER(192v192)	sweep inline_members	00c40590_inline_members.cpp
+11:43	0063f4b0	DIFFER(769v769)	sweep landed_style	0063f4b0_landed_style.cpp
+11:43	0063f4b0	DIFFER(769v769)	sweep clear_direct	0063f4b0_clear_direct.cpp
+11:43	0063f4b0	DIFFER(766v769)	sweep filter_byval	0063f4b0_filter_byval.cpp
+11:43	0063f4b0	DIFFER(769v769)	sweep func_cast	0063f4b0_func_cast.cpp
+11:44	0063f4b0	DIFFER(769v769)	port of Q23 Bind3 shared-header source to Bind2	0063f4b0_port.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front1	0063f4b0_front1.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front2	0063f4b0_front2.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front3	0063f4b0_front3.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front4	0063f4b0_front4.cpp
+11:44	0063f4b0	SRC_FAIL	sweep front5	0063f4b0_front5.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front6	0063f4b0_front6.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front7	0063f4b0_front7.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front8	0063f4b0_front8.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep front9	0063f4b0_front9.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep early_hof	0063f4b0_early_hof.cpp
+11:44	0063f4b0	DIFFER(769v769)	sweep cls_hfo	0063f4b0_cls_hfo.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep early_hfo	0063f4b0_early_hfo.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep cls_ohf	0063f4b0_cls_ohf.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep early_ohf	0063f4b0_early_ohf.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep cls_ofh	0063f4b0_cls_ofh.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep early_ofh	0063f4b0_early_ofh.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep cls_fho	0063f4b0_cls_fho.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep early_fho	0063f4b0_early_fho.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep cls_foh	0063f4b0_cls_foh.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep early_foh	0063f4b0_early_foh.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep guard_peek	0063f4b0_guard_peek.cpp
+11:45	0063f4b0	DIFFER(769v769)	sweep guard_byteoff	0063f4b0_guard_byteoff.cpp
+11:45	0063f4b0	DIFFER(769v769)	guard_byteoff view	0063f4b0_port.cpp
+11:48	00be2120	DIFFER(106v106)	oracle fixed to 106 bytes	draft.cpp
+11:49	00be2120	SRC_FAIL	port: landed group twin body + 2DViewport CLEARCHILD opt-in	00be2120.cpp
+11:49	00be2120	RELOCATION_MATCH	port + ATTACHED	00be2120.cpp
+11:50	00a5b650	RELOCATION_MATCH	shared-header port	00a5b650.cpp
+11:51	0083db60	RELOCATION_MATCH	PeekDefinition SAMETU port	0083db60.cpp
+11:59	00b05c60	DIFFER(428v429)	hand3c env check	prior_00b05c60.cpp
+# hand3c starts 12:03
+12:05	00b012e0	DIFFER(1296v1296)	shared GFPackFloat (FableWin call shape)	00b012e0_a.cpp
+12:05	00b012e0	DIFFER(1296v1296)	sweep false	00b012e0_false.cpp
+12:05	00b012e0	DIFFER(1296v1296)	sweep midfirst	00b012e0_midfirst.cpp
+12:05	00b012e0	DIFFER(1296v1296)	sweep allbools_false	00b012e0_allbools_false.cpp
+12:06	00b012e0	RELOCATION_MATCH	sweep gprod	00b012e0_gprod.cpp
+12:06	00b012e0	RELOCATION_MATCH	sweep gquot	00b012e0_gquot.cpp
+12:07	00b012e0	RELOCATION_MATCH	final src (GFPackFloat GROUP_PRODUCT)	00b012e0.cpp
+12:08	00b012e0	SRC_FAIL	shared headers CPSCBase(ctor opt-in)/CRGBColour/CEnginePrimitiveHandle/CParticleEmitterManager	00b012e0_b.cpp
+12:08	00b012e0	SRC_FAIL	shared headers + persistent/handle/ivcounted opt-ins	00b012e0_b.cpp
+12:08	00b012e0	RELOCATION_MATCH	shared headers + DEF_CLASS_BASE	00b012e0_b.cpp
+12:09	00b012e0	RELOCATION_MATCH	final src shared headers	00b012e0.cpp
+12:09	00b103f0	SRC_FAIL	shared CPSCEmitterGeneric + GFPackFloat GROUP_PRODUCT	00b103f0_a.cpp
+12:10	00b103f0	RELOCATION_MATCH	shared CPSCEmitterGeneric + GFPackFloat GROUP_PRODUCT	00b103f0_a.cpp
+12:12	00b1dfd0	RELOCATION_MATCH	first draft: FableWin shape + GFPackFloat GROUP_PRODUCT	00b1dfd0.cpp
+12:14	00b05c60	RELOCATION_MATCH	FableWin: else-if FaceMe2D arm (same 2.0f) keeps the byte in al	00b05c60_a.cpp
+12:15	00b05c60	SRC_FAIL	shared headers port, FableWin/Ego_d statement shape, GFUnpackFloat	00b05c60_b.cpp
+12:15	00b05c60	DIFFER(431v429)	shared headers port + CCharString	00b05c60_b.cpp
+12:15	00b05c60	DIFFER(431v429)	probe: local model, ScaleParticleDimensions declared only	00b05c60_a2.cpp
+12:15	00b05c60	DIFFER(489v429)	probe: plain in-class inline ScaleParticleDimensions body	00b05c60_a3.cpp
+12:16	00b05c60	RELOCATION_MATCH	probe: plain inline body, macro-style nested max (FableWin /Od)	00b05c60_a4.cpp
+12:16	00b05c60	DIFFER(429v429)	shared port + header-inline ScaleParticleDimensions(float&) opt-in	00b05c60_b.cpp
+12:17	00b05c60	DIFFER(429v429)	RenderCost += pixel + poly*cost (draft order)	00b05c60_c.cpp
+12:17	00b05c60	RELOCATION_MATCH	sweep pix_poly_nocost	00b05c60_pix_poly_nocost.cpp
+12:17	00b05c60	RELOCATION_MATCH	sweep poly_pix_nocost	00b05c60_poly_pix_nocost.cpp
+12:17	00b05c60	DIFFER(429v429)	sweep noinit0	00b05c60_noinit0.cpp
+12:17	00b05c60	DIFFER(429v429)	sweep costfirst_decl	00b05c60_costfirst_decl.cpp
+12:17	00b05c60	RELOCATION_MATCH	final src	00b05c60.cpp
+12:20	00c6ac90	RELOCATION_MATCH	same-TU static kernel (private ecx convention)	00c6ac90_a.cpp
+12:21	00c1c330	DIFFER(192v192)	baseline regrade	draft.cpp
+12:21	00c1c330	DIFFER(192v192)	sweep swap12	00c1c330_swap12.cpp
+12:21	00c1c330	DIFFER(188v192)	sweep zneg	00c1c330_zneg.cpp
+12:21	00c1c330	DIFFER(192v192)	sweep ymul_first	00c1c330_ymul_first.cpp
+12:21	00c1c330	DIFFER(192v192)	view swap12	00c1c330_swap12.cpp
+12:22	00c1c330	DIFFER(192v192)	sweep structp	00c1c330_structp.cpp
+12:22	00c1c330	DIFFER(192v192)	sweep decl_zyx	00c1c330_decl_zyx.cpp
+12:22	00c1c330	DIFFER(192v192)	sweep decl_yzx	00c1c330_decl_yzx.cpp
+12:22	00a9d480	SRC_FAIL	sweep opcall	00a9d480_opcall.cpp
+12:22	00a9d480	SRC_FAIL	sweep opcall_ref	00a9d480_opcall_ref.cpp
+12:23	00a9d480	SRC_FAIL	opcall view	00a9d480_opcall.cpp
+12:23	00a9d480	DIFFER(243v243)	sweep opcall	00a9d480_opcall.cpp
+12:23	00a9d480	RELOCATION_MATCH	sweep opcall_ref	00a9d480_opcall_ref.cpp
+12:23	00a9d480	DIFFER(243v243)	Ego_d locals vect/right/dest/m + FableWin operator() fallback	00a9d480_b.cpp
+12:23	00a9d480	RELOCATION_MATCH	dest before right	00a9d480_c.cpp
+12:24	00a9d480	RELOCATION_MATCH	final src	00a9d480.cpp
+12:24	00a9d750	DIFFER(551v551)	Ego_d/FableWin forms of both inline prescales	00a9d750_a.cpp
+12:25	00a9d750	DIFFER(551v551)	sweep tfirst	00a9d750_tfirst.cpp
+12:25	00a9d750	DIFFER(551v551)	sweep after	00a9d750_after.cpp
+12:25	00a9d750	DIFFER(532v551)	sweep ptrloop	00a9d750_ptrloop.cpp
+12:25	00a9d750	DIFFER(551v551)	sweep postinc	00a9d750_postinc.cpp
+12:25	00a9d750	DIFFER(545v551)	sweep elsefirst	00a9d750_elsefirst.cpp
+12:26	00989230	DIFFER(636v636)	sweep accessors	00989230_accessors.cpp
+12:26	00989230	DIFFER(636v636)	view	00989230_accessors.cpp
+12:26	00989230	DIFFER(636v636)	sweep mref_ab	00989230_mref_ab.cpp
+12:26	00989230	DIFFER(636v636)	sweep mref_ba	00989230_mref_ba.cpp
+12:27	00989230	DIFFER(636v636)	sweep mref_paren	00989230_mref_paren.cpp
+12:27	00989230	DIFFER(636v636)	sweep this_ba	00989230_this_ba.cpp
+12:40	-	note	batch 2 landed e71b9a61b5; coordinator: focus 00a9d750/00c1c330/00989230, escalate at ~100 grades
+12:31	00989230	DIFFER(636v636)	view mref_ab	00989230_mref_ab.cpp
+12:32	00989230	DIFFER(636v636)	sweep rev	00989230_rev.cpp
+12:32	00989230	DIFFER(636v636)	sweep rnest	00989230_rnest.cpp
+12:32	00989230	DIFFER(636v636)	sweep pairs	00989230_pairs.cpp
+12:32	00989230	DIFFER(636v636)	sweep int	00989230_int.cpp
+12:33	00989230	DIFFER(566v636)	sweep kloop0	00989230_kloop0.cpp
+12:33	00989230	DIFFER(606v636)	sweep kloop1	00989230_kloop1.cpp
+12:33	00989230	DIFFER(636v636)	sweep k0	00989230_k0.cpp
+12:33	00989230	DIFFER(636v636)	sweep k1	00989230_k1.cpp
+12:33	00989230	DIFFER(636v636)	sweep k2	00989230_k2.cpp
+12:33	00989230	DIFFER(636v636)	sweep k3	00989230_k3.cpp
+12:33	00989230	DIFFER(636v636)	sweep k4	00989230_k4.cpp
+12:33	00989230	DIFFER(636v636)	sweep k5	00989230_k5.cpp
+12:33	00989230	DIFFER(636v636)	sweep k6	00989230_k6.cpp
+12:33	00989230	DIFFER(636v636)	sweep k7	00989230_k7.cpp
+12:33	00989230	DIFFER(636v636)	sweep k8	00989230_k8.cpp
+12:34	00989230	DIFFER(636v636)	FableWin shape: AlignedSetMultiplyTransposed(World, TT[i]) + rows local + c_transform	00989230_t1.cpp
+12:34	00989230	DIFFER(636v636)	sweep t1k1	00989230_t1k1.cpp
+12:34	00989230	DIFFER(636v636)	sweep t1k2	00989230_t1k2.cpp
+12:34	00989230	DIFFER(636v636)	sweep t1k3	00989230_t1k3.cpp
+12:34	00989230	DIFFER(636v636)	sweep t1k4	00989230_t1k4.cpp
+12:34	00989230	DIFFER(636v636)	sweep t1k5	00989230_t1k5.cpp
+12:34	00989230	DIFFER(636v636)	sweep t1k6	00989230_t1k6.cpp
+12:34	00989230	DIFFER(636v636)	sweep t1k7	00989230_t1k7.cpp
+12:34	00989230	DIFFER(636v636)	sweep t1k8	00989230_t1k8.cpp
+12:35	00989230	DIFFER(635v636)	sweep mlong_k0	00989230_mlong_k0.cpp
+12:35	00989230	DIFFER(635v636)	sweep mlong_k1	00989230_mlong_k1.cpp
+12:35	00989230	DIFFER(635v636)	sweep mlong_k2	00989230_mlong_k2.cpp
+12:35	00989230	DIFFER(635v636)	sweep mlong_k3	00989230_mlong_k3.cpp
+12:35	00989230	DIFFER(635v636)	sweep mlong_k4	00989230_mlong_k4.cpp
+12:35	00989230	DIFFER(635v636)	sweep mlong_k5	00989230_mlong_k5.cpp
+12:35	00989230	DIFFER(635v636)	sweep mlong_k6	00989230_mlong_k6.cpp
+12:35	00989230	DIFFER(635v636)	sweep mlong_k7	00989230_mlong_k7.cpp
+12:35	00989230	DIFFER(635v636)	sweep mint_k0	00989230_mint_k0.cpp
+12:35	00989230	DIFFER(635v636)	sweep mint_k1	00989230_mint_k1.cpp
+12:35	00989230	DIFFER(635v636)	sweep mint_k2	00989230_mint_k2.cpp
+12:35	00989230	DIFFER(635v636)	sweep mint_k3	00989230_mint_k3.cpp
+12:35	00989230	DIFFER(635v636)	sweep mint_k4	00989230_mint_k4.cpp
+12:35	00989230	DIFFER(635v636)	sweep mint_k5	00989230_mint_k5.cpp
+12:35	00989230	DIFFER(635v636)	sweep mint_k6	00989230_mint_k6.cpp
+12:35	00989230	DIFFER(635v636)	sweep mint_k7	00989230_mint_k7.cpp
+12:35	00989230	DIFFER(636v636)	sweep ctor3x4	00989230_ctor3x4.cpp
+12:35	00989230	DIFFER(636v636)	sweep ctorshadow	00989230_ctorshadow.cpp
+12:36	00989230	DIFFER(636v636)	sweep pre1	00989230_pre1.cpp
+12:36	00989230	DIFFER(636v636)	sweep pre2	00989230_pre2.cpp
+12:36	00989230	DIFFER(636v636)	sweep pre3	00989230_pre3.cpp
+12:36	00989230	DIFFER(636v636)	sweep pre4	00989230_pre4.cpp
+12:36	00989230	DIFFER(636v636)	sweep pre5	00989230_pre5.cpp
+12:36	00989230	DIFFER(636v636)	sweep pre6	00989230_pre6.cpp
+12:36	00989230	DIFFER(636v636)	sweep pre7	00989230_pre7.cpp
+12:36	00989230	DIFFER(636v636)	sweep pre8	00989230_pre8.cpp
+12:36	00989230	DIFFER(636v636)	sweep post1	00989230_post1.cpp
+12:36	00989230	DIFFER(636v636)	sweep post2	00989230_post2.cpp
+12:36	00989230	DIFFER(636v636)	sweep post3	00989230_post3.cpp
+12:36	00989230	DIFFER(636v636)	sweep post4	00989230_post4.cpp
+12:37	00989230	DIFFER(636v636)	sweep big12	00989230_big12.cpp
+12:37	00989230	DIFFER(636v636)	sweep big16	00989230_big16.cpp
+12:37	00989230	DIFFER(636v636)	sweep big20	00989230_big20.cpp
+12:37	00989230	DIFFER(636v636)	sweep big24	00989230_big24.cpp
+12:37	00989230	DIFFER(636v636)	sweep big28	00989230_big28.cpp
+12:37	00989230	DIFFER(636v636)	sweep big32	00989230_big32.cpp
+12:37	00989230	DIFFER(636v636)	sweep big40	00989230_big40.cpp
+12:37	00989230	DIFFER(636v636)	sweep big48	00989230_big48.cpp
+12:37	00989230	DIFFER(636v636)	sweep in1	00989230_in1.cpp
+12:37	00989230	DIFFER(636v636)	sweep in2	00989230_in2.cpp
+12:37	00989230	DIFFER(636v636)	sweep in3	00989230_in3.cpp
+12:37	00989230	DIFFER(636v636)	sweep in4	00989230_in4.cpp
+12:37	00989230	DIFFER(636v636)	sweep in5	00989230_in5.cpp
+12:37	00989230	DIFFER(636v636)	sweep in6	00989230_in6.cpp
+12:37	00989230	DIFFER(636v636)	sweep in7	00989230_in7.cpp
+12:37	00989230	DIFFER(636v636)	sweep in8	00989230_in8.cpp
+12:37	00989230	DIFFER(636v636)	sweep arm1	00989230_arm1.cpp
+12:37	00989230	DIFFER(636v636)	sweep arm2	00989230_arm2.cpp
+12:37	00989230	DIFFER(636v636)	sweep arm3	00989230_arm3.cpp
+12:37	00989230	DIFFER(636v636)	sweep arm4	00989230_arm4.cpp
+12:38	00989230	DIFFER(636v636)	sweep sseA	00989230_sseA.cpp
+12:38	00989230	DIFFER(636v636)	sweep sseB	00989230_sseB.cpp
+12:39	00a9d750	DIFFER(551v551)	re-baseline	00a9d750.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep top1	00a9d750_top1.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep top2	00a9d750_top2.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep top3	00a9d750_top3.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep top4	00a9d750_top4.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep top5	00a9d750_top5.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep top6	00a9d750_top6.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep top7	00a9d750_top7.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep top8	00a9d750_top8.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep else1	00a9d750_else1.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep else2	00a9d750_else2.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep else3	00a9d750_else3.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep else4	00a9d750_else4.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep else5	00a9d750_else5.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep else6	00a9d750_else6.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep else7	00a9d750_else7.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep else8	00a9d750_else8.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep arm1	00a9d750_arm1.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep arm2	00a9d750_arm2.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep arm3	00a9d750_arm3.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep arm4	00a9d750_arm4.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep arm5	00a9d750_arm5.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep arm6	00a9d750_arm6.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep arm7	00a9d750_arm7.cpp
+12:40	00a9d750	DIFFER(551v551)	sweep arm8	00a9d750_arm8.cpp
+12:40	00a9d750	RELOCATION_MATCH	sweep both0	00a9d750_both0.cpp
+12:40	00a9d750	RELOCATION_MATCH	sweep bothF	00a9d750_bothF.cpp
+12:40	00a9d750	RELOCATION_MATCH	sweep T0	00a9d750_T0.cpp
+12:40	00a9d750	RELOCATION_MATCH	sweep N0	00a9d750_N0.cpp
+12:41	00989230	DIFFER(636v636)	sweep caller	00989230_caller.cpp
+12:41	00989230	DIFFER(636v636)	sweep caller_hdr	00989230_caller_hdr.cpp
+12:41	00989230	DIFFER(635v636)	sweep caller_hdrm	00989230_caller_hdrm.cpp
+12:41	00989230	DIFFER(636v636)	sweep hdr	00989230_hdr.cpp
+12:42	00a9d750	RELOCATION_MATCH	shared header bodies opt-in + C3DAnimationManager.h + for-scope	00a9d750_hdr.cpp
+12:42	00a9d480	RELOCATION_MATCH	diag: shared prescale bodies out of line	00a9d480_shared.cpp
+12:42	00a9d580	RELOCATION_MATCH	diag: shared prescale bodies out of line	00a9d580_shared.cpp
+12:43	00a9d750	RELOCATION_MATCH	final src	00a9d750.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep top1	00c1c330_top1.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep top2	00c1c330_top2.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep top3	00c1c330_top3.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep top4	00c1c330_top4.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep top5	00c1c330_top5.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep top6	00c1c330_top6.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep top7	00c1c330_top7.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep top8	00c1c330_top8.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep yz1	00c1c330_yz1.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep yz2	00c1c330_yz2.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep yz3	00c1c330_yz3.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep yz4	00c1c330_yz4.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep ifz1	00c1c330_ifz1.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep ifz2	00c1c330_ifz2.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep ifz3	00c1c330_ifz3.cpp
+12:44	00c1c330	DIFFER(192v192)	sweep ifz4	00c1c330_ifz4.cpp
+12:45	00c1c330	DIFFER(192v192)	sweep zyx	00c1c330_zyx.cpp
+12:45	00c1c330	DIFFER(205v192)	sweep mz	00c1c330_mz.cpp
+12:45	00c1c330	DIFFER(192v192)	sweep helperorder	00c1c330_helperorder.cpp
+12:45	00c1c330	DIFFER(192v192)	sweep negfirst	00c1c330_negfirst.cpp
+12:45	00c1c330	DIFFER(192v192)	sweep zmul	00c1c330_zmul.cpp
+12:45	00c1c330	DIFFER(194v192)	sweep gt	00c1c330_gt.cpp
+12:45	00c1c330	DIFFER(194v192)	sweep negfirst_gt	00c1c330_negfirst_gt.cpp
+12:46	00c1c330	DIFFER(192v192)	sweep p_zyx	00c1c330_p_zyx.cpp
+12:46	00c1c330	DIFFER(192v192)	sweep p_xzy	00c1c330_p_xzy.cpp
+12:46	00c1c330	DIFFER(192v192)	sweep p_yzx	00c1c330_p_yzx.cpp
+12:46	00c1c330	DIFFER(190v192)	sweep p1	00c1c330_p1.cpp
+12:46	00c1c330	DIFFER(192v192)	sweep p2	00c1c330_p2.cpp
+12:46	00c1c330	DIFFER(190v192)	sweep p3	00c1c330_p3.cpp
+12:46	00c1c330	DIFFER(192v192)	sweep tfirst	00c1c330_tfirst.cpp
+12:47	00c1c330	DIFFER(192v192)	sweep seqlocal	00c1c330_seqlocal.cpp
+12:47	00c1c330	DIFFER(192v192)	sweep seqresult	00c1c330_seqresult.cpp
+12:47	00c1c330	DIFFER(192v192)	view seqlocal	00c1c330_seqlocal.cpp
+12:47	00c1c330	DIFFER(192v192)	sweep seqboth	00c1c330_seqboth.cpp
+12:47	00c1c330	DIFFER(194v192)	sweep res_zyx	00c1c330_res_zyx.cpp
+12:47	00c1c330	SRC_FAIL	sweep res_decl_late	00c1c330_res_decl_late.cpp
+12:47	00c1c330	DIFFER(192v192)	sweep rx_direct	00c1c330_rx_direct.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep late	00c1c330_late.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep agg	00c1c330_agg.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep late_xzy	00c1c330_late_xzy.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep negfirst	00c1c330_negfirst.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep zmul	00c1c330_zmul.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep braces	00c1c330_braces.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep rdecl	00c1c330_rdecl.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep copy2	00c1c330_copy2.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep make	00c1c330_make.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep cond	00c1c330_cond.cpp
+12:48	00c1c330	DIFFER(192v192)	sweep scale	00c1c330_scale.cpp
+12:53	00c1c330	DIFFER(192v192)	sweep zT_in_result	00c1c330_zT_in_result.cpp
+12:53	00c1c330	RELOCATION_MATCH	sweep zexpr	00c1c330_zexpr.cpp
+12:53	00c1c330	DIFFER(192v192)	sweep allT_in_result	00c1c330_allT_in_result.cpp
+12:53	00c1c330	DIFFER(192v192)	sweep zparen	00c1c330_zparen.cpp
+12:53	00c1c330	RELOCATION_MATCH	sweep uniform	00c1c330_uniform.cpp
+12:53	00c1c330	DIFFER(192v192)	sweep uniform2	00c1c330_uniform2.cpp
+12:54	00c1c330	RELOCATION_MATCH	final src (uniform r = r + .. + T)	00c1c330.cpp
+12:55	00c1c330	DIFFER(196v192)	shared engine/C3DVector.h	00c1c330_hdr.cpp
+12:55	00c1c330	RELOCATION_MATCH	shared C3DVector.h + LIBPK implicit copy	00c1c330_hdr.cpp
+12:56	00780d80	DIFFER(539v539)	for-scope on fire point loop	00780d80_fs.cpp
+12:58	00a9d480	RELOCATION_MATCH	re-point onto shared per-member opt-in	00a9d480.cpp
+12:58	00a9d580	RELOCATION_MATCH	re-point onto shared per-member opt-in	00a9d580.cpp
+13:01	00c1c3f0	MATCH	suffix-free sibling name, shared C3DVector	00c1c3f0.cpp
+13:01	00c1c330	RELOCATION_MATCH	suffix-free sibling name, shared C3DVector	00c1c330.cpp
+13:02	00bee070	RELOCATION_MATCH	shared STLP_HEAP + CCompositeSurfaceInfo.h (a)	00bee070_a.cpp
+13:02	00bee070	RELOCATION_MATCH	shared STLP_HEAP + CCompositeSurfaceInfo.h (b)	00bee070_b.cpp
+13:18	00664ba0	SRC_FAIL	shared headers + FableWin shape + GETSUBDEF_NOINLINE	00664ba0_a.cpp
+13:30	-	note	CCreatureDef.h TRANSFER without FABLE_RETAIL_CDEFSTRINGTABLE hangs cl (spins forever); bisected
+13:35	00664ba0	RELOCATION_MATCH	shared headers + FableWin shape + NOINLINE (compiling)	00664ba0_a.cpp
+13:50	00664ba0	RELOCATION_MATCH	vland strict PASS (with 00bee070) -> batch 6	src/00664ba0.cpp
+13:37	0052ee00	SRC_FAIL	FableWin 0x0229BB60 shape on shared headers	0052ee00_a.cpp
+13:37	0052ee00	MATCH	FableWin shape + FABLE_RETAIL_C2DVECTOR	0052ee00_a.cpp
+14:05	0052ee00	MATCH	vland strict PASS -> batch 7	src/0052ee00.cpp
+13:39	007f8c20	RELOCATION_MATCH	FableWin 0x02674140 shape on shared headers + new CAnimatingObjectDef.h	007f8c20_a.cpp
+14:25	007f8c20	RELOCATION_MATCH	vland strict PASS -> batch 7	src/007f8c20.cpp
+13:42	006b2960	DIFFER(249v250)	FableWin 0x02461570 shape, shared GFFloatToLong helpers, slot-1 opt-in	006b2960_a.cpp
+13:42	006b2960	DIFFER(250v250)	named CCharString local before the call	006b2960_b.cpp
+13:43	006b2960	RELOCATION_MATCH	named CCharString in an inner block	006b2960_c.cpp
+13:50	006b2960	RELOCATION_MATCH	vland strict PASS -> batch 7	src/006b2960.cpp
+13:46	00b905a0	RELOCATION_MATCH	FableWin 0x02ED79B0 shape, cloth-row helper bodies	00b905a0_a.cpp
+13:55	00b905a0	RELOCATION_MATCH	vland strict PASS -> batch 7	src/00b905a0.cpp
+13:49	00b94bf0	DIFFER(311v311)	FableWin 0x02E1D7D0 shape on shared headers (typed MapList, inline ctor, GFFloatToLongFloor)	00b94bf0_a.cpp
+13:50	00b94bf0	RELOCATION_MATCH	+ FABLE_RETAIL_STLP_MAP (visible subscript body, out of line)	00b94bf0_b.cpp
+14:10	00b94bf0	RELOCATION_MATCH	vland strict PASS (WARN RELOC_NAME 00b97c10 descriptive label) -> batch 8	src/00b94bf0.cpp
+13:54	00914650	DIFFER(347v340)	FableWin 0x02B8D570 shape on shared headers + new BirdStartled/ScaresBirds headers	00914650_a.cpp
+13:55	00914650	RELOCATION_MATCH	+ BESTROUGH_BODY (same-TU search body visible) + ScaresBirds operator() body	00914650_b.cpp
+14:20	00914650	RELOCATION_MATCH	vland strict PASS -> batch 8	src/00914650.cpp
+14:09	0082a020	SRC_FAIL	FableWin 0x027D3990 shape on shared headers	0082a020_a.cpp
+14:09	0082a020	SRC_FAIL	same, see error	0082a020_a.cpp
+14:10	0082a020	DIFFER(343v343)	FableWin 0x027D3990 shape on shared headers (compiles)	0082a020_a.cpp
+14:10	0082a020	DIFFER(343v343)	256.0f float literal (retail fld dword 0x0125B240)	0082a020_b.cpp
+14:10	0082a020	DIFFER(343v343)	sweep ret_paren	0082a020_ret_paren.cpp
+14:10	0082a020	DIFFER(343v343)	sweep y_rhs_paren	0082a020_y_rhs_paren.cpp
+14:10	0082a020	DIFFER(343v343)	sweep x_rhs_paren	0082a020_x_rhs_paren.cpp
+14:10	0082a020	DIFFER(343v343)	sweep both_rhs_paren	0082a020_both_rhs_paren.cpp
+14:10	0082a020	DIFFER(343v343)	sweep floor_y_paren	0082a020_floor_y_paren.cpp
+14:10	0082a020	DIFFER(343v343)	sweep floor_x_paren	0082a020_floor_x_paren.cpp
+14:11	0082a020	DIFFER(343v343)	sweep mapsize_first	0082a020_mapsize_first.cpp
+14:11	0082a020	DIFFER(343v343)	sweep both_top	0082a020_both_top.cpp
+14:11	0082a020	DIFFER(360v343)	sweep box_before_mapsize	0082a020_box_before_mapsize.cpp
+14:11	0082a020	DIFFER(343v343)	+ C2DBOXF_EXTENT_NAMED (FableWin GetWidth/GetHeight 13i bodies)	0082a020_c.cpp
+14:11	0082a020	DIFFER(343v343)	sweep nocast	0082a020_nocast.cpp
+14:11	0082a020	SRC_FAIL	sweep unused_gui	0082a020_unused_gui.cpp
+14:11	0082a020	DIFFER(343v343)	sweep explicit_sum	0082a020_explicit_sum.cpp
+14:15	0082a020	DIFFER(343v343)	+ visible noinline GetRelativeMapSize body (FableWin 0x027D3850)	0082a020_d.cpp
+14:16	0082a020	DIFFER(343v343)	sweep ret_paren	0082a020_ret_paren.cpp
+14:16	0082a020	DIFFER(343v343)	sweep floor_y_paren	0082a020_floor_y_paren.cpp
+14:16	0082a020	DIFFER(343v343)	sweep floor_x_paren	0082a020_floor_x_paren.cpp
+14:16	0082a020	DIFFER(343v343)	sweep y_rhs_paren	0082a020_y_rhs_paren.cpp
+14:16	0082a020	DIFFER(343v343)	sweep x_rhs_paren	0082a020_x_rhs_paren.cpp
+14:16	0082a020	DIFFER(343v343)	sweep y_sum_paren	0082a020_y_sum_paren.cpp
+14:16	0082a020	DIFFER(343v343)	sweep y_div_paren	0082a020_y_div_paren.cpp
+14:16	0082a020	DIFFER(343v343)	sweep x_div_paren	0082a020_x_div_paren.cpp
+14:17	0082a020	DIFFER(343v343)	sweep explicit_sum	0082a020_explicit_sum.cpp
+14:17	0082a020	DIFFER(343v343)	sweep flipped	0082a020_flipped.cpp
+14:17	0082a020	DIFFER(343v343)	sweep explicit_y_only	0082a020_explicit_y_only.cpp
+14:17	0082a020	DIFFER(343v343)	sweep explicit_x_only	0082a020_explicit_x_only.cpp
+14:17	0082a020	DIFFER(343v343)	sweep offset_first	0082a020_offset_first.cpp
+14:19	0082a020	DIFFER(349v343)	Bracket: (mapSize * thingPos) in both floor arguments (2 PAREN tuples move the 83-node region cut)	0082a020_e.cpp
+14:19	0082a020	DIFFER(343v343)	sweep ctor_args_both	0082a020_ctor_args_both.cpp
+14:19	0082a020	SRC_FAIL	sweep box_products_both	0082a020_box_products_both.cpp
+14:19	0082a020	DIFFER(343v343)	sweep y_head_x_tail	0082a020_y_head_x_tail.cpp
+14:19	0082a020	DIFFER(343v343)	sweep floor_whole_both	0082a020_floor_whole_both.cpp
+14:21	0082a020	DIFFER(343v343)	Bracket x4: scaled-extent products and the floor-argument sums (4 PAREN tuples; cut after the two filds)	0082a020_f.cpp
+14:23	0082a020	DIFFER(343v343)	6 PAREN tuples (b4 + Y product + redundant Y-arg wrap): region starts at the filds	82a_b6y.cpp
+14:23	0082a020	RELOCATION_MATCH	5 natural brackets: cut between the two filds	82a_b5.cpp
+14:27	0082a020	VLAND	RELOCATION_MATCH + behaviour PASS (strict)	src/0082a020.cpp
+14:30	00b93b30	RELOCATION_MATCH	FableWin shape: shared headers, inline ConvertToLevel/SetGridPos/Grid::AddPrimitive	00b93b30_a.cpp
+14:31	00b93b30	RELOCATION_MATCH	FableWin shape, shared headers + inline helper opt-ins (first grade); vland PASS	src/00b93b30.cpp
+14:33	0064d404	DIFFER(399v399)	FableWin 0x020E86BF shape on shared CDrawQuestInfo.h	0064d404_a.cpp
+14:34	0064d404	DIFFER(399v399)	visible noinline GetElementByIndex body	0064d404_b.cpp
+14:34	0064d404	DIFFER(399v399)	sweep long_i	0064d404_long_i.cpp
+14:34	0064d404	DIFFER(399v399)	sweep ternary	0064d404_ternary.cpp
+14:34	0064d404	DIFFER(399v399)	sweep long_tern	0064d404_long_tern.cpp
+14:34	0064d404	DIFFER(399v399)	sweep ccast	0064d404_ccast.cpp
+14:34	0064d404	DIFFER(399v399)	sweep h2	0064d404_h2.cpp
+14:36	0064d404	RELOCATION_MATCH	GetElementByIndex real body earlier in TU under auto_inline(off)	0064d404_c.cpp
+14:36	0064d404	RELOCATION_MATCH	no optimize(y,off): only s on	0064d404_d.cpp
+14:40	0064d404	VLAND	RELOCATION_MATCH + behaviour PASS (strict); 00829c70/00829ce0 re-ports PASS --recheck-landed	src/0064d404.cpp
+14:42	006cc800	RELOCATION_MATCH	FableWin 0x02479E80 shape, shared headers	006cc800_a.cpp
+14:46	009c38c0	DIFFER(412v409)	FableWin 0x0304B490 shape on shared CFileInstaller.h	009c38c0_a.cpp
+14:47	009c38c0	DIFFER(409v409)	GetMarkerFileName static __fastcall (FableWin /Gr free function)	009c38c0_b.cpp
+14:47	009c38c0	DIFFER(409v409)	sweep nodist	009c38c0_nodist.cpp
+14:47	009c38c0	DIFFER(409v409)	sweep nosize	009c38c0_nosize.cpp
+14:47	009c38c0	DIFFER(409v409)	sweep notail	009c38c0_notail.cpp
+14:47	009c38c0	DIFFER(409v409)	sweep flagsconst	009c38c0_flagsconst.cpp
+14:47	009c38c0	DIFFER(409v409)	sweep nodist_nosize	009c38c0_nodist_nosize.cpp
+14:47	009c38c0	DIFFER(409v409)	sweep noflags	009c38c0_noflags.cpp
+14:47	009c38c0	DIFFER(409v409)	sweep early	009c38c0_early.cpp
+14:47	009c38c0	DIFFER(409v409)	sweep pathassign	009c38c0_pathassign.cpp
+14:47	009c38c0	DIFFER(409v409)	sweep handletype	009c38c0_handletype.cpp
+14:47	009c38c0	RELOCATION_MATCH	sweep fw_or	009c38c0_fw_or.cpp
+14:47	009c38c0	DIFFER(359v409)	sweep oreq	009c38c0_oreq.cpp
+14:48	009c33a0	RELOCATION_MATCH	helper self-check: row-defined static GetMarkerFileName	9c_B_row.cpp
+14:50	006cc800	RELOCATION_MATCH	signed stagger cast	006cc800.cpp
+14:50	b11	VLAND	006cc800 + 009c38c0 RELOCATION_MATCH PASS, 00644fc5 MATCH PASS (--recheck-landed)	
+14:56	00a4d770	DIFFER(438v420)	sibling helpers + FixPos forceinline	00a4d770.cpp
+14:56	00a4d770	DIFFER(438v420)	same, view head	00a4d770.cpp
+14:56	00a4d770	DIFFER(438v420)	probe a	a.cpp
+14:56	00a4d770	SRC_FAIL	probe b	b.cpp
+14:57	00a4d770	DIFFER(420v420)	+ConvertTimeToFrames inline body (sibling text)	00a4d770.cpp
+14:57	00a4d770	DIFFER(420v420)	dest index probe a	a.cpp
+14:57	00a4d770	DIFFER(420v420)	dest index probe b	b.cpp
+14:57	00a4d770	DIFFER(420v420)	dest index probe c	c.cpp
+14:57	00a4d770	DIFFER(420v420)	dest index probe d	d.cpp
+14:57	00a4d770	DIFFER(420v420)	dest index probe e	e.cpp
+14:57	00a4d770	DIFFER(420v420)	loop probe f	f.cpp
+14:57	00a4d770	DIFFER(420v420)	loop probe g	g.cpp
+14:57	00a4d770	DIFFER(420v420)	loop probe h	h.cpp
+14:57	00a4d770	DIFFER(420v420)	loop probe i	i.cpp
+14:57	00a4d770	DIFFER(420v420)	loop probe j	j.cpp
+14:58	00a4d770	DIFFER(420v420)	dest probe k	k.cpp
+14:58	00a4d770	DIFFER(420v420)	dest probe l	l.cpp
+14:58	00a4d770	DIFFER(420v420)	dest probe m	m.cpp
+14:58	00a4d770	DIFFER(420v420)	dest probe n	n.cpp
+14:58	00a4d770	DIFFER(420v420)	FW SetPosition/ctor probe p	p.cpp
+14:58	00a4d770	DIFFER(420v420)	FW SetPosition/ctor probe q	q.cpp
+14:58	00a4d770	DIFFER(420v420)	FW SetPosition/ctor probe r	r.cpp
+14:58	00a4d770	DIFFER(420v420)	flags /Oa	00a4d770.cpp
+14:58	00a4d770	DIFFER(420v420)	flags /GS	00a4d770.cpp
+14:58	00a4d770	DIFFER(420v420)	flags /EHsc	00a4d770.cpp
+14:59	00a4d770	DIFFER(420v420)	inline-level probe a2	a2.cpp
+14:59	00a4d770	DIFFER(420v420)	inline-level probe a4	a4.cpp
+14:59	00a4d770	SRC_FAIL	inline-level probe a5	a5.cpp
+15:00	00a4d770	DIFFER(420v420)	diagnostic d1	d1.cpp
+15:00	00a4d770	DIFFER(89v420)	diagnostic d2	d2.cpp
+15:00	00a4d770	DIFFER(392v420)	diagnostic d3	d3.cpp
+15:00	00a4d770	DIFFER(420v420)	header CONVERTTIME_BODY in-class	h1.cpp
+15:04	00a4d770	DIFFER(420v420)	TU context: CalcLocalTransformations ahead	t1.cpp
+15:04	00a4d770	DIFFER(392v420)	diag d3 dump	d3.cpp
+15:04	00a4d770	DIFFER(420v420)	QFE-4035 discriminator	00a4d770.cpp
+15:05	00a4d770	DIFFER(420v420)	ConvertTimeToFrames inline body AFTER the row	o1.cpp
+15:05	00a4d770	DIFFER(420v420)	o1 full	o1.cpp
+15:05	00a4d770	SRC_FAIL	include order i1	i1.cpp
+15:05	00a4d770	SRC_FAIL	include order i2	i2.cpp
+15:05	00a4d770	DIFFER(420v420)	include order i3	i3.cpp
+15:10	0066cd50	SRC_FAIL	FableWin shape on shared headers	0066cd50.cpp
+15:11	0066cd50	DIFFER(423v423)	FableWin shape + C2DCoordI Initialise	0066cd50.cpp
+15:11	0066cd50	DIFFER(423v423)	view tail	0066cd50.cpp
+15:11	0066cd50	DIFFER(423v423)	view tail	0066cd50.cpp
+15:11	0066cd50	DIFFER(423v423)	getter text a	0066cd50.cpp
+15:11	0066cd50	DIFFER(423v423)	getter text a (diffcount)	0066cd50.cpp
+15:11	0066cd50	DIFFER(423v423)	getter text b	0066cd50.cpp
+15:11	0066cd50	DIFFER(423v423)	getter text b (diffcount)	0066cd50.cpp
+15:12	0066cd50	DIFFER(423v423)	sweep 0066cd50.cpp	0066cd50.cpp
+15:12	0066cd50	DIFFER(423v423)	sweep v1.cpp	v1.cpp
+15:12	0066cd50	DIFFER(423v423)	sweep v2.cpp	v2.cpp
+15:12	0066cd50	DIFFER(423v423)	sweep v4.cpp	v4.cpp
+15:12	0066cd50	DIFFER(423v423)	sweep v5.cpp	v5.cpp
+15:12	0066cd50	DIFFER(423v423)	sweep v6.cpp	v6.cpp
+15:12	0066cd50	RELOCATION_MATCH	sweep 0066cd50.cpp	0066cd50.cpp
+15:14	00b41a80	RELOCATION_MATCH	FableWin ternary on PEEK_BODIES	00b41a80.cpp
+15:14	00b41a80	DIFFER(68v424)	no inline flag	b41_noflag.cpp
+15:18	00699e60	SRC_FAIL	FableWin shape on FULL header	00699e60.cpp
+15:18	00699e60	SRC_FAIL	compile errors head	00699e60.cpp
+15:19	00699e60	DIFFER(290v431)	FableWin shape on FULL header	00699e60.cpp
+15:19	00699e60	DIFFER(450v431)	diag: forceinline switch	ssc_force.cpp
+15:19	00699e60	RELOCATION_MATCH	sweep ssc_force_ni.cpp	ssc_force_ni.cpp
+15:19	00699e60	DIFFER(290v431)	sweep ssc_inline_ni.cpp	ssc_inline_ni.cpp
+15:19	00699e60	RELOCATION_MATCH	plain inline /d2inlT150	ssc_inline_ni.cpp
+15:19	00699e60	RELOCATION_MATCH	plain inline /d2inlT300	ssc_inline_ni.cpp
+15:19	00699e60	RELOCATION_MATCH	plain inline /d2inlT600	ssc_inline_ni.cpp
+15:19	00699e60	DIFFER(290v431)	plain inline /d2inlT110	ssc_inline_ni.cpp
+15:19	00699e60	DIFFER(290v431)	plain inline /d2inlT125	ssc_inline_ni.cpp
+15:19	00699e60	DIFFER(290v431)	plain inline /d2inlT140	ssc_inline_ni.cpp
+15:20	00699e60	DIFFER(290v431)	plain inline /d2inlT145	ssc_inline_ni.cpp
+15:20	00699e60	DIFFER(290v431)	plain inline /d2inlT142	ssc_inline_ni.cpp
+15:20	00699e60	DIFFER(290v431)	plain inline /d2inlT147	ssc_inline_ni.cpp
+15:20	00699e60	DIFFER(290v431)	plain inline /d2inlT148	ssc_inline_ni.cpp
+15:20	00699e60	DIFFER(290v431)	plain inline /d2inlT149	ssc_inline_ni.cpp
+15:20	00699e60	RELOCATION_MATCH	final: plain inline + Reset NOINLINE + /d2inlT150	00699e60.cpp
+15:23	007727e0	SRC_FAIL	FableWin shape	007727e0.cpp
+15:23	007727e0	DIFFER(500v433)	FableWin shape + CSTOCKITEMDEF	007727e0.cpp
+15:23	007727e0	DIFFER(435v433)	sweep sh_a.cpp	sh_a.cpp
+15:23	007727e0	DIFFER(435v433)	sweep sh_b.cpp	sh_b.cpp
+15:23	007727e0	DIFFER(500v433)	sweep sh_c.cpp	sh_c.cpp
+15:24	007727e0	DIFFER(435v433)	view sh_b	sh_b.cpp
+15:24	007727e0	DIFFER(476v433)	sweep sh_d.cpp	sh_d.cpp
+15:24	007727e0	DIFFER(457v433)	sweep sh_e.cpp	sh_e.cpp
+15:24	007727e0	DIFFER(476v433)	sweep sh_f.cpp	sh_f.cpp
+15:24	007727e0	DIFFER(435v433)	dump	sh_b.cpp
+15:29	009c33a0	RELOCATION_MATCH	GetMarkerFileName row from unified 38c0 TU	global_GetMarkerFileName_009c33a0.cpp
+15:31	007727e0	DIFFER(435v433)	base sh_b	007727e0.cpp
+15:33	007727e0	DIFFER(476v433)	only one BODY (c)	sh_c.cpp
+15:33	007727e0	DIFFER(457v433)	only one BODY (d)	sh_d.cpp
+15:33	007727e0	DIFFER(435v433)	FableWin operand order ShopDef first	sh_e.cpp
+15:34	007727e0	SRC_FAIL	probe: stock GetSubDef opaque (explicit spec decl)	sh_f.cpp
+15:34	007727e0	DIFFER(435v433)	probe: GetSubDef body after row	sh_g.cpp
+15:34	007727e0	DIFFER(476v433)	no subdef body (FableWin order)	sh_c.cpp
+15:34	007727e0	RELOCATION_MATCH	find body visible noinline: STLP_TREE_CONSTFIND_NOINLINE	sh_STLP_TREE_CONSTFIND_NOINLINE.cpp
+15:34	007727e0	RELOCATION_MATCH	find body visible noinline: STLP_TREE_CONSTFIND_TEMPLATE_NOINLINE	sh_STLP_TREE_CONSTFIND_TEMPLATE_NOINLINE.cpp
+15:35	007727e0	RELOCATION_MATCH	src: TEMPLATE_NOINLINE find	007727e0.cpp
+15:35	007727e0	RELOCATION_MATCH	src: CONSTFIND_NOINLINE (landed 00777170 spelling)	007727e0.cpp
+15:35	007727e0	DIFFER(455v433)	minimality: drop CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY	m_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY.cpp
+15:35	007727e0	DIFFER(475v433)	minimality: drop CDEFCLASSBASE_GETSUBDEF_BODY	m_CDEFCLASSBASE_GETSUBDEF_BODY.cpp
+15:35	007727e0	RELOCATION_MATCH	src rebuild	007727e0.cpp
+15:36	007727e0	RELOCATION_MATCH	add back release defines	r2.cpp
+15:40	006b75a0	DIFFER(436v434)	FableWin shape first draft	006b75a0.cpp
+15:41	006b75a0	DIFFER(432v434)	operator= STLP_VECTOR_ASSIGN	gm_STLP_VECTOR_ASSIGN.cpp
+15:41	006b75a0	RELOCATION_MATCH	operator= STLP_VECTOR_C	gm_STLP_VECTOR_C.cpp
+15:41	006b75a0	RELOCATION_MATCH	src: STLP_VECTOR_C	006b75a0.cpp
+15:41	006b75a0	RELOCATION_MATCH	probe /Gr	006b75a0.cpp
+15:41	006b75a0	RELOCATION_MATCH	fill_n noinline 	gm2.cpp
+15:41	006b75a0	RELOCATION_MATCH	fill_n noinline /Gr	gm2.cpp
+15:42	006b75a0	RELOCATION_MATCH	private cell members + /Gr	gm2.cpp
+15:42	006b75a0	RELOCATION_MATCH	rebuild	gm2.cpp
+15:42	006b75a0	RELOCATION_MATCH	no fill_n noinline, /Gr, private	006b75a0.cpp
+15:43	006b75a0	RELOCATION_MATCH	src final	006b75a0.cpp
+15:46	007df770	SRC_FAIL	FableWin shape on shared headers	007df770.cpp
+15:47	007df770	SRC_FAIL	fix virtuals/font/SetText	007df770.cpp
+15:47	007df770	DIFFER(468v437)	IS_THING_ALIVE noinline + compare	007df770.cpp
+15:47	007df770	RELOCATION_MATCH	assign variant a	wm_a.cpp
+15:47	007df770	RELOCATION_MATCH	assign variant b	wm_b.cpp
+15:48	007df770	RELOCATION_MATCH	src: ASSIGN	007df770.cpp
+15:53	00780d80	SRC_FAIL	FableWin shape on shared headers	00780d80.cpp
+15:54	00780d80	SRC_FAIL	defines fix	00780d80.cpp
+15:54	00780d80	DIFFER(545v539)	include order	00780d80.cpp
+15:54	00780d80	DIFFER(545v539)	include order (diff)	00780d80.cpp
+15:54	00780d80	DIFFER(539v539)	probe: conversion decl-only	fl_a.cpp
+15:54	00780d80	DIFFER(545v539)	probe /d2inlT0	00780d80.cpp
+15:54	00780d80	DIFFER(544v539)	probe /d2inlT10	00780d80.cpp
+15:54	00780d80	DIFFER(550v539)	probe /d2inlT20	00780d80.cpp
+15:54	00780d80	DIFFER(544v539)	probe /d2inlT30	00780d80.cpp
+15:54	00780d80	DIFFER(544v539)	probe /d2inlT40	00780d80.cpp
+15:55	00780d80	DIFFER(544v539)	probe /d2inlT50	00780d80.cpp
+15:55	00780d80	RELOCATION_MATCH	probe /d2inlT60	00780d80.cpp
+15:55	00780d80	DIFFER(545v539)	probe /d2inlT80	00780d80.cpp
+15:55	00780d80	DIFFER(545v539)	probe /d2inlT100	00780d80.cpp
+15:55	00780d80	DIFFER(544v539)	probe /d2inlT51	00780d80.cpp
+15:55	00780d80	DIFFER(544v539)	probe /d2inlT53	00780d80.cpp
+15:55	00780d80	DIFFER(544v539)	probe /d2inlT55	00780d80.cpp
+15:55	00780d80	DIFFER(544v539)	probe /d2inlT57	00780d80.cpp
+15:55	00780d80	RELOCATION_MATCH	probe /d2inlT59	00780d80.cpp
+15:55	00780d80	RELOCATION_MATCH	probe /d2inlT62	00780d80.cpp
+15:55	00780d80	RELOCATION_MATCH	probe /d2inlT65	00780d80.cpp
+15:55	00780d80	DIFFER(545v539)	probe /d2inlT70	00780d80.cpp
+15:55	00780d80	DIFFER(545v539)	probe /d2inlT75	00780d80.cpp
+15:55	00780d80	DIFFER(544v539)	probe /d2inlT58	00780d80.cpp
+15:55	00780d80	RELOCATION_MATCH	probe /d2inlT66	00780d80.cpp
+15:55	00780d80	DIFFER(545v539)	probe /d2inlT67	00780d80.cpp
+15:55	00780d80	DIFFER(545v539)	probe /d2inlT68	00780d80.cpp
+15:55	00780d80	DIFFER(545v539)	probe /d2inlT69	00780d80.cpp
+15:55	00780d80	RELOCATION_MATCH	src: /d2inlT59	00780d80.cpp
+15:59	00780d80	RELOCATION_MATCH	recheck after overlay rebase	00780d80.cpp
+16:02	00439bb0	SRC_FAIL	shared headers, FableWin shape	00439bb0.cpp
+16:02	00439bb0	DIFFER(597v592)	+CCHARSTRING/CWIDESTRING/PLAYER	00439bb0.cpp
+16:02	00439bb0	RELOCATION_MATCH	tail: three separate stores	00439bb0.cpp
+16:03	00439bb0	RELOCATION_MATCH	recheck after comment	00439bb0.cpp
+16:03	00439bb0	RELOCATION_MATCH	Retail-asm line	00439bb0.cpp
+16:20	00621a20	SRC_FAIL	FableWin shape on shared headers	00621a20.cpp
+16:25	00621a20	DIFFER(558v600)	shared headers compile	00621a20.cpp
+16:25	00621a20	DIFFER(558v600)	+DESTROY_AUX_FASTCALL (same TU as 0x0061AD60)	00621a20.cpp
+16:26	00621a20	RELOCATION_MATCH	INLINE_CONST_LOWERBOUND instead of non-const	00621a20.cpp
+16:29	00d8a240	DIFFER(662v610)	FableWin shape, shared headers	00d8a240.cpp
+16:29	00d8a240	DIFFER(487v610)	d2inlT10 sweep	00d8a240.cpp
+16:29	00d8a240	DIFFER(523v610)	d2inlT20 sweep	00d8a240.cpp
+16:29	00d8a240	DIFFER(521v610)	d2inlT30 sweep	00d8a240.cpp
+16:29	00d8a240	DIFFER(595v610)	d2inlT40 sweep	00d8a240.cpp
+16:29	00d8a240	DIFFER(521v610)	d2inlT33 sweep	00d8a240.cpp
+16:29	00d8a240	DIFFER(521v610)	d2inlT36 sweep	00d8a240.cpp
+16:29	00d8a240	DIFFER(595v610)	d2inlT45 sweep	00d8a240.cpp
+16:29	00d8a240	DIFFER(644v610)	d2inlT50 sweep	00d8a240.cpp
+16:29	00d8a240	DIFFER(595v610)	d2inlT42 sweep	00d8a240.cpp
+16:29	00d8a240	DIFFER(644v610)	d2inlT47 sweep	00d8a240.cpp
+16:29	00d8a240	DIFFER(595v610)	d2inlT45 diff	00d8a240.cpp
+16:30	00d8a240	DIFFER(595v610)	d2inlT46	00d8a240.cpp
+16:30	00d8a240	DIFFER(610v610)	prior do-while/break form on shared headers	00d8a240_b.cpp
+16:30	00d8a240	DIFFER(693v610)	top break + trailing T	00d8a240_c.cpp
+16:30	00d8a240	DIFFER(610v610)	prior form, !loaded T as return	00d8a240_d.cpp
+16:31	00d8a240	DIFFER(519v610)	form d d2inlT40	00d8a240_d.cpp
+16:31	00d8a240	DIFFER(595v610)	form d d2inlT46	00d8a240_d.cpp
+16:31	00d8a240	DIFFER(595v610)	form d d2inlT50	00d8a240_d.cpp
+16:31	00d8a240	DIFFER(557v610)	form d d2inlT60	00d8a240_d.cpp
+16:31	00d8a240	DIFFER(662v610)	FableWin form default recheck	00d8a240.cpp
+16:31	00d8a240	DIFFER(644v610)	FableWin form d2inlT48	00d8a240.cpp
+16:31	00d8a240	DIFFER(561v610)	FableWin form d2inlT55	00d8a240.cpp
+16:31	00d8a240	DIFFER(662v610)	FableWin form d2inlT70	00d8a240.cpp
+16:31	00d8a240	DIFFER(639v610)	FableWin form d2inlT100	00d8a240.cpp
+16:37	00d8a240	DIFFER(662v610)	FableWin form + CCOUNTEDPOINTER_RELEASEDATA	00d8a240_e.cpp
+16:37	00d8a240	DIFFER(662v610)	FableWin form without TRetVoid	00d8a240_f.cpp
+16:37	00d8a240	DIFFER(610v610)	do-while all returns	00d8a240_g.cpp
+16:38	00a770b0	DIFFER(527v533)	prior on current headers	00a770b0.cpp
+16:40	00a770b0	DIFFER(533v533)	FableWin shape	00a770b0.cpp
+16:40	00a770b0	RELOCATION_MATCH	0.5f (retail fadd dword 16.0f)	00a770b0.cpp
+16:45	00986210	DIFFER(457v461)	FableWin shape on shared headers	00986210.cpp
+16:47	00986210	DIFFER(461v461)	FableWin != HUMAN_CHILD block, creature - reacting	00986210.cpp
+16:48	00986210	DIFFER(461v461)	ptc declared first	00986210.cpp
+16:48	00986210	DIFFER(461v461)	ret declared after scan_area (probe)	00986210.cpp
+16:49	00986210	DIFFER(461v461)	C3DVECTOR_INITIALISE_SUB (FableWin ??G 34i)	00986210.cpp
+16:49	00986210	DIFFER(461v461)	C2DBOXI_RADIUS_INITIALIZERS (FableWin 0x01ADDBB0)	00986210.cpp
+16:50	00986210	DIFFER(461v461)	probe: ret declared at function scope	00986210.cpp
+16:56	00986210	SRC_FAIL	probe: 0x009871C0 body visible in TU	00986210.cpp
+16:56	00986210	DIFFER(461v461)	probe: 0x009871C0 body visible in TU	00986210.cpp
+16:56	00986210	DIFFER(461v461)	helper body + default C2DBoxI radius ctor	00986210.cpp
+16:57	00986210	DIFFER(461v461)	C3DVECTOR_ORIGINAL_COPY_FORMAL (FableWin 0x018BFF40)	00986210.cpp
+16:57	00986210	DIFFER(461v461)	helper body + C3DVECTOR_INITIALISE_SUB	00986210.cpp
+16:58	00986210	DIFFER(461v461)	helper body, FableWin ctor forms, ret declared first	00986210.cpp
+17:03	00b328c0	DIFFER(515v517)	FableWin 0x02DA8F90 shape on shared headers	00b328c0.cpp
+17:03	00b328c0	SRC_FAIL	CARRAY_ORIGINAL_COMPLETE_DECLARATIONS_PASS22 (operator[] through vector)	00b328c0.cpp
+17:03	00b328c0	RELOCATION_MATCH	CARRAY_INDEX_ASSERT (FableWin ??A 0x02CF4750 asserts index < size)	00b328c0.cpp
+17:07	00a38c20	RELOCATION_MATCH	FableWin 0x031DB670 shape on shared headers	00a38c20.cpp
+17:11	00b1d550	RELOCATION_MATCH	FableWin 0x02F567F0 shape on shared headers	00b1d550.cpp
+17:12	00b1d550	RELOCATION_MATCH	leaf respelled to the obj decoration	00b1d550.cpp
+17:15	00b1d790	DIFFER(880v876)	FableWin 0x02F56D80 shape on shared headers	00b1d790.cpp
+17:16	00b1d790	DIFFER(880v876)	probe vA	00b1d790.cpp
+17:16	00b1d790	DIFFER(880v876)	probe vB	00b1d790.cpp
+17:16	00b1d790	DIFFER(880v876)	probe vC	00b1d790.cpp
+17:17	00b1d790	RELOCATION_MATCH	probe vD: DecalCollides body in TU	00b1d790.cpp
+17:17	00b1d790	RELOCATION_MATCH	final: DecalCollides same-TU helper + comments	00b1d790.cpp
+17:21	00b1dc70	RELOCATION_MATCH	FableWin 0x02F55EB0 shape on shared headers	00b1dc70.cpp
+17:25	00c40590	DIFFER(192v192)	rebase inline_members	00c40590.cpp
+17:25	00c40590	DIFFER(192v192)	inline SetCross(front,right) refs	c1.cpp
+17:25	00c40590	DIFFER(192v192)	perm 000000	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 000001	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 000010	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 000011	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 000100	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 000101	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 000110	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 000111	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 001000	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 001001	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 001010	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 001011	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 001100	c2.cpp
+17:25	00c40590	DIFFER(192v192)	perm 001101	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 001110	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 001111	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 010000	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 010001	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 010010	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 010011	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 010100	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 010101	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 010110	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 010111	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 011000	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 011001	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 011010	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 011011	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 011100	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 011101	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 011110	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 011111	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 100000	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 100001	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 100010	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 100011	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 100100	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 100101	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 100110	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 100111	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 101000	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 101001	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 101010	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 101011	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 101100	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 101101	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 101110	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 101111	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 110000	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 110001	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 110010	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 110011	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 110100	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 110101	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 110110	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 110111	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 111000	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 111001	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 111010	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 111011	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 111100	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 111101	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 111110	c2.cpp
+17:26	00c40590	DIFFER(192v192)	perm 111111	c2.cpp
+17:26	00c40590	DIFFER(225v192)	member Cross by value	c3.cpp
+17:26	00c40590	DIFFER(225v192)	free CrossProduct by value	c3.cpp
+17:26	00c40590	DIFFER(225v192)	op* by value	c3.cpp
+17:26	00c40590	DIFFER(194v192)	float locals	c3.cpp
+17:27	00c40590	DIFFER(192v192)	visible SetCrossProduct(right,front), default	c4.cpp
+17:27	00c40590	DIFFER(192v192)	visible SetCrossProduct(right,front), default	c4.cpp
+17:28	00c40590	DIFFER(192v192)	visible SCP, X products spelled reversed	c5.cpp
+17:28	00c40590	DIFFER(192v192)	inline cross with this=right, v=front, out=top	c6.cpp
+17:28	00c40590	DIFFER(192v192)	visible SCP, param pos renamed b (name-hash probe)	c7.cpp
+17:34	00c40590	DIFFER(195v192)	probe p_ftr diff view	00c40590_p_ftr.cpp
+17:45	00c40590	SRC_FAIL	GameCODA CodaListener.obj shape on shared CCodaListener/CCodaVector headers	00c40590.cpp
+17:45	00c40590	RELOCATION_MATCH	GameCODA CodaListener.obj shape on shared headers (CCodaListener.h only)	00c40590.cpp

@@ -1,0 +1,17 @@
+addr: 00f36010
+status: parked
+batches: 2026-10-21_linux_hand266
+attempts: 1
+last_lens: 412v442
+bounds_class: OK
+bounds_detail: row=448 ext=442 corr=00f36010:442
+retries: 
+git_commits: fabe0a81b
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(412v442) -- retail floors both coordinates with the inline-asm `fld ; fsub 0.5 ; fistp` helper (frame-pointer function, 0.5/1.0 stored to the frame and the argument slot before each fistp): the documented asm_bake lane gap; one cast-form attempt CPerlinNoise::GetGaussian2DNoise(const C2DVector& p) -- 2D gradient (Perlin) noise at p: floor both coordinates, hash the four lattice corners through the permutation table, blend the four gradient dot products with the 3t^2-2t^3 fade
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand266/differ/00f36010.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

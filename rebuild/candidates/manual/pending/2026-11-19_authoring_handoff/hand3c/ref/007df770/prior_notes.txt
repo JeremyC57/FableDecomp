@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/STATUS.tsv: 007df770	HELD	2	manager as CMessageEventManager*& into the world's counted pointer (439, worse); CCountedPointer header migration (neutral, kept hdr/+differ/)	1 byte: manager spilled [esp+0x18] at definition in retail, ebp/edi event/constant swap

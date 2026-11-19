@@ -1,0 +1,28 @@
+--- /home/user/FableDecomp/rebuild/include/engine/NPlayerGui_CDrawQuestInfo.h	2026-11-17 10:06:45.168377430 +0000
++++ hdr/engine/NPlayerGui_CDrawQuestInfo.h	2026-11-19 14:36:05.858441520 +0000
+@@ -11,6 +11,9 @@
+ class CCounter;
+ #endif
+ class C2DVector; class CEnginePrimitivePrepareInfo;
++#ifdef FABLE_RETAIL_CDRAWQUESTINFO_DRAWMINIGAMEINFO
++class C2DBoxF;
++#endif
+ enum EMiniGameType {MINIGAME_NONE=0, MINIGAME_FISHING=1, MINIGAME_DIGGING=2, MINIGAME_PICKPOCKET=3, MINIGAME_PICKLOCK=4, MINIGAME_STEAL=5, MINIGAME_TROPHY=6, MINIGAME_ORACLE=7};
+ namespace NPlayerGui {
+ // Layout: donor CDrawQuestInfo116 shrinks to92 with retail vector/list sizes.
+@@ -146,6 +149,15 @@
+     void DrawMiniGameInfo(const CEnginePrimitivePrepareInfo& info);      // 0x0064D404
+ private:
+ #endif
++#ifdef FABLE_RETAIL_CDRAWQUESTINFO_DRAWMINIGAMEINFO
++    // Opt-in (hand3c, row 0x0064D404 DrawMiniGameInfo): Ego_r.pdb / FableWin.pdb ?DrawBox@CDrawQuestInfo@NPlayerGui@@QAEXABVCEnginePrimitive
++    // PrepareInfo@@ABVC2DBoxF@@@Z (0x00643EB2, landed) and ?GetElementByIndex@CDrawQuestInfo@NPlayerGui@@QBEPAVCQuestInfoElement@12@J@Z
++    // (0x00644FC5, landed), both public and called out of line. Declarations only: no layout change.
++public:
++    void DrawBox(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box);   // 0x00643EB2
++    CQuestInfoElement* GetElementByIndex(long index) const;              // 0x00644FC5
++private:
++#endif
+ #ifdef FABLE_RETAIL_CDRAWQUESTINFO_ADDELEMENT
+     void AddElement(CCountedPointer<CQuestInfoElement> pelement);
+ #endif

@@ -1,0 +1,19 @@
+10a11,18
+> #ifdef FABLE_RETAIL_CNAVIGATORMANAGEREXTERNALINTERFACE_GETNAVIGATIONINFORMATION
+> // Opt-in (hand3c, row 0x006B2960): the real slot 1. Ego_r.pdb field list 0x32FC4 of CNavigatorManagerExternalInterface: ~ (vftable
+> // offset 0), GetNavigationInformation (offset 4, public pure intro virtual), Clone (offset 8, pure). Retail vtable 0x01238C58 slot 1 =
+> // 0x006B2960 ?GetNavigationInformation@CGameNavigatorManagerExternalInterface@@UBEXABVC2DBoxF@@AAVCNavigationAreaUpdate@@@Z
+> // (FableWin 0x02461570). The default path's slot-1 `Initialise()` is a placeholder name with the same slot. Declarations only.
+> class C2DBoxF;
+> class CNavigationAreaUpdate;
+> #endif
+14a23,25
+> #ifdef FABLE_RETAIL_CNAVIGATORMANAGEREXTERNALINTERFACE_GETNAVIGATIONINFORMATION
+>     virtual void GetNavigationInformation(const C2DBoxF& box, CNavigationAreaUpdate& update) const = 0;   // slot 1
+> #else
+15a27
+> #endif
+21a34,36
+> #ifdef FABLE_RETAIL_CNAVIGATORMANAGEREXTERNALINTERFACE_GETNAVIGATIONINFORMATION
+>     virtual void GetNavigationInformation(const C2DBoxF& box, CNavigationAreaUpdate& update) const;   // slot 1 0x006B2960
+> #endif

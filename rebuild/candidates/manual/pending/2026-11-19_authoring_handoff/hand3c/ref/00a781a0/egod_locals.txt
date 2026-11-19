@@ -1,0 +1,32 @@
+== CNavQuadTree::UpdateLines (debug length 1922)
+  bprel -196 type 0x35883 this   [const CNavQuadTree*]
+  bprel +8 type 0x3589b line_lists   [std::vector<std::list<C2DLineF,std::allocator<C2DLineF> >,std::allocator<std::list<C2DLineF,std::allocator<C2DLineF> > > >&]
+  bprel +12 type 0x2c50c lines   [const std::vector<C2DLineF,std::allocator<C2DLineF> >&]
+  bprel +16 type 0xa1a4 update_area   [const C2DBoxI&]
+  bprel -36 type 0x12 full_boxes_wide   [long]
+  bprel -32 type 0x35410 node_areas   [std::vector<C2DBoxF,std::allocator<C2DBoxF> >]
+  {
+    bprel -40 type 0x22 x   [unsigned long]
+    {
+      bprel -44 type 0x22 y   [unsigned long]
+      {
+        bprel -60 type 0x40 brx   [float]
+        bprel -56 type 0x40 tly   [float]
+        bprel -52 type 0x40 bry   [float]
+        bprel -48 type 0x40 tlx   [float]
+  {
+    bprel -72 type 0x5521d ln_it   [std::_Vector_const_iterator<std::_Vector_val<C2DLineF,std::allocator<C2DLineF> > >]
+    {
+      bprel -92 type 0x12 low_y   [long]
+      bprel -88 type 0x12 high_y   [long]
+      bprel -84 type 0x12 low_x   [long]
+      bprel -80 type 0x12 high_x   [long]
+      bprel -76 type 0xa64c line   [const C2DLineF&]
+      {
+        bprel -96 type 0x12 x   [long]
+        {
+          bprel -100 type 0x12 y   [long]
+          {
+            bprel -116 type 0x13 overflow_check   [__int64]
+            bprel -104 type 0x12 index   [long]
+== CNavQuadTree::UpdateLines: no complete record

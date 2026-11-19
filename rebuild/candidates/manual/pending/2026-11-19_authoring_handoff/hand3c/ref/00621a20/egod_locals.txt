@@ -1,0 +1,21 @@
+== CTCInventoryQuests::InitialiseQuestCardList (debug length 1090)
+  bprel -148 type 0x2ef5b this   [CTCInventoryQuests*]
+  bprel -32 type 0x192fb cardList   [std::vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > >]
+  {
+    bprel -36 type 0x1b5cf quest_cards   [const std::list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > >&]
+    {
+      bprel -48 type 0x267cb it   [std::_List_const_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > > >]
+  {
+    bprel -52 type 0x9a77 pbuilding_thing   [CThing*]
+    {
+      bprel -56 type 0x4a957 pTCHeroCentre   [CTCHeroCentre*]
+  {
+    bprel -60 type 0x12 idx   [long]
+    {
+      bprel -68 type 0x9a77 pQuestCard   [CThing*]
+      bprel -64 type 0x477e9 ptc_quest_card   [const CTCQuestCard*]
+      {
+        bprel -72 type 0x12 category_def_index   [long]
+  {
+    bprel -76 type 0x1735f pCat   [NInventory::CCategory*]
+== CTCInventoryQuests::InitialiseQuestCardList: no complete record

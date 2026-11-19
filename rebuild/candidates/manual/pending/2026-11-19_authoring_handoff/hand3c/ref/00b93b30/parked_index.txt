@@ -1,0 +1,17 @@
+addr: 00b93b30
+status: parked
+batches: 2026-10-21_linux_hand244
+attempts: 1
+last_lens: 282v395
+bounds_class: OK
+bounds_detail: row=400 ext=395 corr=00b93b30:395
+retries: 
+git_commits: 30c6c6c72
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(282v395) -- lane gap: asm_bake family: retail floors both cell coordinates with the inline-asm fistp/fild helper (ebp frame, 0.5/1.0 frame constants); compiled code cannot produce it CEngineSceneMap::AddPrimitive(CEngineInternalPrimitiveBase& primitive, const C3DVector& position, float radius) -- place a primitive in the scene map's grid hierarchy: compute its level from the radius, its cell from the position normalised over the map area (clamped to the level's size), store the grid position, then add it to the cell of that level (created on demand)
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand244/differ/00b93b30.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

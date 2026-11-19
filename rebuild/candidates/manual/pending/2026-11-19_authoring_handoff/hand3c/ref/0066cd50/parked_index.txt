@@ -1,0 +1,17 @@
+addr: 0066cd50
+status: parked
+batches: 2026-10-21_linux_hand268
+attempts: 1
+last_lens: 430v423
+bounds_class: OK
+bounds_detail: row=432 ext=423 corr=0066cd50:423
+retries: 
+git_commits: 36988a103
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(430v423) -- the light-to-index rounding is a bare dword fistp after a float store/reload (fstp/fld/fistp [esp+34h]) next to three __ftol2 conversions: an inline-asm rounding helper in the original (known lane gap, GOTCHAS 006472b2 / PackVertexNormal family); ours uses a C cast. Layout as the landed CreateRegionMinimap 0x0066DC50 (theme colour vector start +0x58).
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand268/differ/0066cd50.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

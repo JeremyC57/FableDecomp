@@ -1,0 +1,1 @@
+Ego_r: release\game_map.obj index 9 size 484

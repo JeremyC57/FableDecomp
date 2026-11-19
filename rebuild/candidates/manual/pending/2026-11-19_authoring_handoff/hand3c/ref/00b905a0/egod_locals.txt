@@ -1,0 +1,8 @@
+== CEnginePrimitiveManagerOcclusionBase::PrepareOcclusionTest (debug length 120)
+  bprel -8 type 0x64729 this   [CEnginePrimitiveManagerOcclusionBase*]
+  bprel +8 type 0x640cd primitive   [CEngineInternalPrimitiveOcclusionBase&]
+  bprel +12 type 0x63ffd render_pass   [ERenderPassType]
+  bprel +16 type 0x275d out_occlusion_handle   [unsigned long&]
+  {
+    bprel -4 type 0x640c3 occlusion_info   [CEnginePrimitiveOcclusionInfo&]
+== CEnginePrimitiveManagerOcclusionBase::PrepareOcclusionTest: no complete record

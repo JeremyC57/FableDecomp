@@ -1,0 +1,1 @@
+Ego_r: release\tc_hero_stats.obj index 51 size 1270

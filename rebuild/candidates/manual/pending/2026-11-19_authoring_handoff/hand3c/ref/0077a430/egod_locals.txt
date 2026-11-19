@@ -1,0 +1,20 @@
+== CTCDExperienceOrb::FrameUpdate (debug length 1639)
+  bprel -248 type 0x3071c this   [CTCDExperienceOrb*]
+  bprel -48 type 0xae56 area   [C2DBoxI]
+  bprel -32 type 0x19e17 experience_orbs   [std::vector<CThing *,std::allocator<CThing *> >]
+  {
+    bprel -61 type 0x30 combined_with_another_orb   [bool]
+    bprel -60 type 0x2460 average_position   [C3DVector]
+    {
+      bprel -68 type 0x12 c1   [long]
+    {
+      bprel -80 type 0x2460 from_me_to_average_pos   [C3DVector]
+  {
+    bprel -84 type 0x22e83 phero   [CThingPlayerCreature*]
+    {
+      bprel -104 type 0x40 distance_from_hero   [float]
+      bprel -100 type 0x2460 from_me_to_hero   [C3DVector]
+      bprel -88 type 0x40 acceleration   [float]
+    {
+      bprel -108 type 0x409be ptc_fade_out_and_in   [CTCFadeOutAndIn*]
+== CTCDExperienceOrb::FrameUpdate: no complete record

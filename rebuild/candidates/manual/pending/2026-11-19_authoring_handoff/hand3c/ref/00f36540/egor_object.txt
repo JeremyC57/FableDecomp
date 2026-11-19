@@ -1,0 +1,1 @@
+Ego_r: .\Release\lib_fractal.obj index 6 size 395

@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/STATUS.tsv: 00a4d770	IMPROVED	1	landed retail_asm float-to-long/floor helper (91 from 113)	434v420 surrounding scheduling / frame / inlining

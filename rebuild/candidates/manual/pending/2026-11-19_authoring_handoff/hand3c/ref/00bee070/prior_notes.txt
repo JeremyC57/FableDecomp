@@ -1,0 +1,4 @@
+rebuild/candidates/manual/pending/2026-10-19_linux_hand194/NOTES.md: - 00bee070 __pop_heap<pair<long,CCompositeSurfaceInfo>> DIFFER(206v206): esi/edi swapped between `result` and `first` (and the following eax/ecx/edx rotation) | tried: implicit pair assignment, explicit inline pair operator= | next: lane gap: callee-saved register swap
+rebuild/candidates/manual/pending/2026-10-19_linux_hand194/NOTES.md: - 0x00BEE070 "CItem::operator=" is SGI `__pop_heap<pair<long,CCompositeSurfaceInfo>>` (vtable 0x012A8154, adjust 0xBEDD70).
+rebuild/candidates/manual/pending/2026-10-19_linux_hand194/rows.tsv: 00bee070	CItem	operator=	208
+rebuild/candidates/manual/pending/2026-10-19_linux_hand194/STATUS.tsv: 00bee070	DIFFER	206v206	-	esi/edi swap between result and first (register swap only)

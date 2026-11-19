@@ -1,0 +1,26 @@
+== CParticleSimulation::SatisfyDistanceConstraints (debug length 891)
+  regrel r22-4 type 0x65872 this   [CParticleSimulation*]
+  regrel r20+8 type 0x6589c list   [const CParticleDistanceConstraint*]
+  regrel r20+12 type 0x22 size   [unsigned long]
+  regrel r22-8 type 0x40 limit   [float]
+  {
+    regrel r22-84 type 0x9e71 pos   [C4DVector*]
+    regrel r22-64 type 0xc0ab max_adjust   [C4DVector]
+    regrel r22-16 type 0x268b alphas   [const float*]
+    regrel r22-80 type 0xc0ab temp   [C4DVector]
+    regrel r22-20 type 0x22 list_size   [unsigned long]
+    regrel r22-12 type 0x1809 list_stride   [const unsigned long]
+    regrel r22-48 type 0xc0ab divisor_limit   [C4DVector]
+  {
+    regrel r22-88 type 0x22 c1   [unsigned long]
+    {
+      regrel r22-136 type 0x2460 vect   [C3DVector]
+      regrel r22-140 type 0x40 dist   [float]
+      regrel r22-120 type 0x40 inv_mass1   [float]
+      regrel r22-92 type 0x65932 constraint   [const CParticleDistanceConstraint&]
+      regrel r22-148 type 0x40 error   [float]
+      regrel r22-124 type 0x40 inv_mass2   [float]
+      regrel r22-144 type 0x40 divisor   [float]
+      regrel r22-104 type 0x2460 pos1   [C3DVector]
+      regrel r22-116 type 0x2460 pos2   [C3DVector]
+== CParticleSimulation::SatisfyDistanceConstraints: no complete record

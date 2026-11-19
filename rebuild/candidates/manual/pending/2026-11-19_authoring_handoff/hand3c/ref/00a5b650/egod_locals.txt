@@ -1,0 +1,4 @@
+== CCachedFile::Copy (debug length 577)
+  bprel -64 type 0x53a96 this   [CCachedFile*]
+  bprel +8 type 0x53a98 rhs   [const CCachedFile&]
+== CCachedFile::Copy: no complete record

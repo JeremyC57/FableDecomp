@@ -1,0 +1,1 @@
+Ego_r: .\Release\lib_wave_loader.obj index 8 size 592

@@ -1,0 +1,17 @@
+addr: 00914650
+status: parked
+batches: 2026-10-21_linux_hand239
+attempts: 1
+last_lens: 308v340
+bounds_class: OK
+bounds_detail: row=340 ext=340 corr=00914650:340
+retries: 
+git_commits: 97916be2f
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(308v340) -- lane gap: inline-asm rounding helper. Retail is an ebp frame (`push ebp ; mov ebp,esp`) around an inline float->int round (fld 2.5 ; fadd 0.5 ; fistp ; fild ; fsub 1.0 ; compare ; dec) that only an __asm body produces; byte purity forbids it, so this C++ approximation keeps the esp frame
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand239/differ/00914650.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

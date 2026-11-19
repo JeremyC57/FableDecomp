@@ -1,0 +1,7 @@
+== CThingCreatureBase::GetCurrentMeshRadius (debug length 699)
+  bprel -120 type 0x2301b this   [const CThingCreatureBase*]
+  bprel -28 type 0x40 param   [float]
+  bprel -24 type 0x40 rad   [float]
+  bprel -20 type 0x3a950 pcreature_def   [CDefPointer<CCreatureDef const >]
+  bprel -16 type 0x28c9b ptc_hero_experience   [const CTCHeroExperience*]
+== CThingCreatureBase::GetCurrentMeshRadius: no complete record

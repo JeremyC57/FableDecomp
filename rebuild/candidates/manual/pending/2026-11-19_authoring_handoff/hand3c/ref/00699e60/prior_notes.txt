@@ -1,0 +1,4 @@
+rebuild/candidates/manual/pending/2026-10-21_linux_hand264/NOTES.md: - 00699e60 CGameCameraManager::SetScriptedCameraMode DIFFER(459v431): retail builds the counted pointer in dead argument slots | tried: several | next: lane gap: dead-slot reuse
+rebuild/candidates/manual/pending/2026-10-21_linux_hand264/LESSONS.md: - Known lane gaps hit this chunk (per GOTCHAS): callee-saved push sunk inside a guard (00894500, 008a8260), cross-jump/tail duplication (00896b60, 00e1b750), dead-slot reuse (00699e60, 008d1130), temp-slot packing (008a8c60), join reload order (the five 008d19a0 twins, advisor-confirmed).
+rebuild/candidates/manual/pending/2026-10-21_linux_hand264/rows.tsv: 00699e60	CGameCameraManager	SetScriptedCameraMode	432
+rebuild/candidates/manual/pending/2026-10-21_linux_hand264/STATUS.tsv: 00699e60	DIFFER	459v431	-	lane gap: retail builds the new-mode counted pointer in the dead by-value argument slots (no frame, Info cache

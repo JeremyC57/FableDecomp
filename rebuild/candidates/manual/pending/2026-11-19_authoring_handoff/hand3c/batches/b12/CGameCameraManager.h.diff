@@ -1,0 +1,26 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CGameCameraManager.h	2026-11-19 13:47:44.815887384 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w24/hand2c/hdr/engine/CGameCameraManager.h	2026-11-19 15:19:17.367567147 +0000
+@@ -148,6 +148,23 @@
+     // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?ResetCamera@CGameCameraManager@@QAEXXZ (0x0069A990, called 0x004A4FDF).
+     void ResetCamera();                                                  // 0x0069A990
+ #endif // FABLE_RETAIL_CGAMECAMERAMANAGER_RESETCAMERA
++#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_SCRIPTEDCONTROL
++    // hand3c opt-in (row 0x00699E60): Ego_r.pdb / FableWin.pdb ?SetCameraMode@CGameCameraManager@@QAEXV?$CCountedPointer@VCBase@NCameraModes@@@@@Z
++    // (0x00697E20), ?SetScriptedCameraMode@..@@QAEXV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z (0x00699E60), FableWin.pdb
++    // ?GetCameraMode@..@@QAEPAVCBase@NCameraModes@@XZ (inline in retail: CurrentMode.Data +0x98 read in place, 0x00699F18), the private
++    // ?PreloadScriptedCamera@..@@AAEXV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z (0x00699B00), ?UpdateCleanupFlags@..@@AAEXXZ
++    // (0x00697C60: Ego_r.pdb 0x006BE940 is called at the same statement, 0x006C1251) and FableWin.pdb's private
++    // ?SwitchIntoScriptedControl@..@@AAEXXZ (FableWin 0x022002F0; no Ego_r.pdb or retail copy: expanded, the row supplies the body).
++    // Declarations (and the one-line accessor) only: no layout change.
++public:
++    NCameraModes::CBase* GetCameraMode() { return CurrentMode.Get(); }
++    void SetCameraMode(CCountedPointer<NCameraModes::CBase> mode);                            // 0x00697E20
++    void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> pscript_module);   // 0x00699E60
++private:
++    void PreloadScriptedCamera(CCountedPointer<NCameraModes::CScriptModuleBase> module);      // 0x00699B00
++    void SwitchIntoScriptedControl();
++    void UpdateCleanupFlags();                                                                // 0x00697C60
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(127, sizeof(CGameCameraManager) == 0x160);
+ #elif defined(FABLE_RETAIL_CGAMECAMERAMANAGER_LOOKAROUND)

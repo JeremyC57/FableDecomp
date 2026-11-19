@@ -1,0 +1,17 @@
+addr: 00c41fb0
+status: parked
+batches: 2026-10-23_linux_hand314
+attempts: 1
+last_lens: 1469v1570
+bounds_class: OK
+bounds_detail: row=1584 ext=1570 corr=00c41fb0:1570
+retries: 
+git_commits: 98a74b6cc
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(1469v1570) -- 81 blocks: first pass; retail rounds the four levels with a bare dword fistp through dead argument slots (inline-asm rounding helper, asm_bake family per GOTCHAS), ours calls __ftol2
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/00c41fb0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

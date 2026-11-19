@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/STATUS.tsv: 0041afa0	IMPROVED	1	retail_asm ROUND helper for the four corner snaps (436->399)	1014v1455, 399/463 lines: the inlined texture refresh (about 400 bytes) still modelled as two calls; this register

@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-10-21_linux_hand264/NOTES.md: - 006b75a0 CGameMap::Resize DIFFER(414v434): min/max-by-reference bounds, loop counters in dead argument slots, bottom-up row index | tried: one draft | next: `const long& Max/Min` returning references with locals taken by address, counters as the offset parameters
+rebuild/candidates/manual/pending/2026-10-21_linux_hand264/rows.tsv: 006b75a0	CGameMap	Resize	448
+rebuild/candidates/manual/pending/2026-10-21_linux_hand264/STATUS.tsv: 006b75a0	DIFFER	414v434	-	first draft: the min/max-by-reference bounds, loop counters homed in the dead offset argument slots and the de

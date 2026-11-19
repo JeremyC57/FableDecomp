@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-11-04_linux_hand747/NOTES.md: | 0x00A48F10 | CLipSyncSampleData::GetFrameInterpolate | 1 | GFFloatToLongFloor | try a dl=128 (815v811): helper in place of the GFFloor stand-in; the phoneme blend loop is first-draft |
+rebuild/candidates/manual/pending/2026-11-04_linux_hand747/rows.tsv: 00a48f10	GetFrameInterpolate	811	/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand289/differ/00a48f10.cpp
+rebuild/candidates/manual/pending/2026-11-04_linux_hand747/STATUS.tsv: 00a48f10	CLipSyncSampleData::GetFrameInterpolate	parked	1	GFFloatToLongFloor	try a dl=128 (815v811): helper in place of the GFFloor stand-in; the phoneme blend loop is first-draft

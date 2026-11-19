@@ -1,0 +1,1 @@
+== CSoundEmitterLH::CSoundEmitterLH::vfunc_3: no complete record

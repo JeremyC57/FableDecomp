@@ -1,0 +1,17 @@
+addr: 00621a20
+status: parked
+batches: 2026-10-23_linux_hand303
+attempts: 1
+last_lens: 620v600
+bounds_class: OK
+bounds_detail: row=608 ext=600 corr=00621a20:600
+retries: 
+git_commits: 1c221c21a
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(620v600) -- the inlined CVectorMap lower_bound loop keeps an extra eax copy (known lane gap: inlined lower_bound eax copy)
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand303/differ/00621a20.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

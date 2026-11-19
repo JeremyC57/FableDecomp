@@ -1,0 +1,17 @@
+addr: 006b2960
+status: parked
+batches: 2026-10-20_linux_hand223
+attempts: 1
+last_lens: 231v250
+bounds_class: OK
+bounds_detail: row=250 ext=250 corr=006b2960:250
+retries: 
+git_commits: 00d8c3a3e
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(231v250) -- the four box edges are rounded with bare dword `fistp` (inline-asm FastFloor/RoundToInt helpers in the original, the asm_bake family) and the body calls interface slot 13 once with no arguments and once with four (the frame pointer absorbs the imbalance); lane gap CGameNavigatorManagerExternalInterface::GetNavigationInformation(const C2DBoxF& box, CNavigationAreaUpdate& update) const -- convert the requested box to whole navigation cells and ask the navigation manager to fill the area update for it
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-20_linux_hand223/differ/006b2960.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

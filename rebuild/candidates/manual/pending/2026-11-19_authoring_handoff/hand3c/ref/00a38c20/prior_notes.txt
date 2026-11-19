@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-10-22_linux_hand281/NOTES.md: - 00a38c20 CCRCSymbolMap::LoadBinary DIFFER(564v551): retail caches the constants 0 (esi) and 4 (ebp) across the whole body | tried: ternary/conditional malloc, count copied to a register local, reference/assignment element stores | next: lane gap: constant register caching
+rebuild/candidates/manual/pending/2026-10-22_linux_hand281/rows.tsv: 00a38c20	CCRCSymbolMap	LoadBinary	560
+rebuild/candidates/manual/pending/2026-10-22_linux_hand281/STATUS.tsv: 00a38c20	DIFFER	564v551	-	CCRCSymbolMap::LoadBinary constant 0/4 register caching (lane gap)

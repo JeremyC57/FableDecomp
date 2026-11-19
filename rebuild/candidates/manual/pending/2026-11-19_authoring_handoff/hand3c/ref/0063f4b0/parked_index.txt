@@ -1,0 +1,17 @@
+addr: 0063f4b0
+status: parked
+batches: 2026-10-23_linux_hand307
+attempts: 1
+last_lens: 769v769
+bounds_class: OK
+bounds_detail: row=784 ext=769 corr=0063f4b0:769
+retries: 
+git_commits: d2cc8ed49
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(769v769) -- with the 007FCEF0 indexing recipe applied (no change in length), the only residue is one swapped spill-reload pair at the map-loop exit (edi before esi; retail esi first); same lane gap as 00518130 CThingSearchTools::ForEachInRoughArea<CThingPhysical, CFilter_Bind2<CThingFilter_HasNavigationInformation, CThingFilter_OverlappingBoundingBox>, CThingFindNavigationLayerAt>(const C2DBoxI& area, const filter&, functor&) -- runs the navigation-layer finder over every physical thing in the overlapping mapwho cells that has navigation information and whose physics mesh overlaps the f
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand307/differ/0063f4b0.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

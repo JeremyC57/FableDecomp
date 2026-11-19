@@ -1,0 +1,17 @@
+addr: 009bf7e0
+status: parked
+batches: 2026-10-22_linux_hand284
+attempts: 1
+last_lens: 824v846
+bounds_class: OK
+bounds_detail: row=848 ext=846 corr=009bf7e0:846
+retries: 
+git_commits: 91e73d22b
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(824v846) -- call sequence and field stores follow retail, but retail keeps a 0x18 frame and builds its CPixelFormat temporaries in the dead params argument slot (known lane gap: locals in dead argument slots), so every frame offset and the register choice differ; the refresh/interval if-else is also duplicated per arm in retail. Tried: one full reconstruction
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand284/differ/009bf7e0.cpp
+diagnosis: dead-argument-slot homing: try the same-TU noinline stand-in for the address-taking callee (de-bake B2 / 24l real body) | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

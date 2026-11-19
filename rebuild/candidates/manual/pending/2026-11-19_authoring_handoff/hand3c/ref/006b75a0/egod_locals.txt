@@ -1,0 +1,18 @@
+== CGameMap::Resize (debug length 1245)
+  bprel -204 type 0x533d0 this   [CGameMap*]
+  bprel +8 type 0x12 width   [long]
+  bprel +12 type 0x12 height   [long]
+  bprel +16 type 0x12 x_offset   [long]
+  bprel +20 type 0x12 y_offset   [long]
+  bprel -44 type 0x12 to_x   [long]
+  bprel -40 type 0x53443 new_cells   [std::vector<CGameMapCell,std::allocator<CGameMapCell> >]
+  bprel -20 type 0x13 overflow_check   [__int64]
+  {
+    bprel -48 type 0x12 from_x   [long]
+    {
+      bprel -52 type 0x12 to_y   [long]
+      {
+        bprel -56 type 0x12 from_y   [long]
+        {
+          bprel -60 type 0x12 to_index   [long]
+== CGameMap::Resize: no complete record

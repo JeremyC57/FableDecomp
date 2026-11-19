@@ -1,0 +1,19 @@
+== CRegionMinimap::BuildRegionMinimapTGA (debug length 804)
+  bprel -100 type 0x3d8e0 this   [CRegionMinimap*]
+  bprel +8 type 0x2308 filename   [const CWideString&]
+  bprel -40 type 0xa1a9 pos   [C2DCoordI]
+  bprel -32 type 0x9983 themeCol   [CRGBColour]
+  bprel -28 type 0x12 tga_width   [long]
+  bprel -24 type 0x12 tga_height   [long]
+  bprel -20 type 0x9983 interpCol   [CRGBColour]
+  bprel -16 type 0x9983 col   [CRGBColour]
+  {
+    bprel -44 type 0x12 y   [long]
+    {
+      bprel -48 type 0x12 x   [long]
+      {
+        bprel -52 type 0x3d7c1 theme   [CRegionMinimap::RegionMinimapTheme]
+        {
+          bprel -60 type 0x40 interpRange   [float]
+          bprel -56 type 0x40 interpVal   [float]
+== CRegionMinimap::BuildRegionMinimapTGA: no complete record

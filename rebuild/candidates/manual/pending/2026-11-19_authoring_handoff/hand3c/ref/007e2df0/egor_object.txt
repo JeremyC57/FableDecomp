@@ -1,0 +1,1 @@
+Ego_r: release\tc_wobble.obj index 2 size 264

@@ -1,0 +1,1 @@
+Ego_r: release\mini_map_region.obj index 30 size 489

@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-10-22_linux_hand292/NOTES.md: - 0x00B1DFD0 CPSCDecalRenderer::CPSCDecalRenderer DIFFER(-v931): 14 bare dword `fistp` | tried: not authored | next: lane gap: hand-written assembly fistp helper
+rebuild/candidates/manual/pending/2026-10-22_linux_hand292/rows.tsv: 00b1dfd0	CPSCDecalRenderer	CPSCDecalRenderer	944
+rebuild/candidates/manual/pending/2026-10-22_linux_hand292/STATUS.tsv: 00b1dfd0	DIFFER	-v931	-	not authored: retail rounds with 14 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly

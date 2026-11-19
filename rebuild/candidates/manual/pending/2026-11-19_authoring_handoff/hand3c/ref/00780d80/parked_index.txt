@@ -1,0 +1,17 @@
+addr: 00780d80
+status: parked
+batches: 2026-10-23_linux_hand301
+attempts: 1
+last_lens: 539v539
+bounds_class: OK
+bounds_detail: row=539 ext=539 corr=00780d80:539
+retries: 
+git_commits: a2eabb71c
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(539v539) -- same size; the only difference is the slot of the sound-name CCharString conversion temporary: retail homes it in the sound def pointer's frame word (dead once the def is held in ebx, an LTCG effect), ours in the fire-name word
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand301/differ/00780d80.cpp
+diagnosis: LTCG custom convention: permanently asm | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

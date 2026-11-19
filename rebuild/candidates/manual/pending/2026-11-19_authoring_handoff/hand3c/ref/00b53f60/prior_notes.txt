@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-30_parked_retry1/STATUS.tsv: 00b53f60	DIFFER	1	same-TU callee body (UpdateBoxPositions); needs RebuildBoxes 0x00B51AD0 body too	418v411: this in esi, since the unknown RebuildBoxes clobbers ecx

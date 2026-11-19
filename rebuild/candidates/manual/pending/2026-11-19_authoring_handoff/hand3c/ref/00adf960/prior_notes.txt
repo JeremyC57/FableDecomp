@@ -1,0 +1,5 @@
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/NOTES.md: | 0x00ADF960 | CParticleSimulation::SatisfyDistanceConstraints | DIFFER(764v766) dl=9 | 27 | macro GF_SSE_SATISFY_DISTANCE_CONSTRAINTS |
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/NOTES.md: - 0x00ADF960 (dl=9, 764v766): the x87 loop's constraint pointer is biased +4 (Index2) where retail biases +8 (Distance). Tried index,
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/LABELS.tsv: 00adf960	CParticleSimulation::SatisfyDistanceConstraints	FableWin.pdb + Ego_r.pdb (private), ret 8
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/rows.tsv: 00adf960	SatisfyDistanceConstraints	766	/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00adf960.cpp
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/STATUS.tsv: 00adf960	CParticleSimulation::SatisfyDistanceConstraints	parked DIFFER(764v766) dl=9	27	macro (GF_SSE_SATISFY_DISTANCE_CONSTRAINTS, engine/CParticleSimulationSSE.h)	SSE arm, /Zi realigned frame, x87 maths byte-exact; residue x87 loop's induction pointer bias (+4 v retail +8), 2 bytes short

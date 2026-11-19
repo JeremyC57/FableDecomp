@@ -1,0 +1,1 @@
+Ego_r: release\tc_object_augmentations.obj index 21 size 794

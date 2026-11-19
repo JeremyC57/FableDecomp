@@ -1,0 +1,3 @@
+// CNavigatorBase::FindNearestNavigableNode(const CANavQuadTreeNode*, const CANavQuadTreeNode*, const C3DVector&, float, CNavigatorManager*) const -- breadth search outward from a switched-off node for the nearest navigable node within the radius (222 x87 ops, aligned frame)
+// Grade: DIFFER(-v1857) -- triage only, no source drafted: `and esp,-8` aligned frame (8-byte local in the search loop) plus 222 x87 ops; lane gap per GOTCHAS chunk 232 when the 8-byte struct address is taken in a loop
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A475C0, 1857 bytes. Decoded from dis_all.txt; see NOTES.md for the next step.

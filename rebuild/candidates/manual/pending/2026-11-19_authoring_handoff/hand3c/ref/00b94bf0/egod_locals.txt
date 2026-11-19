@@ -1,0 +1,8 @@
+== CEngineScene::GetMapAt (debug length 339)
+  bprel -68 type 0x6445f this   [CEngineScene*]
+  bprel +8 type 0x2436 world_pos   [const C2DVector&]
+  bprel -24 type 0x6c09e map_ptr   [CCountedPointer<CEngineSceneMap>&]
+  bprel -20 type 0xa1a9 map_coords   [C2DCoordI]
+  {
+    bprel -40 type 0xb239 area   [C2DBoxF]
+== CEngineScene::GetMapAt: no complete record

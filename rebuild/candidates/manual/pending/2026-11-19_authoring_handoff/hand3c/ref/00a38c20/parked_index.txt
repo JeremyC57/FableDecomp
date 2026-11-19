@@ -1,0 +1,17 @@
+addr: 00a38c20
+status: parked
+batches: 2026-10-22_linux_hand281
+attempts: 1
+last_lens: 564v551
+bounds_class: OK
+bounds_detail: row=560 ext=551 corr=00a38c20:551
+retries: 
+git_commits: 439e50cbc
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(564v551) -- calls and block structure match; retail caches the constants 0 (esi) and 4 (ebp) in registers across the whole body (Read process argument, stream-source store, inline-Read size/compare), keeps the first symbol read in the dead filename argument slot and stores each pair from one start-pointer load; the lane uses immediates and a frame word (lane gap: constant register caching). Forms tried: ternary/conditional malloc, count copied to a register local, reference/assignment element stores. CCRCSymbolMap::LoadBinary(const CWideString& filename) -- read the whole file into a ze
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/00a38c20.cpp
+diagnosis: cross-call register caching: the original had the callee in the TU (IPA); same-TU noinline stand-ins with the callee's real shape are the lever | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

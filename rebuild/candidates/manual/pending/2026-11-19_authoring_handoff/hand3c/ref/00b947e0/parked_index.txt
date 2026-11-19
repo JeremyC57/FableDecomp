@@ -1,0 +1,17 @@
+addr: 00b947e0
+status: parked
+batches: 2026-10-20_linux_hand222
+attempts: 1
+last_lens: 236v246
+bounds_class: OK
+bounds_detail: row=256 ext=246 corr=00b947e0:246
+retries: 
+git_commits: 20c005317
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(236v246) -- the float->long rounding is a bare `fstp ; fld ; fistp` (inline-asm FtoL helper in the original, asm_bake family); a C cast gives `call __ftol2` and the frame/register knock-on (esi vs eax, 4 vs 8 frame bytes). Everything else (unsigned fild fix-up, fsqrt, inlined HighestSetBit, clamps, resize test) matches. CEngineSceneMap::Update() -- size the grid hierarchy to the scene: side = sqrt(primitives in the top grid / the scene's primitives-per-cell target), levels = floor(log2(max(2*side - 1, 1))) + 1 clamped to [1, MaxLevels]; rebuild the grid levels when the count changes
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-20_linux_hand222/differ/00b947e0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

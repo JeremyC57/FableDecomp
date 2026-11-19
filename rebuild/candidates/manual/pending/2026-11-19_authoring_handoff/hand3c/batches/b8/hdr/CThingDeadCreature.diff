@@ -1,0 +1,7 @@
+13a14,19
+> #ifdef FABLE_RETAIL_CTHINGDEADCREATURE_STATGETTYPE
+> public:
+>     // Opt-in (hand3c, row 0x00914650 CAIStateGroup_BirdStartled::IsRunnable): FableWin.pdb ?StatGetType@CThingDeadCreature@@SIJXZ
+>     // (0x01D3E930 `mov eax,0Dh`), inline in retail: CThingFilter_ScaresBirds compares CClass::Type with 13 in place (0x009147E0). Body only.
+>     static long FABLE_FASTCALL StatGetType() { return 13; }
+> #endif

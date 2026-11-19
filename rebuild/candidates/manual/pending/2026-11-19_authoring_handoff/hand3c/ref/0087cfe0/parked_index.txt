@@ -1,0 +1,17 @@
+addr: 0087cfe0
+status: parked
+batches: 2026-10-23_linux_hand315
+attempts: 1
+last_lens: 3v1447
+bounds_class: OK
+bounds_detail: row=1456 ext=1447 corr=0087cfe0:1447
+retries: 
+git_commits: 21dfd62f2
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(3v1447) -- parked unreached (skeleton only): three local STLport vectors with inline push_back/grow (0x5E1420), sort/unique/erase (memmove 0xBFEAE6) and CRT free; def-pointer refcounts; not reached beyond decode. CCreatureAction_InterruptableMidAttackAutoTurn::SetupTurningAnimation() -- PARK SKELETON (decoded only)
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand315/differ/0087cfe0.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

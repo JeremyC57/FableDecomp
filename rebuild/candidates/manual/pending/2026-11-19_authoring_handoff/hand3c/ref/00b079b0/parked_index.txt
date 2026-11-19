@@ -1,0 +1,17 @@
+addr: 00b079b0
+status: parked
+batches: 2026-10-23_linux_hand320
+attempts: 1
+last_lens: 
+bounds_class: OK
+bounds_detail: row=2032 ext=2032 corr=00b079b0:2032
+retries: 
+git_commits: c066edfa9
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(-v2032) -- triage only, no source drafted: contains the same `xor cl,[mem]` bitfield write-back that keeps the parked twin 0x00B1A870 at DIFFER (same length, one instruction); lane gap until that is solved
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00b079b0.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

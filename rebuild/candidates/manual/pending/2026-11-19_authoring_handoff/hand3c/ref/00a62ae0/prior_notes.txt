@@ -1,0 +1,3 @@
+rebuild/candidates/manual/pending/2026-10-15_linux_hand150/NOTES.md: - 00a62ae0 CPackedUIntArray::CalculateBias DIFFER(132v130): retail has no frame (counter in the dead `bits` slot, mask in the dead `count` slot, `data` in ebx at entry), ours opens `push ecx` for the mask/counter | tried: plain form, mask stored over `bits` | next: lane gap: several locals in dead argument slots
+rebuild/candidates/manual/pending/2026-10-15_linux_hand150/rows.tsv: 00a62ae0	CPackedUIntArray	CalculateBias	144
+rebuild/candidates/manual/pending/2026-10-15_linux_hand150/STATUS.tsv: 00a62ae0	DIFFER	132v130	-	lane gap: locals homed in dead arg slots (no frame in retail)

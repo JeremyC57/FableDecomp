@@ -1,0 +1,8 @@
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/NOTES.md: | 0x00989230 | CShaderRenderManager::UpdateObjectSpaceTextureTransform | DIFFER(636v636) dl=26 | 245 | macro GF_SSE_MATRIX_MULTIPLY |
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/NOTES.md: ### Site 3 -- 0x0098929D..0x0098938A (CMatrix4x4::AlignedSetMultiply kernel inlined in 0x00989230; same block in 0x00988E80, 0x00AE1320, 0x00AE29D0)
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/NOTES.md: | spelling | flags | VC7.1 emitted | grade (0x00989230) |
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/NOTES.md: - 0x00989230 / 0x00AE1320 / 0x00AE29D0 (dl 26 / 47 / 42): only the AlignedSetMultiply x87 arm's term order (retail sums columns
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/NOTES.md:   operator* / SetMultiply call (non-aligned twin) -- check FableWin.pdb inline lines for 0x00989230 and reuse that member's landed body.
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/LABELS.tsv: 00989230	CShaderRenderManager::UpdateObjectSpaceTextureTransform	FableWin.pdb + Ego_r.pdb (private)
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/rows.tsv: 00989230	UpdateObjectSpaceTextureTransform	636	/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00989230.cpp
+rebuild/candidates/manual/pending/2026-11-04_linux_hand748/STATUS.tsv: 00989230	CShaderRenderManager::UpdateObjectSpaceTextureTransform	parked DIFFER(636v636) dl=26	245	macro (GF_SSE_MATRIX_MULTIPLY via inline CMatrix4x4::AlignedSetMultiply)	SSE kernel, homing, loop, upload, flags byte-exact; residue the AlignedSetMultiply x87 fallback's term order only

@@ -1,0 +1,17 @@
+addr: 00988e80
+status: parked
+batches: 2026-10-22_linux_hand298
+attempts: 1
+last_lens: 839v917
+bounds_class: OK
+bounds_detail: row=917 ext=917 corr=00988e80:917
+retries: 
+git_commits: 63970883c
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(839v917) -- lane gap: retail's SSE branch is a hand-written inline-assembly block (operands routed through frame slots, fixed xmm0..xmm7 schedule); the intrinsic spelling compiles to a different, shorter sequence; the x87 product, the two fast-inverse-sqrt normalisations and the upload are ordinary C++ (x87 operand order not tuned) CShaderRenderManager::UpdateLocalisedSphereMapping() -- when the current vertex-shader layout has the two-register localised sphere-mapping range, form ViewMatrix * ObjectMatrix and upload its first row and its negated second row, each normalised (table-drive
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00988e80.cpp
+diagnosis: SSE block = retail inline asm: retail_asm candidate (owner-gated) | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

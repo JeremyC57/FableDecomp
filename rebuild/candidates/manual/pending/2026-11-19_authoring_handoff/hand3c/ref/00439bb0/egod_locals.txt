@@ -1,0 +1,17 @@
+== CPlayerGui::UpdateMoney (debug length 1264)
+  bprel -124 type 0xbbc5 this   [CPlayerGui*]
+  bprel -16 type 0x9a77 phero   [CThing*]
+  {
+    bprel -24 type 0x12 current_money   [long]
+    bprel -20 type 0x2de82 ptc_hero_stats   [CTCHeroStats*]
+    {
+      bprel -36 type 0x12 stored_money_value   [long]
+      bprel -32 type 0x40 difference_between_money_got_and_money_displaying   [float]
+      bprel -28 type 0x12 amount_to_change_per_frame   [long]
+      {
+        bprel -56 type 0x233e text_prefix   [CWideString]
+        bprel -48 type 0x233e change_text   [CWideString]
+        bprel -40 type 0x9983 text_colour   [CRGBColour]
+        {
+          bprel -60 type 0x253a4 ptc_sound_player   [CTCSoundPlayer*]
+== CPlayerGui::UpdateMoney: no complete record

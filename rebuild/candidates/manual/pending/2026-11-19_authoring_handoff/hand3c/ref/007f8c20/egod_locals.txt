@@ -1,0 +1,9 @@
+== CTCAnimatingObject::AddQueuedAnimation (debug length 293)
+  bprel -80 type 0x31725 this   [CTCAnimatingObject*]
+  bprel +8 type 0x2318 anim_name   [const CCharString&]
+  bprel +12 type 0x30 looping   [bool]
+  bprel -16 type 0x41fd7 pdef   [CDefPointer<CAnimatingObjectDef const >]
+  {
+    bprel -64 type 0x21078 anim_init   [CAnimInit]
+    bprel -20 type 0x19676 anim_entry   [const CAnimationEntry&]
+== CTCAnimatingObject::AddQueuedAnimation: no complete record

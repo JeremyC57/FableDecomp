@@ -1,0 +1,29 @@
+== CTCInventory::UpdateContextSensitiveItems (debug length 1966)
+  bprel -228 type 0x22e1a this   [CTCInventory*]
+  {
+    bprel -60 type 0x12 things_size   [long]
+    bprel -56 type 0x2cc40 things   [std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >]
+    bprel -36 type 0x12dab override_found   [bool[bytes=4]]
+    bprel -32 type 0x4707e context_things   [std::vector<std::pair<long,CDefPointer<CContextSensitiveItemDef const > >,std::allocator<std::pair<long,CDefPointer<CContextSensitiveItemDef const > > > >]
+    {
+      bprel -72 type 0x46efe it   [std::_Vector_iterator<std::_Vector_val<CTCInventory::CContextSensitiveItem,std::allocator<CTCInventory::CContextSensitiveItem> > >]
+      {
+        bprel -76 type 0x12 thing_def_index   [long]
+    {
+      bprel -80 type 0x12 i   [long]
+    {
+      bprel -84 type 0x12 i   [long]
+      {
+        bprel -92 type 0x46fc3 pcontext_def   [CDefPointer<CContextSensitiveItemDef const >]
+        bprel -88 type 0xa88e pthing_base_def   [CDefPointer<CThingBaseDef const >]
+    {
+      bprel -96 type 0x12 i   [long]
+    {
+      bprel -100 type 0x12 i   [long]
+      {
+        bprel -112 type 0x12 thing_def_index   [long]
+        bprel -108 type 0x12 slot_index   [long]
+        bprel -104 type 0x12 button_index   [long]
+    {
+      bprel -116 type 0x12 slot_index   [long]
+== CTCInventory::UpdateContextSensitiveItems: no complete record

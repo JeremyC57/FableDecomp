@@ -1,0 +1,17 @@
+addr: 00f361d0
+status: parked
+batches: 2026-10-22_linux_hand293
+attempts: 1
+last_lens: 740v873
+bounds_class: OK
+bounds_detail: row=880 ext=873 corr=00f361d0:873
+retries: 
+git_commits: 62c587cef
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(740v873) -- lane gap: inline __asm floor (retail stores each coordinate and the 0.5f/1.0f constants to ebp-frame slots and floors with fld/fsub/fistp/fild/fadd/cmp/inc inside an __asm block, forcing the ebp frame); the compiled C++ cannot produce that body CPerlinNoise::Get3DNoise(const C3DVector& pos) const -- classic Perlin gradient noise: floor each coordinate to its lattice cell, hash the eight cell corners through the 256-entry permutation table (each step masked to 0..255), dot each corner's gradient with the offset to that corner and blend the eight values trilinearly with the s-
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00f361d0.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

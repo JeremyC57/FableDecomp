@@ -1,0 +1,17 @@
+addr: 00b905a0
+status: parked
+batches: 2026-10-20_linux_hand222
+attempts: 1
+last_lens: 272v280
+bounds_class: OK
+bounds_detail: row=288 ext=280 corr=00b905a0:280
+retries: 
+git_commits: 20c005317
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(272v280) -- lane gap: retail pushes ebx/esi/edi only after the early-out tests (the failure tail `*handle = -1 ; ret 0Ch` has no pops); the lane pushes ebx in the prologue, so every stack offset and the register pick shift (group in ebx v edx->ebx copy), the query is homed in the `pass` slot rather than the `handle` slot, and the push_back tail differs. The allocation helper (index local, zeroing record constructor, `inc [count]`) matches. CEnginePrimitiveManagerOcclusionBase::PrepareOcclusionTest(CEngineInternalPrimitiveBase& primitive, long pass, long* handle) -- when occlusion testin
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-20_linux_hand222/differ/00b905a0.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

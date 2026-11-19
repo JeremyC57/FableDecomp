@@ -1,0 +1,14 @@
+== CPackedUIntArray::CalculateBias (debug length 145)
+  bprel -28 type 0x9d79 this   [const CPackedUIntArray*]
+  bprel +8 type 0x1ff3 src_array   [const void*]
+  bprel +12 type 0x22 src_bits   [unsigned long]
+  bprel +16 type 0x12 src_stride   [long]
+  bprel +20 type 0x22 count   [unsigned long]
+  bprel -20 type 0x22 input_bit_mask   [unsigned long]
+  bprel -16 type 0x22 src_bytes   [unsigned long]
+  bprel -12 type 0x22 src_val   [unsigned long]
+  bprel -8 type 0x22 min_value   [unsigned long]
+  bprel -4 type 0x1593 src_ptr   [const unsigned char*]
+  {
+    bprel -24 type 0x22 c1   [unsigned long]
+== CPackedUIntArray::CalculateBias: no complete record

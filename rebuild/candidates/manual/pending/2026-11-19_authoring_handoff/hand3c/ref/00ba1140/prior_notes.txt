@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/STATUS.tsv: 00ba1140	IMPROVED	a:2345v2344(158 lines)	retail_asm FtoL x2 replacing volatile stand-ins	frame 0x294 v 0x298 + register swaps

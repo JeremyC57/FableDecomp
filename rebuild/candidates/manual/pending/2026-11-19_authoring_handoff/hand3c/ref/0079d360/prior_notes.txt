@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/STATUS.tsv: 0079d360	IMPROVED	2	RETAIL_ASM same-TU CeilToLong helper (271->260 lines, 1037->1047v1115); C3DVector copy ctor prescreen SRC_FAIL (aggregate init); literal->const CCharString& (1047/260->1051/257)	first-draft ctor member init sequence, frame 0x54 vs 0x44, def lookup shape

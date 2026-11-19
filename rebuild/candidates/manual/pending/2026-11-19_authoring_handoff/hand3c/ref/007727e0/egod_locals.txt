@@ -1,0 +1,14 @@
+== CTCShop::GetCurrentBasicPrice (debug length 1794)
+  bprel -224 type 0x2f510 this   [const CTCShop*]
+  bprel +8 type 0x12 def   [long]
+  bprel +12 type 0x12 add   [long]
+  bprel -48 type 0x4afa7 stock_it   [std::_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<long,CShopItem,std::less<long>,std::allocator<std::pair<long const ,CShopItem> >,0> > >]
+  bprel -36 type 0xa88e pdef   [CDefPointer<CThingBaseDef const >]
+  bprel -32 type 0x3c6fa stock_item_def   [CDefPointer<CStockItemDef const >]
+  bprel -28 type 0x2f52d pshop_item   [const CShopItem*]
+  bprel -24 type 0x4b016 ShopDef   [CDefPointer<CShopDef const >]
+  bprel -20 type 0x40 price   [float]
+  bprel -16 type 0xbea0 def_class_base   [CDefPointer<CDefClassBase const >]
+  {
+    bprel -52 type 0x40 reduction   [float]
+== CTCShop::GetCurrentBasicPrice: no complete record

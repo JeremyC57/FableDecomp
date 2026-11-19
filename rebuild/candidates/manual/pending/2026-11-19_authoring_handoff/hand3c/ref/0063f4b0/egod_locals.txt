@@ -1,0 +1,1 @@
+== CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThi: no complete record

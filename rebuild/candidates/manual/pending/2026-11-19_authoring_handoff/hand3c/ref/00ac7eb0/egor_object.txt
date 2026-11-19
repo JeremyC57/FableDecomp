@@ -1,0 +1,1 @@
+Ego_r: .\Release\lib_3d_quadric_optimiser_internals.obj index 28 size 376

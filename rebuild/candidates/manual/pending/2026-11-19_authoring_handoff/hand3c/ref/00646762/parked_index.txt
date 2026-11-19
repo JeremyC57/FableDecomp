@@ -1,0 +1,17 @@
+addr: 00646762
+status: parked
+batches: 2026-10-22_linux_hand298
+attempts: 1
+last_lens: 711v740
+bounds_class: OK
+bounds_detail: row=740 ext=740 corr=00646762:740
+retries: 
+git_commits: 63970883c
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(711v740) -- lane gap: retail rounds the bar end with a hand-written inline-assembly fistp block (0.5/1.0 frame constants, +1 correction), which also forces the ebp frame; this brief C++ attempt rounds with floor and its graphic/text selection order is not tuned NPlayerGui::CStatBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank& bank, const C2DVector& pos, const C2DVector& textOffset, const CRGBColour& colour, unsigned char alpha, bool withText) -- place the left-anchored bar end at the rounded fill position, pick the change graphic (positive/negative
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00646762.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

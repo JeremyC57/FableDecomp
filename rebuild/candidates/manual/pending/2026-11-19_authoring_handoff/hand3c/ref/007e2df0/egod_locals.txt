@@ -1,0 +1,5 @@
+== CTCWobble::OnInitialActivate (debug length 266)
+  bprel -40 type 0x35060 this   [CTCWobble*]
+  bprel -36 type 0x9b55 new_rhset   [CRightHandedSet]
+  bprel -12 type 0x2460 up   [C3DVector]
+== CTCWobble::OnInitialActivate: no complete record

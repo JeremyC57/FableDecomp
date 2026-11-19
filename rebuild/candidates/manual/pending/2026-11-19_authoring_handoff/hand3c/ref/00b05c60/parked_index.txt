@@ -1,0 +1,17 @@
+addr: 00b05c60
+status: parked
+batches: 2026-10-21_linux_hand266
+attempts: 1
+last_lens: 277v429
+bounds_class: OK
+bounds_detail: row=432 ext=429 corr=00b05c60:429
+retries: 
+git_commits: fabe0a81b
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(277v429) -- the two size terms round through the inline-asm `fld ; fistp` helper (store/reload, bare dword fistp next to __ftol2 calls): the documented asm_bake lane gap (GOTCHAS chunks 150/164); one cast-form attempt, structure only NParticleEngine::CPSCSingleSprite::GetComponentCost(SCost& cost, CCostTable& table, long a, long b) -- add the sprite's fill cost (quantised width x height) and the trail cost to the running totals
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand266/differ/00b05c60.cpp
+diagnosis: retail_asm candidate (bare fistp/fnstcw/rdtsc/cpuid): owner-gated `retail_asm` grade, no C++ form | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

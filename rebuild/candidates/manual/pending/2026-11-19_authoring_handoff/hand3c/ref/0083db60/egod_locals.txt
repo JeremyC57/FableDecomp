@@ -1,0 +1,3 @@
+== CThingPhysicalSwitch::GetCurrentGraphic (debug length 53)
+  bprel -4 type 0x4f7e3 this   [const CThingPhysicalSwitch*]
+== CThingPhysicalSwitch::GetCurrentGraphic: no complete record

@@ -1,0 +1,12 @@
+== C3DAnimationSequenceData::GetKeyframeInterpolate (debug length 61)
+  bprel -12 type 0x29cff this   [const C3DAnimationSequenceData*]
+  bprel +8 type 0x298f4 dest   [C3DKeyframe&]
+  bprel +12 type 0x40 t   [float]
+  bprel -8 type 0x12 frame   [long]
+  bprel -4 type 0x40 fraction   [float]
+== C3DAnimationSequenceData::GetKeyframeInterpolate (debug length 36)
+  bprel -4 type 0x29cff this   [const C3DAnimationSequenceData*]
+  bprel +8 type 0x298f4 dest   [C3DKeyframe&]
+  bprel +12 type 0x22 frame   [unsigned long]
+  bprel +16 type 0x40 fraction   [float]
+== C3DAnimationSequenceData::GetKeyframeInterpolate: no complete record

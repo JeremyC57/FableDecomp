@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-30_parked_retry1/STATUS.tsv: 0066cd50	IMPROVED	3	landed FloatToLong (retail_asm) + PDB CRGBColour copy-ctor/union op= model	382v423: fistp block and colour shuffles now match; left: retail keeps two size slots (inner-loop guard) and recomputes the cell index after the __ftol2 calls, ours CSEs both (same as w3 with width/height locals)

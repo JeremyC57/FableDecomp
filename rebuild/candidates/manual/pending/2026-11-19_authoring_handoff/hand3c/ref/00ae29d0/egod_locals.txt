@@ -1,0 +1,18 @@
+== CParticleProgram::SetupSimulation (debug length 45)
+  bprel -4 type 0x65917 this   [const CParticleProgram*]
+  bprel +8 type 0x658b0 dest   [CParticleSimulation&]
+  bprel +12 type 0xbe53 alloc   [CMovableResourceMemoryPool&]
+== CParticleProgram::SetupSimulation (debug length 280)
+  bprel -16 type 0x65917 this   [const CParticleProgram*]
+  bprel +8 type 0x658b0 dest   [CParticleSimulation&]
+  bprel +12 type 0x2b76 anim   [const C3DAnimationBlendState&]
+  bprel +16 type 0x2b78 anim_manager   [C3DAnimationManager&]
+  bprel +20 type 0x4276 bone_morphs   [const C3DVector*]
+  bprel +24 type 0xb186 mesh   [const C3DMesh2&]
+  bprel +28 type 0xbe53 alloc   [CMovableResourceMemoryPool&]
+  bprel +32 type 0x65897 context   [const CParticleContext&]
+  bprel -8 type 0x22 no_bones   [unsigned long]
+  bprel -4 type 0xc107 bone_transforms   [CMatrix4x4*]
+  {
+    bprel -12 type 0x22 c_bone   [unsigned long]
+== CParticleProgram::SetupSimulation: no complete record

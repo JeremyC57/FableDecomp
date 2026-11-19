@@ -1,0 +1,17 @@
+addr: 00989230
+status: parked
+batches: 2026-10-22_linux_hand298
+attempts: 1
+last_lens: 535v636
+bounds_class: OK
+bounds_detail: row=640 ext=636 corr=00989230:636
+retries: 
+git_commits: 63970883c
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(535v636) -- lane gap: retail's SSE branch is a hand-written inline-assembly block (operands routed through frame slots, fixed xmm0..xmm7 schedule); the intrinsic spelling compiles to a different, shorter sequence; the x87 branch and the upload/flag tail are ordinary C++ CShaderRenderManager::UpdateObjectSpaceTextureTransform() -- for every texture-transform constant range of the current vertex-shader layout that is in use, upload TextureTransforms[i] * ObjectMatrix (at most four float4 rows) and move the dirty flags from 0x800 to 0x1000
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00989230.cpp
+diagnosis: SSE block = retail inline asm: retail_asm candidate (owner-gated) | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

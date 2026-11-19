@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/STATUS.tsv: 0078a690	IMPROVED	3	named first ptr + by-value roots (none), BITS_LOCAL presence word (1094v1097->1097v1097, retail shr form), bits-only kept	1097v1097: frame 0x1c v 0x14 key-word sharing; roots start in ebp v zero reg

@@ -1,0 +1,9 @@
+== CShaderRenderManager::UpdateLocalisedSphereMapping (debug length 664)
+  regrel r22-20 type 0x4696d this   [CShaderRenderManager*]
+  {
+    regrel r22-96 type 0x9e8b wvmatrix   [CMatrix4x4]
+    regrel r22-160 type 0x8 hr   [prim8]
+    regrel r22-140 type 0x6fc28 spheremap_matrix   [float[bytes=16][bytes=32]]
+    regrel r22-152 type 0x2460 vvect   [C3DVector]
+    regrel r22-108 type 0x2460 uvect   [C3DVector]
+== CShaderRenderManager::UpdateLocalisedSphereMapping: no complete record

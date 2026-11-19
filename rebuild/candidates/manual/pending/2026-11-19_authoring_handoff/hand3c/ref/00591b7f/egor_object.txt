@@ -1,0 +1,1 @@
+Ego_r: release\tc_inventory.obj index 115 size 769

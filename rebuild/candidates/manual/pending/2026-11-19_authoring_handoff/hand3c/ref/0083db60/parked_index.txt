@@ -1,0 +1,17 @@
+addr: 0083db60
+status: parked
+batches: 2026-10-15_linux_hand175
+attempts: 1
+last_lens: 162v125
+bounds_class: OK
+bounds_detail: row=128 ext=125 corr=0083db60:125
+retries: 
+git_commits: adfee6972
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(162v125) -- the CDefPointer dtor re-reads the escaped local after `dec [eax+4]` (retail keeps the def in esi: `test esi ; dec [esi+4] ; jne`) and the by-value helper adds a copy; known lane gap (CDefPointer release without re-read). Tried: one shared def, per-arm scoped defs (tails merge, 104v125), dtor through a local, by-value GetSwitchDef helper (inline / __forceinline).
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-15_linux_hand175/differ/0083db60.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

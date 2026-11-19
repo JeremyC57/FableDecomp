@@ -1,0 +1,1 @@
+rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/STATUS.tsv: 00b99300	IMPROVED	4	shared Colour SetVSConstants tail after the if/else; named temp orders; named shader local	DIFFER(871v871) 32 lines: entry bool load order, loop-1 temporaries' frame order

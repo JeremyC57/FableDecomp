@@ -1,0 +1,31 @@
+== CFileInstaller::ProcessActiveFileForDecompression (debug length 1527)
+  bprel -172 type 0x58b01 this   [CFileInstaller*]
+  bprel +8 type 0x58b1e active_file   [CFileInstaller::CActiveFile&]
+  {
+    bprel -20 type 0x71524 cs   [CCriticalSectionLock]
+  {
+    bprel -30 type 0x30 finished   [bool]
+    bprel -29 type 0x30 file_finished   [bool]
+    bprel -28 type 0x420 dst   [unsigned char*]
+    bprel -24 type 0x22 dst_size   [unsigned long]
+    {
+      bprel -40 type 0x22 out_size   [unsigned long]
+      bprel -36 type 0x22 decompress_size   [unsigned long]
+    {
+      bprel -48 type 0x71524 cs   [CCriticalSectionLock]
+    {
+      bprel -60 type 0x22 size   [unsigned long]
+      bprel -56 type 0x71524 cs   [CCriticalSectionLock]
+  {
+    bprel -80 type 0x71524 cs   [CCriticalSectionLock]
+    bprel -72 type 0x71519 it   [std::_List_iterator<std::_List_val<CFileInstaller::CActiveRead *,std::allocator<CFileInstaller::CActiveRead *> > >]
+    {
+      bprel -88 type 0x71524 cs   [CCriticalSectionLock]
+    {
+      bprel -92 type 0x58b2b pread   [CFileInstaller::CActiveRead*]
+      {
+        bprel -100 type 0x22 compressed_size   [unsigned long]
+        bprel -96 type 0x1593 compressed_src   [const unsigned char*]
+        {
+          bprel -104 type 0x22 output_size   [unsigned long]
+== CFileInstaller::ProcessActiveFileForDecompression: no complete record

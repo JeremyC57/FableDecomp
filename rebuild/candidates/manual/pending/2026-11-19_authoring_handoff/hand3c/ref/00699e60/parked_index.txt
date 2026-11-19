@@ -1,0 +1,17 @@
+addr: 00699e60
+status: parked
+batches: 2026-10-21_linux_hand264
+attempts: 1
+last_lens: 459v431
+bounds_class: OK
+bounds_detail: row=432 ext=431 corr=00699e60:431
+retries: 
+git_commits: 1ce9870b6
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(459v431) -- lane gap: retail builds the new-mode counted pointer in the dead by-value argument slots (no frame, Info cached in edi); ours opens an 8-byte frame and re-reads the address-taken local
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-21_linux_hand264/differ/00699e60.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

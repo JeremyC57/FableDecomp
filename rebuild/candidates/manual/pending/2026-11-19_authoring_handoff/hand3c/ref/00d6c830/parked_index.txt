@@ -1,0 +1,17 @@
+addr: 00d6c830
+status: parked
+batches: 2026-10-22_linux_hand295
+attempts: 1
+last_lens: 607v607
+bounds_class: OK
+bounds_detail: row=608 ext=607 corr=00d6c830:607
+retries: 
+git_commits: 24c629a28
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(607v607) -- tail-merge lane gap: retail shares one terminating-return block between the inner and outer waits (branch targets/scheduling only, same instructions)
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand295/differ/00d6c830.cpp
+diagnosis: retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

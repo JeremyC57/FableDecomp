@@ -1,0 +1,24 @@
+== CEnginePrimitiveManagerRepeatedStaticMeshes::ProcessLightingSW (debug length 837)
+  bprel -72 type 0x68252 this   [CEnginePrimitiveManagerRepeatedStaticMeshes*]
+  bprel +8 type 0x681fa primitive   [CEngineInternalPrimitiveRepeatedStaticMesh&]
+  bprel +12 type 0x268b normals_x   [const float*]
+  bprel +16 type 0x268b normals_y   [const float*]
+  bprel +20 type 0x268b normals_z   [const float*]
+  bprel +24 type 0x9e75 object_offsets   [const C4DVector*]
+  bprel +28 type 0x12 count   [long]
+  bprel +32 type 0x30 shadowed   [bool]
+  bprel -5 type 0x3d55 use_simd   [const bool]
+  bprel -4 type 0x12 aligned_count   [long]
+  {
+    bprel -12 type 0x12 obj   [long]
+    {
+      bprel -36 type 0x2460 pos   [C3DVector]
+      bprel -24 type 0x2460 normal   [C3DVector]
+  {
+    bprel -40 type 0x12 n   [long]
+  {
+    bprel -44 type 0x12 obj   [long]
+    {
+      bprel -68 type 0x2460 pos   [C3DVector]
+      bprel -56 type 0x2460 normal   [C3DVector]
+== CEnginePrimitiveManagerRepeatedStaticMeshes::ProcessLightingSW: no complete record

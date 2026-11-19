@@ -1,0 +1,4 @@
+rebuild/candidates/manual/pending/2026-10-15_linux_hand84/NOTES.md: - 00c6ac90 CAudioFilterStage::Process DIFFER(39v38): retail loads the gain into ecx (`mov ecx,[esp+10h]`) for 0x00C6AAE0, which reads ecx as a parameter and returns with a plain `ret` while the caller cleans four stack arguments (`add esp,10h`) | tried: `__cdecl` callee | next: lane gap: LTCG custom calling convention
+rebuild/candidates/manual/pending/2026-10-15_linux_hand84/NOTES.md: - 00c6ac90 "CTCCarrying::SetAllCarriedThingsAsBypassFilter" is an audio filter stage (MMX IIR, CAudioFilterStage::Process).
+rebuild/candidates/manual/pending/2026-10-15_linux_hand84/rows.tsv: 00c6ac90	CTCCarrying	SetAllCarriedThingsAsBypassFilter	48
+rebuild/candidates/manual/pending/2026-10-15_linux_hand84/STATUS.tsv: 00c6ac90	DIFFER	39v38	-	audio filter stage (label CTCCarrying wrong); LTCG ecx-parameter callee: lane gap

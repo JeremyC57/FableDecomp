@@ -1,0 +1,17 @@
+addr: 009c3c20
+status: parked
+batches: 2026-10-22_linux_hand287
+attempts: 1
+last_lens: 877v909
+bounds_class: OK
+bounds_detail: row=912 ext=909 corr=009c3c20:909
+retries: 
+git_commits: 02fa5510d
+skipped: 
+rebound: 
+in_findings: 
+residue_class: ltcg/crt/asm-impossible
+residue: DIFFER(877v909) -- first-pass reconstruction: retail keeps the 'finished' flag and the read size in the dead argument slot (known lane gap), rotates the decompress loop with the finished test at the top, and lays the dirty-disc exits out of line CFileInstaller::ProcessActiveFileForDecompression(CActiveFile* file) -- while the zlib stream is active, decompress into the file's destination chunk (queueing it as a pending write when full or finished); otherwise feed the stream the next completed read in source order
+last_path: /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-10-22_linux_hand287/differ/009c3c20.cpp
+diagnosis: dead-argument-slot homing: try the same-TU noinline stand-in for the address-taking callee (de-bake B2 / 24l real body) | retail body needs inline asm / LTCG / CRT asm (bare dword fistp, fnstcw/fldcw, rdtsc, cpuid, SSE blocks, eax-arg LTCG conventions): not reconstructible as C++ in this lane; fistp/rdtsc/fnstcw rows are retail_asm candidates (owner-gated), LTCG/CRT rows are permanently asm
+work_status: classified

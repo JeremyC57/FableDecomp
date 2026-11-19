@@ -1,0 +1,4 @@
+rebuild/candidates/manual/pending/2026-10-20_linux_hand214/NOTES.md: - 00664ba0 CThingCreatureBase::GetCurrentMeshRadius DIFFER(207v184): failure-path null-tested release long form, key/out separate frame words | tried: CDefPointer dtor, Release() member, local pointer release | next: CHeldDef holder (vfunc_73 shape) or lane gap: inline release
+rebuild/candidates/manual/pending/2026-10-20_linux_hand214/LESSONS.md: - Several parked rows (00662ef0, 006648d0, 00664ba0, 007f6df0) are worth one retry with the CHeldDef holder shape that matched 0x00662CC0.
+rebuild/candidates/manual/pending/2026-10-20_linux_hand214/rows.tsv: 00664ba0	CThingCreatureBase	GetCurrentMeshRadius	192
+rebuild/candidates/manual/pending/2026-10-20_linux_hand214/STATUS.tsv: 00664ba0	DIFFER	207v184	-	null-tested inline release long form (lane gap) + key/out slot sharing

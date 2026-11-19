@@ -1,0 +1,13 @@
+== CEngineWeatherRenderer::BuildBoxPositionMatrix (debug length 470)
+  bprel -32 type 0x67650 this   [CEngineWeatherRenderer*]
+  bprel -8 type 0x2425 cam_pos   [const C3DVector&]
+  bprel -4 type 0x23dd half_side_length   [const long]
+  {
+    bprel -12 type 0x12 c_x   [long]
+    {
+      bprel -16 type 0x12 c_y   [long]
+      {
+        bprel -28 type 0x2447 this_mul_x   [const float]
+        bprel -24 type 0x2447 this_mul_y   [const float]
+        bprel -20 type 0x23dd index   [const long]
+== CEngineWeatherRenderer::BuildBoxPositionMatrix: no complete record

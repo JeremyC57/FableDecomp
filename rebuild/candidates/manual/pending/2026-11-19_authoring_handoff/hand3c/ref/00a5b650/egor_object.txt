@@ -1,0 +1,1 @@
+Ego_r: .\Release\lib_cached_file.obj index 12 size 180

@@ -1,0 +1,18 @@
+== CNavQuadTree::ConnectVerticalMapEdge (debug length 1793)
+  bprel -192 type 0x3587b this   [CNavQuadTree*]
+  bprel +8 type 0x40 this_map_x   [float]
+  bprel +12 type 0x40 adjacent_map_x   [float]
+  bprel +16 type 0x18fde nav_manager   [const CNavigatorManager&]
+  bprel -28 type 0xb239 quad_tree_area   [C2DBoxF]
+  {
+    bprel -32 type 0x12 nav_layer   [long]
+    {
+      bprel -36 type 0x40 current_y   [float]
+      {
+        bprel -40 type 0x2c4d7 neighbour_map_node   [const CANavQuadTreeNode*]
+        {
+          bprel -48 type 0x40 neighbour_size   [float]
+          bprel -44 type 0x2c4d7 my_map_node   [const CANavQuadTreeNode*]
+          {
+            bprel -52 type 0x12 neighbour_map_index   [long]
+== CNavQuadTree::ConnectVerticalMapEdge: no complete record
