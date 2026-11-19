@@ -87,7 +87,7 @@ FABLE_FORCEINLINE CThingObject* CreateThingObject(long defIndex, const CThing* o
 class CTCWeapon { public:                                    // interface 0x48
     bool IsAnalogueLoading_005da8f0();                         // 0x005DA8F0
     long GetCategoryIdentifier();                     // 0x005DA920
-    long GetCreatedShotDefGlobalIndex();              // 0x005DA750
+    long GetCreatedShotDefGlobalIndex() const;        // 0x005DA750 Ego_r.pdb + FableWin.pdb ?GetCreatedShotDefGlobalIndex@CTCWeapon@@QBEJXZ (const; NF94 q11271)
 };
 class CTCCarrying { public:                                  // interface 0x46
     void PutThingInCarrySlot(CThing* thing, long slot, bool show);   // 0x006A1F80

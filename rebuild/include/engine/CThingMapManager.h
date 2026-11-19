@@ -8,6 +8,10 @@
 // 0x0071A710 pushes pos then this; MoveInMapwho 0x0071A750 calls RemoveThing then PlaceThing). Layout is not modelled here.
 class CTCMapwho;
 class C3DVector;
+#ifdef FABLE_RETAIL_CTHINGMAPMANAGER_GETALLACTIVETHINGMAPSINAREA
+#include "stlport/fable_containers.h"
+class C2DBoxI;
+#endif
 #ifdef FABLE_RETAIL_CTHINGMAPMANAGER_DEBUGDRAW
 class C2DCoordI;
 #endif
@@ -24,6 +28,12 @@ public:
     // Retail opt-in (chunk H40g, row 0x00507C30; re-based by agent wfE10): the landed NThingMap::CThingMapManager::Init 0x00638540
     // (the world pushed last, then the map count: 0x00509596). Declaration only; needs `class CWorld;` before the header.
     void Init(CWorld* world, long maps);
+#endif
+#ifdef FABLE_RETAIL_CTHINGMAPMANAGER_GETALLACTIVETHINGMAPSINAREA
+    // NF94 opt-in (round 8, q11280 row 0x0049C6F0 CThingSearchTools::GetAllThingMapsInArea): Ego_r.pdb
+    // ?GetAllActiveThingMapsInArea@CThingMapManager@NThingMap@@QBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z
+    // (out of line at 0x006384B0, the landed row; the tail jump at 0x0049C6F3). Declaration only.
+    void GetAllActiveThingMapsInArea(const C2DBoxI& area, std::vector<CThingMap*>& maps) const;   // 0x006384B0
 #endif
     bool IsToBePlacedInMapwho(const CTCMapwho&, const C3DVector&) const; // 0x00637F40
     void PlaceThing(CTCMapwho&, const C3DVector&);                       // 0x00637FC0

@@ -1,7 +1,7 @@
 // NThingMap::CThingMapManager::Init(CWorld* world, long unused) -- resets the mapwho level table, binds the world, clears the game maps and sizes the 128-unit cell grid to the world map's bounds
 // Leaf: ?Init@CThingMapManager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00638540, length 114 bytes (`ret 8`; the second argument is never read).
-// Callees: the static mapwho level-table initialiser @ 0x006379D0 (manifest "InitLayerInfo"; writes the level globals 0x013BA848/0x013BA84C),
+// Callees: the namespace-scope level-table initialiser NThingMap::InitLayerInfo @ 0x006379D0 (__fastcall, both PDBs; writes the level globals 0x013BA848/0x013BA84C),
 // the manager's game-map clear @ 0x006380C0 (walks the 8-byte cells at +8; manifest "CShaderResource::CloseShaderBank" is a
 // propagated label), CWorld vtable slot 12 (+0x30, GetWorldMap), CWorldMap vtable slot 13 (+0x34, the world bounds as const C2DBoxI&),
 // the cell vector's resize(n) @ 0x00639810 (manifest "vector<pair<CCharString,long>>::resize" propagated).
@@ -24,6 +24,7 @@ class CWorld { public:
     virtual CWorldMap* GetWorldMap();           // slot 12 (+0x30)
 };
 namespace NThingMap {
+void __fastcall InitLayerInfo();                // 0x006379D0 (Ego_r / FableWin ?InitLayerInfo@NThingMap@@YIXXZ, a namespace function)
 struct SGameMapCell { void* PMap; long Count; };
 struct CGameMapCellVector {                     // STLport vector<SGameMapCell>
     SGameMapCell* _M_start;
@@ -38,7 +39,6 @@ class CThingMapManager { public:
     unsigned char      _pad14[0x30 - 0x14];
     long               Width;                   // +0x30
     long               Height;                  // +0x34
-    static void InitLayerInfo();                // 0x006379D0
     void ClearGameMaps();                       // 0x006380C0
     void Init(CWorld* world, long unused);
 };

@@ -46,8 +46,9 @@ class CCharString { public:
     const CCharString& operator+=(const CCharString& other); // 0x0099F0A0
     const CCharString& operator+=(const char* text);         // 0x0099F100
     void SaveToFile(CAFile& file) const;               // 0x0099E5F0
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& a, const char* b);          // 0x0099F600
 CCharString __fastcall operator+(const char* a, const CCharString& b);          // 0x0099F690
@@ -91,8 +92,8 @@ void CParticleEmitterManager::DumpInfo(const CWideString& fileName)
     for (SEmitterNode* it = Emitters->_M_next; it != Emitters; it = it->_M_next) {
         CParticleEmitter* emitter = it->_M_data;
         info += "Emitter " + emitter->Name;
-        info += " Pos(" + CCharString::FormatDouble(6, emitter->GetPosition().X) + ", " + CCharString::FormatDouble(6, emitter->GetPosition().Y)
-            + ", " + CCharString::FormatDouble(6, emitter->GetPosition().Z) + ")\r\n";
+        info += " Pos(" + GFFloatToCharString(emitter->GetPosition().X, 6) + ", " + GFFloatToCharString(emitter->GetPosition().Y, 6)
+            + ", " + GFFloatToCharString(emitter->GetPosition().Z, 6) + ")\r\n";
         long count = emitter->GetNoParticles();
         for (long i = 0; i < count; ++i) {
             CParticleSystem* system = emitter->ParticleSystems_start[i].Data;

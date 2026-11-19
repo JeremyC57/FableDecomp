@@ -5,7 +5,7 @@
 //   CEngineInternalPrimitiveAnimatedMesh::GetBoneScalings 0x00B83750, the simulation vector resize 0x00B840A0, operator new 0x00BFEA1A,
 //   CParticleSimulation ctor 0x00AE0600 (manifest "GetDefaultVal<CPhysicalPrimitiveInit>"), CCountedPointer::Reset 0x00B82A50,
 //   CParticleProgram::SetupSimulation 0x00AE29D0 / SavePositions 0x00ADF5B0 / SimulationStep 0x00AE2D20, operator delete 0x00BFE9BC.
-//   Global g_ParticleMemoryPool 0x013D2D70.
+//   Global N3DMeshAllocators::ClothMemoryPool 0x013D2D70.
 // Layout: retail CEngineClothSimulationMeshBase (ParticleSims 12-byte vector +0xc, MeshInfo +0xa8, PrimitiveIndex +0xac, Owner +0xb0) as the landed
 //   CalcAndSetRunState 0x00B81230; C3DMeshInfo as GetMesh 0x00A25E70; C3DMesh2 primitives +0x94 (0xa0-byte entries, particle systems vector +0x20);
 //   the owner blend state +0x7c and animation +0x50 -> +4 -> +0x3c0 manager. Modelled locally.
@@ -102,7 +102,7 @@ public:
     unsigned char BlendState[4];                        // +0x7c (C3DAnimationBlendState)
     C3DVector* GetBoneScalings(C3DMesh2* mesh);         // 0x00B83750
 };
-extern CMovableResourceMemoryPool* g_ParticleMemoryPool;   // 0x013D2D70
+namespace N3DMeshAllocators { extern CMovableResourceMemoryPool* ClothMemoryPool; }   // 0x013D2D70: Ego_d.pdb ?ClothMemoryPool@N3DMeshAllocators@@3PAVCMovableResourceMemoryPool@@A (NF94, q11257; was g_ParticleMemoryPool)
 // Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the elements are the shared CCountedPointer<CParticleSimulation> and their
 //   out-of-line Reset 0x00B82A50 is FableWin.pdb ?Reset@?$CCountedPointer@VCParticleSimulation@@@@QAEXPAVCParticleSimulation@@@Z
 //   (stores DeleteData<CParticleSimulation> 0x00B825D0), was the stand-in ?Reset@CParticleSimPointer@@. Declared only
@@ -171,7 +171,7 @@ void CEngineClothSimulationAnimatedMesh::RunSimulation()
             CParticleSimulation* sim = ParticleSims[i].Data;
             CParticleProgram* program = primitive.ParticleSystemsStart[i].Object->Program;
             if (!program->SetupSimulation(sim, blend, manager,
-                    boneScalings, mesh.Object, g_ParticleMemoryPool, GetContext())) {
+                    boneScalings, mesh.Object, N3DMeshAllocators::ClothMemoryPool, GetContext())) {
                 ClearParticleSims();
                 break;
             }

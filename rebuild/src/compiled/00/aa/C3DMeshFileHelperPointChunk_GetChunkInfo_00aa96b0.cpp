@@ -19,8 +19,9 @@ class CCharString { public:
     CCharString();
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
-    static CCharString __fastcall FormatDouble(long digits, double value); // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right); // 0x0099F570
 CCharString __fastcall operator+(const CCharString& left, const char* right);        // 0x0099F600
 CCharString __fastcall GFIntToCharString(long value);                                 // 0x0099F830
@@ -50,9 +51,9 @@ class C3DMeshFileHelperPointChunk : public C3DMeshFileChunk { public:
 CCharString C3DMeshFileHelperPointChunk::GetChunkInfo() const
 {
     return CCharString("Name: ") + Name + ", Position: (" +
-        CCharString::FormatDouble(6, Position.X) + ", " +
-        CCharString::FormatDouble(6, Position.Y) + ", " +
-        CCharString::FormatDouble(6, Position.Z) + "), Sub-mesh: " +
+        GFFloatToCharString(Position.X, 6) + ", " +
+        GFFloatToCharString(Position.Y, 6) + ", " +
+        GFFloatToCharString(Position.Z, 6) + "), Sub-mesh: " +
         GFIntToCharString(SubMeshIndex) + ", Bone: " +
         GFIntToCharString(BoneIndex);
 }

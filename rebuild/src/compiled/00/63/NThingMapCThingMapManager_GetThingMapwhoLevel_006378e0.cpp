@@ -20,7 +20,7 @@ struct SMapwhoLevel {                           // 16 bytes
     long _pad[3];
 };
 namespace NThingMap { extern long MaxLayers; }   // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
-extern long g_MaxMapwhoCellSize;                // 0x013BA84C
+namespace NThingMap { extern long MaxLayerCellSize; }   // 0x013BA84C (FableWin.pdb public ?MaxLayerCellSize@NThingMap@@3JA, written by InitLayerInfo 0x006379D0)
 extern SMapwhoLevel g_MapwhoLevels[];           // 0x0137DAD8
 namespace NThingMap {
 class CThingMapManager {
@@ -30,7 +30,7 @@ protected:
 unsigned char CThingMapManager::GetThingMapwhoLevel(float radius) const
 {
     long size = GFFloatToLongFloor(radius + radius);
-    if (size >= g_MaxMapwhoCellSize)
+    if (size >= MaxLayerCellSize)
         return (unsigned char)(MaxLayers - 1);
     for (long level = 0; level < MaxLayers; ++level)
         if (size < g_MapwhoLevels[level].CellSize)

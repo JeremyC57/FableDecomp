@@ -33,7 +33,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
 };
 
 class CMovableResourceMemoryPool;
-extern CMovableResourceMemoryPool* g_ParticleMemoryPool;   // 0x013D2D70
+namespace N3DMeshAllocators { extern CMovableResourceMemoryPool* ClothMemoryPool; }   // 0x013D2D70: Ego_d.pdb ?ClothMemoryPool@N3DMeshAllocators@@3PAVCMovableResourceMemoryPool@@A (NF94, q11257; was g_ParticleMemoryPool)
 
 class C3DVertexBlend2 { public: unsigned long VertexIndex; float BlendValue; };
 class C3DMeshFileGroupChunk;
@@ -80,7 +80,7 @@ C3DClothPrimitive::C3DClothPrimitive(const C3DMeshFileClothChunk* chunk)
     ParticleProgram.Reset(new CParticleProgram);
     const void* data = chunk->ProgramData.GetData();
     CMemoryDataInputStream stream(data, chunk->ProgramData.size());
-    ParticleProgram->ReadFromFile(&stream, g_ParticleMemoryPool);
+    ParticleProgram->ReadFromFile(&stream, N3DMeshAllocators::ClothMemoryPool);
     MaterialIndex = chunk->MaterialIndex;
     unsigned long groupCount = chunk->CountSubChunksOfType("VGRP");
     ParticleProgram->ReserveGroups(groupCount);

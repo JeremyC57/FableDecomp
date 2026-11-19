@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FD830, length 116 bytes.
 // Callees: CThing::GetPos @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is a propagated label),
-// GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector&, const C3DVector&, const C3DVector&) @ 0x008F5B50
+// NPhysicsHelpers::GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector&, const C3DVector&, const C3DVector&) @ 0x008F5B50
 // (__fastcall returning C3DVector through a hidden pointer in ecx, so C3DVector is non-POD here).
 // Layout: PDB CThingFilter_IsWithinArea { C3DVector* StartPos (+0); C3DVector* EndPos (+4); float Radius (+8); bool IncludeThingRad (+0xc); };
 // retail CThing PhysicsTC +0x60, the physics component's radius float at +0x34 (local model).
@@ -15,7 +15,9 @@ class CTCPhysicsBase { public:
     float         m_radius;                     // +0x34
 };
 #include "engine/CThing.h"
-C3DVector __fastcall GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector& start, const C3DVector& end, const C3DVector& point);   // 0x008F5B50
+namespace NPhysicsHelpers {
+C3DVector __fastcall GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector& start, const C3DVector& end, const C3DVector& point);   // 0x008F5B50 (Ego_r / FableWin namespace function)
+}
 class CThingFilter_IsWithinArea { public:
     C3DVector* StartPos;                        // +0x00
     C3DVector* EndPos;                          // +0x04
@@ -29,7 +31,7 @@ bool CThingFilter_IsWithinArea::operator()(CThing* thing) const
     float thingRadius = 0.0f;
     if (IncludeThingRad)
         thingRadius = thing->GetPhysicsTC()->m_radius;
-    C3DVector out = GetLineOutFromClosestPointOnFiniteLineToPoint(*StartPos, *EndPos, thing->GetPos());
+    C3DVector out = NPhysicsHelpers::GetLineOutFromClosestPointOnFiniteLineToPoint(*StartPos, *EndPos, thing->GetPos());
     float radius = thingRadius + Radius;
     return out.X * out.X + out.Y * out.Y < radius * radius;
 }

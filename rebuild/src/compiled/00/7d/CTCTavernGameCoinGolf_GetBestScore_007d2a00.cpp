@@ -30,8 +30,9 @@ class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
     CWideString ToWideString() const;           // 0x0099E480
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 class CDefString { public:                             // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_tablePos;
     CDefString();
@@ -92,11 +93,11 @@ CWideString CTCTavernGameCoinGolf::GetBestScore()
     CTCHeroStats* stats = 0;
     GetHeroStats(&stats);
     if (ParentThing->GetDefName() == "OBJECT_TAVERN_TABLE_COIN_GOLF" && stats->BestScoreCoinGolfOakVale != 0.0f)
-        text += CCharString::FormatDouble(0, stats->BestScoreCoinGolfOakVale).ToWideString();
+        text += GFFloatToCharString(stats->BestScoreCoinGolfOakVale, 0).ToWideString();
     else {
         CThing* parent = ParentThing;
         if (parent->GetDefName() == "OBJECT_TAVERN_TABLE_COIN_GOLF_SNOWSPIRE" && stats->BestScoreCoinGolfSnowSpire != 0.0f)
-            text += CCharString::FormatDouble(0, stats->BestScoreCoinGolfSnowSpire).ToWideString();
+            text += GFFloatToCharString(stats->BestScoreCoinGolfSnowSpire, 0).ToWideString();
     }
     return text;
 }

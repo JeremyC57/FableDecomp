@@ -14,8 +14,9 @@ class CCharString
     void* PStringData;
     CCharString(const char* text, long length = -1);                         // 0x0099EBF0
     ~CCharString();                                                          // 0x0099EAE0
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
@@ -28,5 +29,5 @@ class C2DVector
 
 CCharString C2DVector::ToString() const
 {
-    return CCharString("(") + CCharString::FormatDouble(2, X) + ", " + CCharString::FormatDouble(2, Y) + ")";
+    return CCharString("(") + GFFloatToCharString(X, 2) + ", " + GFFloatToCharString(Y, 2) + ")";
 }

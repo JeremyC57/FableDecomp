@@ -1,43 +1,51 @@
-// CThingSearchTools::GetMapwhoArea(CThingMap*, long, const C2DBoxI&) -- converts a world box into the mapwho cells of `level` (min edges shifted down, max edges rounded up)
-// Retry 10b (B-12 sweep): the level entry pointer is bound to a const REFERENCE (`const SMapwhoLevel* const& info = &g_mapwhoLevels[level];`, a reference to a pointer temporary): retail materialises the entry address (`shl eax,4 ; add eax,137DAD8h ; mov ecx,[eax+4]`, ebx pushed between); a plain pointer local folds it into `mov ecx,[eax+137DADCh]`.
-// Retail: Fable.exe 0x00436500, 66 bytes (`ret 10h`: hidden result pointer + three arguments; `this` and
-// the CThingMap argument are unused).
-// Data: the mapwho level table at 0x0137DAD8 (16-byte entries, the scale shift at +4).
-// The generated CThingSearchTools.h is included for `this`; C2DBoxI (four longs) and the level entry are
-// local models (the PDB CMapwhoLevelInfo is 20 bytes, the retail table stride is 16).
-// Shape: the box built field by field in a named local (fields computed in x0,y0,x1,y1 order) and returned
-// through a memberwise copy constructor; the shift loaded into ecx once (`sar r,cl` four times), the max
-// edges as `((v - 1) >> shift) + 1`.
+// CThingSearchTools::GetMapwhoArea(const NThingMap::CThingMap& map, long layer, const C2DBoxI& area) const -- converts a world box into the mapwho cells of `layer` (min edges shifted down, max edges rounded up)
+// Leaf: ?GetMapwhoArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@JABV2@@Z
+// Retail: Fable.exe 0x00436500, 66 bytes (`ret 10h`: hidden result pointer + three arguments; `this` and the CThingMap argument are unused):
+//   the out-of-line copy of the protected inline the rough-area searches expand.
+// Data: NThingMap::LayerInfo 0x0137DAD8 (16-byte CLayerInfo entries, ScaleShift at +4).
+// Name fix (agentNF94, q11281 / q11282): Ego_r.pdb 0x00449BD0 + FableWin.pdb 0x01AE35F0
+//   ?GetMapwhoArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@JABV2@@Z (protected const inline; engine/CThingSearchTools.h
+//   ROUGHAREA_EGOD carries the body, whose note records that the same text reproduces this copy). The old row defined
+//   CThingSearchToolsMethods::GetMapwhoArea(CThingMap*, long, const C2DBoxI&) on local C2DBoxI / SMapwhoLevel models and read the table as
+//   g_mapwhoLevels (Ego_d.pdb: ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, NThingMap_CThingMap.h). This row now only takes the header body's
+//   address from an anonymous derived class (protected member), so VC7.1 emits it here as a pick-any COMDAT (nf86 / nf88 scaffolding).
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_EGOD
+#define FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE
+#define FABLE_RETAIL_CTCMAPWHO
+#define FABLE_RETAIL_CTCMAPWHO_SEARCHID
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATTYPEFLAGS
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C2DBOXI_RADIUS_INITIALIZERS
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_C2DBOXI_COPY
+#define FABLE_RETAIL_C2DBOXI_GETWIDTH
+#define FABLE_RETAIL_C2DBOXI_GETHEIGHT
+#include "engine/C2DExtentsI.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CTCPhysicsBase.h"
+class CTCMapwho;
+#include "engine/CTCMapwho.h"
+#include "engine/NThingMap_CThingMap.h"
 #include "engine/CThingSearchTools.h"
-
-struct CThingMap;
-
-class C2DBoxI { public:
-    long x0, y0, x1, y1;
-    C2DBoxI() {}
-    C2DBoxI(const C2DBoxI& o) : x0(o.x0), y0(o.y0), x1(o.x1), y1(o.y1) {}
+#include "engine/C2DBoxI.h"
+namespace {
+// Fidelity: scaffolding, not retail -- takes the address of the header's protected inline GetMapwhoArea (from a never-instantiated
+// derived class) so VC7.1 emits its COMDAT here.
+class CEmitGetMapwhoArea : public CThingSearchTools {
+public:
+    static C2DBoxI (CThingSearchTools::*Emit())(const NThingMap::CThingMap&, long, const C2DBoxI&) const;
 };
-
-struct SMapwhoLevel {
-    long m_size;                                         // +0x00
-    long m_scaleShift;                                   // +0x04
-    long m_extents[2];                                   // +0x08
-};
-
-extern SMapwhoLevel g_mapwhoLevels[];                    // 0x0137DAD8
-
-struct CThingSearchToolsMethods : CThingSearchTools {
-    C2DBoxI GetMapwhoArea(CThingMap* map, long level, const C2DBoxI& area);
-};
-
-C2DBoxI CThingSearchToolsMethods::GetMapwhoArea(CThingMap* map, long level, const C2DBoxI& area)
+C2DBoxI (CThingSearchTools::*CEmitGetMapwhoArea::Emit())(const NThingMap::CThingMap&, long, const C2DBoxI&) const
 {
-    const SMapwhoLevel* const& info = &g_mapwhoLevels[level];
-    long shift = info->m_scaleShift;
-    C2DBoxI result;
-    result.x0 = area.x0 >> shift;
-    result.y0 = area.y0 >> shift;
-    result.x1 = ((area.x1 - 1) >> shift) + 1;
-    result.y1 = ((area.y1 - 1) >> shift) + 1;
-    return result;
+    return &CEmitGetMapwhoArea::GetMapwhoArea;
+}
 }

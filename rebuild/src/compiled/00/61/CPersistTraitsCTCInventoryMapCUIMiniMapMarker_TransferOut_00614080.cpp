@@ -6,7 +6,7 @@
 //   C2DVector Position +8, long DefNameLength +0x10, long GraphicIndex +0x14, float Angle +0x18 }.
 // Callees: CCharString() @ 0x0099E4B0, CCharString(const CCharString&) @ 0x0099EC30, ~CCharString @ 0x0099EAE0,
 //   operator+=(const char*) @ 0x0099F100 ("(" 0x0122E028, "," 0x0122E024, ")" 0x0122E020), operator+=(const CCharString&)
-//   @ 0x0099F0A0, CCharString::FormatDouble @ 0x009A08B0 (`__fastcall`, hidden result in ecx, six digits in edx, the double
+//   @ 0x0099F0A0, GFFloatToCharString @ 0x009A08B0 (`__fastcall`, hidden result in ecx, six digits in edx, the double
 //   on the stack), TransferOutLong @ 0x009E2560 (`__fastcall` context, out, &copy), CPersistTraits<CCharString>::TransferOut
 //   @ 0x0040E630 (thiscall on the string traits, whose CCharString DefaultVal is built first and destroyed last; PDB spelling
 //   ?TransferOut@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABV3@@Z, hand621 NAME_FIXES).
@@ -24,8 +24,9 @@ public:
     ~CCharString();                                    // 0x0099EAE0
     const CCharString& operator+=(const char* text);         // 0x0099F100
     const CCharString& operator+=(const CCharString& other); // 0x0099F0A0
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 
 class C2DVector {
@@ -58,7 +59,7 @@ template <> struct CPersistTraits<long> {
 template <> struct CPersistTraits<float> {
     FABLE_FORCEINLINE void TransferOut(CPersistContext* context, CCharString* out, const float* value) const
     {
-        *out += CCharString::FormatDouble(6, *value);
+        *out += GFFloatToCharString(*value, 6);
     }
 };
 template <> struct CPersistTraits<CCharString> {

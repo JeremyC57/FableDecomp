@@ -13,8 +13,9 @@ class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);                      // 0x0099EC30
     CCharString(const char* text, long length);                 // 0x0099EBF0
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 CCharString __fastcall GFIntToCharString(long value);            // 0x0099F830
 
 class CParsedItem { public:
@@ -33,7 +34,7 @@ CCharString CParsedItem::ConvertToString() const
     case PIT_INTEGER:
         return GFIntToCharString(Integer);
     case PIT_FLOAT:
-        return CCharString::FormatDouble(6, Float);
+        return GFFloatToCharString(Float, 6);
     case PIT_STRING:
     case PIT_QUOTED_STRING:
         return String;

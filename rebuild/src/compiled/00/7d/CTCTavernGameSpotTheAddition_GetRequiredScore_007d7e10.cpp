@@ -17,8 +17,9 @@ class CCharString { public:
     void* m_data;
     ~CCharString();                                      // 0x0099EAE0
     CWideString ToWideString() const;                    // 0x0099E480
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  // 0x0099BE70
 struct CRefCounted {
     long m_count;
@@ -76,5 +77,5 @@ CWideString CTCTavernGameSpotTheAddition::GetRequiredScore()
 {
     CDefPointer<const CTavernGameDef> def;
     GetDef(&def);
-    return GetText(def->RequiredScore) + CCharString::FormatDouble(1, TargetTime).ToWideString();
+    return GetText(def->RequiredScore) + GFFloatToCharString(TargetTime, 1).ToWideString();
 }

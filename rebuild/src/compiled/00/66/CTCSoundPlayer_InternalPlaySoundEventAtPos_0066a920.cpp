@@ -1,8 +1,9 @@
 // CTCSoundPlayer::InternalPlaySoundEventAtPos(CASoundBank& bank, const C3DVector& pos, const CCharString& name, bool loop, bool attached) -- play a named sound event from a new unattached emitter at a position (the invalid handle when sound is off, no emitter, or the bank lacks the event)
-// Leaf: ?InternalPlaySoundEventAtPos@CTCSoundPlayer
+// Leaf: ?InternalPlaySoundEventAtPos@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVC3DVector@@ABVCCharString@@_N3@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066A920, 169 bytes (+ int3 padding to 176), thiscall `ret 14h` (`this` unused).
-//   Name: Ego_r.pdb `?InternalPlaySoundEventAtPos@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVC3DVector@@ABVCCharString@@_N3@Z`.
+//   Name: Ego_r.pdb and FableWin.pdb `?InternalPlaySoundEventAtPos@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVC3DVector@@ABVCCharString@@_N3@Z`
+//   (private; engine/CTCSoundPlayer.h INTERNALPLAYSOUNDEVENTATPOS declares it so).
 //   Callers: 0x0066AA62 / 0x0066AB4B / 0x0066ABCD / 0x0066AC28 (CTCSoundPlayer neighbours) and 0x0066BE67.
 // Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 // Label correction: the catalog "GetAIStateGroupTypeConditional" is a propagated name.
@@ -85,7 +86,9 @@ class CTCSoundPlayer : public CTCBase {
 public:
     unsigned char _pad08[0x24 - 0x08];          // PAttachedEmitter +0x0c, VoiceName +0x14, ExtraTag +0x18, ...
     CThingSoundEmitter* CreatePAttachedEmitter(bool flag);   // 0x0066AEF0
+private:
     unsigned long InternalPlaySoundEventAtPos(CASoundBank& bank, const C3DVector& pos, const CCharString& name, bool loop, bool attached);
+public:
     unsigned long PlayUnattachedSample(long sample, const CSoundInit& init, bool loop, bool attached);
     unsigned long InternalPlayAttachedSample(CASoundBank& bank, long sample, const CSoundInit& init, bool flag, bool loop, bool attached);
     unsigned long InternalPlaySoundEvent(CASoundBank& bank, const CCharString& name, bool flag, bool loop, bool attached, long overrideID);

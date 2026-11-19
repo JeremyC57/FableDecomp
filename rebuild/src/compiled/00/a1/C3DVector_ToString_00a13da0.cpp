@@ -5,8 +5,10 @@
 #if !defined(_MSC_VER)
 #define __fastcall
 #endif
-class CCharString { public: void* PStringData; CCharString(const char* text, long length=-1); ~CCharString(); static CCharString __fastcall FormatDouble(long digits, double value); };
+class CCharString { public: void* PStringData; CCharString(const char* text, long length=-1); ~CCharString(); };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 CCharString __fastcall operator+(const CCharString& left,const CCharString& right);
 CCharString __fastcall operator+(const CCharString& left,const char* right);
 class C3DVector { public: float X,Y,Z; CCharString ToString() const; };
-CCharString C3DVector::ToString() const { return CCharString("(") + CCharString::FormatDouble(2,X) + ", " + CCharString::FormatDouble(2,Y) + ", " + CCharString::FormatDouble(2,Z) + ")"; }
+CCharString C3DVector::ToString() const { return CCharString("(") + GFFloatToCharString(X, 2) + ", " + GFFloatToCharString(Y, 2) + ", " + GFFloatToCharString(Z, 2) + ")"; }

@@ -6,7 +6,8 @@
 // Global: the static bool CFileInstaller::DirtyDisc @ 0x013CA814 (tested `mov al,[g] ; test al,al ; jne`): the only
 // writer is the static CFileInstaller::SetDirtyDiscError(bool) 0x009C3530 (Ego_r.pdb ?SetDirtyDiscError@CFileInstaller@@
 // KIX_N@Z; `mov [0x013CA814],bl` under the installer lock), and the read/write/decompress paths test it (FINDINGS chunk
-// 411). The member name is descriptive (the PDB name sets carry no static data names).
+// 411). Name and access: Ego_d.pdb types.txt CFileInstaller LF_STMEMBER DirtyDisc (protected) and Ego_d datanames
+// ?DirtyDisc@CFileInstaller@@1_NA; engine/CFileInstaller.h declares the same static.
 // Shape: twin of the landed CFileInstaller::Unpause 0x009C3250: the count is volatile (load/inc/store, then re-read for the
 // unsigned `cmp 1 ; ja`), the waiting flag byte read after the store; the lock released explicitly before the blocking wait
 // (as CBankFileAsyncData::WaitUntilFinished 0x009D5B60) and destroyed again on the way out.
@@ -35,8 +36,9 @@ class CFileInstaller { public:
     void*                  Event;         // +0x84
     unsigned char          _pad88[4];
     void*                  PauseStartEvent;        // +0x8c
-    static bool            DirtyDisc;         // 0x013CA814 (Ego_r.pdb / FableWin.pdb public ?DirtyDisc@CFileInstaller@@1_NA)
     void Pause();
+protected:
+    static bool            DirtyDisc;         // 0x013CA814 (Ego_d.pdb LF_STMEMBER protected; datanames ?DirtyDisc@CFileInstaller@@1_NA)
 };
 
 void CFileInstaller::Pause()

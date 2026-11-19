@@ -18,8 +18,9 @@ class CCharString { public:
     struct SBlock* m_pBlock;
     ~CCharString();                                              // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
-    static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString __fastcall GFFloatToCharString(double n, long precision);
 
 struct CPersistContext_TransferableComponent {
     virtual void TransferOut(CPersistContext* context, CCharString* out);
@@ -29,5 +30,5 @@ struct CPersistContext_TransferableComponent {
 void CPersistContext_TransferableComponent::TransferOut(CPersistContext* context, CCharString* out)
 {
     float* value = m_pValue;               // named pointer local: retail loads it into ecx (`mov ecx,[ecx+4]`)
-    *out += CCharString::FormatDouble(6, *value);
+    *out += GFFloatToCharString(*value, 6);
 }

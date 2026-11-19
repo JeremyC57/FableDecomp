@@ -1301,7 +1301,7 @@ against CODAApi.lib, or stay compiled C++?
 ## 2026-11-19 — two landed rows grade DIFFER at HEAD with older headers too (found by the nf93a includer recheck)
 - 0x00589A30 CTCInventory::OpenPCMapMenu: DIFFER(549v549), test PASS. The same with the pre-round-8 include tree and with the 11-18 tree
   (c1d39cbd18), so neither today's header merges nor round 8 caused it. PARKED_INDEX had it as a 549v549 register tie (hand302).
-- 0x0059C747 CTCInventoryTrade::RemoveItemFromInventory: DIFFER(35v29), test PASS, the same with both older trees. It is NF94's round-8 row
+- 0x0059C747 CTCInventoryTrade::RemoveItemFromInventory: DIFFER(35v29), test PASS, the same with both older trees. FIXED by the nf94 landing (moved onto the shared headers). It is NF94's round-8 row
   (queue q11226), so NF94's hand-back will show its baseline grade.
 - Next: bisect each with `git archive <commit> rebuild/include` + FABLE_HDR_OVERLAY back to the landing that broke it.
 - (same day, nf95a recheck) 0x0072A680 CTCActionUseBuyOrSteal::~CTCActionUseBuyOrSteal: DIFFER(75v54), test PASS, the same with the pre-nf95a and the

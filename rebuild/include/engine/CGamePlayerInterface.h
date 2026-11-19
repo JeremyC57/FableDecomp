@@ -106,6 +106,13 @@ FABLE_STATIC_ASSERT(sizeof(CGamePlayerInterface)==2200);
 class CDefPointeeBase;
 class CMainGameComponent;
 class CPlayerManager;
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSITEMBUTTONS_TYPED
+// NF94 opt-in (round 8, q11291 row 0x00445950 GetNumberOfQuickAccessItemButtons): QuickAccessItemButtons carries its Ego_r.pdb type
+// std::vector<CCountedPointer<const CInputTypeBase> > (+0x7c4, the 12-byte STLport vector; layout unchanged).
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+class CInputTypeBase;
+#endif
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GETACTIONNAME
 class CActionInputControl; class CWideString;
 #endif
@@ -163,6 +170,12 @@ public:
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSBUTTONS
     // Retail opt-in (Codex pass 24): both PDBs, native call 0x006575FE.
     long GetNumberOfQuickAccessItemButtons() const;
+#endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_CONTEXTSENSITIVEBUTTONS
+    // NF94 opt-in (round 8, row 0x00590D32 CTCInventory::CTCInventory): Ego_r.pdb 0x004431A0 + FableWin.pdb 0x01A9BAB0
+    // ?GetNumberOfContextSensitiveItemButtons@CGamePlayerInterface@@QBEJXZ, the third sibling (out of line at 0x00445960, after
+    // GetNumberOfQuickAccessItemButtons 0x00445950). Declaration only.
+    long GetNumberOfContextSensitiveItemButtons() const;                // 0x00445960
 #endif
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSQUEUE
     // Opt-in (FAM13, row 0x005EE99D CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue): Ego_r.pdb / FableWin.pdb
@@ -642,7 +655,11 @@ public:
     long                ControlsDefIndex;                    // +0x7a4
     unsigned char       Controls[0x10];                      // +0x7a8 CVectorMap<EGameAction,CCountedPointer<CInputTypeBase_const_>,CKeyPairCompareLess<EGameAction,CCountedPointer<CInputTypeBase_const_>_>_>
     unsigned char       AssignableSpecialMoveButtons[0xc];   // +0x7b8 vector<CCountedPointer<CInputTypeBase_const_>,std::allocator<CCountedPointer<CInputTypeBase_const_>_>_>
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSITEMBUTTONS_TYPED
+    std::vector<CCountedPointer<const CInputTypeBase> > QuickAccessItemButtons;   // +0x7c4 (NF94 opt-in)
+#else
     unsigned char       QuickAccessItemButtons[0xc];         // +0x7c4 vector<CCountedPointer<CInputTypeBase_const_>,std::allocator<CCountedPointer<CInputTypeBase_const_>_>_>
+#endif
     unsigned char       ContextSensitiveItemButtons[0xc];    // +0x7d0 vector<CCountedPointer<CInputTypeBase_const_>,std::allocator<CCountedPointer<CInputTypeBase_const_>_>_>
     long                CurrentQueuedProcessedInputNo;       // +0x7dc
     unsigned char       CurrentProcessedInput[0xb0];         // +0x7e0 CProcessedInput

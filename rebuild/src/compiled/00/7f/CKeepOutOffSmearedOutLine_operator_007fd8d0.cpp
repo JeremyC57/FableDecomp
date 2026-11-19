@@ -1,6 +1,6 @@
 // CKeepOutOffSmearedOutLine::operator()(CThing* thing) const -- push a thing out of the smeared-out line: the horizontal vector from the closest point on the finite line to the thing, scaled by (radius - distance), becomes a physics impulse, and the thing's TC 169 / TC 168 components get their flag set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FD8D0, length 321 bytes (`ret 4`).
-// Callees: GetLineOutFromClosestPointOnFiniteLineToPoint @ 0x008F5B50 (__fastcall: hidden C3DVector result in ecx, the line
+// Callees: NPhysicsHelpers::GetLineOutFromClosestPointOnFiniteLineToPoint @ 0x008F5B50 (__fastcall: hidden C3DVector result in ecx, the line
 //          start in edx, the line end and the point on the stack), CInterfaceMap::LowerBound @ 0x0040F020 (x2), the physics
 //          object's virtual slot 81 (+0x144, const C3DVector&); constants 1e-4f @ 0x0129BA3C, 1.0f @ 0x0122DED8, 0.0f @ 0x0122DEDC.
 // Naming: the only caller is std::_For_each<CThingCreatureBase**, CKeepOutOffSmearedOutLine> 0x007FDA80 (landed; its label in
@@ -22,7 +22,9 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
 #include "engine/C3DVector.h"
-C3DVector __fastcall GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector& start, const C3DVector& end, const C3DVector& point);   // 0x008F5B50
+namespace NPhysicsHelpers {
+C3DVector __fastcall GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector& start, const C3DVector& end, const C3DVector& point);   // 0x008F5B50 (Ego_r / FableWin namespace function)
+}
 
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -60,7 +62,7 @@ void CKeepOutOffSmearedOutLine::operator()(CThing* thing) const
 {
     CTCPhysicsBase* physics = thing->GetPhysicsTC();
     C3DVector position = physics->Pos;
-    C3DVector out = GetLineOutFromClosestPointOnFiniteLineToPoint(*StartPos, *EndPos, position);
+    C3DVector out = NPhysicsHelpers::GetLineOutFromClosestPointOnFiniteLineToPoint(*StartPos, *EndPos, position);
     out.Z = 0.0f;
     float lengthSquared = out.X * out.X + out.Y * out.Y;
     if (lengthSquared > 0.0001f) {

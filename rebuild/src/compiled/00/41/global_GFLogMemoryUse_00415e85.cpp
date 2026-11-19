@@ -33,8 +33,9 @@ class CCharString {
 public:
     void* PStringData;
     ~CCharString();                                                     // 0x0099EAE0
-    static CCharString FormatDouble(long digits, double value);         // 0x009A08B0
 };
+// 0x009A08B0: Ego_r.pdb + FableWin.pdb ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (NF94, q11248; was the stand-in static CCharString::FormatDouble)
+CCharString GFFloatToCharString(double n, long precision);
 CCharString operator+(const char* lhs, const CCharString& rhs);          // 0x0099F690
 CCharString operator+(const CCharString& lhs, const char* rhs);          // 0x0099F600
 CCharString operator+(const CCharString& lhs, const CCharString& rhs);   // 0x0099F570
@@ -60,7 +61,7 @@ void GFLogMemoryUse()
         _MEMORYSTATUS status;
         GlobalMemoryStatus(&status);
         float usedMB = (float)(status.dwTotalPhys - status.dwAvailPhys) / (1024.0f * 1024.0f);
-        CCharString text = "Mem use log at " + CCharString::FormatDouble(6, now) + " is " + CCharString::FormatDouble(6, usedMB);
+        CCharString text = "Mem use log at " + GFFloatToCharString(now, 6) + " is " + GFFloatToCharString(usedMB, 6);
         char fileName[256];
         sprintf(fileName, "Memlog%4d.log", g_MemLogIndex);
         g_pGlobalAllocator->DumpLog(fileName);

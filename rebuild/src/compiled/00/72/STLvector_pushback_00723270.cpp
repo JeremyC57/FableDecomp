@@ -55,7 +55,9 @@ public:
     _Tp* _M_start;                                          // +0x00
     _Tp* _M_finish;                                         // +0x04
     _Tp* _M_end_of_storage;                                 // +0x08
-    void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend);   // 0x00723110
+protected:
+    void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend);   // 0x00723110 (protected, STLport _vector.h)
+public:
     void push_back(const _Tp& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage) {

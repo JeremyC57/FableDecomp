@@ -169,7 +169,7 @@ template <class TIterator, class TFunction>
 TFunction __fastcall _For_each(TIterator first, TIterator last, TFunction function);   // 0x00727500 (this instantiation)
 }
 
-extern bool g_AdditionalImpulseEnabled;             // 0x0137574A
+namespace NGlobalConsole { extern bool AllowCreatureActionRepulsion; }   // 0x0137574A (Ego_d / FableWin data ?AllowCreatureActionRepulsion@NGlobalConsole@@3_NA; landed 0x00727220 binds it so)
 
 #pragma pack(push, 1)
 class CTCPhysicsNavigator : public CTCPhysicsBase {
@@ -204,7 +204,7 @@ __declspec(noinline) bool CThingSearchTools::GetAllThingsInRoughArea(const C2DBo
 void CTCPhysicsNavigator::UpdateAdditionalImpulse()
 {
     AdditionalImpulse.X = AdditionalImpulse.Y = AdditionalImpulse.Z = 0.0f;
-    if (g_AdditionalImpulseEnabled) {
+    if (NGlobalConsole::AllowCreatureActionRepulsion) {
         CThingCreatureBase* creature = (CThingCreatureBase*)ParentThing;
         if (creature->IsPerformingAnyAction() && creature->PhysicsTC->IsPushableByHero()
             && NCreatureMode::IsPhysicsPushableBySelfAvoidance(*(CThing*)creature)) {

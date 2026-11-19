@@ -7,7 +7,7 @@
 //   descriptive.
 // Layout: Ego_r.pdb CApplyAdditionalExplosiveImpulseIfInsideSmearedLine (0x1C: StartPosition, EndPosition +0x0C,
 //   Radius +0x18); CThing::PhysicsTC +0x60; CTCPhysicsBase::Position +0x0C.
-// Callees: GetLineOutFromClosestPointOnFiniteLineToPoint(start, end, point) 0x008F5B50 (`__fastcall`, C3DVector through
+// Callees: NPhysicsHelpers::GetLineOutFromClosestPointOnFiniteLineToPoint(start, end, point) 0x008F5B50 (Ego_r / FableWin namespace function) (`__fastcall`, C3DVector through
 //   the hidden pointer in ecx), CTCPhysicsBase::AddAdditionalImpulse (virtual slot 81, +0x144), CTCPhysicsBase::
 //   SetAsMoving(bool) 0x006B0130.
 // Float pool: 1e-4 @ 0x0129BA3C, 1.0 @ 0x0122DED8, 0.0 @ 0x0122DEDC, 0.25 @ 0x0123078C.
@@ -52,8 +52,10 @@ public:
 
 #include "engine/CThing.h"
 
+namespace NPhysicsHelpers {
 C3DVector __fastcall GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector& lineStart, const C3DVector& lineEnd,
                                                                    const C3DVector& point);   // 0x008F5B50
+}
 
 class CApplyAdditionalExplosiveImpulseIfInsideSmearedLine {   // Ego_r.pdb, 0x1c bytes
 public:
@@ -66,7 +68,7 @@ public:
 void CApplyAdditionalExplosiveImpulseIfInsideSmearedLine::operator()(CThing* thing) const
 {
     CTCPhysicsBase* physics = thing->GetPhysicsTC();
-    C3DVector direction = GetLineOutFromClosestPointOnFiniteLineToPoint(StartPosition, EndPosition, physics->Position);
+    C3DVector direction = NPhysicsHelpers::GetLineOutFromClosestPointOnFiniteLineToPoint(StartPosition, EndPosition, physics->Position);
     direction.Z = 0.0f;
     float distance = direction.GetXYLength();
     if (distance < 0.0001f)

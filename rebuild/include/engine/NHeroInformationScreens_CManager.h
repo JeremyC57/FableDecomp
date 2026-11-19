@@ -39,6 +39,11 @@ public:
     // ?DeregisterAllScreens@CManager@NHeroInformationScreens@@QAEXXZ, out of line at 0x0066EBE0. Declaration only.
     void DeregisterAllScreens();                        // 0x0066EBE0
 #endif
+#ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_INITIALISESCROLLBARINDICES
+    // NF94 opt-in (round 8, q11238 row 0x0066EA85): Ego_r.pdb + FableWin.pdb ?InitialiseScrollBarIndices@CManager@NHeroInformationScreens@@QAEXJ@Z,
+    // the row itself (out of line at 0x0066EA85). Declaration only; the row also needs _LAYOUT (ScrollBarIndices +0x1c).
+    void InitialiseScrollBarIndices(long count);        // 0x0066EA85
+#endif
 #ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_LAYOUT
     // Retail opt-in (chunk 853, row 0x0043A570 ~CPlayerGui): the inline ~CManager (Ego_r.pdb ??1CManager@NHeroInformationScreens@@QAE@XZ,
     // non-virtual; boost::checked_delete then operator delete, no vtable store) frees three STLport vectors at +0x1C, +0x10, +0x04 in that

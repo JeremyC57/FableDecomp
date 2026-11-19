@@ -67,7 +67,9 @@ public:
 class CTCSoundPlayer : public CTCBase {
 public:
     void GetPotentialCriteriaStrings(const CCharString& criteria, std::vector<CCharString>& names);   // 0x0066BC10
-    unsigned long InternalPlaySoundEventAtPos(CASoundBank& bank, const C3DVector& pos, const CCharString& name, bool loop, bool attached);   // 0x0066A920
+private:
+    unsigned long InternalPlaySoundEventAtPos(CASoundBank& bank, const C3DVector& pos, const CCharString& name, bool loop, bool attached);   // 0x0066A920 (private, both PDBs)
+public:
     unsigned long PlayUnattachedCriteria(const CCharString& criteria, const C3DVector& pos, bool loop, bool attached);
 };
 #pragma auto_inline(off)

@@ -206,7 +206,7 @@ public:
 class CTCWeapon:public CTCWeaponPdb { public:
  void SetProjectileWeaponLoaded(bool,CThing*); //005DAC50
  long GetMissileLoadCarrySlot()const; //005DA920 nativeWeaponDef94, donorA0
- long GetCreatedShotDefGlobalIndex(); //005DA750
+ long GetCreatedShotDefGlobalIndex() const; //005DA750 Ego_r.pdb + FableWin.pdb ?GetCreatedShotDefGlobalIndex@CTCWeapon@@QBEJXZ (const; NF94 q11271)
 };
 class CTCAnimatingObject { public:void PlayAnimation(const CCharString&,long,bool);}; //007F90B0; no donor header
 class CCreatureAction_FireMissileWeapon:public CCreatureActionBase { public:
