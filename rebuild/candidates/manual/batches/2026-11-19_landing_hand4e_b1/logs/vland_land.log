@@ -1,0 +1,12 @@
+addr       parity           behav  name
+006379d0   WARN STANDIN_LEAF ?InitLayerInfo@NThingMap@@YAXXZ (catalog NThingMap::CThingMapManager::InitLayerInfo; names another function)
+006379d0   RELOCATION_MATCH PASS   InitLayerInfo
+006af2d0   RELOCATION_MATCH PASS   operator()
+
+WINS: 2
+  006379d0 RELOCATION_MATCH NThingMap::?InitLayerInfo@NThingMap@@YAXXZ
+  006af2d0 RELOCATION_MATCH CMessageEventFilter_IsOriginatorAlive::??RCMessageEventFilter_IsOriginatorAlive@@QBE_NABVCMessageEvent@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NThingMap_InitLayerInfo_006379d0
+  CMessageEventFilterIsOriginatorAlive_operator_006af2d0

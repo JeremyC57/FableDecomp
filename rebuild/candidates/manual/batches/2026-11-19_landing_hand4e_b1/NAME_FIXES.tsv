@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+006379d0	?InitLayerInfo@NThingMap@@YAXXZ	Ego_r.pdb+FableWin.pdb ?InitLayerInfo@NThingMap@@YIXXZ (namespace function, thing_map_manager.obj; donors /Gr)	?InitLayerInfo@CThingMapManager@NThingMap@@SAXXZ (reloc_bindings, caller 0x00638540); catalog NThingMap::CThingMapManager::InitLayerInfo
+013ba84c	?MaxLayerCellSize@NThingMap@@3JA	FableWin.pdb public ?MaxLayerCellSize@NThingMap@@3JA (written by InitLayerInfo, FableWin 0x0221F3AE / 0x0221F3F3)	g_MaxMapwhoCellSize (reloc_bindings via 0x006378E0)

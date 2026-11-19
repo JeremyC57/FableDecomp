@@ -187,3 +187,14 @@ extern unsigned long SearchID_013b89b0;                      // 0x013B89B0 the s
 #endif
 
 #endif
+#if defined(FABLE_RETAIL_CTHINGMAP_INITLAYERINFO) && !defined(FABLE_RETAIL_CTHINGMAP_INITLAYERINFO_DECLARED)
+#define FABLE_RETAIL_CTHINGMAP_INITLAYERINFO_DECLARED
+// hand4e opt-in (row 0x006379D0): the thing_map_manager.cpp layer globals and their initialiser. Ego_r.pdb / FableWin.pdb
+// ?InitLayerInfo@NThingMap@@YIXXZ (thing_map_manager.obj #3), ?MaxLayerCellSize@NThingMap@@3JA (FableWin public; retail 0x013BA84C),
+// ?MaxLayers@NThingMap@@3JA (0x013BA848). Declarations only; use with FABLE_RETAIL_MAP_VALIDATE + FABLE_RETAIL_CTHINGMAP_LAYERINFO
+// (NThingMap::LayerInfo 0x0137DAD8).
+namespace NThingMap {
+extern long MaxLayerCellSize;
+void InitLayerInfo();
+}
+#endif

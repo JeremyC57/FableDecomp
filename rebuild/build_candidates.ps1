@@ -400764,6 +400764,20 @@ $catalog = @(
         TestSource = '00/ae/NParticleEngineCParticleEmitter_SetOrientation_00aede60_test.cpp'
         PassPattern = '00aede60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006379d0'
+        Module = 'NThingMap'
+        Source = '00/63/NThingMap_InitLayerInfo_006379d0.cpp'
+        TestSource = '00/63/NThingMap_InitLayerInfo_006379d0_test.cpp'
+        PassPattern = '006379d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006af2d0'
+        Module = 'CMessageEventFilter_IsOriginatorAlive'
+        Source = '00/6a/CMessageEventFilterIsOriginatorAlive_operator_006af2d0.cpp'
+        TestSource = '00/6a/CMessageEventFilterIsOriginatorAlive_operator_006af2d0_test.cpp'
+        PassPattern = '006af2d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

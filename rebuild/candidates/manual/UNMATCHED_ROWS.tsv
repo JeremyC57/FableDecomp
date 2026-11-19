@@ -114,7 +114,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0062b070	CWorld	EAOpenHeroInformationScreen	1872	parked	DIFFER(898v891)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/0062b070.cpp	original
 0062bd80	CWorld	EAControlledCreatureStrafe	368	parked	DIFFER(339v354)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0062bd80.cpp	original
 0062fe60	NUISystem::CUIDef	CUIDef	832	parked	DIFFER(821v817)	2	rebuild/candidates/manual/pending/2026-11-11_linux_hand1026/differ/0062fe60.cpp	original
-006379d0	NThingMap::CThingMapManager	InitLayerInfo	64	reserved (hand4e, in-house)	DIFFER(52v53)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand382/differ/006379d0.cpp	original
 00637fc0	CThingMapManager	PlaceThing	256	parked	DIFFER(251v243)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/00637fc0.cpp	original
 00639e40	CTCRegionDisplay	GlobalDraw	944	parked	DIFFER(958v930)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00639e40.cpp	original
 0063f4b0	CThingSearchTools	ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThi	784	reserved (hand3c, not plain C++)	DIFFER(769v769)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand307/differ/0063f4b0.cpp	original
@@ -168,7 +167,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006aa720	CThingPlayerCreature	SetPlayerCreatureActionForMelee	1216	parked	DIFFER(1218v1212)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand732/work/006aa720_p8.cpp	original
 006ab0e0	CThingPlayerCreature	OnHit	544	parked	DIFFER(525v529)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/006ab0e0.cpp	gapscan/boundary
 006ac200	CThingPlayerCreature	CreateAndAddObjectToInventory	400	parked	DIFFER(393v398)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/006ac200.cpp	original
-006af2d0	CMessageEventFilter_IsOriginatorAlive	operator()	288	reserved (hand4e, in-house)	DIFFER(58v66)	1	rebuild/candidates/manual/pending/2026-10-14_linux_hand58/differ/006af2d0.cpp	original
 006af4e0	CMessageEvent	GetPOriginator<CThing>	64	parked	DIFFER(39v52)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand514/differ/006af4e0.cpp	original
 006af7d0	CTCPhysicsBase	ImpulseRespondToCollision	624	parked	codex pass24 PARKED: The original scoped axis locals on the shared physics headers improve the shape, but the response-basis computations and x87 operands differ.	20	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/006af7d0/006af7d0.cpp	original
 006b97e0	_global	CWorld_InitFactions	1456	parked	DIFFER(1450v1438)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/006b97e0.cpp	original
