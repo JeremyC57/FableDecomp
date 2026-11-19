@@ -1,0 +1,9 @@
+addr       parity           behav  name
+006ce800   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+006ce800   RELOCATION_MATCH PASS   ForEachInRoughArea<CThing,CThingFilter_IsNot,FrameUpdateThing>
+
+WINS: 1
+  006ce800 RELOCATION_MATCH CThingSearchTools::??$ForEachInRoughArea@
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingSearchTools_ForEachInRoughAreaCThingCThingFilterIsNotFrameUp_006ce800

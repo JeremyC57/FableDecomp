@@ -40265,3 +40265,5 @@ __wcsicmp	00f3fb84	00599e3f
 ??$__uninitialized_copy@PAVCGenerationPos@CTCSmokeGenerator@@PAV12@@std@@YIPAVCGenerationPos@CTCSmokeGenerator@@PAV12@00ABU__false_type@0@@Z	00722b70	00723110
 ??$__uninitialized_fill_n@PAVCGenerationPos@CTCSmokeGenerator@@IV12@@std@@YIPAVCGenerationPos@CTCSmokeGenerator@@PAV12@IABV12@ABU__false_type@0@@Z	00722bd0	00723110
 ?GetPWorldSeed@CBase@NCameraModes@@QBEPAKXZ	0084d2b0	00853670
+??$GetSubDef@VCAnimatingObjectDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAnimatingObjectDef@@@@@Z	007f9330	007f8c20
+??RFrameUpdateThing@?A0x9ae3f8c6@@QBE_NABVCThing@@@Z	006ce730	006ce800

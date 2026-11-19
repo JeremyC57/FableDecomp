@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0087bd70   RELOCATION_MATCH PASS   Update
+
+WINS: 1
+  0087bd70 RELOCATION_MATCH NCameraModes::CRotateAround::?Update@CRotateAround@NCameraModes@@UAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCRotateAround_Update_0087bd70

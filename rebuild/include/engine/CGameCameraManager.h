@@ -207,6 +207,14 @@ private:
  unsigned long DebugPersistFrame;
  unsigned char DebugPoints[4];
  void UpdateRightStickLookAround();
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_WORLDHEIGHT_GETTERS
+public:
+ // Opt-in (hand4a, row 0x0087BD70 CRotateAround::Update): FableWin.pdb ?GetMinWorldHeight@CGameCameraManager@@QBEMXZ /
+ // ?GetMaxWorldHeight@CGameCameraManager@@QBEMXZ (debug 0x029C7E80 / 0x029C7EA0), inline in retail (+0xF8 / +0xFC read in place).
+ float GetMinWorldHeight() const { return MinWorldHeight; }
+ float GetMaxWorldHeight() const { return MaxWorldHeight; }
+private:
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_INTERPOLATEDCAMERA
  // Retail opt-in (wf2, row 0x006978D0): Ego_r.pdb / FableWin.pdb ?GetInterpolatedCamera@CGameCameraManager@@ABE?AVCCamera@@MABV2@0@Z
  // (private, const, out of line in retail at 0x006978D0; its only caller is GetRenderCamera 0x00697F30). Declaration only: no layout change.

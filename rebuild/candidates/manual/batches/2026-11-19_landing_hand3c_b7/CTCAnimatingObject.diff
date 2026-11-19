@@ -1,0 +1,6 @@
+23a24,28
+> #ifdef FABLE_RETAIL_CTCANIMATINGOBJECT_ADDQUEUEDANIMATION
+>     // Opt-in (hand3c, row 0x007F8C20): Ego_r.pdb / FableWin.pdb ?AddQueuedAnimation@CTCAnimatingObject@@QAEXABVCCharString@@_N@Z (public;
+>     // Ego_d parameter names anim_name / looping). Declaration only: no layout change.
+>     void AddQueuedAnimation(const CCharString& anim_name, bool looping);  // 0x007F8C20
+> #endif

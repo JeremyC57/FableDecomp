@@ -65,7 +65,14 @@ public:
 #else
  const C3DVector & GetPosition() const;
 #endif
+ #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_SETPOSITION_INLINE
+ // Opt-in (hand4a, row 0x0087BD70 CRotateAround::Update): FableWin.pdb ?SetPosition@CBase@NCameraModes@@QAEXABVC3DVector@@@Z
+ // (debug 0x02200060: GoTo.Position = p, three dwords) and ?SetObservedPos@..QAEXABVC3DVector@@@Z (0x0283A030: LookAt.Position = p),
+ // inline in retail (the row stores mode +0x54 and +0x10 in place).
+ void SetPosition(const C3DVector & p0) { GoTo.Position = p0; }
+#else
  void SetPosition(const C3DVector & p0);
+#endif
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_GETOBSERVEDPOS_INLINE
  // Retail opt-in (Codex pass 24): FableWin 0x022035B0 and Ego_d Camera_Manager.obj identify this inline getter.
  // The 0x00697F80 expansion copies LookAt.Position from +0x10.
@@ -73,7 +80,11 @@ public:
 #else
  const C3DVector & GetObservedPos() const;
 #endif
+ #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_SETPOSITION_INLINE
+ void SetObservedPos(const C3DVector & p0) { LookAt.Position = p0; }
+#else
  void SetObservedPos(const C3DVector & p0);
+#endif
  void SetFOV(float p0);
 #ifndef FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS // agentFAM04 (2026-11-11)
  float GetFOV() const;
@@ -108,7 +119,13 @@ public:
  void SetDefaultRollAngle(float p0);
  void SetDefaultObservedPositionZOffset(float p0);
  unsigned long * GetPWorldSeed() const;
+ #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_VIEWOCCLUDED_INLINE
+ // Opt-in (hand4a, row 0x0087BD70): FableWin.pdb ?IsCameraViewPosOccluded@CBase@NCameraModes@@QBE_NXZ (debug 0x021FE230 returns
+ // ViewOccluded), inline in retail (the row tests mode +0xA0 in place).
+ bool IsCameraViewPosOccluded() const { return ViewOccluded; }
+#else
  bool IsCameraViewPosOccluded() const;
+#endif
 protected:
  void AddAttractorGoTo(const C3DVector & p0, float p1);
  void AddIncidentalAttractorGoTo(const C3DVector & p0, float p1);

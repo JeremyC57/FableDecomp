@@ -1,0 +1,17 @@
+addr       parity           behav  name
+0052ee00   MATCH            PASS   GetTargetRenderPosition
+007f8c20   RELOCATION_MATCH PASS   AddQueuedAnimation
+006b2960   RELOCATION_MATCH PASS   GetNavigationInformation
+00b905a0   RELOCATION_MATCH PASS   PrepareOcclusionTest
+
+WINS: 4
+  0052ee00 MATCH NUISystem::CComponent::?GetTargetRenderPosition@CComponent@NUISystem@@UBE?AVC2DVector@@XZ
+  007f8c20 RELOCATION_MATCH CTCAnimatingObject::?AddQueuedAnimation@CTCAnimatingObject@@QAEXABVCCharString@@_N@Z
+  006b2960 RELOCATION_MATCH CGameNavigatorManagerExternalInterface::?GetNavigationInformation@CGameNavigatorManagerExternalInterface@@UBEXABVC2DBoxF@@AAVCNavigationAreaUpdate@@@Z
+  00b905a0 RELOCATION_MATCH CEnginePrimitiveManagerOcclusionBase::?PrepareOcclusionTest@CEnginePrimitiveManagerOcclusionBase@@IAEXAAVCEngineInternalPrimitiveOcclusionBase@@W4ERenderPassType@@AAK@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  NUISystemCComponent_GetTargetRenderPosition_0052ee00
+  CTCAnimatingObject_AddQueuedAnimation_007f8c20
+  CGameNavigatorManagerExternalInterface_GetNavigationInformation_006b2960
+  CEnginePrimitiveManagerOcclusionBase_PrepareOcclusionTest_00b905a0

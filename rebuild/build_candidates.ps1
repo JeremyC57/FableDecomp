@@ -400001,6 +400001,48 @@ $catalog = @(
         TestSource = '00/85/NCameraModesCScriptModuleUseLamp_OnInitLeaf_008539c0_test.cpp'
         PassPattern = '008539c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0087bd70'
+        Module = 'NCameraModes::CRotateAround'
+        Source = '00/87/NCameraModesCRotateAround_Update_0087bd70.cpp'
+        TestSource = '00/87/NCameraModesCRotateAround_Update_0087bd70_test.cpp'
+        PassPattern = '0087bd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ee00'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_GetTargetRenderPosition_0052ee00.cpp'
+        TestSource = '00/52/NUISystemCComponent_GetTargetRenderPosition_0052ee00_test.cpp'
+        PassPattern = '0052ee00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f8c20'
+        Module = 'CTCAnimatingObject'
+        Source = '00/7f/CTCAnimatingObject_AddQueuedAnimation_007f8c20.cpp'
+        TestSource = '00/7f/CTCAnimatingObject_AddQueuedAnimation_007f8c20_test.cpp'
+        PassPattern = '007f8c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b2960'
+        Module = 'CGameNavigatorManagerExternalInterface'
+        Source = '00/6b/CGameNavigatorManagerExternalInterface_GetNavigationInformation_006b2960.cpp'
+        TestSource = '00/6b/CGameNavigatorManagerExternalInterface_GetNavigationInformation_006b2960_test.cpp'
+        PassPattern = '006b2960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b905a0'
+        Module = 'CEnginePrimitiveManagerOcclusionBase'
+        Source = '00/b9/CEnginePrimitiveManagerOcclusionBase_PrepareOcclusionTest_00b905a0.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerOcclusionBase_PrepareOcclusionTest_00b905a0_test.cpp'
+        PassPattern = '00b905a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ce800'
+        Module = 'CThingSearchTools'
+        Source = '00/6c/CThingSearchTools_ForEachInRoughAreaCThingCThingFilterIsNotFrameUp_006ce800.cpp'
+        TestSource = '00/6c/CThingSearchTools_ForEachInRoughAreaCThingCThingFilterIsNotFrameUp_006ce800_test.cpp'
+        PassPattern = '006ce800_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
