@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00754d80   WARN STANDIN_LEAF ??$for_each@PAU?$pair@MPBVCAnimationEntry@@@std@@VCGetBestTurningAnim@?A0x22201bea@@@std@@YI?AVCGetBestTurningAnim@?A0x22201bea@@PAU?$pair@MPBVCAnimationEntry@@@0@0V12@@Z (catalog _For_each<std::pair<float,CAnimationEntry_const*>*,_anon_247890BC::_For_each<std::pair<float,CAnimationEntry_const*>*,_anon_247890BC::CGetBestTurningAnim>; names another function)
+00754d80   MATCH            PASS   for_each
+0076a590   WARN STANDIN_LEAF ??$__pop_heap_aux@PAU?$pair@KVC3DVector@@@std@@U12@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KVC3DVector@@@0@00V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z (catalog _Pop_heap_0<std::pair<long,EHeroAbility>*,std::_Pop_heap_0<std::pair<long,EHeroAbility>*,std::pair<long,enum_EHeroAbility>,CKeyPairCompar; names another function)
+0076a590   RELOCATION_MATCH PASS   __pop_heap_aux
+009b9d70   MATCH            PASS   SkipPastNewline
+
+WINS: 3
+  00754d80 MATCH std::??$for_each@PAU?$pair@MPBVCAnimationEntry@@@std@@VCGetBestTurningAnim@
+  0076a590 RELOCATION_MATCH std::??$__pop_heap_aux@PAU?$pair@KVC3DVector@@@std@@U12@V?$CParticleUpdateCCompareVector@K@
+  009b9d70 MATCH CStringParser::?SkipPastNewline@CStringParser@@QAEJXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  std_foreach_00754d80
+  std_popheapaux_0076a590
+  CStringParser_SkipPastNewline_009b9d70

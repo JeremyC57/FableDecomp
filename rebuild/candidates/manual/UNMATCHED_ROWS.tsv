@@ -234,7 +234,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00752b00	CTCLook	SetHeadLooking	768	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00752b00.cpp	original
 00753630	CTCLook	InitialiseTurningViaAnimation	528	parked	DIFFER(532v528)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/00753630.cpp	original
 007542b0	CTCLook	CTCLook::OnAppearanceDraw	2272	parked	codex pass24 PARKED: The shared owner, render mesh and attachment classes retain the native receiver offsets and frame extent. Retained handles, index-slot evaluation and the two eye transform schedules remain different.	30	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/007542b0/007542b0.cpp	original
-00754d80	_For_each<std::pair<float,CAnimationEntry_const*>*,_anon_247890BC	_For_each<std::pair<float,CAnimationEntry_const*>*,_anon_247890BC::CGetBestTurningAnim>	240	reserved (hand4e, in-house)	DIFFER(88v92)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/00754d80.cpp	original
 00759f80	CTCPhysicsRigidBody	Integrate	976	parked	DIFFER(730v975)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00759f80.cpp	original
 0075aaf0	CTCPhysicsRigidBody	CheckForCollisions	608	parked	DIFFER(607v593)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0075aaf0.cpp	original
 0075ddf0	CTCCameraPointScriptedSpline	UpdateSplines	1152	parked	DIFFER(1092v1146)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/0075ddf0.cpp	original
@@ -246,7 +245,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 007634e0	_global	CPatchTesselation_GenerateTriangles	1328	parked	DIFFER(623v627)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/hdr/007634e0.cpp	original
 00766660	CTCObjectAugmentations	AttemptToStartParticle	704	reserved (hand3c, not plain C++)	DIFFER(700v696)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand304/differ/00766660.cpp	original
 00766dd0	CTCObjectAugmentations	FrameUpdate	1072	parked	codex pass24 PARKED: The shared owner and STLport containers retain the native predicate calls and component names. Vector allocation, period scheduling, and iterator code generation still differ.	23	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00766dd0/00766dd0.cpp	original
-0076a590	_Pop_heap_0<std::pair<long,EHeroAbility>*,std	_Pop_heap_0<std::pair<long,EHeroAbility>*,std::pair<long,enum_EHeroAbility>,CKeyPairCompar	144	reserved (hand4e, in-house)	DIFFER(89v97)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand359/differ/0076a590.cpp	original
 0076cce0	CTCEnemy	IsEnemyOf	768	parked	egod3a: DIFFER 751v754 -- old local-model draft (97 masked); CTCEnemy.h exists, landed TU siblings 0x0076D1B0/0x0076D270/0x0076D2F0; port not started	5	rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/0076cce0.cpp	original
 0076e6a0	CTCWeaponTrail	DrawAddWeaponTrails	960	parked	DIFFER(911v951)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand306/differ/0076e6a0.cpp	original
 00774d20	_global	CTCShop_SellHighlightedItem	1152	reserved (hand4d, in-house)	DIFFER(1149v1149)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00774d20.cpp	original
@@ -588,7 +586,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009aed70	CParentDefClassBase	?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z	496	parked	DIFFER(499v492)	2	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/009aed70.cpp	original
 009afb90	CDefinitionManager	LoadBinaryDefinitions	1344	parked	DIFFER(1326v1344)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/009afb90.cpp	original
 009b9770	CParsedItem	InitAsFloat	256	reserved (hand4e, in-house)	DIFFER(177v181)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/009b9770.cpp	original
-009b9d70	CStringParser	SkipPastNewline	144	reserved (hand4e, in-house)	DIFFER(127v132)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/009b9d70.cpp	original
 009bbcc0	CPersistContext	TransferSubComponentLoadText	1120	parked	DIFFER(1140v1106)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/009bbcc0.cpp	original
 009bd460	CMovieSubtitles	ParseSubtitles	1200	parked	DIFFER(1174v1193)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/009bd460.cpp	original
 009bf7e0	CDisplayManager	CreateDevice	848	reserved (hand3c, not plain C++)	DIFFER(824v846)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand284/differ/009bf7e0.cpp	original

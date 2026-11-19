@@ -1,0 +1,3 @@
+# hand4e overlay opt-ins (copies of the CURRENT repo headers; additions only, at the end of each file: no FABLE_STATIC_ASSERT moved)
+- engine/NThingMap_CThingMap.h  FABLE_RETAIL_CTHINGMAP_INITLAYERINFO  declares NThingMap::MaxLayerCellSize + NThingMap::InitLayerInfo()  Ego_r.pdb/FableWin.pdb ?InitLayerInfo@NThingMap@@YIXXZ, FableWin public ?MaxLayerCellSize@NThingMap@@3JA (row 0x006379D0)
+- engine/CStringParser.h  FABLE_RETAIL_CSTRINGPARSER_MOVESTRINGPOS_EGOD (nested in MOVESTRINGPOS; existing bodies under #else, asserts are _AT-pinned)  CalcInQuotes / MoveStringPos in FableWin 0x03058610 / 0x030585A0 order with Ego_d names; CalcInQuotes body = RELOCATION/MATCH at its own copy 0x009B9570 (row 0x009B9D70)

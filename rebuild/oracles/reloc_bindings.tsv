@@ -40347,3 +40347,4 @@ _MAX_NODE_SIZE	01230894	00a770b0
 ?SetPitch@CSalSwBaseVoice@@IAEXMABUCODASOURCE@@@Z	00c5a500	00c54c10
 ?sal_levelToGain@@YAMH@Z	00c54ae0	00c54c10
 ?MaxLayerCellSize@NThingMap@@3JA	013ba84c	006379d0
+??$__adjust_heap@PAU?$pair@KVC3DVector@@@std@@HU12@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KVC3DVector@@@0@HHU10@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z	00769d50	0076a590

@@ -115,6 +115,25 @@ protected:
 #ifdef FABLE_RETAIL_CSTRINGPARSER_MOVESTRINGPOS
     // Chunk 756 (row 0x009B9D70 SkipPastNewline): Ego_r.pdb ?CalcInQuotes@CStringParser@@IBE_N_NPBD1@Z and ?MoveStringPos@CStringParser@@IAEXK@Z
     // (protected). Inline: retail SkipPastNewline / SkipWhitespace expand both (the out-of-line CalcInQuotes copy is 0x009B9570).
+#ifdef FABLE_RETAIL_CSTRINGPARSER_MOVESTRINGPOS_EGOD
+    // hand4e nested opt-in (row 0x009B9D70): the two helpers in FableWin.pdb's statement order (CalcInQuotes 0x03058610: a while loop over
+    // pstart with the quote test and `in_quotes = !in_quotes`; MoveStringPos 0x030585A0: `if (n > 0)`, the end pointer pushed first as
+    // StringPos + n then + String, the start as String + StringPos) with Ego_d's parameter names (in_quotes, pstart, pend; n).
+    FABLE_FORCEINLINE bool CalcInQuotes(bool in_quotes,const char* pstart,const char* pend) const {
+        while(pstart!=pend) {
+            if(*pstart=='"'||*pstart=='\'')
+                in_quotes=!in_quotes;
+            ++pstart;
+        }
+        return in_quotes;
+    }
+    FABLE_FORCEINLINE void MoveStringPos(unsigned long n) {
+        if(n>0) {
+            CursorPos.InQuotes=CalcInQuotes(CursorPos.InQuotes,String+CursorPos.StringPos,String+(CursorPos.StringPos+n));
+            CursorPos.StringPos+=n;
+        }
+    }
+#else
     FABLE_FORCEINLINE bool CalcInQuotes(bool inQuotes,const char* from,const char* to) const {
         for(const char* p=from;p!=to;++p)
             if(*p=='"'||*p=='\'')
@@ -137,6 +156,7 @@ protected:
             CursorPos.StringPos+=n;
         }
     }
+#endif
 #endif
 #endif
     const char* String;

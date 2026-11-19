@@ -400778,6 +400778,27 @@ $catalog = @(
         TestSource = '00/6a/CMessageEventFilterIsOriginatorAlive_operator_006af2d0_test.cpp'
         PassPattern = '006af2d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00754d80'
+        Module = 'std'
+        Source = '00/75/std_foreach_00754d80.cpp'
+        TestSource = '00/75/std_foreach_00754d80_test.cpp'
+        PassPattern = '00754d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076a590'
+        Module = 'std'
+        Source = '00/76/std_popheapaux_0076a590.cpp'
+        TestSource = '00/76/std_popheapaux_0076a590_test.cpp'
+        PassPattern = '0076a590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b9d70'
+        Module = 'CStringParser'
+        Source = '00/9b/CStringParser_SkipPastNewline_009b9d70.cpp'
+        TestSource = '00/9b/CStringParser_SkipPastNewline_009b9d70_test.cpp'
+        PassPattern = '009b9d70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

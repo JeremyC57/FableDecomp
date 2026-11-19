@@ -1,0 +1,3 @@
+address	name	evidence
+006379d0	NThingMap::InitLayerInfo	Ego_r.pdb + FableWin.pdb
+013ba84c	NThingMap::MaxLayerCellSize	FableWin.pdb public
