@@ -43,6 +43,9 @@ cmake ... -DFABLE_NATIVE_OBJS=$PWD/out/native/nd_a64.o && ninja
 
 - `FABLE_NATIVE_DECOMP=0`: every lowered function off (the lifted bodies run).
 - `FABLE_ND_OFF=<hex>[,<hex>-<hex>...]`: single functions or address ranges off, for bisecting a crash.
+- `FABLE_ND_TIME=1`: time every call of a wrapped function, native or lifted (inclusive of its callees),
+  and log the top 30 by total time every 30 s (`native decomp time:` lines). Two runs over the same
+  route, one with `FABLE_NATIVE_DECOMP=0`, compare the two bodies function by function.
 
 ## Differences from retail
 

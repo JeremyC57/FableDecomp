@@ -199,7 +199,7 @@ Verdict check(Function& F, const std::set<Function*>& keep) {
 Module* M;
 LLVMContext* C;
 Type *I8, *I32, *I64, *F64, *PtrTy;
-FunctionCallee ndFrameEnter, ndFrameLeave, ndCall, ndEntryBegin, ndEntryEnd, ndGetReg, ndEnabled;
+FunctionCallee ndFrameEnter, ndFrameLeave, ndCall, ndEntryBegin, ndEntryEnd, ndGetReg, ndEnabled, ndClock, ndTimeAdd;
 
 Value* toHost(IRBuilder<>& b, Value* w32) { return b.CreateIntToPtr(b.CreateZExt(w32, I64), PtrTy); }
 Value* toWord(IRBuilder<>& b, Value* p) { return b.CreateTrunc(b.CreatePtrToInt(p, I64), I32); }
@@ -496,12 +496,33 @@ void makeEntry(Function* F, uint32_t A, CallingConv::ID cc, const AttributeList&
     IRBuilder<> wb(BasicBlock::Create(*C, "", W));
     BasicBlock* yes = BasicBlock::Create(*C, "native", W);
     BasicBlock* no = BasicBlock::Create(*C, "lifted", W);
-    Value* on = wb.CreateCall(ndEnabled, {ConstantInt::get(I32, A), W->getArg(0)});
-    wb.CreateCondBr(wb.CreateICmpNE(on, ConstantInt::get(I32, 0)), yes, no);
+    // nd_enabled: bit 0 the native body, bit 1 time the call (FABLE_ND_TIME), native or lifted
+    Value* flags = wb.CreateCall(ndEnabled, {ConstantInt::get(I32, A), W->getArg(0)});
+    Value* timed = wb.CreateICmpNE(wb.CreateAnd(flags, ConstantInt::get(I32, 2)), ConstantInt::get(I32, 0));
+    BasicBlock* start = BasicBlock::Create(*C, "start", W);
+    BasicBlock* pick = BasicBlock::Create(*C, "pick", W);
+    BasicBlock* done = BasicBlock::Create(*C, "done", W);
+    BasicBlock* stop = BasicBlock::Create(*C, "stop", W);
+    BasicBlock* out = BasicBlock::Create(*C, "out", W);
+    BasicBlock* entryBB = wb.GetInsertBlock();
+    wb.CreateCondBr(timed, start, pick);
+    IRBuilder<> sb(start);
+    Value* t0 = sb.CreateCall(ndClock, {});
+    sb.CreateBr(pick);
+    IRBuilder<> pb(pick);
+    PHINode* tp = pb.CreatePHI(I64, 2);
+    tp->addIncoming(ConstantInt::get(I64, 0), entryBB);
+    tp->addIncoming(t0, start);
+    pb.CreateCondBr(pb.CreateICmpNE(pb.CreateAnd(flags, ConstantInt::get(I32, 1)), ConstantInt::get(I32, 0)), yes, no);
     IRBuilder<>(yes).CreateCall(E, {W->getArg(0)});
-    IRBuilder<>(yes).CreateRetVoid();
+    IRBuilder<>(yes).CreateBr(done);
     IRBuilder<>(no).CreateCall(orig, {W->getArg(0)});
-    IRBuilder<>(no).CreateRetVoid();
+    IRBuilder<>(no).CreateBr(done);
+    IRBuilder<>(done).CreateCondBr(timed, stop, out);
+    IRBuilder<> tb(stop);
+    tb.CreateCall(ndTimeAdd, {ConstantInt::get(I32, A), tp, flags});
+    tb.CreateBr(out);
+    IRBuilder<>(out).CreateRetVoid();
 }
 
 }  // namespace
@@ -605,6 +626,8 @@ int main(int argc, char** argv) {
     ndEntryEnd = M->getOrInsertFunction("nd_entry_end", FunctionType::get(Type::getVoidTy(ctx), {PtrTy, I32, I32, I32, F64, I32}, false));
     ndGetReg = M->getOrInsertFunction("nd_get_reg", FunctionType::get(I32, {PtrTy, I32}, false));
     ndEnabled = M->getOrInsertFunction("nd_enabled", FunctionType::get(I32, {I32, PtrTy}, false));
+    ndClock = M->getOrInsertFunction("nd_clock", FunctionType::get(I64, {}, false));
+    ndTimeAdd = M->getOrInsertFunction("nd_time_add", FunctionType::get(Type::getVoidTy(ctx), {I32, I64, I32}, false));
 
     std::vector<std::string> reportRows;
     for (auto& [f, a] : addrOf) {
