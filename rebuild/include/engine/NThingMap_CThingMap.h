@@ -1,4 +1,4 @@
-// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
+#ifndef FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY // Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifdef FABLE_RETAIL_MAP_VALIDATE
 #ifndef FABLE_ENGINE_NTHINGMAP_CTHINGMAP_H
 #define FABLE_ENGINE_NTHINGMAP_CTHINGMAP_H
@@ -197,4 +197,21 @@ namespace NThingMap {
 extern long MaxLayerCellSize;
 void FABLE_FASTCALL InitLayerInfo();
 }
+#endif
+#endif // FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY (the whole header above)
+#ifdef FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#ifndef FABLE_ENGINE_NTHINGMAP_LAYERINFO_ONLY_H
+#define FABLE_ENGINE_NTHINGMAP_LAYERINFO_ONLY_H
+// NF100 opt-in (round 9, q11463 / q11282): the layer table alone, for the landed rough-area rows that still model the rest of NThingMap
+// (CThingMap, CMapwhoLevelInfo, CThingMapCell ...) locally. With this macro the header declares ONLY NThingMap::CLayerInfo (Ego_r.pdb record,
+// 0x10 bytes: Size +0, ScaleShift +4, UsedColour +8, UnusedColour +0xC; FableWin.pdb ??0CLayerInfo@NThingMap@@QAE@JJABVCRGBColour@@0@Z) and
+// NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8; the landed 0x0085D180 / 0x006379D0 /
+// 0x00436500 bind it), the same declarations as the FABLE_RETAIL_CTHINGMAP_LAYERINFO block, and none of the classes above, so it cannot
+// clash with a row's pre-existing local NThingMap model. A TU that defines it never sees the rest of this header.
+#include "engine/CRGBColour.h"
+namespace NThingMap {
+class CLayerInfo {public:long Size,ScaleShift;CRGBColour UsedColour,UnusedColour;};
+extern const CLayerInfo LayerInfo[];                         // 0x0137DAD8
+}
+#endif
 #endif

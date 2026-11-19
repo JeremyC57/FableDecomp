@@ -75,8 +75,11 @@ class CThingMap { public:
 };
 }
 using namespace NThingMap;
-struct SMapwhoLevel { long Level,Shift; long _pad[2]; };
-extern SMapwhoLevel g_MapwhoLevels[];                      
+// Name fix (NF100, round 9, q11463 / q11282): the level table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
+//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes: Size +0, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
+//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A.
+#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#include "engine/NThingMap_CThingMap.h"
 namespace NThingMap { extern long MaxLayers; }                              // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 struct SSearchStamps { unsigned long Searches; unsigned long Found; unsigned long Stamp; };
 extern SSearchStamps g_SearchStamps;                       
@@ -187,7 +190,7 @@ template<class F,class C,class T> bool CThingSearchTools::GetPBestThingInRoughAr
         CThingMap* map = *it;
         C2DBoxI extents = ClipAndConvertWorldMapAreaToLocalArea(*map,area);
         for (long level = 0; level < NThingMap::MaxLayers; ++level) {
-            long shift = g_MapwhoLevels[level].Shift;
+            long shift = NThingMap::LayerInfo[level].ScaleShift;
             C2DBoxI box(extents.X0 >> shift, extents.Y0 >> shift, ((extents.X1 - 1) >> shift) + 1,
                         ((extents.Y1 - 1) >> shift) + 1);
             long width = box.X1 - box.X0;

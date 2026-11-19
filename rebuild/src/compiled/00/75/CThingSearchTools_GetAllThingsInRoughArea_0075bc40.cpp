@@ -116,9 +116,11 @@ class CThingMap { public:
 };
 extern long MaxLayers;                                      // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 }
-// The table's real element type is NThingMap::CLayerInfo (Ego_r.pdb, 16 bytes); the landed spelling below keeps a global struct.
-struct CLayerInfo { long Size; long ScaleShift; unsigned long UsedColour, UnusedColour; };
-extern CLayerInfo LayerInfo_0137dad8[];                            // 0x0137DAD8, landed descriptive spelling
+// Name fix (NF100, round 9, q11463 / q11282): the layer table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
+//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
+//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?LayerInfo_0137dad8@@3PAUCLayerInfo@@A.
+#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#include "engine/NThingMap_CThingMap.h"
 extern long SearchCount_013b89a8;                                  // 0x013B89A8
 extern long SearchWork_013b89ac;                                   // 0x013B89AC
 extern unsigned long SearchID_013b89b0;                            // 0x013B89B0
@@ -146,7 +148,7 @@ protected:
     C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap& map, const C2DBoxI& area) const; // 0x0049C700
     FABLE_FORCEINLINE C2DBoxI GetMapwhoArea(const NThingMap::CThingMap&, long layer, const C2DBoxI& box) const
     {
-        long shift = LayerInfo_0137dad8[layer].ScaleShift;
+        long shift = NThingMap::LayerInfo[layer].ScaleShift;
         C2DBoxI out;
         out.TLX = box.TLX >> shift; out.TLY = box.TLY >> shift;
         out.BRX = ((box.BRX - 1) >> shift) + 1; out.BRY = ((box.BRY - 1) >> shift) + 1;

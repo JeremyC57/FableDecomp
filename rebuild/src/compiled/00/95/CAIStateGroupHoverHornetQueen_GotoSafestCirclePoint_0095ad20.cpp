@@ -1,5 +1,9 @@
 // CAIStateGroup_HoverHornetQueen::GotoSafestCirclePoint(long movementType) -- with no circle markers return 3; otherwise compare the direction to the target with the directions to the next and previous circle markers and fly to the one facing away from the target
-// Leaf: ?GotoSafestCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJJ@Z
+// Leaf: ?GotoSafestCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@W4EMovementType@@@Z
+// Name fix (NF100, round 9, q11464): in-place respelling of the row's existing local class model to the Ego_r.pdb / FableWin.pdb protected
+//   members ?GotoSafestCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@W4EMovementType@@@Z (Ego_r 0x0097F480 + FableWin 0x02C11240; its landed
+//   caller KeepOutOfWay 0x0095B6F0 binds it so) and ?GotoCirclePoint@...@@IAE?AW4EAIActionReturn@@JW4EMovementType@@@Z (0x0095A6C0; Ego_r 0x0097EFF0 +
+//   FableWin 0x02C114E0); the enums come from engine/fable_ai_action_enums.h. Was QAEJJ@Z / ?GotoCirclePoint@...@@QAEJJJ@Z.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation); local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095AD20, 754 bytes, `ret 4`.
@@ -19,6 +23,7 @@ FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
+#include "engine/fable_ai_action_enums.h"
 #define FABLE_RETAIL_C3DVECTOR
 #include "engine/C3DVector.h"
 class CThing;
@@ -57,14 +62,15 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_HoverMovementBase {
     CVec<CIntelligentPointer<CThing> > CircleMarkers;   // +0x50
     long GetNextCirclePoint() { long i = CurrentCirclePoint + 1; if (i == CircleMarkers.size()) i = 0; return i; }
     long GetPrevCirclePoint() { long i = CurrentCirclePoint - 1; if (i == -1) i = CircleMarkers.size() - 1; return i; }
-    long GotoCirclePoint(long index, long movementType);   // 0x0095A6C0
-    long GotoSafestCirclePoint(long movementType);
+protected:
+    EAIActionReturn GotoCirclePoint(long n, EMovementType movement_type);   // 0x0095A6C0
+    EAIActionReturn GotoSafestCirclePoint(EMovementType movementType);
 };
 
-long CAIStateGroup_HoverHornetQueen::GotoSafestCirclePoint(long movementType)
+EAIActionReturn CAIStateGroup_HoverHornetQueen::GotoSafestCirclePoint(EMovementType movementType)
 {
     if (CircleMarkers.size() == 0)
-        return 3;
+        return AI_ACTION_FAILED;
     C3DVector toTarget = Direction(PTarget.Get(), GetCreature());
     toTarget.Normalise();
     C3DVector toNext = Direction(CircleMarkers[GetNextCirclePoint()].Get(), GetCreature());

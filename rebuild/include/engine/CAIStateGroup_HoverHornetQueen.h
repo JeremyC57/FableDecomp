@@ -45,6 +45,11 @@ protected:
     // Both original TPI enums; declaration access is not encoded by LF_NESTTYPE.
     enum eWaspDirection { WASP_DIRECTION_CLOCKWISE=0, WASP_DIRECTION_ANTICLOCKWISE=1 };
     eWaspDirection RouteDirection;                                     // +0x64, original protected field
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_ISROUTETOPOSBLOCKEDBYTARGET
+    // NF100 opt-in (round 9, q11464 self row 0x0095A6C0 GotoCirclePoint): Ego_r.pdb (0x0097ED40) + FableWin.pdb (0x02C11620)
+    // ?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@IAE_NJ@Z (protected), out of line in retail at 0x0095A490. Declaration only.
+    bool IsRouteToPosBlockedByTarget(long n);                            // 0x0095A490
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_DIVEBOMB
     // e11 nested opt-in (row 0x0095B9E0 DiveBomb): Ego_r.pdb / FableWin.pdb protected members ?DiveBomb@CAIStateGroup_HoverHornetQueen@@IAEXXZ
     // (0x0095B9E0), ?GetNextCirclePoint@..@@IAEJXZ, ?GetPreviousCirclePoint@..@@IAEJXZ, ?GotoNextCirclePoint@..@@IAE?AW4EAIActionReturn@@W4EMovementType@@@Z,

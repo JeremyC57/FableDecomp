@@ -15,13 +15,13 @@
 //   count load into edx but drops its compare (retail 0x00637932). Grade: RELOCATION_MATCH (try f, 6 grades).
 #pragma optimize("y", off)
 #include "engine/GFFloatToLongFloor.h"
-struct SMapwhoLevel {                           // 16 bytes
-    long CellSize;                              // +0x00
-    long _pad[3];
-};
+// Name fix (NF100, round 9, q11463 / q11282): the level table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
+//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes: Size +0, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
+//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A.
+#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#include "engine/NThingMap_CThingMap.h"
 namespace NThingMap { extern long MaxLayers; }   // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 namespace NThingMap { extern long MaxLayerCellSize; }   // 0x013BA84C (FableWin.pdb public ?MaxLayerCellSize@NThingMap@@3JA, written by InitLayerInfo 0x006379D0)
-extern SMapwhoLevel g_MapwhoLevels[];           // 0x0137DAD8
 namespace NThingMap {
 class CThingMapManager {
 protected:
@@ -33,8 +33,13 @@ unsigned char CThingMapManager::GetThingMapwhoLevel(float radius) const
     if (size >= MaxLayerCellSize)
         return (unsigned char)(MaxLayers - 1);
     for (long level = 0; level < MaxLayers; ++level)
-        if (size < g_MapwhoLevels[level].CellSize)
+        if (size < NThingMap::LayerInfo[level].Size)
             return (unsigned char)level;
+    // Inferred: unreachable-end marker (EXTRA_RULES 2026-11-19 advisor rule): retail has no end test after the walk (0x00637932).
+#ifdef _MSC_VER
     __assume(0);
+#elif defined(__GNUC__)
+    __builtin_unreachable();
+#endif
 }
 }

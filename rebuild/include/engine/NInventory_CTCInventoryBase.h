@@ -78,6 +78,12 @@ public:
     // ?RemoveItem@CItem@NInventory@@QAEXJ@Z (public; the landed self row 0x005BF00B defines this spelling). Declaration only.
     void RemoveItem(long number);                       // 0x005BF00B
 #endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_ISSAMEITEMTYPEASDEFINDEX
+    // NF100 opt-in (round 9, q11237 row 0x005C150B CIsSameItemType::operator()): Ego_r.pdb (0x0061F2D6) + FableWin.pdb (0x0235F53C)
+    // ?IsSameItemTypeAsDefIndex@CItem@NInventory@@QBE_NJ@Z (public const), out of line in retail at 0x005BC450 (the landed binder 0x005BDE96
+    // binds this spelling). Declaration only: no layout change.
+    bool IsSameItemTypeAsDefIndex(long defIndex) const; // 0x005BC450
+#endif
     long ItemType;                                      // +0x00
     long NumberOfItems;                                 // +0x04
     CCountedPointer<CPerItemData> PPerItemData;         // +0x08

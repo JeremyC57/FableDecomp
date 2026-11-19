@@ -103,12 +103,15 @@ class CThingMap { public:
  }
 };
 }
-struct CLayerInfo {long Size;long ScaleShift;unsigned long UsedColour,UnusedColour;};
+// Name fix (NF100, round 9, q11463 / q11282): the layer table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
+//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
+//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?LayerInfo_0137dad8@@3PAUCLayerInfo@@A.
+#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#include "engine/NThingMap_CThingMap.h"
 extern long SearchCount_013b89a8;
 extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long MaxLayers;} // 0x013ba848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
-extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
 class CThingFilter_IsPerceivingThing { public:CThing* PerceivedThing;bool operator()(const CThing&)const;}; // 0x006a80e0
 class CThingFilter_IsNot { public:CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
 struct Filters {CThingFilter_IsPerceivingThing* F1;CThingFilter_IsNot* F2;FABLE_FORCEINLINE bool operator()(const CThing& p)const{return (*F1)(p)&&(*F2)(p);}};
@@ -120,7 +123,7 @@ struct CThingSearchTools_Calls {
  void GetAllThingMapsInArea(const C2DBoxI&,RetailVector<NThingMap::CThingMap*>&)const;
  C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap&,const C2DBoxI&)const;
  FABLE_FORCEINLINE C2DBoxI GetMapwhoArea(const NThingMap::CThingMap&,long layer,const C2DBoxI& box)const {
-  long shift=LayerInfo_0137dad8[layer].ScaleShift;
+  long shift=NThingMap::LayerInfo[layer].ScaleShift;
   C2DBoxI out;out.TLX=box.TLX>>shift;out.TLY=box.TLY>>shift;
   out.BRX=((box.BRX-1)>>shift)+1;out.BRY=((box.BRY-1)>>shift)+1;return out;
  }

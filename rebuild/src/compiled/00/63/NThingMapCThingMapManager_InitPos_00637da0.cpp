@@ -10,12 +10,11 @@ class C2DCoordI { public:
     long X;
     long Y;
 };
-struct SMapwhoLevel {                           // 16 bytes
-    long CellSize;                              // +0x00
-    long Shift;                                 // +0x04
-    long _pad[2];
-};
-extern SMapwhoLevel g_MapwhoLevels[];           // 0x0137DAD8
+// Name fix (NF100, round 9, q11463 / q11282): the level table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
+//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes: Size +0, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
+//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A.
+#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#include "engine/NThingMap_CThingMap.h"
 namespace NThingMap {
 class CThingMap { public:
     unsigned char _pad00[0x20];
@@ -40,7 +39,7 @@ class CThingMapManager { public:
 
 void CThingMapManager::InitPos(const C2DCoordI& pos, CMapwhoPos& out, long level)
 {
-    long shift = g_MapwhoLevels[level].Shift;
+    long shift = NThingMap::LayerInfo[level].ScaleShift;
     SGameMapCell* cell = &Cells[pos.Y / 128 * Width + pos.X / 128];
     out.PCell = cell;
     if (shift == -1) {

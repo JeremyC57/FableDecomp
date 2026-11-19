@@ -1,0 +1,68 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x005C150B	CIsSameItemType	operator()	??RCIsSameItemType@@QBE_NABVCItem@NInventory@@@Z	CIsSameItemType::operator()	??RCIsSameItemType@@QBE_NPAVCItem@@@Z	Ego_r.pdb 0x006237C7 + FableWin.pdb 0x02376623; engine/CCategory.h ITEMQUERIES declares it; ported onto NInventory_CTCInventoryBase.h + CCategory.h with a same-TU strong copy of 0x005BC450 (GOTCHAS nf96a); both landed binders 0x005C176A / 0x005C1818 moved to this spelling in this hand-back (q11237)
+0x005C176A	std	__find_if	??$__find_if@PAVCItem@NInventory@@VCIsSameItemType@@@std@@YIPAVCItem@NInventory@@PAV12@0VCIsSameItemType@@ABUrandom_access_iterator_tag@0@@Z	std::__find_if	??$__find_if@PAUCItem@@VCIsSameItemType@@@std@@YIPAUCItem@@PAU1@0VCIsSameItemType@@ABUrandom_access_iterator_tag@0@@Z	STLport random-access __find_if (descriptive-by-library: stlport/fable_algorithm.h FIND_IF_RANDOM_ACCESS_BODY, the 0x005C0653 recipe) over NInventory::CItem (Ego_r.pdb 0x14-byte record); its landed caller 0x005C190B already binds this spelling; leaf-only (catalog name unchanged) (q11237 follow-on)
+0x005C1818	std	__find_if	??$__find_if@PBVCItem@NInventory@@VCIsSameItemType@@@std@@YIPBVCItem@NInventory@@PBV12@0VCIsSameItemType@@ABUrandom_access_iterator_tag@0@@Z	std::__find_if	??$__find_if@PBUCItem@@VCIsSameItemType@@@std@@YIPBUCItem@@PBU1@0VCIsSameItemType@@ABUrandom_access_iterator_tag@0@@Z	const twin of 0x005C176A (same evidence); its landed caller 0x005C1921 already binds this spelling; leaf-only (q11237 follow-on)
+0x0095A6C0	CAIStateGroup_HoverHornetQueen	GotoCirclePoint	?GotoCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@JW4EMovementType@@@Z	CAIStateGroup_HoverHornetQueen::GotoCirclePoint	?GotoCirclePoint@CQueenNative@@QAEJJM@Z	Ego_r.pdb 0x0097EFF0 + FableWin.pdb 0x02C114E0 (protected; Ego_d n / movement_type); header DIVEBOMB declaration; moved onto the 0x0095B9E0 header set (+ENEMYCREATUREBASE_VSLOTS, MOVETOPOSANDFACEPOS, overlay ISROUTETOPOSBLOCKEDBYTARGET); leaf-only (catalog name unchanged); binders 0x0095B9E0 (already) and 0x0095AD20 (this hand-back) bind it (q11464)
+0x0095AD20	CAIStateGroup_HoverHornetQueen	GotoSafestCirclePoint	?GotoSafestCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@W4EMovementType@@@Z	CAIStateGroup_HoverHornetQueen::GotoSafestCirclePoint	?GotoSafestCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJJ@Z	Ego_r.pdb 0x0097F480 + FableWin.pdb 0x02C11240 (protected); its only landed binder 0x0095B6F0 KeepOutOfWay already binds this spelling (the header KEEPOUTOFWAY declaration); in-place respelling of the row's existing local model; leaf-only (q11464 binder row)
+# Section 2
+0x005C150B	?IsSameItemTypeAsDefIndex@CItem_Methods@@QAE_NJ@Z	?IsSameItemTypeAsDefIndex@CItem@NInventory@@QBE_NJ@Z	0x005BC450
+0x005C150B	?IsSlotFull@CItem_Methods@@QAE_NXZ	?IsSlotFull@CItem@NInventory@@QBE_NXZ	0x005BDE50
+0x005C176A	??RCIsSameItemType@@QBE_NABUCItem@@@Z	??RCIsSameItemType@@QBE_NABVCItem@NInventory@@@Z	0x005C150B
+0x005C1818	??RCIsSameItemType@@QBE_NABUCItem@@@Z	??RCIsSameItemType@@QBE_NABVCItem@NInventory@@@Z	0x005C150B
+0x0095AD20	?GotoCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJJJ@Z	?GotoCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@JW4EMovementType@@@Z	0x0095A6C0
+0x00518900	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x006CE300	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0075BC40	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0077ADF0	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007A9300	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007A9580	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007B6300	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007F4500	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007F70D0	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007F7340	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007F9C00	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007FDB10	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00809A70	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0080A550	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0080E670	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0080ECC0	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00851490	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x008786E0	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x008E4100	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x008E60D0	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00905D10	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0091BA40	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0091C9C0	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00937420	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0095DB90	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00969FB0	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00971530	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x009793D0	?LayerInfo_0137dad8@@3PAUCLayerInfo@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00637DA0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x006378E0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00436D60	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x006B2720	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x006F3570	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x006F37B0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007197C0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007313B0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0074D710	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007512E0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00785DD0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00786140	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0078DB20	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00792E50	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007930B0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0079A050	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0079A280	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0079BF30	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007A5190	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007A63D0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007C3C20	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007F5D20	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007FCEF0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007FD110	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x007FE730	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x0080E8E0	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x00863E70	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8
+0x008AD710	?g_MapwhoLevels@@3PAUSMapwhoLevel@@A	?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B	0x0137DAD8

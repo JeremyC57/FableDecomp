@@ -125,7 +125,12 @@ class CTCBase:public CBaseClassNonCopyable{public:CThing*ParentThing;bool ToBeRe
 class C2DBoxI{public:long TLX,TLY,BRX,BRY;C2DBoxI(){}C2DBoxI(long a,long b,long c,long d):TLX(a),TLY(b),BRX(c),BRY(d){}};class C2DExtentsI{public:long XExtent,YExtent;};
 namespace NThingMap{class CThingMapCell;class CThingMapManager;class CMapwhoLevelInfo{public:long Size;C2DExtentsI Extents;long ScaleShift,NoThings;};class CMapwhoNode{public:CTCMapwho*PMapwho;CMapwhoNode*PNext,*PPrevious;CThingMapCell*PCell;};class CThingMapCell{public:CMapwhoNode*PFirstNode;};class CThingMap:public CBaseClassNonCopyable{public:std::vector<CMapwhoLevelInfo>MapwhoLevelInfo;CThingMapManager*Manager;std::vector<std::vector<CThingMapCell> >Cells;C2DBoxI Area;long NoThings;CThingMap(CThingMapManager&,const C2DBoxI&);};}
 class CTCMapwho:public CTCBase{public:NThingMap::CMapwhoNode TLNode,TRNode,BLNode,BRNode;unsigned long SearchID;unsigned char InMapwho:1;CTCMapwho(CThing&);};using namespace NThingMap;
-struct SMapwhoLevel{long Level,Shift;long _pad[2];};extern SMapwhoLevel g_MapwhoLevels[];namespace NThingMap { extern long MaxLayers; }struct SSearchStamps{unsigned long Searches,Found,Stamp;};extern SSearchStamps g_SearchStamps; // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
+// Name fix (NF100, round 9, q11463 / q11282): the level table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
+//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes: Size +0, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
+//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A.
+#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#include "engine/NThingMap_CThingMap.h"
+namespace NThingMap { extern long MaxLayers; }struct SSearchStamps{unsigned long Searches,Found,Stamp;};extern SSearchStamps g_SearchStamps; // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 class CThingObject:public CThingGameObject{public:enum{TypeMask=0x807};};class CThingBuilding:public CThingGameObject{public:enum{TypeMask=0x47};};
 // CThingFilter_None (engine/CThingFilter_None.h: unary_function<CThing,bool> base, accepts every thing); modelled locally because that header pulls
 // stlport/fable_containers.h, whose std::vector would clash with this TU's local STLport model (header debt, as the landed siblings).
@@ -155,7 +160,7 @@ void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilt
         CThingMap* map = *it;
         C2DBoxI extents = ClipAndConvertWorldMapAreaToLocalArea(*map,area);
         for (long level = 0; level < NThingMap::MaxLayers; ++level) {
-            long shift = g_MapwhoLevels[level].Shift;
+            long shift = NThingMap::LayerInfo[level].ScaleShift;
             C2DBoxI box(extents.TLX >> shift, extents.TLY >> shift, ((extents.BRX - 1) >> shift) + 1,
                         ((extents.BRY - 1) >> shift) + 1);
             long width = box.BRX - box.TLX;

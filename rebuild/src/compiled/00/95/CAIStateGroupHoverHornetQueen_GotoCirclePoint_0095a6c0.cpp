@@ -1,64 +1,82 @@
-// CAIStateGroup_HoverHornetQueen::GotoCirclePoint(long,float) -- move to a circle marker while checking the route and target.
-// Leaf: ?GotoCirclePoint@CQueenNative@@QAEJJM@Z
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail0095a6c0 length259. Donor header places CurrentCirclePoint at50 and CircleMarkers54;
-// retail uses4c and vector begin/end50/54, so a native method/layout view is required.
-#ifdef _MSC_VER
-#include "engine/CAIStateGroup_HoverHornetQueen.h"
-#endif
-#include "engine/C3DVector.h"
-#include "engine/CThing.h"
-struct CQueenThing : public CThing { public:  }; //004c73d0
-class CBaseObject;
+// CAIStateGroup_HoverHornetQueen::GotoCirclePoint(long n, EMovementType movement_type) -- hover to circle marker n, facing the target, until
+//   the move ends or the route to it is blocked by the target; a finished move makes n the current circle point.
+// Leaf: ?GotoCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@JW4EMovementType@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0095A6C0, length 259 bytes, thiscall `ret 8`.
+// Callees: IsStillRunnable 0x0095A420, CAIStateGroupBase::Terminate 0x008FCF40, CBaseIntelligentPointer::GetPItem 0x00A01B50 (the marker and the
+//   target), CThing::GetPos 0x004C73D0, the protected virtual CAIStateGroup_HoverMovementBase::AIAction_MoveToPosAndFacePos (slot 22, +0x58),
+//   IsRouteToPosBlockedByTarget 0x0095A490.
+// Name fix (NF100, round 9, q11464): Ego_r.pdb 0x0097EFF0 + FableWin.pdb 0x02C114E0 ?GotoCirclePoint@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@JW4EMovementType@@@Z
+//   (protected; engine/CAIStateGroup_HoverHornetQueen.h DIVEBOMB declares it; the landed DiveBomb 0x0095B9E0 binds it so). The old row defined
+//   ?GotoCirclePoint@CQueenNative@@QAEJJM@Z on a local CQueenNative view (23 placeholder virtuals, local pointer / marker models); it now sits on
+//   the header set of DiveBomb 0x0095B9E0 (overlay opt-in FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_ISROUTETOPOSBLOCKEDBYTARGET). Ego_d.pdb
+//   parameter and local names: n, movement_type, ret, new_pos, blocked, nav.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_GFFASTONEOVERSQRT_HOST_BITS_PASS23
+#define FABLE_RETAIL_CCOUNTEDPOINTER
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-struct CQueenPointer {virtual ~CQueenPointer();CQueenThing* item;}; //00a01b50
-struct CQueenNative {
-virtual ~CQueenNative();
-virtual void slot1();
-virtual void slot2();
-virtual void slot3();
-virtual void slot4();
-virtual void slot5();
-virtual void slot6();
-virtual void slot7();
-virtual void slot8();
-virtual void slot9();
-virtual void slot10();
-virtual void slot11();
-virtual void slot12();
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual void slot19();
-virtual void slot20();
-virtual void slot21();
-virtual long MoveTo(long,const C3DVector&,const C3DVector&,bool*,float); //slot22
-void* brain;unsigned char baseState[12];CQueenPointer target;
-C3DVector StartPos,ArenaCentrePos;bool bOneTime;unsigned char alignment[3];
-CQueenThing* PEmitter;CQueenThing* PEmitter2;unsigned char Things[12];
-long CurrentCirclePoint;CQueenPointer* first;CQueenPointer* last;CQueenPointer* capacity;
-bool IsStillRunnable(); //0095a420
-bool IsRouteToPosBlockedByTarget(long); //0095a490
-void Terminate(); //008fcf40
-long GotoCirclePoint(long,float);
-};
-long CQueenNative::GotoCirclePoint(long index,float tolerance){
-if((unsigned long)(last-first)==0)return 3;
-if(!IsStillRunnable()){Terminate();return 2;}
-CQueenPointer* markers=first;
-C3DVector point=((CQueenThing*)((CBaseIntelligentPointer*)&(markers[index]))->GetPItem())->GetPos();
-long result;bool blocked;bool arrived;
-do{
-result=MoveTo(2,point,((CQueenThing*)((CBaseIntelligentPointer*)&target)->GetPItem())->GetPos(),&arrived,tolerance);
-if(!IsStillRunnable()){Terminate();return 2;}
-blocked=IsRouteToPosBlockedByTarget(index);
-}while(result==4&&!blocked);
-if(blocked)result=3;
-if(result==2)CurrentCirclePoint=index;
-return result;
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGBASEDEF
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_COMBATPERFORMACTION
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_ATTACK_PASS23
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERMOVEMENTBASE_ATTACK_PASS23
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_DIVEBOMB
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERMOVEMENTBASE_MOVETOPOSANDFACEPOS
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_ISROUTETOPOSBLOCKEDBYTARGET
+#define FABLE_RETAIL_CCREATUREACTION_WASPQUEENDIVEATTACK_BASE
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_ONEPOINTLOS
+#define FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D
+#define FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ORIGINAL_SUM_PASS23
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_HoverHornetQueen.h"
+#include "engine/CCreatureAction_WaspQueenDiveAttack.h"
+#include "engine/CTCCreatureNavigation.h"
+
+EAIActionReturn CAIStateGroup_HoverHornetQueen::GotoCirclePoint(long n, EMovementType movement_type)
+{
+    if (CircleMarkers.size() == 0)
+        return AI_ACTION_FAILED;
+    if (!IsStillRunnable()) {
+        Terminate();
+        return AI_ACTION_FINISHED;
+    }
+    C3DVector new_pos = CircleMarkers[n]->GetPos();
+    EAIActionReturn ret;
+    bool blocked;
+    bool nav;
+    do {
+        ret = AIAction_MoveToPosAndFacePos(ACTION_REPEAT_CALLBACK, new_pos, PTargetThing->GetPos(), nav, movement_type);
+        if (!IsStillRunnable()) {
+            Terminate();
+            return AI_ACTION_FINISHED;
+        }
+        blocked = IsRouteToPosBlockedByTarget(n);
+    } while (ret == AI_ACTION_IN_PROGRESS && !blocked);
+    if (blocked)
+        ret = AI_ACTION_FAILED;
+    if (ret == AI_ACTION_FINISHED)
+        CurrentCirclePoint = n;
+    return ret;
 }
