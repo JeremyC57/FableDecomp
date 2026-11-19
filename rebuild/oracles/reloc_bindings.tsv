@@ -40234,3 +40234,6 @@ __wcsicmp	00f3fb84	00599e3f
 ?BitMasks@CPackedUIntArray@@0PAKA	013979e8	00a62ae0
 ?GetCellTotalPrimitiveCount@CEngineSceneGrid@@AAEKKK@Z	00b91d20	00b947e0
 ?ResizeLevels@CEngineSceneMap@@AAEXJ@Z	00b94540	00b947e0
+?GetAttackerProng@CCombatRing@CDefendingCombatantInfo@@QBEPBVCProng@2@ABVCThingCreatureBase@@@Z	006e87d0	006e89b0
+?GetProngVector@CProng@CDefendingCombatantInfo@@QBE?AVC3DVector@@M@Z	006e7fd0	006e89b0
+?GetRingRadius@CCombatWheel@CDefendingCombatantInfo@@QBEMJ@Z	006e8850	006e89b0

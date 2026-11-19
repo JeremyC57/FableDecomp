@@ -19,6 +19,10 @@
 //   never spills (no qword operand anywhere in retail) matches. Retail compares it against the dword DELTA_NOTIONAL_ZERO with
 //   `fcom dword` (0x006E8A52), which a double compare does not fold, hence `(float)distance` in the comparison. Text-level fit; no donor
 //   shows the double.
+//   Alternatives measured 2026-11-19 (all DIFFER): float distance with or without the (float) cast, and with `distance * 1.0f`
+//   (344v344, pop esi before the fmul at 0x006E8A7A: VC7.1 drops a float-to-float cast and folds *1.0f); double distance compared
+//   directly or as `distance * 1.0f` (348v344: fld st(1); fcompp instead of retail's fcom dword). Landed as Inferred by owner decision
+//   (2026-11-19: "land it as inferred with the double type and float cast").
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_DEF_CLASS_BASE

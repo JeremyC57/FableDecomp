@@ -1,0 +1,10 @@
+addr       parity           behav  name
+006e89b0   WARN RELOC_NAME: ?GetProngVector@CProng@CDefendingCombatantInfo@@QBE?AVC3DVector@@M@Z -> 006e7fd0 labelled 'CProng::GetRotatedPosition'
+006e89b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006e89b0   RELOCATION_MATCH PASS   GetAttackerPlacementVector
+
+WINS: 1
+  006e89b0 RELOCATION_MATCH CDefendingCombatantInfo::CCombatWheel::GetAttackerPlacementVector
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CDefendingCombatantInfoCCombatWheel_GetAttackerPlacementVector_006e89b0

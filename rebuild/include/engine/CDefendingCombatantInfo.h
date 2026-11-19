@@ -9,6 +9,9 @@ class CThingCreatureBase;class CThing;class CAttackPatternDef;
 #ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PASS22_INIT
 class CCombatManager;class CWorldMap;class CCombatTypeDef;class CAttackingCombatantInfo;
 #endif
+#ifdef FABLE_RETAIL_CCOMBATRING_ISOUTERRING
+class CCombatTypeDef; // parameter type of CCombatRing::IsOuterRing (opt-in below)
+#endif
 class CDefendingCombatantInfo {
 public:
 #ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PRONG
@@ -39,6 +42,12 @@ public:
   const CProng* GetAttackerProng(const CThingCreatureBase& attacker) const;     // 0x006E87D0
   C3DVector GetAttackerProngVector(const CThingCreatureBase& attacker) const;   // 0x006E8810
   float GetProngSeparationHalfAngle() const;                                    // 0x006E8460
+#endif
+#ifdef FABLE_RETAIL_CCOMBATRING_ISOUTERRING
+  // Opt-in (hand2a, row 0x006E89B0): Ego_r.pdb ?IsOuterRing@CCombatRing@CDefendingCombatantInfo@@QBE_NABVCCombatTypeDef@@@Z (0x00711110,
+  // 16 bytes) / FableWin 0x024103D0 (33 bytes), parameter defender_combat_type_def (Ego_d); defined in combat_manager.cpp and expanded
+  // in retail. Declaration only: no layout change.
+  bool IsOuterRing(const CCombatTypeDef& defender_combat_type_def) const;
 #endif
   float RotationAngle;float DeltaRotation;long Index;float RingThickness;std::vector<CProng> Prongs;};
  class CCombatWheel {public:

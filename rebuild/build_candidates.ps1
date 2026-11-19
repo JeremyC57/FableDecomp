@@ -399727,6 +399727,13 @@ $catalog = @(
         TestSource = '00/f3/NFractalCPerlinNoise_Get3DNoise_00f361d0_test.cpp'
         PassPattern = '00f361d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006e89b0'
+        Module = 'CDefendingCombatantInfo::CCombatWheel'
+        Source = '00/6e/CDefendingCombatantInfoCCombatWheel_GetAttackerPlacementVector_006e89b0.cpp'
+        TestSource = '00/6e/CDefendingCombatantInfoCCombatWheel_GetAttackerPlacementVector_006e89b0_test.cpp'
+        PassPattern = '006e89b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
