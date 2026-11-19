@@ -25,6 +25,11 @@ inline C2DVector C2DCoordI::ToC2DCoordF() const { return C2DVector((float)X,(flo
 // (0x01C85850) is a user copy constructor, inline in retail: copying a returned `const C2DCoordI&` leaves the source address
 // formed (`add eax,1D24h`, 0x005FBADF) beside the two field loads. Same layout and values as the implicit copy.
 class C2DCoordI { public: long X,Y;C2DCoordI(){}C2DCoordI(long x,long y):X(x),Y(y){}C2DCoordI(const C2DCoordI& other):X(other.X),Y(other.Y){} };
+#elif defined(FABLE_RETAIL_C2DCOORDI_INITIALISE)
+// hand3c opt-in (row 0x0066CD50 CRegionMinimap::BuildRegionMinimapTGA): FableWin.pdb ?Initialise@C2DCoordI@@QAEXJJ@Z (0x021875A0; inline
+// in retail: the row's position is never stored, its X / Y are the loop counters). Same layout.
+class C2DCoordI { public: long X,Y;C2DCoordI(){}C2DCoordI(long x,long y):X(x),Y(y){}
+    void Initialise(long x,long y) { X=x; Y=y; } };
 #else
 class C2DCoordI { public: long X,Y;C2DCoordI(){}C2DCoordI(long x,long y):X(x),Y(y){} };
 #endif

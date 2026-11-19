@@ -150,7 +150,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00666d40	CThingCreatureBase	GetHeightZBelowAt	352	parked	DIFFER(346v348)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00666d40.cpp	original
 0066b370	CTCSoundPlayer	PlayAllSoundEvents	1808	parked	DIFFER(1805v1808)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0066b370.cpp	gapscan/boundary
 0066c900	CRegionMinimap	IlluminateRegionMinimapTheme	384	parked	DIFFER(348v354)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0066c900.cpp	original
-0066cd50	CRegionMinimap	BuildRegionMinimapTGA	432	reserved (hand3c, not plain C++)	DIFFER(430v423)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/0066cd50.cpp	original
 00670820	CTCCoopSpirit	UpdateMovement	496	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand682/differ/00670820.cpp	original
 00671600	CThingCreatureDef	Transfer	1456	parked	codex pass24 PARKED: At 00671B06 the byte temporary and flag storage enter AL and CL in the opposite order while updating IsIndestructible. The corresponding shift and mask reverse as well.	16	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00671600/00671600.cpp	original
 00677970	CPersistTraits<CReactionFrequencyTraitsArray>	TransferIn	2272	parked	codex pass24 PARKED: Initializing the numeric trait locals improves instruction correspondence. Context allocation and numeric token string lifetimes still differ.	14	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00677970/00677970.cpp	original
@@ -167,7 +166,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00698170	CGameCameraManager	?IsVolumeInViewingFrustrum@CGameCameraManager@@UBE_NABVC3DVector@@M@Z	704	parked	codex pass24 PARKED: The first CTools calculation schedules an origin reload across the x87 operation at 0x00698299.	23	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00698170/00698170.cpp	original
 00698540	_global	CGameCameraManager_UpdatePointLightAccumulation	608	parked	DIFFER(597v603)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand475/differ/00698540.cpp	original
 00699670	CGameCameraManager	UpdateHeightLimits	768	parked	codex pass24 PARKED: The emitted vector growth and water-height path agree in meaning. Retail saves the observed position in a different register, shifts the local frame homes, and schedules the ground comparison differently.	22	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00699670/00699670.cpp	original
-00699e60	CGameCameraManager	SetScriptedCameraMode	432	reserved (hand3c, not plain C++)	DIFFER(450v431)	3	rebuild/candidates/manual/pending/2026-10-21_linux_hand264/differ/00699e60.cpp	original
 0069a2a0	_global	CGameCameraManager_UpdateMode	1456	parked	DIFFER(1267v1452)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0069a2a0.cpp	original
 006a03a0	CCreatureAction_UseObject	CCreatureAction_UseObject::Initialise	832	parked	codex pass24 PARKED: The shared action and graphic classes use the original dummy lookup and bounding query. The animation scan, registry calls, and x87 evaluation order still differ.	23	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/006a03a0/006a03a0.cpp	original
 006a1f80	CTCCarrying	PutThingInCarrySlot	672	parked	DIFFER(664v660)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/006a1f80.cpp	original
@@ -806,7 +804,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b40670	CEngineMap	PeekWaterType	1376	parked	DIFFER(1072v1125)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand316/differ/00b40670.cpp	original
 00b412a0	CEngineMap	PeekHasWater	1232	parked	DIFFER(1070v1081)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand316/differ/00b412a0.cpp	original
 00b41770	CEngineMap	PeekInterpolatedWaterHeight	784	parked	DIFFER(773v777)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1013c/differ/00b41770.cpp	original
-00b41a80	CEngineMap	PeekWaterHeight	432	reserved (hand3c, not plain C++)	DIFFER(329v424)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00b41a80.test.cpp	original
 00b420f0	CEngineWorldMap	CEngineWorldMap::OpenMapFile	672	parked	DIFFER(658v662)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00b420f0.cpp	original
 00b43720	CEngineMap	PeekThemeId	336	parked	DIFFER(320v324)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1019/differ/00b43720.cpp	original
 00b43870	CEngineMap	PeekThemeBlend	336	parked	DIFFER(320v324)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1019/differ/00b43870.cpp	original

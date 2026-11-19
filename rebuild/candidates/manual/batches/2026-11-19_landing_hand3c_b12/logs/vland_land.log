@@ -1,0 +1,15 @@
+addr       parity           behav  name
+0066cd50   RELOCATION_MATCH PASS   BuildRegionMinimapTGA
+00b41a80   RELOCATION_MATCH PASS   PeekWaterHeight
+00699e60   WARN RELOC_NAME: ?UpdateCleanupFlags@CGameCameraManager@@AAEXXZ -> 00697c60 labelled 'CMapInfo_00697c60::Clear'
+00699e60   RELOCATION_MATCH PASS   SetScriptedCameraMode
+
+WINS: 3
+  0066cd50 RELOCATION_MATCH CRegionMinimap::?BuildRegionMinimapTGA@CRegionMinimap@@QAEXABVCWideString@@@Z
+  00b41a80 RELOCATION_MATCH CEngineMap::?PeekWaterHeight@CEngineMap@@QBEMJJ@Z
+  00699e60 RELOCATION_MATCH CGameCameraManager::?SetScriptedCameraMode@CGameCameraManager@@QAEXV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CRegionMinimap_BuildRegionMinimapTGA_0066cd50
+  CEngineMap_PeekWaterHeight_00b41a80
+  CGameCameraManager_SetScriptedCameraMode_00699e60

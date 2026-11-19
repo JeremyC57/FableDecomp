@@ -400226,6 +400226,29 @@ $catalog = @(
         TestSource = '00/83/anonymousnamespace_CombatStressTestDebug_00834530_test.cpp'
         PassPattern = '00834530_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0066cd50'
+        Module = 'CRegionMinimap'
+        Source = '00/66/CRegionMinimap_BuildRegionMinimapTGA_0066cd50.cpp'
+        TestSource = '00/66/CRegionMinimap_BuildRegionMinimapTGA_0066cd50_test.cpp'
+        PassPattern = '0066cd50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b41a80'
+        Module = 'CEngineMap'
+        Source = '00/b4/CEngineMap_PeekWaterHeight_00b41a80.cpp'
+        TestSource = '00/b4/CEngineMap_PeekWaterHeight_00b41a80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT576'
+        PassPattern = '00b41a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00699e60'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_SetScriptedCameraMode_00699e60.cpp'
+        TestSource = '00/69/CGameCameraManager_SetScriptedCameraMode_00699e60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT150'
+        PassPattern = '00699e60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

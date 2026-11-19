@@ -25,6 +25,16 @@ class CWorldMap; class CGameDefinitionManager;
 #include "engine/C3DVector.h"
 #include "engine/CMainGameComponent.h"
 #endif
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_BUILDTGA
+// hand3c opt-in (row 0x0066CD50 BuildRegionMinimapTGA; needs FABLE_RETAIL_CREGIONMINIMAP_POPULATE): the three containers and the surface
+// as their Ego_r.pdb types (CSurface +0x24, STLport vector<RegionMinimapCellData> +0x48, vector<CRGBColour> +0x58; same bytes and
+// offsets). Needs FABLE_RETAIL_CSURFACE (+ _SETPIXEL_COLOUR, _SAVEASTGA), FABLE_RETAIL_CRGBCOLOUR (+ _INTERPOLATE) and
+// FABLE_RETAIL_STLP_VECTOR_SWAP / FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE as the row chooses.
+#include "stlport/fable_containers.h"
+#include "engine/CSurface.h"
+#include "engine/CRGBColour.h"
+class CWideString;
+#endif
 #pragma pack(push, 1)
 class CRegionMinimap {
 public:
@@ -66,7 +76,11 @@ public:
     long GetRegionMinimapSize() const { return RegionMinimapSize; }
     RegionMinimapCellData& CellAt(const C2DCoordI& position)
     {
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_BUILDTGA
+        return RegionMinimapCellList[RegionMinimapSize * position.Y + position.X];
+#else
         return (*reinterpret_cast<RegionMinimapCellData* const*>(RegionMinimapCellList))[RegionMinimapSize * position.Y + position.X];
+#endif
     }
     void SetRegionMinimapThemeValue(const C2DCoordI& position, RegionMinimapTheme theme) { CellAt(position).eTheme = theme; }
     void SetRegionMinimapThemeLighting(const C2DCoordI& position, float light) { CellAt(position).light = light; }
@@ -127,6 +141,35 @@ public:
     const CGameDefinitionManager& PeekDefinitionManager() const { return CMainGameComponent::Get()->PeekDefinitionManager(); }
     float IlluminateRegionMinimapTheme(const CWorldMap& worldMap, const C3DVector& position) const;   // 0x0066C900
     void PopulateRegionMinimap(const CWorldMap& worldMap);                                             // 0x0066CF00
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_BUILDTGA
+    // (hand3c, row 0x0066CD50) Ego_r.pdb / FableWin.pdb members, all inline in retail except BuildRegionMinimapTGA:
+    // ?ValidateRegionMinimapPosition@CRegionMinimap@@QBEXABVC2DCoordI@@J@Z (Ego_r 0x006A1760 is `ret 8`: asserts only in release),
+    // ?GetRegionMinimapThemeValue@..@@QBE?AW4RegionMinimapTheme@1@ABVC2DCoordI@@@Z / ?GetRegionMinimapThemeLighting@..@@QBEMABVC2DCoordI@@@Z
+    // (FableWin 0x02187BC0 / 0x02188080: size = GetRegionMinimapSize(); ValidateRegionMinimapPosition(position, size); two range asserts;
+    // idx = size * pos.Y + pos.X; RegionMinimapCellList[idx]; Ego_r 0x006A18F0 / 0x006A1930 `imul edx,[ecx]`), and
+    // ?ReleaseMinimapThemeData@..@@QAEXXZ (FableWin 0x02188B10: a local empty vector swapped with the cell list, then destroyed). Parameter / local names: Ego_d.pdb (pos, size, idx, temp).
+    void ValidateRegionMinimapPosition(const C2DCoordI& pos, long size) const { }
+    RegionMinimapTheme GetRegionMinimapThemeValue(const C2DCoordI& pos) const
+    {
+        long size = GetRegionMinimapSize();
+        ValidateRegionMinimapPosition(pos, size);
+        long idx = size * pos.Y + pos.X;
+        return RegionMinimapCellList[idx].eTheme;
+    }
+    float GetRegionMinimapThemeLighting(const C2DCoordI& pos) const
+    {
+        long size = GetRegionMinimapSize();
+        ValidateRegionMinimapPosition(pos, size);
+        long idx = size * pos.Y + pos.X;
+        return RegionMinimapCellList[idx].light;
+    }
+    void ReleaseMinimapThemeData()
+    {
+        std::vector<RegionMinimapCellData> temp;
+        RegionMinimapCellList.swap(temp);
+    }
+    void BuildRegionMinimapTGA(const CWideString& filename);                                            // 0x0066CD50
+#endif
 #endif
     long          RegionMinimapSize;                         // +0x00
     C2DBoxI       RegionMapBox;                              // +0x04
@@ -144,7 +187,11 @@ struct CRegionMinimap {
     long          RegionMapSquare_BRX;                       // +0x1c C2DBoxI::BRX
     long          RegionMapSquare_BRY;                       // +0x20 C2DBoxI::BRY
 #endif
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_BUILDTGA
+    CSurface      RegionMinimapSurface;                      // +0x24
+#else
     unsigned char RegionMinimapSurface[0x10];                // +0x24 CSurface
+#endif
     unsigned char RegionMinimapTexture[0x8];                 // +0x34 CTexture
 #ifdef FABLE_RETAIL_CREGIONMINIMAP_ILLUMINATION
     // Retail opt-in (chunk Q14, row 0x0066C900 IlluminateRegionMinimapTheme): the Ego_r.pdb member as its real type, C3DVector
@@ -155,9 +202,15 @@ struct CRegionMinimap {
     float         IlluminationDirection_Y;                   // +0x40 C3DVector::Y
     float         IlluminationDirection_Z;                   // +0x44 C3DVector::Z
 #endif
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_BUILDTGA
+    std::vector<RegionMinimapCellData> RegionMinimapCellList;  // +0x48
+    unsigned long MaxRegionMinimapThemeColours;              // +0x54
+    std::vector<CRGBColour> RegionMinimapThemeColour;         // +0x58
+#else
     unsigned char RegionMinimapCellList[0xc];                // +0x48 vector<CRegionMinimap::RegionMinimapCellData,std::allocator<CRegionMinimap::RegionMinimapCellData>_>
     unsigned long MaxRegionMinimapThemeColours;              // +0x54
     unsigned char RegionMinimapThemeColour[0xc];             // +0x58 vector<CRGBColour,std::allocator<CRGBColour>_>
+#endif
 };
 #pragma pack(pop)
 

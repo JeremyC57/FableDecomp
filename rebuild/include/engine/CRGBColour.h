@@ -3,6 +3,13 @@
 #include "rebuild_abi.h"
 #include "fable_compiler.h"
 // Layout: original PDB class V, sizeof4; native B,G,R,A at0,1,2,3.
+#ifdef FABLE_RETAIL_CRGBCOLOUR_INTERPOLATE
+// (hand3c, CRGBColour::Interpolate below) its callees: FableWin.pdb ?GFGetInterpolatedColour@@YA?AVCRGBColour@@V1@0K@Z (0x00A44250, __cdecl)
+// and the GFFloatToLongNear asm helper.
+#include "engine/GFFloatToLongNear.h"
+class CRGBColour;
+CRGBColour GFGetInterpolatedColour(CRGBColour a, CRGBColour b, unsigned long t);   // 0x00A44250
+#endif
 #ifdef FABLE_RETAIL_CRGBCOLOUR_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
 // Both original TPI records,27 members. C13ctors36..39/Initialise41.
 class CRGBALong;
@@ -121,6 +128,13 @@ public:
     // 0x01D73670 (a four-channel packing is over 50 bytes at /Od). The channel packing in CRenderManager2D::Draw2DLine 0x009DD96E /
     // Draw2DTexture 0x009DC6ED is those rows' own expression over GetA / GetR / GetG / GetB (landing fz, 2026-11-13).
     unsigned long GetD3DCOLOR() const { return IntValue; }
+#endif
+#ifdef FABLE_RETAIL_CRGBCOLOUR_INTERPOLATE
+    // hand3c opt-in (row 0x0066CD50 CRegionMinimap::BuildRegionMinimapTGA): Ego_r.pdb / FableWin.pdb ?Interpolate@CRGBColour@@QBE?AV1@V1@M@Z
+    // (FableWin 0x02188AA0: GFGetInterpolatedColour(*this, col, GFFloatToLongNear(interp * 256)); Ego_d.pdb names col / interp; FableWin's literal is a double, retail's a
+    // float 0x0125B240); inline in retail (0x0066CE21..0x0066CE67, no out-of-line copy called). Needs FABLE_RETAIL_CRGBCOLOUR (the
+    // Initialise copy constructor), the callee declarations above the class.
+    CRGBColour Interpolate(CRGBColour col, float interp) const { return GFGetInterpolatedColour(*this, col, GFFloatToLongNear(interp * 256.0f)); }
 #endif
     unsigned char GetR() const { return R; }
     unsigned char GetG() const { return G; }

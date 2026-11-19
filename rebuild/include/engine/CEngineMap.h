@@ -96,6 +96,10 @@ public:
     float PeekWaterDepth(long x, long y) const;
     float PeekInterpolatedWaterHeight(long x, long y, long radius) const;
 #endif
+#ifdef FABLE_RETAIL_CENGINEMAP_PEEKWATERHEIGHT
+    // hand3c opt-in (row 0x00B41A80): Ego_r.pdb / FableWin.pdb ?PeekWaterHeight@CEngineMap@@QBEMJJ@Z (retail 0x00B41A80, `ret 8`).
+    float PeekWaterHeight(long x, long y) const;
+#endif
 private:
     // 0x00B43AF2: `fmul [128.0f] ; fstp/fld ; fistp ; fild ; fmul [1/128.0f]` -- heights snap to 1/128 of a unit.
     float QuantiseLandscapeHeight(float height) const
