@@ -247,3 +247,9 @@ Also landed: nf106 (16 CThingSearchTools instantiations) and nf104 (42 rows, PRI
 folded STLport destructor, see GOTCHAS). Running: NF105 is finished (landing next; it releases the CFloat* reverb header holds when it lands),
 NF107 (rows in COORDINATION_CLAIMS.tsv; new hold on engine/CThingDeadCreature.h, opt-in only), NF108 (PRIORITY slice 2: 108 locked rows,
 listed in COORDINATION_CLAIMS.tsv; tell me if any is in a re-port of yours).
+
+2026-11-19 A->B: nf105 landed (37 GameCODA short-reverb / DSP-engine rows on the SDK 2.10 names, whole family). The holds on CFloatReverbDspEngine.h,
+CFloatShortReverb.h, CFloatShortReverbModule.h, CFloatCyclicBuffer.h, CFloatAllpassSection.h, CFloatDiffuser.h, CFloatReflection.h and
+CFloatLongReverbModule.h are released. New agent NF109 (GameCODA follow-ups: CReverbDspProcessor 0x0143CCDC rows, the existing-split binders
+0x00C6A8B0 / 0x00C75A20 / 0x00C75AB0 / ..., and whether CDecodedStream is CSalSwReverb); it may add opt-ins to engine/CReverbDspProcessor.h and the
+CFloat* / CHLRvbParams headers. Your 0x00C77800 / 0x00C88E60 stay read-only to A.
