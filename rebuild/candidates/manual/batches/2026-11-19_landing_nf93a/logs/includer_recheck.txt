@@ -1,0 +1,5 @@
+# includer recheck after landing nf93a: 935 rows (direct + transitive includers of the 4 changed headers)
+good 933, bad 2
+# bad (both DIFFER with the pre-round-8 and 11-18 include trees too: pre-existing, FINDINGS_LOG 2026-11-19)
+00589a30	00589a30   DIFFER(549v549)  PASS   CTCInventory::OpenPCMapMenu
+0059c747	0059c747   DIFFER(35v29)    PASS   CTCInventoryTrade::RemoveItemFromInventory

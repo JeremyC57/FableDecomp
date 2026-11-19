@@ -24,7 +24,7 @@ Recheck from the repo after landing (`logs/recheck.log`): 10 RELOCATION_MATCH + 
 - engine/CCreatureAction_CastWillForceSpell.h: `FABLE_RETAIL_CCREATUREACTION_CASTWILLFORCESPELL_CLASS` (generated flat class kept under `#else`; its 5
   asserts pinned with FABLE_STATIC_ASSERT_AT at their old lines 83..87).
 - engine/CCombatAction_WillForcePushInto.h: `FABLE_RETAIL_CCOMBATACTION_WILLFORCEPUSHINTO_FINISHACTION`.
-- Includer recheck: every landed row that includes these headers directly or through another header (935 rows): `logs/includer_recheck.txt`.
+- Includer recheck (935 rows, direct + transitive): 933 good; 0x00589A30 and 0x0059C747 DIFFER, pre-existing (same with the 11-18 headers; FINDINGS_LOG). `logs/includer_recheck.txt`.
 
 ## Checks
 - `naming/rebind.py`: removed 34 binding lines, added 29; `bindings_multi_check.py` at its baseline (`NullCoord`).
