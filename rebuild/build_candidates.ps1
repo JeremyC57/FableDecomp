@@ -400722,6 +400722,13 @@ $catalog = @(
         TestSource = '00/55/NUISystemCMorphingSprite_GetDataFromDef_005542f0_test.cpp'
         PassPattern = '005542f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0085b2a0'
+        Module = 'CThingSearchTools'
+        Source = '00/85/CThingSearchTools_listCThingGameObjectCFilterBind4CThingFilterIsNo_0085b2a0.cpp'
+        TestSource = '00/85/CThingSearchTools_listCThingGameObjectCFilterBind4CThingFilterIsNo_0085b2a0_test.cpp'
+        PassPattern = '0085b2a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

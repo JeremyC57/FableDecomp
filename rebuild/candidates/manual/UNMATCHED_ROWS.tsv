@@ -393,7 +393,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00858e00	`anonymousnamespace'	GetHelperPointNamesFromStrikeEventName	576	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand480/differ/00858e00.cpp	original
 008591e0	CCombatActionBase	PerformPossibleDamageAction	1152	parked	DIFFER(1091v1146)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/008591e0.cpp	original
 00859ef0	CCombatActionBase	OnAnimationLoaded	1344	parked	DIFFER(1198v1196)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00859ef0.cpp	original
-0085b2a0	CThingSearchTools	GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnc	784	reserved (hand4d, in-house)	DIFFER(775v775)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/0085b2a0.cpp	original
 0085cbd0	CThingMap	DebugDraw	528	parked	DIFFER(522v518)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0085cbd0.cpp	original
 0085ed90	vector<EWeaponClass	_Umove<EWeaponClass*>	96	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0085ed90.test.cpp	original
 008633b0	CThingBodyReorienter	ReorientBodyYZForSlopes	928	parked	DIFFER(874v917)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand307/differ/008633b0.cpp	original

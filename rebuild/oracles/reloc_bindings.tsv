@@ -40326,3 +40326,5 @@ __imp__SetFileTime@16	0143fd64	009c38c0
 ?tolerance_band@?1??GetToleranceBand@CApplyAdditionalImpulseIfInCombatAndTooClose@@SIMXZ@4MA	01381198	00727220
 ?SetAsBurning@CFirePoint@NFire@@QAEXXZ	00780540	00780d80
 ?AddChangeText@CStatBar@NPlayerGui@@QAEXABVCRGBColour@@ABVCWideString@@J_N@Z	0064dae0	00439bb0
+??RCThingFilter_CombatCanCollideOrInteractWithThing@?A0xfbaeb011@@QBE_NABVCThing@@@Z	00857250	0085b2a0
+??RCThingFilter_CombatIsStrikeToStrike@?A0xfbaeb011@@QBE_NABVCThing@@@Z	008565e0	0085b2a0

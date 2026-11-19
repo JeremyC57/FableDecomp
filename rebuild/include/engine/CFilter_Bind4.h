@@ -14,7 +14,15 @@ protected:
  const TF4& F4;
 public:
  CFilter_Bind4(const TF1& f1,const TF2& f2,const TF3& f3,const TF4& f4):F1(f1),F2(f2),F3(f3),F4(f4){}
+#ifdef FABLE_RETAIL_CFILTER_BIND4_FORCEINLINE
+ // Per-TU inline opt-in (hand4d, row 0x0085B2A0 GetAllThingsInRoughArea<CThingGameObject, list, CFilter_Bind4<IsNot, CombatIsStrikeToStrike,
+ // CombatOverlappingSphere, CombatCanCollideOrInteractWithThing> >): retail expands the call operator in place (0x0085B406..0x0085B4C2)
+ // although the same TU also has an out-of-line copy (0x0085B160); with the inline sphere test also expanded, VC7.1's plain-inline budget
+ // calls it out of line (581 v 775 bytes).
+ template<class T> FABLE_FORCEINLINE bool operator()(const T& t)const{return F1(t)&&F2(t)&&F3(t)&&F4(t);}
+#else
  template<class T> bool operator()(const T& t)const{return F1(t)&&F2(t)&&F3(t)&&F4(t);}
+#endif
 };
 template<class A,class B,class C,class D> inline CFilter_Bind4<A,B,C,D> FABLE_FASTCALL GFFilter_Bind4(const A& a,const B& b,const C& c,const D& d){return CFilter_Bind4<A,B,C,D>(a,b,c,d);}
 #endif
