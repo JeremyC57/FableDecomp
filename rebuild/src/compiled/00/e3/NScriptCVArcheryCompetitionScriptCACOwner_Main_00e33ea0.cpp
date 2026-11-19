@@ -5,7 +5,7 @@
 // Identity: the CAC_Owner entity vtable slot at .rdata 0x012E30FC is the only reference; Ego_r.pdb (0x00E83BB0) and FableWin.pdb (0x039381B0) ?Main@CAC_Owner@CV_ArcheryCompetitionScript@NScript@@EAEXXZ.
 // Callees: CScriptThing copy 0x004ABE90 / ~ 0x004AA840; SetPredicate 0x00F35B10, ~CIsThingAlive 0x00E241B0 (out of line); IsActiveThreadTerminating 0x00F35B30;
 //   operator new 0x00BFEA1A, CSpawnedFuncBase 0x00CDD450, CCharString + 0x0099F570; GetRandomSpeech 0x00E362B0, ResetRandomSpeechTime 0x00E337C0 (landed),
-//   DoCountDown 0x00E36750, DoTimesUp 0x00E36590; rand 0x00BFEB16; CDefString -> CCharString 0x00415D70 (FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION).
+//   DoCountDown 0x00E36750, DoTimesUp 0x00E36590; rand 0x00BFEB16; CDefString -> CCharString through GetString 0x00415D70 (FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING).
 // EVIDENCED by retail bytes: EntitySetFacingAngleTowardsThing(Game->GetHero(), Me, false) in the random-speech and talk arms (push 0 ; push &Me ; call GetHero ; push eax at 0x00E34299 and 0x00E3472E);
 //   each random prize index is computed before the prize vector is addressed: retail reloads pGlobalScriptDef after rand() (0x00E35BD3 size, 0x00E35BE7 rand, 0x00E35BF0 reload) -- the
 //   index local `idx` per prize (FITTED spelling of that order: indexing the vector inline makes VC7.1 keep the def pointer in ebp across rand(), 9268 bytes).
@@ -20,7 +20,7 @@
 #define FABLE_RETAIL_CCHARSTRING_CONCAT_STRING
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_DEF_CLASS_BASE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR

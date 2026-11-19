@@ -3,13 +3,16 @@
 // Flags: /Os /Oy-
 // Retail: Fable.exe 0x0041D21B, RELOCATION_MATCH (chunk 849 rebase of the held Codex pass 12 source).
 // Callees: CDefinitionManager::GetDef<NUISystem::CUIDef> (same-TU noinline body under auto_inline(off)), operator new, the 44 UI
-//   component constructors (their retail sizes come from the *_MEMBERS opt-ins and the new NUISystem headers), CDefString::GetString.
+//   component constructors (their retail sizes come from the *_MEMBERS opt-ins and the new NUISystem headers), CDefString::operator
+//   CCharString 0x00415DD0 (declared only, FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION: under /Os the plain inline forwarder is
+//   expanded around GetString 0x00415D70; the def name binds a const reference, binding swap 2026-11-19).
 // Shape: Codex body unchanged; the visible noinline GetDef body stops VC7.1 reloading and null-testing the definition pointer.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CGAMECOMPONENT
@@ -150,11 +153,11 @@ NUISystem::CComponent* NUISystem::CManager::CreateComponent(long definition)
     case UI_TYPE_EDIT_BOX:presult=new CEditBox(definition);break;
     }
     if(m_pDefinitionManager){
-        CCharString name=m_pDefinitionManager->GetDefNameFromGlobalIndex(definition).GetString();
+        const CCharString& name=m_pDefinitionManager->GetDefNameFromGlobalIndex(definition);
         presult->SetName(name);
         return presult;
     }else{
-        CCharString name=CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(definition).GetString();
+        const CCharString& name=CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(definition);
         presult->SetName(name);
         return presult;
     }

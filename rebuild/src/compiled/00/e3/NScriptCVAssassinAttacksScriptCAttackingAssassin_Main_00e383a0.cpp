@@ -5,7 +5,7 @@
 // Callees: CScriptThing copy @ 0x004ABE90, ~CIsThingAlive @ 0x00E241B0 (out of line here), SetPredicate @ 0x00F35B10,
 //          IsDone @ 0x00F35B30, CBaseObject ctor @ 0x0099A380, the scripted-thing handle's IsValid @ 0x00CD23B9 /
 //          Release @ 0x00CD2770 / FollowThing @ 0x007E7320 / StopFollowingThing @ 0x007E7330 / destructor @ 0x007E74D0,
-//          IsDistanceBetweenThingsUnder @ 0x00CBE2FF, rand @ 0x00BFEB16, CDefString::operator CCharString @ 0x00415D70,
+//          IsDistanceBetweenThingsUnder @ 0x00CBE2FF, rand @ 0x00BFEB16, CDefString::GetString() 0x00415D70,
 //          ~CCharString @ 0x0099EAE0; CGameScriptInterface slots 7, 8, 70 GetHero, 597 EntitySetThingAsEnemyOfThing,
 //          690 PlaySoundOnThing. Quest globals 0x0143E90C: shout distance +0x3a0 (long), taunt vector +0x3ac/+0x3b0.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8} + ParentClass +0x14, PMasterData +0x18, a "taunted" flag +0x1c; the
@@ -66,7 +66,7 @@ extern "C" int __cdecl rand();                         // 0x00BFEB16 (MSVCR71)
 //   retail offsets) names them: AssassinShoutDistance -> AssassinScreamProximity (+0x3a0).
 // agentNF60: AssassinTauntsBegin / End (+0x3ac / +0x3b0) -> AssassinScreamSoundIds (std::vector<CDefString>, +0x3ac) through size() / operator[].
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 

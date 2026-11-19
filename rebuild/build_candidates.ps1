@@ -92942,15 +92942,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00415d70'
         Module = 'CDefString'
-        Source = '00/41/CDefString_operatorCCharString_00415d70.cpp'
-        TestSource = '00/41/CDefString_operatorCCharString_00415d70_test.cpp'
+        Source = '00/41/CDefString_GetString_00415d70.cpp'
+        TestSource = '00/41/CDefString_GetString_00415d70_test.cpp'
         PassPattern = 'PASS_00415d70'
     }
     [pscustomobject]@{
         Address = '00415dd0'
         Module = 'CDefString'
-        Source = '00/41/CDefString_GetString_00415dd0.cpp'
-        TestSource = '00/41/CDefString_GetString_00415dd0_test.cpp'
+        Source = '00/41/CDefString_operatorCCharString_00415dd0.cpp'
+        TestSource = '00/41/CDefString_operatorCCharString_00415dd0_test.cpp'
         PassPattern = 'PASS_00415dd0'
     }
     [pscustomobject]@{
@@ -274935,6 +274935,7 @@ $catalog = @(
         Source = '00/e1/NScriptCQWaspBossScript_DoMission_00e12580.cpp'
         TestSource = '00/e1/NScriptCQWaspBossScript_DoMission_00e12580_test.cpp'
         PassPattern = '00e12580_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT60'
     }
     [pscustomobject]@{
         Address = '00e1cfd0'
@@ -399627,6 +399628,13 @@ $catalog = @(
         Source = '00/8b/CCreatureActionMidAttackSide_Initialise_008b6ad0.cpp'
         TestSource = '00/8b/CCreatureActionMidAttackSide_Initialise_008b6ad0_test.cpp'
         PassPattern = '008b6ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066a9e0'
+        Module = 'CTCSoundPlayer'
+        Source = '00/66/CTCSoundPlayer_PlayCollisionSound_0066a9e0.cpp'
+        TestSource = '00/66/CTCSoundPlayer_PlayCollisionSound_0066a9e0_test.cpp'
+        PassPattern = '0066a9e0_TEST PASS'
     }
 )
 

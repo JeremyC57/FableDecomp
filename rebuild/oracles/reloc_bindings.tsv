@@ -24554,7 +24554,7 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ??1PKCTRRedblackTree@@QAE@XZ	00c19250	00c0a160
 ?GGame@@3VCGame@@A	013b83d0	00401b80
 ?Uninitialise@CGame@@QAEXXZ	00412f60	00401b80
-?GetString@CDefString@@QBE?AVCCharString@@XZ	00415dd0	00698a30
+?GetString@CDefString@@QBE?AVCCharString@@XZ	00415d70	00e02e50
 ??$GetAllThings@VCThing@@UCThingList@N_004ab4f0@@V?$CFilter_Bind2@VCThingFilter_None@@VCThingFilter_HasTC@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_None@@VCThingFilter_HasTC@@@@AAUCThingList@N_004ab4f0@@@Z	004acf90	006c5e90
 ?GetAllThingsInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABUCThingFilter_All@@AAUCThingVector@@@Z	007197c0	007c04a0
 ?GetAllThingsInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsNot@@AAUCThingVector@@@Z	00725f10	007c04a0
@@ -30622,8 +30622,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z	006a15a0	008e4100
 ?_M_insert_overflow@ThingVector@@QAEXPAPAVCThingAICreature@@ABQAV2@ABUFalseType@@I_N@Z	00515cc0	008e4100
 ?GetDef@CGameDefinitionManager@@QAE_NJPAUCDefPointerMultiStrike@@@Z	007cd760	008e6690
-??BCDefString@N_00415dd0@@QAE?AVCCharString@@XZ	00415d70	008e7040
-??BCDefString@N_00415dd0@@QBE?AVCCharString@@XZ	00415dd0	008e7040
 ?CanFlourish@CTCCombat@@QBE_NXZ	00733180	008e7040
 ?GetCombatAnimationSet@CThingCreatureBase@@QBEABVCAnimationSet@@XZ	00663260	008e7040
 ?GetCombatManager@CThingCreatureBase@@QBEPAVCCombatManager@@XZ	00661ec0	008e7040
@@ -38732,7 +38730,7 @@ __imp__recvfrom@24	01440518	008f9320
 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	007e7450	00ddc980
 ?MakeRacerComment@CQ_PrisonRaceScript@NScript@@QAE_NABVCScriptThing@@ABVCCharString@@@Z	00ddcf50	00ddc980
 ?DealWithHeroHittingMe@CVictimsBrother@CQ_RansomVictimScript@NScript@@AAEXXZ	00deb000	00dea3f0
-??BCDefString@@QBE?AVCCharString@@XZ	00415d70	00e02e50
+??BCDefString@@QBE?AVCCharString@@XZ	00415dd0	005c0e81
 ?SetPredicate@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z	00f35b10	00e02e50
 ?RegisterFilter@CBanditCronies@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z	00f35b10	00e03810
 ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	007e72a0	00e0ad40
@@ -40219,3 +40217,4 @@ __wcsicmp	00f3fb84	00599e3f
 ?GetInverseMatrixPart@CQuadric@QuadricOptimiserInternals@@QBE?AVCMatrix3x4@@XZ	00ac70f0	00ac7750
 ?GetSignPostPos@CTCBuyableHouse@@AAE_N_NAAVC3DVector@@PAVCRightHandedSet@@@Z	006bfcd0	006c0970
 ?IsPosInViewingFrustrum@CTools@NCameraModes@@QBE_NABVC3DVector@@00M@Z	00875120	00697f80
+?InternalPlaySoundEventAtPos@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVC3DVector@@ABVCCharString@@_N3@Z	0066a920	0066a9e0

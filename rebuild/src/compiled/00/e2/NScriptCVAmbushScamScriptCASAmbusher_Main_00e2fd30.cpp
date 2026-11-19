@@ -7,7 +7,7 @@
 //          "CCreatureAction_TrollWhackGroundBase::Initialise" is propagated), the game interface's slots 599
 //          EntitySetThingAsAllyOfThing, 70 GetHero, 451 GiveThingBestEnemyTarget, 7 NewScriptFrame, 690 PlaySoundOnThing
 //          (cgsi_slots_aligned.tsv), IsDistanceBetweenThingsUnder @ 0x00CBE2FF (__fastcall: the two things in ecx/edx, the
-//          float on the stack), rand @ 0x00BFEB16 (MSVCR71), CDefString::operator CCharString @ 0x00415D70, ~CCharString
+//          float on the stack), rand @ 0x00BFEB16 (MSVCR71), CDefString::GetString() 0x00415D70, ~CCharString
 //          @ 0x0099EAE0, ~CScriptThing @ 0x004AA840; data: pGlobalScriptDef @ 0x0143E90C (sound-name vector +0x2c0/+0x2c4,
 //          ambush distance +0x2cc).
 // Shape: the trickster is a frame local destroyed at both exits; the early `if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) return;` sits before the rest of
@@ -42,7 +42,7 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 //   retail offsets) names them: AS_AmbushDistance -> AmbushScamScreamProximity (+0x2cc).
 // agentNF60: AS_AmbushSoundsBegin / End (+0x2c0 / +0x2c4) -> AmbushScamScreamSoundIds (std::vector<CDefString>, +0x2c0) through size() / operator[].
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 

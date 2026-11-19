@@ -14,7 +14,7 @@
 //   0x005B369A), and it ends with the base call NInventory::CTCInventoryBase::OnSerialise 0x005BFD5E (`ret 8`, same arguments).
 // Callees (all bound in reloc_bindings.tsv at the same addresses; see NAME_FIXES.tsv for the stand-in spellings replaced):
 //   CPersistContext::IsSaving 0x004AEF50 (out of line in this TU), TransferVector<CCharString> 0x0049B8D0 / <long> 0x005815D6,
-//   CDefClassBase vtable slot 10 GetInstantiationName (+0x28), CDefString::GetString 0x00415DD0, vector<CCharString>::push_back
+//   CDefClassBase vtable slot 10 GetInstantiationName (+0x28), CDefString::operator CCharString 0x00415DD0, vector<CCharString>::push_back
 //   0x0044BFF0 / erase(first,last) 0x0043336A (clear) / ~vector 0x00414EA0, vector<long>::push_back 0x00485FF3,
 //   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, GetNumAssignableSpecialMoveButtons 0x005EDCF0,
 //   CVectorMap<long,EHeroAbility>::LowerBound 0x005F7F4C, CTCBase::PeekWorld 0x00686A80 / GetDefinitionManager 0x006869D0 /
@@ -25,8 +25,11 @@
 // Literals: "HeroAbility" 0x01256F94, "AbilityLevels" 0x01256F84, "AbilityButton" 0x01256F74, "ReceivedAbilities" 0x01256F60,
 //   "" 0x0122D70E. World flag: CWorld::IsSerialisingAboutToLoadHeroState() (FableWin.pdb inline accessor, [world+0x101]).
 // Shape (how each retail detail was reached; see NOTES.md for the grade log):
-//   - every def name pushed into a name vector is a NAMED CCharString in its own block (`lea eax,<name>` after GetString, the
-//     GetString result pointer pushed ahead of the virtual GetInstantiationName call, the destructor before the levels push);
+//   - every def name pushed into a name vector is a NAMED CCharString in its own block (`lea eax,<name>` after the conversion, the
+//     conversion's result pointer pushed ahead of the virtual GetInstantiationName call, the destructor before the levels push);
+//     since the binding swap 2026-11-19 (0x00415DD0 = ??B) the conversion is declared only (FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION) and
+//     called explicitly: `.operator CCharString()` gives the named copy-initialised local without the extra copy an implicit
+//     conversion adds (a const reference shifts one address operand at the second site, `[edi+eax]` v `[eax+edi]`);
 //     the empty names are implicit `""` conversions (re-addressed with `lea`);
 //   - the received-order save loop reads the ability into a named EHeroAbility first (`cmp [eax+4],esi ; je ; mov eax,[eax+4]`);
 //   - the received-order load loop names the element (`const CCharString& name`, homed at [ebp-14h] for the lookup push);
@@ -39,6 +42,7 @@
 //     RELOCATION_MATCH against 0x005EE3B3), so the misc def is known not to escape: in-place `dec [ecx+4]` release, no null test.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CDEFINITIONMANAGER
@@ -114,7 +118,7 @@ void CTCInventoryAbilities::OnSerialise(CPersistContext& context, bool inGameSav
         for (long ability = 0; ability < MAX_NUMBER_OF_HERO_ABILITIES; ++ability) {
             if (Abilities[ability].first >= 0 && !Abilities[ability].second.IsNull()) {
                 {
-                    CCharString name = Abilities[ability].second->GetInstantiationName().GetString();
+                    CCharString name = Abilities[ability].second->GetInstantiationName().operator CCharString();
                     ability_names.push_back(name);
                 }
                 ability_levels.push_back(Abilities[ability].first);
@@ -127,7 +131,7 @@ void CTCInventoryAbilities::OnSerialise(CPersistContext& context, bool inGameSav
             CVectorMap<long, EHeroAbility>::iterator it = AbilityButtons.Find(button);
             if (it != AbilityButtons.end()) {
                 if (!Abilities[it->second].second.IsNull()) {
-                    CCharString name = Abilities[it->second].second->GetInstantiationName().GetString();
+                    CCharString name = Abilities[it->second].second->GetInstantiationName().operator CCharString();
                     ability_names.push_back(name);
                 } else
                     ability_names.push_back("");
@@ -140,7 +144,7 @@ void CTCInventoryAbilities::OnSerialise(CPersistContext& context, bool inGameSav
             EHeroAbility ability = ReceivedAbilityOrder[i];
             if (Abilities[ability].first >= 0) {
                 if (!Abilities[ability].second.IsNull()) {
-                    CCharString name = Abilities[ability].second->GetInstantiationName().GetString();
+                    CCharString name = Abilities[ability].second->GetInstantiationName().operator CCharString();
                     received_names.push_back(name);
                 }
             } else

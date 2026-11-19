@@ -1,5 +1,5 @@
 address	grade	bytes	test	grades_used	notes
-0066a9e0	DIFFER (vland RELOCATION_MATCH PASS + 2 binding WARNs)	626v626	PASS (test/0066a9e0.cpp, 8 mutants)	~12	ESCALATED (Fable advisor: names 0x00415D70/0x00415DD0 likely swapped; candidate differ/0066a9e0_fablewin_shape.cpp held pending owner proof); FableWin shape masks to 0 hunks but site E calls ??BCDefString 0x00415D70 not GetString 0x00415DD0; inline-budget residue
+0066a9e0	LANDED 2026-11-19 (RELOCATION_MATCH + PASS under the CDefString binding swap)	626v626	PASS (test/0066a9e0.cpp, 8 mutants)	~12	ESCALATED (Fable advisor: names 0x00415D70/0x00415DD0 likely swapped; candidate differ/0066a9e0_fablewin_shape.cpp held pending owner proof); FableWin shape masks to 0 hunks but site E calls ??BCDefString 0x00415D70 not GetString 0x00415DD0; inline-budget residue
 00ae3c30	DIFFER	2310v2310 (draft, 1 hunk)	none	~10	ESCALATED; GetAsCArray spelling exact; const 0 loses ebx (regalloc)
 00b0d360	RELOCATION_MATCH	2240v2240	PASS (vland strict, 11 mutants killed)	~9	Fable advisor c2_full_2arg: visible CPersistContext::Transfer<T> body (CPSCLight 0x00B1A870 opt-in preamble) folds bool temp; 2-arg Transfer + GetDefaultVal; no defaultScale local
 006e89b0	DIFFER	344v344	none	~16	ESCALATED; epilogue sched: fmul vs pop esi

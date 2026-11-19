@@ -1,5 +1,6 @@
 // CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation(const CThing&, C3DVector&, CRightHandedSet&, bool, float) -- position and orientation of a carried thing: its carry slot's dummy on the carrier's graphic (else the carrier's physics position and facing), turned for a creature's primary slot, and pointed at the secondary dummy for a two-handed hold
-// Grade: DIFFER(864v864, 3 hunks; q masks a wrong call: 2nd conversion calls ??B 0x00415D70, retail GetString 0x00415DD0) -- see NOTES
+// Grade: RELOCATION_MATCH since the CDefString binding swap 2026-11-19 (0x00415DD0 = ??B): the plain implicit conversion now binds the retail
+//   callee (the old grade line read it as GetString 0x00415DD0 v ??B 0x00415D70) -- see NOTES
 // Leaf: ?GetCarriedThingInterpolatedPosAndOrientation@CTCCarrying@@QBE_NABVCThing@@AAVC3DVector@@AAVCRightHandedSet@@_NM@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006A1A00, 864 bytes, thiscall `ret 14h`.
 #define FABLE_RETAIL_CCHARSTRING
@@ -57,9 +58,9 @@
 extern bool g_bTurnPrimarySlotCarriedThing;
 
 // Spelling notes (agentC34). EVIDENCED: the named physics pointer + the temporary up vector inside the Init call (retail stores the
-// three up floats after the facing call's pushes, 0x006A1B73..0x006A1B83); the secondary name fetched with GetString 0x00415DD0
-// (called at 0x006A1C5A before any GetDummyObject push, destroyed at 0x006A1C87 before the result test). FITTED: the inner block
-// with `bool found` that gives that lifetime (an implicit conversion gives the same bytes but calls ??B 0x00415D70).
+// three up floats after the facing call's pushes, 0x006A1B73..0x006A1B83); the secondary name converted by ??B 0x00415DD0
+// (called at 0x006A1C5A before any GetDummyObject push, destroyed at 0x006A1C87 before the result test; bound to a const reference,
+// binding swap 2026-11-19). FITTED: the inner block with `bool found` that gives that lifetime.
 
 bool CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation(const CThing& thing, C3DVector& pos, CRightHandedSet& orientation,
                                                                bool interpolate, float time) const
@@ -94,7 +95,7 @@ bool CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation(const CThing& thi
             CRightHandedSet secondary_orientation;
             bool found;
             {
-                CCharString secondary_name = def->SecondaryDummyPosName.GetString();
+                const CCharString& secondary_name = def->SecondaryDummyPosName;
                 found = GetParentThing().GetTCGraphicAppearance()->GetDummyObject(secondary_name, 0, flags, secondary_pos,
                                                                                   secondary_orientation, time);
             }

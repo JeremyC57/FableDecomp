@@ -1,0 +1,270 @@
+addr       parity           behav  name
+00e40e80   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00e40e80   RELOCATION_MATCH PASS   Main
+00ec8300   RELOCATION_MATCH PASS   Main
+00ec9d30   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ec9d30   RELOCATION_MATCH PASS   Main
+00ec5de0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00ec5de0   RELOCATION_MATCH PASS   Main
+005f6e40   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+005f6e40   RELOCATION_MATCH PASS   OnSerialise
+006deee0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+006deee0   RELOCATION_MATCH PASS   GlobalUpdate
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefString
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CThing
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CWorld
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071c9f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0071c9f0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+0071c9f0   RELOCATION_MATCH PASS   UpdateIdleParticles
+008e7040   WARN SHARED_HEADER_AVAILABLE CThing
+008e7040   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase
+008e7040   WARN SHARED_HEADER_AVAILABLE CAnimationSet
+008e7040   WARN SHARED_HEADER_AVAILABLE CCombatantInfo
+008e7040   WARN SHARED_HEADER_AVAILABLE CCombatManager
+008e7040   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+008e7040   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+008e7040   WARN SHARED_HEADER_AVAILABLE CTCCombat
+008e7040   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+008e7040   WARN SHARED_HEADER_AVAILABLE CHeroAbilityStatPackage
+008e7040   WARN RELOC_NAME: ?GetComboMultiplier@CTCHeroStats@@QBEJXZ -> 006d6570 labelled 'CTCHeroExperience::GetExperiencePickUpMultiplier'
+008e7040   WARN RELOC_NAME: ?IsMetBy@CHeroAbilityStatPackage@@QBE_NPBVCTCHeroStats@@@Z -> 00851b50 labelled 'CHeroAbilityStatPackage::IsValid'
+008e7040   WARN RELOC_NAME: ?CanFlourish@CTCCombat@@QBE_NXZ -> 00733180 labelled '_global::Forward_IsCombatant_via0x24_00733180'
+008e7040   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+008e7040   WARN RELOC_NAME: ??ECAttackerIterator@@QAEAAU0@XZ -> 006ef790 labelled 'CRetailTreeIterator::Increment'
+008e7040   RELOCATION_MATCH PASS   IsAbilityValid
+004b4c50   WARN SHARED_HEADER_AVAILABLE CDefString
+004b4c50   WARN SHARED_HEADER_AVAILABLE CThing
+004b4c50   WARN SHARED_HEADER_AVAILABLE CQuestCardDef
+004b4c50   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+004b4c50   WARN SHARED_HEADER_AVAILABLE CWorld
+004b4c50   WARN SHARED_HEADER_AVAILABLE CThingObject
+004b4c50   WARN SHARED_HEADER_AVAILABLE CPlayer
+004b4c50   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+004b4c50   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004b4c50   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+004b4c50   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004b4c50   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b4c50   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+004b4c50   RELOCATION_MATCH PASS   ActivateTestQuestCard
+00e2fd30   WARN SHARED_HEADER_AVAILABLE CV_AmbushScamScript
+00e2fd30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e2fd30   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e2fd30   RELOCATION_MATCH PASS   Main
+00eb3d10   RELOCATION_MATCH PASS   OnPredicateFail
+00ecd960   RELOCATION_MATCH PASS   OnPersist
+00ecd8e0   RELOCATION_MATCH PASS   OnPersist
+00ecd9b0   RELOCATION_MATCH PASS   OnPersist
+00415d70   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+00415d70   RELOCATION_MATCH PASS   GetString
+00ec6850   MATCH            PASS   GetParentScript
+00ec9ca0   MATCH            PASS   GetParentScript
+
+WINS: 17
+  00e40e80 RELOCATION_MATCH NScript::CV_BordelloScript::CMagicman::?Main@CMagicman@CV_BordelloScript@NScript@@EAEXXZ
+  00ec8300 RELOCATION_MATCH NScript::CV_SickChildScript::CManInLove::?Main@CManInLove@CV_SickChildScript@NScript@@EAEXXZ
+  00ec9d30 RELOCATION_MATCH NScript::CV_SickChildScript::CMansLover::?Main@CMansLover@CV_SickChildScript@NScript@@EAEXXZ
+  00ec5de0 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChild::?Main@CSickChild@CV_SickChildScript@NScript@@EAEXXZ
+  005f6e40 RELOCATION_MATCH CTCInventoryAbilities::?OnSerialise@CTCInventoryAbilities@@UAEXAAVCPersistContext@@_N@Z
+  006deee0 RELOCATION_MATCH CTCTrophy::?GlobalUpdate@CTCTrophy@@UAEX_N@Z
+  0071c9f0 RELOCATION_MATCH CTCHeroMorph::UpdateIdleParticles
+  008e7040 RELOCATION_MATCH CMeleeCombatAbilityDef::IsAbilityValid
+  004b4c50 RELOCATION_MATCH CQuestManager::ActivateTestQuestCard
+  00e2fd30 RELOCATION_MATCH NScript::CV_AmbushScamScript::CAS_Ambusher::?Main@CAS_Ambusher@CV_AmbushScamScript@NScript@@EAEXXZ
+  00eb3d10 RELOCATION_MATCH CMurderTwistAssassin::?OnPredicateFail@CMurderTwistAssassin@@
+  00ecd960 RELOCATION_MATCH NScript::CV_SickChildScript::CIngredientOwner::?OnPersist@CIngredientOwner@CV_SickChildScript@NScript@@EAEXAAVCPersistContext@@@Z
+  00ecd8e0 RELOCATION_MATCH NScript::CV_SickChildScript::CManInLove::?OnPersist@CManInLove@CV_SickChildScript@NScript@@EAEXAAVCPersistContext@@@Z
+  00ecd9b0 RELOCATION_MATCH NScript::CV_SickChildScript::CWomanToAttract::?OnPersist@CWomanToAttract@CV_SickChildScript@NScript@@EAEXAAVCPersistContext@@@Z
+  00415d70 RELOCATION_MATCH CDefString::?GetString@CDefString@@QBE?AVCCharString@@XZ
+  00ec6850 MATCH NScript::CV_SickChildScript::CSickChildsSister::?GetParentScript@CSickChildsSister@CV_SickChildScript@NScript@@UBEPAVCScriptBase@@XZ
+  00ec9ca0 MATCH NScript::CV_SickChildScript::CMansLover::?GetParentScript@CMansLover@CV_SickChildScript@NScript@@UBEPAVCScriptBase@@XZ
+addr       parity           behav  name
+00e87030   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00e87030   RELOCATION_MATCH PASS   Main
+00ea59e0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ea59e0   RELOCATION_MATCH PASS   Main
+00ea36b0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ea36b0   RELOCATION_MATCH PASS   Main
+00ecb0e0   RELOCATION_MATCH PASS   Main
+0087f3a0   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+0087f3a0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+0087f3a0   RELOCATION_MATCH PASS   PerformAction
+0041d21b   WARN RELOC_NAME: ??$GetDef@VCUIDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIDef@NUISystem@@@@@Z -> 0042aeda labelled 'CDefinitionManager::GetDef<NUISystem::CUIDef>'
+0041d21b   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+0041d21b   RELOCATION_MATCH PASS   CreateComponent
+00e02e50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e02e50   WARN SHARED_HEADER_AVAILABLE CQ_TraderEscortScript
+00e02e50   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e02e50   RELOCATION_MATCH PASS   Main
+005c0e81   WARN SHARED_HEADER_AVAILABLE CDefString
+005c0e81   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+005c0e81   RELOCATION_MATCH PASS   TransferOut
+00e383a0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e383a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e383a0   WARN SHARED_HEADER_AVAILABLE CV_AssassinAttacksScript
+00e383a0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e383a0   RELOCATION_MATCH PASS   Main
+008a8c60   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+008a8c60   RELOCATION_MATCH PASS   EntitySetAsSittingOnFloor
+00698a30   WARN SHARED_HEADER_AVAILABLE CDefString
+00698a30   WARN SHARED_HEADER_AVAILABLE CSoundPair
+00698a30   WARN SHARED_HEADER_AVAILABLE CSoundInit
+00698a30   WARN SHARED_HEADER_AVAILABLE CSoundMap
+00698a30   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00698a30   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer
+00698a30   WARN SHARED_HEADER_AVAILABLE CThing
+00698a30   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+00698a30   RELOCATION_MATCH PASS   PlayCameraSoundThroughObservedThing
+00ecd390   WARN SHARED_HEADER_AVAILABLE CV_SickChildScript
+00ecd390   RELOCATION_MATCH PASS   OnPredicateFail
+006df860   RELOCATION_MATCH PASS   ~CCreatureAction_UnsheatheToShowToSheatheTrophy
+00ec5c60   MATCH            PASS   GetParentScript
+00ecd370   MATCH            PASS   GetParentScript
+00ec8090   MATCH            PASS   GetParentScript
+
+WINS: 16
+  00e87030 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CTyler::?Main@CTyler@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00ea59e0 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderBrother::?Main@CLostTraderBrother@CV_LostTraderScript@NScript@@EAEXXZ
+  00ea36b0 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderTrader::?Main@CLostTraderTrader@CV_LostTraderScript@NScript@@EAEXXZ
+  00ecb0e0 RELOCATION_MATCH NScript::CV_SickChildScript::CIngredientOwner::?Main@CIngredientOwner@CV_SickChildScript@NScript@@EAEXXZ
+  0087f3a0 RELOCATION_MATCH CCombatAction_KickThingOnGround::?PerformAction@CCombatAction_KickThingOnGround@@UAEXXZ
+  0041d21b RELOCATION_MATCH NUISystem::CManager::?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@J@Z
+  00e02e50 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::?Main@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@EAEXXZ
+  005c0e81 RELOCATION_MATCH CPersistTraits<NInventory::CItem>::?TransferOut@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABVCItem@NInventory@@@Z
+  00e383a0 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::CAttackingAssassin::?Main@CAttackingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ
+  008a8c60 RELOCATION_MATCH CGameScriptInterface::?EntitySetAsSittingOnFloor@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  00698a30 RELOCATION_MATCH _global::?PlayCameraSoundThroughObservedThing@?A0x
+  00ecd390 RELOCATION_MATCH NScript::CV_SickChildScript::CWomanToAttract::?OnPredicateFail@CWomanToAttract@CV_SickChildScript@NScript@@
+  006df860 RELOCATION_MATCH CCreatureAction_UnsheatheToShowToSheatheTrophy::??1CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAE@XZ
+  00ec5c60 MATCH NScript::CV_SickChildScript::CSickChildsMother::?GetParentScript@CSickChildsMother@CV_SickChildScript@NScript@@UBEPAVCScriptBase@@XZ
+  00ecd370 MATCH NScript::CV_SickChildScript::CWomanToAttract::?GetParentScript@CWomanToAttract@CV_SickChildScript@NScript@@UBEPAVCScriptBase@@XZ
+  00ec8090 MATCH NScript::CV_SickChildScript::CWitch::?GetParentScript@CWitch@CV_SickChildScript@NScript@@UBEPAVCScriptBase@@XZ
+addr       parity           behav  name
+00e3bb70   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00e3bb70   RELOCATION_MATCH PASS   Main
+00e2c100   RELOCATION_MATCH PASS   Main
+00f0d630   RELOCATION_MATCH PASS   Main
+007a1b20   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007a1b20   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+007a1b20   RELOCATION_MATCH PASS   FrameUpdate
+00417a58   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00417a58   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00417a58   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00417a58   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+00417a58   WARN RELOC_NAME: ?RegisterAtmosSoundBank@CASoundManager@@QAEXKABVCWideString@@0@Z -> 00991c10 labelled 'CMainGameComponent_RegisterSoundBank'
+00417a58   RELOCATION_MATCH PASS   InitSound
+0065b854   WARN SHARED_HEADER_AVAILABLE CGameTimeManager
+0065b854   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+0065b854   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0065b854   RELOCATION_MATCH PASS   AddThingToVillage
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefString
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005c3a95   WARN SHARED_HEADER_AVAILABLE CThing
+005c3a95   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer
+005c3a95   WARN SHARED_HEADER_AVAILABLE CPersistContext
+005c3a95   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+005c3a95   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+005c3a95   RELOCATION_MATCH PASS   OnSerialise
+007ef200   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+007ef200   RELOCATION_MATCH PASS   OnActionUse
+00846bc0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+00846bc0   RELOCATION_MATCH PASS   FrameUpdate
+00e03810   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e03810   WARN SHARED_HEADER_AVAILABLE CQ_TraderEscortScript
+00e03810   WARN RELOC_NAME: ?RegisterFilter@CBanditCronies@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z -> 00f35b10 labelled 'CEntityScriptBase::SetPredicate'
+00e03810   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e03810   RELOCATION_MATCH PASS   Main
+00591a66   WARN SHARED_HEADER_AVAILABLE CDefString
+00591a66   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00591a66   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00591a66   WARN SHARED_HEADER_AVAILABLE CTCBase
+00591a66   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+00591a66   RELOCATION_MATCH PASS   OnSerialise
+00e7b970   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e7b970   WARN SHARED_HEADER_AVAILABLE CV_FishermanScript
+00e7b970   RELOCATION_MATCH PASS   Main
+00ecd930   RELOCATION_MATCH PASS   OnPersist
+00ecd4f0   MATCH            PASS   GetParentScript
+00ecb040   MATCH            PASS   GetParentScript
+00ec8200   MATCH            PASS   GetParentScript
+
+WINS: 16
+  00e3bb70 RELOCATION_MATCH NScript::CV_BordelloScript::CMadame::?Main@CMadame@CV_BordelloScript@NScript@@EAEXXZ
+  00e2c100 RELOCATION_MATCH NScript::CV_AmbushScamScript::CAS_Trickster::?Main@CAS_Trickster@CV_AmbushScamScript@NScript@@EAEXXZ
+  00f0d630 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::?Main@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  007a1b20 RELOCATION_MATCH CTCWillLightning::CLightningBeam::?FrameUpdate@CLightningBeam@CTCWillLightning@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@PAK@Z
+  00417a58 RELOCATION_MATCH CMainGameComponent::?InitSound@CMainGameComponent@@IAEXXZ
+  0065b854 RELOCATION_MATCH CTCVillage::?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+  005c3a95 RELOCATION_MATCH CTCInventoryWeapons::OnSerialise@CTCInventoryWeapons
+  007ef200 RELOCATION_MATCH CTCCarriedActionUseExpression::?OnActionUse@CTCCarriedActionUseExpression@@UAEXAAVCThing@@@Z
+  00846bc0 RELOCATION_MATCH CCreatureAction_PerformExpression::?FrameUpdate@CCreatureAction_PerformExpression@@UAEXXZ
+  00e03810 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CBanditCronies::?Main@CBanditCronies@CQ_TraderEscortScript@NScript@@EAEXXZ
+  00591a66 RELOCATION_MATCH CTCInventory::?OnSerialise@CTCInventory@
+  00e7b970 RELOCATION_MATCH NScript::CV_FishermanScript::CM_FishermanWaspSpawn::?Main@CM_FishermanWaspSpawn@CV_FishermanScript@NScript@@EAEXXZ
+  00ecd930 RELOCATION_MATCH NScript::CV_SickChildScript::CMansLover::?OnPersist@CMansLover@CV_SickChildScript@NScript@@EAEXAAVCPersistContext@@@Z
+  00ecd4f0 MATCH NScript::CV_SickChildScript::CSickChildFishingSpot::?GetParentScript@CSickChildFishingSpot@CV_SickChildScript@NScript@@UBEPAVCScriptBase@@XZ
+  00ecb040 MATCH NScript::CV_SickChildScript::CIngredientOwner::?GetParentScript@CIngredientOwner@CV_SickChildScript@NScript@@UBEPAVCScriptBase@@XZ
+  00ec8200 MATCH NScript::CV_SickChildScript::CManInLove::?GetParentScript@CManInLove@CV_SickChildScript@NScript@@UBEPAVCScriptBase@@XZ
+addr       parity           behav  name
+00e50fd0   RELOCATION_MATCH PASS   Main
+00e33ea0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e33ea0   RELOCATION_MATCH PASS   Main
+00ec68a0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ec68a0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00ec68a0   RELOCATION_MATCH PASS   Main
+00ecd9e0   RELOCATION_MATCH PASS   Main
+00e93120   RELOCATION_MATCH PASS   Main
+00e12580   RELOCATION_MATCH PASS   DoMission
+006a1a00   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+006a1a00   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006a1a00   RELOCATION_MATCH PASS   GetCarriedThingInterpolatedPosAndOrientation
+00ed0b10   RELOCATION_MATCH PASS   DoLeavingCutscene
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CDefString
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CThing
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071c7c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0071c7c0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+0071c7c0   RELOCATION_MATCH PASS   AddParticles
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CDefString
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CThing
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CQuestCardDef
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CWorld
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b4aa0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+004b4aa0   RELOCATION_MATCH PASS   ActivateQuestCard
+00e48a30   WARN SHARED_HEADER_AVAILABLE CV_BanditTollScript
+00e48a30   RELOCATION_MATCH PASS   Main
+00ec8230   WARN SHARED_HEADER_AVAILABLE CV_SickChildScript
+00ec8230   RELOCATION_MATCH PASS   OnPredicateFail
+00ecd860   RELOCATION_MATCH PASS   OnPersist
+00415dd0   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+00415dd0   WARN STANDIN_LEAF ??BCDefString@@QBE?AVCCharString@@XZ (catalog CDefString::operator CCharString; names another function)
+00415dd0   RELOCATION_MATCH PASS   operator CCharString
+00ecbd20   MATCH            PASS   GetParentScript
+00ec5d70   MATCH            PASS   GetParentScript
+
+WINS: 16
+  00e50fd0 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::?Main@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@EAEXXZ
+  00e33ea0 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::CAC_Owner::?Main@CAC_Owner@CV_ArcheryCompetitionScript@NScript@@EAEXXZ
+  00ec68a0 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChildsSister::?Main@CSickChildsSister@CV_SickChildScript@NScript@@EAEXXZ
+  00ecd9e0 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChildsMother::?Main@CSickChildsMother@CV_SickChildScript@NScript@@EAEXXZ
+  00e93120 RELOCATION_MATCH NScript::CV_HiddenBootyScript::CM_HiddenBooty::?Main@CM_HiddenBooty@CV_HiddenBootyScript@NScript@@EAEXXZ
+  00e12580 RELOCATION_MATCH NScript::CQ_WaspBossScript::?DoMission@CQ_WaspBossScript@NScript@@QAEXXZ
+  006a1a00 RELOCATION_MATCH CTCCarrying::?GetCarriedThingInterpolatedPosAndOrientation@CTCCarrying@@QBE_NABVCThing@@AAVC3DVector@@AAVCRightHandedSet@@_NM@Z
+  00ed0b10 RELOCATION_MATCH NScript::CV_SickChildScript::CWomanToAttract::?DoLeavingCutscene@CWomanToAttract@CV_SickChildScript@NScript@@AAEXXZ
+  0071c7c0 RELOCATION_MATCH CTCHeroMorph::AddParticles
+  004b4aa0 RELOCATION_MATCH CQuestManager::ActivateQuestCard
+  00e48a30 RELOCATION_MATCH CM_TollBandit::?Main@CM_TollBandit@CV_BanditTollScript@NScript@@EAEXXZ
+  00ec8230 RELOCATION_MATCH NScript::CV_SickChildScript::CManInLove::?OnPredicateFail@CManInLove@CV_SickChildScript@NScript@@EAEXXZ
+  00ecd860 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChildsSister::?OnPersist@CSickChildsSister@CV_SickChildScript@NScript@@EAEXAAVCPersistContext@@@Z
+  00415dd0 RELOCATION_MATCH CDefString::??BCDefString@@QBE?AVCCharString@@XZ
+  00ecbd20 MATCH NScript::CV_SickChildScript::CTalkingTrader1::?GetParentScript@CTalkingTrader1@CV_SickChildScript@NScript@@UBEPAVCScriptBase@@XZ
+  00ec5d70 MATCH NScript::CV_SickChildScript::CSickChild::?GetParentScript@CSickChild@CV_SickChildScript@NScript@@UBEPAVCScriptBase@@XZ

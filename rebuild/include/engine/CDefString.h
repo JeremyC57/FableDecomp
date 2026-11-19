@@ -51,42 +51,44 @@ public:
 #else
  CDefString(const CCharString&);
 #endif
-#if defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_FORWARDER) && !defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION)
- // Per-TU inline opt-in (wfE10-2, rows 0x00795300 CTCUnholyPower::FrameUpdate / 0x0078FD60 CTCDivineWrath::FrameUpdate): the conversion
- // forwarder is always expanded while GetString keeps the plain inline heuristic: the first cancel-sound conversion expands both (call
- // CDefStringTable::GetString 0x009D49B0 directly, 0x007953C9) and the second calls GetString 0x00415DD0 (0x0079546E), both temporaries
- // built before the argument pushes. Same body.
+// Binding (owner decision 2026-11-19, "Swap and re-land"; hand1 lane, Fable advisor fable3): retail keeps two identical out-of-line bodies
+// (`push [ecx]; call CDefStringTable::GetString 0x009D49B0`): GetString 0x00415D70 and the conversion ??B 0x00415DD0. VC7.1 /O2 emits the
+// inline callee first (FableWin.pdb, /Od, keeps the declaration order: ??B 0x018C20E0 before GetString 0x018C2120). The NScript TUs call
+// GetString 0x00415D70 behind an expanded conversion; the game TUs call the conversion 0x00415DD0 itself for an implicit conversion
+// temporary (CTCVillage::AddThingToVillage 0x0065B951, CTCSoundPlayer::PlayCollisionSound 0x0066AC08). Before 2026-11-19 the two addresses
+// were bound the other way round (naming wave 13), which took a per-TU device in several callers.
+#if defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_FORWARDER)
+ // Per-TU inline opt-in (wfE10-2, parked rows 0x00795300 CTCUnholyPower::FrameUpdate / 0x0078FD60 CTCDivineWrath::FrameUpdate): the
+ // conversion forwarder is always expanded while GetString keeps the plain inline heuristic. Written under the old binding (it read the
+ // second cancel-sound call 0x0079546E as GetString); under the 2026-11-19 binding that call is the conversion ??B 0x00415DD0, so re-check
+ // these rows on the plain header before reusing this. Same body.
  FABLE_FORCEINLINE operator CCharString()const{return GetString();}
-#elif defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION)
- // Per-TU inline opt-in (chunk 1010b, row 0x008A8C60 CGameScriptInterface::EntitySetAsSittingOnFloor): that TU expands the
- // conversion forwarder and calls GetString 0x00415DD0 out of line for an implicit conversion temporary (0x008A8D51..0x008A8D5E:
- // `lea edx,<tmp> ; push edx ; lea ecx,[ebp+8] ; call 0x00415DD0 ; lea eax,<tmp>`), where VC7.1's plain-inline heuristic
- // calls the forwarder's own COMDAT (??B 0x00415D70). Same body; GetString is declared only under this opt-in (below).
- FABLE_FORCEINLINE operator CCharString()const{return GetString();}
+#elif defined(FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING)
+ // Per-TU visibility opt-in (the NScript TUs; replaces FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION, Codex pass 13, which declared the
+ // conversion only under the old binding): those TUs expand the conversion forwarder and call GetString 0x00415D70 out of line
+ // (0x00E02E50, 0x00EC5DE0, 0x00ECB0E0 ...); GetString is declared only (below).
+ operator CCharString()const{return GetString();}
 #elif defined(FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION)
- // Per-TU visibility opt-in (Codex pass 13, like FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE): the NScript TUs of 0x00EC5DE0 /
- // 0x00ECB0E0 call the out-of-line conversion 0x00415D70 (??BCDefString@@QBE?AVCCharString@@XZ) instead of expanding it.
- operator CCharString() const;
+ // Per-TU visibility opt-in (re-pointed 2026-11-19; under the old binding this was the NScript device, now OUTOFLINE_GETSTRING): the
+ // size-optimised game TUs call the conversion 0x00415DD0 out of line for an implicit conversion temporary (CTCVillage::AddThingToVillage
+ // 0x0065B951..0x0065B95C, the temporary at [ebp-4]; CMainGameComponent::InitSound 0x00417A58), where VC7.1's plain inline heuristic
+ // under optimize("s") expands the forwarder and calls GetString. Declaration only.
+ operator CCharString()const;                                           // 0x00415DD0
 #else
- // Retail (landing 2026-11-03, chunks 718-725): the conversion forwards to GetString, both inline. Retail keeps two identical
- // out-of-line bodies (??B 0x00415D70, GetString 0x00415DD0 -- FableWin donor order ??B 0x018C20E0 before GetString 0x018C2120;
- // both `push [ecx]; call CDefStringTable::GetString 0x009D49B0`), a TU that inlines both expands the table call
- // (CTCShop::OnSerialise 0x00775C60), and the size-optimised CTCVillage TU inlines the forwarder and calls GetString
- // 0x00415DD0 (AddThingToVillage 0x0065B951..0x0065B95C, the conversion temporary at [ebp-4]).
+ // Retail: the conversion forwards to GetString, both inline. A TU that inlines both expands the table call (CTCShop::OnSerialise
+ // 0x00775C60); the /O2 game TUs call the conversion 0x00415DD0 out of line once their inline budget is spent (CTCTrophy::GlobalUpdate
+ // 0x006DF0C9, CGameScriptInterface::EntitySetAsSittingOnFloor 0x008A8D59, CTCSoundPlayer::PlayCollisionSound 0x0066AC08).
  operator CCharString()const{return GetString();}
 #endif
-#if defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION)
-#if defined(_MSC_VER)
- __declspec(noinline)
-#endif
- CCharString GetString()const{return GDefStringTable.GetString(TablePos);}   // 0x00415DD0, called (not expanded) in that TU
+#if defined(FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING)
+ CCharString GetString()const;                                          // 0x00415D70
 #elif defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_GETSTRING)
  // Per-TU inline opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): that TU expands GetString in place inside a conditional
  // full expression (0x00703F4B..0x00703F58: `mov ecx,[eax] ; push ecx ; push <result> ; mov ecx,offset GDefStringTable ; call
- // CDefStringTable::GetString 0x009D49B0`) where VC7.1's plain-inline heuristic calls the out-of-line copy 0x00415DD0. Same body.
+ // CDefStringTable::GetString 0x009D49B0`) where VC7.1's plain-inline heuristic calls an out-of-line copy. Same body.
  FABLE_FORCEINLINE CCharString GetString()const{return GDefStringTable.GetString(TablePos);}
 #else
- CCharString GetString()const{return GDefStringTable.GetString(TablePos);}
+ CCharString GetString()const{return GDefStringTable.GetString(TablePos);}   // out of line at 0x00415D70
 #endif
 #ifdef FABLE_RETAIL_CDEFSTRING_GETASCHARARRAY
  // Opt-in (chunk 1017, row 0x008365F0 for_each<..., CDeadCreatureAnimPreloader>): Ego_r.pdb / FableWin.pdb

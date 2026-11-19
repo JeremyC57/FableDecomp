@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ECD390, 177 bytes (padded to 192), plain `ret`.
 //   PDB name ?OnPredicateFail@CWomanToAttract@CV_SickChildScript@NScript@@EAEXXZ.
 // Callees: CScriptThing slot 18 MsgIsKilledBy(const CCharString&) (+0x48, 0x004AAAF0) on the entity's own thing (+8);
-//   CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; CDefString::operator CCharString() 0x00415D70;
+//   CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; CDefString::GetString() 0x00415D70;
 //   CGameScriptInterface slot 121 GiveHeroObject(const CCharString&, long, bool) (+0x1e4, 0x008902E0) and slot 156
 //   GiveHeroMorality(float) (+0x270, 0x00899EF0). String "" 0x0122D70E.
 // Data: the script def 0x0143E90C: IngredientObject +0x738 (Ego_r.pdb 1940 - 0x5c), KilledSomeoneForMushroom +0x768
@@ -17,7 +17,7 @@
 #define FABLE_RETAIL_CCHARSTRING
 #include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CScriptThingMethods {

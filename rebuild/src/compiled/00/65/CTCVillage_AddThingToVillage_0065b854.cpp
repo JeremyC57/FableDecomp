@@ -31,6 +31,7 @@
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CCOUNTEDPOINTER
@@ -77,7 +78,7 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_LIGHT; }   // FableWin ?StatGetInterfaceType@CTCLight@@SI..
     void SetActive(bool active);                         // 0x006412B0 ?SetActive@CTCLight@@QAEX_N@Z
 };
-enum EVillageTaskType { };                               // Ego_r.pdb CVillageDef::Tasks element type (enumerator names unproven)
+#include "engine/CVillageTaskBase.h"                  // EVillageTaskType (Ego_r.pdb CVillageDef::Tasks element type; enumerators from the Codex pass 16 donors)
 class CVillageDef : public CSubDefClassBase {            // Ego_r.pdb CVillageDef (retail STLport offsets; HouseLights +0xCC/+0xD0)
 public:
     std::vector<EVillageTaskType> Tasks;                 // +0x28

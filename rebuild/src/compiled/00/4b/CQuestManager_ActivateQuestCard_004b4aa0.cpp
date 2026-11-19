@@ -12,9 +12,9 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
 };
-class CDefString { public:                             // Codex pass 12 respell (2026-11-03): was N_00415dd0::CDefString::operator CCharString
+class CDefString { public:                             // Codex pass 12 respell (2026-11-03); binding swap 2026-11-19: the conversion again
     long m_index;
-    CCharString GetString() const;                       // 0x00415DD0 (FableWin donor order: ??B 0x018C20E0 = retail 0x00415D70, GetString 0x018C2120 = 0x00415DD0)
+    operator CCharString() const;                        // 0x00415DD0 ??BCDefString@@QBE?AVCCharString@@XZ (Ego_r / FableWin; binding swapped 2026-11-19: GetString is 0x00415D70)
 };
 #include "engine/C3DVector.h"
 
@@ -155,8 +155,8 @@ bool CQuestManager::ActivateQuestCard(CThing* card, bool loadResources)
                         World->GuildSealRecallAngleXY = 0.0f;
                         {
                             // the def name is a named local (retail passes its frame address, `lea ecx,[esp+20h] ; push ecx`, not
-                            // GetString's eax): 0x00415DD0 is CDefString::GetString (Codex pass 12 respell, 2026-11-03)
-                            CCharString defName = card->GetDefName().GetString();
+                            // the conversion's eax): 0x00415DD0 is CDefString::operator CCharString (binding swap, 2026-11-19)
+                            const CCharString& defName = card->GetDefName();
                             RemoveAvailableQuestCardType(defName);
                         }
                         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);

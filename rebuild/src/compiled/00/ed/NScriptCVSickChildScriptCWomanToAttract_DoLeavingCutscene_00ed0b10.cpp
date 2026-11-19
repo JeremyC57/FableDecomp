@@ -2,7 +2,7 @@
 // Leaf: ?DoLeavingCutscene@CWomanToAttract@CV_SickChildScript@NScript@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED0B10, 747 bytes, plain `ret`.
 // Callees: CBaseObject ctor/dtor/operator= 0x0099A380 / 0x0099A430 / 0x0099A3B0, CCharString 0x0099EBF0 / 0x0099EAE0 /
-//   operator= 0x0099EFB0, CDefString::operator CCharString 0x00415D70, CRT malloc 0x00BFEA0E / free 0x00BFEA14 (map headers),
+//   operator= 0x0099EFB0, CDefString::GetString() 0x00415D70, CRT malloc 0x00BFEA0E / free 0x00BFEA14 (map headers),
 //   operator delete 0x00BFE9BC, cast map operator[] 0x00CD3D2E / _M_erase 0x00CD344A, argument map operator[] 0x009AC700 /
 //   _M_erase 0x009AA830, cut-scene runner 0x00CBFB7D (__fastcall); CGameScriptInterface slots 8 StartScriptingEntity,
 //   70 GetHero, 371 FixMovieSequenceCamera. Literals "HERO" 0x01255174, "WOMAN" 0x012F2B04, "$ITEM" 0x012F2AFC,
@@ -22,7 +22,7 @@
 #define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_FORCEINLINE_ASSIGN
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "fable_string.h"
 #include "engine/CCountedPointer.h"

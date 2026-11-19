@@ -1,10 +1,10 @@
 // CTCTrophy::GlobalUpdate(bool update_sounds) -- trophy dialog handling while a confirmation is pending: a yes/no answer starts the minigame (unsheathing the trophy for its owner first), shows the trophy (the show action plus the bandit-faction deeds) or opens the instructions; a click-past ends the game, clears the score wait, pages the instructions (then the play-game text with the witness counts) or unpauses
 // Leaf: ?GlobalUpdate@CTCTrophy@@UAEX_N@Z
-// Inline-budget: FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION -- the show action's animation name is CDefString's implicit conversion
-//   temporary (0x006DF0BE..0x006DF0D1: `lea edx,<tmp> ; push edx ; add ecx,3Ch ; call 0x00415DD0` then `lea eax,<tmp>` for the
-//   argument); retail expands the inline ??B forwarder and calls GetString 0x00415DD0 out of line, where VC7.1's plain-inline heuristic
-//   calls the forwarder's own COMDAT ??B (0x00415D70). Same opt-in and evidence as row 0x008A8C60. An explicit `.GetString()` argument
-//   pushes the result's eax instead and moves the frame (DIFFER 1433v1437).
+// Shape: the show action's animation name is CDefString's implicit conversion temporary (0x006DF0BE..0x006DF0D1: `lea edx,<tmp> ;
+//   push edx ; add ecx,3Ch ; call 0x00415DD0` then `lea eax,<tmp>` for the argument): VC7.1's plain inline heuristic calls the
+//   conversion ??B out of line, 0x00415DD0 since the 2026-11-19 binding swap (the FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION device
+//   it needed under the old binding is gone). An explicit `.GetString()` argument pushes the result's eax instead and moves the frame
+//   (DIFFER 1433v1437).
 // Retail: Fable.exe 0x006DEEE0, 1437 bytes (`ret 4`, five epilogue copies; the last at 0x006DF470). Catalogued as CTCTrophy::vfunc_26:
 //   it is vtable 0x0125FC54 slot 26 (0x0125FCBC), CTCBase's slot 26 GlobalUpdate(bool) (engine/CTCBase.h), and Ego_r.pdb / FableWin.pdb
 //   ?GlobalUpdate@CTCTrophy@@UAEX_N@Z is the class's only `(bool)` virtual (`mov al,[esp+4]` .. `ret 4`).
@@ -12,7 +12,7 @@
 //   CMessageEventManager::FindMostRecentMessage<CMessageEventFilter_IsOfType> 0x004AB8B0 / RemoveMessage 0x00493B5B;
 //   CTCCarryable::GetPCarriedByThing 0x00705180; CTCInventoryItem::GetInventoryOwner 0x005D8E90; CThingCreatureBase::FinishCurrentAction
 //   0x00662650 / SetCurrentAction 0x006644F0; CCreatureAction_UnsheatheItemFromInventory ctor 0x006A0150 / dtor 0x005CC091;
-//   CCreatureAction_UnsheatheToShowToSheatheTrophy ctor 0x006DF800 / dtor 0x006DF860; CDefString::GetString 0x00415DD0;
+//   CCreatureAction_UnsheatheToShowToSheatheTrophy ctor 0x006DF800 / dtor 0x006DF860; CDefString::operator CCharString 0x00415DD0;
 //   StartMinigame 0x006DE080; CFactionManager::GetPFaction(unsigned long) 0x006B93A0 (CCharString::GetCRC 0x00404310);
 //   CThing::GetPos 0x004C73D0; CTCHeroOpinionDeedLog::PostDeed 0x006C6990; CCharString::ToWideString 0x0099E480
 //   (CTCTrophy::InstructionsText 0x013BAB84); StartDialogBox 0x006DD7E0; TerminateMinigame 0x006DE280; PlaySoundW 0x006DDCD0;
@@ -30,7 +30,6 @@
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CTCBASE

@@ -62,7 +62,7 @@ void CCreatureAction_PerformExpression::FrameUpdate()
    CTCSoundPlayer* ptc_sound=0;
    if(PCreature->GetTC(&ptc_sound)) {
     if(ButtonHeld && PExpressionDef->LoopSoundCriteria!="") {
-     CCharString sound=PExpressionDef->LoopSoundCriteria.GetString();
+     const CCharString& sound=PExpressionDef->LoopSoundCriteria;
      SoundEffectID=ptc_sound->PlayAttachedCriteria(sound,true,false,false,-1);
     }
     else ptc_sound->PlayAttachedCriteria(PExpressionDef->SoundCriteria,true,false,false,-1);

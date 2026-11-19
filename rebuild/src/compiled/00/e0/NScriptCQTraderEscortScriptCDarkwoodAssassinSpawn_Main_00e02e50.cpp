@@ -7,7 +7,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E02E50, 1349 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (CIsThingAlive filter, vtable 0x012C32F0, inline dtor),
 //   CEntityScriptBase::SetPredicate 0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CTimer dtor 0x00CD4470 (inline at the
-//   early exits, out of line at the closing brace), CDefString::operator CCharString 0x00415D70, CCharString copy 0x0099EC30 /
+//   early exits, out of line at the closing brace), CDefString::GetString() 0x00415D70, CCharString copy 0x0099EC30 /
 //   (const char*) 0x0099EBF0 / dtor 0x0099EAE0, rand 0x00BFEB16, IsDistanceBetweenThingsUnder 0x00CBE2FF / Over 0x00CBE3EA
 //   (__fastcall); GameCalls slots 7, 70, 77, 87-90 (timers on the global interface 0x0143E8F8), 91, 108, 421, 451, 465, 477,
 //   655, 690. Literals "DarkwoodAssassin" 0x012DF5B0, "DarkwoodTrader" 0x012DF414.
@@ -57,7 +57,7 @@ inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 //   retail offsets) names them: DarkwoodAssassinSpawnDistance -> TE_AssassinSpawnDistance (+0xe14), DarkwoodAssassinDefName -> TE_AssassinName (+0xe18).
 // agentNF60: ShoutSoundsBegin / End (+0x3ac / +0x3b0: the vector words) -> AssassinScreamSoundIds (std::vector<CDefString>, +0x3ac) through size() / operator[].
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).

@@ -8,12 +8,12 @@
 // Layout: Ego_r.pdb CManInLove (entity offsets equal retail): ParentClass +0x14, PMasterData +0x18, members from +0x1c;
 //   the parent level script's members sit at Ego_r offset - 0x14 (retail CScriptBase is 0x40).
 // Callees: CScriptThing slot 18 MsgIsKilledBy ("" 0x0122D70E conditional temporary); CCharString(const char*, long)
-//   0x0099EBF0 / ~CCharString 0x0099EAE0; CDefString::operator CCharString() (non-const) 0x00415D70; interface slots 121
+//   0x0099EBF0 / ~CCharString 0x0099EAE0; CDefString::GetString() 0x00415D70; interface slots 121
 //   GiveHeroObject, 156 GiveHeroMorality. Data: pGlobalScriptDef 0x0143E90C.
 #define FABLE_RETAIL_CCHARSTRING
 #include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy

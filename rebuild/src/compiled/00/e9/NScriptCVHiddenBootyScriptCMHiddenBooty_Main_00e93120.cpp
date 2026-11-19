@@ -5,9 +5,9 @@
 //   CM_HiddenBooty::Alloc 0x00E92F70 stores; Ego_r.pdb / FableWin.pdb name set ?Main@CM_HiddenBooty@CV_HiddenBootyScript@NScript@@EAEXXZ
 //   (private virtual, as engine/CV_HiddenBootyScript.h declares it).
 // Callees: CEntityScriptBase::SetPredicate 0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CScriptThing copy 0x004ABE90 (inside the
-//   inline CIsThingAlive ctor), ~CIsThingAlive 0x00E241B0, CCharString(const char*, long) 0x0099EBF0 / ~ 0x0099EAE0, CDefString::operator
-//   CCharString() const 0x00415D70 (Ego_r / FableWin ??BCDefString@@QBE?AVCCharString@@XZ, out of line: FABLE_RETAIL_CDEFSTRING_OUTOFLINE_
-//   CONVERSION), CBasicString<char>::Compare 0x00411570 (inline CCharString ==); pGlobalScriptDef 0x0143E90C (HiddenBootyTreasureFake
+//   inline CIsThingAlive ctor), ~CIsThingAlive 0x00E241B0, CCharString(const char*, long) 0x0099EBF0 / ~ 0x0099EAE0, CDefString::GetString()
+//   const 0x00415D70 (Ego_r / FableWin ?GetString@CDefString@@QBE?AVCCharString@@XZ, behind the expanded conversion: FABLE_RETAIL_
+//   CDEFSTRING_OUTOFLINE_GETSTRING; binding swap 2026-11-19), CBasicString<char>::Compare 0x00411570 (inline CCharString ==); pGlobalScriptDef 0x0143E90C (HiddenBootyTreasureFake
 //   +0x684, HiddenBootyTreasureReal +0x688); CGameScriptInterfaceBase slots 7 NewScriptFrame, 57 MsgOnHeroRewardedWithItemsFrom, 70 GetHero,
 //   184 IsObjectInThingsPossession, 585 AddItemToContainer, 586 RemoveItemFromContainer; CScriptThing slots 1 GetName, 36
 //   MsgReceivedInventoryItem. The 24 string literals were paired with retail by relocation (strchk).
@@ -22,7 +22,7 @@
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_BASE_OBJECT
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #include "fable_string.h"
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"

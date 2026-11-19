@@ -11,7 +11,7 @@
 #include "fable_string.h"
 // Actual flattened donor headers included; genuine virtual interfaces follow.
 // agentNF57: CCharString is the shared fable_string.h class (FABLE_RETAIL_CCHARSTRING; was a renamed include plus a local copy-ctor stand-in);
-// the script def is engine/fable_script_def_global.h (pGlobalScriptDef, CDefString out-of-line ??B 0x00415D70).
+// the script def is engine/fable_script_def_global.h (pGlobalScriptDef, CDefString conversion through the out-of-line GetString 0x00415D70).
 class CThing;
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;
 namespace std {template<class T>class allocator;template<class T,class A>class list;template<class T,class A>class vector;template<class T,class U>struct pair;}
@@ -140,7 +140,7 @@ public:
 }
 using NScript::CV_FishermanScript; // donor5C/5D, retail48/49
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"   // pGlobalScriptDef 0x0143E90C (agentNF57: was local CDefString / CScriptDef and CScriptDef* g_ScriptDef)
 namespace NScript {

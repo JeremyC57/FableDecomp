@@ -25,7 +25,7 @@ public:
 class CDefString {
 public:
     long Index;
-    CCharString GetString() const;                      // 0x00415DD0 (FableWin ?GetString@CDefString@@QBE?AVCCharString@@XZ)
+    operator CCharString() const;                       // 0x00415DD0 ??BCDefString@@QBE?AVCCharString@@XZ (Ego_r / FableWin; binding swapped 2026-11-19: GetString is 0x00415D70)
 };
 class CBaseObject;
 class CBaseIntelligentPointer {
@@ -226,10 +226,10 @@ void CTCHeroMorph::UpdateIdleParticles()
                                 CCharString helper("");
                                 emitter->AttachToThing(*Thing, 8, helper, 0, 0.0f);
                             } else if (entry->AttachMode == 2) {
-                                const CCharString& helper = entry->HelperName.GetString();
+                                const CCharString& helper = entry->HelperName;
                                 emitter->AttachToThing(*Thing, 0xa, helper, entry->HelperIndex, 0.0f);
                             } else if (entry->AttachMode == 3) {
-                                const CCharString& helper = entry->HelperName.GetString();
+                                const CCharString& helper = entry->HelperName;
                                 emitter->AttachToThing(*Thing, 0xc, helper, entry->HelperIndex, 0.0f);
                             }
                             CIntelligentPointer<CThing> item((CThing*)particle);

@@ -7,13 +7,17 @@
 // Callees: CVectorMap LowerBound const 0x004365B0, the hero TC's combo multiplier 0x006D6570, CHeroAbilityStatPackage
 //   IsMetBy 0x00851B50, CTCCombat 0x00733190 / 0x00733180, CTCCarrying::GetThingInPrimarySlot 0x006A1440,
 //   IS_THING_ALIVE<CThing*> 0x0040DCE0, CTCWeapon::GetWeaponClass 0x005DA7F0, std::find<long*> 0x008E6FB0,
-//   CDefString::operator CCharString 0x00415D70 / const 0x00415DD0, ~CCharString 0x0099EAE0, GetCombatManager
+//   CDefString::GetString 0x00415D70 / operator CCharString 0x00415DD0, ~CCharString 0x0099EAE0, GetCombatManager
 //   0x00661EC0, CCombatManager::GetCombatantInfo 0x006E9360, the attacker iterator ++ 0x006EF790,
 //   GetCombatAnimationSet 0x00663260, CAnimationSet::AnimExists 0x005DC2E0; CAnimFilterNoGroup vtable 0x0122FFDC
 //   (base 0x0122FFCC).
 // Layout: Ego_r.pdb CMeleeCombatAbilityDef less 4 from Flourish on: FlourishAnimName +0x40, Flourish +0x48,
 //   ValidWeaponClasses +0x50 (12-byte vector), StatsNeeded +0x68, ComboMultiplierLowerBound +0x74, UpperBound +0x78.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#include "fable_string.h"
+#include "engine/CDefString.h"
 #pragma optimize("t", on)
 #pragma optimize("y", on)
 void StandInSink(void* p, unsigned long n);
@@ -74,17 +78,10 @@ CTCEntry* CTCMap::LowerBound(const unsigned long& type) const
     return it;
 }
 #pragma auto_inline(on)
-class CCharStringData { public: char* PData; unsigned long StringLength; };
-class CCharString { public:
-    CCharStringData* PStringData;
-    ~CCharString();                                      // 0x0099EAE0
-    long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
-};
-namespace N_00415dd0 { struct CDefString {
-    long Index;
-    operator CCharString();                              // 0x00415D70
-    operator CCharString() const;                        // 0x00415DD0
-}; } using N_00415dd0::CDefString;
+// Binding swap (owner, 2026-11-19; hand1 advisor fable3): the shared fable_string.h / engine/CDefString.h (default header: inline
+//   forwarder ??B -> inline GetString) replace the local CCharString model and the made-up N_00415dd0 overload pair. In this TU the
+//   explicit GetString is called out of line (0x00415D70) and AnimExists's implicit conversion argument calls ??B (0x00415DD0).
+
 class CAnimFilterBase { public:                                 // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() { }
     virtual void v01();
@@ -193,11 +190,11 @@ bool CMeleeCombatAbilityDef::IsAbilityValid(CThingCreatureBase* creature)
         long* last = ValidWeaponClasses_finish;
         if (find(ValidWeaponClasses_start, last, weaponClass, CIteratorTag()) == last)
             goto fail;
-        if (FlourishAnimName.operator CCharString().GetLength() != 0) {
+        if (FlourishAnimName.GetString().GetLength() != 0) {
             CCombatantInfo* info = creature->GetCombatManager()->GetCombatantInfo(creature);
             for (CAttackerIterator it = info->Attackers.begin(); it != info->Attackers.end(); ++it) {
                 CThingCreatureBase* attacker = it->second;
-                if (!((CAnimationSet*)&(attacker->GetCombatAnimationSet()))->AnimExists(((const CDefString&)FlourishAnimName), CAnimFilterNoGroup()))
+                if (!((CAnimationSet*)&(attacker->GetCombatAnimationSet()))->AnimExists(FlourishAnimName, CAnimFilterNoGroup()))
                     goto fail;
             }
         }

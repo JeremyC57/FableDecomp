@@ -3,7 +3,7 @@
 // Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB3D10, 300 bytes, plain `ret` (virtual).
 // Callees: CScriptThing slot 18 MsgIsKilledBy(const CCharString&) (+0x48) on the entity's own thing (+8); CCharString(const
-//   char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; CDefString::operator CCharString() 0x00415D70; CGameScriptInterface
+//   char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; CDefString::GetString() 0x00415D70; CGameScriptInterface
 //   (ghidra_out/cgsi_slots_aligned.tsv) slots 156 GiveHeroMorality(float) (+0x270) 0x00899EF0, 161 GiveHeroRenownPoints(long)
 //   (+0x284) 0x008990C0, 121 GiveHeroObject(const CCharString&, long, bool) (+0x1e4) 0x008902E0, 655 GetActiveQuestName()
 //   (+0xa3c, CCharString by value) 0x00891880 and 296 SetQuestCardObjective(4 x const CCharString&) (+0x4a0) 0x00896A30.
@@ -18,7 +18,7 @@
 // agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
 //   retail offsets) names them: MurderTwistMorality -> HeroKillsAssassinMorality (+0x704), MurderTwistRenown -> HeroKillsAssassinRenown (+0x714), MurderTwistReward -> HeroKillsAssassinProofOfKill (+0x718).
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 struct CScriptThingMethods {

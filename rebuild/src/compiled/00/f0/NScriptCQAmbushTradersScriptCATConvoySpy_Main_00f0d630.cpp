@@ -6,7 +6,7 @@
 //   landed OnPersist 0x00F04470); Ego_r.pdb and FableWin.pdb both hold ?Main@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@EAEXXZ.
 // Callees: as CAT_BanditAlly::Main 0x00F063B0 plus CScriptThing() 0x006E7B40 / operator= 0x008AB980, the scripted-thing ctor
 //   0x007E72A0 / FollowThing 0x007E7320 / ClearCommands 0x007E7360 / ClearAllActions 0x007E7400 / operator= 0x008ABD10, cast map ctor
-//   0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E, RunCutsceneMacro 0x00CBFB7D, CDefString conversion 0x00415D70, __ftol2,
+//   0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E, RunCutsceneMacro 0x00CBFB7D, CDefString conversion through GetString 0x00415D70, __ftol2,
 //   TeleportData dtor 0x00CDBC50 (its ctor expanded here), vector<TeleportData>::push_back 0x00F0D490, CCharString::operator=
 //   0x0099EFB0 / 0x0099EFE0; parent RefreshSpyAllegiences 0x00F05A10, ProcessInitialSpyExtraction 0x00F0F680 and the spawned threads
 //   WatchForSpyDeath 0x00F0EDA0, WatchForHeroProximity 0x00F0EE90, WatchForSpySpeechMarkers 0x00F0EF60.
@@ -36,7 +36,7 @@
 #define FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_CONVOYSPY
 #define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #include "fable_string.h"
 #include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"

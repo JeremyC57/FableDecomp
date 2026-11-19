@@ -7,7 +7,7 @@
 //          "CWorldMap::AllocateMapThingUID" is propagated; landed CHTEPrisoner_Main / CSUMMONEDCREATURE_Main model),
 //          CEntityScriptBase::IsDone @ 0x00F35B30, the game interface's slots 7 NewScriptFrame, 70 GetHero,
 //          451 GiveThingBestEnemyTarget, 690 PlaySoundOnThing (cgsi_slots_aligned.tsv), IsDistanceBetweenThingsUnder
-//          @ 0x00CBE2FF (__fastcall), rand @ 0x00BFEB16, CDefString::operator CCharString @ 0x00415D70, CCharString copy
+//          @ 0x00CBE2FF (__fastcall), rand @ 0x00BFEB16, CDefString::GetString() 0x00415D70, CCharString copy
 //          ctor @ 0x0099EC30, ~CCharString @ 0x0099EAE0; data: pGlobalScriptDef @ 0x0143E90C (sound-name vector +0x3ac/+0x3b0).
 // Shape: the alive filter is a scoped 16-byte frame object (landed CHTEPrisoner::Main model); `NewScriptFrame; if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
 //          return;` precedes the rotated `while (!near) { frame; if done return; }`; the sound is a CCharString LOCAL (operator
@@ -36,7 +36,7 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 
 // agentNF60: BC_ShoutSoundsBegin / End (+0x3ac / +0x3b0) -> AssassinScreamSoundIds (std::vector<CDefString>, +0x3ac) through size() / operator[].
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 

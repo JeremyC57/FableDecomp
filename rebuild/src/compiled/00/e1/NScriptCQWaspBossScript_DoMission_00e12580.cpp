@@ -14,7 +14,7 @@
 //   WB_CreaturesSpawned +0xE3C / WB_WaspBossName +0xE40), CSpawnedFunc.h, STLport vector with its default inline ~vector (the earlier
 //   drafts' VECTOR_DTOR_OUTOFLINE / ERASE_RANGE_OUTOFLINE defines sat after fable_string.h had already included fable_containers.h, so
 //   they never applied: retail expands ~vector<CScriptThing> at the normal exit and calls 0x008AC970 at the early ones, by the budget).
-// Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CDefString::operator CCharString 0x00415D70, GFIntToCharString 0x0099F830,
+// Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CDefString::GetString() 0x00415D70, GFIntToCharString 0x0099F830,
 //   operator+(const char*, const CCharString&) 0x0099F690, IsActiveThreadTerminating 0x00CB7940, CBaseClass 0x0099A2D0 / ~ 0x0099A2E0,
 //   ~CScriptThing 0x004AA840, AreAllThingsInVectorDead 0x00CBED00, CSpawnedFuncBase 0x00CDD450, AddSpawnedFunction 0x00CB7E50,
 //   WaspIntro 0x00E12F20, EndMission 0x00E13310 (the self row's and the header's name), ~vector<CScriptThing> 0x008AC970, free 0x00BFEA14.
@@ -24,7 +24,7 @@
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CQ_WASPBOSSSCRIPT_DOMISSION
 #define FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_ASSIGNMENT

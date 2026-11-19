@@ -26,8 +26,8 @@
 //   0x0042B0A2, CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, CAnimationSet::AnimExists 0x005DC2E0,
 //   CAnimationSet::GetRandomAnim 0x005DCC00, CCreatureActionBase::GetWorld 0x00692940, CWorld::GetWorldSeed 0x0049D810,
 //   CThing::AddTC 0x004C9D60, CTCAnimatingObject::PlayAnimation 0x007F9010, CThing::SetAsRenderedThisFrame 0x004C7590,
-//   CThingObject::ResetDieOffTimer 0x00702CE0, CDefinitionManager::GetDef<CThingShotDef> 0x0078B230, CDefString::GetString
-//   0x00415DD0, CThingCreatureBase::IsChild 0x00661F70, CTCHeroExperience::GetTrainableStatLevel 0x006D6520 /
+//   CThingObject::ResetDieOffTimer 0x00702CE0, CDefinitionManager::GetDef<CThingShotDef> 0x0078B230, CDefString::operator
+//   CCharString 0x00415DD0 (binding swap 2026-11-19), CThingCreatureBase::IsChild 0x00661F70, CTCHeroExperience::GetTrainableStatLevel 0x006D6520 /
 //   GetTrainableStatMaxLevel 0x006D6770, GFFloatRandom 0x004978A0, NThingShot::CTCShotDefinitionBase::Init (const C3DVector&
 //   overload) 0x007BF790, CTCCreatureModeManager::AddMode 0x0073AE10, CTCRotate::SetRotationInfo 0x0072A530,
 //   CTCDParticleEmitter::Create 0x006E0880, CTCHeroOpinionDeedLog::PostDeed 0x006C6990. Data: GFastOneOverSqrtTable 0x013CE558
@@ -39,7 +39,8 @@
 //     in-place `dec [p+4]` handle releases; the original CThing vtable opt-in gives the +0x104 OnHit slot (existing opt-ins).
 //   - The dead-creature test is ONE `&&` holding the GetPBaseDef() / CCharString / CAnimFilterNoGroup temporaries: retail's
 //     conditional-destruction flags 2 / 4 / 8 in [esp+1Ch] (0x0087F5A5..0x0087F643). PROVEN by the flag bits.
-//   - `{ CCharString shot_class_name = ...GetString(); shot = AddTC(shot_class_name, true, 0); }`: a named block local, retail's
+//   - `{ const CCharString& shot_class_name = <def name>; shot = AddTC(shot_class_name, true, 0); }`: a named block local (the conversion
+//     ??B 0x00415DD0 bound to a const reference since the binding swap 2026-11-19; copy-initialisation adds a copy), retail's
 //     `lea` re-address of the string and its destruction before the facing call (0x0087F7F4..0x0087F820). FITTED.
 //   - `effect_pos` is a named local: retail stores the sum to its own frame words and passes their address in edx (0x0087FC50..0x0087FC5C).
 //     FITTED (the unnamed temporary is 9 bytes short).
@@ -194,7 +195,7 @@ void CCombatAction_KickThingOnGround::PerformAction()
         GetWorld().PeekDefinitionManager().GetDef(kickable_def->ShotToAttach, &shot_def);
         NThingShot::CTCShotDefinitionBase* shot;
         {
-            CCharString shot_class_name = shot_def->ShotDefinitionClassName.GetString();
+            const CCharString& shot_class_name = shot_def->ShotDefinitionClassName;
             shot = static_cast<NThingShot::CTCShotDefinitionBase*>(PTarget->AddTC(shot_class_name, true, 0));
         }
         C3DVector facing = PCreature->GetPhysicsTC()->GetFacingVector();

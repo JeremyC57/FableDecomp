@@ -10,7 +10,7 @@
 // Callees: CTCActionUseBase::OnActionUse 0x007EAB90, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const 0x004365B0 (PeekTC
 //   <CTCTargetingBase> 8 / <CTCExpression> 0x8F) and non-const 0x0040F020 (GetTC<CTCInventoryItem> 0x1A), CTCTargetingBase::
 //   IsTargetedThingOfType 0x007F5A70 / IsTargetedThingInRange (vslot 38, +0x98) / GetPTargetedThing (vslot 33, +0x84),
-//   CThing::PeekPlayer 0x004C7A10, CMainGameComponent::AddGameEvent 0x0041649C, CDefString::operator!= 0x005FA740 / GetString
+//   CThing::PeekPlayer 0x004C7A10, CMainGameComponent::AddGameEvent 0x0041649C, CDefString::operator!= 0x005FA740 / operator CCharString
 //   0x00415DD0, CQuestManager::ActivateQuest 0x004B4A10 (singleton 0x013B89FC), ~CCharString 0x0099EAE0,
 //   CCreatureAction_PerformExpression ctor 0x008430B0 / dtor 0x00718D50, CThingCreatureBase::SetCurrentAction 0x006644F0,
 //   CTCInventoryItem::ReturnToInventory 0x005D8E50; the def's slot 1 on the last release.
@@ -23,7 +23,6 @@
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_CDEFSTRING_NOTEQUAL
-#define FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_CTHINGPHYSICAL

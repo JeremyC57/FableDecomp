@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity (naming wave 11): ?Main@CM_TollBandit@CV_BanditTollScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E4D6C slot 1 is stored by the factory 0x00E48950 registered as "M_TollBandit"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E48A30, 263 bytes (+ int3 padding). Entity-script slot 1 (Main).
-// Callees: CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CDefString::operator CCharString() 0x00415D70 (the script def
+// Callees: CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CDefString::GetString() 0x00415D70 (the script def
 //   0x0143E90C, creature def name at +0x438), ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, ~CScriptThing 0x004AA840,
 //   IsDone 0x00F35B30; CScriptThing slots 6 GetPos (+0x18) and 76 IsDead (+0x130); CGameScriptInterface slots 72
 //   GetThingWithScriptName (+0x120) and 91 CreateCreature (+0x16c).
@@ -17,7 +17,7 @@ namespace NScript { class CPredicateBase; }
 // agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
 //   retail offsets) names them: TollBanditCreature -> TollBanditCreatureType (+0x438).
 #define FABLE_RETAIL_CDEFSTRINGTABLE
-#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)

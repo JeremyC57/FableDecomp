@@ -1,0 +1,66 @@
+address	name	retail_calls	change	recheck
+00417a58	CMainGameComponent::InitSound	DD0 DD0 DD0 DD0	OUTOFLINE_CONVERSION (size-optimised TU)	RELOCATION_MATCH + PASS
+0041d21b	NUISystem::CManager::CreateComponent	DD0	explicit .GetString() -> const reference + OUTOFLINE_CONVERSION (/Os)	RELOCATION_MATCH + PASS
+004b4aa0	CQuestManager::ActivateQuestCard	DD0	local CDefString model declares the conversion (0x00415DD0); call sites converted (const reference)	RELOCATION_MATCH + PASS
+004b4c50	CQuestManager::ActivateTestQuestCard	DD0	local CDefString model declares the conversion (0x00415DD0); call sites converted (const reference)	RELOCATION_MATCH + PASS
+00591a66	CTCInventory::OnSerialise	DD0	local CDefString model declares the conversion (0x00415DD0); call sites converted (const reference)	RELOCATION_MATCH + PASS
+005c0e81	CPersistTraits<NInventory::CItem>::TransferOut	DD0 DD0	none (already declared the conversion at 0x00415DD0)	RELOCATION_MATCH + PASS
+005c3a95	CTCInventoryWeapons::OnSerialise	DD0 DD0 DD0 DD0	none (already declared the conversion at 0x00415DD0)	RELOCATION_MATCH + PASS
+005f6e40	CTCInventoryAbilities::OnSerialise	DD0 DD0 DD0	explicit .GetString() -> explicit .operator CCharString() + OUTOFLINE_CONVERSION	RELOCATION_MATCH + PASS
+0065b854	CTCVillage::AddThingToVillage	DD0	OUTOFLINE_CONVERSION (size-optimised TU); EVillageTaskType from engine/CVillageTaskBase.h (pre-existing C2011)	RELOCATION_MATCH + PASS
+00698a30	_global::PlayCameraSoundThroughObservedThing	DD0	local model: conversion declared only (was inline over a declared GetString)	RELOCATION_MATCH + PASS
+006a1a00	CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation	DD0	explicit .GetString() -> const CCharString& bound to the conversion (plain header)	RELOCATION_MATCH + PASS
+006deee0	CTCTrophy::GlobalUpdate	DD0	FORCEINLINE_CONVERSION dropped (plain header calls ??B 0x00415DD0)	RELOCATION_MATCH + PASS
+0071c7c0	CTCHeroMorph::AddParticles	DD0 DD0	local CDefString model declares the conversion (0x00415DD0); call sites converted (const reference, as before)	RELOCATION_MATCH + PASS
+0071c9f0	CTCHeroMorph::UpdateIdleParticles	DD0 DD0	local CDefString model declares the conversion (0x00415DD0); call sites converted (const reference, as before)	RELOCATION_MATCH + PASS
+007a1b20	CTCWillLightning::CLightningBeam::FrameUpdate	DD0 DD0	FORCEINLINE_CONVERSION dropped (plain header calls ??B 0x00415DD0)	RELOCATION_MATCH + PASS
+007ef200	CTCCarriedActionUseExpression::OnActionUse	DD0	FORCEINLINE_CONVERSION dropped (plain header calls ??B 0x00415DD0)	RELOCATION_MATCH + PASS
+00846bc0	CCreatureAction_PerformExpression::FrameUpdate	DD0	explicit .GetString() -> const CCharString& bound to the conversion (plain header)	RELOCATION_MATCH + PASS
+0087f3a0	CCombatAction_KickThingOnGround::PerformAction	DD0	explicit .GetString() -> const CCharString& bound to the conversion (plain header)	RELOCATION_MATCH + PASS
+008a8c60	CGameScriptInterface::EntitySetAsSittingOnFloor	DD0	FORCEINLINE_CONVERSION dropped (plain header calls ??B 0x00415DD0)	RELOCATION_MATCH + PASS
+008e7040	CMeleeCombatAbilityDef::IsAbilityValid	D70 DD0	hand1 natural candidate on fable_string.h / engine/CDefString.h (made-up N_00415dd0 pair gone)	RELOCATION_MATCH + PASS
+00e02e50	NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::Main	D70 D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00e03810	NScript::CQ_TraderEscortScript::CBanditCronies::Main	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00e12580	NScript::CQ_WaspBossScript::DoMission	D70 D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING; CompilerFlags /d2inlT60 added to build_candidates.ps1 (pre-existing)	RELOCATION_MATCH + PASS
+00e2c100	NScript::CV_AmbushScamScript::CAS_Trickster::Main	D70 D70 D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00e2fd30	NScript::CV_AmbushScamScript::CAS_Ambusher::Main	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00e33ea0	NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main	D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00e383a0	NScript::CV_AssassinAttacksScript::CAttackingAssassin::Main	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00e48a30	NScript::CV_BanditTollScript::CM_TollBandit::Main	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00e50fd0	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main	D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00e7b970	NScript::CV_FishermanScript::CM_FishermanWaspSpawn::Main	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00e87030	NScript::CV_FisticuffsClubScript::CTyler::Main	D70 D70 D70 D70 D70	OUTOFLINE_GETSTRING added (plain header called ??B)	RELOCATION_MATCH + PASS
+00e93120	NScript::CV_HiddenBootyScript::CM_HiddenBooty::Main	D70 D70 D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00eb3d10	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::OnPredicateFail	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ec5de0	NScript::CV_SickChildScript::CSickChild::Main	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ec68a0	NScript::CV_SickChildScript::CSickChildsSister::Main	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ec8230	NScript::CV_SickChildScript::CManInLove::OnPredicateFail	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ec8300	NScript::CV_SickChildScript::CManInLove::Main	D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70 D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ec9d30	NScript::CV_SickChildScript::CMansLover::Main	D70 D70 D70 D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ecb0e0	NScript::CV_SickChildScript::CIngredientOwner::Main	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ecd390	NScript::CV_SickChildScript::CWomanToAttract::OnPredicateFail	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ecd9e0	NScript::CV_SickChildScript::CSickChildsMother::Main	D70 D70 D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ed0b10	NScript::CV_SickChildScript::CWomanToAttract::DoLeavingCutscene	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00f0d630	NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::Main	D70	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00415d70	CDefString::GetString	-	renamed from operator CCharString; real test	RELOCATION_MATCH + PASS
+00415dd0	CDefString::operator CCharString	-	renamed from GetString	RELOCATION_MATCH + PASS
+006df860	~CCreatureAction_UnsheatheToShowToSheatheTrophy	-	FORCEINLINE_CONVERSION define dropped (same TU as 0x006DEEE0)	RELOCATION_MATCH + PASS
+00e3bb70	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00e40e80	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ea36b0	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ea59e0	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ec5c60	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	MATCH + PASS
+00ec5d70	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	MATCH + PASS
+00ec6850	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	MATCH + PASS
+00ec8090	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	MATCH + PASS
+00ec8200	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	MATCH + PASS
+00ec9ca0	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	MATCH + PASS
+00ecb040	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	MATCH + PASS
+00ecbd20	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	MATCH + PASS
+00ecd370	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	MATCH + PASS
+00ecd4f0	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	MATCH + PASS
+00ecd860	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ecd8e0	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ecd930	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ecd960	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS
+00ecd9b0	(NScript same-TU sibling)	-	OUTOFLINE_CONVERSION -> OUTOFLINE_GETSTRING	RELOCATION_MATCH + PASS

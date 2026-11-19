@@ -461,9 +461,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00415cd0	GetGravityVector	NParticleEngine::CAEnvironmentInteraction	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00415cf0	GetVectorParam	NParticleEngine::CAEnvironmentInteraction	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00415d10	`scalar deleting destructor'	NParticleEngine::CAEnvironmentInteraction	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00415d70	operator CCharString	CDefString	__thiscall	CCharString	1	CDefString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CDefString_operatorclassCCharString_00415d70.cpp
+00415d70	GetString	CDefString	__thiscall	CCharString	1	CDefString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CDefString_operatorclassCCharString_00415d70.cpp
 00415d90	ToWideString	CDefString	__thiscall	CWideString	1	CDefString *	1	yes	accepted									
-00415dd0	GetString	CDefString	__thiscall	CCharString	1	CDefString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CDefString_operatorclassCCharString_00415dd0.cpp
+00415dd0	operator CCharString	CDefString	__thiscall	CCharString	1	CDefString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CDefString_operatorclassCCharString_00415dd0.cpp
 00415e17	CMainGameComponentInit	CMainGameComponentInit	__thiscall	undefined	2	CMainGameComponentInit *,CMainGameComponentInit *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponentInit_CMainGameComponentInit_00415e17.cpp
 00415e50	CNetworkServer	CNetworkServer	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00415e67	`scalar_deleting_destructor'	CNetworkServer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CLandscapeBackgroundPatch_vectordeletingdestructor_00415e67.cpp
