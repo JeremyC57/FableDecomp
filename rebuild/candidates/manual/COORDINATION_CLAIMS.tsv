@@ -57,3 +57,6 @@ date	account	item	kind	status	note
 2026-11-19	B	0x0098B930, 0x00774C60	author	claimed	re-port SetVSConstants (Ego_d spelling); StockDisplay same-TU copy verbatim
 2026-11-19	A	engine/NThingMap_CThingMap.h, engine/CThingSearchTools.h, engine/CTCWeapon.h	header	claimed	round 10 search-tools agent (opt-ins only)
 2026-11-19	A	nf101, nf100, nf99p2 (round 9)	naming	done	batches/2026-11-19_landing_nf101, _nf100, _nf99p2
+2026-11-19	A	q11415,q11492,q11493,q11512,q11513,q11514,q11515,q11517,q11518,q11519,q11520,q11521,q11522,q11542,q11543,q11544,q11545,q11546,q11547,q11548,q11549,q11550,q11551,q11552,q11553,q11554,q11555,q11556,q115	naming	claimed	round 10 agent NF102 (56 rows locked; list in its record at landing)
+2026-11-19	A	q11280,q11281,q11283,q11463,q11533	naming	claimed	round 10 agent NF103 (8 rows locked; list in its record at landing)
+2026-11-19	A	q4182,q4194,q4258,q4413,q4429,q4446,q4452,q4453,q4493,q4524,q4610,q4645,q4671,q4756,q4761,q4767,q4769,q4770,q4777,q4909,q4912,q4918,q4924,q4925,q4926,q4927,q4944,q4973,q4991,q5080,q5205,q6156,q6164,q6	naming	claimed	round 10 agent NF104 (91 rows locked; list in its record at landing)
