@@ -1,0 +1,8 @@
+addr       parity           behav  name
+005542f0   RELOCATION_MATCH PASS   GetDataFromDef
+
+WINS: 1
+  005542f0 RELOCATION_MATCH NUISystem::CMorphingSprite::?GetDataFromDef@CMorphingSprite@NUISystem@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NUISystemCMorphingSprite_GetDataFromDef_005542f0

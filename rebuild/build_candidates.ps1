@@ -400715,6 +400715,13 @@ $catalog = @(
         TestSource = '00/43/CPlayerGui_UpdateMoney_00439bb0_test.cpp'
         PassPattern = '00439bb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005542f0'
+        Module = 'NUISystem::CMorphingSprite'
+        Source = '00/55/NUISystemCMorphingSprite_GetDataFromDef_005542f0.cpp'
+        TestSource = '00/55/NUISystemCMorphingSprite_GetDataFromDef_005542f0_test.cpp'
+        PassPattern = '005542f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

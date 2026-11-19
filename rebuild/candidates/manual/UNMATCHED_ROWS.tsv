@@ -62,7 +62,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0054eac0	NUISystem::CViewport	~CViewport	400	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0054eac0.cpp	original
 005502e0	NUISystem::CMesh	Draw	1312	parked	DIFFER(1321v1288)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand749/differ/005502e0.cpp	gapscan/boundary
 00554030	std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >	operator[]	160	parked	DIFFER(161v150)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand956/differ/00554030.test.cpp	original
-005542f0	CMorphingSprite	GetDataFromDef	736	reserved (hand4c, in-house)	DIFFER(727v727)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/005542f0.cpp	original
 00554740	NUISystem::CMorphingSprite	Draw	1968	parked	DIFFER(1524v1572)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand752/differ/00554740.test.cpp	gapscan/boundary
 00556a40	CRedefinerList	CRedefinerList::RefreshScriptThings	1472	parked	DIFFER(1441v1457)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/hdr/00556a40.cpp	original
 00559a90	NUISystem::CScrollBar	ProcessEvent	2208	parked	DIFFER(2144v2163)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand752/differ/00559a90.cpp	gapscan/boundary
