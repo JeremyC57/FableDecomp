@@ -40,12 +40,13 @@ public:
     void LoadFromDataStreamToPreallocatedSurface(class CDataInputStream& in);   // 0x009FB750
 #endif
 #ifdef FABLE_RETAIL_CTEXTURE_LEVELBYTELENGTH
-    // Retail opt-in (egod e13, row 0x009FB750): Ego_r.pdb / Ego_d.pdb ?GetLevelByteLength@CTexture@@QBEKK@Z (0x009F9E80, landed) and
+    // Retail opt-in (egod e13, row 0x009FB750): ?GetLevelByteLength@CTexture@@QBEJJ@Z (0x009F9E80, landed; Ego_r, Ego_d and FableWin.pdb
+    // all spell it long / long, q11272 header pass 2026-11-19: the earlier QBEKK here was wrong) and
     // ?GetPixelFormat@CTexture@@QBE?AVCPixelFormat@@XZ (0x009F9D80, landed), defined in the CTexture TU (Ego_d lib_texture.obj) before
     // LoadFromDataStreamToPreallocatedSurface, which expands both (0x009FB831..0x009FB86F: GetLevelDesc(level), GetLevelDesc(0),
     // CPixelFormat(D3DFORMAT) 0x009E3830, GetColourDepth 0x009E3820, `* Width * Height >> 3`). Declarations only (the TU defines them);
     // GetPixelFormat is skipped when FORMATQUERIES / EXTENTS_INLINE already declare it.
-    unsigned long GetLevelByteLength(unsigned long level) const;          // 0x009F9E80
+    long GetLevelByteLength(long level) const;                           // 0x009F9E80
 #if !defined(FABLE_RETAIL_CTEXTURE_FORMATQUERIES) && !defined(FABLE_RETAIL_CTEXTURE_EXTENTS_INLINE)
     CPixelFormat GetPixelFormat() const;                                 // 0x009F9D80
 #endif

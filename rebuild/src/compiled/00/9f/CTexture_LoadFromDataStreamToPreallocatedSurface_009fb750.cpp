@@ -105,7 +105,7 @@ long CTexture::GetNoLevels() const
     return PD3DTexture->GetLevelCount();
 }
 
-unsigned long CTexture::GetLevelByteLength(unsigned long level) const
+long CTexture::GetLevelByteLength(long level) const
 {
     _D3DSURFACE_DESC desc;
     HRESULT hr = PD3DTexture->GetLevelDesc(level, &desc);
