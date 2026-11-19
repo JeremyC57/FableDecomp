@@ -1,3 +1,4 @@
 date	account	item	kind	status	note
 2026-11-19	A	naming queue (NAME_FIXES.tsv of the 2026-11-19 batches + the earlier queue)	naming	claimed	Account A works naming on FullDecomp
 2026-11-19	B	56 rows with UNMATCHED status "handed off (2026-11-19, ...)"	author	claimed	pending/2026-11-19_authoring_handoff/README.md
+2026-11-19	A	naming round 8: queue q11225..q11436 (NF93/NF94/NF95; slices in $S/w22/agentNF9x, locks in $S/w22/nflocks)	naming	claimed	three naming agents; q11228 0x00774D20, q11413 0x00C77800, q11414 0x00C88E60 deferred: rows held by B
