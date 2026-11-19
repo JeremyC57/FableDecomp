@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00680050   RELOCATION_MATCH PASS   Validate
+
+WINS: 1
+  00680050 RELOCATION_MATCH CThingObjectDef::Validate
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingObjectDef_Validate_00680050

@@ -74,8 +74,8 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Landed byte-matching C++ (genuine) | **48,516 · 97.88%** |
-| Retail function bytes reproduced | **8,827,965 · 87.69%** |
+| Landed byte-matching C++ (genuine) | **48,517 · 97.88%** |
+| Retail function bytes reproduced | **8,828,404 · 87.69%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
@@ -97,17 +97,17 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **56,672** |
-| Reconstruction | Landed byte-matching genuine C++, original catalog | **48,516** (97.88%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,842 known functions | 56,671 (97.98%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 8,827,965 (87.69%) |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **56,673** |
+| Reconstruction | Landed byte-matching genuine C++, original catalog | **48,517** (97.88%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,842 known functions | 56,672 (97.98%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 8,828,404 (87.69%) |
 | Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 292 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 450 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |
 | Reconstruction | — of the `toolchain_library` rows, third-party vendor code rebuilt from unmodified source (`// Vendor-library:`) | 9 |
 | Reconstruction | — landed hand-written rows the unmodified vendor build also proves (`// Vendor-proof:` line) | 606 |
 | Reconstruction | — landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 1 |
-| Code origin | Landed genuine, Fable game code (`docs/pipeline/LIBRARY_MAP.tsv`) | 51,244 / 52,340 (97.91%) |
+| Code origin | Landed genuine, Fable game code (`docs/pipeline/LIBRARY_MAP.tsv`) | 51,245 / 52,340 (97.91%) |
 | Code origin | Landed genuine, Lionhead in-house libraries (libpk/CODA audio, LHNetworkLib) | 4,171 / 4,241 (98.35%) |
 | Code origin | Landed genuine, third-party vendor code (zlib, LZO, Xiph, DirectShow, DXUT) | 816 / 818 (99.76%) |
 | Code origin | Landed genuine, VC7.1 toolchain (CRT objects, import thunks) | 440 / 443 (99.32%) |

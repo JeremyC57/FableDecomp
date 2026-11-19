@@ -399657,6 +399657,13 @@ $catalog = @(
         TestSource = '00/91/CAIStateGroupGazeAtWork_IsRunnable_00918a40_test.cpp'
         PassPattern = '00918a40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00680050'
+        Module = 'CThingObjectDef'
+        Source = '00/68/CThingObjectDef_Validate_00680050.cpp'
+        TestSource = '00/68/CThingObjectDef_Validate_00680050_test.cpp'
+        PassPattern = '00680050_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

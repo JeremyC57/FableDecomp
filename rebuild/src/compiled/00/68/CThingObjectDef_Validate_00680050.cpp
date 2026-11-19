@@ -1,6 +1,12 @@
 // CThingObjectDef::Validate(const CValidateDefinitionInitBase& validate, const CCharString& instantiation_name) const -- the release build keeps only the side effects of the def checks: the object graphic's mesh info (static / animated by graphic type), the appearance sub-def's DEFAULT animation, and for a weapon-like property (0x100 / 0x200) the mesh's ACTION_POINT_01 dummy object
 // Grade: RELOCATION_MATCH (439v439; relocation identity clean)
-// Fable8 note: the only change from the escalated draft is the include order: engine/CMeshDataBank.h before engine/CWorld.h (CWorld::PeekMeshBank returns it). That moves the c1 ordinal of CCharString::NullChar from 0xA68 (bucket 0x28) to 0xBFB (bucket 0x3B). c2 numbers a function's candidate records from the records of its unused constants, which it frees by walking a 64-bucket table (0x10882050; integers hash by value & 0x3F, address constants by the c1 symbol ordinal & 0x3F of the symbol they name, hash 0x1077E10B, walk 0x1077FF3B). The root candidates (this, world, info, pappearance_def, the cleanup-flags temporary, ...) take the freed ids last-freed-first, the split pass runs in ascending id and reloads come out in piece-id order. Retail needs id(pappearance_def) < id(flags): here CCharString::NullChar (constant 18) must land in a higher bucket than the START/END/PRIMARY externs, "DEFAULT" and the CAnimFilterNoGroup vftable, so that the flags temporary takes record 18 and pappearance_def keeps record 12.
+// Include-order: engine/CMeshDataBank.h is included before engine/CWorld.h (CWorld::PeekMeshBank returns it). This order is part of the
+//   match: it moves the c1 ordinal of CCharString::NullChar from 0xA68 (bucket 0x28) to 0xBFB (bucket 0x3B), which changes how c2 numbers
+//   its candidate records and so the reload order at 0x00680196 (edi = pappearance_def.Object, then eax = the temporary-cleanup mask).
+//   About 155 statement-level variants (hand1, Fable advisor fable8, hand2a) found no source-level fix. Ego_d's thing_object_def.obj holds
+//   only this function, so the original file's symbol ordinals came from its include list alone; the exact original list is not
+//   recoverable. Landed with this note by owner decision (2026-11-19). Fragile: new declarations ahead of CAnimFilterBase in a shared
+//   header can break the match (fable8); recheck this row after header changes.
 // Retail: 0x00680050,439 bytes,const virtual thiscall.
 // Leaf: ?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
 // Flags: none
