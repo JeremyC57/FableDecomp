@@ -101,7 +101,7 @@ float CDefendingCombatantInfo::CCombatRing::GetProngSeparationHalfAngle() const
 {
     long num_prongs = Prongs.size();
     float prong_sep = 1.0f / num_prongs;
-    return prong_sep / 2.0;
+    return prong_sep / 2.0f;
 }
 
 bool CCombatManager::IsCreatureInAttackRingSector(const CThingCreatureBase& attacker) const

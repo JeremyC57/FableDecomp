@@ -1,0 +1,10 @@
+18d17
+< #pragma optimize("y", off)
+96a96,97
+> // Draw keeps an ebp frame; UpdateMiniGame above does not (retail 0x00644F85 is frameless), so "y" goes off only here.
+> #pragma optimize("y", off)
+149c150
+< }   // namespace NPlayerGui
+\ No newline at end of file
+---
+> }   // namespace NPlayerGui

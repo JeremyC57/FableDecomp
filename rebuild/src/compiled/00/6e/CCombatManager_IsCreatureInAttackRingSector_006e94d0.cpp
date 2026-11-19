@@ -45,7 +45,8 @@ static const float MOVE_TO_PRONG_NAV_PROXIMITY = 0.6f;
 // what lets VC7.1 skip the ecx reload before the second GetRingRadius (0x006E955B) and keep the ring in esi across
 // GetProngSeparationHalfAngle (0x006E964C). Bodies from the FableWin debug copies (GetRing 0x024111E0, GetRingRadius 0x02410550,
 // GetAttackerProngVector 0x02410110, GetProngSeparationHalfAngle 0x02410280) with Ego_d.pdb's locals; their debug ASSERTs emit
-// nothing in release.
+// nothing in release. Each body also grades MATCH / RELOCATION_MATCH at its own retail address from this TU; the half angle divides by
+// 2.0f (retail `fmul [0.5f]` 0x006E848B; FableWin's debug divides by a double 2.0, which /O2 would keep as a qword constant).
 const CDefendingCombatantInfo::CCombatRing* CDefendingCombatantInfo::CCombatWheel::GetRing(long index) const
 {
     if (index >= 0 && (unsigned long)index < CombatRings.size())
@@ -75,7 +76,7 @@ float CDefendingCombatantInfo::CCombatRing::GetProngSeparationHalfAngle() const
 {
     long num_prongs = Prongs.size();
     float prong_sep = 1.0f / num_prongs;
-    return prong_sep / 2.0;
+    return prong_sep / 2.0f;
 }
 
 

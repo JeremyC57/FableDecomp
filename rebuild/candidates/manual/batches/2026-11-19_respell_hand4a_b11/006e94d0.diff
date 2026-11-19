@@ -1,0 +1,14 @@
+48c48,49
+< // nothing in release.
+---
+> // nothing in release. Each body also grades MATCH / RELOCATION_MATCH at its own retail address from this TU; the half angle divides by
+> // 2.0f (retail `fmul [0.5f]` 0x006E848B; FableWin's debug divides by a double 2.0, which /O2 would keep as a qword constant).
+78c79
+<     return prong_sep / 2.0;
+---
+>     return prong_sep / 2.0f;
+108c109
+< }
+\ No newline at end of file
+---
+> }

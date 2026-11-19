@@ -8,7 +8,7 @@
 //   ConvertY(TLY) - TLY scaled, GetDynamicSize (slot 111), TargetPosition.Y.
 // Headers: the C2DVector sum is the existing shared opt-in FABLE_RETAIL_C2DVECTOR_ADD_COPY_RHS_X_PASS23 (landed 0x0064A639; X adds the
 //   right operand first, Y the left: retail 0x0053782E..0x0053783E and 0x005378B4..0x005378C1); the plain sum swaps the X addends.
-// Inferred: the view-area box copy uses the new overlay opt-in FABLE_RETAIL_C2DBOXI_COPY_FORCEINLINE. The user copy constructor is
+// Inline-budget: the view-area box copy uses the new overlay opt-in FABLE_RETAIL_C2DBOXI_COPY_FORCEINLINE. The user copy constructor is
 //   sourced (FableWin.pdb ??0C2DBoxI@@QAE@ABV0@@Z 0x018B1BF0, memberwise), but forcing it inline is fitted: in this size TU c2 calls
 //   the plain inline out of line, while retail copies only the live TLY / BRY words in place (0x005377B8 / 0x005377BE); the implicit
 //   copy is a movsd block copy. Coordinator to decide.

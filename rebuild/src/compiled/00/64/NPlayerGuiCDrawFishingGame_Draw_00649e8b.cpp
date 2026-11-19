@@ -15,7 +15,6 @@
 //   engine/_quarantine one, so the row keeps a local model): MaxStrain +0x34, MaxLengthMetres +0x38. Getters are the FableWin.pdb inline CTCFishing (overlay opt-in FABLE_RETAIL_CTCFISHING_DRAW_GETTERS)
 //   ones (GetStage, IsStageInitialised, GetDistance, GetStrain).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CRGBCOLOUR_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
@@ -94,6 +93,8 @@ void CDrawQuestInfo::UpdateMiniGame(const CRGBColour& colour)
 }
 }   // namespace NPlayerGui
 
+// Draw keeps an ebp frame; UpdateMiniGame above does not (retail 0x00644F85 is frameless), so "y" goes off only here.
+#pragma optimize("y", off)
 namespace NPlayerGui {
 class CDrawFishingGame : public CDrawBase {
 public:
