@@ -621,7 +621,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00987040	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	operator()	384	parked	DIFFER(370v374)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00987040.cpp	original
 009871c0	CThingSearchTools	GetPFirstThingInRoughArea<CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsCreatureType,CTh	624	parked	DIFFER(614v614)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ17/differ/009871c0.cpp	original
 00988e80	CShaderRenderManager	UpdateLocalisedSphereMapping	944	reserved (hand3c, not plain C++)	DIFFER(889v917)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00988e80.test.cpp	original
-00989230	CShaderRenderManager	UpdateObjectSpaceTextureTransform	640	reserved (hand3c, not plain C++)	DIFFER(636v636)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00989230.test.cpp	original
+00989230	CShaderRenderManager	UpdateObjectSpaceTextureTransform	640	open-escalated (hand3c; AlignedSetMultiply x87 term-order class with 00988e80 00ae1320 00ae29d0)	DIFFER(636v636)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00989230.test.cpp	original
 0098e7d0	_global	CThreadedFileManager_ProcessPendingRequests	848	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/0098e7d0.cpp	original
 0098ecd0	CThreadedFileManager	ProcessObjects	800	parked	DIFFER(777v786)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0098ecd0.cpp	original
 009919c0	_global	RegisterSoundBanks	592	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/009919c0.cpp	original
