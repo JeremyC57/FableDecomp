@@ -2504,6 +2504,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/40/std_fillETutorialCategoryETutorialCategory_0040ea50.cpp'
         TestSource = '00/40/std_fillETutorialCategoryETutorialCategory_0040ea50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '_global_0040ea50_TEST PASS'
     }
     [pscustomobject]@{
@@ -3485,6 +3486,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/45/std_destroyauxCAbilityButtonGuiDef_00450a58.cpp'
         TestSource = '00/45/std_destroyauxCAbilityButtonGuiDef_00450a58_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'vecCIP_00450a58_TEST PASS'
     }
     [pscustomobject]@{
@@ -3492,6 +3494,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/45/std_destroyauxCLensFlareElementDef_00450a74.cpp'
         TestSource = '00/45/std_destroyauxCLensFlareElementDef_00450a74_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'vector_00450a74_TEST PASS'
     }
     [pscustomobject]@{
@@ -3499,6 +3502,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/45/std_destroyauxCAppearanceModifierScalingDef_00450ab2.cpp'
         TestSource = '00/45/std_destroyauxCAppearanceModifierScalingDef_00450ab2_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'vecdestroy_00450ab2_TEST PASS'
     }
     [pscustomobject]@{
@@ -38381,6 +38385,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/65/std_uninitializedfilln_0065574c.cpp'
         TestSource = '00/65/std_uninitializedfilln_0065574c_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'UMOVE_0065574c_OK'
     }
     [pscustomobject]@{
@@ -48928,6 +48933,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, std::pair<long, long> >, std::_Select1st<std::pair<NUISystem::CComponent* const, std::pair<long, long> > >, std::less<NUISystem::CComponent* >, std::allocator<std::pair<NUISystem::CComponent* const, std::pair<long, long> > > >'
         Source = '00/5b/stdRbtree_Mcreatenode_005b200c.cpp'
         TestSource = '00/5b/stdRbtree_Mcreatenode_005b200c_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_TREEHANDLE_2A'
     }
     [pscustomobject]@{
@@ -62754,6 +62760,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/56/std_fillCTCHeroOnlineScoreboardEOnlineScoreboardActivityCTCHeroOnlineScoreboardEOnlineScoreboardActivity_00565a70.cpp'
         TestSource = '00/56/std_fillCTCHeroOnlineScoreboardEOnlineScoreboardActivityCTCHeroOnlineScoreboardEOnlineScoreboardActivity_00565a70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'FILL_OK'
     }
     [pscustomobject]@{
@@ -62824,6 +62831,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/61/std_fillCHeroLogBookCHeroLogBookEntryECategoryCHeroLogBookCHeroLogBookEntryECategory_00613290.cpp'
         TestSource = '00/61/std_fillCHeroLogBookCHeroLogBookEntryECategoryCHeroLogBookCHeroLogBookEntryECategory_00613290_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'FILL_OK'
     }
     [pscustomobject]@{
@@ -62971,6 +62979,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7b/std_fillCThingAICreatureCThingAICreature_007b8210.cpp'
         TestSource = '00/7b/std_fillCThingAICreatureCThingAICreature_007b8210_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'FILL_OK'
     }
     [pscustomobject]@{
@@ -90388,6 +90397,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/43/std_fillfloatfloat_0043dfc0.cpp'
         TestSource = '00/43/std_fillfloatfloat_0043dfc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_0043dfc0'
     }
     [pscustomobject]@{
@@ -90395,6 +90405,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/63/std_fillNThingMapCThingMapNThingMapCThingMap_00638880.cpp'
         TestSource = '00/63/std_fillNThingMapCThingMapNThingMapCThingMap_00638880_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_00638880'
     }
     [pscustomobject]@{
@@ -90402,6 +90413,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/64/std_fillNGraphicAppearanceCPrimitiveNGraphicAppearanceCPrimitive_00640a70.cpp'
         TestSource = '00/64/std_fillNGraphicAppearanceCPrimitiveNGraphicAppearanceCPrimitive_00640a70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_00640a70'
     }
     [pscustomobject]@{
@@ -90409,6 +90421,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9b/std_fillCDefinitionManagerCInstantiatedDefInfoCDefinitionManagerCInstantiatedDefInfo_009b15f0.cpp'
         TestSource = '00/9b/std_fillCDefinitionManagerCInstantiatedDefInfoCDefinitionManagerCInstantiatedDefInfo_009b15f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_009b15f0'
     }
     [pscustomobject]@{
@@ -90416,6 +90429,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9c/std_fillNGameTextCDataBankEntryNGameTextCDataBankEntry_009c9c60.cpp'
         TestSource = '00/9c/std_fillNGameTextCDataBankEntryNGameTextCDataBankEntry_009c9c60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_009c9c60'
     }
     [pscustomobject]@{
@@ -90423,6 +90437,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9e/std_fillCVertexBufferWin32CVertexBufferWin32_009e2a80.cpp'
         TestSource = '00/9e/std_fillCVertexBufferWin32CVertexBufferWin32_009e2a80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_009e2a80'
     }
     [pscustomobject]@{
@@ -90430,6 +90445,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a2/std_fillCMeshDataBankEntryCMeshDataBankEntry_00a291a0.cpp'
         TestSource = '00/a2/std_fillCMeshDataBankEntryCMeshDataBankEntry_00a291a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_00a291a0'
     }
     [pscustomobject]@{
@@ -90458,6 +90474,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b4/std_fillCEngineMapCEngineMap_00b43280.cpp'
         TestSource = '00/b4/std_fillCEngineMapCEngineMap_00b43280_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_00b43280'
     }
     [pscustomobject]@{
@@ -90472,6 +90489,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ba/std_fillCEngineInternalPrimitiveRepeatedZSpriteCEngineInternalPrimitiveRepeatedZSprite_00bac490.cpp'
         TestSource = '00/ba/std_fillCEngineInternalPrimitiveRepeatedZSpriteCEngineInternalPrimitiveRepeatedZSprite_00bac490_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_00bac490'
     }
     [pscustomobject]@{
@@ -92005,6 +92023,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/45/std_destroyauxCOpinionDeedReactionDef_00450aea.cpp'
         TestSource = '00/45/std_destroyauxCOpinionDeedReactionDef_00450aea_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_00450aea'
     }
     [pscustomobject]@{
@@ -93070,6 +93089,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/43/std_filllonglong_0043df80.cpp'
         TestSource = '00/43/std_filllonglong_0043df80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'PASS_0043df80'
     }
     [pscustomobject]@{
@@ -123276,6 +123296,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<ECombatCreatureType, std::pair<ECombatCreatureType const, long>, std::_Select1st<std::pair<ECombatCreatureType const, long> >, std::less<ECombatCreatureType >, std::allocator<std::pair<ECombatCreatureType const, long> > >'
         Source = '00/45/stdRbtree_Mcreatenode_0045c4d2.cpp'
         TestSource = '00/45/stdRbtree_Mcreatenode_0045c4d2_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_ALLOC_PASS'
     }
     [pscustomobject]@{
@@ -123283,6 +123304,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, unsigned long> > >'
         Source = '00/43/stdRbtree_Mcreatenode_00431471.cpp'
         TestSource = '00/43/stdRbtree_Mcreatenode_00431471_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_ALLOC_PASS'
     }
     [pscustomobject]@{
@@ -123290,6 +123312,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1st<std::pair<unsigned long const, long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, long> > >'
         Source = '00/45/stdRbtree_Mcreatenode_0045c8a1.cpp'
         TestSource = '00/45/stdRbtree_Mcreatenode_0045c8a1_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_ALLOC_PASS'
     }
     [pscustomobject]@{
@@ -123297,6 +123320,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, long>, std::_Select1st<std::pair<NUISystem::CComponent* const, long> >, std::less<NUISystem::CComponent*>, std::allocator<std::pair<NUISystem::CComponent* const, long> > >'
         Source = '00/42/stdRbtree_Mcreatenode_0042b5a8.cpp'
         TestSource = '00/42/stdRbtree_Mcreatenode_0042b5a8_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'BST_CREATE_PASS'
     }
     [pscustomobject]@{
@@ -123304,6 +123328,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<NUISystem::CManager::EUsedKeys, std::pair<NUISystem::CManager::EUsedKeys const, long>, std::_Select1st<std::pair<NUISystem::CManager::EUsedKeys const, long> >, std::less<NUISystem::CManager::EUsedKeys >, std::allocator<std::pair<NUISystem::CManager::EUsedKeys const, long> > >'
         Source = '00/42/stdRbtree_Mcreatenode_0042b5ca.cpp'
         TestSource = '00/42/stdRbtree_Mcreatenode_0042b5ca_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'BST_CREATE_DUP_PASS'
     }
     [pscustomobject]@{
@@ -123311,6 +123336,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<long, std::pair<long const, EEngine2DLayer>, std::_Select1st<std::pair<long const, EEngine2DLayer> >, std::less<long >, std::allocator<std::pair<long const, EEngine2DLayer> > >'
         Source = '00/42/stdRbtree_Mcreatenode_0042b5ec.cpp'
         TestSource = '00/42/stdRbtree_Mcreatenode_0042b5ec_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'BST_CREATE_COPY_PASS'
     }
     [pscustomobject]@{
@@ -123850,6 +123876,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/45/std_destroyauxCEngineLocalDetailLayerDef_00450a90.cpp'
         TestSource = '00/45/std_destroyauxCEngineLocalDetailLayerDef_00450a90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'DESTROY_450A90_PASS'
     }
     [pscustomobject]@{
@@ -123871,6 +123898,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/45/std_destroyauxCEnvironmentThemeDef_00450b1b.cpp'
         TestSource = '00/45/std_destroyauxCEnvironmentThemeDef_00450b1b_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'DESTROY_450B1B_PASS'
     }
     [pscustomobject]@{
@@ -123970,6 +123998,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EOpinionDeedType, std::pair<EOpinionDeedType const, bool>, std::_Select1st<std::pair<EOpinionDeedType const, bool> >, std::less<EOpinionDeedType >, std::allocator<std::pair<EOpinionDeedType const, bool> > >'
         Source = '00/45/stdRbtree_Mcreatenode_0045e2b1.cpp'
         TestSource = '00/45/stdRbtree_Mcreatenode_0045e2b1_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_ALLOC_BYTE_E2B1_PASS'
     }
     [pscustomobject]@{
@@ -123977,6 +124006,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EOpinionReactionType, std::pair<EOpinionReactionType const, bool>, std::_Select1st<std::pair<EOpinionReactionType const, bool> >, std::less<EOpinionReactionType >, std::allocator<std::pair<EOpinionReactionType const, bool> > >'
         Source = '00/45/stdRbtree_Mcreatenode_0045de2f.cpp'
         TestSource = '00/45/stdRbtree_Mcreatenode_0045de2f_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_ALLOC_BYTE_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -123984,6 +124014,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EOpinionAttitudeType, std::pair<EOpinionAttitudeType const, bool>, std::_Select1st<std::pair<EOpinionAttitudeType const, bool> >, std::less<EOpinionAttitudeType >, std::allocator<std::pair<EOpinionAttitudeType const, bool> > >'
         Source = '00/45/stdRbtree_Mcreatenode_0045e797.cpp'
         TestSource = '00/45/stdRbtree_Mcreatenode_0045e797_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_ALLOC_BYTE_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -123998,6 +124029,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EOpinion, std::pair<EOpinion const, float>, std::_Select1st<std::pair<EOpinion const, float> >, std::less<EOpinion >, std::allocator<std::pair<EOpinion const, float> > >'
         Source = '00/45/stdRbtree_Mcreatenode_0045f13d.cpp'
         TestSource = '00/45/stdRbtree_Mcreatenode_0045f13d_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124005,6 +124037,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, float>, std::_Select1st<std::pair<EObjectAugmentationType const, float> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, float> > >'
         Source = '00/46/stdRbtree_Mcreatenode_0046149e.cpp'
         TestSource = '00/46/stdRbtree_Mcreatenode_0046149e_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124012,6 +124045,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >'
         Source = '00/46/stdRbtree_Mcreatenode_004615c3.cpp'
         TestSource = '00/46/stdRbtree_Mcreatenode_004615c3_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124019,6 +124053,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, long>, std::_Select1st<std::pair<EHeroTrainableStatType const, long> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, long> > >'
         Source = '00/46/stdRbtree_Mcreatenode_004622ec.cpp'
         TestSource = '00/46/stdRbtree_Mcreatenode_004622ec_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124026,6 +124061,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, float>, std::_Select1st<std::pair<EHeroTrainableStatType const, float> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, float> > >'
         Source = '00/46/stdRbtree_Mcreatenode_00462411.cpp'
         TestSource = '00/46/stdRbtree_Mcreatenode_00462411_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124033,6 +124069,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EWorldMapNameGraphic, std::pair<EWorldMapNameGraphic const, unsigned long>, std::_Select1st<std::pair<EWorldMapNameGraphic const, unsigned long> >, std::less<EWorldMapNameGraphic >, std::allocator<std::pair<EWorldMapNameGraphic const, unsigned long> > >'
         Source = '00/46/stdRbtree_Mcreatenode_004630e7.cpp'
         TestSource = '00/46/stdRbtree_Mcreatenode_004630e7_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124040,6 +124077,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EQuestCardPrerequisite, std::pair<EQuestCardPrerequisite const, long>, std::_Select1st<std::pair<EQuestCardPrerequisite const, long> >, std::less<EQuestCardPrerequisite >, std::allocator<std::pair<EQuestCardPrerequisite const, long> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004e4429.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004e4429_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124047,6 +124085,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, long>, std::_Select1st<std::pair<EObjectAugmentationType const, long> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, long> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004e4d19.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004e4d19_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124054,6 +124093,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long> >, std::less<long >, std::allocator<std::pair<long const, long> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004e4eca.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004e4eca_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124061,6 +124101,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<long, std::pair<long const, float>, std::_Select1st<std::pair<long const, float> >, std::less<long >, std::allocator<std::pair<long const, float> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004e4fef.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004e4fef_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124068,6 +124109,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, long>, std::_Select1st<std::pair<EClothingSuitPart const, long> >, std::less<EClothingSuitPart >, std::allocator<std::pair<EClothingSuitPart const, long> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004e55cf.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004e55cf_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124075,6 +124117,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<CDefString, std::pair<CDefString const, long>, std::_Select1st<std::pair<CDefString const, long> >, CCompareDefString<long>, std::allocator<std::pair<CDefString const, long> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004e597b.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004e597b_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124082,6 +124125,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EIdleStateGroup, std::pair<EIdleStateGroup const, long>, std::_Select1st<std::pair<EIdleStateGroup const, long> >, std::less<EIdleStateGroup >, std::allocator<std::pair<EIdleStateGroup const, long> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004e6210.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004e6210_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124089,6 +124133,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EQuakeStrength, std::pair<EQuakeStrength const, float>, std::_Select1st<std::pair<EQuakeStrength const, float> >, std::less<EQuakeStrength >, std::allocator<std::pair<EQuakeStrength const, float> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004e6623.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004e6623_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124096,6 +124141,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EQuakeLength, std::pair<EQuakeLength const, float>, std::_Select1st<std::pair<EQuakeLength const, float> >, std::less<EQuakeLength >, std::allocator<std::pair<EQuakeLength const, float> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004e6748.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004e6748_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124103,6 +124149,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EOpinionAttitudeType, std::pair<EOpinionAttitudeType const, float>, std::_Select1st<std::pair<EOpinionAttitudeType const, float> >, std::less<EOpinionAttitudeType >, std::allocator<std::pair<EOpinionAttitudeType const, float> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004e9ab1.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004e9ab1_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124110,6 +124157,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CDefString>, std::_Select1st<std::pair<EObjectAugmentationType const, CDefString> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, CDefString> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004ec31c.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004ec31c_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124117,6 +124165,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<long, std::pair<long const, CDefString>, std::_Select1st<std::pair<long const, CDefString> >, std::less<long >, std::allocator<std::pair<long const, CDefString> > >'
         Source = '00/4f/stdRbtree_Mcreatenode_004f930a.cpp'
         TestSource = '00/4f/stdRbtree_Mcreatenode_004f930a_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124124,6 +124173,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EHeroExperienceStatCategory, std::pair<EHeroExperienceStatCategory const, float>, std::_Select1st<std::pair<EHeroExperienceStatCategory const, float> >, std::less<EHeroExperienceStatCategory >, std::allocator<std::pair<EHeroExperienceStatCategory const, float> > >'
         Source = '00/4f/stdRbtree_Mcreatenode_004f9a6e.cpp'
         TestSource = '00/4f/stdRbtree_Mcreatenode_004f9a6e_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124138,6 +124188,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<void*, std::pair<void* const, float>, std::_Select1st<std::pair<void* const, float> >, std::less<void* >, std::allocator<std::pair<void* const, float> > >'
         Source = '00/58/stdRbtree_Mcreatenode_00580428.cpp'
         TestSource = '00/58/stdRbtree_Mcreatenode_00580428_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124152,6 +124203,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<FRONTEND_SCREEN, std::pair<FRONTEND_SCREEN const, NUISystem::CComponent*>, std::_Select1st<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent*> >, std::less<FRONTEND_SCREEN >, std::allocator<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent*> > >'
         Source = '00/59/stdRbtree_Mcreatenode_0059afab.cpp'
         TestSource = '00/59/stdRbtree_Mcreatenode_0059afab_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124159,6 +124211,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, NUISystem::CList*>, std::_Select1st<std::pair<NUISystem::CComponent* const, NUISystem::CList*> >, std::less<NUISystem::CComponent* >, std::allocator<std::pair<NUISystem::CComponent* const, NUISystem::CList*> > >'
         Source = '00/5b/stdRbtree_Mcreatenode_005b2029.cpp'
         TestSource = '00/5b/stdRbtree_Mcreatenode_005b2029_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124166,6 +124219,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, NUISystem::CComponent*>, std::_Select1st<std::pair<NUISystem::CComponent* const, NUISystem::CComponent*> >, std::less<NUISystem::CComponent* >, std::allocator<std::pair<NUISystem::CComponent* const, NUISystem::CComponent*> > >'
         Source = '00/5b/stdRbtree_Mcreatenode_005b206c.cpp'
         TestSource = '00/5b/stdRbtree_Mcreatenode_005b206c_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124180,6 +124234,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, NUISystem::CComponent*>, std::_Select1st<std::pair<EHeroAbility const, NUISystem::CComponent*> >, std::less<EHeroAbility >, std::allocator<std::pair<EHeroAbility const, NUISystem::CComponent*> > >'
         Source = '00/5f/stdRbtree_Mcreatenode_005f8c41.cpp'
         TestSource = '00/5f/stdRbtree_Mcreatenode_005f8c41_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -124187,6 +124242,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, bool>, std::_Select1st<std::pair<EClothingSuitPart const, bool> >, std::less<EClothingSuitPart >, std::allocator<std::pair<EClothingSuitPart const, bool> > >'
         Source = '00/5b/stdRbtree_Mcreatenode_005baf06.cpp'
         TestSource = '00/5b/stdRbtree_Mcreatenode_005baf06_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = 'TREE_NODE_TAG_FAMILY_PASS'
     }
     [pscustomobject]@{
@@ -155807,6 +155863,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/40/std_uninitializedcopyCWideStringCWideString_0040dd60.cpp'
         TestSource = '00/40/std_uninitializedcopyCWideStringCWideString_0040dd60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0040dd60_TEST PASS'
     }
     [pscustomobject]@{
@@ -155814,6 +155871,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/49/std_uninitializedcopyCTextureCTexture_0049ad70.cpp'
         TestSource = '00/49/std_uninitializedcopyCTextureCTexture_0049ad70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0049ad70_TEST PASS'
     }
     [pscustomobject]@{
@@ -155821,6 +155879,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/4d/std_uninitializedcopyCSubtitledMessageCSubtitledMessage_004d2100.cpp'
         TestSource = '00/4d/std_uninitializedcopyCSubtitledMessageCSubtitledMessage_004d2100_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004d2100_TEST PASS'
     }
     [pscustomobject]@{
@@ -155835,6 +155894,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/51/std_uninitializedcopyCRegionCRegion_0051b420.cpp'
         TestSource = '00/51/std_uninitializedcopyCRegionCRegion_0051b420_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0051b420_TEST PASS'
     }
     [pscustomobject]@{
@@ -155842,6 +155902,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6b/std_uninitializedcopyCIDrawEnvironmentParamsCThemeChannelCIDrawEnvironmentParamsCThemeChannel_006b6500.cpp'
         TestSource = '00/6b/std_uninitializedcopyCIDrawEnvironmentParamsCThemeChannelCIDrawEnvironmentParamsCThemeChannel_006b6500_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006b6500_TEST PASS'
     }
     [pscustomobject]@{
@@ -155856,6 +155917,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/75/std_uninitializedcopyCKeyCameraCKeyCamera_0075f3e0.cpp'
         TestSource = '00/75/std_uninitializedcopyCKeyCameraCKeyCamera_0075f3e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0075f3e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155863,6 +155925,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/76/std_uninitializedcopystdvectorC3DVectorstdallocatorC3DVectorstdvectorC3DVectorstdallocatorC3DVector_00764970.cpp'
         TestSource = '00/76/std_uninitializedcopystdvectorC3DVectorstdallocatorC3DVectorstdvectorC3DVectorstdallocatorC3DVector_00764970_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00764970_TEST PASS'
     }
     [pscustomobject]@{
@@ -155870,6 +155933,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/76/std_uninitializedcopystdvectorParticleAndEndPointsstdallocatorParticleAndEndPointsstdvectorParticleAndEndPointsstdallocatorParticleAndEndPoints_0076a930.cpp'
         TestSource = '00/76/std_uninitializedcopystdvectorParticleAndEndPointsstdallocatorParticleAndEndPointsstdvectorParticleAndEndPointsstdallocatorParticleAndEndPoints_0076a930_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0076a930_TEST PASS'
     }
     [pscustomobject]@{
@@ -155877,6 +155941,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/76/std_uninitializedcopystdvectorAttackParticleAndEndPointsstdallocatorAttackParticleAndEndPointsstdvectorAttackParticleAndEndPointsstdallocatorAttackParticleAndEndPoints_0076a990.cpp'
         TestSource = '00/76/std_uninitializedcopystdvectorAttackParticleAndEndPointsstdallocatorAttackParticleAndEndPointsstdvectorAttackParticleAndEndPointsstdallocatorAttackParticleAndEndPoints_0076a990_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0076a990_TEST PASS'
     }
     [pscustomobject]@{
@@ -155884,6 +155949,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/76/std_uninitializedcopystdvectorstdpairC3DVectorC3DVectorstdallocatorstdpairC3DVectorC3DVectorstdvectorstdpairC3DVectorC3DVectorstdallocatorstdpairC3DVectorC3DVector_0076fce0.cpp'
         TestSource = '00/76/std_uninitializedcopystdvectorstdpairC3DVectorC3DVectorstdallocatorstdpairC3DVectorC3DVectorstdvectorstdpairC3DVectorC3DVectorstdallocatorstdpairC3DVectorC3DVector_0076fce0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0076fce0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155891,6 +155957,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/78/std_uninitializedcopyNFireCFirePointNFireCFirePoint_007816c0.cpp'
         TestSource = '00/78/std_uninitializedcopyNFireCFirePointNFireCFirePoint_007816c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007816c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155898,6 +155965,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/88/std_uninitializedcopyNEnvironmentInternalCBlendedEnvironmentThemeNEnvironmentInternalCBlendedEnvironmentTheme_00889700.cpp'
         TestSource = '00/88/std_uninitializedcopyNEnvironmentInternalCBlendedEnvironmentThemeNEnvironmentInternalCBlendedEnvironmentTheme_00889700_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00889700_TEST PASS'
     }
     [pscustomobject]@{
@@ -155905,6 +155973,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/8e/std_uninitializedcopyNCreatureModeCModeIceTrollGroundSmashIcicleAssaultCIcicleDataNCreatureModeCModeIceTrollGroundSmashIcicleAssaultCIcicleData_008e33d0.cpp'
         TestSource = '00/8e/std_uninitializedcopyNCreatureModeCModeIceTrollGroundSmashIcicleAssaultCIcicleDataNCreatureModeCModeIceTrollGroundSmashIcicleAssaultCIcicleData_008e33d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008e33d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155919,6 +155988,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9e/std_uninitializedcopyCQuickDrawTriInfoCQuickDrawTriInfo_009e11a0.cpp'
         TestSource = '00/9e/std_uninitializedcopyCQuickDrawTriInfoCQuickDrawTriInfo_009e11a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009e11a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155940,6 +156010,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_uninitializedcopyCLipSyncFrameDataCLipSyncFrameData_00a4aa10.cpp'
         TestSource = '00/a4/std_uninitializedcopyCLipSyncFrameDataCLipSyncFrameData_00a4aa10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a4aa10_TEST PASS'
     }
     [pscustomobject]@{
@@ -155947,6 +156018,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bc/std_uninitializedcopyCArrayC3DVectorCArrayC3DVector_00bcd8a0.cpp'
         TestSource = '00/bc/std_uninitializedcopyCArrayC3DVectorCArrayC3DVector_00bcd8a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bcd8a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155954,6 +156026,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/49/std_uninitializedcopyCSubtitleRendererCEmbeddedGraphicCSubtitleRendererCEmbeddedGraphic_00493959.cpp'
         TestSource = '00/49/std_uninitializedcopyCSubtitleRendererCEmbeddedGraphicCSubtitleRendererCEmbeddedGraphic_00493959_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00493959_TEST PASS'
     }
     [pscustomobject]@{
@@ -155961,6 +156034,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/49/std_uninitializedcopyCSubtitleRendererCEmbeddedHighlightCSubtitleRendererCEmbeddedHighlight_004939bf.cpp'
         TestSource = '00/49/std_uninitializedcopyCSubtitleRendererCEmbeddedHighlightCSubtitleRendererCEmbeddedHighlight_004939bf_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004939bf_TEST PASS'
     }
     [pscustomobject]@{
@@ -156010,6 +156084,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/59/std_uninitializedcopyCCountedPointerNUISystemCComponentconstCCountedPointerNUISystemCComponent_0059ada2.cpp'
         TestSource = '00/59/std_uninitializedcopyCCountedPointerNUISystemCComponentconstCCountedPointerNUISystemCComponent_0059ada2_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0059ada2_TEST PASS'
     }
     [pscustomobject]@{
@@ -156024,6 +156099,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5b/std_uninitializedcopystdvectorstdpairlonglongstdallocatorstdpairlonglongstdvectorstdpairlonglongstdallocatorstdpairlonglong_005bb1cf.cpp'
         TestSource = '00/5b/std_uninitializedcopystdvectorstdpairlonglongstdallocatorstdpairlonglongstdvectorstdpairlonglongstdallocatorstdpairlonglong_005bb1cf_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005bb1cf_TEST PASS'
     }
     [pscustomobject]@{
@@ -156038,6 +156114,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5c/std_uninitializedcopyNInventoryCItemNInventoryCItem_005c0df0.cpp'
         TestSource = '00/5c/std_uninitializedcopyNInventoryCItemNInventoryCItem_005c0df0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005c0df0_TEST PASS'
     }
     [pscustomobject]@{
@@ -156045,6 +156122,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5c/std_uninitializedcopyNInventoryCItemconstNInventoryCItem_005c10cc.cpp'
         TestSource = '00/5c/std_uninitializedcopyNInventoryCItemconstNInventoryCItem_005c10cc_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005c10cc_TEST PASS'
     }
     [pscustomobject]@{
@@ -156059,6 +156137,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5f/std_uninitializedcopystdpairlongCDefPointerCHeroAbilityDefconstconststdpairlongCDefPointerCHeroAbilityDefconst_005f9132.cpp'
         TestSource = '00/5f/std_uninitializedcopystdpairlongCDefPointerCHeroAbilityDefconstconststdpairlongCDefPointerCHeroAbilityDefconst_005f9132_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005f9132_TEST PASS'
     }
     [pscustomobject]@{
@@ -156066,6 +156145,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/65/std_uninitializedcopystdpairC3DVectorCCharStringstdpairC3DVectorCCharString_006555ce.cpp'
         TestSource = '00/65/std_uninitializedcopystdpairC3DVectorCCharStringstdpairC3DVectorCCharString_006555ce_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006555ce_TEST PASS'
     }
     [pscustomobject]@{
@@ -156080,6 +156160,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/78/std_uninitializedcopystdpairCIntelligentPointerCThinglongstdpairCIntelligentPointerCThinglong_00788f17.cpp'
         TestSource = '00/78/std_uninitializedcopystdpairCIntelligentPointerCThinglongstdpairCIntelligentPointerCThinglong_00788f17_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00788f17_TEST PASS'
     }
     [pscustomobject]@{
@@ -159978,6 +160059,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/44/std_uninitializedfillnCCountedPointerCInputTypeBaseconstunsignedintCCountedPointerCInputTypeBaseconst_00447800.cpp'
         TestSource = '00/44/std_uninitializedfillnCCountedPointerCInputTypeBaseconstunsignedintCCountedPointerCInputTypeBaseconst_00447800_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00447800_TEST PASS'
     }
     [pscustomobject]@{
@@ -159985,6 +160067,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/53/std_uninitializedfillnCCountedPointerNUISystemCComponentunsignedintCCountedPointerNUISystemCComponent_005347a0.cpp'
         TestSource = '00/53/std_uninitializedfillnCCountedPointerNUISystemCComponentunsignedintCCountedPointerNUISystemCComponent_005347a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005347a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -159992,6 +160075,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/54/std_uninitializedfillnCCountedPointerNUISystemCActionunsignedintCCountedPointerNUISystemCAction_0054a180.cpp'
         TestSource = '00/54/std_uninitializedfillnCCountedPointerNUISystemCActionunsignedintCCountedPointerNUISystemCAction_0054a180_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0054a180_TEST PASS'
     }
     [pscustomobject]@{
@@ -159999,6 +160083,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/69/std_uninitializedfillnCCountedPointerNCreatureActionCActionEventBaseunsignedintCCountedPointerNCreatureActionCActionEventBase_00695bd0.cpp'
         TestSource = '00/69/std_uninitializedfillnCCountedPointerNCreatureActionCActionEventBaseunsignedintCCountedPointerNCreatureActionCActionEventBase_00695bd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00695bd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -160006,6 +160091,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/76/std_uninitializedfillnCCountedPointerNShapeCShapeunsignedintCCountedPointerNShapeCShape_00763eb0.cpp'
         TestSource = '00/76/std_uninitializedfillnCCountedPointerNShapeCShapeunsignedintCCountedPointerNShapeCShape_00763eb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00763eb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -160013,6 +160099,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7f/std_uninitializedfillnCCountedPointerCTCLightningNodeCLightningBranchunsignedintCCountedPointerCTCLightningNodeCLightningBranch_007f3820.cpp'
         TestSource = '00/7f/std_uninitializedfillnCCountedPointerCTCLightningNodeCLightningBranchunsignedintCCountedPointerCTCLightningNodeCLightningBranch_007f3820_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007f3820_TEST PASS'
     }
     [pscustomobject]@{
@@ -160020,6 +160107,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/84/std_uninitializedfillnCCountedPointerNCameraModesCSubComponentBaseunsignedintCCountedPointerNCameraModesCSubComponentBase_0084ebd0.cpp'
         TestSource = '00/84/std_uninitializedfillnCCountedPointerNCameraModesCSubComponentBaseunsignedintCCountedPointerNCameraModesCSubComponentBase_0084ebd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0084ebd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -160034,6 +160122,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/98/std_uninitializedfillnCCountedPointerCShaderResourceunsignedintCCountedPointerCShaderResource_0098c030.cpp'
         TestSource = '00/98/std_uninitializedfillnCCountedPointerCShaderResourceunsignedintCCountedPointerCShaderResource_0098c030_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0098c030_TEST PASS'
     }
     [pscustomobject]@{
@@ -160041,6 +160130,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a2/std_uninitializedfillnCCountedPointerCMeshDataBankEntryunsignedintCCountedPointerCMeshDataBankEntry_00a29270.cpp'
         TestSource = '00/a2/std_uninitializedfillnCCountedPointerCMeshDataBankEntryunsignedintCCountedPointerCMeshDataBankEntry_00a29270_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a29270_TEST PASS'
     }
     [pscustomobject]@{
@@ -160048,6 +160138,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_uninitializedfillnCCountedPointerC3DSkeletalMorphParameterunsignedintCCountedPointerC3DSkeletalMorphParameter_00a45ea0.cpp'
         TestSource = '00/a4/std_uninitializedfillnCCountedPointerC3DSkeletalMorphParameterunsignedintCCountedPointerC3DSkeletalMorphParameter_00a45ea0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a45ea0_TEST PASS'
     }
     [pscustomobject]@{
@@ -160055,6 +160146,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a5/std_uninitializedfillnCCountedPointerCJoystickunsignedintCCountedPointerCJoystick_00a5fce0.cpp'
         TestSource = '00/a5/std_uninitializedfillnCCountedPointerCJoystickunsignedintCCountedPointerCJoystick_00a5fce0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a5fce0_TEST PASS'
     }
     [pscustomobject]@{
@@ -160083,6 +160175,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b3/std_uninitializedfillnCCountedPointerCEnginePrimitiveManagerunsignedintCCountedPointerCEnginePrimitiveManager_00b38500.cpp'
         TestSource = '00/b3/std_uninitializedfillnCCountedPointerCEnginePrimitiveManagerunsignedintCCountedPointerCEnginePrimitiveManager_00b38500_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b38500_TEST PASS'
     }
     [pscustomobject]@{
@@ -160097,6 +160190,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b8/std_uninitializedfillnCCountedPointerCParticleSimulationunsignedintCCountedPointerCParticleSimulation_00b82d00.cpp'
         TestSource = '00/b8/std_uninitializedfillnCCountedPointerCParticleSimulationunsignedintCCountedPointerCParticleSimulation_00b82d00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b82d00_TEST PASS'
     }
     [pscustomobject]@{
@@ -164822,6 +164916,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/47/std_uninitializedfillnCAbilityButtonGuiDefunsignedintCAbilityButtonGuiDef_004768f8.cpp'
         TestSource = '00/47/std_uninitializedfillnCAbilityButtonGuiDefunsignedintCAbilityButtonGuiDef_004768f8_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004768f8_TEST PASS'
     }
     [pscustomobject]@{
@@ -164829,6 +164924,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/47/std_uninitializedfillnCLensFlareElementDefunsignedintCLensFlareElementDef_00476d9d.cpp'
         TestSource = '00/47/std_uninitializedfillnCLensFlareElementDefunsignedintCLensFlareElementDef_00476d9d_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00476d9d_TEST PASS'
     }
     [pscustomobject]@{
@@ -164836,6 +164932,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/47/std_uninitializedfillnCEnvironmentThemeDefunsignedintCEnvironmentThemeDef_0047725f.cpp'
         TestSource = '00/47/std_uninitializedfillnCEnvironmentThemeDefunsignedintCEnvironmentThemeDef_0047725f_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0047725f_TEST PASS'
     }
     [pscustomobject]@{
@@ -164843,6 +164940,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/47/std_uninitializedfillnCEngineLocalDetailObjectDefunsignedintCEngineLocalDetailObjectDef_00478104.cpp'
         TestSource = '00/47/std_uninitializedfillnCEngineLocalDetailObjectDefunsignedintCEngineLocalDetailObjectDef_00478104_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00478104_TEST PASS'
     }
     [pscustomobject]@{
@@ -164864,6 +164962,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/47/std_uninitializedfillnCAppearanceModifierScalingDefunsignedintCAppearanceModifierScalingDef_0047a2cf.cpp'
         TestSource = '00/47/std_uninitializedfillnCAppearanceModifierScalingDefunsignedintCAppearanceModifierScalingDef_0047a2cf_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0047a2cf_TEST PASS'
     }
     [pscustomobject]@{
@@ -164871,6 +164970,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/49/std_uninitializedfillnCSubtitleRendererCEmbeddedGraphicunsignedintCSubtitleRendererCEmbeddedGraphic_00493984.cpp'
         TestSource = '00/49/std_uninitializedfillnCSubtitleRendererCEmbeddedGraphicunsignedintCSubtitleRendererCEmbeddedGraphic_00493984_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00493984_TEST PASS'
     }
     [pscustomobject]@{
@@ -164878,6 +164978,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/49/std_uninitializedfillnCSubtitleRendererCEmbeddedHighlightunsignedintCSubtitleRendererCEmbeddedHighlight_004939ea.cpp'
         TestSource = '00/49/std_uninitializedfillnCSubtitleRendererCEmbeddedHighlightunsignedintCSubtitleRendererCEmbeddedHighlight_004939ea_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004939ea_TEST PASS'
     }
     [pscustomobject]@{
@@ -164892,6 +164993,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/4e/std_uninitializedfillnCMultiStaticMeshEntryDefunsignedintCMultiStaticMeshEntryDef_004ee219.cpp'
         TestSource = '00/4e/std_uninitializedfillnCMultiStaticMeshEntryDefunsignedintCMultiStaticMeshEntryDef_004ee219_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004ee219_TEST PASS'
     }
     [pscustomobject]@{
@@ -164934,6 +165036,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5b/std_uninitializedfillnstdvectorstdpairlonglongstdallocatorstdpairlonglongunsignedintstdvectorstdpairlonglongstdallocatorstdpairlonglong_005bb1fa.cpp'
         TestSource = '00/5b/std_uninitializedfillnstdvectorstdpairlonglongstdallocatorstdpairlonglongunsignedintstdvectorstdpairlonglongstdallocatorstdpairlonglong_005bb1fa_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005bb1fa_TEST PASS'
     }
     [pscustomobject]@{
@@ -164941,6 +165044,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5c/std_uninitializedfillnNInventoryCItemunsignedintNInventoryCItem_005c0e1b.cpp'
         TestSource = '00/5c/std_uninitializedfillnNInventoryCItemunsignedintNInventoryCItem_005c0e1b_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005c0e1b_TEST PASS'
     }
     [pscustomobject]@{
@@ -164955,6 +165059,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5f/std_uninitializedfillnstdpairlongCDefPointerCHeroAbilityDefconstunsignedintstdpairlongCDefPointerCHeroAbilityDefconst_005f9379.cpp'
         TestSource = '00/5f/std_uninitializedfillnstdpairlongCDefPointerCHeroAbilityDefconstunsignedintstdpairlongCDefPointerCHeroAbilityDefconst_005f9379_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005f9379_TEST PASS'
     }
     [pscustomobject]@{
@@ -164969,6 +165074,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/65/std_uninitializedfillnstdpairC3DVectorCCharStringunsignedintstdpairC3DVectorCCharString_006555f9.cpp'
         TestSource = '00/65/std_uninitializedfillnstdpairC3DVectorCCharStringunsignedintstdpairC3DVectorCCharString_006555f9_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006555f9_TEST PASS'
     }
     [pscustomobject]@{
@@ -164976,6 +165082,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/78/std_uninitializedfillnstdpairCIntelligentPointerCThinglongunsignedintstdpairCIntelligentPointerCThinglong_00788f42.cpp'
         TestSource = '00/78/std_uninitializedfillnstdpairCIntelligentPointerCThinglongunsignedintstdpairCIntelligentPointerCThinglong_00788f42_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00788f42_TEST PASS'
     }
     [pscustomobject]@{
@@ -164997,6 +165104,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/49/std_uninitializedfillnCTextureunsignedintCTexture_0049ae00.cpp'
         TestSource = '00/49/std_uninitializedfillnCTextureunsignedintCTexture_0049ae00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0049ae00_TEST PASS'
     }
     [pscustomobject]@{
@@ -165011,6 +165119,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/71/std_uninitializedfillnCSubtitledMessageunsignedintCSubtitledMessage_00719e50.cpp'
         TestSource = '00/71/std_uninitializedfillnCSubtitledMessageunsignedintCSubtitledMessage_00719e50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00719e50_TEST PASS'
     }
     [pscustomobject]@{
@@ -165032,6 +165141,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bc/std_uninitializedfillnCArrayC3DVectorunsignedintCArrayC3DVector_00bcd920.cpp'
         TestSource = '00/bc/std_uninitializedfillnCArrayC3DVectorunsignedintCArrayC3DVector_00bcd920_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bcd920_TEST PASS'
     }
     [pscustomobject]@{
@@ -165046,6 +165156,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/f2/std_uninitializedfillnCArenaCreatureDefunsignedintCArenaCreatureDef_00f26740.cpp'
         TestSource = '00/f2/std_uninitializedfillnCArenaCreatureDefunsignedintCArenaCreatureDef_00f26740_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00f26740_TEST PASS'
     }
     [pscustomobject]@{
@@ -165067,6 +165178,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/f3/std_uninitializedfillnCConversationunsignedintCConversation_00f339e0.cpp'
         TestSource = '00/f3/std_uninitializedfillnCConversationunsignedintCConversation_00f339e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00f339e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -165074,6 +165186,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/f3/std_uninitializedfillnCFeatDefunsignedintCFeatDef_00f34830.cpp'
         TestSource = '00/f3/std_uninitializedfillnCFeatDefunsignedintCFeatDef_00f34830_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00f34830_TEST PASS'
     }
     [pscustomobject]@{
@@ -165116,6 +165229,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/82/std_uninitializedfillnCMapCScriptedMapBrushUpdateAreaunsignedintCMapCScriptedMapBrushUpdateArea_00824690.cpp'
         TestSource = '00/82/std_uninitializedfillnCMapCScriptedMapBrushUpdateAreaunsignedintCMapCScriptedMapBrushUpdateArea_00824690_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00824690_TEST PASS'
     }
     [pscustomobject]@{
@@ -165137,6 +165251,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9c/std_uninitializedfillnNGameTextCTextTagunsignedintNGameTextCTextTag_009ca220.cpp'
         TestSource = '00/9c/std_uninitializedfillnNGameTextCTextTagunsignedintNGameTextCTextTag_009ca220_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009ca220_TEST PASS'
     }
     [pscustomobject]@{
@@ -165144,6 +165259,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ae/std_uninitializedfillnC3DGroup2unsignedintC3DGroup2_00ae74c0.cpp'
         TestSource = '00/ae/std_uninitializedfillnC3DGroup2unsignedintC3DGroup2_00ae74c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ae74c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -165151,6 +165267,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ae/std_uninitializedfillnC3DGroup2unsignedintC3DGroup2_00ae75b0.cpp'
         TestSource = '00/ae/std_uninitializedfillnC3DGroup2unsignedintC3DGroup2_00ae75b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ae75b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -165158,6 +165275,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bf/std_uninitializedfillnCEngineTexturePaletteCPaletteEntryunsignedintCEngineTexturePaletteCPaletteEntry_00bf8f70.cpp'
         TestSource = '00/bf/std_uninitializedfillnCEngineTexturePaletteCPaletteEntryunsignedintCEngineTexturePaletteCPaletteEntry_00bf8f70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bf8f70_TEST PASS'
     }
     [pscustomobject]@{
@@ -165165,6 +165283,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bf/std_uninitializedfillnCEngineTexturePaletteCPaletteEntryunsignedintCEngineTexturePaletteCPaletteEntry_00bf8ff0.cpp'
         TestSource = '00/bf/std_uninitializedfillnCEngineTexturePaletteCPaletteEntryunsignedintCEngineTexturePaletteCPaletteEntry_00bf8ff0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bf8ff0_TEST PASS'
     }
     [pscustomobject]@{
@@ -165179,6 +165298,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6d/std_uninitializedfillnstdpairCCharStringlongunsignedintstdpairCCharStringlong_006d3b20.cpp'
         TestSource = '00/6d/std_uninitializedfillnstdpairCCharStringlongunsignedintstdpairCCharStringlong_006d3b20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006d3b20_TEST PASS'
     }
     [pscustomobject]@{
@@ -165186,6 +165306,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6d/std_uninitializedfillnCAttackHistoryCombounsignedintCAttackHistoryCombo_006dbd90.cpp'
         TestSource = '00/6d/std_uninitializedfillnCAttackHistoryCombounsignedintCAttackHistoryCombo_006dbd90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006dbd90_TEST PASS'
     }
     [pscustomobject]@{
@@ -165193,6 +165314,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6d/std_uninitializedfillnCAttackHistoryCombounsignedintCAttackHistoryCombo_006dc670.cpp'
         TestSource = '00/6d/std_uninitializedfillnCAttackHistoryCombounsignedintCAttackHistoryCombo_006dc670_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006dc670_TEST PASS'
     }
     [pscustomobject]@{
@@ -165214,6 +165336,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9b/std_uninitializedfillnstdpairCCharStringunsignedlongunsignedintstdpairCCharStringunsignedlong_009b26c0.cpp'
         TestSource = '00/9b/std_uninitializedfillnstdpairCCharStringunsignedlongunsignedintstdpairCCharStringunsignedlong_009b26c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009b26c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -165221,6 +165344,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a2/std_uninitializedfillnCMeshDataBankCLipSyncEntryunsignedintCMeshDataBankCLipSyncEntry_00a2a390.cpp'
         TestSource = '00/a2/std_uninitializedfillnCMeshDataBankCLipSyncEntryunsignedintCMeshDataBankCLipSyncEntry_00a2a390_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a2a390_TEST PASS'
     }
     [pscustomobject]@{
@@ -165228,6 +165352,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a3/std_uninitializedfillnstdpairCCharStringCSoundBankLHunsignedintstdpairCCharStringCSoundBankLH_00a3fc80.cpp'
         TestSource = '00/a3/std_uninitializedfillnstdpairCCharStringCSoundBankLHunsignedintstdpairCCharStringCSoundBankLH_00a3fc80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a3fc80_TEST PASS'
     }
     [pscustomobject]@{
@@ -165235,6 +165360,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ae/std_uninitializedfillnstdpairCCharStringunsignedlongunsignedintstdpairCCharStringunsignedlong_00ae5850.cpp'
         TestSource = '00/ae/std_uninitializedfillnstdpairCCharStringunsignedlongunsignedintstdpairCCharStringunsignedlong_00ae5850_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ae5850_TEST PASS'
     }
     [pscustomobject]@{
@@ -165242,6 +165368,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/51/std_uninitializedfillnstdpairlonglongunsignedintstdpairlonglong_00513a80.cpp'
         TestSource = '00/51/std_uninitializedfillnstdpairlonglongunsignedintstdpairlonglong_00513a80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00513a80_TEST PASS'
     }
     [pscustomobject]@{
@@ -165256,6 +165383,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/61/std_uninitializedfillnC2DCoordIunsignedintC2DCoordI_00612860.cpp'
         TestSource = '00/61/std_uninitializedfillnC2DCoordIunsignedintC2DCoordI_00612860_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00612860_TEST PASS'
     }
     [pscustomobject]@{
@@ -165263,6 +165391,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/63/std_uninitializedfillnNThingMapCThingMapManagerCThingMapInfounsignedintNThingMapCThingMapManagerCThingMapInfo_00638be0.cpp'
         TestSource = '00/63/std_uninitializedfillnNThingMapCThingMapManagerCThingMapInfounsignedintNThingMapCThingMapManagerCThingMapInfo_00638be0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00638be0_TEST PASS'
     }
     [pscustomobject]@{
@@ -165270,6 +165399,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/66/std_uninitializedfillnCRegionMinimapRegionMinimapCellDataunsignedintCRegionMinimapRegionMinimapCellData_0066e130.cpp'
         TestSource = '00/66/std_uninitializedfillnCRegionMinimapRegionMinimapCellDataunsignedintCRegionMinimapRegionMinimapCellData_0066e130_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0066e130_TEST PASS'
     }
     [pscustomobject]@{
@@ -165277,6 +165407,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/68/std_uninitializedfillnstdpairEReactionSpeechTypelongunsignedintstdpairEReactionSpeechTypelong_00680670.cpp'
         TestSource = '00/68/std_uninitializedfillnstdpairEReactionSpeechTypelongunsignedintstdpairEReactionSpeechTypelong_00680670_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00680670_TEST PASS'
     }
     [pscustomobject]@{
@@ -165284,6 +165415,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6c/std_uninitializedfillnstdpairlongCOpinionDeedunsignedintstdpairlongCOpinionDeed_006c5280.cpp'
         TestSource = '00/6c/std_uninitializedfillnstdpairlongCOpinionDeedunsignedintstdpairlongCOpinionDeed_006c5280_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006c5280_TEST PASS'
     }
     [pscustomobject]@{
@@ -165291,6 +165423,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6e/std_uninitializedfillnNSpeechGainManagerCResponseTimesunsignedintNSpeechGainManagerCResponseTimes_006e4a00.cpp'
         TestSource = '00/6e/std_uninitializedfillnNSpeechGainManagerCResponseTimesunsignedintNSpeechGainManagerCResponseTimes_006e4a00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006e4a00_TEST PASS'
     }
     [pscustomobject]@{
@@ -165298,6 +165431,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7b/std_uninitializedfillnCCrimeWaitingForBribeunsignedintCCrimeWaitingForBribe_007b4220.cpp'
         TestSource = '00/7b/std_uninitializedfillnCCrimeWaitingForBribeunsignedintCCrimeWaitingForBribe_007b4220_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007b4220_TEST PASS'
     }
     [pscustomobject]@{
@@ -165305,6 +165439,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9b/std_uninitializedfillnstdpairunsignedlongunsignedlongunsignedintstdpairunsignedlongunsignedlong_009b2860.cpp'
         TestSource = '00/9b/std_uninitializedfillnstdpairunsignedlongunsignedlongunsignedintstdpairunsignedlongunsignedlong_009b2860_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009b2860_TEST PASS'
     }
     [pscustomobject]@{
@@ -165312,6 +165447,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9c/std_uninitializedfillnCFileInstallerCBufferChunkunsignedintCFileInstallerCBufferChunk_009c6570.cpp'
         TestSource = '00/9c/std_uninitializedfillnCFileInstallerCBufferChunkunsignedintCFileInstallerCBufferChunk_009c6570_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009c6570_TEST PASS'
     }
     [pscustomobject]@{
@@ -165319,6 +165455,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a3/std_uninitializedfillnstdpairunsignedlonglongunsignedintstdpairunsignedlonglong_00a39380.cpp'
         TestSource = '00/a3/std_uninitializedfillnstdpairunsignedlonglongunsignedintstdpairunsignedlonglong_00a39380_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a39380_TEST PASS'
     }
     [pscustomobject]@{
@@ -165326,6 +165463,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a9/std_uninitializedfillnC3DIndexedBoneWeightunsignedintC3DIndexedBoneWeight_00a95bc0.cpp'
         TestSource = '00/a9/std_uninitializedfillnC3DIndexedBoneWeightunsignedintC3DIndexedBoneWeight_00a95bc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a95bc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -165333,6 +165471,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ab/std_uninitializedfillnD3DVERTEXELEMENT9unsignedintD3DVERTEXELEMENT9_00ab3f30.cpp'
         TestSource = '00/ab/std_uninitializedfillnD3DVERTEXELEMENT9unsignedintD3DVERTEXELEMENT9_00ab3f30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ab3f30_TEST PASS'
     }
     [pscustomobject]@{
@@ -165340,6 +165479,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b8/std_uninitializedfillnCEngineSubPrimitiveRendererCSortElementunsignedintCEngineSubPrimitiveRendererCSortElement_00b84d90.cpp'
         TestSource = '00/b8/std_uninitializedfillnCEngineSubPrimitiveRendererCSortElementunsignedintCEngineSubPrimitiveRendererCSortElement_00b84d90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b84d90_TEST PASS'
     }
     [pscustomobject]@{
@@ -170545,6 +170685,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/4c/std_uninitializedcopystdpairfloatEConversationAttitudeconststdpairfloatEConversationAttitude_004cf920.cpp'
         TestSource = '00/4c/std_uninitializedcopystdpairfloatEConversationAttitudeconststdpairfloatEConversationAttitude_004cf920_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004cf920_TEST PASS'
     }
     [pscustomobject]@{
@@ -170559,6 +170700,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/61/std_uninitializedcopyC2DCoordIC2DCoordI_00612830.cpp'
         TestSource = '00/61/std_uninitializedcopyC2DCoordIC2DCoordI_00612830_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00612830_TEST PASS'
     }
     [pscustomobject]@{
@@ -170566,6 +170708,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/63/std_uninitializedcopyNThingMapCThingMapManagerCThingMapInfoNThingMapCThingMapManagerCThingMapInfo_00638b80.cpp'
         TestSource = '00/63/std_uninitializedcopyNThingMapCThingMapManagerCThingMapInfoNThingMapCThingMapManagerCThingMapInfo_00638b80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00638b80_TEST PASS'
     }
     [pscustomobject]@{
@@ -170573,6 +170716,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/66/std_uninitializedcopyCRegionMinimapRegionMinimapCellDataCRegionMinimapRegionMinimapCellData_0066e0d0.cpp'
         TestSource = '00/66/std_uninitializedcopyCRegionMinimapRegionMinimapCellDataCRegionMinimapRegionMinimapCellData_0066e0d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0066e0d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170580,6 +170724,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6c/std_uninitializedcopystdpairlongCOpinionDeedstdpairlongCOpinionDeed_006c5220.cpp'
         TestSource = '00/6c/std_uninitializedcopystdpairlongCOpinionDeedstdpairlongCOpinionDeed_006c5220_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006c5220_TEST PASS'
     }
     [pscustomobject]@{
@@ -170587,6 +170732,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6e/std_uninitializedcopyNSpeechGainManagerCResponseTimesNSpeechGainManagerCResponseTimes_006e49a0.cpp'
         TestSource = '00/6e/std_uninitializedcopyNSpeechGainManagerCResponseTimesNSpeechGainManagerCResponseTimes_006e49a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006e49a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170594,6 +170740,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7b/std_uninitializedcopyCCrimeWaitingForBribeCCrimeWaitingForBribe_007b41c0.cpp'
         TestSource = '00/7b/std_uninitializedcopyCCrimeWaitingForBribeCCrimeWaitingForBribe_007b41c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007b41c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170601,6 +170748,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/81/std_uninitializedcopyCSkeletalMorphsCEntryCSkeletalMorphsCEntry_0081a5c0.cpp'
         TestSource = '00/81/std_uninitializedcopyCSkeletalMorphsCEntryCSkeletalMorphsCEntry_0081a5c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0081a5c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170608,6 +170756,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9c/std_uninitializedcopyCFileInstallerCBufferChunkCFileInstallerCBufferChunk_009c6510.cpp'
         TestSource = '00/9c/std_uninitializedcopyCFileInstallerCBufferChunkCFileInstallerCBufferChunk_009c6510_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009c6510_TEST PASS'
     }
     [pscustomobject]@{
@@ -170615,6 +170764,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_uninitializedcopyCComplexNumberCComplexNumber_00a487e0.cpp'
         TestSource = '00/a4/std_uninitializedcopyCComplexNumberCComplexNumber_00a487e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a487e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170629,6 +170779,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a9/std_uninitializedcopyC3DIndexedBoneWeightC3DIndexedBoneWeight_00a95b60.cpp'
         TestSource = '00/a9/std_uninitializedcopyC3DIndexedBoneWeightC3DIndexedBoneWeight_00a95b60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a95b60_TEST PASS'
     }
     [pscustomobject]@{
@@ -170636,6 +170787,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ab/std_uninitializedcopyD3DVERTEXELEMENT9D3DVERTEXELEMENT9_00ab3f00.cpp'
         TestSource = '00/ab/std_uninitializedcopyD3DVERTEXELEMENT9D3DVERTEXELEMENT9_00ab3f00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ab3f00_TEST PASS'
     }
     [pscustomobject]@{
@@ -170643,6 +170795,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/68/std_uninitializedcopystdpairEReactionSpeechTypelongstdpairEReactionSpeechTypelong_006805b0.cpp'
         TestSource = '00/68/std_uninitializedcopystdpairEReactionSpeechTypelongstdpairEReactionSpeechTypelong_006805b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006805b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170650,6 +170803,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6b/std_uninitializedcopystdpairlongfloatstdpairlongfloat_006b5040.cpp'
         TestSource = '00/6b/std_uninitializedcopystdpairlongfloatstdpairlongfloat_006b5040_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006b5040_TEST PASS'
     }
     [pscustomobject]@{
@@ -170657,6 +170811,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/70/std_uninitializedcopyCTCHeroAttachableAppearanceModifiersCModifierEntryconstCTCHeroAttachableAppearanceModifiersCModifierEntry_007081a0.cpp'
         TestSource = '00/70/std_uninitializedcopyCTCHeroAttachableAppearanceModifiersCModifierEntryconstCTCHeroAttachableAppearanceModifiersCModifierEntry_007081a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007081a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170664,6 +170819,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9b/std_uninitializedcopystdpairunsignedlonglongstdpairunsignedlonglong_009b25c0.cpp'
         TestSource = '00/9b/std_uninitializedcopystdpairunsignedlonglongstdpairunsignedlonglong_009b25c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009b25c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170678,6 +170834,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a5/std_uninitializedcopyD3DVERTEXELEMENT9constD3DVERTEXELEMENT9_00a5de40.cpp'
         TestSource = '00/a5/std_uninitializedcopyD3DVERTEXELEMENT9constD3DVERTEXELEMENT9_00a5de40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a5de40_TEST PASS'
     }
     [pscustomobject]@{
@@ -170685,6 +170842,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ab/std_uninitializedcopyC3DVertexBlend2C3DVertexBlend2_00abdc30.cpp'
         TestSource = '00/ab/std_uninitializedcopyC3DVertexBlend2C3DVertexBlend2_00abdc30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00abdc30_TEST PASS'
     }
     [pscustomobject]@{
@@ -170692,6 +170850,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ae/std_uninitializedcopyC3DQuad2C3DQuad2_00ae4d80.cpp'
         TestSource = '00/ae/std_uninitializedcopyC3DQuad2C3DQuad2_00ae4d80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ae4d80_TEST PASS'
     }
     [pscustomobject]@{
@@ -170699,6 +170858,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ae/std_uninitializedcopyC3DVertexBlend2constC3DVertexBlend2_00ae5960.cpp'
         TestSource = '00/ae/std_uninitializedcopyC3DVertexBlend2constC3DVertexBlend2_00ae5960_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ae5960_TEST PASS'
     }
     [pscustomobject]@{
@@ -170706,6 +170866,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b6/std_uninitializedcopyCEngineLandscapeRendererCSubPatchSorterEntryCEngineLandscapeRendererCSubPatchSorterEntry_00b6b4a0.cpp'
         TestSource = '00/b6/std_uninitializedcopyCEngineLandscapeRendererCSubPatchSorterEntryCEngineLandscapeRendererCSubPatchSorterEntry_00b6b4a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b6b4a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170713,6 +170874,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b8/std_uninitializedcopyCEngineSubPrimitiveRendererCSortElementCEngineSubPrimitiveRendererCSortElement_00b84d00.cpp'
         TestSource = '00/b8/std_uninitializedcopyCEngineSubPrimitiveRendererCSortElementCEngineSubPrimitiveRendererCSortElement_00b84d00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b84d00_TEST PASS'
     }
     [pscustomobject]@{
@@ -170727,6 +170889,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/66/std_fillCRegionMinimapRegionMinimapCellDataCRegionMinimapRegionMinimapCellData_0066deb0.cpp'
         TestSource = '00/66/std_fillCRegionMinimapRegionMinimapCellDataCRegionMinimapRegionMinimapCellData_0066deb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0066deb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170734,6 +170897,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/68/std_fillstdpairEReactionSpeechTypelongstdpairEReactionSpeechTypelong_00680320.cpp'
         TestSource = '00/68/std_fillstdpairEReactionSpeechTypelongstdpairEReactionSpeechTypelong_00680320_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00680320_TEST PASS'
     }
     [pscustomobject]@{
@@ -170741,6 +170905,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6c/std_fillstdpairlongCOpinionDeedstdpairlongCOpinionDeed_006c4b90.cpp'
         TestSource = '00/6c/std_fillstdpairlongCOpinionDeedstdpairlongCOpinionDeed_006c4b90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006c4b90_TEST PASS'
     }
     [pscustomobject]@{
@@ -170748,6 +170913,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6e/std_fillNSpeechGainManagerCResponseTimesNSpeechGainManagerCResponseTimes_006e4560.cpp'
         TestSource = '00/6e/std_fillNSpeechGainManagerCResponseTimesNSpeechGainManagerCResponseTimes_006e4560_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006e4560_TEST PASS'
     }
     [pscustomobject]@{
@@ -170755,6 +170921,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/78/std_fillstdpairlongfloatstdpairlongfloat_00784de0.cpp'
         TestSource = '00/78/std_fillstdpairlongfloatstdpairlongfloat_00784de0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00784de0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170762,6 +170929,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7b/std_fillCCrimeWaitingForBribeCCrimeWaitingForBribe_007b3c80.cpp'
         TestSource = '00/7b/std_fillCCrimeWaitingForBribeCCrimeWaitingForBribe_007b3c80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007b3c80_TEST PASS'
     }
     [pscustomobject]@{
@@ -170769,6 +170937,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9b/std_fillstdpairunsignedlongunsignedlongstdpairunsignedlongunsignedlong_009b15a0.cpp'
         TestSource = '00/9b/std_fillstdpairunsignedlongunsignedlongstdpairunsignedlongunsignedlong_009b15a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009b15a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170776,6 +170945,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9c/std_fillCFileInstallerCBufferChunkCFileInstallerCBufferChunk_009c5ec0.cpp'
         TestSource = '00/9c/std_fillCFileInstallerCBufferChunkCFileInstallerCBufferChunk_009c5ec0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009c5ec0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170783,6 +170953,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a3/std_fillstdpairunsignedlonglongstdpairunsignedlonglong_00a39220.cpp'
         TestSource = '00/a3/std_fillstdpairunsignedlonglongstdpairunsignedlonglong_00a39220_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a39220_TEST PASS'
     }
     [pscustomobject]@{
@@ -170790,6 +170961,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_fillCComplexNumberCComplexNumber_00a482f0.cpp'
         TestSource = '00/a4/std_fillCComplexNumberCComplexNumber_00a482f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a482f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170797,6 +170969,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ab/std_fillD3DVERTEXELEMENT9D3DVERTEXELEMENT9_00ab3cd0.cpp'
         TestSource = '00/ab/std_fillD3DVERTEXELEMENT9D3DVERTEXELEMENT9_00ab3cd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ab3cd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170804,6 +170977,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ac/std_fillC3DVertexBlend2C3DVertexBlend2_00ac4220.cpp'
         TestSource = '00/ac/std_fillC3DVertexBlend2C3DVertexBlend2_00ac4220_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ac4220_TEST PASS'
     }
     [pscustomobject]@{
@@ -170811,6 +170985,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bb/std_fillCEngineInternalPrimitiveParticleGroupCPrimitiveIteratorCEngineInternalPrimitiveParticleGroupCPrimitiveIterator_00bbd380.cpp'
         TestSource = '00/bb/std_fillCEngineInternalPrimitiveParticleGroupCPrimitiveIteratorCEngineInternalPrimitiveParticleGroupCPrimitiveIterator_00bbd380_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bbd380_TEST PASS'
     }
     [pscustomobject]@{
@@ -170818,6 +170993,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/61/std_fillCTCInventoryMapCUIRegionInfoCTCInventoryMapCUIRegionInfo_006131e0.cpp'
         TestSource = '00/61/std_fillCTCInventoryMapCUIRegionInfoCTCInventoryMapCUIRegionInfo_006131e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006131e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170832,6 +171008,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/81/std_fillCParticleMorphsCEntryCParticleMorphsCEntry_00819360.cpp'
         TestSource = '00/81/std_fillCParticleMorphsCEntryCParticleMorphsCEntry_00819360_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00819360_TEST PASS'
     }
     [pscustomobject]@{
@@ -170846,6 +171023,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a9/std_fillC3DVertex2C3DVertex2_00a94600.cpp'
         TestSource = '00/a9/std_fillC3DVertex2C3DVertex2_00a94600_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a94600_TEST PASS'
     }
     [pscustomobject]@{
@@ -170853,6 +171031,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ab/std_fillN3DAnimationBuilderCSequenceInfoN3DAnimationBuilderCSequenceInfo_00ab10f0.cpp'
         TestSource = '00/ab/std_fillN3DAnimationBuilderCSequenceInfoN3DAnimationBuilderCSequenceInfo_00ab10f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ab10f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170860,6 +171039,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b4/std_fillCEngineLightingManagerCThemeChannelCEngineLightingManagerCThemeChannel_00b48ef0.cpp'
         TestSource = '00/b4/std_fillCEngineLightingManagerCThemeChannelCEngineLightingManagerCThemeChannel_00b48ef0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b48ef0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170867,6 +171047,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b6/std_fillCLandscapeThemeCLandscapeTheme_00b6b580.cpp'
         TestSource = '00/b6/std_fillCLandscapeThemeCLandscapeTheme_00b6b580_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b6b580_TEST PASS'
     }
     [pscustomobject]@{
@@ -170874,6 +171055,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b7/std_fillCPreTransposedBoneMatrixCPreTransposedBoneMatrix_00b7aac0.cpp'
         TestSource = '00/b7/std_fillCPreTransposedBoneMatrixCPreTransposedBoneMatrix_00b7aac0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b7aac0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170881,6 +171063,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/f3/std_fillCGPUScratchBufferTextureManagerCResourceEntryCGPUScratchBufferTextureManagerCResourceEntry_00f37a00.cpp'
         TestSource = '00/f3/std_fillCGPUScratchBufferTextureManagerCResourceEntryCGPUScratchBufferTextureManagerCResourceEntry_00f37a00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00f37a00_TEST PASS'
     }
     [pscustomobject]@{
@@ -170888,6 +171071,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/53/std_destroyauxCCountedPointerNUISystemCComponent_00535420.cpp'
         TestSource = '00/53/std_destroyauxCCountedPointerNUISystemCComponent_00535420_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00535420_TEST PASS'
     }
     [pscustomobject]@{
@@ -170895,6 +171079,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6f/std_destroyauxCCountedPointerCCombatSequenceBase_006f2300.cpp'
         TestSource = '00/6f/std_destroyauxCCountedPointerCCombatSequenceBase_006f2300_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006f2300_TEST PASS'
     }
     [pscustomobject]@{
@@ -170902,6 +171087,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/76/std_destroyauxCCountedPointerNShapeCShape_00764c40.cpp'
         TestSource = '00/76/std_destroyauxCCountedPointerNShapeCShape_00764c40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00764c40_TEST PASS'
     }
     [pscustomobject]@{
@@ -170909,6 +171095,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a2/std_destroyauxCCountedPointerCMeshDataBankEntry_00a2bd20.cpp'
         TestSource = '00/a2/std_destroyauxCCountedPointerCMeshDataBankEntry_00a2bd20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a2bd20_TEST PASS'
     }
     [pscustomobject]@{
@@ -170916,6 +171103,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_destroyauxCCountedPointerC3DSkeletalMorphParameter_00a464e0.cpp'
         TestSource = '00/a4/std_destroyauxCCountedPointerC3DSkeletalMorphParameter_00a464e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a464e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170923,6 +171111,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a8/std_destroyauxCCountedPointerCScopedMemoryHandle_00a8dae0.cpp'
         TestSource = '00/a8/std_destroyauxCCountedPointerCScopedMemoryHandle_00a8dae0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a8dae0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170937,6 +171126,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a9/std_destroyauxCCountedPointerC3DClothPrimitive_00a96940.cpp'
         TestSource = '00/a9/std_destroyauxCCountedPointerC3DClothPrimitive_00a96940_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a96940_TEST PASS'
     }
     [pscustomobject]@{
@@ -170944,6 +171134,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/aa/std_destroyauxCCountedPointerCChunkedFileChunk_00aa9140.cpp'
         TestSource = '00/aa/std_destroyauxCCountedPointerCChunkedFileChunk_00aa9140_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00aa9140_TEST PASS'
     }
     [pscustomobject]@{
@@ -170951,6 +171142,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ab/std_destroyauxCCountedPointerC3DAnimationBuilderCBoneInfo_00ab2bd0.cpp'
         TestSource = '00/ab/std_destroyauxCCountedPointerC3DAnimationBuilderCBoneInfo_00ab2bd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ab2bd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170986,6 +171178,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/54/std_destroyauxCCountedPointerNUISystemCAction_0054a1c0.cpp'
         TestSource = '00/54/std_destroyauxCCountedPointerNUISystemCAction_0054a1c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0054a1c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170993,6 +171186,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/56/std_destroyauxCCountedPointerNCameraModesCSubComponentBase_0056dbf0.cpp'
         TestSource = '00/56/std_destroyauxCCountedPointerNCameraModesCSubComponentBase_0056dbf0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0056dbf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -171000,6 +171194,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/67/std_destroyauxCCountedPointerNHitLocationsCPhysicalPrimitiveBase_0067fe60.cpp'
         TestSource = '00/67/std_destroyauxCCountedPointerNHitLocationsCPhysicalPrimitiveBase_0067fe60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0067fe60_TEST PASS'
     }
     [pscustomobject]@{
@@ -171007,6 +171202,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/69/std_destroyauxCCountedPointerNCreatureActionCActionEventBase_00696790.cpp'
         TestSource = '00/69/std_destroyauxCCountedPointerNCreatureActionCActionEventBase_00696790_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00696790_TEST PASS'
     }
     [pscustomobject]@{
@@ -171014,6 +171210,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/76/std_destroyauxCCountedPointerNShapeCSubdivisionTriangle_00764ee0.cpp'
         TestSource = '00/76/std_destroyauxCCountedPointerNShapeCSubdivisionTriangle_00764ee0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00764ee0_TEST PASS'
     }
     [pscustomobject]@{
@@ -171028,6 +171225,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/98/std_destroyauxCCountedPointerCShaderResource_0098cee0.cpp'
         TestSource = '00/98/std_destroyauxCCountedPointerCShaderResource_0098cee0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0098cee0_TEST PASS'
     }
     [pscustomobject]@{
@@ -171035,6 +171233,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9f/std_destroyauxCCountedPointerCJoystick_009f6750.cpp'
         TestSource = '00/9f/std_destroyauxCCountedPointerCJoystick_009f6750_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009f6750_TEST PASS'
     }
     [pscustomobject]@{
@@ -171042,6 +171241,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a9/std_destroyauxCCountedPointerC3DGroup2_00a969d0.cpp'
         TestSource = '00/a9/std_destroyauxCCountedPointerC3DGroup2_00a969d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a969d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -171056,6 +171256,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/af/std_destroyaux_00af0d80.cpp'
         TestSource = '00/af/std_destroyaux_00af0d80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00af0d80_TEST PASS'
     }
     [pscustomobject]@{
@@ -171063,6 +171264,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b3/std_destroyauxCCountedPointerCEnginePrimitiveManager_00b38930.cpp'
         TestSource = '00/b3/std_destroyauxCCountedPointerCEnginePrimitiveManager_00b38930_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b38930_TEST PASS'
     }
     [pscustomobject]@{
@@ -171315,6 +171517,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/49/std_fillCTextureCTexture_0049add0.cpp'
         TestSource = '00/49/std_fillCTextureCTexture_0049add0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0049add0_TEST PASS'
     }
     [pscustomobject]@{
@@ -171322,6 +171525,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/51/std_fillCMapInfoCMapInfo_00515090.cpp'
         TestSource = '00/51/std_fillCMapInfoCMapInfo_00515090_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00515090_TEST PASS'
     }
     [pscustomobject]@{
@@ -171329,6 +171533,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/51/std_fillCRegionCRegion_0051a9d0.cpp'
         TestSource = '00/51/std_fillCRegionCRegion_0051a9d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0051a9d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -171336,6 +171541,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/71/std_fillCSubtitledMessageCSubtitledMessage_0071a030.cpp'
         TestSource = '00/71/std_fillCSubtitledMessageCSubtitledMessage_0071a030_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0071a030_TEST PASS'
     }
     [pscustomobject]@{
@@ -171371,6 +171577,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_fillCLipSyncFrameDataCLipSyncFrameData_00a4ad80.cpp'
         TestSource = '00/a4/std_fillCLipSyncFrameDataCLipSyncFrameData_00a4ad80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a4ad80_TEST PASS'
     }
     [pscustomobject]@{
@@ -171756,6 +171963,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/51/std_uninitializedfillnCMapInfounsignedintCMapInfo_00514db0.cpp'
         TestSource = '00/51/std_uninitializedfillnCMapInfounsignedintCMapInfo_00514db0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00514db0_TEST PASS'
     }
     [pscustomobject]@{
@@ -171770,6 +171978,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/51/std_uninitializedfillnCRegionunsignedintCRegion_0051ba50.cpp'
         TestSource = '00/51/std_uninitializedfillnCRegionunsignedintCRegion_0051ba50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0051ba50_TEST PASS'
     }
     [pscustomobject]@{
@@ -171791,6 +172000,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a3/std_uninitializedfillnCClassTypeInfounsignedintCClassTypeInfo_00a37d80.cpp'
         TestSource = '00/a3/std_uninitializedfillnCClassTypeInfounsignedintCClassTypeInfo_00a37d80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a37d80_TEST PASS'
     }
     [pscustomobject]@{
@@ -171798,6 +172008,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_uninitializedfillnCLipSyncFrameDataunsignedintCLipSyncFrameData_00a4aa70.cpp'
         TestSource = '00/a4/std_uninitializedfillnCLipSyncFrameDataunsignedintCLipSyncFrameData_00a4aa70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a4aa70_TEST PASS'
     }
     [pscustomobject]@{
@@ -172022,6 +172233,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7d/std_uninitializedcopyKnickKnackKnickKnack_007d98c0.cpp'
         TestSource = '00/7d/std_uninitializedcopyKnickKnackKnickKnack_007d98c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007d98c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -172029,6 +172241,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7e/std_uninitializedcopystdpairC3DVectorlongstdpairC3DVectorlong_007ea880.cpp'
         TestSource = '00/7e/std_uninitializedcopystdpairC3DVectorlongstdpairC3DVectorlong_007ea880_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007ea880_TEST PASS'
     }
     [pscustomobject]@{
@@ -172036,6 +172249,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/84/std_uninitializedcopystdpairC3DVectorfloatstdpairC3DVectorfloat_0084ef50.cpp'
         TestSource = '00/84/std_uninitializedcopystdpairC3DVectorfloatstdpairC3DVectorfloat_0084ef50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0084ef50_TEST PASS'
     }
     [pscustomobject]@{
@@ -172050,6 +172264,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a1/std_uninitializedcopyC2DLineFC2DLineF_00a13490.cpp'
         TestSource = '00/a1/std_uninitializedcopyC2DLineFC2DLineF_00a13490_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a13490_TEST PASS'
     }
     [pscustomobject]@{
@@ -172057,6 +172272,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a7/std_uninitializedcopyCNavigationTransitionPointconstCNavigationTransitionPoint_00a7f9b0.cpp'
         TestSource = '00/a7/std_uninitializedcopyCNavigationTransitionPointconstCNavigationTransitionPoint_00a7f9b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a7f9b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -172064,6 +172280,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bd/std_uninitializedcopyC3DBoundingSphereC3DBoundingSphere_00bdf880.cpp'
         TestSource = '00/bd/std_uninitializedcopyC3DBoundingSphereC3DBoundingSphere_00bdf880_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bdf880_TEST PASS'
     }
     [pscustomobject]@{
@@ -172393,6 +172610,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6b/std_uninitializedcopyNEnvironmentInternalCEnvironmentThemePriorityStackNEnvironmentInternalCEnvironmentThemePriorityStack_006b6e10.cpp'
         TestSource = '00/6b/std_uninitializedcopyNEnvironmentInternalCEnvironmentThemePriorityStackNEnvironmentInternalCEnvironmentThemePriorityStack_006b6e10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006b6e10_TEST PASS'
     }
     [pscustomobject]@{
@@ -172428,6 +172646,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/88/std_uninitializedcopyNEnvironmentInternalCEnvironmentThemeSetDayNEnvironmentInternalCEnvironmentThemeSetDay_0088a410.cpp'
         TestSource = '00/88/std_uninitializedcopyNEnvironmentInternalCEnvironmentThemeSetDayNEnvironmentInternalCEnvironmentThemeSetDay_0088a410_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0088a410_TEST PASS'
     }
     [pscustomobject]@{
@@ -172442,6 +172661,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a3/std_uninitializedcopyCClassTypeInfoCClassTypeInfo_00a37d50.cpp'
         TestSource = '00/a3/std_uninitializedcopyCClassTypeInfoCClassTypeInfo_00a37d50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a37d50_TEST PASS'
     }
     [pscustomobject]@{
@@ -172449,6 +172669,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ad/std_uninitializedcopyQuadricOptimiserInternalsCOptimisedFaceQuadricOptimiserInternalsCOptimisedFace_00ad1990.cpp'
         TestSource = '00/ad/std_uninitializedcopyQuadricOptimiserInternalsCOptimisedFaceQuadricOptimiserInternalsCOptimisedFace_00ad1990_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ad1990_TEST PASS'
     }
     [pscustomobject]@{
@@ -172631,6 +172852,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/8f/std_copybackwardCHeightMapCellCHeightMapCellint_008f6680.cpp'
         TestSource = '00/8f/std_copybackwardCHeightMapCellCHeightMapCellint_008f6680_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008f6680_TEST PASS'
     }
     [pscustomobject]@{
@@ -172659,6 +172881,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/51/std_copybackwardstdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongstdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongint_00517430.cpp'
         TestSource = '00/51/std_copybackwardstdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongstdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongint_00517430_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00517430_TEST PASS'
     }
     [pscustomobject]@{
@@ -172694,6 +172917,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_copybackwardCLipSyncFrameDataCLipSyncFrameDataint_00a4aac0.cpp'
         TestSource = '00/a4/std_copybackwardCLipSyncFrameDataCLipSyncFrameDataint_00a4aac0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a4aac0_TEST PASS'
     }
     [pscustomobject]@{
@@ -173639,6 +173863,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/4c/std_uninitializedcopystdpairfloatCCharStringstdpairfloatCCharString_004cf950.cpp'
         TestSource = '00/4c/std_uninitializedcopystdpairfloatCCharStringstdpairfloatCCharString_004cf950_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004cf950_TEST PASS'
     }
     [pscustomobject]@{
@@ -173674,6 +173899,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/82/std_uninitializedcopyCMapCScriptedMapBrushUpdateAreaCMapCScriptedMapBrushUpdateArea_00824650.cpp'
         TestSource = '00/82/std_uninitializedcopyCMapCScriptedMapBrushUpdateAreaCMapCScriptedMapBrushUpdateArea_00824650_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00824650_TEST PASS'
     }
     [pscustomobject]@{
@@ -173688,6 +173914,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ae/std_uninitializedcopyC3DGroup2C3DGroup2_00ae7480.cpp'
         TestSource = '00/ae/std_uninitializedcopyC3DGroup2C3DGroup2_00ae7480_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ae7480_TEST PASS'
     }
     [pscustomobject]@{
@@ -173695,6 +173922,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bf/std_uninitializedcopyCEngineTexturePaletteCPaletteEntryCEngineTexturePaletteCPaletteEntry_00bf8f30.cpp'
         TestSource = '00/bf/std_uninitializedcopyCEngineTexturePaletteCPaletteEntryCEngineTexturePaletteCPaletteEntry_00bf8f30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bf8f30_TEST PASS'
     }
     [pscustomobject]@{
@@ -173702,6 +173930,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6d/std_uninitializedcopystdpairCCharStringlongstdpairCCharStringlong_006d3770.cpp'
         TestSource = '00/6d/std_uninitializedcopystdpairCCharStringlongstdpairCCharStringlong_006d3770_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006d3770_TEST PASS'
     }
     [pscustomobject]@{
@@ -173709,6 +173938,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6d/std_uninitializedcopyCAttackHistoryComboCAttackHistoryCombo_006dbce0.cpp'
         TestSource = '00/6d/std_uninitializedcopyCAttackHistoryComboCAttackHistoryCombo_006dbce0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006dbce0_TEST PASS'
     }
     [pscustomobject]@{
@@ -173716,6 +173946,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6f/std_uninitializedcopystdpairCCharStringlongconststdpairCCharStringlong_006fb1c0.cpp'
         TestSource = '00/6f/std_uninitializedcopystdpairCCharStringlongconststdpairCCharStringlong_006fb1c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006fb1c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -173730,6 +173961,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9b/std_uninitializedcopystdpairCCharStringunsignedlongstdpairCCharStringunsignedlong_009b2680.cpp'
         TestSource = '00/9b/std_uninitializedcopystdpairCCharStringunsignedlongstdpairCCharStringunsignedlong_009b2680_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009b2680_TEST PASS'
     }
     [pscustomobject]@{
@@ -173737,6 +173969,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a2/std_uninitializedcopyCMeshDataBankCLipSyncEntryCMeshDataBankCLipSyncEntry_00a2a350.cpp'
         TestSource = '00/a2/std_uninitializedcopyCMeshDataBankCLipSyncEntryCMeshDataBankCLipSyncEntry_00a2a350_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a2a350_TEST PASS'
     }
     [pscustomobject]@{
@@ -173744,6 +173977,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a2/std_uninitializedcopyCMeshDataBankCLipSyncEntryconstCMeshDataBankCLipSyncEntry_00a2a3c0.cpp'
         TestSource = '00/a2/std_uninitializedcopyCMeshDataBankCLipSyncEntryconstCMeshDataBankCLipSyncEntry_00a2a3c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a2a3c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -173751,6 +173985,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a3/std_uninitializedcopystdpairCCharStringCSoundBankLHstdpairCCharStringCSoundBankLH_00a3fc40.cpp'
         TestSource = '00/a3/std_uninitializedcopystdpairCCharStringCSoundBankLHstdpairCCharStringCSoundBankLH_00a3fc40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a3fc40_TEST PASS'
     }
     [pscustomobject]@{
@@ -174738,6 +174973,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/67/std_uninitializedfillnCCountedPointerNHitLocationsCPhysicalPrimitiveBaseunsignedintCCountedPointerNHitLocationsCPhysicalPrimitiveBase_0067fd30.cpp'
         TestSource = '00/67/std_uninitializedfillnCCountedPointerNHitLocationsCPhysicalPrimitiveBaseunsignedintCCountedPointerNHitLocationsCPhysicalPrimitiveBase_0067fd30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0067fd30_TEST PASS'
     }
     [pscustomobject]@{
@@ -174745,6 +174981,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6e/std_uninitializedfillnCCountedPointerCCombatSequenceBaseunsignedintCCountedPointerCCombatSequenceBase_006efe50.cpp'
         TestSource = '00/6e/std_uninitializedfillnCCountedPointerCCombatSequenceBaseunsignedintCCountedPointerCCombatSequenceBase_006efe50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006efe50_TEST PASS'
     }
     [pscustomobject]@{
@@ -174752,6 +174989,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/76/std_uninitializedfillnCCountedPointerNShapeCSubdivisionTriangleunsignedintCCountedPointerNShapeCSubdivisionTriangle_00764590.cpp'
         TestSource = '00/76/std_uninitializedfillnCCountedPointerNShapeCSubdivisionTriangleunsignedintCCountedPointerNShapeCSubdivisionTriangle_00764590_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00764590_TEST PASS'
     }
     [pscustomobject]@{
@@ -174759,6 +174997,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a9/std_uninitializedfillnCCountedPointerC3DClothPrimitiveunsignedintCCountedPointerC3DClothPrimitive_00a95790.cpp'
         TestSource = '00/a9/std_uninitializedfillnCCountedPointerC3DClothPrimitiveunsignedintCCountedPointerC3DClothPrimitive_00a95790_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a95790_TEST PASS'
     }
     [pscustomobject]@{
@@ -174766,6 +175005,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a9/std_uninitializedfillnCCountedPointerC3DGroup2unsignedintCCountedPointerC3DGroup2_00a95860.cpp'
         TestSource = '00/a9/std_uninitializedfillnCCountedPointerC3DGroup2unsignedintCCountedPointerC3DGroup2_00a95860_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a95860_TEST PASS'
     }
     [pscustomobject]@{
@@ -174773,6 +175013,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/aa/std_uninitializedfillnCCountedPointerCChunkedFileChunkunsignedintCCountedPointerCChunkedFileChunk_00aa8e80.cpp'
         TestSource = '00/aa/std_uninitializedfillnCCountedPointerCChunkedFileChunkunsignedintCCountedPointerCChunkedFileChunk_00aa8e80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00aa8e80_TEST PASS'
     }
     [pscustomobject]@{
@@ -174780,6 +175021,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ab/std_uninitializedfillnCCountedPointerC3DAnimationBuilderCBoneInfounsignedintCCountedPointerC3DAnimationBuilderCBoneInfo_00ab1000.cpp'
         TestSource = '00/ab/std_uninitializedfillnCCountedPointerC3DAnimationBuilderCBoneInfounsignedintCCountedPointerC3DAnimationBuilderCBoneInfo_00ab1000_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ab1000_TEST PASS'
     }
     [pscustomobject]@{
@@ -174794,6 +175036,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/af/std_uninitializedfillnCCountedPointerCGuiVarTransferBaseunsignedintCCountedPointerCGuiVarTransferBase_00af0aa0.cpp'
         TestSource = '00/af/std_uninitializedfillnCCountedPointerCGuiVarTransferBaseunsignedintCCountedPointerCGuiVarTransferBase_00af0aa0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00af0aa0_TEST PASS'
     }
     [pscustomobject]@{
@@ -178854,6 +179097,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/46/std_uninitializedfillnCTextureReplacementDefCEntryunsignedintCTextureReplacementDefCEntry_00469fa5.cpp'
         TestSource = '00/46/std_uninitializedfillnCTextureReplacementDefCEntryunsignedintCTextureReplacementDefCEntry_00469fa5_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00469fa5_TEST PASS'
     }
     [pscustomobject]@{
@@ -178861,6 +179105,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/46/std_uninitializedfillnCAtmosBankEntryunsignedintCAtmosBankEntry_0046b2e9.cpp'
         TestSource = '00/46/std_uninitializedfillnCAtmosBankEntryunsignedintCAtmosBankEntry_0046b2e9_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0046b2e9_TEST PASS'
     }
     [pscustomobject]@{
@@ -178868,6 +179113,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/46/std_uninitializedfillnCObjectFamilyEntryunsignedintCObjectFamilyEntry_0046c5d5.cpp'
         TestSource = '00/46/std_uninitializedfillnCObjectFamilyEntryunsignedintCObjectFamilyEntry_0046c5d5_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0046c5d5_TEST PASS'
     }
     [pscustomobject]@{
@@ -178875,6 +179121,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/47/std_uninitializedfillnstdpairunsignedlongCDefStringunsignedintstdpairunsignedlongCDefString_00470bcd.cpp'
         TestSource = '00/47/std_uninitializedfillnstdpairunsignedlongCDefStringunsignedintstdpairunsignedlongCDefString_00470bcd_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00470bcd_TEST PASS'
     }
     [pscustomobject]@{
@@ -178882,6 +179129,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/47/std_uninitializedfillnC2DVectorunsignedintC2DVector_00476001.cpp'
         TestSource = '00/47/std_uninitializedfillnC2DVectorunsignedintC2DVector_00476001_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00476001_TEST PASS'
     }
     [pscustomobject]@{
@@ -178889,6 +179137,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5b/std_uninitializedfillnstdpairEClothingSuitPartNUISystemCComponentunsignedintstdpairEClothingSuitPartNUISystemCComponent_005ba858.cpp'
         TestSource = '00/5b/std_uninitializedfillnstdpairEClothingSuitPartNUISystemCComponentunsignedintstdpairEClothingSuitPartNUISystemCComponent_005ba858_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005ba858_TEST PASS'
     }
     [pscustomobject]@{
@@ -178896,6 +179145,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5f/std_uninitializedfillnstdpairlongEHeroAbilityunsignedintstdpairlongEHeroAbility_005f8299.cpp'
         TestSource = '00/5f/std_uninitializedfillnstdpairlongEHeroAbilityunsignedintstdpairlongEHeroAbility_005f8299_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005f8299_TEST PASS'
     }
     [pscustomobject]@{
@@ -178903,6 +179153,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/78/std_uninitializedfillnstdpairlongfloatunsignedintstdpairlongfloat_00784f60.cpp'
         TestSource = '00/78/std_uninitializedfillnstdpairlongfloatunsignedintstdpairlongfloat_00784f60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00784f60_TEST PASS'
     }
     [pscustomobject]@{
@@ -178910,6 +179161,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/81/std_uninitializedfillnCSkeletalMorphsCEntryunsignedintCSkeletalMorphsCEntry_0081a620.cpp'
         TestSource = '00/81/std_uninitializedfillnCSkeletalMorphsCEntryunsignedintCSkeletalMorphsCEntry_0081a620_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0081a620_TEST PASS'
     }
     [pscustomobject]@{
@@ -178917,6 +179169,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_uninitializedfillnCComplexNumberunsignedintCComplexNumber_00a48840.cpp'
         TestSource = '00/a4/std_uninitializedfillnCComplexNumberunsignedintCComplexNumber_00a48840_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a48840_TEST PASS'
     }
     [pscustomobject]@{
@@ -178924,6 +179177,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ac/std_uninitializedfillnC3DVertexBlend2unsignedintC3DVertexBlend2_00ac42c0.cpp'
         TestSource = '00/ac/std_uninitializedfillnC3DVertexBlend2unsignedintC3DVertexBlend2_00ac42c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ac42c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -178931,6 +179185,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ae/std_uninitializedfillnC3DQuad2unsignedintC3DQuad2_00ae4f90.cpp'
         TestSource = '00/ae/std_uninitializedfillnC3DQuad2unsignedintC3DQuad2_00ae4f90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ae4f90_TEST PASS'
     }
     [pscustomobject]@{
@@ -178938,6 +179193,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b6/std_uninitializedfillnCEngineLandscapeRendererCSubPatchSorterEntryunsignedintCEngineLandscapeRendererCSubPatchSorterEntry_00b6b5e0.cpp'
         TestSource = '00/b6/std_uninitializedfillnCEngineLandscapeRendererCSubPatchSorterEntryunsignedintCEngineLandscapeRendererCSubPatchSorterEntry_00b6b5e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b6b5e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -178959,6 +179215,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7d/std_uninitializedfillnKnickKnackunsignedintKnickKnack_007d9900.cpp'
         TestSource = '00/7d/std_uninitializedfillnKnickKnackunsignedintKnickKnack_007d9900_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007d9900_TEST PASS'
     }
     [pscustomobject]@{
@@ -178966,6 +179223,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7e/std_uninitializedfillnstdpairC3DVectorlongunsignedintstdpairC3DVectorlong_007ea8c0.cpp'
         TestSource = '00/7e/std_uninitializedfillnstdpairC3DVectorlongunsignedintstdpairC3DVectorlong_007ea8c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007ea8c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -178973,6 +179231,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/84/std_uninitializedfillnstdpairC3DVectorfloatunsignedintstdpairC3DVectorfloat_0084ef90.cpp'
         TestSource = '00/84/std_uninitializedfillnstdpairC3DVectorfloatunsignedintstdpairC3DVectorfloat_0084ef90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0084ef90_TEST PASS'
     }
     [pscustomobject]@{
@@ -178980,6 +179239,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a1/std_uninitializedfillnCPlaneunsignedintCPlane_00a11250.cpp'
         TestSource = '00/a1/std_uninitializedfillnCPlaneunsignedintCPlane_00a11250_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a11250_TEST PASS'
     }
     [pscustomobject]@{
@@ -178987,6 +179247,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a1/std_uninitializedfillnC2DLineFunsignedintC2DLineF_00a134d0.cpp'
         TestSource = '00/a1/std_uninitializedfillnC2DLineFunsignedintC2DLineF_00a134d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a134d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -178994,6 +179255,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bd/std_uninitializedfillnC3DBoundingSphereunsignedintC3DBoundingSphere_00bdf8c0.cpp'
         TestSource = '00/bd/std_uninitializedfillnC3DBoundingSphereunsignedintC3DBoundingSphere_00bdf8c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bdf8c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179001,6 +179263,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/70/std_uninitializedfillnNGraphicAppearanceCMeshInfounsignedintNGraphicAppearanceCMeshInfo_007080d0.cpp'
         TestSource = '00/70/std_uninitializedfillnNGraphicAppearanceCMeshInfounsignedintNGraphicAppearanceCMeshInfo_007080d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007080d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179008,6 +179271,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/88/std_uninitializedfillnNEnvironmentInternalCEnvironmentThemePriorityStackEntryCThemeWeightunsignedintNEnvironmentInternalCEnvironmentThemePriorityStackEntryCThemeWeight_00885ce0.cpp'
         TestSource = '00/88/std_uninitializedfillnNEnvironmentInternalCEnvironmentThemePriorityStackEntryCThemeWeightunsignedintNEnvironmentInternalCEnvironmentThemePriorityStackEntryCThemeWeight_00885ce0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00885ce0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179015,6 +179279,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/8f/std_uninitializedfillnCHeightMapCellunsignedintCHeightMapCell_008f6860.cpp'
         TestSource = '00/8f/std_uninitializedfillnCHeightMapCellunsignedintCHeightMapCell_008f6860_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008f6860_TEST PASS'
     }
     [pscustomobject]@{
@@ -179022,6 +179287,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/8f/std_uninitializedfillnCHeightMapCellunsignedintCHeightMapCell_008f6910.cpp'
         TestSource = '00/8f/std_uninitializedfillnCHeightMapCellunsignedintCHeightMapCell_008f6910_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008f6910_TEST PASS'
     }
     [pscustomobject]@{
@@ -179029,6 +179295,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9d/std_uninitializedfillnCBankFileCRuntimeDataunsignedintCBankFileCRuntimeData_009d1ca0.cpp'
         TestSource = '00/9d/std_uninitializedfillnCBankFileCRuntimeDataunsignedintCBankFileCRuntimeData_009d1ca0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009d1ca0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179043,6 +179310,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ad/std_uninitializedfillnCVertexGroupBlockOptimiserCBlockInfounsignedintCVertexGroupBlockOptimiserCBlockInfo_00ada820.cpp'
         TestSource = '00/ad/std_uninitializedfillnCVertexGroupBlockOptimiserCBlockInfounsignedintCVertexGroupBlockOptimiserCBlockInfo_00ada820_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ada820_TEST PASS'
     }
     [pscustomobject]@{
@@ -179064,6 +179332,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/61/std_uninitializedfillnCTCInventoryMapCUIRegionInfounsignedintCTCInventoryMapCUIRegionInfo_00613210.cpp'
         TestSource = '00/61/std_uninitializedfillnCTCInventoryMapCUIRegionInfounsignedintCTCInventoryMapCUIRegionInfo_00613210_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00613210_TEST PASS'
     }
     [pscustomobject]@{
@@ -179078,6 +179347,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/81/std_uninitializedfillnCParticleMorphsCEntryunsignedintCParticleMorphsCEntry_0081a750.cpp'
         TestSource = '00/81/std_uninitializedfillnCParticleMorphsCEntryunsignedintCParticleMorphsCEntry_0081a750_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0081a750_TEST PASS'
     }
     [pscustomobject]@{
@@ -179085,6 +179355,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ab/std_uninitializedfillnN3DAnimationBuilderCSequenceInfounsignedintN3DAnimationBuilderCSequenceInfo_00ab1410.cpp'
         TestSource = '00/ab/std_uninitializedfillnN3DAnimationBuilderCSequenceInfounsignedintN3DAnimationBuilderCSequenceInfo_00ab1410_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ab1410_TEST PASS'
     }
     [pscustomobject]@{
@@ -179092,6 +179363,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b4/std_uninitializedfillnCEngineLightingManagerCThemeChannelunsignedintCEngineLightingManagerCThemeChannel_00b497b0.cpp'
         TestSource = '00/b4/std_uninitializedfillnCEngineLightingManagerCThemeChannelunsignedintCEngineLightingManagerCThemeChannel_00b497b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b497b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179099,6 +179371,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b7/std_uninitializedfillnCPreTransposedBoneMatrixunsignedintCPreTransposedBoneMatrix_00b7afa0.cpp'
         TestSource = '00/b7/std_uninitializedfillnCPreTransposedBoneMatrixunsignedintCPreTransposedBoneMatrix_00b7afa0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b7afa0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179106,6 +179379,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/40/std_uninitializedcopyETutorialCategoryETutorialCategory_0040de40.cpp'
         TestSource = '00/40/std_uninitializedcopyETutorialCategoryETutorialCategory_0040de40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0040de40_TEST PASS'
     }
     [pscustomobject]@{
@@ -179113,6 +179387,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/61/std_uninitializedcopyCHeroLogBookCHeroLogBookEntryECategoryCHeroLogBookCHeroLogBookEntryECategory_00612770.cpp'
         TestSource = '00/61/std_uninitializedcopyCHeroLogBookCHeroLogBookEntryECategoryCHeroLogBookCHeroLogBookEntryECategory_00612770_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00612770_TEST PASS'
     }
     [pscustomobject]@{
@@ -179120,6 +179395,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/85/std_uninitializedcopyNThingMapCThingMapCellconstNThingMapCThingMapCell_0085d820.cpp'
         TestSource = '00/85/std_uninitializedcopyNThingMapCThingMapCellconstNThingMapCThingMapCell_0085d820_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0085d820_TEST PASS'
     }
     [pscustomobject]@{
@@ -179141,6 +179417,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/59/std_uninitializedcopystdpairlonglongstdpairlonglong_00592d43.cpp'
         TestSource = '00/59/std_uninitializedcopystdpairlonglongstdpairlonglong_00592d43_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00592d43_TEST PASS'
     }
     [pscustomobject]@{
@@ -179148,6 +179425,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5b/std_uninitializedcopystdpairEClothingSuitPartNUISystemCComponentstdpairEClothingSuitPartNUISystemCComponent_005ba833.cpp'
         TestSource = '00/5b/std_uninitializedcopystdpairEClothingSuitPartNUISystemCComponentstdpairEClothingSuitPartNUISystemCComponent_005ba833_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005ba833_TEST PASS'
     }
     [pscustomobject]@{
@@ -179155,6 +179433,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5b/std_uninitializedcopystdpairlonglongconststdpairlonglong_005baa1c.cpp'
         TestSource = '00/5b/std_uninitializedcopystdpairlonglongconststdpairlonglong_005baa1c_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005baa1c_TEST PASS'
     }
     [pscustomobject]@{
@@ -179162,6 +179441,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5f/std_uninitializedcopystdpairlongEHeroAbilitystdpairlongEHeroAbility_005f8274.cpp'
         TestSource = '00/5f/std_uninitializedcopystdpairlongEHeroAbilitystdpairlongEHeroAbility_005f8274_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005f8274_TEST PASS'
     }
     [pscustomobject]@{
@@ -179169,6 +179449,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5f/std_uninitializedcopystdpairlongEHeroAbilityconststdpairlongEHeroAbility_005f8325.cpp'
         TestSource = '00/5f/std_uninitializedcopystdpairlongEHeroAbilityconststdpairlongEHeroAbility_005f8325_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005f8325_TEST PASS'
     }
     [pscustomobject]@{
@@ -179176,6 +179457,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/51/std_uninitializedcopyCNavigationPositionCNavigationPosition_00510fe0.cpp'
         TestSource = '00/51/std_uninitializedcopyCNavigationPositionCNavigationPosition_00510fe0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00510fe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179183,6 +179465,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/66/std_uninitializedcopyC3DVectorC3DVector_0066ddf0.cpp'
         TestSource = '00/66/std_uninitializedcopyC3DVectorC3DVector_0066ddf0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0066ddf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179204,6 +179487,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/69/std_uninitializedcopyCDefPointerCCameraModeDefconstCDefPointerCCameraModeDefconst_0069bfc0.cpp'
         TestSource = '00/69/std_uninitializedcopyCDefPointerCCameraModeDefconstCDefPointerCCameraModeDefconst_0069bfc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0069bfc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179218,6 +179502,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/71/std_uninitializedcopyCDefPointerCTattooDefconstCDefPointerCTattooDefconst_0071f1f0.cpp'
         TestSource = '00/71/std_uninitializedcopyCDefPointerCTattooDefconstCDefPointerCTattooDefconst_0071f1f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0071f1f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179232,6 +179517,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7c/std_uninitializedcopyCDefPointerCCreatureGenerationFamilyDefconstCDefPointerCCreatureGenerationFamilyDefconst_007c9f70.cpp'
         TestSource = '00/7c/std_uninitializedcopyCDefPointerCCreatureGenerationFamilyDefconstCDefPointerCCreatureGenerationFamilyDefconst_007c9f70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007c9f70_TEST PASS'
     }
     [pscustomobject]@{
@@ -179253,6 +179539,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/61/std_fillunsignedint64unsignedint64_00613260.cpp'
         TestSource = '00/61/std_fillunsignedint64unsignedint64_00613260_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00613260_TEST PASS'
     }
     [pscustomobject]@{
@@ -179260,6 +179547,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/63/std_fillNThingMapCThingMapManagerCThingMapInfoNThingMapCThingMapManagerCThingMapInfo_006387c0.cpp'
         TestSource = '00/63/std_fillNThingMapCThingMapManagerCThingMapInfoNThingMapCThingMapManagerCThingMapInfo_006387c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006387c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179267,6 +179555,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/81/std_fillCSkeletalMorphsCEntryCSkeletalMorphsCEntry_008192f0.cpp'
         TestSource = '00/81/std_fillCSkeletalMorphsCEntryCSkeletalMorphsCEntry_008192f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008192f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179274,6 +179563,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a9/std_fillC3DIndexedBoneWeightC3DIndexedBoneWeight_00a94630.cpp'
         TestSource = '00/a9/std_fillC3DIndexedBoneWeightC3DIndexedBoneWeight_00a94630_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a94630_TEST PASS'
     }
     [pscustomobject]@{
@@ -179281,6 +179571,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/ae/std_fillC3DQuad2C3DQuad2_00ae4f60.cpp'
         TestSource = '00/ae/std_fillC3DQuad2C3DQuad2_00ae4f60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ae4f60_TEST PASS'
     }
     [pscustomobject]@{
@@ -179288,6 +179579,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b6/std_fillCEngineLandscapeRendererCSubPatchSorterEntryCEngineLandscapeRendererCSubPatchSorterEntry_00b6b5b0.cpp'
         TestSource = '00/b6/std_fillCEngineLandscapeRendererCSubPatchSorterEntryCEngineLandscapeRendererCSubPatchSorterEntry_00b6b5b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b6b5b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179295,6 +179587,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b8/std_fillCEngineSubPrimitiveRendererCSortElementCEngineSubPrimitiveRendererCSortElement_00b84d60.cpp'
         TestSource = '00/b8/std_fillCEngineSubPrimitiveRendererCSortElementCEngineSubPrimitiveRendererCSortElement_00b84d60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b84d60_TEST PASS'
     }
     [pscustomobject]@{
@@ -179302,6 +179595,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/75/std_fillC3DVectorC3DVector_0075b430.cpp'
         TestSource = '00/75/std_fillC3DVectorC3DVector_0075b430_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0075b430_TEST PASS'
     }
     [pscustomobject]@{
@@ -179337,6 +179631,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/8f/std_fillCHeightMapCellCHeightMapCell_008f6580.cpp'
         TestSource = '00/8f/std_fillCHeightMapCellCHeightMapCell_008f6580_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008f6580_TEST PASS'
     }
     [pscustomobject]@{
@@ -179344,6 +179639,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/7d/std_fillKnickKnackKnickKnack_007d96f0.cpp'
         TestSource = '00/7d/std_fillKnickKnackKnickKnack_007d96f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007d96f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179358,6 +179654,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/98/std_fillC4DVectorC4DVector_0098c140.cpp'
         TestSource = '00/98/std_fillC4DVectorC4DVector_0098c140_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0098c140_TEST PASS'
     }
     [pscustomobject]@{
@@ -179365,6 +179662,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a5/std_fillCQuaternionCQuaternion_00a51fe0.cpp'
         TestSource = '00/a5/std_fillCQuaternionCQuaternion_00a51fe0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a51fe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179372,6 +179670,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bc/std_fillCEngineInternalPrimitiveSpriteTrailCSpriteTrailEntryCEngineInternalPrimitiveSpriteTrailCSpriteTrailEntry_00bc9e10.cpp'
         TestSource = '00/bc/std_fillCEngineInternalPrimitiveSpriteTrailCSpriteTrailEntryCEngineInternalPrimitiveSpriteTrailCSpriteTrailEntry_00bc9e10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bc9e10_TEST PASS'
     }
     [pscustomobject]@{
@@ -179379,6 +179678,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bd/std_fillC3DBoundingSphereC3DBoundingSphere_00bdf580.cpp'
         TestSource = '00/bd/std_fillC3DBoundingSphereC3DBoundingSphere_00bdf580_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bdf580_TEST PASS'
     }
     [pscustomobject]@{
@@ -197592,6 +197892,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<long, std::pair<long const, CBlendedParticleEffectSet>, std::_Select1st<std::pair<long const, CBlendedParticleEffectSet> >, std::less<long >, std::allocator<std::pair<long const, CBlendedParticleEffectSet> > >'
         Source = '00/45/stdRbtree_Mcreatenode_0045c2a2.cpp'
         TestSource = '00/45/stdRbtree_Mcreatenode_0045c2a2_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = '0045c2a2_TEST PASS'
     }
     [pscustomobject]@{
@@ -199786,6 +200087,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/59/std_uninitializedcopy_0059b49b.cpp'
         TestSource = '00/59/std_uninitializedcopy_0059b49b_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0059b49b_TEST PASS'
     }
     [pscustomobject]@{
@@ -205596,6 +205898,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/59/std_copyaux_0059b2cc.cpp'
         TestSource = '00/59/std_copyaux_0059b2cc_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0059b2cc_TEST PASS'
     }
     [pscustomobject]@{
@@ -219626,6 +219929,7 @@ $catalog = @(
         Module = 'std::pair<long const, CComboMultiplierData>'
         Source = '00/4f/stdpair_pair_004f9784.cpp'
         TestSource = '00/4f/stdpair_pair_004f9784_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS22'
         PassPattern = '004f9784_TEST PASS'
     }
     [pscustomobject]@{
@@ -264511,6 +264815,7 @@ $catalog = @(
         Module = 'CThing'
         Source = '00/4c/CThing_AddTC_004c9d60.cpp'
         TestSource = '00/4c/CThing_AddTC_004c9d60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS60'
         PassPattern = '004c9d60_TEST PASS'
     }
     [pscustomobject]@{
@@ -266067,6 +266372,7 @@ $catalog = @(
         Module = 'NScript::CV_TalentlessBardScript'
         Source = '00/ed/NScriptCVTalentlessBardScript_ProcessSongsAge_00eda8c0.cpp'
         TestSource = '00/ed/NScriptCVTalentlessBardScript_ProcessSongsAge_00eda8c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT59'
         PassPattern = '00eda8c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -267160,6 +267466,7 @@ $catalog = @(
         Module = 'NScript::CCS_OakValeRevisitedScript'
         Source = '00/ee/NScriptCCSOakValeRevisitedScript_OakValeFire_00ee8870.cpp'
         TestSource = '00/ee/NScriptCCSOakValeRevisitedScript_OakValeFire_00ee8870_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT76'
         PassPattern = '00ee8870_TEST PASS'
     }
     [pscustomobject]@{
@@ -269293,6 +269600,7 @@ $catalog = @(
         Module = 'NCreatureMode::CModeThunderLightningStorm'
         Source = '00/8d/NCreatureModeCModeThunderLightningStorm_CreateLightningBeams_008ddad0.cpp'
         TestSource = '00/8d/NCreatureModeCModeThunderLightningStorm_CreateLightningBeams_008ddad0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT65'
         PassPattern = '008ddad0_TEST PASS'
     }
     [pscustomobject]@{
@@ -278410,6 +278718,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/47/global_GFSerialiseMapBinaryIn_00472896.cpp'
         TestSource = '00/47/global_GFSerialiseMapBinaryIn_00472896_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = '00472896_TEST PASS'
     }
     [pscustomobject]@{
@@ -281663,6 +281972,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6b/std_copybackwardCIDrawEnvironmentParamsCThemeChannelCIDrawEnvironmentParamsCThemeChannelint_006b6250.cpp'
         TestSource = '00/6b/std_copybackwardCIDrawEnvironmentParamsCThemeChannelCIDrawEnvironmentParamsCThemeChannelint_006b6250_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006b6250_TEST PASS'
     }
     [pscustomobject]@{
@@ -281684,6 +281994,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/75/std_copybackwardCKeyCameraCKeyCameraint_0075f0e0.cpp'
         TestSource = '00/75/std_copybackwardCKeyCameraCKeyCameraint_0075f0e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0075f0e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -281740,6 +282051,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/88/std_copybackwardNEnvironmentInternalCBlendedEnvironmentThemeNEnvironmentInternalCBlendedEnvironmentThemeint_008898c0.cpp'
         TestSource = '00/88/std_copybackwardNEnvironmentInternalCBlendedEnvironmentThemeNEnvironmentInternalCBlendedEnvironmentThemeint_008898c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008898c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -281775,6 +282087,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a3/std_copybackwardstdpairstdpairCCharStringCCharStringCSoundBankLHstdpairstdpairCCharStringCCharStringCSoundBankLHint_00a3fe60.cpp'
         TestSource = '00/a3/std_copybackwardstdpairstdpairCCharStringCCharStringCSoundBankLHstdpairstdpairCCharStringCCharStringCSoundBankLHint_00a3fe60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a3fe60_TEST PASS'
     }
     [pscustomobject]@{
@@ -282189,6 +282502,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/4d/std_adjustheap_004dfdbb.cpp'
         TestSource = '00/4d/std_adjustheap_004dfdbb_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004dfdbb_TEST PASS'
     }
     [pscustomobject]@{
@@ -282450,6 +282764,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/61/std_copybackwardCTCInventoryMapCUIMiniMapMarkerCTCInventoryMapCUIMiniMapMarkerint_00613390.cpp'
         TestSource = '00/61/std_copybackwardCTCInventoryMapCUIMiniMapMarkerCTCInventoryMapCUIMiniMapMarkerint_00613390_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00613390_TEST PASS'
     }
     [pscustomobject]@{
@@ -282464,6 +282779,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6b/std_copybackwardCGameMapCellCGameMapCellint_006b7a00.cpp'
         TestSource = '00/6b/std_copybackwardCGameMapCellCGameMapCellint_006b7a00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006b7a00_TEST PASS'
     }
     [pscustomobject]@{
@@ -282562,6 +282878,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a3/std_copybackwardC3DGeneratorObjectC3DGeneratorObjectint_00a31060.cpp'
         TestSource = '00/a3/std_copybackwardC3DGeneratorObjectC3DGeneratorObjectint_00a31060_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a31060_TEST PASS'
     }
     [pscustomobject]@{
@@ -282604,6 +282921,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a5/std_copybackwardC3DAnimationSequenceDataC3DVectorWordC3DAnimationSequenceDataC3DVectorWordint_00a522b0.cpp'
         TestSource = '00/a5/std_copybackwardC3DAnimationSequenceDataC3DVectorWordC3DAnimationSequenceDataC3DVectorWordint_00a522b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a522b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -282639,6 +282957,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a9/std_copybackwardC3DTriangle2C3DTriangle2int_00a94a00.cpp'
         TestSource = '00/a9/std_copybackwardC3DTriangle2C3DTriangle2int_00a94a00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a94a00_TEST PASS'
     }
     [pscustomobject]@{
@@ -282681,6 +283000,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/cb/std_copybackwardstdpairCCharStringCCountedPointerCEntityScriptBindingBasestdpairCCharStringCCountedPointerCEntityScriptBindingBaseint_00cbae30.cpp'
         TestSource = '00/cb/std_copybackwardstdpairCCharStringCCountedPointerCEntityScriptBindingBasestdpairCCharStringCCountedPointerCEntityScriptBindingBaseint_00cbae30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00cbae30_TEST PASS'
     }
     [pscustomobject]@{
@@ -282744,6 +283064,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/40/std_uninitializedcopySCameraTagEntryconstSCameraTagEntry_0040fc50.cpp'
         TestSource = '00/40/std_uninitializedcopySCameraTagEntryconstSCameraTagEntry_0040fc50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0040fc50_TEST PASS'
     }
     [pscustomobject]@{
@@ -282751,6 +283072,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/40/std_uninitializedcopySCameraTagEntrySCameraTagEntry_0040ff80.cpp'
         TestSource = '00/40/std_uninitializedcopySCameraTagEntrySCameraTagEntry_0040ff80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0040ff80_TEST PASS'
     }
     [pscustomobject]@{
@@ -282891,6 +283213,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/77/std_uninitializedcopystdpairCCharStringC3DVectorstdpairCCharStringC3DVector_0077e280.cpp'
         TestSource = '00/77/std_uninitializedcopystdpairCCharStringC3DVectorstdpairCCharStringC3DVector_0077e280_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0077e280_TEST PASS'
     }
     [pscustomobject]@{
@@ -282933,6 +283256,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/88/std_uninitializedcopyC3DSkeletalBoneMorphC3DSkeletalBoneMorph_0088abc0.cpp'
         TestSource = '00/88/std_uninitializedcopyC3DSkeletalBoneMorphC3DSkeletalBoneMorph_0088abc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0088abc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -282954,6 +283278,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_uninitializedcopyC3DSkeletalBoneMorphconstC3DSkeletalBoneMorph_00a458b0.cpp'
         TestSource = '00/a4/std_uninitializedcopyC3DSkeletalBoneMorphconstC3DSkeletalBoneMorph_00a458b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a458b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -283010,6 +283335,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/f3/std_uninitializedcopyCGPUScratchBufferTextureManagerCResourceEntryCGPUScratchBufferTextureManagerCResourceEntry_00f37cc0.cpp'
         TestSource = '00/f3/std_uninitializedcopyCGPUScratchBufferTextureManagerCResourceEntryCGPUScratchBufferTextureManagerCResourceEntry_00f37cc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00f37cc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -283473,6 +283799,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_fill_00a43890.cpp'
         TestSource = '00/a4/std_fill_00a43890_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a43890_TEST PASS'
     }
     [pscustomobject]@{
@@ -284138,6 +284465,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/6b/std_copybackwardstdpairunsignedlongCCountedPointerCFactionstdpairunsignedlongCCountedPointerCFactionint_006b9100.cpp'
         TestSource = '00/6b/std_copybackwardstdpairunsignedlongCCountedPointerCFactionstdpairunsignedlongCCountedPointerCFactionint_006b9100_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006b9100_TEST PASS'
     }
     [pscustomobject]@{
@@ -284187,6 +284515,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/75/std_copybackwardC3DVectorC3DVectorint_0075b5b0.cpp'
         TestSource = '00/75/std_copybackwardC3DVectorC3DVectorint_0075b5b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0075b5b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284229,6 +284558,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/81/std_copybackwardCTextureMorphEntryCTextureMorphEntryint_008197b0.cpp'
         TestSource = '00/81/std_copybackwardCTextureMorphEntryCTextureMorphEntryint_008197b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008197b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284285,6 +284615,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_copybackwardC3DSkeletalBoneMorphC3DSkeletalBoneMorphint_00a45910.cpp'
         TestSource = '00/a4/std_copybackwardC3DSkeletalBoneMorphC3DSkeletalBoneMorphint_00a45910_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a45910_TEST PASS'
     }
     [pscustomobject]@{
@@ -284306,6 +284637,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a8/std_copybackwardstdpairlongCCountedPointerCNavConnectorNodestdpairlongCCountedPointerCNavConnectorNodeint_00a802a0.cpp'
         TestSource = '00/a8/std_copybackwardstdpairlongCCountedPointerCNavConnectorNodestdpairlongCCountedPointerCNavConnectorNodeint_00a802a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a802a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284313,6 +284645,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a8/std_copybackwardCNavQuadTreeCNavigationLayerCNavQuadTreeCNavigationLayerint_00a85740.cpp'
         TestSource = '00/a8/std_copybackwardCNavQuadTreeCNavigationLayerCNavQuadTreeCNavigationLayerint_00a85740_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a85740_TEST PASS'
     }
     [pscustomobject]@{
@@ -284502,6 +284835,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/82/std_uninitializedcopyCScriptedMapBrushCScriptedMapCellconstCScriptedMapBrushCScriptedMapCell_008247e0.cpp'
         TestSource = '00/82/std_uninitializedcopyCScriptedMapBrushCScriptedMapCellconstCScriptedMapBrushCScriptedMapCell_008247e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008247e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284523,6 +284857,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/85/std_uninitializedcopyCTextureManagerPoolInfoCTextureManagerPoolInfo_0085db50.cpp'
         TestSource = '00/85/std_uninitializedcopyCTextureManagerPoolInfoCTextureManagerPoolInfo_0085db50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0085db50_TEST PASS'
     }
     [pscustomobject]@{
@@ -284642,6 +284977,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/b2/std_uninitializedcopyCCameraCCamera_00b28ed0.cpp'
         TestSource = '00/b2/std_uninitializedcopyCCameraCCamera_00b28ed0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00b28ed0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284663,6 +284999,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bf/std_uninitializedcopystdpairC3DBoundingBoxCWaterPatchMeshstdpairC3DBoundingBoxCWaterPatchMesh_00bf5b50.cpp'
         TestSource = '00/bf/std_uninitializedcopystdpairC3DBoundingBoxCWaterPatchMeshstdpairC3DBoundingBoxCWaterPatchMesh_00bf5b50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bf5b50_TEST PASS'
     }
     [pscustomobject]@{
@@ -284677,6 +285014,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/4b/std_pushheap_004b9540.cpp'
         TestSource = '00/4b/std_pushheap_004b9540_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004b9540_TEST PASS'
     }
     [pscustomobject]@{
@@ -284726,6 +285064,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/4d/std_pushheap_004dd875.cpp'
         TestSource = '00/4d/std_pushheap_004dd875_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004dd875_TEST PASS'
     }
     [pscustomobject]@{
@@ -284789,6 +285128,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/77/std_pushheap_0077e730.cpp'
         TestSource = '00/77/std_pushheap_0077e730_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0077e730_TEST PASS'
     }
     [pscustomobject]@{
@@ -284859,6 +285199,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/9b/std_pushheap_009b4940.cpp'
         TestSource = '00/9b/std_pushheap_009b4940_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009b4940_TEST PASS'
     }
     [pscustomobject]@{
@@ -284887,6 +285228,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_pushheap_00a403f0.cpp'
         TestSource = '00/a4/std_pushheap_00a403f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a403f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284929,6 +285271,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/af/std_pushheap_00af2f10.cpp'
         TestSource = '00/af/std_pushheap_00af2f10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00af2f10_TEST PASS'
     }
     [pscustomobject]@{
@@ -284936,6 +285279,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/cb/std_pushheap_00cb64d0.cpp'
         TestSource = '00/cb/std_pushheap_00cb64d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00cb64d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -285113,7 +285457,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a7/std_median_00a70020.cpp'
         TestSource = '00/a7/std_median_00a70020_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Oa'
+        CompilerFlags = '/O2 /Oy /W3 /Oa /Gr'
         PassPattern = '00a70020_TEST PASS'
     }
     [pscustomobject]@{
@@ -286385,6 +286729,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/4a/std_uninitializedcopyCTestQuestCTestQuest_004aa060.cpp'
         TestSource = '00/4a/std_uninitializedcopyCTestQuestCTestQuest_004aa060_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004aa060_TEST PASS'
     }
     [pscustomobject]@{
@@ -286434,6 +286779,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/71/std_uninitializedcopy_0071ea10.cpp'
         TestSource = '00/71/std_uninitializedcopy_0071ea10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0071ea10_TEST PASS'
     }
     [pscustomobject]@{
@@ -286483,6 +286829,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/88/std_uninitializedcopyNEnvironmentInternalCBlendedEnvironmentThemeconstNEnvironmentInternalCBlendedEnvironmentTheme_00889880.cpp'
         TestSource = '00/88/std_uninitializedcopyNEnvironmentInternalCBlendedEnvironmentThemeconstNEnvironmentInternalCBlendedEnvironmentTheme_00889880_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00889880_TEST PASS'
     }
     [pscustomobject]@{
@@ -286532,6 +286879,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a3/std_uninitializedcopystdpairunsignedlongC3DMeshVolumestdpairunsignedlongC3DMeshVolume_00a32f40.cpp'
         TestSource = '00/a3/std_uninitializedcopystdpairunsignedlongC3DMeshVolumestdpairunsignedlongC3DMeshVolume_00a32f40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a32f40_TEST PASS'
     }
     [pscustomobject]@{
@@ -286539,6 +286887,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_uninitializedcopyCLipSyncPhonemeSampleCLipSyncPhonemeSample_00a49bc0.cpp'
         TestSource = '00/a4/std_uninitializedcopyCLipSyncPhonemeSampleCLipSyncPhonemeSample_00a49bc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a49bc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -286553,6 +286902,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a6/std_uninitializedcopy_00a6afd0.cpp'
         TestSource = '00/a6/std_uninitializedcopy_00a6afd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a6afd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -286560,6 +286910,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a6/std_uninitializedcopystdpairlongC3DMeshVolumestdpairlongC3DMeshVolume_00a6fe00.cpp'
         TestSource = '00/a6/std_uninitializedcopystdpairlongC3DMeshVolumestdpairlongC3DMeshVolume_00a6fe00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a6fe00_TEST PASS'
     }
     [pscustomobject]@{
@@ -286567,6 +286918,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a6/std_uninitializedcopystdpairCCharStringC3DMeshVolumestdpairCCharStringC3DMeshVolume_00a6fed0.cpp'
         TestSource = '00/a6/std_uninitializedcopystdpairCCharStringC3DMeshVolumestdpairCCharStringC3DMeshVolume_00a6fed0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a6fed0_TEST PASS'
     }
     [pscustomobject]@{
@@ -286686,6 +287038,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5f/std_uninitializedfillnCDefPointerCHeroAbilityDefconstunsignedintCDefPointerCHeroAbilityDefconst_005f7a1d.cpp'
         TestSource = '00/5f/std_uninitializedfillnCDefPointerCHeroAbilityDefconstunsignedintCDefPointerCHeroAbilityDefconst_005f7a1d_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005f7a1d_TEST PASS'
     }
     [pscustomobject]@{
@@ -286707,6 +287060,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/76/std_uninitializedfillnParticleAndEndPointsunsignedintParticleAndEndPoints_00769810.cpp'
         TestSource = '00/76/std_uninitializedfillnParticleAndEndPointsunsignedintParticleAndEndPoints_00769810_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00769810_TEST PASS'
     }
     [pscustomobject]@{
@@ -286721,6 +287075,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/80/std_uninitializedcopystdpairC2DVectorunsignedcharstdpairC2DVectorunsignedchar_008002f0.cpp'
         TestSource = '00/80/std_uninitializedcopystdpairC2DVectorunsignedcharstdpairC2DVectorunsignedchar_008002f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008002f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -286742,6 +287097,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/82/std_uninitializedcopyCMinimapDataMinimapThemeconstCMinimapDataMinimapTheme_0082c420.cpp'
         TestSource = '00/82/std_uninitializedcopyCMinimapDataMinimapThemeconstCMinimapDataMinimapTheme_0082c420_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0082c420_TEST PASS'
     }
     [pscustomobject]@{
@@ -286749,6 +287105,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/82/std_uninitializedcopyCRGBColourconstCRGBColour_0082c690.cpp'
         TestSource = '00/82/std_uninitializedcopyCRGBColourconstCRGBColour_0082c690_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0082c690_TEST PASS'
     }
     [pscustomobject]@{
@@ -286777,6 +287134,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/88/std_uninitializedfillnNEnvironmentInternalCEnvironmentThemePriorityStackEntryunsignedintNEnvironmentInternalCEnvironmentThemePriorityStackEntry_00889230.cpp'
         TestSource = '00/88/std_uninitializedfillnNEnvironmentInternalCEnvironmentThemePriorityStackEntryunsignedintNEnvironmentInternalCEnvironmentThemePriorityStackEntry_00889230_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00889230_TEST PASS'
     }
     [pscustomobject]@{
@@ -286819,6 +287177,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a4/std_uninitializedcopyNGameTextCDataBankTextEntryNGameTextCDataBankTextEntry_00a43630.cpp'
         TestSource = '00/a4/std_uninitializedcopyNGameTextCDataBankTextEntryNGameTextCDataBankTextEntry_00a43630_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a43630_TEST PASS'
     }
     [pscustomobject]@{
@@ -286833,6 +287192,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a5/std_uninitializedcopyC3DAnimationSequenceDataC3DVectorWordC3DAnimationSequenceDataC3DVectorWord_00a51c60.cpp'
         TestSource = '00/a5/std_uninitializedcopyC3DAnimationSequenceDataC3DVectorWordC3DAnimationSequenceDataC3DVectorWord_00a51c60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a51c60_TEST PASS'
     }
     [pscustomobject]@{
@@ -286840,6 +287200,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a5/std_uninitializedcopyC3DAnimationSequenceDataC3DVectorWordconstC3DAnimationSequenceDataC3DVectorWord_00a52040.cpp'
         TestSource = '00/a5/std_uninitializedcopyC3DAnimationSequenceDataC3DVectorWordconstC3DAnimationSequenceDataC3DVectorWord_00a52040_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a52040_TEST PASS'
     }
     [pscustomobject]@{
@@ -286854,6 +287215,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a6/std_uninitializedcopyC3DTriangle2C3DTriangle2_00a6e350.cpp'
         TestSource = '00/a6/std_uninitializedcopyC3DTriangle2C3DTriangle2_00a6e350_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a6e350_TEST PASS'
     }
     [pscustomobject]@{
@@ -286861,6 +287223,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a7/std_uninitializedcopystdpairunsignedint64boolstdpairunsignedint64bool_00a7e5c0.cpp'
         TestSource = '00/a7/std_uninitializedcopystdpairunsignedint64boolstdpairunsignedint64bool_00a7e5c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a7e5c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -286868,6 +287231,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a7/std_uninitializedcopystdpairunsignedint64CANavQuadTreeNodestdpairunsignedint64CANavQuadTreeNode_00a7e630.cpp'
         TestSource = '00/a7/std_uninitializedcopystdpairunsignedint64CANavQuadTreeNodestdpairunsignedint64CANavQuadTreeNode_00a7e630_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a7e630_TEST PASS'
     }
     [pscustomobject]@{
@@ -286875,6 +287239,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a7/std_uninitializedcopyCNavigationPositionconstCNavigationPosition_00a7e990.cpp'
         TestSource = '00/a7/std_uninitializedcopyCNavigationPositionconstCNavigationPosition_00a7e990_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a7e990_TEST PASS'
     }
     [pscustomobject]@{
@@ -286889,6 +287254,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a8/std_uninitializedcopystdlistC2DLineFstdallocatorC2DLineFstdlistC2DLineFstdallocatorC2DLineF_00a831d0.cpp'
         TestSource = '00/a8/std_uninitializedcopystdlistC2DLineFstdallocatorC2DLineFstdlistC2DLineFstdallocatorC2DLineF_00a831d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a831d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -286917,6 +287283,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bb/std_uninitializedcopyCEngineInternalPrimitiveParticleGroupCPrimitiveIteratorCEngineInternalPrimitiveParticleGroupCPrimitiveIterator_00bbd520.cpp'
         TestSource = '00/bb/std_uninitializedcopyCEngineInternalPrimitiveParticleGroupCPrimitiveIteratorCEngineInternalPrimitiveParticleGroupCPrimitiveIterator_00bbd520_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bbd520_TEST PASS'
     }
     [pscustomobject]@{
@@ -287191,6 +287558,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/be/std_uninitializedfillnstdpairlongCCompositeSurfaceInfounsignedintstdpairlongCCompositeSurfaceInfo_00bedbb0.cpp'
         TestSource = '00/be/std_uninitializedfillnstdpairlongCCompositeSurfaceInfounsignedintstdpairlongCCompositeSurfaceInfo_00bedbb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bedbb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -288580,6 +288948,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/4e/std_linearinsert_004e1c8a.cpp'
         TestSource = '00/4e/std_linearinsert_004e1c8a_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004e1c8a_TEST PASS'
     }
     [pscustomobject]@{
@@ -290667,6 +291036,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5e/std_pushheap_005e08c0.cpp'
         TestSource = '00/5e/std_pushheap_005e08c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005e08c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -290695,6 +291065,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5e/std_copybackward_005e0fe0.cpp'
         TestSource = '00/5e/std_copybackward_005e0fe0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005e0fe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -290716,6 +291087,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/5e/std_adjustheap_005e1170.cpp'
         TestSource = '00/5e/std_adjustheap_005e1170_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005e1170_TEST PASS'
     }
     [pscustomobject]@{
@@ -294694,6 +295066,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/77/std_unguardedpartition_0077e8f0.cpp'
         TestSource = '00/77/std_unguardedpartition_0077e8f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0077e8f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -294722,6 +295095,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/77/std_introsortloop_0077f370.cpp'
         TestSource = '00/77/std_introsortloop_0077f370_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0077f370_TEST PASS'
     }
     [pscustomobject]@{
@@ -299895,6 +300269,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a3/std_unguardedpartition_00a34260.cpp'
         TestSource = '00/a3/std_unguardedpartition_00a34260_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a34260_TEST PASS'
     }
     [pscustomobject]@{
@@ -301380,6 +301755,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a7/std_unguardedpartition_00a71880.cpp'
         TestSource = '00/a7/std_unguardedpartition_00a71880_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a71880_TEST PASS'
     }
     [pscustomobject]@{
@@ -301387,6 +301763,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a7/std_unguardedpartition_00a71910.cpp'
         TestSource = '00/a7/std_unguardedpartition_00a71910_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr /d2inlT66'
         PassPattern = '00a71910_TEST PASS'
     }
     [pscustomobject]@{
@@ -301748,6 +302125,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a7/std_introsortloop_00a73a00.cpp'
         TestSource = '00/a7/std_introsortloop_00a73a00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a73a00_TEST PASS'
     }
     [pscustomobject]@{
@@ -304316,6 +304694,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/bf/std_uninitializedfillnstdpairC3DBoundingBoxCWaterPatchMeshunsignedintstdpairC3DBoundingBoxCWaterPatchMesh_00bf5bb0.cpp'
         TestSource = '00/bf/std_uninitializedfillnstdpairC3DBoundingBoxCWaterPatchMeshunsignedintstdpairC3DBoundingBoxCWaterPatchMesh_00bf5bb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00bf5bb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -314291,6 +314670,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/4b/STL_adjustheap_004ba180.cpp'
         TestSource = '00/4b/STL_adjustheap_004ba180_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004ba180_TEST PASS'
     }
     [pscustomobject]@{
@@ -314375,6 +314755,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a7/STL_pushheap_00a708e0.cpp'
         TestSource = '00/a7/STL_pushheap_00a708e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a708e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -314389,6 +314770,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/a7/STL_adjustheap_00a71370.cpp'
         TestSource = '00/a7/STL_adjustheap_00a71370_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a71370_TEST PASS'
     }
     [pscustomobject]@{
@@ -314396,6 +314778,7 @@ $catalog = @(
         Module = 'std'
         Source = '00/af/STL_adjustheap_00af3290.cpp'
         TestSource = '00/af/STL_adjustheap_00af3290_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00af3290_TEST PASS'
     }
     [pscustomobject]@{
@@ -342588,6 +342971,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<long, std::pair<long const, CCharString>, std::_Select1st<std::pair<long const, CCharString> >, std::less<long >, std::allocator<std::pair<long const, CCharString> > >'
         Source = '00/46/stdRbtree_Mcreatenode_00466255.cpp'
         TestSource = '00/46/stdRbtree_Mcreatenode_00466255_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = '00466255_TEST PASS'
     }
     [pscustomobject]@{
@@ -343386,6 +343770,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet>, std::_Select1st<std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet> > >'
         Source = '00/4e/stdRbtree_Mcreatenode_004ec441.cpp'
         TestSource = '00/4e/stdRbtree_Mcreatenode_004ec441_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = '004ec441_TEST PASS'
     }
     [pscustomobject]@{
@@ -343400,6 +343785,7 @@ $catalog = @(
         Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>'
         Source = '00/4f/stdRbtree_Mcreatenode_004f9934.cpp'
         TestSource = '00/4f/stdRbtree_Mcreatenode_004f9934_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS22'
         PassPattern = '004f9934_TEST PASS'
     }
     [pscustomobject]@{

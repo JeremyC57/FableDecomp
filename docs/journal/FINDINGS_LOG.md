@@ -1259,3 +1259,9 @@ game_animation_events.h, sound_animation_events.h, RetailHeaders/*.h symbol tabl
 "https://drive.usercontent.google.com/download?id=1C751T1L_39esnkp7jELgPXq0qFtcHlDm&export=download&confirm=t"). Uses for the lane:
 retail-revision enum names / values (Ego_r is a later revision), def field order from game.bin for *Def::Transfer rows (the schema is
 already in refs/transfer_field_orders.json, docs/formats/DEF_SCHEMA_COVERAGE.md), realistic test data.
+
+## 2026-11-19 catalog health: stale pass patterns and missing CompilerFlags
+Rechecking landed rows found two silent catalog defects. (1) 27 PassPatterns no longer matched what the row's test prints (re-landed tests); every recheck
+reported MATCH + FAIL for them. (2) 387 entries lacked the CompilerFlags their source's `// Flags:` line declares (mostly /Gr, /d2inlS20), so the real build
+compiled them without the flag and they did not match retail. Both repaired and rechecked (batches/2026-11-19_fix_stale_passpatterns/,
+batches/2026-11-19_fix_catalog_compilerflags/). Coverage numbers counted these rows as matched while the build disagreed; after the repair they are.
