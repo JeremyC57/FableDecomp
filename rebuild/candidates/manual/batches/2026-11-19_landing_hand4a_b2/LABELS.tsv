@@ -1,0 +1,2 @@
+address	name	evidence
+0047d289	PCQuitToFrontEnd	Ego_r.pdb ?PCQuitToFrontEnd@@YIXXZ 0x00489DCC (13 bytes = retail 0x0047D289..0x0047D296) + FableWin.pdb 0x01AB8917, the yes-callback PCSetQuitToFrontEnd pushes (retail 0x0047D2A8 push 0x47D289; FableWin thunk 0x01826B2B)

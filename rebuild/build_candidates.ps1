@@ -399945,6 +399945,20 @@ $catalog = @(
         TestSource = '00/49/CWorld_ConsoleSetFreeCameraLookVector_0049ed80_test.cpp'
         PassPattern = '0049ed80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0047d296'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_PCSetQuitToFrontEnd_0047d296.cpp'
+        TestSource = '00/47/CTCInGameMenu_PCSetQuitToFrontEnd_0047d296_test.cpp'
+        PassPattern = '0047d296_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047dd9d'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_PCSetToLoad_0047dd9d.cpp'
+        TestSource = '00/47/CTCInGameMenu_PCSetToLoad_0047dd9d_test.cpp'
+        PassPattern = '0047dd9d_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

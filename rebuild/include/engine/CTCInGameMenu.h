@@ -48,6 +48,11 @@ public:
     void SetToSave(long);
     void PCSetToLoad(long);
 #endif
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_PCSETQUIT
+    // Opt-in (hand4a, row 0x0047D296): Ego_r.pdb / FableWin.pdb ?PCSetQuitToFrontEnd@CTCInGameMenu@@QAEXXZ (FableWin 0x01AB8D21),
+    // out of line at 0x0047D296; the PC "quit to the front end?" yes/no set-up, twin of PCSetToLoad. Declaration only.
+    void PCSetQuitToFrontEnd();                                      // 0x0047D296
+#endif
 #ifdef FABLE_RETAIL_CTCINGAMEMENU_OPENMENU
     // Retail opt-in (bwf2 row 0x004830A1): Ego_r.pdb ?OpenInGameMenu@CTCInGameMenu@@QAEXXZ (0x0048FB01) / FableWin.pdb (0x01AA64D9) and
     // the private ?GetFileNameList@CTCInGameMenu@@AAEXXZ (Ego_r 0x0048C6D5; retail 0x0047FE83, same TU, out of line); FileNames +0x28

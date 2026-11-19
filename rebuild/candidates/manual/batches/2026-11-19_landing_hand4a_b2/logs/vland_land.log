@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0047d296   RELOCATION_MATCH PASS   PCSetQuitToFrontEnd
+0047dd9d   RELOCATION_MATCH PASS   PCSetToLoad
+
+WINS: 2
+  0047d296 RELOCATION_MATCH CTCInGameMenu::?PCSetQuitToFrontEnd@CTCInGameMenu@@QAEXXZ
+  0047dd9d RELOCATION_MATCH CTCInGameMenu::?PCSetToLoad@CTCInGameMenu@@QAEXJ@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCInGameMenu_PCSetQuitToFrontEnd_0047d296
+  CTCInGameMenu_PCSetToLoad_0047dd9d
