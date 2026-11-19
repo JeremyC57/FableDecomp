@@ -67,3 +67,79 @@ nothing left but a pending escalation.
 - 19:46 official grade: probes/multi/m_plus_r_row.cpp with HO=hdrB -> RELOCATION_MATCH (diagnostic; rhs copy unevidenced). Escalation
   update sent to main with decision (a) nested Inferred opt-in for the three rows / (b) keep searching.
 - STATE AT HANDBACK: no row landed; no batch snapshot (nothing landable without the coordinator decision). Grades: 00989230 1, 008185B0 0.
+
+## Convergence test (coordinator decision 3; no grades)
+- Q1 (columns under new body m+r): a9e1 col 0 off, bd2d off. Q2: Ego_d-local re-ports: a9e1 FOLLOWS (probes/a9/b0_block_s1_mr = RELOCATION_MATCH:
+  no `bone` local, shared loop counter, local inside the else-block); bd2d follows in NO variant (~60 probes, probes/bd2 bd3 bd4).
+  Q3: no out-of-line AlignedSetMultiply in retail (no coverage/egor name) -> nothing to own.
+- Outcome: option (a) FITTED. Batch W/batches/b1: hdr/engine/CMatrix4x4AlignedSSE.h (nested opt-in ..._M_RHSREF inside ..._ACCESSORS),
+  src/00989230.cpp + src/00ae1320.cpp RELOCATION_MATCH with that hdr; landed a9e1/bd2d unchanged (default path) still match.
+- test/00989230.cpp + mutants: base PASS, 9/9 mutants FAIL (product counter added so no_skip_empty fails).
+- 1320 Ego_d locals: sim, anim, anim_manager, bone_morphs, mesh, no_bones, mesh_vertices, no_vertices, bone_transforms, {c_bone}; NO copy
+  local -> the copy lives in an inlinee. Ego_d procs: AlignedPreMultiplyTransposed is a proc (AlignedPostMultiply / AlignedPreMultiply are not);
+  retail has it out of line at 0x00ADEFC0 (particle area). probes/c13: Ego_d-shaped 1320 calling bone_transforms[c_bone].AlignedPreMultiplyTransposed(
+  mesh.BoneSpaceTransforms[c_bone]) with ..._FORCEINLINE: 681v681 (size exact) both bodies; column orders not yet retail.
+- KEY CALIBRATOR 0x00ADEFC0 CMatrix4x4::AlignedPreMultiplyTransposed (out of line, 471 b; open row codex pass24 DIFFER 472v471). Oracle from
+  Fable.exe in W/oracle/extra_oracle.tsv (tools/rbytes.py). Its size gap is ONLY x87 term encodings -> pure phase question.
+  Unit sweep (probes/ef/u_*): clean period 4 on all 4 columns; mr = acc+2; retail = acc+1.
+  probes/ef/egod_fi1.cpp (hdrA, ..._EGOD_LOCALS = Ego_d body `CMatrix4x4& m=*this; long c1,c2; m(c1,c2)=a(c1,k)*b(k,c2)`, no rhs copy,
+  out-of-line body `__declspec(align(16)) CMatrix4x4 m; m = *this; AlignedSetMultiplyTransposed(matrix, m);` + SETMULTIPLYTRANSPOSED_FORCEINLINE)
+  = RELOCATION_MATCH. -> the Ego_d body is the evidenced shared body; rows must find their remaining units in their own (Ego_d) text.
+- 0x00AE1320 Ego_d-shaped (probes/c13e/egod.cpp: Ego_d names sim/anim/anim_manager/bone_morphs/no_vertices/mesh_vertices/no_bones/
+  bone_transforms/c_bone, `bone_transforms[c_bone].AlignedPreMultiplyTransposed(mesh.BoneSpaceTransforms[c_bone])`, PMT + SMT FORCEINLINE)
+  under hdrA EGOD_LOCALS = RELOCATION_MATCH. No fitted construct.
+- SSE arm locals (hdrC, FABLE_P989_SSEF): Ego_d names/types `const float* src1 = &a.Data[0][0]; const float* src2 = &b.Data[0][0]; float* dest = &Data[0][0];`
+  (decl order src1, src2, dest = retail store order [1c],[18],[14]) keeps ef + 1320 RELOCATION_MATCH (k=5/6); order src1,dest,src2 breaks the SSE stores.
+  SSE arm spelling never moves the x87 phase. Row 0x00989230 under the Ego_d body: 635v636, ONLY x87 differs, needs +1 unit.
+- LANDED 0x00BD2D90 under the Ego_d body (hdrC, EGOD + SSEF 5): probes/bde/r1m0a0b1_acc.cpp = RELOCATION_MATCH. Its locals are EXACTLY Ego_d's
+  (render_info = GetRenderInfo() [needs ..._ANIMATEDMESH_RENDERINFO], mesh, no_bones, interpolate, bone_morphs, c_bone, bone_transform; no
+  mesh_pointer / animation_manager). Landed text (fitted named locals) does NOT follow (DIFFER 721v721) -> re-port = Ego_d text.
+- Row 0x00989230 under Ego_d body: needs exactly +1 (probes/ru/u1 = retail columns). Byte-neutral tries that do NOT move it (probes/rv, rv2):
+  hr local in SetVSConstants (3 forms), count tests (!=0, >0), no cast, rows via if / >, flags swapped, direct AlignedSetMultiply, named
+  texture ref. Flags as one statement = +3 (636 bytes, wrong phase).
+- 0x00AE29D0 under Ego_d body: probes/d29e/ego.cpp (1320-style Ego_d names; `bone_transforms[c_bone].AlignedPreMultiplyTransposed(mesh.BoneSpaceTransforms[c_bone])`,
+  no copy local) = RELOCATION_MATCH; prior text with only the loop swapped to PMT also matches (prior_pmt). Ego_d 7-arg record incomplete.
+- Landed 0x00A9E1E0 under Ego_d body: Ego_d-faithful text (probes/a9e/b0_func_s0_acc: no_bones + local_matrix at function scope, c_bone per
+  loop, parent_index, no `bone`) = cols 1..3 retail, col 0 "2a 0a 3b 1b" v retail "2a 3b 1b 0a" (b1 = with `bone`: "2a 3b 1b 0b").
+- LANDED 0x00A9E1E0 under Ego_d body: probes/a9f/t0n1.cpp = RELOCATION_MATCH (Ego_d locals b0_func_s0 + the non-transposed branch written
+  `dest[c_bone].AlignedSetMultiplyTransposed(dest[parent_index], local_matrix)` = same product as AlignedSetMultiply(local_matrix, parent)).
+  t1n1 also matches; t0n0 / t1n0 (plain AlignedSetMultiply in the normal branch) leave col 0 off. Col 0 = which forwarder the site expands
+  through (row `direct` variant also moved only col 0). The forwarder choice is evidence-free -> mark Fitted (col 0) in that row.
+- STATUS under the single Ego_d body (no rhs copy): ADEFC0 ok, 1320 ok, 29d0 ok, bd2d ok (Ego_d re-port), a9e1 ok (re-port + fitted call),
+  row 0x00989230 +1 missing, 0x00988E80 structure not looked at yet.
+
+## Batch b2 (coordinator: claims posted for a9e1, bd2d, adefc0; b1 / option (a) dropped)
+- hdr: W/batches/b2/hdr/engine/{CMatrix4x4AlignedSSE.h, CMatrix4x4.h} = TODAY's repo copies + nested opt-in
+  FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD (inside ..._ACCESSORS, #error pins for ACCESSORS / ELEMENT_ACCESS); SSE locals
+  `&lhs.E11` style; PMT inline text renamed to Ego_d (`matrix`, `m`).
+- src (all RELOCATION_MATCH under b2 hdr, tools/regress.sh): 00adefc0 (new), 00a9e1e0 + 00bd2d90 (re-ports, landed names), 00ae1320 + 00ae29d0
+  (retyped onto engine C3DMesh2 / C3DAnimationManager / CParticleContext headers; 29d0 context slots = GetMaximumIterations / GetMaximumDistanceError).
+- Landed regress under b2 hdr (default path): a5cb90 (/Zi), a9d750, a9d580, a9d480, aa2110, aa0fa0, a9e1e0, bd2d90 all RELOCATION_MATCH.
+- 0x013D2880: Ego_d.pdb datanames has ?GEnableSIMD@@3_NA; g_SSEAvailable is in no PDB -> NAME_FIXES; b2 rows use ..._SIMD_ORIGINAL_FLAG.
+- GOTCHA: VC7.1 cl.exe under Wine HANGS (99% CPU, no exit) on any fatal `#error` (bare `#error` TU with /Zs: timeout). The b2 #error pins
+  cannot be exercised in the lane; checked by inspection only. Always wrap pin checks in `timeout` and kill only own cl.exe.
+- Host has no 32-bit libc/libstdc++ headers: gxx -m32 portable steps cannot run here. VC7.1 /DFABLE_PORTABLE run of the ADEFC0 test: PASS.
+- Tests (btest, b2 hdr): a9e1 re-port base PASS, 6/6 mutants FAIL; bd2d re-port base PASS, 7/7 FAIL; adefc0 base PASS, 3/3 FAIL.
+- b2 COMPLETE: README, NAME_FIXES, payload.json/oracle.tsv (tools/mkpayload_b2.py), tests 1320 7/7, 29d0 7/7; official grades 20:35-20:36
+  all five RELOCATION_MATCH (adefc0 via tools/qw.py = q.py + W/oracle). b1 marked SUPERSEDED.
+- 0x00988E80 structure SOLVED to 915v917 (was 889): Ego_d text (wvmatrix = View*World via AlignedSetMultiply; uvect(row0).Normalise();
+  spheremap_matrix[0] = uvect*0.5, W 0.5 BEFORE vvect; vvect(-row1).Normalise(); spheremap_matrix[1]; `long hr = D3DDevice->SetVertexShaderConstantF(
+  layout->SphereMapMatrix.Offset, &spheremap_matrix[0][0], 2)`; UpdateFlags &= ~0x8000). Best tail: C3DVECTOR_NORMALISE_PAREN_SQUARES_{XYZ,ZYX}
+  + GFFASTONEOVERSQRT_NEWTON_PAREN (probes/e8/w_*: 7 tail diffs = first normalise keeps s live and multiplies Y*s / Z*s as `fld [Y]; fmul st(2)`).
+  Multiply columns: retail 3b1b0b2b|3b1b2a0a|0b3b1b2a|2b3a1a0a; no +k (0..3) of our text and no Transposed-forwarder +k gives it (probes/e8/u*, t*).
+- e80 readout for the coordinator: under ACCESSORS (acc0..3) and Ego_d body (+0..3) and 14 tail variants, the multiply columns stay on ONE
+  4-cycle (acc = ego-1); retail e80 columns (3102|3120|0312|2310 positions) are on none of its phases (mixed family, like bd2d's, which its own
+  Ego_d text produced). So no unit shift can be read yet. e80 never expands SetVSConstants (Ego_d `hr` local = direct device call), so a
+  SetVSConstants inlinee cannot be a shared cause with the row. Early W stores (probes/e8/A_*, B_*): tail worse (14).
+- 0x008185B0 advisor checks done (ESCALATE_008185b0.md round 3): (1) cos is already memory-homed at site 4 in our build (DAG trace) -> not
+  the lever; factor choice is tree-level. (2) siblings show the same site-4 shape from the same template; residue = GetValue text; Ego_d
+  GetValue record has float locals sin_x / cos_x, so the siblings' double-expression lever is ruled out by evidence.
+- Final round: SetVSMatrixConstantTransposed(4x4) ruled out (retail 0x00988840 transposes); option (a) re-checked on b2 copy (hdrD) =
+  RELOCATION_MATCH, only inside the shared x87 arm (conflicts with coordinator condition). Units-from-inlinees claim downgraded (bd2d caller
+  locals moved columns). e80 dref/vref stay on the 4-cycle. b2 left untouched (under audit). Known b2 comment nits for the coordinator:
+  a9e1 Shape comment still says the row-vector loop is plain AlignedSetMultiply(local, parent); 29d0's Inferred note sits in a `Locals:` line,
+  not a `// Inferred:` line.
+- STATE AT HANDBACK: b2 ready (5 rows); 0x00989230, 0x00988E80, 0x008185B0 waiting on escalations (ESCALATE_*.md).
+- b3 (option (a), coordinator ruling): W/batches/b3 -- row-only macro FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD_RHSREF_00989230 nested in
+  EGOD; row RELOCATION_MATCH (official 20:56); all 5 b2 rows + 8 landed expanders RELOCATION_MATCH under b3/hdr; test 9/9 mutants FAIL.
+  Row-text axis (probes/rv4) exhausted first.
