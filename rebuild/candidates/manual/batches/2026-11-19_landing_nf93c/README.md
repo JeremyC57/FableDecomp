@@ -18,7 +18,7 @@ Recheck from the repo after landing (`logs/recheck.log`): 40 RELOCATION_MATCH + 
 ## Headers
 engine/CAFile.h `FABLE_RETAIL_CAFILE_CREATEDIRECTORY` (nested in the FABLE_RETAIL_CAFILE block: CreateDirectoryW 0x009994A0,
 CreateDirectoryForFile 0x00999620, MakePath 0x00997780). Default path token-identical; 0 asserts moved. Includer recheck (CAFile.h users +
-the catalog-only renames whose files moved): `logs/includer_recheck.txt`.
+the catalog-only renames whose files moved): 72 of 72 good. `logs/includer_recheck.txt`.
 
 ## Checks
 Synced with FullDecomp-B first (B's 0x00989230 probe snapshot; no headers). `naming/rebind.py`: removed 120 binding lines, added 89;
