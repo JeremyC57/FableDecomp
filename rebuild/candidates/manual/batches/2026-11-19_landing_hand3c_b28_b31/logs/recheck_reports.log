@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00b52990   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b52990   RELOCATION_MATCH PASS   UpdateBoxPositions
+00a13be0   RELOCATION_MATCH PASS   operator+=
+00a13c20   RELOCATION_MATCH PASS   operator-=
+
+WINS: 3
+  00b52990 RELOCATION_MATCH CEngineWeatherRenderer::?UpdateBoxPositions@CEngineWeatherRenderer@@AAEXXZ
+  00a13be0 RELOCATION_MATCH C3DCoordI::??YC3DCoordI@@QAEABV0@ABVC3DVector@@@Z
+  00a13c20 RELOCATION_MATCH C3DCoordI::??ZC3DCoordI@@QAEABV0@ABVC3DVector@@@Z

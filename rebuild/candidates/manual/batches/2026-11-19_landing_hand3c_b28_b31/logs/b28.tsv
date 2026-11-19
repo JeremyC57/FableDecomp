@@ -1,0 +1,5 @@
+hdr:engine/CThingSearchTools.h	3	ploop_node=ploop_node->PNext)	ploop_node=0)
+hdr:engine/CThingSearchTools.h	3	++cx,++pcell)	++cx)
+hdr:engine/CThingSearchTools.h	3	map.PeekCell((unsigned char)c1,	map.PeekCell((unsigned char)0,
+hdr:engine/CThingSearchTools.h	3	unsigned long flags=T::StatGetTypeFlags();	unsigned long flags=0;
+src	1	if (new_layer > Layer)	if (new_layer >= Layer)

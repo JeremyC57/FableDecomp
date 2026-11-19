@@ -1,0 +1,6 @@
+src	1	diff_X >= half_box_span_X	diff_X > half_box_span_X
+src	1	Settings.ParticleBoxSpan.Z * 0.5f	Settings.ParticleBoxSpan.Z
+src	1	if (!Settings.ParticleBoxLocked) {	if (Settings.ParticleBoxLocked) {
+src	1	(float)Settings.ParticleBoxCenter.Y - cam_pos.Y	(float)Settings.ParticleBoxCenter.Y - cam_pos.Z
+src	1	 || diff_Z >= half_box_span_Z)	)
+src	1	(float)fabs((float)Settings.ParticleBoxCenter.X - cam_pos.X)	((float)Settings.ParticleBoxCenter.X - cam_pos.X)

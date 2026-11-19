@@ -1,0 +1,23 @@
+--- a/rebuild/include/engine/CEngineWeatherRenderer.h
++++ b/rebuild/include/engine/CEngineWeatherRenderer.h
+@@ -53,6 +53,20 @@
+ #ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_BUFFERS
+ private:
+     void BuildBuffers();                                             // 0x00B51570 ?BuildBuffers@CEngineWeatherRenderer@@AAEXXZ
++#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_BOXMATRIX
++    // hand3c opt-in (row 0x00B51AD0): Ego_r.pdb private ?GetBoxCoord@CEngineWeatherRenderer@@AAEXAAJJ@Z (Ego_r 0x009F2330, inline in
++    // retail) and ?BuildBoxPositionMatrix@CEngineWeatherRenderer@@AAEXXZ (0x00B51AD0; called by UpdateBoxPositions 0x00B52990).
++    void GetBoxCoord(long& coord, long box_span);
++    void BuildBoxPositionMatrix();                                   // 0x00B51AD0
++#endif
++#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_FRAMESTART
++    // hand3c opt-in (row 0x00B53F60): Ego_r.pdb / FableWin.pdb ?UpdateBoxPositions@CEngineWeatherRenderer@@AAEXXZ (private, 0x00B52990)
++    // and the CEngineComponent override ?FrameStart@CEngineWeatherRenderer@@UAEXABVCEngineComponentParams@@@Z (0x00B53F60).
++    void UpdateBoxPositions();                                       // 0x00B52990
++public:
++    virtual void FrameStart(const CEngineComponentParams& cparams);  // 0x00B53F60
++private:
++#endif
+     CVertexBufferWin32 RainVertexBuffer;                             // +0x0c
+     CIndexBuffer       RainIndexBuffer;                              // +0x40
+     CVertexBufferWin32 SnowVertexBuffer;                             // +0x54

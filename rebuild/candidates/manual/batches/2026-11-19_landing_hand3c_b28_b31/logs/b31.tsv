@@ -1,0 +1,7 @@
+src	1	GFFloatToLongFloor(Settings.ParticleBoxSpan.Y * 0.5f)	GFFloatToLongFloor(Settings.ParticleBoxSpan.Z * 0.5f)
+src	1	diff_X >= half_box_span_X ||	diff_X >= half_box_span_X &&
+src	1	    Settings.MistTimePassed =	    Settings.SnowTimePassed =
+src	1	GetGraphicBank((EGraphicBankNo)0)	GetGraphicBank((EGraphicBankNo)1)
+src	1	&GraphicList[index] : 0;	&GraphicList[index] : &GraphicList[0];
+src	1	(float)Settings.ParticleBoxCenter.Y - cam_pos.Y	(float)Settings.ParticleBoxCenter.Y - cam_pos.X
+src	1	const unsigned long index = g_pEngineEnvironmentDef->MistAlphaGraphicPC;	const unsigned long index = 0;

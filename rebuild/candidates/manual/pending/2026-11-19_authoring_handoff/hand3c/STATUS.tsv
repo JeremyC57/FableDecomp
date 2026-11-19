@@ -5,7 +5,7 @@ address	grade	bytes	test	grades_used	notes
 0057c4f1	OPEN	1192	-	1	baseline draft DIFFER(1192v1192) hunks=82 difflines=238
 00591b7f	OPEN	735	-	1	baseline draft DIFFER(729v735) hunks=35 difflines=112
 00621a20	RELOCATION_MATCH	600	PASS(vland strict)	5	hand3c: FableWin 0x01F7D6C0 shape on shared headers (CTCInventoryQuests OPENINVENTORY+MEMBERS, PASS22 Categories, CQuestManager, CTCQuestCard); levers STLP_DESTROY_AUX_FASTCALL + CVECTORMAP_INLINE_CONST_LOWERBOUND; new opt-ins CTCINVENTORYQUESTS_RESETCATEGORYLIST, CTCINVENTORYBASE_ADDCATEGORY, CCATEGORY_SETASSELECTED
-0063f4b0	DIFFER	769	-	30	PORTED to shared headers (Q23 Bind3 source -> Bind2, FOREACHINROUGHAREA_BODY): residue = loop-exit reload order (TLX/BRX/BRY/map; Q19/Q23 family gap); include + class-order permutations and a guarded/byte-offset y loop opt-in: no change (port shows the reload swap at two sites, 0x0063F6F4 and 0x0063F755; the local-model draft had one) | best differ/0063f4b0.cpp
+0063f4b0	LANDED	769	-	30	landed by Account B (batches/2026-11-19_landing_hand3c_b28_b31); PORTED to shared headers (Q23 Bind3 source -> Bind2, FOREACHINROUGHAREA_BODY): residue = loop-exit reload order (TLX/BRX/BRY/map; Q19/Q23 family gap); include + class-order permutations and a guarded/byte-offset y loop opt-in: no change (port shows the reload swap at two sites, 0x0063F6F4 and 0x0063F755; the local-model draft had one) | best differ/0063f4b0.cpp
 00646762	OPEN	740	-	1	baseline draft DIFFER(735v740) hunks=29 difflines=66
 0064d404	RELOCATION_MATCH	399	PASS(vland; g++ PASS)	10 (hand3c)	hand3c: FableWin 0x020E86BF shape on shared CDrawQuestInfo.h, GetElementByIndex real body earlier in TU (auto_inline off) keeps height in st0, CDRAWQUESTINFO_DRAWMINIGAMEINFO opt-in [b10 LANDED de5ba369a2]
 0064dd9a	OPEN	580	-	1	baseline draft DIFFER(533v580) hunks=14 difflines=286
@@ -31,10 +31,10 @@ address	grade	bytes	test	grades_used	notes
 0082a020	RELOCATION_MATCH	343	PASS(vland; g++ PASS)	40 (hand3c)	hand3c: FableWin 0x027D3990 shape, 5 natural brackets (c2 83-node cut), visible noinline GetRelativeMapSize body, GETDRAWPOSITION/RELATIVEMAPSIZE_BODY/EXTENTS_NOINLINE opt-ins [b9 LANDED 8a0b6a1f3d]
 0083db60	RELOCATION_MATCH	125	PASS(vland)	1	returns const CEngineGraphic& via PeekDefinition (PEEKDEFINITION_SAMETU, landed 0x0083D900 body); new opt-in CTHINGPHYSICALSWITCH_GETCURRENTGRAPHIC
 0087cfe0	OPEN	1447	-	1	baseline draft DIFFER(1468v1447) hunks=94 difflines=468
-008a8260	DIFFER	466	-	3	456v466: retail private early-exit epilogue 0x008A8428 (ours merged); Ego_d locals applied (phero CThingPlayerCreature*, ptcs at hero-block scope) - no change | best differ/008a8260.cpp
+008a8260	LANDED	466	-	3	landed by Account B (batches/2026-11-19_landing_hand3c_b28_b31); 456v466: retail private early-exit epilogue 0x008A8428 (ours merged); Ego_d locals applied (phero CThingPlayerCreature*, ptcs at hero-block scope) - no change | best differ/008a8260.cpp
 008d5aa0	OPEN	1126	-	1	baseline draft DIFFER(1115v1126) hunks=49 difflines=167
 00914650	RELOCATION_MATCH	340	PASS(vland; g++ PASS)	2 (hand3c)	hand3c: FableWin 0x02B8D570 shape, BESTROUGH_BODY, NEW BirdStartled/ScaresBirds headers, DEADCREATURE_STATGETTYPE [b8 LANDED 7030ce2d2e]
-00986210	OPEN	461	-	14	hand3c: FableWin shape + 0x009871C0 body in TU -> frame/slots match; 3-instr scheduling residue at 0x00986374 (In2DRange #1 radius load); see NOTES | best src/00986210.cpp; next: same-TU Bind3 sibling bodies (0x00986E30/0x00986D90) in .obj order, bracket
+00986210	LANDED	461	-	14	landed by Account B (batches/2026-11-19_landing_hand3c_b25_b26); hand3c: FableWin shape + 0x009871C0 body in TU -> frame/slots match; 3-instr scheduling residue at 0x00986374 (In2DRange #1 radius load); see NOTES | best src/00986210.cpp; next: same-TU Bind3 sibling bodies (0x00986E30/0x00986D90) in .obj order, bracket
 00988e80	OPEN	917	-	1	baseline draft DIFFER(889v917) hunks=32 difflines=111
 00989230	DIFFER	636	-	~85 (hand3c)	hand3c: OPEN-ESCALATED class item (with 00988e80/00ae1320/00ae29d0): x87 column order follows inline-layer structure (morph bisect in keep/ESCALATE_00989230.md); region-cut refuted | best differ/00989230.cpp; keep/ESCALATE_00989230.md
 009acee0	OPEN	1017	-	1	baseline draft DIFFER(1030v1017) hunks=45 difflines=222
@@ -60,7 +60,7 @@ address	grade	bytes	test	grades_used	notes
 00a9d750	RELOCATION_MATCH	551	PASS(vland; g++ portable PASS)	~45 (hand3c)	hand3c: for-scope `if (false) {} else for` (FableWin xor/je) + shared AlignedPreScale bodies opt-in (hdr overlay) [LANDED b8a046277f]
 00aabf60	OPEN	620	-	1	baseline draft DIFFER(625v620) hunks=50 difflines=224
 00aad340	OPEN	584	-	1	baseline draft DIFFER(606v584) hunks=39 difflines=213
-00ac7eb0	DIFFER	215	-	66	2 lines n*n*w operand order; FableWin shows cost=0 + GFSqr(t)*W + GFSqr(n)*W (GFWorldDistance GFSqr) -- 6 more spellings + 15 include orders: no change | best differ/00ac7eb0.cpp; next: bracket, for-scope idiom
+00ac7eb0	LANDED	215	-	66	landed by Account B (batches/2026-11-19_landing_hand3c_b25_b26); 2 lines n*n*w operand order; FableWin shows cost=0 + GFSqr(t)*W + GFSqr(n)*W (GFWorldDistance GFSqr) -- 6 more spellings + 15 include orders: no change | best differ/00ac7eb0.cpp; next: bracket, for-scope idiom
 00adf960	OPEN	766	-	1	baseline draft DIFFER(764v766) hunks=13 difflines=26
 00ae1320	OPEN	681	-	1	baseline draft DIFFER(681v681) hunks=12 difflines=70
 00ae29d0	OPEN	726	-	1	baseline draft DIFFER(726v726) hunks=15 difflines=62
@@ -76,8 +76,8 @@ address	grade	bytes	test	grades_used	notes
 00b1dfd0	RELOCATION_MATCH	931	PASS(vland; g++ portable PASS)	1 (hand3c)	hand3c: authored from FableWin /Od 0x02F55400 on shared CPSCDecalRenderer.h + GFPackFloat GROUP_PRODUCT; new opt-ins CPSCDECALRENDERER_CTOR, CPARTICLEEMITTERMANAGER_DEFAULTALIGNMENT [LANDED 58b05aba99]
 00b328c0	RELOCATION_MATCH	517	PASS(vland strict)	4	hand3c: FableWin 0x02DA8F90 shape on shared headers; closing lever CARRAY_INDEX_ASSERT; new opt-ins CENGINEPRIMITIVERENDERER_LOADNEWSCENE, CENGINESCENE_PRELOADPRIMITIVES; NAME_FIXES GPVideoOptions/GPShadowRenderer [b18 READY]
 00b41a80	DONE	424	RELOCATION_MATCH	2	b12: FableWin ternary on PEEK_BODIES + /d2inlT576 (TU device); vland strict PASS
-00b51ad0	OPEN	969	-	1	baseline draft DIFFER(955v969) hunks=14 difflines=70
-00b53f60	OPEN	411	-	1	baseline draft DIFFER(418v411) hunks=23 difflines=135
+00b51ad0	LANDED	969	-	1	landed by Account B (batches/2026-11-19_landing_hand3c_b28_b31); baseline draft DIFFER(955v969) hunks=14 difflines=70
+00b53f60	LANDED	411	-	1	landed by Account B (batches/2026-11-19_landing_hand3c_b28_b31); baseline draft DIFFER(418v411) hunks=23 difflines=135
 00b905a0	RELOCATION_MATCH	278	PASS(vland; g++ PASS)	1 (hand3c)	hand3c: FableWin 0x02ED79B0 shape on 0x00BB3E80's shared-header set + row-defined inline helpers [b7 LANDED 4347aa3597]
 00b93b30	RELOCATION_MATCH	395	PASS(vland; g++ PASS)	1 (hand3c)	hand3c: FableWin 0x02E1C860 statement shape, GRIDPOS_INLINE / PRIMITIVEBASE_SETGRIDPOS / SCENEMAP_ADDPRIMITIVE opt-ins [b10 LANDED de5ba369a2]
 00b947e0	RELOCATION_MATCH	246	PASS(vland; g++ portable twin PASS)	12	NEW header engine/CEngineSceneMap.h + CEngineScene opt-in GETMAXAVERAGEPRIMITIVESPERCELL; GFFloatToLongNear; GFGETTOPBIT_FORCEINLINE; ternary clamp [LANDED 039a0c8c02]
@@ -93,7 +93,7 @@ address	grade	bytes	test	grades_used	notes
 00c41fb0	OPEN	1570	-	1	baseline draft DIFFER(1553v1570) hunks=74 difflines=372
 00c6ac90	RELOCATION_MATCH	38	PASS(vland)	1 (hand3c)	hand3c: same-TU static kernel (landed 0x00C6AAE0 text) -> VC7.1 private ecx convention; not LTCG [LANDED e71b9a61b5]
 00d6c830	OPEN	607	-	1	baseline draft DIFFER(607v607) hunks=15 difflines=78
-00d8a240	DIFFER	610	-	29	hand3c: shared-header rewrite (CQ_HEROSOLDHOUSESCRIPT_WATCHFORBOOTY opt-in, asserts pinned); FableWin form 662v610; site-map residue: retail expands ~CScriptThing at the loop-top and !loaded returns and calls 0x004AA840 at the inner-wait/after-wait/dig returns; every form tried expands the inner-wait return (loop depth wins) -- see NOTES | best src/00d8a240.cpp (variants keep/variants_00d8a240); next: inner wait as own scope/helper
+00d8a240	LANDED	610	-	29	landed by Account B (batches/2026-11-19_landing_hand3c_b27); hand3c: shared-header rewrite (CQ_HEROSOLDHOUSESCRIPT_WATCHFORBOOTY opt-in, asserts pinned); FableWin form 662v610; site-map residue: retail expands ~CScriptThing at the loop-top and !loaded returns and calls 0x004AA840 at the inner-wait/after-wait/dig returns; every form tried expands the inner-wait return (loop depth wins) -- see NOTES | best src/00d8a240.cpp (variants keep/variants_00d8a240); next: inner wait as own scope/helper
 00f36010	RELOCATION_MATCH	442	PASS(vland; g++ portable twin PASS)	70	IS Get2DNoise (name fix); CPerlinNoise overlay helpers + GFFloatToLongFloor; C2DVector::Dot [LANDED 039a0c8c02]
 00f361d0	RELOCATION_MATCH	873	PASS(vland)	330	outer-bracketed SCurve/Interp in CPerlinNoise.h (c2 region tuple counts, DAG-measured); siblings re-graded MATCH [LANDED; header applied in repo]
 00f36540	RELOCATION_MATCH	321	PASS(vland; g++ portable twin PASS)	60	engine/CPerlinNoise.h + overlay opt-in CPERLINNOISE_GETNOISE (PDB private helpers) + GFFloatToLongFloor helper [LANDED 039a0c8c02]

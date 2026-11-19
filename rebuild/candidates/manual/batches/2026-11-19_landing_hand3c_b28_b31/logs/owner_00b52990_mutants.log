@@ -1,0 +1,7 @@
+baseline SURVIVED
+KILLED | diff_X >= half_box_span_X -> diff_X > half_box_span_X
+KILLED | Settings.ParticleBoxSpan.Z * 0.5f -> Settings.ParticleBoxSpan.Z
+KILLED | if (!Settings.ParticleBoxLocked) { -> if (Settings.ParticleBoxLocked) {
+KILLED | (float)Settings.ParticleBoxCenter.Y - cam_pos.Y -> (float)Settings.ParticleBoxCenter.Y - cam_pos.Z
+KILLED |  || diff_Z >= half_box_span_Z) -> )
+KILLED | (float)fabs((float)Settings.ParticleBoxCenter.X - cam_pos.X) -> ((float)Settings.ParticleBoxCenter.X - cam_pos.X)

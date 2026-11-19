@@ -1,0 +1,5 @@
+src	1	phero->PeekTC(TCI_SUMMON_SPELL,	phero->PeekTC(TCI_GHOST_SWORD,
+src	1	++i)	i += 2)
+src	1	thing_list.push_back(minions[i]->GetScriptThing());	thing_list.push_back(minions[0]->GetScriptThing());
+src	1	if (IS_THING_ALIVE(minions[i])) {	if (IS_THING_ALIVE(minions[0])) {
+src	1	thing_list.push_back(minion->GetScriptThing());	thing_list.push_back(minion->GetScriptThing());\n                thing_list.push_back(minion->GetScriptThing());

@@ -185829,13 +185829,7 @@ $catalog = @(
         TestSource = '00/55/CTCHeroOnlineScoreboard_ActivityEnumToCharString_0055e7c0_test.cpp'
         PassPattern = '0055e7c0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a13be0'
-        Module = 'C3DCoordI'
-        Source = '00/a1/C3DCoordI_operator_00a13be0.cpp'
-        TestSource = '00/a1/C3DCoordI_operator_00a13be0_test.cpp'
-        PassPattern = '00a13be0_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00a2e490'
         Module = 'C3DDummyObject'
@@ -333924,13 +333918,7 @@ $catalog = @(
         TestSource = '00/af/NParticleEngineCParticle_GetRecordedPos_00afe380_test.cpp'
         PassPattern = '00afe380_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00b52990'
-        Module = 'CEngineWeatherRenderer'
-        Source = '00/b5/CEngineWeatherRenderer_UpdateBoxPositions_00b52990.cpp'
-        TestSource = '00/b5/CEngineWeatherRenderer_UpdateBoxPositions_00b52990_test.cpp'
-        PassPattern = '00b52990_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00c40e60'
         Module = '_global'
@@ -353716,13 +353704,7 @@ $catalog = @(
         TestSource = '00/a7/CNavNavigableLeafNode_ConvertIndexesToPointers_00a779b0_test.cpp'
         PassPattern = '00a779b0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a13c20'
-        Module = 'C3DCoordI'
-        Source = '00/a1/C3DCoordI_operator_00a13c20.cpp'
-        TestSource = '00/a1/C3DCoordI_operator_00a13c20_test.cpp'
-        PassPattern = '00a13c20_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '008e2e40'
         Module = '(anonymous namespace)::CIsUsableIciclePoint'
@@ -401017,6 +400999,56 @@ $catalog = @(
         Source = '00/ae/CParticleProgram_SetupSimulation_00ae29d0.cpp'
         TestSource = '00/ae/CParticleProgram_SetupSimulation_00ae29d0_test.cpp'
         PassPattern = '00ae29d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063f4b0'
+        Module = 'CThingSearchTools'
+        Source = '00/63/CThingSearchTools_ForEachInRoughAreaCThingPhysicalCFilterBind2CThi_0063f4b0.cpp'
+        TestSource = '00/63/CThingSearchTools_ForEachInRoughAreaCThingPhysicalCFilterBind2CThi_0063f4b0_test.cpp'
+        PassPattern = '0063f4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a8260'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetHeroSummonedCreaturesList_008a8260.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetHeroSummonedCreaturesList_008a8260_test.cpp'
+        PassPattern = '008a8260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b51ad0'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_BuildBoxPositionMatrix_00b51ad0.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_BuildBoxPositionMatrix_00b51ad0_test.cpp'
+        PassPattern = '00b51ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b53f60'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_FrameStart_00b53f60.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_FrameStart_00b53f60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT94'
+        PassPattern = '00b53f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b52990'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_UpdateBoxPositions_00b52990.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_UpdateBoxPositions_00b52990_test.cpp'
+        PassPattern = '00b52990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a13be0'
+        Module = 'C3DCoordI'
+        Source = '00/a1/C3DCoordI_operator_00a13be0.cpp'
+        TestSource = '00/a1/C3DCoordI_operator_00a13be0_test.cpp'
+        PassPattern = '00a13be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a13c20'
+        Module = 'C3DCoordI'
+        Source = '00/a1/C3DCoordI_operator_00a13c20.cpp'
+        TestSource = '00/a1/C3DCoordI_operator_00a13c20_test.cpp'
+        PassPattern = '00a13c20_TEST PASS'
     }
 )
 

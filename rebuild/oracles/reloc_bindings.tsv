@@ -40223,3 +40223,5 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ?GetCurrentEntry@CircularQueue@@QBEPAVCSoundBuffer@@XZ	00c35d10	00c5b300
 ?SetParameters@CSoftwareVoice@@UAEKPAVCCodaBuffer@@PBUSVoiceDesc@@@Z	00c5bd00	00c5c2d0
 ?SetFrequency@CSalSwFilter@@AAEXIM@Z	00c6bbd0	00c6bc80
+?ReuseBusyTextures@CTextureManager@@0_NA	013d28e8	00b53f60
+?UpdateBoxPositions@CEngineWeatherRenderer@@AAEXXZ	00b52990	00b53f60

@@ -1,0 +1,6 @@
+src	1	this_mul_x * Settings.ParticleBoxSpan.X + Settings.ParticleBoxCenter.X;	this_mul_x * Settings.ParticleBoxSpan.X + Settings.ParticleBoxCenter.Y;
+src	1	GetBoxCoord(Settings.ParticleBoxCenter.Y, GFFloatToLongFloor(Settings.ParticleBoxSpan.Y));	GetBoxCoord(Settings.ParticleBoxCenter.Y, GFFloatToLongFloor(Settings.ParticleBoxSpan.X));
+src	1	GetBoxCoord(Settings.ParticleBoxCenter.Z, GFFloatToLongFloor(Settings.ParticleBoxSpan.Z));	GetBoxCoord(Settings.ParticleBoxCenter.Z, GFFloatToLongFloor(Settings.ParticleBoxSpan.Y));
+src	1	coord = coord / box_span * box_span;	coord = coord / box_span;
+src	1	const long half_box_span = box_span / 2;	const long half_box_span = (box_span + 1) / 2;
+src	1	Settings.ParticleBoxCenter.Y = GFFloatToLongFloor(cam_pos.Y);	Settings.ParticleBoxCenter.Y = GFFloatToLongFloor(cam_pos.Y) - 1;
