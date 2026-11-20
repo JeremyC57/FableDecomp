@@ -401571,6 +401571,13 @@ $catalog = @(
         TestSource = '00/a1/CNavigatorAStar_CalculateAndMoveToPosProximity_00a1e5c0_test.cpp'
         PassPattern = '00a1e5c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e5e350'
+        Module = 'NScript::CV_BodyGuardScript'
+        Source = '00/e5/NScriptCVBodyGuardScript_HenchmanCommentary_00e5e350.cpp'
+        TestSource = '00/e5/NScriptCVBodyGuardScript_HenchmanCommentary_00e5e350_test.cpp'
+        PassPattern = '00e5e350_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

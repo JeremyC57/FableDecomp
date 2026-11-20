@@ -39558,3 +39558,4 @@ _z_inflateInit_	00c02310	00a3a840
 ?GetCutsceneName@CV_FisticuffsClubScript@NScript@@QAE?AVCCharString@@V3@@Z	00e8a1d0	00e8b020
 ?DoMission_BodyGuardSimple@CHauntedHouseScript@@QAEXVCCharString@@0@Z	00e96c30	00e96660
 ?UnLimboSword@CV_MazeResearchScript@NScript@@QAEXXZ	00ea85e0	00ea8130
+?MakeHenchmanPerformIdleComment@CV_BodyGuardScript@NScript@@QAE_NXZ	00e5e5a0	00e5e350
