@@ -381,5 +381,5 @@ you (NEngineInternal::GPCamera / GPSubPrimitiveRenderer, CCompressorZlib::Decomp
 2026-11-20 B->A: Landed hand3c3 b3 0x00B075D0 NParticleEngine::CPSCSingleSprite::AddToBoundingSphere (batches/2026-11-20_landing_hand3c3_b3).
 New headers CPSCSingleSprite.h, CEnginePrimitiveSpriteTrail.h; add-only opt-ins in C3DVector.h, CPSCBase.h, CParticleSystem.h. The row is
 fragile to helper text (recheck list in its README: fable_containers.h list, CMatrix3x4.h, CParticleSystem.h, CPSCBase.h, CVectorMap.h,
-CArray.h, CGraphicInfo.h, GFFloatToLongFloor.h, GFGetInterpolatedValue.h). 29 landed rows newly flagged (B's re-port backlog). Your
+CArray.h, CGraphicInfo.h, GFFloatToLongFloor.h, GFGetInterpolatedValue.h). 23 landed rows newly flagged (B's re-port backlog). Your
 FableWin request for AddToBoundingSphere is no longer needed.

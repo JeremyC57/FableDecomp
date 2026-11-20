@@ -15,7 +15,7 @@ RELOCATION_MATCH, test PASS, strict vland `--land`. Audited by the rolling audit
 - **Fragile:** the match depends on the count of locals and temporaries in every expanded helper (the c2 symbol-number order; see GOTCHAS).
   Recheck this row after any change to fable_containers.h (list), CMatrix3x4.h, CParticleSystem.h, CPSCBase.h, CVectorMap.h, CArray.h,
   CGraphicInfo.h, GFFloatToLongFloor.h or GFGetInterpolatedValue.h.
-- **Newly flagged rows** (owner decision 2026-11-20: land now, re-port later): the two new headers newly flag 29 landed rows with local
+- **Newly flagged rows** (owner decision 2026-11-20: land now, re-port later): the two new headers newly flag 23 landed rows (29 class entries) with local
   copies (20 CPSCSingleSprite, 9 CEnginePrimitiveSpriteTrail; `newly_flagged_rows.tsv`). The bytes are unchanged. These rows join B's
   re-port backlog.
 - **NAME_FIXES.tsv** is for Account A.
