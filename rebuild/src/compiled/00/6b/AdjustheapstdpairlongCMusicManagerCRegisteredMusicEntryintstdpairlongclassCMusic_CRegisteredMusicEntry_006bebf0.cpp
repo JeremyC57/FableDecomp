@@ -4,9 +4,11 @@
 // Layout: PDB19267-19276 CRegisteredMusicEntry20 has two WideStrings0/4, Gain8, Offset12, CacheToHD16; pair24 places it at4. Retail99b758/99b7f5 increments shared DWORD+12.
 #include "fable_compiler.h"
 #include <new>
+// NF193 (q4284 / q4546): the namespaced CWideString stand-in is replaced by the shared fable_string.h CWideString (Ego_r.pdb / FableWin.pdb
+//   ??1CWideString@@QAE@XZ 0x0099B510, ??0CWideString@@QAE@ABV0@@Z 0x0099B720, ??4CWideString@@QAEABV0@ABV0@@Z 0x0099B7D0, the spellings
+//   the other landed binders use).
+#include "fable_string.h"
 namespace N006bebf0 {
-struct CWideStringData;
-struct CWideString {CWideStringData* Data;CWideString();CWideString(const CWideString&);~CWideString();CWideString& operator=(const CWideString&);};
 struct CRegisteredMusicEntry {CWideString SrcFileName,DstFileName;float Gain,Offset;bool CacheToHD;};
 struct Element {int Key;CRegisteredMusicEntry Music;};
 struct CKeyPairCompareLess {unsigned int State;FABLE_FORCEINLINE bool operator()(const Element& a,const Element& b)const{return a.Key<b.Key;}};

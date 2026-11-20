@@ -23,14 +23,14 @@ static int RetrieveStringStub(void*, unsigned int id, char* buffer, int size)
     return 1;
 }
 
-static void* g_hStringsDll;
+static void* hStrings;
 static unsigned short g_LanguageID;
 static char g_ExceptionTitle[0x100], g_ExceptionText[0x100], g_EulaFileName[0x20], g_InvalidStringsDllText[0x400];
 
 static void InitExternalStrings()
 {
-    g_hStringsDll = LoadLibraryStub("strings.dll");
-    if (g_hStringsDll == 0) {
+    hStrings = LoadLibraryStub("strings.dll");
+    if (hStrings == 0) {
         char message[260] = "C:\\Games\\Fable";
         std::strcat(message, "\\strings.dll is missing.");
         ++g_messageBoxes;
@@ -46,10 +46,10 @@ static void InitExternalStrings()
             g_LanguageID = (unsigned short)(((langID & 0xFC00) == 0) ? (langID | 0x400) : langID);
         ++g_closeCount;
     }
-    if (!RetrieveStringStub(g_hStringsDll, 0xDB, g_ExceptionTitle, sizeof(g_ExceptionTitle))) std::strcpy(g_ExceptionTitle, "Exception!");
-    if (!RetrieveStringStub(g_hStringsDll, 0xDC, g_ExceptionText, sizeof(g_ExceptionText))) std::strcpy(g_ExceptionText, "Gathering Exception Data...");
-    if (!RetrieveStringStub(g_hStringsDll, 0xE8, g_EulaFileName, sizeof(g_EulaFileName))) std::strcpy(g_EulaFileName, "eula.rtf");
-    if (!RetrieveStringStub(g_hStringsDll, 0xEC, g_InvalidStringsDllText, sizeof(g_InvalidStringsDllText))) std::strcpy(g_InvalidStringsDllText, "Invalid / missing strings.dll");
+    if (!RetrieveStringStub(hStrings, 0xDB, g_ExceptionTitle, sizeof(g_ExceptionTitle))) std::strcpy(g_ExceptionTitle, "Exception!");
+    if (!RetrieveStringStub(hStrings, 0xDC, g_ExceptionText, sizeof(g_ExceptionText))) std::strcpy(g_ExceptionText, "Gathering Exception Data...");
+    if (!RetrieveStringStub(hStrings, 0xE8, g_EulaFileName, sizeof(g_EulaFileName))) std::strcpy(g_EulaFileName, "eula.rtf");
+    if (!RetrieveStringStub(hStrings, 0xEC, g_InvalidStringsDllText, sizeof(g_InvalidStringsDllText))) std::strcpy(g_InvalidStringsDllText, "Invalid / missing strings.dll");
 }
 
 static int g_fail = 0;

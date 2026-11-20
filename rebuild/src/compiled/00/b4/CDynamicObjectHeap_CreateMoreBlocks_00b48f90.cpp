@@ -1,6 +1,6 @@
 // CDynamicObjectHeap<72,16>::CreateMoreBlocks() -- allocate one more allocator block, chain it after the start block and push its 16 entries onto the free list
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B48F90, length 122 bytes (128 with int3 padding).
-// Leaf: CreateMoreBlocks
+// Leaf: ?CreateMoreBlocks@?$CDynamicObjectHeap@$0EI@$0BA@@@AAEXXZ
 // Callees: operator new @ 0x00BFEA1A (`push 0x484`, `add esp,4`).
 // The catalog label "CDynamicObjectHeap<56 is propagated and WRONG here: the block is 16 entries of 72 bytes (16 * 0x48 = 0x480)
 // plus the block link at +0x480, so the heap's StartBlock.NextEntry sits at 0x18 + 0x480 = 0x498. Layout from the PDB CDynamicObjectHeap<N,M> template (base CDynamicObjectHeapBase
@@ -11,6 +11,9 @@
 // link is written TWICE from a re-read FreeList (the entry's own link initialised to the free-list head, then
 // the inline free-list push `entry->NextEntry = FreeList; FreeList = entry;`) -- the store through the entry
 // may alias FreeList, so VC re-reads it.
+// NF193 (q4501 / q4504): FableWin.pdb declares every CDynamicObjectHeap<N,M>::CreateMoreBlocks private (AAEXXZ); the local model's
+//   declaration now sits under `private:` (in-place access respell; the explicit instantiation below is not access-checked), so the row
+//   defines the private spelling the landed callers 0x00B46660 / 0x00B47BC0 / 0x00B47FD0 bind. Was the public QAEXXZ (bare Leaf).
 struct CDynamicObjectHeapBase {
     virtual ~CDynamicObjectHeapBase();
     long                    AllocCount;            // +0x04
@@ -37,7 +40,8 @@ struct CDynamicObjectHeap : CDynamicObjectHeapBase {
         entry->NextEntry = FreeList;
         FreeList = entry;
     }
-    void CreateMoreBlocks();
+private:
+    void CreateMoreBlocks();                       // FableWin.pdb: private
 };
 
 template<long ObjectSize, long BlockCount>

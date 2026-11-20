@@ -33,20 +33,20 @@
 // (Destvalstd_allocatorCMacroCMacro), the same push-esi / lea-ecx / call* /
 // tail-jmp destroy idiom.
 
-struct Member { char pad[4]; };   // one dword sub-object
-
-// Single relocation-masked destructor entry (this in ecx, __fastcall shape).
-extern "C" void __fastcall Symbol_dtor(void* self_ecx);
+// NF193 (q4284): the three calls are the PDB destructor ??1CWideString@@QAE@XZ (0x0099B510, retail `call 0x99b510` x2 + `jmp 0x99b510`;
+//   Ego_r.pdb / FableWin.pdb name sets, fable_string.h) instead of the stand-in @Symbol_dtor@4; the header-less local Host keeps its token,
+//   now with three CWideString members.
+#include "fable_string.h"
 
 struct Host {
-    char    pad0[4];   // 0x00 .. 0x03  (base object)
-    Member  m_4;       // 0x04
-    Member  m_8;       // 0x08
+    CWideString m_0;   // 0x00
+    CWideString m_4;   // 0x04
+    CWideString m_8;   // 0x08
 };
 
 void __fastcall Dest_val_symbolinfo(Host* self)
 {
-    Symbol_dtor(&self->m_8);   // destroy member @ +0x8
-    Symbol_dtor(&self->m_4);   // destroy member @ +0x4
-    Symbol_dtor(self);         // tail-call: destroy base object @ +0x0
+    self->m_8.~CWideString();   // destroy member @ +0x8
+    self->m_4.~CWideString();   // destroy member @ +0x4
+    self->m_0.~CWideString();   // tail-call: destroy member @ +0x0
 }

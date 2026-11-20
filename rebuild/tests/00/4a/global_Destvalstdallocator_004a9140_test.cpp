@@ -1,7 +1,9 @@
+// Behaviour test for 0x004A9140: the two string members are destroyed in reverse member order (+0x4 first, then +0x0), each once.
 #include <cstdio>
-struct DV { char pad[4]; char f4; void m(); };
-static int gN; static void* gLast; void DV::m(){ gN++; gLast=this; }
-void __fastcall fn_004a9140(DV* self){ ((DV*)((char*)self+4))->m(); self->m(); }
-int main(){ char blk[0x20]; DV* s=(DV*)blk; gN=0; fn_004a9140(s);
- if(gN!=2||gLast!=s){ printf("004a9140_TEST FAIL\n"); return 1; }
+static int gN; static const void* gOrder[2];
+struct WideMember { void* Data; void Destroy() { gOrder[gN++] = this; } };
+struct DV { WideMember First; WideMember Second; };
+static void __fastcall fn_004a9140(DV* self){ self->Second.Destroy(); self->First.Destroy(); }
+int main(){ DV d; gN=0; fn_004a9140(&d);
+ if(gN!=2||gOrder[0]!=&d.Second||gOrder[1]!=&d.First){ printf("004a9140_TEST FAIL\n"); return 1; }
  printf("004a9140_TEST PASS\n"); return 0; }

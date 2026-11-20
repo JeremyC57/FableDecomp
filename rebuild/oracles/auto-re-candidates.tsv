@@ -2079,7 +2079,7 @@ address	name	length	bytes
 00c336a0	_global::Static_UpdateRenderState_on_0143bb58_00c336a0	10	b958bb4301e9c69d0000
 00c33810	_global::Static_CreateCharacterMorphAction_on_0143bb58_00c33810	10	b958bb4301e9b6a40000
 00c35980	_global::Static_RecycleAction_on_0143bb58_00c35980	10	b958bb4301e9867c0000
-012288b0	`dynamic atexit destructor for 'gIME'' (object symbol _$E2 of the 0x01219E90 TU)	10	b9d87c3b01e906c91dff
+012288b0	`dynamic atexit destructor for 'gIME''	10	b9d87c3b01e906c91dff
 012288c0	_global::AtexitDtor_CCharString_at_013b7d54_012288c0	10	b9547d3b01e9462c77ff
 01228910	_global::AtexitDtor_CCharString_at_013b7d5c_01228910	10	b95c7d3b01e9f62b77ff
 01228920	_global::AtexitDtor_CCharString_at_013b85e0_01228920	10	b9e0853b01e9b66177ff
@@ -2294,7 +2294,7 @@ address	name	length	bytes
 0122a1d0	_global::AtexitDtor_CCharString_at_013bafd4_0122a1d0	10	b9d4af3b01e9064977ff
 0122a1e0	_global::AtexitDtor_CCharString_at_013baff4_0122a1e0	10	b9f4af3b01e9f64877ff
 0122a1f0	_global::AtexitDtor_CCharString_at_013baff8_0122a1f0	10	b9f8af3b01e9e64877ff
-0122a200	`dynamic atexit destructor for 'LHNetworkLib::LSocket::GlobalList'' (object symbol _$E2 of the 0x0121F850 TU)	10	b900b03b01e946fd6cff
+0122a200	LHNetworkLib::LSocket::`dynamic atexit destructor for 'GlobalList''	10	b900b03b01e946fd6cff
 0122a230	_global::Static_SortTreeRecursively_on_013bb664_0122a230	10	b964b63b01e916156eff
 0122a240	_global::AtexitDtor_CCharString_at_013bb668_0122a240	10	b968b63b01e9964877ff
 0122a250	_global::AtexitDtor_CCharString_at_013bb66c_0122a250	10	b96cb63b01e9864877ff
@@ -22675,9 +22675,9 @@ address	name	length	bytes
 00660eba	_unattributed::GetInterface_0xf3	76	558bec5156578bf1bff3000000578d4e20e810ffdaff84c0742a8d45fc83c644508bce897dfce83be1daff8b76043bc6740439387e028bc68b40048b4d088901b001eb0232c05f5ec9c20400
 007bea53	_unattributed::GetInterface_0x88	76	558bec5156578bf1bf88000000578d4e20e87723c5ff84c0742a8d45fc83c644508bce897dfce8327bc7ff8b76043bc6740439387e028bc68b40048b4d088901b001eb0232c05f5ec9c20400
 00c309e0	CClass_00c309e0::~CClass_00c309e0	8	83c104e958b0fdff
-0121e3d0	_static_init::MIN_SPEECH_FRAMES	14	a1505537018d0480a390ab3b01c3
+0121e3d0	`anonymous namespace'::`dynamic initializer for 'MIN_SPEECH_FRAMES''	14	a1505537018d0480a390ab3b01c3
 0121ed60	_static_init::DEFAULT_UNARMED_COMBAT_IDLE_COUNT	14	a1505537018d0480a340ad3b01c3
-0121f800	_static_init::CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS	14	a1505537018d0440a3ecaf3b01c3
+0121f800	`dynamic initializer for 'CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS''	14	a1505537018d0440a3ecaf3b01c3
 01221c10	_static_init::TIME_TO_LEAVE_SHOUT_MESSAGE	14	a1505537018d0480a314b73b01c3
 01221cc0	_static_init::TIME_TO_LEAVE_BETWEEN_SPEAKING	14	a1505537018d0440a330b73b01c3
 01223c80	_static_init::TIME_TO_LEAVE_SHOUT_MESSAGE	14	a1505537018d0480a3a4c33b01c3
@@ -22696,10 +22696,10 @@ address	name	length	bytes
 00703040	CThingObject::GetMaterialOnHitByMelee	13	8b81d00000008b8084000000c3
 00830140	CThingAICreature::GetProperties	13	8b81e00000008b80f0000000c3
 0121ec90	_static_init::g_scaled_013bad24	11	a150553701a324ad3b01c3
-0121f7c0	_static_init::JACK_FADE_DOWN_TIME	11	a1808a3801a3e0af3b01c3
+0121f7c0	`anonymous namespace'::`dynamic initializer for 'JACK_FADE_DOWN_TIME''	11	a1808a3801a3e0af3b01c3
 01224c30	_static_init::g_scaled_0143e8c4	11	a1f0024401a3c4e84301c3
 01224c40	_static_init::g_scaled_0143e8c0	11	a14cc73a01a3c0e84301c3
-01221b80	_static_init::RANGE_TIME_TO_SIT	14	a1505537016bc078a3f8b63b01c3
+01221b80	`anonymous namespace'::`dynamic initializer for 'RANGE_TIME_TO_SIT''	14	a1505537016bc078a3f8b63b01c3
 01221ba0	_static_init::RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS	14	a1505537016bc032a300b73b01c3
 01221c00	_static_init::RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS	14	a1505537016bc032a310b73b01c3
 01221cf0	_static_init::TOTAL_FRAMES_TO_RUN	14	a1505537016bc03ca338b73b01c3
@@ -22718,7 +22718,7 @@ address	name	length	bytes
 00c166f0	CDefaultAllocator_00c166f0::CDefaultAllocator_00c166f0	9	8bc1c700b82a2b01c3
 00c5ff50	CEAXBufferList::CEAXBufferList	9	8bc1c70038932b01c3
 00c88a30	CVtable_012bf1f4::CVtable_012bf1f4	9	8bc1c700f4f12b01c3
-0121f7d0	_static_init::CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS	16	a1505537018d0440d1e0a3e4af3b01c3
+0121f7d0	`dynamic initializer for 'CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS''	16	a1505537018d0440d1e0a3e4af3b01c3
 01221b90	_static_init::MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS	16	a1505537018d0480d1e0a3fcb63b01c3
 01221bf0	_static_init::MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS	16	a1505537018d0480d1e0a30cb73b01c3
 0066e734	NHeroInformationScreens::CBase::CBase	9	8bc1c700e0a32301c3

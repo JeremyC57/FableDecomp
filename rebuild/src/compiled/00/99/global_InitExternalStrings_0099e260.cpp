@@ -35,7 +35,8 @@ extern "C" __declspec(dllimport) long __stdcall RegCloseKey(HKEY key);
 extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount();
 extern "C" int __fastcall RetrieveString(HINSTANCE module, unsigned int id, char* buffer, int bufferSize);   // 0x0099D470
 
-HINSTANCE g_hStringsDll;                       // 0x013BD6EC
+extern "C" HINSTANCE hStrings;                // 0x013BD6EC _hStrings (Ego_r.pdb S_PUB32 + Ego_d.pdb; engine/ErrorDialog.h declares it so; NF193 q4244, was g_hStringsDll)
+HINSTANCE hStrings;
 unsigned short gApplicationLanguage;                   // 0x0138E060 ?gApplicationLanguage@@3GA (Ego_d.pdb public; engine/ErrorDialog.h; NF183 q4243)
 char g_ExceptionTitle[0x100];                  // 0x013BD1C8
 char g_ExceptionText[0x100];                   // 0x013BD0C8
@@ -45,8 +46,8 @@ unsigned long g_StartTickCount;                // 0x013BCE38
 
 extern "C" void __fastcall InitExternalStrings()
 {
-    g_hStringsDll = LoadLibraryA("strings.dll");
-    if (g_hStringsDll == 0) {
+    hStrings = LoadLibraryA("strings.dll");
+    if (hStrings == 0) {
         char message[MAX_PATH];
         GetCurrentDirectoryA(MAX_PATH, message);
         strcat(message, "\\strings.dll is missing.");
@@ -65,13 +66,13 @@ extern "C" void __fastcall InitExternalStrings()
             gApplicationLanguage = (unsigned short)(((langID & 0xFC00) == 0) ? (langID | 0x400) : langID);   // SUBLANG_DEFAULT
         RegCloseKey(key);
     }
-    if (!RetrieveString(g_hStringsDll, 0xDB, g_ExceptionTitle, sizeof(g_ExceptionTitle)))
+    if (!RetrieveString(hStrings, 0xDB, g_ExceptionTitle, sizeof(g_ExceptionTitle)))
         strcpy(g_ExceptionTitle, "Exception!");
-    if (!RetrieveString(g_hStringsDll, 0xDC, g_ExceptionText, sizeof(g_ExceptionText)))
+    if (!RetrieveString(hStrings, 0xDC, g_ExceptionText, sizeof(g_ExceptionText)))
         strcpy(g_ExceptionText, "Gathering Exception Data...");
-    if (!RetrieveString(g_hStringsDll, 0xE8, g_EulaFileName, sizeof(g_EulaFileName)))
+    if (!RetrieveString(hStrings, 0xE8, g_EulaFileName, sizeof(g_EulaFileName)))
         strcpy(g_EulaFileName, "eula.rtf");
-    if (!RetrieveString(g_hStringsDll, 0xEC, g_InvalidStringsDllText, sizeof(g_InvalidStringsDllText)))
+    if (!RetrieveString(hStrings, 0xEC, g_InvalidStringsDllText, sizeof(g_InvalidStringsDllText)))
         strcpy(g_InvalidStringsDllText, "Invalid / missing strings.dll");
     g_StartTickCount = GetTickCount();
 }
