@@ -9668,7 +9668,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ??1CWideString@@QAE@XZ	0099b510	00406e30
 ?g_pDriveManager@@3UCDriveManagerPointer@@A	013caa28	00406e30
 ?_M_insert_overflow@?$vector@D@std@@QAEXPADABDABU__true_type@@I_N@Z	0040f6b0	004110d0
-??1CCharString@@QAE@XZ	0099eae0	00433530
 ??$__introsort_loop@UElement@N004d2330@@UCompare@2@@std@@YIXPAUElement@N004d2330@@0PAHHUCompare@2@@Z	004d2330	004d2330
 ??$__partial_sort@UElement@N004d2330@@UCompare@2@@std@@YIXPAUElement@N004d2330@@00PAHUCompare@2@@Z	004d1c80	004d2330
 ??$__unguarded_partition@UElement@N004d2330@@UCompare@2@@std@@YIPAUElement@N004d2330@@PAU12@0U12@UCompare@2@@Z	004d0330	004d2330
@@ -10882,7 +10881,7 @@ __imp__OutputDebugStringW@4	0143fe14	005472a0
 ?Save@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z	006f9be0	006f9ee0
 ?SoundEventManager@NAnimationEvents@@3V?$CCountedPointer@VCManager@NAnimationEvents@@@@A	013babbc	006f9ee0
 ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@@J@Z	009e5090	006fc8e0
-?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z	00433530	006fc8e0
+?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z	00433530	006fc8e0
 ??_7CReactionFrequencyTraits_PeriodicFrequency@@6B@	01264b7c	006fed30
 ??_7CReactionFrequencyTraits_ControlledCount@@6B@	01264b94	006ff930
 ??_7CReactionFrequencyTraits_LinearTime@@6B@	01264b64	006ff930
@@ -39388,3 +39387,4 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?InitializeProperties@CAudioSource@@QAEKPAVCAudioObject@@PBUCAudioSourceProperties@@_J@Z	00c72af0	00c72e00
 ?StartExponentialFade@CAudioSource@@QAEX_JM@Z	00c720c0	00c72e00
 ?UpdateGain@CAudioSource@@QAE_NPBUCFadeParams@@_N_J@Z	00c72200	00c72e00
+??1CCharString@@QAE@XZ	0099eae0	00433530

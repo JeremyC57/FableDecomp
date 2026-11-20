@@ -1,0 +1,3 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00433530	std::vector<CCharString>	_M_insert_overflow	?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z	std::vector<CCharString>::_M_insert_overflow	?_M_insert_overflow@?$vector@VCCharString@@@@QAEXPAVCCharString@@ABV2@ABU__false_type@@I_N@Z	leaf-only self rename: STLport 4.6 stl/_vector.c protected vector<CCharString, allocator<CCharString> >::_M_insert_overflow (descriptive-by-library), the spelling 27 of 39 landed referencers bind (NF204 probe, work/probe.tsv); no landed row binds the old (global, one-parameter vector) self leaf; vland RELOCATION_MATCH + PASS (b1.log)
+# Section 2

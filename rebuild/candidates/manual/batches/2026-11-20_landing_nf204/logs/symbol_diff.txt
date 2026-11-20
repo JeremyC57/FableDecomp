@@ -1,0 +1,16 @@
+00433530 new: 15
+    ??$_Construct@VCCharString@@V1@@std@@YAXPAVCCharString@@ABV1@@Z
+    ??$_Destroy@PAVCCharString@@@std@@YAXPAVCCharString@@0@Z
+    ??$_Destroy@VCCharString@@@std@@YAXPAVCCharString@@@Z
+    ??$__destroy@PAVCCharString@@V1@@std@@YAXPAVCCharString@@00@Z
+    ??$__destroy_aux@PAVCCharString@@@std@@YAXPAVCCharString@@0ABU__false_type@0@@Z
+    ??$__uninitialized_copy@PAVCCharString@@PAV1@@std@@YAPAVCCharString@@PAV1@00ABU__false_type@0@@Z
+    ??$__uninitialized_fill_n@PAVCCharString@@IV1@@std@@YAPAVCCharString@@PAV1@IABV1@ABU__false_type@0@@Z
+    ??$max@I@std@@YAABIABI0@Z
+    ??0__false_type@std@@QAE@XZ
+    ?_M_clear@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXXZ
+    ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z TABLE:00433530
+    ?_M_set@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@00@Z
+    ?allocate@?$allocator@VCCharString@@@std@@QAEPAVCCharString@@IPBX@Z
+    ?deallocate@?$allocator@VCCharString@@@std@@QAEXPAVCCharString@@I@Z
+    ?size@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QBEIXZ

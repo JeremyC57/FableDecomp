@@ -1,0 +1,31 @@
+address	change	grade	test	grades_used	entries	note
+0x004333B3	none	BLOCKED	n/a	0	q6332 q6341	blocked: stand-in binder of 0x00433530 (?_M_insert_overflow@?$vector@VCCharString@@@std@@QAEXPAVCCharString@@A...); port not attempted
+0x00433530	self port onto fable_string.h + stlport/fable_containers.h (FABLE_RETAIL_STLP_UNINIT_COPY_FORCEINLINE); leaf-only self rename; test rewritten on the shared headers	RELOCATION_MATCH	PASS	4	q6332 q6341	forms: NF199 plain (DIFFER 280v316, regraded), +MALLOC_ALLOC opt-ins (DIFFER 280v316), +UNINIT_COPY+FILL_N forceinline (RELOCATION_MATCH), UNINIT_COPY forceinline only (RELOCATION_MATCH, kept); vland b1.log RELOCATION_MATCH PASS. New pick-any COMDATs: shared-header inlines only (_Construct/_Destroy/__destroy/__uninitialized_copy/_fill_n cdecl spellings, vector<CCharString> _M_clear/_M_set/size, allocator); landed 0x0044B120 / 0x0044B150 define the __fastcall (YI) __uninitialized_* instances, a different symbol
+0x0044BFF0	none	BLOCKED	n/a	0	q6332 q6341	blocked: stand-in binder of 0x00433530 (?InsertRange_00433530@VectorPushBackOverlay@@QAEXPAVCWideString@@0PAPA...); port not attempted
+0x004B2FE0	none	BLOCKED	n/a	0	q6332 q6341	blocked: stand-in binder of 0x00433530 (?_M_insert_overflow@CStringVector@@QAEXPAVCCharString@@ABV2@ABU__false...); port not attempted
+0x004B4A10	none	BLOCKED	n/a	0	q6332 q6341	blocked: stand-in binder of 0x00433530 (?_M_insert_overflow@CCharStringVector@@QAEXPAVCCharString@@ABV2@ABU__f...); port not attempted
+0x006A23E0	none	BLOCKED	n/a	0	q5089	blocked: port (whole-row stand-in models); not attempted
+0x006D41F0	none	BLOCKED	n/a	0	q4456	blocked: port (namespaced N006d41f0::CCharString stand-in); not attempted
+0x006E9310	none	BLOCKED	n/a	0	q4389	blocked: port, not attempted this pass (NF199 STATUS reason stands; see APPLIED q4389)
+0x006E93C0	none	BLOCKED	n/a	0	q4389	blocked: port, not attempted this pass (NF199 STATUS reason stands; see APPLIED q4389)
+0x006E9700	none	BLOCKED	n/a	0	q4389	blocked: port, not attempted this pass (NF199 STATUS reason stands; see APPLIED q4389)
+0x006EA050	none	BLOCKED	n/a	0	q4389	blocked: port, not attempted this pass (NF199 STATUS reason stands; see APPLIED q4389)
+0x006EA770	none	BLOCKED	n/a	0	q4389	blocked: port, not attempted this pass (NF199 STATUS reason stands; see APPLIED q4389)
+0x006EAC50	none	BLOCKED	n/a	0	q4389	blocked: port, not attempted this pass (NF199 STATUS reason stands; see APPLIED q4389)
+0x006ED270	none	BLOCKED	n/a	0	q4389	blocked: port, not attempted this pass (NF199 STATUS reason stands; see APPLIED q4389)
+0x006ED510	none	BLOCKED	n/a	0	q4389	blocked: port, not attempted this pass (NF199 STATUS reason stands; see APPLIED q4389)
+0x006EDA80	none	BLOCKED	n/a	0	q4389	blocked: port, not attempted this pass (NF199 STATUS reason stands; see APPLIED q4389)
+0x006FC8E0	none	BLOCKED	n/a	0	q6332 q6341	blocked: binds the public QAE spelling through a row-local vector model with a same-TU _M_insert_overflow body; a protected: respell would newly define a differing pick-any copy of the IAE symbol 0x00433530 owns (advisor): needs declaration-only + regrade; not attempted
+0x00833A70	none	DEFERRED	n/a	0	q6315 q6319	deferred: lock held by NF203
+0x008A99F0	none	BLOCKED	n/a	0	q5089	blocked: port (whole-row stand-in models); not attempted
+0x008AE5E0	none	BLOCKED	n/a	0	q6332 q6341	blocked: binds the public QAE spelling through a row-local vector model with a same-TU _M_insert_overflow body; a protected: respell would newly define a differing pick-any copy of the IAE symbol 0x00433530 owns (advisor): needs declaration-only + regrade; not attempted
+0x008AE810	none	BLOCKED	n/a	0	q6332 q6341	blocked: binds the public QAE spelling through a row-local vector model with a same-TU _M_insert_overflow body; a protected: respell would newly define a differing pick-any copy of the IAE symbol 0x00433530 owns (advisor): needs declaration-only + regrade; not attempted
+0x008AEA40	none	BLOCKED	n/a	0	q6332 q6341	blocked: binds the public QAE spelling through a row-local vector model with a same-TU _M_insert_overflow body; a protected: respell would newly define a differing pick-any copy of the IAE symbol 0x00433530 owns (advisor): needs declaration-only + regrade; not attempted
+0x009BDE70	none	BLOCKED	n/a	0	q4456	blocked: identity (constructor body landed under a non-constructor stand-in name; class not proven); not attempted
+0x009CB910	none	BLOCKED	n/a	0	q4456	blocked: identity (constructor body landed under a non-constructor stand-in name; class not proven); not attempted
+0x009F03B0	none	BLOCKED	n/a	0	q4394	blocked: port, one family with q12191 (NF202 slice); not attempted
+0x00A16D50	none	BLOCKED	n/a	0	q4456	blocked: identity (constructor body landed under a non-constructor stand-in name; class not proven); not attempted
+0x00A2ED10	none	BLOCKED	n/a	0	q6332 q6341	blocked: stand-in binder of 0x00433530 (?_M_insert_overflow@CCharStringVector@@QAEXPAVCCharString@@ABV2@ABU__f...); port not attempted
+0x00A72EE0	none	BLOCKED	n/a	0	q6332 q6341	blocked: stand-in binder of 0x00433530 (?_M_insert_overflow@CCharStringVector@@QAEXPAVCCharString@@ABV2@ABU__f...); port not attempted
+0x00A72F40	none	BLOCKED	n/a	0	q6332 q6341	blocked: stand-in binder of 0x00433530 (?_M_insert_overflow@CCharStringVector@@QAEXPAVCCharString@@ABV2@ABU__f...); port not attempted
+0x00CB5C90	none	BLOCKED	n/a	0	q6332 q6341	blocked: binds the public QAE spelling through a row-local vector model with a same-TU _M_insert_overflow body; a protected: respell would newly define a differing pick-any copy of the IAE symbol 0x00433530 owns (advisor): needs declaration-only + regrade; not attempted
