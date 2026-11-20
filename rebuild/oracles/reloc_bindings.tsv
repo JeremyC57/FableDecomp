@@ -39745,3 +39745,6 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ??_7CTCInventoryWeapons@@6BCBase@NHeroInformationScreens@@@	01253fe0	005c39f0
 ??_7CTCInventoryWeapons@@6BCTCInventoryBase@NInventory@@@	01253ff4	005c39f0
 ?GetProfileName@CVirtualKeyboard_Methods@@QBE?AVCWideString@@XZ	00851890	00851920
+?DressedAsBandit@CDF_ThreeSuits@CV_DemonDoorsScript@NScript@@AAE_NXZ	00e72f00	00e72630
+?DressedAsEvilMage@CDF_ThreeSuits@CV_DemonDoorsScript@NScript@@AAE_NXZ	00e731f0	00e72630
+?DressedAsGoodKnight@CDF_ThreeSuits@CV_DemonDoorsScript@NScript@@AAE_NXZ	00e730a0	00e72630

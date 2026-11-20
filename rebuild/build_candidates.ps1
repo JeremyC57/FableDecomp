@@ -401470,6 +401470,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlS13'
         PassPattern = '00e17840_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e72630'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_ThreeSuits'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_Main_00e72630.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_Main_00e72630_test.cpp'
+        PassPattern = '00e72630_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
