@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00e97070   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e97070 RELOCATION_MATCH NScript::CV_HeroDollsScript::CBS_Teacher::?Main@CBS_Teacher@CV_HeroDollsScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVHeroDollsScriptCBSTeacher_Main_00e97070

@@ -917,7 +917,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00e7fd50	NScript::CV_FishingCompetitionScript	RefreshCompetition	784	parked	DIFFER(802v784)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand774/differ/00e7fd50.test.cpp	original
 00e93eb0	NScript::CV_HauntedHouseScript	Main	5328	parked	DIFFER(5173v5321)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e93eb0.cpp	gapscan/boundary
 00e96110	CM_QuestControl	Main	1360	parked	DIFFER(1360v1356)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand652/differ/00e96110.cpp	original
-00e97070	NScript::CV_HeroDollsScript::CBS_Teacher	Main	3632	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(3619v3619)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e97070.cpp	gapscan/boundary
 00e9e420	NScript::CV_IntroductionToTrophiesScript::CBriarRose	Main	5920	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(5912v5915)	17	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e9e420.cpp	gapscan/boundary
 00ea2080	NScript::CV_KnotholeGladeGatesScript	ControlMainBalverines	1696	parked	DIFFER(2279v1682)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand780/differ/00ea2080.cpp	original
 00eb55d0	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard	Main	384	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand578/differ/00eb55d0.cpp	gapscan/boundary

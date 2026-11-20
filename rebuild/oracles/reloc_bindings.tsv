@@ -39718,3 +39718,6 @@ _ONE_OVER_360	01238e00	00878b60
 ?PrepareRequest@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@W4HTTP_REQUEST_TYPE@2@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLHHttpHeaders@2@1K@Z	008400b0	0055f710
 ?SetConnectionDetails@LHHttp2@LHNetworkLib@@QAE?AW4LH_RETURN@2@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z	0083fb20	0055f710
 ?SetProxySettings@LHHttp2@LHNetworkLib@@QAEXABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z	0083f870	0055f710
+?HeroHasAllDolls@CV_HeroDollsScript@NScript@@QAE_NXZ	00e97fd0	00e97070
+?HeroHasAnyDolls@CV_HeroDollsScript@NScript@@QAE_NXZ	00e98200	00e97070
+?RemoveHeroDolls@CV_HeroDollsScript@NScript@@QAEXXZ	00e97ea0	00e97070
