@@ -862,8 +862,8 @@ private:
             }
             state_info.DesiredState = value;
             AddStateToUpdateList(state_info);
-#endif
-#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED
+        } }
+#elif defined(FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED)
     // Nested opt-in (chunk 2048, rows 0x00B64FA0 RenderClouds / 0x00B64550 RenderSunFlare / 0x00B65A20 RenderOuterSky): the state's desired
     // value read into a named local for the unchanged test. Code-identical to the default text; the extra named symbol per expansion is
     // what decides the bookmark test / or operand order of the twelve expansions in RenderClouds (the GOTCHAS "lane gap": a c2 record-id
