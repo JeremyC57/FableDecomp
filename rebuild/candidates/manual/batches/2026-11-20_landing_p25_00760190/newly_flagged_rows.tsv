@@ -1,0 +1,3 @@
+set	address	class	header
+NShape.h	0075fe30	NShape::CIsPointFinalLinkInTriangleWithMatchingCirculation	engine/NShape.h (landed local stand-in, pointer members; Ego_d TPI 0x403B5 says const C3DVector&)
+NShape.h	00763f50	NShape::CIsPointFinalLinkInTriangleWithMatchingCirculation / ECirculationOrder	engine/NShape.h (landed local copy in the __find_if COMDAT row)
