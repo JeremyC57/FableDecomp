@@ -401454,6 +401454,14 @@ $catalog = @(
         TestSource = '00/e7/NScriptCVFishermanScript_NPCAttitudeProcess_00e7c010_test.cpp'
         PassPattern = '00e7c010_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00de8370'
+        Module = 'NScript::CQ_RansomVictimScript::CRansommer'
+        Source = '00/de/NScriptCQRansomVictimScriptCRansommer_Main_00de8370.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCRansommer_Main_00de8370_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS13 /d2inlT29'
+        PassPattern = '00de8370_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

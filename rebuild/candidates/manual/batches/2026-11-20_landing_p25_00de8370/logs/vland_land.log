@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00de8370   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00de8370 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CRansommer::?Main@CRansommer@CQ_RansomVictimScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQRansomVictimScriptCRansommer_Main_00de8370
