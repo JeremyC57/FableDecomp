@@ -209,3 +209,13 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - /d2inlT plus CCRC_PASS22_BODY is allowed in principle: the owner's inline-budget rule, line 2 with ablations, with 0x008DDAD0 as the same-TU precedent. It is not sufficient: no T splits two sites with equal callee, f and score (loop 2 and sky LowerBound, 6.25/63).
   - **Correction:** "a define that breaks a mate is out" is withdrawn for this TU. Retail expands LowerBound, the destructor and Calc in this row, so their bodies are visible in the TU. The flagless mates 0x008E16A0 / 0x008E20F0 / 0x008E24F0 that break hide those bodies; that is re-port debt on them.
   - One bounded pass before parking: cmpcomdat of the four callees (incl. Calc v 0x004014A0); the instantiation identity of the sky's expanded callees; Calc argument constness per site; the sky's own f (destructor 12.5 v LowerBound 6.25; T 57..62 with no device); FableWin v Ego_d length.
+
+## 0x00C73050 (p25N): one register (tail-item temp edi v retail edx)
+- **Measured.** Candidate #32 is coloured after #22 (eax) and #31 (ecx), and every integer candidate's order and register matches retail. Its allowed set is {edx, edi}, with only edi costed (400), yet edi is chosen.
+- **Ruling.** Interference hook authorised, bounded, after two zero-compile reads:
+  - the cost sign across the trace (if the highest cost wins, the 400 is a preference and no hook is needed);
+  - whether edx is actually busy in 0x00C731D2..F4.
+  - The hook dumps #32's forbidden set at 0x1078368e, then one targeted respelling pass on the one named interferer, else park with the dump.
+  - The hook is saved with the c2 kit before use.
+- **No more untargeted respellings** (33 negative). The row stays reserved.
+- **Name:** the catalogue says Audio_PlaySourceAndProcessQueue, p25N says CAudioSource::UpdateStream; a two-source NAME_FIXES line is needed, or one name kept consistently.

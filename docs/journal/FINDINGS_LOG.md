@@ -1445,3 +1445,8 @@ against CODAApi.lib, or stay compiled C++?
   - _M_insert_overflow: expanded only in the sky block. CCRC::Calc 0x004014A0: called at the mates (f 0.25/1.25), expanded in this row (2.5/12.5); landed 0x008DDAD0 in the same TU uses /d2inlT65 with CCRC_PASS22_BODY.
   - One threshold per callee fits all four functions only if the sky's f exceeds loop 2's; in our profile both LowerBound sites are 6.25.
   - Already-expanded inlines (the CRC loops) do not change later sites' f. No retail back-edge encloses the sky block. Ego_d's big lines (582 B at 3298, ~520-545 B at each block's GetTC) do not single out the sky.
+- 2026-11-20 (Account B p25N, 0x00C73050, open) c2prio trace with the best source (/d2inlT150):
+  - The tail-item temp is candidate #32 (prio 20, key 138, refs 3), coloured after #22 (eax) and #31 m_tail (ecx).
+  - Every integer candidate's order and register matches retail (this esi, sound ebp, queue ebx, capacity eax, tail ecx).
+  - #32's allowed set at choose time is {edx, edi}, with nonzero cost only on edi (400); ours takes edi, retail edx.
+  - Not a symbol tie within 1..32 literal dummies. An edx value live across 0x00C731D2..F4 is a hypothesis (unmeasured).
