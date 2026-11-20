@@ -462,3 +462,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: NF149 handed back (7 of 8 done). New agent NF153 (CPlayer / CPlayerManager accessor PRIORITY entries, 13).
 2026-11-20 A: NF151 (16 of 18 closed) and NF152 (14 of 17 closed) handed back. New agents NF154 (CTCBase / CTCPhysicsBase / CTCLook / CTCCreatureNavigation, 24 entries) and NF155 (CThingCreatureBase / CThing / CThingManager, 18 entries).
 2026-11-20 A: landed B's held 0x00BB1740 ??_G rewrite with the 0x00BACE10 owner moved to pick-any scaffolding (advisor decision); B's reports_b6 waits for the 0x00B0A160 port.
+2026-11-20 A: landed B's hand3c3 b12 (0x0078D250 CTCBerserk::FrameUpdate) with the 0x0078D210 and 0x008E68E0 self rows re-ported onto the shared headers (advisor gates, owner delegated); C2DBoxI ODR, 0x00789238 spelling and a 7-row header port queued.

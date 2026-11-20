@@ -1,3 +1,33 @@
+# Landing (Account A, 2026-11-20, on the owner's instruction "land the matches here in main chat now"; gates per the advisor, owner delegated)
+
+- Strict vland `--land` (LANDVERIFY_STRICT_HEADERS=1): 0x0078D250 CTCBerserk::FrameUpdate RELOCATION_MATCH PASS (`logs/vland_land.log`;
+  one RELOC_NAME warning, the folded list-destructor COMDAT 0x006FE660, below); oracle line read from Fable.exe (1729 bytes, `oracle.tsv`).
+- Headers: B's additions to CTCBerserk.h, CCreatureAction_ReleaseStrengthBerserk.h, CTCOpinionSource.h, CTCHeroMorph.h and
+  CRGBColour.h, and the new CThingFilter_CanBeHitByEpicSpell.h. hdrcheck2 against HEAD (`logs/hdrcheck.log`): the default path and every
+  existing macro are token-identical; the one DIFF is the new FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK branch, and every new
+  macro is used only by this landing's rows. FABLE_STATIC_ASSERT names pinned to HEAD's with pin_asserts.py (CTCBerserk.h 28,
+  CCreatureAction_ReleaseStrengthBerserk.h 2).
+- Names (binding diff against HEAD, each newly bound address against its self row's Leaf). Two self rows spelled the class differently
+  and were re-ported in this landing on the shared headers, first form, strict headers (`logs/recheck_*.log`; old sources in `logs/`):
+  - 0x0078D210 CTCBerserk::CancelForCutscene: was a local `CTCBerserk_Retail` model (so it bound ?CleanupAbility@CTCBerserk_Retail@@...
+    for 0x0078CD80 while this row binds ?CleanupAbility@CTCBerserk@@QAEX_N@Z). Now on engine/CTCBerserk.h with a new add-only nested opt-in
+    FABLE_RETAIL_CTCBERSERK_CANCELFORCUTSCENE (?CancelForCutscene@CTCBerserk@@QAEXXZ, Ego_r.pdb + FableWin.pdb; the landed caller
+    0x0072BC60 already bound that spelling). RELOCATION_MATCH.
+  - 0x008E68E0 CCreatureAction_ReleaseStrengthBerserk ctor: was a local model taking the creature by pointer; now on
+    engine/CCreatureAction_ReleaseStrengthBerserk.h, ??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z (Ego_r.pdb
+    + Ego_d.pdb, by reference). RELOCATION_MATCH.
+  rebind.py re-derived both rows' bindings; bindings_multi_check stays at its baseline (1, ?NullCoord@CScriptThing@@...).
+  0x006FE660: the self row names another body of the same folded 62-byte COMDAT; accepted, no respell.
+- One definition: the three objects define 166 external symbols; 16 are bound to landed rows. Owner link (`logs/owner_link.log`):
+  one LNK2005, ??0C2DBoxI@@QAE@ABVC2DCoordI@@J@Z, header-inline here and strong in owner 0x00434740. The same clash is at HEAD
+  (`logs/head_control_link.log`: 0x00750E30 against 0x00434740), so it does not hold the row; queued as DEBT.
+- Queued (NAME_FIXES_QUEUE.tsv): the 0x00789238 self row's stale PAUCHitLocation spelling (DEBT; PDBs and every caller bind
+  PAVCHitLocation@NHitLocations@@), the C2DBoxI ODR debt, and a PRIORITY header port of the seven rows that model
+  CThingFilter_CanBeHitByEpicSpell locally (0x0078DB20, 0x007A5190, 0x007A63D0, 0x007A9300, 0x00792E50, 0x007930B0, 0x006A8D30).
+- B's audit notes stand as written: the CRGBColour INTERPOLATE_FORCEINLINE opt-in (the README's T-window evidence; plain C++ and the
+  per-row flag were tried first, EXTRA_RULES 2026-11-08) and the CHitParameters COMDAT size (242 v 178 bytes; it does not clash in the
+  owner link because the 0x00789238 self row defines the stale PAU spelling, see the queued DEBT).
+
 # b12 (hand3c3, Account B, 2026-11-20): CTCBerserk::FrameUpdate -- READY
 
 | Row | Function | Bytes | Grade | Test | Mutants |

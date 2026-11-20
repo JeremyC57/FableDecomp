@@ -39,6 +39,11 @@ public:
     bool IsReactNonstop() const { return ReactNonstopFlag; }
     bool PeekUseNavLineOfSight() const { return UseNavLineOfSight; }
 #endif
+#ifdef FABLE_RETAIL_CTCOPINIONSOURCE_SETREACTNONSTOP
+    // Retail opt-in (hand3c3, row 0x0078D250 CTCBerserk::FrameUpdate): Ego_d.pdb ?SetReactNonstop@CTCOpinionSource@@QAEX_N@Z, inline in
+    // retail (FrameUpdate stores 1 to +0x77 of the attached berserk opinion source in place, 0x0078D337). No layout change.
+    void SetReactNonstop(bool value) { ReactNonstopFlag = value; }
+#endif
 private:
     unsigned long    DefStack_[3];                       // +0x0c std::vector<long> DefStack (retail STLport, 12 bytes)
     bool             UseNavLineOfSight;                  // +0x18

@@ -6,6 +6,20 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK
+// Retail opt-in (hand3c3, row 0x0078D250 CTCBerserk::FrameUpdate): the polymorphic retail class, RTTI
+// .?AVCCreatureAction_ReleaseStrengthBerserk@@ : CCombatActionBase (retail 0x114, no members of its own; vtable 0x012874EC).
+// Ego_r.pdb / Ego_d.pdb ??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z (out of line at 0x008E68E0; the
+// creature by reference); the destructor is implicit (FrameUpdate destroys its temporary through ~CCombatActionBase 0x0062E900,
+// 0x0078D28A). Needs engine/CCombatActionBase.h's opt-ins of the including row. The generated opaque model stays in the #else.
+#include "engine/CCombatActionBase.h"
+class CThingCreatureBase;
+class CCreatureAction_ReleaseStrengthBerserk : public CCombatActionBase {
+public:
+    CCreatureAction_ReleaseStrengthBerserk(CThingCreatureBase& creature);   // 0x008E68E0
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseStrengthBerserk) == 0x114);
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -27,7 +41,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseStrengthBerserk) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ReleaseStrengthBerserk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_ReleaseStrengthBerserk) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_ReleaseStrengthBerserk, __vftable) == 0x0);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK
 #endif // FABLE_ENGINE_CCREATUREACTION_RELEASESTRENGTHBERSERK_H

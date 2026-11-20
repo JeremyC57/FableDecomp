@@ -3080,7 +3080,6 @@ _FableCam_788198@8	0078809b	00788198
 ?PlayAnimation@CTCAnimatingObject@@QAEXABVCCharString@@J_N@Z	007f90b0	0078b6b0
 ??_7CCreatureAction_HeroLoadRangedWeapon@@6B@	0126b9d4	0078bd60
 ??_7CIntelligentPointer_CThingObject@@6B@	0125a858	0078bd60
-?CleanupAbility@CTCBerserk_Retail@@QAEX_N@Z	0078cd80	0078d210
 ?Erase@CRetailTree_erase00792300@@QAEXPAUnode@1@@Z	00792300	00792880
 ?Insert@CRetailTree_00792a70@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	007929a0	00792a70
 ?Erase@CRetailTree_erase00797840@@QAEXPAUnode@1@@Z	00797840	00797c20
@@ -39109,7 +39108,6 @@ _time	00bfed22	008405f0
 ??_7CCreatureAction_ScorpionRecover@@6B@	01286724	008e4770
 ??_7CCreatureAction_SnapDragonOutOf@@6B@	01286d94	008e49c0
 ??_7CCreatureAction_CastStrengthBerserk@@6B@	01287384	008e6880
-??_7CCreatureAction_ReleaseStrengthBerserk@@6B@	012874ec	008e68e0
 ??_7CCreatureAction_CastStrengthMultiStrike@@6B@	0128764c	008e6a70
 ??_7CCreatureAction_BriarRoseConcentrateInto@@6B@	01287904	008e8bb0
 ??_7CCreatureAction_UndeadReturnToEarth@@6B@	01287ddc	008ec6a0
@@ -39807,3 +39805,9 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ??1CNavConnectorNode@@QAE@XZ	00a780b0	00a82fa0
 ?_M_insert_overflow@?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@IAEXPAPAVCThingObject@@ABQAV3@ABU__true_type@2@I_N@Z	0074f900	0077ec20
 ??_7CEngineSubPrimitiveSprite@@6B@	012a5430	00bace10
+?CleanupAbility@CTCBerserk@@QAEX_N@Z	0078cd80	0078d210
+??$GetAllThingsInRoughArea@VCThingGameObject@@V?$list@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_In2DRange@@VCThingFilter_CanBeHitByEpicSpell@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_In2DRange@@VCThingFilter_CanBeHitByEpicSpell@@@@AAV?$list@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@@Z	0078db20	0078d250
+??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z	008e68e0	0078d250
+??1?$_List_base@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@QAE@XZ	006fe660	0078d250
+?SetBerserkSkin@CTCHeroMorph@@QAEXM@Z	0071bee0	0078d250
+??_7CCreatureAction_ReleaseStrengthBerserk@@6B@	012874ec	008e68e0

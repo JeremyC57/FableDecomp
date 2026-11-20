@@ -134,6 +134,13 @@ public:
     // (FableWin 0x02188AA0: GFGetInterpolatedColour(*this, col, GFFloatToLongNear(interp * 256)); Ego_d.pdb names col / interp; FableWin's literal is a double, retail's a
     // float 0x0125B240); inline in retail (0x0066CE21..0x0066CE67, no out-of-line copy called). Needs FABLE_RETAIL_CRGBCOLOUR (the
     // Initialise copy constructor), the callee declarations above the class.
+#ifdef FABLE_RETAIL_CRGBCOLOUR_INTERPOLATE_FORCEINLINE
+    // Nested opt-in (hand3c3, row 0x0078D250 CTCBerserk::FrameUpdate): retail expands Interpolate at both tint sites there
+    // (0x0078D680..0x0078D6F8 and 0x0078D869..0x0078D8D9: `this` pushed first, `fmul [256.0f]`, the bare fistp, the result built in
+    // a frame slot and passed by `lea`); VC7.1 calls the plain inline out of line (1678 bytes for the 1729-byte row) and there is no
+    // /d2inlT window (T76..T160 expand the list destructor retail calls first, 1705 bytes; T200 1728, T300 1751).
+    FABLE_FORCEINLINE
+#endif
     CRGBColour Interpolate(CRGBColour col, float interp) const { return GFGetInterpolatedColour(*this, col, GFFloatToLongNear(interp * 256.0f)); }
 #endif
     unsigned char GetR() const { return R; }

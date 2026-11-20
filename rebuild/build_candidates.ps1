@@ -401369,6 +401369,13 @@ $catalog = @(
         TestSource = '00/a7/CNavQuadTree_ConnectVerticalMapEdge_00a79680_test.cpp'
         PassPattern = '00a79680_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0078d250'
+        Module = 'CTCBerserk'
+        Source = '00/78/CTCBerserk_FrameUpdate_0078d250.cpp'
+        TestSource = '00/78/CTCBerserk_FrameUpdate_0078d250_test.cpp'
+        PassPattern = '0078d250_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

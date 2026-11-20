@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0078d210   RELOCATION_MATCH PASS   CTCBerserk::CancelForCutscene
+0078d250   WARN RELOC_NAME: ??1?$_List_base@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@QAE@XZ -> 006fe660 labelled '_global::StdList_Clear_006fe660'
+0078d250   RELOCATION_MATCH PASS   CTCBerserk::FrameUpdate
+
+WINS: 2
+  0078d210 RELOCATION_MATCH CTCBerserk::?CancelForCutscene@CTCBerserk@@QAEXXZ
+  0078d250 RELOCATION_MATCH CTCBerserk::?FrameUpdate@CTCBerserk@@UAEXXZ

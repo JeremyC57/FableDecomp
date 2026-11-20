@@ -44,6 +44,12 @@ public:
     void AddTattoo(CDefPointer<const CThingBaseDef>& tattoo_thing);    // 0x0071D940
     void AddTattoo(long tattoo_def_index);                              // 0x0071DA70
 #endif
+#ifdef FABLE_RETAIL_CTCHEROMORPH_SETBERSERKSKIN
+    // Nested opt-in (hand3c3, row 0x0078D250 CTCBerserk::FrameUpdate): FableWin.pdb / Ego_d.pdb ?SetBerserkSkin@CTCHeroMorph@@QAEXM@Z,
+    // out of line in retail at 0x0071BEE0 (landed; FrameUpdate calls it with the morph in ecx at 0x0078D66D / 0x0078D856).
+    // Declaration only.
+    void SetBerserkSkin(float berserk);                                 // 0x0071BEE0
+#endif
 #ifdef FABLE_RETAIL_CTCHEROMORPH_TATTOONAMES
     // Nested opt-in (chunk 4006 / acctC agentC1, rows 0x005D1F0C / 0x005CE0E6 CTCInventoryStats::ConstructPersonalityListPC /
     // ConstructPersonalityList): Ego_r.pdb / FableWin.pdb ?GetTattooNames@CTCHeroMorph@@QAEXAAV?$vector@VCWideString@@V?$allocator@

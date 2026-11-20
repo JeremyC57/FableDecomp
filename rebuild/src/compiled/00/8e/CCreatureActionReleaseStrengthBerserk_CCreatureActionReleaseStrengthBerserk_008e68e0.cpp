@@ -1,4 +1,5 @@
-// CCreatureAction_ReleaseStrengthBerserk::CCreatureAction_ReleaseStrengthBerserk(CThingCreatureBase*) -- base CCombatActionBase(owner, 145, zeroed CSoundPair), then animation "STRENGTH_CAST_BERSERK"
+// CCreatureAction_ReleaseStrengthBerserk::CCreatureAction_ReleaseStrengthBerserk(CThingCreatureBase&) -- base CCombatActionBase(owner, 145, zeroed CSoundPair), then animation "STRENGTH_CAST_BERSERK"
+// Leaf: ??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E68E0, oracle length 90 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,31 +10,31 @@
 // stores: an embedded object's inline ctor), then this class's vtable (0x012874EC,
 // rtti-vtables.tsv) and the animation name set through a scoped CCharString (ctor @ 0x0099EBF0, dtor @ 0x0099EAE0; the setter's manifest label is propagated, named as in family 20).
 // One of 35 bodies of this shape.
+// Identity: Ego_r.pdb / Ego_d.pdb ??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z (the creature by
+// reference; b12 landing re-port onto engine/CCreatureAction_ReleaseStrengthBerserk.h, was a local model taking a pointer).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SETCOMBATANIMATION
+#define FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK
 #include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_ReleaseStrengthBerserk.h"
 
-class CThingCreatureBase;
-
-class CSoundPair { public:
-    long m_first;
-    long m_second;
-    CSoundPair() : m_first(0), m_second(0) { }
-};
-
-class CCombatActionBase { public:
-    virtual void v00();
-    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
-    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-public:
-    void SetCombatAnimation(const CCharString&);   // 0x008574D0
-};
-
-class CCreatureAction_ReleaseStrengthBerserk : public CCombatActionBase { public:
-    virtual void v00();
-    CCreatureAction_ReleaseStrengthBerserk(CThingCreatureBase* owner);
-};
-
-CCreatureAction_ReleaseStrengthBerserk::CCreatureAction_ReleaseStrengthBerserk(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 145, CSoundPair())
+CCreatureAction_ReleaseStrengthBerserk::CCreatureAction_ReleaseStrengthBerserk(CThingCreatureBase& creature)
+    : CCombatActionBase(creature, 145, CSoundPair())
 {
     {
         CCharString name("STRENGTH_CAST_BERSERK", -1);       // scoped named local (a bare temporary would reuse eax, GOTCHAS)

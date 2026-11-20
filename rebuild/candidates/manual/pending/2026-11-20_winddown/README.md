@@ -6,7 +6,6 @@ oracle with `$S/stage/audit_roll/tools/mkland.py`, or vland's own oracle path, b
 
 | folder | rows | state | what is left |
 |---|---|---|---|
-| hand3c3_b12 | 0x0078D250 CTCBerserk::FrameUpdate | matched | audit: the CRGBColour INTERPOLATE_FORCEINLINE opt-in (device question); the CHitParameters COMDAT is 242 v 178 B. The new CThingFilter_CanBeHitByEpicSpell.h flags 7 rows |
 | hand3c3_parked_006e5a00 | 0x006E5A00 CScriptConversation::FrameUpdate | draft, does not compile | see its README |
 | reports_b5 | 8 CPSCSingleSprite rows (3 stand-ins rewritten) | strict PASS | audit |
 | reports_b6 | 0x00B0A140 ??_G | snapshot | decide whether it lands with the 0x00B0A160 port Decision 2026-11-20 (A, advisor, owner delegated): option (b), land with the 0x00B0A160 port |

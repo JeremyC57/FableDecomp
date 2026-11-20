@@ -1,0 +1,5 @@
+addr       parity           behav  name
+008e68e0   RELOCATION_MATCH PASS   CCreatureAction_ReleaseStrengthBerserk::CCreatureAction_ReleaseStrengthBerserk
+
+WINS: 1
+  008e68e0 RELOCATION_MATCH CCreatureAction_ReleaseStrengthBerserk::??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z
