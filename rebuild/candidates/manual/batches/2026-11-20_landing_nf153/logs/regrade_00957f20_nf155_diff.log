@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00957f20   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00957f20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00957f20   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00957f20   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+00957f20   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00957f20   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00957f20   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+00957f20   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToBurglary::IsRunnable
+
+WINS: 1
+  00957f20 RELOCATION_MATCH CAIStateGroup_MinionReactToBurglary::?IsRunnable@CAIStateGroup_MinionReactToBurglary@@UAE_NXZ

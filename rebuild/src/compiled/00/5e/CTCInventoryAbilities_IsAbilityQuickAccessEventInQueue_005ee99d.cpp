@@ -88,7 +88,7 @@ class CPlayer { public:
     long GetJoystickDeviceNumber() const;            // 0x00487510 ?GetJoystickDeviceNumber@CPlayer@@QBEJXZ
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                  // 0x00449960
+    const CPlayer& GetMainPlayer() const;                  // 0x00449960 ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ (Ego_r / FableWin; NF153: was QBEPAV)
 };
 // FAM13: the local CGamePlayerInterface stand-in replaced by the shared header (generated layout + opt-in); 0x004460C0 is
 // IsQuickAccessEventInQueue (QuickAccessItemButtons +0x7c4, Ego_r.pdb), not IsAssignableSpecialMoveButtonInQueue (0x00445E90, +0x7b8).
@@ -152,7 +152,7 @@ bool CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility abilit
                         break;
                     if (data[i] == item &&
                         GetMainGameComponent()->GetPPlayerInterface()->IsQuickAccessEventInQueue(
-                            i, (EInputButtonEventType)2, PeekPlayerManager().GetMainPlayer()->GetJoystickDeviceNumber()))
+                            i, (EInputButtonEventType)2, PeekPlayerManager().GetMainPlayer().GetJoystickDeviceNumber()))
                         return true;
                 }
             }

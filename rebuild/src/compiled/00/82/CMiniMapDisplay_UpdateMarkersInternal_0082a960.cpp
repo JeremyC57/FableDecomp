@@ -10,7 +10,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetPlayer();                          // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970 ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (Ego_r / FableWin; NF153: was the stand-in GetPlayer)
 };
 class CMainGameComponent {
 protected:
@@ -46,7 +46,7 @@ class CMiniMapDisplay { public:
 void CMiniMapDisplay::UpdateMarkersInternal()
 {
     if (m_pRegion) {
-        CThing* hero = CMainGameComponent::Get()->m_pPlayerManager->GetPlayer()->GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().GetPControlledCreature();
         if (hero && !hero->IsDead())
             AddMarker(hero, CPlayerGui::PeekGuiDef().m_markerGraphics.front());
     }

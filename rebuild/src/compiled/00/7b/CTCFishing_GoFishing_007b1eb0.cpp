@@ -9,6 +9,11 @@
 // Shape: the getter chain into edi with `this` in esi; three early exits to the shared epilogue; `push 0 ; push 1Dh`
 // precede `mov ecx,edi ; call GetPlayer` (VC evaluates AddMode's arguments before the object expression); the stage
 // change is an inline SetStage (`cmp [esi+14h],1 ; je` then the two stores).
+// NF153: the retail CTCBase branch for its protected PeekPlayerManager() const 0x00686D50 (Ego_r / FableWin
+//   ?PeekPlayerManager@CTCBase@@IBEABVCPlayerManager@@XZ; was the stand-in CTCFishing::GetPlayerManager) and the shared
+//   engine/CPlayerManager.h for GetMainPlayer() const 0x00449960 (was the stand-in CPlayerManager_007b1eb0).
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE_PEEKPLAYERMANAGER
 #include "engine/CTCBase.h"
 
 class CPlayer;
@@ -27,15 +32,12 @@ class CPlayer { public:
     void AddMode(EPlayerMode mode, bool flag);     // 0x006345C0 Ego_r/FableWin ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z
 };
 
-struct CPlayerManager_007b1eb0 {
-    CPlayer* GetMainPlayer();             // 0x00449960
-};
+#include "engine/CPlayerManager.h"
 
 class CTCFishing : public CTCBase { public:
     unsigned char PFish[8];                        // +0x0c CIntelligentPointer<CThing>
     long          Stage;                           // +0x14 EFishingStage
     bool          StageInitialised;                // +0x18
-    CPlayerManager_007b1eb0* GetPlayerManager();   // 0x00686D50
     bool CreateFish(bool arg);                     // 0x007B1A30
     void SetStage(long stage)
     {
@@ -49,7 +51,7 @@ class CTCFishing : public CTCBase { public:
 
 void CTCFishing::GoFishing(bool arg)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->IsDead() && CreateFish(arg)) {
         hero->GetPlayer().AddMode(PLAYER_MODE_FISHING, false);
         SetStage(1);

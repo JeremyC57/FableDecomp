@@ -109,7 +109,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetPlayer_00449960();                               // 0x00449960
+    const CPlayer& GetMainPlayer() const;                // 0x00449960 ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ (Ego_r / FableWin; NF153: was the stand-in GetPlayer_00449960)
     CPlayer& GetMainPlayer();                           // 0x00449970
 };
 class CWorld : public CWorldDonor {
@@ -154,6 +154,7 @@ class CTCBase { public:
 protected:
     const CWorld& PeekWorld() const;                    // 0x00686A80 ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ (Ego_r / FableWin)
     CPlayerManager& GetPlayerManager();                 // 0x00686D40 ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ (Ego_r / FableWin)
+    const CPlayerManager& PeekPlayerManager() const;    // 0x00686D50 ?PeekPlayerManager@CTCBase@@IBEABVCPlayerManager@@XZ (Ego_r / FableWin, engine/CTCBase.h; NF153: was the stand-in CTCTeleporter::GetPlayerManager2)
 };
 class CTCTeleporter : public CTCBase { public:
     CThing* ParentThing;                                // +0x04
@@ -166,7 +167,6 @@ class CTCTeleporter : public CTCBase { public:
     bool WaitingForTutorialToFinish;                    // +0x1b
     CRegionManager* GetRegionManager();                 // 0x00686D20
     CWorldMap* GetWorldMap();                           // 0x00686D30
-    CPlayerManager* GetPlayerManager2();                // 0x00686D50
     void StartTeleporting(CThingPlayerCreature* hero);  // 0x007DFF90
     void FrameUpdate();
 };
@@ -178,7 +178,7 @@ void CTCTeleporter::FrameUpdate()
         if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().TutorialShowing || PeekWorld().Paused)
             return;
         WaitingForTutorialToFinish = false;
-        CThingPlayerCreature* hero = GetPlayerManager2()->GetPlayer_00449960()->GetPControlledCreature();
+        CThingPlayerCreature* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero && !(hero->m_flags & 1))
             StartTeleporting(hero);
         return;

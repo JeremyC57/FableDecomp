@@ -53,7 +53,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;    // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetCurrentPlayer();                // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970 ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (Ego_r / FableWin; NF153: was the stand-in GetCurrentPlayer)
 };
 class CGameTimeManager { public:
     void SetTimeAsStopped(bool stopped, long* stopIndex);   // 0x006BBE30
@@ -88,7 +88,7 @@ void CTCVillage::OnKill()
         CWorld* world = (&GetWorld());
         world->TimeManager->SetTimeAsStopped(false, &TimeStopIndex);
     }
-    CThingPlayerCreature* hero = GetPlayerManager().GetCurrentPlayer()->GetPControlledCreature();
+    CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (IS_THING_ALIVE(hero) && hero->HasTC(243))
         ((CTCInterface243*)hero->GetTC(243))->OnVillageKilled();
 }
