@@ -1,3 +1,4 @@
+// Leaf: ?TransitionToThemeAllInternals@CGameScriptInterface@@UBEXABVCCharString@@M@Z
 class CCharString;
 class CDefinitionManager;
 class CGameDefinitionManager;
@@ -18,11 +19,9 @@ public:
 class CEnvironment
 {
 public:
-    void TransitionToTheme_006b3800(
-        int internalIndex,
-        int unknown1,
-        long themeGlobalIndex,
-        float blendTime);
+    // NF122 (2026-11-20, q6229): Ego_r.pdb / FableWin.pdb ?TransitionToTheme@CEnvironment@@QAEXJJJM@Z (channel, priority, theme, time;
+    //   `ret 10h`) = retail 0x006B3800; was the stand-in TransitionToTheme_006b3800(int, int, long, float).
+    void TransitionToTheme(long channel, long priority, long theme, float time);   // 0x006B3800
 };
 
 struct CGameScriptInterfaceEnvironmentOwnerOverlay
@@ -56,7 +55,7 @@ void CGameScriptInterface::TransitionToThemeAllInternals(
 
         for (int internalIndex = 1; internalIndex <= 4; ++internalIndex)
         {
-            pThis->m_pEnvironmentOwner->m_pEnvironment->TransitionToTheme_006b3800(
+            pThis->m_pEnvironmentOwner->m_pEnvironment->TransitionToTheme(
                 internalIndex,
                 1,
                 globalIndex,

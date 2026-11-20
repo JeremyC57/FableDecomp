@@ -43,7 +43,8 @@ class CTCCreatureModeManager { public:                 // interface 0x31
 };
 class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
-    void RemoveThingFromPrimarySlot(bool b);    // 0x006A1E00
+    // NF122 (2026-11-20, q4985): Ego_r.pdb / FableWin.pdb ?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z (returns the thing); was void RemoveThingFromPrimarySlot(bool).
+    CThing* RemoveThingFromPrimarySlot(bool drop);                      // 0x006A1E00
 };
 class CTCTavernTankard { public:                       // interface 0xba
     void ReplaceTankard();                      // 0x00947C30

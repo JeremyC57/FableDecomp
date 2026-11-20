@@ -17,7 +17,8 @@ class CThingCreatureBase;
 
 class CCombatManager { public:
     bool IsAttacker(const CThingCreatureBase& creature) const;                  // 0x006E92C0 ?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (Ego_r + FableWin)
-    void DeregisterCombatant(CThingCreatureBase* creature);                     // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
+    void DeregisterCombatant(CThingCreatureBase& creature);                     // 0x006ED9C0
     void RegisterCombatant(CThingCreatureBase* creature, CThing* target, bool hostile);   // 0x006EDC50
 };
 
@@ -89,7 +90,7 @@ void CTCKraken::SetPhase(EKrakenBossPhase phase)
     case 0:
     case 3:
         if (combat->IsAttacker(*thing))
-            combat->DeregisterCombatant(thing);
+            combat->DeregisterCombatant(*thing);
         break;
     case 1:
     case 2:

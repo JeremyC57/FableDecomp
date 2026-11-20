@@ -6209,7 +6209,7 @@ address	name	length	bytes
 00686df0	CTCBase::RemoveFromGlobalTCs	24	518d0424c6410900890c2450b9aca83b01e84a53e4ff59c3
 006a8be0	CThingFilter_IsRegionEntranceActive::operator()	24	8b442404f6402c0874098b405c8a400cc2040032c0c20400
 006b82e0	std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>	24	8b4424048b542408505281c190000000e82b951c00c20800
-006b83f0	std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>	24	8b4424048b542408505281c190000000e89b941c00c20800
+006b83f0	CEnvironmentSpellEffectInterpolator::ScreenFilterFadeOut	24	8b4424048b542408505281c190000000e89b941c00c20800
 00744f90	CTCPerceiveThing::OnSetInLimbo	24	568bf1e818feffff8b442408508bcee86c19f4ff5ec20400
 0076c830	CTCEnemy::OnInitialActivate	24	568bf18b0d90873b016a00e880b0ccff8bce5ee928a0f1ff
 007ea290	CTCTargeted::IsZTargetable	24	8b410c85c0740e8a511084d27407a8207403b001c332c0c3

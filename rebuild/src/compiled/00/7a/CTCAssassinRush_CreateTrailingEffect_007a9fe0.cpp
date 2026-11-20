@@ -5,7 +5,7 @@
 // Retail 0x007A9FE0, 912 bytes, `ret`. Callees: CDefClassBase::GetSubDef 0x00669580, CCharString 0x0099EBF0 / dtor
 // 0x0099EAE0, CCRC::CalcAndLookup 0x00669D30, LowerBound const 0x004365B0 (interface 0x6F) and 0x0040F020 (0x4B),
 // CTCInventoryAbilities::GetAbilityMaximumLevel 0x005EDEA3, CThing::GetPos 0x004C73D0, the scaled effect
-// Create 0x006E11F0 (__fastcall), CreateSpecialEffect 0x006E0880 (__fastcall), CBaseIntelligentPointer ctor 0x00A01B10 /
+// CTCDParticleEmitter::Create 0x006E11F0 (__fastcall), CreateSpecialEffect 0x006E0880 (__fastcall), CBaseIntelligentPointer ctor 0x00A01B10 /
 // SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10, CTCDParticleEmitter::SetAlwaysUpdate 0x006E0590 and
 // AttachToThing 0x006E0BE0, CTCBase::GetWorld 0x00686A70, RadialBlurFadeTo 0x006B8730, RadialBlurSetCenterWorldPos
 // 0x006B8310. Literals 0x0126CFB0, 0x0126BC64, 0x0126CF9C, 0x0122D70E (""); CIntelligentPointer<CThing> vtable 0x01238C6C.
@@ -75,7 +75,6 @@ class CThing { public:
         return false;
     }
 };
-CThing* __fastcall CreateScaledEffect(long lowEffect, long effect, float scale, const C3DVector& pos, bool attached);   // 0x006E11F0
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -110,6 +109,9 @@ class CTCInventoryAbilities { public: long GetAbilityMaximumLevel(EHeroAbility a
 class CTCDParticleEmitter {
 public:
     static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+    // NF122 (2026-11-20, q6226): Ego_r.pdb / FableWin.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JJMABVC3DVector@@_N@Z (Ego_r 0x00535970,
+    //   FableWin 0x01D62B20); was the free stand-in CreateScaledEffect(long, long, float, const C3DVector&, bool).
+    static CThing* __fastcall Create(long lowEffect, long effect, float scale, const C3DVector& pos, bool attached);   // 0x006E11F0
 private: public:                            // interface 0x4B
     void SetAlwaysUpdate(bool on);                      // 0x006E0590
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
@@ -162,7 +164,7 @@ void CTCAssassinRush::CreateTrailingEffect()
                 long maxLevel = abilities->GetAbilityMaximumLevel((EHeroAbility)13);
                 scale = (float)SpellLevel / maxLevel;
             }
-            AssassinTrail = CIntelligentPointer<CThing>(CreateScaledEffect(lowEffect, startEffect, scale, ParentThing->GetPos(), false));
+            AssassinTrail = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(lowEffect, startEffect, scale, ParentThing->GetPos(), false));
             if (IS_THING_ALIVE(AssassinTrail)) {
                 CTCDParticleEmitter* emitter = 0;
                 AssassinTrail.GetPItem()->GetInterface(&emitter, 0x4b);

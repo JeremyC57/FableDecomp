@@ -3,8 +3,8 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665DF0, 149 bytes (`ret 8`).
-// Callees: CInterfaceMap::LowerBound @ 0x0040F020, CTCCreatureNavigation::GetNearbyWanderPosition(const C3DVector*, float,
-//   C3DVector*, bool) @ 0x006CB6E0, CTCCreatureNavigation::ResetNavigator @ 0x006CB6B0 (forwards to its +0xc object's
+// Callees: CInterfaceMap::LowerBound @ 0x0040F020, CTCCreatureNavigation::GetNearbyWanderPosition(const C3DVector&, float,
+//   C3DVector&, bool) const @ 0x006CB6E0, CTCCreatureNavigation::ResetNavigator @ 0x006CB6B0 (forwards to its +0xc object's
 //   slot 18; label "CScriptThing::operator==" propagated), CTCPhysicsBase::ResetPosition slot 31 (+0x7c).
 // Layout: retail CThing: interface bitset +0x20 (TC 7 = CTCCreatureNavigation: bit 7 of the byte +0x20), CVectorMap +0x44,
 //   physics component +0x60.
@@ -18,7 +18,8 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCCreatureNavigation { public:
-    bool GetNearbyWanderPosition(const C3DVector* from, float radius, C3DVector* result, bool flag);    // 0x006CB6E0
+    // NF122 (2026-11-20, q5010): Ego_r.pdb / FableWin.pdb ?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z (const, result by reference); was GetNearbyWanderPosition(const C3DVector*, float, C3DVector*, bool) non-const.
+    bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector& result, bool flag) const;    // 0x006CB6E0
     void ResetNavigator();                      // 0x006CB6B0
 };
 class CTCPhysicsBase { public:
@@ -41,7 +42,7 @@ bool CThingCreatureBase::AutoPlaceNear(const C3DVector& position, float radius)
     if (HasTC(TCI_NAVIGATION))
         navigation = ((CTCCreatureNavigation*)&GetTC(TCI_NAVIGATION));
     C3DVector placed = position;
-    if (navigation->GetNearbyWanderPosition(&position, radius, &placed, false)) {
+    if (navigation->GetNearbyWanderPosition(position, radius, placed, false)) {
         navigation->ResetNavigator();
         PhysicsTC->ResetPosition(placed);
         navigation->ResetNavigator();

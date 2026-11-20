@@ -1,5 +1,7 @@
-// CTCCreatureNavigation::GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool flag) -- ask the navigator for a random position near the centre; true when it is on the world map and not (XY) at the centre
-// Leaf: ?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z
+// CTCCreatureNavigation::GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector& result, bool flag) const -- ask the navigator for a random position near the centre; true when it is on the world map and not (XY) at the centre
+// Leaf: ?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z
+// NF122 (2026-11-20, q5010): Ego_r.pdb 0x00701120 / FableWin.pdb 0x024787D0 spelling (const member, result by reference; 12 landed
+//   callers already bound it); respelled in place on the row's local model (was non-const with a C3DVector* result).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the XY squared distance is accumulated in statements (`r = dx*dx; r += dy*dy;`), which squares dx first as retail; the single-expression sum squares dy first
@@ -51,12 +53,12 @@ class CTCCreatureNavigation : public CTCBase { public:
     bool    IsInGlobalUpdateTCs;                // +0x09
     CNavigatorBase* PNavigator;                 // +0x0c
     bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity);
-    bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool flag);
+    bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector& result, bool flag) const;
     bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result);
 };
 
-bool CTCCreatureNavigation::GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool flag)
+bool CTCCreatureNavigation::GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector& result, bool flag) const
 {
-    *result = PNavigator->GetRandomPosition(centre, radius, flag);
-    return PeekWorldMap().IsPosInMap(*result) && XYDistanceSquared(*result, centre) > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO;
+    result = PNavigator->GetRandomPosition(centre, radius, flag);
+    return PeekWorldMap().IsPosInMap(result) && XYDistanceSquared(result, centre) > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO;
 }

@@ -170,7 +170,8 @@ extern "C" double __cdecl sqrt(double);
 class CThingCreatureBase;
 #include "engine/CTCSinglePersonOccupiable.h"
 class CCombatManager { public:
-    void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
+    void DeregisterCombatant(CThingCreatureBase& creature);   // 0x006ED9C0
 };
 class CThingCreatureBase : public CThing { public:
     bool IsInMeleeAsAttacker() const;         // 0x00662410
@@ -202,7 +203,7 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace()
     CThingCreatureBase* creature = GetCreature();
     if (creature && !(creature->m_flags91 & 1)) {
         if (creature->IsInMeleeAsAttacker())
-            GetCreature()->GetCombatManager().DeregisterCombatant(GetCreature());
+            GetCreature()->GetCombatManager().DeregisterCombatant(*GetCreature());
         CTCCreatureModeManager* modes;
         if (GetCreature()->GetInterface(&modes, 0x31))
             modes->RemoveMode(0x19);

@@ -6,7 +6,7 @@
 // on the world's combat manager at CWorld+0x4c.
 //
 // Shape: `if (creature->IsInMeleeAsAttacker()) { CThingAICreature* c = PBrain->PCreature; CWorld* w =
-// (&GetWorld()); w->m_pCombatManager->DeregisterCombatant(c); }` -- the creature is re-read into a local (edi)
+// (&GetWorld()); w->m_pCombatManager->DeregisterCombatant(*c); }` -- the creature is re-read into a local (edi)
 // before the GetPWorld call so it survives it, and the world must be a named local too: with the chained
 // expression VC pushes the creature BEFORE the GetPWorld call (42 bytes), with the local it pushes edi after. The engine header keeps PBrain as a pad, so the base layout is local.
 class CThingCreatureBase
@@ -19,7 +19,8 @@ class CThingAICreature : public CThingCreatureBase { public:
 };
 
 class CCombatManager { public:
-    void DeregisterCombatant(CThingAICreature* pCreature);   // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingAICreature*).
+    void DeregisterCombatant(CThingCreatureBase& pCreature);   // 0x006ED9C0
 };
 
 class CWorld { public:
@@ -56,6 +57,6 @@ void CAIStateGroup_Guildmaster::Cleanup()
     if (PBrain->PCreature->IsInMeleeAsAttacker()) {
         CThingAICreature* pCreature = PBrain->PCreature;
         CWorld* pWorld = &GetWorld();
-        pWorld->m_pCombatManager->DeregisterCombatant(pCreature);
+        pWorld->m_pCombatManager->DeregisterCombatant(*pCreature);
     }
 }

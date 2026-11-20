@@ -102,7 +102,8 @@ extern "C" double __cdecl sqrt(double);
 class CThingCreatureBase;
 class CCombatManager { public:
     void RegisterCombatant(CThingCreatureBase* creature, CThingCreatureBase* enemy, bool ranged);   // 0x006EDC50
-    void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
+    void DeregisterCombatant(CThingCreatureBase& creature);   // 0x006ED9C0
 };
 class CThingCreatureBase : public CThing { public:
     CCombatManager& GetCombatManager();         // 0x00661ED0
@@ -152,5 +153,5 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::Update()
         Terminate();
         return;
     }
-    GetCreature()->GetCombatManager().DeregisterCombatant(GetCreature());
+    GetCreature()->GetCombatManager().DeregisterCombatant(*GetCreature());
 }

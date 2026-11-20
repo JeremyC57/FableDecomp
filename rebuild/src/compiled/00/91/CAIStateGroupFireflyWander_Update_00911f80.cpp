@@ -81,11 +81,14 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const;   
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CEnvironment { public: bool IsDaytime();         // 0x006BB2C0
-};
+// NF122 (2026-11-20, q4490): 0x006BB2C0 is Ego_r.pdb / FableWin.pdb ?IsDay@CGameTimeManager@@QBE_NXZ (const), declared by
+//   engine/CGameTimeManager.h (FABLE_RETAIL_CGAMETIMEMANAGER + _ISDAY); was CEnvironment::IsDaytime() on a local CEnvironment model of the +0x1C member (CWorld +0x1C is PGameTimeManager, engine/CWorld.h).
+#define FABLE_RETAIL_CGAMETIMEMANAGER
+#define FABLE_RETAIL_CGAMETIMEMANAGER_ISDAY
+#include "engine/CGameTimeManager.h"
 class CWorld { public:
     unsigned char _pad00[0x1c];
-    CEnvironment* PEnvironment;                 // +0x1c
+    CGameTimeManager* PGameTimeManager;         // +0x1c
 };
 class CAIBrain { public:
     unsigned char _pad00[0x18];
@@ -132,7 +135,7 @@ struct CAIStateGroup_FireflyWander : CAIStateGroup_FlyingThingBase {
 
 void CAIStateGroup_FireflyWander::Update()
 {
-    if (!PeekWorld().PEnvironment->IsDaytime()) {
+    if (!PeekWorld().PGameTimeManager->IsDay()) {
         C3DVector target = StartPos;
         CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {

@@ -150,7 +150,8 @@ class CCombatManager { public:
     void SetAttackerAsReadyToAttack(CThingCreatureBase* attacker, bool ready);   // 0x006EA450
     bool IsAttackerReadyToAttack(CThingCreatureBase* attacker);                  // 0x006E93C0
     bool IsAttacker(const CThingCreatureBase& creature) const;                   // 0x006E92C0 ?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (Ego_r + FableWin)
-    void DeregisterCombatant(CThingCreatureBase* creature);                      // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
+    void DeregisterCombatant(CThingCreatureBase& creature);                      // 0x006ED9C0
 };
 
 class CTCCreatureModeManager { public:                 // interface 0x31
@@ -184,7 +185,7 @@ void CAIStateGroup_MeleeCombatNearby::Cleanup()
     if (((CThingCreatureBase*)PBrain->PCreature)->IsInMeleeAsAttacker()) {
         creature = (CThingCreatureBase*)PBrain->PCreature;
         world = &GetWorld();
-        world->CombatManager->DeregisterCombatant(creature);
+        world->CombatManager->DeregisterCombatant(*creature);
     }
     if (((CThingCreatureBase*)PBrain->PCreature)->IsInCombatMode()) {
         CTCCreatureModeManager* modes;

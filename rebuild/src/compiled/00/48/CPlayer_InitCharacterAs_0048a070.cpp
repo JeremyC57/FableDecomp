@@ -53,9 +53,11 @@ class CThing { public:
     FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     FABLE_FORCEINLINE CTCBase* GetTC(long type) { return Components.Find(type); }
 };
-struct CTCPlayerCharacterLinks {                       // TC type 0x7a
-    void AddThing(CThing* thing);                      // 0x006AEDC0
-};
+// NF122 (2026-11-20, q6325): the 0x7A (TCI_REGION_FOLLOWER) component's 0x006AEDC0 is Ego_r.pdb / FableWin.pdb
+//   ?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z, declared by engine/CTCRegionFollower.h (partial mode FOLLOWERS_ONLY: this row
+//   still models CThing locally); was the stand-in CTCPlayerCharacterLinks::AddThing(CThing*).
+#define FABLE_RETAIL_CTCREGIONFOLLOWER_FOLLOWERS_ONLY
+#include "engine/CTCRegionFollower.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -130,6 +132,6 @@ void CPlayer_Methods::InitCharacterAs(const CCharString& defName)
     if (static_cast<CPlayer_Methods&>(((CPlayerManager*)PlayerManager)->GetMainPlayer()).ControlledCreaturePtr().GetPItem() != 0) {
         CThing* creature = static_cast<CPlayer_Methods&>(((CPlayerManager*)PlayerManager)->GetMainPlayer()).ControlledCreaturePtr().GetPItem();
         if (creature->HasTC(0x7a))
-            ((CTCPlayerCharacterLinks*)creature->GetTC(0x7a))->AddThing(PlayerCharacterPtr().GetPItem());
+            ((CTCRegionFollower*)creature->GetTC(0x7a))->AddFollower(*PlayerCharacterPtr().GetPItem());
     }
 }

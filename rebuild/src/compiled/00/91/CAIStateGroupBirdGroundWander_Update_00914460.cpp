@@ -74,7 +74,8 @@ struct CThingSubsystem {
 };
 
 class CTCCreatureNavigation { public:                  // interface 7
-    bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool onMap);   // 0x006CB6E0
+    // NF122 (2026-11-20, q5010): Ego_r.pdb / FableWin.pdb ?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z (const, result by reference); was GetNearbyWanderPosition(const C3DVector&, float, C3DVector*, bool) non-const.
+    bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector& result, bool onMap) const;   // 0x006CB6E0
 };
 
 class CCharString { public:
@@ -148,7 +149,7 @@ void CAIStateGroup_BirdGroundWander::Update()
         CTCCreatureNavigation* navigation;
         creature->GetInterfaceT(&navigation, 7);
         C3DVector target;
-        if (!navigation->GetNearbyWanderPosition(creature->PeekPos(), 1.5f, &target, true))
+        if (!navigation->GetNearbyWanderPosition(creature->PeekPos(), 1.5f, target, true))
             break;
         bool reached = false;
         long result;

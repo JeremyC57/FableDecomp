@@ -40,7 +40,8 @@ struct CTCStealable {                           // interface 0x47
 };
 class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
-    void RemoveThingFromPrimarySlot(bool drop); // 0x006A1E00
+    // NF122 (2026-11-20, q4985): Ego_r.pdb / FableWin.pdb ?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z (returns the thing); was void RemoveThingFromPrimarySlot(bool).
+    CThing* RemoveThingFromPrimarySlot(bool drop);                      // 0x006A1E00
     bool IsCarryingThing(const CThing& thing) const;   // 0x006A1060 (Ego_r/FableWin ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z)
 };
 struct CTCEscapeFlags {                         // interface 0xAA

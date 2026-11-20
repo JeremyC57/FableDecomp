@@ -41,7 +41,8 @@ class CSoundPair { public:
     CSoundPair() : m_first(0), m_second(0) { }
 };
 class CTCCreatureNavigation { public:                  // interface type 7
-    bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector* out, bool flag);   // 0x006CB6E0
+    // NF122 (2026-11-20, q5010): Ego_r.pdb / FableWin.pdb ?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z (const, result by reference); was GetNearbyWanderPosition(const C3DVector&, float, C3DVector*, bool) non-const.
+    bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector& out, bool flag) const;   // 0x006CB6E0
 };
 class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -146,7 +147,7 @@ void CAIStateGroup_BalverineWander::Update()
             CThingCreatureBase* creature = GetCreature();
             bool found;
             creature->GetInterfaceR(&nav, 7, found);
-            if (!nav->GetNearbyWanderPosition(creature->GetPos(), 4.0f, &dest, true))
+            if (!nav->GetNearbyWanderPosition(creature->GetPos(), 4.0f, dest, true))
                 dest = startPos;
         }
         bool moving;

@@ -4,7 +4,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0xAA bit 10 of +0x34, 0xBC = CTCFollowed bit 28 of
 //          +0x34 on the followee, 0x7a bit 26 of +0x2c on the followee), CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 //          (PFollowee +0x14), CTCFollowed::IsCreatureValidFollower @ 0x006D4E60 / AddFollower @ 0x006D50C0, the 0x7a
-//          component's AddThing @ 0x006AEDC0, IsAbleToMove / RemoveMovementBlockingModes @ 0x0085F3E0 / 0x0085F600
+//          component's CTCRegionFollower::AddFollower @ 0x006AEDC0, IsAbleToMove / RemoveMovementBlockingModes @ 0x0085F3E0 / 0x0085F600
 //          (__fastcall), the creature's +0x60 sub-object virtual slots 83/84 (+0x14c IsPushableByHero, +0x150 Set).
 // Shape: the model and lookup forms of the landed Cleanup 0x00921870 (same class, same TU); the add-to-front flag is a
 //          frame bool passed by address and then by value; the valid-follower result is kept in bl.
@@ -143,9 +143,11 @@ class CTCFollowed { public:                            // interface 0xBC
     bool IsCreatureValidFollower(CThing* creature, bool* addToFront);   // 0x006D4E60
     void AddFollower(CThing* follower, bool addToFront);               // 0x006D50C0
 };
-struct CTCFollowerList {                        // interface 0x7a (descriptive)
-    void AddThing(CThing* thing);               // 0x006AEDC0 (manifest "InsertIntelligentPointerInList" is propagated)
-};
+// NF122 (2026-11-20, q6325): the 0x7A (TCI_REGION_FOLLOWER) component's 0x006AEDC0 is Ego_r.pdb / FableWin.pdb
+//   ?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z, declared by engine/CTCRegionFollower.h (partial mode FOLLOWERS_ONLY: this row
+//   still models CThing locally); was the stand-in CTCFollowerList::AddThing(CThing*).
+#define FABLE_RETAIL_CTCREGIONFOLLOWER_FOLLOWERS_ONLY
+#include "engine/CTCRegionFollower.h"
 struct CThingPhysicsSub {                       // the creature's +0x60 sub-object
     V16(a) V16(b) V16(c) V16(d) V16(e) virtual void f0(); virtual void f1(); virtual void f2();
     virtual bool IsPushableByHero();            // slot 83 (+0x14c)
@@ -180,9 +182,9 @@ void CAIStateGroup_MinionFollowThing::OnActivate()
                 bool valid = followed->IsCreatureValidFollower(GetCreature(), &addToFront);
                 followed->AddFollower(GetCreature(), addToFront);
                 if (ExpressionUsed && valid && !(GetCreature()->m_flags1c9 & 2)) {
-                    CTCFollowerList* list;
+                    CTCRegionFollower* list;
                     if (((CThing*)PFollowee.GetPItem())->GetInterface(&list, 0x7a))
-                        list->AddThing(GetCreature());
+                        list->AddFollower(*GetCreature());
                 }
             }
             FollowerAdded = true;

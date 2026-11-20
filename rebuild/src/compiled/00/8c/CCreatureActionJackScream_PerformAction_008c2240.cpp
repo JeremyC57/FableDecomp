@@ -91,7 +91,8 @@ class CWorldMap { public:
 };
 class CTCCarrying { public:
     CThing* GetThingInPrimarySlot() const;                         // 0x006A1440
-    void RemoveThingFromPrimarySlot(bool drop);              // 0x006A1E00
+    // NF122 (2026-11-20, q4985): Ego_r.pdb / FableWin.pdb ?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z (returns the thing); was void RemoveThingFromPrimarySlot(bool).
+    CThing* RemoveThingFromPrimarySlot(bool drop);                      // 0x006A1E00
 };
 class CBaseObject;
 class CBaseObjectPointer;

@@ -1,6 +1,6 @@
 // CAIStateGroup_MazeDefensiveMeleeCombat::OnReplace() -- deregister the creature from the combat manager if it is a registered combatant, and drop creature mode 0x19 if it is active
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
-// Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the world in a named local and the combat manager chained from it (`world->m_pCombatManager->DeregisterCombatant(creature)`): the manager loads straight into ecx after the GetPWorld call, then the creature push
+// Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the world in a named local and the combat manager chained from it (`world->m_pCombatManager->DeregisterCombatant(*creature)`): the manager loads straight into ecx after the GetPWorld call, then the creature push
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00954A20, length 129 bytes (+ int3 padding); the first block is the
 // CAIStateGroup_JackOfBladesBase::Cleanup (0x00972110) one.
 // Callees: CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (landed name; manifest
@@ -52,7 +52,8 @@ public:
 };
 
 class CCombatManager { public:
-    void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
+    void DeregisterCombatant(CThingCreatureBase& creature);   // 0x006ED9C0
 };
 
 class CWorld { public:
@@ -87,7 +88,7 @@ void CAIStateGroup_MazeDefensiveMeleeCombat::OnReplace()
     if (PBrain->PCreature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->PCreature;
         CWorld* world = &GetWorld();
-        world->m_pCombatManager->DeregisterCombatant(creature);
+        world->m_pCombatManager->DeregisterCombatant(*creature);
     }
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterface(&modes, 0x31);

@@ -108,6 +108,13 @@ public:
 #endif
     typedef std::vector<CThingGraphicArgPasser, std::allocator<CThingGraphicArgPasser> > ThingGraphicArgPassers;
     void ScreenFilterSetFlags(const ThingGraphicArgPassers& things, void* handle);   // 0x00881A40
+#ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_DELETESCREENFILTERENTRY
+    // Opt-in (NF122, row 0x006B83F0 CEnvironmentSpellEffectInterpolator::ScreenFilterFadeOut): Ego_r.pdb / FableWin.pdb
+    // ?DeleteScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@QAEXPAXM@Z = retail 0x008818A0 (the third of the
+    // DeleteRadialBlurEntry 0x00881820 / DeleteDisplacementEntry 0x00881860 run, Ego_r 0x008C2320 / 0x008C23A0 / 0x008C2430).
+    // Declaration only.
+    void DeleteScreenFilterEntry(void* handle, float fadeTime);       // 0x008818A0
+#endif
 #ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_PROCESSES
 // agentFAM05 (2026-11-11): the per-effect custom process interface and its three processes (Ego_r / FableWin
 // name sets: ??_EICustomProcessInterface@CScreenEffectPriorityStack@NScreenEffect@@, ?OnErase@CScreenFilterProcess@..@@UAEXPAUCStackEntry@23@@Z,

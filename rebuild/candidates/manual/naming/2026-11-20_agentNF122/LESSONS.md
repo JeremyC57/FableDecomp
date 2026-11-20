@@ -1,0 +1,7 @@
+# NF122 lessons (one line each)
+- A partial shared-header mode (a member-only class block behind a member-specific macro, guarded off when the full opt-in is defined) moves rows that model CThing / ETCInterfaceType locally off their stand-in classes in one grade each, where including the real header would clash with the local enum.
+- A free extern "C" / __fastcall stand-in for a template member (0x004A9EF0 GetPFirstLeafThing, 0x00704580 CCountedPointer operator=) is usually one explicit instantiation away from the shared header's body; look for a landed sibling instance and copy its macro set.
+- Retail's `mov cl,al ; not cl ; test cl,1` dead-bit test in a scan loop is FABLE_RETAIL_CTHING_SCANINCLUSION_ISALIVE; the default inline body gives a plain `test al,1` (DIFFER 109v118).
+- A row with no Leaf line may define a stand-in self symbol nobody binds (0x0088FFB0, 0x004A9EF0): check the exe-scan refs; when the only caller already binds the PDB spelling, the self re-author closes it without touching callers.
+- Pointer -> reference and `void` -> `CThing*` return respellings of a local callee declaration grade RELOCATION_MATCH first time on every row tried (31 rows over q4266, q5010, q4985): a small regex transformer with a balanced-paren argument rewrite did all of them.
+- Probe all REFS rows of the not-started entries in one background run first: it ran 284 compiles in a few minutes and found a binder no table listed (0x00946630 for q4490).

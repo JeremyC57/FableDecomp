@@ -17,6 +17,7 @@
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
+class CThingCreatureBase;
 class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
@@ -113,7 +114,9 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
 }
 
 class CCombatManager { public:
-    void DeregisterCombatant(CThing* creature); // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+    //   (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThing*).
+    void DeregisterCombatant(CThingCreatureBase& creature); // 0x006ED9C0
 };
 class CWorld { public:
     unsigned char _pad[0x4c];
@@ -148,9 +151,9 @@ struct CAIStateGroup_ScorpionKing : CAIStateGroupBase {
 void CAIStateGroup_ScorpionKing::Cleanup()
 {
     if (((CThingCreatureBase*)PBrain->PCreature)->IsInMeleeAsAttacker()) {
-        CThing* combatant = PBrain->PCreature;
+        CThingCreatureBase* combatant = (CThingCreatureBase*)PBrain->PCreature;
         CWorld* world = &GetWorld();
-        world->PCombatManager->DeregisterCombatant(combatant);
+        world->PCombatManager->DeregisterCombatant(*combatant);
     }
     CThing* creature = PBrain->PCreature;
     if (creature != 0 && !(creature->m_flags91 & 1) && !(((CThingCreatureBase*)creature)->Health < 1.0f))

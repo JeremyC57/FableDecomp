@@ -44,7 +44,8 @@ class CThing { public:
 };
 class CTCCreatureNavigation { public:                  // interface 7
     bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance) const;   // 0x006CB620
-    bool GetNearbyWanderPosition(const C3DVector* centre, float radius, C3DVector* result, bool flag); // 0x006CB6E0
+    // NF122 (2026-11-20, q5010): Ego_r.pdb / FableWin.pdb ?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z (const, result by reference); was GetNearbyWanderPosition(const C3DVector*, float, C3DVector*, bool) non-const.
+    bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector& result, bool flag) const; // 0x006CB6E0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -99,7 +100,7 @@ bool CAIStateGroupCreatureUseCoverBaseMethods::GetHiddenCoverPos(C3DVector& resu
         radius = 1.5f;
     C3DVector offset(away.X * (radius * 0.75f), away.Y * (radius * 0.75f), away.Z * (radius * 0.75f));
     C3DVector target = cover->GetPos() + offset;
-    if (navigation->GetNearbyWanderPosition(&target, radius * 0.15f, &result, false)
+    if (navigation->GetNearbyWanderPosition(target, radius * 0.15f, result, false)
         && navigation->IsAbleToNavigateFromPosToPos(GetCreature()->GetPos(), result, 2.0f))
         return true;
     return false;

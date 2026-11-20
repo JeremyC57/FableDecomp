@@ -9,7 +9,7 @@
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 class CThing { public: const C3DVector& GetPos() const; };
-struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; unsigned char BetweenMapAndEmitter[0x10]; struct EmitterMethods* ParticleEmitter; ScriptMethods GetScriptThing()const; }; //004C73D0,004C7E50
+struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; unsigned char BetweenMapAndEmitter[0x10]; class CTCDParticleEmitter* ParticleEmitter; ScriptMethods GetScriptThing()const; }; //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
 // Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
@@ -106,14 +106,18 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Dat
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
 CThingNative* __fastcall CreateParticle(const CCharString&,const C3DVector&,bool); //006E0970
 class CRightHandedSet;
-struct EmitterMethods{void AttachToThing(CThingNative*,long,const CCharString&,long,float);void SetAlwaysUpdate(bool);void SetEmitterOrientation(const CRightHandedSet&);}; //006E0BE0,006E0590
+// NF122 (2026-11-20, q6227 / q6228): the TCI_PARTICLE_EMITTER (0x4B) component's members are Ego_r.pdb / FableWin.pdb
+//   CTCDParticleEmitter::SetEmitterOrientation (0x006E0480) / SetAlwaysUpdate (0x006E0590), declared by engine/CTCDParticleEmitter.h (partial mode METHODS_ONLY: this row still models CThing
+//   locally); was the stand-in EmitterMethods (CThingNative* first argument).
+#define FABLE_RETAIL_CTCDPARTICLEEMITTER_METHODS_ONLY
+#include "engine/CTCDParticleEmitter.h"
 class CRightHandedSet{ public:C3DVector Up,Forward;CRightHandedSet(){Up.X=0;Up.Y=0;Up.Z=1;Forward.X=0;Forward.Y=1;Forward.Z=0;}void Rotate(const C3DVector&,float);FABLE_FORCEINLINE void RotateAboutUp(float angle){Rotate(Up,angle);}}; //00A22F80
 void SetEmitterOrientationDeclaration();
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateEffect(const CCharString&,const C3DVector&,const CCharString&,float,bool,bool)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateEffect(const CCharString& name,const C3DVector& pos,const CCharString&,float angle,bool,bool always)const{
  CThingNative* particle=CreateParticle(name,pos,false);
  if(particle&&(particle->UsingComponents[2]&0x800)){
- EmitterMethods* emitter=particle->ParticleEmitter;
+ CTCDParticleEmitter* emitter=particle->ParticleEmitter;
  CRightHandedSet orientation;orientation.RotateAboutUp(angle);emitter->SetEmitterOrientation(orientation);emitter->SetAlwaysUpdate(always);return particle->GetScriptThing();
  }return ScriptMethods();
 }

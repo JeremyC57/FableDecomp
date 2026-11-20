@@ -102,6 +102,13 @@ public:
     // 0x006BB390 (`push <end> ; push <start> ; mov ecx,[world+1Ch] ; call`). Declaration only: no layout change.
     bool IsTimeBetween(long start, long end) const;                 // 0x006BB390
 #endif
+#ifdef FABLE_RETAIL_CGAMETIMEMANAGER_ISDAY
+    // Opt-in (NF122, q4490; row 0x006BB2C0 and its callers): Ego_r.pdb 0x006F6A60 / FableWin.pdb 0x02460170
+    // ?IsDay@CGameTimeManager@@QBE_NXZ, out of line in retail at 0x006BB2C0 (Ego_r order IsDaySounds / IsNightTime / IsEvening /
+    // IsDawn / IsDay / SetAsUsingVillageTime / GetTimeAs24HourClock = retail 0x006BB1E0 / 0x006BB210 / .. / 0x006BB2C0 / 0x006BB2F0 /
+    // 0x006BB300; the body tests Time +0x08 against 0.3333 / 0.7083). Declaration only: no layout change.
+    bool IsDay() const;                                             // 0x006BB2C0
+#endif
 private:
     CWorld*             World;                                      // +0x00
     CMainGameComponent* GameComponent;                              // +0x04

@@ -1,0 +1,67 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x006B83F0	CEnvironmentSpellEffectInterpolator	ScreenFilterFadeOut	?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z	std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>	?ConsVal@Alloc@@QAEXPAUPair@@0@Z	Ego_r.pdb 0x006F4390 + FableWin.pdb 0x0246D190; the PDB-named CGameScriptInterface::ScreenFilterFadeOut 0x00890200 jumps here with the +0x1964 interpolator and its (float, void*) args; landed 0x0079CF30 binds the spelling; body forwards (handle, time) to ScreenEffectPriorityStack +0x90 DeleteScreenFilterEntry 0x008818A0. Re-authored on engine/CEnvironmentSpellEffectInterpolator.h (RELOCATION_MATCH)
+0x0088FFB0	CGameScriptInterface	TransitionToThemeExternals	?TransitionToThemeExternals@CGameScriptInterface@@UBEXABVCCharString@@M@Z	CGameScriptInterface::TransitionToThemeExternals	?CGameScriptInterface_TransitionToThemeExternals@@YIXPAVCGameScriptInterface@@HHH@Z	catalog name already right; the row defined a free __fastcall stand-in. engine/CGameScriptInterface.h slot 660 declares the member (both PDB name sets ?TransitionToThemeExternals@CGameScriptInterface@@UBEXABVCCharString@@M@Z); body = TransitionToThemeAllInternals 0x0088FF30 without the channel loop (channel 0). Ported onto the shared headers (RELOCATION_MATCH); no landed row references 0x0088FFB0 (exe scan)
+0x006BB2C0	CGameTimeManager	IsDay	?IsDay@CGameTimeManager@@QBE_NXZ	CGameTimeManager::IsDay	?IsDay_006bb2c0@CGameTimeManager@@QAE_NXZ	Ego_r.pdb 0x006F6A60 + FableWin.pdb 0x02460170 (const); Ego_r member order IsDaySounds / IsNightTime / IsEvening / IsDawn / IsDay / SetAsUsingVillageTime / GetTimeAs24HourClock matches retail 0x006BB1E0 / 0x006BB210 / .. / 0x006BB2C0 / 0x006BB2F0 / 0x006BB300; every caller reaches it through CWorld +0x1C (PGameTimeManager). Re-authored on engine/CGameTimeManager.h (ISDAY opt-in), RELOCATION_MATCH; all 10 REFS rows now bind this spelling (probe + regrade)
+0x004A9EF0	CThingSearchTools	GetPFirstLeafThing<CFilter_Bind2<CThingFilter_HasTC,CThingFilter_InRegion>,CThing>	??$GetPFirstLeafThing@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InRegion@@@@VCThing@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InRegion@@@@PAPAVCThing@@@Z	CThingSearchTools::GetPFirstLeafThing<CFilter_Bind2<CThingFilter_HasTC,CThingFilter_InRegion>,CThing>	?CThingSearchTools_GetPFirstLeafThing@@YI_NPAXHPAUFilter@@PAPAUThing@@@Z	catalog name already right; the row defined a free __fastcall stand-in. Its only landed caller 0x004A3740 (exe scan) binds this template spelling; re-authored on engine/CThingSearchTools.h (template body) + CThing.h (STATGETTYPE, SCANINCLUSION_ISALIVE) + CFilter_Bind2.h + CThingFilter_HasTC.h (OUTOFLINE), RELOCATION_MATCH. Callee 0x006A80A0 now binds the PDB ??RCThingFilter_HasTC@@QBE_NABVCThing@@@Z (Ego_r 0x005A3E00 + FableWin 0x01F95560), 0x006A7960 the PDB ??RCThingFilter_InRegion@@QBE_NABVCThing@@@Z, 0x0049C780 the PeekTypeList spelling 0x0092C260 binds
+0x006CB6E0	CTCCreatureNavigation	GetNearbyWanderPosition	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	CTCCreatureNavigation::GetNearbyWanderPosition	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z	leaf-only (catalog name right): Ego_r.pdb 0x00701120 + FableWin.pdb 0x024787D0 (const, result by reference; engine/CTCCreatureNavigation.h declares the same); respelled in place on the row local model, RELOCATION_MATCH; all 21 REFS rows now bind this spelling (12 already, 9 respelled by NF122)
+0x00704580	CCountedPointer<CScriptThing>	operator=	??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z	CCountedPointer<CScriptThing>::operator=	@CCountedPtr_assign@12	catalog name already right; the row defined a free extern "C" __fastcall stand-in on local RefBlock / CCountedPtr models. FableWin.pdb 0x027C7B70 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z; CScriptThing::PImp is CCountedPointer<CScriptThing> (engine/CScriptThing.h) and 0x00CFE030 calls it on &sparkles.PImp; 20 landed callers bind this spelling (probe). Re-authored as the explicit instance of the engine/CCountedPointer.h in-class operator= (recipe of landed 0x00754F10), RELOCATION_MATCH. Possibly ICF-folded with CCountedPointer<CDiskFileWin32>::operator= (Ego_r 0x00A35EE0): no landed row references the address with another T, so nothing is forced across a fold (GOTCHAS nf104)
+0x006ED9C0	CCombatManager	DeregisterCombatant	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	CCombatManager::DeregisterCombatant	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	leaf-only (catalog name right): Ego_r.pdb 0x007173E0 + FableWin.pdb 0x02412E40 (by reference; engine/CCombatManager.h declares the same); respelled in place on the row local models, RELOCATION_MATCH; all 18 REFS rows now bind this spelling (3 already, 15 respelled by NF122)
+# Section 2
+caller_row	old_symbol	new_symbol	callee_address
+0x006B83F0	?Construct@Storage@@QAEXPAUPair@@0@Z	?DeleteScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@QAEXPAXM@Z	0x008818A0
+0x00890200	?FadeOut@CXMVPlaybackInfo@@QAEXMPAX@Z	?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z	0x006B83F0
+0x0079D020	?RemoveFilter_006b83f0@CEnvironmentSpellEffects@@QAEXJPAX@Z	?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z	0x006B83F0
+0x0079D110	?RemoveFilter_006b83f0@CEnvironmentSpellEffects@@QAEXJPAX@Z	?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z	0x006B83F0
+0x0088FFB0	?method@Inner@@QAEXHHHH@Z	?TransitionToTheme@CEnvironment@@QAEXJJJM@Z	0x006B3800
+0x0088FFB0	_GetTheme@4	?Get@CGameDefinitionManager@@SIAAV1@XZ	0x0044C6B0
+0x0088FFB0	?count@Thing@@QAEHXZ	?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z	0x009AD410
+0x0088FF30	?TransitionToTheme_006b3800@CEnvironment@@QAEXHHJM@Z	?TransitionToTheme@CEnvironment@@QAEXJJJM@Z	0x006B3800
+0x0048A070	?AddThing@CTCPlayerCharacterLinks@@QAEXPAVCThing@@@Z	?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z	0x006AEDC0
+0x009212C0	?AddThing@CTCFollowerList@@QAEXPAVCThing@@@Z	?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z	0x006AEDC0
+0x008A0B10	?AddFollower@CTCRegionFollowerMethods@@QAEXAAUCThingNative@@@Z	?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z	0x006AEDC0
+0x008A0B10	?RemoveFollower@CTCRegionFollowerMethods@@QAEXAAUCThingNative@@@Z	?RemoveFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z	0x006AEBA0
+0x0065C781	?IsDay@CGameTimeManager@@QAE_NXZ	?IsDay@CGameTimeManager@@QBE_NXZ	0x006BB2C0
+0x00893EC0	?IsDay@TimeManager893ec0@@QAE_NXZ	?IsDay@CGameTimeManager@@QBE_NXZ	0x006BB2C0
+0x00911F80	?IsDaytime@CEnvironment@@QAE_NXZ	?IsDay@CGameTimeManager@@QBE_NXZ	0x006BB2C0
+0x00946630	?Check_006bb2c0@M@@QAE_NXZ	?IsDay@CGameTimeManager@@QBE_NXZ	0x006BB2C0
+0x004A9EF0	??RCThingFilter_HasTC@@QBE_NPAUThing@@@Z	??RCThingFilter_HasTC@@QBE_NABVCThing@@@Z	0x006A80A0
+0x004A9EF0	??RCThingFilter_InRegion@@QBE_NPAUThing@@@Z	??RCThingFilter_InRegion@@QBE_NABVCThing@@@Z	0x006A7960
+0x004A9EF0	?GetThingList@@YGPAUList@@H@Z	?PeekTypeList@CThingSearchTools@@IBEABV?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@J@Z	0x0049C780
+0x0089F910	?AttachToThing@EmitterMethods@@QAEXPAUCThingNative@@JABVCCharString@@JM@Z	?AttachToThing@CTCDParticleEmitter@@QAEXAAVCThing@@JABVCCharString@@JM@Z	0x006E0BE0
+0x0089F910	?SetAlwaysUpdate@EmitterMethods@@QAEX_N@Z	?SetAlwaysUpdate@CTCDParticleEmitter@@QAEX_N@Z	0x006E0590
+0x0089F9E0	?SetAlwaysUpdate@EmitterMethods@@QAEX_N@Z	?SetAlwaysUpdate@CTCDParticleEmitter@@QAEX_N@Z	0x006E0590
+0x0089F9E0	?SetEmitterOrientation@EmitterMethods@@QAEXABVCRightHandedSet@@@Z	?SetEmitterOrientation@CTCDParticleEmitter@@QAEXABVCRightHandedSet@@@Z	0x006E0480
+0x0080D0B0	?CreateEmitter@CParticleEmitterManager@@SIPAVCThing@@JJMABVC3DVector@@J@Z	?Create@CTCDParticleEmitter@@SIPAVCThing@@JJMABVC3DVector@@_N@Z	0x006E11F0
+0x007A9FE0	?CreateScaledEffect@@YIPAVCThing@@JJMABVC3DVector@@_N@Z	?Create@CTCDParticleEmitter@@SIPAVCThing@@JJMABVC3DVector@@_N@Z	0x006E11F0
+0x006A1E00	?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	0x006A1060
+0x009236C0	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@J@Z	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z	0x006A1E00
+0x00848D10	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEX_N@Z	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z	0x006A1E00
+0x008C2240	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEX_N@Z	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z	0x006A1E00
+0x009647C0	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEX_N@Z	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z	0x006A1E00
+0x0096CFC0	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEX_N@Z	?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z	0x006A1E00
+0x00911710	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	0x006CB6E0
+0x009118A0	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	0x006CB6E0
+0x00914460	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	0x006CB6E0
+0x0091BD10	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	0x006CB6E0
+0x00959A60	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	0x006CB6E0
+0x0095E900	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	0x006CB6E0
+0x0097FBE0	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	0x006CB6E0
+0x00665DF0	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NPBVC3DVector@@MPAV2@_N@Z	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	0x006CB6E0
+0x00970930	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NPBVC3DVector@@MPAV2@_N@Z	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	0x006CB6E0
+0x00D643A0	??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z	??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z	0x00704580
+0x00D67270	??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z	??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z	0x00704580
+0x007E5B40	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x007FC820	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x0091D850	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x0093E240	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x0093E560	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x009540C0	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x00954A20	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x0095C1F0	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x0095D200	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x0095D3A0	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x00962B80	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x0096EDB0	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x00972110	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x00977770	?DeregisterCombatant@CCombatManager@@QAEXPAVCThingAICreature@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0
+0x0097B780	?DeregisterCombatant@CCombatManager@@QAEXPAVCThing@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006ED9C0

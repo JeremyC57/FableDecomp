@@ -14,7 +14,8 @@ public:
 };
 
 class CCombatManager { public:
-    void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
+    void DeregisterCombatant(CThingCreatureBase& creature);   // 0x006ED9C0
 };
 
 class CWorld { public:
@@ -45,6 +46,6 @@ void CAIStateGroup_MazeBase::OnReplace()
     if (PBrain->Creature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->Creature;
         CWorld* world = &GetWorld();
-        world->m_pCombatManager->DeregisterCombatant(creature);
+        world->m_pCombatManager->DeregisterCombatant(*creature);
     }
 }

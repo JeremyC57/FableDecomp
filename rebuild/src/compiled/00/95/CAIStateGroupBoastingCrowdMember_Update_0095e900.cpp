@@ -93,7 +93,8 @@ class CTCCreatureGroupBoastingCrowd { public:           // interface 0x74
 class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread,
                                    C3DVector* out);     // 0x006CB780
-    bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector* out, bool flag);   // 0x006CB6E0
+    // NF122 (2026-11-20, q5010): Ego_r.pdb / FableWin.pdb ?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z (const, result by reference); was GetNearbyWanderPosition(const C3DVector&, float, C3DVector*, bool) non-const.
+    bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector& out, bool flag) const;   // 0x006CB6E0
 };
 class CAIBrain { public:
     unsigned char _pad00[0x18];
@@ -148,7 +149,7 @@ void CAIStateGroup_BoastingCrowdMember::Update()
                             heroPos = hero->GetPos();
                             if ((GetCreature()->GetPos() - directed).GetLength() > 4.0f
                                 && nav->GetNearbyWanderPosition(directed,
-                                       (GFFloatRandom(0.7f, GetPWorldSeed()) + 0.3f) * 3.0f, &dest, false))
+                                       (GFFloatRandom(0.7f, GetPWorldSeed()) + 0.3f) * 3.0f, dest, false))
                                 moving = true;
                             else
                                 moving = false;

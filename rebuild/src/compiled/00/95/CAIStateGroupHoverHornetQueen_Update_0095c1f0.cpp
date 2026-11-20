@@ -36,7 +36,8 @@ public:
     bool IsReadyForPhaseChange() const;   // 0x007AEE90
 };
 class CCombatManager { public:
-    void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
+    void DeregisterCombatant(CThingCreatureBase& creature);   // 0x006ED9C0
     void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
 };
 class CWorld { public:
@@ -102,7 +103,7 @@ void CAIStateGroup_HoverHornetQueen::Update()
         {
             CThingCreatureBase* creature = GetCreature();
             CWorld* world = &GetWorld();
-            world->PCombatManager->DeregisterCombatant(creature);
+            world->PCombatManager->DeregisterCombatant(*creature);
         }
         if (WaitWhileBabiesFight() == 1 || !IsStillRunnable()) {
             Terminate();

@@ -7,7 +7,7 @@
 // @ 0x006ED9C0, CVectorMap::LowerBound @ 0x0040F020 (inlined interface lookup, type 0x31 =
 // CTCCreatureModeManager), CTCCreatureModeManager::RemoveMode(unsigned long) @ 0x0073ABA0.
 //
-// Shape: `creature->GetCombatManager()->DeregisterCombatant(creature)` with the creature re-read once into
+// Shape: `creature->GetCombatManager()->DeregisterCombatant(*creature)` with the creature re-read once into
 // ecx, pushed as the argument first and then used as `this` of the getter (arguments before the object
 // expression); then the out-parameter GetInterface template with its result ignored, RemoveMode(0x19)
 // tail-duplicated into the hit and miss arms (the miss arm reads the never-written manager local from the
@@ -48,7 +48,8 @@ class CTCCreatureModeManager { public:                 // interface type 0x31
 };
 
 class CCombatManager { public:
-    void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
+    void DeregisterCombatant(CThingCreatureBase& creature);   // 0x006ED9C0
 };
 
 class CAIBrain { public:
@@ -72,7 +73,7 @@ struct CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose : CAIStateGroupBase {
 void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Cleanup()
 {
     if (PBrain->PCreature->IsInMeleeAsAttacker())
-        PBrain->PCreature->GetCombatManager().DeregisterCombatant(PBrain->PCreature);
+        PBrain->PCreature->GetCombatManager().DeregisterCombatant(*PBrain->PCreature);
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterface(&modes, 0x31);
     modes->RemoveMode(0x19);

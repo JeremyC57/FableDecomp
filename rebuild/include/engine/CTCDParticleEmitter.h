@@ -111,6 +111,25 @@ public:
  CTCDParticleEmitter & operator=(const CTCDParticleEmitter & p0);
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDParticleEmitter)==72);
+#elif defined(FABLE_RETAIL_CTCDPARTICLEEMITTER_METHODS_ONLY)
+// Partial mode (NF122, q6226 / q6227 / q6228): member declarations only, without the CTCBase base, for landed rows that still model
+// CThing / ETCInterfaceType locally and so cannot include engine/CTCBase.h (0x0080D0B0, 0x0089F910, 0x0089F9E0). Name binding only:
+// an includer must never size or derive from the class here. Ego_r.pdb / FableWin.pdb spellings:
+// ?Create@CTCDParticleEmitter@@SIPAVCThing@@JJMABVC3DVector@@_N@Z (Ego_r 0x00535970, FableWin 0x01D62B20; retail 0x006E11F0),
+// ?SetEmitterOrientation@CTCDParticleEmitter@@QAEXABVCRightHandedSet@@@Z (Ego_r 0x00534990; retail 0x006E0480),
+// ?SetAlwaysUpdate@CTCDParticleEmitter@@QAEX_N@Z (retail 0x006E0590), ?AttachToThing@CTCDParticleEmitter@@QAEXAAVCThing@@JABVCCharString@@JM@Z
+// (retail 0x006E0BE0), as in the default class below.
+class CThing;
+class CCharString;
+class C3DVector;
+class CRightHandedSet;
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long effect, long low_effect, float blend, const C3DVector& pos, bool flag);   // 0x006E11F0
+    void SetEmitterOrientation(const CRightHandedSet& orientation);                                   // 0x006E0480
+    void SetAlwaysUpdate(bool always_update);                                                          // 0x006E0590
+    void AttachToThing(CThing& thing, long attach_type, const CCharString& helper_name, long helper_index, float offset);   // 0x006E0BE0
+};
 #else
 // New shared header (chunk 1024, row 0x007CD390 CTCMultiStrike::CTCMultiStrike): the particle-emitter component, interface
 // TCI_PARTICLE_EMITTER (75; the row's inline GetTC looks up 0x4B). Declarations only, Ego_r.pdb / FableWin.pdb spellings:

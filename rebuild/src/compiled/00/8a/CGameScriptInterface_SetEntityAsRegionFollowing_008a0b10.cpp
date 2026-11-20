@@ -111,13 +111,17 @@ virtual bool IsEqualTo(const ScriptMethods&) const; //slot78 0x004AA8A0
 FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
-struct CTCRegionFollowerMethods{void AddFollower(CThingNative&);void RemoveFollower(CThingNative&);}; //006AEDC0,006AEBA0
+// NF122 (2026-11-20, q6325): the 0x7A (TCI_REGION_FOLLOWER) component's 0x006AEDC0 is Ego_r.pdb / FableWin.pdb
+//   ?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z, declared by engine/CTCRegionFollower.h (partial mode FOLLOWERS_ONLY: this row
+//   still models CThing locally); was the stand-in CTCRegionFollowerMethods::AddFollower / RemoveFollower(CThingNative&) (0x006AEBA0 too: ?RemoveFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z).
+#define FABLE_RETAIL_CTCREGIONFOLLOWER_FOLLOWERS_ONLY
+#include "engine/CTCRegionFollower.h"
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetEntityAsRegionFollowing(const ScriptMethods&,const ScriptMethods&,bool)const;};
 void CGameScriptInterfaceMethods::SetEntityAsRegionFollowing(const ScriptMethods& leader,const ScriptMethods& follower,bool follow)const{
  if(leader.IsAlive()&&follower.IsAlive()){
  CThingNative* owner=leader.GetPThing();CThingNative* target=follower.GetPThing();
  if(owner&&!owner->Dead&&target&&!target->Dead&&(owner->UsingComponents[3]&0x4000000)){
  ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)122);ComponentEntry* end=map->Finish;
- CTCRegionFollowerMethods* region=static_cast<CTCRegionFollowerMethods*>(((void*)(it==end||it->first>122?end:it)->second));
+ CTCRegionFollower* region=static_cast<CTCRegionFollower*>(((void*)(it==end||it->first>122?end:it)->second));
  if(follow)region->AddFollower(*target);else region->RemoveFollower(*target);
  }}}

@@ -1,13 +1,14 @@
-class CXMVPlaybackInfo
-{
-public:
-    void FadeOut(float fadeOutTime, void* pFadeOutContext);
-};
+// Leaf: ?ScreenFilterFadeOut@CGameScriptInterface@@UBEXMPAX@Z
+// NF122 (2026-11-20, q6936): the jump target 0x006B83F0 is CEnvironmentSpellEffectInterpolator::ScreenFilterFadeOut(float, void*)
+//   (Ego_r.pdb 0x006F4390 + FableWin.pdb 0x0246D190; the environment's +0x1964 member is the spell-effect interpolator), declared by
+//   engine/CEnvironmentSpellEffectInterpolator.h (FADEOUT); was the stand-in CXMVPlaybackInfo::FadeOut.
+#define FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FADEOUT
+#include "engine/CEnvironmentSpellEffectInterpolator.h"
 
 struct Field18Overlay
 {
     char m_Pad00[0x1964];
-    CXMVPlaybackInfo* m_pPlaybackInfo;
+    CEnvironmentSpellEffectInterpolator* m_pSpellEffectInterpolator;
 };
 
 struct Field04Overlay
@@ -32,5 +33,5 @@ void CGameScriptInterface::ScreenFilterFadeOut(float fadeOutTime, void* pFadeOut
     const SelfOverlay* self = (const SelfOverlay*)this;
     Field04Overlay* field04 = self->m_Field04;
     Field18Overlay* field18 = field04->m_Field18;
-    field18->m_pPlaybackInfo->FadeOut(fadeOutTime, pFadeOutContext);
+    field18->m_pSpellEffectInterpolator->ScreenFilterFadeOut(fadeOutTime, pFadeOutContext);
 }

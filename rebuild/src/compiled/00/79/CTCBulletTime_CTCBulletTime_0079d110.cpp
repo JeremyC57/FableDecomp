@@ -3,7 +3,7 @@
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail 0x0079D110, 444 bytes (plain `ret`), vtable 0x0126C49C.
 // Callees: CTCBase::GetWorld @ 0x00686A70, bullet-time manager RemoveBulletTimeSlowdown @ 0x004C6140 (world +0x68),
-// LowerBound @ 0x0040F020 (inlined GetInterface, sound emitter 0x10), StopSample @ 0x0066ADD0, filter removal @ 0x006B83F0,
+// LowerBound @ 0x0040F020 (inlined GetInterface, sound emitter 0x10), StopSample @ 0x0066ADD0, CEnvironmentSpellEffectInterpolator::ScreenFilterFadeOut @ 0x006B83F0,
 // CDefStringTable::GetString(long) @ 0x009D49B0 on GDefStringTable 0x013CA828, CTCBulletTime::PlaySoundW @ 0x0079CE80
 // (retail passes the CCharString's address), ~CCharString @ 0x0099EAE0, CBaseIntelligentPointer GetPItem 0x00A01B50 /
 // ctor 0x00A01B10 / SetPItem 0x00A01B90 / dtor 0x00A01C10, CParticleEmitter::Kill @ 0x00AEE8C0, ~CBaseClass @ 0x0099A2E0,
@@ -61,12 +61,14 @@ public:
 public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-struct CEnvironmentSpellEffects {
-    void RemoveFilter_006b83f0(long mode, void* key);   // 0x006B83F0 (descriptive)
-};
+// NF122 (2026-11-20, q6936): 0x006B83F0 is CEnvironmentSpellEffectInterpolator::ScreenFilterFadeOut(float time, void* handle)
+//   (Ego_r.pdb 0x006F4390 + FableWin.pdb 0x0246D190; CGameScriptInterface::ScreenFilterFadeOut 0x00890200 jumps there), declared by
+//   engine/CEnvironmentSpellEffectInterpolator.h (FADEOUT); was the descriptive CEnvironmentSpellEffects::RemoveFilter_006b83f0(long, void*).
+#define FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FADEOUT
+#include "engine/CEnvironmentSpellEffectInterpolator.h"
 class CEnvironment { public:
     unsigned char _pad00[0x1964];
-    CEnvironmentSpellEffects* SpellEffects;     // +0x1964
+    CEnvironmentSpellEffectInterpolator* SpellEffects;     // +0x1964
 };
 class CBulletTimeManager { public:
     // NF108 (2026-11-19, q5099): Ego_r.pdb 0x004C8B80 + FableWin.pdb 0x01D28090 ?RemoveBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXPAX@Z
@@ -122,7 +124,7 @@ class CSpecialAbilitiesBulletTimeDef { public:
     unsigned char _pad08[0xd0 - 0x08];
     long EndSoundStringID;                      // +0xd0
     unsigned char _padd4[0x188 - 0xd4];
-    long FilterRemoveMode;                      // +0x188
+    float ScreenFilterFadeOutSecs;              // +0x188 (Ego_r CSpecialAbilitiesBulletTimeDef member; retail offset)
     void Release() { if (--RefCount == 0) Destroy(); }
 };
 struct CDefPointer_BulletTimeDef {
@@ -180,10 +182,10 @@ CTCBulletTime::~CTCBulletTime()
     StopSound(LoopSound);
     if (CutSceneCancel) {
         CWorld* world = (&GetWorld());
-        world->PEnvironment->SpellEffects->RemoveFilter_006b83f0(0, ScreenFilterKey);
+        world->PEnvironment->SpellEffects->ScreenFilterFadeOut(0.0f, ScreenFilterKey);
     } else {
         CWorld* world = (&GetWorld());
-        world->PEnvironment->SpellEffects->RemoveFilter_006b83f0(PDef->FilterRemoveMode, ScreenFilterKey);
+        world->PEnvironment->SpellEffects->ScreenFilterFadeOut(PDef->ScreenFilterFadeOutSecs, ScreenFilterKey);
         CCharString sound = GDefStringTable.GetString(PDef->EndSoundStringID);
         PlaySoundW(sound, true);
     }

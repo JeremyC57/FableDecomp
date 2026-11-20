@@ -28,4 +28,19 @@ public:
 #endif // FABLE_RETAIL_CTCREGIONFOLLOWER_REGIONLOAD
 };
 #endif
+#if defined(FABLE_RETAIL_CTCREGIONFOLLOWER_FOLLOWERS_ONLY) && !defined(FABLE_RETAIL_CTCREGIONFOLLOWER)
+// Partial mode (NF122, q6325): only the follower-list members, for landed rows that still model CThing / ETCInterfaceType locally
+// and so cannot include engine/CTCBase.h (0x0048A070 CPlayer::InitCharacterAs, 0x008A0B10 CGameScriptInterface::
+// SetEntityAsRegionFollowing, 0x009212C0 CAIStateGroup_MinionFollowThing::OnActivate). Name binding only: the CTCBase base and the
+// members are left out, so an includer must never size or derive from the class here. Ego_r.pdb / FableWin.pdb
+// ?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z (Ego_r 0x006C9330, FableWin 0x021F3DD0) = retail 0x006AEDC0 (landed) and
+// ?RemoveFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z = retail 0x006AEBA0 (REGIONLOAD above); all three rows reach the component
+// through interface 0x7A (TCI_REGION_FOLLOWER).
+class CThing;
+class CTCRegionFollower {
+public:
+    void AddFollower(CThing& thing);                                     // 0x006AEDC0
+    void RemoveFollower(CThing& thing);                                  // 0x006AEBA0
+};
+#endif // FABLE_RETAIL_CTCREGIONFOLLOWER_FOLLOWERS_ONLY
 #endif // FABLE_ENGINE_CTCREGIONFOLLOWER_H

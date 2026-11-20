@@ -105,9 +105,11 @@ bool __fastcall IS_THING_ALIVE(CThingSoundEmitter* const& thing);   // 0x0065D55
 #define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
 #include "engine/CASoundManager.h"
 extern bool g_RepopulateVillages;               // 0x013B86E9
-class CGameTimeManager { public:
-    bool IsDay();                               // 0x006BB2C0
-};
+// NF122 (2026-11-20, q4490): 0x006BB2C0 is Ego_r.pdb / FableWin.pdb ?IsDay@CGameTimeManager@@QBE_NXZ (const), declared by
+//   engine/CGameTimeManager.h (FABLE_RETAIL_CGAMETIMEMANAGER + _ISDAY); was the non-const IsDay() on a local CGameTimeManager model.
+#define FABLE_RETAIL_CGAMETIMEMANAGER
+#define FABLE_RETAIL_CGAMETIMEMANAGER_ISDAY
+#include "engine/CGameTimeManager.h"
 class CWorld { public:
     unsigned char _pad00[0x1c];
     CGameTimeManager* PTimeManager;             // +0x1c

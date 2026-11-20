@@ -4,7 +4,7 @@
 // Retail 0x006A1E00, 384 bytes, `ret 4` (the argument is unused).
 // Callees: CTCCarrying's primary-slot empty test 0x006A1270 (labelled CThing_Array_GetFirstPhysicalSwitch),
 // GetThingInPrimarySlot 0x006A1440, DropWeapon(CThing*, CTCCarrying*, CThing*) 0x00845CE0 (`__fastcall`),
-// CTCCarrying::RemoveThing(CThing*) 0x006A19B0, CTCCarrying::IsCarryingThing(CThing*) 0x006A1060, CVectorMap::LowerBound
+// CTCCarrying::RemoveThing(CThing*) 0x006A19B0, CTCCarrying::IsCarryingThing(const CThing&) const 0x006A1060, CVectorMap::LowerBound
 // 0x0040F020 (interfaces 0x1A, 0x48 weapon, 0x83 animating object) and const 0x004365B0, the 0x1A component's hook
 // 0x005D8E50, CTCWeapon::IsProjectileWeapon 0x005DAA40 / SetProjectileWeaponLoaded(bool, CThing*) 0x005DAC50 /
 // IsMeleeWeapon 0x005DAA70, CTCAnimatingObject::PlayDefaultAnimation 0x007F8F30.
@@ -58,7 +58,9 @@ class CTCCarrying { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     void RemoveThing(CThing& thing);                    // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
-    bool IsCarryingThing(CThing* thing);                // 0x006A1060
+    // NF122 (2026-11-20; coordinator, NF121 recipe): Ego_r.pdb / FableWin.pdb ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z, the
+    //   spelling 0x006A1060's self row and its other 17 landed callers bind; was IsCarryingThing(CThing*) non-const.
+    bool IsCarryingThing(const CThing& thing) const;    // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool unused);
 public:
     bool IsPrimarySlotFree() const;   // 0x006A1270
@@ -74,7 +76,7 @@ CThing* CTCCarrying::RemoveThingFromPrimarySlot(bool unused)
             DropWeapon(thing, this, ParentThing);
         else
             RemoveThing(*thing);
-        if (!IsCarryingThing(thing) && thing->HasTC(0x1a)) {
+        if (!IsCarryingThing(*thing) && thing->HasTC(0x1a)) {
             CTCInterface1A* c = thing->GetTC<CTCInterface1A>(0x1a);
             if (c->Armed)
                 c->OnUseFailed();

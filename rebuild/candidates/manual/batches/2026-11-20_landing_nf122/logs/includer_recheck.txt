@@ -1,0 +1,2 @@
+# recheck after landing nf122: 653 rows = gate referencing rows (22 targets) + renamed rows + 97 direct includers of the four overlay headers
+good 653 bad 0

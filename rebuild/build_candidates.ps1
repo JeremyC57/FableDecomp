@@ -1691,8 +1691,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004a9ef0'
         Module = 'CThingSearchTools'
-        Source = '00/4a/CThingSearchTools_GetPFirstLeafThingCFilterBind2CThing_004a9ef0.cpp'
-        TestSource = '00/4a/CThingSearchTools_GetPFirstLeafThingCFilterBind2CThing_004a9ef0_test.cpp'
+        Source = '00/4a/CThingSearchTools_GetPFirstLeafThing_004a9ef0.cpp'
+        TestSource = '00/4a/CThingSearchTools_GetPFirstLeafThing_004a9ef0_test.cpp'
         PassPattern = 'CThingSearchTools_004a9ef0_TEST PASS'
     }
     [pscustomobject]@{
@@ -43689,9 +43689,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b83f0'
-        Module = '_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std'
-        Source = '00/6b/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_006b83f0.cpp'
-        TestSource = '00/6b/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_006b83f0_test.cpp'
+        Module = 'CEnvironmentSpellEffectInterpolator'
+        Source = '00/6b/CEnvironmentSpellEffectInterpolator_ScreenFilterFadeOut_006b83f0.cpp'
+        TestSource = '00/6b/CEnvironmentSpellEffectInterpolator_ScreenFilterFadeOut_006b83f0_test.cpp'
         PassPattern = '006b83f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -90948,9 +90948,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00704580'
-        Module = '_global'
-        Source = '00/70/CCountedPointerCDiskFileWin32_operator_00704580.cpp'
-        TestSource = '00/70/CCountedPointerCDiskFileWin32_operator_00704580_test.cpp'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/70/CCountedPointer_operator_00704580.cpp'
+        TestSource = '00/70/CCountedPointer_operator_00704580_test.cpp'
         PassPattern = 'PASS_00704580'
     }
     [pscustomobject]@{
@@ -202811,8 +202811,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006bb2c0'
         Module = 'CGameTimeManager'
-        Source = '00/6b/CGameTimeManager_IsDay006bb2c0_006bb2c0.cpp'
-        TestSource = '00/6b/CGameTimeManager_IsDay006bb2c0_006bb2c0_test.cpp'
+        Source = '00/6b/CGameTimeManager_IsDay_006bb2c0.cpp'
+        TestSource = '00/6b/CGameTimeManager_IsDay_006bb2c0_test.cpp'
         PassPattern = '006bb2c0_TEST PASS'
     }
     [pscustomobject]@{

@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D643A0, 1090 bytes (int3 padded to 1104).
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30 (manifest "CCreatureAction_TrollWhackGroundBase::Initialise" is
-//   propagated), CCharString 0x0099EBF0 / ~ 0x0099EAE0, __ftol2 0x00BFEA70, CCountedPointer<CScriptThingImpl>::operator=
+//   propagated), CCharString 0x0099EBF0 / ~ 0x0099EAE0, __ftol2 0x00BFEA70, CCountedPointer<CScriptThing>::operator=
 //   0x00704580, ~vector<CScriptThing> 0x008AC970 (IsDone exit; inline copy with free 0x00BFEA14 at the loop end);
 //   CScriptThing::GetPos / SetToKillOnLevelUnload inlined (imp slots 6, 70); pGlobalScriptDef 0x0143E90C
 //   (GUI_DepartureBeetles +0xF0C), zero vector 0x0143E8E0; Game slots 7, 75, 78, 91, 296, 321, 327, 335, 338, 465.
@@ -29,7 +29,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
-    CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (CScriptThingImpl instance)
+    CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (CScriptThing instance)
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
     ~CCountedPointer()
     {
@@ -46,17 +46,6 @@ template <class T> class CCountedPointer { public:
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #include "engine/C3DVector.h"
-struct CScriptThingImpl {
-    virtual void i000();
-    virtual void i001();
-    virtual void i002();
-    virtual void i003();
-    virtual void i004();
-    virtual void i005();
-    virtual const C3DVector& GetPos() const;            // imp slot 6 (+0x18)
-    virtual void i007(); virtual void i008(); virtual void i009(); virtual void i010(); virtual void i011(); virtual void i012(); virtual void i013(); virtual void i014(); virtual void i015(); virtual void i016(); virtual void i017(); virtual void i018(); virtual void i019(); virtual void i020(); virtual void i021(); virtual void i022(); virtual void i023(); virtual void i024(); virtual void i025(); virtual void i026(); virtual void i027(); virtual void i028(); virtual void i029(); virtual void i030(); virtual void i031(); virtual void i032(); virtual void i033(); virtual void i034(); virtual void i035(); virtual void i036(); virtual void i037(); virtual void i038(); virtual void i039(); virtual void i040(); virtual void i041(); virtual void i042(); virtual void i043(); virtual void i044(); virtual void i045(); virtual void i046(); virtual void i047(); virtual void i048(); virtual void i049(); virtual void i050(); virtual void i051(); virtual void i052(); virtual void i053(); virtual void i054(); virtual void i055(); virtual void i056(); virtual void i057(); virtual void i058(); virtual void i059(); virtual void i060(); virtual void i061(); virtual void i062(); virtual void i063(); virtual void i064(); virtual void i065(); virtual void i066(); virtual void i067(); virtual void i068(); virtual void i069();
-    virtual void SetToKillOnLevelUnload(bool kill);     // imp slot 70 (+0x118)
-};
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
 protected:
     static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
@@ -75,7 +64,10 @@ public:
     }
     virtual void t071(); virtual void t072(); virtual void t073(); virtual void t074();
     virtual bool IsAlive() const;                       // slot 75 (+0x12c) 0x004AB130
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04 Data, +0x08 Info
+    // NF122 (2026-11-20, q6278 / q6417 / q6471): CScriptThing::PImp is CCountedPointer<CScriptThing> (engine/CScriptThing.h; FableWin.pdb
+    //   ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z = 0x00704580); the pointee's virtual slots are CScriptThing's own (GetPos 6,
+    //   SetToKillOnLevelUnload 70). Was CCountedPointer<CScriptThingImpl> on a local pimpl stand-in with the same slots.
+    CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
 #ifdef THING_INLINE_COPY
     CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
 #else

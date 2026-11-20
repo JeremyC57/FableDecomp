@@ -28,7 +28,8 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 #include "engine/C3DVector.h"
 
 class CTCCreatureNavigation { public:                  // interface 7
-    bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool onMap);   // 0x006CB6E0
+    // NF122 (2026-11-20, q5010): Ego_r.pdb / FableWin.pdb ?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z (const, result by reference); was GetNearbyWanderPosition(const C3DVector&, float, C3DVector*, bool) non-const.
+    bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector& result, bool onMap) const;   // 0x006CB6E0
 };
 
 class CBaseObject;
@@ -112,7 +113,7 @@ void CAIStateGroup_HoverWanderAroundThing::Update()
         GetCreature()->GetTC(TCI_NAVIGATION, &navigation);
         C3DVector target;
         if (IS_THING_ALIVE(PThing)
-            && navigation->GetNearbyWanderPosition(((CThing*)PThing.GetPItem())->GetPos(), 5.0f, &target, false)) {
+            && navigation->GetNearbyWanderPosition(((CThing*)PThing.GetPItem())->GetPos(), 5.0f, target, false)) {
             if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(PThing), 0x11, 0.05f) != 2) {
                 Terminate();
                 return;

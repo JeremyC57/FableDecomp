@@ -6,7 +6,7 @@
 //
 // Retail 0x0080D0B0, 580 bytes, plain `ret` (8-aligned frame).
 // Callees: CParticleEmitterManager::Get @ 0x00AEAAF0 (static), __ftol2 @ 0x00BFEA70, C3DVector::AccurateNormalise @ 0x00A14440, the
-// explosion def's emitter spacing @ 0x0080C190, the emitter creator @ 0x006E11F0 (__fastcall), CTCBase::GetWorld
+// explosion def's emitter spacing @ 0x0080C190, CTCDParticleEmitter::Create @ 0x006E11F0 (static __fastcall), CTCBase::GetWorld
 // @ 0x00686A70, CWorld::GetFrame @ 0x0049D870 (static), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 /
 // GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10 (vtable 0x01238C6C), the emitter vector's push_back @ 0x00789515,
 // CreateCameraShake @ 0x007F1B70 (__fastcall). Constants: 1.0f, 1e-4f, 0.5f.
@@ -56,8 +56,12 @@ class CExplosionDef { public:
 };
 struct CParticleEmitterManager {
     static CParticleEmitterManager* Get();                   // 0x00AEAAF0
-    static CThing* __fastcall CreateEmitter(long defIndex, long param, float spacing, const C3DVector& pos, long flags);   // 0x006E11F0
 };
+// NF122 (2026-11-20, q6226): 0x006E11F0 is Ego_r.pdb / FableWin.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JJMABVC3DVector@@_N@Z
+//   (static __fastcall; Ego_r 0x00535970, FableWin 0x01D62B20), declared by engine/CTCDParticleEmitter.h (partial mode METHODS_ONLY:
+//   this row models CThing locally); was the stand-in static CParticleEmitterManager::CreateEmitter(long, long, float, const C3DVector&, long).
+#define FABLE_RETAIL_CTCDPARTICLEEMITTER_METHODS_ONLY
+#include "engine/CTCDParticleEmitter.h"
 enum EQuakeStrength { };                                  // agentNF19: CTCDRumble quake enums (values unused here)
 enum EQuakeLength { };
 class CTCDRumble { public:
@@ -106,7 +110,7 @@ void CTCDExplosion::CreateStaticExplosion()
         float spacing = PExplosionDef->GetEmitterSpacing(radius);
         for (long i = 0; i != count; ++i) {
             C3DVector pos = StartPos + direction * (float)i * radius;
-            CThing* emitter = manager->CreateEmitter(PExplosionDef->EmitterDefIndex, PExplosionDef->EmitterParam, spacing, pos, 0);
+            CThing* emitter = CTCDParticleEmitter::Create(PExplosionDef->EmitterDefIndex, PExplosionDef->EmitterParam, spacing, pos, false);
             if (emitter && !emitter->IsDead()) {
                 long frame = GetWorld().GetFrame();
                 Emitters.push_back(SEmitter(CIntelligentPointer<CThing>(emitter), frame));

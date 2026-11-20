@@ -8,7 +8,7 @@
 // Callees: CThingCreatureBase::GetCombatManager @ 0x00661ED0, CCombatManager::DeregisterCombatant @ 0x006ED9C0,
 //   CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound (non-const) @ 0x0040F020,
 //   CTCCreatureModeManager::RemoveMode(unsigned long) @ 0x0073ABA0 (interface type 0x31 = presence word 1 bit 17).
-// Shape: `GetCombatManager()->DeregisterCombatant(&creature)` pushes the argument before the getter call; the
+// Shape: `GetCombatManager()->DeregisterCombatant(creature)` pushes the argument before the getter call; the
 //   out-parameter PeekTC template inlined with the map in a named local (`add esi,44h`, `last` re-read through it).
 //   No CThingAICreature engine header exists: local model of the thing base (bitset +0x20, map +0x44).
 #include "fable_compiler.h"
@@ -53,7 +53,8 @@ class CThingAICreature : public CThingCreatureBase {
 
 class CCombatManager {
 public:
-    void DeregisterCombatant(CThingCreatureBase* creature);    // 0x006ED9C0
+    // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
+    void DeregisterCombatant(CThingCreatureBase& creature);    // 0x006ED9C0
 };
 
 class CTCCreatureModeManager {
@@ -69,7 +70,7 @@ public:
 
 void __fastcall CTCFireRangedWeaponOnLeavingStateGroup::Cleanup(CThingAICreature& creature)
 {
-    creature.GetCombatManager().DeregisterCombatant(&creature);
+    creature.GetCombatManager().DeregisterCombatant(creature);
     CTCCreatureModeManager* modes;
     if (creature.PeekTC(&modes))
         modes->RemoveMode(0x19);

@@ -24,7 +24,8 @@ class CBaseObjectPointer;
 
 
 class CTCCarrying { public:                        // interface type 0x46 component
-    void RemoveThingFromPrimarySlot(bool drop);   // 0x006A1E00
+    // NF122 (2026-11-20, q4985): Ego_r.pdb / FableWin.pdb ?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z (returns the thing); was void RemoveThingFromPrimarySlot(bool).
+    CThing* RemoveThingFromPrimarySlot(bool drop);                      // 0x006A1E00
 };
 
 class CTCCreatureModeManager { public:             // interface type 0x31 component

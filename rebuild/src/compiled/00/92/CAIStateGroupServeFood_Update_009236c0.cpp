@@ -86,7 +86,8 @@ struct CIntelligentPointerThingObject : CIntelligentPointer<CThingObject> {   //
 };
 template<class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // IS_THING_ALIVE<CIntelligentPointer<CThingObject> > 0x0078B2A0 (FableWin 0x01DE6D80)
 class CTCCarrying { public:                            // interface 0x46
-    CThing* RemoveThingFromPrimarySlot(long flags);                     // 0x006A1E00
+    // NF122 (2026-11-20, q4985): Ego_r.pdb / FableWin.pdb ?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z (returns the thing); was CThing* RemoveThingFromPrimarySlot(long).
+    CThing* RemoveThingFromPrimarySlot(bool drop);                      // 0x006A1E00
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 class CTCTavernTable { public:                         // interface 0xb8
