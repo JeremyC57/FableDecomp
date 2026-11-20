@@ -1,5 +1,10 @@
 // NPlayerGui::CDrawMeleeActionButtonEffects::Update() -- pick the hero's current melee ability def (the flourish ability when a flourish is valid, else the block-counter ability when a block counter is valid), restart the flash timers when it changes, clear the effects when there is none, and count the timers down
-// Leaf: ?Update@CDrawMeleeActionButtonEffects@@QAEXXZ
+// Leaf: ?Update@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ
+// Naming (NF191, 2026-11-20, q12126): Ego_r.pdb 0x0068D97E + FableWin.pdb 0x020FD737 ?Update@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ
+//   (was the global ?Update@CDrawMeleeActionButtonEffects@@QAEXXZ). The row-local class keeps its token, now in NPlayerGui on the shared
+//   NPlayerGui::CDrawBase (engine/NPlayerGui_CDrawBase.h, ORIGINAL_REFERENCES: PlayerManager is the PDB reference), the shape of the
+//   landed sibling 0x00646580 (Draw); RTTI .?AVCDrawMeleeActionButtonEffects@NPlayerGui@@ : NPlayerGui::CDrawBase. The class has no
+//   defining shared header (engine/CPlayerGui.h only forward-declares it). Its only REFS row 0x0043A080 already binds the new spelling.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064BE45, length 373 bytes (frame pointer, `ret`).
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::PeekPControlledCreature @ 0x00487DD0, IS_THING_ALIVE @ 0x0043DBF0
@@ -53,6 +58,7 @@
 #define FABLE_RETAIL_IS_THING_ALIVE
 #define FABLE_RETAIL_IS_THING_ALIVE_NOINLINE
 #define FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CLEAREFFECTS
+#define FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_ORIGINAL_REFERENCES
 #include "fable_string.h"
 #include "engine/CDefPointer.h"
 #include "engine/CThing.h"
@@ -65,22 +71,23 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CMeleeCombatAbilityDef;
-struct CDrawMeleeActionButtonEffects {
-    unsigned char            _pad0[0x08];
-    CPlayerManager*          PlayerManager;        // +0x08
-    unsigned char            _pad1[0x28 - 0x0c];
+namespace NPlayerGui {
+class CDrawMeleeActionButtonEffects : public CDrawBase {
+public:
+    void Update();
+protected:
     std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> > Effects;   // +0x28 (STLport, 12 bytes)
     long                     FlashTimer;           // +0x34
     long                     ComboLoadingIconTimer;// +0x38
     long                     FlourishCounter;      // +0x3c
-    long                     FlourishEffect;          // +0x40
+    long                     FlourishEffect;       // +0x40
     CDefPointer<const CMeleeCombatAbilityDef> PMeleeAbilityDef; // +0x44
-    void Update();
 };
+}
 
-void CDrawMeleeActionButtonEffects::Update()
+void NPlayerGui::CDrawMeleeActionButtonEffects::Update()
 {
-    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
+    const CThingPlayerCreature* hero = PlayerManager.GetMainPlayer().PeekPControlledCreature();
     CDefPointer<const CMeleeCombatAbilityDef> ability;
     if (IS_THING_ALIVE(hero)) {
         const CTCCombat* combat;
@@ -101,7 +108,7 @@ void CDrawMeleeActionButtonEffects::Update()
     if (FlashTimer == 0)
         ComboLoadingIconTimer = 30;
     if (!ability.Object) {
-        NPlayerGui::CDrawBase::ClearEffects(Effects);
+        ClearEffects(Effects);
         FlourishCounter = -1;
         FlourishEffect = 0;
         ComboLoadingIconTimer = -1;

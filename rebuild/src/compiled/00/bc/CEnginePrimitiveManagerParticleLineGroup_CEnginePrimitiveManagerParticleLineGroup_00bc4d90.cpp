@@ -14,10 +14,15 @@
 // CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
 // ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
 // GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+// Name fix (NF189, 2026-11-20, q4566): the row-local CVertexShaderArray / _Vector_base / allocator stand-ins are replaced by the
+// shared STLport vector<CVertexShader> (stlport/fable_containers.h); its one-argument resize 0x00B6CBD0 is declared only
+// (FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL), as the stand-in's was.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
 #define FABLE_RETAIL_CENGINERESOURCEMANAGER
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CVERTEXSHADER
 #include "fable_string.h"
+#include "stlport/fable_containers.h"
 #include "engine/CVertexShader.h"
 #include "engine/CPixelShader.h"
 #include "engine/CEngineResourceManager.h"
@@ -58,23 +63,6 @@ class CIndexBuffer { public:                              // 0x14 bytes
     unsigned char _body[0x10];
     CIndexBuffer();                                // 0x00AC1EC0
 };
-template <class T> struct allocator { allocator() { } };
-template <class V, class A> struct _STLP_alloc_proxy : A {
-    V _M_data;
-    _STLP_alloc_proxy(const A& a, V v) : A(a), _M_data(v) { }
-};
-template <class T> struct _Vector_base {
-    T* _M_start;
-    T* _M_finish;
-    _STLP_alloc_proxy<T*, allocator<T> > _M_end_of_storage;
-    _Vector_base(const allocator<T>& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, (T*)0) { }
-};
-struct CVertexShaderArray : _Vector_base<CVertexShader> {   // retail 12-byte STLport vector<CVertexShader>
-    CVertexShaderArray(const allocator<CVertexShader>& a = allocator<CVertexShader>()) : _Vector_base<CVertexShader>(a) { }
-    void resize(unsigned int count);               // 0x00B6CBD0
-    CVertexShader* begin() { return _M_start; }
-    CVertexShader& operator[](long index) { return *(begin() + index); }
-};
 class CEnginePrimitiveManager { public:                   // 0x0c bytes
     virtual ~CEnginePrimitiveManager();
     unsigned char _body[0x8];
@@ -83,7 +71,7 @@ class CEnginePrimitiveManager { public:                   // 0x0c bytes
 struct CEngineParticleConstantBlock { unsigned char _body[0x10]; };
 
 class CEnginePrimitiveManagerParticleLineGroup : public CEnginePrimitiveManager { public:   // vtable 0x012A6590
-    CVertexShaderArray VertexShadersLinePointLights;   // +0x0c
+    std::vector<CVertexShader> VertexShadersLinePointLights;   // +0x0c
     CVertexShader      VertexShaderDisplacement;   // +0x18
     CPixelShader       PixelShader;                // +0x20
     CPixelShader       PixelShaderStipple;         // +0x28

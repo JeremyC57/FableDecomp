@@ -1,0 +1,120 @@
+004c00b0 new: 0
+00579ea3 new: 1
+    ?clear@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo
+005d66ba new: 8
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Nonconst_traits@U?$pair@$$CBKJ@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@1@@Z
+    ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c820
+    ??C?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Nonconst_traits@U?$pair@$$CBKJ@std@@@2@@std@@QBEPAU?$pair@$$CBKJ@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Nonconst_traits@U?$pair@$$CBKJ@std@@@2@@std@@QBEAAU?$pair@$$CBKJ@1@XZ
+    ?end@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@s
+    ?end@?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Nonconst_traits@U?$pair@$$CBKJ@std@@@2@@2@XZ
+    ?find@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@
+    ?find@?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Nonconst_traits@U?$pair@$$CBKJ@std@@@2@@2@ABK@Z
+005ec990 new: 0
+006d0630 new: 1
+    ??$find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$C
+00a80a20 new: 4
+    ??1?$CCountedPointer@VCNavRegionConnection@@@@QAE@XZ
+    ??_G?$CCountedPointer@VCNavRegionConnection@@@@QAEPAXI@Z
+    ?clear@?$_List_base@V?$CCountedPointer@VCNavRegionConnection@@@@V?$allocator@V?$CCountedPointer@VCNavRegionConnection@@@@@std@@@std@@QAEXXZ TABLE:00a80a20
+    ?deallocate@?$allocator@U?$_List_node@V?$CCountedPointer@VCNavRegionConnection@@@@@std@@@std@@QAEXPAU?$_List_node@V?$CCountedPointer@VCNavRegionConnection@@@@@2@I@Z
+00a98be0 new: 0
+00a98c80 new: 0
+00a98d20 new: 0
+00a98dc0 new: 0
+00a99ff0 new: 1
+    ?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z TABLE:00a99ff0
+00a9cf40 new: 1
+    ?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z TABLE:00a99ff0
+00aadd80 new: 9
+    ??$__uninitialized_fill_n@PAFIF@std@@YAPAFPAFIABFABU__true_type@0@@Z
+    ??$fill_n@PAFIF@std@@YAPAFPAFIABF@Z
+    ??$uninitialized_fill_n@PAFIF@std@@YAPAFPAFIABF@Z
+    ??0?$_STLP_alloc_proxy@PAFFV?$allocator@F@std@@@std@@QAE@ABV?$allocator@F@1@PAF@Z
+    ??0?$_Vector_base@FV?$allocator@F@std@@@std@@QAE@IABV?$allocator@F@1@@Z
+    ??0?$allocator@F@std@@QAE@ABV01@@Z
+    ??0?$allocator@F@std@@QAE@XZ
+    ??0?$vector@FV?$allocator@F@std@@@std@@QAE@I@Z TABLE:00aadd80
+    ?allocate@?$allocator@F@std@@QAEPAFIPBX@Z
+00aade80 new: 10
+    ??$_Destroy@F@std@@YAXPAF0@Z
+    ??$__copy_ptrs@PBFPAF@std@@YAPAFPBF0PAFABU__true_type@0@@Z
+    ??$__uninitialized_copy@PBFPAF@std@@YAPAFPBF0PAFABU__true_type@0@@Z
+    ??4?$vector@FV?$allocator@F@std@@@std@@QAEAAV01@ABV01@@Z TABLE:00aade80
+    ?_M_allocate_and_copy@?$vector@FV?$allocator@F@std@@@std@@IAEPAFIPBF0@Z
+    ?_M_clear@?$vector@FV?$allocator@F@std@@@std@@IAEXXZ
+    ?allocate@?$allocator@F@std@@QAEPAFIPBX@Z
+    ?capacity@?$vector@FV?$allocator@F@std@@@std@@QBEIXZ
+    ?deallocate@?$allocator@F@std@@QAEXPAFI@Z
+    ?size@?$vector@FV?$allocator@F@std@@@std@@QBEIXZ
+00aadff0 new: 16
+    ??$_Destroy@PAF@std@@YAXPAF0@Z
+    ??$__destroy@PAFF@std@@YAXPAF00@Z
+    ??$__destroy_aux@PAF@std@@YAXPAF0ABU__true_type@0@@Z
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+    ??0__true_type@std@@QAE@XZ
+    ??1?$CArray@F@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAFFV?$allocator@F@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@FV?$allocator@F@std@@@std@@QAE@XZ
+    ??1?$allocator@F@std@@QAE@XZ
+    ??1?$vector@FV?$allocator@F@std@@@std@@QAE@XZ
+    ??1CWaveFile@@QAE@XZ
+    ??_GCWaveFile@@QAEPAXI@Z
+    ?DeleteData@?$CCountedPointer@VCWaveFile@@@@SIXPAX@Z TABLE:00aadfc0
+    ?ReleaseData@?$CCountedPointer@VCWaveFile@@@@QAEXXZ
+    ?Reset@?$CCountedPointer@VCWaveFile@@@@QAEXPAVCWaveFile@@@Z TABLE:00aadff0
+    ?deallocate@?$allocator@F@std@@QAEXPAFI@Z
+00bbeaf0 new: 17
+    ??$_Destroy@PAVCVertexShader@@@std@@YAXPAVCVertexShader@@0@Z
+    ??$_Destroy@VCVertexShader@@@std@@YAXPAVCVertexShader@@@Z
+    ??$__destroy@PAVCVertexShader@@V1@@std@@YAXPAVCVertexShader@@00@Z
+    ??$__destroy_aux@PAVCVertexShader@@@std@@YAXPAVCVertexShader@@0ABU__false_type@0@@Z
+    ??0?$_STLP_alloc_proxy@PAVCVertexShader@@V1@V?$allocator@VCVertexShader@@@std@@@std@@QAE@ABV?$allocator@VCVertexShader@@@1@PAVCVertexShader@@@Z
+    ??0?$_Vector_base@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@ABV?$allocator@VCVertexShader@@@1@@Z
+    ??0?$allocator@VCVertexShader@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VCVertexShader@@@std@@QAE@XZ
+    ??0?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@ABV?$allocator@VCVertexShader@@@1@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCVertexShader@@V1@V?$allocator@VCVertexShader@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCVertexShader@@@std@@QAE@XZ
+    ??1?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@XZ
+    ??A?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEAAVCVertexShader@@I@Z
+    ?begin@?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEPAVCVertexShader@@XZ
+    ?deallocate@?$allocator@VCVertexShader@@@std@@QAEXPAVCVertexShader@@I@Z
+00bc34d0 new: 17
+    ??$_Destroy@PAVCVertexShader@@@std@@YAXPAVCVertexShader@@0@Z
+    ??$_Destroy@VCVertexShader@@@std@@YAXPAVCVertexShader@@@Z
+    ??$__destroy@PAVCVertexShader@@V1@@std@@YAXPAVCVertexShader@@00@Z
+    ??$__destroy_aux@PAVCVertexShader@@@std@@YAXPAVCVertexShader@@0ABU__false_type@0@@Z
+    ??0?$_STLP_alloc_proxy@PAVCVertexShader@@V1@V?$allocator@VCVertexShader@@@std@@@std@@QAE@ABV?$allocator@VCVertexShader@@@1@PAVCVertexShader@@@Z
+    ??0?$_Vector_base@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@ABV?$allocator@VCVertexShader@@@1@@Z
+    ??0?$allocator@VCVertexShader@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VCVertexShader@@@std@@QAE@XZ
+    ??0?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@ABV?$allocator@VCVertexShader@@@1@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCVertexShader@@V1@V?$allocator@VCVertexShader@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCVertexShader@@@std@@QAE@XZ
+    ??1?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@XZ
+    ??A?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEAAVCVertexShader@@I@Z
+    ?begin@?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEPAVCVertexShader@@XZ
+    ?deallocate@?$allocator@VCVertexShader@@@std@@QAEXPAVCVertexShader@@I@Z
+00bc4d90 new: 17
+    ??$_Destroy@PAVCVertexShader@@@std@@YAXPAVCVertexShader@@0@Z
+    ??$_Destroy@VCVertexShader@@@std@@YAXPAVCVertexShader@@@Z
+    ??$__destroy@PAVCVertexShader@@V1@@std@@YAXPAVCVertexShader@@00@Z
+    ??$__destroy_aux@PAVCVertexShader@@@std@@YAXPAVCVertexShader@@0ABU__false_type@0@@Z
+    ??0?$_STLP_alloc_proxy@PAVCVertexShader@@V1@V?$allocator@VCVertexShader@@@std@@@std@@QAE@ABV?$allocator@VCVertexShader@@@1@PAVCVertexShader@@@Z
+    ??0?$_Vector_base@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@ABV?$allocator@VCVertexShader@@@1@@Z
+    ??0?$allocator@VCVertexShader@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VCVertexShader@@@std@@QAE@XZ
+    ??0?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@ABV?$allocator@VCVertexShader@@@1@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCVertexShader@@V1@V?$allocator@VCVertexShader@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCVertexShader@@@std@@QAE@XZ
+    ??1?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAE@XZ
+    ??A?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEAAVCVertexShader@@I@Z
+    ?begin@?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEPAVCVertexShader@@XZ
+    ?deallocate@?$allocator@VCVertexShader@@@std@@QAEXPAVCVertexShader@@I@Z

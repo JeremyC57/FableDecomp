@@ -12,6 +12,10 @@
 // Shape: the combat manager and the parent thing are named locals read before the boss call (edi/ebx); the switch re-reads Phase.
 // The target is a named local (GetPItem runs before the `push 0`); the tentacle list is a class whose inline empty() compares
 // begin() with end() -- a direct `head->next == head` read is hoisted above the Mode store.
+// Naming (NF191, 2026-11-20, q4492): the local CIntelligentPointer_CThing stand-in replaced by the shared CIntelligentPointer<CThing>
+//   (engine/CIntelligentPointer.h; Ego_r.pdb member type) and the IS_THING_ALIVE template declaration (the out-of-line instance
+//   0x004CC340): the liveness test binds the FableWin.pdb
+//   ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z.
 class CThing;
 class CThingCreatureBase;
 
@@ -30,8 +34,7 @@ class CWorld { public:
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointer_CThing : CBaseIntelligentPointer { };
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer_CThing& thing);   // 0x004CC340
+template <class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing);   // 0x004CC340
 
 class CTCBoss { public:
     void SetNextBossPhase(long phase, bool force);       // 0x007AEDA0
@@ -58,7 +61,7 @@ public:
     void*                      __vfptr;                  // +0x00
     CThingCreatureBase*        ParentThing;              // +0x04 (CTCBase)
     unsigned char              _pad08[0x20 - 0x08];
-    CIntelligentPointer_CThing PTarget;                  // +0x20
+    CIntelligentPointer<CThing> PTarget;                 // +0x20
     unsigned char              _pad28[0x40 - 0x28];
     CTCBoss*                   PTCBoss;                  // +0x40
     CThingList                 Tentacles;                // +0x44

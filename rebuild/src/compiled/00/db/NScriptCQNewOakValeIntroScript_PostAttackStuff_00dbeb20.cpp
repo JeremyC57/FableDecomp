@@ -1,5 +1,5 @@
 // CQ_NewOakValeIntroScript::PostAttackStuff() -- wait for the post-attack start marker to appear, then teleport the hero to it, put Oakvale in limbo, take the teddy bear, log the story, reset the camera and music, fade in, wait for the hero to reach his dad's trigger and play the "he's dead, Jim" cut-scene, then lift the limbo, restart the clock and close the post-attack quest
-// Leaf: PostAttackStuff
+// Leaf: ?PostAttackStuff@CQ_NewOakValeIntroScript@NScript@@QAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBEB20, 1095 bytes.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, ~CScriptThing 0x004AA840 (and its inline body: counted-pimpl release,
@@ -38,13 +38,13 @@ inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other)
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x0127094C, 0x10 bytes
     void* _body[4];
-    void Construct();                                  // 0x007E72A0 (out-of-line ctor)
+    CScriptGameResourceObjectScriptedThingBase();      // 0x007E72A0 (out-of-line ctor; Ego_r/FableWin ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ)
     void Destroy();                                    // 0x007E74D0 (out-of-line dtor)
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
 class CScriptGameResourceObjectMovieBase { public:            // vtable 0x01260EF4, 0x10 bytes
     void* _body[4];
-    void Construct();                                  // 0x006E7B60
+    CScriptGameResourceObjectMovieBase();              // 0x006E7B60 (out-of-line ctor; Ego_r/FableWin ??0CScriptGameResourceObjectMovieBase@@QAE@XZ)
     void Destroy();                                    // 0x006E7B80
 };
 // Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
@@ -114,13 +114,11 @@ void NScript::CQ_NewOakValeIntroScript::PostAttackStuff()
     HesDeadJimStarted = true;
     {
     CScriptGameResourceObjectScriptedThingBase hero;
-    hero.Construct();
     Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
     {   // Inferred: scope of the cast map; retail calls ~map 0x00CDBFB0 after the movie handle and before the hero handle's dtor (the old by-hand order)
     std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
     cast["HERO"] = hero;
     CScriptGameResourceObjectMovieBase movie;
-    movie.Construct();
     Game->StartMovieSequence("", movie);
     CGameScriptInterface* game = Game;
     game->PauseAllNonScriptedEntities(true);

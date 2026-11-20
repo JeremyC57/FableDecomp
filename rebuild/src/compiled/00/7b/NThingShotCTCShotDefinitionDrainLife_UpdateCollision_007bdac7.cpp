@@ -15,6 +15,14 @@
 // an if / else-if / else chain with the soul-kill + `*finished = true` tail written in both of the first two arms (VC
 // cross-jumps the second copy back into the first, so the dead-target arm is laid first and the heal arm jumps back);
 // `BestCollisionType = 0` is the size TU's `and dword ptr [m],0`.
+// Naming (NF191, 2026-11-20, q4492): PSoulEffect is the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h; Ego_r.pdb
+//   member type) instead of the bare CBaseIntelligentPointer, so its liveness test binds the FableWin.pdb instance
+//   ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z (0x004CC340; was the stand-in
+//   ??$IS_THING_ALIVE@VCBaseIntelligentPointer@@@@YI_NABVCBaseIntelligentPointer@@@Z). q4522: the hit test takes a CThing* copy
+//   (T = CThing*) and binds FableWin.pdb ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z at 0x0040DCE0 (was the landed fitted
+//   `const CThing* constHit` with IS_THING_ALIVE<const CThing*>, which bound the PBV instance, retail 0x00436380, at 0x0040DCE0).
+// Inferred: the copy local `hitThing` (the landed form had the same copy as `constHit`): passing `hit` itself by reference takes its
+//   address and gives DIFFER(159v159) (graded); with the copy the row is RELOCATION_MATCH. Other row-local models unchanged.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CThing { public:
@@ -54,7 +62,7 @@ struct CTCShotDefinitionDrainLife : CTCShotDefinitionBase {
     float                   MaxAngleToTurn;             // +0xa0
     float                   AmountToHeal;               // +0xa4
     float                   Speed;                      // +0xa8
-    CBaseIntelligentPointer PSoulEffect;                // +0xac
+    CIntelligentPointer<CThing> PSoulEffect;            // +0xac
     void UpdateCollision(bool* finished);
 };
 
@@ -63,15 +71,15 @@ void CTCShotDefinitionDrainLife::UpdateCollision(bool* finished)
     CTCShotDefinitionBase::UpdateCollision(finished);
     CThing* target = ((CThing*)PTargetThing.GetPItem());
     CThing* hit = ((CThing*)PBestCollisionThing.GetPItem());
-    const CThing* constHit = hit;
+    CThing* hitThing = hit;
     if (!IS_THING_ALIVE_00436380<CThing*>(target)) {
-        if (IS_THING_ALIVE<CBaseIntelligentPointer>(PSoulEffect))
+        if (IS_THING_ALIVE(PSoulEffect))
             ((CThing*)PSoulEffect.GetPItem())->Kill(true);
         *finished = true;
     } else if (hit == target) {
-        if (IS_THING_ALIVE<const CThing*>(constHit) && (hit->m_flags6c & 2))
+        if (IS_THING_ALIVE(hitThing) && (hit->m_flags6c & 2))
             hit->Heal(AmountToHeal, true);
-        if (IS_THING_ALIVE<CBaseIntelligentPointer>(PSoulEffect))
+        if (IS_THING_ALIVE(PSoulEffect))
             ((CThing*)PSoulEffect.GetPItem())->Kill(true);
         *finished = true;
     } else {

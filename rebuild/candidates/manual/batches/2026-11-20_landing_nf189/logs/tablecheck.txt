@@ -1,0 +1,2 @@
+GREW 00579d97 0 -> 1 ?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExp row 00579ea3 DIFF before=['?AutoTinyFreeListAllocation_00579d97@@YGXPAX@Z']
+shrank [('00a99ff0', 2, 1), ('00443f90', 2, 1), ('005937e1', 2, 1), ('005d83b3', 2, 1), ('00b6cbd0', 2, 1)]

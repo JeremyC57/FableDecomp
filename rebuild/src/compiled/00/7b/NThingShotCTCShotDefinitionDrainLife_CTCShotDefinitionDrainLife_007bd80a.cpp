@@ -1,5 +1,9 @@
 // NThingShot::CTCShotDefinitionDrainLife::~CTCShotDefinitionDrainLife() -- kills the soul effect (+0xac) if it is still alive, then the member pointer and the CTCShotDefinitionBase base are destroyed
 // Leaf: ??1CTCShotDefinitionDrainLife
+// Naming (NF191, 2026-11-20, q4492): the local CIntelligentPointer_CThing stand-in replaced by the shared CIntelligentPointer<CThing>
+//   (engine/CIntelligentPointer.h) and the IS_THING_ALIVE template declaration (the out-of-line instance 0x004CC340, as the landed
+//   CTCInventoryWeapons rows declare it): the call binds the FableWin.pdb
+//   ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BD80A, length 59 bytes; called from the scalar deleting destructor at
 // 0x004DB1A9.
@@ -18,12 +22,7 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* operator->() const { return (CThing*)GetPItem(); }
-};
-
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer_CThing& thing);   // 0x004CC340
+template <class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing);   // 0x004CC340
 
 namespace NThingShot {
 
@@ -37,7 +36,7 @@ class CTCShotDefinitionDrainLife : public CTCShotDefinitionBase { public:
     float                      MaxAngleToTurn;      // +0xa0
     float                      AmountToHeal;        // +0xa4
     float                      Speed;               // +0xa8
-    CIntelligentPointer_CThing PSoulEffect;         // +0xac
+    CIntelligentPointer<CThing> PSoulEffect;        // +0xac
     virtual ~CTCShotDefinitionDrainLife();
 };
 

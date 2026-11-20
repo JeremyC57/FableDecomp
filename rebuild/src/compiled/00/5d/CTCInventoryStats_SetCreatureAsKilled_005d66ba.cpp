@@ -4,13 +4,21 @@
 // Callees: CGameDefinitionManager::Get() @ 0x0044C6B0 (`__fastcall`, reads 0x013B879C), CDefinitionManager::GetDef<CThingBaseDef>
 // (long, CDefPointer<const CThingBaseDef>*) const @ 0x0042AF3C, CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const ..>*) const
 // @ 0x00485815 (its StatGetTypeName literal 0x01231D3C is "CCreatureDef"), the kill table's find @ 0x005D83B3 (manifest "CMemoryAllocatorVariableSize_FindNode", propagated) and
-// operator[] @ 0x005D8933, the defs' slot 1 on release.
+// operator[] @ 0x005D8933 (STLport map<unsigned long,long>, stlport/fable_map.h), the defs' slot 1 on release.
 // Shape: the thing's def is a zeroed CDefPointer local ([ebp-4]); the sub-def pointer is a second zeroed local that VC homes in
 // the dead `creature` slot ([ebp+8]); both are released by hand with a null test (the sub-def first, then the thing's def). The find result is compared with the header
 // word directly; the hit increments the node's value (+0x14).
 // Layout: CThing def index (unsigned short) +0x8C; retail CTCInventoryStats kill table (STLport map<long,long>, header word
 // first) at +0x134; the creature sub-def's CreatureGroup key at +0xAC (retail offsets).
 #include "fable_compiler.h"
+// STLport map<unsigned long, long> (stlport/fable_map.h): _M_find 0x005D83B3 and operator[] 0x005D8933 are called out of line here.
+// Name fix (NF185, 2026-11-20, q4386): the kill table was the invented CKillMap / CKillMapNode stand-in.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+// FABLE_RETAIL_STLP_MAP_FIND_ULONG_LONG_SIZE_BODY (Fidelity: scaffolding, not retail; NF189, EXTRA_RULES 2026-11-20 size-pragma
+// scaffolding): the TU's pick-any map<unsigned long,long>::find COMDAT gets the owner 0x005D8548's size-optimised body. The header
+// block ends with optimize("", on); it is included before this row's own optimize pragmas below, so they still apply to the row.
+#define FABLE_RETAIL_STLP_MAP_FIND_ULONG_LONG_SIZE_BODY
+#include "stlport/fable_map.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
@@ -67,24 +75,9 @@ class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                    // +0x8c
 };
-struct CKillMapNode {
-    long  Colour;
-    void* Parent;
-    void* Left;
-    void* Right;
-    long  Key;                                  // +0x10
-    long  Count;                                // +0x14
-};
-struct CKillMap {                               // STLport map<long,long>
-    CKillMapNode* Header;                       // +0x00
-    long          NodeCount;
-    CKillMapNode* find(const unsigned long& key);   // 0x005D83B3
-    long& operator[](const unsigned long& key);     // 0x005D8933
-};
-
 class CTCInventoryStats { public:
     unsigned char _pad00[0x134];
-    CKillMap KilledCreatures;                   // +0x134
+    std::map<unsigned long, long> CreaturesKilled;   // +0x134 (Ego_r.pdb CTCInventoryStats::CreaturesKilled, STLport map)
     void SetCreatureAsKilled(CThing* creature);
 };
 
@@ -98,11 +91,11 @@ void CTCInventoryStats::SetCreatureAsKilled(CThing* creature)
     def->GetSubDef(&creatureDefPointer);
     CCreatureDef* creatureDef = static_cast<CCreatureDef*>(creatureDefPointer.Object);
     const unsigned long& category = creatureDef->CreatureGroup;
-    CKillMapNode* node = KilledCreatures.find(category);
-    if (node == KilledCreatures.Header)
-        KilledCreatures[category] = 1;
+    std::map<unsigned long, long>::iterator node = CreaturesKilled.find(category);
+    if (node == CreaturesKilled.end())
+        CreaturesKilled[category] = 1;
     else
-        ++node->Count;
+        ++node->second;
     if (creatureDef && DecRefToZero(creatureDef->m_refCount))
         creatureDef->Destroy();
     CDefPointeeBase* thingDef = def.Object;

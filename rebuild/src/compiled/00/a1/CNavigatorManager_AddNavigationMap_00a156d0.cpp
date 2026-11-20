@@ -1,5 +1,9 @@
 // CNavigatorManager::AddNavigationMap(long, CNavigationAreaInit&) -- add a quad-tree map for the map index unless one exists: append an entry, give it the init's world area, a new CNavQuadTree set up over that area and initialised from the init record
-// Leaf: ?AddNavigationMap@CNavigatorManager@@QAEXJAAVCNavigationAreaInit@@@Z
+// Leaf: ?AddNavigationMap@CNavigatorManager@@QAEXJABVCNavigationAreaInit@@@Z
+// Naming (NF191, 2026-11-20, q12098): Ego_r.pdb 0x00B82BA0 + FableWin.pdb 0x031C5650 ?AddNavigationMap@CNavigatorManager@@QAEXJABVCNavigationAreaInit@@@Z
+//   (const reference; was the non-const AAV leaf). The init only flows into CNavQuadTree::Initialise, whose PDB spelling takes it by const
+//   reference too (Ego_r.pdb 0x00BC1A80 + FableWin.pdb 0x03290030 ?Initialise@CNavQuadTree@@QAEXABVCNavigationAreaInit@@@Z, retail 0x00A7A8D0,
+//   no landed row; this row was its only binder). In-place respell of the row-local models.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A156D0, 237 bytes (+ int3 padding; `ret 8`).
 // Callees: list<CNavQuadTreeMap>::insert(iterator) 0x00A17480 (STLport insert(pos, T()), landed under the propagated label
 //   "CCombatSequence_WillForcePush::OnCreate"), operator new 0x00BFEA1A, CNavQuadTree::CNavQuadTree 0x00A7A760 (manifest label
@@ -39,7 +43,7 @@ public:
     unsigned char _body[0x88];
     CNavQuadTree();                                // 0x00A7A760
     void SetUpMapStructure(const C2DVector& origin, float width, float height, long mapIndex);   // 0x00A762F0
-    void Initialise(CNavigationAreaInit& init);    // 0x00A7A8D0
+    void Initialise(const CNavigationAreaInit& init);   // 0x00A7A8D0
     bool LoadFromFile(CAFile& file, long mapIndex, const C2DBoxI& area, CASuspendableProcess* process);   // 0x00A7AF60
 };
 template <class T> class CCountedPointer { public:
@@ -87,10 +91,10 @@ public:
     void*                 __vftable;               // +0x00
     unsigned char         _pad04[0x20];
     list<CNavQuadTreeMap> QuadTrees;               // +0x24
-    void AddNavigationMap(long mapIndex, CNavigationAreaInit& init);
+    void AddNavigationMap(long mapIndex, const CNavigationAreaInit& init);
 };
 
-void CNavigatorManager::AddNavigationMap(long mapIndex, CNavigationAreaInit& init)
+void CNavigatorManager::AddNavigationMap(long mapIndex, const CNavigationAreaInit& init)
 {
     {
         const list<CNavQuadTreeMap>& maps = QuadTrees;

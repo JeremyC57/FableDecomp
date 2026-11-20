@@ -1,0 +1,1 @@
+pickany_check: no newly defined symbol with a table line to another address (empty report)

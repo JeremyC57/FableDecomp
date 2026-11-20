@@ -9,6 +9,11 @@
 // Shape: the zero result, the GetInterface key and the accessor's unset component (read back on the miss path) all share the
 // one frame word [ebp-4]; the hit path assigns the result, which stays in st(0) for the single `return damage`.
 // Layout: PActiveMeleeWeapon at retail +0x134 (as the landed RefreshActiveWeaponData 0x005C30D3).
+// Naming (NF191, 2026-11-20, q4492): the row-local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared
+//   engine/CIntelligentPointer.h (members CIntelligentPointer<CThing>, the Ego_r.pdb member type) and the IS_THING_ALIVE template
+//   declaration (the out-of-line instance 0x004CC340, as the landed CTCInventoryWeapons rows declare it): the liveness tests bind the
+//   FableWin.pdb ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z. Other row-local
+//   models unchanged (in place).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -43,27 +48,23 @@ class CThing { public:
     }
 };
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
-struct CIntelligentPointer {
-    unsigned char _body[8];
-};
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer* pointer);   // 0x004CC340
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+template <class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing);   // 0x004CC340
 class CTCWeapon { public:                            // interface type 0x48
     float GetDamage() const;                  // 0x005DAAA0
 };
 
 class CTCInventoryWeapons { public:
     unsigned char _pad00[0x134];
-    CIntelligentPointer PActiveMeleeWeapon;   // +0x134
+    CIntelligentPointer<CThing> PActiveMeleeWeapon;   // +0x134
     float GetActiveMeleeWeaponDamage() const;
 };
 
 float CTCInventoryWeapons::GetActiveMeleeWeaponDamage() const
 {
     float damage = 0.0f;
-    if (IS_THING_ALIVE(&PActiveMeleeWeapon))
+    if (IS_THING_ALIVE(PActiveMeleeWeapon))
         damage = ((CThing*)((CBaseIntelligentPointer*)&PActiveMeleeWeapon)->GetPItem())->GetTC<CTCWeapon>(0x48)->GetDamage();
     return damage;
 }

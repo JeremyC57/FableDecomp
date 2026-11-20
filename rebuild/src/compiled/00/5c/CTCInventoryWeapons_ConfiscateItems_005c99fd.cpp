@@ -10,6 +10,11 @@
 // after the base call a positive index whose weapon is no longer alive is stored.
 // Layout: PActiveMeleeWeapon / PActiveRangedWeapon at retail +0x134 / +0x141; ConfiscatedActiveMeleeWeaponDefIndex /
 // ConfiscatedActiveRangedWeaponDefIndex at retail +0x160 / +0x164 (PDB +0x17C / +0x180).
+// Naming (NF191, 2026-11-20, q4492): the row-local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared
+//   engine/CIntelligentPointer.h (members CIntelligentPointer<CThing>, the Ego_r.pdb member type) and the IS_THING_ALIVE template
+//   declaration (the out-of-line instance 0x004CC340, as the landed CTCInventoryWeapons rows declare it): the liveness tests bind the
+//   FableWin.pdb ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z. Other row-local
+//   models unchanged (in place).
 #pragma optimize("s", on)
 class CThing { public:
     unsigned char  _pad00[0x8c];
@@ -17,13 +22,9 @@ class CThing { public:
     unsigned short GetDefIndex() const { return DefIndex; }
 };
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
-struct CIntelligentPointer {
-    unsigned char _body[8];
-};
-bool __fastcall IS_THING_ALIVE(CIntelligentPointer* pointer);   // 0x004CC340
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+template <class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing);   // 0x004CC340
 namespace NInventory { class CItem; }
 struct CItemVector;                           // std::vector<NInventory::CItem>
 struct CTCInventoryBase_Retail {
@@ -35,10 +36,10 @@ namespace NHeroInformationScreens {
 class CBase { public: virtual void v00(); };
 }
 class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
-    CIntelligentPointer PActiveMeleeWeapon;   // +0x134
+    CIntelligentPointer<CThing> PActiveMeleeWeapon;   // +0x134
     long ActiveMeleeWeaponDefIndex;           // +0x13C
     bool MeleeWeaponCarriedOnLoad;            // +0x140
-    CIntelligentPointer PActiveRangedWeapon;  // +0x141
+    CIntelligentPointer<CThing> PActiveRangedWeapon;  // +0x141
     unsigned char _pad_0x149[0x160 - 0x149];  // ActiveRangedWeaponDefIndex (unaligned) .. the primitive handles
     long ConfiscatedActiveMeleeWeaponDefIndex;    // +0x160
     long ConfiscatedActiveRangedWeaponDefIndex;   // +0x164
@@ -51,15 +52,15 @@ void CTCInventoryWeapons::ConfiscateItems(const CItemVector& items)
 {
     RefreshActiveWeaponData();
     long meleeDefIndex = 0;
-    if (IS_THING_ALIVE(&PActiveMeleeWeapon))
+    if (IS_THING_ALIVE(PActiveMeleeWeapon))
         meleeDefIndex = ((CThing*)((CBaseIntelligentPointer*)&PActiveMeleeWeapon)->GetPItem())->GetDefIndex();
     long rangedDefIndex = 0;
-    if (IS_THING_ALIVE(&PActiveRangedWeapon))
+    if (IS_THING_ALIVE(PActiveRangedWeapon))
         rangedDefIndex = ((CThing*)((CBaseIntelligentPointer*)&PActiveRangedWeapon)->GetPItem())->GetDefIndex();
     CTCInventoryBase_Retail::ConfiscateItems(items);
-    if (meleeDefIndex > 0 && !IS_THING_ALIVE(&PActiveMeleeWeapon))
+    if (meleeDefIndex > 0 && !IS_THING_ALIVE(PActiveMeleeWeapon))
         ConfiscatedActiveMeleeWeaponDefIndex = meleeDefIndex;
-    if (rangedDefIndex > 0 && !IS_THING_ALIVE(&PActiveRangedWeapon))
+    if (rangedDefIndex > 0 && !IS_THING_ALIVE(PActiveRangedWeapon))
         ConfiscatedActiveRangedWeaponDefIndex = rangedDefIndex;
     RefreshSheathedWeapons();
 }

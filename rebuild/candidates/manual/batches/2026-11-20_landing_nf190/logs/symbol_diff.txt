@@ -1,0 +1,21 @@
+0089b110 new: 1
+    ?StartMovieSequence@CGameScriptInterfaceMethods@@QAEXABVCCharString@@AAVCScriptGameResourceObjectMovieBase@@@Z
+00d043a0 new: 1
+    ?CheckForSecondAreaDoorHelp@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ TABLE:00d043a0
+00d04770 new: 1
+    ?WatchForBanditCampGates@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ TABLE:00d04770
+00da3f40 new: 1
+    ?WatchForTermination@CQ_MinionClifftopChaseScript@NScript@@QAEXXZ TABLE:00da3f40
+00dbeb20 new: 0
+00dc8c80 new: 0
+00dd9900 new: 1
+    ?ProcessRaces@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ TABLE:00dd9900
+00ddd030 new: 0
+00e0ad40 new: 0
+00e1cfd0 new: 0
+00e50100 new: 1
+    ?WatchForQuestFinished@CV_BeardyBaldyScript@NScript@@QAEXXZ
+00e50e40 new: 1
+    ?GoTalkToBarber@CV_BeardyBaldyScript@NScript@@QAEXXZ
+00f27180 new: 1
+    ?Copy@CHeroSoulsCreatureDef@@UAEXPBVCDefClassBase@@@Z

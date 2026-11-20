@@ -1,0 +1,16 @@
+addr       parity           behav  name
+006d0630   RELOCATION_MATCH PASS   CTCWife::ReceivedNiceGiftIsOpinionReactionHappening
+005d66ba   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005d66ba   RELOCATION_MATCH PASS   CTCInventoryStats::SetCreatureAsKilled
+
+WINS: 2
+  006d0630 RELOCATION_MATCH CTCWife::?ReceivedNiceGiftIsOpinionReactionHappening@CTCWife@@QAE_NJ@Z
+  005d66ba RELOCATION_MATCH CTCInventoryStats::SetCreatureAsKilled

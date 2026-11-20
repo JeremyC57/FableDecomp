@@ -1,14 +1,18 @@
 // CGameScriptInterface::EntityUnsheatheMeleeWeapon -- unsheathe locally or enqueue player input
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail00890C80,242 bytes. Player creature RTTI table012457FC slot77=0052ABE0 returns true; base0125AC0C slot77 purecall.
+// Naming (NF191, 2026-11-20, q11936): FinishCurrentAction is the base CThingCreatureBase member (FableWin.pdb / Ego_r.pdb 0x0053D510
+//   ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ, 0x00662650) through the flat-view opt-in FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_FINISHCURRENTACTION
+//   (engine/CThingCreatureBase.h), no longer redeclared on the local CThingNative (was ?FinishCurrentAction@CThingNative@@QAEXXZ).
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
 #include "engine/C3DVector.h"
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const long&)const;}; //004365B0 (const lower_bound specialization)
 struct ScriptMethods;
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_FINISHCURRENTACTION
 #include "engine/CThingCreatureBase.h"
-struct CThingNative:CThingCreatureBase{typedef bool(CThingNative::*PlayerMethod)()const;bool IsPlayer()const{return(this->*static_cast<PlayerMethod*>(__vftable)[77])();}void FinishCurrentAction();void UnsheatheMeleeWeapon();}; //00662650,006649C0
+struct CThingNative:CThingCreatureBase{typedef bool(CThingNative::*PlayerMethod)()const;bool IsPlayer()const{return(this->*static_cast<PlayerMethod*>(__vftable)[77])();}void UnsheatheMeleeWeapon();}; //006649C0
 FABLE_STATIC_ASSERT(sizeof(CThingNative::PlayerMethod)==4);
 
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.

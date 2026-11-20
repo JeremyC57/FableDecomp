@@ -64,16 +64,11 @@ struct CComponentList {                                 // STLport list<CAGraphi
     CComponentListNode* m_head;
 };
 
-class CRGBColour { public:                                     // 4 bytes: B, G, R, A
-    unsigned char B, G, R, A;
-};
-
-struct CTintColourMap {                                 // STLport map<void*, CRGBColour> (12 bytes)
-    void*         m_header;
-    unsigned long m_reserved;
-    unsigned long m_count;
-    CRGBColour& operator[](void* const& key);           // 0x004C5890
-};
+// Name fix (NF189, 2026-11-20, q4972): TintColours is Ego_r.pdb map<void*, CRGBColour>; its operator[] 0x004C5890 is the shared STLport
+//   map member (stlport/fable_map.h, declared only by default) over the shared engine/CRGBColour.h. Were the local CTintColourMap /
+//   CRGBColour stand-ins.
+#include "engine/CRGBColour.h"
+#include "stlport/fable_map.h"
 
 #pragma pack(push, 2)
 class CEngineGraphic { public:                                 // 14 bytes (PDB size 14)
@@ -93,7 +88,7 @@ class CTCGraphicAppearance { public:
     bool           ToBeRemoved;                         // +0x08
     bool           IsInGlobalUpdateTCs;                 // +0x09
     unsigned char  MeshEffects[0x0c];                   // +0x0c map<void*, CMeshEffectPriorityEntry> (STLport)
-    CTintColourMap TintColours;                         // +0x18
+    std::map<void*, CRGBColour> TintColours;                         // +0x18
     CTCAnimationBase* PTCAnimation;                     // +0x24
     C3DVector      CachedStaticFocalPosOffset;          // +0x28
     float          Scale;                               // +0x34

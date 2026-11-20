@@ -94,7 +94,7 @@ struct CScriptedThingStorage {                         // a scripted-thing handl
 };
 class CScriptGameResourceObjectMovieBase { public:            // vtable 0x01260EF4, 0x10 bytes
     void* _body[4];
-    void Construct();                                  // 0x006E7B60 (out-of-line ctor)
+    CScriptGameResourceObjectMovieBase();              // 0x006E7B60 (out-of-line ctor; Ego_r/FableWin ??0CScriptGameResourceObjectMovieBase@@QAE@XZ)
     void Destroy();                                    // 0x006E7B80 (out-of-line dtor)
 };
 struct CCutsceneCastMap {                              // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
@@ -206,7 +206,6 @@ void NScript::CQ_PrisonRaceScript::CPrisonRaceWarden::Main()
         cast["HERO"] = hero;
         cast["GUARD"] = scripted;
         CScriptGameResourceObjectMovieBase movie;
-        movie.Construct();
         Game->StartMovieSequence("", movie);
         CGameScriptInterface* game = Game;
         game->PauseAllNonScriptedEntities(true);

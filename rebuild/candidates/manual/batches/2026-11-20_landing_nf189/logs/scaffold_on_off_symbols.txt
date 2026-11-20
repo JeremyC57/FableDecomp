@@ -1,0 +1,4 @@
+macro on vs off object symbol diff (only changed symbols):
+006d0630 ??$find@J@?$_Rb_tree@JU?$pair@$$CBJJ@... on 20 off 21
+005d66ba ?find@?$map@KJU?$less@K@... on 20 off 22
+Both rows grade RELOCATION_MATCH PASS with the macro removed (scaffold_off log).

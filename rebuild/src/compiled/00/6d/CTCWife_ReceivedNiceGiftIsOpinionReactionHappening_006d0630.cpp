@@ -26,7 +26,10 @@
 //   defined inline below with its real landed body; GetDef<T> (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY) and
 //   GetSubDef<T> (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY) are visible but called, which keeps the handles' releases in the
 //   `dec dword ptr [ecx+4]` form; the tree's member template find<long> is visible but called
-//   (no map-header opt-in is needed for that: the row grades the same with the repo header; checked at landing).
+//   (FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_NOINLINE + FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE: STLport 4.6.1 _tree.h 457-467 member
+//   template, owner decision 2026-11-03 D1, so the call binds ??$find@J@ as the owner row 0x005937E1 defines it).
+//   FABLE_RETAIL_STLP_TREE_FIND_LONG_LONG_SIZE_BODY (Fidelity: scaffolding, not retail; stlport/fable_map.h) gives the TU's pick-any
+//   find<long> COMDAT the owner's size-optimised body (EXTRA_RULES 2026-11-20 size-pragma scaffolding; the row grades the same without it).
 // Enumerators: OPINION_ATTITUDE_LOVE = 12 as the landed CTCWife rows spell it; the post type 1 is passed by number.
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCHARSTRING
@@ -59,6 +62,9 @@
 #define FABLE_RETAIL_CTCWIFE_MARRY
 #define FABLE_RETAIL_CTCWIFE_NICEGIFT
 #define FABLE_RETAIL_CTCHEROOPINIONDEEDLOG
+#define FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_FIND_LONG_LONG_SIZE_BODY
 #include "fable_string.h"
 #include "engine/C3DVector.h"
 #include "engine/CThingBaseDef.h"

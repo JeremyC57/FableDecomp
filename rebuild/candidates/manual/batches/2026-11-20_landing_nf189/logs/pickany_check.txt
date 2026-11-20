@@ -1,0 +1,4 @@
+MISSING 005d66ba 0041c820 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z owner leaf None True False
+NO-OWNER-OBJ 00a9cf40 00a99ff0 ?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z
+OK  00aadff0 -> 00aadfc0 ?DeleteData@?$CCountedPointer@VCWaveFile@@@@SIXPAX@Z sizes 34 34 
+manual: 006d0630 ??$_M_find@J@ HEAD vs nf189 object: sizes 56 56, bytes equal, relocs equal (pre-existing copy). 00579ea3 binds ?_M_erase@ (0x00579D97) as an undefined external: no copy.

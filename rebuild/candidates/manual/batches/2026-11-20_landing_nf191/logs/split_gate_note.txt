@@ -1,0 +1,3 @@
+Gate CREATED 0x00857F30 (??0CCombatActionBase reference form AAV) is a gate artifact: the gate left 0x00906380 UNGRADED, but HEAD reloc_bindings.tsv
+already had ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@AAVCThing@@JABVCSoundPair@@@Z 00857f30 00906380, and that landed row
+spells the reference ctor at HEAD. The address keeps the same two spellings (AAV, PAV); 0x00957170 moves from PAV to AAV.

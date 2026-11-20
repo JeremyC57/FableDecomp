@@ -11,9 +11,18 @@ public:
     CHeroSoulsCreatureDef();
     CHeroSoulsCreatureDef(const CHeroSoulsCreatureDef&);
     virtual ~CHeroSoulsCreatureDef();
+#ifdef FABLE_RETAIL_CHEROSOULSCREATUREDEF_COPY
+    // Opt-in (NF190, 2026-11-20, row 0x00F27180): slot 19 of vtable 0x012FB500 (Ego_r.pdb / FableWin.pdb
+    // ?Copy@CHeroSoulsCreatureDef@@UAEXPBVCDefClassBase@@@Z), a tail call to operator= 0x00F27190.
+    virtual void Copy(const CDefClassBase*);
+#endif
+#ifdef FABLE_RETAIL_CHEROSOULSCREATUREDEF_OPERATOR_ASSIGN
+    // Opt-in (NF190, 2026-11-20): out of line at 0x00F27190 (landed row; ??4CHeroSoulsCreatureDef@@QAEAAV0@ABV0@@Z).
+    CHeroSoulsCreatureDef& operator=(const CHeroSoulsCreatureDef&);
+#endif
     CCharString CreatureType;                                            // +0x28
     CCharString Location;                                                // +0x2c
     long NumCreatures;                                                   // +0x30
 };
-FABLE_STATIC_ASSERT(sizeof(CHeroSoulsCreatureDef) == 0x34);
+FABLE_STATIC_ASSERT_AT(18, sizeof(CHeroSoulsCreatureDef) == 0x34);
 #endif

@@ -24,19 +24,22 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   symbol-key wrap decides x87 operand order, setter block copies fold only after an earlier same-member read.
 - Shared-header fixes: CRenderStateManager.h EARLY_RETURN braces; C2DVector.h PASS21 double operator*. Tool fixes: reloc_identity operator codes, rand/srand.
 
-## Account A, 2026-11-20 (naming round 10, landings nf148-nf174)
-- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` (nf148-nf170, 524 rows),
-  B's b12 / reports_b4 rows, and the engine/CSpawnedFunc1.h include fix (5 rows that did not compile at HEAD now match; 67/67 includers good).
-- Later landings nf171 / nf171b / nf172 / nf173 / nf174 (18 + 21 + 36 + 6 rows). Agents running at the time of writing: NF175 (creature
-  action / AI / hero / sound voice), NF176 (long-tail engine / sound DSP / navigation), NF177 (render / particle / TC entries returned by NF172-NF173).
-  Their slices are in `$S/w22/agentNF17x/`; land each with the procedure in `docs/journal/2026-11/COORDINATION_LOG.md` (nf15x-nf17x lines).
-- Held rows (kept under `naming/2026-11-20_agentNF16x/held/`, fixes queued): 0x00DCF6E0 (new ??0CTeamSpawn clash), 0x00A99610 (new
-  FindFirstObject clash). b6 (0x00B0A140) waits for the 0x00B0A160 port.
-- New rules (EXTRA_RULES 2026-11-20, advisor decisions): explicit-instantiation scaffolding for private members; a static's initializer /
-  atexit-destructor pair may land with its known LNK2005; a `_quarantine/` header is not a shared header for the local-model rule.
+## Account A, 2026-11-20 (naming round 10, landings nf148-nf190)
+- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` (nf148-nf190), B's b12 /
+  reports_b4 rows, and the engine/CSpawnedFunc1.h include fix. Each batch README lists its rows, header opt-ins, advisor calls and checks.
+- Agents running at the time of writing: NF191 (game / creature / UI / input, second pass), NF192 (engine / render / resource /
+  data-stream, second pass), NF193 (remaining mixed queue, first 50 in queue order; libpk / GameCODA excluded). Slices in
+  `$S/w22/agentNF19x/`; land each with the procedure in `docs/journal/2026-11/COORDINATION_LOG.md` (nf18x lines). mkagent now takes
+  `MAX=<n>` to cap a slice (an uncapped `ANY=1` regex took 167 entries).
+- New rules (EXTRA_RULES 2026-11-20, advisor decisions under the owner's delegation): explicit-instantiation scaffolding for private
+  members; a static's initializer / atexit-destructor pair may land with its known LNK2005; a `_quarantine/` header is not a shared
+  header for the local-model rule; pick-any copies must equal the owner's body, and a stand-in's table line is not ownership;
+  size-pragma scaffolding (no row-head optimize pragma before the opt-in header's include); STLport header spellings for STL instances.
+- Landing checks added today: a self row's `// Leaf:` must be the full mangled name (a bare one trips the split gate, nf188); run
+  `coordinator/funclet_includes_check.py` after any landing that renames a file (nf188 broke 0x01212A70, fixed in 802ef5269a).
 - Open entries of handed-back agents are unclaimed in COORDINATION_CLAIMS so mkagent can re-pick them; locks of B's reserved rows read `acctB`.
-- The split gate counts only callers' bindings: check the self row's `// Leaf:` before holding a "created split" (GOTCHAS 2026-11-20).
-- Found today, queued: 0x007D7EC0 DIFFER(182v66) at HEAD; gen_class_headers.py does not guard hand opt-ins in `_quarantine/`.
+- Queued for decision / follow-up: the 53-byte CCountedPointer bodies 0x004057A0 / 0x00CE1000 (destructor or ReleaseData; referencer
+  check first, q5991 moves 155 rows); the Def base-ctor owners 0x0044C0C0 / 0x00F29C10 / 0x00430370; engine/CQ_RansomVictimScript.h C3861.
 
 ## State
 - **2026-11-10 codex20nf:** Codex pass 15 name fixes applied to 71 landed rows (all RELOCATION_MATCH + tests); see `rebuild/candidates/manual/naming/2026-11-10_codex20nf/README.md`. Open: fixes [5]-[10] + the missed-binder sweep + the three Codex-parked rows (0x0064FDB4, 0x00651273, 0x00E5E350), handed to an agent (`$S/w22/agentNF/`); chunk 1001 landed 172 libpk functions from 38 split gap-scan rows (`batches/2026-11-10_landing_n/`), chunk 900 landed 10 (six strmbase thunks with vendor proof, two CODA + two CCutsceneDef splits; `_landing_o/`; 0x005C8459 parked). Coverage 55,292 / 57,788. Queue `land1011n` holds the chunks' 8 name fixes.

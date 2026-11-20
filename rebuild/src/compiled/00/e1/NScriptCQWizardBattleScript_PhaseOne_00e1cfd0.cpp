@@ -1,5 +1,5 @@
 // CQ_WizardBattleScript::PhaseOne() -- mark the end-game barrier on the minimap and wait for the hero to reach it; have the hero chant and wait for the line to end; remove the barrier and its quest, then wait for the hero at the intro kick-off point, play the battle-intro cut-scene, bind Maze, switch the music and objectives over to the Hook Coast phase
-// Leaf: PhaseOne
+// Leaf: ?PhaseOne@CQ_WizardBattleScript@NScript@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1CFD0, 1638 bytes (int3 padded to 1648).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, IsDistanceBetweenThingsUnder
@@ -61,13 +61,13 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
 };
 class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x0127094C, 0x10 bytes
     void* _body[4];
-    void Construct();                                  // 0x007E72A0 (out-of-line ctor)
+    CScriptGameResourceObjectScriptedThingBase();      // 0x007E72A0 (out-of-line ctor; Ego_r/FableWin ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ)
     void Destroy();                                    // 0x007E74D0 (out-of-line dtor)
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
 class CScriptGameResourceObjectMovieBase { public:            // vtable 0x01260EF4, 0x10 bytes
     void* _body[4];
-    void Construct();                                  // 0x006E7B60
+    CScriptGameResourceObjectMovieBase();              // 0x006E7B60 (out-of-line ctor; Ego_r/FableWin ??0CScriptGameResourceObjectMovieBase@@QAE@XZ)
     void Destroy();                                    // 0x006E7B80
 };
 // Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
@@ -150,13 +150,11 @@ void NScript::CQ_WizardBattleScript::PhaseOne()
         return;
     {
     CScriptGameResourceObjectScriptedThingBase hero;
-    hero.Construct();
     Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
     {   // Inferred: scope of the cast map; retail calls ~map 0x00CDBFB0 after the movie handle and before the hero handle's dtor (the old by-hand order)
     std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
     cast["Hero"] = hero;
     CScriptGameResourceObjectMovieBase movie;
-    movie.Construct();
     Game->StartMovieSequence("", movie);
     CGameScriptInterface* game = Game;
     game->PauseAllNonScriptedEntities(true);

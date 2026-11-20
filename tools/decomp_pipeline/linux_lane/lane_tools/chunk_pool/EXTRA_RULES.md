@@ -424,7 +424,9 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
   - the row's own body grades the same with the macro removed, and only that one COMDAT changes;
   - the owner row sets the same pragmas itself (cite it in the opt-in comment);
   - the comment says the block ends with `optimize("", on)` (VC7.1 has no push / pop for optimize), so a row using it must not
-    carry a row-head optimize pragma.
+    carry a row-head optimize pragma before its include of the header. A row-head pragma placed after that include is untouched by
+    the reset and is allowed (advisor decision, owner delegated, landing nf189: 0x005D66BA includes fable_map.h, then sets
+    `optimize("y", off)` / `("s", on)` as its owner TU did).
   The owner's strong out-of-line copy then gives one LNK2005 with identical bytes; queue the owner's port onto the header (nf184:
   FABLE_RETAIL_STLP_LESS_CCHARSTRING_SIZE_BODY vs 0x0042AAB3, FABLE_RETAIL_CANIMINIT_CTOR_SIZE_BODY vs 0x005B33F4).
 - STL template instances: the PDB name sets (egor / fablewin / egod) hold no STL instance names, so the attested spelling is the one the

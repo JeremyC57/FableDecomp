@@ -1,0 +1,5 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+t.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
+(trimmed at landing: 15 LNK2001 + 85 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

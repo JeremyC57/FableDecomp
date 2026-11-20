@@ -20,6 +20,11 @@
 //   before the PeekPlayer().GetJoystickDeviceNumber() argument chain. A same-TU noinline LowerBound body keeps the lookup keys uncaptured
 //   so they share the second frame word with the carrying pointer.
 // Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
+// Naming (NF191, 2026-11-20, q11704): the row-local CGamePlayerInterface model replaced by the shared engine/CGamePlayerInterface.h
+//   (FABLE_RETAIL_CGAMEPLAYERINTERFACE): the call binds the Ego_r.pdb + FableWin.pdb
+//   ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z (0x00446B10; const, enum
+//   parameters; was ?IsGameActionEventInQueue@CGamePlayerInterface@@QAE_NJJJ@Z). Action 10 = GAME_ACTION_FIRE_RANGED_WEAPON
+//   (engine/EGameAction.h); the button event type 2 has no enumerator name in the repo (cast).
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_GETPPLAYERINTERFACE
 #include "fable_compiler.h"
 class CTCBase;
@@ -37,10 +42,9 @@ public:
 public:
     long GetJoystickDeviceNumber() const;   // 0x00487510
 };
-class CGamePlayerInterface {
-public:
-    bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber);   // 0x00446B10
-};
+#include "engine/EGameAction.h"
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE
+#include "engine/CGamePlayerInterface.h"
 #include "engine/CMainGameComponent.h"   // NF94 q11265: the shared header (GETPPLAYERINTERFACE) in place of the row-local model
 inline CMainGameComponent* GetMainGameComponent() { return CMainGameComponent::Get(); }
 
@@ -127,7 +131,7 @@ bool __fastcall IsThingToKeepStrafing(const CThingPlayerCreature& creature)
     if (ranged->Loading)
         loading = true;
     CGamePlayerInterface* gamePlayerInterface = GetMainGameComponent()->GetPPlayerInterface();
-    bool actionQueued = gamePlayerInterface->IsGameActionEventInQueue(0xa, 2, creature.PeekPlayer().GetJoystickDeviceNumber());
+    bool actionQueued = gamePlayerInterface->IsGameActionEventInQueue(GAME_ACTION_FIRE_RANGED_WEAPON, (EInputButtonEventType)2, creature.PeekPlayer().GetJoystickDeviceNumber());
     const CPlayer* player = &creature.PeekPlayer();
     if (holdingProjectileWeapon && !player->InRangedWeaponMode) {
         if (actionQueued || fireCycle || loading || creature.IsPerformingAnyAction())
