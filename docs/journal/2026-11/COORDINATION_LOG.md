@@ -356,3 +356,4 @@ NF120) add opt-ins only through overlays I land; if one of them touches CTCWeapo
 0x0072A860 call should use IsChargingUpAbility; the STRAFE_CALLS_PASS24 opt-in still declares GetAbilityMutexLock.
 2026-11-20 A->B: New agent NF123: PRIORITY slice 8 (32 entries, 47 rows locked, in claims).
 2026-11-20 A->B: nf121 landed (13 rows, CTCCarrying family; no header change).
+2026-11-20 A->B: New agent NF124: NF120's 7 open entries (30 rows locked, in claims). NF120's 36-row hand-back is being verified (headers CTCFishing.h, CTCCreatureModeManager.h, CThingCreatureBase.h, add-only opt-ins).
