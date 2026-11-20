@@ -1,28 +1,26 @@
-// Byte-exact reconstruction of CMiniMapDisplay::Initialise @ 0x0082a310
-// Leaf: ?CMiniMapDisplay_Initialise@@YIXPAVCMiniMapDisplay@@M@Z
-// __fastcall(CMiniMapDisplay* self, float) -> void
-// add ecx,0x20 ; call 0x440730 (subobject method) ; mov byte [g]=0 ; ret 4
-//
-// Model this-call as a leading pointer param (ecx under __fastcall).
+// CMiniMapDisplay::Initialise(float) -- drop every map marker (clear the marker list) and clear the mini-map flag byte at 0x013B86C4
+// Leaf: ?Initialise@CMiniMapDisplay@@QAEXM@Z
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0082A310, 18 bytes: `add ecx,20h ; call 0x00440730 ; mov byte [0x013B86C4],0 ; ret 4` (the float
+//   argument is unused).
+// Identity (two sources): Ego_r.pdb 0x00732DE0 + FableWin.pdb 0x027CF940 ?Initialise@CMiniMapDisplay@@QAEXM@Z, after RemoveAllMarkers in both
+//   PDBs as in retail (0x0082A300 -> 0x0082A310); the landed caller 0x0064E83F binds this spelling. Markers (STLport list<CMarkerInfo>, retail
+//   +0x20) as the landed RemoveAllMarkers 0x0082A300 clears it.
+// Callee: ?clear@?$_List_base@VCMarkerInfo@CMiniMapDisplay@@V?$allocator@VCMarkerInfo@CMiniMapDisplay@@@std@@@std@@QAEXXZ 0x00440730 (the
+//   landed self row's spelling; 0x0082A300 / 0x00442610 bind it).
+// Global: the byte at 0x013B86C4 keeps the established descriptive spelling ?g_miniMapFlag@@3EA (no PDB data symbol found; only this row binds it).
+// NF171 (2026-11-20, q5132): re-authored on engine/CMiniMapDisplay.h (NF171 opt-in FABLE_RETAIL_CMINIMAPDISPLAY_INITIALISE); was the free
+//   __fastcall stand-in ?CMiniMapDisplay_Initialise@@YIXPAVCMiniMapDisplay@@M@Z over a local CMiniMapDisplay model, binding 0x00440730 as
+//   ?Sub_Reset@@YIXPAUSub@@@Z.
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CMINIMAPDISPLAY
+#define FABLE_RETAIL_CMINIMAPDISPLAY_INITIALISE
+#include "engine/CMiniMapDisplay.h"
 
-struct Sub;  // subobject living at CMiniMapDisplay+0x20
+extern unsigned char g_miniMapFlag;   // 0x013B86C4
 
-// callee 0x440730 : __fastcall on Sub (no extra args) -> ecx=Sub*
-extern void __fastcall Sub_Reset(Sub* self);
-
-class CMiniMapDisplay { public:
-    char pad[0x20];
-    Sub* subAt20;   // &(this->pad[0x20]) == this+0x20
-};
-
-// global flag at 0x13b86c4
-extern unsigned char g_miniMapFlag;
-
-// Author Initialise as a __fastcall free fn: arg1=this in ecx, arg2(edx dummy) then stack float.
-// Actually the retail sig is __fastcall(self,float): ecx=this, float on stack, ret 4.
-void __fastcall CMiniMapDisplay_Initialise(CMiniMapDisplay* self, float /*unused*/)
+void CMiniMapDisplay::Initialise(float)
 {
-    Sub* p = reinterpret_cast<Sub*>(reinterpret_cast<char*>(self) + 0x20);
-    Sub_Reset(p);           // add ecx,0x20 ; call 0x440730
-    g_miniMapFlag = 0;      // mov byte [0x13b86c4],0
-}                           // ret 4
+    Markers.clear();
+    g_miniMapFlag = 0;
+}

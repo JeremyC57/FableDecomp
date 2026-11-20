@@ -779,8 +779,6 @@ _FreeThing@4	00451b82	00453630
 ?IsValid@CInitBaseClass@@QBE_NXZ	0099a330	004c5ea0
 ?g_BulletTimeStrikeSeconds@@3JA	01378d08	004c5ea0
 ??_7CMessageBase@@6B@	012398f8	004c6fb0
-?GetDeviceNumber@CInputProvider@@QAEJXZ	00487510	004c7ca0
-?GetProvider@CInputManager@@QAEPAUCInputProvider@@H@Z	00449910	004c7ca0
 ?AllocateNewThingUID@CThingManager@@QAE_KJ_N0@Z	0051e100	004c7ff0
 ?UpdateCarriedObjects@CTCCarrying@@QAEXXZ	006a1d60	004c8ba0
 ?OnThingKilled@CThingManager@@QAEXPAVCThing@@@Z	005202b0	004c9b80
@@ -2268,7 +2266,6 @@ _CCharString_ConstructCCoopSpiritDef_0066fa10_Name	012358e8	0066fa10
 ??0CAInputProcess@@QAE@XZ	00a0d290	00687a30
 ??_7CInputProcessGameBase@@6B@	0125be98	00687a30
 ?method@Helped@@QAEXPAX0@Z	004458f0	00687d20
-?IsGameActionEventInQueue@CGamePlayerInterfaceCalls@@QAE_NJJJ@Z	00446b10	00687d50
 ?GetDevice@CInputEvent@@QBEJXZ	00a03b50	00687db0
 ?GetDeviceNumber@CInputEvent@@QBEJXZ	00a03b60	00687db0
 ?IsUsingJoystickDeviceNumber@CPlayer@@QAE_NJ@Z	004874f0	00687db0
@@ -2692,7 +2689,6 @@ __CIfmod	00bfeb28	006f99b0
 ??4?$CTagVector@VCCharString@@@@QAEAAU0@ABU0@@Z	00719b30	00719e80
 ??4?$CTagVector@W4EConversationAttitude@@@@QAEAAU0@ABU0@@Z	00719470	00719e80
 ??_7CTCMapwho@@6B@	01265a3c	0071a670
-_GetMapwhoHelper	00686d30	0071a710
 ??_7CTCEmoteIcon@@6B@	01265abc	0071afe0
 ??_7CMessageOnMorphChanged@@6B@	01265bb0	0071b800
 ??4CDefPointerVector@@QAEAAU0@ABU0@@Z	00721150	0071cd90
@@ -3271,8 +3267,6 @@ __CxxThrowException@8	00bfeb84	0081e960
 ?GetBounds@MapSub@@QAEXPAUIPair@@0@Z	0066c6a0	00829ce0
 ?g_miniMapEdgeY@@3MB	01272584	00829d20
 ?g_miniMapEdgeZ@@3MB	01272580	00829d20
-?Sub_Reset@@YIXPAUSub@@@Z	00440730	0082a310
-?g_miniMapFlag@@3EA	013b86c4	0082a310
 ??0CEnginePrimitiveHandleVector@@QAE@K@Z	00485d30	0082a460
 ??0CRegionMinimap@@QAE@XZ	0066ccc0	0082a460
 ??_7CMiniMapDisplay@@6B@	01231768	0082a460
@@ -3554,7 +3548,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?SetAllMuted@CSoundSys@@QAEXXZ	00408340	0088e090
 ?GetCategoryWithIndex@CTCInventoryBase@NInventory@@QAEPAVCCategory@@J@Z	004fb490	0088e0b0
 ?GetRegionNumberFromName@CWorldMap@@QAEJPBVCCharString@@@Z	004fc210	0088e0b0
-?SetMaxHealth@CThing_Retail@@QAEXM_N@Z	006a5260	0088e1c0
 ?IsPickPocketable@CThing_Retail@@QAE_NXZ	00665e90	0088e220
 ?IsMapLoadedOnPlayerProximity@CWorldMap_Retail@@QAE_NJ@Z	004fd000	0088e2a0
 ?CRegions_GetEntry@@YIPAXPAUCRegions@@@Z	004fc180	0088e340
@@ -3687,7 +3680,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?AddMarker@CMiniMapDisplay_Retail@@QAEXPAUCThing_Retail@@J@Z	0082a890	00891f50
 ?GetMiniMapDisplay@CGameUI_Retail@@QAEPAUCMiniMapDisplay_Retail@@XZ	00437ce0	00891f50
 ?SetMarkerGraphic@CMiniMapDisplay_Retail@@QAEXPAUCThing_Retail@@J@Z	0082a340	00891fa0
-?RemoveMarker@CMiniMapDisplay_Retail@@QAEXPAUCThing_Retail@@@Z	0082a380	00891ff0
 ?g_obj@@3PAUCObj@@A	013b8790	00892030
 @get_sub@4	00437ce0	00892030
 @sub_method@4	0082a300	00892030
@@ -4320,8 +4312,6 @@ N_008fdb27	008fdb27	008fdb55
 ??_7CActionStopScripting@NTCScriptedControl@@6B@	0128d788	00903660
 ??_7CActionDropGenericBox@@6B@	0128d7bc	009036a0
 ??_7CScriptGameResourceObjectScriptedThing@@6B@	0128d86c	00903710
-?ClearQueuedActions@CThing_Retail@@QAEXXZ	00663600	00903920
-?ReleaseLoopingAnimation@CThing_Retail@@QAEXXZ	006633a0	00903970
 ?CleanupAllActions@CTCScriptedControl@@QAEXXZ	00713630	00904310
 ?IsActionListEmpty@CTCScriptedControl@@QAE_NXZ	007122c0	00904ee0
 ??_7CActionWaitForThingToFinishPerformingTasks@NTCScriptedControl@@6B@	0128d7f0	00905130
@@ -16406,9 +16396,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?__uninitialized_copy@@YIPAVCActionInputControl@@PBV1@0PAV1@ABU__false_type@@@Z	004cfac0	00719540
 ??4CSubtitledMessage@@QAEAAV0@ABV0@@Z	00719e80	00719f00
 ?IsOverlappingCells@CThingMapManager@@QAE_NPAVCTCMapwho@@ABVC3DVector@@@Z	00637f40	0071a6d0
-?Place@Slot@@QAEXPAVCTCMapwho@@PAVC3DVector@@@Z	00637fc0	0071a710
-?DestroyMapwhoNode@CThingMapManager@@QAEXPAVCTCMapwho@@@Z	00637a10	0071a750
-?PlaceThing@CThingMapManager@@QAEXPAVCTCMapwho@@ABVC3DVector@@@Z	00637fc0	0071a750
 ?DrawEmoteTypeIcon@CTCEmoteIcon@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	0071ad20	0071ae90
 ?DrawEmoteTypeText@CTCEmoteIcon@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	0071ab20	0071ae90
 ?for_each@@YI?AVCKillThing@@UCThingListIterator@@0V1@@Z	0071b590	0071b200
@@ -28191,9 +28178,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?GetTextEntryFromGroup@CDataBank@NGameText@@QBEPBVCTextEntry@2@KABVCCharString@@AA_NPAJ_N@Z	009c9280	0066ba80
 ?InternalPlayAttachedSample@CTCSoundPlayer@@AAEKAAVCASoundBank@@JABVCSoundInit@@_N22@Z	0066b080	0066ba80
 ?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJJPBVCOpinionDeedEffectsDef@@_N@Z	00682810	00683590
-?IsExpressionShiftModeForced@CGamePlayerInterface@@QBE_NXZ	00445bb0	006881d0
-?IsGameActionEventInQueue@CGamePlayerInterface@@QAE_NJJJ@Z	00446b10	006881d0
-?IsSpellModeForced@CGamePlayerInterface@@QBE_NXZ	00445b90	006881d0
 ?g_quickAccessChargeItem_0137ee78@@3JA	0137ee78	0068e4d0
 ?g_quickAccessChargeSlot_0137ee7c@@3JA	0137ee7c	0068e4d0
 ?CancelAimingWeapon@CTCHeroRangedAttacks@@QAEXXZ	00789ff0	0068f9d0
@@ -28245,8 +28229,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?GetAnaloguePosition@CInputEvent@@QBE?AVC2DVector@@XZ	00a043a0	007a9960
 ?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ	007cbf50	007bdcfc
 ?GetShotDamage@CTCShotDefinitionBase@@QBEMXZ	007bee10	007bdcfc
-?IsAvailableForHeroRun@@YI_NPAVCThing@@@Z	0085f560	007e0750
-?g_bHeroRunOption@@3_NA	013756ea	007e0750
 ?OnActionUseCommon@CTCCarriedActionUseTrophy@@AAEXAAVCThing@@@Z	007edee0	007edfb0
 ?AddMoney@CTCHeroStats@@QAEXJ_N@Z	0057b327	00813c50
 ?SetBoastAsMade@CQuestManager@@QAEXJVCCharString@@@Z	004b1a80	00813c50
@@ -28333,11 +28315,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?IsLineOfSightFiltered@CTools@@QAE_NPBVC3DVector@@0PAV2@1PAMPAPAVCThing@@J_N@Z	00877c40	0096f770
 ?CheckSummonerChargeable@CCombatManager@@QAE_NPAVCThing@@@Z	006ea050	0096fa90
 ?IsCreatureFightingThing@CCombatManager@@QBE_NABVCThingCreatureBase@@PBVCThing@@@Z	006e9310	0096fa90
-??0CCreatureAction_SummonerChargeOutOf@@QAE@PAVCThingCreatureBase@@@Z	00970370	0096ff10
-??0CCreatureAction_SummonerChargeOutOf@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	00970420	0096ff10
-??_7CCreatureAction_SummonerChargeInto@@6B@	012971ec	0096ff10
-?GetActionCode@CCurrentAction@@QAEJXZ	00692620	0096ff10
-?StopCurrentAction@CThingCreatureBase@@QAEXXZ	00662650	0096ff10
 ?TransferBinaryIn@?$CPersistTraits@W4EMusicSetType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EMusicSetType@@@Z	004311df	0043119e
 ??$GFSerialiseMapBinaryIn@KKU?$less@K@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z	004312b4	00431242
 ??$GFSerialiseMapBinaryOut@KKU?$less@K@std@@@@YIXAAVCDataOutputStream@@ABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z	00431277	00431242
@@ -29029,7 +29006,6 @@ _g_LookAtTurnSpeed	0138cba8	0092ace0
 ?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ	00692c10	0087ca30
 ?CGSI_Rumble_Create@@YIXPBVC3DVector@@EMM@Z	007f1ac0	0088ed20
 ?CGSI_Rumble_Hundred@@3MB	01230a08	0088ed20
-?GetIndex@@YIHPAUCRumbleTarget@@@Z	004c7ca0	00892df0
 ?SetAICast@CTCTurncoatSpell@@QAEXJ@Z	007c66e0	008b95a0
 ?AllowReactionsOnHitFromAttacker@CTCPhysicalShieldSpell@@QAEXPAVCThing@@_N@Z	0079e580	008c4680
 ?GetScorpionBattle@CDefLookup@@QBE_NPAU?$DefPointer@VCScorpionKingBattleDef@@@@@Z	008c5a50	008c4680
@@ -33428,8 +33404,6 @@ _g_HRTFMode	0143bc18	00c3f9d0
 _CODA_BufferCreate@4	00c36080	00c49470
 _CODA_SourceIsPlaying@4	00c35ca0	00c49470
 _CODA_SourceQueueBuffer@16	00c35a10	00c49470
-?IsActive@CFrontEnd@@QAE_NXZ	00434d60	00490a22
-?IsWaitingForClickPast@CSubtitleRenderer@@QBE_NXZ	0048db46	00490a22
 ?GetTypeFromDefIndexPC@CTCInventoryTrade@@AAE?AW4EItem_Menu_Type@1@J@Z	0059c447	005b0aac
 ?RefreshBuyDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	005ae9de	005b0aac
 ?RefreshBuyPossibilityPC@CTCInventoryTrade@@AAEXXZ	005a887d	005b0aac
@@ -39002,7 +38976,6 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?WEAPONS_SUBTITLE@?A0x69cbc62b@@3VCCharString@@A	013b8b70	005af64e
 ?OnVillageKilled@CTCInterface243@@QAEXXZ	007e2780	0065b0b4
 ?SetTimeAsStopped@CGameTimeManager@@QAEX_NPAJ@Z	006bbe30	0065b0b4
-?Check@Helper24@@QAE_NJH@Z	00446060	00687c90
 ?CreateFish@CTCFishing@@QAE_N_N@Z	007b1a30	007b1eb0
 ?AddMarker@CMiniMapDisplay@@QAEXPBVCThing@@J@Z	0082a500	0082a960
 @Hero_CheckChild@4	00661f70	008902b0
@@ -39610,3 +39583,21 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?Update@CAnimSet@@AAEXABVCAnimateThingUpdate@@@Z	0070d030	0070e8b0
 ?UpdateCombinationAnimList@CAnimateThing@@AAEXAAV?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@ABVCAnimateThingUpdate@@@Z	0070d390	0070e8b0
 ?UpdateInternalAlphas@CAnimSet@@AAEXXZ	0070c2c0	0070e8b0
+?IsActive@CFrontEnd@@QAE_NXZ	00434d60	00490a22
+?IsWaitingForClickPast@CSubtitleRenderer@@QBE_NXZ	0048db46	00490a22
+?GetDeviceNumber@CInputProvider@@QAEJXZ	00487510	004c7ca0
+?GetProvider@CInputManager@@QAEPAUCInputProvider@@H@Z	00449910	004c7ca0
+?IsOtherQuickAccessItemButtonHeld@CGamePlayerInterface@@QBE_NJJ@Z	00446060	00687c90
+?IsExpressionShiftModeForced@CGamePlayerInterface@@QBE_NXZ	00445bb0	006881d0
+?IsSpellModeForced@CGamePlayerInterface@@QBE_NXZ	00445b90	006881d0
+?PlaceThing@CThingMapManager@NThingMap@@QAEXAAVCTCMapwho@@ABVC3DVector@@@Z	00637fc0	0071a710
+?IsAvailableForHeroRun@@YI_NPAVCThing@@@Z	0085f560	007e0750
+?g_bHeroRunOption@@3_NA	013756ea	007e0750
+?g_miniMapFlag@@3EA	013b86c4	0082a310
+?ConstructFromLevelScript@CThingPhysical@@UAE_NPBD@Z	006a5d90	00838930
+?RemoveMarker@CMiniMapDisplay@@QAEXABVCThing@@@Z	0082a380	00891ff0
+??0CCreatureAction_SummonerChargeOutOf@@QAE@PAVCThingCreatureBase@@@Z	00970370	0096ff10
+??0CCreatureAction_SummonerChargeOutOf@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	00970420	0096ff10
+??_7CCreatureAction_SummonerChargeInto@@6B@	012971ec	0096ff10
+?GetActionCode@CCurrentAction@@QAEJXZ	00692620	0096ff10
+?SetAsInDanger@CTCStealth@@QAEXPAVCThing@@J@Z	00747b80	0096ff10

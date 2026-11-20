@@ -1,56 +1,51 @@
-// CScriptGameResourceObjectScriptedThing::ClearAllActionsIncludingLoopingAnimations() -- as ClearAllActions, then finish the current action a second time and release the creature's looping animation
-// Leaf: ClearAllActionsIncludingLoopingAnimations
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00903970, length 84 bytes.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 four times (on PThing at +0x14), the queued-action
-// clear @ 0x00663600, CThingCreatureBase::FinishCurrentAction @ 0x00662650 twice, the looping-animation
-// release @ 0x006633A0 (drops the counted pointer at +0x100/+0x104; labelled "_Dest_val<...>", propagated;
-// tail jump).
-// Shape: same guard chain as ClearAllActions (0x00903920); the creature local in esi for four calls.
-// `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
+// CScriptGameResourceObjectScriptedThing::ClearAllActionsIncludingLoopingAnimations() -- as ClearAllActions, then finish the current action a second time and clear it (CThingCreatureBase::ClearCurrentAction)
+// Leaf: ?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThing@@UAEXXZ
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00903970, length 84 bytes (vtable 0x0128D86C slot 22).
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 four times (on PThing at +0x14), CThingCreatureBase::ClearQueuedActions @ 0x00663600,
+//   FinishCurrentAction @ 0x00662650 twice, ClearCurrentAction @ 0x006633A0 (tail jump). Shape: same guard chain as ClearAllActions
+//   (0x00903920); the creature local in esi for four calls.
+// Identity (two sources): Ego_r.pdb 0x0092A280 + FableWin.pdb 0x02B4C100 ?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThing@@UAEXXZ,
+//   the override in vtable 0x0128D86C slot 22 (base 0x007E7410); no landed row references 0x00903970 (exe scan: the vtable only).
+// NF171 (2026-11-20, q11935 / q11936): ported onto the shared headers (as 0x00903920; CLEARCURRENTACTION as the landed 0x008916A0 uses it):
+//   0x006633A0 binds Ego_r.pdb 0x0053E2D0 + FableWin.pdb 0x01D9E6D0 ?ClearCurrentAction@CThingCreatureBase@@QAEXXZ (was the stand-in
+//   ?ReleaseLoopingAnimation@CThing_Retail@@QAEXXZ), 0x00662650 / 0x00663600 their CThingCreatureBase PDB spellings; own leaf was
+//   ?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThing_Methods@@QAEXXZ.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FINISHACTION
+#define FABLE_RETAIL_CTHINGCREATUREBASE_CLEARQUEUED
+#define FABLE_RETAIL_CTHINGCREATUREBASE_CLEARCURRENTACTION
+#define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHING
+#define FABLE_RETAIL_SCRIPTEDTHING_CLEARALLACTIONS
+#define FABLE_RETAIL_STLP_LIST
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
-class CThing_Retail { public:
-    unsigned char  _pad00[0x6c];
-    unsigned char  m_flags;                        // +0x6c
-    unsigned char  _pad6d[0x24];
-    unsigned char  m_dead : 1;                     // +0x91 bit 0
-    unsigned char  m_91_1 : 7;
-    void ClearQueuedActions();                     // 0x00663600
-    void FinishCurrentAction();                    // 0x00662650
-    void ReleaseLoopingAnimation();                // 0x006633A0
-};
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
-struct CScriptGameResourceObjectScriptedThing_Methods : CScriptGameResourceObjectScriptedThing {
-    void ClearAllActionsIncludingLoopingAnimations();
-};
-
-void CScriptGameResourceObjectScriptedThing_Methods::ClearAllActionsIncludingLoopingAnimations()
+void CScriptGameResourceObjectScriptedThing::ClearAllActionsIncludingLoopingAnimations()
 {
-    CIntelligentPointer<CThing_Retail>* thing = (CIntelligentPointer<CThing_Retail>*)PThing;
-    if (thing->GetPItem()) {
-        if (!thing->GetPItem()->m_dead) {
-            if (thing->GetPItem()->m_flags & 8) {
-                CThing_Retail* creature = thing->GetPItem();
+    if (PThing.Get()) {
+        if (!PThing.Get()->IsDead()) {
+            if (PThing.Get()->GetTypeFlags() & 8) {
+                CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(PThing.Get());
                 creature->ClearQueuedActions();
                 creature->FinishCurrentAction();
                 creature->FinishCurrentAction();
-                creature->ReleaseLoopingAnimation();
+                creature->ClearCurrentAction();
             }
         }
     }

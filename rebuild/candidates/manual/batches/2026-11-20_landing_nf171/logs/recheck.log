@@ -1,0 +1,96 @@
+addr       parity           behav  name
+00490a22   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00490a22   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00490a22   WARN RELOC_NAME: ?IsActive@CFrontEnd@@QAE_NXZ -> 00434d60 labelled 'C3DAnimation2::CanRelocateData'
+00490a22   RELOCATION_MATCH PASS   CSubtitleRenderer::IsInInteractiveState
+004c7ca0   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+004c7ca0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+004c7ca0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004c7ca0   WARN RELOC_NAME: ?GetProvider@CInputManager@@QAEPAUCInputProvider@@H@Z -> 00449910 labelled 'CPlayerManager::GetPlayer'
+004c7ca0   WARN RELOC_NAME: ?GetDeviceNumber@CInputProvider@@QAEJXZ -> 00487510 labelled 'CPlayer::GetJoystickDeviceNumber'
+004c7ca0   RELOCATION_MATCH PASS   CThing::GetJoystickDeviceNumber
+00582a16   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+00582a16   WARN SHARED_HEADER_AVAILABLE CExpressionDef (engine/CExpressionDef.h)
+00582a16   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00582a16   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00582a16   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+00582a16   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00582a16   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00582a16   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00582a16   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00582a16   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00582a16   RELOCATION_MATCH PASS   CTCInventory::IsButtonHeldForExpression
+00687c90   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00687c90   RELOCATION_MATCH PASS   CInputProcessGameBase::IsOtherQuickAccessItemButtonHeld
+00687d50   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00687d50   RELOCATION_MATCH PASS   CInputProcessGameBase::IsGameActionEventInQueue
+006881d0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+006881d0   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+006881d0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+006881d0   WARN SHARED_HEADER_AVAILABLE CInputProcessControlCreature (engine/CInputProcessControlCreature.h)
+006881d0   WARN RELOC_NAME: ?IsSpellModeForced@CGamePlayerInterface@@QBE_NXZ -> 00445b90 labelled '_global::GetMember_dword0x7a0_derefbyte0x49_00445b90'
+006881d0   WARN RELOC_NAME: ?IsExpressionShiftModeForced@CGamePlayerInterface@@QBE_NXZ -> 00445bb0 labelled '_global::GetMember_dword0x7a0_derefbyte0x4c_00445bb0'
+006881d0   RELOCATION_MATCH PASS   CInputProcessControlCreature::Update
+0071a710   RELOCATION_MATCH PASS   CTCMapwho::PlaceInMapwho
+0071a750   WARN RELOC_NAME: ?RemoveThing@CThingMapManager@NThingMap@@QAEXAAVCTCMapwho@@@Z -> 00637a10 labelled 'NThingMap::CThingMapManager::DestroyMapwhoNode'
+0071a750   RELOCATION_MATCH PASS   CTCMapwho::MoveInMapwho
+007e0750   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+007e0750   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+007e0750   WARN SHARED_HEADER_AVAILABLE CHeroSpecialMovementDef (engine/CHeroSpecialMovementDef.h)
+007e0750   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+007e0750   WARN SHARED_HEADER_AVAILABLE CTCHeroSpecialMovement (engine/CTCHeroSpecialMovement.h)
+007e0750   RELOCATION_MATCH PASS   CTCHeroSpecialMovement::FrameUpdate
+0082a310   RELOCATION_MATCH PASS   CMiniMapDisplay::Initialise
+00838930   RELOCATION_MATCH PASS   CThingGameObject::ConstructFromLevelScript
+0088e1c0   RELOCATION_MATCH PASS   CGameScriptInterface::EntitySetMaxHealth
+00891ff0   WARN RELOC_NAME: ?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ -> 00437ce0 labelled 'CVertexBufferWin32::DoSizeof'
+00891ff0   RELOCATION_MATCH PASS   CGameScriptInterface::MiniMapRemoveMarker
+00892df0   RELOCATION_MATCH PASS   CGameScriptInterface::ClearAllRumbles
+00903920   RELOCATION_MATCH PASS   CScriptGameResourceObjectScriptedThing::ClearAllActions
+00903970   RELOCATION_MATCH PASS   CScriptGameResourceObjectScriptedThing::ClearAllActionsIncludingLoopingAnimations
+0096ff10   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CSummonerDef (engine/CSummonerDef.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0096ff10   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SummonerCharge (engine/CAIStateGroup_SummonerCharge.h)
+0096ff10   WARN RELOC_NAME: ?GetActionCode@CCurrentAction@@QAEJXZ -> 00692620 labelled 'CCreatureActionBase::GetActionID'
+0096ff10   WARN RELOC_NAME: ??0CCreatureAction_SummonerChargeOutOf@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 00970420 labelled 'CCombatAction_GenericResponseToDrain::CCombatAction_GenericResponseToDrain'
+0096ff10   WARN RELOC_NAME: ??0CCreatureAction_SummonerChargeOutOf@@QAE@PAVCThingCreatureBase@@@Z -> 00970370 labelled 'CCreatureAction_SummonerChargeSuccess::CCreatureAction_SummonerChargeSuccess'
+0096ff10   RELOCATION_MATCH PASS   CAIStateGroup_SummonerCharge::Update
+
+WINS: 17
+  00490a22 RELOCATION_MATCH CSubtitleRenderer::IsInInteractiveState
+  004c7ca0 RELOCATION_MATCH CThing::?GetJoystickDeviceNumber@CThing@@QBEJXZ
+  00582a16 RELOCATION_MATCH CTCInventory::IsButtonHeldForExpression
+  00687c90 RELOCATION_MATCH CInputProcessGameBase::IsOtherQuickAccessItemButtonHeld
+  00687d50 RELOCATION_MATCH CInputProcessGameBase::IsGameActionEventInQueue
+  006881d0 RELOCATION_MATCH CInputProcessControlCreature::Update
+  0071a710 RELOCATION_MATCH CTCMapwho::?PlaceInMapwho@CTCMapwho@@QAEXABVC3DVector@@@Z
+  0071a750 RELOCATION_MATCH CTCMapwho::?MoveInMapwho@CTCMapwho@@QAEXABVC3DVector@@@Z
+  007e0750 RELOCATION_MATCH CTCHeroSpecialMovement::FrameUpdate
+  0082a310 RELOCATION_MATCH CMiniMapDisplay::?Initialise@CMiniMapDisplay@@QAEXM@Z
+  00838930 RELOCATION_MATCH CThingGameObject::?ConstructFromLevelScript@CThingGameObject@@UAE_NPBD@Z
+  0088e1c0 RELOCATION_MATCH CGameScriptInterface::?EntitySetMaxHealth@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+  00891ff0 RELOCATION_MATCH CGameScriptInterface::?MiniMapRemoveMarker@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  00892df0 RELOCATION_MATCH CGameScriptInterface::?ClearAllRumbles@CGameScriptInterface@@UBEXXZ
+  00903920 RELOCATION_MATCH CScriptGameResourceObjectScriptedThing::?ClearAllActions@CScriptGameResourceObjectScriptedThing@@UAEXXZ
+  00903970 RELOCATION_MATCH CScriptGameResourceObjectScriptedThing::?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThing@@UAEXXZ
+  0096ff10 RELOCATION_MATCH CAIStateGroup_SummonerCharge::?Update@CAIStateGroup_SummonerCharge@@UAEXXZ

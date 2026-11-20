@@ -1,0 +1,57 @@
+00490a22 new: 5
+    ?IsOpen@CManager@NHeroInformationScreens@@QBE_NXZ
+    ?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCB
+    ?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCB
+    ?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBas
+    ?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBas
+004c7ca0 new: 1
+    ?GetJoystickDeviceNumber@CThing@@QBEJXZ TABLE:004c7ca0
+00582a16 new: 1
+    ?IsActionButtonHeld@CTCInventory@@QBE_NW4EGameAction@@@Z
+00687c90 new: 0
+00687d50 new: 0
+006881d0 new: 0
+0071a710 new: 4
+    ??D?$scoped_ptr@VCThingMapManager@NThingMap@@@boost@@QBEAAVCThingMapManager@NThingMap@@XZ
+    ?GetThingMapManager@CWorldMap@@QAEAAVCThingMapManager@NThingMap@@XZ
+    ?IsInMap@CTCMapwho@@QBE_NXZ
+    ?PlaceInMapwho@CTCMapwho@@QAEXABVC3DVector@@@Z TABLE:0071a710
+0071a750 new: 4
+    ??D?$scoped_ptr@VCThingMapManager@NThingMap@@@boost@@QBEAAVCThingMapManager@NThingMap@@XZ
+    ?GetThingMapManager@CWorldMap@@QAEAAVCThingMapManager@NThingMap@@XZ
+    ?IsInMap@CTCMapwho@@QBE_NXZ
+    ?MoveInMapwho@CTCMapwho@@QAEXABVC3DVector@@@Z TABLE:0071a750
+007e0750 new: 0
+0082a310 new: 6
+    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+    ??1CMarkerInfo@CMiniMapDisplay@@QAE@XZ
+    ??_GCMarkerInfo@CMiniMapDisplay@@QAEPAXI@Z
+    ?Initialise@CMiniMapDisplay@@QAEXM@Z TABLE:0082a310
+    ?clear@?$_List_base@VCMarkerInfo@CMiniMapDisplay@@V?$allocator@VCMarkerInfo@CMiniMapDisplay@@@std@@@std@@QAEXXZ TABLE:00440730
+    ?deallocate@?$allocator@U?$_List_node@VCMarkerInfo@CMiniMapDisplay@@@std@@@std@@QAEXPAU?$_List_node@VCMarkerInfo@CMiniMapDisplay@@@2@I@Z
+00838930 new: 1
+    ?ConstructFromLevelScript@CThingGameObject@@UAE_NPBD@Z TABLE:00838930
+0088e1c0 new: 1
+    ?GetTypeFlags@CThing@@QBEKXZ
+00891ff0 new: 2
+    ??D?$CCountedPointer@VCPlayerGui@@@@QBEAAVCPlayerGui@@XZ
+    ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ
+00892df0 new: 7
+    ??A?$vector@V?$CCountedPointer@VCJoystick@@@@V?$allocator@V?$CCountedPointer@VCJoystick@@@@@std@@@std@@QAEAAV?$CCountedPointer@VCJoystick@@@@I@Z
+    ??D?$CCountedPointer@VCJoystick@@@@QBEAAVCJoystick@@XZ
+    ?ClearAllRumbles@CGameScriptInterface@@UBEXXZ
+    ?GetJoystick@CInputManager@@QAEAAVCJoystick@@J@Z
+    ?IS_THING_ALIVE@@YA_NPBVCThing@@@Z
+    ?IsDead@CThing@@QBE_NXZ
+    ?begin@?$vector@V?$CCountedPointer@VCJoystick@@@@V?$allocator@V?$CCountedPointer@VCJoystick@@@@@std@@@std@@QAEPAV?$CCountedPointer@VCJoystick@@@@XZ
+00903920 new: 4
+    ?ClearAllActions@CScriptGameResourceObjectScriptedThing@@UAEXXZ
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?GetTypeFlags@CThing@@QBEKXZ
+    ?IsDead@CThing@@QBE_NXZ
+00903970 new: 4
+    ?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThing@@UAEXXZ
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?GetTypeFlags@CThing@@QBEKXZ
+    ?IsDead@CThing@@QBE_NXZ
+0096ff10 new: 0

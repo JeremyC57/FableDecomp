@@ -1,66 +1,50 @@
+// Behaviour test for 0x0071A710 CTCMapwho::PlaceInMapwho (NF171 2026-11-20, on the shared headers; the 0x0071A730 test form): links the
+// row; the world map and the thing-map manager are stubbed. Places through GetWorldMap().GetThingMapManager() only when InMapwho (bit 0
+// of +0x50) is clear, passing the component and the position by reference. Keeps the catalog PassPattern PLACEMAPWHO_OK.
 #include <cstdio>
+#include <cstring>
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CWORLDMAP_THINGMAPMANAGER
+#include "engine/CWorldMap.h"
+#define FABLE_RETAIL_CTHINGMAPMANAGER
+#include "engine/CThingMapManager.h"
+#define FABLE_RETAIL_CTCMAPWHO
+#include "engine/CTCMapwho.h"
 
-class C3DVector { public: float x, y, z; };
-
-class CTCMapwho { public:
-    unsigned char pad[0x50];
-    unsigned char flags;
-};
-
+static unsigned char g_worldMap[0x40];
+static unsigned char g_manager[0x40];
 static int g_placed = 0;
-static CTCMapwho* g_lastSelf = 0;
-static C3DVector* g_lastVec = 0;
+static void* g_lastThis = 0;
+static void* g_lastThing = 0;
+static const void* g_lastPos = 0;
 
-struct Slot {
-    void Place(CTCMapwho* mapwho, C3DVector* v) {
-        g_placed++;
-        g_lastSelf = mapwho;
-        g_lastVec = v;
-    }
-};
-
-struct Helper {
-    unsigned char pad[0x10];
-    Slot* slot;
-};
-
-static Slot g_slot;
-static Helper g_helper;
-
-Helper* GetMapwhoHelper(void) { g_helper.slot = &g_slot; return &g_helper; }
-
-void CTCMapwho_PlaceInMapwho(CTCMapwho* mapwho, C3DVector* v)
+CWorldMap& CTCBase::GetWorldMap() { return *reinterpret_cast<CWorldMap*>(g_worldMap); }
+void NThingMap::CThingMapManager::PlaceThing(CTCMapwho& thing, const C3DVector& pos)
 {
-    if (!(mapwho->flags & 1)) {
-        Helper* h = GetMapwhoHelper();
-        h->slot->Place(mapwho, v);
-    }
+    ++g_placed; g_lastThis = this; g_lastThing = &thing; g_lastPos = &pos;
 }
 
 int main()
 {
-    CTCMapwho m; m.flags = 0;
-    C3DVector v = {1,2,3};
+    void* manager = g_manager;
+    std::memcpy(g_worldMap + 0x10, &manager, sizeof(manager));   // CWorldMap::PThingMapManager (+0x10)
+    unsigned char storage[0x60];
+    std::memset(storage, 0, sizeof(storage));
+    CTCMapwho* m = reinterpret_cast<CTCMapwho*>(storage);
+    float v[3] = { 1.0f, 2.0f, 3.0f };
+    const C3DVector& pos = *reinterpret_cast<const C3DVector*>(v);
 
-    // flag clear -> should place
-    CTCMapwho_PlaceInMapwho(&m, &v);
-    if (g_placed != 1 || g_lastSelf != &m || g_lastVec != &v) { printf("FAIL1\n"); return 1; }
-
-    // flag set -> should skip
-    m.flags = 1;
-    CTCMapwho_PlaceInMapwho(&m, &v);
-    if (g_placed != 1) { printf("FAIL2\n"); return 1; }
-
-    // flag set with other bits, still skip (bit 0 set)
-    m.flags = 0x03;
-    CTCMapwho_PlaceInMapwho(&m, &v);
-    if (g_placed != 1) { printf("FAIL3\n"); return 1; }
-
-    // flag 0x02 (bit0 clear) -> should place
-    m.flags = 0x02;
-    CTCMapwho_PlaceInMapwho(&m, &v);
-    if (g_placed != 2) { printf("FAIL4\n"); return 1; }
-
-    printf("PLACEMAPWHO_OK\n");
+    storage[0x50] = 0; m->PlaceInMapwho(pos);
+    if (g_placed != 1 || g_lastThis != g_manager || g_lastThing != m || g_lastPos != v) { std::printf("FAIL1\n"); return 1; }
+    storage[0x50] = 1; m->PlaceInMapwho(pos);
+    if (g_placed != 1) { std::printf("FAIL2\n"); return 1; }
+    storage[0x50] = 3; m->PlaceInMapwho(pos);
+    if (g_placed != 1) { std::printf("FAIL3\n"); return 1; }
+    storage[0x50] = 2; m->PlaceInMapwho(pos);
+    if (g_placed != 2) { std::printf("FAIL4\n"); return 1; }
+    std::printf("PLACEMAPWHO_OK\n");
     return 0;
 }

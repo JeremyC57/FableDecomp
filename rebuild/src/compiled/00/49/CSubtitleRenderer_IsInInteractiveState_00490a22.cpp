@@ -13,7 +13,19 @@
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
-class CWideString { public: void* PStringData; };
+// NF171 (2026-11-20, q4768): the hero-info screens manager is NHeroInformationScreens::CManager (engine/NHeroInformationScreens_CManager.h,
+//   LAYOUT + ISOPEN: FableWin.pdb ?IsOpen@CManager@NHeroInformationScreens@@QBE_NXZ, inline, the +0x34 byte; the 0x00490927 sibling recipe), so
+//   0x00437CD0 binds ?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ (Ego_r.pdb + FableWin.pdb; was
+//   ..PAUCHeroInfoScreensManager@@, a stand-in struct). The header brings STLport and fable_string.h, so the row's local CWideString, std::pair,
+//   std::bitset and CVectorMap specialisation give way to the shared ones (stlport/fable_containers.h, engine/CVectorMap.h with
+//   FABLE_RETAIL_STLP_BITSET_TEST_DECL, fable_string.h); the same-TU LowerBound bodies stay, as explicit specialisations (the 0x0064BFBA form).
+class CTCBase;
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_LAYOUT
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_ISOPEN
+#include "engine/NHeroInformationScreens_CManager.h"
 
 class C2DVector { public: float X, Y; };
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
@@ -86,35 +98,19 @@ public:
 
 
 class CTCBase;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
 // agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
 //   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
 enum ETCInterfaceType { };
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class C> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
-    value_type* _M_start;                                   // +0x00 (the STLport vector)
-    value_type* _M_finish;                                  // +0x04
-    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
-    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 // same-TU stand-in for the interface-map LowerBound (VC7.1 then knows the entry is not derived from the key)
 #pragma auto_inline(off)
-__declspec(noinline) const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key) const
+template<> __declspec(noinline) CInterfaceMap::const_iterator CInterfaceMap::LowerBound(const ETCInterfaceType& key) const
 {
-    const value_type* lo = _M_start;
-    long count = _M_finish - _M_start;
+    const_iterator lo = this->begin();
+    long count = this->end() - lo;
     while (count > 0) {
         long half = count >> 1;
-        const value_type* mid = lo + half;
+        const_iterator mid = lo + half;
         if (mid->first < key) {
             lo = mid + 1;
             count -= half + 1;
@@ -125,13 +121,13 @@ __declspec(noinline) const CInterfaceMap::value_type* CInterfaceMap::LowerBound(
 }
 #pragma auto_inline(on)
 #pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
+template<> __declspec(noinline) CInterfaceMap::iterator CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
-    value_type* lo = _M_start;
-    long count = _M_finish - _M_start;
+    iterator lo = this->begin();
+    long count = this->end() - lo;
     while (count > 0) {
         long half = count >> 1;
-        value_type* mid = lo + half;
+        iterator mid = lo + half;
         if (mid->first < key) {
             lo = mid + 1;
             count -= half + 1;
@@ -144,7 +140,6 @@ __declspec(noinline) CInterfaceMap::value_type* CInterfaceMap::LowerBound(const 
 class CThing { public:
     unsigned char _pad0[0x20];
     std::bitset<274> m_present;                       // +0x20
-    unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) const { return m_present.test(type); }
     template <class T> FABLE_FORCEINLINE T* GetInterfaceConst(long type) const
@@ -152,21 +147,21 @@ class CThing { public:
         ETCInterfaceType key = (ETCInterfaceType)type;
         const CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)type;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     template <class T> FABLE_FORCEINLINE void GetInterface(long type, T** out)
     {
         ETCInterfaceType key = (ETCInterfaceType)type;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(key);
-        *out = (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
+        *out = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
 };
 template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBF0
@@ -198,14 +193,13 @@ private: public:
     unsigned char _pad1[0x8];
     CFrontEnd* m_pFrontEnd;                        // +0x28
 };
-struct CHeroInfoScreensManager { unsigned char _pad[0x34]; unsigned char m_open; };
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
-class CPlayerGui { public: CHeroInfoScreensManager* GetPHeroInfoScreensManager() const; };   // 0x00437CD0
+class CPlayerGui { public: NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const; };   // 0x00437CD0
 
 bool CSubtitleRenderer::IsInInteractiveState()
 {
@@ -236,7 +230,7 @@ bool CSubtitleRenderer::IsInInteractiveState()
                 if (h3->HasInterface(0xc6))
                     b = h3->GetTC<CTCB>(0xc6);
                 return CMainGameComponent::Get()->m_pFrontEnd->IsActive() || (a && a->m_d) || (b && b->m_c)
-                    || CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->m_open;
+                    || CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->IsOpen();
             }
         }
     }

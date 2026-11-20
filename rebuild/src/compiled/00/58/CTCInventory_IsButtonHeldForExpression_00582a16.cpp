@@ -69,8 +69,14 @@ template <class T> bool CDefinitionManager::GetDef(const CCharString& name, CDef
 }
 #pragma auto_inline(on)
 
+#include "engine/EGameAction.h"
+enum EInputButtonEventType;                      // MS forward enum (as engine/CGamePlayerInterface.h declares it)
 class CGamePlayerInterface { public:
-    bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber);   // 0x00446B10
+    // NF171 (2026-11-20, q11704): in-place respell of the row's existing local declaration to Ego_r.pdb + FableWin.pdb
+    //   ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z (const; enum parameters, the
+    //   spelling engine/CGamePlayerInterface.h declares; was QAE_NJJJ). EGameAction from engine/EGameAction.h (FableWin.pdb enum); the held
+    //   event kind 2 has no recovered enumerator name.
+    bool IsGameActionEventInQueue(EGameAction action, EInputButtonEventType type, long device) const;   // 0x00446B10
 };
 
 class CPlayer { public:
@@ -98,11 +104,11 @@ class CTCInventoryBase : public CTCBase { public:
 }
 
 class CTCInventory : public NInventory::CTCInventoryBase { public:
-    FABLE_FORCEINLINE bool IsActionButtonHeld(long action) const
+    FABLE_FORCEINLINE bool IsActionButtonHeld(EGameAction action) const
     {
         CThing* thing = ParentThing;
         CGamePlayerInterface* input = thing->PeekPlayer().PGamePlayerInterface;
-        return input->IsGameActionEventInQueue(action, 2, thing->PeekPlayer().GetJoystickDeviceNumber());
+        return input->IsGameActionEventInQueue(action, (EInputButtonEventType)2, thing->PeekPlayer().GetJoystickDeviceNumber());
     }
     bool IsButtonHeldForExpression(const CCharString& expressionName) const;   // Ego_r.pdb QBE
 };
@@ -112,7 +118,7 @@ bool CTCInventory::IsButtonHeldForExpression(const CCharString& expressionName) 
     CDefPointer<const CExpressionDef> def;
     if (GetDefinitionManager().GetDef(expressionName, &def) &&
         GetNumberOfItemsOfTypeInInventory(def->GetDummyObject()) > 0 &&
-        (IsActionButtonHeld(0x37) || IsActionButtonHeld(0x38)))
+        (IsActionButtonHeld(GAME_ACTION_QUICK_ACCESS_ITEM) || IsActionButtonHeld(GAME_ACTION_CONTEXT_SENSITIVE_ITEM)))
         return true;
     return false;
 }

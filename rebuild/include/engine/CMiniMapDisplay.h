@@ -78,6 +78,12 @@ public:
 #endif
     void RemoveAllMarkers();                                 // 0x0082A300
     void RemoveMarker(const CThing& thing);                  // 0x0082A380
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_INITIALISE
+    // NF171 opt-in (2026-11-20, q5132 row 0x0082A310): Ego_r.pdb 0x00732DE0 + FableWin.pdb 0x027CF940 ?Initialise@CMiniMapDisplay@@QAEXM@Z,
+    // out of line at 0x0082A310 (`add ecx,20h ; call 0x00440730 ; mov byte [0x013B86C4],0 ; ret 4`); the landed caller 0x0064E83F binds it.
+    // Declaration only.
+    void Initialise(float);                                  // 0x0082A310
+#endif
 #ifdef FABLE_RETAIL_CMINIMAPDISPLAY_GETNONAUTOMARKERS
     // Retail opt-in (agentC14, row 0x00603000 CTCInventoryMap::CreateMiniMapMarkers; first found by chunk 729): Ego_r.pdb / FableWin.pdb
     // ?GetNonAutoMarkers@CMiniMapDisplay@@QBEXAAV?$list@PBVCMarkerInfo@CMiniMapDisplay@@V?$allocator@PBVCMarkerInfo@CMiniMapDisplay@@@std@@@std@@@Z

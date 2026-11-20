@@ -9,7 +9,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, IS_THING_ALIVE @ 0x004CC340 (__fastcall), CVectorMap::LowerBound
 //          @ 0x0040F020 (inlined GetInterface 0x36 = CTCStealth), CTCStealth::SetAsInDanger @ 0x00747B80, CCombatActionBase
 //          ctor @ 0x00857F30 / dtor @ 0x0062E900 (CCreatureAction_SummonerChargeInto, vtable 0x012971EC), CThingCreatureBase::
-//          SetCurrentAction @ 0x006644F0 / IsPerformingAnyAction @ 0x006622A0 / StopCurrentAction @ 0x00662650,
+//          SetCurrentAction @ 0x006644F0 / IsPerformingAnyAction @ 0x006622A0 / FinishCurrentAction @ 0x00662650,
 //          CAIStateGroupBase::GetPWorld @ 0x008FCFC0 / Terminate @ 0x008FCF40 / AIAction_DoNothing @ 0x0097E200 /
 //          AIAction_CombatPerformActionAndWait @ 0x0097DA40, CWorld::GetWorldFrame @ 0x0049D870, CCurrentAction::GetActionCode
 //          @ 0x00692620, CThing::GetPos @ 0x004C73D0, CCreatureAction_SummonerChargeOutOf ctors @ 0x00970420 /
@@ -67,7 +67,10 @@ class CThingCreatureBase : public CThing { public:
     CCurrentAction* PCurrentAction;             // +0x100
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
     bool IsPerformingAnyAction() const;               // 0x006622A0
-    void StopCurrentAction();                   // 0x00662650
+    // NF171 (2026-11-20, q11936): in-place respell of the row's existing local declaration: 0x00662650 is Ego_r.pdb 0x0053D510 + FableWin.pdb
+    //   ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ (engine/CThingCreatureBase.h FINISHACTION; the landed self row); was the made-up
+    //   StopCurrentAction.
+    void FinishCurrentAction();                 // 0x00662650
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -202,7 +205,7 @@ void CAIStateGroup_SummonerCharge::Update()
     } while (!done);
     if (reached) {
         if (PBrain->PCreature->IsPerformingAnyAction())
-            PBrain->PCreature->StopCurrentAction();
+            PBrain->PCreature->FinishCurrentAction();
         if (IS_THING_ALIVE(PTarget)) {
             CThingCreatureBase* creature = GetCreature();
             AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerChargeOutOf(creature, ((CThing*)PTarget.GetPItem())), true);

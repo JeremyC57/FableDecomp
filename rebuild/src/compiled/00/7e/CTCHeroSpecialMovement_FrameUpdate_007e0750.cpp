@@ -21,8 +21,14 @@
 //   player interface, +0x218 a control-lock byte.
 #include "engine/CTCBase.h"
 
+#include "engine/EGameAction.h"
+enum EInputButtonEventType;                      // MS forward enum (as engine/CGamePlayerInterface.h declares it)
 class CGamePlayerInterface { public:
-    bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber);   // 0x00446B10
+    // NF171 (2026-11-20, q11704): in-place respell of the row's existing local declaration to Ego_r.pdb + FableWin.pdb
+    //   ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z (const; enum parameters, the
+    //   spelling engine/CGamePlayerInterface.h declares; was QAE_NJJJ). EGameAction from engine/EGameAction.h (FableWin.pdb enum); the held
+    //   event kind 2 has no recovered enumerator name.
+    bool IsGameActionEventInQueue(EGameAction action, EInputButtonEventType type, long device) const;   // 0x00446B10
 };
 class CPlayer { public:
     unsigned char _pad000[0x0c];
@@ -88,7 +94,7 @@ void CTCHeroSpecialMovement::FrameUpdate()
 {
     CGamePlayerInterface* input = ParentThing->PeekPlayer().m_pInterface;
     if (g_bHeroRunOption) {
-        SetRunning(input->IsGameActionEventInQueue(0x1f, 2, GetThing().GetPlayer().GetJoystickDeviceNumber())
+        SetRunning(input->IsGameActionEventInQueue(GAME_ACTION_RUN, (EInputButtonEventType)2, GetThing().GetPlayer().GetJoystickDeviceNumber())
                    && !GetThing().GetPlayer().m_controlsLocked && IsAvailableForHeroRun(ParentThing));
         if (Running) {
             if (!Sprinting) {
@@ -99,7 +105,7 @@ void CTCHeroSpecialMovement::FrameUpdate()
         } else
             SetSprinting(false);
     } else {
-        SetSprinting(input->IsGameActionEventInQueue(0x1e, 2, GetThing().GetPlayer().GetJoystickDeviceNumber())
+        SetSprinting(input->IsGameActionEventInQueue(GAME_ACTION_SPRINT, (EInputButtonEventType)2, GetThing().GetPlayer().GetJoystickDeviceNumber())
                      && IsAvailableForHeroSprint(ParentThing));
     }
     if (Sprinting) {

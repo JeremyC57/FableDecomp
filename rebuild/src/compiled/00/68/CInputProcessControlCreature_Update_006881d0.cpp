@@ -13,6 +13,8 @@
 #include "engine/CPlayer.h"
 #undef CPlayer
 class CProcessedInput;
+#include "engine/EGameAction.h"
+enum EInputButtonEventType;                      // MS forward enum (as engine/CGamePlayerInterface.h declares it)
 class CPlayer : public CPlayerDonor {
 public:
     long GetJoystickDeviceNumber() const;                  // 0x00487510 Ego_r/FableWin ?GetJoystickDeviceNumber@CPlayer@@QBEJXZ (agentNF16: was GetPlayerNumber)
@@ -21,7 +23,11 @@ class CGamePlayerInterface {
 public:
     bool IsSpellModeForced() const;                // 0x00445B90
     bool IsExpressionShiftModeForced() const;      // 0x00445BB0
-    bool IsGameActionEventInQueue(long action, long buttonEventType, long player);   // 0x00446B10
+    // NF171 (2026-11-20, q11704): in-place respell of the row's existing local declaration to Ego_r.pdb + FableWin.pdb
+    //   ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z (const; enum parameters, the
+    //   spelling engine/CGamePlayerInterface.h declares; was QAE_NJJJ). Actions GAME_ACTION_ACTIVATE_SPELL_MODE 86 / GAME_ACTION_EXPRESSION_SHIFT
+    //   87 from engine/EGameAction.h (FableWin.pdb enum); the held event kind 2 has no recovered enumerator name.
+    bool IsGameActionEventInQueue(EGameAction action, EInputButtonEventType type, long device) const;   // 0x00446B10
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -43,13 +49,13 @@ void CInputProcessControlCreature::Update(CProcessedInput& processed)
 {
     if (MyPlayer->SpellMode && !PGamePlayerInterface->IsSpellModeForced()) {
         CGamePlayerInterface* gpi = PGamePlayerInterface;
-        bool held = gpi->IsGameActionEventInQueue(0x56, 2, MyPlayer->GetJoystickDeviceNumber());
+        bool held = gpi->IsGameActionEventInQueue(GAME_ACTION_ACTIVATE_SPELL_MODE, (EInputButtonEventType)2, MyPlayer->GetJoystickDeviceNumber());
         if (!held)
             MyPlayer->SpellMode = held;
     }
     if (MyPlayer->ExpressionShiftMode && !PGamePlayerInterface->IsExpressionShiftModeForced()) {
         CGamePlayerInterface* gpi = PGamePlayerInterface;
-        if (!gpi->IsGameActionEventInQueue(0x57, 2, MyPlayer->GetJoystickDeviceNumber()))
+        if (!gpi->IsGameActionEventInQueue(GAME_ACTION_EXPRESSION_SHIFT, (EInputButtonEventType)2, MyPlayer->GetJoystickDeviceNumber()))
             MyPlayer->ExpressionShiftMode = false;
     }
 }

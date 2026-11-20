@@ -1,43 +1,47 @@
 #include <cstdio>
 // NF153: MyPlayer is the shared engine/CPlayer.h CPlayer (as the row); its GetJoystickDeviceNumber() const 0x00487510 is stubbed below.
+// NF171 (2026-11-20, q11921): the player interface is the shared engine/CGamePlayerInterface.h class (as the row now binds it); its
+//   IsOtherQuickAccessItemButtonHeld(long, long) const 0x00446060 is stubbed below (was the Helper24 stand-in).
 #define FABLE_RETAIL_PLAYER
 #include "engine/CPlayer.h"
-
-struct Helper24
-{
-    int expectA;
-    long expectB;
-    bool Check(long b, int a);
-};
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE_ISOTHERQUICKACCESSITEMBUTTONHELD
+#include "engine/CGamePlayerInterface.h"
 
 struct CInputProcessGameBase
 {
     char pad0[0x18];
     CPlayer* MyPlayer;
     char pad1[0x24 - 0x1C];
-    Helper24* PGamePlayerInterface;
+    CGamePlayerInterface* PGamePlayerInterface;
 
     bool IsOtherQuickAccessItemButtonHeld(long param);
 };
 
 static long g_device = 7;
+static long g_expectIndex = 42;
+static const void* g_this = 0;
 long CPlayer::GetJoystickDeviceNumber() const { return g_device; }   // stub of 0x00487510
-bool Helper24::Check(long b, int a) { return a == expectA && b == expectB; }
+bool CGamePlayerInterface::IsOtherQuickAccessItemButtonHeld(long index, long player) const   // stub of 0x00446060
+{
+    g_this = this;
+    return player == g_device && index == g_expectIndex;
+}
 
 int main()
 {
     static double playerBuf[0x100];
+    static double interfaceBuf[0x400];
     CPlayer* player = (CPlayer*)playerBuf;
-    Helper24 h24; h24.expectA = 7; h24.expectB = 42;
+    CGamePlayerInterface* gpi = (CGamePlayerInterface*)interfaceBuf;
 
     CInputProcessGameBase obj;
     obj.MyPlayer = player;
-    obj.PGamePlayerInterface = &h24;
+    obj.PGamePlayerInterface = gpi;
 
     bool r1 = obj.IsOtherQuickAccessItemButtonHeld(42);
     bool r2 = obj.IsOtherQuickAccessItemButtonHeld(99);
 
-    if (r1 && !r2) {
+    if (r1 && !r2 && g_this == gpi) {
         printf("QUICKACCESS_OK\n");
         return 0;
     }

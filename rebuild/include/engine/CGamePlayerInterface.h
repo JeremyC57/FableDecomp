@@ -186,6 +186,12 @@ public:
     // Declaration only, the layout below is unchanged.
     bool IsQuickAccessEventInQueue(long button, EInputButtonEventType type, long device) const;   // 0x004460C0
 #endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_ISOTHERQUICKACCESSITEMBUTTONHELD
+    // NF171 opt-in (2026-11-20, q11921 row 0x00687C90 CInputProcessGameBase::IsOtherQuickAccessItemButtonHeld): Ego_r.pdb 0x00442FD0 +
+    // FableWin.pdb 0x01A9B210 ?IsOtherQuickAccessItemButtonHeld@CGamePlayerInterface@@QBE_NJJ@Z, out of line at 0x00446060 (the landed self
+    // row's Leaf; the FABLE_RETAIL_EXPRESSION_FRAME path declares it too). Declaration only: no layout change.
+    bool IsOtherQuickAccessItemButtonHeld(long index, long player) const;   // 0x00446060
+#endif
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GAMEACTIONQUERIES
     // NF37 opt-in (rows 0x00687CF0 / 0x00687D00 / 0x00687D80, the CInputProcessGameBase forwarders): Ego_r.pdb / FableWin.pdb
     // ?IsEventGameAction@CGamePlayerInterface@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z (Ego_r 0x004439F0 = retail 0x00445BD0),

@@ -1,51 +1,49 @@
-// CScriptGameResourceObjectScriptedThing::ClearAllActions() -- for a live (not dead) scripted creature (flag bit 3 at +0x6c), drop its queued actions and finish the current one
-// Leaf: ClearAllActions
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00903920, length 70 bytes.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 four times (on PThing at +0x14), the creature's
-// queued-action clear @ 0x00663600 (`add ecx,108h ; jmp` into the action list; labelled "_Cons_val<...>",
-// propagated), CThingCreatureBase::FinishCurrentAction @ 0x00662650 (tail jump).
-// Shape: nested ifs (null, dead bit +0x91, creature bit +0x6c), each test re-fetching the item; the
-// creature is fetched once more into a local held in esi for the two calls, the last a tail jump.
-// `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
+// CScriptGameResourceObjectScriptedThing::ClearAllActions() -- when the scripted thing is alive and a creature, clear its queued actions and finish its current one
+// Leaf: ?ClearAllActions@CScriptGameResourceObjectScriptedThing@@UAEXXZ
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00903920 (vtable 0x0128D86C slot 21).
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 four times (on PThing at +0x14), CThingCreatureBase::ClearQueuedActions @ 0x00663600,
+//   CThingCreatureBase::FinishCurrentAction @ 0x00662650 (tail jump). Guards: null, CThing::Dead (bit 0 of +0x91), the creature type bit
+//   (CThing::GetTypeFlags() & 8, `test byte ptr [eax+6Ch],8`).
+// Identity (two sources): Ego_r.pdb 0x0092A230 + FableWin.pdb 0x02B4C080 ?ClearAllActions@CScriptGameResourceObjectScriptedThing@@UAEXXZ, the
+//   override in vtable 0x0128D86C slot 21 (base slot 21 0x007E7400); no landed row references 0x00903920 (exe scan: the vtable only).
+// NF171 (2026-11-20, q11936): ported onto the shared headers (engine/CScriptGameResourceObjectScriptedThing.h with the NF171 opt-in
+//   FABLE_RETAIL_SCRIPTEDTHING_CLEARALLACTIONS, the retail CThing / CThingCreatureBase chain with FINISHACTION / CLEARQUEUED): 0x00662650 binds
+//   ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ and 0x00663600 ?ClearQueuedActions@CThingCreatureBase@@QAEXXZ (were CThing_Retail stand-ins);
+//   own leaf was ?ClearAllActions@CScriptGameResourceObjectScriptedThing_Methods@@QAEXXZ. The creature is the CThing -> CThingCreatureBase
+//   downcast after the type-bit test (both PDB classes); PThing is read through FableWin ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+//   (inline: GetPItem 0x00A01B50 + static_cast).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FINISHACTION
+#define FABLE_RETAIL_CTHINGCREATUREBASE_CLEARQUEUED
+#define FABLE_RETAIL_CTHINGCREATUREBASE_CLEARCURRENTACTION
+#define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHING
+#define FABLE_RETAIL_SCRIPTEDTHING_CLEARALLACTIONS
+#define FABLE_RETAIL_STLP_LIST
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
-class CThing_Retail { public:
-    unsigned char  _pad00[0x6c];
-    unsigned char  m_flags;                        // +0x6c
-    unsigned char  _pad6d[0x24];
-    unsigned char  m_dead : 1;                     // +0x91 bit 0
-    unsigned char  m_91_1 : 7;
-    void ClearQueuedActions();                     // 0x00663600
-    void FinishCurrentAction();                    // 0x00662650
-};
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
-struct CScriptGameResourceObjectScriptedThing_Methods : CScriptGameResourceObjectScriptedThing {
-    void ClearAllActions();
-};
-
-void CScriptGameResourceObjectScriptedThing_Methods::ClearAllActions()
+void CScriptGameResourceObjectScriptedThing::ClearAllActions()
 {
-    CIntelligentPointer<CThing_Retail>* thing = (CIntelligentPointer<CThing_Retail>*)PThing;
-    if (thing->GetPItem()) {
-        if (!thing->GetPItem()->m_dead) {
-            if (thing->GetPItem()->m_flags & 8) {
-                CThing_Retail* creature = thing->GetPItem();
+    if (PThing.Get()) {
+        if (!PThing.Get()->IsDead()) {
+            if (PThing.Get()->GetTypeFlags() & 8) {
+                CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(PThing.Get());
                 creature->ClearQueuedActions();
                 creature->FinishCurrentAction();
             }

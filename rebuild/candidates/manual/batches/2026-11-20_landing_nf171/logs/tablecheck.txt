@@ -1,0 +1,3 @@
+GREW 00747b80 2 -> 3 ?SetAsInDanger@CTCStealth@@QAEXPAVCThing@@J@Z row 0096ff10 SAME
+GREW 006a5d90 0 -> 1 ?ConstructFromLevelScript@CThingPhysical@@UAE_NPBD@Z row 00838930 DIFF before=['_ForwardTarget_006a5d90']
+shrank [('00440730', 4, 3), ('00446b10', 3, 1), ('006633a0', 3, 2), ('00686d30', 4, 3), ('006a5260', 2, 1), ('00662650', 5, 4), ('00663600', 2, 1), ('00637fc0', 2, 1), ('00637a10', 2, 1), ('004c7ca0', 2, 1)]

@@ -75993,9 +75993,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00838930'
-        Module = 'CThingPhysical'
-        Source = '00/83/CThingPhysical_ConstructFromLevelScript_00838930.cpp'
-        TestSource = '00/83/CThingPhysical_ConstructFromLevelScript_00838930_test.cpp'
+        Module = 'CThingGameObject'
+        Source = '00/83/CThingGameObject_ConstructFromLevelScript_00838930.cpp'
+        TestSource = '00/83/CThingGameObject_ConstructFromLevelScript_00838930_test.cpp'
         PassPattern = 'PASS_00838930'
     }
     [pscustomobject]@{
