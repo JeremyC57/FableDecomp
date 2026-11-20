@@ -268,7 +268,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 007bc15a	CTCShotDefinitionMultiArrow	UpdateMovement	560	parked	DIFFER(556v560)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/007bc15a.cpp	original
 007bca30	CTCShotDefinitionDrainLife	UpdateMovement	528	parked	DIFFER(524v528)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/007bca30.cpp	original
 007bcc40	NThingShot::CTCShotDefinitionDragonFireball	NThingShot::CTCShotDefinitionDragonFireball::vfunc_33	807	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand471/differ/007bcc40.cpp	gapscan/boundary
-007bd2d1	CTCShotDefinitionThrow	OnSubShotTrigger	598	reserved (acctB p25C, 2026-11-20)	DIFFER(599v598)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/007bd2d1.cpp	original
 007bd527	CTCShotDefinitionProjectilePredictive	OnSubShotTrigger	675	parked	DIFFER(672v675)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/007bd527.cpp	original
 007bee40	NThingShot::CTCShotDefinitionThrow	NThingShot::CTCShotDefinitionThrow::vfunc_36	352	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007bee40.cpp	gapscan/boundary
 007bfa90	CTCShotDefinitionBase	GetWeaponTrailGraphic	928	parked	DIFFER(929v926)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand305/differ/007bfa90.cpp	original

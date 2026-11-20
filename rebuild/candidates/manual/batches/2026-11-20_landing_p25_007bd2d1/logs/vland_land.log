@@ -1,0 +1,8 @@
+addr       parity           behav  name
+007bd2d1   RELOCATION_MATCH PASS   OnSubShotTrigger
+
+WINS: 1
+  007bd2d1 RELOCATION_MATCH NThingShot::CTCShotDefinitionThrow::?OnSubShotTrigger@CTCShotDefinitionThrow@NThingShot@@MAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NThingShotCTCShotDefinitionThrow_OnSubShotTrigger_007bd2d1

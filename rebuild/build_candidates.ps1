@@ -401557,6 +401557,13 @@ $catalog = @(
         TestSource = '00/b2/CEngine_SetDefaultRenderStates_00b24850_test.cpp'
         PassPattern = '00b24850_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007bd2d1'
+        Module = 'NThingShot::CTCShotDefinitionThrow'
+        Source = '00/7b/NThingShotCTCShotDefinitionThrow_OnSubShotTrigger_007bd2d1.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionThrow_OnSubShotTrigger_007bd2d1_test.cpp'
+        PassPattern = '007bd2d1_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
