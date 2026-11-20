@@ -401514,6 +401514,13 @@ $catalog = @(
         TestSource = '00/47/CTCInGameMenu_GetFileNameList_0047fe83_test.cpp'
         PassPattern = '0047fe83_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006495a8'
+        Module = 'NPlayerGui::CDrawScreenFade'
+        Source = '00/64/NPlayerGuiCDrawScreenFade_Draw_006495a8.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawScreenFade_Draw_006495a8_test.cpp'
+        PassPattern = '006495a8_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

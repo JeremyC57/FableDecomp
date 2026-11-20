@@ -1,0 +1,7 @@
+addr       parity           behav  name
+006495a8   WARN RELOC_NAME: ?GetScreenFadeOutAlpha@CDisplayEngine@@QBEEXZ -> 004364c0 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+006495a8   WARN RELOC_NAME: ?IsPerformingRegionLoad@CWorld@@QBE_NXZ -> 0048db13 labelled 'CWorld::Query_48db13'
+006495a8   RELOCATION_MATCH PASS   Draw
+
+WINS: 1
+  006495a8 RELOCATION_MATCH NPlayerGui::CDrawScreenFade::?Draw@CDrawScreenFade@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z

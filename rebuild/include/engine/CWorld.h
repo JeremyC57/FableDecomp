@@ -208,6 +208,18 @@ public:
     void SetToDisplayMiniMapOnRegionLoad(bool display){DisplayMiniMapOnRegionLoad=display;}
 #endif   // 0x0049EAF0
 #endif
+#ifdef FABLE_RETAIL_CWORLD_SCREENFADE_CALLEES
+    // Retail opt-in (p25A, row 0x006495A8 NPlayerGui::CDrawScreenFade::Draw): Ego_r.pdb / FableWin.pdb ?IsDisplayingMiniMapOnRegionLoad@CWorld@@QBE_NXZ
+    // (out of line, 0x0049E9F0) and ?IsPerformingRegionLoad@CWorld@@QBE_NXZ, called out of line there (its COMDAT is the landed 0x0048DB13;
+    // `mov ecx,[esi+0Ch] ; call`, 0x00649748). Declarations only (exclusive with the inline IsPerformingRegionLoad of
+    // FABLE_RETAIL_CWORLD_QUESTCOMPLETIONUI and the UPDATEREGIONLOAD_CALLEES declaration). No layout change.
+#ifndef FABLE_RETAIL_CWORLD_UPDATEREGIONLOAD_CALLEES
+    bool IsDisplayingMiniMapOnRegionLoad() const;                        // 0x0049E9F0
+#endif
+#ifndef FABLE_RETAIL_CWORLD_QUESTCOMPLETIONUI
+    bool IsPerformingRegionLoad() const;                                 // 0x0048DB13
+#endif
+#endif
 #ifdef FABLE_RETAIL_CWORLD_UPDATEREGIONLOAD_CALLEES
     // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?SetGuildSealRecallPos@CWorld@@QAEXABVC3DVector@@@Z (0x0049C9B0),
     // ?SetGuildSealRecallAngleXY@CWorld@@QAEXM@Z (0x0049C9D0), ?SetSaveGameMarkerPos@CWorld@@QAEXABVC3DVector@@@Z (0x0049E590),

@@ -111,7 +111,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00647ab4	CDrawHealth	Draw	1910	parked	DIFFER(11v1910)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00647ab4.cpp	original
 0064822a	CDrawCombatMultiplier	Draw	1526	parked	DIFFER(11v1526)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064822a.cpp	original
 00648820	CDrawMiniMap	Draw	3464	parked	acctC round six: round 6 final (2026-11-16): DIFFER(3464v3464); latest draft 00648820.cpp + NOTES.md in the folder (grep the ad	54	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE9/00648820.cpp	original
-006495a8	CDrawScreenFade	Draw	938	reserved (acctB p25A, 2026-11-20)	DIFFER(937v938)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/006495a8.cpp	original
 00649952	CDrawBettingHUD	Draw	1337	parked	DIFFER(11v1337)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00649952.cpp	original
 0064a9c8	CDrawGuildSeal	DisplayNextMessage	1182	parked	DIFFER(9v1182)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064a9c8.cpp	original
 0064b1ac	CDrawAbilityButtons	UpdateWeaponAbilities	1045	parked	DIFFER(1058v1045)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064b1ac.cpp	original

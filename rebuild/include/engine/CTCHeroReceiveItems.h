@@ -54,6 +54,12 @@ public:
     bool DisplayingItems;                                                // +0x26
     bool ForceClear;                                                     // +0x27
 #endif
+#if defined(FABLE_RETAIL_CTCHERORECEIVEITEMS_ISDISPLAYINGITEMS) && !defined(FABLE_RETAIL_CTCHERORECEIVEITEMS_GLOBALUPDATE)
+    // Retail opt-in (p25A, row 0x006495A8 NPlayerGui::CDrawScreenFade::Draw; needs _DISPLAYINGITEMS): FableWin.pdb
+    // ?IsDisplayingItems@CTCHeroReceiveItems@@QBE_NXZ (0x020E152B), inline in retail (the row tests DisplayingItems +0x26 in place,
+    // `cmp byte ptr [eax+26h],bl`, 0x00649819). The GLOBALUPDATE branch declares the same accessor. No layout change.
+    bool IsDisplayingItems() const { return DisplayingItems; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_GLOBALUPDATE
     // Nested opt-in (w22 agent2057 scout, row 0x007CACB0 CTCHeroReceiveItems::GlobalUpdate; needs _PICKEDUPITEMS,

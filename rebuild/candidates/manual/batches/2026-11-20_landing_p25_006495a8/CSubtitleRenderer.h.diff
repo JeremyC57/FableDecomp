@@ -1,0 +1,17 @@
+diff --git a/rebuild/include/engine/CSubtitleRenderer.h b/rebuild/include/engine/CSubtitleRenderer.h
+index e41d5ba36..5e1443c6b 100644
+--- a/rebuild/include/engine/CSubtitleRenderer.h
++++ b/rebuild/include/engine/CSubtitleRenderer.h
+@@ -233,6 +233,12 @@ public:
+     // InCutscene +0xDE in place, 0x0056AD6B, right after the +0xFD IsDisplayingText test). Member function only: no layout change.
+     bool IsInCutscene() const { return InCutscene; }
+ #endif
++#ifdef FABLE_RETAIL_CSUBTITLERENDERER_SKIPPABLEWHILEPAUSED
++    // Retail opt-in (p25A, row 0x006495A8 NPlayerGui::CDrawScreenFade::Draw): FableWin.pdb ?IsCutsceneSkippableWhilePaused@CSubtitleRenderer@@QBE_NXZ,
++    // inline in retail (the row tests the CPlayerGui's byte +0xF9 = SubtitleRenderer +0x18 + CutsceneSkippableWhilePaused +0xE1 in place,
++    // 0x006498AE). Member function only: no layout change.
++    bool IsCutsceneSkippableWhilePaused() const { return CutsceneSkippableWhilePaused; }
++#endif
+ #ifdef FABLE_RETAIL_CSUBTITLERENDERER_CUTSCENEFLAGS
+     // Retail opt-in (wfA1, row 0x006D0830 CTCWife::GlobalUpdate): FableWin.pdb ?SetAsInCutscene@CSubtitleRenderer@@QAEX_N@Z (out of line in
+     // retail at 0x0049319C, reloc_bindings; `add ecx,18h ; call` on the CPlayerGui singleton, 0x006D0C0D), ?SetCutsceneAsSkippable@ and

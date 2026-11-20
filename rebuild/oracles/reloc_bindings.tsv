@@ -39634,3 +39634,5 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?IsWillingToAttackTarget@@YI_NPAVCThing@@0@Z	008648a0	0093c4e0
 ?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	00683b00	00960070
 ?IsCarryingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	009687b0	00968bc0
+?GetScreenFadeOutAlpha@CDisplayEngine@@QBEEXZ	004364c0	006495a8
+?IsOverridingScreenFade@CTCQuestCompletionUI@@QBE_NXZ	005e3e70	006495a8
