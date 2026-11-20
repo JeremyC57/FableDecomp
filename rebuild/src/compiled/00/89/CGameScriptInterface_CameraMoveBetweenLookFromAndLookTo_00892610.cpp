@@ -1,5 +1,8 @@
 // CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo(const C3DVector& lookFrom1, const C3DVector& lookFrom2, const C3DVector& lookTo1, const C3DVector& lookTo2, float time) const -- hand the camera manager a scripted camera mode that moves both the eye and the target
 // Leaf: ?CameraMoveBetweenLookFromAndLookTo@CGameScriptInterface@@UBEXABVC3DVector@@000M@Z
+// Naming (NF157, 2026-11-20; PRIORITY q11649): in place in the row's own local CCountedPointer model: the count block's deleter 0x005ECF50 is
+//   FableWin.pdb ?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z (the self row 0x005ECF50's leaf; was the stand-in
+//   ?DeleteObject@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z). Declaration only.
 // Naming wave 18: the global stand-in g_WorldFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00892610, 184 bytes, `ret 0x14`; Ego_r.pdb same symbol.
@@ -34,11 +37,11 @@ template <class T> class CCountedPointer {
 public:
     T*              Object;
     CCPPointerInfo* Info;
-    static void __fastcall DeleteObject(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
+    static void __fastcall DeleteData(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
     FABLE_FORCEINLINE CCountedPointer(T* object) : Object(object)
     {
         if (object)
-            Info = new CCPPointerInfo(DeleteObject, Object);
+            Info = new CCPPointerInfo(DeleteData, Object);
         else
             Info = 0;
     }

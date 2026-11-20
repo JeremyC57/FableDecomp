@@ -3,6 +3,9 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872490, 405 bytes (+ int3 padding), plain `ret`.
+// Fidelity: cast, not retail: GetObservedThing() returns the PDB `const CThingGameObject*`, forward-declared here because this row
+//   includes the non-retail CThing.h; the call site reaches CThing::GetPos through a C-style cast to the CThing base (offset 0, same
+//   bytes). Advisor decision (owner delegated, nf157); the port onto engine/CThingGameObject.h is queued.
 // Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, CThing::GetPos 0x004C73D0 (const C3DVector&),
 //   C3DVector::AccurateNormalise @ 0x00A14440, _CIacos 0x00BFEBA2 (acos intrinsic); constants 1e-4f @ 0x0129BA3C (squared at run
 //   time), 0.0f @ 0x0122DEDC, -1.0f @ 0x0122DEE0, 1.0f @ 0x0122DED8, 1/(2*pi) @ 0x01237F08.
@@ -25,6 +28,12 @@ extern "C" double __cdecl sqrt(double);
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 #include "engine/CThing.h"
+// Naming (NF157, 2026-11-20; PRIORITY q5037): in place in the row's local NCameraModes::CBase: GetObservedThing returns
+//   const CThingGameObject* as both PDBs spell it (Ego_r.pdb 0x00846960 / FableWin.pdb 0x02883590
+//   ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ, the self row 0x0084F1B0's leaf; was QBEPBVCThing). CThingGameObject is only
+//   forward-declared (engine/CThingGameObject.h needs the retail CThing chain), so the call site converts the pointer to its CThing base
+//   (CThingGameObject : CThingPhysical : CThing, single inheritance, offset 0) for CThing::GetPos.
+class CThingGameObject;
 
 class CCameraModeDef { public:
     unsigned char _pad[0x40];
@@ -54,7 +63,7 @@ public:
     void* SubComponents[3];                             // +0x48
     CPhysicsState GoTo;                                 // +0x54
     unsigned char _pad84[0x20];
-    const CThing* GetObservedThing() const;             // 0x0084F1B0
+    const CThingGameObject* GetObservedThing() const;   // 0x0084F1B0 (Ego_r / FableWin)
 };
 class CZTargetNew : public CBase {
 public:
@@ -79,7 +88,7 @@ public:
 void NCameraModes::CZTargetNew::InitialiseTransitionVariables()
 {
     FramesForTransition = PCameraModeDef->TransitionInFrames;
-    C3DVector offset = GoTo.Position - GetObservedThing()->GetPos();
+    C3DVector offset = GoTo.Position - ((const CThing*)GetObservedThing())->GetPos();
     BaseHeightOffset = offset.Z;
     float lengthSquaredXY = offset.X * offset.X;
     lengthSquaredXY += offset.Y * offset.Y;

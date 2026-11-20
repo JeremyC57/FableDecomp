@@ -250,6 +250,12 @@ public:
     virtual EMode GetModeType() const = 0;
 #endif
                // slot 2
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_FRAMEUPDATE
+    // NF157 opt-in (PRIORITY q3987, row 0x0069B790 CGameCameraManager::Update): Ego_r.pdb 0x008459B0 / FableWin.pdb 0x02883CC0
+    // ?FrameUpdate@CBase@NCameraModes@@QAEXXZ (public, non-virtual), out of line at 0x0084DC10 (parked self row; landed 0x00873DB0 binds
+    // this spelling). Declaration only; no layout change.
+    void FrameUpdate();                                  // 0x0084DC10
+#endif
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_MEMBERS
     // Per-TU opt-in (chunk 767, row 0x0084D2B0): the leading retail data members, from Ego_r.pdb struct_layouts_egor.tsv "CBase"
     // (the 200-byte camera-mode record: DefaultFOV / DefaultRollAngle / DefaultObservedPositionZOffset / LookAt / CameraManager ...)

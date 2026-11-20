@@ -1,5 +1,9 @@
 // NCreatureMode::CModeSleepBed::CModeSleepBed(CThing* thing, const CCharString& sleepAnimName, const CCharString& group) -- CModeBase(thing), own vtable, the animation-group filter, the sleep animation name, a null remove-action pointer
-// Leaf: ??0CModeSleepBed
+// Leaf: ??0CModeSleepBed@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@1@Z
+// Naming (NF157, 2026-11-20; PRIORITY q11875): the thing parameter is a reference, as Ego_r.pdb 0x00526B40 and FableWin.pdb 0x01DD9540 spell
+//   this 3-argument constructor (??0CModeSleepBed@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@1@Z; was PAVCThing). The row's local CModeBase
+//   stand-in (0x0073EAC0, its binding unchanged) still takes the pointer, so the body passes &thing (same bytes). Its only landed caller
+//   0x00969CB0 binds the new spelling in the same hand-back.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084B7C0, length 59 bytes.
 // Callees: CModeBase::CModeBase(CThing*) @ 0x0073EAC0, CAnimFilterOfGroup::CAnimFilterOfGroup(const CCharString&)
@@ -43,11 +47,11 @@ class CModeSleepBed : public CModeBase { public:                  // vtable 0x01
     CCharString                           SleepAnimName;   // +0x28
     CCountedPointer<CCreatureActionBase>  PRemoveAction;   // +0x2c
     virtual void v00();
-    CModeSleepBed(CThing* thing, const CCharString& sleepAnimName, const CCharString& group);
+    CModeSleepBed(CThing& thing, const CCharString& sleepAnimName, const CCharString& group);
 };
 
-CModeSleepBed::CModeSleepBed(CThing* thing, const CCharString& sleepAnimName, const CCharString& group)
-    : CModeBase(thing)
+CModeSleepBed::CModeSleepBed(CThing& thing, const CCharString& sleepAnimName, const CCharString& group)
+    : CModeBase(&thing)
     , Filter(group)
     , SleepAnimName(sleepAnimName)
 {

@@ -1,0 +1,70 @@
+005ed270 new: 1
+    ?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z TABLE:005ecf50
+0069b790 new: 0
+0069c3d0 new: 0
+00740450 new: 1
+    ??0CModeJackOfBladesScream@NCreatureMode@@QAE@AAVCThing@@@Z TABLE:00740450
+00742880 new: 1
+    ?Alloc@CModeJackOfBladesScream@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z TABLE:00742880
+0075daa0 new: 1
+    ?GetTCGraphicAppearance@CThing@@QBEPBUCTCGraphicAppearance@NGraphicAppearance@@XZ
+0084b7c0 new: 1
+    ??0CModeSleepBed@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@1@Z TABLE:0084b7c0
+0084e110 new: 2
+    ?Init@CBase@NCameraModes@@QAEXXZ TABLE:0084e110
+    ?SetSingleCut@CGameCameraManager@@QAEXXZ
+00872490 new: 0
+00878b60 new: 1
+    ?GetLookDirectionXYFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z TABLE:00878b60
+00878db0 new: 1
+    ?GetLookDirectionFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z
+00879560 new: 1
+    ?GetHeightParamForTargetedThingWithPhi@CProjectileWeapon@NCameraModes@@ABEMABVCThing@@M@Z
+00892410 new: 0
+00892530 new: 0
+00892610 new: 0
+00892b50 new: 0
+00892c20 new: 0
+008ac3f0 new: 22
+    ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@PBVCThing@@@Z TABLE:0056c860
+    ??0?$CIntelligentPointer@VCThing@@@@QAE@XZ
+    ??0CAnimFilterBase@@QAE@XZ
+    ??0CModeScreamerSuperAttack@NCreatureMode@@QAE@AAVCThing@@ABV2@@Z TABLE:008ac3f0
+    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+    ??1?$CIntelligentPointer@VCThing@@@@UAE@XZ
+    ??1CAnimFilterBase@@UAE@XZ
+    ??1CAnimFilterOfGroup@@UAE@XZ TABLE:00739db0
+    ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ TABLE:01237f1c
+    ??_7?$CIntelligentPointer@VCThing@@@@6B@ TABLE:01238c6c
+    ??_7CAnimFilterBase@@6B@ TABLE:0122ffcc
+    ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+    ??_G?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z
+    ??_GCAnimFilterBase@@UAEPAXI@Z
+    ??_GCAnimFilterOfGroup@@UAEPAXI@Z
+    ??_GCModeScreamerSuperAttack@NCreatureMode@@UAEPAXI@Z
+    ?GetAsCharArray@CCharString@@QBEPBDXZ TABLE:00403a10
+    ?GetCRC@CCharString@@QBEKXZ TABLE:00404310
+    ?GetLength@?$CBasicString@D@@QBEKXZ
+    ?GetLength@CCharString@@QBEJXZ TABLE:00403a00
+    ?PeekData@?$CBasicString@D@@QBEPBDXZ
+    ?SetPointer@?$CIntelligentPointer@$$CBVCThing@@@@AAEXPBVCThing@@@Z
+008c0d10 new: 7
+    ??$?0VCModeJackOfBladesScream@NCreatureMode@@@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@ABV?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@@Z
+    ??0?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@QAE@PAVCModeJackOfBladesScream@NCreatureMode@@@Z
+    ??1?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@QAE@XZ
+    ??4?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@QAEAAV0@ABV0@@Z
+    ?DeleteData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@SIXPAX@Z TABLE:008c2d60
+    ?ReleaseData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@QAEXXZ
+    ?ShareData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@QAEXPAVCModeJackOfBladesScream@NCreatureMode@@PAVCCPPointerInfo@@@Z
+008c2d60 new: 1
+    ?DeleteData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@SIXPAX@Z TABLE:008c2d60
+008d7370 new: 1
+    ?SetSwordObject@CModeJackOfBladesScream@NCreatureMode@@QAEXAAVCThing@@@Z TABLE:008d7370
+008d86e0 new: 1
+    ??0CModeDragonFireBeam@NCreatureMode@@QAE@AAVCThing@@0M@Z TABLE:008d86e0
+008e3860 new: 0
+008e78c0 new: 1
+    ??0CModeBriarRoseConcentrate@NCreatureMode@@QAE@AAVCThing@@AAVCThingCreatureBase@@_N@Z TABLE:008e78c0
+008f41d0 new: 0
+008faa80 new: 0
+00969cb0 new: 0

@@ -47877,9 +47877,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008c2d60'
-        Module = '_global'
-        Source = '00/8c/global_DeleteData_008c2d60.cpp'
-        TestSource = '00/8c/global_DeleteData_008c2d60_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeJackOfBladesScream>'
+        Source = '00/8c/CCountedPointer_DeleteData_008c2d60.cpp'
+        TestSource = '00/8c/CCountedPointer_DeleteData_008c2d60_test.cpp'
         PassPattern = 'DELETEDATA_OK'
     }
     [pscustomobject]@{
@@ -222284,9 +222284,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0084e110'
-        Module = 'CCameraModeBase'
-        Source = '00/84/CCameraModeBase_Init_0084e110.cpp'
-        TestSource = '00/84/CCameraModeBase_Init_0084e110_test.cpp'
+        Module = 'NCameraModes::CBase'
+        Source = '00/84/NCameraModesCBase_Init_0084e110.cpp'
+        TestSource = '00/84/NCameraModesCBase_Init_0084e110_test.cpp'
         PassPattern = '0084e110_TEST PASS'
     }
     [pscustomobject]@{

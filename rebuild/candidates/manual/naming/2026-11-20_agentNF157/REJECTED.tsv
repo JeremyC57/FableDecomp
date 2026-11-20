@@ -1,0 +1,2 @@
+entry	address	claimed_symbol	reason
+q11887	0x00740450	??0CModeJackOfBladesScream@NCreatureMode@@QAE@PAVCThing@@@Z	the PAVCThing spelling is NF147's interim self-row spelling; both PDBs (Ego_r.pdb 0x00754400, FableWin.pdb 0x024BB0C0) spell the constructor ??0CModeJackOfBladesScream@NCreatureMode@@QAE@AAVCThing@@@Z. The entry's intent (move 0x00742880 and 0x008C0D10 off the global spelling together, then 0x008C2D60) is done under the PDB spelling (q11883); APPLIED records q11887 done on that basis

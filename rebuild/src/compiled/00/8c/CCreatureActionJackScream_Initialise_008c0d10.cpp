@@ -22,6 +22,13 @@
 //   the shared CModeBase (the landed 0x0096DBC0 shape), pad resized (allocation 0xbc). Landing nf147: NF147's in-place respell into
 //   NCreatureMode moved the 0x00740450 ctor binding off the global spelling 0x00742880 still binds (a new split), so its fallback applies:
 //   0x00740450 / 0x008D7370 stay on the global spellings and 0x008C2D60 binds DeleteData of CCountedPointer<CModeJackOfBladesScream> (global).
+// Naming (NF157, 2026-11-20; PRIORITY q11880 / q11883 / q11884 / q11887): in place, the move NF147 queued: the row's header-less local mode
+//   class is NCreatureMode::CModeJackOfBladesScream, class-keyed (RTTI .?AVCModeJackOfBladesScream@NCreatureMode@@), with the PDB reference
+//   parameters. 0x00740450 binds ??0CModeJackOfBladesScream@NCreatureMode@@QAE@AAVCThing@@@Z (Ego_r.pdb 0x00754400 / FableWin.pdb 0x024BB0C0;
+//   was the global ??0CModeJackOfBladesScream@@QAE@PAVCThing@@@Z), 0x008D7370 ?SetSwordObject@CModeJackOfBladesScream@NCreatureMode@@QAEXAAVCThing@@@Z
+//   (Ego_r.pdb 0x008186E0 / FableWin.pdb 0x0284C0B0; was the global PAV one) and the block's deleter 0x008C2D60 FableWin.pdb 0x02A148C0
+//   ?DeleteData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@SIXPAX@Z (was ?DeleteData@?$CCountedPointer@UCModeJackOfBladesScream@@@@SIXPAX@Z).
+//   The three self rows and the other caller 0x00742880 move in the same hand-back.
 #define FABLE_RETAIL_CTCCREATUREMODEMANAGER
 #define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 class CTCBase;
@@ -36,12 +43,15 @@ class CBaseObjectPointer;
 #include "engine/CIntelligentPointer.h"
 
 #include "engine/CTCCreatureModeManager.h"
-struct CModeJackOfBladesScream : public CTCCreatureModeManager::CModeBase {    // retail sizeof 0xbc
+namespace NCreatureMode {
+class CModeJackOfBladesScream : public CTCCreatureModeManager::CModeBase {    // retail sizeof 0xbc
     unsigned char _body[0xbc - 0x1c];
-    CModeJackOfBladesScream(CThing* owner);     // 0x00740450
-    void SetSwordObject(CThing* sword);         // 0x008D7370
+public:
+    CModeJackOfBladesScream(CThing& owner);     // 0x00740450
+    void SetSwordObject(CThing& sword);         // 0x008D7370
     virtual unsigned long GetType() const;
 };
+}
 class CTCCarrying { public:
 public:
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
@@ -54,7 +64,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];
 };
 class CCreatureAction_JackScream : public CCombatActionBase { public:
-    CCountedPointer<CModeJackOfBladesScream> PMode;   // +0x114
+    CCountedPointer<NCreatureMode::CModeJackOfBladesScream> PMode;   // +0x114
     virtual void Initialise();
 };
 
@@ -65,9 +75,9 @@ void CCreatureAction_JackScream::Initialise()
     PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
     if (modeManager->IsModeActive(0x31))
         modeManager->RemoveMode(0x31);
-    PMode = CCountedPointer<CModeJackOfBladesScream>(new CModeJackOfBladesScream(PCreature.Get()));
+    PMode = CCountedPointer<NCreatureMode::CModeJackOfBladesScream>(new NCreatureMode::CModeJackOfBladesScream(*PCreature.Get()));
     CTCCarrying* carrying;
     PCreature.Get()->GetTC(TCI_CARRYING, &carrying);
-    PMode.Data->SetSwordObject(carrying->GetThingInPrimarySlot());
+    PMode.Data->SetSwordObject(*carrying->GetThingInPrimarySlot());
     modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(PMode));
 }

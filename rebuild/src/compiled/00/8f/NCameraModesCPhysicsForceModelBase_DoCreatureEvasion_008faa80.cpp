@@ -2,6 +2,9 @@
 // Leaf: ?DoCreatureEvasion@CPhysicsForceModelBase@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FAA80, 417 bytes, `ret 4` (C3DVector by hidden pointer).
+// Fidelity: cast, not retail: GetObservedThing() returns the PDB `const CThingGameObject*`, forward-declared here because this row
+//   includes the non-retail CThing.h; the call site reaches CThing::GetPos through a C-style cast to the CThing base (offset 0, same
+//   bytes). Advisor decision (owner delegated, nf157); the port onto engine/CThingGameObject.h is queued.
 // Callees: 0x0084F1B0 (the owner's thing; manifest label "_Cons_val<...>" propagated), CTCGraphicAppearance::GetCameraFocalPos
 //   0x004C12D0 (thing +0x64), malloc 0x00BFEA0E (list header and node, 0x14 bytes), the list<C3DVector> destructor 0x0048CA60
 //   (manifest "SortTreeRecursively"). Constants: offsets table 0x013893AC {0, X, Y, Z}, 0.1f 0x0122EE58, 50.0f 0x0124E7F8,
@@ -72,9 +75,15 @@ class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* Appearance;              // +0x64
 };
+// Naming (NF157, 2026-11-20; PRIORITY q5037): in place in the row's local NCameraModes::CBase: the 0x0084F1B0 call is
+//   Ego_r.pdb 0x00846960 / FableWin.pdb 0x02883590 ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ (the self row's leaf; was the
+//   stand-in ?GetThing@CBase@NCameraModes@@QBEPAVCThing@@XZ). Owner is CBase* in Ego_r.pdb (CPhysicsForceModelBase +0xEC). CThingGameObject is only
+//   forward-declared (its header needs the retail CThing chain; this row keeps its local CThing), so the result is converted to the CThing base
+//   (single inheritance, offset 0).
+class CThingGameObject;
 namespace NCameraModes {
 class CBase { public:
-    CThing* GetThing() const;                      // 0x0084F1B0
+    const CThingGameObject* GetObservedThing() const;   // 0x0084F1B0 (Ego_r / FableWin)
 };
 class CPhysicsState { public:
     C3DVector Position;                            // +0x00
@@ -89,7 +98,7 @@ class CPhysicsForceModelBase { public:
 
 C3DVector CPhysicsForceModelBase::DoCreatureEvasion()
 {
-    CThing* thing = Owner->GetThing();
+    const CThing* thing = (const CThing*)Owner->GetObservedThing();
     C3DVector focal = thing->Appearance->GetCameraFocalPos(1.0f);
     C3DVector position = LinkedState->Position;
     CVectorList creatures;

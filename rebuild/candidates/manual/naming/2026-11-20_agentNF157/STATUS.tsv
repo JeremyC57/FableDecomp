@@ -1,0 +1,65 @@
+address	change	grade	test	grades_used	entries	note
+0x005ECF50	not-a-binder	MATCH	-	1	q11649	self row of q11649: already emits FableWin ?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z (explicit instantiation, LINK_ONCE_DISCARD); untouched (its local CScriptModuleBase model is HEAD debt)
+0x005ED270	ported	RELOCATION_MATCH	PASS	2	q11649	deleter respelled: binds 0x005ECF50 as ?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z (was ?Destroy_005ecf50@@YIXPAX@Z) via shared CCountedPointer.h + NCameraModes_CScriptModuleBase.h; object adds that DeleteData as a pick-any COMDAT (owner 0x005ECF50's explicit instantiation is LINK_ONCE_DISCARD too; same body); Leaf line added (HEAD had none); own stand-in leaf unchanged
+0x006992A0	not-a-binder	RELOCATION_MATCH	-	0	q4537	probe: already binds the PDB DrawPyramid spelling
+0x0069B790	ported	RELOCATION_MATCH	PASS	2	q3987	binds 0x0084DC10 as ?FrameUpdate@CBase@NCameraModes@@QAEXXZ (was ?FrameUpdate@CCameraBase@@QAEXXZ): local CCameraBase stand-in removed, CurrentMode typed NCameraModes::CBase* from the shared header (NF157 opt-in FABLE_RETAIL_NCAMERAMODES_CBASE_FRAMEUPDATE); bdiff: only that pair changes, no defined-symbol change
+0x0069C3D0	ported	RELOCATION_MATCH	PASS	2	q11649	binder already right; one-definition fix: its pick-any DeleteData COMDAT (retail name of 0x005ECF50) was instantiated with an incomplete CScriptModuleBase (body: call operator delete only); now includes NCameraModes_CScriptModuleBase.h, body = owner's (test/je/vtbl slot 0 with 1). Bindings and defined symbols unchanged
+0x0073A6F0	not-a-binder	RELOCATION_MATCH	-	0	q11670	self row of q11670: leaf already the PDB IAE spelling
+0x00740450	ported	RELOCATION_MATCH	PASS	2	q11883,q11887	self leaf PAV -> AAV (both PDBs); bdiff: leaf only
+0x00742880	ported	RELOCATION_MATCH	PASS	2	q11883,q11887	self rename to the PDB Alloc (0x0073B130 already binds it) on a header-less local mode class over the shared CModeBase; binds 0x00740450 as the NCreatureMode AAV ctor (was the global PAV stand-in)
+0x0075DAA0	ported	RELOCATION_MATCH	PASS	2	q5037	in place: local CBase::GetObservedThing returns const CThingGameObject* (retail CThingBuilding.h chain already included); binds QBEPBVCThingGameObject (was QBEPAVCThing); object now emits the const CThing::GetTCGraphicAppearance header inline instead of the non-const one (pick-any)
+0x007617A0	not-a-binder	RELOCATION_MATCH	-	0	q4536,q4537	probe: already binds the PDB DrawSquare / DrawPyramid spellings
+0x0084B7C0	ported	RELOCATION_MATCH	PASS	2	q11875	self leaf PAVCThing -> AAVCThing (both PDBs); bdiff: leaf only
+0x0084E110	ported	RELOCATION_MATCH	PASS	2	q3987	full port onto engine/NCameraModes_CBase.h CYLINDER + engine/CGameCameraManager.h retail SINGLECUT branch (the landed 0x00878BE0 pairing; SingleCut public there, SetSingleCut inline): first form RELOCATION_MATCH. Own leaf ?Init@CCameraModeBase@@QAEXXZ -> ?Init@CBase@NCameraModes@@QAEXXZ (both PDBs; both landed referencers 0x00697E20 and 0x00699B00 already bind it: ends an existing split); FrameUpdate 0x0084DC10 binds the PDB spelling. Defined symbols: the leaf + the header inline ?SetSingleCut@CGameCameraManager@@QAEXXZ (pick-any; no landed strong owner); the stand-in ?RollCamera@CCameraTracking@@ dropped. Test self-contained, unchanged
+0x0084F1B0	not-a-binder	RELOCATION_MATCH	-	0	q5037	self row of q5037: leaf already ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x0085C470	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x0085C7D0	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00862EC0	not-a-binder	RELOCATION_MATCH	-	0	q11670	probe: already binds the IAE GetNoFramesBeforePlayingCombinationIdleAnims spelling
+0x00871D30	deferred	-	-	0	q5037	held by NF155 (lock); binds ?GetA@CTCLook@@QAEPAUA@@XZ at 0x0084F1B0 (probe): needs the GetObservedThing spelling
+0x00871D50	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00871EC0	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00872050	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00872110	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00872490	ported	RELOCATION_MATCH	PASS	2	q5037	in place: binds QBEPBVCThingGameObject (was QBEPBVCThing); forward-declared CThingGameObject + base cast at the GetPos call
+0x00872630	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x008728C0	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00872A20	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00872EC0	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00873030	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x008735D0	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00873DB0	not-a-binder	RELOCATION_MATCH	-	0	q3987	probe: already binds ?FrameUpdate@CBase@NCameraModes@@QAEXXZ
+0x00878A80	not-a-binder	RELOCATION_MATCH	-	0	q5035	self row of q5035: leaf already the ABE spelling
+0x00878B60	ported	RELOCATION_MATCH	PASS	2	q4538	own leaf QBE->ABE (both PDBs); moves with 0x00878DB0 (its only landed referencer) so 0x00878B60 keeps one spelling; bdiff: leaf only
+0x00878BE0	not-a-binder	RELOCATION_MATCH	-	0	q4538,q5035,q5036,q5037	self row of q4538/q5036 already defines the ABE leaf; binds 0x00878A80 ABE and 0x0084F1B0 QBEPBVCThingGameObject already (probe)
+0x00878CE0	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00878DB0	ported	RELOCATION_MATCH	PASS	2	q4538,q5036,q5037	in place in its local models: GetPosFromParams 0x00878BE0 and GetLookDirectionXYFromParams 0x00878B60 bind ABE (were QBE), GetObservedThing 0x0084F1B0 binds QBEPBVCThingGameObject (was PBVCThing; forward-declared class + base cast at the call); own leaf QBE->ABE (RENAMES s1; no landed referencer). bdiff: only those
+0x00879560	ported	RELOCATION_MATCH	PASS	2	q4539	in place: local CProjectileWeapon members private; 0x00879070 binds ABE (was QBE); own leaf QBE->ABE (RENAMES s1; no landed referencer)
+0x0087B690	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x0087BBF0	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x0087BD70	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x0087BF40	not-a-binder	RELOCATION_MATCH	-	0	q5037	probe: already binds ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ
+0x00892410	ported	RELOCATION_MATCH	PASS	2	q11649	in place in its local CCountedPointer model: DeleteObject -> DeleteData (binds the FableWin.pdb spelling at 0x005ECF50); bdiff: that pair only
+0x00892530	ported	RELOCATION_MATCH	PASS	2	q11649	in place in its local CCountedPointer model: DeleteObject -> DeleteData (binds the FableWin.pdb spelling at 0x005ECF50); bdiff: that pair only
+0x00892610	ported	RELOCATION_MATCH	PASS	2	q11649	in place in its local CCountedPointer model: DeleteObject -> DeleteData (binds the FableWin.pdb spelling at 0x005ECF50); bdiff: that pair only
+0x00892B50	ported	RELOCATION_MATCH	PASS	2	q11649	in place in its local CCountedPointer model: DeleteObject -> DeleteData (binds the FableWin.pdb spelling at 0x005ECF50); bdiff: that pair only
+0x00892C20	ported	RELOCATION_MATCH	PASS	2	q11649	in place in its local CCountedPointer model: DeleteObject -> DeleteData (binds the FableWin.pdb spelling at 0x005ECF50); bdiff: that pair only
+0x008A08A0	not-a-binder	RELOCATION_MATCH	-	0	q11881	probe: already binds ??0CModeScreamerSuperAttack@NCreatureMode@@QAE@AAVCThing@@ABV2@@Z (NF147); lock was released, not claimed
+0x008AC3F0	ported	RELOCATION_MATCH	PASS	3	q11881	port onto the shared NCreatureMode_CModeScreamerSuperAttack.h (+CModeStandBase / CTCCreatureModeManager / CAnimFilterOfGroup INLINE_CTOR / CIntelligentPointer / retail CThing): leaf PAV/PAV-creature -> AAV/ABV2 (both PDBs); 2 grades (first a missing CThing include). Bindings now the established spellings (0x00861E00 ??0CModeStandBase@@QAE@AAVCThing@@@Z, 0x00A01B90 SetPItem PAVCBaseObject, vtables, 0x0129AAF4 NullChar@CCharString@@1DB): each already in the table, no set grows. New pick-any COMDATs: header inlines only (CIntelligentPointer<const CThing>/<CThing>, CAnimFilterBase/OfGroup implicit dtor + ??_G, ??_GCModeScreamerSuperAttack; no landed strong owner: 0x00739DB0 / 0x008AC4B0 rows define stand-in names). Test self-contained, unchanged
+0x008C0D10	ported	RELOCATION_MATCH	PASS	2	q11880,q11883,q11884,q11887	in place (NF147's queued move): local mode class -> class NCreatureMode::CModeJackOfBladesScream with reference params; binds 0x00740450 / 0x008D7370 / 0x008C2D60 under the PDB spellings; defined COMDATs are the same CCountedPointer<T> header inlines as HEAD under the new class token (no landed owner)
+0x008C1C30	not-a-binder	RELOCATION_MATCH	-	0	q11876,q11882	probe: already binds ??0CModeBriarRoseConcentrate@NCreatureMode@@QAE@AAVCThing@@AAVCThingCreatureBase@@_N@Z (NF147); lock was released, not claimed
+0x008C2D60	ported	MATCH	PASS	2	q11880,q11887	self rename onto the shared CCountedPointer.h DeleteData (explicit instantiation, pick-any) of a header-less local NCreatureMode::CModeJackOfBladesScream on the shared CModeBase; catalog fix; test rewritten (DELETEDATA_OK)
+0x008D6580	not-a-binder	RELOCATION_MATCH	-	0	q11670	probe: already binds the IAE spelling
+0x008D6AC0	not-a-binder	RELOCATION_MATCH	-	0	q11670	probe: already binds the IAE spelling
+0x008D7370	ported	RELOCATION_MATCH	PASS	2	q11884	self leaf PAV -> AAV (both PDBs); bdiff: leaf only
+0x008D86E0	ported	RELOCATION_MATCH	PASS	2	q11678	self leaf PAV/PAV -> AAV/AAV (both PDBs); body unchanged; bdiff: leaf only
+0x008E1150	blocked	RELOCATION_MATCH	-	0	q11874	family blocked: port (see APPLIED q11874); untouched
+0x008E1580	blocked	RELOCATION_MATCH	-	0	q11874	family blocked: port (see APPLIED q11874); untouched
+0x008E31A0	not-a-binder	RELOCATION_MATCH	-	0	q3943	self row of q3943: leaf already ??1CModeDragonHover@NCreatureMode@@UAE@XZ (its local CAnimFilter*/CTCCreatureModeManager models and its strong out-of-line ??0CModeDragonFireBeam@NCreatureMode@@QAE@AAVCThing@@@Z, 0x008D8620's PDB name, are HEAD debt: see NOTES)
+0x008E3860	ported	RELOCATION_MATCH	PASS	6	q3943	binds 0x008E31A0 as ??1CModeDragonHover@NCreatureMode@@UAE@XZ (was ?CModeDragonFireBeam_Destruct@@YIXPAX@Z) via a header-less local NCreatureMode::CModeDragonHover on shared CModeStandBase.h; own leaf unchanged (free stand-in; ??_G form needs a ctor-owning TU, NAME_FIXES); Leaf line added (HEAD had none; same function); test unchanged (self-contained); objdump: only the leaf defined
+0x008E78C0	ported	RELOCATION_MATCH	PASS	2	q11876,q11882	self leaf PAV/PAV -> AAV/AAV in place in its existing local model (both PDBs; the shared header's NF147 _CTOR opt-in declares the same); bdiff: leaf only
+0x008F41D0	ported	RELOCATION_MATCH	PASS	4	q11678	in place: its header-less local mode class moved into NCreatureMode with the (CThing&, CThing&, float) ctor; binds ??0CModeDragonFireBeam@NCreatureMode@@QAE@AAVCThing@@0M@Z (was the global PAV stand-in); bdiff: that pair only, no new defined symbol
+0x008F47E0	blocked	RELOCATION_MATCH	-	0	q11874	family blocked: port (see APPLIED q11874); untouched
+0x008F4B00	blocked	RELOCATION_MATCH	-	0	q11874	family blocked: port (see APPLIED q11874); untouched
+0x008FAA80	ported	RELOCATION_MATCH	PASS	2	q5037	in place: stand-in GetThing -> GetObservedThing (QBEPBVCThingGameObject; was ?GetThing@CBase@NCameraModes@@QBEPAVCThing@@XZ); Owner is CBase* in Ego_r.pdb; forward-declared CThingGameObject + base cast
+0x00950C30	blocked	RELOCATION_MATCH	-	0	q11874	family blocked: port (see APPLIED q11874); untouched
+0x00969CB0	ported	RELOCATION_MATCH	PASS	2	q11875	in place: local CModeSleepBed ctor takes CThing&; call passes *GetCreatureThing(); binds the AAV spelling; bdiff: that pair only

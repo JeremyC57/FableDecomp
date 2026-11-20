@@ -23,6 +23,9 @@
 //   ??0CCountedModePointer@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on the shared
 //   CModeBase (the landed 0x0096DBC0 shape). CBrainOutput::PAction is the shared CCountedPointer<CCreatureActionBase> (the local
 //   non-template CCountedPointer stand-in, whose only use was this member's inline destructor, clashed with the header template).
+// Naming (NF157, 2026-11-20; PRIORITY q11875): in place in the row's local NCreatureMode::CModeSleepBed: the constructor takes the creature by
+//   reference, so 0x0084B7C0 binds Ego_r.pdb 0x00526B40 / FableWin.pdb 0x01DD9540 ??0CModeSleepBed@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@1@Z
+//   (was PAVCThing; the self row respells its leaf in the same hand-back).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
 #define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 #include "fable_compiler.h"
@@ -48,7 +51,7 @@ struct CTCOccupiable {                          // interface 0xac
 #include "engine/CTCCreatureModeManager.h"
 namespace NCreatureMode {
 class CModeSleepBed : public CTCCreatureModeManager::CModeBase { public:              // 0x34 bytes, vtable 0x01275760
-    CModeSleepBed(CThing* thing, const CCharString& sleepAnimName, const CCharString& group);   // 0x0084B7C0
+    CModeSleepBed(CThing& thing, const CCharString& sleepAnimName, const CCharString& group);   // 0x0084B7C0 (Ego_r / FableWin)
     virtual unsigned long GetType() const;
     unsigned char _body[0x34 - 0x1c];
 };
@@ -116,7 +119,7 @@ void CAIStateGroup_SleepOnFloor::Update()
                 false, true, false, 0, 0)) == 2) {
             CTCCreatureModeManager* modes;
             PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
-            modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new NCreatureMode::CModeSleepBed(GetCreatureThing(),
+            modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new NCreatureMode::CModeSleepBed(*GetCreatureThing(),
                 "ST_SLEEP_ON_FLOOR_IDLE", "")));
             Asleep = true;
             while (!IsStopping())

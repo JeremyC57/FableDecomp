@@ -1,5 +1,9 @@
-// NCreatureMode::CModeDragonFireBeam::CModeDragonFireBeam(CThing*, CThing*, float) -- CModeDragonHover(thing, target), empty beam-effect pointer, filter re-assigned to "FIRE_BEAM", Timer = seconds in frames
-// Leaf: ??0CModeDragonFireBeam
+// NCreatureMode::CModeDragonFireBeam::CModeDragonFireBeam(CThing&, CThing&, float) -- CModeDragonHover(thing, target), empty beam-effect pointer, filter re-assigned to "FIRE_BEAM", Timer = seconds in frames
+// Leaf: ??0CModeDragonFireBeam@NCreatureMode@@QAE@AAVCThing@@0M@Z
+// Naming (NF157, 2026-11-20; PRIORITY q11678): the two thing parameters are references, as Ego_r.pdb 0x008195A0 and FableWin.pdb 0x02865640
+//   spell this constructor (??0CModeDragonFireBeam@NCreatureMode@@QAE@AAVCThing@@0M@Z; was PAV/PAV, a pointer stand-in); the body forwards
+//   them to CModeDragonHover(CThing&, CThing&) 0x008D8580 unchanged (same bytes). Its only landed caller 0x008F41D0 binds this spelling in the
+//   same hand-back.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -89,11 +93,11 @@ struct CModeDragonFireBeam : CModeDragonHover {   // vtable 0x01285900
     long                     LastExplodeFrame;   // +0x8c
     bool                     BeamActive;         // +0x90
     virtual void v00();
-    CModeDragonFireBeam(CThing* thing, CThing* target, float seconds);
+    CModeDragonFireBeam(CThing& thing, CThing& target, float seconds);
 };
 
-CModeDragonFireBeam::CModeDragonFireBeam(CThing* thing, CThing* target, float seconds)
-    : CModeDragonHover(*thing, *target)
+CModeDragonFireBeam::CModeDragonFireBeam(CThing& thing, CThing& target, float seconds)
+    : CModeDragonHover(thing, target)
 {
     Filter = CAnimFilterOfGroup("FIRE_BEAM");   // literal @ 0x012858F0 (masked)
     Timer = (long)(seconds * CMainGameComponent::GetConstantFPS());

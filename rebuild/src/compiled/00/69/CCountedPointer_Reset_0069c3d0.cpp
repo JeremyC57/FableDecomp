@@ -9,5 +9,9 @@
 // Shape: engine/CCountedPointer.h Reset (the 0x00834E40 recipe): ReleaseData expanded (its trailing Data store is dead), Data = data,
 //   then the count block for a non-null data re-reads Data through `this`; a failed new leaves Info 0.
 #include "engine/CCountedPointer.h"
-namespace NCameraModes { class CScriptModuleBase; }
+// NF157 (2026-11-20; q11649): the forward declaration replaced by the shared engine/NCameraModes_CScriptModuleBase.h. Reset stores DeleteData's
+//   address, so this TU instantiates CCountedPointer<NCameraModes::CScriptModuleBase>::DeleteData as a pick-any COMDAT under the retail name
+//   of 0x005ECF50; with an incomplete class its body was `call operator delete` only (no virtual destructor call), unlike the owner's.
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/NCameraModes_CScriptModuleBase.h"
 template void CCountedPointer<NCameraModes::CScriptModuleBase>::Reset(NCameraModes::CScriptModuleBase*);

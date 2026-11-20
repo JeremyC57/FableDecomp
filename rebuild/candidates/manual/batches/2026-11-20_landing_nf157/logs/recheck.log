@@ -1,0 +1,124 @@
+addr       parity           behav  name
+005ed270   RELOCATION_MATCH PASS   CCountedPointer_005ecf50::CCountedPointer_005ecf50
+0069b790   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0069b790   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0069b790   WARN SHARED_HEADER_AVAILABLE CCamera (engine/CCamera.h)
+0069b790   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0069b790   WARN RELOC_NAME: ?UpdateEarthQuakes@CGameCameraManager@@QAEXXZ -> 00698540 labelled 'CGameCameraManager_UpdatePointLightAccumulation'
+0069b790   RELOCATION_MATCH PASS   CGameCameraManager::Update
+0069c3d0   RELOCATION_MATCH PASS   CCountedPointer<NCameraModes::CScriptModuleBase>::Reset
+00740450   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+00740450   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00740450   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+00740450   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00740450   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00740450   RELOCATION_MATCH PASS   NCreatureMode::CModeJackOfBladesScream::CModeJackOfBladesScream
+00742880   RELOCATION_MATCH PASS   NCreatureMode::CModeJackOfBladesScream::Alloc
+0075daa0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0075daa0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0075daa0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0075daa0   RELOCATION_MATCH PASS   CTCCameraPointBuilding::IsLeafCriteriaMet
+0084b7c0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+0084b7c0   RELOCATION_MATCH PASS   NCreatureMode::CModeSleepBed::CModeSleepBed
+0084e110   RELOCATION_MATCH PASS   NCameraModes::CBase::Init
+00872490   WARN SHARED_HEADER_AVAILABLE CCameraModeDef (engine/CCameraModeDef.h)
+00872490   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00872490   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00872490   RELOCATION_MATCH PASS   NCameraModes::CZTargetNew::InitialiseTransitionVariables
+00878b60   WARN SHARED_HEADER_AVAILABLE CCameraModeDef (engine/CCameraModeDef.h)
+00878b60   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00878b60   RELOCATION_MATCH PASS   NCameraModes::CProjectileWeapon::GetLookDirectionXYFromParams
+00878db0   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00878db0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00878db0   RELOCATION_MATCH PASS   NCameraModes::CProjectileWeapon::GetLookDirectionFromParams
+00879560   RELOCATION_MATCH PASS   NCameraModes::CProjectileWeapon::GetHeightParamForTargetedThingWithPhi
+00892410   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00892410   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00892410   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase (engine/CAIGameCameraBase.h)
+00892410   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00892410   RELOCATION_MATCH PASS   CGameScriptInterface::CameraMoveToPosAndLookAtPos
+00892530   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00892530   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00892530   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase (engine/CAIGameCameraBase.h)
+00892530   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00892530   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00892530   RELOCATION_MATCH PASS   CGameScriptInterface::CameraMoveBetweenLookingAt
+00892610   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00892610   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00892610   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase (engine/CAIGameCameraBase.h)
+00892610   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00892610   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00892610   RELOCATION_MATCH PASS   CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo
+00892b50   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00892b50   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00892b50   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00892b50   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase (engine/CAIGameCameraBase.h)
+00892b50   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00892b50   RELOCATION_MATCH PASS   CGameScriptInterface::CameraCircleAroundThing
+00892c20   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00892c20   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00892c20   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase (engine/CAIGameCameraBase.h)
+00892c20   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00892c20   RELOCATION_MATCH PASS   CGameScriptInterface::CameraCircleAroundPos
+008ac3f0   RELOCATION_MATCH PASS   NCreatureMode::CModeScreamerSuperAttack::CModeScreamerSuperAttack
+008c0d10   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008c0d10   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c0d10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_JackScream (engine/CCreatureAction_JackScream.h)
+008c0d10   RELOCATION_MATCH PASS   CCreatureAction_JackScream::Initialise
+008c2d60   MATCH            PASS   CCountedPointer<NCreatureMode::CModeJackOfBladesScream>::DeleteData
+008d7370   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008d7370   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008d7370   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008d7370   RELOCATION_MATCH PASS   NCreatureMode::CModeJackOfBladesScream::SetSwordObject
+008d86e0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008d86e0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d86e0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008d86e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008d86e0   RELOCATION_MATCH PASS   NCreatureMode::CModeDragonFireBeam::CModeDragonFireBeam
+008e3860   WARN STANDIN_LEAF ?CModeDragonFireBeam_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog NCreatureMode::CModeDragonFireBeam::`scalar deleting destructor'; names another function)
+008e3860   RELOCATION_MATCH PASS   NCreatureMode::CModeDragonFireBeam::`scalar deleting destructor'
+008e78c0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008e78c0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008e78c0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008e78c0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008e78c0   RELOCATION_MATCH PASS   NCreatureMode::CModeBriarRoseConcentrate::CModeBriarRoseConcentrate
+008f41d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008f41d0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008f41d0   RELOCATION_MATCH PASS   CCreatureAction_DragonFireBeamInto::Initialise
+008faa80   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008faa80   WARN RELOC_NAME: ??1CVectorList@@QAE@XZ -> 0048ca60 labelled 'std::_List_base<C3DVector>::~_List_base'
+008faa80   RELOCATION_MATCH PASS   NCameraModes::CPhysicsForceModelBase::DoCreatureEvasion
+00969cb0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00969cb0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00969cb0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayAnimation (engine/CCreatureAction_PlayAnimation.h)
+00969cb0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00969cb0   RELOCATION_MATCH PASS   CAIStateGroup_SleepOnFloor::Update
+
+WINS: 27
+  005ed270 RELOCATION_MATCH CCountedPointer_005ecf50::??0CCountedPointer_005ecf50@@QAE@PAX@Z
+  0069b790 RELOCATION_MATCH CGameCameraManager::Update
+  0069c3d0 RELOCATION_MATCH CCountedPointer<NCameraModes::CScriptModuleBase>::?Reset@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@QAEXPAVCScriptModuleBase@NCameraModes@@@Z
+  00740450 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesScream::??0CModeJackOfBladesScream@NCreatureMode@@QAE@AAVCThing@@@Z
+  00742880 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesScream::?Alloc@CModeJackOfBladesScream@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z
+  0075daa0 RELOCATION_MATCH CTCCameraPointBuilding::IsLeafCriteriaMet
+  0084b7c0 RELOCATION_MATCH NCreatureMode::CModeSleepBed::??0CModeSleepBed@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@1@Z
+  0084e110 RELOCATION_MATCH NCameraModes::CBase::?Init@CBase@NCameraModes@@QAEXXZ
+  00872490 RELOCATION_MATCH NCameraModes::CZTargetNew::InitialiseTransitionVariables
+  00878b60 RELOCATION_MATCH NCameraModes::CProjectileWeapon::?GetLookDirectionXYFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z
+  00878db0 RELOCATION_MATCH NCameraModes::CProjectileWeapon::?GetLookDirectionFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z
+  00879560 RELOCATION_MATCH NCameraModes::CProjectileWeapon::?GetHeightParamForTargetedThingWithPhi@CProjectileWeapon@NCameraModes@@ABEMABVCThing@@M@Z
+  00892410 RELOCATION_MATCH CGameScriptInterface::?CameraMoveToPosAndLookAtPos@CGameScriptInterface@@UBEXABVC3DVector@@0M@Z
+  00892530 RELOCATION_MATCH CGameScriptInterface::?CameraMoveBetweenLookingAt@CGameScriptInterface@@UBEXABVC3DVector@@00MM@Z
+  00892610 RELOCATION_MATCH CGameScriptInterface::?CameraMoveBetweenLookFromAndLookTo@CGameScriptInterface@@UBEXABVC3DVector@@000M@Z
+  00892b50 RELOCATION_MATCH CGameScriptInterface::?CameraCircleAroundThing@CGameScriptInterface@@UBEXABVCScriptThing@@ABVC3DVector@@M@Z
+  00892c20 RELOCATION_MATCH CGameScriptInterface::?CameraCircleAroundPos@CGameScriptInterface@@UBEXABVC3DVector@@0M@Z
+  008ac3f0 RELOCATION_MATCH NCreatureMode::CModeScreamerSuperAttack::??0CModeScreamerSuperAttack@NCreatureMode@@QAE@AAVCThing@@ABV2@@Z
+  008c0d10 RELOCATION_MATCH CCreatureAction_JackScream::?Initialise@CCreatureAction_JackScream@@UAEXXZ
+  008c2d60 MATCH CCountedPointer<NCreatureMode::CModeJackOfBladesScream>::?DeleteData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@SIXPAX@Z
+  008d7370 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesScream::?SetSwordObject@CModeJackOfBladesScream@NCreatureMode@@QAEXAAVCThing@@@Z
+  008d86e0 RELOCATION_MATCH NCreatureMode::CModeDragonFireBeam::??0CModeDragonFireBeam@NCreatureMode@@QAE@AAVCThing@@0M@Z
+  008e3860 RELOCATION_MATCH NCreatureMode::CModeDragonFireBeam::?CModeDragonFireBeam_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008e78c0 RELOCATION_MATCH NCreatureMode::CModeBriarRoseConcentrate::??0CModeBriarRoseConcentrate@NCreatureMode@@QAE@AAVCThing@@AAVCThingCreatureBase@@_N@Z
+  008f41d0 RELOCATION_MATCH CCreatureAction_DragonFireBeamInto::?Initialise@CCreatureAction_DragonFireBeamInto@@UAEXXZ
+  008faa80 RELOCATION_MATCH NCameraModes::CPhysicsForceModelBase::?DoCreatureEvasion@CPhysicsForceModelBase@
+  00969cb0 RELOCATION_MATCH CAIStateGroup_SleepOnFloor::Update

@@ -1,6 +1,17 @@
 // NCameraModes::CProjectileWeapon::GetLookDirectionFromParams(float phi, float heightParam) const -- the projectile camera's look direction for an orbit angle and height: the horizontal look direction pitched (about its horizontal perpendicular) by the difference between the pitch towards the observed thing's aim point (1.6 above its position) from the camera position and the look direction's own pitch, both as wrapped fractions of a turn
-// Leaf: ?GetLookDirectionFromParams@CProjectileWeapon@NCameraModes@@
+// Leaf: ?GetLookDirectionFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z
+// Naming (NF157, 2026-11-20; PRIORITY q4538 / q5036 / q5037): in place in the row's own local models. CProjectileWeapon's three members
+//   are private as both PDBs spell them (Ego_r.pdb 0x00863210 / 0x00862D90 / 0x00862FA0, FableWin.pdb 0x029C8FC0 / 0x029C91F0 /
+//   0x029C90B0, all ABE): this row's own leaf ?GetLookDirectionFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z (was QBE;
+//   no landed row references 0x00878DB0), 0x00878BE0 binds ?GetPosFromParams@..@@ABE?AVC3DVector@@MM@Z (its self row's leaf) and
+//   0x00878B60 ?GetLookDirectionXYFromParams@..@@ABE?AVC3DVector@@MM@Z (its self row's leaf). CBase::GetObservedThing returns
+//   const CThingGameObject* (Ego_r.pdb 0x00846960 / FableWin.pdb 0x02883590 ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ,
+//   the self row 0x0084F1B0's leaf; was PBVCThing); CThingGameObject is only forward-declared (its header needs the retail CThing chain),
+//   so the call site converts the pointer to its CThing base (single inheritance, offset 0) for CThing::GetPos.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00878DB0, length 408 bytes (`ret 0Ch`: hidden C3DVector result, phi,
+// Fidelity: cast, not retail: GetObservedThing() returns the PDB `const CThingGameObject*`, forward-declared here because this row
+//   includes the non-retail CThing.h; the call site reaches CThing::GetPos through a C-style cast to the CThing base (offset 0, same
+//   bytes). Advisor decision (owner delegated, nf157); the port onto engine/CThingGameObject.h is queued.
 // heightParam). Ego_r.pdb `?GetLookDirectionFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z` (private const);
 // the catalog label "CProjectileWeapon_CalculatePitch" is descriptive only. Callers: four sites in CProjectileWeapon's TU.
 // Callees: CProjectileWeapon::GetPosFromParams(float, float) const 0x00878BE0, NCameraModes::CBase::GetObservedThing() const
@@ -29,6 +40,7 @@ class C3DVector { public:
     void Rotate(const C3DVector& axis, float angle);          // 0x00A13C60
 };
 #include "engine/CThing.h"
+class CThingGameObject;                                       // engine/CThingGameObject.h (retail chain only); : CThingPhysical : CThing
 FABLE_FORCEINLINE float PitchFraction(const C3DVector& v)
 {
     float xy = (float)sqrt(v.X * v.X + v.Y * v.Y);
@@ -44,10 +56,10 @@ namespace NCameraModes {
 class CBase {
 public:
     virtual void v00();
-    const CThing* GetObservedThing() const;                   // 0x0084F1B0
+    const CThingGameObject* GetObservedThing() const;         // 0x0084F1B0 (Ego_r / FableWin)
 };
 class CProjectileWeapon : public CBase {
-public:
+private:                                                      // Ego_r.pdb / FableWin.pdb: all three ABE (private const)
     C3DVector GetPosFromParams(float phi, float heightParam) const;               // 0x00878BE0
     C3DVector GetLookDirectionXYFromParams(float phi, float heightParam) const;   // 0x00878B60
     C3DVector GetLookDirectionFromParams(float phi, float heightParam) const;
@@ -57,7 +69,7 @@ public:
 C3DVector NCameraModes::CProjectileWeapon::GetLookDirectionFromParams(float phi, float heightParam) const
 {
     C3DVector camera = GetPosFromParams(phi, heightParam);
-    const C3DVector& thing = GetObservedThing()->GetPos();
+    const C3DVector& thing = ((const CThing*)GetObservedThing())->GetPos();
     C3DVector toTarget = C3DVector(thing.X, thing.Y, thing.Z + 1.6f) - camera;
     C3DVector look = GetLookDirectionXYFromParams(phi, heightParam);
     C3DVector side(look.Y, -look.X, 0.0f);

@@ -1,5 +1,8 @@
 // CGameScriptInterface::CameraCircleAroundPos(const C3DVector&, const C3DVector&, float) const -- hand the camera manager a scripted dolly mode circling a position at an offset
 // Leaf: ?CameraCircleAroundPos@CGameScriptInterface@@UBEXABVC3DVector@@0M@Z
+// Naming (NF157, 2026-11-20; PRIORITY q11649): in place in the row's own local CCountedPointer model: the count block's deleter 0x005ECF50 is
+//   FableWin.pdb ?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z (the self row 0x005ECF50's leaf; was the stand-in
+//   ?DeleteObject@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z). Declaration only.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00892C20, 204 bytes, `ret 0xc`; Ego_r.pdb same symbol.
 // Body: World (+0x04)->PCurrentGameCamera (+0x34)->GetCameraManager(&manager) (slot 9); manager->SetScriptedCameraMode(
@@ -37,11 +40,11 @@ template <class T> class CCountedPointer {
 public:
     T*              Object;
     CCPPointerInfo* Info;
-    static void __fastcall DeleteObject(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
+    static void __fastcall DeleteData(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
     FABLE_FORCEINLINE CCountedPointer(T* object) : Object(object)
     {
         if (object)
-            Info = new CCPPointerInfo(DeleteObject, Object);
+            Info = new CCPPointerInfo(DeleteData, Object);
         else
             Info = 0;
     }

@@ -1,5 +1,10 @@
 // NCreatureMode::CModeBriarRoseConcentrate::CModeBriarRoseConcentrate(CThing*, CThingCreatureBase*, bool) -- mode ctor: "POWER_UP" filter, PTarget = target, Imposter = flag, Timer left unset
-// Leaf: ??0CModeBriarRoseConcentrate
+// Leaf: ??0CModeBriarRoseConcentrate@NCreatureMode@@QAE@AAVCThing@@AAVCThingCreatureBase@@_N@Z
+// Naming (NF157, 2026-11-20; PRIORITY q11876 / q11882): in place in the row's local model: the constructor takes both things by reference, as
+//   Ego_r.pdb 0x00830DF0 and FableWin.pdb 0x0280A420 spell this 3-argument overload
+//   (??0CModeBriarRoseConcentrate@NCreatureMode@@QAE@AAVCThing@@AAVCThingCreatureBase@@_N@Z; was PAV/PAV pointer stand-ins). The row's local
+//   CModeStandBase (0x00861E00) and PTarget stand-ins still take pointers, so the body passes &thing / &target (same bytes). Its only landed
+//   caller 0x008C1C30 already binds this spelling (NF147, engine/NCreatureMode_CModeBriarRoseConcentrate.h _CTOR).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E78C0, 216 bytes (`ret 0Ch`). Vtable 0x01268548 (NCreatureMode::CModeBriarRoseConcentrate).
 // Callees: CModeStandBase::CModeStandBase(CThing*) 0x00861E00; CCharString(const char*, long) 0x0099EBF0,
@@ -102,13 +107,13 @@ class CModeBriarRoseConcentrate : public CModeStandBase { public:   // vtable 0x
     CIntelligentPointerThing            PBodyEffect;  // +0x94
     CIntelligentPointerThing            PSwordEffect; // +0x9c
     virtual void v00();
-    CModeBriarRoseConcentrate(CThing* thing, CThingCreatureBase* target, bool imposter);
+    CModeBriarRoseConcentrate(CThing& thing, CThingCreatureBase& target, bool imposter);
 };
 
-CModeBriarRoseConcentrate::CModeBriarRoseConcentrate(CThing* thing, CThingCreatureBase* target, bool imposter)
-    : CModeStandBase(thing)
+CModeBriarRoseConcentrate::CModeBriarRoseConcentrate(CThing& thing, CThingCreatureBase& target, bool imposter)
+    : CModeStandBase(&thing)
     , Filter("POWER_UP")                // literal @ 0x01268578 (masked)
-    , PTarget(target)
+    , PTarget(&target)
     , Imposter(imposter)
 {
 }

@@ -1,5 +1,9 @@
 // NCreatureMode::CModeJackOfBladesScream::CModeJackOfBladesScream(CThing*) -- CModeStandBase(thing), the "JACK_OF_BLADES_SCREAM" group filter, empty sword / emitter pointers, sword not falling
-// Leaf: ??0CModeJackOfBladesScream
+// Leaf: ??0CModeJackOfBladesScream@NCreatureMode@@QAE@AAVCThing@@@Z
+// Naming (NF157, 2026-11-20; PRIORITY q11883 / q11887): the thing parameter is a reference, as Ego_r.pdb 0x00754400 and FableWin.pdb 0x024BB0C0
+//   spell the constructor (??0CModeJackOfBladesScream@NCreatureMode@@QAE@AAVCThing@@@Z; was PAVCThing). The row's local CModeStandBase
+//   stand-in (0x00861E00, binding unchanged) still takes the pointer, so the body passes &thing (same bytes). Both landed callers, 0x00742880
+//   (Alloc) and 0x008C0D10 (CCreatureAction_JackScream::Initialise), bind this spelling in the same hand-back.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00740450, 164 bytes (`ret 4`). Vtable 0x01267D5C (NCreatureMode::CModeJackOfBladesScream).
 // Callees: CModeStandBase::CModeStandBase(CThing*) 0x00861E00; CCharString(const char*, long) 0x0099EBF0,
@@ -110,11 +114,11 @@ class CModeJackOfBladesScream : public CModeStandBase { public:   // vtable 0x01
     C3DVector                  SwordFallPos;     // +0xa4
     C3DVector                  InitialSwordPos;  // +0xb0
     virtual void v00();
-    CModeJackOfBladesScream(CThing* thing);
+    CModeJackOfBladesScream(CThing& thing);
 };
 
-CModeJackOfBladesScream::CModeJackOfBladesScream(CThing* thing)
-    : CModeStandBase(thing)
+CModeJackOfBladesScream::CModeJackOfBladesScream(CThing& thing)
+    : CModeStandBase(&thing)
     , Filter("JACK_OF_BLADES_SCREAM")
     , SwordFalling(false)
     , SwordFallTimer(0)

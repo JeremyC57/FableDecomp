@@ -18,6 +18,10 @@
 //   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
 //   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
 //   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation.
+// Naming (NF157, 2026-11-20; PRIORITY q11678): in place: the row's header-less local mode class sits in NCreatureMode (RTTI
+//   .?AVCModeDragonFireBeam@NCreatureMode@@) and its constructor takes the two things by reference, as Ego_r.pdb 0x008195A0 / FableWin.pdb
+//   0x02865640 spell it: 0x008D86E0 now binds ??0CModeDragonFireBeam@NCreatureMode@@QAE@AAVCThing@@0M@Z (was the global stand-in
+//   ??0CModeDragonFireBeam@@QAE@PAVCThing@@0M@Z; the self row respells its leaf in the same hand-back). Same token, now class-keyed as both PDBs, same layout.
 #define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
@@ -41,11 +45,14 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
 
 #include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
-struct CModeDragonFireBeam : CTCCreatureModeManager::CModeBase {
+namespace NCreatureMode {
+class CModeDragonFireBeam : public CTCCreatureModeManager::CModeBase {   // class-keyed (RTTI .?AVCModeDragonFireBeam@NCreatureMode@@)
     unsigned char _pad[0x94 - 0x1c];
-    CModeDragonFireBeam(CThing* owner, CThing* target, float timer);   // 0x008D86E0
+public:
+    CModeDragonFireBeam(CThing& owner, CThing& target, float timer);   // 0x008D86E0
     virtual unsigned long GetType() const;
 };
+}
 
 class CCombatActionBase {
 public:
@@ -73,5 +80,5 @@ void CCreatureAction_DragonFireBeamInto::Initialise()
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
     if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
-        modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeDragonFireBeam(PCreature, PTarget, Timer)));
+        modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new NCreatureMode::CModeDragonFireBeam(*PCreature, *PTarget, Timer)));
 }

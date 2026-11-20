@@ -8,6 +8,11 @@
 // Shape: the position is a NAMED local -- the temporary form pushes the returned eax and evaluates phi before
 // the call, the named local is re-addressed with `lea` after it; C3DVector needs a constructor for the
 // `__fastcall` hidden-pointer return.
+// Leaf: ?GetHeightParamForTargetedThingWithPhi@CProjectileWeapon@NCameraModes@@ABEMABVCThing@@M@Z
+// Naming (NF157, 2026-11-20; PRIORITY q4539): in place in the row's own local CProjectileWeapon: both members private as both PDBs spell them,
+//   so 0x00879070 binds Ego_r.pdb 0x00863420 / FableWin.pdb 0x029C9E90 ?GetHeightParamForPostionWithPhi@CProjectileWeapon@NCameraModes@@ABEMABVC3DVector@@M@Z
+//   (was QBE) and this row's own leaf is Ego_r.pdb 0x00863AD0 / FableWin.pdb 0x029C9E40
+//   ?GetHeightParamForTargetedThingWithPhi@CProjectileWeapon@NCameraModes@@ABEMABVCThing@@M@Z (was QBE; no landed row references 0x00879560).
 class CWorld;
 class CThing;
 class CGameCameraManager;
@@ -27,7 +32,7 @@ protected:  // NF34: Ego_r.pdb + FableWin.pdb ?GetWorld@CBase@NCameraModes@@IBEA
 public:
 };
 
-class CProjectileWeapon : public CBase { public:
+class CProjectileWeapon : public CBase { private:          // Ego_r.pdb / FableWin.pdb: both ABE (private const)
     float GetHeightParamForPostionWithPhi(const C3DVector& position, float phi) const;   // 0x00879070
     float GetHeightParamForTargetedThingWithPhi(const CThing& thing, float phi) const;
 };

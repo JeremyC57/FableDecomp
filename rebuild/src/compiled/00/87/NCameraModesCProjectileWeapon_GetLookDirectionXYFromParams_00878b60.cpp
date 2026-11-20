@@ -1,5 +1,8 @@
 // NCameraModes::CProjectileWeapon::GetLookDirectionXYFromParams(float phi, float heightParam) const -- the camera's horizontal look direction for an orbit angle: the XY offset a quarter turn on (less the def's initial phi offset), turned to face back along the orbit
-// Leaf: ?GetLookDirectionXYFromParams@CProjectileWeapon@NCameraModes@@
+// Leaf: ?GetLookDirectionXYFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z
+// Naming (NF157, 2026-11-20; with q4538 / q5037's binder 0x00878DB0): this row's own leaf is private const as both PDBs spell it (Ego_r.pdb
+//   0x00862FA0 / FableWin.pdb 0x029C90B0 ?GetLookDirectionXYFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z; was QBE). Its only
+//   landed referencer 0x00878DB0 binds the ABE spelling in the same hand-back.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00878B60, length 128 bytes (`ret 0Ch`: hidden C3DVector result pointer,
 //   phi, heightParam -- heightParam is unused).
@@ -42,8 +45,7 @@ class CProjectileWeapon : public CBase {                              // vtable 
 private:
     C3DVector GetCamPosOffsetXY(float phi) const;       // 0x00878A80 ?GetCamPosOffsetXY@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@M@Z
                                                         //   (Ego_r.pdb 0x00862CE0 / FableWin.pdb 0x029C9160: private const; NF28 was public)
-public:
-    C3DVector GetLookDirectionXYFromParams(float phi, float heightParam) const;
+    C3DVector GetLookDirectionXYFromParams(float phi, float heightParam) const;   // private const (Ego_r.pdb 0x00862FA0 / FableWin.pdb 0x029C90B0)
 };
 #pragma pack(pop)
 }

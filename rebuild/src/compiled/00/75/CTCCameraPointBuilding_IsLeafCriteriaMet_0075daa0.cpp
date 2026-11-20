@@ -13,6 +13,10 @@
 // word. That sharing needs the same-TU GetOwnerBuilding body (0x0075D940 stand-in: writes the out pointer only on success,
 // the lookup itself behind an extern), which tells VC7.1 the owner's address does not escape; with only a declaration the
 // hit-thing gets its own word, and one shared variable swaps the camera/owner words.
+// Naming (NF157, 2026-11-20; PRIORITY q5037): in place in the row's local NCameraModes::CBase: GetObservedThing returns
+//   const CThingGameObject* as both PDBs spell it (Ego_r.pdb 0x00846960 / FableWin.pdb 0x02883590
+//   ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ, the self row 0x0084F1B0's leaf; was QBEPAVCThing); the class comes from
+//   the row's existing retail engine/CThingBuilding.h chain (CThingGameObject.h). The observed-thing local is const accordingly.
 #include "engine/C3DVector.h"
 class CThing;
 class CThingBuilding;
@@ -34,7 +38,7 @@ struct CTools {
 };
 namespace NCameraModes {
 class CBase { public:
-    CThing* GetObservedThing() const;           // 0x0084F1B0
+    const CThingGameObject* GetObservedThing() const;   // 0x0084F1B0
 };
 }
 struct CCameraManager {
@@ -95,7 +99,7 @@ bool CTCCameraPointBuilding::IsLeafCriteriaMet()
     const CThing* thing;
     CCameraManager* camera;
     if (PeekWorld().GetCameraManager()->GetCameraManager(&camera) && GetOwnerBuilding(&thing)) {
-        CThing* observed = camera->PCurrentMode->GetObservedThing();
+        const CThingGameObject* observed = camera->PCurrentMode->GetObservedThing();
         if (observed) {
             C3DVector focal = observed->GetTCGraphicAppearance()->GetCameraFocalPos(1.0f);
             C3DVector heroPosition = ParentThing->GetPos();

@@ -1,5 +1,8 @@
 // NCreatureMode::CModeJackOfBladesScream::SetSwordObject(CThing*) -- PSword pointed at the sword, InitialSwordPos = the sword's position
-// Leaf: SetSwordObject
+// Leaf: ?SetSwordObject@CModeJackOfBladesScream@NCreatureMode@@QAEXAAVCThing@@@Z
+// Naming (NF157, 2026-11-20; PRIORITY q11884): the sword is a reference, as Ego_r.pdb 0x008186E0 and FableWin.pdb 0x0284C0B0 spell it
+//   (?SetSwordObject@CModeJackOfBladesScream@NCreatureMode@@QAEXAAVCThing@@@Z; was PAVCThing); the body takes its address for the row's
+//   local CIntelligentPointer stand-in (same bytes). Its only landed caller 0x008C0D10 binds this spelling in the same hand-back.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7370, 109 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer: ctor 0x00A01B10, SetPItem 0x00A01B90, GetPItem 0x00A01B50, ~ 0x00A01C10;
@@ -52,12 +55,12 @@ class CModeJackOfBladesScream : public CModeStandBase { public:
     CIntelligentPointer<CThing> PEmitter;          // +0x9c
     C3DVector                   SwordFallPos;      // +0xa4
     C3DVector                   InitialSwordPos;   // +0xb0
-    void SetSwordObject(CThing* sword);
+    void SetSwordObject(CThing& sword);
 };
 
-void CModeJackOfBladesScream::SetSwordObject(CThing* sword)
+void CModeJackOfBladesScream::SetSwordObject(CThing& sword)
 {
-    PSword = CIntelligentPointer<CThing>(sword);
+    PSword = CIntelligentPointer<CThing>(&sword);
     InitialSwordPos = PSword->GetPos();
 }
 
