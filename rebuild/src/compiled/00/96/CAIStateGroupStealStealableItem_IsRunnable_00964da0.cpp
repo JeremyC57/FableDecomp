@@ -1,120 +1,79 @@
 // CAIStateGroup_StealStealableItem::IsRunnable() -- unless a cleanup is pending, for a creature whose follow-state component allows stealing: reset the action state, latch the stealable item and an escape point; runnable when both are alive
+// Leaf: ?IsRunnable@CAIStateGroup_StealStealableItem@@UAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00964DA0, length 336 bytes (+ int3 padding).
-// Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface 0xAA, bit 10 of +0x34), FindPStealableItem
+// Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined CThing::PeekTC of interface 0xAA, bit 10 of +0x34), FindPStealableItem
 //          @ 0x00964360, FindPEscapePoint(bool) @ 0x00964CA0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor
 //          (temporaries CIntelligentPointer<CThing> vtable 0x01238C6C and CIntelligentPointer<const CThing> vtable
 //          0x01237F1C).
 // Shape: the component lookup goes through the const overload (retail calls the TU's const LowerBound copy) with
 //          the if/assign pick; both pointers are assigned through frame temporaries with the named-item operator=;
-//          a same-TU const LowerBound stand-in lets the temporaries reuse the dead key slot (8-byte frame);
+//          the same-TU noinline const LowerBound body (engine/CVectorMap.h) lets the temporaries reuse the dead key slot (8-byte frame);
 //          the result is the int-valued `&&` of two inline IS_THING_ALIVE tests (`mov eax,1` / `xor eax,eax`).
 // Layout: engine/CAIStateGroup_StealStealableItem.h (PStealableItem +0x14, PEscapePoint +0x1c, ActionPointIndex +0x2c,
-//          GotActionPoint +0x30, ReachedDestination +0x31, PickUpActionID +0x34, NeedsCleanup +0x38); the 0xAA
-//          component's +0x68 / +0x6a flags are descriptive.
+//          GotActionPoint +0x30, ReachedDestination +0x31, PickUpActionID +0x34, NeedsCleanup +0x38); the 0xAA (TCI_AI_SCRATCHPAD)
+//          component's +0x68 / +0x6a flags are CTCAIScratchpad::StealStealableItems / TakeStealableItemToRandomDestination (Ego_r.pdb).
+// NF141 (2026-11-20, q4994 / q5140 family): ported onto the retail engine/CAIStateGroup_StealStealableItem.h class (overlay opt-ins
+//   _ISRUNNABLE, _FINDPSTEALABLEITEM, _FINDPESCAPEPOINT). Own leaf: the stand-in ?IsRunnable@CAIStateGroupStealStealableItemMethods@@QAE_NXZ
+//   -> the PDB ?IsRunnable@CAIStateGroup_StealStealableItem@@UAE_NXZ (Ego_r.pdb 0x00989760 + FableWin.pdb 0x02C38320, public virtual, slot 11;
+//   no landed row references 0x00964DA0, exe scan). Callees: 0x00964CA0 -> ?FindPEscapePoint@CAIStateGroup_StealStealableItem@@ABEPBVCThing@@_N@Z
+//   (its self row moves to it in this hand-back) and 0x00964360 -> ?FindPStealableItem@CAIStateGroup_StealStealableItem@@ABEPAVCThing@@XZ
+//   (Ego_r.pdb 0x00988C30 + FableWin.pdb 0x02C3AE50; a PDB spelling replacing this row's stand-in: the address keeps two spellings, its
+//   self row's _Methods stand-in waits, NAME_FIXES). Interface 0xAA is TCI_AI_SCRATCHPAD (engine/ETCInterfaceType.h): the component is
+//   CTCAIScratchpad (engine/CTCAIScratchpad.h; Ego_r.pdb StealStealableItems +0x68, TakeStealableItemToRandomDestination +0x6a), read through
+//   CThing::PeekTC (FABLE_RETAIL_CTHING_GETTC_EXPANDED: const LowerBound 0x004365B0, CVectorMap.h noinline body); the pointer temporaries are
+//   CIntelligentPointer<CThing> / <const CThing> (engine/CIntelligentPointer.h); IS_THING_ALIVE from engine/ThingAlive.h. Local CInterfaceMap /
+//   CThing / CTCFollowerState / CIntelligentPointer* / IS_THING_ALIVE / CAIBrain / Methods models dropped.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM
+#define FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_ISRUNNABLE
+#define FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_FINDPSTEALABLEITEM
+#define FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_FINDPESCAPEPOINT
 #include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CVectorMap.h"
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCAIScratchpad.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
 #include "engine/CAIStateGroup_StealStealableItem.h"
 
-class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0 (stand-in body below)
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for the const CVectorMap::LowerBound (0x004365B0, STLport lower_bound; retail's LTCG saw its body):
-// the key's address does not escape, so its frame slot is free again for the pointer temporaries.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x91 - 0x4c];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
-        }
-    }
-};
-struct CTCFollowerState {                       // interface 0xAA
-    unsigned char _pad[0x68];
-    bool CanSteal;                              // +0x68 (descriptive)
-    unsigned char _pad69;
-    bool EscapeAnywhere;                        // +0x6a (descriptive)
-};
-
-class CBaseObject;
-#define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
-};
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
-    virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerConstThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    FABLE_FORCEINLINE CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
-};
-FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
-{
-    if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
-            return true;
-    }
-    return false;
-}
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
-
-struct CAIStateGroupStealStealableItemMethods : CAIStateGroup_StealStealableItem {
-    CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
-    CThing* GetCreature() const { return Brain()->PCreature; }
-    CIntelligentPointerThing& Item() { return *(CIntelligentPointerThing*)PStealableItem; }
-    CIntelligentPointerConstThing& Escape() { return *(CIntelligentPointerConstThing*)PEscapePoint; }
-    CThing* FindPStealableItem();               // 0x00964360
-    CThing* FindPEscapePoint(bool anywhere);    // 0x00964CA0
-    bool IsRunnable();
-};
-
-bool CAIStateGroupStealStealableItemMethods::IsRunnable()
+bool CAIStateGroup_StealStealableItem::IsRunnable()
 {
     if (!NeedsCleanup) {
-        CTCFollowerState* state;
-        ((const CThing*)GetCreature())->GetInterface(&state, 0xaa);
-        if (state->CanSteal) {
+        const CTCAIScratchpad* scratchpad;
+        GetCreature().PeekTC(TCI_AI_SCRATCHPAD, &scratchpad);
+        if (scratchpad->StealStealableItems) {
             ActionPointIndex = -1;
             ReachedDestination = false;
             GotActionPoint = false;
             PickUpActionID = -1;
-            Item() = CIntelligentPointerThing(FindPStealableItem());
-            Escape() = CIntelligentPointerConstThing(FindPEscapePoint(!state->EscapeAnywhere));
-            return IS_THING_ALIVE(Item()) && IS_THING_ALIVE(Escape());
+            PStealableItem = CIntelligentPointer<CThing>(FindPStealableItem());
+            PEscapePoint = CIntelligentPointer<const CThing>(FindPEscapePoint(!scratchpad->TakeStealableItemToRandomDestination));
+            return IS_THING_ALIVE(PStealableItem) && IS_THING_ALIVE(PEscapePoint);
         }
     }
     return false;

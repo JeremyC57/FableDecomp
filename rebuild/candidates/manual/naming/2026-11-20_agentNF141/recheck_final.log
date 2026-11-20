@@ -1,0 +1,19 @@
+addr       parity           behav  name
+008fd000   MATCH            PASS   CAIStateGroupBase::PeekThingSearchTools
+00913f30   RELOCATION_MATCH PASS   CAIStateGroup_BirdFlyToFood::IsRunnable
+00964ca0   RELOCATION_MATCH PASS   CAIStateGroup_StealStealableItem::FindPEscapePoint
+00964da0   RELOCATION_MATCH PASS   CAIStateGroup_StealStealableItem::IsRunnable
+009ff590   RELOCATION_MATCH PASS   CGraphicDataBank::NotifyEntryAdded
+009fd6c0   MATCH            PASS   CGraphicDataBank::CGraphicHeader::CGraphicHeader
+00994930   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00994930   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00994930   RELOCATION_MATCH PASS   CMemoryDataInputStream::CMemoryDataInputStream
+
+WINS: 7
+  008fd000 MATCH CAIStateGroupBase::?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ
+  00913f30 RELOCATION_MATCH CAIStateGroup_BirdFlyToFood::?IsRunnable@CAIStateGroup_BirdFlyToFood@@UAE_NXZ
+  00964ca0 RELOCATION_MATCH CAIStateGroup_StealStealableItem::?FindPEscapePoint@CAIStateGroup_StealStealableItem@@ABEPBVCThing@@_N@Z
+  00964da0 RELOCATION_MATCH CAIStateGroup_StealStealableItem::?IsRunnable@CAIStateGroup_StealStealableItem@@UAE_NXZ
+  009ff590 RELOCATION_MATCH CGraphicDataBank::?NotifyEntryAdded@CGraphicDataBank@@MAEXKKABV?$CArray@D@@@Z
+  009fd6c0 MATCH CGraphicDataBank::CGraphicHeader::??0CGraphicHeader@CGraphicDataBank@@QAE@XZ
+  00994930 RELOCATION_MATCH CMemoryDataInputStream::??0CMemoryDataInputStream@@QAE@PBXK@Z

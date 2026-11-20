@@ -1,0 +1,132 @@
+008fd000 new: 3
+    ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ TABLE:008fd000
+    ?PeekThingSearchTools@CWorld@@QBEABVCThingSearchTools@@XZ
+    ?PeekWorld@CThingManager@@QBEABVCWorld@@XZ
+00913f30 new: 24
+    ??$?RVCThingDeadCreature@@@CThingCompare_Nearest@@QBEPAVCThingDeadCreature@@PAV1@0@Z TABLE:00914130
+    ??$?RVCThingMarker@@@CThingCompare_Nearest@@QBEPAVCThingMarker@@PAV1@0@Z TABLE:009141f0
+    ??$GetPBestThing@VCThingFilter_HasScriptName@@VCThingCompare_Nearest@@VCThingMarker@@@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@ABVCThingCompare_Nearest@@PAP
+    ??$GetPBestThing@VCThingFilter_None@@VCThingCompare_Nearest@@VCThingDeadCreature@@@CThingSearchTools@@QBE_NABVCThingFilter_None@@ABVCThingCompare_Nearest@@PAPAVCThingDead
+    ??0?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0C3DVector@@QAE@MMM@Z
+    ??0CThingFilter_HasScriptName@@QAE@ABVCCharString@@@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??1CThingFilter_HasScriptName@@QAE@XZ
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??D?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QBEABQAVCClass@@XZ
+    ??E?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAEAAU01@XZ
+    ??GC3DVector@@QBE?BV0@ABV0@@Z
+    ??RCThingFilter_None@@QBE_NABVCThing@@@Z
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?GetSquaredMagnitude@C3DVector@@QBEMXZ
+    ?GetTypeFlags@CThing@@QBEKXZ
+    ?IsIncludedInThingScans@CThing@@QBE_NXZ TABLE:0048bc40
+    ?StatGetTypeFlags@CThingDeadCreature@@SIKXZ
+    ?StatGetTypeFlags@CThingMarker@@SIKXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?begin@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?end@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+00964ca0 new: 50
+    ??$?R$$CBVCThingMarker@@@CThingCompare_Nearest@@QBEPBVCThingMarker@@PBV1@0@Z TABLE:00964160
+    ??$GetAllLeafThings@VCThingMarker@@V?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@VCThingFilter_MarkerHasProperty@@@CThingSearchTools@@QBEXABVCThing
+    ??$GetPBestThing@VCThingFilter_MarkerHasProperty@@VCThingCompare_Nearest@@$$CBVCThingMarker@@@CThingSearchTools@@QBE_NABVCThingFilter_MarkerHasProperty@@ABVCThingCompare_
+    ??$_Construct@PAVCThingMarker@@PAV1@@std@@YAXPAPAVCThingMarker@@ABQAV1@@Z
+    ??$_Destroy@PAPAVCThingMarker@@@std@@YAXPAPAVCThingMarker@@0@Z
+    ??$__destroy@PAPAVCThingMarker@@PAV1@@std@@YAXPAPAVCThingMarker@@00@Z
+    ??$__destroy_aux@PAPAVCThingMarker@@@std@@YAXPAPAVCThingMarker@@0ABU__true_type@0@@Z
+    ??$fill_n@PAPAVCThingMarker@@IPAV1@@std@@YAPAPAVCThingMarker@@PAPAV1@IABQAV1@@Z
+    ??$max@I@std@@YAABIABI0@Z
+    ??0?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0?$_STLP_alloc_proxy@PAPAVCThingMarker@@PAV1@V?$allocator@PAVCThingMarker@@@std@@@std@@QAE@ABV?$allocator@PAVCThingMarker@@@1@PAPAVCThingMarker@@@Z
+    ??0?$_Vector_base@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QAE@ABV?$allocator@PAVCThingMarker@@@1@@Z
+    ??0?$allocator@PAVCThingMarker@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@PAVCThingMarker@@@std@@QAE@XZ
+    ??0?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QAE@ABV?$allocator@PAVCThingMarker@@@1@@Z
+    ??0C3DVector@@QAE@MMM@Z
+    ??0CThingFilter_MarkerHasProperty@@QAE@W4EMarkerProperty@@@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??0__true_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAPAVCThingMarker@@PAV1@V?$allocator@PAVCThingMarker@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QAE@XZ
+    ??1?$allocator@PAVCThingMarker@@@std@@QAE@XZ
+    ??1?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QAE@XZ
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??A?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QAEAAPAVCThingMarker@@I@Z
+    ??D?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QBEABQAVCClass@@XZ
+    ??E?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAEAAU01@XZ
+    ??GC3DVector@@QBE?BV0@ABV0@@Z
+    ?FindPEscapePoint@CAIStateGroup_StealStealableItem@@ABEPBVCThing@@_N@Z TABLE:00964ca0
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?GetSquaredMagnitude@C3DVector@@QBEMXZ
+    ?GetTypeFlags@CThing@@QBEKXZ
+    ?IsIncludedInThingScans@CThing@@QBE_NXZ TABLE:0048bc40
+    ?StatGetType@CThingMarker@@SIJXZ
+    ?StatGetTypeFlags@CThingMarker@@SIKXZ
+    ?_M_clear@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@IAEXXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?_M_insert_overflow@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@IAEXPAPAVCThingMarker@@ABQAV3@ABU__true_type@2@I_N@Z TABLE:0062e190
+    ?_M_set@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@IAEXPAPAVCThingMarker@@00@Z
+    ?__copy_trivial@std@@YAPAXPBX0PAX@Z
+    ?allocate@?$allocator@PAVCThingMarker@@@std@@QAEPAPAVCThingMarker@@IPBX@Z
+    ?begin@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?begin@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QAEPAPAVCThingMarker@@XZ
+    ?deallocate@?$allocator@PAVCThingMarker@@@std@@QAEXPAPAVCThingMarker@@I@Z
+    ?empty@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QBE_NXZ
+    ?end@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?push_back@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QAEXABQAVCThingMarker@@@Z
+    ?size@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QBEIXZ
+00964da0 new: 36
+    ??$?9$$CBVCThing@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@H@Z
+    ??$?9VCThing@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@H@Z
+    ??$IS_THING_ALIVE@V?$CIntelligentPointer@$$CBVCThing@@@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@@Z TABLE:0069ce20
+    ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z TABLE:004cc340
+    ??$PeekTC@$$CBVCTCAIScratchpad@@@CThing@@QBE_NW4ETCInterfaceType@@PAPBVCTCAIScratchpad@@@Z
+    ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@PBVCThing@@@Z TABLE:0056c860
+    ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z TABLE:004a96f0
+    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+    ??1?$CIntelligentPointer@VCThing@@@@UAE@XZ
+    ??4?$CIntelligentPointer@$$CBVCThing@@@@QAEAAV0@ABV0@@Z TABLE:005ed300
+    ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z TABLE:004a9760
+    ??C?$CIntelligentPointer@$$CBVCThing@@@@QBEPBVCThing@@XZ
+    ??C?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ TABLE:01237f1c
+    ??_7?$CIntelligentPointer@VCThing@@@@6B@ TABLE:01238c6c
+    ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+    ??_G?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z
+    ?Get@?$CIntelligentPointer@$$CBVCThing@@@@QBEPBVCThing@@XZ
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?IsDead@CThing@@QBE_NXZ
+    ?IsRunnable@CAIStateGroup_StealStealableItem@@UAE_NXZ
+    ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW
+    ?SetPointer@?$CIntelligentPointer@$$CBVCThing@@@@AAEXPBVCThing@@@Z
+    ?SetPointer@?$CIntelligentPointer@VCThing@@@@AAEXPBVCThing@@@Z
+    ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+    ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+    ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+    ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+    ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+    ?__stl_throw_out_of_range@std@@YAXPBD@Z
+    ?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCB
+    ?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBas
+    ?test@?$bitset@$0BBC@@std@@QBE_NI@Z TABLE:00410de0
+00994930 new: 1
+    ??0CMemoryDataInputStream@@QAE@PBXK@Z TABLE:00994930
+009fd6c0 new: 1
+    ?ReferenceCGraphicHeaderCtor@?A0x363b8d9a@@YAXAAVCDataInputStream@@@Z
+009ff590 new: 10
+    ??0CGraphicHeader@CGraphicDataBank@@QAE@XZ TABLE:009fd6c0
+    ??0CPixelFormat@@QAE@XZ
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ TABLE:00993b10
+    ??A?$CArray@VCGraphicInfo@@@@QAEAAVCGraphicInfo@@I@Z
+    ?GetAsCArray@?$CArray@D@@QBEPBDXZ
+    ?NotifyEntryAdded@CGraphicDataBank@@MAEXKKABV?$CArray@D@@@Z
+    ?begin@?$vector@VCGraphicInfo@@V?$allocator@VCGraphicInfo@@@std@@@std@@QAEPAVCGraphicInfo@@XZ
+    ?size@?$vector@DV?$allocator@D@std@@@std@@QBEIXZ
+    ?size@?$vector@VCGraphicInfo@@V?$allocator@VCGraphicInfo@@@std@@@std@@QBEIXZ

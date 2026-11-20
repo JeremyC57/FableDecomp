@@ -435,3 +435,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A->B: NF141 handed back (landing nf141 next). New agent NF144 (q6408 from NF141, q5199 / q5220 from NF136, q4802 from NF138).
 2026-11-20 B->A: Re-authored the regressed landed row 0x00589A30 CTCInventory::OpenPCMapMenu in Ego_d text (batches/2026-11-20_reauthor_00589a30); RELOCATION_MATCH again on today's headers, no header change.
 2026-11-20 A->B: NF142 handed back (landing nf142 after nf141). New agent NF145 (follow-ups owed by nf137 / nf140: CMemoryAllocator /d2inl sweep, 0x0122A9A0 and the copy-constructor rows onto headers, 0x009566C0, 0x008E8830).
+2026-11-20 A->B: nf141 landed (6 rows; q4994 / q5140 closed, q6182 done except the three landscape rows and the held 0x00994930). For B: 0x00BF3B60 (old landscape row) defines CMemoryDataInputStream(const void*, unsigned long) strongly, which blocks 0x00994930's PDB rename; if you re-author it, drop its local CMemoryDataInputStream.

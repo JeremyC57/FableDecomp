@@ -5,73 +5,69 @@
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Model: the landed sibling CAIStateGroup_BirdGroundWander::IsRunnable 0x009143E0 (same TU: interface 7 lookup, mode getter,
-//   frame-rate local) and GetRandomFlightPos 0x00912700; layout local: FlightPos +0x24 (C3DVector), FrameLastAte +0x30.
-// Shape: the two GetPBestThing<Filter, Compare> instantiations have same-TU out-only stand-in bodies that read the
-//   comparator's position by value, so neither the out pointer nor the comparator temporary escapes: VC7.1 then stores
-//   the out pointer's zero after loading the creature and loads the whole position before the stores (as retail).
-class CTCBase;
-
-class CMainGameComponent {
-protected:
-    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
-public:
-    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
-};
-extern const unsigned long NAVIGATOR_TYPE_A_STAR;   // 0x0129CBA4 (NF95 q11442: FableWin public ?NAVIGATOR_TYPE_A_STAR@@3KB, value 3; was g_flyingMode)
-
-class CWorld { public:
-    static long GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
-public:
-    static long __fastcall GetFrame();   // 0x0049D870
-};
-
+//   frame-rate local) and GetRandomFlightPos 0x00912700; layout: Ego_r.pdb FoodPos +0x24 (C3DVector), FrameLastFoundFood +0x30.
+// Shape: the two GetPBestThing<Filter, Compare, T> instances are compiled in this TU (CThingSearchTools.h BESTTHING_BODY, noinline):
+//   their visible bodies show that neither the out pointer nor the comparator temporary escapes, so VC7.1 stores the out
+//   pointer's zero after loading the creature and loads the whole position before the stores (as retail).
+// NF141 (2026-11-20, q4994 / q5140): ported onto the shared headers. PeekThingSearchTools 0x008FD000 now binds the PDB
+//   ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ (engine/CAIStateGroupBase.h _PEEK), was the pointer stand-in. The
+//   two searches 0x009142B0 / 0x00914330 are the real same-TU noinline GetPBestThing body of engine/CThingSearchTools.h (BESTTHING_BODY;
+//   retail compiled both in this TU, right after this function) under their PDB template spellings
+//   ??$GetPBestThing@VCThingFilter_None@@VCThingCompare_Nearest@@VCThingDeadCreature@@@CThingSearchTools@@QBE... (Ego_r.pdb 0x00960DD0 +
+//   FableWin.pdb 0x02B8CA30) and ??$GetPBestThing@VCThingFilter_HasScriptName@@VCThingCompare_Nearest@@VCThingMarker@@@CThingSearchTools@@QBE...
+//   (Ego_r.pdb 0x00960E50 + FableWin.pdb 0x02B8CBC0; filter 0x006A7E30 = the CThingFilter_DefName stand-in), were QAE stand-ins over made-up
+//   FindBest_* helpers. Local CMainGameComponent / CWorld / CThingPhysical / CThingFilter_None / CThingCompare_Nearest / CThingSearchTools /
+//   CAIBrain / CAIStateGroupBase / CAIStateGroup_FlyingThingBase models dropped for their shared headers; the row's own class (no header)
+//   now derives from engine/CAIStateGroup_FlyingThingBase.h, members in place with their Ego_r.pdb names (FoodPos +0x24,
+//   FrameLastFoundFood +0x30).
 #define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
-#include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGDEADCREATURE_STATTYPEFLAGS
+#define FABLE_RETAIL_CTHINGMARKER_STATTYPEFLAGS
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_GETFRAMESPERSECOND
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGATORTYPE
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_BODY
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
 #include "engine/C3DVector.h"
-class CThingPhysical : public CThing { public:
-    const C3DVector& PeekPos() const;       // 0x006A4D00
-};
-
-class CThingFilter_None { public: CThingFilter_None() {} };
-struct CThingFilter_DefName {
-    CCharString DefName;
-    CThingFilter_DefName(const CCharString& name) : DefName(name) {}
-};
-class CThingCompare_Nearest { public:
-    C3DVector Position;
-    CThingCompare_Nearest(const C3DVector& position) : Position(position) {}
-};
-class CThingSearchTools;
-CThingPhysical* FindBest_009142B0(CThingSearchTools* tools, float x, float y, float z);
-CThingPhysical* FindBest_00914330(CThingSearchTools* tools, const CThingFilter_DefName& filter, float x, float y, float z);
-class CThingSearchTools { public:
-    bool GetPBestThing(const CThingFilter_None& filter, const CThingCompare_Nearest& compare, CThingPhysical** out);      // 0x009142B0
-    bool GetPBestThing(const CThingFilter_DefName& filter, const CThingCompare_Nearest& compare, CThingPhysical** out);   // 0x00914330
-};
-#pragma auto_inline(off)
-// Same-TU out-only stand-ins for the two GetPBestThing<Filter, Compare> instantiations (compiled in the caller's TU):
-// they only write the out pointer, so VC7.1 knows the caller's out local does not escape.
-__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CThingFilter_None& filter, const CThingCompare_Nearest& compare, CThingPhysical** out)
-{
-    CThingPhysical* best = FindBest_009142B0(this, compare.Position.X, compare.Position.Y, compare.Position.Z);
-    if (best == 0)
-        return false;
-    *out = best;
-    return true;
-}
-__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CThingFilter_DefName& filter, const CThingCompare_Nearest& compare, CThingPhysical** out)
-{
-    CThingPhysical* best = FindBest_00914330(this, filter, compare.Position.X, compare.Position.Y, compare.Position.Z);
-    if (best == 0)
-        return false;
-    *out = best;
-    return true;
-}
-#pragma auto_inline(on)
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CThingDeadCreature.h"
+#include "engine/CThingMarker.h"
+#include "engine/CWorld.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CThingSearchTools.h"
+#include "engine/CThingFilter_None.h"
+#include "engine/CThingFilter_HasScriptName.h"
+#include "engine/CThingCompare_Nearest.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CTCCreatureNavigation.h"
+#include "engine/CAIStateGroup_FlyingThingBase.h"
+extern const unsigned long NAVIGATOR_TYPE_A_STAR;   // 0x0129CBA4 (NF95 q11442: FableWin public ?NAVIGATOR_TYPE_A_STAR@@3KB, value 3; was g_flyingMode)
 
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
@@ -83,73 +79,36 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     return seed % range;
 }
 
-// NF55 (2026-11-17): interface 7 is CTCCreatureNavigation (engine/CTCCreatureNavigation.h NAVIGATORTYPE: Ego_r.pdb / FableWin.pdb
-//   ?GetNavigatorType@CTCCreatureNavigation@@QBEKXZ, 0x006CB6A0), as the landed sibling 0x009143E0 reads it; it was the
-//   CTCCreatureModeManager::GetCurrentModeType stand-in.
-#define FABLE_RETAIL_CTCBASE
-#define FABLE_RETAIL_CTCCREATURENAVIGATION
-#define FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGATORTYPE
-#include "engine/CTCCreatureNavigation.h"
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThingPhysical* Creature;                   // +0x18
-};
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-protected:
-    const CWorld& PeekWorld() const;    // 0x008FCFA0
-public:
-    protected:
-    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
-    public:
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
-};
-struct CAIStateGroup_FlyingThingBase : CAIStateGroupBase {
-    unsigned char _14[0x10];
-    C3DVector FlightPos;                        // +0x24
-protected:
-    bool GetRandomFlightPos(const C3DVector& from, float radius, C3DVector& out, bool allowGround) const;   // 0x00912700 ?GetRandomFlightPos@CAIStateGroup_FlyingThingBase@@IBE_NABVC3DVector@@MAAV2@_N@Z (Ego_r: protected const)
-public:
-};
-struct CAIStateGroup_BirdFlyToFood : CAIStateGroup_FlyingThingBase {   // no shared header: the row's own class
-    unsigned long FrameLastAte;                 // +0x30
+struct CAIStateGroup_BirdFlyToFood : CAIStateGroup_FlyingThingBase {   // no shared header: the row's own class (Ego_r.pdb layout 0x34)
+    C3DVector FoodPos;                          // +0x24
+    unsigned long FrameLastFoundFood;           // +0x30
     virtual bool IsRunnable();                  // NF59 (q10505): Ego_r.pdb 0x00960BC0 + FableWin.pdb 0x02B8C310 ?IsRunnable@CAIStateGroup_BirdFlyToFood@@UAE_NXZ
-                                                //   (the public virtual override, reached through the vtable); was a non-virtual QAE member
 };
 
 bool CAIStateGroup_BirdFlyToFood::IsRunnable()
 {
     CTCCreatureNavigation* navigation;
-    PBrain->Creature->GetTC(TCI_NAVIGATION, &navigation);
+    GetCreature().GetTC(TCI_NAVIGATION, &navigation);
     if (navigation->GetNavigatorType() == NAVIGATOR_TYPE_A_STAR) {
         long framesPerSecond;
-        if ((FrameLastAte == 0
+        if ((FrameLastFoundFood == 0
              || (framesPerSecond = PeekWorld().GetFramesPerSecond(),
-                 CWorld::GetFrame() - FrameLastAte > (unsigned long)(framesPerSecond * 20)))
+                 CWorld::GetFrame() - FrameLastFoundFood > (unsigned long)(framesPerSecond * 20)))
             && WorldRandomRange(*GetPWorldSeed(), 100) < 74) {
             if (WorldRandomRange(*GetPWorldSeed(), 100) < 64) {
-                CThingPhysical* creature = PBrain->Creature;
-                CThingPhysical* corpse = 0;
-                if (PeekThingSearchTools()->GetPBestThing(CThingFilter_None(), CThingCompare_Nearest(creature->PeekPos()), &corpse)
-                    && GetRandomFlightPos(corpse->PeekPos(), 0.5f, FlightPos, true))
+                CThingAICreature& creature = GetCreature();
+                CThingDeadCreature* corpse = 0;
+                if (PeekThingSearchTools().GetPBestThing(CThingFilter_None(), CThingCompare_Nearest(creature.PeekPos()), &corpse)
+                    && GetRandomFlightPos(corpse->PeekPos(), 0.5f, FoodPos, true))
                     return true;
             }
-            CThingPhysical* food = 0;
+            CThingMarker* food = 0;
             bool found;
             {
                 CCharString name("BIRD_FOOD");
-                found = PeekThingSearchTools()->GetPBestThing(CThingFilter_DefName(name), CThingCompare_Nearest(PBrain->Creature->PeekPos()), &food);
+                found = PeekThingSearchTools().GetPBestThing(CThingFilter_HasScriptName(name), CThingCompare_Nearest(GetCreature().PeekPos()), &food);
             }
-            if (found && GetRandomFlightPos(food->PeekPos(), 1.5f, FlightPos, true))
+            if (found && GetRandomFlightPos(food->PeekPos(), 1.5f, FoodPos, true))
                 return true;
         }
     }

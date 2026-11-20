@@ -6,37 +6,30 @@
 //   clears the IsFlatAnimatedGraphic bit of this local. The catalog label "C3DAnimationSequenceData::C3DAnimationSequenceData"
 //   is propagated (that PDB class is 0x2C bytes with a char* first).
 // Shape: a member-initialiser list in declaration order (body assignments put PixelFormat's ctor first); CPixelFormat's inline ctor (FormatIndex = -1); the one-bit field is read-modify-written (`and dl,0FEh`).
-#define CPixelFormat CPixelFormatLayout
-#include "engine/CPixelFormat.h"
-#undef CPixelFormat
-class CPixelFormat : public CPixelFormatLayout {
-public:
-    CPixelFormat() { FormatIndex = -1; }
-};
+// NF141 (2026-11-20, q6182 one definition): was a strong (nodup) out-of-line definition over local CPixelFormat / CGraphicDataBank /
+//   CGraphicHeader models (the CPixelFormat one through a renaming include). The constructor is header-inline in retail (expanded in
+//   CGraphicDataBank::NotifyEntryAdded 0x009FF606..0x009FF650; this out-of-line copy is the COMDAT the WriteTextureToBank TU called), and the
+//   ported 0x009FF590 now emits the shared header's inline body as a pick-any COMDAT, which would clash (LNK2005) with a strong owner. So the
+//   owner is the ONE shared inline body of engine/CGraphicDataBank.h (CGraphicDataBank::CGraphicHeader, retail STATICBLOCKS branch) emitted
+//   pick-any through the nf86 / nf88 scaffolding below; no object defines a nodup copy.
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+#define FABLE_RETAIL_CGRAPHICDATABANK_CGRAPHICHEADER_LOAD
+#include "engine/CGraphicInfo.h"
 
-class CGraphicDataBank {
-public:
-    class CGraphicHeader {
-    public:
-        unsigned short Width;                       // +0x00
-        unsigned short Height;                      // +0x02
-        unsigned short Depth;                       // +0x04
-        unsigned short FrameWidth;                  // +0x06
-        unsigned short FrameHeight;                 // +0x08
-        unsigned short FrameCount;                  // +0x0a
-        CPixelFormat   PixelFormat;                 // +0x0c
-        unsigned char  TransparencyType;            // +0x10
-        unsigned char  MipmapLevels;                // +0x11
-        unsigned char  IsFlatAnimatedGraphic : 1;   // +0x12
-        unsigned long  FrameDataSize;               // +0x14
-        unsigned long  CompressedMipmapSizes[1];    // +0x18
-        CGraphicHeader();
-    };
-};
-
-CGraphicDataBank::CGraphicHeader::CGraphicHeader()
-    : Width(0), Height(0), Depth(0), FrameWidth(0), FrameHeight(0), FrameCount(1), PixelFormat(),
-      TransparencyType(0), MipmapLevels(0), IsFlatAnimatedGraphic(false), FrameDataSize(0)
+namespace {
+// Fidelity: scaffolding, not retail: the smallest out-of-line use of the header's inline CGraphicHeader constructor (a local header loaded
+// from a stream, the form retail's NotifyEntryAdded 0x009FF590 expands), so this object emits the constructor as a pick-any COMDAT.
+// Internal to this TU.
+void ReferenceCGraphicHeaderCtor(CDataInputStream& stream)
 {
-    CompressedMipmapSizes[0] = 0;
+    CGraphicDataBank::CGraphicHeader header;
+    header.Load(stream);
+}
 }

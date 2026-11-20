@@ -5091,9 +5091,6 @@ _Helper_9fc540@4	009fc170	009fc540
 ?erase@FrameArray@@QAEPAUGraphicInfoFrame@@PAU2@0@Z	00a00ed0	009febc0
 ?erase@GraphicArray@@QAEPAUGraphicInfo@@PAU2@0@Z	00a00e60	009febc0
 ?resize@FrameArray@@QAEXI@Z	00a016f0	009ff440
-??0MemoryInput@@QAE@PBXK@Z	00994930	009ff590
-?Load@GraphicHeader@@QAEXAAUInputStream@@@Z	009fd160	009ff590
-?NotifyEntryAdded@CBankFileNative@@UAEXKKABUCharArray@@@Z	009cbc20	009ff590
 ?CompleteLoad@CFrameData_009ff6b0@@QAEXXZ	009fc440	009ff6b0
 ?UploadFrame@CFrameData_009ff6b0@@QAE_NJ@Z	009ff220	009ff6b0
 ?Notify@Sub@@QAEXPAX@Z	00a01820	009ff8b0
@@ -10087,7 +10084,6 @@ __imp__GetSysColor@4	01440374	009a5490
 ??0CChunkedFileLoader@@QAE@PBD@Z	00aa7510	00a999b0
 ??_7C3DAnimFileLoader@@6B@	0129e060	00a999b0
 ?resize@CAnimVector@@QAEXIABUCAnimPair@@@Z	005e39e0	005dd440
-?GetAllLeafThings@CThingSearchTools@@QAEXABUCThingFilter_EscapePoint@@AAUCThingVector@@@Z	00964ef0	00964ca0
 __allrem	00bfec30	00937b10
 ??4CCountedPointer@@QAEAAU0@ABU0@@Z	00704580	00cfd6c0
 ??1CIsThingConscious@NScript@@UAE@XZ	00ef7ab0	00f1a990
@@ -17709,10 +17705,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?AIAction_MoveToThingProximity@CAIStateGroup_BanditKingCharge@@QAEJJV?$CIntelligentPointer@$$CBVCThing@@@@MABUCMoveOptions@@J_N2222@Z	0097e380	00961790
 ??0CIntelligentPointerConstThing@@QAE@PAVCThing@@@Z	004a96f0	00961e80
 ?GetPredictedTargetPosForThing@@YI?AVC3DVector@@PAVCThing@@0@Z	00961ab0	00961e80
-?GetPBestThing@CThingSearchTools@@QAE_NABUCThingFilter_EscapePoint@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z	009642d0	00964ca0
-?PeekThingSearchTools@CAIStateGroup_StealStealableItem@@QAEPAVCThingSearchTools@@XZ	008fd000	00964ca0
-?FindPEscapePoint@CAIStateGroupStealStealableItemMethods@@QAEPAVCThing@@_N@Z	00964ca0	00964da0
-?FindPStealableItem@CAIStateGroupStealStealableItemMethods@@QAEPAVCThing@@XZ	00964360	00964da0
 ?_M_insert_overflow@?$vector@PAVCThingMarker@@@std@@QAEXPAPAVCThingMarker@@ABQAV3@ABU__true_type@@K_N@Z	0062e190	00964ef0
 ??RCThingFilter_HasFreeActionPoint@@QBE_NABVCThing@@@Z	006a8b40	009650c0
 ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThing@@@Z	006a7590	009650c0
@@ -17860,7 +17852,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetBankHandle@CBankFile@@QAE?AVCCharString@@XZ	009cba40	009f8290
 ?ReadPixelFormat@CDataInputStreamReader@@QAE?AVCPixelFormat@@XZ	00994670	009fd160
 ?AddResource_009fc380@CResourceBank@@QAEXPAVCResource@@@Z	009fc380	009fe380
-??0GraphicInfo@@QAE@KPAVCGraphicDataBank@@ABUGraphicHeader@@@Z	009fd700	009ff590
 ?Lookup@CSoundSymbolTable@@QAEXABVCCharString@@PAJ@Z	00a38420	00a01920
 ?g_pRenderStateManager@@3PAVCRenderStateManager@@A	013cb508	00a044b0
 ?g_pRenderStateManager_013cb508@@3PAVCRenderStateManager@@A	013cb508	00a07980
@@ -18536,8 +18527,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?ConvertWorldMapCoordsToLocalCoords@CWorldMap@@QBE?AVC2DVector@@JABV2@@Z	004fc330	008006d0
 ?OnInitialActivate@CTCBase@@UAEXXZ	00686870	005d9c90
 ?HasInputFocus@CSystemManager@@QAE_NXZ	009a4fb0	00ab6100
-??1CDataStream@@UAE@XZ	00993b10	009ff590
-?push_back@GraphicArray@@QAEXXZ	00a01650	009ff590
 ?GetHenchmanIndex@CV_BodyGuardScript@@QAEJABVCCharString@@@Z	00e5e240	00e5e0c0
 ?GetWorldNames@CFrontendGameComponent@@AAEXXZ	00495890	00495fe0
 ?InitGraphics@CFrontendGameComponent@@AAE_NXZ	00494840	00496070
@@ -38110,9 +38099,6 @@ _kRadiansPerHz	012bed78	00c6c000
 ?minimapFilePathArtist@@3VCWideString@@A	013baf38	00829d90
 ?minimapFilePathProgmr@@3VCWideString@@A	013baf3c	00829d90
 ??_7CCreatureAction_PutDownThingAtTable@@6B@	01273c4c	00842a20
-?GetPBestThing@CThingSearchTools@@QAE_NABUCThingFilter_DefName@@ABVCThingCompare_Nearest@@PAPAVCThingPhysical@@@Z	00914330	00913f30
-?GetPBestThing@CThingSearchTools@@QAE_NABVCThingFilter_None@@ABVCThingCompare_Nearest@@PAPAVCThingPhysical@@@Z	009142b0	00913f30
-?PeekThingSearchTools@CAIStateGroupBase@@QAEPAVCThingSearchTools@@XZ	008fd000	00913f30
 ?WaitForTextToLoadThenSpeak@CAIStateGroup_OpinionReactionRoot@@AAE?AW4EAIActionReturn@@ABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@@Z	0095ed80	00982f70
 ??$__adjust_heap@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@Z	00a82be0	00a83570
 ??$__pop_heap@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@U12@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@H@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@00U10@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@PAH@Z	00a83570	00a84470
@@ -39873,3 +39859,13 @@ __imp__GlobalAlloc@8	0143fdd4	009c5310
 ?Initialise@CIndexBuffer@@QAEXKKJJJ@Z	00ac1f70	00bda360
 ?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ	00bda150	00bda360
 ?_M_insert_overflow@?$CRetailVector@UCScratchPool@CGPUScratchBufferTextureManager@@@@QAEXPAUCScratchPool@CGPUScratchBufferTextureManager@@ABU23@ABU__true_type@@K_N@Z	00f380e0	00f370c0
+??$GetPBestThing@VCThingFilter_HasScriptName@@VCThingCompare_Nearest@@VCThingMarker@@@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@ABVCThingCompare_Nearest@@PAPAVCThingMarker@@@Z	00914330	00913f30
+??$GetPBestThing@VCThingFilter_None@@VCThingCompare_Nearest@@VCThingDeadCreature@@@CThingSearchTools@@QBE_NABVCThingFilter_None@@ABVCThingCompare_Nearest@@PAPAVCThingDeadCreature@@@Z	009142b0	00913f30
+??$GetAllLeafThings@VCThingMarker@@V?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@VCThingFilter_MarkerHasProperty@@@CThingSearchTools@@QBEXABVCThingFilter_MarkerHasProperty@@AAV?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@@Z	00964ef0	00964ca0
+??$GetPBestThing@VCThingFilter_MarkerHasProperty@@VCThingCompare_Nearest@@$$CBVCThingMarker@@@CThingSearchTools@@QBE_NABVCThingFilter_MarkerHasProperty@@ABVCThingCompare_Nearest@@PAPBVCThingMarker@@@Z	009642d0	00964ca0
+?FindPEscapePoint@CAIStateGroup_StealStealableItem@@ABEPBVCThing@@_N@Z	00964ca0	00964da0
+?FindPStealableItem@CAIStateGroup_StealStealableItem@@ABEPAVCThing@@XZ	00964360	00964da0
+??0CGraphicInfo@@QAE@KPAVCGraphicDataBank@@ABVCGraphicHeader@1@@Z	009fd700	009ff590
+??1CDataStream@@UAE@XZ	00993b10	009ff590
+?Load@CGraphicHeader@CGraphicDataBank@@QAEXAAVCDataInputStream@@@Z	009fd160	009ff590
+?push_back@?$CArray@VCGraphicInfo@@@@QAEXXZ	00a01650	009ff590

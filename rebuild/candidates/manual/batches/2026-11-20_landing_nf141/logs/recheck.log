@@ -1,0 +1,7 @@
+addr       parity           behav  name
+008fd000   MATCH            PASS   CAIStateGroupBase::PeekThingSearchTools
+00913f30   RELOCATION_MATCH PASS   CAIStateGroup_BirdFlyToFood::IsRunnable
+00964ca0   RELOCATION_MATCH PASS   CAIStateGroup_StealStealableItem::FindPEscapePoint
+00964da0   RELOCATION_MATCH PASS   CAIStateGroup_StealStealableItem::IsRunnable
+009fd6c0   MATCH            PASS   CGraphicDataBank::CGraphicHeader::CGraphicHeader
+009ff590   RELOCATION_MATCH PASS   CGraphicDataBank::NotifyEntryAdded

@@ -20,6 +20,24 @@ class CThing;
 class CAIStateGroup_StealStealableItem : public CAIStateGroupBase {
 public:
     virtual void OnReplace();                                            // 0x009644F0
+#ifdef FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_ISRUNNABLE
+    // NF141 opt-in (q4994 / q5140, row 0x00964DA0): Ego_r.pdb 0x00989760 + FableWin.pdb 0x02C38320
+    // ?IsRunnable@CAIStateGroup_StealStealableItem@@UAE_NXZ (public virtual override, slot 11). No layout change.
+    virtual bool IsRunnable();                                           // 0x00964DA0
+#endif
+#if defined(FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_FINDPSTEALABLEITEM) || defined(FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_FINDPESCAPEPOINT)
+private:
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_FINDPSTEALABLEITEM
+    // NF141 opt-in (row 0x00964DA0, its caller): Ego_r.pdb 0x00988C30 + FableWin.pdb 0x02C3AE50
+    // ?FindPStealableItem@CAIStateGroup_StealStealableItem@@ABEPAVCThing@@XZ (private const). No layout change.
+    CThing* FindPStealableItem() const;                                  // 0x00964360
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_FINDPESCAPEPOINT
+    // NF141 opt-in (q4994 / q5140, rows 0x00964CA0 and its caller 0x00964DA0): Ego_r.pdb 0x00989660 + FableWin.pdb 0x02C3AED0
+    // ?FindPEscapePoint@CAIStateGroup_StealStealableItem@@ABEPBVCThing@@_N@Z (private const). No layout change.
+    const CThing* FindPEscapePoint(bool nearest) const;                  // 0x00964CA0
+#endif
 protected:
     CIntelligentPointer<CThing> PStealableItem;                          // +0x14
     CIntelligentPointer<const CThing> PEscapePoint;                      // +0x1c
@@ -30,7 +48,7 @@ protected:
     long PickUpActionID;                                                 // +0x34
     bool NeedsCleanup;                                                   // +0x38
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_StealStealableItem) == 0x3c);
+FABLE_STATIC_ASSERT_AT(33, sizeof(CAIStateGroup_StealStealableItem) == 0x3c);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

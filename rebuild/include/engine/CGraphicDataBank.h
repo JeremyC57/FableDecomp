@@ -184,8 +184,16 @@ private:
 FABLE_STATIC_ASSERT_AT(82, sizeof(CGraphicDataBank)==0x30c);
 #if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE) || defined(FABLE_RETAIL_CGRAPHICINFO_SPRITE)
 // Layout: original PDB nested class,28 bytes; native009fd700 copies7 words.
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_CGRAPHICHEADER_LOAD
+class CDataInputStream;
+#endif
 class CGraphicDataBank::CGraphicHeader {
 public:
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_CGRAPHICHEADER_LOAD
+ // NF141 opt-in (q6182, row 0x009FF590 CGraphicDataBank::NotifyEntryAdded): Ego_r.pdb 0x00B568D0
+ // ?Load@CGraphicHeader@CGraphicDataBank@@QAEXAAVCDataInputStream@@@Z (public; out of line in retail at 0x009FD160). No layout change.
+ void Load(CDataInputStream& stream);                                   // 0x009FD160
+#endif
  unsigned short Width,Height,Depth,FrameWidth,FrameHeight,FrameCount;
  CPixelFormat PixelFormat;
  unsigned char TransparencyType,MipmapLevels,IsFlatAnimatedGraphic:1;
