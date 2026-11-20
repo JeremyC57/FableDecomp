@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	Ego_d.pdb symbol ?DELTA_NOTIONAL_ZERO@@3MB (ghidra_out/egod_carved_names.tsv) and the shared engine/C3DVector.h / GFIsNonZero.h, which declare it at 0x0129BA3C; already handed back by p25A (0x0070E8B0 batch). Labels-DB respell only	labels DB '?g_NormaliseEpsilon@@3MB' (vland RELOC_NAME warning here)

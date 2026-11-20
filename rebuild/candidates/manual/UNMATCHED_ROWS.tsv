@@ -902,7 +902,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00e49020	NScript::CV_BanditTollScript::CTauntingBandit	Main	2096	parked	DIFFER(2276v2084)	2	rebuild/candidates/manual/pending/2026-11-05_linux_hand791/differ/00e49020.test.cpp	original
 00e4fa20	NScript::CV_BeardyBaldyScript	Main	1760	parked	DIFFER(1763v1756)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand780/differ/00e4fa20.test.cpp	original
 00e50910	NScript::CV_BeardyBaldyScript	WatchForQuestCardConditions	1328	parked	DIFFER(1375v1328)	5	rebuild/candidates/manual/pending/2026-11-07_linux_hand835/differ/00e50910.cpp	original
-00e5e350	CV_BodyGuardScript	HenchmanCommentary	592	reserved (acctB p25C, 2026-11-20)	DIFFER(584v585)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e5e350.cpp	original
 00e5e5a0	CV_BodyGuardScript	MakeHenchmanPerformIdleComment	1584	parked	DIFFER(1594v1580)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e5e5a0.cpp	original
 00e70460	NScript::CV_DemonDoorsScript::CDF_BeEvil	Main	1680	parked	DIFFER(1651v1665)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand315/differ/00e70460.cpp	original
 00e7de60	CFisherman	IdleChatter	384	parked	DIFFER(356v372)	1	rebuild/candidates/manual/pending/2026-10-21_linux_hand245/differ/00e7de60.cpp	original

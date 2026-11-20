@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00e5e350   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00e5e350   RELOCATION_MATCH PASS   HenchmanCommentary
+
+WINS: 1
+  00e5e350 RELOCATION_MATCH NScript::CV_BodyGuardScript::?HenchmanCommentary@CV_BodyGuardScript@NScript@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVBodyGuardScript_HenchmanCommentary_00e5e350

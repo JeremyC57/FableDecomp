@@ -39564,3 +39564,4 @@ _z_inflateInit_	00c02310	00a3a840
 ?OnSubNodeLoaded@CLandscapeBackgroundTreeNode@@QAEXXZ	00bf6750	00bf84c0
 ?StartLoading@CLandscapeBackgroundLoadTask@@QAEXXZ	00bf6410	00bf84c0
 ?TestIfLoadTaskCanBeAborted@CLandscapeBackgroundTreeNode@@QAE_NJ_N@Z	00bf6490	00bf84c0
+?MakeHenchmanPerformIdleComment@CV_BodyGuardScript@NScript@@QAE_NXZ	00e5e5a0	00e5e350
