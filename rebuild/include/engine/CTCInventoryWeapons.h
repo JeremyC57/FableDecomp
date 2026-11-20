@@ -136,6 +136,13 @@ public:
     NUISystem::CComponent* PRangedList;                                  // +0x190
     NUISystem::CComponent* PMeleeList;                                   // +0x194
     std::list<NUISystem::CComponent*> AvailableWeaponsEntries;           // +0x198
+#ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_REMOVEALLCONFISCATEDITEMS
+// NF158 opt-in (row 0x005C2E68): the slot-74 override (vtable 0x01253FF4; Ego_r / FableWin ?RemoveAllConfiscatedItems@CTCInventoryWeapons@@UAEXXZ).
+// Declaration only (no layout change; the vtable exists).
+public:
+    virtual void RemoveAllConfiscatedItems();  // slot 74, 0x005C2E68
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.

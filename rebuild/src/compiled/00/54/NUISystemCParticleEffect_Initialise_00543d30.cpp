@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00543D30, length 192 bytes. Virtual: slot 43 of NUISystem::CParticleEffect's
 // vtable 0x0124735C.
 // Callees: CChangingStateComponent::Initialise @ 0x0052C730, virtual slot 135 GetState (x2),
-//          CManager::GetInstance @ 0x0041E5F2 and its slot 36 GetLayer, CParticleEmitterManager::Get
+//          CManager::GetInstance @ 0x0041E5F2 and its slot 36 GetLayer, NParticleEngine::GetParticleEmitterManager
 //          @ 0x00AEAAF0 (manifest label "GFGetPreMainMemoryUsed" is a byte-twin), Create2DEmitter @ 0x00AEB790.
 // Layout (no PDB record for NUISystem::CParticleEffect): +0x54 the component's 2D position, +0x12f its depth
 // (signed char), +0x144 the current state, +0x15c the emitter, +0x160 the particle effect index; the state
@@ -31,12 +31,19 @@ public:
 }
 using NParticleEngine::CParticleEmitter;
 
+// NF158 (q4754, q4977 / q11719): in-place respells of the row's existing local model (same class token, now in its PDB namespace).
+//   0x00AEAAF0 is Ego_r.pdb / FableWin.pdb ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ (free
+//   __fastcall, reference return; was the stand-in static CParticleEmitterManager::Get()); 0x00AEB790 is Ego_r.pdb 0x00AAFA80 /
+//   FableWin.pdb 0x02EF6200 ?Create2DEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC2DVector@@...
+//   (position by const reference; its self row's leaf).
+namespace NParticleEngine {
 class CParticleEmitterManager {
 public:
-    static CParticleEmitterManager* Get();                                                       // 0x00AEAAF0 (returns the instance @ 0x013D2E1C)
-    CParticleEmitter* Create2DEmitter(long effect, const C2DVector* position, EEngine2DLayer layer,
+    CParticleEmitter* Create2DEmitter(long effect, const C2DVector& position, EEngine2DLayer layer,
                                       bool start, const CRightHandedSet& axes);                 // 0x00AEB790
 };
+CParticleEmitterManager& FABLE_FASTCALL GetParticleEmitterManager();                              // 0x00AEAAF0 (returns the instance @ 0x013D2E1C)
+}
 
 namespace NUISystem {
 class CManager {
@@ -239,7 +246,7 @@ public:
     long              EffectIndex;                 // +0x160
     FABLE_FORCEINLINE void CreateEmitter()
     {
-        Emitter = CParticleEmitterManager::Get()->Create2DEmitter(EffectIndex, &Position,
+        Emitter = NParticleEngine::GetParticleEmitterManager().Create2DEmitter(EffectIndex, Position,
                       CManager::GetInstance()->GetLayer(Depth), true, CRightHandedSet());
     }
     virtual void Initialise();

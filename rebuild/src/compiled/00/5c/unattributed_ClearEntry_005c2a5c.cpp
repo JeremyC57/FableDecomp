@@ -14,16 +14,17 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-namespace N_005c04bf { struct CCountedPointer {                    // 8 bytes: object, count block
-    void* m_pObject;
-    void* m_pBlock;
-    CCountedPointer() : m_pObject(0), m_pBlock(0) { }
-    ~CCountedPointer();                     // 0x005C04BF
-}; } using N_005c04bf::CCountedPointer;
+// NF158 (q5208): the counted pointer is the shared engine/CCountedPointer.h CCountedPointer<NInventory::CPerItemData>; its inline
+//   destructor is the out-of-line COMDAT 0x005C04BF here (Ego_r.pdb / FableWin.pdb ??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ,
+//   the self row's leaf; the 0x14-byte entry has NInventory::CItem's shape, PPerItemData at +8; this row is slot 1 of the
+//   CPersistContext_TransferableVector<NInventory::CItem> vtable 0x01253CA4 per the landed 0x005C0E41 / 0x005C20D8); was the local
+//   stand-in N_005c04bf::CCountedPointer.
+#include "engine/CCountedPointer.h"
+namespace NInventory { class CPerItemData; }
 
 class CSoundPair { public:                         // 0x10 bytes
     long            m_sound;                // +0x00
-    CCountedPointer m_pSample;              // +0x04
+    CCountedPointer<NInventory::CPerItemData> m_pSample;   // +0x04
     long            m_volume;               // +0x0c
     CSoundPair() : m_sound(0), m_pSample(), m_volume(0) { }
 };

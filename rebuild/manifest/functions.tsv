@@ -40181,8 +40181,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aeb600	CreateInterpolatedEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	6	CParticleEmitterManager *,CParticleEmitter *,CParticleEmitter *,float,C3DVector *,CRightHandedSet *	1	yes	accepted									
 00aeb6d0	CreateEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	5	CParticleEmitterManager *,long,C3DVector *,bool,CRightHandedSet *	1	yes	accepted									
 00aeb790	Create2DEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	6	CParticleEmitterManager *,long,C2DVector *,EEngine2DLayer,bool,CRightHandedSet *	1	yes	accepted									
-00aeb850	CreateInterpolatedEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	7	CParticleEmitterManager *,CParticleEmitter *,long,float,C3DVector *,CRightHandedSet *,bool	1	yes	accepted									
-00aeb8c0	CreateInterpolatedEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	7	CParticleEmitterManager *,long,long,float,C3DVector *,CRightHandedSet *,bool	1	yes	accepted									
+00aeb850	CreateInterpolatedEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	7	CParticleEmitterManager *,CParticleEmitter *,long,float,C3DVector *,CRightHandedSet *,bool	1	yes	accepted									
+00aeb8c0	CreateInterpolatedEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	7	CParticleEmitterManager *,long,long,float,C3DVector *,CRightHandedSet *,bool	1	yes	accepted									
 00aeb940	CParticleEmitterList	NParticleEngine::CParticleEmitterList	unknown	undefined	0		0	yes	accepted									
 00aeb970	~list	std::list<T_00aeb970>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CActiveFile_OnReadFinished_00aeb970.cpp
 00aeb990	PreparePrimitives	NParticleEngine::CParticleEmitterManager	__thiscall	void	2	CParticleEmitterManager *,CEnginePrimitivePrepareInfo *	1	yes	accepted									

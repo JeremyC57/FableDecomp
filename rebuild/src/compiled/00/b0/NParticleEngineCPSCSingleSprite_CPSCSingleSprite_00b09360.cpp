@@ -4,7 +4,7 @@
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B09360, length 321 bytes (padded to 336); vtable 0x0129FB84.
 // Callees: NParticleEngine::CPSCSplineBase::CPSCSplineBase() @ 0x00B21530 (base), CEnginePrimitiveSpriteTrail ctor @ 0x00B09F90
-//          (manifest label "C3DPrimitive2"), CParticleEmitterManager::Get() @ 0x00AEAAF0 (returns the instance @ 0x013D2E1C;
+//          (manifest label "C3DPrimitive2"), NParticleEngine::GetParticleEmitterManager() @ 0x00AEAAF0 (returns the instance @ 0x013D2E1C;
 //          manifest label "GFGetPreMainMemoryUsed" is a byte twin) four times with the result unused.
 // Layout: PDB (Ego_r) CPSCSingleSprite (0x148) members sit 4 bytes lower in retail (retail CPSCSplineBase is 0x34, its spline
 //   4 bytes smaller): SpriteBankIndex +0x34, Start/Mid/EndColour +0x38/+0x3c/+0x40, AnimationTimeSecs +0x44 ... StayWithEmitter
@@ -12,13 +12,17 @@
 //   retail), PrimIDList +0x12c (12-byte CArray). No engine/ header exists for the class.
 // Shape: the init list builds the colours (CRGBColour ctor storing R, G, B, A), the three Use*Colour bools, the zeroed Offset,
 //   the trail primitive and the empty CArray; the body then assigns defaults. The blend-mode/alignment defaults are read as
-//   enumerators through the emitter manager instance (`CParticleEmitterManager::Get()->X`), which keeps each Get() call even
+//   header inline const getters through the emitter manager (`GetParticleEmitterManager().GetDefaultX()`), which keeps each Get() call even
 //   though the value is a constant; the calls split the body into the store groups retail shows.
-class CParticleEmitterManager {
-public:
-    enum { SPRITE_ALIGN_DEFAULT = 0, BLEND_MODE_DEFAULT = 2, BLEND_OP_DEFAULT = 0, TRAIL_BLEND_OP_DEFAULT = 0 };
-    static CParticleEmitterManager* Get();          // 0x00AEAAF0
-};
+// NF158 (q4754): 0x00AEAAF0 is Ego_r.pdb / FableWin.pdb ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ
+//   (free __fastcall, reference return), declared by engine/CParticleEmitterManager.h (BULLETTIME_PASS23); the four defaults are the
+//   header's inline const GetDefaultAlignmentMode (FableWin 0x02F26960) / GetDefaultBlendMode / GetDefaultBlendOp (FableWin 0x02F26930 /
+//   0x02F26950), spelled as the landed sibling ctors CPSCRenderMesh 0x00B012E0 and CPSCDecalRenderer 0x00B1DFD0 spell them; was a local
+//   CParticleEmitterManager model (static Get() and an enum of the defaults), dropped.
+#define FABLE_RETAIL_CPARTICLEEMITTERMANAGER_BULLETTIME_PASS23
+#define FABLE_RETAIL_CPARTICLEEMITTERMANAGER_DEFAULTBLEND
+#define FABLE_RETAIL_CPARTICLEEMITTERMANAGER_DEFAULTALIGNMENT
+#include "engine/CParticleEmitterManager.h"
 
 class CRGBColour { public:
     unsigned char B;                                // +0
@@ -118,14 +122,14 @@ CPSCSingleSprite::CPSCSingleSprite()
     FaceMe3D = false;
     CrossedSprites = false;
     ForceAnimationTime = false;
-    SpriteAlignment = CParticleEmitterManager::Get()->SPRITE_ALIGN_DEFAULT;
+    SpriteAlignment = GetParticleEmitterManager().GetDefaultAlignmentMode();
     RotateAroundCentre = false;
     NoCrossedSprites = 2;
     InitialAngle = 0.0f;
-    BlendMode = CParticleEmitterManager::Get()->BLEND_MODE_DEFAULT;
-    BlendOp = CParticleEmitterManager::Get()->BLEND_OP_DEFAULT;
+    BlendMode = GetParticleEmitterManager().GetDefaultBlendMode();
+    BlendOp = GetParticleEmitterManager().GetDefaultBlendOp();
     TrailBlendMode = 4;
-    TrailBlendOp = CParticleEmitterManager::Get()->TRAIL_BLEND_OP_DEFAULT;
+    TrailBlendOp = GetParticleEmitterManager().GetDefaultBlendOp();
     TrailWidth = 1.0f;
     FadeInEndInteger = 0;
     AlphaFadeMinimum = 0.0f;

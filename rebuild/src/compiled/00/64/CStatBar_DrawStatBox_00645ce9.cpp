@@ -7,7 +7,7 @@
 //   CDisplayManager::GetRenderTargetDimensions 0x009BEDC0 (display @ 0x013B8390), CFontBank::GetStringWidth 0x0048DA62
 //   (result unused), the bank's virtual slots +0x5c / +0x60, CBaseIntelligentPointer::GetPItem 0x00A01B50, CParticleEmitter
 //   Kill 0x00AEE8C0 / Set2DPosition 0x00AED090, CIntelligentPointer<T>(T*) 0x00655318 / operator= 0x0065533C,
-//   ~CBaseIntelligentPointer 0x00A01C10, CRightHandedSet(up, forward) 0x00487050, CParticleEmitterManager::Get 0x00AEAAF0 /
+//   ~CBaseIntelligentPointer 0x00A01C10, CRightHandedSet(up, forward) 0x00487050, NParticleEngine::GetParticleEmitterManager 0x00AEAAF0 /
 //   Create2DEmitter 0x00AEB790. Float 0.5f 0x0122F59C, 2^32 0x0122DCB4.
 // Layout: as the landed ClearGraphics 0x00645F8D (PrimitiveHandles +0x30, Effects +0x3c) and DrawMoney: def pointer +4
 //   (its effect offset C2DVector at +0x528), last effect +0x5c; CPlayerGuiDef (retail) +0x2c8 float, +0x2cc / +0x2e4 graphic
@@ -62,11 +62,16 @@ class CParticleEmitter { public:
     void Kill();                                                        // 0x00AEE8C0
     void Set2DPosition(const C2DVector* position, EEngine2DLayer layer);   // 0x00AED090
 };
+// NF158 (q4754, q4977 / q11719): in-place respells of the row's existing local model. 0x00AEAAF0 is Ego_r.pdb / FableWin.pdb
+//   ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ (free __fastcall, reference return; was the
+//   stand-in static CParticleEmitterManager::Get()); 0x00AEB790 takes the position as `const C2DVector&` (Ego_r.pdb 0x00AAFA80 /
+//   FableWin.pdb 0x02EF6200 ?Create2DEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC2DVector@@...;
+//   its self row's leaf), not a pointer.
 class CParticleEmitterManager { public:
-    static CParticleEmitterManager* Get();                              // 0x00AEAAF0
-    CParticleEmitter* Create2DEmitter(long effect, const C2DVector* position, EEngine2DLayer layer, bool start,
+    CParticleEmitter* Create2DEmitter(long effect, const C2DVector& position, EEngine2DLayer layer, bool start,
                                       const CRightHandedSet& axes);     // 0x00AEB790
 };
+CParticleEmitterManager& FABLE_FASTCALL GetParticleEmitterManager();   // 0x00AEAAF0
 }
 class CBaseObject;
 class CBaseObjectPointer;
@@ -139,7 +144,7 @@ void CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraph
     if (effect > 0) {
         if (!(*Effects.begin()).GetPItem()) {
             CIntelligentPointer<NParticleEngine::CParticleEmitter> emitter(
-                NParticleEngine::CParticleEmitterManager::Get()->Create2DEmitter(effect, &(textPos + Def->EffectOffset),
+                NParticleEngine::GetParticleEmitterManager().Create2DEmitter(effect, textPos + Def->EffectOffset,
                     ENGINE_2D_LAYER_STAT_BOX, true, CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), C3DVector(0.0f, 1.0f, 0.0f))));
             *Effects.begin() = emitter;
         }

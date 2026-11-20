@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF5010, length 128 bytes.
 // Leaf: AllocateParticle
 // Callees: CParticle's class operator new @ 0x00AF86C0 (`__fastcall(size)`, the particle pool), CParticle::CParticle @ 0x00AF7A90,
-// the particle-emitter manager getter @ 0x00AEAAF0 (manifest "GFGetPreMainMemoryUsed" is propagated),
+// NParticleEngine::GetParticleEmitterManager @ 0x00AEAAF0 (manifest "GFGetPreMainMemoryUsed" is propagated),
 // CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterParticles(CIEngine*) @ 0x00AEAF20 (on the manager's list at +0 with
 // its engine pointer at +0x1014), malloc @ 0x00BFEA0E (the 12-byte list node).
 // Layout: Particles (STLport list<CParticle*>, one header word) +0x1c, NoActiveParticles +0x48 (retail CParticleSystem).
@@ -17,12 +17,19 @@ struct CParticleEmitterList {
     void* m_activeHeader;                   // +0x00 (STLport list header)
     void ClearLowestPriorityNonVisibleEmitterParticles(CIEngine* engine);   // 0x00AEAF20
 };
-struct CParticleEmitterManager {
+// NF158 (q4754): in-place respell of the row's existing local model (same class token, now `class` in its PDB namespace).
+//   0x00AEAAF0 is Ego_r.pdb / FableWin.pdb ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ (free
+//   __fastcall, reference return); FableWin.pdb names the inline CParticleEmitterManager::ClearLowestPriorityNonVisibleEmitterParticles() expanded here
+//   (`ActiveEmitters.ClearLowestPriorityNonVisibleEmitterParticles(PEngine)`). The local CParticleEmitterList stays global: its self row 0x00AEAF20 still defines the
+//   non-namespaced spelling this row binds (moving it would split the address).
+namespace NParticleEngine {
+class CParticleEmitterManager { public:
     CParticleEmitterList ActiveEmitters;    // +0x0000
     unsigned char        _body[0x1010];     // +0x0004
     CIEngine*            PEngine;           // +0x1014
 };
-CParticleEmitterManager* GetParticleEmitterManager();   // 0x00AEAAF0
+CParticleEmitterManager& __fastcall GetParticleEmitterManager();   // 0x00AEAAF0
+}
 namespace NParticleEngine {
 class CParticle { public:
     unsigned char _particle[0x9c];
@@ -71,8 +78,8 @@ CParticle* CParticleSystem::AllocateParticle()
 {
     CParticle* particle = new CParticle;
     if (!particle) {
-        CParticleEmitterManager* manager = GetParticleEmitterManager();
-        manager->ActiveEmitters.ClearLowestPriorityNonVisibleEmitterParticles(manager->PEngine);
+        CParticleEmitterManager& manager = GetParticleEmitterManager();
+        manager.ActiveEmitters.ClearLowestPriorityNonVisibleEmitterParticles(manager.PEngine);
         particle = new CParticle;
     }
     if (particle) {

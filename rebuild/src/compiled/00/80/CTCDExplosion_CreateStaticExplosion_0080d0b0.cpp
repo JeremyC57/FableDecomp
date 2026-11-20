@@ -5,7 +5,7 @@
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 //
 // Retail 0x0080D0B0, 580 bytes, plain `ret` (8-aligned frame).
-// Callees: CParticleEmitterManager::Get @ 0x00AEAAF0 (static), __ftol2 @ 0x00BFEA70, C3DVector::AccurateNormalise @ 0x00A14440, the
+// Callees: NParticleEngine::GetParticleEmitterManager @ 0x00AEAAF0 (__fastcall), __ftol2 @ 0x00BFEA70, C3DVector::AccurateNormalise @ 0x00A14440, the
 // explosion def's emitter spacing @ 0x0080C190, CTCDParticleEmitter::Create @ 0x006E11F0 (static __fastcall), CTCBase::GetWorld
 // @ 0x00686A70, CWorld::GetFrame @ 0x0049D870 (static), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 /
 // GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10 (vtable 0x01238C6C), the emitter vector's push_back @ 0x00789515,
@@ -54,9 +54,13 @@ class CExplosionDef { public:
     long  ShakeDuration;                                     // +0x6c
     float GetEmitterSpacing(float radius) const;             // 0x0080C190
 };
-struct CParticleEmitterManager {
-    static CParticleEmitterManager* Get();                   // 0x00AEAAF0
-};
+// NF158 (q4754): 0x00AEAAF0 is Ego_r.pdb / FableWin.pdb ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ
+//   (free __fastcall in NParticleEngine, reference return; the declaration of engine/CParticleEmitterManager.h, which this row cannot
+//   include because it models C3DVector locally); was the stand-in static CParticleEmitterManager::Get() (a local class model, dropped).
+namespace NParticleEngine {
+class CParticleEmitterManager;
+CParticleEmitterManager& FABLE_FASTCALL GetParticleEmitterManager();   // 0x00AEAAF0
+}
 // NF122 (2026-11-20, q6226): 0x006E11F0 is Ego_r.pdb / FableWin.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JJMABVC3DVector@@_N@Z
 //   (static __fastcall; Ego_r 0x00535970, FableWin 0x01D62B20), declared by engine/CTCDParticleEmitter.h (partial mode METHODS_ONLY:
 //   this row models CThing locally); was the stand-in static CParticleEmitterManager::CreateEmitter(long, long, float, const C3DVector&, long).
@@ -101,7 +105,7 @@ class CTCDExplosion : public CTCDriverBase { public:
 void CTCDExplosion::CreateStaticExplosion()
 {
     float radius = DamageRadius;
-    CParticleEmitterManager* manager = CParticleEmitterManager::Get();
+    NParticleEngine::CParticleEmitterManager& manager = NParticleEngine::GetParticleEmitterManager();
     if (PExplosionDef->EmitterDefIndex >= 0) {
         long count = (long)((EndPos - StartPos).Magnitude() / radius + 1.0f);
         C3DVector direction = EndPos - StartPos;

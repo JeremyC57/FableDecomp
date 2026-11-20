@@ -1,0 +1,52 @@
+00543d30 new: 0
+00543df0 new: 0
+005c0e41 new: 2
+    ??0?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ
+    ??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ TABLE:005c04bf
+005c1390 new: 2
+    ??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ TABLE:005c04bf
+    ??_G?$CCountedPointer@VCPerItemData@NInventory@@@@QAEPAXI@Z
+005c20d8 new: 2
+    ??0?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ
+    ??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ TABLE:005c04bf
+005c2a5c new: 2
+    ??0?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ
+    ??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ TABLE:005c04bf
+005c2e68 new: 0
+00645ce9 new: 0
+006e11f0 new: 0
+006e13e0 new: 0
+006e14e0 new: 0
+0080d0b0 new: 0
+0088f4a0 new: 2
+    ?EnableDecals@CGameScriptInterface@@UBEX_N@Z
+    ?SetEnableDecals@CParticleEmitterManager@NParticleEngine@@QAEX_N@Z
+00aeb850 new: 1
+    ?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@PBV32@JMABVC3DVector@@ABVCRightHandedSet@@_N@Z TABLE:00aeb850
+00aeb8c0 new: 1
+    ?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z TABLE:00aeb8c0
+00af1860 new: 4
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+    ?DeleteData@?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@SIXPAX@Z TABLE:00ae91d0
+    ?ReleaseData@?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAEXXZ
+    ?Reset@?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAEXPAVCParticleEmitter@NParticleEngine@@@Z TABLE:00af1860
+00af5010 new: 0
+00af5380 new: 0
+00b09360 new: 3
+    ?GetDefaultAlignmentMode@CParticleEmitterManager@NParticleEngine@@QBE?BJXZ
+    ?GetDefaultBlendMode@CParticleEmitterManager@NParticleEngine@@QBE?BJXZ
+    ?GetDefaultBlendOp@CParticleEmitterManager@NParticleEngine@@QBE?BJXZ
+00b0ca90 new: 3
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@U12@V?$allocator@U?$_List_node@V?$CIntelligentPointer@VCParticleE
+    ??1?$allocator@U?$_List_node@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAE@XZ
+    ?ReferenceCPSCUpdateNormalDestructor@?A0x75ef987d@@YAXPAVCPSCUpdateNormal@NParticleEngine@@@Z
+00b0f990 new: 9
+    ??1?$CParticleUpdateParamCallback@KK@NParticleEngine@@UAE@XZ
+    ??1?$_List_base@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@U12@V?$allocator@U?$_List_node@V?$CIntelligentPointer@VCParticleE
+    ??1?$allocator@U?$_List_node@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAE@XZ
+    ??1?$list@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAE@XZ
+    ??1CPSCBase@NParticleEngine@@UAE@XZ
+    ??1CPSCUpdateNormal@NParticleEngine@@UAE@XZ
+    ?ReferenceCPSCUpdateNormalVtable@?A0xf146e7b1@@YAXPAVCPSCUpdateNormal@NParticleEngine@@@Z
+    ?deallocate@?$allocator@U?$_List_node@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXPAU?$_List_node@V?$CIntelligentPointer@VCParticleEmitter

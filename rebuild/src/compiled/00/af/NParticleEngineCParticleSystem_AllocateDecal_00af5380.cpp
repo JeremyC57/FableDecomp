@@ -4,7 +4,7 @@
 // Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF5380, length 176 bytes (manifest label correct).
 // Callees: the particle memory allocator @ 0x00AF8B00 (__fastcall size; label "operator_new" -- CDecal's class operator
-//          new), CParticleEmitterManager::Get @ 0x00AEAAF0, CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterDecals
+//          new), NParticleEngine::GetParticleEmitterManager @ 0x00AEAAF0, CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterDecals
 //          (CIEngine*) @ 0x00AEAF80 (the manager's list at +0, its engine word at +0x1014), malloc @ 0x00BFEA0E (list node).
 // Layout: Ego_r.pdb NParticleEngine::CDecal (0x7c; retail 0x74 with 12-byte CArrays), vtable 0x0129F4FC: SizeFactor[2]
 // +0x38, AlphaFactor[2] +0x40, GraphicFrame +0x48, UpdateTimer +0x4c, MinLife +0x50, flag byte +0x58 (bit 1
@@ -32,13 +32,20 @@ class CParticleEmitterList {
 public:
     void ClearLowestPriorityNonVisibleEmitterDecals(CIEngine* engine);   // 0x00AEAF80
 };
+// NF158 (q4754): in-place respell of the row's existing local model (same class token, now `class` in its PDB namespace).
+//   0x00AEAAF0 is Ego_r.pdb / FableWin.pdb ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ (free
+//   __fastcall, reference return); FableWin.pdb names the inline CParticleEmitterManager::ClearLowestPriorityNonVisibleEmitterDecals() expanded here
+//   (`ActiveEmitters.ClearLowestPriorityNonVisibleEmitterDecals(PEngine)`). The local CParticleEmitterList stays global: its self row 0x00AEAF80 still defines the
+//   non-namespaced spelling this row binds (moving it would split the address).
+namespace NParticleEngine {
 class CParticleEmitterManager {
 public:
     CParticleEmitterList ActiveEmitters;           // +0x0000
     unsigned char        _pad[0x1010];
     CIEngine*            PEngine;                  // +0x1014
-    static CParticleEmitterManager* Get();         // 0x00AEAAF0
 };
+CParticleEmitterManager& FABLE_FASTCALL GetParticleEmitterManager();   // 0x00AEAAF0
+}
 
 void* __fastcall AllocateParticleMemory_00af8b00(unsigned int size);   // 0x00AF8B00
 
@@ -131,8 +138,8 @@ CDecal* CParticleSystem::AllocateDecal()
 {
     CDecal* decal = new CDecal;
     if (decal == 0) {
-        CParticleEmitterManager* manager = CParticleEmitterManager::Get();
-        manager->ActiveEmitters.ClearLowestPriorityNonVisibleEmitterDecals(manager->PEngine);
+        CParticleEmitterManager& manager = GetParticleEmitterManager();
+        manager.ActiveEmitters.ClearLowestPriorityNonVisibleEmitterDecals(manager.PEngine);
         decal = new CDecal;
     }
     if (decal) {

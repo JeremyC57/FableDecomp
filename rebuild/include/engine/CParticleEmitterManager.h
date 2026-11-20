@@ -1,3 +1,21 @@
+#if defined(FABLE_RETAIL_CPARTICLEEMITTERMANAGER_INTERPOLATED_ONLY) && !defined(FABLE_ENGINE_CPARTICLEEMITTERMANAGER_H)
+// NF158 partial mode (row 0x006E11F0 CTCDParticleEmitter::Create, which models its vectors / counted pointer inside a stand-in
+// namespace and so cannot take the full header): declarations only, no includes. Ego_r.pdb 0x00AAFFF0 / FableWin.pdb 0x02EF5E50
+// ?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z
+// (0x00AEB8C0) and the free accessor 0x00AEAAF0 (the PASS23 declaration).
+#define FABLE_ENGINE_CPARTICLEEMITTERMANAGER_H
+#include "rebuild_abi.h"
+class C3DVector;
+class CRightHandedSet;
+namespace NParticleEngine {
+class CParticleEmitter;
+class CParticleEmitterManager {
+public:
+ CParticleEmitter* CreateInterpolatedEmitter(long fromHandle,long toHandle,float interpolate,const C3DVector& position,const CRightHandedSet& orientation,bool force);
+};
+CParticleEmitterManager& FABLE_FASTCALL GetParticleEmitterManager();
+}
+#endif
 #ifndef FABLE_ENGINE_CPARTICLEEMITTERMANAGER_H
 #define FABLE_ENGINE_CPARTICLEEMITTERMANAGER_H
 #include "engine/CParticleEmitterList.h"
@@ -33,6 +51,11 @@ public:
  void PreparePrimitives(const ::CEnginePrimitivePrepareInfo& info);
 #endif
  bool GetEnableDecals()const{return EnableDecals;}
+#ifdef FABLE_RETAIL_CPARTICLEEMITTERMANAGER_SETENABLEDECALS
+ // NF158 opt-in (row 0x0088F4A0 CGameScriptInterface::EnableDecals): FableWin ?SetEnableDecals@CParticleEmitterManager@NParticleEngine@@QAEX_N@Z,
+ // inline in retail (the bit-field store at +0x1010 expanded in the caller).
+ void SetEnableDecals(bool enable){EnableDecals=enable;}
+#endif
  const NFractal::CPerlinNoise& PeekPerlinNoise()const{return PerlinNoise;}
  CParticleEmitter* CreateDecalEmitter(long,const C3DVector&,bool,const CRightHandedSet&);
 #ifdef FABLE_RETAIL_CPARTICLEEMITTERMANAGER_DEFAULTBLEND

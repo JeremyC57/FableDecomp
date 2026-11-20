@@ -10,29 +10,25 @@
 // zeroed through one register by CItem's inline default constructor (ItemType, NumberOfItems, the counted pointer's
 // Data/Info, AverageBoughtPrice); the element address is first + index*20 (`lea ; lea`), and the implicit traits
 // destructor only runs the counted pointer's destructor at +8 ([ebp-0Ch]).
-// Model: engine/CItem.h flattens PPerItemData into two raw words (no destructor), so the counted pointer is modelled
-// locally to carry its out-of-line destructor; offsets agree with the header (Ego_r.pdb CItem 0x14 bytes).
+// Model: engine/CItem.h flattens PPerItemData into two raw words (no destructor), so CItem stays row-local with the shared
+// counted pointer as its +8 member; offsets agree with the header (Ego_r.pdb CItem 0x14 bytes).
 // EBP frame + size TU (optimize("y", off), optimize("s", on)), as the landed 0x005C2A5C next to it.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CPersistContext;
 class CStringParser;
 class CCharString;
-struct CPerItemData;
-class CCPPointerInfo;
-
-struct CCountedPointer_CPerItemData {
-    CPerItemData*   Data;                   // +0x0
-    CCPPointerInfo* Info;                   // +0x4
-    CCountedPointer_CPerItemData() : Data(0), Info(0) { }
-    ~CCountedPointer_CPerItemData();        // 0x005C04BF
-};
+// NF158 (q5208): the counted pointer is the shared engine/CCountedPointer.h CCountedPointer<NInventory::CPerItemData>; its inline
+//   destructor is the out-of-line COMDAT 0x005C04BF here (Ego_r.pdb / FableWin.pdb ??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ,
+//   the self row's leaf; same as the landed size-TU siblings 0x005C19A3 / 0x005C2AD8); was the local stand-in CCountedPointer_CPerItemData.
+#include "engine/CCountedPointer.h"
 
 namespace NInventory {
+class CPerItemData;
 class CItem { public:                              // 0x14 bytes
     long                         ItemType;            // +0x00
     long                         NumberOfItems;       // +0x04
-    CCountedPointer_CPerItemData PPerItemData;        // +0x08
+    CCountedPointer<CPerItemData> PPerItemData;       // +0x08
     long                         AverageBoughtPrice;  // +0x10
     CItem() : ItemType(0), NumberOfItems(0), PPerItemData(), AverageBoughtPrice(0) { }
 };

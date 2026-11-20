@@ -1,0 +1,3 @@
+GREW 0048da62 1 -> 2 ?GetStringWidth@CFontBank@@QAEMABVCWideString@@@Z row 00645ce9 SAME
+GREW 004c9c10 1 -> 2 ?SetAsGameStatePersisted_004c9c10@CThing@@QAEX_N@Z row 006e13e0 SAME
+shrank [('005c04bf', 5, 2), ('00aeaaf0', 7, 1), ('00b0f630', 2, 1), ('00aeb790', 3, 1), ('00aeb8c0', 2, 1), ('00aeb6d0', 2, 1)]

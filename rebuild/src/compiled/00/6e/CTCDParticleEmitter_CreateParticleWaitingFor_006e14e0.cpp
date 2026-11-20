@@ -2,7 +2,7 @@
 // Leaf: ?CreateParticleWaitingFor@CTCDParticleEmitter@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E14E0, 309 bytes (+ int3 padding), plain `ret`.
-// Callees: CThing::GetPos @ 0x004C73D0, CParticleEmitterManager::Get @ 0x00AEAAF0 (static), CreateInterpolatedEmitter(long,
+// Callees: CThing::GetPos @ 0x004C73D0, NParticleEngine::GetParticleEmitterManager @ 0x00AEAAF0 (__fastcall), CreateInterpolatedEmitter(long,
 //   long, float, const C3DVector&, const CRightHandedSet&, bool) @ 0x00AEB8C0, CreateEmitter(long, const C3DVector&, bool,
 //   const CRightHandedSet&) @ 0x00AEB6D0, NParticleEngine::CParticleEmitter::SetUpdateParameters @ 0x00AF0610,
 //   CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::IsAffectedByBulletTime @ 0x004C9920, SetPEmitter @
@@ -59,13 +59,20 @@ class CParticleEmitter { public:                       // retail layout
     void SetUpdateParameters(const CParticleUpdateParameters& parameters);   // 0x00AF0610
 };
 }
-struct CParticleEmitterManager {
-    static CParticleEmitterManager* __fastcall Get();   // 0x00AEAAF0
-    NParticleEngine::CParticleEmitter* CreateEmitter(long handle, const C3DVector& position, bool force,
-                                                     const CRightHandedSet& orientation);   // 0x00AEB6D0
-    NParticleEngine::CParticleEmitter* CreateInterpolatedEmitter(long fromHandle, long toHandle, float interpolate,
+// NF158 (q4754 family): in-place respell of the row's existing local model (same class token, now `class` in its PDB namespace).
+//   0x00AEAAF0 is Ego_r.pdb / FableWin.pdb ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ (free
+//   __fastcall, reference return; was the stand-in static CParticleEmitterManager::Get()); 0x00AEB6D0 / 0x00AEB8C0 take their
+//   Ego_r / FableWin spellings ?CreateEmitter@CParticleEmitterManager@NParticleEngine@@... / ?CreateInterpolatedEmitter@
+//   CParticleEmitterManager@NParticleEngine@@...JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z.
+namespace NParticleEngine {
+class CParticleEmitterManager { public:
+    CParticleEmitter* CreateEmitter(long handle, const C3DVector& position, bool force,
+                                    const CRightHandedSet& orientation);   // 0x00AEB6D0
+    CParticleEmitter* CreateInterpolatedEmitter(long fromHandle, long toHandle, float interpolate,
                                                 const C3DVector& position, const CRightHandedSet& orientation, bool flag);   // 0x00AEB8C0
 };
+CParticleEmitterManager& FABLE_FASTCALL GetParticleEmitterManager();   // 0x00AEAAF0
+}
 class CBaseObject;
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -123,10 +130,10 @@ void CTCDParticleEmitter::CreateParticleWaitingFor()
     CParticleCreationParameters* params = PCreationParameters.Object;
     NParticleEngine::CParticleEmitter* emitter;
     if (params->InterpolatingParticle)
-        emitter = CParticleEmitterManager::Get()->CreateInterpolatedEmitter(params->StartParticleID, params->EndParticleID,
+        emitter = NParticleEngine::GetParticleEmitterManager().CreateInterpolatedEmitter(params->StartParticleID, params->EndParticleID,
             params->Interpolate, thing->GetPos(), params->RHSet, false);
     else
-        emitter = CParticleEmitterManager::Get()->CreateEmitter(ParticleTypeID, thing->GetPos(), false, params->RHSet);
+        emitter = NParticleEngine::GetParticleEmitterManager().CreateEmitter(ParticleTypeID, thing->GetPos(), false, params->RHSet);
     if (emitter) {
         if (PCreationParameters->UpdateParametersSet)
             emitter->SetUpdateParameters(PCreationParameters->UpdateParameters);

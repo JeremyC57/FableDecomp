@@ -149547,9 +149547,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af1860'
-        Module = 'CCountedPointer_00ae91d0'
-        Source = '00/af/CCountedPointer00ae91d0_Reset_00af1860.cpp'
-        TestSource = '00/af/CCountedPointer00ae91d0_Reset_00af1860_test.cpp'
+        Module = 'CCountedPointer<NParticleEngine::CParticleEmitter>'
+        Source = '00/af/CCountedPointer_Reset_00af1860.cpp'
+        TestSource = '00/af/CCountedPointer_Reset_00af1860_test.cpp'
         PassPattern = '00af1860_TEST PASS'
     }
     [pscustomobject]@{
@@ -228925,16 +228925,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeb850'
-        Module = 'CParticleEmitterManager'
-        Source = '00/ae/CParticleEmitterManager_CreateInterpolatedEmitter_00aeb850.cpp'
-        TestSource = '00/ae/CParticleEmitterManager_CreateInterpolatedEmitter_00aeb850_test.cpp'
+        Module = 'NParticleEngine::CParticleEmitterManager'
+        Source = '00/ae/NParticleEngineCParticleEmitterManager_CreateInterpolatedEmitter_00aeb850.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_CreateInterpolatedEmitter_00aeb850_test.cpp'
         PassPattern = '00aeb850_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aeb8c0'
-        Module = 'CParticleEmitterManager'
-        Source = '00/ae/CParticleEmitterManager_CreateInterpolatedEmitter_00aeb8c0.cpp'
-        TestSource = '00/ae/CParticleEmitterManager_CreateInterpolatedEmitter_00aeb8c0_test.cpp'
+        Module = 'NParticleEngine::CParticleEmitterManager'
+        Source = '00/ae/NParticleEngineCParticleEmitterManager_CreateInterpolatedEmitter_00aeb8c0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_CreateInterpolatedEmitter_00aeb8c0_test.cpp'
         PassPattern = '00aeb8c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -275771,6 +275771,7 @@ $catalog = @(
         Source = '00/6e/CTCDParticleEmitter_Create_006e11f0.cpp'
         TestSource = '00/6e/CTCDParticleEmitter_Create_006e11f0_test.cpp'
         PassPattern = '006e11f0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '006e2000'

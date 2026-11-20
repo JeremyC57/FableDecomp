@@ -18,7 +18,10 @@ template<class K,class V>class CParticleUpdateParameters;
 template<class K,class V>class CParticleUpdateParamCallback:public CBaseClassNonCopyable {
 public:
  virtual bool GetUpdateParam(C3DVector&,V,float,bool,const CParticleUpdateParameters<K,V>&,unsigned long);
+#ifndef FABLE_RETAIL_CPARTICLEUPDATEPARAMCALLBACK_IMPLICIT_DTOR
  virtual ~CParticleUpdateParamCallback();
+#endif // NF158 opt-in: no user destructor, so the implicit one (no vptr store of its own) chains straight to
+       // ~CBaseClassNonCopyable as in retail ??_GCPSCUpdateNormal 0x00B0F990 / ~CPSCUpdateNormal 0x00B0CA90.
 };
 template<class K,class V>class CParticleUpdateParamDesc:public CBaseClass {
 public: virtual ~CParticleUpdateParamDesc();
@@ -93,7 +96,9 @@ public:
  virtual void ClearAllPrimitives(CIEngine*,CEnginePrimitiveHandle&);
  virtual bool GetUserPoint(C3DVector&) const;
  virtual float GetApproximateSplineLength();
+#ifndef FABLE_RETAIL_CPSCBASE_IMPLICIT_DTOR
  virtual ~CPSCBase();
+#endif // NF158 opt-in: implicit destructor (see FABLE_RETAIL_CPARTICLEUPDATEPARAMCALLBACK_IMPLICIT_DTOR).
 private: const CParticleSystem* ParticleSystem;bool UpdateStarted:1;
 protected: bool Initialised:1;
 };

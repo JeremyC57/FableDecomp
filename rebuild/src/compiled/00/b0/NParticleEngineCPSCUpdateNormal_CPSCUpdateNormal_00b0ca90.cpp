@@ -1,5 +1,10 @@
 // NParticleEngine::CPSCUpdateNormal::~CPSCUpdateNormal() -- store the update-normal component vtable, kill every decal emitter, destroy the decal-emitter list and the emitter name, then the inline CPSCBase chain and ~CBaseClassNonCopyable
 // Leaf: ??1CPSCUpdateNormal@NParticleEngine@@UAE@XZ
+// Naming (NF158, 2026-11-20, q4020 family with ??_G 0x00B0F990): the local CPSCUpdateNormal / CPSCBase / list models replaced by the
+//   shared engine/CPSCUpdateNormal.h. The destructor body is the header's inline one (opt-in FABLE_RETAIL_CPSCUPDATENORMAL_DTOR_INLINE),
+//   so this row and 0x00B0F990 (which expands it) both emit ??1CPSCUpdateNormal@NParticleEngine@@UAE@XZ as a pick-any COMDAT: one
+//   definition (nf86 / nf88 scaffolding). CPSCBase / CParticleUpdateParamCallback declare no destructor (opt-ins
+//   FABLE_RETAIL_CPSCBASE_IMPLICIT_DTOR / FABLE_RETAIL_CPARTICLEUPDATEPARAMCALLBACK_IMPLICIT_DTOR), as the Shape note below says.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0CA90, 60 bytes, thiscall, tail `jmp ~CBaseClassNonCopyable` 0x0099A300; no
@@ -20,146 +25,19 @@
 //   ~_List_base with the out-of-class clear() kept out of line -- member address in edi) and the string; CPSCBase /
 //   CParticleUpdateParamCallback declare no destructor (no store of their own: the landed CPSCAttractor 0x00B18780 chain), so
 //   the tail is ~CBaseClassNonCopyable.
-extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
-#include "engine/CBaseClassNonCopyable.h"                  // ~CBaseClassNonCopyable 0x0099A300 (protected virtual)
-
-class CBaseObject;
-class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_CPARTICLEUPDATEPARAMCALLBACK_IMPLICIT_DTOR
+#define FABLE_RETAIL_CPSCBASE_IMPLICIT_DTOR
+#define FABLE_RETAIL_CPSCUPDATENORMAL_DTOR_INLINE
+#include "fable_compiler.h"
+#include "engine/CPSCUpdateNormal.h"
 
-namespace std {
-template <class _Tp> class allocator {
-public:
-    allocator() { }
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-struct _List_node_base {
-    _List_node_base* _M_next;                              // +0x0
-    _List_node_base* _M_prev;                              // +0x4
-};
-template <class _Tp> struct _List_node : public _List_node_base {
-    _Tp _M_data;                                           // +0x8
-};
-template <class _Tp, class _Alloc>
-class _List_base {
-public:
-    typedef _List_node<_Tp> _Node;
-    typedef allocator<_Node> _Node_allocator_type;
-    ~_List_base() { clear(); _M_node.deallocate(_M_node._M_data, 1); }
-    void clear();
-protected:
-    _STLP_alloc_proxy<_Node*, _Node, _Node_allocator_type> _M_node;   // +0x0: the sentinel node
-};
-template <class _Tp, class _Alloc>
-void _List_base<_Tp, _Alloc>::clear()
+namespace {
+// Fidelity: scaffolding, not retail: the smallest use of the header's inline destructor, so this TU emits it (and the vtable) as
+// pick-any COMDATs, like every includer. Internal to this TU.
+void ReferenceCPSCUpdateNormalDestructor(NParticleEngine::CPSCUpdateNormal* component)
 {
-    _List_node<_Tp>* __cur = (_List_node<_Tp>*)this->_M_node._M_data->_M_next;
-    while (__cur != this->_M_node._M_data) {
-        _List_node<_Tp>* __tmp = __cur;
-        __cur = (_List_node<_Tp>*)__cur->_M_next;
-        _Destroy(&__tmp->_M_data);
-        this->_M_node.deallocate(__tmp, 1);
-    }
-    this->_M_node._M_data->_M_next = this->_M_node._M_data;
-    this->_M_node._M_data->_M_prev = this->_M_node._M_data;
+    component->NParticleEngine::CPSCUpdateNormal::~CPSCUpdateNormal();
 }
-template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
-public:
-    ~list() { }
-};
-}   // namespace std
-
-class CCharStringData;
-class CCharString {
-public:
-    ~CCharString();                                        // 0x0099EAE0
-    CCharStringData* PStringData;
-};
-
-#pragma pack(push, 1)
-#include "engine/C3DVector.h"
-#pragma pack(pop)
-
-namespace NParticleEngine {
-class CParticleSystem;
-class CParticleEmitter;
-template <class T1, class T2> class CParticleUpdateParameters;
-template <class T1, class T2> class CParticleUpdateParamCallback : public CBaseClassNonCopyable {
-public:
-    virtual bool GetUpdateParam(C3DVector& param, unsigned long index, float time, bool flag,
-                                const CParticleUpdateParameters<T1, T2>& parameters, unsigned long extra);
-};
-class CPSCBase : public CParticleUpdateParamCallback<unsigned long, unsigned long> {   // vtable 0x0129F3F4
-public:
-    CParticleSystem* ParticleSystem;                       // +0x04
-    bool             UpdateStarted : 1;                    // +0x08
-    bool             Initialised : 1;                      // +0x08
-};
-class CPSCUpdateNormal : public CPSCBase {                 // vtable 0x0129FC1C, 0xa0 bytes in retail
-public:
-    CPSCUpdateNormal();
-    virtual ~CPSCUpdateNormal();
-protected:
-    void KillAllDecalEmitters();                           // 0x00B0C730
-public:
-    unsigned long FadeInEndInteger : 10;                   // +0x0c
-    unsigned long FadeOutBeginInteger : 10;
-    unsigned long UseParticleLifeSecs : 1;
-    unsigned long UseRandomRotationAxis : 1;
-    unsigned long UseRandomInitialRotation : 1;
-    unsigned long UseAccelerationParam : 1;
-    unsigned long StayWithEmitter : 1;
-    unsigned long UseSystemLifeSecs : 1;
-    unsigned long SystemAlphaFadeEnable : 1;
-    unsigned long EmissionFadeEnable : 1;
-    unsigned long ParticleCollideWithGround : 1;
-    unsigned long ParticleDieOnCollision : 1;
-    unsigned long UseAllAttractors : 1;
-    unsigned long RandomisePosEnable : 1;
-    bool          RandomisePosDistVaryEnable : 1;          // +0x10
-    bool          SetOrientationFromDirection : 1;
-    bool          SetOrientationFromGame : 1;
-    bool          ParticleCreateDecal : 1;
-    bool          ParticleCreateDecalEmitter : 1;
-    bool          ParticleCollideWithAnything : 1;
-    CCharString   DecalEmitterName;                        // +0x14
-    float         SystemLifeSecs;                          // +0x18
-    float         ParticleLifeSecs;                        // +0x1c
-    float         WindFactor;                              // +0x20
-    float         GravityFactor;                           // +0x24
-    float         AirResistance;                           // +0x28
-    float         ParticleAccelerationScale;               // +0x2c
-    float         InitialRotationX;                        // +0x30
-    float         InitialRotationY;                        // +0x34
-    float         InitialRotationZ;                        // +0x38
-    float         RotationMinAngleSpeed;                   // +0x3c
-    float         RotationMaxAngleSpeed;                   // +0x40
-    float         ParticleBounce;                          // +0x44
-    float         SystemAlphaFadeMinimum;                  // +0x48
-    float         RandomisePosDistVaryScale;               // +0x4c
-    float         EmissionFadeMinimum;                     // +0x50
-    C3DVector     ParticleSystemOffset;                    // +0x54
-    C3DVector     ParticleAcceleration;                    // +0x60
-    C3DVector     RotationAxis;                            // +0x6c
-    C3DVector     RandomisePosSpeed;                       // +0x78
-    C3DVector     RandomisePosScale;                       // +0x84
-    unsigned long AccelerationParam;                       // +0x90
-    unsigned long OrientFromGameParam;                     // +0x94
-    long          LifeTimer;                               // +0x98
-    std::list<CIntelligentPointer<CParticleEmitter> > DecalEmitterList;   // +0x9c
-};
-
-FABLE_STATIC_ASSERT(sizeof(CPSCUpdateNormal) == 0xa0);
-
-CPSCUpdateNormal::~CPSCUpdateNormal()
-{
-    KillAllDecalEmitters();
 }
-} // namespace NParticleEngine

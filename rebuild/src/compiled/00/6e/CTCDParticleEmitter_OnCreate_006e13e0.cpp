@@ -4,7 +4,7 @@
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E13E0, 251 bytes (+ int3 padding), plain `ret`.
 // Callees: CThing::SetAsGameStatePersisted(bool) @ 0x004C9C10, CTCDParticleEmitter::ClearAttachments @ 0x006E0AF0,
-//   CThing::GetPos @ 0x004C73D0, CParticleEmitterManager::Get @ 0x00AEAAF0 (static; manifest "GFGetPreMainMemoryUsed"
+//   CThing::GetPos @ 0x004C73D0, NParticleEngine::GetParticleEmitterManager @ 0x00AEAAF0 (__fastcall; manifest "GFGetPreMainMemoryUsed"
 //   is a byte twin), CParticleEmitterManager::CreateEmitter(long, const C3DVector&, bool, const CRightHandedSet&) @
 //   0x00AEB6D0, SetPEmitter @ 0x006E1080, __ftol2 @ 0x00BFEA70, operator new @ 0x00BFEA1A, CParticleCreationParameters(
 //   long, const CRightHandedSet&) @ 0x006E25C0, CCountedPointer<CParticleCreationParameters>::Reset @ 0x006E2710.
@@ -17,7 +17,7 @@
 //   read inline in the call it is loaded after the force bit and the type before GetPos); the orientation is a
 //   named identity CRightHandedSet (six immediate stores interleaved with the argument
 //   pushes); CreateEmitter's arguments evaluate right to left (the set, the force bit, GetPos, the type) before
-//   the static manager getter; the new creation record is `p = new T(..)` handed to Reset (the null arm pushes eax=0).
+//   the manager getter; the new creation record is `p = new T(..)` handed to Reset (the null arm pushes eax=0).
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
@@ -37,14 +37,19 @@ class CThing { public:
     void SetAsGameStatePersisted_004c9c10(bool persisted);   // 0x004C9C10
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
+// NF158 (q4754): in-place respells of the row's existing local model (same class token, now `class` in its PDB namespace).
+//   0x00AEAAF0 is Ego_r.pdb / FableWin.pdb ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ (free
+//   __fastcall, reference return; was the stand-in static CParticleEmitterManager::Get()); 0x00AEB6D0 is Ego_r.pdb 0x00AAF9C0 /
+//   FableWin.pdb 0x02EF5EF0 ?CreateEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z
+//   (the spelling the landed 0x00643D8C binds).
 namespace NParticleEngine {
 class CParticleEmitter;
-}
-struct CParticleEmitterManager {
-    static CParticleEmitterManager* __fastcall Get();   // 0x00AEAAF0
-    NParticleEngine::CParticleEmitter* CreateEmitter(long handle, const C3DVector& position, bool force,
-                                                     const CRightHandedSet& orientation);   // 0x00AEB6D0
+class CParticleEmitterManager { public:
+    CParticleEmitter* CreateEmitter(long handle, const C3DVector& position, bool force,
+                                    const CRightHandedSet& orientation);   // 0x00AEB6D0
 };
+CParticleEmitterManager& FABLE_FASTCALL GetParticleEmitterManager();   // 0x00AEAAF0
+}
 struct CParticleCreationParameters {            // 0x4c bytes
     unsigned char _body[0x4c];
     CParticleCreationParameters(long particleID, const CRightHandedSet& rhs);   // 0x006E25C0
@@ -83,7 +88,7 @@ void CTCDParticleEmitter::OnCreate()
     if (g_bParticlesEnabled && ParticleTypeID) {
         CThing* thing = ParentThing;
         CRightHandedSet orientation(C3DVector(0.0f, 0.0f, 1.0f), C3DVector(0.0f, 1.0f, 0.0f));
-        NParticleEngine::CParticleEmitter* emitter = CParticleEmitterManager::Get()->CreateEmitter(
+        NParticleEngine::CParticleEmitter* emitter = NParticleEngine::GetParticleEmitterManager().CreateEmitter(
             ParticleTypeID, thing->GetPos(), ForceParticleToLoad, orientation);
         if (emitter) {
             SetPEmitter(emitter);

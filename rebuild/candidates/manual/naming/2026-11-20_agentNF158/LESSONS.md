@@ -1,0 +1,12 @@
+# NF158 lessons (one line each)
+- Probe the REFS rows first (tools/probe.py, ~3 s a row): the census found 11 wrong binders for q4754 where WORKLIST lists 6, and showed q4254 / q4481 / q4482 / q4788 / q5106 already done.
+- A WORKLIST binder's own class can be wrong: 0x00AEEF40 "CGuiVarTransferStruct::Add" is CParticleEmitter::AddParticleSystem (PDB name set + sole caller + member offset); check the binder's identity before respelling its callees, or the fix turns into a self-rename family.
+- An inline virtual destructor added by an opt-in is emitted as a pick-any COMDAT even where every use is expanded; if a landed row defines it strongly (0x00B0CA90), port that owner too and prove one definition with a `LINK=` cleared link (ctl + new).
+- For a ??_G of an abstract shared-header class, a qualified explicit destructor call in an anonymous-namespace helper emits the vtable (and the ??_G) when no constructor can be used.
+- Implicit base destructors (no vptr store of their own) are an `#ifndef` opt-in that omits the header's `virtual ~X();`; the default path stays token-identical.
+- An inline accessor (GetName) in place of a direct member read can move one scratch register (0x00AEEFE0 526v526); budget for it before starting a large port.
+- (resume) Moving a row's local class into its PDB namespace respells EVERY member called through it: list each callee's self Leaf and REFS before editing (0x00AEB8C0's self leaf matched the stand-in 0x006E14E0 bound, which made a four-row family).
+- (resume) A local class inside a stand-in namespace (X_006e11f0::NParticleEngine::...) is not an in-place respell when moved to the real namespace; a declaration-only partial header mode placed before the include guard dropped it in one grade.
+- (resume) A claimed mangled name can be checked for emittability before any work: a repeated multi-character argument type (`_N`) is always a back-reference digit, so `_N33_N` is impossible.
+- (resume) Before calling a class header-less, grep `(struct|class) X\s*[:{]` across all of rebuild/include: CSoundEvent has two (disagreeing) libpk definitions.
+- (resume) A callee binding that comes from a shared-header inline body (Reset -> ReleaseData) cannot be respelled in the row; record it as a header item.

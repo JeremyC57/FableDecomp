@@ -18,6 +18,13 @@ public:
  // Retail opt-in (Codex pass 24): Ego_r and FableWin give the override in vtable slot 17, 0x00B0D360.
  virtual void DatabaseSerialise(CPersistContext&, const CEmitterDatabaseSerialiseInfo&);
 #endif
+#ifdef FABLE_RETAIL_CPSCUPDATENORMAL_DTOR_INLINE
+ // NF158 opt-in (row 0x00B0F990 ??_GCPSCUpdateNormal): the destructor body (Ego_r.pdb ??1CPSCUpdateNormal@NParticleEngine@@UAE@XZ,
+ // retail 0x00B0CA90: store the vtable, KillAllDecalEmitters, then the members) visible, so the scalar deleting destructor expands it.
+ virtual ~CPSCUpdateNormal() { KillAllDecalEmitters(); }
+protected:
+ void KillAllDecalEmitters();   // 0x00B0C730 (Ego_r + FableWin ?KillAllDecalEmitters@CPSCUpdateNormal@NParticleEngine@@IAEXXZ)
+#endif
 protected:
  float GetCurrentFadeValue()const;
     unsigned long FadeInEndInteger : 10;           // +0x0c

@@ -1,6 +1,9 @@
 // 006e11f0 CTCDParticleEmitter::Create
 // Flags: /O2 /Oy /W3
 // Leaf: Create
+// Fidelity: cast, not retail: CreateInterpolatedEmitter gets this row's stand-in C3DVector / CRightHandedSet through casts to the global
+// types, and its NParticleEngine emitter result is cast to the row's ::CParticleEmitter (no code). The port onto the shared C3DVector /
+// CRightHandedSet / NParticleEngine::CParticleEmitter headers is queued.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members data->Data, info->Info are the header CCountedPointer's (same offsets).
 #include "fable_compiler.h"
 #include <stdlib.h>
@@ -71,10 +74,21 @@ virtual void v10()=0;
 virtual void v11()=0;
 virtual void v12()=0;
 virtual const ::CWorldMap& PeekWorldMap()const=0;};
-struct CDefinitionManagerAdapter: ::CDefinitionManager {int GetDefGlobalIndexFromName(const CCharString&);};CThing* __fastcall Create(int,int,int,bool);namespace NParticleEngine{struct CParticleEmitterManager {static CParticleEmitterManager*__fastcall Get();::CParticleEmitter*CreateInterpolatedEmitter(int,int,float,const C3DVector&,const CRightHandedSet&,bool);};}extern int Frame;extern const float Scale;
-} class CGameDefinitionManager : public X_006e11f0::CDefinitionManagerAdapter { public: static CGameDefinitionManager& __fastcall Get(); }; namespace X_006e11f0 {   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
+struct CDefinitionManagerAdapter: ::CDefinitionManager {int GetDefGlobalIndexFromName(const CCharString&);};CThing* __fastcall Create(int,int,int,bool);extern int Frame;extern const float Scale;
+} class CGameDefinitionManager : public X_006e11f0::CDefinitionManagerAdapter { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
+// NF158 (q4754 family): the row's local stand-in X_006e11f0::NParticleEngine::CParticleEmitterManager is dropped for the shared
+//   engine/CParticleEmitterManager.h in its declaration-only mode (INTERPOLATED_ONLY: the row models its vectors and counted pointer
+//   inside the stand-in namespace, so the full header cannot be included). 0x00AEAAF0 is Ego_r.pdb / FableWin.pdb
+//   ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ (free __fastcall, reference return; was the stand-in
+//   static Get()); 0x00AEB8C0 is Ego_r.pdb 0x00AAFFF0 / FableWin.pdb 0x02EF5E50 ?CreateInterpolatedEmitter@CParticleEmitterManager@
+//   NParticleEngine@@QAEPAVCParticleEmitter@2@JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z. This row keeps its X_006e11f0 vector / set /
+//   emitter stand-ins, so the call passes their addresses as the global classes (reference reinterpretation, no code) and hands the
+//   emitter to SetPEmitter as the row's emitter view.
+#define FABLE_RETAIL_CPARTICLEEMITTERMANAGER_INTERPOLATED_ONLY
+#include "engine/CParticleEmitterManager.h"
+namespace X_006e11f0 {
 // Layout: Matrix6a06e0 is vptr+position12+Axes24=40. Request6e2640 is flags4+IDs8+float4+Axes24+Update36=76.
 // Ptr6e2710 holds data+0/control+4; CCPPointerInfo refs+0/callback+4/object+8.
 // Layout: thing flags+0x28, extra+0x5c; extra flags+0x44,time+0x38,pointer+0x3c.
-CThing* __fastcall Create(int a,int b,float c,const C3DVector& position,bool persistent){if(!persistent&&((const CWorldMapAdapter&)((const CWorldVirtualSlots*)&::CMainGameComponent::Get()->PeekWorld())->PeekWorldMap()).IsLoadingAnyMap())persistent=true;CThing*object=0;int id=((const CWorldMapVirtualSlots*)g_pThingManager->WorldMap)->GetMapNumberAt(position);if(id>0){int def;{CCharString name("PARTICLE_EMITTER_NORMAL");def=::CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);}object=Create(def,4,id,true);CRightHandedSet axes=DefaultAxes;CTCPhysicsBaseVirtualSlots*physics=(CTCPhysicsBaseVirtualSlots*)object->physics;physics->ConstructFromParams(CTCParamsPhysicsBase(position,axes));CTCDParticleEmitter*extra=0;if(object->flags&0x800)extra=object->extra;extra->zero=0;extra->flags=(extra->flags&0xf9)|((persistent&1)<<1);object->DoActivationSequence();NParticleEngine::CParticleEmitterManager*effects=NParticleEngine::CParticleEmitterManager::Get();::CParticleEmitter*effect=effects->CreateInterpolatedEmitter(a,b,c,position,axes,persistent);if(effect)extra->SetPEmitter(effect);else if(!persistent){extra->flags|=1;extra->frame=(int)(Frame*Scale);extra->pointer.Reset(new CParticleCreationParameters(a,b,c,axes));}else{object->Kill(false);object=0;}}return object;}
+CThing* __fastcall Create(int a,int b,float c,const C3DVector& position,bool persistent){if(!persistent&&((const CWorldMapAdapter&)((const CWorldVirtualSlots*)&::CMainGameComponent::Get()->PeekWorld())->PeekWorldMap()).IsLoadingAnyMap())persistent=true;CThing*object=0;int id=((const CWorldMapVirtualSlots*)g_pThingManager->WorldMap)->GetMapNumberAt(position);if(id>0){int def;{CCharString name("PARTICLE_EMITTER_NORMAL");def=::CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);}object=Create(def,4,id,true);CRightHandedSet axes=DefaultAxes;CTCPhysicsBaseVirtualSlots*physics=(CTCPhysicsBaseVirtualSlots*)object->physics;physics->ConstructFromParams(CTCParamsPhysicsBase(position,axes));CTCDParticleEmitter*extra=0;if(object->flags&0x800)extra=object->extra;extra->zero=0;extra->flags=(extra->flags&0xf9)|((persistent&1)<<1);object->DoActivationSequence();::NParticleEngine::CParticleEmitterManager&effects=::NParticleEngine::GetParticleEmitterManager();::CParticleEmitter*effect=(::CParticleEmitter*)effects.CreateInterpolatedEmitter(a,b,c,(const ::C3DVector&)position,(const ::CRightHandedSet&)axes,persistent);if(effect)extra->SetPEmitter(effect);else if(!persistent){extra->flags|=1;extra->frame=(int)(Frame*Scale);extra->pointer.Reset(new CParticleCreationParameters(a,b,c,axes));}else{object->Kill(false);object=0;}}return object;}
 }

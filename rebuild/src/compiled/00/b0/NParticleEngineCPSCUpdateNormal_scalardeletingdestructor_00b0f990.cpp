@@ -1,62 +1,28 @@
-// NParticleEngine::CPSCUpdateNormal::`scalar deleting destructor'(unsigned int) -- stores the CPSCUpdateNormal vtable, kills all decal emitters, clears the array member at +0x9c and frees its block, destroys the string at +0x14, runs CBaseClassNonCopyable::~CBaseClassNonCopyable and frees on bit 0
-// Leaf: ??_GCPSCUpdateNormal
+// NParticleEngine::CPSCUpdateNormal::`scalar deleting destructor'(unsigned int) -- stores the CPSCUpdateNormal vtable, kills all decal emitters, destroys the decal-emitter list (+0x9c) and the emitter name (+0x14), runs CBaseClassNonCopyable::~CBaseClassNonCopyable and frees on bit 0
+// Leaf: ??_GCPSCUpdateNormal@NParticleEngine@@UAEPAXI@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0F990, length 81 bytes (vtable 0x0129FC1C slot 0).
-// Callees: CPSCUpdateNormal::KillAllDecalEmitters @ 0x00B0C730, the array's element teardown @ 0x00B0F630
-// (manifest "CGuiControlTreePane::SortTreeRecursively", propagated), free @ 0x00BFEA14,
-// CCharString::~CCharString @ 0x0099EAE0 (manifest "_Cons_val<...>", propagated), CBaseClassNonCopyable::~CBaseClassNonCopyable
-// @ 0x0099A300, operator delete @ 0x00BFE9BC.
-// The catalog label "CThingTrackNode::vector_deleting_destructor" is propagated: the only reference is
-// slot 0 of the NParticleEngine::CPSCUpdateNormal vtable 0x0129FC1C.
-// Layout: no engine header; modelled as a polymorphic CBase-derived class with a CCharString at +0x14
-// and an array member (data pointer first) at +0x9c.
-// Shape: the destructor body call, then members in reverse order: the array's inline destructor
-// (`DestroyElements(); if (data) free(data);`, member address kept in edi), the string, then the base.
-// The array destructor must be `__forceinline` (a plain inline one is emitted out of line).
+// Naming (NF158, 2026-11-20, q4020): the local CPSCUpdateNormal / CDecalEmitterArray models replaced by the shared
+//   engine/CPSCUpdateNormal.h (Ego_r.pdb layout; DecalEmitterList +0x9c = std::list<CIntelligentPointer<CParticleEmitter> >), so the
+//   list teardown binds 0x00B0F630 as ?clear@?$_List_base@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@..@std@@@std@@QAEXXZ
+//   (the landed spelling of 0x00B0CA90 and the self row) instead of the CDecalEmitterArray::DestroyElements stand-in.
+// Callees: CPSCUpdateNormal::KillAllDecalEmitters 0x00B0C730 (Ego_r + FableWin, protected), _List_base::clear 0x00B0F630
+//   (FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE: retail reloads and null-tests the sentinel after the call), free 0x00BFEA14,
+//   CCharString::~CCharString 0x0099EAE0, CBaseClassNonCopyable::~CBaseClassNonCopyable 0x0099A300, operator delete 0x00BFE9BC.
+// Shape: the inline destructor (FABLE_RETAIL_CPSCUPDATENORMAL_DTOR_INLINE, the body of 0x00B0CA90) expanded in the ??_G; CPSCBase and
+//   CParticleUpdateParamCallback keep implicit destructors (retail chains straight to ~CBaseClassNonCopyable with one vptr store).
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_CPARTICLEUPDATEPARAMCALLBACK_IMPLICIT_DTOR
+#define FABLE_RETAIL_CPSCBASE_IMPLICIT_DTOR
+#define FABLE_RETAIL_CPSCUPDATENORMAL_DTOR_INLINE
 #include "fable_compiler.h"
-extern "C" void __cdecl free(void* block);         // 0x00BFEA14
+#include "engine/CPSCUpdateNormal.h"
 
-class CCharString { public:
-    void* m_pData;
-    CCharString();                                 // 0x0099E4B0
-    ~CCharString();                                // 0x0099EAE0
-};
-
-class CBaseClassNonCopyable {
-protected:                                      // root polymorphic base
-    CBaseClassNonCopyable();
-    virtual ~CBaseClassNonCopyable();                              // 0x0099A300
-};
-
-namespace NParticleEngine {
-
-struct CDecalEmitterArray {                        // array whose destructor tears the elements down, then frees
-    void* m_pData;
-    long  m_size;
-    long  m_capacity;
-    void DestroyElements();                        // 0x00B0F630
-    CDecalEmitterArray() : m_pData(0), m_size(0), m_capacity(0) { }
-    FABLE_FORCEINLINE ~CDecalEmitterArray()
-    {
-        DestroyElements();
-        if (m_pData) free(m_pData);
-    }
-};
-
-class CPSCUpdateNormal : public CBaseClassNonCopyable { public:                  // vtable 0x0129FC1C
-    unsigned char      _pad_0x04[0x10];            // +0x04
-    CCharString        m_name;                     // +0x14
-    unsigned char      _pad_0x18[0x84];            // +0x18
-    CDecalEmitterArray m_decalEmitters;            // +0x9c
-protected:
-    void KillAllDecalEmitters();                   // 0x00B0C730  // protected (?KillAllDecalEmitters@CPSCUpdateNormal@NParticleEngine@@IAEXXZ, Ego_r + FableWin; respelled at the chunk 712 landing)
-public:
-    CPSCUpdateNormal() { }
-    FABLE_FORCEINLINE virtual ~CPSCUpdateNormal() { KillAllDecalEmitters(); }
-};
-
-}
-
-NParticleEngine::CPSCUpdateNormal* Create_CPSCUpdateNormal()
+namespace {
+// Fidelity: scaffolding, not retail: the smallest use of the header's inline destructor, so this TU emits CPSCUpdateNormal's vtable
+// and with it the scalar deleting destructor (both pick-any COMDATs). Internal to this TU.
+void ReferenceCPSCUpdateNormalVtable(NParticleEngine::CPSCUpdateNormal* component)
 {
-    return new NParticleEngine::CPSCUpdateNormal;
+    component->NParticleEngine::CPSCUpdateNormal::~CPSCUpdateNormal();
+}
 }

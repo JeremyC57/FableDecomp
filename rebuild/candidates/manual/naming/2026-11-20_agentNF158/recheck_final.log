@@ -1,0 +1,133 @@
+addr       parity           behav  name
+00543d30   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00543d30   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00543d30   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00543d30   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00543d30   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00543d30   RELOCATION_MATCH PASS   NUISystem::CParticleEffect::Initialise
+00543df0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00543df0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00543df0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00543df0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00543df0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00543df0   RELOCATION_MATCH PASS   NUISystem::CParticleEffect::ChangeState
+005c0e41   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005c0e41   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005c0e41   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVector (engine/CPersistContext_TransferableVector.h)
+005c0e41   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<NInventory::CItem>::TransferOut
+005c1390   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+005c1390   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_005c1390
+005c20d8   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005c20d8   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005c20d8   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVector (engine/CPersistContext_TransferableVector.h)
+005c20d8   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<NInventory::CItem>::TransferIn
+005c2a5c   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+005c2a5c   WARN RELOC_NAME: ?SetAt@CSoundPairArray@@QAEXJABUSSoundPairEntry@@@Z -> 005c2a13 labelled 'CRetailVector_elem20::resize'
+005c2a5c   WARN STANDIN_LEAF ?ClearEntry@CSoundPairTable_005c2a5c@@QAEXJ@Z (catalog _unattributed::ClearEntry; address-only name)
+005c2a5c   RELOCATION_MATCH PASS   _unattributed::ClearEntry
+005c2e68   RELOCATION_MATCH PASS   CTCInventoryWeapons::RemoveAllConfiscatedItems
+00645ce9   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00645ce9   WARN RELOC_NAME: ?g_pGameUI@@3PAUCGameUI@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00645ce9   RELOCATION_MATCH PASS   CStatBar::DrawStatBox
+006e11f0   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+006e11f0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+006e11f0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+006e11f0   WARN SHARED_HEADER_AVAILABLE CTCParamsPhysicsBase (engine/CTCParamsPhysicsBase.h)
+006e11f0   WARN SHARED_HEADER_AVAILABLE CVectorMap (engine/CVectorMap.h)
+006e11f0   WARN SHARED_HEADER_AVAILABLE CParticleUpdateParameters (engine/CParticleUpdateParameters.h)
+006e11f0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+006e11f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006e11f0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+006e11f0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+006e11f0   WARN RELOC_NAME: ?g_pThingManager@X_006e11f0@@3PAUCThingManager@1@A -> 013b8a1c labelled 'CThing::PCurrentThingManager'
+006e11f0   WARN RELOC_NAME: ?Frame@X_006e11f0@@3HA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+006e11f0   WARN STANDIN_LEAF ?Create@X_006e11f0@@YIPAUCThing@1@HHMABUC3DVector@1@_N@Z (catalog CTCDParticleEmitter::Create; address-only name)
+006e11f0   RELOCATION_MATCH PASS   CTCDParticleEmitter::Create
+006e13e0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+006e13e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006e13e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006e13e0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+006e13e0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+006e13e0   WARN RELOC_NAME: ?SetAsGameStatePersisted_004c9c10@CThing@@QAEX_N@Z -> 004c9c10 labelled 'CThing::SetThingScanInclusion'
+006e13e0   RELOCATION_MATCH PASS   CTCDParticleEmitter::OnCreate
+006e14e0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+006e14e0   WARN SHARED_HEADER_AVAILABLE CParticleUpdateParameters (engine/CParticleUpdateParameters.h)
+006e14e0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+006e14e0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+006e14e0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+006e14e0   RELOCATION_MATCH PASS   CTCDParticleEmitter::CreateParticleWaitingFor
+0080d0b0   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CExplosionDef (engine/CExplosionDef.h)
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CTCDriverBase (engine/CTCDriverBase.h)
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CTCDExplosion (engine/CTCDExplosion.h)
+0080d0b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0080d0b0   WARN RELOC_NAME: ?GetEmitterSpacing@CExplosionDef@@QBEMM@Z -> 0080c190 labelled '_global::GetExplosionEffectInterpolate'
+0080d0b0   RELOCATION_MATCH PASS   CTCDExplosion::CreateStaticExplosion
+0088f4a0   RELOCATION_MATCH PASS   CGameScriptInterface::EnableDecals
+00aeb850   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00aeb850   WARN SHARED_HEADER_AVAILABLE CParticleEmitterDatabase (engine/CParticleEmitterDatabase.h)
+00aeb850   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00aeb850   RELOCATION_MATCH PASS   CParticleEmitterManager::CreateInterpolatedEmitter
+00aeb8c0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00aeb8c0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterDatabase (engine/CParticleEmitterDatabase.h)
+00aeb8c0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00aeb8c0   RELOCATION_MATCH PASS   CParticleEmitterManager::CreateInterpolatedEmitter
+00af1860   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@SIXPAX@Z -> 00ae91d0 labelled '_global::DeleteViaVtable0_00ae91d0'
+00af1860   RELOCATION_MATCH PASS   CCountedPointer<NParticleEngine::CParticleEmitter>::Reset
+00af5010   WARN SHARED_HEADER_AVAILABLE CParticleEmitterList (engine/CParticleEmitterList.h)
+00af5010   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00af5010   WARN SHARED_HEADER_AVAILABLE CParticle (engine/CParticle.h)
+00af5010   WARN SHARED_HEADER_AVAILABLE CParticleSystem (engine/CParticleSystem.h)
+00af5010   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::AllocateParticle
+00af5380   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00af5380   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00af5380   WARN SHARED_HEADER_AVAILABLE CParticleEmitterList (engine/CParticleEmitterList.h)
+00af5380   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00af5380   WARN SHARED_HEADER_AVAILABLE CDecal (engine/CDecal.h)
+00af5380   WARN SHARED_HEADER_AVAILABLE CParticleSystem (engine/CParticleSystem.h)
+00af5380   WARN RELOC_NAME: ?AllocateParticleMemory_00af8b00@@YIPAXI@Z -> 00af8b00 labelled 'NParticleEngine::CDecal::operator new'
+00af5380   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::AllocateDecal
+00b09360   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00b09360   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveSpriteTrail (engine/CEnginePrimitiveSpriteTrail.h)
+00b09360   WARN SHARED_HEADER_AVAILABLE CPSCSplineBase (engine/CPSCSplineBase.h)
+00b09360   WARN SHARED_HEADER_AVAILABLE CPSCSingleSprite (engine/CPSCSingleSprite.h)
+00b09360   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::CPSCSingleSprite
+00b0ca90   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::~CPSCUpdateNormal
+00b0f990   WARN STANDIN_LEAF ??_GCPSCUpdateNormal@NParticleEngine@@UAEPAXI@Z (catalog NParticleEngine::CPSCUpdateNormal::`scalar_deleting_destructor'; names another function)
+00b0f990   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::`scalar_deleting_destructor'
+
+WINS: 21
+  00543d30 RELOCATION_MATCH NUISystem::CParticleEffect::Initialise
+  00543df0 RELOCATION_MATCH NUISystem::CParticleEffect::ChangeState
+  005c0e41 RELOCATION_MATCH CPersistContext_TransferableVector<NInventory::CItem>::TransferOut
+  005c1390 RELOCATION_MATCH _global::?vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+  005c20d8 RELOCATION_MATCH CPersistContext_TransferableVector<NInventory::CItem>::TransferIn
+  005c2a5c RELOCATION_MATCH _unattributed::ClearEntry
+  005c2e68 RELOCATION_MATCH CTCInventoryWeapons::?RemoveAllConfiscatedItems@CTCInventoryWeapons@@UAEXXZ
+  00645ce9 RELOCATION_MATCH CStatBar::DrawStatBox@CStatBar
+  006e11f0 RELOCATION_MATCH CTCDParticleEmitter::Create
+  006e13e0 RELOCATION_MATCH CTCDParticleEmitter::OnCreate
+  006e14e0 RELOCATION_MATCH CTCDParticleEmitter::?CreateParticleWaitingFor@CTCDParticleEmitter@@QAEXXZ
+  0080d0b0 RELOCATION_MATCH CTCDExplosion::CreateStaticExplosion
+  0088f4a0 RELOCATION_MATCH CGameScriptInterface::?EnableDecals@CGameScriptInterface@@UBEX_N@Z
+  00aeb850 RELOCATION_MATCH CParticleEmitterManager::?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@PBV32@JMABVC3DVector@@ABVCRightHandedSet@@_N@Z
+  00aeb8c0 RELOCATION_MATCH CParticleEmitterManager::?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z
+  00af1860 RELOCATION_MATCH CCountedPointer_00ae91d0::?Reset@?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAEXPAVCParticleEmitter@NParticleEngine@@@Z
+  00af5010 RELOCATION_MATCH NParticleEngine::CParticleSystem::AllocateParticle
+  00af5380 RELOCATION_MATCH NParticleEngine::CParticleSystem::?AllocateDecal@CParticleSystem@NParticleEngine@@QAEPAVCDecal@2@XZ
+  00b09360 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::??0CPSCSingleSprite
+  00b0ca90 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::??1CPSCUpdateNormal@NParticleEngine@@UAE@XZ
+  00b0f990 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::??_GCPSCUpdateNormal@NParticleEngine@@UAEPAXI@Z
