@@ -1,0 +1,5 @@
+00d16460	00d16460   SRC_FAIL         PASS   NScript::CQ_BountyHuntScript::CBH_GangDeputy1::Init
+00e0daa0	00e0daa0   SRC_FAIL         PASS   NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttacker::Init
+00e76920	00e76920   SRC_FAIL         PASS   NScript::CV_ExposeMayorScript::CEM_FlashLightPoint::Main
+00f09420	00f09420   SRC_FAIL         PASS   NScript::CQ_AmbushTradersScript::CAT_Phase3Archer::Init
+00f09530	00f09530   SRC_FAIL         PASS   NScript::CQ_AmbushTradersScript::CAT_Phase3Guard::Init

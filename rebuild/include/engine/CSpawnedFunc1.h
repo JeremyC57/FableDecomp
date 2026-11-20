@@ -11,6 +11,7 @@
 #ifndef FABLE_RETAIL_SUSPENDABLE_PROCESS
 #error engine/CSpawnedFunc1.h is the retail model: define FABLE_RETAIL_SUSPENDABLE_PROCESS before including it
 #else
+#include "fable_compiler.h"                      // FABLE_FORCEINLINE (FABLE_SPAWNEDFUNC_INLINE below)
 #include "engine/CSpawnedFuncBase.h"
 #if defined(_MSC_VER)
 #define FABLE_SPAWNEDFUNC_INLINE FABLE_FORCEINLINE
