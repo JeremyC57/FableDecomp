@@ -406,3 +406,4 @@ plus re-ports of its helper owners 0x00A4D920, 0x00A52760, 0x00A53860, 0x00A4C1F
 Add-only opt-ins in C3DAnimation2.h and C3DMesh2.h. NAME_FIXES there: the PDB tables are GFastArcCosTable / GFastCosTable; 13 landed rows
 still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A->B: nf129 landed (37 rows; 1 MATCH, 36 RELOCATION_MATCH; headers CStringParser.h, CSystemManager.h (enum-only partial mode), CParsedItem.h, add-only opt-ins). 204 / 204 rechecked good; six universal CCharString / CWideString callee targets dropped from the gate recompile (nf120 GOTCHA), none of their table sets grew. Pre-existing LNK2005 on CPersistTraits<unsigned long>::TransferBinaryIn (0x005079C0 / 0x004FDE80) queued as debt.
+2026-11-20 A->B: NF131 and NF133 handed back (landings nf131, nf133 next). New agents NF134 (NF131's 7 leftover entries) and NF135 (NF130's 5 open entries); rows locked, in claims. NF133's 16 open entries wait for the next free slot.
