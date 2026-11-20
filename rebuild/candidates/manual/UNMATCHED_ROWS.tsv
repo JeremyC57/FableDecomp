@@ -78,7 +78,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 005b9641	CTCInventoryClothing	DrawPreparePrimitivesForRendering	1455	parked	matched in a lane, not landed	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1006/differ/005b9641.cpp	gapscan/boundary
 005bfd5e	CTCInventoryBase	OnSerialise	425	parked	DIFFER(424v425)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/005bfd5e.cpp	original
 005c0a98	CPersistTraits<NInventory::CItem>	TransferBinaryOut	396	parked	DIFFER(368v369)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1020/differ/005c0a98.cpp	original
-005c2118	CPersistTraits<NInventory::CItem>	TransferIn	1569	reserved (acctB p25A, 2026-11-20)	DIFFER(1571v1569)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand773/differ/005c2118.test.cpp	original
 005ca68e	CTCInventoryWeapons	SetupActiveWeaponsOnCarrier	1535	parked	DIFFER(1538v1535)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1006/differ/005ca68e.cpp	original
 005cd4c4	CTCInventoryStats	BuildHeroClass	499	parked	DIFFER(483v499)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/005cd4c4.cpp	original
 005cda50	CTCInventoryStats	GlobalUpdate	366	parked	DIFFER(359v366)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/005cda50.cpp	original

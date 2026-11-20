@@ -1,0 +1,18 @@
+diff --git a/rebuild/include/engine/CPersistTraits.h b/rebuild/include/engine/CPersistTraits.h
+index 69d52c77b..58631bda6 100644
+--- a/rebuild/include/engine/CPersistTraits.h
++++ b/rebuild/include/engine/CPersistTraits.h
+@@ -305,6 +305,13 @@ public:
+ template<> void CPersistTraits<bool>::TransferIn(CPersistContext&,CStringParser&,bool&);
+ #endif
+ #endif
++#if defined(FABLE_RETAIL_CPERSISTTRAITS_CCHARSTRING_TRANSFERIN_DECL) && !defined(FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE)
++// Opt-in (p25A, row 0x005C2118 CPersistTraits<NInventory::CItem>::TransferIn): Ego_r.pdb / FableWin.pdb
++// ?TransferIn@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCCharString@@@Z, the quoted-string reader,
++// out of line in retail at 0x0040E510 (landed; called at 0x005C22F8 / 0x005C25E4 with `this` = the traits object). The generic member
++// body (a long read cast to T) does not apply to CCharString. Declaration only.
++template<> void CPersistTraits<CCharString>::TransferIn(CPersistContext&,CStringParser&,CCharString&);   // 0x0040E510
++#endif
+ #ifdef FABLE_RETAIL_CPERSISTTRAITS_BOOL_BINARYOUT
+ // Retail opt-in (chunk 1018, row 0x0067E290): FableWin.pdb ?TransferBinaryOut@?$CPersistTraits@_N@@QAEXAAVCDataOutputStream@@AB_N@Z (the PDB
+ // takes `const bool&`; this header's generic member takes T by value, which the specialisation must follow -- header debt), inline

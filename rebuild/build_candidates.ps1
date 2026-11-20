@@ -401543,6 +401543,13 @@ $catalog = @(
         TestSource = '00/70/CAnimateThing_Update_0070e8b0_test.cpp'
         PassPattern = '0070e8b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005c2118'
+        Module = 'CPersistTraits<NInventory::CItem>'
+        Source = '00/5c/CPersistTraitsNInventoryCItem_TransferIn_005c2118.cpp'
+        TestSource = '00/5c/CPersistTraitsNInventoryCItem_TransferIn_005c2118_test.cpp'
+        PassPattern = '005c2118_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

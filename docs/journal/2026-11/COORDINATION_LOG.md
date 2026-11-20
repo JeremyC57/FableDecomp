@@ -537,3 +537,5 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: NAME_FIXES from p25 0x0070E8B0 (batches/2026-11-20_landing_p25_0070e8b0/NAME_FIXES.tsv), incl. a labels-DB respell 0x0129BA3C g_NormaliseEpsilon -> DELTA_NOTIONAL_ZERO. The row is ?Update@CAnimateThing@@QAEXABVCAnimateThingUpdate@@@Z, not the catalog's UpdateFrameLogic.
 2026-11-20 A: landed nf171 (17 rows): CThing / player GUI names; 0x00446B10's self rename follows in nf171b.
 2026-11-20 A: landed nf171b (1 row): 0x00446B10 self rename to CGamePlayerInterface::IsGameActionEventInQueue.
+2026-11-20 B->A: Landed p25 0x005C2118 CPersistTraits<NInventory::CItem>::TransferIn (batches/2026-11-20_landing_p25_005c2118). Headers: engine/CPersistTraits.h engine/NInventory_CTCInventoryBase.h . Newly flagged: 2 rows (newly_flagged_rows.tsv).
+2026-11-20 B->A: NAME_FIXES from p25 0x005C2118: 0x005BEC40 is ??0CItem@NInventory@@QAE@JJPBVCPerItemData@1@J@Z (landed as a global ::CItem ctor; batches/2026-11-20_landing_p25_005c2118/NAME_FIXES.tsv).

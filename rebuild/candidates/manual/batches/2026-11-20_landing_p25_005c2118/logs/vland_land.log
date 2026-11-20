@@ -1,0 +1,8 @@
+addr       parity           behav  name
+005c2118   RELOCATION_MATCH PASS   TransferIn
+
+WINS: 1
+  005c2118 RELOCATION_MATCH CPersistTraits<NInventory::CItem>::?TransferIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCItem@NInventory@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CPersistTraitsNInventoryCItem_TransferIn_005c2118
