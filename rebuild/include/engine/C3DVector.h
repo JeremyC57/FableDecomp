@@ -198,6 +198,13 @@ public:
 #endif
 #endif // preserve implicit libpk copy
     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
+#ifdef FABLE_RETAIL_C3DVECTOR_TOC3DVECTOR
+    // Retail opt-in (hand3c3, row 0x00B075D0 CPSCSingleSprite::AddToBoundingSphere): Ego_d.pdb / FableWin.pdb
+    // ?ToC3DVector@C3DVector@@QBE?AV1@XZ (FableWin 0x02C9FCA0, 28 bytes; Ego_d line table 7 / 15 / 6 = `return *this;` through the
+    // copy constructor), the C3DVector twin of C4DVector::ToC3DVector; inline in retail (no Fable.exe copy). The sprite trail
+    // loop copies each trail position through it (Ego_d line 253 is 19 bytes: hidden return slot + operator-> + this call).
+    C3DVector ToC3DVector() const { return *this; }
+#endif
 #if defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_SUB)
     // Retail opt-in (agentC17; rows 0x00BA5260 RenderMeshPrimitive, 0x00BB30A0 / 0x00BB3E80 cloth): a default-constructed named result
     // filled through Initialise. FableWin.pdb ??GC3DVector@@QBE?BV0@ABV0@@Z debug copy 34i; this text gives 34i at /Od (the named-ctor

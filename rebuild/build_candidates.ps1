@@ -401252,6 +401252,13 @@ $catalog = @(
         TestSource = '00/9c/CFileInstaller_ProcessActiveFileForDecompression_009c3c20_test.cpp'
         PassPattern = '009c3c20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b075d0'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_AddToBoundingSphere_00b075d0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_AddToBoundingSphere_00b075d0_test.cpp'
+        PassPattern = '00b075d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
