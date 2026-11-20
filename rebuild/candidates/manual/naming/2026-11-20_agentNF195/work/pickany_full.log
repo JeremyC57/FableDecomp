@@ -1,0 +1,367 @@
+== H 00442870: 7 new symbols
+  FREE   ??$_Destroy@UCRecordWithWideStringAt0@@@std@@YAXPAUCRecordWithWideStringAt0@@0@Z
+  FREE   ??$_Destroy@UCRecordWithWideStringAt0@@@std@@YAXPAUCRecordWithWideStringAt0@@@Z
+  FREE   ??$__destroy_aux@PAUCRecordWithWideStringAt0@@@std@@YAXPAUCRecordWithWideStringAt0@@0ABU__false_type@0@@Z
+  FREE   ??1?$_Vector_base@UCRecordWithWideStringAt0@@@std@@QAE@XZ
+  FREE   ??1?$vector@UCRecordWithWideStringAt0@@@std@@QAE@XZ
+  FREE   ??1CRecordWithWideStringAt0@@QAE@XZ
+  FREE   ??_GCRecordWithWideStringAt0@@QAEPAXI@Z
+== S 00442870: 12 new symbols
+  FREE   ??$_Destroy@PAVCEmbeddedHighlight@CSubtitleRenderer@@@std@@YAXPAVCEmbeddedHighlight@CSubtitleRenderer@@0@Z
+  FREE   ??$_Destroy@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@YAXPAVCEmbeddedHighlight@CSubtitleRenderer@@@Z
+  FREE   ??$__destroy@PAVCEmbeddedHighlight@CSubtitleRenderer@@V12@@std@@YAXPAVCEmbeddedHighlight@CSubtitleRenderer@@00
+  FREE   ??$__destroy_aux@PAVCEmbeddedHighlight@CSubtitleRenderer@@@std@@YAXPAVCEmbeddedHighlight@CSubtitleRenderer@@0A
+  FREE   ??0__false_type@std@@QAE@XZ
+  FREE   ??1?$_STLP_alloc_proxy@PAVCEmbeddedHighlight@CSubtitleRenderer@@V12@V?$allocator@VCEmbeddedHighlight@CSubtitle
+  FREE   ??1?$_Vector_base@VCEmbeddedHighlight@CSubtitleRenderer@@V?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@
+  FREE   ??1?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@QAE@XZ
+  FREE   ??1?$vector@VCEmbeddedHighlight@CSubtitleRenderer@@V?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@@
+  FREE   ??1CEmbeddedHighlight@CSubtitleRenderer@@QAE@XZ
+  FREE   ??_GCEmbeddedHighlight@CSubtitleRenderer@@QAEPAXI@Z
+  FREE   ?deallocate@?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@QAEXPAVCEmbeddedHighlight@CSubtitleRender
+== H 00485d25: 1 new symbols
+  FREE   ?ApplyPair_00485d25@CClass_00485d25@@QAEXXZ
+== S 00485d25: 3 new symbols
+  FREE   ?begin@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@
+  FREE   ?clear@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ
+  FREE   ?end@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@NU
+== H 00579faa: 1 new symbols
+  FREE   ??1list_T_00579faa@std@@QAE@XZ
+== S 00579faa: 5 new symbols
+  FREE   ??1?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select
+  FREE   ??1?$_Rb_tree_base@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@V?$allocator@U?$pair@$$CBW4EHer
+  FREE   ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@std@@U1
+  FREE   ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@std@@@std@@QAE@XZ
+  FREE   ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@std@@@st
+== H 006588cf: 1 new symbols
+  FREE   ?CountReferences@@YIHPAUOuter@@@Z
+== S 006588cf: 3 new symbols
+  FREE   ??C?$CDefPointer@$$CBVCVillageDef@@@@QBEPBVCVillageDef@@XZ
+  FREE   ?Get@?$CDefPointer@$$CBVCVillageDef@@@@QBEPBVCVillageDef@@XZ
+  FREE   ?GetCostToBribe@CTCVillage@@QAEJXZ
+== H 006e9270: 4 new symbols
+  FREE   ?GetUID@CThingCreatureBase@@QBE_KXZ
+  FREE   ?IsAttacked@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  FREE   ?end@CRetailRbMap_UID_CombatantInfo@@QBEPAUnode@1@XZ
+  FREE   ?size@CRetailRbMap_UID_Creature@@QBEKXZ
+== S 006e9270: 11 new symbols
+  FREE   ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@s
+  OK     0041c830 22 22 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z
+  FREE   ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@s
+  FREE   ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@s
+  FREE   ?GetUID@CThingCreatureBase@@QBE_KXZ
+  FREE   ?IsAttacked@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  FREE   ?end@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U
+  FREE   ?end@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?A
+  FREE   ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@
+  FREE   ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?
+  FREE   ?size@CRetailRbMap_UID_Creature@@QBEKXZ
+== H 006e92c0: 3 new symbols
+  FREE   ?GetUID@CThingCreatureBase@@QBE_KXZ
+  FREE   ?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  FREE   ?end@CRetailRbMap_UID_CombatantInfo@@QBEPAUnode@1@XZ
+== S 006e92c0: 10 new symbols
+  FREE   ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@s
+  OK     0041c830 22 22 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z
+  FREE   ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@s
+  FREE   ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@s
+  FREE   ?GetUID@CThingCreatureBase@@QBE_KXZ
+  FREE   ?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  FREE   ?end@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U
+  FREE   ?end@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?A
+  FREE   ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@
+  FREE   ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?
+== H 006e9e40: 5 new symbols
+  FREE   ?BlockAttackerProngOnVictim@CCombatManager_Retail@@QAEXABVCThingCreatureBase@@@Z
+  FREE   ?GetCombatantInfo@CCombatManager_Retail@@QAEAAUCCombatantInfo@@_K@Z
+  FREE   ?GetUID@CThingCreatureBase@@QBE_KXZ
+  FREE   ?IsCreatureAttacking@CCombatManager_Retail@@QAE_N_K@Z
+  FREE   ?end@CRetailRbMap_UID_CombatantInfo@@QAEPAUnode@1@XZ
+== S 006e9e40: 20 new symbols
+  OK     006f0250 84 84 ??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombat
+  FREE   ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@
+  OK     0041c830 22 22 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z
+  FREE   ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@
+  FREE   ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@
+  FREE   ??R?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@std@@QBEAB_KABU?$pair@$$CB_KUCCombatantInfo@@@1@@Z
+  OK     00526120 37 37 ??R?$less@_K@std@@QBE_NAB_K0@Z
+  FREE   ?BlockAttackerProngOnVictim@CCombatManager_Retail@@QAEXABVCThingCreatureBase@@@Z
+  FREE   ?GetCombatantInfo@CCombatManager_Retail@@QAEAAUCCombatantInfo@@_K@Z
+  FREE   ?GetUID@CThingCreatureBase@@QBE_KXZ
+  FREE   ?IsCreatureAttacking@CCombatManager_Retail@@QAE_N_K@Z
+  FREE   ?_M_root@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@
+  FREE   ?_S_key@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@
+  FREE   ?_S_left@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@
+  FREE   ?_S_right@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@
+  FREE   ?_S_value@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@
+  FREE   ?end@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U
+  FREE   ?end@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QAE?A
+  FREE   ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@
+  FREE   ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QAE?
+== H 006edc50: 5 new symbols
+  FREE   ?CombatTrace@@YAXABVCCharString@@@Z
+  FREE   ?GetCombatantInfo@CCombatManager@@QAEAAUCCombatantInfo@@ABVCThingCreatureBase@@@Z
+  FREE   ?GetDefNameString@@YA?AVCCharString@@ABVCThingCreatureBase@@@Z
+  FREE   ?GetUID@CThingCreatureBase@@QBE_KXZ
+  FREE   ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z
+== S 006edc50: 18 new symbols
+  OK     006f0250 84 84 ??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombat
+  FREE   ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@
+  FREE   ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@
+  FREE   ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@
+  FREE   ??R?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@std@@QBEAB_KABU?$pair@$$CB_KUCCombatantInfo@@@1@@Z
+  OK     00526120 37 37 ??R?$less@_K@std@@QBE_NAB_K0@Z
+  FREE   ?CombatTrace@@YAXABVCCharString@@@Z
+  FREE   ?GetCombatantInfo@CCombatManager@@QAEAAUCCombatantInfo@@ABVCThingCreatureBase@@@Z
+  FREE   ?GetDefNameString@@YA?AVCCharString@@ABVCThingCreatureBase@@@Z
+  FREE   ?GetUID@CThingCreatureBase@@QBE_KXZ
+  FREE   ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z
+  FREE   ?_M_root@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@
+  FREE   ?_S_key@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@
+  FREE   ?_S_left@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@
+  FREE   ?_S_right@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@
+  FREE   ?_S_value@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@
+  FREE   ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@
+  FREE   ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QAE?
+== H 00798d30: 1 new symbols
+  FREE   ?GetShopKeeperGiveHintTextTag_00798d30@_unattributed@@QAE?AVCCharString@@XZ
+== S 00798d30: 1 new symbols
+  FREE   ?GetHint@CTCShopKeeper@@QAE?AVCCharString@@XZ
+== H 00aad5d0: 5 new symbols
+  DIFF   00aadd80 35 97 ??0?$CArray@F@@QAE@K@Z
+  FREE   ??1?$CArray@F@@QAE@XZ
+  DIFF   00aade80 89 236 ??4?$CArray@F@@QAEAAV0@ABV0@@Z
+  FREE   ??A?$CArray@F@@QAEAAFK@Z
+  FREE   ?ConvertToMono@CWaveFile@@QAEXXZ
+== S 00aad5d0: 32 new symbols
+  FREE   ??$_Destroy@PAF@std@@YAXPAF0@Z
+  FREE   ??$_M_allocate_and_copy@PBF@?$vector@FV?$allocator@F@std@@@std@@QAEPAFIPBF0@Z
+  FREE   ??$__copy_ptrs@PBFPAF@std@@YAPAFPBF0PAFABU__true_type@0@@Z
+  FREE   ??$__destroy@PAFF@std@@YAXPAF00@Z
+  FREE   ??$__destroy_aux@PAF@std@@YAXPAF0ABU__true_type@0@@Z
+  FREE   ??$__uninitialized_copy@F@std@@YAPAFPBF0PAFABU__true_type@0@@Z
+  FREE   ??$__uninitialized_fill_n@PAFIF@std@@YAPAFPAFIABFABU__true_type@0@@Z
+  FREE   ??$fill_n@PAFIF@std@@YAPAFPAFIABF@Z
+  FREE   ??$uninitialized_fill_n@PAFIF@std@@YAPAFPAFIABF@Z
+  FREE   ??0?$CArray@F@@QAE@I@Z
+  FREE   ??0?$_STLP_alloc_proxy@PAFFV?$allocator@F@std@@@std@@QAE@ABV?$allocator@F@1@PAF@Z
+  FREE   ??0?$_Vector_base@FV?$allocator@F@std@@@std@@QAE@IABV?$allocator@F@1@@Z
+  FREE   ??0?$allocator@F@std@@QAE@ABV01@@Z
+  FREE   ??0?$allocator@F@std@@QAE@XZ
+  OK     00aadd80 97 97 ??0?$vector@FV?$allocator@F@std@@@std@@QAE@I@Z
+  FREE   ??0__true_type@std@@QAE@XZ
+  FREE   ??1?$CArray@F@@QAE@XZ
+  FREE   ??1?$_STLP_alloc_proxy@PAFFV?$allocator@F@std@@@std@@QAE@XZ
+  FREE   ??1?$_Vector_base@FV?$allocator@F@std@@@std@@QAE@XZ
+  FREE   ??1?$allocator@F@std@@QAE@XZ
+  FREE   ??1?$vector@FV?$allocator@F@std@@@std@@QAE@XZ
+  DIFF   00aade80 19 236 ??4?$CArray@F@@QAEAAV0@ABV0@@Z
+  OK     00aade80 236 236 ??4?$vector@FV?$allocator@F@std@@@std@@QAEAAV01@ABV01@@Z
+  FREE   ??A?$CArray@F@@QAEAAFI@Z
+  FREE   ?ConvertToMono@CWaveFile@@QAEXXZ
+  FREE   ?_M_clear@?$vector@FV?$allocator@F@std@@@std@@IAEXXZ
+  FREE   ?__copy_trivial@std@@YAPAXPBX0PAX@Z
+  FREE   ?allocate@?$allocator@F@std@@QAEPAFIPBX@Z
+  FREE   ?begin@?$vector@FV?$allocator@F@std@@@std@@QAEPAFXZ
+  FREE   ?capacity@?$vector@FV?$allocator@F@std@@@std@@QBEIXZ
+  FREE   ?deallocate@?$allocator@F@std@@QAEXPAFI@Z
+  FREE   ?size@?$vector@FV?$allocator@F@std@@@std@@QBEIXZ
+== H 00b75ca0: 17 new symbols
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ??0CRenderStateScopedCaptureBlock@@QAE@XZ
+  FREE   ??1CRenderStateScopedCaptureBlock@@QAE@XZ
+  FREE   ?AddStateToUpdateList@CRenderStateManager@@AAEXAAUCStateInfo@1@@Z
+  FREE   ?AttachD3DTextureToStage@CRenderManagerCore@@AAEXJPAUIDirect3DBaseTexture9@@@Z
+  OK     009a0cf0 79 79 ?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z
+  FREE   ?GetData@?$CArray@VC4DVector@@@@QBEPBVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?RenderIceBackground@CEngineWaterRenderer@@QAEXM@Z
+  FREE   ?SetAlphaBlendEnable@CRenderStateManager@@QAEX_N@Z
+  FREE   ?SetAlphaTestEnable@CRenderStateManager@@QAEX_N@Z
+  FREE   ?SetRenderState@CRenderStateManager@@AAEXKAAUCStateInfo@1@@Z
+  FREE   ?SetTextureUVModeU@CRenderStateManager@@QAEXJW4TEXTURE_UV_MODE@@@Z
+  FREE   ?SetTextureUVModeV@CRenderStateManager@@QAEXJW4TEXTURE_UV_MODE@@@Z
+  FREE   ?Size@?$CArray@VC4DVector@@@@QBEKXZ
+  FREE   ?StartCaptureBlock@CRenderStateManager@@QAEXPAX@Z
+  FREE   __real@3f000000
+== S 00b75ca0: 19 new symbols
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ??0CRenderStateScopedCaptureBlock@@QAE@XZ
+  FREE   ??1CRenderStateScopedCaptureBlock@@QAE@XZ
+  FREE   ?AddStateToUpdateList@CRenderStateManager@@AAEXAAUCStateInfo@1@@Z
+  FREE   ?AttachD3DTextureToStage@CRenderManagerCore@@AAEXJPAUIDirect3DBaseTexture9@@@Z
+  OK     009a0cf0 79 79 ?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z
+  FREE   ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+  FREE   ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?RenderIceBackground@CEngineWaterRenderer@@QAEXM@Z
+  FREE   ?SetAlphaBlendEnable@CRenderStateManager@@QAEX_N@Z
+  FREE   ?SetAlphaTestEnable@CRenderStateManager@@QAEX_N@Z
+  FREE   ?SetRenderState@CRenderStateManager@@AAEXKAAUCStateInfo@1@@Z
+  FREE   ?SetTextureUVModeU@CRenderStateManager@@QAEXJW4TEXTURE_UV_MODE@@@Z
+  FREE   ?SetTextureUVModeV@CRenderStateManager@@QAEXJW4TEXTURE_UV_MODE@@@Z
+  FREE   ?StartCaptureBlock@CRenderStateManager@@QAEXPAX@Z
+  FREE   ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+  FREE   ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+  FREE   __real@3f000000
+== H 00b77e20: 22 new symbols
+  FREE   ??0C4DVector@@QAE@MMMM@Z
+  FREE   ??0C4DVector@@QAE@XZ
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ??0CRenderStateScopedCaptureBlock@@QAE@XZ
+  FREE   ??1CRenderStateScopedCaptureBlock@@QAE@XZ
+  FREE   ?AddStateToUpdateList@CRenderStateManager@@AAEXAAUCStateInfo@1@@Z
+  FREE   ?AttachD3DTextureToStage@CRenderManagerCore@@AAEXJPAUIDirect3DBaseTexture9@@@Z
+  OK     009a0cf0 79 79 ?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z
+  FREE   ?GetData@?$CArray@VC4DVector@@@@QBEPBVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?RenderSeaNonReflectiveForeground@CEngineWaterRenderer@@QAEXM@Z
+  FREE   ?SelectIndexBuffer@CRenderManagerCore@@QAEXPAVCIndexBuffer@@K@Z
+  FREE   ?SetPixelShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z
+  FREE   ?SetRenderState@CRenderStateManager@@AAEXKAAUCStateInfo@1@@Z
+  FREE   ?SetTextureUVModeU@CRenderStateManager@@QAEXJW4TEXTURE_UV_MODE@@@Z
+  FREE   ?SetTextureUVModeV@CRenderStateManager@@QAEXJW4TEXTURE_UV_MODE@@@Z
+  FREE   ?Size@?$CArray@VC4DVector@@@@QBEKXZ
+  FREE   ?StartCaptureBlock@CRenderStateManager@@QAEXPAX@Z
+  FREE   __real@00000000
+  FREE   __real@3e800000
+  FREE   __real@3f800000
+  FREE   __real@bf000000
+== S 00b77e20: 27 new symbols
+  FREE   ??0C4DVector@@QAE@MMMM@Z
+  FREE   ??0C4DVector@@QAE@XZ
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ??0CRenderStateScopedCaptureBlock@@QAE@XZ
+  FREE   ??1CRenderStateScopedCaptureBlock@@QAE@XZ
+  FREE   ??A?$CArray@VC4DVector@@@@QAEAAVC4DVector@@I@Z
+  FREE   ?AddStateToUpdateList@CRenderStateManager@@AAEXAAUCStateInfo@1@@Z
+  FREE   ?AttachD3DTextureToStage@CRenderManagerCore@@AAEXJPAUIDirect3DBaseTexture9@@@Z
+  OK     009a0cf0 79 79 ?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z
+  FREE   ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+  FREE   ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?RenderSeaNonReflectiveForeground@CEngineWaterRenderer@@QAEXM@Z
+  FREE   ?SelectIndexBuffer@CRenderManagerCore@@QAEXPAVCIndexBuffer@@K@Z
+  FREE   ?SetPixelShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z
+  FREE   ?SetRenderState@CRenderStateManager@@AAEXKAAUCStateInfo@1@@Z
+  FREE   ?SetTextureUVModeU@CRenderStateManager@@QAEXJW4TEXTURE_UV_MODE@@@Z
+  FREE   ?SetTextureUVModeV@CRenderStateManager@@QAEXJW4TEXTURE_UV_MODE@@@Z
+  FREE   ?StartCaptureBlock@CRenderStateManager@@QAEXPAX@Z
+  FREE   ?begin@?$vector@PAVCWaterPatchMesh@@V?$allocator@PAVCWaterPatchMesh@@@std@@@std@@QAEPAPAVCWaterPatchMesh@@XZ
+  FREE   ?end@?$vector@PAVCWaterPatchMesh@@V?$allocator@PAVCWaterPatchMesh@@@std@@@std@@QAEPAPAVCWaterPatchMesh@@XZ
+  FREE   ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+  FREE   ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+  FREE   __real@00000000
+  FREE   __real@3e800000
+  FREE   __real@3f800000
+  FREE   __real@bf000000
+== H 00b7eec0: 11 new symbols
+  FREE   ??0C4DVector@@QAE@MMMM@Z
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ?Clamp@@YAMMMM@Z
+  FREE   ?GetData@?$CArray@VC4DVector@@@@QBEPBVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?SetPixelShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z
+  FREE   ?SetupForegroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ
+  FREE   ?Size@?$CArray@VC4DVector@@@@QBEKXZ
+  FREE   __real@00000000
+  FREE   __real@3e800000
+  FREE   __real@3f800000
+== S 00b7eec0: 14 new symbols
+  FREE   ??0C4DVector@@QAE@MMMM@Z
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ??A?$CArray@VC4DVector@@@@QAEAAVC4DVector@@I@Z
+  FREE   ?Clamp@@YAMMMM@Z
+  FREE   ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+  FREE   ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?SetPixelShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z
+  FREE   ?SetupForegroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ
+  FREE   ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+  FREE   ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+  FREE   __real@00000000
+  FREE   __real@3e800000
+  FREE   __real@3f800000
+== H 00b7f0f0: 11 new symbols
+  FREE   ??0C4DVector@@QAE@ABVCRGBFloatColour@@@Z
+  FREE   ??0C4DVector@@QAE@MMMM@Z
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ??0CRGBFloatColour@@QAE@MMMM@Z
+  FREE   ??D@YA?AVCRGBFloatColour@@ABV0@0@Z
+  FREE   ?GetData@?$CArray@VC4DVector@@@@QBEPBVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?SetPixelShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z
+  FREE   ?SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ
+  FREE   ?Size@?$CArray@VC4DVector@@@@QBEKXZ
+  FREE   __real@bf000000
+== S 00b7f0f0: 14 new symbols
+  FREE   ??0C4DVector@@QAE@ABVCRGBFloatColour@@@Z
+  FREE   ??0C4DVector@@QAE@MMMM@Z
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ??0CRGBFloatColour@@QAE@MMMM@Z
+  FREE   ??A?$CArray@VC4DVector@@@@QAEAAVC4DVector@@I@Z
+  FREE   ??D@YA?AVCRGBFloatColour@@ABV0@0@Z
+  FREE   ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+  FREE   ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?SetPixelShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z
+  FREE   ?SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ
+  FREE   ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+  FREE   ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+  FREE   __real@bf000000
+== H 00b7f3b0: 12 new symbols
+  FREE   ??0C4DVector@@QAE@MMMM@Z
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ?Clamp@@YAMMMM@Z
+  FREE   ?GetData@?$CArray@VC4DVector@@@@QBEPBVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?SetPixelShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z
+  FREE   ?SetupIceForegroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ
+  FREE   ?Size@?$CArray@VC4DVector@@@@QBEKXZ
+  FREE   __real@00000000
+  FREE   __real@3e800000
+  FREE   __real@3f000000
+  FREE   __real@3f800000
+== S 00b7f3b0: 15 new symbols
+  FREE   ??0C4DVector@@QAE@MMMM@Z
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ??A?$CArray@VC4DVector@@@@QAEAAVC4DVector@@I@Z
+  FREE   ?Clamp@@YAMMMM@Z
+  FREE   ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+  FREE   ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?SetPixelShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z
+  FREE   ?SetupIceForegroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ
+  FREE   ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+  FREE   ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+  FREE   __real@00000000
+  FREE   __real@3e800000
+  FREE   __real@3f000000
+  FREE   __real@3f800000
+== H 00b7f600: 6 new symbols
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ?GetData@?$CArray@VC4DVector@@@@QBEPBVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?SetupBackgroundShaderConstants@CEngineWaterRenderer@@QAEXXZ
+  FREE   ?Size@?$CArray@VC4DVector@@@@QBEKXZ
+  FREE   __real@3f000000
+== S 00b7f600: 8 new symbols
+  FREE   ??0CPreTransposedBoneMatrix@@QAE@XZ
+  FREE   ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+  FREE   ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+  FREE   ?PrepareForRender@CShaderRenderManager@@QAEXK@Z
+  FREE   ?SetupBackgroundShaderConstants@CEngineWaterRenderer@@QAEXXZ
+  FREE   ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+  FREE   ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+  FREE   __real@3f000000
+== H 00f0ca30: 2 new symbols
+  FREE   ??$SwapValues@K@@YAXAAK0@Z
+  FREE   ?Swap@SThreeWordRecord@@QAEXAAU1@@Z
+== S 00f0ca30: 7 new symbols
+  FREE   ??$swap@PAUTeleportData@CQ_AmbushTradersScript@NScript@@@std@@YAXAAPAUTeleportData@CQ_AmbushTradersScript@NScr
+  FREE   ??$swap@V?$_STLP_alloc_proxy@PAUTeleportData@CQ_AmbushTradersScript@NScript@@U123@V?$allocator@UTeleportData@C
+  FREE   ??0?$_STLP_alloc_proxy@PAUTeleportData@CQ_AmbushTradersScript@NScript@@U123@V?$allocator@UTeleportData@CQ_Ambu
+  FREE   ??0?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@QAE@ABV01@@Z
+  FREE   ??1?$_STLP_alloc_proxy@PAUTeleportData@CQ_AmbushTradersScript@NScript@@U123@V?$allocator@UTeleportData@CQ_Ambu
+  FREE   ??1?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@QAE@XZ
+  FREE   ?swap@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript

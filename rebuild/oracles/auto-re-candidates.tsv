@@ -4662,7 +4662,7 @@ address	name	length	bytes
 00f35b30	CEntityScriptBase::IsActiveThreadTerminating	12	8b01ff500c8bc8e9041ed8ff
 004167cd	CMainGameComponent::GetCurrentFrameFinishTimeApproximation	13	568bf1e844faffffdc46585ec3
 0049d8b0	CWorld::StartCountdownTimer	13	8b4424048981a0000000c20400
-006588cf	_global::GetMember_dword0x94_deref0xf8_006588cf	13	8b81940000008b80f8000000c3
+006588cf	CTCVillage::GetCostToBribe	13	8b81940000008b80f8000000c3
 00661ee0	_global::GetMember_dword0xe0_deref0xf8_00661ee0	13	8b81e00000008b80f8000000c3
 00661ff0	CThingCreatureBase::GetSex	13	8b81e00000008b80c0000000c3
 00662000	CThingCreatureBase::GetCreatureType	13	8b81e00000008b80c4000000c3
@@ -6404,7 +6404,7 @@ address	name	length	bytes
 0077d3e0	CTCHeroCentre::OnHeroCloseDoor	25	8b4110487512c74110000000008b0d90873b01e9b8a0cbffc3
 0077f4c0	CVectorMap<CCharString, C3DVector, CKeyPairCompareLess<CCharString, C3DVector>>::Sort	25	568bf18b56048b0e33c08a460c50e86dffffffc6460d005ec3
 007874a0	CTCSkeletalMorph::GetClassTypeName	25	568b7424086aff68fcbf23018bcee83d7721008bc65ec20400
-00798d30	_unattributed::GetShopKeeperGiveHintTextTag_00798d30	25	568b7424086aff682cc126018bcee8ad5e20008bc65ec20400
+00798d30	CTCShopKeeper::GetHint	25	568b7424086aff682cc126018bcee8ad5e20008bc65ec20400
 007a3c80	_global::StdList_Dtor_007a3c80	25	568bf1e888fcffff8b3685f6740956e880ad450083c4045ec3
 007a6db0	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::GetClassTypeName	25	568b7424086aff689cc423018bcee82d7e1f008bc65ec20400
 007b6c70	CTCCrateStack::GetClassTypeName	25	568b7424086aff68d0c823018bcee86d7f1e008bc65ec20400
@@ -9924,7 +9924,7 @@ address	name	length	bytes
 0053c965	std::list<T_0053c965>::~list	23	568bf1e83cffffff8b3685f6740756e89b206c00595ec3
 00579616	std::list<T_00579616>::~list	23	568bf1e835fdffff8b3685f6740756e8ea536800595ec3
 0057988c	std::list<T_0057988c>::~list	23	568bf1e82ffdffff8b3685f6740756e874516800595ec3
-00579faa	std::list<T_00579faa>::~list	23	568bf1e8f1feffff8b3685f6740756e8564a6800595ec3
+00579faa	std::_Rb_tree<EHeroTrainableStatType,std::pair<const EHeroTrainableStatType,SExpSpendUndo>,std::_Select1st<std::pair<const EHeroTrainableStatType,SExpSpendUndo> >,std::less<EHeroTrainableStatType>,std::allocator<std::pair<const EHeroTrainableStatType,SExpSpendUndo> > >::~_Rb_tree	23	568bf1e8f1feffff8b3685f6740756e8564a6800595ec3
 00579fc1	std::list<T_00579fc1>::~list	23	568bf1e803ffffff8b3685f6740756e83f4a6800595ec3
 00593b03	std::list<T_00593b03>::~list	23	568bf1e859fcffff8b3685f6740756e8fdae6600595ec3
 00412b00	CUserProfileManager::`scalar deleting destructor'	30	568bf1e8885efffff644240801740956e8a7be7e0083c4048bc65ec20400
@@ -26109,7 +26109,7 @@ address	name	length	bytes
 00a67410	CVertexBufferWin32::DoUnlock	10	8b41048b0850ff5128c3
 00ac1f00	CIndexBuffer::Unlock	10	8b41048b0850ff5130c3
 00485d1a	std::vector<long, std::allocator<long>>::clear	11	ff7104ff31e86ca8fbffc3
-00485d25	_unattributed::ApplyPair_00485d25	11	ff7104ff31e878fdffffc3
+00485d25	std::vector<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*> >::clear	11	ff7104ff31e878fdffffc3
 00485fe8	std::vector<CCharString>::clear	11	ff7104ff31e878d3faffc3
 005419f0	NUISystem::CIconText::CanScroll	9	d905dcde2201c20800
 006b12f0	CTCPhysicsBase::GetRenderZOffset	9	d905dcde2201c20400
@@ -29287,7 +29287,7 @@ address	name	length	bytes
 00bddda0	CLocalDetailCacheMap::CObjectTypeCollection::~CObjectTypeCollection	51	568bf18b460885c0c7069c7d2a01741b578b4e0885c98b790474068b016a01ff108bc785c0897e0875e75fc70660b829015ec3
 00bdde80	CLocalDetailCacheMap::CObjectCacheGroupCollection::~CObjectCacheGroupCollection	82	568bf1f6463602c706dc7d2a0174138b46288b4e248b490450e862250000806636fd8b462085c07421578d9b000000008b4e2085c98b790c74068b116a01ff128bc785c0897e2075e75fc70660b829015ec3
 00c48d90	CPointerHolder_00c48d90::CPointerHolder_00c48d90	26	568bf133c08d4e1089460489460889460ce80adafcff8bc65ec3
-00f0ca30	SThreeWordRecord::Swap	41	8b4424048b11568b30893189108b70048b51048971048950048b70088b51088971088950085ec20400
+00f0ca30	std::vector<NScript::CQ_AmbushTradersScript::TeleportData,std::allocator<NScript::CQ_AmbushTradersScript::TeleportData> >::swap	41	8b4424048b11568b30893189108b70048b51048971048950048b70088b51088971088950085ec20400
 00f25dd0	CArenaCreatureDef::CArenaCreatureDef	63	56578b7c240c578bf1e86e0654ff8d4728508d4e28c70658b32f01e8408ea7ff8b4f2c8d5730894e2c528d4e30e82e8ea7ff8b47348946345f8bc65ec20400
 00f36ba0	NFractal::CNoise::CNoise	22	568bf1c7860018000000000000e84ef2ffff8bc65ec3
 0042d9e0	CDefClassBase::CDefClassBase	29	568bf1e8d8e45c00806624f8c706cc0b2301c7461c000000008bc65ec3
@@ -36943,7 +36943,7 @@ address	name	length	bytes
 00441380	NHeroInformationScreens::CManager::~CManager	53	568bf18b461c85c0740950e884d67b0083c4048b461085c0740950e874d67b0083c4048b760485f6740956e864d67b0083c4045ec3
 004425c0	CRecordWithThreeVectors::`scalar deleting destructor'	73	568bf18b461c85c0740950e844c47b0083c4048b461085c0740950e834c47b0083c4048b460485c0740950e824c47b0083c404f644240801740956e8bcc37b0083c4048bc65ec20400
 00442770	std::vector<unsigned int, std::allocator<unsigned int>>::resize	87	8b54240456578bf98b47048b378bc82bcec1f9023bd1732a3bc08d0c96750a8bc18947045f5ec208008bf02bf0565051e841c37b0083c40c03c68947045f5ec208008b742410562bd152508bcfe85ee8ffff5f5ec20800
-00442870	CDefendingCombatantInfo::CCombatWheel::ResetRings	49	53568bd98b33578b7b043bf774108bff8bcee8898c550083c6143bf775f28b1b85db740953e87ac17b0083c4045f5e5bc3
+00442870	std::vector<CSubtitleRenderer::CEmbeddedHighlight,std::allocator<CSubtitleRenderer::CEmbeddedHighlight> >::~vector	49	53568bd98b33578b7b043bf774108bff8bcee8898c550083c6143bf775f28b1b85db740953e87ac17b0083c4045f5e5bc3
 00443140	CRecordWithVectorAndList::~CRecordWithVectorAndList	75	538bd9568d73288bcee822d6ffff8b3685f6740956e8bab87b0083c4048b731c578b7b203bf7740f8b066a008bceff1083c6083bf775f18b5b1c85db5f740953e88fb87b0083c4045e5bc3
 00443190	_global::StdList_Dtor_00443190	38	56578bf98d77648bcee812d6ffff8b3685f6740956e86ab87b0083c4048bcf5f5ee9caf0ffff
 004431c0	_global::StdList_Dtor_004431c0	38	56578bf98d77648bcee8e2d5ffff8b3685f6740956e83ab87b0083c4048bcf5f5ee99af0ffff

@@ -32870,9 +32870,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006588cf'
-        Module = '_global'
-        Source = '00/65/CPixelShader_CountReferences_006588cf.cpp'
-        TestSource = '00/65/CPixelShader_CountReferences_006588cf_test.cpp'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_GetCostToBribe_006588cf.cpp'
+        TestSource = '00/65/CTCVillage_GetCostToBribe_006588cf_test.cpp'
         PassPattern = '006588cf_TEST PASS'
     }
     [pscustomobject]@{
@@ -45054,9 +45054,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00798d30'
-        Module = '_unattributed'
-        Source = '00/79/_unattributed_GetShopKeeperGiveHintTextTag_00798d30_00798d30.cpp'
-        TestSource = '00/79/_unattributed_GetShopKeeperGiveHintTextTag_00798d30_00798d30_test.cpp'
+        Module = 'CTCShopKeeper'
+        Source = '00/79/CTCShopKeeper_GetHint_00798d30.cpp'
+        TestSource = '00/79/CTCShopKeeper_GetHint_00798d30_test.cpp'
         PassPattern = '00798d30_TEST PASS'
     }
     [pscustomobject]@{
@@ -69707,9 +69707,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00579faa'
-        Module = 'std'
-        Source = '00/57/std_list_T_00579faa_dtor_00579faa.cpp'
-        TestSource = '00/57/std_list_T_00579faa_dtor_00579faa_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType,std::pair<const EHeroTrainableStatType,SExpSpendUndo>,std::_Select1st<std::pair<const EHeroTrainableStatType,SExpSpendUndo> >,std::less<EHeroTrainableStatType>,std::allocator<std::pair<const EHeroTrainableStatType,SExpSpendUndo> > >'
+        Source = '00/57/stdRbtree_Rbtree_00579faa.cpp'
+        TestSource = '00/57/stdRbtree_Rbtree_00579faa_test.cpp'
         PassPattern = '00579faa_TEST PASS'
     }
     [pscustomobject]@{
@@ -183461,9 +183461,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00485d25'
-        Module = '_unattributed'
-        Source = '00/48/unattributed_ApplyPair00485d25_00485d25.cpp'
-        TestSource = '00/48/unattributed_ApplyPair00485d25_00485d25_test.cpp'
+        Module = 'std::vector<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*> >'
+        Source = '00/48/stdvector_clear_00485d25.cpp'
+        TestSource = '00/48/stdvector_clear_00485d25_test.cpp'
         PassPattern = '00485d25_TEST PASS'
     }
     [pscustomobject]@{
@@ -206572,9 +206572,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f0ca30'
-        Module = 'SThreeWordRecord'
-        Source = '00/f0/SThreeWordRecord_Swap_00f0ca30.cpp'
-        TestSource = '00/f0/SThreeWordRecord_Swap_00f0ca30_test.cpp'
+        Module = 'std::vector<NScript::CQ_AmbushTradersScript::TeleportData,std::allocator<NScript::CQ_AmbushTradersScript::TeleportData> >'
+        Source = '00/f0/stdvector_swap_00f0ca30.cpp'
+        TestSource = '00/f0/stdvector_swap_00f0ca30_test.cpp'
         PassPattern = '00f0ca30_TEST PASS'
     }
     [pscustomobject]@{
@@ -260151,9 +260151,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00442870'
-        Module = 'std::vector<CRecordWithWideStringAt0>'
-        Source = '00/44/stdvectorCRecordWithWideStringAt0_vector_00442870.cpp'
-        TestSource = '00/44/stdvectorCRecordWithWideStringAt0_vector_00442870_test.cpp'
+        Module = 'std::vector<CSubtitleRenderer::CEmbeddedHighlight,std::allocator<CSubtitleRenderer::CEmbeddedHighlight> >'
+        Source = '00/44/stdvector_vector_00442870.cpp'
+        TestSource = '00/44/stdvector_vector_00442870_test.cpp'
         PassPattern = '00442870_TEST PASS'
     }
     [pscustomobject]@{

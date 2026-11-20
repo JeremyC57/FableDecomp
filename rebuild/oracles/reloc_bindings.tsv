@@ -621,7 +621,6 @@ _FreeThing@4	00451b82	00453630
 ?ListBoxDataHelper@@YIKKKK@Z	00405ba0	00485aa7
 ?ListNode_AllocateNode_00485ac5@@YGXK@Z	004857bc	00485ac5
 ?AutoTinyFreeListAllocation@@YGXPAX@Z	004857e0	00485aef
-?Apply@CClass_00485d25@@QAEXPAX0@Z	00485aa7	00485d25
 ??0SEntry_0048623f@@QAE@XZ	009e9ab0	0048623f
 ?Set@CArray_0048623f@@QAEXKABUSEntry_0048623f@@@Z	004861f7	0048623f
 ?GetMainPlayerNumber@CPlayerManagerCalls@@QAEJXZ	00449700	00487520
@@ -2509,10 +2508,8 @@ _HEALTH_UNSET	0122dedc	006a98f0
 ?LowerBound@TimerMap@@QAE?AUIter@@PBJ@Z	006e7c40	006e7710
 ?IncrementDefenderAttackPattern@CCombatManager@@QAEXAAUCCombatantInfo@@@Z	006e8600	006e86a0
 ?Reset@CCombatRing@@QAEXXZ	006e8b60	006e8bd0
-?find@CRetailRbMap_UID_CombatantInfo@@QAEPAUnode@1@AB_K@Z	006f0250	006e9270
 ?FindNode@CUIDMap@@QBEPAUSMapNode@@AB_K@Z	006f0250	006e9360
 ?FindNode@CCombatantMap@@QAEPAUSCombatantNode@@AB_K@Z	006f0250	006e9960
-?BlockAttackerProng@CCombatWheel@@QAEXABUCThingCreatureBase_Retail@@PBX@Z	006e9200	006e9e40
 ?IsDefenderDueForAttack@CCombatManager_Retail@@QAE_NPAUCCombatantInfo_Retail@@@Z	006e97f0	006ea050
 ?insert@CCharStringMap@@QAE?AUSInsertResult@@ABUSNamePair@@@Z	006f2940	006eab60
 ?FindLE@CombatMap@@QAEPAUCombatNode@@ABUCreatureUID@@@Z	006f0250	006eb600
@@ -8993,7 +8990,6 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?g_PhysicsUseSegmentation@@3_NA	013984d0	00a187c0
 ?g_PhysicsFacesQueryStamp@@3KA	013d2d44	00a86e20
 ?g_PhysicsFacesTriangleStamps@@3PAKA	013d2d48	00a86e20
-??0?$CArray@F@@QAE@K@Z	00aadd80	00aad5d0
 ?reserve@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXI@Z	00920ff0	00b18060
 ?GetRecord@CRecordHolder_c34600@@QBE?AUSRecord_c34600@@XZ	00c34600	00c21330
 ?GetValue48@CPlayer@@QBEJXZ	00c20ee0	00c21330
@@ -17066,7 +17062,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?erase@CPlaneArray@@QAEPAVCPlane@@PAV2@0@Z	00aab500	00aaab10
 ?insert@CPlaneArray@@QAEXPAVCPlane@@KABV2@@Z	00aab570	00aaab10
 ?WriteString@CDataOutputStream@@QAEXABVCCharString@@@Z	009959f0	00aad150
-??4?$CArray@F@@QAEAAV0@ABV0@@Z	00aade80	00aad5d0
 ?ReadFromFile@CChunkedFileSuperChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z	00aa8830	00aae2c0
 ?InsertGrow@CMatrixArray@@QAEXPAVCMatrix3x4@@ABV2@ABUSScalarTag@@K_N@Z	00aafe50	00aaf850
 ?erase@CMatrixArray@@QAEPAVCMatrix3x4@@PAV2@0@Z	00aafd10	00aaf850
@@ -26712,9 +26707,6 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?GetDef@CDefManager@@QAEXJPAV?$CDefPointer@VCCombatSequenceDef@@@@@Z	006f0ef0	006ec4f0
 ?_M_insert_overflow@CSequenceVector@@QAEXPAUCSequencePointer@@ABU2@ABU__false_type@@K_N@Z	006f42e0	006ec4f0
 ?find@CRegisteredSequenceMap@@QAEPAUSSequenceNode@@ABVCCharString@@@Z	006f1360	006ec4f0
-?GetWorldFrameString@@YI?AVCCharString@@XZ	0049d880	006edc50
-?RegisterAttackedCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0@Z	006ed270	006edc50
-?RegisterAttackingCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z	006eda80	006edc50
 ?DeleteData@?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@SIXPAX@Z	007180c0	007137d0
 ?IsPhysicsPushableByHero@NCreatureMode@@YI_NABVCThing@@@Z	0085fd70	00726340
 ?OnHeroPush@CThingAICreature@@QAEXPAVCThing@@MABVC3DVector@@@Z	008328d0	00726340
@@ -37595,9 +37587,6 @@ _time	00bfed22	008405f0
 ?gInactiveVolume_013ca60c@@3MA	013ca60c	009a5a50
 ?gSoundSuspended_013ca610@@3_NA	013ca610	009a5a50
 ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z	00989b00	00b52160
-?$S1@?6??SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4IA	014378a8	00b7f0f0
-?lowEndColour@?6??SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4VCRGBFloatColour@@A	01437888	00b7f0f0
-?lowEndConstant@?6??SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4VC4DVector@@A	01437898	00b7f0f0
 ?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPBXJJ0J@Z	00a0af40	00bb8090
 ?g_boxTriangleIndices@@3PAGA	0139b488	00bb8090
 ?g_renderStateDefault_01396e34@@3KA	01396e34	00bb8090
@@ -38057,8 +38046,6 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?SetupBackgroundStates@CEngineLandscapeRenderer@@AAEXXZ	00b671a0	00b6b0b0
 ?SetupCommonStates@CEngineLandscapeRenderer@@QAEXXZ	00b67480	00b6b0b0
 ?SetupForegroundStates@CEngineLandscapeRenderer@@QAEXXZ	00b677d0	00b6b0b0
-?RenderBackgroundList@CEngineWaterRenderer@@QAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z	00b6e260	00b75ca0
-?resize@?$CArray@UCPreTransposedBoneMatrix@@@@QAEXIABUCPreTransposedBoneMatrix@@@Z	00b7edf0	00b75ca0
 ?$S1@?M@??RenderBackground@CEngineWaterRenderer@@AAEXM@Z@4IA	014378a8	00b76bc0
 ?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A	01436e18	00b76bc0
 ?g_renderStateValue_01396dc8@@3KA	01396dc8	00b76bc0
@@ -38066,8 +38053,6 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?g_renderStateValue_01396dd0@@3KA	01396dd0	00b76bc0
 ?lowEndColour@?M@??RenderBackground@CEngineWaterRenderer@@AAEXM@Z@4VCRGBFloatColour@@A	01437888	00b76bc0
 ?lowEndConstant@?M@??RenderBackground@CEngineWaterRenderer@@AAEXM@Z@4VC4DVector@@A	01437898	00b76bc0
-?Render@CWaterPatchMesh@@QBEXJ@Z	00beaca0	00b77e20
-?g_pEngineEnvironment@@3PAUCEngineEnvironmentManagerView@@A	01436e8c	00b77e20
 ?g_QuadIndices_0139ab0c@@3QBGB	0139ab0c	00b88bc0
 ?GetLightsInSphereFast@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z	00b46b90	00bbc0b0
 ??0CShaderRenderManager@@QAE@XZ	0098ab00	01223d00
@@ -39431,3 +39416,13 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ??_7CActiveEntityScript@ArenaBinding@@6B@	012f9ec0	00f1cb50
 ?GetBestPatrolTaskForThing@CTCVillage@@QAEPAVCVillageTaskPatrol@@ABVCThing@@@Z	00658e90	0093f3c0
 ?SetPatrolTaskAsAcceptedByThing@CTCVillage@@QAE_NAAVCVillageTaskPatrol@@ABVCThing@@@Z	0065852d	0093f3c0
+?SetAttackerProngAsBlocked@CCombatWheel@CDefendingCombatantInfo@@QAEXABVCThingCreatureBase@@AAVCAttackingCombatantInfo@@@Z	006e9200	006e9e40
+?GetWorldFrameString@@YI?AVCCharString@@XZ	0049d880	006edc50
+?RegisterAttackedCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0@Z	006ed270	006edc50
+?RegisterAttackingCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z	006eda80	006edc50
+?RenderBackgroundList@CEngineWaterRenderer@@QAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z	00b6e260	00b75ca0
+?Render@CWaterPatchMesh@@QBEXJ@Z	00beaca0	00b77e20
+?g_pEngineEnvironment@@3PAUCEngineEnvironmentManagerView@@A	01436e8c	00b77e20
+?$S1@?6??SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4IA	014378a8	00b7f0f0
+?lowEndColour@?6??SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4VCRGBFloatColour@@A	01437888	00b7f0f0
+?lowEndConstant@?6??SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4VC4DVector@@A	01437898	00b7f0f0

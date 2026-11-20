@@ -44,14 +44,12 @@ struct CPreTransposedBoneMatrix {
     CPreTransposedBoneMatrix() { }
 };
 
-template <class T> class CArray { public:
-    T* First;
-    T* Last;
-    T* End;
-    unsigned long Size() const { return Last - First; }
-    const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
-    void resize(unsigned int n, const T& value);        // 0x00B7EDF0 for CPreTransposedBoneMatrix
-};
+// Name fix (NF195, 2026-11-20, q4567): the local CArray<T> template model is replaced by the shared engine/CArray.h (CArray<T> is an
+//   STLport vector<T>), so BoneMatrices.resize binds vector<CPreTransposedBoneMatrix>::resize 0x00B7EDF0 (declared only:
+//   FABLE_RETAIL_STLP_VECTOR_RESIZE_VALUE_DECL_ONLY); Size() / GetData() / First are the vector's size(), CArray::GetAsCArray() and
+//   CArray::operator[] / begin() / end().
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_VALUE_DECL_ONLY
+#include "engine/CArray.h"
 
 class CShaderConstantRange { public:
     void* _vptr;
@@ -78,15 +76,15 @@ public:
 
     void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
     {
-        *(PSConstTable.First + index) = value;
+        PSConstTable[index] = value;
         UpdateFlags |= 2;
     }
 
     FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
-            SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),
-                           CurrentVSConstantLayout->ReservedPresets.Size());
+            SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetAsCArray(),
+                           CurrentVSConstantLayout->ReservedPresets.size());
         if (UpdateFlags & 1)
             UpdatePixelShader();
         if (UpdateFlags & 2)
@@ -269,6 +267,6 @@ void CEngineWaterRenderer::RenderSeaNonReflectiveForeground(float time)
     colour.W = g_pEngineEnvironment->Owner->GetSource()->GetEnvironment()->State->Brightness * SeaColourBrightness;
     NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(7, colour);
     NEngineInternal::GPShaderRenderManager->PrepareForRender(0x604);
-    for (CWaterPatchMesh** it = SeaNonReflectiveForegroundRenderList.First; it != SeaNonReflectiveForegroundRenderList.Last; ++it)
+    for (CWaterPatchMesh** it = SeaNonReflectiveForegroundRenderList.begin(); it != SeaNonReflectiveForegroundRenderList.end(); ++it)
         (*it)->Render(WaterForegroundPolyCount);
 }
