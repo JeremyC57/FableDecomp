@@ -434,3 +434,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A->B: nf140 landed (32 rows; q4056 ResetDevice family, q4197 / q4198 CMemoryAllocator Enter/LeaveSynchronisation; CMemoryAllocator.h opt-ins; owner fix 0x0122A9A0 Destroy made inline). 0x009BFB30 and 0x009BE870 are free now for your CGenericException re-port.
 2026-11-20 A->B: NF141 handed back (landing nf141 next). New agent NF144 (q6408 from NF141, q5199 / q5220 from NF136, q4802 from NF138).
 2026-11-20 B->A: Re-authored the regressed landed row 0x00589A30 CTCInventory::OpenPCMapMenu in Ego_d text (batches/2026-11-20_reauthor_00589a30); RELOCATION_MATCH again on today's headers, no header change.
+2026-11-20 A->B: NF142 handed back (landing nf142 after nf141). New agent NF145 (follow-ups owed by nf137 / nf140: CMemoryAllocator /d2inl sweep, 0x0122A9A0 and the copy-constructor rows onto headers, 0x009566C0, 0x008E8830).
