@@ -17615,6 +17615,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006e7d30	SetCreatureCreationDelayFrames	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,long	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\6e\0x006E7D30_global_SetCreatureCreationDelayFrames_CGameScriptInterface_UAEXJ_Z.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6e\CGameScriptInterface_SetCreatureCreationDelayFrames_006e7d30.cpp
 006e7d40	ResetCreatureCreationDelayFrames	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\6e\0x006E7D40_global_ResetCreatureCreationDelayFrames_CGameScriptInterface_UAEXXZ.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6e\CGameScriptInterface_ResetCreatureCreationDelayFrames_006e7d40.cpp
 006e7d50	`scalar deleting destructor'	CGameScriptInterface	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted									
+006e7eb0	GetPreferredCombatDistanceForAttacker	_global	unknown	undefined	0		0			discovered	boundary							
 006e7f00	GetAttackerProngSelectionCompareValue	_global	unknown	undefined	0		0	yes	accepted									
 006e7fd0	GetRotatedPosition	CProng	__thiscall	C3DVector	1	CTCPhysicsRigidBody *	1	yes	accepted									
 006e8050	StretchRingThickness	CDefendingCombatantInfo::CCombatRing	__thiscall	void	3	CCombatRing *,CThingCreatureBase *,CThingCreatureBase *	1	yes	accepted									
