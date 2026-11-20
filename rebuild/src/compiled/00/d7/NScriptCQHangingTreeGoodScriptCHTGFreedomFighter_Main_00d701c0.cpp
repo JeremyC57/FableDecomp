@@ -1016,7 +1016,7 @@ public:
 }
 using NScript::CQ_HangingTreeGoodScript;
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);           // 0x00CBE716
+void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float seconds, bool kill, bool removeOnFade);   // Naming NF194 (q6466 / q6518): Ego_r / FableWin ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z (engine/fable_script_fade.h order)           // 0x00CBE716
 class CEntityScriptBase
 {
     virtual ~CEntityScriptBase();   // retail slot 0 (the stand-in is polymorphic, as retail: the vptr moves here)
@@ -1082,6 +1082,6 @@ void NScript::CQ_HangingTreeGoodScript::CHTG_FreedomFighter::Main()
  }
  }
  if (IsActiveThreadTerminating()) return;
- FadeOutAndKillEntity(Me, true, 0.5f, true);
+ FadeOutAndKillEntity(Me, 0.5f, true, true);
 }
 #pragma inline_depth()

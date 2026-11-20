@@ -100,7 +100,7 @@ using NScript::CIsThingAlive;
 #include "engine/CGameScriptInterface.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool fade, float time, bool kill);           // 0x00CBE716
+void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float time, bool fade, bool kill);   // Naming NF194 (q6466 / q6518): Ego_r / FableWin ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z (engine/fable_script_fade.h order)           // 0x00CBE716
 namespace NScript {
 class CQ_HangingTreeGoodScript {
 public:
@@ -211,7 +211,7 @@ void NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::Main()
                         ParentClass->PrisonerEscaping = true;
                         ReturningToParty = false;
                     } else if (IsDistanceBetweenThingsUnder(Me, exitPoint, 1.5f)) {
-                        FadeOutAndKillEntity(Me, true, 0.5f, true);
+                        FadeOutAndKillEntity(Me, 0.5f, true, true);
                         ParentClass->BanditsFlee = true;
                         Game->Pause(10.0f);
                         ParentClass->ReasonForFailing = "TEXT_QST_030_FAILURE_PRISONER_ESCAPED";

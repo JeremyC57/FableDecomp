@@ -1,0 +1,19 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_004131a0.obj : error LNK2005: "public: __thiscall CMainGameComponentInit::CMainGameComponentInit(void)" (??0CMainGameComponentInit@@QAE@XZ) already defined in new_00412f90.obj
+own_004aa840.obj : error LNK2005: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in new_00d37530.obj
+own_004ab130.obj : error LNK2005: "public: virtual bool __thiscall CScriptThing::IsAlive(void)const " (?IsAlive@CScriptThing@@UBE_NXZ) already defined in new_00d71b30.obj
+own_006e7a60.obj : error LNK2005: "public: __thiscall CScriptGameResourceObjectBase::CScriptGameResourceObjectBase(void)" (??0CScriptGameResourceObjectBase@@QAE@XZ) already defined in new_00d37530.obj
+own_006e7b40.obj : error LNK2005: "public: __thiscall CScriptThing::CScriptThing(void)" (??0CScriptThing@@QAE@XZ) already defined in new_00d71b30.obj
+own_006e7b60.obj : error LNK2005: "public: __thiscall CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase(void)" (??0CScriptGameResourceObjectMovieBase@@QAE@XZ) already defined in new_00d37530.obj
+own_007e72a0.obj : error LNK2005: "public: __thiscall CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase(void)" (??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ) already defined in new_00d37530.obj
+own_00905330.obj : error LNK2005: "public: __thiscall CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase(class CScriptGameResourceObjectScriptedThingBase const &)" (??0CScriptGameResourceObjectScriptedThingBase@@QAE@ABV0@@Z) already defined in new_00e8dfa0.obj
+own_0099a2d0.obj : error LNK2005: "public: __thiscall CBaseClass::CBaseClass(void)" (??0CBaseClass@@QAE@XZ) already defined in new_00f045e0.obj
+own_0099e4c0.obj : error LNK2005: "public: __thiscall CCharString::operator char const * (void)const " (??BCCharString@@QBEPBDXZ) already defined in new_005dcb00.obj
+own_00cbe0b3.obj : error LNK2005: "public: __thiscall CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities(void)" (??1CWideScreenMagicPauseEntities@@QAE@XZ) already defined in new_00e8dfa0.obj
+own_00cd4450.obj : error LNK2005: "public: __thiscall CTimer::CTimer(void)" (??0CTimer@@QAE@XZ) already defined in new_00e158f0.obj
+own_00e241b0.obj : error LNK2005: "public: virtual __thiscall NScript::CIsThingAlive::~CIsThingAlive(void)" (??1CIsThingAlive@NScript@@UAE@XZ) already defined in new_00d701c0.obj
+own_00ef7ab0.obj : error LNK2005: "public: virtual __thiscall NScript::CIsThingConscious::~CIsThingConscious(void)" (??1CIsThingConscious@NScript@@UAE@XZ) already defined in new_00e158f0.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 1037 LNK2001 + 288 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

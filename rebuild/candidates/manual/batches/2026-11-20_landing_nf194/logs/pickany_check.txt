@@ -1,0 +1,37 @@
+OK  00d7c2e0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00d7fab0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00d82210 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00d844a0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00d89580 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00d8a960 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00d915b0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00d9d930 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00d9ffd0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00da8320 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00db8520 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00dc0170 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00dc8700 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00dcf790 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00dd9300 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00ddc7d0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00ddeee0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00dec5b0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00def220 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00df3550 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00df4a50 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00df99f0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00dfc100 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00e05170 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00efa210 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00efad80 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00efb9c0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00efbf80 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00efda90 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00eff5c0 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00f01150 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00f01d20 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+OK  00f09b10 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+MISSING 00f0d470 00414de0 ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z owner leaf None True False
+OK  00f0d470 -> 00414ea0 ??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@X sizes 49 49 
+OK  00f1cb50 -> 00ce1000 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ sizes 53 53 
+manual (landing, q.py with the 0x00F0D470 row source): 00414de0 ??0?$vector@VCCharString@@...@Z MATCH (the landed row there is the folded twin CIndexBuffer::CIndexBuffer).

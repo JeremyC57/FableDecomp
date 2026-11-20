@@ -959,7 +959,7 @@ struct CScriptThingImp {
  virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();
  virtual const C3DVector& GetPosition() const;      // slot 6 (+0x18)
 };
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
+void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float seconds, bool kill, bool removeOnFade);   // Naming NF194 (q6466 / q6518): Ego_r / FableWin ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z (engine/fable_script_fade.h order)   // 0x00CBE716
 // agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
 //   retail offsets) names them: WomanFadeTime -> WB_ScreamingVillagerFadeOutTime (+0xe4c).
 #define FABLE_RETAIL_CDEFSTRINGTABLE
@@ -1024,6 +1024,6 @@ void NScript::CQ_HeroSoulsArenaScript::CHSA_ScreamingVillager::Main()
    if (IsActiveThreadTerminating()) return;
   }
   if (IsActiveThreadTerminating()) return;
-  FadeOutAndKillEntity(Me, true, pGlobalScriptDef->WB_ScreamingVillagerFadeOutTime, true);
+  FadeOutAndKillEntity(Me, pGlobalScriptDef->WB_ScreamingVillagerFadeOutTime, true, true);
  }
 }

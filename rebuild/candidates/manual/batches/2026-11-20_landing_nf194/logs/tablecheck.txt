@@ -1,0 +1,5 @@
+GREW 004aa840 6 -> 7 ??1CScriptThing@@QAE@XZ row 00f051d0 SAME
+GREW 00cbed00 2 -> 3 ?AreAllThingsInVectorDead@@YI_NABUCScriptThingVector@@@Z row 00d1cac0 SAME
+GREW 008ac970 2 -> 3 ??1CScriptThingVector@@QAE@XZ row 00d1cac0 SAME
+GREW 00cbe583 0 -> 1 ?GetSquaredDistanceBetweenThings@@YIMABVCScriptThing@@0@Z row 00d37530 SAME
+shrank [('00ce1000', 37, 2), ('00ce1040', 36, 1), ('00cbe716', 2, 1), ('013ca828', 3, 2), ('00418dca', 2, 1)]

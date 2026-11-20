@@ -51,7 +51,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
+#include "engine/fable_script_fade.h"   // FadeOutAndKillEntity 0x00CBE716 (Naming NF194, q6466 / q6518: was a local (thing, bool, float, bool) declaration)   // 0x00CBE716
 struct CScriptThingVector {                            // STLport vector<CScriptThing> (12 bytes)
     CScriptThing* _M_start;
     CScriptThing* _M_finish;
@@ -143,7 +143,7 @@ void NScript::CQ_AmbushTradersScript::CAT_Phase3Archer::Main()
             if (IsActiveThreadTerminating()) return;
         }
         if (IsActiveThreadTerminating()) return;
-        FadeOutAndKillEntity(Me, true, 1.0f, true);
+        FadeOutAndKillEntity(Me, 1.0f, true, true);
     }
     do {
         Game->NewScriptFrame();

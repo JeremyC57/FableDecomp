@@ -1,0 +1,260 @@
+00412f90 new: 0
+005dcb00 new: 0
+0088b7e0 new: 1
+    ?GetCurrentStateGroupDebugText@CAIBrain@@QBEPBVCCharString@@XZ
+0089c100 new: 1
+    ?ImpSetEntityAsAllyOfThing@CGameScriptInterface@@ABEXABVCScriptThing@@0_N@Z TABLE:0089c100
+008a7ec0 new: 0
+00ce0ef0 new: 3
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@ExternalRetry_00ce0ef0@@QAE@PAXIII0ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ?CreateActiveEntityScript@?$CEntityScriptBinding@UCPersonalScript_GlobalThingsScript@NScript@ExternalRetry_00ce0ef0@@@ExternalRetry_00ce0ef0@@QAE?AV?$CCountedPointer@UCAc
+00d15140 new: 1
+    ??0TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ TABLE:00d15140
+00d1cac0 new: 1
+    ?WatchForLeaderChargeGruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ TABLE:00d1cac0
+00d360e0 new: 1
+    ?CheckGameEnding@CQ_FireHeartScript@NScript@@QAEXXZ TABLE:00d360e0
+00d37530 new: 0
+00d3cbd0 new: 0
+00d701c0 new: 0
+00d71b30 new: 0
+00d7c2e0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00d7c2e0@@QAE@PAVCScriptThing@@IIIPAUCQ_HeroSoulsThunderScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d7c2e0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d7c2e0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d7c2e0@@@@PAVCScriptTh
+00d7f880 new: 0
+00d7fab0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00d7fab0@@QAE@PAVCScriptThing@@IIIPAUCQ_HeroSoulsArenaScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d7fab0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d7fab0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d7fab0@@@@PAVCScriptTh
+00d82210 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00d82210@@QAE@PAVCScriptThing@@IIIPAUCQ_HeroSoulsBriarScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d82210@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d82210@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d82210@@@@PAVCScriptTh
+00d844a0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00d844a0@@QAE@PAVCScriptThing@@IIIPAUCQ_HeroSoulsMotherScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d844a0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d844a0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d844a0@@@@PAVCScriptTh
+00d89580 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00d89580@@QAE@PAVCScriptThing@@IIIPAUCQ_HeroSoulsNostroScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d89580@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d89580@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d89580@@@@PAVCScriptTh
+00d8a960 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00d8a960@@QAE@PAVCScriptThing@@IIIPAUCQ_HerosOldHouseScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d8a960@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d8a960@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d8a960@@@@PAVCScriptTh
+00d915b0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00d915b0@@QAE@PAVCScriptThing@@IIIPAUCQ_HobbeCaveScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d915b0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d915b0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d915b0@@@@PAVCScriptTh
+00d9d930 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00d9d930@@QAE@PAVCScriptThing@@IIIPAUCQ_HobbeToothContestScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d9d930@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d9d930@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d9d930@@@@PAVCScriptTh
+00d9ffd0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00d9ffd0@@QAE@PAVCScriptThing@@IIIPAUCQ_MinionCampScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d9ffd0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d9ffd0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d9ffd0@@@@PAVCScriptTh
+00da8320 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00da8320@@QAE@PAVCScriptThing@@IIIPAUCQ_MinionClifftopChaseScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00da8320@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00da8320@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00da8320@@@@PAVCScriptTh
+00db8520 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00db8520@@QAE@PAVCScriptThing@@IIIPAUCQ_NewOakValeIntroScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00db8520@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00db8520@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00db8520@@@@PAVCScriptTh
+00dc0170 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00dc0170@@QAE@PAVCScriptThing@@IIIPAUCQ_OakValeBanditRaidScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dc0170@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dc0170@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dc0170@@@@PAVCScriptTh
+00dc8700 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00dc8700@@QAE@PAVCScriptThing@@IIIPAUCQ_OpeningGraveyardSecretPassageScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dc8700@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dc8700@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dc8700@@@@PAVCScriptTh
+00dcf790 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00dcf790@@QAE@PAVCScriptThing@@IIIPAUCQ_OrchardFarmRaidScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dcf790@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dcf790@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dcf790@@@@PAVCScriptTh
+00dd9300 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00dd9300@@QAE@PAVCScriptThing@@IIIPAUCQ_PrisonEscapeRescueMotherScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dd9300@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dd9300@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dd9300@@@@PAVCScriptTh
+00ddc7d0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00ddc7d0@@QAE@PAVCScriptThing@@IIIPAUCQ_PrisonRaceScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00ddc7d0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00ddc7d0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00ddc7d0@@@@PAVCScriptTh
+00ddeee0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00ddeee0@@QAE@PAVCScriptThing@@IIIPAUCQ_PrisonWardenGameScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00ddeee0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00ddeee0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00ddeee0@@@@PAVCScriptTh
+00dec5b0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00dec5b0@@QAE@PAVCScriptThing@@IIIPAUCQ_RansomVictimChiefsHouseScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dec5b0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dec5b0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dec5b0@@@@PAVCScriptTh
+00def220 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00def220@@QAE@PAVCScriptThing@@IIIPAUCQ_SecretPassageScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00def220@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00def220@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00def220@@@@PAVCScriptTh
+00df3550 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00df3550@@QAE@PAVCScriptThing@@IIIPAUCQ_SummoningTheShipScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df3550@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00df3550@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df3550@@@@PAVCScriptTh
+00df4a50 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00df4a50@@QAE@PAVCScriptThing@@IIIPAUCQ_TentacleKrakenBossFightScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df4a50@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00df4a50@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df4a50@@@@PAVCScriptTh
+00df99f0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00df99f0@@QAE@PAVCScriptThing@@IIIPAUCQ_TraderConflictEvilScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df99f0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00df99f0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df99f0@@@@PAVCScriptTh
+00dfc100 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00dfc100@@QAE@PAVCScriptThing@@IIIPAUCQ_TraderConflictGoodScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dfc100@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dfc100@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dfc100@@@@PAVCScriptTh
+00e05170 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00e05170@@QAE@PAVCScriptThing@@IIIPAUCQ_TraderEscortScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00e05170@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00e05170@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00e05170@@@@PAVCScriptTh
+00e0a510 new: 2
+    ??4CTimer@@QAEAAV0@J@Z
+    ?SetBrainState@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@AAEXJ@Z TABLE:00e0a510
+00e0c350 new: 1
+    ?WatchForTermination@CQ_UndeadRisingScript@NScript@@QAEXXZ TABLE:00e0c350
+00e0f4e0 new: 0
+00e158f0 new: 0
+00e49980 new: 0
+00e4a280 new: 0
+00e7e640 new: 0
+00e8dfa0 new: 0
+00ea3490 new: 1
+    ?WatchForQuestFailure@CV_LostTraderScript@NScript@@QAEXXZ TABLE:00ea3490
+00efa210 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@HenchmenBinding@@QAE@PAVCScriptThing@@IIIPAUCguy_scriptScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@HenchmenBinding@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@HenchmenBinding@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@HenchmenBinding@@@@PAVCScriptThing@@II@Z
+00efad80 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00efad80@@QAE@PAVCScriptThing@@IIIPAUCbandit_level_cutsceneScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efad80@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00efad80@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efad80@@@@PAVCScriptTh
+00efb9c0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00efb9c0@@QAE@PAVCScriptThing@@IIIPAUCHitSwitchTestScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efb9c0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00efb9c0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efb9c0@@@@PAVCScriptTh
+00efbf80 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00efbf80@@QAE@PAVCScriptThing@@IIIPAUCGuildSealTriggerTestScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efbf80@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00efbf80@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efbf80@@@@PAVCScriptTh
+00efda90 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00efda90@@QAE@PAVCScriptThing@@IIIPAUCMarkTestScriptsScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efda90@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00efda90@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efda90@@@@PAVCScriptTh
+00eff5c0 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00eff5c0@@QAE@PAVCScriptThing@@IIIPAUCTonyTestScriptsScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00eff5c0@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00eff5c0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00eff5c0@@@@PAVCScriptTh
+00f01150 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00f01150@@QAE@PAVCScriptThing@@IIIPAUCOracleMinigameTestScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f01150@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00f01150@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f01150@@@@PAVCScriptTh
+00f01d20 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00f01d20@@QAE@PAVCScriptThing@@IIIPAUCQ_CinemaTestScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f01d20@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00f01d20@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f01d20@@@@PAVCScriptTh
+00f045e0 new: 0
+00f04cc0 new: 0
+00f051d0 new: 0
+00f09b10 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@EntityScriptBinding_00f09b10@@QAE@PAVCScriptThing@@IIIPAUCQ_AmbushTradersScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f09b10@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00f09b10@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f09b10@@@@PAVCScriptTh
+00f0d470 new: 17
+    ??$_Destroy@PAVCCharString@@@std@@YAXPAVCCharString@@0@Z
+    ??$_Destroy@VCCharString@@@std@@YAXPAVCCharString@@@Z
+    ??$__destroy@PAVCCharString@@V1@@std@@YAXPAVCCharString@@00@Z
+    ??$__destroy_aux@PAVCCharString@@@std@@YAXPAVCCharString@@0ABU__false_type@0@@Z
+    ??0?$_STLP_alloc_proxy@PAVCCharString@@V1@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@PAVCCharString@@@Z
+    ??0?$_Vector_base@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z
+    ??0?$allocator@VCCharString@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VCCharString@@@std@@QAE@XZ
+    ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z TABLE:00414de0
+    ??0TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ TABLE:00f0d470
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCCharString@@V1@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCCharString@@@std@@QAE@XZ
+    ??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ TABLE:00414ea0
+    ??_GCCharString@@QAEPAXI@Z
+    ?deallocate@?$allocator@VCCharString@@@std@@QAEXPAVCCharString@@I@Z
+00f1cb50 new: 5
+    ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z
+    ??0CActiveEntityScript@ArenaBinding@@QAE@PAVCScriptThing@@IIIPAUCQ_ArenaScript@NScript@1@ABV?$CCountedPointer@VCEntityScriptBase@@@@@Z
+    ??1?$CCountedPointer@UCActiveEntityScriptBase@ArenaBinding@@@@QAE@XZ
+    ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ TABLE:00ce1000
+    ?CreateActiveEntityScript@CEntityScriptBinding@ArenaBinding@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@ArenaBinding@@@@PAVCScriptThing@@II@Z

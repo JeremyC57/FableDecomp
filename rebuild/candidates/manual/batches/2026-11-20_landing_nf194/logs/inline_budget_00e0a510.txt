@@ -1,0 +1,3 @@
+Inline-budget sweep for 0x00E0A510 (landing, q.py, row with plain `inline CTimer::operator=`):
+  no flag DIFFER(759v778); /d2inlT200 DIFFER; /d2inlT400 MATCH; /d2inlS21 DIFFER; /d2inlS22 RELOCATION_MATCH (smallest); /d2inlS27, S40, S80 RELOCATION_MATCH.
+  The agent form (FABLE_FORCEINLINE operator=) graded RELOCATION_MATCH too but newly defined ??4CTimer; replaced by preference 2.

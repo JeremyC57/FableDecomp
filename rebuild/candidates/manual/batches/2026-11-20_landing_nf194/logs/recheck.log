@@ -1,0 +1,346 @@
+addr       parity           behav  name
+00412f90   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00412f90   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00412f90   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00412f90   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+00412f90   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+00412f90   WARN SHARED_HEADER_AVAILABLE CGame (engine/CGame.h)
+00412f90   RELOCATION_MATCH PASS   CGame::Play
+005dcb00   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+005dcb00   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+005dcb00   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+005dcb00   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+005dcb00   WARN SHARED_HEADER_AVAILABLE CAnimationSet (engine/CAnimationSet.h)
+005dcb00   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+005dcb00   RELOCATION_MATCH PASS   CAnimationSet::GetAnimsWithNameStartingWith
+0088b7e0   MATCH            PASS   CAIBrain::GetCurrentStateGroupDebugText
+0089c100   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0089c100   RELOCATION_MATCH PASS   CGameScriptInterface::ImpSetEntityAsAllyOfThing
+008a7ec0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+008a7ec0   RELOCATION_MATCH PASS   CGameScriptInterface::EntitySetThingAsAllyOfThing
+00ce0ef0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00ce0ef0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00ce0ef0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript (engine/CPersonalScript_GlobalThingsScript.h)
+00ce0ef0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00ce0ef0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CPersonalScript_GlobalThingsScript>::CreateActiveEntityScript
+00d15140   RELOCATION_MATCH PASS   NScript::CQ_BountyHuntScript::TeleportData::TeleportData
+00d1cac0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00d1cac0   WARN SHARED_HEADER_AVAILABLE CQ_BountyHuntScript (engine/CQ_BountyHuntScript.h)
+00d1cac0   RELOCATION_MATCH PASS   NScript::CQ_BountyHuntScript::WatchForLeaderChargeGruntsKilled
+00d360e0   RELOCATION_MATCH PASS   NScript::CQ_FireHeartScript::CheckGameEnding
+00d37530   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d37530   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d37530   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00d37530   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d37530   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d37530   WARN SHARED_HEADER_AVAILABLE CQ_FireHeartScript (engine/CQ_FireHeartScript.h)
+00d37530   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d37530   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d37530   WARN RELOC_NAME: ??1CScriptGameResourceObjectMovieFull@@UAE@XZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00d37530   RELOCATION_MATCH PASS   NScript::CQ_FireHeartScript::CFH_Villager::Main
+00d3cbd0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d3cbd0   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingScript::KeepTabsOnWhisper
+00d701c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d701c0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d701c0   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00d701c0   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00d701c0   WARN SHARED_HEADER_AVAILABLE CHeroLogBook (engine/CHeroLogBook.h)
+00d701c0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d701c0   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00d701c0   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeGoodScript (engine/CQ_HangingTreeGoodScript.h)
+00d701c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d701c0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::CHTG_FreedomFighter::Main
+00d71b30   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d71b30   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00d71b30   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00d71b30   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeGoodScript (engine/CQ_HangingTreeGoodScript.h)
+00d71b30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d71b30   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::Main
+00d7c2e0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00d7c2e0   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsThunderScript (engine/CQ_HeroSoulsThunderScript.h)
+00d7c2e0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00d7c2e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d7c2e0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_HeroSoulsThunderScript>::CreateActiveEntityScript
+00d7f880   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d7f880   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d7f880   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00d7f880   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00d7f880   WARN SHARED_HEADER_AVAILABLE CHeroLogBook (engine/CHeroLogBook.h)
+00d7f880   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d7f880   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d7f880   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsArenaScript (engine/CQ_HeroSoulsArenaScript.h)
+00d7f880   RELOCATION_MATCH PASS   NScript::CQ_HeroSoulsArenaScript::CHSA_ScreamingVillager::Main
+00d7fab0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00d7fab0   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsArenaScript (engine/CQ_HeroSoulsArenaScript.h)
+00d7fab0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00d7fab0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d7fab0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_HeroSoulsArenaScript>::CreateActiveEntityScript
+00d82210   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00d82210   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsBriarScript (engine/CQ_HeroSoulsBriarScript.h)
+00d82210   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00d82210   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d82210   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_HeroSoulsBriarScript>::CreateActiveEntityScript
+00d844a0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00d844a0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00d844a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d844a0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_HeroSoulsMotherScript>::CreateActiveEntityScript
+00d89580   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00d89580   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00d89580   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d89580   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_HeroSoulsNostroScript>::CreateActiveEntityScript
+00d8a960   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00d8a960   WARN SHARED_HEADER_AVAILABLE CQ_HerosOldHouseScript (engine/CQ_HerosOldHouseScript.h)
+00d8a960   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00d8a960   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d8a960   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_HerosOldHouseScript>::CreateActiveEntityScript
+00d915b0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00d915b0   WARN SHARED_HEADER_AVAILABLE CQ_HobbeCaveScript (engine/CQ_HobbeCaveScript.h)
+00d915b0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00d915b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d915b0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_HobbeCaveScript>::CreateActiveEntityScript
+00d9d930   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00d9d930   WARN SHARED_HEADER_AVAILABLE CQ_HobbeToothContestScript (engine/CQ_HobbeToothContestScript.h)
+00d9d930   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00d9d930   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d9d930   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_HobbeToothContestScript>::CreateActiveEntityScript
+00d9ffd0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00d9ffd0   WARN SHARED_HEADER_AVAILABLE CQ_MinionCampScript (engine/CQ_MinionCampScript.h)
+00d9ffd0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00d9ffd0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d9ffd0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_MinionCampScript>::CreateActiveEntityScript
+00da8320   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00da8320   WARN SHARED_HEADER_AVAILABLE CQ_MinionClifftopChaseScript (engine/CQ_MinionClifftopChaseScript.h)
+00da8320   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00da8320   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00da8320   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_MinionClifftopChaseScript>::CreateActiveEntityScript
+00db8520   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00db8520   WARN SHARED_HEADER_AVAILABLE CQ_NewOakValeIntroScript (engine/CQ_NewOakValeIntroScript.h)
+00db8520   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00db8520   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00db8520   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_NewOakValeIntroScript>::CreateActiveEntityScript
+00dc0170   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00dc0170   WARN SHARED_HEADER_AVAILABLE CQ_OakValeBanditRaidScript (engine/CQ_OakValeBanditRaidScript.h)
+00dc0170   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00dc0170   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00dc0170   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_OakValeBanditRaidScript>::CreateActiveEntityScript
+00dc8700   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00dc8700   WARN SHARED_HEADER_AVAILABLE CQ_OpeningGraveyardSecretPassageScript (engine/CQ_OpeningGraveyardSecretPassageScript.h)
+00dc8700   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00dc8700   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00dc8700   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_OpeningGraveyardSecretPassageScript>::CreateActiveEntityScript
+00dcf790   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00dcf790   WARN SHARED_HEADER_AVAILABLE CQ_OrchardFarmRaidScript (engine/CQ_OrchardFarmRaidScript.h)
+00dcf790   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00dcf790   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00dcf790   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_OrchardFarmRaidScript>::CreateActiveEntityScript
+00dd9300   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00dd9300   WARN SHARED_HEADER_AVAILABLE CQ_PrisonEscapeRescueMotherScript (engine/CQ_PrisonEscapeRescueMotherScript.h)
+00dd9300   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00dd9300   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00dd9300   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_PrisonEscapeRescueMotherScript>::CreateActiveEntityScript
+00ddc7d0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00ddc7d0   WARN SHARED_HEADER_AVAILABLE CQ_PrisonRaceScript (engine/CQ_PrisonRaceScript.h)
+00ddc7d0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00ddc7d0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00ddc7d0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_PrisonRaceScript>::CreateActiveEntityScript
+00ddeee0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00ddeee0   WARN SHARED_HEADER_AVAILABLE CQ_PrisonWardenGameScript (engine/CQ_PrisonWardenGameScript.h)
+00ddeee0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00ddeee0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00ddeee0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_PrisonWardenGameScript>::CreateActiveEntityScript
+00dec5b0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00dec5b0   WARN SHARED_HEADER_AVAILABLE CQ_RansomVictimChiefsHouseScript (engine/CQ_RansomVictimChiefsHouseScript.h)
+00dec5b0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00dec5b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00dec5b0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_RansomVictimChiefsHouseScript>::CreateActiveEntityScript
+00def220   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00def220   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00def220   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00def220   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_SecretPassageScript>::CreateActiveEntityScript
+00df3550   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00df3550   WARN SHARED_HEADER_AVAILABLE CQ_SummoningTheShipScript (engine/CQ_SummoningTheShipScript.h)
+00df3550   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00df3550   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00df3550   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_SummoningTheShipScript>::CreateActiveEntityScript
+00df4a50   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00df4a50   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00df4a50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00df4a50   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_TentacleKrakenBossFightScript>::CreateActiveEntityScript
+00df99f0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00df99f0   WARN SHARED_HEADER_AVAILABLE CQ_TraderConflictEvilScript (engine/CQ_TraderConflictEvilScript.h)
+00df99f0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00df99f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00df99f0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_TraderConflictEvilScript>::CreateActiveEntityScript
+00dfc100   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00dfc100   WARN SHARED_HEADER_AVAILABLE CQ_TraderConflictGoodScript (engine/CQ_TraderConflictGoodScript.h)
+00dfc100   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00dfc100   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00dfc100   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_TraderConflictGoodScript>::CreateActiveEntityScript
+00e05170   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00e05170   WARN SHARED_HEADER_AVAILABLE CQ_TraderEscortScript (engine/CQ_TraderEscortScript.h)
+00e05170   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00e05170   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00e05170   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_TraderEscortScript>::CreateActiveEntityScript
+00e0a510   RELOCATION_MATCH PASS   NScript::CQ_TraderEscortScript::CDarkwoodTrader::SetBrainState
+00e0c350   RELOCATION_MATCH PASS   NScript::CQ_UndeadRisingScript::WatchForTermination
+00e0f4e0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00e0f4e0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e0f4e0   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00e0f4e0   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00e0f4e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e0f4e0   RELOCATION_MATCH PASS   NScript::CQ_WaspBossScript::CFleeingWoman::Main
+00e158f0   RELOCATION_MATCH PASS   NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::Main
+00e49980   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00e49980   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00e49980   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00e49980   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e49980   WARN SHARED_HEADER_AVAILABLE CV_BanditTollScript (engine/CV_BanditTollScript.h)
+00e49980   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e49980   RELOCATION_MATCH PASS   NScript::CV_BanditTollScript::CBlockingBandit::Main
+00e4a280   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00e4a280   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00e4a280   WARN SHARED_HEADER_AVAILABLE CV_BanditTollScript (engine/CV_BanditTollScript.h)
+00e4a280   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e4a280   RELOCATION_MATCH PASS   NScript::CV_BanditTollScript::CSafeTrader::Main
+00e7e640   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00e7e640   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00e7e640   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00e7e640   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e7e640   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e7e640   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e7e640   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00e7e640   RELOCATION_MATCH PASS   NScript::CV_FishingCompetitionScript::CFishCompCompetitor::Main
+00e8dfa0   RELOCATION_MATCH PASS   NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::Main
+00ea3490   RELOCATION_MATCH PASS   NScript::CV_LostTraderScript::WatchForQuestFailure
+00efa210   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00efa210   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00efa210   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00efa210   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::Cguy_scriptScript>::CreateActiveEntityScript
+00efad80   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00efad80   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00efad80   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00efad80   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::Cbandit_level_cutsceneScript>::CreateActiveEntityScript
+00efb9c0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00efb9c0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00efb9c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00efb9c0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CHitSwitchTestScript>::CreateActiveEntityScript
+00efbf80   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00efbf80   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00efbf80   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00efbf80   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CGuildSealTriggerTestScript>::CreateActiveEntityScript
+00efda90   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00efda90   WARN SHARED_HEADER_AVAILABLE CMarkTestScriptsScript (engine/CMarkTestScriptsScript.h)
+00efda90   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00efda90   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00efda90   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CMarkTestScriptsScript>::CreateActiveEntityScript
+00eff5c0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00eff5c0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00eff5c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00eff5c0   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CTonyTestScriptsScript>::CreateActiveEntityScript
+00f01150   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00f01150   WARN SHARED_HEADER_AVAILABLE COracleMinigameTestScript (engine/COracleMinigameTestScript.h)
+00f01150   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00f01150   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00f01150   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::COracleMinigameTestScript>::CreateActiveEntityScript
+00f01d20   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00f01d20   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00f01d20   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00f01d20   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_CinemaTestScript>::CreateActiveEntityScript
+00f045e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00f045e0   WARN SHARED_HEADER_AVAILABLE CBaseClass (engine/CBaseClass.h)
+00f045e0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00f045e0   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00f045e0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00f045e0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00f045e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00f045e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00f045e0   WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript (engine/CQ_AmbushTradersScript.h)
+00f045e0   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::CAT_Sentry::Main
+00f04cc0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00f04cc0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00f04cc0   WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript (engine/CQ_AmbushTradersScript.h)
+00f04cc0   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::CAT_Phase3Archer::Main
+00f051d0   WARN SHARED_HEADER_AVAILABLE CBaseClass (engine/CBaseClass.h)
+00f051d0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00f051d0   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00f051d0   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00f051d0   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00f051d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00f051d0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00f051d0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00f051d0   WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript (engine/CQ_AmbushTradersScript.h)
+00f051d0   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::CAT_Phase3Guard::Main
+00f09b10   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00f09b10   WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript (engine/CQ_AmbushTradersScript.h)
+00f09b10   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00f09b10   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00f09b10   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_AmbushTradersScript>::CreateActiveEntityScript
+00f0d470   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::TeleportData::TeleportData
+00f1cb50   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00f1cb50   WARN SHARED_HEADER_AVAILABLE CQ_ArenaScript (engine/CQ_ArenaScript.h)
+00f1cb50   WARN SHARED_HEADER_AVAILABLE CActiveEntityScript (engine/CActiveEntityScript.h)
+00f1cb50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00f1cb50   RELOCATION_MATCH PASS   CEntityScriptBinding<NScript::CQ_ArenaScript>::CreateActiveEntityScript
+
+WINS: 61
+  00412f90 RELOCATION_MATCH CGame::Play
+  005dcb00 RELOCATION_MATCH CAnimationSet::?GetAnimsWithNameStartingWith@CAnimationSet@@QBEXABVCCharString@@AAV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@ABVCAnimFilterBase@@@Z
+  0088b7e0 MATCH CAIBrain::?GetCurrentStateGroupDebugText@CAIBrain@@QBEPBVCCharString@@XZ
+  0089c100 RELOCATION_MATCH CGameScriptInterface::?ImpSetEntityAsAllyOfThing@CGameScriptInterface@@ABEXABVCScriptThing@@0_N@Z
+  008a7ec0 RELOCATION_MATCH CGameScriptInterface::EntitySetThingAsAllyOfThing
+  00ce0ef0 RELOCATION_MATCH CEntityScriptBinding<NScript::CPersonalScript_GlobalThingsScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@UCPersonalScript_GlobalThingsScript@NScript@ExternalRetry_00ce0ef0@@@ExternalRetry_00ce0ef0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@ExternalRetry_00ce0ef0@@@@PAXII@Z
+  00d15140 RELOCATION_MATCH NScript::CQ_BountyHuntScript::TeleportData::??0TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ
+  00d1cac0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForLeaderChargeGruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ
+  00d360e0 RELOCATION_MATCH NScript::CQ_FireHeartScript::?CheckGameEnding@CQ_FireHeartScript@NScript@@QAEXXZ
+  00d37530 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Villager::?Main@CFH_Villager@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d3cbd0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::?KeepTabsOnWhisper@CQ_GuildTrainingScript@NScript@@QAEXXZ
+  00d701c0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_FreedomFighter::?Main@CHTG_FreedomFighter@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d71b30 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::?Main@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d7c2e0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HeroSoulsThunderScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d7c2e0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d7c2e0@@@@PAVCScriptThing@@II@Z
+  00d7f880 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CHSA_ScreamingVillager::?Main@CHSA_ScreamingVillager@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ
+  00d7fab0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HeroSoulsArenaScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d7fab0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d7fab0@@@@PAVCScriptThing@@II@Z
+  00d82210 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HeroSoulsBriarScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d82210@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d82210@@@@PAVCScriptThing@@II@Z
+  00d844a0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HeroSoulsMotherScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d844a0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d844a0@@@@PAVCScriptThing@@II@Z
+  00d89580 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HeroSoulsNostroScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d89580@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d89580@@@@PAVCScriptThing@@II@Z
+  00d8a960 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HerosOldHouseScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d8a960@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d8a960@@@@PAVCScriptThing@@II@Z
+  00d915b0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HobbeCaveScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d915b0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d915b0@@@@PAVCScriptThing@@II@Z
+  00d9d930 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HobbeToothContestScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d9d930@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d9d930@@@@PAVCScriptThing@@II@Z
+  00d9ffd0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_MinionCampScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00d9ffd0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d9ffd0@@@@PAVCScriptThing@@II@Z
+  00da8320 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_MinionClifftopChaseScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00da8320@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00da8320@@@@PAVCScriptThing@@II@Z
+  00db8520 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_NewOakValeIntroScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00db8520@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00db8520@@@@PAVCScriptThing@@II@Z
+  00dc0170 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_OakValeBanditRaidScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dc0170@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dc0170@@@@PAVCScriptThing@@II@Z
+  00dc8700 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_OpeningGraveyardSecretPassageScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dc8700@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dc8700@@@@PAVCScriptThing@@II@Z
+  00dcf790 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_OrchardFarmRaidScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dcf790@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dcf790@@@@PAVCScriptThing@@II@Z
+  00dd9300 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_PrisonEscapeRescueMotherScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dd9300@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dd9300@@@@PAVCScriptThing@@II@Z
+  00ddc7d0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_PrisonRaceScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00ddc7d0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00ddc7d0@@@@PAVCScriptThing@@II@Z
+  00ddeee0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_PrisonWardenGameScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00ddeee0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00ddeee0@@@@PAVCScriptThing@@II@Z
+  00dec5b0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_RansomVictimChiefsHouseScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dec5b0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dec5b0@@@@PAVCScriptThing@@II@Z
+  00def220 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_SecretPassageScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00def220@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00def220@@@@PAVCScriptThing@@II@Z
+  00df3550 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_SummoningTheShipScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00df3550@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df3550@@@@PAVCScriptThing@@II@Z
+  00df4a50 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_TentacleKrakenBossFightScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00df4a50@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df4a50@@@@PAVCScriptThing@@II@Z
+  00df99f0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_TraderConflictEvilScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00df99f0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df99f0@@@@PAVCScriptThing@@II@Z
+  00dfc100 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_TraderConflictGoodScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00dfc100@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dfc100@@@@PAVCScriptThing@@II@Z
+  00e05170 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_TraderEscortScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00e05170@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00e05170@@@@PAVCScriptThing@@II@Z
+  00e0a510 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CDarkwoodTrader::?SetBrainState@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@AAEXJ@Z
+  00e0c350 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::?WatchForTermination@CQ_UndeadRisingScript@NScript@@QAEXXZ
+  00e0f4e0 RELOCATION_MATCH NScript::CQ_WaspBossScript::CFleeingWoman::?Main@CFleeingWoman@CQ_WaspBossScript@NScript@@EAEXXZ
+  00e158f0 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::?Main@CWB_WhiteBalverine@CQ_WhiteBalverineKnotholeGladeScript@NScript@@EAEXXZ
+  00e49980 RELOCATION_MATCH NScript::CV_BanditTollScript::CBlockingBandit::?Main@CBlockingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+  00e4a280 RELOCATION_MATCH NScript::CV_BanditTollScript::CSafeTrader::?Main@CSafeTrader@CV_BanditTollScript@NScript@@EAEXXZ
+  00e7e640 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CFishCompCompetitor::?Main@CFishCompCompetitor@CV_FishingCompetitionScript@NScript@@EAEXXZ
+  00e8dfa0 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::?Main@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ
+  00ea3490 RELOCATION_MATCH NScript::CV_LostTraderScript::?WatchForQuestFailure@CV_LostTraderScript@NScript@@QAEXXZ
+  00efa210 RELOCATION_MATCH CEntityScriptBinding<NScript::Cguy_scriptScript>::?CreateActiveEntityScript@CEntityScriptBinding@HenchmenBinding@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@HenchmenBinding@@@@PAVCScriptThing@@II@Z
+  00efad80 RELOCATION_MATCH CEntityScriptBinding<NScript::Cbandit_level_cutsceneScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00efad80@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efad80@@@@PAVCScriptThing@@II@Z
+  00efb9c0 RELOCATION_MATCH CEntityScriptBinding<NScript::CHitSwitchTestScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00efb9c0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efb9c0@@@@PAVCScriptThing@@II@Z
+  00efbf80 RELOCATION_MATCH CEntityScriptBinding<NScript::CGuildSealTriggerTestScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00efbf80@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efbf80@@@@PAVCScriptThing@@II@Z
+  00efda90 RELOCATION_MATCH CEntityScriptBinding<NScript::CMarkTestScriptsScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00efda90@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efda90@@@@PAVCScriptThing@@II@Z
+  00eff5c0 RELOCATION_MATCH CEntityScriptBinding<NScript::CTonyTestScriptsScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00eff5c0@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00eff5c0@@@@PAVCScriptThing@@II@Z
+  00f01150 RELOCATION_MATCH CEntityScriptBinding<NScript::COracleMinigameTestScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00f01150@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f01150@@@@PAVCScriptThing@@II@Z
+  00f01d20 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_CinemaTestScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00f01d20@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f01d20@@@@PAVCScriptThing@@II@Z
+  00f045e0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Sentry::?Main@CAT_Sentry@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  00f04cc0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Phase3Archer::?Main@CAT_Phase3Archer@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  00f051d0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Phase3Guard::?Main@CAT_Phase3Guard@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  00f09b10 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_AmbushTradersScript>::?CreateActiveEntityScript@CEntityScriptBinding@EntityScriptBinding_00f09b10@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f09b10@@@@PAVCScriptThing@@II@Z
+  00f0d470 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::TeleportData::??0TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ
+  00f1cb50 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_ArenaScript>::?CreateActiveEntityScript@CEntityScriptBinding@ArenaBinding@@QAE?AV?$CCountedPointer@UCActiveEntityScriptBase@ArenaBinding@@@@PAVCScriptThing@@II@Z

@@ -53,7 +53,7 @@ inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
+void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float seconds, bool kill, bool removeOnFade);   // Naming NF194 (q6466 / q6518): Ego_r / FableWin ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z (engine/fable_script_fade.h order)   // 0x00CBE716
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map();
 template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map();
@@ -248,7 +248,7 @@ void NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::Main()
             }
             if (IsActiveThreadTerminating()) return _Fail_Val.Return();
             Game->CreateEffect("Ghost_Appear_01", Me.GetPos(), "", 0.0f, false, false);
-            FadeOutAndKillEntity(Me, true, pGlobalScriptDef->TollBanditTimeToFade, true);
+            FadeOutAndKillEntity(Me, pGlobalScriptDef->TollBanditTimeToFade, true, true);
             for (;;) {
                 Game->NewScriptFrame();
                 if (IsActiveThreadTerminating()) return _Fail_Val.Return();

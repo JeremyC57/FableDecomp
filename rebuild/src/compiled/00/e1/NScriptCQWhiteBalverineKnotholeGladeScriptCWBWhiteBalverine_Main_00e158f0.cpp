@@ -26,7 +26,7 @@ __declspec(noinline) inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerI
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
+void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float seconds, bool kill, bool removeOnFade);   // Naming NF194 (q6466 / q6518): Ego_r / FableWin ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z (engine/fable_script_fade.h order)   // 0x00CBE716
 inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing):Thing(thing) {}
 inline NScript::CIsThingConscious::~CIsThingConscious() {}
 void NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::Main()
@@ -193,16 +193,16 @@ void NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::Main()
                 if (!Game->IsCameraPosOnScreen(Me.GetPos())) {
                     if (IsActiveThreadTerminating()) return _Fail_Val.Return();
                     ParentClass.BalverineState=7;
-                    FadeOutAndKillEntity(Me,true,3.0f,true);
+                    FadeOutAndKillEntity(Me,3.0f,true,true);
                 } else if (!seh_me.IsPerformingScriptTask()) {
                     if (IsActiveThreadTerminating()) return _Fail_Val.Return();
                     ParentClass.BalverineState=7;
-                    FadeOutAndKillEntity(Me,true,3.0f,true);
+                    FadeOutAndKillEntity(Me,3.0f,true,true);
                 }
             }
             if (IsActiveThreadTerminating()) return _Fail_Val.Return();
             ParentClass.BalverineState=7;
-            FadeOutAndKillEntity(Me,true,3.0f,true);
+            FadeOutAndKillEntity(Me,3.0f,true,true);
         }
     }
     if (IsActiveThreadTerminating()) return _Fail_Val.Return();

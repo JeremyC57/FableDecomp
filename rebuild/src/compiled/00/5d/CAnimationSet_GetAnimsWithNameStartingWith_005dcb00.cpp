@@ -24,7 +24,7 @@ class CCharString { public:
 class CDefStringTable { public:
     CCharString GetString(long id) const;                     // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;                // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (Ego_r.pdb PUB32 + Ego_d.pdb; Naming NF194, q11724: was g_DefStringTable)
 
 class CDefString { public: long TablePos; };
 class CAnimationEntry { public:                                // 16 bytes
@@ -95,7 +95,7 @@ void CAnimationSet::GetAnimsWithNameStartingWith(const CCharString& prefix, CAni
         if (key != lastKey || !skipKey) {
             bool match;
             {
-                CCharString name = g_DefStringTable.GetString(it->Entry.AnimName.TablePos);
+                CCharString name = GDefStringTable.GetString(it->Entry.AnimName.TablePos);
                 match = name.StartsWith(prefix);
             }
             if (match) {
