@@ -41,6 +41,12 @@ public:
     class CManWithDoorName : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_SingingStonesScript&, CScriptDataBase*, const CScriptThing&); // 0x00ED16E0
+#ifdef FABLE_RETAIL_CV_SINGINGSTONESSCRIPT_MANWITHDOORNAME_CTOR
+        // NF186 opt-in (q4878, ??_G 0x00ED17B0): the PDB ctor
+        //   ??0CManWithDoorName@CV_SingingStonesScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z (FableWin.pdb; no retail
+        //   address: Alloc 0x00ED16E0 expands it). Declaration only.
+        CManWithDoorName(CV_SingingStonesScript& parent, CScriptDataBase* data, const CScriptThing& me);
+#endif
         virtual CScriptBase* GetParentScript() const;                    // 0x00ED1780
     protected:
         CV_SingingStonesScript& ParentClass;                             // +0x14
@@ -51,8 +57,8 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_SingingStonesScript) == 0x9C);
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_SingingStonesScript::CManWithDoorName) == 0x1C);
+FABLE_STATIC_ASSERT_AT(54, sizeof(NScript::CV_SingingStonesScript) == 0x9C);
+FABLE_STATIC_ASSERT_AT(55, sizeof(NScript::CV_SingingStonesScript::CManWithDoorName) == 0x1C);
 #ifdef FABLE_RETAIL_CV_SINGINGSTONESSCRIPT_CSINGINGSTONE
 // Retail opt-in (agentC40, row 0x00ED14E0 CSingingStone::Init): the entity script class, Ego_r.pdb members (44 bytes: ParentClass
 // +0x14, PMasterData +0x18, MyStoneNumber +0x1C, MyParticleEmitter +0x20) and the Ego_r.pdb virtuals
@@ -72,7 +78,7 @@ private:
     virtual void Main();
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_SingingStonesScript::CSingingStone) == 0x2C);
+FABLE_STATIC_ASSERT_AT(75, sizeof(NScript::CV_SingingStonesScript::CSingingStone) == 0x2C);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

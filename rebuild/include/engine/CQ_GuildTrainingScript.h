@@ -200,4 +200,28 @@ protected:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CCombatApprentice) == 0x24);
 #endif
+#if defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_SPEEDFRIEND) && defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN)
+// NF186 opt-in (q4863, ??_G 0x00D40890): the speed-friend entity script (needs FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN for the nested
+// declaration). Ego_r.pdb layout (struct_layouts_egor.tsv CSpeedFriend, 28 bytes; entity offsets equal retail's): ParentClass +0x14,
+// PMasterData +0x18. Entity vtable 0x012CDF28 (read from retail .rdata): 0 scalar deleting dtor 0x00D40890, 1 Main 0x00D408B0, 2 Init
+// 0x00D40870, 3 GetParentScript 0x00D40860, 4 / 6 the CEntityScriptBase defaults 0x00CDEBC0 / 0x00CDEBE0, 5 OnPredicateFail 0x00D40880;
+// Alloc 0x00D407C0. Names: Ego_r.pdb ?Alloc / ?Main@CSpeedFriend@CQ_GuildTrainingScript@NScript@@, FableWin.pdb ??0 (QAE@AAV12@PAVCScriptDataBase@@
+// ABVCScriptThing@@@Z), GetParentScript (UBE), Init / Main / OnPredicateFail (EAEXXZ, private). Declarations only.
+namespace NScript {
+class CQ_GuildTrainingScript::CSpeedFriend : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_GuildTrainingScript&, CScriptDataBase*, const CScriptThing&); // 0x00D407C0
+    CSpeedFriend(CQ_GuildTrainingScript& parent, CScriptDataBase* data, const CScriptThing& me);
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D40860
+private:
+    virtual void Main();                                                 // 0x00D408B0
+    virtual void Init();                                                 // 0x00D40870
+    virtual void OnPredicateFail();                                      // 0x00D40880
+protected:
+    CQ_GuildTrainingScript* ParentClass;                                 // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CSpeedFriend) == 0x1c);
+#endif
 #endif

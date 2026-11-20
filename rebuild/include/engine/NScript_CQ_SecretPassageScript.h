@@ -54,4 +54,33 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_SecretPassageScript)==0x12c);
+#ifdef FABLE_RETAIL_CQ_SECRETPASSAGESCRIPT_UNDEADTRIGGER
+// NF186 opt-in (q4874 / q4875, rows 0x00DEF700 GetParentScript / 0x00DEF720 OnPredicateFail): the undead-trigger entity script.
+//   Ego_r.pdb layout (struct_layouts_egor.tsv CSP_UndeadTrigger; entity offsets equal retail's, Dinkumware's 16-byte vector is STLport's
+//   12 here, so TempCreature sits at retail +0x28, as the ??_G 0x00DEF730 shows: ~CScriptThing on +0x28, ~vector<CScriptThing> 0x008AC970
+//   on +0x1C): ParentClass +0x14, PMasterData +0x18, UndeadVec +0x1C, TempCreature +0x28 (0x34 bytes). Entity vtable 0x012DDF3C (read
+//   from retail .rdata): 0 scalar deleting dtor 0x00DEF730, 1 Main 0x00DEF760, 2 Init 0x00DEF710, 3 GetParentScript 0x00DEF700,
+//   4 / 6 the CEntityScriptBase defaults, 5 OnPredicateFail 0x00DEF720. Names: Ego_r.pdb / FableWin.pdb
+//   ?<Name>@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@ (GetParentScript UBE public; Main / Init / OnPredicateFail EAE private;
+//   ??0 QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z out of line at 0x00DEF6A0). Declarations only.
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_SecretPassageScript::CSP_UndeadTrigger : public CEntityScriptBase {
+public:
+ static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_SecretPassageScript&, CScriptDataBase*, const CScriptThing&);
+ CSP_UndeadTrigger(CQ_SecretPassageScript& parent, CScriptDataBase* data, const CScriptThing& me);   // 0x00DEF6A0
+ virtual CScriptBase* GetParentScript() const;                         // 0x00DEF700
+private:
+ virtual void Main();                                                  // 0x00DEF760
+ virtual void Init();                                                  // 0x00DEF710
+ virtual void OnPredicateFail();                                       // 0x00DEF720
+protected:
+ CQ_SecretPassageScript* ParentClass;                                  // +0x14
+ CQ_SunnyvaleMasterData* PMasterData;                                  // +0x18
+ std::vector<CScriptThing> UndeadVec;                                  // +0x1c
+ CScriptThing TempCreature;                                            // +0x28
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_SecretPassageScript::CSP_UndeadTrigger)==0x34);
+#endif
 #endif

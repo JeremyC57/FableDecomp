@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00d0b3c0   RELOCATION_MATCH PASS   NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::`scalar deleting destructor'
+00d40890   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingScript::CSpeedFriend::`scalar deleting destructor'
+00da8510   RELOCATION_MATCH PASS   NScript::CQ_MinionClifftopChaseScript::ProcessMission
+00daebf0   RELOCATION_MATCH PASS   NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::GetVillagerSpeechIndex
+00ded0a0   MATCH            PASS   NScript::CQ_SecretPassageScript::InitialiseVariables
+00def700   MATCH            PASS   NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::GetParentScript
+00def720   MATCH            PASS   NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::OnPredicateFail
+00e15500   RELOCATION_MATCH PASS   NScript::CQ_WhiteBalverineKnotholeGladeScript::WatchForTermination
+00e4df20   RELOCATION_MATCH PASS   NScript::CV_BanditTollScript::CTollBandit::Should_I_Flee
+00e5b390   RELOCATION_MATCH PASS   NScript::CV_BeggarAndChildScript::CBeggarBully::`scalar deleting destructor'
+00e64df0   RELOCATION_MATCH PASS   NScript::CV_ChickenKickingScript::CChickenSign::Main
+00e70370   RELOCATION_MATCH PASS   NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::`scalar deleting destructor'
+00e95f10   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00e95f10   WARN SHARED_HEADER_AVAILABLE CSpawnedFunc (engine/CSpawnedFunc.h)
+00e95f10   WARN SHARED_HEADER_AVAILABLE CV_HauntedHouseScript (engine/CV_HauntedHouseScript.h)
+00e95f10   WARN RELOC_NAME: ??0CScriptProcessBase@@QAE@_NJM@Z -> 00a44740 labelled 'CSuspendableProcessMicrothread::CSuspendableProcessMicrothread'
+00e95f10   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_HauntedHouseScript>::CSpawnedFunc
+00ed17b0   RELOCATION_MATCH PASS   NScript::CV_SingingStonesScript::CManWithDoorName::`scalar deleting destructor'
+
+WINS: 14
+  00d0b3c0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::??_GCCROWDBANDITS@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d40890 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CSpeedFriend::??_GCSpeedFriend@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00da8510 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::?ProcessMission@CQ_MinionClifftopChaseScript@NScript@@QAEXXZ
+  00daebf0 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::?GetVillagerSpeechIndex@CNOVI_Villager@CQ_NewOakValeIntroScript@NScript@@AAEJJ@Z
+  00ded0a0 MATCH NScript::CQ_SecretPassageScript::?InitialiseVariables@CQ_SecretPassageScript@NScript@@QAEXXZ
+  00def700 MATCH NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::?GetParentScript@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@UBEPAVCScriptBase@@XZ
+  00def720 MATCH NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::?OnPredicateFail@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ
+  00e15500 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::?WatchForTermination@CQ_WhiteBalverineKnotholeGladeScript@NScript@@QAEXXZ
+  00e4df20 RELOCATION_MATCH NScript::CV_BanditTollScript::CTollBandit::?Should_I_Flee@CTollBandit@CV_BanditTollScript@NScript@@AAEXAAVCScriptGameResourceObjectScriptedThingBase@@@Z
+  00e5b390 RELOCATION_MATCH NScript::CV_BeggarAndChildScript::CBeggarBully::??_GCBeggarBully@CV_BeggarAndChildScript@NScript@@UAEPAXI@Z
+  00e64df0 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CChickenSign::?Main@CChickenSign@CV_ChickenKickingScript@NScript@@EAEXXZ
+  00e70370 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::??_GCDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e95f10 RELOCATION_MATCH CSpawnedFunc<NScript::CV_HauntedHouseScript>::??0?$CSpawnedFunc@
+  00ed17b0 RELOCATION_MATCH NScript::CV_SingingStonesScript::CManWithDoorName::??_GCManWithDoorName@CV_SingingStonesScript@NScript@@UAEPAXI@Z

@@ -7,12 +7,15 @@
 //   SetReadableObjectText; the script base's IsActiveThreadTerminating 0x00F35B30; the CScriptThing temporary's inline
 //   destructor (vtable 0x01238C8C store, counted release through the info block, operator delete 0x00BFE9BC,
 //   CBaseClass::~CBaseClass 0x0099A2E0) at both sites; ~CCharString 0x0099EAE0.
-// Shape: the landed WatchForLeaderKilled CScriptThing/counted-pointer model; the text key is TextKeys[ParentClass->FinalSector]
+// Shape: the landed WatchForLeaderKilled CScriptThing/counted-pointer model; the text key is TextKeys[ParentClass->PrizesWon]
 //   through an STLport operator[] written `*(begin() + n)` (the vector start loads before the index; `_M_start[n]` or
 //   `*(_M_start + n)` load the index first); a rotated `while (sector != 7)` with the trailing IsActiveThreadTerminating()
 //   whose result is unused.
 // Layout: local model -- Ego_r.pdb CChickenSign (44 bytes): Game +4, Me +8, ParentClass +0x14, PMasterData +0x18,
-//   TextKeys vector<CWideString> +0x1c; CV_ChickenKickingScript FinalSector retail +0x5c (PDB +0x60, compared with 7).
+//   TextKeys vector<CWideString> +0x1c; CV_ChickenKickingScript PrizesWon retail +0x5c (Ego_r.pdb +0x70, ulong; compared with 7).
+// Name-fix NF186 (q6281): the local model's member at +0x5c was misnamed FinalSector (Ego_r.pdb FinalSector +0x60 = retail +0x4c, where the
+//   landed ctors 0x00E62830 / 0x00E68EB0 and KickedChicken::Main 0x00E64210 put it); retail +0x5c = Ego_r.pdb +0x70 is PrizesWon (ulong), the
+//   member the landed OnPersist 0x00E629A0 persists. In-place respell of the row's existing local model; bytes unchanged.
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -48,7 +51,7 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_ChickenKickingScript { public:
     unsigned char _pad00[0x5c];
-    long FinalSector;                                   // +0x5c (Ego_r.pdb +0x60)
+    unsigned long PrizesWon;                            // +0x5c (Ego_r.pdb +0x70, ulong; FinalSector is retail +0x4c, PDB +0x60)
     class CChickenSign : public CEntityScriptBase {
     public:
                 CV_ChickenKickingScript* ParentClass;           // +0x14
@@ -62,17 +65,17 @@ class CV_ChickenKickingScript { public:
 void CV_ChickenKickingScript::CChickenSign::Main()
 {
     Game->SetThingAsUsable(Me, true);
-    Game->SetReadableObjectText(Game->GetThingWithScriptName("ChickenSign"), TextKeys[ParentClass->FinalSector]);
-    long sector = ParentClass->FinalSector;
+    Game->SetReadableObjectText(Game->GetThingWithScriptName("ChickenSign"), TextKeys[ParentClass->PrizesWon]);
+    long sector = ParentClass->PrizesWon;
     while (sector != 7) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
-        if (sector != ParentClass->FinalSector) {
+        if (sector != ParentClass->PrizesWon) {
             if (IsActiveThreadTerminating())
                 return;
-            Game->SetReadableObjectText(Game->GetThingWithScriptName("ChickenSign"), TextKeys[ParentClass->FinalSector]);
-            sector = ParentClass->FinalSector;
+            Game->SetReadableObjectText(Game->GetThingWithScriptName("ChickenSign"), TextKeys[ParentClass->PrizesWon]);
+            sector = ParentClass->PrizesWon;
         }
     }
     IsActiveThreadTerminating();

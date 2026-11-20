@@ -144,6 +144,12 @@ public:
     class CDF_SummonsCreatures : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_DemonDoorsScript&, CScriptDataBase*, const CScriptThing&);
+#ifdef FABLE_RETAIL_CV_DEMONDOORSSCRIPT_SUMMONSCREATURES_CTOR
+        // NF186 opt-in (q4877, ??_G 0x00E70370): the PDB ctor
+        //   ??0CDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z (FableWin.pdb; no retail
+        //   address: Alloc 0x00E702C0 expands it). Declaration only.
+        CDF_SummonsCreatures(CV_DemonDoorsScript& parent, CScriptDataBase* data, const CScriptThing& me);
+#endif
         virtual CScriptBase* GetParentScript() const;
     private:
         virtual void Main();

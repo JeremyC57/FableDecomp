@@ -138,6 +138,12 @@ public:
     class CCROWDBANDITS : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BanditCampBossBattleScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D0B2D0
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_CROWDBANDITS_CTOR
+        // NF186 opt-in (q4862, ??_G 0x00D0B3C0): the PDB ctor
+        //   ??0CCROWDBANDITS@CQ_BanditCampBossBattleScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z (Ego_r.pdb / FableWin.pdb;
+        //   no retail address: Alloc 0x00D0B2D0 expands it). Declaration only.
+        CCROWDBANDITS(CQ_BanditCampBossBattleScript& parent, CScriptDataBase* data, const CScriptThing& me);
+#endif
         virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00D0B370
     private:
         virtual void Main();                                             // slot 1 0x00D0B3E0
@@ -245,7 +251,7 @@ FABLE_STATIC_ASSERT_AT(223, sizeof(NScript::CQ_BanditCampBossBattleScript::CBand
 FABLE_STATIC_ASSERT_AT(226, sizeof(NScript::CQ_BanditCampBossBattleScript::CBanditForger) == 0x20);
 #endif
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_CROWDBANDITS
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS) == 0x1c);
+FABLE_STATIC_ASSERT_AT(248, sizeof(NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_HOSTAGE
 FABLE_STATIC_ASSERT_AT(229, sizeof(NScript::CQ_BanditCampBossBattleScript::CCampHostage) == 0x1c);

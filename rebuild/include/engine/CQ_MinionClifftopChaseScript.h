@@ -29,6 +29,12 @@ public:
     virtual void Init();                                                 // 0x00DA3100
     void WatchForTermination();                                          // 0x00DA3F40
     void ProcessMission();                                               // 0x00DA8510
+#ifdef FABLE_RETAIL_CQ_MINIONCLIFFTOPCHASESCRIPT_GUARDCOMMENT
+    // NF186 opt-in (q6265, row 0x00DA8510 ProcessMission): Ego_r.pdb / FableWin.pdb
+    //   ?GuardComment@CQ_MinionClifftopChaseScript@NScript@@QAEXVCCharString@@@Z (the landed self row 0x00DA8970 defines that leaf;
+    //   ProcessMission passes the comment by value). Declaration only, no layout change.
+    void GuardComment(CCharString comment);                              // 0x00DA8970
+#endif
     bool MapKeeperSaidDialog;                                            // +0x48
     bool MissionFailed;                                                  // +0x49
     bool MissionSucceeded;                                               // +0x4a
@@ -66,7 +72,7 @@ public:
     class CInvisibleCage;                                                // Alloc 0x00DA57A0
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_MinionClifftopChaseScript) == 0x6c);
+FABLE_STATIC_ASSERT_AT(69, sizeof(NScript::CQ_MinionClifftopChaseScript) == 0x6c);
 #ifdef FABLE_RETAIL_CQ_MINIONCLIFFTOPCHASESCRIPT_MAPKEEPER
 // Opt-in (chunk 797): the CMapKeeper entity script (Ego_r.pdb CMapKeeper, 44 bytes: ParentClass +0x14, PMasterData +0x18,
 // DoneIntro +0x1c, ImprisonedFX +0x20; the offsets the landed Init 0x00DA4350 / OnPredicateFail 0x00DA4300 use). Entity vtable
@@ -87,7 +93,7 @@ protected:
     CScriptThing ImprisonedFX;                                           // +0x20
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_MinionClifftopChaseScript::CMapKeeper) == 0x2c);
+FABLE_STATIC_ASSERT_AT(90, sizeof(NScript::CQ_MinionClifftopChaseScript::CMapKeeper) == 0x2c);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

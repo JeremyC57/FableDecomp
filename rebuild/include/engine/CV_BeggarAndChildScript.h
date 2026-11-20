@@ -54,6 +54,12 @@ public:
     class CBeggarBully : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_BeggarAndChildScript&, CScriptDataBase*, const CScriptThing&);   // 0x00E5B2D0
+#ifdef FABLE_RETAIL_CV_BEGGARANDCHILDSCRIPT_BEGGARBULLY_CTOR
+        // NF186 opt-in (q4876, ??_G 0x00E5B390): the PDB ctor
+        //   ??0CBeggarBully@CV_BeggarAndChildScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z (FableWin.pdb; no retail address:
+        //   Alloc 0x00E5B2D0 expands it). Declaration only.
+        CBeggarBully(CV_BeggarAndChildScript& parent, CScriptDataBase* data, const CScriptThing& me);
+#endif
 #ifdef FABLE_RETAIL_CV_BEGGARANDCHILDSCRIPT_ENTITY_MAINS   // chunk H40: the entity's PDB overrides and members (Ego_r.pdb, 28 bytes)
         virtual CScriptBase* GetParentScript() const;                    // 0x00E5B370
     protected:
@@ -66,6 +72,6 @@ public:
     };
 };
 } // namespace NScript
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_BeggarAndChildScript) == 0x64);
+FABLE_STATIC_ASSERT_AT(69, sizeof(NScript::CV_BeggarAndChildScript) == 0x64);
 #endif // FABLE_RETAIL_NSCRIPT
 #endif

@@ -1,0 +1,63 @@
+00d0b3c0 new: 8
+    ??0CCROWDBANDITS@CQ_BanditCampBossBattleScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+    ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CCROWDBANDITS@CQ_BanditCampBossBattleScript@NScript@@6B@
+    ??_7CEntityScriptBase@@6B@ TABLE:012c3224
+    ??_GCCROWDBANDITS@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+    ??_GCEntityScriptBase@@UAEPAXI@Z
+    ?ReferenceCrowdBanditsVtable@?A0x63febbf1@@YAXPAXAAVCQ_BanditCampBossBattleScript@NScript@@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+00d40890 new: 8
+    ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z
+    ??0CSpeedFriend@CQ_GuildTrainingScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CEntityScriptBase@@6B@ TABLE:012c3224
+    ??_7CSpeedFriend@CQ_GuildTrainingScript@NScript@@6B@
+    ??_GCEntityScriptBase@@UAEPAXI@Z
+    ??_GCSpeedFriend@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+    ?ReferenceSpeedFriendVtable@?A0x748a6ac0@@YAXPAXAAVCQ_GuildTrainingScript@NScript@@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+00da8510 new: 3
+    ??4CTimer@@QAEAAV0@J@Z
+    ?GetTime@CTimer@@QBEJXZ
+    ?ProcessMission@CQ_MinionClifftopChaseScript@NScript@@QAEXXZ TABLE:00da8510
+00daebf0 new: 1
+    ?GetVillagerSpeechIndex@CNOVI_Villager@CQ_NewOakValeIntroScript@NScript@@AAEJJ@Z TABLE:00daebf0
+00ded0a0 new: 1
+    ?InitialiseVariables@CQ_SecretPassageScript@NScript@@QAEXXZ TABLE:00ded0a0
+00def700 new: 1
+    ?GetParentScript@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@UBEPAVCScriptBase@@XZ
+00def720 new: 1
+    ?OnPredicateFail@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ
+00e15500 new: 1
+    ?WatchForTermination@CQ_WhiteBalverineKnotholeGladeScript@NScript@@QAEXXZ TABLE:00e15500
+00e4df20 new: 1
+    ?Should_I_Flee@CTollBandit@CV_BanditTollScript@NScript@@AAEXAAVCScriptGameResourceObjectScriptedThingBase@@@Z TABLE:00e4df20
+00e5b390 new: 8
+    ??0CBeggarBully@CV_BeggarAndChildScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+    ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CBeggarBully@CV_BeggarAndChildScript@NScript@@6B@
+    ??_7CEntityScriptBase@@6B@ TABLE:012c3224
+    ??_GCBeggarBully@CV_BeggarAndChildScript@NScript@@UAEPAXI@Z
+    ??_GCEntityScriptBase@@UAEPAXI@Z
+    ?ReferenceBeggarBullyVtable@?A0xe953b64e@@YAXPAXAAVCV_BeggarAndChildScript@NScript@@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+00e64df0 new: 0
+00e70370 new: 8
+    ??0CDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+    ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@6B@ TABLE:012e8e80
+    ??_7CEntityScriptBase@@6B@ TABLE:012c3224
+    ??_GCDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+    ??_GCEntityScriptBase@@UAEPAXI@Z
+    ?ReferenceSummonsCreaturesVtable@?A0xfdca0f70@@YAXPAXAAVCV_DemonDoorsScript@NScript@@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+00e95f10 new: 0
+00ed17b0 new: 8
+    ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z
+    ??0CManWithDoorName@CV_SingingStonesScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CEntityScriptBase@@6B@ TABLE:012c3224
+    ??_7CManWithDoorName@CV_SingingStonesScript@NScript@@6B@
+    ??_GCEntityScriptBase@@UAEPAXI@Z
+    ??_GCManWithDoorName@CV_SingingStonesScript@NScript@@UAEPAXI@Z
+    ?ReferenceManWithDoorNameVtable@?A0x9fda17e5@@YAXPAXAAVCV_SingingStonesScript@NScript@@PAVCScriptDataBase@@ABVCScriptThing@@@Z

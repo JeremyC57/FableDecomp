@@ -9900,7 +9900,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ??$__adjust_heap@UElement@N00cbcfc0@@UCKeyPairCompareLess@2@@N00cbcfc0@@YIXPAUElement@0@HHU10@UCKeyPairCompareLess@0@@Z	00cbb3b0	00cbcfc0
 ??$__make_heap@UElement@N00cbcfc0@@UCKeyPairCompareLess@2@@N00cbcfc0@@YIXPAUElement@0@0UCKeyPairCompareLess@0@PAH2@Z	00cbbb70	00cbcfc0
 ??$sort_heap@UElement@N00cbcfc0@@UCKeyPairCompareLess@2@@N00cbcfc0@@YIXPAUElement@0@0UCKeyPairCompareLess@0@@Z	00cbc470	00cbcfc0
-?IsActiveThreadTerminating@CQ_WhiteBalverineKnotholeGladeScript@Row00e15500@@QAE_NXZ	00cb7940	00e15500
 ?EndMission@CQR_EscortTraderScript@Row00e1e530@@QAEXXZ	00e1e670	00e1e530
 ?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ	00cb7940	00e1e530
 ?clear@CCutsceneArgMap@Row00e80d60@@QAEXXZ	009aace0	00e80d60
@@ -10271,7 +10270,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ?Allocate@?$CSmallVector@VCCharString@@$07@@QAEXK@Z	009d2160	009d21d0
 ?Clear@?$CSmallVector@VCCharString@@$07@@QAEXXZ	009d2110	009d2660
 ??0CScriptProcessBase@@QAE@_NJM@Z	00a44740	00cdd450
-??_7?$CSpawnedFunc@VCV_ExposeMayorScript@NScript@@@@6B@	012ecba8	00e95f10
 ?TransferBinaryIn@?$CPersistTraits@J@@QBEXAAUCMemoryDataInputStreamReader@@PAJ@Z	0040fe60	0043151d
 ?TransferBinaryIn@?$CPersistTraits@W4EGameAction@@@@QBEXAAUCMemoryDataInputStreamReader@@PAW4EGameAction@@@Z	00475b93	00475aa6
 ?TransferBinaryIn@?$CPersistTraits@UCUIMiniMapMarker@@@@QBEXAAUCMemoryDataInputStreamReader@@PAUCUIMiniMapMarker@@@Z	00614af0	006194a0
@@ -35139,7 +35137,6 @@ __imp__recvfrom@24	01440518	008f9320
 ?MakeBanditComment@CQ_HobbeCaveScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z	00d905c0	00d907b0
 ??_7?$CSpawnedFunc1@VCQ_MinionClifftopChaseScript@NScript@@VCScriptThing@@@@6B@	012d771c	00da6d50
 ?GuardChatter@CQ_MinionClifftopChaseScript@NScript@@QAEXVCScriptThing@@@Z	00da71e0	00da6d50
-?GuardComment@CQ_MinionClifftopChaseScript@@QAEXVCCharString@@@Z	00da8970	00da8510
 ?DealWithHeroHittingMe@CVictimsBrother@CQ_RansomVictimScript@NScript@@AAEXXZ	00deb000	00dea3f0
 ??BCDefString@@QBE?AVCCharString@@XZ	00415dd0	005c0e81
 ?SetPredicate@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z	00f35b10	00e02e50
@@ -39527,3 +39524,4 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?IsThingCarryingMeleeWeapon@@YI_NPBUThingNative@@@Z	006a15a0	008d9530
 ?SetAndHash@AnimationGroupFilter@@QAEXABVCCharString@@@Z	0073dff0	008d9530
 ?IsSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z	00ad8c30	00ad9980
+?GuardComment@CQ_MinionClifftopChaseScript@NScript@@QAEXVCCharString@@@Z	00da8970	00da8510

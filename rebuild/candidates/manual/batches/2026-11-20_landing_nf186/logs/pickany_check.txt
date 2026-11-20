@@ -1,0 +1,11 @@
+MISSING 00d0b3c0 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False
+NO-OWNER-OBJ 00d0b3c0 012c3224 ??_7CEntityScriptBase@@6B@
+MISSING 00d40890 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False
+NO-OWNER-OBJ 00d40890 012c3224 ??_7CEntityScriptBase@@6B@
+MISSING 00e5b390 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False
+NO-OWNER-OBJ 00e5b390 012c3224 ??_7CEntityScriptBase@@6B@
+MISSING 00e70370 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False
+NO-OWNER-OBJ 00e70370 012e8e80 ??_7CDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@6B@
+NO-OWNER-OBJ 00e70370 012c3224 ??_7CEntityScriptBase@@6B@
+MISSING 00ed17b0 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False
+NO-OWNER-OBJ 00ed17b0 012c3224 ??_7CEntityScriptBase@@6B@

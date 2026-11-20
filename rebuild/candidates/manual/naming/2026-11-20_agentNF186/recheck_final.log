@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00d0b3c0   RELOCATION_MATCH PASS   NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::`scalar deleting destructor'
+00d40890   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingScript::CSpeedFriend::`scalar deleting destructor'
+00e5b390   RELOCATION_MATCH PASS   NScript::CV_BeggarAndChildScript::CBeggarBully::`scalar deleting destructor'
+00e70370   RELOCATION_MATCH PASS   NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::`scalar deleting destructor'
+00ed17b0   RELOCATION_MATCH PASS   NScript::CV_SingingStonesScript::CManWithDoorName::`scalar deleting destructor'
+00def700   MATCH            PASS   NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::GetParentScript
+00def720   MATCH            PASS   NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::OnPredicateFail
+00ded0a0   WARN STANDIN_LEAF ?InitialiseVariables@CQ_SecretPassageScript@NScript@@QAEXXZ (catalog NScript::CQ_GuildTrainingScript::CMeleeApprentice::Init; names another function)
+00ded0a0   MATCH            PASS   NScript::CQ_GuildTrainingScript::CMeleeApprentice::Init
+00da8510   RELOCATION_MATCH PASS   CQ_MinionClifftopChaseScript::ProcessMission
+00e64df0   RELOCATION_MATCH PASS   NScript::CV_ChickenKickingScript::CChickenSign::Main
+00daebf0   RELOCATION_MATCH PASS   CNOVI_Villager::GetVillagerSpeechIndex
+00e15500   WARN STANDIN_LEAF ?WatchForTermination@CQ_WhiteBalverineKnotholeGladeScript@NScript@@QAEXXZ (catalog _global::CScriptGameResourceObjectScriptedThingBase_HandleWhiteBalverineQuestObjective; names another function)
+00e15500   RELOCATION_MATCH PASS   _global::CScriptGameResourceObjectScriptedThingBase_HandleWhiteBalverineQuestObjective
+00e95f10   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00e95f10   WARN SHARED_HEADER_AVAILABLE CSpawnedFunc (engine/CSpawnedFunc.h)
+00e95f10   WARN SHARED_HEADER_AVAILABLE CV_HauntedHouseScript (engine/CV_HauntedHouseScript.h)
+00e95f10   WARN RELOC_NAME: ??0CScriptProcessBase@@QAE@_NJM@Z -> 00a44740 labelled 'CSuspendableProcessMicrothread::CSuspendableProcessMicrothread'
+00e95f10   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_HauntedHouseScript>::CSpawnedFunc
+00e4df20   RELOCATION_MATCH PASS   CTollBandit::Should_I_Flee
+
+WINS: 14
+  00d0b3c0 RELOCATION_MATCH CVtable_012c95f0::??_GCCROWDBANDITS@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d40890 RELOCATION_MATCH CVtable_012cdf28::??_GCSpeedFriend@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00e5b390 RELOCATION_MATCH CVtable_012e6c1c::??_GCBeggarBully@CV_BeggarAndChildScript@NScript@@UAEPAXI@Z
+  00e70370 RELOCATION_MATCH CVtable_012e8e80::??_GCDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00ed17b0 RELOCATION_MATCH CVtable_012f2c98::??_GCManWithDoorName@CV_SingingStonesScript@NScript@@UAEPAXI@Z
+  00def700 MATCH _gapscan::?GetParentScript@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@UBEPAVCScriptBase@@XZ
+  00def720 MATCH _gapscan::?OnPredicateFail@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ
+  00ded0a0 MATCH CMeleeApprentice::?InitialiseVariables@CQ_SecretPassageScript@NScript@@QAEXXZ
+  00da8510 RELOCATION_MATCH CQ_MinionClifftopChaseScript::?ProcessMission@CQ_MinionClifftopChaseScript@NScript@@QAEXXZ
+  00e64df0 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CChickenSign::?Main@CChickenSign@CV_ChickenKickingScript@NScript@@EAEXXZ
+  00daebf0 RELOCATION_MATCH CNOVI_Villager::?GetVillagerSpeechIndex@CNOVI_Villager@CQ_NewOakValeIntroScript@NScript@@AAEJJ@Z
+  00e15500 RELOCATION_MATCH _global::?WatchForTermination@CQ_WhiteBalverineKnotholeGladeScript@NScript@@QAEXXZ
+  00e95f10 RELOCATION_MATCH CSpawnedFunc<NScript::CV_HauntedHouseScript>::??0?$CSpawnedFunc@
+  00e4df20 RELOCATION_MATCH CTollBandit::?Should_I_Flee@CTollBandit@CV_BanditTollScript@NScript@@AAEXAAVCScriptGameResourceObjectScriptedThingBase@@@Z
