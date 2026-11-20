@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0055f710   RELOCATION_MATCH PASS   ResetAndOpenHTTPAndPrepareRequest
+
+WINS: 1
+  0055f710 RELOCATION_MATCH CTCHeroOnlineScoreboard::?ResetAndOpenHTTPAndPrepareRequest@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVCCharString@@_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCHeroOnlineScoreboard_ResetAndOpenHTTPAndPrepareRequest_0055f710
