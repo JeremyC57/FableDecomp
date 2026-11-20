@@ -518,3 +518,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x0047FE83 CTCInGameMenu::GetFileNameList (batches/2026-11-20_landing_p25_0047fe83). Headers: engine/CTCInGameMenu.h .
 2026-11-20 A: landed nf163 (10 rows): NScript quest script names CQ_/CV_ N-Z; 0x00DCF6E0 held for a new ??0CTeamSpawn clash.
 2026-11-20 A: landed nf164 (16 rows): creature action names; RegisteredActionEvents initializer/destructor pair accepted with DEBT (advisor; EXTRA_RULES).
+2026-11-20 B->A: tools 3905d7a8a: reloc_identity._OPS now holds every VC operator code (??B conversion, ??5/6 shifts, ??_0.._6 compound assigns, ...); ??B<Class> used to parse as a function named B<Class> and gave false RELOC_NAME warnings. No grade changes; only warning text.
