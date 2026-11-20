@@ -10,7 +10,7 @@
 // Callees: _CIacos 0x00BFEBA2 (three acos calls); inline C3DVector::Normalise (Newton reciprocal square root: 3.0f 0x0122DED4,
 //   0.5f 0x0122F59C, 0.0f 0x0122DEDC); INV_TWO_PI 0x01237F08 (0.15915494); 1.0f 0x0122DED8; 0.0025f 0x0126A200.
 // Shape: Ego_d locals and scopes (pts, result, it_first, it_second, it_finish_him, first, second, last_line, this_line + a loop-scope this_line);
-//   the loop body post-increments both iterators (Ego_d 315/316, 87 B each); it_finish_him = pts.end() is hoisted into ebx.
+//   the loop body post-increments both iterators (Inferred: retail adds before the acos call; Ego_d 315/316 = 87 B each, uncalibrated); it_finish_him = pts.end() is hoisted into ebx.
 // Inferred: `double closing` and `float closing_angle` are not in Ego_d's local list. They are fitted: the qword spill of the closing1 dot
 //   (0x007605DB) and the `fst` after its acos (0x0076071A).
 // Normalise body: existing opt-ins NORMALISE_SQUARE_HELPER + SQUARE_GROUPED_PASS23 (the 0x00A58B50 set). They close the last_line copy schedule at
