@@ -24,17 +24,18 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   symbol-key wrap decides x87 operand order, setter block copies fold only after an earlier same-member read.
 - Shared-header fixes: CRenderStateManager.h EARLY_RETURN braces; C2DVector.h PASS21 double operator*. Tool fixes: reloc_identity operator codes, rand/srand.
 
-## Account A, 2026-11-20 (naming round 10, landings nf148-nf190)
-- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` (nf148-nf190), B's b12 /
+## Account A, 2026-11-20 (naming round 10, landings nf148-nf193)
+- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` (nf148-nf193), B's b12 /
   reports_b4 rows, and the engine/CSpawnedFunc1.h include fix. Each batch README lists its rows, header opt-ins, advisor calls and checks.
-- Agents running at the time of writing: NF191 (game / creature / UI / input, second pass), NF192 (engine / render / resource /
-  data-stream, second pass), NF193 (remaining mixed queue, first 50 in queue order; libpk / GameCODA excluded). Slices in
-  `$S/w22/agentNF19x/`; land each with the procedure in `docs/journal/2026-11/COORDINATION_LOG.md` (nf18x lines). mkagent now takes
-  `MAX=<n>` to cap a slice (an uncapped `ANY=1` regex took 167 entries).
+- Agents running at the time of writing: NF194 (script interface / defs / quest scripts, third pass), NF195 (remaining queue,
+  50 entries: STL / counted-pointer families with nf185 / nf189 census), NF196 (NF191's returned partial families). Slices in
+  `$S/w22/agentNF19x/`; land each with the procedure in `docs/journal/2026-11/COORDINATION_LOG.md` (nf18x / nf19x lines). mkagent takes
+  `MAX=<n>` to cap a slice. At landing, check each hand-back row's lock owner (GOTCHAS nf193: an agent drafted a row another agent held).
 - New rules (EXTRA_RULES 2026-11-20, advisor decisions under the owner's delegation): explicit-instantiation scaffolding for private
   members; a static's initializer / atexit-destructor pair may land with its known LNK2005; a `_quarantine/` header is not a shared
   header for the local-model rule; pick-any copies must equal the owner's body, and a stand-in's table line is not ownership;
-  size-pragma scaffolding (no row-head optimize pragma before the opt-in header's include); STLport header spellings for STL instances.
+  size-pragma scaffolding (no row-head optimize pragma before the opt-in header's include); STLport header spellings for STL instances;
+  per-TU `?A0x` anonymous-namespace hashes count as one spelling (nf192).
 - Landing checks added today: a self row's `// Leaf:` must be the full mangled name (a bare one trips the split gate, nf188); run
   `coordinator/funclet_includes_check.py` after any landing that renames a file (nf188 broke 0x01212A70, fixed in 802ef5269a).
 - Open entries of handed-back agents are unclaimed in COORDINATION_CLAIMS so mkagent can re-pick them; locks of B's reserved rows read `acctB`.
