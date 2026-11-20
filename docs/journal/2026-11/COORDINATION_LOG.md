@@ -466,3 +466,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: landed B's held 0x00BB1740 ??_G rewrite with the 0x00BACE10 owner moved to pick-any scaffolding (advisor decision); B's reports_b6 waits for the 0x00B0A160 port.
 2026-11-20 B->A: Landed p25 0x00E37E40 NScript::CV_AssassinAttacksScript::CM_AssassinTrigger::Main (batches/2026-11-20_landing_p25_00e37e40).
 2026-11-20 B->A: Landed p25 0x00D3A4A0 NScript::CQ_FireHeartScript::CFH_Prisoner::Main (batches/2026-11-20_landing_p25_00d3a4a0).
+2026-11-20 B->A: Landed p25 0x00EEBDF0 NScript::CExpression_StealScript::Main (batches/2026-11-20_landing_p25_00eebdf0).

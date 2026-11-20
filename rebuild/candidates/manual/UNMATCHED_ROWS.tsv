@@ -946,7 +946,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00ee8390	_global	DoMission_OakValeRevisited	1248	parked	DIFFER(1224v1240)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ee8390.cpp	original
 00ee91e0	NScript::CGlobal_DebugCycleThroughSpeechScript	Main	672	parked	DIFFER(575v613)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00ee91e0.cpp	original
 00eeaef0	NScript::CExpression_PickpocketScript	Main	1920	parked	DIFFER(1860v1906)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00eeaef0.cpp	original
-00eebdf0	NScript::CExpression_StealScript	Main	1248	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(1239v1240)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand318/differ/00eebdf0.cpp	original
 00ef5840	NScript::CPersonalScript_EmptyScript::CBanditWalker	Main	736	parked	DIFFER(768v727)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00ef5840.cpp	gapscan/boundary
 00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan	Main	3280	parked	DIFFER(3409v3265)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef5ff0.cpp	gapscan/boundary
 00ef9280	NScript::Cjoss_test_scriptsScript	Main	3168	parked	DIFFER(1972v3158)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef9280.cpp	gapscan/boundary
