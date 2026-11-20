@@ -1,0 +1,5 @@
+# recheck after landing nf142: 328 rows = gate referencing rows (after dropping universal target 0x0099B510 ~CWideString, 918 rows, already bound) + renamed rows
+good 326 bad 2
+009df060	009df060   DIFFER(1736v1736) TCC_FAIL CStateBlockFunctionSold::Apply
+009e15e0	009e15e0   DIFFER(99v99)    TCC_FAIL TextureCache_MoveAndCleanup
+# 0x009E15E0: DIFFER at HEAD too (nf139 proof; q4296's authoring row). 0x009DF060: includes nothing nf142 or any landing today changed (row 2026-11-11, headers 11-13 / 11-16); not caused here, queued for the full-tree regrade

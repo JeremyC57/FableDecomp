@@ -1410,9 +1410,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040f0e0'
-        Module = '_global'
-        Source = '00/40/global_ResetDimensions_0040f0e0.cpp'
-        TestSource = '00/40/global_ResetDimensions_0040f0e0_test.cpp'
+        Module = 'NUISystem::CUIScreenUnitConverter'
+        Source = '00/40/NUISystemCUIScreenUnitConverter_ResetDimensions_0040f0e0.cpp'
+        TestSource = '00/40/NUISystemCUIScreenUnitConverter_ResetDimensions_0040f0e0_test.cpp'
         PassPattern = '_global_0040f0e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -53633,9 +53633,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009f61c0'
-        Module = '_global'
-        Source = '00/9f/CLandscapeBackgroundPatch_vectordeletingdestructor_009f61c0.cpp'
-        TestSource = '00/9f/CLandscapeBackgroundPatch_vectordeletingdestructor_009f61c0_test.cpp'
+        Module = 'CInputEvent'
+        Source = '00/9f/CInputEvent_scalardeletingdestructor_009f61c0.cpp'
+        TestSource = '00/9f/CInputEvent_scalardeletingdestructor_009f61c0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_009f61c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -79045,9 +79045,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041bb00'
-        Module = '_global'
-        Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_0041bb00.cpp'
-        TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_0041bb00_test.cpp'
+        Module = 'CTexture'
+        Source = '00/41/CTexture_scalardeletingdestructor_0041bb00.cpp'
+        TestSource = '00/41/CTexture_scalardeletingdestructor_0041bb00_test.cpp'
         PassPattern = 'PASS_0041bb00'
     }
     [pscustomobject]@{

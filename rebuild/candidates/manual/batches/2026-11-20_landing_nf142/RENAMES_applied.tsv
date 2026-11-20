@@ -1,0 +1,29 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0040F0E0	NUISystem::CUIScreenUnitConverter	ResetDimensions	?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ	NUISystem::CUIScreenUnitConverter::ResetDimensions	?NUISystem_CUIScreenUnitConverter_ResetDimensions@@YIXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x0040C590 + FableWin.pdb 0x01884760 ?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ; exe scan: the only landed referencer 0x0042EC7C already binds this spelling (closes an existing self-vs-binder split); row moved onto the shared headers (q4291 binder port)
+0x009F61C0	CInputEvent	`scalar_deleting_destructor'	??_GCInputEvent@@QAEPAXI@Z	_global::ScalarDeletingDtor_009f61c0	?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z	self rename (q4299 binder): FableWin.pdb ??_GCInputEvent@@QAEPAXI@Z (0x030D4AE0, next to ??_GCInputEventPackage 0x030D4B60; retail 0x009F61C0 lies among the CInputEventPackage rows) + the 30-byte body is byte for byte VC7.1's scalar deleting destructor of engine/CInputEvent.h (call ??1CInputEvent 0x00A03B30, flag test, ??3@YAXPAX@Z); exe scan: no landed row references 0x009F61C0; authored as the nf86 pick-any scaffolding (RELOCATION_MATCH + PASS)
+0x0041BB00	CTexture	`scalar_deleting_destructor'	??_GCTexture@@QAEPAXI@Z	_global::ScalarDeletingDtor_0041bb00	?VecDel@T@@QAEPAXI@Z	self rename (q4296 binder): FableWin.pdb ??_GCTexture@@QAEPAXI@Z (0x018BC3F0) + the 30-byte body is byte for byte VC7.1's scalar deleting destructor of engine/CTexture.h (inline ~CTexture = call ?Uninitialise@CTexture@@QAEXXZ 0x009F9F70, flag test, ??3@YAXPAX@Z), the only catalog function of that shape calling 0x009F9F70; exe scan: the one hit (0x00784260 +0x108) is not a reference: the dword straddles `call` rel32's last byte and `mov ebx,41h` (bytes e877ac2100 bb41000000), no landed row binds 0x0041BB00; authored as the nf86 pick-any scaffolding (RELOCATION_MATCH + PASS)
+0x00A10E10	CRenderTarget	DetachTarget	?DetachTarget@CRenderTarget@@QAEXXZ	CRenderTarget::DetachTarget	?DetachTarget@@YIXPAUS@@@Z	leaf-only (catalog name already right): Ego_r.pdb 0x00B7EE20 + FableWin.pdb 0x030F1F10 ?DetachTarget@CRenderTarget@@QAEXXZ (donor order DetachTarget / DetachZBuffer / Uninitialise = retail 0x00A10E10 / 0x00A10E20 / 0x00A10E30); exe scan: all five landed referencers (0x009FAF70, 0x00B665E0, 0x00B72180, 0x00B8B780, 0x00F38930) already bind this spelling (re-probed at HEAD; closes an existing self-vs-binder split); row moved onto engine/CRenderTarget.h (q6305 binder port)
+# Section 2
+0x0040F0E0	?GetDims@Device@@QAEXPAUDims@@@Z	?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ	0x009BEDC0
+0x0040F0E0	?g_dimW@@3MA	?BackBufferWidth@CUIScreenUnitConverter@NUISystem@@0MA	0x013B876C
+0x0040F0E0	?g_dimH@@3MA	?BackBufferHeight@CUIScreenUnitConverter@NUISystem@@0MA	0x013B8770
+0x00405650	?GetRenderTargetDimensions@CDisplayManagerNative@@QBEPAVC2DExtentsI@@AAV2@@Z	?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ	0x009BEDC0
+0x00405650	?GFGetSystemManager@@YIPAUCSystemManagerNative@@XZ	?GFGetSystemManager@@YIPAVCSystemManager@@XZ	0x009A4EC0
+0x00499D90	?BeginRender@CDisplayManager@@QAEXXZ	?BeginRender@CDisplayManager@@QAE_NXZ	0x009BEF20
+0x0066CA80	?Init@Temp@@QAEXHHHHH@Z	?Initialise@CPixelFormat@@QAEXJJJJ_N@Z	0x009E3790
+0x0066CA80	?Build@SubObj@@QAEXPAHPAUTemp@@H@Z	?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z	0x009F3230
+0x0066CA80	?Finish@SubObj@@QAEXPAVCWideString@@H@Z	?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z	0x009F2DD0
+0x009C1AC0	@FableMemberDtor_009c1ac0@4	?Uninitialise@CTexture@@QAEXXZ	0x009F9F70
+0x009C1AC0	@FableBaseDtor_009c1ac0@4	??1CWideString@@QAE@XZ	0x0099B510
+0x009C2520	@FableMemberDtor_009c2520@4	?Uninitialise@CTexture@@QAEXXZ	0x009F9F70
+0x009C2520	@FableBaseDtor_009c2520@4	??1CWideString@@QAE@XZ	0x0099B510
+0x009E45D0	@FableMemberDtor_009e45d0@4	??1CInputEvent@@QAE@XZ	0x00A03B30
+0x009F61C0	?CLandscapeBackgroundPatch_dtor_00a03b30@@YIXPAVCLandscapeBackgroundPatch@@@Z	??1CInputEvent@@QAE@XZ	0x00A03B30
+0x0041BB00	?Dtor_009f9f70@T@@QAEXXZ	?Uninitialise@CTexture@@QAEXXZ	0x009F9F70
+0x0082CD00	??4SMember08_24@@QAEAAU0@ABU0@@Z	??4CTexture@@QAEABV0@ABV0@@Z	0x009FA1C0
+0x009C1050	?Release@CSurface@@QAEXXZ	?Uninitialise@CSurface@@QAEXXZ	0x009F2E20
+0x00A10E10	?sub@@YIXPAUSub@@@Z	?Uninitialise@CSurface@@QAEXXZ	0x009F2E20
+0x0066C7A0	?dt_helper@@YIXPAX@Z	?Uninitialise@CSurface@@QAEXXZ	0x009F2E20
+0x00B4B830	?Release@CShaderHolder_009f2e20@@QAEXXZ	?Uninitialise@CSurface@@QAEXXZ	0x009F2E20
+0x00642A60	??1CHolderBase_009f2e20@@QAE@XZ	?Uninitialise@CSurface@@QAEXXZ	0x009F2E20
+0x00642A60	??_7CHolder_00642a60@@6B@	??_7CSurface@@6B@	0x0122F84C

@@ -1,0 +1,62 @@
+addr       parity           behav  name
+00405650   WARN RELOC_NAME: ?Reset@NativeCIME@NUISystem@@QAEXXZ -> 004051c0 labelled 'NUISystem::CIME::Shutdown'
+00405650   RELOCATION_MATCH PASS   CIME::Initialise
+0040f0e0   RELOCATION_MATCH PASS   NUISystem::CUIScreenUnitConverter::ResetDimensions
+0041bb00   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_0041bb00
+00499d90   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00499d90   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00499d90   WARN SHARED_HEADER_AVAILABLE CRenderManager (engine/CRenderManager.h)
+00499d90   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00499d90   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00499d90   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00499d90   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00499d90   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00499d90   WARN SHARED_HEADER_AVAILABLE CProgressDisplay (engine/CProgressDisplay.h)
+00499d90   WARN RELOC_NAME: ?UninitialiseGraphics@CPlayerGui@@QAEXXZ -> 00437570 labelled '_global::Forward_ChangeScene_via0x14_00437570'
+00499d90   RELOCATION_MATCH PASS   CProgressDisplay::StopProgress
+00642a60   RELOCATION_MATCH PASS   CResourceHolder_00642a60::~CResourceHolder_00642a60
+0066c7a0   WARN GENERIC_STRUCT module=CRenderTarget (use engine/CRenderTarget.h)
+0066c7a0   WARN STANDIN_LEAF ?DetachTarget@@YIXPAUS@@@Z (catalog CRenderTarget::DetachTarget; free function lacks its class)
+0066c7a0   RELOCATION_MATCH PASS   CRenderTarget::DetachTarget
+0066ca80   WARN SHARED_HEADER_AVAILABLE CRegionMinimap (engine/CRegionMinimap.h)
+0066ca80   WARN RELOC_NAME: ?Check@CWideString@@QAE_NXZ -> 00999230 labelled 'CAFile::PathExists'
+0066ca80   RELOCATION_MATCH PASS   CRegionMinimap::LoadRegionMinimapTGAFile
+0082cd00   RELOCATION_MATCH PASS   std::__copy<CMinimapData*,CMinimapData*,int>
+009c1050   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+009c1050   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009c1050   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+009c1050   WARN SHARED_HEADER_AVAILABLE CRenderManager (engine/CRenderManager.h)
+009c1050   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009c1050   WARN RELOC_NAME: ?GetWindowDimensions@CDisplayManager@@QAEXPAUHWND__@@PAVC2DExtentsI@@PAJ@Z -> 009bed10 labelled 'CDisplayManager::GetCurrentWindowedSettings'
+009c1050   WARN RELOC_NAME: ?InitialiseDeviceState@CDisplayManager@@QAEXXZ -> 009be490 labelled 'CDisplayManager::ResizeWindowToBackBufferSize'
+009c1050   WARN RELOC_NAME: ??0CRenderManagerBase@@QAE@PAVCDisplayManager@@ABVCWideString@@K@Z -> 009d9a30 labelled 'CRenderManager2D::CRenderManager2D'
+009c1050   RELOCATION_MATCH PASS   CDisplayManager::SetClientWindow
+009c1ac0   WARN STANDIN_LEAF @FableDualDestval_009c1ac0@4 (catalog std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>; address-only name)
+009c1ac0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+009c2520   WARN STANDIN_LEAF @FableDualDestval_009c2520@4 (catalog std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>; address-only name)
+009c2520   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+009e45d0   WARN STANDIN_LEAF @FableDestVal_009e45d0@4 (catalog _global::Dtor_CBaseClassBase_009e45d0; address-only name)
+009e45d0   RELOCATION_MATCH PASS   _global::Dtor_CBaseClassBase_009e45d0
+009f61c0   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_009f61c0
+00a10e10   RELOCATION_MATCH PASS   CRenderTarget::DetachTarget
+00b4b830   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer (engine/CEngineShadowRenderer.h)
+00b4b830   RELOCATION_MATCH PASS   CEngineShadowRenderer::OnReleaseDefaultPoolResources
+0122a600   RELOCATION_MATCH PASS   _global::Static_Uninitialise_on_013c5a80_0122a600
+
+WINS: 16
+  00405650 RELOCATION_MATCH CIME::?Initialise@CIME@NUISystem@@QAEXPAUHWND__@@@Z
+  0040f0e0 RELOCATION_MATCH _global::?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ
+  0041bb00 RELOCATION_MATCH _global::??_GCTexture@@QAEPAXI@Z
+  00499d90 RELOCATION_MATCH CProgressDisplay::?StopProgress@CProgressDisplay@@UAEX_N0@Z
+  00642a60 RELOCATION_MATCH CResourceHolder_00642a60::??1CResourceHolder_00642a60@@QAE@XZ
+  0066c7a0 RELOCATION_MATCH CRenderTarget::?DetachTarget@@YIXPAUS@@@Z
+  0066ca80 RELOCATION_MATCH CRegionMinimap::LoadRegionMinimapTGAFile
+  0082cd00 RELOCATION_MATCH std::??$__copy@PAVCMinimapData@@PAV1@H@std@@YIPAVCMinimapData@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+  009c1050 RELOCATION_MATCH CDisplayManager::SetClientWindow
+  009c1ac0 RELOCATION_MATCH _global::@FableDualDestval_009c1ac0@4
+  009c2520 RELOCATION_MATCH _global::@FableDualDestval_009c2520@4
+  009e45d0 RELOCATION_MATCH _global::@FableDestVal_009e45d0@4
+  009f61c0 RELOCATION_MATCH _global::??_GCInputEvent@@QAEPAXI@Z
+  00a10e10 RELOCATION_MATCH CRenderTarget::?DetachTarget@CRenderTarget@@QAEXXZ
+  00b4b830 RELOCATION_MATCH CEngineShadowRenderer::?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@QAEXXZ
+  0122a600 RELOCATION_MATCH _global::_$E2

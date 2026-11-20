@@ -1,0 +1,44 @@
+00405650 new: 2
+    ?Get@?$CCountedPointer@VCDisplayManager@@@@QBEPAVCDisplayManager@@XZ
+    ?GetDisplayManager@CSystemManager@@QAEPAVCDisplayManager@@XZ
+0040f0e0 new: 3
+    ?Get@?$CCountedPointer@VCDisplayManager@@@@QBEPAVCDisplayManager@@XZ
+    ?GetDisplayManager@CSystemManager@@QAEPAVCDisplayManager@@XZ
+    ?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ TABLE:0040f0e0
+0041bb00 new: 3
+    ??1CTexture@@QAE@XZ
+    ??_GCTexture@@QAEPAXI@Z
+    ?ReferenceTextureScalarDeletingDestructor@?A0xf3baae05@@YAXPAVCTexture@@@Z
+00499d90 new: 0
+00642a60 new: 3
+    ??1CSurface@@UAE@XZ
+    ??_7CSurface@@6B@ TABLE:0122f84c
+    ??_GCSurface@@UAEPAXI@Z
+0066c7a0 new: 1
+    ?GetD3DSurface@CSurface@@QBEPAUIDirect3DSurface9@@XZ
+0066ca80 new: 2
+    ??0C2DExtentsI@@QAE@JJ@Z
+    ??0CPixelFormat@@QAE@XZ
+0082cd00 new: 0
+009c1050 new: 0
+009c1ac0 new: 3
+    ??1CQuickDrawTriInfo@@QAE@XZ
+    ??1CTexture@@QAE@XZ
+    ??_GCQuickDrawTriInfo@@QAEPAXI@Z
+009c2520 new: 3
+    ??1CQuickDrawTriInfo@@QAE@XZ
+    ??1CTexture@@QAE@XZ
+    ??_GCQuickDrawTriInfo@@QAEPAXI@Z
+009e45d0 new: 1
+    ??_GCInputEvent@@QAEPAXI@Z
+009f61c0 new: 2
+    ??_GCInputEvent@@QAEPAXI@Z
+    ?ReferenceInputEventScalarDeletingDestructor@?A0x5ae1e8da@@YAXPAVCInputEvent@@@Z
+00a10e10 new: 2
+    ?DetachTarget@CRenderTarget@@QAEXXZ TABLE:00a10e10
+    ?GetD3DSurface@CSurface@@QBEPAUIDirect3DSurface9@@XZ
+00b4b830 new: 0
+0122a600 new: 3
+    ??0CTexture@@QAE@XZ
+    ??1CTexture@@QAE@XZ
+    ?GFontTextureCache@?A0xb50312da@@3VCTexture@@A TABLE:013c5a80

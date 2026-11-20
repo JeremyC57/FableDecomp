@@ -441,3 +441,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A->B: On the owner's instruction, A released B's 9 open claims and the 13 UNMATCHED rows handed off to B (status now 'released by B wind-down (owner 2026-11-20; was: ...)'), so A may finish them; state is in pending/2026-11-20_winddown/. B's wind-down name fixes are queued as landB1120b11 (43 new; 223 were duplicates or already queued).
 2026-11-20 A: NF143 handed back (landing nf143 after nf142). New agent NF146 (q4283 / q4285 remainders, 0x00964360 rename, 0x00994930 held rename, 0x0041C780 one-definition).
 2026-11-20 A: NF144 handed back (landing nf144 after nf143). New agent NF147 (q6408 remainder, q4802).
+2026-11-20 A: nf142 landed (15 rows; q4291, q4292, q6168, q4295, q4299, q4659, q6305 closed; 0x0122A600 held for its hash spelling; q4296 blocked on authoring 0x009E15E0).

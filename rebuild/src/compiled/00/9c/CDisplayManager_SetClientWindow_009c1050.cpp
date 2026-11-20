@@ -1,8 +1,10 @@
 // CDisplayManager::SetClientWindow(HWND window) -- re-target the display at a new client window: drop the back/depth buffer surfaces, release the device, recreate it windowed for the window's client size (at least 32x32) reusing the last creation parameters, then re-initialise the device state and replace the render manager (when one exists) with a fresh one bound to the new device
 // Leaf: SetClientWindow
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009C1050, length 317 bytes (`ret 4`). Callees: CSurface release 0x9F2E20, GetWindowDimensions 0x9BED10, CreateDevice 0x9BF7E0, 0x9BE490, operator new 0xBFEA1A (0x3EA4 bytes), render-manager base ctor 0x9D9A30 + vtable 0x0129B400, Init 0xA0A940.
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009C1050, length 317 bytes (`ret 4`). Callees: CSurface::Uninitialise 0x9F2E20, GetWindowDimensions 0x9BED10, CreateDevice 0x9BF7E0, 0x9BE490, operator new 0xBFEA1A (0x3EA4 bytes), render-manager base ctor 0x9D9A30 + vtable 0x0129B400, Init 0xA0A940.
 // Layout: PDB CDisplayManager, except LastDeviceCreationParameters sits at +0x268 in retail (Ego_r.pdb says +0x270): the STLport list DeviceResetCallbacks
 // is one node pointer (4 bytes) where the PDB build's list is 12. The skipped +0x284 is ExclusiveMode, stored false.
+// Naming (NF142, 2026-11-20, q6305): 0x009F2E20 respelled in place in the row's existing local CSurface model, Release -> Uninitialise
+//   (Ego_r.pdb 0x00B46AF0 + FableWin.pdb 0x030C99C0 ?Uninitialise@CSurface@@QAEXXZ; no PDB has CSurface::Release).
 // Note: the block scope lets bitDepth take the dead argument slot; the store order of params is the retail order.
 struct HWND__; typedef HWND__* HWND;
 struct IDirect3DDevice9 { virtual long __stdcall QueryInterface(void*, void**); virtual unsigned long __stdcall AddRef(); virtual unsigned long __stdcall Release(); };
@@ -13,7 +15,7 @@ struct CCreateDeviceParameters {
     long RefreshRate; bool ExclusiveMode; CPresentationIntervalDesc PresentationInterval; long MultisampleType;
 };
 class CWideString { public: void* PData; };
-class CSurface { public: void Release(); unsigned char _d[0x10]; };
+class CSurface { public: void Uninitialise(); unsigned char _d[0x10]; };   // Uninitialise 0x009F2E20
 class CDisplayManager;
 struct CRenderManagerBase {
     CRenderManagerBase(CDisplayManager* display, const CWideString& shaderPath, unsigned long flags);
@@ -47,8 +49,8 @@ public:
 };
 bool CDisplayManager::SetClientWindow(HWND window)
 {
-    BackBufferSurface.Release();
-    DepthBufferSurface.Release();
+    BackBufferSurface.Uninitialise();
+    DepthBufferSurface.Uninitialise();
     if (D3DDevice)
         D3DDevice->Release();
     {

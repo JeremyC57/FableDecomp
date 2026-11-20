@@ -13,6 +13,8 @@
 // Layout: Ego_r.pdb CProgressDisplay with 12-byte retail vectors (ProgressTextures +0x04, GuildSealTextures +0x10,
 // LoadingScreenTextures +0x1c) and the flags 0x10 lower (DebugDisplay +0x78, Initialised +0x79, BlackScreen +0x7b), as the
 // landed RenderProgress 0x00499880.
+// Naming (NF142, 2026-11-20, q4292 / q6168): BeginRender 0x009BEF20 respelled in place in the row's existing local CDisplayManager model to the
+//   Ego_r.pdb 0x00B23C30 + FableWin.pdb 0x0301EBA0 spelling ?BeginRender@CDisplayManager@@QAE_NXZ (bool; the result is unused here).
 // Shape: a named C2DBoxF local (a temporary schedules its zero X0/Y0 stores early); the black CRGBColour temporary reuses the dead `clearScreen` argument slot; each texture loop recomputes the size.
 class CCharString { public:
     void* PStringData;
@@ -37,7 +39,7 @@ class CDisplayManager { public:
     CRenderManager* PRenderManager;                    // +0x08
     unsigned char   _pad0c[0x214 - 0x0c];
     bool            Rendering;                         // +0x214
-    void BeginRender();                                // 0x009BEF20
+    bool BeginRender();                                // 0x009BEF20 ?BeginRender@CDisplayManager@@QAE_NXZ (Ego_r / FableWin: returns bool)
     void EndRender();                                  // 0x009BEF50
 public:
     bool SwapScreens();   // 0x009BEEB0

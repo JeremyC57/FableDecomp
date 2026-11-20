@@ -8,7 +8,7 @@ struct CCreateDeviceParameters {
     int RefreshRate; bool ExclusiveMode; CPresentationIntervalDesc PresentationInterval; int MultisampleType;
 };
 struct CDevice { int Released; CDevice() : Released(0) {} void Release() { ++Released; } };
-class CSurface { public: int Released; CSurface() : Released(0) {} void Release() { ++Released; } };
+class CSurface { public: int Released; CSurface() : Released(0) {} void Uninitialise() { ++Released; } };   // NF142: respelled with the row (Release -> Uninitialise)
 static int g_Deleted = 0;
 struct CRenderManagerBase {
     int Flags; CDevice* Device;
@@ -25,8 +25,8 @@ class CDisplayManager { public:
     void InitialiseDeviceState() { ++StateInits; }
     bool SetClientWindow(int window)
     {
-        BackBufferSurface.Release();
-        DepthBufferSurface.Release();
+        BackBufferSurface.Uninitialise();
+        DepthBufferSurface.Uninitialise();
         if (D3DDevice)
             D3DDevice->Release();
         {

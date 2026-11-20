@@ -1,11 +1,17 @@
 #include <cstdio>
-static int g_ord_009c2520[2]; static int g_n_009c2520=0;
-struct FableMember_009c2520; struct FableBase_009c2520;
-extern "C" void __fastcall FableMemberDtor_009c2520(FableMember_009c2520* p){ g_ord_009c2520[g_n_009c2520++]=1; }
-extern "C" void __fastcall FableBaseDtor_009c2520(FableBase_009c2520* p){ g_ord_009c2520[g_n_009c2520++]=2; }
-extern "C" void __fastcall FableDualDestval_009c2520(char *self){ FableMemberDtor_009c2520((FableMember_009c2520*)(self+0x18)); FableBaseDtor_009c2520((FableBase_009c2520*)(self+0x14)); }
+// Behaviour test for 0x009c2520 (links the row object): the implicit CQuickDrawTriInfo destructor destroys UploadedTexture (+0x18,
+//   CTexture::Uninitialise) first, then String (+0x14, ~CWideString).
+// NF142 (2026-11-20, q4296): rewritten on engine/CQuickDrawTriInfo.h, the header the row now uses (the old test was a standalone copy over
+//   the FableMember / FableBase stand-ins); the two out-of-line callees are the test's fixtures. PassPattern unchanged.
+#include "engine/CQuickDrawTriInfo.h"
+static int g_ord[2]; static int g_n=0; static const void* g_this[2];
+void CTexture::Uninitialise() { g_this[g_n]=this; g_ord[g_n++]=1; }
+CWideString::~CWideString() { g_this[g_n]=this; g_ord[g_n++]=2; }
+extern "C" void FABLE_FASTCALL FableDualDestval_009c2520(CQuickDrawTriInfo *self);
 int main(){
-    char buf[0x100]; FableDualDestval_009c2520(buf);
-    if(g_n_009c2520==2 && g_ord_009c2520[0]==1 && g_ord_009c2520[1]==2){std::printf("DUALDV9C25_OK\n");return 0;}
+    static double buf[(sizeof(CQuickDrawTriInfo)+7)/8];
+    char* raw=(char*)buf;
+    FableDualDestval_009c2520((CQuickDrawTriInfo*)raw);
+    if(g_n==2 && g_ord[0]==1 && g_ord[1]==2 && g_this[0]==raw+0x18 && g_this[1]==raw+0x14){std::printf("DUALDV9C25_OK\n");return 0;}
     std::printf("FAIL\n"); return 1;
 }
