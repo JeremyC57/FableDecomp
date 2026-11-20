@@ -11,6 +11,9 @@
 // Layout: retail CWorldMap Regions vector<CRegion> at +0x2C (0x58-byte CRegion, Name +0x18), as the landed
 //   SetRegionAsLoaded 0x004FC8A0 (the PDB header rebuild/include/engine/CWorldMap.h has 16-byte containers: +0x34);
 //   CPersistContext Mode +0x18, load stream +0x24, save stream +0x28.
+// Naming (NF129, 2026-11-20, q4213): 0x009BAB50 is CPersistContext::WriteString(const CCharString&) (Ego_r.pdb 0x00B0F550 + FableWin.pdb
+//   0x02FEA160 ?WriteString@CPersistContext@@QAEXABVCCharString@@@Z; engine/CPersistContext.h); respelled in place in the local
+//   CPersistContext model (was the stand-in WriteText).
 #include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
@@ -50,7 +53,7 @@ class CPersistContext { public:
     CDataOutputStream*      PSaveStream;                 // +0x28
     protected: void CheckCRC(const char* name); public:                     // 0x00404500
     template <class T> void Transfer(T& value);                   // 0x00431143
-    void WriteText(const CCharString& text);             // 0x009BAB50
+    void WriteString(const CCharString& string);             // 0x009BAB50
     bool IsBinary() const { return Mode == 2 || Mode == 3; }
     FABLE_FORCEINLINE void TransferBinary(unsigned long& value)
     {
@@ -104,11 +107,11 @@ void CWorldMap::SaveGameState(CPersistContext& context)
         }
     } else {
         for (unsigned long i = 1; i < count; ++i) {
-            context.WriteText("REGION \"" + Regions[i].Name + "\"\r\n");
+            context.WriteString("REGION \"" + Regions[i].Name + "\"\r\n");
             Regions[i].TransferGameState(context);
             {
                 CCharString end("END_REGION\r\n\r\n");
-                context.WriteText(end);
+                context.WriteString(end);
             }
             {
                 CCharString text("");

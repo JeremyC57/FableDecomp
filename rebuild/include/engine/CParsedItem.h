@@ -14,8 +14,15 @@ public:const CCharString& GetString() const;
 // integer arm keeps the long returned by GetInteger in a frame word across the item's destructor and `fild`s it after).
 bool IsFloat() const { return Type==PARSED_ITEM_FLOAT; }
 bool IsInteger() const { return Type==PARSED_ITEM_INTEGER; }
+#ifdef FABLE_RETAIL_CPARSEDITEM_GETVALUE_OUTOFLINE
+// NF129 (q4657, row 0x00A641A0 CGenericVar::ReadFromParserAsFloat): the same Ego_r.pdb accessors called out of line, as that TU does
+// (?GetInteger@CParsedItem@@QBEJXZ 0x009B9890 `mov eax,[ecx+4]`, ?GetFloat@CParsedItem@@QBEMXZ 0x009B98A0 `fld [ecx+4]`). Declarations only.
+float GetFloat() const;                                                  // 0x009B98A0
+long GetInteger() const;                                                 // 0x009B9890
+#else
 float GetFloat() const { return Float; }
 long GetInteger() const { return Integer; }
+#endif
 // Chunk 756 (row 0x009B9700): Ego_r.pdb ?InitAsInteger@CParsedItem@@QAEXPBDK@Z (out of line, 0x009B9700).
 void InitAsInteger(const char* text,unsigned long length);
 // Chunk 756 (row 0x009B9770): Ego_r.pdb ?InitAsFloat@CParsedItem@@QAEXPBDK@Z (out of line, 0x009B9770).

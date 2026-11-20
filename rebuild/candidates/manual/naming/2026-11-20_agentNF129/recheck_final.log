@@ -1,0 +1,182 @@
+addr       parity           behav  name
+00404970   RELOCATION_MATCH PASS   CIMEFont::GetFontNameAndScale
+00417568   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00417568   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00417568   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+00417568   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00417568   RELOCATION_MATCH PASS   CMainGameComponent::ConsoleSetResolution
+004189c2   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CMemoryAllocator (engine/CMemoryAllocator.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CRoughFrameCounter (engine/CRoughFrameCounter.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004189c2   WARN RELOC_NAME: ?Start@CNetworkClient@@QAEXXZ -> 004ae9c0 labelled '_global::Nop_ret0_004ae9c0'
+004189c2   WARN RELOC_NAME: ?BeginOutputSaving@CMainGameComponent@@QAEXABVCWideString@@@Z -> 0041627f labelled 'CMainGameComponent::BeginInputLoading'
+004189c2   WARN RELOC_NAME: ?GFFrameHook@@YIXXZ -> 0098e1b0 labelled '_global::Nop_ret0_0098e1b0'
+004189c2   WARN RELOC_NAME: ?Update@CSystemObjectF8@@QAEXXZ -> 009f8c10 labelled '_global::Nop_ret0_009f8c10'
+004189c2   WARN RELOC_NAME: ?RecordFrameTime@CMainGameComponent@@QAEXN@Z -> 00416202 labelled 'CEngineSubPrimitiveBase::operator_new'
+004189c2   WARN RELOC_NAME: ?Tick@CSingleton44C6B0@@QAEXJ@Z -> 009ac9e0 labelled '_global::Nop_ret4_009ac9e0'
+004189c2   RELOCATION_MATCH PASS   CMainGameComponent::Run
+00496cf0   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CGameJoystickManager (engine/CGameJoystickManager.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+00496cf0   RELOCATION_MATCH PASS   CFrontendGameComponent::Run
+00499880   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CRenderTarget (engine/CRenderTarget.h)
+00499880   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+00499880   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CRenderManager (engine/CRenderManager.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CRenderStateManager (engine/CRenderStateManager.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CRenderStateCaptureBlock (engine/CRenderStateCaptureBlock.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CProgressDisplay (engine/CProgressDisplay.h)
+00499880   WARN RELOC_NAME: ?IsDeviceLost@CRenderManager@@QBE_NXZ -> 00a0aa60 labelled '_global::GetMember_byte0x3a54_00a0aa60'
+00499880   WARN RELOC_NAME: ?ToggleRendering@CDisplayManager@@QAEXXZ -> 009bef20 labelled 'CDisplayManager::BeginRender'
+00499880   WARN RELOC_NAME: ?SetViewport@CRenderManager@@QAEXABVC2DBoxF@@@Z -> 00a0b560 labelled 'CRenderManagerCore::SetVWindow'
+00499880   WARN RELOC_NAME: ?DrawProgress@CProgressDisplay@@QAEXABVCCharString@@M_N@Z -> 00498490 labelled 'CProgressDisplay::DrawRetailDisplay'
+00499880   WARN RELOC_NAME: ?Flush@CRenderManager@@QAEX_N@Z -> 009da9f0 labelled 'CRenderManager2D::Render2DDrawList'
+00499880   RELOCATION_MATCH PASS   CProgressDisplay::RenderProgress
+004b64e0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+004b64e0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004b64e0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+004b64e0   WARN RELOC_NAME: ?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z -> 00996610 labelled 'CDataOutputStream::WriteCompressed'
+004b64e0   WARN RELOC_NAME: ?WriteString@CPersistContext@@QAEXABVCCharString@@@Z -> 009bab50 labelled '_global::Forward_operator___via0x20_009bab50'
+004b64e0   RELOCATION_MATCH PASS   CQuestManager::SaveGameState
+004fde80   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+004fde80   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+004fde80   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004fde80   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+004fde80   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004fde80   WARN RELOC_NAME: ?WriteString@CPersistContext@@QAEXABVCCharString@@@Z -> 009bab50 labelled '_global::Forward_operator___via0x20_009bab50'
+004fde80   RELOCATION_MATCH PASS   CWorldMap::SaveGameState
+004fe030   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+004fe030   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+004fe030   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+004fe030   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004fe030   WARN SHARED_HEADER_AVAILABLE CMapInfo (engine/CMapInfo.h)
+004fe030   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004fe030   RELOCATION_MATCH PASS   CWorldMap::CompileLoadableGlobalThingsToSingleFile
+005079c0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005079c0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+005079c0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005079c0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+005079c0   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+005079c0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+005079c0   RELOCATION_MATCH PASS   CWorldMap::LoadGameState
+00594f36   RELOCATION_MATCH PASS   CNewFrontendGameComponent::LoadGame
+006f9be0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+006f9be0   WARN RELOC_NAME: ?WriteString@CPersistContext@@QAEXABVCCharString@@@Z -> 009bab50 labelled '_global::Forward_operator___via0x20_009bab50'
+006f9be0   WARN RELOC_NAME: ?LoadFromHeaderFile@CSymbolMap@@QAEXABVCWideString@@@Z -> 009e5c90 labelled 'CSymbolMap::LoadFromFile'
+006f9be0   RELOCATION_MATCH PASS   NAnimationEvents::CManager::Save
+00994b50   RELOCATION_MATCH PASS   CDataInputStream::ReadLine
+0099eb40   WARN RELOC_NAME: ??0CBasicStringChar@@QAE@PBD@Z -> 009a0590 labelled 'CCharString_InitFromCStr'
+0099eb40   WARN RELOC_NAME: ?Initialise@CBasicStringChar@@QAEXJK@Z -> 009a0390 labelled 'CBasicString<char>::SetString'
+0099eb40   RELOCATION_MATCH PASS   CCharString::MakeOwnCopyOfDataOrEmptyString
+0099ef70   RELOCATION_MATCH PASS   CCharString::SetUseFastExtend
+009a0cf0   MATCH            PASS   CRenderManagerCore::AttachTextureToStage
+009a9b60   RELOCATION_MATCH PASS   CCountedPointer<CDiskFileWin32>::CCountedPointer
+009a9bb0   RELOCATION_MATCH PASS   CCountedPointer<CDiskFileWin32>::~CCountedPointer
+009a9bf0   RELOCATION_MATCH PASS   CCountedPointer<CDiskFileWin32>::operator=
+009a9c80   RELOCATION_MATCH PASS   CCountedPointer<CThreadedFile>::Reset
+009a9d10   RELOCATION_MATCH PASS   CCountedPointer<NBankFileManager::CRetailBank>::CCountedPointer
+009b9ba0   RELOCATION_MATCH PASS   CStringParser::SkipPastString
+009ba8c0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009ba8c0   RELOCATION_MATCH PASS   CStringParser::PeekNextItem
+009bab50   RELOCATION_MATCH PASS   _global::Forward_operator___via0x20_009bab50
+009d1ee0   RELOCATION_MATCH PASS   CCountedPointer_009a9030::Reset
+009d5820   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+009d5820   RELOCATION_MATCH PASS   CBankFileAsync::OpenFileReadOnly
+009e5c90   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009e5c90   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+009e5c90   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+009e5c90   WARN RELOC_NAME: ?clear@CSymbolVectorMap@@QAEXXZ -> 009e79e0 labelled 'CVectorMap::DeallocateMemory'
+009e5c90   WARN RELOC_NAME: ?SortSymbols@@YIXPAUSSymbolEntry@@0UCSymbolCompare@@@Z -> 009e7e40 labelled 'std::sort<std::pair<CCharString, CSymbolMap::CSymbolInfo> *, CCompareString<CSymbolMap::CSymbolInfo>>'
+009e5c90   RELOCATION_MATCH PASS   CSymbolMap::LoadFromFile
+009ec430   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009ec430   RELOCATION_MATCH PASS   CConsoleVariable::ProcessCommandLine
+00a62120   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00a62120   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00a62120   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a62120   WARN SHARED_HEADER_AVAILABLE CShaderDataBank (engine/CShaderDataBank.h)
+00a62120   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a62120   WARN RELOC_NAME: ??1CMemoryDataInputStream@@QAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00a62120   RELOCATION_MATCH PASS   CShaderBankEntry::CShaderBankEntry
+00a63c00   RELOCATION_MATCH PASS   CGenericVarRef::PrintToString
+00a641a0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00a641a0   RELOCATION_MATCH PASS   CGenericVar::ReadFromParserAsFloat
+00ae8810   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00ae8810   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00ae8810   WARN SHARED_HEADER_AVAILABLE CParticleEmitterDatabase (engine/CParticleEmitterDatabase.h)
+00ae8810   WARN RELOC_NAME: ?WriteString@CPersistContext@@QAEXABVCCharString@@@Z -> 009bab50 labelled '_global::Forward_operator___via0x20_009bab50'
+00ae8810   WARN RELOC_NAME: ?GetRelativePathName@@YI?AVCCharString@@ABV1@0@Z -> 00998570 labelled 'CAFile::GetRelativeFilePath'
+00ae8810   RELOCATION_MATCH PASS   CParticleEmitterDatabase::GenerateHeaderFile
+00bc6810   RELOCATION_MATCH PASS   CEngineInternalPrimitiveText::Update
+00bc6860   RELOCATION_MATCH PASS   CEngineInternalPrimitive2DText::Update
+00d3ab00   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d3ab00   RELOCATION_MATCH PASS   CFH_Prisoner::GetEndCutscene
+00d3abe0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d3abe0   RELOCATION_MATCH PASS   GetEndSpeech
+00dc0300   WARN SHARED_HEADER_AVAILABLE CQ_OakValeBanditRaidScript (engine/CQ_OakValeBanditRaidScript.h)
+00dc0300   WARN RELOC_NAME: ?CleanupBandits@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ -> 00dc0830 labelled 'NScript::CQ_OakValeBanditRaidScript::DepopulateLevel'
+00dc0300   RELOCATION_MATCH PASS   NScript::CQ_OakValeBanditRaidScript::PopulateLevel
+00f37170   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00f37170   WARN SHARED_HEADER_AVAILABLE CGPUScratchBufferTextureManager (engine/CGPUScratchBufferTextureManager.h)
+00f37170   RELOCATION_MATCH PASS   BeginShutdown
+
+WINS: 37
+  00404970 RELOCATION_MATCH CIMEFont::GetFontNameAndScale
+  00417568 RELOCATION_MATCH CMainGameComponent::?ConsoleSetResolution@CMainGameComponent@@KIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  004189c2 RELOCATION_MATCH CMainGameComponent::Run
+  00496cf0 RELOCATION_MATCH CFrontendGameComponent::Run
+  00499880 RELOCATION_MATCH CProgressDisplay::?RenderProgress@CProgressDisplay@
+  004b64e0 RELOCATION_MATCH CQuestManager::?SaveGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z
+  004fde80 RELOCATION_MATCH CWorldMap::SaveGameState
+  004fe030 RELOCATION_MATCH CWorldMap::?CompileLoadableGlobalThingsToSingleFile@CWorldMap@
+  005079c0 RELOCATION_MATCH CWorldMap::?LoadGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z
+  00594f36 RELOCATION_MATCH CNewFrontendGameComponent::?LoadGame@CNewFrontendGameComponent@@QAEXAAVCWideString@@@Z
+  006f9be0 RELOCATION_MATCH NAnimationEvents::CManager::?Save@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z
+  00994b50 RELOCATION_MATCH CDataInputStream::?ReadLine@CDataInputStream@@QAE?AVCCharString@@XZ
+  0099eb40 RELOCATION_MATCH CCharString::?MakeOwnCopyOfDataOrEmptyString@CCharString@@IAEXXZ
+  0099ef70 RELOCATION_MATCH CCharString::?SetUseFastExtend@CCharString@@QAEX_N@Z
+  009a0cf0 MATCH CRenderManagerCore::?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z
+  009a9b60 RELOCATION_MATCH CCountedPointer_009a9030::??0?$CCountedPointer@VCDiskFileWin32@@@@QAE@PAVCDiskFileWin32@@@Z
+  009a9bb0 RELOCATION_MATCH _global::??1?$CCountedPointer@VCDiskFileWin32@@@@QAE@XZ
+  009a9bf0 RELOCATION_MATCH _global::??4?$CCountedPointer@VCDiskFileWin32@@@@QAEAAV0@ABV0@@Z
+  009a9c80 RELOCATION_MATCH CCountedPointer_CThreadedFile::?Reset@?$CCountedPointer@VCThreadedFile@@@@QAEXPAVCThreadedFile@@@Z
+  009a9d10 RELOCATION_MATCH _global::??0?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@PAVCRetailBank@NBankFileManager@@@Z
+  009b9ba0 RELOCATION_MATCH CStringParser::?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z
+  009ba8c0 RELOCATION_MATCH CStringParser::?PeekNextItem@CStringParser@@QAE_NAAVCParsedItem@@@Z
+  009bab50 RELOCATION_MATCH _global::?WriteString@CPersistContext@@QAEXABVCCharString@@@Z
+  009d1ee0 RELOCATION_MATCH CCountedPointer_009a9030::?Reset@?$CCountedPointer@VCDiskFileWin32@@@@QAEXPAVCDiskFileWin32@@@Z
+  009d5820 RELOCATION_MATCH CBankFileAsync::?OpenFileReadOnly@CBankFileAsync@@UAE_NABVCWideString@@K@Z
+  009e5c90 RELOCATION_MATCH CSymbolMap::?LoadFromFile@CSymbolMap@@QAE_NABVCWideString@@@Z
+  009ec430 RELOCATION_MATCH CConsoleVariable::?ProcessCommandLine@CConsoleVariable@@EAE_NABVCCharString@@AAVCConsole@@@Z
+  00a62120 RELOCATION_MATCH CShaderBankEntry::CShaderBankEntry
+  00a63c00 RELOCATION_MATCH CGenericVarRef::PrintToString
+  00a641a0 RELOCATION_MATCH CGenericVar::ReadFromParserAsFloat
+  00ae8810 RELOCATION_MATCH CParticleEmitterDatabase::GenerateHeaderFile
+  00bc6810 RELOCATION_MATCH CEngineInternalPrimitiveText::?Update@CEngineInternalPrimitiveText@@QAEXAAUP@@K@Z
+  00bc6860 RELOCATION_MATCH CEngineInternalPrimitive2DText::?Update@CEngineInternalPrimitive2DText@@QAEXAAUP@@K@Z
+  00d3ab00 RELOCATION_MATCH CFH_Prisoner::GetEndCutscene
+  00d3abe0 RELOCATION_MATCH CFH_Prisoner::GetEndSpeech
+  00dc0300 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::PopulateLevel
+  00f37170 RELOCATION_MATCH CGPUScratchBufferTextureManager::BeginShutdown

@@ -25,13 +25,16 @@ extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 extern "C" void* __cdecl memset(void* dst, int value, unsigned int size);
 #pragma intrinsic(memset)
+// Naming (NF129, 2026-11-20, q4933): both CWideString assignments return const CWideString& (Ego_r.pdb / FableWin.pdb
+//   ??4CWideString@@QAEABV0@ABV0@@Z 0x0099B7D0 and ??4CWideString@@QAEABV0@PB_W@Z 0x0099B800, lane wchar_t spelling G; fable_string.h);
+//   respelled in place in the local model.
 class CWideString {
 public:
     void* PStringData;
     CWideString();                                         // 0x0099AED0
     ~CWideString();                                        // 0x0099B510
-    CWideString& operator=(const CWideString& other);      // 0x0099B7D0
-    CWideString& operator=(const unsigned short* text);    // 0x0099B800
+    const CWideString& operator=(const CWideString& other);      // 0x0099B7D0 ??4CWideString@@QAEABV0@ABV0@@Z
+    const CWideString& operator=(const unsigned short* text);    // 0x0099B800 ??4CWideString@@QAEABV0@PBG@Z
 };
 // CSymbolMap::CurrentFilename (protected static CWideString @ 0x013CAA34) is declared in the class below.
 void __fastcall GFRemoveComments(char* buffer, const char* start, const char* end);   // 0x00A60410

@@ -1,3 +1,12 @@
+#if defined(FABLE_RETAIL_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY) && !defined(FABLE_RETAIL_CSYSTEMMANAGER)
+// Partial mode (NF129, 2026-11-20, q4289): only ESystemReturn, the return type of ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ
+// (Ego_r.pdb + FableWin.pdb, 0x009A6460), declared as in the retail branch below, for landed callers that still model CSystemManager
+// locally (0x004189C2, 0x00496CF0, 0x00499880) and must spell Update's return type without a local enum.
+#ifndef FABLE_ENGINE_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY_H
+#define FABLE_ENGINE_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY_H
+enum ESystemReturn { };
+#endif
+#else
 #ifndef FABLE_ENGINE_CSYSTEMMANAGER_H
 #define FABLE_ENGINE_CSYSTEMMANAGER_H
 #include "engine/CInitBaseClass.h"
@@ -119,4 +128,5 @@ public:
 };
 FABLE_STATIC_ASSERT_AT(100, sizeof(CSystemManager)==0x180);
 CSystemManager* __fastcall GFGetSystemManager();
+#endif
 #endif

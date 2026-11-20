@@ -20,7 +20,12 @@ class CCharString { public:
     ~CCharString();                                      // 0x0099EAE0
 };
 class CGame;
-class CSystemManager { public: long Update(); };                 // 0x009A6460
+// Naming (NF129, 2026-11-20, q4289): CSystemManager::Update returns ESystemReturn (Ego_r.pdb 0x00AF4520 + FableWin.pdb 0x02F8AB00
+//   ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ; GFPlayFullScreenXBoxMovie 0x006286F0 binds it); respelled in place in the local
+//   CSystemManager model, the enum from engine/CSystemManager.h's partial mode FABLE_RETAIL_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY.
+#define FABLE_RETAIL_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY
+#include "engine/CSystemManager.h"
+class CSystemManager { public: ESystemReturn Update(); };                 // 0x009A6460
 CSystemManager* __fastcall GFGetSystemManager();                        // 0x009A4EC0
 class CGameJoystickManager { public:
     static CGameJoystickManager& __fastcall Get();       // 0x0049BB90

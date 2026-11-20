@@ -9,13 +9,12 @@
 // Shape: the 12-byte parser item (type, value, text) is constructed first and filled by ReadNextItem; the printed value
 //   and the type message reuse the dead parameter slots; the type names are an if / else-if chain (4, 3, 1, 5).
 // Layout: CConsoleVariable vtable +0, Name +4, Target +8 (type enum first); CStringParser 0x28 bytes (landed 0x00CB8690).
-class CCharString { public:
-    void* m_pData;
-    CCharString();                                    // 0x0099E4B0
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-    const CCharString& operator+=(const char* text);        // 0x0099F100
-};
+// Naming (NF129, 2026-11-20, q4657): the parser item is CParsedItem (Ego_r.pdb / FableWin.pdb ?ReadNextItem@CStringParser@@QAE_NAAVCParsedItem@@@Z,
+//   returning bool; engine/CParsedItem.h: Type +0, Integer/Float +4, String +8, compiler-generated ctor / dtor): the nested CItem stand-in
+//   and the local CCharString model are replaced by engine/CParsedItem.h and fable_string.h (retail branch).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CPARSEDITEM
+#include "engine/CParsedItem.h"
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
@@ -30,11 +29,6 @@ public:
 };
 } // namespace std
 class CStringParser : public CBaseClass { public:                   // retail 0x28 bytes
-    struct CItem {                                    // item read by ReadNextItem: type, value, text
-        long        Type;
-        long        Value;
-        CCharString Text;
-    };
     char*                    String;                  // +0x04
     unsigned long            BaseLineOffset;          // +0x08
     CCharString              Filename;                // +0x0c
@@ -44,7 +38,7 @@ class CStringParser : public CBaseClass { public:                   // retail 0x
     long                     CursorPos[3];            // +0x1c
     CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);               // 0x00404720
-    void ReadNextItem(CItem& item);                   // 0x009BA080
+    bool ReadNextItem(CParsedItem& item);             // 0x009BA080 (result unused here)
     bool NextItemExists();                            // 0x009BA4F0
 };
 class CConsole { public:
@@ -66,7 +60,7 @@ private:
 
 bool CConsoleVariable::ProcessCommandLine(const CCharString& line, CConsole& console)
 {
-    CStringParser::CItem item;
+    CParsedItem item;
     CStringParser parser(line, 0, CCharString(""), 0);
     parser.ReadNextItem(item);
     bool result;

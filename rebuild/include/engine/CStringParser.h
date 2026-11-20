@@ -112,6 +112,11 @@ public:
     };
 protected:
     void Error(const CCharString&);
+#if defined(FABLE_RETAIL_CSTRINGPARSER_CALCINQUOTES_DECL) && !defined(FABLE_RETAIL_CSTRINGPARSER_MOVESTRINGPOS)
+    // NF129 (q4656, row 0x009B9BA0 SkipPastString): Ego_r.pdb / FableWin.pdb ?CalcInQuotes@CStringParser@@IBE_N_NPBD1@Z (protected const),
+    // called out of line at 0x009B9570 by SkipPastString / SkipPastWholeString (0x009B9BD5 / 0x009B9C35). Declaration only.
+    bool CalcInQuotes(bool,const char*,const char*) const;                // 0x009B9570
+#endif
 #ifdef FABLE_RETAIL_CSTRINGPARSER_MOVESTRINGPOS
     // Chunk 756 (row 0x009B9D70 SkipPastNewline): Ego_r.pdb ?CalcInQuotes@CStringParser@@IBE_N_NPBD1@Z and ?MoveStringPos@CStringParser@@IAEXK@Z
     // (protected). Inline: retail SkipPastNewline / SkipWhitespace expand both (the out-of-line CalcInQuotes copy is 0x009B9570).

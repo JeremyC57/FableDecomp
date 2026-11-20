@@ -11,6 +11,9 @@
 // Shape: the string is a named local; the writing path inlines the string writer (GetLength() then
 // WriteBuffer(GetPString(), GetLength()): the two null-tested accessors fold into one branch with `""`/0).
 // Leaf: ?SaveGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z
+// Naming (NF129, 2026-11-20, q4213): 0x009BAB50 is CPersistContext::WriteString(const CCharString&) (Ego_r.pdb 0x00B0F550 + FableWin.pdb
+//   0x02FEA160 ?WriteString@CPersistContext@@QAEXABVCCharString@@@Z; engine/CPersistContext.h); respelled in place in the local
+//   CPersistContext model (was the stand-in Transfer_009bab50).
 class CCharStringData { public:
     const char*   m_pData;
     long          m_length;
@@ -38,7 +41,7 @@ class CPersistContext { public:
     long               Mode;                       // +0x18
     unsigned char      _pad1c[0xc];
     CDataOutputStream* Stream;                     // +0x28
-    void Transfer_009bab50(CCharString& value);             // 0x009BAB50
+    void WriteString(const CCharString& string);// 0x009BAB50
 };
 
 class CQuestManager { public:
@@ -56,6 +59,6 @@ void CQuestManager::SaveGameState(CPersistContext& context)
         context.Stream->WriteULONG(state.GetLength());
         context.Stream->WriteBuffer(state.GetPString(), state.GetLength());
     } else
-        context.Transfer_009bab50(state);
+        context.WriteString(state);
     TransferBoasts(context);
 }

@@ -405,3 +405,4 @@ takes CThing&; 0x0129BA3C still labelled g_NormaliseEpsilon). Coming next from h
 plus re-ports of its helper owners 0x00A4D920, 0x00A52760, 0x00A53860, 0x00A4C1F0 and 0x00A22530 GFFastArcCos, so each helper has one text.
 Add-only opt-ins in C3DAnimation2.h and C3DMesh2.h. NAME_FIXES there: the PDB tables are GFastArcCosTable / GFastCosTable; 13 landed rows
 still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
+2026-11-20 A->B: nf129 landed (37 rows; 1 MATCH, 36 RELOCATION_MATCH; headers CStringParser.h, CSystemManager.h (enum-only partial mode), CParsedItem.h, add-only opt-ins). 204 / 204 rechecked good; six universal CCharString / CWideString callee targets dropped from the gate recompile (nf120 GOTCHA), none of their table sets grew. Pre-existing LNK2005 on CPersistTraits<unsigned long>::TransferBinaryIn (0x005079C0 / 0x004FDE80) queued as debt.

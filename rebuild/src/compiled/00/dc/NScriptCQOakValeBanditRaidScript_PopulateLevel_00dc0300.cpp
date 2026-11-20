@@ -16,10 +16,12 @@
 #include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
+    CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const char* text);           // 0x0099EFE0
+    void __cdecl Sprintf(const char* fmt, ...);         // 0x0099F1F0 ?Sprintf@CCharString@@QAAXPBDZZ (Ego_r + FableWin; NF129 q6512)
 };
 class CWideString { public:
     void* PStringData;
@@ -66,10 +68,6 @@ public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-struct CCharStringFmt : CCharString {
-    CCharStringFmt();                                   // 0x0099E4B0
-    void __cdecl Format(const char* fmt, ...);          // 0x0099F1F0
-};
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -122,7 +120,7 @@ bool NScript::CQ_OakValeBanditRaidScript::PopulateLevel()
     }
     HerosFollowers.clear();
     Game->GetFollowingEntityList(Game->GetHero(), HerosFollowers);
-    CCharStringFmt msg;
-    msg.Format("Found %d followers", HerosFollowers.size());
+    CCharString msg;
+    msg.Sprintf("Found %d followers", HerosFollowers.size());
     return spawned;
 }

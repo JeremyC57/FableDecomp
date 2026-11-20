@@ -69,12 +69,17 @@ struct CTextSettings {
     unsigned char _pad00[0x38];
     bool          Flag;                                     // +0x38 (descriptive)
 };
+// Naming (NF129, 2026-11-20, q4289): CSystemManager::Update returns ESystemReturn (Ego_r.pdb 0x00AF4520 + FableWin.pdb 0x02F8AB00
+//   ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ; GFPlayFullScreenXBoxMovie 0x006286F0 binds it); respelled in place in the local
+//   CSystemManager model, the enum from engine/CSystemManager.h's partial mode FABLE_RETAIL_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY.
+#define FABLE_RETAIL_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY
+#include "engine/CSystemManager.h"
 class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CDisplayManager* DisplayManager;                        // +0x60
     unsigned char    _pad64[0x84 - 0x64];
     CTextSettings*   TextSettings;                          // +0x84 (descriptive)
-    void PrepareDebugRender();                              // 0x009A6460 (descriptive)
+    ESystemReturn Update();                                 // 0x009A6460 (result unused here)
 };
 CSystemManager* __fastcall GFGetSystemManager();           // 0x009A4EC0
 extern double g_ProgressScreenWidth;                        // 0x013961E8 (descriptive)
@@ -133,7 +138,7 @@ void CProgressDisplay::RenderProgress(const CCharString& textTag, float progress
         return;
     bool wasRendering = display->Rendering;
     if (DebugDisplay && !wasRendering)
-        GFGetSystemManager()->PrepareDebugRender();
+        GFGetSystemManager()->Update();
     CRenderStateCaptureBlock captureBlock;
     bool savedFlag = false;
     if (FullScreen) {

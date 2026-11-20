@@ -1,113 +1,62 @@
+// Behaviour test for CNewFrontendGameComponent::LoadGame 0x00594F36 (NF129: the row now uses engine/CNewFrontendGameComponent.h and
+// fable_string.h, so the test drives the shared classes). The component is zeroed raw storage with a fake vtable whose slot 4
+// (CGameComponent::SetQuit) records the call; CWideString::operator=(const CWideString&) (0x0099B7D0) is defined here as a probe.
 #include <cstdio>
 #include <cstring>
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RUN
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_STARTGAME
+#include "fable_string.h"
+#include "engine/CNewFrontendGameComponent.h"
 
-struct FrontEndWideString_00594f36
-{
-    void* data;
-    FrontEndWideString_00594f36& operator=(
-        const FrontEndWideString_00594f36& source);
-};
-
-class CNewFrontendGameComponent_00594f36
-{
-public:
-    virtual void Slot00();
-    virtual void Slot01();
-    virtual void Slot02();
-    virtual void Slot03();
-    virtual void PrepareLoad();
-
-    unsigned char padding_004[0x25];
-    unsigned char load_pending;
-    unsigned char padding_02a[0x5a];
-    FrontEndWideString_00594f36 load_name;
-
-    void LoadGame(const FrontEndWideString_00594f36& name);
-};
-
+static unsigned char g_Component[0x100];
 static int g_Sequence;
-static int g_PrepareSequence;
+static int g_QuitSequence;
 static int g_AssignSequence;
-static CNewFrontendGameComponent_00594f36* g_PrepareThis;
-static FrontEndWideString_00594f36* g_AssignDestination;
-static const FrontEndWideString_00594f36* g_AssignSource;
-static unsigned char g_FlagSeenAtPrepare;
+static void* g_QuitThis;
+static const void* g_AssignDestination;
+static const void* g_AssignSource;
+static unsigned char g_FlagSeenAtQuit;
 static unsigned char g_FlagSeenAtAssign;
 
-extern "C" void __fastcall
-FrontEndLoadPrepare_00594f36(
-    CNewFrontendGameComponent_00594f36* self,
-    void*)
+static void __fastcall ProbeSetQuit(void* self, void*)
 {
-    g_PrepareSequence = ++g_Sequence;
-    g_PrepareThis = self;
-    g_FlagSeenAtPrepare = self->load_pending;
+    g_QuitSequence = ++g_Sequence;
+    g_QuitThis = self;
+    g_FlagSeenAtQuit = static_cast<unsigned char*>(self)[0x29];
 }
 
-FrontEndWideString_00594f36&
-FrontEndWideString_00594f36::operator=(
-    const FrontEndWideString_00594f36& source)
+const CWideString& CWideString::operator=(const CWideString& other)
 {
     g_AssignSequence = ++g_Sequence;
     g_AssignDestination = this;
-    g_AssignSource = &source;
-    g_FlagSeenAtAssign =
-        ((CNewFrontendGameComponent_00594f36*)
-            ((unsigned char*)this - 0x84))->load_pending;
-    data = source.data;
+    g_AssignSource = &other;
+    g_FlagSeenAtAssign = g_Component[0x29];
     return *this;
-}
-
-static void ResetProbe()
-{
-    g_Sequence = 0;
-    g_PrepareSequence = 0;
-    g_AssignSequence = 0;
-    g_PrepareThis = 0;
-    g_AssignDestination = 0;
-    g_AssignSource = 0;
-    g_FlagSeenAtPrepare = 0xff;
-    g_FlagSeenAtAssign = 0xff;
-}
-
-static bool RunLoad(CNewFrontendGameComponent_00594f36* component,
-                    FrontEndWideString_00594f36& requested,
-                    void** vtable)
-{
-    *(void***)component = vtable;
-    component->load_pending = 0;
-    component->load_name.data = (void*)"old";
-    requested.data = (void*)"save_slot";
-    ResetProbe();
-
-    component->LoadGame(requested);
-    return g_PrepareSequence == 1 &&
-        g_AssignSequence == 2 &&
-        g_PrepareThis == component &&
-        g_AssignDestination == &component->load_name &&
-        g_AssignSource == &requested &&
-        g_FlagSeenAtPrepare == 0 &&
-        g_FlagSeenAtAssign == 1 &&
-        component->load_pending == 1 &&
-        component->load_name.data == requested.data;
 }
 
 int main()
 {
-    unsigned char componentStorage[0x88];
-    void* vtable[5] = { 0, 0, 0, 0,
-        (void*)&FrontEndLoadPrepare_00594f36 };
-    CNewFrontendGameComponent_00594f36* component =
-        (CNewFrontendGameComponent_00594f36*)componentStorage;
-    FrontEndWideString_00594f36 requested;
-    std::memset(componentStorage, 0, sizeof(componentStorage));
+    void* vtable[8];
+    std::memset(vtable, 0, sizeof(vtable));
+    vtable[4] = (void*)&ProbeSetQuit;
+    std::memset(g_Component, 0, sizeof(g_Component));
+    *(void***)g_Component = vtable;
+    unsigned char requestedStorage[0x10];
+    std::memset(requestedStorage, 0, sizeof(requestedStorage));
+    CNewFrontendGameComponent* component = reinterpret_cast<CNewFrontendGameComponent*>(g_Component);
+    CWideString& requested = *reinterpret_cast<CWideString*>(requestedStorage);
 
-    if (!RunLoad(component, requested, vtable))
+    component->LoadGame(requested);
+    if (!(g_QuitSequence == 1 && g_AssignSequence == 2 && g_QuitThis == g_Component &&
+          g_AssignDestination == g_Component + 0x84 && g_AssignSource == requestedStorage &&
+          g_FlagSeenAtQuit == 0 && g_FlagSeenAtAssign == 1 && g_Component[0x29] == 1))
     {
         std::puts("FRONTEND_00594f36_TEST FAIL");
         return 1;
     }
-
     std::puts("FRONTEND_00594f36_TEST PASS");
     return 0;
 }

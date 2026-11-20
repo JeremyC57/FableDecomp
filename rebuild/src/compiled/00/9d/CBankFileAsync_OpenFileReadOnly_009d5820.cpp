@@ -12,6 +12,9 @@
 // counted pointer through its out-of-line Reset; the file pointer is fetched before the Open arguments are
 // evaluated -- NonCached is pushed first, then GetBankPathname builds its temporary in the dead `filename`
 // argument slot -- and the temporary dies right after the call.
+// Naming (NF129, 2026-11-20, q6179): the local stand-in CCountedPointer_CThreadedFile (and its SCountBlock) replaced by the shared
+//   engine/CCountedPointer.h CCountedPointer<CThreadedFile> (Ego_r.pdb CBankFileAsync::ThreadedFile), so the Reset call binds
+//   FableWin.pdb ?Reset@?$CCountedPointer@VCThreadedFile@@@@QAEXPAVCThreadedFile@@@Z (0x009A9C80), as the landed 0x009D56C0 does.
 void* operator new(unsigned int size);              // 0x00BFEA1A
 
 class CWideString {
@@ -28,15 +31,7 @@ public:
     bool Open(const CWideString& filename, bool nonCached);   // 0x0098E1E0
 };
 
-struct SCountBlock;
-
-class CCountedPointer_CThreadedFile {
-public:
-    CThreadedFile* m_pObject;                       // +0
-    SCountBlock* m_pCount;                          // +4
-    void Reset(CThreadedFile* object);              // 0x009A9C80
-    CThreadedFile* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 class CBankFile_Retail {                            // retail CBankFile (engine/CBankFile.h is the PDB layout)
 public:
@@ -48,7 +43,7 @@ public:
 
 class CBankFileAsync : public CBankFile_Retail {
 public:
-    CCountedPointer_CThreadedFile ThreadedFile;     // +0x110
+    CCountedPointer<CThreadedFile> ThreadedFile;    // +0x110
     unsigned char _pad_0x118[0x30];                 // +0x118 LoadingMemoryPool, MemoryFailureHandler, the two sets, ...
     bool NonCached;                                 // +0x148
     bool DisableAsync;                              // +0x149

@@ -32092,9 +32092,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a9bb0'
-        Module = '_global'
-        Source = '00/9a/global_DestvalCCountedPointer_009a9bb0.cpp'
-        TestSource = '00/9a/global_DestvalCCountedPointer_009a9bb0_test.cpp'
+        Module = 'CCountedPointer<CDiskFileWin32>'
+        Source = '00/9a/CCountedPointer_CCountedPointer_009a9bb0.cpp'
+        TestSource = '00/9a/CCountedPointer_CCountedPointer_009a9bb0_test.cpp'
         PassPattern = 'PASS_009a9bb0'
     }
     [pscustomobject]@{
@@ -32155,16 +32155,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a9bf0'
-        Module = '_global'
-        Source = '00/9a/CCountedPointer_CCountedPointeroperatorassign_009a9bf0.cpp'
-        TestSource = '00/9a/CCountedPointer_CCountedPointeroperatorassign_009a9bf0_test.cpp'
+        Module = 'CCountedPointer<CDiskFileWin32>'
+        Source = '00/9a/CCountedPointer_operator_009a9bf0.cpp'
+        TestSource = '00/9a/CCountedPointer_operator_009a9bf0_test.cpp'
         PassPattern = 'PASS_009a9bf0'
     }
     [pscustomobject]@{
         Address = '009a9d10'
-        Module = '_global'
-        Source = '00/9a/CCountedPointer_CCountedPointerCFileInfoconstructa_009a9d10.cpp'
-        TestSource = '00/9a/CCountedPointer_CCountedPointerCFileInfoconstructa_009a9d10_test.cpp'
+        Module = 'CCountedPointer<NBankFileManager::CRetailBank>'
+        Source = '00/9a/CCountedPointer_CCountedPointer_009a9d10.cpp'
+        TestSource = '00/9a/CCountedPointer_CCountedPointer_009a9d10_test.cpp'
         PassPattern = 'FABLETLC_FILEINFO_COUNTED_CTOR PASS'
     }
     [pscustomobject]@{
@@ -32177,8 +32177,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009b9ba0'
         Module = 'CStringParser'
-        Source = '00/9b/CStringParser_FindKeyword_009b9ba0.cpp'
-        TestSource = '00/9b/CStringParser_FindKeyword_009b9ba0_test.cpp'
+        Source = '00/9b/CStringParser_SkipPastString_009b9ba0.cpp'
+        TestSource = '00/9b/CStringParser_SkipPastString_009b9ba0_test.cpp'
         PassPattern = 'SERIALISE_GAMESTATE_OK'
     }
     [pscustomobject]@{
@@ -76259,9 +76259,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009bab50'
-        Module = '_global'
-        Source = '00/9b/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_009bab50.cpp'
-        TestSource = '00/9b/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_009bab50_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_WriteString_009bab50.cpp'
+        TestSource = '00/9b/CPersistContext_WriteString_009bab50_test.cpp'
         PassPattern = 'PASS_009bab50'
     }
     [pscustomobject]@{
@@ -149407,9 +149407,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009d1ee0'
-        Module = 'CCountedPointer_009a9030'
-        Source = '00/9d/CCountedPointer009a9030_Reset_009d1ee0.cpp'
-        TestSource = '00/9d/CCountedPointer009a9030_Reset_009d1ee0_test.cpp'
+        Module = 'CCountedPointer<CDiskFileWin32>'
+        Source = '00/9d/CCountedPointer_Reset_009d1ee0.cpp'
+        TestSource = '00/9d/CCountedPointer_Reset_009d1ee0_test.cpp'
         PassPattern = '009d1ee0_TEST PASS'
     }
     [pscustomobject]@{
@@ -150051,9 +150051,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a9c80'
-        Module = 'CCountedPointer_CThreadedFile'
-        Source = '00/9a/CCountedPointerCThreadedFile_Reset_009a9c80.cpp'
-        TestSource = '00/9a/CCountedPointerCThreadedFile_Reset_009a9c80_test.cpp'
+        Module = 'CCountedPointer<CThreadedFile>'
+        Source = '00/9a/CCountedPointer_Reset_009a9c80.cpp'
+        TestSource = '00/9a/CCountedPointer_Reset_009a9c80_test.cpp'
         PassPattern = '009a9c80_TEST PASS'
     }
     [pscustomobject]@{
@@ -150387,9 +150387,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a9b60'
-        Module = 'CCountedPointer_009a9030'
-        Source = '00/9a/CCountedPointer009a9030_CCountedPointer009a9030_009a9b60.cpp'
-        TestSource = '00/9a/CCountedPointer009a9030_CCountedPointer009a9030_009a9b60_test.cpp'
+        Module = 'CCountedPointer<CDiskFileWin32>'
+        Source = '00/9a/CCountedPointer_CCountedPointer_009a9b60.cpp'
+        TestSource = '00/9a/CCountedPointer_CCountedPointer_009a9b60_test.cpp'
         PassPattern = '009a9b60_TEST PASS'
     }
     [pscustomobject]@{

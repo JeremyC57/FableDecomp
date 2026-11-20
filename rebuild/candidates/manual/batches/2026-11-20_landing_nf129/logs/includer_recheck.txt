@@ -1,0 +1,2 @@
+# recheck after landing nf129: 204 rows = gate referencing rows (101, after dropping the six universal CCharString / CWideString callee targets) + renamed rows + 121 direct includers of CStringParser.h / CSystemManager.h / CParsedItem.h
+good 204 bad 0

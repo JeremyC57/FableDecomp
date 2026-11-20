@@ -4,11 +4,11 @@
 // Actual fable_string.h has no narrow += declaration: field-free NativeCharString adapter
 // declares the missing nonvirtual member, with identical storage and zero this adjustment.
 // PDB ??YCCharString@@QAEABV0@PBD@Z confirms const CCharString& result.
+// Naming (NF129, 2026-11-20, q4627): 0x0099F100 is CCharString::operator+=(const char*) (Ego_r.pdb 0x00AFA9A0 + FableWin.pdb 0x02F619E0
+//   ??YCCharString@@QAEABV0@PBD@Z, declared by fable_string.h); the field-free NativeCharString adapter's Append stand-in is replaced by the
+//   header operator (fable_string.h retail branch, FABLE_RETAIL_CCHARSTRING).
+#define FABLE_RETAIL_CCHARSTRING
 #include "fable_string.h"
-struct NativeCharString : CCharString {
-    const CCharString& Append(const char*); // 0x0099F100
-};
-FABLE_STATIC_ASSERT(sizeof(NativeCharString)==sizeof(CCharString));
 // Native RTTI0122DCBC: CIMEFont derives CImeUiFont_Base at0 (donor size4).
 // Base has exactly five genuine virtual interface slots, no virtual destructor:
 // native slot0 SetHeight,1 SetColor,2 SetPosition,3 GetTextExtent,4 DrawTextW.
@@ -37,19 +37,19 @@ void CIMEFont::GetFontNameAndScale(CCharString& name,float& scale) const {
     float height = (float)Height;
     name = "ENG_ARIAL_";
     if (Height < 16) {
-        static_cast<NativeCharString&>(name).Append("12");
+        name += "12";
         scale = height * (1.0f/12.0f);
     } else if (Height < 18) {
-        static_cast<NativeCharString&>(name).Append("16");
+        name += "16";
         scale = height * (1.0f/16.0f);
     } else if (Height < 24) {
-        static_cast<NativeCharString&>(name).Append("18");
+        name += "18";
         scale = height * (1.0f/18.0f);
     } else if (Height < 28) {
-        static_cast<NativeCharString&>(name).Append("24");
+        name += "24";
         scale = height * (1.0f/24.0f);
     } else {
-        static_cast<NativeCharString&>(name).Append("28");
+        name += "28";
         scale = height * (1.0f/28.0f);
     }
 }

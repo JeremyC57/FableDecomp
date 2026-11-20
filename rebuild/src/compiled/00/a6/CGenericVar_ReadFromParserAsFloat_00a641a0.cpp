@@ -1,25 +1,21 @@
 // CGenericVar::ReadFromParserAsFloat(CStringParser& parser) -- reads the parser's next item into the float at +0x18: an integer item (type 3) converted, a float item (type 4) as is; false for anything else
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A641A0, length 131 bytes (padded to 144).
 // Callees: CCharString::CCharString @ 0x0099E4B0 / ~CCharString @ 0x0099EAE0 (the item's text), CStringParser::ReadNextItem
-//          @ 0x009BA080, the item's long accessor @ 0x009B9890 (manifest "CWorld::DrawGetEnvironment", propagated) and float
-//          accessor @ 0x009B98A0 (manifest "CMap::DrawGetSeaLevel", propagated).
+//          @ 0x009BA080, CParsedItem::GetInteger @ 0x009B9890 and CParsedItem::GetFloat @ 0x009B98A0 (out of line in this TU).
 // Shape: the landed ReadFromParserAsSLONG (0x00A640D0) item model -- a 12-byte frame item that owns its string; each
 // successful arm runs its own item destructor before `mov al,1`; the long is converted through the dead parser argument
 // slot (`mov [esp+14h],eax ; fild`).
-class CCharString { public:
-    void* m_pData;
-    CCharString();                                 // 0x0099E4B0
-    ~CCharString();                                // 0x0099EAE0
-};
-struct SParsedItem {                               // 12 bytes: the item type, its value and the text it was read from
-    long        m_type;                            // +0x00 (3 = an integer, 4 = a float)
-    long        m_value;                           // +0x04
-    CCharString m_text;                            // +0x08
-    long  GetAsLong();                             // 0x009B9890
-    float GetAsFloat();                            // 0x009B98A0
-};
+// Naming (NF129, 2026-11-20, q4657): the local SParsedItem / CCharString stand-ins replaced by engine/CParsedItem.h (Ego_r.pdb CParsedItem:
+//   Type +0, Integer/Float +4, String +8; compiler-generated ctor / dtor) and fable_string.h, so ReadNextItem binds
+//   ?ReadNextItem@CStringParser@@QAE_NAAVCParsedItem@@@Z (Ego_r + FableWin) and the accessors their Ego_r names (IsInteger / IsFloat inline,
+//   GetInteger / GetFloat out of line: overlay opt-in FABLE_RETAIL_CPARSEDITEM_GETVALUE_OUTOFLINE). CStringParser stays a local declaration
+//   (the row only names ReadNextItem; it already modelled the class locally).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CPARSEDITEM
+#define FABLE_RETAIL_CPARSEDITEM_GETVALUE_OUTOFLINE
+#include "engine/CParsedItem.h"
 class CStringParser { public:
-    bool ReadNextItem(SParsedItem& item);          // 0x009BA080
+    bool ReadNextItem(CParsedItem& item);          // 0x009BA080
 };
 class CGenericVar { public:
     unsigned char _pad[0x18];
@@ -29,14 +25,14 @@ class CGenericVar { public:
 
 bool CGenericVar::ReadFromParserAsFloat(CStringParser& parser)
 {
-    SParsedItem item;
+    CParsedItem item;
     if (parser.ReadNextItem(item)) {
-        if (item.m_type == 3) {
-            m_floatValue = (float)item.GetAsLong();
+        if (item.IsInteger()) {
+            m_floatValue = (float)item.GetInteger();
             return true;
         }
-        if (item.m_type == 4) {
-            m_floatValue = item.GetAsFloat();
+        if (item.IsFloat()) {
+            m_floatValue = item.GetFloat();
             return true;
         }
     }

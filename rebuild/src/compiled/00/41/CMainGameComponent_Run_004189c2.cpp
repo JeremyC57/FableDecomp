@@ -79,9 +79,14 @@ class CMemoryAllocator { public:
     void ConsolidateFreeAreas();                   // 0x009F2660
     void ClearPerformanceStats();                  // 0x009F26B0
 };
+// Naming (NF129, 2026-11-20, q4289): CSystemManager::Update returns ESystemReturn (Ego_r.pdb 0x00AF4520 + FableWin.pdb 0x02F8AB00
+//   ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ; GFPlayFullScreenXBoxMovie 0x006286F0 binds it); respelled in place in the local
+//   CSystemManager model, the enum from engine/CSystemManager.h's partial mode FABLE_RETAIL_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY.
+#define FABLE_RETAIL_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY
+#include "engine/CSystemManager.h"
 struct CSystemObjectF8 { void Update(); };         // 0x009F8C10 (empty)
 class CSystemManager { public:
-    long Update();                                 // 0x009A6460
+    ESystemReturn Update();                        // 0x009A6460
     unsigned char    _pad00[0xf8];
     CSystemObjectF8* m_f8;                         // +0xF8
 };

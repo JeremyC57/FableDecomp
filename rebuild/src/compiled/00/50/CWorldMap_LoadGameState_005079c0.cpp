@@ -17,6 +17,8 @@
 //   declaration homes it in memory for the whole function); the two "END_REGION" reads go through inline const char*
 //   helpers with a named CCharString (lea-addressed, destroyed at the helper's end); the comment list's destructor is
 //   inlined (STLport clear + node free).
+// Naming (NF129, 2026-11-20, q6340): ReadNextItemAsQuotedString returns bool (Ego_r.pdb 0x00B0ECB0 + FableWin.pdb 0x03056EF0
+//   ?ReadNextItemAsQuotedString@CStringParser@@QAE_NAAVCCharString@@@Z, the landed 0x009BA1D0 definition); respelled in place in the local model.
 #include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
@@ -73,7 +75,7 @@ public:
                   long baseLineOffset);                 // 0x00404720
     bool SkipPastString(const CCharString& text);      // 0x009B9BA0 (label NextItemIs)
     long SkipWhitespace();                              // 0x009B9C60
-    void ReadNextItemAsQuotedString(CCharString& text);   // 0x009BA1D0
+    bool ReadNextItemAsQuotedString(CCharString& text);   // 0x009BA1D0 (Ego_r / FableWin _N: returns bool; the result is unused here)
     CCharString ReadAsStringUntilPastString(const CCharString& end);   // 0x009BA3E0
     CCharString ReadAsStringUntilWhitespace();         // 0x009BA4A0
     bool IsAtEnd() const { return String[CursorPos[1]] == 0; }

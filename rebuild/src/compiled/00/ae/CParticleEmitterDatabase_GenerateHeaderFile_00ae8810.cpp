@@ -13,6 +13,8 @@
 // Shape: each literal is a named CCharString local in its own block (`lea ecx ; push ecx`), the relative path is an
 // argument temporary passed straight from the helper's result; the emitter walk is an iterator loop over the map's
 // vector (`it != end()` re-read each pass).
+// Naming (NF129, 2026-11-20, q4213): 0x009BAB50 is CPersistContext::WriteString(const CCharString&) (Ego_r.pdb 0x00B0F550 + FableWin.pdb
+//   0x02FEA160; engine/CPersistContext.h); respelled in place in the local CPersistContext model (was the stand-in Transfer_009bab50).
 class CCharString { public:
     void* m_pData;
     CCharString();                                     // 0x0099E4B0
@@ -25,7 +27,7 @@ CCharString __fastcall GetRelativePathName(const CCharString& path, const CCharS
 class CPersistContext { public:                               // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CCharString& output);              // 0x009BAE10
-    void Transfer_009bab50(CCharString& value);                 // 0x009BAB50
+    void WriteString(const CCharString& string);                // 0x009BAB50
 };
 
 namespace NParticleEngine {
@@ -58,31 +60,31 @@ void CParticleEmitterDatabase::GenerateHeaderFile(const CCharString& filename, c
     CPersistContext context(text);
     {
         CCharString line("HeaderFilename \"");
-        context.Transfer_009bab50(line);
+        context.WriteString(line);
     }
-    context.Transfer_009bab50(GetRelativePathName(ParFilename, HeaderFilename));
+    context.WriteString(GetRelativePathName(ParFilename, HeaderFilename));
     {
         CCharString line("\"\r\n");
-        context.Transfer_009bab50(line);
+        context.WriteString(line);
     }
     {
         CCharString line("BEGIN_DATABASE\r\n");
-        context.Transfer_009bab50(line);
+        context.WriteString(line);
     }
     for (CEmitterEntry* it = Emitters_start; it != Emitters_finish; ++it) {
         {
             CCharString line("BEGIN_EMITTER\r\n");
-            context.Transfer_009bab50(line);
+            context.WriteString(line);
         }
         it->Emitter->DatabaseSerialise(context, info);
         {
             CCharString line("END_EMITTER\r\n");
-            context.Transfer_009bab50(line);
+            context.WriteString(line);
         }
     }
     {
         CCharString line("END_DATABASE\r\n");
-        context.Transfer_009bab50(line);
+        context.WriteString(line);
     }
     text.SaveToFile(filename);
 }

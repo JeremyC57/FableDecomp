@@ -14,6 +14,9 @@
 // Layout: retail CWorldMap with 12-byte STLport containers: World +0x08, Maps (CArray<CMapInfo>, 0x48-byte entries;
 //   Used +0x24, LoadedOnPlayerProximity +0x28 per Ego_r.pdb) at +0x20; the thing manager's flag word at +0x80.
 // Name fix (agentNF6 2026-11-10): NProgressDisplay::DisplayProgress 0x009E9F40 is ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb; namespace NProgressDisplay, (text, float, bool, bool)); the float takes the stack slot either way under __fastcall, so the call bytes are unchanged.
+// Naming (NF129, 2026-11-20, q4626): CCharString::SaveToFile is const and takes CAFile& (Ego_r.pdb 0x00AF9EB0 + FableWin.pdb 0x02F61F70
+//   ?SaveToFile@CCharString@@QBEXAAVCAFile@@@Z; fable_string.h); respelled in place in the local CCharString model. The HEAD row's
+//   pointer cast of the local CDiskFileWin32 (not derived from CAFile in this model) becomes the matching reference cast (same debt).
 #include "fable_compiler.h"
 #include <stdlib.h>
 class CWideString { public:
@@ -27,7 +30,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other); // 0x0099F0A0
     const CCharString& operator+=(const char* text);         // 0x0099F100
-    void SaveToFile(class CAFile* file);              // 0x0099E5F0
+    void SaveToFile(class CAFile& file) const;        // 0x0099E5F0 (Ego_r / FableWin QBE, CAFile&)
 };
 CCharString __fastcall GFIntToCharString(long value);                          // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);  // 0x0099F690
@@ -157,5 +160,5 @@ void CWorldMap::CompileLoadableGlobalThingsToSingleFile(const CWideString& filen
     }
     World->GetThingManager()->SavingFlag = oldFlag;
     CDiskFileWin32 file(filename, FILE_ACCESS_WRITE, 2);
-    script.SaveToFile((CAFile*)&file);
+    script.SaveToFile((CAFile&)file);
 }

@@ -1,5 +1,8 @@
 // CStringParser::PeekNextItem(CParsedItem*) -- reads the next item without consuming it: the cursor is restored after a successful read
-// Leaf: PeekNextItem
+// Leaf: ?PeekNextItem@CStringParser@@QAE_NAAVCParsedItem@@@Z
+// Naming (NF129, 2026-11-20, q4657): PeekNextItem and ReadNextItem take CParsedItem& (Ego_r.pdb / FableWin.pdb
+//   ?PeekNextItem@CStringParser@@QAE_NAAVCParsedItem@@@Z, ?ReadNextItem@CStringParser@@QAE_NAAVCParsedItem@@@Z; engine/CStringParser.h);
+//   the pointer parameters are respelled in place in the local model (same bytes).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BA8C0, 57 bytes (+7 int3 padding). Callee:
 // CStringParser::ReadNextItem(CParsedItem*) @ 0x009BA080 (bool).
 // Layout: retail CStringParser is 0x28 bytes, not the PDB's 0x30 (engine/CStringParser.h): the comment list is ONE word
@@ -63,11 +66,11 @@ public:
     CStringParserCommentList   Comments;           // +0x14
     TStringParserErrorCallback ErrorCallback;      // +0x18
     CCursorPos                 CursorPos;          // +0x1C
-    bool ReadNextItem(CParsedItem* item);          // 0x009BA080
-    bool PeekNextItem(CParsedItem* item);
+    bool ReadNextItem(CParsedItem& item);          // 0x009BA080
+    bool PeekNextItem(CParsedItem& item);
 };
 
-bool CStringParser::PeekNextItem(CParsedItem* item)
+bool CStringParser::PeekNextItem(CParsedItem& item)
 {
     CCursorPos saved = CursorPos;
     if (ReadNextItem(item)) {

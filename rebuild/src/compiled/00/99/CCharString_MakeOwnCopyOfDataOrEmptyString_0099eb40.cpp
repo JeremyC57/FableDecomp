@@ -8,6 +8,9 @@
 // Shape: the shared-block arm is the landed MakeOwnCopyOfData 0x0099EAF0 body; the empty arm inlines the block's
 //          (length, growth) constructor (`__forceinline`: zero words, bitfield read/modify/write, then Initialise(0, 0x20)),
 //          NoRefs = 1 after it; both arms publish the (possibly null) block last.
+// Leaf: ?MakeOwnCopyOfDataOrEmptyString@CCharString@@IAEXXZ
+// Naming (NF129, 2026-11-20, q3967): Ego_r.pdb 0x00AFA4D0 + FableWin.pdb 0x02F62460 spell it protected (IAE); the declaration moves into
+//   the existing local model's protected section (in-place respell), as the landed callers 0x0099F3B0 Append / 0x0099F3D0 bind it.
 #include "fable_compiler.h"
 #pragma pack(push, 1)
 struct CBasicStringChar {                     // CBasicString<char>, 13 bytes
@@ -35,8 +38,9 @@ class CCharStringData { public:                      // 17 bytes
 class CCharString {
 public:
     CCharStringData* PStringData;             // +0x00
-    protected: void UnassignString(); public:                    // 0x0099E9B0
-    void MakeOwnCopyOfDataOrEmptyString();
+protected:
+    void UnassignString();                    // 0x0099E9B0
+    void MakeOwnCopyOfDataOrEmptyString();    // Ego_r / FableWin ?MakeOwnCopyOfDataOrEmptyString@CCharString@@IAEXXZ (protected)
 };
 
 void CCharString::MakeOwnCopyOfDataOrEmptyString()

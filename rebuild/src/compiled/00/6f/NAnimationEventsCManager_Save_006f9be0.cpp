@@ -15,6 +15,9 @@
 // Layout: the landed SaveBinary 0x006F92A0 model: event names CSymbolMap +0x08 (retail 0x24 bytes, as the landed
 //   0x00AF1600; the PDB 0x2c is the debug view), ExtraAnimEvents +0x2c (12-byte entries), Dirty +0x3c (retail load).
 //   The 0x24 CSymbolMap is what puts the save context below the animTypes temporary in the 0xa4 frame.
+// Naming (NF129, 2026-11-20, q4213): 0x009BAB50 is CPersistContext::WriteString(const CCharString&) (Ego_r.pdb 0x00B0F550 + FableWin.pdb
+//   0x02FEA160 ?WriteString@CPersistContext@@QAEXABVCCharString@@@Z; engine/CPersistContext.h); respelled in place in the local
+//   CPersistContext model (was the stand-in Transfer_009bab50).
 #pragma pack(push, 1)
 #pragma pack(pop)
 class CWideString { public:
@@ -57,7 +60,7 @@ CCharString __fastcall operator+(const char* a, const CCharString& b);          
 class CPersistContext { public:                               // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CCharString& output);              // 0x009BAE10
-    void Transfer_009bab50(CCharString& value);                 // 0x009BAB50
+    void WriteString(const CCharString& string);// 0x009BAB50
 };
 class CSymbolMap { public:                                    // retail 0x24 bytes (as the landed 0x00af1600)
     class CSymbolInfo { public:
@@ -113,29 +116,29 @@ void CManager::Save(const CWideString& fileName)
         CPersistContext context(text);
         {
             CCharString line("BEGIN_ANIMATION_EVENTS\r\n");
-            context.Transfer_009bab50(line);
+            context.WriteString(line);
         }
         CSymbolMap animTypes;
         animTypes.LoadFromHeaderFile(NBankFileManager::GetHeaderDir() + (const unsigned short*)L"meshdata.h");
         for (CAnimEvents* it = ExtraAnimEvents_start; it != ExtraAnimEvents_finish; ++it) {
             unsigned long animID = it->AnimID;
             const CSymbolMap::CSymbolInfo* info = animTypes.FindFirstSymbolWithVal("EAnimType", animID);
-            context.Transfer_009bab50("BEGIN_EVENTS: " + info->EntryName + "\r\n");
+            context.WriteString("BEGIN_EVENTS: " + info->EntryName + "\r\n");
             for (CEvent* e = it->Events.begin(); e != it->Events.end(); ++e) {
                 const CSymbolMap::CSymbolInfo* name = EventNames.FindFirstSymbolWithVal(e->Packed & 0x3fffffff);
                 if (e->Packed & 0x80000000)
-                    context.Transfer_009bab50(name->EntryName + " " + GFFloatToCharString(e->Time, 6) + " STOP\r\n");
+                    context.WriteString(name->EntryName + " " + GFFloatToCharString(e->Time, 6) + " STOP\r\n");
                 else
-                    context.Transfer_009bab50(name->EntryName + " " + GFFloatToCharString(e->Time, 6) + " START\r\n");
+                    context.WriteString(name->EntryName + " " + GFFloatToCharString(e->Time, 6) + " START\r\n");
             }
             {
                 CCharString line("END_EVENTS\r\n\r\n");
-                context.Transfer_009bab50(line);
+                context.WriteString(line);
             }
         }
         {
             CCharString line("END_ANIMATION_EVENTS\r\n");
-            context.Transfer_009bab50(line);
+            context.WriteString(line);
         }
         text.SaveToFile(file);
         Dirty = false;

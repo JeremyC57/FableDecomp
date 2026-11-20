@@ -1,31 +1,31 @@
 // CGPUScratchBufferTextureManager::BeginShutdown() -- detach GPU textures, dispose resources, and release non-restorable pages once.
 // Retail00f37170 length305. Manager header unavailable; native arrays12 vs donor16,
 // resource entries44, pages28 vs donor32, ShutdownFlag40 vs donor54.
-#define CTexture CTexturePdb
+// Naming (NF129, 2026-11-20, q4547): the stage detach calls the shared CRenderManagerCore::AttachTextureToStage (Ego_r.pdb +
+//   FableWin.pdb ?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z, the out-of-line copy 0x009A0CF0) on the retail
+//   engine/CTexture.h class (its inline ~CTexture calls ?Uninitialise@CTexture@@QAEXXZ 0x009F9F70).
+#define FABLE_RETAIL_CTEXTURE
 #include "engine/CTexture.h"
-#undef CTexture
-struct CTexture : CTexturePdb { void Uninitialise(); };   // 0x009f9f70 ?Uninitialise@CTexture@@QAEXXZ
 #define CSurface CSurfaceDonorLayout
 #include "engine/CSurface.h"
 #undef CSurface
+#define FABLE_RETAIL_CRENDERMANAGERCORE
 #define FABLE_RETAIL_CRENDERMANAGERCORE_WAITWHILEGPUISBUSY
 #include "engine/CRenderManagerCore.h"
 #include "engine/CPixelFormat.h"
 #include <new>
-struct CScratchTexture:CTexture {~CScratchTexture(){Uninitialise();}};
 // Actual surface layout with its real virtual destructor restored. Retail VT122F84C
 // slot0 scalar destructor41C9C0 calls Uninitialise9F2E20 and optionally scalar delete.
 struct CScratchSurface {virtual ~CScratchSurface();IDirect3DSurface9* PD3DSurface;unsigned AllocationSource;void* PAllocatedMemory;};
 struct CScratchRenderMethods:CRenderManagerCore {
  // NF37: 0x00A0AF80 is the base CRenderManagerCore::WaitWhileGPUIsBusy (Ego_r/FableWin), engine/CRenderManagerCore.h
- void AttachTextureToStage(int,CTexture*); //009a0cf0
 };
 // System/display headers unavailable; PDB System.PDisplayManager96, Display.PRenderManager8.
 struct CScratchDisplay {void* VTable;void* SystemManager;CScratchRenderMethods* PRenderManager;};
 class CSystemManager { public:unsigned char Prefix[0x60];CScratchDisplay* PDisplayManager;};
 CSystemManager* __fastcall GFGetSystemManager(); //009a4ec0
 struct CScratchResource {
- int ResourceType;CScratchTexture* Texture;CScratchSurface* Surface;int PageIndex;
+ int ResourceType;CTexture* Texture;CScratchSurface* Surface;int PageIndex;
  int Width,Height,NoLevels;CPixelFormat PixelFormat;int MultiSampleType;unsigned UsageFlags;int MemoryPool;
 };
 template<class T>struct CScratchArray {

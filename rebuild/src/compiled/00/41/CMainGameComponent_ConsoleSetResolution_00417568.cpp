@@ -8,7 +8,7 @@
 // args[0..2].ValSLONG and never shown (the console print was compiled out, the string is only destroyed);
 // then PDisplayEngine->PreChangeResolution(), g_pDisplayManager->SetDisplayMode(C2DExtentsI(width, height), depth,
 // 0, 0) and component.PostChangeResolution(width, height, depth) with the requested values.
-// Callees: CCharString::CCharString() @ 0x0099E4B0, CCharString::Format(const char*, ...) @ 0x0099F1F0 (varargs member:
+// Callees: CCharString::CCharString() @ 0x0099E4B0, CCharString::Sprintf(const char*, ...) @ 0x0099F1F0 (varargs member:
 //          __cdecl with `this` pushed first), CDisplayEngine::PreChangeResolution @ 0x00434A10,
 //          CDisplayManager::SetDisplayMode @ 0x009BFF40, CMainGameComponent::PostChangeResolution @ 0x00416365,
 //          CCharString::~CCharString @ 0x0099EAE0.
@@ -25,7 +25,7 @@ class CCharString {
 public:
     CCharString();                                       // 0x0099E4B0
     ~CCharString();                                      // 0x0099EAE0
-    void Format(const char* format, ...);                // 0x0099F1F0
+    void Sprintf(const char* format, ...);               // 0x0099F1F0 ?Sprintf@CCharString@@QAAXPBDZZ (Ego_r + FableWin; NF129 q6512)
 private:
     void* PStringData;
 };
@@ -82,7 +82,7 @@ void __fastcall CMainGameComponent::ConsoleSetResolution(CMainGameComponent& com
     unsigned long width = args[0].ValSLONG;
     unsigned long height = args[1].ValSLONG;
     unsigned long depth = args[2].ValSLONG;
-    message.Format("Nearest supported resolution is (%d,%d,%d)", width, height, depth);
+    message.Sprintf("Nearest supported resolution is (%d,%d,%d)", width, height, depth);
     component.PDisplayEngine->PreChangeResolution();
     GPDisplayManager->SetDisplayMode(C2DExtentsI(width, height), depth, SURFACE_MULTISAMPLE_NONE, 0);
     component.PostChangeResolution(width, height, depth);
