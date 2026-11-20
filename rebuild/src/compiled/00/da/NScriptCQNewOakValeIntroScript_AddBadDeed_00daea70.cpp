@@ -1,5 +1,5 @@
-// CQ_NewOakValeIntroScript::AddBadDeed(long deed) -- the hero did a bad deed in the Oakvale intro: count it, take away the per-deed morality, and the first time (with no good deeds yet) show the first-bad-deed message and log the map tutorial, otherwise show the bad-deed message once per kind of deed
-// Leaf: ?AddBadDeed@CQ_NewOakValeIntroScript@NScript@@
+// CQ_NewOakValeIntroScript::AddBadDeed(EBadDeeds deed) -- the hero did a bad deed in the Oakvale intro: count it, take away the per-deed morality, and the first time (with no good deeds yet) show the first-bad-deed message and log the map tutorial, otherwise show the bad-deed message once per kind of deed
+// Leaf: ?AddBadDeed@CQ_NewOakValeIntroScript@NScript@@QAEXW4EBadDeeds@12@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DAEA70, length 383 bytes (+ int3 padding), `ret 4`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940 (landed), CCharString::CCharString(const char*, long)
 // 0x0099EBF0 / ~CCharString 0x0099EAE0, the file-static __fastcall AddLogbookTutorialEntry(const CCharString&)
@@ -17,13 +17,14 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+// Naming (agentNF163, 2026-11-20): the parameter is the nested enum EBadDeeds (Ego_r.pdb 0x00DD8F60 + FableWin.pdb 0x03808430
+//   ?AddBadDeed@CQ_NewOakValeIntroScript@NScript@@QAEXW4EBadDeeds@12@@Z), not long: ported off the local CQ_NewOakValeIntroScript
+//   model (GSI +0x40 = CLevelScriptBase<T>::Game) onto engine/CQ_NewOakValeIntroScript.h; the landed callers on that header bind
+//   the same spelling. Same bytes.
 #define FABLE_RETAIL_CCHARSTRING
-#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
-
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"                              // CCharString (agentNF60: was a local stand-in)
+#include "engine/CGameScriptInterfaceBase.h"
 
 void __fastcall AddLogbookTutorialEntry(const CCharString& tag);   // 0x00CBE9EE
 
@@ -31,38 +32,23 @@ void __fastcall AddLogbookTutorialEntry(const CCharString& tag);   // 0x00CBE9EE
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
 
-// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
-#include "engine/CScriptBase.h"
+// CQ_NewOakValeIntroScript : CLevelScriptBase<CQ_SunnyvaleMasterData> (Game +0x40), GoodDeedsPerformed +0x54,
+//   BadDeedsPerformed +0x58, WhichBadDeedsPerformed +0xFC: the shared retail NScript model.
+#include "engine/CQ_NewOakValeIntroScript.h"
 
-namespace NScript {
-class CQ_NewOakValeIntroScript : public CScriptBase {
-public:
-    CGameScriptInterface* GSI;                          // +0x40
-    void*                 Data;                         // +0x44
-    unsigned char         _pad48[0x54 - 0x48];
-    long                  GoodDeedsPerformed;           // +0x54 (PDB +0x68)
-    long                  BadDeedsPerformed;            // +0x58 (PDB +0x6c)
-    unsigned char         _pad5c[0xfc - 0x5c];
-    bool                  WhichBadDeedsPerformed[8];    // +0xfc
-    void AddBadDeed(long deed);
-};
-} // namespace NScript
-using NScript::CQ_NewOakValeIntroScript;
-
-void NScript::CQ_NewOakValeIntroScript::AddBadDeed(long deed)
+void NScript::CQ_NewOakValeIntroScript::AddBadDeed(EBadDeeds deed)
 {
     ++BadDeedsPerformed;
-    GSI->GiveHeroMorality(-pGlobalScriptDef->OVI_MoralityChangePerDeed);
+    Game->GiveHeroMorality(-pGlobalScriptDef->OVI_MoralityChangePerDeed);
     if (BadDeedsPerformed == 1 && GoodDeedsPerformed == 0) {
         if (IsActiveThreadTerminating())
             return;
         {
             CCharString text("TEXT_QST_048_SCRMSG_DID_FIRST_BAD_DEED");
-            GSI->DisplayGameInfo(text);
+            Game->DisplayGameInfo(text);
         }
-        while (!GSI->MsgIsGameInfoClickedPast()) {
-            GSI->NewScriptFrame();
+        while (!Game->MsgIsGameInfoClickedPast()) {
+            Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
                 return;
         }
@@ -80,10 +66,10 @@ void NScript::CQ_NewOakValeIntroScript::AddBadDeed(long deed)
                 return;
             {
                 CCharString text("TEXT_QST_048_SCRMSG_DID_BAD_DEED");
-                GSI->DisplayGameInfo(text);
+                Game->DisplayGameInfo(text);
             }
-            while (!GSI->MsgIsGameInfoClickedPast()) {
-                GSI->NewScriptFrame();
+            while (!Game->MsgIsGameInfoClickedPast()) {
+                Game->NewScriptFrame();
                 if (IsActiveThreadTerminating())
                     return;
             }

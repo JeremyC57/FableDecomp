@@ -1,5 +1,7 @@
 // CQ_TraderConflictGoodScript::WatchForHittingEnemies() -- thread: until a trader follows the hero (then until three reach the teleporter), any creature the hero hits (plainly, or with the special ability 14 after any special-ability hit) turns every creature within 20 units of it, or aware of the hero, onto the hero as its best enemy target
 // Leaf: WatchForHittingEnemies
+// Name-fix NF163 (q6266): the per-frame callee 0x00DFC320 is ?UpdateLiveEnemies@CQ_TraderConflictGoodScript@NScript@@QAEXXZ (Ego_r.pdb
+//   0x00E3C790 + FableWin.pdb 0x038B7740; the landed self row), respelled in place in the existing local model (was the made-up UpdateTraders).
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
@@ -49,7 +51,7 @@ public:
     long                  TradersFollowing;             // +0x54
     long                  TradersReachedTeleporter;     // +0x58
     void WatchForHittingEnemies();
-    void UpdateTraders();                               // 0x00DFC320 (name unproven: thiscall helper polled once per frame)
+    void UpdateLiveEnemies();                           // 0x00DFC320 ?UpdateLiveEnemies@CQ_TraderConflictGoodScript@NScript@@QAEXXZ (Ego_r.pdb + FableWin.pdb)
 };
 
 void CQ_TraderConflictGoodScript::WatchForHittingEnemies()
@@ -82,7 +84,7 @@ void CQ_TraderConflictGoodScript::WatchForHittingEnemies()
         }
         if (IsActiveThreadTerminating())
             return;
-        UpdateTraders();
+        UpdateLiveEnemies();
     }
     if (IsActiveThreadTerminating())
         return;
@@ -90,7 +92,7 @@ void CQ_TraderConflictGoodScript::WatchForHittingEnemies()
         GSI->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
-        UpdateTraders();
+        UpdateLiveEnemies();
     }
     if (IsActiveThreadTerminating())
         return;

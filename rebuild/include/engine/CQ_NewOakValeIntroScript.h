@@ -115,6 +115,12 @@ public:
 #ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_ENTITIES2
     class CNOVI_AffairWife;                                              // Alloc 0x00DB29A0
 #endif
+#ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_ENTITIES3
+    class CNOVI_AffairWoman;                                             // Alloc 0x00DB1DB0
+    class CNOVI_BookTrader;                                              // Alloc 0x00DB3E30
+    class CNOVI_Barrel;                                                  // Alloc 0x00DB7D00
+    class CNOVI_CreatedBeetle;                                           // Alloc 0x00DB7FF0
+#endif
 };
 #pragma pack(pop)
 // The villager entity script (Ego_r.pdb CNOVI_Villager, 32 bytes: ParentClass +0x14, PMasterData +0x18, HeroDidHitMe +0x1c; the
@@ -171,8 +177,8 @@ protected:
     long LastTimeSpoken;                                                 // +0x20
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan) == 0x24);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug) == 0x24);
+FABLE_STATIC_ASSERT_AT(174, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan) == 0x24);
+FABLE_STATIC_ASSERT_AT(175, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug) == 0x24);
 #endif
 #ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_ENTITIES2
 // Retail opt-in (chunk 806): two more entity scripts. Ego_r.pdb layouts (struct_layouts_egor.tsv, entity offsets equal retail's:
@@ -214,8 +220,8 @@ protected:
     bool HeroHitMe;                                                      // +0x1f
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife) == 0x20);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl) == 0x20);
+FABLE_STATIC_ASSERT_AT(217, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife) == 0x20);
+FABLE_STATIC_ASSERT_AT(218, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl) == 0x20);
 #endif
 #ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_VICTIM_LIVEFATHER
 // Retail opt-in (chunk 807): the two entity scripts the default body forward-declares. Ego_r.pdb layouts (struct_layouts_egor.tsv,
@@ -251,8 +257,8 @@ protected:
     long PenniesGiven;                                                   // +0x1c
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Victim) == 0x20);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather) == 0x20);
+FABLE_STATIC_ASSERT_AT(254, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Victim) == 0x20);
+FABLE_STATIC_ASSERT_AT(255, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather) == 0x20);
 #endif
 #ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_GUARD
 // Retail opt-in (chunk 809): the NOVI_Guard entity script. Ego_r.pdb layout (struct_layouts_egor.tsv, entity offsets equal
@@ -273,7 +279,7 @@ protected:
     CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Guard) == 0x1c);
+FABLE_STATIC_ASSERT_AT(276, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Guard) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_BARRELMAN_THERESA
 // Retail opt-in (chunk 813): the BarrelMan and Theresa entity scripts. Ego_r.pdb layouts (struct_layouts_egor.tsv, entity offsets
@@ -318,8 +324,8 @@ protected:
     bool DoneIntro;                                                      // +0x1d
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan) == 0x24);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa) == 0x20);
+FABLE_STATIC_ASSERT_AT(321, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan) == 0x24);
+FABLE_STATIC_ASSERT_AT(322, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa) == 0x20);
 #endif
 #ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_BULLY // Retail opt-in (Codex pass 21): original PDB nested owner and native Alloc/vtable; rebased hand811 model.
 // Retail opt-in (chunk 811): the NOVI_Bully entity script. Ego_r.pdb layout (struct_layouts_egor.tsv, entity offsets equal
@@ -349,10 +355,82 @@ protected:
     long IntimidateSpeechLoop;                                           // +0x28
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Bully) == 0x2c);
+FABLE_STATIC_ASSERT_AT(352, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Bully) == 0x2c);
 #endif
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript) == 0x10c);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Villager) == 0x20);
+#ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_ENTITIES3
+// Retail opt-in (agentNF163, 2026-11-20): the last five entity scripts, so Main 0x00DABAC0 can bind all sixteen PDB Alloc spellings.
+// Ego_r.pdb layouts (struct_layouts_egor.tsv, entity offsets equal retail's: CEntityScriptBase is 0x14 in both): CNOVI_AffairWoman
+// 28 bytes, CNOVI_BookTrader 32 bytes (DoneIntro +0x1c), CNOVI_Barrel / CNOVI_CreatedBeetle / COVI_DeadFather 28 bytes (ParentClass
+// +0x14, PMasterData +0x18); the landed Allocs 0x00DB1DB0 / 0x00DB3E30 / 0x00DB7D00 / 0x00DB7FF0 / 0x00DB81B0 allocate 0x1c / 0x20 /
+// 0x1c / 0x1c / 0x1c. Virtuals: exactly the members both Ego_r.pdb and FableWin.pdb name for each class (Main / Init / OnPredicateFail
+// private EAEXXZ, GetParentScript public UBEPAVCScriptBase@@XZ); entity vtables 0x012D8C08 (AffairWoman), 0x012D8E80 (BookTrader),
+// 0x012D94F0 (Barrel), 0x012D9560 (CreatedBeetle), 0x012D957C (DeadFather).
+namespace NScript {
+class CQ_NewOakValeIntroScript::CNOVI_AffairWoman : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DB1DB0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DB1E50
+private:
+    virtual void Main();                                                 // 0x00DB1F00
+    virtual void Init();                                                 // 0x00DB1E80
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+class CQ_NewOakValeIntroScript::CNOVI_BookTrader : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DB3E30
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DB3ED0
+private:
+    virtual void Main();                                                 // 0x00DB3FA0
+    virtual void Init();                                                 // 0x00DB3F00
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    bool DoneIntro;                                                      // +0x1c
+};
+class CQ_NewOakValeIntroScript::CNOVI_Barrel : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DB7D00
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DB7DA0
+private:
+    virtual void Main();                                                 // 0x00DB7E10
+    virtual void OnPredicateFail();                                      // 0x00DB7DB0
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+class CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DB7FF0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DB8090
+private:
+    virtual void Main();                                                 // 0x00DB80C0
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+class CQ_NewOakValeIntroScript::COVI_DeadFather : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DB81B0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DB8250
+private:
+    virtual void Main();                                                 // 0x00DB8300
+    virtual void Init();                                                 // 0x00DB8290
+    virtual void OnPredicateFail();                                      // 0x00DB8260
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman) == 0x1c);
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader) == 0x20);
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel) == 0x1c);
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle) == 0x1c);
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::COVI_DeadFather) == 0x1c);
+#endif
+FABLE_STATIC_ASSERT_AT(354, sizeof(NScript::CQ_NewOakValeIntroScript) == 0x10c);
+FABLE_STATIC_ASSERT_AT(355, sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Villager) == 0x20);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_NEWOAKVALEINTROSCRIPT_H

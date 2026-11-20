@@ -1,0 +1,2 @@
+GREW 00e01710 0 -> 1 ??1CDarkwoodTrader@CQ_TraderEscortScript@NScript@@UAE@XZ row 00e016f0 DIFF before=['?CLandscapeBackgroundPatch_dtor_00e01710@@YIXPAVCLandscapeBackgroundPatch@@@Z']
+shrank [('00daea70', 2, 1), ('00dfc320', 2, 1)]

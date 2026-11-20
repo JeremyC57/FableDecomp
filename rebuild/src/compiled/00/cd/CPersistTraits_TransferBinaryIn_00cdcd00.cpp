@@ -1,4 +1,12 @@
-// CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStream*, T*) -- inlined 4-byte read (scalar), 64-bit position range check through an inline bool predicate (its exits share the duplicated return tails the retail way), ReadWithSrcChunkOverflow @ 0x00993CA0 when the chunk runs out
+// CPersistTraits<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>::TransferBinaryIn(CMemoryDataInputStream&, ArcheryOpenState&) -- inlined 4-byte read (scalar), 64-bit position range check through an inline bool predicate (its exits share the duplicated return tails the retail way), ReadWithSrcChunkOverflow @ 0x00993CA0 when the chunk runs out
+// Leaf: ?TransferBinaryIn@?$CPersistTraits@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@QAEXAAVCMemoryDataInputStream@@AAW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@Z
+// Name-fix NF163 (q4631 / q11756 family, 2026-11-20): FableWin.pdb 0x03B58860
+//   ?TransferBinaryIn@?$CPersistTraits@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@QAEXAAVCMemoryDataInputStream@@AAW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@Z;
+//   its only caller is the binary-load arm of CPersistContext::Transfer<ArcheryOpenState> 0x00CDCC20 (Ego_r.pdb / FableWin.pdb, key
+//   "ArcheryStateCurrent", landed binder 0x00CDC070 = CQ_SunnyvaleMasterData::OnPersist), `ret 8` (thiscall, traits `this` unused).
+//   Was the free __stdcall stand-in TransferBinaryIn_00cdcd00(CMemoryDataInputStream*, long*). Spelling and shape: the landed
+//   CPersistTraits<EScriptingStateGroups>::TransferBinaryIn 0x007AD7F0 (engine/CPersistTraits.h; the row-local CMemoryDataInputStream
+//   read model is the one this row already had).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CDCD00, oracle length 129 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -15,6 +23,9 @@
 // The manifest label (`CPersistTraits<...>::TransferBinaryIn`) is propagated; the value type is
 // modelled by size. One of 31 bodies of this shape.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM
+#include "engine/CDataOutputStream.h"
+#include "engine/CPersistTraits.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -45,9 +56,11 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 
-void __stdcall TransferBinaryIn_00cdcd00(CMemoryDataInputStream* stream, long* out)
+#include "engine/CQ_SunnyvaleMasterData.h"
+
+template <> void CPersistTraits<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>::TransferBinaryIn(CMemoryDataInputStream& stream, NScript::CQ_SunnyvaleMasterData::ArcheryOpenState& value)
 {
-    long value;
-    stream->Read(&value, sizeof(value));
-    *out = value;
+    NScript::CQ_SunnyvaleMasterData::ArcheryOpenState number;
+    stream.Read(&number, sizeof(number));
+    value = number;
 }

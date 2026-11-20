@@ -1,4 +1,5 @@
 // CQ_NewOakValeIntroScript::Main() -- the new Oakvale intro quest's main: bind the sixteen NOVI_* / OVI_DeadFather entity scripts, finish adding scripted entities, close the post-attack quest if the attack is already over, set the active quest's first objective, spawn StartBarrelTimer and run DoMission
+// Leaf: ?Main@CQ_NewOakValeIntroScript@NScript@@UAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DABAC0, length 2018 bytes. Catalog label "CPersonalScript_GlobalThingsScript::Main"
 //   is propagated: the vtable 0x012D7A30 slot holding this body and the NOVI_ strings / DoMission 0x00DBDE40 call are
@@ -14,102 +15,53 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-#include "fable_compiler.h"
-#include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
-void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
-void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-#include "engine/CCountedPointer.h"
-// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+// Naming (agentNF163, 2026-11-20): the sixteen entity scripts are CQ_NewOakValeIntroScript::CNOVI_<Name> / COVI_DeadFather (Ego_r.pdb +
+//   FableWin.pdb ?Alloc@CNOVI_LiveFather@CQ_NewOakValeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+//   ... ?Alloc@COVI_DeadFather@...; the landed Alloc rows 0x00DAC2C0 .. 0x00DB81B0 define exactly those leaves). Ported off the local
+//   CCharString / CEntityScriptBinding / CQ_NewOakValeIntroScript (ALLOC(CLiveFather) .. stand-in nested structs) models onto
+//   fable_string.h, engine/CEntityScriptBinding.h and engine/CQ_NewOakValeIntroScript.h (entity opt-ins, ENTITIES3 for the last
+//   five), as the landed CV_ChapelOfEvilScript::Main 0x00E693F0; every binding now names the PDB Alloc.
+#define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CScriptThing.h"
-// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
-//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
-//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_ENTITIES
+#define FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_ENTITIES2
+#define FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_ENTITIES3
+#define FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_VICTIM_LIVEFATHER
+#define FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_GUARD
+#define FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_BARRELMAN_THERESA
+#define FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_BULLY
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CGameScriptInterfaceBase.h"
+#include "engine/CQ_SunnyvaleMasterData.h"
+#include "engine/CEntityScriptBase.h"
+#include "engine/C3DVector.h"
+#include "engine/CQ_NewOakValeIntroScript.h"
+#include "engine/CEntityScriptBinding.h"
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
-class CScriptDataBase;
-class CEntityScriptBase;
-class __declspec(novtable) CEntityScriptBindingBase { public:
-    virtual const CCharString& GetEntityScriptName() const = 0;
-};
-template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
-    typedef CCountedPointer<CEntityScriptBase> (__fastcall *TAllocFunc)(T& parent, CScriptDataBase* data, const CScriptThing& thing);
-    CCharString     EntityScriptName;                   // +0x04
-    T*              PParentScript;                      // +0x08
-    void (T::*Func)();                                  // +0x0c
-    TAllocFunc      ClassAllocFunc;                     // +0x10
-    bool            ClassAllocValid;                    // +0x14
-    unsigned long   Flags;                              // +0x18
-    CEntityScriptBinding(const CCharString& name, T* parent, TAllocFunc alloc, unsigned long flags)
-        : EntityScriptName(name), PParentScript(parent), ClassAllocFunc(alloc), ClassAllocValid(true), Flags(flags) {}
-    virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
-};
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CGameScriptInterface.h"
-namespace NScript {
-}   // namespace NScript (CScriptBase is global in retail)
-// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
-#include "engine/CScriptBase.h"
-namespace NScript {
-class CQ_NewOakValeIntroScript : public CScriptBase {
-public:
-#define ALLOC(Name) struct Name { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_NewOakValeIntroScript& parent, CScriptDataBase* data, const CScriptThing& thing); };
-    ALLOC(CLiveFather)         // 0x00DAC2C0
-    ALLOC(CTheresa)            // 0x00DAC420
-    ALLOC(CGuard)              // 0x00DAC580
-    ALLOC(CVillager)           // 0x00DADE50
-    ALLOC(CBully)              // 0x00DAEC60
-    ALLOC(CVictim)             // 0x00DAEDE0
-    ALLOC(CTeddyGirl)          // 0x00DAEF50
-    ALLOC(CAffairMan)          // 0x00DB0880
-    ALLOC(CAffairWoman)        // 0x00DB1DB0
-    ALLOC(CAffairWife)         // 0x00DB29A0
-    ALLOC(CBookTrader)         // 0x00DB3E30
-    ALLOC(CBarrelMan)          // 0x00DB51B0
-    ALLOC(CBarrelThug)         // 0x00DB6B40
-    ALLOC(CBarrel)             // 0x00DB7D00
-    ALLOC(CCreatedBeetle)      // 0x00DB7FF0
-    ALLOC(CDeadFather)         // 0x00DB81B0
-#undef ALLOC
-    CGameScriptInterface* Game;                         // +0x40
-    void*                 Data;                         // +0x44
-    unsigned char         _pad48[0x50 - 0x48];          // VictimShake +0x48, StopTimeIndex +0x4c
-    bool                  AttackOver;                   // +0x50
-    void Main();
-    void StartBarrelTimer();                            // 0x00DB4F70
-    void DoMission();                                   // 0x00DBDE40
-};
-void CQ_NewOakValeIntroScript::Main()
+
+void NScript::CQ_NewOakValeIntroScript::Main()
 {
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_LiveFather", this, &CLiveFather::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Theresa", this, &CTheresa::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Guard", this, &CGuard::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Villager", this, &CVillager::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Bully", this, &CBully::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Victim", this, &CVictim::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_TeddyGirl", this, &CTeddyGirl::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_AffairMan", this, &CAffairMan::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_AffairWoman", this, &CAffairWoman::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_AffairWife", this, &CAffairWife::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_BookTrader", this, &CBookTrader::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_BarrelMan", this, &CBarrelMan::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_BarrelThug", this, &CBarrelThug::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Barrel", this, &CBarrel::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_CreatedBeetle", this, &CCreatedBeetle::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("OVI_DeadFather", this, &CDeadFather::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_LiveFather", this, &CNOVI_LiveFather::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Theresa", this, &CNOVI_Theresa::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Guard", this, &CNOVI_Guard::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Villager", this, &CNOVI_Villager::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Bully", this, &CNOVI_Bully::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Victim", this, &CNOVI_Victim::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_TeddyGirl", this, &CNOVI_TeddyGirl::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_AffairMan", this, &CNOVI_AffairMan::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_AffairWoman", this, &CNOVI_AffairWoman::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_AffairWife", this, &CNOVI_AffairWife::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_BookTrader", this, &CNOVI_BookTrader::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_BarrelMan", this, &CNOVI_BarrelMan::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_BarrelThug", this, &CNOVI_BarrelThug::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_Barrel", this, &CNOVI_Barrel::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("NOVI_CreatedBeetle", this, &CNOVI_CreatedBeetle::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_NewOakValeIntroScript>("OVI_DeadFather", this, &COVI_DeadFather::Alloc, 0));
     PostAddScriptedEntities();
     Game->PostAddScriptedEntities();
     if (AttackOver) {
@@ -120,5 +72,4 @@ void CQ_NewOakValeIntroScript::Main()
     Game->SetQuestCardObjective(Game->GetActiveQuestName(), "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_01", "", "");
     AddSpawnedFunction(new CSpawnedFunc<CQ_NewOakValeIntroScript>("StartBarrelTimer", 0, this, &CQ_NewOakValeIntroScript::StartBarrelTimer), CCharString(""));
     DoMission();
-}
 }

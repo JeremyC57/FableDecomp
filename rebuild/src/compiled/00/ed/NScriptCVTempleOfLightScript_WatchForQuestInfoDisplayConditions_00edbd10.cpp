@@ -1,5 +1,5 @@
-// CV_TempleOfLightScript::WatchForQuestInfoDisplay() -- every script frame, check whether the quest-info display state disagrees with "inside the temple and not attacked" (the retail branch body only re-checks thread termination)
-// Leaf: WatchForQuestInfoDisplay
+// CV_TempleOfLightScript::WatchForQuestInfoDisplayConditions() -- every script frame, check whether the quest-info display state disagrees with "inside the temple and not attacked" (the retail branch body only re-checks thread termination)
+// Leaf: ?WatchForQuestInfoDisplayConditions@CV_TempleOfLightScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EDBD10, length 81 bytes.
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940 (landed), CGameScriptInterface slot 7
 // NewScriptFrame (+0x1c) through the interface pointer at +0x40.
@@ -11,6 +11,10 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+// Name-fix NF163 (q6269, 2026-11-20): the method is ?WatchForQuestInfoDisplayConditions@CV_TempleOfLightScript@NScript@@QAEXXZ (Ego_r.pdb
+//   0x00F510D0 + FableWin.pdb 0x03ABB6D0; engine/CV_TempleOfLightScript.h names 0x00EDBD10 so); Main 0x00EDB190 spawns it under the thread name
+//   literal "WatchForQuestInfoDisplayConditions" and already binds this spelling. Respelled in place in the existing local model (leaf only;
+//   was the descriptive WatchForQuestInfoDisplay).
 struct CGameScriptInterface_Calls {                      // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c)
@@ -34,12 +38,12 @@ public:
     unsigned char _pad57[3];                                // +0x57
     bool InsideTemple;                                      // +0x5a
     bool AttackedByHero;                                    // +0x5b
-    void WatchForQuestInfoDisplay();
+    void WatchForQuestInfoDisplayConditions();
 };
 } // namespace NScript
 using NScript::CV_TempleOfLightScript;
 
-void NScript::CV_TempleOfLightScript::WatchForQuestInfoDisplay()
+void NScript::CV_TempleOfLightScript::WatchForQuestInfoDisplayConditions()
 {
     while (!IsActiveThreadTerminating()) {
         if (DisplayQuestInfo ? (AttackedByHero || !InsideTemple) : (InsideTemple && !AttackedByHero)) {

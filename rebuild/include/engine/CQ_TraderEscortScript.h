@@ -208,6 +208,9 @@ public:
     class CDarkwoodTrader : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_TraderEscortScript&,CScriptDataBase*,const CScriptThing&);
+#ifdef FABLE_RETAIL_CQ_TRADERESCORTSCRIPT_DARKWOODTRADER_CTOR
+        CDarkwoodTrader(CQ_TraderEscortScript&,CScriptDataBase*,const CScriptThing&);  // 0x00E01670 ??0CDarkwoodTrader@CQ_TraderEscortScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z (Ego_r.pdb + FableWin.pdb)
+#endif
         virtual CScriptBase* GetParentScript() const;
         CQ_SunnyvaleMasterData* GetMasterData();
     protected:
@@ -235,6 +238,6 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_TraderEscortScript)==0x7c);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_TraderEscortScript::CEndTrader)==0x20);
+FABLE_STATIC_ASSERT_AT(238, sizeof(NScript::CQ_TraderEscortScript)==0x7c);
+FABLE_STATIC_ASSERT_AT(239, sizeof(NScript::CQ_TraderEscortScript::CEndTrader)==0x20);
 #endif

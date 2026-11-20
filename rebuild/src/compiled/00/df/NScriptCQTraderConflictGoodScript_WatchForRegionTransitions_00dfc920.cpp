@@ -3,6 +3,8 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+// Name-fix NF163 (q6266): the callee 0x00DFC320 is ?UpdateLiveEnemies@CQ_TraderConflictGoodScript@NScript@@QAEXXZ (Ego_r.pdb 0x00E3C790 +
+//   FableWin.pdb 0x038B7740; the landed self row), respelled in place in the existing local model (was the made-up PrepareRegionCreatures).
 class CCharString { public:
     void* PStringData;
     CCharString();                                 // 0x0099E4B0
@@ -50,7 +52,7 @@ public:
     bool                       IntroDone;                   // +0x62
     bool                       OutroStart;                  // +0x63
     bool                       OutroDone;                   // +0x64
-    void PrepareRegionCreatures();                          // 0x00DFC320
+    void UpdateLiveEnemies();                               // 0x00DFC320 ?UpdateLiveEnemies@CQ_TraderConflictGoodScript@NScript@@QAEXXZ (Ego_r.pdb + FableWin.pdb)
     void WatchForRegionTransitions();
 };
 } // namespace NScript
@@ -65,7 +67,7 @@ void NScript::CQ_TraderConflictGoodScript::WatchForRegionTransitions()
         if (Game->MsgOnRegionLoaded(region)) {
             if (IsActiveThreadTerminating())
                 return;
-            PrepareRegionCreatures();
+            UpdateLiveEnemies();
             for (unsigned long i = 0; i < AllCreatures.size(); ++i) {
                 if (IsActiveThreadTerminating())
                     return;

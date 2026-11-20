@@ -1,0 +1,32 @@
+addr       parity           behav  name
+00cdcc20   RELOCATION_MATCH PASS   CPersistContext::Transfer<EArcheryState>
+00cdcd00   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00cdcd00   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00cdcd00   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00cdcd00
+00cdcdb0   RELOCATION_MATCH PASS   _unattributed::TransferOut_CTransferableLong_009e2560
+00dcf6e0   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::`scalar deleting destructor'
+00dfc630   WARN SHARED_HEADER_AVAILABLE CQ_TraderConflictGoodScript (engine/CQ_TraderConflictGoodScript.h)
+00dfc630   RELOCATION_MATCH PASS   NScript::CQ_TraderConflictGoodScript::WatchForHittingEnemies
+00dfc920   WARN SHARED_HEADER_AVAILABLE CScriptBase (engine/CScriptBase.h)
+00dfc920   WARN SHARED_HEADER_AVAILABLE CQ_TraderConflictGoodScript (engine/CQ_TraderConflictGoodScript.h)
+00dfc920   RELOCATION_MATCH PASS   NScript::CQ_TraderConflictGoodScript::WatchForRegionTransitions
+00e016f0   RELOCATION_MATCH PASS   NScript::CQ_TraderEscortScript::CDarkwoodTrader::`scalar deleting destructor'
+00edbd10   WARN SHARED_HEADER_AVAILABLE CV_TempleOfLightScript (engine/CV_TempleOfLightScript.h)
+00edbd10   WARN STANDIN_LEAF ?WatchForQuestInfoDisplayConditions@CV_TempleOfLightScript@NScript@@QAEXXZ (catalog NScript::CV_TempleOfLightScript::WatchForQuestInfoDisplay; names another function)
+00edbd10   RELOCATION_MATCH PASS   NScript::CV_TempleOfLightScript::WatchForQuestInfoDisplay
+00daea70   RELOCATION_MATCH PASS   NScript::CQ_NewOakValeIntroScript::AddBadDeed
+00dbcd00   RELOCATION_MATCH PASS   CNOVI_Bully::GivenTeddy
+00dabac0   RELOCATION_MATCH PASS   NScript::CQ_NewOakValeIntroScript::Main
+
+WINS: 11
+  00cdcc20 RELOCATION_MATCH CPersistContext::??$Transfer@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@CPersistContext@@QAEXPBDAAW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@ABW4123@@Z
+  00cdcd00 RELOCATION_MATCH _unattributed::?TransferBinaryIn@?$CPersistTraits@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@QAEXAAVCMemoryDataInputStream@@AAW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@Z
+  00cdcdb0 RELOCATION_MATCH _unattributed::?TransferOut@?$CPersistContext_TransferableComponent@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00dcf6e0 RELOCATION_MATCH CVtable_012db2d4::??_GCTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z
+  00dfc630 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::WatchForHittingEnemies
+  00dfc920 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::WatchForRegionTransitions
+  00e016f0 RELOCATION_MATCH CVtable_012df424::??_GCDarkwoodTrader@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00edbd10 RELOCATION_MATCH NScript::CV_TempleOfLightScript::?WatchForQuestInfoDisplayConditions@CV_TempleOfLightScript@NScript@@QAEXXZ
+  00daea70 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::?AddBadDeed@CQ_NewOakValeIntroScript@NScript@@QAEXW4EBadDeeds@12@@Z
+  00dbcd00 RELOCATION_MATCH CNOVI_Bully::?GivenTeddy@CNOVI_Bully@CQ_NewOakValeIntroScript@NScript@@AAEXXZ
+  00dabac0 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::?Main@CQ_NewOakValeIntroScript@NScript@@UAEXXZ

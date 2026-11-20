@@ -1,0 +1,30 @@
+00cdcc20 new: 5
+    ??$Transfer@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@CPersistContext@@QAEXPBDAAW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@ABW4123@@Z TABLE:00cdcc20
+    ??0?$CPersistContext_TransferableComponent@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@QAE@AAW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@Z
+    ??0?$CPersistTraits@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@QAE@XZ
+    ??_7?$CPersistContext_TransferableComponent@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@6B@ TABLE:012c2ecc
+    ?TransferBinaryOut@?$CPersistTraits@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@QAEXAAVCDataOutputStream@@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@Z
+00cdcd00 new: 1
+    ?TransferBinaryIn@?$CPersistTraits@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@QAEXAAVCMemoryDataInputStream@@AAW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript
+00cdcdb0 new: 1
+    ?TransferOut@?$CPersistContext_TransferableComponent@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+00dabac0 new: 0
+00daea70 new: 1
+    ?AddBadDeed@CQ_NewOakValeIntroScript@NScript@@QAEXW4EBadDeeds@12@@Z TABLE:00daea70
+00dbcd00 new: 1
+    ?GivenTeddy@CNOVI_Bully@CQ_NewOakValeIntroScript@NScript@@AAEXXZ TABLE:00dbcd00
+00dfc630 new: 0
+00dfc920 new: 0
+00e016f0 new: 10
+    ??0CDarkwoodTrader@CQ_TraderEscortScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+    ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z
+    ??1CDarkwoodTrader@CQ_TraderEscortScript@NScript@@UAE@XZ TABLE:00e01710
+    ??1CTimer@@QAE@XZ TABLE:00cd4470
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CDarkwoodTrader@CQ_TraderEscortScript@NScript@@6B@ TABLE:012df424
+    ??_7CEntityScriptBase@@6B@ TABLE:012c3224
+    ??_GCDarkwoodTrader@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+    ??_GCEntityScriptBase@@UAEPAXI@Z
+    ?ReferenceDarkwoodTraderVtable@?A0x3da05131@@YAXPAXAAVCQ_TraderEscortScript@NScript@@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+00edbd10 new: 1
+    ?WatchForQuestInfoDisplayConditions@CV_TempleOfLightScript@NScript@@QAEXXZ TABLE:00edbd10

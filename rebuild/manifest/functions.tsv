@@ -49258,10 +49258,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cdcb50	TransferBinaryIn_00cdcb50	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00cdcbe0	TransferIn	CPersistContext_TransferableComponent<EGameflowPosition>	unknown	undefined	0		0			discovered	gapscan							
 00cdcc00	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
-00cdcc20	Transfer<EArcheryState>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
-00cdcd00	TransferBinaryIn_00cdcd00	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
+00cdcc20	Transfer<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00cdcd00	TransferBinaryIn	CPersistTraits<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00cdcd90	TransferIn	CPersistContext_TransferableComponent<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>	unknown	undefined	0		0			discovered	gapscan							
-00cdcdb0	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
+00cdcdb0	TransferOut	CPersistContext_TransferableComponent<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>	unknown	undefined	0		0			discovered	gapscan							
 00cdcdd0	Transfer<EHeroSoulsPosition>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00cdceb0	TransferBinaryIn_00cdceb0	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00cdcf40	TransferIn	CPersistContext_TransferableComponent<EPlaceInHeroSouls>	unknown	undefined	0		0			discovered	gapscan							
@@ -51325,7 +51325,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00db86b0	Main	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather	unknown	undefined	0		0			discovered	gapscan							
 00db97a0	Main	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa	unknown	undefined	0		0			discovered	gapscan							
 00dbb310	Main	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully	unknown	undefined	0		0			discovered	gapscan							
-00dbcd00	GivenTeddy	CNOVI_Bully	__thiscall	void	1	CNOVI_Bully *	1	yes	accepted									
+00dbcd00	GivenTeddy	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully	__thiscall	void	1	CNOVI_Bully *	1	yes	accepted									
 00dbcd60	Main	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim	unknown	undefined	0		0			discovered	gapscan							
 00dbde40	DoMission	NScript::CQ_NewOakValeIntroScript	__thiscall	void	1	CQ_NewOakValeIntroScript *	1	yes	accepted									
 00dbe2e0	WatchForGotGold	NScript::CQ_NewOakValeIntroScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
@@ -54177,7 +54177,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00edb190	Main	NScript::CV_TempleOfLightScript	__thiscall	void	1	CV_TempleOfLightScript *	1	yes	accepted									
 00edbc30	WatchForDonationConditions	NScript::CV_TempleOfLightScript	__thiscall	void	1	CV_TempleOfLightScript *	1	yes	accepted									
 00edbc80	WatchForTermination	NScript::CV_TempleOfLightScript	unknown	undefined	0		0			discovered	gapscan							
-00edbd10	WatchForQuestInfoDisplay	NScript::CV_TempleOfLightScript	__thiscall	void	1	CQ_BountyHuntScript *	1	yes	accepted									
+00edbd10	WatchForQuestInfoDisplayConditions	NScript::CV_TempleOfLightScript	__thiscall	void	1	CQ_BountyHuntScript *	1	yes	accepted									
 00edbd70	GetEntityScriptName	CEntityScriptBinding<NScript::CV_TempleOfLightScript>	unknown	undefined	0		0			discovered	gapscan							
 00edbd80	WatchForInsideTemple	NScript::CV_TempleOfLightScript	__thiscall	void	1	CV_ChapelOfEvilScript *	1	yes	accepted									
 00edc010	WatchForWeaponUnsheathed	NScript::CV_TempleOfLightScript	__thiscall	void	1	CV_ChapelOfEvilScript *	1	yes	accepted									

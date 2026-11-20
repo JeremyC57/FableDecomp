@@ -58484,9 +58484,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e016f0'
-        Module = 'CVtable_012df424'
-        Source = '00/e0/CLandscapeBackgroundPatch_vectordeletingdestructor_00e016f0.cpp'
-        TestSource = '00/e0/CLandscapeBackgroundPatch_vectordeletingdestructor_00e016f0_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodTrader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_scalardeletingdestructor_00e016f0.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_scalardeletingdestructor_00e016f0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00e016f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -166267,9 +166267,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdcdb0'
-        Module = '_unattributed'
-        Source = '00/cd/unattributed_TransferOutCTransferableLong009e2560_00cdcdb0.cpp'
-        TestSource = '00/cd/unattributed_TransferOutCTransferableLong009e2560_00cdcdb0_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>'
+        Source = '00/cd/CPersistContextTransferableComponent_TransferOut_00cdcdb0.cpp'
+        TestSource = '00/cd/CPersistContextTransferableComponent_TransferOut_00cdcdb0_test.cpp'
         PassPattern = '00cdcdb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -176883,9 +176883,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdcd00'
-        Module = '_unattributed'
-        Source = '00/cd/unattributed_TransferBinaryIn00cdcd00_00cdcd00.cpp'
-        TestSource = '00/cd/unattributed_TransferBinaryIn00cdcd00_00cdcd00_test.cpp'
+        Module = 'CPersistTraits<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>'
+        Source = '00/cd/CPersistTraits_TransferBinaryIn_00cdcd00.cpp'
+        TestSource = '00/cd/CPersistTraits_TransferBinaryIn_00cdcd00_test.cpp'
         PassPattern = '00cdcd00_TEST PASS'
     }
     [pscustomobject]@{
@@ -205829,9 +205829,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dbcd00'
-        Module = 'CNOVI_Bully'
-        Source = '00/db/CNOVIBully_GivenTeddy_00dbcd00.cpp'
-        TestSource = '00/db/CNOVIBully_GivenTeddy_00dbcd00_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_Bully'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBully_GivenTeddy_00dbcd00.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBully_GivenTeddy_00dbcd00_test.cpp'
         PassPattern = '00dbcd00_TEST PASS'
     }
     [pscustomobject]@{
@@ -208389,8 +208389,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00edbd10'
         Module = 'NScript::CV_TempleOfLightScript'
-        Source = '00/ed/NScriptCVTempleOfLightScript_WatchForQuestInfoDisplay_00edbd10.cpp'
-        TestSource = '00/ed/NScriptCVTempleOfLightScript_WatchForQuestInfoDisplay_00edbd10_test.cpp'
+        Source = '00/ed/NScriptCVTempleOfLightScript_WatchForQuestInfoDisplayConditions_00edbd10.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScript_WatchForQuestInfoDisplayConditions_00edbd10_test.cpp'
         PassPattern = '00edbd10_TEST PASS'
     }
     [pscustomobject]@{
@@ -242386,8 +242386,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00cdcc20'
         Module = 'CPersistContext'
-        Source = '00/cd/CPersistContext_TransferEArcheryState_00cdcc20.cpp'
-        TestSource = '00/cd/CPersistContext_TransferEArcheryState_00cdcc20_test.cpp'
+        Source = '00/cd/CPersistContext_Transfer_00cdcc20.cpp'
+        TestSource = '00/cd/CPersistContext_Transfer_00cdcc20_test.cpp'
         PassPattern = '00cdcc20_TEST PASS'
     }
     [pscustomobject]@{
