@@ -10,7 +10,7 @@
 // Data: L"TEXT_QST_B08_QUEST_FAILED_BRIARDIED" 0x012D6E78.
 // Layout: the landed CQ_MinionCampScript ctor 0x00D9E210 (retail = Ego_r.pdb - 0x14); handle / map / movie classes as
 //   the landed CMK_GHC_HERO3::Main 0x00D29DB0, with every constructor and destructor out of line in this TU.
-// Shape: retail zeroes a temporary-construction flag at entry (the dead store to [esp+0x14] beside the first "Darkwood_5"
+// Inferred: dead conditional temporary -- retail zeroes a temporary-construction flag at entry (the dead store to [esp+0x14] beside the first "Darkwood_5"
 //   string) but never tests it: a spawn the optimiser removed. A constant-false `if (false) AddSpawnedFunction(new CSpawnedFunc(...), CCharString(""))`
 //   reproduces it exactly (and the loop alignment padding that follows); the dead thread's name and target are unknown
 //   (the Kraken / CinemaTest DoMission template spawns WatchForLeaving there).

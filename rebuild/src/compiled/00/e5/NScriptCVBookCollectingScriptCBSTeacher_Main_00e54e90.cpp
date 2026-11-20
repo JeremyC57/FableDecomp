@@ -135,6 +135,6 @@ void NScript::CV_BookCollectingScript::CBS_Teacher::Main()
         Game->NewScriptFrame();
         if(IsActiveThreadTerminating())return _Fail_Val.Return();
     }
-    // Inferred: the `|| Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")` operand of this dead post-loop check (see the header: a conditional temporary existed; its content and place are not constrained)
+    // Inferred: dead conditional temporary -- the `|| Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")` operand of this dead post-loop check (see the header: a conditional temporary existed; its content and place are not constrained)
     if (IsActiveThreadTerminating() || Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) return _Fail_Val.Return();
 }
