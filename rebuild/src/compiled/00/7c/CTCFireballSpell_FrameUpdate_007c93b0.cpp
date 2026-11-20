@@ -10,6 +10,9 @@
 // Shape: the Kraken/OnDie def lookup (out slot read once into a named pointer released by hand), an implicit-literal `&&` temp,
 // the effect through an intelligent-pointer temporary + operator=, an uninitialised emitter local; first try.
 // Names: catalog "FrameUpdate" sits on 0x007C9180, but this row is the vtable slot-9 override; 0x007C9180 is a non-virtual helper.
+// NF200 (2026-11-20, q4411 / q6405): the helper 0x007C9180 respelled in place on the row-local CTCFireballSpell from the descriptive
+//   UpdateButtonHeld to its PDB name ?FinishSpell@CTCFireballSpell@@QAEXXZ (Ego_r.pdb 0x007C7F80 + FableWin.pdb 0x02721680; Ego_r order
+//   OnKill / OnRemove / FinishSpell / FrameUpdate = retail 0x007C9160 / .. / 0x007C9180 / 0x007C93B0), the self row's new Leaf.
 // Layout: retail CTCFireballSpell = Ego_r.pdb minus 4 after the timer; timer CurrentState +0x20, WillIncrementedFlag +0x38.
 #include "fable_compiler.h"
 // NF49 (round 7): the def classes come from the shared headers (were local CCharString / CDefVirtual / CDefBase / CDefPointer / CSpecialEffectsDef / CDefClassBase models with same-TU stand-in bodies over made-up Lookup_CSpecialEffectsDef_GetEffectFromString / Find_CDefClassBase_GetSubDef callees): the call at
@@ -151,7 +154,7 @@ public:
     long ReleaseDelayFrameCount;                // +0x78
     bool SpellFinished;                         // +0x7c
     void ProcessLevellingUpFX();                // 0x007C8DE0
-    void UpdateButtonHeld();                    // 0x007C9180 (catalog "FrameUpdate"; non-virtual, called only from here)
+    void FinishSpell();                         // 0x007C9180 (Ego_r.pdb / FableWin.pdb ?FinishSpell@CTCFireballSpell@@QAEXXZ; non-virtual, called only from here)
     void FrameUpdate();
 };
 
@@ -181,7 +184,7 @@ void CTCFireballSpell::FrameUpdate()
         ProcessLevellingUpFX();
     switch (Timer.CurrentState) {
     case 2:
-        UpdateButtonHeld();
+        FinishSpell();
         break;
     case 3:
         if (SpellFinished && ReleaseDelayFrameCount <= 0)

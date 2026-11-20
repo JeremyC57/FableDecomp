@@ -178,7 +178,7 @@ public:
     long ReleaseDelayFrameCount;                // +0x78
     bool SpellFinished;                         // +0x7c
     void ProcessLevellingUpFX();                // 0x007C8DE0
-    void UpdateButtonHeld();                    // 0x007C9180 (catalog "FrameUpdate"; non-virtual, called only from here)
+    void FinishSpell();                         // 0x007C9180 (Ego_r.pdb / FableWin.pdb ?FinishSpell@CTCFireballSpell@@QAEXXZ; non-virtual, called only from here)
     void FrameUpdate();
 };
 
@@ -210,7 +210,7 @@ void CTCFireballSpell::FrameUpdate()
         ProcessLevellingUpFX();
     switch (Timer.CurrentState) {
     case 2:
-        UpdateButtonHeld();
+        FinishSpell();
         break;
     case 3:
         if (SpellFinished && ReleaseDelayFrameCount <= 0)
@@ -248,7 +248,7 @@ void CBaseIntelligentPointer::SetPItem(CThing* item) { m_pItem = (CBaseObject*)i
 static int g_timer = 0, g_levelFx = 0, g_held = 0;
 void CWillButtonHelperTimer::FrameUpdate() { g_timer++; }
 void CTCFireballSpell::ProcessLevellingUpFX() { g_levelFx++; }
-void CTCFireballSpell::UpdateButtonHeld() { g_held++; }
+void CTCFireballSpell::FinishSpell() { g_held++; }
 void CTCFireballSpell::v00() { }
 
 int main()

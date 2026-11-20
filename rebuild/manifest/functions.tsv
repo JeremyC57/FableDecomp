@@ -22556,7 +22556,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007c90a0	FinalCleanup	CTCFireballSpell	unknown	undefined	0		0			discovered	gapscan							
 007c9160	OnKill	CTCFireballSpell	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007c9170	FinalCleanup	CTCFireballSpell	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007c9180	FrameUpdate	CTCFireballSpell	__thiscall	void	1	CTCFireballSpell *	1	yes	accepted									
+007c9180	FinishSpell	CTCFireballSpell	__thiscall	void	1	CTCFireballSpell *	1	yes	accepted									
 007c93b0	FrameUpdate	CTCFireballSpell	__thiscall	void	1	CTCFireballSpell *	1	yes	accepted									
 007c9580	GetInterfaceType	CTCFireballSpell	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007c9590	GetClassTypeName	CTCFireballSpell	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
@@ -29588,7 +29588,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008ebff0	list	std::list<T_0x8_008ebff0>	unknown	undefined	0		0	yes	review-medium									
 008ec050	`scalar_deleting_destructor'	NCreatureMode::CModeHoverBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\CLandscapeBackgroundPatch_vectordeletingdestructor_008ec050.cpp
 008ec070	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
-008ec1a0	push_back	CHoverModeEntryVector	__thiscall	void	1	CScriptModuleFullTransition *	1	yes	accepted									
+008ec1a0	push_back	std::vector	__thiscall	void	1	CScriptModuleFullTransition *	1	yes	accepted									
 008ec210	FinishAction	CCreatureAction_UndeadIdleUnderground	__thiscall	void	1	CCombatActionBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\CCreatureActionUndeadIdleUnderground_FinishActionCCreatureActionUndeadIdleUnderground_008ec210.cpp
 008ec220	Initialise	CCreatureAction_UndeadRiseUp	__thiscall	void	1	CCreatureAction_UndeadRiseUp *	1	yes	accepted									
 008ec260	OnAnimationLoaded	CCreatureAction_UndeadRiseUp	__thiscall	void	1	CCreatureAction_UndeadRiseUp *	1	yes	accepted									
@@ -48544,7 +48544,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cb1540	AddTail	CBaseList	unknown	undefined	0		0	yes	accepted									
 00cb15d0	AddAfterI	CBaseList	unknown	undefined	0		0			discovered	gapscan							
 00cb16a0	AddBeforeI	CBaseList	unknown	undefined	0		0	yes	accepted									
-00cb1890	~CEngineLandscapePatch_00cb1890	_unattributed	__thiscall	void	1	CEngineLandscapePatch *	1	yes	accepted									
+00cb1890	~CBaseList	CBaseList	__thiscall	void	1	CEngineLandscapePatch *	1	yes	accepted									
 00cb1900	~CPersistTraits<CReactionFrequencyTraitsArray>	CPersistTraits<CReactionFrequencyTraitsArray>	__thiscall	void	1	CPersistTraits<CReactionFrequencyTraitsArray> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cb\CPersistTraitsCReactionFrequencyTraitsArray_CPersistTraitsCReactionFrequencyTraitsArray_00cb1900.cpp
 00cb1920	IsValid	CMediaType	unknown	undefined	0		0	yes	accepted									
 00cb19c0	ResetFormatBuffer	CMediaType	unknown	undefined	0		0	yes	accepted									
@@ -51105,9 +51105,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00da0ef0	Main	NScript::CQ_MinionCampScript::CBriarRose	unknown	undefined	0		0			discovered	gapscan							
 00da2490	PauseChantTimer	NScript::CQ_MinionCampScript	__thiscall	void	1	CQ_MinionCampScript *	1	yes	accepted									
 00da24f0	RunChantTimer	NScript::CQ_MinionCampScript	unknown	undefined	0		0			discovered	gapscan							
-00da2610	DoSpeech	CBriarRose	__thiscall	void	2	CBriarRose *,CCharString *	1	yes	accepted									
-00da26b0	DoOnHitSpeech	CBriarRose	__thiscall	void	1	CBriarRose *	1	yes	accepted									
-00da27b0	DoOnSpeakToSpeech	CBriarRose	__thiscall	void	1	CBriarRose *	1	yes	accepted									
+00da2610	DoSpeech	NScript::CQ_MinionCampScript::CBriarRose	__thiscall	void	2	CBriarRose *,CCharString *	1	yes	accepted									
+00da26b0	DoOnHitSpeech	NScript::CQ_MinionCampScript::CBriarRose	__thiscall	void	1	CBriarRose *	1	yes	accepted									
+00da27b0	DoOnSpeakToSpeech	NScript::CQ_MinionCampScript::CBriarRose	__thiscall	void	1	CBriarRose *	1	yes	accepted									
 00da2860	CheckBriarHit	CQ_MinionCampScript	__thiscall	void	2	CQ_MinionCampScript *,CScriptThing	1	yes	accepted									
 00da29b0	Fire_CDispatcher_00da29b0	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00da29f0	`scalar deleting destructor'	CSpawnedFunc1<NScript::CQ_MinionCampScript,CScriptThing>	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\da\CEngineSubPrimitiveText_scalardeletingdestructor_00da29f0.cpp
@@ -52589,7 +52589,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e2bfa0	Init	NScript::CV_AmbushScamScript::CAS_Buddy	__thiscall	void	1	CAS_Buddy *	1	yes	accepted									
 00e2c100	Main	NScript::CV_AmbushScamScript::CAS_Trickster	unknown	undefined	0		0			discovered	gapscan							
 00e2e400	ResetRandomSpeechTime	NScript::CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
-00e2e440	GetRandomSpeech	CAC_Owner	__thiscall	CCharString	1	CAC_Owner *	1	yes	accepted									
+00e2e440	GetRandomSpeech	NScript::CV_AmbushScamScript::CAS_Trickster	__thiscall	CCharString	1	CAC_Owner *	1	yes	accepted									
 00e2e520	WatchForHeroAttack	NScript::CV_AmbushScamScript	__thiscall	void	2	CV_AmbushScamScript *,CScriptThing	1	yes	accepted									
 00e2e8c0	SuspendableProcess	CSpawnedFunc1<NScript::CV_AmbushScamScript,CScriptThing>	unknown	undefined	0		0			discovered	gapscan							
 00e2e900	CreateActiveEntityScript	CEntityScriptBinding<NScript::CV_AmbushScamScript>	unknown	undefined	0		0	yes	accepted									
@@ -53335,7 +53335,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e83570	Alloc	NScript::CV_FisticuffsClubScript::CTyler	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00e83610	GetParentScript	NScript::CV_FisticuffsClubScript::CTyler	unknown	undefined	0		0			discovered	gapscan							
 00e83620	OnPredicateFail	NScript::CV_FisticuffsClubScript::CTyler	__thiscall	void	1	CTyler *	1	yes	accepted									
-00e83680	CleanupAfterFight	CTyler	__thiscall	void	1	CTyler *	1	yes	accepted									
+00e83680	CleanupAfterFight	NScript::CV_FisticuffsClubScript::CTyler	__thiscall	void	1	CTyler *	1	yes	accepted									
 00e836c0	`scalar deleting destructor'	NScript::CV_FisticuffsClubScript::CTyler	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e8\CEngineSubPrimitiveText_scalardeletingdestructor_00e836c0.cpp
 00e836f0	Init	NScript::CV_FisticuffsClubScript::CTyler	unknown	undefined	0		0			discovered	gapscan							
 00e83780	Alloc	NScript::CV_FisticuffsClubScript::CRingFighter	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									

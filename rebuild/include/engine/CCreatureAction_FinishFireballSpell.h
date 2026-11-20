@@ -9,6 +9,22 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_FINISHFIREBALLSPELL_CLASS
+// NF200 opt-in (2026-11-20, row 0x007C9180 CTCFireballSpell::FinishSpell): the polymorphic retail class on CCombatActionBase
+// (ghidra_out/rtti_bases.tsv .?AVCCreatureAction_FinishFireballSpell@@ : CCombatActionBase; retail sizeof 0x114 as above, no own members),
+// as engine/CCreatureAction_CastWillLightningSpell.h _MAZE. Constructors: Ego_r.pdb 0x008F5450 / 0x008F5490 + FableWin.pdb 0x02A1F880 /
+// 0x02A1FA20 ??0CCreatureAction_FinishFireballSpell@@QAE@AAVCThingCreatureBase@@@Z and ..@AAVCThingCreatureBase@@AAVCThing@@@Z, out of line
+// in retail at 0x008BCE10 / 0x008BCE50. The implicit destructor reaches ~CCombatActionBase 0x0062E900. Needs engine/CCombatActionBase.h
+// (retail) first. Declarations only.
+class CThing;
+class CThingCreatureBase;
+class CCreatureAction_FinishFireballSpell : public CCombatActionBase {
+public:
+    CCreatureAction_FinishFireballSpell(CThingCreatureBase& creature);                   // 0x008BCE10
+    CCreatureAction_FinishFireballSpell(CThingCreatureBase& creature, CThing& target);   // 0x008BCE50
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_FinishFireballSpell) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_FinishFireballSpell {
 public:
@@ -27,7 +43,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_FinishFireballSpell) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_FinishFireballSpell, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_FinishFireballSpell) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_FinishFireballSpell, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_FINISHFIREBALLSPELL_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_FINISHFIREBALLSPELL_H

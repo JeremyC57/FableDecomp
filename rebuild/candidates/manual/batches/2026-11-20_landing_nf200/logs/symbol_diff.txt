@@ -1,0 +1,85 @@
+0047db73 new: 2
+    ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z TABLE:0040dce0
+    ?IsDead@CThing@@QBE_NXZ
+006412b0 new: 2
+    ??$GetTC@VCTCParticleAttacher@@@CThing@@QBEPAVCTCParticleAttacher@@J@Z
+    ??8?$CBasicString@D@@QBE_NABV0@@Z TABLE:004a93c0
+007c7a00 new: 24
+    ??$?9VCThing@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@H@Z
+    ??$GetTC@VCTCDParticleEmitter@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCDParticleEmitter@@@Z
+    ??$GetTC@VCTCSoundPlayer@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCSoundPlayer@@@Z
+    ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z TABLE:004cc340
+    ??1?$CIntelligentPointer@VCThing@@@@UAE@XZ
+    ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z TABLE:004a9760
+    ??A?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEAAV?$CIntelligentPointer@VCThing@@@@I@Z
+    ??C?$CDefPointer@$$CBVCTurncoatDef@@@@QBEPBVCTurncoatDef@@XZ
+    ??C?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?Get@?$CDefPointer@$$CBVCTurncoatDef@@@@QBEPBVCTurncoatDef@@XZ
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?GetParentThing@CTCBase@@QAEAAVCThing@@XZ
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+    ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+    ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+    ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+    ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+    ?__stl_throw_out_of_range@std@@YAXPBD@Z
+    ?begin@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEPAV?$CIntelligentPointer@VCThing@@@@XZ
+    ?clear@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEXXZ
+    ?end@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEPAV?$CIntelligentPointer@VCThing@@@@XZ
+    ?size@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEIXZ
+    ?test@?$bitset@$0BBC@@std@@QBE_NI@Z TABLE:00410de0
+007c9180 new: 24
+    ??$PeekTC@$$CBVCTCTargetingBase@@@CThing@@QBE_NPAPBVCTCTargetingBase@@@Z
+    ??$PeekTC@$$CBVCTCTargetingBase@@@CThing@@QBE_NW4ETCInterfaceType@@PAPBVCTCTargetingBase@@@Z
+    ??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z TABLE:004a9730
+    ??C?$CDefPointer@$$CBVCSpecialAbilitiesFireballSpellDef@@@@QBEPBVCSpecialAbilitiesFireballSpellDef@@XZ
+    ?FinishSpell@CTCFireballSpell@@QAEXXZ TABLE:007c9180
+    ?Get@?$CDefPointer@$$CBVCSpecialAbilitiesFireballSpellDef@@@@QBEPBVCSpecialAbilitiesFireballSpellDef@@XZ
+    ?GetTypeFlags@CThing@@QBEKXZ
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?IsDead@CThing@@QBE_NXZ
+    ?IsZTargeting@CPlayer@@QBE_NXZ
+    ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW
+    ?SetCurrentButtonHeldState@CWillButtonHelperTimer@@QAEXW4EButtonHeldState@1@@Z
+    ?SetPItemRemoved@CCreatureActionBase@@QAEXV?$CIntelligentPointer@VCThing@@@@@Z TABLE:0072d360
+    ?SetPointer@?$CIntelligentPointer@VCThing@@@@AAEXPBVCThing@@@Z
+    ?StatGetInterfaceType@CTCTargetingBase@@SI?AW4ETCInterfaceType@@XZ
+    ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+    ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+    ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+    ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+    ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+    ?__stl_throw_out_of_range@std@@YAXPBD@Z
+    ?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCB
+    ?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBas
+    ?test@?$bitset@$0BBC@@std@@QBE_NI@Z TABLE:00410de0
+007c93b0 new: 0
+008ec1a0 new: 4
+    ??$_Construct@VCHoverState@CModeHoverBase@NCreatureMode@@V123@@std@@YAXPAVCHoverState@CModeHoverBase@NCreatureMode@@ABV123@@Z
+    ??0CHoverState@CModeHoverBase@NCreatureMode@@QAE@ABV012@@Z
+    ??0__false_type@std@@QAE@XZ
+    ?push_back@?$vector@VCHoverState@CModeHoverBase@NCreatureMode@@V?$allocator@VCHoverState@CModeHoverBase@NCreatureMode@@@std@@@std@@QAEXABVCHoverState@CModeHoverBase@NCrea
+00c287e0 new: 1
+    ??1CBuffer_00c29ca0@@QAE@XZ
+00c72e00 new: 0
+00cb1890 new: 3
+    ??1CBaseList@@QAE@XZ TABLE:00cb1890
+    ??1CNodeCache@CBaseList@@QAE@XZ
+    ?Next@CNode@CBaseList@@QBEPAV12@XZ
+00da2610 new: 3
+    ??4CTimer@@QAEAAV0@J@Z
+    ?DoSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXABVCCharString@@@Z TABLE:00da2610
+    ?GetTime@CTimer@@QBEJXZ
+00da26b0 new: 2
+    ?DoOnHitSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXXZ TABLE:00da26b0
+    ?GetTime@CTimer@@QBEJXZ
+00da27b0 new: 2
+    ?DoOnSpeakToSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXXZ TABLE:00da27b0
+    ?GetTime@CTimer@@QBEJXZ
+00e2e440 new: 1
+    ?GetRandomSpeech@CAS_Trickster@CV_AmbushScamScript@NScript@@AAE?AVCCharString@@XZ TABLE:00e2e440
+00e83620 new: 1
+    ?OnPredicateFail@CTyler@CV_FisticuffsClubScript@NScript@@EAEXXZ
+00e83680 new: 1
+    ?CleanupAfterFight@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ TABLE:00e83680

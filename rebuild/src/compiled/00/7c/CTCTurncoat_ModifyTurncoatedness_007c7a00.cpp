@@ -13,114 +13,49 @@
 //   CurrentTurncoatedness +0x10, PDef +0x14, TurncoatedEffect +0x18, TimeDelayBeforeResistanceRecoveryFrames +0x30,
 //   CurrentRecoveryTimer +0x34, TurncoatStageEffects +0x3c, CreatureTurncoatResistance +0x48; CTurncoatDef TurncoatedEffect
 //   +0x28, TurncoatActivateEffect +0x2c.
-#include "fable_compiler.h"
-#include "engine/C3DVector.h"
-class CTCBase;
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char m_flags;                              // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    void Kill(bool immediately);                        // 0x004C9B80
-};
-// NF49 (round 7): CreateParticleEffect 0x0072AB70 is the public static __fastcall
-// ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r.pdb / FableWin.pdb), declared by
-// engine/CTCSpecialAbilities.h; was a free stand-in taking `const C3DVector*` (same register passing: ecx = effect, edx = &pos).
+// NF200 (2026-11-20, q4492): port onto the shared headers in the shape of the landed sibling 0x007C7C40 CTCTurncoat::FrameUpdate
+//   (engine/CTCTurncoat.h FABLE_RETAIL_CTCTURNCOAT, CThing.h, CIntelligentPointer.h, CTCSpecialAbilities.h, CTCSoundPlayer.h,
+//   CTCDParticleEmitter.h, CTurncoatDef.h, ThingAlive.h). The row-local CCharString / CThing / CBaseIntelligentPointer /
+//   CIntelligentPointer / CEffectVector / CTCDParticleEmitter / CTCSoundPlayer / CTurncoatDef / CDefPointer / CTCTurncoat models are gone:
+//   0x004CC340 binds ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z (FableWin.pdb), and
+//   the stage vector's erase 0x004AC0F0 the STLport vector<CIntelligentPointer<CThing> >::erase (declaration only:
+//   FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE, as retail calls it).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_DIRECT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
 #define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#define FABLE_RETAIL_CTCSOUNDPLAYER
+#define FABLE_RETAIL_CTCTURNCOAT
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThingCreatureBase.h"
 #include "engine/CTCSpecialAbilities.h"
-
-class CBaseObject;
-struct CBaseIntelligentPointer {                        // 8 bytes: vptr + item
-    virtual void v00();
-    void* m_pData;
-    virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                        // 0x00A01B90
-};
-struct CIntelligentPointer : CBaseIntelligentPointer {
-    CIntelligentPointer(CThing* item);                  // 0x004A96F0
-};
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer* p);   // 0x004CC340
-inline bool IsThingAlive(const CBaseIntelligentPointer& p)
-{
-    if (((CThing*)p.GetPItem()) != 0) {
-        if (!((CThing*)p.GetPItem())->IsDead())
-            return true;
-    }
-    return false;
-}
-struct CEffectVector {                                  // vector<CIntelligentPointer<CThing> > (12 bytes)
-    CIntelligentPointer* _M_start;
-    CIntelligentPointer* _M_finish;
-    CIntelligentPointer* _M_end_of_storage;
-    long size() const { return _M_finish - _M_start; }
-    CIntelligentPointer* erase(CIntelligentPointer* first, CIntelligentPointer* last);   // 0x004AC0F0
-    void clear() { erase(_M_start, _M_finish); }
-};
-
-class CTCDParticleEmitter { public:                            // interface 0x4B
-    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
-};
-class CTCSoundPlayer {
-public:
-    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
-private:    // 0x0066BD00
-};
-
-class CTurncoatDef { public:
-    unsigned char _pad0[0x28];
-    long TurncoatedEffect;                              // +0x28
-    long TurncoatActivateEffect;                        // +0x2c
-};
-struct CDefPointer {                                    // CDefPointer<const CTurncoatDef>
-    CTurncoatDef* Object;
-    CTurncoatDef* operator->() const { return Object; }
-};
-
-class CTCTurncoat { public:
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04
-    unsigned char _pad08[4];
-    long WillTurncoatTimer;                             // +0x0c
-    float CurrentTurncoatedness;                        // +0x10
-    CDefPointer PDef;                                   // +0x14
-    CIntelligentPointer TurncoatedEffect;               // +0x18
-    long TurncoatTimeLast;                              // +0x20
-    CIntelligentPointer TurncoatOriginator;             // +0x24
-    bool TurncoatOverride;                              // +0x2c
-    long TimeDelayBeforeResistanceRecoveryFrames;       // +0x30
-    long CurrentRecoveryTimer;                          // +0x34
-    float ResistanceRecoveryPerFrame;                   // +0x38
-    CEffectVector TurncoatStageEffects;                 // +0x3c
-    float CreatureTurncoatResistance;                   // +0x48
-    void ModifyTurncoatedness(float amount);
-};
+#include "engine/CTCSoundPlayer.h"
+#include "engine/CTCDParticleEmitter.h"
+#include "engine/CTurncoatDef.h"
+#include "engine/CTCTurncoat.h"
+#include "engine/ThingAlive.h"
 
 void CTCTurncoat::ModifyTurncoatedness(float amount)
 {
@@ -134,32 +69,25 @@ void CTCTurncoat::ModifyTurncoatedness(float amount)
         CurrentTurncoatedness = 0.0f;
     if (CurrentTurncoatedness >= CreatureTurncoatResistance) {
         if (PDef->TurncoatActivateEffect)
-            CTCSpecialAbilities::CreateParticleEffect(PDef->TurncoatActivateEffect, ParentThing->GetPos());
-        if (!IsThingAlive(TurncoatedEffect)) {
+            CTCSpecialAbilities::CreateParticleEffect(PDef->TurncoatActivateEffect, GetParentThing().GetPos());
+        if (!IS_THING_ALIVE(TurncoatedEffect)) {
             long effect = PDef->TurncoatedEffect;
             if (effect) {
-                {
-                    CIntelligentPointer created(CTCSpecialAbilities::CreateParticleEffect(effect, ParentThing->GetPos()));
-                    TurncoatedEffect.SetPItem((CBaseObject*)(((CThing*)created.GetPItem())));
-                }
-                if (IS_THING_ALIVE(&TurncoatedEffect)) {
-                    CTCDParticleEmitter* emitter;
-                    ((CThing*)TurncoatedEffect.GetPItem())->GetInterface(&emitter, 0x4b);
-                    emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
+                TurncoatedEffect = CTCSpecialAbilities::CreateParticleEffect(effect, GetParentThing().GetPos());
+                if (IS_THING_ALIVE(TurncoatedEffect)) {
+                    CTCDParticleEmitter* particleEmitter;
+                    TurncoatedEffect->GetTC(TCI_PARTICLE_EMITTER, &particleEmitter);
+                    particleEmitter->AttachToThing(GetParentThing(), 8, "", 0, 0.0f);
                 }
             }
         }
-        for (long i = 0; i < TurncoatStageEffects.size(); ++i) {
-            if (IsThingAlive(TurncoatStageEffects._M_start[i])) {
-                CIntelligentPointer* start = TurncoatStageEffects._M_start;
-                ((CThing*)start[i].GetPItem())->Kill(true);
-            }
+        for (long i = 0; i < (long)TurncoatStageEffects.size(); ++i) {
+            if (IS_THING_ALIVE(TurncoatStageEffects[i]))
+                TurncoatStageEffects[i]->Kill(true);
         }
         TurncoatStageEffects.clear();
-        CTCSoundPlayer* sound;
-        if (ParentThing->GetInterface(&sound, 0x10)) {
-            CCharString chant("HERO_ABILITY_TURNCOAT_CHANT");
-            ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(chant, 1, 0, 0, -1);
-        }
+        CTCSoundPlayer* ptc_sound_player;
+        if (GetParentThing().GetTC(TCI_SOUND_PLAYER, &ptc_sound_player))
+            ptc_sound_player->PlayAttachedCriteria("HERO_ABILITY_TURNCOAT_CHANT", true, false, false, -1);
     }
 }

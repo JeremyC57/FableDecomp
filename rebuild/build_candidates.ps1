@@ -186704,9 +186704,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cb1890'
-        Module = '_unattributed'
-        Source = '00/cb/unattributed_CEngineLandscapePatch00cb1890_00cb1890.cpp'
-        TestSource = '00/cb/unattributed_CEngineLandscapePatch00cb1890_00cb1890_test.cpp'
+        Module = 'CBaseList'
+        Source = '00/cb/CBaseList_CBaseList_00cb1890.cpp'
+        TestSource = '00/cb/CBaseList_CBaseList_00cb1890_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00cb1890_TEST PASS'
     }
@@ -220127,16 +220127,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e83620'
-        Module = 'CTyler'
-        Source = '00/e8/CTyler_OnPredicateFail_00e83620.cpp'
-        TestSource = '00/e8/CTyler_OnPredicateFail_00e83620_test.cpp'
+        Module = 'NScript::CV_FisticuffsClubScript::CTyler'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCTyler_OnPredicateFail_00e83620.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCTyler_OnPredicateFail_00e83620_test.cpp'
         PassPattern = '00e83620_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e83680'
-        Module = 'CTyler'
-        Source = '00/e8/CTyler_CleanupAfterFight_00e83680.cpp'
-        TestSource = '00/e8/CTyler_CleanupAfterFight_00e83680_test.cpp'
+        Module = 'NScript::CV_FisticuffsClubScript::CTyler'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCTyler_CleanupAfterFight_00e83680.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCTyler_CleanupAfterFight_00e83680_test.cpp'
         PassPattern = '00e83680_TEST PASS'
     }
     [pscustomobject]@{
@@ -222915,9 +222915,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00da2610'
-        Module = 'CBriarRose'
-        Source = '00/da/CBriarRose_DoSpeech_00da2610.cpp'
-        TestSource = '00/da/CBriarRose_DoSpeech_00da2610_test.cpp'
+        Module = 'NScript::CQ_MinionCampScript::CBriarRose'
+        Source = '00/da/NScriptCQMinionCampScriptCBriarRose_DoSpeech_00da2610.cpp'
+        TestSource = '00/da/NScriptCQMinionCampScriptCBriarRose_DoSpeech_00da2610_test.cpp'
         PassPattern = '00da2610_TEST PASS'
     }
     [pscustomobject]@{
@@ -230256,9 +230256,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008ec1a0'
-        Module = 'CHoverModeEntryVector'
-        Source = '00/8e/CHoverModeEntryVector_pushback_008ec1a0.cpp'
-        TestSource = '00/8e/CHoverModeEntryVector_pushback_008ec1a0_test.cpp'
+        Module = 'std::vector'
+        Source = '00/8e/stdvector_pushback_008ec1a0.cpp'
+        TestSource = '00/8e/stdvector_pushback_008ec1a0_test.cpp'
         PassPattern = '008ec1a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -235410,9 +235410,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e2e440'
-        Module = 'CAC_Owner'
-        Source = '00/e2/CACOwner_GetRandomSpeech_00e2e440.cpp'
-        TestSource = '00/e2/CACOwner_GetRandomSpeech_00e2e440_test.cpp'
+        Module = 'NScript::CV_AmbushScamScript::CAS_Trickster'
+        Source = '00/e2/NScriptCVAmbushScamScriptCASTrickster_GetRandomSpeech_00e2e440.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScriptCASTrickster_GetRandomSpeech_00e2e440_test.cpp'
         PassPattern = '00e2e440_TEST PASS'
     }
     [pscustomobject]@{
@@ -236278,9 +236278,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00da27b0'
-        Module = 'CBriarRose'
-        Source = '00/da/CBriarRose_DoOnSpeakToSpeech_00da27b0.cpp'
-        TestSource = '00/da/CBriarRose_DoOnSpeakToSpeech_00da27b0_test.cpp'
+        Module = 'NScript::CQ_MinionCampScript::CBriarRose'
+        Source = '00/da/NScriptCQMinionCampScriptCBriarRose_DoOnSpeakToSpeech_00da27b0.cpp'
+        TestSource = '00/da/NScriptCQMinionCampScriptCBriarRose_DoOnSpeakToSpeech_00da27b0_test.cpp'
         PassPattern = '00da27b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -246362,9 +246362,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00da26b0'
-        Module = 'CBriarRose'
-        Source = '00/da/CBriarRose_DoOnHitSpeech_00da26b0.cpp'
-        TestSource = '00/da/CBriarRose_DoOnHitSpeech_00da26b0_test.cpp'
+        Module = 'NScript::CQ_MinionCampScript::CBriarRose'
+        Source = '00/da/NScriptCQMinionCampScriptCBriarRose_DoOnHitSpeech_00da26b0.cpp'
+        TestSource = '00/da/NScriptCQMinionCampScriptCBriarRose_DoOnHitSpeech_00da26b0_test.cpp'
         PassPattern = '00da26b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -271248,8 +271248,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007c9180'
         Module = 'CTCFireballSpell'
-        Source = '00/7c/CTCFireballSpell_FrameUpdate_007c9180.cpp'
-        TestSource = '00/7c/CTCFireballSpell_FrameUpdate_007c9180_test.cpp'
+        Source = '00/7c/CTCFireballSpell_FinishSpell_007c9180.cpp'
+        TestSource = '00/7c/CTCFireballSpell_FinishSpell_007c9180_test.cpp'
         PassPattern = '007c9180_TEST PASS'
     }
     [pscustomobject]@{

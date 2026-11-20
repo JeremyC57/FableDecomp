@@ -1,0 +1,13 @@
+OK  0047db73 -> 0040dce0 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z sizes 21 21 
+OK  006412b0 -> 004a93c0 ??8?$CBasicString@D@@QBE_NABV0@@Z sizes 34 34 
+OK  007c7a00 -> 004cc340 ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntell sizes 36 36 
+OK  007c7a00 -> 004a9760 ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z sizes 26 26 
+NO-OWNER-OBJ 007c7a00 004118c0 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+OK  007c7a00 -> 00410de0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z sizes 63 63 
+OK  007c9180 -> 004a9730 ??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z sizes 37 37 
+NO-OWNER-OBJ 007c9180 004118c0 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+OK  007c9180 -> 0072d360 ?SetPItemRemoved@CCreatureActionBase@@QAEXV?$CIntelligentPointer@VCThi sizes 34 34 
+OK  007c9180 -> 00410de0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z sizes 63 63 
+
+By hand (cmpbody.py): ?Next@CNode@CBaseList@@QBEPAV12@XZ, new in 0x00CB1890, equals 0x00CB1210's copy: sizes 4 4 bytes equal True relocs equal True (no table line, no Leaf owner).
+NO-OWNER-OBJ ?HasTC@CThing@@ (0x004118C0): no landed row (as nf196).

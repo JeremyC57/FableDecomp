@@ -5,6 +5,9 @@
 //       are landed names; the other helpers are descriptive. alSourcei(AL_LOOPING=0x1007) through the inline CAudioContext
 //       resolver of the landed InitializeProperties TU. Bit tests are (unsigned char)(x >> N) & 1 (retail shr ; test reg8,1);
 //       the stream/sample ternaries go through named locals (retail evaluates them before pushing flags).
+// NF200 (2026-11-20, q6928): the callee 0x00C720C0 respelled in place on the row-local CAudioSource from StartFade to
+//   StartExponentialFade, the descriptive name its landed self row and the other landed callers 0x00C71F10 / 0x00C72130 use (libpk
+//   OpenAL source, no PDB class: one address, one name).
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* name);   // IAT 0x0143FE44
 typedef void (__cdecl* PFN_alSourcei)(unsigned long source, long param, long value);
 
@@ -65,7 +68,7 @@ struct CAudioSource {
     unsigned long  SourceId;                             // +0x58
     void SetPitchProperties(const float* pitchTime, __int64 now);                     // 0x00C71F10
     void ComputePitchScale(const float* pitchTime, __int64 now);                             // 0x00C71F80
-    void StartFade(__int64 now, float target);                                        // 0x00C720C0
+    void StartExponentialFade(__int64 now, float duration);                           // 0x00C720C0 (one name with its self row and 0x00C71F10 / 0x00C72130)
     bool UpdateGain(const CFadeParams* fade, bool restart, __int64 now);             // 0x00C72200
     unsigned long InitializeProperties(CAudioObject* sound, const CAudioSourceProperties* props, __int64 now);   // 0x00C72AF0
     void ApplyHardware(CAudioObject* stream, unsigned long flags);                    // 0x00C880A0
@@ -96,7 +99,7 @@ void CAudioSource::ApplySound(CAudioObject* sound, __int64 now)
             Flags &= ~0x5e;
             if (props->Fade && !(Flags & 0x20)) {
                 Flags |= 0x20;
-                StartFade(now, props->Fade->Target);
+                StartExponentialFade(now, props->Fade->Target);
             }
         }
     }

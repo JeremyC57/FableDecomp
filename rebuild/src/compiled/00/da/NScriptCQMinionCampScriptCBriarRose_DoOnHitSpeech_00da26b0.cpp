@@ -1,5 +1,5 @@
 // CBriarRose::DoOnHitSpeech() -- Briar Rose's line when hit: three times in four the default hit line, otherwise one of three lines picked by the minion-camp script's timer (more than 48: _START, more than 24: _MIDDLE, else _END); said through DoSpeech unless the script is done
-// Leaf: DoOnHitSpeech
+// Leaf: ?DoOnHitSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA26B0, 244 bytes (plain `ret`).
@@ -12,59 +12,41 @@
 //          sits at +0x60).
 // Shape: `rand() % 4 == 0` (signed remainder: `and 80000003h ; jns ; dec ; or -4 ; inc`) guards the timer lines,
 //          which repeat DoOnSpeakToSpeech's chain after one extra IsDone test; the default arm is the `else` (laid out last).
-namespace NScript { class CPredicateBase; }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator+=(const char* text);          // 0x0099F100
-    const CCharString& operator=(const char* text);           // 0x0099EFE0
-};
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+// NF200 (2026-11-20, q6500): the DoSpeech family (0x00DA2610 / 0x00DA26B0 / 0x00DA27B0) moved together onto the shared
+//   engine/CQ_MinionCampScript.h (FABLE_RETAIL_NSCRIPT), the prelude of the landed sibling 0x00DA0EF0 CBriarRose::Main: the nested class is
+//   NScript::CQ_MinionCampScript::CBriarRose, so DoSpeech is the private Ego_r.pdb 0x00DC9700 + FableWin.pdb 0x037EF460
+//   ?DoSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXABVCCharString@@@Z (was the global-class stand-in
+//   ?DoSpeech@CBriarRose@@QAEXABVCCharString@@@Z). The row-local CBriarRose / CEntityScriptBase / CQ_MinionCampScript / CGameScriptInterface /
+//   CTimerManager / CCharString views are gone; CTimer::GetTime / operator=(long) are the CTimer.h inline bodies retail expands
+//   (pDSTGame slots 90 GetTimer / 89 SetTimer), defined after the include as the header asks.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CGameScriptInterface.h"
-extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
-// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
-//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_CONCAT_STRING
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/C3DVector.h"
+#include "engine/CRGBColour.h"
+#include "engine/CQ_MinionCampScript.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#include "engine/CGameScriptInterfaceBase.h"
 #include "engine/CTimer.h"
-inline long GetTime(const CTimer& timer) { return pDSTGame->GetTimer(timer.TimerIndex); }
-
-struct CQ_MinionCampScript {
-    unsigned char _pad[0x60];
-    CTimer        CampTimer;                  // +0x60
-};
-
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
-
-class CBriarRose : public CEntityScriptBase {
-public:
-    void*                 __vftable;          // +0x00
-    void*                 Game;               // +0x04
-    unsigned char         Me[0x0c];           // +0x08
-    CQ_MinionCampScript*  ParentClass;        // +0x14
-    void*                 PMasterData;        // +0x18
-    void DoSpeech(const CCharString& line);   // 0x00DA2610
-    void DoOnHitSpeech();
-};
-
+extern CGameScriptInterfaceBase* pDSTGame;                                // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 extern "C" int __cdecl rand();                  // 0x00BFEB16
 
-void CBriarRose::DoOnHitSpeech()
+void NScript::CQ_MinionCampScript::CBriarRose::DoOnHitSpeech()
 {
     CCharString line("TEXT_QST_B08_BRIAR_ONHIT");  // 0x012D711C
     if (rand() % 4 == 0) {
         if (IsActiveThreadTerminating())
             return;
-        if (GetTime(ParentClass->CampTimer) > 48) {
+        if (ParentClass.ChantTimer.GetTime() > 48) {
             if (IsActiveThreadTerminating())
                 return;
             line += "_START";                      // 0x012CD3B8
-        } else if (GetTime(ParentClass->CampTimer) > 24) {
+        } else if (ParentClass.ChantTimer.GetTime() > 24) {
             if (IsActiveThreadTerminating())
                 return;
             line += "_MIDDLE";                     // 0x012D7114
