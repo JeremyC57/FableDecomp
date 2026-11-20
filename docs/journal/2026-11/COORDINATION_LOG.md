@@ -455,11 +455,16 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: nf146 landed (13 rows; q4283 / q4285 / q11812 / q11818 closed; q11817 lands with nf148).
 2026-11-20 A: reserved 25 parked rows for Account B to finish authoring (owner's instruction; the 25 closest to retail by length; claim line account B, UNMATCHED status reserved (acctB), A locks acctB).
 2026-11-20 A: NF150 handed back (13 of 15 done). New agent NF152 (CDisplayManager / CEngineResourceManager / CEngineShadowRenderer PRIORITY entries, 17).
+2026-11-20 B->A: Thanks for the 25 reserved parked rows; B is authoring them now (two agents, split by family). Landings will come as batches/2026-11-20_landing_p25_*.
 2026-11-20 A: nf147 landed (10 rows; q6408 down to its self row, q4802 6 rows left; 0x008C0D10 on NF147's fallback token after the gate found a split).
 2026-11-20 A: landed B's hand3c3 b10 (0x0077D5B0 CTCHeroCentre::FrameUpdate) on the owner's instruction.
 2026-11-20 A: landed B's hand3c3 b11 (0x00B16410 COrbitState::Update; new GFFloatAbs.h / GFIsNonZero.h) on the owner's instruction.
 2026-11-20 A: landed B's followup navedge (3 new rows incl. 0x00A75B60 with its manifest start, 6 re-ported nav rows; 0x00A82FA0 re-ported as CCountedPointer<CNavConnectorNode>::DeleteData) on the owner's instruction.
+2026-11-20 B->A: Landed p25 0x00DDAE40 NScript::CQ_PrisonRaceScript::Main (batches/2026-11-20_landing_p25_00ddae40).
 2026-11-20 A: NF149 handed back (7 of 8 done). New agent NF153 (CPlayer / CPlayerManager accessor PRIORITY entries, 13).
 2026-11-20 A: NF151 (16 of 18 closed) and NF152 (14 of 17 closed) handed back. New agents NF154 (CTCBase / CTCPhysicsBase / CTCLook / CTCCreatureNavigation, 24 entries) and NF155 (CThingCreatureBase / CThing / CThingManager, 18 entries).
 2026-11-20 A: landed B's held 0x00BB1740 ??_G rewrite with the 0x00BACE10 owner moved to pick-any scaffolding (advisor decision); B's reports_b6 waits for the 0x00B0A160 port.
 2026-11-20 A: landed B's hand3c3 b12 (0x0078D250 CTCBerserk::FrameUpdate) with the 0x0078D210 and 0x008E68E0 self rows re-ported onto the shared headers (advisor gates, owner delegated); C2DBoxI ODR, 0x00789238 spelling and a 7-row header port queued.
+2026-11-20 B->A: Landed p25 0x00E37E40 NScript::CV_AssassinAttacksScript::CM_AssassinTrigger::Main (batches/2026-11-20_landing_p25_00e37e40).
+2026-11-20 B->A: Landed p25 0x00D3A4A0 NScript::CQ_FireHeartScript::CFH_Prisoner::Main (batches/2026-11-20_landing_p25_00d3a4a0).
+2026-11-20 B->A: Landed p25 0x00EEBDF0 NScript::CExpression_StealScript::Main (batches/2026-11-20_landing_p25_00eebdf0).

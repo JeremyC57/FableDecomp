@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00ddae40   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00ddae40 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::?Main@CQ_PrisonRaceScript@NScript@@UAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQPrisonRaceScript_Main_00ddae40

@@ -872,7 +872,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00d24a40	NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh	Main	2416	parked	DIFFER(2440v2403)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d24a40.cpp	gapscan/boundary
 00d2d1a0	NScript::CQ_EndGameFocalSitesScript::CBattleMinion	Main	912	parked	DIFFER(556v620)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00d2d1a0.cpp	original
 00d34b30	std::vector<CScriptThing>	_M_fill_insert	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand582/differ/00d34b30.cpp	original
-00d3a4a0	NScript::CQ_FireHeartScript::CFH_Prisoner	Main	1152	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(1140v1140)	87	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d3a4a0.cpp	original
 00d43db0	NScript::CQ_GuildTrainingScript::CPreMeleeMaze	Main	1808	parked	DIFFER(1665v1799)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00d43db0.cpp	original
 00d67890	NScript::CQ_GuildTrainingWoodsWillScript	Main	3440	parked	DIFFER(3472v3426)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d67890.cpp	gapscan/boundary
 00d69480	NScript::CQ_HangingTreeEvilScript	Main	2128	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand744/differ/00d69480.test.cpp	original
@@ -893,7 +892,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00dc4600	NScript::CQ_OpeningGraveyardSecretPassageScript::CCeremonialEffect	Main	1184	parked	DIFFER(1188v1173)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/00dc4600.cpp	original
 00dc93f0	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton	Main	4720	parked	DIFFER(4485v4507)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00dc93f0.cpp	gapscan/boundary
 00dd4ad0	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice	Main	3472	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(3467v3467)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00dd4ad0.cpp	gapscan/boundary
-00ddae40	NScript::CQ_PrisonRaceScript	Main	1184	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(1180v1180)	119	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ddae40.cpp	gapscan/boundary
 00ddb720	NScript::CQ_PrisonRaceScript::CPrisonRaceGuard	Main	2160	parked	DIFFER(2150v2158)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand783/differ/00ddb720.test.cpp	original
 00ddd430	NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard	Main	2048	parked	DIFFER(2112v2044)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ddd430.cpp	original
 00de4710	NScript::CQ_RansomVictimScript	DisappearFollowers	1440	parked	DIFFER(1024v1428)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00de4710.cpp	original
@@ -916,7 +914,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00e29b20	NScript::CQS_ScytheInfoScript	Main	848	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand573/differ/00e29b20.cpp	gapscan/boundary
 00e2e400	NScript::CV_AmbushScamScript	ResetRandomSpeechTime	64	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00e2e400.cpp	original
 00e2ec30	CV_AmbushScamScript	GetTrickster	1344	parked	DIFFER(1053v1336)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00e2ec30.cpp	original
-00e37e40	NScript::CV_AssassinAttacksScript::CM_AssassinTrigger	Main	1104	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(1104v1103)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/00e37e40.cpp	original
 00e49020	NScript::CV_BanditTollScript::CTauntingBandit	Main	2096	parked	DIFFER(2276v2084)	2	rebuild/candidates/manual/pending/2026-11-05_linux_hand791/differ/00e49020.test.cpp	original
 00e4fa20	NScript::CV_BeardyBaldyScript	Main	1760	parked	DIFFER(1763v1756)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand780/differ/00e4fa20.test.cpp	original
 00e50910	NScript::CV_BeardyBaldyScript	WatchForQuestCardConditions	1328	parked	DIFFER(1375v1328)	5	rebuild/candidates/manual/pending/2026-11-07_linux_hand835/differ/00e50910.cpp	original
@@ -948,7 +945,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00ee8390	_global	DoMission_OakValeRevisited	1248	parked	DIFFER(1224v1240)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ee8390.cpp	original
 00ee91e0	NScript::CGlobal_DebugCycleThroughSpeechScript	Main	672	parked	DIFFER(575v613)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00ee91e0.cpp	original
 00eeaef0	NScript::CExpression_PickpocketScript	Main	1920	parked	DIFFER(1860v1906)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00eeaef0.cpp	original
-00eebdf0	NScript::CExpression_StealScript	Main	1248	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(1239v1240)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand318/differ/00eebdf0.cpp	original
 00ef5840	NScript::CPersonalScript_EmptyScript::CBanditWalker	Main	736	parked	DIFFER(768v727)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00ef5840.cpp	gapscan/boundary
 00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan	Main	3280	parked	DIFFER(3409v3265)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef5ff0.cpp	gapscan/boundary
 00ef9280	NScript::Cjoss_test_scriptsScript	Main	3168	parked	DIFFER(1972v3158)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef9280.cpp	gapscan/boundary

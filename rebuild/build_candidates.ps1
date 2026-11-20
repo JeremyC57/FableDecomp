@@ -401375,6 +401375,32 @@ $catalog = @(
         Source = '00/78/CTCBerserk_FrameUpdate_0078d250.cpp'
         TestSource = '00/78/CTCBerserk_FrameUpdate_0078d250_test.cpp'
         PassPattern = '0078d250_TEST PASS'
+        Address = '00ddae40'
+        Module = 'NScript::CQ_PrisonRaceScript'
+        Source = '00/dd/NScriptCQPrisonRaceScript_Main_00ddae40.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScript_Main_00ddae40_test.cpp'
+        PassPattern = '00ddae40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e37e40'
+        Module = 'NScript::CV_AssassinAttacksScript::CM_AssassinTrigger'
+        Source = '00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_Main_00e37e40.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_Main_00e37e40_test.cpp'
+        PassPattern = '00e37e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3a4a0'
+        Module = 'NScript::CQ_FireHeartScript::CFH_Prisoner'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHPrisoner_Main_00d3a4a0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHPrisoner_Main_00d3a4a0_test.cpp'
+        PassPattern = '00d3a4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eebdf0'
+        Module = 'NScript::CExpression_StealScript'
+        Source = '00/ee/NScriptCExpressionStealScript_Main_00eebdf0.cpp'
+        TestSource = '00/ee/NScriptCExpressionStealScript_Main_00eebdf0_test.cpp'
+        PassPattern = '00eebdf0_TEST PASS'
     }
 )
 

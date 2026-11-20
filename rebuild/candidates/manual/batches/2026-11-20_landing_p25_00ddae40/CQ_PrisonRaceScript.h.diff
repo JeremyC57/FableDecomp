@@ -1,0 +1,84 @@
+diff --git a/rebuild/include/engine/CQ_PrisonRaceScript.h b/rebuild/include/engine/CQ_PrisonRaceScript.h
+index 22d2b6af8..b485e02d6 100644
+--- a/rebuild/include/engine/CQ_PrisonRaceScript.h
++++ b/rebuild/include/engine/CQ_PrisonRaceScript.h
+@@ -70,12 +70,76 @@ public:
+         NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
+     };
+ #endif
++#ifdef FABLE_RETAIL_CQ_PRISONRACESCRIPT_MAIN
++    // Retail opt-in (Account B p25A, row 0x00DDAE40 CQ_PrisonRaceScript::Main): the spawned thread and the four other nested
++    // entity scripts Main binds (Ego_r.pdb / FableWin.pdb ?WatchForHeroWinOrLose@CQ_PrisonRaceScript@NScript@@QAEXXZ and the
++    // ?Alloc / ?Main / ?Init / ?GetParentScript@C..@CQ_PrisonRaceScript@NScript@@ name sets; Ego_r sizes 0x20 / 0x1c / 0x1c / 0x1c =
++    // the retail `push 20h` / `push 1Ch` of the landed Allocs). Vtables: CPrisonRacer 0x012DCA2C, CPrisonRaceWarden 0x012DCA10,
++    // CPrisonRaceStartingGuard 0x012DCA48, CWaypointSpeedCheck 0x012DCA64 (slot 1 Main, 2 Init, 3 GetParentScript).
++    void WatchForHeroWinOrLose();                                        // 0x00DDB2F0
++    class CPrisonRaceWarden : public CEntityScriptBase {
++    public:
++        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_PrisonRaceScript&, CScriptDataBase*, const CScriptThing&);   // 0x00DDC2D0
++        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00DDC370
++    private:
++        virtual void Main();                                             // slot 1 0x00DDD030
++        virtual void Init();                                             // slot 2 0x00DDC380
++    protected:
++        NScript::CQ_PrisonRaceScript & ParentClass;                      // +0x14
++    protected:
++        NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
++    };
++    class CPrisonRacer : public CEntityScriptBase {
++    public:
++        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_PrisonRaceScript&, CScriptDataBase*, const CScriptThing&);   // 0x00DDC3E0
++        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00DDC480
++    private:
++        virtual void Main();                                             // slot 1 0x00DDC980
++        virtual void Init();                                             // slot 2 0x00DDC490
++    protected:
++        NScript::CQ_PrisonRaceScript & ParentClass;                      // +0x14
++    protected:
++        NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
++    private:
++        long RaceWaypointIndex;                                          // +0x1c
++    };
++    class CPrisonRaceStartingGuard : public CEntityScriptBase {
++    public:
++        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_PrisonRaceScript&, CScriptDataBase*, const CScriptThing&);   // 0x00DDC500
++        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00DDC5A0
++    private:
++        virtual void Main();                                             // slot 1 0x00DDD430
++        virtual void Init();                                             // slot 2 0x00DDC5B0
++    protected:
++        NScript::CQ_PrisonRaceScript & ParentClass;                      // +0x14
++    protected:
++        NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
++    };
++    class CWaypointSpeedCheck : public CEntityScriptBase {
++    public:
++        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_PrisonRaceScript&, CScriptDataBase*, const CScriptThing&);   // 0x00DDC5E0
++        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00DDC680
++    private:
++        virtual void Main();                                             // slot 1 0x00DDC6C0
++        virtual void Init();                                             // slot 2 0x00DDC690
++    protected:
++        NScript::CQ_PrisonRaceScript & ParentClass;                      // +0x14
++    protected:
++        NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
++    };
++#endif
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript) == 0x60);
+-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceGuard) == 0x20);
++FABLE_STATIC_ASSERT_AT(75, sizeof(NScript::CQ_PrisonRaceScript) == 0x60);
++FABLE_STATIC_ASSERT_AT(76, sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceGuard) == 0x20);
+ #ifdef FABLE_RETAIL_CQ_PRISONRACESCRIPT_WINNINGPOSTGUARD
+-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceWinningPostGuard) == 0x1c);
++FABLE_STATIC_ASSERT_AT(78, sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceWinningPostGuard) == 0x1c);
++#endif
++#ifdef FABLE_RETAIL_CQ_PRISONRACESCRIPT_MAIN
++FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceWarden) == 0x1c);
++FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CPrisonRacer) == 0x20);
++FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard) == 0x1c);
++FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CWaypointSpeedCheck) == 0x1c);
+ #endif
+ 
+ #endif // FABLE_RETAIL_NSCRIPT

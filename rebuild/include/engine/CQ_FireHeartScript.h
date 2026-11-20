@@ -51,6 +51,12 @@ public:
     // ?TriggerProphetComment@CQ_FireHeartScript@NScript@@QAEXABVCCharString@@@Z, landed row 0x00D38400.
     void TriggerProphetComment(const CCharString&);                      // 0x00D38400
 #endif
+#ifdef FABLE_RETAIL_CQ_FIREHEARTSCRIPT_PRISONER
+    // Retail opt-in (Account B p25A, row 0x00D3A4A0 CFH_Prisoner::Main): Ego_r.pdb / FableWin.pdb
+    // ?UpdateHistory@CQ_FireHeartScript@NScript@@QAEX_N@Z and ?CheckCompletion@CQ_FireHeartScript@NScript@@QAEXXZ (landed row 0x00D3AD60).
+    void UpdateHistory(bool);                                            // 0x00D3A920
+    void CheckCompletion();                                              // 0x00D3AD60
+#endif
     bool QuestStartScreenShown;                                          // +0x48
     bool MissionSucceeded;                                               // +0x49
     bool MissionFailed;                                                  // +0x4a
@@ -117,8 +123,37 @@ public:
     class CFH_Villager;                                                  // Alloc 0x00D373D0
     class CFH_MemorialCutsceneMarker;                                    // Alloc 0x00D37C30
 };
+#ifdef FABLE_RETAIL_CQ_FIREHEARTSCRIPT_PRISONER
+// Retail opt-in (Account B p25A, row 0x00D3A4A0): the nested entity script CFH_Prisoner (Ego_r.pdb, 36 bytes = the landed Alloc
+// 0x00D36540's new size: CEntityScriptBase 0x14, ParentClass +0x14, PMasterData +0x18, Chosen +0x1c, MyCageNumber +0x20; vtable
+// 0x012CCF10: 1 Main 0x00D3A4A0, 2 Init 0x00D36620, 3 GetParentScript 0x00D365E0, 5 OnPredicateFail 0x00D365F0). Names and access:
+// Ego_r.pdb / FableWin.pdb ?Main@ / ?Init@ (EAE), ?GetParentScript@ (UBE), ?OnPredicateFail@ (EAE), ?MakeRoundStartComment@ /
+// ?MakeComment@ (AAE), ?GetEndCutscene@ / ?GetEndSpeech@ (ABEXAAVCCharString@@@Z), ?Alloc@CFH_Prisoner@CQ_FireHeartScript@NScript@@.
+class CQ_FireHeartScript::CFH_Prisoner : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_FireHeartScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D36540
+    virtual CScriptBase* GetParentScript() const;                        // slot 3 0x00D365E0
+private:
+    virtual void Main();                                                 // slot 1 0x00D3A4A0
+    virtual void Init();                                                 // slot 2 0x00D36620
+    virtual void OnPredicateFail();                                      // slot 5 0x00D365F0
+    void MakeRoundStartComment();                                        // 0x00D3A9B0
+    void MakeComment();                                                  // 0x00D3ACE0
+    void GetEndCutscene(CCharString&) const;                             // 0x00D3AB00
+    void GetEndSpeech(CCharString&) const;                               // 0x00D3ABE0
+protected:
+    NScript::CQ_FireHeartScript * ParentClass;                           // +0x14
+    NScript::CQ_SunnyvaleMasterData * PMasterData;                       // +0x18
+private:
+    bool Chosen;                                                         // +0x1c
+    long MyCageNumber;                                                   // +0x20
+};
+#endif
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_FireHeartScript) == 0x1A4);
+FABLE_STATIC_ASSERT_AT(121, sizeof(NScript::CQ_FireHeartScript) == 0x1A4);
+#ifdef FABLE_RETAIL_CQ_FIREHEARTSCRIPT_PRISONER
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_FireHeartScript::CFH_Prisoner) == 0x24);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_FIREHEARTSCRIPT_H
