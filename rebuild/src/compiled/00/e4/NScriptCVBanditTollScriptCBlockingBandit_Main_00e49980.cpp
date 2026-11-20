@@ -72,7 +72,7 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 }
 using NScript::CIsThingAlive;
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);        // 0x00CBE716
+void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float seconds, bool kill, bool removeOnFade);   // Naming NF194 (q6466 / q6518): Ego_r / FableWin ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z (engine/fable_script_fade.h order)        // 0x00CBE716
 struct CCountedPointerWords { void* Data; void* Info; };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -182,7 +182,7 @@ void NScript::CV_BanditTollScript::CBlockingBandit::Main()
             }
             if (IsActiveThreadTerminating())
                 return;
-            FadeOutAndKillEntity(Me, true, pGlobalScriptDef->TollBanditTimeToFade, true);
+            FadeOutAndKillEntity(Me, pGlobalScriptDef->TollBanditTimeToFade, true, true);
         }
         if (ParentClass->BanditsAngered && Me.IsAlive() && Game->IsThingAwareOfOtherThingInAnyWay(Game->GetHero(), Me)) {
             if (IsActiveThreadTerminating())

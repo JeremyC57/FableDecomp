@@ -27,14 +27,11 @@ struct CPreTransposedBoneMatrix {
     CPreTransposedBoneMatrix() { }
 };
 
-template <class T> class CArray { public:
-    T* First;
-    T* Last;
-    T* End;
-    unsigned long Size() const { return Last - First; }
-    const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
-    void resize(unsigned int n, const T& value);        // 0x00B7EDF0 for CPreTransposedBoneMatrix
-};
+// Name fix (NF195, 2026-11-20, q4567): the local CArray<T> template model is replaced by the shared engine/CArray.h (CArray<T> is an
+//   STLport vector<T>), so BoneMatrices.resize binds vector<CPreTransposedBoneMatrix>::resize 0x00B7EDF0 (declared only:
+//   FABLE_RETAIL_STLP_VECTOR_RESIZE_VALUE_DECL_ONLY); Size() / GetData() are the vector's size() and CArray::GetAsCArray() const.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_VALUE_DECL_ONLY
+#include "engine/CArray.h"
 
 class CShaderConstantRange { public:
     void* _vptr;                                        // +0
@@ -57,8 +54,8 @@ public:
     FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
-            SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),
-                           CurrentVSConstantLayout->ReservedPresets.Size());
+            SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetAsCArray(),
+                           CurrentVSConstantLayout->ReservedPresets.size());
         if (UpdateFlags & 1)
             UpdatePixelShader();
         if (UpdateFlags & 2)

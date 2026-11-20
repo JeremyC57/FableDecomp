@@ -10,47 +10,17 @@
 // alias them), the mono buffer pointer is a register; sample = (L + R) >> 1 (arithmetic shift, no rounding).
 // The mono buffer's start stays in edi through the assignment and the inlined destructor because the local does not
 // escape: the constructor and operator= (both CArray<short> instantiations in retail's TU) are same-TU stand-ins.
-extern "C" void __cdecl free(void* p);   // 0x00BFEA14
-
-template <class T> class CArray { public:
-    T* Data;            // +0x00
-    T* DataEnd;         // +0x04
-    T* StorageEnd;      // +0x08
-    explicit CArray(unsigned long size);            // 0x00AADD80
-    CArray& operator=(const CArray& other);         // 0x00AADE80
-    ~CArray() { if (Data) free(Data); }
-    T& operator[](unsigned long i) { return Data[i]; }
-};
-
-short* ConstructShorts_00aadd80(unsigned long size);
-void AssignShorts_00aade80(short** data, short** dataEnd, short** storageEnd, const short* first, const short* last);
-// Stand-ins for the CArray<short> constructor (0x00AADD80) and operator= (0x00AADE80), instantiated in retail's TU: the
-// local's bounds pass by value, so it does not escape and its start stays in a register across the assignment.
-template <> __declspec(noinline) CArray<short>::CArray(unsigned long size)
-{
-    Data = ConstructShorts_00aadd80(size);
-    DataEnd = Data + size;
-    StorageEnd = DataEnd;
-}
-template <> __declspec(noinline) CArray<short>& CArray<short>::operator=(const CArray<short>& other)
-{
-    short* data = Data;
-    short* dataEnd = DataEnd;
-    short* storageEnd = StorageEnd;
-    AssignShorts_00aade80(&data, &dataEnd, &storageEnd, other.Data, other.DataEnd);
-    Data = data;
-    DataEnd = dataEnd;
-    StorageEnd = storageEnd;
-    return *this;
-}
-
-class CWaveFile { public:
-    unsigned long Channels;            // +0x00
-    unsigned long SampleLength;        // +0x04
-    unsigned long SamplingFrequency;   // +0x08
-    CArray<short> AudioData;           // +0x0C
-    void ConvertToMono();
-};
+// Leaf: ?ConvertToMono@CWaveFile@@QAEXXZ
+// Name fix (NF195, 2026-11-20, q6206 / q6207): the local CArray<short> model and its same-TU stand-in constructor / operator= (over the
+//   invented ConstructShorts_00aadd80 / AssignShorts_00aade80 helpers) are replaced by the shared engine/CWaveFile.h + engine/CArray.h
+//   (CArray<short> is an STLport vector<short>): the size constructor and the assignment now bind STLport's
+//   vector<short>::vector(size_type) 0x00AADD80 and vector<short>::operator= 0x00AADE80, declared only here
+//   (FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE, FABLE_RETAIL_STLP_VECTOR_ASSIGN).
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_STLP_VECTOR_SIZECTOR_VISIBLE_NOINLINE
+#define FABLE_RETAIL_STLP_VECTOR_C
+#include "rebuild_abi.h"
+#include "engine/CWaveFile.h"
 
 void CWaveFile::ConvertToMono()
 {

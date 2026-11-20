@@ -216,7 +216,7 @@ class CGameScriptInterface { public:
     virtual void SetScriptingStateGroup(CScriptThing thing, long group);   // slot 784 (+0xc40)
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
+void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float seconds, bool kill, bool removeOnFade);   // Naming NF194 (q6466 / q6518): Ego_r / FableWin ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z (engine/fable_script_fade.h order)   // 0x00CBE716
 // agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
 //   retail offsets) names them: ArenaSentryScareDistance -> AmbushTradersSpySentryProximity (+0x9f4).
 #define FABLE_RETAIL_CDEFSTRINGTABLE
@@ -321,7 +321,7 @@ void NScript::CQ_AmbushTradersScript::CAT_Sentry::Main()
                         return;
 #pragma inline_depth()
                     }
-                FadeOutAndKillEntity(Me, true, 1.0f, true);
+                FadeOutAndKillEntity(Me, 1.0f, true, true);
             }
 #pragma inline_depth(0)
         }

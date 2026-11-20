@@ -120,7 +120,7 @@ CCharString __fastcall GFIntToCharString(long value);                   // 0x009
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
+void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float seconds, bool kill, bool removeOnFade);   // Naming NF194 (q6466 / q6518): Ego_r / FableWin ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z (engine/fable_script_fade.h order)   // 0x00CBE716
 namespace NScript {
 class CQ_FireHeartScript {
 public:
@@ -258,7 +258,7 @@ void NScript::CQ_FireHeartScript::CFH_Villager::Main()
         if (GetSquaredDistanceBetweenThings(Me, ParentClass->VillagerEscapeMarker) <= g_fSixteen) {
             if (IsActiveThreadTerminating())
                 return;
-            FadeOutAndKillEntity(Me, true, 2.5f, true);
+            FadeOutAndKillEntity(Me, 2.5f, true, true);
             return;
         }
     }

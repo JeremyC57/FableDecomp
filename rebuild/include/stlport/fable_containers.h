@@ -929,6 +929,13 @@ public:
 #endif
     // Retail takes the value by const reference (STLport 4.5.2 form; 0x004428F0 resize<long> forwards the pointer to
     // _M_fill_insert, which dereferences it); FableWin.pdb's later build passes it by value.
+#ifdef FABLE_RETAIL_STLP_VECTOR_RESIZE_VALUE_DECL_ONLY
+    // Per-TU opt-in (NF195, 2026-11-20, q4567: rows 0x00B7F600 .. CEngineWaterRenderer shader-constant setup): resize(n, value) declared
+    // only. Those TUs call vector<CPreTransposedBoneMatrix>::resize 0x00B7EDF0 out of line (`push value ; push 4 ; call`) and keep no
+    // value across the call; the visible noinline body (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE) would emit a 94-byte COMDAT copy
+    // that differs from the owner's 102 bytes (pick-any rule). Declaration only; same function.
+    void resize(size_type n,const _Tp& x);
+#else
 #ifdef FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
     // Per-TU opt-in (chunk 777, row 0x0055F710 CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest; like
     // FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE): VC7.1 expanded STLport's inline resize in some TUs and called it as a COMDAT
@@ -946,6 +953,7 @@ public:
     void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else insert(end(),n-size(),x);}
 #else
     void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else _M_fill_insert(end(),n-size(),x);}
+#endif
 #endif
 #endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL

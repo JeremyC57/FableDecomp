@@ -12,6 +12,12 @@
 //          reference re-read the id each time); an inline IsCreatureAttacking (find, `!= end()`, Attacked != 0) guards;
 //          the attacker's info is looked up again and the call's arguments are pushed before the victim's lookup that
 //          yields `this` (an inline object expression).
+// Name fix (NF195, 2026-11-20, q4389; NF185's transformer): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced in place
+//   by the STLport map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its _M_find<unsigned __int64> 0x006F0250 is visible but
+//   out of line (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE; the declaration-only form differs: retail keeps a register live across the call); FABLE_RETAIL_STLP_TREE_CONSTFIND gives the const find body.
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 class CThingCreatureBase {                      // a class in Ego_r.pdb (mangled V)
 public:
     unsigned char _pad[0x18];
@@ -76,31 +82,19 @@ struct CCombatantInfo {                         // retail layout (Ego_r.pdb name
     unsigned char _rest[0x70 - 0x4c];
 };
 
-struct CRetailRbMap_UID_CombatantInfo {         // STLport map<unsigned __int64, CCombatantInfo>: {header, count, comparator}
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                   // +0x10
-        CCombatantInfo value;                   // +0x18
-    };
-    node* header;                               // +0; end() == header
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);    // 0x006F0250
-    node* end() { return header; }
-};
 
 struct CCombatManager_Retail {
     virtual void v00();
     unsigned char _sequences[0xc];              // +0x04 RegisteredCombatSequences
-    CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;  // +0x10
     CCombatantInfo& GetCombatantInfo(unsigned __int64 uid)
     {
-        return Combatants.find(uid)->value;
+        return Combatants.find(uid)->second;
     }
     bool IsCreatureAttacking(unsigned __int64 uid)
     {
-        CRetailRbMap_UID_CombatantInfo::node* it = Combatants.find(uid);
-        return it != Combatants.end() && it->value.AttackerInfo.Attacked != 0;
+        std::map<unsigned __int64, CCombatantInfo>::iterator  it = Combatants.find(uid);
+        return it != Combatants.end() && it->second.AttackerInfo.Attacked != 0;
     }
     void BlockAttackerProngOnVictim(const CThingCreatureBase& creature);
 };

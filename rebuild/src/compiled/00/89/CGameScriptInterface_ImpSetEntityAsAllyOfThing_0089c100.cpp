@@ -3,7 +3,9 @@
 // Callees: the script things' slots 75 (+0x12c) and 11 (+0x2c), the component-map LowerBound @ 0x0040F020,
 //          CTCEnemy::AddAllyThing @ 0x0076D270 and CTCEnemy::RemoveAllyThing @ 0x0076C850.
 // Shape: the other thing is fetched before the flag test; the `push eax ; mov ecx,esi` is shared by both arms.
-// Leaf: ImpSetEntityAsAllyOfThing
+// Leaf: ?ImpSetEntityAsAllyOfThing@CGameScriptInterface@@ABEXABVCScriptThing@@0_N@Z
+// Naming NF194 (2026-11-20, q11668): Ego_r.pdb 0x008DA6D0 + FableWin.pdb 0x02A8ED70 make it a PRIVATE const member (ABE); the row-local
+//   declaration moves under private: in place (was public, QBE); its one caller 0x008A7EC0 follows in the same hand-back.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Name fix (NF124, 2026-11-20, q6326): the CThing_Retail / CTCAllies_Retail / component-map stand-ins replaced by the shared
 //   engine/CThing.h (GetTC, FABLE_RETAIL_CTHING_GETTC_EXPANDED) and engine/CTCEnemy.h (opt-ins FABLE_RETAIL_CTCENEMY_ADDALLYTHING /
@@ -41,7 +43,8 @@ class CGameScriptInterface { public:
     CDefinitionManager_Retail*  DefinitionManager; // +0x10
     CPlayerManager*      PlayerManager;     // +0x14
     CThingSearchTools*          ThingSearchTools;  // +0x18
-    void ImpSetEntityAsAllyOfThing(const CScriptThing& entity, const CScriptThing& other, bool isAlly) const;
+private:
+    void ImpSetEntityAsAllyOfThing(const CScriptThing& entity, const CScriptThing& other, bool isAlly) const;   // private (Ego_r / FableWin ABE)
 };
 
 void CGameScriptInterface::ImpSetEntityAsAllyOfThing(const CScriptThing& entity, const CScriptThing& other, bool isAlly) const

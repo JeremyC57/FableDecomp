@@ -1651,7 +1651,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00442760	ClearPrimitivesIfNecessary	NPlayerGui::CDrawBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00442770	resize	std::vector<unsigned int, std::allocator<unsigned int>>	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\vectorunsignedint_resize_00442770.cpp
 004427d0	~deque	std::deque<CSubtitleRenderer::CSetTextInfo, std::allocator<CSubtitleRenderer::CSetTextInfo>>	__thiscall	void	1	CBankFileAsyncData *	1	yes	accepted									
-00442870	ResetRings	CDefendingCombatantInfo::CCombatWheel	__thiscall	void	1	CCombatWheel *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CCombatWheel_ResetRings_00442870.cpp
+00442870	~vector	std::vector<CSubtitleRenderer::CEmbeddedHighlight,std::allocator<CSubtitleRenderer::CEmbeddedHighlight> >	__thiscall	void	1	CCombatWheel *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CCombatWheel_ResetRings_00442870.cpp
 004428b0	push_back	std::vector<C2DVector, std::allocator<C2DVector>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\44\0x004428B0_global_vector_push_back.cpp				
 004428f0	resize	std::vector<long,std::allocator<long> >	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
 00442960	ScalarDeletingDtor_00442960	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CLandscapeBackgroundPatch_vectordeletingdestructor_00442960.cpp
@@ -3871,7 +3871,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00485cd2	CPersistContextReadSection	CPersistContextReadSection	__thiscall	undefined	1	CPersistContextReadSection *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CPersistContextReadSection_CPersistContextReadSection_00485cd2.cpp
 00485cf1	~CPersistContextReadSection	CPersistContextReadSection	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted									
 00485d1a	clear	std::vector<long, std::allocator<long>>	__thiscall	void	2	CCountedPointer<NUISystem::CList> *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
-00485d25	ApplyPair_00485d25	_unattributed	__thiscall	void	2	CCountedPointer<NUISystem::CList> *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
+00485d25	clear	std::vector<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*> >	__thiscall	void	2	CCountedPointer<NUISystem::CList> *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 00485d30	vector	std::vector	__thiscall	CEnginePrimitiveHandle *	2	map<long,CEnginePrimitiveHandle,std::less<long>,std::allocator<std::pair<long_const_,CEnginePrimitiveHandle>_>_> *,long *	1	yes	accepted									
 00485dbc	Std_Vector_Insert_Range_Fill	_global	unknown	undefined	0		0	yes	accepted									
 00485e45	~_Rb_tree	std::_Rb_tree<CWideString, pair<const CWideString, bool>, _Select1st<..>, less<CWideString>, allocator<..> >	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CActiveFile_OnReadFinished_00485e45.cpp
@@ -10604,7 +10604,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00579f3e	_M_create_node	std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroTrainableStatType const, SExpSpendUndo> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, SExpSpendUndo> > >	__fastcall	CScriptDataBase *	0		1	yes	accepted									
 00579f5f	_M_create_node	std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroAbility const, SExpSpendUndo> >, std::less<EHeroAbility >, std::allocator<std::pair<EHeroAbility const, SExpSpendUndo> > >	__fastcall	CScriptDataBase *	0		1	yes	accepted									
 00579f8a	_Umove<EWeaponClass*>	std::vector<EWeaponClass,std::allocator<EWeaponClass>_>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\vectorEWeaponClass_UmoveEWeaponClass_00579f8a.cpp
-00579faa	~list	std::list<T_00579faa>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CActiveFile_OnReadFinished_00579faa.cpp
+00579faa	~_Rb_tree	std::_Rb_tree<EHeroTrainableStatType,std::pair<const EHeroTrainableStatType,SExpSpendUndo>,std::_Select1st<std::pair<const EHeroTrainableStatType,SExpSpendUndo> >,std::less<EHeroTrainableStatType>,std::allocator<std::pair<const EHeroTrainableStatType,SExpSpendUndo> > >	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CActiveFile_OnReadFinished_00579faa.cpp
 00579fc1	~list	std::list<T_00579fc1>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CActiveFile_OnReadFinished_00579fc1.cpp
 00579fd8	_M_insert	std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroTrainableStatType const, SExpSpendUndo> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, SExpSpendUndo> > >	unknown	undefined	0		0	yes	accepted									
 0057a060	_M_insert	std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroAbility const, SExpSpendUndo> >, std::less<EHeroAbility >, std::allocator<std::pair<EHeroAbility const, SExpSpendUndo> > >	unknown	undefined	0		0	yes	accepted									
@@ -14175,7 +14175,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00658604	GetIsHeroEnemyOfGuards	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_GetIsHeroEnemyOfGuards_00658604.cpp
 00658620	IsTimeBetween	CTCVillage	__thiscall	bool	3	CTCVillage *,vector<long,std::allocator<long>_> *,long	1	yes	accepted									
 00658716	GetTimes	CTCVillage	unknown	undefined	0		0	yes	accepted									
-006588cf	GetMember_dword0x94_deref0xf8_006588cf	_global	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CPixelShader_CountReferences_006588cf.cpp
+006588cf	GetCostToBribe	CTCVillage	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CPixelShader_CountReferences_006588cf.cpp
 006588dc	IncreaseHeroEnemyOfGuardsUntil	CTCVillage	__thiscall	void	2	CTCVillage *,long	1	yes	accepted									
 0065890b	ClearOutNullMembers	CTCVillage	__thiscall	void	1	CTCVillage *	1	yes	accepted									
 00658a02	GetFirstUnAssignedPatrolTask	CTCVillage	__thiscall	CVillageTaskPatrol *	1	CTCVillage *	1	yes	accepted									
@@ -21689,7 +21689,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00798cc0	`scalar_deleting_destructor'	CTCForcePushed	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\CLandscapeBackgroundPatch_vectordeletingdestructor_00798cc0.cpp
 00798d10	GetMinDistFromStall	CTCShopKeeper	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\global_AddChildPrimitive_00798d10.cpp
 00798d20	GetMaxDistFromCustomer	CTCShopKeeper	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\global_AddChildPrimitive_00798d20.cpp
-00798d30	GetShopKeeperGiveHintTextTag_00798d30	_unattributed	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\CActionDoCreatureAction_GetActionName_00798d30.cpp
+00798d30	GetHint	CTCShopKeeper	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\CActionDoCreatureAction_GetActionName_00798d30.cpp
 00798d50	SetItem_CItemOwner_00798d50	_unattributed	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
 00798d80	GetCustomer	CTCShopKeeper	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 00798d90	AddNewCustomer	CTCShopKeeper	__thiscall	void	2	CTCShopKeeper *,CIntelligentPointer<CThingCreatureBase>	1	yes	accepted									
@@ -26537,7 +26537,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0088b780	GetCurrentStateGroupType	CAIBrain	__thiscall	EAIStateGroupType	1	CAIBrain *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\88\CAIBrain_GetCurrentStateGroupType_0088b780.cpp
 0088b7a0	SuspendableProcess	CAIBrain	__thiscall	void	1	CAIBrain *	1	yes	accepted									
 0088b7d0	PeekCurrentStateGroupName	CAIBrain	__thiscall	CIDrawWorldMap *	1	CEditWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\88\CEditWorld_DrawGetWorldMap_0088b7d0.cpp
-0088b7e0	GetCurrentScriptPriority	CScriptThing	__thiscall	EScriptAIPriority	1	CScriptThing *	1	yes	accepted									
+0088b7e0	GetCurrentStateGroupDebugText	CAIBrain	__thiscall	EScriptAIPriority	1	CScriptThing *	1	yes	accepted									
 0088b800	func_0088b800	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 0088b810	IsUpdateZoneActiveThisFrame	CAIBrain	__thiscall	bool	1	CAIBrain *	1	yes	accepted									
 0088b870	FindNextStateGroupToUse	CAIBrain	__thiscall	CAIStateGroupBase *	2	CAIBrain *,long	1	yes	accepted									
@@ -49747,7 +49747,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d13580	Main	NScript::CQ_BountyHuntScript	unknown	undefined	0		0			discovered	gapscan							
 00d15090	WatchForQuestFailure	NScript::CQ_BountyHuntScript	__thiscall	void	1	CQ_BountyHuntScript *	1	yes	accepted									
 00d150f0	WatchForQuestSuccess	CQ_BountyHuntScript	__thiscall	void	1	CQ_BountyHuntScript *	1	yes	accepted									
-00d15140	CMainGameComponentInit	CMainGameComponentInit	__thiscall	undefined	1	CMainGameComponentInit *	0	yes	accepted									
+00d15140	TeleportData	NScript::CQ_BountyHuntScript::TeleportData	__thiscall	undefined	1	CMainGameComponentInit *	0	yes	accepted									
 00d15170	operator=	TeleportData	__thiscall	TeleportData *	2	TeleportData *,TeleportData *	1	yes	accepted									
 00d151c0	GetEntityScriptName	CEntityScriptBinding<NScript::CQ_BountyHuntScript>	unknown	undefined	0		0			discovered	gapscan							
 00d151d0	WatchForEnableFisherCreekHutDoor	CQ_BountyHuntScript	__thiscall	void	1	CQ_BountyHuntScript *	1	yes	accepted									
@@ -49822,7 +49822,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d1a740	Main	NScript::CQ_BountyHuntScript::CBH_Hostage2	unknown	undefined	0		0			discovered	gapscan							
 00d1b200	Main	NScript::CQ_BountyHuntScript::CBH_GangLeader	unknown	undefined	0		0			discovered	gapscan							
 00d1c9e0	WatchForLeaderGruntsKilled	NScript::CQ_BountyHuntScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
-00d1cac0	WatchForAllLeaderChargeGruntsKilled	NScript::CQ_BountyHuntScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
+00d1cac0	WatchForLeaderChargeGruntsKilled	NScript::CQ_BountyHuntScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
 00d1cbd0	`scalar deleting destructor'	NScript::CQ_BountyHuntScript	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted									
 00d1cc10	CQ_BreakSiegeScript	NScript::CQ_BreakSiegeScript	__thiscall	undefined	5	CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool	0	yes	accepted									
 00d1cc40	Init	NScript::CQ_BreakSiegeScript	__thiscall	void	1	CQ_BreakSiegeScript *	1	yes	accepted									
@@ -50110,7 +50110,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d35070	Transfer	CFireHeartPatternDef	unknown	undefined	0		0			discovered	gapscan							
 00d35090	Main	NScript::CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
 00d35ed0	RunThemeOverriding	NScript::CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
-00d360e0	CheckGameEnding	CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
+00d360e0	CheckGameEnding	NScript::CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
 00d36130	GetEntityScriptName	CEntityScriptBinding<NScript::CQ_FireHeartScript>	unknown	undefined	0		0			discovered	gapscan							
 00d36140	SetupPuzzleBlocks	NScript::CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
 00d361f0	RestoreFollowers	NScript::CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
@@ -50195,7 +50195,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d3bc60	Main	NScript::CQ_GuildTrainingScript	__thiscall	void	1	CQ_GuildTrainingScript *	1	yes	accepted									
 00d3c8e0	GetEntityScriptName	CEntityScriptBinding<NScript::CQ_GuildTrainingScript>	unknown	undefined	0		0			discovered	gapscan							
 00d3c8f0	KeepBookcaseExitRemoved	NScript::CQ_GuildTrainingScript	__thiscall	void	1	CQ_GuildTrainingScript *	1	yes	accepted									
-00d3cbd0	KeepTabsOnWhisper	CQ_GuildTrainingScript	__thiscall	void	1	CQ_GuildTrainingScript *	1	yes	accepted									
+00d3cbd0	KeepTabsOnWhisper	NScript::CQ_GuildTrainingScript	__thiscall	void	1	CQ_GuildTrainingScript *	1	yes	accepted									
 00d3d060	Alloc	NScript::CQ_GuildTrainingScript::CAppleGirl	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00d3d100	GetParentScript	NScript::CQ_GuildTrainingScript::CAppleGirl	unknown	undefined	0		0			discovered	gapscan							
 00d3d110	Init	NScript::CQ_GuildTrainingScript::CAppleGirl	unknown	undefined	0		0			discovered	gapscan							
@@ -52131,7 +52131,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e055b0	Main	NScript::CQ_TraderEscortScript::CEndTrader	unknown	undefined	0		0			discovered	gapscan							
 00e06050	WatchForSurprisingBalverines	NScript::CQ_TraderEscortScript	__thiscall	void	1	CQ_TraderEscortScript *	1	yes	accepted									
 00e07640	Main	NScript::CQ_TraderEscortScript::CDarkwoodTrader	unknown	undefined	0		0			discovered	gapscan							
-00e0a510	HandleTrader	CTraderScript	unknown	undefined	0		0	yes	accepted									
+00e0a510	SetBrainState	NScript::CQ_TraderEscortScript::CDarkwoodTrader	unknown	undefined	0		0	yes	accepted									
 00e0a820	TurnToBalv	NScript::CQ_TraderEscortScript	unknown	undefined	0		0	yes	accepted									
 00e0ad40	Main	NScript::CQ_TraderEscortScript::CRockTrollTrigger	__thiscall	void	1	CRockTrollTrigger *	1	yes	accepted									
 00e0af60	Alloc	NScript::CQ_TraderEscortScript	__fastcall	CScriptBase *	2	CScriptDataBase *,CGameScriptInterfaceBase *	1	yes	accepted									
@@ -52142,7 +52142,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e0b130	SuspendableProcess	CSpawnedFunc<NScript::CQ_UndeadRisingScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e0\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e0b130.cpp
 00e0b140	`scalar deleting destructor'	CSpawnedFunc<NScript::CQ_UndeadRisingScript>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e0\CLandscapeBackgroundPatch_vectordeletingdestructor_00e0b140.cpp
 00e0b160	Main	NScript::CQ_UndeadRisingScript	unknown	undefined	0		0			discovered	gapscan							
-00e0c350	WatchForQuestFailureState	CV_LostTraderScript	__thiscall	void	2	CV_LostTraderScript *,CScriptThing	1	yes	accepted									
+00e0c350	WatchForTermination	NScript::CQ_UndeadRisingScript	__thiscall	void	2	CV_LostTraderScript *,CScriptThing	1	yes	accepted									
 00e0c4b0	GetEntityScriptName	CEntityScriptBinding<NScript::CQ_UndeadRisingScript>	unknown	undefined	0		0			discovered	gapscan							
 00e0c4c0	LampChecker	NScript::CQ_UndeadRisingScript	__thiscall	void	1	CQ_UndeadRisingScript *	1	yes	accepted									
 00e0c970	Alloc	NScript::CQ_UndeadRisingScript::CUndeadRisingFirefly	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
@@ -55105,10 +55105,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f0b960	WatchForBanditsDeath	NScript::CQ_AmbushTradersScript	__thiscall	void	1	CQ_AmbushTradersScript *	1	yes	accepted									
 00f0bb10	Intro	NScript::CQ_AmbushTradersScript	__thiscall	void	1	CQ_AmbushTradersScript *	1	yes	accepted									
 00f0c140	PhaseTwo	NScript::CQ_AmbushTradersScript	__thiscall	void	1	CQ_AmbushTradersScript *	1	yes	accepted									
-00f0ca30	Swap	SThreeWordRecord	__thiscall	undefined	2	CNearestBuildingWithProperty *,CNearestBuildingWithProperty *	0	yes	accepted									
+00f0ca30	swap	std::vector<NScript::CQ_AmbushTradersScript::TeleportData,std::allocator<NScript::CQ_AmbushTradersScript::TeleportData> >	__thiscall	undefined	2	CNearestBuildingWithProperty *,CNearestBuildingWithProperty *	0	yes	accepted									
 00f0ca60	TeleportData	NScript::CQ_AmbushTradersScript::TeleportData	__thiscall	undefined	2	TeleportData *,TeleportData *	0	yes	accepted									
 00f0caa0	Main	NScript::CQ_AmbushTradersScript::CAT_ConvoyMember	__thiscall	void	1	CAT_ConvoyMember *	1	yes	accepted									
-00f0d470	SScriptQuery_00f0d470	SScriptQuery_00f0d470	__thiscall	undefined	1	CVsyncCallbackTimer *	0	yes	accepted									
+00f0d470	TeleportData	NScript::CQ_AmbushTradersScript::TeleportData	__thiscall	undefined	1	CVsyncCallbackTimer *	0	yes	accepted									
 00f0d490	push_back	std::vector<NScript::CQ_AmbushTradersScript::TeleportData, std::allocator<NScript::CQ_AmbushTradersScript::TeleportData>>	unknown	undefined	0		0	yes	accepted									
 00f0d4e0	_M_insert_overflow	std::vector<NScript::CQ_AmbushTradersScript::TeleportData, std::allocator<NScript::CQ_AmbushTradersScript::TeleportData>>	unknown	undefined	0		0	yes	accepted									
 00f0d600	_M_clear	std::vector<NScript::CQ_AmbushTradersScript::TeleportData, std::allocator<NScript::CQ_AmbushTradersScript::TeleportData>>	__thiscall	void	1	CActiveFile *	1	yes	accepted									

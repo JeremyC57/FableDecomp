@@ -77,6 +77,13 @@ public:
         long      CharIndex;                                 // +0x04
         C2DVector Offset;                                    // +0x08
     };
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDEDHIGHLIGHT_NATURAL_PACK
+    // Nested opt-in (NF195, 2026-11-20, q6240: row 0x00442870 vector<CEmbeddedHighlight>::~vector): Ego_r.pdb sizes CEmbeddedHighlight
+    // 0x14 bytes (bool Split +0x10, then 3 bytes of tail padding; retail strides 0x14 in 0x00442870 / 0x004940AC / ProcessEmbeddedHighlightTags),
+    // but this header is #pragma pack(1), which makes the record 0x11. The record is laid out under the default packing here; the outer
+    // class is unchanged (its asserts below hold).
+#pragma pack(push, 8)
+#endif
     class CEmbeddedHighlight {
     public:
         CWideString Text;                                    // +0x00
@@ -84,6 +91,9 @@ public:
         C2DVector   Offset;                                  // +0x08
         bool        Split;                                   // +0x10
     };
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDEDHIGHLIGHT_NATURAL_PACK
+#pragma pack(pop)
+#endif
 #endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_CTOR
     // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): Ego_r.pdb / FableWin.pdb ??0CSubtitleRenderer@@QAE@ABVCGraphicDataBank@@@Z,

@@ -1,0 +1,152 @@
+00442870 new: 12
+    ??$_Destroy@PAVCEmbeddedHighlight@CSubtitleRenderer@@@std@@YAXPAVCEmbeddedHighlight@CSubtitleRenderer@@0@Z
+    ??$_Destroy@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@YAXPAVCEmbeddedHighlight@CSubtitleRenderer@@@Z
+    ??$__destroy@PAVCEmbeddedHighlight@CSubtitleRenderer@@V12@@std@@YAXPAVCEmbeddedHighlight@CSubtitleRenderer@@00@Z
+    ??$__destroy_aux@PAVCEmbeddedHighlight@CSubtitleRenderer@@@std@@YAXPAVCEmbeddedHighlight@CSubtitleRenderer@@0ABU__false_type@0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEmbeddedHighlight@CSubtitleRenderer@@V12@V?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEmbeddedHighlight@CSubtitleRenderer@@V?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@QAE@XZ
+    ??1?$vector@VCEmbeddedHighlight@CSubtitleRenderer@@V?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@@std@@QAE@XZ
+    ??1CEmbeddedHighlight@CSubtitleRenderer@@QAE@XZ
+    ??_GCEmbeddedHighlight@CSubtitleRenderer@@QAEPAXI@Z
+    ?deallocate@?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@QAEXPAVCEmbeddedHighlight@CSubtitleRenderer@@I@Z
+00485d25 new: 3
+    ?begin@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@NUISystem@@XZ
+    ?clear@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ TABLE:00485d25
+    ?end@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@NUISystem@@XZ
+00579faa new: 5
+    ??1?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@s
+    ??1?$_Rb_tree_base@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@2@@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainable
+    ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@std@@@std@@QAE@XZ
+    ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatTy
+006588cf new: 3
+    ??C?$CDefPointer@$$CBVCVillageDef@@@@QBEPBVCVillageDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCVillageDef@@@@QBEPBVCVillageDef@@XZ
+    ?GetCostToBribe@CTCVillage@@QAEJXZ TABLE:006588cf
+006e9270 new: 8
+    ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatan
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEPBU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEABU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ?end@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std
+    ?end@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?
+    ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@st
+    ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U
+006e92c0 new: 8
+    ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatan
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEPBU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEABU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ?end@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std
+    ?end@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?
+    ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@st
+    ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U
+006e9e40 new: 16
+    ??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantI
+    ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CB_KUCComba
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEPAU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEAAU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??R?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@std@@QBEAB_KABU?$pair@$$CB_KUCCombatantInfo@@@1@@Z
+    ??R?$less@_K@std@@QBE_NAB_K0@Z TABLE:00526120
+    ?_M_root@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@
+    ?_S_key@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@
+    ?_S_left@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@
+    ?_S_right@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@
+    ?_S_value@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@
+    ?end@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std
+    ?end@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?
+    ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@st
+    ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U
+006edc50 new: 13
+    ??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantI
+    ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CB_KUCComba
+    ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEPAU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEAAU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??R?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@std@@QBEAB_KABU?$pair@$$CB_KUCCombatantInfo@@@1@@Z
+    ??R?$less@_K@std@@QBE_NAB_K0@Z TABLE:00526120
+    ?_M_root@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@
+    ?_S_key@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@
+    ?_S_left@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@
+    ?_S_right@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@
+    ?_S_value@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@
+    ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@st
+    ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U
+00798d30 new: 1
+    ?GetHint@CTCShopKeeper@@QAE?AVCCharString@@XZ TABLE:00798d30
+00aad5d0 new: 29
+    ??$_Destroy@PAF@std@@YAXPAF0@Z
+    ??$_M_allocate_and_copy@PBF@?$vector@FV?$allocator@F@std@@@std@@QAEPAFIPBF0@Z
+    ??$__copy_ptrs@PBFPAF@std@@YAPAFPBF0PAFABU__true_type@0@@Z
+    ??$__destroy@PAFF@std@@YAXPAF00@Z
+    ??$__destroy_aux@PAF@std@@YAXPAF0ABU__true_type@0@@Z
+    ??$__uninitialized_copy@F@std@@YAPAFPBF0PAFABU__true_type@0@@Z
+    ??$__uninitialized_fill_n@PAFIF@std@@YAPAFPAFIABFABU__true_type@0@@Z
+    ??$fill_n@PAFIF@std@@YAPAFPAFIABF@Z
+    ??$uninitialized_fill_n@PAFIF@std@@YAPAFPAFIABF@Z
+    ??0?$CArray@F@@QAE@I@Z
+    ??0?$_STLP_alloc_proxy@PAFFV?$allocator@F@std@@@std@@QAE@ABV?$allocator@F@1@PAF@Z
+    ??0?$_Vector_base@FV?$allocator@F@std@@@std@@QAE@IABV?$allocator@F@1@@Z
+    ??0?$allocator@F@std@@QAE@ABV01@@Z
+    ??0?$allocator@F@std@@QAE@XZ
+    ??0?$vector@FV?$allocator@F@std@@@std@@QAE@I@Z TABLE:00aadd80
+    ??0__true_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAFFV?$allocator@F@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@FV?$allocator@F@std@@@std@@QAE@XZ
+    ??1?$allocator@F@std@@QAE@XZ
+    ??1?$vector@FV?$allocator@F@std@@@std@@QAE@XZ
+    ??4?$vector@FV?$allocator@F@std@@@std@@QAEAAV01@ABV01@@Z TABLE:00aade80
+    ??A?$CArray@F@@QAEAAFI@Z
+    ?_M_clear@?$vector@FV?$allocator@F@std@@@std@@IAEXXZ
+    ?__copy_trivial@std@@YAPAXPBX0PAX@Z
+    ?allocate@?$allocator@F@std@@QAEPAFIPBX@Z
+    ?begin@?$vector@FV?$allocator@F@std@@@std@@QAEPAFXZ
+    ?capacity@?$vector@FV?$allocator@F@std@@@std@@QBEIXZ
+    ?deallocate@?$allocator@F@std@@QAEXPAFI@Z
+    ?size@?$vector@FV?$allocator@F@std@@@std@@QBEIXZ
+00b75ca0 new: 4
+    ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+    ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+    ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+    ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+00b77e20 new: 7
+    ??A?$CArray@VC4DVector@@@@QAEAAVC4DVector@@I@Z
+    ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+    ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+    ?begin@?$vector@PAVCWaterPatchMesh@@V?$allocator@PAVCWaterPatchMesh@@@std@@@std@@QAEPAPAVCWaterPatchMesh@@XZ
+    ?end@?$vector@PAVCWaterPatchMesh@@V?$allocator@PAVCWaterPatchMesh@@@std@@@std@@QAEPAPAVCWaterPatchMesh@@XZ
+    ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+    ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+00b7eec0 new: 5
+    ??A?$CArray@VC4DVector@@@@QAEAAVC4DVector@@I@Z
+    ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+    ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+    ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+    ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+00b7f0f0 new: 5
+    ??A?$CArray@VC4DVector@@@@QAEAAVC4DVector@@I@Z
+    ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+    ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+    ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+    ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+00b7f3b0 new: 5
+    ??A?$CArray@VC4DVector@@@@QAEAAVC4DVector@@I@Z
+    ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+    ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+    ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+    ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+00b7f600 new: 4
+    ?GetAsCArray@?$CArray@VC4DVector@@@@QAEPAVC4DVector@@XZ
+    ?GetZeroSizeArray@?$CArray@VC4DVector@@@@AAEPAVC4DVector@@XZ
+    ?front@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEAAVC4DVector@@XZ
+    ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+00f0ca30 new: 7
+    ??$swap@PAUTeleportData@CQ_AmbushTradersScript@NScript@@@std@@YAXAAPAUTeleportData@CQ_AmbushTradersScript@NScript@@0@Z
+    ??$swap@V?$_STLP_alloc_proxy@PAUTeleportData@CQ_AmbushTradersScript@NScript@@U123@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@@std@@YAXAAV?$_ST
+    ??0?$_STLP_alloc_proxy@PAUTeleportData@CQ_AmbushTradersScript@NScript@@U123@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@QAE@ABV01@@Z
+    ??1?$_STLP_alloc_proxy@PAUTeleportData@CQ_AmbushTradersScript@NScript@@U123@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAE@XZ
+    ??1?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@QAE@XZ
+    ?swap@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAEXAAV12@@Z TABLE:00f0ca30

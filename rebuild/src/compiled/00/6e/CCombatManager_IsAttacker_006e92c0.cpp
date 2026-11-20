@@ -13,6 +13,12 @@
 // creature's UniqueID is CThing +0x18 (PDB). The id is copied into a frame local (the by-value GetUID() result) before
 // its address is passed; the node compare against the header stays in memory (`cmp eax,[esi]`); byte result with
 // explicit true/false returns; `ret 4`.
+// Name fix (NF185 draft, finished by NF195, 2026-11-20, q4389; test rewritten on stlport/fable_map.h): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced in place by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its _M_find<unsigned __int64> 0x006F0250 is declared only
+//   (FABLE_RETAIL_STLP_TREE_MFIND_DECL), as the stand-in find was; FABLE_RETAIL_STLP_TREE_CONSTFIND gives the const find body.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 class CThingCreatureBase {                                  // the Ego_r class (mangled V)
 public:
     unsigned char _pad[0x18];
@@ -34,31 +40,19 @@ struct CCombatantInfo {                              // PDB CCombatantInfo with 
     CRetailRbMap_UID_Creature Attackers;                    // +0x34 DefenderInfo.Attackers
 };
 
-struct CRetailRbMap_UID_CombatantInfo {                     // STLport map: {header, count, comparator}
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                               // +0x10
-        CCombatantInfo value;                        // +0x18
-    };
-    node* header;                                           // +0; end() == header
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key) const;                // 0x006F0250
-    node* end() const { return header; }
-};
 
 class CCombatManager {
 public:
     virtual void v00();
     unsigned char _sequences[0xc];                          // +0x04 RegisteredCombatSequences
-    CRetailRbMap_UID_CombatantInfo Combatants;              // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;              // +0x10
     bool IsAttacker(const CThingCreatureBase& creature) const;
 };
 
 bool CCombatManager::IsAttacker(const CThingCreatureBase& creature) const
 {
-    CRetailRbMap_UID_CombatantInfo::node* it = Combatants.find(creature.GetUID());
-    if (it != Combatants.end() && it->value.Attacked != 0)
+    std::map<unsigned __int64, CCombatantInfo>::const_iterator  it = Combatants.find(creature.GetUID());
+    if (it != Combatants.end() && it->second.Attacked != 0)
         return true;
     return false;
 }

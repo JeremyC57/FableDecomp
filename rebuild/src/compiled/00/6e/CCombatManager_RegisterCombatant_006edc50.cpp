@@ -17,6 +17,12 @@
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_STATEACCESS
+// Name fix (NF195, 2026-11-20, q4389; NF185's transformer): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced in place
+//   by the STLport map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its _M_find<unsigned __int64> 0x006F0250 is visible but
+//   out of line (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE; the declaration-only form differs: retail keeps a register live across the call); FABLE_RETAIL_STLP_TREE_CONSTFIND gives the const find body.
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 #include "engine/CThing.h"
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
@@ -43,22 +49,11 @@ inline CCharString GetDefNameString(const CThingCreatureBase& thing)
 struct CCombatantInfo {
     unsigned char _data[0x70];
 };
-struct CRetailRbMap_UID_CombatantInfo {            // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                      // +0x10
-        CCombatantInfo value;                      // +0x18
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);       // 0x006F0250
-};
 class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];                 // +0x04 RegisteredCombatSequences
-    CRetailRbMap_UID_CombatantInfo Combatants;     // +0x10
-    CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUID())->value; }
+    std::map<unsigned __int64, CCombatantInfo> Combatants;     // +0x10
+    CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUID())->second; }
     void RegisterAttackedCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked);   // 0x006ED270
     void RegisterAttackingCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked, bool flag);   // 0x006EDA80
     void UpdateAttackingCombatantsList(CCombatantInfo& info, bool force);   // 0x006ED030

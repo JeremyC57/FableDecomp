@@ -49,7 +49,7 @@ void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);  // 0x00CBE716
+#include "engine/fable_script_fade.h"   // FadeOutAndKillEntity 0x00CBE716 (Naming NF194, q6466 / q6518: was a local (thing, bool, float, bool) declaration)  // 0x00CBE716
 // agentNF60: the local CScriptDef model named these members descriptively; engine/CScriptDef.h (Ego_r / FableWin names at the
 //   retail offsets) names them: SafeTraderWarningDistance -> BanditTollTraderWarnDistance (+0x42c), SafeTraderEscapeDistance -> TollBanditCloseToExit (+0x43c), SafeTraderFadeTime -> TollBanditTimeToFade (+0x440).
 #define FABLE_RETAIL_CDEFSTRINGTABLE
@@ -157,5 +157,5 @@ void NScript::CV_BanditTollScript::CSafeTrader::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    FadeOutAndKillEntity(Me, true, pGlobalScriptDef->TollBanditTimeToFade, true);
+    FadeOutAndKillEntity(Me, pGlobalScriptDef->TollBanditTimeToFade, true, true);
 }

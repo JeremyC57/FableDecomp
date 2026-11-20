@@ -32870,9 +32870,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006588cf'
-        Module = '_global'
-        Source = '00/65/CPixelShader_CountReferences_006588cf.cpp'
-        TestSource = '00/65/CPixelShader_CountReferences_006588cf_test.cpp'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_GetCostToBribe_006588cf.cpp'
+        TestSource = '00/65/CTCVillage_GetCostToBribe_006588cf_test.cpp'
         PassPattern = '006588cf_TEST PASS'
     }
     [pscustomobject]@{
@@ -45054,9 +45054,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00798d30'
-        Module = '_unattributed'
-        Source = '00/79/_unattributed_GetShopKeeperGiveHintTextTag_00798d30_00798d30.cpp'
-        TestSource = '00/79/_unattributed_GetShopKeeperGiveHintTextTag_00798d30_00798d30_test.cpp'
+        Module = 'CTCShopKeeper'
+        Source = '00/79/CTCShopKeeper_GetHint_00798d30.cpp'
+        TestSource = '00/79/CTCShopKeeper_GetHint_00798d30_test.cpp'
         PassPattern = '00798d30_TEST PASS'
     }
     [pscustomobject]@{
@@ -69707,9 +69707,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00579faa'
-        Module = 'std'
-        Source = '00/57/std_list_T_00579faa_dtor_00579faa.cpp'
-        TestSource = '00/57/std_list_T_00579faa_dtor_00579faa_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType,std::pair<const EHeroTrainableStatType,SExpSpendUndo>,std::_Select1st<std::pair<const EHeroTrainableStatType,SExpSpendUndo> >,std::less<EHeroTrainableStatType>,std::allocator<std::pair<const EHeroTrainableStatType,SExpSpendUndo> > >'
+        Source = '00/57/stdRbtree_Rbtree_00579faa.cpp'
+        TestSource = '00/57/stdRbtree_Rbtree_00579faa_test.cpp'
         PassPattern = '00579faa_TEST PASS'
     }
     [pscustomobject]@{
@@ -183461,9 +183461,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00485d25'
-        Module = '_unattributed'
-        Source = '00/48/unattributed_ApplyPair00485d25_00485d25.cpp'
-        TestSource = '00/48/unattributed_ApplyPair00485d25_00485d25_test.cpp'
+        Module = 'std::vector<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*> >'
+        Source = '00/48/stdvector_clear_00485d25.cpp'
+        TestSource = '00/48/stdvector_clear_00485d25_test.cpp'
         PassPattern = '00485d25_TEST PASS'
     }
     [pscustomobject]@{
@@ -205451,9 +205451,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d15140'
-        Module = 'CMainGameComponentInit'
-        Source = '00/d1/CMainGameComponentInit_CMainGameComponentInit_00d15140.cpp'
-        TestSource = '00/d1/CMainGameComponentInit_CMainGameComponentInit_00d15140_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::TeleportData'
+        Source = '00/d1/NScriptCQBountyHuntScriptTeleportData_TeleportData_00d15140.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptTeleportData_TeleportData_00d15140_test.cpp'
         PassPattern = '00d15140_TEST PASS'
     }
     [pscustomobject]@{
@@ -206572,9 +206572,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f0ca30'
-        Module = 'SThreeWordRecord'
-        Source = '00/f0/SThreeWordRecord_Swap_00f0ca30.cpp'
-        TestSource = '00/f0/SThreeWordRecord_Swap_00f0ca30_test.cpp'
+        Module = 'std::vector<NScript::CQ_AmbushTradersScript::TeleportData,std::allocator<NScript::CQ_AmbushTradersScript::TeleportData> >'
+        Source = '00/f0/stdvector_swap_00f0ca30.cpp'
+        TestSource = '00/f0/stdvector_swap_00f0ca30_test.cpp'
         PassPattern = '00f0ca30_TEST PASS'
     }
     [pscustomobject]@{
@@ -208339,9 +208339,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d360e0'
-        Module = 'CQ_FireHeartScript'
-        Source = '00/d3/CQFireHeartScript_CheckGameEnding_00d360e0.cpp'
-        TestSource = '00/d3/CQFireHeartScript_CheckGameEnding_00d360e0_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_CheckGameEnding_00d360e0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_CheckGameEnding_00d360e0_test.cpp'
         PassPattern = '00d360e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -214154,9 +214154,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0088b7e0'
-        Module = 'CScriptThing'
-        Source = '00/88/CScriptThing_GetCurrentScriptPriority_0088b7e0.cpp'
-        TestSource = '00/88/CScriptThing_GetCurrentScriptPriority_0088b7e0_test.cpp'
+        Module = 'CAIBrain'
+        Source = '00/88/CAIBrain_GetCurrentStateGroupDebugText_0088b7e0.cpp'
+        TestSource = '00/88/CAIBrain_GetCurrentStateGroupDebugText_0088b7e0_test.cpp'
         PassPattern = '0088b7e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -220393,9 +220393,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ea3490'
-        Module = 'CV_BeardyBaldyScript'
-        Source = '00/ea/CVBeardyBaldyScript_WatchForQuestFinished_00ea3490.cpp'
-        TestSource = '00/ea/CVBeardyBaldyScript_WatchForQuestFinished_00ea3490_test.cpp'
+        Module = 'NScript::CV_LostTraderScript'
+        Source = '00/ea/NScriptCVLostTraderScript_WatchForQuestFailure_00ea3490.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScript_WatchForQuestFailure_00ea3490_test.cpp'
         PassPattern = '00ea3490_TEST PASS'
     }
     [pscustomobject]@{
@@ -220666,9 +220666,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f0d470'
-        Module = 'SScriptQuery_00f0d470'
-        Source = '00/f0/SScriptQuery00f0d470_SScriptQuery00f0d470_00f0d470.cpp'
-        TestSource = '00/f0/SScriptQuery00f0d470_SScriptQuery00f0d470_00f0d470_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::TeleportData'
+        Source = '00/f0/NScriptCQAmbushTradersScriptTeleportData_TeleportData_00f0d470.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptTeleportData_TeleportData_00f0d470_test.cpp'
         PassPattern = '00f0d470_TEST PASS'
     }
     [pscustomobject]@{
@@ -256281,9 +256281,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e0c350'
-        Module = 'CV_LostTraderScript'
-        Source = '00/e0/CVLostTraderScript_WatchForQuestFailureState_00e0c350.cpp'
-        TestSource = '00/e0/CVLostTraderScript_WatchForQuestFailureState_00e0c350_test.cpp'
+        Module = 'NScript::CQ_UndeadRisingScript'
+        Source = '00/e0/NScriptCQUndeadRisingScript_WatchForTermination_00e0c350.cpp'
+        TestSource = '00/e0/NScriptCQUndeadRisingScript_WatchForTermination_00e0c350_test.cpp'
         PassPattern = '00e0c350_TEST PASS'
     }
     [pscustomobject]@{
@@ -260151,9 +260151,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00442870'
-        Module = 'std::vector<CRecordWithWideStringAt0>'
-        Source = '00/44/stdvectorCRecordWithWideStringAt0_vector_00442870.cpp'
-        TestSource = '00/44/stdvectorCRecordWithWideStringAt0_vector_00442870_test.cpp'
+        Module = 'std::vector<CSubtitleRenderer::CEmbeddedHighlight,std::allocator<CSubtitleRenderer::CEmbeddedHighlight> >'
+        Source = '00/44/stdvector_vector_00442870.cpp'
+        TestSource = '00/44/stdvector_vector_00442870_test.cpp'
         PassPattern = '00442870_TEST PASS'
     }
     [pscustomobject]@{
@@ -267699,10 +267699,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e0a510'
-        Module = 'CTraderScript'
-        Source = '00/e0/CTraderScript_HandleTrader_00e0a510.cpp'
-        TestSource = '00/e0/CTraderScript_HandleTrader_00e0a510_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodTrader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_SetBrainState_00e0a510.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_SetBrainState_00e0a510_test.cpp'
         PassPattern = '00e0a510_TEST PASS'
+        CompilerFlags = '/d2inlS22'
     }
     [pscustomobject]@{
         Address = '00ed9cf0'
@@ -274774,9 +274775,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d3cbd0'
-        Module = 'CQ_GuildTrainingScript'
-        Source = '00/d3/CQGuildTrainingScript_KeepTabsOnWhisper_00d3cbd0.cpp'
-        TestSource = '00/d3/CQGuildTrainingScript_KeepTabsOnWhisper_00d3cbd0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript'
+        Source = '00/d3/NScriptCQGuildTrainingScript_KeepTabsOnWhisper_00d3cbd0.cpp'
+        TestSource = '00/d3/NScriptCQGuildTrainingScript_KeepTabsOnWhisper_00d3cbd0_test.cpp'
         PassPattern = '00d3cbd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -276117,177 +276118,186 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00ce0ef0'
         Module = 'CEntityScriptBinding<NScript::CPersonalScript_GlobalThingsScript>'
-        Source = '00/ce/CEntityScriptBindingNScriptCPersonalScriptGlobalThingsScript_CreateActiveEntityScript_00ce0ef0.cpp'
-        TestSource = '00/ce/CEntityScriptBindingNScriptCPersonalScriptGlobalThingsScript_CreateActiveEntityScript_00ce0ef0_test.cpp'
+        Source = '00/ce/CEntityScriptBinding_CreateActiveEntityScript_00ce0ef0.cpp'
+        TestSource = '00/ce/CEntityScriptBinding_CreateActiveEntityScript_00ce0ef0_test.cpp'
         PassPattern = '00ce0ef0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '00d7c2e0'
         Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsThunderScript>'
-        Source = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsThunderScript_CreateActiveEntityScript_00d7c2e0.cpp'
-        TestSource = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsThunderScript_CreateActiveEntityScript_00d7c2e0_test.cpp'
+        Source = '00/d7/CEntityScriptBinding_CreateActiveEntityScript_00d7c2e0.cpp'
+        TestSource = '00/d7/CEntityScriptBinding_CreateActiveEntityScript_00d7c2e0_test.cpp'
         PassPattern = '00d7c2e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '00d7fab0'
         Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsArenaScript>'
-        Source = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsArenaScript_CreateActiveEntityScript_00d7fab0.cpp'
-        TestSource = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsArenaScript_CreateActiveEntityScript_00d7fab0_test.cpp'
+        Source = '00/d7/CEntityScriptBinding_CreateActiveEntityScript_00d7fab0.cpp'
+        TestSource = '00/d7/CEntityScriptBinding_CreateActiveEntityScript_00d7fab0_test.cpp'
         PassPattern = '00d7fab0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '00d82210'
         Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsBriarScript>'
-        Source = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsBriarScript_CreateActiveEntityScript_00d82210.cpp'
-        TestSource = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsBriarScript_CreateActiveEntityScript_00d82210_test.cpp'
+        Source = '00/d8/CEntityScriptBinding_CreateActiveEntityScript_00d82210.cpp'
+        TestSource = '00/d8/CEntityScriptBinding_CreateActiveEntityScript_00d82210_test.cpp'
         PassPattern = '00d82210_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '00d844a0'
         Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsMotherScript>'
-        Source = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsMotherScript_CreateActiveEntityScript_00d844a0.cpp'
-        TestSource = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsMotherScript_CreateActiveEntityScript_00d844a0_test.cpp'
+        Source = '00/d8/CEntityScriptBinding_CreateActiveEntityScript_00d844a0.cpp'
+        TestSource = '00/d8/CEntityScriptBinding_CreateActiveEntityScript_00d844a0_test.cpp'
         PassPattern = '00d844a0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '00d89580'
         Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsNostroScript>'
-        Source = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsNostroScript_CreateActiveEntityScript_00d89580.cpp'
-        TestSource = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsNostroScript_CreateActiveEntityScript_00d89580_test.cpp'
+        Source = '00/d8/CEntityScriptBinding_CreateActiveEntityScript_00d89580.cpp'
+        TestSource = '00/d8/CEntityScriptBinding_CreateActiveEntityScript_00d89580_test.cpp'
         PassPattern = '00d89580_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '00d8a960'
         Module = 'CEntityScriptBinding<NScript::CQ_HerosOldHouseScript>'
-        Source = '00/d8/CEntityScriptBindingNScriptCQHerosOldHouseScript_CreateActiveEntityScript_00d8a960.cpp'
-        TestSource = '00/d8/CEntityScriptBindingNScriptCQHerosOldHouseScript_CreateActiveEntityScript_00d8a960_test.cpp'
+        Source = '00/d8/CEntityScriptBinding_CreateActiveEntityScript_00d8a960.cpp'
+        TestSource = '00/d8/CEntityScriptBinding_CreateActiveEntityScript_00d8a960_test.cpp'
         PassPattern = '00d8a960_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '00d915b0'
         Module = 'CEntityScriptBinding<NScript::CQ_HobbeCaveScript>'
-        Source = '00/d9/CEntityScriptBindingNScriptCQHobbeCaveScript_CreateActiveEntityScript_00d915b0.cpp'
-        TestSource = '00/d9/CEntityScriptBindingNScriptCQHobbeCaveScript_CreateActiveEntityScript_00d915b0_test.cpp'
+        Source = '00/d9/CEntityScriptBinding_CreateActiveEntityScript_00d915b0.cpp'
+        TestSource = '00/d9/CEntityScriptBinding_CreateActiveEntityScript_00d915b0_test.cpp'
         PassPattern = '00d915b0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '00d9d930'
         Module = 'CEntityScriptBinding<NScript::CQ_HobbeToothContestScript>'
-        Source = '00/d9/CEntityScriptBindingNScriptCQHobbeToothContestScript_CreateActiveEntityScript_00d9d930.cpp'
-        TestSource = '00/d9/CEntityScriptBindingNScriptCQHobbeToothContestScript_CreateActiveEntityScript_00d9d930_test.cpp'
+        Source = '00/d9/CEntityScriptBinding_CreateActiveEntityScript_00d9d930.cpp'
+        TestSource = '00/d9/CEntityScriptBinding_CreateActiveEntityScript_00d9d930_test.cpp'
         PassPattern = '00d9d930_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d9ffd0'
         Module = 'CEntityScriptBinding<NScript::CQ_MinionCampScript>'
-        Source = '00/d9/CEntityScriptBindingNScriptCQMinionCampScript_CreateActiveEntityScript_00d9ffd0.cpp'
-        TestSource = '00/d9/CEntityScriptBindingNScriptCQMinionCampScript_CreateActiveEntityScript_00d9ffd0_test.cpp'
+        Source = '00/d9/CEntityScriptBinding_CreateActiveEntityScript_00d9ffd0.cpp'
+        TestSource = '00/d9/CEntityScriptBinding_CreateActiveEntityScript_00d9ffd0_test.cpp'
         PassPattern = '00d9ffd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00da8320'
         Module = 'CEntityScriptBinding<NScript::CQ_MinionClifftopChaseScript>'
-        Source = '00/da/CEntityScriptBindingNScriptCQMinionClifftopChaseScript_CreateActiveEntityScript_00da8320.cpp'
-        TestSource = '00/da/CEntityScriptBindingNScriptCQMinionClifftopChaseScript_CreateActiveEntityScript_00da8320_test.cpp'
+        Source = '00/da/CEntityScriptBinding_CreateActiveEntityScript_00da8320.cpp'
+        TestSource = '00/da/CEntityScriptBinding_CreateActiveEntityScript_00da8320_test.cpp'
         PassPattern = '00da8320_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00db8520'
         Module = 'CEntityScriptBinding<NScript::CQ_NewOakValeIntroScript>'
-        Source = '00/db/CEntityScriptBindingNScriptCQNewOakValeIntroScript_CreateActiveEntityScript_00db8520.cpp'
-        TestSource = '00/db/CEntityScriptBindingNScriptCQNewOakValeIntroScript_CreateActiveEntityScript_00db8520_test.cpp'
+        Source = '00/db/CEntityScriptBinding_CreateActiveEntityScript_00db8520.cpp'
+        TestSource = '00/db/CEntityScriptBinding_CreateActiveEntityScript_00db8520_test.cpp'
         PassPattern = '00db8520_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dc0170'
         Module = 'CEntityScriptBinding<NScript::CQ_OakValeBanditRaidScript>'
-        Source = '00/dc/CEntityScriptBindingNScriptCQOakValeBanditRaidScript_CreateActiveEntityScript_00dc0170.cpp'
-        TestSource = '00/dc/CEntityScriptBindingNScriptCQOakValeBanditRaidScript_CreateActiveEntityScript_00dc0170_test.cpp'
+        Source = '00/dc/CEntityScriptBinding_CreateActiveEntityScript_00dc0170.cpp'
+        TestSource = '00/dc/CEntityScriptBinding_CreateActiveEntityScript_00dc0170_test.cpp'
         PassPattern = '00dc0170_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dc8700'
         Module = 'CEntityScriptBinding<NScript::CQ_OpeningGraveyardSecretPassageScript>'
-        Source = '00/dc/CEntityScriptBindingNScriptCQOpeningGraveyardSecretPassageScript_CreateActiveEntityScript_00dc8700.cpp'
-        TestSource = '00/dc/CEntityScriptBindingNScriptCQOpeningGraveyardSecretPassageScript_CreateActiveEntityScript_00dc8700_test.cpp'
+        Source = '00/dc/CEntityScriptBinding_CreateActiveEntityScript_00dc8700.cpp'
+        TestSource = '00/dc/CEntityScriptBinding_CreateActiveEntityScript_00dc8700_test.cpp'
         PassPattern = '00dc8700_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dcf790'
         Module = 'CEntityScriptBinding<NScript::CQ_OrchardFarmRaidScript>'
-        Source = '00/dc/CEntityScriptBindingNScriptCQOrchardFarmRaidScript_CreateActiveEntityScript_00dcf790.cpp'
-        TestSource = '00/dc/CEntityScriptBindingNScriptCQOrchardFarmRaidScript_CreateActiveEntityScript_00dcf790_test.cpp'
+        Source = '00/dc/CEntityScriptBinding_CreateActiveEntityScript_00dcf790.cpp'
+        TestSource = '00/dc/CEntityScriptBinding_CreateActiveEntityScript_00dcf790_test.cpp'
         PassPattern = '00dcf790_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dd9300'
         Module = 'CEntityScriptBinding<NScript::CQ_PrisonEscapeRescueMotherScript>'
-        Source = '00/dd/CEntityScriptBindingNScriptCQPrisonEscapeRescueMotherScript_CreateActiveEntityScript_00dd9300.cpp'
-        TestSource = '00/dd/CEntityScriptBindingNScriptCQPrisonEscapeRescueMotherScript_CreateActiveEntityScript_00dd9300_test.cpp'
+        Source = '00/dd/CEntityScriptBinding_CreateActiveEntityScript_00dd9300.cpp'
+        TestSource = '00/dd/CEntityScriptBinding_CreateActiveEntityScript_00dd9300_test.cpp'
         PassPattern = '00dd9300_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ddc7d0'
         Module = 'CEntityScriptBinding<NScript::CQ_PrisonRaceScript>'
-        Source = '00/dd/CEntityScriptBindingNScriptCQPrisonRaceScript_CreateActiveEntityScript_00ddc7d0.cpp'
-        TestSource = '00/dd/CEntityScriptBindingNScriptCQPrisonRaceScript_CreateActiveEntityScript_00ddc7d0_test.cpp'
+        Source = '00/dd/CEntityScriptBinding_CreateActiveEntityScript_00ddc7d0.cpp'
+        TestSource = '00/dd/CEntityScriptBinding_CreateActiveEntityScript_00ddc7d0_test.cpp'
         PassPattern = '00ddc7d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ddeee0'
         Module = 'CEntityScriptBinding<NScript::CQ_PrisonWardenGameScript>'
-        Source = '00/dd/CEntityScriptBindingNScriptCQPrisonWardenGameScript_CreateActiveEntityScript_00ddeee0.cpp'
-        TestSource = '00/dd/CEntityScriptBindingNScriptCQPrisonWardenGameScript_CreateActiveEntityScript_00ddeee0_test.cpp'
+        Source = '00/dd/CEntityScriptBinding_CreateActiveEntityScript_00ddeee0.cpp'
+        TestSource = '00/dd/CEntityScriptBinding_CreateActiveEntityScript_00ddeee0_test.cpp'
         PassPattern = '00ddeee0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dec5b0'
         Module = 'CEntityScriptBinding<NScript::CQ_RansomVictimChiefsHouseScript>'
-        Source = '00/de/CEntityScriptBindingNScriptCQRansomVictimChiefsHouseScript_CreateActiveEntityScript_00dec5b0.cpp'
-        TestSource = '00/de/CEntityScriptBindingNScriptCQRansomVictimChiefsHouseScript_CreateActiveEntityScript_00dec5b0_test.cpp'
+        Source = '00/de/CEntityScriptBinding_CreateActiveEntityScript_00dec5b0.cpp'
+        TestSource = '00/de/CEntityScriptBinding_CreateActiveEntityScript_00dec5b0_test.cpp'
         PassPattern = '00dec5b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00def220'
         Module = 'CEntityScriptBinding<NScript::CQ_SecretPassageScript>'
-        Source = '00/de/CEntityScriptBindingNScriptCQSecretPassageScript_CreateActiveEntityScript_00def220.cpp'
-        TestSource = '00/de/CEntityScriptBindingNScriptCQSecretPassageScript_CreateActiveEntityScript_00def220_test.cpp'
+        Source = '00/de/CEntityScriptBinding_CreateActiveEntityScript_00def220.cpp'
+        TestSource = '00/de/CEntityScriptBinding_CreateActiveEntityScript_00def220_test.cpp'
         PassPattern = '00def220_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00df3550'
         Module = 'CEntityScriptBinding<NScript::CQ_SummoningTheShipScript>'
-        Source = '00/df/CEntityScriptBindingNScriptCQSummoningTheShipScript_CreateActiveEntityScript_00df3550.cpp'
-        TestSource = '00/df/CEntityScriptBindingNScriptCQSummoningTheShipScript_CreateActiveEntityScript_00df3550_test.cpp'
+        Source = '00/df/CEntityScriptBinding_CreateActiveEntityScript_00df3550.cpp'
+        TestSource = '00/df/CEntityScriptBinding_CreateActiveEntityScript_00df3550_test.cpp'
         PassPattern = '00df3550_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00df4a50'
         Module = 'CEntityScriptBinding<NScript::CQ_TentacleKrakenBossFightScript>'
-        Source = '00/df/CEntityScriptBindingNScriptCQTentacleKrakenBossFightScript_CreateActiveEntityScript_00df4a50.cpp'
-        TestSource = '00/df/CEntityScriptBindingNScriptCQTentacleKrakenBossFightScript_CreateActiveEntityScript_00df4a50_test.cpp'
+        Source = '00/df/CEntityScriptBinding_CreateActiveEntityScript_00df4a50.cpp'
+        TestSource = '00/df/CEntityScriptBinding_CreateActiveEntityScript_00df4a50_test.cpp'
         PassPattern = '00df4a50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00df99f0'
         Module = 'CEntityScriptBinding<NScript::CQ_TraderConflictEvilScript>'
-        Source = '00/df/CEntityScriptBindingNScriptCQTraderConflictEvilScript_CreateActiveEntityScript_00df99f0.cpp'
-        TestSource = '00/df/CEntityScriptBindingNScriptCQTraderConflictEvilScript_CreateActiveEntityScript_00df99f0_test.cpp'
+        Source = '00/df/CEntityScriptBinding_CreateActiveEntityScript_00df99f0.cpp'
+        TestSource = '00/df/CEntityScriptBinding_CreateActiveEntityScript_00df99f0_test.cpp'
         PassPattern = '00df99f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dfc100'
         Module = 'CEntityScriptBinding<NScript::CQ_TraderConflictGoodScript>'
-        Source = '00/df/CEntityScriptBindingNScriptCQTraderConflictGoodScript_CreateActiveEntityScript_00dfc100.cpp'
-        TestSource = '00/df/CEntityScriptBindingNScriptCQTraderConflictGoodScript_CreateActiveEntityScript_00dfc100_test.cpp'
+        Source = '00/df/CEntityScriptBinding_CreateActiveEntityScript_00dfc100.cpp'
+        TestSource = '00/df/CEntityScriptBinding_CreateActiveEntityScript_00dfc100_test.cpp'
         PassPattern = '00dfc100_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e05170'
         Module = 'CEntityScriptBinding<NScript::CQ_TraderEscortScript>'
-        Source = '00/e0/CEntityScriptBindingNScriptCQTraderEscortScript_CreateActiveEntityScript_00e05170.cpp'
-        TestSource = '00/e0/CEntityScriptBindingNScriptCQTraderEscortScript_CreateActiveEntityScript_00e05170_test.cpp'
+        Source = '00/e0/CEntityScriptBinding_CreateActiveEntityScript_00e05170.cpp'
+        TestSource = '00/e0/CEntityScriptBinding_CreateActiveEntityScript_00e05170_test.cpp'
         PassPattern = '00e05170_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '00e54990'
@@ -276299,71 +276309,71 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00efa210'
         Module = 'CEntityScriptBinding<NScript::Cguy_scriptScript>'
-        Source = '00/ef/CEntityScriptBindingNScriptCguyscriptScript_CreateActiveEntityScript_00efa210.cpp'
-        TestSource = '00/ef/CEntityScriptBindingNScriptCguyscriptScript_CreateActiveEntityScript_00efa210_test.cpp'
+        Source = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00efa210.cpp'
+        TestSource = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00efa210_test.cpp'
         PassPattern = '00efa210_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efad80'
         Module = 'CEntityScriptBinding<NScript::Cbandit_level_cutsceneScript>'
-        Source = '00/ef/CEntityScriptBindingNScriptCbanditlevelcutsceneScript_CreateActiveEntityScript_00efad80.cpp'
-        TestSource = '00/ef/CEntityScriptBindingNScriptCbanditlevelcutsceneScript_CreateActiveEntityScript_00efad80_test.cpp'
+        Source = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00efad80.cpp'
+        TestSource = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00efad80_test.cpp'
         PassPattern = '00efad80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efb9c0'
         Module = 'CEntityScriptBinding<NScript::CHitSwitchTestScript>'
-        Source = '00/ef/CEntityScriptBindingNScriptCHitSwitchTestScript_CreateActiveEntityScript_00efb9c0.cpp'
-        TestSource = '00/ef/CEntityScriptBindingNScriptCHitSwitchTestScript_CreateActiveEntityScript_00efb9c0_test.cpp'
+        Source = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00efb9c0.cpp'
+        TestSource = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00efb9c0_test.cpp'
         PassPattern = '00efb9c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efbf80'
         Module = 'CEntityScriptBinding<NScript::CGuildSealTriggerTestScript>'
-        Source = '00/ef/CEntityScriptBindingNScriptCGuildSealTriggerTestScript_CreateActiveEntityScript_00efbf80.cpp'
-        TestSource = '00/ef/CEntityScriptBindingNScriptCGuildSealTriggerTestScript_CreateActiveEntityScript_00efbf80_test.cpp'
+        Source = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00efbf80.cpp'
+        TestSource = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00efbf80_test.cpp'
         PassPattern = '00efbf80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efda90'
         Module = 'CEntityScriptBinding<NScript::CMarkTestScriptsScript>'
-        Source = '00/ef/CEntityScriptBindingNScriptCMarkTestScriptsScript_CreateActiveEntityScript_00efda90.cpp'
-        TestSource = '00/ef/CEntityScriptBindingNScriptCMarkTestScriptsScript_CreateActiveEntityScript_00efda90_test.cpp'
+        Source = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00efda90.cpp'
+        TestSource = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00efda90_test.cpp'
         PassPattern = '00efda90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eff5c0'
         Module = 'CEntityScriptBinding<NScript::CTonyTestScriptsScript>'
-        Source = '00/ef/CEntityScriptBindingNScriptCTonyTestScriptsScript_CreateActiveEntityScript_00eff5c0.cpp'
-        TestSource = '00/ef/CEntityScriptBindingNScriptCTonyTestScriptsScript_CreateActiveEntityScript_00eff5c0_test.cpp'
+        Source = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00eff5c0.cpp'
+        TestSource = '00/ef/CEntityScriptBinding_CreateActiveEntityScript_00eff5c0_test.cpp'
         PassPattern = '00eff5c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f01150'
         Module = 'CEntityScriptBinding<NScript::COracleMinigameTestScript>'
-        Source = '00/f0/CEntityScriptBindingNScriptCOracleMinigameTestScript_CreateActiveEntityScript_00f01150.cpp'
-        TestSource = '00/f0/CEntityScriptBindingNScriptCOracleMinigameTestScript_CreateActiveEntityScript_00f01150_test.cpp'
+        Source = '00/f0/CEntityScriptBinding_CreateActiveEntityScript_00f01150.cpp'
+        TestSource = '00/f0/CEntityScriptBinding_CreateActiveEntityScript_00f01150_test.cpp'
         PassPattern = '00f01150_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f01d20'
         Module = 'CEntityScriptBinding<NScript::CQ_CinemaTestScript>'
-        Source = '00/f0/CEntityScriptBindingNScriptCQCinemaTestScript_CreateActiveEntityScript_00f01d20.cpp'
-        TestSource = '00/f0/CEntityScriptBindingNScriptCQCinemaTestScript_CreateActiveEntityScript_00f01d20_test.cpp'
+        Source = '00/f0/CEntityScriptBinding_CreateActiveEntityScript_00f01d20.cpp'
+        TestSource = '00/f0/CEntityScriptBinding_CreateActiveEntityScript_00f01d20_test.cpp'
         PassPattern = '00f01d20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f09b10'
         Module = 'CEntityScriptBinding<NScript::CQ_AmbushTradersScript>'
-        Source = '00/f0/CEntityScriptBindingNScriptCQAmbushTradersScript_CreateActiveEntityScript_00f09b10.cpp'
-        TestSource = '00/f0/CEntityScriptBindingNScriptCQAmbushTradersScript_CreateActiveEntityScript_00f09b10_test.cpp'
+        Source = '00/f0/CEntityScriptBinding_CreateActiveEntityScript_00f09b10.cpp'
+        TestSource = '00/f0/CEntityScriptBinding_CreateActiveEntityScript_00f09b10_test.cpp'
         PassPattern = '00f09b10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f1cb50'
         Module = 'CEntityScriptBinding<NScript::CQ_ArenaScript>'
-        Source = '00/f1/CEntityScriptBindingNScriptCQArenaScript_CreateActiveEntityScript_00f1cb50.cpp'
-        TestSource = '00/f1/CEntityScriptBindingNScriptCQArenaScript_CreateActiveEntityScript_00f1cb50_test.cpp'
+        Source = '00/f1/CEntityScriptBinding_CreateActiveEntityScript_00f1cb50.cpp'
+        TestSource = '00/f1/CEntityScriptBinding_CreateActiveEntityScript_00f1cb50_test.cpp'
         PassPattern = '00f1cb50_TEST PASS'
     }
     [pscustomobject]@{
@@ -380700,8 +380710,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00d1cac0'
         Module = 'NScript::CQ_BountyHuntScript'
-        Source = '00/d1/NScriptCQBountyHuntScript_WatchForAllLeaderChargeGruntsKilled_00d1cac0.cpp'
-        TestSource = '00/d1/NScriptCQBountyHuntScript_WatchForAllLeaderChargeGruntsKilled_00d1cac0_test.cpp'
+        Source = '00/d1/NScriptCQBountyHuntScript_WatchForLeaderChargeGruntsKilled_00d1cac0.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScript_WatchForLeaderChargeGruntsKilled_00d1cac0_test.cpp'
         PassPattern = '00d1cac0_TEST PASS'
     }
     [pscustomobject]@{

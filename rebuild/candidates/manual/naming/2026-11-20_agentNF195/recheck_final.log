@@ -1,0 +1,108 @@
+addr       parity           behav  name
+00442870   WARN STANDIN_LEAF ??1?$vector@VCEmbeddedHighlight@CSubtitleRenderer@@V?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@@std@@QAE@XZ (catalog CDefendingCombatantInfo::CCombatWheel::ResetRings; names another function)
+00442870   RELOCATION_MATCH PASS   CDefendingCombatantInfo::CCombatWheel::ResetRings
+00485d25   RELOCATION_MATCH PASS   _unattributed::ApplyPair_00485d25
+00579faa   WARN STANDIN_LEAF ??1?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@QAE@XZ (catalog std::list<T_00579faa>::~list; names another function)
+00579faa   RELOCATION_MATCH PASS   std::list<T_00579faa>::~list
+006588cf   MATCH            PASS   _global::GetMember_dword0x94_deref0xf8_006588cf
+006e9270   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e9270   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9270   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e9270   RELOCATION_MATCH PASS   CCombatManager::IsAttacked
+006e92c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e92c0   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e92c0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e92c0   RELOCATION_MATCH PASS   CCombatManager::IsAttacker
+006e9e40   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e9e40   WARN SHARED_HEADER_AVAILABLE CDefendingCombatantInfo (engine/CDefendingCombatantInfo.h)
+006e9e40   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006e9e40   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9e40   WARN STANDIN_LEAF ?BlockAttackerProngOnVictim@CCombatManager_Retail@@QAEXABVCThingCreatureBase@@@Z (catalog CCombatManager::GetCombatantInfo; names another function)
+006e9e40   RELOCATION_MATCH PASS   CCombatManager::GetCombatantInfo
+006edc50   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+006edc50   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+006edc50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006edc50   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006edc50   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006edc50   WARN RELOC_NAME: ?GetWorldFrameString@@YI?AVCCharString@@XZ -> 0049d880 labelled 'CWorld::GetFrameAsString'
+006edc50   RELOCATION_MATCH PASS   CCombatManager::RegisterCombatant
+00798d30   RELOCATION_MATCH PASS   _unattributed::GetShopKeeperGiveHintTextTag_00798d30
+00aad5d0   RELOCATION_MATCH PASS   CWaveFile::ConvertToMono
+00b75ca0   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix (engine/CPreTransposedBoneMatrix.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b75ca0   RELOCATION_MATCH PASS   CEngineWaterRenderer::RenderIceBackground
+00b77e20   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix (engine/CPreTransposedBoneMatrix.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CWaterPatchMesh (engine/CWaterPatchMesh.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b77e20   RELOCATION_MATCH PASS   CEngineWaterRenderer::RenderSeaNonReflectiveForeground
+00b7eec0   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix (engine/CPreTransposedBoneMatrix.h)
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CEngineWaterSettings (engine/CEngineWaterSettings.h)
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b7eec0   RELOCATION_MATCH PASS   CEngineWaterRenderer::SetupForegroundShaderConstantsAndFog
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix (engine/CPreTransposedBoneMatrix.h)
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CEngineWaterSettings (engine/CEngineWaterSettings.h)
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b7f0f0   RELOCATION_MATCH PASS   CEngineWaterRenderer::SetupBackgroundShaderConstantsAndFog
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix (engine/CPreTransposedBoneMatrix.h)
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CEngineWaterSettings (engine/CEngineWaterSettings.h)
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b7f3b0   RELOCATION_MATCH PASS   CEngineWaterRenderer::SetupIceForegroundShaderConstantsAndFog
+00b7f600   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b7f600   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b7f600   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix (engine/CPreTransposedBoneMatrix.h)
+00b7f600   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b7f600   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b7f600   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b7f600   WARN SHARED_HEADER_AVAILABLE CEngineWaterSettings (engine/CEngineWaterSettings.h)
+00b7f600   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b7f600   RELOCATION_MATCH PASS   CEngineWaterRenderer::SetupBackgroundShaderConstants
+00f0ca30   WARN STANDIN_LEAF ?swap@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAEXAAV12@@Z (catalog SThreeWordRecord::Swap; names another function)
+00f0ca30   MATCH            PASS   SThreeWordRecord::Swap
+
+WINS: 17
+  00442870 RELOCATION_MATCH std::vector<CRecordWithWideStringAt0>::??1?$vector@VCEmbeddedHighlight@CSubtitleRenderer@@V?$allocator@VCEmbeddedHighlight@CSubtitleRenderer@@@std@@@std@@QAE@XZ
+  00485d25 RELOCATION_MATCH _unattributed::?clear@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ
+  00579faa RELOCATION_MATCH std::??1?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@QAE@XZ
+  006588cf MATCH _global::?GetCostToBribe@CTCVillage@@QAEJXZ
+  006e9270 RELOCATION_MATCH CCombatManager::?IsAttacked@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  006e92c0 RELOCATION_MATCH CCombatManager::?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  006e9e40 RELOCATION_MATCH CCombatManager::BlockAttackerProngOnVictim
+  006edc50 RELOCATION_MATCH CCombatManager::RegisterCombatant
+  00798d30 RELOCATION_MATCH _unattributed::?GetHint@CTCShopKeeper@@QAE?AVCCharString@@XZ
+  00aad5d0 RELOCATION_MATCH CWaveFile::?ConvertToMono@CWaveFile@@QAEXXZ
+  00b75ca0 RELOCATION_MATCH CEngineWaterRenderer::RenderIceBackground
+  00b77e20 RELOCATION_MATCH CEngineWaterRenderer::RenderSeaNonReflectiveForeground
+  00b7eec0 RELOCATION_MATCH CEngineWaterRenderer::SetupForegroundShaderConstantsAndFog
+  00b7f0f0 RELOCATION_MATCH CEngineWaterRenderer::SetupBackgroundShaderConstantsAndFog
+  00b7f3b0 RELOCATION_MATCH CEngineWaterRenderer::SetupIceForegroundShaderConstantsAndFog
+  00b7f600 RELOCATION_MATCH CEngineWaterRenderer::SetupBackgroundShaderConstants
+  00f0ca30 MATCH SThreeWordRecord::?swap@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAEXAAV12@@Z

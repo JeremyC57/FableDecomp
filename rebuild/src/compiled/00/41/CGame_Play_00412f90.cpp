@@ -40,7 +40,7 @@ class CGameComponent { public:
     virtual bool Run(CGameComponent*& next);            // slot 2
 };
 class CMainGameComponent : public CGameComponent { public:
-    CMainGameComponent(CGame* game, const CMainGameComponentInit& init);   // 0x00418DCA
+    CMainGameComponent(CGame& game, const CMainGameComponentInit& init);   // 0x00418DCA (Ego_r.pdb 0x004172C9 + FableWin.pdb 0x018A0CE7 ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z; Naming NF194, q11915: was CGame*)
     unsigned char _body[0x161e4];
 };
 struct CFrontendGameComponent : CGameComponent {
@@ -75,7 +75,7 @@ void CGame::Play()
     if (g_bStartMainGame) {
         CMainGameComponentInit init;
         init.SaveGameName = RelaunchSaveGameName;
-        component = new CMainGameComponent(this, init);
+        component = new CMainGameComponent(*this, init);
         component->Start();
     } else {
         if (g_bUseLegacyFrontend) {
