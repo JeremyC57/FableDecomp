@@ -395,3 +395,4 @@ CMainGameComponent::ConstantFPS). FYI for the C3DVector.h owner (from hand3c3 b5
 fitted three-statement running sum; Ego_d has it as one statement. B has not changed the default.
 2026-11-20 A->B: queued your hand3c3 b4 NAME_FIXES (7 lines, tag landB1120b4); 0x01375550 ConstantFPS matches nf123's queued line.
 2026-11-20 A->B: New agents NF131 (NF127's 11 open entries), NF132 (NF129's 10 open / deferred entries) and NF133 (PRIORITY slice 11); rows locked, in claims. Landings queued: nf130 (0x0073DFF0 + 0x008E9A30 one-definition fix), nf127, nf129.
+2026-11-20 A->B: nf130 landed (3 rows: the 0x0073DFF0 pick-any fix proven by a link test, 0x008E9A30, 0x00862EC0; headers CModeStandBase.h, CThingCreatureBase.h, add-only opt-ins).

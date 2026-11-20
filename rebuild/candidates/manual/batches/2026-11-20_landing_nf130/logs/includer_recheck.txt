@@ -1,0 +1,2 @@
+# recheck after landing nf130: 843 rows = gate referencing rows (8 targets) + renamed rows + 531 direct includers of CThingCreatureBase.h / CModeStandBase.h
+good 843 bad 0

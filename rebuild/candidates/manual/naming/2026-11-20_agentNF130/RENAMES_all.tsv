@@ -1,0 +1,11 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x008E9A30	NCreatureMode::CModeStrafe	OnActivate	?OnActivate@CModeStrafe@NCreatureMode@@UAEXXZ	NCreatureMode::CModeStrafe::OnActivate	?OnActivate@CModeStrafe@@QAEXXZ	namespace + virtual: Ego_r.pdb 0x0090FFC0 + FableWin.pdb 0x02AD8350 ?OnActivate@CModeStrafe@NCreatureMode@@UAEXXZ; vtable 0x01268588 slot 5; the row moved onto engine/NCreatureMode_CModeStrafe.h and the shared nested CModeBase; exe scan: no landed row references 0x008E9A30 (row finished by NF128, round 10; handed back by NF130 with the 0x0073DFF0 one-definition fix: the pair links clean)
+# Section 2
+0x008E9A30	?InitialiseMovementSpeeds@ThingNative@@QAEXXZ	?InitialiseMovementSpeeds@CThingPlayerCreature@@QAEXXZ	0x006A9A00
+0x008E9A30	?OnActivate@BaseModeNative@@QAEXXZ	?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	0x0073AAC0
+0x008E9A30	?GetStrafingAnimationName@@YI?AUNativeStringValue@@ABUThingNative@@W4EMovementType@@@Z	?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVCThing@@W4EMovementType@@@Z	0x008E8FF0
+0x008E9A30	?GetAnimDistanceAndIndexFromAnimName@@YI_NABUThingNative@@ABVCCharString@@AAJAAM@Z	?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z	0x008E9080
+0x008E9A30	?EmptyNarrowString@@3PADA	?NullChar@CCharString@@1DB	0x0129AAF4
+0x0073DFF0	??_C@_00CNPNBAHC@?$AA@	?NullChar@CCharString@@1DB	0x0129AAF4
+0x00862EC0	?GetGlobalComponents@CModeBase@@QBEPAUCGlobalComponents@@XZ	?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ	0x0073A680
+0x00862EC0	?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@@QAEJW4EMode@@@Z	?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@CTCCreatureModeManager@@IAEJW4EMode@NCreatureMode@@@Z	0x0073A6F0

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0073dff0   RELOCATION_MATCH PASS   CAnimFilterOfGroup::SetCurrentGroupName
+008e9a30   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::OnActivate
+00862ec0   RELOCATION_MATCH PASS   CModeStandBase::AnimUpdate
+
+WINS: 3
+  0073dff0 RELOCATION_MATCH CAnimFilterOfGroup::?SetCurrentGroupName@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z
+  008e9a30 RELOCATION_MATCH NCreatureMode::CModeStrafe::?OnActivate@CModeStrafe@NCreatureMode@@UAEXXZ
+  00862ec0 RELOCATION_MATCH CModeStandBase::?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z

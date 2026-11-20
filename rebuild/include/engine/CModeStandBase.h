@@ -31,6 +31,20 @@ public:
 #ifdef FABLE_RETAIL_CMODESTANDBASE_DEACTIVATE
     virtual void OnDeactivate();
 #endif
+#ifdef FABLE_RETAIL_CMODESTANDBASE_ANIMUPDATE
+    // NF130 opt-in (q6453, row 0x00862EC0 CModeStandBase::AnimUpdate): Ego_r.pdb 0x00817670 / FableWin.pdb 0x0283F510
+    // ?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z (CModeBase slot 2; also declared by the PASS22_VTABLE opt-in), and the two
+    // private helpers it calls, Ego_r.pdb 0x008164C0 ?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z (retail 0x00862780) /
+    // Ego_r.pdb 0x008171F0 / FableWin.pdb 0x0283FC60 ?UpdateWalkingAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z (retail 0x00862AA0; both
+    // landed self leaves). Declarations only: no layout change.
+#ifndef FABLE_RETAIL_CMODESTANDBASE_PASS22_VTABLE
+    virtual void AnimUpdate(CAnimateThing& animation);                   // slot 2, 0x00862EC0
+#endif
+private:
+    void UpdateIdleAnim(CAnimateThing& animation);                       // 0x00862780
+    void UpdateWalkingAnim(CAnimateThing& animation);                    // 0x00862AA0
+public:
+#endif
 #ifdef FABLE_RETAIL_CMODESTANDBASE_PASS22_VTABLE
     // Retail opt-in (Codex pass22): native slots7/9 at 00861900/0073DA00;
     // FableWin 0283DC30/01DD6510, Ego_r 00816080 and donor body shapes.

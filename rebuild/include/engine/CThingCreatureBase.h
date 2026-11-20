@@ -104,6 +104,13 @@ public:
  CThingCreatureBase* GetPLastAttackedByCreature()const{return PLastAttackedByCreature.Get();}
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_PEEKMOVEMENTVECTOR
+public:
+ // NF130 opt-in (q6453, row 0x00862EC0 CModeStandBase::AnimUpdate): FableWin.pdb 0x01E46990
+ // ?PeekMovementVector@CThingCreatureBase@@QBEABVC3DVector@@XZ, inline in retail (the row reads MovementVector +0x10c / +0x110 in place,
+ // Ego_r.pdb CThingCreatureBase::MovementVector). No layout change.
+ const C3DVector& PeekMovementVector() const { return MovementVector; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_GETDEFHOVERSPEEDS
 public:
  // NF128 opt-in (q6453, row 0x008EA500 NCreatureMode::CModeHoverBase::InitialiseMovementSpeeds): Ego_r.pdb 0x0053CF60 / 0x0053CF70 /

@@ -238357,8 +238357,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008e9a30'
         Module = 'NCreatureMode::CModeStrafe'
-        Source = '00/8e/CModeStrafe_OnActivate_008e9a30.cpp'
-        TestSource = '00/8e/CModeStrafe_OnActivate_008e9a30_test.cpp'
+        Source = '00/8e/NCreatureModeCModeStrafe_OnActivate_008e9a30.cpp'
+        TestSource = '00/8e/NCreatureModeCModeStrafe_OnActivate_008e9a30_test.cpp'
         PassPattern = 'PASS'
     }
     [pscustomobject]@{

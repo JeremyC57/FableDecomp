@@ -4161,11 +4161,6 @@ _kName	012786ac	008b34d0
 ?OnDeactivate@ModeStandNative@@QAEXXZ	00861d00	008e7cf0
 ?TransitionToDefaultThemeAllChannels@EnvironmentMethods@@QAEXJM@Z	006b3950	008e7cf0
 ??_7CCreatureAction_BriarRoseInvulnerableTeleport@@6B@	01287a4c	008e8de0
-?EmptyNarrowString@@3PADA	0129aaf4	008e9a30
-?GetAnimDistanceAndIndexFromAnimName@@YI_NABUThingNative@@ABVCCharString@@AAJAAM@Z	008e9080	008e9a30
-?GetStrafingAnimationName@@YI?AUNativeStringValue@@ABUThingNative@@W4EMovementType@@@Z	008e8ff0	008e9a30
-?InitialiseMovementSpeeds@ThingNative@@QAEXXZ	006a9a00	008e9a30
-?OnActivate@BaseModeNative@@QAEXXZ	0073aac0	008e9a30
 ?Method@CClass_008eac30@@QAEXXZ	008ea9f0	008eac30
 ??_7CModeHoverBase@NCreatureMode@@6B@	01287d14	008eac40
 ?_M_insert_overflow@CHoverModeEntryVector@@QAEXPAUSHoverModeEntry@@ABU2@ABU__false_type@@K_N@Z	008ec070	008ec1a0
@@ -9001,10 +8996,6 @@ __CIasin	00bfedc4	009de2a0
 ?Transfer@CPersistContext@@QAEXAAU?$CRetailMap@W4EOpinionReactionType@@_N@@@Z	0045dee9	0045f178
 ?pop_front@CUpdateList@CMultiStatBar@NPlayerGui@@QAEXXZ	00655a86	00646c44
 ?PeekData@CMemoryDataOutputStream@@QBEPBXXZ	00995e70	006f92a0
-?AddCombinationIdles@@YIXPAVCThingCreatureBase@@AAVCAnimateThing@@@Z	008619c0	00862ec0
-?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@@QAEJW4EMode@@@Z	0073a6f0	00862ec0
-?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z	00862780	00862ec0
-?UpdateWalkingAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z	00862aa0	00862ec0
 ?OnActivate@CModeStandBase@@QAEXXZ	008621a0	008e7b90
 ?TransitionToTheme@CEnvironment@@QAEXJJJM@Z	006b3800	008e7b90
 ?resize@?$vector@E@@QAEXKABE@Z	00486189	009e94a0
@@ -40030,3 +40021,8 @@ _time	00bfed22	008405f0
 ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ	005da950	0078a690
 ?LoadRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	0078a2c0	0078a690
 ?PlayAttachedSoundEvent@CTCSoundPlayer@@QAEKABVCCharString@@_N11@Z	0066b1d0	0078a690
+?AddCombinationIdles@@YIXPAVCThingCreatureBase@@AAVCAnimateThing@@@Z	008619c0	00862ec0
+?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z	00862780	00862ec0
+?UpdateWalkingAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z	00862aa0	00862ec0
+?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z	008e9080	008e9a30
+?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVCThing@@W4EMovementType@@@Z	008e8ff0	008e9a30

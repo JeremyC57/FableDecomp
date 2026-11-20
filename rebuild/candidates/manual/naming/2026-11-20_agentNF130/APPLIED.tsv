@@ -1,0 +1,9 @@
+entry	address	status	binders_respelled	note
+q4747	0x00733480	open	0	not started by NF130 (context; earlier census stands: see work/NF126_round1 / NF128_round1 APPLIED)
+q4802	0x0075B8D0	open	0	not started by NF130 (context; earlier census stands: see work/NF126_round1 / NF128_round1 APPLIED)
+q6394	0x008E8FF0	done	1	self row 0x008E8FF0 already defines the claim (NF128); the only binder 0x008E9A30 (NF128 port, finished here) binds ?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVCThing@@W4EMovementType@@@Z; handed back with the 0x0073DFF0 one-definition fix (link proof work/l/)
+q6395	0x008E9080	done	1	self row 0x008E9080 already defines the claim (NF128); the only binder 0x008E9A30 binds ?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z; handed back with 0x0073DFF0
+q6408	0x0073ACC0	open	0	not started by NF130 (context; earlier census stands: see work/NF126_round1 / NF128_round1 APPLIED)
+q6453	0x0073A680	open	1	partial (NF130): 0x00862EC0 ported onto the shared nested CModeBase + engine/CModeStandBase.h and now binds the claim ?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ (RELOCATION_MATCH + PASS). With NF128 13 of 18 REFS rows bind the claim; left (not reached): 0x008D7630, 0x008DC900, 0x008DCB60, 0x008E7B90, 0x008E7CF0 (STATUS has the stand-ins of the two read). No self rename, so each port is independent progress
+q6454	0x0073AAC0	done	1	last binder 0x008E9A30 handed back here (binds ?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ); the self row 0x0073AAC0 QAE -> UAE and the other 14 binders are in nf128 / earlier landings (HELD.txt); complete once nf128 and this hand-back both land
+q6455	0x0073A680	open	0	same address and binders as q6453 (one unit; counted there)
