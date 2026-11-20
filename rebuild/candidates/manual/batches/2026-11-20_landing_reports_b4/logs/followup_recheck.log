@@ -1,0 +1,4 @@
+addr       parity           behav  name
+00bb1740   WARN STANDIN_LEAF ??_GCEngineSubPrimitiveSprite@@UAEPAXI@Z (catalog CEngineSubPrimitiveSprite::`scalar_deleting_destructor'; names another function)
+00bb1740   RELOCATION_MATCH PASS   CEngineSubPrimitiveSprite::`scalar_deleting_destructor'
+00bace10   RELOCATION_MATCH PASS   CEngineSubPrimitiveSprite::CEngineSubPrimitiveSprite

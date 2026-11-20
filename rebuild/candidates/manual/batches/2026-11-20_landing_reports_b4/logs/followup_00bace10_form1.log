@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00bace10   RELOCATION_MATCH PASS   CEngineSubPrimitiveSprite::CEngineSubPrimitiveSprite
+
+WINS: 1
+  00bace10 RELOCATION_MATCH CEngineSubPrimitiveSprite::??0CEngineSubPrimitiveSprite@@QAE@PAVCEngineInternalPrimitiveSprite@@@Z

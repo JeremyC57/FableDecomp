@@ -18,3 +18,14 @@ put 0x00BACE10 on the nf86 / nf88 pick-any scaffolding, which also cures the pre
 - Context link (0x00BACE10, 0x00BADE40, the constructor's base owner 0x00B98A50): one LNK2005, 0x00BACE10's strong constructor against
   0x00BADE40's header copy, reproduced with HEAD's 0x00BACE10 object (`logs/link_control_head.log`): pre-existing, queued.
 - Table unchanged; gate 0; bindings_multi_check 1.
+
+## Follow-up (Account A, 2026-11-20; advisor decision, owner delegated): 0x00BB1740 landed with the 0x00BACE10 owner fix
+- 0x00BACE10 moved to the nf86 / nf88 pick-any scaffolding: `_CTOR_OUTOFLINE` dropped, the header's inline constructor referenced from an
+  anonymous-namespace helper under `#pragma inline_depth(0)` (`// Fidelity: scaffolding, not retail`). Form 1 RELOCATION_MATCH PASS
+  (`logs/followup_00bace10_form1.log`); its constructor COMDAT is LINK_ONCE_DISCARD (pick-any).
+- B's 0x00BB1740 text and test applied (`winddown_source/src/00bb1740.cpp`); PassPattern `00bb1740_TEST PASS`. Strict recheck of both:
+  RELOCATION_MATCH PASS (`logs/followup_recheck.log`).
+- Link of 0x00BACE10 + 0x00BB1740 + every landed includer of engine/CEngineSubPrimitiveSprite.h (0x00BADE40) + the owners 0x0099A2F0 /
+  0x0099A300 / 0x00BEB550: no LNK2005 (`logs/followup_link.log`); all three constructor copies pick-any. This also cures the pre-existing
+  0x00BACE10 / 0x00BADE40 clash recorded above.
+- Bindings: 0x00BEB550 lost the FreeMesh stand-in spelling (6 -> 5); nothing grew; bindings_multi_check 1.
