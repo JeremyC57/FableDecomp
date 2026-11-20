@@ -48748,7 +48748,7 @@ $catalog = @(
         Module = 'CEngineSubPrimitiveSprite'
         Source = '00/bb/CEngineSubPrimitiveSprite_scalardeletingdestructor_00bb1740.cpp'
         TestSource = '00/bb/CEngineSubPrimitiveSprite_scalardeletingdestructor_00bb1740_test.cpp'
-        PassPattern = 'VDD_OK'
+        PassPattern = '00bb1740_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bb1760'

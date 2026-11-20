@@ -5956,7 +5956,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??_7CEngineInternalPrimitive2DClockSprite@@6B@	012a5534	00bacfd0
 ??_7CEngineInternalPrimitive2DSprite@@6B@	012a54bc	00bacfd0
 _SpriteHelper@4	00bade40	00baf9e0
-?FreeMesh@@YIXPAUCEngineSubPrimitiveGameMesh@@@Z	00beb550	00bb1740
 @SubPrim_dtor@4	0099a300	00bb1760
 @SubPrim_opdelete@4	00beb550	00bb1760
 ?freeMem@CEngineSubPrimitiveGameMesh@@QAEXXZ	00beb550	00bb17b0
@@ -19789,7 +19788,6 @@ _kOctaveScale	0125a4dc	00c6bdc0
 ??$__uninitialized_fill_n@PAV?$CIntelligentPointer@VCThingCreatureBase@@@@IV1@@std@@YIPAV?$CIntelligentPointer@VCThingCreatureBase@@@@PAV1@IABV1@ABU__false_type@0@@Z	0074cd10	0074d600
 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z	007698c0	0076a030
 ??$__uninitialized_copy@PBUGoodsPlace@CTCShop@@PAU12@@std@@YIPAUGoodsPlace@CTCShop@@PBU12@0PAU12@ABU__false_type@0@@Z	007770c0	00777430
-?_M_insert_overflow@?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@IAEXPAPAVCThingObject@@ABQAV3@ABU__true_type@2@I_N@Z	0074f900	0077ec20
 ??0CTCTrapBase@@QAE@AAVCThing@@@Z	0078918d	00787dbc
 ??_7CTCMeleeTrap@@6B@	0126b884	00787dbc
 ??$fill_n@PAPAVCThingGameObject@@IPAV1@@std@@YIPAPAVCThingGameObject@@PAPAV1@IABQAV1@@Z	00788c87	00788ffc
@@ -20195,7 +20193,6 @@ _kOctaveScale	0125a4dc	00c6bdc0
 ?_M_insert_overflow@?$vector@V?$CCountedPointer@VCUnprovenPointee_00b97cb0@@@@V?$allocator@V?$CCountedPointer@VCUnprovenPointee_00b97cb0@@@@@std@@@std@@IAEXPAV?$CCountedPointer@VCUnprovenPointee_00b97cb0@@@@ABV3@ABU__false_type@2@I_N@Z	00b97cb0	00b97e90
 ??0CEnginePrimitiveManagerStaticMeshesBase@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z	00b9ece0	00ba1ac0
 ??_7CEnginePrimitiveManager2DStaticMeshes@@6B@	012a5160	00ba1ac0
-??_7CEngineSubPrimitiveSprite@@6B@	012a5430	00bace10
 ??_7CEngineSubPrimitive2DSprite@@6B@	012a5438	00bace50
 ??_7CEnginePrimitiveChangerManager@@6B@	012a65d4	00bc5570
 ??_7CEngineSubPrimitiveWeaponTrail@@6B@	012a6ad0	00bcc400
@@ -39816,3 +39813,5 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?Alloc@CPrisonRacer@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ddc3e0	00ddae40
 ?Alloc@CWaypointSpeedCheck@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ddc5e0	00ddae40
 ?WatchForHeroWinOrLose@CQ_PrisonRaceScript@NScript@@QAEXXZ	00ddb2f0	00ddae40
+?_M_insert_overflow@?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@IAEXPAPAVCThingObject@@ABQAV3@ABU__true_type@2@I_N@Z	0074f900	0077ec20
+??_7CEngineSubPrimitiveSprite@@6B@	012a5430	00bace10
