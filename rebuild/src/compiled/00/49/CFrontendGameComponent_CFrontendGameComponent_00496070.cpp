@@ -39,24 +39,12 @@ class CWideString { public:
     ~CWideString();                                        // 0x0099B510
     const CWideString& operator=(const CWideString& other);
 };
-struct CWideStringAllocator {                              // STLport allocator<CWideString> (empty)
-    CWideStringAllocator() { }
-};
-struct CWideStringStorageProxy : CWideStringAllocator {    // STLport _STLP_alloc_proxy<CWideString*, ...>
-    CWideString* _M_data;
-    CWideStringStorageProxy(const CWideStringAllocator& a, CWideString* p) : CWideStringAllocator(a), _M_data(p) { }
-};
-struct CWideStringVectorBase {                             // STLport _Vector_base<CWideString>
-    CWideString*            _M_start;
-    CWideString*            _M_finish;
-    CWideStringStorageProxy _M_end_of_storage;
-    CWideStringVectorBase(const CWideStringAllocator& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0) { }
-};
-struct CWideStringVector : CWideStringVectorBase {         // STLport vector<CWideString>
-    CWideStringVector(const CWideStringAllocator& a = CWideStringAllocator()) : CWideStringVectorBase(a) { }
-};
-void __fastcall GetSaveNames(CWideStringVector* names);    // 0x00495830
-void __fastcall GetProfileNames(CWideStringVector* names); // 0x004959E0
+// NF197 (2026-11-20): the local STLport vector stand-ins (CWideStringAllocator / CWideStringStorageProxy / CWideStringVectorBase /
+//   CWideStringVector) replaced by the shared stlport/fable_containers.h std::vector<CWideString> (the same _Vector_base /
+//   _STLP_alloc_proxy shape), and the free stand-ins GetSaveNames / GetProfileNames(CWideStringVector*) by the static __fastcall
+//   CFrontendGameComponent members (Ego_r.pdb + FableWin.pdb ?GetSaveNames / ?GetProfileNames@CFrontendGameComponent@@SIXAAV?$vector@
+//   VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z, 0x00495830 / 0x004959E0).
+#include "stlport/fable_containers.h"
 class CTexture { public:
     void* PTexture;
     void* PData;
@@ -82,6 +70,8 @@ enum EGameMode { GAME_MODE_NONE = 0 };
 enum ECursorMovement { CURSOR_MOVEMENT_NONE = 0 };
 
 struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768 / 0x0123875C
+    static void __fastcall GetSaveNames(std::vector<CWideString>& names);      // 0x00495830
+    static void __fastcall GetProfileNames(std::vector<CWideString>& names);   // 0x004959E0
     unsigned char                     _pad00c[0x4];
     bool                              CreateGame;                 // +0x10
     long                              CreateGameJoystickDeviceNumber;   // +0x14
@@ -99,12 +89,12 @@ struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768
     long                              NoSessionStrings;           // +0x1df8
     CCountedPointer<CGraphicDataBank> PTempGraphics;              // +0x1dfc
     CCountedPointer<const CFontBank>  MainFont;                   // +0x1e04
-    CWideStringVector                 ProfileNames;               // +0x1e0c
+    std::vector<CWideString>          ProfileNames;               // +0x1e0c
     long                              ProfileNamesOffset;         // +0x1e18
-    CWideStringVector                 SaveNames;                  // +0x1e1c
+    std::vector<CWideString>          SaveNames;                  // +0x1e1c
     long                              SaveNamesOffset;            // +0x1e28
     CWideString                       SaveToLoad;                 // +0x1e2c
-    CWideStringVector                 WorldNames;                 // +0x1e30
+    std::vector<CWideString>          WorldNames;                 // +0x1e30
     long                              WorldNamesOffset;           // +0x1e3c
     CWideString                       WorldToLoad;                // +0x1e40
     long                              CursorHighlight;            // +0x1e44
@@ -126,13 +116,13 @@ struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768
             return;
         }
         if (mode == 11) {
-            GetSaveNames(&SaveNames);
+            GetSaveNames(SaveNames);
             WorldToLoad = g_EmptyWideString;
             SaveNamesOffset = 0;
             return;
         }
         if (mode == 12) {
-            GetProfileNames(&ProfileNames);
+            GetProfileNames(ProfileNames);
             ProfileNamesOffset = 0;
         }
     }

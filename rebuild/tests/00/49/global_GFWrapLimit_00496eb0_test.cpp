@@ -1,11 +1,12 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/49/global_GFWrapLimit_00496eb0.cpp"
+// The row (0x00496EB0, the GFWrapLimit<long,int,int> instance) is linked in: declaration only here.
+template <class T, class TMin, class TMax> void __fastcall GFWrapLimit(T& value, const TMin& minimum, const TMax& maximum);
 
 static bool Check(long initial, int minimum, int maximum, long expected)
 {
     long value = initial;
-    GFWrapLimit_00496eb0(&value, &minimum, &maximum);
+    GFWrapLimit<long, int, int>(value, minimum, maximum);
     return value == expected;
 }
 

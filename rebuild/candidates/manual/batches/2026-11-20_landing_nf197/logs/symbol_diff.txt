@@ -1,0 +1,64 @@
+00495830 new: 1
+    ?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z TABLE:00495830
+00495fe0 new: 1
+    ?SetMode@CFrontendGameComponent@@AAEXW4EGameMode@@@Z TABLE:00495fe0
+00496070 new: 16
+    ??$_Destroy@PAVCWideString@@@std@@YAXPAVCWideString@@0@Z
+    ??$_Destroy@VCWideString@@@std@@YAXPAVCWideString@@@Z
+    ??$__destroy@PAVCWideString@@V1@@std@@YAXPAVCWideString@@00@Z
+    ??$__destroy_aux@PAVCWideString@@@std@@YAXPAVCWideString@@0ABU__false_type@0@@Z
+    ??0?$_STLP_alloc_proxy@PAVCWideString@@V1@V?$allocator@VCWideString@@@std@@@std@@QAE@ABV?$allocator@VCWideString@@@1@PAVCWideString@@@Z
+    ??0?$_Vector_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@ABV?$allocator@VCWideString@@@1@@Z
+    ??0?$allocator@VCWideString@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VCWideString@@@std@@QAE@XZ
+    ??0?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@ABV?$allocator@VCWideString@@@1@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCWideString@@V1@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCWideString@@@std@@QAE@XZ
+    ??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ TABLE:00412130
+    ??_GCWideString@@QAEPAXI@Z
+    ?deallocate@?$allocator@VCWideString@@@std@@QAEXPAVCWideString@@I@Z
+00496eb0 new: 1
+    ??$GFWrapLimit@JHH@@YIXAAJABH1@Z TABLE:00496eb0
+005db1e0 new: 1
+    ?TransferBinaryOut@CAnimComponentFlags@@UBEXAAVCDataOutputStream@@@Z
+00614620 new: 0
+00687210 new: 3
+    ??1?$CIntelligentPointer@VCThing@@@@UAE@XZ
+    ??1CMessageEvent@@UAE@XZ
+    ?EmitMessageEventDestructor@?A0x45bb0d11@@YAXPAVCMessageEvent@@@Z
+00687730 new: 0
+006b82e0 new: 1
+    ?RadialBlurFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z TABLE:006b82e0
+009e41d0 new: 1
+    ?EmptyEventStore@CJoystick@@IAEXXZ TABLE:009e41d0
+00a55a30 new: 1
+    ?ToC2DBoxI@C2DBoxF@@QBE?AVC2DBoxI@@XZ TABLE:00a55a30
+00a93a60 new: 1
+    ?DeleteData@?$CCountedPointer@VC3DClothPrimitive@@@@SIXPAX@Z TABLE:00a93a60
+00a94df0 new: 4
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+    ?DeleteData@?$CCountedPointer@VC3DClothPrimitive@@@@SIXPAX@Z TABLE:00a93a60
+    ?ReleaseData@?$CCountedPointer@VC3DClothPrimitive@@@@QAEXXZ
+    ?Reset@?$CCountedPointer@VC3DClothPrimitive@@@@QAEXPAVC3DClothPrimitive@@@Z
+00aad150 new: 1
+    ?SaveWaveFile@CWaveLoader@@QAEXABVCWaveFile@@AAVCDataOutputStream@@@Z
+00ab4910 new: 0
+00ab6100 new: 0
+00ab6240 new: 0
+00ab6450 new: 0
+00ab69f0 new: 0
+00ab6d60 new: 0
+00ad4a70 new: 9
+    ??1?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE@XZ TABLE:00517850
+    ??1?$_Rb_tree_base@KV?$allocator@K@std@@@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@K@std@@U12@V?$allocator@U?$_Rb_tree_node@K@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_Rb_tree_node@K@std@@@std@@QAE@XZ
+    ??1?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@XZ
+    ??1CIndexList@QuadricOptimiserInternals@@QAE@XZ
+    ??1CUniqueVertex@QuadricOptimiserInternals@@QAE@XZ TABLE:00ad4a70
+    ?clear@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAEXXZ
+    ?deallocate@?$allocator@U?$_Rb_tree_node@K@std@@@std@@QAEXPAU?$_Rb_tree_node@K@2@I@Z
+00ad71b0 new: 1
+    ?Kill@COptimisedVertex@QuadricOptimiserInternals@@QAEXXZ

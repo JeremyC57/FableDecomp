@@ -1,0 +1,4 @@
+OK  00496070 -> 00412130 ??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@X sizes 49 49 
+NO-OWNER-OBJ 00a94df0 00a93a60 ?DeleteData@?$CCountedPointer@VC3DClothPrimitive@@@@SIXPAX@Z
+MISSING 00ad4a70 00517850 ??1?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE@XZ owner leaf None True False
+sizes 11 11 bytes equal True relocs equal True

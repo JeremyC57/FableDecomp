@@ -3,7 +3,7 @@
 // The chunk label "CJoystickDX::UpdateAcquired" is propagated: slot 3 (+0xc) is CKeyboard::SetHasInputFocus (vtable 0x0129DBA8). Shape: two virtual call sites with `push 1` / `push 0`, `ret`.
 class CSystemManager { public:
     bool IsApplicationActive();                    // 0x009A57B0
-    bool HasInputFocus();                          // 0x009A4FB0 (`mov al,[ecx+0Ah]`; labelled "CTCInventoryBase::GetCanItemBeQuickAssigned")
+    bool IsApplicationInputFocus();                          // 0x009A4FB0 (`mov al,[ecx+0Ah]`; labelled "CTCInventoryBase::GetCanItemBeQuickAssigned") ?IsApplicationInputFocus@CSystemManager@@QAE_NXZ (Ego_r.pdb + FableWin.pdb; NF197: was HasInputFocus, in neither PDB)
 };
 CSystemManager* __fastcall GFGetSystemManager();      // 0x009A4EC0
 struct CKeyboardDX {
@@ -16,7 +16,7 @@ struct CKeyboardDX {
 
 void CKeyboardDX::UpdateAcquired()
 {
-    if (GFGetSystemManager()->IsApplicationActive() && GFGetSystemManager()->HasInputFocus())
+    if (GFGetSystemManager()->IsApplicationActive() && GFGetSystemManager()->IsApplicationInputFocus())
         SetHasInputFocus(true);
     else
         SetHasInputFocus(false);

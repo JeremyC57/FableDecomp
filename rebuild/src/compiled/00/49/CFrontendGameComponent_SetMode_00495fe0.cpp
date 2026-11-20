@@ -1,19 +1,18 @@
-// CFrontendGameComponent::SetMode @ 0x00495FE0.
+// CFrontendGameComponent::SetMode(EGameMode mode) @ 0x00495FE0.
+// Leaf: ?SetMode@CFrontendGameComponent@@AAEXW4EGameMode@@@Z
+// Names (NF197, 2026-11-20; in place in the row's HEAD-local CFrontendGameComponent model):
+//   - own symbol: Ego_r.pdb 0x0049ED70 + FableWin.pdb 0x01A45E40 ?SetMode@CFrontendGameComponent@@AAEXW4EGameMode@@@Z (private, the
+//     mode an EGameMode; was ?SetMode@CFrontendGameComponent@@QAEXJ@Z); the landed caller Input 0x004963A0 binds the PDB spelling and
+//     models EGameMode as the same empty local enum (no shared header has it).
+//   - callees: the save / profile list refreshes are the static __fastcall CFrontendGameComponent::GetSaveNames 0x00495830 and
+//     GetProfileNames 0x004959E0 (both PDBs, vector<CWideString>&; ecx = &SaveNames +0x1E1C / &ProfileNames +0x1E0C), not the
+//     stand-ins CFrontendSaveList_00495fe0 / CFrontendProfileList_00495fe0::Refresh.
+//   - members (Ego_r.pdb CFrontendGameComponent less the three 4-byte vector shrinks, as 0x004963A0 lays them out): Mode +0x1C,
+//     String[128] +0x168 / StringPos +0x1E8 (the ClearString body), ProfileNames / ProfileNamesOffset +0x1E0C / +0x1E18, SaveNames /
+//     SaveNamesOffset +0x1E1C / +0x1E28, WorldToLoad +0x1E40, CursorHighlight +0x1E44 (was m_ModePointerEnabled).
 
 #include <cstring>
-
-// The two lists are different types with different refresh bodies: the save list's Refresh is 0x00495830, the
-// profile list's (a disk enumeration with wide-string path pieces "*", ":", "\\") is 0x004959E0.
-class CFrontendSaveList_00495fe0
-{
-public:
-    void Refresh();                 // 0x00495830
-};
-class CFrontendProfileList_00495fe0
-{
-public:
-    void Refresh();                 // 0x004959E0
-};
+#include "stlport/fable_containers.h"
 
 // Naming (naming wave 24): the CWideString at +0x1E40 is Ego_r's WorldToLoad (CFrontendGameComponent PDB +0x1E4C less the three 4-byte
 // vector shrinks; the landed GetWorldNames 0x00495890 models it so), cleared
@@ -27,39 +26,40 @@ public:
     const CWideString& operator=(const unsigned short* text);   // 0x0099B800
 };
 
+enum EGameMode { };
+
 class CFrontendGameComponent
 {
     unsigned char m_Pad0000[0x1c];
-    long m_Mode;
+    EGameMode Mode;                                     // +0x1C
     unsigned char m_Pad0020[0x148];
-    long m_ResetValues[32];
-    long m_Cursor;
+    char String[128];                                   // +0x168
+    long StringPos;                                     // +0x1E8
     unsigned char m_Pad01ec[0x1c20];
-    CFrontendProfileList_00495fe0 m_ProfileList;
-    unsigned char m_Pad1e0d[0x0b];
-    long m_ProfileIndex;
-    CFrontendSaveList_00495fe0 m_SaveList;
-    unsigned char m_Pad1e1d[0x0b];
-    long m_SaveIndex;
+    std::vector<CWideString> ProfileNames;              // +0x1E0C
+    long ProfileNamesOffset;                            // +0x1E18
+    std::vector<CWideString> SaveNames;                 // +0x1E1C
+    long SaveNamesOffset;                               // +0x1E28
     unsigned char m_Pad1e2c[0x14];
-    CWideString WorldToLoad;
-    long m_ModePointerEnabled;
-
+    CWideString WorldToLoad;                            // +0x1E40
+    long CursorHighlight;                               // +0x1E44
 
 public:
-    void SetMode(long);
+    static void __fastcall GetSaveNames(std::vector<CWideString>& names);      // 0x00495830
+    static void __fastcall GetProfileNames(std::vector<CWideString>& names);   // 0x004959E0
 private:
+    void SetMode(EGameMode mode);
     void GetWorldNames();   // 0x00495890
 };
 
-void CFrontendGameComponent::SetMode(long mode)
+void CFrontendGameComponent::SetMode(EGameMode mode)
 {
-    m_Mode = mode;
-    m_ModePointerEnabled = 1;
-    std::memset(m_ResetValues, 0, sizeof(m_ResetValues));
-    m_Cursor = 0;
+    Mode = mode;
+    CursorHighlight = 1;
+    std::memset(String, 0, sizeof(String));
+    StringPos = 0;
 
-    if (m_Mode == 10)
+    if (Mode == 10)
     {
         GetWorldNames();
         return;
@@ -67,15 +67,15 @@ void CFrontendGameComponent::SetMode(long mode)
 
     if (mode == 11)
     {
-        m_SaveList.Refresh();
+        GetSaveNames(SaveNames);
         WorldToLoad = L"";
-        m_SaveIndex = 0;
+        SaveNamesOffset = 0;
         return;
     }
 
     if (mode == 12)
     {
-        m_ProfileList.Refresh();
-        m_ProfileIndex = 0;
+        GetProfileNames(ProfileNames);
+        ProfileNamesOffset = 0;
     }
 }

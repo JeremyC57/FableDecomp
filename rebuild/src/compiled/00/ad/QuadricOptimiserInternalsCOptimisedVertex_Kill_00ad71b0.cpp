@@ -1,12 +1,15 @@
-// QuadricOptimiserInternals::COptimisedVertex::Remove() -- retire a vertex that a pair contraction merged away: clear Exists, empty its face list and its pair-contraction map
-// Leaf: ?Remove@COptimisedVertex@QuadricOptimiserInternals
+// QuadricOptimiserInternals::COptimisedVertex::Kill() -- retire a vertex that a pair contraction merged away: clear Exists, empty its face list and its pair-contraction map
+// Leaf: ?Kill@COptimisedVertex@QuadricOptimiserInternals@@QAEXXZ
+// Name (NF197, 2026-11-20): FableWin.pdb 0x034CA5B0 ?Kill@COptimisedVertex@QuadricOptimiserInternals@@QAEXXZ, the class's only
+//   argument-less void member in either PDB not placed elsewhere, + the body (the vertex is retired: Exists = false, FaceList and
+//   PairContractions emptied; thiscall, plain `ret`) + its only caller, the end of the pair contraction 0x00ACCBF0. Was the
+//   descriptive Remove (in neither PDB); no landed row references 0x00AD71B0 (exe scan). In place: the row's HEAD-local models are kept.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD71B0, 0x6A bytes, thiscall, plain `ret`.
 // Identity: `this` is a COptimisedVertex (retail 0xB8 layout of the landed ~COptimisedVertex 0x00AD7400): FaceList's
 // set<unsigned long> at +0x84 (its node erase 0x004CF810), Exists byte at +0x90, PairContractions
 // map<unsigned long, CContractionReference> at +0xA8 (its node erase 0x00AD5240). The only caller is the end of the
 // pair contraction 0x00ACCBF0 (after the merged cost is copied to the surviving vertex, the other vertex is retired).
-// No Ego_r.pdb method matches (inlined there), so the name is descriptive; the catalog's
-// "COptimisedPrimitive_InitializeTrees" is descriptive too.
+// No Ego_r.pdb method matches (inlined there); FableWin.pdb names it Kill (above).
 // Callees: _Rb_tree<unsigned long, ...>::_M_erase(node) @ 0x004CF810 (manifest "LTextTreeWalkThrough::BuildTreeArray"
 // is a propagation), _Rb_tree<unsigned long, pair<const unsigned long, CContractionReference>>::_M_erase(node)
 // @ 0x00AD5240 (thiscall on the tree, root pushed).
@@ -91,10 +94,10 @@ public:
     unsigned long OutputIndex;                                   // +0x98
     std::map<unsigned long, float>                 Groups;            // +0x9C
     std::map<unsigned long, CContractionReference> PairContractions;  // +0xA8
-    void Remove();
+    void Kill();
 };
 
-void COptimisedVertex::Remove()
+void COptimisedVertex::Kill()
 {
     Exists = false;
     FaceList.Indices.clear();

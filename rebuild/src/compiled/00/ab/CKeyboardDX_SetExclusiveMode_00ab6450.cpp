@@ -37,7 +37,7 @@ class CSystemManager { public:
     void*         MainWindow;                      // +0x94 (HWND)
     void* GetMainWindow() const { return MainWindow; }
     bool IsApplicationActive();                    // 0x009A57B0
-    bool HasInputFocus();                          // 0x009A4FB0
+    bool IsApplicationInputFocus();                          // 0x009A4FB0 ?IsApplicationInputFocus@CSystemManager@@QAE_NXZ (Ego_r.pdb + FableWin.pdb; NF197: was HasInputFocus, in neither PDB)
 };
 CSystemManager* __fastcall GFGetSystemManager();      // 0x009A4EC0
 #define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
@@ -65,7 +65,7 @@ bool CKeyboardDX::SetExclusiveMode(bool exclusive)
     void* window = GFGetSystemManager()->GetMainWindow();
     if (DKeyboard->SetCooperativeLevel(window, 6) < 0)
         return false;
-    if (GFGetSystemManager()->IsApplicationActive() && GFGetSystemManager()->HasInputFocus())
+    if (GFGetSystemManager()->IsApplicationActive() && GFGetSystemManager()->IsApplicationInputFocus())
         SetHasInputFocus(true);
     else
         SetHasInputFocus(false);

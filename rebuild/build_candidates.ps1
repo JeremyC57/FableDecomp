@@ -30134,7 +30134,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00496eb0'
-        Module = 'GFWrapLimit'
+        Module = '_global'
         Source = '00/49/global_GFWrapLimit_00496eb0.cpp'
         TestSource = '00/49/global_GFWrapLimit_00496eb0_test.cpp'
         PassPattern = 'global_GFWrapLimit_00496eb0_test PASS'
@@ -43682,9 +43682,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b82e0'
-        Module = '_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std'
-        Source = '00/6b/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_006b82e0.cpp'
-        TestSource = '00/6b/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_006b82e0_test.cpp'
+        Module = 'CEnvironmentSpellEffectInterpolator'
+        Source = '00/6b/CEnvironmentSpellEffectInterpolator_RadialBlurFadeOut_006b82e0.cpp'
+        TestSource = '00/6b/CEnvironmentSpellEffectInterpolator_RadialBlurFadeOut_006b82e0_test.cpp'
         PassPattern = '006b82e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -67992,9 +67992,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009e41d0'
-        Module = '_global'
-        Source = '00/9e/Clear_Clear_009e41d0.cpp'
-        TestSource = '00/9e/Clear_Clear_009e41d0_test.cpp'
+        Module = 'CJoystick'
+        Source = '00/9e/CJoystick_EmptyEventStore_009e41d0.cpp'
+        TestSource = '00/9e/CJoystick_EmptyEventStore_009e41d0_test.cpp'
         PassPattern = 'OK_009e41d0'
     }
     [pscustomobject]@{
@@ -105465,9 +105465,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a93a60'
-        Module = '_gapscan'
-        Source = '00/a9/gapscan_sub00a93a60_00a93a60.cpp'
-        TestSource = '00/a9/gapscan_sub00a93a60_00a93a60_test.cpp'
+        Module = 'CCountedPointer<C3DClothPrimitive>'
+        Source = '00/a9/CCountedPointer_DeleteData_00a93a60.cpp'
+        TestSource = '00/a9/CCountedPointer_DeleteData_00a93a60_test.cpp'
         PassPattern = 'PASS_00a93a60'
     }
     [pscustomobject]@{
@@ -150142,9 +150142,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a94df0'
-        Module = 'CCountedPointer_00a93a60'
-        Source = '00/a9/CCountedPointer00a93a60_Reset_00a94df0.cpp'
-        TestSource = '00/a9/CCountedPointer00a93a60_Reset_00a94df0_test.cpp'
+        Module = 'CCountedPointer<C3DClothPrimitive>'
+        Source = '00/a9/CCountedPointer_Reset_00a94df0.cpp'
+        TestSource = '00/a9/CCountedPointer_Reset_00a94df0_test.cpp'
         PassPattern = '00a94df0_TEST PASS'
     }
     [pscustomobject]@{
@@ -165541,9 +165541,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00687210'
-        Module = '_unattributed'
-        Source = '00/68/unattributed_CAggregate00687210_00687210.cpp'
-        TestSource = '00/68/unattributed_CAggregate00687210_00687210_test.cpp'
+        Module = 'CMessageEvent'
+        Source = '00/68/CMessageEvent_CMessageEvent_00687210.cpp'
+        TestSource = '00/68/CMessageEvent_CMessageEvent_00687210_test.cpp'
         PassPattern = '00687210_TEST PASS'
     }
     [pscustomobject]@{
@@ -199198,8 +199198,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a55a30'
         Module = 'C2DBoxF'
-        Source = '00/a5/C2DBoxF_ToIntBox_00a55a30.cpp'
-        TestSource = '00/a5/C2DBoxF_ToIntBox_00a55a30_test.cpp'
+        Source = '00/a5/C2DBoxF_ToC2DBoxI_00a55a30.cpp'
+        TestSource = '00/a5/C2DBoxF_ToC2DBoxI_00a55a30_test.cpp'
         PassPattern = '00a55a30_TEST PASS'
     }
     [pscustomobject]@{
@@ -235025,9 +235025,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad4a70'
-        Module = 'CTwoLongSets'
-        Source = '00/ad/CTwoLongSets_CTwoLongSets_00ad4a70.cpp'
-        TestSource = '00/ad/CTwoLongSets_CTwoLongSets_00ad4a70_test.cpp'
+        Module = 'QuadricOptimiserInternals::CUniqueVertex'
+        Source = '00/ad/QuadricOptimiserInternalsCUniqueVertex_CUniqueVertex_00ad4a70.cpp'
+        TestSource = '00/ad/QuadricOptimiserInternalsCUniqueVertex_CUniqueVertex_00ad4a70_test.cpp'
         PassPattern = '00ad4a70_TEST PASS'
     }
     [pscustomobject]@{
@@ -260690,9 +260690,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00495830'
-        Module = 'CFrontendProfileList'
-        Source = '00/49/CFrontendProfileList_Refresh_00495830.cpp'
-        TestSource = '00/49/CFrontendProfileList_Refresh_00495830_test.cpp'
+        Module = 'CFrontendGameComponent'
+        Source = '00/49/CFrontendGameComponent_GetSaveNames_00495830.cpp'
+        TestSource = '00/49/CFrontendGameComponent_GetSaveNames_00495830_test.cpp'
         PassPattern = '00495830_TEST PASS'
     }
     [pscustomobject]@{
@@ -302506,8 +302506,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00ad71b0'
         Module = 'QuadricOptimiserInternals::COptimisedVertex'
-        Source = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_Remove_00ad71b0.cpp'
-        TestSource = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_Remove_00ad71b0_test.cpp'
+        Source = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_Kill_00ad71b0.cpp'
+        TestSource = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_Kill_00ad71b0_test.cpp'
         PassPattern = '00ad71b0_TEST PASS'
     }
     [pscustomobject]@{

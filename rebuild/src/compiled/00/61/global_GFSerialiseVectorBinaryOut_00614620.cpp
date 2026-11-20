@@ -1,7 +1,8 @@
 // GFSerialiseVectorBinaryOut(CDataOutputStream& stream, const vector<CTCInventoryMap::CUIMiniMapMarker>& value) -- write the count, then each marker's region, name, position, graphic and angle
 // Leaf: GFSerialiseVectorBinaryOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00614620, length 209 bytes (__fastcall stream, value).
-// Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, WriteLong 0x00993EB0, WriteString 0x009959F0,
+// Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, WriteSLONG 0x00993EB0 (NF197: respelled from the
+//   stand-in CDataOutputStreamWriter::WriteLong onto the row's CDataOutputStream class, Ego_r.pdb ?WriteSLONG@CDataOutputStream@@QAEXJ@Z), WriteString 0x009959F0,
 //   WriteFloat 0x00993EE0.
 // Model: engine/CDataOutputStream.h + writer adapter; local CUIMiniMapMarker (no engine header).
 // Shape: speed TU; the marker traits' TransferBinaryOut is inline: Region, the name length, the name, Position.X/Y, GraphicIndex, Angle.
@@ -13,6 +14,7 @@
 class CDataOutputStream : public CDataOutputStreamLayout
 {
 public:
+    void WriteSLONG(long value);                            // 0x00993EB0 ?WriteSLONG@CDataOutputStream@@QAEXJ@Z (Ego_r.pdb)
     void WriteFloat(float);   // 0x00993EE0
 };
 class CCharString { public:
@@ -21,7 +23,6 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteLong(long value);                             // 0x00993EB0
     void WriteString(const CCharString& text);              // 0x009959F0
 };
 class C2DVector { public:
@@ -61,12 +62,12 @@ template <class T> struct CPersistTraits {
 };
 template <> FABLE_FORCEINLINE void CPersistTraits<CUIMiniMapMarker>::TransferBinaryOut(CDataOutputStreamWriter& stream, const CUIMiniMapMarker* value) const
 {
-    stream.WriteLong(value->Region);
-    stream.WriteLong(value->DefNameLength);
+    stream.WriteSLONG(value->Region);
+    stream.WriteSLONG(value->DefNameLength);
     stream.WriteString(value->UIDefName);
     stream.WriteFloat(value->Position.X);
     stream.WriteFloat(value->Position.Y);
-    stream.WriteLong(value->GraphicIndex);
+    stream.WriteSLONG(value->GraphicIndex);
     stream.WriteFloat(value->Angle);
 }
 template <class T>
@@ -74,7 +75,7 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
 {
     CPersistTraits<T> traits;
     long count = value.size();
-    stream.WriteLong(count);
+    stream.WriteSLONG(count);
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }

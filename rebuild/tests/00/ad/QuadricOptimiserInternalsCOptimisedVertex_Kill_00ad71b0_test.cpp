@@ -1,4 +1,4 @@
-// Behaviour test for 0x00AD71B0 COptimisedVertex::Remove (Exists = false + two STLport clear() calls).
+// Behaviour test for 0x00AD71B0 COptimisedVertex::Kill (FableWin.pdb; was the descriptive Remove) (Exists = false + two STLport clear() calls).
 #include <cstdio>
 
 struct SNode { bool Color; SNode* Parent; SNode* Left; SNode* Right; };
@@ -14,7 +14,7 @@ struct STree {
 };
 struct COptimisedVertex {
     STree FaceList; bool Exists; unsigned int UniqueIndex; STree Groups; STree PairContractions;
-    void Remove() { Exists = false; FaceList.clear(); PairContractions.clear(); }
+    void Kill() { Exists = false; FaceList.clear(); PairContractions.clear(); }
 };
 
 int main()
@@ -25,13 +25,13 @@ int main()
     v.Groups.Header = &h2; v.Groups.Count = 2; v.Groups.Kind = 1; h2.Parent = &r3; h2.Left = &r3; h2.Right = &r3;
     v.PairContractions.Header = &h3; v.PairContractions.Count = 1; v.PairContractions.Kind = 1; h3.Parent = &r3; h3.Left = &r3; h3.Right = &r3;
     v.Exists = true;
-    v.Remove();
+    v.Kill();
     if (v.Exists || g_erased[0] != 1 || g_erasedRoot[0] != &r1 || g_erased[1] != 1 || g_erasedRoot[1] != &r3) { std::printf("00ad71b0_TEST FAIL\n"); return 1; }
     if (v.FaceList.Count != 0 || h1.Parent != 0 || h1.Left != &h1 || h1.Right != &h1) { std::printf("00ad71b0_TEST FAIL\n"); return 1; }
     if (v.PairContractions.Count != 0 || h3.Parent != 0 || h3.Left != &h3 || h3.Right != &h3) { std::printf("00ad71b0_TEST FAIL\n"); return 1; }
     if (v.Groups.Count != 2 || h2.Parent != &r3) { std::printf("00ad71b0_TEST FAIL\n"); return 1; }   // Groups untouched
     // empty trees: no erase call
-    v.Exists = true; v.Remove();
+    v.Exists = true; v.Kill();
     if (v.Exists || g_erased[0] != 1 || g_erased[1] != 1) { std::printf("00ad71b0_TEST FAIL\n"); return 1; }
     std::printf("00ad71b0_TEST PASS\n");
     return 0;

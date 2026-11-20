@@ -1,5 +1,10 @@
-// CFrontendProfileList::Refresh() -- clear the name list and refill it from the user-profile manager's file list (the per-file info list is discarded)
-// Leaf: ?Refresh@CFrontendProfileList@@QAEXXZ
+// CFrontendGameComponent::GetSaveNames(std::vector<CWideString>& names) -- clear the name list and refill it from the user-profile manager's file list (the per-file info list is discarded)
+// Leaf: ?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+// Name (NF197, 2026-11-20): Ego_r.pdb 0x0049E440 + FableWin.pdb 0x01A46960 ?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@
+//   VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z, public static __fastcall (the vector in ecx: the same register as the
+//   old thiscall stand-in), the save-name twin of GetProfileNames 0x004959E0; its one caller SetMode 0x00495FE0 passes &SaveNames.
+//   Was the made-up CFrontendProfileList::Refresh (bound by no landed row); declared through the header opt-in
+//   FABLE_RETAIL_CFRONTENDGAMECOMPONENT_GETSAVENAMES.
 // Retail: Fable.exe @ 0x00495830, 84 bytes, plain `ret`; one caller 0x0049602B (CFrontendGameComponent, `this` = its
 // SaveNames list at +0x1e1c). Catalog row label CEngineLandscapeMap::RenderBackground is wrong; the class name follows
 // the existing bake (CFrontendProfileList_Refresh) -- no PDB symbol (the Ego_r.pdb SaveNames is a plain
@@ -19,18 +24,15 @@
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CUSERPROFILEMANAGER_SAVELIST
 #define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_GETSAVENAMES
 #include "stlport/fable_containers.h"
 #include "fable_string.h"
 #include "engine/CDateAndTime.h"
 #include "engine/CUserProfileManager.h"
-class CFrontendProfileList {
-public:
-    std::vector<CWideString> Names;                      // +0x00
-    void Refresh();
-};
-void CFrontendProfileList::Refresh()
+#include "engine/CFrontendGameComponent.h"
+void __fastcall CFrontendGameComponent::GetSaveNames(std::vector<CWideString>& names)
 {
-    Names.erase(Names.begin(), Names.end());
+    names.erase(names.begin(), names.end());
     std::vector<CDateAndTime> times;
-    CUserProfileManager::Get().GetSortedSaveNamesAndTimes(Names, times);
+    CUserProfileManager::Get().GetSortedSaveNamesAndTimes(names, times);
 }

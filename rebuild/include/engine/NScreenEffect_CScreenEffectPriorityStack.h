@@ -115,6 +115,12 @@ public:
     // Declaration only.
     void DeleteScreenFilterEntry(void* handle, float fadeTime);       // 0x008818A0
 #endif
+#ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_DELETERADIALBLURENTRY
+    // Opt-in (NF197, 2026-11-20, row 0x006B82E0 CEnvironmentSpellEffectInterpolator::RadialBlurFadeOut): Ego_r.pdb 0x008C2320 + FableWin.pdb
+    // 0x02A58AB0 ?DeleteRadialBlurEntry@CScreenEffectPriorityStack@NScreenEffect@@QAEXPAXM@Z = retail 0x00881820 (the first of the
+    // DeleteScreenFilterEntry run above). Declaration only.
+    void DeleteRadialBlurEntry(void* handle, float fadeTime);         // 0x00881820
+#endif
 #ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_PROCESSES
 // agentFAM05 (2026-11-11): the per-effect custom process interface and its three processes (Ego_r / FableWin
 // name sets: ??_EICustomProcessInterface@CScreenEffectPriorityStack@NScreenEffect@@, ?OnErase@CScreenFilterProcess@..@@UAEXPAUCStackEntry@23@@Z,
