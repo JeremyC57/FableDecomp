@@ -1,6 +1,6 @@
 #ifndef FABLE_ENGINE_NSHAPE_H
 #define FABLE_ENGINE_NSHAPE_H
-// NShape free functions and the find_if predicate (new header, p25J 2026-11-20, row 0x00763060 NShape::FractureShape).
+// NShape free functions and the find_if predicate (new header, p25J / p25L 2026-11-20; lands with rows 0x00760020 IsLineIntersectingWithOthersInList and 0x00760190 IsTriangleWithPointsInside, FableWin obj tc_geometric_shapes).
 // Ego_d.pdb TPI 0x3F5BC `NShape::ECirculationOrder` (CIRCULATION_CLOCKWISE = 0, CIRCULATION_ANTICLOCKWISE = 1) and 0x403B6
 // `NShape::CIsPointFinalLinkInTriangleWithMatchingCirculation` (sizeof 20: PointA const C3DVector& +0, PointB const C3DVector& +4,
 // UpDirection C3DVector +8; ctor (const C3DVector&, const C3DVector&, ECirculationOrder); bool operator()(const C3DVector&) const);
