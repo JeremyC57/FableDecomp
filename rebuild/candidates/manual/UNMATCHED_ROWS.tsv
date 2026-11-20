@@ -33,7 +33,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 004cdc40	CSubtitledMessage	AddCameraTagFromText	1392	parked	DIFFER(1349v1379)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/004cdc40.cpp	original
 004ce550	CSubtitledMessage	CSubtitledMessage	1296	parked	DIFFER(1128v1281)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/004ce550.cpp	original
 004cebb0	CSubtitledMessage	GetMessagesFromTextName	2032	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/hdr/004cebb0.cpp	original
-004feb70	CWorldMap	?HeightAreaChanged@CWorldMap@@UAEXPBVC2DBoxI@@@Z	272	parked	DIFFER(260v261)	9	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/004feb70.cpp	original
+004feb70	CWorldMap	?HeightAreaChanged@CWorldMap@@UAEXPBVC2DBoxI@@@Z	272	reserved (acctB p25N, 2026-11-20)	DIFFER(260v261)	9	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/004feb70.cpp	original
 00500540	CWorldMap	LoadRegion	2416	parked	DIFFER(2396v2412)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00500540.cpp	original
 00502e90	CWorldMap	PopulateRegionWithVillagers	13632	parked	acctC round six: round 6 final (2026-11-16): DIFFER(13587v13622); latest draft 00502e90.cpp + NOTES.md in the folder (grep the 	1	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE10/00502e90.cpp	original
 00507070	CWorldMap	BuildStaticMapGenerationVisibilityInfo	1440	parked	DIFFER(1628v1432)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00507070.cpp	original
@@ -196,7 +196,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0072f380	CTCDummyVillager	OnSerialise	976	parked	DIFFER(979v968)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand301/differ/0072f380.cpp	original
 0072f750	CTCDummyVillager	CreateVillager	656	parked	DIFFER(648v643)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0072f750.cpp	original
 0072fb70	CTCDummyVillager	FrameUpdate	1280	parked	codex pass24 PARKED: The shared village and spawn APIs retain the native second marker pass, including frustum and line-of-sight gating. Definition cleanup, vector allocation and marker traversal scheduling still differ.	22	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/0072fb70/0072fb70.cpp	original
-00733cf0	_global	TCCombat_ApplyBlockResponse	288	parked	DIFFER(287v288)	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1017/differ/00733cf0.cpp	original
+00733cf0	_global	TCCombat_ApplyBlockResponse	288	reserved (acctB p25N, 2026-11-20)	DIFFER(287v288)	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1017/differ/00733cf0.cpp	original
 007348c0	CTCCombat	IsToBlock	928	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/007348c0.cpp	original
 00734c60	CTCCombat	SetStruck	1648	parked	DIFFER(1588v1639)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/00734c60.cpp	original
 00741d60	CModeExplosiveForcePushed	`scalar_deleting_destructor'	80	parked	DIFFER(48v69)	1	rebuild/candidates/manual/pending/2026-10-14_linux_hand58/differ/00741d60.cpp	original
@@ -550,7 +550,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009c5170	_global	CPatchTesselationEdgeStrip_DestructorHelper	416	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/009c5170.cpp	original
 009c8c00	NGameText::CDataBank	NGameText::CDataBank::vfunc_12	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand646/differ/009c8c00.cpp	gapscan/boundary
 009c8de0	CTextEntry	ReadFromDataStream	464	parked	DIFFER(459v452)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/009c8de0.cpp	original
-009c9170	CDataBank	Validate	272	parked	DIFFER(269v268)	4	rebuild/candidates/manual/pending/2026-11-04_linux_hand763/differ/009c9170.cpp	original
+009c9170	CDataBank	Validate	272	reserved (acctB p25N, 2026-11-20)	DIFFER(269v268)	4	rebuild/candidates/manual/pending/2026-11-04_linux_hand763/differ/009c9170.cpp	original
 009ce370	CBankFile	WriteFileInformation	624	parked	DIFFER(622v620)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/009ce370.cpp	original
 009cec60	CBankFile	Update	1856	parked	DIFFER(1840v1850)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand690/differ/009cec60.test.cpp	original
 009cfbc0	CBankFile	ReadEntryList	1984	parked	DIFFER(1973v1969)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009cfbc0.cpp	original
@@ -778,7 +778,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c2cbd0	_global	CQ_GuildTrainingPreMeleeScript_Initialize	144	parked	Codex pass 23 (whole parent in the 0x012139DB draft): 132/132, 10 bytes differ (owner-load permutation)	1	rebuild/candidates/manual/pending/2026-11-16_codex_pass23_open/012139db/012139db.cpp	original
 00c35290	_gapscan	sub_00c35290	224	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand505/differ/00c35290.cpp	gapscan/boundary
 00c371c0	_global	CTCTavernGame_OnStateUpdate	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand505/differ/00c371c0.cpp	original
-00c3a7d0	CRampedParam_00c3a8f0	Advance	288	parked	DIFFER(272v273)	6	rebuild/candidates/manual/pending/2026-11-04_linux_hand768/differ/00c3a7d0.cpp	original
+00c3a7d0	CRampedParam_00c3a8f0	Advance	288	reserved (acctB p25N, 2026-11-20)	DIFFER(272v273)	6	rebuild/candidates/manual/pending/2026-11-04_linux_hand768/differ/00c3a7d0.cpp	original
 00c3da60	CCombatActionManager	CreateEnvironmentCombatAction	288	parked	DIFFER(261v282)	3	rebuild/candidates/manual/pending/2026-10-20_linux_hand231/differ/00c3da60.cpp	original
 00c40d10	CEffectOwner_00c40750	CommitProperties	272	parked	DIFFER(252v272)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand774/differ/00c40d10.test.cpp	original
 00c425e0	_global	Hero_ProcessExperienceBlockParry	224	parked	Codex pass 23 (whole parent in the 0x012152D0 draft): 221 v 217, extra receiver lea and scratch order	1	rebuild/candidates/manual/pending/2026-11-16_codex_pass23_open/012152d0/012152d0.cpp	original
@@ -818,7 +818,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c76880	_global	DSP_TransformWithFilterCoefficients	560	parked	DIFFER(500v513)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand690/differ/00c76880.test.cpp	original
 00c76ab0	_global	CQ_GuildTrainingSkillScript_ActivateSkillByIndex	176	parked	DIFFER(171v175)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c76ab0.cpp	original
 00c76dd0	_global	CQ_GuildTrainingSkillScript_DeactivateSkillByIndex	192	parked	DIFFER(182v186)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c76dd0.cpp	original
-00c77b30	CReverbProcessor	UpdateLineLengths	208	parked	DIFFER(194v193)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c77b30.cpp	original
+00c77b30	CReverbProcessor	UpdateLineLengths	208	reserved (acctB p25N, 2026-11-20)	DIFFER(194v193)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c77b30.cpp	original
 00c77c80	CReverbProcessor	UpdateLineAndTapLengths	272	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand609/differ/00c77c80.cpp	original
 00c780c0	_global	Audio_Channel_ComputeEnvelope_Amplitude	144	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand445/differ/00c780c0.cpp	original
 00c89850	CReverbFilterTap	ProcessRamp	592	parked	DIFFER(607v588)	2	rebuild/candidates/manual/pending/2026-11-08_linux_hand869/differ/00c89850.cpp	original
