@@ -39530,3 +39530,4 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?HasRoute@CTCPreCalculatedNavigationRoute@@QBE_NXZ	00800500	00714370
 ?IsAbleToMove@NCreatureMode@@YI_NABVCThing@@@Z	0085f3e0	00714370
 ?RemoveMovementBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z	0085f600	00714370
+?IsSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z	00ad8c30	00ad9980

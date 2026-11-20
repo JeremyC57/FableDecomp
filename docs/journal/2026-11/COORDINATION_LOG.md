@@ -571,3 +571,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x00714370 CActionMoveTo::OnActivate (batches/2026-11-20_landing_p25_00714370). Headers: engine/CTCScriptedControl.h engine/CTCParamsPhysicsBase.h engine/CTCCarryable.h engine/NTCScriptedControl_CActionMoveTo.h . Newly flagged: 0 rows (newly_flagged_rows.tsv).
 2026-11-20 B->A: NAME_FIXES from p25 0x00714370 (batches/2026-11-20_landing_p25_00714370/NAME_FIXES.tsv): 0x00800500 is ?HasRoute@CTCPreCalculatedNavigationRoute@@QBE_NXZ (bool; PDB name strings, retail tests al at 0x007146D3), landed as QBEJXZ (long).
 2026-11-20 A: Queued B's p25 0x00714370 name fix (0x00800500 HasRoute returns bool) as b1120p25_00714370.
+2026-11-20 B->A: Landed p25 0x00AD9980 CVertexGroupBlockOptimiser::ReorderInput (batches/2026-11-20_landing_p25_00ad9980). Headers: none.
