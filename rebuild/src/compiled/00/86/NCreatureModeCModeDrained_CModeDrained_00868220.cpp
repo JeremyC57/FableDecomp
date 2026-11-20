@@ -1,5 +1,8 @@
-// NCreatureMode::CModeDrained::CModeDrained(CThing*, CThing*) -- CModeStandBase(thing), the "DRAINED" group filter, PDrainer = drainer, DrainerMode = the type of the drainer's current creature mode
-// Leaf: ??0CModeDrained
+// NCreatureMode::CModeDrained::CModeDrained(CThing&, CThing&) -- CModeStandBase(thing), the "DRAINED" group filter, PDrainer = drainer, DrainerMode = the type of the drainer's current creature mode
+// Leaf: ??0CModeDrained@NCreatureMode@@QAE@AAVCThing@@0@Z
+// Naming (NF147, 2026-11-20; q6408 follow-up): own parameters respelled from the stand-in (CThing*, CThing*) to the PDB (CThing&, CThing&)
+//   (Ego_r.pdb 0x0083E1B0 / FableWin.pdb 0x0281FB70 ??0CModeDrained@NCreatureMode@@QAE@AAVCThing@@0@Z; the body, the same code: both arrive
+//   as pointers); its one landed caller 0x008676A0 binds the PDB spelling in the same hand-back.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
@@ -134,16 +137,16 @@ struct CModeDrained : CModeStandBase {     // vtable 0x01268234
     CIntelligentPointerThing  PDrainer;    // +0x74
     unsigned long             DrainerMode; // +0x7c
     virtual void v00();
-    CModeDrained(CThing* thing, CThing* drainer);
+    CModeDrained(CThing& thing, CThing& drainer);
 };
 
-CModeDrained::CModeDrained(CThing* thing, CThing* drainer)
-    : CModeStandBase(thing)
+CModeDrained::CModeDrained(CThing& thing, CThing& drainer)
+    : CModeStandBase(&thing)
     , Filter("DRAINED")
-    , PDrainer(drainer)
+    , PDrainer(&drainer)
 {
     CTCCreatureModeManager* modes;
-    drainer->GetInterface(&modes, 0x31);
+    drainer.GetInterface(&modes, 0x31);
     DrainerMode = modes->GetCurrentMode().GetModeType();
 }
 

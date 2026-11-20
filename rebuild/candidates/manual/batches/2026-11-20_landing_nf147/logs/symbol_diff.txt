@@ -1,0 +1,113 @@
+00848db0 new: 5
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ??_GCModeSleepBed@@UAEPAXI@Z
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008676a0 new: 2
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+00868220 new: 1
+    ??0CModeDrained@NCreatureMode@@QAE@AAVCThing@@0@Z TABLE:00868220
+008a08a0 new: 1
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+008a1a10 new: 3
+    ??0CModeScripted@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@@Z
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ??_GCModeScripted@NCreatureMode@@UAEPAXI@Z
+008c0c00 new: 4
+    ??$?0UCModeJackOfBladesFlash@@@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@ABV?$CCountedPointer@UCModeJackOfBladesFlash@@@@@Z
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@UCModeJackOfBladesFlash@@@@SIXPAX@Z
+008c0d10 new: 9
+    ??$?0VCModeJackOfBladesScream@NCreatureMode@@@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@ABV?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@@Z
+    ??0?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@QAE@PAVCModeJackOfBladesScream@NCreatureMode@@@Z
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ??1?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@QAE@XZ
+    ??4?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@QAEAAV0@ABV0@@Z
+    ?DeleteData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@SIXPAX@Z TABLE:008c2d60
+    ?ReleaseData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@QAEXXZ
+    ?ShareData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@QAEXPAVCModeJackOfBladesScream@NCreatureMode@@PAVCCPPointerInfo@@@Z
+008c1c30 new: 32
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z TABLE:00669580
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCSpecialEffectsDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV0@@Z
+    ??0?$CDefPointer@$$CBVCSpecialEffectsDef@@@@QAE@W4ENullDef@@@Z
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Const_traits@U?$pair@$$CBKJ@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@1@@Z
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCSpecialEffectsDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ??C?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Const_traits@U?$pair@$$CBKJ@std@@@2@@std@@QBEABU?$pair@$$CBKJ@1@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCSpecialEffectsDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+    ?Get@?$CDefPointer@$$CBVCSpecialEffectsDef@@@@QBEPBVCSpecialEffectsDef@@XZ
+    ?GetAsCharArray@CCharString@@QBEPBDXZ TABLE:00403a10
+    ?GetCreature@CIntelligentPointerCreature@@QBEPAVCThingCreatureBase@@XZ
+    ?GetDef@CThing@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@XZ
+    ?GetLength@?$CBasicString@D@@QBEKXZ
+    ?GetLength@CCharString@@QBEJXZ TABLE:00403a00
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?PeekData@?$CBasicString@D@@QBEPBDXZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCSpecialEffectsDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CSpecialEffectsDef@@SI?AVCCharString@@XZ
+    ?end@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@s
+    ?end@?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Const_traits@U?$pair@$$CBKJ@std@@@2@@2@XZ
+    ?find@?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Const_traits@U?$pair@$$CBKJ@std@@@2@@2@ABK@Z
+008c48a0 new: 4
+    ??$?0UCModeScorpionKingTailPlunge@@@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@ABV?$CCountedPointer@UCModeScorpionKingTailPlunge@@@@@Z
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@UCModeScorpionKingTailPlunge@@@@SIXPAX@Z
+00b21e90 new: 42
+    ??$_Construct@VC3DVector@@V1@@std@@YAXPAVC3DVector@@ABV1@@Z
+    ??$_Destroy@PAVC3DVector@@@std@@YAXPAVC3DVector@@0@Z
+    ??$_Destroy@VC3DVector@@@std@@YAXPAVC3DVector@@@Z
+    ??$_M_allocate_and_copy@PBVC3DVector@@@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEPAVC3DVector@@IPBV2@0@Z
+    ??$__copy@PAVC3DVector@@PAV1@H@std@@YIPAVC3DVector@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z TABLE:0074ca20
+    ??$__copy@PBVC3DVector@@PAV1@H@std@@YIPAVC3DVector@@PBV1@0PAV1@ABUrandom_access_iterator_tag@0@PAH@Z TABLE:0075b560
+    ??$__copy_backward_ptrs@VC3DVector@@@std@@YAPAVC3DVector@@PBV1@0PAV1@ABU__false_type@0@@Z
+    ??$__copy_ptrs@PAVC3DVector@@PAV1@@std@@YAPAVC3DVector@@PAV1@00ABU__false_type@0@@Z
+    ??$__copy_ptrs@PBVC3DVector@@PAV1@@std@@YAPAVC3DVector@@PBV1@0PAV1@ABU__false_type@0@@Z
+    ??$__destroy@PAVC3DVector@@V1@@std@@YAXPAVC3DVector@@00@Z
+    ??$__destroy_aux@PAVC3DVector@@@std@@YAXPAVC3DVector@@0ABU__false_type@0@@Z
+    ??$__uninitialized_copy@PAVC3DVector@@PAV1@@std@@YAPAVC3DVector@@PAV1@00ABU__false_type@0@@Z
+    ??$__uninitialized_copy@PBVC3DVector@@PAV1@@std@@YAPAVC3DVector@@PBV1@0PAV1@ABU__false_type@0@@Z
+    ??$__uninitialized_fill_n@PAVC3DVector@@IV1@@std@@YAPAVC3DVector@@PAV1@IABV1@ABU__false_type@0@@Z
+    ??$fill@PAVC3DVector@@V1@@std@@YAXPAVC3DVector@@0ABV1@@Z
+    ??$max@I@std@@YAABIABI0@Z
+    ??$uninitialized_fill_n@PAVC3DVector@@IV1@@std@@YAPAVC3DVector@@PAV1@IABV1@@Z
+    ??0C3DVector@@QAE@ABV0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??0bidirectional_iterator_tag@std@@QAE@XZ
+    ??0forward_iterator_tag@std@@QAE@XZ
+    ??0random_access_iterator_tag@std@@QAE@XZ
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??4?$CArray@VC3DVector@@@@QAEAAV0@ABV0@@Z
+    ??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z TABLE:0075b8d0
+    ??A?$CArray@VC3DVector@@@@QAEAAVC3DVector@@I@Z
+    ?DeleteAllControlPoints@CCardinalSpline@@QAEXXZ
+    ?GetControlPointCount@CCardinalSpline@@QBEJXZ
+    ?_M_clear@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXXZ
+    ?_M_fill_insert@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@IABV3@@Z
+    ?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@ABV3@ABU__false_type@2@I_N@Z TABLE:0066e370
+    ?_M_set@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@00@Z
+    ?allocate@?$allocator@VC3DVector@@@std@@QAEPAVC3DVector@@IPBX@Z
+    ?begin@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEPAVC3DVector@@XZ
+    ?capacity@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QBEIXZ
+    ?clear@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXXZ
+    ?deallocate@?$allocator@VC3DVector@@@std@@QAEXPAVC3DVector@@I@Z
+    ?end@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEPAVC3DVector@@XZ
+    ?erase@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEPAVC3DVector@@PAV3@0@Z
+    ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXI@Z
+    ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z TABLE:0075c040
+    ?size@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QBEIXZ

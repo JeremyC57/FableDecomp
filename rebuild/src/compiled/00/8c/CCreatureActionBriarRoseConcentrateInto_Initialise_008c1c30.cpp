@@ -11,78 +11,48 @@
 //   0x008C4B80 idiom); the counted def reference and the effect name are conditional temporaries of one && expression;
 //   both mode-ctor pointers come through inline accessors (GetCreature, PEnemy.GetCreature) so the two GetPItem calls run
 //   before any push (enemy first) and the Imposter byte is loaded last.
+// Naming (NF147, 2026-11-20; q6408): moved onto the mode's shared header engine/NCreatureMode_CModeBriarRoseConcentrate.h (overlay opt-in
+//   FABLE_RETAIL_NCREATUREMODE_CMODEBRIARROSECONCENTRATE_CTOR: the PDB constructor) with engine/CTCCreatureModeManager.h (ADDMODEPOINTER) and
+//   engine/CCountedPointer.h (CALLED_CTOR: retail calls 0x00718A00); the local CCharString / CDefPointer / CDefClassBase / CSpecialEffectsDef
+//   models and their same-TU GetSubDef / GetEffectFromString stand-ins replaced by fable_string.h, engine/CDefPointer.h, engine/CDefClassBase.h,
+//   engine/CSpecialEffectsDef.h (GETEFFECT_BODY) and engine/CDefClassBase_GetSubDef.h (NOINLINE), the landed 0x008C4CB0 set; the local
+//   CThing's def member respelled in place as that row's CDefPointer<const CDefClassBase> PDef / GetDef().
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_NCREATUREMODE_CMODEBRIARROSECONCENTRATE_CTOR
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CTCBase;
 #include "engine/C3DVector.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
-struct CDefVirtual {
-    virtual ~CDefVirtual();                           // slot 0
-    virtual void Destroy();                           // slot 1
-};
-struct CDefBase : CDefVirtual {
-    long m_refCount;                                  // +0x04
-};
-class CSpecialEffectsDef : public CDefBase { public:
-    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-};
-long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
-#pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
-{
-    long found = Lookup_CSpecialEffectsDef_GetEffectFromString(this, name);
-    if (found < 0)
-        return false;
-    type = found;
-    return true;
-}
-#pragma auto_inline(on)
-template <class T> class CDefPointer { public:
-    T* m_p;
-    CDefPointer() : m_p(0) { }
-    ~CDefPointer()
-    {
-        if (m_p && --m_p->m_refCount == 0)
-            m_p->Destroy();
-    }
-};
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
-};
-void* Find_CDefClassBase_GetSubDef(const void* owner);
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out)
-{
-    void* def = Find_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out.m_p = (T*)def;
-    return true;
-}
-#pragma auto_inline(on)
-struct CDefClassReference {                           // a counted CDefClassBase reference (AddRef / Release)
-    CDefClassBase* m_p;
-    CDefClassReference(CDefClassBase* p) : m_p(p) { if (m_p) ++m_p->m_refCount; }
-    ~CDefClassReference() { if (m_p && --m_p->m_refCount == 0) m_p->Destroy(); }
-    CDefClassBase* operator->() const { return m_p; }
-};
 class CThing {
 public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                  // +0x20 interface-present bitset
     CInterfaceMap  m_interfaces;                      // +0x44
     unsigned char  _pad54[0x1c];
-    CDefClassBase* m_pDef;                            // +0x70
+    CDefPointer<const CDefClassBase> PDef;            // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                         // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
     void UnsheatheMeleeWeapon_00666820();                      // 0x00666820 (CThingCreatureBase)
+    CDefPointer<const CDefClassBase> GetDef() const { return PDef; }
     template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -100,28 +70,10 @@ public:
 class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
 };
-
-struct SCountBlock;
-struct CModeBase { virtual void v00(); };
-struct CCountedModePointer {
-    CModeBase* m_pObject;
-    SCountBlock* m_pCount;
-    CCountedModePointer(CModeBase* object);           // 0x00718A00
-    CCountedModePointer(const CCountedModePointer& other);
-    ~CCountedModePointer();
-};
-struct CModeBriarRoseConcentrate : CModeBase {
-    unsigned char _body[0xa0];                        // sizeof = 0xa4
-    CModeBriarRoseConcentrate(CThing* creature, CThing* enemy, bool imposter);   // 0x008E78C0
-};
-class CTCCreatureModeManager { public:                       // interface 0x31
-    bool AddMode(CCountedModePointer mode);           // 0x0073ACC0
-};
 class CBaseObject;
-#define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
+#include "engine/NCreatureMode_CModeBriarRoseConcentrate.h"
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
-    CThing* GetCreature() const { return ((CThing*)GetPItem()); }
+    CThingCreatureBase* GetCreature() const { return ((CThingCreatureBase*)GetPItem()); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
@@ -155,11 +107,12 @@ void CCreatureAction_BriarRoseConcentrateInto::Initialise()
     SetCombatAnimation("POWER_UP_INTO");
     CCombatActionBase::Initialise();
     if (GetCreature()->GetInterface(&modes, 0x31) && IS_THING_ALIVE(PEnemy))
-        modes->AddMode(CCountedModePointer(new CModeBriarRoseConcentrate(GetCreature(), PEnemy.GetCreature(), Imposter)));
-    CDefPointer<CSpecialEffectsDef> effects;
+        modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(
+            new NCreatureMode::CModeBriarRoseConcentrate(*GetCreature(), *PEnemy.GetCreature(), Imposter)));
+    CDefPointer<const CSpecialEffectsDef> effects;
     long effectType = 0;
-    bool found = CDefClassReference(GetCreature()->m_pDef)->GetSubDef(effects) &&
-                 effects.m_p->GetEffectFromString("TELEPORT_INTO", effectType);
+    bool found = GetCreature()->GetDef()->GetSubDef(&effects) &&
+                 effects.Get()->GetEffectFromString("TELEPORT_INTO", effectType);
     if (found)
         CTCDParticleEmitter::Create(effectType, *(&GetCreature()->GetPos()), false);
 }

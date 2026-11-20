@@ -455,3 +455,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: nf146 landed (13 rows; q4283 / q4285 / q11812 / q11818 closed; q11817 lands with nf148).
 2026-11-20 A: reserved 25 parked rows for Account B to finish authoring (owner's instruction; the 25 closest to retail by length; claim line account B, UNMATCHED status reserved (acctB), A locks acctB).
 2026-11-20 A: NF150 handed back (13 of 15 done). New agent NF152 (CDisplayManager / CEngineResourceManager / CEngineShadowRenderer PRIORITY entries, 17).
+2026-11-20 A: nf147 landed (10 rows; q6408 down to its self row, q4802 6 rows left; 0x008C0D10 on NF147's fallback token after the gate found a split).

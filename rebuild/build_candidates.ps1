@@ -270809,6 +270809,7 @@ $catalog = @(
         Source = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_DatabaseSerialise_00b21e90.cpp'
         TestSource = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_DatabaseSerialise_00b21e90_test.cpp'
         PassPattern = '00b21e90_TEST PASS'
+        CompilerFlags = '/d2inlS84'
     }
     [pscustomobject]@{
         Address = '00b22100'

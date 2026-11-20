@@ -11,7 +11,15 @@
 // BedGetInAnim +0xb8, BedSleepAnim +0xbc; CTCBed +0x0c Empty (the landed 0x007469C0 naming).
 // Shape: GetTC written as the end/hit ternary leaves the bed component in ecx for the call; the mode ctor is inline (base ctor, vtable, filter, name copy, two zeroed longs); the counted pointer is built in the
 // argument area with its null-checked count block (the mode was never dereferenced); IS_THING_ALIVE on PBed then HasTC/GetTC.
-void __fastcall Destroy_007180b0(void* object);   // 0x007180B0
+// Naming (NF147, 2026-11-20; q6408): the local SCountBlock / CCountedPointer<T> template (inline ctor storing the Destroy_007180b0
+//   stand-in) / CModeBase(CThing*) / CTCCreatureModeManager models replaced by the shared engine/CCountedPointer.h (default inline (T*) ctor)
+//   and engine/CTCCreatureModeManager.h (ADDMODEPOINTER; FABLE_RETAIL_CMODEBASE_CTOR, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z, 0x0073EAC0 the PDB
+//   ??0CModeBase@CTCCreatureModeManager@@QAE@AAVCThing@@@Z and the block's deleter 0x007180B0 its self spelling
+//   ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z. The header-less mode class keeps its token (vtable symbol
+//   unchanged), now on the shared CModeBase (the landed 0x0096DBC0 shape), allocation 0x34 unchanged.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#define FABLE_RETAIL_CMODEBASE_CTOR
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
@@ -38,43 +46,15 @@ class CAnimFilterOfGroup { public:                     // 12 bytes
     unsigned char _body[0xc];
     CAnimFilterOfGroup(const CCharString& group);   // 0x0073E8F0
 };
-struct SCountBlock {
-    long m_references;                          // +0
-    void (__fastcall* m_pfnDestroy)(void*);     // +4
-    void* m_pObject;                            // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_007180b0), m_pObject(object) { }
-};
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;                     // +0
-    SCountBlock* m_pCount;                      // +4
-    CCountedPointer(T* object) : m_pObject(object)
-    {
-        if (object)
-            m_pCount = new SCountBlock(m_pObject);
-        else
-            m_pCount = 0;
-    }
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount)
-            ++m_pCount->m_references;
-    }
-};
-struct CModeBase {                              // retail sizeof 0x1c
-    virtual void v00();
-    unsigned char _pad04[0x1c - 4];
-    CModeBase(CThing* thing);                   // 0x0073EAC0
-};
-struct CModeSleepBed : CModeBase {              // retail sizeof 0x34, vtable 0x01275760
+#include "engine/CTCCreatureModeManager.h"
+struct CModeSleepBed : CTCCreatureModeManager::CModeBase {   // retail sizeof 0x34, vtable 0x01275760
     CAnimFilterOfGroup AnimFilter;              // +0x1c
     CCharString SleepAnimName;                  // +0x28
     long GetInAnim;                             // +0x2c
     long SleepAnim;                             // +0x30
     CModeSleepBed(CThing* creature, const CCharString& group, const CCharString& animName)
-        : CModeBase(creature), AnimFilter(group), SleepAnimName(animName), GetInAnim(0), SleepAnim(0) {}
-};
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
+        : CTCCreatureModeManager::CModeBase(*creature), AnimFilter(group), SleepAnimName(animName), GetInAnim(0), SleepAnim(0) {}
+    virtual unsigned long GetType() const;
 };
 class CTCBed { public:
     unsigned char _pad[0xc];
@@ -101,7 +81,7 @@ void CCreatureAction_GetInBed::PerformAction()
     CTCCreatureModeManager* modeManager;
     PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
     CModeSleepBed* mode = new CModeSleepBed(PCreature.Get(), AnimGroup, SleepAnimName);
-    modeManager->AddMode(CCountedPointer<CModeBase>(mode));
+    modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(mode));
     if (IS_THING_ALIVE(PBed)) {
         CThing* bedThing = PBed.Get();
         if (bedThing->HasTC(TCI_BED)) {

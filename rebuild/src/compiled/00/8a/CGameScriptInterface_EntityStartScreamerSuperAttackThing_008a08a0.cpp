@@ -1,7 +1,17 @@
 // CGameScriptInterface::EntityStartScreamerSuperAttackThing(const CScriptThing&,const CScriptThing&) -- submit a counted super attack mode
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail008A08A0,169 bytes. Mode ctor008AC3F0; counted pointer ctor00718A00; AddMode0073ACC0. PDB CModeScreamerSuperAttack size132; no generated mode header.
+// Retail008A08A0,169 bytes. Mode ctor008AC3F0; counted pointer ctor00718A00; AddMode0073ACC0. PDB CModeScreamerSuperAttack size132; mode class on engine/NCreatureMode_CModeScreamerSuperAttack.h.
+// Naming (NF147, 2026-11-20; q6408): the local CModeScreamerSuperAttack / CountedMode / CreatureModeManagerMethods / CCPPointerInfo models replaced by
+//   engine/NCreatureMode_CModeScreamerSuperAttack.h (PDB ctor (CThing&, const CThing&), declared there), engine/CTCCreatureModeManager.h
+//   (ADDMODEPOINTER) and engine/CCountedPointer.h (CALLED_CTOR); 0x0073ACC0 binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z, 0x00718A00 the FableWin.pdb CCountedPointer<CModeBase>
+//   ctor, 0x008AC3F0 the Ego_r / FableWin ??0CModeScreamerSuperAttack@NCreatureMode@@QAE@AAVCThing@@ABV2@@Z.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #define CThing CThingDonor
@@ -11,7 +21,7 @@
 #include "fable_string.h"
 #include "engine/C3DVector.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
@@ -22,7 +32,7 @@ struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0
 // Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
 struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
+#include "engine/CCountedPointer.h"
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}};
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
@@ -111,13 +121,12 @@ virtual bool IsEqualTo(const ScriptMethods&) const; //slot78 0x004AA8A0
 FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
-struct CModeScreamerSuperAttack{unsigned char NativeState[132];CModeScreamerSuperAttack(CThingNative&,const CThingNative&);}; //008AC3F0
-struct CountedMode{CModeScreamerSuperAttack* Data;CCPPointerInfo* Info;CountedMode(CModeScreamerSuperAttack*);CountedMode(const CountedMode& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedMode(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}}; //00718A00 constructor
-struct CreatureModeManagerMethods{bool AddMode(CountedMode);}; //0073ACC0; by-value callee consumes counted reference
+class CBaseObject;
+#include "engine/NCreatureMode_CModeScreamerSuperAttack.h"
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityStartScreamerSuperAttackThing(const ScriptMethods&,const ScriptMethods&)const;};
 void CGameScriptInterfaceMethods::EntityStartScreamerSuperAttackThing(const ScriptMethods& attacker,const ScriptMethods& target)const{
  if(attacker.IsAlive()&&target.IsAlive()){
  CThingNative* owner=attacker.GetPThing();
- if(owner->UsingComponents[1]&0x20000){ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)49);ComponentEntry* end=map->Finish;CreatureModeManagerMethods* modes=static_cast<CreatureModeManagerMethods*>(((void*)(it==end||it->first>49?end:it)->second));
- modes->AddMode(new CModeScreamerSuperAttack(*owner,*target.GetPThing()));
+ if(owner->UsingComponents[1]&0x20000){ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)49);ComponentEntry* end=map->Finish;CTCCreatureModeManager* modes=static_cast<CTCCreatureModeManager*>(((void*)(it==end||it->first>49?end:it)->second));
+ modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new NCreatureMode::CModeScreamerSuperAttack(*owner,*target.GetPThing())));
  }}}

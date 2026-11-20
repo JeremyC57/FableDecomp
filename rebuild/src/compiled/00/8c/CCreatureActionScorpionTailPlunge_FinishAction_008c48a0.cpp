@@ -15,6 +15,15 @@
 // frame across the block (register pressure).
 // Layout: the owner (CIntelligentPointer<CThingCreatureBase>) at +8, the target at +0xa8 (retail CCreatureActionBase is 0xa8).
 #include "fable_compiler.h"
+// Naming (NF147, 2026-11-20; q6408): the local SCountBlock / empty CModeBase / CCountedPointer<T> template (with its same-TU ctor
+//   specialisation and the DestroyModeScorpionKingTailPlunge deleter stand-in) and the local CTCCreatureModeManager replaced by the shared
+//   engine/CCountedPointer.h (VISIBLE_CALLED_CTOR: the landed twin 0x008C4990's shape; the called ctor 0x008C58F0 keeps its HEAD spelling) and
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z. The header-less mode class keeps its
+//   token and its constructor / SetTarget spellings, now on the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof
+//   stays the retail allocation (0xbc).
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#define FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -28,56 +37,14 @@ class CBaseObjectPointer;
 #include "engine/CIntelligentPointer.h"
 
 
-void operator delete(void* p);                  // 0x00BFE9BC
+#include "engine/CTCCreatureModeManager.h"
 
-void __fastcall DestroyModeScorpionKingTailPlunge(void* object);   // 0x008C57E0: the per-type deleter stored in the block
-
-struct SCountBlock {
-    long  m_references;                         // +0
-    void (__fastcall* m_pfnDestroy)(void*);     // +4
-    void* m_pObject;                            // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(DestroyModeScorpionKingTailPlunge), m_pObject(object) { }
-};
-
-struct CModeBase { };
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;                     // +0
-    SCountBlock* m_pCount;                      // +4
-    CCountedPointer(T* object);                 // 0x008C58F0 for CModeScorpionKingTailPlunge
-    template <class U> CCountedPointer(const CCountedPointer<U>& other)
-        : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
-    ~CCountedPointer()
-    {
-        if (m_pCount && --m_pCount->m_references == 0) {
-            m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-            delete m_pCount;
-        }
-    }
-    T* operator->() const { return m_pObject; }
-};
-
-struct CModeScorpionKingTailPlunge : CModeBase {
-    unsigned char _pad[0xbc];
+struct CModeScorpionKingTailPlunge : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0xbc - 0x1c];
     CModeScorpionKingTailPlunge(CThing* owner); // 0x008D81F0
     void SetTarget(CThing* target);             // 0x008D7430
+    virtual unsigned long GetType() const;
 };
-
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
-};
-
-// The counted pointer's constructor is compiled in this TU (0x008C58F0, landed separately): its body above the caller
-// under auto_inline(off) tells VC7.1 the local does not escape, so the block pointer stays in esi across AddMode.
-#pragma auto_inline(off)
-CCountedPointer<CModeScorpionKingTailPlunge>::CCountedPointer(CModeScorpionKingTailPlunge* object)
-    : m_pObject(object)
-{
-    if (object)
-        m_pCount = new SCountBlock(m_pObject);
-    else
-        m_pCount = 0;
-}
-#pragma auto_inline(on)
 
 class CCombatActionBase {
 public:

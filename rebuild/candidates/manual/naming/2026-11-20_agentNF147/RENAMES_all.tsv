@@ -1,0 +1,27 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00868220	NCreatureMode::CModeDrained	CModeDrained	??0CModeDrained@NCreatureMode@@QAE@AAVCThing@@0@Z	NCreatureMode::CModeDrained::CModeDrained	??0CModeDrained@NCreatureMode@@QAE@PAVCThing@@0@Z	leaf-only self rename (own parameters): Ego_r.pdb 0x0083E1B0 / FableWin.pdb 0x0281FB70 name (CThing&, CThing&); body unchanged (references arrive as pointers); first form RELOCATION_MATCH, no binding change; its only landed referencer 0x008676A0 (refs scan) binds the new spelling in this hand-back; catalog name unchanged
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x008C48A0	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@UCModeBase@@@@@Z	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z	0x0073ACC0
+0x008C0C00	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@UCModeBase@@@@@Z	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z	0x0073ACC0
+0x008C0D10	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@UCModeBase@@@@@Z	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z	0x0073ACC0
+0x008C0D10	??0CModeJackOfBladesScream@@QAE@PAVCThing@@@Z	??0CModeJackOfBladesScream@NCreatureMode@@QAE@PAVCThing@@@Z	0x00740450
+0x008C0D10	?Destroy_008c2d60@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@SIXPAX@Z	0x008C2D60
+0x008C0D10	?SetSwordObject@CModeJackOfBladesScream@@QAEXPAVCThing@@@Z	?SetSwordObject@CModeJackOfBladesScream@NCreatureMode@@QAEXPAVCThing@@@Z	0x008D7370
+0x00848DB0	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@UCModeBase@@@@@Z	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z	0x0073ACC0
+0x00848DB0	?Destroy_007180b0@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z	0x007180B0
+0x00848DB0	??0CModeBase@@QAE@PAVCThing@@@Z	??0CModeBase@CTCCreatureModeManager@@QAE@AAVCThing@@@Z	0x0073EAC0
+0x008C1C30	?AddMode@CTCCreatureModeManager@@QAE_NUCCountedModePointer@@@Z	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z	0x0073ACC0
+0x008C1C30	??0CCountedModePointer@@QAE@PAUCModeBase@@@Z	??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z	0x00718A00
+0x008C1C30	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	0x00669580
+0x008C1C30	??0CModeBriarRoseConcentrate@@QAE@PAVCThing@@0_N@Z	??0CModeBriarRoseConcentrate@NCreatureMode@@QAE@AAVCThing@@AAVCThingCreatureBase@@_N@Z	0x008E78C0
+0x008676A0	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@UCModeBase@NCreatureMode@@@@@Z	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z	0x0073ACC0
+0x008676A0	??0?$CCountedPointer@UCModeBase@NCreatureMode@@@@QAE@PAUCModeBase@NCreatureMode@@@Z	??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z	0x00718A00
+0x008676A0	??0CModeDrained@NCreatureMode@@QAE@PAVCThing@@0@Z	??0CModeDrained@NCreatureMode@@QAE@AAVCThing@@0@Z	0x00868220
+0x008A08A0	?AddMode@CreatureModeManagerMethods@@QAE_NUCountedMode@@@Z	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z	0x0073ACC0
+0x008A08A0	??0CountedMode@@QAE@PAUCModeScreamerSuperAttack@@@Z	??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z	0x00718A00
+0x008A08A0	??0CModeScreamerSuperAttack@@QAE@AAUCThingNative@@ABU1@@Z	??0CModeScreamerSuperAttack@NCreatureMode@@QAE@AAVCThing@@ABV2@@Z	0x008AC3F0
+0x008A1A10	?AddMode@CTCCreatureModeManager_Retail@@QAE_NV?$CCountedPointer@UCModeBase@NCreatureMode@@@@@Z	?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z	0x0073ACC0
+0x008A1A10	??0?$CCountedPointer@UCModeBase@NCreatureMode@@@@QAE@PAUCModeBase@NCreatureMode@@@Z	??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z	0x00718A00
+0x008A1A10	??0CScriptedModeInfo@NCreatureMode@@QAE@ABVCCharString@@@Z	??0CAnimFilterOfGroup@@QAE@ABVCCharString@@@Z	0x0073E8F0
+0x008A1A10	??0CModeBase@NCreatureMode@@QAE@PAUCThing_Retail@@@Z	??0CModeStandBase@@QAE@AAVCThing@@@Z	0x00861E00

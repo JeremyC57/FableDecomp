@@ -1,8 +1,8 @@
 // CGameScriptInterface::AddCreatureScriptedMode(const CScriptThing& thing, const CCharString& scriptName) const -- gives a valid creature that has a mode manager (kind 0x31) a new scripted creature mode running the named script
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A1A10, length 157 bytes (padded to 160).
 // Callees: CScriptThing::IsValid (slot 75) and GetThing (slot 11), the component-map LowerBound @ 0x0040F020 (kind 0x31),
-//          operator new @ 0x00BFEA1A (0x74 bytes), NCreatureMode::CModeBase::CModeBase(CThing*) @ 0x00861E00 (manifest
-//          "CTCCreatureNavigation" ctor is propagated), the scripted-mode info constructor @ 0x0073E8F0 at +0x68 (manifest
+//          operator new @ 0x00BFEA1A (0x74 bytes), CModeStandBase::CModeStandBase(CThing&) @ 0x00861E00 (manifest
+//          "CTCCreatureNavigation" ctor is propagated), CAnimFilterOfGroup(const CCharString&) @ 0x0073E8F0 at +0x68 (manifest
 //          "CConsole::SendMessageToUser" is propagated), CCountedPointer<CModeBase>::CCountedPointer(T*) @ 0x00718A00,
 //          CTCCreatureModeManager::AddMode @ 0x0073ACC0.
 // Vtable: NCreatureMode::CModeScripted 0x01267670.
@@ -12,12 +12,24 @@
 // Leaf: ?AddCreatureScriptedMode@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 #include "fable_compiler.h"
+// Naming (NF147, 2026-11-20; q6408): the local NCreatureMode::CModeBase stand-in (= CModeStandBase), the CScriptedModeInfo member stand-in
+//   (= CAnimFilterOfGroup), the local CCharString, the empty ETCInterfaceType, the local std::pair / CVectorMap forward templates and
+//   CTCCreatureModeManager_Retail replaced by fable_string.h, engine/CModeStandBase.h, engine/CAnimFilterOfGroup.h (NF147 overlay opt-in
+//   FABLE_RETAIL_CANIMFILTEROFGROUP_CTOR), engine/CVectorMap.h, engine/ETCInterfaceType.h, engine/CTCCreatureModeManager.h (ADDMODEPOINTER) and
+//   engine/CCountedPointer.h (CALLED_CTOR). The header-less NCreatureMode::CModeScripted keeps its token on the shared CModeStandBase.
+//   0x0073ACC0 binds the Ego_r.pdb AddMode, 0x00718A00 the FableWin CCountedPointer<CModeBase> ctor, 0x0073E8F0 ??0CAnimFilterOfGroup@@QAE@ABVCCharString@@@Z,
+//   0x00861E00 ??0CModeStandBase@@QAE@AAVCThing@@@Z. The row's local CScriptThing still returns its CThing_Retail stand-in, so the ctor argument
+//   is `*(CThing*)thing.GetThing()` until those models move onto engine/CThing.h / CScriptThing.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CANIMFILTEROFGROUP_CTOR
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#include "fable_string.h"
 struct CTCBase_Retail;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // the thing's component map at +0x44: a sorted vector of pairs
     STCEntry_Retail* m_pFirst;
@@ -79,7 +91,6 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CCharString;
 struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
@@ -106,40 +117,21 @@ template <class T> FABLE_FORCEINLINE bool GetTCOut(CThing_Retail* thing, long ki
     }
     return false;
 }
-class CCharString { public:                               // fable_string.h layout: one data-block pointer
-    void* m_pData;
-    CCharString(const char* text, long length);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
 FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing exists and is not dead
 {
     CThing_Retail* t = thing.GetThing();
     return t && !t->m_dead;
 }
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/CModeStandBase.h"
+#include "engine/CAnimFilterOfGroup.h"
 namespace NCreatureMode {
-struct CModeBase {
-    virtual void v00();
-    unsigned char _pad04[0x64];
-    CModeBase(CThing_Retail* thing);               // 0x00861E00
-};
-struct CScriptedModeInfo {                         // +0x68: vptr + the script name
-    virtual void v00();
-    CCharString m_name;
-    CScriptedModeInfo(const CCharString& name);    // 0x0073E8F0
-    unsigned char _pad08[0x74 - 0x68 - 8];
-};
-struct CModeScripted : CModeBase {                 // 0x74 bytes
-    CScriptedModeInfo m_info;                      // +0x68
-    CModeScripted(CThing_Retail* thing, const CCharString& name) : CModeBase(thing), m_info(name) {}
-    virtual void v00();
+struct CModeScripted : CModeStandBase {           // 0x74 bytes, vtable 0x01267670
+    CAnimFilterOfGroup m_info;                     // +0x68 (0x0073E8F0 = CAnimFilterOfGroup(const CCharString&))
+    CModeScripted(CThing& thing, const CCharString& name) : CModeStandBase(thing), m_info(name) {}
+    virtual unsigned long GetType() const;
 };
 }
-void* operator new(unsigned int size);             // 0x00BFEA1A
-#include "engine/CCountedPointer.h"
-struct CTCCreatureModeManager_Retail {
-    bool AddMode(CCountedPointer<NCreatureMode::CModeBase> mode);   // 0x0073ACC0
-};
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -152,6 +144,6 @@ void CGameScriptInterface::AddCreatureScriptedMode(const CScriptThing& thing, co
     CThing_Retail* t = thing.GetThing();
     if (!t->HasTC(0x31))
         return;
-    CTCCreatureModeManager_Retail* modes = (CTCCreatureModeManager_Retail*)GetTC(t, 0x31);
-    modes->AddMode(CCountedPointer<NCreatureMode::CModeBase>(new NCreatureMode::CModeScripted(thing.GetThing(), scriptName)));
+    CTCCreatureModeManager* modes = (CTCCreatureModeManager*)GetTC(t, 0x31);
+    modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new NCreatureMode::CModeScripted(*(CThing*)thing.GetThing(), scriptName)));
 }
