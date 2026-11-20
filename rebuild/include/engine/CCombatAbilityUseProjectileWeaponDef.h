@@ -6,9 +6,21 @@
 #ifdef FABLE_RETAIL_CCOMBATABILITYUSEPROJECTILEWEAPONDEF_ALLOC
 // Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
 // ?Alloc@CCombatAbilityUseProjectileWeaponDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
-class CCombatAbilityUseProjectileWeaponDef:public CSubDefClassBase {public:CCombatAbilityProjectileAttackData CombatAbility;public: static class CDefClassBase* FABLE_FASTCALL Alloc();};
+class CCombatAbilityUseProjectileWeaponDef:public CSubDefClassBase {public:CCombatAbilityProjectileAttackData CombatAbility;public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#ifdef FABLE_RETAIL_CCOMBATABILITYUSEPROJECTILEWEAPONDEF_STATGETTYPENAME
+// Opt-in (NF170, 2026-11-20, rows 0x0097EF60 / 0x0097F3A0 / 0x006696B0): FableWin.pdb ?StatGetTypeName@CCombatAbilityUseProjectileWeaponDef@@SI?AVCCharString@@XZ
+// (0x01DA9C60; inline in retail: GetSubDef<CCombatAbilityUseProjectileWeaponDef> 0x006696B0 pushes the class-name literal). No layout change.
+public: static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CCombatAbilityUseProjectileWeaponDef",-1);}
+#endif
+};
 #else
-class CCombatAbilityUseProjectileWeaponDef:public CSubDefClassBase {public:CCombatAbilityProjectileAttackData CombatAbility;};
+class CCombatAbilityUseProjectileWeaponDef:public CSubDefClassBase {public:CCombatAbilityProjectileAttackData CombatAbility;
+#ifdef FABLE_RETAIL_CCOMBATABILITYUSEPROJECTILEWEAPONDEF_STATGETTYPENAME
+// Opt-in (NF170, 2026-11-20, rows 0x0097EF60 / 0x0097F3A0 / 0x006696B0): FableWin.pdb ?StatGetTypeName@CCombatAbilityUseProjectileWeaponDef@@SI?AVCCharString@@XZ
+// (0x01DA9C60; inline in retail: GetSubDef<CCombatAbilityUseProjectileWeaponDef> 0x006696B0 pushes the class-name literal). No layout change.
+public: static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CCombatAbilityUseProjectileWeaponDef",-1);}
+#endif
+};
 #endif
 FABLE_STATIC_ASSERT_AT(7, offsetof(CCombatAbilityUseProjectileWeaponDef,CombatAbility)==0x28);
 #endif

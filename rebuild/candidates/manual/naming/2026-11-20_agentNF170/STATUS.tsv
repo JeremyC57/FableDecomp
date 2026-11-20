@@ -1,0 +1,91 @@
+address	change	grade	test	grades_used	entries	note
+0x004045C0	none	-	-	0	q5217	not-a-binder: self row of the entry; leaf already the PDB spelling, not changed
+0x0042AF9E	none	-	-	0	q4483	not-a-binder: self row of the entry; leaf already the PDB spelling, not changed
+0x00485815	none	-	-	0	q5014	not-a-binder: self row of the entry; leaf already the PDB spelling, not changed
+0x0049C700	none	-	-	0	q4983	not-a-binder: self row of the entry; leaf already the PDB spelling, not changed
+0x00512FE0	none	-	-	0	q4435	not-a-binder: self row of the entry; leaf already the PDB spelling, not changed
+0x0059350C	none	-	-	0	q4484	not-a-binder: self row of the entry; leaf already the PDB spelling, not changed
+0x005EA010	binder respelled: GetSubDef<CTavernGameDef> 0x005ED4A0 via shared GetSubDef header + engine/CTavernGameDef.h	RELOCATION_MATCH	PASS	3	q4278	only the 0x005ED4A0 pair changed (xref diff)
+0x005EA100	binder respelled: GetSubDef<CTavernGameDef> 0x005ED4A0 via shared GetSubDef header + engine/CTavernGameDef.h	RELOCATION_MATCH	PASS	3	q4278	only the 0x005ED4A0 pair changed (xref diff)
+0x005EA1A0	binder respelled: GetSubDef<CTavernGameDef> 0x005ED4A0 via shared GetSubDef header + engine/CTavernGameDef.h	RELOCATION_MATCH	PASS	3	q4278	only the 0x005ED4A0 pair changed (xref diff)
+0x005EA250	binder respelled: GetSubDef<CTavernGameDef> 0x005ED4A0 via shared GetSubDef header + engine/CTavernGameDef.h	RELOCATION_MATCH	PASS	3	q4278	only the 0x005ED4A0 pair changed (xref diff)
+0x005EA310	binder respelled: GetSubDef<CTavernGameDef> 0x005ED4A0 via shared GetSubDef header + engine/CTavernGameDef.h	RELOCATION_MATCH	PASS	3	q4278	only the 0x005ED4A0 pair changed (xref diff)
+0x005EA400	binder respelled: GetSubDef<CTavernGameDef> 0x005ED4A0 via shared GetSubDef header + engine/CTavernGameDef.h	RELOCATION_MATCH	PASS	3	q4278	only the 0x005ED4A0 pair changed (xref diff)
+0x005EB810	binder respelled: GetSubDef<CTavernGameDef> 0x005ED4A0 via shared GetSubDef header + engine/CTavernGameDef.h	RELOCATION_MATCH	PASS	3	q4278	only the 0x005ED4A0 pair changed (xref diff)
+0x005EC0F0	binder respelled: GetSubDef<CTavernGameDef> 0x005ED4A0 via shared GetSubDef header + engine/CTavernGameDef.h	RELOCATION_MATCH	PASS	4	q4278	only the 0x005ED4A0 pair changed (xref diff)
+0x005EC990	binder respelled: GetSubDef<CTavernGameDef> 0x005ED4A0 via shared GetSubDef header + engine/CTavernGameDef.h	RELOCATION_MATCH	PASS	3	q4278	only the 0x005ED4A0 pair changed (xref diff)
+0x005ED4A0	owner: strong explicit specialization -> shared body + nf86/nf88 pick-any scaffolding (nf135 recipe)	RELOCATION_MATCH	PASS	1	q4278	leaf unchanged; link-tested with the 9 binders (link/q4278/link.log, exit 0, no LNK2005)
+0x006473B9	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00658EC3	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0065C45A	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0065ED7A	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0065EE2D	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0065EEDD	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0065EF72	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0065F116	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00669580	none	-	-	0	q11675 q11718	not-a-binder: self row of the entry; leaf already the PDB spelling, not changed
+0x006696B0	owner: strong explicit specialization -> shared body + nf86/nf88 pick-any scaffolding (nf135 recipe)	RELOCATION_MATCH	PASS	1	q4268	leaf unchanged
+0x006929A0	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00699090	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006A23E0	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006A2E20	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006A3130	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006A3180	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006A31D0	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006A3220	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006A3300	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006A7F70	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006A7F90	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006E1080	none	-	-	0	q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006E4BD0	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006E55B0	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x006EA2C0	binder respelled: GetSubDef<CCombatAbilityStrafeDef> 0x006F0F60 via shared header (local CDefPointer/CCombatTypeDef/CRingRotationDef stand-ins dropped)	RELOCATION_MATCH	PASS	4	q4267	only the 0x006F0F60 pair changed (xref diff); links with new 0x006F0F60 (link/new_006f0f60_006ea2c0.log)
+0x006F0F60	owner: strong explicit specialization -> shared body + nf86/nf88 pick-any scaffolding (nf135 recipe)	RELOCATION_MATCH	PASS	2	q4267	leaf unchanged; removes LNK2005 with the new header includer 0x006EA2C0
+0x007355F0	none	not changed	-	0	q4267 q4268	not-a-binder: already binds both PDB spellings. NOTE: defines strong explicit specializations of 9 GetSubDef<T> instances (LNK2005 vs owners 0x006F0F60 at HEAD); not in my locks
+0x00737AD0	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00739550	none	-	-	0	q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00744830	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00748D80	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0074CE40	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00809D60	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0080DF90	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00810FE0	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00811040	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0082C5E0	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00853830	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x008574D0	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00857B70	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00860410	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00860500	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00860FA0	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00891720	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0089E540	none	-	-	0	q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x008C9A40	none	-	-	0	q11675	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x008D74B0	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x008D7730	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x008D9E30	none	-	-	0	q11675 q11718	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x008DDD70	none	-	-	0	q11675 q11718	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x008E3BB0	self re-authored on engine/CThingSearchTools.h template body + nf86/nf88 pick-any scaffolding (was a CThingSearchToolsMethods stand-in)	RELOCATION_MATCH	PASS	3	q11742	callee pairs moved only onto spellings already bound (xref diff vs reloc_bindings); test is a standalone host model, unchanged
+0x0090CB80	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x009142B0	self re-authored on engine/CThingSearchTools.h template body + nf86/nf88 pick-any scaffolding (was a CThingSearchToolsMethods stand-in)	RELOCATION_MATCH	PASS	3	q11813	callee pairs moved only onto spellings already bound (xref diff vs reloc_bindings); test is a standalone host model, unchanged
+0x00933C10	none	-	-	0	q4978 q5012 q5013	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00941550	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00954130	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00964230	self re-authored on engine/CThingSearchTools.h template body + nf86/nf88 pick-any scaffolding (was a CThingSearchToolsMethods stand-in)	RELOCATION_MATCH	PASS	3	q11782	callee pairs moved only onto spellings already bound (xref diff vs reloc_bindings); test is a standalone host model, unchanged
+0x00964EF0	self re-authored on engine/CThingSearchTools.h template body + nf86/nf88 pick-any scaffolding (was a CThingSearchToolsMethods stand-in)	RELOCATION_MATCH	PASS	3	q11814	callee pairs moved only onto spellings already bound (xref diff vs reloc_bindings); test is a standalone host model, unchanged
+0x00966AD0	none	-	-	0	q4978 q5012	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x0097EF60	binder respelled: GetSubDef<CCombatAbilityUseProjectileWeaponDef> 0x006696B0 via shared header	RELOCATION_MATCH	PASS	2	q4268	only the 0x006696B0 pair changed (xref diff)
+0x0097F3A0	binder respelled: GetSubDef<CCombatAbilityUseProjectileWeaponDef> 0x006696B0 via shared header	RELOCATION_MATCH	PASS	2	q4268	only the 0x006696B0 pair changed (xref diff); claimed lock
+0x00A01B50	none	-	-	0	q4978 q5012	not-a-binder: self row of the entry; leaf already the PDB spelling, not changed
+0x00A01B90	none	-	-	0	q5013	not-a-binder: self row of the entry; leaf already the PDB spelling, not changed
+0x00CDBF70	none	-	-	0	q6510	open: self row: rename waits for its binder family (APPLIED)
+0x00CDBFB0	none	-	-	0	q6368 q6493 q6504 q6509	open: self row: rename waits for its binder family (APPLIED)
+0x00CDCA70	self rename EPostSavePosition -> EGameflowPosition (enum from engine/CQ_SunnyvaleMasterData.h)	RELOCATION_MATCH	PASS	2	q11755	leaf now the PDB spelling its one landed caller binds; the TransferBinaryIn callee and the TransferableComponent vtable respell with T (only this row references them, exe scan); all COMDATs pick-any; test is a standalone host model, unchanged
+0x00CDCDD0	self rename EHeroSoulsPosition -> EPlaceInHeroSouls (enum from engine/CQ_SunnyvaleMasterData.h)	RELOCATION_MATCH	PASS	2	q4632 q11757	leaf now the PDB spelling its one landed caller binds; the TransferBinaryIn callee and the TransferableComponent vtable respell with T (only this row references them, exe scan); all COMDATs pick-any; test is a standalone host model, unchanged
+0x00D246C0	none	-	-	0	q6368 q6493 q6504 q6509 q6510	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00D29DB0	none	-	-	0	q6368 q6493 q6504 q6509 q6510	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00D45060	none	-	-	0	q6368 q6493 q6504 q6509	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00E0A820	none	-	-	0	q6510	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00E12330	none	-	-	0	q6368 q6493 q6504 q6509	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00E2AB30	none	-	-	0	q6368 q6493 q6504 q6509	open: wrong binder, not reached in this hand-back (entry open/deferred; APPLIED lists it)
+0x00F2D4D0	self rename EKNAttackType -> EFeatAttackType (enum from engine/CFeatDef.h)	RELOCATION_MATCH	PASS	2	q11759	leaf now the PDB spelling its one landed caller binds; the TransferBinaryIn callee and the TransferableComponent vtable respell with T (only this row references them, exe scan); all COMDATs pick-any; test is a standalone host model, unchanged

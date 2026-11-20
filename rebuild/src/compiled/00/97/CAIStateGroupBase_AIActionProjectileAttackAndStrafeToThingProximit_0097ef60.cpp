@@ -2,8 +2,8 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097EF60, 540 bytes (ret 24h). Sibling of 0x0097F3A0 (ToPos).
-// Callees: CThingCreatureBase::GetCombatTypeDef 0x00666D10, CDefClassBase::GetSubDef<CAICreatureWillPowerIndicatorDef>
-//   0x006696B0 (same-TU stand-in), CVectorMap::LowerBound 0x0040F020 (same-TU stand-in; inlined GetInterface 0x31 =
+// Callees: CThingCreatureBase::GetCombatTypeDef 0x00666D10, CDefClassBase::GetSubDef<CCombatAbilityUseProjectileWeaponDef>
+//   0x006696B0 (shared noinline body, same TU), CVectorMap::LowerBound 0x0040F020 (same-TU stand-in; inlined GetInterface 0x31 =
 //   CTCCreatureModeManager, bit 17 of +0x24), CTCCreatureModeManager::HasMode 0x0073A8A0 / AddMode 0x0073AE10 /
 //   RemoveMode 0x0073ABA0, CAIStateGroupBase::AIAction_MoveToThingProximity 0x0097E380, CBaseIntelligentPointer ctor 0x00A01B10 /
 //   SetPItem 0x00A01B90 / GetPItem 0x00A01B50 /
@@ -18,7 +18,28 @@
 // passed on by value (a copy built in the argument slots: base ctor, vtable store, SetPItem(GetPItem())).
 // Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C.
 // Name fix (agentNF7 2026-11-10): AIAction_MoveToThingProximity 0x0097E380 and this row are protected members (Ego_r.pdb IAE).
+// NF170 (q4268, 2026-11-20): the sub-def call 0x006696B0 is the shared CDefClassBase::GetSubDef<CCombatAbilityUseProjectileWeaponDef>
+//   template (Ego_r.pdb + FableWin.pdb ??$GetSubDef@VCCombatAbilityUseProjectileWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@@Z;
+//   the callee body pushes the literal 'CCombatAbilityUseProjectileWeaponDef'), its noinline body visible (engine/CDefClassBase_GetSubDef.h
+//   FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE), on the shared CDefPointer / CCombatTypeDef / CCombatAbilityUseProjectileWeaponDef. The
+//   flag at +0x40 is CombatAbility (+0x28) .AbleToStrafeAndShoot (+0x18, Ego_r CCombatAbilityProjectileAttackData). Was a local
+//   CDefClassBase / CDefPointer / CCombatTypeDef model with a stand-in GetSubDef(CAICreatureWillPowerIndicatorDef**) body. The action's
+//   PSpecialShotDef is CDefPointer<const CMeleeCombatAbilityDef> (engine/CCreatureAction_FireMissileWeapon.h).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CCOMBATTYPEDEF
+#define FABLE_RETAIL_CCOMBATABILITYDATA
+#define FABLE_RETAIL_CCOMBATABILITYPROJECTILEATTACKDATA
+#define FABLE_RETAIL_CCOMBATABILITYUSEPROJECTILEWEAPONDEF_STATGETTYPENAME
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
 #include "fable_compiler.h"
+#include "engine/CCombatTypeDef.h"
+#include "engine/CCombatAbilityUseProjectileWeaponDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -33,33 +54,7 @@ struct CDefCounted {
     long GetRefCount() const { return m_refCount; }
     void Release() { DecRef(); if (GetRefCount() == 0) DeleteThis(); }
 };
-class CAICreatureWillPowerIndicatorDef : public CDefCounted { public:
-    unsigned char _pad08[0x38];
-    bool UseStrafe;                             // +0x40
-};
 class CMeleeCombatAbilityDef : public CDefCounted { public: };
-template <class T> class CDefPointer { public:
-    T* m_pDef;
-    ~CDefPointer() { if (m_pDef) { m_pDef->Release(); m_pDef = 0; } }
-};
-class CDefClassBase { public:
-    bool GetSubDef(CAICreatureWillPowerIndicatorDef** out) const;   // 0x006696B0
-};
-CAICreatureWillPowerIndicatorDef* FindWillPowerIndicatorDef(const CDefClassBase* def);
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CAICreatureWillPowerIndicatorDef** out) const
-{
-    CAICreatureWillPowerIndicatorDef* old = *out;
-    CAICreatureWillPowerIndicatorDef* def = FindWillPowerIndicatorDef(this);
-    if (!def)
-        return false;
-    if (old != def)
-        *out = def;
-    return true;
-}
-#pragma auto_inline(on)
-class CCombatTypeDef : public CDefClassBase { public: };
-
 class CTCCreatureModeManager { public:                 // interface type 0x31
     bool HasMode(unsigned long mode);           // 0x0073A8A0
     bool AddMode(unsigned long mode);           // 0x0073AE10
@@ -122,7 +117,7 @@ class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:  
     float ShotBuildupTime;                                  // +0xb8
     bool Decapitate;                                        // +0xbc
     long DelayTimer;                                        // +0xc0
-    CDefPointer<CMeleeCombatAbilityDef> PSpecialShotDef;    // +0xc4
+    CDefPointer<const CMeleeCombatAbilityDef> PSpecialShotDef;    // +0xc4
     CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);   // 0x008D5110
 };
 
@@ -156,9 +151,9 @@ EAIActionReturn CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProx
                                                                                      EMovementType anim, bool extra)
 {
     bool useStrafe = false;
-    CAICreatureWillPowerIndicatorDef* indicator = 0;
+    CDefPointer<const CCombatAbilityUseProjectileWeaponDef> indicator;
     if (GetCreature()->GetCombatTypeDef()->GetSubDef(&indicator))
-        useStrafe = indicator->UseStrafe;
+        useStrafe = indicator->CombatAbility.AbleToStrafeAndShoot;
     CTCCreatureModeManager* modes;
     GetCreature()->GetInterfaceT(&modes, 0x31);
     if (useStrafe && !modes->HasMode(0x19))
@@ -179,8 +174,5 @@ EAIActionReturn CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProx
             creature->SetCurrentAction(CCreatureAction_FireMissileWeapon(creature, ((CThing*)target.GetPItem())));
         }
     }
-    if (indicator)
-        if (--indicator->m_refCount == 0)
-            indicator->DeleteThis();
     return result;
 }

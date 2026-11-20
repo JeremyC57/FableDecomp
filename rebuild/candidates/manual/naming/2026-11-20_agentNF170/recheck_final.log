@@ -1,0 +1,121 @@
+addr       parity           behav  name
+005ea010   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef (engine/CHeroStatsDef.h)
+005ea010   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005ea010   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005ea010   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005ea010   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ea010   RELOCATION_MATCH PASS   CTCTavernGame::UpdateValues
+005ea100   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ea100   RELOCATION_MATCH PASS   CTCTavernGame::GetWinPhrase
+005ea1a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005ea1a0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ea1a0   RELOCATION_MATCH PASS   CTCTavernGame::GetBet
+005ea250   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005ea250   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ea250   RELOCATION_MATCH PASS   CTCTavernGame::GetPlayersMoney
+005ea310   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005ea310   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ea310   RELOCATION_MATCH PASS   CTCTavernGame::GetTotalWinnings
+005ea400   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005ea400   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+005ea400   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+005ea400   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+005ea400   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+005ea400   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+005ea400   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ea400   RELOCATION_MATCH PASS   CTCTavernGame::DrawBetAndMoney
+005eb810   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005eb810   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+005eb810   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005eb810   RELOCATION_MATCH PASS   CTCTavernGame::ChangeBet
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ec0f0   WARN RELOC_NAME: ?OpenGameUI@CPlayerGui@@QAEXXZ -> 00437ff0 labelled '_global::Forward_Clear_via0x1f0_00437ff0'
+005ec0f0   RELOCATION_MATCH PASS   CTCTavernGame::EnterGame
+005ec990   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005ec990   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+005ec990   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+005ec990   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+005ec990   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005ec990   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ec990   RELOCATION_MATCH PASS   CTCTavernGame::DrawBox
+005ed4a0   RELOCATION_MATCH PASS   CDefClassBase::GetSubDef<CTavernGameDef>
+006696b0   RELOCATION_MATCH PASS   CDefClassBase::GetSubDef<CCombatAbilityUseProjectileWeaponDef>
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ea2c0   RELOCATION_MATCH PASS   CCombatManager::PerformSequenceReset
+006f0f60   RELOCATION_MATCH PASS   CDefClassBase::GetSubDef<CCombatAbilityStrafeDef>
+008e3bb0   RELOCATION_MATCH PASS   CThingSearchTools::GetAllThings
+009142b0   WARN RELOC_NAME: ??$?RVCThingDeadCreature@@@CThingCompare_Nearest@@QBEPAVCThingDeadCreature@@PAV1@0@Z -> 00914130 labelled 'CThingCompare_Nearest::operator()<CThingDeadCreature>'
+009142b0   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CThingFilter_None, CThingCompare_Nearest, CThingDeadCreature>
+00964230   WARN RELOC_NAME: ??$?RVCThingObject@@@CThingCompare_Nearest@@QBEPAVCThingObject@@PAV1@0@Z -> 00916b10 labelled 'CThingCompare_Nearest::operator()<CThingObject>'
+00964230   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint >, CThingCompare_Nearest, CThingObject>
+00964ef0   RELOCATION_MATCH PASS   CThingSearchTools::GetAllLeafThings
+0097ef60   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0097ef60   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0097ef60   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0097ef60   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0097ef60   WARN SHARED_HEADER_AVAILABLE CCreatureAction_FireMissileWeapon (engine/CCreatureAction_FireMissileWeapon.h)
+0097ef60   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0097ef60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0097ef60   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NK@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+0097ef60   RELOCATION_MATCH PASS   CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProximity
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_FireMissileWeapon (engine/CCreatureAction_FireMissileWeapon.h)
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0097f3a0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NK@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+0097f3a0   RELOCATION_MATCH PASS   CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToPos
+00cdca70   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00cdca70   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+00cdca70   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableComponent (engine/CPersistContext_TransferableComponent.h)
+00cdca70   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00cdca70   RELOCATION_MATCH PASS   CPersistContext::Transfer<EPostSavePosition>
+00cdcdd0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00cdcdd0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+00cdcdd0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableComponent (engine/CPersistContext_TransferableComponent.h)
+00cdcdd0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00cdcdd0   RELOCATION_MATCH PASS   CPersistContext::Transfer<EHeroSoulsPosition>
+00f2d4d0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00f2d4d0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+00f2d4d0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableComponent (engine/CPersistContext_TransferableComponent.h)
+00f2d4d0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00f2d4d0   RELOCATION_MATCH PASS   CPersistContext::Transfer<EKNAttackType>
+
+WINS: 22
+  005ea010 RELOCATION_MATCH CTCTavernGame::UpdateValues
+  005ea100 RELOCATION_MATCH CTCTavernGame::?GetWinPhrase@CTCTavernGame@@UAE?AVCWideString@@XZ
+  005ea1a0 RELOCATION_MATCH CTCTavernGame::GetBet
+  005ea250 RELOCATION_MATCH CTCTavernGame::GetPlayersMoney
+  005ea310 RELOCATION_MATCH CTCTavernGame::?GetTotalWinnings@CTCTavernGame@@UAE?AVCWideString@@XZ
+  005ea400 RELOCATION_MATCH CTCTavernGame::DrawBetAndMoney
+  005eb810 RELOCATION_MATCH CTCTavernGame::ChangeBet
+  005ec0f0 RELOCATION_MATCH CTCTavernGame::?EnterGame@CTCTavernGame
+  005ec990 RELOCATION_MATCH CTCTavernGame::?DrawBox@CTCTavernGame
+  005ed4a0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z
+  006696b0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityUseProjectileWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@@Z
+  006ea2c0 RELOCATION_MATCH CCombatManager::PerformSequenceReset
+  006f0f60 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityStrafeDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@@Z
+  008e3bb0 RELOCATION_MATCH CThingSearchTools::??$GetAllThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_IsNot@@@CThingSearchTools@@QBEXABVCThingFilter_IsNot@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z
+  009142b0 RELOCATION_MATCH CThingSearchTools::??$GetPBestThing@VCThingFilter_None@@VCThingCompare_Nearest@@VCThingDeadCreature@@@CThingSearchTools@@QBE_NABVCThingFilter_None@@ABVCThingCompare_Nearest@@PAPAVCThingDeadCreature@@@Z
+  00964230 RELOCATION_MATCH CThingSearchTools::??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@VCThingCompare_Nearest@@VCThingObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@ABVCThingCompare_Nearest@@PAPAVCThingObject@@@Z
+  00964ef0 RELOCATION_MATCH CThingSearchTools::??$GetAllLeafThings@VCThingMarker@@V?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@VCThingFilter_MarkerHasProperty@@@CThingSearchTools@@QBEXABVCThingFilter_MarkerHasProperty@@AAV?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@@Z
+  0097ef60 RELOCATION_MATCH CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProximity
+  0097f3a0 RELOCATION_MATCH CAIStateGroupBase::?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@V?$CIntelligentPointer@$$CBVCThing@@@@AA_NW4EMovementType@@_N@Z
+  00cdca70 RELOCATION_MATCH CPersistContext::??$Transfer@W4EGameflowPosition@@@CPersistContext@@QAEXPBDAAW4EGameflowPosition@@ABW41@@Z
+  00cdcdd0 RELOCATION_MATCH CPersistContext::??$Transfer@W4EPlaceInHeroSouls@@@CPersistContext@@QAEXPBDAAW4EPlaceInHeroSouls@@ABW41@@Z
+  00f2d4d0 RELOCATION_MATCH CPersistContext::??$Transfer@W4EFeatAttackType@@@CPersistContext@@QAEXPBDAAW4EFeatAttackType@@ABW41@@Z
+DONE

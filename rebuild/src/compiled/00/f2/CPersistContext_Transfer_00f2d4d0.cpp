@@ -1,31 +1,36 @@
-// CPersistContext::Transfer<EHeroSoulsPosition>(const char* name, EHeroSoulsPosition& value, const EHeroSoulsPosition& defaultValue) -- persist one enum member ("CurrentHeroSoulsPosition"): CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save as a long, or reset to the default
-// Leaf: Transfer
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00CDCDD0, `ret 0Ch`. Called from the quest-script persist function at 0x00CDC070 with the key "CurrentHeroSoulsPosition".
+// CPersistContext::Transfer<EFeatAttackType>(const char* name, EFeatAttackType& value, const EFeatAttackType& defaultValue) -- persist one enum member ("KN_AttackType"): CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save as a long, or reset to the default
+// Leaf: ??$Transfer@W4EFeatAttackType@@@CPersistContext@@QAEXPBDAAW4EFeatAttackType@@ABW41@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00F2D4D0, `ret 0Ch`. Called from the quest-script persist function at 0x00F2D330 with the key "KN_AttackType".
 // Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteSLONG 0x00993EB0 (catalogued "WriteCBYTE"),
-//   CPersistTraits<T>::TransferBinaryIn 0x00CDCEB0, CPersistContext::TransferObjectSaveText 0x009BAD60 and TransferObjectLoadText
-//   0x009BBA40 (both take the CPersistContext_TransferableComponent<T> wrapper, vtable 0x012C2ED4).
+//   CPersistTraits<T>::TransferBinaryIn 0x00F2D5B0, CPersistContext::TransferObjectSaveText 0x009BAD60 and TransferObjectLoadText
+//   0x009BBA40 (both take the CPersistContext_TransferableComponent<T> wrapper, vtable 0x012FB898).
 // Shape: the speed-optimised sibling of the landed size-TU CDefIndex instantiation 0x005CC1E8. The persist mode
 //   (CPersistContext +0x18: 0 text load, 1 text save, 2 binary load, 3 binary save, 4 reset) is a closed enum, so the switch
 //   ends in `default: __assume(0)` and VC7.1 emits the bare `jmp [eax*4+table]`; the case bodies are laid out in source
 //   order and retail has them 4,3,2,1,0. this module's traits carries a `T DefaultVal` member; declared at function scope it is built (zeroed) once before the jump, in the dead key-argument slot, and the binary-load arm passes its address. The 8-byte frame is the {vtable, value*} wrapper of the text arms.
-//   The enum's name is descriptive (from the key); it is a 4-byte enum written with WriteLong.
+//   The enum is a 4-byte enum written with WriteLong.
+// Naming (NF170, q11759, 2026-11-20): T is the global EFeatAttackType (Ego_r.pdb + FableWin.pdb ??$Transfer@W4EFeatAttackType@@@CPersistContext@@QAEXPBDAAW4EFeatAttackType@@ABW41@@Z; FableWin also its
+//   CPersistTraits / GetDefaultVal instances; the landed caller CFeatDef::Transfer 0x00F2D330 transfers KN_AttackType (EFeatAttackType, engine/CFeatDef.h) and already binds this spelling). Was the descriptive EKNAttackType.
 class CDataOutputStream { public:
 public:
     void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
-enum EHeroSoulsPosition { EHeroSoulsPosition_Default };
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CFeatDef.h"                             // the global enum EFeatAttackType (Ego_r.pdb; CFeatDef::KN_AttackType +0x48)
 
 template <class T> struct CPersistTraits {
     T DefaultVal;
     CPersistTraits() : DefaultVal() {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream, T* value);   // 0x00CDCEB0 for this T
+    void TransferBinaryIn(CMemoryDataInputStream* stream, T* value);   // 0x00F2D5B0 for this T
 };
 
 class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferIn();
 };
-template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {   // vtable 0x012C2ED4
+template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {   // vtable 0x012FB898
     T* Value;
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual void TransferIn();
@@ -77,4 +82,4 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
     }
 }
 
-template void CPersistContext::Transfer<EHeroSoulsPosition>(const char* name, EHeroSoulsPosition& value, const EHeroSoulsPosition& defaultValue);
+template void CPersistContext::Transfer<EFeatAttackType>(const char* name, EFeatAttackType& value, const EFeatAttackType& defaultValue);

@@ -1,0 +1,2 @@
+GREW 00443f90 1 -> 2 ?Resize@CRetailHandleVector@@QAEXJ@Z row 005ec990 SAME
+shrank [('005ed4a0', 6, 1), ('0062e190', 3, 2), ('006f0f60', 2, 1), ('006696b0', 2, 1)]

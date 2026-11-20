@@ -12,6 +12,10 @@
 #include "fable_string.h"
 #include "engine/CSubDefClassBase.h"
 #include "engine/CDefString.h"
+#ifdef FABLE_RETAIL_CTAVERNGAMEDEF_PRIZESCORES_VECTOR
+#include "stlport/fable_containers.h"
+#include "engine/CPrizeScoreDef.h"
+#endif
 class CPersistContext;
 
 class CTavernGameDef : public CSubDefClassBase {
@@ -105,7 +109,13 @@ public:
     float         MainMoneyX;                       // +0x168
     float         MainMoneyY;                       // +0x16c
     bool          BestScoreHigh;                    // +0x170
+#ifdef FABLE_RETAIL_CTAVERNGAMEDEF_PRIZESCORES_VECTOR
+    // Opt-in (NF170, 2026-11-20, row 0x005EA010 CTCTavernGame::UpdateValues, which walks it): the member typed as Ego_r.pdb has it,
+    // std::vector<CPrizeScoreDef> (STLport, 12 bytes at +0x174; the element stride 0x30 = sizeof CPrizeScoreDef). Same layout.
+    std::vector<CPrizeScoreDef> PrizeScores;                // +0x174
+#else
     unsigned long PrizeScores[3];                   // +0x174 vector<CPrizeScoreDef> (STLport, 12 bytes; Ego_r 16)
+#endif
     long          Prize;                            // +0x180
     long          PrizeRenown;                      // +0x184
     float         MainGameScoreBoxX;                // +0x188
@@ -116,23 +126,23 @@ public:
     bool          DisplayErrata;                    // +0x19c
     float         PointerPhaseSpeed;                // +0x1a0
     static void CheckRetailLayout() {
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, Banter) == 0x28);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, Greeting) == 0x2c);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, NoMoney) == 0x68);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, ReactionForward) == 0x88);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, CameraName) == 0x90);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, ClickToContinue) == 0xa0);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, Continue) == 0xf8);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, PrizeGiven) == 0x108);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, MinBet) == 0x110);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, ScoreFont) == 0x11c);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, BestScoreHigh) == 0x170);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, PrizeScores) == 0x174);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, Prize) == 0x180);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, DisplayErrata) == 0x19c);
-        FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, PointerPhaseSpeed) == 0x1a0);
+        FABLE_STATIC_ASSERT_AT(119, offsetof(CTavernGameDef, Banter) == 0x28);
+        FABLE_STATIC_ASSERT_AT(120, offsetof(CTavernGameDef, Greeting) == 0x2c);
+        FABLE_STATIC_ASSERT_AT(121, offsetof(CTavernGameDef, NoMoney) == 0x68);
+        FABLE_STATIC_ASSERT_AT(122, offsetof(CTavernGameDef, ReactionForward) == 0x88);
+        FABLE_STATIC_ASSERT_AT(123, offsetof(CTavernGameDef, CameraName) == 0x90);
+        FABLE_STATIC_ASSERT_AT(124, offsetof(CTavernGameDef, ClickToContinue) == 0xa0);
+        FABLE_STATIC_ASSERT_AT(125, offsetof(CTavernGameDef, Continue) == 0xf8);
+        FABLE_STATIC_ASSERT_AT(126, offsetof(CTavernGameDef, PrizeGiven) == 0x108);
+        FABLE_STATIC_ASSERT_AT(127, offsetof(CTavernGameDef, MinBet) == 0x110);
+        FABLE_STATIC_ASSERT_AT(128, offsetof(CTavernGameDef, ScoreFont) == 0x11c);
+        FABLE_STATIC_ASSERT_AT(129, offsetof(CTavernGameDef, BestScoreHigh) == 0x170);
+        FABLE_STATIC_ASSERT_AT(130, offsetof(CTavernGameDef, PrizeScores) == 0x174);
+        FABLE_STATIC_ASSERT_AT(131, offsetof(CTavernGameDef, Prize) == 0x180);
+        FABLE_STATIC_ASSERT_AT(132, offsetof(CTavernGameDef, DisplayErrata) == 0x19c);
+        FABLE_STATIC_ASSERT_AT(133, offsetof(CTavernGameDef, PointerPhaseSpeed) == 0x1a0);
     }
 };
-FABLE_STATIC_ASSERT(sizeof(CTavernGameDef) == 0x1a4);
+FABLE_STATIC_ASSERT_AT(136, sizeof(CTavernGameDef) == 0x1a4);
 
 #endif // FABLE_ENGINE_CTAVERNGAMEDEF_H

@@ -1,5 +1,5 @@
 // CThingSearchTools::GetAllLeafThings(const TFilter& filter, TContainer& things) [TThing = CThingMarker, TContainer = vector<CThingMarker*>, TFilter = CThingFilter_MarkerHasProperty] -- append every scan-visible marker (type list 0x0b) that has the filter's property
-// Leaf: GetAllLeafThings
+// Leaf: ??$GetAllLeafThings@VCThingMarker@@V?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@VCThingFilter_MarkerHasProperty@@@CThingSearchTools@@QBEXABVCThingFilter_MarkerHasProperty@@AAV?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@@Z
 // Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00964EF0, length 136 bytes (`ret 8`).
 // Callees: PeekTypeList(long) 0x0049C780, CThingFilter_MarkerHasProperty::operator() 0x006A75B0, vector::_M_insert_overflow 0x0062E190.
@@ -10,84 +10,45 @@
 //   and the same-TU noinline _M_insert_overflow stand-in lets VC7.1 home the __true_type tag in the filter argument slot.
 // Identity: the catalog label <CThingAICreature, ..., CFilter_Bind2<...>> is propagated; PeekTypeList(0x0b), the single marker filter and
 //   the caller CAIStateGroup_StealStealableItem::FindPEscapePoint make this the marker instance.
+// NF170 (q11814, 2026-11-20): re-authored on the shared CThingSearchTools::GetAllLeafThings<T,Container,Filter> const member template
+//   (Ego_r.pdb 0x009898C0 + FableWin.pdb 0x02C3B370; engine/CThingSearchTools.h LEAFBODY), std::vector<CThingMarker*> (the STLport
+//   header's _M_insert_overflow, no row-local specialization) and engine/CThingMarker.h. Its only landed caller 0x00964CA0 binds this
+//   spelling. CThingFilter_MarkerHasProperty has no shared header: the one-word local class of that caller. Was a local
+//   CThingSearchToolsMethods stand-in (QAE) with a strong vector<CThingMarker*>::_M_insert_overflow specialization.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGMARKER_STATTYPEFLAGS
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_LEAFBODY
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_LEAFBODY_CASTARG
+#define FABLE_RETAIL_CTHING_SCANINCLUSION_ISALIVE
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CThingMarker.h"
 #include "engine/CThingSearchTools.h"
 
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    unsigned long UsingComponents[9];                 // +0x20
-    unsigned char _pad_0x44[0x6c - 0x44];
-    unsigned long ThingTypeFlags;                     // +0x6c
-    unsigned char _pad_0x70[0x91 - 0x70];
-    unsigned char StateBits;                          // +0x91
-    bool IsIncludedInThingScans() const
-    {
-        unsigned char f = StateBits;
-        unsigned char nf = ~f;
-        if ((f & 0x04) && (f & 0x08) && (nf & 0x01) && !(f & 0x20))
-            return true;
-        return false;
-    }
+enum EMarkerProperty;                                   // MS forward enum (FableWin ??0CThingFilter_MarkerHasProperty@@QAE@W4EMarkerProperty@@@Z)
+class CThingFilter_MarkerHasProperty { public:         // one word: the marker property (no shared header; as the caller 0x00964CA0)
+    EMarkerProperty Property;
+    CThingFilter_MarkerHasProperty(EMarkerProperty property) : Property(property) {}
+    bool operator()(const CThingMarker& thing) const;   // 0x006A75B0
 };
-struct CThingList {
-    struct SNode { SNode* m_pNext; SNode* m_pPrev; CThing* m_value; };
-    SNode* m_pHead;
-    struct iterator {
-        SNode* m_pNode;
-        iterator(SNode* node) : m_pNode(node) {}
-        CThing* operator*() const { return m_pNode->m_value; }
-        iterator& operator++() { m_pNode = m_pNode->m_pNext; return *this; }
-        bool operator!=(const iterator& o) const { return m_pNode != o.m_pNode; }
-    };
-    iterator begin() { return iterator(m_pHead->m_pNext); }
-    iterator end() { return iterator(m_pHead); }
-};
-class CThingMarker : public CThing { public: enum { ThingListType = 0xb }; };
-
-inline void* operator new(unsigned int, void* where) { return where; }
-struct __true_type { __true_type() {} };
-
-namespace std {
-template <class T> struct vector {
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned long fill_len, bool atend);
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) T(x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
-    }
-};
-}
-#pragma auto_inline(off)
-template <> void std::vector<CThingMarker*>::_M_insert_overflow(CThingMarker** position, CThingMarker* const& x, const __true_type&, unsigned long fill_len, bool atend)   // 0x0062E190
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the shared GetAllLeafThings<CThingMarker, vector<CThingMarker*>, CThingFilter_MarkerHasProperty> so this object emits it out of line as a pick-any
+// COMDAT (retail 0x00964EF0 is that out-of-line copy). Internal to this TU; never called.
+void (CThingSearchTools::* ReferenceGetAllLeafThingsMarker())(const CThingFilter_MarkerHasProperty&, std::vector<CThingMarker*>&) const
 {
-    if (atend && fill_len == 1)
-        _M_finish = position + (x != 0);
+    return &CThingSearchTools::GetAllLeafThings<CThingMarker, std::vector<CThingMarker*>, CThingFilter_MarkerHasProperty>;
 }
-#pragma auto_inline(on)
-
-class CThingFilter_MarkerHasProperty { public:
-    void* Property;
-    bool operator()(const CThingMarker& marker) const;      // 0x006A75B0
-};
-struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekTypeList(long type);              // 0x0049C780
-    template <class TThing, class TContainer, class TFilter> void GetAllLeafThings(const TFilter& filter, TContainer& things);
-};
-template <class TThing, class TContainer, class TFilter>
-void CThingSearchToolsMethods::GetAllLeafThings(const TFilter& filter, TContainer& things)
-{
-    CThingList* list = PeekTypeList(TThing::ThingListType);
-    for (CThingList::iterator it = list->begin(); it != list->end(); ++it)
-    {
-        CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
-            things.push_back((TThing*)thing);
-    }
 }
-template void CThingSearchToolsMethods::GetAllLeafThings<CThingMarker, std::vector<CThingMarker*>, CThingFilter_MarkerHasProperty >(const CThingFilter_MarkerHasProperty&, std::vector<CThingMarker*>&);

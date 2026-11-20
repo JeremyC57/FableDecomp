@@ -7,50 +7,25 @@
 //   +0x110/+0x114/+0x118; repeat tunables are data globals 0x0137D38C/0x0137D390/0x0137D394 (6, 2, 1).
 // Shape: in the increase branch `changed = true` is written before the `+=` (VC7.1 then schedules `mov dl,1` ahead of the
 //   `add ecx,eax`); the reverse source order puts the add first.
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long RefCount;                                      // +0x04
-    void Release() { if (--RefCount == 0) Destroy(); }
-};
-template <class T> struct CDefOut {
-    T* Object;
-    CDefOut() : Object(0) { }
-};
-template <class T> struct CDefHolder {
-    T* Object;
-    CDefHolder(T* object) : Object(object) { }
-    ~CDefHolder() { if (Object) Object->Release(); }
-    T* operator->() const { return Object; }
-};
-class CTavernGameDef : public CDefBase { public:
-    unsigned char _pad08[0x110 - 0x08];
-    long MinBet;                                        // +0x110
-    long MaxBet;                                        // +0x114
-    long BetIncrement;                                  // +0x118
-};
-class CDefClassBase : public CDefBase { public:
-    bool GetSubDef_005ed4a0(CDefOut<CTavernGameDef>& out);   // 0x005ED4A0
-};
-void* FindDef_CDefClassBase_GetSubDef_005ed4a0_0();
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef_005ed4a0(CDefOut<CTavernGameDef>& out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_005ed4a0_0();
-    if (!def)
-        return false;
-    *(void**)&out = def;
-    return true;
-}
-#pragma auto_inline(on)
+// NF170 (q4278, 2026-11-20): the sub-def call 0x005ED4A0 is the shared CDefClassBase::GetSubDef<CTavernGameDef> template (Ego_r.pdb +
+//   FableWin.pdb ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z; the callee pushes the literal
+//   'CTavernGameDef'), its noinline body visible (engine/CDefClassBase_GetSubDef.h FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE), on the
+//   shared CDefPointer / CTavernGameDef (Ego_r member names) and fable_string.h. Was a local def / CDefPointer / CDefClassBase model (and
+//   local string classes) with a stand-in GetSubDef body.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
-};
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
 };
 class CWorld {
 public:
@@ -83,8 +58,8 @@ public:
 
 void CTCTavernGame::ChangeBet(bool increase)
 {
-    CDefOut<CTavernGameDef> defOut;
-    ParentThing->PDef->GetSubDef_005ed4a0(defOut);
+    CDefPointer<const CTavernGameDef> def;
+    ParentThing->PDef->GetSubDef(&def);
     bool step = false;
     if (FrameBetWasLastChanged == CWorld::GetFrame() - 1) {
         long held = CWorld::GetFrame() - FrameBetChangeStarted - g_BetRepeatDelayFrames;
@@ -99,7 +74,6 @@ void CTCTavernGame::ChangeBet(bool increase)
         Mult = 1;
     }
     FrameBetWasLastChanged = CWorld::GetFrame();
-    CDefHolder<CTavernGameDef> def(defOut.Object);
     bool changed = false;
     if (increase) {
         if (!BetIncreasing || BaseBet >= def->MaxBet || !step || BaseBet >= CurrentMoney)

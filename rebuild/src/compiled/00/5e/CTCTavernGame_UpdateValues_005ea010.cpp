@@ -12,49 +12,24 @@
 // read once from its out slot into a holder (ebp) released at the end; the prize search caches
 // the vector end and the BestScoreHigh flag; the qualifying test is the ternary of `>=` (high scores win) and `<=`; both
 // round outcomes share the TotalWinnings store.
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long RefCount;                                      // +0x04
-    void Release() { if (--RefCount == 0) Destroy(); }
-};
-template <class T> struct CDefOut {                     // the out slot (released by the holder below)
-    T* Object;
-    CDefOut() : Object(0) { }
-};
-template <class T> struct CDefHolder {                  // the def read once from the out slot, released at scope end
-    T* Object;
-    CDefHolder(T* object) : Object(object) { }
-    ~CDefHolder() { if (Object) Object->Release(); }
-    T* operator->() const { return Object; }
-};
-class CPrizeScoreDef { public:
-    unsigned char _pad00[0x28];
-    float Score;                                        // +0x28
-    long Mult;                                          // +0x2c
-};
-class CTavernGameDef : public CDefBase { public:
-    unsigned char _pad08[0x170 - 0x08];
-    bool BestScoreHigh;                                 // +0x170
-    CPrizeScoreDef* PrizeScores_first;                  // +0x174 PrizeScores
-    CPrizeScoreDef* PrizeScores_last;                   // +0x178
-};
-class CDefClassBase : public CDefBase { public:
-    bool GetSubDef_005ed4a0(CDefOut<CTavernGameDef>& out);   // 0x005ED4A0
-};
-void* FindDef_CDefClassBase_GetSubDef_005ed4a0_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef_005ed4a0(CDefOut<CTavernGameDef>& out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_005ed4a0_0();
-    if (!def)
-        return false;
-    *(void**)&out = def;
-    return true;
-}
-#pragma auto_inline(on)
+// NF170 (q4278, 2026-11-20): the sub-def call 0x005ED4A0 is the shared CDefClassBase::GetSubDef<CTavernGameDef> template (Ego_r.pdb +
+//   FableWin.pdb ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z; the callee pushes the literal
+//   'CTavernGameDef'), its noinline body visible (engine/CDefClassBase_GetSubDef.h FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE), on the
+//   shared CDefPointer / CTavernGameDef (Ego_r member names; PrizeScores typed std::vector<CPrizeScoreDef> by the overlay opt-in
+//   FABLE_RETAIL_CTAVERNGAMEDEF_PRIZESCORES_VECTOR, engine/CPrizeScoreDef.h Score +0x28 / Mult +0x2C) and fable_string.h. Was a local def / CDefPointer / CDefClassBase model (and
+//   local string classes) with a stand-in GetSubDef body.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CTAVERNGAMEDEF_PRIZESCORES_VECTOR
+#include "fable_string.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CHeroStatsDef { public:
     unsigned char _pad00[0x5c];
     long MaximumMoney;                                  // +0x5c
@@ -95,13 +70,12 @@ class CTCTavernGame : public CTCBase { public:
 bool CTCTavernGame::UpdateValues()
 {
     CDefClassBase* thingDef = ParentThing->PDef;
-    CDefOut<CTavernGameDef> defOut;
-    thingDef->GetSubDef_005ed4a0(defOut);
-    CDefHolder<CTavernGameDef> def(defOut.Object);
+    CDefPointer<const CTavernGameDef> def;
+    thingDef->GetSubDef(&def);
     bool prizeWon = false;
     if (GameWon) {
         ++NumConsecutiveRoundsWon;
-        for (CPrizeScoreDef* prize = def->PrizeScores_first; prize != def->PrizeScores_last; ++prize) {
+        for (std::vector<CPrizeScoreDef>::const_iterator prize = def->PrizeScores.begin(); prize != def->PrizeScores.end(); ++prize) {
             if (def->BestScoreHigh ? Score >= prize->Score : Score <= prize->Score) {
                 CurrentMoney += BaseBet * prize->Mult;
                 if (CurrentMoney > GetDefinitionManager().PHeroStatsDef->MaximumMoney)

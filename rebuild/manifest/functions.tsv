@@ -29401,7 +29401,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008e3a00	`scalar_deleting_destructor'	NCreatureMode::CModeScorpionKingVulnerable	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\CLandscapeBackgroundPatch_vectordeletingdestructor_008e3a00.cpp
 008e3a20	Catch@0047e8cc	_global	unknown	undefined	0		0	yes	accepted									
 008e3aa0	_M_insert_overflow	std::vector<CIcicleData>	unknown	undefined	0		0	yes	accepted									
-008e3bb0	GetAllThings	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_BoundingBoxOverlapsMap,CThingFilter_HasNavigationInformation> *,vector<CThingPhysical_const*,std::allocator<CThingPhysical_const*>_> *	1	yes	accepted									
+008e3bb0	GetAllThings<CThingAICreature,std::vector<CThingAICreature *,std::allocator<CThingAICreature *> >,CThingFilter_IsNot>	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_BoundingBoxOverlapsMap,CThingFilter_HasNavigationInformation> *,vector<CThingPhysical_const*,std::allocator<CThingPhysical_const*>_> *	1	yes	accepted									
 008e3c50	GetAllThingsInRoughArea<CThingCreatureBase,std::vector<CThingCreatureBase*>,CFilter_Bind2<CThingFilter_IsNot,CThingFilter_In2DRange> >	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_> *,CThingCompare_Nearest *,CThingAICreature * *	1	yes	accepted									
 008e3eb0	GetAllThingsInRoughArea<CThingAICreature, std::vector<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_HasDefGlobalIndex>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature> *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
 008e4100	GetAllThingsInRoughArea	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_> *,CThingCompare_Nearest *,CThingAICreature * *	1	yes	accepted									
@@ -31178,7 +31178,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00913f30	IsRunnable	CAIStateGroup_BirdFlyToFood	__thiscall	bool	1	CAIStateGroup_BirdFlyToFood *	1	yes	accepted									
 00914130	operator()<CThingDeadCreature>	CThingCompare_Nearest	__thiscall	CThingMarker *	3	CThingCompare_Nearest *,CThingMarker *,CThingMarker *	1	yes	accepted									
 009141f0	operator()<CThingMarker>	CThingCompare_Nearest	__thiscall	CThingMarker *	3	CThingCompare_Nearest *,CThingMarker *,CThingMarker *	1	yes	accepted									
-009142b0	GetPBestThing<CThingFilter_None, CThingCompare_Nearest, CThingDeadCreature>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CThingFilter_None *,CThingCompare_Nearest *,CThingDeadCreature * *	1	yes	accepted									
+009142b0	GetPBestThing<CThingFilter_None,CThingCompare_Nearest,CThingDeadCreature>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CThingFilter_None *,CThingCompare_Nearest *,CThingDeadCreature * *	1	yes	accepted									
 00914330	GetPBestThing<CThingFilter_HasScriptName, CThingCompare_Nearest, CThingMarker>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CIsFreeBonfire *,CThingCompare_Nearest *,CThingObject * *	1	yes	accepted									
 009143c0	Cleanup	CAIStateGroup_BirdGroundWander	__thiscall	void	1	CTCHeroExperience *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\CAIStateGroupBirdGround_Cleanup_009143c0.cpp
 009143e0	IsRunnable	CAIStateGroup_BirdGroundWander	__thiscall	bool	1	CAIStateGroup_BirdGroundWander *	1	yes	accepted									
@@ -32526,7 +32526,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00963880	IsScorpionChargingAtMe	CAIStateGroup_VersusScorpionKing	__thiscall	bool	1	CAIStateGroup_VersusScorpionKing *	1	yes	accepted									
 00963a50	CAIStateGroup_VersusScorpionKing::Update	CAIStateGroup_VersusScorpionKing	__thiscall	void	1	CAIStateGroup_VersusScorpionKing *	1	yes	accepted									
 00964160	operator()<CThingMarker const>	CThingCompare_Nearest	__thiscall	CThingMarker *	3	CThingCompare_Nearest *,CThingMarker *,CThingMarker *	1	yes	accepted									
-00964230	GetPBestThing<CFilter_Bind2<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint >, CThingCompare_Nearest, CThingObject>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CFilter_Bind2<CThingFilter_ObjectHasProperty,CThingFilter_HasFreeActionPoint> *,CThingCompare_Nearest *,CThingObject * *	1	yes	accepted									
+00964230	GetPBestThing<CFilter_Bind2<CThingFilter_ObjectHasProperty,CThingFilter_HasFreeActionPoint>,CThingCompare_Nearest,CThingObject>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CFilter_Bind2<CThingFilter_ObjectHasProperty,CThingFilter_HasFreeActionPoint> *,CThingCompare_Nearest *,CThingObject * *	1	yes	accepted									
 009642d0	GetPBestThing<CThingFilter_MarkerHasProperty, CThingCompare_Nearest, CThingMarker const>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CIsFreeBonfire *,CThingCompare_Nearest *,CThingObject * *	1	yes	accepted									
 00964360	FindPStealableItem	CAIStateGroup_StealStealableItem	__thiscall	CThing *	1	CAIStateGroup_StealStealableItem *	1	yes	accepted									
 009643d0	IsStillValid	CAIStateGroup_StealStealableItem	__thiscall	bool	1	CAIStateGroup_RecoverStealableItem *	1	yes	accepted									
@@ -32534,7 +32534,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009647c0	Update	CAIStateGroup_StealStealableItem	__thiscall	void	1	CAIStateGroup_StealStealableItem *	1	yes	accepted									
 00964ca0	FindPEscapePoint	CAIStateGroup_StealStealableItem	__thiscall	CThing *	2	CAIStateGroup_StealStealableItem *,bool	1	yes	accepted									
 00964da0	IsRunnable	CAIStateGroup_StealStealableItem	__thiscall	bool	1	CAIStateGroup_StealStealableItem *	1	yes	accepted									
-00964ef0	GetAllLeafThings	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap> *,vector<CThingAICreature*,std::allocator<CThingAICreature*>_> *	1	yes	accepted									
+00964ef0	GetAllLeafThings<CThingMarker,std::vector<CThingMarker *,std::allocator<CThingMarker *> >,CThingFilter_MarkerHasProperty>	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap> *,vector<CThingAICreature*,std::allocator<CThingAICreature*>_> *	1	yes	accepted									
 009650c0	GetPBestThing	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CFilter_Bind4<CThingFilter_ObjectHasProperty,CThingFilter_HasFreeActionPoint,CThingFilter_HasTC,std::unary_negate<CThingFilter_In3DRange>_> *,CThingCompare_Nearest *,CThingObject * *	1	yes	accepted									
 00965180	GetPBestThing<CThingFilter_HasTC, CThingCompare_Nearest, CThingMarker const>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CIsFreeBonfire *,CThingCompare_Nearest *,CThingObject * *	1	yes	accepted									
 00965210	FindPStealableItemOutsideTargetPointRange	CAIStateGroup_RecoverStealableItem	__thiscall	CThing *	3	CAIStateGroup_RecoverStealableItem *,C3DVector *,float	1	yes	accepted									
@@ -49254,7 +49254,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cdca40	sub_00cdca40	_global	unknown	undefined	0		0			discovered	gapscan							
 00cdca50	sub_00cdca50	_global	unknown	undefined	0		0			discovered	gapscan							
 00cdca60	sub_00cdca60	_global	unknown	undefined	0		0			discovered	gapscan							
-00cdca70	Transfer<EPostSavePosition>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00cdca70	Transfer<EGameflowPosition>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00cdcb50	TransferBinaryIn_00cdcb50	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00cdcbe0	TransferIn	CPersistContext_TransferableComponent<EGameflowPosition>	unknown	undefined	0		0			discovered	gapscan							
 00cdcc00	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
@@ -49262,7 +49262,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cdcd00	TransferBinaryIn	CPersistTraits<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00cdcd90	TransferIn	CPersistContext_TransferableComponent<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>	unknown	undefined	0		0			discovered	gapscan							
 00cdcdb0	TransferOut	CPersistContext_TransferableComponent<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>	unknown	undefined	0		0			discovered	gapscan							
-00cdcdd0	Transfer<EHeroSoulsPosition>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00cdcdd0	Transfer<EPlaceInHeroSouls>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00cdceb0	TransferBinaryIn_00cdceb0	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00cdcf40	TransferIn	CPersistContext_TransferableComponent<EPlaceInHeroSouls>	unknown	undefined	0		0			discovered	gapscan							
 00cdcf60	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
@@ -55352,7 +55352,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f2d2f0	GetSizeofClass	CFeatDef	unknown	undefined	0		0			discovered	gapscan							
 00f2d300	`scalar deleting destructor'	CFeatDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\f2\CLandscapeBackgroundPatch_vectordeletingdestructor_00f2d300.cpp
 00f2d330	Transfer	CFeatDef	unknown	undefined	0		0			discovered	gapscan							
-00f2d4d0	Transfer<EKNAttackType>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00f2d4d0	Transfer<EFeatAttackType>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00f2d5b0	TransferBinaryIn_00f2d5b0	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00f2d640	TransferIn	CPersistContext_TransferableComponent<EFeatAttackType>	unknown	undefined	0		0			discovered	gapscan							
 00f2d660	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							

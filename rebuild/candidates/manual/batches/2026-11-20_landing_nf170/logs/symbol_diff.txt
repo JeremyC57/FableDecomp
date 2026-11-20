@@ -1,0 +1,340 @@
+005ea010 new: 19
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ed4a0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCTavernGameDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CTavernGameDef@@SI?AVCCharString@@XZ
+    ?begin@?$vector@VCPrizeScoreDef@@V?$allocator@VCPrizeScoreDef@@@std@@@std@@QBEPBVCPrizeScoreDef@@XZ
+    ?end@?$vector@VCPrizeScoreDef@@V?$allocator@VCPrizeScoreDef@@@std@@@std@@QBEPBVCPrizeScoreDef@@XZ
+005ea100 new: 17
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ed4a0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCTavernGameDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CTavernGameDef@@SI?AVCCharString@@XZ
+005ea1a0 new: 17
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ed4a0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCTavernGameDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CTavernGameDef@@SI?AVCCharString@@XZ
+005ea250 new: 17
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ed4a0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCTavernGameDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CTavernGameDef@@SI?AVCCharString@@XZ
+005ea310 new: 18
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ed4a0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCTavernGameDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ea000
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CTavernGameDef@@SI?AVCCharString@@XZ
+005ea400 new: 17
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ed4a0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCTavernGameDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CTavernGameDef@@SI?AVCCharString@@XZ
+005eb810 new: 17
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ed4a0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCTavernGameDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CTavernGameDef@@SI?AVCCharString@@XZ
+005ec0f0 new: 18
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ed4a0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCTavernGameDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ea000
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CTavernGameDef@@SI?AVCCharString@@XZ
+005ec990 new: 18
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ed4a0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCTavernGameDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z TABLE:005ea000
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CTavernGameDef@@SI?AVCCharString@@XZ
+005ed4a0 new: 1
+    ?ReferenceGetSubDefCTavernGameDef@?A0x0586a0be@@YAP8CDefClassBase@@BE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@ZXZ
+006696b0 new: 1
+    ?ReferenceGetSubDefCCombatAbilityUseProjectileWeaponDef@?A0xc2170121@@YAP8CDefClassBase@@BE_NPAV?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@@ZXZ
+006ea2c0 new: 17
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCCombatAbilityStrafeDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@@Z TABLE:006f0f60
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@QBEPBVCCombatAbilityStrafeDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@QBEPBVCCombatAbilityStrafeDef@@XZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CCombatAbilityStrafeDef@@SI?AVCCharString@@XZ
+006f0f60 new: 1
+    ?ReferenceGetSubDefCCombatAbilityStrafeDef@?A0xfc9d3d7d@@YAP8CDefClassBase@@BE_NPAV?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@@ZXZ
+008e3bb0 new: 28
+    ??$GetAllThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_IsNot@@@CThingSearchTools@@QBEXABVCThingFilt
+    ??$_Construct@PAVCThingAICreature@@PAV1@@std@@YAXPAPAVCThingAICreature@@ABQAV1@@Z
+    ??$_Destroy@PAPAVCThingAICreature@@@std@@YAXPAPAVCThingAICreature@@0@Z
+    ??$__destroy@PAPAVCThingAICreature@@PAV1@@std@@YAXPAPAVCThingAICreature@@00@Z
+    ??$__destroy_aux@PAPAVCThingAICreature@@@std@@YAXPAPAVCThingAICreature@@0ABU__true_type@0@@Z
+    ??$fill_n@PAPAVCThingAICreature@@IPAV1@@std@@YAPAPAVCThingAICreature@@PAPAV1@IABQAV1@@Z
+    ??$max@I@std@@YAABIABI0@Z
+    ??0?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??0__true_type@std@@QAE@XZ
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??D?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QBEABQAVCClass@@XZ
+    ??E?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAEAAU01@XZ
+    ?GetTypeFlags@CThing@@QBEKXZ
+    ?IsAlive@CThing@@QBE_NXZ
+    ?ReferenceGetAllThingsCThingAICreatureIsNot@?A0x0f07b75a@@YAP8CThingSearchTools@@BEXABVCThingFilter_IsNot@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreatu
+    ?StatGetTypeFlags@CThingAICreature@@SIKXZ
+    ?_M_clear@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@IAEXXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?_M_insert_overflow@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@IAEXPAPAVCThingAICreature@@ABQAV3@ABU__true_type@2@I_N@Z TABLE:00515cc0
+    ?_M_set@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@IAEXPAPAVCThingAICreature@@00@Z
+    ?__copy_trivial@std@@YAPAXPBX0PAX@Z
+    ?allocate@?$allocator@PAVCThingAICreature@@@std@@QAEPAPAVCThingAICreature@@IPBX@Z
+    ?begin@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?deallocate@?$allocator@PAVCThingAICreature@@@std@@QAEXPAPAVCThingAICreature@@I@Z
+    ?end@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?push_back@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEXABQAVCThingAICreature@@@Z TABLE:00517a10
+    ?size@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QBEIXZ
+009142b0 new: 18
+    ??$?RVCThingDeadCreature@@@CThingCompare_Nearest@@QBEPAVCThingDeadCreature@@PAV1@0@Z TABLE:00914130
+    ??$GetPBestThing@VCThingFilter_None@@VCThingCompare_Nearest@@VCThingDeadCreature@@@CThingSearchTools@@QBE_NABVCThingFilter_None@@ABVCThingCompare_Nearest@@PAPAVCThingDead
+    ??0?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0C3DVector@@QAE@MMM@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??D?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QBEABQAVCClass@@XZ
+    ??E?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAEAAU01@XZ
+    ??GC3DVector@@QBE?BV0@ABV0@@Z
+    ??RCThingFilter_None@@QBE_NABVCThing@@@Z
+    ?GetSquaredMagnitude@C3DVector@@QBEMXZ
+    ?GetTypeFlags@CThing@@QBEKXZ
+    ?IsAlive@CThing@@QBE_NXZ
+    ?ReferenceGetPBestThingDeadCreature@?A0xa3774c15@@YAP8CThingSearchTools@@BE_NABVCThingFilter_None@@ABVCThingCompare_Nearest@@PAPAVCThingDeadCreature@@@ZXZ
+    ?StatGetTypeFlags@CThingDeadCreature@@SIKXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?begin@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?end@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+00964230 new: 17
+    ??$?RVCThingObject@@@CThingCompare_Nearest@@QBEPAVCThingObject@@PAV1@0@Z TABLE:00916b10
+    ??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@VCThingCompare_Nearest@@VCThingObject@@@CThingSearchTools@@QBE_NABV
+    ??0?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0C3DVector@@QAE@MMM@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??D?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QBEABQAVCClass@@XZ
+    ??E?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAEAAU01@XZ
+    ??GC3DVector@@QBE?BV0@ABV0@@Z
+    ?GetSquaredMagnitude@C3DVector@@QBEMXZ
+    ?GetTypeFlags@CThing@@QBEKXZ
+    ?IsAlive@CThing@@QBE_NXZ
+    ?ReferenceGetPBestThingStealable@?A0xd91e50a6@@YAP8CThingSearchTools@@BE_NABV?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@ABVCThin
+    ?StatGetTypeFlags@CThingObject@@SIKXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?begin@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?end@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+00964ef0 new: 27
+    ??$GetAllLeafThings@VCThingMarker@@V?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@VCThingFilter_MarkerHasProperty@@@CThingSearchTools@@QBEXABVCThing
+    ??$_Construct@PAVCThingMarker@@PAV1@@std@@YAXPAPAVCThingMarker@@ABQAV1@@Z
+    ??$_Destroy@PAPAVCThingMarker@@@std@@YAXPAPAVCThingMarker@@0@Z
+    ??$__destroy@PAPAVCThingMarker@@PAV1@@std@@YAXPAPAVCThingMarker@@00@Z
+    ??$__destroy_aux@PAPAVCThingMarker@@@std@@YAXPAPAVCThingMarker@@0ABU__true_type@0@@Z
+    ??$fill_n@PAPAVCThingMarker@@IPAV1@@std@@YAPAPAVCThingMarker@@PAPAV1@IABQAV1@@Z
+    ??$max@I@std@@YAABIABI0@Z
+    ??0?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??0__true_type@std@@QAE@XZ
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??D?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QBEABQAVCClass@@XZ
+    ??E?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAEAAU01@XZ
+    ?IsAlive@CThing@@QBE_NXZ
+    ?ReferenceGetAllLeafThingsMarker@?A0x2f95f9d9@@YAP8CThingSearchTools@@BEXABVCThingFilter_MarkerHasProperty@@AAV?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@st
+    ?StatGetType@CThingMarker@@SIJXZ
+    ?_M_clear@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@IAEXXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?_M_insert_overflow@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@IAEXPAPAVCThingMarker@@ABQAV3@ABU__true_type@2@I_N@Z TABLE:0062e190
+    ?_M_set@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@IAEXPAPAVCThingMarker@@00@Z
+    ?__copy_trivial@std@@YAPAXPBX0PAX@Z
+    ?allocate@?$allocator@PAVCThingMarker@@@std@@QAEPAPAVCThingMarker@@IPBX@Z
+    ?begin@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?deallocate@?$allocator@PAVCThingMarker@@@std@@QAEXPAPAVCThingMarker@@I@Z
+    ?end@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?push_back@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QAEXABQAVCThingMarker@@@Z
+    ?size@?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@QBEIXZ
+0097ef60 new: 19
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCCombatAbilityUseProjectileWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@@Z TABLE:006696b0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QBEPBVCCombatAbilityUseProjectileWeaponDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QBEPBVCCombatAbilityUseProjectileWeaponDef@@XZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CCombatAbilityUseProjectileWeaponDef@@SI?AVCCharString@@XZ
+0097f3a0 new: 19
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCCombatAbilityUseProjectileWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@@Z TABLE:006696b0
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QBEPBVCCombatAbilityUseProjectileWeaponDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QBEPBVCCombatAbilityUseProjectileWeaponDef@@XZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?Release@?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CCombatAbilityUseProjectileWeaponDef@@SI?AVCCharString@@XZ
+00cdca70 new: 4
+    ??$Transfer@W4EGameflowPosition@@@CPersistContext@@QAEXPBDAAW4EGameflowPosition@@ABW41@@Z TABLE:00cdca70
+    ??0?$CPersistContext_TransferableComponent@W4EGameflowPosition@@@@QAE@AAW4EGameflowPosition@@@Z
+    ??0?$CPersistTraits@W4EGameflowPosition@@@@QAE@XZ
+    ??_7?$CPersistContext_TransferableComponent@W4EGameflowPosition@@@@6B@ TABLE:012c2ec4
+00cdcdd0 new: 4
+    ??$Transfer@W4EPlaceInHeroSouls@@@CPersistContext@@QAEXPBDAAW4EPlaceInHeroSouls@@ABW41@@Z TABLE:00cdcdd0
+    ??0?$CPersistContext_TransferableComponent@W4EPlaceInHeroSouls@@@@QAE@AAW4EPlaceInHeroSouls@@@Z
+    ??0?$CPersistTraits@W4EPlaceInHeroSouls@@@@QAE@XZ
+    ??_7?$CPersistContext_TransferableComponent@W4EPlaceInHeroSouls@@@@6B@ TABLE:012c2ed4
+00f2d4d0 new: 4
+    ??$Transfer@W4EFeatAttackType@@@CPersistContext@@QAEXPBDAAW4EFeatAttackType@@ABW41@@Z TABLE:00f2d4d0
+    ??0?$CPersistContext_TransferableComponent@W4EFeatAttackType@@@@QAE@AAW4EFeatAttackType@@@Z
+    ??0?$CPersistTraits@W4EFeatAttackType@@@@QAE@XZ
+    ??_7?$CPersistContext_TransferableComponent@W4EFeatAttackType@@@@6B@ TABLE:012fb898
