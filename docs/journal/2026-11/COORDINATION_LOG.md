@@ -425,3 +425,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A->B: NF139 handed back (landing nf139 after nf137). New agent NF142 (NF139's 8 deferred entries; their 13 remaining binders, freed by the nf136 landing).
 2026-11-20 A->B: nf137 landed (10 rows; q5021 AIAction_PerformActionAndWait, q4993, q5030 closed; six add-only opt-ins). Queued: 0x008E8830's wrong ForcePush ctor binding, 0x009566C0's local ThrowShotObject vtable.
 2026-11-20 B->A: Landed hand3c2 b18 (batches/2026-11-20_landing_hand3c2_b18): 0x008185B0 GetRootsNumerically<CVeryRandomFunction...> plus re-ports of 0x0087AA10, 0x0087AFF0, 0x0078B7C0 and 0x0078A690 onto one template text; no header change. Name fix for you: 0x008185B0's catalog label is the empty '::'.
+2026-11-20 A->B: nf139 landed (17 rows; q6308 closed; 8 deferred entries' self rows ported, binders with NF142; CBankFile.h opt-in ENTRYDATA_INLINE). Queued DEBT: three pre-existing LNK2005 pairs found by the context link.

@@ -277,6 +277,25 @@ public:
     // ?GetEntryDataSize@CBankFile@@QBEKK@Z (0x00B19F40 = retail 0x009CC240, next to GetEntryDataType 0x009CC210), out of line.
     unsigned long GetEntryDataSize(unsigned long index) const;           // 0x009CC240
 #endif
+#if defined(FABLE_RETAIL_CBANKFILE_ENTRYDATA_INLINE) && defined(FABLE_RETAIL_CBANKFILE_PACKRUNTIMEDATA) && !defined(FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE)
+    // NF139 opt-in (q6308, row 0x009CC2A0 CBankFile::ReadEntryData; needs FABLE_RETAIL_CBANKFILE_FILENAMEINDICES +
+    // FABLE_RETAIL_CBANKFILE_PACKRUNTIMEDATA): Ego_r.pdb 0x00B19F40 / 0x00B19F70 and FableWin.pdb 0x02F91CC0 / 0x02F91EA0
+    // ?GetEntryDataSize@CBankFile@@QBEKK@Z / ?GetEntryDataOffset@CBankFile@@QBEKK@Z (out-of-line retail copies 0x009CC240 / 0x009CC270),
+    // expanded in place by ReadEntryData (0x009CC2A3 `mov eax,[esi+4Ch]` PackedDataSize.Size, 0x009CC2BB `mov eax,[esi+3Ch]`
+    // PackedDataOffset.Size, the RuntimeData[index] record +0x20). Bodies in the GetEntryDataType shape above.
+    unsigned long GetEntryDataSize(unsigned long index) const
+    {
+        if (PackedDataSize.GetSize())
+            return PackedDataSize[index - 1];
+        return RuntimeData[index].DataSize;
+    }
+    unsigned long GetEntryDataOffset(unsigned long index) const
+    {
+        if (PackedDataOffset.GetSize())
+            return PackedDataOffset[index - 1];
+        return RuntimeData[index].DataOffset;
+    }
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_READENTRYDATA
     // Retail opt-in (chunk Q26, row 0x009A3C20 CStreamingFontBank::CStreamingFontBank): Ego_r.pdb / FableWin.pdb
     // ?ReadEntryData@CBankFile@@QAEXKKPAXK@Z (retail 0x009CC2A0), out of line: entry index, byte offset, buffer, size.

@@ -17,18 +17,10 @@ extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct IDirect3DTexture9;
 // Local model of CTexture (engine/CTexture.h has the same 8-byte layout but no member functions; the vector needs the
 // out-of-line copy constructor, destructor and assignment, so the class is restated here with the PDB member names).
-class CTexture {
-public:
-    IDirect3DTexture9* PD3DTexture;                   // +0x00
-    unsigned long      ByteLength : 28;               // +0x04
-    unsigned long      AllocationSource : 4;          // +0x04 (top nibble)
-    CTexture(const CTexture& other);                  // 0x009F9D00
-    ~CTexture();                                      // 0x009F9F70
-    CTexture& operator=(const CTexture& other);       // 0x009FA1C0
-};
+#define FABLE_RETAIL_CTEXTURE
+#include "engine/CTexture.h"   // NF139: was a local CTexture model (out-of-line ~CTexture bound ??1CTexture at 0x009F9F70)
 
 namespace std {
 struct __false_type { __false_type() { } };

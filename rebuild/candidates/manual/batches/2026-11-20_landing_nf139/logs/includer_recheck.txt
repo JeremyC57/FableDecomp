@@ -1,0 +1,4 @@
+# recheck after landing nf139: 247 rows = gate referencing rows of the 8 renamed targets + renamed rows + 69 direct includers of engine/CBankFile.h
+good 246 bad 1
+009e15e0	009e15e0   DIFFER(99v99)    TCC_FAIL TextureCache_MoveAndCleanup
+# 0x009E15E0 grades the same DIFFER(99v99) with the HEAD headers (FABLE_HDR_OVERLAY=pre/include_before): pre-existing; it is a blocked q4296 row with no Leaf line (NF139 NOTES)

@@ -1,0 +1,65 @@
+addr       parity           behav  name
+00495620   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00495620   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00495620   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+  WARN leaf '??1CFrontendGameComponent (Ego_r.pdb ??1CFrontendGameComponent@@UAE@XZ)' matches no symbol in 00495620.obj; graded the largest function
+  WARN leaf '??1CFrontendGameComponent (Ego_r.pdb ??1CFrontendGameComponent@@UAE@XZ)' matches no symbol in 00495620.obj; graded the largest function
+00495620   RELOCATION_MATCH PASS   CFrontendGameComponent::~CFrontendGameComponent
+00499880   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CRenderTarget (engine/CRenderTarget.h)
+00499880   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+00499880   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CRenderManager (engine/CRenderManager.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CRenderStateManager (engine/CRenderStateManager.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CRenderStateCaptureBlock (engine/CRenderStateCaptureBlock.h)
+00499880   WARN SHARED_HEADER_AVAILABLE CProgressDisplay (engine/CProgressDisplay.h)
+00499880   WARN RELOC_NAME: ?IsDeviceLost@CRenderManager@@QBE_NXZ -> 00a0aa60 labelled '_global::GetMember_byte0x3a54_00a0aa60'
+00499880   WARN RELOC_NAME: ?SetViewport@CRenderManager@@QAEXABVC2DBoxF@@@Z -> 00a0b560 labelled 'CRenderManagerCore::SetVWindow'
+00499880   WARN RELOC_NAME: ?DrawProgress@CProgressDisplay@@QAEXABVCCharString@@M_N@Z -> 00498490 labelled 'CProgressDisplay::DrawRetailDisplay'
+00499880   WARN RELOC_NAME: ?Flush@CRenderManager@@QAEX_N@Z -> 009da9f0 labelled 'CRenderManager2D::Render2DDrawList'
+00499880   RELOCATION_MATCH PASS   CProgressDisplay::RenderProgress
+0049ae30   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+0049ae30   WARN STANDIN_LEAF ??$__copy@PAVCTexture@@PAV1@H@std@@YIPAVCTexture@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z (catalog _Copy_impl<std::pair<CCharString,CCharString>*,std::_Copy_impl<std::pair<CCharString,CCharString>*,std::pair<class_CCharString,class_CCharString>*>; names another function)
+0049ae30   RELOCATION_MATCH PASS   _Copy_impl<std::pair<CCharString,CCharString>*,std::_Copy_impl<std::pair<CCharString,CCharString>*,std::pair<class_CCharString,class_CCharString>*>
+0049b3b0   WARN STANDIN_LEAF ?erase@CTextureVector@@QAEPAVCTexture@@PAV2@0@Z (catalog std::vector<CTexture>::erase; names another function)
+0049b3b0   RELOCATION_MATCH PASS   std::vector<CTexture>::erase
+0049b480   RELOCATION_MATCH PASS   std::vector<CTexture>::_M_insert_overflow
+0049b5a0   RELOCATION_MATCH PASS   std::vector<CTexture>::_M_fill_insert
+0049b7f0   RELOCATION_MATCH PASS   std::vector<CTexture>::resize
+009bedc0   MATCH            PASS   CDisplayManager::GetRenderTargetDimensions
+009bef20   RELOCATION_MATCH PASS   CDisplayManager::BeginRender
+009cc240   RELOCATION_MATCH PASS   CBankFile::GetEntryDataSize
+009cc2a0   RELOCATION_MATCH PASS   CBankFile::ReadEntryData
+009de6f0   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+009de6f0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+009de6f0   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+009de6f0   WARN SHARED_HEADER_AVAILABLE CQuickDrawTriInfo (engine/CQuickDrawTriInfo.h)
+009de6f0   RELOCATION_MATCH PASS   CQuickDrawTriInfo::operator=
+009e1650   WARN SHARED_HEADER_AVAILABLE CQuickDrawTriInfo (engine/CQuickDrawTriInfo.h)
+009e1650   RELOCATION_MATCH PASS   std::vector<CQuickDrawTriInfo, std::allocator<CQuickDrawTriInfo>>::_M_clear
+009e3790   RELOCATION_MATCH PASS   CPixelFormat::Initialise
+009f9f70   MATCH            PASS   CTexture::Uninitialise
+009fa1c0   MATCH            PASS   CTexture::operator=
+00a03b30   MATCH            PASS   CInputEvent::~CInputEvent
+
+WINS: 17
+  00495620 RELOCATION_MATCH CFrontendGameComponent::??1CFrontendGameComponent (Ego_r.pdb ??1CFrontendGameComponent@@UAE@XZ)
+  00499880 RELOCATION_MATCH CProgressDisplay::?RenderProgress@CProgressDisplay@
+  0049ae30 RELOCATION_MATCH std::??$__copy@PAVCTexture@@
+  0049b3b0 RELOCATION_MATCH std::vector<CTexture>::erase
+  0049b480 RELOCATION_MATCH std::vector<CTexture>::?_M_insert_overflow@
+  0049b5a0 RELOCATION_MATCH std::vector<CTexture>::?_M_fill_insert@
+  0049b7f0 RELOCATION_MATCH std::vector<CTexture>::?resize@?$vector@VCTexture@@@std@@QAEXI@Z
+  009bedc0 MATCH CDisplayManager::?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ
+  009bef20 RELOCATION_MATCH CDisplayManager::?BeginRender@CDisplayManager@@QAE_NXZ
+  009cc240 RELOCATION_MATCH CBankFile::?GetEntryDataSize@CBankFile@@QBEKK@Z
+  009cc2a0 RELOCATION_MATCH CBankFile::?ReadEntryData@CBankFile@@QAEXKKPAXK@Z
+  009de6f0 RELOCATION_MATCH CQuickDrawTriInfo::??4CQuickDrawTriInfo
+  009e1650 RELOCATION_MATCH std::vector::?_M_clear@?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@IAEXXZ
+  009e3790 RELOCATION_MATCH CPixelFormat::?Initialise@CPixelFormat@@QAEXJJJJ_N@Z
+  009f9f70 MATCH CTexture::?Uninitialise@CTexture@@QAEXXZ
+  009fa1c0 MATCH CTexture::??4CTexture@@QAEABV0@ABV0@@Z
+  00a03b30 MATCH CInputEvent::??1CInputEvent@@QAE@XZ

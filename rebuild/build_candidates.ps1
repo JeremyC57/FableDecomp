@@ -29162,8 +29162,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009fa1c0'
         Module = 'CTexture'
-        Source = '00/9f/CTexture_Assignment_009fa1c0.cpp'
-        TestSource = '00/9f/CTexture_Assignment_009fa1c0_test.cpp'
+        Source = '00/9f/CTexture_operator_009fa1c0.cpp'
+        TestSource = '00/9f/CTexture_operator_009fa1c0_test.cpp'
         PassPattern = 'FABLETLC_TEXTURE_ASSIGNMENT_BEHAVIOR PASS'
     }
     [pscustomobject]@{
@@ -68840,8 +68840,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a03b30'
         Module = 'CInputEvent'
-        Source = '00/a0/E2_E2_00a03b30.cpp'
-        TestSource = '00/a0/E2_E2_00a03b30_test.cpp'
+        Source = '00/a0/CInputEvent_CInputEvent_00a03b30.cpp'
+        TestSource = '00/a0/CInputEvent_CInputEvent_00a03b30_test.cpp'
         PassPattern = 'OK_00a03b30'
     }
     [pscustomobject]@{

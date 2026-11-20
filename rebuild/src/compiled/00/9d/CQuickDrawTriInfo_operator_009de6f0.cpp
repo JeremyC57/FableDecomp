@@ -25,7 +25,7 @@ class CWideString { public:
 class CTexture { public:
     void* m_p0;
     void* m_p1;
-    CTexture& operator=(const CTexture& other);         // 0x009FA1C0
+    const CTexture& operator=(const CTexture& other);   // 0x009FA1C0 (NF139: Ego_r.pdb / FableWin.pdb ??4CTexture@@QAEABV0@ABV0@@Z returns const&)
 };
 
 class CRGBColour { public:

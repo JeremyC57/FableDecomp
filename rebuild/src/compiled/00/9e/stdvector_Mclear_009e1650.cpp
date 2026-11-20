@@ -11,11 +11,8 @@ public:
     ~CWideString();                                       // 0x0099B510
     void* PStringData;
 };
-class CTexture {                                          // 8 bytes
-public:
-    ~CTexture();                                          // 0x009F9F70
-    unsigned long Members[2];
-};
+#define FABLE_RETAIL_CTEXTURE
+#include "engine/CTexture.h"   // NF139: was a local CTexture model (out-of-line ~CTexture bound ??1CTexture at 0x009F9F70)
 class CQuickDrawTriInfo {                                 // Ego_r.pdb, 0x3C bytes
 public:
     unsigned long Flags;                                  // +0x0 (Line, IsText bit-fields)

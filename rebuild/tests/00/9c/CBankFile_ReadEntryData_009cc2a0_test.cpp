@@ -1,99 +1,80 @@
 #include <cstdio>
-#include <cstdlib>
 #include <cstring>
-struct CRuntimeData { unsigned long DataOffset; unsigned long DataSize; unsigned char DataType; bool Valid; unsigned char _pad[2]; };
-struct CPackedUIntArray {
-    unsigned long m_bitsPerValue; unsigned long* m_pData; unsigned long m_count; unsigned long m_capacity;
-    unsigned long operator[](unsigned long index) const { return m_pData[index]; }
-    bool IsPacked() const { return m_pData != 0; }
+// Behaviour test for 0x009CC2A0 CBankFile::ReadEntryData (links the row object).
+// NF139 (2026-11-20, q6308): rewritten on the shared headers the row now uses (engine/CBankFile.h with the row's define set,
+//   engine/CPackedUIntArray.h, engine/CDiskFileWin32.h); the checks and the PassPattern are unchanged. The bank is a zeroed 0x110-byte
+//   block with RuntimeData (+0x20, STLport vector begin / end / capacity), PackedDataOffset (+0x38) / PackedDataSize (+0x48)
+//   (PackedInts +0, Size +4) and BankFile_Data (+0x7C) written in place. CPackedUIntArray::operator[] (0x00A629F0) is a plain
+//   indexing fixture; the disk file is a fake object with the CDiskFileWin32 slot order (Read slot 3, SetPosition slot 5).
+#define FABLE_RETAIL_CARRAY_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
+#define FABLE_RETAIL_CARRAY_ORIGINAL_INDEX_BASE_PASS22
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
+#include "engine/CArray.h"
+#include "engine/CPackedUIntArray.h"
+#define FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
+#define FABLE_RETAIL_CBANKFILE_CRUNTIMEDATA_CTOR
+#define FABLE_RETAIL_CBANKFILE_PACKRUNTIMEDATA
+#define FABLE_RETAIL_CBANKFILE_ENTRYDATA_INLINE
+#define FABLE_RETAIL_CBANKFILE_READENTRYDATA
+#include "engine/CBankFile.h"
+
+unsigned long CPackedUIntArray::operator[](unsigned long index) const
+{
+    return PackedInts[index];
+}
+
+struct FakeDiskFile {
+    unsigned long Position, ReadSize;
+    void* ReadBuffer;
+    void* Process;
+    virtual void Slot0() {}
+    virtual void Slot1() {}
+    virtual void Slot2() {}
+    virtual void Read(void* buffer, long size, void* process) { ReadBuffer = buffer; ReadSize = (unsigned long)size; Process = process; }
+    virtual void Slot4() {}
+    virtual void SetPosition(long position) { Position = (unsigned long)position; }
 };
-template <class T> class CArray { public:
-    T* m_pFirst; T* m_pLast; T* m_pEnd;
-    long GetCount() const { return m_pLast - m_pFirst; }
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
-class CBankFileEntryUpdateData { public: unsigned char _pad[0x14]; bool m_update; };
-struct CDiskFileCalls {
-    unsigned long m_position; unsigned long m_readSize; void* m_readBuffer; int m_closed; int m_opened; unsigned long m_mode, m_share;
-    CDiskFileCalls() : m_position(0), m_readSize(0), m_readBuffer(0), m_closed(0), m_opened(0), m_mode(0), m_share(0) {}
-    virtual void Open(const void*, unsigned long mode, unsigned long share) { ++m_opened; m_mode = mode; m_share = share; }
-    virtual void Close() { ++m_closed; }
-    virtual void Read(void* buffer, unsigned long size, unsigned long) { m_readBuffer = buffer; m_readSize = size; }
-    virtual void Seek(unsigned long position) { m_position = position; }
-    virtual unsigned long GetPosition() { return m_position; }
-};
-class CBankFile { public:
-    unsigned long Size;
-    CArray<CRuntimeData> RuntimeData;
-    CArray<CBankFileEntryUpdateData*> UpdateData;
-    CPackedUIntArray PackedDataOffset, PackedDataSize, PackedDataType, PackedValid;
-    CDiskFileCalls* BankFile_Data;
-    void* Filename_PStringData;
-    bool WrittenToFile;
-    bool EntryExists(unsigned long index) const
-    {
-        if (index != 0 && index < Size) {
-            if (PackedValid.IsPacked()) return PackedValid[index - 1] != 0;
-            return RuntimeData[index].Valid;
-        }
-        return false;
-    }
-    unsigned long GetEntryDataType(unsigned long index) const { if (PackedDataType.IsPacked()) return PackedDataType[index - 1]; return RuntimeData[index].DataType; }
-    unsigned long GetEntryDataSize(unsigned long index) const { if (PackedDataSize.IsPacked()) return PackedDataSize[index - 1]; return RuntimeData[index].DataSize; }
-    unsigned long GetEntryDataOffset(unsigned long index) const { if (PackedDataOffset.IsPacked()) return PackedDataOffset[index - 1]; return RuntimeData[index].DataOffset; }
-    void ReadEntryData(unsigned long index, unsigned long offset, void* buffer, unsigned long size)
-    {
-        unsigned long dataSize = GetEntryDataSize(index); (void)dataSize;
-        unsigned long dataOffset = GetEntryDataOffset(index);
-        BankFile_Data->Seek(dataOffset + offset);
-        BankFile_Data->Read(buffer, size, 0);
-    }
-    bool EntrySetUpdate(unsigned long index, bool update)
-    {
-        if (index < (unsigned long)RuntimeData.GetCount() && RuntimeData[index].Valid) {
-            CBankFileEntryUpdateData* data = UpdateData[index];
-            bool old = data->m_update; data->m_update = update; return old;
-        }
-        return false;
-    }
-    long GetMaxEntryIndex() const { long i; for (i = Size - 1; i >= 0; --i) { if (EntryExists(i)) break; } return i; }
-    unsigned long CountEntries() const { unsigned long c = 0; for (unsigned long i = 0; i < Size; ++i) if (EntryExists(i)) ++c; return c; }
-    void MakeWritable()
-    {
-        if (!WrittenToFile) {
-            unsigned long position = BankFile_Data->GetPosition();
-            BankFile_Data->Close();
-            BankFile_Data->Open(&Filename_PStringData, 2, 4);
-            BankFile_Data->Seek(position);
-            WrittenToFile = true;
-        }
-    }
-};
-static CRuntimeData g_rt[4] = { {0,0,0,false,{0,0}}, {100,10,1,true,{0,0}}, {200,20,2,false,{0,0}}, {300,30,3,true,{0,0}} };
-static unsigned long g_pvalid[3] = {1, 0, 0};     // packed validity for entries 1..3
-static unsigned long g_ptype[3] = {7, 8, 9};
+
+struct RuntimeRecord { unsigned long DataOffset, DataSize; unsigned char DataType; bool Valid; unsigned char Pad[2]; };
+static RuntimeRecord g_rt[4] = { {0,0,0,false,{0,0}}, {100,10,1,true,{0,0}}, {200,20,2,false,{0,0}}, {300,30,3,true,{0,0}} };
 static unsigned long g_psize[3] = {11, 12, 13};
 static unsigned long g_poff[3] = {1000, 2000, 3000};
-static CBankFile MakeBank(bool packed)
+static double g_bank[2][(0x110 + 7) / 8];
+
+static void Put(unsigned char* raw, unsigned long offset, const void* value) { std::memcpy(raw + offset, value, 4); }
+
+static CBankFile& MakeBank(int slot, bool packed, FakeDiskFile* file)
 {
-    CBankFile b; std::memset(&b, 0, sizeof b);
-    b.Size = 4; b.RuntimeData.m_pFirst = g_rt; b.RuntimeData.m_pLast = g_rt + 4; b.RuntimeData.m_pEnd = g_rt + 4;
-    if (packed) { b.PackedValid.m_pData = g_pvalid; b.PackedDataType.m_pData = g_ptype; b.PackedDataSize.m_pData = g_psize; b.PackedDataOffset.m_pData = g_poff; }
-    return b;
+    std::memset(g_bank[slot], 0, sizeof g_bank[slot]);
+    unsigned char* raw = (unsigned char*)g_bank[slot];
+    RuntimeRecord* first = g_rt; RuntimeRecord* last = g_rt + 4;
+    unsigned long four = 3;
+    Put(raw, 0x20, &first); Put(raw, 0x24, &last); Put(raw, 0x28, &last);
+    if (packed) {
+        unsigned long* off = g_poff; unsigned long* size = g_psize;
+        Put(raw, 0x38, &off); Put(raw, 0x3C, &four);
+        Put(raw, 0x48, &size); Put(raw, 0x4C, &four);
+    }
+    Put(raw, 0x7C, &file);
+    return *(CBankFile*)raw;
 }
 
 static bool Check()
 {
-    char buf[8]; CDiskFileCalls f;
-    CBankFile b = MakeBank(false); b.BankFile_Data = &f;
+    char buf[8]; FakeDiskFile f; f.Position = 0; f.ReadSize = 0; f.ReadBuffer = 0; f.Process = &f;
+    CBankFile& b = MakeBank(0, false, &f);
     b.ReadEntryData(2, 5, buf, 8);
-    if (f.m_position != 205 || f.m_readBuffer != buf || f.m_readSize != 8) return false;
-    CBankFile p = MakeBank(true); p.BankFile_Data = &f;
+    if (f.Position != 205 || f.ReadBuffer != buf || f.ReadSize != 8 || f.Process != 0) return false;
+    CBankFile& p = MakeBank(1, true, &f);
     p.ReadEntryData(3, 1, buf, 2);
-    return f.m_position == 3001 && f.m_readSize == 2;
+    return f.Position == 3001 && f.ReadSize == 2;
 }
 int main()
 {
+    if (sizeof(FakeDiskFile) != 0x14 || sizeof(RuntimeRecord) != 12) { std::printf("009cc2a0_TEST FAIL layout\n"); return 1; }
     if (!Check()) { std::printf("009cc2a0_TEST FAIL\n"); return 1; }
     std::printf("009cc2a0_TEST PASS\n");
     return 0;

@@ -1,0 +1,39 @@
+00495620 new: 1
+    ??1CTexture@@QAE@XZ
+00499880 new: 0
+0049ae30 new: 0
+0049b3b0 new: 1
+    ??1CTexture@@QAE@XZ
+0049b480 new: 1
+    ??1CTexture@@QAE@XZ
+0049b5a0 new: 1
+    ??1CTexture@@QAE@XZ
+0049b7f0 new: 1
+    ??1CTexture@@QAE@XZ
+009bedc0 new: 2
+    ??0C2DExtentsI@@QAE@XZ
+    ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ TABLE:009bedc0
+009bef20 new: 2
+    ??C?$scoped_ptr@VCRenderManager@@@boost@@QBEPAVCRenderManager@@XZ
+    ?BeginRender@CDisplayManager@@QAE_NXZ TABLE:009bef20
+009cc240 new: 1
+    ?ReferenceGetEntryDataSize@?A0x31911bc0@@YAP8CBankFile@@BEKK@ZXZ
+009cc2a0 new: 7
+    ??A?$CArray@VCRuntimeData@CBankFile@@@@QBEABVCRuntimeData@CBankFile@@I@Z
+    ??A?$vector@VCRuntimeData@CBankFile@@V?$allocator@VCRuntimeData@CBankFile@@@std@@@std@@QAEAAVCRuntimeData@CBankFile@@I@Z
+    ?GetEntryDataOffset@CBankFile@@QBEKK@Z
+    ?GetEntryDataSize@CBankFile@@QBEKK@Z TABLE:009cc240
+    ?GetSize@CPackedUIntArray@@QBEKXZ
+    ?ReadEntryData@CBankFile@@QAEXKKPAXK@Z TABLE:009cc2a0
+    ?begin@?$vector@VCRuntimeData@CBankFile@@V?$allocator@VCRuntimeData@CBankFile@@@std@@@std@@QAEPAVCRuntimeData@CBankFile@@XZ
+009de6f0 new: 0
+009e1650 new: 1
+    ??1CTexture@@QAE@XZ
+009e3790 new: 1
+    ?Initialise@CPixelFormat@@QAEXJJJJ_N@Z TABLE:009e3790
+009f9f70 new: 1
+    ?Uninitialise@CTexture@@QAEXXZ TABLE:009f9f70
+009fa1c0 new: 1
+    ??4CTexture@@QAEABV0@ABV0@@Z TABLE:009fa1c0
+00a03b30 new: 1
+    ??1CInputEvent@@QAE@XZ TABLE:00a03b30

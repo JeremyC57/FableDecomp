@@ -8,6 +8,9 @@
 //   local CRuntimeData / CPackedUIntArray models onto engine/CBankFile.h (FILENAMEINDICES / CRUNTIMEDATA_CTOR and the overlay opt-in
 //   PACKRUNTIMEDATA: PackedDataSize +0x48 typed CPackedUIntArray) and engine/CPackedUIntArray.h: the text of the header's inline
 //   GetEntryDataType (the same shape on PackedDataType +0x58 / DataType) on PackedDataSize / DataSize.
+// NF139 (2026-11-20, q6308): one definition. ReadEntryData 0x009CC2A0 (moved onto engine/CBankFile.h) needs this body inline (retail
+//   expands it there), so the body moved into the header (NF139 opt-in ENTRYDATA_INLINE, the same text) and this row became the nf86 / nf88
+//   pick-any scaffolding: its object emits the same COMDAT as every includer (no LNK2005 beside 0x009CC2A0's copy). Leaf unchanged.
 #define FABLE_RETAIL_CARRAY_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
 #define FABLE_RETAIL_CARRAY_ORIGINAL_INDEX_BASE_PASS22
 #include "stlport/fable_containers.h"
@@ -19,12 +22,16 @@
 #define FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
 #define FABLE_RETAIL_CBANKFILE_CRUNTIMEDATA_CTOR
 #define FABLE_RETAIL_CBANKFILE_PACKRUNTIMEDATA
-#define FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
+#define FABLE_RETAIL_CBANKFILE_ENTRYDATA_INLINE
 #include "engine/CBankFile.h"
 
-unsigned long CBankFile::GetEntryDataSize(unsigned long index) const
+// The body is the one inline definition in engine/CBankFile.h (NF139 opt-in FABLE_RETAIL_CBANKFILE_ENTRYDATA_INLINE): retail's
+// ReadEntryData 0x009CC2A0 expands it in place, and this row is its out-of-line copy.
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the header's inline GetEntryDataSize so this object emits it out of line as a
+// pick-any COMDAT (retail's 0x009CC240, called by 17 landed rows). Internal to this TU; never called.
+unsigned long (CBankFile::* ReferenceGetEntryDataSize())(unsigned long) const
 {
-    if (PackedDataSize.GetSize())
-        return PackedDataSize[index - 1];
-    return RuntimeData[index].DataSize;
+    return &CBankFile::GetEntryDataSize;
+}
 }
