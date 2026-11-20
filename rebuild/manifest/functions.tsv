@@ -35708,7 +35708,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a04060	SetAsJoystickPosition2	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
 00a04090	SetAsJoystickButtonPressed	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
 00a040d0	SetAsJoystickButtonHeld	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
-00a04110	SetAsJoystickButton3	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
+00a04110	SetAsJoystickButtonReleased	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
 00a04160	GetChecksum	CInputEvent	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
 00a04200	Math_NormalizeVector2D	_global	unknown	undefined	0		0	yes	accepted									
 00a04380	GetMousePos	CInputEvent	__thiscall	undefined	2	CMessageEventFilter_IsOriginatedByThing *,CThing *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CMessageEventFilterIsOriginatedByThing_CMessageEventFilterIsOriginatedByThing_00a04380.cpp

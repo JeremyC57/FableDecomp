@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00658240   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+00658240   RELOCATION_MATCH PASS   NPlayerGui::CDrawMouseCursor::CDrawMouseCursor
+
+WINS: 1
+  00658240 RELOCATION_MATCH NPlayerGui::CDrawMouseCursor::CDrawMouseCursor

@@ -16,10 +16,9 @@ class C2DVector { public:
     float x, y;
 };
 void __fastcall PreProcessStickVector(C2DVector* stick);   // 0x0068D5F0
-class CInputEvent {
-public:
-    long GetEventType() const;                     // 0x00A03B40
-};
+// Naming (NF160, 2026-11-20, q4300): the local CInputEvent model replaced by the shared engine/CInputEvent.h (Ego_r.pdb / FableWin.pdb
+//   spellings): 0x00A03B40 GetEventType -> GetType.
+#include "engine/CInputEvent.h"
 class CGameCameraManager { public:
     void SetFirstPersonLookAroundVector(const C2DVector& look);   // 0x00697B60
 };
@@ -56,10 +55,10 @@ void CInputProcessFirstPersonLookAround::ProcessInput(const CInputEvent& event, 
     C2DVector look;
     if (!GetControlMovementFromGameActionEvent((EGameAction)(0x4b), event, look))
         return;
-    if (event.GetEventType() == 0xd) {
+    if (event.GetType() == 0xd) {
         look.x += look.x;
         look.y += look.y;
-    } else if (event.GetEventType() == 0x11) {
+    } else if (event.GetType() == 0x11) {
         PreProcessStickVector(&look);
     }
     CAIGameCameraBase* source = World->GetCurrentGameCamera();

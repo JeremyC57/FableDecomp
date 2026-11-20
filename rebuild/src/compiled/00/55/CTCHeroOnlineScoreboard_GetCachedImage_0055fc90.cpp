@@ -55,6 +55,10 @@ public:
     static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar16* firstFile);   // 0x00999760
 };
 
+// Naming (NF160, 2026-11-20, q4297): CTexture::Initialise 0x009FA280 respelled in place on the row's existing CTexture declaration to
+//   Ego_r.pdb 0x00B6A590 + FableWin.pdb 0x030DA090 ?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z
+//   (references, the pool an ESurfacePool from engine/ESurfacePool.h), the spelling engine/CTexture.h declares and 16 landed callers bind.
+#include "engine/ESurfacePool.h"
 class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) { }
@@ -76,7 +80,7 @@ class CTexture { public:
     unsigned long ByteLength : 28;
     unsigned long AllocationSource : 4;
     CTexture() : PD3DTexture(0), ByteLength(0), AllocationSource(0) { }
-    bool Initialise(const C2DExtentsI& size, long levels, const CPixelFormat& format, unsigned long usage, long pool, bool dynamic, bool renderTarget);   // 0x009FA280
+    bool Initialise(const C2DExtentsI& size, long levels, const CPixelFormat& format, unsigned long usage, ESurfacePool pool, bool dynamic, bool renderTarget);   // 0x009FA280
     CSurface GetSurfaceLevel(long level) const;      // 0x009F9E00 (Ego_r.pdb / FableWin.pdb ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z)
 };
 
@@ -211,7 +215,7 @@ CTexturePointer CTCHeroOnlineScoreboard::GetCachedImage(const CWideString& folde
             texture.Reset(new CTexture);
             CPixelFormat format;
             format.Initialise(8, 8, 8, 8, false);
-            texture->Initialise(C2DExtentsI(256, 256), 1, format, 0, 1, false, false);
+            texture->Initialise(C2DExtentsI(256, 256), 1, format, 0, SURFACE_POOL_MANAGED, false, false);
             texture->GetSurfaceLevel(0).LoadFromBitmapFileToPreallocatedSurface(name, 3);
         }
         PictureCache[id] = texture;

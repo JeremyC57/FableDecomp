@@ -1,0 +1,11 @@
+existing 00443f90 new= ['?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z'] | others: {'?Resize@CRetailHandleVector@@QAEXJ@Z': ['005ec990']}
+existing 00499880 new= ['?RenderProgress@CProgressDisplay@@AAEXABVCCharString@@M_N1@Z'] | others: {'?RenderProgress@CProgressDisplay@@QAEXABVCCharString@@M_N1@Z': ['00499c50']}
+existing 0049b3b0 new= ['?erase@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEPAVCTexture@@PAV3@0@Z'] | others: {'?erase@?$vector@VCTexture@@@std@@QAEPAVCTexture@@PAV3@0@Z': ['0049b7f0']}
+existing 009da9f0 new= ['?Render2DDrawList@CRenderManager2D@@QAEX_N@Z'] | others: {'?Flush@CRenderManager@@QAEX_N@Z': ['00499880']}
+existing 009de3f0 new= ['?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z'] | others: {'?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@J@Z': ['009ead60']}
+UNGRADED 00a03b40 00691d70
+existing 00a03b40 new= ['?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ'] | others: {'?GetType@InputEvent@NativeInput@@QBE?AW4EInputEventType@2@XZ': ['00689130'], '?GetEventType@CInputEvent@@QBEJXZ': ['007e5230']}
+UNGRADED 00a03b70 00691d70
+existing 00a043a0 new= ['?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ'] | others: {'?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ': ['005bc5c6'], '?GetJoystickPosition@InputEvent@NativeInput@@QBE?AUVector2@2@XZ': ['00689130'], '?GetAnaloguePosition@CInputEvent@@QBE?AUC2DVector@1@XZ': ['006894c0'], '?GetAnaloguePosition@CInputEvent@@QBE?AVC2DVector@@XZ': ['007a9960']}
+existing 00bdbff0 new= ['?OnGameMapUnloaded@CEngineLandscapeMap@@QAEXXZ'] | others: {'?OnGameMapUnloaded@CEngineScene_00bdbff0@@QAEXXZ': ['00b3edc0']}
+gate: 0 created split(s)

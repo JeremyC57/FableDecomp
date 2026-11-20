@@ -1,0 +1,223 @@
+0049124e new: 0
+00499d90 new: 25
+    ??$_Destroy@PAVCTexture@@@std@@YAXPAVCTexture@@0@Z
+    ??$_Destroy@VCTexture@@@std@@YAXPAVCTexture@@@Z
+    ??$__copy@PAVCTexture@@PAV1@H@std@@YIPAVCTexture@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+    ??$__copy_ptrs@PAVCTexture@@PAV1@@std@@YAPAVCTexture@@PAV1@00ABU__false_type@0@@Z
+    ??$__destroy@PAVCTexture@@V1@@std@@YAXPAVCTexture@@00@Z
+    ??$__destroy_aux@PAVCTexture@@@std@@YAXPAVCTexture@@0ABU__false_type@0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??0bidirectional_iterator_tag@std@@QAE@XZ
+    ??0forward_iterator_tag@std@@QAE@XZ
+    ??0random_access_iterator_tag@std@@QAE@XZ
+    ??1CTexture@@QAE@XZ
+    ??A?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEAAVCTexture@@I@Z
+    ??D?$scoped_ptr@VCRenderManager@@@boost@@QBEAAVCRenderManager@@XZ
+    ??_GCTexture@@QAEPAXI@Z
+    ?Get@?$CCountedPointer@VCDisplayManager@@@@QBEPAVCDisplayManager@@XZ
+    ?GetDisplayManager@CSystemManager@@QAEPAVCDisplayManager@@XZ
+    ?GetRenderManager@CDisplayManager@@QAEAAVCRenderManager@@XZ
+    ?IsNull@?$CCountedPointer@VCPlayerGui@@@@QBE_NXZ
+    ?IsRendering@CDisplayManager@@QBE_NXZ
+    ?IsSingletonSetup@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SI_NXZ
+    ?begin@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEPAVCTexture@@XZ
+    ?clear@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEXXZ
+    ?end@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEPAVCTexture@@XZ
+    ?erase@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEPAVCTexture@@PAV3@0@Z TABLE:0049b3b0
+    ?size@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QBEIXZ
+00547f60 new: 0
+0055fc90 new: 0
+00590d32 new: 15
+    ??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z
+    ??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z
+    ??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z
+    ??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z
+    ??0?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@PAVCEnginePrimitiveH
+    ??0?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@@Z
+    ??0?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??0?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ TABLE:00440c40
+    ?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z
+005ec8a0 new: 15
+    ??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z
+    ??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z
+    ??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z
+    ??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z
+    ??0?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@PAVCEnginePrimitiveH
+    ??0?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@@Z
+    ??0?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??0?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ TABLE:00440c40
+    ?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z
+006472b2 new: 0
+0064e24f new: 11
+    ??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z
+    ??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z
+    ??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z
+    ??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ TABLE:00440c40
+    ??1CDrawBase@NPlayerGui@@QAE@XZ
+    ?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z
+0064e83f new: 11
+    ??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z
+    ??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z
+    ??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z
+    ??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ TABLE:00440c40
+    ??1CDrawBase@NPlayerGui@@QAE@XZ
+    ?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z
+0064e8dc new: 11
+    ??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z
+    ??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z
+    ??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z
+    ??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ TABLE:00440c40
+    ??1CDrawBase@NPlayerGui@@QAE@XZ
+    ?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z
+00651904 new: 11
+    ??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z
+    ??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z
+    ??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z
+    ??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ TABLE:00440c40
+    ??1CDrawBase@NPlayerGui@@QAE@XZ
+    ?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z
+006541d1 new: 2
+    ??A?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEAAVCEnginePrimitiveHandle@@I@Z
+    ?begin@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@XZ
+00654258 new: 11
+    ??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z
+    ??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z
+    ??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z
+    ??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ TABLE:00440c40
+    ??1CDrawBase@NPlayerGui@@QAE@XZ
+    ?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z
+006542a4 new: 11
+    ??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z
+    ??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z
+    ??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z
+    ??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ TABLE:00440c40
+    ??1CDrawBase@NPlayerGui@@QAE@XZ
+    ?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z
+0065431d new: 16
+    ??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z
+    ??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z
+    ??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z
+    ??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z
+    ??0?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@PAVCEnginePrimitiveH
+    ??0?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@@Z
+    ??0?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??0?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCChangeText@CStatBar@NPlayerGui@@@std@@QAE@XZ
+    ??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ TABLE:00440c40
+    ?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z
+00658240 new: 11
+    ??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z
+    ??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z
+    ??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z
+    ??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ
+    ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ TABLE:00440c40
+    ??1CDrawBase@NPlayerGui@@QAE@XZ
+    ?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z
+0066cb00 new: 0
+00687a90 new: 0
+00687b30 new: 0
+00687bd0 new: 0
+00689c40 new: 0
+0068c7f0 new: 0
+0068c880 new: 0
+0068cac0 new: 0
+0068d700 new: 0
+00690360 new: 0
+00690480 new: 0
+006be080 new: 0
+009fa280 new: 1
+    ?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z TABLE:009fa280
+009fd4e0 new: 0
+00a04110 new: 1
+    ?SetAsJoystickButtonReleased@CInputEvent@@QAEXJMABVC2DVector@@N@Z TABLE:00a04110
+00a3b5f0 new: 0
+00b2c4e0 new: 0
+00b40230 new: 3
+    ??A?$CArray@PAVCEngineMap@@@@QAEAAPAVCEngineMap@@I@Z
+    ?OnGameMapUnloaded@CEngineMap@@QAEXXZ
+    ?OnGameMapUnloaded@CEngineWorldMap@@QAEXJ@Z TABLE:00b40230
+00b41db0 new: 12
+    ??$_Destroy@PAVCEngineMap@@@std@@YAXPAPAVCEngineMap@@@Z
+    ??0?$_List_iterator@PAVCEngineMap@@U?$_Nonconst_traits@PAVCEngineMap@@@std@@@std@@QAE@ABU01@@Z
+    ??0?$_List_iterator@PAVCEngineMap@@U?$_Nonconst_traits@PAVCEngineMap@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ?SetMapVisibility@CEngineMap@@QAEXAAV?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@_N@Z TABLE:00b41db0
+    ?_M_create_node@?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@IAEPAU?$_List_node@PAVCEngineMap@@@2@ABQAVCEngineMap@@@Z
+    ?allocate@?$allocator@U?$_List_node@PAVCEngineMap@@@std@@@std@@QAEPAU?$_List_node@PAVCEngineMap@@@2@IPBX@Z
+    ?begin@?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAE?AU?$_List_iterator@PAVCEngineMap@@U?$_Nonconst_traits@PAVCEngineMap@@@std@@@2@XZ
+    ?deallocate@?$allocator@U?$_List_node@PAVCEngineMap@@@std@@@std@@QAEXPAU?$_List_node@PAVCEngineMap@@@2@I@Z
+    ?end@?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAE?AU?$_List_iterator@PAVCEngineMap@@U?$_Nonconst_traits@PAVCEngineMap@@@std@@@2@XZ
+    ?erase@?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAE?AU?$_List_iterator@PAVCEngineMap@@U?$_Nonconst_traits@PAVCEngineMap@@@std@@@2@U32@@Z
+    ?insert@?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAE?AU?$_List_iterator@PAVCEngineMap@@U?$_Nonconst_traits@PAVCEngineMap@@@std@@@2@U32@ABQAVCEngineMa
+00b42390 new: 2
+    ??A?$CArray@PAVCEngineMap@@@@QAEAAPAVCEngineMap@@I@Z
+    ?SetMapVisibility@CEngineWorldMap@@QAEXJ_N@Z TABLE:00b42390
+00b423b0 new: 3
+    ??A?$CArray@PAVCEngineMap@@@@QAEAAPAVCEngineMap@@I@Z
+    ?SetMapVisibilityAllMaps@CEngineWorldMap@@QAEX_N@Z TABLE:00b423b0
+    ?size@?$vector@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QBEIXZ
+00bc5c50 new: 3
+    ??A?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEAAVCEnginePrimitiveHandle@@I@Z
+    ?begin@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@XZ
+    ?size@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QBEIXZ
+00be2310 new: 3
+    ??A?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEAAVCEnginePrimitiveHandle@@I@Z
+    ?begin@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@XZ
+    ?size@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QBEIXZ
+00be23f0 new: 3
+    ??A?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEAAVCEnginePrimitiveHandle@@I@Z
+    ?begin@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@XZ
+    ?size@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QBEIXZ
+00f37440 new: 1
+    ??0CTexture@@QAE@XZ

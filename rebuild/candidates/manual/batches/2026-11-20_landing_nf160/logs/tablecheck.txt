@@ -1,0 +1,4 @@
+GREW 004a96f0 6 -> 7 ??0CIntelligentPointer_CThing@@QAE@PAVCThing@@@Z row 006542a4 SAME
+GREW 00f36f40 2 -> 3 ?FreeResourceEntry@CGPUScratchBufferTextureManager@@QAEXJ@Z row 00f37440 SAME
+GREW 00687b30 1 -> 2 ?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z row 00689c40 SAME
+shrank [('0125a814', 1, 0), ('00a03b90', 2, 1), ('00bdbff0', 3, 2), ('00b41db0', 2, 1), ('00a03b40', 5, 2), ('00a03b70', 2, 1), ('0099c1e0', 2, 1), ('00a043a0', 6, 5), ('00443f90', 2, 1), ('009fa4e0', 2, 1), ('009de3f0', 3, 2), ('009fa280', 5, 1), ('013ba860', 2, 1), ('009da9f0', 3, 2), ('00437570', 2, 1), ('0049b3b0', 3, 2)]

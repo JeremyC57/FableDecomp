@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q6213	0x00443F90	?Resize@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	queue spelling is a stand-in, not the retail name: the chunk 779 evidence, the landed self row and 29 binders give STLport ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (no CRetailHandleVector in Ego_r.pdb / FableWin.pdb); the entry was worked to that spelling instead (APPLIED: blocked, one row left)

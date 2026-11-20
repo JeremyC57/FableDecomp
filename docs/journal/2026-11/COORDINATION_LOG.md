@@ -505,3 +505,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x00E17840 NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::Main (batches/2026-11-20_landing_p25_00e17840). Headers: engine/CQ_WhiteBalverineKnotholeGladeScript.h .
 2026-11-20 B->A: Landed p25 0x00E72630 NScript::CV_DemonDoorsScript::CDF_ThreeSuits::Main (batches/2026-11-20_landing_p25_00e72630). Headers: engine/CV_DemonDoorsScript.h .
 2026-11-20 A: landed nf158 (21 rows): GetParticleEmitterManager and the emitter-manager family on the PDB spellings, CPerItemData counted-pointer destructor from the shared header.
+2026-11-20 A: landed nf160 (41 rows): engine resource / texture / input names; q6213 vector<CEnginePrimitiveHandle> on 14 rows; ~CDrawBase pick-any copy of 0x00658240 queued as DEBT (advisor).

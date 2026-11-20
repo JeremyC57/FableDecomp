@@ -1,0 +1,55 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x009FA280	CTexture	Initialise	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z	CTexture::Initialise	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KJ_N2@Z	Ego_r.pdb 0x00B6A590 + FableWin.pdb 0x030DA090 (pool parameter ESurfacePool); engine/CTexture.h declares it; 16 landed callers (0x0041E6D3, 0x006286F0, 0x009A3640 ...) already bind it; leaf-only change (catalog name already right), in place on the row CTexture declaration, same bytes
+0x00A04110	CInputEvent	SetAsJoystickButtonReleased	?SetAsJoystickButtonReleased@CInputEvent@@QAEXJMABVC2DVector@@N@Z	CInputEvent::SetAsJoystickButton3	?SetAsJoystickButton3@CInputEvent@@QAEX_NJABVC2DVector@@N@Z	Ego_r.pdb 0x00B6EC30 + FableWin.pdb 0x0317DC80; third twin of 0x00A04090 Pressed (kind 19) / 0x00A040D0 Held (kind 20), stores kind 21; engine/CInputEvent.h FABLE_RETAIL_CINPUTEVENT_JOYSTICK_SETTERS declares it at this address; sole caller 0x00AB6E40 binds it; respelled in place (MATCH)
+0x00B40230	CEngineWorldMap	OnGameMapUnloaded	?OnGameMapUnloaded@CEngineWorldMap@@QAEXJ@Z	CEngineWorldMap::OnGameMapUnloaded	?MapState_SetUnloaded@CEngineMapManager@@QAEXJ@Z	Ego_r.pdb 0x009E05B0 + FableWin.pdb 0x02D61810; tail-jump target of CEngine::SetMapAsUnloaded 0x00B23E60 (binds it); unloaded twin of the landed OnGameMapLoaded 0x00B401E0; re-authored on engine/CEngineWorldMap.h (leaf-only: catalog already right)
+0x00B41DB0	CEngineMap	SetMapVisibility	?SetMapVisibility@CEngineMap@@QAEXAAV?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@_N@Z	CEngineMap::SetMapVisibility	?SetMapVisibility@CEngineMap@@QAEXAAU?$CRetailList@PAVCEngineMap@@@@_N@Z	Ego_r.pdb 0x009E2440 + FableWin.pdb 0x02D5B370 (list<CEngineMap*>&, bool); ported off the invented CRetailList onto STLport std::list; its only referencers 0x00B42390 / 0x00B423B0 move with it (leaf-only)
+0x00B42390	CEngineWorldMap	SetMapVisibility	?SetMapVisibility@CEngineWorldMap@@QAEXJ_N@Z	CEngineWorldMap::SetMapVisibility	?SetMapVisibility@CEngineMapManager@@QAEXJ_N@Z	Ego_r.pdb 0x009E2500 + FableWin.pdb 0x02D625D0; tail-jump target of CEngine::SetMapVisibility 0x00B23E40 (binds it); re-authored on engine/CEngineWorldMap.h (leaf-only)
+0x00B423B0	CEngineWorldMap	SetMapVisibilityAllMaps	?SetMapVisibilityAllMaps@CEngineWorldMap@@QAEX_N@Z	CEngineWorldMap::SetMapVisibilityAllMaps	?SetMapVisibility@CMapOwner_00b423b0@@QAEXJ@Z	Ego_r.pdb 0x009E2520 + FableWin.pdb 0x02D62820; tail-jump target of CEngine::SetMapVisibilityAllMaps 0x00B23E50 (binds it); loops MapList calling 0x00B41DB0; re-authored on engine/CEngineWorldMap.h (leaf-only)
+# Section 2
+caller_row	old_symbol	new_symbol	callee_address
+0x0049124E	?ConvertToCharString@CWideString@@QBE?AVCCharString@@XZ	?ToCharString@CWideString@@QBE?AVCCharString@@XZ	0x0099B2C0
+0x00499D90	?Draw2DBox@CRenderManager@@QAE_NABVC2DBoxF@@ABVCRGBColour@@J@Z	?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z	0x009DE3F0
+0x00499D90	?Render2DDrawList@CRenderManager@@QAEX_N@Z	?Render2DDrawList@CRenderManager2D@@QAEX_N@Z	0x009DA9F0
+0x00499D90	?RenderProgress@CProgressDisplay@@QAEXABVCCharString@@M_N1@Z	?RenderProgress@CProgressDisplay@@AAEXABVCCharString@@M_N1@Z	0x00499880
+0x00499D90	?UninitialiseGraphics@CPlayerGui@@QAEXXZ	?ChangeGraphicsBankScene@CPlayerGui@@QAEXXZ	0x00437570
+0x00499D90	?erase@TextureVector@@QAEPAVCTexture@@PAV2@0@Z	?erase@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEPAVCTexture@@PAV3@0@Z	0x0049B3B0
+0x00547F60	?CopyFromTexture@CTexture@@QAEXPAV1@K@Z	?CopyFromTexture@CTexture@@QAEXABV1@K@Z	0x009FA4E0
+0x0055FC90	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KJ_N2@Z	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z	0x009FA280
+0x00590D32	?reserve@CRetailHandleVector@@QAEXK@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x005EC8A0	?Resize@CHandleVector@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x006472B2	?g_fFramesPerSecond_013ba860@@3MA	?VALUE_DISPLAY_DURATION@NPlayerGui@@3MA	0x013BA860
+0x0064E24F	?Resize@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x0064E83F	?Resize@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x0064E8DC	?Resize@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x00651904	?Resize@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x006541D1	?Resize@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x00654258	?Reserve@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x006542A4	?Reserve@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x0065431D	?Resize@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x00658240	?Resize@CRetailHandleVector@NPlayerGui@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x0066CB00	?Initialise@CTexture@@QAE_NPBVC2DExtentsI@@JPBVCPixelFormat@@KJ_N2@Z	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z	0x009FA280
+0x00687A90	?GetEventType@CInputEvent@@QBEJXZ	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	0x00A03B40
+0x00687B30	?GetEventType@CInputEvent@@QBEJXZ	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	0x00A03B40
+0x00687BD0	?GetEventType@CInputEvent@@QBEJXZ	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	0x00A03B40
+0x00689C40	?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ	?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ	0x00A043A0
+0x00689C40	?GetEventType@CInputEvent@@QBEJXZ	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	0x00A03B40
+0x0068C7F0	?GetControllerIndex@CInputEvent@@QBEJXZ	?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ	0x00A03B70
+0x0068C880	?GetKey_00a03b40@CInputEvent@@QBEJXZ	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	0x00A03B40
+0x0068CAC0	?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ	?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ	0x00A043A0
+0x0068CAC0	?GetEventType@CInputEvent@@QBEJXZ	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	0x00A03B40
+0x0068D700	?GetEventType@CInputEvent@@QBEJXZ	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	0x00A03B40
+0x00690360	?GetKind@CInputEvent@@QBEJXZ	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	0x00A03B40
+0x00690360	?MarkAsUsed@CInputEvent@@QBEXXZ	?GetJoystickButton@CInputEvent@@QBEJXZ	0x00A03B90
+0x00690480	?GetAnalogueVector@CInputEvent@@QBEXAAVC2DVector@@@Z	?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ	0x00A043A0
+0x00690480	?GetKey_00a03b40@CInputEvent@@QBEJXZ	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	0x00A03B40
+0x006BE080	?ReplaceSubstring@CWideString@@QAEXABV1@0@Z	?Replace@CWideString@@QAEXABV1@0@Z	0x0099C1E0
+0x009FD4E0	?Initialise@CTexture@@QAE_NPBVC2DExtentsI@@JPBVCPixelFormat@@KJ_N2@Z	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z	0x009FA280
+0x00A3B5F0	?Initialise@CTexture@@QAE_NPBVC2DExtentsI@@JPBVCPixelFormat@@KW4ESurfacePool@@_N3@Z	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z	0x009FA280
+0x00B2C4E0	?Initialise@CTexture@@QAE_NPBVC2DExtentsI@@JPBVCPixelFormat@@KJ_N2@Z	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z	0x009FA280
+0x00B40230	?OnUnloaded@CEngineMap@@QAEXXZ	?OnGameMapUnloaded@CEngineLandscapeMap@@QAEXXZ	0x00BDBFF0
+0x00B42390	?SetMapVisibility@SMapState@@QAEXPAUCRetailMapList@@_N@Z	?SetMapVisibility@CEngineMap@@QAEXAAV?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@_N@Z	0x00B41DB0
+0x00B423B0	?SetMapVisibility@CEngineMap@@QAEXPAUSMapRecord_00b423b0@@J@Z	?SetMapVisibility@CEngineMap@@QAEXAAV?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@_N@Z	0x00B41DB0
+0x00BC5C50	?Resize@CRetailHandleVector@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x00BE2310	?Resize@CHandleVector@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x00BE23F0	?Resize@CHandleVector@@QAEXJ@Z	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	0x00443F90
+0x00F37440	?Initialise@CTextureNative@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KJ_N2@Z	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z	0x009FA280

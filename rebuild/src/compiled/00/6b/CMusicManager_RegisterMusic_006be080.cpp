@@ -8,7 +8,10 @@
 //   bodies building L"Data\\Sound\\" 0x0122F4EC; manifest "CUserProfileManager::GetAutoSaveFileName" is propagated),
 //   operator+(const CWideString&, const CWideString&) 0x0099BE70 (__fastcall), CWideString(const wchar_t*) 0x0099B6B0
 //   (L".ogg" 0x01230C48, L".wma" 0x01230C3C), CWideString copy 0x0099B720, ~CWideString 0x0099B510,
-//   CWideString::ReplaceSubstring 0x0099C1E0 (manifest module says CCharString), registered-map push_back 0x006BF410
+//   CWideString::Replace 0x0099C1E0 (manifest module says CCharString), registered-map push_back 0x006BF410
+// Naming (NF160, 2026-11-20, q4287): 0x0099C1E0 respelled in place on the row's existing CWideString declaration from the stand-in
+//   ReplaceSubstring to ?Replace@CWideString@@QAEXABV1@0@Z (Ego_r.pdb 0x00B03450 + FableWin.pdb 0x02F65AD0; the ten other landed
+//   referencers, e.g. 0x0042DED5 / 0x006286F0, bind it).
 //   (manifest "Vector_PushBackMusicEntry"), the 0x18-element sort 0x006BF6A0 (__fastcall first/last + comparator by value).
 // Layout (retail): CSoundDef::MusicEntries 12-byte STLport vector at +0x54 (PDB +0x60, three 16-byte vectors earlier);
 //   CMusicManager::PSoundDef +0x18, RegisteredMusic +0x1c (vector +0x1c, Compare +0x28, Dirty +0x29) as the landed ctor.
@@ -20,7 +23,7 @@ class CWideString { public:
     CWideString(const unsigned short* text);            // 0x0099B6B0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    void ReplaceSubstring(const CWideString& from, const CWideString& to);   // 0x0099C1E0
+    void Replace(const CWideString& from, const CWideString& to);   // 0x0099C1E0
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  // 0x0099BE70
 
@@ -131,8 +134,8 @@ void CMusicManager::RegisterMusic()
         const CMusicEntry& entry = PSoundDef->MusicEntries[i];
         CWideString src = GetSoundDataDirectory() + GetWideText(entry.Filename);
         CWideString dst = NResourceDirectoryNames::GetHDMusicDir() + GetWideText(entry.Filename);
-        src.ReplaceSubstring(L".wma", L".ogg");
-        dst.ReplaceSubstring(L".wma", L".ogg");
+        src.Replace(L".wma", L".ogg");
+        dst.Replace(L".wma", L".ogg");
         RegisteredMusic.Add(entry.ID, CRegisteredMusicEntry(src, dst, entry.Gain, entry.CacheToHD));
     }
     RegisteredMusic.Sort();

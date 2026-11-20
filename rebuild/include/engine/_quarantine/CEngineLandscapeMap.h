@@ -24,6 +24,16 @@ class CRGBColour;
 #pragma pack(push, 1)
 class CEngineLandscapeMap {
 public:
+#ifdef FABLE_RETAIL_CENGINELANDSCAPEMAP_ONGAMEMAPUNLOADED
+    // NF160 opt-in (row 0x00B40230): Ego_r.pdb 0x009B4730 / FableWin.pdb 0x02CC75D0 ?OnGameMapUnloaded@CEngineLandscapeMap@@QAEXXZ, out of
+    // line at 0x00BDBFF0 (a bare `ret`, after OnGameMapLoaded 0x00BDBFE0 as in the PDB order). Declaration only: no layout change.
+    void OnGameMapUnloaded();                                            // 0x00BDBFF0
+#endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPEMAP_ONMAPVISIBILITYCHANGED
+    // NF160 opt-in (row 0x00B41DB0 CEngineMap::SetMapVisibility): Ego_r.pdb 0x009B5150 / FableWin.pdb 0x02CC7720
+    // ?OnMapVisibilityChanged@CEngineLandscapeMap@@QAEX_N@Z (out of line at 0x00BDC3C0). Declaration only; no layout change.
+    void OnMapVisibilityChanged(bool visible);                           // 0x00BDC3C0
+#endif
     void*                                     __vftable;     // +0x00 vptr, or first dword of a flattened base subobject
     CLandscapeBackgroundTreeNode*             PatchTree;     // +0x04
     CEngineLandscapePatch*                    Patches;       // +0x08
@@ -53,31 +63,31 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEngineLandscapeMap) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, PatchTree) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, Patches) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, PatchGridWidth) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, PatchGridHeight) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, Map) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileEntry_Data) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileEntry_Info) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, FileBlockManager) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader_TexturePaletteFilePointer) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader_TexturePaletteSize) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader_PatchesFilePointer) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader_PatchTreeFileBlockPos) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader_PatchTreeFileBlockSize) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, LoadingPatches_Data) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, LoadingPatches_Info) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, TexturePalette) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, CreationFlags) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MemoryFreeingLocked) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, IsDynamic) == 0x5d);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, PatchTreeBaseLoading) == 0x5e);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, DebugColour) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, DebugOverlay) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, LODMap) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, BackgroundBuildTemplate) == 0x70);
+FABLE_STATIC_ASSERT_AT(56, sizeof(CEngineLandscapeMap) == 0x74);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CEngineLandscapeMap, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CEngineLandscapeMap, PatchTree) == 0x4);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CEngineLandscapeMap, Patches) == 0x8);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CEngineLandscapeMap, PatchGridWidth) == 0xc);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CEngineLandscapeMap, PatchGridHeight) == 0x10);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CEngineLandscapeMap, Map) == 0x14);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CEngineLandscapeMap, MapFileEntry_Data) == 0x18);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CEngineLandscapeMap, MapFileEntry_Info) == 0x1c);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CEngineLandscapeMap, FileBlockManager) == 0x20);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CEngineLandscapeMap, MapFileHeader_TexturePaletteFilePointer) == 0x24);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CEngineLandscapeMap, MapFileHeader_TexturePaletteSize) == 0x28);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CEngineLandscapeMap, MapFileHeader_PatchesFilePointer) == 0x2c);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CEngineLandscapeMap, MapFileHeader_PatchTreeFileBlockPos) == 0x30);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CEngineLandscapeMap, MapFileHeader_PatchTreeFileBlockSize) == 0x34);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CEngineLandscapeMap, LoadingPatches_Data) == 0x38);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CEngineLandscapeMap, LoadingPatches_Info) == 0x3c);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CEngineLandscapeMap, TexturePalette) == 0x40);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CEngineLandscapeMap, CreationFlags) == 0x58);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CEngineLandscapeMap, MemoryFreeingLocked) == 0x5c);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CEngineLandscapeMap, IsDynamic) == 0x5d);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CEngineLandscapeMap, PatchTreeBaseLoading) == 0x5e);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CEngineLandscapeMap, DebugColour) == 0x60);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CEngineLandscapeMap, DebugOverlay) == 0x64);
+FABLE_STATIC_ASSERT_AT(80, offsetof(CEngineLandscapeMap, LODMap) == 0x6c);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CEngineLandscapeMap, BackgroundBuildTemplate) == 0x70);
 
 #endif // FABLE_ENGINE_CENGINELANDSCAPEMAP_H

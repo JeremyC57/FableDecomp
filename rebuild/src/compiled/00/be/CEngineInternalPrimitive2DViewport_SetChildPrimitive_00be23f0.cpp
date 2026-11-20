@@ -14,6 +14,12 @@
 //   two release sequences precede the store); the handle reference is taken BEFORE the manager lookup (taken after it, the
 //   table global lands in edx instead of ecx: the parked group twin 0x00BC65D0); the enable bit is a bool local
 //   `(flags & 0x20) ? false : true` computed before the null test (bl).
+// Naming (NF160, 2026-11-20, q6213): the local CHandleVector stand-in replaced by the shared STLport 4.6 std::vector<CEnginePrimitiveHandle>
+//   (stlport/fable_containers.h, FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; the landed 0x0064E1E4 / 0x0064ED06 recipe), so its Resize call binds
+//   0x00443F90 as ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (STLport one-argument
+//   resize; the self row and 29 landed callers bind it).
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
 class CEnginePrimitive { public:
     long Type;                                         // +0x00
 };
@@ -66,14 +72,6 @@ class CEnginePrimitiveHandle { public:                        // 8 bytes: vptr (
     }
 };
 
-struct CHandleVector {                                 // vector<CEnginePrimitiveHandle> (12 bytes)
-    CEnginePrimitiveHandle* m_pFirst;
-    CEnginePrimitiveHandle* m_pLast;
-    CEnginePrimitiveHandle* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pFirst; }
-    void Resize(long count);                           // 0x00443F90
-    CEnginePrimitiveHandle& operator[](unsigned long index) { return m_pFirst[index]; }
-};
 
 // NF46 (round 7): the 0x01436E84 global is NEngineInternal::GPPrimitiveTypeInfo (Ego_r.pdb / FableWin.pdb
 // ?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A); the manager is its FableWin.pdb inline GetPrimitiveManager(type)
@@ -87,7 +85,7 @@ namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo
 
 class CEngineInternalPrimitive2DViewport : public CEngineInternalPrimitiveBase { public:
     unsigned char _pad38[0x94 - 0x38];
-    CHandleVector Primitives;                          // +0x94
+    std::vector<CEnginePrimitiveHandle> Primitives;                          // +0x94
     void UpdateRenderLayerMask();                      // 0x00BE1D80
     void SetChildPrimitive(unsigned long index, const CEnginePrimitive& primitive, unsigned long flags);
 };
@@ -95,7 +93,7 @@ class CEngineInternalPrimitive2DViewport : public CEngineInternalPrimitiveBase {
 void CEngineInternalPrimitive2DViewport::SetChildPrimitive(unsigned long index, const CEnginePrimitive& primitive, unsigned long flags)
 {
     if (index >= Primitives.size())
-        Primitives.Resize(index + 1);
+        Primitives.resize(index + 1);
     CEnginePrimitiveHandle& handle = Primitives[index];
     CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(primitive.Type);
     bool enable = (flags & 0x20) ? false : true;

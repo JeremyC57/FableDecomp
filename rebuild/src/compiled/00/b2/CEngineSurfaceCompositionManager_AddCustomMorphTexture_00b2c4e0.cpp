@@ -27,6 +27,10 @@ void __cdecl operator_delete_00bfe9bc(void* p);         // 0x00BFE9BC
 #include "engine/CEngineResourceManager.h"
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
+// Naming (NF160, 2026-11-20, q4297): CTexture::Initialise 0x009FA280 respelled in place on the row's existing CTexture declaration to
+//   Ego_r.pdb 0x00B6A590 + FableWin.pdb 0x030DA090 ?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z
+//   (references, the pool an ESurfacePool from engine/ESurfacePool.h), the spelling engine/CTexture.h declares and 16 landed callers bind.
+#include "engine/ESurfacePool.h"
 class C2DExtentsI { public:
     long X, Y;
 };
@@ -74,7 +78,7 @@ class CTexture { public:
     CTexture() : PD3DTexture(0), Bits(0) {}
     ~CTexture() { Uninitialise(); }
     void Uninitialise();                                // 0x009F9F70
-    bool Initialise(const C2DExtentsI* size, long levels, const CPixelFormat* format, unsigned long usage, long pool, bool a, bool b);   // 0x009FA280
+    bool Initialise(const C2DExtentsI& size, long levels, const CPixelFormat& format, unsigned long usage, ESurfacePool pool, bool a, bool b);   // 0x009FA280
     CSurface GetSurfaceLevel(long level) const;         // 0x009F9E00
     C2DExtentsI GetDimensions(unsigned long level) const;   // 0x009F9DB0
     CPixelFormat GetPixelFormat() const;                // 0x009F9D80
@@ -177,7 +181,7 @@ unsigned long CEngineSurfaceCompositionManager::AddCustomMorphTexture(CTexture& 
     C2DExtentsI size;
     size.X = width;
     size.Y = height;
-    composite.Initialise(&size, -1, &format, 0, 1, false, false);
+    composite.Initialise(size, -1, format, 0, SURFACE_POOL_MANAGED, false, false);
     composite.GetSurfaceLevel(0).CopyFromSurface(0, &texture.GetSurfaceLevel(0), 0, (unsigned long)-1);
     composite.GenerateMipmaps(5, 0);
     WriteTextureToBank(composite, CustomTextureBankFile, index, hasAlpha);

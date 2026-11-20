@@ -4,7 +4,7 @@
 // Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 // Retail: 0x0049124E, 1056 bytes (FableWin ?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z; bsim
 //   0.944 against the PDB function). Same size TU as FormatTextWithGameActionNames 0x004917B5 (its only caller).
-// Callees: CPlayerGui::PeekGuiDef 0x00438570, CWideString::ConvertToCharString 0x0099B2C0, the GameActionValues (+0x940)
+// Callees: CPlayerGui::PeekGuiDef 0x00438570, CWideString::ToCharString 0x0099B2C0, the GameActionValues (+0x940)
 //   _Rb_tree::_M_find 0x00475861, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, strncmp 0x00BFEAF8,
 //   CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0, GetAssignedInputForAction 0x00408C90,
 //   GetAssignedInputForMovementAction 0x00408D90 (GAME_ACTION 0x3c), GetActionName 0x00446720.
@@ -49,7 +49,9 @@ public:
     CWideStringData* PStringData;
     CWideString();
     ~CWideString();
-    CCharString ConvertToCharString() const;       // 0x0099B2C0
+    // Naming (NF160, 2026-11-20, q6174): respelled in place (was ConvertToCharString, in neither PDB) to Ego_r.pdb 0x00B02850 / FableWin.pdb
+    //   ?ToCharString@CWideString@@QBE?AVCCharString@@XZ, which the self row 0x0099B2C0 and 73 landed callers bind.
+    CCharString ToCharString() const;              // 0x0099B2C0
 };
 namespace std {
 template<class T> class allocator {};
@@ -167,7 +169,7 @@ class CPlayerGui { public:
 bool __fastcall CSubtitleRenderer::GetActionNameFromEmbeddedTag(const CWideString& tag, CWideString& actionName)
 {
     const CPlayerGuiDef& def = CPlayerGui::PeekGuiDef();
-    std::map<CCharString, long>::const_iterator it = def.GameActionValues.find(tag.ConvertToCharString());
+    std::map<CCharString, long>::const_iterator it = def.GameActionValues.find(tag.ToCharString());
     if (it != def.GameActionValues.end()) {
         EGameAction action = (EGameAction)it->second;
         CActionInputControl control;
@@ -177,15 +179,15 @@ bool __fastcall CSubtitleRenderer::GetActionNameFromEmbeddedTag(const CWideStrin
                 return true;
         }
     }
-    else if (tag.ConvertToCharString().StartsWith("GAME_ACTION_MOVEMENT_")) {
+    else if (tag.ToCharString().StartsWith("GAME_ACTION_MOVEMENT_")) {
         C2DVector direction(0.0f, 0.0f);
-        if (tag.ConvertToCharString().EndsWith("UP"))
+        if (tag.ToCharString().EndsWith("UP"))
             direction = C2DVector(0.0f, 1.0f);
-        else if (tag.ConvertToCharString().EndsWith("RIGHT"))
+        else if (tag.ToCharString().EndsWith("RIGHT"))
             direction = C2DVector(1.0f, 0.0f);
-        else if (tag.ConvertToCharString().EndsWith("DOWN"))
+        else if (tag.ToCharString().EndsWith("DOWN"))
             direction = C2DVector(0.0f, -1.0f);
-        else if (tag.ConvertToCharString().EndsWith("LEFT"))
+        else if (tag.ToCharString().EndsWith("LEFT"))
             direction = C2DVector(-1.0f, 0.0f);
         if (direction.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
             CActionInputControl control;

@@ -8,15 +8,18 @@
 //   CGameScriptInterface::ChangeHeroHealthBy 0x00891720 calls AddDamageChange(float, bool).
 // Callees: __ftol2 0x00BFEA70, std::list<SDamageValue>::push_front(const SDamageValue&) 0x00655EB4 (the landed body there is an
 //   invented ListWrapper_00655eb4::ListPushFrontWrapper_00655eb4 -> Review at landing).
-// Globals: 0x013BA860 a file-static float the TU's dynamic initialiser 0x0121DF1C sets to (float)FramesPerSecond (0x01375550);
-//   descriptive name g_fFramesPerSecond_013ba860. Float pool 0.0f (0x0122DEDC), 10.0f (0x01237F0C).
+// Globals: 0x013BA860 NPlayerGui::VALUE_DISPLAY_DURATION, the float the TU's dynamic initialiser 0x0121DF1C sets to (float)FramesPerSecond
+//   (0x01375550). Float pool 0.0f (0x0122DEDC), 10.0f (0x01237F0C).
+// Naming (NF160, 2026-11-20, q4132): 0x013BA860 respelled from the descriptive ?g_fFramesPerSecond_013ba860@@3MA to
+//   ?VALUE_DISPLAY_DURATION@NPlayerGui@@3MA: the PDB dynamic-initialiser name `dynamic initializer for 'VALUE_DISPLAY_DURATION'` (Ego_r /
+//   FableWin, landed 0x0121DF1C) + the landed definer 0x0121DF1C and reader 0x0064ED4F, which already bind that spelling.
 // Layout: CDrawDamage DamageValues (list<SDamageValue>, 4 bytes in STLport) +0x28; SDamageValue {long Duration; float Change;
 //   bool Hero;} (Ego_r.pdb, 12 bytes).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/GFFloatToLongNear.h"
 
-extern float g_fFramesPerSecond_013ba860;          // 0x013BA860
+namespace NPlayerGui { extern float VALUE_DISPLAY_DURATION; }   // 0x013BA860
 
 namespace std {
 template <class _Tp> class allocator { };
@@ -51,7 +54,7 @@ void CDrawDamage::AddDamageChange(float change, bool hero)
         change *= 10.0f;
         long rounded = GFFloatToLongNear(change);
         SDamageValue value;
-        value.Duration = (long)g_fFramesPerSecond_013ba860;
+        value.Duration = (long)VALUE_DISPLAY_DURATION;
         value.Change = (float)rounded;
         value.Hero = hero;
         DamageValues.push_front(value);

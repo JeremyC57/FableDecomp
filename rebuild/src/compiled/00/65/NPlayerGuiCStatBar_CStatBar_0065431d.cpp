@@ -19,6 +19,15 @@
 // is the counted-pointer temporary's object pointer; the two resizes are the body, handles first. Retail keeps `def` in
 // edx across the CStatBase call (caller-saved): that needs the landed CStatBase constructor body as a same-TU noinline
 // stand-in (GOTCHAS: same-TU callee register knowledge).
+// Naming (NF160, 2026-11-20, q6213): the local CRetailHandleVector stand-in replaced by the shared STLport 4.6 std::vector<CEnginePrimitiveHandle>
+//   (stlport/fable_containers.h, FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; the landed 0x0064E1E4 / 0x0064ED06 recipe), so its Resize call binds
+//   0x00443F90 as ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (STLport one-argument
+//   resize; the self row and 29 landed callers bind it).
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CEnginePrimitiveHandle.h"
 #pragma optimize("s", on)
 class CCharString;
 class CFontBank;
@@ -39,22 +48,10 @@ struct CFontBankManager {
 class CFontManager;
 extern CFontManager* PFontManager;                  // 0x013B838C
 
-namespace std {
-template <class T> class allocator {
-public:
-    allocator() {}
-};
-}
+// (the local std::allocator model dropped: stlport/fable_containers.h provides it)
 
 namespace NPlayerGui {
 
-struct CRetailHandleVector {                                  // vector<CEnginePrimitiveHandle>: three words
-    void* m_pFirst;
-    void* m_pLast;
-    void* m_pEnd;
-    CRetailHandleVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) {}
-    void Resize(long count);                                  // 0x00443F90
-};
 
 struct CRetailEmitterVector {                                 // vector<CIntelligentPointer<CParticleEmitter>>
     void* m_pFirst;
@@ -81,7 +78,7 @@ public:
     unsigned long        FrameFullyOpenedOn;                  // +0x24
     EPlayerGuiMode       GuiMode;                             // +0x28
     float                FadeInTimer;                         // +0x2C
-    CRetailHandleVector  PrimitiveHandles;                    // +0x30
+    std::vector<CEnginePrimitiveHandle>  PrimitiveHandles;                    // +0x30
     CRetailEmitterVector Effects;                             // +0x3C
 };
 
@@ -138,7 +135,7 @@ CStatBar::CStatBar(const CPlayerGuiDef& def)
       FontBank(((CFontBankManager*)PFontManager)->GetFont(def.GetStatBarsFontName()).m_pObject),
       ChangeTexts()
 {
-    PrimitiveHandles.Resize(5);
+    PrimitiveHandles.resize(5);
     Effects.Resize(1);
 }
 

@@ -16,38 +16,37 @@
 // Naming (NF142, 2026-11-20, q4292 / q6168): BeginRender 0x009BEF20 respelled in place in the row's existing local CDisplayManager model to the
 //   Ego_r.pdb 0x00B23C30 + FableWin.pdb 0x0301EBA0 spelling ?BeginRender@CDisplayManager@@QAE_NXZ (bool; the result is unused here).
 // Shape: a named C2DBoxF local (a temporary schedules its zero X0/Y0 stores early); the black CRGBColour temporary reuses the dead `clearScreen` argument slot; each texture loop recomputes the size.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-class C2DBoxF { public:
-    float X0, Y0, X1, Y1;
-    C2DBoxF(float x0, float y0, float x1, float y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
-};
-class CRGBColour { public:
-    unsigned char B, G, R, A;
-    CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-};
-class CRenderManager { public:
-    bool Draw2DBox(const C2DBoxF& box, const CRGBColour& colour, long flags);   // 0x009DE3F0
-    void Render2DDrawList(bool wait);                  // 0x009DA9F0
-};
-class CDisplayManager { public:
-    void*           __vftable;
-    void*           SystemManager;                     // +0x04
-    CRenderManager* PRenderManager;                    // +0x08
-    unsigned char   _pad0c[0x214 - 0x0c];
-    bool            Rendering;                         // +0x214
-    bool BeginRender();                                // 0x009BEF20 ?BeginRender@CDisplayManager@@QAE_NXZ (Ego_r / FableWin: returns bool)
-    void EndRender();                                  // 0x009BEF50
-public:
-    bool SwapScreens();   // 0x009BEEB0
-};
-class CSystemManager { public:
-    unsigned char    _pad00[0x60];
-    CDisplayManager* DisplayManager;                   // +0x60
-};
+// Naming (NF160, 2026-11-20, q4293 / q6169): the local CCharString / C2DBoxF / CRGBColour / CRenderManager / CDisplayManager /
+//   CSystemManager / CTexture / TextureVector / CTBaseSingletonNoDefaultAlloc / CPlayerGui / CProgressDisplay models replaced by the
+//   shared headers (the recipe of the landed siblings StartProgress 0x00499AA0 / DrawRetailDisplay 0x00498490), so the render-list call
+//   binds Ego_r.pdb 0x00B2E390 / FableWin.pdb ?Render2DDrawList@CRenderManager2D@@QAEX_N@Z (was the stand-in CRenderManager member);
+//   with it Draw2DBox 0x009DE3F0 (?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z), the CPlayerGui call 0x00437570
+//   (?ChangeGraphicsBankScene@CPlayerGui@@QAEXXZ, Ego_r 0x0044A200 / FableWin 0x01A7CC80), vector<CTexture>::erase 0x0049B3B0 and
+//   RenderProgress 0x00499880 take the spellings the header-based siblings already bind.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CSYSTEMMANAGER
+#define FABLE_RETAIL_CDISPLAYMANAGER
+#define FABLE_RETAIL_CDISPLAYMANAGER_RENDERTARGET
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#define FABLE_RETAIL_CRENDERMANAGER2D_LOADINGSCREEN
+#define FABLE_RETAIL_CPLAYERGUI
+#define FABLE_RETAIL_CPLAYERGUI_GRAPHICBANK
+#define FABLE_RETAIL_SINGLETON_ISSETUP
+#include "fable_string.h"
+#include "engine/C2DBoxF.h"
+#include "engine/CRGBColour.h"
+#include "engine/CTexture.h"
+#include "engine/CSystemManager.h"
+#include "engine/CRenderManager.h"
+#include "engine/CDisplayManager.h"
+#include "engine/CPlayerGui.h"
+#include "engine/CProgressDisplay.h"
+
 CSystemManager* __fastcall GFGetSystemManager();      // 0x009A4EC0
 extern double g_ProgressScreenWidth;                   // 0x013961E8
 extern double g_ProgressScreenHeight;                  // 0x013961F0
@@ -55,47 +54,6 @@ extern bool   g_ProgressDisplayEnabled;                // 0x01375445
 extern bool   g_ProgressDisplaySuppressed;             // 0x013B89D3
 extern bool   g_ProgressBlackScreenA;                  // 0x013B89C1
 extern bool   g_ProgressBlackScreenB;                  // 0x013B89C0
-class CTexture { public:                                      // 8 bytes
-    void* __vftable;
-    void* PData;
-    void Uninitialise();                               // 0x009F9F70
-};
-struct TextureVector {                                 // STLport vector<CTexture>, 12 bytes
-    CTexture* _M_start;
-    CTexture* _M_finish;
-    CTexture* _M_end_of_storage;
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    CTexture& operator[](unsigned int i) { return *(_M_start + i); }
-    CTexture* erase(CTexture* first, CTexture* last);  // 0x0049B3B0
-    void clear() { erase(_M_start, _M_finish); }
-};
-#include "engine/CCountedPointer.h"
-template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
-    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
-public:
-    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
-};
-class CPlayerGui { public:
-    void UninitialiseGraphics();                       // 0x00437570
-};
-
-struct CProgressDisplay {
-    virtual void v00();
-    virtual void v01();
-    virtual void StopProgress(bool showStoppingText, bool clearScreen);
-    virtual void v03();
-    virtual void v04();
-    virtual void SetBlackScreenFrame(bool on);         // slot 5 (+0x14)
-    TextureVector ProgressTextures;                    // +0x04
-    TextureVector GuildSealTextures;                   // +0x10
-    TextureVector LoadingScreenTextures;               // +0x1c
-    unsigned char _pad28[0x78 - 0x28];
-    bool          DebugDisplay;                        // +0x78
-    bool          Initialised;                         // +0x79
-    bool          FullScreen;                          // +0x7a
-    bool          BlackScreen;                         // +0x7b
-    void RenderProgress(const CCharString& textTag, float progress, bool showText, bool force);   // 0x00499880
-};
 
 void CProgressDisplay::StopProgress(bool showStoppingText, bool clearScreen)
 {
@@ -103,11 +61,11 @@ void CProgressDisplay::StopProgress(bool showStoppingText, bool clearScreen)
         return;
     if (Initialised) {
         if (clearScreen) {
-            CDisplayManager* display = GFGetSystemManager()->DisplayManager;
+            CDisplayManager* display = GFGetSystemManager()->GetDisplayManager();
             if (display) {
-                CRenderManager* renderer = display->PRenderManager;
+                CRenderManager* renderer = &display->GetRenderManager();
                 if (renderer) {
-                    bool wasRendering = display->Rendering;
+                    bool wasRendering = display->IsRendering();
                     if (!wasRendering)
                         display->BeginRender();
                     C2DBoxF box(0.0f, 0.0f, (float)g_ProgressScreenWidth, (float)g_ProgressScreenHeight);
@@ -123,7 +81,7 @@ void CProgressDisplay::StopProgress(bool showStoppingText, bool clearScreen)
             bool oldBlackScreen = BlackScreen;
             if (g_ProgressBlackScreenA || g_ProgressBlackScreenB) {
                 BlackScreen = true;
-                SetBlackScreenFrame(false);
+                SetToDisplayText(false);
             }
             RenderProgress("Stopping progress display", -1.0f, false, false);
             BlackScreen = oldBlackScreen;
@@ -139,7 +97,7 @@ void CProgressDisplay::StopProgress(bool showStoppingText, bool clearScreen)
     for (i = 0; i < LoadingScreenTextures.size(); ++i)
         LoadingScreenTextures[i].Uninitialise();
     LoadingScreenTextures.clear();
-    if ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()))
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UninitialiseGraphics();
+    if (CPlayerGui::IsSingletonSetup())
+        CPlayerGui::Get().ChangeGraphicsBankScene();
     Initialised = false;
 }

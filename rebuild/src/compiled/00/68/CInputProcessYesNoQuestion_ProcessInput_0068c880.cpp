@@ -29,12 +29,10 @@ public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
     void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
-enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
-class CInputEvent {
-public:
-    long GetKey_00a03b40() const;                           // 0x00A03B40
-    EInputDeviceType GetDeviceType() const;                    // 0x00A03B50
-};
+// Naming (NF160, 2026-11-20, q4300): the local CInputEvent model replaced by the shared engine/CInputEvent.h (Ego_r.pdb / FableWin.pdb
+//   spellings): 0x00A03B40 GetKey_00a03b40 -> GetType; GetDeviceType 0x00A03B50 unchanged.
+#define FABLE_RETAIL_CINPUTEVENT_DEVICETYPE
+#include "engine/CInputEvent.h"
 struct CPlayerGuiQuestion {
     bool CanCancel();                              // 0x0048DB98
 };
@@ -63,13 +61,13 @@ void CInputProcessYesNoQuestion::ProcessInput(const CInputEvent& event, CProcess
     if (!IsEventButtonPressed(event))
         return;
     if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UsingKeyboard) {
-        if (event.GetDeviceType() == 3 && event.GetKey_00a03b40() == 4) {
+        if (event.GetDeviceType() == 3 && event.GetType() == 4) {
             CGameEvent gameEvent(0x1d);
             gameEvent.AddLong(1);
             gameEvent.AddLong(PreviousMode);
             processed.SetAsPerformedEvent();
             processed.AddGameEvent(gameEvent);
-        } else if (event.GetDeviceType() == 3 && event.GetKey_00a03b40() == 10) {
+        } else if (event.GetDeviceType() == 3 && event.GetType() == 10) {
             CGameEvent gameEvent(0x1d);
             gameEvent.AddLong(0);
             gameEvent.AddLong(PreviousMode);

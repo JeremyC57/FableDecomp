@@ -66,6 +66,10 @@ struct CMediaType {
     unsigned long  cbFormat;            // +0x40
     unsigned char* pbFormat;            // +0x44
 };
+// Naming (NF160, 2026-11-20, q4297): CTexture::Initialise 0x009FA280 respelled in place on the row's existing CTexture declaration to
+//   Ego_r.pdb 0x00B6A590 + FableWin.pdb 0x030DA090 ?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z
+//   (references, the pool an ESurfacePool from engine/ESurfacePool.h), the spelling engine/CTexture.h declares and 16 landed callers bind.
+#include "engine/ESurfacePool.h"
 class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) {}
@@ -74,14 +78,12 @@ class CPixelFormat { public:
     long FormatIndex;
     void Initialise(long r, long g, long b, long a, bool flag);   // 0x009E3790
 };
-enum ESurfacePool { SURFACE_POOL_0, SURFACE_POOL_MANAGED };
 class CTexture { public:
     IDirect3DTexture9* PD3DTexture;     // +0x00
     unsigned long      ByteLength : 28; // +0x04
     unsigned long      AllocationSource : 4;
     CTexture() : PD3DTexture(0), ByteLength(0), AllocationSource(0) {}
-    bool Initialise(const C2DExtentsI* size, long mipLevels, const CPixelFormat* format, unsigned long usage,
-                    ESurfacePool pool, bool a, bool b);           // 0x009FA280
+    bool Initialise(const C2DExtentsI& size, long mipLevels, const CPixelFormat& format, unsigned long usage, ESurfacePool pool, bool a, bool b);           // 0x009FA280
 };
 struct CVideoSys : CVideoSysDonor {
 
@@ -114,7 +116,7 @@ long CTextureRenderer::SetMediaType(const CMediaType* pmt)
         CPixelFormat format;
         format.Initialise(8, 8, 8, 8, false);
         C2DExtentsI size(Width, Height);
-        Texture->Initialise(&size, 1, &format, 0, SURFACE_POOL_MANAGED, false, false);
+        Texture->Initialise(size, 1, format, 0, SURFACE_POOL_MANAGED, false, false);
     } else {
         D3DSURFACE_DESC desc;
         Texture->PD3DTexture->GetLevelDesc(0, &desc);

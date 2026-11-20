@@ -35,7 +35,9 @@ class CRGBColour { public:
     CRGBColour(const CRGBColour& c) { R = c.R; G = c.G; B = c.B; A = c.A; }
 };
 class CTexture { public:
-    void CopyFromTexture(CTexture* source, unsigned long mip);   // 0x009FA4E0
+    // Naming (NF160, 2026-11-20, q4298): respelled in place to Ego_r.pdb / FableWin.pdb ?CopyFromTexture@CTexture@@QAEXABV1@K@Z (the
+    //   source by const reference, as the landed self row 0x009FA4E0 and caller 0x006286F0 bind; was CTexture*).
+    void CopyFromTexture(const CTexture& source, unsigned long mip);   // 0x009FA4E0
 };
 struct CEnginePrimitive2DSprite {
     unsigned char _body[0x54];
@@ -343,7 +345,7 @@ void CMovie::Draw(CIEngine& engine, CEnginePrimitiveHandle* primitives, long lay
             if (!MovieTexture)
                 return;
             EnterCriticalSection(&g_pVideoSys->FrameLock);
-            MovieTexture->CopyFromTexture(g_pVideoSys->FrameTexture, (unsigned long)-1);
+            MovieTexture->CopyFromTexture(*g_pVideoSys->FrameTexture, (unsigned long)-1);
             LeaveCriticalSection(&g_pVideoSys->FrameLock);
             CEnginePrimitive2DSprite sprite(0, &box, renderLayer, MovieTexture, 2, 0, Angle, Angle,
                                             colour.A, colour.R, colour.G, colour.B, 2,

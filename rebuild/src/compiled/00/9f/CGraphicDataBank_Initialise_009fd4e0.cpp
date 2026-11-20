@@ -14,6 +14,10 @@
 //   local CTexture declaration and its call sites, as the landed self row 0x009F9E00 (NF93).
 struct IDirect3DTexture9;
 struct IDirect3DSurface9;
+// Naming (NF160, 2026-11-20, q4297): CTexture::Initialise 0x009FA280 respelled in place on the row's existing CTexture declaration to
+//   Ego_r.pdb 0x00B6A590 + FableWin.pdb 0x030DA090 ?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z
+//   (references, the pool an ESurfacePool from engine/ESurfacePool.h), the spelling engine/CTexture.h declares and 16 landed callers bind.
+#include "engine/ESurfacePool.h"
 class C2DExtentsI { public: long X, Y; };
 class CPixelFormat { public: long FormatIndex; };
 class CSurface { public:                               // vtable 0x0122F84C
@@ -28,7 +32,7 @@ class CSurface { public:                               // vtable 0x0122F84C
 class CTexture { public:
     IDirect3DTexture9* PD3DTexture;             // +0x00
     unsigned long      Bits;                    // +0x04
-    bool Initialise(const C2DExtentsI* size, long levels, const CPixelFormat* format, unsigned long usage, long pool, bool a, bool b);   // 0x009FA280
+    bool Initialise(const C2DExtentsI& size, long levels, const CPixelFormat& format, unsigned long usage, ESurfacePool pool, bool a, bool b);   // 0x009FA280
     CSurface GetSurfaceLevel(long level) const; // 0x009F9E00
 };
 class CGraphicDataBankInit { public:
@@ -91,7 +95,7 @@ void CGraphicDataBank::Initialise(const CGraphicDataBankInit& init)
             C2DExtentsI size;
             size.X = 32;
             size.Y = 32;
-            BlankTextures[i].Initialise(&size, -1, &format, 0, 1, false, false);
+            BlankTextures[i].Initialise(size, -1, format, 0, SURFACE_POOL_MANAGED, false, false);
             BlankTextures[i].GetSurfaceLevel(0).Clear();
         }
     }

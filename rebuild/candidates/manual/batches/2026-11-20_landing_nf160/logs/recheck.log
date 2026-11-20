@@ -1,0 +1,257 @@
+addr       parity           behav  name
+0049124e   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+0049124e   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0049124e   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+0049124e   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+0049124e   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0049124e   WARN SHARED_HEADER_AVAILABLE CActionInputControl (engine/CActionInputControl.h)
+0049124e   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+0049124e   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0049124e   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0049124e   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+0049124e   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0049124e   RELOCATION_MATCH PASS   CSubtitleRenderer::GetActionNameFromEmbeddedTag
+00499d90   WARN RELOC_NAME: ?ChangeGraphicsBankScene@CPlayerGui@@QAEXXZ -> 00437570 labelled '_global::Forward_ChangeScene_via0x14_00437570'
+00499d90   RELOCATION_MATCH PASS   CProgressDisplay::StopProgress
+00547f60   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DSprite (engine/CEnginePrimitive2DSprite.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE CIEngine (engine/CIEngine.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE CVideoSys (engine/CVideoSys.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00547f60   WARN SHARED_HEADER_AVAILABLE CMovie (engine/CMovie.h)
+00547f60   RELOCATION_MATCH PASS   NUISystem::CMovie::Draw
+0055fc90   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+0055fc90   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+0055fc90   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+0055fc90   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+0055fc90   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+0055fc90   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+0055fc90   WARN RELOC_NAME: ?GetSaveDir@@YI?AVCWideString@@XZ -> 0041a5b0 labelled 'NResourceDirectoryNames::GetScoreboardImageCacheDir'
+0055fc90   WARN RELOC_NAME: ??ACPictureMap@@QAEAAUCTexturePointer@@ABJ@Z -> 005698a0 labelled '_global::RBTree_SearchOrCreate'
+0055fc90   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard::GetCachedImage
+00590d32   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00590d32   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+00590d32   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00590d32   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00590d32   WARN RELOC_NAME: ??0CEditBoxList@@QAE@ABU?$CAllocator@PAX@@@Z -> 005931da labelled 'DoublyLinkedList_InitHead'
+00590d32   WARN RELOC_NAME: ??0CComponentByLongMap@@QAE@XZ -> 00593ed0 labelled 'std::map<T_00593ed0>::map'
+00590d32   WARN RELOC_NAME: ?reserve@?$CPODVector@J@@QAEXK@Z -> 004433f0 labelled 'std::vector<long, std::allocator<long>>::resize'
+00590d32   WARN RELOC_NAME: ?reserve@?$CPODVector@VCFadeInFadeOutBase@@@@QAEXK@Z -> 00594df4 labelled 'CTimedEntryArray_00594df4::ResetEntry'
+00590d32   RELOCATION_MATCH PASS   CTCInventory::CTCInventory
+005ec8a0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005ec8a0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ec8a0   RELOCATION_MATCH PASS   CTCTavernGame::CTCTavernGame
+006472b2   WARN RELOC_NAME: ?push_front@?$list@VSDamageValue@CDrawDamage@NPlayerGui@@V?$allocator@VSDamageValue@CDrawDamage@NPlayerGui@@@std@@@std@@QAEXABVSDamageValue@CDrawDamage@NPlayerGui@@@Z -> 00655eb4 labelled 'CChangeLog_AddDamageChange_Thunk'
+006472b2   RELOCATION_MATCH PASS   NPlayerGui::CDrawDamage::AddDamageChange
+0064e24f   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+0064e24f   RELOCATION_MATCH PASS   NPlayerGui::CDrawStamina::CDrawStamina
+0064e83f   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0064e83f   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0064e83f   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0064e83f   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0064e83f   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+0064e83f   WARN SHARED_HEADER_AVAILABLE CDrawMiniMap (engine/CDrawMiniMap.h)
+0064e83f   RELOCATION_MATCH PASS   NPlayerGui::CDrawMiniMap::CDrawMiniMap
+0064e8dc   RELOCATION_MATCH PASS   NPlayerGui::CDrawScreenFade::CDrawScreenFade
+00651904   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+00651904   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00651904   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+00651904   WARN RELOC_NAME: ??0CRetailMessageQueue@NPlayerGui@@QAE@XZ -> 00656d0b labelled 'CGameEvent::AddUBYTE'
+00651904   RELOCATION_MATCH PASS   NPlayerGui::CDrawGuildSeal::CDrawGuildSeal
+006541d1   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+006541d1   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DText (engine/CEnginePrimitive2DText.h)
+006541d1   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer (engine/CEnginePrimitiveRenderer.h)
+006541d1   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo (engine/CEnginePrimitivePrepareInfo.h)
+006541d1   WARN RELOC_NAME: ?clear@CRetailTextList@NPlayerGui@@QAEXXZ -> 00440770 labelled 'CGuiControlTreePane::SortTreeRecursively'
+006541d1   RELOCATION_MATCH PASS   NPlayerGui::CDraw2DText::Draw
+00654258   WARN RELOC_NAME: ?Reserve@CRetailEmitterVector@NPlayerGui@@QAEXJ@Z -> 00657037 labelled 'std::vector<CIntelligentPointer<CParticleEmitter> >::resize'
+00654258   RELOCATION_MATCH PASS   NPlayerGui::CDrawMeleeActionButtonEffects::CDrawMeleeActionButtonEffects
+006542a4   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+006542a4   WARN RELOC_NAME: ??0CIntelligentPointer_CThing@@QAE@PAVCThing@@@Z -> 004a96f0 labelled 'CIntelligentPointer<class CThing>::CIntelligentPointer'
+006542a4   RELOCATION_MATCH PASS   NPlayerGui::CDrawHighlightingTargetingCursor::CDrawHighlightingTargetingCursor
+0065431d   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0065431d   WARN RELOC_NAME: ??1CFontPointer@@QAE@XZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+0065431d   RELOCATION_MATCH PASS   NPlayerGui::CStatBar::CStatBar
+00658240   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+00658240   RELOCATION_MATCH PASS   NPlayerGui::CDrawMouseCursor::CDrawMouseCursor
+0066cb00   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+0066cb00   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+0066cb00   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+0066cb00   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+0066cb00   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+0066cb00   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+0066cb00   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+0066cb00   RELOCATION_MATCH PASS   CRegionMinimap::InitialiseTexture
+00687a90   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00687a90   RELOCATION_MATCH PASS   CInputProcessGameBase::IsEventButtonPressed
+00687b30   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00687b30   RELOCATION_MATCH PASS   CInputProcessGameBase::IsEventButtonReleased
+00687bd0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00687bd0   RELOCATION_MATCH PASS   CInputProcessGameBase::IsEventButtonHeld
+00689c40   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00689c40   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00689c40   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00689c40   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00689c40   WARN SHARED_HEADER_AVAILABLE CInputProcessInventoryStatsScreen (engine/CInputProcessInventoryStatsScreen.h)
+00689c40   RELOCATION_MATCH PASS   CInputProcessInventoryStatsScreen::ProcessInput
+0068c7f0   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+0068c7f0   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+0068c7f0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0068c7f0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+0068c7f0   WARN SHARED_HEADER_AVAILABLE CInputProcessToggleViewHeroMode (engine/CInputProcessToggleViewHeroMode.h)
+0068c7f0   RELOCATION_MATCH PASS   CInputProcessToggleViewHeroMode::ProcessInput
+0068c880   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+0068c880   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+0068c880   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0068c880   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0068c880   WARN SHARED_HEADER_AVAILABLE CInputProcessYesNoQuestion (engine/CInputProcessYesNoQuestion.h)
+0068c880   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068c880   WARN RELOC_NAME: ?CanCancel@CPlayerGuiQuestion@@QAE_NXZ -> 0048db98 labelled '_global::Forward_operator___member0x6c_0048db98'
+0068c880   RELOCATION_MATCH PASS   CInputProcessYesNoQuestion::ProcessInput
+0068cac0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0068cac0   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+0068cac0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0068cac0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+0068cac0   WARN SHARED_HEADER_AVAILABLE CInputProcessFirstPerson (engine/CInputProcessFirstPerson.h)
+0068cac0   RELOCATION_MATCH PASS   CInputProcessFirstPerson::ProcessInput
+0068d700   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0068d700   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0068d700   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase (engine/CAIGameCameraBase.h)
+0068d700   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0068d700   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+0068d700   WARN SHARED_HEADER_AVAILABLE CInputProcessFirstPersonLookAround (engine/CInputProcessFirstPersonLookAround.h)
+0068d700   WARN RELOC_NAME: ?SetFirstPersonLookAroundVector@CGameCameraManager@@QAEXABVC2DVector@@@Z -> 00697b60 labelled '_global::Forward_OnEngineSurveyLMBHeld_via0x98_00697b60'
+0068d700   RELOCATION_MATCH PASS   CInputProcessFirstPersonLookAround::ProcessInput
+00690360   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690360   WARN SHARED_HEADER_AVAILABLE CInputProcessRebootGame (engine/CInputProcessRebootGame.h)
+00690360   RELOCATION_MATCH PASS   CInputProcessRebootGame::ProcessInput
+00690480   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690480   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CInputProcessInGameMenu (engine/CInputProcessInGameMenu.h)
+00690480   WARN RELOC_NAME: ?IsListReceivingInputA@CTCInGameMenu@@QAE_NXZ -> 0047d6f2 labelled 'CTCInGameMenu::IsSaveComponentReceivingInput'
+00690480   WARN RELOC_NAME: ?IsListReceivingInputB@CTCInGameMenu@@QAE_NXZ -> 0047d648 labelled 'CTCInGameMenu::IsLoadMenuReceivingInput'
+00690480   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00690480   RELOCATION_MATCH PASS   CInputProcessInGameMenu::ProcessInput
+006be080   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+006be080   WARN SHARED_HEADER_AVAILABLE CSoundDef (engine/CSoundDef.h)
+006be080   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006be080   WARN SHARED_HEADER_AVAILABLE CMusicManager (engine/CMusicManager.h)
+006be080   WARN RELOC_NAME: ?GetSoundDataDirectory@@YI?AVCWideString@@XZ -> 0041a3f0 labelled 'NResourceDirectoryNames::GetDVDMusicDir'
+006be080   WARN RELOC_NAME: ?SortRegisteredMusic@@YIXPAUCRegisteredMusicPair@@0UCKeyPairCompareLess@@@Z -> 006bf6a0 labelled '_global::Sort_SElement24_006bf6a0'
+006be080   RELOCATION_MATCH PASS   CMusicManager::RegisterMusic
+009fa280   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+009fa280   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+009fa280   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009fa280   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009fa280   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+009fa280   RELOCATION_MATCH PASS   CTexture::Initialise
+009fd4e0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009fd4e0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009fd4e0   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+009fd4e0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+009fd4e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBankInit (engine/CGraphicDataBankInit.h)
+009fd4e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+009fd4e0   WARN RELOC_NAME: ?NotifyInitialised@CGraphicDataBank@@QAEX_N@Z -> 009d5230 labelled '_global::Nop_ret4_009d5230'
+009fd4e0   RELOCATION_MATCH PASS   CGraphicDataBank::Initialise
+00a04110   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a04110   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00a04110   MATCH            PASS   CInputEvent::SetAsJoystickButtonReleased
+00a3b5f0   WARN SHARED_HEADER_AVAILABLE CMediaType (engine/CMediaType.h)
+00a3b5f0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00a3b5f0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+00a3b5f0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00a3b5f0   WARN SHARED_HEADER_AVAILABLE CVideoSys (engine/CVideoSys.h)
+00a3b5f0   WARN SHARED_HEADER_AVAILABLE CTextureRenderer (engine/CTextureRenderer.h)
+00a3b5f0   RELOCATION_MATCH PASS   CTextureRenderer::SetMediaType
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CGraphicBankStateBlock (engine/CGraphicBankStateBlock.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager (engine/CEngineSurfaceCompositionManager.h)
+00b2c4e0   WARN RELOC_NAME: ?FindEntry@CGraphicDataBank@@QAEKABVCCharString@@@Z -> 009ccdc0 labelled 'CBankFile::FindIndexBySymbol'
+00b2c4e0   RELOCATION_MATCH PASS   CEngineSurfaceCompositionManager::AddCustomMorphTexture
+00b40230   WARN RELOC_NAME: ?OnGameMapUnloaded@CEngineLandscapeMap@@QAEXXZ -> 00bdbff0 labelled '_global::Nop_ret0_00bdbff0'
+00b40230   RELOCATION_MATCH PASS   CEngineWorldMap::OnGameMapUnloaded
+00b41db0   RELOCATION_MATCH PASS   CEngineMap::SetMapVisibility
+00b42390   RELOCATION_MATCH PASS   CEngineWorldMap::SetMapVisibility
+00b423b0   RELOCATION_MATCH PASS   CEngineWorldMap::SetMapVisibilityAllMaps
+00bc5c50   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00bc5c50   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00bc5c50   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00bc5c50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00bc5c50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive (engine/CEnginePrimitive.h)
+00bc5c50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveChanger (engine/CEnginePrimitiveChanger.h)
+00bc5c50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager (engine/CEnginePrimitiveManager.h)
+00bc5c50   RELOCATION_MATCH PASS   CEngineInternalPrimitiveChanger::SetChildPrimitive
+00be2310   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive (engine/CEnginePrimitive.h)
+00be2310   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00be2310   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00be2310   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00be2310   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DViewport (engine/CEngineInternalPrimitive2DViewport.h)
+00be2310   RELOCATION_MATCH PASS   CEngineInternalPrimitive2DViewport::AddChildPrimitive
+00be23f0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive (engine/CEnginePrimitive.h)
+00be23f0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00be23f0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00be23f0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00be23f0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DViewport (engine/CEngineInternalPrimitive2DViewport.h)
+00be23f0   RELOCATION_MATCH PASS   CEngineInternalPrimitive2DViewport::SetChildPrimitive
+00f37440   WARN SHARED_HEADER_AVAILABLE CGPUScratchBufferTextureManager (engine/CGPUScratchBufferTextureManager.h)
+00f37440   RELOCATION_MATCH PASS   CGPUScratchBufferTextureManager::AllocateTexture
+
+WINS: 41
+  0049124e RELOCATION_MATCH CSubtitleRenderer::?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z
+  00499d90 RELOCATION_MATCH CProgressDisplay::?StopProgress@CProgressDisplay@@UAEX_N0@Z
+  00547f60 RELOCATION_MATCH NUISystem::CMovie::?Draw@CMovie@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z
+  0055fc90 RELOCATION_MATCH CTCHeroOnlineScoreboard::GetCachedImage
+  00590d32 RELOCATION_MATCH CTCInventory::??0CTCInventory
+  005ec8a0 RELOCATION_MATCH CTCTavernGame::??0CTCTavernGame
+  006472b2 RELOCATION_MATCH NPlayerGui::CDrawDamage::?AddDamageChange@CDrawDamage@NPlayerGui@@QAEXM_N@Z
+  0064e24f RELOCATION_MATCH NPlayerGui::CDrawStamina::CDrawStamina
+  0064e83f RELOCATION_MATCH NPlayerGui::CDrawMiniMap::CDrawMiniMap
+  0064e8dc RELOCATION_MATCH NPlayerGui::CDrawScreenFade::CDrawScreenFade
+  00651904 RELOCATION_MATCH NPlayerGui::CDrawGuildSeal::CDrawGuildSeal
+  006541d1 RELOCATION_MATCH NPlayerGui::CDraw2DText::Draw
+  00654258 RELOCATION_MATCH NPlayerGui::CDrawMeleeActionButtonEffects::CDrawMeleeActionButtonEffects
+  006542a4 RELOCATION_MATCH NPlayerGui::CDrawHighlightingTargetingCursor::CDrawHighlightingTargetingCursor
+  0065431d RELOCATION_MATCH NPlayerGui::CStatBar::??0CStatBar@NPlayerGui@@QAE@ABVCPlayerGuiDef@@@Z
+  00658240 RELOCATION_MATCH NPlayerGui::CDrawMouseCursor::CDrawMouseCursor
+  0066cb00 RELOCATION_MATCH CRegionMinimap::InitialiseTexture
+  00687a90 RELOCATION_MATCH CInputProcessGameBase::IsEventButtonPressed
+  00687b30 RELOCATION_MATCH CInputProcessGameBase::?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z
+  00687bd0 RELOCATION_MATCH CInputProcessGameBase::?IsEventButtonHeld@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z
+  00689c40 RELOCATION_MATCH CInputProcessInventoryStatsScreen::ProcessInput
+  0068c7f0 RELOCATION_MATCH CInputProcessToggleViewHeroMode::ProcessInput
+  0068c880 RELOCATION_MATCH CInputProcessYesNoQuestion::ProcessInput
+  0068cac0 RELOCATION_MATCH CInputProcessFirstPerson::ProcessInput
+  0068d700 RELOCATION_MATCH CInputProcessFirstPersonLookAround::ProcessInput
+  00690360 RELOCATION_MATCH CInputProcessRebootGame::?ProcessInput@CInputProcessRebootGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690480 RELOCATION_MATCH CInputProcessInGameMenu::ProcessInput
+  006be080 RELOCATION_MATCH CMusicManager::RegisterMusic
+  009fa280 RELOCATION_MATCH CTexture::?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z
+  009fd4e0 RELOCATION_MATCH CGraphicDataBank::Initialise
+  00a04110 MATCH CInputEvent::?SetAsJoystickButtonReleased@CInputEvent@@QAEXJMABVC2DVector@@N@Z
+  00a3b5f0 RELOCATION_MATCH CTextureRenderer::?SetMediaType@CTextureRenderer
+  00b2c4e0 RELOCATION_MATCH CEngineSurfaceCompositionManager::AddCustomMorphTexture
+  00b40230 RELOCATION_MATCH CEngineWorldMap::?OnGameMapUnloaded@CEngineWorldMap@@QAEXJ@Z
+  00b41db0 RELOCATION_MATCH CEngineMap::?SetMapVisibility@CEngineMap@@QAEXAAV?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@_N@Z
+  00b42390 RELOCATION_MATCH CEngineWorldMap::?SetMapVisibility@CEngineWorldMap@@QAEXJ_N@Z
+  00b423b0 RELOCATION_MATCH CEngineWorldMap::?SetMapVisibilityAllMaps@CEngineWorldMap@@QAEX_N@Z
+  00bc5c50 RELOCATION_MATCH CEngineInternalPrimitiveChanger::SetChildPrimitive
+  00be2310 RELOCATION_MATCH CEngineInternalPrimitive2DViewport::AddChildPrimitive
+  00be23f0 RELOCATION_MATCH CEngineInternalPrimitive2DViewport::SetChildPrimitive
+  00f37440 RELOCATION_MATCH CGPUScratchBufferTextureManager::AllocateTexture

@@ -28,11 +28,10 @@ public:
     void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class C2DVector { public: float X, Y; };
-class CInputEvent {
-public:
-    long GetKey_00a03b40() const;                           // 0x00A03B40
-    void GetAnalogueVector(C2DVector& vector) const;   // 0x00A043A0
-};
+// Naming (NF160, 2026-11-20, q4300): the local CInputEvent model replaced by the shared engine/CInputEvent.h (Ego_r.pdb / FableWin.pdb
+//   spellings): 0x00A03B40 GetKey_00a03b40 -> GetType; 0x00A043A0 GetAnalogueVector -> GetJoystickPosition.
+#define FABLE_RETAIL_CINPUTEVENT_ACCESSORS
+#include "engine/CInputEvent.h"
 namespace NUISystem {
 class CManager {
 public:
@@ -88,9 +87,8 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
 {
     if (PInGameMenu->CurrentSubPage != -1)
         return;
-    if (event.GetKey_00a03b40() == 0x11) {
-        C2DVector stick;
-        event.GetAnalogueVector(stick);
+    if (event.GetType() == 0x11) {
+        C2DVector stick = event.GetJoystickPosition();
         if (stick.Y > 0.6f) {
             NUISystem::CManager::GetInstance()->SendEvent(1);
             processed.SetAsPerformedEvent();
@@ -105,9 +103,8 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
             NUISystem::CManager::GetInstance()->SendEvent(0x14);
             processed.SetAsPerformedEvent();
         }
-    } else if (event.GetKey_00a03b40() == 0x12) {
-        C2DVector stick;
-        event.GetAnalogueVector(stick);
+    } else if (event.GetType() == 0x12) {
+        C2DVector stick = event.GetJoystickPosition();
         if (stick.Y > 0.6f) {
             NUISystem::CManager::GetInstance()->SendEvent(7);
             processed.SetAsPerformedEvent();
