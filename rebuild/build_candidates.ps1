@@ -16481,8 +16481,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0122a600'
         Module = '_global'
-        Source = '01/22/global_GlobalMethodTailThunk0122a600_0122a600.cpp'
-        TestSource = '01/22/global_GlobalMethodTailThunk0122a600_0122a600_test.cpp'
+        Source = '01/22/global_dynamicatexitdestructorforGFontTextureCache_0122a600.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforGFontTextureCache_0122a600_test.cpp'
         PassPattern = 'AUTO_TINY_0122a600_TEST PASS'
     }
     [pscustomobject]@{
@@ -92428,9 +92428,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009f1f90'
-        Module = '_global'
-        Source = '00/9f/global_operatordelete_009f1f90.cpp'
-        TestSource = '00/9f/global_operatordelete_009f1f90_test.cpp'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_operatordelete_009f1f90.cpp'
+        TestSource = '00/9f/CMemoryAllocator_operatordelete_009f1f90_test.cpp'
         PassPattern = 'PASS_009f1f90'
     }
     [pscustomobject]@{
@@ -228715,9 +228715,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009fd160'
-        Module = 'CGraphicHeader'
-        Source = '00/9f/CGraphicHeader_Load_009fd160.cpp'
-        TestSource = '00/9f/CGraphicHeader_Load_009fd160_test.cpp'
+        Module = 'CGraphicDataBank::CGraphicHeader'
+        Source = '00/9f/CGraphicDataBankCGraphicHeader_Load_009fd160.cpp'
+        TestSource = '00/9f/CGraphicDataBankCGraphicHeader_Load_009fd160_test.cpp'
         PassPattern = '009fd160_TEST PASS'
     }
     [pscustomobject]@{
@@ -299463,9 +299463,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a01650'
-        Module = 'std::vector'
-        Source = '00/a0/STLvector_pushback_00a01650.cpp'
-        TestSource = '00/a0/STLvector_pushback_00a01650_test.cpp'
+        Module = 'CArray<CGraphicInfo>'
+        Source = '00/a0/CArray_pushback_00a01650.cpp'
+        TestSource = '00/a0/CArray_pushback_00a01650_test.cpp'
         PassPattern = '00a01650_TEST PASS'
     }
     [pscustomobject]@{

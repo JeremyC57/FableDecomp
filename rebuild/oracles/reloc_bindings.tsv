@@ -7206,11 +7206,6 @@ __imp__CoTaskMemFree@4	01440630	00cb1cc0
 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	007e74d0	00d2c530
 ??_7CIsThingAlive@NScript@@6B@	012c32f0	00d2c530
 _rand	00bfeb16	00d2c530
-??1ScriptResource@@QAE@XZ	007e74d0	00d2d060
-?DestroyCBaseObject@ScriptResource@@QAEXXZ	0099a430	00d2d060
-?InitializeCBaseObject@ScriptResource@@QAEXXZ	0099a380	00d2d060
-?ResourceBaseVTable@@3QBEB	0126008c	00d2d060
-?ResourceVTable@@3QBEB	0127094c	00d2d060
 ??_7CEvent_00d2d530@@6B@	01238c8c	00d2d530
 ??0CScriptThing_Calls@@QAE@ABU0@@Z	004abe90	00d2d7b0
 ??_7CPermanentBarrier@@6B@	012cc48c	00d2d7b0
@@ -11384,7 +11379,6 @@ _g_TimerInitialised	013caa10	009e1bc0
 ?insert@?$list@UCProfileTreeEntry@CProfileManager@@V?$allocator@UCProfileTreeEntry@CProfileManager@@@std@@@std@@QAE?AU?$_List_iterator@UCProfileTreeEntry@CProfileManager@@@2@U32@ABUCProfileTreeEntry@CProfileManager@@@Z	009f9ba0	009f9c40
 ?UnloadNextResource@CResourceList_Methods@@QAE_NK@Z	009fc170	009fc210
 ?Table@CCRC@@2QBKB	0129a168	00a00950
-?_M_insert_overflow@?$vector@VCGraphicInfo@@V?$allocator@VCGraphicInfo@@@std@@@std@@IAEXPAVCGraphicInfo@@ABV3@ABU__false_type@2@I_N@Z	00a01120	00a01650
 ?_M_fill_insert@?$vector@VCGraphicInfoFrame@@V?$allocator@VCGraphicInfoFrame@@@std@@@std@@QAEXPAVCGraphicInfoFrame@@IABV3@@Z	00a00f50	00a016f0
 ?erase@?$vector@VCGraphicInfoFrame@@V?$allocator@VCGraphicInfoFrame@@@std@@@std@@QAEPAVCGraphicInfoFrame@@PAV3@0@Z	00a00ed0	00a016f0
 ?LowerBound@CSymbolVectorMap@@QBEPAUSSymbolPair@@ABVCCharString@@@Z	009e6910	009e5170
@@ -16695,7 +16689,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?RemovePending@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z	0098e7d0	0098ec70
 ?AddObject@CThreadedFileManager@@QAEKABVCThreadedFileObjectDesc@@PAVCThreadedFile@@@Z	0098f0f0	0098f350
 ?GetInit@CPixelFormat_Calls@@QAE?AVCPixelFormatInit@@XZ	009e3870	00993f60
-?Initialise@CPixelFormat@@QAEXABVCPixelFormatInit@@@Z	009e3640	00994670
 ?AllocStringData@CCharString@@AAEPAVCCharStringData@@PBDJ@Z	0099ea60	0099ebf0
 ?addAlpha@Inner@@QAEXPAVC3DAnimationStateAlpha@@@Z	009a01c0	0099ef90
 ?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z	0099f2e0	0099fa50
@@ -16773,7 +16766,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?__uninitialized_copy@@YIPAVCInputEventPackage@@PAV1@00ABU__false_type@@@Z	009f6c00	009f6ed0
 ?__uninitialized_fill_n@@YIPAVCInputEventPackage@@PAV1@IABV1@ABU__false_type@@@Z	009f6c90	009f6ed0
 ?GetBankHandle@CBankFile@@QAE?AVCCharString@@XZ	009cba40	009f8290
-?ReadPixelFormat@CDataInputStreamReader@@QAE?AVCPixelFormat@@XZ	00994670	009fd160
 ?AddResource_009fc380@CResourceBank@@QAEXPAVCResource@@@Z	009fc380	009fe380
 ?Lookup@CSoundSymbolTable@@QAEXABVCCharString@@PAJ@Z	00a38420	00a01920
 ?g_pRenderStateManager@@3PAVCRenderStateManager@@A	013cb508	00a044b0
@@ -39377,3 +39369,7 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z	00654d58	00960120
 ?LogDeedReactionPlayingSpeech@COpinionReactionManager@@QAEXW4EOpinionDeedType@@_N@Z	006feae0	00960120
 _sc_DefaultReflectionData	012bf0e0	00c77b30
+?Initialise@CPixelFormat@@QAEXABVCPixelFormatInit@@@Z	009e3640	00994670
+?ReadPixelFormat@CDataInputStream@@QAE?AVCPixelFormat@@XZ	00994670	009fd160
+?_M_insert_overflow@?$vector@VCGraphicInfo@@V?$allocator@VCGraphicInfo@@@std@@@std@@IAEXPAVCGraphicInfo@@ABV3@ABU__false_type@2@I_N@Z	00a01120	00a01650
+?GFontTextureCache@?A0xd47b1896@@3VCTexture@@A	013c5a80	0122a600

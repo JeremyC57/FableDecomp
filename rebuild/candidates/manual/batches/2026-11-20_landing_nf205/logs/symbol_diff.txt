@@ -1,0 +1,30 @@
+0066ca80 new: 1
+    ?LoadRegionMinimapTGAFile@CRegionMinimap@@QAEXABVCWideString@@@Z TABLE:0066ca80
+00994670 new: 3
+    ??0CPixelFormat@@QAE@ABVCPixelFormatInit@@@Z
+    ?Read@CDataInputStream@@QAEXPAXJ@Z
+    ?ReadPixelFormat@CDataInputStream@@QAE?AVCPixelFormat@@XZ TABLE:00994670
+009f1f90 new: 2
+    ??3CMemoryAllocator@@KIXPAX@Z TABLE:009f1f90
+    ?Reference@CMemoryAllocatorDeleteReference@?A0x30ff3b97@@SAP6IXPAX@ZXZ
+009fd160 new: 2
+    ?Load@CGraphicHeader@CGraphicDataBank@@QAEXAAVCDataInputStream@@@Z TABLE:009fd160
+    ?Read@CDataInputStream@@QAEXPAXJ@Z
+00a01650 new: 2
+    ??0CGraphicHeader@CGraphicDataBank@@QAE@XZ TABLE:009fd6c0
+    ?push_back@?$CArray@VCGraphicInfo@@@@QAEXXZ TABLE:00a01650
+00d2d060 new: 10
+    ??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAE@XZ
+    ??0CScriptGameResourceObjectBase@@QAE@XZ TABLE:006e7a60
+    ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ TABLE:007e72a0
+    ??1?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAE@XZ
+    ??1CScriptGameResourceObjectBase@@UAE@XZ
+    ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ TABLE:007e74d0
+    ??_7CScriptGameResourceObjectBase@@6B@ TABLE:0126008c
+    ??_7CScriptGameResourceObjectScriptedThingBase@@6B@ TABLE:0127094c
+    ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z
+    ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z
+0122a600 new: 3
+    ??0CTexture@@QAE@XZ
+    ??1CTexture@@QAE@XZ
+    ?GFontTextureCache@?A0xd47b1896@@3VCTexture@@A TABLE:013c5a80

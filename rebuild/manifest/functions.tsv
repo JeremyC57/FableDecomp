@@ -35213,7 +35213,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009f1f00	OnFailedAllocation	CMemoryAllocator	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f1f00.cpp
 009f1f10	GetAllocationCount	CMemoryAllocator	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\DrawGetEnvironment_DrawGetEnvironment_009f1f10.cpp
 009f1f40	InternalValidateArea	CMemoryAllocator	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f1f40.cpp
-009f1f90	operator_delete	CMemoryAllocator	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\global_operatordelete_009f1f90.cpp
+009f1f90	operator delete	CMemoryAllocator	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\global_operatordelete_009f1f90.cpp
 009f2000	EnterSynchronisation	CMemoryAllocator	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\std_DestvalCFlash_009f2000.cpp
 009f2010	LeaveSynchronisation	CMemoryAllocator	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
 009f2080	SaveStackMemoryTrackerLog	CMemoryAllocator	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f2080.cpp
@@ -35516,7 +35516,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009fd120	SetMember_dword0x270_009fd120	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\AddExclusiveObserver_AddExclusiveObserver_009fd120.cpp
 009fd130	sub_009fd130	_global	unknown	undefined	0		0			discovered	gapscan							
 009fd150	GetBlankTexture	CGraphicDataBank	__thiscall	CTexture *	2	CGraphicDataBank *,ETextureType	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CGraphicDataBank_GetBlankTexture_009fd150.cpp
-009fd160	Load	CGraphicHeader	__thiscall	void	2	COpinionTransientOffset *,CMemoryDataInputStream *	1	yes	accepted									
+009fd160	Load	CGraphicDataBank::CGraphicHeader	__thiscall	void	2	COpinionTransientOffset *,CMemoryDataInputStream *	1	yes	accepted									
 009fd1e0	Save	CGraphicHeader	__thiscall	void	2	CGraphicHeader *,CDataOutputStream *	1	yes	accepted									
 009fd2b0	GetTextureType	CGraphicDataBank	__thiscall	ETextureType	3	CGraphicDataBank *,CGraphicHeader *,bool	1	yes	accepted									
 009fd3a0	UpdateAvailableMemory	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
@@ -35614,7 +35614,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a01480	GetGraphicFrameHeight	CGraphicDataBank	__thiscall	ulong	3	CGraphicDataBank *,ulong,ulong	1	yes	accepted									
 00a014d0	GetGraphicMaxWidth	CGraphicDataBank	__thiscall	ulong	2	CGraphicDataBank *,ulong	1	yes	accepted									
 00a01540	GetGraphicMaxHeight	CGraphicDataBank	__thiscall	ulong	2	CGraphicDataBank *,ulong	1	yes	accepted									
-00a01650	push_back	std::vector	unknown	undefined	0		0	yes	accepted									
+00a01650	push_back	CArray<CGraphicInfo>	unknown	undefined	0		0	yes	accepted									
 00a016f0	resize	std::vector	unknown	undefined	0		0	yes	accepted									
 00a01790	resize	std::vector<CGraphicInfo, std::allocator<CGraphicInfo>>	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
 00a01800	`scalar_deleting_destructor'	CGraphicDataBank	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CLandscapeBackgroundPatch_vectordeletingdestructor_00a01800.cpp

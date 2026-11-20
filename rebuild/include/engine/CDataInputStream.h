@@ -28,6 +28,12 @@ public:
     unsigned long GetLength() const { return StreamSize; }
     virtual unsigned long GetPosition() const { return StreamPos; }
     virtual void SetPosition(unsigned long);
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READPIXELFORMAT
+    // NF205 opt-in (q11815, row 0x009FD160 CGraphicDataBank::CGraphicHeader::Load): Ego_r.pdb / FableWin.pdb
+    // ?ReadPixelFormat@CDataInputStream@@QAE?AVCPixelFormat@@XZ (public; out of line in retail at 0x00994670, the CPixelFormat
+    // result by hidden pointer). Declaration only; no layout change.
+    class CPixelFormat ReadPixelFormat();                                  // 0x00994670
+#endif
 #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_ORIGINAL_READ_SCOPE
     // Retail opt-in (Codex pass22): original FableWin module548 Read locals dst,
     // no_bytes and overflow_check; donor01876B85 guards the whole body with >0,

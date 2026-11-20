@@ -1,0 +1,2 @@
+GREW 013c5a80 2 -> 3 ?GFontTextureCache@?A0xd47b1896@@3VCTexture@@A row 0122a600 DIFF before=['?g_AutoTinyThunkObject_013c5a80@@3UAutoTinyThunkTarget@@A']
+shrank [('0099a380', 4, 3), ('0126008c', 3, 2), ('0127094c', 2, 1), ('007e74d0', 4, 3), ('0099a430', 3, 2)]

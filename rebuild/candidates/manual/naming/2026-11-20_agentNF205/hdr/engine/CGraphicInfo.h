@@ -1,0 +1,443 @@
+#ifndef FABLE_ENGINE_CGRAPHICINFO_H
+#define FABLE_ENGINE_CGRAPHICINFO_H
+#if defined(FABLE_RETAIL_CGRAPHICDATABANK_SURFACECOMPOSITION) && !defined(FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS)
+// Retail opt-in (chunk 2018, row 0x00B2D330; with engine/CGraphicDataBank.h's SURFACECOMPOSITION branch): Ego_r.pdb CGraphicInfo (44 bytes:
+// Header +0x00, TextureType +0x1C, Bank +0x20, Index +0x24, Frames +0x28) with the inline FableWin.pdb accessors
+// ?PeekInfoFrame@CGraphicInfo@@QBEPBVCGraphicInfoFrame@@K@Z (0x00B2D384 `mov edi,[esi+28h]`: Frames + index) and
+// ?PeekGraphicHeader@CGraphicInfo@@QBEABVCGraphicHeader@CGraphicDataBank@@XZ, and the inline CGraphicDataBank::PeekGraphic body.
+#include "engine/CGraphicDataBank.h"
+#include "engine/CGraphicInfoFrame.h"
+class CGraphicInfo {
+public:
+#ifdef FABLE_RETAIL_PASS22_RESOURCE_ORIGINAL_SPECIAL_MEMBERS
+    ~CGraphicInfo();
+#endif
+    const CGraphicInfoFrame* PeekInfoFrame(unsigned long index) const { return Frames + index; }
+    const CGraphicDataBank::CGraphicHeader& PeekGraphicHeader() const { return Header; }
+#ifdef FABLE_RETAIL_CGRAPHICINFO_GETFRAMECOUNT
+    // Nested opt-in (chunk 2030, row 0x00BEA110 CEngineWaterSettings::UpdateConstants): FableWin.pdb ?GetFrameCount@CGraphicInfo@@QBEKXZ
+    // (debug only, inline in release): the header's 16-bit FrameCount (+0x0A) as unsigned long, so `long % GetFrameCount()` divides
+    // unsigned (0x00BEA412 `cmp word ptr [eax+0Ah],di ; jbe`, 0x00BEA43A `movzx ecx,word ptr [eax+0Ah]` .. `xor edx,edx ; div ecx`).
+    unsigned long GetFrameCount() const { return Header.FrameCount; }
+#endif
+private:
+    CGraphicDataBank::CGraphicHeader Header;                 // +0x00
+    CGraphicDataBank::ETextureType   TextureType;            // +0x1C
+    CGraphicDataBank*                Bank;                   // +0x20
+    long                             Index;                  // +0x24
+    CGraphicInfoFrame*               Frames;                 // +0x28
+};
+FABLE_STATIC_ASSERT_AT(27, sizeof(CGraphicInfo)==44);
+inline const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
+{
+    return index < GraphicList.size() ? &GraphicList[index] : 0;
+}
+// FableWin.pdb ?IsAlpha@CGraphicInfoFrame@@QBE_NXZ (inline in retail, 0x00B2D524..0x00B2D52A: the owner graphic's header TransparencyType
+// byte tested for zero).
+// FableWin.pdb ?GetWidth@ / ?GetHeight@CGraphicInfoFrame@@QBEKXZ (inline in retail: GetDimensionsAndAdjustMipmapLevel 0x00B2AEF0 reads the owner
+// graphic's header FrameWidth +6 / FrameHeight +8 as `movzx`).
+inline unsigned long CGraphicInfoFrame::GetWidth() const { return GraphicInfo->PeekGraphicHeader().FrameWidth; }
+inline unsigned long CGraphicInfoFrame::GetHeight() const { return GraphicInfo->PeekGraphicHeader().FrameHeight; }
+inline bool CGraphicInfoFrame::IsAlpha() const { return GraphicInfo->PeekGraphicHeader().TransparencyType != 0; }
+#elif defined(FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS)
+#include "engine/CGraphicDataBank.h"
+#include "engine/CGraphicInfoFrame.h"
+#ifdef FABLE_RETAIL_CGRAPHICINFO_LOADFRAME
+#include "engine/CCountedPointer.h"
+class CManagedTexture;class CTexture;
+#endif
+class CGraphicInfo {
+public:
+    const CGraphicInfoFrame* PeekInfoFrame(unsigned long index) const {return Frames+index;}
+#if defined(FABLE_RETAIL_CGRAPHICINFO_DEFAULT_CTOR) && defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT)
+    // NF205 opt-in (q11816, row 0x00A01650 CArray<CGraphicInfo>::push_back()): Ego_r.pdb / FableWin.pdb ??0CGraphicInfo@@QAE@XZ (inline in
+    // retail: 0x00A01650 builds the default element in place: the nested header's default constructor, then Bank 0, Index -1, Frames 0;
+    // TextureType left alone). Needs the typed members (FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT). No layout change.
+    CGraphicInfo() : Bank(0), Index(-1), Frames(0) {}
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFO_GETWIDTH
+    // Opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): FableWin.pdb ?GetWidth@CGraphicInfo@@QBEKXZ (9 debug instructions =
+    // one movzx of a header word: FrameWidth +6, 0x00BA54EB / 0x00BB43C0 `movzx ..,word ptr [..+6]`). Needs the typed header
+    // (FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT). FITTED: which header word GetWidth returns is taken from the retail read.
+    unsigned long GetWidth() const {return Header.FrameWidth;}
+#endif
+#if defined(FABLE_RETAIL_CGRAPHICINFO_PEEKGRAPHICHEADER) || defined(FABLE_RETAIL_CGRAPHICINFO_PASS22_SPRITE)
+    // agentC27 (row 0x009FDE80): FableWin.pdb ?PeekGraphicHeader@CGraphicInfo@@QBEABVCGraphicHeader@CGraphicDataBank@@XZ (inline). No layout change.
+    const CGraphicDataBank::CGraphicHeader& PeekGraphicHeader() const {return Header;}
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+    // Retail opt-in (wf8, row 0x00BA4A40): FableWin.pdb ?GetTextureType@CGraphicInfo@@QBE?AW4ETextureType@CGraphicDataBank@@XZ
+    // (inline in retail: +0x1C read in place, 0x00BA4B1C). No layout change.
+    CGraphicDataBank::ETextureType GetTextureType() const {return TextureType;}
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFO_GETVOLUMETEXTURE
+    // Retail opt-in (chunk 2008, row 0x00B54890): Ego_r.pdb 0x00B5D250 ?GetVolumeTexture@CGraphicInfo@@QBE_NPAPAVCVolumeTexture@@K@Z, out of line
+    // in retail at 0x009FFB20 (`mov ecx,[ecx+28h] ; jmp 0x009FF710`, the Frames forwarder to CGraphicInfoFrame::GetVolumeTexture). Declaration only.
+    bool GetVolumeTexture(class CVolumeTexture** texture, unsigned long level) const;   // 0x009FFB20
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFO_GETFRAME
+    // Retail opt-in (chunk 2045, row 0x00BB8EF0): Ego_r.pdb / FableWin.pdb ?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z, out of line in
+    // retail at 0x009FF8D0 (the frame index, mipmap level and flags; `ret 10h`). Declaration only.
+    bool GetFrame(CGraphicFrame& frame, unsigned long frame_index, unsigned long mipmap_level, unsigned long flags) const;   // 0x009FF8D0
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFO_FRAMEFACTORS
+    // Opt-in (row 0x00BBF4A0): FableWin.pdb ?GetFrameWidthFactor@CGraphicInfo@@QBEMXZ / ?GetFrameHeightFactor@CGraphicInfo@@QBEMXZ, inline in
+    // retail (0x00BBFF58..0x00BBFF8D: fild FrameWidth (+6) / fidiv Width (+0), fild FrameHeight (+8) / fidiv Height (+2)). Needs the typed
+    // Header (FABLE_RETAIL_CGRAPHICINFO_SPRITE).
+    float GetFrameWidthFactor() const { return (float)Header.FrameWidth / Header.Width; }
+    float GetFrameHeightFactor() const { return (float)Header.FrameHeight / Header.Height; }
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFO_GETFRAME3
+    // Opt-in (chunk 2048, RenderSunFlare 0x00B64550): Ego_r.pdb / FableWin.pdb ?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z 0x009FF8D0.
+    bool GetFrame(CGraphicFrame& frame, unsigned long frame_index, unsigned long mipmap_level, unsigned long flags) const;
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+    CGraphicInfo(unsigned long index,CGraphicDataBank* bank,const CGraphicDataBank::CGraphicHeader& header);
+    bool IsBump() const {return Bank->GetEntryDataType(Index)==2;}
+private:
+#endif
+#ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+    // Retail opt-in (wf12, row 0x009FF220): FableWin.pdb ?IsBump@CGraphicInfo@@QBE_NXZ and ?IsVolumeTexture@CGraphicInfo@@QBE_NXZ,
+    // inline in retail (GetEntryDataType 0x009CC210 ==2 / ==4). No layout change.
+    // (IsBump is also declared by FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT above, which ends in `private:`; both opt-ins may be combined.)
+public:
+#ifndef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+    bool IsBump() const {return Bank->GetEntryDataType(Index)==2;}
+#endif
+    bool IsVolumeTexture() const {return Bank->GetEntryDataType(Index)==4;}
+#ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+private:
+#endif
+#endif
+#if defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE) || defined(FABLE_RETAIL_CGRAPHICINFO_SPRITE)
+private:
+    friend class CGraphicInfoFrame;
+#elif defined(FABLE_RETAIL_CGRAPHICINFOFRAME_GETBANK_DIRECT)
+    friend class CGraphicInfoFrame;
+#endif
+    CGraphicDataBank* GetBank() const {return Bank;}
+#ifdef FABLE_RETAIL_CGRAPHICINFO_LOADFRAME
+    // Retail opt-in (chunk 2004, row 0x009FED30 CGraphicDataBank::LoadGraphicFrame): Ego_r.pdb
+    // ?InitialiseFramesAsSurfaceSections@CGraphicInfo@@AAEXAAVCManagedTexture@@CAAV?$CCountedPointer@VCTexture@@@@_N2@Z (private; the
+    // `signed char` second parameter is the PDB's; out of line in retail at 0x009FE780, called by the bank with ecx = the graphic info,
+    // 0x009FF190) -- the bank reads the info's header in place (Width +0x00 .. FrameDataSize +0x14, CompressedMipmapSizes +0x18), so
+    // it is a friend (the original access grant is not in the PDB name sets). Declaration only, no layout change.
+    friend class CGraphicDataBank;
+    void InitialiseFramesAsSurfaceSections(CManagedTexture& managed_texture,signed char mipmap_level,CCountedPointer<CTexture>& texture,
+                                           bool alpha,bool boolean_alpha);   // 0x009FE780
+#endif
+private:
+#if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE) || defined(FABLE_RETAIL_CGRAPHICINFO_SPRITE)
+    CGraphicDataBank::CGraphicHeader Header;
+#else
+    unsigned char Header[28]; // complete CGraphicDataBank::CGraphicHeader storage
+#endif
+    CGraphicDataBank::ETextureType TextureType;
+    CGraphicDataBank* Bank;
+    long Index;
+    CGraphicInfoFrame* Frames;
+};
+FABLE_STATIC_ASSERT_AT(121, sizeof(CGraphicInfo)==44);
+#ifdef FABLE_RETAIL_CGRAPHICINFO_PASS22_SPRITE
+// Retail opt-in (Codex pass22): exact original header accessors, native0x0077C59C..0x0077C608.
+inline unsigned long CGraphicInfoFrame::GetWidth() const { return GraphicInfo->PeekGraphicHeader().FrameWidth; }
+inline unsigned long CGraphicInfoFrame::GetHeight() const { return GraphicInfo->PeekGraphicHeader().FrameHeight; }
+inline bool CGraphicInfoFrame::IsBooleanAlpha() const { unsigned char type=GraphicInfo->PeekGraphicHeader().TransparencyType; return type==2 || type==4; }
+inline bool CGraphicInfoFrame::IsAlpha() const { return GraphicInfo->PeekGraphicHeader().TransparencyType!=0; }
+#endif
+
+#ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+// FableWin.pdb ?GetTextureType@CGraphicInfoFrame@@QBE?AW4ETextureType@CGraphicDataBank@@XZ (inline: GraphicInfo +0xC, then +0x1C).
+inline CGraphicDataBank::ETextureType CGraphicInfoFrame::GetTextureType() const {return GraphicInfo->GetTextureType();}
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME
+// Retail opt-in (chunk 2031, rows 0x00B54E30 CEngineWeatherRenderer::RenderSnow / 0x00B65A20 CEngineSkyRenderer::RenderOuterSky): the inline
+// frame fetch both rows expand (0x00B54ECE..0x00B54FF0 with mipmap level 0 and flags 0). Bodies modelled on the landed out-of-line sibling
+// CGraphicInfoFrame::GetTexture 0x00B66C10 (same tests in the same order) with the frame shared instead of its texture:
+// - FableWin.pdb ?TouchTexture@CManagedTexture@@QAEXXZ: the managed texture's resource touched (CResource::TouchResource);
+// - the touch block (FableWin.pdb ?TouchFrame@CGraphicInfoFrame@@QBEXK@Z's body, written in place as the landed 0x0041C260 has it): once per
+//   bank frame (or for a finer level) the touched frame / level updated, the managed texture and (when the level is loaded) the frame data touched;
+// - FableWin.pdb ?GetFrame@CGraphicInfoFrame@@QBE_NAAVCGraphicFrame@@KK@Z: a loaded frame is touched (unless flags & 8), a finer level is
+//   requested (BeginLoading 0x009FDE80), the frame shared; an unloaded one starts loading (a CFrameData 0x009FE380 is created first unless
+//   flags & 4) and is fetched only by a forced load (flags & 1, InternalGetFrameForcedLoading 0x009FF6B0).
+// Needs FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE, FABLE_RETAIL_CRESOURCELIST, FABLE_RETAIL_CGRAPHICFRAME + _GETTEXTURE (CGraphicFrame::operator=).
+// TouchTexture FABLE_FORCEINLINE (owner 2026-11-01 rule): retail's only out-of-line copy 0x0041BB70 (`mov esi,[ecx+4] ; test esi,esi`, then the
+// TouchResource body) has no caller; plain `inline` leaves it called in GetFrame (c1 56, score 133 at f 0.094; threshold 74).
+#ifdef FABLE_RETAIL_CMANAGEDTEXTURE_TOUCHTEXTURE_GET
+// Nested opt-in (chunk 2048): FableWin.pdb ?TouchTexture@CManagedTexture@@QAEXXZ is 17 instructions / 44 bytes = the pointer test
+// through CIVCountedPointer::Get (needs FABLE_RETAIL_CIVCOUNTEDPOINTER_GET) (FableWin.pdb debug size reproduced by plain VC7.1 /Od of this text: /opt/fable_lane/tools/fwsize.py); `!Data.IsNull()` is 18 / 47.
+FABLE_FORCEINLINE void CManagedTexture::TouchTexture()
+{
+    if (Data.Get())
+        Data->TouchResource();
+}
+#else
+FABLE_FORCEINLINE void CManagedTexture::TouchTexture()
+{
+    if (!Data.IsNull())
+        Data->TouchResource();
+}
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_BEGINLOADING
+inline bool CGraphicInfoFrame::IsFrameDataLoaded() const
+{
+    if (Data.IsNull())
+        return false;
+    return Data->IsLoaded();
+}
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_TOUCHFRAME
+// Opt-in (chunk 2048): FableWin.pdb lists ?TouchFrame@CGraphicInfoFrame@@QBEXK@Z (69 debug instructions = the touch block) and
+// ?GetBank@CGraphicInfoFrame@@ABEPAVCGraphicDataBank@@XZ (10 = a forwarding read) in GetFrame's COMDAT run: GetFrame calls them.
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETBANK_DIRECT
+// Nested opt-in (chunk 2048): FableWin.pdb ?GetBank@CGraphicInfoFrame@@ABEPAVCGraphicDataBank@@XZ is 10 instructions / 20 bytes = the
+// GraphicInfo's Bank read directly (FableWin.pdb debug size reproduced by plain VC7.1 /Od of this text: /opt/fable_lane/tools/fwsize.py); through CGraphicInfo::GetBank (no FableWin copy) it is 10 / 22.
+inline CGraphicDataBank* CGraphicInfoFrame::GetBank() const { return GraphicInfo->Bank; }
+#else
+inline CGraphicDataBank* CGraphicInfoFrame::GetBank() const { return GraphicInfo->GetBank(); }
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_ORIGINAL_TOUCHFRAME_POINTER_GUARD_PASS22
+// Original01D2DDEE Get pointer result tested before all touch/cache accesses.
+FABLE_FORCEINLINE void CGraphicInfoFrame::TouchFrame(unsigned long mipmap_level) const
+{
+    if (Data.Get()) {
+
+        if (Data->TouchedFrame != GetBank()->GetCurrentFrame() || mipmap_level <= (unsigned long)Data->TouchedMipmapLevel) {
+            Data->TouchedFrame = GetBank()->GetCurrentFrame();
+            Data->ManagedTexture.TouchTexture();
+            if (mipmap_level <= (unsigned long)Data->CurrentMipmapLevel)
+                Data->TouchResource();
+            if ((unsigned long)Data->TouchedMipmapLevel > mipmap_level)
+                Data->TouchedMipmapLevel = (signed char)mipmap_level;
+        }
+
+    }
+}
+#else
+FABLE_FORCEINLINE void CGraphicInfoFrame::TouchFrame(unsigned long mipmap_level) const
+{
+    if (Data->TouchedFrame != GetBank()->GetCurrentFrame() || mipmap_level <= (unsigned long)Data->TouchedMipmapLevel) {
+        Data->TouchedFrame = GetBank()->GetCurrentFrame();
+        Data->ManagedTexture.TouchTexture();
+        if (mipmap_level <= (unsigned long)Data->CurrentMipmapLevel)
+            Data->TouchResource();
+        if ((unsigned long)Data->TouchedMipmapLevel > mipmap_level)
+            Data->TouchedMipmapLevel = (signed char)mipmap_level;
+    }
+}
+#endif
+
+#endif
+// GetFrame: the control flow of the landed out-of-line copy 0x0041C260 (uncalled COMDAT) and of the landed CGraphicInfo::GetFrame 0x009FF8D0
+// that expands it.
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_ORIGINAL_GETFRAME_POINTER_GUARD_PASS22
+// Full original01D2DAD0 begins Data.Get pointer test; original dest/get_flags formals.
+FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& dest, unsigned long mipmap_level, unsigned long get_flags) const
+{
+    if (Data.Get()) {
+        if (Data->Frame.IsInitialised()) {
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_TOUCHFRAME
+            if (!(get_flags & 8))
+                TouchFrame(mipmap_level);
+#else
+            if (!(get_flags & 8)) {
+                if (Data->TouchedFrame != GraphicInfo->GetBank()->GetCurrentFrame() || mipmap_level <= (unsigned long)Data->TouchedMipmapLevel) {
+                    Data->TouchedFrame = GraphicInfo->GetBank()->GetCurrentFrame();
+                    Data->ManagedTexture.TouchTexture();
+                    if (mipmap_level <= (unsigned long)Data->CurrentMipmapLevel)
+                        Data->TouchResource();
+                    if ((unsigned long)Data->TouchedMipmapLevel > mipmap_level)
+                        Data->TouchedMipmapLevel = (signed char)mipmap_level;
+                }
+            }
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME_EARLYRETURN
+            // Nested opt-in (chunk 2048, session 4): the loaded level returned first, then the finer-level request. FableWin.pdb
+            // ?GetFrame@CGraphicInfoFrame@@QBE_NAAVCGraphicFrame@@KK@Z is 146 debug instructions / 461 bytes (/EHsc); plain VC7.1
+            // /Od /EHsc of this text gives 146 / 462, the if / else text 147 / 464 (its dead join jump). Same semantics.
+            if (mipmap_level >= (unsigned long)Data->CurrentMipmapLevel) {
+                dest = Data->Frame;
+                return true;
+            }
+            Data->BeginLoading(mipmap_level, get_flags);
+#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
+            if (!(get_flags & 16) || !Data->IsLoading()) {
+#else
+            if (!(get_flags & 16) || !Data->FileData.Get()) {
+#endif
+                dest = Data->Frame;
+                return true;
+            }
+#else
+            if (mipmap_level < (unsigned long)Data->CurrentMipmapLevel) {
+                Data->BeginLoading(mipmap_level, get_flags);
+#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
+                if (!(get_flags & 16) || !Data->IsLoading()) {
+#else
+                if (!(get_flags & 16) || !Data->FileData.Get()) {
+#endif
+                    dest = Data->Frame;
+                    return true;
+                }
+            } else {
+                dest = Data->Frame;
+                return true;
+            }
+#endif
+        }
+        Data->BeginLoading(mipmap_level, get_flags);
+    } else {
+        if (get_flags & 4)
+            return false;
+        Data.Reset(new CFrameData(this));
+        Data->BeginLoading(mipmap_level, get_flags);
+    }
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_ORIGINAL_FORCED_SUCCESS_SCOPE_PASS22
+    // Original01D2DC57..8F: both failure edges join final false return.
+    if ((get_flags & 1) && InternalGetFrameForcedLoading(get_flags)) {
+        dest = Data->Frame;
+        return true;
+    }
+    return false;
+#else
+    if (!(get_flags & 1) || !InternalGetFrameForcedLoading(get_flags))
+        return false;
+    dest = Data->Frame;
+    return true;
+#endif
+}
+#else
+FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& frame, unsigned long mipmap_level, unsigned long flags) const
+{
+    if (!Data.IsNull()) {
+        if (Data->Frame.IsInitialised()) {
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_TOUCHFRAME
+            if (!(flags & 8))
+                TouchFrame(mipmap_level);
+#else
+            if (!(flags & 8)) {
+                if (Data->TouchedFrame != GraphicInfo->GetBank()->GetCurrentFrame() || mipmap_level <= (unsigned long)Data->TouchedMipmapLevel) {
+                    Data->TouchedFrame = GraphicInfo->GetBank()->GetCurrentFrame();
+                    Data->ManagedTexture.TouchTexture();
+                    if (mipmap_level <= (unsigned long)Data->CurrentMipmapLevel)
+                        Data->TouchResource();
+                    if ((unsigned long)Data->TouchedMipmapLevel > mipmap_level)
+                        Data->TouchedMipmapLevel = (signed char)mipmap_level;
+                }
+            }
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME_EARLYRETURN
+            // Nested opt-in (chunk 2048, session 4): the loaded level returned first, then the finer-level request. FableWin.pdb
+            // ?GetFrame@CGraphicInfoFrame@@QBE_NAAVCGraphicFrame@@KK@Z is 146 debug instructions / 461 bytes (/EHsc); plain VC7.1
+            // /Od /EHsc of this text gives 146 / 462, the if / else text 147 / 464 (its dead join jump). Same semantics.
+            if (mipmap_level >= (unsigned long)Data->CurrentMipmapLevel) {
+                frame = Data->Frame;
+                return true;
+            }
+            Data->BeginLoading(mipmap_level, flags);
+#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
+            if (!(flags & 16) || !Data->IsLoading()) {
+#else
+            if (!(flags & 16) || !Data->FileData.Get()) {
+#endif
+                frame = Data->Frame;
+                return true;
+            }
+#else
+            if (mipmap_level < (unsigned long)Data->CurrentMipmapLevel) {
+                Data->BeginLoading(mipmap_level, flags);
+#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
+                if (!(flags & 16) || !Data->IsLoading()) {
+#else
+                if (!(flags & 16) || !Data->FileData.Get()) {
+#endif
+                    frame = Data->Frame;
+                    return true;
+                }
+            } else {
+                frame = Data->Frame;
+                return true;
+            }
+#endif
+        }
+        Data->BeginLoading(mipmap_level, flags);
+    } else {
+        if (flags & 4)
+            return false;
+        Data.Reset(new CFrameData(this));
+        Data->BeginLoading(mipmap_level, flags);
+    }
+    if (!(flags & 1) || !InternalGetFrameForcedLoading(flags))
+        return false;
+    frame = Data->Frame;
+    return true;
+}
+#endif
+
+#endif
+#if defined(FABLE_RETAIL_CGRAPHICINFOFRAME_GETTEXTURE_INLINE) && defined(FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME)
+// Opt-in (wfA5, row 0x00B9AC30 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive): FableWin.pdb
+// ?GetTexture@CGraphicInfoFrame@@QBE_NPAPBVCTexture@@KK@Z inline (expanded at 0x00B9B102..0x00B9B1CB with mipmap level 0, flags 0); the body is
+// the landed out-of-line copy 0x00B66C10's text over the shared classes (touch block, finer-level reload, create-and-load, forced load).
+// b10 text = the sibling GetFrame's (TouchFrame(mipmap_level) when !(flags & 8), the if / else finer-level arm, IsLoading under
+// FABLE_RETAIL_CFRAMEDATA_ISLOADING) with the texture stored instead of the frame. Evidence: FableWin.pdb GetTexture is 149 debug instructions /
+// 470 bytes and plain VC7.1 /Od /EHsc of this text (+ ISLOADING, ISLOADING_ISNULL, GETBANK_DIRECT) gives 149 / 471 (GetFrame: 146/461 v 146/462;
+// the 0x00B66C10 goto text gives 203 / 661); the out-of-line 0x00B66C10 still grades RELOCATION_MATCH with this text; TouchFrame reads the bank
+// frame twice (no named local), which this row's eax/edx picks at 0x00B9B11E..0x00B9B1C7 / 0x00B9B2C4 need. Needs FABLE_RETAIL_CGRAPHICINFOFRAME_TOUCHFRAME.
+FABLE_FORCEINLINE bool CGraphicInfoFrame::GetTexture(const CTexture** texture, unsigned long mipmap_level, unsigned long flags) const
+{
+    if (!Data.IsNull()) {
+        if (Data->Frame.IsInitialised()) {
+            if (!(flags & 8))
+                TouchFrame(mipmap_level);
+            if (mipmap_level < (unsigned long)Data->CurrentMipmapLevel) {
+                Data->BeginLoading(mipmap_level, flags);
+#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
+                if (!(flags & 16) || !Data->IsLoading()) {
+#else
+                if (!(flags & 16) || !Data->FileData.Get()) {
+#endif
+                    *texture = Data->Frame.GetTexture();
+                    return true;
+                }
+            } else {
+                *texture = Data->Frame.GetTexture();
+                return true;
+            }
+        }
+        Data->BeginLoading(mipmap_level, flags);
+    } else {
+        if (flags & 4)
+            return false;
+        Data.Reset(new CFrameData(this));
+        Data->BeginLoading(mipmap_level, flags);
+    }
+    if (!(flags & 1) || !InternalGetFrameForcedLoading(flags))
+        return false;
+    *texture = Data->Frame.GetTexture();
+    return true;
+}
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_PEEKGRAPHIC
+// Retail opt-in (chunk 2045, row 0x00BB8EF0): FableWin.pdb ?PeekGraphic@CGraphicDataBank@@QBEPBVCGraphicInfo@@K@Z (donor 0x01D2D7A0), inline in
+// retail: 0x00BB8F49..0x00BB8F81 reads GraphicList (+0x1E0 begin / +0x1E4 end), divides by sizeof(CGraphicInfo) 0x2C and returns the element
+// address for an index below the count, else 0. Defined here because the element type must be complete.
+inline const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
+{
+    return index < GraphicList.size() ? &GraphicList[index] : 0;
+}
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_PEEKGRAPHICINFOFRAME
+// Retail opt-in (w24B, row 0x00542780 NUISystem::CIconText::AddIcon): FableWin.pdb
+// ?PeekGraphicInfoFrame@CGraphicDataBank@@QBEPBVCGraphicInfoFrame@@KK@Z, inline in retail: 0x00542802..0x00542857 evaluates PeekGraphic
+// twice (the GraphicList size computed for the test and again for the value: `cmp esi,eax ; jae` then `cmp esi,ecx ; sbb eax,eax ;
+// and eax,edi`) and reads Frames +0x28 of the element (frame 0), else 0. The text the landed 0x00B64550 / 0x00BADB40 rows carry in-row.
+// Needs FABLE_RETAIL_CGRAPHICDATABANK_PEEKGRAPHIC (the inline PeekGraphic above). No layout change.
+// FABLE_FORCEINLINE as the landed rows spell it: plain `inline` leaves it called in AddIcon (604v682).
+FABLE_FORCEINLINE const CGraphicInfoFrame* CGraphicDataBank::PeekGraphicInfoFrame(unsigned long graphic, unsigned long frame) const
+{
+    return PeekGraphic(graphic) ? PeekGraphic(graphic)->PeekInfoFrame(frame) : 0;
+}
+#endif
+#endif
+#endif

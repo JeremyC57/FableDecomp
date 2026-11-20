@@ -1,0 +1,5 @@
+rows:       7 RELOCATION_MATCH PASS;
+removed 8 added 4 rows 7
+multi: 1
+nf205 good=70 bad=1; gate: 0 created split(s)
+009e15e0	009e15e0   DIFFER(99v99)    TCC_FAIL TextureCache_MoveAndCleanup

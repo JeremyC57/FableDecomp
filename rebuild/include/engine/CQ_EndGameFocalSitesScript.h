@@ -88,5 +88,25 @@ protected:
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameFocalSitesScript::CEndGameJackOfBlades) == 0x1c);
 #endif
 
+#ifdef FABLE_RETAIL_CQ_ENDGAMEFOCALSITESSCRIPT_SCARLETROBE
+// Retail opt-in (NF205, 2026-11-20): the nested entity CEndGameScarletRobe (Ego_r.pdb CEndGameScarletRobe, 28 bytes: CEntityScriptBase
+// 0x14, ParentClass +0x14, PMasterData +0x18; the Alloc 0x00D2CF80 installs entity vtable 0x012CC428, slot 1 Main 0x00D2D060);
+// Ego_r.pdb / FableWin.pdb ?Main@CEndGameScarletRobe@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ (private). Main reads
+// ParentClass.JackLeaves (+0x81). Declaration only; the shape of CEndGameJackOfBlades above.
+namespace NScript {
+class CQ_EndGameFocalSitesScript::CEndGameScarletRobe : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_EndGameFocalSitesScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D2CF80
+    virtual CScriptBase* GetParentScript() const;
+private:
+    virtual void Main();                                                 // slot 1 0x00D2D060
+    virtual void Init();
+protected:
+    NScript::CQ_EndGameFocalSitesScript & ParentClass;                   // +0x14
+    NScript::CQ_SunnyvaleMasterData * PMasterData;                       // +0x18
+};
+}
+#endif
+
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_ENDGAMEFOCALSITESSCRIPT_H

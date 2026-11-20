@@ -169,6 +169,12 @@ public:
         RegionMinimapCellList.swap(temp);
     }
     void BuildRegionMinimapTGA(const CWideString& filename);                                            // 0x0066CD50
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_LOADTGAFILE
+    // NF205 opt-in (q11862, row 0x0066CA80): Ego_r.pdb 0x006A1770 / FableWin.pdb 0x02188CF0
+    // ?LoadRegionMinimapTGAFile@CRegionMinimap@@QAEXABVCWideString@@@Z (public; out of line in retail at 0x0066CA80; the landed caller
+    // 0x00829D90 binds this spelling). Declaration only; no layout change.
+    void LoadRegionMinimapTGAFile(const CWideString& filename);                                         // 0x0066CA80
+#endif
 #endif
 #endif
     long          RegionMinimapSize;                         // +0x00

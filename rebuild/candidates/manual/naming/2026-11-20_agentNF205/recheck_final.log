@@ -1,0 +1,19 @@
+addr       parity           behav  name
+0066ca80   RELOCATION_MATCH PASS   CRegionMinimap::LoadRegionMinimapTGAFile
+00994670   RELOCATION_MATCH PASS   CDataInputStream::ReadPixelFormat
+009f1f90   WARN STANDIN_LEAF ??3CMemoryAllocator@@KIXPAX@Z (catalog CMemoryAllocator::operator_delete; names another function)
+009f1f90   RELOCATION_MATCH PASS   CMemoryAllocator::operator_delete
+009fd160   RELOCATION_MATCH PASS   CGraphicHeader::Load
+00a01650   WARN STANDIN_LEAF ?push_back@?$CArray@VCGraphicInfo@@@@QAEXXZ (catalog std::vector::push_back; names another function)
+00a01650   RELOCATION_MATCH PASS   std::vector::push_back
+00d2d060   RELOCATION_MATCH PASS   NScript::CQ_EndGameFocalSitesScript::CEndGameScarletRobe::Main
+0122a600   RELOCATION_MATCH PASS   `dynamic atexit destructor for 'GFontTextureCache''
+
+WINS: 7
+  0066ca80 RELOCATION_MATCH CRegionMinimap::?LoadRegionMinimapTGAFile@CRegionMinimap@@QAEXABVCWideString@@@Z
+  00994670 RELOCATION_MATCH CDataInputStream::?ReadPixelFormat@CDataInputStream@@QAE?AVCPixelFormat@@XZ
+  009f1f90 RELOCATION_MATCH _global::??3CMemoryAllocator@@KIXPAX@Z
+  009fd160 RELOCATION_MATCH CGraphicHeader::?Load@CGraphicHeader@CGraphicDataBank@@QAEXAAVCDataInputStream@@@Z
+  00a01650 RELOCATION_MATCH std::vector::?push_back@?$CArray@VCGraphicInfo@@@@QAEXXZ
+  00d2d060 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameScarletRobe::?Main@CEndGameScarletRobe@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
+  0122a600 RELOCATION_MATCH _global::_$E2

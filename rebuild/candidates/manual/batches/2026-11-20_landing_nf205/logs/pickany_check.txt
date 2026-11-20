@@ -1,0 +1,7 @@
+OK  00a01650 -> 009fd6c0 ??0CGraphicHeader@CGraphicDataBank@@QAE@XZ sizes 58 58 
+OK  00d2d060 -> 006e7a60 ??0CScriptGameResourceObjectBase@@QAE@XZ sizes 18 18 
+OK  00d2d060 -> 007e72a0 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ sizes 26 26 
+OK  00d2d060 -> 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ sizes 66 66 
+NO-OWNER-OBJ 00d2d060 0126008c ??_7CScriptGameResourceObjectBase@@6B@
+NO-OWNER-OBJ 00d2d060 0127094c ??_7CScriptGameResourceObjectScriptedThingBase@@6B@
+NO-OWNER-OBJ 0122a600 013c5a80 ?GFontTextureCache@?A0xd47b1896@@3VCTexture@@A

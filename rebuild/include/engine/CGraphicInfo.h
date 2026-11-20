@@ -49,6 +49,12 @@ class CManagedTexture;class CTexture;
 class CGraphicInfo {
 public:
     const CGraphicInfoFrame* PeekInfoFrame(unsigned long index) const {return Frames+index;}
+#if defined(FABLE_RETAIL_CGRAPHICINFO_DEFAULT_CTOR) && defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT)
+    // NF205 opt-in (q11816, row 0x00A01650 CArray<CGraphicInfo>::push_back()): Ego_r.pdb / FableWin.pdb ??0CGraphicInfo@@QAE@XZ (inline in
+    // retail: 0x00A01650 builds the default element in place: the nested header's default constructor, then Bank 0, Index -1, Frames 0;
+    // TextureType left alone). Needs the typed members (FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT). No layout change.
+    CGraphicInfo() : Bank(0), Index(-1), Frames(0) {}
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFO_GETWIDTH
     // Opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): FableWin.pdb ?GetWidth@CGraphicInfo@@QBEKXZ (9 debug instructions =
     // one movzx of a header word: FrameWidth +6, 0x00BA54EB / 0x00BB43C0 `movzx ..,word ptr [..+6]`). Needs the typed header

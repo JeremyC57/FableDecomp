@@ -452,6 +452,10 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
   if the linker keeps it, the image differs. Example: an equal-bytes copy that binds a `""` literal where the owner binds
   `?NullChar@CCharString@@1DB`. Hold such a row, or make that function declaration-only through an opt-in (nf201 0x008E9850, held).
   `cmpbody.py` reports both, as `bytes equal` and `relocs equal`; both must be True.
+- (nf205 amendment) "Same symbol" means the same retail address: a relocation that names the owner's stand-in spelling for the same
+  retail address (both symbols external, both bound at that address in reloc_bindings.tsv) is not a different target, so the copy
+  matches and the stand-in is queued for respelling (0x008E9850's GetCRC copy: ?NullChar@CCharString@@1DB against 0x00404310's
+  ?g_EmptyString@@3QBDB, both 0x0129AAF4). A symbol defined inside the row's own object (a string literal COMDAT) is always a different target.
 - (nf203) A function copy that the HEAD object already defined, and that already differed from its owner, may change body in a port and
   stays debt (the function-copy counterpart of the nf176 data-COMDAT rule). A row is held only for a newly defined copy, or for a copy
   that matched at HEAD and stops matching (0x00993B20's ??_GCDataStream / ??_GCDataInputStream: 34 v 36 at HEAD, 28 v 36 after).
