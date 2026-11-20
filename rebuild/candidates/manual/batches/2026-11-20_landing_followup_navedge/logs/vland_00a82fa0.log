@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a82fa0   RELOCATION_MATCH PASS   CCountedPointer<CNavConnectorNode>::DeleteData
+
+WINS: 1
+  00a82fa0 RELOCATION_MATCH CCountedPointer::?DeleteData@?$CCountedPointer@VCNavConnectorNode@@@@SIXPAX@Z

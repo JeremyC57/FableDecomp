@@ -54,8 +54,8 @@ address	grade	bytes	test	grades_used	notes
 00a62ae0	RELOCATION_MATCH	130	PASS	30	Ego_d locals, decl order P,B,M,V,K; CPackedUIntArray CALCULATEBIAS opt-in [LANDED 039a0c8c02]
 00a770b0	RELOCATION_MATCH	533	PASS(vland strict)	4	hand3c: FableWin 0x03293760 shape (C2DBoxF(MapPos, C2DExtentsF) + inline ContainsPoint, function-static ONE_OVER_MAX_NODE_SIZE, GetBlockedNode, Position.Initialise, half size 0.5f); new opt-in CNAVQUADTREE_GETBLOCKEDNODE
 00a781a0	RELOCATION_MATCH	1244	PASS(vland strict)	1	hand3c3 b8 [LANDED batches/2026-11-20_landing_hand3c3_b8]
-00a793d0	OPEN	678	-	1	baseline draft DIFFER(593v678) hunks=37 difflines=283
-00a79680	OPEN	678	-	1	baseline draft DIFFER(593v678) hunks=37 difflines=283
+00a793d0	RELOCATION_MATCH	678	PASS(vland strict)	1	hand3c2 b5 via followup navedge [LANDED batches/2026-11-20_landing_followup_navedge]
+00a79680	RELOCATION_MATCH	678	PASS(vland strict)	1	hand3c2 b5 via followup navedge [LANDED batches/2026-11-20_landing_followup_navedge]
 00a9d480	RELOCATION_MATCH	243	PASS(vland; g++ portable PASS)	8 (hand3c)	hand3c: FableWin operator()(r,c) via CMatrix4x4& m (ELEMENT_ACCESS opt-in) fixes x87 operand order; Ego_d vect/dest/right, dest before right [LANDED e71b9a61b5]
 00a9d750	RELOCATION_MATCH	551	PASS(vland; g++ portable PASS)	~45 (hand3c)	hand3c: for-scope `if (false) {} else for` (FableWin xor/je) + shared AlignedPreScale bodies opt-in (hdr overlay) [LANDED b8a046277f]
 00aabf60	LANDED	620	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft DIFFER(625v620) hunks=50 difflines=224

@@ -25,6 +25,19 @@ public:
     CSmallVector() : Start(0), Size(0) { }
 #endif
 #endif
+#ifdef FABLE_RETAIL_CSMALLVECTOR_RESIZE
+    // Re-port opt-in (2026-11-19, rows 0x00A78A90 / 0x00A780B0 CNavConnectorNode ctor / dtor): Ego_r.pdb
+    // ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z (0x00A7DB10, out of line) and FableWin.pdb's
+    // ?push_back@..@@QAEXABQBVCANavQuadTreeNode@@@Z / ?pop_back@..@@QAEXXZ / ?begin@ / ?end@..@@QAEPAPBVCANavQuadTreeNode@@XZ (debug only:
+    // inline in release). Retail expands push_back as resize(Size + 1) with the default fill stored per call, then the element store
+    // through the re-read size (0x00A78AA5..0x00A78AC5), and pop_back as resize(Size - 1) (the call at 0x00A78160). Inferred: the default argument
+    // `fill = T()` (the landed rows' spelling; the zero temporary is built at every call site). Not with FABLE_RETAIL_CSMALLVECTOR_ITERATORS_PASS23.
+    void resize(long size, const T& fill = T());                         // 0x00A7DB10
+    void push_back(const T& value) { resize(Size + 1); Start[Size - 1] = value; }
+    void pop_back() { resize(Size - 1); }
+    T* begin() { return Start; }
+    T* end() { return Start + Size; }
+#endif
     T*          Start;
     signed char Size;
 };
@@ -38,6 +51,17 @@ public:
     // Needs FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR. Parameter names Ego_d.pdb.
     CNavNavigableLeafNode(const C2DVector& pos, unsigned char quad_tree_level, unsigned char nav_layer, unsigned char preferability_cost)
         : CANavQuadTreeNode(pos, quad_tree_level, nav_layer), PRegion(0), PreferabilityCost(preferability_cost) { }
+#endif
+#ifdef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_REGION
+    // Opt-in (followup, row 0x00A78800 CNavSwitchableLeafNode::SetAsBlocked): Ego_r.pdb / FableWin.pdb ?GetRegion@CNavNavigableLeafNode@@
+    // UBEPBVCNavRegion@@XZ, the class-body inline of the header (Ego_d.pdb: one line, 221, in the header's file record, not the .cpp's;
+    // retail out of line only through the vtable) and ?ForceRegionTo@CNavNavigableLeafNode@@IAEXPBVCNavRegion@@@Z (protected, defined in
+    // lib_nav_quad_tree.cpp: Ego_d lines 412..414, parameter pregion; retail 0x00A75B60 between RemoveRegionZero 0x00A75B50 and
+    // SetUpNeighbours 0x00A75B70, as FableWin.pdb orders them). Declarations and the one-line accessor only.
+    virtual const CNavRegion* GetRegion() const { return PRegion; }
+protected:
+    void ForceRegionTo(const CNavRegion* pregion);                                 // 0x00A75B60
+public:
 #endif
     CNavRegion*                               PRegion;                           // +0x10
     CSmallVector<const CANavQuadTreeNode*, 8> Neighbours;                        // +0x14

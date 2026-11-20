@@ -5394,7 +5394,6 @@ _D3DXLoadVolumeFromVolume@32	00bfefec	00a67670
 ?GetNodeAt@CNavQuadTree@@QBEPAVCANavQuadTreeNode@@PBUC2DVector@@J@Z	00a770b0	00a77480
 ?push_back@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXABQBVCANavQuadTreeNode@@@Z	00a7dbf0	00a77480
 ?Release@XResource@@QAEXPAUCFrameData@@@Z	00a77710	00a778b0
-?RemoveConnection@CNavRegion@@QAEXPAUSNavConnection_00a78060@@@Z	00a77710	00a78060
 ??_7CNavQuadTree@@6B@	0129de64	00a7a760
 ?Insert@CRetailTree_00a819b0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	00a80c20	00a819b0
 ??4CElement4_00517720@@QAEAAU0@ABU0@@Z	00517720	00a82620
@@ -8855,7 +8854,6 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?SetupRead@CBankFileAsyncEntry@@QAEXKPAVCBankFileAsyncData@@KKKW4EThreadedFilePriority@@@Z	009d5970	009d6100
 ??0CNavQuadTree@@QAE@XZ	00a7a760	00a156d0
 ?Reset@?$CCountedPointer@VCNavQuadTree@@@@QAEXPAVCNavQuadTree@@@Z	00a16640	00a156d0
-?DeleteNavRegionConnection@@YIXPAX@Z	00a7c0a0	00a786c0
 ??0CParticle@NParticleEngine@@QAE@XZ	00af7a90	00af5010
 ??2CParticle@NParticleEngine@@SIPAXI@Z	00af86c0	00af5010
 ?GetParticleEmitterManager@@YAPAUCParticleEmitterManager@@XZ	00aeaaf0	00af5010
@@ -9424,7 +9422,6 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?Write@CMemoryDataOutputStream@@UAEXPBXJ@Z	00996cc0	00aad150
 ?KSPROPSETID_Connection@@3UGUID@@B	012b90d8	00c5ead0
 ?SetProperty@CKsObject@@QAE_NABUGUID@@KPAXK@Z	00c5e050	00c5ead0
-?LowerBound@CSwitchMap@@QAEPAUSSwitchEntry@@AB_K@Z	00a7df60	00a78800
 ?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z	009b9e00	00816150
 ??1CVectorList@@QAE@XZ	0048ca60	008faa80
 ?Finalise@CPhysicsCollisionPointsObject@NCameraModes@@QAEXXZ	008fa9f0	008fadb0
@@ -17885,11 +17882,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?SaveToFile@CANavQuadTreeNode@@MBEXAAVCAFile@@ABU?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@U?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z	00a778d0	00a77a10
 ?SaveToFile@CNavNavigableLeafNode@@QBEXAAVCAFile@@ABU?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@U?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z	00a77a10	00a77c30
 ?SaveToFile@CANavQuadTreeNode@@UBEXAAVCAFile@@ABV?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@U?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z	00a778d0	00a77d60
-?RemoveConnectionToRegion@CNavRegion@@QAEXPAV1@@Z	00a78060	00a78800
-?Unlock@CNavSwitchableLeafNode@@QAEXPAVCNavRegion@@@Z	00a77420	00a78800
-?_M_insert_overflow@CRegionVector@@QAEXPAPAVCNavRegion@@ABQAV2@ABUSScalarTag@@K_N@Z	00a814b0	00a78800
 ?insert_unique@_Rep_type@?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@U?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@QAE?AU?$pair@Uiterator@?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@U?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_N@3@ABU?$pair@QBVCANavQuadTreeNode@@J@3@@Z	00a819b0	00a789f0
-?SetAsConnectedToRegion@CNavRegion@@QAEXPAV1@@Z	00a786c0	00a78a90
 ?Initialise@CNavQuadTreeNode@@IAEXABVCNavQuadTree@@AAW4ENavQuadTreeNodeType@@AAU?$vector@_KU?$allocator@_K@std@@@std@@@Z	00a79b30	00a7a570
 ??0?$vector@U?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@V?$allocator@U?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@@2@@std@@QAE@ABV01@@Z	00a83a30	00a85010
 ??0?$vector@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@QAE@ABV01@@Z	00a83170	00a85010
@@ -25289,7 +25282,6 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ??$GetSubDef@VCThingMultiArrowShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingMultiArrowShotDef@@@@@Z	007be7ea	007bdd77
 ??0CCreatureAction_MidAttack360@@QAE@AAVCThingCreatureBase@@0@Z	0090a700	0096ae50
 ??1CCreatureAction_CastAssassinRush@@UAE@XZ	0072d990	0096ae50
-??$__find@PAPBVCANavQuadTreeNode@@PAVCNavNavigableLeafNode@@@std@@YIPAPBVCANavQuadTreeNode@@PAPBV1@0ABQAVCNavNavigableLeafNode@@ABUrandom_access_iterator_tag@0@@Z	00a7d050	00a780b0
 ?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@ABV3@ABV__true_type@@I_N@Z	0066e370	00a887b0
 ?GetFreeCookingPot@CAIStateGroup_PrepareMeal@@ABEPAVCThing@@XZ	00946380	00946400
 ?push_back@?$vector@UCResourcePage@CGPUScratchBufferTextureManager@@V?$allocator@UCResourcePage@CGPUScratchBufferTextureManager@@@std@@@std@@QAEXABUCResourcePage@CGPUScratchBufferTextureManager@@@Z	00f38860	00f37660
@@ -39806,3 +39798,13 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?DeleteData@?$CCountedPointer@UCModeJackOfBladesScream@@@@SIXPAX@Z	008c2d60	008c0d10
 ?SetSwordObject@CModeJackOfBladesScream@@QAEXPAVCThing@@@Z	008d7370	008c0d10
 ??$GetAllLeafThings@VCThingObject@@V?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z	0077ec20	0077d5b0
+??0CNavConnectorNode@@QAE@PBVCANavQuadTreeNode@@0@Z	00a78a90	00a793d0
+?DeleteData@?$CCountedPointer@VCNavConnectorNode@@@@SIXPAX@Z	00a82fa0	00a793d0
+?RemoveConnectionFromConnectionList@CNavRegion@@AAEXPBVCNavRegionConnection@@@Z	00a77710	00a78060
+??$__find@PAPBVCANavQuadTreeNode@@PAVCNavNavigableLeafNode@@@std@@YIPAPBVCANavQuadTreeNode@@PAPBV1@0ABQAVCNavNavigableLeafNode@@ABUrandom_access_iterator_tag@0@@Z	00a7d050	00a780b0
+?RemoveConnectionToRegion@CNavRegion@@QAEXAAV1@@Z	00a78060	00a780b0
+?DeleteData@?$CCountedPointer@VCNavRegionConnection@@@@SIXPAX@Z	00a7c0a0	00a786c0
+?LowerBound@?$CVectorMap@_K_NV?$CKeyPairCompareLess@_K_N@@@@QAEPAU?$pair@_K_N@std@@AB_K@Z	00a7df60	00a78800
+?SetAsConnectedToRegion@CNavRegion@@QAEXAAV1@@Z	00a786c0	00a78800
+?_M_insert_overflow@?$vector@PAVCNavRegion@@V?$allocator@PAVCNavRegion@@@std@@@std@@IAEXPAPAVCNavRegion@@ABQAV3@ABU__true_type@2@I_N@Z	00a814b0	00a78800
+??1CNavConnectorNode@@QAE@XZ	00a780b0	00a82fa0

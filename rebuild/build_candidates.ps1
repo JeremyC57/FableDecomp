@@ -93248,9 +93248,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a82fa0'
-        Module = '_global'
-        Source = '00/a8/CTCMapwho_OnDie_00a82fa0.cpp'
-        TestSource = '00/a8/CTCMapwho_OnDie_00a82fa0_test.cpp'
+        Module = 'CCountedPointer'
+        Source = '00/a8/CCountedPointer_DeleteData_00a82fa0.cpp'
+        TestSource = '00/a8/CCountedPointer_DeleteData_00a82fa0_test.cpp'
         PassPattern = 'PASS_00a82fa0'
     }
     [pscustomobject]@{
@@ -401347,6 +401347,27 @@ $catalog = @(
         TestSource = '00/b1/NParticleEngineCPSCOrbitCOrbitState_Update_00b16410_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /d2inlT230'
         PassPattern = '00b16410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75b60'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_ForceRegionTo_00a75b60.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_ForceRegionTo_00a75b60_test.cpp'
+        PassPattern = '00a75b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a793d0'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_ConnectHorizantalMapEdge_00a793d0.cpp'
+        TestSource = '00/a7/CNavQuadTree_ConnectHorizantalMapEdge_00a793d0_test.cpp'
+        PassPattern = '00a793d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a79680'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_ConnectVerticalMapEdge_00a79680.cpp'
+        TestSource = '00/a7/CNavQuadTree_ConnectVerticalMapEdge_00a79680_test.cpp'
+        PassPattern = '00a79680_TEST PASS'
     }
 )
 
