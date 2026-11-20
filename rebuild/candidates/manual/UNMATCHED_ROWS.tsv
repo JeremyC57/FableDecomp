@@ -74,7 +74,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 005a94bd	CTCInventoryTrade	OpenInventory	1482	parked	DIFFER(1488v1482)	2	rebuild/candidates/manual/pending/2026-11-10_linux_handSND2/differ/005a94bd.cpp	original
 005ac10e	CTCInventoryTrade	ConstructActualBuyInventoryPC	3532	open-escalated (hand2b 243 grades + hand4c 5 bracket placements, no change; 2 instructions at 0x005ACB58; see pending/2026-11-19_open_escalated/005ac10e)	codex pass24 PARKED: Retail reloads the category children before the frame in the subtitle join. The rebuilt instructions are reversed.	29	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/005ac10e/005ac10e.cpp	original
 005aceda	CTCInventoryTrade	ConstructActualInventoryPC	1067	parked	DIFFER(1113v1067)	5	rebuild/candidates/manual/pending/2026-11-10_linux_handSND2/differ/005aceda.cpp	original
-005b01fe	CTCInventoryTrade	SellItemPC	2222	parked	DIFFER(2217v2222)	13	rebuild/candidates/manual/pending/2026-11-08_linux_hand867/differ/005b01fe.cpp	original
+005b01fe	CTCInventoryTrade	SellItemPC	2222	reserved (acctB p25J, 2026-11-20)	DIFFER(2217v2222)	13	rebuild/candidates/manual/pending/2026-11-08_linux_hand867/differ/005b01fe.cpp	original
 005b9641	CTCInventoryClothing	DrawPreparePrimitivesForRendering	1455	parked	matched in a lane, not landed	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1006/differ/005b9641.cpp	gapscan/boundary
 005bfd5e	CTCInventoryBase	OnSerialise	425	reserved (acctB p25F, 2026-11-20)	DIFFER(425v425)	4	rebuild/candidates/manual/pending/2026-11-20_p25_open/005bfd5e/005bfd5e.cpp	original
 005c0a98	CPersistTraits<NInventory::CItem>	TransferBinaryOut	396	reserved (acctB p25H, 2026-11-20)	DIFFER(368v369)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1020/differ/005c0a98.cpp	original
@@ -217,9 +217,9 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0075ddf0	CTCCameraPointScriptedSpline	UpdateSplines	1152	parked	DIFFER(1092v1146)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/0075ddf0.cpp	original
 00760020	_global	IsLineIntersectingWithOthersInList	368	parked	DIFFER(367v360)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/00760020.cpp	original
 00760190	_global	IsTriangleWithPointsInside	352	parked	DIFFER(324v340)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand478/differ/00760190.cpp	original
-007602f0	NShape	IsShapeConvex	1136	parked	DIFFER(1123v1126)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/007602f0.cpp	original
+007602f0	NShape	IsShapeConvex	1136	reserved (acctB p25J, 2026-11-20)	DIFFER(1123v1126)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/007602f0.cpp	original
 00762620	NShape::CShape	StatOnSerialise	1168	parked	DIFFER(1182v1160)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00762620.cpp	original
-00763060	_global	Polygon_GeneratePath_WithCirculation	1152	parked	DIFFER(1143v1146)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00763060.cpp	original
+00763060	_global	Polygon_GeneratePath_WithCirculation	1152	reserved (acctB p25J, 2026-11-20)	DIFFER(1143v1146)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00763060.cpp	original
 007634e0	_global	CPatchTesselation_GenerateTriangles	1328	parked	DIFFER(623v627)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/hdr/007634e0.cpp	original
 00766dd0	CTCObjectAugmentations	FrameUpdate	1072	parked	codex pass24 PARKED: The shared owner and STLport containers retain the native predicate calls and component names. Vector allocation, period scheduling, and iterator code generation still differ.	23	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00766dd0/00766dd0.cpp	original
 0076cce0	CTCEnemy	IsEnemyOf	768	parked	egod3a: DIFFER 751v754 -- old local-model draft (97 masked); CTCEnemy.h exists, landed TU siblings 0x0076D1B0/0x0076D270/0x0076D2F0; port not started	5	rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/0076cce0.cpp	original
@@ -499,7 +499,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00957c30	CAIStateGroup_MinionBehaviourCrowdBase	?IsRunnable@CAIStateGroup_MinionBehaviourCrowdBase@@UAE_NXZ	384	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/00957c30.cpp	original
 0095ef80	CAIStateGroup_OpinionReactionRoot	?IsRunnable@CAIStateGroup_OpinionReactionRoot@@UAE_NXZ	1536	parked	DIFFER(1536v1528)	3	rebuild/candidates/manual/pending/2026-10-27_linux_hand654/differ/0095ef80.cpp	original
 0095fb40	CIsOpinionSourceWithReaction	operator()	608	parked	DIFFER(443v451)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/0095fb40.cpp	original
-00960120	CAIStateGroup_DeedReactionRoot	Update	1600	parked	DIFFER(1596v1600)	21	rebuild/candidates/manual/pending/2026-11-07_linux_hand826/differ/00960120.cpp	original
+00960120	CAIStateGroup_DeedReactionRoot	Update	1600	reserved (acctB p25J, 2026-11-20)	DIFFER(1596v1600)	21	rebuild/candidates/manual/pending/2026-11-07_linux_hand826/differ/00960120.cpp	original
 00961ca0	CAIStateGroup_IceTrollIcicleAttack	?IsRunnable@CAIStateGroup_IceTrollIcicleAttack@@MAE_NXZ	368	parked		0	rebuild/candidates/manual/pending/2026-10-21_linux_hand240/differ/00961ca0.cpp	original
 00962d50	CAIStateGroup_VersusRockTroll	?Update@CAIStateGroup_VersusRockTroll@@MAEXXZ	1680	parked	DIFFER(1611v1679)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/00962d50.cpp	original
 00963a50	CAIStateGroup_VersusScorpionKing	CAIStateGroup_VersusScorpionKing::Update	1808	parked	DIFFER(1635v1695)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/00963a50.cpp	original
