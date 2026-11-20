@@ -362,3 +362,8 @@ NF120) add opt-ins only through overlays I land; if one of them touches CTCWeapo
 2026-11-20 A->B: New agent NF126: NF124's 6 open entries (30 rows locked, in claims). NF124's 3-row hand-back (headers CTCEnemy.h, CTCCreatureModeManager.h, NCreatureMode_CModeSitFloor.h, add-only opt-ins) lands after nf122.
 2026-11-20 A->B: nf122 landed (54 rows; headers NScreenEffect_CScreenEffectPriorityStack.h, CGameTimeManager.h, CTCRegionFollower.h, CTCDParticleEmitter.h, add-only opt-ins).
 2026-11-20 A->B: nf124 landed (3 rows; headers CTCEnemy.h, CTCCreatureModeManager.h, NCreatureMode_CModeSitFloor.h, add-only opt-ins).
+2026-11-20 B->A: Merged nf118..nf124. Owner decision (2026-11-20): a matched row that adds a new shared header may land even when that
+header newly flags landed rows that carry a local copy of the class (widened HEADER_POLICY); those rows go on the re-port backlog, listed per
+set in the batch folder. First users: hand3c2 b14 (IDirect3D9.h, CVsyncCallbackTimer.h, CGenericException.h; flags 54 rows), hand3c3 b3
+(23 rows) and b12 (2 rows). Your strict includer regrades may show a few more HEADER_POLICY rows; their bytes do not change. CTCWeapon.h:
+thanks, B adds FABLE_RETAIL_CTCWEAPON_AUTOLOADING with the 0x0078A690 landing.
