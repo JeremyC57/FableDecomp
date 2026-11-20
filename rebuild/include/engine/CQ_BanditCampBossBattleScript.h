@@ -129,6 +129,25 @@ public:
         long HealthBarIndex;                                             // +0x1c
     };
 #endif
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_CROWDBANDITS
+    // Retail opt-in (p25A, 0x00D0B3E0): Ego_r.pdb CCROWDBANDITS (28 bytes: CEntityScriptBase 0x14, ParentClass +0x14, PMasterData
+    //   +0x18); vtable 0x012C95F0 (read from retail .rdata): 0 scalar deleting dtor 0x00D0B3C0, 1 Main 0x00D0B3E0, 2 CEntityScriptBase::Init
+    //   0x00CDEBB0 (not overridden), 3 GetParentScript 0x00D0B370, 4 CEntityScriptBase::OnPersist 0x00CDEBC0, 5 OnPredicateFail
+    //   0x00D0B380; Alloc 0x00D0B2D0 (bound by the landed script Main 0x00D038E0, "CROWDBANDITS"). Ego_r.pdb names Alloc / Main /
+    //   OnPredicateFail. Declarations only; existing includers do not define the macro.
+    class CCROWDBANDITS : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BanditCampBossBattleScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D0B2D0
+        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00D0B370
+    private:
+        virtual void Main();                                             // slot 1 0x00D0B3E0
+        virtual void OnPredicateFail();                                  // slot 5 0x00D0B380
+    protected:
+        NScript::CQ_BanditCampBossBattleScript & ParentClass;            // +0x14
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
+    };
+#endif
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_HOSTAGE
     // Retail opt-in (chunk 852): Ego_r.pdb CCampHostage (28 bytes: CEntityScriptBase 0x14, ParentClass +0x14, PMasterData +0x18);
     //   vtable 0x012C8F8C: 0 scalar deleting dtor 0x00D07E30, 1 Main 0x00D07E50, 2 Init 0x00D07DD0, 3 GetParentScript 0x00D07DC0,
@@ -217,23 +236,26 @@ public:
 #endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript) == 0x70);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CGate3Guard) == 0x1c);
+FABLE_STATIC_ASSERT_AT(220, sizeof(NScript::CQ_BanditCampBossBattleScript) == 0x70);
+FABLE_STATIC_ASSERT_AT(221, sizeof(NScript::CQ_BanditCampBossBattleScript::CGate3Guard) == 0x1c);
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_BANDITKING
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CBanditKing) == 0x20);
+FABLE_STATIC_ASSERT_AT(223, sizeof(NScript::CQ_BanditCampBossBattleScript::CBanditKing) == 0x20);
 #endif
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_FORGER
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CBanditForger) == 0x20);
+FABLE_STATIC_ASSERT_AT(226, sizeof(NScript::CQ_BanditCampBossBattleScript::CBanditForger) == 0x20);
+#endif
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_CROWDBANDITS
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_HOSTAGE
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CCampHostage) == 0x1c);
+FABLE_STATIC_ASSERT_AT(229, sizeof(NScript::CQ_BanditCampBossBattleScript::CCampHostage) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_GAMEMASTER
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CBCGameMaster) == 0x24);
+FABLE_STATIC_ASSERT_AT(232, sizeof(NScript::CQ_BanditCampBossBattleScript::CBCGameMaster) == 0x24);
 #endif
 
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_CAMPHOSTAGEGUARD
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard) == 0x20);
+FABLE_STATIC_ASSERT_AT(236, sizeof(NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard) == 0x20);
 #endif
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_BANDITCAMPBOSSBATTLESCRIPT_H

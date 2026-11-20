@@ -401433,6 +401433,13 @@ $catalog = @(
         TestSource = '00/e7/NScriptCVExposeMayorScript_HeroFlashesLamp_00e76e90_test.cpp'
         PassPattern = '00e76e90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d0b3e0'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCCROWDBANDITS_Main_00d0b3e0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCCROWDBANDITS_Main_00d0b3e0_test.cpp'
+        PassPattern = '00d0b3e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
