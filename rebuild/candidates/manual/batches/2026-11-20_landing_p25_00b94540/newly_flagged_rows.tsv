@@ -1,0 +1,7 @@
+set	address	class	header
+00b94540	00b93eb0	CEngineSceneGrid	engine/CEngineSceneMap.h (RESIZELEVELS opt-in; the landed constructor row models CBaseClassNonCopyable, the STLport cell vector and the grid locally; its body is the opt-in's inline constructor)
+00b94540	00b949a0	CEngineSceneGrid	engine/CEngineSceneMap.h (RESIZELEVELS opt-in; CEngineSceneMap::Initialise declares a local CEngineSceneGrid and a local CCountedPointer)
+00b94540	00b91f00	CEngineSceneGrid	engine/CEngineSceneMap.h (RESIZELEVELS opt-in; MovePrimitivesUp declares a local 0x24-byte CEngineSceneGrid and a local CArray)
+00b94540	00b93860	CEngineSceneGrid	engine/CEngineSceneMap.h (RESIZELEVELS opt-in; MovePrimitivesDown declares a local CEngineSceneGrid on a local CBaseClassNonCopyable)
+00b94540	00b95a30	CCountedPointer<CEngineSceneGrid>	engine/CCountedPointer.h + RESIZELEVELS opt-in (Reset row on a local SCountBlock / CCountedPointer_00b94f90 model; see NAME_FIXES)
+00b94540	00b94f90	CCountedPointer<CEngineSceneGrid>	engine/CCountedPointer.h DeleteData + RESIZELEVELS opt-in (free function on AutoTinyVirtualObject; see NAME_FIXES)

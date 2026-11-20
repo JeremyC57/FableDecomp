@@ -742,7 +742,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b8ccf0	CEngineEnvironment	CEngineEnvironment::WorldFrameUpdate	496	parked	DIFFER(491v487)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b8ccf0.cpp	original
 00b8d0d0	CEngineOcclusionManager	CEngineOcclusionManager::InitializeOcclusionBuffers	432	parked	DIFFER(435v429)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00b8d0d0.cpp	original
 00b92950	CEngineSceneGrid	RenderCellClippedAndCheckVisibility	720	parked	DIFFER(719v707)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00b92950.cpp	original
-00b94540	CEngineSceneMap	ResizeGrid	672	reserved (acctB p25A, 2026-11-20)	DIFFER(665v664)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00b94540.cpp	original
 00b97c10	_global	std_map_find_or_insert	160	parked	DIFFER(161v150)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand956/differ/00b97c10.cpp	original
 00b9d220	CEngineInternalPrimitive2DStaticMesh	CEngineInternalPrimitive2DStaticMesh::CalcInterpolatedObjectTransform	1072	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b9d220.cpp	original
 00ba1140	CEnginePrimitiveManagerStaticMeshesBase	CEnginePrimitiveManagerStaticMeshesBase::RenderPrimitive	28	released by B wind-down (owner 2026-11-20; was: hand-off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md))	DIFFER(2372v2344)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/differ/00ba1140.cpp	original
