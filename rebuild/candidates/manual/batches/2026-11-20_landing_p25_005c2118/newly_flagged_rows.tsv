@@ -1,0 +1,3 @@
+set	address	class	header
+005c2118	005bec40	NInventory::CItem	engine/NInventory_CTCInventoryBase.h (CITEM_TRANSFERIN opt-in declares this constructor; the landed row is a global ::CItem on local CPerItemData / counted-pointer models; see NAME_FIXES)
+005c2118	0040e510	CPersistTraits<CCharString>	engine/CPersistTraits.h (CCHARSTRING_TRANSFERIN_DECL opt-in declares this member; the landed row models CStringParser locally via #define CStringParser CStringParserLayout)

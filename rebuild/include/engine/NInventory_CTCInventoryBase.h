@@ -27,7 +27,15 @@ class CPerItemData;
 class CItem {
 public:
     CItem(const CItem&);
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_TRANSFERIN
+    // Opt-in (p25A, row 0x005C2118 CPersistTraits<NInventory::CItem>::TransferIn): FableWin.pdb ??0CItem@NInventory@@QAE@JJPBVCPerItemData@1@J@Z
+    // (out of line at 0x005BEC40; called at 0x005C26FD for the temporary assigned to the result). In that TU the temporary's destructor is
+    // the implicit one: retail calls ~CCountedPointer<NInventory::CPerItemData> 0x005C04BF on its PPerItemData (+8, 0x005C270E), not a
+    // ??1CItem COMDAT, so the out-of-line destructor declaration below is left out.
+    CItem(long itemType, long numberOfItems, const CPerItemData* pPerItemData, long averageBoughtPrice);   // 0x005BEC40
+#else
     ~CItem();
+#endif
     CItem& operator=(const CItem&);
 #ifdef FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
     bool IsSlotEmpty() const { return NumberOfItems == 0; }
