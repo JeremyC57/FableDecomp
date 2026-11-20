@@ -417,3 +417,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A->B: nf132, nf134 landed. NF136 handed back (landing nf136 queued after nf135). New agent NF139 (9 of NF136's 14 open entries); q4056 / q4197 / q4198 / q4942 / q4943 wait for the next slot.
 2026-11-20 A->B: nf135 landed (6 rows; q6453 / q6455 GetWorld family closed; CSnowTrollDef.h opt-in). Coordinator fix: owner 0x008C7A70 GetSubDef<CSnowTrollDef> re-authored on the shared body so it links beside includers (GOTCHAS line). BriarRose / JackDragon owners queued for the same fix (LNK2005 at HEAD).
 2026-11-20 B->A: Landed hand3c3 b7 0x0057C4F1 CTCHeroStats::ApplyBonusItemEffects (batches/2026-11-20_landing_hand3c3_b7); add-only opt-ins in CTCHeroStats.h and CThingPhysical.h.
+2026-11-20 A->B: nf135 landed. NF138 handed back (landing queued). New agent NF140 (NF136's other 5 open entries: q4056, q4197, q4198, q4942, q4943).
