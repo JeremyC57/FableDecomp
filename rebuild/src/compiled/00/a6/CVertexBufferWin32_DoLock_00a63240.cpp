@@ -7,18 +7,17 @@
 // with the out pointer `data` homed in the dead `size` argument slot (`lea edx,[esp+18h]`, the
 // `mov [esp+24h],0` initialiser scheduled after the pushes) and returned from that slot; `ret 0Ch`.
 // Layout: engine/CVertexBufferWin32.h is an opaque 0x34-byte record; +4 buffer and +8 size are modelled.
-struct IDirect3DVertexBuffer {
-    virtual long __stdcall QueryInterface(void* iid, void** out);
-    virtual unsigned long __stdcall AddRef();
-    virtual unsigned long __stdcall Release();
-    virtual long __stdcall v03(); virtual long __stdcall v04(); virtual long __stdcall v05();
-    virtual long __stdcall v06(); virtual long __stdcall v07(); virtual long __stdcall v08();
-    virtual long __stdcall v09(); virtual long __stdcall v10();
+// Naming (NF172, 2026-11-20, q11898): the render-core callee 0x00A0AA70 respelled in place in the row's local CRenderManagerCore model to
+//   Ego_r.pdb 0x00B74020 / FableWin.pdb 0x030EB290 ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z (the spelling
+//   0x009FA450 / 0x00AC1FB0 / 0x00A685E0 bind; was ?VertexBufferLocked@CRenderManagerCore@@QAEXPAUIDirect3DVertexBuffer@@M@Z). The header-less local IDirect3DVertexBuffer stand-in now sits on the
+//   shared IDirect3DResource9 (engine/Direct3DSurface9.h; d3d9.h derives IDirect3DVertexBuffer9 from it), so the buffer converts implicitly.
+#include "engine/Direct3DSurface9.h"
+struct IDirect3DVertexBuffer : IDirect3DResource9 {   // IUnknown slots 0-2 + IDirect3DResource9 slots 3-10 from the shared header
     virtual long __stdcall Lock(unsigned long offset, unsigned long size, void** data, unsigned long flags);   // slot 11 (+0x2c)
 };
 
 struct CRenderManagerCore {
-    void VertexBufferLocked(IDirect3DVertexBuffer* buffer, float weight);   // 0x00A0AA70
+    void WaitWhileResourceIsBusy(IDirect3DResource9* resource, float weight);   // 0x00A0AA70
 };
 
 class CDisplayManager { public:                       // PDB: +4 SystemManager, +8 PRenderManager
@@ -46,7 +45,7 @@ void* CVertexBufferWin32::DoLock(unsigned long flags, unsigned long offset, unsi
     if (size == 0)
         size = m_size;
     CSystemManager* system = GFGetSystemManager();   // the call result in a local: evaluated before the pushes
-    system->PDisplayManager->PRenderManager->VertexBufferLocked(m_pBuffer, 1.0f);
+    system->PDisplayManager->PRenderManager->WaitWhileResourceIsBusy(m_pBuffer, 1.0f);
     void* data = 0;
     m_pBuffer->Lock(offset, size, &data, flags);
     return data;

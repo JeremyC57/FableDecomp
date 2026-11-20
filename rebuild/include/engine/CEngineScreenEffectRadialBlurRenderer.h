@@ -55,6 +55,15 @@ public:
     // retail vtable 0x012A2658 slot 13, the first slot after CEngineComponent's thirteen. No layout change.
     virtual bool SetEffectQuality(const class CEngineVideoOptionsDef& options);
 #endif
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_RENDER
+    // NF172 opt-in (row 0x00B5EA30): Ego_r.pdb / FableWin.pdb ?Render@CEngineScreenEffectRadialBlurRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
+    // (the CEngineComponent::Render override) and the private helpers it calls, ?CaptureEnvironmentParameters@...@@AAEXXZ (0x00B5BD70) and
+    // ?UpdateWorldPositionTracking@...@@AAE_NXZ (0x00B5C120). Declarations only.
+    virtual void Render(const class CEngineComponentRenderParams& params);   // 0x00B5EA30
+private:
+    void CaptureEnvironmentParameters();                     // 0x00B5BD70
+    bool UpdateWorldPositionTracking();                      // 0x00B5C120
+#endif
 private:
     void ApplyRadialBlur();                                  // 0x00B5E0F0 ?ApplyRadialBlur@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ
     void ShowBlurTexture();                                  // 0x00B5E700 ?ShowBlurTexture@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ

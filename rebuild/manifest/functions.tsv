@@ -35753,10 +35753,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a0aa10	SetMaterial	CRenderManagerCore	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\E2_E2_00a0aa10.cpp
 00a0aa20	EnableXBoxShaderConstants	CRenderManagerCore	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\E2_E2_00a0aa20.cpp
 00a0aa30	SetVertexFormat	CRenderManagerCore	__thiscall	void	2	CRenderManagerCore *,ulong	1	yes	accepted									
-00a0aa60	GetMember_byte0x3a54_00a0aa60	_global	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CTCInventoryBase_GetCanItemBeQuickAssigned_00a0aa60.cpp
+00a0aa60	IsRendering	CRenderManagerCore	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CTCInventoryBase_GetCanItemBeQuickAssigned_00a0aa60.cpp
 00a0aa70	Nop_ret8_00a0aa70	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\E2_E2_00a0aa70.cpp
 00a0aa80	SetAWindow	CRenderManagerCore	__thiscall	void	2	CRenderManagerCore *,C2DBoxF const &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CRenderManagerCore_SetAWindow_00a0aa80.cpp
-00a0aa90	Forward_SetViewport_via0x3a3c_00a0aa90	_global	__thiscall	void	2	CTCInventoryBase *,C2DBoxI const &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CTCInventoryBase_SetViewport_00a0aa90.cpp
+00a0aa90	SetAWindow	CRenderManagerCore	__thiscall	void	2	CTCInventoryBase *,C2DBoxI const &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CTCInventoryBase_SetViewport_00a0aa90.cpp
 00a0aaa0	GetCurrentAWindow	CRenderManagerCore	__thiscall	ulong	1	CVertexBufferWin32 *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CVertexBufferWin32_DoSizeof_00a0aaa0.cpp
 00a0aac0	Nop_ret0_00a0aac0	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\Global_FableViewportE2_00a0aac0.cpp
 00a0ab50	DrawCurrentBuffersAsIndexedTris	CRenderManagerCore	__thiscall	void	7	CRenderManagerCore *,CTexture * *,ulong,ulong,ulong,ulong,ulong	1	yes	accepted									
@@ -37412,7 +37412,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a5d4f0	SetMember_dword0x38_00a5d4f0	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CObservable_AddExclusiveObserver_00a5d4f0.cpp
 00a5d510	GetVertexShader	CShaderResource	__thiscall	CVertexShader	2	CShaderResource *,ulong	1	yes	accepted									
 00a5d5f0	GetVertexShader	CShaderResource	__thiscall	CPixelShader	2	CShaderResource *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CShaderResource_GetPixelShader_00a5d5f0.cpp
-00a5d620	~CPixelShader	CPixelShader	__thiscall	CPixelShader	2	CShaderResource *,ulong	1	yes	accepted									
+00a5d620	GetPixelShader	CShaderResource	__thiscall	CPixelShader	2	CShaderResource *,ulong	1	yes	accepted									
 00a5d720	GetPixelShader	CShaderResource	__thiscall	CPixelShader	2	CShaderResource *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CShaderResource_GetPixelShader_00a5d720.cpp
 00a5d750	CloseShaderBank	CShaderResource	__thiscall	void	1	CShaderResource *	1	yes	accepted									
 00a5d7a0	Clear	CMemoryDataOutputStream	__thiscall	void	1	CMemoryDataOutputStream *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CMemoryDataOutputStream_Clear_00a5d7a0.cpp

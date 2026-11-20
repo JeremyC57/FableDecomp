@@ -1,0 +1,3 @@
+GREW 00be0930 1 -> 2 ?find@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Sel row 00be04c0 DIFF before=['?Find@CRetailBlockSet@@QAEXAAPAUSBlockNode_00be0400@@ABJ@Z']
+GREW 00bc04f0 1 -> 2 ?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXAAVCEngineSubPrimitive row 00bbc130 DIFF before=['?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXPAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z']
+shrank [('00a0aa70', 4, 2), ('00b84580', 2, 1), ('00be08e0', 3, 1), ('00f36f40', 3, 2), ('00499880', 2, 1), ('009da9f0', 2, 1), ('00b324a0', 2, 1)]

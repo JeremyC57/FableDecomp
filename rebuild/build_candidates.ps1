@@ -28893,16 +28893,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a0aa60'
-        Module = '_global'
-        Source = '00/a0/CTCInventoryBase_GetCanItemBeQuickAssigned_00a0aa60.cpp'
-        TestSource = '00/a0/CTCInventoryBase_GetCanItemBeQuickAssigned_00a0aa60_test.cpp'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_IsRendering_00a0aa60.cpp'
+        TestSource = '00/a0/CRenderManagerCore_IsRendering_00a0aa60_test.cpp'
         PassPattern = 'FABLETLC_INVENTORY_QUICK_ASSIGN_BEHAVIOR PASS'
     }
     [pscustomobject]@{
         Address = '00a0aa90'
-        Module = '_global'
-        Source = '00/a0/CTCInventoryBase_SetViewport_00a0aa90.cpp'
-        TestSource = '00/a0/CTCInventoryBase_SetViewport_00a0aa90_test.cpp'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_SetAWindow_00a0aa90.cpp'
+        TestSource = '00/a0/CRenderManagerCore_SetAWindow_00a0aa90_test.cpp'
         PassPattern = 'FABLETLC_INVENTORY_VIEWPORT_BEHAVIOR PASS'
     }
     [pscustomobject]@{
@@ -62167,9 +62167,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009e3620'
-        Module = '_global'
-        Source = '00/9e/global_FindFormatInfoIndexFromD3DFormat_009e3620.cpp'
-        TestSource = '00/9e/global_FindFormatInfoIndexFromD3DFormat_009e3620_test.cpp'
+        Module = 'CPixelFormat'
+        Source = '00/9e/CPixelFormat_FindFormatInfoIndexFromD3DFormat_009e3620.cpp'
+        TestSource = '00/9e/CPixelFormat_FindFormatInfoIndexFromD3DFormat_009e3620_test.cpp'
         PassPattern = 'BEHAVIOR_PASS'
     }
     [pscustomobject]@{
@@ -66535,9 +66535,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b2fc00'
-        Module = '_global'
-        Source = '00/b2/AddExclusiveObserver_AddExclusiveObserver_00b2fc00.cpp'
-        TestSource = '00/b2/AddExclusiveObserver_AddExclusiveObserver_00b2fc00_test.cpp'
+        Module = 'CEngineCamera'
+        Source = '00/b2/CEngineCamera_SetGameWindow_00b2fc00.cpp'
+        TestSource = '00/b2/CEngineCamera_SetGameWindow_00b2fc00_test.cpp'
         PassPattern = 'OK_00b2fc00'
     }
     [pscustomobject]@{
@@ -249217,7 +249217,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a5d620'
-        Module = 'CPixelShader'
+        Module = 'CShaderResource'
         Source = '00/a5/CShaderResource_GetPixelShader_00a5d620.cpp'
         TestSource = '00/a5/CShaderResource_GetPixelShader_00a5d620_test.cpp'
         PassPattern = '00a5d620_TEST PASS'

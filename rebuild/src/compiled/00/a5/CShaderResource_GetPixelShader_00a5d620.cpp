@@ -1,5 +1,8 @@
 // CShaderResource::GetPixelShader(unsigned long index) -- the pixel shader of the bank entry: the cached one when present, else create it from the bank's shader data and entry name, cache a heap copy and return it
-// Leaf: GetPixelShader
+// Leaf: ?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@K@Z
+// Naming (NF172, 2026-11-20, q12002): own leaf respelled in place to the const PDB form (Ego_r.pdb + FableWin.pdb
+//   ?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@K@Z, the twin of GetVertexShader(unsigned long) const 0x00A5D510, whose landed row
+//   models the same cache as `mutable`); its one landed caller 0x00A5D720 already binds it. Was ...@@QAE?AVCPixelShader@@K@Z.
 // Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members m_pFirst/m_pLast are the header CArray's (public STLport vector<T>) begin() / end() (STLport vector start +0 / finish +4).
 // Naming wave 27 (family pxs, DECISIONS_W26 D4): CShaderRenderManager::CreatePixelShader 0x0098A9A0 is private (Ego_r.pdb /
 //   FableWin.pdb AAE); CShaderResource, which calls it, is its friend. Was public (QAE).
@@ -83,12 +86,12 @@ class CShaderRenderManager {
 class CShaderResource { public:
     void*                  __vftable;                // +0x00
     CShaderDataBank*       ShaderBank;               // +0x04
-    CArray<CShaderBase*>   Shaders;                  // +0x08
+    mutable CArray<CShaderBase*> Shaders;                  // +0x08
     CShaderRenderManager*  ShaderRenderManager;      // +0x14
-    CPixelShader GetPixelShader(unsigned long index);
+    CPixelShader GetPixelShader(unsigned long index) const;
 };
 
-CPixelShader CShaderResource::GetPixelShader(unsigned long index)
+CPixelShader CShaderResource::GetPixelShader(unsigned long index) const
 {
     if (Shaders.begin()[index])
         return *static_cast<CPixelShader*>(Shaders.begin()[index]);

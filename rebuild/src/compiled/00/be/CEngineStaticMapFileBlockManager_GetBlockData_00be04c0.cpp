@@ -1,33 +1,21 @@
-// CEngineStaticMapFileBlockManager::GetBlockData(long block) -- find the block's node in the set at +8 and return its async data's buffer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE04C0, length 32 bytes.
-// Callees: the set's find @ 0x00BE0930 (on +8: the node result by reference in the one-word frame, the key by reference), CBankFileAsyncData::PeekData @ 0x009D5580 (const twin of GetData 0x009D5530; on
-// the data at +0x1c of the node). Shape: `push ecx` frame, `add ecx,8`, the result read back for the tail call's `this`.
-class CBankFileAsyncData { public:
-    const void* PeekData() const;                  // 0x009D5580
-};
-struct SBlockNode_00be0400 {                        // the set node: the async data at +0x1c, the high-priority flag at +0x18, the pending count at +0x14
-    unsigned char       _pad[0x14];
-    long                m_pending;                 // +0x14
-    bool                m_highPriority;            // +0x18
-    unsigned char       _pad19[3];
-    CBankFileAsyncData* m_pData;                   // +0x1c
-};
+// CEngineStaticMapFileBlockManager::GetBlockData(long block) const -- find the block in Blocks and return its loaded data
+// Leaf: ?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE04C0, length 32 bytes, `ret 4`.
+// Callees: the tree's const find 0x00BE0930 (out of line, hidden const_iterator result in the one-word frame, the key by reference),
+//   CBankFileAsyncData::PeekData 0x009D5580 (const) on CFileBlock::LoadingData (node +0x1C), as a tail call. Shape: `push ecx` frame,
+//   `add ecx,8`, the result read back for the tail call's `this`; no end() test.
+// Naming (NF172, 2026-11-20, q11713): ported off the invented CRetailBlockSet / SBlockNode_00be0400 local models onto
+//   engine/CEngineStaticMapFileBlockManager.h (NF172 opt-in GETBLOCKDATA_CONST) + stlport/fable_map.h; own leaf from the stand-in
+//   ...@@QAEPAXJ@Z to Ego_r.pdb 0x00A41E20 / FableWin.pdb 0x02DF74B0 ?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z (const, const
+//   unsigned char*), the spelling all 5 landed callers bind. The const find binds the 0x00BE0930 self row's Leaf (the non-template
+//   ?find@...QBE...; was ?Find@CRetailBlockSet@@...): the D1 member-template respell of 0x00BE0930 is a family item (NAME_FIXES).
+#define FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_GETBLOCKDATA_CONST
+#define FABLE_RETAIL_CBANKFILEASYNCDATA_PEEKDATA
+#define FABLE_RETAIL_STLP_MAP
+#include "engine/CBankFileAsyncData.h"
+#include "engine/CEngineStaticMapFileBlockManager.h"
 
-struct CRetailBlockSet {                           // the retail set at +8: its first word is the end sentinel
-    SBlockNode_00be0400* m_pEnd;
-    void FindInsertionPoint(SBlockNode_00be0400*& result, const long& key);   // 0x00BE08E0
-    void Find(SBlockNode_00be0400*& result, const long& key);                 // 0x00BE0930
-};
-
-class CEngineStaticMapFileBlockManager { public:
-    unsigned char   _pad[8];
-    CRetailBlockSet m_blocks;                      // +0x08
-    void* GetBlockData(long block);
-};
-
-void* CEngineStaticMapFileBlockManager::GetBlockData(long block)
+const unsigned char* CEngineStaticMapFileBlockManager::GetBlockData(long block) const
 {
-    SBlockNode_00be0400* node;
-    m_blocks.Find(node, block);
-    return (void*)node->m_pData->PeekData();
+    return (const unsigned char*)Blocks.find(block)->second.LoadingData->PeekData();
 }

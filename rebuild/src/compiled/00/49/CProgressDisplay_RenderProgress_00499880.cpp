@@ -1,5 +1,5 @@
 // CProgressDisplay::RenderProgress(const CCharString& textTag, float progress, bool showText, bool force) -- render one progress-screen frame: inside a render-state capture block, (re)start rendering, set a full-screen viewport, clear to black when full screen, draw the progress unless debug display is on, then restore the viewport, render target and rendering state
-// Leaf: ?RenderProgress@CProgressDisplay@
+// Leaf: ?RenderProgress@CProgressDisplay@@AAEXABVCCharString@@M_N1@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00499880, 489 bytes + padding (`ret 10h`). Callees: GFGetSystemManager 0x009A4EC0, the render
 // manager's 0x00A0AA60 / 0x00A0B560 / 0x009DA9F0 / 0x00A0AA90, the display manager's 0x009BEF20 (BeginRender, result dropped) / 0x009BE420 / 0x009BF220 / 0x009BEF50 /
 // 0x009BEEB0 / 0x009BF160, CSystemManager 0x009A6460, CRenderTarget(const CSurface&, const CSurface&) 0x00A10DC0, CSurface::Uninitialise
@@ -11,158 +11,98 @@
 // Shape: the capture block is a scoped object (its restore runs after the render-target local's inline destructor); C2DBoxI has a
 // member-wise user copy constructor (the viewport is copied field by field straight from the display manager); the display
 // manager's Rendering flag is homed in the dead `force` slot.
-class CCharString { public:
-    void* PStringData;
-};
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CSurface { public:                                           // vtable 0x0122F84C, 0x10 bytes
-    virtual void v00();
-    void*         PD3DSurface;                              // +0x04
-    unsigned long AllocationSource;                         // +0x08
-    void*         PAllocatedMemory;                         // +0x0c
-    ~CSurface() { Uninitialise(); }
-    void Uninitialise();                                    // 0x009F2E20
-};
-class CRenderTarget : public CBaseClass { public:                              // 0x24 bytes
-    CSurface m_colour;                                      // +0x04
-    CSurface m_depth;                                       // +0x14
-    CRenderTarget(const CSurface& colour, const CSurface& depth);   // 0x00A10DC0
-};
-class C2DBoxI { public:
-    long X0, Y0, X1, Y1;
-    C2DBoxI() {}
-    C2DBoxI(const C2DBoxI& o) : X0(o.X0), Y0(o.Y0), X1(o.X1), Y1(o.Y1) {}
-};
-class C2DBoxF { public:
-    float X0, Y0, X1, Y1;
-    C2DBoxF(float x0, float y0, float x1, float y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
-};
-class CRGBColour { public:
-    unsigned char B, G, R, A;
-    CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-};
-class CRenderManager { public:
-    bool IsDeviceLost() const;                              // 0x00A0AA60 (descriptive)
-    void SetViewport(const C2DBoxF& box);                   // 0x00A0B560
-    void SetViewport(const C2DBoxI& box);                   // 0x00A0AA90
-    void Flush(bool wait);                                  // 0x009DA9F0 (descriptive)
-};
-class CDisplayManager { public:
-    void*          __vftable;
-    void*          SystemManager;                           // +0x04
-    CRenderManager* PRenderManager;                         // +0x08 scoped_ptr
-    CSurface       RenderTargetSurface;                     // +0x0c
-    CSurface       RenderTargetDepthBuffer;                 // +0x1c
-    unsigned char  _pad2c[0x1f4 - 0x2c];
-    C2DBoxI        ViewportBox;                             // +0x1f4
-    unsigned char  _pad204[0x214 - 0x204];
-    bool           Rendering;                               // +0x214
-    bool BeginRender();                                     // 0x009BEF20 Ego_r.pdb / FableWin.pdb ?BeginRender@CDisplayManager@@QAE_NXZ (NF139: was the label ToggleRendering)
-public:
-    bool SetRenderTargetAsBackScreen();   // 0x009BF220
-    void EndRender();   // 0x009BEF50
-    bool SwapScreens();   // 0x009BEEB0
-    void ClearRenderTarget(const CRGBColour&, unsigned long);   // 0x009BE420
-    bool SetRenderTarget(CRenderTarget&);   // 0x009BF160
-};
-struct CTextSettings {
-    unsigned char _pad00[0x38];
-    bool          Flag;                                     // +0x38 (descriptive)
-};
-// Naming (NF129, 2026-11-20, q4289): CSystemManager::Update returns ESystemReturn (Ego_r.pdb 0x00AF4520 + FableWin.pdb 0x02F8AB00
-//   ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ; GFPlayFullScreenXBoxMovie 0x006286F0 binds it); respelled in place in the local
-//   CSystemManager model, the enum from engine/CSystemManager.h's partial mode FABLE_RETAIL_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY.
-#define FABLE_RETAIL_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY
+// Naming (NF160, 2026-11-20, q4293 / q6169): the local CCharString / CSurface / CRenderTarget / CRenderStateManager / capture block /
+//   C2DBoxI / C2DBoxF / CRGBColour / CRenderManager / CDisplayManager / CTextSettings / CSystemManager / CProgressDisplay models replaced by
+//   the shared headers (the recipe of the landed siblings StartProgress 0x00499AA0 / DrawRetailDisplay 0x00498490 / StopProgress), so the
+//   render-list call binds Ego_r.pdb 0x00B2E390 / FableWin.pdb ?Render2DDrawList@CRenderManager2D@@QAEX_N@Z (was the stand-in
+//   CRenderManager::Flush). The other callees take the header spellings: 0x00A0AA60 is Ego_r.pdb 0x00B74010 / FableWin.pdb 0x030EB270
+//   ?IsRendering@CRenderManagerCore@@QAE_NXZ (body `mov al,[ecx+3A54h] ; ret`, the Rendering flag +0x3A54; was the stand-in
+//   IsDeviceLost), 0x00A0AA90 Ego_r.pdb 0x00B74040 / FableWin.pdb 0x030EB310 ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxI@@@Z (the C2DBoxI
+//   twin of SetAWindow(C2DBoxF) 0x00A0AA80, same `mov ecx,[ecx+3A3Ch] ; jmp` body, in PDB order after it; was the stand-in SetViewport),
+//   0x00A0B560 ?SetVWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z, the viewport / render target through the inline FableWin.pdb accessors
+//   GetViewport / GetRenderTarget, the +0x84 / +0x38 flag through CSystemManager::GetFontManager and the Ego_r.pdb inline
+//   CFontManager::Get/SetLoadFontGlyphsAsynchronously, the capture block through the shared CRenderStateScopedCaptureBlock (its static
+//   StateManager 0x013CB508), and 0x00498490 ?DrawRetailDisplay@CProgressDisplay@@AAEXABVCCharString@@M_N@Z.
+// Naming (NF172, 2026-11-20, q4303 / q6167 / q11976 / q11977): NF160's shared-header port (draft blocked at DIFFER(476v489), the two inline
+//   ~CSurface vtable stores missing) completed with FABLE_RETAIL_CSURFACE_COPYFROMMEMORY, the engine/CSurface.h mode whose virtual
+//   ~CSurface is the inline body (the landed CEngineSkyRenderer::GetEnvironmentMap 0x00B665E0 recipe): ~CRenderTarget's expansion now
+//   stores vtable 0x0122F84C into each CSurface member before Uninitialise 0x009F2E20, as retail does at 0x00499A12. The own leaf moves
+//   from the public stand-in QAE to the private PDB form (Ego_r.pdb 0x004A4470 / FableWin.pdb 0x018B1460, AAE); its other referencers
+//   0x00499AA0 / 0x00499D90 already bind it and 0x00499C50 is respelled in place in this hand-back.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_C2DBOXI_COPY
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CSURFACE_COPYFROMMEMORY
+#define FABLE_RETAIL_CSURFACE_FORCEINLINE_DTOR
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CSYSTEMMANAGER
+#define FABLE_RETAIL_CSYSTEMMANAGER_FONTMANAGER
+#define FABLE_RETAIL_CFONTMANAGER_ASYNC
+#define FABLE_RETAIL_CFONTMANAGER_GETASYNC
+#define FABLE_RETAIL_CDISPLAYMANAGER
+#define FABLE_RETAIL_CDISPLAYMANAGER_RENDERTARGET
+#define FABLE_RETAIL_CDISPLAYMANAGER_GETVIEWPORT
+#define FABLE_RETAIL_CDISPLAYMANAGER_GETRENDERTARGET
+#define FABLE_RETAIL_CDISPLAYMANAGER_BACKSCREEN
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#include "fable_string.h"
+#include "engine/C2DBoxI.h"
+#include "engine/C2DBoxF.h"
+#include "engine/CRGBColour.h"
+#include "engine/CTexture.h"
 #include "engine/CSystemManager.h"
-class CSystemManager { public:
-    unsigned char    _pad00[0x60];
-    CDisplayManager* DisplayManager;                        // +0x60
-    unsigned char    _pad64[0x84 - 0x64];
-    CTextSettings*   TextSettings;                          // +0x84 (descriptive)
-    ESystemReturn Update();                                 // 0x009A6460 (result unused here)
-};
+#include "engine/CFontManager.h"
+#include "engine/CRenderManager.h"
+#include "engine/CDisplayManager.h"
+#include "engine/CRenderStateCaptureBlock.h"
+#include "engine/CProgressDisplay.h"
+
 CSystemManager* __fastcall GFGetSystemManager();           // 0x009A4EC0
 extern double g_ProgressScreenWidth;                        // 0x013961E8 (descriptive)
 extern double g_ProgressScreenHeight;                       // 0x013961F0 (descriptive)
 
-struct CStateInfo { unsigned char _body[0x14]; };
-struct CStateStackElement { CStateInfo* State; unsigned long Value; };
-class CRenderStateManager { public:
-    void*              __vftable;
-    void*              PD3DDevice;
-    CStateStackElement StateStack[1024];                    // +0x08
-    CStateInfo*        StateUpdateList[256];
-    CStateInfo*        AllStatesList[256];
-    long               StateStackSize;                      // +0x2808
-    long               StateUpdateListSize;
-    long               AllStatesListSize;
-    unsigned long      CurrentBookmarkMask;                 // +0x2814
-    unsigned char      DeviceState[0x3a24 - 0x2818];
-    CStateInfo         BookmarkDummyState;                  // +0x3a24
-    void CreateCaptureBlock()
-    {
-        long& size = StateStackSize;
-        StateStack[size].State = &BookmarkDummyState;
-        ++size;
-        CurrentBookmarkMask <<= 1;
-    }
-    void RestoreCaptureBlock();                             // 0x00A05840
-};
-extern CRenderStateManager* g_pRenderStateManager;          // 0x013CB508
-struct CRenderStateCaptureBlock {                           // scoped capture block (descriptive)
-    CRenderStateCaptureBlock() { g_pRenderStateManager->CreateCaptureBlock(); }
-    ~CRenderStateCaptureBlock() { g_pRenderStateManager->RestoreCaptureBlock(); }
-};
-
-#pragma pack(push, 4)
-struct CProgressDisplay {
-    virtual void v00();
-    unsigned char _pad04[0x78 - 0x04];
-    bool          DebugDisplay;                             // +0x78
-    bool          Initialised;                              // +0x79
-    bool          FullScreen;                               // +0x7a
-    void DrawProgress(const CCharString& textTag, float progress, bool showText);   // 0x00498490 (descriptive)
-    void RenderProgress(const CCharString& textTag, float progress, bool showText, bool force);
-};
-#pragma pack(pop)
-
 void CProgressDisplay::RenderProgress(const CCharString& textTag, float progress, bool showText, bool force)
 {
-    CDisplayManager* display = GFGetSystemManager()->DisplayManager;
+    CDisplayManager* display = GFGetSystemManager()->GetDisplayManager();
     if (!display)
         return;
-    CRenderManager* renderer = display->PRenderManager;
+    CRenderManager* renderer = &display->GetRenderManager();
     if (!renderer)
         return;
-    if (!force && renderer->IsDeviceLost())
+    if (!force && renderer->IsRendering())
         return;
-    bool wasRendering = display->Rendering;
+    bool wasRendering = display->IsRendering();
     if (DebugDisplay && !wasRendering)
         GFGetSystemManager()->Update();
-    CRenderStateCaptureBlock captureBlock;
+    CRenderStateScopedCaptureBlock captureBlock;
     bool savedFlag = false;
     if (FullScreen) {
-        CTextSettings* settings = GFGetSystemManager()->TextSettings;
-        savedFlag = settings->Flag;
-        settings->Flag = false;
+        CFontManager* fonts = GFGetSystemManager()->GetFontManager();
+        savedFlag = fonts->GetLoadFontGlyphsAsynchronously();
+        fonts->SetLoadFontGlyphsAsynchronously(false);
     }
     if (!wasRendering)
         display->BeginRender();
-    C2DBoxI oldViewport = display->ViewportBox;
-    CRenderTarget oldTarget(display->RenderTargetSurface, display->RenderTargetDepthBuffer);
-    renderer->SetViewport(C2DBoxF(0.0f, 0.0f, (float)g_ProgressScreenWidth, (float)g_ProgressScreenHeight));
+    C2DBoxI oldViewport = display->GetViewport();
+    CRenderTarget oldTarget = display->GetRenderTarget();
+    renderer->SetVWindow(C2DBoxF(0.0f, 0.0f, (float)g_ProgressScreenWidth, (float)g_ProgressScreenHeight));
     if (FullScreen)
         display->ClearRenderTarget(CRGBColour(0, 0, 0, 0xff), 7);
     display->SetRenderTargetAsBackScreen();
     if (!DebugDisplay)
-        DrawProgress(textTag, progress, showText);
-    renderer->Flush(true);
+        DrawRetailDisplay(textTag, progress, showText);
+    renderer->Render2DDrawList(true);
     display->EndRender();
     display->SwapScreens();
-    renderer->SetViewport(oldViewport);
+    renderer->SetAWindow(oldViewport);
     display->SetRenderTarget(oldTarget);
     if (wasRendering)
         display->BeginRender();
     if (FullScreen)
-        GFGetSystemManager()->TextSettings->Flag = savedFlag;
+        GFGetSystemManager()->GetFontManager()->SetLoadFontGlyphsAsynchronously(savedFlag);
 }

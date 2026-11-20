@@ -10,6 +10,8 @@
 #include "engine/CPixelFormat.h"
 extern char g_HeadlessRendering; // 0143e968
 class CSurface;
+// Naming (NF172, 2026-11-20, q11983): FreeResourceEntry 0x00F36F40 respelled in place to its private PDB form
+//   ?FreeResourceEntry@CGPUScratchBufferTextureManager@@AAEXJ@Z (the self row and 0x00F37030 / 0x00F37390 bind it); was public QAE.
 class CGPUScratchBufferTextureManager { public:
     struct CResourceEntry {
         long ResourceType; CTexture* Texture; CSurface* Surface; long PageIndex;
@@ -18,7 +20,9 @@ class CGPUScratchBufferTextureManager { public:
     };
     void* Vtable; CResourceEntry* FirstResource; CResourceEntry* LastResource; CResourceEntry* EndResource;
     long AllocResourceEntry(long); // 00f372b0
-    void FreeResourceEntry(long); // 00f36f40
+private:
+    void FreeResourceEntry(long); // 00f36f40 (private: Ego_r.pdb / FableWin.pdb AAE)
+public:
     long AllocateTexture(long,const C2DExtentsI&,long,const CPixelFormat&,unsigned long,bool);
 };
 long CGPUScratchBufferTextureManager::AllocateTexture(long page,const C2DExtentsI& dimensions,long levels,const CPixelFormat& format,unsigned long usage,bool managed)

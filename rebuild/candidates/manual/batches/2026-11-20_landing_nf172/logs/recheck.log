@@ -1,0 +1,78 @@
+addr       parity           behav  name
+00499880   RELOCATION_MATCH PASS   CProgressDisplay::RenderProgress
+00499c50   WARN SHARED_HEADER_AVAILABLE CProgressDisplay (engine/CProgressDisplay.h)
+00499c50   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00499c50   RELOCATION_MATCH PASS   CProgressDisplay::DisplayProgress
+009e3620   RELOCATION_MATCH PASS   CPixelFormat::FindFormatInfoIndexFromD3DFormat
+00a0aa60   MATCH            PASS   CRenderManagerCore::IsRendering
+00a0aa90   RELOCATION_MATCH PASS   CRenderManagerCore::SetAWindow
+00a5d620   WARN SHARED_HEADER_AVAILABLE CShaderBase (engine/CShaderBase.h)
+00a5d620   WARN SHARED_HEADER_AVAILABLE CPixelShader (engine/CPixelShader.h)
+00a5d620   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a5d620   WARN SHARED_HEADER_AVAILABLE CShaderDataBank (engine/CShaderDataBank.h)
+00a5d620   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00a5d620   WARN SHARED_HEADER_AVAILABLE CShaderResource (engine/CShaderResource.h)
+00a5d620   WARN RELOC_NAME: ?GetShaderData@CShaderDataBank@@QAEPAUCPixelShaderData@@K@Z -> 00a61fb0 labelled 'CShaderRenderManager::LookupShaderData'
+00a5d620   RELOCATION_MATCH PASS   CShaderResource::GetPixelShader
+00a63200   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore (engine/CRenderManagerCore.h)
+00a63200   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00a63200   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00a63200   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00a63200   WARN RELOC_NAME: ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z -> 00a0aa70 labelled '_global::Nop_ret8_00a0aa70'
+00a63200   RELOCATION_MATCH PASS   CVertexBufferWin32::Uninitialise
+00a63240   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore (engine/CRenderManagerCore.h)
+00a63240   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00a63240   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00a63240   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00a63240   WARN RELOC_NAME: ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z -> 00a0aa70 labelled '_global::Nop_ret8_00a0aa70'
+00a63240   RELOCATION_MATCH PASS   CVertexBufferWin32::DoLock
+00b23bc0   RELOCATION_MATCH PASS   CEngine::SetPersistentPrimitive
+00b2fc00   MATCH            PASS   CEngineCamera::SetGameWindow
+00b3aff0   RELOCATION_MATCH PASS   CEngineResourceManager::OnRestoreDefaultPoolResources
+00b3b4f0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+00b3b4f0   WARN SHARED_HEADER_AVAILABLE CTextureManager (engine/CTextureManager.h)
+00b3b4f0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00b3b4f0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager (engine/CEngineSurfaceCompositionManager.h)
+00b3b4f0   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00b3b4f0   WARN RELOC_NAME: ?ResizePoolByFormat@CTextureManager@@QAE_NJJ@Z -> 00a6abe0 labelled 'CTextureManager::ResizePoolTextureCount'
+00b3b4f0   RELOCATION_MATCH PASS   CEngineResourceManager::ResizeHiresTextureMemory
+00b51f00   WARN SHARED_HEADER_AVAILABLE CEngineWeatherRenderer (engine/CEngineWeatherRenderer.h)
+00b51f00   RELOCATION_MATCH PASS   CEngineWeatherRenderer::StartSnowing
+00b5e700   RELOCATION_MATCH PASS   CEngineScreenEffectRadialBlurRenderer::ShowBlurTexture
+00b5ea30   RELOCATION_MATCH PASS   CEngineScreenEffectRadialBlurRenderer::Render
+00b846e0   RELOCATION_MATCH PASS   CEngineSubPrimitiveRenderer::AddSubPrimitive
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveBase (engine/CEngineSubPrimitiveBase.h)
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleSpriteGroup (engine/CEnginePrimitiveManagerParticleSpriteGroup.h)
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleSpriteTrailGroup (engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h)
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleGroup (engine/CEnginePrimitiveManagerParticleGroup.h)
+00bbc130   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups
+00be0400   RELOCATION_MATCH PASS   CEngineStaticMapFileBlockManager::ReleaseRequest
+00be04c0   RELOCATION_MATCH PASS   CEngineStaticMapFileBlockManager::GetBlockData
+00be06b0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncEntry (engine/CBankFileAsyncEntry.h)
+00be06b0   RELOCATION_MATCH PASS   CEngineStaticMapFileBlockManager::AddRequest
+00f37440   WARN SHARED_HEADER_AVAILABLE CGPUScratchBufferTextureManager (engine/CGPUScratchBufferTextureManager.h)
+00f37440   RELOCATION_MATCH PASS   CGPUScratchBufferTextureManager::AllocateTexture
+
+WINS: 21
+  00499880 RELOCATION_MATCH CProgressDisplay::?RenderProgress@CProgressDisplay@@AAEXABVCCharString@@M_N1@Z
+  00499c50 RELOCATION_MATCH CProgressDisplay::DisplayProgress
+  009e3620 RELOCATION_MATCH CPixelFormat::?FindFormatInfoIndexFromD3DFormat@CPixelFormat@@SIJW4_D3DFORMAT@@@Z
+  00a0aa60 MATCH CRenderManagerCore::?IsRendering@CRenderManagerCore@@QAE_NXZ
+  00a0aa90 RELOCATION_MATCH CRenderManagerCore::?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxI@@@Z
+  00a5d620 RELOCATION_MATCH CShaderResource::?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@K@Z
+  00a63200 RELOCATION_MATCH CVertexBufferWin32::Uninitialise
+  00a63240 RELOCATION_MATCH CVertexBufferWin32::DoLock
+  00b23bc0 RELOCATION_MATCH CEngine::?SetPersistentPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
+  00b2fc00 MATCH CEngineCamera::?SetGameWindow@CEngineCamera@@QAEXPBVC2DBoxF@@@Z
+  00b3aff0 RELOCATION_MATCH CEngineResourceManager::?OnRestoreDefaultPoolResources@CEngineResourceManager@@EAE_NXZ
+  00b3b4f0 RELOCATION_MATCH CEngineResourceManager::?ResizeHiresTextureMemory@CEngineResourceManager@@QAE_NJ@Z
+  00b51f00 RELOCATION_MATCH CEngineWeatherRenderer::StartSnowing
+  00b5e700 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::?ShowBlurTexture@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ
+  00b5ea30 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::?Render@CEngineScreenEffectRadialBlurRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
+  00b846e0 RELOCATION_MATCH CEngineSubPrimitiveRenderer::?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXPAVCEngineSubPrimitiveBase@@MEKPAVCEnginePrimitiveManager@@@Z
+  00bbc130 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z
+  00be0400 RELOCATION_MATCH CEngineStaticMapFileBlockManager::?ReleaseRequest@CEngineStaticMapFileBlockManager@@QAEXJ@Z
+  00be04c0 RELOCATION_MATCH CEngineStaticMapFileBlockManager::?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z
+  00be06b0 RELOCATION_MATCH CEngineStaticMapFileBlockManager::?AddRequest@CEngineStaticMapFileBlockManager@@QAEXJJ_N@Z
+  00f37440 RELOCATION_MATCH CGPUScratchBufferTextureManager::AllocateTexture

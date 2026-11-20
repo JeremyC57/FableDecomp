@@ -2,6 +2,9 @@
 // Leaf: ?ResizeHiresTextureMemory@CEngineResourceManager@@QAE_NJ@Z
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
+// Naming (NF172, 2026-11-20, q5130): the surface-composition callee 0x00B2AD80 respelled in place to Ego_r.pdb 0x009CBC20 / FableWin.pdb
+//   0x02D8BF20 ?ChangeSceneForTextureBank@CEngineSurfaceCompositionManager@@QAEXXZ (the self row's Leaf; body CompletedBankFile.ChangeScene()
+//   at +0x398, which is why the main bank's scene change comes first here); was the stand-in FlushCache.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B3B4F0, length 136 bytes.
 // Signature from Ego_r.pdb: ?ResizeHiresTextureMemory@CEngineResourceManager@@QAE_NJ@Z.
 // Callees: 0x009FD0C0 CGraphicDataBank::ChangeScene() (bank at +0x954), 0x00B2AD80 the surface-composition manager's
@@ -43,7 +46,7 @@ public:
 };
 class CEngineSurfaceCompositionManager {
 public:
-    void FlushCache();                                   // 0x00B2AD80
+    void ChangeSceneForTextureBank();                    // 0x00B2AD80
 };
 extern CEngineSurfaceCompositionManager* g_pSurfaceComposition_01436eac;   // 0x01436EAC
 
@@ -58,7 +61,7 @@ public:
 bool CEngineResourceManager::ResizeHiresTextureMemory(long sizeKB)
 {
     m_pGraphicBank->ChangeScene();
-    g_pSurfaceComposition_01436eac->FlushCache();
+    g_pSurfaceComposition_01436eac->ChangeSceneForTextureBank();
     CPixelFormat format;
     format.Initialise(D3DFMT_DXT1);
     long textureSize = CTextureManager::CalculateTextureSize(0x200, 0x200, true, format);

@@ -6,7 +6,7 @@
 //   ?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z (Ego_r.pdb 0x00AE7D60 + FableWin.pdb 0x03030910), the singleton 0x013BC470
 //   ?SingletonInstance@CShaderRenderManager@@0V1@A, Enable/Disable{Vertex,Pixel}Shaders and ApplyPixelShader (const CPixelShader&) the PDB
 //   spellings. Was the row-local CShaderEnableState / CShaderRenderManager / CVertexShaderConstantLayout / CArray models and g_ShaderRenderManager.
-// Leaf: ShowBlurTexture
+// Leaf: ?ShowBlurTexture@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B5E700, length 816 bytes (body 0x323 + int3 padding), plain `ret`.
 // Twin of ShowGlowTexture 0x00B61690 plus a layout save: CShaderRenderManager::SetVertexShaderConstantLayout(long)
 //   @ 0x0098B5E0 on the static shader manager @ 0x013BC470 (current layout index +0x8), restored at exit. Same callees
@@ -27,7 +27,14 @@
 //   CRenderStateScopedCaptureBlock (engine/CRenderStateCaptureBlock.h, CRenderStateCaptureBlock::StateManager). Was a local
 //   CRenderManagerCoreView / CTrackedRenderState / SetState model, g_pRenderManagerCore / g_pRenderStateManager,
 //   g_renderStateDefault_01396fb8 and a local struct CRenderStateCaptureBlock.
+// Naming (NF172, 2026-11-20, q11739): the derived _Methods shell dropped; the row is the private member itself on
+//   engine/CEngineScreenEffectRadialBlurRenderer.h FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_MEMBERS (the recipe of its twin
+//   ApplyRadialBlur 0x00B5E0F0): Ego_r.pdb + FableWin.pdb ?ShowBlurTexture@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ (was
+//   ?ShowBlurTexture@CEngineScreenEffectRadialBlurRenderer_Methods@@QAEXXZ). Its one landed caller, Render 0x00B5EA30, moves with it.
 #define FABLE_RETAIL_CRENDERMANAGERCORE_DRAWASINDEXEDTRIS
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_MEMBERS
 #define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
 #include "engine/CRenderManager.h"
 #include "engine/CRenderStateCaptureBlock.h"
@@ -42,17 +49,13 @@ namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; 
 
 extern const unsigned short g_QuadIndices_0139a550[6]; // 0x0139A550
 
-struct CEngineScreenEffectRadialBlurRenderer_Methods : CEngineScreenEffectRadialBlurRenderer {
-    void ShowBlurTexture();
-};
-
-void CEngineScreenEffectRadialBlurRenderer_Methods::ShowBlurTexture()
+void CEngineScreenEffectRadialBlurRenderer::ShowBlurTexture()
 {
     CRenderStateScopedCaptureBlock capture;
     CScopedVertexShaderConstantLayout layout(2);
     CScopedShadersEnable shaders(true, true);
-    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*(CVertexShader*)ScreenCopyVertexShader, false);
-    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(*(CPixelShader*)TextureOnlyPixelShader);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(ScreenCopyVertexShader, false);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(TextureOnlyPixelShader);
     NEngineInternal::GPRenderManager->SetAlphaBlendEnable(false);
     NEngineInternal::GPRenderManager->SetZBufferEnable(false);
     NEngineInternal::GPRenderManager->SetPolyCullMode(POLY_CULL_NONE);

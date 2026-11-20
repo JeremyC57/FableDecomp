@@ -2,6 +2,9 @@
 // NF151 (2026-11-20, q4669): the local CShaderRenderManager model and its `g_ShaderRenderManager` global are replaced by
 //   engine/CShaderRenderManager.h: the singleton is the private static ?SingletonInstance@CShaderRenderManager@@0V1@A (0x013BC470) reached through
 //   the inline ?Get@CShaderRenderManager@@SIAAV1@XZ, the current layout through the inline PeekVertexShaderConstantLayout (+0x08).
+// Naming (NF172, 2026-11-20, q4810 / q4811): RenderSingleSprite 0x00BC04F0 / RenderSingleSpriteTrail 0x00BBE090 take the sub-primitive by
+//   reference (Ego_r.pdb 0x00A759A0 / 0x00A73690 + FableWin.pdb 0x02EB58B0 / 0x02EB27E0 ...QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z);
+//   respelled in place in the row's existing local manager models (were the pointer forms PAV).
 // Leaf: ?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z
 // NF95 (part 2, q11381): 0x01436EB0 is NEngineInternal::GPVideoOptions (FableWin.pdb public ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B,
 //   FableWin 0x04AC8094; Ego_r.pdb data order GPLightingManager / GPEngine / GPVideoOptions; CEngine::SetVideoOptions 0x00B24690 stores
@@ -49,11 +52,11 @@ public:
 namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 class CEnginePrimitiveManagerParticleSpriteGroup : public CEnginePrimitiveManager {
 public:
-    void RenderSingleSprite(CEngineSubPrimitiveBase* subPrimitive, ERenderPassType pass);           // 0x00BC04F0
+    void RenderSingleSprite(CEngineSubPrimitiveBase& subPrimitive, ERenderPassType pass);           // 0x00BC04F0
 };
 class CEnginePrimitiveManagerParticleSpriteTrailGroup : public CEnginePrimitiveManager {
 public:
-    void RenderSingleSpriteTrail(CEngineSubPrimitiveBase* subPrimitive, ERenderPassType pass);      // 0x00BBE090
+    void RenderSingleSpriteTrail(CEngineSubPrimitiveBase& subPrimitive, ERenderPassType pass);      // 0x00BBE090
 };
 
 
@@ -116,13 +119,13 @@ void CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPr
     case 7: {
         CEnginePrimitiveManagerParticleSpriteGroup* manager = (CEnginePrimitiveManagerParticleSpriteGroup*)NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(27);
         CEngineSubPrimitiveBase subPrimitive(primitive);
-        manager->RenderSingleSprite(&subPrimitive, pass);
+        manager->RenderSingleSprite(subPrimitive, pass);
         break;
     }
     case 20: {
         CEnginePrimitiveManagerParticleSpriteTrailGroup* manager = (CEnginePrimitiveManagerParticleSpriteTrailGroup*)NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(29);
         CEngineSubPrimitiveBase subPrimitive(primitive);
-        manager->RenderSingleSpriteTrail(&subPrimitive, pass);
+        manager->RenderSingleSpriteTrail(subPrimitive, pass);
         long layout = CShaderRenderManager::Get().PeekVertexShaderConstantLayout();
         CShaderRenderManager::Get().SetVertexShaderConstantLayout(5);
         CShaderRenderManager::Get().SetVertexShaderConstantLayout(layout);

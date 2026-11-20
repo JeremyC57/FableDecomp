@@ -1,4 +1,7 @@
 // CProgressDisplay::DisplayProgress(const CCharString& textTag, float progress, bool a, bool b) -- when progress display is live, re-render the progress screen at most every 0.05 s (always on the first update) and remember the last text tag shown
+// Naming (NF172, 2026-11-20, q4303 / q11976 / q11977): the callee 0x00499880 respelled in place to its private PDB form
+//   ?RenderProgress@CProgressDisplay@@AAEXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb, engine/CProgressDisplay.h); its self row moves to
+//   it in the same hand-back, closing the QAE / AAE split on 0x00499880.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00499C50, length 127 bytes, `ret 10h`.
 // Callees: GFGetTime @ 0x009E1BC0 (`__fastcall`, double on the FPU), CProgressDisplay::RenderProgress @ 0x00499880,
@@ -31,7 +34,9 @@ struct CProgressDisplay {
     double        LastProgressUpdate;                      // +0x70
     bool          DebugDisplay;                            // +0x78
     bool          Initialised;                             // +0x79
-    void RenderProgress(const CCharString& textTag, float progress, bool a, bool b);   // 0x00499880
+private:
+    void RenderProgress(const CCharString& textTag, float progress, bool a, bool b);   // 0x00499880 (private: both PDBs)
+public:
     void DisplayProgress(const CCharString& textTag, float progress, bool a, bool b);
 };
 

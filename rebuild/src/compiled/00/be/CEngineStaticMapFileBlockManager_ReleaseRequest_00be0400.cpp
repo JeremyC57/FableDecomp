@@ -1,31 +1,20 @@
-// CEngineStaticMapFileBlockManager::ReleaseRequest(long block) -- find the block's node in the set at +8 (the insertion-point find with the result through a local) and drop its pending count (+0x14)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE0400, length 27 bytes.
-// Callees: the set's find @ 0x00BE08E0 (on +8: the node result by reference in the one-word frame, the key by reference). Shape: `push ecx` frame, the two addresses
-// pushed, `add ecx,8`, the result read back and `dec dword ptr [eax+14h]`.
-class CBankFileAsyncData;
-struct SBlockNode_00be0400 {                        // the set node: the async data at +0x1c, the high-priority flag at +0x18, the pending count at +0x14
-    unsigned char       _pad[0x14];
-    long                m_pending;                 // +0x14
-    bool                m_highPriority;            // +0x18
-    unsigned char       _pad19[3];
-    CBankFileAsyncData* m_pData;                   // +0x1c
-};
-
-struct CRetailBlockSet {                           // the retail set at +8: its first word is the end sentinel
-    SBlockNode_00be0400* m_pEnd;
-    void FindInsertionPoint(SBlockNode_00be0400*& result, const long& key);   // 0x00BE08E0
-    void Find(SBlockNode_00be0400*& result, const long& key);                 // 0x00BE0930
-};
-
-class CEngineStaticMapFileBlockManager { public:
-    unsigned char   _pad[8];
-    CRetailBlockSet m_blocks;                      // +0x08
-    void ReleaseRequest(long block);
-};
+// CEngineStaticMapFileBlockManager::ReleaseRequest(long block) -- find the block in Blocks and drop its RefCount
+// Leaf: ?ReleaseRequest@CEngineStaticMapFileBlockManager@@QAEXJ@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE0400, length 27 bytes, `ret 4`.
+// Callees: STLport _Rb_tree<long, pair<const long,CFileBlock> >::find<long> 0x00BE08E0 (out of line, hidden iterator result in the
+//   one-word frame, the key by reference). Shape: `push ecx` frame, the two addresses pushed, `add ecx,8` (Blocks), the result read back
+//   and `dec dword ptr [eax+14h]` (node value +0x10: key, CFileBlock::RefCount +0x14); no end() test.
+// Naming (NF172, 2026-11-20, q4395): ported off the invented local CRetailBlockSet / SBlockNode_00be0400 models onto
+//   engine/CEngineStaticMapFileBlockManager.h (Blocks = std::map<long,CFileBlock>, stlport/fable_map.h), so the find binds the STLport
+//   member template ??$find@J@?$_Rb_tree@... (owner decision D1, 2026-11-03), the self row 0x00BE08E0's Leaf; was
+//   ?FindInsertionPoint@CRetailBlockSet@@QAEXAAPAUSBlockNode_00be0400@@ABJ@Z. Own name: Ego_r.pdb + FableWin.pdb
+//   ?ReleaseRequest@CEngineStaticMapFileBlockManager@@QAEXJ@Z (the row's existing spelling; Leaf line added).
+#define FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_RELEASEREQUEST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_DECL
+#include "engine/CEngineStaticMapFileBlockManager.h"
 
 void CEngineStaticMapFileBlockManager::ReleaseRequest(long block)
 {
-    SBlockNode_00be0400* node;
-    m_blocks.FindInsertionPoint(node, block);
-    --node->m_pending;
+    --Blocks.find(block)->second.RefCount;
 }

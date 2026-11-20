@@ -10,6 +10,11 @@ class CCamera;
 class CEngineCamera:public CEngineComponent {
 public:
  CEngineCamera(bool);
+#ifdef FABLE_RETAIL_CENGINECAMERA_SETGAMEWINDOW
+ // NF172 opt-in (row 0x00B2FC00): Ego_r.pdb 0x009D0510 / FableWin.pdb 0x02DC15E0 ?SetGameWindow@CEngineCamera@@QAEXPBVC2DBoxF@@@Z
+ // (stores the argument in GameWindow +0x10; CEngine::SetWindow 0x00B23B80 tail-jumps here on the engine camera). Declaration only.
+ void SetGameWindow(const class C2DBoxF* window);                      // 0x00B2FC00
+#endif
 #if defined(FABLE_RETAIL_CENGINECAMERA_CLIPSPHERE)
  // Retail opt-in (chunk 2028, row 0x00B8DF50 CEngineOcclusionManager::FrameEnd): FableWin.pdb ?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@M@Z
  // (debug copy only: no Ego_r.pdb or Fable.exe out-of-line copy; reloc_bindings binds only the 3-argument 0x00B30480), expanded by the landed

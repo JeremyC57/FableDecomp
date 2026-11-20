@@ -26,6 +26,11 @@ public:
     long AddScratchPool(long size);                                      // 0x00F370C0
 #endif
     bool BeginShutdown();                                    // 0x00F37170
+#ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDSHUTDOWN
+    // NF172 opt-in (row 0x00B3AFF0): Ego_r.pdb 0x00B3C1D0 / FableWin.pdb 0x0316CC20 ?EndShutdown@CGPUScratchBufferTextureManager@@QAE_NXZ
+    // (retail 0x00F36D30, not a landed row: it re-creates the scratch textures, `mov al,1 ; ret` / `xor al,al ; ret`). Declaration only.
+    bool EndShutdown();                                      // 0x00F36D30
+#endif
 #ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_TEXTURES
     long AllocteMemoryPage(long size, bool is_render_target);                                            // 0x00F37660
     long AllocateTexture(long page, const C2DExtentsI& extents, long mipmap_levels, const CPixelFormat& format,

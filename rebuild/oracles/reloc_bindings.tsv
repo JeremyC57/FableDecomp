@@ -662,8 +662,6 @@ _FreeThing@4	00451b82	00453630
 ?Uninitialise@CSurface@@QAEXXZ	009f2e20	004979a0
 ?CalculateNextTextTag@CProgressDisplay@@QAEXXZ	00497b60	00499a70
 ?g_FableEmptyText_0122D70E@@3QBDB	0122d70e	00499a70
-?g_bProgressDisplayEnabled@@3_NA	01375445	00499c50
-?g_bProgressDisplaySuppressed@@3_NA	013b89d3	00499c50
 ?CalculateSmoothedTime@CFrameRateSmoother@@AAEXXZ	0049b9a0	0049b9e0
 ??_7CGameJoystickManager@@6B@	01238b54	0049bb60
 ?Destroy_0049bc20@@YIXPAX@Z	0049bc20	0049bce0
@@ -4816,7 +4814,6 @@ __imp__timeGetTime@0	014404b4	009e1cb0
 ?Destroy_009e2960@@YIXPAX@Z	009e2960	009e3090
 ?Destroy_009e2970@@YIXPAX@Z	009e2970	009e3100
 ?InsertN@CRetailVector_009e3580@@QAEXPAJKABJ@Z	009e3430	009e3580
-?g_formatCursor@@3PAHA	0129ba48	009e3620
 ?g_pixFmtTable@@3PAUPixFmtEntry@@A	0129ba48	009e3800
 ?g_FablePixelFormatTable@@3PAUFablePixelFormatRecord@@A	0129ba40	009e3820
 ??_7CJoystick@@6B@	0129c0ec	009e43b0
@@ -5189,8 +5186,6 @@ __TI1?AUCFibreException@@	013692f8	00a44740
 ?InternalSetResource@CHandleBasedMemoryPool@@QAEXJPAX@Z	00a028b0	00a62e40
 ??_7CVertexShaderData@@6B@	0129da50	00a62fc0
 ??_7CVertexShaderConstructorView@@6B@	0129b3d0	00a63020
-?VertexBufferReleased@CRenderManagerCore@@QAEXPAUIDirect3DVertexBuffer@@M@Z	00a0aa70	00a63200
-?VertexBufferLocked@CRenderManagerCore@@QAEXPAUIDirect3DVertexBuffer@@M@Z	00a0aa70	00a63240
 ??_7CFontDataBankEntry@@6B@	0129da70	00a63440
 ??0CStaticFontBank@@QAE@JJ@Z	00ab8e10	00a634f0
 ?Reset@CCountedPointer_00a634f0@@QAEXPAUCStaticFontBank@@@Z	0041947a	00a634f0
@@ -5657,9 +5652,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?Defragment@CBufferOwner_00bd9b50@@QAEXXZ	00bd9b50	00b3b1a0
 ?Defragment@CHandleBasedMemoryPool@@QAEXXZ	00a02730	00b3b1a0
 ?g_pEngine_01436ea8@@3PAUCEngineGlobal_01436ea8@@A	01436ea8	00b3b1a0
-?FlushCache@CEngineSurfaceCompositionManager@@QAEXXZ	00b2ad80	00b3b4f0
-?ResizePoolByFormat@CTextureManager@@QAE_NJJ@Z	00a6abe0	00b3b4f0
-?g_pSurfaceComposition_01436eac@@3PAVCEngineSurfaceCompositionManager@@A	01436eac	00b3b4f0
 ?Flush@CDeviceOwner_009f8200@@QAEXXZ	009f8200	00b3b7c0
 ?Destroy_00b3e080@@YIXPAX@Z	00b3e080	00b3e510
 ?Destroy_00b3e1a0@@YIXPAX@Z	00b3e1a0	00b3e580
@@ -5736,7 +5728,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?ProcessRead@CActiveFile@@QAEXXZ	00b836e0	00b83950
 ??1CListMember_00b83df0@@QAE@XZ	00b83df0	00b84070
 ?g_sortDistanceNumerator@@3MA	012a3a20	00b84290
-?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXPAX0000PAUSSortKey_00b846e0@@@Z	00b84580	00b846e0
 ?Helper@ConsAlloc@@QAEXPAUPair24@@@Z	00b84400	00b847b0
 ?Override_00b866a0@CMulti_00b866a0@@UAEXXZ	00b866a0	00b86510
 ?FableBuyHelper_b86a10@@YIPAXPAUCBuyHost@@@Z	009bf5e0	00b86a10
@@ -5875,7 +5866,6 @@ _SpriteHelper@4	00bade40	00baf9e0
 ?erase@CRetailVector_SBlockEntry16@@QAEPAUSBlockEntry16@@PAU2@0@Z	00515bc0	00bdf0d0
 ?gEngine@@3PAUEngineGlobal@@A	01436ea8	00bdfa10
 ?CEngineSubPrimitiveGameMesh_dealloc@@YIXPAUCEngineSubPrimitiveGameMesh@@H@Z	00bf9920	00bdfd60
-?FindInsertionPoint@CRetailBlockSet@@QAEXAAPAUSBlockNode_00be0400@@ABJ@Z	00be08e0	00be0400
 ?Find@CRetailBlockSet@@QAEXAAPAUSBlockNode_00be0400@@ABJ@Z	00be0930	00be0480
 ?Insert@CRetailTree_00be0bf0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	00be0b20	00be0bf0
 ??_7CEngineInternalPrimitive2DParticleGroup@@6B@	012a7e3c	00be1a00
@@ -7745,7 +7735,6 @@ __imp__GetFileInformationByHandle@8	0143fdac	0099a5a0
 ?DeallocateUnusedMemory@?$CArray@K@@QAEXXZ	009b6e00	009ae5f0
 ?DeallocateUnusedMemory@?$CArray@PAUCInstantiatedDefInfo@@@@QAEXXZ	009b6eb0	009ae5f0
 ?DeallocateUnusedMemory@?$CArray@USSubDefEntry@@@@QAEXXZ	009b79b0	009ae5f0
-?PeekData@CBankFileAsyncData@@QBEPBXXZ	009d5580	00be04c0
 ?Erase@CStringMap@@QAEXPAUSRbTreeNode@@@Z	0043020a	009d4ce0
 ?WriteTable@CDefStringTable@@QAEXPAUCFileDataOutputStream@@@Z	009d4a50	009d4ce0
 ?Unlock@CDefStringTable@@QAEXXZ	009d4f10	009d4f90
@@ -8303,7 +8292,6 @@ _wcscmp	00bfe94c	004fdab0
 ??_7CScriptModuleFullTransition@NCameraModes@@6B@	01275a44	008525f0
 ?ClearLocked@CTCScriptedControl@@QAEXXZ	00712c80	00903ac0
 ??0CActionMoveTo@NTCScriptedControl@@QAE@PAUCThing_Retail@@JM_N11111@Z	009051f0	00903e20
-?GetShaderData@CShaderDataBank@@QAEPAUCPixelShaderData@@K@Z	00a61fb0	00a5d620
 ??_7CThingCreatureBase@@6B@	0125ac0c	00666090
 ?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ	00a14480	0066fb80
 ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z	004498c0	0066fb80
@@ -15467,7 +15455,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?__insertion_sort@@YIXPAVCWideString@@0VCCaseInsensitiveStringCompare@NGameComponentHelpers@@@Z	004975e0	004977d0
 ?__unguarded_insertion_sort@@YIXPAVCWideString@@0VCCaseInsensitiveStringCompare@NGameComponentHelpers@@@Z	004972e0	004977d0
 ?WordWrapText@CProgressDisplayFormatTextView@@QBE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z	00497a60	00497f80
-?RenderProgress@CProgressDisplay@@QAEXABVCCharString@@M_N1@Z	00499880	00499c50
 ?PClass@CGameJoystickManager@@2V?$CCountedPointer@VCGameJoystickManager@@@@A	013b89a0	0049bb90
 ?Reset@?$CCountedPointer@VCGameJoystickManager@@@@QAEXPAVCGameJoystickManager@@@Z	0049bce0	0049bb90
 ?GFGetSaveGameDirectoryName@@YG?AVCWideString@@XZ	0040d2a0	0049d4b0
@@ -17342,7 +17329,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Lookup@CSoundSymbolTable@@QAEXABVCCharString@@PAJ@Z	00a38420	00a01920
 ?g_pRenderStateManager@@3PAVCRenderStateManager@@A	013cb508	00a044b0
 ?g_pRenderStateManager_013cb508@@3PAVCRenderStateManager@@A	013cb508	00a07980
-?SetViewport@CDisplayManager@@QAEXABVC2DBoxI@@@Z	009bef80	00a0aa90
 ?ReadAsStringUntilCharacter@CWStringParser@@QAE_NGPAVCWParsedItem@@@Z	00a0cbb0	00a0ccd0
 ?ReadNextNumber@CWStringParser@@QAE_NPAVCWParsedItem@@@Z	00a0cdd0	00a0cfc0
 ?ReadNextString@CWStringParser@@QAE_NPAVCWParsedItem@@@Z	00a0ce90	00a0cfc0
@@ -17665,7 +17651,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CEngineScenePrimitiveStatsEnumerator@@QAE@PAUCPrimitiveStatMap@@ABVC2DBoxF@@JK@Z	00baca20	00b321b0
 ?CreatePrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@QAE?AVCEnginePrimitiveHandle@@ABUCAddMeshDesc@@@Z	00b9ab30	00b32f70
 ??0CShadowClipVolume@@QAE@ABV0@@Z	00b36c50	00b38600
-?Method_00f36d30@CBaseIntelligentPointer@@QAEPAVCBaseObject@@XZ	00f36d30	00b3aff0
 ?g_pEngineWaterRenderer@@3PAVCEngineWaterRenderer@@A	01436e54	00b40000
 ?LinkMapToWorld@CEngineWorldMap@@QAEXPAVCEngineMap@@J@Z	00b3edf0	00b40070
 ?DeleteMap@CEngineLandscapeRenderer@@QAEXPAVCEngineMap@@@Z	00b67180	00b42b10
@@ -23305,7 +23290,6 @@ _longest_match_fast	00c00fd0	00c013c0
 ??0CPixelShader@@AAE@PAUIDirect3DPixelShader9@@ABV?$CArray@J@@ABVCCharString@@@Z	00a5ecb0	0098a9a0
 ?CreateRetailBank@CBankFileManager@@AAEXABVCWideString@@@Z	009a7720	009a7d40
 ?DeallocateUnusedMemory@CSymbolMap@@QAEXXZ	009e5350	009ae5f0
-?CreatePixelShader@CShaderRenderManager@@AAE?AVCPixelShader@@ABV?$CArray@K@@ABV?$CArray@VCCharString@@@@ABVCCharString@@@Z	0098a9a0	00a5d620
 ?GetPosition@CFileDataOutputStream@@UBEKXZ	00994460	00a60aa0
 ?SetPosition@CFileDataOutputStream@@UAEXK@Z	00994450	00a60aa0
 ?WriteDateAndTime@CDataOutputStream@@QAEXABVCDateAndTime@@@Z	00994180	00a60aa0
@@ -24019,7 +24003,6 @@ __imp__CreateEventA@16	0143fec4	00c5e650
 ?PeekNextItemType@CStringParser@@QAE?AW4EParsedItemType@@XZ	009ba900	0040f7e0
 ?Init@CPersistContext@@QAEXAAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV3@@Z	009ba9d0	004c88e0
 ?Init@CPersistContext@@QAEXAAVCCharString@@PBVCDefinitionManager@@@Z	009baa10	004c88e0
-?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z	009fd100	00b3b4f0
 ??_GC3DMeshPartitionBuilderElement@@QAEPAXI@Z	00ac39c0	00ac39c0
 ?SwitchDoorsOnAndOff@CQ_SecretPassageScript@NScript@@QAEXXZ	00defb10	00def760
 ??_7CNavButton@NUISystem@@6BCEventSinkInterface@1@@	0124b01c	00558b90
@@ -30118,8 +30101,6 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ??$GetPBestThingInRoughArea@V?$CFilter_Bind4@VCThingFilter_IsAvailableForCreatureInteraction@@VCThingFilter_In2DRangeLimit@@VCThingFilter_CanSeeEachOther@@V?$unary_negate@VCThingFilter_IsUnconscious@@@std@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_IsAvailableForCreatureInteraction@@VCThingFilter_In2DRangeLimit@@VCThingFilter_CanSeeEachOther@@V?$unary_negate@VCThingFilter_IsUnconscious@@@std@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z	007f70d0	007f67c0
 ?PeekPhysicsMesh@C3DMeshInfo@@QBEPBVCPhysicsMeshInfo@@XZ	00a24a70	006b05a0
 ?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z	00406610	00406ae0
-?find@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@2@ABJ@Z	00be08e0	00be06b0
-?insert_unique@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@2@@Z	00be0bf0	00be06b0
 ?CheckVisibilityResults@CEngineSceneGrid@@QAE_NW4EEngineOcclusionLayer@@KKKK_N@Z	00b939e0	00b939e0
 ?CheckVisibilityResults@CEngineSceneGridCell@@AAE_NW4EEngineOcclusionLayer@@KK_N@Z	00b936e0	00b939e0
 ?CreateOcclusionGroup@CEngineSceneGridCell@@AAEXW4EEngineOcclusionLayer@@PAVCEngineSceneGrid@@KK@Z	00b92300	00b939e0
@@ -33867,7 +33848,6 @@ _s_CornerOrderNormal	0129b94c	009dca80
 ?Process@CEngineCamera@@QAEX_N@Z	00b314e0	00b23b50
 ?SetGameWindow@CEngineCamera@@QAEXPBVC2DBoxF@@@Z	00b2fc00	00b23b80
 ?AddPrimitive@CEnginePrimitiveRenderer@@QAEXABVCEnginePrimitive@@@Z	00b32e90	00b23bb0
-?RealSet@CGlobalTarget@@QAEXPAVCEnginePrimitiveHandle@@PAVCEnginePrimitive@@KH@Z	00b324a0	00b23bc0
 ?SetPrimitiveAnimation@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z	00b31e90	00b23be0
 ?SetPrimitivePosition@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z	00b31ec0	00b23bf0
 ?AddChildPrimitive@CEnginePrimitiveRenderer@@QAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z	00b31ef0	00b23c20
@@ -34396,11 +34376,6 @@ _lzo1x_999_compress	00c08130	00a99840
 ?GetResult@CEngineOcclusionManager@@QAEKK_N@Z	00b8d0b0	00b2f8e0
 ?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z	00b439c0	00b3f5e0
 ?PeekThemeBlend@CEngineMap@@QBEEJJJ@Z	00b43870	00b40bd0
-?ApplyRadialBlur@CEngineScreenEffectRadialBlurRenderer_Render@@QAEXXZ	00b5e0f0	00b5ea30
-?CaptureBackBuffer@CEngineScreenEffectRadialBlurRenderer_Render@@QAEXXZ	00b5ca70	00b5ea30
-?CaptureEnvironmentParameters@CEngineScreenEffectRadialBlurRenderer_Render@@QAEXXZ	00b5bd70	00b5ea30
-?ShowBlurTexture@CEngineScreenEffectRadialBlurRenderer_Render@@QAEXXZ	00b5e700	00b5ea30
-?UpdateWorldPositionTracking@CEngineScreenEffectRadialBlurRenderer_Render@@QAE_NXZ	00b5c120	00b5ea30
 ??_7CEngineScreenEffectGlowRenderer@@6B@	012a27cc	00b5ee80
 ?SetViewport@CDisplayManager@@QAEXPAX@Z	009bef80	00b869a0
 ??_7CEngineScreenEffectDisplacementRenderer@@6B@	012a3a94	00b870a0
@@ -38602,7 +38577,6 @@ __imp__CoUninitialize@0	01440648	00a3bc20
 ?ReadTable@CDefStringTable@@QAEXPAVCFileDataInputStream@@@Z	009d4ab0	009d4c30
 ??_7CShaderBankEntry@@6B@	0129d698	00a62120
 ?ReadEntryData@CBankFile@@QAEXKKPAXK@Z	009cc2a0	00a62120
-?g_QuadIndices_0139a550@@3QBGB	0139a550	00b5e700
 ??$GetAllThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_IsNot@@@CThingSearchTools@@QBEXABVCThingFilter_IsNot@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z	008e3bb0	008dcb60
 ?ExtinguishFlames@CModeJackOfBladesFlash@NCreatureMode@@AAEXXZ	008dcb60	008df310
 ?TransitionToTheme@CEnvironment@@QAEXJJJM@Z	006b3800	008e7b90
@@ -38667,12 +38641,6 @@ _c_dfDIMouse2	012addfc	00ab5710
 _TWO_PI	0124f2b8	008185b0
 ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@	01238768	00495620
 ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@	0123875c	00495620
-?DrawProgress@CProgressDisplay@@QAEXABVCCharString@@M_N@Z	00498490	00499880
-?Flush@CRenderManager@@QAEX_N@Z	009da9f0	00499880
-?IsDeviceLost@CRenderManager@@QBE_NXZ	00a0aa60	00499880
-?SetViewport@CRenderManager@@QAEXABVC2DBoxI@@@Z	00a0aa90	00499880
-?g_ProgressScreenHeight@@3NA	013961f0	00499880
-?g_ProgressScreenWidth@@3NA	013961e8	00499880
 ??$__uninitialized_copy@PAVCTexture@@PAV1@@std@@YIPAVCTexture@@PAV1@00ABU__false_type@0@@Z	0049ad70	0049b480
 ??$__copy_backward_ptrs@PAVCTexture@@PAV1@@std@@YIPAVCTexture@@PAV1@00ABU__false_type@0@@Z	0049b0f0	0049b5a0
 ??$fill@PAVCTexture@@V1@@std@@YIXPAVCTexture@@0ABV1@@Z	0049add0	0049b5a0
@@ -38941,8 +38909,6 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?g_pEngineEnvironment@@3PAUCEngineEnvironmentManagerView@@A	01436e8c	00b77e20
 ?g_QuadIndices_0139ab0c@@3QBGB	0139ab0c	00b88bc0
 ?GetLightsInSphereFast@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z	00b46b90	00bbc0b0
-??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z	00b98a50	00bbc130
-?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXPAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	00bbe090	00bbc130
 ??0CShaderRenderManager@@QAE@XZ	0098ab00	01223d00
 ??_7?$CSpawnedFunc1@VCV_RockTrollFirstEncounterScript@NScript@@VCScriptThing@@@@6B@	012f17a8	00ec4a00
 ?WatchForRockTrollHit@CV_RockTrollFirstEncounterScript@NScript@@QAEXVCScriptThing@@@Z	00ec5140	00ec4a00
@@ -39207,7 +39173,6 @@ _ONE_OVER_360	01238e00	00878b60
 ?g_PixelFormatInfo@@3PAUCPixelFormatInfo@@A	0129ba4c	00b2c4e0
 ?SetMapVisibility@CEngineMap@@QAEXAAV?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@_N@Z	00b41db0	00b42390
 ?UpdateRenderLayerMask@CEngineInternalPrimitive2DViewport@@QAEXXZ	00be1d80	00be2310
-?FreeResourceEntry@CGPUScratchBufferTextureManager@@QAEXJ@Z	00f36f40	00f37440
 ?AddGossip@CV_BookCollectingScript@NScript@@QAEXVCCharString@@000@Z	00e55c60	00e54e90
 ?AskForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAE_NJVCCharString@@@Z	00e55ce0	00e54e90
 ?LookForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAEXXZ	00e57530	00e54e90
@@ -39600,3 +39565,31 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ??_7CCreatureAction_SummonerChargeInto@@6B@	012971ec	0096ff10
 ?GetActionCode@CCurrentAction@@QAEJXZ	00692620	0096ff10
 ?SetAsInDanger@CTCStealth@@QAEXPAVCThing@@J@Z	00747b80	0096ff10
+?DrawRetailDisplay@CProgressDisplay@@AAEXABVCCharString@@M_N@Z	00498490	00499880
+?IsRendering@CRenderManagerCore@@QAE_NXZ	00a0aa60	00499880
+?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxI@@@Z	00a0aa90	00499880
+?g_ProgressScreenHeight@@3NA	013961f0	00499880
+?g_ProgressScreenWidth@@3NA	013961e8	00499880
+?g_bProgressDisplayEnabled@@3_NA	01375445	00499c50
+?g_bProgressDisplaySuppressed@@3_NA	013b89d3	00499c50
+?g_formatCursor@@3PAHA	0129ba48	009e3620
+?SetViewport@CDisplayManager@@QAEXABVC2DBoxI@@@Z	009bef80	00a0aa90
+?CreatePixelShader@CShaderRenderManager@@AAE?AVCPixelShader@@ABV?$CArray@K@@ABV?$CArray@VCCharString@@@@ABVCCharString@@@Z	0098a9a0	00a5d620
+?GetShaderData@CShaderDataBank@@QAEPAUCPixelShaderData@@K@Z	00a61fb0	00a5d620
+?EndShutdown@CGPUScratchBufferTextureManager@@QAE_NXZ	00f36d30	00b3aff0
+?ChangeSceneForTextureBank@CEngineSurfaceCompositionManager@@QAEXXZ	00b2ad80	00b3b4f0
+?ResizePoolByFormat@CTextureManager@@QAE_NJJ@Z	00a6abe0	00b3b4f0
+?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z	009fd100	00b3b4f0
+?g_pSurfaceComposition_01436eac@@3PAVCEngineSurfaceCompositionManager@@A	01436eac	00b3b4f0
+?g_QuadIndices_0139a550@@3QBGB	0139a550	00b5e700
+?ApplyRadialBlur@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	00b5e0f0	00b5ea30
+?CaptureBackBuffer@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	00b5ca70	00b5ea30
+?CaptureEnvironmentParameters@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	00b5bd70	00b5ea30
+?ShowBlurTexture@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	00b5e700	00b5ea30
+?UpdateWorldPositionTracking@CEngineScreenEffectRadialBlurRenderer@@AAE_NXZ	00b5c120	00b5ea30
+??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z	00b98a50	00bbc130
+?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	00bc04f0	00bbc130
+?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	00bbe090	00bbc130
+?PeekData@CBankFileAsyncData@@QBEPBXXZ	009d5580	00be04c0
+?find@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Const_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@2@ABJ@Z	00be0930	00be04c0
+?insert_unique@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@2@@Z	00be0bf0	00be06b0

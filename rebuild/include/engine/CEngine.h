@@ -34,6 +34,12 @@ public:
     virtual void OnPreDeviceReset();                                     // 0x00B26010 ?OnPreDeviceReset@CEngine@@UAEXXZ
     virtual bool OnPostDeviceReset();                                    // 0x00B25D00 ?OnPostDeviceReset@CEngine@@UAE_NXZ
     virtual void Uninitialise();                                         // slot 85 0x00B25D80 ?Uninitialise@CEngine@@UAEXXZ (CEngine's first own virtual)
+#ifdef FABLE_RETAIL_CENGINE_SETPERSISTENTPRIMITIVE
+    // NF172 opt-in (row 0x00B23BC0): the CIEngine slot-23 override, Ego_r.pdb / FableWin.pdb
+    // ?SetPersistentPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z (vtable 0x012A0F3C slot 23). Declaration only:
+    // an override.
+    virtual void SetPersistentPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive, unsigned long flags);   // 0x00B23BC0
+#endif
 #ifdef FABLE_RETAIL_CENGINE_GETSCRATCHBUFFERTEXTUREMANAGER
     // Opt-in (NF46 round 7, row 0x00B23F60): the CIEngine slot-73 override, Ego_r.pdb / FableWin.pdb
     // ?GetScratchBufferTextureManager@CEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ (retail 0x00B23F60). Declaration only: an override.

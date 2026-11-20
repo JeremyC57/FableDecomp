@@ -1,5 +1,5 @@
 // CEngineScreenEffectRadialBlurRenderer::Render(const CEngineComponentRenderParams&) -- when enabled: pick up the environment's blur parameters if asked to, and when the blur source is tracked on screen with a visible fade capture the back buffer and apply the radial blur; show the debug texture if requested; then release this frame's two blur textures
-// Leaf: Render
+// Leaf: ?Render@CEngineScreenEffectRadialBlurRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B5EA30, length 151 bytes (+ int3 padding); virtual
 // `?Render@CEngineScreenEffectRadialBlurRenderer@@UAEXABVCEngineComponentRenderParams@@@Z` (`ret 4`, the params unused).
 // Callees: CaptureEnvironmentParameters @ 0x00B5BD70, UpdateWorldPositionTracking @ 0x00B5C120 (bool), CaptureBackBuffer
@@ -10,9 +10,19 @@
 // byte at +0x08 (the header's `_pad_0x08`). The method is attached through a derived shell.
 // Shape: `this` is still in ecx for the first call (no reload); the fade test is `Fade > 1/255` (`fcomp ; test ah,41h ;
 // jne`); the release tail tests only the first texture, frees both handles through one pool local, then clears both.
+// Naming (NF172, 2026-11-20, q11739): the derived _Render shell dropped; the row is the CEngineComponent::Render override itself on
+//   engine/CEngineScreenEffectRadialBlurRenderer.h MEMBERS mode (+ NF172 opt-in FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_RENDER,
+//   + CAPTUREBACKBUFFER): own leaf Ego_r.pdb / FableWin.pdb ?Render@CEngineScreenEffectRadialBlurRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
+//   (was ?Render@CEngineScreenEffectRadialBlurRenderer_Render@@QAEXABVCEngineComponentRenderParams@@@Z), and the five private callees bind
+//   their PDB spellings (...@CEngineScreenEffectRadialBlurRenderer@@AAE...: CaptureEnvironmentParameters 0x00B5BD70, UpdateWorldPositionTracking
+//   0x00B5C120, CaptureBackBuffer 0x00B5CA70, ApplyRadialBlur 0x00B5E0F0, ShowBlurTexture 0x00B5E700; were the _Render shell's QAE stand-ins).
+//   The enabled flag at +0x08 is CEngineComponent::RenderEnabled through the inline FableWin.pdb PeekRenderEnabled.
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_MEMBERS
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_RENDER
+#define FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_CAPTUREBACKBUFFER
 #include "engine/CEngineScreenEffectRadialBlurRenderer.h"
-
-class CEngineComponentRenderParams;
 
 // NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
 // ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) and its +0x3190 member the CGPUScratchBufferTextureManager
@@ -26,21 +36,12 @@ class CEngineComponentRenderParams;
 #include "engine/CGPUScratchBufferTextureManager.h"
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
-struct CEngineScreenEffectRadialBlurRenderer_Render : CEngineScreenEffectRadialBlurRenderer {
-    void CaptureEnvironmentParameters();           // 0x00B5BD70
-    bool UpdateWorldPositionTracking();            // 0x00B5C120
-    void CaptureBackBuffer();                      // 0x00B5CA70
-    void ApplyRadialBlur();                        // 0x00B5E0F0
-    void ShowBlurTexture();                        // 0x00B5E700
-    void Render(const CEngineComponentRenderParams& params);
-};
-
-void CEngineScreenEffectRadialBlurRenderer_Render::Render(const CEngineComponentRenderParams& params)
+void CEngineScreenEffectRadialBlurRenderer::Render(const CEngineComponentRenderParams& params)
 {
-    if (_pad_0x08[0]) {
+    if (PeekRenderEnabled()) {
         if (UseEnvironmentParameters)
             CaptureEnvironmentParameters();
-        if (UpdateWorldPositionTracking() && CurrentParameters_Fade > 1.0f / 255.0f) {
+        if (UpdateWorldPositionTracking() && CurrentParameters.Fade > 1.0f / 255.0f) {
             CaptureBackBuffer();
             ApplyRadialBlur();
         }

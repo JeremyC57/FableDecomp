@@ -1,0 +1,10 @@
+rechecked 60 of 331
+rechecked 120 of 331
+rechecked 180 of 331
+rechecked 240 of 331
+rechecked 300 of 331
+rechecked 331 of 331
+recheck done
+--- bad
+00be6f70	00be6f70   DIFFER(198v2654) PASS   CLandscapeBackgroundPatch::Render
+00bf4570	00bf4570   DIFFER(316v4431) PASS   CEngineLandscapePatch::RenderForeground

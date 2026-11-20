@@ -7,6 +7,8 @@
 // @ 0x00B51EA0 (manifest "StartRaining") uses the previous byte/float pair, so this body is the snow variant. The engine header puts
 // OverridenSnowStrength/SnowOverriden at +0x12f0/+0x12f4 (Ego PDB); retail has the float at +0x5cc and the flag at +0x5d1 while
 // MaximumWeatherParticlePercentage stays at +0x12f8, so the retail layout is modelled locally.
+// Naming (NF172, 2026-11-20, q4826): BuildBoxPositionMatrix respelled in place to its private PDB form (Ego_r.pdb 0x009F2D10
+//   ?BuildBoxPositionMatrix@CEngineWeatherRenderer@@AAEXXZ), as the rain twin 0x00B51EA0 and the self row 0x00B51AD0 spell it.
 class CEngineWeatherRenderer { public:
     unsigned char _pad0[0x5c8];
     float         OverridenRainStrength;           // +0x5c8
@@ -15,8 +17,9 @@ class CEngineWeatherRenderer { public:
     bool          SnowOverriden;                   // +0x5d1
     unsigned char _pad1[0x12f8 - 0x5d2];
     float         MaximumWeatherParticlePercentage;// +0x12f8
-    void BuildBoxPositionMatrix();                 // 0x00B51AD0
     void StartSnowing(float strength);
+private:
+    void BuildBoxPositionMatrix();                 // 0x00B51AD0 (Ego_r.pdb private)
 };
 
 void CEngineWeatherRenderer::StartSnowing(float strength)

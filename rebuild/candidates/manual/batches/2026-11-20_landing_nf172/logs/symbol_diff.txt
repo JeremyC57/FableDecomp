@@ -1,0 +1,60 @@
+00499880 new: 17
+    ??0CRenderStateScopedCaptureBlock@@QAE@XZ
+    ??1CRenderStateScopedCaptureBlock@@QAE@XZ
+    ??1CSurface@@UAE@XZ
+    ??D?$scoped_ptr@VCRenderManager@@@boost@@QBEAAVCRenderManager@@XZ
+    ??_GCSurface@@UAEPAXI@Z
+    ?Get@?$CCountedPointer@VCDisplayManager@@@@QBEPAVCDisplayManager@@XZ
+    ?Get@?$CCountedPointer@VCFontManager@@@@QBEPAVCFontManager@@XZ
+    ?GetDisplayManager@CSystemManager@@QAEPAVCDisplayManager@@XZ
+    ?GetFontManager@CSystemManager@@QAEPAVCFontManager@@XZ
+    ?GetLoadFontGlyphsAsynchronously@CFontManager@@QBE_NXZ
+    ?GetRenderManager@CDisplayManager@@QAEAAVCRenderManager@@XZ
+    ?GetRenderTarget@CDisplayManager@@QAE?AVCRenderTarget@@XZ
+    ?GetViewport@CDisplayManager@@QBEABVC2DBoxI@@XZ
+    ?IsRendering@CDisplayManager@@QBE_NXZ
+    ?RenderProgress@CProgressDisplay@@AAEXABVCCharString@@M_N1@Z TABLE:00499880
+    ?SetLoadFontGlyphsAsynchronously@CFontManager@@QAEX_N@Z
+    ?StartCaptureBlock@CRenderStateManager@@QAEXPAX@Z
+00499c50 new: 0
+009e3620 new: 1
+    ?FindFormatInfoIndexFromD3DFormat@CPixelFormat@@SIJW4_D3DFORMAT@@@Z TABLE:009e3620
+00a0aa60 new: 1
+    ?IsRendering@CRenderManagerCore@@QAE_NXZ TABLE:00a0aa60
+00a0aa90 new: 1
+    ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxI@@@Z TABLE:00a0aa90
+00a5d620 new: 1
+    ?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@K@Z TABLE:00a5d620
+00a63200 new: 0
+00a63240 new: 0
+00b23bc0 new: 1
+    ?SetPersistentPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
+00b2fc00 new: 1
+    ?SetGameWindow@CEngineCamera@@QAEXPBVC2DBoxF@@@Z TABLE:00b2fc00
+00b3aff0 new: 2
+    ?GetGPUScratchBufferTextureManager@CEngineResourceManager@@QAEAAVCGPUScratchBufferTextureManager@@XZ
+    ?OnRestoreDefaultPoolResources@CEngineResourceManager@@EAE_NXZ
+00b3b4f0 new: 0
+00b51f00 new: 0
+00b5e700 new: 1
+    ?ShowBlurTexture@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ TABLE:00b5e700
+00b5ea30 new: 2
+    ?PeekRenderEnabled@CEngineComponent@@QBE_NXZ
+    ?Render@CEngineScreenEffectRadialBlurRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
+00b846e0 new: 2
+    ??0CEngineSubPrimitiveChain@@QAE@XZ
+    ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXPAVCEngineSubPrimitiveBase@@MEKPAVCEnginePrimitiveManager@@@Z TABLE:00b846e0
+00bbc130 new: 0
+00be0400 new: 3
+    ??C?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@st
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@st
+    ?find@?$map@JUCFileBlock@CEngineStaticMapFileBlockManager@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@4@@std@@QAE?AU?$_
+00be04c0 new: 5
+    ??C?$CCountedPointer@VCBankFileAsyncData@@@@QBEPAVCBankFileAsyncData@@XZ
+    ??C?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Const_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Const_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@
+    ?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z TABLE:00be04c0
+    ?find@?$map@JUCFileBlock@CEngineStaticMapFileBlockManager@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@4@@std@@QBE?AU?$_
+00be06b0 new: 1
+    ??$find@J@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U
+00f37440 new: 0

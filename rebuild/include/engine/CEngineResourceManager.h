@@ -224,6 +224,12 @@ private:
     // (a private override of the CEngineComponent virtual), `add ecx,3190h ; jmp 0x00F37170` = the scratch manager's BeginShutdown.
     virtual void OnReleaseDefaultPoolResources();                        // 0x00B3AFE0
 #endif
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_ONRESTORE
+    // NF172 opt-in (row 0x00B3AFF0, vtable 0x012A1B3C slot 12): Ego_r.pdb 0x009D9640 / FableWin.pdb 0x02DD2A20
+    // ?OnRestoreDefaultPoolResources@CEngineResourceManager@@EAE_NXZ (private override of CEngineComponent::OnRestoreDefaultPoolResources),
+    // `add ecx,3190h ; jmp 0x00F36D30` = the scratch manager's EndShutdown. Declaration only.
+    virtual bool OnRestoreDefaultPoolResources();                        // 0x00B3AFF0
+#endif
     void BuildAlphaStippleTexture(long,CArray<unsigned char>&);
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_STIPPLE
     // Ego_r.pdb / FableWin.pdb ?BuildHWStipplePatterns@CEngineResourceManager@@AAEXABV?$CArray@E@@@Z (0x00B3C4B0, landed) and

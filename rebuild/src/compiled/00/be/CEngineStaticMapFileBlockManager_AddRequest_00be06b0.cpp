@@ -14,12 +14,16 @@
 // ShareData again), and the inserted pair copies it once more. Three releases follow the insert: the pair's, the block's and
 // data's. The STLport insert_unique / _M_insert bodies must be visible (FABLE_RETAIL_STLP_MAP + _ORIGINAL_INSERT_BODY) for the
 // retail allocation (`this` in edi, lowPriority kept in bl); declaration-only bodies give 333v322.
+// Naming (NF172, 2026-11-20, q4395): the tree find is the STLport member template (owner decision D1, 2026-11-03; STLport 4.6.1 _tree.h
+//   457-467 under _STLP_MEMBER_TEMPLATES): stlport/fable_map.h FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE (same body), so the call binds
+//   ??$find@J@?$_Rb_tree@... = the self row 0x00BE08E0's Leaf (was the non-template ?find@?$_Rb_tree@...).
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CMOVABLERESOURCE
 #define FABLE_RETAIL_CBANKFILEASYNCDATA_CHANGELOADINGPRIORITY
 #define FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_ADDREQUEST
 #define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
+#define FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE
 #include "engine/EThreadedFilePriority.h"
 #include "engine/CBankFileAsyncData.h"
 #include "engine/CEngineStaticMapFileBlockManager.h"
