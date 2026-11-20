@@ -52,5 +52,5 @@ class CTCMapwho;
 // Kept from the landed row (no shared header for this class), moved into the anonymous namespace and spelled `class` as both PDBs
 // mangle it (VCThingFilter_IsHoldingMeleeWeapon@?A0x..); its operator() is inline (retail calls CTCCarrying::IsThingCarryingMeleeWeapon
 // 0x006A15A0 directly), now declared by engine/CTCCarrying.h (NF107 opt-in FABLE_RETAIL_CTCCARRYING_ISTHINGCARRYINGMELEEWEAPON):
-namespace { class CThingFilter_IsHoldingMeleeWeapon { public: FABLE_FORCEINLINE bool operator()(const CThing& p)const{return CTCCarrying::IsThingCarryingMeleeWeapon(p);}}; }
+namespace { class CThingFilter_IsHoldingMeleeWeapon { public: CThingFilter_IsHoldingMeleeWeapon() { } FABLE_FORCEINLINE bool operator()(const CThing& p)const{return CTCCarrying::IsThingCarryingMeleeWeapon(p);}}; }
 template void CThingSearchTools::GetAllThingsInRoughArea<CThingAICreature,std::vector<CThingAICreature*>,CFilter_Bind2<CThingFilter_HasDefGlobalIndex,CThingFilter_IsHoldingMeleeWeapon> >(const C2DBoxI&,const CFilter_Bind2<CThingFilter_HasDefGlobalIndex,CThingFilter_IsHoldingMeleeWeapon>&,std::vector<CThingAICreature*>&) const;

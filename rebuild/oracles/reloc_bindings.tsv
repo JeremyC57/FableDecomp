@@ -39525,3 +39525,4 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?SetAndHash@AnimationGroupFilter@@QAEXABVCCharString@@@Z	0073dff0	008d9530
 ?IsSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z	00ad8c30	00ad9980
 ?GuardComment@CQ_MinionClifftopChaseScript@NScript@@QAEXVCCharString@@@Z	00da8970	00da8510
+??$GetAllThingsInRoughArea@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasDefGlobalIndex@@VCThingFilter_IsHoldingMeleeWeapon@?A0x0ec29501@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasDefGlobalIndex@@VCThingFilter_IsHoldingMeleeWeapon@?A0x0ec29501@@@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z	008e4100	008e03b0

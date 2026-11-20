@@ -410,7 +410,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 008de7a0	CModeIceTrollGroundSmashIcicleAssault	FrameUpdate	1248	parked	DIFFER(5v1239)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008de7a0.cpp	original
 008dec80	NCreatureMode::CModeJackOfBladesFlash	FrameUpdate	1680	parked	DIFFER(1647v1665)	1	rebuild/candidates/manual/pending/2026-11-07_linux_hand831/differ/008dec80.cpp	gapscan/boundary
 008dfb00	NCreatureMode::CModeSummonerLightningOrb	NCreatureMode::CModeSummonerLightningOrb::vfunc_3	1008	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/008dfb00.cpp	gapscan/boundary
-008e03b0	CModeGuildmasterPowerUpSpeed	OnActivate	816	reserved (acctB p25H, 2026-11-20)	DIFFER(809v811)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/008e03b0.cpp	original
 008e18d0	NCreatureMode::CModeThunderLightningStorm	UpdateLightningBeams	2080	parked	DIFFER(2069v2073)	14	rebuild/candidates/manual/pending/2026-11-07_linux_hand827/differ/008e18d0.test.cpp	original
 008e28f0	NCreatureMode::CModeThunderLightningStorm	NCreatureMode::CModeThunderLightningStorm::vfunc_3	416	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand470/differ/008e28f0.cpp	gapscan/boundary
 008e5880	CTCPhysicsStandard	PerformStepBasedMovement	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/008e5880.cpp	original
