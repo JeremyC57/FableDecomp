@@ -8,7 +8,7 @@ entry cites "Account B scratch w26/...", the files are here. Rulings: docs/journ
 | row | function | best grade | what is left |
 |---|---|---|---|
 | 0x0064FDB4 | CQuestInfoElementBar::DrawAt | DIFFER(2593v2593) | frame 0x164 v 0x16C: one never-addressed 8-byte slot in retail |
-| 0x00D01630 | CQ_BanditCampScript::CGate1GuardOuter::Main | DIFFER(5161v5178) | movie dtor expanded at all 34 sites; needs a forced parent Ego_d does not have (S15 + auto_inline(off) round ~CTimer in this best) |
+| 0x00D01630 | CQ_BanditCampScript::CGate1GuardOuter::Main | DIFFER(5161v5178) | movie dtor expanded at all 34 sites; needs a forced parent Ego_d does not have (S15 + auto_inline(off) round ~CTimer in this best) (lead: the T36..T50 movie-dtor window found on 0x00EFA4F0, FINDINGS 2026-11-20) |
 | 0x00B0DC20 | NParticleEngine::CPSCUpdateNormal::Update | DIFFER(5604v5602) | SetOrientation copy folded to [esi+4] with no earlier same-member read (/d2inlT200) |
 | 0x00C73050 | Audio_PlaySourceAndProcessQueue (CAudioSource stream update) | DIFFER(672v672) | tail-item temp edi v retail edx (/d2inlT150) |
 | 0x00A4EFC0 | C3DAnimationSequenceData::InitialiseFromFileData | DIFFER(3481v3491) | expanded CQuaternion _M_insert_overflow register tie; two c2 symbol-number ties (/Gr) |
