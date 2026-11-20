@@ -1,0 +1,3 @@
+00be7d70	00be7d70   DIFFER(1437v2983) PASS   CLandscapeBackgroundPatch::Load
+00bfe050	00bfe050   DIFFER(791v2218) PASS   CLandscapeLayerMesh::LoadForeground
+good 92 bad 2

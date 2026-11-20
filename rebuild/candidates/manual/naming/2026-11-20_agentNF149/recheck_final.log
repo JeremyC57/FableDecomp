@@ -1,0 +1,112 @@
+addr       parity           behav  name
+009e2830   RELOCATION_MATCH PASS   CVertexBufferWin32::CVertexBufferWin32
+009e2e30   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+009e2e30   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+009e2e30   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009e2e30   WARN SHARED_HEADER_AVAILABLE CFontDataBank (engine/CFontDataBank.h)
+009e2e30   WARN SHARED_HEADER_AVAILABLE CStreamingFontDataBank (engine/CStreamingFontDataBank.h)
+009e2e30   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams (engine/CVertexCompressionParams.h)
+009e2e30   WARN SHARED_HEADER_AVAILABLE CVertexBufferBase (engine/CVertexBufferBase.h)
+009e2e30   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+009e2e30   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+009e2e30   WARN SHARED_HEADER_AVAILABLE CFontManager (engine/CFontManager.h)
+009e2e30   WARN RELOC_NAME: ??0CBaseObject@N_0099a2f0@@QAE@XZ -> 0099a2f0 labelled 'CBaseClassNonCopyable::CBaseClassNonCopyable'
+009e2e30   RELOCATION_MATCH PASS   CFontManager::CFontManager
+00a63150   RELOCATION_MATCH PASS   CVertexBufferWin32::Initialise
+00a8e160   RELOCATION_MATCH PASS   CVertexBufferWin32::CVertexBufferWin32
+00a8eda0   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a8eda0   RELOCATION_MATCH PASS   C3DPrimitive2::SetupVertexBuffer
+00a8fd40   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00a8fd40   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00a8fd40   WARN SHARED_HEADER_AVAILABLE C3DClothPrimitive (engine/C3DClothPrimitive.h)
+00a8fd40   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a8fd40   WARN RELOC_NAME: ?WriteUChar@CDataOutputStream@@QAEXE@Z -> 00993e50 labelled 'WriteCBYTE'
+00a8fd40   WARN RELOC_NAME: ?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z -> 00996610 labelled 'CDataOutputStream::WriteCompressed'
+00a8fd40   RELOCATION_MATCH PASS   C3DPrimitive2::SaveBinary
+00a914b0   WARN SHARED_HEADER_AVAILABLE CVertexShaderInput (engine/CVertexShaderInput.h)
+00a914b0   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a914b0   WARN RELOC_NAME: ?GetVertexSize@CVertexFormat@@QBEKXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a914b0   RELOCATION_MATCH PASS   C3DPrimitive2::UploadToVertexBufferAnimated
+00a91560   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00a91560   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a91560   RELOCATION_MATCH PASS   C3DPrimitive2::LoadVertexBuffer
+00a931f0   WARN SHARED_HEADER_AVAILABLE CVertexShaderInput (engine/CVertexShaderInput.h)
+00a931f0   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a931f0   WARN RELOC_NAME: ?GetVertexSize@CVertexFormat@@QBEKXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a931f0   RELOCATION_MATCH PASS   C3DPrimitive2::UploadToVertexBufferStatic
+00ac1f00   MATCH            PASS   CIndexBuffer::Unlock
+00ac1f10   MATCH            PASS   CIndexBuffer::GetSize
+00ac1f70   RELOCATION_MATCH PASS   CIndexBuffer::Initialise
+00ac1fb0   WARN RELOC_NAME: ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z -> 00a0aa70 labelled '_global::Nop_ret8_00a0aa70'
+00ac1fb0   RELOCATION_MATCH PASS   CIndexBuffer::Lock
+00ac20a0   MATCH            PASS   CVertexBufferBase::Lock
+00ac20b0   MATCH            PASS   CVertexBufferBase::Unlock
+00b61ff0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00b61ff0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00b61ff0   WARN STANDIN_LEAF ?BuildStarFieldVB@CSkyRendererMethods@@QAEXXZ (catalog CEngineSkyRenderer::BuildStarFieldVB; names another function)
+00b61ff0   RELOCATION_MATCH PASS   CEngineSkyRenderer::BuildStarFieldVB
+00b620a0   WARN RELOC_NAME: ?BuildSky@CSkyRendererMethods@@QAEXAAPAX0II@Z -> 00b61b30 labelled 'CEngineSkyRenderer::BuildOuterSkyMesh'
+00b620a0   WARN RELOC_NAME: ?BuildClouds@CSkyRendererMethods@@QAEXAAPAX0II@Z -> 00b61dd0 labelled 'BuildBuffers_BuildGlowParticles'
+00b620a0   WARN RELOC_NAME: ?BuildBand@CSkyRendererMethods@@QAEXAAPAX0II@Z -> 00b61cd0 labelled 'CEngineSkyRenderer::BuildBaseBandMesh'
+00b620a0   WARN RELOC_NAME: ?BuildSolidBaseBand@CSkyRendererMethods@@QAEXXZ -> 00b61ff0 labelled 'CEngineSkyRenderer::BuildStarFieldVB'
+00b620a0   RELOCATION_MATCH PASS   BuildBuffers
+00b6d940   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00b6d940   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00b6d940   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00b6d940   WARN SHARED_HEADER_AVAILABLE CRangeCompressor (engine/CRangeCompressor.h)
+00b6d940   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b6d940   RELOCATION_MATCH PASS   CEngineWaterRenderer::LoadCompressedBuffer
+00baa6a0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedZSprites (engine/CEnginePrimitiveManagerRepeatedZSprites.h)
+00baa6a0   RELOCATION_MATCH PASS   BuildBuffers
+00bbf380   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleSpriteGroup (engine/CEnginePrimitiveManagerParticleSpriteGroup.h)
+00bbf380   RELOCATION_MATCH PASS   BuildBuffers
+00bc3e10   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleLineGroup (engine/CEnginePrimitiveManagerParticleLineGroup.h)
+00bc3e10   RELOCATION_MATCH PASS   BuildBuffers
+00bda360   RELOCATION_MATCH PASS   CEngineLandscapeMemoryManager::AllocateIndexBuffer
+00bda3d0   RELOCATION_MATCH PASS   CEngineLandscapeMemoryManager::AllocateVertexBuffer
+00be3660   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00be3660   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00be3660   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00be3660   WARN SHARED_HEADER_AVAILABLE CTesselationData (engine/CTesselationData.h)
+00be3660   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00be3660   WARN SHARED_HEADER_AVAILABLE CLandscapeTesselatorBase (engine/CLandscapeTesselatorBase.h)
+00be3660   RELOCATION_MATCH PASS   CLandscapeTesselatorBase::BuildBridgeVertexAndIndexBuffers
+00be91e0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00be91e0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00be91e0   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00be91e0   WARN SHARED_HEADER_AVAILABLE CRangeCompressor (engine/CRangeCompressor.h)
+00be91e0   WARN RELOC_NAME: ?GetIndexBufferPool@CEngineResourceManager@@QAEJXZ -> 00b3b0a0 labelled 'CEngineResourceManager::GetIndexBufferMemPool'
+00be91e0   RELOCATION_MATCH PASS   CWaterSeaGenerator::LoadSea
+00bfd670   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00bfd670   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00bfd670   WARN SHARED_HEADER_AVAILABLE CRangeCompressor (engine/CRangeCompressor.h)
+00bfd670   WARN RELOC_NAME: ?WriteUShort@CDataOutputStream@@QAEXG@Z -> 00993e80 labelled 'CDataOutputStream::WriteUWORD'
+00bfd670   RELOCATION_MATCH PASS   CEngineWaterBackgroundSubPatch::Save
+
+WINS: 26
+  009e2830 RELOCATION_MATCH CVertexBufferWin32::??0CVertexBufferWin32@@QAE@W4EVertexType@@JJKW4EVertexBufferPool@@@Z
+  009e2e30 RELOCATION_MATCH CFontManager::??0CFontManager
+  00a63150 RELOCATION_MATCH CVertexBufferWin32::?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z
+  00a8e160 RELOCATION_MATCH CVertexBufferWin32::??0CVertexBufferWin32@@QAE@XZ
+  00a8eda0 RELOCATION_MATCH C3DPrimitive2::SetupVertexBuffer
+  00a8fd40 RELOCATION_MATCH C3DPrimitive2::SaveBinary
+  00a914b0 RELOCATION_MATCH C3DPrimitive2::UploadToVertexBufferAnimated@C3DPrimitive2
+  00a91560 RELOCATION_MATCH C3DPrimitive2::LoadVertexBuffer@C3DPrimitive2
+  00a931f0 RELOCATION_MATCH C3DPrimitive2::UploadToVertexBufferStatic@C3DPrimitive2
+  00ac1f00 MATCH CVertexBufferWin32::?Unlock@CIndexBuffer@@QAEXXZ
+  00ac1f10 MATCH CIndexBuffer::?GetSize@CIndexBuffer@@QBEJXZ
+  00ac1f70 RELOCATION_MATCH CIndexBuffer::?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z
+  00ac1fb0 RELOCATION_MATCH CIndexBuffer::?Lock@CIndexBuffer@@QAEPAEKKK@Z
+  00ac20a0 MATCH CVertexBuffer::?Lock@CVertexBufferBase@@QAEPAEKKK@Z
+  00ac20b0 MATCH CVertexBuffer::?Unlock@CVertexBufferBase@@QAEXXZ
+  00b61ff0 RELOCATION_MATCH CEngineSkyRenderer::BuildStarFieldVB
+  00b620a0 RELOCATION_MATCH CEngineSkyRenderer::BuildBuffers
+  00b6d940 RELOCATION_MATCH CEngineWaterRenderer::LoadCompressedBuffer
+  00baa6a0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::BuildBuffers
+  00bbf380 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::BuildBuffers
+  00bc3e10 RELOCATION_MATCH CEnginePrimitiveManagerParticleLineGroup::BuildBuffers
+  00bda360 RELOCATION_MATCH CEngineLandscapeMemoryManager::?AllocateIndexBuffer@CEngineLandscapeMemoryManager@@QAEPAVCIndexBuffer@@PAVCMovableResource@@JKW4EIndexBufferFormat@@W4EPrimitiveType@@@Z
+  00bda3d0 RELOCATION_MATCH CEngineLandscapeMemoryManager::?AllocateVertexBuffer@CEngineLandscapeMemoryManager@@QAEPAVCVertexBufferWin32@@PAVCMovableResource@@W4EVertexType@@JJK@Z
+  00be3660 RELOCATION_MATCH CLandscapeTesselatorBase::BuildBridgeVertexAndIndexBuffers
+  00be91e0 RELOCATION_MATCH CWaterSeaGenerator::LoadSea
+  00bfd670 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::Save

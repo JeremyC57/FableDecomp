@@ -1,31 +1,33 @@
-#include <cstdio>
-static int g_baseCtor = 0; static long g_init[5] = { -1, -1, -1, -1, -1 };
-struct CBase { virtual void VSlot0() { } CBase() { ++g_baseCtor; } };
-struct IDirect3DVertexBuffer9;
-class CVertexCompressionParams { public:
-    float PosScaleX, PosScaleY, PosScaleZ, PosScaleW, PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
-    CVertexCompressionParams() : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f), PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
-};
-struct CVertexBufferBase : CBase {
-    IDirect3DVertexBuffer9* PVertexBuffer; unsigned long Length; long Type; unsigned char Stride; CVertexCompressionParams CompressionParams;
-    CVertexBufferBase() : Length(0), Type(0), CompressionParams() { PVertexBuffer = 0; Stride = 0; }
-};
-struct CVertexBufferWin32_Retail : CVertexBufferBase {
-    virtual void VSlot1() { }
-    CVertexBufferWin32_Retail() : CVertexBufferBase() { }
-    CVertexBufferWin32_Retail(long type, long a, long b, unsigned long c, long pool) : CVertexBufferBase() { Initialise(type, a, b, c, pool); }
-    bool Initialise(long type, long a, long b, unsigned long c, long pool) { g_init[0] = type; g_init[1] = a; g_init[2] = b; g_init[3] = (long)c; g_init[4] = pool; return true; }
-};
-static bool Shell(const CVertexBufferWin32_Retail& v)
+// 00a8e160 test: the shared header's inline CVertexBufferWin32 constructor (the COMDAT the row emits): the base constructor, the empty-buffer fields.
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#include "engine/CVertexBufferWin32.h"
+#include <stdio.h>
+// The out-of-line members the CVertexBufferWin32 vtable and destructor reach (0x0099A2D0..0x0099A300, 0x00A63200, the Do* slots) are not in
+// this test: recording / inert definitions.
+static int g_baseCtor = 0, g_uninit = 0;
+CBaseClass::CBaseClass() { ++g_baseCtor; }
+CBaseClass::~CBaseClass() { }
+CBaseClassNonCopyable::CBaseClassNonCopyable() { }
+CBaseClassNonCopyable::~CBaseClassNonCopyable() { }
+void CVertexBufferWin32::Uninitialise() { ++g_uninit; }
+unsigned char* CVertexBufferWin32::DoLock(unsigned long, unsigned long, unsigned long) { return 0; }
+void CVertexBufferWin32::DoUnlock() { }
+bool CVertexBufferWin32::DoIsBusy() const { return false; }
+unsigned long CVertexBufferWin32::DoSizeof() const { return 0; }
+inline void* operator new(unsigned int, void* where) { return where; }
+static bool Shell(const CVertexBufferWin32& v)
 {
     const CVertexCompressionParams& p = v.CompressionParams;
-    return v.PVertexBuffer == 0 && v.Length == 0 && v.Type == 0 && v.Stride == 0 && p.PosScaleX == 1.0f && p.PosScaleY == 1.0f && p.PosScaleZ == 1.0f && p.PosScaleW == 1.0f && p.PosBiasX == 0.0f && p.PosBiasY == 0.0f && p.PosBiasZ == 0.0f && p.PosBiasW == 0.0f;
+    return v.PVertexBuffer == 0 && v.Length == 0 && v.Type == 0 && v.Stride == 0 && p.PosScaleX == 1.0f && p.PosScaleY == 1.0f && p.PosScaleZ == 1.0f
+        && p.PosScaleW == 1.0f && p.PosBiasX == 0.0f && p.PosBiasY == 0.0f && p.PosBiasZ == 0.0f && p.PosBiasW == 0.0f;
 }
-inline void* operator new(unsigned int, void* where) { return where; }
+
 int main()
 {
-    unsigned char raw[sizeof(CVertexBufferWin32_Retail)]; for (unsigned i = 0; i < sizeof(raw); ++i) raw[i] = 0xee;
-    CVertexBufferWin32_Retail* v = new (raw) CVertexBufferWin32_Retail();
-    if (g_baseCtor != 1 || !Shell(*v) || g_init[0] != -1) { std::printf("00a8e160_TEST FAIL\n"); return 1; }
-    std::printf("00a8e160_TEST PASS\n"); return 0;
+    unsigned char raw[sizeof(CVertexBufferWin32)]; for (unsigned i = 0; i < sizeof(raw); ++i) raw[i] = 0xee;
+    CVertexBufferWin32* v = new (raw) CVertexBufferWin32();
+    if (g_baseCtor != 1 || !Shell(*v) || g_uninit != 0) { printf("00a8e160_TEST FAIL\n"); return 1; }
+    v->~CVertexBufferWin32();
+    if (g_uninit != 1) { printf("00a8e160_TEST FAIL\n"); return 1; }
+    printf("00a8e160_TEST PASS\n"); return 0;
 }

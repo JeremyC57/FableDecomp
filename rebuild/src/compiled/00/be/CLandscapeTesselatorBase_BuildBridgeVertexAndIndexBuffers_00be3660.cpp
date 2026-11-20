@@ -16,17 +16,19 @@
 #include <string.h>
 #pragma intrinsic(memcpy)
 class CMovableResource;
-class CIndexBuffer { public:
-    unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC1FB0
-    void Unlock();                                 // 0x00AC1F00
-};
-class CVertexBufferWin32 { public:
-    unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC20A0
-    void Unlock();                                 // 0x00AC20B0
-};
-enum EIndexBufferFormat { INDEX_FORMAT_16 = 0x65 };
-enum EPrimitiveType { PRIMITIVE_TRIANGLE_LIST = 4 };
-enum EVertexType { VERTEX_TYPE_DEFAULT = 0 };
+// NF149 (q4552 / q4555..q4560): the buffers are the shared retail classes (engine/CVertexBufferWin32.h, engine/CIndexBuffer.h; Ego_r.pdb +
+// FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0, CIndexBuffer::Lock / Unlock 0x00AC1FB0 / 0x00AC1F00) with the
+// shared buffer enums; were declaration-only local CVertexBufferWin32 / CIndexBuffer models (binding ?Lock@CVertexBufferWin32@@... /
+// ?Unlock@CVertexBufferWin32@@QAEXXZ for the vertex buffer).
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CINDEXBUFFER
+#include "engine/EVertexType.h"
+#include "engine/EVertexBufferPool.h"
+#include "engine/EIndexBufferFormat.h"
+#include "engine/EIndexBufferPool.h"
+#include "engine/EPrimitiveType.h"
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
 class CEngineLandscapeMemoryManager { public:
     CIndexBuffer* AllocateIndexBuffer(CMovableResource* owner, long size, unsigned long usage, EIndexBufferFormat format, EPrimitiveType type);   // 0x00BDA360
     CVertexBufferWin32* AllocateVertexBuffer(CMovableResource* owner, EVertexType type, long count, long size, unsigned long usage);   // 0x00BDA3D0
@@ -71,7 +73,7 @@ bool CLandscapeTesselatorBase::BuildBridgeVertexAndIndexBuffers(long bridge, CMo
         long size = BridgeIndexBuffer.size() * sizeof(unsigned short);
         CEngineLandscapeMemoryManager* memory = g_pEngine_01436ea8->LandscapeMemoryManager;
         CIndexBuffer* indexBuffer = memory->AllocateIndexBuffer(owner, size, NEngineInternal::GPResourceManager->GetIndexBufferUsage(),
-                                                                INDEX_FORMAT_16, PRIMITIVE_TRIANGLE_LIST);
+                                                                IB_FORMAT_16, PT_TRIANGLE_LIST);
         if (!indexBuffer)
             return false;
         unsigned char* indices = indexBuffer->Lock(0, 0, 0);
@@ -82,7 +84,7 @@ bool CLandscapeTesselatorBase::BuildBridgeVertexAndIndexBuffers(long bridge, CMo
     }
     if (GetVertexCount()) {
         CEngineLandscapeMemoryManager* memory = g_pEngine_01436ea8->LandscapeMemoryManager;
-        CVertexBufferWin32* vertexBuffer = memory->AllocateVertexBuffer(owner, VERTEX_TYPE_DEFAULT, GetVertexCount(), GetVertexSize(),
+        CVertexBufferWin32* vertexBuffer = memory->AllocateVertexBuffer(owner, VERTEX_NULL, GetVertexCount(), GetVertexSize(),
                                                                          NEngineInternal::GPResourceManager->GetVertexBufferUsage());
         if (!vertexBuffer)
             return false;

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00be91e0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00be91e0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00be91e0   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00be91e0   WARN SHARED_HEADER_AVAILABLE CRangeCompressor (engine/CRangeCompressor.h)
+00be91e0   RELOCATION_MATCH PASS   CWaterSeaGenerator::LoadSea
+
+WINS: 1
+  00be91e0 RELOCATION_MATCH CWaterSeaGenerator::LoadSea

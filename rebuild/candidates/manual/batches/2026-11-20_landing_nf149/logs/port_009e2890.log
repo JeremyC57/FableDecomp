@@ -1,0 +1,5 @@
+addr       parity           behav  name
+009e2890   RELOCATION_MATCH PASS   CVertexBufferWin32::`scalar deleting destructor'
+
+WINS: 1
+  009e2890 RELOCATION_MATCH CVertexBufferWin32::??_GCVertexBufferWin32@@UAEPAXI@Z

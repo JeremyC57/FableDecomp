@@ -1,0 +1,72 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00AC1F00	CIndexBuffer	Unlock	?Unlock@CIndexBuffer@@QAEXXZ	CIndexBuffer::Unlock	?DoUnlock@CVertexBufferWin32@@QAEXXZ	q4555 (NF149): Ego_r.pdb + FableWin.pdb ?Unlock@CIndexBuffer@@QAEXXZ; body = IDirect3DIndexBuffer9::Unlock (slot 12) on PD3DIndexBuffer +0x04; landed 0x00A8F9E0 / 0x00B51570 / 0x00BE3110 bind the address so; re-authored on engine/CIndexBuffer.h, MATCH (catalog label CIndexBuffer::Unlock is right; the build module CVertexBufferWin32 is not)
+0x00AC1F10	CIndexBuffer	GetSize	?GetSize@CIndexBuffer@@QBEJXZ	CIndexBuffer::GetSize	?CIndexBuffer_GetSize@@YIJPAVCIndexBuffer@@@Z	q4556 (NF149): Ego_r.pdb ?GetSize@CIndexBuffer@@QBEJXZ (+ FableWin); body = GetDesc (slot 13) then the description's Size; landed 0x00B51570 / 0x00B6EDF0 bind the address so; re-authored on engine/CIndexBuffer.h, MATCH (leaf-only: the free __fastcall stand-in becomes the const member)
+0x00AC1F70	CIndexBuffer	Initialise	?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z	CIndexBuffer::Initialise	?Initialise@CIndexBuffer@@QAEXKKJJJ@Z	q4557 (NF149): Ego_r.pdb + FableWin.pdb publics (five arguments, the enum types); body = IDirect3DDevice9::CreateIndexBuffer (slot 27) then ByteLength +0x08 and PrimitiveType +0x0C; landed 0x00A8F9E0 / 0x00B51570 / 0x00BA1B00 bind the address so; re-authored on engine/CIndexBuffer.h, RELOCATION_MATCH (leaf-only)
+0x00AC1FB0	CIndexBuffer	Lock	?Lock@CIndexBuffer@@QAEPAEKKK@Z	CIndexBuffer::Lock	?Lock@CIndexBuffer@@QAEPAXKKK@Z	q4558 (NF149): Ego_r.pdb + FableWin.pdb ?Lock@CIndexBuffer@@QAEPAEKKK@Z; body = GetDesc when the size is 0, the render manager busy wait, IDirect3DIndexBuffer9::Lock (slot 11); landed 0x00A8F9E0 / 0x00B51570 / 0x00BE3110 bind the address so; re-authored on engine/CIndexBuffer.h, RELOCATION_MATCH (leaf-only: unsigned char* return)
+0x00AC20A0	CVertexBufferBase	Lock	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	CVertexBufferBase::Lock	?Run@T@@QAEXXZ	q4559 (NF149): Ego_r.pdb + FableWin.pdb ?Lock@CVertexBufferBase@@QAEPAEKKK@Z; body `mov eax,[ecx] ; jmp [eax+4]` = DoLock, slot 1 of CVertexBufferWin32's vtable 0x0129BA20 (0x00A63240); 8 landed callers already bind the address so; re-authored on engine/CVertexBufferBase.h, MATCH (catalog name right; build module CVertexBuffer)
+0x00AC20B0	CVertexBufferBase	Unlock	?Unlock@CVertexBufferBase@@QAEXXZ	CVertexBufferBase::Unlock	?Run@T@@QAEXXZ	q4560 (NF149): Ego_r.pdb + FableWin.pdb ?Unlock@CVertexBufferBase@@QAEXXZ; body `mov eax,[ecx] ; jmp [eax+8]` = DoUnlock, slot 2 (0x00A63120); 8 landed callers already bind the address so; re-authored on engine/CVertexBufferBase.h, MATCH (catalog name right; build module CVertexBuffer)
+0x00A63150	CVertexBufferWin32	Initialise	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	CVertexBufferWin32::Initialise	?Initialise@CVertexBufferInitialiseView@@QAE_NJJJKJ@Z	q4552 (NF149): Ego_r.pdb 0x00BD6C50 + FableWin.pdb publics; body = CreateVertexBuffer (slot 26) with count * stride, then Length / Stride / Type / CompressionParams; 4 landed callers already bind the address so; re-authored on engine/CVertexBufferWin32.h, RELOCATION_MATCH (leaf-only)
+0x00A8E160	CVertexBufferWin32	CVertexBufferWin32	??0CVertexBufferWin32@@QAE@XZ	CVertexBufferWin32::CVertexBufferWin32	??0CVertexBufferWin32_Retail@@QAE@XZ	q6203 (NF149): FableWin.pdb ??0CVertexBufferWin32@@QAE@XZ (0x02CBBB60, beside ??0CVertexBufferBase@@IAE@XZ); the body stores .?AVCVertexBufferWin32@@'s vtable 0x0129BA20; Ego_r has no out-of-line copy (header inline). Re-authored as the header's inline constructor emitted pick-any (nf86 scaffolding), RELOCATION_MATCH (leaf-only)
+0x009E2830	CVertexBufferWin32	CVertexBufferWin32	??0CVertexBufferWin32@@QAE@W4EVertexType@@JJKW4EVertexBufferPool@@@Z	CVertexBufferWin32::CVertexBufferWin32	??0CVertexBufferWin32_Retail@@QAE@JJJKJ@Z	q4552 binder / q6203 family (NF149): FableWin.pdb ??0CVertexBufferWin32@@QAE@W4EVertexType@@JJKW4EVertexBufferPool@@@Z (0x030A3300) + the body (vtable 0x0129BA20 stored, the five arguments passed to Initialise 0x00A63150, whose PDB parameter types the name repeats); Ego_r has no out-of-line copy (inline); no landed row references 0x009E2830 (refs.py). Re-authored as a new inline header constructor (overlay opt-in FABLE_RETAIL_CVERTEXBUFFERWIN32_CTOR_INITIALISE) emitted pick-any, RELOCATION_MATCH (leaf-only)
+0x00BDA3D0	CEngineLandscapeMemoryManager	AllocateVertexBuffer	?AllocateVertexBuffer@CEngineLandscapeMemoryManager@@QAEPAVCVertexBufferWin32@@PAVCMovableResource@@W4EVertexType@@JJK@Z	CEngineLandscapeMemoryManager::AllocateVertexBuffer	?AllocateVertexBuffer@CEngineLandscapeMemoryManager@@QAEPAUCVertexBufferWin32_Retail@@JJJJK@Z	q4552 binder (NF149, outside the entry list): Ego_r.pdb + FableWin.pdb publics, engine/CEngineLandscapeMemoryManager.h; every landed referencing row (0x00BE3660, 0x00BEAE50; refs.py) already binds this spelling; re-authored on the shared headers, RELOCATION_MATCH (leaf-only)
+0x00BDA360	CEngineLandscapeMemoryManager	AllocateIndexBuffer	?AllocateIndexBuffer@CEngineLandscapeMemoryManager@@QAEPAVCIndexBuffer@@PAVCMovableResource@@JKW4EIndexBufferFormat@@W4EPrimitiveType@@@Z	CEngineLandscapeMemoryManager::AllocateIndexBuffer	?AllocateIndexBuffer@CEngineLandscapeMemoryManager@@QAEPAVCIndexBuffer@@JKKJJ@Z	q4557 binder (NF149, outside the entry list): Ego_r.pdb + FableWin.pdb publics, engine/CEngineLandscapeMemoryManager.h; the landed referencing row 0x00BE3660 already binds this spelling (refs.py: 0x00BE3660, plus the DIFFER rows 0x00BE7D70 / 0x00BFE050 that bind nothing); re-authored on the shared headers, RELOCATION_MATCH (leaf-only)
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00AC1FB0	?NotifyLock@CRenderStatistics_Retail@@QAEXPAUIDirect3DIndexBuffer_Retail@@M@Z	?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z	0x00A0AA70
+0x00A8E160	??_7CVertexBufferWin32_Retail@@6B@	??_7CVertexBufferWin32@@6B@	0x0129BA20
+0x009E2830	?Initialise@CVertexBufferWin32_Retail@@QAE_NJJJKJ@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x009E2830	??_7CVertexBufferWin32_Retail@@6B@	??_7CVertexBufferWin32@@6B@	0x0129BA20
+0x00BBF380	?Initialise@CVertexBufferWin32_Retail@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x00BBF380	?Unlock@CIndexBuffer_Methods@@QAEXXZ	?Unlock@CIndexBuffer@@QAEXXZ	0x00AC1F00
+0x00BBF380	?GetSize@CIndexBuffer_Methods@@QBEJXZ	?GetSize@CIndexBuffer@@QBEJXZ	0x00AC1F10
+0x00BBF380	?Initialise@CIndexBuffer_Methods@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z	?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z	0x00AC1F70
+0x00BBF380	?Lock@CVertexBufferWin32_Retail@@QAEPAEKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00BBF380	?Unlock@CVertexBufferWin32_Retail@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00BC3E10	?Initialise@CVertexBufferWin32_Retail@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x00BC3E10	?Unlock@CIndexBuffer_Methods@@QAEXXZ	?Unlock@CIndexBuffer@@QAEXXZ	0x00AC1F00
+0x00BC3E10	?GetSize@CIndexBuffer_Methods@@QBEJXZ	?GetSize@CIndexBuffer@@QBEJXZ	0x00AC1F10
+0x00BC3E10	?Initialise@CIndexBuffer_Methods@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z	?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z	0x00AC1F70
+0x00BC3E10	?Lock@CVertexBufferWin32_Retail@@QAEPAEKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00BC3E10	?Unlock@CVertexBufferWin32_Retail@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00B620A0	?Create@CSkyVertexBufferCalls@@QAE_NIIIII@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x00B620A0	?Unlock@CSkyIndexBufferCalls@@QAEXXZ	?Unlock@CIndexBuffer@@QAEXXZ	0x00AC1F00
+0x00B620A0	?GetByteLength@CSkyIndexBufferCalls@@QAEIXZ	?GetSize@CIndexBuffer@@QBEJXZ	0x00AC1F10
+0x00B620A0	?Create@CSkyIndexBufferCalls@@QAEXIIIII@Z	?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z	0x00AC1F70
+0x00B620A0	?Lock@CSkyIndexBufferCalls@@QAEPAXIII@Z	?Lock@CIndexBuffer@@QAEPAEKKK@Z	0x00AC1FB0
+0x00B620A0	?Lock@CSkyVertexBufferCalls@@QAEPAXIII@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00B620A0	?Unlock@CSkyVertexBufferCalls@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00B61FF0	?Initialise@CStarFieldVertexBufferCalls@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x00B61FF0	?Lock@CStarFieldVertexBufferCalls@@QAEPAXKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00B61FF0	?Unlock@CStarFieldVertexBufferCalls@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00A914B0	?Lock@CVertexBufferWin32@@QAEPAXKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00A914B0	?Unlock@CVertexBufferWin32@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00A91560	?Lock@CVertexBufferWin32@@QAEPAXKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00A91560	?Unlock@CVertexBufferWin32@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00A931F0	?Lock@CVertexBufferWin32@@QAEPAXKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00A931F0	?Unlock@CVertexBufferWin32@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00A8FD40	?Lock@CVertexBufferWin32@@QAEPAXKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00A8FD40	?Unlock@CVertexBufferWin32@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00A8EDA0	?Initialise@CVertexBufferWin32_Retail@@QAE_NJJJKJ@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x00A8EDA0	??_7CVertexBufferWin32_Retail@@6B@	??_7CVertexBufferWin32@@6B@	0x0129BA20
+0x00A8EDA0	??0CBase@@QAE@XZ	??0CBaseClassNonCopyable@@IAE@XZ	0x0099A2F0
+0x00BE3660	?Lock@CVertexBufferWin32@@QAEPAEKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00BE3660	?Unlock@CVertexBufferWin32@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00BFD670	?Lock@CVertexBufferWin32@@QAEPAXKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00BFD670	?Unlock@CVertexBufferWin32@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00BE91E0	?Initialise@CVertexBufferWin32@@QAEXJJJKJ@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x00BE91E0	?Initialise@CIndexBuffer@@QAEXKKJJJ@Z	?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z	0x00AC1F70
+0x00BE91E0	?Lock@CVertexBufferWin32@@QAEPAEKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00BE91E0	?Unlock@CVertexBufferWin32@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00B6D940	?Initialise@CVertexBufferWin32@@QAEXJJJKJ@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x00B6D940	?Lock@CVertexBufferWin32@@QAEPAEKKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00B6D940	?Unlock@CVertexBufferWin32@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x009E2E30	?Initialise@CVertexBufferWin32@@QAE_NJJJKJ@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x00BDA360	?Initialise@CIndexBuffer@@QAEXKKJJJ@Z	?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z	0x00AC1F70
+0x00BAA6A0	?Initialise@CRepeatedZVertexBufferMethods@@QAE_NJJJKJ@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x00BAA6A0	?Unlock@CRepeatedZIndexBufferMethods@@QAEXXZ	?Unlock@CIndexBuffer@@QAEXXZ	0x00AC1F00
+0x00BAA6A0	?Initialise@CRepeatedZIndexBufferMethods@@QAEXKKJJJ@Z	?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z	0x00AC1F70
+0x00BAA6A0	?Lock@CRepeatedZIndexBufferMethods@@QAEPAGKKK@Z	?Lock@CIndexBuffer@@QAEPAEKKK@Z	0x00AC1FB0
+0x00BAA6A0	?Lock@CRepeatedZVertexBufferMethods@@QAEPAUCRepeatedZSpriteVertex@@KKK@Z	?Lock@CVertexBufferBase@@QAEPAEKKK@Z	0x00AC20A0
+0x00BAA6A0	?Unlock@CRepeatedZVertexBufferMethods@@QAEXXZ	?Unlock@CVertexBufferBase@@QAEXXZ	0x00AC20B0
+0x00BDA3D0	?Initialise@CVertexBufferWin32_Retail@@QAE_NJJJKJ@Z	?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z	0x00A63150
+0x00BDA3D0	??_7CVertexBufferWin32_Retail@@6B@	??_7CVertexBufferWin32@@6B@	0x0129BA20

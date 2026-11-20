@@ -5,20 +5,18 @@
 // Callees: CVertexBufferWin32::Uninitialise() 0x00A63200, CBaseClassNonCopyable::~CBaseClassNonCopyable() 0x0099A300, operator delete 0x00BFE9BC.
 // Shape (family K048, representative 0x00987F30): the compiler's scalar deleting destructor around a one-call inline
 //   destructor; a `new` of the class in this file makes VC7.1 emit the vtable and the ??_G COMDAT.
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable : public CBaseClass {
-protected:
-    CBaseClassNonCopyable();                             // 0x0099A2F0
-    virtual ~CBaseClassNonCopyable();                    // 0x0099A300
-};
-class CVertexBufferBase : public CBaseClassNonCopyable {   // RTTI base; its destructor is implicit (a user-declared
-public:                                                  //   empty one would store its own vptr before the base call)
-    CVertexBufferBase() { }
-};
-class CVertexBufferWin32 : public CVertexBufferBase {   // RTTI: CVertexBufferBase : CBaseClassNonCopyable : CBaseClass
-public:
-    CVertexBufferWin32() { }
-    virtual ~CVertexBufferWin32() { Uninitialise(); }
-    void Uninitialise();                                 // 0x00A63200 (Ego_r.pdb)
-};
-CVertexBufferWin32* MakeBuffer_009e2890() { return new CVertexBufferWin32; }
+// nf149 landing (NF149 coordinator follow-up): on engine/CVertexBufferWin32.h's retail branch instead of a local model, so the
+//   ??0CVertexBufferWin32@@QAE@XZ and ??_7CVertexBufferWin32@@6B@ COMDATs this file emits are the header's (the local model emitted an empty
+//   constructor and a one-slot vtable beside the header copies of 0x00A8E160 / 0x00B8DCD0).
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#include "engine/CVertexBufferWin32.h"
+
+namespace {
+// Fidelity: scaffolding, not retail: a `new` of the class makes VC7.1 emit its vtable and so this ??_G COMDAT (nf86 / nf88 pattern).
+#pragma inline_depth(0)
+CVertexBufferWin32* ReferenceVertexBufferWin32ScalarDeletingDtor()
+{
+    return new CVertexBufferWin32;
+}
+#pragma inline_depth()
+}

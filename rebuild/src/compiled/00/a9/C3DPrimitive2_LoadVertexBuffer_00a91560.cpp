@@ -11,7 +11,12 @@
 // the compression params block-copied into the buffer (rep movsd).
 // Leaf: LoadVertexBuffer@C3DPrimitive2
 extern "C" void __cdecl free(void* p);              // 0x00BFEA14
-class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
+// NF149 (q4552 / q4559 / q4560): the vertex buffer is the shared retail CVertexBufferWin32 (engine/CVertexBufferWin32.h, which brings
+// engine/CVertexCompressionParams.h; Ego_r.pdb + FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0); was a local
+// CVertexBufferWin32 model (binding ?Lock@CVertexBufferWin32@@QAEPAXKKK@Z / ?Unlock@CVertexBufferWin32@@QAEXXZ) and a local
+// CVertexCompressionParams model.
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#include "engine/CVertexBufferWin32.h"
 class CMemoryDataInputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void Read(void* buffer, long size);     // slot 4 (+0x10)
@@ -25,13 +30,6 @@ void __fastcall ConvertAnimatedVertices(const void* source, unsigned long source
                                         unsigned long vertexCount, CVertexCompressionParams& params);   // 0x00A90FC0
 void __fastcall ConvertStaticVertices(const void* source, unsigned long sourceFormat, void* dest, unsigned long destFormat,
                                       unsigned long vertexCount, CVertexCompressionParams& params);     // 0x00A91390
-class CVertexBufferWin32 { public:
-    virtual ~CVertexBufferWin32();
-    unsigned char _04[0x10];
-    CVertexCompressionParams CompressionParams;     // +0x14
-    void* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC20A0
-    void Unlock();                                  // 0x00AC20B0
-};
 class C3DPrimitive2 { public:
     unsigned char _pad[8];
     long RepeatingMeshReps;                         // +0x08

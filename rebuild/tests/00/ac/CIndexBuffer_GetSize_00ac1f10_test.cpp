@@ -1,35 +1,47 @@
-#include <cstdio>
-
-struct Desc { long a, b, size, d, e; };
-
-struct IBufImpl;
-struct IBufImplVtbl {
-    void *s0,*s1,*s2,*s3,*s4,*s5,*s6,*s7,*s8,*s9,*s10,*s11,*s12;
-    void (__stdcall *GetDesc)(IBufImpl* self, Desc* out);
+// 00ac1f10 test: CIndexBuffer::GetSize on the shared header, linked against the row object (GetDesc's Size is returned).
+#define FABLE_RETAIL_CINDEXBUFFER
+#include "engine/Direct3DSurface9.h"
+// IDirect3DIndexBuffer9 (DirectX 9 SDK d3d9.h, DECLARE_INTERFACE_(IDirect3DIndexBuffer9, IDirect3DResource9)): no shared header defines
+// it (engine/CIndexBuffer.h and engine/IDirect3DDevice9.h forward-declare it); modelled as the landed sibling 0x00AC1EE0 does, on the
+// shared IUnknown / IDirect3DResource9 (engine/Direct3DSurface9.h), with the SDK names: Lock slot 11 (+0x2C), Unlock slot 12 (+0x30),
+// GetDesc slot 13 (+0x34). _D3DINDEXBUFFER_DESC is d3d9types.h's (Format, Type, Usage, Pool, Size; 0x14 bytes).
+struct _D3DINDEXBUFFER_DESC { _D3DFORMAT Format; _D3DRESOURCETYPE Type; unsigned long Usage; _D3DPOOL Pool; unsigned int Size; };
+struct IDirect3DIndexBuffer9 : public IDirect3DResource9 {
+    virtual long FABLE_STDCALL Lock(unsigned int OffsetToLock, unsigned int SizeToLock, void** ppbData, unsigned long Flags) = 0;   // slot 11
+    virtual long FABLE_STDCALL Unlock() = 0;                                                                                      // slot 12
+    virtual long FABLE_STDCALL GetDesc(_D3DINDEXBUFFER_DESC* pDesc) = 0;                                                          // slot 13
 };
-struct IBufImpl { IBufImplVtbl* vtbl; };
-class CIndexBuffer { public: void* f0; IBufImpl* PD3DIndexBuffer; };
+#include "engine/CIndexBuffer.h"
 
-long __fastcall CIndexBuffer_GetSize(CIndexBuffer* self);
-
-static IBufImpl* g_expect;
-static void __stdcall FakeGetDesc(IBufImpl* self, Desc* out)
-{
-    if (self != g_expect) { printf("BAD self\n"); return; }
-    out->a = 111; out->b = 222; out->size = 333; out->d = 444; out->e = 4096;
-}
+#include <stdio.h>
+#include <string.h>
+// Test double: an index buffer that records its calls (all IUnknown / IDirect3DResource9 slots are inert).
+static char g_seq[16]; static int g_seqN = 0;
+static void Note(char c) { if (g_seqN < 15) { g_seq[g_seqN++] = c; g_seq[g_seqN] = 0; } }
+static unsigned long g_lockArgs[3]; static unsigned int g_descSize = 0; static int g_mapped;
+struct CFakeIndexBuffer : public IDirect3DIndexBuffer9 {
+    long FABLE_STDCALL QueryInterface(const _GUID&, void**) { return 0; }
+    unsigned long FABLE_STDCALL AddRef() { return 1; }
+    unsigned long FABLE_STDCALL Release() { return 0; }
+    long FABLE_STDCALL GetDevice(IDirect3DDevice9**) { return 0; }
+    long FABLE_STDCALL SetPrivateData(const _GUID&, const void*, unsigned long, unsigned long) { return 0; }
+    long FABLE_STDCALL GetPrivateData(const _GUID&, void*, unsigned long*) { return 0; }
+    long FABLE_STDCALL FreePrivateData(const _GUID&) { return 0; }
+    unsigned long FABLE_STDCALL SetPriority(unsigned long) { return 0; }
+    unsigned long FABLE_STDCALL GetPriority() { return 0; }
+    void FABLE_STDCALL PreLoad() { }
+    _D3DRESOURCETYPE FABLE_STDCALL GetType() { return D3DRTYPE_SURFACE; }
+    long FABLE_STDCALL Lock(unsigned int offset, unsigned int size, void** data, unsigned long flags) { Note('L'); g_lockArgs[0] = offset; g_lockArgs[1] = size; g_lockArgs[2] = flags; *data = &g_mapped; return 0; }
+    long FABLE_STDCALL Unlock() { Note('U'); return 0; }
+    long FABLE_STDCALL GetDesc(_D3DINDEXBUFFER_DESC* desc) { Note('D'); desc->Format = D3DFMT_UNKNOWN; desc->Type = D3DRTYPE_SURFACE; desc->Usage = 0; desc->Pool = D3DPOOL_DEFAULT; desc->Size = g_descSize; return 0; }
+};
+// CIndexBuffer has out-of-line virtuals, so the test works on raw storage and calls the non-virtual members only.
+static unsigned char g_raw[sizeof(CIndexBuffer)];
 
 int main()
 {
-    IBufImplVtbl vt;
-    for (int i=0;i<13;i++) ((void**)&vt)[i]=0;
-    vt.GetDesc = FakeGetDesc;
-    IBufImpl impl; impl.vtbl = &vt;
-    CIndexBuffer ib; ib.f0=0; ib.PD3DIndexBuffer=&impl;
-    g_expect=&impl;
-
-    long r = CIndexBuffer_GetSize(&ib);
-    if (r == 4096) printf("00ac1f10_TEST PASS\n");
-    else printf("FAIL r=%ld\n", r);
-    return 0;
+    CFakeIndexBuffer fake; CIndexBuffer* b = (CIndexBuffer*)g_raw; b->PD3DIndexBuffer = &fake; g_descSize = 4096;
+    long size = b->GetSize();
+    if (size != 4096 || strcmp(g_seq, "D") != 0) { printf("00ac1f10_TEST FAIL %ld\n", size); return 1; }
+    printf("00ac1f10_TEST PASS\n"); return 0;
 }

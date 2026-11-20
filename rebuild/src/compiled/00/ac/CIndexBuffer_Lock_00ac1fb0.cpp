@@ -1,42 +1,53 @@
-// CIndexBuffer::Lock(unsigned long flags, unsigned long offset, unsigned long size) -- lock the Direct3D index buffer (+4): a zero size means the whole buffer (its description's Size, slot 13), the render statistics object (system record +0x60 -> +8) is told about the lock (0x00A0AA70 with 1.0f), then COM slot 11 locks (offset, size, flags) and the mapped pointer is returned
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC1FB0, length 96 bytes.
-// Shape: a 0x14-byte frame for the description, the size in edi, the mapped pointer homed in the dead size slot, `ret 0Ch`.
-struct SIndexBufferDesc_Retail { long Format; long Type; unsigned long Usage; long Pool; unsigned long Size; };   // 0x14 bytes
-struct IDirect3DIndexBuffer_Retail {              // COM: __stdcall methods, `this` pushed
-    virtual void __stdcall v000(); virtual void __stdcall v001(); virtual void __stdcall v002(); virtual void __stdcall v003(); virtual void __stdcall v004(); virtual void __stdcall v005(); virtual void __stdcall v006(); virtual void __stdcall v007(); virtual void __stdcall v008(); virtual void __stdcall v009();
-    virtual void __stdcall v010();
-    virtual long __stdcall Lock(unsigned long offset, unsigned long size, void** ppData, unsigned long flags);   // slot 11 (+0x2c)
-    virtual void __stdcall v012();
-    virtual long __stdcall GetDesc(SIndexBufferDesc_Retail* desc);   // slot 13 (+0x34)
+// CIndexBuffer::Lock(unsigned long flags, unsigned long offset, unsigned long size) -- lock the Direct3D index buffer (PD3DIndexBuffer +0x04): a zero size means the whole buffer (its description's Size, GetDesc slot 13), the render manager waits while the buffer is busy (CRenderManagerCore::WaitWhileResourceIsBusy 0x00A0AA70, weight 1.0f), then IDirect3DIndexBuffer9::Lock (slot 11: offset, size, &data, flags) and the mapped pointer is returned
+// Leaf: ?Lock@CIndexBuffer@@QAEPAEKKK@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC1FB0, 96 bytes, thiscall, `ret 0Ch`.
+// Identity: Ego_r.pdb + FableWin.pdb ?Lock@CIndexBuffer@@QAEPAEKKK@Z (engine/CIndexBuffer.h); the landed callers 0x00A8F9E0 / 0x00B51570 /
+//   0x00BE3110 bind this address under that spelling. Callee 0x00A0AA70 (an empty `ret 8` in this build): Ego_r.pdb + FableWin.pdb
+//   ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z, the spelling the landed CTexture::Lock 0x009FA450 binds
+//   (was the stand-in CRenderStatistics_Retail::NotifyLock here); reached as 0x009FB750 does, GFGetSystemManager 0x009A4EC0 ->
+//   GetDisplayManager (+0x60) -> GetRenderManager (+0x08).
+// Port (NF149, q4558): was a local CIndexBuffer model with the leaf ?Lock@CIndexBuffer@@QAEPAXKKK@Z; now on engine/CIndexBuffer.h.
+// Shape: the call result in a local (the call first, the argument next, then the chain); the mapped pointer homed in a dead argument slot.
+#define FABLE_RETAIL_CINDEXBUFFER
+#define FABLE_RETAIL_PASS22_D3D_TEXTURE_ORIGINAL_BASES
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CSYSTEMMANAGER
+#define FABLE_RETAIL_CDISPLAYMANAGER
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#define FABLE_RETAIL_CRENDERMANAGER2D
+#define FABLE_RETAIL_PASS22_CORE_COMPLETE_ORIGINAL_DECLARATION
+#define FABLE_RETAIL_PASS22_CORE_ORIGINAL_BUFFER_ACCESSORS
+#define FABLE_RETAIL_PASS22_RENDERSTATE_ORIGINAL_METHOD_ORDER
+#define FABLE_RETAIL_PASS22_SHADER_ORIGINAL_METHOD_ORDER
+#define FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CTEXTURE
+#include "engine/Direct3D9Types.h"
+#include "engine/Direct3DSurface9.h"
+// IDirect3DIndexBuffer9 (DirectX 9 SDK d3d9.h, DECLARE_INTERFACE_(IDirect3DIndexBuffer9, IDirect3DResource9)): no shared header defines
+// it (engine/CIndexBuffer.h and engine/IDirect3DDevice9.h forward-declare it); modelled as the landed sibling 0x00AC1EE0 does, on the
+// shared IUnknown / IDirect3DResource9 (engine/Direct3DSurface9.h), with the SDK names: Lock slot 11 (+0x2C), Unlock slot 12 (+0x30),
+// GetDesc slot 13 (+0x34). _D3DINDEXBUFFER_DESC is d3d9types.h's (Format, Type, Usage, Pool, Size; 0x14 bytes).
+struct _D3DINDEXBUFFER_DESC { _D3DFORMAT Format; _D3DRESOURCETYPE Type; unsigned long Usage; _D3DPOOL Pool; unsigned int Size; };
+struct IDirect3DIndexBuffer9 : public IDirect3DResource9 {
+    virtual long FABLE_STDCALL Lock(unsigned int OffsetToLock, unsigned int SizeToLock, void** ppbData, unsigned long Flags) = 0;   // slot 11
+    virtual long FABLE_STDCALL Unlock() = 0;                                                                                      // slot 12
+    virtual long FABLE_STDCALL GetDesc(_D3DINDEXBUFFER_DESC* pDesc) = 0;                                                          // slot 13
 };
-struct CRenderStatistics_Retail {
-    void NotifyLock(IDirect3DIndexBuffer_Retail* buffer, float weight);   // 0x00A0AA70 (an empty `ret 8` stub, labelled "$E2")
-};
-struct SRenderDevice_Retail {
-    unsigned char             _pad[8];
-    CRenderStatistics_Retail* m_pStatistics;       // +0x08
-};
-class CSystemManager { public:
-    unsigned char          _pad[0x60];
-    SRenderDevice_Retail*  m_pRender;              // +0x60
-};
-CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0 (labelled "GFGetSystemManager")
-class CIndexBuffer { public:
-    virtual void v00();
-    IDirect3DIndexBuffer_Retail* m_pBuffer;        // +0x04
-    void* Lock(unsigned long flags, unsigned long offset, unsigned long size);
-};
+#include "engine/CIndexBuffer.h"
+#include "engine/CSystemManager.h"
+#include "engine/CDisplayManager.h"
+#include "engine/CRenderManager.h"
 
-void* CIndexBuffer::Lock(unsigned long flags, unsigned long offset, unsigned long size)
+unsigned char* CIndexBuffer::Lock(unsigned long flags, unsigned long offset, unsigned long size)
 {
     if (size == 0) {
-        SIndexBufferDesc_Retail desc;
-        m_pBuffer->GetDesc(&desc);
+        _D3DINDEXBUFFER_DESC desc;
+        PD3DIndexBuffer->GetDesc(&desc);
         size = desc.Size;
     }
-    CSystemManager* record = GFGetSystemManager();   // the call first, the argument next, then the chain
-    record->m_pRender->m_pStatistics->NotifyLock(m_pBuffer, 1.0f);
+    CSystemManager* manager = GFGetSystemManager();
+    manager->GetDisplayManager()->GetRenderManager().WaitWhileResourceIsBusy(PD3DIndexBuffer, 1.0f);
     void* data;
-    m_pBuffer->Lock(offset, size, &data, flags);
-    return data;
+    PD3DIndexBuffer->Lock(offset, size, &data, flags);
+    return (unsigned char*)data;
 }

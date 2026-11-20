@@ -3,50 +3,20 @@
 // CVertexBufferWin32 Initialise 0x00A63150, vtable 0x0129BA20. Model reuses landed ctor 0x00A8E160.
 // Flags bit 0 selects 24-byte vertices/pool 2, otherwise 8-byte vertices/pool 1; count is at least one.
 #include "fable_compiler.h"
-struct CBase {
-    virtual void VSlot0(unsigned long flags);
-    ~CBase(); // 0x0099A300
-    CBase();                                    // 0x0099A2F0
-
-};
-#include "engine/CVertexBufferWin32.h"   // PDB header: an opaque 0x30-byte flattened base, so the retail
-                                            // members (CVertexBufferBase in the PDB) are modelled locally
-struct IDirect3DVertexBuffer9;
-class CVertexCompressionParams { public:               // PDB: PosScale XYZW then PosBias XYZW
-    float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
-    float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
-    CVertexCompressionParams()
-        : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
-          PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
-};
-struct CVertexBufferBase : CBase {              // 0x34 bytes, PDB member names
-    IDirect3DVertexBuffer9*  PVertexBuffer;     // +0x04
-    unsigned long            Length;            // +0x08
-    long                     Type;              // +0x0c (EVertexType)
-    unsigned char            Stride;            // +0x10
-    CVertexCompressionParams CompressionParams; // +0x14
-    CVertexBufferBase() : Length(0), Type(0), CompressionParams()
-    {
-
-    }
-};
-struct CVertexBufferWin32_Retail : CVertexBufferBase {
-
-    virtual void VSlot1();
-    FABLE_FORCEINLINE CVertexBufferWin32_Retail() : CVertexBufferBase() { PVertexBuffer = 0; Stride = 0; }
-    CVertexBufferWin32_Retail(long type, long a, long b, unsigned long c, long pool);
-    bool Initialise(long type, long a, long b, unsigned long c, long pool);   // 0x00A63150
-};
-FABLE_STATIC_ASSERT(sizeof(CVertexBufferWin32_Retail) == sizeof(CVertexBufferWin32));
-
-
-struct IScalarDeleteView { virtual void Destroy(unsigned long); };
+// NF149 (q4552 / q6203 family): the buffer is the shared retail CVertexBufferWin32 (engine/CVertexBufferWin32.h: the inline default
+// constructor, the virtual destructor whose deleting call `push 1 ; call [vtbl]` the reset makes, Initialise 0x00A63150 with the PDB
+// parameter types); was the stand-in CVertexBufferWin32_Retail on local CBase / CVertexCompressionParams / CVertexBufferBase models
+// (binding ?Initialise@CVertexBufferWin32_Retail@@QAE_NJJJKJ@Z and ??_7CVertexBufferWin32_Retail@@6B@) and an IScalarDeleteView cast.
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#include "engine/EVertexType.h"
+#include "engine/EVertexBufferPool.h"
+#include "engine/CVertexBufferWin32.h"
 struct CVertexBufferOwner {
-    CVertexBufferWin32_Retail* Pointer;
-    void reset(CVertexBufferWin32_Retail* p) {
-        CVertexBufferWin32_Retail* old = Pointer;
+    CVertexBufferWin32* Pointer;
+    void reset(CVertexBufferWin32* p) {
+        CVertexBufferWin32* old = Pointer;
         Pointer = p;
-        if (old) ((IScalarDeleteView*)old)->Destroy(1);
+        if (old) delete old;
     }
 };
 class C3DPrimitive2 { public:
@@ -56,11 +26,11 @@ class C3DPrimitive2 { public:
 };
 bool C3DPrimitive2::SetupVertexBuffer(long first, long second, unsigned long count, unsigned long flags)
 {
-    VertexBuffer.reset(new CVertexBufferWin32_Retail());
-    CVertexBufferWin32_Retail* buffer = VertexBuffer.Pointer;
+    VertexBuffer.reset(new CVertexBufferWin32());
+    CVertexBufferWin32* buffer = VertexBuffer.Pointer;
     unsigned long stride = 8;
     if (count < 1) count = 1;
     long pool = 1;
     if (flags & 1) { stride = 24; pool = 2; }
-    return buffer->Initialise(first, count, second, stride, pool);
+    return buffer->Initialise((EVertexType)first, count, second, stride, (EVertexBufferPool)pool);
 }

@@ -11,7 +11,12 @@
 // Retail offsets (PDB - 4): VertexBuffer +0x30 (CVertexBufferWin32: compression params +0x14), VertexBufferStatus +0x38,
 // AnimatedBlockCount +0x48, AnimatedBlocks +0x4c (0x30-byte blocks, VertexCount +0x10).
 // Leaf: UploadToVertexBufferAnimated@C3DPrimitive2
-class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
+// NF149 (q4552 / q4559 / q4560): the vertex buffer is the shared retail CVertexBufferWin32 (engine/CVertexBufferWin32.h, which brings
+// engine/CVertexCompressionParams.h; Ego_r.pdb + FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0); was a local
+// CVertexBufferWin32 model (binding ?Lock@CVertexBufferWin32@@QAEPAXKKK@Z / ?Unlock@CVertexBufferWin32@@QAEXXZ) and a local
+// CVertexCompressionParams model.
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#include "engine/CVertexBufferWin32.h"
 struct CVertexFormat {
     unsigned long GetVertexSize() const;            // 0x00AB37B0
 };
@@ -32,13 +37,6 @@ struct CVertexShaderInputAnimated : CVertexShaderInput {   // vtable 0x0129DFB0
     void Initialise(unsigned long flags, bool animated);   // 0x00A90630
 };
 }
-class CVertexBufferWin32 { public:
-    virtual ~CVertexBufferWin32();
-    unsigned char _04[0x10];
-    CVertexCompressionParams CompressionParams;     // +0x14
-    void* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC20A0
-    void Unlock();                                  // 0x00AC20B0
-};
 struct CAnimatedBlock {                             // 0x30
     unsigned char _00[0x10];
     unsigned long VertexCount;                      // +0x10

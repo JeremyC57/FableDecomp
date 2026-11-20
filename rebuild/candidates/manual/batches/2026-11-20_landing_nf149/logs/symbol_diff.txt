@@ -1,0 +1,77 @@
+009e2830 new: 5
+    ??0CVertexBufferBase@@IAE@XZ
+    ??0CVertexBufferWin32@@QAE@W4EVertexType@@JJKW4EVertexBufferPool@@@Z
+    ??_7CVertexBufferWin32@@6B@ TABLE:0129ba20
+    ??_GCVertexBufferWin32@@UAEPAXI@Z
+    ?ReferenceVertexBufferWin32InitialiseCtor@?A0xc839db6b@@YAPAVCVertexBufferWin32@@W4EVertexType@@JJKW4EVertexBufferPool@@@Z
+009e2e30 new: 0
+00a63150 new: 5
+    ??0CVertexCompressionParams@@QAE@XZ
+    ?Get@?$CCountedPointer@VCDisplayManager@@@@QBEPAVCDisplayManager@@XZ
+    ?GetD3DDevice@CDisplayManager@@QAEPAUIDirect3DDevice9@@XZ
+    ?GetDisplayManager@CSystemManager@@QAEPAVCDisplayManager@@XZ
+    ?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z TABLE:00a63150
+00a8e160 new: 5
+    ??0CVertexBufferBase@@IAE@XZ
+    ??0CVertexBufferWin32@@QAE@XZ
+    ??_7CVertexBufferWin32@@6B@ TABLE:0129ba20
+    ??_GCVertexBufferWin32@@UAEPAXI@Z
+    ?ReferenceVertexBufferWin32Ctor@?A0xfe297ae4@@YAPAVCVertexBufferWin32@@XZ
+00a8eda0 new: 7
+    ??0CVertexBufferBase@@IAE@XZ
+    ??0CVertexBufferWin32@@QAE@XZ
+    ??1CVertexBufferBase@@UAE@XZ
+    ??_7CVertexBufferWin32@@6B@ TABLE:0129ba20
+    ??_GCVertexBufferBase@@UAEPAXI@Z
+    ??_GCVertexBufferWin32@@UAEPAXI@Z
+    ?reset@CVertexBufferOwner@@QAEXPAVCVertexBufferWin32@@@Z
+00a8fd40 new: 0
+00a914b0 new: 0
+00a91560 new: 0
+00a931f0 new: 0
+00ac1f00 new: 1
+    ?Unlock@CIndexBuffer@@QAEXXZ TABLE:00ac1f00
+00ac1f10 new: 1
+    ?GetSize@CIndexBuffer@@QBEJXZ TABLE:00ac1f10
+00ac1f70 new: 4
+    ?Get@?$CCountedPointer@VCDisplayManager@@@@QBEPAVCDisplayManager@@XZ
+    ?GetD3DDevice@CDisplayManager@@QAEPAUIDirect3DDevice9@@XZ
+    ?GetDisplayManager@CSystemManager@@QAEPAVCDisplayManager@@XZ
+    ?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z TABLE:00ac1f70
+00ac1fb0 new: 5
+    ??D?$scoped_ptr@VCRenderManager@@@boost@@QBEAAVCRenderManager@@XZ
+    ?Get@?$CCountedPointer@VCDisplayManager@@@@QBEPAVCDisplayManager@@XZ
+    ?GetDisplayManager@CSystemManager@@QAEPAVCDisplayManager@@XZ
+    ?GetRenderManager@CDisplayManager@@QAEAAVCRenderManager@@XZ
+    ?Lock@CIndexBuffer@@QAEPAEKKK@Z TABLE:00ac1fb0
+00ac20a0 new: 1
+    ?Lock@CVertexBufferBase@@QAEPAEKKK@Z TABLE:00ac20a0
+00ac20b0 new: 1
+    ?Unlock@CVertexBufferBase@@QAEXXZ TABLE:00ac20b0
+00b61ff0 new: 1
+    ?StarField@CSkyRendererMethods@@QAEAAVCVertexBufferWin32@@XZ
+00b620a0 new: 1
+    ?GetSize@CVertexBufferBase@@QBEJXZ
+00b6d940 new: 0
+00baa6a0 new: 0
+00bbf380 new: 1
+    ?GetSize@CVertexBufferBase@@QBEJXZ
+00bc3e10 new: 1
+    ?GetSize@CVertexBufferBase@@QBEJXZ
+00bda360 new: 2
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ?AllocateIndexBuffer@CEngineLandscapeMemoryManager@@QAEPAVCIndexBuffer@@PAVCMovableResource@@JKW4EIndexBufferFormat@@W4EPrimitiveType@@@Z TABLE:00bda360
+00bda3d0 new: 6
+    ??0CVertexBufferBase@@IAE@XZ
+    ??0CVertexBufferWin32@@QAE@XZ
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CVertexBufferWin32@@6B@ TABLE:0129ba20
+    ??_GCVertexBufferWin32@@UAEPAXI@Z
+    ?AllocateVertexBuffer@CEngineLandscapeMemoryManager@@QAEPAVCVertexBufferWin32@@PAVCMovableResource@@W4EVertexType@@JJK@Z TABLE:00bda3d0
+00be3660 new: 0
+00be91e0 new: 0
+00bfd670 new: 0
+009e2890 new: 3
+    ??0CVertexBufferBase@@IAE@XZ
+    ??0CVertexCompressionParams@@QAE@XZ
+    ?ReferenceVertexBufferWin32ScalarDeletingDtor@?A0x98fa3e09@@YAPAVCVertexBufferWin32@@XZ

@@ -38,25 +38,28 @@ class CEnginePrimitiveManagerRepeatedZSprites { public:
 #endif
 struct CRepeatedZSpritePosition {float X,Y,Z;void Set(float x,float y,float z){X=x;Y=y;Z=z;}};
 struct CRepeatedZSpriteVertex {CRepeatedZSpritePosition Position;unsigned short ShaderIndex;unsigned short Unused;};
-struct CRepeatedZVertexBufferMethods {
- bool Initialise(long type,long count,long stride,unsigned long usage,long pool);
- CRepeatedZSpriteVertex* Lock(unsigned long flags,unsigned long offset,unsigned long size);
- void Unlock();
-};
-struct CRepeatedZIndexBufferMethods {
- void Initialise(unsigned long length,unsigned long usage,long format,long pool,long primitiveType);
- unsigned short* Lock(unsigned long flags,unsigned long offset,unsigned long size);
- void Unlock();
-};
+// NF149 (q4552 / q4555 / q4557..q4560): the buffers (flat storage in the manager header) are reached as the shared retail classes
+// (engine/CVertexBufferWin32.h, engine/CIndexBuffer.h; Ego_r.pdb + FableWin.pdb CVertexBufferWin32::Initialise 0x00A63150,
+// CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0, CIndexBuffer::Initialise / Lock / Unlock 0x00AC1F70 / 0x00AC1FB0 / 0x00AC1F00)
+// with the shared buffer enums; were the stand-ins CRepeatedZVertexBufferMethods / CRepeatedZIndexBufferMethods.
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CINDEXBUFFER
+#include "engine/EVertexType.h"
+#include "engine/EVertexBufferPool.h"
+#include "engine/EIndexBufferFormat.h"
+#include "engine/EIndexBufferPool.h"
+#include "engine/EPrimitiveType.h"
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
 struct CEnginePrimitiveManagerRepeatedZSpritesMethods:CEnginePrimitiveManagerRepeatedZSprites {void BuildBuffers();};
 void CEnginePrimitiveManagerRepeatedZSpritesMethods::BuildBuffers()
 {
- CRepeatedZVertexBufferMethods* vertexBuffer=reinterpret_cast<CRepeatedZVertexBufferMethods*>(VertexBuffer);
- vertexBuffer->Initialise(0,128,16,0,1);
- CRepeatedZIndexBufferMethods* indexBuffer=reinterpret_cast<CRepeatedZIndexBufferMethods*>(IndexBuffer);
- indexBuffer->Initialise(384,0,101,1,4);
- unsigned short* indices=indexBuffer->Lock(0,0,0);
- CRepeatedZSpriteVertex* vertices=vertexBuffer->Lock(0,0,0);
+ CVertexBufferWin32* vertexBuffer=reinterpret_cast<CVertexBufferWin32*>(VertexBuffer);
+ vertexBuffer->Initialise(VERTEX_NULL,128,16,0,VB_POOL_MANAGED);
+ CIndexBuffer* indexBuffer=reinterpret_cast<CIndexBuffer*>(IndexBuffer);
+ indexBuffer->Initialise(384,0,IB_FORMAT_16,IB_POOL_MANAGED,PT_TRIANGLE_LIST);
+ unsigned short* indices=(unsigned short*)indexBuffer->Lock(0,0,0);
+ CRepeatedZSpriteVertex* vertices=(CRepeatedZSpriteVertex*)vertexBuffer->Lock(0,0,0);
  for(int i=0;i<32;++i){
   vertices[i*4+0].Position.Set(0,0,0);
   vertices[i*4+1].Position.Set(1,0,0);

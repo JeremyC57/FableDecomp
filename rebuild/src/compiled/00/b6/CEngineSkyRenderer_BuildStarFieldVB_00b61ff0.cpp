@@ -18,6 +18,14 @@
 // Layout: engine/CEngineSkyRenderer.h (PDB offsets match retail); CDiskFileWin32 is modelled locally (the engine
 // header is a flat POD and the local needs its polymorphic destructor chain).
 #include "engine/CEngineSkyRenderer.h"
+// NF149 (q4552 / q4559 / q4560): the star-field buffer (flat storage in the sky header) is reached as the shared retail
+// CVertexBufferWin32 (engine/CVertexBufferWin32.h; Ego_r.pdb + FableWin.pdb Initialise 0x00A63150, CVertexBufferBase::Lock / Unlock
+// 0x00AC20A0 / 0x00AC20B0) with the shared buffer enums (VERTEX_COL = 0x42); was the stand-in CStarFieldVertexBufferCalls. The local
+// CBaseClassNonCopyable model gives way to engine/CBaseClassNonCopyable.h, which the buffer header includes.
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#include "engine/EVertexType.h"
+#include "engine/EVertexBufferPool.h"
+#include "engine/CVertexBufferWin32.h"
 
 class CWideString { public:
     CWideStringData* PStringData;
@@ -32,12 +40,6 @@ public:
 class CASuspendableProcess;
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 
-struct CBaseClassNonCopyable {
-    protected:
-    virtual ~CBaseClassNonCopyable();                // 0x0099A300
-    public:
-};
-
 class CDiskFileWin32 : public CBaseClassNonCopyable { public:      // vtable 0x0122D06C
     unsigned char _pad_0x04[0x14];
     CWideString   Pathname;                          // +0x18
@@ -48,17 +50,8 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:      // vtable 0x0
     ~CDiskFileWin32() { Close(); }
 };
 
-enum EVertexType { VERTEX_TYPE_STAR_FIELD = 0x42 };
-enum EVertexBufferPool { VERTEX_BUFFER_POOL_MANAGED = 1 };
-
-struct CStarFieldVertexBufferCalls {                 // CVertexBufferWin32 (0x34 bytes)
-    bool Initialise(EVertexType type, long count, long stride, unsigned long usage, EVertexBufferPool pool);   // 0x00A63150
-    void* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC20A0
-    void Unlock();                                   // 0x00AC20B0
-};
-
 struct CSkyRendererMethods : CEngineSkyRenderer {
-    CStarFieldVertexBufferCalls& StarField() { return *reinterpret_cast<CStarFieldVertexBufferCalls*>(StarFieldVertexBuffer); }
+    CVertexBufferWin32& StarField() { return *reinterpret_cast<CVertexBufferWin32*>(StarFieldVertexBuffer); }
     const CWideString& StarVBFilePath() const { return *reinterpret_cast<const CWideString*>(&StarVBFilePath_PStringData); }
     void BuildStarFieldVB();
 };
@@ -68,7 +61,7 @@ void CSkyRendererMethods::BuildStarFieldVB()
     if (CAFile::PathExists(StarVBFilePath())) {
         CDiskFileWin32 file(StarVBFilePath(), FILE_ACCESS_READ, 2);
         file.Read(&StarCount, 4, 0);
-        StarField().Initialise(VERTEX_TYPE_STAR_FIELD, StarCount, 0x18, 0, VERTEX_BUFFER_POOL_MANAGED);
+        StarField().Initialise(VERTEX_COL, StarCount, 0x18, 0, VB_POOL_MANAGED);
         long bytes = StarCount * 0x18;
         void* vertices = StarField().Lock(0, 0, 0);
         file.Read(vertices, bytes, 0);

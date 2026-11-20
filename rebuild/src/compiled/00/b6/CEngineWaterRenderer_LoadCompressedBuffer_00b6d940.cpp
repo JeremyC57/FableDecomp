@@ -64,12 +64,19 @@ class CMemoryDataInputStream { public:
     }
 };
 
-class CVertexBufferWin32 { public:
-    void Initialise(long vertexType, long count, long stride, unsigned long usage, long pool);   // 0x00A63150
-    void Uninitialise();                                                                        // 0x00A63200
-    unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);         // 0x00AC20A0
-    void Unlock();                                                                              // 0x00AC20B0
-};
+// NF149 (q4552 / q4555..q4560): the buffers are the shared retail classes (engine/CVertexBufferWin32.h, engine/CIndexBuffer.h; Ego_r.pdb +
+// FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0, CIndexBuffer::Lock / Unlock 0x00AC1FB0 / 0x00AC1F00) with the
+// shared buffer enums; were declaration-only local CVertexBufferWin32 / CIndexBuffer models (binding ?Lock@CVertexBufferWin32@@... /
+// ?Unlock@CVertexBufferWin32@@QAEXXZ for the vertex buffer).
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CINDEXBUFFER
+#include "engine/EVertexType.h"
+#include "engine/EVertexBufferPool.h"
+#include "engine/EIndexBufferFormat.h"
+#include "engine/EIndexBufferPool.h"
+#include "engine/EPrimitiveType.h"
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
 
 class CEngineResourceManager { public:
     unsigned long GetVertexBufferUsage();          // 0x00B3B030 (folded with GetIndexBufferUsage)
@@ -91,7 +98,7 @@ void CEngineWaterRenderer::LoadCompressedBuffer(CMemoryDataInputStream& stream, 
     long count = stream.ReadLong();
     long stride = stream.ReadLong();
     if (count && stride) {
-        buffer.Initialise(0, count, stride, NEngineInternal::GPResourceManager->GetVertexBufferUsage(), 1);
+        buffer.Initialise(VERTEX_NULL, count, stride, NEngineInternal::GPResourceManager->GetVertexBufferUsage(), VB_POOL_MANAGED);
         unsigned char* data = buffer.Lock(0, 0, 0);
         long compressedSize = stream.ReadLong();
         if (compressedSize > 0) {

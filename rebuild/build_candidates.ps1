@@ -122776,16 +122776,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ac20a0'
-        Module = 'CVertexBuffer'
-        Source = '00/ac/CVertexBuffer_Lock_00ac20a0.cpp'
-        TestSource = '00/ac/CVertexBuffer_Lock_00ac20a0_test.cpp'
+        Module = 'CVertexBufferBase'
+        Source = '00/ac/CVertexBufferBase_Lock_00ac20a0.cpp'
+        TestSource = '00/ac/CVertexBufferBase_Lock_00ac20a0_test.cpp'
         PassPattern = 'PASS_00ac20a0'
     }
     [pscustomobject]@{
         Address = '00ac20b0'
-        Module = 'CVertexBuffer'
-        Source = '00/ac/CVertexBuffer_Unlock_00ac20b0.cpp'
-        TestSource = '00/ac/CVertexBuffer_Unlock_00ac20b0_test.cpp'
+        Module = 'CVertexBufferBase'
+        Source = '00/ac/CVertexBufferBase_Unlock_00ac20b0.cpp'
+        TestSource = '00/ac/CVertexBufferBase_Unlock_00ac20b0_test.cpp'
         PassPattern = 'PASS_00ac20b0'
     }
     [pscustomobject]@{
@@ -183447,9 +183447,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ac1f00'
-        Module = 'CVertexBufferWin32'
-        Source = '00/ac/CVertexBufferWin32_DoUnlock_00ac1f00.cpp'
-        TestSource = '00/ac/CVertexBufferWin32_DoUnlock_00ac1f00_test.cpp'
+        Module = 'CIndexBuffer'
+        Source = '00/ac/CIndexBuffer_Unlock_00ac1f00.cpp'
+        TestSource = '00/ac/CIndexBuffer_Unlock_00ac1f00_test.cpp'
         PassPattern = '00ac1f00_TEST PASS'
     }
     [pscustomobject]@{

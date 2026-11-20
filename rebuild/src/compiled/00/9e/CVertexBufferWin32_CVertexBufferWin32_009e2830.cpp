@@ -1,48 +1,26 @@
-// CVertexBufferWin32::CVertexBufferWin32(EVertexType, long, long, ulong, EVertexBufferPool) -- the
-// CVertexBufferBase shell (no D3D buffer, zero length/type/stride, identity compression params) then
-// Initialise(...) with the five arguments. Vtable 0x0129BA20 (RTTI: CVertexBufferWin32).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009E2830, length 95 bytes.
-// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CVertexBufferWin32::Initialise @ 0x00A63150.
-// Manifest label (CChangingStateComponent::Initialise) corrected from the stored vtable.
-// CBase: the engine's polymorphic root (vtable @ 0x0129A7C4 in the ctor, 0x01231710 in the dtor);
-// both members are out of line in retail.
-class CBaseClassNonCopyable {
-protected:
-    CBaseClassNonCopyable();                                    // 0x0099A2F0
-    virtual ~CBaseClassNonCopyable();                                   // 0x0099A300
-};
-#include "engine/CVertexBufferWin32.h"   // PDB header: an opaque 0x30-byte flattened base, so the retail
-                                            // members (CVertexBufferBase in the PDB) are modelled locally
-struct IDirect3DVertexBuffer9;
-class CVertexCompressionParams { public:               // PDB: PosScale XYZW then PosBias XYZW
-    float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
-    float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
-    CVertexCompressionParams()
-        : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
-          PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
-};
-struct CVertexBufferBase : CBaseClassNonCopyable {              // 0x34 bytes, PDB member names
-    IDirect3DVertexBuffer9*  PVertexBuffer;     // +0x04
-    unsigned long            Length;            // +0x08
-    long                     Type;              // +0x0c (EVertexType)
-    unsigned char            Stride;            // +0x10
-    CVertexCompressionParams CompressionParams; // +0x14
-    CVertexBufferBase() : Length(0), Type(0), CompressionParams()
-    {
-        PVertexBuffer = 0;
-        Stride = 0;
-    }
-};
-struct CVertexBufferWin32_Retail : CVertexBufferBase {
-    virtual void VSlot1();
-    CVertexBufferWin32_Retail();
-    CVertexBufferWin32_Retail(long type, long a, long b, unsigned long c, long pool);
-    bool Initialise(long type, long a, long b, unsigned long c, long pool);   // 0x00A63150
-};
-FABLE_STATIC_ASSERT(sizeof(CVertexBufferWin32_Retail) == sizeof(CVertexBufferWin32));
+// CVertexBufferWin32::CVertexBufferWin32(EVertexType, long, long, unsigned long, EVertexBufferPool) -- the empty buffer (CBaseClassNonCopyable's
+// constructor, CVertexBufferBase's inline set-up, PVertexBuffer / Stride zero, the vtable 0x0129BA20), then Initialise(...) with the five arguments
+// Leaf: ??0CVertexBufferWin32@@QAE@W4EVertexType@@JJKW4EVertexBufferPool@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009E2830, 95 bytes, thiscall, `ret 14h`: a compiler-emitted out-of-line copy of an inline constructor.
+// Identity: FableWin.pdb ??0CVertexBufferWin32@@QAE@W4EVertexType@@JJKW4EVertexBufferPool@@@Z (0x030A3300; Ego_r.pdb has no out-of-line copy:
+//   inline in release); the body stores .?AVCVertexBufferWin32@@'s vtable 0x0129BA20 and passes its five arguments on to
+//   CVertexBufferWin32::Initialise 0x00A63150 (Ego_r.pdb + FableWin.pdb), whose parameter types the constructor's mangled name repeats.
+// Port (NF149, q4552 binder / q6203 family): was a strong definition on local CBaseClassNonCopyable / CVertexCompressionParams /
+//   CVertexBufferBase models and the stand-in class CVertexBufferWin32_Retail (leaf ??0CVertexBufferWin32_Retail@@QAE@JJJKJ@Z, binding
+//   ?Initialise@CVertexBufferWin32_Retail@@QAE_NJJJKJ@Z and ??_7CVertexBufferWin32_Retail@@6B@); now the header's inline constructor (opt-in
+//   FABLE_RETAIL_CVERTEXBUFFERWIN32_CTOR_INITIALISE), emitted here as its pick-any COMDAT (the nf86 pattern).
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32_CTOR_INITIALISE
+#include "engine/EVertexType.h"
+#include "engine/EVertexBufferPool.h"
+#include "engine/CVertexBufferWin32.h"
 
-CVertexBufferWin32_Retail::CVertexBufferWin32_Retail(long type, long a, long b, unsigned long c, long pool)
-    : CVertexBufferBase()
+#pragma optimize("s", on)
+namespace {
+// Fidelity: scaffolding, not retail: the smallest out-of-line use of the header's inline constructor (a size-optimised `new`), so VC7.1
+// emits ??0CVertexBufferWin32@@QAE@W4EVertexType@@JJKW4EVertexBufferPool@@@Z as a pick-any COMDAT.
+CVertexBufferWin32* ReferenceVertexBufferWin32InitialiseCtor(EVertexType type, long count, long stride, unsigned long usage, EVertexBufferPool pool)
 {
-    Initialise(type, a, b, c, pool);
+    return new CVertexBufferWin32(type, count, stride, usage, pool);
+}
 }

@@ -46,6 +46,13 @@ class CStreamingFontDataBank : public CBankFile { public:
     CStreamingFontDataBank();                            // 0x00A5F290
     void InitStreamingEntry(CSymbolMap& map);            // 0x00A5EF50
 };
+// NF149 (q4552): the existing local CVertexBufferWin32 model's Initialise is respelled in place on the PDB parameter types (Ego_r.pdb +
+// FableWin.pdb ?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z, the shared enum headers); it bound
+// ?Initialise@CVertexBufferWin32@@QAE_NJJJKJ@Z. The model stays local: moving it onto engine/CVertexBufferWin32.h makes the inlined buffer
+// constructor bind 0x0099A2F0 as ??0CBaseClassNonCopyable@@IAE@XZ beside CFontManager's own N_0099a2f0::CBaseObject base call (RELOC_IDENTITY);
+// CFontManager needs its own header port first (engine/CFontManager.h has no base / members yet).
+#include "engine/EVertexType.h"
+#include "engine/EVertexBufferPool.h"
 struct IDirect3DVertexBuffer9;
 class CVertexCompressionParams { public:                        // 32 bytes
     float Scale[4];
@@ -70,10 +77,10 @@ class CVertexBufferWin32 : public CVertexBufferBase { public:          // vtable
     {
         PVertexBuffer = 0;
         Stride = 0;
-        Initialise(vertexType, count, stride, usage, pool);
+        Initialise((EVertexType)vertexType, count, stride, usage, (EVertexBufferPool)pool);
     }
     virtual ~CVertexBufferWin32();
-    bool Initialise(long vertexType, long count, long stride, unsigned long usage, long pool);   // 0x00A63150
+    bool Initialise(EVertexType vertexType, long count, long stride, unsigned long usage, EVertexBufferPool pool);   // 0x00A63150
 };
 template <class T> class CArray { public:
     T*   Data;

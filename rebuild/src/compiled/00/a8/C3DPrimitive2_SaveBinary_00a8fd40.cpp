@@ -16,7 +16,12 @@
 // the repeat count is max(RepeatingMeshReps, 1); the vertex buffer's 32-byte compression params are block-copied
 // to a local before the virtual WriteData.
 #include "engine/C3DVector.h"
-class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
+// NF149 (q4552 / q4559 / q4560): the vertex buffer is the shared retail CVertexBufferWin32 (engine/CVertexBufferWin32.h, which brings
+// engine/CVertexCompressionParams.h; Ego_r.pdb + FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0); was a local
+// CVertexBufferWin32 model (binding ?Lock@CVertexBufferWin32@@QAEPAXKKK@Z / ?Unlock@CVertexBufferWin32@@QAEXXZ) and a local
+// CVertexCompressionParams model.
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#include "engine/CVertexBufferWin32.h"
 
 class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
@@ -31,16 +36,6 @@ public:
     void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
-class CVertexBufferWin32 { public:
-    virtual ~CVertexBufferWin32();
-    unsigned long m_handle;                             // +0x04
-    unsigned long ByteLength;                           // +0x08
-    unsigned long VertexSize;                           // +0x0C
-    unsigned char VertexType;                           // +0x10
-    CVertexCompressionParams CompressionParams;         // +0x14
-    void* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC20A0
-    void Unlock();                                      // 0x00AC20B0
-};
 class CIndexBuffer { public:
     unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC1FB0
     void Unlock();                                      // 0x00AC1F00
@@ -128,10 +123,10 @@ void C3DPrimitive2::SaveBinary(CDataOutputStream& out)
     CVertexBufferWin32* vb = VertexBuffer;
     CVertexCompressionParams params = vb->CompressionParams;
     out.WriteData(&params, sizeof(params));
-    out.WriteULONG(vb->VertexType);
-    out.WriteULONG(vb->VertexSize);
+    out.WriteULONG(vb->Stride);
+    out.WriteULONG(vb->Type);
     void* vertices = vb->Lock(0, 0, 0);
-    out.WriteBuffer(vertices, vb->ByteLength);
+    out.WriteBuffer(vertices, vb->Length);
     vb->Unlock();
 
     UploadToIndexBuffer(0);

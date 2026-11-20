@@ -24,6 +24,13 @@ enum EIndexBufferFormat;                                                 // MS f
 enum EPrimitiveType;                                                     // MS forward enum
 class CEngineLandscapeMemoryManager : public CFailedAllocationHandler, public CMovableResource {
 public:
+#ifdef FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER_PROCESSDISPOSALLIST
+    // Retail opt-in (NF149, row 0x00BDA3D0): Ego_r.pdb / FableWin.pdb ?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ (retail 0x00BDA150,
+    // private; AllocateVertexBuffer / AllocateIndexBuffer call it first).
+private:
+    void ProcessDisposalList();                                          // 0x00BDA150
+public:
+#endif
 #ifdef FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER_CTOR
     // Retail opt-in (wfE7, row 0x00B69000): Ego_r.pdb ??0CEngineLandscapeMemoryManager@@QAE@ABVCEngineMemoryInit@@@Z (retail 0x00BD9FD0,
     // `new` of 0x44 bytes in the CEngineLandscapeRenderer ctor). Declaration only.

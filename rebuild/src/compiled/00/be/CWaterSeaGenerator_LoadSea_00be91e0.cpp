@@ -64,24 +64,26 @@ class CMemoryDataInputStream { public:
     }
 };
 
-class CVertexBufferWin32 { public:
-    void Initialise(long vertexType, long count, long stride, unsigned long usage, long pool);   // 0x00A63150
-    void Uninitialise();                                                                        // 0x00A63200
-    unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);         // 0x00AC20A0
-    void Unlock();                                                                              // 0x00AC20B0
-};
+// NF149 (q4552 / q4555..q4560): the buffers are the shared retail classes (engine/CVertexBufferWin32.h, engine/CIndexBuffer.h; Ego_r.pdb +
+// FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0, CIndexBuffer::Lock / Unlock 0x00AC1FB0 / 0x00AC1F00) with the
+// shared buffer enums; were declaration-only local CVertexBufferWin32 / CIndexBuffer models (binding ?Lock@CVertexBufferWin32@@... /
+// ?Unlock@CVertexBufferWin32@@QAEXXZ for the vertex buffer).
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CINDEXBUFFER
+#include "engine/EVertexType.h"
+#include "engine/EVertexBufferPool.h"
+#include "engine/EIndexBufferFormat.h"
+#include "engine/EIndexBufferPool.h"
+#include "engine/EPrimitiveType.h"
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
 
-class CIndexBuffer { public:
-    void Initialise(unsigned long count, unsigned long flags, long format, long pool, long primitiveType);   // 0x00AC1F70
-    void Uninitialise();                                                                                     // 0x00AC1EE0
-    unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);                      // 0x00AC1FB0
-    void Unlock();                                                                                           // 0x00AC1F00
-};
 
 class CEngineResourceManager { public:
     unsigned long GetVertexBufferUsage();          // 0x00B3B030
     unsigned long GetIndexBufferUsage();           // 0x00B3B060
-    long GetIndexBufferPool();                     // 0x00B3B0A0 (returns 1)
+    // nf149 landing (NF152 NAME_FIXES, q4563): Ego_r.pdb 0x009D96D0 + FableWin.pdb 0x02DD4440 ?GetIndexBufferMemPool@CEngineResourceManager@@QAE?AW4EIndexBufferPool@@XZ.
+    EIndexBufferPool GetIndexBufferMemPool();      // 0x00B3B0A0 (returns IB_POOL_MANAGED)
 };
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
@@ -104,7 +106,7 @@ void CWaterSeaGenerator::LoadSea(CMemoryDataInputStream* stream, CVertexBufferWi
     *vertexCount = stream->ReadLong();
     *polyCount = stream->ReadLong();
     if (*vertexCount) {
-        vertexBuffer->Initialise(0, *vertexCount, 0xc, NEngineInternal::GPResourceManager->GetVertexBufferUsage(), 1);
+        vertexBuffer->Initialise(VERTEX_NULL, *vertexCount, 0xc, NEngineInternal::GPResourceManager->GetVertexBufferUsage(), VB_POOL_MANAGED);
         unsigned char* data = vertexBuffer->Lock(0, 0, 0);
         long compressedSize = stream->ReadLong();
         if (compressedSize > 0)
@@ -112,8 +114,8 @@ void CWaterSeaGenerator::LoadSea(CMemoryDataInputStream* stream, CVertexBufferWi
         vertexBuffer->Unlock();
     }
     if (*polyCount) {
-        indexBuffer->Initialise(*polyCount * 2, NEngineInternal::GPResourceManager->GetIndexBufferUsage(), 0x65,
-                                NEngineInternal::GPResourceManager->GetIndexBufferPool(), 5);
+        indexBuffer->Initialise(*polyCount * 2, NEngineInternal::GPResourceManager->GetIndexBufferUsage(), IB_FORMAT_16,
+                                NEngineInternal::GPResourceManager->GetIndexBufferMemPool(), PT_TRIANGLE_STRIP);
         unsigned char* data = indexBuffer->Lock(0, 0, 0);
         long compressedSize = stream->ReadLong();
         if (compressedSize > 0)

@@ -12,7 +12,12 @@
 // RepeatingMeshReps +8, Data (scoped_ptr<N3DPrimitive::CDeviceIndependent>, 32-byte vertex vector at +4) +0x2c.
 // Leaf: UploadToVertexBufferStatic@C3DPrimitive2
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
-class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
+// NF149 (q4552 / q4559 / q4560): the vertex buffer is the shared retail CVertexBufferWin32 (engine/CVertexBufferWin32.h, which brings
+// engine/CVertexCompressionParams.h; Ego_r.pdb + FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0); was a local
+// CVertexBufferWin32 model (binding ?Lock@CVertexBufferWin32@@QAEPAXKKK@Z / ?Unlock@CVertexBufferWin32@@QAEXXZ) and a local
+// CVertexCompressionParams model.
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#include "engine/CVertexBufferWin32.h"
 struct CVertexFormat {
     unsigned long GetVertexSize() const;            // 0x00AB37B0
 };
@@ -33,13 +38,6 @@ struct CVertexShaderInputStatic : CVertexShaderInput {   // vtable 0x0129DFB8
     void Initialise(unsigned long flags, bool useDeclaration);   // 0x00A90560
 };
 }
-class CVertexBufferWin32 { public:
-    virtual ~CVertexBufferWin32();
-    unsigned char _04[0x10];
-    CVertexCompressionParams CompressionParams;     // +0x14
-    void* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC20A0
-    void Unlock();                                  // 0x00AC20B0
-};
 struct CStaticVertex { unsigned char _body[0x20]; };
 #include "engine/CArray.h"
 namespace N3DPrimitive {

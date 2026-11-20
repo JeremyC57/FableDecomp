@@ -39,15 +39,19 @@ public:
     long Compress(void* data, long count, long stride, CArray<unsigned char>* output);   // 0x00F3AFC0
 };
 
-class CVertexBufferWin32 { public:
-    void* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC20A0
-    void Unlock();                                       // 0x00AC20B0
-};
-class CIndexBuffer { public:
-    void Unlock();                                       // 0x00AC1F00
-public:
-    unsigned char* Lock(unsigned long, unsigned long, unsigned long);   // 0x00AC1FB0
-};
+// NF149 (q4552 / q4555..q4560): the buffers are the shared retail classes (engine/CVertexBufferWin32.h, engine/CIndexBuffer.h; Ego_r.pdb +
+// FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0, CIndexBuffer::Lock / Unlock 0x00AC1FB0 / 0x00AC1F00) with the
+// shared buffer enums; were declaration-only local CVertexBufferWin32 / CIndexBuffer models (binding ?Lock@CVertexBufferWin32@@... /
+// ?Unlock@CVertexBufferWin32@@QAEXXZ for the vertex buffer).
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CINDEXBUFFER
+#include "engine/EVertexType.h"
+#include "engine/EVertexBufferPool.h"
+#include "engine/EIndexBufferFormat.h"
+#include "engine/EIndexBufferPool.h"
+#include "engine/EPrimitiveType.h"
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
 
 struct CEngineWaterBackgroundSubPatch_Methods : CEngineWaterBackgroundSubPatch {
     long GetWaterType() const { return *(const long*)WaterType; }
