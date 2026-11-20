@@ -84,8 +84,14 @@ private: public:
     unsigned char _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
 };
-class CTCHeroStats { public:
-    void SetMarriageState(CThingAICreature* spouse, long state);   // 0x0057BC6E
+enum EMarriageState { MARRIAGE_STATE_NONE = 0 };
+// NF113 (PRIORITY q4716 / q4950): the row-local CTCHeroStats declaration respelled in place to Ego_r.pdb's private
+//   ?SetMarriageState@CTCHeroStats@@AAEXPBVCThingAICreature@@W4EMarriageState@@@Z (CTCWife is its friend, as engine/CTCHeroStats.h
+//   FABLE_RETAIL_CTCHEROSTATS_MARRIAGE declares it); was the public (CThingAICreature*, long) form.
+class CTCHeroStats {
+    friend class CTCWife;
+    void SetMarriageState(const CThingAICreature* spouse, EMarriageState state);   // 0x0057BC6E
+public:
 };
 class CTCBuyableHouse { public:                        // interface type 0xD5
     void SetWifeLivingHere(CThing* wife);       // 0x006D3C40 ?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z (FableWin.pdb; stores CIntelligentPointer<CThing> WifeLivingHere +0x38)
@@ -123,7 +129,7 @@ void CTCWife::Unmarry(bool keepHouseUnrented)
         if (hero && !(hero->Flags91 & 1)) {
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);
-            stats->SetMarriageState(creature, 0);
+            stats->SetMarriageState(creature, MARRIAGE_STATE_NONE);
         }
         NeedsToChangeBrain = true;
     }

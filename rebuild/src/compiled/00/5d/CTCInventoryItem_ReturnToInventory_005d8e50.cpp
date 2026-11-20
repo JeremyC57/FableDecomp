@@ -1,5 +1,5 @@
 // CTCInventoryItem::ReturnToInventory() -- hands this item's thing back to the inventory it belongs to (PInventory's slot-83 virtual)
-// Leaf: ReturnToInventory@CTCInventoryItem
+// Leaf: ?ReturnToInventory@CTCInventoryItem@@QAEXXZ
 // Retail: Fable.exe @ 0x005D8E50, 18 bytes. Catalog label NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::OnPredicateFail
 // is wrong (and so is the chunk-206 correction CTCShowableItem::OnShowEnded). Evidence: it sits between
 // CTCInventoryItem::RemoveFromInventory 0x005D8E20 (same `[this+0x10]` PInventory / `[this+4]` thing pair, PInventory then

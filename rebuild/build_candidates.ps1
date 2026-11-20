@@ -62846,10 +62846,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006556d3'
-        Module = '_global'
-        Source = '00/65/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_006556d3.cpp'
-        TestSource = '00/65/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_006556d3_test.cpp'
+        Module = 'std'
+        Source = '00/65/std_fill_006556d3.cpp'
+        TestSource = '00/65/std_fill_006556d3_test.cpp'
         PassPattern = 'PARITY_OK_006556d3'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '0065572d'
@@ -74149,9 +74150,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00578fce'
-        Module = '_global'
-        Source = '00/57/CGuiControlTreePane_SortTreeRecursively_00578fce.cpp'
-        TestSource = '00/57/CGuiControlTreePane_SortTreeRecursively_00578fce_test.cpp'
+        Module = 'std::_List_base<CSliderAnimator, std::allocator<CSliderAnimator>>'
+        Source = '00/57/stdListbase_clear_00578fce.cpp'
+        TestSource = '00/57/stdListbase_clear_00578fce_test.cpp'
         PassPattern = 'PASS_00578fce'
     }
     [pscustomobject]@{
@@ -84112,9 +84113,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005792da'
-        Module = 'std'
-        Source = '00/57/std_list_T_005792da_dtor_005792da.cpp'
-        TestSource = '00/57/std_list_T_005792da_dtor_005792da_test.cpp'
+        Module = 'std::_List_base<CSliderAnimator, std::allocator<CSliderAnimator>>'
+        Source = '00/57/stdListbase_Listbase_005792da.cpp'
+        TestSource = '00/57/stdListbase_Listbase_005792da_test.cpp'
         PassPattern = '005792da_TEST PASS'
     }
     [pscustomobject]@{
@@ -90006,9 +90007,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065533c'
-        Module = '_global'
-        Source = '00/65/CIntelligentPointerCThingCreatureBase_operator_0065533c.cpp'
-        TestSource = '00/65/CIntelligentPointerCThingCreatureBase_operator_0065533c_test.cpp'
+        Module = 'CIntelligentPointer<NParticleEngine::CParticleEmitter>'
+        Source = '00/65/CIntelligentPointer_operator_0065533c.cpp'
+        TestSource = '00/65/CIntelligentPointer_operator_0065533c_test.cpp'
         PassPattern = 'PASS_0065533c'
     }
     [pscustomobject]@{
@@ -125435,9 +125436,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0057955a'
-        Module = '_global'
-        Source = '00/57/global_ListPushFrontWrapper0057955a_0057955a.cpp'
-        TestSource = '00/57/global_ListPushFrontWrapper0057955a_0057955a_test.cpp'
+        Module = 'std::list<CSliderAnimator, std::allocator<CSliderAnimator>>'
+        Source = '00/57/stdlist_pushback_0057955a.cpp'
+        TestSource = '00/57/stdlist_pushback_0057955a_test.cpp'
         PassPattern = 'LISTPUSH_0057955a_PASS'
     }
     [pscustomobject]@{
@@ -242321,15 +242322,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00569f20'
         Module = 'CPersistContext'
-        Source = '00/56/CPersistContext_TransferCQuestActivityRecord_00569f20.cpp'
-        TestSource = '00/56/CPersistContext_TransferCQuestActivityRecord_00569f20_test.cpp'
+        Source = '00/56/CPersistContext_TransferVector_00569f20.cpp'
+        TestSource = '00/56/CPersistContext_TransferVector_00569f20_test.cpp'
         PassPattern = '00569f20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00569fe0'
         Module = 'CPersistContext'
-        Source = '00/56/CPersistContext_TransferCQuestScoreRecord_00569fe0.cpp'
-        TestSource = '00/56/CPersistContext_TransferCQuestScoreRecord_00569fe0_test.cpp'
+        Source = '00/56/CPersistContext_TransferVector_00569fe0.cpp'
+        TestSource = '00/56/CPersistContext_TransferVector_00569fe0_test.cpp'
         PassPattern = '00569fe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -261372,7 +261373,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005d8e50'
-        Module = 'CTCShowableItem'
+        Module = 'CTCInventoryItem'
         Source = '00/5d/CTCInventoryItem_ReturnToInventory_005d8e50.cpp'
         TestSource = '00/5d/CTCInventoryItem_ReturnToInventory_005d8e50_test.cpp'
         PassPattern = '005d8e50_TEST PASS'
@@ -276797,9 +276798,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b336a'
-        Module = 'ArgPasser'
-        Source = '00/5b/ArgPasser_ArgPasser_005b336a.cpp'
-        TestSource = '00/5b/ArgPasser_ArgPasser_005b336a_test.cpp'
+        Module = 'CTCInventoryClothing::ArgPasser'
+        Source = '00/5b/CTCInventoryClothingArgPasser_ArgPasser_005b336a.cpp'
+        TestSource = '00/5b/CTCInventoryClothingArgPasser_ArgPasser_005b336a_test.cpp'
         PassPattern = '005b336a_TEST PASS'
     }
     [pscustomobject]@{

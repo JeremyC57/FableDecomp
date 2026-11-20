@@ -37,7 +37,8 @@ struct CCountedPointer {
 struct CCreatureActionQueue { void Add(const CCountedPointer& action); };   // 0x00719360
 
 class CTCInventoryAbilities { public: CThing* GetWeaponInHand() const; };    // 0x006A1440
-class CTCWeapon { public: bool IsMissileWeapon() const; bool IsLoaded() const; };  // 0x005DAA40 / 0x005DA980
+// NF113 (PRIORITY q6397): IsLoaded respelled in place to Ego_r.pdb / FableWin.pdb ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ (0x005DA980).
+class CTCWeapon { public: bool IsMissileWeapon() const; bool IsProjectileWeaponLoaded() const; };  // 0x005DAA40 / 0x005DA980
 
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -83,7 +84,7 @@ void CActionFireProjectileWeapon::OnAdd()
         const CTCWeapon* tcWeapon;
         if (weapon && !weapon->IsDead() && weapon->PeekTC(TCI_WEAPON, &tcWeapon) && tcWeapon->IsMissileWeapon()) {
             hasMissileWeapon = true;
-            needsReload = !tcWeapon->IsLoaded();
+            needsReload = !tcWeapon->IsProjectileWeaponLoaded();
         }
     }
     if (PTargetThing.IsAlive() && hasMissileWeapon) {

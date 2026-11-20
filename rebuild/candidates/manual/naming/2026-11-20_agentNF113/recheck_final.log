@@ -1,0 +1,153 @@
+addr       parity           behav  name
+00569f20   WARN RELOC_NAME: ??$GFSerialiseVectorBinaryOut@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@@YIXAAVCDataOutputStream@@AAV?$vector@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$allocator@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@std@@@std@@@Z -> 005665b0 labelled 'GFSerialiseVectorBinaryOut<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity>'
+00569f20   WARN STANDIN_LEAF ??$TransferVector@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@CPersistContext@@QAEXPBDAAV?$vector@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$allocator@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@std@@@std@@@Z (catalog CPersistContext::Transfer<CQuestActivityRecord>; names another function)
+00569f20   RELOCATION_MATCH PASS   CPersistContext::Transfer<CQuestActivityRecord>
+00569fe0   RELOCATION_MATCH PASS   CPersistContext::TransferVector<float>
+0056e545   MATCH            PASS   CSliderAnimator::CSliderAnimator
+00578fce   WARN STANDIN_LEAF ?clear@?$_List_base@VCSliderAnimator@@V?$allocator@VCSliderAnimator@@@std@@@std@@QAEXXZ (catalog std::list<CSliderAnimator>::clear; names another function)
+00578fce   RELOCATION_MATCH PASS   std::list<CSliderAnimator>::clear
+005792da   WARN STANDIN_LEAF ??1?$_List_base@VCSliderAnimator@@V?$allocator@VCSliderAnimator@@@std@@@std@@QAE@XZ (catalog std::list<T_005792da>::~list; names another function)
+005792da   RELOCATION_MATCH PASS   std::list<T_005792da>::~list
+0057955a   RELOCATION_MATCH PASS   std::list<CSliderAnimator>::push_back
+0057a8da   MATCH            PASS   CTCHeroStats::AddHeroStatExperience
+0057ac89   MATCH            PASS   CTCHeroStats::PeekMarriageInfo
+005b336a   MATCH            PASS   ArgPasser::ArgPasser
+005b5cf8   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005b5cf8   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b5cf8   WARN RELOC_NAME: ?GetItemDefDescription@@YI?AVCWideString@@J@Z -> 005d9630 labelled 'CTCInventoryItem::GetDetails'
+005b5cf8   RELOCATION_MATCH PASS   CTCInventoryClothing::GetItemDescription
+005b62fe   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005b62fe   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b62fe   WARN RELOC_NAME: ?GetItemDefDescription@@YI?AVCWideString@@J@Z -> 005d9630 labelled 'CTCInventoryItem::GetDetails'
+005b62fe   RELOCATION_MATCH PASS   CTCInventoryClothing::GetItemDescriptionNoArmourRating
+005bdf08   RELOCATION_MATCH PASS   CTCInventoryBase::GetNumberOfItemsOfTypeInInventory
+005d8e50   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005d8e50   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+005d8e50   MATCH            PASS   CTCInventoryItem::ReturnToInventory
+005da980   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005da980   WARN SHARED_HEADER_AVAILABLE CWeaponDef (engine/CWeaponDef.h)
+005da980   MATCH            PASS   CTCWeapon::IsProjectileWeaponLoaded
+005ede93   MATCH            PASS   CTCInventoryAbilities::GetAbilityLevel
+00633830   RELOCATION_MATCH PASS   CPlayer::UninitModeParalysed
+00633880   RELOCATION_MATCH PASS   CPlayer::UninitModeBoastUI
+00633a60   RELOCATION_MATCH PASS   CPlayer::UninitModeQuickAccessMenu
+00633bb0   RELOCATION_MATCH PASS   CPlayer::UninitModeOracleMinigame
+0063adf0   RELOCATION_MATCH PASS   CWorldMap::GetStrongestEngineThemeAt
+0065533c   RELOCATION_MATCH PASS   _global::CIntelligentPointer_Assign_0065533c
+006556d3   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z -> 0065533c labelled '_global::CIntelligentPointer_Assign_0065533c'
+006556d3   RELOCATION_MATCH PASS   _global::ForEachElem0x8_operator__006556d3
+006cff10   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006cff10   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+006cff10   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006cff10   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+006cff10   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+006cff10   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006cff10   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006cff10   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+006cff10   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+006cff10   WARN SHARED_HEADER_AVAILABLE CTCWife (engine/CTCWife.h)
+006cff10   RELOCATION_MATCH PASS   CTCWife::Unmarry
+006d0020   RELOCATION_MATCH PASS   CTCWife::Died
+006d77c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CTCHero (engine/CTCHero.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef (engine/CHeroStatsDef.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CHeroExperienceDef (engine/CHeroExperienceDef.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+006d77c0   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience (engine/CTCHeroExperience.h)
+006d77c0   RELOCATION_MATCH PASS   CTCHeroExperience::AddExperience
+00715110   WARN SHARED_HEADER_AVAILABLE CCreatureAction_AimMissileWeapon (engine/CCreatureAction_AimMissileWeapon.h)
+00715110   WARN SHARED_HEADER_AVAILABLE CCreatureAction_FireMissileWeapon (engine/CCreatureAction_FireMissileWeapon.h)
+00715110   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00715110   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+00715110   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+00715110   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00715110   WARN RELOC_NAME: ?GetWeaponInHand@CTCInventoryAbilities@@QBEPAVCThing@@XZ -> 006a1440 labelled 'CTCCarrying::GetThingInPrimarySlot'
+00715110   WARN RELOC_NAME: ?IsMissileWeapon@CTCWeapon@@QBE_NXZ -> 005daa40 labelled 'CTCWeapon::IsProjectileWeapon'
+00715110   WARN RELOC_NAME: ?Add@CCreatureActionQueue@@QAEXABUCCountedPointer@@@Z -> 00719360 labelled 'std::list<CCountedPointer<CCreatureActionBase>, std::allocator<CCountedPointer<CCreatureActionBase>>>::push_back'
+00715110   RELOCATION_MATCH PASS   NTCScriptedControl::CActionFireProjectileWeapon::OnAdd
+00862780   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+00862780   WARN RELOC_NAME: ?GetHasInformation@CThingAICreature@@QBE_NXZ -> 008300d0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   WARN RELOC_NAME: ?GetWaveWithInformation@CThingAICreature@@QBE_NXZ -> 008300f0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   RELOCATION_MATCH PASS   CModeStandBase::UpdateIdleAnim
+008d6da0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008d6da0   WARN SHARED_HEADER_AVAILABLE CAnimInit (engine/CAnimInit.h)
+008d6da0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008d6da0   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+008d6da0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d6da0   RELOCATION_MATCH PASS   NCreatureMode::CModeConversation::AnimUpdate
+008d6ff0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008d6ff0   WARN SHARED_HEADER_AVAILABLE CAnimInit (engine/CAnimInit.h)
+008d6ff0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008d6ff0   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+008d6ff0   RELOCATION_MATCH PASS   NCreatureMode::CModeDragonHover::AnimUpdate
+008d8b00   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d8b00   WARN SHARED_HEADER_AVAILABLE CAnimInit (engine/CAnimInit.h)
+008d8b00   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008d8b00   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008d8b00   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+008d8b00   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+008d8b00   RELOCATION_MATCH PASS   NCreatureMode::CModeCrouch::AnimUpdate
+008d8dd0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008d8dd0   WARN SHARED_HEADER_AVAILABLE CAnimInit (engine/CAnimInit.h)
+008d8dd0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008d8dd0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+008d8dd0   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+008d8dd0   RELOCATION_MATCH PASS   NCreatureMode::CModeBlock::AnimUpdate
+00986510   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CTCVillageMember (engine/CTCVillageMember.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CHeroMarriageInfo (engine/CHeroMarriageInfo.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_OpinionReactionRoot (engine/CAIStateGroup_OpinionReactionRoot.h)
+00986510   WARN RELOC_NAME: ??1?$list@PBVCThingAICreature@@@@QAE@XZ -> 00685bc0 labelled '_global::StdList_Clear_00685bc0'
+00986510   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::MarriageCommentIsRunnable
+
+WINS: 32
+  00569f20 RELOCATION_MATCH CPersistContext::??$TransferVector@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@CPersistContext@@QAEXPBDAAV?$vector@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$allocator@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@std@@@std@@@Z
+  00569fe0 RELOCATION_MATCH CPersistContext::??$TransferVector@M@CPersistContext@@QAEXPBDAAV?$vector@MV?$allocator@M@std@@@std@@@Z
+  0056e545 MATCH CSliderAnimator::??0CSliderAnimator@@QAE@PAVCComponent@NUISystem@@MMMM@Z
+  00578fce RELOCATION_MATCH _global::?clear@?$_List_base@VCSliderAnimator@@V?$allocator@VCSliderAnimator@@@std@@@std@@QAEXXZ
+  005792da RELOCATION_MATCH std::??1?$_List_base@VCSliderAnimator@@V?$allocator@VCSliderAnimator@@@std@@@std@@QAE@XZ
+  0057955a RELOCATION_MATCH _global::?push_back@?$list@VCSliderAnimator@@V?$allocator@VCSliderAnimator@@@std@@@std@@QAEXABVCSliderAnimator@@@Z
+  0057a8da MATCH CTCHeroStats::?AddHeroStatExperience@CTCHeroStats@@QAEXW4EHeroExperienceStatCategory@@J@Z
+  0057ac89 MATCH CTCHeroStats::?PeekMarriageInfo@CTCHeroStats@@QBE_N_KAAVCHeroMarriageInfo@@@Z
+  005b336a MATCH ArgPasser::??0ArgPasser@CTCInventoryClothing@@QAE@XZ
+  005b5cf8 RELOCATION_MATCH CTCInventoryClothing::GetItemDescription@CTCInventoryClothing
+  005b62fe RELOCATION_MATCH CTCInventoryClothing::GetItemDescriptionNoArmourRating@CTCInventoryClothing
+  005bdf08 RELOCATION_MATCH CTCInventoryBase::?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
+  005d8e50 MATCH CTCShowableItem::?ReturnToInventory@CTCInventoryItem@@QAEXXZ
+  005da980 MATCH CTCWeapon::?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ
+  005ede93 MATCH CTCInventoryAbilities::?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+  00633830 RELOCATION_MATCH CPlayer::?UninitModeParalysed@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+  00633880 RELOCATION_MATCH CPlayer::?UninitModeBoastUI@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+  00633a60 RELOCATION_MATCH CPlayer::?UninitModeQuickAccessMenu@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+  00633bb0 RELOCATION_MATCH CPlayer::?UninitModeOracleMinigame@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+  0063adf0 RELOCATION_MATCH CWorldMap::?GetStrongestEngineThemeAt@CWorldMap@@QBEJABVC3DVector@@AAJ@Z
+  0065533c RELOCATION_MATCH _global::??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z
+  006556d3 RELOCATION_MATCH _global::??$fill@PAV?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V1@@std@@YIXPAV?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@0ABV1@@Z
+  006cff10 RELOCATION_MATCH CTCWife::?Unmarry@CTCWife@@QAEX_N@Z
+  006d0020 RELOCATION_MATCH CTCWife::?Died@CTCWife@@QAEXXZ
+  006d77c0 RELOCATION_MATCH CTCHeroExperience::?AddExperience@CTCHeroExperience@@QAEXJ@Z
+  00715110 RELOCATION_MATCH NTCScriptedControl::CActionFireProjectileWeapon::?OnAdd@CActionFireProjectileWeapon@@QAEXXZ
+  00862780 RELOCATION_MATCH CModeStandBase::?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
+  008d6da0 RELOCATION_MATCH NCreatureMode::CModeConversation::AnimUpdate
+  008d6ff0 RELOCATION_MATCH NCreatureMode::CModeDragonHover::?AnimUpdate@CModeDragonHover
+  008d8b00 RELOCATION_MATCH NCreatureMode::CModeCrouch::?AnimUpdate@CModeCrouch
+  008d8dd0 RELOCATION_MATCH NCreatureMode::CModeBlock::AnimUpdate
+  00986510 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::MarriageCommentIsRunnable

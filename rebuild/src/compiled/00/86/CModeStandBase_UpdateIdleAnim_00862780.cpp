@@ -113,7 +113,9 @@ class CTCCombat { public:
 class CAnimationEntry { public:
     long AnimIndex;                                     // +0x00
     unsigned long GetAnimateThingFlags() const;         // 0x005DC390
-    long GetAnimationTransitionInTime() const;          // 0x005DC1F0
+    // NF113 (PRIORITY q6390): respelled in place to Ego_r.pdb 0x0063BE20 / FableWin.pdb 0x01FA0DA0 ?GetDelayTime@CAnimationEntry@@QBEJXZ
+    //   (const; the body returns the delay-time component's Delay); was GetAnimationTransitionInTime, found in no name source.
+    long GetDelayTime() const;          // 0x005DC1F0
     long GetTimeToBlendIn(const CThing* thing) const;   // 0x005DC230
 };
 
@@ -249,7 +251,7 @@ void CModeStandBase::UpdateIdleAnim(CAnimateThing& anim)
             if (entry) {
                 CThing* thing = ParentThing;
                 anim.SetMainAnim(CAnimInit(0x19, 0, entry->AnimIndex, ANIM_UPDATE_FROM_SPEED, false, entry->GetAnimateThingFlags(), 100),
-                                 entry->GetTimeToBlendIn(thing), entry->GetAnimationTransitionInTime());
+                                 entry->GetTimeToBlendIn(thing), entry->GetDelayTime());
             }
         } else if (poseName != ""
                    && (poseName != PoseAnimName || anim.AnimsBegin == anim.AnimsEnd || (anim.CurrentAnimFlags & 3)
@@ -260,7 +262,7 @@ void CModeStandBase::UpdateIdleAnim(CAnimateThing& anim)
                 unsigned long flags = entry->GetAnimateThingFlags();
                 CAnimInit init;
                 init.Init((unsigned char)(6), 0, entry->AnimIndex, ANIM_UPDATE_FROM_SPEED, false, flags, 100);
-                anim.SetMainAnim(init, entry->GetTimeToBlendIn(thing), entry->GetAnimationTransitionInTime());
+                anim.SetMainAnim(init, entry->GetTimeToBlendIn(thing), entry->GetDelayTime());
             }
         }
     }

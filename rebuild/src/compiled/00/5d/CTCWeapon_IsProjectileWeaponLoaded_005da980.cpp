@@ -5,6 +5,12 @@
 // +0xd0 (Ego_r.pdb +0xe0; the retail def sits 0x10 lower in this region, as the sheathe-animation strings at +0xd4..).
 // Shape: the def flag read into a named local inside its own scope (the counted copy released before the test),
 // then `if (needs) return ProjectileWeaponLoaded; return true;` -- the `mov al,1` tail last.
+// Leaf: ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ
+// NF113 (PRIORITY q6397): was the lane carrier CTCWeapon_Getters::IsProjectileWeaponLoaded; now the shared header's member (Ego_r.pdb 0x0063A7C0 +
+//   FableWin.pdb 0x0239B430 ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ, declared by engine/CTCWeapon.h: FABLE_RETAIL_CTCWEAPON_LOADING in the retail branch, the NF113
+//   opt-in FABLE_RETAIL_CTCWEAPON_ISPROJECTILEWEAPONLOADED on the generated layout this row reads); seven
+//   REFS callers already bind it and 0x00715110 is respelled to it in this hand-back. Body unchanged.
+#define FABLE_RETAIL_CTCWEAPON_ISPROJECTILEWEAPONLOADED
 #include "engine/CTCWeapon.h"
 
 class CDefPointeeBase { public:                                    // completes the header's forward declaration
@@ -42,11 +48,7 @@ struct CWeaponDefPointer {                                  // CDefPointer<const
 
 class CThing;
 
-struct CTCWeapon_Getters : CTCWeapon {
-    bool IsProjectileWeaponLoaded() const;
-};
-
-bool CTCWeapon_Getters::IsProjectileWeaponLoaded() const
+bool CTCWeapon::IsProjectileWeaponLoaded() const
 {
     bool needsLoading;
     {

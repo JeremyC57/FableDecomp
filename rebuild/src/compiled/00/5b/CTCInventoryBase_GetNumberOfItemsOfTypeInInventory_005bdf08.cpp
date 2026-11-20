@@ -13,7 +13,8 @@
 // reverse order, and cross-jump the not-found and no-sub-def tails (grade 4 without the GetDef body: 191 bytes, null-tested release). The
 // predicate is a named object built before the end pointer (retail reads InventoryCategory first, then the end, a named local in ebx that
 // feeds both the search and the "not found" compare; NF88 grades 5..7).
-// Leaf: ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z (Ego_r.pdb; unchanged)
+// Leaf: ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
+// NF113 (q5104): Leaf line made exact (it carried a trailing "(Ego_r.pdb; unchanged)" note, so the grader matched no symbol and graded the largest function); body unchanged.
 // Port (NF88, round 7, q11159 binder: it bound 0x005C08C0 as the free stand-in ?FindCategoryWithDefIndex@NInventory@@YIPAVCCategory@1@PAV21@0J@Z):
 //   the local CDefPointeeBase / CDefPointer / CDefClassBase / CThingBaseDef / CInventoryItemDef / CDefinitionManager / CGameDefinitionManager /
 //   NInventory::CCategory / CTCInventoryBase models and the same-TU stand-in GetDef / GetSubDef bodies are gone: the row is on the def headers

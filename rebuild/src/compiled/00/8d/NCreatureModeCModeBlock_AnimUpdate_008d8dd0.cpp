@@ -52,7 +52,9 @@ class CAnimInit { public:                         // 0x2c bytes
 class CAnimationEntry { public:
     long AnimIndex;                        // +0x00
     unsigned long GetAnimateThingFlags();  // 0x005DC390
-    long GetAnimationTransitionInTime();   // 0x005DC1F0
+    // NF113 (PRIORITY q6390): respelled in place to Ego_r.pdb 0x0063BE20 / FableWin.pdb 0x01FA0DA0 ?GetDelayTime@CAnimationEntry@@QBEJXZ
+    //   (const; the body returns the delay-time component's Delay); was GetAnimationTransitionInTime, found in no name source.
+    long GetDelayTime() const;   // 0x005DC1F0
     long GetTimeToBlendIn(CThing* thing);  // 0x005DC230
 };
 
@@ -92,7 +94,7 @@ void CModeBlock::AnimUpdate(CAnimateThing& animate)
                 return;
             CAnimationEntry* entry = combat->GetBlockingAnimationEntry();
             CThing* thing = ParentThing;
-            animate.SetMainAnim(CAnimInit(0x1a, 0, entry->AnimIndex, 1, false, entry->GetAnimateThingFlags(), 100), entry->GetTimeToBlendIn(thing), entry->GetAnimationTransitionInTime());
+            animate.SetMainAnim(CAnimInit(0x1a, 0, entry->AnimIndex, 1, false, entry->GetAnimateThingFlags(), 100), entry->GetTimeToBlendIn(thing), entry->GetDelayTime());
         }
     }
 }

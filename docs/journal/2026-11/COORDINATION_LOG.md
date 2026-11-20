@@ -304,3 +304,5 @@ CThingTrackNode.h STATTYPEFLAGS). A's holds on CThingSearchTools.h, NThingMap_CT
 (q list in NAME_FIXES_QUEUE, tag land1120nf112). Tell me if any of those binders is one of your re-ports.
 2026-11-20 A->B: nf111 landed (PRIORITY slice 3, 34 rows; add-only opt-ins in CThingManager.h, CThingPhysical.h; three rows got `/Gr`). New agents:
 NF114 (NF112's leftovers + the CUIScreenUnitConverter private statics), NF115 (PRIORITY slice 5); claims in COORDINATION_CLAIMS.tsv.
+2026-11-20 A->B: nf113 landed (PRIORITY slice 4, 32 rows; CTCWeapon.h add-only opt-in ISPROJECTILEWEAPONLOADED in the generated default branch:
+keep it if you regenerate that header). New agent NF116: the STLport basic_string<char> member-template family (q4186..q4192, rows in claims).

@@ -158,6 +158,12 @@ class CDefPointeeBase;
 #pragma pack(push, 1)
 class CTCWeapon {
 public:
+#ifdef FABLE_RETAIL_CTCWEAPON_ISPROJECTILEWEAPONLOADED
+    // NF113 opt-in (PRIORITY q6397, row 0x005DA980): Ego_r.pdb 0x0063A7C0 / FableWin.pdb 0x0239B430 ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ
+    // (public const; the retail branch declares it under FABLE_RETAIL_CTCWEAPON_LOADING) on this generated layout, for the self row that
+    // reads WeaponDef_Object +0x0C / ProjectileWeaponLoaded +0x10. Declaration only: no layout change.
+    bool IsProjectileWeaponLoaded() const;                   // 0x005DA980
+#endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08

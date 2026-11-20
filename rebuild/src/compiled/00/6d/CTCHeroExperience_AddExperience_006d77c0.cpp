@@ -60,7 +60,10 @@ public:
 class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
 
 class CTCHero { public: bool GiveTutorialForCategory(long category, bool force); };   // 0x006C9FA0
-class CTCHeroStats { public: void AddHeroStatExperience(long category, long amount); };   // 0x0057A8DA
+#include "engine/EHeroExperienceStatCategory.h"
+// NF113 (PRIORITY q4948): the row-local CTCHeroStats declaration respelled in place to the Ego_r.pdb + FableWin.pdb member
+//   ?AddHeroStatExperience@CTCHeroStats@@QAEXW4EHeroExperienceStatCategory@@J@Z (was QAEXJJ); the call passes category value 3 as before.
+class CTCHeroStats { public: void AddHeroStatExperience(EHeroExperienceStatCategory category, long amount); };   // 0x0057A8DA
 class CTCHeroOnlineScoreboard { public: enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
     void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool onlyIfBetter); };   // 0x0055F3B0
 
@@ -176,7 +179,7 @@ void CTCHeroExperience::AddExperience(long amount)
     Pickups.push_back(SPickup((long)(CMainGameComponent::GetConstantFPS() * 2.0f), added));
     CTCHeroStats* stats;
     ParentThing->GetTC(TCI_HERO_STATS, &stats);
-    stats->AddHeroStatExperience(3, added);
+    stats->AddHeroStatExperience((EHeroExperienceStatCategory)3, added);
     CTCHeroOnlineScoreboard* scoreboard;
     ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
     scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)3, (float)TotalExperiencePoints, false);

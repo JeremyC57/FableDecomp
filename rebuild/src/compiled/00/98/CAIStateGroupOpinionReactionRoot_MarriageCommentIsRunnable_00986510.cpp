@@ -5,7 +5,7 @@
 // bit 4 of +0x20), GFGetPVillageInterface @ 0x007EE540 (__fastcall; manifest "IS_THING_ALIVE<...>" is propagated),
 // CAIStateGroup_OpinionReactionRoot::CommentAboutHeroIsRunnable @ 0x009863E0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 // std::list<const CThingAICreature*>(const allocator&) @ 0x006860C0 / ~list @ 0x00685BC0 (manifest labels propagated),
-// CTCHeroStats::GetWivesInMarriageState @ 0x0057AE53, CTCHeroStats::PeekMarriageInfo(unsigned __int64, CHeroMarriageInfo*)
+// CTCHeroStats::GetWivesInMarriageState @ 0x0057AE53, CTCHeroStats::PeekMarriageInfo(unsigned __int64, CHeroMarriageInfo&)
 // @ 0x0057AC89.
 // Layout: engine/CAIStateGroup_OpinionReactionRoot.h is pack(1) with ThingReactingTo (CIntelligentPointer<CThing>) at
 // +0x6b, modelled locally the same way (packed, the brain link at +0x04 of the flattened base); CTCHeroStats' wives
@@ -62,7 +62,9 @@ class CTCHeroStats { public:
     unsigned char _pad[0x1d8];
     list<const CThingAICreature*> Wives;        // +0x1d8
     void GetWivesInMarriageState(list<const CThingAICreature*>& wives, long state) const;   // 0x0057AE53
-    bool PeekMarriageInfo(unsigned __int64 uid, CHeroMarriageInfo* info) const;            // 0x0057AC89
+    // NF113 (PRIORITY q4715): respelled in place to Ego_r.pdb / FableWin.pdb ?PeekMarriageInfo@CTCHeroStats@@QBE_N_KAAVCHeroMarriageInfo@@@Z
+    //   (the record by reference; was CHeroMarriageInfo*). Same code: the reference is passed as the address.
+    bool PeekMarriageInfo(unsigned __int64 uid, CHeroMarriageInfo& info) const;            // 0x0057AC89
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -114,7 +116,7 @@ bool CAIStateGroup_OpinionReactionRoot::MarriageCommentIsRunnable()
                         && ((const CThing*)node->_M_data)->GetInterface(&wifeVillager, 0x23)
                         && ((CTCVillageMember*)wifeVillager)->GetPVillage() == village) {
                         CHeroMarriageInfo info;
-                        if (stats->PeekMarriageInfo(((const CThing*)node->_M_data)->GetUID(), &info)) {
+                        if (stats->PeekMarriageInfo(((const CThing*)node->_M_data)->GetUID(), info)) {
                             bool married = false;
                             if (info.State == 1 || info.State == 3 || info.State == 2 || info.State == 4 || info.State == 5)
                                 married = true;

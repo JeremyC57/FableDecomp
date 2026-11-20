@@ -1,4 +1,6 @@
-// CWorldMap::GetStrongestEngineThemeAt(const C3DVector&, long*) -- strongest engine theme of the loaded map at a position
+// CWorldMap::GetStrongestEngineThemeAt(const C3DVector&, long&) -- strongest engine theme of the loaded map at a position
+// Leaf: ?GetStrongestEngineThemeAt@CWorldMap@@QBEJABVC3DVector@@AAJ@Z
+// NF113 (q6460): Leaf line added (the object already defines the Ego_r.pdb 0x006E84E0 / FableWin.pdb 0x024A4B90 spelling; the six landed binders bind it); body unchanged.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail 0x0063ADF0, 0x77 bytes (world-map theme/height TU). Callees: slot 16 GetMapNumberAt(C3DVector) [+0x40],
 // slot 10 IsMapLoaded [+0x28], ConvertWorldMapCoordsToLocalCoords(long, C3DVector) 0x004FC2A0, __ftol2 0x00BFEA70

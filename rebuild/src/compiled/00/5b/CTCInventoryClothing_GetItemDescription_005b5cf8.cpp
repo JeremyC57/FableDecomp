@@ -44,24 +44,29 @@ private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
-struct ArgPasser {                                      // Ego_r.pdb, 0x30 bytes
-    bool  is_suit;                                      // +0x00
-    long  num_suit_parts;                               // +0x04
-    long  max_suit_parts;                               // +0x08
-    long  total_item_armor_value_final;                 // +0x0c
-    long  total_cur_armor_value_final;                  // +0x10
-    float total_item_attractiveness_value_final;        // +0x14
-    float total_cur_attractiveness_value_final;         // +0x18
-    float total_item_scariness_value_final;             // +0x1c
-    float total_cur_scariness_value_final;              // +0x20
-    float total_item_goodstrength_value_final;          // +0x24
-    float total_cur_goodstrength_value_final;           // +0x28
-    long  total_price;                                  // +0x2c
-    ArgPasser();                                        // 0x005B336A
-};
+// NF113 (PRIORITY q4956): the row-local model respelled in place: ArgPasser is nested in CTCInventoryClothing (Ego_r.pdb / FableWin.pdb
+//   ??0ArgPasser@CTCInventoryClothing@@QAE@XZ, ?CalculateArmorValues@CTCInventoryClothing@@ABEXAAUArgPasser@1@J@Z: private const, the
+//   spelling engine/CTCInventoryClothing.h declares and the landed 0x005B6767 binds); was a file-scope ArgPasser and a public non-const
+//   CalculateArmorValues.
 class CTCInventoryClothing { public:
-    void CalculateArmorValues(ArgPasser& values, long defIndex);   // 0x005B4EBA
+    struct ArgPasser {                                  // Ego_r.pdb, 0x30 bytes
+        bool  is_suit;                                      // +0x00
+        long  num_suit_parts;                               // +0x04
+        long  max_suit_parts;                               // +0x08
+        long  total_item_armor_value_final;                 // +0x0c
+        long  total_cur_armor_value_final;                  // +0x10
+        float total_item_attractiveness_value_final;        // +0x14
+        float total_cur_attractiveness_value_final;         // +0x18
+        float total_item_scariness_value_final;             // +0x1c
+        float total_cur_scariness_value_final;              // +0x20
+        float total_item_goodstrength_value_final;          // +0x24
+        float total_cur_goodstrength_value_final;           // +0x28
+        long  total_price;                                  // +0x2c
+        ArgPasser();                                    // 0x005B336A
+    };
     void GetItemDescription(CWideString& out, long defIndex, bool hidePrice);
+private:
+    void CalculateArmorValues(ArgPasser& values, long defIndex) const;   // 0x005B4EBA
 };
 void CTCInventoryClothing::GetItemDescription(CWideString& out, long defIndex, bool hidePrice)
 {

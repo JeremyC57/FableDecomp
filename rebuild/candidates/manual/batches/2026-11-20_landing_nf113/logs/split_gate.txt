@@ -1,0 +1,3 @@
+existing 0057bc6e new= ['?SetMarriageState@CTCHeroStats@@AAEXPBVCThingAICreature@@W4EMarriageState@@@Z'] | others: {'?SetMarriageState@CTCHeroStats@@QAEXPAVCThing@@J@Z': ['006d0180']}
+existing 005d8e50 new= ['?ReturnToInventory@CTCInventoryItem@@QAEXXZ'] | others: {'?Notify@CTCInterface1A@@QAEXXZ': ['005bf77d', '007eddf0'], '?OnShowEnded@CTCShowableItem@@QAEXXZ': ['005c44fa', '007e1eb0', '007ecee0', '007f01f0', '007f03d0', '007f4d50', '008116d0', '008ba3c0'], '?OnNotCarried@CTC1A@@QAEXXZ': ['0069f9e0', '0078e9c0', '00793ec0'], '?OnUseFailed@CTCInterface1A@@QAEXXZ': ['006a1e00', '007ed170', '007ed560', '007ed870']}
+gate: 0 created split(s)

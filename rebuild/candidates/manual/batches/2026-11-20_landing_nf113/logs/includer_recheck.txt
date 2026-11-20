@@ -1,0 +1,2 @@
+# recheck after landing nf113: 212 rows (includers of CTCWeapon.h + the 20 renamed rows + exe-scan referencing rows)
+good 212 bad 0

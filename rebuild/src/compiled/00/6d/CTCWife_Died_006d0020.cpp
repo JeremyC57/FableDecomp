@@ -11,53 +11,55 @@
 // Shape: same guard as OnGreet; the player manager is read from the main game component's +0x1C (not through CTCBase);
 //        interface 4 is CTCHeroStats (bitset byte +0x20 bit 4), called through the out-parameter lookup form.
 // Layout: CTCWife ParentThing +0x04, FrameGotMarriedToThePlayer +0x20; CMainGameComponent PlayerManager +0x1C.
-#include "engine/C3DVector.h"
-class CTCBase;
-#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+// NF113 (PRIORITY q4716 / q4950, binder of 0x0057BC6E): ported onto the shared headers with the landed sibling CTCWife::Murdered
+//   0x006D00A0 recipe (same body minus the deed post): CTCHeroStats::SetMarriageState is the private Ego_r.pdb member
+//   ?SetMarriageState@CTCHeroStats@@AAEXPBVCThingAICreature@@W4EMarriageState@@@Z (CTCWife is its friend; engine/CTCHeroStats.h
+//   FABLE_RETAIL_CTCHEROSTATS_MARRIAGE); was a row-local CTCHeroStats::SetMarriageState(CThing*, long) and local CTCWife / CMainGameComponent
+//   / CWorld / CThingPlayerCreature models. State 6 = the wife died (no enumerator name in any name source; passed as its value).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CPLAYERMANAGER
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CTCWIFE
+#define FABLE_RETAIL_CTCWIFE_MARRIAGEEND
+#define FABLE_RETAIL_CTCHEROSTATS
+#define FABLE_RETAIL_CTCHEROSTATS_MARRIAGE
+#include "fable_string.h"
 #include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThingPlayerCreature : public CThing { };
-class CPlayer { public:
-    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
-};
-// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
-//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
-//   GetMainPlayerNumber 0x00449700).
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CPlayer.h"
 #include "engine/CPlayerManager.h"
-class CWorld { public:
-    static long __fastcall GetFrame();                // 0x0049D870
-};
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char _pad_0x00[0x1c];
-    CPlayerManager* PlayerManager;               // +0x1c
-};
-class CTCHeroStats { public:
-    void SetMarriageState(CThing* spouse, long state);   // 0x0057BC6E
-};
-class CTCWife { public:
-    virtual void v00();
-    CThing* ParentThing;                         // +0x04
-    unsigned char _pad_0x08[0x20 - 0x08];
-    long FrameGotMarriedToThePlayer;             // +0x20
-    void Unmarry(bool notify);                   // 0x006CFF10
-    void Died();
-};
+#include "fable_game.h"
+#include "engine/CWorld.h"
+#include "engine/CTCWife.h"
+#include "engine/CTCHeroStats.h"
+enum EMarriageState { };
+
 void CTCWife::Died()
 {
     if (FrameGotMarriedToThePlayer > CWorld::GetFrame())
         return;
     Unmarry(true);
-    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (!hero || hero->IsDead())
         return;
     CTCHeroStats* stats;
-    if (hero->GetTC(TCI_HERO_STATS, &stats))
-        stats->SetMarriageState(ParentThing, 6);
+    if (hero->GetTC(&stats))
+        stats->SetMarriageState(static_cast<const CThingAICreature*>(&GetParentThing()), (EMarriageState)6);
 }
