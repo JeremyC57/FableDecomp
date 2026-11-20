@@ -433,3 +433,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 B->A: Regression found by B's auditor: 0x007E2A60 CTCFineDialogue::GlobalUpdate DIFFER since a36a181a1 (CBankFile.h asserts moved). Repinning restores it but breaks 0x00680050, so please leave CBankFile.h's assert pins alone; B re-authors 0x007E2A60 (GOTCHAS).
 2026-11-20 A->B: nf140 landed (32 rows; q4056 ResetDevice family, q4197 / q4198 CMemoryAllocator Enter/LeaveSynchronisation; CMemoryAllocator.h opt-ins; owner fix 0x0122A9A0 Destroy made inline). 0x009BFB30 and 0x009BE870 are free now for your CGenericException re-port.
 2026-11-20 A->B: NF141 handed back (landing nf141 next). New agent NF144 (q6408 from NF141, q5199 / q5220 from NF136, q4802 from NF138).
+2026-11-20 B->A: Re-authored the regressed landed row 0x00589A30 CTCInventory::OpenPCMapMenu in Ego_d text (batches/2026-11-20_reauthor_00589a30); RELOCATION_MATCH again on today's headers, no header change.

@@ -10,13 +10,20 @@
 //   (slot 43); vector<CComponent*>::push_back 0x00486024; CComponent::FindChild(CCharString) (slot 3) through CCharString(const char*,
 //   long) 0x0099EBF0; CObserver::ObserveEvent (+4 base, slot 3) with UI_EVENT_MOUSE_MOVEMENT; CObservable::AddObserver (the manager's
 //   slot 2); CComponent::ChangeState(unsigned long) (slot 48).
-// Shape: the OpenPCOptionsMenu 0x0058AF10 spellings (landed): the find loop with `if (list) break;` first, the shared
-//   FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ operator==, implicit CCharString conversions at FindChild.
-// Inline-budget: FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ (shared fable_string.h opt-in, as the landed 0x0058AF10) -- retail expands CCharString::operator==(const char*) in place at 0x00589A80..0x00589AB0
+// Re-author (followup, 2026-11-20): the landed text went DIFFER(549v549) on ce3b25d5d (GFDebugPDynamicCast moved from CThing.h to its
+//   own header; the change renumbers c2's symbols, and the reload order after the inline `repe cmpsb` flipped: edi before esi at
+//   0x00589A97). Rewritten in Ego_d.pdb's text (lib: lines 7024..7092 of the CTCInventory TU; locals pmanager, pmap_list, the for-scope
+//   `unsigned long count`, the block-scoped ptc_map and pscroll_up / pscroll_down / pback / pclose), which matches on today's headers:
+//   - the search loop's condition carries `&& !pmap_list` (line 7032, 48 bytes; no separate break line before 7034);
+//   - `if (pmap_list) { Initialise; push_back; }` inside the build arm (7045 6 bytes, 7047 14, 7048 15) and the whole FindChild part
+//     in a second `if (pmap_list) { ... }` (7052, 10 bytes = cmp + rel32 jump; the four pointers are that block's locals in Ego_d);
+//     c2 threads the null case of the first test straight to the epilogue (retail 0x00589B29 `je 0x00589C4D`);
+//   - two scroll locals, each reused for the LIST and the DESCRIPTION button (Ego_d has four child locals for six FindChild calls:
+//     7054 / 7059 store pscroll_up, 7065 / 7070 pscroll_down).
+//   The `if (list) break;` loop form also matches with these locals (measured); Ego_d's line table decides for the condition form.
+// Inline-budget: FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ (shared fable_string.h opt-in, as the landed 0x0058AF10) -- retail expands
+//   CCharString::operator==(const char*) in place at 0x00589A80..0x00589AB0
 // Header: shared rebuild/include only (FABLE_RETAIL_CTCINVENTORYMAP_PCMAPLIST, committed by chunk 1007).
-// Locals: one named local per child (scrollListUp ... closeClickable) and the loop index declared at the top. Reusing one `scroll` /
-//   `clickable` pair gives the same code but c2 then numbers the split pieces of `i` before `this` and reloads edi before esi after
-//   the inline `repe cmpsb` (0x00589A95); with separate locals (c2prio) `this` is split first, so esi is reloaded first as in retail.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
@@ -41,51 +48,52 @@ using NUISystem::CComponent;
 
 void CTCInventory::OpenPCMapMenu()
 {
-    unsigned long i;
     DeleteMenuComponents();
     CurrentOpenMenu = (CURRENT_OPEN_MENU)6;
-
-    // reuse the map list if it is already one of the open menu components
-    CComponent* list = 0;
-    NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
-    for (i = 0; i < Components.size(); ++i) {
-        if (list)
-            break;
-        if (Components[i]->GetName() == "PC_MAP_LIST")
-            list = Components[i];
+    CComponent* pmap_list = 0;
+    NUISystem::CManager* pmanager = NUISystem::CManager::GetInstance();
+    for (unsigned long count = 0; count < Components.size() && !pmap_list; ++count)
+    {
+        if (Components[count]->GetName() == "PC_MAP_LIST")
+            pmap_list = Components[count];
     }
-
-    if (!list) {
-        CTCInventoryMap* map = 0;
-        ParentThing->GetTC(TCI_INVENTORY_MAP, &map);
-        list = map->ConstructPCMapList(false, 0);
-        if (!list)
-            return;
-        list->Initialise();
-        Components.push_back(list);
+    if (!pmap_list)
+    {
+        CTCInventoryMap* ptc_map = 0;
+        ParentThing->GetTC(TCI_INVENTORY_MAP, &ptc_map);
+        pmap_list = ptc_map->ConstructPCMapList(false, 0);
+        if (pmap_list)
+        {
+            pmap_list->Initialise();
+            Components.push_back(pmap_list);
+        }
     }
-
-    CComponent* scrollListUp = list->FindChild("SCROLL_LIST_UP");
-    if (scrollListUp)
-        scrollListUp->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
-    CComponent* scrollDescriptionUp = list->FindChild("SCROLL_DESCRIPTION_UP");
-    if (scrollDescriptionUp)
-        scrollDescriptionUp->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
-    CComponent* scrollListDown = list->FindChild("SCROLL_LIST_DOWN");
-    if (scrollListDown)
-        scrollListDown->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
-    CComponent* scrollDescriptionDown = list->FindChild("SCROLL_DESCRIPTION_DOWN");
-    if (scrollDescriptionDown)
-        scrollDescriptionDown->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
-    CComponent* backClickable = list->FindChild("PC_BACK_CLICKABLE");
-    if (backClickable) {
-        NUISystem::CManager::GetInstance()->AddObserver(backClickable);
-        backClickable->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+    if (pmap_list)
+    {
+        CComponent* pscroll_up = pmap_list->FindChild("SCROLL_LIST_UP");
+        if (pscroll_up)
+            pscroll_up->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        pscroll_up = pmap_list->FindChild("SCROLL_DESCRIPTION_UP");
+        if (pscroll_up)
+            pscroll_up->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        CComponent* pscroll_down = pmap_list->FindChild("SCROLL_LIST_DOWN");
+        if (pscroll_down)
+            pscroll_down->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        pscroll_down = pmap_list->FindChild("SCROLL_DESCRIPTION_DOWN");
+        if (pscroll_down)
+            pscroll_down->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        CComponent* pback = pmap_list->FindChild("PC_BACK_CLICKABLE");
+        if (pback)
+        {
+            NUISystem::CManager::GetInstance()->AddObserver(pback);
+            pback->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        }
+        CComponent* pclose = pmap_list->FindChild("PC_CLOSE_CLICKABLE");
+        if (pclose)
+        {
+            NUISystem::CManager::GetInstance()->AddObserver(pclose);
+            pclose->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        }
+        pmap_list->ChangeState(5);
     }
-    CComponent* closeClickable = list->FindChild("PC_CLOSE_CLICKABLE");
-    if (closeClickable) {
-        NUISystem::CManager::GetInstance()->AddObserver(closeClickable);
-        closeClickable->ObserveEvent(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
-    }
-    list->ChangeState(5);
 }
