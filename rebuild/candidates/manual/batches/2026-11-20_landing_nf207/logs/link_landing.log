@@ -1,0 +1,5 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_006e9360.obj : error LNK2005: "public: struct CCombatantInfo const & __thiscall CCombatManager::GetCombatantInfo(class CThingCreatureBase const &)const " (?GetCombatantInfo@CCombatManager@@QBEABUCCombatantInfo@@ABVCThingCreatureBase@@@Z) already defined in new_006e9700.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found

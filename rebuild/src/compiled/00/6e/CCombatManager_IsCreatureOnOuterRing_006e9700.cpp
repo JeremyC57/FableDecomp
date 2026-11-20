@@ -16,6 +16,16 @@
 //   up before the ring index is tested; `index < 0 || outer` returns true through the shared block. The outer-ring
 //   call pushes the index, then the GetCombatTypeDef() result. The find has a same-TU noinline body (one shared key
 //   slot, as 0x006E93C0).
+// Name fix (NF207, 2026-11-20, q4389, family FP-COMBATMAP): the invented CRetailRbMap_UID_CombatantInfo stand-in (and its same-TU
+//   noinline find body) is replaced in place by the STLport map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its
+//   _M_find<unsigned __int64> 0x006F0250 is visible but out of line (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE: the pick-any copy is
+//   byte- and relocation-identical to the 0x006F0250 row), CONSTFIND gives the const find. The victim's entry is now read through
+//   the inline GetCombatantInfo reference (as the landed 0x006E9D90 / 0x006E94D0; c2 still keeps the node and adds 58h at the
+//   use): a named const_iterator for it let VC7.1 sink the second _M_find call below the ring-index test (DIFFER 146v145), and the
+//   declaration-only _M_find gives the second key its own slot (frame 10h v 8, NF195).
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 class CCombatTypeDef;
 
 class CThingCreatureBase {
@@ -58,44 +68,15 @@ struct CCombatantInfo {                                     // retail layout (Eg
     CCombatWheel CombatWheel;                               // +0x40
 };
 
-struct CRetailRbMap_UID_CombatantInfo {                     // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                               // +0x10
-        CCombatantInfo value;                               // +0x18
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key) const;          // 0x006F0250
-};
-#pragma auto_inline(off)
-// Same-TU body of the STLport map::find instantiation 0x006F0250 (as the landed 0x006E9D90 / 0x006EA770).
-__declspec(noinline) CRetailRbMap_UID_CombatantInfo::node* CRetailRbMap_UID_CombatantInfo::find(const unsigned __int64& key) const
-{
-    node* y = header;
-    node* x = header->parent;
-    while (x != 0) {
-        if (!(x->key < key)) {
-            y = x;
-            x = x->left;
-        } else
-            x = x->right;
-    }
-    if (y == header || key < y->key)
-        return header;
-    return y;
-}
-#pragma auto_inline(on)
 
 class CCombatManager {
 public:
     virtual void v00();
     unsigned char _sequences[0xc];                          // +0x04
-    CRetailRbMap_UID_CombatantInfo Combatants;              // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;              // +0x10
     const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) const
     {
-        return Combatants.find(creature.GetUID())->value;
+        return Combatants.find(creature.GetUID())->second;
     }
     bool IsCreatureOnOuterRing(const CThingCreatureBase& creature) const;
 };
@@ -107,10 +88,10 @@ bool CCombatManager::IsCreatureOnOuterRing(const CThingCreatureBase& creature) c
         if (!info.AttackerInfo.UsingCombatWheel)
             return true;
         const CThingCreatureBase* attacked = info.AttackerInfo.Attacked;
-        const CRetailRbMap_UID_CombatantInfo::node* attackedEntry = Combatants.find(attacked->GetUID());
+        const CCombatantInfo& attackedInfo = GetCombatantInfo(*attacked);
         long ringIndex = info.AttackerInfo.CombatWheelRingIndex;
         if (ringIndex < 0
-            || attackedEntry->value.CombatWheel.IsCombatRingOuterRing(*attacked->GetCombatTypeDef(), ringIndex))
+            || attackedInfo.CombatWheel.IsCombatRingOuterRing(*attacked->GetCombatTypeDef(), ringIndex))
             return true;
     }
     return false;

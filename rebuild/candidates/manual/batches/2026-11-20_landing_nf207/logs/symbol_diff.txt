@@ -1,0 +1,45 @@
+006e9310 new: 10
+    ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatan
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEPBU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEABU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ?GetUniqueID@CThing@@QBE_KXZ
+    ?IsAttackerOn@CCombatManager@@QBE_NABVCThingCreatureBase@@0@Z
+    ?end@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std
+    ?end@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?
+    ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@st
+    ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U
+006e9700 new: 13
+    ??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantI
+    ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatan
+    ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEPBU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEABU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??R?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@std@@QBEAB_KABU?$pair@$$CB_KUCCombatantInfo@@@1@@Z
+    ??R?$less@_K@std@@QBE_NAB_K0@Z TABLE:00526120
+    ?_M_root@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@
+    ?_S_key@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@
+    ?_S_left@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@
+    ?_S_right@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@
+    ?_S_value@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@
+    ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@st
+    ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U
+006ed270 new: 19
+    ??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantI
+    ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CB_KUCComba
+    ??0?$pair@$$CB_KUCCombatantInfo@@@std@@QAE@AB_KABUCCombatantInfo@@@Z
+    ??1?$pair@$$CB_KUCCombatantInfo@@@std@@QAE@XZ
+    ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c820
+    ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEPAU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEAAU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??R?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@std@@QBEAB_KABU?$pair@$$CB_KUCCombatantInfo@@@1@@Z
+    ??R?$less@_K@std@@QBE_NAB_K0@Z TABLE:00526120
+    ?_M_root@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@
+    ?_S_key@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@
+    ?_S_left@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@
+    ?_S_right@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@
+    ?_S_value@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@
+    ?end@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std
+    ?end@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?
+    ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@st
+    ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U
+    ?insert@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInf

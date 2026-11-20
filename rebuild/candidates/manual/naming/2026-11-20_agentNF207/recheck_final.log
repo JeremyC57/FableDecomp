@@ -1,0 +1,21 @@
+addr       parity           behav  name
+006e9310   RELOCATION_MATCH PASS   CCombatManager::IsCreatureFightingThing_006e9310
+006e9700   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e9700   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006e9700   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9700   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e9700   RELOCATION_MATCH PASS   CCombatManager::IsCreatureOnOuterRing
+006ed270   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+006ed270   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+006ed270   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006ed270   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ed270   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006ed270   WARN SHARED_HEADER_AVAILABLE CDefendingCombatantInfo (engine/CDefendingCombatantInfo.h)
+006ed270   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006ed270   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ed270   RELOCATION_MATCH PASS   CCombatManager::RegisterAttackedCombatant
+
+WINS: 3
+  006e9310 RELOCATION_MATCH CCombatManager::?IsAttackerOn@CCombatManager@@QBE_NABVCThingCreatureBase@@0@Z
+  006e9700 RELOCATION_MATCH CCombatManager::?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  006ed270 RELOCATION_MATCH CCombatManager::RegisterAttackedCombatant

@@ -10817,8 +10817,6 @@ __imp__OutputDebugStringW@4	0143fe14	005472a0
 ?GetAttackerProng@CCombatRing@CDefendingCombatantInfo@@QAEPAVCProng@2@ABVCThingCreatureBase@@@Z	006e8790	006e9200
 ?SetBlocked@CProng@CDefendingCombatantInfo@@QAEX_N@Z	006e9140	006e9200
 ?GetRing@CCombatWheel@@QBEPBUCCombatRing@@J@Z	006e8520	006e93c0
-?GetCombatTypeDef@CThingCreatureBase@@QBEPBVCCombatTypeDef@@XZ	00666d10	006e9700
-?IsCombatRingOuterRing@CCombatWheel@@QBE_NABVCCombatTypeDef@@J@Z	006e84a0	006e9700
 ??0CBaseClassNonCopyable@@IAE@XZ	0099a2f0	006ed3f0
 ??0CombatDialogueManager@@QAE@XZ	008af220	006ed3f0
 ??_7CCombatManager@@6B@	01261eb4	006ed3f0
@@ -28527,13 +28525,6 @@ __aullrem	00bfebb0	00770e80
 ?ActivateThings@CThingManager@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	0051e2f0	005223f0
 ?LoadFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@JV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@PAVCASuspendableProcess@@H@Z	00521ae0	005223f0
 ?EYE_LEFT_DUMMY_OBJECT_NAME@@3VCCharString@@B	013bac54	00661b40
-??0CCombatantInfo@@QAE@XZ	006f4a00	006ed270
-??1CDefendingCombatantInfo@@QAE@XZ	006f48a0	006ed270
-?DEFAULT_ATTACK_PATTERN_DEF_NAME@?A0x4d8927d7@@3VCCharString@@A	013babb0	006ed270
-?GetDef@CDefinitionManager@@QAE_NABVCCharString@@AAUCAttackPatternPointer@@@Z	006f0e10	006ed270
-?ResetDefenderAttackPattern@CCombatManager@@QAEXAAUCCombatantInfo@@UCAttackPatternPointer@@@Z	006e8c30	006ed270
-?insert@CAttackerMap@@QAE?AUSInsertResult@@ABUSAttackerValue@@@Z	006f1ef0	006ed270
-?insert@CRetailRbMap_UID_CombatantInfo@@QAE?AUSResult@1@ABUSCombatantValue@@@Z	006f4f30	006ed270
 ?CHIMNEY_FOCUS_START_NAME@@3VCCharString@@B	013bacc0	00722590
 ?GetSubDef@CDefClassBase@@QAE_NPAUCSmokeDefPtr@@@Z	00722d30	00722590
 ?IsResourcesLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_N_N@Z	004be3e0	00722590
@@ -39371,3 +39362,12 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?GFontTextureCache@?A0xd47b1896@@3VCTexture@@A	013c5a80	0122a600
 ?Get@?$CTBaseSingleton@VCCodeSectionManager@@@@SIAAVCCodeSectionManager@@XZ	00414ce0	00cb5c90
 ?push_back@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@VCScriptInfo@@@2@@Z	00cb7210	00cb5c90
+?GetCombatTypeDef@CThingCreatureBase@@QBEPBVCCombatTypeDef@@XZ	00666d10	006e9700
+?IsCombatRingOuterRing@CCombatWheel@@QBE_NABVCCombatTypeDef@@J@Z	006e84a0	006e9700
+??0CCombatantInfo@@QAE@XZ	006f4a00	006ed270
+??1CDefendingCombatantInfo@@QAE@XZ	006f48a0	006ed270
+?DEFAULT_ATTACK_PATTERN_DEF_NAME@?A0xb92e8f16@@3VCCharString@@A	013babb0	006ed270
+?GetDef@CDefinitionManager@@QAE_NABVCCharString@@AAUCAttackPatternPointer@@@Z	006f0e10	006ed270
+?ResetDefenderAttackPattern@CCombatManager@@QAEXAAUCCombatantInfo@@UCAttackPatternPointer@@@Z	006e8c30	006ed270
+?insert@CAttackerMap@@QAE?AUSInsertResult@@ABUSAttackerValue@@@Z	006f1ef0	006ed270
+?insert_unique@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@_N@2@ABU?$pair@$$CB_KUCCombatantInfo@@@2@@Z	006f4f30	006ed270

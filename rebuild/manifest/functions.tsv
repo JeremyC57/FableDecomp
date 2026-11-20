@@ -17646,7 +17646,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006e9200	SetAttackerProngAsBlocked	CDefendingCombatantInfo::CCombatWheel	unknown	undefined	0		0	yes	accepted									
 006e9270	IsAttacked	CCombatManager	__thiscall	bool	1	CPersistContext *	1	yes	accepted									
 006e92c0	IsAttacker	CCombatManager	__thiscall	bool	1	CPersistContext *	1	yes	accepted									
-006e9310	IsCreatureFightingThing_006e9310	CCombatManager	__thiscall	bool	2	CCodeSectionManager *,CCharString	1	yes	accepted									
+006e9310	IsAttackerOn	CCombatManager	__thiscall	bool	2	CCodeSectionManager *,CCharString	1	yes	accepted									
 006e9360	GetCombatantInfo	CCombatManager	__thiscall	ulong	1	CSurface *	1	yes	accepted									
 006e9390	GetCombatantInfo	CCombatManager	__thiscall	ulong	1	CSurface *	1	yes	accepted									
 006e93c0	IsCreatureOnRotatingCombatRing	CCombatManager	unknown	undefined	0		0	yes	accepted									

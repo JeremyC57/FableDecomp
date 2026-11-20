@@ -16,6 +16,15 @@
 // Layout: the landed CCombatManager / CCombatantInfo models (0x006E9D90, 0x006F4E40): Combatants +0x10, World +0x20,
 // node value +0x18, DefenderInfo +0x34 (Attackers first).
 extern "C" void __cdecl free(void* block);  // 0x00BFEA14
+// Name fix (NF207, 2026-11-20, q4389, family FP-COMBATMAP): the invented CRetailRbMap_UID_CombatantInfo / SCombatantValue stand-ins
+//   (and the same-TU noinline find body) are replaced in place by the STLport map<unsigned __int64, CCombatantInfo> and
+//   pair<const unsigned __int64, CCombatantInfo> (stlport/fable_map.h): _M_find<unsigned __int64> 0x006F0250 visible but out of line
+//   (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE; the pick-any copy is byte- and relocation-identical to the 0x006F0250 row), map::insert
+//   forwards to the declared-only _Rb_tree::insert_unique 0x006F4F30 (its self Leaf). The local std::__false_type / __destroy_aux
+//   declarations give way to fable_containers.h's FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL (same __fastcall 0x006F2300 symbol).
+#define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#include "stlport/fable_map.h"
 
 class CCharString { public:
     void* m_pData;
@@ -79,11 +88,6 @@ class CCombatSequenceBase;
 struct CRetailAllocator {
     CRetailAllocator() { }
 };
-namespace std {
-struct __false_type { __false_type() { } };
-template <class _ForwardIterator>
-void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x006F2300 (std::__destroy_aux<CCountedPointer<CCombatSequenceBase>*>)
-}
 struct CSequenceVector {                    // retail vector<CCountedPointer<CCombatSequenceBase>>, 12 bytes
     CCountedPointer<CCombatSequenceBase>* _M_start;
     CCountedPointer<CCombatSequenceBase>* _M_finish;
@@ -127,51 +131,11 @@ struct CCombatantInfo {                     // retail 0x70 bytes
     CCombatantInfo();                       // 0x006F4A00
     CCombatantInfo(const CCombatantInfo& other);    // 0x006F4990
 };
-struct SCombatantValue {                    // pair<const unsigned __int64, CCombatantInfo>
-    unsigned __int64 first;                 // +0x00
-    CCombatantInfo second;                  // +0x08
-    SCombatantValue(const unsigned __int64& k, const CCombatantInfo& v) : first(k), second(v) {}
-};
-struct CRetailRbMap_UID_CombatantInfo {     // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;               // +0x10
-        CCombatantInfo value;               // +0x18
-    };
-    struct SResult {                        // pair<iterator, bool>
-        node* first;
-        bool second;
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);    // 0x006F0250
-    SResult insert(const SCombatantValue& value);   // 0x006F4F30
-    node* end() { return header; }
-};
-#pragma auto_inline(off)
-// Same-TU body of the STLport map::find instantiation 0x006F0250 (as in the landed 0x006E9D90).
-__declspec(noinline) CRetailRbMap_UID_CombatantInfo::node* CRetailRbMap_UID_CombatantInfo::find(const unsigned __int64& key)
-{
-    node* y = header;
-    node* x = header->parent;
-    while (x != 0) {
-        if (!(x->key < key)) {
-            y = x;
-            x = x->left;
-        } else
-            x = x->right;
-    }
-    if (y == header || key < y->key)
-        return header;
-    return y;
-}
-#pragma auto_inline(on)
 
 class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];          // +0x04 RegisteredCombatSequences
-    CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;  // +0x10
     bool    CombatStrafeTurningEnabled;     // +0x1c
     CWorld* World;                          // +0x20
     void ResetDefenderAttackPattern(CCombatantInfo& info, CAttackPatternPointer pattern);   // 0x006E8C30
@@ -180,15 +144,15 @@ class CCombatManager { public:
 
 void CCombatManager::RegisterAttackedCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked)
 {
-    CRetailRbMap_UID_CombatantInfo::node* it = Combatants.find(attacked.GetUID());
+    std::map<unsigned __int64, CCombatantInfo>::iterator it = Combatants.find(attacked.GetUID());
     if (it == Combatants.end()) {
         CCombatantInfo info;
         info.Parent = &attacked;
         info.AttackerInfo.Attacked = 0;
-        CRetailRbMap_UID_CombatantInfo::SResult result = Combatants.insert(SCombatantValue(attacked.GetUID(), info));
+        std::pair<std::map<unsigned __int64, CCombatantInfo>::iterator, bool> result = Combatants.insert(std::pair<const unsigned __int64, CCombatantInfo>(attacked.GetUID(), info));
         it = result.first;
     }
-    CCombatantInfo& info = it->value;
+    CCombatantInfo& info = it->second;
     info.DefenderInfo.Attackers.insert(SAttackerValue(attacker.GetUID(), &attacker));
     CAttackPatternPointer pattern;
     World->DefinitionManager->GetDef(DEFAULT_ATTACK_PATTERN_DEF_NAME, pattern);
