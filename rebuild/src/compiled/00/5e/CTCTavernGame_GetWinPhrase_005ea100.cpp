@@ -19,51 +19,22 @@
 // hidden-pointer slot) and releases the def with a null test, the finished arm dereferences the def and releases it without one.
 // The win/lose choice is two returns (VC merges them into the conditional load); GetSubDef gets a same-TU `auto_inline(off)`
 // stand-in body that writes only the out slot, so VC7.1 knows the def pointer does not escape and keeps it in edi.
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    class CWideString ToWideString() const;           // 0x0099E480
-};
-class CWideString { public:
-    void* m_pData;
-    CWideString(const CWideString& other);
-    ~CWideString();
-};
-class CTavernGameDef { public:
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-    long RefCount;                              // +0x04
-    unsigned char _pad08[0xa4 - 0x08];
-    unsigned long WinText;                      // +0xa4
-    unsigned long LoseText;                     // +0xa8
-};
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object && --Object->RefCount == 0)
-            Object->Destroy();
-    }
-    T* operator->() const { return Object; }
-};
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CTavernGameDef>* out) const;   // 0x005ED4A0
-};
-void* FindSubDef_CDefClassBase_GetSubDef(const CDefClassBase* def);   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CTavernGameDef>* out) const
-{
-    void* def = FindSubDef_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out->Object = (CTavernGameDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
+// NF170 (q4278, 2026-11-20): the sub-def call 0x005ED4A0 is the shared CDefClassBase::GetSubDef<CTavernGameDef> template (Ego_r.pdb +
+//   FableWin.pdb ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z; the callee pushes the literal
+//   'CTavernGameDef'), its noinline body visible (engine/CDefClassBase_GetSubDef.h FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE), on the
+//   shared CDefPointer / CTavernGameDef (WinPhrase +0xA4 / LosePhrase +0xA8, Ego_r names) and fable_string.h CCharString / CWideString.
+//   Was a local CDefClassBase / CDefPointer / CTavernGameDef / CCharString / CWideString model with a stand-in GetSubDef body.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 struct CThingDefHolder {
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                        // +0x70
@@ -82,11 +53,11 @@ class CTCTavernGame { public:
 
 CWideString CTCTavernGame::GetWinPhrase()
 {
-    CDefPointer<CTavernGameDef> def;
+    CDefPointer<const CTavernGameDef> def;
     ParentThing->PDef->GetSubDef(&def);
     if (!GameFinished)
         return CCharString("").ToWideString();
     if (GameWon)
-        return GetText(def->WinText);
-    return GetText(def->LoseText);
+        return GetText(def->WinPhrase);
+    return GetText(def->LosePhrase);
 }

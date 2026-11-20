@@ -18,33 +18,34 @@
 //   CDefPointer<const CDefClassBase> and is released (the `mov edi,[eax+4] ; dec edi` shape); SetDynamicCast<const
 //   CDefClassBase> assigns it into *out (release old, store, addref); the local's destructor releases (`dec [esi+4] ; jne`).
 
-#include "fable_string.h"
+// NF170 (q4267, 2026-11-20; the landing nf135 fix of 0x008C7A70): the explicit specialization this row defined strongly (on local
+//   CCombatAbilityStrafeDef / CDefinitionManager models) clashed (LNK2005) with the pick-any COMDAT every includer of
+//   engine/CDefClassBase_GetSubDef.h emits for the same template instance (0x006EA2C0 now lands on it). The row instantiates that shared
+//   body (the same statements) and takes its address in an anonymous-namespace helper, so it emits the one pick-any COMDAT too
+//   (GOTCHAS nf86 / nf88). StatGetTypeName comes from engine/CCombatAbilityStrafeDef.h (opt-in FABLE_RETAIL_CCOMBATABILITYSTRAFEDEF_STATGETTYPENAME).
+#define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CCOMBATABILITYDATA
+#define FABLE_RETAIL_CCOMBATABILITYSTRAFINGDATA
+#define FABLE_RETAIL_CCOMBATABILITYSTRAFEDEF
+#define FABLE_RETAIL_CCOMBATABILITYSTRAFEDEF_STATGETTYPENAME
+#include "fable_string.h"
 #include "engine/CSubDefClassBase.h"
 #include "engine/CDefPointer.h"
-
-class CCombatAbilityStrafeDef : public CSubDefClassBase {                    // RTTI .?AVCCombatAbilityStrafeDef@@ : CSubDefClassBase
-public:
-    static CCharString __fastcall StatGetTypeName() { return CCharString("CCombatAbilityStrafeDef", -1); }   // ?StatGetTypeName@CCombatAbilityStrafeDef@@SI?AVCCharString@@XZ (inline)
-    virtual void Transfer(CPersistContext&);                      // ?Transfer@CCombatAbilityStrafeDef@@UAEXAAVCPersistContext@@@Z
-    virtual void Copy(const CDefClassBase*);                      // ?Copy@CCombatAbilityStrafeDef@@UAEXPBVCDefClassBase@@@Z
-    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CCombatAbilityStrafeDef@@UAEKXZ
-};
-
-class CDefinitionManager {
-    friend class CDefClassBase;
-protected:
-    CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (protected non-const overload; hidden result pointer)
-};
-
-template <>
-bool CDefClassBase::GetSubDef<CCombatAbilityStrafeDef>(CDefPointer<const CCombatAbilityStrafeDef>* out) const
+#include "engine/CDefClassBase.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CCombatAbilityStrafeDef.h"
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the shared GetSubDef<CCombatAbilityStrafeDef> so this object emits it out of
+// line as a pick-any COMDAT (retail 0x006F0F60 is that out-of-line copy). Internal to this TU; never called.
+bool (CDefClassBase::* ReferenceGetSubDefCCombatAbilityStrafeDef())(CDefPointer<const CCombatAbilityStrafeDef>*) const
 {
-    const CSubDefInfo* info = GetPSubDefInfo(CCombatAbilityStrafeDef::StatGetTypeName());
-    if (info) {
-        CDefPointer<const CDefClassBase> def = PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
-        out->SetDynamicCast(def);
-        return true;
-    }
-    return false;
+    return &CDefClassBase::GetSubDef<CCombatAbilityStrafeDef>;
+}
 }

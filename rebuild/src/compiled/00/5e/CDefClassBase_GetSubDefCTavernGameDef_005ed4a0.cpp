@@ -18,33 +18,29 @@
 //   CDefPointer<const CDefClassBase> and is released (the `mov edi,[eax+4] ; dec edi` shape); SetDynamicCast<const
 //   CDefClassBase> assigns it into *out (release old, store, addref); the local's destructor releases (`dec [esi+4] ; jne`).
 
-#include "fable_string.h"
+// NF170 (q4278, 2026-11-20; the landing nf135 fix of 0x008C7A70): the explicit specialization this row defined strongly (on local
+//   models) clashed (LNK2005) with the pick-any COMDAT every includer of engine/CDefClassBase_GetSubDef.h emits for the same template
+//   instance. The row instantiates that shared body (the same statements) and takes its address in an anonymous-namespace helper, so it
+//   emits the one pick-any COMDAT too (GOTCHAS nf86 / nf88). StatGetTypeName comes from engine/CTavernGameDef.h.
+#define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#include "fable_string.h"
 #include "engine/CSubDefClassBase.h"
 #include "engine/CDefPointer.h"
-
-class CTavernGameDef : public CSubDefClassBase {                    // RTTI .?AVCTavernGameDef@@ : CSubDefClassBase
-public:
-    static CCharString __fastcall StatGetTypeName() { return CCharString("CTavernGameDef", -1); }   // ?StatGetTypeName@CTavernGameDef@@SI?AVCCharString@@XZ (inline)
-    virtual void Transfer(CPersistContext&);                      // ?Transfer@CTavernGameDef@@UAEXAAVCPersistContext@@@Z
-    virtual void Copy(const CDefClassBase*);                      // ?Copy@CTavernGameDef@@UAEXPBVCDefClassBase@@@Z
-    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CTavernGameDef@@UAEKXZ
-};
-
-class CDefinitionManager {
-    friend class CDefClassBase;
-protected:
-    CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (protected non-const overload; hidden result pointer)
-};
-
-template <>
-bool CDefClassBase::GetSubDef<CTavernGameDef>(CDefPointer<const CTavernGameDef>* out) const
+#include "engine/CDefClassBase.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CTavernGameDef.h"
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the shared GetSubDef<CTavernGameDef> so this object emits it out of line as a
+// pick-any COMDAT (retail 0x005ED4A0 is that out-of-line copy). Internal to this TU; never called.
+bool (CDefClassBase::* ReferenceGetSubDefCTavernGameDef())(CDefPointer<const CTavernGameDef>*) const
 {
-    const CSubDefInfo* info = GetPSubDefInfo(CTavernGameDef::StatGetTypeName());
-    if (info) {
-        CDefPointer<const CDefClassBase> def = PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
-        out->SetDynamicCast(def);
-        return true;
-    }
-    return false;
+    return &CDefClassBase::GetSubDef<CTavernGameDef>;
+}
 }

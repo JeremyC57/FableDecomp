@@ -1,5 +1,5 @@
-// CPersistContext::Transfer<EPostSavePosition>(const char* name, EPostSavePosition& value, const EPostSavePosition& defaultValue) -- persist one enum member ("PostSavePosition"): CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save as a long, or reset to the default
-// Leaf: Transfer
+// CPersistContext::Transfer<EGameflowPosition>(const char* name, EGameflowPosition& value, const EGameflowPosition& defaultValue) -- persist one enum member ("PostSavePosition"): CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save as a long, or reset to the default
+// Leaf: ??$Transfer@W4EGameflowPosition@@@CPersistContext@@QAEXPBDAAW4EGameflowPosition@@ABW41@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDCA70, `ret 0Ch`. Called from the quest-script persist function at 0x00CDC070 with the key "PostSavePosition".
 // Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteSLONG 0x00993EB0 (catalogued "WriteCBYTE"),
 //   CPersistTraits<T>::TransferBinaryIn 0x00CDCB50, CPersistContext::TransferObjectSaveText 0x009BAD60 and TransferObjectLoadText
@@ -8,13 +8,15 @@
 //   (CPersistContext +0x18: 0 text load, 1 text save, 2 binary load, 3 binary save, 4 reset) is a closed enum, so the switch
 //   ends in `default: __assume(0)` and VC7.1 emits the bare `jmp [eax*4+table]`; the case bodies are laid out in source
 //   order and retail has them 4,3,2,1,0. this module's traits carries a `T DefaultVal` member; declared at function scope it is built (zeroed) once before the jump, in the dead key-argument slot, and the binary-load arm passes its address. The 8-byte frame is the {vtable, value*} wrapper of the text arms.
-//   The enum's name is descriptive (from the key); it is a 4-byte enum written with WriteLong.
+//   The enum is a 4-byte enum written with WriteLong.
+// Naming (NF170, q11755, 2026-11-20): T is the global EGameflowPosition (Ego_r.pdb + FableWin.pdb ??$Transfer@W4EGameflowPosition@@@CPersistContext@@QAEXPBDAAW4EGameflowPosition@@ABW41@@Z; FableWin also its
+//   CPersistTraits / GetDefaultVal instances; the landed caller 0x00CEF8E0 transfers the master data PostSavePosition (EGameflowPosition, engine/CQ_SunnyvaleMasterData.h) and already binds this spelling). Was the descriptive EPostSavePosition.
 class CDataOutputStream { public:
 public:
     void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
-enum EPostSavePosition { EPostSavePosition_Default };
+#include "engine/CQ_SunnyvaleMasterData.h"                // the global enum EGameflowPosition (Ego_r.pdb; CQ_SunnyvaleMasterData::PostSavePosition +4)
 
 template <class T> struct CPersistTraits {
     T DefaultVal;
@@ -77,4 +79,4 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
     }
 }
 
-template void CPersistContext::Transfer<EPostSavePosition>(const char* name, EPostSavePosition& value, const EPostSavePosition& defaultValue);
+template void CPersistContext::Transfer<EGameflowPosition>(const char* name, EGameflowPosition& value, const EGameflowPosition& defaultValue);

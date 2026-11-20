@@ -8,9 +8,21 @@
 #ifdef FABLE_RETAIL_CCOMBATABILITYSTRAFEDEF_ALLOC
 // Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
 // ?Alloc@CCombatAbilityStrafeDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
-class CCombatAbilityStrafeDef:public CSubDefClassBase {public:CCombatAbilityStrafingData CombatAbility;public: static class CDefClassBase* FABLE_FASTCALL Alloc();};
+class CCombatAbilityStrafeDef:public CSubDefClassBase {public:CCombatAbilityStrafingData CombatAbility;public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#ifdef FABLE_RETAIL_CCOMBATABILITYSTRAFEDEF_STATGETTYPENAME
+// Opt-in (NF170, 2026-11-20, row 0x006EA2C0 CCombatManager::PerformSequenceReset): FableWin.pdb ?StatGetTypeName@CCombatAbilityStrafeDef@@SI?AVCCharString@@XZ
+// (0x02433CA0; inline in retail: GetSubDef<CCombatAbilityStrafeDef> 0x006F0F60 pushes the class-name literal 'CCombatAbilityStrafeDef'). No layout change.
+public: static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CCombatAbilityStrafeDef",-1);}
+#endif
+};
 #else
-class CCombatAbilityStrafeDef:public CSubDefClassBase {public:CCombatAbilityStrafingData CombatAbility;};
+class CCombatAbilityStrafeDef:public CSubDefClassBase {public:CCombatAbilityStrafingData CombatAbility;
+#ifdef FABLE_RETAIL_CCOMBATABILITYSTRAFEDEF_STATGETTYPENAME
+// Opt-in (NF170, 2026-11-20, row 0x006EA2C0 CCombatManager::PerformSequenceReset): FableWin.pdb ?StatGetTypeName@CCombatAbilityStrafeDef@@SI?AVCCharString@@XZ
+// (0x02433CA0; inline in retail: GetSubDef<CCombatAbilityStrafeDef> 0x006F0F60 pushes the class-name literal 'CCombatAbilityStrafeDef'). No layout change.
+public: static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CCombatAbilityStrafeDef",-1);}
+#endif
+};
 #endif
 FABLE_STATIC_ASSERT_AT(9, offsetof(CCombatAbilityStrafeDef,CombatAbility)==0x28);
 #else

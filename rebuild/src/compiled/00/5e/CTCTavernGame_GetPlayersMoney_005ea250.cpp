@@ -14,14 +14,22 @@
 // `GetText(def->PlayersMoney) + IntToWideString(money)` as one expression (right operand first, own frame word per temporary).
 #include "fable_compiler.h"
 #include <stddef.h>
-class CWideString {
-public:
-    void* m_pStringData;
-    CWideString();                                      // 0x0099AED0
-    CWideString(const CWideString& other);              // 0x0099B720
-    ~CWideString();                                     // 0x0099B510
-    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70
-};
+// NF170 (q4278, 2026-11-20): the sub-def call 0x005ED4A0 is the shared CDefClassBase::GetSubDef<CTavernGameDef> template (Ego_r.pdb +
+//   FableWin.pdb ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z; the callee pushes the literal
+//   'CTavernGameDef'), its noinline body visible (engine/CDefClassBase_GetSubDef.h FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE), on the
+//   shared CDefPointer / CTavernGameDef (Ego_r member names) and fable_string.h. Was a local def / CDefPointer / CDefClassBase model (and
+//   local string classes) with a stand-in GetSubDef body.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 FABLE_FORCEINLINE CWideString __fastcall IntToWideString(long value)    // the body of 0x00405F00, inlined here
 {
@@ -29,39 +37,6 @@ FABLE_FORCEINLINE CWideString __fastcall IntToWideString(long value)    // the b
     text.Sprintf(L"%d", value);
     return text;
 }
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long RefCount;                                      // +0x04
-    void Release() { if (--RefCount == 0) Destroy(); }
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) Object->Release(); }
-    T* operator->() const { return Object; }
-};
-class CTavernGameDef : public CDefBase { public:
-    unsigned char _pad08[0xec - 0x08];
-    unsigned long Bet;                                  // +0xec text id
-    unsigned long PlayersMoney;                         // +0xf0 text id
-};
-class CDefClassBase : public CDefBase { public:
-    bool GetSubDef_005ed4a0(CDefPointer<CTavernGameDef>& out);   // 0x005ED4A0
-};
-void* FindSubDef_CDefClassBase_GetSubDef(CDefClassBase* def);   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef_005ed4a0(CDefPointer<CTavernGameDef>& out)
-{
-    void* def = FindSubDef_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out.Object = (CTavernGameDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
 class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
@@ -82,8 +57,8 @@ class CTCTavernGame { public:
 
 CWideString CTCTavernGame::GetPlayersMoney()
 {
-    CDefPointer<CTavernGameDef> def;
-    ParentThing->PDef->GetSubDef_005ed4a0(def);
+    CDefPointer<const CTavernGameDef> def;
+    ParentThing->PDef->GetSubDef(&def);
     long money = CurrentMoney;
     if (PreviousTavernGameState == 4)
         money -= BaseBet;

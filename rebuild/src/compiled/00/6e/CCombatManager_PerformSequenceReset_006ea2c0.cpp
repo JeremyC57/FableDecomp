@@ -4,7 +4,7 @@
 // Callees: the combatant map's find 0x006F0250 (twice), CCombatManager::IncrementDefenderAttackPattern 0x006E8600,
 //          IsCreatureOnRotatingCombatRing 0x006E9700 (catalogued "CCombatWheel_ValidateSequencePosition"; name from
 //          the Ego_r CCombatManager predicates), CThingCreatureBase::GetCombatTypeDef 0x00666D10, CDefClassBase::
-//          GetSubDef<T> 0x006F0F60 (same-TU stand-in below), CWorld::GetWorldSeed 0x0049D810, `__fastcall` GFROR13
+//          GetSubDef<CCombatAbilityStrafeDef> 0x006F0F60 (shared body, noinline, same TU), CWorld::GetWorldSeed 0x0049D810, `__fastcall` GFROR13
 //          0x00497890, SetAttackerRingAsRotating 0x006E9D90, CCombatSequenceBase::Stop 0x008B0640, the sequence's
 //          virtual slot 7 (+0x1c, IsMeleeSequence), the sub-def's virtual slot 1 on release. Floats 1.0f 0x0122DED8,
 //          -1.0f 0x0122DEE0.
@@ -12,7 +12,7 @@
 // Shape: GetCombatantInfo by reference (each UniqueID a GetUID() temporary in one 8-byte slot, as the landed
 // 0x006E9D90, with the same-TU find body); the victim is kept as the found NODE and `->value` is formed at its one
 // use (a CCombatantInfo& local adds the +0x18 early and swaps esi/edi); the sub-def pointer is zeroed before the rotating-ring test and loaded once (ebp) after GetSubDef:
-// the same-TU stand-in (writes the out slot only inline) tells VC7.1 its address does not escape; it is released
+// the visible same-TU noinline GetSubDef body (writes only through the out pointer) tells VC7.1 its address does not escape; it is released
 // with the def's inline Release (`dec [ebp+4] ; jne`) and a null test. The world random step is inline
 // (seed * 0x24A1 + 0x24DF, GFROR13), the roll a signed long.
 // Layout: CCombatManager / CCombatantInfo as the landed 0x006E9D90 and 0x006E97F0 (World +0x20, Combatants +0x10,
@@ -20,6 +20,24 @@
 // +0x40 (descriptive names).
 // Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 // Name fix (agentNF6 2026-11-10): CCombatManager::IsCreatureOnOuterRing 0x006E9700 is ?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (Ego_r.pdb / FableWin.pdb), was IsCreatureOnRotatingCombatRing.
+// NF170 (q4267): the sub-def is the shared CDefClassBase::GetSubDef<CCombatAbilityStrafeDef> template (Ego_r.pdb + FableWin.pdb
+//   ??$GetSubDef@VCCombatAbilityStrafeDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@@Z, retail 0x006F0F60,
+//   whose body pushes the literal 'CCombatAbilityStrafeDef'), with its noinline body visible (engine/CDefClassBase_GetSubDef.h
+//   FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE: the callee only writes through the out pointer). The def's chance +0x2c and speed
+//   +0x40 are its CCombatAbilityStrafingData CombatAbility (+0x28) PercentageChance / RotationSpeed (Ego_r layout). Was a local
+//   CCombatTypeDef / CDefPointer / CRingRotationDef stand-in with a stand-in GetSubDef body.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCOMBATTYPEDEF
+#define FABLE_RETAIL_CCOMBATABILITYDATA
+#define FABLE_RETAIL_CCOMBATABILITYSTRAFINGDATA
+#define FABLE_RETAIL_CCOMBATABILITYSTRAFEDEF
+#define FABLE_RETAIL_CCOMBATABILITYSTRAFEDEF_STATGETTYPENAME
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
 #include "fable_compiler.h"
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 
@@ -30,49 +48,9 @@ FABLE_FORCEINLINE unsigned long WorldRandom(unsigned long& seed)
     return seed;
 }
 
-class CDefPointeeBase { public:                    // a counted definition object
-    virtual void v000();
-    virtual void DestroyDef();              // slot 1 (+4): called when the count drops to zero
-    long m_refCount;                        // +4
-    void ReleaseDef()
-    {
-        if (--m_refCount == 0)
-            DestroyDef();
-    }
-};
-template<class T> class CDefPointer { public:      // CDefPointer<const T>: one counted pointer to a definition
-    T* m_pObject;
-    CDefPointer() : m_pObject(0) { }
-    ~CDefPointer()
-    {
-        if (m_pObject)
-            m_pObject->ReleaseDef();
-    }
-    T* operator->() const { return m_pObject; }
-};
-struct CRingRotationDef : CDefPointeeBase {
-    unsigned char _pad08[0x24];
-    long  RotationChance;                   // +0x2c (percent)
-    unsigned char _pad30[0x10];
-    float RotationSpeed;                    // +0x40
-};
-void* FindDef_GetSubDef_006f0f60();         // stand-in callee of the stand-in body below
-class CCombatTypeDef { public:
-    bool GetSubDef(CDefPointer<CRingRotationDef>& out) const;   // 0x006F0F60
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for the GetSubDef<T> instantiation 0x006F0F60: it writes the out slot only inline, so VC7.1
-// knows the def pointer's address does not escape the call (the landed 0x006E3780 idiom).
-__declspec(noinline) bool CCombatTypeDef::GetSubDef(CDefPointer<CRingRotationDef>& out) const
-{
-    void* def = FindDef_GetSubDef_006f0f60();
-    if (!def)
-        return false;
-    *(void**)&out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
+#include "engine/CCombatTypeDef.h"
+#include "engine/CCombatAbilityStrafeDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;              // +0x18
@@ -171,12 +149,12 @@ void CCombatManager::PerformSequenceReset(CThingCreatureBase& creature)
         if (sequence->Running) {
             if (sequence->IsMeleeSequence()) {
                 IncrementDefenderAttackPattern(victim->value);
-                CDefPointer<CRingRotationDef> rotation;
+                CDefPointer<const CCombatAbilityStrafeDef> rotation;
                 if (!IsCreatureOnOuterRing(creature)) {
-                    if (creature.GetCombatTypeDef()->GetSubDef(rotation)) {
+                    if (creature.GetCombatTypeDef()->GetSubDef(&rotation)) {
                         long roll = WorldRandom(*World->GetWorldSeed()) % 100;
-                        if (roll <= rotation->RotationChance) {
-                            float speed = rotation->RotationSpeed;
+                        if (roll <= rotation->CombatAbility.PercentageChance) {
+                            float speed = rotation->CombatAbility.RotationSpeed;
                             float direction = (WorldRandom(*World->GetWorldSeed()) & 1) == 0 ? 1.0f : -1.0f;
                             SetAttackerRingAsRotating(creature, direction * speed);
                         }

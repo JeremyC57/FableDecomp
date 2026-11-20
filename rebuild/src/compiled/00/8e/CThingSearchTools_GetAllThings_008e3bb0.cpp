@@ -1,5 +1,5 @@
 // CThingSearchTools::GetAllThings(const TFilter& filter, TContainer& result) [TThing = CThingAICreature, TContainer = std::vector<CThingAICreature*>, TFilter = CThingFilter_IsNot] -- append every scan-visible AI creature other than the filter's thing to the result vector
-// Leaf: GetAllThings
+// Leaf: ??$GetAllThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_IsNot@@@CThingSearchTools@@QBEXABVCThingFilter_IsNot@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E3BB0, 147 bytes (+ int3 padding to 160) (`ret 8`).
 // Callees: PeekAllThings 0x0049C770, CThingFilter_IsNot::operator() 0x006A76A0, vector::_M_insert_overflow 0x00515CC0.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
@@ -8,109 +8,37 @@
 // A vector push takes a by-value ThingCast<T> temporary (homed in the dead argument slot and shared with the
 // __true_type tag: the same-TU noinline overflow stand-in shows VC7.1 the tag is never read); a list push
 // inserts before end() reading end()->prev once; an intelligent-pointer push builds a named temporary.
+// NF170 (q11742, 2026-11-20): re-authored on the shared CThingSearchTools::GetAllThings<T,Container,Filter> const member template
+//   (Ego_r.pdb 0x00825CE0 + FableWin.pdb 0x0286CD30 ??$GetAllThings@VCThingAICreature@@V?$vector@...@std@@VCThingFilter_IsNot@@@CThingSearchTools@@QBEX...;
+//   engine/CThingSearchTools.h ALLTHINGSBODY with the Ego_d.pdb text ALLTHINGSBODY_EGOD, the body of the same-T / same-container instance
+//   0x0052B270 GetAllThings<CThingAICreature, vector<CThingAICreature*>, CThingFilter_None>), std::vector<CThingAICreature*> and
+//   engine/CThingFilter_IsNot.h. Its only landed caller 0x008DCB60 binds this spelling. Was a local CThingSearchToolsMethods / CResultVector
+//   stand-in (QAE). The row takes the instance's address in an anonymous-namespace helper, so it emits the one pick-any COMDAT its
+//   header includers emit too (GOTCHAS nf86 / nf88; landing nf135).
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY_EGOD
+#define FABLE_RETAIL_CTHINGAICREATURE_STATTYPEFLAGS
+#define FABLE_RETAIL_CTHING_SCANINCLUSION_ISALIVE
+#include "engine/CThingAICreature.h"
 #include "engine/CThingSearchTools.h"
-#include <stdlib.h>
-
-inline void* operator new(unsigned int, void* where) { return where; }
-struct __true_type { __true_type() {} };
-
-// ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
-// Retail CThing sits 0x10 below the PDB from ThingTypeFlags on: UsingComponents +0x20 [PDB +0x20],
-// ThingTypeFlags +0x6c [PDB +0x7c], the state bit byte +0x91 [PDB +0xa1] = Dead 0x01,
-// IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-class CThing { public:
-    enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
-    unsigned char _pad_0x00[0x20];
-    unsigned char UsingComponents[0x24];              // +0x20 bitset<274> of present thing components
-    unsigned char _pad_0x44[0x6c - 0x44];
-    unsigned long ThingTypeFlags;                     // +0x6c THING_TYPE_* inheritance bits
-    unsigned char _pad_0x70[0x91 - 0x70];
-    unsigned char StateBits;                          // +0x91 Dead / IncludeInThingScans / Activated / InLimbo
-
-    // CThing::IsIncludedInThingScans (out of line at 0x0048BC40), inlined here.
-    bool IsIncludedInThingScans() const
-    {
-        unsigned char f = StateBits;
-        unsigned char nf = ~f;
-        if ((f & 0x04) && (f & 0x08) && (nf & 0x01) && !(f & 0x20))
-            return true;
-        return false;
-    }
-};
-
-// The type test: the mask is copied into a local first, so the CThing (mask 0) test folds late and
-// keeps retail's `xor dl,dl ; jne`, and a byte-sized mask compares through the low byte.
-template <class T> inline bool IsThingOfType(const CThing* thing)
+#include "engine/CThingFilter_IsNot.h"
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the shared GetAllThings<CThingAICreature, vector<CThingAICreature*>,
+// CThingFilter_IsNot> so this object emits it out of line as a pick-any COMDAT (retail 0x008E3BB0 is that out-of-line copy).
+// Internal to this TU; never called.
+void (CThingSearchTools::* ReferenceGetAllThingsCThingAICreatureIsNot())(const CThingFilter_IsNot&, std::vector<CThingAICreature*>&) const
 {
-    unsigned long mask = T::ThingTypeMask;
-    return (thing->ThingTypeFlags & mask) == mask;
+    return &CThingSearchTools::GetAllThings<CThingAICreature, std::vector<CThingAICreature*>, CThingFilter_IsNot>;
 }
-
-// The thing as the searched type, returned by value (a fresh temporary for push_back's const T&).
-template <class T> inline T* ThingCast(CThing* thing) { return (T*)thing; }
-
-// The thing manager's lists: std::list<CThing*> (STLport: the node pointer at +0, node = next, prev, value).
-struct CThingList {
-    struct SNode { SNode* m_pNext; SNode* m_pPrev; CThing* m_value; };
-    SNode* m_pHead;
-    struct iterator {
-        SNode* m_pNode;
-        iterator(SNode* node) : m_pNode(node) {}
-        CThing* operator*() const { return m_pNode->m_value; }
-        iterator& operator++() { m_pNode = m_pNode->m_pNext; return *this; }
-        bool operator!=(const iterator& o) const { return m_pNode != o.m_pNode; }
-    };
-    iterator begin() { return iterator(m_pHead->m_pNext); }
-    iterator end() { return iterator(m_pHead); }
-};
-
-// The result: STLport vector<T*>; the overflow path is out of line (a same-TU stand-in below, so VC7.1 knows it
-// never reads the __true_type tag and homes the tag and the pushed value in the dead argument slot as retail does).
-template <class T> struct CResultVector {
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned long fill_len, bool atend);   // 0x00515CC0
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) T(x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
-    }
-};
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) void CResultVector<T>::_M_insert_overflow(T* position, const T& x, const __true_type&, unsigned long fill_len, bool atend)
-{
-    if (atend && fill_len == 1)
-        _M_finish = position + (x != 0);
 }
-#pragma auto_inline(on)
-
-class CThingAICreature : public CThing { public: enum { ThingTypeMask = 0x1f }; };
-class CThingFilter_IsNot { public:
-    const CThing* Thing;
-    bool operator()(const CThing& thing) const;       // 0x006A76A0
-};
-
-struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)
-    template <class TThing, class TContainer, class TFilter> void GetAllThings(const TFilter& filter, TContainer& result);
-};
-
-// Every scan-visible thing of the whole thing list that is of type TThing and passes the filter.
-template <class TThing, class TContainer, class TFilter>
-void CThingSearchToolsMethods::GetAllThings(const TFilter& filter, TContainer& result)
-{
-    CThingList* things = PeekAllThings();
-    for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
-    {
-        CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && IsThingOfType<TThing>(thing) && filter(*(TThing*)thing))
-            result.push_back(ThingCast<TThing>(thing));
-    }
-}
-
-template void CThingSearchToolsMethods::GetAllThings<CThingAICreature, CResultVector<CThingAICreature*>, CThingFilter_IsNot >(const CThingFilter_IsNot&, CResultVector<CThingAICreature*>&);

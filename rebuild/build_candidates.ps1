@@ -233910,8 +233910,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009142b0'
         Module = 'CThingSearchTools'
-        Source = '00/91/CThingSearchTools_GetPBestThingCThingFilterNoneCThingCompareNeares_009142b0.cpp'
-        TestSource = '00/91/CThingSearchTools_GetPBestThingCThingFilterNoneCThingCompareNeares_009142b0_test.cpp'
+        Source = '00/91/CThingSearchTools_GetPBestThing_009142b0.cpp'
+        TestSource = '00/91/CThingSearchTools_GetPBestThing_009142b0_test.cpp'
         PassPattern = '009142b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -233980,8 +233980,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00964230'
         Module = 'CThingSearchTools'
-        Source = '00/96/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterObjectHasPr_00964230.cpp'
-        TestSource = '00/96/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterObjectHasPr_00964230_test.cpp'
+        Source = '00/96/CThingSearchTools_GetPBestThing_00964230.cpp'
+        TestSource = '00/96/CThingSearchTools_GetPBestThing_00964230_test.cpp'
         PassPattern = '00964230_TEST PASS'
     }
     [pscustomobject]@{
@@ -242379,8 +242379,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00cdca70'
         Module = 'CPersistContext'
-        Source = '00/cd/CPersistContext_TransferEPostSavePosition_00cdca70.cpp'
-        TestSource = '00/cd/CPersistContext_TransferEPostSavePosition_00cdca70_test.cpp'
+        Source = '00/cd/CPersistContext_Transfer_00cdca70.cpp'
+        TestSource = '00/cd/CPersistContext_Transfer_00cdca70_test.cpp'
         PassPattern = '00cdca70_TEST PASS'
     }
     [pscustomobject]@{
@@ -242393,8 +242393,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00cdcdd0'
         Module = 'CPersistContext'
-        Source = '00/cd/CPersistContext_TransferEHeroSoulsPosition_00cdcdd0.cpp'
-        TestSource = '00/cd/CPersistContext_TransferEHeroSoulsPosition_00cdcdd0_test.cpp'
+        Source = '00/cd/CPersistContext_Transfer_00cdcdd0.cpp'
+        TestSource = '00/cd/CPersistContext_Transfer_00cdcdd0_test.cpp'
         PassPattern = '00cdcdd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -242449,8 +242449,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00f2d4d0'
         Module = 'CPersistContext'
-        Source = '00/f2/CPersistContext_TransferEKNAttackType_00f2d4d0.cpp'
-        TestSource = '00/f2/CPersistContext_TransferEKNAttackType_00f2d4d0_test.cpp'
+        Source = '00/f2/CPersistContext_Transfer_00f2d4d0.cpp'
+        TestSource = '00/f2/CPersistContext_Transfer_00f2d4d0_test.cpp'
         PassPattern = '00f2d4d0_TEST PASS'
     }
     [pscustomobject]@{

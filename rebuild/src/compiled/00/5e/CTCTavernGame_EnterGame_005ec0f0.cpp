@@ -27,6 +27,14 @@
 //        the push and gives the plain `dec eax ; mov [ecx+4],eax` release.
 // Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
 #include "fable_compiler.h"
 #define CTCHeroStats CTCHeroStatsDonor
 #include "engine/CTCHeroStats.h"
@@ -39,51 +47,14 @@ extern bool g_bTavernGameQuitRequested;         // 0x013BAE1C
 #include "engine/ETCInterfaceType.h"                        // NF64: the shared enum (CTCQuickAccessMenu.h DEACTIVATE includes it; was a local empty enum)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-class CTavernGameDef : public CDefVirtual { public:
-    long m_count;                               // +0x04
-    unsigned char _pad_0x08[0x108];
-    long MinBet;                                // +0x110
-    void Release() { if (--m_count == 0) Destroy(); }
-};
-struct CDefPointer {
-    CTavernGameDef* Object;
-    CDefPointer() : Object(0) {}
-    ~CDefPointer() { if (Object) Object->Release(); }
-    CTavernGameDef* operator->() const { return Object; }
-};
-class CDefinitionManager { public:
-    CTavernGameDef* PeekDefFromGlobalIndex(long index);   // stand-in only
-};
-class CDefClassBase { public:
-    virtual long* GetSubDefIndex(const char* name);       // stand-in only (retail: slot 14, CCharString name)
-    unsigned char       _pad_0x04[0x18];
-    CDefinitionManager* m_pManager;             // +0x1c
-    bool GetSubDef_005ed4a0(CDefPointer& out);  // 0x005ED4A0 (GetSubDef<CTavernGameDef>)
-};
-
-// Stand-in for the same-module GetSubDef<CTavernGameDef> body (0x005ED4A0, landed separately; not graded here), as in the
-// landed GetTotalWinnings 0x005EA310: compiled above the caller without inlining so VC7.1 sees what it writes.
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef_005ed4a0(CDefPointer& out)
-{
-    long* index = GetSubDefIndex("CTavernGameDef");
-    if (index == 0)
-        return false;
-    CTavernGameDef* def = m_pManager->PeekDefFromGlobalIndex(*index);
-    if (out.Object != def) {
-        if (out.Object)
-            out.Object->Release();
-        out.Object = def;
-        if (def)
-            ++def->m_count;
-    }
-    return true;
-}
-#pragma auto_inline(on)
+// NF170 (q4278, 2026-11-20): the sub-def call 0x005ED4A0 is the shared CDefClassBase::GetSubDef<CTavernGameDef> template (Ego_r.pdb +
+//   FableWin.pdb ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z; the callee pushes the literal
+//   'CTavernGameDef'), its noinline body visible (engine/CDefClassBase_GetSubDef.h FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE), on the
+//   shared CDefPointer / CTavernGameDef (Ego_r member names) and fable_string.h. Was a local def / CDefPointer / CDefClassBase model (and
+//   local string classes) with a stand-in GetSubDef body.
+#include "fable_string.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -202,7 +173,7 @@ class CTCTavernGame { public:
         PreviousTavernGameState = TavernGameState;
         TavernGameState = state;
     }
-    void GetDef(CDefPointer* out) { ParentThing->PDef->GetSubDef_005ed4a0(*out); }   // out of line 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out) { ParentThing->PDef->GetSubDef(out); }   // out of line 0x005EA000
     void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0
     void EnterGame();
 };
@@ -217,7 +188,7 @@ void CTCTavernGame::EnterGame()
     CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     hero->SetVisible(false);
     hero->SetInLimbo(true);
-    CDefPointer def;
+    CDefPointer<const CTavernGameDef> def;
     GetDef(&def);
     {
         CTCGamePlayer* gamePlayer;

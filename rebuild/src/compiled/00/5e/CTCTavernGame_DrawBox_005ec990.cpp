@@ -50,56 +50,22 @@ enum EEngine2DLayer { ENGINE_2D_LAYER_TAVERN_SCORE_BOX = 0x47 };
 void __fastcall DrawBox(CEnginePrimitivePrepareInfo* info, CRetailHandleVector* handles, const C2DBoxF& box,
                         EEngine2DLayer layer);   // 0x0048E0A2
 
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-class CTavernGameDef : public CDefVirtual { public:
-    long m_count;                               // +0x04
-    unsigned char _pad_0x08[0x180];
-    float MainGameScoreBoxX;                    // +0x188
-    float MainGameScoreBoxY;                    // +0x18c
-    float MainGameScoreBoxWidthXbox;            // +0x190
-    float MainGameScoreBoxWidthPC;              // +0x194
-    float MainGameScoreBoxHeight;               // +0x198
-    void Release() { if (--m_count == 0) Destroy(); }
-};
-struct CDefPointer {
-    CTavernGameDef* Object;
-    CDefPointer() : Object(0) {}
-    ~CDefPointer() { if (Object) Object->Release(); }
-    CTavernGameDef* operator->() const { return Object; }
-};
-class CDefinitionManager { public:
-    CTavernGameDef* PeekDefFromGlobalIndex(long index);   // stand-in only
-};
-class CDefClassBase { public:
-    virtual long* GetSubDefIndex(const char* name);       // stand-in only (retail: slot 14, CCharString name)
-    unsigned char       _pad_0x04[0x18];
-    CDefinitionManager* m_pManager;             // +0x1c
-    bool GetSubDef_005ed4a0(CDefPointer& out);  // 0x005ED4A0 (GetSubDef<CTavernGameDef>)
-};
-
-// Stand-in for the same-module GetSubDef<CTavernGameDef> body (0x005ED4A0, landed separately; not graded here): compiled
-// above the caller without inlining so VC7.1 sees, as retail's whole-program build did, that the def pointer it fills
-// does not escape.
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef_005ed4a0(CDefPointer& out)
-{
-    long* index = GetSubDefIndex("CTavernGameDef");
-    if (index == 0)
-        return false;
-    CTavernGameDef* def = m_pManager->PeekDefFromGlobalIndex(*index);
-    if (out.Object != def) {
-        if (out.Object)
-            out.Object->Release();
-        out.Object = def;
-        if (def)
-            ++def->m_count;
-    }
-    return true;
-}
-#pragma auto_inline(on)
+// NF170 (q4278, 2026-11-20): the sub-def call 0x005ED4A0 is the shared CDefClassBase::GetSubDef<CTavernGameDef> template (Ego_r.pdb +
+//   FableWin.pdb ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z; the callee pushes the literal
+//   'CTavernGameDef'), its noinline body visible (engine/CDefClassBase_GetSubDef.h FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE), on the
+//   shared CDefPointer / CTavernGameDef (Ego_r member names) and fable_string.h. Was a local def / CDefPointer / CDefClassBase model (and
+//   local string classes) with a stand-in GetSubDef body.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 
 class CThing { public:
     unsigned char  _pad_0x00[0x70];
@@ -111,13 +77,13 @@ class CTCTavernGame { public:
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x48];
     CRetailHandleVector BoxHandles;             // +0x50
-    void GetDef(CDefPointer* out) { ParentThing->PDef->GetSubDef_005ed4a0(*out); }   // out of line 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out) { ParentThing->PDef->GetSubDef(out); }   // out of line 0x005EA000
     void DrawBox(const CEnginePrimitivePrepareInfo& info);
 };
 
 void CTCTavernGame::DrawBox(const CEnginePrimitivePrepareInfo& info)
 {
-    CDefPointer def;
+    CDefPointer<const CTavernGameDef> def;
     GetDef(&def);
     BoxHandles.Resize(9);
     C2DExtentsI size = GPDisplayManager->GetRenderTargetDimensions();

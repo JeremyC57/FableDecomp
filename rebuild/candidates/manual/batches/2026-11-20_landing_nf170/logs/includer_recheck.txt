@@ -1,0 +1,2 @@
+007d7ec0	007d7ec0   DIFFER(182v66)   PASS   CTCTavernGameSpotTheAddition::DrawPreparePrimitivesForRendering
+good 212 bad 1

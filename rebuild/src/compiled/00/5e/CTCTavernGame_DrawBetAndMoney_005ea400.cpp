@@ -25,10 +25,22 @@ class CDisplayManager { public:
 };
 extern CDisplayManager* GPDisplayManager;      // 0x013B8390
 
-class CWideString { public:
-    void* PStringData;
-    ~CWideString();                             // 0x0099B510
-};
+// NF170 (q4278, 2026-11-20): the sub-def call 0x005ED4A0 is the shared CDefClassBase::GetSubDef<CTavernGameDef> template (Ego_r.pdb +
+//   FableWin.pdb ??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z; the callee pushes the literal
+//   'CTavernGameDef'), its noinline body visible (engine/CDefClassBase_GetSubDef.h FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE), on the
+//   shared CDefPointer / CTavernGameDef (Ego_r member names) and fable_string.h. Was a local def / CDefPointer / CDefClassBase model (and
+//   local string classes) with a stand-in GetSubDef body.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#include "fable_string.h"
+#include "engine/CTavernGameDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CEnginePrimitiveHandle { public: void* _vtable; void* Data; };
 struct CHandleVector {
     CEnginePrimitiveHandle* _M_start;
@@ -47,42 +59,6 @@ public:
     static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
 };         // 0x00438570
 
-class CTavernGameDef { public:
-    virtual void v00();
-    virtual void Destroy();
-    long          RefCount;
-    unsigned char _pad08[0x10c - 0x08];
-    long          ThirdBoxWidth;                // +0x10c
-    FABLE_FORCEINLINE void Release()
-    {
-        if (--RefCount == 0)
-            Destroy();
-    }
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) {}
-    FABLE_FORCEINLINE ~CDefPointer()
-    {
-        if (Object)
-            Object->Release();
-    }
-    T* operator->() const { return Object; }
-};
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CTavernGameDef>* out);   // 0x005ED4A0
-};
-CTavernGameDef* FindRef_GetSubDef_0();
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CDefPointer<CTavernGameDef>* out)
-{
-    CTavernGameDef* def = FindRef_GetSubDef_0();
-    if (!def)
-        return false;
-    out->Object = def;
-    return true;
-}
-#pragma auto_inline(on)
 struct CThingWithDef {
     unsigned char  _pad00[0x70];
     CDefClassBase* PBaseDef;                    // +0x70
@@ -115,7 +91,7 @@ public:
 void CTCTavernGame::DrawBetAndMoney(const CEnginePrimitivePrepareInfo& info, float betX, float betY, float moneyX,
                                     float moneyY, float thirdX, float thirdY)
 {
-    CDefPointer<CTavernGameDef> def;
+    CDefPointer<const CTavernGameDef> def;
     ParentThing->PBaseDef->GetSubDef(&def);
     DrawStatBoxWithText(info, BetHandles,
                         C2DVector(betX * GPDisplayManager->GetRenderTargetDimensions().X,
@@ -135,5 +111,5 @@ void CTCTavernGame::DrawBetAndMoney(const CEnginePrimitivePrepareInfo& info, flo
         DrawStatBoxWithText(info, ThirdHandles,
                             C2DVector(thirdX * GPDisplayManager->GetRenderTargetDimensions().X,
                                       thirdY * GPDisplayManager->GetRenderTargetDimensions().Y),
-                            def->ThirdBoxWidth, GetThirdText(), 0, 0xff, false);
+                            def->MoneyBagGraphic, GetThirdText(), 0, 0xff, false);
 }
