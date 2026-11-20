@@ -1,22 +1,18 @@
-0x007602F0 NShape::IsShapeConvex: parked by p25J (Account B), 2026-11-20. Best: 007602f0.cpp, DIFFER(1125v1126), 4 diff lines.
-No header change: the C3DVector opt-ins already exist in rebuild/include, so there is no overlay and no hdr.diff.
-Progress, each step measured against retail:
-- d0 (codex draft): DIFFER(1135v1126), 181 lines. Dummy-local sweeps (1..16 floats) changed nothing.
-- Ego_d locals and scopes, with a loop-scope this_line, the outer this_line declared before the loop, both loop iterators
-  post-incremented in the body (retail increments before the acos call), and it_finish_him = pts.end(): 103 lines.
-- Closing1 first = *(it_finish_him - 1) (retail `add ebx,-0Ch`); begin re-read through pts[0] / pts.begin() (CSE kept in edi);
-  closing2 `first = pts[0]; second = pts[1]`: 10 lines. That also fixes the ebx/edi swap.
-- Tail `float closing_angle = acos(closing); result = acos(d2)*K + (closing_angle*K + result)`: 8 lines (epilogue fadd placement
-  and the fst after the second acos).
-- Normalise body SQUARE_HELPER+SQUARE_GROUPED_PASS23 in place of SQUAREDMAGNITUDE_XYZ: 4 lines. The last_line Y-copy schedule
-  at 0x007605AF was the region-3 cut. PAREN_SQUARES_XYZ is equal; every other Normalise body is worse (sweep in r1/nv).
-Residue: closing2 second.X. Retail loads [edi+0Ch] before `add edi,0Ch`; ours loads [edi] after it (-1 B).
-- The c2 DAG dump (evidence/v15_c2dag.txt, region 4) shows our IL has the add (idx 12) before the second.X load (idx 13), which
-  depends on it. Retail's IL must load second.X off the old base.
-- Tried, none closes it: it_first / it_second / it_finish_him increment forms (43 lines), *(pts.begin()+1), it_first[1],
-  pts.front(), INDEX_START, statement swaps, closing1 swaps, Dot / ctor / copy opt-ins, and parentheses in closing1
-  (region shifts make it worse).
-- v20a (`it_first = pts.begin() + 1; first = *(it_first - 1); second = *it_first;`) is size-equal (1126v1126, 6 lines) but takes
-  `lea eax,[edi-0Ch]` with the add first.
-Ego_d line table: evidence/007602f0.tsv. Ego_d locals: evidence/007602f0.locals.txt.
-FINDINGS: 2026-11-20 (Account B p25J, 0x007602F0 NShape::IsShapeConvex, parked) Goes from DIFFER(1135v1126) to DIFFER(1125v1126) with Ego_d's locals and scopes (in-body post-increment loads, a loop-scope this_line, hoisted it_finish_him = pts.end(), *(it_finish_him-1)), a fitted `double closing` + `float closing_angle` tail, and the existing Normalise opt-ins SQUARE_HELPER+SQUARE_GROUPED_PASS23 (region-3 cut). One residue is left: closing2's second.X is loaded after `add edi,0Ch` instead of as [edi+0Ch] before it (0x007605F3). It is an IL-order difference in c2 region 4, not a symbol tie. Work: Account B scratch w26/p25J/parked/007602f0.
+0x007602F0 NShape::IsShapeConvex: parked by p25O (Account B), 2026-11-20, after the advisor's bounded pass. Best Ego_d-conformant source: 007602f0.cpp = DIFFER(1126v1126), 2 diff lines. No header change.
+(The TU define block is not yet unified with the landed siblings 0x00760020 / 0x00760190 (C2DVECTOR / C2DLINEF / CROSSWITHUP); do that, and regrade the siblings with the Normalise and GFAngles opt-ins, before any batch.)
+Progress over p25J's 1125v1126:
+- closing2 (p25J's residue) SOLVED: begin+1 must be held in a named iterator assigned after first's read. Matching spellings, all on p25J's text (w26/p25O/r1/c, d, e):
+  `first = pts[0]; it_second = pts.begin() + 1; second = *it_second;`, `first = *pts.begin(); second = *(it_second = pts.begin() + 1);` (the kept one: Ego_d lines 336/337 stay two),
+  F/K/L/P/X6 (it_first), X7 (it_finish_him), Y2 (&pts[1]). Assigning before first's read (Y1) = 1124v1126. Plain pts[1] / *(pts.begin()+1) = 1125v1126. it_second IS an Ego_d local.
+- p25J's fitted `double closing` / `float closing_angle` (not in Ego_d) replaced by GFArcCos in both closings.
+Advisor bounded pass:
+1. Per-site retail shape: loop = no fst, fmul K after the three moves (0x007604A1), no spill; closing1 = dot spilled as a QWORD (0x007605DB), its acos computed after closing2's
+   (0x00760715), `fst dword [esp+14h]` after it; closing2 = acos, `fst [esp+14h]`, fmul K at once. All-GFArcCos (r1/h/gT1) = 8 lines (loop fmul at the call + the epilogue);
+   all-raw `acos(...) * K` (r1/t/nna) = 234 lines (dword spill, frame 0x4C v 0x54); the mix = 2 lines. So the mix is needed, and is Inferred with that ablation.
+2. GFArcCos body: our out-of-line COMDAT of the header body compiled /Gr (r1/gf) is SAME as retail 0x005DB180 (18 B; FableWin ?GFArcCos@@YIMN@Z). A float local inside
+   the body (r1/v/v1, v2, v8) stops the acos deferral in the row (1118v1126), so the header body cannot carry the variable.
+3. Existing locals: the only function-scope float in Ego_d is `result` (type 0x40), which carries the running sum at closing1; it cannot hold the closing1 angle.
+4. The closing_angle match needs BOTH absent locals: float closing_angle with a float or no `closing` (r1/n/k1, k3) = 234 lines; with (double) cast and no local (k2) = 1118.
+5. Ego_d debug length 1096 = FableWin 0x025D50C0 length 1096: same revision, so FableWin cannot arbitrate (and its exe is not on this box).
+Bracket: bracket_closing_angle.cpp = RELOCATION_MATCH (r1/n/m3: `double closing` + `float closing_angle`), evidence only.
+FINDINGS: - 2026-11-20 (Account B p25O, 0x007602F0 NShape::IsShapeConvex, parked) DIFFER(1125v1126) -> DIFFER(1126v1126). closing2's begin+1 must be held in a named iterator (it_second, an Ego_d local) assigned after first's read; plain pts[1] = 1125v1126. With p25J's two fitted locals dropped (both absent from Ego_d), closing1 / closing2 accumulate through GFArcCos (its double parameter is retail's qword spill; COMDAT SAME as retail 0x005DB180), the loop through the raw (float)acos * K (all-GFArcCos 8 lines, all-raw 234). The one residue is the epilogue pop / fadd order at 0x00760726. It flips only when closing1's acos result is a float variable multiplied later (m1..m5, which also need a double local); it is flat across 13 tail shapes, operand orders, Normalise opt-ins and 1..40 literal dummies at entry and tail. Fitted match kept as evidence (bracket). Work: Account B scratch w26/p25O/parked/007602f0.

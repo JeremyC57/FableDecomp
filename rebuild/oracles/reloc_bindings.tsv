@@ -39407,3 +39407,11 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?SetAsBlockingNavigation@CTCSwitchableNavigation@@QAEX_N@Z	00787580	008ecbe0
 ??_7CTCTavernGameCardBase@@6B@	01288294	008f1cd0
 ??_7CSimpleMemoryPool@@6B@	0129a064	00a5c570
+??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_IsValidCombatSpline@?A0x28f5a065@@@CThingSearchTools@@QBEXABVCThingFilter_IsValidCombatSpline@?A0x28f5a065@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	0085b0d0	00859ef0
+?IncrementStrikesSinceHitHero@CTCBoss@@QAEXXZ	007aed30	00859ef0
+?InitialiseActionTimes@CCombatActionBase@@IAEXXZ	00856a20	00859ef0
+?SetAttacker@CTCFlourishTarget@@QAEXABVCThing@@@Z	0085ab00	00859ef0
+?SetHitNotification@CTCCreatureHitNotification@@QAEXABVCThing@@@Z	008651b0	00859ef0
+?SetPThingOrigin@CScriptModuleBase@NCameraModes@@QAEXABVCThing@@@Z	00852750	00859ef0
+?SetupCombatInterrupts@CCombatActionBase@@IAEXXZ	00858a20	00859ef0
+?UpdateFacingDirection@CCombatActionBase@@IAEXXZ	00856b20	00859ef0

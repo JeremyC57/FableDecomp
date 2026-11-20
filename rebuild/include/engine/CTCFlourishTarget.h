@@ -31,12 +31,23 @@ public:
     virtual void OnInitialActivate();                                    // ?OnInitialActivate@CTCFlourishTarget@@UAEXXZ 0x007E8A00
     virtual void OnRemove();                                             // ?OnRemove@CTCFlourishTarget@@UAEXXZ 0x007E8A20
     void ProcessActionMovementDelta(C3DVector& movement_delta) const;    // ?ProcessActionMovementDelta@CTCFlourishTarget@@QBEXAAVC3DVector@@@Z 0x007E8A40
+#ifdef FABLE_RETAIL_CTCFLOURISHTARGET_SETTERS
+    // p25E opt-in (row 0x00859EF0 CCombatActionBase::OnAnimationLoaded): the public setters of FableWin.pdb / Ego_d.pdb
+    // ?SetAttacker@CTCFlourishTarget@@QAEXABVCThing@@@Z (FableWin 0x02828860, 95 bytes; out of line in retail at 0x0085AB00: a temporary
+    // CIntelligentPointer<const CThing> on the argument, its item stored into PAttacker +0x0C), ?SetAsCullNegativeXAxisMovement@ /
+    // ?SetAsCullAllYAxisMovement@CTCFlourishTarget@@QAEXXZ (FableWin.pdb debug\combat_action_base.obj 0x028288E0 / 0x02828900, 18-byte /Od
+    // bodies, right after SetAttacker in the same module; no Ego_r.pdb or Fable.exe copy: expanded, 0x0085A34C / 0x0085A350 store the bytes
+    // CullAllYAxisMovement +0x15 / CullNegativeXAxisMovement +0x14 in place). No layout change.
+    void SetAttacker(const CThing& attacker);                            // 0x0085AB00
+    void SetAsCullNegativeXAxisMovement() { CullNegativeXAxisMovement = true; }
+    void SetAsCullAllYAxisMovement() { CullAllYAxisMovement = true; }
+#endif
 private:
     CIntelligentPointer<const CThing> PAttacker;                         // +0x0C
     bool CullNegativeXAxisMovement;                                      // +0x14
     bool CullAllYAxisMovement;                                           // +0x15
 public:
-    static void CheckRetailLayout() { FABLE_STATIC_ASSERT(offsetof(CTCFlourishTarget, PAttacker) == 0x0c); FABLE_STATIC_ASSERT(offsetof(CTCFlourishTarget, CullAllYAxisMovement) == 0x15); }
+    static void CheckRetailLayout() { FABLE_STATIC_ASSERT_AT(39, offsetof(CTCFlourishTarget, PAttacker) == 0x0c); FABLE_STATIC_ASSERT_AT(39, offsetof(CTCFlourishTarget, CullAllYAxisMovement) == 0x15); }
 };
-FABLE_STATIC_ASSERT(sizeof(CTCFlourishTarget) == 0x18);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CTCFlourishTarget) == 0x18);
 #endif

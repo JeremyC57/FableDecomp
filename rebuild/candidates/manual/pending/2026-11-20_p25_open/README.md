@@ -16,7 +16,7 @@ entry cites "Account B scratch w26/...", the files are here. Rulings: docs/journ
 | 0x008DBC80 | NCreatureMode::CModeDragonFlying::FrameUpdate | DIFFER(2321v2319) | Normalise x87 order, direction slot, set store order; same oversize-line pattern (4982, 5125) |
 | 0x005BFD5E | CTCInventoryBase::OnSerialise | DIFFER(425v425) | callee-saved register rotation only; not a symbol tie (symlog: dummies renumber the pool, bytes never move); parked for good |
 | 0x00833C00 | CThingAICreature::DrawPreparePrimitivesForRendering | DIFFER(2296v2300) | retail keeps `info` in ebp and re-reads info.Engine after each primitive temporary; ours spills it; frame one dword off |
-| 0x007602F0 | NShape::IsShapeConvex | DIFFER(1125v1126) | one load: closing2's second.X after `add edi,0Ch` instead of [edi+0Ch] before it (c2 region-4 IL order, not a symbol tie) |
+| 0x007602F0 | NShape::IsShapeConvex | DIFFER(1126v1126) | epilogue pop / fadd order; flips only with a float local Ego_d does not list (bracket_closing_angle.cpp); closing2 fixed with a named Ego_d iterator (p25O) |
 | 0x005B01FE | CTCInventoryTrade::SellItemPC | DIFFER(2222v2222) | Buy-total sum operand order: operands are IND(address temps) made at the member zeroing, in a total order not given by the bare temp number; three all-member zeroing orders fix the sum but misplace a store (cause unmeasured) |
 | 0x00763060 | NShape::FractureShape | DIFFER(1132v1146) | find_if start increment at the loop top v retail peeled into the preheader; only texts that contradict Ego_d reach it (fitted match kept as evidence/bracket_match_anchor.cpp); helpers 0x00760020 / 0x00760190 landed |
 

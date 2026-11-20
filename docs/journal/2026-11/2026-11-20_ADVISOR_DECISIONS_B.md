@@ -182,3 +182,26 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - The "TLC text differs from Ego_d" idea is a hypothesis only. Any FINDINGS line says "not a symbol tie within 1..32 literal dummies".
 - **Helpers 0x00760020 and 0x00760190 match** on today's headers, and land as their own rows.
   - 0x00760190's `edge` placement is `// Inferred:` with its 314v340 ablation and /Od sizes against Ego_d line 157.
+
+## 0x008E18D0 UpdateLightningBeams (p25N): inline split, an implicit destructor, and do{}while(0)
+- **Ruling: no device and no loop respelling yet.** The frequency thresholds p25N derived rest on three header contracts that nothing has validated. Order of work:
+  1. cmpcomdat the out-of-line copies of the implicit destructor (v 0x006E2500), LowerBound (v 0x0040F020) and _M_insert_overflow (v 0x0076ADA0).
+  2. Apply the TU-mate contract: the same define set on 0x008E16A0 / 0x008E20F0 / 0x008E24F0, with a site / f / score / decision table. A define that breaks a mate is out.
+  3. Only then structure: preceding expanded CRC loops, a retail backward branch round the sky block, and Ego_d's 582 B line 3298.
+- **`do{}while(0)` stays a device:** not landable, not Inferred.
+- **FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_IMPLICIT_DTOR** is an acceptable add-only opt-in only with two sources:
+  - one is retail expanding it in the sky block;
+  - the other is a cmpcomdat SAME v 0x006E2500, or the PDB method list showing no declared destructor.
+  - Landed 0x006E2500 and the header's other includers then become re-port debt (logged, not re-ported now).
+- **0x00C73050:** "not a symbol tie within 1..32 literal dummies"; one bounded pass with the c2prio probes, then a report.
+
+## 0x007602F0 NShape::IsShapeConvex (p25O): a float local Ego_d does not list
+- **Where it stands.** The closing2 residue is closed: a named iterator assigned inside the dereference, `second = *(it_second = pts.begin() + 1);`, keeps Ego_d lines 336/337. The best Ego_d-conformant source (GFArcCos at both closings) is DIFFER(1126v1126), 2 lines, an epilogue pop/fadd order.
+- **Question.** It matches only when closing1's acos result sits in a `float closing_angle` variable. May that land as Inferred?
+- **Ruling: no.** Ego_d lists the function's locals and `closing_angle` is not one of them, the same case as 0x00763060's `anchor`.
+- **Before parking, one bounded pass:**
+  - one spelling across the three 29-B sites (all GFArcCos v all raw acos);
+  - a cmpcomdat of the GFArcCos body if retail keeps a copy;
+  - existing Ego_d float locals;
+  - confirm `it_second` is an Ego_d local.
+- **A second fitted row in the same TU** does not count as a second source for the revision-difference hypothesis.

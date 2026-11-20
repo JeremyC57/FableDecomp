@@ -61,4 +61,31 @@ public:
     CIVCountedPointer<CAnimComponentMap>   Components;    // +0x0c
 };
 FABLE_STATIC_ASSERT_AT(58, sizeof(CAnimationEntry) == 0x10);
+#if defined(FABLE_RETAIL_CANIMATIONENTRY_GETCOMPONENT) && defined(FABLE_RETAIL_CANIMATIONENTRY_GETCOMPONENT_BODY)
+// p25E opt-in (row 0x00859EF0 CCombatActionBase::OnAnimationLoaded): the GetComponent<T> template body, visible in the TU as Lionhead's
+// header template was (retail calls the instances out of line: 0x00669CB0 <CAnimComponentCombatHandedness>, 0x00738A00
+// <CAnimComponentCombatMisc>, the in-TU 0x0085AD30 <CAnimComponentStrikeSpeedMultiplier>, family G012). With the body visible VC7.1 knows the
+// caller's out-pointer local does not escape and shares its frame word (0x0085A151 / 0x00859FA2 both `lea edx,[esp+1Ch]`); with the
+// declaration alone each out-local keeps its own word (frame 0x28 v retail 0x20). The body is the landed G012 shape: the own map's Find,
+// else RegisteredComponentDefaults' Find, then the component through the out pointer; compiled from this header with
+// FABLE_RETAIL_CVECTORMAP_ORIGINAL_FIND (the non-const Find's original positive-arm form) the <CAnimComponentCombatHandedness> and
+// <CAnimComponentCombatMisc> instances grade RELOCATION_MATCH against retail 0x00669CB0 / 0x00738A00 (125 bytes each). Ego_d.pdb's
+// record of the instance names typ / panim_comp_base / it, pp_component the parameter.
+// CAnimComponentMap: Ego_d.pdb LF_CLASS 0x19884 (field list 0x19883: public base CIVCountedPointeeBase, public Map +0x08, compiler-generated
+// virtual dtor; Ego_r.pdb sizeof 28 with the 0x10 Dinkumware vector, retail 0x18). Needs engine/CAnimComponentBase.h (EAnimComponent, the
+// RETAIL_ANIMCOMPONENT StatGetType of T) and FABLE_RETAIL_CIVCOUNTEDPOINTER_GET.
+class CAnimComponentMap : public CIVCountedPointeeBase {
+public:
+    CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > Map;     // +0x08
+};
+template<class T> void CAnimationEntry::GetComponent(const T** pp_component) const
+{
+    EAnimComponent typ = T::StatGetType();
+    CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >::const_iterator it;
+    if (Components.IsNull() || (it = Components->Map.Find(typ)) == Components->Map.end())
+        it = RegisteredComponentDefaults.Find(typ);
+    const CAnimComponentBase* panim_comp_base = it->second.Get();
+    *pp_component = static_cast<const T*>(panim_comp_base);
+}
+#endif
 #endif // FABLE_ENGINE_CANIMATIONENTRY_H

@@ -213,7 +213,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00759f80	CTCPhysicsRigidBody	Integrate	976	parked	DIFFER(730v975)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00759f80.cpp	original
 0075aaf0	CTCPhysicsRigidBody	CheckForCollisions	608	parked	DIFFER(607v593)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0075aaf0.cpp	original
 0075ddf0	CTCCameraPointScriptedSpline	UpdateSplines	1152	parked	DIFFER(1092v1146)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/0075ddf0.cpp	original
-007602f0	NShape	IsShapeConvex	1136	reserved (acctB p25J, 2026-11-20)	DIFFER(1125v1126)	4	rebuild/candidates/manual/pending/2026-11-20_p25_open/007602f0/007602f0.cpp	original
+007602f0	NShape	IsShapeConvex	1136	parked	DIFFER(1126v1126)	4	rebuild/candidates/manual/pending/2026-11-20_p25_open/007602f0/007602f0.cpp	original
 00762620	NShape::CShape	StatOnSerialise	1168	parked	DIFFER(1182v1160)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00762620.cpp	original
 00763060	NShape	FractureShape	1152	parked	DIFFER(1132v1146)	1	rebuild/candidates/manual/pending/2026-11-20_p25_open/00763060/00763060.cpp	original
 007634e0	_global	CPatchTesselation_GenerateTriangles	1328	parked	DIFFER(623v627)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/hdr/007634e0.cpp	original
@@ -352,7 +352,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 008575c0	CCombatActionBase	CCombatActionBase::GetNextPos	1040	parked	DIFFER(1025v1032)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/008575c0.cpp	original
 00858e00	`anonymousnamespace'	GetHelperPointNamesFromStrikeEventName	576	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand480/differ/00858e00.cpp	original
 008591e0	CCombatActionBase	PerformPossibleDamageAction	1152	parked	DIFFER(1091v1146)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/008591e0.cpp	original
-00859ef0	CCombatActionBase	OnAnimationLoaded	1344	reserved (acctB p25E, 2026-11-20)	DIFFER(1195v1196)	5	rebuild/candidates/manual/pending/2026-11-20_p25_open/00859ef0/00859ef0.cpp	original
 0085cbd0	CThingMap	DebugDraw	528	parked	DIFFER(522v518)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0085cbd0.cpp	original
 0085ed90	vector<EWeaponClass	_Umove<EWeaponClass*>	96	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0085ed90.test.cpp	original
 008633b0	CThingBodyReorienter	ReorientBodyYZForSlopes	928	parked	DIFFER(874v917)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand307/differ/008633b0.cpp	original

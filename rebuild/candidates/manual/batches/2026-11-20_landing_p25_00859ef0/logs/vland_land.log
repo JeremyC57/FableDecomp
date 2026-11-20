@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00859ef0   WARN RELOC_NAME: ?SetAttacker@CTCFlourishTarget@@QAEXABVCThing@@@Z -> 0085ab00 labelled '_unattributed::AssignTarget_0085ab00'
+00859ef0   WARN RELOC_NAME: ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_IsValidCombatSpline@?A0x28f5a065@@@CThingSearchTools@@QBEXABVCThingFilter_IsValidCombatSpline@?A0x28f5a065@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 0085b0d0 labelled 'GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_>_>'
+00859ef0   RELOCATION_MATCH PASS   OnAnimationLoaded
+
+WINS: 1
+  00859ef0 RELOCATION_MATCH CCombatActionBase::?OnAnimationLoaded@CCombatActionBase@@MAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCombatActionBase_OnAnimationLoaded_00859ef0
