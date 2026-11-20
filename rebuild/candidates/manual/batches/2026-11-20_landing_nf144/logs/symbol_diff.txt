@@ -1,0 +1,58 @@
+006d41f0 new: 0
+00848730 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008c1e80 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008c1f70 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008c7600 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008cb060 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008cb1a0 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008ccd70 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008ed950 new: 4
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008f39a0 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008f41d0 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008f4320 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008f4480 new: 3
+    ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z TABLE:00718a00
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z TABLE:007180b0
+008f47e0 new: 1
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+008f4b00 new: 1
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+00950c30 new: 1
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+00969cb0 new: 1
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ

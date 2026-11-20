@@ -11,6 +11,13 @@
 // animation prelude (`this` kept in edi until the out pointer spill reuses the frame word): the owner argument goes through the intelligent pointer's inline `operator CThing*()` (fetched
 // before the target), the `new` null test selects 0 for the counted pointer.
 // Layout: owner CIntelligentPointer +8, target +0xa8.
+// Naming (NF144, 2026-11-20; q6408): the local empty `struct CModeBase { };` and the local CTCCreatureModeManager replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NV?$CCountedPointer@UCModeBase@@@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
+//   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -25,14 +32,12 @@ struct CBaseIntelligentPointer {
     operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 
-struct CModeBase { };
+#include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
-struct CModeSummonerSummon : CModeBase {
-    unsigned char _pad[0x90];
+struct CModeSummonerSummon : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0x90 - 0x1c];
     CModeSummonerSummon(CThing* owner, CThing* target);         // 0x008CC0B0
-};
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
+    virtual unsigned long GetType() const;
 };
 
 class CCombatActionBase {
@@ -55,5 +60,5 @@ void CCreatureAction_SummonerSummonInto::FinishAction()
     CCombatActionBase::FinishAction();
     CTCCreatureModeManager* modeManager;
     if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager) && PTarget.GetPItem() && !((CThing*)PTarget.GetPItem())->IsDead())
-        modeManager->AddMode(CCountedPointer<CModeBase>(new CModeSummonerSummon(PCreature, ((CThing*)PTarget.GetPItem()))));
+        modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeSummonerSummon(PCreature, ((CThing*)PTarget.GetPItem()))));
 }

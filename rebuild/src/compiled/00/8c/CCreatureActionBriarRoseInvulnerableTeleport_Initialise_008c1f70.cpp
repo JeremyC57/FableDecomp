@@ -23,6 +23,13 @@
 //   ebx) with zeroed CDefPointer locals released by their inline dtors; GetSubDef / CalcAndLookup have same-TU out-only
 //   stand-ins (non-template) so VC7.1 keeps the defs in registers. CSoundInit's default ctor sets PlaybackType in its
 //   body after the list (retail stores OverrideID -1 before PlaybackType 1).
+// Naming (NF144, 2026-11-20; q6408): the local empty `struct CModeBase { };` and the local CTCCreatureModeManager replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NV?$CCountedPointer@UCModeBase@@@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
+//   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -31,7 +38,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"                        // the shared enum (CTCCreatureModeManager.h needs TCI_ENTITY_MODE_MANAGER)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CDefBase {
@@ -146,14 +153,12 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
 };
-struct CModeBase { };
+#include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
-struct CModeBriarRoseTeleportIntangible : CModeBase {
-    unsigned char _pad[0x80];
+struct CModeBriarRoseTeleportIntangible : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0x80 - 0x1c];
     CModeBriarRoseTeleportIntangible(CThing* owner, CThingCreatureBase* enemy);   // 0x008C3700
-};
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);      // 0x0073ACC0
+    virtual unsigned long GetType() const;
 };
 class CCombatActionBase {
 public:
@@ -179,7 +184,7 @@ void CCreatureAction_BriarRoseInvulnerableTeleport::Initialise()
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
     if (((CThing*)PCreature.GetPItem())->GetInterface(&modeManager, 0x31) && PEnemy.GetPItem() && !(PEnemy.GetPItem()->m_flags91 & 1))
-        modeManager->AddMode(CCountedPointer<CModeBase>(new CModeBriarRoseTeleportIntangible(PCreature, PEnemy.GetPItem())));
+        modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeBriarRoseTeleportIntangible(PCreature, PEnemy.GetPItem())));
     CDefPointer<CSpecialEffectsDef> effects;
     long effect = 0;
     if (CDefClassReference(((CThing*)PCreature.GetPItem())->m_pDef)->GetSubDef(&effects) && effects->GetEffectFromString("TELEPORT_POP", effect))

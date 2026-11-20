@@ -16,6 +16,15 @@
 //         disassembly). The mode strings are passed as const char* and converted implicitly (an explicit
 //         CCharString temporary pushes each address right after its ctor instead of after both).
 // Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C. The converting construction from CIntelligentPointer<CThing> is FableWin.pdb ??$?0VCThing@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThing@@@@@Z (FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE).
+// Naming (NF144, 2026-11-20; q6408): the local CModeBase / CCountedModePointer / CTCCreatureModeManager stand-ins replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase) + engine/CCountedPointer.h (CALLED_CTOR); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NUCCountedModePointer@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0CCountedModePointer@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on the shared
+//   CModeBase (the landed 0x0096DBC0 shape). CBrainOutput::PAction is the shared CCountedPointer<CCreatureActionBase> (the local
+//   non-template CCountedPointer stand-in, whose only use was this member's inline destructor, clashed with the header template).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 #include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
@@ -36,26 +45,14 @@ struct CTCOccupiable {                          // interface 0xac
     void SetOccupant(CThing* occupant);         // 0x0087C390
 };
 
-struct SCountBlock;
-struct CModeBase {
-    virtual void v00();
-};
-struct CCountedModePointer {                    // CCountedPointer<CModeBase>
-    CModeBase* m_pObject;
-    SCountBlock* m_pCount;
-    CCountedModePointer(CModeBase* object);     // 0x00718A00
-    CCountedModePointer(const CCountedModePointer& other);
-    ~CCountedModePointer();                     // run by the callee
-};
+#include "engine/CTCCreatureModeManager.h"
 namespace NCreatureMode {
-class CModeSleepBed : public CModeBase { public:              // 0x34 bytes, vtable 0x01275760
-    unsigned char _body[0x30];
+class CModeSleepBed : public CTCCreatureModeManager::CModeBase { public:              // 0x34 bytes, vtable 0x01275760
     CModeSleepBed(CThing* thing, const CCharString& sleepAnimName, const CCharString& group);   // 0x0084B7C0
+    virtual unsigned long GetType() const;
+    unsigned char _body[0x34 - 0x1c];
 };
 }
-class CTCCreatureModeManager { public:                 // interface 0x31
-    bool AddMode(CCountedModePointer mode);     // 0x0073ACC0
-};
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -74,28 +71,10 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
-struct CCountBlock { long Count; void (__fastcall* Destroy)(void* object); void* Object; };
-struct CCountedPointer {
-    void* Object;
-    CCountBlock* Block;
-    void Reset(void* object);                       // 0x00668D90
-    ~CCountedPointer()
-    {
-        if (Block) {
-            --Block->Count;
-            if (Block->Count == 0) {
-                Block->Destroy(Block->Object);
-                delete Block;
-            }
-        }
-        Object = 0;
-        Block = 0;
-    }
-};
 class CBrainOutput { public:                               // 0x48 bytes
     unsigned long Flags;                            // +0x00 (8: perform action)
     unsigned char _pad04[0x20 - 0x04];
-    CCountedPointer PAction;                        // +0x20
+    CCountedPointer<CCreatureActionBase> PAction;   // +0x20 (the shared engine/CCountedPointer.h template; was a local non-template stand-in)
     unsigned char _pad28[0x40 - 0x28];
     CBaseIntelligentPointer PTarget;                // +0x40
     CBrainOutput();                                 // 0x00835620
@@ -137,7 +116,7 @@ void CAIStateGroup_SleepOnFloor::Update()
                 false, true, false, 0, 0)) == 2) {
             CTCCreatureModeManager* modes;
             PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
-            modes->AddMode(CCountedModePointer(new NCreatureMode::CModeSleepBed(GetCreatureThing(),
+            modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new NCreatureMode::CModeSleepBed(GetCreatureThing(),
                 "ST_SLEEP_ON_FLOOR_IDLE", "")));
             Asleep = true;
             while (!IsStopping())

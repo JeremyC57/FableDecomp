@@ -12,6 +12,13 @@
 // Shape: the landed CCreatureAction_BriarRoseIntoInvulnerable::Initialise 0x008C1E80 model (named animation string in its
 //   own block, the owner through the intelligent pointer's inline `operator CThing*()` evaluated before the target's
 //   GetPItem) with the boss-phase lookup in front; the target is the combat action's +0xa8 pointer.
+// Naming (NF144, 2026-11-20; q6408): the local empty `struct CModeBase { };` and the local CTCCreatureModeManager replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NV?$CCountedPointer@UCModeBase@@@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
+//   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -32,17 +39,15 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CModeBase { };
+#include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
-struct CModeIceTrollGroundSmashIcicleAssault : CModeBase {
-    unsigned char _pad[0x9c];
+struct CModeIceTrollGroundSmashIcicleAssault : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0x9c - 0x1c];
     CModeIceTrollGroundSmashIcicleAssault(CThing* thing, CThing* target);   // 0x008C7C00
+    virtual unsigned long GetType() const;
 };
 class CTCBoss { public:                                // interface type 0xAD
     void IncrementBossPhase();                  // 0x007AED20
-};
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
 };
 
 class CCombatActionBase {
@@ -73,5 +78,5 @@ void CCreatureAction_IceTrollIcicleAssaultInto::Initialise()
         boss->IncrementBossPhase();
     CTCCreatureModeManager* modeManager;
     if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager) && PTarget.GetPItem() && !((CThing*)PTarget.GetPItem())->IsDead())
-        modeManager->AddMode(CCountedPointer<CModeBase>(new CModeIceTrollGroundSmashIcicleAssault(PCreature, ((CThing*)PTarget.GetPItem()))));
+        modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeIceTrollGroundSmashIcicleAssault(PCreature, ((CThing*)PTarget.GetPItem()))));
 }

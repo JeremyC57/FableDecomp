@@ -7,6 +7,14 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming (NF144, 2026-11-20; q6408): the local CModeBase / CCountedModePointer / CTCCreatureModeManager stand-ins replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase) + engine/CCountedPointer.h (CALLED_CTOR); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NUCCountedModePointer@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0CCountedModePointer@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on the shared
+//   CModeBase (the landed 0x0096DBC0 shape).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 class CTCBase;
 #include "engine/C3DVector.h"
 #define FABLE_RETAIL_CCHARSTRING
@@ -62,21 +70,12 @@ struct CCountedActionPointer {                        // CCountedPointer<CCreatu
     }
     ~CCountedActionPointer();
 };
-struct CModeBase { virtual void v00(); };
-struct CCountedModePointer {
-    CModeBase* m_pObject;
-    SCountBlock* m_pCount;
-    CCountedModePointer(CModeBase* object);           // 0x00718A00
-    CCountedModePointer(const CCountedModePointer& other);
-    ~CCountedModePointer();
-};
-struct CModeDragonFlying : CModeBase {
-    unsigned char _body[0x90];                        // sizeof = 0x94
+#include "engine/CTCCreatureModeManager.h"
+struct CModeDragonFlying : CTCCreatureModeManager::CModeBase {
     CModeDragonFlying(CThing* creature, const C3DVectorVector& path, const C3DVector& pos, float speed,
                       CCountedActionPointer action);  // 0x008E1150
-};
-class CTCCreatureModeManager { public:                       // interface 0x31
-    bool AddMode(CCountedModePointer mode);           // 0x0073ACC0
+    virtual unsigned long GetType() const;
+    unsigned char _body[0x94 - 0x1c];                  // sizeof = 0x94
 };
 
 class CBaseObject;
@@ -134,6 +133,6 @@ void CCreatureAction_DragonFlyInto::Initialise()
     if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modes)) {
         if (!UsePreviousPoint)
             PreviousPoint = MovementPoints[0];
-        modes->AddMode(CCountedModePointer(new CModeDragonFlying(GetCreature(), MovementPoints, PreviousPoint, Speed, PEndAction)));
+        modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeDragonFlying(GetCreature(), MovementPoints, PreviousPoint, Speed, PEndAction)));
     }
 }

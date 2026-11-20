@@ -13,6 +13,14 @@
 // argument area (inline copy constructor, `inc [count]` when set) and the parameter's own copy is released at
 // the end (count block {refs, __fastcall destroy, object}).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Naming (NF144, 2026-11-20; q6408): the local CModeBase / CCountedModePointer / CTCCreatureModeManager stand-ins replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase) + engine/CCountedPointer.h (CALLED_CTOR); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NUCCountedModePointer@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0CCountedModePointer@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on the shared
+//   CModeBase (the landed 0x0096DBC0 shape).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 class CTCBase;
 class CThing;
 class CWorld;
@@ -154,27 +162,16 @@ struct CCountedActionPointer {                  // CCountedPointer<CCreatureActi
     }
 };
 
-struct CModeBase {
-    virtual void v00();
-};
 
-struct CCountedModePointer {                    // CCountedPointer<CTCCreatureModeManager::CModeBase>
-    CModeBase* m_pObject;
-    SCountBlock* m_pCount;
-    CCountedModePointer(CModeBase* object);     // 0x00718A00
-    CCountedModePointer(const CCountedModePointer& other);   // user copy: the argument is built in its stack slot
-    ~CCountedModePointer();                     // run by the callee
-};
 
-struct CModeDragonFlying : CModeBase {
-    unsigned char _body[0x90];                  // sizeof = 0x94
+#include "engine/CTCCreatureModeManager.h"
+struct CModeDragonFlying : CTCCreatureModeManager::CModeBase {
     CModeDragonFlying(CThingCreatureBase* target, const CC3DVectorVector& path, const C3DVector& pos, float speed,
                       CCountedActionPointer action);   // 0x008E1150
+    virtual unsigned long GetType() const;
+    unsigned char _body[0x94 - 0x1c];                  // sizeof = 0x94
 };
 
-class CTCCreatureModeManager { public:                 // interface 0x31
-    bool AddMode(CCountedModePointer mode);     // 0x0073ACC0
-};
 
 struct CAIStateGroup_JackDragon : CAIStateGroupBase {
     long AIAction_DoNothing();                  // 0x0097E200
@@ -187,7 +184,7 @@ void CAIStateGroup_JackDragon::StartFlying(CThingCreatureBase* target, const CC3
 {
     CTCCreatureModeManager* modes;
     if (PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes)) {
-        modes->AddMode(CCountedModePointer(new CModeDragonFlying(target, path, pos, 10.0f, action)));
+        modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeDragonFlying(target, path, pos, 10.0f, action)));
         AIAction_DoNothing();
     }
 }

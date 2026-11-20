@@ -12,6 +12,13 @@
 // `operator CThing*()`, so both GetPItem calls run (right to left: target, owner) before any argument is pushed; the manager
 // out-parameter is then spilled to the frame across the new (plain `.GetPItem()` arguments interleave with the pushes).
 // Layout: Timer at retail +0x114 (PDB +0x12c); the combat target pointer at +0xa8.
+// Naming (NF144, 2026-11-20; q6408): the local empty `struct CModeBase { };` and the local CTCCreatureModeManager replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NV?$CCountedPointer@UCModeBase@@@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
+//   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -32,14 +39,12 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CModeBase { };
+#include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
-struct CModeDragonFireBeam : CModeBase {
-    unsigned char _pad[0x94];
+struct CModeDragonFireBeam : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0x94 - 0x1c];
     CModeDragonFireBeam(CThing* owner, CThing* target, float timer);   // 0x008D86E0
-};
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
+    virtual unsigned long GetType() const;
 };
 
 class CCombatActionBase {
@@ -68,5 +73,5 @@ void CCreatureAction_DragonFireBeamInto::Initialise()
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
     if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
-        modeManager->AddMode(CCountedPointer<CModeBase>(new CModeDragonFireBeam(PCreature, PTarget, Timer)));
+        modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeDragonFireBeam(PCreature, PTarget, Timer)));
 }

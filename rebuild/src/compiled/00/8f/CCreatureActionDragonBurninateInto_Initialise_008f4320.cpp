@@ -16,6 +16,13 @@
 // (tested here, as in 0x008C1E80).
 // Layout: retail PreviousPoint +0x114, MovementPoints (std::vector<C3DVector>, 12 bytes) +0x120, BurnStart +0x12c, BurnStop
 // +0x130, FlameStartPos +0x134, FlameEndPos +0x140 (PDB +0x12c.. with a 16-byte vector).
+// Naming (NF144, 2026-11-20; q6408): the local empty `struct CModeBase { };` and the local CTCCreatureModeManager replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NV?$CCountedPointer@UCModeBase@@@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
+//   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -43,15 +50,13 @@ struct CVectorC3DVector {                       // std::vector<C3DVector> (retai
     C3DVector* _End;
 };
 
-struct CModeBase { };
+#include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
-struct CModeDragonStrafeBurninate : CModeBase {
-    unsigned char _pad[0xc8];
+struct CModeDragonStrafeBurninate : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0xc8 - 0x1c];
     CModeDragonStrafeBurninate(CThing* owner, const CVectorC3DVector& points, const C3DVector& previous, float burnStart, float burnStop,
                                const C3DVector& flameStart, const C3DVector& flameEnd);   // 0x008E1580
-};
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
+    virtual unsigned long GetType() const;
 };
 
 class CCombatActionBase {
@@ -83,6 +88,6 @@ void CCreatureAction_DragonBurninateInto::Initialise()
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
     if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
-        modeManager->AddMode(CCountedPointer<CModeBase>(new CModeDragonStrafeBurninate(PCreature, MovementPoints, PreviousPoint,
+        modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeDragonStrafeBurninate(PCreature, MovementPoints, PreviousPoint,
                                                                                        BurnStart, BurnStop, FlameStartPos, FlameEndPos)));
 }

@@ -15,6 +15,13 @@
 //   variable's uninitialised slot), the carryable def a CDefPointer local (DecRefToZero release, null test folded), the
 //   new mode built through the owner pointer's inline `operator CThing*()`; the GetSubDef and LowerBound same-TU stand-ins
 //   carry retail's LTCG knowledge (def held in ebx, key and def share one frame word).
+// Naming (NF144, 2026-11-20; q6408): the local empty `struct CModeBase { };` and the local CTCCreatureModeManager replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NV?$CCountedPointer@UCModeBase@@@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
+//   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 #include "fable_compiler.h"
 class CThing;
 class CThingObject;
@@ -30,7 +37,7 @@ class CTCBase;
 #include "engine/CDefPointer.h"
 #include "engine/CCarryableDef.h"
 #include "engine/CDefClassBase_GetSubDef.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"                        // the shared enum (CTCCreatureModeManager.h needs TCI_ENTITY_MODE_MANAGER)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
@@ -68,14 +75,12 @@ struct CBaseIntelligentPointer {
 class CTCCarrying { public:
     void PutThingInCarrySlot(CThingObject* thing, long slot, bool immediately);   // 0x006A1F80
 };
-struct CModeBase { };
+#include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
-struct CModeCarryingGoodsStand : CModeBase {
-    unsigned char _pad[0x74];
+struct CModeCarryingGoodsStand : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0x74 - 0x1c];
     CModeCarryingGoodsStand(CThing* owner);           // 0x0073FCE0
-};
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);    // 0x0073ACC0
+    virtual unsigned long GetType() const;
 };
 class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual void v00();
@@ -99,6 +104,6 @@ void CCreatureAction_PickUpGoods::PerformAction()
         carrying->PutThingInCarrySlot((CThingObject*)goods, carryDef->ActiveCarrySlot, true);
         CTCCreatureModeManager* modes;
         ((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31);
-        modes->AddMode(CCountedPointer<CModeBase>(new CModeCarryingGoodsStand(PCreature)));
+        modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeCarryingGoodsStand(PCreature)));
     }
 }

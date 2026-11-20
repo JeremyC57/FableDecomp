@@ -14,6 +14,13 @@
 // Layout: Timer / Speed at retail +0x114 / +0x118 (PDB +0x12c / +0x130).
 // GetInterface: the inline out-parameter lookup picks the entry with the end/hit ternary (`*out = (it == last || k <
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
+// Naming (NF144, 2026-11-20; q6408): the local empty `struct CModeBase { };` and the local CTCCreatureModeManager replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NV?$CCountedPointer@UCModeBase@@@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
+//   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -34,14 +41,12 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CModeBase { };
+#include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
-struct CModeDragonStrafe : CModeBase {
-    unsigned char _pad[0x58];
+struct CModeDragonStrafe : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0x58 - 0x1c];
     CModeDragonStrafe(CThing* owner, float timer, float speed, float rampUp, float rampDown);   // 0x008DDFB0
-};
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
+    virtual unsigned long GetType() const;
 };
 
 class CCombatActionBase {
@@ -73,6 +78,6 @@ void CCreatureAction_DragonStrafeInto::Initialise()
     if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager)) {
         float rampUp = Timer * 0.125f;
         float rampDown = Timer * 0.75f;
-        modeManager->AddMode(CCountedPointer<CModeBase>(new CModeDragonStrafe(PCreature, Timer, Speed, rampUp, rampDown)));
+        modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeDragonStrafe(PCreature, Timer, Speed, rampUp, rampDown)));
     }
 }

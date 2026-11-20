@@ -10,7 +10,16 @@
 // Layout: retail CCombatActionBase model (PCreature +0x08); CModeDazed +0x6c a started flag.
 // Shape: the by-value counted pointer is built in the argument area by the inline CCountedPointer(T*) ctor of the
 //          landed 0x00718A00 (a user copy ctor makes the argument build in place); its null test folds away because the new mode was already dereferenced (`[eax+6Ch]`).
-void __fastcall Destroy_007180b0(void* object);   // 0x007180B0
+// Naming (NF144, 2026-11-20; q6408): the local empty `struct CModeBase { };` and the local CTCCreatureModeManager replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NV?$CCountedPointer@UCModeBase@@@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
+//   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation. The local CCountedPointer<T> /
+//   SCountBlock models are replaced by the shared engine/CCountedPointer.h (its default inline (T*) ctor: `new CCPPointerInfo(1, DeleteData,
+//   Data)`), so the count block's deleter 0x007180B0 binds its self spelling ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z
+//   (FableWin.pdb; was the free stand-in ?Destroy_007180b0@@YIXPAX@Z).
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -24,38 +33,13 @@ class CBaseObjectPointer;
 #include "engine/CIntelligentPointer.h"
 
 
-struct SCountBlock {
-    long m_references;                          // +0
-    void (__fastcall* m_pfnDestroy)(void*);     // +4
-    void* m_pObject;                            // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_007180b0), m_pObject(object) { }
-};
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;                     // +0
-    SCountBlock* m_pCount;                      // +4
-    CCountedPointer(T* object) : m_pObject(object)
-    {
-        if (object)
-            m_pCount = new SCountBlock(m_pObject);
-        else
-            m_pCount = 0;
-    }
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount)
-            ++m_pCount->m_references;
-    }
-};
-
-struct CModeBase { };
-struct CModeDazed : CModeBase {
-    unsigned char _pad[0x6c];
+#include "engine/CTCCreatureModeManager.h"
+struct CModeDazed : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0x6c - 0x1c];
     bool          Started;                      // +0x6c
     unsigned char _pad6d[0x84 - 0x6d];
     CModeDazed(CThing* creature);               // 0x00740160
-};
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
+    virtual unsigned long GetType() const;
 };
 
 class CCombatActionBase {
@@ -76,6 +60,6 @@ void CCombatAction_FallStunned::Initialise()
     PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
     CModeDazed* mode = new CModeDazed(PCreature.Get());
     mode->Started = false;
-    modeManager->AddMode(CCountedPointer<CModeBase>(mode));
+    modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(mode));
     CCombatActionBase::Initialise();
 }

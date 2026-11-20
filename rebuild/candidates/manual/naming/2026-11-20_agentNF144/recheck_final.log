@@ -1,0 +1,114 @@
+addr       parity           behav  name
+006d41f0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+006d41f0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+006d41f0   WARN RELOC_NAME: ?ReadAsString@Parser@N006d41f0@@QAE?AUCCharString@2@XZ -> 009ba790 labelled 'CStringParser::ReadAsSymbol'
+006d41f0   WARN RELOC_NAME: ?Equal@CBasicString@N006d41f0@@QBE_NPBD@Z -> 004115a0 labelled 'CBasicString<char>::operator=='
+006d41f0   RELOCATION_MATCH PASS   Traits::TransferIn
+00848730   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00848730   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+00848730   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00848730   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00848730   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PickUpGoods (engine/CCreatureAction_PickUpGoods.h)
+00848730   RELOCATION_MATCH PASS   CCreatureAction_PickUpGoods::PerformAction
+008c1e80   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008c1e80   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c1e80   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BriarRoseIntoInvulnerable (engine/CCreatureAction_BriarRoseIntoInvulnerable.h)
+008c1e80   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseIntoInvulnerable::Initialise
+008c1f70   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008c1f70   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef (engine/CSpecialEffectsDef.h)
+008c1f70   WARN SHARED_HEADER_AVAILABLE CSoundMap (engine/CSoundMap.h)
+008c1f70   WARN SHARED_HEADER_AVAILABLE CEntitySoundDef (engine/CEntitySoundDef.h)
+008c1f70   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008c1f70   WARN SHARED_HEADER_AVAILABLE CSoundInit (engine/CSoundInit.h)
+008c1f70   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+008c1f70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008c1f70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008c1f70   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+008c1f70   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c1f70   WARN RELOC_NAME: ?PlaySound@CTCSoundPlayer@@QAEKJABVCSoundInit@@JJ@Z -> 0066ace0 labelled 'CTCSoundPlayer::PlayUnattachedSample'
+008c1f70   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseInvulnerableTeleport::Initialise
+008c7600   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008c7600   WARN SHARED_HEADER_AVAILABLE CTCBoss (engine/CTCBoss.h)
+008c7600   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c7600   WARN SHARED_HEADER_AVAILABLE CCreatureAction_IceTrollIcicleAssaultInto (engine/CCreatureAction_IceTrollIcicleAssaultInto.h)
+008c7600   RELOCATION_MATCH PASS   CCreatureAction_IceTrollIcicleAssaultInto::Initialise
+008cb060   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cb060   RELOCATION_MATCH PASS   CCreatureAction_SummonerSummonInto::FinishAction
+008cb1a0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cb1a0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SummonerLightningOrbInto (engine/CCreatureAction_SummonerLightningOrbInto.h)
+008cb1a0   RELOCATION_MATCH PASS   CCreatureAction_SummonerLightningOrbInto::PerformAction
+008ccd70   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BalverineDropInFromSky (engine/CCreatureAction_BalverineDropInFromSky.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BalverineLungeAttack (engine/CCreatureAction_BalverineLungeAttack.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BalverineCorneredJumpIntoSky (engine/CCreatureAction_BalverineCorneredJumpIntoSky.h)
+008ccd70   WARN RELOC_NAME: ??0CCreatureAction_BalverineLungeAttack@N_008ccc10@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 008ccc10 labelled 'CCreatureAction_BalverineDropInFromSky::CCreatureAction_BalverineDropInFromSky'
+008ccd70   RELOCATION_MATCH PASS   CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction
+008ed950   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ed950   WARN RELOC_NAME: ??0CModeDazed@@QAE@PAVCThing@@@Z -> 00740160 labelled 'NCreatureMode::CModeStunned::CModeStunned'
+008ed950   RELOCATION_MATCH PASS   CCombatAction_FallStunned::Initialise
+008f39a0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008f39a0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008f39a0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonRearUpInto (engine/CCreatureAction_DragonRearUpInto.h)
+008f39a0   RELOCATION_MATCH PASS   CCreatureAction_DragonRearUpInto::Initialise
+008f41d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008f41d0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008f41d0   RELOCATION_MATCH PASS   CCreatureAction_DragonFireBeamInto::Initialise
+008f4320   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008f4320   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008f4320   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonBurninateInto (engine/CCreatureAction_DragonBurninateInto.h)
+008f4320   RELOCATION_MATCH PASS   CCreatureAction_DragonBurninateInto::Initialise
+008f4480   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008f4480   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008f4480   RELOCATION_MATCH PASS   CCreatureAction_DragonStrafeInto::Initialise
+008f47e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008f47e0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+008f47e0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008f47e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008f47e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008f47e0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008f47e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonTakeOffIntoFlying (engine/CCreatureAction_DragonTakeOffIntoFlying.h)
+008f47e0   RELOCATION_MATCH PASS   CCreatureAction_DragonTakeOffIntoFlying::FinishAction
+008f4b00   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+008f4b00   WARN SHARED_HEADER_AVAILABLE CAnimSet (engine/CAnimSet.h)
+008f4b00   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008f4b00   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008f4b00   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008f4b00   RELOCATION_MATCH PASS   CCreatureAction_DragonFlyInto::Initialise
+00950c30   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00950c30   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00950c30   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00950c30   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00950c30   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00950c30   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackDragon (engine/CAIStateGroup_JackDragon.h)
+00950c30   RELOCATION_MATCH PASS   CAIStateGroup_JackDragon::StartFlying
+00969cb0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00969cb0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00969cb0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayAnimation (engine/CCreatureAction_PlayAnimation.h)
+00969cb0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00969cb0   RELOCATION_MATCH PASS   CAIStateGroup_SleepOnFloor::Update
+
+WINS: 17
+  006d41f0 RELOCATION_MATCH CPersistTraits<CSimVoice>::TransferIn
+  00848730 RELOCATION_MATCH CCreatureAction_PickUpGoods::?PerformAction@CCreatureAction_PickUpGoods@@QAEXXZ
+  008c1e80 RELOCATION_MATCH CCreatureAction_BriarRoseIntoInvulnerable::?Initialise@CCreatureAction_BriarRoseIntoInvulnerable@@UAEXXZ
+  008c1f70 RELOCATION_MATCH CCreatureAction_BriarRoseInvulnerableTeleport::?Initialise@CCreatureAction_BriarRoseInvulnerableTeleport@@UAEXXZ
+  008c7600 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAssaultInto::?Initialise@CCreatureAction_IceTrollIcicleAssaultInto@@UAEXXZ
+  008cb060 RELOCATION_MATCH CCreatureAction_SummonerSummonInto::?FinishAction@CCreatureAction_SummonerSummonInto@@UAEXXZ
+  008cb1a0 RELOCATION_MATCH CCreatureAction_SummonerLightningOrbInto::?PerformAction@CCreatureAction_SummonerLightningOrbInto@@UAEXXZ
+  008ccd70 RELOCATION_MATCH CCreatureAction_BalverineCorneredJumpIntoSky::?FinishAction@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
+  008ed950 RELOCATION_MATCH CCombatAction_FallStunned::Initialise
+  008f39a0 RELOCATION_MATCH CCreatureAction_DragonRearUpInto::?Initialise@CCreatureAction_DragonRearUpInto@@UAEXXZ
+  008f41d0 RELOCATION_MATCH CCreatureAction_DragonFireBeamInto::?Initialise@CCreatureAction_DragonFireBeamInto@@UAEXXZ
+  008f4320 RELOCATION_MATCH CCreatureAction_DragonBurninateInto::?Initialise@CCreatureAction_DragonBurninateInto@@UAEXXZ
+  008f4480 RELOCATION_MATCH CCreatureAction_DragonStrafeInto::?Initialise@CCreatureAction_DragonStrafeInto@@UAEXXZ
+  008f47e0 RELOCATION_MATCH CCreatureAction_DragonTakeOffIntoFlying::?FinishAction@CCreatureAction_DragonTakeOffIntoFlying
+  008f4b00 RELOCATION_MATCH CCreatureAction_DragonFlyInto::?Initialise@CCreatureAction_DragonFlyInto@@UAEXXZ
+  00950c30 RELOCATION_MATCH CAIStateGroup_JackDragon::?StartFlying@CAIStateGroup_JackDragon@@QAEXPAVCThingCreatureBase@@ABUCC3DVectorVector@@ABVC3DVector@@UCCountedActionPointer@@@Z
+  00969cb0 RELOCATION_MATCH CAIStateGroup_SleepOnFloor::Update

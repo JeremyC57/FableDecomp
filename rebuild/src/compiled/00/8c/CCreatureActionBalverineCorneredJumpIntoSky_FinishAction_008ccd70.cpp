@@ -27,6 +27,13 @@
 //   action takes PCreature through an inline `operator CThingCreatureBase*()` -- the creature is fetched BEFORE the
 //   target's GetPItem, which also gives retail's register map (direct GetPItem arguments put the mode manager in ebp).
 // Naming wave 17: CTCGraphicAppearance is NGraphicAppearance::CTCGraphicAppearance (Ego_r ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z; a class) -- the local model moved into the namespace (name-only).
+// Naming (NF144, 2026-11-20; q6408): the local empty `struct CModeBase { };` and the local CTCCreatureModeManager replaced by the shared
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NV?$CCountedPointer@UCModeBase@@@@@Z) and
+//   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
+//   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
+//   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 #include "fable_compiler.h"
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 using NGraphicAppearance::CTCGraphicAppearance;
@@ -37,7 +44,7 @@ class CRightHandedSet { public:
     C3DVector Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) { }
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"                        // the shared enum (CTCCreatureModeManager.h needs TCI_ENTITY_MODE_MANAGER)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #define VF(n) virtual void v##n();
@@ -146,15 +153,13 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CModeBase { };
+#include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
 class CCreatureActionBase;
-struct CModeIntangible : CModeBase {
-    unsigned char _pad[0x44];
+struct CModeIntangible : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0x44 - 0x1c];
     CModeIntangible(CThing* thing, float time, CCreatureActionBase* nextAction);   // 0x008E72D0
-};
-class CTCCreatureModeManager { public:                         // interface 0x31
-    bool AddMode(CCountedPointer<CModeBase> mode);      // 0x0073ACC0
+    virtual unsigned long GetType() const;
 };
 struct CTCAttachedParticles {                           // interface 0x82
     void DetachParticles();                             // 0x007F8860
@@ -213,7 +218,7 @@ void CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction()
                 next = new CCreatureAction_BalverineLungeAttack(PCreature, ((CThing*)PTarget.GetPItem()));
             else
                 next = new CCreatureAction_BalverineDropInFromSky(PCreature.GetPItem());
-            modeManager->AddMode(CCountedPointer<CModeBase>(new CModeIntangible(PCreature.GetPItem(), time, next)));
+            modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeIntangible(PCreature.GetPItem(), time, next)));
         }
         CTCAttachedParticles* particles;
         if (PCreature.GetPItem()->GetInterface(&particles, 0x82))
