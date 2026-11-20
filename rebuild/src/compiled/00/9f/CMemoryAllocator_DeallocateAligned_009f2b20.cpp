@@ -7,9 +7,12 @@
 // Globals: the allocator @ 0x013CAA90, the destroy-when-empty flag (byte) @ 0x013CAA94.
 // Shape: the inline Deallocate(block) of the landed out-of-line twin GFFreeFromGlobalAllocator 0x009A4350 with every helper
 //   inlined (`__forceinline` Deallocate/Destroy, Enter/LeaveSynchronisation, GetNoAllocations = NoAllocations +0x40c); Destroy() is
-//   `delete Allocator; Allocator = 0;` through the inline `__fastcall` class operator delete (VirtualFree): with the count test
+//   `delete PMemoryAllocator; PMemoryAllocator = 0;` through the inline `__fastcall` class operator delete (VirtualFree): with the count test
 //   inlined on the same register VC7.1 drops the delete-expression's null test (ecx copied to esi for VirtualFree). An explicit
 //   `a->~CMemoryAllocator(); VirtualFree(a, ..)` through a local loads the global straight into esi instead.
+// Naming (NF161, 2026-11-20, q4196): the static at 0x013CAA90 respelled in place in the row's existing local model to the PDB name
+//   ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A (protected static; Ego_r.pdb / FableWin.pdb / Ego_d.pdb data symbol, engine/CMemoryAllocator.h),
+//   was ?Allocator@CMemoryAllocator@@1PAV1@A (no such member in any PDB).
 #include "fable_compiler.h"
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void* section);   // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void* section);   // IAT 0x0143FE10
@@ -28,23 +31,23 @@ protected:
     ~CMemoryAllocator();                              // 0x009F2310
     void InternalDeallocate(void* block);             // 0x009F2920
     static void __fastcall operator delete(void* p) { VirtualFree(p, 0, 0x8000); }   // MEM_RELEASE
-    static CMemoryAllocator* Allocator;               // 0x013CAA90
+    static CMemoryAllocator* PMemoryAllocator;               // 0x013CAA90
     static bool DestroyWhenEmpty;                     // 0x013CAA94
     static void EnterSynchronisation() { EnterCriticalSection(g_allocatorLock); }
     static void LeaveSynchronisation() { LeaveCriticalSection(g_allocatorLock); }
     unsigned long GetNoAllocations() { return NoAllocations; }
     static FABLE_FORCEINLINE void Destroy()
     {
-        delete Allocator;
-        Allocator = 0;
+        delete PMemoryAllocator;
+        PMemoryAllocator = 0;
     }
 public:
     static FABLE_FORCEINLINE void Deallocate(void* block)
     {
         EnterSynchronisation();
-        if (block && Allocator) {
-            Allocator->InternalDeallocate(block);
-            if (DestroyWhenEmpty && Allocator->GetNoAllocations() == 0)
+        if (block && PMemoryAllocator) {
+            PMemoryAllocator->InternalDeallocate(block);
+            if (DestroyWhenEmpty && PMemoryAllocator->GetNoAllocations() == 0)
                 Destroy();
         }
         LeaveSynchronisation();

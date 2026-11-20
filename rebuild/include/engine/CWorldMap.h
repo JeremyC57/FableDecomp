@@ -173,6 +173,11 @@ protected:
 public:
 #endif
 #endif // FABLE_RETAIL_CWORLDMAP_MOVEPLAYERPOS
+#ifdef FABLE_RETAIL_CWORLDMAP_PREPAREFORLOAD
+    // NF161 opt-in (q4647, row 0x004FF560): Ego_r.pdb / FableWin.pdb ?PrepareForLoad@CWorldMap@@QAEXXZ (public; landed callers 0x004A0220 /
+    // 0x004A2E90 bind it), retail `UnloadRegion(LoadedRegion, false)` (the protected 0x004FEEC0 below, LoadedRegion +0x9c). Declaration only.
+    void PrepareForLoad();                                               // 0x004FF560
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_SAVEGAMESTATE
     // Opt-in (chunk 2052, row 0x0049F4C0): Ego_r.pdb ?SaveGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z, out of line at 0x004FDE80.
     void SaveGameState(CPersistContext& context);                       // 0x004FDE80

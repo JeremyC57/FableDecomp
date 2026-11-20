@@ -179,6 +179,14 @@ public:
     unsigned char   DebugBoxColour2[0x4];                    // +0x131c CRGBColour
     unsigned char   DebugBoxColour3[0x4];                    // +0x1320 CRGBColour
     unsigned char   DebugBoxColour4[0x4];                    // +0x1324 CRGBColour
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_OVERRIDEWEATHER
+    // NF161 opt-in (q4599 / q4600, rows 0x00B50EE0 / 0x00B50F40): Ego_r.pdb / FableWin.pdb ?OverrideRain@CEngineWeatherRenderer@@QAEXM@Z and
+    // ?OverrideSnow@CEngineWeatherRenderer@@QAEXM@Z (public; tail-jumped by CEngine::OverrideRain 0x00B24010 / OverrideSnow 0x00B24020 on
+    // the weather renderer 0x01436E44). They clamp to MaximumWeatherParticlePercentage (+0x12f8) and set OverridenRain/SnowStrength (+0x12e8 /
+    // +0x12f0) and RainOverriden / SnowOverriden (+0x12ec / +0x12f4), the members above at their retail offsets. Declarations only.
+    void OverrideRain(float strength);                       // 0x00B50EE0
+    void OverrideSnow(float strength);                       // 0x00B50F40
+#endif
 };
 #pragma pack(pop)
 

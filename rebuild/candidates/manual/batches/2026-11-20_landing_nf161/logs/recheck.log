@@ -1,0 +1,84 @@
+addr       parity           behav  name
+00415e85   WARN RELOC_NAME: ?SaveStackMemoryTrackerLog@CMemoryAllocator@@QAEXPBD@Z -> 009f2080 labelled '_global::Nop_ret4_009f2080'
+00415e85   RELOCATION_MATCH PASS   _global::GFLogMemoryUse
+00416047   WARN RELOC_NAME: ?NewFrame@CMemoryAllocator@@QAEXXZ -> 009f26d0 labelled 'CMemoryAllocator::ClearPerformanceStats'
+00416047   WARN STANDIN_LEAF ?AddToInterface@T@@QAEXXZ (catalog CEditInputProcessCopyPaste::AddToInterface; generic placeholder)
+00416047   RELOCATION_MATCH PASS   CEditInputProcessCopyPaste::AddToInterface
+004189c2   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CRoughFrameCounter (engine/CRoughFrameCounter.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004189c2   WARN RELOC_NAME: ?Start@CNetworkClient@@QAEXXZ -> 004ae9c0 labelled '_global::Nop_ret0_004ae9c0'
+004189c2   WARN RELOC_NAME: ?BeginOutputSaving@CMainGameComponent@@QAEXABVCWideString@@@Z -> 0041627f labelled 'CMainGameComponent::BeginInputLoading'
+004189c2   WARN RELOC_NAME: ?GFFrameHook@@YIXXZ -> 0098e1b0 labelled '_global::Nop_ret0_0098e1b0'
+004189c2   WARN RELOC_NAME: ?Update@CSystemObjectF8@@QAEXXZ -> 009f8c10 labelled '_global::Nop_ret0_009f8c10'
+004189c2   WARN RELOC_NAME: ?RecordFrameTime@CMainGameComponent@@QAEXN@Z -> 00416202 labelled 'CEngineSubPrimitiveBase::operator_new'
+004189c2   WARN RELOC_NAME: ?Tick@CSingleton44C6B0@@QAEXJ@Z -> 009ac9e0 labelled '_global::Nop_ret4_009ac9e0'
+004189c2   RELOCATION_MATCH PASS   CMainGameComponent::Run
+004ff560   RELOCATION_MATCH PASS   CWorldMap::PrepareForLoad
+009f2870   WARN SHARED_HEADER_AVAILABLE CMemoryAllocator (engine/CMemoryAllocator.h)
+009f2870   RELOCATION_MATCH PASS   CMemoryAllocator::Create
+009f2b20   WARN SHARED_HEADER_AVAILABLE CMemoryAllocator (engine/CMemoryAllocator.h)
+009f2b20   RELOCATION_MATCH PASS   CMemoryAllocator::DeallocateAligned
+009f2be0   WARN SHARED_HEADER_AVAILABLE CMemoryAllocator (engine/CMemoryAllocator.h)
+009f2be0   RELOCATION_MATCH PASS   CMemoryAllocator::AllocateAligned
+00a5d720   WARN RELOC_NAME: ?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@K@Z -> 00a5d620 labelled 'CPixelShader::~CPixelShader'
+00a5d720   RELOCATION_MATCH PASS   CShaderResource::GetPixelShader
+00a65330   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorVariableSize (engine/CMemoryAllocatorVariableSize.h)
+00a65330   WARN RELOC_NAME: ?InternalValidateArea@CMemoryAllocator@@QAEXPAX@Z -> 009f1f40 labelled '_global::Nop_ret4_009f1f40'
+00a65330   RELOCATION_MATCH PASS   CMemoryAllocatorVariableSize::Validate
+00a66260   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorFixedSize (engine/CMemoryAllocatorFixedSize.h)
+00a66260   WARN RELOC_NAME: ?InternalValidateArea@CMemoryAllocator@@QAEXPAX@Z -> 009f1f40 labelled '_global::Nop_ret4_009f1f40'
+00a66260   RELOCATION_MATCH PASS   CMemoryAllocatorFixedSize::Validate
+00a663d0   WARN RELOC_NAME: ?OnFailedAllocation@CMemoryAllocator@@QAEXXZ -> 009f1f00 labelled '_global::Nop_ret0_009f1f00'
+00a663d0   RELOCATION_MATCH PASS   CMemoryAllocatorFixedSize::NewChunk
+00a67f60   WARN SHARED_HEADER_AVAILABLE CVolumeTexture (engine/CVolumeTexture.h)
+00a67f60   RELOCATION_MATCH PASS   CVolumeTexture::ReleaseTexture
+00a682e0   WARN SHARED_HEADER_AVAILABLE CVolumeTexture (engine/CVolumeTexture.h)
+00a682e0   RELOCATION_MATCH PASS   CVolumeTexture::InitialiseFromPreallocatedVolumeTexture
+00a68370   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00a68370   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00a68370   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+00a68370   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00a68370   WARN SHARED_HEADER_AVAILABLE C3DExtentsI (engine/C3DExtentsI.h)
+00a68370   WARN SHARED_HEADER_AVAILABLE CVolumeTexture (engine/CVolumeTexture.h)
+00a68370   WARN RELOC_ALIAS: _D3DXCreateVolumeTexture@36 -> 00bfeff2 is the import thunk 'D3DX9_25.DLL::D3DXCreateVolumeTexture'
+00a68370   RELOCATION_MATCH PASS   CVolumeTexture::Initialise
+00a77480   RELOCATION_MATCH PASS   CNavQuadTree::JoinNavigationLayers
+00a77500   RELOCATION_MATCH PASS   CNavQuadTree::VerifyTransitionPoints
+00b50ee0   RELOCATION_MATCH PASS   CEngineWeatherRenderer::OverrideRain
+00b50f40   RELOCATION_MATCH PASS   CEngineWeatherRenderer::OverrideSnow
+00b7ad20   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+00b7ad20   WARN SHARED_HEADER_AVAILABLE CRenderTarget (engine/CRenderTarget.h)
+00b7ad20   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00b7ad20   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b7ad20   RELOCATION_MATCH PASS   CEngineWaterRenderer::SetRenderTargetToSurface
+
+WINS: 19
+  00415e85 RELOCATION_MATCH _global::?GFLogMemoryUse@@YIXXZ
+  00416047 RELOCATION_MATCH CEditInputProcessCopyPaste::AddToInterface
+  004189c2 RELOCATION_MATCH CMainGameComponent::Run
+  004ff560 RELOCATION_MATCH CWorldMap::?PrepareForLoad@CWorldMap@@QAEXXZ
+  009f2870 RELOCATION_MATCH CMemoryAllocator::?Create@CMemoryAllocator@@KIXXZ
+  009f2b20 RELOCATION_MATCH CMemoryAllocator::?DeallocateAligned@CMemoryAllocator@@SIXPAX@Z
+  009f2be0 RELOCATION_MATCH CMemoryAllocator::?AllocateAligned@CMemoryAllocator@@SIPAXKJ@Z
+  00a5d720 RELOCATION_MATCH CShaderResource::?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@ABVCCharString@@@Z
+  00a65330 RELOCATION_MATCH CMemoryAllocatorVariableSize::Validate
+  00a66260 RELOCATION_MATCH CMemoryAllocatorFixedSize::Validate
+  00a663d0 RELOCATION_MATCH CMemoryAllocatorFixedSize::NewChunk
+  00a67f60 RELOCATION_MATCH CVolumeTexture::?ReleaseTexture@CVolumeTexture@@
+  00a682e0 RELOCATION_MATCH CVolumeTexture::?InitialiseFromPreallocatedVolumeTexture@CVolumeTexture@@QAE_NPAUIDirect3DVolumeTexture9@@@Z
+  00a68370 RELOCATION_MATCH CVolumeTexture::?Initialise@CVolumeTexture@@QAE_NABVC3DExtentsI@@JABVCPixelFormat@@KW4EVolumePool@@_N@Z
+  00a77480 RELOCATION_MATCH CNavQuadTree::?JoinNavigationLayers@CNavQuadTree@@AAEXXZ
+  00a77500 RELOCATION_MATCH CNavQuadTree::?VerifyTransitionPoints@CNavQuadTree@@ABEXXZ
+  00b50ee0 RELOCATION_MATCH CEngineWeatherRenderer::?OverrideRain@CEngineWeatherRenderer@@QAEXM@Z
+  00b50f40 RELOCATION_MATCH CEngineWeatherRenderer::?OverrideSnow@CEngineWeatherRenderer@@QAEXM@Z
+  00b7ad20 RELOCATION_MATCH CEngineWaterRenderer::?SetRenderTargetToSurface@CEngineWaterRenderer@@AAEXAAVCRenderTarget@@ABVCSurface@@@Z

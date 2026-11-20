@@ -6,6 +6,9 @@
 // ByteLength +0x08, PData +0x0c} (Ego_r.pdb); memory counters g_GraphicsMemoryBytes 0x013CAAB0, g_VolumeTextureMemoryBytes 0x013D28E0
 // (next to the landed CVolume counter 0x013D28DC); the inline GetMemorySize = (PData ? GetAllocationSize(PData) @ 0x009F2390 on the
 // global allocator 0x013CAA90 : ByteLength) + 4, 0 without a texture.
+// Naming (NF161, 2026-11-20, q4196): the global allocator 0x013CAA90 is the protected static ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A
+//   (Ego_r.pdb / FableWin.pdb / Ego_d.pdb), reached through the public inline ?Get@CMemoryAllocator@@SIPAV1@XZ (FableWin.pdb / Ego_d.pdb) of
+//   the shared engine/CMemoryAllocator.h; was the descriptive extern ?g_pGlobalAllocator_013caa90@@3PAVCMemoryAllocator@@A on a row-local model.
 struct D3DVOLUME_DESC_Local { unsigned long Format, Type, Usage, Pool, Width, Height, Depth; };
 struct IDirect3DVolume9;
 struct IDirect3DVolumeTexture9 {                   // IUnknown + IDirect3DResource9 + IDirect3DBaseTexture9 slots
@@ -24,10 +27,10 @@ struct IDirect3DVolumeTexture9 {                   // IUnknown + IDirect3DResour
     virtual unsigned long __stdcall GetLOD();
     virtual unsigned long __stdcall GetLevelCount();                         // slot 13 (+0x34)
 };
-class CMemoryAllocator { public:
-    unsigned long GetAllocationSize(void* block);  // 0x009F2390
-};
-extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
+#define FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
+#define FABLE_RETAIL_CMEMORYALLOCATOR_GETALLOCATIONSIZE
+#include "rebuild_abi.h"
+#include "engine/CMemoryAllocator.h"   // NF161 (q4196): was a row-local CMemoryAllocator + extern g_pGlobalAllocator_013caa90
 extern unsigned long g_GraphicsMemoryBytes;        // 0x013CAAB0
 extern unsigned long g_VolumeTextureMemoryBytes;   // 0x013D28E0
 struct CBase {
@@ -50,7 +53,7 @@ class CVolumeTexture { public:                            // vtable 0x0129DC18, 
     {
         unsigned long size = 0;
         if (PD3DVolumeTexture)
-            size = (PData ? g_pGlobalAllocator_013caa90->GetAllocationSize(PData) : ByteLength) + 4;
+            size = (PData ? CMemoryAllocator::Get()->GetAllocationSize(PData) : ByteLength) + 4;
         return size;
     }
     void Uninitialise();                           // 0x00A68060

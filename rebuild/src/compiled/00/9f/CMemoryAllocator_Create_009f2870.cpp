@@ -9,6 +9,9 @@
 // Shape: a new-expression through the inline class operator new: the allocation runs first, its null test guards the
 //   GetProcessHeap argument and the constructor call (the 0 store is the new-expression's null arm); the 32-byte
 //   MEMORYSTATUS is the only frame local (`sub esp,20h`), its TotalPhys/AvailPhys words at +8/+0xc.
+// Naming (NF161, 2026-11-20, q4196): the static at 0x013CAA90 respelled in place in the row's existing local model to the PDB name
+//   ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A (protected static; Ego_r.pdb / FableWin.pdb / Ego_d.pdb data symbol, engine/CMemoryAllocator.h),
+//   was ?Allocator@CMemoryAllocator@@1PAV1@A (no such member in any PDB).
 extern "C" __declspec(dllimport) void* __stdcall VirtualAlloc(void* address, unsigned long size, unsigned long allocationType, unsigned long protect);   // IAT 0x0143FD44
 extern "C" __declspec(dllimport) void* __stdcall GetProcessHeap();   // IAT 0x0143FD3C
 struct SMemoryStatus {               // MEMORYSTATUS
@@ -35,13 +38,13 @@ protected:
         return VirtualAlloc(0, size, 0x3000, 4);     // MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE
     }
     static void __fastcall operator delete(void* p); // 0x009F1F90
-    static CMemoryAllocator* Allocator;              // 0x013CAA90
+    static CMemoryAllocator* PMemoryAllocator;              // 0x013CAA90
     static void __fastcall Create();
 };
 
 void __fastcall CMemoryAllocator::Create()
 {
-    Allocator = new CMemoryAllocator(GetProcessHeap());
+    PMemoryAllocator = new CMemoryAllocator(GetProcessHeap());
     SMemoryStatus status;
     GlobalMemoryStatus(&status);
     unsigned long inUse = status.dwTotalPhys - status.dwAvailPhys;

@@ -1,0 +1,46 @@
+00415e85 new: 1
+    ?Get@CMemoryAllocator@@SIPAV1@XZ
+00416047 new: 1
+    ?Get@CMemoryAllocator@@SIPAV1@XZ
+004189c2 new: 1
+    ?Get@CMemoryAllocator@@SIPAV1@XZ
+004ff560 new: 1
+    ?PrepareForLoad@CWorldMap@@QAEXXZ TABLE:004ff560
+009f2870 new: 0
+009f2b20 new: 0
+009f2be0 new: 0
+00a5d720 new: 9
+    ??1CPixelShader@@UAE@XZ
+    ??1CShaderBase@@UAE@XZ
+    ??_7CPixelShader@@6B@ TABLE:0129a054
+    ??_7CShaderBase@@6B@ TABLE:0129a030
+    ??_GCPixelShader@@UAEPAXI@Z
+    ??_GCShaderBase@@UAEPAXI@Z
+    ?CountReferences@CPixelShaderData@@ABEKXZ
+    ?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@ABVCCharString@@@Z TABLE:00a5d720
+    ?Release@CPixelShaderData@@AAEXXZ
+00a65330 new: 1
+    ?Get@CMemoryAllocator@@SIPAV1@XZ
+00a66260 new: 1
+    ?Get@CMemoryAllocator@@SIPAV1@XZ
+00a663d0 new: 1
+    ?Get@CMemoryAllocator@@SIPAV1@XZ
+00a67f60 new: 1
+    ?Get@CMemoryAllocator@@SIPAV1@XZ
+00a682e0 new: 1
+    ?Get@CMemoryAllocator@@SIPAV1@XZ
+00a68370 new: 1
+    ?Get@CMemoryAllocator@@SIPAV1@XZ
+00a77480 new: 3
+    ?JoinNavigationLayers@CNavQuadTree@@AAEXXZ
+    ?begin@?$vector@VCNavigationTransitionPoint@@V?$allocator@VCNavigationTransitionPoint@@@std@@@std@@QAEPAVCNavigationTransitionPoint@@XZ
+    ?end@?$vector@VCNavigationTransitionPoint@@V?$allocator@VCNavigationTransitionPoint@@@std@@@std@@QAEPAVCNavigationTransitionPoint@@XZ
+00a77500 new: 3
+    ?VerifyTransitionPoints@CNavQuadTree@@ABEXXZ
+    ?begin@?$vector@VCNavigationTransitionPoint@@V?$allocator@VCNavigationTransitionPoint@@@std@@@std@@QBEPBVCNavigationTransitionPoint@@XZ
+    ?end@?$vector@VCNavigationTransitionPoint@@V?$allocator@VCNavigationTransitionPoint@@@std@@@std@@QBEPBVCNavigationTransitionPoint@@XZ
+00b50ee0 new: 1
+    ?OverrideRain@CEngineWeatherRenderer@@QAEXM@Z TABLE:00b50ee0
+00b50f40 new: 1
+    ?OverrideSnow@CEngineWeatherRenderer@@QAEXM@Z TABLE:00b50f40
+00b7ad20 new: 0

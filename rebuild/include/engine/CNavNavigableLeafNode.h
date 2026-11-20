@@ -38,6 +38,12 @@ public:
     T* begin() { return Start; }
     T* end() { return Start + Size; }
 #endif
+#ifdef FABLE_RETAIL_CSMALLVECTOR_PUSHBACK_OUTOFLINE
+    // NF161 opt-in (q4782, row 0x00A77480 CNavQuadTree::JoinNavigationLayers): that TU calls push_back out of line, 0x00A7DBF0
+    // ?push_back@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXABQBVCANavQuadTreeNode@@@Z (FableWin.pdb name set; the landed binding of
+    // 0x00A77480), `lea ecx,[node+14h] ; push &value ; call 0x00A7DBF0` twice. Declaration only; not with FABLE_RETAIL_CSMALLVECTOR_RESIZE.
+    void push_back(const T& value);                                      // 0x00A7DBF0
+#endif
     T*          Start;
     signed char Size;
 };

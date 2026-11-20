@@ -60,6 +60,41 @@ public:
  static CMemoryAllocator* FABLE_FASTCALL Get(){return PMemoryAllocator;}
  void OnFailedAllocation();
 #endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_GETALLOCATIONSIZE
+ // NF161 opt-in (q4196, rows 0x00A67F60 / 0x00A682E0 / 0x00A68370): Ego_r.pdb / FableWin.pdb ?GetAllocationSize@CMemoryAllocator@@QAEKPAX@Z
+ // (public, landed 0x009F2390). Declaration only.
+ unsigned long GetAllocationSize(void* block);                           // 0x009F2390
+#endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_INTERNALVALIDATEAREA
+ // NF161 opt-in (q4196, rows 0x00A65330 / 0x00A66260): Ego_r.pdb / FableWin.pdb ?InternalValidateArea@CMemoryAllocator@@QAEXPAX@Z (public),
+ // retail 0x009F1F40 (empty `ret 4` in release); Ego_r donor order GetNoAllocations / SetCurrentTrackingID / GetCurrentTrackingID /
+ // InternalValidateArea / InternalValidate = retail 0x009F1F10 / 1F20 / 1F30 / 1F40 / 1F50 (bodies: +0x40c read, +0x414 byte store
+ // `ret 4`, +0x414 movzx read, `ret 4`, `ret`). Declaration only.
+ void InternalValidateArea(void* block);                                 // 0x009F1F40
+#endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_SAVESTACKMEMORYTRACKERLOG
+ // NF161 opt-in (q4196, row 0x00415E85 GFLogMemoryUse): Ego_r.pdb / FableWin.pdb ?SaveStackMemoryTrackerLog@CMemoryAllocator@@QAEXPBD@Z
+ // (public), retail 0x009F2080 (empty `ret 4` in release); Ego_r donor order Leave / PeekAllocatorMemoryControlled /
+ // PeekAllocatorMemoryAllocated / IsAllocatorFixedSize / SaveStackMemoryTrackerLog = retail 0x009F2010 / 2020 / 2040 / 2060 / 2080.
+ // Declaration only.
+ void SaveStackMemoryTrackerLog(const char* file_name);                  // 0x009F2080
+#endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_CONSOLIDATEFREEAREAS
+ // NF161 opt-in (q4196, row 0x004189C2 CMainGameComponent::Run): Ego_r.pdb / FableWin.pdb ?ConsolidateFreeAreas@CMemoryAllocator@@QAEXXZ
+ // (public, retail 0x009F2660). Declaration only.
+ void ConsolidateFreeAreas();                                            // 0x009F2660
+#endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_CLEARPERFORMANCESTATS
+ // NF161 opt-in (q4196, row 0x004189C2 CMainGameComponent::Run): Ego_r.pdb / FableWin.pdb ?ClearPerformanceStats@CMemoryAllocator@@QAEXXZ
+ // (public, retail 0x009F26B0; the landed binder's spelling). Declaration only.
+ void ClearPerformanceStats();                                           // 0x009F26B0
+#endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_NEWFRAME
+ // NF161 opt-in (q4196, row 0x00416047): Ego_r.pdb / FableWin.pdb ?NewFrame@CMemoryAllocator@@QAEXXZ (public), retail 0x009F26D0 (Ego_r donor
+ // order ClearPerformanceStats / NewFrame = retail 0x009F26B0 / 0x009F26D0, both the bare Enter/LeaveSynchronisation pair in release).
+ // Declaration only.
+ void NewFrame();                                                        // 0x009F26D0
+#endif
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_ALIGNED
  // Opt-in (chunk 892, row 0x00B482A0): Ego_r.pdb ?AllocateAligned@CMemoryAllocator@@SIPAXKJ@Z (0x009F2BE0, landed) and
  // ?DeallocateAligned@CMemoryAllocator@@SIXPAX@Z (0x009F2B20, landed), public static __fastcall. Declarations only.

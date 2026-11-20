@@ -9,6 +9,10 @@
 // Shape: `void* mem; if (InternalAlloc(ChunkSize, &mem)) { chunk = CreateChunk(mem); InsertChunkAtListHead(chunk);
 //   ++NoEmptyChunks; return chunk; }` with the list insert inline (PFirstChunk re-read after each store); the out-of-
 //   memory hook path returns 0 at the end.
+// Naming (NF161, 2026-11-20, q4196): the global allocator 0x013CAA90 is the protected static ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A
+//   (Ego_r.pdb / FableWin.pdb / Ego_d.pdb), reached through the public inline ?Get@CMemoryAllocator@@SIPAV1@XZ (FableWin.pdb / Ego_d.pdb) of
+//   the shared engine/CMemoryAllocator.h; the out-of-memory hook 0x009F1F00 is ?OnFailedAllocation@CMemoryAllocator@@QAEXXZ (the header's VARIABLESIZE spelling, bound by
+//   the landed 0x00A65720). Was ?OnOutOfMemory@CGlobalMemoryManager@@QAEXXZ on ?g_pGlobalMemoryManager@@3PAUCGlobalMemoryManager@@A.
 #include "engine/CMemoryAllocatorFixedSize.h"
 
 struct CMemoryAreaChunk {                               // CMemoryAllocatorFixedSize::CMemoryAreaChunk (24 bytes)
@@ -20,10 +24,9 @@ struct CMemoryAreaChunk {                               // CMemoryAllocatorFixed
     void*             PFirstAllocatedArea;              // +0x14
 };
 
-struct CGlobalMemoryManager {                           // descriptive: the object behind the 0x013CAA90 pointer
-    void OnOutOfMemory();                               // 0x009F1F00
-};
-extern CGlobalMemoryManager* g_pGlobalMemoryManager;    // 0x013CAA90
+#define FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
+#include "rebuild_abi.h"
+#include "engine/CMemoryAllocator.h"   // NF161 (q4196): was the stand-in CGlobalMemoryManager + extern g_pGlobalMemoryManager
 
 struct CMemoryAllocatorFixedSizeChunks : CMemoryAllocatorFixedSize {
     unsigned long InternalAlloc(unsigned long size, void** mem);    // 0x00A65F40
@@ -50,6 +53,6 @@ CMemoryAreaChunk* CMemoryAllocatorFixedSizeChunks::NewChunk()
         ++NoEmptyChunks;
         return chunk;
     }
-    g_pGlobalMemoryManager->OnOutOfMemory();
+    CMemoryAllocator::Get()->OnFailedAllocation();
     return 0;
 }
