@@ -1,7 +1,10 @@
 // CTCLook::ChangeHeadAngleYZ(float targetAngle, float time) -- drive the head's YZ angle (relative to the body) towards the target through the slow-in/fast-out integrator, the turn speed depending on whether a target is acquired
-// Leaf: ChangeHeadAngleYZ
+// Leaf: ?ChangeHeadAngleYZ@CTCLook@@AAEXMM@Z
+// Name (NF154, PRIORITY q11662): Ego_r.pdb 0x00763D10 / FableWin.pdb 0x025B2420 ?ChangeHeadAngleYZ@CTCLook@@AAEXMM@Z (private, like
+//   ChangeHeadAngleXY 0x00752120); the only caller 0x007528A0 is respelled with it. The callee is the PDB private const float& form
+//   ?GetHeadSettingsSlowInFastOut@CTCLook@@ABEXAAM0MMMMM@Z (q11660; was the stand-in QAEXPAM0MMMMM). Local model respelled in place.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752190, length 100 bytes (`ret 8`).
-// Callees: CTCLook::GetHeadSettingsSlowInFastOut(float*, float*, float, float, float, float, float) @ 0x00751820.
+// Callees: CTCLook::GetHeadSettingsSlowInFastOut(float&, float&, float, float, float, float, float) const @ 0x00751820.
 // Globals (.data float pairs {XY, YZ}): turn speed with a target 0x01382680, without 0x01382688, acceleration 0x01382690; 1/360
 // (0.0027777778f) @ 0x01238E00 converts the def's degrees to turns; limits are the def's YZ down/up limits (+0x38/+0x34).
 // Layout (retail, local model): PDef +0x14, HeadAngleRelToBody XY/YZ +0x2C/+0x30, HeadVelocity XY/YZ +0x5C/+0x60 (PDB offsets),
@@ -55,7 +58,8 @@ class CTCLook { public:
     unsigned char _padA1[0xb4 - 0xa1];          // CachedHeadPos, HeadCacheTimer
     long  TimeToStopLooking;                    // +0xb4 (PDB +0xb8)
     bool  OneFrameDelay;                        // +0xb8 (PDB +0xbc)
-    void GetHeadSettingsSlowInFastOut(float* angle, float* velocity, float acceleration, float maxSpeed, float target, float minAngle, float maxAngle);   // 0x00751820
+private:
+    void GetHeadSettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float target, float minAngle, float maxAngle) const;   // 0x00751820
     void ChangeHeadAngleYZ(float targetAngle, float time);
 };
 
@@ -63,7 +67,7 @@ void CTCLook::ChangeHeadAngleYZ(float targetAngle, float time)
 {
     const CLookDef* def = PDef.operator->();
     double speed = TargetAcquired ? g_HeadTurnSpeedTargetAcquired.YZ : g_HeadTurnSpeedNoTarget.YZ;
-    GetHeadSettingsSlowInFastOut(&HeadAngleRelToBodyYZ, &HeadVelocityYZ, g_HeadTurnAcceleration.YZ * time, speed * time, targetAngle,
+    GetHeadSettingsSlowInFastOut(HeadAngleRelToBodyYZ, HeadVelocityYZ, g_HeadTurnAcceleration.YZ * time, speed * time, targetAngle,
                                  def->MaxHeadAngleYZDown * 0.0027777778f,
                                  def->MaxHeadAngleYZUp * 0.0027777778f);
 }

@@ -17,7 +17,16 @@
 //          first exits); the getter is called before the interface test; the out-parameter GetInterface (its type
 //          temporary reuses the dead argument slot); HasTC is __forceinline (plain inline is not expanded inside the
 //          `||`); the class-2 arm returns an `||` (`mov eax,1` / `xor eax,eax` tails) while the other trues share `mov al,1`.
+// Callee respelled (NF154, PRIORITY q4964): 0x00686D60 is ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ (Ego_r.pdb 0x006B2150 /
+//   FableWin.pdb 0x02191560; engine/CTCBase.h FABLE_RETAIL_CTCBASE_COMPONENT), and its slot 9 is CMainGameComponent::IsEditorActive
+//   (FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ, 0x004197B0; engine/CMainGameComponent.h FABLE_RETAIL_CMAINGAMECOMPONENT_EDITOR);
+//   was the stand-in ?GetGameSubsystem@CTCWeapon_Getters@@QAEPAUCGameSubsystem@@XZ with a local CGameSubsystem view (dropped). CTCWeapon is
+//   now the header's polymorphic retail branch (FABLE_RETAIL_CTCWEAPON: CTCWeapon : CTCBase), so the protected accessor is reachable.
+#define FABLE_RETAIL_CTCWEAPON
+#define FABLE_RETAIL_CTCBASE_COMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_EDITOR
 #include "engine/CTCWeapon.h"
+#include "engine/CMainGameComponent.h"
 
 class CTCBase;
 
@@ -39,16 +48,9 @@ class CThingCreatureBase : public CThing { public:
     const CCreatureRecord1E8* GetRecord1E8() const;   // 0x006A98D0
 };
 
-struct CGameSubsystem {                         // [0x013B8A1C]+0x1c (unidentified)
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual bool IsSuppressed();                // slot 9 (+0x24)
-};
-
 enum EWeaponClass { WEAPON_CLASS_NONE = 0, WEAPON_CLASS_1 = 1, WEAPON_CLASS_2 = 2, WEAPON_CLASS_3 = 3 };
 
 struct CTCWeapon_Getters : CTCWeapon {
-    CGameSubsystem* GetGameSubsystem();         // 0x00686D60 (CTCBase)
     EWeaponClass GetWeaponClass() const;        // 0x005DA7F0
     bool IsUsableBy(const CThing& thing) const;
 };
@@ -56,7 +58,7 @@ struct CTCWeapon_Getters : CTCWeapon {
 bool CTCWeapon_Getters::IsUsableBy(const CThing& thing) const
 {
     if (thing.GetTypeFlags() & 8) {
-        if (thing.GetType() == 1 || ((CTCWeapon_Getters*)this)->GetGameSubsystem()->IsSuppressed())
+        if (thing.GetType() == 1 || PeekComponent().IsEditorActive())
             return true;
         const CCreatureRecord1E8* record = static_cast<const CThingCreatureBase&>(thing).GetRecord1E8();
         const const CTCHeroExperience* experience;

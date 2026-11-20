@@ -2,12 +2,20 @@
 // Leaf: ?SaveRoute@CTCPreCalculatedNavigationRoute@@QAEXPAVCPersistContext@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x008006D0, 480 bytes (`ret 4`).
+// Fidelity: cast, not retail: the route is the row's local CNavStepVector stand-in, handed to the PDB `std::vector<std::pair<C2DVector, unsigned char> >&`
+//   parameter by reinterpret_cast (same bytes). Porting the real STLport vector needs the packed retail C2DVector (queued; advisor decision,
+//   owner delegated, nf154).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, CalculateRouteFromTo 0x00800540,
 //   CPersistContext::Transfer<long> 0x00410BE0 / <C2DVector> 0x00800B90 / <unsigned char> 0x00405A60, CTCBase::PeekWorldMap
 //   0x00686D20, CWorldMap::ConvertWorldMapCoordsToLocalCoords 0x004FC330, GFIntToCharString 0x0099F830,
 //   operator+(const char*, const CCharString&) 0x0099F690, CCharString::ToConstChar 0x0099E4C0, ~CCharString 0x0099EAE0, free 0x00BFEA14.
 // Layout: Ego_r.pdb CTCPreCalculatedNavigationRoute: PThingToCalculateRouteTo +0x0c, Route +0x20 (12-byte STLport vector of
 //   9-byte pair<C2DVector, unsigned char> steps -- retail divides by 9); CThing region index short +0x8e, Dead bit +0x91.
+// Callee respelled (NF154, PRIORITY q4533 family): CalculateRouteFromTo 0x00800540 is Ego_r.pdb 0x007F3F10 / FableWin.pdb 0x026C1C20
+//   ?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@ABEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z
+//   (private const, STLport vector<pair<C2DVector, unsigned char> >&; was ?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@QAEXABVC3DVector@@0AAUCNavStepVector@@@Z);
+//   the self row 0x00800540 takes the same spelling. The local CNavStepVector view (the same 12-byte STLport vector of 9-byte steps) is
+//   handed to it as that vector; the local model's declaration is respelled in place.
 #include "fable_compiler.h"
 #include <stdlib.h>
 class C2DVector { public: float X; float Y; C2DVector(float x, float y) : X(x), Y(y) {} };
@@ -40,6 +48,11 @@ class CPersistContext { public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
     //   instances here: long 0x00410BE0; C2DVector 0x00800B90; unsigned char 0x00405A60
 };
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <class _T1, class _T2> struct pair;
+}
 #pragma pack(push, 1)
 struct CNavStep { C2DVector Pos; unsigned char Layer; };
 #pragma pack(pop)
@@ -62,8 +75,9 @@ class CTCPreCalculatedNavigationRoute : public CTCBase { public:
     CIntelligentPointer<CThing> PThingToCalculateRouteTo;   // +0x0c
     unsigned __int64        ThingToCalculateRouteToUID; // +0x18
     CNavStepVector          Route;                      // +0x20
-    void CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, CNavStepVector& route);   // 0x00800540
     void SaveRoute(CPersistContext* context);
+private:
+    void CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, std::vector<std::pair<C2DVector, unsigned char>, std::allocator<std::pair<C2DVector, unsigned char> > >& route) const;   // 0x00800540
 };
 
 template <class T>
@@ -79,7 +93,8 @@ void CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context)
         CThing* owner = Owner;
         long region = owner->GetCurrentMapNumber();
         CNavStepVector route;
-        CalculateRouteFromTo(owner->GetPos(), PThingToCalculateRouteTo.GetPItem()->GetPos(), route);
+        CalculateRouteFromTo(owner->GetPos(), PThingToCalculateRouteTo.GetPItem()->GetPos(),
+                             reinterpret_cast<std::vector<std::pair<C2DVector, unsigned char>, std::allocator<std::pair<C2DVector, unsigned char> > >&>(route));
         long steps = route.size();
         context->Transfer<long>("NumberOfStepsOnRoute", steps, 0);
         long i = 0;

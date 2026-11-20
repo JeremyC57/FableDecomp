@@ -1,0 +1,25 @@
+entry	address	status	binders_respelled	note
+q3906	0x006AF780	done	1 (0x00723730)	binder 0x00723730 ported onto engine/CTCPhysicsStandard.h (and its own leaf respelled to ?UpdateInterpolation@CTCPhysicsStandard@@MAEXXZ, RENAMES s1); 0x00759970 already right; 0x006AF780 ends on one spelling
+q4045	0x00686D20	deferred: held by NF153	0	census (39 referencers compiled): 38 bind ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ (incl. the queue-named 0x007E27F0 / 0x00723A10); the only wrong binder left is 0x007E00D0 (?GetRegionManager@CTCTeleporter@@QAEPAUCRegionManager@@XZ), locked by NF153: NAME_FIXES
+q4260	0x006CB6B0	done	6 (0x008FD050 0x00713740 0x0089BDF0 0x00714730 0x0089B780 0x00665DF0)	all six stand-ins respelled to ?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ; 0x00666EF0 (NF155 lock) already binds it; 0x006CB6B0 ends on one spelling
+q4494	0x006CB8E0	done	1 (0x0089B780)	GetNearestNavigablePosTo via engine/CTCCreatureNavigation.h; 0x00659800 / 0x00666EF0 / 0x008334F0 already right
+q4533	0x006CB9B0	done	1 (0x00800540) + its caller 0x008006D0	0x00800540 now passes its own route (own leaf respelled to the PDB private const vector& form, RENAMES s1) and its only caller 0x008006D0 follows
+q4534	0x006CB9C0	done	1 (0x0097F5B0)	InitialiseFromPreCalculatedRoute via engine/CTCCreatureNavigation.h
+q4721	0x00686DA0	done-already	0	census: all 23 referencers bind ?GetPWorldSeed@CTCBase@@IBEPAKXZ; self row right
+q4722	0x00686ED0	done	2 (0x007E27F0 0x006CF920)	17 other referencers already right
+q4964	0x00686D60	done	1 (0x005DAB10)	census found one wrong binder the binding table does not list: 0x005DAB10 ?GetGameSubsystem@CTCWeapon_Getters@@QAEPAUCGameSubsystem@@XZ; the 41 others (incl. 0x00751AD0 / 0x00753C70) right
+q4976	0x006B05A0	done	2 (0x0075B2D0 0x00724010)	0x006B08E0 already right
+q5019	0x006AFD40	done-already	0	census: all 3 referencers (0x00725B70 0x00726BE0 0x008E57D0) bind ?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ; self row right
+q5040	0x00686DA0	done-already	0	same unit as q4721
+q5069	0x006AFD40	done-already	0	same unit as q5019
+q5087	0x00686D90	done-already	0	census: all 30 referencers bind ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ; self row right
+q5088	0x006AF780	done	1 (0x00723730)	same unit as q3906
+q5139	0x0049D150	done-already	0	census: all 6 referencers bind ?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z; self row right
+q5146	0x007530D0	done	1 (0x00753C70)	0x00753380 already AAE
+q5148	0x00753380	done	1 (0x00753C70)	same row as q5146
+q5159	0x006CB610	done	1 (0x006A7640)	5 others already right
+q11660	0x00751820	done	1 (0x00752190) + self 0x00751820	self QBE -> ABE; 0x00752120 already ABE; the existing split at 0x00751820 is closed
+q11661	0x00751E80	blocked: one definition (coordinator decision)	0	rows left: 0x00751E80 (self) and 0x007525C0 (only referencer); both drafts RELOCATION_MATCH in work/. one definition: engine/CTCLook.h defines GetTurningAngles in-class (private, noinline); the landed includer 0x00752E00 (SetBodyMoving, calls the in-class GetTurningAnglesAndCheckForTurningBody) emits ?GetTurningAngles@CTCLook@@AAE_NAAM0@Z as a pick-any COMDAT; the respelled self row would define it NoDuplicates (llvm-readobj) -> LNK2005. Draft graded RELOCATION_MATCH, kept in work/. Needs a decision on the header inline (e.g. nf86/nf88 pick-any scaffolding for the self row, or moving the in-class bodies out of CTCLook.h)
+q11662	0x00752190	done	1 (0x007528A0) + self 0x00752190	self and its only referencer respelled to AAE together
+q11664	0x00752200	done	2 (0x00753080 0x00752930) + self 0x00752200	0x00753040 already AAE; existing split closed. 0x00753080 / 0x00752930 own leaves also respelled to the PDB private form (both PDBs; their only callers follow or already bind it)
+q11771	0x006869D0	done-already	0	census: all 204 referencers compiled, every one binds ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ; the binding-table witness 0x0057CB7E (GetDefinitions@CTCHeroStats) is stale (the row declares GetDefinitionManager in its local CTCBase model)

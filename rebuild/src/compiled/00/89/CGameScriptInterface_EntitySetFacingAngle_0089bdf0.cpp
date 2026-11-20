@@ -10,6 +10,8 @@
 //   LowerBound @ 0x0040F020, the TC 7 reset @ 0x006CB6B0 (manifest "CScriptThing::operator==" is propagated),
 //   CTCLook::StopLooking(long) @ 0x00751B80 and LookAtPos(const C3DVector&, long) @ 0x00753E90 (TC 0x43),
 //   CTCPerceiveThing::ResetPerceptionVariables @ 0x00744DB0 (TC 0x34).
+// Callee respelled (NF154, PRIORITY q4260): the TC 7 reset 0x006CB6B0 is ?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ (Ego_r.pdb
+//   0x007010F0 / FableWin.pdb 0x02478510; engine/CTCCreatureNavigation.h); was the stand-in ?Reset@CTCType7@@QAEXXZ.
 // Shape: the look direction is the intrinsic cos/sin pair of `angle * (double)2pi` and a zero pitch read from a double
 //   in memory (0x0122ED70, not folded), X = sin(yaw)*cos(pitch), Y = cos(yaw)*cos(pitch), Z = sin(pitch).
 #include "fable_compiler.h"
@@ -51,7 +53,7 @@ struct CThing_Retail {
         return ((CTCBase_Retail*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second);
     }
 };
-struct CTCType7 { void Reset(); };                          // 0x006CB6B0
+#include "engine/CTCCreatureNavigation.h"
 class CTCLook { public:
     void StopLooking(long reason);                          // 0x00751B80
     void LookAtPos(const C3DVector& pos, long priority);    // 0x00753E90
@@ -74,7 +76,7 @@ void CGameScriptInterface::EntitySetFacingAngle(const CScriptThing& entity, floa
     if (thing->m_pPhysics->GetFacingAngle() == angle)
         return;
     if (thing->HasInterface(7))
-        ((CTCType7*)thing->GetInterface(7))->Reset();
+        ((CTCCreatureNavigation*)thing->GetInterface(7))->InterruptNavigation();
     CTCLook* look;
     if (thing->HasInterface(0x43))
         look = (CTCLook*)thing->GetInterface(0x43);

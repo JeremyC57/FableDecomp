@@ -73,6 +73,10 @@ protected:
 
 // NF120 (PRIORITY q5145): CentreHead 0x007528A0 is private in both PDBs (Ego_r.pdb 0x007649D0 / FableWin.pdb 0x025AFD60 ?CentreHead@CTCLook@@AAEXXZ);
 //   the local model's declaration is respelled in place (was public, QAEXXZ).
+// NF154 (PRIORITY q5146 / q5148): FrameUpdateHeadLookAtPos 0x007530D0, FrameUpdateHeadInterested 0x00753380 and
+//   FrameUpdateOverriddenByParent 0x00753080 are private in both PDBs (Ego_r 0x00765370 / 0x00765410 / 0x00765310, FableWin 0x025AE1B0 /
+//   0x025ADC90 / 0x025AE140: ?FrameUpdateHeadLookAtPos@CTCLook@@AAEXABVC3DVector@@_N@Z, ?FrameUpdateHeadInterested@CTCLook@@AAEXXZ,
+//   ?FrameUpdateOverriddenByParent@CTCLook@@AAEXXZ; were QAE); the three declarations are respelled in place.
 class CTCLook : public CTCBase { public:
     unsigned char _pad08[0x3c - 0x08];
     long          LookTimer;                               // +0x3c
@@ -86,7 +90,6 @@ class CTCLook : public CTCBase { public:
     long          TimeToStopLooking;                       // +0xb4
     bool          OneFrameDelay;                           // +0xb8
     void UpdateHeadPos();                                  // 0x00752000
-    void FrameUpdateOverriddenByParent();                  // 0x00753080
     void ImplementHeadSettings();                          // 0x00753BA0
     bool IsAbleToTurnDaBody();                             // 0x00751DA0
     bool IsCurrentlyTurningViaAnimation() const;                 // 0x00753B40
@@ -95,11 +98,12 @@ class CTCLook : public CTCBase { public:
 private:
     void SetBodyMoving();                                  // 0x00752E00
     void CentreHead();                                     // 0x007528A0
+    void FrameUpdateOverriddenByParent();                  // 0x00753080
+    void FrameUpdateHeadInterested();                      // 0x00753380
+    void FrameUpdateHeadLookAtPos(const C3DVector& pos, bool turnBody);   // 0x007530D0
 public:
     bool IsLookTimeOver();                                 // 0x00753AD0
     void SetHeadTurnState(long state);                     // 0x007517B0
-    void FrameUpdateHeadInterested();                      // 0x00753380
-    void FrameUpdateHeadLookAtPos(const C3DVector& pos, bool turnBody);   // 0x007530D0
     void FrameUpdate();
 };
 

@@ -1,5 +1,9 @@
 // CTCLook::GetHeadSettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle, float maxLeft, float maxRight) const -- when the head angle is off target, accelerate the velocity (clamped to +/- maxSpeed); if the step would overshoot the target (the difference changes sign) snap to it and stop, else take the step; finally keep the angle inside (-maxLeft, maxRight), stopping at the limit
-// Leaf: GetHeadSettingsSlowInFastOut
+// Leaf: ?GetHeadSettingsSlowInFastOut@CTCLook@@ABEXAAM0MMMMM@Z
+// Name (NF154, PRIORITY q11660): Ego_r.pdb 0x00763510 / FableWin.pdb 0x025B1C80 ?GetHeadSettingsSlowInFastOut@CTCLook@@ABEXAAM0MMMMM@Z
+//   (private const, float& outs; Ego_r order GetHeadSettingsSlowInFastOut / GetTurningAngles / ChangeHeadAngleXY / ChangeHeadAngleYZ /
+//   ChangeEyeAngles = retail 0x00751820 / 0x00751E80 / 0x00752120 / 0x00752190 / 0x00752200). Was public (QBE); local model respelled in place;
+//   the callers 0x00752120 (already) and 0x00752190 (respelled with it) bind this spelling.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751820, 324 bytes (+ int3 padding), `ret 1Ch`; `this` is not read.
 //   Ego_r.pdb: `?GetHeadSettingsSlowInFastOut@CTCLook@@ABEXAAM0MMMMM@Z`.
@@ -15,7 +19,7 @@ extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 inline int Sign(float x) { return x < 0.0f ? -1 : 1; }
 
-class CTCLook { public:
+class CTCLook { private:
     void GetHeadSettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle,
                                       float maxLeft, float maxRight) const;
 };

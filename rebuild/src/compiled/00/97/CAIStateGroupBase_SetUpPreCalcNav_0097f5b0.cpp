@@ -10,7 +10,14 @@
 // Shape: the route component is deliberately unset when the interface is absent (retail reads a dead slot), the
 // navigation component is kept in ebx; the creature is re-read into a named local before the setup call (retail loads
 // it ahead of the argument calls, reusing the `this` register).
+// Callee respelled (NF154, PRIORITY q4534): 0x006CB9C0 is ?InitialiseFromPreCalculatedRoute@CTCCreatureNavigation@@QAEXABVC3DVector@@ABV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@0@Z
+//   (Ego_r.pdb 0x00701440 / FableWin.pdb 0x0247B2A0; PNavigator slot 15 forward; engine/CTCCreatureNavigation.h FABLE_RETAIL_CTCCREATURENAVIGATION);
+//   was the stand-in ?SetUpRoute@CTCNavigation@@QAEXABVC3DVector@@00@Z. Its middle argument is the route component's Route +0x20 (Ego_r.pdb
+//   CTCPreCalculatedNavigationRoute::Route, a 12-byte STLport vector<pair<C2DVector, unsigned char> >): the local model's +0x20 member is
+//   respelled in place from the stand-in C3DVector RouteStart.
 #include "engine/C3DVector.h"
+#include "engine/C2DVector.h"
+#include "stlport/fable_containers.h"
 
 class CTCBase;
 #define FABLE_RETAIL_CTHING
@@ -21,15 +28,13 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CTCPreCalculatedNavigationRoute              // interface type 0xA6
 { public:
     unsigned char _pad00[0x20];
-    C3DVector RouteStart;                           // +0x20
+    std::vector<std::pair<C2DVector, unsigned char> > Route;   // +0x20
     bool HasRoute();                                // 0x00800500
     C3DVector GetRouteDestination();                // 0x008004D0
 };
 
-struct CTCNavigation                                // interface type 7
-{
-    void SetUpRoute(const C3DVector& from, const C3DVector& start, const C3DVector& destination);   // 0x006CB9C0
-};
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#include "engine/CTCCreatureNavigation.h"
 
 class CAIBrain
 { public:
@@ -50,14 +55,14 @@ C3DVector CAIStateGroupBase::SetUpPreCalcNav(const CThing* routeThing)
     CThing* creature = PBrain->Creature;
     if (creature->HasTC(TCI_NAVIGATION))
     {
-        CTCNavigation* nav = (CTCNavigation*)((CTCNavigation*)&creature->GetTC(TCI_NAVIGATION));
+        CTCCreatureNavigation* nav = (CTCCreatureNavigation*)((CTCCreatureNavigation*)&creature->GetTC(TCI_NAVIGATION));
         CTCPreCalculatedNavigationRoute* route;
         if (routeThing->HasTC(TCI_PRE_CALCULATED_NAVIGATION_ROUTE))
             route = (CTCPreCalculatedNavigationRoute*)((CTCPreCalculatedNavigationRoute*)&routeThing->GetTC(TCI_PRE_CALCULATED_NAVIGATION_ROUTE));
         if (route->HasRoute())
         {
             CThing* mover = PBrain->Creature;
-            nav->SetUpRoute(mover->GetPos(), route->RouteStart, route->GetRouteDestination());
+            nav->InitialiseFromPreCalculatedRoute(mover->GetPos(), route->Route, route->GetRouteDestination());
             return route->GetRouteDestination();
         }
     }

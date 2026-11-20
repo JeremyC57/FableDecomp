@@ -10,15 +10,15 @@
 // the byte) and its sorted interface map at +0x44 -- the inline GetInterface shape of the landed
 // 0x007BEA08 family (lower bound, end or larger key -> the end entry). The type key lives in the
 // `push ecx` frame slot; the map pointer is a named local (esi) so the end is re-read through it.
-class CTCBase;
+// Callee respelled (NF154, PRIORITY q4260): 0x006CB6B0 is ?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ (Ego_r.pdb 0x007010F0 /
+//   FableWin.pdb 0x02478510; the interface-7 component is CTCCreatureNavigation, TCI_NAVIGATION; the body forwards to PNavigator +0xC
+//   slot 18 Interrupt), declared by engine/CTCCreatureNavigation.h; was the stand-in ?OnStateGroupRemoved@CTCBase@@QAEXXZ (a local CTCBase model, dropped).
+#include "engine/C3DVector.h"
+#include "engine/CTCCreatureNavigation.h"
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CTCBase { public:
-    void OnStateGroupRemoved();             // 0x006CB6B0
-};
 
 class CThingAICreature { public:
     unsigned char _pad0[0x20];
@@ -54,6 +54,6 @@ void CAIStateGroupBase::CleanupMain()
         CInterfaceMap::value_type* it = map->LowerBound(type);
         if (it == map->end() || 7 < it->first)
             it = map->end();
-        it->second->OnStateGroupRemoved();
+        static_cast<CTCCreatureNavigation*>(it->second)->InterruptNavigation();
     }
 }

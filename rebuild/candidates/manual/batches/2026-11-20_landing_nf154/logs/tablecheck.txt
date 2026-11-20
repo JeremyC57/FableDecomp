@@ -1,0 +1,6 @@
+GREW 0040f020 11 -> 12 ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z row 00713740 SAME
+GREW 005da7f0 2 -> 3 ?GetWeaponClass@CTCWeapon_Getters@@QBE?AW4EWeaponClass@@XZ row 005dab10 SAME
+GREW 00851b50 1 -> 2 ?IsMetBy@CExperienceRequirements@@QBE_NPBVCTCHeroExperience@@@Z row 005dab10 SAME
+GREW 00754e70 1 -> 2 ?AngleYZBetweenPositions@@YIMABVC3DVector@@0@Z row 00752930 SAME
+GREW 006a98d0 0 -> 1 ?GetRecord1E8@CThingCreatureBase@@QBEPBUCCreatureRecord1E8@@XZ row 005dab10 SAME
+shrank [('006af780', 2, 1), ('00686ed0', 3, 1), ('006cb6b0', 7, 1), ('006b05a0', 3, 1), ('00751820', 2, 1), ('00686d20', 3, 2), ('006cb610', 2, 1), ('006cb8e0', 2, 1), ('007530d0', 2, 1), ('00752200', 2, 1)]

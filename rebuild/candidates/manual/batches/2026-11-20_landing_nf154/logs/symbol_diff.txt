@@ -1,0 +1,32 @@
+005dab10 new: 0
+00665df0 new: 0
+006a7640 new: 0
+006cf920 new: 0
+00713740 new: 0
+00714730 new: 1
+    ??$GetInterface@VCTCCreatureNavigation@@@CThing@@QAE_NPAPAVCTCCreatureNavigation@@J@Z
+00723730 new: 1
+    ?UpdateInterpolation@CTCPhysicsStandard@@MAEXXZ
+00724010 new: 0
+00751820 new: 1
+    ?GetHeadSettingsSlowInFastOut@CTCLook@@ABEXAAM0MMMMM@Z TABLE:00751820
+00752190 new: 1
+    ?ChangeHeadAngleYZ@CTCLook@@AAEXMM@Z TABLE:00752190
+00752200 new: 1
+    ?ChangeEyeAngles@CTCLook@@AAEXMM@Z TABLE:00752200
+007528a0 new: 0
+00752930 new: 1
+    ?SetEyesLooking@CTCLook@@AAEXABVC3DVector@@@Z
+00753080 new: 1
+    ?FrameUpdateOverriddenByParent@CTCLook@@AAEXXZ TABLE:00753080
+00753c70 new: 0
+0075b2d0 new: 0
+007e27f0 new: 0
+00800540 new: 2
+    ??$PeekTC@$$CBVCTCCreatureNavigation@@@CThing@@QBE_NW4ETCInterfaceType@@PAPBVCTCCreatureNavigation@@@Z
+    ?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@ABEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z TABLE
+008006d0 new: 0
+0089b780 new: 0
+0089bdf0 new: 0
+008fd050 new: 0
+0097f5b0 new: 0

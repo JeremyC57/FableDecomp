@@ -12,6 +12,8 @@
 // manifest "CWorld::DrawGetEnvironment" is propagated), CTCBase slot 13 @ 0x006868E0.
 // Layout: CThing presence bitset +0x20 (type 7 = sign of byte +0x20, type 0x5A = bit 26 of +0x28), interface map
 // +0x44; CAnimateThing flag byte +0x94 bit 0.
+// Callee respelled (NF154, PRIORITY q4260): the interface-7 call 0x006CB6B0 is ?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ
+//   (Ego_r.pdb 0x007010F0 / FableWin.pdb 0x02478510; engine/CTCCreatureNavigation.h); was the stand-in ?OnStateGroupRemoved@CTCBaseAny@@QAEXXZ.
 // Shape: each lookup re-reads ParentThing; the type key lives in the `push ecx` frame slot; the map pointer is a
 // named local so the end is re-read through it.
 struct CTCBaseAny;
@@ -46,7 +48,6 @@ class CAnimateThing { public:
     unsigned char m_flags94_1 : 7;
 };
 struct CTCBaseAny {
-    void OnStateGroupRemoved();             // 0x006CB6B0 (interface 7 component)
     CAnimateThing& GetAnimation();          // 0x0070B460 (CTCAnimationComplex, interface 0x5A)
 };
 class CThing { public:
@@ -57,6 +58,8 @@ class CThing { public:
 };
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"                              // : CBaseClassNonCopyable, vtable 0x0125BE0C; slot 13 OnDie 0x006868E0
+#include "engine/C3DVector.h"
+#include "engine/CTCCreatureNavigation.h"
 class CTCScriptedControl : public CTCBase { public:       // vtable 0x012658E4
     virtual void OnDie();
 };
@@ -69,7 +72,7 @@ void CTCScriptedControl::OnDie()
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         if (it == map->last || 7 < it->type)
             it = map->last;
-        it->component->OnStateGroupRemoved();
+        ((CTCCreatureNavigation*)it->component)->InterruptNavigation();
     }
     if (ParentThing->HasInterface(0x5a)) {
         long type = 0x5a;

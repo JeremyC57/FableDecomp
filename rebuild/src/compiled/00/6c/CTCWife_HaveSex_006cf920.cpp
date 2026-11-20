@@ -129,10 +129,13 @@ template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
+// NF154 (PRIORITY q4722): 0x00686ED0 is ?AddToGlobalTCs@CTCBase@@QAEXXZ (Ego_r.pdb 0x006B2420 / FableWin.pdb 0x02191680), a public CTCBase
+//   member; the declaration moves from the CTCWife model (stand-in ?AddToGlobalUpdateTCs@CTCWife@@QAEXXZ) into the local CTCBase model.
 class CTCBase
 {
 public:
     virtual void v00();
+    void AddToGlobalTCs();                                  // 0x00686ED0
 protected:
     CPlayerManager& GetPlayerManager();   // 0x00686D40
     const CWorld& PeekWorld() const;   // 0x00686A80
@@ -146,13 +149,12 @@ class CTCWife : public CTCBase { public:
     bool              WaitingForFadeOut;                    // +0x27
     unsigned char     _pad_0x28[0x2c - 0x28];
     bool              WaitingForSex;                        // +0x2c
-    void AddToGlobalUpdateTCs();                            // 0x00686ED0 (CTCBase)
     void HaveSex();
 };
 
 void CTCWife::HaveSex()
 {
-    AddToGlobalUpdateTCs();
+    AddToGlobalTCs();
     CMainGameComponent::Get()->GetDisplayEngine()->StartScreenFadeOut(PHeroMarriageDef->WeddingTimeForScreenToFadeOut,
         PHeroMarriageDef->WeddingTimeForScreenToFadeIn, CRGBColour(0, 0, 0, 255), -1.0f);
     CGameEvent gameEvent(9);                                // SendPauseEvent(true) written out

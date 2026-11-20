@@ -26,6 +26,14 @@ class CThingPhysicsMeshInfo;
 class CTCPhysicsStandard : public CTCPhysicsBase {
 public:
     virtual void ResetInterpolation();                       // slot 80 0x007236E0
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_UPDATEINTERPOLATION
+    // Nested opt-in (NF154, PRIORITY q3906 / q5088, row 0x00723730): Ego_r.pdb 0x0073A570 / FableWin.pdb 0x02526850
+    // ?UpdateInterpolation@CTCPhysicsStandard@@MAEXXZ, the protected override of CTCPhysicsBase::UpdateInterpolation (slot 94 of
+    // 0x01265F84 is 0x00723730; the base slot 94 of 0x0125D2C4 is 0x006AF780). Declaration only: no vtable or layout change.
+protected:
+    virtual void UpdateInterpolation();                      // slot 94 0x00723730
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_MOVE
     // Retail opt-in (agentNF55, row 0x00725C40 CTCPhysicsControlled::Move): the movement steps Move calls. Ego_r.pdb
     // ?UpdateOnSurface@CTCPhysicsStandard@@MAEXAAV?$vector@PAVCThing@@...@std@@AAVC3DVector@@@Z and
