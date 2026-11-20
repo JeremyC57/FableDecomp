@@ -1439,3 +1439,9 @@ against CODAApi.lib, or stay compiled C++?
   - The budget inliner (/Og- /d2volNN) gives top-level sites the whole remaining budget (about 1660) and nested sites small shares; /d2vol 15..1000 changed nothing here.
   - For 0x008E18D0, retail's split (loops call LowerBound; the final sky block expands everything) needs the sky site about 10x hotter than loop 2. In for/for/if form those two sites share f=6.25 and cost 52, so no /d2inlT or /d2inlS value splits them (T 30..150: best DIFFER(2045v2073)).
   - Pending per the advisor (decisions file): byte-check the callee texts with cmpcomdat and calibrate on the TU-mates 0x008E16A0 / 0x008E20F0 / 0x008E24F0 before any structural change.
+- 2026-11-20 (Account B p25N, 0x008E18D0 TU-mate calibration, creature_modes.obj) Retail's call-or-expand decision per site, against our c2 f / score:
+  - LowerBound: called at 0x008E16A0 (0.5/100), 0x008E20F0 (0.625/95 and 2.5/70) and both of this row's loops (1.25/82, 6.25/63); expanded only in this row's sky block (6.25/63).
+  - ~CParticleUpdateParameters: called at 0.25/117, 1.25/76 and 2.5/65; expanded only in the sky block (12.5/56).
+  - _M_insert_overflow: expanded only in the sky block. CCRC::Calc 0x004014A0: called at the mates (f 0.25/1.25), expanded in this row (2.5/12.5); landed 0x008DDAD0 in the same TU uses /d2inlT65 with CCRC_PASS22_BODY.
+  - One threshold per callee fits all four functions only if the sky's f exceeds loop 2's; in our profile both LowerBound sites are 6.25.
+  - Already-expanded inlines (the CRC loops) do not change later sites' f. No retail back-edge encloses the sky block. Ego_d's big lines (582 B at 3298, ~520-545 B at each block's GetTC) do not single out the sky.

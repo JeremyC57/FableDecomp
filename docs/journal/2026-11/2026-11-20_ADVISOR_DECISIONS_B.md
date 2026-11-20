@@ -205,3 +205,7 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - existing Ego_d float locals;
   - confirm `it_second` is an Ego_d local.
 - **A second fitted row in the same TU** does not count as a second source for the revision-difference hypothesis.
+- **Follow-up ruling (TU-mate results).** All four rows are in creature_modes.obj (FableWin #217/#230/#274/#284).
+  - /d2inlT plus CCRC_PASS22_BODY is allowed in principle: the owner's inline-budget rule, line 2 with ablations, with 0x008DDAD0 as the same-TU precedent. It is not sufficient: no T splits two sites with equal callee, f and score (loop 2 and sky LowerBound, 6.25/63).
+  - **Correction:** "a define that breaks a mate is out" is withdrawn for this TU. Retail expands LowerBound, the destructor and Calc in this row, so their bodies are visible in the TU. The flagless mates 0x008E16A0 / 0x008E20F0 / 0x008E24F0 that break hide those bodies; that is re-port debt on them.
+  - One bounded pass before parking: cmpcomdat of the four callees (incl. Calc v 0x004014A0); the instantiation identity of the sky's expanded callees; Calc argument constness per site; the sky's own f (destructor 12.5 v LowerBound 6.25; T 57..62 with no device); FableWin v Ego_d length.
