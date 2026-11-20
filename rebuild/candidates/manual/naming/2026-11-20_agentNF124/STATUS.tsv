@@ -1,0 +1,35 @@
+address	change	grade	test	grades_used	entries	note
+0x0064BE45	none	-	-	0	q4747	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x00733480	none	-	-	0	q4747	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x0073A680	none	-	-	0	q6453 q6455	not-a-binder: self row already defines the claim ?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ; unchanged
+0x0073AAC0	none	-	-	0	q6454	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x0073ACC0	none	-	-	0	q6408	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x0075B8D0	none	-	-	0	q4802	not-a-binder: self row already defines the claim (vector<C3DVector>::operator=); unchanged
+0x00762E10	none	-	-	0	q4802	not reached: entry q4802 open (still binds a stand-in operator= spelling)
+0x00764E90	none	-	-	0	q4802	not reached: entry q4802 open (still binds a stand-in operator= spelling)
+0x0076D270	none	-	-	0	q6326	not-a-binder: self row already defines the claim ?AddAllyThing@CTCEnemy@@QAEXABVCThing@@@Z; unchanged
+0x0079ACC0	none	-	-	0	q6326	not-a-binder: already binds ?AddAllyThing@CTCEnemy@@QAEXABVCThing@@@Z (NF120 probe); NF122 lock, untouched
+0x00848FD0	none	-	-	0	q6408	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008676A0	none	-	-	0	q6408	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x0089C100	callee respell (AddAlly/RemoveAlly@CTCAllies_Retail -> AddAllyThing/RemoveAllyThing@CTCEnemy) via shared CThing.h + CTCEnemy.h opt-ins	RELOCATION_MATCH	PASS	4	q6326	ported; CThing_Retail/CTCAllies_Retail/component-map stand-ins removed; own leaf unchanged (QBE; both PDBs say ABE: NAME_FIXES)
+0x008A08A0	none	-	-	0	q6408	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008A1A10	none	-	-	0	q6408	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008C1900	none	-	-	0	q6408	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008C1E80	none	-	-	0	q6408	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008D6580	ported onto CTCCreatureModeManager.h / NCreatureMode_CModeSitFloor.h / CWorld.h / GFRandom.h; own leaf QAE->UAE (virtual override)	RELOCATION_MATCH	PASS	4	q6453 q6454	binds GetWorld 0x0073A680 + OnActivate 0x0073AAC0 claims; GetNoFrames 0x0073A6F0 now the self-row PDB spelling (IAE EMode); RENAMES s1 leaf-only (no exe refs to 0x008D6580)
+0x008D7630	none	-	-	0	q6453 q6455	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008D8CE0	none	-	-	0	q6454	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008D8EA0	ported: local CModeBase -> shared nested CModeBase (CTCCreatureModeManager.h); own leaf QAE->UAE (slot-3 override)	RELOCATION_MATCH	PASS	3	q6453	binds GetWorld 0x0073A680 claim; base FrameUpdate 0x0073AC50 now ?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ (already bound by 0x008DF9C0); other local models kept; no exe refs to 0x008D8EA0
+0x008DC900	none	-	-	0	q6453 q6455	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008DCB60	none	-	-	0	q6453 q6455	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008DDD70	none	-	-	0	q6453 q6455	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008E7290	none	-	-	0	q6454	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008E7CF0	none	-	-	0	q6453 q6455	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008E9850	none	-	-	0	q6453 q6455	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008E9A30	none	-	-	0	q6454	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008EA500	none	-	-	0	q6453 q6455	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x008EACB0	none	-	-	0	q6453 q6454 q6455	not-a-binder: already binds both claims ?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ (0x0073A680) and ?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ (0x0073AAC0) (NF120 probe); unchanged
+0x00950C30	none	-	-	0	q6408	not reached: entry open (unchanged; HEAD spelling per NF120 probe.tsv)
+0x00A6CB20	none	-	-	0	q4802	not reached: entry q4802 open (still binds a stand-in operator= spelling)
+0x00B20B60	none	-	-	0	q4802	not reached: entry q4802 open (still binds a stand-in operator= spelling)
+0x00B20FD0	port attempted (local C3DVector/CArray/CCardinalSpline -> CCardinalSpline.h)	DIFFER(177v177)	n/a	3	q4802	blocked: port after 3 forms; best draft work/00b20fd0_blocked.cpp (This-first count compare): loads match, only cmp eax,ebx (retail) v cmp ebx,eax at +0x58 differs; Prev-first and named-count forms also reorder the loads. HEAD binds ??4?$CArray@VC3DVector@@@@QAEAAV0@ABV0@@Z via a hand-declared local CArray::operator=

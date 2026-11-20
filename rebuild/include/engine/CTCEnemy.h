@@ -25,6 +25,16 @@ public:
     static bool FABLE_FASTCALL AreThingsEnemies(const CThing&,const CThing&);
 #endif
     void SetFaction(const CCharString& faction);
+#ifdef FABLE_RETAIL_CTCENEMY_ADDALLYTHING
+    // Opt-in (NF124, q6326): Ego_r.pdb 0x0077B360 + FableWin.pdb 0x02606170 ?AddAllyThing@CTCEnemy@@QAEXABVCThing@@@Z = retail 0x0076D270
+    // (landed self row; CTCSummonSpell::CreateMinion 0x0079ACC0 binds it).
+    void AddAllyThing(const CThing& thing);                                   // 0x0076D270
+#endif
+#ifdef FABLE_RETAIL_CTCENEMY_REMOVEALLYTHING
+    // Opt-in (NF124, q6326): Ego_r.pdb 0x0077B3E0 + FableWin.pdb 0x02606200 ?RemoveAllyThing@CTCEnemy@@QAEXABVCThing@@@Z = retail 0x0076C850
+    // (landed self row; EntityUnsetThingAsAllyOfThing 0x008A7EE0 binds it).
+    void RemoveAllyThing(const CThing& thing);                                // 0x0076C850
+#endif
 protected:
     virtual void OnSerialise(CPersistContext&,bool);
 private:
@@ -56,5 +66,5 @@ private:
                                             bool ignore_followers);           // 0x0076CFE0
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCEnemy)==28);
+FABLE_STATIC_ASSERT_AT(59, sizeof(CTCEnemy)==28);
 #endif

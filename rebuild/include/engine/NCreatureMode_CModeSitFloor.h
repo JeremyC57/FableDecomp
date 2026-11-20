@@ -30,6 +30,11 @@ public:
     // the CModeBase slot-3 override (needs FABLE_RETAIL_CMODEBASE_VIRTUALS). Declaration only: an override adds no slot and no layout.
     virtual void FrameUpdate();                                          // slot 3, 0x008D6C80
 #endif
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_ONACTIVATE
+    // NF124 opt-in (q6453 / q6454, row 0x008D6580): Ego_r.pdb 0x008178B0 / FableWin.pdb 0x02841C90 ?OnActivate@CModeSitBase@NCreatureMode@@UAEXXZ,
+    // the CModeBase slot-5 override (needs FABLE_RETAIL_CMODEBASE_VIRTUALS). Declaration only: an override adds no slot and no layout.
+    virtual void OnActivate();                                           // slot 5, 0x008D6580
+#endif
 #ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_REMOVEMODEWITHACTION
     // NF83 opt-in (round 7, row 0x008D7230): Ego_r.pdb 0x008185A0 / FableWin.pdb 0x028423A0
     // ?RemoveModeWithAction@CModeSitBase@NCreatureMode@@QAEXABVCCreatureActionBase@@@Z (public; PRemoveAction.Reset(action.Clone())),

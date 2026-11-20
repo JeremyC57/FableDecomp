@@ -1,0 +1,11 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x008D6580	NCreatureMode::CModeSitBase	OnActivate	?OnActivate@CModeSitBase@NCreatureMode@@UAEXXZ	NCreatureMode::CModeSitBase::OnActivate	?OnActivate@CModeSitBase@NCreatureMode@@QAEXXZ	leaf-only (virtual): Ego_r.pdb 0x008178B0 + FableWin.pdb 0x02841C90 UAE; CModeSitChair vtable slot 5 (inherited); the row moved onto CTCCreatureModeManager.h / NCreatureMode_CModeSitFloor.h; exe scan: no landed row references 0x008D6580
+0x008D8EA0	NCreatureMode::CModeBlock	FrameUpdate	?FrameUpdate@CModeBlock@NCreatureMode@@UAEXXZ	NCreatureMode::CModeBlock::FrameUpdate	?FrameUpdate@CModeBlock@NCreatureMode@@QAEXXZ	leaf-only (virtual): Ego_r.pdb 0x0081A970 + FableWin.pdb 0x02843330 UAE; vtable 0x01267C3C slot 3; the row moved onto the shared nested CModeBase; exe scan: no landed row references 0x008D8EA0
+# Section 2
+0x0089C100	?AddAlly@CTCAllies_Retail@@QAEXPAUCThing_Retail@@@Z	?AddAllyThing@CTCEnemy@@QAEXABVCThing@@@Z	0x0076D270
+0x0089C100	?RemoveAlly@CTCAllies_Retail@@QAEXPAUCThing_Retail@@@Z	?RemoveAllyThing@CTCEnemy@@QAEXABVCThing@@@Z	0x0076C850
+0x008D6580	?OnActivate@CModeBase@@QAEXXZ	?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	0x0073AAC0
+0x008D6580	?GetWorld@CModeBase@@QBEPAVCWorld@@XZ	?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ	0x0073A680
+0x008D6580	?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@@QAEJK@Z	?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@CTCCreatureModeManager@@IAEJW4EMode@NCreatureMode@@@Z	0x0073A6F0
+0x008D8EA0	?GetWorld@CModeBase@@QBEPAVCWorld@@XZ	?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ	0x0073A680
+0x008D8EA0	?FrameUpdate@CModeBase@@QAEXXZ	?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ	0x0073AC50

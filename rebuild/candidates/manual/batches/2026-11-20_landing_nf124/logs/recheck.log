@@ -1,0 +1,16 @@
+addr       parity           behav  name
+0089c100   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0089c100   RELOCATION_MATCH PASS   CGameScriptInterface::ImpSetEntityAsAllyOfThing
+008d6580   RELOCATION_MATCH PASS   NCreatureMode::CModeSitBase::OnActivate
+008d8ea0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008d8ea0   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+008d8ea0   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+008d8ea0   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+008d8ea0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+008d8ea0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008d8ea0   RELOCATION_MATCH PASS   NCreatureMode::CModeBlock::FrameUpdate
+
+WINS: 3
+  0089c100 RELOCATION_MATCH CGameScriptInterface::ImpSetEntityAsAllyOfThing
+  008d6580 RELOCATION_MATCH NCreatureMode::CModeSitBase::?OnActivate@CModeSitBase@NCreatureMode@@UAEXXZ
+  008d8ea0 RELOCATION_MATCH NCreatureMode::CModeBlock::?FrameUpdate@CModeBlock@NCreatureMode@@UAEXXZ

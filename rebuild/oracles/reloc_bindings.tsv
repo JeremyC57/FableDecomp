@@ -3884,8 +3884,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 @TCShop_GetName@4	00706290	0089b330
 ?SetOnFire@CTCFlammable_Retail@@QAEXXZ	00780410	0089bcd0
 ?IsOnFire@CTCFlammable_Retail@@QAE_NXZ	00780400	0089bd90
-?AddAlly@CTCAllies_Retail@@QAEXPAUCThing_Retail@@@Z	0076d270	0089c100
-?RemoveAlly@CTCAllies_Retail@@QAEXPAUCThing_Retail@@@Z	0076c850	0089c100
 ?Final@IDeedIface@@QAE_NPAXH@Z	006c5e90	0089c8a0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0089c8a0
 ?CanThingBe_Sensed_ByOtherThing@CGameScriptInterface@@ABE_NABVCScriptThing@@0J@Z	0089c910	0089cd50
@@ -11241,7 +11239,6 @@ __imp__accept@12	01440524	008f8ea0
 ??_7CActionEventCameraShake@NCreatureAction@@6B@	0125c0fc	00695480
 ??_7CActionEventSound@NCreatureAction@@6B@	0125c11c	006954f0
 ??_7CActionEventShot@NCreatureAction@@6B@	0125c13c	00695560
-?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@@QAEJK@Z	0073a6f0	008d6580
 ?RemoveFromCombat@CTCCombat@@QAEXXZ	00733580	008d8fe0
 ?OnActivate@CModeDragonFlying@NCreatureMode@@QAEXXZ	008dbb30	008dc6c0
 ?EndBeamEffect@CModeDragonStrafeBurninate@NCreatureMode@@QAEXXZ	008d7bb0	008dcb00
@@ -17927,7 +17924,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?ReleaseMissile@CCreatureAction_FireMissileWeapon@@QAEXPAPAVCThing@@0PAJ@Z	008d5790	008d58d0
 ?CreateShot@@YIPAVCThing@@JPAV1@0PBV1@MMMABU?$DefPointer@VCMeleeCombatAbilityDef@@@@PBVC3DVector@@PBVCRightHandedSet@@@Z	007c0ad0	008d5970
 ??0CCreatureAction_FireMissileWeapon@@QAE@ABV0@@Z	008d6320	008d62f0
-?GetWorld@CModeBase@@QBEPAVCWorld@@XZ	0073a680	008d6580
 ?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@PBVCAnimFilterBase@@J@Z	00662b10	008d6780
 ?GetHeadPosWithOffset@@YI?AVC3DVector@@PAVCThing@@@Z	0085ee50	008d7270
 ?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	008d7630
@@ -40047,3 +40043,4 @@ __imp__setsockopt@20	01440534	008f8cc0
 ?ReplaceTankard@CTCTavernTankard@@QAEXXZ	00947c30	0096cfc0
 ?SetOccupant@CTCSeatTable@@QAEXJPAVCThing@@@Z	007b85f0	0096cfc0
 ?Reset@CTCTrap@@QAEXXZ	00787c07	0097b780
+?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@CTCCreatureModeManager@@IAEJW4EMode@NCreatureMode@@@Z	0073a6f0	008d6580

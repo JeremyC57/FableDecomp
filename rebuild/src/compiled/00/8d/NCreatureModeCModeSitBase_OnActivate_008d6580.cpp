@@ -1,5 +1,5 @@
 // NCreatureMode::CModeSitBase::OnActivate() -- base activation, then seed the idle counter with a random frame count derived from the mode's combination-idle delay
-// Leaf: ?OnActivate@CModeSitBase
+// Leaf: ?OnActivate@CModeSitBase@NCreatureMode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D6580, 144 bytes, two `ret` tails; CModeSitChair vtable slot 5 (inherited).
 // Callees: CModeBase::OnActivate @ 0x0073AAC0 (qualified), virtual GetType (slot 1),
 //   CModeBase::GetNoFramesBeforePlayingCombinationIdleAnims(EMode) @ 0x0073A6F0 (as the landed CModeStandBase::AnimUpdate
@@ -8,50 +8,37 @@
 // Name: FableWin.pdb `?OnActivate@CModeSitBase@NCreatureMode@@UAEXXZ` (the catalog's CModeSitChair::vfunc_5 is inherited).
 // Layout: Ego_r.pdb CModeSitBase (0x2c): IdleCounter +0x1c, PlayingIdle +0x20, PRemoveAction +0x24.
 // Constants: 0x01238174 = 0.75f, 0x01285670 = -1.5f.
-struct CRandomSeed {
-    unsigned long Seed;
-};
-long __fastcall GFROR13(unsigned long);   // 0x00497890
-
-class CWorld {
-public:
-    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
-private:           // 0x0049D810
-};
-
-struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
-    virtual unsigned long GetType() const; // slot 1
-    void*         ParentThing;             // +0x04
-    unsigned char _body[0x14];
-    CWorld* GetWorld() const;              // 0x0073A680
-    long GetNoFramesBeforePlayingCombinationIdleAnims(unsigned long mode);   // 0x0073A6F0
-    void OnActivate();                     // 0x0073AAC0
-};
-
-namespace NCreatureMode {
-class CModeSitBase : public CModeBase { public:
-    long          IdleCounter;             // +0x1c
-    bool          PlayingIdle;             // +0x20
-    unsigned char PRemoveAction[8];        // +0x24 CCountedPointer<CCreatureActionBase>
-    void OnActivate();
-};
-}
-
-inline unsigned long GFRandom(CRandomSeed* random)
-{
-    random->Seed = random->Seed * 0x24a1 + 0x24df;
-    random->Seed = GFROR13(random->Seed);
-    return random->Seed;
-}
+// Name fix (NF124, 2026-11-20, q6453 / q6454): the local CModeBase / CModeSitBase / CWorld models replaced by the shared
+//   engine/CTCCreatureModeManager.h (FABLE_RETAIL_CMODEBASE_VIRTUALS + NF124 opt-in _GETNOFRAMESBEFOREPLAYINGCOMBINATIONIDLEANIMS),
+//   engine/NCreatureMode_CModeSitFloor.h (NF124 opt-in FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_ONACTIVATE) and engine/CWorld.h. Callees now bind
+//   the PDB spellings ?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ (0x0073AAC0), ?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ
+//   (0x0073A680) and ?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@CTCCreatureModeManager@@IAEJW4EMode@NCreatureMode@@@Z (0x0073A6F0);
+//   the row's own leaf is now the virtual override (was the non-virtual ?OnActivate@CModeSitBase@NCreatureMode@@QAEXXZ).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODEBASE_GETNOFRAMESBEFOREPLAYINGCOMBINATIONIDLEANIMS
+#define FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_ONACTIVATE
+#define FABLE_RETAIL_CWORLD
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/NCreatureMode.h"
+#include "engine/CThing.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/NCreatureMode_CModeSitFloor.h"
+#include "engine/CWorld.h"
+#include "engine/GFRandom.h"
 
 void NCreatureMode::CModeSitBase::OnActivate()
 {
     CModeBase::OnActivate();
-    float frames = (float)GetNoFramesBeforePlayingCombinationIdleAnims(GetType());
+    float frames = (float)GetNoFramesBeforePlayingCombinationIdleAnims((NCreatureMode::EMode)GetType());
     long minFrames = (long)(frames * 0.75f);
-    CRandomSeed* random = ((CRandomSeed*)((CWorld*)(GetWorld()))->GetWorldSeed());
+    unsigned long* seed = GetWorld().GetWorldSeed();
     unsigned long range = -minFrames - (long)(frames * -1.5f);
-    unsigned long r = GFRandom(random);
-    IdleCounter = (range ? r % range : 0) + minFrames;
+    IdleCounter = GFRandom(range, seed) + minFrames;
 }

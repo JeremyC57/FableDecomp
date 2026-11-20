@@ -1,5 +1,5 @@
 // NCreatureMode::CModeBlock::FrameUpdate() -- while blocking, a creature with a look component that is a registered combatant looks at the live creature it is attacking; then the base frame update
-// Leaf: ?FrameUpdate@CModeBlock
+// Leaf: ?FrameUpdate@CModeBlock@NCreatureMode@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D8EA0, 129 bytes (+ int3 padding), `ret`; vtable 0x01267C3C slot 3.
@@ -16,8 +16,11 @@
 //   the info pointer at each use (a named `attacked` local moves it from ecx to eax and adds a `mov ecx,eax`).
 // Name fix (agentNF26, 2026-11-12): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ
 //   (Ego_r.pdb + FableWin.pdb; body GetCombatManager().IsAttacker(*this)); was IsRegisteredCombatant (in neither PDB).
-class CTCBase;
-
+// Name fix (NF124, 2026-11-20, q6453): the local CModeBase model replaced by the shared nested CTCCreatureModeManager::CModeBase
+//   (engine/CTCCreatureModeManager.h, FABLE_RETAIL_CMODEBASE_VIRTUALS): GetWorld binds ?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ
+//   (0x0073A680; was ?GetWorld@CModeBase@@QBEPAVCWorld@@XZ) and the qualified base call ?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ
+//   (0x0073AC50, slot 3). CModeBlock's FrameUpdate is the slot-3 override (FableWin.pdb UAE; was non-virtual QAE). The row's other local
+//   models (CWorld, CCombatManager, CTCLook, CThingCreatureBase) are kept as they were.
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
@@ -48,27 +51,22 @@ class CWorld { public:
     CCombatManager* CombatManager;         // +0x4c
 };
 
-struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
-    CThingCreatureBase* ParentThing;       // +0x04
-    unsigned char       _body[0x14];       // WeaponBasedFilter, FramesBeforeRemovingSelf, Active
-    CWorld* GetWorld() const;              // 0x0073A680
-    void FrameUpdate();                    // 0x0073AC50
-};
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#include "engine/CTCCreatureModeManager.h"
 
 namespace NCreatureMode {
-struct CModeBlock : CModeBase {            // vtable 0x01267C3C
+struct CModeBlock : CTCCreatureModeManager::CModeBase {   // vtable 0x01267C3C
     CThingCreatureBase* PCreature;         // +0x1c
-    void FrameUpdate();
+    virtual void FrameUpdate();            // slot 3
 };
 }
 
 void NCreatureMode::CModeBlock::FrameUpdate()
 {
     CTCLook* look;
-    if (ParentThing->GetTC(TCI_LOOK, &look)) {
+    if (ParentThing.GetTC(TCI_LOOK, &look)) {
         if (PCreature->IsInMeleeAsAttacker()) {
-            CCombatManager* combatManager = GetWorld()->CombatManager;
+            CCombatManager* combatManager = GetWorld().CombatManager;
             CCombatantInfo* info = combatManager->GetCombatantInfo(PCreature);
             if (info->AttackerInfo.Attacked != 0 && !info->AttackerInfo.Attacked->IsDead())
                 look->LookAtPos(&info->AttackerInfo.Attacked->GetPos(), 0x21);

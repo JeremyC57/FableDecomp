@@ -66,6 +66,13 @@ public:
         // mode+8, the WeaponBasedFilter CAnimFilterOfGroup). No layout change.
         const CAnimFilterBase& GetDefaultAnimFilter() const { return *(const CAnimFilterBase*)WeaponBasedFilter; }
 #endif
+#ifdef FABLE_RETAIL_CMODEBASE_GETNOFRAMESBEFOREPLAYINGCOMBINATIONIDLEANIMS
+    // NF124 opt-in (q6453, row 0x008D6580): Ego_r.pdb 0x00751090 / FableWin.pdb 0x024C3200
+    // ?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@CTCCreatureModeManager@@IAEJW4EMode@NCreatureMode@@@Z (protected), out of line
+    // at 0x0073A6F0 (the landed self row defines this spelling). Needs engine/NCreatureMode.h (EMode) first. Declaration only.
+    protected:
+        long GetNoFramesBeforePlayingCombinationIdleAnims(NCreatureMode::EMode mode);           // 0x0073A6F0
+#endif
     protected:
         CThing& ParentThing;
         unsigned char WeaponBasedFilter[12]; // Original CAnimFilterOfGroup.

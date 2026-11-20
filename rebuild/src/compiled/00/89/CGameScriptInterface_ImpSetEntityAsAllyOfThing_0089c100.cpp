@@ -1,110 +1,38 @@
 // CGameScriptInterface::ImpSetEntityAsAllyOfThing(const CScriptThing& entity, const CScriptThing& other, bool isAlly) const -- add the other thing to (or remove it from) the ally list of the entity's kind-0x49 component when both script things are valid
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089C100, length 131 bytes.
 // Callees: the script things' slots 75 (+0x12c) and 11 (+0x2c), the component-map LowerBound @ 0x0040F020,
-//          the ally add @ 0x0076D270 (manifest "CCreature_AddAllyToList") and the ally removal @ 0x0076C850
-//          (manifest "CCreatureActionBase::AddDependentThing", propagated).
+//          CTCEnemy::AddAllyThing @ 0x0076D270 and CTCEnemy::RemoveAllyThing @ 0x0076C850.
 // Shape: the other thing is fetched before the flag test; the `push eax ; mov ecx,esi` is shared by both arms.
 // Leaf: ImpSetEntityAsAllyOfThing
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+// Name fix (NF124, 2026-11-20, q6326): the CThing_Retail / CTCAllies_Retail / component-map stand-ins replaced by the shared
+//   engine/CThing.h (GetTC, FABLE_RETAIL_CTHING_GETTC_EXPANDED) and engine/CTCEnemy.h (opt-ins FABLE_RETAIL_CTCENEMY_ADDALLYTHING /
+//   _REMOVEALLYTHING). Kind 0x49 is TCI_ENEMY; the callees are Ego_r.pdb 0x0077B360 / 0x0077B3E0 + FableWin.pdb 0x02606170 / 0x02606200
+//   ?AddAllyThing@CTCEnemy@@QAEXABVCThing@@@Z / ?RemoveAllyThing@CTCEnemy@@QAEXABVCThing@@@Z (were ?AddAlly / ?RemoveAlly@CTCAllies_Retail).
+//   The row's own CGameScriptInterface model is kept as it was (its own leaf is unchanged here).
 #include "fable_compiler.h"
-struct CTCBase_Retail;
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // the thing's component map at +0x44: a sorted vector of pairs
-    STCEntry_Retail* m_pFirst;
-    STCEntry_Retail* m_pLast;
-    STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound; the key by address)
-    const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation)
-    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
-    {
-        const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
-        if (it == m_pLast || kind < it->first)
-            it = m_pLast;
-        return ((CTCBase_Retail*)it->second);
-    }
-    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
-    {
-        const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
-        if (it == m_pLast || kind < it->first)
-            it = m_pLast;
-        return ((CTCBase_Retail*)it->second);
-    }
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
-struct CThing_Retail {
-    unsigned char  _pad00[0x10];
-    unsigned char  m_type;                         // +0x10 (1 = a creature)
-    unsigned char  _pad11[0xf];
-    unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
-    unsigned char  _pad40[4];
-    CTCMap_Retail  m_tcs;                          // +0x44
-    unsigned char  _pad50[0x41];
-    unsigned char  m_dead : 1;                     // +0x91 bit 0
-    unsigned char  m_91_1 : 7;
-    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
-};
-class CThingPlayerCreature : public CThing_Retail { };
-FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CTCBase.h"
 #include "engine/CCountedPointer.h"
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+#define FABLE_RETAIL_CTCENEMY_ADDALLYTHING
+#define FABLE_RETAIL_CTCENEMY_REMOVEALLYTHING
+#include "engine/CTCEnemy.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-class CPlayer { public:
-    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
-    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
-};
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CCharString;
 struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 class CWorld; class CMainGameComponent; class CDisplayEngine; class CThingSearchTools;
-FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
-{
-    CTCBase_Retail* tc;                            // deliberately unset when the component is absent (retail reads a dead slot)
-    if (thing->HasTC(kind))
-        tc = GetTC(thing, kind);
-    return tc;
-}
-FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresentConst(const CThing_Retail* thing, long kind)
-{
-    CTCBase_Retail* tc;
-    if (thing->HasTC(kind))
-        tc = GetTCConst(thing, kind);
-    return tc;
-}
-template <class T> FABLE_FORCEINLINE bool GetTCOut(CThing_Retail* thing, long kind, T** out)   // the out-parameter lookup: the component stays in eax
-{
-    if (thing->HasTC(kind)) {
-        *out = (T*)GetTC(thing, kind);
-        return true;
-    }
-    return false;
-}
-class CCharString { public:                               // fable_string.h layout: one data-block pointer
-    void* m_pData;
-    CCharString(const char* text, long length);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing exists and is not dead
-{
-    CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
-    return t && !t->m_dead;
-}
-struct CTCAllies_Retail {
-    void AddAlly(CThing_Retail* thing);            // 0x0076D270
-    void RemoveAlly(CThing_Retail* thing);         // 0x0076C850
-};
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
@@ -119,14 +47,14 @@ class CGameScriptInterface { public:
 void CGameScriptInterface::ImpSetEntityAsAllyOfThing(const CScriptThing& entity, const CScriptThing& other, bool isAlly) const
 {
     if (entity.IsAlive() && other.IsAlive()) {
-        CThing_Retail* t = ((CThing_Retail*)entity.GetPThing());
-        if (t->HasTC(0x49)) {
-            CTCAllies_Retail* allies = (CTCAllies_Retail*)GetTC(t, 0x49);
-            CThing_Retail* o = ((CThing_Retail*)other.GetPThing());
+        CThing* t = entity.GetPThing();
+        CTCEnemy* enemy;
+        if (t->GetTC(TCI_ENEMY, &enemy)) {
+            const CThing* o = other.GetPThing();
             if (isAlly)
-                allies->AddAlly(o);
+                enemy->AddAllyThing(*o);
             else
-                allies->RemoveAlly(o);
+                enemy->RemoveAllyThing(*o);
         }
     }
 }
