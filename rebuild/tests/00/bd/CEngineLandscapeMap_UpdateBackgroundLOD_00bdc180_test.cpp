@@ -2,10 +2,15 @@
 #define FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_GETBLOCKDATA
 #define FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_ISBLOCKLOADED_CONST
 #define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_CTOR
+// NF188 (2026-11-20, q4251): the row's stream is the shared engine/CMemoryDataInputStream.h class (LOD_SHARED opt-in); its implicit
+//   destructor calls ~CDataStream, so the test stubs the stream classes' out-of-line members instead of a local destructor.
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_SHARED
 #include <new>
 #include <stdio.h>
 #include <string.h>
 #include "candidates/landscape_background_lod_compiled.h"
+#include "fable_string.h"
+#include <stdlib.h>
 
 static int g_addRequests, g_finished, g_constructed, g_defaults, g_headers, g_updates, g_releases;
 static bool g_loaded;
@@ -22,8 +27,25 @@ void CEngineStaticMapFileBlockManager::AddRequest(long, unsigned long, bool) { +
 bool CEngineStaticMapFileBlockManager::IsBlockLoaded(long) const { return g_loaded; }
 const unsigned char* CEngineStaticMapFileBlockManager::GetBlockData(long) const { return g_blockData; }
 void CEngineStaticMapFileBlockManager::BankFileList_RemoveFinished() { ++g_finished; }
+CBaseClass::CBaseClass() {}
+CBaseClass::~CBaseClass() {}
+CBaseClassNonCopyable::CBaseClassNonCopyable() {}
+CBaseClassNonCopyable::~CBaseClassNonCopyable() {}
+CDataStream::~CDataStream() {}
+CDataInputStream::CDataInputStream() {}
+void CDataInputStream::Close() { abort(); }
+void CDataInputStream::SetPosition(unsigned long) { abort(); }
+void CDataInputStream::ReadCompressed(void*, long) { abort(); }
+void CDataInputStream::ReadZlibCompressed(void*, long) { abort(); }
+CCharString CDataInputStream::ReadNullTerminatedString() { abort(); return CCharString(); }
+CWideString CDataInputStream::ReadNullTerminatedWString() { abort(); return CWideString(); }
+void CDataInputStream::InternalReadNextSourceChunk(const unsigned char*&, long&) { abort(); }
+bool CDataInputStream::NeedsBufferedRead(long) { abort(); return false; }
+void CDataInputStream::InternalReadUnbuffered(unsigned char*, long) { abort(); }
+void CMemoryDataInputStream::ReadCompressed(void*, long) { abort(); }
+CCharString CMemoryDataInputStream::ReadNullTerminatedString() { abort(); return CCharString(); }
+CWideString CMemoryDataInputStream::ReadNullTerminatedWString() { abort(); return CWideString(); }
 CMemoryDataInputStream::CMemoryDataInputStream(const void*, unsigned long) {}
-CMemoryDataInputStream::~CMemoryDataInputStream() {}
 CLandscapeBackgroundTreeNode::CLandscapeBackgroundTreeNode(CEngineLandscapeMap*, void*, long) { ++g_constructed; }
 void CLandscapeBackgroundTreeNode::BuildDefaultSection(unsigned long, unsigned long, unsigned long width, unsigned long height)
 { ++g_defaults; g_width = width; g_height = height; }

@@ -23,11 +23,17 @@
 // NF72 (round 7, q10907; access-only): BuildGroup is private const in Ego_r.pdb 0x00B16030 + FableWin.pdb 0x02F75620
 //   (?BuildGroup@CDataBankGroupEntry@NGameText@@ABEXXZ; CDataBank calls it as a friend, agentNF69's 0x009C8890); the local declaration moves
 //   under private: (was the public QAE spelling). Bytes unchanged.
+// NF188 (2026-11-20, q4251): the row-local CMemoryDataInputStream stand-in (a user-declared virtual dtor that bound
+//   ??1CMemoryDataInputStream@@UAE@XZ at 0x00993B10) is gone; the stream is the shared engine/CMemoryDataInputStream.h class, whose
+//   compiler-generated destructor calls ~CDataStream 0x00993B10 directly (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440).
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
 #define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
 #include "engine/CResource.h"
+#include "engine/CMemoryDataInputStream.h"
 #include "engine/CResourceList.h"
 
 class CBankFileAsyncData { public:
@@ -66,12 +72,6 @@ template <class T> class CCountedPointer { public:
     }
 };
 
-class CDataInputStream;
-class CMemoryDataInputStream { public:
-    unsigned char _body[0x18];
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    virtual ~CMemoryDataInputStream();                       // 0x00993B10
-};
 
 namespace NGameText {
 class CGroupEntry : public CResource { public:

@@ -1,0 +1,21 @@
+DIFF 00521240 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 006f9f90 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 009ad6e0 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 009c8700 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 009c8fb0 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00a42ea0 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00a4df10 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00a62120 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00a9b740 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00ac3bd0 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00ac3e00 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00adfdc0 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00bdc180 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00bde390 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00bde860 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+NO-OWNER-OBJ 00beb490 0129b860 ??_7CMovableResource@@6B@
+MISSING 00bf6930 00bf6130 ?GetPatch@CLandscapeBackgroundTreeNode@@QAEPAVCLandscapeBackgroundPatch@@XZ owner leaf None True False
+MISSING 00bf6930 00bf6160 ?GetSplitBranch@CLandscapeBackgroundTreeNode@@QAEPAVCLandscapeBackgroundSubNodeSplitBranch@@XZ owner leaf None True False
+DIFF 00bf8030 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00bf84c0 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+manual 00bf6930 -> 00bf6130 GetPatch / 00bf6160 GetSplitBranch vs the owners' _Retail stand-in symbols: 36 = 36 bytes each, equal

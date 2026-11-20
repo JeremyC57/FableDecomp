@@ -18,16 +18,17 @@
 //   unlock, pool free) and calls the out-of-line copy 0x00BF8C10 at every other delete, so the abort path is written out and
 //   the other deletes call the destructor stand-in by name (the inline-once band); the split-branch path sits in an else
 //   block so both streams share the frame word.
+// NF188 (2026-11-20, q4251): the row-local CMemoryDataInputStream stand-in (a user-declared destructor that bound a
+//   CMemoryDataInputStream dtor spelling at 0x00993B10) is replaced by the shared engine/CMemoryDataInputStream.h class, whose
+//   compiler-generated destructor calls ~CDataStream 0x00993B10 directly (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 +
+//   FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 typedef unsigned int size_t;
 double __fastcall GFGetFastSubFrameTimer();         // 0x009E1C70
 enum LS_LOADING_STATUS { LS_NONE, LS_LOADED, LS_LOADING, LS_FAILED };
 class CDataInputStream;
-class CMemoryDataInputStream { public:
-    unsigned char _d[0x1c - 4];
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    virtual ~CMemoryDataInputStream();                      // 0x00993B10
-    operator CDataInputStream&() { return *reinterpret_cast<CDataInputStream*>(this); }
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 // Callee respelled (NF177, PRIORITY q12088): 0x00BE0480 was ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QAE_NJ@Z; now the Ego_r.pdb
 //   0x00A41DE0 / FableWin.pdb 0x02DF7220 const ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z (the self row's spelling).
 class CEngineStaticMapFileBlockManager { public:

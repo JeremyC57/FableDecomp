@@ -17,26 +17,18 @@
 // LoadMeshFile is the previous function of this TU (0x00A9B640): its landed body (and the C3DMeshFile ctor it
 // sits on, 0x00A9AE60) is compiled above under auto_inline(off) so VC7.1 knows the result object does not escape
 // and keeps the count block in a register for the copy-out, as retail does.
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 #include <string.h>
 
 #include "engine/CCountedPointer.h"
 
 
-class CDataInputStream { public:
-    virtual void Reserved0();
-    virtual void SetPosition(unsigned long position);   // slot 1
-    virtual unsigned long GetPosition();               // slot 2
-};
-class CMemoryDataInputStream : public CDataInputStream { public:
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    virtual ~CMemoryDataInputStream();                       // 0x00993B10
-    long  position;                                  // +0x04
-    long  sourceLength;                              // +0x08
-    long  chunkBase;                                 // +0x0c
-    long  chunkPosition;                             // +0x10
-    long  chunkLength;                               // +0x14
-    void* StreamSource;                              // +0x18
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 
 class CHandleBasedMemoryPool;
 class CScratchBuffer;

@@ -44,6 +44,18 @@ public:
     void BankFileList_RemoveFinished();
 };
 
+#ifdef FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_SHARED
+// NF188 opt-in (2026-11-20, q4251, row 0x00BDC180): the stream is the shared engine/CMemoryDataInputStream.h class (its
+// compiler-generated destructor calls ~CDataStream 0x00993B10 directly: ??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb
+// 0x03080440) instead of the local model below, whose user-declared destructor bound ??1CMemoryDataInputStream@@QAE@XZ there.
+#ifndef FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#endif
+#ifndef FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#endif
+#include "engine/CMemoryDataInputStream.h"
+#else // FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_SHARED
 class CMemoryDataInputStream
 {
 public:
@@ -64,6 +76,7 @@ FABLE_STATIC_ASSERT_AT(57, sizeof(CMemoryDataInputStream) == 0x1C);
 #else
 FABLE_STATIC_ASSERT_AT(42, sizeof(CMemoryDataInputStream) == 0x18);
 #endif
+#endif // FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_SHARED
 
 class CEngineLandscapeMap;
 void* __fastcall AllocateLandscapeBackgroundTreeNode(unsigned long bytes, CEngineLandscapeMap* map);

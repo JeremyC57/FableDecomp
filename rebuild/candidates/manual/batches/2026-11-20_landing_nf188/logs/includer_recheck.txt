@@ -1,0 +1,8 @@
+rechecked 60 of 64
+rechecked 64 of 64
+recheck done
+--- bad
+00bdc510	00bdc510   DIFFER(1044v1131) PASS   CEngineLandscapeMap::UpdateForeground
+00be7d70	00be7d70   DIFFER(1437v2983) PASS   CLandscapeBackgroundPatch::Load
+00be8920	00be8920   DIFFER(328v365)  PASS   CLandscapeBackgroundPatch::LoadCompressed
+00bf3b60	00bf3b60   DIFFER(825v1480) PASS   CEngineLandscapePatch::LoadForegroundPatch

@@ -10,6 +10,9 @@
 // after the argument pushes (`mov byte ptr [esp+0Fh],0FFh`).
 // Shape: the constructor body assigns A first, then R, G, B: that source order gives retail's +2/+1/+0 byte stores
 // and the late alpha store; the B, G, R, A (member order) and R, G, B, A forms store +0/+1/+2.
+// NF188 (2026-11-20, q5204): the traits member takes the value by reference, the Ego_r.pdb template member spelling
+//   ?TransferIn@?$CPersistTraits@VCRGBColour@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCRGBColour@@@Z (0x009E8C10, the landed self
+//   row's Leaf); respelled in place in this row's local traits model (was T*).
 class CPersistContext;
 class CStringParser;
 class CCharString;
@@ -22,7 +25,7 @@ public:
 
 template <class T> struct CPersistTraits {
     T DefaultVal;
-    void TransferIn(CPersistContext& context, CStringParser& parser, T* value);   // 0x009E8C10 for CRGBColour
+    void TransferIn(CPersistContext& context, CStringParser& parser, T& value);   // 0x009E8C10 for CRGBColour
 };
 
 // The wrapper from the shared header: private virtual TransferOut / TransferIn (both PDBs, @@EAE), member Object +4.
@@ -32,7 +35,7 @@ template <class T>
 void CPersistContext_TransferableComponent<T>::TransferIn(CPersistContext& context, CStringParser& parser)
 {
     CPersistTraits<T> traits;
-    traits.TransferIn(context, parser, Object);
+    traits.TransferIn(context, parser, *Object);
 }
 
 template void CPersistContext_TransferableComponent<CRGBColour>::TransferIn(CPersistContext& context, CStringParser& parser);

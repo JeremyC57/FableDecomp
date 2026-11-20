@@ -19,6 +19,10 @@
 //   the default `CEvent()` (empty user ctor) shares the spilled table pointer's frame slot (frame 0x74). The reads return
 //   through inline ReadSLONG/ReadULONG/ReadFLOAT helpers (so the counts stay in registers), and ReadEBOOL reads a byte and
 //   returns `value != 0` (retail `cmp byte ; setne`, which also gives retail's ebp/ebx assignment).
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
@@ -31,10 +35,9 @@ class CWideString { public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
 };
-class CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();                                           // 0x0099A300
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
 class CDiskFileWin32 : public CBaseClassNonCopyable { public:                         // vtable 0x0122D06C, 0x1c bytes
@@ -70,46 +73,9 @@ struct CByteVector {                                    // STLport vector<unsign
     unsigned char* GetData() { return (_M_finish - _M_start) ? _M_start : (unsigned char*)this; }
 };
 
-class CDataInputStream { public:
-    virtual void v00();
-    unsigned long        m_position;                    // +0x04
-    long                 StreamSize;                    // +0x08
-    const unsigned char* m_pData;                       // +0x0c
-    long                 SourceChunkStreamPos;          // +0x10
-    long                 m_remaining;                   // +0x14
-    CDataInputStream();                                 // 0x00993B20
-    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    FABLE_FORCEINLINE void Read(void* buffer, long size)
-    {
-        __int64 newPosition = (__int64)(m_position + size);
-        if (!IsValidPosition(newPosition))
-            return;
-        if (size <= m_remaining) {
-            memcpy(buffer, m_pData, size);
-            m_pData += size;
-            m_remaining -= size;
-            m_position += size;
-        }
-        else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
-    }
-    FABLE_FORCEINLINE long ReadSLONG() { long value; Read(&value, 4); return value; }
-    FABLE_FORCEINLINE unsigned long ReadULONG() { unsigned long value; Read(&value, 4); return value; }
-    FABLE_FORCEINLINE bool ReadEBOOL() { unsigned char value; Read(&value, 1); return value != 0; }
-    FABLE_FORCEINLINE float ReadFLOAT() { float value; Read(&value, 4); return value; }
-private:
-    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
-};
 struct SZeroed {
     long m_00;
     SZeroed() : m_00(0) { }
-};
-class CMemoryDataInputStream : public CDataInputStream { public:     // vtable 0x0123675C, 0x1c bytes
-    SZeroed m_source;                                   // +0x18
-    virtual void v00();
-    CMemoryDataInputStream() { }
-    virtual ~CMemoryDataInputStream();                          // 0x00993B10
-    void OpenMemorySource(void* data, unsigned long size);   // 0x00994570
 };
 
 namespace NAnimationEvents {
@@ -177,7 +143,7 @@ void CManager::LoadBinary(const CWideString& fileName)
             events.Start[j].Index = stream.ReadULONG();
             events.Start[j].ExternallyImported = stream.ReadEBOOL();
             events.Start[j].StopEvent = stream.ReadEBOOL();
-            events.Start[j].Time = stream.ReadFLOAT();
+            events.Start[j].Time = stream.ReadFloat();
         }
     }
 }

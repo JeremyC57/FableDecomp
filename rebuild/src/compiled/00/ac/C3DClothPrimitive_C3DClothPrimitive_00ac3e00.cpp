@@ -13,6 +13,10 @@
 // Layout: C3DClothPrimitive ParticleProgram CCountedPointer +4, MaterialIndex +0x10 (landed SaveBinary 0x00AC3B00);
 //   C3DMeshFileClothChunk MaterialIndex +0x30, program data (STLport vector) +0x38; C3DGroup2 BoneIndex +0 / VertexBlends +4
 //   (landed 0x00AC4150); retail CMemoryDataInputStream 0x1c.
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 extern "C" void __cdecl free(void* block);        // 0x00BFEA14
 
 #include "engine/CCountedPointer.h"
@@ -26,13 +30,9 @@ template <class T> class CArray { public:                 // retail STLport vect
     const void* GetData() const { return size() ? (const void*)_M_start : (const void*)this; }
 };
 
-class CDataInputStream { public: virtual ~CDataInputStream(); };
-class CMemoryDataInputStream : public CDataInputStream { public:
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    ~CMemoryDataInputStream();                       // 0x00993B10
-    long position, sourceLength, chunkBase, chunkPosition, chunkLength;
-    void* StreamSource;
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 
 class CMovableResourceMemoryPool;
 namespace N3DMeshAllocators { extern CMovableResourceMemoryPool* ClothMemoryPool; }   // 0x013D2D70: Ego_d.pdb ?ClothMemoryPool@N3DMeshAllocators@@3PAVCMovableResourceMemoryPool@@A (NF94, q11257; was g_ParticleMemoryPool)
@@ -63,11 +63,6 @@ class C3DMeshFileClothChunk { public:
     CCountedPointer<const C3DMeshFileGroupChunk> FindNextGroup(const CCountedPointer<const C3DMeshFileGroupChunk>& current) const;   // 0x00AC6520
 };
 
-class CBaseClassNonCopyable {
-protected:
-    CBaseClassNonCopyable();                                       // 0x0099A2F0
-    virtual ~CBaseClassNonCopyable();
-};
 
 class C3DClothPrimitive : public CBaseClassNonCopyable {
 public:

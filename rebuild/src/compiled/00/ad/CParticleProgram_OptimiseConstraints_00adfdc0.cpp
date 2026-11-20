@@ -9,6 +9,10 @@
 // Layout: Constraints (CMemoryDataOutputStream, 0x18 bytes) at +0x114 as in the landed CParticleProgram::WriteToFile
 //   0x00AE2230 model; CDataInputStream is the landed 0x00AF4660 model (inline Read with the 64-bit position range check,
 //   StreamPos +0x04, StreamSize +0x08, CurrentSourcePtr +0x0c, SourceChunkBytesRemaining +0x14).
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
@@ -33,37 +37,12 @@ public:
     void Reset();                                                      // 0x00996B60
     void const* PeekData() const;                                                  // 0x00995E70
 };
-class CDataInputStream { public:
-    virtual void v0();
-    unsigned long StreamPos;                                           // +0x04
-    long StreamSize;                                                   // +0x08
-    const unsigned char* CurrentSourcePtr;                             // +0x0c
-    unsigned long SourceChunkStreamPos;                                // +0x10
-    long SourceChunkBytesRemaining;                                    // +0x14
-    void ReadToStream(CDataOutputStream& out, long size);              // 0x009964E0
-    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    FABLE_FORCEINLINE void Read(void* dst, long size)
-    {
-        __int64 np = (__int64)(StreamPos + size);
-        if (!IsValidPosition(np))
-            return;
-        if (SourceChunkBytesRemaining >= size) {
-            memcpy(dst, CurrentSourcePtr, size);
-            CurrentSourcePtr += size;
-            SourceChunkBytesRemaining -= size;
-            StreamPos += size;
-        } else
-            ReadWithSrcChunkOverflow((unsigned char*)dst, size);
-    }
-    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
-private:
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-};
-class CMemoryDataInputStream : public CDataInputStream { public:
-    unsigned long m_source;                                            // +0x18
-    CMemoryDataInputStream(const CMemoryDataOutputStream& source);     // 0x00995EE0
-    virtual ~CMemoryDataInputStream();                                         // 0x00993B10
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#define FABLE_RETAIL_CDATAINPUTSTREAM_TEXT
+#define FABLE_RETAIL_CDATAINPUTSTREAM_COPYTO
+#define FABLE_RETAIL_WAD_ADD_FILE_PASS24
+#include "engine/CMemoryDataInputStream.h"
 
 class CParticleProgram {
 public:
@@ -81,10 +60,10 @@ void CParticleProgram::OptimiseConstraints()
     long totalCount = 0;
     long totalSize = 0;
     CMemoryDataOutputStream data;
-    while (in.StreamPos != in.StreamSize) {
-        long type = in.ReadULong();
-        long count = in.ReadULong();
-        long size = in.ReadULong();
+    while (!in.IsEOF()) {
+        long type = in.ReadULONG();
+        long count = in.ReadULONG();
+        long size = in.ReadULONG();
         if (type == lastType && type != 0 && type != 1) {
             totalCount += count;
             totalSize += size;
@@ -100,7 +79,7 @@ void CParticleProgram::OptimiseConstraints()
             totalSize = size;
             data.Reset();
         }
-        in.ReadToStream(data, size);
+        in.CopyTo(data, size);
     }
     if (totalCount != 0) {
         merged.WriteULONG(lastType);

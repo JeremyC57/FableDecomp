@@ -23,6 +23,9 @@ struct CLandscapeGPUUpdateTask;
 #include "engine/CLandscapeBackgroundPatch.h"
 #include "engine/C3DBoundingBox.h"
 #include "engine/C3DBoundingSphere.h"
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_TREE_NODE_GETEDGESTRIP
+class CLandscapeBackgroundSubNodeSplitBranch;
+#endif
 class CLandscapeBackgroundTreeNode : public CEngineLandscapeFreeableResource {
 public:
     struct CLODLoadInfo {
@@ -34,6 +37,23 @@ public:
     CLandscapeBackgroundPatch* GetPatch() {
         return SubNode && SubNode->IsPatch() ? static_cast<CLandscapeBackgroundPatch*>(SubNode) : 0;
     }
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_TREE_NODE_GETEDGESTRIP
+    // NF188 opt-in (row 0x00BF6930): Ego_r.pdb 0x00A3DB20 / FableWin.pdb 0x02DE5700
+    // ?GetEdgeStrip@CLandscapeBackgroundTreeNode@@QAEPAVCPatchTesselationEdgeStrip@@JJW4LANDSCAPE_EDGE_STRIP_SIDE@@@Z, Ego_r.pdb
+    // ?GetSplitBranch@CLandscapeBackgroundTreeNode@@QAEPAVCLandscapeBackgroundSubNodeSplitBranch@@XZ (retail out-of-line copy 0x00BF6160)
+    // and ?PeekWorldX / ?PeekWorldY@CLandscapeBackgroundTreeNode@@QAEJXZ (Ego_r.pdb). Bodies after the class (they need the split
+    // branch, CEngineLandscapeMap and CEngineMap complete).
+    CLandscapeBackgroundSubNodeSplitBranch* GetSplitBranch();
+    long PeekWorldX();
+    long PeekWorldY();
+    CPatchTesselationEdgeStrip* GetEdgeStrip(long x, long y, LANDSCAPE_EDGE_STRIP_SIDE side);   // 0x00BF6930
+private:
+    // The two pure base virtuals this class overrides (Ego_r.pdb ?RelocateData@CLandscapeBackgroundTreeNode@@EAEXJPAX0J@Z,
+    // ?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ, both private), so the split branch can embed two nodes.
+    virtual void RelocateData(long, void*, void*, long);
+    virtual bool FreeableResourceFreeBlock();
+public:
+#endif
 private:
     void CalculateCameraUpdateThreshold(long current_lod);
     CLODLoadInfo& GetLodBandInfo(long band) { return LODLoadInfo[band]; }
@@ -56,13 +76,30 @@ public:
     unsigned char FirstBand,FirstNonSplitBand,LastBand;
     bool TesselationValid,VisibleLastFrame,VisibleLastFrameHasBeenUpdated,HasSubPatchLoadInfo;
 };
-FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundTreeNode::CLODLoadInfo) == 16);
-FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundTreeNode) == 0xE8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, LODLoadInfo) == 0xC);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, SubNode) == 0xA0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, BoundingBox) == 0xA8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, CameraUpdateThreshold) == 0xC0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, FirstNonSplitBand) == 0xE1);
+FABLE_STATIC_ASSERT_AT(59, sizeof(CLandscapeBackgroundTreeNode::CLODLoadInfo) == 16);
+FABLE_STATIC_ASSERT_AT(60, sizeof(CLandscapeBackgroundTreeNode) == 0xE8);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CLandscapeBackgroundTreeNode, LODLoadInfo) == 0xC);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CLandscapeBackgroundTreeNode, SubNode) == 0xA0);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CLandscapeBackgroundTreeNode, BoundingBox) == 0xA8);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CLandscapeBackgroundTreeNode, CameraUpdateThreshold) == 0xC0);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CLandscapeBackgroundTreeNode, FirstNonSplitBand) == 0xE1);
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_TREE_NODE_GETEDGESTRIP
+#ifndef FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_SPLIT_BRANCH
+#define FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_SPLIT_BRANCH
+#endif
+#ifndef FABLE_RETAIL_CENGINEMAP_PEEK
+#define FABLE_RETAIL_CENGINEMAP_PEEK
+#endif
+#include "engine/CLandscapeBackgroundSubNodeSplitBranch.h"
+#include "engine/_quarantine/CEngineLandscapeMap.h"
+#include "engine/CEngineMap.h"
+inline CLandscapeBackgroundSubNodeSplitBranch* CLandscapeBackgroundTreeNode::GetSplitBranch()
+{
+    return SubNode && !SubNode->IsPatch() ? static_cast<CLandscapeBackgroundSubNodeSplitBranch*>(SubNode) : 0;
+}
+inline long CLandscapeBackgroundTreeNode::PeekWorldX() { return MapX + Map->Map->PeekWorldX(); }
+inline long CLandscapeBackgroundTreeNode::PeekWorldY() { return MapY + Map->Map->PeekWorldY(); }
+#endif
 #else
 #pragma pack(push, 1)
 class CLandscapeBackgroundTreeNode {

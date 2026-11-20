@@ -1,0 +1,104 @@
+0048531e new: 0
+00521240 new: 4
+    ??$ReadType@J@CDataInputStream@@QAEJXZ
+    ??$ReadType@K@CDataInputStream@@QAEKXZ
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+005c3a95 new: 1
+    ??0CDefIndex@@QAE@J@Z
+005cc300 new: 2
+    ??$Transfer@VCDefIndex@@@CPersistContext@@QAEXPBDAAVCDefIndex@@@Z TABLE:005cc300
+    ??0CDefIndex@@QAE@J@Z
+006421c0 new: 0
+006f9f90 new: 8
+    ??$ReadType@E@CDataInputStream@@QAEEXZ
+    ??$ReadType@J@CDataInputStream@@QAEJXZ
+    ??$ReadType@K@CDataInputStream@@QAEKXZ
+    ??$ReadType@M@CDataInputStream@@QAEMXZ
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+    ?GetPosition@CDataInputStream@@UBEKXZ
+    ?ReadFloat@CDataInputStream@@QAEMXZ
+009ad6e0 new: 4
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+    ?GetLength@CDataInputStream@@QBEKXZ
+    ?GetPosition@CDataInputStream@@UBEKXZ
+009c8700 new: 2
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+009c8fb0 new: 2
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+00a42ea0 new: 2
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+00a4df10 new: 2
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+00a62120 new: 5
+    ??$ReadType@K@CDataInputStream@@QAEKXZ
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+    ?Read@CDataInputStream@@QAEXPAXJ@Z
+    ?ReadULONG@CDataInputStream@@QAEKXZ
+00a9b740 new: 2
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+00ac3bd0 new: 4
+    ??$ReadType@K@CDataInputStream@@QAEKXZ
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+    ?ReadULONG@CDataInputStream@@QAEKXZ
+00ac3e00 new: 2
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+00adfdc0 new: 6
+    ??$ReadType@K@CDataInputStream@@QAEKXZ
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+    ?GetLength@CDataInputStream@@QBEKXZ
+    ?IsEOF@CDataInputStream@@QBE_NXZ
+    ?ReadULONG@CDataInputStream@@QAEKXZ
+00bdc180 new: 2
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+00bde390 new: 4
+    ??$ReadType@J@CDataInputStream@@QAEJXZ
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+    ?ReadSLONG@CDataInputStream@@QAEJXZ
+00bde860 new: 5
+    ??$ReadType@J@CDataInputStream@@QAEJXZ
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+    ?ReadConstData@CMemoryDataInputStream@@QAEPBEJ@Z
+    ?ReadSLONG@CDataInputStream@@QAEJXZ
+00beb490 new: 5
+    ??0CMovableResource@@QAE@XZ
+    ??0CWaterPatchMesh@@QAE@PBVCEngineLandscapeMap@@AAVCDataInputStream@@AAVC2DCoordI@@@Z TABLE:00beb490
+    ??1CMovableResource@@UAE@XZ
+    ??_7CMovableResource@@6B@ TABLE:0129b860
+    ??_GCMovableResource@@UAEPAXI@Z
+00bf5a30 new: 2
+    ??0C2DCoordI@@QAE@XZ
+    ?CreateFromStream@CWaterPatchMesh@@SGPAV1@PAVCMovableResource@@PAVCEngineLandscapeMap@@PAVCDataInputStream@@@Z
+00bf6930 new: 7
+    ?GetEdgeStrip@CLandscapeBackgroundTreeNode@@QAEPAVCPatchTesselationEdgeStrip@@JJW4LANDSCAPE_EDGE_STRIP_SIDE@@@Z TABLE:00bf6930
+    ?GetPatch@CLandscapeBackgroundTreeNode@@QAEPAVCLandscapeBackgroundPatch@@XZ TABLE:00bf6130
+    ?GetSplitBranch@CLandscapeBackgroundTreeNode@@QAEPAVCLandscapeBackgroundSubNodeSplitBranch@@XZ TABLE:00bf6160
+    ?PeekWorldX@CEngineMap@@QBEJXZ
+    ?PeekWorldX@CLandscapeBackgroundTreeNode@@QAEJXZ
+    ?PeekWorldY@CEngineMap@@QBEJXZ
+    ?PeekWorldY@CLandscapeBackgroundTreeNode@@QAEJXZ
+00bf8030 new: 2
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+00bf84c0 new: 2
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ
+00c22840 new: 1
+    ?Return@?$PKCFrallocStatic@VCSoundEvent@@@@UAEXPAVCSoundEvent@@@Z
+00c2c750 new: 0
+00ee9590 new: 1
+    ?OnPersist@CExpression_FishScript@NScript@@UAEXAAVCPersistContext@@@Z

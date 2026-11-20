@@ -13,6 +13,10 @@
 //   C3DAnimFileXSequenceChunk CompressedData (STLport vector) +0x10; retail CMemoryDataInputStream 0x1c (GOTCHAS chunk 244).
 // Layout (supersedes any local-model note above): engine/C3DAnimation2.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 #define C3DAnimation2 C3DAnimation2Donor
 #include "engine/C3DAnimation2.h"
 #undef C3DAnimation2
@@ -45,13 +49,9 @@ template <class T> class CArray { public:                 // retail STLport vect
     const void* GetData() const { return size() ? (const void*)_M_start : (const void*)this; }
 };
 
-class CDataInputStream { public: virtual ~CDataInputStream(); };
-class CMemoryDataInputStream : public CDataInputStream { public:
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    ~CMemoryDataInputStream();                       // 0x00993B10
-    long position, sourceLength, chunkBase, chunkPosition, chunkLength;
-    void* StreamSource;
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 
 class CChunkedFileChunk;
 class CChunkedFileSuperChunk { public:

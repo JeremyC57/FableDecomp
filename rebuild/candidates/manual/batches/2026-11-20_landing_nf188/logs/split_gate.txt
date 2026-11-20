@@ -1,0 +1,12 @@
+UNGRADED 00993b10 00bdc510
+UNGRADED 00993b10 00be7d70
+UNGRADED 00993b10 00be8920
+UNGRADED 00993b10 00bf3b60
+UNGRADED 00993c10 00be8920
+UNGRADED 00993c10 00bf3b60
+existing 00993c10 new= ['?SetPositionAssumeWithinSourceChunk@CDataInputStream@@IAEXK@Z'] | others: {'?SetPositionAssumeWithinSourceChunk@CMemoryDataInputStream@@QAEXK@Z': ['00b6d940', '00be91e0']}
+existing 009964e0 new= ['?CopyTo@CDataInputStream@@QAEXAAVCDataOutputStream@@K@Z'] | others: {'?Method_009964e0@CCallTarget_009964e0@@QAEXPAUCCallWithSelf_Retail@@PA': ['00996970'], '?ReadWithChunking@CDataInputStream@@QAEXAAVCDataOutputStream@@K@Z': ['00996be0'], '?CopyTo@CDataInputStream@@QAEXAAVCFileDataOutputStream@@K@Z': ['009cd330']}
+UNGRADED 00bea7e0 00bf3b60
+UNGRADED 00beb490 00bf3b60
+existing 00c22840 new= ['?Return@?$PKCFrallocStatic@VCSoundEvent@@@@UAEXPAVCSoundEvent@@@Z'] | others: {'?InitEntry@CEventSubscription_00c239b0@@QAEXPAUSEntry_00c239b0@@@Z': ['00c239b0']}
+gate: 0 created split(s)

@@ -17,16 +17,15 @@
 //   words zeroed; each Sizeof term is `p ? p->Sizeof() + 8 : 8` (VC folds the +8 into both arms) and the size is
 //   `a + b + 0x34` (`lea edi,[eax+edi+34h]`); the stream is a function-scope local destroyed at the end.
 // Name fix (agentNF6 2026-11-10): CResource::RemoveFromResourceList 0x009FC440 (?RemoveFromResourceList@CResource@@QAEXXZ, Ego_r.pdb / FableWin.pdb; body: if the resource is in a list (+8), the list unlinks it, call 0x009FC020).
+// NF188 (2026-11-20, q4251): the row-local CMemoryDataInputStream stand-in (a user-declared destructor that bound a
+//   CMemoryDataInputStream dtor spelling at 0x00993B10) is replaced by the shared engine/CMemoryDataInputStream.h class, whose
+//   compiler-generated destructor calls ~CDataStream 0x00993B10 directly (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 +
+//   FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 class CLipSyncSampleData;
 class CDataInputStream;                                   // engine/CDataInputStream.h: the retail base of CMemoryDataInputStream (+0)
-class CMemoryDataInputStream {
-public:
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    ~CMemoryDataInputStream();                             // 0x00993B10
-private:
-    void* m_vtable;
-    long m_words[6];                                       // sizeof 0x1c
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 class CLipSyncSampleData { public:                                // 0x10 bytes
     void* m_pFirst;
     void* m_pLast;

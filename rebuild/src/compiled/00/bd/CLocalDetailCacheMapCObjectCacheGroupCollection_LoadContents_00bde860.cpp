@@ -1,5 +1,7 @@
 // CLocalDetailCacheMap::CObjectCacheGroupCollection::LoadContents(CEngineStaticMapFileBlockManager* blocks, const CObjectTypeCollectionPalette& palette) -- once this group's file block is in memory, decompress its contents and load one object-type collection per stored type; false when already loaded or a collection fails (the contents are unloaded again)
 // Leaf: ?LoadContents@CObjectCacheGroupCollection@CLocalDetailCacheMap@@QAE_NPAVCEngineStaticMapFileBlockManager@@ABVCObjectTypeCollectionPalette@2@@Z
+// Flags: /d2inlT91
+// Inline-budget: /d2inlT91 -- the shared CMemoryDataInputStream::ReadConstData (engine/CMemoryDataInputStream.h, plain inline) stays out of line without it (DIFFER 688v752 without it, NF188; T90 DIFFER, T91 RELOCATION_MATCH: the smallest N, landing sweep); per-row flag, EXTRA_RULES inline section.
 // NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
 //   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 // Shape (what keeps retail's register plan: ebx = 4 for the two ReadLongs, then the buffer data across the
@@ -24,63 +26,19 @@
 // Layout (Ego_r.pdb, retail offsets confirmed by the body): CObjectCacheGroupCollection ObjectTypeCollections +0x20,
 //   Map +0x24, FileBlockPos +0x28, FileBlockSize +0x2c, OffsetIntoFileBlock +0x30, Loading bit 1 of +0x36;
 //   CObjectTypeCollection (retail 0x18): Type +4, Primitives +8, Next +0xc, Map +0x10, RenderUpdateNeeded +0x14.
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 extern "C" int __cdecl lzo1x_decompress_asm_fast(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
                                         unsigned int* dstLen, void* work);   // 0x00C069D0
 
-class CDataInputStream {
-public:
-    virtual void v00();
-    virtual void v01();
-    virtual unsigned long GetPosition();                     // slot 2 (+8)
-    unsigned long        StreamPos;                          // +0x04
-    long                 StreamSize;                         // +0x08
-    const unsigned char* CurrentSourcePtr;                   // +0x0c
-    unsigned long        SourceChunkStreamPos;               // +0x10
-    long                 SourceChunkBytesRemaining;          // +0x14
-    void SetPositionAssumeWithinSourceChunk(unsigned long position);    // 0x00993C10
-    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    FABLE_FORCEINLINE void Read(void* buffer, long size)
-    {
-        if (size <= 0)
-            return;
-        __int64 newPosition = (__int64)(StreamPos + size);
-        if (!IsValidPosition(newPosition))
-            return;
-        if (size <= SourceChunkBytesRemaining) {
-            memcpy(buffer, CurrentSourcePtr, size);
-            CurrentSourcePtr += size;
-            SourceChunkBytesRemaining -= size;
-            StreamPos += size;
-        }
-        else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
-    }
-    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
-private:
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-};
-class CMemoryDataInputStream : public CDataInputStream {
-public:
-    const unsigned char* StreamSource;                       // +0x18
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    virtual ~CMemoryDataInputStream();                               // 0x00993B10
-    FABLE_FORCEINLINE const unsigned char* GetDataAndSkip(long bytes)
-    {
-        if (bytes <= 0)
-            return 0;
-        unsigned long position = GetPosition();
-        __int64 newPosition = (__int64)(position + bytes);
-        if (IsValidPosition(newPosition)) {
-            const unsigned char* data = StreamSource + position;
-            SetPositionAssumeWithinSourceChunk((unsigned long)newPosition);
-            return data;
-        }
-        return 0;
-    }
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 class CHandleBasedMemoryPool;
 class CScratchBuffer;
 extern CScratchBuffer g_ScratchBuffer;                       // 0x013CB498
@@ -158,13 +116,13 @@ bool CLocalDetailCacheMap::CObjectCacheGroupCollection::LoadContents(CEngineStat
     }
     if (blocks->IsBlockLoaded(FileBlockPos)) {
         CMemoryDataInputStream stream(blocks->GetBlockData(FileBlockPos) + OffsetIntoFileBlock, FileBlockSize - OffsetIntoFileBlock);
-        long uncompressedSize = stream.ReadLong();
-        long compressedSize = stream.ReadLong();
+        long uncompressedSize = stream.ReadSLONG();
+        long compressedSize = stream.ReadSLONG();
         CTemporaryBuffer buffer(uncompressedSize + 3, g_pEngineGlobals_01436ea8->LocalDetailPool->HandlePool, &g_ScratchBuffer);
         unsigned int written = uncompressedSize + 3;
-        lzo1x_decompress_asm_fast(stream.GetDataAndSkip(compressedSize), compressedSize, buffer.GetData(), &written, 0);
+        lzo1x_decompress_asm_fast(stream.ReadConstData(compressedSize), compressedSize, buffer.GetData(), &written, 0);
         CMemoryDataInputStream contents(buffer.GetData(), uncompressedSize);
-        long typeCount = contents.ReadLong();
+        long typeCount = contents.ReadSLONG();
         for (long i = 0; i < typeCount; ++i) {
             CObjectTypeCollection* collection = new (this) CObjectTypeCollection(Map);
             if (collection == 0) {

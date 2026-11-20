@@ -47689,8 +47689,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005cc300'
         Module = 'CPersistContext'
-        Source = '00/5c/CPersistContext_Transferlong_005cc300.cpp'
-        TestSource = '00/5c/CPersistContext_Transferlong_005cc300_test.cpp'
+        Source = '00/5c/CPersistContext_Transfer_005cc300.cpp'
+        TestSource = '00/5c/CPersistContext_Transfer_005cc300_test.cpp'
         PassPattern = 'TRANSFER_LONG_OK'
     }
     [pscustomobject]@{
@@ -167317,9 +167317,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee9590'
-        Module = '_unattributed'
-        Source = '00/ee/unattributed_PersistTransferLastFishingLevel00ee9590_00ee9590.cpp'
-        TestSource = '00/ee/unattributed_PersistTransferLastFishingLevel00ee9590_00ee9590_test.cpp'
+        Module = 'NScript::CExpression_FishScript'
+        Source = '00/ee/NScriptCExpressionFishScript_OnPersist_00ee9590.cpp'
+        TestSource = '00/ee/NScriptCExpressionFishScript_OnPersist_00ee9590_test.cpp'
         PassPattern = '00ee9590_TEST PASS'
     }
     [pscustomobject]@{
@@ -269232,6 +269232,7 @@ $catalog = @(
         Source = '00/bd/CLocalDetailCacheMapCObjectCacheGroupCollection_LoadContents_00bde860.cpp'
         TestSource = '00/bd/CLocalDetailCacheMapCObjectCacheGroupCollection_LoadContents_00bde860_test.cpp'
         PassPattern = '00bde860_TEST PASS'
+        CompilerFlags = '/d2inlT91'
     }
     [pscustomobject]@{
         Address = '00cfee30'
@@ -357596,9 +357597,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c22840'
-        Module = 'PKCFrallocStatic<CUnprovenFrallocElement_00C22840>'
-        Source = '00/c2/PKCFrallocStaticCUnprovenFrallocElement00C22840_Return_00c22840.cpp'
-        TestSource = '00/c2/PKCFrallocStaticCUnprovenFrallocElement00C22840_Return_00c22840_test.cpp'
+        Module = 'PKCFrallocStatic<CSoundEvent>'
+        Source = '00/c2/PKCFrallocStatic_Return_00c22840.cpp'
+        TestSource = '00/c2/PKCFrallocStatic_Return_00c22840_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c22840_TEST PASS'
     }

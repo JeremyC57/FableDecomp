@@ -8,6 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_SPLIT_BRANCH
+// NF188 opt-in (row 0x00BF6930 CLandscapeBackgroundTreeNode::GetEdgeStrip): the retail layout. RTTI
+// .?AVCLandscapeBackgroundSubNodeSplitBranch@@ : CLandscapeBackgroundSubNodeBase (: CMovableResource), vtable 0x012A8258; two embedded
+// CLandscapeBackgroundTreeNode (Ego_r.pdb LeftBranch / RightBranch; retail 0xE8 each, so +0x04 / +0xEC; landed InvalidateEdge
+// 0x00BF6CD0 forwards to both at those offsets). Requires FABLE_RETAIL_LANDSCAPE_BACKGROUND_TREE_NODE_PASS22.
+#include "engine/CLandscapeBackgroundTreeNode.h"
+class CLandscapeBackgroundSubNodeSplitBranch : public CLandscapeBackgroundSubNodeBase {
+public:
+    CLandscapeBackgroundTreeNode LeftBranch;                 // +0x04
+    CLandscapeBackgroundTreeNode RightBranch;                // +0xEC
+};
+#else // FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_SPLIT_BRANCH
 #pragma pack(push, 1)
 class CLandscapeBackgroundSubNodeSplitBranch {
 public:
@@ -17,9 +29,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundSubNodeSplitBranch) == 0x1e4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundSubNodeSplitBranch, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundSubNodeSplitBranch, LeftBranch) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundSubNodeSplitBranch, RightBranch) == 0xf4);
+FABLE_STATIC_ASSERT_AT(20, sizeof(CLandscapeBackgroundSubNodeSplitBranch) == 0x1e4);
+FABLE_STATIC_ASSERT_AT(21, offsetof(CLandscapeBackgroundSubNodeSplitBranch, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(22, offsetof(CLandscapeBackgroundSubNodeSplitBranch, LeftBranch) == 0x4);
+FABLE_STATIC_ASSERT_AT(23, offsetof(CLandscapeBackgroundSubNodeSplitBranch, RightBranch) == 0xf4);
+#endif // FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_SPLIT_BRANCH
 
 #endif // FABLE_ENGINE_CLANDSCAPEBACKGROUNDSUBNODESPLITBRANCH_H

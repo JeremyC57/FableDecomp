@@ -13,6 +13,10 @@
 // every exit (handle dtor: free the handle when a pool is set).
 // Layout: C3DClothPrimitive ParticleProgram CCountedPointer +4, PrimitiveIndex +0xc, MaterialIndex +0x10 (landed ctor
 // 0x00AC3E00); retail CMemoryDataInputStream 0x1c; CScopedMemoryHandle {pool, handle}.
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -30,39 +34,9 @@ template<class T> class CCountedPointer { public:
     T* operator->() const { return Object; }
 };
 
-class CDataInputStream { public:
-    virtual ~CDataInputStream();
-    virtual void v1(); virtual void v2(); virtual void v3();
-    virtual void ReadData(void* buffer, unsigned long size);   // slot 4 (+0x10)
-    unsigned long m_position;              // +4
-    long m_08;
-    const unsigned char* m_pData;          // +0xC
-    long m_10;
-    long m_remaining;                      // +0x14
-    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    FABLE_FORCEINLINE void Read(void* buffer, long size)
-    {
-        __int64 newPosition = (__int64)(m_position + size);
-        if (!IsValidPosition(newPosition))
-            return;
-        if (m_remaining >= size) {
-            memcpy(buffer, m_pData, size);
-            m_pData += size;
-            m_remaining -= size;
-            m_position += size;
-        }
-        else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
-    }
-    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
-private:
-    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
-};
-class CMemoryDataInputStream : public CDataInputStream { public:
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    ~CMemoryDataInputStream();                     // 0x00993B10
-    void* StreamSource;                            // +0x18 (retail 0x1c bytes)
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 
 class CHandleBasedMemoryPool;
 class CScopedMemoryHandle { public:
@@ -99,14 +73,14 @@ public:
 
 bool C3DClothPrimitive::LoadBinary(CMemoryDataInputStream& in, CMovableResourceMemoryPool* pool)
 {
-    PrimitiveIndex = in.ReadULong();
-    MaterialIndex = in.ReadULong();
-    unsigned long size = in.ReadULong();
+    PrimitiveIndex = in.ReadULONG();
+    MaterialIndex = in.ReadULONG();
+    unsigned long size = in.ReadULONG();
     CScopedMemoryHandle handle;
     if (!pool->Allocate(&handle, size, 0))
         return false;
     void* data = handle.GetPointer();
-    in.ReadData(data, size);
+    in.ReadCompressed(data, size);
     CMemoryDataInputStream stream(data, size);
     ParticleProgram.Reset(new CParticleProgram);
     if (!ParticleProgram->ReadFromFile(&stream, N3DMeshAllocators::ClothMemoryPool)) {

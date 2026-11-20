@@ -12,6 +12,9 @@
 // dword ptr` argument pass-through, `leave`); the traits' 12-byte DefaultVal is built by the C3DVector(x, y, z)
 // constructor as three `fldz ; fstp` stores interleaved with the argument pushes (the model of the landed
 // CPersistContext_TransferableComponent<CRGBColour> rows 0x006421C0 / 0x006421F0).
+// NF188 (2026-11-20, q5202): the traits member takes the value by reference, the Ego_r.pdb template member spelling
+//   ?TransferIn@?$CPersistTraits@VC3DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVC3DVector@@@Z (0x009E84D0; landed 0x006C9490 binds it);
+//   respelled in place in this row's local traits model (was C3DVector*).
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CPersistContext;
@@ -25,7 +28,7 @@ template <> struct CPersistTraits<C3DVector> {
     C3DVector DefaultVal;
     CPersistTraits() : DefaultVal(0.0f, 0.0f, 0.0f) {}
     void TransferOut(CPersistContext& context, CCharString& out, const C3DVector* value);   // 0x009E7F90
-    void TransferIn(CPersistContext& context, CStringParser& parser, C3DVector* value);     // 0x009E84D0
+    void TransferIn(CPersistContext& context, CStringParser& parser, C3DVector& value);     // 0x009E84D0
 };
 
 // The wrapper from the shared header: private virtual TransferOut / TransferIn (both PDBs, @@EAE), member Object +4.
@@ -35,7 +38,7 @@ template <class T>
 void CPersistContext_TransferableComponent<T>::TransferIn(CPersistContext& context, CStringParser& parser)
 {
     CPersistTraits<T> traits;
-    traits.TransferIn(context, parser, Object);
+    traits.TransferIn(context, parser, *Object);
 }
 
 template void CPersistContext_TransferableComponent<C3DVector>::TransferIn(CPersistContext& context, CStringParser& parser);

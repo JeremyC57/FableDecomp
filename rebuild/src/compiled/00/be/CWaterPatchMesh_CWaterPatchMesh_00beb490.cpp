@@ -1,5 +1,5 @@
-// CWaterPatchMesh::CWaterPatchMesh(CEngineLandscapeMap* map, CDataInputStream* stream, const C2DCoordI* offset) -- a water patch mesh at a landscape offset: map and offset kept, no vertex data yet, then loaded from the stream
-// Leaf: ??0CWaterPatchMesh@@QAE@PAVCEngineLandscapeMap@@PAVCDataInputStream@@PBVC2DCoordI@@@Z
+// CWaterPatchMesh::CWaterPatchMesh(const CEngineLandscapeMap* map, CDataInputStream& stream, C2DCoordI& offset) -- a water patch mesh at a landscape offset: map and offset kept, no vertex data yet, then loaded from the stream
+// Leaf: ??0CWaterPatchMesh@@QAE@PBVCEngineLandscapeMap@@AAVCDataInputStream@@AAVC2DCoordI@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BEB490, 57 bytes (+7 int3 padding), thiscall, `ret 0Ch`.
 // Identity: stores the CWaterPatchMesh vtable 0x012A8134; called from CEngineLandscapePatch::LoadForegroundPatch
 //   (0x00BF409E) and the landed CWaterPatchMesh::CreateFromStream 0x00BF5A30 (0x00BF5B04), whose header names this
@@ -10,34 +10,17 @@
 // Shape: init-list members (Map, the two Offset words, the xor-zeroed VertexBuffer/VertexHeightData) around the vtable
 //   store, then the Load call on `this` with the stream argument. C2DCoordI needs a memberwise user copy constructor:
 //   the implicit bitwise copy sinks the Offset.Y store below the Load argument push.
-class CEngineLandscapeMap;
-class CDataInputStream;
-class CVertexBufferWin32;
-class CVertexHeightData;
-class C2DCoordI {                           // class in Ego_r.pdb (V mangling)
-public:
-    long X, Y;
-    C2DCoordI(const C2DCoordI& other) : X(other.X), Y(other.Y) {}
-};
-enum EWaterType { WATER_TYPE_NONE };
+// NF188 (2026-11-20, q6204): the PDB signature (Ego_r.pdb / FableWin.pdb ??0CWaterPatchMesh@@QAE@PBVCEngineLandscapeMap@@AAVCDataInputStream@@
+//   AAVC2DCoordI@@@Z, the only CWaterPatchMesh ctor taking a stream; the body keeps the const map pointer and hands the stream on to
+//   Load without a dereference) on the shared engine/CWaterPatchMesh.h retail class (vptr from CMovableResource, Load by reference
+//   ?Load@CWaterPatchMesh@@AAE_NAAVCDataInputStream@@@Z) and engine/C2DCoordI.h with its memberwise copy (FABLE_RETAIL_C2DCOORDI_COPY);
+//   was a row-local model with pointer parameters.
+#define FABLE_RETAIL_CWATERPATCHMESH
+#define FABLE_RETAIL_C2DCOORDI_COPY
+#include "engine/CWaterPatchMesh.h"
 
-class CWaterPatchMesh {                                  // vtable 0x012A8134, 0x20 bytes
-public:
-    CWaterPatchMesh(CEngineLandscapeMap* map, CDataInputStream* stream, const C2DCoordI* offset);
-    virtual ~CWaterPatchMesh();
-    virtual void RelocateData(long handle, void* oldData, void* newData, long size);
-    virtual bool CanRelocateData(long handle) const;
-    bool Load(CDataInputStream* stream);                 // 0x00BEAE50
-    CEngineLandscapeMap* Map;                            // +0x04
-    C2DCoordI            Offset;                         // +0x08
-    CVertexBufferWin32*  VertexBuffer;                   // +0x10
-    CVertexHeightData*   VertexHeightData;               // +0x14
-    float                WaterBodySpan;                  // +0x18
-    EWaterType           WaterType;                      // +0x1c
-};
-
-CWaterPatchMesh::CWaterPatchMesh(CEngineLandscapeMap* map, CDataInputStream* stream, const C2DCoordI* offset)
-    : Map(map), Offset(*offset), VertexBuffer(0), VertexHeightData(0)
+CWaterPatchMesh::CWaterPatchMesh(const CEngineLandscapeMap* map, CDataInputStream& stream, C2DCoordI& offset)
+    : Map(map), Offset(offset), VertexBuffer(0), VertexHeightData(0)
 {
     Load(stream);
 }

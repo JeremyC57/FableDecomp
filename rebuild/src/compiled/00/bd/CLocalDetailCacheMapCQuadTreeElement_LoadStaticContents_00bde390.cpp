@@ -12,44 +12,17 @@
 // 0x00BDE290, UnloadStaticContents 0x00BDE020.
 // Layout: PDB CQuadTreeElement (landed dtor 0x00BDDFB0); retail CObjectCacheGroupCollection is the PDB layout less the
 // trailing SourceObjectCount (0x38 bytes).
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 #include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(memcpy)
 
-class CDataInputStream { public:
-    void* __vftable;
-    unsigned long StreamPos;                            // +0x04
-    long StreamSize;                                    // +0x08
-    const unsigned char* CurrentSourcePtr;              // +0x0c
-    unsigned long SourceChunkStreamPos;                 // +0x10
-    long SourceChunkBytesRemaining;                     // +0x14
-    FABLE_FORCEINLINE void Read(void* destination, long bytes)
-    {
-        __int64 next = (unsigned long)(StreamPos + bytes);
-        if (next >= 0 && next <= 0x7fffffff) {
-            if (SourceChunkBytesRemaining >= bytes) {
-                memcpy(destination, CurrentSourcePtr, bytes);
-                CurrentSourcePtr += bytes;
-                SourceChunkBytesRemaining -= bytes;
-                StreamPos += bytes;
-            } else
-                ReadWithSrcChunkOverflow((unsigned char*)destination, bytes);
-        }
-    }
-    FABLE_FORCEINLINE long ReadLong()
-    {
-        long value;
-        Read(&value, 4);
-        return value;
-    }
-private:
-    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
-};
-class CMemoryDataInputStream : public CDataInputStream { public:
-    unsigned char* StreamSource;                        // +0x18
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    ~CMemoryDataInputStream();                          // 0x00993B10
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 class CEngineStaticMapFileBlockManager { public:
     void RequestFileBlock(long pos, long size, long priority);   // 0x00BE06B0
     void ReleaseRequest(long pos);                      // 0x00BE0400
@@ -139,7 +112,7 @@ bool CQuadTreeElement::LoadStaticContents(CEngineStaticMapFileBlockManager* mana
     if (manager->IsBlockLoaded(FileBlockPos)) {
         CMemoryDataInputStream stream(manager->GetBlockData(FileBlockPos) + OffsetIntoFileBlock,
                                       FileBlockSize - OffsetIntoFileBlock);
-        long count = stream.ReadLong();
+        long count = stream.ReadSLONG();
         for (long i = 0; i < count; ++i) {
             CObjectCacheGroupCollection* collection = new (this) CObjectCacheGroupCollection(Map);
             if (!collection) {
@@ -153,7 +126,7 @@ bool CQuadTreeElement::LoadStaticContents(CEngineStaticMapFileBlockManager* mana
         for (CObjectCacheGroupCollection* c = ObjectCacheGroupCollections; c; c = c->Next)
             c->LoadHeader(stream);
         for (int child = 0; child < 4; ++child) {
-            if (stream.ReadLong()) {
+            if (stream.ReadSLONG()) {
                 Children[child] = new (this) CQuadTreeElement(Map, 0, 0, 0, 0);
                 if (!Children[child]) {
                     StaticContentsLoaded = true;

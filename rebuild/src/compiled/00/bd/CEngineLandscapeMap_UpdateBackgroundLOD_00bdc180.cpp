@@ -4,8 +4,12 @@
 //   same bytes under two wrong spellings. Now binds ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb
 //   0x030849C0) and ?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z (Ego_r 0x00A41E20 + FableWin 0x02DF74B0) through
 //   the candidates header's opt-ins below.
+// NF188 (2026-11-20, q4251): the header block's stream is the shared engine/CMemoryDataInputStream.h class through the candidates
+//   header's FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_SHARED opt-in; its compiler-generated destructor binds ??1CDataStream@@UAE@XZ
+//   at 0x00993B10 (was the local model's ??1CMemoryDataInputStream@@QAE@XZ).
 #define FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_GETBLOCKDATA
 #define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_CTOR
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_SHARED
 #include <new>
 // Callee respelled (NF177, PRIORITY q12088): 0x00BE0480 was ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QAE_NJ@Z; now the Ego_r.pdb
 //   0x00A41DE0 / FableWin.pdb 0x02DF7220 const ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z (the self row's spelling).

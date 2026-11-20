@@ -1,0 +1,13 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_00401630.obj : error LNK2005: "public: virtual __thiscall CDiskFileWin32::~CDiskFileWin32(void)" (??1CDiskFileWin32@@UAE@XZ) already defined in head_006f9f90.obj
+own_00485400.obj : error LNK2005: "public: __thiscall CMemoryDataInputStream::CMemoryDataInputStream(void)" (??0CMemoryDataInputStream@@QAE@XZ) already defined in head_006f9f90.obj
+own_009e6530.obj : error LNK2005: "public: bool __thiscall CCharString::operator<(class CCharString const &)const " (??MCCharString@@QBE_NABV0@@Z) already defined in head_00521240.obj
+own_00a9ae60.obj : error LNK2005: "public: __thiscall C3DMeshFile::C3DMeshFile(class CCountedPointer<class C3DMeshFileRootChunk> const &)" (??0C3DMeshFile@@QAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z) already defined in head_00a9b740.obj
+own_00a9b640.obj : error LNK2005: "public: __thiscall C3DMeshFile::C3DMeshFile(class CCountedPointer<class C3DMeshFileRootChunk> const &)" (??0C3DMeshFile@@QAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z) already defined in head_00a9b740.obj
+own_00a9b640.obj : error LNK2005: "public: class CCountedPointer<class C3DMeshFile> __thiscall C3DMeshFileLoader::LoadMeshFile(class CDataInputStream &)" (?LoadMeshFile@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@AAVCDataInputStream@@@Z) already defined in head_00a9b740.obj
+own_00a9cb50.obj : error LNK2005: "void __fastcall DeleteData(struct AutoTinyVirtualObject *)" (?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) already defined in own_00a9cb20.obj
+own_00c08880.obj : error LNK2005: "public: __thiscall CString::CString(void)" (??0CString@@QAE@XZ) already defined in head_00c22840.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 144 LNK2001 + 199 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

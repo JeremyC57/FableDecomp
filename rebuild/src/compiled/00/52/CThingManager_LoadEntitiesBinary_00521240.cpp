@@ -19,6 +19,10 @@
 // Shape: the same-TU noinline bodies of _M_find and _M_insert_overflow let VC7.1 keep the set header in esi across both
 //   lookups and pack the empty __true_type temporary with retail's frame (0x94); the statement order of the opening
 //   stores is retail's schedule (interval, the two members, hasProcess, ticks).
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
@@ -203,66 +207,9 @@ __declspec(noinline) _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, 
 #pragma auto_inline(on)
 } // namespace std
 
-class CDataInputStream {
-public:
-    virtual ~CDataInputStream();
-    virtual void SetPosition(unsigned long position);
-    virtual unsigned long GetPosition() const;          // slot 2 (+0x08)
-    virtual void Close();
-    virtual void ReadCompressed(void* buffer, long size);
-    virtual void ReadZlibCompressed(void* buffer, long size);
-    virtual CCharString ReadNullTerminatedString();     // slot 6 (+0x18)
-    virtual CWideString ReadNullTerminatedWString();
-    unsigned long        StreamPos;                     // +0x04
-    long                 StreamSize;                    // +0x08
-    const unsigned char* CurrentSourcePtr;              // +0x0c
-    unsigned long        SourceChunkStreamPos;          // +0x10
-    long                 SourceChunkBytesRemaining;     // +0x14
-    FABLE_FORCEINLINE void Read(void* buffer, long size)
-    {
-        __int64 newPos = (__int64)(StreamPos + size);
-        if (newPos < 0 || newPos > 0x7fffffff)
-            return;
-        if (SourceChunkBytesRemaining >= size) {
-            memcpy(buffer, CurrentSourcePtr, size);
-            CurrentSourcePtr += size;
-            SourceChunkBytesRemaining -= size;
-            StreamPos += size;
-        } else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
-    }
-    FABLE_FORCEINLINE unsigned long ReadULONG() { unsigned long value; Read(&value, sizeof(value)); return value; }
-    FABLE_FORCEINLINE long ReadSLONG() { long value; Read(&value, sizeof(value)); return value; }
-protected:
-    void SetPositionAssumeWithinSourceChunk(unsigned long position);   // 0x00993C10
-private:
-    virtual void InternalReadNextSourceChunk(const unsigned char*& source, long& size);
-    virtual bool NeedsBufferedRead(long size);
-    virtual void InternalReadUnbuffered(unsigned char* buffer, long size);
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-};
-class CMemoryDataInputStream : public CDataInputStream {
-public:
-    const unsigned char* StreamSource;                  // +0x18
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    virtual ~CMemoryDataInputStream();                  // 0x00993B10
-    virtual void ReadCompressed(void* buffer, long size);
-    virtual CCharString ReadNullTerminatedString();
-    virtual CWideString ReadNullTerminatedWString();
-    FABLE_FORCEINLINE const unsigned char* ReadConstData(long size)
-    {
-        if (size > 0) {
-            unsigned long position = GetPosition();
-            __int64 newPos = (__int64)(position + size);
-            if (!(newPos < 0 || newPos > 0x7fffffff)) {
-                const unsigned char* data = StreamSource + position;
-                SetPositionAssumeWithinSourceChunk(position + size);
-                return data;
-            }
-        }
-        return 0;
-    }
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 class CASuspendableProcess {
 public:
     virtual ~CASuspendableProcess();

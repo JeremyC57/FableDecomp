@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005C3A95, 1020 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: RefreshActiveWeaponData 0x005C30D3, CTCInventoryBase::OnSerialise 0x005BFD5E, CPersistContext saving test 0x004AEF50
 //   (labelled IsBinary) / Transfer<bool>(name, value, default) 0x004045C0 / Transfer(name, bool*) 0x004107C0 / Transfer<CCharString>
-//   0x00411010 / Transfer(name, long*) 0x005CC300 (name unproven), IS_THING_ALIVE 0x004CC340, CBaseIntelligentPointer::GetPItem 0x00A01B50, bitset test
+//   0x00411010 / Transfer<CDefIndex>(name, CDefIndex&) 0x005CC300, IS_THING_ALIVE 0x004CC340, CBaseIntelligentPointer::GetPItem 0x00A01B50, bitset test
 //   0x00410DE0, const LowerBound 0x004365B0 (carrying 0x46), CTCCarrying::IsCarryingThing 0x006A1060 / IsCarriedThingInPrimarySlot
 //   0x006A1490, CGameDefinitionManager::Get 0x0044C6B0 / GetDefNameFromGlobalIndex 0x009ACCC0 / GetDefGlobalIndexFromName 0x009AD410,
 //   CDefString::operator CCharString 0x00415DD0, CCharString 0x0099E4B0 / = 0x0099EFB0 / != 0x0099E960 / ~ 0x0099EAE0.
@@ -13,7 +13,13 @@
 //   argument slots on its own; CDefString has a declared copy constructor so it comes back through a hidden pointer as retail.
 // Layout: packed weapons block -- melee pointer +0x134 / def index +0x13C / carried +0x140, ranged pointer +0x141 / def index
 //   +0x14C / carried +0x150; confiscated melee/ranged +0x160/+0x164, previously wielded +0x168/+0x16C; thing def index word +0x8C.
+// NF188 (2026-11-20, q4510): the def-index members are CDefIndex (Ego_r.pdb CTCInventoryWeapons ActiveMeleeWeaponDefIndex /
+//   ActiveRangedWeaponDefIndex; respelled in place in this row's local model) and the two transfers call the two-argument member template
+//   ??$Transfer@VCDefIndex@@@CPersistContext@@QAEXPBDAAVCDefIndex@@@Z at 0x005CC300 (FableWin.pdb 0x0199627C; was the stand-in
+//   ?Transfer@CPersistContext@@QAEXPBDPAJ@Z).
 #include "fable_compiler.h"
+#include "rebuild_abi.h"
+#include "engine/CDefIndex.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -56,7 +62,6 @@ class CPersistContext { public:
     bool IsSaving() const;                              // 0x004AEF50
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0 <bool>
     template <class T> void Transfer(const char* name, T& value);   // 0x004107C0 <bool> / 0x00411010 <CCharString>
-    void Transfer(const char* name, long* value);       // 0x005CC300: not Transfer<long> 0x004110B0 (separate COMDAT); name unproven
 };
 class CTCCarrying { public:
     bool IsCarryingThing(const CThing& thing) const;   // 0x006A1060 (Ego_r/FableWin ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z)
@@ -93,11 +98,11 @@ class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
     const CThingBase* ParentThing;                      // +0x04
     unsigned char _pad08[0x134 - 0x08];
     CIntelligentPointer MeleeWeapon;                    // +0x134
-    long        MeleeDefIndex;                          // +0x13c
+    CDefIndex   MeleeDefIndex;                          // +0x13c
     bool        MeleeCarried;                           // +0x140
     CIntelligentPointer RangedWeapon;                   // +0x141
     unsigned char _pad149[3];
-    long        RangedDefIndex;                         // +0x14c
+    CDefIndex   RangedDefIndex;                         // +0x14c
     bool        RangedCarried;                          // +0x150
     unsigned char _pad151[0x160 - 0x151];
     long        ConfiscatedMelee;                       // +0x160
@@ -165,6 +170,6 @@ void CTCInventoryWeapons::OnSerialise(CPersistContext& context, bool loading)
         if (rangedName != "")
             PreviousRanged = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(rangedName);
     }
-    context.Transfer("ActiveMeleeWeaponDefIndex2", &MeleeDefIndex);
-    context.Transfer("ActiveRangedWeaponDefIndex2", &RangedDefIndex);
+    context.Transfer("ActiveMeleeWeaponDefIndex2", MeleeDefIndex);
+    context.Transfer("ActiveRangedWeaponDefIndex2", RangedDefIndex);
 }

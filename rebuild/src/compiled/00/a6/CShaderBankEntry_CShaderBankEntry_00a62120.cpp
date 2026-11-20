@@ -21,6 +21,10 @@
 //   _M_insert_overflow body (the empty-tag rule: the tag shares the name's slot, as retail).
 // NF134 (2026-11-20, q6182): the local CMemoryDataInputStream constructor declaration respelled in place to the PDB
 //   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0; engine/CMemoryDataInputStream.h); was PAXK.
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 #include "fable_compiler.h"
 // Naming (NF129, 2026-11-20, q4249): ReadNullTerminatedString is virtual in both PDBs (?ReadNullTerminatedString@CMemoryDataInputStream@@UAE?AVCCharString@@XZ,
 //   Ego_r 0x00AFDBE0 / FableWin 0x03084F50), overriding CDataInputStream's virtual; the local model's vtable data member becomes the
@@ -53,44 +57,9 @@ class CCharString { public:
 
 
 
-class CDataInputStream { friend class CMemoryDataInputStream;
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
-public:
-    virtual CCharString ReadNullTerminatedString();          // the base virtual (engine/CDataInputStream.h): the vptr sits at +0 of the base
-};
-class CMemoryDataInputStream : public CDataInputStream { public:
-                                                             // +0x00 vptr (the virtual ReadNullTerminatedString below)
-    unsigned long        m_position;                         // +0x04
-    long                 StreamSize;                         // +0x08
-    const unsigned char* m_pData;                            // +0x0c
-    long                 SourceChunkStreamPos;               // +0x10
-    long                 m_remaining;                        // +0x14
-    long                 _field18;                           // +0x18
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930 ??0CMemoryDataInputStream@@QAE@PBXK@Z
-    ~CMemoryDataInputStream();                               // 0x00993B10
-    virtual CCharString ReadNullTerminatedString();          // 0x00995D30 (Ego_r / FableWin UAE: virtual; called directly on the local)
-    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    FABLE_FORCEINLINE unsigned long ReadULong()
-    {
-        unsigned long value;
-        Read(&value, sizeof(value));
-        return value;
-    }
-    FABLE_FORCEINLINE void Read(void* buffer, long size)
-    {
-        __int64 newPosition = (__int64)(m_position + size);
-        if (!IsValidPosition(newPosition))
-            return;
-        if (size <= m_remaining) {
-            memcpy(buffer, m_pData, size);
-            m_pData += size;
-            m_remaining -= size;
-            m_position += size;
-        }
-        else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
-    }
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 
 class CBankFile { public:
     unsigned long GetEntryDataSize(unsigned long index) const;                                   // 0x009CC240 ?GetEntryDataSize@CBankFile@@QBEKK@Z (NF72, q10882: Ego_r.pdb const)
@@ -98,11 +67,6 @@ class CBankFile { public:
 };
 class CShaderDataBank : public CBankFile { public:};
 
-class CBaseClassNonCopyable {
-protected:
-    CBaseClassNonCopyable();                                 // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ (protected)
-    virtual ~CBaseClassNonCopyable();                        // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (protected)
-};
 
 class CShaderBankEntry : public CBaseClassNonCopyable { public:
     unsigned long          ShaderType;                       // +0x04
@@ -120,13 +84,13 @@ CShaderBankEntry::CShaderBankEntry(unsigned long type, unsigned long index, CSha
     CArray<char> data(size);
     bank->ReadEntryData(index, 0, data.GetAsCArray(), size);
     CMemoryDataInputStream stream(data.GetAsCArray(), size);
-    unsigned long codeCount = stream.ReadULong() / 4;
+    unsigned long codeCount = stream.ReadULONG() / 4;
     ShaderCode.resize(codeCount, 0);
     unsigned long* code = ShaderCode.GetAsCArray();
     long bytes = codeCount * sizeof(unsigned long);
     if (bytes > 0)
         stream.Read(code, bytes);
-    unsigned long count = stream.ReadULong();
+    unsigned long count = stream.ReadULONG();
     for (unsigned long i = 0; i < count; ++i) {
         CCharString name = stream.ReadNullTerminatedString();
         ShaderConstants.push_back(name);

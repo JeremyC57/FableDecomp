@@ -1,0 +1,164 @@
+addr       parity           behav  name
+0048531e   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<C3DVector>::TransferIn
+00521240   WARN SHARED_HEADER_AVAILABLE CASuspendableProcess (engine/CASuspendableProcess.h)
+00521240   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00521240   WARN SHARED_HEADER_AVAILABLE CLevelLoader (engine/CLevelLoader.h)
+00521240   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+00521240   RELOCATION_MATCH PASS   CThingManager::LoadEntitiesBinary
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c3a95   RELOCATION_MATCH PASS   CTCInventoryWeapons::OnSerialise
+005cc300   RELOCATION_MATCH PASS   CPersistContext::Transfer<long>
+006421c0   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+006421c0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+006421c0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<CRGBColour>::TransferIn
+006f9f90   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+006f9f90   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+006f9f90   RELOCATION_MATCH PASS   NAnimationEvents::CManager::LoadBinary
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009ad6e0   WARN RELOC_NAME: ?FindClassInfo@CDefinitionManager@@QAEPAUCDefClassInfo@@ABVCCharString@@@Z -> 009ad2e0 labelled 'CFactionDatabase::FindFactionBySymbolName'
+009ad6e0   RELOCATION_MATCH PASS   CDefinitionManager::LoadDef
+009c8700   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009c8700   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+009c8700   RELOCATION_MATCH PASS   NGameText::CDataBankGroupEntry::BuildGroup
+009c8fb0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009c8fb0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+009c8fb0   RELOCATION_MATCH PASS   NGameText::CDataBankTextEntry::BuildText
+00a42ea0   WARN SHARED_HEADER_AVAILABLE CLipSyncSampleData (engine/CLipSyncSampleData.h)
+00a42ea0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+00a42ea0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a42ea0   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00a42ea0   WARN SHARED_HEADER_AVAILABLE CLipSyncDataBank (engine/CLipSyncDataBank.h)
+00a42ea0   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+00a42ea0   WARN RELOC_NAME: ?RemoveFromResourceList@CResource@@QAEXXZ -> 009fc440 labelled 'CTCActivationTrigger::OnKill'
+00a42ea0   RELOCATION_MATCH PASS   CLipSyncDataBankEntry::CData::BuildLipSync
+00a4df10   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a4df10   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00a4df10   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a4df10   WARN SHARED_HEADER_AVAILABLE C3DAnimFileObjectChunk (engine/C3DAnimFileObjectChunk.h)
+00a4df10   WARN SHARED_HEADER_AVAILABLE C3DAnimFileXSequenceChunk (engine/C3DAnimFileXSequenceChunk.h)
+00a4df10   WARN SHARED_HEADER_AVAILABLE CSimpleMemoryPool (engine/CSimpleMemoryPool.h)
+00a4df10   WARN SHARED_HEADER_AVAILABLE C3DAnimationSequenceData (engine/C3DAnimationSequenceData.h)
+00a4df10   WARN SHARED_HEADER_AVAILABLE C3DAnimationSequence (engine/C3DAnimationSequence.h)
+00a4df10   WARN SHARED_HEADER_AVAILABLE C3DAnimation2 (engine/C3DAnimation2.h)
+00a4df10   RELOCATION_MATCH PASS   C3DAnimation2::ReadCompressedFileData
+00a62120   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a62120   WARN SHARED_HEADER_AVAILABLE CShaderDataBank (engine/CShaderDataBank.h)
+00a62120   RELOCATION_MATCH PASS   CShaderBankEntry::CShaderBankEntry
+00a9b740   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE C3DMeshFileRootChunk (engine/C3DMeshFileRootChunk.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE CChunkedFile (engine/CChunkedFile.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE C3DMeshFileLoader (engine/C3DMeshFileLoader.h)
+00a9b740   RELOCATION_MATCH PASS   C3DMeshFileLoader::LoadMeshFileCompressed
+00ac3bd0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00ac3bd0   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)
+00ac3bd0   WARN SHARED_HEADER_AVAILABLE CMovableResourceMemoryPool (engine/CMovableResourceMemoryPool.h)
+00ac3bd0   WARN SHARED_HEADER_AVAILABLE CParticleProgram (engine/CParticleProgram.h)
+00ac3bd0   WARN SHARED_HEADER_AVAILABLE C3DClothPrimitive (engine/C3DClothPrimitive.h)
+00ac3bd0   RELOCATION_MATCH PASS   C3DClothPrimitive::LoadBinary
+00ac3e00   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00ac3e00   WARN SHARED_HEADER_AVAILABLE C3DVertexBlend2 (engine/C3DVertexBlend2.h)
+00ac3e00   WARN SHARED_HEADER_AVAILABLE C3DGroup2 (engine/C3DGroup2.h)
+00ac3e00   WARN SHARED_HEADER_AVAILABLE CParticleProgram (engine/CParticleProgram.h)
+00ac3e00   WARN SHARED_HEADER_AVAILABLE C3DMeshFileClothChunk (engine/C3DMeshFileClothChunk.h)
+00ac3e00   WARN SHARED_HEADER_AVAILABLE C3DClothPrimitive (engine/C3DClothPrimitive.h)
+00ac3e00   WARN RELOC_NAME: ?ReserveGroups@CParticleProgram@@QAEXK@Z -> 00ae3330 labelled 'CVectorPairOwner_00ae3330::ReserveBoth'
+00ac3e00   RELOCATION_MATCH PASS   C3DClothPrimitive::C3DClothPrimitive
+00adfdc0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00adfdc0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+00adfdc0   WARN SHARED_HEADER_AVAILABLE CParticleProgram (engine/CParticleProgram.h)
+00adfdc0   WARN RELOC_NAME: ?Reset@CMemoryDataOutputStream@@QAEXXZ -> 00996b60 labelled 'CMemoryDataOutputStream::Clear'
+00adfdc0   RELOCATION_MATCH PASS   CParticleProgram::OptimiseConstraints
+00bdc180   WARN RELOC_NAME: ?AllocateLandscapeBackgroundTreeNode@@YIPAXKPAVCEngineLandscapeMap@@@Z -> 00bf62e0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bdc180   WARN RELOC_NAME: ?BankFileList_RemoveFinished@CEngineStaticMapFileBlockManager@@QAEXXZ -> 00be04f0 labelled 'CEngineStaticMapFileBlockManager::DeleteUnusedBlocks'
+00bdc180   RELOCATION_MATCH PASS   CEngineLandscapeMap::UpdateBackgroundLOD
+00bde390   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bde390   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bde390   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bde390   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00bde390   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00bde390   WARN RELOC_NAME: ?RequestFileBlock@CEngineStaticMapFileBlockManager@@QAEXJJJ@Z -> 00be06b0 labelled 'CEngineStaticMapFileBlockManager::AddRequest'
+00bde390   RELOCATION_MATCH PASS   CLocalDetailCacheMap::CQuadTreeElement::LoadStaticContents
+00bde860   WARN SHARED_HEADER_AVAILABLE CMovableResourceMemoryPool (engine/CMovableResourceMemoryPool.h)
+00bde860   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bde860   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bde860   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00bde860   WARN RELOC_NAME: ?Allocate@CMovableResourceMemoryPool@@QAEPAXIPAVCMovableResource@@@Z -> 00bd9af0 labelled 'CEngineLandscapeMemoryManager::AllocVirtual'
+00bde860   RELOCATION_MATCH PASS   CLocalDetailCacheMap::CObjectCacheGroupCollection::LoadContents
+00beb490   RELOCATION_MATCH PASS   CWaterPatchMesh::CWaterPatchMesh
+00bf5a30   WARN RELOC_NAME: ??2CWaterPatchMesh@@SIPAXIPAVCMovableResource@@@Z -> 00bea7e0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf5a30   RELOCATION_MATCH PASS   CWaterPatchMesh::CreateFromStream
+00bf6930   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::GetEdgeStrip
+00bf8030   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf8030   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bf8030   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf8030   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00bf8030   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf8030   WARN RELOC_NAME: ?CalculateLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ -> 00bf7df0 labelled 'CLandscapeBackgroundTreeNode::GetDesiredLODBand'
+00bf8030   WARN RELOC_NAME: ?PrioritiseBlock@CEngineStaticMapFileBlockManager@@QAEXJ@Z -> 00be0420 labelled 'CEngineStaticMapFileBlockManager::SetBlockToHighPriority'
+00bf8030   WARN RELOC_NAME: ??2CLandscapeBackgroundPatch@@SIPAXIPAVCMovableResource@@@Z -> 00be5bb0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf8030   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::ProcessBackgroundLoading
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf84c0   WARN RELOC_NAME: ?PrioritiseBlock@CEngineStaticMapFileBlockManager@@QAEXJ@Z -> 00be0420 labelled 'CEngineStaticMapFileBlockManager::SetBlockToHighPriority'
+00bf84c0   WARN RELOC_NAME: ??2CLandscapeBackgroundPatch@@SIPAXIPAVCMovableResource@@@Z -> 00be5bb0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf84c0   WARN RELOC_NAME: ?OnSubNodeLoaded@CLandscapeBackgroundTreeNode@@QAEXXZ -> 00bf6750 labelled 'CLandscapeBackgroundTreeNode::InvalidateEdgeTesellation'
+00bf84c0   WARN RELOC_NAME: ??2CLandscapeBackgroundSubNodeSplitBranch@@SIPAXIPAVCMovableResource@@@Z -> 00bf6260 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf84c0   WARN RELOC_NAME: ?StartLoading@CLandscapeBackgroundLoadTask@@QAEXXZ -> 00bf6410 labelled 'CLandscapeBackgroundLoadTask::ReleaseFileBlockLoad'
+00bf84c0   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::ProcessLoadTask
+00c22840   WARN SHARED_HEADER_AVAILABLE CString (engine/CString.h)
+00c22840   WARN SHARED_HEADER_AVAILABLE PKCFrallocStatic (libpk/PKCFrallocStatic.h)
+00c22840   RELOCATION_MATCH PASS   PKCFrallocStatic<CUnprovenFrallocElement_00C22840>::Return
+  WARN leaf 'Register_00c2c750' matches no symbol in 00c2c750.obj; graded the largest function
+  WARN leaf 'Register_00c2c750' matches no symbol in 00c2c750.obj; graded the largest function
+00c2c750   WARN STANDIN_LEAF ?Register@CParticleProgram_00c2c750@@QAEXXZ (catalog _unattributed::Register_00c2c750; address-only name)
+00c2c750   RELOCATION_MATCH PASS   _unattributed::Register_00c2c750
+00ee9590   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00ee9590   RELOCATION_MATCH PASS   NScript::CExpression_FishScript::OnPersist
+
+WINS: 27
+  0048531e RELOCATION_MATCH CPersistContext_TransferableComponent<C3DVector>::?TransferIn@?$CPersistContext_TransferableComponent
+  00521240 RELOCATION_MATCH CThingManager::?LoadEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataInputStream@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z
+  005c3a95 RELOCATION_MATCH CTCInventoryWeapons::OnSerialise@CTCInventoryWeapons
+  005cc300 RELOCATION_MATCH CPersistContext::??$Transfer@VCDefIndex@@@CPersistContext@@QAEXPBDAAVCDefIndex@@@Z
+  006421c0 RELOCATION_MATCH CPersistContext_TransferableComponent<CRGBColour>::?TransferIn@?$CPersistContext_TransferableComponent
+  006f9f90 RELOCATION_MATCH NAnimationEvents::CManager::LoadBinary
+  009ad6e0 RELOCATION_MATCH CDefinitionManager::?LoadDef@CDefinitionManager@@IBEXK@Z
+  009c8700 RELOCATION_MATCH NGameText::CDataBankGroupEntry::?BuildGroup@CDataBankGroupEntry@NGameText@@ABEXXZ
+  009c8fb0 RELOCATION_MATCH NGameText::CDataBankTextEntry::?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ
+  00a42ea0 RELOCATION_MATCH CLipSyncDataBankEntry::CData::BuildLipSync
+  00a4df10 RELOCATION_MATCH C3DAnimation2::ReadCompressedFileData
+  00a62120 RELOCATION_MATCH CShaderBankEntry::CShaderBankEntry
+  00a9b740 RELOCATION_MATCH C3DMeshFileLoader::LoadMeshFileCompressed
+  00ac3bd0 RELOCATION_MATCH C3DClothPrimitive::LoadBinary
+  00ac3e00 RELOCATION_MATCH C3DClothPrimitive::??0C3DClothPrimitive
+  00adfdc0 RELOCATION_MATCH CParticleProgram::OptimiseConstraints
+  00bdc180 RELOCATION_MATCH CEngineLandscapeMap::UpdateBackgroundLOD
+  00bde390 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::LoadStaticContents
+  00bde860 RELOCATION_MATCH CLocalDetailCacheMap::CObjectCacheGroupCollection::?LoadContents@CObjectCacheGroupCollection@CLocalDetailCacheMap@@QAE_NPAVCEngineStaticMapFileBlockManager@@ABVCObjectTypeCollectionPalette@2@@Z
+  00beb490 RELOCATION_MATCH CWaterPatchMesh::??0CWaterPatchMesh@@QAE@PBVCEngineLandscapeMap@@AAVCDataInputStream@@AAVC2DCoordI@@@Z
+  00bf5a30 RELOCATION_MATCH CWaterPatchMesh::CreateFromStream
+  00bf6930 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?GetEdgeStrip@CLandscapeBackgroundTreeNode@@QAEPAVCPatchTesselationEdgeStrip@@JJW4LANDSCAPE_EDGE_STRIP_SIDE@@@Z
+  00bf8030 RELOCATION_MATCH CLandscapeBackgroundTreeNode::ProcessBackgroundLoading
+  00bf84c0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::ProcessLoadTask
+  00c22840 RELOCATION_MATCH PKCFrallocStatic<CUnprovenFrallocElement_00C22840>::?Return@?$PKCFrallocStatic@VCSoundEvent@@@@UAEXPAVCSoundEvent@@@Z
+  00c2c750 RELOCATION_MATCH _unattributed::Register_00c2c750
+  00ee9590 RELOCATION_MATCH _unattributed::?OnPersist@CExpression_FishScript@NScript@@UAEXAAVCPersistContext@@@Z

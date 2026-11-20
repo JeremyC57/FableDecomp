@@ -36,6 +36,13 @@ public:
     CWaterPatchMesh(const CEngineLandscapeMap* map, CDataInputStream& stream, C2DCoordI& offset);   // 0x00BEB490
     CWaterPatchMesh(const CEngineLandscapeMap* map, long x, long y);     // ??0CWaterPatchMesh@@QAE@PBVCEngineLandscapeMap@@JJ@Z
     virtual ~CWaterPatchMesh();                                          // slot 0  ??_G 0x00BEB4D0
+#ifdef FABLE_RETAIL_CWATERPATCHMESH_CREATEFROMSTREAM
+    // NF188 opt-in (2026-11-20, q6204, row 0x00BF5A30): the class placement operator new (Ego_r.pdb 0x00AA24E0 / FableWin.pdb 0x02E67110
+    // ??2CWaterPatchMesh@@SIPAXIPAVCMovableResource@@@Z, landed 0x00BEA7E0) and the stream factory 0x00BF5A30 (descriptive: no PDB name;
+    // __stdcall static, reads the water offset X then Y and news the mesh). Declarations only; no layout.
+    static void* FABLE_FASTCALL operator new(unsigned int size, CMovableResource* owner);                       // 0x00BEA7E0
+    static CWaterPatchMesh* __stdcall CreateFromStream(CMovableResource* owner, CEngineLandscapeMap* map, CDataInputStream* stream);   // 0x00BF5A30
+#endif
     bool Build(const CWaterPatchDescriptors& descriptors);
     void BuildVertexBuffer();
     void GetMemoryStats(CLandscapeMemoryStats* stats);

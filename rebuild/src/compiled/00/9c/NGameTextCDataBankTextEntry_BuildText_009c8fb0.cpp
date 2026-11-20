@@ -27,6 +27,10 @@
 //   CResource::TouchResource (engine/CResourceList.h FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE), as the byte-twin BuildGroup 0x009C8700
 //   spells it; the local CResourceMethods view bound them as public CResourceMethods members (its MarkAsUsed was this touch). The
 //   header-less CResourceMethods token stays as the base of the row's local NGameText::CTextEntry (base list unchanged).
+// NF188 (2026-11-20, q4251): the row-local CMemoryDataInputStream stand-in (a user-declared destructor that bound a
+//   CMemoryDataInputStream dtor spelling at 0x00993B10) is replaced by the shared engine/CMemoryDataInputStream.h class, whose
+//   compiler-generated destructor calls ~CDataStream 0x00993B10 directly (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 +
+//   FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
@@ -74,11 +78,9 @@ template <class T> class CCountedPointer { public:
 };
 
 class CDataInputStream;
-class CMemoryDataInputStream { public:
-    unsigned char _body[0x18];
-    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
-    virtual ~CMemoryDataInputStream();                       // 0x00993B10
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 
 namespace NGameText {
 class CTextEntry : public CResourceMethods { public:

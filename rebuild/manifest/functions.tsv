@@ -12058,7 +12058,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005cc1e8	Transfer	CPersistContext	__thiscall	void	4	CPersistContext *,char *,CDefIndex *,CDefIndex *	1	yes	accepted									
 005cc292	erase	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
 005cc2d6	equal_range	std::_Rb_tree	__thiscall	bool	3	CompareDataOffset *,ulong,ulong	1	yes	accepted									
-005cc300	Transfer<long>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,long *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CPersistContext_Transferlong_005cc300.cpp
+005cc300	Transfer<CDefIndex>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,long *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CPersistContext_Transferlong_005cc300.cpp
 005cc31b	erase	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
 005cc364	GetInterface_0x47	_unattributed	unknown	undefined	0		0	yes	accepted									
 005cc3af	GetInterface_0x87	_unattributed	unknown	undefined	0		0	yes	accepted									
@@ -44790,7 +44790,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c227e0	SetMemberConst_00c227e0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CBase_CBase_00c227e0.cpp
 00c227f0	SetMemberConst_00c227f0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CBase_CBase_00c227f0.cpp
 00c22820	GetNoLevels	CTexture	__thiscall	long	1	CTexture *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTexture_GetNoLevels_00c22820.cpp
-00c22840	Return	PKCFrallocStatic<CUnprovenFrallocElement_00C22840>	unknown	undefined	0		0	yes	accepted									
+00c22840	Return	PKCFrallocStatic<CSoundEvent>	unknown	undefined	0		0	yes	accepted									
 00c22920	Return	PKCFrallocStatic<CUnprovenFrallocElement_00C22920>	unknown	undefined	0		0	yes	accepted									
 00c22a00	~CBankArray	CBankArray	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CGraphicDataBank_ChangeScene_00c22a00.cpp
 00c22a20	GetNoLevels	CTexture	__thiscall	long	1	CTexture *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTexture_GetNoLevels_00c22a20.cpp

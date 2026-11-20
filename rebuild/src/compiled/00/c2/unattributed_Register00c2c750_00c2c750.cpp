@@ -8,19 +8,24 @@
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
 
-struct CParticleProgram_00c2c750;
-struct CTarget_00c2c750 {
-    void Add(CParticleProgram_00c2c750* program);   // 0x00C14A50
+// NF188 (2026-11-20, q4960): the callee 0x00C14A50 is the landed PKCDeferredBank::DeleteData (descriptive libpk name, owner decision
+//   2026-11-01; its self row and the bank destructor 0x00C14F90 bind ?DeleteData@PKCDeferredBank@@QAEXPAVCData_00c14a50@@@Z). The member
+//   at +4 is that bank (was the stand-in CTarget_00c2c750::Add); this object is the bank's data object, passed as CData_00c14a50
+//   (no shared header for either class: the 0x00C14A50 row's shape, declaration only).
+class CData_00c14a50;
+class PKCDeferredBank {
+public:
+    void DeleteData(CData_00c14a50* data);           // 0x00C14A50
 };
 
 struct CParticleProgram_00c2c750 {
     unsigned char _pad[4];
-    CTarget_00c2c750* m_pTarget;                // +4
+    PKCDeferredBank* m_pTarget;                 // +4
     void Register();
 };
 
 void CParticleProgram_00c2c750::Register()
 {
     PKCProtectionInstance lock(&g_lock_0143bb14);
-    m_pTarget->Add(this);
+    m_pTarget->DeleteData(reinterpret_cast<CData_00c14a50*>(this));
 }

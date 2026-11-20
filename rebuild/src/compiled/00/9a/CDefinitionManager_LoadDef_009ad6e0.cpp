@@ -18,6 +18,10 @@
 //   result replaces the def pointer by an inline raw assignment (release through the def's inline Release() member --
 //   written inline at the use it loads the count back --, null store, store); the class name is a named block-scoped
 //   CCharString local (passing the GetString result straight drops the `lea`).
+// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
+//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
+//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
+//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
@@ -65,20 +69,9 @@ inline void CResource::Touch()
     }
 }
 
-class CDataInputStream { public:
-    virtual ~CDataInputStream();
-    unsigned long StreamPos;                                 // +0x04
-    long          StreamSize;                                // +0x08
-    void*         CurrentSourcePtr;                          // +0x0c
-    unsigned long SourceChunkStreamPos;                      // +0x10
-    long          SourceChunkBytesRemaining;                 // +0x14
-    CDataInputStream();                                      // 0x00993B20
-};
-class CMemoryDataInputStream : public CDataInputStream { public:           // vtable 0x0123675C
-    const unsigned char* Data;                               // +0x18
-    CMemoryDataInputStream() : Data(0) { }
-    virtual ~CMemoryDataInputStream();                       // 0x00993B10
-};
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#include "engine/CMemoryDataInputStream.h"
 class CPersistContext { public:
     unsigned char _body[0x2c];
     void Init(CMemoryDataInputStream& stream, bool binary);  // 0x009BAA30
@@ -157,7 +150,7 @@ void CDefinitionManager::LoadDef(unsigned long globalIndex) const
         classInfo = const_cast<CDefinitionManager*>(this)->FindClassInfo(className);
     }
     if (classInfo) {
-        unsigned long size = stream.StreamSize + 0x25;
+        unsigned long size = stream.GetLength() + 0x25;
         const_cast<CDefinitionManager*>(this)->MakeFreeSpace(size);
         const_cast<CDefinitionManager*>(this)->FrameEnd();
         CDefClassBase* created = classInfo->Create();
