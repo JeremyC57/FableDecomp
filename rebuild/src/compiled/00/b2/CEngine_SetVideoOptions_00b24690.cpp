@@ -43,7 +43,9 @@ class CDisplayManager { public:
     // NF140 (q4056): Ego_r.pdb / FableWin.pdb nest the result enum in CDisplayManager (Ego_d.pdb LF_ENUM enumerators).
     enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_DEVICE_LOST = 1, CREATE_DEVICE_SUCCESS = 2 };
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel, ESurfaceMultisampleType antialiasing, unsigned long refreshRate);   // 0x009BFF40
-    void SetPresentParameters(bool immediate, bool a, bool b);   // 0x009BFF10
+    // NF145 (q11808): in-place respell to the PDB overload (Ego_r.pdb 0x00B24FA0 / FableWin.pdb 0x0301CD60, bool / long / bool; was a
+    // three-bool SetPresentParameters stand-in); the pushes are the same (`push 1 ; push 1 ; push <bool>`).
+    void ChangePresentationInterval(bool present_immediate, long vsync_count, bool present_immediate_if_sync_missed);   // 0x009BFF10
 };
 struct CShaderBankStateBlock { void Set(CEngineVideoOptionsDef* def); };                       // 0x00B50C60
 class CEngineScreenEffectColourFilter { public: void SetEffectQuality(CEngineVideoOptionsDef* def); };   // 0x00B5A0B0
@@ -109,7 +111,7 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
             }
         }
     }
-    NEngineInternal::GPDisplayManager->SetPresentParameters(!options.VerticalSync, true, true);
+    NEngineInternal::GPDisplayManager->ChangePresentationInterval(!options.VerticalSync, 1, true);
     g_pShaderBankStateBlock->Set(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
     g_pColourFilter->SetEffectQuality(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
     g_pVideoOptionsListener->SetEffectQuality(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);

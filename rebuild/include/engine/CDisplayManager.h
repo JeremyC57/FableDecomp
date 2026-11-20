@@ -38,6 +38,14 @@ public:
  // display manager's own .cpp (Ego_d file id 600, lines 956..959), which the CreateDevice row defines as a same-TU copy.
  bool IsAntiAliasingModeValid(ESurfaceMultisampleType multisampling_mode,const CPixelFormat& pixel_format);   // 0x009BE3C0
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_RESETDEVICE
+ // NF145 opt-in (q11808, rows 0x009BFE70 / 0x009BFF10 / 0x009BFF40 / 0x009C0020, the ResetDevice callers; needs _CREATEDEVICE for
+ // ECreateDeviceSuccess). Spellings from Ego_r.pdb / FableWin.pdb (Ego_r 0x00B24F00 / 0x00B24FA0 / 0x00B25050 / 0x00B25130). Declarations only.
+ void ChangePresentationInterval(const CPresentationIntervalDesc& interval);                        // 0x009BFE70
+ void ChangePresentationInterval(bool present_immediate,long vsync_count,bool present_immediate_if_sync_missed);   // 0x009BFF10
+ ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& size,unsigned long bit_depth,ESurfaceMultisampleType multisample_type,unsigned long refresh_rate);   // 0x009BFF40
+ ECreateDeviceSuccess SetExclusiveMode(bool exclusive);                                            // 0x009C0020
+#endif
  CDisplayManager(CSystemManager&);
  virtual ~CDisplayManager();
  bool GetBestAlphaTextureFormat(unsigned long,CPixelFormat&);
@@ -196,6 +204,11 @@ private:
  unsigned int CalculateD3DPresentationInterval(const CPresentationIntervalDesc& desc);            // 0x009BE2D0
  long ReadDeviceRefreshRate();                                                                    // 0x009BE340
  float CalcPresentationIntervalTime(long refresh_rate,long vsync_count);                          // 0x009BE380
+#endif
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_RESETDEVICE
+ // (same NF145 opt-in) Ego_r.pdb 0x00B24B50 / FableWin.pdb 0x0301C220
+ // ?ResetDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z (retail 0x009BFB30). Declaration only.
+ ECreateDeviceSuccess ResetDevice(const CCreateDeviceParameters& parameters);                      // 0x009BFB30
 #endif
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER_BUFFERTEXTURES

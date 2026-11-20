@@ -1,9 +1,8 @@
 // CEngineLandscapeMemoryManager::ProcessDisposalList() -- advance delayed resource destruction one generation: with delayed destruction off, free every disposal list; then destroy and free every texture, vertex buffer and index buffer queued in the generation after the current one
 // Leaf: ?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ
-// Inline-budget: FABLE_FORCEINLINE on the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
-//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE; the landed 0x009F2B20 forces both the same way, and the HEAD row wrote the body out
-//   in place) -- retail expands both at every site here; plain inline is called out of line (0x00BD9B90: Destroy DIFFER 68v97, then
-//   Deallocate DIFFER 16v97). Preference-2 per-row /d2inl flags were not swept.
+// Inline: the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
+//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE) are plain inline; VC7.1 expands both here at its default threshold (NF145 sweep:
+//   MATCH with no inline control; the nf140 FABLE_FORCEINLINE is gone from the header).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BDA150, 514 bytes, thiscall, plain `ret`. Speed TU (no pragma).
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ (private; Ego_r
 //   009C2A30 between EnablePoolAllocation 009C29D0 and AllocateIndexBuffer 009C2B20 -- retail has EnablePoolAllocation

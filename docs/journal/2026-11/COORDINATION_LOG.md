@@ -450,3 +450,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: RP1 handed back (29 rows; 0x009C0E50 waits for option B). New agent NF150 (PRIORITY pick list, 15 entries).
 2026-11-20 A: landed B's reports_b5 (8 CPSCSingleSprite rows onto engine/CPSCSingleSprite.h; MEMBERS opt-ins in CPSCSingleSprite.h / CPSCSplineBase.h; 0x00B05EA0 vfunc_18 -> DatabaseCopy).
 2026-11-20 A: nf144 landed (17 rows; q5199 / q5220 closed; q6408 16 binders onto CTCCreatureModeManager.h, its self row and 8 binders plus q4802 with NF147; GetEffectFromString clash 0x008C1F70 / 0x008C1C30 queued as debt, also at HEAD).
+2026-11-20 A: nf145 landed (21 rows; q11780 / q11784 / q11808 / q11809 / q11810 closed; CMemoryAllocator.h forces dropped for per-row /d2inlT flags, new _DEALLOCATOR; CDisplayManager.h _RESETDEVICE; q11785 open with NF148).

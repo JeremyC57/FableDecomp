@@ -1,0 +1,32 @@
+008e8830 new: 1
+    ??1CCreatureAction_BriarRoseInvulnerableTeleport@@UAE@XZ
+009566c0 new: 4
+    ??0CCreatureAction_ThrowShotObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_GCCreatureAction_ThrowShotObject@@UAEPAXI@Z
+    ?ReferenceThrowShotObjectCtor@?A0xdd69b053@@YAXPAXAAVCThingCreatureBase@@AAVCThing@@@Z
+009a1660 new: 0
+009a4350 new: 0
+009bfe70 new: 2
+    ??0C2DExtentsI@@QAE@ABV0@@Z
+    ?ChangePresentationInterval@CDisplayManager@@QAEXABVCPresentationIntervalDesc@1@@Z TABLE:009bfe70
+009bff10 new: 1
+    ?ChangePresentationInterval@CDisplayManager@@QAEX_NJ0@Z TABLE:009bff10
+009bff40 new: 1
+    ??0C2DExtentsI@@QAE@ABV0@@Z
+009c0020 new: 1
+    ??0C2DExtentsI@@QAE@ABV0@@Z
+009c6020 new: 0
+009c6d60 new: 0
+009d52d0 new: 0
+009d61f0 new: 0
+00a02190 new: 0
+00a02220 new: 0
+00a02370 new: 0
+00a02570 new: 0
+00b24690 new: 0
+00bd9b90 new: 0
+00bd9ce0 new: 0
+00bda150 new: 0
+0122a9a0 new: 1
+    ??_GCMemoryAllocator@@IAEPAXI@Z

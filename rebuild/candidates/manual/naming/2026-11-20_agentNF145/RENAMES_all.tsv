@@ -1,0 +1,11 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x009BFE70	CDisplayManager	ChangePresentationInterval	?ChangePresentationInterval@CDisplayManager@@QAEXABVCPresentationIntervalDesc@1@@Z	CDisplayManager::ChangePresentationInterval	?ChangePresentationInterval@CDisplayManager@@QAEXABUCPresentationIntervalDesc@@@Z	Ego_r.pdb 0x00B24F00 / FableWin.pdb 0x0301CC40 (parameter is the nested class CDisplayManager::CPresentationIntervalDesc, engine/CDisplayManager.h); exe-scan referencers: 0x009BFF10 only, moved here; spellings 2 -> 1
+0x009BFF10	CDisplayManager	ChangePresentationInterval	?ChangePresentationInterval@CDisplayManager@@QAEX_NJ0@Z	CDisplayManager::ChangePresentationInterval	?SetPresentParameters@CDisplayManager@@QAEX_NJ0@Z	Ego_r.pdb 0x00B24FA0 / FableWin.pdb 0x0301CD60 (bool, long, bool overload; body builds the interval desc and calls 0x009BFE70); the HEAD Leaf line already named it but the body defined SetPresentParameters; exe-scan referencers 0x004189C2 (already PDB) and 0x00B24690 (moved here); spellings 3 -> 1. Source file moves (CDisplayManager_SetPresentParameters_009bff10 -> ..._ChangePresentationInterval_009bff10)
+0x009566C0	CCreatureAction_ThrowShotObject	CCreatureAction_ThrowShotObject	??0CCreatureAction_ThrowShotObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	CCreatureAction_ThrowShotObject::CCreatureAction_ThrowShotObject	??0CCreatureAction_ThrowShotObject@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	Ego_r.pdb 0x0097B320 / FableWin.pdb 0x02BF6850 (reference parameters); body is the header inline constructor (_CLASS opt-in); exe scan: no landed row references 0x009566C0
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x009BFF10	?SetPresentParameters@CDisplayManager@@QAEXABUCPresentationIntervalDesc@@@Z	?ChangePresentationInterval@CDisplayManager@@QAEXABVCPresentationIntervalDesc@1@@Z	0x009BFE70
+0x00B24690	?SetPresentParameters@CDisplayManager@@QAEX_N00@Z	?ChangePresentationInterval@CDisplayManager@@QAEX_NJ0@Z	0x009BFF10
+0x0122A9A0	?PAllocator@CMemoryAllocator@@1PAV1@A	?PMemoryAllocator@CMemoryAllocator@@1PAV1@A	0x013CAA90
+0x0122A9A0	?ShuttingDown@CMemoryAllocator@@1_NA	?DestroyWhenEmpty@CMemoryAllocator@@1_NA	0x013CAA94
+0x008E8830	??0CCreatureAction_BriarRoseForcePush@@QAE@AAVCThingCreatureBase@@0@Z	??0CCreatureAction_BriarRoseInvulnerableTeleport@@QAE@AAVCThingCreatureBase@@0@Z	0x008E8C50

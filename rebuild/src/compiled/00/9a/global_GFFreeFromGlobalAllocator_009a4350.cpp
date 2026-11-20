@@ -1,8 +1,9 @@
 // GFFreeFromGlobalAllocator(void* block) -- under the allocator lock: return `block` to the global CMemoryAllocator and, when the allocator is flagged to die when empty and its allocation count has dropped to zero, destroy it and release its virtual memory
-// Inline-budget: FABLE_FORCEINLINE on the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
-//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE; the landed 0x009F2B20 forces both the same way, and the HEAD row wrote the body out
-//   in place) -- retail expands both at every site here; plain inline is called out of line (0x00BD9B90: Destroy DIFFER 68v97, then
-//   Deallocate DIFFER 16v97). Preference-2 per-row /d2inl flags were not swept.
+// Flags: /d2inlT114
+// Inline-budget: /d2inlT114 (EXTRA_RULES 2026-11-08 preference 2; replaces the nf140 FABLE_FORCEINLINE in the header) -- retail
+//   expands the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
+//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE, plain inline) here; at the default threshold both stay calls (DIFFER 63v92).
+//   Sweep NF145: T74..T113 all DIFFER, T114 is the smallest match (T114..T2000 match on 0x00BD9B90; /d2inlS85 also matches there).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009A4350, length 92 bytes.
 // Callees: CMemoryAllocator::EnterSynchronisation @ 0x009F2000 / LeaveSynchronisation @ 0x009F2010 (EnterCriticalSection / LeaveCriticalSection on the section @ 0x013CAA70;
 // the leave is the tail jump), CMemoryAllocator::InternalDeallocate(void*) @ 0x009F2920, CMemoryAllocator::GetNoAllocations() @ 0x009F1F10 (`[this+40Ch]`),

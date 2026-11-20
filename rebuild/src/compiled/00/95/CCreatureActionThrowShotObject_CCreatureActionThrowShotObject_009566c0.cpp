@@ -1,48 +1,50 @@
-// CCreatureAction_ThrowShotObject::CCreatureAction_ThrowShotObject(CThingCreatureBase*, CThing*) -- base CCombatActionBase(owner, thing, 150, GetSoundPair(owner, SWORD_SWING))
+// CCreatureAction_ThrowShotObject::CCreatureAction_ThrowShotObject(CThingCreatureBase&, CThing&) -- base CCombatActionBase(creature, thing, 150, GetSoundPair(creature, SWORD_SWING))
+// Leaf: ??0CCreatureAction_ThrowShotObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009566C0, oracle length 87 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  sub esp,0Ch ; push esi ; push edi ; push -1 ; mov esi,ecx ; push offset "SWORD_SWING" ; lea ecx,[esp+10h] ; call CCharString::CCharString ; mov edi,[owner] ; lea eax,[esp+8] ; push eax ; mov edx,edi ; lea ecx,[esp+10h] ; call GetSoundPair ; mov ecx,[thing] ; push eax ; push 0x96 ; push ecx ; push edi ; mov ecx,esi ; call CCombatActionBase::CCombatActionBase ; lea ecx,[esp+8] ; call CCharString::~CCharString ; pop edi ; mov dword ptr [esi],offset vftable ; mov eax,esi ; pop esi ; add esp,0Ch ; ret 8
-// Two-argument combat-action constructor whose sound pair comes from the __fastcall
-// GetSoundPair @ 0x008561A0: the name literal converts implicitly to a CCharString temporary
-// (re-addressed with `lea`, GOTCHAS), the 8-byte CSoundPair result lands in a frame temporary
-// through the hidden pointer in ecx and is handed by reference to the base constructor
-// @ 0x00857F30 with the action code 150 (0x96); the string temporary dies after the base
-// constructor, then this class's vtable (0x012944D4, rtti-vtables.tsv) is stored.
-// One of 11 bodies of this shape.
-class CThingCreatureBase;
-class CThing;
+// Retail bytes:  sub esp,0Ch ; push esi ; push edi ; push -1 ; mov esi,ecx ; push offset "SWORD_SWING" ; lea ecx,[esp+10h] ; call CCharString::CCharString ; mov edi,[owner] ; lea eax,[esp+8] ; push eax ; mov edx,edi ; l
+// Two-argument combat-action constructor whose sound pair comes from the protected static __fastcall
+// CCombatActionBase::GetSoundPair @ 0x008561A0: the name literal converts implicitly to a CCharString temporary, the 8-byte CSoundPair
+// result lands in a frame temporary through the hidden pointer and is handed by reference to the base constructor @ 0x00857F30 with
+// the action code 150 (0x96); the string temporary dies after the base constructor, then this class's vtable (0x012944D4) is stored.
+// NF145 (q11780 / q11785): Ego_r.pdb 0x0097B320 / FableWin.pdb 0x02BF6850 ??0CCreatureAction_ThrowShotObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+//   (references; was the pointer form ...@PAVCThingCreatureBase@@PAVCThing@@@Z, which no landed row binds). The body is the header's inline
+//   constructor (engine/CCreatureAction_ThrowShotObject.h, opt-in FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLASS, which retail expands
+//   inside 0x009551A0); the row's local CCharString / CSoundPair / CCombatActionBase / CCreatureAction_ThrowShotObject models (with a
+//   placeholder virtual v00) are gone, so this object's ??_7CCreatureAction_ThrowShotObject@@6B@ COMDAT is the header class's, as in
+//   0x009551A0.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#define FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLASS
+#include <new>
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_ThrowShotObject.h"
 
-class CCharString { public:                     // one pointer; the default length makes the literal convert implicitly
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                        // 0x0099EAE0
-};
-
-class CSoundPair { public:                       // a user constructor makes the 8-byte result return through the hidden pointer (a POD would ride in edx:eax)
-    long m_first;
-    long m_second;
-    CSoundPair() : m_first(0), m_second(0) { }
-};
-
-
-class CCombatActionBase { public:
-    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
-    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
-protected:
-    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
-public:
-    virtual void v00();
-    CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
-};
-
-class CCreatureAction_ThrowShotObject : public CCombatActionBase { public:
-    virtual void v00();
-    CCreatureAction_ThrowShotObject(CThingCreatureBase* owner, CThing* thing);
-};
-
-CCreatureAction_ThrowShotObject::CCreatureAction_ThrowShotObject(CThingCreatureBase* owner, CThing* thing)
-    : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+namespace {
+// Fidelity: scaffolding, not retail (nf86 / nf88 pattern, as 0x004371A0): a placement construction through the header's inline
+// constructor with inline expansion switched off for this one function, so this object emits the body out of line as a pick-any COMDAT
+// (retail's 0x009566C0). Internal to this TU; never called.
+#pragma inline_depth(0)
+void ReferenceThrowShotObjectCtor(void* where, CThingCreatureBase& creature, CThing& thing)
 {
+    new (where) CCreatureAction_ThrowShotObject(creature, thing);
+}
+#pragma inline_depth()
 }

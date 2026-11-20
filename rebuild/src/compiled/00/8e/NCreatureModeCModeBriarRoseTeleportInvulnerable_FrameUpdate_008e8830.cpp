@@ -69,10 +69,14 @@ class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char CombatState[0x6c];
     virtual ~CCombatActionBase(); // 0x0062E900
 };
-class CCreatureAction_BriarRoseForcePush : public CCombatActionBase { public:
+// NF145 (q11784): the action built here is CCreatureAction_BriarRoseInvulnerableTeleport, whose constructor is 0x008E8C50 (Ego_r.pdb 0x00831D20 /
+//   FableWin.pdb 0x0280C960 ??0CCreatureAction_BriarRoseInvulnerableTeleport@@QAE@AAVCThingCreatureBase@@0@Z; the self row 0x008E8C50 defines it).
+//   The ForcePush constructor name belongs to 0x009572A0 (bound so by 0x00956FE0, both PDBs). In-place respell of this row's local
+//   class token (no header exists for either class; the landed sibling 0x008E8C50 models the same shape: CCombatActionBase + PEnemy).
+class CCreatureAction_BriarRoseInvulnerableTeleport : public CCombatActionBase { public:
     CIntelligentPointer<CThingCreatureBase> PEnemy; // PDB129219, retail +0x114
     // CombatActionBase has a distinct PTarget at +0xa8 inside opaque CombatState.
-    CCreatureAction_BriarRoseForcePush(CThingCreatureBase&,CThingCreatureBase&); // 008E8C50
+    CCreatureAction_BriarRoseInvulnerableTeleport(CThingCreatureBase&,CThingCreatureBase&); // 0x008E8C50
 };
 namespace NCreatureMode {
 struct CModeBriarRoseTeleportInvulnerable : CModeStandBase {
@@ -94,7 +98,7 @@ void CModeBriarRoseTeleportInvulnerable::FrameUpdate()
         CThingCreatureBase& owner = *static_cast<CThingCreatureBase*>(ParentThing);
         if (PTarget.Get() &&
             !(*(unsigned char*)((char*)PTarget.Get() + 0x91) & 1) &&
-            owner.SetCurrentAction(CCreatureAction_BriarRoseForcePush(
+            owner.SetCurrentAction(CCreatureAction_BriarRoseInvulnerableTeleport(
                 owner, *(CThingCreatureBase*)PTarget.Get())))
             return;
     }

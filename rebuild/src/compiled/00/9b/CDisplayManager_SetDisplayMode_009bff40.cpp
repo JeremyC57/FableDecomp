@@ -9,64 +9,30 @@
 // +0xc, ZBufferBitDepth +0x10, BackBufferCount +0x14, RefreshRate +0x18, ExclusiveMode +0x1c, PresentationInterval
 // +0x20 (8 bytes), MultisampleType +0x28.
 // Shape: the unchanged test is one `&&` chain returning 2; the parameter block is a copy of the last parameters through
-// an inline memberwise copy constructor (VC drops the stores the following assignments overwrite and schedules the
-// kept members first; the implicit copy is a `rep movsd` block), then the size (clamped up to 32 per axis), depth,
+// the header's implicit memberwise copy constructor, expanded (VC drops the stores the following assignments overwrite
+// and schedules the kept members first), then the size (clamped up to 32 per axis), depth,
 // refresh rate and multisampling are assigned and the block is handed to ResetDevice.
-class C2DExtentsI { public:
-    long X;                                        // +0x00
-    long Y;                                        // +0x04
-};
-class CPixelFormat { public:
-    long FormatIndex;
-    unsigned long GetColourDepth() const;          // 0x009E3820
-};
-struct CPresentationIntervalDesc {
-    long Type;                                     // +0x00
-    long Interval;                                 // +0x04
-};
-enum ESurfaceMultisampleType { MULTISAMPLE_NONE = 0 };
-struct HWND__;
+// NF145 (q11808): on engine/CDisplayManager.h (opt-ins _CREATEDEVICE for ECreateDeviceSuccess, new _RESETDEVICE for SetDisplayMode /
+//   ResetDevice, CPixelFormat _COLOURDEPTH; the 0x009C11A0 opt-in set for the member types). The local models of CDisplayManager,
+//   C2DExtentsI, CPixelFormat and CPresentationIntervalDesc are gone: the parameter copy is the header's implicit
+//   CCreateDeviceParameters copy constructor (owner 0x009C11A0, pick-any), which VC7.1 expands here as retail does.
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CPIXELFORMAT_COLOURDEPTH
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_C2DEXTENTSI_INITIALISE
+#define FABLE_RETAIL_CDISPLAYMANAGER_CREATEDEVICE
+#define FABLE_RETAIL_CDISPLAYMANAGER_RESETDEVICE
+#include "engine/C2DExtentsI.h"
+#include "engine/CPixelFormat.h"
+#include "engine/CDisplayManager.h"
 
-class CDisplayManager {
-public:
-    // NF140 (q4056): Ego_r.pdb / FableWin.pdb nest the result enum and the parameter block in CDisplayManager
-    // (?ResetDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z); enumerators as Ego_d.pdb LF_ENUM.
-    enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_DEVICE_LOST = 1, CREATE_DEVICE_SUCCESS = 2 };
-    struct CCreateDeviceParameters {
-        HWND__* WinHandle;                             // +0x00
-        C2DExtentsI BackBufferDimensions;              // +0x04
-        long BackBufferBitDepth;                       // +0x0c
-        long ZBufferBitDepth;                          // +0x10
-        long BackBufferCount;                          // +0x14
-        long RefreshRate;                              // +0x18
-        bool ExclusiveMode;                            // +0x1c
-        CPresentationIntervalDesc PresentationInterval;   // +0x20
-        ESurfaceMultisampleType MultisampleType;       // +0x28
-        CCreateDeviceParameters() { }
-        CCreateDeviceParameters(const CCreateDeviceParameters& o)
-            : WinHandle(o.WinHandle), BackBufferDimensions(o.BackBufferDimensions), BackBufferBitDepth(o.BackBufferBitDepth),
-              ZBufferBitDepth(o.ZBufferBitDepth), BackBufferCount(o.BackBufferCount), RefreshRate(o.RefreshRate),
-              ExclusiveMode(o.ExclusiveMode), PresentationInterval(o.PresentationInterval), MultisampleType(o.MultisampleType) { }
-    };
-    unsigned char _pad0[0x18c];
-    C2DExtentsI BackBufferDimensions;              // +0x18c
-    unsigned char _pad1[0x10];
-    ESurfaceMultisampleType MultisampleType;       // +0x1a4
-    CPixelFormat BackBufferFormat;                 // +0x1a8
-    unsigned char _pad2[0x1c];
-    long RefreshRate;                              // +0x1c8
-    unsigned char _pad3[0x268 - 0x1cc];
-    CCreateDeviceParameters LastDeviceCreationParameters;   // +0x268
-private:
-    ECreateDeviceSuccess ResetDevice(const CCreateDeviceParameters& parameters);   // 0x009BFB30 (private, AAE)
-public:
-    ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample, unsigned long refreshRate);
-};
-
-CDisplayManager::ECreateDeviceSuccess CDisplayManager::SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample, unsigned long refreshRate)
+CDisplayManager::ECreateDeviceSuccess CDisplayManager::SetDisplayMode(const C2DExtentsI& size, unsigned long bit_depth, ESurfaceMultisampleType multisample_type, unsigned long refresh_rate)
 {
-    if (size.X == BackBufferDimensions.X && size.Y == BackBufferDimensions.Y && bitDepth == BackBufferFormat.GetColourDepth()
-        && refreshRate == RefreshRate && multisample == MultisampleType)
+    if (size.X == BackBufferDimensions.X && size.Y == BackBufferDimensions.Y && bit_depth == BackBufferFormat.GetColourDepth()
+        && refresh_rate == RefreshRate && multisample_type == MultisampleType)
         return CREATE_DEVICE_SUCCESS;
     CCreateDeviceParameters parameters = LastDeviceCreationParameters;
     parameters.BackBufferDimensions = size;
@@ -74,8 +40,8 @@ CDisplayManager::ECreateDeviceSuccess CDisplayManager::SetDisplayMode(const C2DE
         parameters.BackBufferDimensions.X = 32;
     if (parameters.BackBufferDimensions.Y < 32)
         parameters.BackBufferDimensions.Y = 32;
-    parameters.BackBufferBitDepth = bitDepth;
-    parameters.RefreshRate = refreshRate;
-    parameters.MultisampleType = multisample;
+    parameters.BackBufferBitDepth = bit_depth;
+    parameters.RefreshRate = refresh_rate;
+    parameters.MultisampleType = multisample_type;
     return ResetDevice(parameters);
 }

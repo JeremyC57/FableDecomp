@@ -1,9 +1,10 @@
 // CBankFileAsyncData::~CBankFileAsyncData() -- unless aborted: under the bank's critical section, drop this request from the bank's instance and restart sets, spin (unlocking around Sleep(0)) until any outstanding threaded read has finished, and give the pool handle back; then return an internally allocated buffer to the global allocator (destroying the allocator when it empties and is flagged to die) and run the base destructors
 // Leaf: ??1CBankFileAsyncData@@UAE@XZ
-// Inline-budget: FABLE_FORCEINLINE on the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
-//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE; the landed 0x009F2B20 forces both the same way, and the HEAD rows forced their GFFree
-//   helper) -- retail expands both at every site here; plain inline is called out of line (0x00BD9B90: Destroy DIFFER 68v97, then
-//   Deallocate DIFFER 16v97). Preference-2 per-row /d2inl flags were not swept.
+// Flags: /d2inlT114
+// Inline-budget: /d2inlT114 (EXTRA_RULES 2026-11-08 preference 2; replaces the nf140 FABLE_FORCEINLINE in the header) -- retail
+//   expands the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
+//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE, plain inline) here; at the default threshold both stay calls (DIFFER 319v348).
+//   Sweep NF145: T74..T113 all DIFFER, T114 is the smallest match (T114..T2000 match on 0x00BD9B90; /d2inlS85 also matches there).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D61F0, length 348 bytes (+ int3 padding), ebp frame aligned to 8, plain ret.
 // NF28 (2026-11-12, queue land1011dz): callees respelled HasReadFinished -> CThreadedFile::RemoveObject, Free_00a62ed0 ->
 //          CMovableResourceMemoryPool::FreeResource (shared header).

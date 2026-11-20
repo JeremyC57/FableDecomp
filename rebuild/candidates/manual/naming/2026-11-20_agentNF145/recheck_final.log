@@ -1,0 +1,95 @@
+addr       parity           behav  name
+008e8830   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008e8830   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008e8830   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008e8830   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008e8830   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008e8830   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008e8830   RELOCATION_MATCH PASS   NCreatureMode::CModeBriarRoseTeleportInvulnerable::FrameUpdate
+009566c0   RELOCATION_MATCH PASS   CCreatureAction_ThrowShotObject::CCreatureAction_ThrowShotObject
+009a1660   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+009a1660   RELOCATION_MATCH PASS   _global::UninitializeStreamingFontTextureCache
+009a4350   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+009a4350   RELOCATION_MATCH PASS   _global::GFFreeFromGlobalAllocator
+009bfe70   RELOCATION_MATCH PASS   CDisplayManager::ChangePresentationInterval
+009bff10   RELOCATION_MATCH PASS   CDisplayManager::ChangePresentationInterval
+009bff40   RELOCATION_MATCH PASS   CDisplayManager::SetDisplayMode
+009c0020   RELOCATION_MATCH PASS   CDisplayManager::SetExclusiveMode
+009c6020   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+009c6020   RELOCATION_MATCH PASS   CBufferChunk::~CBufferChunk
+009c6d60   WARN SHARED_HEADER_AVAILABLE CFileInstaller (engine/CFileInstaller.h)
+009c6d60   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+009c6d60   RELOCATION_MATCH PASS   std::__destroy_aux
+009d52d0   WARN SHARED_HEADER_AVAILABLE CCriticalSectionLock (engine/CCriticalSectionLock.h)
+009d52d0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009d52d0   RELOCATION_MATCH PASS   SetupBuffer
+009d61f0   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+009d61f0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009d61f0   WARN RELOC_NAME: ??0CCriticalSectionLock_Retail@@QAE@PAUCRITICAL_SECTION_Fable@@_N@Z -> 00a62920 labelled 'CCriticalSectionLock::CCriticalSectionLock'
+009d61f0   WARN RELOC_NAME: ?Unlock@CCriticalSectionLock_Retail@@QAEXXZ -> 00a62960 labelled 'CCriticalSectionLock::Release'
+009d61f0   WARN RELOC_NAME: ??1CCriticalSectionLock_Retail@@QAE@XZ -> 00a629a0 labelled 'CCriticalSectionLock::~CCriticalSectionLock'
+009d61f0   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+009d61f0   RELOCATION_MATCH PASS   CBankFileAsyncData::~CBankFileAsyncData
+00a02190   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)
+00a02190   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00a02190   RELOCATION_MATCH PASS   CHandleBasedMemoryPool::Uninitialise
+00a02220   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00a02220   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)
+00a02220   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00a02220   RELOCATION_MATCH PASS   CHandleBasedMemoryPool::BeginShutdown
+00a02370   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)
+00a02370   RELOCATION_MATCH PASS   CHandleBasedMemoryPool::EndShutdown
+00a02570   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)
+00a02570   RELOCATION_MATCH PASS   CHandleBasedMemoryPool::Initialise
+00b24690   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE C2DExtentsF (engine/C2DExtentsF.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter (engine/CEngineScreenEffectColourFilter.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00b24690   WARN RELOC_NAME: ?OnVideoOptionsChanged@CEngineVideoOptionsSink@@QAEXXZ -> 00b2f740 labelled '_global::SetMemberConst_00b2f740'
+00b24690   RELOCATION_MATCH PASS   CEngine::SetVideoOptions
+00bd9b90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bd9b90   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bd9b90   RELOCATION_MATCH PASS   CEngineLandscapeMemoryManager::FreeVirtual
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bd9ce0   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bd9ce0   RELOCATION_MATCH PASS   CEngineLandscapeMemoryManager::FreeDisposalList
+00bda150   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bda150   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bda150   RELOCATION_MATCH PASS   CEngineLandscapeMemoryManager::ProcessDisposalList
+0122a9a0   RELOCATION_MATCH PASS   CMemoryAllocator::DestroyDeallocator
+
+WINS: 21
+  008e8830 RELOCATION_MATCH NCreatureMode::CModeBriarRoseTeleportInvulnerable::?FrameUpdate@CModeBriarRoseTeleportInvulnerable@NCreatureMode@@UAEXXZ
+  009566c0 RELOCATION_MATCH CCreatureAction_ThrowShotObject::??0CCreatureAction_ThrowShotObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+  009a1660 RELOCATION_MATCH _global::?UninitializeStreamingFontTextureCache@@YIXXZ
+  009a4350 RELOCATION_MATCH _global::GFFreeFromGlobalAllocator
+  009bfe70 RELOCATION_MATCH CDisplayManager::?ChangePresentationInterval@CDisplayManager@@QAEXABVCPresentationIntervalDesc@1@@Z
+  009bff10 RELOCATION_MATCH CDisplayManager::?ChangePresentationInterval@CDisplayManager@@QAEX_NJ0@Z
+  009bff40 RELOCATION_MATCH CDisplayManager::?SetDisplayMode@CDisplayManager@@QAE?AW4ECreateDeviceSuccess@1@ABVC2DExtentsI@@KW4ESurfaceMultisampleType@@K@Z
+  009c0020 RELOCATION_MATCH CDisplayManager::?SetExclusiveMode@CDisplayManager@@QAE?AW4ECreateDeviceSuccess@1@_N@Z
+  009c6020 RELOCATION_MATCH CBufferChunk::??1CBufferChunk
+  009c6d60 RELOCATION_MATCH std::__destroy_aux
+  009d52d0 RELOCATION_MATCH CBankFileAsyncData::SetupBuffer
+  009d61f0 RELOCATION_MATCH CBankFileAsyncData::??1CBankFileAsyncData@@UAE@XZ
+  00a02190 RELOCATION_MATCH CHandleBasedMemoryPool::Uninitialise
+  00a02220 RELOCATION_MATCH CHandleBasedMemoryPool::BeginShutdown
+  00a02370 RELOCATION_MATCH CHandleBasedMemoryPool::EndShutdown
+  00a02570 RELOCATION_MATCH CHandleBasedMemoryPool::Initialise
+  00b24690 RELOCATION_MATCH CEngine::SetVideoOptions
+  00bd9b90 RELOCATION_MATCH CEngineLandscapeMemoryManager::FreeVirtual
+  00bd9ce0 RELOCATION_MATCH CEngineLandscapeMemoryManager::?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ
+  00bda150 RELOCATION_MATCH CEngineLandscapeMemoryManager::?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ
+  0122a9a0 RELOCATION_MATCH CMemoryAllocator::_$E2

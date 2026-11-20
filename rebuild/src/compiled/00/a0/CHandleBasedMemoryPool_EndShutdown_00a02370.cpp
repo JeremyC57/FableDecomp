@@ -1,8 +1,7 @@
 // CHandleBasedMemoryPool::EndShutdown() -- under the pool's lock: when a shutdown is pending, clear it, re-allocate the pool buffer (PoolSize + 16 with the pool's memory flags) from the global allocator, align it to 16 and make the whole pool one free area
-// Inline-budget: FABLE_FORCEINLINE on the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
-//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE; the landed 0x009F2B20 forces both the same way, and the HEAD rows forced their GFFree
-//   helper) -- retail expands both at every site here; plain inline is called out of line (0x00BD9B90: Destroy DIFFER 68v97, then
-//   Deallocate DIFFER 16v97). Preference-2 per-row /d2inl flags were not swept.
+// Inline: the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
+//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE) are plain inline; VC7.1 expands both here at its default threshold (NF145 sweep:
+//   MATCH with no inline control; the nf140 FABLE_FORCEINLINE is gone from the header).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A02370, length 159 bytes.
 // Callees: Enter/LeaveCriticalSection (IAT 0x0143FE0C / 0x0143FE10), CMemoryAllocator::Create 0x009F2870, CMemoryAllocator::EnterSynchronisation 0x009F2000,
 // CMemoryAllocator::InternalAllocate 0x009F2A40, CMemoryAllocator::LeaveSynchronisation 0x009F2010, CHandleBasedMemoryPool::InsertFreeArea 0x00A01DA0.

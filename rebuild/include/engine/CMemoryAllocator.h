@@ -4,8 +4,8 @@
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_ALIGNED
 #include "rebuild_abi.h"
 #endif
-#if defined(FABLE_RETAIL_CMEMORYALLOCATOR_ALLOCATE_FORCEINLINE) || defined(FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE)
-#include "fable_compiler.h"
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATOR
+extern "C" __declspec(dllimport) int __stdcall VirtualFree(void* address, unsigned long size, unsigned long freeType);   // [0x0143FD40]
 #endif
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_CTOR
 // Retail opt-in (wf14f, row 0x009F20B0): with this macro the class carries its Ego_r.pdb storage (0x49c bytes), the
@@ -66,12 +66,6 @@ public:
  static void* FABLE_FASTCALL AllocateAligned(unsigned long size,long alignment);
  static void FABLE_FASTCALL DeallocateAligned(void* p);
 #endif
-#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_ALLOCATE_FORCEINLINE
- // NF140 opt-in (q4197 row 0x009D52D0 CBankFileAsyncData::SetupBuffer): retail expands Allocate in place past VC7.1's
- // inline budget in that EH function; the landed row spelled the body as a FABLE_FORCEINLINE helper. Inline control only (EXTRA_RULES
- // 2026-11-08); no declaration changes.
- FABLE_FORCEINLINE
-#endif
  static void* __fastcall Allocate(unsigned long size,unsigned long flags) {
   if(!PMemoryAllocator)Create();
   EnterSynchronisation();
@@ -83,11 +77,12 @@ public:
  // ?Deallocate@CMemoryAllocator@@SIXPAX@Z (FableWin.pdb 0x02CB6E30; no Ego_r copy: inline in release) and what it reaches, spellings
  // from Ego_r.pdb / FableWin.pdb: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ (0x009F1F10), ??1CMemoryAllocator@@IAE@XZ (0x009F2310),
  // ??3CMemoryAllocator@@KIXPAX@Z (0x009F1F90), ?InternalDeallocate@CMemoryAllocator@@IAEXPAX@Z (0x009F2920), ?Destroy@CMemoryAllocator@@KIXXZ
- // (forced inline here: the retail callers delete the allocator in place). The destroy-when-empty flag (0x013CAA94) has no PDB data name: the
+ // (inline here: the retail callers delete the allocator in place). The destroy-when-empty flag (0x013CAA94) has no PDB data name: the
  // spelling of the landed CMemoryAllocator::DeallocateAligned 0x009F2B20. The body is that row's Deallocate.
  unsigned long GetNoAllocations();                                       // 0x009F1F10
- // Deallocate: FABLE_FORCEINLINE as in the landed 0x009F2B20 (with Destroy expanded, a plain inline is called out of line: 0x00BD9B90 DIFFER 16v97).
- static FABLE_FORCEINLINE void __fastcall Deallocate(void* block) {
+ // Deallocate / Destroy: plain inline (NF145, EXTRA_RULES 2026-11-08 preference 2): the users whose retail expands both past VC7.1's
+ // default inline threshold carry a per-row `// Flags: /d2inlT114` (sweep: naming/2026-11-20_agentNF145/NOTES.md), not a source-level force.
+ static inline void __fastcall Deallocate(void* block) {
   EnterSynchronisation();
   if(block&&PMemoryAllocator){
    PMemoryAllocator->InternalDeallocate(block);
@@ -98,11 +93,26 @@ public:
 protected:
  static bool DestroyWhenEmpty;                                            // 0x013CAA94
  ~CMemoryAllocator();                                                     // 0x009F2310
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATOR
+ // NF145 opt-in (with _DEALLOCATE; row 0x0122A9A0, the atexit destructor of Deallocator in CMemoryAllocator.cpp): that TU holds the
+ // class operator delete's body (VirtualFree MEM_RELEASE, out-of-line copy 0x009F1F90), and retail expands it there.
+ static void __fastcall operator delete(void* p) { VirtualFree(p, 0, 0x8000 /* MEM_RELEASE */); }
+#else
  static void __fastcall operator delete(void* p);                         // 0x009F1F90
+#endif
  void InternalDeallocate(void* block);                                    // 0x009F2920
- // Destroy: FABLE_FORCEINLINE as in the landed 0x009F2B20 (a plain inline is called out of line from Deallocate: 0x00BD9B90 DIFFER 68v97).
- static FABLE_FORCEINLINE void __fastcall Destroy(){delete PMemoryAllocator;PMemoryAllocator=0;}
+ static inline void __fastcall Destroy(){delete PMemoryAllocator;PMemoryAllocator=0;}
 public:
+#endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATOR
+ // NF145 opt-in (row 0x0122A9A0): the static teardown object. FableWin.pdb ??1CDeallocator@CMemoryAllocator@@QAE@XZ and
+ // "`dynamic atexit destructor for 'CMemoryAllocator::Deallocator''"; the class is empty (its initializer 0x01224240 only registers
+ // the atexit thunk). Class key and the member's access as the landed row had them (no PDB data record).
+ class CDeallocator {
+ public:
+  ~CDeallocator();
+ };
+ static CDeallocator Deallocator;
 #endif
 };
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_CTOR

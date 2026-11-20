@@ -200848,6 +200848,7 @@ $catalog = @(
         Source = '00/9a/global_GFFreeFromGlobalAllocator_009a4350.cpp'
         TestSource = '00/9a/global_GFFreeFromGlobalAllocator_009a4350_test.cpp'
         PassPattern = '009a4350_TEST PASS'
+        CompilerFlags = '/d2inlT114'
     }
     [pscustomobject]@{
         Address = '00ae0630'
@@ -215128,8 +215129,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009bff10'
         Module = 'CDisplayManager'
-        Source = '00/9b/CDisplayManager_SetPresentParameters_009bff10.cpp'
-        TestSource = '00/9b/CDisplayManager_SetPresentParameters_009bff10_test.cpp'
+        Source = '00/9b/CDisplayManager_ChangePresentationInterval_009bff10.cpp'
+        TestSource = '00/9b/CDisplayManager_ChangePresentationInterval_009bff10_test.cpp'
         PassPattern = '009bff10_TEST PASS'
     }
     [pscustomobject]@{
@@ -222868,6 +222869,7 @@ $catalog = @(
         Source = '00/9c/CBufferChunk_CBufferChunk_009c6020.cpp'
         TestSource = '00/9c/CBufferChunk_CBufferChunk_009c6020_test.cpp'
         PassPattern = '009c6020_TEST PASS'
+        CompilerFlags = '/d2inlT114'
     }
     [pscustomobject]@{
         Address = '00a0c130'
@@ -225078,6 +225080,7 @@ $catalog = @(
         Source = '00/bd/CEngineLandscapeMemoryManager_FreeVirtual_00bd9b90.cpp'
         TestSource = '00/bd/CEngineLandscapeMemoryManager_FreeVirtual_00bd9b90_test.cpp'
         PassPattern = '00bd9b90_TEST PASS'
+        CompilerFlags = '/d2inlT114'
     }
     [pscustomobject]@{
         Address = '00bda360'
@@ -227136,6 +227139,7 @@ $catalog = @(
         Source = '00/a0/CHandleBasedMemoryPool_Uninitialise_00a02190.cpp'
         TestSource = '00/a0/CHandleBasedMemoryPool_Uninitialise_00a02190_test.cpp'
         PassPattern = '00a02190_TEST PASS'
+        CompilerFlags = '/d2inlT114'
     }
     [pscustomobject]@{
         Address = '00a02370'
@@ -238838,6 +238842,7 @@ $catalog = @(
         Source = '00/9d/CBankFileAsyncData_SetupBuffer_009d52d0.cpp'
         TestSource = '00/9d/CBankFileAsyncData_SetupBuffer_009d52d0_test.cpp'
         PassPattern = '009d52d0_TEST PASS'
+        CompilerFlags = '/d2inlT78'
     }
     [pscustomobject]@{
         Address = '009e2d00'
@@ -252689,6 +252694,7 @@ $catalog = @(
         Source = '00/a0/CHandleBasedMemoryPool_BeginShutdown_00a02220.cpp'
         TestSource = '00/a0/CHandleBasedMemoryPool_BeginShutdown_00a02220_test.cpp'
         PassPattern = '00a02220_TEST PASS'
+        CompilerFlags = '/d2inlT114'
     }
     [pscustomobject]@{
         Address = '00a02730'
@@ -265642,6 +265648,7 @@ $catalog = @(
         Source = '00/9d/CBankFileAsyncData_CBankFileAsyncData_009d61f0.cpp'
         TestSource = '00/9d/CBankFileAsyncData_CBankFileAsyncData_009d61f0_test.cpp'
         PassPattern = '009d61f0_TEST PASS'
+        CompilerFlags = '/d2inlT114'
     }
     [pscustomobject]@{
         Address = '0070d390'
@@ -298484,6 +298491,7 @@ $catalog = @(
         Source = '00/9a/global_UninitializeStreamingFontTextureCache_009a1660.cpp'
         TestSource = '00/9a/global_UninitializeStreamingFontTextureCache_009a1660_test.cpp'
         PassPattern = '009a1660_TEST PASS'
+        CompilerFlags = '/d2inlT114'
     }
     [pscustomobject]@{
         Address = '009a7a20'

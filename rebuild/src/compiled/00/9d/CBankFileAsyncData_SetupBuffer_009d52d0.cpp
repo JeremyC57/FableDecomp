@@ -1,7 +1,9 @@
 // CBankFileAsyncData::SetupBuffer(bool) -- take the bank lock and acquire the read buffer from the movable pool or fallback allocator
-// Inline-budget: FABLE_FORCEINLINE on the header inline CMemoryAllocator::Allocate (engine/CMemoryAllocator.h opt-in
-//   FABLE_RETAIL_CMEMORYALLOCATOR_ALLOCATE_FORCEINLINE; the HEAD row forced its GFAllocate helper) -- retail expands it here; plain
-//   inline is called out of line (DIFFER 254v310). Preference-2 per-row /d2inl flags were not swept.
+// Flags: /d2inlT78
+// Inline-budget: /d2inlT78 (EXTRA_RULES 2026-11-08 preference 2; replaces the nf140 force-inline opt-in on
+//   Allocate in engine/CMemoryAllocator.h) -- retail expands the header inline CMemoryAllocator::Allocate here; at the
+//   default threshold it is called out of line (DIFFER 254v310). Sweep NF145: T74..T77 DIFFER, T78 is the smallest match (T78..T800
+//   match); /d2inlS40 also matches (S15..S39 DIFFER).
 // Retail: Fable.exe 0x009D52D0, 310 bytes. Callees include CCriticalSectionLock @ 0x00A62920 / 0x00A629A0, CBankFile::Align @ 0x009CBB90, CMovableResourceMemoryPool::AllocateResource @ 0x00A62E40, CHandleBasedMemoryPool::GetPointerFromHandle @ 0x00A026B0, and CMemoryAllocator::InternalAllocate @ 0x009F2A40.
 // The input-stream object has no generated header; its +0x00 primary view, +0x04 CMovableResource secondary base, +0x10 length, +0x14 skipped bytes, +0x1c pool, +0x20 handle, +0x24 internal allocation size, and +0x28 bank follow landed CBankFileAsyncData siblings. Shared engine headers describe the actual pool, movable resource, CBankFile, and lock layouts.
 // Name (round 7, NF53): AllocateResource 0x00A62E40 is ?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z and
@@ -21,7 +23,6 @@
 // (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
 // statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
 // PMemoryAllocator 0x013CAA90 and InternalAllocate 0x009F2A40, as the landed 0x009A3640 binds them.
-#define FABLE_RETAIL_CMEMORYALLOCATOR_ALLOCATE_FORCEINLINE   // retail expands Allocate here (the landed row's FABLE_FORCEINLINE helper); the plain inline is called out of line (DIFFER 254v310)
 #include "engine/CMemoryAllocator.h"
 struct _RTL_CRITICAL_SECTION { unsigned char bytes[0x18]; };
 struct CCriticalSectionLock : CCriticalSectionLockPdb {

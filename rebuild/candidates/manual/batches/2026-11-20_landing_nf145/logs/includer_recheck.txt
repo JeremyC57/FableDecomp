@@ -1,0 +1,2 @@
+# recheck after landing nf145: 156 rows = gate referencing rows + renamed rows + CMemoryAllocator.h / CDisplayManager.h includers
+good 156 bad 0
