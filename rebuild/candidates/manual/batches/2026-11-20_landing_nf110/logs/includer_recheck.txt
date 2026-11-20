@@ -1,0 +1,2 @@
+# recheck after landing nf110: 367 rows (includers of CThingSearchTools.h / CThingTrackNode.h + the 15 renamed rows + exe-scan referencing rows)
+good 367 bad 0

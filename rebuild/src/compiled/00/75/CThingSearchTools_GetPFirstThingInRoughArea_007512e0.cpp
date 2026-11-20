@@ -1,162 +1,54 @@
-// CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out) -- return the first thing of type T in the mapwho cells under the area that passes the filter (the scratch map list is left uncleared on a hit); instance <CThingFilter_OverlappingCircle, CThingCreatureBase>
-// Leaf: GetPFirstThingInRoughArea
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007512E0, length 618 bytes (`ret 0xc`).
-// Callees: GetMapsInArea 0x0049C6F0 (forwarder), GetCellExtents 0x0049C700 (C2DBoxI by value), memmove 0x00BFEAE6 (scratch-list clear).
-// Globals: search stamps 0x013B89A8 (+0 searches, +4 found, +8 stamp), mapwho level count 0x013BA848, level shift table 0x0137DADC (16-byte stride).
-// Layout: engine/CThingSearchTools.h gives AreaMaps (+0x0c) the PDB's 16-byte vector; the retail STLport vector is 12 bytes, so the
-//   search tools, the thing map (+0x04 level infos, +0x14 cell vectors) and the cell entries are modelled locally.
-// Shape: the type test copies the mask into a local (`(flags & mask) == mask`); inline filters are written out in the TU.
-
-#include <string.h>
-#include <stdlib.h>
-class C2DBoxI { public:
-    long X0, Y0, X1, Y1;
-    C2DBoxI() {}
-    C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
-};
-// Retail CThing: ThingTypeFlags at +0x6c (THING_TYPE_* inheritance bits); TypeMask selects the searched class.
-class CThing { public:
-    enum { TypeMask = 0 };
-    unsigned char _pad00[0x60];
-    class CTCPhysicsBase* PhysicsTC;                      // +0x60
-    unsigned char _pad64[0x6c - 0x64];
-    unsigned long ThingTypeFlags;                          // +0x6c
-};
-// The type test: the mask is copied into a local, so the CThing (mask 0) test folds late and keeps retail's
-// `xor dl,dl ; jne`, and a byte-sized mask compares through the low byte (`and edx,0Fh ; cmp dl,0Fh`).
-template <class T> inline bool IsThingOfType(const CThing* thing)
-{
-    unsigned long mask = T::TypeMask;
-    return (thing->ThingTypeFlags & mask) == mask;
-}
-inline void* operator new(unsigned int, void* where) { return where; }
-struct __true_type { __true_type() {} };
-class CThingCreatureBase : public CThing { public: enum { TypeMask = 0xf }; };
+// CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_OverlappingCircle, CThingCreatureBase>(const C2DBoxI& area, const CThingFilter_OverlappingCircle& filter_func, CThingCreatureBase** thing) const -- the first creature in the mapwho cells under the area (each thing once per search id) whose physics circle overlaps the filter circle, through the out pointer (true; the scratch map list is left as is); else the scratch list is cleared and false
+// Leaf: ??$GetPFirstThingInRoughArea@VCThingFilter_OverlappingCircle@@VCThingCreatureBase@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_OverlappingCircle@@PAPAVCThingCreatureBase@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x007512E0, 618 bytes, thiscall `ret 0xc`; caller 0x00750E30 (CTCExplodingObject::FrameUpdate, two calls).
+// Identity: Ego_r.pdb 0x00762D40 names this instance; the landed caller 0x00750E30 binds it; the filter is expanded (the CTCPhysicsBase::GetMapwhoPosition
+//   call 0x006AFCB0 and the 2D overlap test), the FABLE_RETAIL_CTHINGFILTER_OVERLAPPINGCIRCLE_BODY text of the landed 0x0063FD40.
+// NF110 (round 10, q11280 / q11283): ported off its local model (C2DBoxI / CThing / the thing classes / the thing map / a local CThingSearchTools,
+//   which bound the GetMapsInArea / GetCellExtents stand-ins and a QAE self leaf) onto the shared headers as an explicit instantiation of the
+//   engine/CThingSearchTools.h GetPFirstThingInRoughArea template (NF110 opt-in FIRSTROUGH_EGOD: the landed 0x009871C0 body), on the 0x009871C0
+//   define / include set. It now binds the Ego_r.pdb spellings ?GetAllThingMapsInArea@CThingSearchTools@@IBE... (0x0049C6F0) and
+//   ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE... (0x0049C700); the self leaf is the Ego_r.pdb instance spelling.
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_EGOD
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH_EGOD
+#define FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE
+#define FABLE_RETAIL_CTCMAPWHO
+#define FABLE_RETAIL_CTCMAPWHO_SEARCHID
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_C2DBOXI_COPY
+#define FABLE_RETAIL_C2DBOXI_GETWIDTH
+#define FABLE_RETAIL_C2DBOXI_GETHEIGHT
+#define FABLE_RETAIL_CTHING_STATTYPEFLAGS
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_STATTYPEFLAGS
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE_CALCULATERADIUS
+#define FABLE_RETAIL_CTCPHYSICSBASE_IMPULSE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
+#define FABLE_RETAIL_C3DVECTOR_SQUARED2D_ONE_EXPRESSION_PASS23
+#define FABLE_RETAIL_CTHINGFILTER_OVERLAPPINGCIRCLE_BODY
 #include "engine/C3DVector.h"
-class CTCPhysicsBase { public:
-    unsigned char _pad00[0x34];
-    float         Radius;                           // +0x34
-    C3DVector GetMapwhoPosition() const;            // 0x006AFCB0
-};
-// CThingFilter_OverlappingCircle (out of line at 0x0063EF50, the landed body), inlined here.
-class CThingFilter_OverlappingCircle { public:
-    C3DVector SpherePos;                            // +0x00
-    float     Radius;                               // +0x0c
-    bool Overlaps(const C3DVector& pos, const CTCPhysicsBase* physics) const
-    {
-        float dx = pos.X - SpherePos.X;
-        float dy = pos.Y - SpherePos.Y;
-        float r = physics->Radius + Radius;
-        if (dx * dx + dy * dy < r * r)
-            return true;
-        return false;
-    }
-    bool operator()(const CThing* thing) const
-    {
-        CTCPhysicsBase* physics = thing->PhysicsTC;
-        if (physics)
-            return Overlaps(physics->GetMapwhoPosition(), physics);
-        return false;
-    }
-};
-// One mapwho cell list node: {entry, next}; the entry holds the thing (+4) and its search stamp (+0x4c).
-struct CThingMapEntry {
-    unsigned char _pad00[4];
-    CThing*       Thing;                                   // +0x04
-    unsigned char _pad08[0x4c - 0x08];
-    unsigned long SearchStamp;                             // +0x4c
-};
-struct CThingMapNode {
-    CThingMapEntry* Entry;
-    CThingMapNode*  Next;
-};
-// A thing map: per-level grid infos (20 bytes, width at +4) at +0x04, per-level cell vectors at +0x14.
-struct CMapwhoLevelInfo { long SingleCell; long Width; long Height; long _pad[2]; };
-struct CCellVector { CThingMapNode** _M_start; CThingMapNode** _M_finish; CThingMapNode** _M_end_of_storage; };
-struct CThingMap {
-    void*             _vfptr;
-    CMapwhoLevelInfo* LevelInfo;                           // +0x04
-    CMapwhoLevelInfo* LevelInfoEnd;
-    CMapwhoLevelInfo* LevelInfoCap;
-    void*             _pad10;
-    CCellVector*      Cells;                               // +0x14
-    CThingMapNode** GetCellPtr(unsigned char level, long x, long y) const
-    {
-        return &Cells[level]._M_start[y * LevelInfo[level].Width + x];
-    }
-};
-// Name fix (NF100, round 9, q11463 / q11282): the level table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
-//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes: Size +0, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
-//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A.
-#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/C2DExtentsI.h"
+#include "engine/CThing.h"
+#include "engine/CWorld.h"
+class CTCMapwho;
+#include "engine/CTCMapwho.h"
 #include "engine/NThingMap_CThingMap.h"
-namespace NThingMap { extern long MaxLayers; }                             // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
-// STLport vector<CThingMap*> (the search tools' scratch map list); clear() is erase(begin, end) over memmove.
-struct CMapVector {
-    CThingMap** _M_start;
-    CThingMap** _M_finish;
-    CThingMap** _M_end_of_storage;
-    static CThingMap** CopyDown(CThingMap** src, CThingMap** srcEnd, CThingMap** dest)
-    {
-        if (src == srcEnd)
-            return dest;
-        unsigned long count = (const char*)srcEnd - (const char*)src;
-        return (CThingMap**)((char*)memmove(dest, src, count) + count);
-    }
-    void erase(CThingMap** first, CThingMap** last) { _M_finish = CopyDown(last, _M_finish, first); }
-    void clear() { erase(_M_start, _M_finish); }
-};
-// CThingSearchTools: engine/CThingSearchTools.h names +0x0c "AreaMaps" (vector<NThingMap::CThingMap*>, 16 bytes in
-// the PDB); retail's STLport vector is 12 bytes and only the scratch-vector role matters here, so a local model.
-class CThingSearchTools { public:
-    // Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
-    //   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0; the shared header's retail
-    //   branch declares them so), declared in place in this row's existing local model. They were the global stand-in ?g_SearchStamps@@3USSearchStamps@@A.
-    static unsigned long NoLookups, NoThingsScanned, SearchID;
-    void*      WorldMap;                                   // +0x00
-    void*      PThingMapManager;                           // +0x04
-    void*      ThingManager;                               // +0x08
-    CMapVector AreaMaps;                                   // +0x0c
-    void GetMapsInArea(const C2DBoxI& area, CMapVector* maps);              // 0x0049C6F0
-    C2DBoxI GetCellExtents(CThingMap* map, const C2DBoxI& area);            // 0x0049C700
-    template<class F, class T> bool GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out);
-};
-template<class F, class T> bool CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out)
-{
-    GetMapsInArea(area, &AreaMaps);
-    ++NoLookups;
-    NoThingsScanned = 0;
-    ++SearchID;
-    for (CThingMap** it = AreaMaps._M_start; it != AreaMaps._M_finish; ++it) {
-        CThingMap* map = *it;
-        C2DBoxI extents = GetCellExtents(map, area);
-        for (long level = 0; level < NThingMap::MaxLayers; ++level) {
-            long shift = NThingMap::LayerInfo[level].ScaleShift;
-            C2DBoxI box(extents.X0 >> shift, extents.Y0 >> shift, ((extents.X1 - 1) >> shift) + 1,
-                        ((extents.Y1 - 1) >> shift) + 1);
-            long width = box.X1 - box.X0;
-            if (width == 0 || box.Y1 - box.Y0 == 0)
-                continue;
-            for (long y = box.Y0; y < box.Y1; ++y) {
-                CThingMapNode** cell = map->GetCellPtr((unsigned char)level, box.X0, y);
-                for (long x = box.X0; x < box.X1; ++x, ++cell) {
-                    for (CThingMapNode* node = *cell; node; node = node->Next) {
-                        CThingMapEntry* entry = node->Entry;
-                        if (entry->SearchStamp < SearchID) {
-                            entry->SearchStamp = SearchID;
-                            CThing* thing = entry->Thing;
-                            if (IsThingOfType<T>(thing) && filter(thing)) {
-                                *out = static_cast<T*>(thing);
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    AreaMaps.clear();
-    return false;
-}
-template bool CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_OverlappingCircle, CThingCreatureBase >(const C2DBoxI& area, const CThingFilter_OverlappingCircle& filter, CThingCreatureBase** out);
+#include "engine/CThingSearchTools.h"
+#include "engine/C2DBoxI.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingFilter_OverlappingCircle.h"
+template bool CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_OverlappingCircle,CThingCreatureBase>(const C2DBoxI&,const CThingFilter_OverlappingCircle&,CThingCreatureBase**) const;

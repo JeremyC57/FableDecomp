@@ -833,4 +833,52 @@ void CThingSearchTools::GetAllTCDsInRoughArea(const C2DBoxI& area,const Filter& 
     const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps).clear();
 }
 #endif
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH_EGOD) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH) && !defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH_BODY) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_EGOD) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
+// NF110 opt-in (round 10, q11280 / q11283; the GetPFirstThingInRoughArea<Filter,T> instances 0x007FCEF0, 0x007512E0, ...): the body the landed
+// row 0x009871C0 defines in its own source (verbatim), moved here so every instance shares it: Ego_d.pdb's own record of the
+// GetPFirstThingInRoughArea instances (parameters area / filter_func / thing, function-scope `flags`, it, thing_map, local_area, c1,
+// clipped_area, cy, pcell, cx, ploop_node, pmapwho, loop_thing, tthing), i.e. the ROUGHAREA_EGOD GetAllThingsInRoughArea text above (inline
+// GetMapwhoArea, GetWidth() / GetHeight() empty test, inline PeekCell) with the first hit returned through `thing` (the scratch list left as
+// is) and the list cleared on a miss. Declared by FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH; needs FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE,
+// FABLE_RETAIL_C2DBOXI_COPY / _GETWIDTH / _GETHEIGHT, FABLE_RETAIL_CTCMAPWHO_SEARCHID and T::StatGetTypeFlags at the point of instantiation.
+template<class Filter,class T>
+bool CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area,const Filter& filter_func,T** thing) const
+{
+    unsigned long flags=T::StatGetTypeFlags();
+    GetAllThingMapsInArea(area,const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps));
+    ++NoLookups;
+    NoThingsScanned=0;
+    ++SearchID;
+    for(std::vector<NThingMap::CThingMap*>::const_iterator it=AreaMaps.begin();it!=AreaMaps.end();++it) {
+        NThingMap::CThingMap& thing_map=**it;
+        C2DBoxI local_area=ClipAndConvertWorldMapAreaToLocalArea(thing_map,area);
+        for(long c1=0;c1<NThingMap::MaxLayers;++c1) {
+            C2DBoxI clipped_area=GetMapwhoArea(thing_map,c1,local_area);
+            if(clipped_area.GetWidth()==0 || clipped_area.GetHeight()==0)
+                continue;
+            for(long cy=clipped_area.TLY;cy<clipped_area.BRY;++cy) {
+                const NThingMap::CThingMapCell* pcell=&thing_map.PeekCell((unsigned char)c1,clipped_area.TLX,cy);
+                for(long cx=clipped_area.TLX;cx<clipped_area.BRX;++cx,++pcell) {
+                    for(const NThingMap::CMapwhoNode* ploop_node=pcell->PFirstNode;ploop_node;ploop_node=ploop_node->PNext) {
+                        CTCMapwho* pmapwho=ploop_node->PMapwho;
+                        if(pmapwho->GetSearchID()<SearchID) {
+                            pmapwho->SetSearchID(SearchID);
+                            CThing* loop_thing=&pmapwho->GetParentThing();
+                            if((loop_thing->GetTypeFlags()&flags)==flags) {
+                                T* tthing=static_cast<T*>(loop_thing);
+                                if(filter_func(*tthing)) {
+                                    *thing=tthing;
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps).clear();
+    return false;
+}
+#endif
 #endif // FABLE_ENGINE_CTHINGSEARCHTOOLS_H

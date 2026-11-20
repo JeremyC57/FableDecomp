@@ -1,170 +1,64 @@
-// CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area, const F& filter, const C& compare, T** out) -- walk the mapwho cells under the area and keep the compare-preferred thing of type T that passes the filter; store it and return whether one was found; instance <CThingFilter_ScaresBirds, CThingCompare_Nearest, CThingCreatureBase>
-// Leaf: GetPBestThingInRoughArea
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009147E0, length 567 bytes (`ret 0x10`).
-// Callees: GetMapsInArea 0x0049C6F0 (forwarder), GetCellExtents 0x0049C700 (C2DBoxI by value), memmove 0x00BFEAE6 (scratch-list clear); filter/compare: CThingCompare_Nearest 0x00782560.
-// Globals: search stamps 0x013B89A8 (+0 searches, +4 found, +8 stamp), mapwho level count 0x013BA848, level shift table 0x0137DADC (16-byte stride).
-// Layout: engine/CThingSearchTools.h gives AreaMaps (+0x0c) the PDB's 16-byte vector; the retail STLport vector is 12 bytes, so the
-//   search tools, the thing map (+0x04 level infos, +0x14 cell vectors) and the cell entries are modelled locally.
-// Shape: the type test copies the mask into a local (`(flags & mask) == mask`); inline filters are written out in the TU.
-//   The y loop is `long y = box.Y0; if (y < box.Y1) { offset; cellsOffset; for (; y < box.Y1; ++y) ... }` with the two user
-//   byte-offset variables declared in that order: VC7.1 then ranks them as the SIB base over its own hoisted temps,
-//   giving retail's `[hoisted + LevelInfo + 4]` Width load and cell-row load (the family recipe from 007FCEF0).
-
-#include <string.h>
-#include <stdlib.h>
-class C2DBoxI { public:
-    long X0, Y0, X1, Y1;
-    C2DBoxI() {}
-    C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
-};
-// Retail CThing: ThingTypeFlags at +0x6c (THING_TYPE_* inheritance bits); TypeMask selects the searched class.
-class CThing { public:
-    enum { TypeMask = 0 };
-    unsigned char _pad00[0x60];
-    class CTCPhysicsBase* PhysicsTC;                      // +0x60
-    unsigned char _pad64[0x6c - 0x64];
-    unsigned long ThingTypeFlags;                          // +0x6c
-};
-// The type test: the mask is copied into a local, so the CThing (mask 0) test folds late and keeps retail's
-// `xor dl,dl ; jne`, and a byte-sized mask compares through the low byte (`and edx,0Fh ; cmp dl,0Fh`).
-template <class T> inline bool IsThingOfType(const CThing* thing)
-{
-    unsigned long mask = T::TypeMask;
-    return (thing->ThingTypeFlags & mask) == mask;
-}
-inline void* operator new(unsigned int, void* where) { return where; }
-struct __true_type { __true_type() {} };
-class CThingCreatureBase : public CThing { public: enum { TypeMask = 0xf }; };
-// The bird-scaring test (inline): skip things whose byte at +0x10 is 13 and things sharing the filter thing's def.
-// Layout: retail CThing sits 0x10 below Ego_r.pdb from UniqueID on (PhysicsTC +0x60 / PDB +0x70, ThingTypeFlags +0x6c /
-//   PDB +0x7c), so +0x8c is DefGlobalIndex (PDB +0x9c); the +0x10 byte (PDB +0x20, the head of UsingComponents) is named
-//   only by its use here.
-struct CThingDefView {
-    unsigned char  _pad00[0x10];
-    unsigned char  KindByte;                        // +0x10 (13 = excluded)
-    unsigned char  _pad11[0x8c - 0x11];
-    unsigned short DefGlobalIndex;                  // +0x8c
-};
-class CThingFilter_ScaresBirds { public:
-    const CThing* Self;                             // +0x00
-    bool operator()(const CThing* thing) const
-    {
-        const CThingDefView* t = (const CThingDefView*)thing;
-        const CThingDefView* s = (const CThingDefView*)Self;
-        if (t->KindByte == 13)
-            return false;
-        if (t->DefGlobalIndex == s->DefGlobalIndex)
-            return false;
-        return true;
-    }
-};
-class CThingCompare_Nearest { public:
-    CThingCreatureBase* operator()(CThingCreatureBase* best, CThingCreatureBase* candidate) const;   // 0x00782560
-};
-// One mapwho cell list node: {entry, next}; the entry holds the thing (+4) and its search stamp (+0x4c).
-struct CThingMapEntry {
-    unsigned char _pad00[4];
-    CThing*       Thing;                                   // +0x04
-    unsigned char _pad08[0x4c - 0x08];
-    unsigned long SearchStamp;                             // +0x4c
-};
-struct CThingMapNode {
-    CThingMapEntry* Entry;
-    CThingMapNode*  Next;
-};
-// A thing map: per-level grid infos (20 bytes, width at +4) at +0x04, per-level cell vectors at +0x14.
-struct CMapwhoLevelInfo { long SingleCell; long Width; long Height; long _pad[2]; };
-struct CCellVector { CThingMapNode** _M_start; CThingMapNode** _M_finish; CThingMapNode** _M_end_of_storage; };
-struct CThingMap {
-    void*             _vfptr;
-    CMapwhoLevelInfo* LevelInfo;                           // +0x04
-    CMapwhoLevelInfo* LevelInfoEnd;
-    CMapwhoLevelInfo* LevelInfoCap;
-    void*             _pad10;
-    CCellVector*      Cells;                               // +0x14
-    // offset = level * sizeof(CMapwhoLevelInfo), cellsOffset = level * sizeof(CCellVector): the caller's user variables
-    // (Width first by offset, the cell row first by the Cells pointer) are what give retail's SIB base/index order.
-    CThingMapNode** GetCellPtr(long cellsOffset, long offset, long x, long y) const
-    {
-        return &(*(const CCellVector*)((unsigned long)Cells + cellsOffset))._M_start[y * *(const long*)((unsigned long)offset + (unsigned long)LevelInfo + 4) + x];
-    }
-};
-// Name fix (NF103, round 10, q11463): the level table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
-//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes: Size +0, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
-//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A (NF100 t/li_b.py).
-#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+// CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_ScaresBirds, CThingCompare_Nearest, CThingCreatureBase>(const C2DBoxI& area, const CThingFilter_ScaresBirds& filter, const CThingCompare_Nearest& compare, CThingCreatureBase** out) const -- the nearest creature in the mapwho cells under the area (each thing once per search id) that scares the bird, through the out pointer; whether one was found (the scratch map list is cleared)
+// Leaf: ??$GetPBestThingInRoughArea@VCThingFilter_ScaresBirds@@VCThingCompare_Nearest@@VCThingCreatureBase@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_ScaresBirds@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009147E0, thiscall `ret 0x10`; caller 0x00914650 (binds this spelling).
+// Identity: Ego_r.pdb 0x00938430 names this instance; the body expands CThingFilter_ScaresBirds::operator() (engine/CThingFilter_ScaresBirds.h) and calls
+//   CThingCompare_Nearest::operator()<CThingCreatureBase> 0x00782560 out of line (the 0x00914650 set does not define CTHINGCOMPARE_NEAREST_OUTOFLINE).
+// NF110 (round 10, q11280 / q11283): ported off its local model (C2DBoxI / CThing / CThingDefView / the thing map / a local CThingSearchTools, which
+//   bound the GetMapsInArea / GetCellExtents stand-ins, a non-template CThingCompare_Nearest::operator() stand-in and a QAE self leaf) onto the shared
+//   headers as an explicit instantiation of the engine/CThingSearchTools.h GetPBestThingInRoughArea template (BESTROUGH_BODY + NF107 BESTROUGH_THISEND
+//   with the byte-offset cell branch), on the define / include set of its landed caller 0x00914650 (CAIStateGroup_BirdStartled::IsRunnable, the
+//   retail TU-mate: this instance follows it) + FABLE_RETAIL_CTHINGCREATUREBASE_STATTYPEFLAGS (T's type flags 0x0F). It now binds the Ego_r.pdb
+//   spellings of 0x0049C6F0 / 0x0049C700 and CThingCompare_Nearest::operator()<CThingCreatureBase> (0x00782560, the callee row's own spelling).
+// Fidelity: the inline CThingFilter_ScaresBirds::operator() text is the landed TU-mate 0x00914650's, verbatim (FableWin.pdb ??RCThingFilter_ScaresBirds@@QBE_NABVCThingCreatureBase@@@Z
+//   0x02B8E030; expanded here in retail: no filter call in 0x009147E0); engine/CThingFilter_ScaresBirds.h declares it only.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_STATTYPEFLAGS
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_THISEND
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_CELL_BYTEOFFSET
+#define FABLE_RETAIL_CTHING_STATTYPEFLAGS
+#define FABLE_RETAIL_CTHING_TYPEFLAGS
+#define FABLE_RETAIL_CTCMAPWHO
+#define FABLE_RETAIL_CTCMAPWHO_SEARCHID
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTHINGDEADCREATURE_STATGETTYPE
+#define FABLE_RETAIL_C2DBOXI_CTORS
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGABLE
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGATORTYPE
+#include "engine/CThingAICreature.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CTCMapwho.h"
 #include "engine/NThingMap_CThingMap.h"
-namespace NThingMap { extern long MaxLayers; }                             // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
-// STLport vector<CThingMap*> (the search tools' scratch map list); clear() is erase(begin, end) over memmove.
-struct CMapVector {
-    CThingMap** _M_start;
-    CThingMap** _M_finish;
-    CThingMap** _M_end_of_storage;
-    static CThingMap** CopyDown(CThingMap** src, CThingMap** srcEnd, CThingMap** dest)
-    {
-        if (src == srcEnd)
-            return dest;
-        unsigned long count = (const char*)srcEnd - (const char*)src;
-        return (CThingMap**)((char*)memmove(dest, src, count) + count);
-    }
-    void erase(CThingMap** first, CThingMap** last) { _M_finish = CopyDown(last, _M_finish, first); }
-    void clear() { erase(_M_start, _M_finish); }
-};
-// CThingSearchTools: engine/CThingSearchTools.h names +0x0c "AreaMaps" (vector<NThingMap::CThingMap*>, 16 bytes in
-// the PDB); retail's STLport vector is 12 bytes and only the scratch-vector role matters here, so a local model.
-class CThingSearchTools { public:
-    // Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
-    //   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0; the shared header's retail
-    //   branch declares them so), declared in place in this row's existing local model. They were the global stand-in ?g_SearchStamps@@3USSearchStamps@@A.
-    static unsigned long NoLookups, NoThingsScanned, SearchID;
-    void*      WorldMap;                                   // +0x00
-    void*      PThingMapManager;                           // +0x04
-    void*      ThingManager;                               // +0x08
-    CMapVector AreaMaps;                                   // +0x0c
-    void GetMapsInArea(const C2DBoxI& area, CMapVector* maps);              // 0x0049C6F0
-    C2DBoxI GetCellExtents(CThingMap* map, const C2DBoxI& area);            // 0x0049C700
-    template<class F, class C, class T> bool GetPBestThingInRoughArea(const C2DBoxI& area, const F& filter, const C& compare, T** out);
-};
-template<class F, class C, class T> bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area, const F& filter, const C& compare, T** out)
+#include "engine/CThingSearchTools.h"
+#include "engine/CThingDeadCreature.h"
+#include "engine/C2DBoxI.h"
+#include "engine/CThingCompare_Nearest.h"
+#include "engine/CTCCreatureNavigation.h"
+#include "engine/GFFloatToLongCeil.h"
+#include "engine/GFWorldDistance.h"
+#include "engine/CThingFilter_ScaresBirds.h"
+#include "engine/CAIStateGroup_BirdStartled.h"
+inline bool CThingFilter_ScaresBirds::operator()(const CThingCreatureBase& thing) const
 {
-    T* best = 0;
-    GetMapsInArea(area, &AreaMaps);
-    ++NoLookups;
-    NoThingsScanned = 0;
-    ++SearchID;
-    for (CThingMap** it = AreaMaps._M_start; it != AreaMaps._M_finish; ++it) {
-        CThingMap* map = *it;
-        C2DBoxI extents = GetCellExtents(map, area);
-        for (long level = 0; level < NThingMap::MaxLayers; ++level) {
-            long shift = NThingMap::LayerInfo[level].ScaleShift;
-            C2DBoxI box(extents.X0 >> shift, extents.Y0 >> shift, ((extents.X1 - 1) >> shift) + 1,
-                        ((extents.Y1 - 1) >> shift) + 1);
-            long width = box.X1 - box.X0;
-            if (width == 0 || box.Y1 - box.Y0 == 0)
-                continue;
-            long y = box.Y0;
-            if (y < box.Y1) {
-                long offset = (unsigned char)level * (long)sizeof(CMapwhoLevelInfo);
-                long cellsOffset = (unsigned char)level * (long)sizeof(CCellVector);
-                for (; y < box.Y1; ++y) {
-                    CThingMapNode** cell = map->GetCellPtr(cellsOffset, offset, box.X0, y);
-                    for (long x = box.X0; x < box.X1; ++x, ++cell) {
-                        for (CThingMapNode* node = *cell; node; node = node->Next) {
-                            CThingMapEntry* entry = node->Entry;
-                            if (entry->SearchStamp < SearchID) {
-                                entry->SearchStamp = SearchID;
-                                CThing* thing = entry->Thing;
-                                if (IsThingOfType<T>(thing) && filter(thing))
-                                best = compare(best, static_cast<T*>(thing));
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    AreaMaps.clear();
-    *out = best;
-    return best != 0;
+    return thing.GetType() != CThingDeadCreature::StatGetType() && thing.GetDefGlobalIndex() != Bird->GetDefGlobalIndex();
 }
-template bool CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_ScaresBirds, CThingCompare_Nearest, CThingCreatureBase >(const C2DBoxI& area, const CThingFilter_ScaresBirds& filter, const CThingCompare_Nearest& compare, CThingCreatureBase** out);
+template bool CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_ScaresBirds,CThingCompare_Nearest,CThingCreatureBase>(const C2DBoxI&,const CThingFilter_ScaresBirds&,const CThingCompare_Nearest&,CThingCreatureBase**) const;

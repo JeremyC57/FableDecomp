@@ -17089,7 +17089,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006ce230	reserve	std::vector<const CThingCreatureBase*>	unknown	undefined	0		0	yes	accepted									
 006ce2a0	FreeMember0_006ce2a0	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6c\CActiveFile_OnReadFinished_006ce2a0.cpp
 006ce2b0	_M_allocate_and_copy	std::vector<const CThingCreatureBase*>	unknown	undefined	0		0	yes	accepted									
-006ce300	GetAllThingsInRoughArea<CThingGameObject_const_,std::vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>	_global	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CThingFilter_None *,vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_> *	1	yes	accepted									
+006ce300	GetAllThingsInRoughArea	CThingSearchTools	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CThingFilter_None *,vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_> *	1	yes	accepted									
 006ce530	push_back	std::vector<const CThingCreatureBase*>	unknown	undefined	0		0	yes	accepted									
 006ce570	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 006ce650	Clone	CGroundNavigatorExternalInterface	__thiscall	CNavigatorExternalInterface *	1	CGroundNavigatorExternalInterface *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6c\CGroundNavigatorExternalInterface_Clone_006ce650.cpp
@@ -23953,7 +23953,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0080eb40	operator=	std::back_insert_iterator<std::vector<CThing*> >	unknown	undefined	0		0	yes	accepted									
 0080ebe0	transform	std	unknown	undefined	0		0	yes	accepted									
 0080ec50	transform	std	unknown	undefined	0		0	yes	accepted									
-0080ecc0	GetAllThingsInRoughArea	CThingSearchTools_Calls	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CFilter_Bind5<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_In2DRange,std::unary_negate<CThingFilter_In2DRange>,_anon_41ACE303::CThingFilter_IsAffectedByExplosions> *,list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_> *	1	yes	accepted									
+0080ecc0	GetAllThingsInRoughArea	CThingSearchTools	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CFilter_Bind5<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_In2DRange,std::unary_negate<CThingFilter_In2DRange>,_anon_41ACE303::CThingFilter_IsAffectedByExplosions> *,list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_> *	1	yes	accepted									
 0080ef50	insert	std::vector	unknown	undefined	0		0	yes	accepted									
 0080f130	GetRandomFlightHeight	CTCNymph	__thiscall	float	1	CTCNymph *	1	yes	accepted									
 0080f190	IsDecentAttackRange	CTCNymph	__thiscall	bool	2	CTCNymph *,C3DVector *	1	yes	accepted									

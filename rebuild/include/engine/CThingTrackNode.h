@@ -14,6 +14,13 @@ private:
     bool IsEnd; // +ed, ctor837cd1
     unsigned char _pad_0xee[2];
 public: static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_STATTYPEFLAGS
+    // NF110 opt-in (round 10, row 0x0093CDB0 GetPBestThingInRoughArea<CThingFilter_HasTrackName, CThingCompare_Nearest, CThingTrackNode>):
+    // FableWin.pdb ?StatGetTypeFlags@CThingTrackNode@@SIKXZ (0x01D3F970; static fastcall, inline in retail: the rough-area scan tests the +0x6C
+    // type flags against 0x10007 = the game-object bits 7 + the track-node bit 0x10000, `and edx,10007h ; cmp edx,10007h` at 0x0093CF07).
+public:
+    static unsigned long FABLE_FASTCALL StatGetTypeFlags() { return 0x10007; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGTRACKNODE_FLIP
     void FlipTrackDirection(); // Ego_r public nonconst ?FlipTrackDirection@CThingTrackNode@@QAEXXZ
 #endif

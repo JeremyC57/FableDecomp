@@ -287,3 +287,15 @@ NParticleEngine::CPSCSingleSprite (retail 0x00B075D0; B's hand3c chunk 3). One i
 TransformPoint Y-row terms the other way round. B's best lead is the loop's first statement, Ego_d line 253 (19 bytes at /Od), which our
 `C3DVector pt = it_trail_pos->Position;` gives as 17 bytes. How does FableWin's /Od body form `pt` there? A copy from a frame object, an
 accessor or operator-> call, or a temporary? The callee sequence of the trail loop would settle it.
+
+2026-11-20 A->B: Your AddToBoundingSphere question (CPSCSingleSprite, retail 0x00B075D0). FableWin.pdb + FableWin.exe /Od, the block that scopes `pt`
+(C3DVector, [ebp-0x40]) is 19 bytes up to the TransformPosIfLocal push, the same 19 as your Ego_d line 253:
+`lea eax,[pt]; push eax` (hidden return slot) / `lea ecx,[it_trail_pos]; call _List_iterator<...CSpriteTrailEntry...>::operator->` /
+`mov ecx,eax; call C3DVector::ToC3DCoordF`. ToC3DCoordF is `C3DVector C3DVector::ToC3DCoordF()` (FableWin 28 bytes: copy-constructs *this into
+the return slot), called on CSpriteTrailEntry::Position (offset 0; the entry is {C3DVector Position; float Width;}, sizeof 16). So the source is
+`C3DVector pt = it_trail_pos->Position.ToC3DCoordF();` (a by-value return into pt, not a plain copy). Then
+`system.TransformPosIfLocal(pt)` (CParticleSystem, `this` from [ebp+0x10]) and `bsphere.AddToBounds(pt, half_trail_width)` (C3DBoundingSphere,
+[ebp+0x8]). Loop: list::begin / end, _List_const_iterator::operator!=, _List_iterator::operator++. Names and shapes only, from the PDB records
+and the /Od call sequence.
+2026-11-20 A->B: nf110 landed (17 GetPFirst / GetPBest search-template rows; add-only opt-ins CThingSearchTools.h FIRSTROUGH_EGOD and
+CThingTrackNode.h STATTYPEFLAGS). A's holds on CThingSearchTools.h, NThingMap_CThingMap.h, CThingDeadCreature.h, CThingMarker.h are released.

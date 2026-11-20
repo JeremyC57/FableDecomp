@@ -59,7 +59,10 @@ template <class F1, class F2, class F3> class CFilter_Bind3 { public:
 typedef CFilter_Bind3<CThingFilter_IsNot, CThingFilter_IsNot, CThingFilter_In2DRange> CActionPointFilter;
 class CThingSearchTools { public:
     template <class TFilter, class T>
-    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const TFilter& filter, T** found);   // 0x007FE730
+    // Name fix (NF110, round 10, q11280 / q11283): const member template, as Ego_r.pdb 0x007EF030 spells the 0x007FE730 instance
+    //   (??$GetPFirstThingInRoughArea@...@CThingSearchTools@@QBE_N...; its own row and the caller 0x007FF0C0 bind QBE); respelled in place in
+    //   this row's existing local model (it bound the QAE spelling).
+    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const TFilter& filter, T** found) const;   // 0x007FE730
 };
 class CWorld { public:
     unsigned char _pad00[0x20];

@@ -273395,9 +273395,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006ce300'
-        Module = 'GetAllThingsInRoughArea<CThingGameObject_const_,std::vector<CIntelligentPointer<CThing_const_>,std'
-        Source = '00/6c/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_006ce300.cpp'
-        TestSource = '00/6c/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_006ce300_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/6c/CThingSearchTools_GetAllThingsInRoughArea_006ce300.cpp'
+        TestSource = '00/6c/CThingSearchTools_GetAllThingsInRoughArea_006ce300_test.cpp'
         PassPattern = '006ce300_TEST PASS'
     }
     [pscustomobject]@{
@@ -273818,9 +273818,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0080ecc0'
-        Module = 'CThingSearchTools_Calls'
-        Source = '00/80/CThingSearchToolsCalls_GetAllThingsInRoughArea_0080ecc0.cpp'
-        TestSource = '00/80/CThingSearchToolsCalls_GetAllThingsInRoughArea_0080ecc0_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/80/CThingSearchTools_GetAllThingsInRoughArea_0080ecc0.cpp'
+        TestSource = '00/80/CThingSearchTools_GetAllThingsInRoughArea_0080ecc0_test.cpp'
         PassPattern = '0080ecc0_TEST PASS'
     }
     [pscustomobject]@{
