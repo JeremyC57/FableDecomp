@@ -8,12 +8,14 @@
 // Layout (retail offsets, see NewGame 0x008F0930): MinX +0x118, MaxX +0x11c, MinY +0x120, MaxY +0x124 (PDB +0x130..+0x13c),
 // RoundFinished +0x158.
 // Shape: the bool first, then the four bounds from MaxY down to MinX, all from the eax zero; `push 12h` hoisted.
-typedef long ETavernGameStates;
 
 class CTCTavernGame { public:
     virtual void v00();
     unsigned char _pad_0x04[0xec];
     virtual void NewRound();                 // 0x005E9A90
+    // NF159 (q4271): Ego_r.pdb / FableWin.pdb ?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z: the state is the nested enum
+    //   CTCTavernGame::ETavernGameStates (enumerator names unproven: values passed as numbers); was SetState(long).
+    enum ETavernGameStates { };
     void SetState(ETavernGameStates state);  // 0x005E9B20
 };
 
@@ -36,5 +38,5 @@ void CTCTavernGameCardBase::NewRound()
     MinY = 0.0f;
     MaxX = 0.0f;
     MinX = 0.0f;
-    SetState(18);
+    SetState((ETavernGameStates)18);
 }

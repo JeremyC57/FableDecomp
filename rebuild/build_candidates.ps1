@@ -233270,8 +233270,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008f09e0'
         Module = 'CTCTavernGameCardBase'
-        Source = '00/8f/CTCTavernGameCardBase_TurnAllCards_008f09e0.cpp'
-        TestSource = '00/8f/CTCTavernGameCardBase_TurnAllCards_008f09e0_test.cpp'
+        Source = '00/8f/CTCTavernGameCardBase_CardsFinishedMoving_008f09e0.cpp'
+        TestSource = '00/8f/CTCTavernGameCardBase_CardsFinishedMoving_008f09e0_test.cpp'
         PassPattern = '008f09e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -250496,8 +250496,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007d3510'
         Module = 'CTCTavernGameCoinGolf'
-        Source = '00/7d/CTCTavernGameCoinGolf_vfunc32_007d3510.cpp'
-        TestSource = '00/7d/CTCTavernGameCoinGolf_vfunc32_007d3510_test.cpp'
+        Source = '00/7d/CTCTavernGameCoinGolf_NewRound_007d3510.cpp'
+        TestSource = '00/7d/CTCTavernGameCoinGolf_NewRound_007d3510_test.cpp'
         PassPattern = '007d3510_TEST PASS'
     }
     [pscustomobject]@{

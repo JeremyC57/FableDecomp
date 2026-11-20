@@ -1,24 +1,22 @@
-// CTCTavernGameShoveHaPenny::QuitMidGame() -- sets the flag bytes at +0x28 and +0x21 and calls the member method @ 0x005E9B20 with the constant 6
+// CTCTavernGameShoveHaPenny::QuitMidGame() -- quitting mid-game: the game is finished and not won, then SetState(ETGS_END_ROUND)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CF520, oracle length 16 bytes.
-// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); the batch README records the lane verdict.
-//
-// Retail bytes:  push 6 ; mov byte ptr [ecx + 0x28], 1 ; mov byte ptr [ecx + 0x21], 0 ; call 0x5e9b20 ; ret 
-// Tiny-body shape `BeginWith` synthesised from the instruction pattern (the class comes from the
-// manifest label when it is a plain class name, else the method is landed under a descriptive
-// placeholder); member names are descriptive. 
-struct CTCTavernGameShoveHaPenny {
-    unsigned char _pad[0x21];
-    unsigned char m_flagB;                  // +0x21
-    unsigned char _pad2[0x6];
-    unsigned char m_flagA;                  // +0x28
-    void Begin(long kind);                 // 0x005E9B20
-    void QuitMidGame();
-};
+// Leaf: ?QuitMidGame@CTCTavernGameShoveHaPenny@@UAEXXZ
+// Retail bytes:  push 6 ; mov byte ptr [ecx + 0x28], 1 ; mov byte ptr [ecx + 0x21], 0 ; call 0x5e9b20 ; ret
+// Naming (NF159, 2026-11-20, q4271): ported onto engine/CTCTavernGameShoveHaPenny.h (retail branch) from a local stand-in
+//   `CTCTavernGameShoveHaPenny::Begin(long)` that bound CTCTavernGame::SetState 0x005E9B20 as ?Begin@CTCTavernGameShoveHaPenny@@QAEXJ@Z;
+//   now the PDB ?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z (Ego_r.pdb 0x00647550 / FableWin.pdb 0x022D5AD0). The two flag
+//   bytes are CTCTavernGame::GameFinished (+0x28) and GameWon (+0x21); 6 is ETGS_END_ROUND. Own leaf: the virtual override (vtable
+//   0x0126F2F4 slot 34; Ego_r.pdb 0x007CDA80 / FableWin.pdb 0x0273B600 ?QuitMidGame@CTCTavernGameShoveHaPenny@@UAEXXZ; was QAE).
+#define FABLE_RETAIL_CTCTAVERNGAME
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#include "engine/CTCTavernGameShoveHaPenny.h"
 
 void CTCTavernGameShoveHaPenny::QuitMidGame()
 {
-    m_flagA = 1;
-    m_flagB = 0;
-    Begin(6);
+    GameFinished = true;
+    GameWon = false;
+    SetState(ETGS_END_ROUND);
 }

@@ -12,6 +12,11 @@ class CTCTavernGameCardPairs : public CTCTavernGameCardBase {
 public:
     virtual void ProcessInput(const CInputEvent&, CProcessedInput&, CInputProcessTavernGame*);   // 28 0x007D6870
     virtual bool SelectCard();                                           // 59 0x007D5FB0
+#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDPAIRS_CARDSMAINGAME
+    // NF159 opt-in (q4273, row 0x007D62D0): Ego_r.pdb 0x007D38F0 / FableWin.pdb 0x0274ACE0 ?CardsMainGame@CTCTavernGameCardPairs@@UAEXXZ, the
+    // override of CTCTavernGameCardBase slot 56 (vtable 0x0126F6FC; no new slot, no layout change). Declaration only.
+    virtual void CardsMainGame();                                        // 56 0x007D62D0
+#endif
 #ifdef FABLE_RETAIL_CTCTAVERNGAMECARDPAIRS_ROUND_OVERRIDES
     // NF96 opt-in (q11339, rows 0x007D60C0 / 0x007D6150 / 0x007D70E0): Ego_r.pdb 0x007D3410 / 0x007D34B0 / 0x007D42E0 and FableWin.pdb
     // 0x0274A260 / 0x0274A530 / 0x0274A3A0 ?EnterGame / ?EndRound / ?NewRound@CTCTavernGameCardPairs@@UAEXXZ, the overrides of CTCTavernGame

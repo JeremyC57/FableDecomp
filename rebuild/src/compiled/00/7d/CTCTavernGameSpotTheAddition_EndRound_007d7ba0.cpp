@@ -24,7 +24,10 @@ class CTCTavernGame { public:
     unsigned char _pad_0xa1[0x53];
     void EndRound();                    // 0x005E9AA0
     void GetHeroStats(CHeroStats** stats);      // 0x005EB4B0
-    void SetState(long state);          // 0x005E9B20
+    // NF159 (q4271): Ego_r.pdb / FableWin.pdb ?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z: the state is the nested enum
+    //   CTCTavernGame::ETavernGameStates (enumerator names unproven: values passed as numbers); was SetState(long).
+    enum ETavernGameStates { };
+    void SetState(ETavernGameStates state);          // 0x005E9B20
 };
 
 struct CTCTavernGameSpotTheAddition : CTCTavernGame {
@@ -42,5 +45,5 @@ void CTCTavernGameSpotTheAddition::EndRound()
         if (stats->m_bestSpotTheAdditionTime == 0.0f || CurrentTime < stats->m_bestSpotTheAdditionTime)
             NewBestScore = true;
     }
-    SetState(8);
+    SetState((ETavernGameStates)8);
 }

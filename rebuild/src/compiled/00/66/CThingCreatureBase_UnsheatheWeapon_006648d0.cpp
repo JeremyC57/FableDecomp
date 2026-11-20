@@ -37,7 +37,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing;
 class CThingObject;
 class CTCCarrying { public:
-    bool IsCarryingThing(long defIndex);                         // 0x006A10A0
+    bool IsCarryingThing(long defIndex) const;                   // 0x006A10A0 (Ego_r.pdb + FableWin.pdb: const)
     CThing* GetCarriedThing(long defIndex) const;   // 0x006A1120 (Ego_r/FableWin ?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z)
     void RemoveThing(CThing& thing);                             // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     void PutThingInCarrySlot(CThing& thing, long slot, bool flag);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)

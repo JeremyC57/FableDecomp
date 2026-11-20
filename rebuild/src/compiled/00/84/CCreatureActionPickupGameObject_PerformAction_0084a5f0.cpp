@@ -202,7 +202,7 @@ struct __declspec(novtable) CCreatureActionBase {
 
 class CTCCarrying { public:
  bool IsCarrySlotFree(long) const; //006A1230 ?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z (Ego_r + FableWin; was IsCarrySlotEmpty): absent entry returns false; present entry tests null intelligent pointer
- void PutThingInCarrySlot(CThing*,long,bool); //006A1F80
+ void PutThingInCarrySlot(CThing&,long,bool); //006A1F80 (Ego_r.pdb + FableWin.pdb: CThing&)
 public:
     CThing* GetThingInCarrySlot(long) const;   // 0x006A11F0
 };
@@ -227,8 +227,8 @@ void CCreatureAction_PickupGameObject::PerformAction(){
     if(carrying->IsCarrySlotFree(slot))existing=carrying->GetThingInCarrySlot(carryable->PassiveCarrySlot);
     else existing=carrying->GetThingInCarrySlot(slot);
     if(existing)DropWeapon(existing,carrying,PCreature);
-    carrying->PutThingInCarrySlot(PObject,slot,true);
-   }else carrying->PutThingInCarrySlot(PObject,slot,true);
+    carrying->PutThingInCarrySlot(*static_cast<CThing*>(PObject),slot,true);
+   }else carrying->PutThingInCarrySlot(*static_cast<CThing*>(PObject),slot,true);
   }
  }
 }

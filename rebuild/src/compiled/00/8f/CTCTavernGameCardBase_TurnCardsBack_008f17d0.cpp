@@ -69,8 +69,15 @@ class CCard { public:                                  // Ego_r.pdb CCard (0x58 
 class CTCTavernGame { public:
     virtual void v00();
     unsigned char _body04[0xf0 - 0x04];         // CTCBase + CTCTavernGame members (retail 0xF0)
-    unsigned long PlaySound(const CCharString& name);   // 0x005EA950
-    void SetState(long state);                  // 0x005E9B20
+protected:
+    // NF159 (q4273): Ego_r.pdb / FableWin.pdb ?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z (protected, returns the
+    //   sound handle; <windows.h> renamed the source's PlaySound); was a public PlaySound.
+    unsigned long PlaySoundW(const CCharString& name);   // 0x005EA950
+public:
+    // NF159 (q4271): Ego_r.pdb / FableWin.pdb ?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z: the state is the nested enum
+    //   CTCTavernGame::ETavernGameStates (enumerator names unproven: values passed as numbers); was SetState(long).
+    enum ETavernGameStates { };
+    void SetState(ETavernGameStates state);                  // 0x005E9B20
 };
 
 struct CTCTavernGameCardBase : CTCTavernGame {  // vtable 0x01288294
@@ -90,10 +97,10 @@ void CTCTavernGameCardBase::TurnCardsBack()
         if (!(*it)->Turning && !(*it)->FaceDown) {
             {
                 CCharString sound("TAVERN_GAME_CARD_FLIP");
-                PlaySound(sound);
+                PlaySoundW(sound);
             }
             (*it)->Turn();
         }
     }
-    SetState(0x19);
+    SetState((ETavernGameStates)0x19);
 }

@@ -18,7 +18,6 @@
 //   the GetSubDef and LowerBound same-TU stand-ins carry retail's LTCG knowledge (def in ebx, key and def share one frame word).
 #include "fable_compiler.h"
 class CThing;
-class CThingObject;
 #include "engine/C3DVector.h"
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
@@ -58,12 +57,11 @@ class CThing { public:
         return false;
     }
 };
-class CThingObject : public CThing { public: };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 class CTCCarrying { public:
-    void PutThingInCarrySlot(CThingObject* thing, long slot, bool immediately);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);         // 0x006A1F80 (Ego_r.pdb + FableWin.pdb: CThing&)
 };
 class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);                 // 0x0073AE10
@@ -92,7 +90,7 @@ void CCreatureAction_PickUpJugToFill::PerformAction()
         CThing* jug = ((CThing*)PJug.GetPItem());                    // named: the GetPItem call runs before the out-pointer push
         jug->m_pDef->GetSubDef(&carryDef);
         long slot = carryDef->PassiveCarrySlot;                      // named: read before the GetPItem call (was a made-up inline getter)
-        carrying->PutThingInCarrySlot((CThingObject*)PJug.GetPItem(), slot, true);
+        carrying->PutThingInCarrySlot(*(CThing*)PJug.GetPItem(), slot, true);
         CTCCreatureModeManager* modes;
         ((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31);
         modes->AddMode(0x2b);

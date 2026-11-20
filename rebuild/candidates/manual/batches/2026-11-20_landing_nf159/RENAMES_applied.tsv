@@ -1,0 +1,80 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x005EA100	CTCTavernGame	GetWinPhrase	?GetWinPhrase@CTCTavernGame@@UAE?AVCWideString@@XZ	CTCTavernGame::GetWinPhrase	?vfunc_42@CTCTavernGame@@QBE?AVCWideString@@XZ	leaf-only (catalog name already right): Ego_r.pdb 0x00647A70 + FableWin.pdb 0x022D6B20 ?GetWinPhrase@CTCTavernGame@@UAE?AVCWideString@@XZ; CTCTavernGame vtable 0x012560BC slot 42 = 0x005EA100 (engine/CTCTavernGame.h); exe scan: no landed row references 0x005EA100
+0x006A10A0	CTCCarrying	IsCarryingThing	?IsCarryingThing@CTCCarrying@@QBE_NJ@Z	CTCCarrying::IsCarryingThing	?IsCarryingThing@CTCCarrying@@QAE_NJ@Z	leaf-only (catalog name already right): Ego_r.pdb 0x006C5AE0 + FableWin.pdb 0x02217B70
+0x006A2220	CTCCarrying	GetAllCarriedThings	?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	CTCCarrying::GetAllCarriedThings	?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$CArray@PAVCThing@@@@@Z	leaf-only (catalog name already right): Ego_r.pdb 0x006C6970 + FableWin.pdb 0x02217EE0
+0x007CF4C0	CTCTavernGameShoveHaPenny	EndRound	?EndRound@CTCTavernGameShoveHaPenny@@UAEXXZ	CTCTavernGameShoveHaPenny::EndRound	?EndRound@CTCTavernGameShoveHaPenny@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x007CDA20 + FableWin.pdb 0x0273B170 ?EndRound@CTCTavernGameShoveHaPenny@@UAEXXZ (virtual override; vtable 0x0126F2F4 slot 33 = 0x007CF4C0); exe scan: no landed row references 0x007CF4C0
+0x007CF520	CTCTavernGameShoveHaPenny	QuitMidGame	?QuitMidGame@CTCTavernGameShoveHaPenny@@UAEXXZ	CTCTavernGameShoveHaPenny::QuitMidGame	?QuitMidGame@CTCTavernGameShoveHaPenny@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x007CDA80 + FableWin.pdb 0x0273B600 ?QuitMidGame@CTCTavernGameShoveHaPenny@@UAEXXZ (virtual override, vtable 0x0126F2F4 slot 34 = 0x007CF520; engine/CTCTavernGameShoveHaPenny.h); exe scan: no landed row references 0x007CF520
+0x007CF530	CTCTavernGameShoveHaPenny	EnterGame	?EnterGame@CTCTavernGameShoveHaPenny@@UAEXXZ	CTCTavernGameShoveHaPenny::EnterGame	?EnterGame@CTCTavernGameShoveHaPenny@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x007CDA90 + FableWin.pdb 0x0273AB50 ?EnterGame@CTCTavernGameShoveHaPenny@@UAEXXZ (virtual override, vtable 0x0126F2F4 slot 29); exe scan: no landed row references 0x007CF530
+0x007D2900	CTCTavernGameCoinGolf	NewGame	?NewGame@CTCTavernGameCoinGolf@@UAEXXZ	CTCTavernGameCoinGolf::NewGame	?NewGame@FableEndCut_007d2900@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x007CFB50 + FableWin.pdb 0x02743120 ?NewGame@CTCTavernGameCoinGolf@@UAEXXZ (virtual override; vtable 0x0126F49C slot 31 = 0x007D2900, rtti-vtables.tsv); was the free-form stand-in FableEndCut_007d2900::NewGame; exe scan: no landed row references 0x007D2900
+0x007D2920	CTCTavernGameCoinGolf	EndRound	?EndRound@CTCTavernGameCoinGolf@@UAEXXZ	CTCTavernGameCoinGolf::EndRound	?EndRound@CTCTavernGameCoinGolf@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x007CFB80 + FableWin.pdb 0x027433D0 ?EndRound@CTCTavernGameCoinGolf@@UAEXXZ (virtual override; vtable 0x0126F49C slot 33 = 0x007D2920, rtti-vtables.tsv); exe scan: no landed row references 0x007D2920
+0x007D29F0	CTCTavernGameCoinGolf	QuitMidGame	?QuitMidGame@CTCTavernGameCoinGolf@@UAEXXZ	CTCTavernGameCoinGolf::QuitMidGame	?QuitMidGame@CTCTavernGameCoinGolf@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x007CFB70 + FableWin.pdb 0x02743EF0 ?QuitMidGame@CTCTavernGameCoinGolf@@UAEXXZ (virtual override, slot 34 = 0x007D29F0 per engine/CTCTavernGameCoinGolf.h); exe scan: no landed row references 0x007D29F0
+0x007D2EF0	CTCTavernGameCoinGolf	SetupForNewRound	?SetupForNewRound@CTCTavernGameCoinGolf@@AAEXXZ	CTCTavernGameCoinGolf::SetupForNewRound	?SetupForNewRound@CTCTavernGameCoinGolf@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x007D01D0 + FableWin.pdb 0x02740F30 ?SetupForNewRound@CTCTavernGameCoinGolf@@AAEXXZ (private; engine/CTCTavernGameCoinGolf.h); exe scan: its only landed referencer 0x007D3510 binds the new spelling in this hand-back
+0x007D34A0	CTCTavernGameCoinGolf	EnterGame	?EnterGame@CTCTavernGameCoinGolf@@UAEXXZ	CTCTavernGameCoinGolf::EnterGame	?EnterGame@CTCTavernGameCoinGolf@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x007D0810 + FableWin.pdb 0x02742FE0 ?EnterGame@CTCTavernGameCoinGolf@@UAEXXZ (virtual override, vtable 0x0126F49C slot 29); exe scan: no landed row references 0x007D34A0
+0x007D3510	CTCTavernGameCoinGolf	NewRound	?NewRound@CTCTavernGameCoinGolf@@UAEXXZ	CTCTavernGameCoinGolf::vfunc_32	?vfunc_32@CTCTavernGameCoinGolf@@QAEXXZ	catalog name + leaf: Ego_r.pdb 0x007D0870 + FableWin.pdb 0x02743150 ?NewRound@CTCTavernGameCoinGolf@@UAEXXZ; vtable 0x0126F49C slot 32 = 0x007D3510 (engine/CTCTavernGameCoinGolf.h, rtti-vtables.tsv CTCTavernGameCoinGolf slot 32); was the placeholder vfunc_32; exe scan: no landed row references 0x007D3510
+0x007D5FB0	CTCTavernGameCardPairs	SelectCard	?SelectCard@CTCTavernGameCardPairs@@UAE_NXZ	CTCTavernGameCardPairs::SelectCard	?SelectCard@CTCTavernGameCardPairs@@QAE_NXZ	leaf-only (catalog name already right): Ego_r.pdb 0x007D3300 + FableWin.pdb 0x0274B6C0 ?SelectCard@CTCTavernGameCardPairs@@UAE_NXZ (virtual override; vtable 0x0126F6FC slot 59 = 0x007D5FB0, engine/CTCTavernGameCardPairs.h); exe scan: no landed row references 0x007D5FB0
+0x007D62D0	CTCTavernGameCardPairs	CardsMainGame	?CardsMainGame@CTCTavernGameCardPairs@@UAEXXZ	CTCTavernGameCardPairs::CardsMainGame	?CardsMainGame@CTCTavernGameCardPairs@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x007D38F0 + FableWin.pdb 0x0274ACE0 ?CardsMainGame@CTCTavernGameCardPairs@@UAEXXZ (virtual override of CTCTavernGameCardBase slot 56, vtable 0x0126F6FC); exe scan: no landed row references 0x007D62D0
+0x00833010	CThingAICreature	SetNewBrain	?SetNewBrain@CThingAICreature@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z	CThingAICreature::SetNewBrain	?SetNewBrain@CThingAICreature@@QAEXUCDefPointer@@@Z	leaf-only (catalog name already right): Ego_r.pdb 0x0053A690 + FableWin.pdb 0x01D76260 ?SetNewBrain@CThingAICreature@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z
+0x008EF390	CTCTavernGameCoinBase	EnterGame	?EnterGame@CTCTavernGameCoinBase@@UAEXXZ	CTCTavernGameCoinBase::EnterGame	?EnterGame@CTCTavernGameCoinBase@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x00914CD0 + FableWin.pdb 0x02AEC260 ?EnterGame@CTCTavernGameCoinBase@@UAEXXZ (engine/CTCTavernGameCoinBase.h slot 29 = 0x008EF390); exe scan: its landed referencers 0x007CF530 / 0x007D34A0 bind the new spelling in this hand-back
+0x008F09A0	CTCTavernGameCardBase	QuitMidGame	?QuitMidGame@CTCTavernGameCardBase@@UAEXXZ	CTCTavernGameCardBase::QuitMidGame	?QuitMidGame@CTCTavernGameCardBase@@QAEXXZ	leaf-only (catalog name already right): Ego_r.pdb 0x00915E40 + FableWin.pdb 0x02AF0D80 ?QuitMidGame@CTCTavernGameCardBase@@UAEXXZ (virtual override of CTCTavernGame slot 34); exe scan: no landed row references 0x008F09A0
+0x008F09E0	CTCTavernGameCardBase	CardsFinishedMoving	?CardsFinishedMoving@CTCTavernGameCardBase@@UAEXXZ	CTCTavernGameCardBase::TurnAllCards	?TurnAllCards@CTCTavernGameCardBase@@QAEXXZ	catalog name + leaf: Ego_r.pdb 0x009161D0 + FableWin.pdb 0x02AF2330 ?CardsFinishedMoving@CTCTavernGameCardBase@@UAEXXZ; engine/CTCTavernGameCardBase.h vtable 0x01288294 slot 53 = 0x008F09E0 (inherited by CardSorting 0x0126F5B4 slot 53; CardPairs overrides it with its own CardsFinishedMoving 0x007D6260); was the descriptive TurnAllCards; exe scan: no landed row references 0x008F09E0
+# Section 2
+caller_row	old_symbol	new_symbol	callee_address
+0x005E9E70	?missing@?1??GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z@4V3@A	?no_text_entry@?1??GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z@4V3@A	0x013B8C48
+0x005EA100	?GetText@CTCTavernGame@@QBE?AVCWideString@@K@Z	?GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z	0x005E9E70
+0x005EADC0	?PlaySound@CTCTavernGame@@QAEXABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x005EAF30	?PlaySound@CTCTavernGame@@QAEXABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x005EB080	?PlaySound@CTCTavernGame@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x005EB810	?PlaySound@CTCTavernGame@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x006648D0	?IsCarryingThing@CTCCarrying@@QAE_NJ@Z	?IsCarryingThing@CTCCarrying@@QBE_NJ@Z	0x006A10A0
+0x006A2220	?InsertGrow@?$CArray@PAVCThing@@@@QAEXPAPAVCThing@@ABQAV2@ABUSScalarTag@@K_N@Z	?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z	0x00436AC0
+0x006D5B50	?GetHeadPosition@CTCGraphicAppearance@@QBE?AVC3DVector@@XZ	?GetStaticFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@XZ	0x004C10E0
+0x006D5B50	?GetHelperPointOrCentre@CTCGraphicAppearance@@QBE?AVC3DVector@@M@Z	?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z	0x004C1060
+0x007153B0	?PutThingInCarrySlot@CTCCarrying@@QAEXPAVCThing@@J_N@Z	?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z	0x006A1F80
+0x00783380	?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JPAVCThingAICreatureInit@@@Z	?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z	0x00833800
+0x007CF4A0	?SetState@CTCTavernGameCoinBase@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007CF4C0	?EndRound@CTCTavernGameCoinBase@@QAEXXZ	?EndRound@CTCTavernGameCoinBase@@UAEXXZ	0x008EF190
+0x007CF4C0	?GetHeroStats@CTCTavernGameCoinBase@@QAEXPAPAUCHeroStats@@@Z	?GetHeroStats@CTCTavernGame@@QAEXPAPAVCTCHeroStats@@@Z	0x005EB4B0
+0x007CF4C0	?SetState@CTCTavernGameCoinBase@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007CF520	?Begin@CTCTavernGameShoveHaPenny@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007CF530	?CameraUseCameraPoint@CTCTavernGameCoinBase@@QAEXABVCCharString@@@Z	?CameraUseCameraPoint@CTCTavernGame@@QAEXABVCCharString@@@Z	0x005EBFA0
+0x007CF530	?EnterGame@CTCTavernGameCoinBase@@QAEXXZ	?EnterGame@CTCTavernGameCoinBase@@UAEXXZ	0x008EF390
+0x007CF530	?GetTavernGameDef@CTCTavernGameCoinBase@@QAEXPAUCDefPointer@@@Z	?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z	0x005EA000
+0x007CF7E0	?SetState@CTCTavernGameCoinBase@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007D2900	?h1@FableEndCut_007d2900@@QAIXXZ	?NewGame@CTCTavernGameCoinBase@@UAEXXZ	0x008EF170
+0x007D2900	?h2@FableEndCut_007d2900@@QAEXH@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007D2920	?EndRound@CTCTavernGameCoinBase@@QAEXXZ	?EndRound@CTCTavernGameCoinBase@@UAEXXZ	0x008EF190
+0x007D2920	?SetState@CTCTavernGame@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007D29F0	?Begin@CTCTavernGameCoinGolf@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007D34A0	?EnterGame@CTCTavernGameCoinBase@@QAEXXZ	?EnterGame@CTCTavernGameCoinBase@@UAEXXZ	0x008EF390
+0x007D3510	?SetState@CTCTavernGameCoinBase@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007D3510	?SetupForNewRound@CTCTavernGameCoinGolf@@QAEXXZ	?SetupForNewRound@CTCTavernGameCoinGolf@@AAEXXZ	0x007D2EF0
+0x007D5FB0	?PlaySound@CTCTavernGameCardBase@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x007D5FB0	?SelectCard@CTCTavernGameCardBase@@QAE_NXZ	?SelectCard@CTCTavernGameCardBase@@UAE_NXZ	0x008F09C0
+0x007D62D0	?GetTavernGameDef@CTCTavernGameCardPairs@@QAEXPAUCDefPointer@@@Z	?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z	0x005EA000
+0x007D62D0	?GetText@CTCTavernGameCardPairs@@QAE?AVCWideString@@K@Z	?GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z	0x005E9E70
+0x007D62D0	?PlaySound@CTCTavernGameCardPairs@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x007D62D0	?SetStateAfterOK@CTCTavernGameCardPairs@@QAEXVCWideString@@0J@Z	?SetStateAfterOK@CTCTavernGame@@IAEXVCWideString@@0W4ETavernGameStates@1@@Z	0x005EB080
+0x007D7B80	?SetState@CTCTavernGame@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007D7BA0	?SetState@CTCTavernGame@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007D80C0	?SetState@CTCTavernGame@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007D8140	?SetState@CTCTavernGame@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007D8290	?PlaySound@CTCTavernGameSpotTheAddition@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x007DA290	?PlaySound@CTCTavernGameCardBlackjack@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x007DA290	?SetState@CTCTavernGameCardBlackjack@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x007DA810	?PlaySound@CTCTavernGameCardBlackjack@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x007DAAE0	?SetState@CTCTavernGame@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x00833010	??0CAIBrain@@QAE@PAVCDisplayEngine@@PAVCWorld@@PAVCThingManager@@PAVCPlayerManager@@PAVCThingAICreature@@UCDefPointer@@@Z	??0CAIBrain@@QAE@PAVCMainGameComponent@@PAVCWorld@@PAVCThingManager@@PAVCPlayerManager@@PAVCThingAICreature@@V?$CDefPointer@$$CBVCBrainDef@@@@@Z	0x0088C160
+0x00847AC0	?PutThingInCarrySlot@CTCCarrying@@QAEXPAVCThing@@J_N@Z	?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z	0x006A1F80
+0x00848730	?PutThingInCarrySlot@CTCCarrying@@QAEXPAVCThingObject@@J_N@Z	?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z	0x006A1F80
+0x0084A350	?PutThingInCarrySlot@CTCCarrying@@QAEXPAVCThingObject@@J_N@Z	?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z	0x006A1F80
+0x0084A5F0	?PutThingInCarrySlot@CTCCarrying@@QAEXPAVCThing@@J_N@Z	?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z	0x006A1F80
+0x008531E0	?GetHelperPointOrCentre@CTCGraphicAppearance@@QBE?AVC3DVector@@M@Z	?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z	0x004C1060
+0x00897220	?IsCarryingThing@CTCCarrying@@QAE_NJ@Z	?IsCarryingThing@CTCCarrying@@QBE_NJ@Z	0x006A10A0
+0x008F0930	?SetState@CTCTavernGame@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x008F0960	?SetState@CTCTavernGame@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x008F09A0	?Begin@CTCTavernGameCardBase@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x008F09E0	?PlaySound@CTCTavernGameCardBase@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x008F09E0	?SetState@CTCTavernGameCardBase@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x008F17D0	?PlaySound@CTCTavernGame@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	0x005EA950
+0x008F17D0	?SetState@CTCTavernGame@@QAEXJ@Z	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	0x005E9B20
+0x008FD0A0	?PutThingInCarrySlot@CTCCarrying@@QAEXPAVCThingObject@@J_N@Z	?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z	0x006A1F80

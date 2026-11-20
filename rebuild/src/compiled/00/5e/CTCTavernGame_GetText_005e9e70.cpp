@@ -8,8 +8,8 @@
 // Callees: CWideString(const wchar_t*) 0x0099B6B0 and atexit 0x004012BC (the function-local static at 0x013B8C48, guard bit
 //   0x013B8C4C), NGameText::CDataBank::GetPTextEntry(unsigned long, bool) const 0x009C9070 (CIVCountedPointer by hidden pointer),
 //   NGameText::CTextEntry::GetText() const 0x009C7A40, CWideString(const CWideString&) 0x0099B720, ~CWideString 0x0099B510.
-// Shape (family M162, representative 0x005E9E70): `static CWideString missing(L"Missing text entry"); CIVCountedPointer<const
-//   CTextEntry> entry = bank->GetPTextEntry(textId, true); return entry.Object ? entry.Object->GetText() : missing;` -- the
+// Shape (family M162, representative 0x005E9E70): `static CWideString no_text_entry(L"Missing text entry"); CIVCountedPointer<const
+//   CTextEntry> entry = bank->GetPTextEntry(textId, true); return entry.Object ? entry.Object->GetText() : no_text_entry;` -- the
 //   conditional's temporary carries a construction flag (bl) and lives in the dead textId slot; the entry's release is the
 //   landed CTCInventoryBase::GetInventoryText 0x005BD273 ReleaseTemporary. Speed TU.
 #include "fable_compiler.h"
@@ -74,7 +74,9 @@ public:
 };
 CWideString CTCTavernGame::GetText(unsigned long textId)
 {
-    static CWideString missing(L"Missing text entry");    // 0x013B8C48
+    // NF159 (q5123): the static is no_text_entry (Ego_r.pdb / FableWin.pdb `CTCTavernGame::GetText'::`2'::`dynamic atexit destructor for
+    //   'no_text_entry'', the landed atexit stub 0x01229160 binds ?no_text_entry@?1??GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z@4V3@A); was `missing`.
+    static CWideString no_text_entry(L"Missing text entry");    // 0x013B8C48
     CIVCountedPointer<const NGameText::CTextEntry> entry = CMainGameComponent::Get()->TextBank->GetPTextEntry(textId, true);
-    return entry.Object ? entry.Object->GetText() : missing;
+    return entry.Object ? entry.Object->GetText() : no_text_entry;
 }

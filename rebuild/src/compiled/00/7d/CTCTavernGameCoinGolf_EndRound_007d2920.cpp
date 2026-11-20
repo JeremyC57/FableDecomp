@@ -41,13 +41,18 @@ class CTCTavernGame { public:
     bool          NewBestScore;                 // +0xa0
     CThing* GetParentThing() const { return ParentThing; }
     void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0
-    void SetState(long state);                  // 0x005E9B20
+    // NF159 (q4271): Ego_r.pdb / FableWin.pdb ?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z: the state is the nested enum
+    //   CTCTavernGame::ETavernGameStates (enumerator names unproven: values passed as numbers); was SetState(long).
+    enum ETavernGameStates { };
+    void SetState(ETavernGameStates state);                  // 0x005E9B20
 };
 struct CTCTavernGameCoinBase : CTCTavernGame {
-    void EndRound();                            // 0x008EF190
+    // NF159 (q4271 family, no new split at 0x008EF190): Ego_r.pdb 0x00914AD0 / FableWin.pdb 0x02AEC620 ?EndRound@CTCTavernGameCoinBase@@UAEXXZ
+    //   (virtual: CTCTavernGame slot 33; the qualified call below stays non-virtual); was QAE. CoinGolf's EndRound overrides it (UAE).
+    virtual void EndRound();                    // 0x008EF190
 };
 class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
-    void EndRound();
+    virtual void EndRound();
 };
 
 void CTCTavernGameCoinGolf::EndRound()
@@ -63,5 +68,5 @@ void CTCTavernGameCoinGolf::EndRound()
                  && (stats->BestScoreCoinGolfSnowSpire == 0.0f || Score < stats->BestScoreCoinGolfSnowSpire))
             NewBestScore = true;
     }
-    SetState(8);
+    SetState((ETavernGameStates)8);
 }

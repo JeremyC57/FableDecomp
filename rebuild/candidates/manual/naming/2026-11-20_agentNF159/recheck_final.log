@@ -1,0 +1,239 @@
+addr       parity           behav  name
+005e9e70   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+005e9e70   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+005e9e70   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005e9e70   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005e9e70   WARN RELOC_CONFLICT: _$E2 -> 01229160 here, 01228930 in landed 01219f00
+005e9e70   WARN RELOC_NAME: _$E2 -> 01229160 labelled 'CTCTavernGame::GetText'::`2'::`dynamic atexit destructor for 'no_text_entry'''
+005e9e70   RELOCATION_MATCH PASS   CTCTavernGame::GetText
+005ea100   WARN SHARED_HEADER_AVAILABLE CTavernGameDef (engine/CTavernGameDef.h)
+005ea100   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005ea100   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005ea100   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ea100   RELOCATION_MATCH PASS   CTCTavernGame::GetWinPhrase
+005eadc0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+005eadc0   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+005eadc0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005eadc0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005eadc0   WARN RELOC_NAME: ?g_pSubtitleOwner@@3PAUCSubtitleOwner@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+005eadc0   WARN RELOC_NAME: ?Copy@CGameEventData@@QAEXJPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+005eadc0   RELOCATION_MATCH PASS   CTCTavernGame::SetStateAfterYesNoAlt
+005eaf30   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+005eaf30   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+005eaf30   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005eaf30   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005eaf30   WARN RELOC_NAME: ?g_pSubtitleOwner@@3PAUCSubtitleOwner@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+005eaf30   WARN RELOC_NAME: ?Copy@CGameEventData@@QAEXJPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+005eaf30   RELOCATION_MATCH PASS   CTCTavernGame::SetStateAfterYesNo
+005eb080   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+005eb080   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+005eb080   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+005eb080   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005eb080   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005eb080   RELOCATION_MATCH PASS   CTCTavernGame::SetStateAfterOK
+005eb810   WARN SHARED_HEADER_AVAILABLE CTavernGameDef (engine/CTavernGameDef.h)
+005eb810   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005eb810   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005eb810   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+005eb810   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005eb810   WARN RELOC_NAME: ?GetSubDef_005ed4a0@CDefClassBase@@QAE_NAAU?$CDefOut@VCTavernGameDef@@@@@Z -> 005ed4a0 labelled 'CDefClassBase::GetSubDef<CTavernGameDef>'
+005eb810   RELOCATION_MATCH PASS   CTCTavernGame::ChangeBet
+006648d0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006648d0   RELOCATION_MATCH PASS   CThingCreatureBase::UnsheatheWeapon
+006a10a0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006a10a0   RELOCATION_MATCH PASS   CTCCarrying::IsCarryingThing
+006a2220   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006a2220   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006a2220   RELOCATION_MATCH PASS   CTCCarrying::GetAllCarriedThings
+006d5b50   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+006d5b50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006d5b50   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+006d5b50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006d5b50   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+006d5b50   RELOCATION_MATCH PASS   CThingAICreature::UpdateAITurning
+007153b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007153b0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+007153b0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+007153b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+007153b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PickUpGenericBox (engine/CCreatureAction_PickUpGenericBox.h)
+007153b0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+007153b0   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl (engine/CTCScriptedControl.h)
+007153b0   RELOCATION_MATCH PASS   NTCScriptedControl::CActionPickUpGenericBox::Update
+00783380   WARN SHARED_HEADER_AVAILABLE CThingAICreatureInit (engine/CThingAICreatureInit.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CTCBoastingCrowdControl (engine/CTCBoastingCrowdControl.h)
+00783380   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00783380   RELOCATION_MATCH PASS   CTCBoastingCrowdControl::SpawnCrowdMember
+007cf4a0   RELOCATION_MATCH PASS   CTCTavernGameShoveHaPenny::NewGame
+007cf4c0   RELOCATION_MATCH PASS   CTCTavernGameShoveHaPenny::EndRound
+007cf520   RELOCATION_MATCH PASS   CTCTavernGameShoveHaPenny::QuitMidGame
+007cf530   RELOCATION_MATCH PASS   CTCTavernGameShoveHaPenny::EnterGame
+007cf7e0   RELOCATION_MATCH PASS   CTCTavernGameShoveHaPenny::NewRound
+007d2900   RELOCATION_MATCH PASS   CTCTavernGameCoinGolf::NewGame
+007d2920   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+007d2920   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+007d2920   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+007d2920   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinBase (engine/CTCTavernGameCoinBase.h)
+007d2920   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinGolf (engine/CTCTavernGameCoinGolf.h)
+007d2920   RELOCATION_MATCH PASS   CTCTavernGameCoinGolf::EndRound
+007d29f0   RELOCATION_MATCH PASS   CTCTavernGameCoinGolf::QuitMidGame
+007d2ef0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+007d2ef0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+007d2ef0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+007d2ef0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007d2ef0   WARN SHARED_HEADER_AVAILABLE Coin (engine/Coin.h)
+007d2ef0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+007d2ef0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinBase (engine/CTCTavernGameCoinBase.h)
+007d2ef0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinGolf (engine/CTCTavernGameCoinGolf.h)
+007d2ef0   RELOCATION_MATCH PASS   CTCTavernGameCoinGolf::SetupForNewRound
+007d34a0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+007d34a0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007d34a0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007d34a0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+007d34a0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinBase (engine/CTCTavernGameCoinBase.h)
+007d34a0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinGolf (engine/CTCTavernGameCoinGolf.h)
+007d34a0   RELOCATION_MATCH PASS   CTCTavernGameCoinGolf::EnterGame
+007d3510   RELOCATION_MATCH PASS   CTCTavernGameCoinGolf::vfunc_32
+007d5fb0   RELOCATION_MATCH PASS   CTCTavernGameCardPairs::SelectCard
+007d62d0   RELOCATION_MATCH PASS   CTCTavernGameCardPairs::CardsMainGame
+007d7b80   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+007d7b80   RELOCATION_MATCH PASS   CTCTavernGame::EndCutFade
+007d7ba0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+007d7ba0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameSpotTheAddition (engine/CTCTavernGameSpotTheAddition.h)
+007d7ba0   RELOCATION_MATCH PASS   CTCTavernGameSpotTheAddition::EndRound
+007d80c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007d80c0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+007d80c0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameSpotTheAddition (engine/CTCTavernGameSpotTheAddition.h)
+007d80c0   RELOCATION_MATCH PASS   CTCTavernGameSpotTheAddition::NewGame
+007d8140   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+007d8140   WARN SHARED_HEADER_AVAILABLE CTCTavernGameSpotTheAddition (engine/CTCTavernGameSpotTheAddition.h)
+007d8140   RELOCATION_MATCH PASS   CTCTavernGameSpotTheAddition::QuitMidGame
+007d8290   RELOCATION_MATCH PASS   CTCTavernGameSpotTheAddition::UpdateHighlightedObject
+007da290   RELOCATION_MATCH PASS   CTCTavernGameCardBlackjack::TurnPlayerCards
+007da810   RELOCATION_MATCH PASS   CTCTavernGameCardBlackjack::ReorderCards
+007daae0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+007daae0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBase (engine/CTCTavernGameCardBase.h)
+007daae0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBlackjack (engine/CTCTavernGameCardBlackjack.h)
+007daae0   RELOCATION_MATCH PASS   CTCTavernGameCardBlackjack::EndRound
+00833010   WARN SHARED_HEADER_AVAILABLE CTCIdleScheduler (engine/CTCIdleScheduler.h)
+00833010   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00833010   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00833010   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00833010   WARN RELOC_NAME: ?OnNewBrain_008018b0@CTCIdleScheduler@@QAEXXZ -> 008018b0 labelled 'CTCIdleScheduler::Clear'
+00833010   WARN RELOC_NAME: ?PeekWorld@CThingAICreature@@QAEPAVCWorld@@XZ -> 004c7aa0 labelled 'CThing::GetWorld'
+00833010   WARN RELOC_NAME: ?GetDisplayEngine@CThingAICreature@@QAEPAVCDisplayEngine@@XZ -> 004c7a70 labelled 'CThing::PeekComponent'
+00833010   RELOCATION_MATCH PASS   CThingAICreature::SetNewBrain
+00847ac0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00847ac0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00847ac0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00847ac0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00847ac0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00847ac0   RELOCATION_MATCH PASS   CCreatureAction_Drink::Initialise
+00848730   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00848730   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00848730   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00848730   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PickUpGoods (engine/CCreatureAction_PickUpGoods.h)
+00848730   RELOCATION_MATCH PASS   CCreatureAction_PickUpGoods::PerformAction
+0084a350   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0084a350   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0084a350   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0084a350   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0084a350   RELOCATION_MATCH PASS   CCreatureAction_PickUpJugToFill::PerformAction
+0084a5f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0084a5f0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0084a5f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0084a5f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0084a5f0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0084a5f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PickupGameObject (engine/CCreatureAction_PickupGameObject.h)
+0084a5f0   RELOCATION_MATCH PASS   CCreatureAction_PickupGameObject::PerformAction
+008531e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008531e0   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleOpenGate::Update
+00897220   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00897220   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00897220   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+00897220   RELOCATION_MATCH PASS   CGameScriptInterface::IsObjectInThingsPossession
+008ef390   WARN SHARED_HEADER_AVAILABLE CTavernGameCoinBaseDef (engine/CTavernGameCoinBaseDef.h)
+008ef390   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008ef390   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ef390   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+008ef390   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinBase (engine/CTCTavernGameCoinBase.h)
+008ef390   WARN RELOC_NAME: ?GetDef@CThingDefHolder@@QAEXPAUCDefPointer@@@Z -> 008f00f0 labelled 'CDefClassBase::GetSubDef<CTavernGameCoinBaseDef>'
+008ef390   RELOCATION_MATCH PASS   CTCTavernGameCoinBase::EnterGame
+008f0930   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+008f0930   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBase (engine/CTCTavernGameCardBase.h)
+008f0930   RELOCATION_MATCH PASS   CTCTavernGameCardBase::NewGame
+008f0960   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+008f0960   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBase (engine/CTCTavernGameCardBase.h)
+008f0960   RELOCATION_MATCH PASS   CTCTavernGameCardBase::NewRound
+008f09a0   RELOCATION_MATCH PASS   CTCTavernGameCardBase::QuitMidGame
+008f09e0   WARN STANDIN_LEAF ?CardsFinishedMoving@CTCTavernGameCardBase@@UAEXXZ (catalog CTCTavernGameCardBase::TurnAllCards; names another function)
+008f09e0   RELOCATION_MATCH PASS   CTCTavernGameCardBase::TurnAllCards
+008f17d0   WARN SHARED_HEADER_AVAILABLE CCard (engine/CCard.h)
+008f17d0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+008f17d0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBase (engine/CTCTavernGameCardBase.h)
+008f17d0   RELOCATION_MATCH PASS   CTCTavernGameCardBase::TurnCardsBack
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+008fd0a0   RELOCATION_MATCH PASS   CAIStateGroupBase::CreateItem
+
+WINS: 47
+  005e9e70 RELOCATION_MATCH CTCTavernGame::?GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z
+  005ea100 RELOCATION_MATCH CTCTavernGame::?GetWinPhrase@CTCTavernGame@@UAE?AVCWideString@@XZ
+  005eadc0 RELOCATION_MATCH CTCTavernGame::?SetStateAfterYesNoAlt@CTCTavernGame@@
+  005eaf30 RELOCATION_MATCH CTCTavernGame::?SetStateAfterYesNo@CTCTavernGame@@
+  005eb080 RELOCATION_MATCH CTCTavernGame::SetStateAfterOK
+  005eb810 RELOCATION_MATCH CTCTavernGame::ChangeBet
+  006648d0 RELOCATION_MATCH CThingCreatureBase::?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z
+  006a10a0 RELOCATION_MATCH CTCCarrying::?IsCarryingThing@CTCCarrying@@QBE_NJ@Z
+  006a2220 RELOCATION_MATCH CTCCarrying::?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  006d5b50 RELOCATION_MATCH CThingAICreature::UpdateAITurning
+  007153b0 RELOCATION_MATCH NTCScriptedControl::CActionPickUpGenericBox::?Update@CActionPickUpGenericBox@NTCScriptedControl@@UAEXXZ
+  00783380 RELOCATION_MATCH CTCBoastingCrowdControl::SpawnCrowdMember
+  007cf4a0 RELOCATION_MATCH CTCTavernGameShoveHaPenny::?NewGame@CTCTavernGameShoveHaPenny@@UAEXXZ
+  007cf4c0 RELOCATION_MATCH CTCTavernGameShoveHaPenny::?EndRound@CTCTavernGameShoveHaPenny@@UAEXXZ
+  007cf520 RELOCATION_MATCH CTCTavernGameShoveHaPenny::?QuitMidGame@CTCTavernGameShoveHaPenny@@UAEXXZ
+  007cf530 RELOCATION_MATCH CTCTavernGameShoveHaPenny::?EnterGame@CTCTavernGameShoveHaPenny@@UAEXXZ
+  007cf7e0 RELOCATION_MATCH CTCTavernGameShoveHaPenny::?NewRound@CTCTavernGameShoveHaPenny@@UAEXXZ
+  007d2900 RELOCATION_MATCH CTCTavernGameCoinGolf::?NewGame@CTCTavernGameCoinGolf@@UAEXXZ
+  007d2920 RELOCATION_MATCH CTCTavernGameCoinGolf::?EndRound@CTCTavernGameCoinGolf
+  007d29f0 RELOCATION_MATCH CTCTavernGameCoinGolf::?QuitMidGame@CTCTavernGameCoinGolf@@UAEXXZ
+  007d2ef0 RELOCATION_MATCH CTCTavernGameCoinGolf::?SetupForNewRound@CTCTavernGameCoinGolf@@AAEXXZ
+  007d34a0 RELOCATION_MATCH CTCTavernGameCoinGolf::?EnterGame@CTCTavernGameCoinGolf
+  007d3510 RELOCATION_MATCH CTCTavernGameCoinGolf::?NewRound@CTCTavernGameCoinGolf@@UAEXXZ
+  007d5fb0 RELOCATION_MATCH CTCTavernGameCardPairs::?SelectCard@CTCTavernGameCardPairs@@UAE_NXZ
+  007d62d0 RELOCATION_MATCH CTCTavernGameCardPairs::?CardsMainGame@CTCTavernGameCardPairs@@UAEXXZ
+  007d7b80 RELOCATION_MATCH CTCTavernGame::EndCutFade
+  007d7ba0 RELOCATION_MATCH CTCTavernGameSpotTheAddition::EndRound
+  007d80c0 RELOCATION_MATCH CTCTavernGameSpotTheAddition::?NewGame@CTCTavernGameSpotTheAddition
+  007d8140 RELOCATION_MATCH CTCTavernGameSpotTheAddition::QuitMidGame
+  007d8290 RELOCATION_MATCH CTCTavernGameSpotTheAddition::?UpdateHighlightedObject@CTCTavernGameSpotTheAddition@@QAEXXZ
+  007da290 RELOCATION_MATCH CTCTavernGameCardBlackjack::?TurnPlayerCards@CTCTavernGameCardBlackjack@@QAEXXZ
+  007da810 RELOCATION_MATCH CTCTavernGameCardBlackjack::?ReorderCards@CTCTavernGameCardBlackjack@@QAEXXZ
+  007daae0 RELOCATION_MATCH CTCTavernGameCardBlackjack::EndRound
+  00833010 RELOCATION_MATCH CThingAICreature::SetNewBrain
+  00847ac0 RELOCATION_MATCH CCreatureAction_Drink::?Initialise@CCreatureAction_Drink@@UAEXXZ
+  00848730 RELOCATION_MATCH CCreatureAction_PickUpGoods::?PerformAction@CCreatureAction_PickUpGoods@@QAEXXZ
+  0084a350 RELOCATION_MATCH CCreatureAction_PickUpJugToFill::?PerformAction@CCreatureAction_PickUpJugToFill@@QAEXXZ
+  0084a5f0 RELOCATION_MATCH CCreatureAction_PickupGameObject::?PerformAction@CCreatureAction_PickupGameObject@@UAEXXZ
+  008531e0 RELOCATION_MATCH NCameraModes::CScriptModuleOpenGate::Update
+  00897220 RELOCATION_MATCH CGameScriptInterface::IsObjectInThingsPossession
+  008ef390 RELOCATION_MATCH CTCTavernGameCoinBase::?EnterGame@CTCTavernGameCoinBase@@UAEXXZ
+  008f0930 RELOCATION_MATCH CTCTavernGameCardBase::?NewGame@CTCTavernGameCardBase@@UAEXXZ
+  008f0960 RELOCATION_MATCH CTCTavernGameCardBase::?NewRound@CTCTavernGameCardBase@@UAEXXZ
+  008f09a0 RELOCATION_MATCH CTCTavernGameCardBase::?QuitMidGame@CTCTavernGameCardBase@@UAEXXZ
+  008f09e0 RELOCATION_MATCH CTCTavernGameCardBase::?CardsFinishedMoving@CTCTavernGameCardBase@@UAEXXZ
+  008f17d0 RELOCATION_MATCH CTCTavernGameCardBase::?TurnCardsBack@CTCTavernGameCardBase@@UAEXXZ
+  008fd0a0 RELOCATION_MATCH CAIStateGroupBase::CreateItem

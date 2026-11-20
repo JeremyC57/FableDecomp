@@ -1,5 +1,9 @@
 // CTCTavernGame::GetWinPhrase() -- the end-of-game result text: empty while the game is unfinished, else the def's win or lose text looked up through GetText
-// Leaf: vfunc_42
+// Leaf: ?GetWinPhrase@CTCTavernGame@@UAE?AVCWideString@@XZ
+// Naming (NF159, q4274): the self row is the PDB virtual CTCTavernGame::GetWinPhrase (Ego_r.pdb / FableWin.pdb
+//   ?GetWinPhrase@CTCTavernGame@@UAE?AVCWideString@@XZ, vtable 0x012560BC slot 42; was the stand-in `vfunc_42() const`), so the local
+//   model's vptr is the implicit one (was a `void* __vfptr` data member; +0x08..+0x1F made opaque), and GetText is the PDB non-const
+//   ?GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z (was const).
 // (catalogued slot 42; it is GetWinPhrase: Ego_r.pdb orders the CWideString virtuals GetWinPhrase,
 // GetBet, GetPlayersMoney, GetTotalWinnings, and retail has them at 0x005EA100/1A0/250/310 with 0x005EA310 the labelled
 // GetTotalWinnings)
@@ -65,20 +69,18 @@ struct CThingDefHolder {
     CDefClassBase* PDef;                        // +0x70
 };
 class CTCTavernGame { public:
-    void* __vfptr;                              // +0x00 (CTCBase)
     CThingDefHolder* ParentThing;               // +0x04
-    unsigned char _base08[4];
-    void* UIComponents[3];                      // +0x0c
-    double LastRenderTime;                      // +0x18
+    unsigned char _base08[0x18];                // +0x08 CTCBase's two bools, UIComponents vector +0x0c, double LastRenderTime +0x18
+                                                //   (opaque here: a double member would 8-align the implicit vptr)
     bool IsBeingPlayed;                         // +0x20
     bool GameWon;                               // +0x21
     long NumRounds;                             // +0x24
     bool GameFinished;                          // +0x28
-    CWideString GetText(unsigned long textID) const;   // 0x005E9E70
-    CWideString vfunc_42() const;
+    CWideString GetText(unsigned long textID);   // 0x005E9E70
+    virtual CWideString GetWinPhrase();         // vtable slot 42 (the vptr at +0x00 is CTCBase's)
 };
 
-CWideString CTCTavernGame::vfunc_42() const
+CWideString CTCTavernGame::GetWinPhrase()
 {
     CDefPointer<CTavernGameDef> def;
     ParentThing->PDef->GetSubDef(&def);
