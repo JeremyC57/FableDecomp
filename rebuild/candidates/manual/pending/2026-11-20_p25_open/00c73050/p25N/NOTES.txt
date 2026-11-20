@@ -1,0 +1,12 @@
+0x00C73050 Audio_PlaySourceAndProcessQueue: p25N, 2026-11-20. Best source c7_best.cpp, DIFFER(672v672) at /d2inlT150; the residue is one register.
+- The residue: the tail-item temp (c2prio candidate #32) is in edi in ours, edx in retail (0x00C731D2 / D5 / F4).
+- Cost sign: the lowest cost wins everywhere in the trace. #32's allowed set at the choice is {edi} only, because edx has already been removed.
+- What removes edx (c2prio_x.py watchpoint, dump c7x.json):
+  - One AND inside the cost/interference builder (0x1078368e; write at 0x10737278 -> 0x1075A3D2) masks the set to the callee-saved set at 0x108B0054 = {ebp, esi, edi}.
+  - The AND runs when a per-tuple counter equals 3 (0x107A00CF; the threshold is the sum of the dwords 0x108A7B1C..28 minus 1).
+  - For #32 the counter reaches 3 at three tuples of `!sound->IsLooping()`: the load, the shr by 8, and the & 1.
+- Respelling pass on that construct only (respell/c7_r1..r8):
+  - `!((m_flags >> 8) & 1)`, `!(m_flags & 0x100)` and similar forms remove the pressure, but c1 folds the test to `test dh,1`: 669v672.
+  - The accessor and its cast forms keep retail's `shr ecx,8 ; test cl,1` and edi: 672v672.
+  - Retail has both the shr form and edx; no spelling tried gives both.
+- Not established: what the four counts at 0x108A7B1C.. are, and which candidates the counter counts.

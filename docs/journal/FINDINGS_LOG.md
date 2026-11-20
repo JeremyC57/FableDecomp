@@ -1450,3 +1450,15 @@ against CODAApi.lib, or stay compiled C++?
   - Every integer candidate's order and register matches retail (this esi, sound ebp, queue ebx, capacity eax, tail ecx).
   - #32's allowed set at choose time is {edx, edi}, with nonzero cost only on edi (400); ours takes edi, retail edx.
   - Not a symbol tie within 1..32 literal dummies. An edx value live across 0x00C731D2..F4 is a hypothesis (unmeasured).
+- 2026-11-20 (Account B p25N, mechanism; 0x00C73050 parked) VC7.1 c2 sends a register candidate to the callee-saved set by measured interference, not by symbol order.
+  - Inside the cost/interference builder (0x1078368e), an AND at 0x10737278 -> 0x1075A3D2 masks the candidate's allowed set with 0x108B0054 = {ebp, esi, edi}.
+  - The AND runs when a per-tuple counter equals a threshold (0x107A00CF; the sum of the dwords 0x108A7B1C..28 minus 1, here 3).
+  - In 0x00C73050 the counter hits 3 for the tail-item temp at the three tuples of `!sound->IsLooping()` (load / shr 8 / & 1), so the item takes edi; retail has edx.
+  - The forms that lower the pressure fold to `test dh,1` (669v672), and none of 8 targeted respellings gives both retail's shr form and edx.
+  - Hook: pending/2026-11-20_c2_symbol_order/tools_inline/c2prio_x.py. Files: pending/2026-11-20_p25_open/00c73050/p25N.
+- 2026-11-20 (Account B p25N, 0x008E18D0 UpdateLightningBeams, parked) Callee texts proven by cmpcomdat:
+  - the implicit ~CParticleUpdateParameters (v 0x006E2500), CVectorMap::LowerBound (v 0x0040F020) and CCRC::Calc (v 0x004014A0) are SAME;
+  - _M_insert_overflow is SAME v 0x0076ADA0 only when __uninitialized_copy / __uninitialized_fill_n are __fastcall (0x00768FC0, ecx/edx, ret 8). So creature_modes.obj's STL uninitialized helpers are fastcall, which needs an add-only opt-in before any landing.
+  - With the proven texts, no T matches (T<=63 1976, T64..66 2149v2073 with 544 diff lines, T>=68 2277). The loop-2 and sky LowerBound sites share instantiation, f (6.25, inside GetTC's HasTC test) and score but take opposite retail decisions, so the heuristic inliner cannot reproduce retail from this text.
+  - Calc's called and expanded sites all pass constant arguments. Ego_d and FableWin are both 3407 B (same revision).
+  - The do{}while(0) device does not match either (T60 2117). Files: pending/2026-11-20_p25_open/008e18d0.
