@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00efa4f0   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00efa4f0 RELOCATION_MATCH NScript::Cbandit_level_cutsceneScript::?Main@Cbandit_level_cutsceneScript@NScript@@UAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCbanditlevelcutsceneScript_Main_00efa4f0

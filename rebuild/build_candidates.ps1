@@ -401579,6 +401579,14 @@ $catalog = @(
         TestSource = '00/e5/NScriptCVBodyGuardScript_HenchmanCommentary_00e5e350_test.cpp'
         PassPattern = '00e5e350_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00efa4f0'
+        Module = 'NScript::Cbandit_level_cutsceneScript'
+        Source = '00/ef/NScriptCbanditlevelcutsceneScript_Main_00efa4f0.cpp'
+        TestSource = '00/ef/NScriptCbanditlevelcutsceneScript_Main_00efa4f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT36'
+        PassPattern = '00efa4f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

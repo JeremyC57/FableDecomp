@@ -39540,3 +39540,5 @@ __beginthread	00bfed3a	0098f3a0
 ??_7NativeDeviceResetCallback@@6B@	0122de50	00b260b0
 ?InitialPreloadTime@@3NB	0122ed70	00b260b0
 ??_7CEngineDynamic3DResource@@6B@	012a81b8	00bf3290
+??_7?$CEntityScriptBinding@VCbandit_level_cutsceneScript@NScript@@@@6B@	012f6a54	00efa4f0
+?Alloc@Cwelcome_guy@Cbandit_level_cutsceneScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00efaa60	00efa4f0

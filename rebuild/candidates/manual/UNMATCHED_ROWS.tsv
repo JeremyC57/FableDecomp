@@ -924,7 +924,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00ef5840	NScript::CPersonalScript_EmptyScript::CBanditWalker	Main	736	parked	DIFFER(768v727)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00ef5840.cpp	gapscan/boundary
 00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan	Main	3280	parked	DIFFER(3409v3265)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef5ff0.cpp	gapscan/boundary
 00ef9280	NScript::Cjoss_test_scriptsScript	Main	3168	parked	DIFFER(1972v3158)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef9280.cpp	gapscan/boundary
-00efa4f0	NScript::Cbandit_level_cutsceneScript	Main	1376	reserved (acctB p25F, 2026-11-20)	DIFFER(1365v1362)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00efa4f0.cpp	gapscan/boundary
 00f00c90	NScript::COracleMinigameTestScript::COracleSpectator	Main	1216	parked	DIFFER(1190v1203)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00f00c90.cpp	original
 00f03980	NScript::CQ_AmbushTradersScript::CAT_Phase1Guard	Main	1440	parked	DIFFER(1448v1434)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/hdr/00f03980.cpp	original
 00f04000	NScript::CQ_AmbushTradersScript::CAT_Phase1Archer	Main	640	parked	DIFFER(624v630)	1	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00f04000.cpp	original
