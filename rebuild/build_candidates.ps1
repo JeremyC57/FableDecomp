@@ -401625,6 +401625,13 @@ $catalog = @(
         TestSource = '00/5c/CTCInventoryWeapons_SetupActiveWeaponsOnCarrier_005ca68e_test.cpp'
         PassPattern = '005ca68e_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005c0a98'
+        Module = 'CPersistTraits<NInventory::CItem>'
+        Source = '00/5c/CPersistTraitsNInventoryCItem_TransferBinaryOut_005c0a98.cpp'
+        TestSource = '00/5c/CPersistTraitsNInventoryCItem_TransferBinaryOut_005c0a98_test.cpp'
+        PassPattern = '005c0a98_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
