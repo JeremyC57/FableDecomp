@@ -1,0 +1,22 @@
+0x007602F0 NShape::IsShapeConvex: parked by p25J (Account B), 2026-11-20. Best: 007602f0.cpp, DIFFER(1125v1126), 4 diff lines.
+No header change: the C3DVector opt-ins already exist in rebuild/include, so there is no overlay and no hdr.diff.
+Progress, each step measured against retail:
+- d0 (codex draft): DIFFER(1135v1126), 181 lines. Dummy-local sweeps (1..16 floats) changed nothing.
+- Ego_d locals and scopes, with a loop-scope this_line, the outer this_line declared before the loop, both loop iterators
+  post-incremented in the body (retail increments before the acos call), and it_finish_him = pts.end(): 103 lines.
+- Closing1 first = *(it_finish_him - 1) (retail `add ebx,-0Ch`); begin re-read through pts[0] / pts.begin() (CSE kept in edi);
+  closing2 `first = pts[0]; second = pts[1]`: 10 lines. That also fixes the ebx/edi swap.
+- Tail `float closing_angle = acos(closing); result = acos(d2)*K + (closing_angle*K + result)`: 8 lines (epilogue fadd placement
+  and the fst after the second acos).
+- Normalise body SQUARE_HELPER+SQUARE_GROUPED_PASS23 in place of SQUAREDMAGNITUDE_XYZ: 4 lines. The last_line Y-copy schedule
+  at 0x007605AF was the region-3 cut. PAREN_SQUARES_XYZ is equal; every other Normalise body is worse (sweep in r1/nv).
+Residue: closing2 second.X. Retail loads [edi+0Ch] before `add edi,0Ch`; ours loads [edi] after it (-1 B).
+- The c2 DAG dump (evidence/v15_c2dag.txt, region 4) shows our IL has the add (idx 12) before the second.X load (idx 13), which
+  depends on it. Retail's IL must load second.X off the old base.
+- Tried, none closes it: it_first / it_second / it_finish_him increment forms (43 lines), *(pts.begin()+1), it_first[1],
+  pts.front(), INDEX_START, statement swaps, closing1 swaps, Dot / ctor / copy opt-ins, and parentheses in closing1
+  (region shifts make it worse).
+- v20a (`it_first = pts.begin() + 1; first = *(it_first - 1); second = *it_first;`) is size-equal (1126v1126, 6 lines) but takes
+  `lea eax,[edi-0Ch]` with the add first.
+Ego_d line table: evidence/007602f0.tsv. Ego_d locals: evidence/007602f0.locals.txt.
+FINDINGS: 2026-11-20 (Account B p25J, 0x007602F0 NShape::IsShapeConvex, parked) Goes from DIFFER(1135v1126) to DIFFER(1125v1126) with Ego_d's locals and scopes (in-body post-increment loads, a loop-scope this_line, hoisted it_finish_him = pts.end(), *(it_finish_him-1)), a fitted `double closing` + `float closing_angle` tail, and the existing Normalise opt-ins SQUARE_HELPER+SQUARE_GROUPED_PASS23 (region-3 cut). One residue is left: closing2's second.X is loaded after `add edi,0Ch` instead of as [edi+0Ch] before it (0x007605F3). It is an IL-order difference in c2 region 4, not a symbol tie. Work: Account B scratch w26/p25J/parked/007602f0.
