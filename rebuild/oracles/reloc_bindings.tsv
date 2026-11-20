@@ -39728,3 +39728,6 @@ _ONE_OVER_360	01238e00	00878b60
 ??_7CPSCUpdateNormal@NParticleEngine@@6B@	0129fc1c	00b0ca90
 ?KillAllDecalEmitters@CPSCUpdateNormal@NParticleEngine@@IAEXXZ	00b0c730	00b0ca90
 ?clear@?$_List_base@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXXZ	00b0f630	00b0ca90
+?AddGossip@CV_BookCollectingScript@NScript@@QAEXVCCharString@@000@Z	00e55c60	00e54e90
+?AskForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAE_NJVCCharString@@@Z	00e55ce0	00e54e90
+?LookForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAEXXZ	00e57530	00e54e90
