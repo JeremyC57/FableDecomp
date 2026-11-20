@@ -39429,3 +39429,5 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ??0?$CCountedPointer@UCActiveEntityScriptBase@ArenaBinding@@@@QAE@PAUCActiveEntityScriptBase@ArenaBinding@@@Z	00ce10b0	00f1cb50
 ??0CActiveEntityScriptBase@ArenaBinding@@QAE@PAVCScriptThing@@III@Z	00ce1110	00f1cb50
 ??_7CActiveEntityScript@ArenaBinding@@6B@	012f9ec0	00f1cb50
+?GetBestPatrolTaskForThing@CTCVillage@@QAEPAVCVillageTaskPatrol@@ABVCThing@@@Z	00658e90	0093f3c0
+?SetPatrolTaskAsAcceptedByThing@CTCVillage@@QAE_NAAVCVillageTaskPatrol@@ABVCThing@@@Z	0065852d	0093f3c0

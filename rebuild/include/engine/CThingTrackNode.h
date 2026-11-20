@@ -62,6 +62,11 @@ public:
     // Retail opt-in (Codex pass 24): both PDBs and retail vtable identify Save.
     virtual void Save(CCharString& script);
 #endif
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_PEEK_START
+    // Opt-in (p25M, row 0x0093F3C0): Ego_r.pdb / FableWin.pdb ?PeekTrackStartNode@CThingTrackNode@@QBEPBV1@XZ, out of line in retail at
+    // 0x00836DA0 (walks PreviousNode +0xD4 until IsStart +0xEC). Declaration only.
+    const CThingTrackNode* PeekTrackStartNode() const;                  // 0x00836DA0
+#endif
 #ifdef FABLE_RETAIL_CTHINGTRACKNODE_PEEK_NEXT
     // Original FableWin0202f650, both donor class records; native traversal00860aa0.
     const CThingTrackNode* PeekNextNode()const{return NextNode;}

@@ -1,0 +1,40 @@
+diff --git a/rebuild/include/engine/CVillageTaskPatrol.h b/rebuild/include/engine/CVillageTaskPatrol.h
+index 137c6d135..d9614ea26 100644
+--- a/rebuild/include/engine/CVillageTaskPatrol.h
++++ b/rebuild/include/engine/CVillageTaskPatrol.h
+@@ -40,11 +40,17 @@ public:
+     const CThingTrackNode * GetPatrolStart() const;
+ #endif
+     const CThingTrackNode * GetNearestNode(const C3DVector &) const;
++#ifdef FABLE_RETAIL_CVILLAGETASKPATROL_SETLOCKED_INLINE
++    // Opt-in (p25M, row 0x0093F3C0): Ego_r.pdb / FableWin.pdb ?SetTaskAsLocked@CVillageTaskPatrol@@QAEXXZ, expanded in retail
++    // (0x0093F5D7 `mov byte ptr [eax+18h],1`: TaskLocked +0x18).
++    void SetTaskAsLocked() { TaskLocked = true; }
++#else
+     void SetTaskAsLocked();
++#endif
+     virtual ~CVillageTaskPatrol();
+     CVillageTaskPatrol & operator=(const CVillageTaskPatrol &);
+ };
+-FABLE_STATIC_ASSERT(sizeof(CVillageTaskPatrol)==0x1c);
++FABLE_STATIC_ASSERT_AT(47, sizeof(CVillageTaskPatrol)==0x1c);
+ #else
+ #pragma pack(push, 1)
+ class CVillageTaskPatrol {
+@@ -63,11 +69,11 @@ public:
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CVillageTaskPatrol) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CVillageTaskPatrol, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CVillageTaskPatrol, PatrolStart) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CVillageTaskPatrol, CreatureAssignedToTask) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CVillageTaskPatrol, TaskLocked) == 0x18);
++FABLE_STATIC_ASSERT_AT(66, sizeof(CVillageTaskPatrol) == 0x1c);
++FABLE_STATIC_ASSERT_AT(67, offsetof(CVillageTaskPatrol, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(68, offsetof(CVillageTaskPatrol, PatrolStart) == 0x8);
++FABLE_STATIC_ASSERT_AT(69, offsetof(CVillageTaskPatrol, CreatureAssignedToTask) == 0x10);
++FABLE_STATIC_ASSERT_AT(70, offsetof(CVillageTaskPatrol, TaskLocked) == 0x18);
+ 
+ #endif // FABLE_RETAIL_CVILLAGETASKPATROL
+ #endif // FABLE_ENGINE_CVILLAGETASKPATROL_H

@@ -146,6 +146,14 @@ public:
     // Limbo is +0xB2) -- which member the accessor returns is read from the retail byte offset only. Body only: no layout change.
     bool GetVillageLimbo() const { return LaggyLimbo; }
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_PATROLTASK
+    // Opt-in (p25M, row 0x0093F3C0 CAIStateGroup_VillageTaskPatrol::Update): Ego_r.pdb / FableWin.pdb
+    // ?GetBestPatrolTaskForThing@CTCVillage@@QAEPAVCVillageTaskPatrol@@ABVCThing@@@Z (retail 0x00658E90, out of line: GetBestTaskForThing
+    // <CVillageTaskPatrol> 0x0065F856 over PatrolTasks +0x54; GetBestCrateTaskForThing 0x00658EA0 follows it, as in Ego_r) and
+    // ?SetPatrolTaskAsAcceptedByThing@CTCVillage@@QAE_NAAVCVillageTaskPatrol@@ABVCThing@@@Z (retail 0x0065852D, the catalog name). Declarations only.
+    CVillageTaskPatrol* GetBestPatrolTaskForThing(const CThing& thing);                   // 0x00658E90
+    bool SetPatrolTaskAsAcceptedByThing(CVillageTaskPatrol& task, const CThing& thing);  // 0x0065852D
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_CRATETASK
     // Chunk 754 (row 0x00943C20 CAIStateGroup_WorkInWarehouse::IsRunnable): Ego_r.pdb / FableWin.pdb
     // ?GetBestCrateTaskForThing@CTCVillage@@QAEPAVCVillageTaskCarryCrate@@ABVCThing@@@Z (retail 0x00658EA0, out of line).

@@ -1,0 +1,7 @@
+set	address	class	header
+new	008fd923	CAIStateGroup_VillageTaskPatrol	engine/CAIStateGroup_VillageTaskPatrol.h
+new	008ffa3c	CAIStateGroup_VillageTaskPatrol	engine/CAIStateGroup_VillageTaskPatrol.h
+new	0093edf0	CAIStateGroup_VillageTaskPatrol	engine/CAIStateGroup_VillageTaskPatrol.h
+new	0093ee40	CAIStateGroup_VillageTaskPatrol	engine/CAIStateGroup_VillageTaskPatrol.h
+new	0093eed0	CAIStateGroup_VillageTaskPatrol	engine/CAIStateGroup_VillageTaskPatrol.h
+new	0121f86f	CAIStateGroup_VillageTaskPatrol	engine/CAIStateGroup_VillageTaskPatrol.h
