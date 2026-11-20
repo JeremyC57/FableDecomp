@@ -18,81 +18,47 @@
 //          temporary's two words are then loaded before either is stored, retail's `cmp eax,ebx` ahead of the stores),
 //          assigned out of line and destroyed at once; the disk arm is the landed OpenFileReadOnly tail (GetBankPathname
 //          temporary in the same dead slot).
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-};
-class CWideString { public:
-    void* m_pData;
-    ~CWideString();                                // 0x0099B510
-};
-void* operator new(unsigned int size);             // 0x00BFEA1A
-namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
-
+// Port (NF177, q6927; coordinator call: a port onto the shared header, not an in-place respell): moved off the row-local CCharString /
+// CWideString / CThreadedFile / CRetailBank / SBankEntryInfo / CBankFileManager / CBankFile_Retail / CBankFileAsync models onto
+// fable_string.h, fable_threaded_file.h, fable_retail_banks.h, engine/CBankFile.h, engine/CBankFileAsync.h and
+// engine/NProgressDisplay.h. The counted bank pointer is CCountedPointer<NBankFileManager::CRetailBank> (destructor 0x009A9D60, the
+// self row's explicit instantiation), FindContainedBank takes both outputs by reference (Ego_r.pdb, as the landed 0x009A7F80 Leaf), the
+// manager is NBankFileManager::GBankFileManager (both PDBs name its initializer / atexit destructor), the threaded-file getter is FableWin.pdb
+// NBankFileManager::CRetailBank::GetThreadedFile (inline, QAE) and the path is Ego_r.pdb CBankFile::GetBankPathname (QBE).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTHREADEDFILE
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CBANKFILE_GETBANKPATHNAME
+#define FABLE_RETAIL_CBANKFILEMANAGER
+#define FABLE_RETAIL_CBANKFILEMANAGER_HEADERPATHS
+#define FABLE_RETAIL_CBANKFILEMANAGER_FINDCONTAINEDBANK
+#define FABLE_RETAIL_NBANKFILEMANAGER_CRETAILBANK_GETTHREADEDFILE
+#include "fable_compiler.h"
+#include "fable_string.h"
 #include "engine/CCountedPointer.h"
-class CDiskFileWin32;
-class CThreadedFile { public:
-    unsigned char _body[0x1c];
-    CThreadedFile();                               // 0x0098DFD0
-    bool Open(const CWideString& filename, bool nonCached);   // 0x0098E1E0
-};
-struct CRetailBank {                               // NBankFileManager::CRetailBank
-    void* __vftable;
-    CCountedPointer<CDiskFileWin32> DiskFile;      // +0x04
-    CCountedPointer<CThreadedFile>  ThreadedFile;  // +0x0c
-    bool UseDMA;                                   // +0x14
-    CCountedPointer<CThreadedFile> GetThreadedFile() const { return ThreadedFile; }
-};
-struct SBankEntryInfo {                            // 20-byte per-entry record of a bank's index
-    unsigned long Type;
-    unsigned long FirstEntry;
-    unsigned long Offset;
-    unsigned long Size;
-    unsigned long Alignment;
-};
-struct CBankFileManager {
-    unsigned char _pad[0x14];
-    bool m_retailMode;                             // +0x14
-    bool FindContainedBank(const CCharString& name, SBankEntryInfo* outInfo, CCountedPointer<CRetailBank>* outBank);   // 0x009A7F80
-};
-extern CBankFileManager g_bankFileManager;         // 0x013CA79C
-
-class CBankFile_Retail {                           // retail CBankFile (0x110 bytes)
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual bool OpenReadOnly(const CCharString& bankHandle, unsigned long flags);   // 0x009D06F0
-    unsigned char _pad04[0x88];                    // +0x04
-    bool RetailMode;                               // +0x8c
-    unsigned char _pad8d[0x110 - 0x8d];
-    CWideString GetBankPathname();                 // 0x009CBF10
-};
-class CBankFileAsync : public CBankFile_Retail {
-public:
-    CCountedPointer<CThreadedFile> ThreadedFile;   // +0x110
-    unsigned char _pad118[0x30];                   // +0x118
-    bool NonCached;                                // +0x148
-    bool DisableAsync;                             // +0x149
-    virtual bool OpenReadOnly(const CCharString& bankHandle, unsigned long flags);
-};
+#include "fable_threaded_file.h"
+#include "fable_retail_banks.h"
+#include "engine/CBankFile.h"
+#include "engine/CBankFileAsync.h"
+#include "engine/NProgressDisplay.h"
 
 bool CBankFileAsync::OpenReadOnly(const CCharString& bankHandle, unsigned long flags)
 {
-    if (!CBankFile_Retail::OpenReadOnly(bankHandle, flags))
+    if (!CBankFile::OpenReadOnly(bankHandle, flags))
         return false;
     NProgressDisplay::DisplayProgress("Opening bank", -1.0f, false, false);
     if (RetailMode) {
-        SBankEntryInfo info;
-        info.Type = 0;
-        info.FirstEntry = 0;
-        info.Offset = 0;
-        info.Size = 0;
-        info.Alignment = 0;
-        CCountedPointer<CRetailBank> bank;
-        if (!g_bankFileManager.FindContainedBank(bankHandle, &info, &bank))
+        NBankFileManager::CContainedBank contained_bank;
+        contained_bank.DataVersion = 0;
+        contained_bank.EntryCount = 0;
+        contained_bank.InfoOffset = 0;
+        contained_bank.InfoSize = 0;
+        contained_bank.Alignment = 0;
+        CCountedPointer<NBankFileManager::CRetailBank> bank;
+        if (!NBankFileManager::GBankFileManager.FindContainedBank(bankHandle, contained_bank, bank))
             return false;
-        CRetailBank* retailBank = bank.Data;
+        NBankFileManager::CRetailBank* retailBank = bank.Data;
         ThreadedFile = retailBank->GetThreadedFile();
         NonCached = bank->UseDMA;
         DisableAsync = false;

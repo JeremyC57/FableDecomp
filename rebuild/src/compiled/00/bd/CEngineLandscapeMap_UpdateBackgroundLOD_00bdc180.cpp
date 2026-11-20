@@ -7,6 +7,9 @@
 #define FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_GETBLOCKDATA
 #define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_CTOR
 #include <new>
+// Callee respelled (NF177, PRIORITY q12088): 0x00BE0480 was ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QAE_NJ@Z; now the Ego_r.pdb
+//   0x00A41DE0 / FableWin.pdb 0x02DF7220 const ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z (the self row's spelling).
+#define FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_ISBLOCKLOADED_CONST
 #include "candidates/landscape_background_lod_compiled.h"
 
 LS_LOADING_STATUS CEngineLandscapeMap::UpdateBackgroundLOD(

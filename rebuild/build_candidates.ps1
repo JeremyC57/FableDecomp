@@ -69000,9 +69000,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bdbff0'
-        Module = '_global'
-        Source = '00/bd/E2_E2_00bdbff0.cpp'
-        TestSource = '00/bd/E2_E2_00bdbff0_test.cpp'
+        Module = 'CEngineLandscapeMap'
+        Source = '00/bd/CEngineLandscapeMap_OnGameMapUnloaded_00bdbff0.cpp'
+        TestSource = '00/bd/CEngineLandscapeMap_OnGameMapUnloaded_00bdbff0_test.cpp'
         PassPattern = 'OK_00bdbff0'
     }
     [pscustomobject]@{
@@ -77673,9 +77673,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0064464c'
-        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
-        Source = '00/64/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0064464c.cpp'
-        TestSource = '00/64/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0064464c_test.cpp'
+        Module = 'NPlayerGui::CDrawStamina'
+        Source = '00/64/NPlayerGuiCDrawStamina_ClearEffects_0064464c.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawStamina_ClearEffects_0064464c_test.cpp'
         PassPattern = 'PASS_0064464c'
     }
     [pscustomobject]@{
@@ -92436,8 +92436,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009f26d0'
         Module = 'CMemoryAllocator'
-        Source = '00/9f/CMemoryAllocator_ClearPerformanceStats_009f26d0.cpp'
-        TestSource = '00/9f/CMemoryAllocator_ClearPerformanceStats_009f26d0_test.cpp'
+        Source = '00/9f/CMemoryAllocator_NewFrame_009f26d0.cpp'
+        TestSource = '00/9f/CMemoryAllocator_NewFrame_009f26d0_test.cpp'
         PassPattern = 'PASS_009f26d0'
     }
     [pscustomobject]@{
@@ -153411,9 +153411,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00be0930'
-        Module = 'std::_Rb_tree<long,std::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock >,std::_Select1st<std::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock > >,std::less<long >,std::allocator<std::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock > > >'
-        Source = '00/be/stdRbtreelongstdpairconstlongCEngineStaticMapFileBlockManagerCFileBlockstdSelect_find_00be0930.cpp'
-        TestSource = '00/be/stdRbtreelongstdpairconstlongCEngineStaticMapFileBlockManagerCFileBlockstdSelect_find_00be0930_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>, std::_Select1st<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>, std::less<long>, std::allocator<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>>'
+        Source = '00/be/stdRbtree_find_00be0930.cpp'
+        TestSource = '00/be/stdRbtree_find_00be0930_test.cpp'
         PassPattern = '00be0930_TEST PASS'
     }
     [pscustomobject]@{
@@ -158330,16 +158330,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00644644'
-        Module = '_unattributed'
-        Source = '00/64/unattributed_GetTarget00644644_00644644.cpp'
-        TestSource = '00/64/unattributed_GetTarget00644644_00644644_test.cpp'
+        Module = 'NPlayerGui::CDrawHealth'
+        Source = '00/64/NPlayerGuiCDrawHealth_ClearEffects_00644644.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawHealth_ClearEffects_00644644_test.cpp'
         PassPattern = '00644644_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0064528a'
-        Module = '_unattributed'
-        Source = '00/64/unattributed_GetTarget0064528a_0064528a.cpp'
-        TestSource = '00/64/unattributed_GetTarget0064528a_0064528a_test.cpp'
+        Module = 'NPlayerGui::CDrawAbilityButtons'
+        Source = '00/64/NPlayerGuiCDrawAbilityButtons_ClearEffects_0064528a.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawAbilityButtons_ClearEffects_0064528a_test.cpp'
         PassPattern = '0064528a_TEST PASS'
     }
     [pscustomobject]@{
@@ -158351,9 +158351,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00645821'
-        Module = '_unattributed'
-        Source = '00/64/unattributed_GetTarget00645821_00645821.cpp'
-        TestSource = '00/64/unattributed_GetTarget00645821_00645821_test.cpp'
+        Module = 'NPlayerGui::CDrawMeleeActionButtonEffects'
+        Source = '00/64/NPlayerGuiCDrawMeleeActionButtonEffects_ClearEffects_00645821.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawMeleeActionButtonEffects_ClearEffects_00645821_test.cpp'
         PassPattern = '00645821_TEST PASS'
     }
     [pscustomobject]@{
@@ -240423,9 +240423,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aed090'
-        Module = 'CParticleEmitter'
-        Source = '00/ae/CParticleEmitter_Set2DPosition_00aed090.cpp'
-        TestSource = '00/ae/CParticleEmitter_Set2DPosition_00aed090_test.cpp'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/ae/NParticleEngineCParticleEmitter_Set2DPosition_00aed090.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitter_Set2DPosition_00aed090_test.cpp'
         PassPattern = '00aed090_TEST PASS'
     }
     [pscustomobject]@{

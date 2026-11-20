@@ -2,7 +2,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005DABE0, 103 bytes (+9 int3). __fastcall, returns const CCharString&.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x004365B0; CTCCarryable carrier getter 0x00705170
-//          (catalog "CGuiControlListBox::GetCurrentSelectedEntryData" is a byte-twin label); CTCWeapon::IsUsableBy(CThing*)
+//          (catalog "CGuiControlListBox::GetCurrentSelectedEntryData" is a byte-twin label); CTCWeapon::IsUsableBy(const CThing&)
 //          0x005DAB10. Global empty CCharString 0x013BAF5C.
 // Shape: interface 0x47 (CTCCarryable, bitset word 2 bit 7 -> `mov cl,[eax+28h] ; test cl,cl ; jns`); a live carrier
 //        (Dead bit 0 of +0x91 clear) that fails IsUsableBy returns the global empty string, every other path returns the
@@ -12,6 +12,8 @@
 //   Anniv360 ?TooHeavyAnimationGroupName@CWeaponDef@@2VCCharString@@B), declared on the row's CWeaponDef model; was g_emptyCharString
 //   (it is not empty: retail answers the too-heavy group while the carrier cannot use the weapon).
 // Layout: CTCWeapon ParentThing +0x04, WeaponDef +0x0C; retail CThing bitset +0x20, interface map +0x44, Dead +0x91.
+// Callee respelled (NF177, PRIORITY q11929): 0x005DAB10 was ?IsUsableBy@CTCWeapon@@QBE_NPAVCThing@@@Z (pointer form); now the Ego_r.pdb
+//   0x0063A950 / FableWin.pdb 0x0239AF10 ?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z (same pushed pointer).
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -58,7 +60,7 @@ class CTCWeapon { public:
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[4];
     CDefPointer<CWeaponDef> WeaponDef;           // +0x0c
-    bool IsUsableBy(CThing* thing) const;        // 0x005DAB10
+    bool IsUsableBy(const CThing& thing) const;        // 0x005DAB10
     const CCharString& GetAnimationGroupName() const;
 };
 const CCharString& CTCWeapon::GetAnimationGroupName() const
@@ -66,7 +68,7 @@ const CCharString& CTCWeapon::GetAnimationGroupName() const
     CTCCarryable* carryable;
     if (ParentThing->GetInterface(&carryable, 0x47)) {
         CThing* carrier = ((CThing*)((CTCCarryable*)carryable)->GetPCarriedByThing());
-        if (carrier && !(carrier->Flags91 & 1) && !IsUsableBy(carrier))
+        if (carrier && !(carrier->Flags91 & 1) && !IsUsableBy(*carrier))
             return CWeaponDef::TooHeavyAnimationGroupName;
     }
     return WeaponDef->AnimationGroupName;

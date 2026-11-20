@@ -7,11 +7,13 @@
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (the const instantiation, inlined GetTC for CTCCarrying
 //   0x46 and CTCWeapon 0x48), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CThing::PeekDefinitionManager
 //   0x004C7990, CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, the carry-slot lookup CTCCarrying::GetThingInCarrySlot
-//   (long slot) 0x006A11F0 (manifest label CThing_Array_FindByID is propagated), CTCWeapon::IsUsableBy(CThing*) 0x005DAB10.
+//   (long slot) 0x006A11F0 (manifest label CThing_Array_FindByID is propagated), CTCWeapon::IsUsableBy(const CThing&) 0x005DAB10.
 // Layout: CModeBase ParentThing +0x04 (as the landed CModeStrafe::UpdateWeaponState 0x008E9950, whose thing model this reuses):
 //   thing interface bitset +0x20 (0x46 = bit 6 of +0x28, 0x48 = bit 8 of +0x28), interface map +0x44, dead bit 0 of +0x91.
 // Shape: HasTC then a separate GetTC (one bit test per component); the def-index string is the literal "CARRY_SLOT_BOTH_HANDS"
 //   (0x01268748) as a temporary CCharString argument; the result is an explicit `if (...) return true;`.
+// Callee respelled (NF177, PRIORITY q11929): 0x005DAB10 was ?IsUsableBy@CTCWeapon@@QBE_NPAVCThing@@@Z (pointer form); now the Ego_r.pdb
+//   0x0063A950 / FableWin.pdb 0x0239AF10 ?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z (same pushed pointer).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -63,7 +65,7 @@ class CTCCarrying { public:                       // interface type 0x46
 };
 
 class CTCWeapon { public:                         // interface type 0x48
-    bool IsUsableBy(CThing* user) const;   // 0x005DAB10
+    bool IsUsableBy(const CThing& user) const;   // 0x005DAB10
 };
 
 namespace CTCCreatureModeManager {
@@ -83,7 +85,7 @@ bool CModeBase::IsHoldWeaponWithBothHands() const
         CThing* weapon = carrying->GetThingInCarrySlot(slot);
         if (weapon && !weapon->IsDead() && weapon->HasTC(0x48))
         {
-            if (weapon->GetTC<CTCWeapon>(0x48)->IsUsableBy(ParentThing))
+            if (weapon->GetTC<CTCWeapon>(0x48)->IsUsableBy(*ParentThing))
                 return true;
         }
     }

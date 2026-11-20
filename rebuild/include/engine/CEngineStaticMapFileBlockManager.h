@@ -24,6 +24,11 @@ public:
     // (const; the block's async data buffer through CBankFileAsyncData::PeekData). Declaration only.
     const unsigned char* GetBlockData(long block) const;                 // 0x00BE04C0
 #endif
+#ifdef FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_ISBLOCKLOADED
+    // NF177 opt-in (PRIORITY q12088, row 0x00BE0480): Ego_r.pdb 0x00A41DE0 / FableWin.pdb 0x02DF7220
+    // ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z (const; the block's async data IsFinished, false when absent). Declaration only.
+    bool IsBlockLoaded(long block) const;                                // 0x00BE0480
+#endif
 #ifdef FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_SETBANKFILEENTRY
     // NF76 opt-in (row 0x00B42530 CEngineMap::OpenDevelopmentStaticMap): Ego_r.pdb
     // ?SetBankFileEntry@CEngineStaticMapFileBlockManager@@QAEXV?$CCountedPointer@VCBankFileAsyncEntry@@@@@Z (out of line at 0x00BE03A0; the

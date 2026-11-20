@@ -4,6 +4,9 @@
 // Layout: engine/CTCWeapon.h (WeaponDef +0x0c); CWeaponDef Class +0x2c.
 // Shape: IsUsableBy gets the first argument re-pushed; the class read through a counted def-pointer copy; the third
 // argument's null test last; shared `mov al,1` / `xor al,al` tails with `ret 0Ch`.
+// Callee respelled (NF177, PRIORITY q11929): 0x005DAB10 was the stand-in ?IsUsableBy@CTCWeapon_Getters@@QBE_NABVCThing@@@Z; now the
+//   inherited Ego_r.pdb 0x0063A950 / FableWin.pdb 0x0239AF10 ?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z (FABLE_RETAIL_CTCWEAPON_ISUSABLEBY).
+#define FABLE_RETAIL_CTCWEAPON_ISUSABLEBY
 #include "engine/CTCWeapon.h"
 
 class CDefPointeeBase { public:                                    // completes the header's forward declaration
@@ -42,7 +45,6 @@ struct CWeaponDefPointer {                                  // CDefPointer<const
 class CThing;
 
 struct CTCWeapon_Getters : CTCWeapon {
-    bool IsUsableBy(const CThing& thing) const;                   // 0x005DAB10
     bool IsBlockBrokenOnBlock(const CThing& attacker, const CThing* blocker, const CThing* other) const;
 };
 

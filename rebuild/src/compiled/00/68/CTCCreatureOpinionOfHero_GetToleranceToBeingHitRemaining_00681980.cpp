@@ -8,12 +8,14 @@
 //   (m_pThing +4 = ParentThing, m_nearOffset +0x10 = NumberOfTimesHit, m_distance +0x14 = ToleranceToBeingHitOverride, m_pTarget +0x20 =
 //   PPersonalityDef with +0x50 ToleranceToBeingHit) and 0x00686A80 as CViewBase::GetDisplayEngine: it is
 //   ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ (DECISIONS_W24_RESOLVED item 7) and the manager is CWorld +0x74 POpinionReactionManager.
-// Callees: PeekWorld 0x00686A80, COpinionReactionManager::GetToleranceToBeingHit(const CThing*) const 0x00701940.
+// Callees: PeekWorld 0x00686A80, COpinionReactionManager::GetToleranceToBeingHit(const CThing&) const 0x00701940.
 // Shape: as 0x00681940 -- ParentThing is a named local read before the PeekWorld call (edi), the manager a local (its call precedes the
 //   push); the personality's tolerance is added only when the def is present.
+// Callee respelled (NF177, PRIORITY q12095): 0x00701940 was ?GetToleranceToBeingHit@COpinionReactionManager@@QBEMPBVCThing@@@Z (pointer); now
+//   the Ego_r.pdb 0x00551E10 / FableWin.pdb 0x01F16E60 reference form ?GetToleranceToBeingHit@COpinionReactionManager@@QBEMABVCThing@@@Z.
 class CThing;
 class COpinionReactionManager { public:
-    float GetToleranceToBeingHit(const CThing* thing) const;        // 0x00701940
+    float GetToleranceToBeingHit(const CThing& thing) const;        // 0x00701940
 };
 class CWorld { public:
     unsigned char _pad00[0x74];
@@ -45,7 +47,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
             return ToleranceToBeingHitOverride;
         CThing* thing = ParentThing;
         COpinionReactionManager* manager = PeekWorld().POpinionReactionManager;
-        float tolerance = manager->GetToleranceToBeingHit(thing);
+        float tolerance = manager->GetToleranceToBeingHit(*thing);
         if (PPersonalityDef)
             tolerance += PPersonalityDef->ToleranceToBeingHit;
         return tolerance;

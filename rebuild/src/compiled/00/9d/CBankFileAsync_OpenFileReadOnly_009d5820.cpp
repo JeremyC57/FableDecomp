@@ -15,44 +15,25 @@
 // Naming (NF129, 2026-11-20, q6179): the local stand-in CCountedPointer_CThreadedFile (and its SCountBlock) replaced by the shared
 //   engine/CCountedPointer.h CCountedPointer<CThreadedFile> (Ego_r.pdb CBankFileAsync::ThreadedFile), so the Reset call binds
 //   FableWin.pdb ?Reset@?$CCountedPointer@VCThreadedFile@@@@QAEXPAVCThreadedFile@@@Z (0x009A9C80), as the landed 0x009D56C0 does.
-void* operator new(unsigned int size);              // 0x00BFEA1A
-
-class CWideString {
-public:
-    void* m_pData;
-    CWideString(const CWideString& other);
-    ~CWideString();                                 // 0x0099B510
-};
-
-class CThreadedFile {
-public:
-    unsigned char _body[0x1c];
-    CThreadedFile();                                // 0x0098DFD0
-    bool Open(const CWideString& filename, bool nonCached);   // 0x0098E1E0
-};
-
+// Port (NF177, with 0x009D56C0 for q6927): moved off the row-local CWideString / CThreadedFile / CBankFile_Retail / CBankFileAsync models
+// onto fable_string.h, fable_threaded_file.h, engine/CBankFile.h and engine/CBankFileAsync.h, so the base call binds the 0x009D1090
+// self-row symbol ?OpenFileReadOnly@CBankFile@@UAE_NABVCWideString@@K@Z and the path getter Ego_r.pdb / FableWin.pdb
+// ?GetBankPathname@CBankFile@@QBE?AVCWideString@@XZ (0x009CBF10; its only other referencer 0x009D56C0 moves in the same hand-back).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTHREADEDFILE
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CBANKFILE_GETBANKPATHNAME
+#include "fable_compiler.h"
+#include "fable_string.h"
 #include "engine/CCountedPointer.h"
-
-class CBankFile_Retail {                            // retail CBankFile (engine/CBankFile.h is the PDB layout)
-public:
-    virtual void v00();
-    virtual bool OpenFileReadOnly(const CWideString& filename, unsigned long flags);   // 0x009D1090
-    unsigned char _body[0x10c];                     // +0x04 .. +0x10F
-    CWideString GetBankPathname();                  // 0x009CBF10
-};
-
-class CBankFileAsync : public CBankFile_Retail {
-public:
-    CCountedPointer<CThreadedFile> ThreadedFile;    // +0x110
-    unsigned char _pad_0x118[0x30];                 // +0x118 LoadingMemoryPool, MemoryFailureHandler, the two sets, ...
-    bool NonCached;                                 // +0x148
-    bool DisableAsync;                              // +0x149
-    virtual bool OpenFileReadOnly(const CWideString& filename, unsigned long flags);
-};
+#include "fable_threaded_file.h"
+#include "engine/CBankFile.h"
+#include "engine/CBankFileAsync.h"
 
 bool CBankFileAsync::OpenFileReadOnly(const CWideString& filename, unsigned long flags)
 {
-    if (!CBankFile_Retail::OpenFileReadOnly(filename, flags))
+    if (!CBankFile::OpenFileReadOnly(filename, flags))
         return false;
     ThreadedFile.Reset(new CThreadedFile);
     ThreadedFile->Open(GetBankPathname(), NonCached);

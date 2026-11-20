@@ -12,6 +12,9 @@
 #define FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_GETBLOCKDATA_CONST
 #define FABLE_RETAIL_CBANKFILEASYNCDATA_PEEKDATA
 #define FABLE_RETAIL_STLP_MAP
+// Callee respelled (NF177, PRIORITY q12088): 0x00BE0930 was the non-template ?find@?$_Rb_tree@J...QBE; owner decision D1 (STLport 4.6.1 _tree.h
+//   member-template find) gives ??$find@J@?$_Rb_tree@J...QBE, the self row's spelling.
+#define FABLE_RETAIL_STLP_TREE_FIND_TEMPLATE
 #include "engine/CBankFileAsyncData.h"
 #include "engine/CEngineStaticMapFileBlockManager.h"
 

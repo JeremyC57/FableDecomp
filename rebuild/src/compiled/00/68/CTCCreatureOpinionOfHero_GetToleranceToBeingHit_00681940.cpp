@@ -9,11 +9,13 @@
 // (const CThing*) @ 0x00701940 (float). Constant 0.0f @ 0x0122DEDC.
 // Shape: `override >= 0.0f` is `fcomp ; test ah,1 ; jne` with the override re-loaded for the return; ParentThing is read
 // into a local before the accessor call (edi) and the manager is a local (the call precedes the push); the personality def (+0x20) is added only when present (`fadd [esi+50h]`).
+// Callee respelled (NF177, PRIORITY q12095): 0x00701940 was ?GetToleranceToBeingHit@COpinionReactionManager@@QBEMPBVCThing@@@Z (pointer); now
+//   the Ego_r.pdb 0x00551E10 / FableWin.pdb 0x01F16E60 reference form ?GetToleranceToBeingHit@COpinionReactionManager@@QBEMABVCThing@@@Z.
 class CThing;
 
 class COpinionReactionManager { public:
     long GetThingAttitudeToPlayer(const CThing* thing) const;       // 0x00701840
-    float GetToleranceToBeingHit(const CThing* thing) const;        // 0x00701940
+    float GetToleranceToBeingHit(const CThing& thing) const;        // 0x00701940
 };
 
 class CWorld { public:
@@ -101,7 +103,7 @@ float CTCCreatureOpinionOfHero::GetToleranceToBeingHit() const
         return ToleranceToBeingHitOverride;
     CThing* thing = ParentThing;
     COpinionReactionManager* manager = PeekWorld().POpinionReactionManager;
-    float tolerance = manager->GetToleranceToBeingHit(thing);
+    float tolerance = manager->GetToleranceToBeingHit(*thing);
     if (PPersonalityDef)
         tolerance += PPersonalityDef->ToleranceToBeingHit;
     return tolerance;

@@ -13797,8 +13797,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00644587	OnEventAttack	NPlayerGui::CDrawTargetInfo	__thiscall	void	1	CDrawTargetInfo *	1	yes	accepted									
 006445ba	ClearEffects	NPlayerGui::CDrawBase	__fastcall	void	1	vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>,std::allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>_>_> *	1	yes	accepted									
 00644627	ClearPrimitivesIfNecessary	NPlayerGui::CDrawBase	__thiscall	void	1	CSystemManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\64\CSystemManager_UninitWindow_00644627.cpp
-00644644	GetTarget_00644644	_unattributed	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
-0064464c	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	std	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\64\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0064464c.cpp
+00644644	ClearEffects	NPlayerGui::CDrawHealth	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
+0064464c	ClearEffects	NPlayerGui::CDrawStamina	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\64\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0064464c.cpp
 00644660	ClearPrimitives	NPlayerGui::CDrawMiniMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00644677	Draw	CDrawLetterBoxBlackBars	__thiscall	void	2	CDrawLetterBoxBlackBars *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 0064483d	Draw	NPlayerGui::CDrawRenown	__thiscall	void	2	CDrawRenown *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
@@ -13819,12 +13819,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00644ffc	ClearPrimitivesIfNecessary	NPlayerGui::CDrawAbilityButtons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00645099	DrawButton	NPlayerGui::CDrawAbilityButtons	__thiscall	void	8	CDrawAbilityButtons *,CEnginePrimitivePrepareInfo *,C2DVector *,float,long,long,bool,EEngine2DLayer	1	yes	accepted									
 006451dd	DrawEffects	NPlayerGui::CDrawAbilityButtons	__thiscall	void	4	CDrawAbilityButtons *,long,C2DVector *,CHeroAbilityDef *	1	yes	accepted									
-0064528a	GetTarget_0064528a	_unattributed	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
+0064528a	ClearEffects	NPlayerGui::CDrawAbilityButtons	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 00645292	DrawIcon	NPlayerGui::CDrawQuickAccessIcons	__thiscall	void	8	CDrawQuickAccessIcons *,CEnginePrimitivePrepareInfo *,C2DVector *,float,long,long,long,bool	1	yes	accepted									
 0064546f	DrawEffectAtPos	CDrawQuickAccessIcons	__thiscall	void	4	CDrawQuickAccessIcons *,C2DCoordI *,long,long	1	yes	accepted									
 00645605	ClearEffects	NPlayerGui::CDrawQuickAccessIcons	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 0064560d	Draw	NPlayerGui::CDrawScriptScreenText	__thiscall	void	2	CDrawScriptScreenText *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
-00645821	GetTarget_00645821	_unattributed	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
+00645821	ClearEffects	NPlayerGui::CDrawMeleeActionButtonEffects	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 00645829	ClearPrimitivesIfNecessary	NPlayerGui::CDrawMeleeActionButtonEffects	__thiscall	void	1	CDrawMeleeActionButtonEffects *	1	yes	accepted									
 00645853	DrawStatBox	NPlayerGui::CStatBar	__fastcall	void	10	CEnginePrimitivePrepareInfo *,vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_> *,C2DVector *,long,CWideString *,long,uchar,bool,bool,bool	1	yes	accepted									
 00645ce9	DrawStatBox	CStatBar	__thiscall	void	11	CStatBar *,CEnginePrimitivePrepareInfo *,CGraphicDataBank *,C2DVector *,long,long,long,CWideString *,uchar,bool,bool	1	yes	accepted									
@@ -35226,7 +35226,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009f2610	GetHeaderOverhead	CMemoryAllocator	__thiscall	ulong	1	CMemoryAllocator *	1	yes	accepted									
 009f2660	ConsolidateFreeAreas	CMemoryAllocator	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted									
 009f26b0	ClearPerformanceStats	CMemoryAllocator	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CMemoryAllocator_ClearPerformanceStats_009f26b0.cpp
-009f26d0	ClearPerformanceStats	CMemoryAllocator	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CMemoryAllocator_ClearPerformanceStats_009f26d0.cpp
+009f26d0	NewFrame	CMemoryAllocator	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CMemoryAllocator_ClearPerformanceStats_009f26d0.cpp
 009f2870	Create	CMemoryAllocator	__fastcall	void	0		1	yes	accepted									
 009f28d0	InitDebugInfo	CMemoryAllocator	__thiscall	void	4	CMemoryAllocator *,void *,bool,long	1	yes	accepted									
 009f2920	InternalDeallocate	CMemoryAllocator	__thiscall	void	2	CMemoryAllocator *,void *	1	yes	accepted									
@@ -40229,7 +40229,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aed010	IsVisible	NParticleEngine::CParticleEmitter	__thiscall	bool	1	CTCPhysicsStandard *	1	yes	accepted									
 00aed020	GetEmitterCost	CParticleEmitter	__thiscall	void	2	CParticleEmitter *,CParticleSystemCost *	1	yes	accepted									
 00aed050	GetApproximateTotalSplineLength	NParticleEngine::CParticleEmitter	__thiscall	float	1	CParticleEmitter *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CParticleEmitter_GetApproximateTotalSplineLength_00aed050.cpp
-00aed090	Set2DPosition	CParticleEmitter	__thiscall	void	3	CParticleEmitter *,C2DVector *,EEngine2DLayer	1	yes	accepted									
+00aed090	Set2DPosition	NParticleEngine::CParticleEmitter	__thiscall	void	3	CParticleEmitter *,C2DVector *,EEngine2DLayer	1	yes	accepted									
 00aed140	ClearAllParticles	CParticleEmitter	__thiscall	void	2	CParticleEmitter *,CIEngine *	1	yes	accepted									
 00aed180	DeleteAllParticles	NParticleEngine::CParticleEmitter	unknown	undefined	0		0	yes	accepted									
 00aed1b0	HasAllocatedDecals	NParticleEngine::CParticleEmitter	__thiscall	bool	1	CParticleEmitter *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CParticleEmitter_HasAllocatedDecals_00aed1b0.cpp
@@ -42969,7 +42969,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bdbf00	PeekName	CEngineVSConstantLayoutBasic	__thiscall	CCharString	1	CEngineVSConstantLayoutBasic *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bd\CEngineVSConstantLayoutBasic_PeekName_00bdbf00.cpp
 00bdbf20	`scalar_deleting_destructor'	CEngineVSConstantLayoutBasic	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bd\CLandscapeBackgroundPatch_vectordeletingdestructor_00bdbf20.cpp
 00bdbfe0	OnGameMapLoaded	CEngineLandscapeMap	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bd\E2_E2_00bdbfe0.cpp
-00bdbff0	Nop_ret0_00bdbff0	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bd\E2_E2_00bdbff0.cpp
+00bdbff0	OnGameMapUnloaded	CEngineLandscapeMap	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bd\E2_E2_00bdbff0.cpp
 00bdc000	ReleaseFileBlockLoad	CLandscapeBackgroundLoadTask	__thiscall	void	1	CLandscapeBackgroundLoadTask *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bd\CLandscapeBackgroundLoadTask_ReleaseFileBlockLoad_00bdc000.cpp
 00bdc020	UpdateBackgroundTesselation	CEngineLandscapeMap	__thiscall	void	1	CEngineLandscapeMap *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bd\CEngineLandscapeMap_UpdateBackgroundTesselation_00bdc020.cpp
 00bdc040	ReleaseDefaultPoolSurfaces	CEngineLandscapeMap	__thiscall	void	1	CEngineLandscapeMap *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bd\CEngineLandscapeMap_ReleaseDefaultPoolSurfaces_00bdc040.cpp

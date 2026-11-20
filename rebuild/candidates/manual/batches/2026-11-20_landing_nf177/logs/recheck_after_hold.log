@@ -1,0 +1,135 @@
+addr       parity           behav  name
+005dab10   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+005dab10   WARN RELOC_NAME: ?GetRecord1E8@CThingCreatureBase@@QBEPBUCCreatureRecord1E8@@XZ -> 006a98d0 labelled 'CThingCreatureBase::Get_1e8'
+005dab10   WARN RELOC_NAME: ?IsMetBy@CExperienceRequirements@@QBE_NPBVCTCHeroExperience@@@Z -> 00851b50 labelled 'CHeroAbilityStatPackage::IsValid'
+005dab10   RELOCATION_MATCH PASS   CTCWeapon::IsUsableBy
+005dabe0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005dabe0   WARN SHARED_HEADER_AVAILABLE CWeaponDef (engine/CWeaponDef.h)
+005dabe0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005dabe0   WARN SHARED_HEADER_AVAILABLE CTCCarryable (engine/CTCCarryable.h)
+005dabe0   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+005dabe0   RELOCATION_MATCH PASS   CTCWeapon::GetAnimationGroupName
+005dad10   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005dad10   WARN SHARED_HEADER_AVAILABLE CWeaponDef (engine/CWeaponDef.h)
+005dad10   RELOCATION_MATCH PASS   CTCWeapon::IsBlockBrokenOnBlock
+005dad60   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005dad60   WARN SHARED_HEADER_AVAILABLE CWeaponDef (engine/CWeaponDef.h)
+005dad60   RELOCATION_MATCH PASS   CTCWeapon::IsCapableOfStealthAttackBy
+00644644   RELOCATION_MATCH PASS   NPlayerGui::CDrawHealth::ClearEffects
+0064464c   RELOCATION_MATCH PASS   NPlayerGui::CDrawStamina::ClearEffects
+0064528a   RELOCATION_MATCH PASS   NPlayerGui::CDrawAbilityButtons::ClearEffects
+00645821   RELOCATION_MATCH PASS   NPlayerGui::CDrawMeleeActionButtonEffects::ClearEffects
+0064be45   RELOCATION_MATCH PASS   NPlayerGui::CDrawMeleeActionButtonEffects::Update
+00681940   WARN SHARED_HEADER_AVAILABLE COpinionReactionManager (engine/COpinionReactionManager.h)
+00681940   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00681940   WARN SHARED_HEADER_AVAILABLE COpinionPersonalityDef (engine/COpinionPersonalityDef.h)
+00681940   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00681940   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero (engine/CTCCreatureOpinionOfHero.h)
+00681940   RELOCATION_MATCH PASS   CTCCreatureOpinionOfHero::GetToleranceToBeingHit
+00681980   WARN SHARED_HEADER_AVAILABLE COpinionReactionManager (engine/COpinionReactionManager.h)
+00681980   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00681980   WARN SHARED_HEADER_AVAILABLE COpinionPersonalityDef (engine/COpinionPersonalityDef.h)
+00681980   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00681980   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero (engine/CTCCreatureOpinionOfHero.h)
+00681980   RELOCATION_MATCH PASS   CTCCreatureOpinionOfHero::GetToleranceToBeingHitRemaining
+006819d0   WARN SHARED_HEADER_AVAILABLE COpinionReactionManager (engine/COpinionReactionManager.h)
+006819d0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006819d0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006819d0   WARN SHARED_HEADER_AVAILABLE COpinionPersonalityDef (engine/COpinionPersonalityDef.h)
+006819d0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+006819d0   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero (engine/CTCCreatureOpinionOfHero.h)
+006819d0   RELOCATION_MATCH PASS   CTCCreatureOpinionOfHero::OnHit
+00701940   WARN SHARED_HEADER_AVAILABLE COpinionReactionManager (engine/COpinionReactionManager.h)
+00701940   RELOCATION_MATCH PASS   COpinionReactionManager::GetToleranceToBeingHit
+0073a9f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0073a9f0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0073a9f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0073a9f0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0073a9f0   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+0073a9f0   RELOCATION_MATCH PASS   CTCCreatureModeManager::CModeBase::IsHoldWeaponWithBothHands
+00894e60   RELOCATION_MATCH PASS   CGameScriptInterface::OpinionSourceSetAsExclusive
+008e9950   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008e9950   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008e9950   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+008e9950   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::UpdateWeaponState
+009a7ca0   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009a7ca0   RELOCATION_MATCH PASS   CBankFileManager::GetDevBankFilePath
+009a7e20   RELOCATION_MATCH PASS   CBankFileManager::GetDevHeaderFilePath
+009a7ed0   RELOCATION_MATCH PASS   CBankFileManager::GetRetailHeaderFilePath
+009a80b0   RELOCATION_MATCH PASS   CBankFileManager::BankExists
+009d56c0   RELOCATION_MATCH PASS   CBankFileAsync::OpenReadOnly
+009d5820   RELOCATION_MATCH PASS   CBankFileAsync::OpenFileReadOnly
+009f26d0   RELOCATION_MATCH PASS   CMemoryAllocator::NewFrame
+00aed090   MATCH            PASS   NParticleEngine::CParticleEmitter::Set2DPosition
+00b3edc0   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b3edc0   RELOCATION_MATCH PASS   CEngineMap::OnGameMapUnloaded
+00b5bd70   RELOCATION_MATCH PASS   CEngineScreenEffectRadialBlurRenderer::CaptureEnvironmentParameters
+00bdbff0   MATCH            PASS   CEngineLandscapeMap::OnGameMapUnloaded
+00bdc180   WARN RELOC_NAME: ?AllocateLandscapeBackgroundTreeNode@@YIPAXKPAVCEngineLandscapeMap@@@Z -> 00bf62e0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bdc180   WARN RELOC_NAME: ??1CMemoryDataInputStream@@QAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00bdc180   WARN RELOC_NAME: ?BankFileList_RemoveFinished@CEngineStaticMapFileBlockManager@@QAEXXZ -> 00be04f0 labelled 'CEngineStaticMapFileBlockManager::DeleteUnusedBlocks'
+00bdc180   RELOCATION_MATCH PASS   CEngineLandscapeMap::UpdateBackgroundLOD
+00be0480   RELOCATION_MATCH PASS   CEngineStaticMapFileBlockManager::IsBlockLoaded
+00be04c0   RELOCATION_MATCH PASS   CEngineStaticMapFileBlockManager::GetBlockData
+00be0930   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00be0930   MATCH            PASS   std::_Rb_tree<long, std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>, std::_Select1st<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>, std::less<long>, std::allocator<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>>::find
+00bf8030   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00bf8030   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf8030   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bf8030   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf8030   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00bf8030   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf8030   WARN RELOC_NAME: ?CalculateLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ -> 00bf7df0 labelled 'CLandscapeBackgroundTreeNode::GetDesiredLODBand'
+00bf8030   WARN RELOC_NAME: ?PrioritiseBlock@CEngineStaticMapFileBlockManager@@QAEXJ@Z -> 00be0420 labelled 'CEngineStaticMapFileBlockManager::SetBlockToHighPriority'
+00bf8030   WARN RELOC_NAME: ??2CLandscapeBackgroundPatch@@SIPAXIPAVCMovableResource@@@Z -> 00be5bb0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf8030   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00bf8030   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::ProcessBackgroundLoading
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf84c0   WARN RELOC_NAME: ?PrioritiseBlock@CEngineStaticMapFileBlockManager@@QAEXJ@Z -> 00be0420 labelled 'CEngineStaticMapFileBlockManager::SetBlockToHighPriority'
+00bf84c0   WARN RELOC_NAME: ??2CLandscapeBackgroundPatch@@SIPAXIPAVCMovableResource@@@Z -> 00be5bb0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf84c0   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00bf84c0   WARN RELOC_NAME: ?OnSubNodeLoaded@CLandscapeBackgroundTreeNode@@QAEXXZ -> 00bf6750 labelled 'CLandscapeBackgroundTreeNode::InvalidateEdgeTesellation'
+00bf84c0   WARN RELOC_NAME: ??2CLandscapeBackgroundSubNodeSplitBranch@@SIPAXIPAVCMovableResource@@@Z -> 00bf6260 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf84c0   WARN RELOC_NAME: ?StartLoading@CLandscapeBackgroundLoadTask@@QAEXXZ -> 00bf6410 labelled 'CLandscapeBackgroundLoadTask::ReleaseFileBlockLoad'
+00bf84c0   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::ProcessLoadTask
+
+WINS: 33
+  005dab10 RELOCATION_MATCH CTCWeapon::?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z
+  005dabe0 RELOCATION_MATCH CTCWeapon::GetAnimationGroupName
+  005dad10 RELOCATION_MATCH CTCWeapon::IsBlockBrokenOnBlock
+  005dad60 RELOCATION_MATCH CTCWeapon::IsCapableOfStealthAttackBy
+  00644644 RELOCATION_MATCH NPlayerGui::CDrawHealth::?ClearEffects@CDrawHealth@NPlayerGui@@QAEXXZ
+  0064464c RELOCATION_MATCH NPlayerGui::CDrawStamina::?ClearEffects@CDrawStamina@NPlayerGui@@QAEXXZ
+  0064528a RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::?ClearEffects@CDrawAbilityButtons@NPlayerGui@@QAEXXZ
+  00645821 RELOCATION_MATCH NPlayerGui::CDrawMeleeActionButtonEffects::?ClearEffects@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ
+  0064be45 RELOCATION_MATCH NPlayerGui::CDrawMeleeActionButtonEffects::?Update@CDrawMeleeActionButtonEffects@@QAEXXZ
+  00681940 RELOCATION_MATCH CTCCreatureOpinionOfHero::?GetToleranceToBeingHit@CTCCreatureOpinionOfHero@@QBEMXZ
+  00681980 RELOCATION_MATCH CTCCreatureOpinionOfHero::?GetToleranceToBeingHitRemaining@CTCCreatureOpinionOfHero@@QBEMXZ
+  006819d0 RELOCATION_MATCH CTCCreatureOpinionOfHero::?OnHit@CTCCreatureOpinionOfHero@@QAE_N_N@Z
+  00701940 RELOCATION_MATCH COpinionReactionManager::GetToleranceToBeingHit
+  0073a9f0 RELOCATION_MATCH CTCCreatureModeManager::CModeBase::IsHoldWeaponWithBothHands
+  00894e60 RELOCATION_MATCH CGameScriptInterface::?OpinionSourceSetAsExclusive@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008e9950 RELOCATION_MATCH NCreatureMode::CModeStrafe::UpdateWeaponState
+  009a7ca0 RELOCATION_MATCH CBankFileManager::?GetDevBankFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z
+  009a7e20 RELOCATION_MATCH CBankFileManager::?GetDevHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z
+  009a7ed0 RELOCATION_MATCH CBankFileManager::?GetRetailHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z
+  009a80b0 RELOCATION_MATCH CBankFileManager::?BankExists@CBankFileManager@@QBE_NABVCCharString@@@Z
+  009d56c0 RELOCATION_MATCH CBankFileAsync::?OpenReadOnly@CBankFileAsync@@UAE_NABVCCharString@@K@Z
+  009d5820 RELOCATION_MATCH CBankFileAsync::?OpenFileReadOnly@CBankFileAsync@@UAE_NABVCWideString@@K@Z
+  009f26d0 RELOCATION_MATCH CMemoryAllocator::?NewFrame@CMemoryAllocator@@QAEXXZ
+  00aed090 MATCH NParticleEngine::CParticleEmitter::?Set2DPosition@CParticleEmitter@NParticleEngine@@QAEXABVC2DVector@@W4EEngine2DLayer@@@Z
+  00b3edc0 RELOCATION_MATCH CEngineMap::OnGameMapUnloaded
+  00b5bd70 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::?CaptureEnvironmentParameters@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ
+  00bdbff0 MATCH CEngineLandscapeMap::?OnGameMapUnloaded@CEngineLandscapeMap@@QAEXXZ
+  00bdc180 RELOCATION_MATCH CEngineLandscapeMap::UpdateBackgroundLOD
+  00be0480 RELOCATION_MATCH CEngineStaticMapFileBlockManager::?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z
+  00be04c0 RELOCATION_MATCH CEngineStaticMapFileBlockManager::?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z
+  00be0930 MATCH std::_Rb_tree<long, std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>, std::_Select1st<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>, std::less<long>, std::allocator<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>>::??$find@J@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Const_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@1@ABJ@Z
+  00bf8030 RELOCATION_MATCH CLandscapeBackgroundTreeNode::ProcessBackgroundLoading
+  00bf84c0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::ProcessLoadTask

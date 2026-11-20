@@ -68,6 +68,12 @@ namespace NBankFileManager
         bool UseDMA;                                                     // +0x14
         std::map<CCharString, CContainedBank> ContainedBanks;            // +0x18
         CCharString FilePath;                                            // +0x24
+#ifdef FABLE_RETAIL_NBANKFILEMANAGER_CRETAILBANK_GETTHREADEDFILE
+        // NF177 opt-in (row 0x009D56C0 CBankFileAsync::OpenReadOnly): FableWin.pdb
+        // ?GetThreadedFile@CRetailBank@NBankFileManager@@QAE?AV?$CCountedPointer@VCThreadedFile@@@@XZ, inline in retail (no Fable.exe copy:
+        // the caller copies ThreadedFile +0x0C into its temporary in place, 0x009D5779). Needs the CThreadedFile type (fable_threaded_file.h).
+        CCountedPointer<CThreadedFile> GetThreadedFile() { return ThreadedFile; }
+#endif
     };
 }
 FABLE_STATIC_ASSERT_AT(66, sizeof(NBankFileManager::CContainedBank) == 0x14);
@@ -104,6 +110,36 @@ public:
     // ?GetRetailHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z (0x009A7ED0), out of line. Declarations only.
     CWideString GetDevHeaderFilePath(const CCharString& bankHandle) const;      // 0x009A7E20
     CWideString GetRetailHeaderFilePath(const CCharString& bankHandle) const;   // 0x009A7ED0
+#endif
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_BANKFILEPATHS
+    // NF177 opt-in (rows 0x009A7CA0 / 0x009A7D40): Ego_r.pdb + FableWin.pdb
+    // ?GetDevBankFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z (const) and
+    // ?GetRetailBankFilePath@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z (not const), out of line. Declarations only.
+    CWideString GetDevBankFilePath(const CCharString& bankHandle) const;        // 0x009A7CA0
+    CWideString GetRetailBankFilePath(const CCharString& bankHandle);           // 0x009A7D40
+#endif
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_FINDCONTAINEDBANK
+    // NF177 opt-in (row 0x009D56C0): Ego_r.pdb ?FindContainedBank@CBankFileManager@@QAE_NABVCCharString@@AAVCContainedBank@NBankFileManager@@
+    // AAV?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@Z (0x009A7F80, landed; both outputs by reference). Declaration only.
+    bool FindContainedBank(const CCharString& name, NBankFileManager::CContainedBank& contained_bank,
+                           CCountedPointer<NBankFileManager::CRetailBank>& retail_bank);   // 0x009A7F80
+#endif
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_BANKEXISTS
+    // NF177 opt-in (row 0x009A80B0): Ego_r.pdb + FableWin.pdb ?BankExists@CBankFileManager@@QBE_NABVCCharString@@@Z. Declaration only.
+    bool BankExists(const CCharString& bankHandle) const;                      // 0x009A80B0
+#endif
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_LOOKUPBANKALIAS
+    // NF177 opt-in (rows 0x009A7CA0 .. 0x009A80B0; needs FABLE_RETAIL_CBANKFILEMANAGER_BANKALIASMAP): Ego_r.pdb
+    // ?LookupBankAlias@CBankFileManager@@QBE?AVCCharString@@ABV2@@Z, inline in retail (no Fable.exe copy; each caller looks the name
+    // up in BankAliasMap through its _M_find 0x009AB5D0 and copy-constructs the alias value or the argument into its own local, one
+    // copy-constructor push per return, as the landed 0x009A7F80 model).
+    CCharString LookupBankAlias(const CCharString& alias) const
+    {
+        std::map<CCharString, CCharString>::const_iterator it = BankAliasMap.find(alias);
+        if (it != BankAliasMap.end())
+            return (*it).second;
+        return alias;
+    }
 #endif
     void Close();
 #ifdef FABLE_RETAIL_CBANKFILEMANAGER_SETBANKALIAS

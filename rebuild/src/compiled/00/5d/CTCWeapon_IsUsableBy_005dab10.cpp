@@ -1,5 +1,5 @@
 // CTCWeapon::IsUsableBy(const CThing& thing) const -- only creatures may use a weapon; class-1 things, a suppressed game, things without hero experience and weapon classes 0/1/3 always may; class 2 needs berserk or the experience requirements
-// Leaf: ?IsUsableBy@CTCWeapon_Getters@@QBE_NABVCThing@@@Z
+// Leaf: ?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DAB10, 179 bytes, `ret 4`, then a 4-entry jump table at 0x005DABC4.
 // Ego_r.pdb `?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z`.
@@ -17,6 +17,8 @@
 //          first exits); the getter is called before the interface test; the out-parameter GetInterface (its type
 //          temporary reuses the dead argument slot); HasTC is __forceinline (plain inline is not expanded inside the
 //          `||`); the class-2 arm returns an `||` (`mov eax,1` / `xor eax,eax` tails) while the other trues share `mov al,1`.
+// Self respelled (NF177, PRIORITY q11929): Leaf was the stand-in ?IsUsableBy@CTCWeapon_Getters@@QBE_NABVCThing@@@Z; now the Ego_r.pdb 0x0063A950 /
+//   FableWin.pdb 0x0239AF10 spelling the shared header's retail branch already declares (defined on CTCWeapon itself).
 // Callee respelled (NF154, PRIORITY q4964): 0x00686D60 is ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ (Ego_r.pdb 0x006B2150 /
 //   FableWin.pdb 0x02191560; engine/CTCBase.h FABLE_RETAIL_CTCBASE_COMPONENT), and its slot 9 is CMainGameComponent::IsEditorActive
 //   (FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ, 0x004197B0; engine/CMainGameComponent.h FABLE_RETAIL_CMAINGAMECOMPONENT_EDITOR);
@@ -50,12 +52,13 @@ class CThingCreatureBase : public CThing { public:
 
 enum EWeaponClass { WEAPON_CLASS_NONE = 0, WEAPON_CLASS_1 = 1, WEAPON_CLASS_2 = 2, WEAPON_CLASS_3 = 3 };
 
+// 0x005DA7F0 keeps its landed stand-in spelling here (it is bound under three spellings by landed rows; PDB
+// ?GetWeaponClass@CTCWeapon@@QBE?AW4EWeaponClass@@XZ is proposed in the NF177 hand-back NAME_FIXES.tsv), reached by a downcast.
 struct CTCWeapon_Getters : CTCWeapon {
     EWeaponClass GetWeaponClass() const;        // 0x005DA7F0
-    bool IsUsableBy(const CThing& thing) const;
 };
 
-bool CTCWeapon_Getters::IsUsableBy(const CThing& thing) const
+bool CTCWeapon::IsUsableBy(const CThing& thing) const
 {
     if (thing.GetTypeFlags() & 8) {
         if (thing.GetType() == 1 || PeekComponent().IsEditorActive())
@@ -64,7 +67,7 @@ bool CTCWeapon_Getters::IsUsableBy(const CThing& thing) const
         const const CTCHeroExperience* experience;
         if (!thing.PeekTC(TCI_HERO_EXPERIENCE, &experience))
             return true;
-        switch (GetWeaponClass()) {
+        switch (static_cast<const CTCWeapon_Getters*>(this)->GetWeaponClass()) {
         case WEAPON_CLASS_NONE:
         case WEAPON_CLASS_1:
         case WEAPON_CLASS_3:

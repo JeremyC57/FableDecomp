@@ -1,0 +1,120 @@
+005dab10 new: 1
+    ?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z TABLE:005dab10
+005dabe0 new: 0
+005dad10 new: 0
+005dad60 new: 0
+00644644 new: 1
+    ?ClearEffects@CDrawHealth@NPlayerGui@@QAEXXZ TABLE:00644644
+0064464c new: 1
+    ?ClearEffects@CDrawStamina@NPlayerGui@@QAEXXZ TABLE:0064464c
+0064528a new: 1
+    ?ClearEffects@CDrawAbilityButtons@NPlayerGui@@QAEXXZ TABLE:0064528a
+00645821 new: 1
+    ?ClearEffects@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ TABLE:00645821
+0064be45 new: 5
+    ??$PeekTC@$$CBVCTCCombat@@@CThing@@QBE_NW4ETCInterfaceType@@PAPBVCTCCombat@@@Z
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?IsDead@CThing@@QBE_NXZ
+    ?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCB
+    ?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBas
+00681940 new: 0
+00681980 new: 0
+006819d0 new: 0
+00701940 new: 1
+    ?GetToleranceToBeingHit@COpinionReactionManager@@QBEMABVCThing@@@Z TABLE:00701940
+0073a9f0 new: 0
+00894e60 new: 11
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?GetOpinionReactionManager@CWorld@@QAEAAVCOpinionReactionManager@@XZ
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?PeekThingOpinionSource@COpinionReactionManager@@QBEPBVCThing@@XZ
+    ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+    ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+    ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+    ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+    ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+    ?__stl_throw_out_of_range@std@@YAXPBD@Z
+    ?test@?$bitset@$0BBC@@std@@QBE_NI@Z TABLE:00410de0
+008e9950 new: 0
+009a7ca0 new: 15
+    ??$find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocat
+    ??$find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileM
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@std@
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QBEABU?$pair@$$CBVCCharString@@V1@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@std@
+    ?GetDevBankFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z TABLE:009a7ca0
+    ?LookupBankAlias@CBankFileManager@@QBE?AVCCharString@@ABV2@@Z
+    ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCC
+    ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U
+    ?end@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@s
+    ?end@?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QBE?A
+    ?find@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@
+    ?find@?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QBE?
+009a7e20 new: 15
+    ??$find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocat
+    ??$find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileM
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@std@
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QBEABU?$pair@$$CBVCCharString@@V1@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@std@
+    ?GetDevHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z TABLE:009a7e20
+    ?LookupBankAlias@CBankFileManager@@QBE?AVCCharString@@ABV2@@Z
+    ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCC
+    ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U
+    ?end@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@s
+    ?end@?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QBE?A
+    ?find@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@
+    ?find@?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QBE?
+009a7ed0 new: 15
+    ??$find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocat
+    ??$find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileM
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@std@
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QBEABU?$pair@$$CBVCCharString@@V1@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@std@
+    ?GetRetailHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z TABLE:009a7ed0
+    ?LookupBankAlias@CBankFileManager@@QBE?AVCCharString@@ABV2@@Z
+    ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCC
+    ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U
+    ?end@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@s
+    ?end@?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QBE?A
+    ?find@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@
+    ?find@?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QBE?
+009d56c0 new: 4
+    ??0?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@XZ
+    ??1?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@XZ TABLE:009a9d60
+    ??C?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QBEPAVCRetailBank@NBankFileManager@@XZ
+    ?GetThreadedFile@CRetailBank@NBankFileManager@@QAE?AV?$CCountedPointer@VCThreadedFile@@@@XZ
+009d5820 new: 0
+009f26d0 new: 1
+    ?NewFrame@CMemoryAllocator@@QAEXXZ TABLE:009f26d0
+00aed090 new: 3
+    ?Is2DEmitter@CParticleEmitter@NParticleEngine@@QBE_NXZ
+    ?Set2DPosition@CParticleEmitter@NParticleEngine@@QAEXABVC2DVector@@W4EEngine2DLayer@@@Z TABLE:00aed090
+    ?SetTranslateOnly@CMatrix3x4@@QAEXABVC3DVector@@@Z
+00b3edc0 new: 0
+00b5bd70 new: 1
+    ?CaptureEnvironmentParameters@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ TABLE:00b5bd70
+00bdbff0 new: 1
+    ?OnGameMapUnloaded@CEngineLandscapeMap@@QAEXXZ TABLE:00bdbff0
+00bdc180 new: 0
+00be0480 new: 9
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Const_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@
+    ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c820
+    ??C?$CCountedPointer@VCBankFileAsyncData@@@@QBEPAVCBankFileAsyncData@@XZ
+    ??C?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Const_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Const_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@
+    ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z TABLE:00be0480
+    ?end@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$les
+    ?end@?$map@JUCFileBlock@CEngineStaticMapFileBlockManager@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@4@@std@@QBE?AU?$_R
+    ?find@?$map@JUCFileBlock@CEngineStaticMapFileBlockManager@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@4@@std@@QBE?AU?$_
+00be04c0 new: 0
+00be0930 new: 2
+    ??$_M_find@J@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@
+    ??$find@J@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U
+00bf8030 new: 0
+00bf84c0 new: 0

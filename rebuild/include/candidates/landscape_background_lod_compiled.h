@@ -26,7 +26,13 @@ class CEngineStaticMapFileBlockManager
 {
 public:
     void AddRequest(long blockId, unsigned long blockSize, bool immediate);
+#ifdef FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_ISBLOCKLOADED_CONST
+    // NF177 opt-in (PRIORITY q12088, row 0x00BDC180): Ego_r.pdb 0x00A41DE0 / FableWin.pdb 0x02DF7220
+    // ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z (const), the spelling of the self row 0x00BE0480 and its other callers.
+    bool IsBlockLoaded(long blockId) const;                              // 0x00BE0480
+#else
     bool IsBlockLoaded(long blockId);
+#endif
 #ifdef FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_GETBLOCKDATA
     // NF131 opt-in (2026-11-20, q6182, row 0x00BDC180): Ego_r.pdb 0x00A41E20 + FableWin.pdb 0x02DF74B0
     // ?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z (one argument, const; retail 0x00BE04C0 `ret 4`), the spelling the other landed
@@ -54,7 +60,7 @@ public:
 };
 
 #ifdef FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_CTOR
-FABLE_STATIC_ASSERT(sizeof(CMemoryDataInputStream) == 0x1C);
+FABLE_STATIC_ASSERT_AT(57, sizeof(CMemoryDataInputStream) == 0x1C);
 #else
 FABLE_STATIC_ASSERT_AT(42, sizeof(CMemoryDataInputStream) == 0x18);
 #endif

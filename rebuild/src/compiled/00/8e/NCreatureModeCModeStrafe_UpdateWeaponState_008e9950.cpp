@@ -4,13 +4,15 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9950, 215 bytes (`ret`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (the const instantiation: inlined const GetInterface for
-// CTCCarrying 0x46 and CTCWeapon 0x48); CTCCarrying::GetThingInPrimarySlot 0x006A1440; CTCWeapon::IsUsableBy(CThing*) 0x005DAB10;
+// CTCCarrying 0x46 and CTCWeapon 0x48); CTCCarrying::GetThingInPrimarySlot 0x006A1440; CTCWeapon::IsUsableBy(const CThing&) 0x005DAB10;
 // CModeStrafe::SetChangeOfWeapon(CThing*) 0x008E9850.
 // Layout (PDB CModeStrafe 0x70, matches retail; see the ctor 0x00741FE0): ParentThing +0x04, LastUsable +0x28, ActiveWeapon +0x38.
 // Thing: interface bitset +0x20, map +0x44, the weapon's 16-bit id +0x8c (compared with ActiveWeapon), dead bit 0 of +0x91.
 // Shape: the change test is one ternary on the weapon pointer (ActiveWeapon read before the branch); usability defaults to
 // true and is replaced by IsUsableBy only for a live weapon thing; `if (usable != LastUsable) SetChangeOfWeapon(weapon);
 // LastUsable = usable;` is duplicated by VC7.1 per known value of the bool (bl).
+// Callee respelled (NF177, PRIORITY q11929): 0x005DAB10 was ?IsUsableBy@CTCWeapon@@QBE_NPAVCThing@@@Z (pointer form); now the Ego_r.pdb
+//   0x0063A950 / FableWin.pdb 0x0239AF10 ?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z (same pushed pointer).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -62,7 +64,7 @@ class CTCCarrying { public:                       // interface type 0x46
 };
 
 class CTCWeapon { public:                         // interface type 0x48
-    bool IsUsableBy(CThing* user) const;   // 0x005DAB10
+    bool IsUsableBy(const CThing& user) const;   // 0x005DAB10
 };
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
@@ -94,7 +96,7 @@ void CModeStrafe::UpdateWeaponState()
         SetChangeOfWeapon(weapon);
     bool usable = true;
     if (weapon && !weapon->IsDead() && weapon->HasTC(0x48))
-        usable = weapon->GetTC<CTCWeapon>(0x48)->IsUsableBy(ParentThing);
+        usable = weapon->GetTC<CTCWeapon>(0x48)->IsUsableBy(*ParentThing);
     if ((usable && !LastUsable) || (!usable && LastUsable))
         SetChangeOfWeapon(weapon);
     LastUsable = usable;

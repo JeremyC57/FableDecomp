@@ -28,9 +28,11 @@ class CMemoryDataInputStream { public:
     virtual ~CMemoryDataInputStream();                      // 0x00993B10
     operator CDataInputStream&() { return *reinterpret_cast<CDataInputStream*>(this); }
 };
+// Callee respelled (NF177, PRIORITY q12088): 0x00BE0480 was ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QAE_NJ@Z; now the Ego_r.pdb
+//   0x00A41DE0 / FableWin.pdb 0x02DF7220 const ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z (the self row's spelling).
 class CEngineStaticMapFileBlockManager { public:
     void PrioritiseBlock(long pos);                 // 0x00BE0420
-    bool IsBlockLoaded(long pos);                   // 0x00BE0480
+    bool IsBlockLoaded(long pos) const;             // 0x00BE0480
     const unsigned char* GetBlockData(long pos) const;   // 0x00BE04C0 Ego_r.pdb 0x00A41E20 + FableWin.pdb 0x02DF74B0 (NF131)
 public:
     void ReleaseRequest(long);   // 0x00BE0400

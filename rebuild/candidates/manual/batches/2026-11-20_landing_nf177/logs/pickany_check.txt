@@ -1,0 +1,8 @@
+NO-OWNER-OBJ 0064be45 004118c0 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+NO-OWNER-OBJ 00894e60 004118c0 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+OK  00894e60 -> 00410de0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z sizes 63 63 
+MISSING 009a7ca0 0041c830 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z owner leaf None True False
+MISSING 009a7e20 0041c830 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z owner leaf None True False
+MISSING 009a7ed0 0041c830 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z owner leaf None True False
+OK  009d56c0 -> 009a9d60 ??1?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@XZ sizes 53 53 
+MISSING 00be0480 0041c820 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z owner leaf None True False

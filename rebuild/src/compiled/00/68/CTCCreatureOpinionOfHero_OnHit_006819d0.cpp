@@ -10,13 +10,15 @@
 // NumberOfTimesHit +0x10, ToleranceToBeingHitOverride +0x14, FrameToDecayNumberOfTimesHit +0x18, PPersonalityDef +0x20); the
 // tail is the landed CTCCreatureOpinionOfHero::GetToleranceToBeingHitRemaining 0x00681940 inlined.
 // Callees: CWorld::GetWorldFrame (static) @ 0x0049D870 (returns the frame global 0x013B89BC; catalog "GFGetPreMainMemoryUsed"),
-// CTCBase::PeekWorld @ 0x00686A80, COpinionReactionManager::GetToleranceToBeingHit(const CThing*) @ 0x00701940.
+// CTCBase::PeekWorld @ 0x00686A80, COpinionReactionManager::GetToleranceToBeingHit(const CThing&) @ 0x00701940.
 // Data: the hit-decay time 0x01375550 (a long scaled by 0x78 frames), 1.5f @ 0x0125BA98, 1.0f @ 0x0122DED8, 0.0f @ 0x0122DEDC.
 // Shape: the decay global is a named local read before the frame call (edi); `remaining - hits <= 0.0f` returned as an int-widened compare
 // (`mov eax,1` / `xor eax,eax`) while the heavy-hit exit is a byte `mov al,1`.
+// Callee respelled (NF177, PRIORITY q12095): 0x00701940 was ?GetToleranceToBeingHit@COpinionReactionManager@@QBEMPBVCThing@@@Z (pointer); now
+//   the Ego_r.pdb 0x00551E10 / FableWin.pdb 0x01F16E60 reference form ?GetToleranceToBeingHit@COpinionReactionManager@@QBEMABVCThing@@@Z.
 class CThing;
 class COpinionReactionManager { public:
-    float GetToleranceToBeingHit(const CThing* thing) const;        // 0x00701940
+    float GetToleranceToBeingHit(const CThing& thing) const;        // 0x00701940
 };
 class CWorld { public:
     unsigned char _pad00[0x74];
@@ -56,7 +58,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
             return ToleranceToBeingHitOverride;
         CThing* thing = ParentThing;
         COpinionReactionManager* manager = PeekWorld().POpinionReactionManager;
-        float tolerance = manager->GetToleranceToBeingHit(thing);
+        float tolerance = manager->GetToleranceToBeingHit(*thing);
         if (PPersonalityDef)
             tolerance += PPersonalityDef->ToleranceToBeingHit;
         return tolerance;

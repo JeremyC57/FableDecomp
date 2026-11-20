@@ -160,6 +160,9 @@ FABLE_STATIC_ASSERT_AT(125, sizeof(CTCWeapon) == 0x28);
 #include "rebuild_abi.h"
 
 class CDefPointeeBase;
+#ifdef FABLE_RETAIL_CTCWEAPON_ISUSABLEBY
+class CThing;
+#endif
 
 #pragma pack(push, 1)
 class CTCWeapon {
@@ -173,6 +176,12 @@ public:
 #ifdef FABLE_RETAIL_CTCWEAPON_AUTOLOADING
     // Same opt-in as in the retail branch above, on this generated layout. Declaration only: no layout change.
     bool IsProjectileWeaponAutoLoading() const;              // 0x005DA950
+#endif
+#ifdef FABLE_RETAIL_CTCWEAPON_ISUSABLEBY
+    // NF177 opt-in (PRIORITY q11929, rows 0x005DAD10 / 0x005DAD60): Ego_r.pdb 0x0063A950 / FableWin.pdb 0x0239AF10
+    // ?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z (public const; the retail branch declares it unconditionally) on this generated layout.
+    // Declaration only: no layout change.
+    bool IsUsableBy(const CThing&) const;                    // 0x005DAB10
 #endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04

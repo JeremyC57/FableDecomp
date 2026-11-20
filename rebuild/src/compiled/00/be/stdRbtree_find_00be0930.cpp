@@ -1,5 +1,9 @@
 // std::_Rb_tree::find(const key_type& k) const -- map<long, CEngineStaticMapFileBlockManager::CFileBlock> lookup (STLport 4.6, const_iterator, the const overload): lower-bound walk from the root, end() unless the found node's key equals k
-// Leaf: ?find@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Const_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@2@ABJ@Z
+// Leaf: ??$find@J@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Const_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@1@ABJ@Z
+// Naming (NF172, 2026-11-20, q11713): owner decision D1 (2026-11-03): STLport 4.6.1 _tree.h 457-467 declare find / _M_find as member
+//   templates under _STLP_MEMBER_TEMPLATES, so the const find is ??$find@J@...QBE (as the non-const twin 0x00BE08E0 was respelled);
+//   was the non-template ?find@...QBE. Its two landed callers 0x00BE0480 / 0x00BE04C0 move to it in the same hand-back (landed by NF177,
+//   PRIORITY q12088, from the NF172 draft work/00be0930_family_draft_MATCH.cpp).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE0930, 71 bytes, thiscall, `ret 8` (hidden iterator result + key reference); keys compare signed (`jl` / `jge`).
 // Identity (sweep2 1b, owner decision 1b): callers CEngineStaticMapFileBlockManager::IsBlockLoaded 0xBE0480, GetBlockData 0xBE04C0 [QBE, const] (name-set constness in brackets); Ego_r.pdb CEngineStaticMapFileBlockManager::Blocks is map<long,CFileBlock>; its non-const twin is 0xBE08E0
 //   The catalog name CRetailTree_longkey::find was a generated stand-in shared by every byte-identical body of this shape; retail has no
@@ -70,14 +74,15 @@ public:
     static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
     static const _Key& _S_key(_Base_ptr __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
 
-    _Link_type _M_find(const key_type& __k) const;
-    iterator find(const key_type& __x) { return iterator(_M_find(__x)); }
-    const_iterator find(const key_type& __x) const { return const_iterator(_M_find(__x)); }
+    template <class _KT> _Link_type _M_find(const _KT& __k) const;
+    template <class _KT> iterator find(const _KT& __x) { return iterator(_M_find(__x)); }
+    template <class _KT> const_iterator find(const _KT& __x) const { return const_iterator(_M_find(__x)); }
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+template <class _KT>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_Link_type
-_Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const key_type& __k) const
+_Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = _M_header._M_data;                 // last node which is not less than k
     _Link_type __x = _M_root();                         // current node

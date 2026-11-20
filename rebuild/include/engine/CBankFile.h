@@ -77,6 +77,12 @@ protected:
     virtual CDateAndTime GetLastModifiedTime(const CCharString&);
     virtual CCharString GetEnumerationType(unsigned long) const;
 public:
+#ifdef FABLE_RETAIL_CBANKFILE_GETBANKPATHNAME
+    // NF177 opt-in (rows 0x009D56C0 / 0x009D5820 CBankFileAsync::OpenReadOnly / OpenFileReadOnly): Ego_r.pdb 0x00B19C30 + FableWin.pdb
+    // 0x02F918E0 ?GetBankPathname@CBankFile@@QBE?AVCWideString@@XZ, out of line at 0x009CBF10 (CWideString by hidden pointer).
+    // Declaration only (needs FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS).
+    CWideString GetBankPathname() const;                                   // 0x009CBF10
+#endif
 #else
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
 #endif
