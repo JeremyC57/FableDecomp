@@ -401646,6 +401646,13 @@ $catalog = @(
         TestSource = '00/6e/global_GetPreferredCombatDistanceForAttacker_006e7eb0_test.cpp'
         PassPattern = '006e7eb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0093f3c0'
+        Module = 'CAIStateGroup_VillageTaskPatrol'
+        Source = '00/93/CAIStateGroupVillageTaskPatrol_Update_0093f3c0.cpp'
+        TestSource = '00/93/CAIStateGroupVillageTaskPatrol_Update_0093f3c0_test.cpp'
+        PassPattern = '0093f3c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -39498,3 +39498,5 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?WifeAppearanceDialogueGroupStemNames@CTCWife@@2PAVCCharString@@A	013bab40	0121e260
 ?gIME@@3VCIME@NUISystem@@A	013b7cd8	012288b0
 ??1?$_List_base@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ	008f9f50	0122a200
+?GetBestPatrolTaskForThing@CTCVillage@@QAEPAVCVillageTaskPatrol@@ABVCThing@@@Z	00658e90	0093f3c0
+?SetPatrolTaskAsAcceptedByThing@CTCVillage@@QAE_NAAVCVillageTaskPatrol@@ABVCThing@@@Z	0065852d	0093f3c0
