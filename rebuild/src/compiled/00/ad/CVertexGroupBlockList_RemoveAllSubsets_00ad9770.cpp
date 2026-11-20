@@ -1,5 +1,5 @@
-// CVertexGroupBlockList::RemoveAllSubsets() -- drop every block that is a proper subset of another block: the others are copied in
-// order into a new array, which is then assigned back.
+// CVertexGroupBlockList::RemoveAllSubsets() -- drop every block that is a proper subset of another block: the others are copied in order into a new array, which is then assigned back.
+// Inline-budget: FABLE_RETAIL_STLP_TREE_CONSTFIND_NOINLINE (the TU's tree-find contract, as landed IsSubsetOf 0x00AD8C30 / ReorderInput 0x00AD9980: this row's grade is the same with plain CONSTFIND, but then its emitted IsProperSubsetOf COMDAT is 160 B and differs from retail 0x00AD8CA0; with NOINLINE it is 108 B and byte-equal). No flag.
 // Leaf: ?RemoveAllSubsets@CVertexGroupBlockList@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD9770, 280 bytes.
 // Naming: FableWin.pdb / Ego_r.pdb ?RemoveAllSubsets@CVertexGroupBlockList@@QAEXXZ; GetBlockCount is the PDB's inline accessor.
@@ -16,7 +16,7 @@
 #define FABLE_RETAIL_STLP_VECTOR_C
 #define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
 #define FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE
-#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND_NOINLINE
 #define FABLE_RETAIL_CARRAY
 #define FABLE_RETAIL_CVERTEXGROUPBLOCK_MEMBERS
 #include "engine/CArray.h"

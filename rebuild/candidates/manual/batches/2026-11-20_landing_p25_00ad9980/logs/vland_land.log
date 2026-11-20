@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00ad9980   RELOCATION_MATCH PASS   ReorderInput
+
+WINS: 1
+  00ad9980 RELOCATION_MATCH CVertexGroupBlockOptimiser::?ReorderInput@CVertexGroupBlockOptimiser@@QAEXABVCVertexGroupBlockList@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CVertexGroupBlockOptimiser_ReorderInput_00ad9980

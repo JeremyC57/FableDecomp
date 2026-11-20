@@ -129,3 +129,13 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
 - **Its dead conditional temporary** is the fifth row under that ruling (after 0x00DA0230, 0x00E72630, 0x00E54E90, 0x00E97070) and takes
   the same label prefix.
 - **Not reopened by this:** 0x00D01630, whose open part needs an expansion forced, not suppressed.
+
+## 0x00AD9980 CVertexGroupBlockOptimiser::ReorderInput: a TU-mate copy's contract decides between byte-equal variants (2026-11-20)
+- **Case:** the row grades RELOCATION_MATCH with plain STLP_TREE_CONSTFIND (the landed RemoveAllSubsets 0x00AD9770 set) and with
+  STLP_TREE_CONSTFIND_NOINLINE (the landed IsSubsetOf 0x00AD8C30 set). The row carries a `// Fidelity:` copy of IsSubsetOf. In the plain
+  variant that copy's COMDAT differs from retail 0x00AD8C30; in the NOINLINE variant p25H reports it byte-equal.
+- **Ruling:** land the NOINLINE variant once its COMDAT is confirmed equal. The ladder ranks devices for the row's own residue; it does not
+  license compiling a copied TU-mate under a different contract from its landed row. Line 2 names the device, says the row's grade is
+  unchanged without it, and cites the copy's COMDAT evidence.
+- **Follow-up:** regrade landed 0x00AD9770 with NOINLINE. If it still matches, it is a re-port item for A; if it breaks, the define is a
+  per-site fact, not a TU-wide one.

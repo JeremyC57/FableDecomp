@@ -679,7 +679,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00acd0e0	COptimisedPrimitive	DetectFoldOver	1056	parked	DIFFER(1048v1041)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00acd0e0.cpp	original
 00ace600	QuadricOptimiserInternals::COptimisedMesh	COptimisedMesh	1824	parked		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00ace600.cpp	original
 00ad8af0	_global	TreeNodes_HaveIntersection	320	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand629/differ/00ad8af0.cpp	original
-00ad9980	CVertexGroupBlockList	FilterBySubset	416	reserved (acctB p25H, 2026-11-20)	DIFFER(415v416)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00ad9980.cpp	original
 00add690	C3DBoundingSphere	FastBuildFromPoints	656	parked	codex pass24 PARKED: The unrolled radius scan remainder at 0x00ADD8C0 restores a distinct counter before looping. The compiler coalesces that counter with count.	20	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00add690/00add690.cpp	original
 00ade080	C3DBoundingBox	InitialiseFromOBB	2880	parked	codex pass24 PARKED: Portable SSE intrinsics and the scalar four-diagonal path produce different operand scheduling and instruction selection starting in the SIMD arm.	12	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00ade080/00ade080.cpp	original
 00ae1a90	CParticleProgram	ExecuteProgram	304	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand681/differ/00ae1a90.cpp	original

@@ -401594,6 +401594,13 @@ $catalog = @(
         TestSource = '00/71/NTCScriptedControlCActionMoveTo_OnActivate_00714370_test.cpp'
         PassPattern = '00714370_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ad9980'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_ReorderInput_00ad9980.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_ReorderInput_00ad9980_test.cpp'
+        PassPattern = '00ad9980_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
