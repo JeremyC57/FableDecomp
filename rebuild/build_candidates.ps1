@@ -401220,6 +401220,13 @@ $catalog = @(
         TestSource = '00/51/CThingFilterHasTCOfLeafTypeCTCActionUseScriptedHook_operator_00518dc0_test.cpp'
         PassPattern = '00518dc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a48ba0'
+        Module = 'CLipSyncSampleData'
+        Source = '00/a4/CLipSyncSampleData_WriteToFile_00a48ba0.cpp'
+        TestSource = '00/a4/CLipSyncSampleData_WriteToFile_00a48ba0_test.cpp'
+        PassPattern = '00a48ba0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

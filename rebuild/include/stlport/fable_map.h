@@ -236,7 +236,13 @@ public:
 private:
 #ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
 #ifdef _MSC_VER
+#ifndef FABLE_RETAIL_STLP_TREE_MERASE_PASS22_INLINE
+    // (The noinline is ReadFromFile 0x00A495F0's: that TU calls the tree erase. Opt-out FABLE_RETAIL_STLP_TREE_MERASE_PASS22_INLINE,
+    // hand3c2 row 0x00A48BA0 CLipSyncSampleData::WriteToFile: the same map's destructor there has one level of the recursion in place,
+    // 0x00A48EB0..0x00A48ED5 -- the right subtree through `call 0x00630D90`, the string destroyed and the node freed in the loop --
+    // which is what VC7.1 does with the plain STLport body.)
     __declspec(noinline)
+#endif
 #endif
 #else
 #if defined(FABLE_RETAIL_STLP_TREE_MERASE_NOINLINE) && defined(_MSC_VER)

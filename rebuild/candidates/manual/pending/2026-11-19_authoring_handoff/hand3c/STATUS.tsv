@@ -43,7 +43,7 @@ address	grade	bytes	test	grades_used	notes
 009c3c20	OPEN	909	-	1	baseline draft DIFFER(877v909) hunks=31 difflines=320
 00a38c20	RELOCATION_MATCH	551	PASS(vland strict)	1	hand3c: FableWin 0x031DB670 shape on shared headers (CDiskFileWin32, CArray SIZE ctor + GETBYTESIZE, CMemoryDataInputStream inline reads, CVectorMap); stand-in CCRCSymbolMap; first grade
 00a475c0	OPEN	1857	-	1	baseline draft OBJDUMP_ERR hunks=1 difflines=613
-00a48ba0	OPEN	875	-	1	baseline draft DIFFER(881v875) hunks=48 difflines=396
+00a48ba0	LANDED	875	-	1	landed by Account B (batches/2026-11-20_landing_hand3c2_b15); baseline draft DIFFER(881v875) hunks=48 difflines=396
 00a48f10	LANDED	811	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(815v811) hunks=59 difflines=243
 00a4c1f0	LANDED	1006	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(968v1006) hunks=68 difflines=325
 00a4d770	OPEN	420	-	42	DIFFER(420v420) one lea operand order at 0x00A4D8F1; see NOTES | best src/00a4d770.cpp; next: bracket on dest index, for-scope if(0) idiom
